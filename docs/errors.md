@@ -404,3 +404,14 @@ and additionally require installed native Coreutils 9.11-1 before the full ACL
 retest. Never rename failed markers to success. Driver prerequisite failures
 now retain exit status as well as PID/log. Retry after verified quiescent sync;
 acceptance still requires the unchanged ACL suite including cp.trs PASS.
+
+
+## H07 native spawn cache after Glibc overlay (2026-11-06)
+
+Linux API headers and filesystem layout accepted. lfs-build-support 13.1-1
+installed, then postcheck compilation correctly rejected unsuffixed POSIX spawn
+actions. Frozen Glibc overlay patch 49 explicitly removes the header aliases
+assumed by LFS 6.2 cache answers. Preserve failed marker/stage/archive; version
+13.1-2 retains original cross template and enables direct native detection.
+Require actual Autoconf no/no/yes/yes results and child directory-action behavior
+before same-step acceptance. See ADR-0044; no libc upgrade or assertion waiver.

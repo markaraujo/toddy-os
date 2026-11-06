@@ -2,7 +2,7 @@
 
 ## Current scope
 
-The planning repository and approved artwork are prepared. Implementation started by the owner on 2026-11-05. H01 provisions a real KVM build guest using container-packaged QEMU; see docs/evidence/H01.md and docs/RECOVERY.md. Source freeze is H02. H01–H06 passed; H07 final base has 121 accepted packages, including recovered Triehash and all native support; independent ownership and corrected Berkeley DB full retest remain pending. See docs/BUILD.md and the current driver section below. No bootable Toddy ISO exists yet. status.json is authoritative for completed milestones.
+The planning repository and approved artwork are prepared. Implementation started by the owner on 2026-11-05. H01 provisions a real KVM build guest using container-packaged QEMU; see docs/evidence/H01.md and docs/RECOVERY.md. Source freeze is H02. H01–H06 passed; H07 final base has 123 accepted packages, including recovered Triehash and all native support; independent ownership and corrected Berkeley DB full retest remain pending. See docs/BUILD.md and the current driver section below. No bootable Toddy ISO exists yet. status.json is authoritative for completed milestones.
 
 ## Start a development session
 
@@ -72,7 +72,7 @@ Use make site for a local export into ignored _site/. All site data is public; n
 ## Current H07 driver and audit sequence
 
 Use actual runner markers, driver exit files and docs/RECOVERY.md, not a
-historical journal count, to select work. Current accepted boundary is 121
+historical journal count, to select work. Current accepted boundary is 123
 source-built packages; the Berkeley DB standard attempt exposed a reproduced fixture isolation failure.
 Do not sync build inputs or run another dispatcher while that recipe holds the
 exclusive lock. Long Tcl tests update their own ALL.OUT; a quiet tee is not a

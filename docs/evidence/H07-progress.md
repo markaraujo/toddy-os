@@ -842,3 +842,23 @@ notice candidates; SHA-256
 Content-addressed inventory under .local/legal/source-notices; older versions
 remain preserved. The test-only project patch is a non-tar frozen input; this
 inventory does not grant new rights or replace final legal/source review.
+
+
+## Independent ownership and full ACL retest
+
+ACL full suite now has 14 PASS and two NFS expected failures, including
+cp.trs PASS with final Coreutils; runner 0/0, zero installed changes, log SHA-256
+be6e6d0ac1dea3b6b4c928a0f7d8b9e6f244089b32787ccd143c4fb26b312c59.
+Linux API 7.1.8 headers are natively owned; compiled version/openat2/seccomp
+probe passed. Runner 0/0, log SHA-256
+550096f25c27d2ca3c5e0f82e167a471e6320cfcce5d5e3f1bb1c3b8040b2f6b.
+Filesystem layout 13.1 native package owns merged aliases, shell/loader and
+mtab/run links; actual shell and Bash loader resolution passed. Runner 0/0,
+log SHA-256 a1c1235183b216273df3131e246d29249a027e791b98b15dac3de51cb64ea0f6.
+
+123 accepted packages; lfs-build-support installed but failed postcheck and
+is excluded from this count. ADR-0044 records the frozen Glibc patch-49
+interaction; corrected package/retest acceptance pending. Raw summary:
+.local/logs/h07-ownership-before-spawn-correction.jsonl. Completed support raw
+logs/markers retained outside Git in h07-native-support-121-raw.tar.gz, SHA-256
+2f85f2d29f0a099cb65f660f9377acf6c08d7a5b914151541ef3b66c3a2c7a3d.
