@@ -28,7 +28,7 @@ container. Restore the copy only while the guest is stopped; preserve the
 failed overlay first. H03 adds a paired builder/target checkpoint.
 The checkpoint is a convenience on the same disk, not disaster recovery.
 
-Latest paired offline checkpoint: .local/vm/checkpoints/h03-builder.qcow2 and
+Historical H03 paired checkpoint: .local/vm/checkpoints/h03-builder.qcow2 and
 h03-target.qcow2. Restore both together with QEMU stopped, preserving the failed
 disks first. The H01 checkpoint predates target preparation.
 
@@ -58,8 +58,9 @@ requirements; production still omits DBM/compat185 and stages no .a/.la files.
 Inspect /sources/db-5.3.28/build-test/ALL.OUT for live progress, not only tee tail.
 Prepared native Perl/Triehash/Which/Libseccomp/APT recipes are not yet accepted.
 Once dispatcher is quiescent, sync then run h07-perl-test-tools-driver.sh; it
-uses accepted native Dpkg backend and must pass real package postconditions. Native APT, packaging
-backend transition, ownership/dependency/conffile/license closure remain pending.
+uses accepted native Dpkg backend and must pass real package postconditions. Native APT, full packaging-backend integration and ownership/dependency/conffile/license
+closure remain pending. The archive-only native backend probe passed without
+changing the main database (ADR-0035).
 
 After an offline restore/restart:
 
@@ -216,3 +217,12 @@ progress under h07-metadata-closure/packages. Full closure reuses that verified
 version, derives actual ELF/interpreter edges and requires zero unqualified
 findings plus native package-manager checks. Additional tool/data/dlopen, image
 credential/source/license and native-kernel obligations still remain before G1.
+
+
+Additional 101-package recovery cache (not a cold image or tested restoration):
+.local/native-package-snapshots/20261106T104331341467Z, inventory SHA-256
+00b1e1f3709eef2c19ad0b55c5b39b14cb1d6a93514ab9ce2344686306890380,
+archive SHA-256 fcc82a8eb9abc23fe59c9000151fbce2686a79f1c1ace365729f6483eebf7f29.
+The current accepted boundary remains 101 while BDB is active. Native build-flow,
+XML consumer/bounds and package-backend archive-only reports under .local/logs
+are supplemental probes, not new installed packages or completed H07 evidence.

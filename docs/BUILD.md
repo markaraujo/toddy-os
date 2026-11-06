@@ -1,7 +1,8 @@
 # Current build procedure
 
-This document covers verified H01–H03 and the running H04 implementation.
-It is not a complete release build manual yet. No Toddy ISO exists.
+H01–H06 are validated; H07 final-base implementation is in progress with 101
+accepted native packages through native Dpkg. The complete Berkeley DB Tcl
+suite is active. This remains a partial build manual; no Toddy ISO exists.
 Use status.json and the evidence files to distinguish passed milestones from
 recipes still under validation. All commands below run from the checkout root.
 
@@ -171,7 +172,7 @@ Build provenance now records the complete supporting .sh/.py recipe set,
 including inner scripts streamed into chroot, with per-file SHA-256 and a
 canonical set hash. Native archive records retain the same set. This extends
 the original outer recipe/runner/source hashes; it does not invent missing
-historical input hashes. For the already-running final GCC job, a sidecar
+historical input hashes. For the final GCC job, a sidecar
 /var/log/toddy/build/h07-gcc-build.recipe-set.json was captured during build,
 with matching original runner/outer hashes and source commit 3489a9b.
 The critical GCC scripts were unchanged; the later runner instrumentation
@@ -199,8 +200,9 @@ sync_build.py includes the supplemental lock and verifies the pinned archives
 before transferring. Native source.py accepts only frozen listed additions;
 no new source/component is extracted solely because a URL was supplied.
 
-Post-compiler recipes through Bash are prepared from frozen LFS 13.1-systemd
-8.33–8.39 but are not yet target-validated. Their driver refuses to start
+Post-compiler recipes through Bash follow frozen LFS 13.1-systemd 8.33–8.39
+and passed their target checks, with qualified raw suite differences retained
+in the evidence/ADRs. Their driver refuses to start
 without h07-gcc-install.success.json. Ncurses includes an upstream automatic
 setupterm example matrix after installation plus native screen/terminfo
 checks; interactive examples are not represented as an exhaustive suite.
@@ -221,8 +223,8 @@ data only. GCC's raw make exit alone is not acceptance. Preserve raw parallel
 .sum.sep/.log.sep files alongside the merged reports before cleaning source.
 
 ADR-0014 separates gcc-runtime ownership from compiler/development files.
-The prepared installer still needs actual target validation after critical
-acceptance and a cold checkpoint. Existing native C++ consumers' dependency
+Native compiler/runtime installation and C/C++ thread/loader checks passed
+after critical acceptance. Existing native C++ consumers' dependency
 metadata remains subject to the final audit; this is not yet a closed graph.
 
 Before a fresh full build sync, fetch the pinned compiler reference:
@@ -237,3 +239,22 @@ reference cache and copies the reference as data into target evidence. The
 future GCC build wrapper preflights it before spending time compiling. This
 preflight was added after the completed first suite; the original first-run
 recipe hashes/sidecar remain preserved in its recorded commit history.
+
+
+## Current final-base continuation
+
+Inspect the live dispatcher, success/failed/running markers and ALL.OUT before
+acting; do not dispatch concurrently or sync while Berkeley DB holds the lock.
+After actual success and a quiescent boundary:
+
+```sh
+python3 scripts/host/sync_build.py
+python3 scripts/host/vm.py ssh 'nohup bash /opt/toddy-build/scripts/build/h07-perl-test-tools-driver.sh > /var/log/toddy/h07-perl-test-tools-driver.log 2>&1 < /dev/null & echo $!'
+```
+
+Inspect the complete support-driver result and per-package postchecks. Only its
+success permits h07-final-base-driver.sh (APT, alias/ACL, ownership/quarantine,
+metadata closure). Native APT repository/upgrade integrity and final closure
+remain pending. See docs/RECOVERY.md for exact retained checkpoints and commands.
+Native build integration, backend archive-only and DBus XML bounds probes are
+supplemental evidence; they do not replace full recipe/postcheck acceptance.
