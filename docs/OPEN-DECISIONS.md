@@ -56,3 +56,8 @@ UTF-8 and ISO-8859-7; Bash nocasematch misses it in ISO-8859-7. Grep/Sed and all
 measured English/Portuguese cases pass. Gawk's existing explicit GNU matcher
 passes both Greek cases. Preserve default-failure evidence and release limitation;
 this is not a global Glibc fix or broad locale correctness claim.
+
+Initial Expat consumer review is recorded in ADR-0041: nine dynamic consumers
+across five packages; native unprivileged DBus malformed/oversized configuration
+rejection passed. Final-image/desktop consumer enumeration and actual untrusted
+entry-point byte/resource/time limits remain release obligations.
