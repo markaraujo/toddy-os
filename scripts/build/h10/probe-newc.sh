@@ -4,7 +4,7 @@ source /opt/toddy-build/scripts/build/h06/common.sh
 chroot_run <<'INNER'
 set -euo pipefail
 dpkg-query -S /usr/bin/bsdcpio | grep -F 'libarchive: ' >&2
-python3 - <<'PY'
+PYTHONDONTWRITEBYTECODE=1 python3 - <<'PY'
 from pathlib import Path
 import gzip,hashlib,json,os,stat,subprocess,tempfile
 with tempfile.TemporaryDirectory(prefix='toddy-newc-') as directory:
