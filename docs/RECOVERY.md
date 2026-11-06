@@ -489,3 +489,15 @@ inspect any partial stage before a deliberate retry. Successful staging writes
 and ownership, not just directory existence. Staging is not a completed
 initramfs or native boot. The private native experiment was removed after its
 checks, and the current installed root/active BDB inputs remain unchanged.
+
+
+APT repository postcheck failures now preserve the printed
+/tmp/toddy-apt-native.* fixture inside the native target after stopping their
+HTTPS child and scoped GnuPG agent. Review its rejection.log, https.log, private
+Dpkg state and source/index/payload copies together with
+/sources/evidence/h07-apt/native-repository.log. Retained signing/TLS keys are
+throwaway test identities, never publication inputs. Do not copy this fixture
+into Git or an image. Retry uses a fresh fixture; remove the specifically
+identified old fixture only after preserving the needed sanitized diagnosis.
+Successful runs remove their fixture, and the original failing exit remains
+nonzero. The active BDB recipe inputs were not synchronized during this review.

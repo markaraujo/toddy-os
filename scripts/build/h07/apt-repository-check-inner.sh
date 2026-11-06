@@ -6,13 +6,19 @@ exec > >(tee /sources/evidence/h07-apt/native-repository.log) 2>&1
 fixture=$(mktemp -d /tmp/toddy-apt-native.XXXXXX)
 https_pid=
 cleanup() {
+ local result=$?
  if [[ -n $https_pid ]]; then
   kill "$https_pid" 2>/dev/null || true
   wait "$https_pid" 2>/dev/null || true
  fi
  if [[ -f $fixture/https.log ]]; then cat "$fixture/https.log";fi
  GNUPGHOME="$fixture/keys" gpgconf --kill gpg-agent >/dev/null 2>&1 || true
- rm -rf "$fixture"
+ if [[ $result == 0 ]]; then
+  rm -rf "$fixture"
+ else
+  printf 'Preserved failed APT fixture: %s (exit %s)\n' "$fixture" "$result" >&2
+ fi
+ return "$result"
 }
 trap cleanup EXIT
 chmod 755 "$fixture"

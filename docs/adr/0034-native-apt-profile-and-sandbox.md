@@ -68,3 +68,15 @@ Silently accepting optional omission would contradict this profile; forcing
 found values could conceal missing libraries, so neither alternative is used.
 The source template uses bare #define HAVE_* lines, not a trailing numeric 1.
 Full APT configuration/build/repository acceptance remains gated on BDB success.
+
+
+Recovery review found that the prepared APT repository test removed its private
+fixture even on failure. Preserve failed fixture contents after stopping its
+HTTPS child and scoped GnuPG agent; remove only successful fixtures. Keep the
+original exit status. This changes failure recovery, not repository acceptance.
+An actual native-shell cleanup probe passed both exit 0/removal and exit 37/
+preservation, retained evidence bytes, and verified the failed case's child
+process had exited. Private probe fixtures were removed after inspection.
+Raw .local/logs/h07-apt-cleanup-native-probe.json SHA-256
+`9f841e51be4841679c6a2143a5a3702a267f65d69c51aa05b1da760038b52920`.
+No APT test was substituted: full native build/repository execution is pending.

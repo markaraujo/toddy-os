@@ -96,3 +96,9 @@ execution, content hashing and fixed device nodes passed; no credentials or
 installed changes. Three path/preservation tests pass. This is not a booted
 initramfs or H10 acceptance (ADR-0052). Complete BDB regression remains active,
 advancing through secondary-index tests at 20:52 UTC.
+
+2026-11-06: Corrected prepared APT postcheck recovery to retain failed private
+repositories while terminating their child processes and preserving failure
+status. Actual native shell cleanup checks passed exit 0/removal and exit 37/
+retention; this does not claim APT acceptance. BDB complete standard suite is
+still live, now exercising transaction recovery after secondary-index tests.
