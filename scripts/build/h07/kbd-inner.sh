@@ -4,7 +4,7 @@ set -euo pipefail
 cd /sources/kbd-2.10.0
 test ! -e /sources/stage/kbd
 mkdir -p /sources/evidence/h07-kbd
-patch --batch --forward --fuzz=0 -Np1 -i ../kbd-2.10.0-backspace-1.patch
+patch --batch --forward --fuzz=0 -Np1 -i ../kbd-2.10.0-backspace-context-1.patch
 sed -i '/RESIZECONS_PROGS=/s/yes/no/' configure
 sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in
 ./configure --prefix=/usr --disable-vlock

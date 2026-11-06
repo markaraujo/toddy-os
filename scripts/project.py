@@ -4,6 +4,7 @@ import argparse
 import html
 import json
 import re
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -143,8 +144,12 @@ details{background:var(--panel);border:1px solid #44382d;border-radius:10px;marg
 
 
 def check_links(root=ROOT):
-    for doc in root.rglob("*.md"):
-        if ".git" in doc.parts:
+    # Include new project docs, but never traverse ignored source/cache trees.
+    result = subprocess.run(['git', 'ls-files', '-co', '--exclude-standard', '-z', '--', '*.md'],
+                            cwd=root, check=True, capture_output=True)
+    for name in sorted(set(result.stdout.decode().split('\0')) - {''}):
+        doc = root / name
+        if not doc.is_file():
             continue
         for target in re.findall(r"\]\(([^)]+)\)", doc.read_text()):
             if "://" in target or target.startswith(("#", "mailto:")):

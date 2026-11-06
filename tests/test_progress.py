@@ -3,6 +3,8 @@ import copy
 import importlib.util
 import json
 import unittest
+import subprocess
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -52,6 +54,31 @@ class ProgressGates(unittest.TestCase):
         self.data["gates"]["G1"] = "passed"
         with self.assertRaisesRegex(ValueError, "Inconsistent gate"):
             project.validate(self.data)
+
+
+class DocumentationLinks(unittest.TestCase):
+    def test_ignored_sources_are_excluded_but_untracked_docs_are_checked(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            subprocess.run(['git', 'init', '-q', directory], check=True)
+            (root/'.gitignore').write_text('.local/\n')
+            source=root/'.local/source';source.mkdir(parents=True)
+            (source/'README.md').write_text('[upstream](missing.md)')
+            (root/'README.md').write_text('[valid](.gitignore)')
+            project.check_links(root)
+            (root/'new.md').write_text('[broken](missing.md)')
+            with self.assertRaisesRegex(ValueError, 'Broken local link in new.md'):
+                project.check_links(root)
+
+    def test_tracked_docs_remain_checked_even_if_later_ignored(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory)
+            subprocess.run(['git','init','-q',directory],check=True)
+            (root/'tracked.md').write_text('[broken](missing.md)')
+            subprocess.run(['git','add','tracked.md'],cwd=root,check=True)
+            (root/'.gitignore').write_text('tracked.md\n')
+            with self.assertRaisesRegex(ValueError,'Broken local link in tracked.md'):
+                project.check_links(root)
 
 
 if __name__ == "__main__":

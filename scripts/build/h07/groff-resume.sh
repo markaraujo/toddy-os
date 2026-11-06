@@ -8,7 +8,7 @@ r=json.loads(Path('/var/log/toddy/build/h07-groff.failed.json').read_text())
 assert r['recipe_exit']==2 and r['changed_paths']==0
 base=Path('/mnt/lfs/sources/groff-1.24.1')
 assert (base/'eqn').is_file() and (base/'Makefile').is_file()
-assert 'exec: eqn: not found' in (base/'src/preproc/eqn/tests/neqn-smoke-test.log').read_text()
+assert 'exec: eqn: not found' in (base/'src/preproc/eqn/tests/neqn-smoke-test.sh.log').read_text()
 assert not Path('/mnt/lfs/sources/stage/groff').exists()
 CHECK
 chroot_run < /opt/toddy-build/scripts/build/h07/groff-test-install-inner.sh

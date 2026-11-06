@@ -151,6 +151,35 @@
       "signature_verified": false,
       "signature_note": "Reviewed project patch pinned to immutable repository commit and SHA-256; no OpenPGP claim.",
       "planned_stage": "H07 Coreutils 9.11; all root and expensive unprivileged tests required"
+    },
+    {
+      "name": "ca-certificates",
+      "version": "2026.11.05",
+      "filename": "cacert-2026-11-05.pem",
+      "url": "https://curl.se/ca/cacert-2026-11-05.pem",
+      "sha256": "427c064216761a1e72a8b30f0d954d08cb6e4435a82091fb865afd20c8497285",
+      "size": 200116,
+      "published_sha256": "427c064216761a1e72a8b30f0d954d08cb6e4435a82091fb865afd20c8497285",
+      "published_digest_source": "https://curl.se/ca/cacert-2026-11-05.pem.sha256",
+      "signature_verified": false,
+      "signature_note": "Official dated curl Mozilla-conversion PEM and publisher SHA-256 verified over HTTPS; no separate signature.",
+      "decision": "ADR-0021",
+      "license": "MPL-2.0",
+      "certificate_count": 118
+    },
+    {
+      "name": "kbd-backspace-context",
+      "version": "2.10.0-1",
+      "filename": "kbd-2.10.0-backspace-context-1.patch",
+      "url": "https://raw.githubusercontent.com/markaraujo/toddy-os/eab9085d49e5342c22aea715f91e37afd1acc039/patches/kbd-2.10.0-backspace-context-1.patch",
+      "sha256": "19ceb40af281ce8069794514f073e4557898c970c4c80d24db80b2bd3ab3b996",
+      "size": 12638,
+      "published_sha256": "19ceb40af281ce8069794514f073e4557898c970c4c80d24db80b2bd3ab3b996",
+      "published_digest_source": "https://github.com/markaraujo/toddy-os/commit/eab9085d49e5342c22aea715f91e37afd1acc039",
+      "signature_verified": false,
+      "signature_note": "Locally reviewed context-only adaptation with all 1327 postimages identical to book-default application; frozen by Git commit and SHA-256.",
+      "derived_from_sha256": "8be28dcb11420624a500f2ea4fe975f771174bffee50e54ec8cd295a2dec104e",
+      "decision": "ADR-0022"
     }
   ],
   "additional_decisions": [

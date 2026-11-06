@@ -42,19 +42,19 @@ original failed preflight, before the corrected Python build. H06 was actually
 restored/retested; this newer pair has been saved/verified, not yet restored.
 Checkpoint copies share the workstation disk and are not disaster recovery.
 
-Live target now has 65 accepted native packages through Findutils. Python full
+Live target now has 73 accepted native packages through Patch. Python full
 retry and native postchecks passed. The latest cold pair remains the earlier
 55-package checkpoint; do not confuse live acceptance with saved disk state.
-Groff recovery repeats its complete suite with built eqn on PATH, then stages,
-installs and runs the native formatter. Its driver continues utilities through
-Texinfo only after actual success.
+Groff/Kbd recoveries passed; Tar recovery classifies the unchanged complete
+suite and requires installed ACL/capability roundtrips, then continues Texinfo.
+Its original raw make exit 2 remains recorded. See ADR-0023.
 
 ```sh
 python3 scripts/host/vm.py inspect
-python3 scripts/host/vm.py ssh 'find /var/log/toddy/build -name "*.running.json" -printf "%f\n"; tail -c 2000 /var/log/toddy/h07-groff-recovery-driver.log'
+python3 scripts/host/vm.py ssh 'find /var/log/toddy/build -name "*.running.json" -printf "%f\n"; tail -c 2000 /var/log/toddy/h07-tar-recovery-driver.log'
 ```
 
-Inspect /var/log/toddy/h07-groff-recovery-driver.{pid,exit} and actual processes.
+Inspect /var/log/toddy/h07-tar-recovery-driver.{pid,exit} and actual processes.
 A failed step stops the chain. Read failure logs before choosing a dedicated
 resume script; never run the pristine Python resumer over the compiled tree.
 After restoring the 55-package cold pair, start/remount/sync, run the guarded
@@ -64,8 +64,10 @@ build-only static resolver before G1 or ISO assembly.
 After a guest restart, run mount-kernfs.sh first. Full input sync takes the same
 exclusive guest lock as builds and refuses an active step. An input-sync.running
 flag means interrupted input installation; inspect/preserve staging and finish a
-verified sync before dispatch. Prepared Vim/MarkupSafe/Jinja2 and remaining
-service/filesystem recipes require actual execution/acceptance.
+verified sync before dispatch. Prepared final-services driver runs MarkupSafe/Jinja2 through E2fsprogs after
+Texinfo acceptance. Supplemental-tools then runs frozen CA/Nghttp2/Curl/Libuv/
+Libarchive/CMake before unchanged Vim tests. These are prepared recipes and
+require actual target acceptance.
 
 Never rerun account bootstrap or re-extract successful build trees. The GCC
 suite marker proves compilation/tests only; installation is separately proved

@@ -4,7 +4,7 @@ Updated: 2026-11-06
 
 Bootstrap: ready_for_development
 
-Implementation: H01-H06 validated in KVM. H07 has 65 accepted native packages through Findutils; full Python retry passed. Groff full-suite recovery is running after correcting its build PATH. Remaining base, package manager, ownership/dependency closure and release gates are pending. No Toddy ISO.
+Implementation: H01-H06 validated in KVM. H07 has 73 accepted native packages through Patch, including GRUB BIOS/UEFI image generation. Tar full tests have one precisely classified getcap display mismatch; installed ACL/capability checks remain required. Remaining base, package manager and ownership/dependency closure are pending. No Toddy ISO; G1/G2 pending.
 
 Foundation: **38%** · Agentic desktop: **0%**
 

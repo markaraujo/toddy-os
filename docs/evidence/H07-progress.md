@@ -483,3 +483,42 @@ complete per-file hashed staging bundle, and blocks dispatch after interrupted
 installation. Tests cover busy locks, incomplete transfers, hash corruption,
 source escape and symlinks. Actual guest probes verified both refusal paths;
 39 local regression tests pass. No active recipe is overwritten during sync.
+
+
+## Utilities through Patch: 73 accepted native packages
+
+Groff full retry: 316 total, 298 PASS, 14 SKIP, four XFAIL, zero FAIL/ERROR.
+Native formatter passed. GRUB built both i386-pc and x86_64-efi modules and
+successfully generated both core images; grub-file recognized the EFI image.
+No boot sector was written and actual BIOS/UEFI boot remains H09/H12. Gzip,
+IPRoute2, Kbd, Libpipeline, Make and Patch passed their applicable native checks.
+Kbd's original strict patch preflight stopped before configuration; ADR-0022
+refreshes only two stale context lines and proves all 1327 postimage files
+identical to book-default application. Full Kbd suite/parser passed afterward.
+
+| Accepted runner | Recipe/postcheck | Full log SHA-256 |
+| --- | --- | --- |
+| h07-groff-recovery | 0 / 0 | feb7e15828ad20ac45f8db4d3ed9378d992bfca5fe53d3cc30af39e2e0bfe612 |
+| h07-grub | 0 / 0 | 9ae027b98844627994653f07f569620b980ba942072f612f87577b704c2e204a |
+| h07-gzip | 0 / 0 | 8232451bb0189357c04441418dd194e072d09d0060fd8dfed555984a1c1f17a4 |
+| h07-iproute2 | 0 / 0 | 14eb58b103d5cab53640c3cb86709f40c18881a5649242db4db3c9b1663e5940 |
+
+The 65-package cache .local/native-package-snapshots/20261106T073446126113Z
+passed exporter and copied archive/record hashes. Inventory SHA-256:
+603310729c7840d416e4a3fafe79a0b5cf3d7ad0ab3e7f7aefa55b9b6e350849;
+cache SHA-256 68f89f0ea41be7bc6fe3cdeb936ca37f5007a0941bc7d128f3acdb28c3a4c39e.
+The additional runner/nested log copy .local/logs/h07-native-through-groff.tar.gz
+has SHA-256 0bb39dc9311088149d799b45967b03fb26fa118cac4fbe48c6fe9d967170c4fd.
+These recovery ingredients are not a bootable checkpoint or ISO.
+
+Tar's unchanged full suite is 223 PASS/20 SKIP/one known display mismatch,
+raw make exit 2, zero installed changes (ADR-0023). The compiled binary preserved
+exact security.capability bytes in an independent guarded probe. Acceptance
+still requires strict complete-suite classification and installed ACL/capability
+roundtrips. No test is deleted or relabeled passing.
+
+Systemd/D-Bus/Man-DB/Procps/util-linux/E2fsprogs and supplemental dependency
+recipes are prepared, not yet accepted. ADR-0021 freezes public CA data; Curl's
+initial profile explicitly disables cookies without Libpsl. Vim's unchanged full
+downloader tests are scheduled after native TLS/client prerequisites. Final
+ownership, conffile, runtime-dependency and license-expression closure is pending.

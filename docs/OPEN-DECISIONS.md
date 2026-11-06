@@ -33,3 +33,9 @@ audit remaining GNU regex consumers for the measured Glibc 20381 fastmap issue
 (Findutils uses its supplied fixed replacement, ADR-0020); verify actual native
 kernel module loading in H09/H12 rather than treating builder module listing as
 proof. These obligations do not change the release acceptance criteria.
+
+Systemd's book-order build still links temporary Util-linux libraries. Its
+initial package dependency subset must gain the final native Util-linux provider
+after that later book package is accepted. Util-linux's optional Systemd linkage
+must also be audited from actual ELFs. This is part of mandatory H07 versioned
+metadata closure; neither initial archive claims a closed dependency graph.

@@ -278,3 +278,16 @@ ADR-0019; Findutils' supplied-regex selection and complete regression proof are
 ADR-0020. Both original failures changed zero installed files. Groff's initial
 neqn smoke failure is a missing build-directory PATH entry; focused reproduction
 passes after that correction, with full-suite recovery required before install.
+
+
+## H07 Kbd and Tar diagnostics (2026-11-06)
+
+Kbd's two Turkish patch hunks had obsolete Meta_Tab context; the frozen source
+has Backtab. ADR-0022 updates context only and proves all 1327 regular postimages
+match book-default application. Rebuild/full suite/native parser passed.
+
+Tar's only full-suite failure is a getcap display difference, not lost capability
+bytes: 223 PASS/20 SKIP/group 233 FAIL, raw make 2. Independent compiled-Tar
+roundtrip preserved security.capability exactly. ADR-0023 and strict classifier
+retain the failure and require installed binary-xattr plus ACL checks. Do not
+use the book's generic SELinux explanation as the measured cause here.
