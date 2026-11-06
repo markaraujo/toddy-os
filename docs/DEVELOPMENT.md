@@ -67,3 +67,29 @@ Live URL: https://markaraujo.github.io/toddy-os/
 A single repository is authoritative. Run make dashboard, commit status.json and generated files, then push validated changes to main. The GitHub Pages workflow checks the planning state, exports an allowlisted static site and deploys it automatically. Feature branches do not deploy. The site links story/PRD details to the same GitHub repository, and includes only the dashboard and its mascot asset. No second repository, cross-repository key or provider account is required.
 
 Use make site for a local export into ignored _site/. All site data is public; never include credentials, local logs, personal memory or machine-specific secret configuration in status data. A dashboard reflects the last published commit, not uncommitted filesystem changes or a live process monitor.
+
+
+## Current H07 driver and audit sequence
+
+Use actual runner markers, driver exit files and docs/RECOVERY.md, not a
+historical journal count, to select work. Current accepted boundary is 101
+source-built packages; the complete Berkeley DB standard suite is active.
+Do not sync build inputs or run another dispatcher while that recipe holds the
+exclusive lock. Long Tcl tests update their own ALL.OUT; a quiet tee is not a
+stalled test and a partial log is not success.
+
+At the next successful quiescent boundary, sync the current committed inputs,
+run h07-perl-test-tools-driver.sh, then success-gated h07-final-base-driver.sh.
+Prepared recipes are separate from acceptance. The first new package must prove
+source-built native Dpkg routing from actual archive provenance/postcheck. Final
+metadata closure preserves original archives, normalizes only build ownership,
+retains reviewed privileged helpers, derives ELF/interpreter dependencies and
+verifies actual installed payload. Shared/generated state and optional internal
+program/data/dlopen requirements remain explicit; no audit is silently treated
+as complete release acceptance.
+
+Reproduce legal input inventory with scripts/host/audit_source_notices.py;
+content-addressed generations preserve older evidence. Source grant/collection
+entries identify actual frozen inputs and original terms, not a whole-OS
+relicense. License/source availability, credentials and image inclusion must be
+checked against the actual assembled artifact before G1/G2.
