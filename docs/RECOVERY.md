@@ -184,3 +184,15 @@ It copies only installed project-built packages, never signing/provider keys.
 A partial destination without verified.json is not an accepted cache. The
 snapshot predates Perl. H07 rehydration from these archives has not yet been
 exercised; do not describe it as a tested system restore.
+
+
+Prepared H07 closure (not executed while BDB suite holds lock):
+linux-api-headers, filesystem-layout, lfs-build-support, native-bootstrap-cleanup,
+native-metadata-closure recipes/postchecks. Metadata upgrade preserves original
+archives and records, records per-package progress under sources/evidence/
+h07-metadata-closure and skips only independently verified completed versions.
+An existing staging directory or leftover package transfer is a diagnosis point,
+not permission to delete it blindly. Native backend/notice retention is prepared
+in the checkout but not yet synced to the running target. After quiescent full
+input sync, the next Perl/Triehash support recipe must prove real native Dpkg
+routing; inspect its packaging_backend metadata and native postcheck.

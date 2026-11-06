@@ -695,3 +695,18 @@ Linux API headers, layout and generated state remain separate closure work.
 No cleanup or metadata upgrade is claimed executed yet. ADR-0033/0034 freezes
 native APT test/build additions; ADR-0035 prepares native packaging transition.
 61 local tests pass. Published checks for 762dd6b are green; H07/G1/G2 pending.
+
+
+### Prepared metadata/layout and legal-notice retention
+
+63 local tests now pass. Native metadata upgrader prepares new +toddy1 archives,
+conffiles, exact measured provider additions, consistent .la removal and shared
+Info-index regeneration. Filesystem-layout/LFS build-support and Linux API header
+recipes are prepared with book-source hashes and native probes. Quarantine and
+upgrades have not run; BDB complete suite still owns the dispatcher lock.
+Source legal-notice inventory examined 149 frozen inputs and identified 670
+named/COPYING-numbered/LICENSES-directory files; inventory SHA-256
+0de6994eee826aed0f1e5ea7da2516db4a52b1d92373f2b736749847fc077fa9,
+.local/legal/source-notices/inventory.json. New packager retains exact notice
+bytes and source/path/hash index; this is evidence for, not completion of,
+embedded per-file and bundled-component license review. No release gate changed.

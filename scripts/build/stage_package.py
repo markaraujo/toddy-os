@@ -16,6 +16,7 @@ import subprocess
 from locked_inputs import locked_source
 from provenance import recipe_set
 from package_backend import PackageBackend
+from source_notices import retain_source_notices
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -105,6 +106,7 @@ def main():
     if not args.recipe.resolve().is_relative_to(ROOT/'scripts') or not args.recipe.is_file():
         raise SystemExit('Recipe provenance must be a project script')
     canonicalize_usrmerge(stage)
+    retain_source_notices(ROOT, TARGET, stage, args.name, args.source)
     generated_paths=[]
     info_index=stage/'usr/share/info/dir'
     if info_index.exists() or info_index.is_symlink():
@@ -168,6 +170,8 @@ def main():
     record = {'name': args.name, 'version': args.version, 'archive_sha256': digest(archive),
         'recipe_sha256': digest(args.recipe), 'packager_sha256': digest(Path(__file__)), 'packaging_backend': backend.record,
         'supporting_build_scripts': recipe_set(), 'sources': source_rows,
+        'book_sources': json.loads((ROOT/'config/books.lock.json').read_text()),
+        'source_kind': 'upstream-archives-and-versioned-recipe' if source_rows else 'book-derived-versioned-recipe',
         'payload': entries, 'generated_paths': generated_paths,
         'runtime_dependency_closure': 'pending final base audit', 'installed': False}
     record_path = RECORDS/(archive.stem+'.json')

@@ -49,3 +49,13 @@ an owner or disappears before execution. Do not glob-delete unknown files.
 Native C++ threads, Perl threads, Python imports/trust and Xz version must still
 pass. Other unowned paths need explicit layout/generated-state ownership review;
 this cleanup alone does not close the audit.
+
+Final filesystem-layout package records the existing merged-/usr aliases,
+loader aliases and sh link, with standard empty FHS directories. It deliberately
+excludes mounted API filesystems; those are runtime-generated mounts. The
+separate lfs-build-support package takes ownership of the exact existing
+section 6.2 config.site. Both are synthesized from frozen LFS computer
+instructions, retain LFS MIT notice plus book URLs/version/archive hashes and
+recipe provenance, and import no foreign binary/source archive. Source kind is
+explicitly book-derived-versioned-recipe. Original project licensing decision
+D10 remains open; this does not grant a license to all original Toddy code.
