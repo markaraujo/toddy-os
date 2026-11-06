@@ -1,0 +1,151 @@
+{
+  "decision": "ADR-0039",
+  "default_owner": "root:root",
+  "build_user": "tester",
+  "privileged_exceptions": [
+    {
+      "package": "dbus",
+      "path": "/usr/libexec/dbus-daemon-launch-helper",
+      "uid": 0,
+      "gid": 18,
+      "mode": 2120,
+      "source_version": "1.16.2-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "inetutils",
+      "path": "/usr/bin/ping",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "2.8-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "inetutils",
+      "path": "/usr/bin/ping6",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "2.8-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "inetutils",
+      "path": "/usr/bin/traceroute",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "2.8-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "shadow",
+      "path": "/usr/bin/chage",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "4.20.2-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "shadow",
+      "path": "/usr/bin/chfn",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "4.20.2-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "shadow",
+      "path": "/usr/bin/chsh",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "4.20.2-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "shadow",
+      "path": "/usr/bin/gpasswd",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "4.20.2-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "shadow",
+      "path": "/usr/bin/newgidmap",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "4.20.2-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "shadow",
+      "path": "/usr/bin/newgrp",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "4.20.2-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "shadow",
+      "path": "/usr/bin/newuidmap",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "4.20.2-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "shadow",
+      "path": "/usr/bin/passwd",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "4.20.2-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "shadow",
+      "path": "/usr/bin/su",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "4.20.2-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "util-linux",
+      "path": "/usr/bin/mount",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "2.42.4-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "util-linux",
+      "path": "/usr/bin/umount",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "2.42.4-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "util-linux",
+      "path": "/usr/bin/wall",
+      "uid": 0,
+      "gid": 5,
+      "mode": 1517,
+      "source_version": "2.42.4-1",
+      "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    }
+  ]
+}

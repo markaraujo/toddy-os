@@ -97,6 +97,8 @@ def main():
     rows = list(lock['packages'])
     metadata = ['scripts/build','LICENSES','config/component-licenses.json',
                 'config/books.lock.json','config/sources.lock.json']
+    if (ROOT/'config/package-ownership-policy.json').exists():
+        metadata.append('config/package-ownership-policy.json')
     if (ROOT/'config/native-bootstrap-cleanup.json').exists():
         metadata.append('config/native-bootstrap-cleanup.json')
     if (ROOT/'config/native-package-metadata.json').exists():

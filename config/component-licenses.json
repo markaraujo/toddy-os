@@ -578,7 +578,8 @@
       "source_filename": "bash-5.3.tar.gz",
       "source_sha256": "0d5cd86965f869a26cf64f4b71be7b96f90a3ba8b3d74e27e8e9d9d5550f31ba",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "coreutils",
@@ -589,7 +590,8 @@
       "source_filename": "coreutils-9.11.tar.xz",
       "source_sha256": "394024eda0a5955217ceda9cd1201e65dc8fa3aa29c2951135a49521d57c3cc3",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "diffutils",
@@ -600,7 +602,8 @@
       "source_filename": "diffutils-3.12.tar.xz",
       "source_sha256": "7c8b7f9fc8609141fdea9cece85249d308624391ff61dedaf528fcb337727dfd",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "findutils",
@@ -611,7 +614,8 @@
       "source_filename": "findutils-4.11.0.tar.xz",
       "source_sha256": "bfd19cb06cc71f3352d567e90284d8cdac02ac89774bbeadf0b533b0c11432fd",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "gawk",
@@ -622,7 +626,8 @@
       "source_filename": "gawk-5.4.1.tar.xz",
       "source_sha256": "07f6f7342b7febe4313fc2c2542ad93d64fe20ad8717200109f105a826f5fd37",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "gdbm",
@@ -633,7 +638,8 @@
       "source_filename": "gdbm-1.26.tar.gz",
       "source_sha256": "6a24504a14de4a744103dcb936be976df6fbe88ccff26065e54c1c47946f4a5e",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "gperf",
@@ -644,7 +650,8 @@
       "source_filename": "gperf-3.3.tar.gz",
       "source_sha256": "fd87e0aba7e43ae054837afd6cd4db03a3f2693deb3619085e6ed9d8d9604ad8",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "grep",
@@ -655,7 +662,8 @@
       "source_filename": "grep-3.12.tar.xz",
       "source_sha256": "2649b27c0e90e632eadcd757be06c6e9a4f48d941de51e7c0f83ff76408a07b9",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "groff",
@@ -666,7 +674,8 @@
       "source_filename": "groff-1.24.1.tar.gz",
       "source_sha256": "74e2819795b6aff431aeac983d63a9c8968eeaba2a2eba7df8ba4c7b41e7cfd8",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "gzip",
@@ -677,7 +686,8 @@
       "source_filename": "gzip-1.14.tar.xz",
       "source_sha256": "01a7b881bd220bfdf615f97b8718f80bdfd3f6add385b993dcf6efd14e8c0ac6",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "inetutils",
@@ -688,7 +698,8 @@
       "source_filename": "inetutils-2.8.tar.gz",
       "source_sha256": "57b3cf4f77555992881e5ba2a09a63b05aa2c56342a60ed4305b5f45938390b5",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "m4",
@@ -699,7 +710,8 @@
       "source_filename": "m4-1.4.21.tar.xz",
       "source_sha256": "f25c6ab51548a73a75558742fb031e0625d6485fe5f9155949d6486a2408ab66",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "make",
@@ -710,7 +722,8 @@
       "source_filename": "make-4.4.1.tar.gz",
       "source_sha256": "dd16fb1d67bfab79a72f5e8390735c49e3e8e70b4945a15ab1f81ddb78658fb3",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "patch",
@@ -721,7 +734,8 @@
       "source_filename": "patch-2.8.1.tar.xz",
       "source_sha256": "3240c7959c5347c8ed347e3c4201c0337bf4240d5cf09d68889e58eeaba30e17",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "sed",
@@ -732,7 +746,8 @@
       "source_filename": "sed-4.10.tar.xz",
       "source_sha256": "b8e72182b2ec96a3574e2998c47b7aaa64cc20ce000d8e9ac313cc07cecf28c7",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     },
     {
       "name": "tar",
@@ -743,7 +758,8 @@
       "source_filename": "tar-1.35.tar.xz",
       "source_sha256": "4d62ff37342ec7aed748535323930c7cf94acf71c3591882b26a7ea50f3edc16",
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
-      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt"
+      "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
+      "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

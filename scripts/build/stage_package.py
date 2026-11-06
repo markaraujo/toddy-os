@@ -17,6 +17,7 @@ from locked_inputs import locked_source
 from provenance import recipe_set
 from package_backend import PackageBackend
 from source_notices import retain_source_notices
+from package_ownership import normalize_ownership
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -107,6 +108,7 @@ def main():
         raise SystemExit('Recipe provenance must be a project script')
     canonicalize_usrmerge(stage)
     retain_source_notices(ROOT, TARGET, stage, args.name, args.source)
+    normalized_ownership = normalize_ownership(ROOT, TARGET, stage, args.name)
     generated_paths=[]
     info_index=stage/'usr/share/info/dir'
     if info_index.exists() or info_index.is_symlink():
@@ -171,6 +173,8 @@ def main():
         'recipe_sha256': digest(args.recipe), 'packager_sha256': digest(Path(__file__)), 'packaging_backend': backend.record,
         'supporting_build_scripts': recipe_set(), 'sources': source_rows,
         'book_sources': json.loads((ROOT/'config/books.lock.json').read_text()),
+        'ownership_policy_sha256': digest(ROOT/'config/package-ownership-policy.json'),
+        'normalized_build_ownership': normalized_ownership,
         'source_kind': 'upstream-archives-and-versioned-recipe' if source_rows else 'book-derived-versioned-recipe',
         'payload': entries, 'generated_paths': generated_paths,
         'runtime_dependency_closure': 'pending final base audit', 'installed': False}

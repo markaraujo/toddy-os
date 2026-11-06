@@ -744,3 +744,15 @@ as shared generated state in ADR-0008. Prepared metadata upgrade removes that
 historical ownership and rebuilds the complete Info index; final postcheck must
 have zero unexplained payload findings. Audit SHA-256 d0cd3d60bf6f4f67d89a177a79b47221a95dcf8448d833cd9496dfe1f7ac4f9a,
 .local/logs/h07-native-payload-101.json. No upgrade execution claimed yet.
+
+
+### Build ownership correction prepared
+
+Archived/installed native metadata shows four unintended tester-owned CMake
+Licenses entries (three files plus directory), versus intended DBus root:18 and
+wall root:5 identities. ADR-0039 preserves the exact 16 accepted privileged
+helpers and normalizes only unprivileged build-owned payload in staging.
+Unexpected helper/mode/identity or build-owned setuid/setgid stops before install.
+67 local checks pass, including escalation-refusal and exact helper-preservation
+tests. CMake correction will occur in the versioned upgrade; none is claimed
+applied while the unchanged BDB standard suite remains active.
