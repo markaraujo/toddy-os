@@ -44,14 +44,15 @@ exercised. Copies share the workstation disk and are not disaster recovery.
 
 Groff/Kbd/Tar/Systemd/E2fsprogs recoveries passed. Keep qualified raw failures
 and H12 native namespace obligations (ADR-0023/0025/0027). Do not infer all
-upstream tests passed from dispatcher recipe/postcheck zero. Live system now has 90 accepted packages through CMake/Libmd and still
-requires Vim/native package managers and final ownership/dependency closure.
-
-Current continuation: h07-xxhash-recovery-driver first builds/checks frozen GNU
-Time 1.10, verifies all original XXHash source bytes and repeats its full suite;
-then the fresh supplemental driver continues. Inspect its .pid/.exit and actual
-running markers before any sync. The original XXHash failure changed zero
-installed files and is a missing external time executable, not a waived test.
+upstream tests passed from dispatcher recipe/postcheck zero. Live system now has 100 accepted native packages through GnuPG/Vim.
+Full Vim PTY/SHELL retry passed 8014 executed/200 skipped/zero failed and every
+planned result file. Current continuation: h07-package-manager-driver.sh.
+Inspect actual h07-dpkg/h07-berkeley-db records and driver exit before dispatch.
+Initial Dpkg safe extraction refused three official FIFO fixtures before any
+installed changes. Partial tree/failure retained under sources/recovery and
+build/history/dpkg-extraction. Exact archive/name/type allowance added with
+standard path/mode/ownership checks; retry initiated. Native APT, packaging
+backend transition, ownership/dependency/conffile/license closure remain pending.
 
 After an offline restore/restart:
 

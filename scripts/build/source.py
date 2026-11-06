@@ -8,6 +8,7 @@ import socket
 import subprocess
 import tarfile
 from locked_inputs import locked_source
+from source_filter import source_filter
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('filename')
@@ -37,4 +38,8 @@ if not args.verify_only:
         roots = {Path(member.name).parts[0] for member in source.getmembers() if Path(member.name).parts}
         if any((destination / name).exists() for name in roots):
             raise SystemExit('Existing source tree: inspect/clean before rebuilding')
-        source.extractall(destination, filter='data')
+        checked_filter = source_filter(args.filename)
+        # Reject unsafe members before creating even a partial source tree.
+        for member in source.getmembers():
+            checked_filter(member, destination)
+        source.extractall(destination, filter=checked_filter)

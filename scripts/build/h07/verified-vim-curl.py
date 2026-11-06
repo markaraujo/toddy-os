@@ -47,8 +47,13 @@ def validate(data, kind, row):
 
 
 def main(args):
-    urls=[a for a in args if a.startswith(('http://','https://'))
-          and 'vim.org' in urlsplit(a).netloc and urlsplit(a).path.startswith('/scripts/')]
+    # Do not parse unrelated malformed URLs: native curl owns their semantics.
+    urls=[]
+    for argument in args:
+        if argument.startswith(('http://','https://')):
+            authority=argument.split('://',1)[1].split('/',1)[0]
+            if 'vim.org' in authority.lower() and urlsplit(argument).path.startswith('/scripts/'):
+                urls.append(argument)
     if not urls:
         return subprocess.call([NATIVE,*args])
     if os.geteuid()==0:raise ValueError('Vim download guard is for unprivileged tests only')
@@ -63,10 +68,12 @@ def main(args):
     if len(args)!=4 or args[:2]!=['-s','-o'] or args[-1]!=url:
         raise ValueError('Unexpected Vim download invocation')
     output=Path(args[2])
-    if output.is_symlink():raise ValueError('Symlink download output refused')
-    resolved=output.resolve()
-    if not (resolved.is_relative_to('/tmp') or resolved.is_relative_to('/sources/vim-9.2.1201')):
+    parent=output.parent.resolve()
+    if not (parent.is_relative_to('/tmp') or parent.is_relative_to('/sources/vim-9.2.1201')):
         raise ValueError('Download output outside disposable test paths')
+    if output.is_symlink():
+        output.unlink()  # remove the link only; never follow an unverified stale output
+        raise ValueError('Symlink download output refused and removed')
     if output.exists():
         info=output.stat()
         if not stat.S_ISREG(info.st_mode) or info.st_uid!=os.geteuid():

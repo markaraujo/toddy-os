@@ -32,7 +32,7 @@ PATH only. Native /usr/bin/curl and installed runtime behavior remain unchanged.
 The wrapper uses actual native Curl/TLS against the actual public endpoints,
 validates live metadata's first selected source ID/filename against frozen
 facts, then verifies exact downloaded plugin bytes before atomically exposing
-any output to Vim. Changed versions, unknown script IDs, bad hashes, metadata
+any new download output to Vim. Changed versions, unknown script IDs, bad hashes, metadata
 modelines and unsafe output paths fail closed. No test/source/expected-result
 patch, synthetic endpoint, replacement plugin or cached fake response is used.
 Unrelated Curl invocations retain native behavior.

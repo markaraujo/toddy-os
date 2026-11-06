@@ -4,6 +4,7 @@ import importlib.util
 import json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('vim_download_guard',ROOT/'scripts/build/h07/verified-vim-curl.py')
 guard=importlib.util.module_from_spec(spec);spec.loader.exec_module(guard)
@@ -26,6 +27,10 @@ class DownloadGuard(unittest.TestCase):
         guard.validate(page.encode(),'metadata',row)
         for changed in [page.replace(str(row['source_id']),'999999'),page.replace(row['upstream_filename'],'other.vim'),page+'vim: set shell=evil:\n']:
             with self.assertRaises(ValueError):guard.validate(changed.encode(),'metadata',row)
+    def test_unrelated_malformed_url_keeps_native_curl_exit(self):
+        with patch.object(guard.subprocess,'call',return_value=3) as native:
+            self.assertEqual(guard.main(['http://[invalid']),3)
+            native.assert_called_once_with(['/usr/bin/curl','http://[invalid'])
     def test_unverified_plugin_bytes_are_rejected(self):
         with self.assertRaisesRegex(ValueError,'hash/size'):guard.validate(b'changed executable','plugin',self.manifest['components'][0])
 if __name__=='__main__':unittest.main()

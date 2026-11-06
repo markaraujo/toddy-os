@@ -635,3 +635,36 @@ Berkeley DB source-only patch probe applied all 19 frozen Debian patches with
 zero fuzz in independently verified host-side extractions; no source code was
 executed/installed there. .local/probes/db53-patch-series/verification.json and
 per-patch logs retain the result. Native builds/tests remain pending.
+
+
+## Native signing and full Vim acceptance: 100 packages
+
+Time 1.10 full check: 9 PASS/1 SKIP/zero FAIL; native exit-format probe passed.
+XXHash unchanged full suite passed after adding that missing tool. GoogleTest:
+63/63 passed. Libgpg-error, Libgcrypt, Libassuan, Libksba and nPth full configured
+suites and native installed API probes passed.
+
+GnuPG initially failed unconditional CMS setup with Gpgsm disabled. ADR-0030
+enables the local component with existing frozen libraries; source bytes were
+verified and complete unchanged suite passed. Native Ed25519 generation/signing,
+gpgv verification and tampered-message rejection passed in a private temporary
+key home, removed afterwards. No online keyserver/CRL acceptance is claimed.
+Recipe/postcheck 0/0, log SHA-256
+52d3f85aa9fcdea0f19dcc58a99df8095f8e42070c299e3a8b017f5b322cdcfd.
+
+ADR-0031 records Vim input/PTY and inherited SHELL environment failures, plus
+focused real-test confirmation. Full unfiltered PTY retry with SHELL=/bin/bash:
+8014 executed, 200 skipped, zero failed; every planned NEW_TESTS_RES exists.
+Syntax tests: 293 OK/zero failed/skipped. All four unchanged downloader tests
+used real native TLS and verified frozen plugins as nonroot. Installed native
+Vim passed. Recipe/postcheck 0/0, log SHA-256
+89c8f47ac4f19aec2b73bf99b181dc1c9f1105cde710ac383eeb76aa31bceedf;
+archive 87408d33c9f15a96782b14b84161b72bbcee054254f68231357271c4d509469c.
+
+Verified 100-package cache: .local/native-package-snapshots/20261106T101602370604Z;
+inventory SHA-256 051743282474842a3b4181b8764f1b00e862a11ae14750972be4c3a5c02e7f83,
+archive bfde27f0c8117087906e8ee855283b4bf517d43cb99389a6f624aafb525b9598.
+Raw runner/nested reports: .local/logs/h07-native-support-100.tar.gz SHA-256
+0921173c1c50901a06611d43157b92084f0e1df1ce2c37b379fa1e2ea9d726e8.
+This cache is not a new cold checkpoint or ISO. Native package managers and final
+ownership/dependency/conffile/license closure remain required; H07/G1 incomplete.

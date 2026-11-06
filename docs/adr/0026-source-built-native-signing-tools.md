@@ -38,8 +38,9 @@ is silently upgraded. No claim of universal vulnerability freedom follows.
 ## Build profile and acceptance
 
 Use the frozen BLFS autotools recipes and complete applicable upstream suites.
-Build GnuPG's local OpenPGP signer/verifier/agent profile; explicitly disable
-LDAP, Dirmngr, S/MIME Gpgsm, smartcard support/Scdaemon, G13, Keyboxd,
+Build GnuPG's local OpenPGP signer/verifier/agent plus offline Gpgsm profile
+(ADR-0030 corrects the original disabled-Gpgsm selection); explicitly disable
+LDAP, Dirmngr, smartcard support/Scdaemon, G13, Keyboxd,
 TPM2d and web-key-service tools. This avoids
 claiming unsupported external keyservers/card/S/MIME capabilities and additional
 unbuilt network dependencies. No tests are removed; retain configured feature

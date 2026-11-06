@@ -5,6 +5,13 @@ cd /opt/toddy-build/scripts/build
 echo $$ > /var/log/toddy/h07-supplemental-tools-driver.pid
 rm -f /var/log/toddy/h07-supplemental-tools-driver.exit
 for package in ca-certificates nghttp2 curl libuv libarchive cmake libmd time xxhash googletest libgpg-error libgcrypt libassuan libksba npth gnupg vim-glvs-inputs vim; do
+ if [[ -f /var/log/toddy/h07-input-handoff.request ]]; then
+  echo 'Input handoff requested at completed package boundary; no build interrupted' >&2
+  echo 75 > /var/log/toddy/h07-supplemental-tools-driver.exit
+  exit 75
+ fi
+ if [[ $package == vim && -f /var/log/toddy/build/h07-vim-pty-recovery.success.json ]]; then continue; fi
+ if [[ $package == gnupg && -f /var/log/toddy/build/h07-gnupg-recovery.success.json ]]; then continue; fi
  if [[ $package == xxhash && -f /var/log/toddy/build/h07-xxhash-recovery.success.json ]]; then continue; fi
  if [[ $package == libuv && -f /var/log/toddy/build/h07-libuv-recovery.success.json ]]; then continue; fi
  if [[ -f /var/log/toddy/build/h07-$package.success.json ]]; then continue; fi

@@ -316,3 +316,31 @@ to tester without changing GID, leaving that fixture group root. Change only the
 build/test tree to tester:tester, retain initial logs and repeat the full suite;
 no privileged group membership, test/source change or global permission change.
 Installation remains gated on the complete retry and native libuv API probe.
+
+
+## H07 GnuPG disabled-CMS profile (2026-11-06)
+
+OpenPGP reports 65 successes/one skip, but unchanged make check unconditionally
+enters CMS and cannot find disabled Gpgsm. No package was staged/installed.
+ADR-0030 enables the local component using already accepted libraries, preserves
+the first build and requires an original-source-byte-verified fresh rebuild plus
+complete retry. No CMS test is removed; external keyservers remain disabled.
+
+
+## H07 Vim interactive test stdin (2026-11-06)
+
+The complete initial suite inherits /dev/null stdin and reports premature exits
+in many input tests. Actual focused getchar/Ex-mode tests pass under a tester-
+owned PTY. The first regex probe matched no tests and was explicitly rejected as
+acceptance evidence; corrected probes execute one test each. Preserve all first
+reports/tree, fresh-extract source and repeat the entire unfiltered suite under
+native Expect (ADR-0031). No installation occurs before full success.
+
+- H07 Dpkg: safe extraction refused three authenticated FIFO test fixtures,
+  before compilation/installed changes. Exact archive/name/type allowance plus
+  standard path/mode/ownership checks added; all members prevalidated. Partial
+  tree/failure preserved; filter regression tests pass, native retry initiated.
+
+- H07 Berkeley DB test build: upstream Tcl bindings require DBM/compat185 even
+  for C-library tests. Enable in the disposable test build only; production
+  profile still disables both. No installed changes; fresh verified retry.

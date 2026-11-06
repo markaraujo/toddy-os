@@ -8,7 +8,7 @@ mkdir build
 cd build
 ../configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc \
  --docdir=/usr/share/doc/gnupg-2.5.24 --disable-ldap --disable-dirmngr \
- --disable-scdaemon --disable-gpgsm --disable-g13 --disable-keyboxd \
+ --disable-scdaemon --enable-gpgsm --disable-g13 --disable-keyboxd \
  --disable-tpm2d --disable-wks-tools --disable-card-support
 make
 make check 2>&1 | tee /sources/evidence/h07-gnupg/check.log

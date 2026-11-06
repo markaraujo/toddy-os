@@ -3,7 +3,7 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-06",
   "bootstrap": "ready_for_development",
-  "current_scope": "Implementation: H01-H06 validated in KVM. H07 has 90 accepted native packages through CMake/Libmd and a verified 86-package h07-native-services cold checkpoint. GNU Time/full XXHash recovery is running. Native signing libraries, guarded complete Vim tests, dpkg/APT and final ownership/dependency/license closure remain pending. No Toddy ISO; G1/G2 pending.",
+  "current_scope": "Implementation: H01-H06 validated in KVM. H07 has 101 accepted native packages through native Dpkg and complete Vim tests (8014 executed, 200 skipped, zero failed). Verified 86-package cold checkpoint and 100-package recovery cache retained. Dpkg native install/upgrade/conffile/conflict/remove tests passed; Berkeley DB test-profile correction is underway; APT and final ownership/dependency/license closure remain pending. No Toddy ISO; G1/G2 pending.",
   "next_story": "H07",
   "gates": {
     "G1": "pending",

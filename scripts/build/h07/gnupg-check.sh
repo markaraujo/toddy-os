@@ -4,8 +4,9 @@ source /opt/toddy-build/scripts/build/h06/common.sh
 chroot_run <<'INNER'
 set -euo pipefail
 gpg --version | grep -F '2.5.24'
+gpgsm --version | grep -F '2.5.24'
 export GNUPGHOME=$(mktemp -d /tmp/toddy-signing.XXXXXX)
-cleanup() { gpgconf --kill all; rm -rf "$GNUPGHOME"; }
+cleanup() { gpgconf --kill gpg-agent; rm -rf "$GNUPGHOME"; }
 trap cleanup EXIT
 gpg --batch --pinentry-mode loopback --passphrase '' --quick-generate-key \
  'Toddy ephemeral signing fixture <build@example.invalid>' ed25519 sign 0
