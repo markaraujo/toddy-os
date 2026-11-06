@@ -935,3 +935,13 @@ No final suite success or package acceptance is inferred. Raw partial
 observation .local/logs/h07-db-transaction-observation.json SHA-256
 `fd4660d3c68a884daebd91adc604f529b5d6f3b04ef3150751e294b6814a5fb7`.
 The active-work snapshot advances; foundation credit remains 38%.
+
+
+2026-11-06 20:05 UTC: actual driver/runner remain active after 2h56m; the
+complete standard suite advanced from transaction tests into Dead006 deadlock
+detection. One ten-worker group completed and the suite continued its checks.
+No FAIL or final success sentinel appears in the observed partial log. The
+success-gated continuation supervisor remains live; no duplicate dispatcher or
+input sync was started. Raw .local/logs/h07-db-deadlock-observation.json SHA-256
+`3595a785d3733f4380687f3c014daf2c9bfc46813429b112951257ed39e8be34`.
+This is progress evidence, not Berkeley DB or H07 acceptance.
