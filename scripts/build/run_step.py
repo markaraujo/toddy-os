@@ -82,6 +82,7 @@ def main():
                   'recipe_sha256': hashlib.sha256(args.recipe.read_bytes()).hexdigest(),
                   'postcheck_sha256': hashlib.sha256(args.postcheck.read_bytes()).hexdigest(),
                   'user': args.user,
+                  'runner_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                   'source_lock_sha256': hashlib.sha256((HERE.parents[1] / 'config/sources.lock.json').read_bytes()).hexdigest(),
                   'book_lock_sha256': hashlib.sha256((HERE.parents[1] / 'config/books.lock.json').read_bytes()).hexdigest()}
 
@@ -94,11 +95,15 @@ def main():
         if args.user == 'lfs':
             command = ['/usr/sbin/runuser', '-u', 'lfs', '--'] + command
         with prefix.with_suffix('.log').open('a') as log:
-            result = subprocess.run(command + [str(args.recipe.resolve())],
-                env=environment, stdout=log, stderr=subprocess.STDOUT, cwd='/mnt/lfs/sources')
-            record['recipe_exit'] = result.returncode
+            process = subprocess.Popen(command + [str(args.recipe.resolve())],
+                env=environment, stdout=log, stderr=subprocess.STDOUT,
+                cwd='/mnt/lfs/sources', start_new_session=True)
+            record['recipe_pid'] = process.pid
+            record['recipe_pgid'] = process.pid
+            write(prefix.with_suffix('.running.json'), record)
+            record['recipe_exit'] = process.wait()
             record['postcheck_exit'] = None
-            if result.returncode == 0:
+            if record['recipe_exit'] == 0:
                 check = subprocess.run(command + [str(args.postcheck.resolve())],
                     env=environment, stdout=log, stderr=subprocess.STDOUT, cwd='/mnt/lfs/sources')
                 record['postcheck_exit'] = check.returncode
