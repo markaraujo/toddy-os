@@ -735,3 +735,12 @@ explicit MIT option is selected. The inventory exporter now exposes reviewed
 licenses/bundles, source kind, book provenance and packaging backend rather than
 marking even reviewed entries generically pending. Unreviewed packages still
 remain pending; no full license closure or native backend acceptance is claimed.
+
+
+Read-only native payload audit checked 58815 recorded regular/link entries:
+zero missing files, zero duplicate owners, no modified registered conffiles.
+The sole hash difference is Glibc's initial /usr/share/info/dir, already classified
+as shared generated state in ADR-0008. Prepared metadata upgrade removes that
+historical ownership and rebuilds the complete Info index; final postcheck must
+have zero unexplained payload findings. Audit SHA-256 d0cd3d60bf6f4f67d89a177a79b47221a95dcf8448d833cd9496dfe1f7ac4f9a,
+.local/logs/h07-native-payload-101.json. No upgrade execution claimed yet.

@@ -223,6 +223,351 @@
         "All original Licenses/ notices retained; embedded conditions still apply"
       ],
       "system_library_selection_evidence": ".local/logs/h07-cmake-system-library-selection.log"
+    },
+    {
+      "name": "bc",
+      "version": "7.0.3",
+      "license": "BSD-2-Clause",
+      "evidence": "LICENSE.md; full retained notice has two redistribution clauses",
+      "source_notice_evidence": [
+        {
+          "filename": "bc-7.0.3.tar.xz",
+          "sha256": "91eb74caed0ee6655b669711a4f350c25579778694df248e28363318e03c7fc4",
+          "notice_paths": [
+            "bc-7.0.3/NOTICE.md",
+            "bc-7.0.3/LICENSE.md"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "bzip2",
+      "version": "1.0.8",
+      "license": "bzip2-1.0.6",
+      "evidence": "LICENSE; same upstream bzip2 redistribution conditions, original versioned notice retained",
+      "source_notice_evidence": [
+        {
+          "filename": "bzip2-1.0.8.tar.gz",
+          "sha256": "ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269",
+          "notice_paths": [
+            "bzip2-1.0.8/LICENSE"
+          ]
+        },
+        {
+          "filename": "bzip2-1.0.8-install_docs-1.patch",
+          "sha256": "35e3bbd9642af51fef2a8a83afba040d272da42d7e3a251d8e43255a7b496702",
+          "notice_paths": []
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "curl",
+      "version": "8.23.0",
+      "license": "curl",
+      "evidence": "COPYING; upstream curl permission notice",
+      "source_notice_evidence": [
+        {
+          "filename": "curl-8.23.0.tar.xz",
+          "sha256": "8dadd7d2536a314f982ad05a651b713f426bf7d02cc2c76cffb9796f2218e6c5",
+          "notice_paths": [
+            "curl-8.23.0/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "dbus",
+      "version": "1.16.2",
+      "license": "GPL-2.0-or-later AND MIT",
+      "evidence": "COPYING explicitly offers GPL-2.0-or-later; choose GPL option, retain permissive file notices; no AFL option relied upon",
+      "source_notice_evidence": [
+        {
+          "filename": "dbus-1.16.2.tar.xz",
+          "sha256": "0ba2a1a4b16afe7bceb2c07e9ce99a8c2c3508e5dec290dbb643384bd6beb7e2",
+          "notice_paths": [
+            "dbus-1.16.2/AUTHORS",
+            "dbus-1.16.2/COPYING",
+            "dbus-1.16.2/LICENSES/AFL-2.0.txt",
+            "dbus-1.16.2/LICENSES/AFL-2.1.txt",
+            "dbus-1.16.2/LICENSES/Apache-2.0.txt",
+            "dbus-1.16.2/LICENSES/BSD-3-Clause.txt",
+            "dbus-1.16.2/LICENSES/GPL-2.0-or-later.txt",
+            "dbus-1.16.2/LICENSES/LGPL-2.1-or-later.txt",
+            "dbus-1.16.2/LICENSES/LicenseRef-CMakeScripts.txt",
+            "dbus-1.16.2/LICENSES/LicenseRef-GAP.txt",
+            "dbus-1.16.2/LICENSES/LicenseRef-pycrypto-orig.txt",
+            "dbus-1.16.2/LICENSES/MIT.txt",
+            "dbus-1.16.2/LICENSES/TCL.txt"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "expat",
+      "version": "2.10.0",
+      "license": "MIT",
+      "evidence": "COPYING; full MIT grant",
+      "source_notice_evidence": [
+        {
+          "filename": "expat-2.10.0.tar.xz",
+          "sha256": "c624ba2998fc65df1163a49641ff3f9ab73138b11641d92c86bee0fb01b1bc7f",
+          "notice_paths": [
+            "expat-2.10.0/COPYING",
+            "expat-2.10.0/AUTHORS"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "file",
+      "version": "5.48",
+      "license": "LicenseRef-File-COPYING",
+      "evidence": "COPYING; preserve exact BSD-style text including first-file notice wording",
+      "source_notice_evidence": [
+        {
+          "filename": "file-5.48.tar.gz",
+          "sha256": "ed14656883b23a364b4057c05595d93252da9bc473d30106519519d0da141283",
+          "notice_paths": [
+            "file-5.48/AUTHORS",
+            "file-5.48/COPYING",
+            "file-5.48/python/LICENSE"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "flex",
+      "version": "2.6.4",
+      "license": "BSD-3-Clause",
+      "evidence": "COPYING; retain DOE/University notice, two numbered clauses plus endorsement clause; generated scanner exception stated",
+      "source_notice_evidence": [
+        {
+          "filename": "flex-2.6.4.tar.gz",
+          "sha256": "e87aae032bf07c26f85ac0ed3250998c37621d95f8bd748b31f15b33c45ee995",
+          "notice_paths": [
+            "flex-2.6.4/COPYING",
+            "flex-2.6.4/AUTHORS"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "libcap",
+      "version": "2.78",
+      "license": "BSD-3-Clause",
+      "evidence": "License explicit BSD-3-Clause OR GPL-2.0-only; select BSD option, retain any explicitly different per-file conditions",
+      "source_notice_evidence": [
+        {
+          "filename": "libcap-2.78.tar.xz",
+          "sha256": "0d621e562fd932ccf67b9660fb018e468a683d7b827541df27813228c996bb11",
+          "notice_paths": [
+            "libcap-2.78/cap/License",
+            "libcap-2.78/License",
+            "libcap-2.78/pam_cap/License",
+            "libcap-2.78/psx/License"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "libffi",
+      "version": "3.8.0",
+      "license": "MIT",
+      "evidence": "LICENSE runtime; LICENSE-BUILDTOOLS separately covers test/build-only GPL code, not a runtime dependency",
+      "source_notice_evidence": [
+        {
+          "filename": "libffi-3.8.0.tar.gz",
+          "sha256": "7da3e2d9a171eb0a038f592ecad3ff2bb2550f3496d87b3b29ad0cf4430c0db4",
+          "notice_paths": [
+            "libffi-3.8.0/LICENSE-BUILDTOOLS",
+            "libffi-3.8.0/LICENSE"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "libmd",
+      "version": "1.3.0",
+      "license": "BSD-3-Clause AND BSD-2-Clause AND ISC AND Beerware AND LicenseRef-libmd-per-file-dedications",
+      "evidence": "COPYING machine-readable per-file list includes BSD variants and MD4/MD5/SHA1 public-domain dedications; exact text retained",
+      "source_notice_evidence": [
+        {
+          "filename": "libmd-1.3.0.tar.xz",
+          "sha256": "fc0f1eb6b6766470326f2c014693809190e67dba84274a6fbae9d4912d066706",
+          "notice_paths": [
+            "libmd-1.3.0/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "libuv",
+      "version": "1.52.1",
+      "license": "MIT AND BSD-2-Clause AND ISC",
+      "evidence": "LICENSE and LICENSE-extra explicitly identify MIT main code, FreeBSD tree.h BSD-2 and ISC inet code; docs separate CC-BY-4.0",
+      "source_notice_evidence": [
+        {
+          "filename": "libuv-v1.52.1.tar.gz",
+          "sha256": "66d511b9e6e334c0e62279eb234fbfb2b3110b1479c09b95b44c7afca8cff9e7",
+          "notice_paths": [
+            "libuv-v1.52.1/AUTHORS",
+            "libuv-v1.52.1/LICENSE",
+            "libuv-v1.52.1/LICENSE-docs",
+            "libuv-v1.52.1/LICENSE-extra"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "lz4",
+      "version": "1.10.0",
+      "license": "BSD-2-Clause AND GPL-2.0-or-later",
+      "evidence": "LICENSE explicitly distinguishes lib/ BSD-2 and programs/ GPL-2.0-or-later; package contains both",
+      "source_notice_evidence": [
+        {
+          "filename": "lz4-1.10.0.tar.gz",
+          "sha256": "537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b",
+          "notice_paths": [
+            "lz4-1.10.0/LICENSE",
+            "lz4-1.10.0/contrib/debian/copyright",
+            "lz4-1.10.0/contrib/djgpp/LICENSE",
+            "lz4-1.10.0/examples/COPYING",
+            "lz4-1.10.0/lib/LICENSE",
+            "lz4-1.10.0/programs/COPYING",
+            "lz4-1.10.0/tests/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "meson",
+      "version": "1.12.0",
+      "license": "Apache-2.0",
+      "evidence": "COPYING; full Apache-2.0 grant",
+      "source_notice_evidence": [
+        {
+          "filename": "meson-1.12.0.tar.gz",
+          "sha256": "88afe0c20e52030218924ac37d0c81c59b4b5f3ae3752c8c6d7470c7d365886c",
+          "notice_paths": [
+            "meson-1.12.0/COPYING",
+            "meson-1.12.0/packaging/License.rtf",
+            "meson-1.12.0/packaging/macpages/English.lproj/license.html"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "ncurses",
+      "version": "6.6",
+      "license": "LicenseRef-Ncurses-COPYING",
+      "evidence": "COPYING; preserve exact permissive X11-style distribute-with-modifications/name-use terms",
+      "source_notice_evidence": [
+        {
+          "filename": "ncurses-6.6.tar.gz",
+          "sha256": "355b4cbbed880b0381a04c46617b7656e362585d52e9cf84a67e2009b749ff11",
+          "notice_paths": [
+            "ncurses-6.6/AUTHORS",
+            "ncurses-6.6/COPYING",
+            "ncurses-6.6/Ada95/package/debian/copyright",
+            "ncurses-6.6/package/debian-mingw/copyright",
+            "ncurses-6.6/package/debian-mingw64/copyright",
+            "ncurses-6.6/package/debian/copyright",
+            "ncurses-6.6/test/package/debian-mingw64/copyright",
+            "ncurses-6.6/test/package/debian-mingw/copyright",
+            "ncurses-6.6/test/package/debian/copyright"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "nghttp2",
+      "version": "1.71.0",
+      "license": "MIT",
+      "evidence": "COPYING; selected library-only profile, exact MIT grant",
+      "source_notice_evidence": [
+        {
+          "filename": "nghttp2-1.71.0.tar.xz",
+          "sha256": "c0f55121d88650e4b9227aec28cebaf664d2417ca60fe70be0f8d38829f52116",
+          "notice_paths": [
+            "nghttp2-1.71.0/COPYING",
+            "nghttp2-1.71.0/tests/munit/COPYING",
+            "nghttp2-1.71.0/AUTHORS",
+            "nghttp2-1.71.0/doc/_exts/rubydomain/LICENSE.rubydomain",
+            "nghttp2-1.71.0/third-party/mruby/LICENSE",
+            "nghttp2-1.71.0/third-party/mruby/AUTHORS",
+            "nghttp2-1.71.0/third-party/mruby/mrbgems/mruby-set/LICENSE"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "ninja",
+      "version": "1.13.2",
+      "license": "Apache-2.0",
+      "evidence": "COPYING; full Apache-2.0 text",
+      "source_notice_evidence": [
+        {
+          "filename": "ninja-1.13.2.tar.gz",
+          "sha256": "974d6b2f4eeefa25625d34da3cb36bdcebe7fbce40f4c16ac0835fd1c0cbae17",
+          "notice_paths": [
+            "ninja-1.13.2/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "pcre2",
+      "version": "10.49",
+      "license": "BSD-3-Clause WITH PCRE2-exception",
+      "evidence": "LICENCE.md explicitly publishes this SPDX expression; generated tables/test-data terms retained",
+      "source_notice_evidence": [
+        {
+          "filename": "pcre2-10.49.tar.bz2",
+          "sha256": "53c156e1ba416a20da8e65395daa132da0d80e76910424caca3fcdae7831d384",
+          "notice_paths": [
+            "pcre2-10.49/AUTHORS.md",
+            "pcre2-10.49/COPYING",
+            "pcre2-10.49/deps/sljit/LICENSE",
+            "pcre2-10.49/cmake/COPYING-CMAKE-SCRIPTS",
+            "pcre2-10.49/LICENCE.md"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+    },
+    {
+      "name": "zlib",
+      "version": "1.3.2",
+      "license": "Zlib",
+      "evidence": "LICENSE; origin/misrepresentation/notice terms retained",
+      "source_notice_evidence": [
+        {
+          "filename": "zlib-1.3.2.tar.gz",
+          "sha256": "bb329a0a2cd0274d05519d61c667c062e06990d72e125ee2dfa8de64f0119d16",
+          "notice_paths": [
+            "zlib-1.3.2/LICENSE",
+            "zlib-1.3.2/contrib/dotzlib/LICENSE_1_0.txt",
+            "zlib-1.3.2/contrib/minizip/LICENSE.Info-Zip"
+          ]
+        }
+      ],
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

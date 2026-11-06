@@ -74,3 +74,11 @@ list is empty; GNU ld correctly rejects it. Enable static object generation in
 both builds, matching the maintained source default, then exclude .a/.la files
 from the staged production package. Keep symbol versioning and full tests; no
 patch or exported ABI is removed. Preserve failed tree/log before fresh retry.
+
+Security review on 2026-11-06: Debian source-package tracker lists maintained
+5.3.28+dfsg2-12 and resolved CVE-2017-10140/CVE-2019-8457; both named patches are
+in the frozen 19-patch series. The tracker currently lists no additional open
+issue for that source package. This is a dated review, not an all-vulnerabilities
+fixed claim; production excludes SQL/network-service/Java/C++ compatibility
+surfaces and APT creates its own local repository cache. Source:
+https://security-tracker.debian.org/tracker/source-package/db5.3.

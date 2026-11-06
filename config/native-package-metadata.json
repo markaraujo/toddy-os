@@ -184,6 +184,6 @@
     }
   ],
   "conffiles": "Every packaged regular /etc file",
-  "libtool_archives": "Remove from staged archive and installed package through versioned upgrade, never only live files",
+  "libtool_archives": "Remove /usr/lib and /usr/libexec .la files consistently through versioned upgrades per frozen LFS chapter 8 cleanup; preserve old archives",
   "version_suffix": "+toddy1"
 }

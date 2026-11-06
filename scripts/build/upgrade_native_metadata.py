@@ -46,7 +46,7 @@ def main():
         if not record['installed'] or digest(archive)!=record['archive_sha256']:
             raise SystemExit('Predecessor provenance mismatch')
         conffiles=sorted(p for p,e in record['payload'].items() if p.startswith('/etc/') and e.get('sha256'))
-        libtool=sorted(p for p,e in record['payload'].items() if p.startswith('/usr/lib/') and p.endswith('.la') and e.get('sha256'))
+        libtool=sorted(p for p,e in record['payload'].items() if p.startswith(('/usr/lib/','/usr/libexec/')) and p.endswith('.la') and e.get('sha256'))
         # Current target metadata must be complete and consistent even for packages
         # without new ELF edges, so create one recorded metadata generation for all.
         stage=TARGET/'sources/stage'/('metadata-'+name)

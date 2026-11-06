@@ -2,7 +2,9 @@
 source /opt/toddy-build/scripts/build/h06/common.sh
 chroot_run <<'INNER'
 set -euo pipefail
-dpkg --audit
+audit=$(dpkg --audit)
+[[ -z $audit ]]
+apt-get check
 python3 - <<'PY'
 from pathlib import Path
 import subprocess,json
@@ -31,3 +33,15 @@ report['unqualified_findings']=[]
 p.write_text(json.dumps(report,indent=2)+'\n')
 print('Direct ELF dependency metadata accepted; exact Systemd private execution context verified')
 PYREPORT
+python3 /opt/toddy-build/scripts/build/audit_native_payload.py > /var/log/toddy/h07-final-payload.json
+python3 - <<'PYPAYLOAD'
+import json
+from pathlib import Path
+report=json.loads(Path('/var/log/toddy/h07-final-payload.json').read_text())
+assert not report['findings'],report['findings']
+assert not report['duplicate_owners'],report['duplicate_owners']
+assert Path('/mnt/lfs/usr/share/info/dir').stat().st_size>0
+for file in Path('/mnt/lfs/var/lib/dpkg/info').glob('*.list'):
+ assert '/usr/share/info/dir' not in file.read_text().splitlines(),file
+print('Native SHA-256/link/mode/ownership audit passed; modified conffiles reported separately')
+PYPAYLOAD

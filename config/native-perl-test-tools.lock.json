@@ -158,9 +158,13 @@
       "source_directory": "B-COW-0.007",
       "package": "perl-b-cow",
       "depends": [
-        "perl"
+        "perl",
+        "glibc"
       ],
-      "probe_module": "B::COW"
+      "probe_module": "B::COW",
+      "xs_sources": [
+        "B-COW-0.007/COW.xs"
+      ]
     },
     {
       "distribution": "Clone",
@@ -176,9 +180,13 @@
       "package": "perl-clone",
       "depends": [
         "perl",
-        "perl-b-cow"
+        "perl-b-cow",
+        "glibc"
       ],
-      "probe_module": "Clone"
+      "probe_module": "Clone",
+      "xs_sources": [
+        "Clone-0.51/Clone.xs"
+      ]
     },
     {
       "distribution": "LWP-MediaTypes",
@@ -260,9 +268,13 @@
         "perl",
         "perl-html-tagset",
         "perl-http-message",
-        "perl-uri"
+        "perl-uri",
+        "glibc"
       ],
-      "probe_module": "HTML::Entities"
+      "probe_module": "HTML::Entities",
+      "xs_sources": [
+        "HTML-Parser-3.86/Parser.xs"
+      ]
     },
     {
       "distribution": "Devel-Cover",
@@ -278,9 +290,13 @@
       "package": "perl-devel-cover",
       "depends": [
         "perl",
-        "perl-html-parser"
+        "perl-html-parser",
+        "glibc"
       ],
-      "probe_module": "Devel::Cover"
+      "probe_module": "Devel::Cover",
+      "xs_sources": [
+        "Devel-Cover-1.52/Cover.xs"
+      ]
     }
   ]
 }

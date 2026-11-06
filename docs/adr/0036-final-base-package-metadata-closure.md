@@ -59,3 +59,12 @@ instructions, retain LFS MIT notice plus book URLs/version/archive hashes and
 recipe provenance, and import no foreign binary/source archive. Source kind is
 explicitly book-derived-versioned-recipe. Original project licensing decision
 D10 remains open; this does not grant a license to all original Toddy code.
+
+Frozen LFS chapter 8 cleanup explicitly removes .la files under both /usr/lib
+and /usr/libexec because this base has no expected libltdl-loaded libraries.
+Metadata upgrader covers both namespaces, changing archives and installed files
+together. The same book section removes the obsolete cross-triplet compiler;
+our exact-list quarantine preserves recovery instead. Do not apply its broad
+/tmp cleanup while any build/test process is active. Preserve the build-only
+tester account until source builds finish; image assembly must exclude it and
+all test/source/temp data, rather than treating the build root as distributable.
