@@ -625,3 +625,19 @@ new archives and the exact ownership manifest before upgrading the core. If
 interrupted between core and QA, resume from actual package state and verified
 archives; never force QA to overwrite files still owned by Python. The gated
 production transfer/controller remains to be implemented (ADR-0049).
+
+
+The H11-only --prepare-python-qa-handoff option on stage_package.py can prepare
+the complete unmodified Python QA archive before its old owner releases paths.
+It cannot be combined with --install. A prepared_ownership_handoff record is
+not proof of installation: preserve its predecessor hashes, exact path list
+and both new archives, then require a separate conflict-free install after
+core ownership changes. The durable production install/controller remains
+pending. Do not invoke this option during H07 or weaken the H11 gate.
+
+python3 scripts/host/probe_python_qa_handoff_plan.py checks this preflight in a
+private /mnt/lfs/tmp/toddy-python-qa-handoff-* fixture against real installed
+Python provenance. It changes neither installed state nor native package cache.
+Failures preserve the printed fixture and content-addressed evidence; successful
+fixtures are removed. Changed installed/staged bytes or timestamps require
+diagnosis, not an override.

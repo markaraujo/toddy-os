@@ -18,6 +18,7 @@ from provenance import recipe_set
 from package_backend import PackageBackend
 from source_notices import retain_source_notices
 from package_ownership import normalize_ownership
+from python_qa_handoff import prepare as prepare_python_qa_handoff
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -87,10 +88,16 @@ def main():
     parser.add_argument('--source', action='append', default=[])
     parser.add_argument('--conffile', action='append', default=[])
     parser.add_argument('--install', action='store_true', help='Otherwise validate/build archive without installing')
+    parser.add_argument('--prepare-python-qa-handoff', action='store_true',
+                        help='H11 only: prepare an unchanged complete Python QA archive; never install it')
     args = parser.parse_args()
     if os.geteuid() != 0:
         raise SystemExit('Requires disposable-guest root')
     subprocess.run(['bash', '-c', 'source "$1"; guard_target', 'guard', str(HERE/'target.sh')], check=True)
+    if args.prepare_python_qa_handoff:
+        if args.install or args.name != 'python-test-support':
+            raise SystemExit('Python QA handoff is archive-only and cannot install')
+        subprocess.run(['python3', str(HERE/'h11/require_gate.py')], check=True)
     if not re.fullmatch(r'[a-z0-9][a-z0-9+.-]+', args.name):
         raise SystemExit('Invalid native package name')
     if not re.fullmatch(r'[0-9][0-9A-Za-z.+:~_-]*', args.version) or '\n' in args.depends:
@@ -136,7 +143,11 @@ def main():
         owners = ownership.get(path, set()) - {args.name, args.name+':'+args.architecture}
         if owners:
             conflicts.append({'path': path, 'owners': sorted(owners)})
-    if conflicts:
+    handoff = None
+    if args.prepare_python_qa_handoff:
+        handoff = prepare_python_qa_handoff(backend, TARGET, CACHE, RECORDS,
+                                           entries, ownership, stage, args)
+    elif conflicts:
         raise SystemExit('Native package ownership conflict before install: '+json.dumps(conflicts))
     sources = json.loads((ROOT/'config/sources.lock.json').read_text())
     if sources['status'] != 'verified':
@@ -178,6 +189,8 @@ def main():
         'source_kind': 'upstream-archives-and-versioned-recipe' if source_rows else 'book-derived-versioned-recipe',
         'payload': entries, 'generated_paths': generated_paths,
         'runtime_dependency_closure': 'pending final base audit', 'installed': False}
+    if handoff:
+        record['prepared_ownership_handoff'] = handoff
     record_path = RECORDS/(archive.stem+'.json')
     record_path.write_text(json.dumps(record, indent=2)+'\n')
     if args.install:

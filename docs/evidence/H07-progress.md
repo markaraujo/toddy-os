@@ -1064,3 +1064,19 @@ into cycle 3 at 22:08:53 (370-second load). Other configurations still follow;
 this is not completion of Test044 across the suite. Original driver/runner
 remain live. Raw .local/logs/h07-test044-cycle2-observation.json SHA-256
 680a839c89af6e48bc081d38f88780cc0a858959f2e0c4e645dea18d09e23a05.
+
+
+2026-11-06 22:16 UTC: the first range-partition Btree Test044 invocation
+completed all three crash/recovery cycles. Its retained log segment contains
+10 database verification successes, 10 dump/load successes, 10 salvage
+successes and no FAIL marker. At 22:15:39 the suite entered the next callback-
+partition variant, whose first cycle logs 366 seconds. Raw full case/transition
+.local/logs/h07-test044-range-partition.json SHA-256
+7a43188cc0c1cd800ffa0d5e11dc9c1f6b57a260529f8f0500c81aa67f7e5389.
+This accepts neither the complete Test044 matrix nor Berkeley DB.
+
+Prepared the H11-only unchanged Python QA archive handoff and verified its
+read-only preflight on all 5,395 real installed QA files (ADR-0049). Default
+package conflict refusal is retained; the special plan cannot install. Native
+production archive creation/transfer remains gated and unexecuted. Active
+BDB inputs and installed package state remain unchanged.

@@ -134,10 +134,48 @@ current package after H07 closure, not reuse this experiment's version.
 
 The production transfer must prepare both provenance-backed package archives
 and recovery state before removing the original owner, then install/configure
-the runtime first and QA second. The existing general packager currently
-refuses cross-package ownership conflicts even for archive-only preparation.
-Implement a narrowly checked archive-only handoff path while keeping the actual
-installation conflict check intact; do not solve preparation by enabling
-force-overwrite or distributing untracked file deletions. A durable production
-transfer recipe, configured dependency/runtime checks, complete package audits
-and final image exclusion remain required.
+the runtime first and QA second. The general packager retains its default cross-package conflict refusal.
+The narrowly checked archive-only preparation below addresses the need to
+prepare QA before the original owner relinquishes it; no force-overwrite or
+untracked deletion is introduced. A durable production transfer/installation
+recipe, configured dependency/runtime checks, complete package audits and final
+image exclusion remain required.
+
+
+## Narrow archive-only preparation in the native packager
+
+stage_package.py now accepts --prepare-python-qa-handoff only for
+python-test-support, without --install, after the H11 gate. Ordinary calls
+retain the original ownership-conflict refusal. This flag is not a general
+conflict bypass: python_qa_handoff.py requires the complete unchanged QA trees
+from the current configured Python's own recorded payload, unique Python file
+ownership, the same architecture/source set and an exact dependency on the
+newer successor Python version. Other payload is limited to QA documentation
+and reviewed shared parent directories. Missing, modified or unrelated files
+are refused. The current predecessor archive must match its recorded SHA-256.
+
+For every transferred file, the preflight also checks the actual installed
+bytes/link, mode, UID/GID and timestamp against the staged copy and predecessor
+record. It records the predecessor version/archive/record hashes and complete
+path list in prepared_ownership_handoff. The resulting archive record remains
+installed=false and the plan does not permit installation. The eventual
+installer must independently confirm that the original owner has relinquished
+the paths; standard Dpkg conflict/dependency checks still apply.
+
+A private native preflight against the real 3.14.10-1 package verified all
+5,395 files. Explicit install mode and changed staged bytes were rejected;
+restoring the exact bytes/timestamp restored acceptance. Installed Dpkg status
+and native package cache were unchanged. This probe invokes the preparation
+function on real data, not the gated production CLI, and does not claim the
+production archive/transfer recipe has run. Four local regressions cover
+complete/equal data, installed-owner uniqueness, partial/extra/modified data,
+source/architecture/dependency mismatches and install/bootstrap refusal.
+
+Reproduce with python3 scripts/host/probe_python_qa_handoff_plan.py. Raw full
+plan and checks: .local/logs/h11-python-qa-handoff-plan-probe.json SHA-256
+`0e75b331a1c7036ca379bcd61d6387c794cd1615bd1f6d75a41d899b242e0679`.
+Tested handoff helper SHA-256:
+`ea006cf7bc41824db4948ba6049870bf022239e010d5940872d2d59cd4ff634f`;
+tested packager SHA-256:
+`cff8a4469f412ae218536a249324ae5d2b51f06efe9bafa19cd9697802b0ca50`.
+The private fixture was removed. No active DB recipe input was synchronized.

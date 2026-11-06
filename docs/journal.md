@@ -206,3 +206,13 @@ full standard suite continues in Test044's second timed cycle.
 cycle after the second timed crash/recovery. Published the actual 370-second
 load interval and retained the distinction between one invocation and remaining
 method/partition variants. Full DB recipe and H07 acceptance remain pending.
+
+
+2026-11-06 22:16 UTC — Added a narrow H11-only archive preparation mode for
+complete unchanged Python QA, retaining ordinary package ownership refusal
+and forbidding installation through the preparation flag. Actual native
+preflight validated all 5,395 files and rejected install mode/altered staging;
+restored staging passed. No installed/cache mutation or active recipe sync.
+The first Test044 range-partition invocation finished with three recovery
+cycles plus ten each database/dump-load/salvage successes and no FAIL marker.
+Original suite advanced to callback partition, first cycle 366 seconds.
