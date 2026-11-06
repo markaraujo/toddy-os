@@ -358,3 +358,33 @@ corrected Bash reports, focused probes, reference, classification, nested
 Gettext/Bison/Grep reports and terminal runner records are copied to
 .local/logs/h07-post-compiler/evidence.tar.gz. Original rejected Bash record is
 preserved; h07-bash-recovery.success.json is the separate installed acceptance.
+
+
+## Native tools through Perl and recovery cache
+
+Libtool, GDBM, Gperf, Expat 2.10.0, Inetutils, Less and Perl passed their
+applicable full suites and native postconditions. Libtool reports 148 expected
+outcomes/39 skips plus a 4 PASS/2 SKIP gnulib group; this includes upstream
+expected failures, not 148 unconditional passes. GDBM reports all 38 successful.
+The Gperf caller-header fixture was corrected and verified through an explicit
+unchanged-package audit (docs/errors.md). Expat rejects malformed XML; its
+unfixed upstream exposure from ADR-0013 remains an open release consideration.
+Inetutils successfully queried loopback and exchanged an actual ICMP echo in
+the disposable guest. This is not a target boot/network-configuration claim.
+
+Perl 5.44.0 reports All tests successful: 2942 files, 1392301 tests. Native
+compression/GDBM modules, shared libperl and thread configuration passed.
+Current native count is 48; Autoconf onward is running.
+
+The read-only host collector verified and copied 47 prior installed native
+archives plus their full component records to
+.local/native-package-snapshots/20261106T053457533866Z. Both guest source/
+notice/archive checks and independent copied-byte hashes passed. Inventory
+SHA-256 da71b23c4015f130dd5a8a5afd3d1969fd0d497bd6c9421344a2e7a525427ecc;
+cache archive SHA-256 5ba7e3aed78364aa2806382f2da172ea08882cf0bf798d4daa3f48528d15249a.
+This is a partial package recovery cache, not a bootable checkpoint or a
+completed dependency/license audit. Perl was installed after that snapshot.
+
+ADR-0017 freezes five verified CMake support inputs for later native package-
+manager work. Known-vulnerable old Curl/Libarchive book candidates are not
+selected; no support library was built or silently substituted in this run.

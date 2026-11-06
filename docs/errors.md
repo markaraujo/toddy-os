@@ -232,3 +232,16 @@ Bash correction outcome: full 86-group retry accepted only the seven exact
 ADR-0016 reference lines, zero novel differences. Native install/postcheck
 passed; the separate finite printf/SIGUSR1/package-integrity audit also passed
 with zero installed changes. Original rejection remains preserved.
+
+
+## H07 Gperf generated-code fixture (2026-11-06)
+
+The upstream suite/build/install passed, but the original generated-code
+postcheck omitted size_t/strcmp declarations. GCC correctly rejected the
+incomplete caller. A first audit fixture also omitted Gperf's declaration/
+keyword separator and was rejected before compiling; its failed record is
+retained in history. Use the installed tool's documented --includes option
+to emit the required string.h declaration, then compile/run lookup of one
+present and one absent key. Separate gperf-audit passed package integrity,
+recipe/postcheck zero and zero installed changes; no package reinstall or
+upstream/test modification was needed. Original failure remains preserved.

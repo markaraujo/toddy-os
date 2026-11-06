@@ -40,7 +40,7 @@ contains 31 native packages and the complete classified final GCC build/tests,
 before GCC installation. Older h06-ready was actually restored and retested.
 Checkpoint copies share the workstation disk and are not disaster recovery.
 
-Current live target has 41 native packages including final Bash. The complete
+Current live target has 48 native packages through final Perl; Autoconf onward is running. Final Bash is accepted. The complete
 corrected 86-group suite, installation and separate ordinary printf/SIGUSR1
 audit passed; original rejected results and seven source-qualified diff lines
 remain preserved (ADR-0016). No all-pass Bash-suite claim is made.
@@ -144,3 +144,13 @@ h07-gcc-tested checkpoint before installation; verify the host checkpoint
 manifest/log before starting. Then start VM, mount-kernfs.sh, and run a guarded
 h07-gcc-install step with its prepared postcheck. Never infer installed GCC
 from h07-gcc-build.success.json: the build changed zero installed paths.
+
+
+Additional recovery ingredients (not a replacement for the verified cold pair):
+.local/native-package-snapshots/20261106T053457533866Z contains 47 native archives,
+full metadata and hash-verified inventory/verified.json. Recreate this cache at
+new verified boundaries with python3 scripts/host/collect_native_packages.py.
+It copies only installed project-built packages, never signing/provider keys.
+A partial destination without verified.json is not an accepted cache. The
+snapshot predates Perl. H07 rehydration from these archives has not yet been
+exercised; do not describe it as a tested system restore.
