@@ -443,10 +443,38 @@ not accept BIOS/UEFI boot, final live root or H11's distributable image audit.
 Native boot probe preparation is in scripts/host/boot-probe.py, its .service
 and boot-probe.target.conf (ADR-0051). They are firmware-only disposable-test
 payloads, never installable release files. The native debug-generator/private
-unit verification and wrong-kernel refusal have passed. The actual host boot
-launcher and SMBIOS import/BIOS/UEFI execution are still pending. Do not run the
+unit verification and wrong-kernel refusal have passed. The gated host boot
+launcher is prepared; actual SMBIOS import/BIOS/UEFI execution remains pending. Do not run the
 probe in the build chroot as a substitute for boot: it deliberately refuses.
 Use a verified cold target checkpoint in a separate disposable writable guest,
 with serial TODDY-BOOT-TEST and pristine private UEFI variables, once the H09
 prerequisites pass. Preserve failed logs/guest overlays for diagnosis; never
 restart or copy the active builder disks to manufacture boot evidence.
+
+
+After actual h09-kernel, h09-boot-config and h09-bootloader 0/0 acceptance,
+create a fresh paired cold checkpoint named h09-boot-ready with the existing
+stop/checkpoint procedure. Restart the builder, wait for SSH and run
+mount-kernfs.sh so its guarded artifact markers can be checked. Commit/sync
+H08 completed and H09 in_progress first. Then run from the project root:
+
+```sh
+python3 scripts/host/boot_test.py bios --checkpoint h09-boot-ready
+python3 scripts/host/boot_test.py uefi --checkpoint h09-boot-ready
+```
+
+Run them sequentially with durable host command logs. Each prints its unique
+.local/vm/boot-tests/h09-MODE-* workspace and saves an atomic result.json,
+including its container ID/run ID. A timeout preserves logs/overlay and stops
+only that identified test guest. If interrupted, inspect that exact container
+and result.json; a missing controller observation is not guest termination.
+Never start a replacement while the recorded guest is running. If result.json
+reports cleanup_uncertain, establish the recorded container's real state before
+continuing. The launcher also refuses any running Toddy boot-test container.
+
+On success, review serial evidence, matching firmware/kernel, compiler/linkage,
+module lifecycle, QEMU exit and unchanged checkpoint hash. This is early boot
+acceptance only, not login, networking, live ISO, persistence or installer proof.
+Keep failed workspaces for diagnosis; stopped containers may be removed by their
+exact recorded ID after logs are retained. No blanket container cleanup is
+part of this workflow. No native Toddy boot has run yet.

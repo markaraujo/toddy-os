@@ -87,3 +87,5 @@
 2026-11-06: Prepared gated source-built libburn/libisofs/libisoburn recipes from frozen BLFS and native API/ISO metadata/corruption checks. Reviewed command/exit semantics against frozen Xorriso source documentation. No target dispatch, new package acceptance or bootable ISO claim; the complete H07 database suite remains active.
 
 2026-11-06: Prepared firmware-only native boot probe with virtual-disk/kernel guards. Actual native Systemd generator/unit verification and wrong-kernel refusal passed; added source-verified DMI sysfs support to the gated kernel fragment. Existing BIOS/UEFI firmware inventoried. No kernel build, firmware import or native boot claimed (ADR-0051); BDB full suite advanced into Dead008.
+
+2026-11-06: Prepared guarded H09 checkpoint-overlay boot executor. Real paused BIOS/UEFI QEMU setup, read-only backing preservation, timeout cleanup, wrong-identity refusal and overlapping-run refusal passed; actual main executor refused premature gates. Four safety tests added. Native Toddy boot remains pending; BDB standard suite advanced to Dead011.

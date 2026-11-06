@@ -1,7 +1,7 @@
 # ADR-0051: Ephemeral native boot checks in a disposable QEMU guest
 
 - Date: 2026-11-06
-- Status: Native generator preflight passed; firmware transport and boot pending
+- Status: Native generator and paused QEMU preflights passed; actual boot pending
 
 H09 needs actual BIOS/UEFI early boot evidence after kernel/bootloader acceptance.
 The build target keeps root locked and has no reusable test password. Prepare
@@ -30,13 +30,12 @@ private compiler fixtures are removed. No login, ISO or installer success is
 inferred from this probe, nor does it replace the qualified native Glibc/Systemd
 suite retries and full H12 scenarios.
 
-The future host launcher must use a private copy/overlay of a hash-verified cold
-target checkpoint, never the live builder target or physical storage. Mount its
-backing checkpoint read-only, use separate writable UEFI variables copied from
-the pristine template, keep serial/QEMU/exit evidence and terminate only that
-designated guest on timeout. It must enforce H08/H09 and actual kernel/bootloader
-prerequisites. The firmware importer, launcher, BIOS and UEFI execution remain
-unverified; current work only prepares the payload and validates its generator.
+The prepared host launcher uses a private overlay of a hash-verified cold
+target checkpoint, never the live builder target or physical storage. It mounts its backing checkpoint read-only, uses separate writable UEFI variables
+copied from the pristine template, retains serial/QEMU/exit evidence and stops
+only its designated guest on timeout. It enforces H08/H09 and actual kernel/
+bootloader prerequisites. The actual Systemd firmware importer and native BIOS/
+UEFI boots remain unverified; paused-machine tests do not execute guest code.
 
 Alternatives considered: a fixed password conflicts with release hygiene;
 a temporary password or test-unit mutation in the source root creates cleanup
@@ -74,3 +73,46 @@ No dependency installation was necessary. Inventory JSON SHA-256
 96ec8f585bd247102e3132bb12be28261e8c29bdc57c2eb7d22312ee63f76759
 at .local/logs/h09-boot-firmware-inventory.json. These are infrastructure inputs,
 not Toddy release components or evidence of Secure Boot/physical hardware support.
+
+The prepared host executor is scripts/host/boot_test.py. It requires a clean
+checkout, current accepted H09 artifact markers from the guarded builder, and
+an H09 cold checkpoint created after those markers. It rejects redirected paths,
+checks the target SHA-256/qcow2 consistency/180 GiB geometry, and creates a small
+private qcow2 overlay with a read-only backing bind. No builder disk, SSH key,
+source checkout or physical disk is exposed to the test container. A fixed
+2-vCPU/2-GiB qemu64 profile, 3-GiB container limit, no networking and host memory/
+disk reserves bound this early-boot test. Later network/USB/live tests remain
+separate. UEFI template hashes must match the recorded inputs before use.
+
+The executor retains result.json, prepare.log, qemu.log, serial.log, private
+variable store, overlay and stopped container. It records immutable container
+image ID, commit, payload/source hashes and the native report; successful
+execution rehashes the cold backing. A controller flock and an independent
+running-container check prevent overlapping runs, including a guest surviving
+its original controller. Missing observations do not authorize restart.
+Timeout/error handling stops only a container whose test label matches its
+recorded run ID; uncertainty is explicitly recorded as cleanup_uncertain.
+Native report parsing rejects failure markers, missing/contradictory reports,
+wrong firmware/kernel/environment, temporary linkage and missing module checks.
+No milestone is automatically accepted by this executor.
+
+Actual infrastructure preflight used a newly created empty qcow2 file and
+private overlays, not a Toddy checkpoint. Both BIOS and UEFI QEMU launches with
+the exact versioned SMBIOS payloads reached QMP prelaunch/running=false and quit
+cleanly, without executing guest instructions. Read-only backing consistency
+and unchanged SHA-256 passed. Raw report
+.local/logs/h09-qemu-paused-firmware-probe.json SHA-256
+`d64e660424f11d04d8df564e078deb3f3f7dbc32e4e8804305c259508d339ca3`.
+This proves argument/firmware setup, not Systemd firmware import or OS boot.
+
+A separate paused QEMU test deliberately timed out its attached client. The
+real overlap guard refused a second run; the stop helper refused a wrong run
+identity and left that guest running, then stopped it with the matching identity.
+All preflight containers/empty-image fixtures were removed after verified exit.
+Raw .local/logs/h09-qemu-timeout-probe.json SHA-256
+`7a7284d3dd099d44c1e27704874c47a828a3f3ac5b6b13e0cc0b2f68f2c23b36`.
+Actual main-executor invocation refused the current H08/H09 state before any
+checkpoint/container operation, exit 1; refusal SHA-256
+`634270dd13d400e2199099dd09092f4176bee47da213f82510360e7b47fdbf4b`
+at .local/logs/h09-boot-launcher-premature-refusal.log. Four repository safety
+tests cover redirected/external checkpoint inputs and incomplete reports.

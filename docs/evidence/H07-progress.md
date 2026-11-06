@@ -945,3 +945,12 @@ success-gated continuation supervisor remains live; no duplicate dispatcher or
 input sync was started. Raw .local/logs/h07-db-deadlock-observation.json SHA-256
 `3595a785d3733f4380687f3c014daf2c9bfc46813429b112951257ed39e8be34`.
 This is progress evidence, not Berkeley DB or H07 acceptance.
+
+
+2026-11-06 20:34 UTC: DB driver and runner remain live after 3h25m. The
+complete standard suite has advanced to Dead011 maxwrites/priority cases.
+No FAIL or final success sentinel appears in the observed partial log.
+Raw .local/logs/h07-db-dead011-observation.json SHA-256
+`cd2297519d217c1614efeca5104ea5255fbb3a4882a9b1d85498970d2ed1c397`.
+The continuation supervisor remains armed; 124 accepted packages and 38%
+foundation credit are unchanged. Prepared later boot tooling earns no credit.
