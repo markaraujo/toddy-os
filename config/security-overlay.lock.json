@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "status": "research_applicability_verified_not_built",
+  "baseline_unchanged": "LFS 13.1-systemd temporary builds continue using config/sources.lock.json",
+  "components": [
+    {
+      "name": "glibc",
+      "version": "2.44",
+      "planned_stage": "H07 final base before release",
+      "replace_baseline_patch": "glibc-2.44-upstream_fixes-1.patch",
+      "filename": "glibc-2.44-upstream_fixes-3.patch",
+      "url": "https://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.44-upstream_fixes-3.patch",
+      "sha256": "cd3245887c9c2564ef18b8e9ed4046093a575fc91bce00fd82eb931102e4a30e",
+      "advisory": "sa-13.1-043",
+      "cves": ["CVE-2026-18374", "CVE-2026-19499", "CVE-2026-19542", "CVE-2026-77117", "CVE-2026-80489", "CVE-2026-8674"],
+      "applicability": "All 49 sequential patches applied with exit 0 to pristine frozen glibc plus the book FHS patch in disposable source copy",
+      "build_and_regression_tests": "pending; not a security acceptance result"
+    }
+  ],
+  "remaining_review": ["Python", "patch", "Vim", "Expat", "util-linux", "PCRE2", "Xz", "OpenSSL", "selected BLFS components"]
+}

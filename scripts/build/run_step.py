@@ -88,7 +88,9 @@ def main():
 
         write(prefix.with_suffix('.running.json'), record)
         environment = {'HOME': '/home/lfs' if args.user == 'lfs' else '/root',
-                       'TERM': 'dumb', 'PATH': '/usr/bin:/bin', 'LC_ALL': 'POSIX'}
+                       'TERM': 'dumb',
+                       'PATH': '/usr/bin:/bin' if args.user == 'lfs' else '/usr/bin:/usr/sbin:/bin:/sbin',
+                       'LC_ALL': 'POSIX'}
         command = ['bash', '--noprofile', '--norc', '-c',
                    ('source /home/lfs/.bashrc; ' if args.user == 'lfs' else '') + 'exec bash "$1"',
                    'recipe']

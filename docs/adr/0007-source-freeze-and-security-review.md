@@ -52,3 +52,19 @@ subsequent content changes but is not an independent publisher signature.
 - LFS 13.1-systemd downloaded archive, sections 2.2, 3.1–3.3 and preface errata.
 - [LFS 13.1 errata](https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/) and [BLFS 13.1 errata](https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/), observed 2026-11-05.
 - [Current security advisory application](https://www.linuxfromscratch.org/advisories/), release 13.1 query observed 2026-11-05. Snapshot SHA-256: aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1.
+
+## 2026-11-05 applicability experiment
+
+While H05 compiled, downloaded the official glibc-2.44-upstream_fixes-3.patch.
+Its header identifies 49 sequential upstream changes and all six CVEs in
+sa-13.1-043. The SHA-256 and explicit proposed replacement are recorded in
+config/security-overlay.lock.json. All 49 patches applied successfully to a
+disposable copy of the frozen Glibc 2.44 source with the book's FHS patch.
+No Glibc version, temporary build or existing source lock changed. Final
+integration and critical regression tests remain required during H07.
+
+A concatenated multi-commit patch must actually be applied to a disposable
+copy to validate sequential context. A single patch --dry-run cannot update
+NEWS between changes and produced misleading later context failures. The
+actual sequential application returned 0 with no rejected hunks. This proves
+applicability only; it does not prove compilation or the vulnerability fixes.

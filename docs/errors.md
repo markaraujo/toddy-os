@@ -47,3 +47,15 @@ No OS build failures exist yet. Do not turn planning risks into invented test fa
 - Verification: failed attempt recorded zero changed installed paths and no
   success marker; prior logs/failed record preserved in runner history before
   retry. Corrected H04 executes with lfs and validated target guards.
+
+## 2026-11-05 — Security-patch applicability experiment
+
+- Symptom: initial Glibc security-patch validation could not find a relative
+  input path, then a dry run reported later NEWS hunks failing.
+- Cause: patch changes its working directory with -d; use an absolute input
+  path. The patch is a sequence of commits; dry run does not apply the earlier
+  NEWS changes required by later commits.
+- Correction: verified baseline hashes, used absolute patch paths and actually
+  applied the sequence to a disposable source copy, not the build root.
+- Verification: all 49 patches applied with exit 0 and no rejected hunks.
+  No package version or running build changed; final regression tests pending.
