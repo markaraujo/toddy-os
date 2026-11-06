@@ -121,3 +121,10 @@ its kernel recipe until H08 is accepted and synchronized status marks H09
 in_progress. Its source-symbol/gate probes are not a resolved configuration,
 compiled kernel or actual boot. Kernel artifacts alone cannot complete H09;
 bootloader/early-boot evidence and remaining native-kernel obligations still apply.
+
+
+The optional active_work record in status.json publishes verified facts, current
+activity, remaining acceptance and a verification timestamp. It never changes
+weighted phase percentages. Update it from actual evidence; project.py set
+clears it when that story completes. The dashboard is a published snapshot,
+not a live guest-process monitor.

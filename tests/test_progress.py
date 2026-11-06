@@ -20,6 +20,7 @@ class ProgressGates(unittest.TestCase):
         for row in self.data["milestones"]:
             row["status"], row["evidence"] = "not_started", []
         self.data["gates"] = {"G1": "pending", "G2": "pending"}
+        self.data.pop('active_work',None)
 
     def test_unstarted_baseline_has_zero_os_progress(self):
         project.validate(self.data)
@@ -54,6 +55,14 @@ class ProgressGates(unittest.TestCase):
         self.data["gates"]["G1"] = "passed"
         with self.assertRaisesRegex(ValueError, "Inconsistent gate"):
             project.validate(self.data)
+
+    def test_active_work_never_earns_partial_acceptance_credit(self):
+        self.data['milestones'][0]['status']='in_progress'
+        self.data['active_work']={'story':'H01','verified':['A verified prerequisite'],
+            'running':'Actual work in progress','remaining':['Complete acceptance'],
+            'verified_at':'2026-11-06 UTC','evidence':'docs/evidence/H01.md'}
+        project.validate(self.data)
+        self.assertEqual(project.percentages(self.data),{'foundation':0,'agentic':0})
 
 
 class DocumentationLinks(unittest.TestCase):

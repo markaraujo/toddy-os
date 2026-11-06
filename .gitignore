@@ -36,3 +36,4 @@ __pycache__/
 
 # Generated publication export
 _site/
+.playwright-mcp/

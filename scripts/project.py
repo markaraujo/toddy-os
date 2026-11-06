@@ -89,6 +89,16 @@ def validate(data, root=ROOT):
             raise ValueError(f"Inconsistent gate {gate}")
     if data["next_story"] not in by_id:
         raise ValueError("Unknown next story")
+    work=data.get('active_work')
+    if work:
+        if work.get('story') not in by_id or by_id[work['story']]['status'] not in {'in_progress','blocked'}:
+            raise ValueError('Active work must describe an unfinished active story')
+        for field in ('verified','remaining'):
+            if not isinstance(work.get(field),list) or not work[field] or not all(isinstance(s,str) and s for s in work[field]):
+                raise ValueError('Active work requires factual '+field+' entries')
+        if not work.get('running') or not work.get('verified_at'):
+            raise ValueError('Active work requires current activity and verification time')
+        local_file(root,work['evidence'])
     return by_id
 
 
@@ -105,6 +115,24 @@ def outputs(data):
     text += f"Foundation: **{pct['foundation']}%** · Agentic desktop: **{pct['agentic']}%**\n\n"
     text += f"G1: {data['gates']['G1']} · G2: {data['gates']['G2']} · Next: **{data['next_story']}**\n\n"
     text += "No milestone earns credit without completed acceptance evidence.\n\n"
+    active_page=''
+    work=data.get('active_work')
+    if work:
+        row=next(r for r in data['milestones'] if r['id']==work['story'])
+        current=pct[row['phase']];projected=current+row['weight']
+        explanation=(f"The {current}% phase total counts completed stories only. "
+                     f"{row['id']} is still {row['status'].replace('_',' ')}; its {row['weight']} points are not yet counted. "
+                     f"Passing this story would raise the phase total to {projected}%.")
+        text+=f"## Active story: {row['id']} — {row['title']}\n\n{explanation}\n\nLast verified: {work['verified_at']}\n\n"
+        text+='Verified:\n\n'+''.join('- '+item+'\n' for item in work['verified'])
+        text+='\nRunning: '+work['running']+'\n\nRemaining:\n\n'+''.join('- '+item+'\n' for item in work['remaining'])
+        text+=f"\n[Acceptance evidence]({work['evidence']})\n\n"
+        active_page=(f'<section class="active-work" aria-labelledby="active-title"><h2 id="active-title">Active story: {html.escape(row["id"])} — {html.escape(row["title"])}</h2>'
+                     f'<p>{html.escape(explanation)}</p><p>Last verified: {html.escape(work["verified_at"])}</p><h3>Verified</h3><ul>'
+                     +''.join('<li>'+html.escape(item)+'</li>' for item in work['verified'])
+                     +f'</ul><h3>Running</h3><p>{html.escape(work["running"])}</p><h3>Remaining</h3><ul>'
+                     +''.join('<li>'+html.escape(item)+'</li>' for item in work['remaining'])
+                     +f'</ul><a href="../{html.escape(work["evidence"])}">Acceptance evidence</a></section>')
     text += "| Story | Phase | Weight | Status |\n| --- | --- | ---: | --- |\n"
     esc = html.escape
     cards = []
@@ -125,6 +153,7 @@ main{max-width:1100px;margin:auto;padding:36px 24px}header{display:flex;gap:24px
 header img{width:90px;height:90px;object-fit:contain}h1{margin:0;font-size:2rem}p{color:var(--muted)}
 .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}.metric{background:var(--panel);padding:22px;border-radius:14px}
 .metric strong{display:block;font-size:2rem;color:var(--accent)}progress{width:100%;accent-color:var(--accent)}
+.active-work{background:var(--panel);border-left:4px solid var(--accent);border-radius:10px;padding:20px 24px;margin:24px 0}.active-work h2{margin-top:0}.active-work h3{margin-bottom:0;font-size:1rem}.active-work ul{margin-top:6px}
 nav{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}button{cursor:pointer;background:var(--panel);color:var(--ink);border:1px solid #71604c;border-radius:8px;padding:10px 16px}
 button[aria-pressed=true]{background:#704023}button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 details{background:var(--panel);border:1px solid #44382d;border-radius:10px;margin:10px 0;padding:16px}summary{cursor:pointer}.id{color:var(--accent);font-weight:700}.tag{display:block;color:var(--muted);font-size:.85rem;margin-left:42px}a{color:#ffc28f}footer{margin-top:36px;font-size:.9rem}li{margin:8px 0}
@@ -136,9 +165,10 @@ details{background:var(--panel);border:1px solid #44382d;border-radius:10px;marg
     for phase, title in (("foundation", "LFS foundation"), ("agentic", "Agentic desktop")):
         page += f'<article class="metric">{title}<strong>{pct[phase]}%</strong><progress aria-label="{title}" value="{pct[phase]}" max="100"></progress></article>'
     page += f'<article class="metric">Next milestone<strong>{esc(data["next_story"])}</strong>G1 {esc(data["gates"]["G1"])} · G2 {esc(data["gates"]["G2"])}</article></section>'
+    page += active_page
     page += '<nav aria-label="Filter milestones"><button data-filter="all" aria-pressed="true">All stories</button><button data-filter="foundation" aria-pressed="false">Phase 1 · Foundation</button><button data-filter="agentic" aria-pressed="false">Phase 2 · Agentic</button></nav>'
     page += '<section aria-label="Milestones">' + "".join(cards) + '</section>'
-    page += '<footer><a href="../PRD.md">PRD</a> · <a href="../docs/DEVELOPMENT.md">Development handoff</a><p>Local offline dashboard. No telemetry, API calls or external dependencies. Percentages reflect completed, evidenced weighted milestones.</p></footer></main>'
+    page += '<footer><a href="../PRD.md">PRD</a> · <a href="../docs/DEVELOPMENT.md">Development handoff</a><p>Published state snapshot, not a live process monitor. No telemetry, API calls or external dependencies. Percentages reflect completed, evidenced weighted milestones.</p></footer></main>'
     page += '''<script>document.querySelectorAll('button[data-filter]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('button[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.querySelectorAll('details[data-phase]').forEach(d=>d.hidden=b.dataset.filter!=='all'&&d.dataset.phase!==b.dataset.filter)}));</script></html>\n'''
     return {"STATUS.md": text, "dashboard/index.html": page}
 
@@ -177,6 +207,8 @@ def main():
             parser.error("Unknown story ID")
         row = matches[0]
         row["status"] = args.status
+        if data.get('active_work',{}).get('story')==args.story and args.status not in {'in_progress','blocked'}:
+            data.pop('active_work')
         if args.evidence:
             row["evidence"] = args.evidence
         by_id = {r["id"]: r for r in data["milestones"]}

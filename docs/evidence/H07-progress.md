@@ -880,3 +880,14 @@ Raw summary .local/logs/h07-native-spawn-correction-acceptance.json.
 image consistency/copied hashes. Manifest and hashes are in RECOVERY.md. This
 new pair is not restored or advertised as an ISO; BDB/APT remain unfinished.
 Builder restarted for the complete corrected DB standard retry.
+
+
+## Active-story visibility
+
+Official foundation progress remains 38% until all H07 acceptance passes; its
+weight is 24 points, so acceptance would raise the phase total to 62%. The
+new active-work panel reports actual verified/running/remaining work separately
+without awarding fractional credit or treating private preparation as completion.
+At this update 124 packages are accepted, the cold pair is verified and the
+complete corrected DB suite remains unfinished. No ETA is inferred from package
+counts. Published state is a snapshot, not a live process monitor.

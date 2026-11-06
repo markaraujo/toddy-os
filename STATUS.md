@@ -12,6 +12,30 @@ G1: pending · G2: pending · Next: **H07**
 
 No milestone earns credit without completed acceptance evidence.
 
+## Active story: H07 — Build and test the final base system
+
+The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
+
+Last verified: 2026-11-06 18:30 UTC
+
+Verified:
+
+- 124 source-built packages accepted, including native Dpkg and supporting tools.
+- Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.
+- Full ACL retest, API/layout ownership and native configuration correction passed.
+- Verified paired cold checkpoint at the 124-package boundary.
+
+Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. C tests, all three focused regressions and 483-file source comparison already passed.
+
+Remaining:
+
+- Accept the full database result, production installation and persistence/transaction postchecks.
+- Build and test APT against a real signed repository, including positive and negative HTTPS cases.
+- Apply versioned package metadata and complete ownership/dependency audits.
+- Save final H07 evidence and recovery checkpoint before accepting the story.
+
+[Acceptance evidence](docs/evidence/H07-progress.md)
+
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
 | [H01 — Inspect host and select isolated build environment](stories/H01.md) | foundation | 4 | completed |
