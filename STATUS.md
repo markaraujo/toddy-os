@@ -29,10 +29,10 @@ Running: Complete corrected Berkeley DB standard regression suite, started 2026-
 
 Remaining:
 
-- Accept the full database result, production installation and persistence/transaction postchecks.
-- Build and test APT against a real signed repository, including positive and negative HTTPS cases.
-- Apply versioned package metadata and complete ownership/dependency audits.
-- Save final H07 evidence and recovery checkpoint before accepting the story.
+- Finish the complete database suite, then production install and transaction/reopen postchecks; later access-method matrix plans 135 x 9 dispatch entries, including inapplicable skips.
+- Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.
+- Quarantine 931 reviewed bootstrap paths, close metadata for all 126 planned packages and pass seven final audits plus Dpkg/APT consistency checks.
+- Save final H07 evidence and a verified paired cold checkpoint of both VM disks before accepting the story.
 
 [Acceptance evidence](docs/evidence/H07-progress.md)
 

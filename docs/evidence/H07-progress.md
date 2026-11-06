@@ -996,3 +996,12 @@ actually completed in 7m10s; its process exited and the original suite advanced
 to Recd012 file-management recovery. See the wait investigation's completion
 record. The suspected infinite loop was disproved for that execution; full DB
 acceptance remains pending and the existing supervisor stays in place.
+
+
+2026-11-06 21:39 UTC: quantified remaining work at the owner's request.
+[Remaining volume](H07-remaining-volume.md) distinguishes 124/126 packages from
+actual test/closure effort: the current partition group still precedes a
+planned 1215-entry access-method matrix, among other standard-suite sections.
+Final H07 also includes APT, Python alias, 931-path bootstrap quarantine,
+126-package metadata review, seven audits and a paired cold checkpoint.
+Counts are measured/planned scopes, not time or test-pass percentages.

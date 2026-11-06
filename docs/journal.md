@@ -146,3 +146,8 @@ request. Two live snapshots proved checkpoint 59-to-104 progress in the same
 variant. Verified source shows finite inclusive iteration and timed waits;
 prior variant timing matches. No current resource exhaustion or retry loop
 found. Preserved evidence and continued the original full standard suite.
+
+2026-11-06: Published a source-backed H07 remaining-volume breakdown after the
+owner requested concrete scale. Recorded actual pending markers and separated
+package count from the database's nested test matrix and final package audits.
+No tests were shortened and no acceptance percentage changed.
