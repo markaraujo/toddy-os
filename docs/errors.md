@@ -344,3 +344,26 @@ native Expect (ADR-0031). No installation occurs before full success.
 - H07 Berkeley DB test build: upstream Tcl bindings require DBM/compat185 even
   for C-library tests. Enable in the disposable test build only; production
   profile still disables both. No installed changes; fresh verified retry.
+
+
+## H07 Berkeley DB test142 environment isolation (2026-11-06)
+
+The standard suite reached test142 under range partitioning and reported
+BDB1540 configured environment flags incompatible with existing environment.
+Frozen test139 closes a nontransactional environment but leaves its region
+files. Test142 creates its own transactional environment before cleanup.
+The same compiled native library and unchanged test139/test142 reproduce the
+error in a separate TESTDIR; explicit prior environment cleanup lets unchanged
+test142 complete its exclusive-handle assertions. Preliminary success sentinel
+is preserved; a durable exit-captured focused correction test and complete
+standard-suite rerun remain mandatory. Do not skip test142 or remove assertions.
+
+The already-failed long attempt was stopped through its verified recipe PGID.
+Runner result: recipe -15, postcheck not run, zero installed changes; package
+manager driver exit 1. Original partial ALL.OUT, C tests, recipe/standard logs
+and cancellation reason are preserved under builder /var/log/toddy/build/history/
+berkeley-db-test142-20261106T161146Z. Failed recipe log SHA-256
+8892e258779d037bc464117b638cb99b8e2be750196166f98f6a9b4b49c2cd57.
+No production DB build/install occurred. Preserve the compiled test tree for
+verified recovery; advance independent CPAN/Triehash/Which/Libseccomp/Tcsh work
+before the corrected complete DB retest. APT still requires accepted Berkeley DB.

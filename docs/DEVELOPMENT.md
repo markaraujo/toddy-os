@@ -2,7 +2,7 @@
 
 ## Current scope
 
-The planning repository and approved artwork are prepared. Implementation started by the owner on 2026-11-05. H01 provisions a real KVM build guest using container-packaged QEMU; see docs/evidence/H01.md and docs/RECOVERY.md. Source freeze is H02. H01–H06 passed; H07 final base has 101 accepted packages and its Berkeley DB suite is active. See docs/BUILD.md and the current driver section below. No bootable Toddy ISO exists yet. status.json is authoritative for completed milestones.
+The planning repository and approved artwork are prepared. Implementation started by the owner on 2026-11-05. H01 provisions a real KVM build guest using container-packaged QEMU; see docs/evidence/H01.md and docs/RECOVERY.md. Source freeze is H02. H01–H06 passed; H07 final base has 101 accepted packages and its Berkeley DB test142 fixture correction/full retest is pending. See docs/BUILD.md and the current driver section below. No bootable Toddy ISO exists yet. status.json is authoritative for completed milestones.
 
 ## Start a development session
 
@@ -73,7 +73,7 @@ Use make site for a local export into ignored _site/. All site data is public; n
 
 Use actual runner markers, driver exit files and docs/RECOVERY.md, not a
 historical journal count, to select work. Current accepted boundary is 101
-source-built packages; the complete Berkeley DB standard suite is active.
+source-built packages; the Berkeley DB standard attempt exposed a reproduced fixture isolation failure.
 Do not sync build inputs or run another dispatcher while that recipe holds the
 exclusive lock. Long Tcl tests update their own ALL.OUT; a quiet tee is not a
 stalled test and a partial log is not success.
@@ -100,3 +100,11 @@ alternate route around H07. After complete H07 acceptance/checkpoint, mark H08
 in_progress, regenerate/commit progress and sync public status.json with build
 inputs before h08-driver.sh. A premature gate probe must refuse. Prepared text,
 backup safety tests and offline checks do not establish native boot networking.
+
+
+Current exception to the earlier driver order: the known-failed BDB attempt was
+stopped with zero installed changes after reproducing test142 contamination.
+Run independent Perl/Triehash/Which/Libseccomp/Tcsh work after verified quiescent
+sync, then corrected full BDB retest/production acceptance; APT remains gated.
+See docs/errors.md and the latest RECOVERY section. A partial full-suite log or
+focused success sentinel alone does not accept Berkeley DB.

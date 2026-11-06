@@ -52,7 +52,8 @@ Initial Dpkg safe extraction refused three official FIFO fixtures before any
 installed changes. Partial tree/failure retained under sources/recovery and
 build/history/dpkg-extraction. Exact archive/name/type allowance added with
 standard path/mode/ownership checks; full retry and native Dpkg postcheck passed.
-Berkeley DB complete Tcl suite is running after successful C tests. Test-only
+Berkeley DB standard attempt was stopped after a reproduced test142 fixture
+isolation failure; C tests had passed, no production install occurred. Test-only
 DBM/compat185 and static object generation satisfy actual upstream test/symbol
 requirements; production still omits DBM/compat185 and stages no .a/.la files.
 Inspect /sources/db-5.3.28/build-test/ALL.OUT for live progress, not only tee tail.
@@ -239,3 +240,15 @@ copy bootstrap files over package-owned conffiles blindly. Prefer the next
 verified H07 cold pair for whole-target rollback. Timezone/resolver links are
 mutable generated state; /run chroot resolver bytes must never enter an image.
 No H08 target mutation or boot/network acceptance has occurred. See ADR-0042.
+
+
+Latest H07 continuation supersedes the old BDB-running notes above: test142
+failure is reproduced; failed marker records recipe -15/postcheck null/zero
+installed changes. History is /var/log/toddy/build/history/
+berkeley-db-test142-20261106T161146Z. The compiled test tree remains available;
+do not delete it or manufacture a BDB success marker. At quiescent input sync,
+run independent h07-perl-test-tools-driver.sh. Correct the fixture with all
+assertions retained, capture focused test exits, then rerun the complete BDB
+standard suite before production install/acceptance and APT. No H08 target step
+is eligible until complete H07 acceptance. First new package must prove actual
+source-built native Dpkg routing in its archive record and installed postcheck.
