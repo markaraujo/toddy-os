@@ -891,3 +891,13 @@ without awarding fractional credit or treating private preparation as completion
 At this update 124 packages are accepted, the cold pair is verified and the
 complete corrected DB suite remains unfinished. No ETA is inferred from package
 counts. Published state is a snapshot, not a live process monitor.
+
+
+Direct native Dpkg count: 124 installed/configured packages, all 124 with their
+matching own-source/recipe provenance record; zero partial/unconfigured entries
+and zero missing provenance. Berkeley DB remains running/unaccepted and APT
+unaccepted/absent. The current H07 recipe chain adds those two new packages,
+for 126 planned base packages. Counts include real library/module/data/config
+packages and do not measure remaining test duration or whole-release progress.
+Raw count .local/logs/h07-live-package-count.json; future kernel/desktop/agent
+stories and any later package-profile splits are outside this H07 count.

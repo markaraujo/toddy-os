@@ -479,7 +479,7 @@
     "story": "H07",
     "verified_at": "2026-11-06 18:30 UTC",
     "verified": [
-      "124 source-built packages accepted, including native Dpkg and supporting tools.",
+      "124 of 126 currently planned H07 packages installed, configured and accepted; 2 pending (Berkeley DB and APT). All 124 have own-build/source provenance.",
       "Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.",
       "Full ACL retest, API/layout ownership and native configuration correction passed.",
       "Verified paired cold checkpoint at the 124-package boundary."
