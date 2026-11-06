@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parents[2]
 VM = ROOT / 'scripts/host/vm.py'
 check = 'source /opt/toddy-build/scripts/build/target.sh; guard_target'
 subprocess.run([sys.executable, str(VM), 'ssh', check], check=True)
+subprocess.run([sys.executable, str(VM), 'ssh',
+    "if compgen -G '/var/log/toddy/build/*.running.json' > /dev/null; then echo 'Refusing full recipe sync during unfinished build' >&2; exit 1; fi"], check=True)
 lock = json.loads((ROOT / 'config/sources.lock.json').read_text())
 if lock['status'] != 'verified':
     raise SystemExit('Source lock not verified')
@@ -44,6 +46,14 @@ def pipe_tar(args, remote):
 
 
 metadata = ['scripts/build', 'LICENSES', 'config/component-licenses.json', 'config/books.lock.json', 'config/sources.lock.json']
+reference_config = ROOT / 'config/compiler-test-reference.json'
+reference_path = None
+if reference_config.exists():
+    reference = json.loads(reference_config.read_text())
+    reference_path = ROOT / '.local/references' / ('gcc-reference-' + reference['sha256'] + '.log')
+    if not reference_path.exists() or hashlib.sha256(reference_path.read_bytes()).hexdigest() != reference['sha256']:
+        raise SystemExit('Run scripts/fetch_compiler_reference.py before syncing build inputs')
+    metadata.append('config/compiler-test-reference.json')
 if overlay_path.exists():
     metadata.append('config/security-overlay.lock.json')
 if supplemental_path.exists():
@@ -53,4 +63,9 @@ pipe_tar(['-cf', '-'] + metadata,
 # Enumerating files avoids copying the cache directory's mode over sticky sources.
 pipe_tar(['-C', '.local/sources', '-cf', '-'] + [r['filename'] for r in rows],
          check + '; tar --no-overwrite-dir -xf - -C /mnt/lfs/sources')
+if reference_path is not None:
+    with reference_path.open('rb') as stream:
+        subprocess.run([sys.executable, str(VM), 'ssh', check +
+            '; mkdir -p /mnt/lfs/sources/evidence/h07-gcc; cat > /mnt/lfs/sources/evidence/h07-gcc/reference.log'],
+            stdin=stream, check=True)
 print('Build scripts, locks and verified archives transferred; source directory mode preserved.')

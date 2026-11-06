@@ -223,3 +223,41 @@ with the official GNU keyring obtained through its kernel.org mirror, signer
 7F74F97C103468EE5D750B583AB00996FC26A641. Source hash/version did not change;
 this additional authentication does not rerun unchanged compilation/tests.
 Signature output is retained outside Git in .local/upstream-verification.
+
+## Complete final GCC critical suite accepted (2026-11-06)
+
+The guarded build/collection step ran 03:28:15–04:39:44 UTC and exited zero
+for both recipe and postcheck, with zero installed changes. Independent strict
+classification then accepted all six complete merged reports against the
+hash-pinned official LFS 13.1 GCC 16.2.0 reference. No novel unexpected result
+was accepted. Raw make exit zero is preserved, not described as all-pass.
+
+| Suite | PASS | XFAIL | UNSUPPORTED | FAIL | XPASS |
+| --- | --- | --- | --- | --- | --- |
+| gcc | 218832 | 1569 | 3992 | 39 | 2 |
+| g++ | 267590 | 2373 | 2023 | 33 | 0 |
+| libatomic | 54 | 0 | 0 | 0 | 0 |
+| libgomp | 6123 | 46 | 487 | 0 | 0 |
+| libitm | 44 | 3 | 1 | 0 | 0 |
+| libstdc++ | 18597 | 122 | 478 | 0 | 0 |
+
+Total 511240 PASS. The 72 FAIL and two XPASS outcomes exactly match known
+lines in the pinned official reference; zero unexplained outcomes. The C
+suite has one additional PASS and one fewer FAIL than the reference:
+gcc.target/i386/shift-gf2p8affine-2.c now passes on this target. This is not a
+claim about support for any unmeasured CPU instruction set. All other suite
+pass counts match the reference. Original parallel .sum.sep/.log.sep files
+are archived in addition to the complete merged logs.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| full runner log | a9043fecbd7490ca284b76e18d498373b49ed3e1c91b217c81f72113a240f0cc |
+| raw check.log | 32fc2c62803fcbd07ac4368595a8939cab87c44db6540eedf28ec7b157cb79d1 |
+| merged reports archive | da2523dfb354130c3dfa5d6310b7b0de8fd302f41efba2e9801db5bff5fb04d6 |
+| parallel raw reports | 5afd336d93a30d45ed9b8c0ba92db05330008d652ad5d12937f9f6439b6b2e73 |
+| classification | 81920cfcc2063a5058512077299fa394c08ef2d754ed14daef64031194b78375 |
+
+Evidence copies: .local/logs/h07-gcc/evidence.tar.gz and runner.tar.gz.
+Reference URL/hash and minimum counts: config/compiler-test-reference.json.
+The printed upstream mail-report script remains unexecuted data only.
+Final GCC/runtime installation is pending; H07 is not complete.

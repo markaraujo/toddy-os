@@ -224,3 +224,16 @@ ADR-0014 separates gcc-runtime ownership from compiler/development files.
 The prepared installer still needs actual target validation after critical
 acceptance and a cold checkpoint. Existing native C++ consumers' dependency
 metadata remains subject to the final audit; this is not yet a closed graph.
+
+Before a fresh full build sync, fetch the pinned compiler reference:
+
+```sh
+python3 scripts/fetch_compiler_reference.py
+python3 scripts/host/sync_build.py
+```
+
+The sync refuses unfinished running markers, verifies the content-addressed
+reference cache and copies the reference as data into target evidence. The
+future GCC build wrapper preflights it before spending time compiling. This
+preflight was added after the completed first suite; the original first-run
+recipe hashes/sidecar remain preserved in its recorded commit history.

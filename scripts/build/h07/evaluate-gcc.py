@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Accept complete final GCC results only against a pinned official LFS run."""
 from collections import Counter
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -48,6 +49,9 @@ def classify(reports, reference, exit_code, minimums):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--reference-only', action='store_true')
+    args = parser.parse_args()
     root = Path(__file__).resolve().parents[3]
     config_path = root / 'config/compiler-test-reference.json'
     config = json.loads(config_path.read_text())
@@ -56,6 +60,9 @@ def main():
     reference_bytes = (evidence / 'reference.log').read_bytes()
     if hashlib.sha256(reference_bytes).hexdigest() != config['sha256']:
         raise SystemExit('Frozen official GCC reference mismatch; no acceptance')
+    if args.reference_only:
+        print('Verified pinned compiler reference as data only')
+        return
     minimums = config['minimum_expected_passes']
     reports = {name: (base / name).read_text(errors='replace') for name in minimums}
     record = classify(reports, reference_bytes.decode(), int((evidence / 'check.exit').read_text()), minimums)

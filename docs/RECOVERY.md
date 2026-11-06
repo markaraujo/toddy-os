@@ -128,3 +128,12 @@ the C++/terminal providers once final gcc-runtime/Ncurses are installed. Use
 versioned native metadata updates with original archives retained. Re-run
 scripts/build/audit_native_elf.py inside the guest; its partial report does not
 cover optional dlopen, tools/data/plugins or dependency version constraints.
+
+GCC suite finished and independent classification accepted all six reports:
+511240 PASS, only 72 known FAIL/two known XPASS, no unknown outcomes. The raw
+suite exit is 0. Complete merged/parallel reports and original recipe sidecar
+are copied to .local/logs/h07-gcc. The VM is being stopped for the paired
+h07-gcc-tested checkpoint before installation; verify the host checkpoint
+manifest/log before starting. Then start VM, mount-kernfs.sh, and run a guarded
+h07-gcc-install step with its prepared postcheck. Never infer installed GCC
+from h07-gcc-build.success.json: the build changed zero installed paths.
