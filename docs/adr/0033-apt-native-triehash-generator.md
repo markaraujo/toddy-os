@@ -41,3 +41,12 @@ HTML::Entities, included in the frozen HTML-Parser dependency. Template Toolkit
 is required by Html_basic, not the default backend; do not add an unnecessary
 dependency or replace the unchanged Triehash coverage command. Native execution
 of the complete tests and default report remains the acceptance requirement.
+
+Installed-module postchecks require the loaded %INC path to be owned by the
+new package in native Dpkg, preventing a pre-existing module from satisfying
+acceptance accidentally. Use require for this load-only probe; full unchanged
+upstream suites still exercise normal imports and coverage. Run in a private
+temporary directory and remove probe-generated state. A focused existing-native
+Fcntl probe passed for owner perl and rejected a deliberately wrong provider;
+new CPAN packages remain unaccepted until their actual recipes/postchecks pass.
+Raw .local/logs/h07-perl-module-provider-preflight.json SHA-256 8d40be86e7c3bffed1fa609e975febf8d5d2e3abf16f1eeb5530651352f76c84.
