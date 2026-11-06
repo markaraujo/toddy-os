@@ -525,3 +525,13 @@ gated recipe performs a fresh verified extraction and repeats the accepted
 configuration/preparation sequence before the actual build. Inspect these logs
 if its release check differs; do not remove the suffix assertion or change the
 frozen kernel to work around stale generated configuration.
+
+
+Run python3 scripts/host/probe_switch_root.py to reproduce the private PID-1
+root-switch experiment (ADR-0052). It prints the exact fixture path before
+launching its namespace child and preserves a failure report outside Git.
+On success, namespace mounts vanish and the empty fixture is removed. On a
+failure or controller interruption, verify the child's actual state and mount
+namespace before removing that exact fixture; never broaden cleanup to /tmp or
+/mnt/lfs. The runtime roots are distinct tmpfs instances, not the installed root.
+This test does not replace initramfs boot or actual Squashfs/overlay switching.

@@ -52,3 +52,46 @@ There is no /init, live root, overlay or bootable initramfs in this experiment.
 Actual device discovery, early mounts, root selection, overlay setup, ACL
 restoration before services, failure diagnostics and native-kernel boot remain
 mandatory. No H10 acceptance credit is assigned to this preparation.
+
+
+## Private PID-1 root-switch experiment
+
+The accepted native Util-linux 2.42.4 sys-utils/switch_root.c moves /dev, /proc,
+/sys and /run, changes the root mount, forks old-root cleanup for ramfs/tmpfs,
+and executes the selected init. Verify that behavior with the exact minimal
+runtime, not only its --version output. The reusable host experiment is
+scripts/host/probe_switch_root.py.
+
+The designated builder creates a private mount namespace with private
+propagation and a private PID namespace. Its initial and final roots are on
+two distinct 128 MiB tmpfs mounts, each populated from the verified native
+runtime. Distinct device IDs are asserted before invoking switch_root: its
+old-root removal must not traverse the new root. No installed or physical root
+is a switch/removal target. A private /dev tmpfs contains only console/null;
+/run is another private tmpfs, and proc/sysfs are mounted inside the namespace.
+The sysfs mount is read-only for this fixture, not a proposed product setting.
+
+The native shell enters as PID 1, writes a /run marker and execs switch_root.
+The final native shell is still PID 1, sees the final-only marker and the four
+moved mounts, reads the original /run bytes, accesses the two character devices,
+and observes /proc/1/root as /. Original-root/source/tools/account files are
+absent. It exits 0; the parent confirms the private tmpfs mounts disappeared
+with the namespace and removes only the resulting empty fixture. The launcher
+uses unshare --kill-child=KILL so controller death kills its namespace child;
+the positive run, not a forced-timeout scenario, was exercised here.
+
+An initial harness incorrectly invoked /usr/bin/env inside the intentionally
+minimal runtime and failed 127. Clear the process environment with execve before
+entering that root instead; do not expand the payload to satisfy an unnecessary
+test assumption. Original failure evidence is
+.local/logs/h10-native-switch-root-missing-env.json, SHA-256
+`2585fc4713aa2d37797792ae3c2cd37656bcb9558fdc0801482ab3763cb3f40d`.
+Its empty private fixture was inspected and removed after the namespace exited.
+
+The final repeated positive evidence is
+.local/logs/h10-native-switch-root-probe.json, SHA-256
+`78148992f466879ab96b4dc2f404e1118f1dad9467d13b0698906bb378c585fc`.
+It uses the builder's 6.8.0-147-generic kernel. No initramfs archive was booted,
+no Squashfs/overlay was the switched root, and Systemd was not the test init.
+Those actual native-kernel/live-media/service checks remain mandatory. The
+fixture /init is test code only and is not the pending product live-root loader.

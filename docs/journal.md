@@ -115,3 +115,10 @@ settings. The subsequent release query exposed stale auto.conf after the
 fragment merge. Source-backed make prepare correction passed with
 7.1.8-toddy and unchanged resolved config hash. Prepared H09 recipe corrected;
 no kernel image/install/boot produced, and BDB full recovery suite stays active.
+
+2026-11-06: Actual native minimal runtime passed a PID-1 switch_root experiment
+between distinct private tmpfs roots, retaining dev/proc/sys/run mounts and
+runtime state. Corrected an initial test-only env dependency and retained its
+failure log. Builder kernel only; no live/ISO boot or H10 acceptance claimed.
+Reusable experiment and recovery recorded in ADR-0052; full BDB suite advances
+through Recd003 recovery cases without a final result yet.
