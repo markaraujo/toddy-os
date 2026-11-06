@@ -4,7 +4,12 @@ set -euo pipefail
 mkdir -p /sources/evidence/h07-apt
 exec > >(tee /sources/evidence/h07-apt/native-repository.log) 2>&1
 fixture=$(mktemp -d /tmp/toddy-apt-native.XXXXXX)
+https_pid=
 cleanup() {
+ if [[ -n $https_pid ]]; then
+  kill "$https_pid" 2>/dev/null || true
+  wait "$https_pid" 2>/dev/null || true
+ fi
  GNUPGHOME="$fixture/keys" gpgconf --kill gpg-agent >/dev/null 2>&1 || true
  rm -rf "$fixture"
 }
@@ -115,5 +120,56 @@ apt-get --yes remove toddy-apt-probe toddy-apt-dependency
 test -f "$fixture/root/etc/toddy-apt-probe.conf"
 apt-get --yes purge toddy-apt-probe
 test ! -e "$fixture/root/etc/toddy-apt-probe.conf"
+# Exercise APT's own HTTPS method, independently of Curl's earlier TLS checks.
+# The temporary trust anchor is scoped to these commands, never system trust.
+(
+ umask 077
+ openssl req -x509 -newkey rsa:2048 -noenc -days 1 \
+  -subj /CN=localhost -addext subjectAltName=DNS:localhost \
+  -keyout "$fixture/tls.key" -out "$fixture/tls.crt" \
+  > "$fixture/tls-generation.log" 2>&1
+)
+chmod 644 "$fixture/tls.crt"
+python3 - "$fixture" <<'PYSERVER' > "$fixture/https.log" 2>&1 &
+import functools,http.server,os,pathlib,pwd,ssl,sys
+root=pathlib.Path(sys.argv[1])
+context=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+context.load_cert_chain(root/'tls.crt',root/'tls.key')
+server=http.server.ThreadingHTTPServer(('127.0.0.1',0),
+    functools.partial(http.server.SimpleHTTPRequestHandler,directory=str(root/'repo')))
+server.socket=context.wrap_socket(server.socket,server_side=True)
+(root/'https.port').write_text(str(server.server_port))
+identity=pwd.getpwnam('tester')
+os.setgroups([]);os.setgid(identity.pw_gid);os.setuid(identity.pw_uid)
+server.serve_forever(poll_interval=0.1)
+PYSERVER
+https_pid=$!
+for attempt in $(seq 1 100); do
+ kill -0 "$https_pid"
+ if [[ -s $fixture/https.port ]]; then break;fi
+ sleep 0.1
+done
+test -s "$fixture/https.port"
+port=$(cat "$fixture/https.port")
+tls_options=(-o "Acquire::https::CAInfo=$fixture/tls.crt" -o Acquire::https::Timeout=5 -o Acquire::Retries=0)
+printf 'deb [signed-by=%s] https://localhost:%s/ ./\n' "$fixture/repository.gpg" "$port" > "$fixture/config/sources.list"
+find "$fixture/state/lists" -maxdepth 1 -type f ! -name lock -delete
+find "$fixture/cache/archives" -maxdepth 1 -type f -name '*.deb' -delete
+find "$fixture/cache/archives/partial" -maxdepth 1 -type f -delete
+apt-get "${tls_options[@]}" update -o APT::Update::Error-Mode=any
+apt-get "${tls_options[@]}" --yes install toddy-apt-probe
+grep -Fx payload-2 "$fixture/root/usr/share/toddy-apt-probe/value"
+grep -F 'toddy-apt-probe_2_all.deb' "$fixture/https.log" | grep -F ' 200 '
+find "$fixture/state/lists" -maxdepth 1 -type f ! -name lock -delete
+expect_rejection untrusted-tls apt-get "${tls_options[@]}" \
+ -o Acquire::https::CAInfo=/etc/ssl/certs/ca-certificates.crt update -o APT::Update::Error-Mode=any
+grep -iF 'certificate verify failed' "$fixture/rejection.log"
+printf 'deb [signed-by=%s] https://127.0.0.1:%s/ ./\n' "$fixture/repository.gpg" "$port" > "$fixture/config/sources.list"
+find "$fixture/state/lists" -maxdepth 1 -type f ! -name lock -delete
+expect_rejection wrong-tls-name apt-get "${tls_options[@]}" update -o APT::Update::Error-Mode=any
+grep -iF 'certificate verify failed' "$fixture/rejection.log"
+printf 'deb [signed-by=%s] https://localhost:%s/ ./\n' "$fixture/repository.gpg" "$port" > "$fixture/config/sources.list"
+apt-get "${tls_options[@]}" update -o APT::Update::Error-Mode=any
+apt-get --yes purge toddy-apt-probe toddy-apt-dependency
 [[ $(sha256sum /var/lib/dpkg/status) == "$main_status" ]]
-printf 'NATIVE_APT_SIGNED_REPOSITORY_ACCEPTED dependency/conffile/tamper/key/recovery/remove/purge; main DB unchanged\n'
+printf 'NATIVE_APT_SIGNED_REPOSITORY_ACCEPTED dependency/conffile/tamper/key/HTTPS/trust/name/recovery/remove/purge; main DB unchanged\n'

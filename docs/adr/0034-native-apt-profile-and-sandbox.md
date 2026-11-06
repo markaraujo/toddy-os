@@ -32,3 +32,22 @@ methods/CMakeLists.txt, debian/control, debian/tests/control and test/integratio
 framework; BLFS 13.1-systemd general/libseccomp.html and general/which.html.
 Official upstream: https://github.com/seccomp/libseccomp/releases/tag/v2.6.1,
 https://ftp.gnu.org/gnu/which/.
+
+The prepared repository postcheck also exercises native APT HTTPS acquisition
+and installation from a loopback-only Python TLS server. A one-day disposable
+certificate has only DNS:localhost SAN; trust is scoped through command-only
+Acquire::https::CAInfo. Keep Verify-Peer/Verify-Host defaults enabled. Clear only
+own fixture indexes/cache before fetches; require actual successful payload
+GET and install. Then require exit 100 with certificate-verification error for
+normal-system-CA rejection and trusted-CA/wrong-host rejection, restore successful
+update, purge and verify main package database unchanged. Server drops to tester
+after loading its key and stops before fixture/key cleanup; no trust/key/service
+is installed system-wide.
+
+A focused native Python/OpenSSL server-fixture preflight passed positive TLS
+and rejected unknown CA (verify code 18) and wrong IP name (64). Raw log
+.local/logs/h07-apt-https-server-preflight.log SHA-256 db270c2afb9b11b6effbcb4d5f026d3880061f3373021df6fabc6bfc0361bc85.
+That preflight does not claim native APT transport acceptance; the complete APT
+postcheck remains mandatory after its actual build. Configuration semantics
+come from frozen APT 3.0.4 doc/apt-transport-https.1.xml and methods/connect.cc,
+including enabled peer/name verification and scoped CaInfo loading.
