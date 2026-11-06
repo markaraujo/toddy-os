@@ -4,7 +4,7 @@
   "updated_at": "2026-11-05",
   "bootstrap": "ready_for_development",
   "current_scope": "Implementation: isolated KVM builder validated; LFS/BLFS 13.1 books and 94 foundation inputs frozen. Preparing guarded target and package ownership; no Toddy ISO yet.",
-  "next_story": "H03",
+  "next_story": "H04",
   "gates": {
     "G1": "pending",
     "G2": "pending"
@@ -51,7 +51,7 @@
       "phase": "foundation",
       "title": "Prepare target, build user and package ownership",
       "weight": 4,
-      "status": "in_progress",
+      "status": "completed",
       "depends_on": [
         "H02"
       ],
@@ -61,14 +61,16 @@
         "Resolve D03 in an ADR and prototype file ownership, install/remove/upgrade and conflict detection before final builds.",
         "Implement target guards, per-package logging and failed/success marker semantics; demonstrate a safe dry run."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/H03.md"
+      ]
     },
     {
       "id": "H04",
       "phase": "foundation",
       "title": "Build the cross-toolchain",
       "weight": 10,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": [
         "H03"
       ],

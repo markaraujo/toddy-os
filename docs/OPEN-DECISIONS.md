@@ -6,7 +6,7 @@ These are planned feasibility decisions, not missing permission to begin H01. Re
 | --- | --- | --- | --- | --- |
 | D01 | Build environment | Resolved: container-packaged QEMU/KVM, ADR-0006 | H01 | Real guest boot, requirements and restart passed; VirtualBox untested |
 | D02 | Book variant and freeze | Resolved: LFS/BLFS 13.1-systemd, ADR-0007 | H02 | Archives pinned; 94 sources verified; release security fixes remain mandatory |
-| D03 | Package ownership and distribution | Evaluate dpkg/APT with our own packages/repository; no foreign core repos | H03, before final package recipes | Install/remove/upgrade prototype and manifest/rollback strategy |
+| D03 | Package ownership and distribution | Resolved: native source-built .deb/dpkg/APT, ADR-0008 | H03 | Guest prototype passed; final dpkg/APT source build and signed repository remain release work |
 | D04 | Desktop | GNOME/Wayland; evaluate fallback | B02 | Source build dependency plan and VM usability |
 | D05 | Harness reuse versus custom core | Small open provider-independent core or replaceable existing OSS harness | B01 | License/dependency audit and end-to-end comparison |
 | D06 | Canonical memory and semantic index | SQLite/FTS, optional vector adapter such as Qdrant | B07 | Search quality, deletion/backup test, resource measurements |

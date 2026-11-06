@@ -8,7 +8,7 @@
 *.token
 .local/
 # Build/runtime storage
-build/
+/build/
 cache/
 sources/
 books/

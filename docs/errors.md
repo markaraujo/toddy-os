@@ -22,3 +22,15 @@ No OS build failures exist yet. Do not turn planning risks into invented test fa
   in H01. The failed process did not write a successful checkpoint.
 - Recovery: remove only the exited toddy-builder container and restart with
   scripts/host/vm.py start; persistent disk files are preserved.
+
+## 2026-11-05 — H03 sanitized PATH and target identity probe
+
+- Symptom: runner launch raised FileNotFoundError for runuser before a recipe ran.
+- Cause: the deliberately minimal /usr/bin:/bin PATH excludes /usr/sbin/runuser.
+- Correction: invoke /usr/sbin/runuser explicitly. Confirmed the probe file was
+  absent and preserved the interrupted running record before retry.
+- Verification: success, recipe-exit-42 and postcondition-exit-42 cases all pass;
+  only success has a success marker. Logs are linked in H03 evidence.
+- Separate read-only probe correction: virtio disk serial was queried initially
+  at an absent sysfs device/serial path. Use lsblk's SERIAL column; the failed
+  guard exited before changes. Target preparation uses the verified method.

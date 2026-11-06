@@ -6,9 +6,9 @@ Bootstrap: ready_for_development
 
 Implementation: isolated KVM builder validated; LFS/BLFS 13.1 books and 94 foundation inputs frozen. Preparing guarded target and package ownership; no Toddy ISO yet.
 
-Foundation: **8%** · Agentic desktop: **0%**
+Foundation: **12%** · Agentic desktop: **0%**
 
-G1: pending · G2: pending · Next: **H03**
+G1: pending · G2: pending · Next: **H04**
 
 No milestone earns credit without completed acceptance evidence.
 
@@ -16,8 +16,8 @@ No milestone earns credit without completed acceptance evidence.
 | --- | --- | ---: | --- |
 | [H01 — Inspect host and select isolated build environment](stories/H01.md) | foundation | 4 | completed |
 | [H02 — Freeze books, sources and integrity manifest](stories/H02.md) | foundation | 4 | completed |
-| [H03 — Prepare target, build user and package ownership](stories/H03.md) | foundation | 4 | in_progress |
-| [H04 — Build the cross-toolchain](stories/H04.md) | foundation | 10 | not_started |
+| [H03 — Prepare target, build user and package ownership](stories/H03.md) | foundation | 4 | completed |
+| [H04 — Build the cross-toolchain](stories/H04.md) | foundation | 10 | in_progress |
 | [H05 — Build temporary tools](stories/H05.md) | foundation | 8 | not_started |
 | [H06 — Enter chroot and create recoverable checkpoint](stories/H06.md) | foundation | 8 | not_started |
 | [H07 — Build and test the final base system](stories/H07.md) | foundation | 24 | not_started |

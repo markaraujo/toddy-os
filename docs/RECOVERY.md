@@ -1,7 +1,6 @@
 # Development recovery
 
-Current checkpoint: H01 build-host requirements passed in the real KVM guest,
-including after shutdown/restart. No LFS target formatting/build has occurred.
+Current checkpoint: H03 target preparation, package ownership and runner tests passed in the real KVM guest. Target root is /dev/vdb4 mounted at /mnt/lfs; no cross-toolchain package is installed yet.
 No ISO exists. Gate G1 and G2 remain pending. Inspect status.json and actual
 processes before continuing; this document is updated at verified boundaries.
 
@@ -26,18 +25,23 @@ An offline copy of the configured builder is at
 .local/vm/checkpoints/h01-builder.qcow2. Its backing image is
 .local/vm/builder-base.img, exposed at /vm/builder-base.img inside QEMU's
 container. Restore the copy only while the guest is stopped; preserve the
-failed overlay first. There is no target checkpoint yet because it is blank.
+failed overlay first. H03 adds a paired builder/target checkpoint.
 The checkpoint is a convenience on the same disk, not disaster recovery.
+
+Latest paired offline checkpoint: .local/vm/checkpoints/h03-builder.qcow2 and
+h03-target.qcow2. Restore both together with QEMU stopped, preserving the failed
+disks first. The H01 checkpoint predates target preparation.
 
 ## Next action
 
-Finish H02's source integrity freeze. The source downloader logs to
+H02 source integrity freeze is complete. The source downloader logs to
 .local/logs/fetch-sources.log and captures exit status in
 .local/logs/fetch-sources.exit. Inspect its process and result before retrying.
 The resumable command is python3 scripts/fetch_sources.py. Verified archives
-are reused; mismatches are rejected, never extracted. Freeze books, errata
-and sources before H03. Then prototype package ownership and guarded target
-preparation before any cross-toolchain recipe.
+are reused; mismatches are rejected, never extracted. Start H04 with frozen LFS chapter 5, deriving and reviewing each recipe.
+Build via /opt/toddy-build/scripts/build/run_step.py in the guest; logs, manifests
+and running/failed/success records are at /var/log/toddy/build. An interrupted
+running record requires inspection of partial installation before retry.
 
 ## Storage and resource boundaries
 
