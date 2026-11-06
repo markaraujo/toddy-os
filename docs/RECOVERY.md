@@ -395,3 +395,12 @@ excluded from release images/Git. Prefer restoring the verified disposable
 cold pair for a failed boot-track experiment; sector backups alone are not a
 complete system checkpoint. Actual BIOS/UEFI early boot remains a separate
 mandatory acceptance step after artifact checks. No H09 dispatch has run yet.
+
+
+Mtools 4.0.50 is frozen as an additional H11 GRUB EFI image dependency in
+ADR-0050. The source cache and detached-signature evidence are outside Git;
+scripts/fetch_security_overlay.py --supplemental reproduces SHA verification.
+Do not sync it into the builder while the DB recipe owns the build lock.
+Native build, exact GRUB FAT-image roundtrip and actual ISO UEFI boot are still
+pending. The upstream check target contains no self tests; it cannot replace
+those checks. Existing H07 124/126 package counts exclude this future tool.

@@ -784,6 +784,25 @@
       "published_digest_source": "https://api.github.com/repos/plougher/squashfs-tools/releases/tags/4.7.5",
       "planned_stage": "H10 source-built compressed-root tools; real metadata roundtrip and native kernel boot required",
       "selection_reason": "Upstream stable 4.7.5 fixes sparse-file corruption present in earlier 4.7 releases; additional component, not a baseline upgrade"
+    },
+    {
+      "name": "mtools",
+      "version": "4.0.50",
+      "filename": "mtools-4.0.50.tar.bz2",
+      "url": "https://ftp.gnu.org/gnu/mtools/mtools-4.0.50.tar.bz2",
+      "sha256": "f3a58e6cfc2634b03c240442548e3b00103692357afc28e1e7104744dd6478b5",
+      "size": 465818,
+      "signature_verified": true,
+      "signature_url": "https://ftp.gnu.org/gnu/mtools/mtools-4.0.50.tar.bz2.sig",
+      "signature_sha256": "d5a36341fdcfb57e5a98e6df8a4730111489dccdb6ad21b86643d85d263d262c",
+      "signing_fingerprint": "51A23D9D7C4DF41AA48FA893E99CF5537790B839",
+      "keyring_url": "https://ftp.gnu.org/gnu/gnu-keyring.gpg",
+      "keyring_sha256": "8013de59880f7a59f53b6bd207f4d2a408d67b84a82fa9cba1dbbf443428e2db",
+      "signature_note": "Detached signature verified with gpgv against scoped GNU HTTPS keyring; no global trust store changed",
+      "decision": "ADR-0050",
+      "source_directory": "mtools-4.0.50",
+      "planned_stage": "H11 source-built mformat/mcopy for GRUB EFI regular-file image construction; native readback and actual UEFI boot required",
+      "selection_reason": "Additional GRUB dependency absent from base; current upstream release NEWS reports CVE-2026-118384 fix; no baseline version changed"
     }
   ],
   "additional_decisions": [

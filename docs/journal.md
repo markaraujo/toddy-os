@@ -73,3 +73,5 @@
 2026-11-06: Revalidated the live BDB memory-pool workers and supervisor. Prepared final-base driver exit capture before prerequisite refusal; shell syntax and 97 checks pass. No active build inputs changed.
 
 2026-11-06: Prepared gated dual-platform GRUB installation, target/partition checks, before-sector recovery copies and boot artifact verification. Actual gate refused premature execution; syntax and 97 checks pass. No disk writes or boot acceptance; BDB full suite remains active (ADR-0046).
+
+2026-11-06: Frozen signed GNU Mtools 4.0.50 after verifying the GRUB EFI image dependency, detached signature and safe archive paths. Future native FAT roundtrip/ISO boot remain pending; no active guest inputs changed (ADR-0050).
