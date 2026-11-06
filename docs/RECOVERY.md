@@ -422,3 +422,19 @@ image files with bounded processors/memory; failures preserve the fixture
 path reported in the log. Inspect it before retrying. Actual source build and
 all three compressor/metadata/ACL roundtrips remain pending. Passing extraction
 checks cannot substitute for the later native-kernel live/overlay boot gate.
+
+
+After H10 acceptance and H11 status/input synchronization, the prepared ISO
+library order is libburn, libisofs, then libisoburn. For each name, invoke
+run_step.py h11-NAME h11/NAME.sh h11/NAME-check.sh --user root inside the
+builder's /opt/toddy-build/scripts/build directory. Libisoburn additionally
+requires both previous success markers. This is separate from the Mtools step;
+all four must pass before GRUB hybrid ISO assembly. Do not invoke those recipes
+while the H07 database job owns the build lock. No library has been installed
+by preparing these files.
+
+Configure logs are under /sources/evidence/h11-NAME. Libisoburn's native ISO
+metadata/corruption check preserves failed private /tmp/toddy-iso-roundtrip-*
+fixtures, and writes iso-roundtrip.json only after success. Inspect actual exit
+and postcheck results, not just image existence. A regular-file roundtrip does
+not accept BIOS/UEFI boot, final live root or H11's distributable image audit.

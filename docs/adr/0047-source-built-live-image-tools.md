@@ -100,3 +100,42 @@ raw .local/logs/h10-squashfs-premature-gate-refusal.json SHA-256
 4a06550dd602fb73206f335c4845cc13196259184d32f3e03a82aa0420f8d50e.
 Shell syntax, Python parsing and 97 local checks pass. The Squashfs native
 build/roundtrip itself remains unexecuted until the prerequisites pass.
+
+Prepared libburn/libisofs/libisoburn native recipes follow the exact BLFS
+13.1 shared-library configure/build sequence, including libisoburn's
+--enable-pkg-check-modules. Explicitly disable unused libcdio and libjte;
+keep ACL/xattr/zlib and native Readline support, requiring the actual generated
+Makefile definitions. Disable the upstream install-time ldconfig hook while
+staging; it must not treat staging directories as installed search paths.
+Remove each known staged .la file according to the final-system Libtool policy.
+Retain source COPYING/COPYRIGHT/AUTHORS/README and installed upstream manuals.
+The original xorriso-tcltk script remains available with its documented optional
+Tk/wish dependency, without advertising a working foundation GUI.
+
+The package postchecks compile/run C against each native pkg-config interface
+and verify the actual runtime version; libisofs also initializes/finalizes its
+library. The prepared Xorriso test uses a private regular-file ISO with Rock
+Ridge metadata, ACLs, user xattrs, special mode bits, UID/GID 18, hardlinks,
+relative symlinks and UTF-8/newline names. It checks the ISO descriptor, extracts
+and compares content/metadata, verifies embedded checksums, then flips one byte
+in a uniquely located file payload in a separate copy. The corruption case must
+report MD5 MISMATCH and exit 32. Frozen xorriso.texi specifies that return_with
+applies when no abort occurred, so abort_on FATAL is above the deliberately
+reported FAILURE; normal commands still require exit 0. MD5 here detects
+corruption, not publisher authenticity. The image evidence uses SHA-256.
+
+All commands address private stdio: files; no optical or physical target is
+opened. A failed ISO fixture is preserved with its path in the durable log.
+These are prepared checks, not passing native builds or an actual bootable ISO.
+H11 status/prerequisite checks remain mandatory; do not dispatch during H07.
+The package versions retain pl02 while upstream runtime/pkg-config reports
+1.5.8, as verified in each frozen configure.ac/header.
+
+Exact H11 gate execution through guest Python stdin refused the current
+prerequisite state with exit 1 before any installation. Raw refusal SHA-256
+`2e3b0fe9b715bb99c73874223181a1e1d2597b4524a5c917283b2e42a25b9ede`
+at .local/logs/h11-libburnia-premature-gate-refusal.json. Python syntax,
+six shell recipes/checks and 97 local repository checks pass; native library
+builds and the actual ISO roundtrip remain unexecuted. The roundtrip supplies
+-no_rc as the first Xorriso argument, as required by the frozen manual, so
+personal startup commands cannot alter its explicit private-file operations.
