@@ -74,3 +74,29 @@ Actual regenerated notice inventory covers 155 inputs/890 candidates, SHA-256
 a132d03bdf48d03b7c2b909c51b969da1153b8c1bcf44bd23c90504af1fe5507.
 Older content-addressed inventories remain preserved. This is not complete
 license review; no new tool is installed by the source freeze.
+
+
+Prepared Squashfs 4.7.5 recipe follows the verified archive Makefile and
+explicitly enables gzip/xz/zstd plus xattrs, with xz default. These compressors
+match the required kernel fragment. Disable LZO/LZ4/deprecated LZMA rather than
+implicitly enabling every CONFIG preset. Installation uses explicit staged
+binary/manpage directories. Upstream prebuilt manuals are retained with a
+profile noting their broader optional-compressor descriptions; the installed
+tool's help describes the selected build. No source test suite is invented.
+
+The prepared actual native roundtrip uses each selected compressor, compares
+root/file metadata and content, numeric ownership, special mode bits, relative
+symlinks, shared hardlink inode, sparse allocation and extended attributes.
+Extended ACLs must be absent before the separate numeric physical restore and
+match afterward (ADR-0048). Its byte/hash fixture includes long UTF-8 and
+newline names; no external data or credentials are involved. Failure preserves
+the private fixture path for diagnosis; success removes it. This userspace
+extraction check does not establish Squashfs kernel mounting, live overlay,
+early ACL restoration before services or successful live boot.
+
+H10 requires accepted H09/status and actual kernel/bootloader markers. The
+exact gate run through guest Python stdin refused premature execution, exit 1;
+raw .local/logs/h10-squashfs-premature-gate-refusal.json SHA-256
+4a06550dd602fb73206f335c4845cc13196259184d32f3e03a82aa0420f8d50e.
+Shell syntax, Python parsing and 97 local checks pass. The Squashfs native
+build/roundtrip itself remains unexecuted until the prerequisites pass.

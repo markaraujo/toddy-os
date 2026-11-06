@@ -413,3 +413,12 @@ before retry. The postcheck uses only a private regular-file FAT image and
 removes that fixture after checking real EFI bytes/UTF-8/invalid-input refusal.
 Actual ISO assembly and UEFI boot are subsequent requirements. The prepared
 H11 gate currently refuses; do not dispatch it during H07.
+
+
+After H09 acceptance and synchronized H10 in_progress status, run Squashfs
+through run_step.py h10-squashfs-tools h10/squashfs-tools.sh
+h10/squashfs-tools-check.sh --user root. Native tests use private regular
+image files with bounded processors/memory; failures preserve the fixture
+path reported in the log. Inspect it before retrying. Actual source build and
+all three compressor/metadata/ACL roundtrips remain pending. Passing extraction
+checks cannot substitute for the later native-kernel live/overlay boot gate.
