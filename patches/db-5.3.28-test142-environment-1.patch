@@ -1,0 +1,11 @@
+--- a/test/tcl/test142.tcl
++++ b/test/tcl/test142.tcl
+@@ -63,6 +63,8 @@
+ 	    		lappend args -encrypt
+ 	    		lappend args2 -encrypt
+ 		}
++		# Remove prior test regions before creating our own transactional env.
++		env_cleanup $homedir
+ 		set opened 1
+ 		set env [eval {berkdb_env_noerr -create -txn \
+ 		    -cachesize { 0 1048576 1 }} $cryargs -home $homedir]
