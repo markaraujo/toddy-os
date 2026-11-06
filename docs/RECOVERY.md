@@ -373,3 +373,11 @@ markers; do not launch a duplicate dispatcher. The supervisor uses a local
 exclusive lock. If interrupted while waiting, inspect results first and resume
 from the exact verified boundary; do not rerun completed builds. Guest final
 driver logging remains /var/log/toddy/h07-final-base-driver.log and .exit.
+
+
+The final-base driver now records its PID and installs the exit-status trap
+before prerequisite checks, matching the independent ownership driver's
+convention. A missing prerequisite produces an explicit diagnostic and exit
+file instead of leaving the supervisor with an absent result. Syntax and all
+97 local checks pass; actual final dispatch remains pending behind DB success.
+This prepared correction is included at the next quiescent input sync.
