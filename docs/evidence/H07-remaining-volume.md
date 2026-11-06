@@ -37,6 +37,23 @@ That section has not started. Some combinations return early as inapplicable;
 these are planned entries, not 1215 independently timed full tests or assertions.
 No duration estimate is derived from multiplying that number by one slow case.
 
+The numbered general sequence runs from Test001 through Test142, with 135
+listed entries: 075, 080, 104, 105, 106, 108 and 118 are absent from the frozen
+dispatch list. These omissions are upstream list structure, not tests removed
+by this project. Test044 is the forty-fourth listed entry; 91 listed entries
+follow it in one pass. The entry count 135 is not the highest test number.
+
+At 21:54 UTC, the current partition variant was executing Test044 cycle 1.
+Its actual source performs three cycles per invocation. Each selects a load
+duration from 300 to 600 seconds, then crashes the workers and verifies recovery.
+The first current cycle logged 525 seconds. Five observed workers were each
+actively consuming one CPU, with increasing CPU time. The quiet parent log
+during this load interval is expected. Recovery/verification time is additional;
+no complete-suite ETA follows from this one case. Source list, exact remaining
+entries, source hashes and process observation are retained in
+.local/logs/h07-bdb-numbered-sequence.json, SHA-256
+`74443532c98400b724832711a60deb0ada0d298eeded316916f7aa0e2fc8777a`.
+
 For scale, source also declares 24 recovery templates and 99 replication
 templates. Partition itself calls two partition wrappers for btree/hash over
 the 24 + 135 templates: 636 wrapper-call slots in the entire group, including

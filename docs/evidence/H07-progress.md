@@ -1015,3 +1015,14 @@ During this wait, a private native minimal-initramfs archive roundtrip passed
 (ADR-0054), including same-filesystem duplicate-build equality, exact extraction
 and corruption/truncation rejection. No installed or active BDB input changed;
 this future image preparation does not count toward H07 or live-boot acceptance.
+
+
+2026-11-06 21:54 UTC: partition Test044 is running its first cycle with five
+native workers, each observed near one full CPU and increasing CPU time.
+Source defines three cycles, each with 300–600 seconds of randomized load
+before simulated crash/recovery; the current first cycle logged 525 seconds.
+The numbered general sequence ends at Test142 with 135 listed entries, not at
+Test135; seven numbers are absent upstream and 91 entries follow Test044 in
+one pass. See H07-remaining-volume.md for exact names/source/process evidence.
+This corrects the conversational conflation of entry count and highest number.
+No suite input, test coverage or acceptance boundary was changed.

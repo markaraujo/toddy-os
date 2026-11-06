@@ -163,3 +163,12 @@ Full raw manifest/provenance retained outside Git; successful fixtures removed.
 Actual kernel unpacking, live-root/ISO construction and boot remain pending.
 The original complete Berkeley DB standard suite continues, now in partition
 Test014 after Recd024; no source sync or installed mutation occurred.
+
+
+2026-11-06 21:54 UTC — Verified the frozen DB numbered dispatch list directly:
+Test001 through Test142 with 135 entries (seven upstream numbering gaps).
+Corrected the earlier conversational statement that it ended at Test135.
+Test044 has three timed load/crash/recovery cycles; current first cycle is
+525 seconds with five CPU-active native workers. Published the precise
+sequence and source-backed wait context without assigning fractional acceptance
+or shortening the suite. Original driver/supervisor remain active.
