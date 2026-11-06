@@ -4,6 +4,7 @@ set -uo pipefail
 cd /opt/toddy-build/scripts/build
 [[ -f /var/log/toddy/build/h07-gcc-install.success.json || -f /var/log/toddy/build/h07-gcc-install-recovery.success.json ]] || exit 1
 for package in ncurses sed psmisc gettext bison grep glibc-test-locales bash; do
+ if [[ $package == bash && -f /var/log/toddy/build/h07-bash-recovery.success.json ]]; then continue; fi
  if [[ $package == psmisc && -f /var/log/toddy/build/h07-psmisc-audit.success.json ]]; then continue; fi
  if [[ $package == ncurses && -f /var/log/toddy/build/h07-ncurses-recovery.success.json ]]; then continue; fi
  if [[ -f /var/log/toddy/build/h07-$package.success.json ]]; then continue; fi

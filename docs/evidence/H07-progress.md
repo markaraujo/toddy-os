@@ -319,3 +319,42 @@ docs are not presented as 3.14.10 docs. SQLite's autoconf distribution has no
 suite per section 8.52; its postcheck exercises persistent transactions,
 FTS5, integrity and no rpath. Python packaging wheels build/install offline
 from frozen sources. Libffi's explicit generic-CPU choice is ADR-0015.
+
+
+Bison, Grep and the two legacy-encoding test locales passed recipe/postcheck,
+bringing the native count to 40. Bash initial full suite was rejected before
+installation; all 86 groups were visited but ten diff lines needed diagnosis.
+The FD-isolation experiment and exact official-reference classification are
+ADR-0016. The complete corrected suite is running; Bash is not yet accepted.
+The pinned official reference is fetched as data by fetch_bash_reference.py;
+sync_build verifies its hash and transfers it before target use. Regression
+checks now total 36 tests. New system-utility recipes through Texinfo are
+prepared and syntax-checked, not claimed validated. Kmod/GRUB native boot and
+module acceptance remain H09 obligations; their chapter-8 build checks do not
+substitute for boot. Full source-known Groff/Tar test failures, if observed,
+will stop the driver for diagnosis rather than be suppressed.
+
+
+## Bash corrected-suite and native acceptance (2026-11-06)
+
+The full corrected PTY retry completed all 86 groups once each, with zero
+unknown differences and zero fatal diagnostics. Seven diff lines remain,
+exactly the two qualified groups in ADR-0016; this is not an all-pass suite.
+The descriptor-related differences disappeared without editing tests. Final
+Bash packaging/installation and native arithmetic/process-substitution checks
+passed. A separate unchanged-package audit verified finite-precision printf
+and actual SIGUSR1 trap delivery; recipe/postcheck zero and zero installed
+changes. Current native count is 41; Libtool-through-Meson driver is running.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| Bash full recovery/install log | 06330fdde572f3c0367eaafe8bdc1f449baf21bad0d98fd0d898e58eb4897088 |
+| Bash native .deb | 46f38ed4aa6fd9069c61f8187d1ed200712636b918495d53be4210366109edd0 |
+| Separate native semantics audit log | 1b2e540e34c5f9f4f5874742e075c475d89388a56c2a9515589c17e97cfbfb5c |
+
+Bison's suite reports 712 successful/64 skipped cases plus 13 passing unit
+tests. Grep reports no FAIL/ERROR across its complete suites. Original and
+corrected Bash reports, focused probes, reference, classification, nested
+Gettext/Bison/Grep reports and terminal runner records are copied to
+.local/logs/h07-post-compiler/evidence.tar.gz. Original rejected Bash record is
+preserved; h07-bash-recovery.success.json is the separate installed acceptance.

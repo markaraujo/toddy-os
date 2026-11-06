@@ -9,7 +9,7 @@ mkdir -p /sources/evidence/h07-bash
 chown -R tester .
 LC_ALL=C.UTF-8 su -s /usr/bin/expect tester << 'EXPECT' 2>&1 | tee /sources/evidence/h07-bash/check.log
 set timeout -1
-spawn make tests
+spawn sh -c {exec 3>&- 4>&-; exec make -j1 tests}
 expect eof
 lassign [wait] _ _ _ value
 exit $value

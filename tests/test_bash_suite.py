@@ -20,3 +20,14 @@ class BashSuite(unittest.TestCase):
         expected = {f'run-{n}' for n in range(60)}
         self.assertFalse(evaluation.classify('\n'.join(sorted(expected)[:-1]), expected)['accepted'])
         self.assertFalse(evaluation.classify('run-one\n', {'run-one'})['accepted'])
+
+    def test_only_complete_exact_group_specific_exceptions_are_accepted(self):
+        expected = {f'run-{n}' for n in range(60)}
+        full = '\n'.join(sorted(expected))
+        known = {'run-9': ['< known actual', '> known reference']}
+        # run-9 sorts last, so this diff belongs to exactly that group.
+        self.assertTrue(evaluation.classify(full+'\n< known actual\n> known reference\n',expected,known)['accepted'])
+        self.assertFalse(evaluation.classify(full+'\n< known actual\n',expected,known)['accepted'])
+        self.assertFalse(evaluation.classify(full+'\n< novel actual\n> known reference\n',expected,known)['accepted'])
+        self.assertFalse(evaluation.classify(full+'\nrun-8\n< known actual\n> known reference\n',expected,known)['accepted'])
+        self.assertFalse(evaluation.classify(full+'\nSegmentation fault\n',expected,known)['accepted'])

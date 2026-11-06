@@ -40,24 +40,23 @@ contains 31 native packages and the complete classified final GCC build/tests,
 before GCC installation. Older h06-ready was actually restored and retested.
 Checkpoint copies share the workstation disk and are not disaster recovery.
 
-Current live target has 37 native packages, including GCC/runtime, Ncurses, Sed, Psmisc and Gettext.
-Both explicit packaging recoveries passed recipe/postcheck; original failed
-records remain unchanged. Inspect actual records before resuming:
+Current live target has 41 native packages including final Bash. The complete
+corrected 86-group suite, installation and separate ordinary printf/SIGUSR1
+audit passed; original rejected results and seven source-qualified diff lines
+remain preserved (ADR-0016). No all-pass Bash-suite claim is made.
 
 ```sh
 python3 scripts/host/vm.py inspect
-python3 scripts/host/vm.py ssh 'ls /var/log/toddy/build/*.running.json; tail -c 2000 /var/log/toddy/h07-install-final-compiler-driver.log'
+python3 scripts/host/vm.py ssh 'ls /var/log/toddy/build/*.running.json; tail -c 2000 /var/log/toddy/h07-native-tools-driver.log'
 ```
 
-The current driver has passed Sed/Psmisc/Gettext and continues Bison, Grep, test locales and
-Bash. Its terminal status is /var/log/toddy/h07-install-final-compiler-driver.exit;
-per-step running/success/failed records are authoritative. After a VM restart,
-run mount-kernfs.sh before any chroot operation. When no step is running, resume:
-
-```sh
-python3 scripts/host/vm.py ssh 'bash /opt/toddy-build/scripts/build/mount-kernfs.sh'
-python3 scripts/host/vm.py ssh 'nohup bash /opt/toddy-build/scripts/build/h07-install-final-compiler-driver.sh > /var/log/toddy/h07-install-final-compiler-driver.log 2>&1 < /dev/null &'
-```
+The running h07-native-tools driver covers Libtool through Meson in frozen
+chapter 8 order. Inspect its PID/log/exit plus per-step terminal records before
+resuming. After a guest restart, mount-kernfs.sh is required before chroot.
+Following verified Meson, h07-system-utilities-driver.sh covers Kmod through
+Texinfo. A known or new upstream suite failure stops for diagnosis. Never
+start a second driver while a recipe runs; the runner also locks concurrent
+installation. Old driver exit files do not prove the current process finished.
 
 Never rerun account bootstrap or re-extract successful build trees. The GCC
 suite marker proves compilation/tests only; installation is separately proved

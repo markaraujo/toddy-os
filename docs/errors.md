@@ -207,3 +207,28 @@ A mistakenly targeted sed-audit failed its missing-record precondition with
 zero installed changes; Sed itself had passed all along. It was removed from
 future recipes; actual per-step identity is checked before interpreting driver
 output, whose final record can belong to a later package.
+
+
+## H07 Bash PTY descriptors and source-known differences (2026-11-06)
+
+All 86 initial groups ran, but the independent classifier correctly rejected
+ten diff lines despite upstream run-all's unconditional zero. No installation
+occurred. Focused testing found Expect's inherited pipe at FD 4. Serial make
+alone retained it; closing FDs 3/4 in the spawned child eliminated the exec17
+and BASH_XTRACEFD errors. The first focused wrapper omitted run-all's TMPDIR
+initialization and produced unrelated denied writes; that log is retained,
+and the corrected wrapper uses /tmp. No test fixture was edited.
+
+The remaining four signal-order diff lines and three extreme-precision printf
+diff lines exactly occur in the official pinned LFS 13.1 Bash log. ADR-0016
+records their semantics, scope and strict group-specific classification.
+A complete corrected-PTY retry is running; no acceptance is inferred from a
+running process. Configured exceptions reject all unexpected additions,
+partial matches, wrong groups, truncated/duplicate coverage and fatal output.
+Normal finite printf/signal behavior is separately checked natively.
+
+
+Bash correction outcome: full 86-group retry accepted only the seven exact
+ADR-0016 reference lines, zero novel differences. Native install/postcheck
+passed; the separate finite printf/SIGUSR1/package-integrity audit also passed
+with zero installed changes. Original rejection remains preserved.

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "book": "LFS 13.1-systemd",
+  "version": "Bash 5.3",
+  "url": "https://www.linuxfromscratch.org/lfs/build-logs/13.1/i7-14700K/test-logs/837-bash-5.3",
+  "sha256": "ff45b725dc0d45449a595aaffb9bbc90e70ca4ecc7320289404ee9a64c190e58",
+  "decision": "ADR-0016",
+  "known_diff_groups": {
+    "run-execscript": [
+      "< trap -- 'echo USR1' SIGUSR1",
+      "> trap -- 'echo USR1' SIGUSR1",
+      "< trap -- 'echo USR1' SIGUSR1",
+      "> trap -- 'echo USR1' SIGUSR1"
+    ],
+    "run-printf": [
+      "< ./printf7.sub: line 88: printf: Value too large for defined data type",
+      "< ",
+      "> XY"
+    ]
+  }
+}

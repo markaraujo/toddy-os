@@ -46,14 +46,17 @@ def pipe_tar(args, remote):
 
 
 metadata = ['scripts/build', 'LICENSES', 'config/component-licenses.json', 'config/books.lock.json', 'config/sources.lock.json']
-reference_config = ROOT / 'config/compiler-test-reference.json'
-reference_path = None
-if reference_config.exists():
-    reference = json.loads(reference_config.read_text())
-    reference_path = ROOT / '.local/references' / ('gcc-reference-' + reference['sha256'] + '.log')
-    if not reference_path.exists() or hashlib.sha256(reference_path.read_bytes()).hexdigest() != reference['sha256']:
-        raise SystemExit('Run scripts/fetch_compiler_reference.py before syncing build inputs')
-    metadata.append('config/compiler-test-reference.json')
+references = []
+for kind, config_name in [('gcc','compiler-test-reference.json'), ('bash','bash-test-reference.json')]:
+    config_path = ROOT/'config'/config_name
+    if not config_path.exists():
+        continue
+    reference = json.loads(config_path.read_text())
+    path = ROOT/'.local/references'/(kind+'-reference-'+reference['sha256']+'.log')
+    if not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest() != reference['sha256']:
+        raise SystemExit('Fetch the pinned '+kind+' reference before syncing build inputs')
+    metadata.append('config/'+config_name)
+    references.append((kind,path))
 if overlay_path.exists():
     metadata.append('config/security-overlay.lock.json')
 if supplemental_path.exists():
@@ -63,9 +66,10 @@ pipe_tar(['-cf', '-'] + metadata,
 # Enumerating files avoids copying the cache directory's mode over sticky sources.
 pipe_tar(['-C', '.local/sources', '-cf', '-'] + [r['filename'] for r in rows],
          check + '; tar --no-overwrite-dir -xf - -C /mnt/lfs/sources')
-if reference_path is not None:
-    with reference_path.open('rb') as stream:
+for kind, path in references:
+    with path.open('rb') as stream:
         subprocess.run([sys.executable, str(VM), 'ssh', check +
-            '; mkdir -p /mnt/lfs/sources/evidence/h07-gcc; cat > /mnt/lfs/sources/evidence/h07-gcc/reference.log'],
+            '; mkdir -p /mnt/lfs/sources/evidence/h07-'+kind+
+            '; cat > /mnt/lfs/sources/evidence/h07-'+kind+'/reference.log'],
             stdin=stream, check=True)
 print('Build scripts, locks and verified archives transferred; source directory mode preserved.')
