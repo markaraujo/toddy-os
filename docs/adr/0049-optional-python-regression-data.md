@@ -253,3 +253,49 @@ with scripts/host/probe_python_qa_ownership.py and
 scripts/host/probe_python_qa_handoff_plan.py in the designated builder. On a
 failure, preserve the reported private fixture and logs; do not retry against
 the installed database or delete partial state as a substitute for recovery.
+
+## Complete pair validation and gated archive preparation
+
+Added prepare_python_qa.py, an archive-only production recipe guarded by the
+existing H11 prerequisite and actual native Dpkg acceptance. It derives the
+successor generation from the configured predecessor, verifies its own archive,
+extracts and partitions that preserved payload, retains the runtime dependency
+and conffile contracts, and prepares core then QA through stage_package.py.
+Both archives are prepared before any ownership change. The final prepared.json
+records identities, archive hashes and the unchanged installed status hash.
+Existing stages/artifacts are preserved for diagnosis rather than overwritten.
+The complete production CLI has not run: H11 remains gated.
+
+python_qa_bundle.py adds a whole-pair boundary: runtime must equal every original
+non-QA payload entry, while QA must contain every original QA entry and only
+reviewed parents/notices. It checks the predecessor record/archive identities,
+complete transfer list, exact source rows, actual archive identity/architecture,
+unchanged runtime Depends and complete QA direct dependencies. Validation alone
+cannot authorize installation. The caller must hash archives, read their actual
+controls and compare extracted payloads, then retain normal Dpkg checks.
+
+The private native preflight now builds both actual native archives with two
+compression threads, re-extracts each, compares the complete data manifests and
+runs the pair check against controls read by native dpkg-deb. It passes for
+5,395 QA files and 3,943 retained runtime files/links. A changed retained ssl.py
+hash is rejected; all earlier missing-provider, install-mode and modified-QA
+negative cases still pass. Installed status and package cache are unchanged.
+These experimental archives are not release candidates; their successful
+private fixtures are removed. Four local regressions cover runtime loss/change,
+QA loss/injection and source/control/transaction identity differences.
+
+Native raw report .local/logs/h11-python-qa-handoff-plan-probe.json SHA-256:
+`5cbbcd25aff0b5a0755da4dab7576f9745e6407930172163e001cf45333c6c24`.
+An immutable SHA-256-suffixed copy retains this result. Pair validator SHA-256:
+`ac2b1067195b9bb6c5b61872ea5b6da2f139bfa9f06749ac6ac55479ac61d094`.
+Prepared production recipe SHA-256:
+`9b8089620b34d64f8624a0fe74062b28cdb41b01d8c8fbab491eb2d4ebacefff`.
+Only its reusable archive-control reader was executed by the private probe;
+no claim of full gated recipe execution or installed transfer is made.
+
+The native backend intentionally runs env -i, so an outer compression environment
+variable would not reach dpkg-deb. The packager now accepts an optional explicit
+--compression-threads budget, passed as native --threads-max=N; other recipes
+retain their previous default. Frozen Dpkg 1.22.22 man/dpkg-deb.pod documents this
+option since 1.21.9. The prepared recipe and successful private native builds
+request two threads explicitly. Active build inputs have not been synchronized.

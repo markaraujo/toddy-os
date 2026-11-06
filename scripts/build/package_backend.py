@@ -46,15 +46,22 @@ class PackageBackend:
             raise SystemExit('Native workspace must be a root-owned private directory')
         return workspace
 
-    def build(self, stage, archive):
+    def build(self, stage, archive, threads=None):
+        compression = []
+        if threads is not None:
+            if type(threads) is not int or not 1 <= threads <= 32:
+                raise ValueError('Compression thread budget must be an integer from 1 through 32')
+            # Native run clears the environment. Pass the frozen Dpkg option
+            # explicitly rather than relying on a caller's environment variable.
+            compression = ['--threads-max=' + str(threads)]
         if not self.native:
-            self.run('dpkg-deb', '--build', str(stage), str(archive))
+            self.run('dpkg-deb', *compression, '--build', str(stage), str(archive))
             return
         workspace = self.workspace()
         output = workspace/archive.name
         if output.exists() or output.is_symlink():
             raise SystemExit('Preserve existing native package output before retry')
-        self.run('dpkg-deb', '--build', '/'+str(stage.relative_to(self.target)),
+        self.run('dpkg-deb', *compression, '--build', '/'+str(stage.relative_to(self.target)),
                  '/'+str(output.relative_to(self.target)))
         shutil.copy2(output, archive)
         if hashlib.file_digest(output.open('rb'), 'sha256').hexdigest() != hashlib.file_digest(archive.open('rb'), 'sha256').hexdigest():

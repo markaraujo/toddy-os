@@ -235,3 +235,13 @@ next-action policy and replayed actual states with native Python. Production
 controller and configured runtime acceptance remain pending. DB callback
 Test044 has advanced into cycle 3 after two observed load/crash/recovery cycles;
 original driver/runner remain live. No active inputs synchronized.
+
+2026-11-06 22:38 UTC — Added the gated archive-only Python QA preparation recipe
+and complete core/QA pair validator. The expanded private native preflight built
+and re-extracted both real archives with an explicit two-thread compression
+budget: 5,395 QA files and 3,943 runtime files/links match the original partition
+exactly. Deliberate retained-runtime drift is rejected along with the earlier
+negative cases. Installed package state/cache are unchanged. The full gated
+production recipe and transaction controller remain unexecuted/pending; no H11
+credit or active-input synchronization. DB Test044 callback cycle 3 continues
+its programmed load, with the original driver and runner live at 22:38 UTC.

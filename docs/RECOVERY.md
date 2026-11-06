@@ -650,3 +650,20 @@ never infer payload completeness from Version alone. python_qa_transfer.py is
 only a next-action policy: a partial state requires a matching validated
 transaction before retry. It does not install, journal intent or accept the
 release. The production controller still must implement those operations.
+
+After H11 is eligible and accepted inputs are synchronized, prepare both archives
+with python3 /opt/toddy-build/scripts/build/prepare_python_qa.py under the normal
+logged recipe runner. It is archive-only; there is no install flag. Inspect
+/mnt/lfs/sources/evidence/h11-python-qa-preparation/prepared.json and verify all
+listed archive/record identities before a subsequent transfer. Preserve the
+original archive and both successor artifacts throughout the transaction.
+
+A failed preparation retains /mnt/lfs/sources/stage/h11-python-runtime,
+/mnt/lfs/sources/stage/h11-python-tests and its evidence directory. The command
+refuses to overwrite these or an existing successor cache archive. First check
+that installed Python/status are unchanged, diagnose the exact failing step,
+and preserve the failed stages/artifacts under an explicitly named incident
+checkpoint before reconstructing from the hash-verified original. Do not run
+this recipe again after an installed transfer has begun. The production transfer
+controller, configured dependency/runtime checks and final image exclusion are
+still required; prepared.json is not a completion marker for H11.

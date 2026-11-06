@@ -88,6 +88,8 @@ def main():
     parser.add_argument('--source', action='append', default=[])
     parser.add_argument('--conffile', action='append', default=[])
     parser.add_argument('--install', action='store_true', help='Otherwise validate/build archive without installing')
+    parser.add_argument('--compression-threads', type=int, choices=range(1, 33),
+                        help='Explicit native compressor thread budget; survives the clean chroot environment')
     parser.add_argument('--prepare-python-qa-handoff', action='store_true',
                         help='H11 only: prepare an unchanged complete Python QA archive; never install it')
     args = parser.parse_args()
@@ -179,7 +181,7 @@ def main():
     if args.conffile:
         (control/'conffiles').write_text('\n'.join(args.conffile)+'\n')
     RECORDS.mkdir(parents=True, exist_ok=True)
-    backend.build(stage, archive)
+    backend.build(stage, archive, threads=args.compression_threads)
     record = {'name': args.name, 'version': args.version, 'archive_sha256': digest(archive),
         'recipe_sha256': digest(args.recipe), 'packager_sha256': digest(Path(__file__)), 'packaging_backend': backend.record,
         'supporting_build_scripts': recipe_set(), 'sources': source_rows,
