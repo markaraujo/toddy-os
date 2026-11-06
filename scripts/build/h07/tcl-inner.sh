@@ -27,7 +27,8 @@ sed -e "s|$SRCDIR/unix/pkgs/itcl4.3.7|/usr/lib/itcl4.3.7|" \
 
 unset SRCDIR
 
-LC_ALL=C.UTF-8 make test
+mkdir -p /sources/evidence/h07-tcl
+LC_ALL=C.UTF-8 make test 2>&1 | tee /sources/evidence/h07-tcl/check.log
 
 make INSTALL_ROOT=/sources/stage/tcl install
 chmod 644 /sources/stage/tcl/usr/lib/libtclstub8.6.a

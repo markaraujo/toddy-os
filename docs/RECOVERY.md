@@ -87,3 +87,13 @@ before every recipe/postcheck. Recovery source tree
 The prepared h07-harness-driver must start only after Tcl passes; Binutils
 build/test is separate from installation so critical results can be classified
 before changing the live target. No critical suite is skipped.
+
+Current continuation: all test-tools and four harness packages passed; the
+h07-harness-driver now runs h07-binutils-build (build and mandatory suite
+only, no installation). Check /var/log/toddy/build/h07-binutils-build.* and
+/mnt/lfs/sources/evidence/h07-binutils/check.exit, check.log and
+test-reports.tar.gz. A nonzero test exit must be classified from raw reports
+before a separate installation step. Latest cold checkpoint remains
+h07-early-base, preceding these eight native packages. Current target has 21
+packages. Tcl optional client limitations are in ADR-0011; no new credentials
+or service is needed to continue the core book build.

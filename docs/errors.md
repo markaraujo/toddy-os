@@ -128,3 +128,21 @@ and suite report remain in target recovery/evidence directories; the full
 clean-source suite retry passed: 334 PASS, 48 SKIP, zero FAIL; recipe and
 postcondition exit 0. Its full log SHA-256 is
 bbadb5da2e6d3de7eb237250f24b0849aecd3a0f8e728cd7dd5027099f475f29.
+
+## H07 Tcl optional database clients and Expect PTY input (2026-11-06)
+
+Tcl's make test exited zero; independent summary parsing verified core
+47159 total/43704 passed/3455 skipped/zero failed. It also exposed test-file
+load errors for absent MySQL/ODBC/PostgreSQL client libraries. ADR-0011 records
+these specific unavailable optional integrations separately; unknown errors
+remain rejected. Future recipes retain the raw test stream and classify it
+before native package installation. Current full raw output and classification
+are retained under sources/evidence/h07-tcl and .local/logs/h07-test-tools.
+
+The first Expect wrapper reached the PTY probe but did not build: Python
+pty.spawn read the remaining recipe from streamed Bash stdin and sent it to
+the echo child's pseudo terminal. Staging was absent, so the packager rejected
+the attempt with zero installed changes. Redirect only the probe's stdin from
+/dev/null; preserve the original unmodified source tree in recovery and retry
+from verified archive. This fixes recipe transport, not upstream source/tests.
+The failed marker/log is archived by the durable runner on retry.

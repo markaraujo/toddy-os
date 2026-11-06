@@ -102,3 +102,29 @@ Local evidence copy: .local/logs/h07-test-tools/early-tools-and-history.tar.gz.
 The copy includes original runner failure history. Tcl is still running;
 Expect/DejaGNU/Ninja/Pkgconf recipes and the critical Binutils build recipe are
 prepared but not yet verified. H07 and all release gates remain incomplete.
+
+## Complete native test harness and Binutils build started
+
+Tcl 8.6.18 core: 47159 total, 43704 passed, 3455 skipped, zero failed.
+Bundled TDBC database-client tests are explicitly unavailable as classified
+in ADR-0011; they are not claimed passed. Full stream/classification retained.
+Expect's full suite has 29 PASS, zero skipped/failed; PTY spawn/runtime passed.
+DejaGNU passed its make check. Ninja bootstrapped itself and built an actual
+small graph; the frozen book notes its full suite requires CMake unavailable
+at this stage. Pkgconf passed 32 tests, zero failed, and queried installed
+Zlib/Xz metadata. All four package recipe/postchecks exited 0. The first
+Expect transport error had zero changes and was corrected before retry.
+
+| Package | Full successful log SHA-256 |
+| --- | --- |
+| flex | 4212656772c7ad7005a5f4a43a9519ab3cd9b5c9302ecaf2761cc2244c0cf9b9 |
+| tcl | 57669c6cad2bdb4bc5f095d4b5b17439c848bcf69909a17e55d6d3f678336c80 |
+| expect | 825f058f28ab60b2a529985d88f0316f366a589dda99b98d92b8defc143cbc47 |
+| dejagnu | a54b07b89e7d5599805310eba9986d0deb439277a389e1a102d96e653544bd0f |
+| ninja | 83ec4d21e502f0c2413cad52092d32eaffbd41c94a4995df84dbccdfecf7dfb7 |
+| pkgconf | 4e3e5b5f8c00103da1b370a693816349290310b0d07515e0ec1046729df39862 |
+
+Native package database now has 21 packages. Final Binutils 2.47 is building
+from the frozen source with system Zlib and the book flags. Its mandatory
+make -k check runs before installation; exact exit and .sum/.log archive are
+retained for classification. It is not accepted or installed yet.

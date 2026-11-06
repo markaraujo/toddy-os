@@ -156,3 +156,13 @@ native .deb and validate actual C execution. Locales (book minimum plus
 pt_BR.UTF-8) and tzdata are separate tracked packages. Derived ld.so.cache is
 regenerated after installation. Remaining critical compiler/binutils tests
 are separate mandatory H07 work.
+
+Native H07 test tools follow frozen LFS 13.1-systemd sections 8.14–8.21.
+Detached recipes reset inherited ignored HUP/INT/QUIT/TERM before Bash;
+new process groups alone do not restore signal dispositions. Preserve raw
+suite results and distinguish skipped tests from actual passes. The final
+Binutils 2.47 suite runs before installation and retains its original exit
+and every .sum/.log report. For final GMP, use the book-supported
+--host=none-linux-gnu to avoid optimizing the distributed library solely for
+the builder's Ryzen CPU; retain the mandatory full tests and >=199 PASS check.
+This does not yet establish a tested release CPU/hardware baseline.
