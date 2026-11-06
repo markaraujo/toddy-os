@@ -49,3 +49,12 @@ class BootstrapConfigurationTests(unittest.TestCase):
             with self.assertRaises(ValueError):module.preserve_bootstrap(root,expected,set(expected),{})
             self.assertTrue((outside/'etc/hosts').exists())
             self.assertTrue((outside/'etc/fstab').exists())
+
+    def test_unrelated_existing_payload_file_blocks_all_replacements(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);expected=self.fixture(root)
+            extra=root/'usr/share/toddy/user-note';extra.parent.mkdir(parents=True);extra.write_text('Preserve user work')
+            with self.assertRaises(ValueError):module.preserve_bootstrap(root,expected,set(expected)|{'/usr/share/toddy/user-note'}, {})
+            self.assertEqual(extra.read_text(),'Preserve user work')
+            self.assertEqual((root/'etc/hosts').read_text(),'known-hosts')
+            self.assertEqual((root/'etc/fstab').read_text(),'known-fstab')

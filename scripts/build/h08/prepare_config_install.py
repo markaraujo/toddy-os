@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import tempfile
 
 ROOT=Path(__file__).resolve().parents[3]
@@ -48,7 +49,7 @@ def preserve_bootstrap(target,expected,package_paths,owners):
         json.dump({'files':expected,'scope':'Unowned bootstrap configuration before native package install'},stream,indent=2)
         stream.write('\n');stream.flush()
         os.fsync(stream.fileno())
-    for directory in sorted([p for p in backup.rglob('*') if p.is_dir()],key=lambda p:len(p.parts),reverse=True)+[backup,recovery]:
+    for directory in sorted([p for p in backup.rglob('*') if p.is_dir()],key=lambda p:len(p.parts),reverse=True)+[backup,recovery,recovery.parent]:
         descriptor=os.open(directory,os.O_RDONLY|os.O_DIRECTORY)
         try:os.fsync(descriptor)
         finally:os.close(descriptor)
@@ -65,12 +66,19 @@ def main():
     from require_gate import require_gate
     require_gate(ROOT,Path('/var/log/toddy/build'))
     subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
-    from stage_config import FILES,LINKS
+    from stage_config import LINKS
+    sys.path.insert(0,str(ROOT/'scripts/build'))
+    from source_notices import retain_source_notices
+    stage=TARGET/'sources/stage/toddy-base-config'
+    if stage.is_symlink() or not stage.is_dir() or (stage/'DEBIAN').exists():
+        raise SystemExit('A fresh complete configuration stage is required')
+    retain_source_notices(ROOT,TARGET,stage,'toddy-base-config',[])
     expected=json.loads((ROOT/'config/h08-bootstrap-config.json').read_text())['files']
     owners={}
     for listing in (TARGET/'var/lib/dpkg/info').glob('*.list'):
         for virtual in listing.read_text().splitlines():owners.setdefault(virtual,set()).add(listing.stem)
-    package_paths={'/'+path for path in list(FILES)+list(LINKS)}
+    package_paths={'/'+str(path.relative_to(stage)) for path in stage.rglob('*') if path.is_file() or path.is_symlink()}
+    package_paths|={'/'+path for path in LINKS}
     backup=preserve_bootstrap(TARGET,expected,package_paths,owners)
     print(json.dumps({'preserved':list(expected),'backup':str(backup),'installed':False}))
 
