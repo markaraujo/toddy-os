@@ -198,3 +198,16 @@ python3 scripts/fetch_security_overlay.py --supplemental
 sync_build.py includes the supplemental lock and verifies the pinned archives
 before transferring. Native source.py accepts only frozen listed additions;
 no new source/component is extracted solely because a URL was supplied.
+
+Post-compiler recipes through Bash are prepared from frozen LFS 13.1-systemd
+8.33–8.39 but are not yet target-validated. Their driver refuses to start
+without h07-gcc-install.success.json. Ncurses includes an upstream automatic
+setupterm example matrix after installation plus native screen/terminfo
+checks; interactive examples are not represented as an exhaustive suite.
+Bash tests use the required tester-owned Expect PTY. Its upstream run-all
+always exits zero, so an independent evaluator requires every expected test
+header and rejects diff output before staging. Any legitimate documented
+exception still needs actual source-backed classification after observation.
+Two additional Bash test locales are staged with --no-archive in a separate
+native package to preserve glibc-locales ownership; only the explicit ascii
+compatibility warning for these legacy encodings is suppressed, not errors.

@@ -137,7 +137,9 @@
         "Run critical libc/compiler/binutils suites and classify expected versus unexplained failures using primary sources.",
         "Compile/run a C program in the final environment and inspect linkage for host or temporary-toolchain dependencies."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/H07-progress.md"
+      ]
     },
     {
       "id": "H08",
