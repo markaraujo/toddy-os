@@ -914,3 +914,13 @@ Raw scoped fixture audit SHA-256:
 Raw native archive partition probe SHA-256:
 `bcf00808fc7142dd82895a64fd900750a89ac3d69c67fd68e666d30df850d130`.
 Both reports remain outside Git at the paths recorded in ADR-0049.
+
+
+Pre-dispatch native interpreter audit exposed a second Python metadata
+generation requirement (direct bash/coreutils edges). Corrected the helper to
+retain its exact canonical python -> python3 link across generations while
+refusing unexpected payload. Private actual native Python 3.14.10/SSL execution
+through the twice-processed link passed, exit 0; installed files unchanged.
+Raw .local/logs/h07-native-python-alias-retry.json SHA-256
+`d756d4f25426f625b41f31de0afcf04ede0e5fc087ad67d9d3ea3f2edc630d30`.
+97 local checks pass; real package upgrades/final audit remain pending.

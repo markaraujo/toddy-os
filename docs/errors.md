@@ -430,3 +430,17 @@ canonical own-package paths in preserved-archive metadata upgrades, retaining
 all original archives/records. A private native roundtrip of 16 corrected
 fixtures passes all 330 entries; actual installed correction/zero-findings
 acceptance remains pending. No active BDB inputs were changed. See ADR-0045.
+
+
+### Prepared Python metadata retry rejected its own canonical alias
+
+- Symptom: code inspection plus the actual installed interpreter audit showed
+  the full closure would need bash/coreutils edges after the early alias-only
+  generation, but its next extraction would already contain python -> python3.
+- Cause: the alias creation path treated every existing link as unexpected,
+  including the exact previously accepted link in our own predecessor archive.
+- Correction: retain only that canonical link; refuse other links/regular files.
+- Verification: actual native Python/SSL execution through the twice-processed
+  private stage passed; two boundary tests and all 97 local checks pass. No
+  failed installed upgrade is claimed; this defect was caught before dispatch.
+  See ADR-0036 and its raw evidence hashes. Full metadata acceptance is pending.

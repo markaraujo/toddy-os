@@ -22,6 +22,16 @@ def digest(path):
     with path.open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
 
 
+def ensure_python_command_alias(stage):
+    """Preserve a canonical alias when a later metadata generation is needed."""
+    alias=stage/'usr/bin/python'
+    if alias.is_symlink() and alias.readlink().as_posix()=='python3':
+        return
+    if alias.exists() or alias.is_symlink():
+        raise SystemExit('Unexpected existing Python command payload')
+    alias.symlink_to('python3')
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--only',action='append',default=[])
@@ -101,9 +111,7 @@ def main():
             raise SystemExit('Unexpected predecessor package control program/data')
         shutil.rmtree(control)
         if name=='python':
-            alias=stage/'usr/bin/python'
-            if alias.exists() or alias.is_symlink():raise SystemExit('Unexpected existing Python command payload')
-            alias.symlink_to('python3')
+            ensure_python_command_alias(stage)
         for virtual in libtool+shared_journals:(stage/virtual.lstrip('/')).unlink()
         normalized_packlists=normalize_packlists(stage,name,packlists,set(record['payload']))
         declared=set(re.findall(r'(?:^|[,|])\s*([a-z0-9][a-z0-9+.-]*)',depends))

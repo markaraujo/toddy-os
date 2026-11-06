@@ -102,3 +102,24 @@ GCC/Binutils, libtool test wrapper and DESTDIR install. Raw result outside Git:
 .local/logs/h07-native-build-flow-101.json, SHA-256 4b92878dfad18e26f9fe77042d5af06c1a3c6153cae1461765114263585718ae.
 The final metadata postcheck repeats this flow after cleanup/upgrades. Its
 explicit scope does not replace arbitrary tool/data/dlopen or boot audits.
+
+
+A current read-only interpreter audit found Python's installed shell/env
+scripts need direct bash/coreutils provider declarations. The early
+--only python alias generation deliberately precedes the full interpreter
+closure; the final generation can therefore legitimately need a second
+Python upgrade. Preserve the exact existing python -> python3 staged alias
+instead of refusing it. Continue rejecting regular files or any other link
+target without mutation. The predecessor archive hash remains mandatory.
+This fixes idempotency; it does not waive dependency or payload audits.
+
+Native Python 3.14.10 privately staged a copy of its actual interpreter,
+applied the helper twice without replacing the canonical link, and executed
+through it with a real SSL import. Exit 0; no installed changes. Two boundary
+regressions pass, 97 total local checks. Raw native report
+.local/logs/h07-native-python-alias-retry.json SHA-256
+d756d4f25426f625b41f31de0afcf04ede0e5fc087ad67d9d3ea3f2edc630d30.
+Current raw interpreter audit .local/logs/h07-preclosure-script-audit-current.json
+SHA-256 28433365f4a06656c918460e1987367bd5d0f0b871f7c8cf9a976354b2995123.
+Actual native package generations remain pending behind complete DB/APT success;
+the quiescent input sync must include this correction before final dispatch.
