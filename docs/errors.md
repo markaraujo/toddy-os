@@ -419,3 +419,14 @@ before same-step acceptance. See ADR-0044; no libc upgrade or assertion waiver.
 Verification of the spawn-cache correction: 13.1-2 same-step recipe/postcheck
 0/0, direct native configure results no/no/yes/yes and both spawned-child
 directory-action checks passed. Original failure retained; no libc change.
+
+
+## H07 staged paths in Perl install records (2026-11-06)
+
+Native ExtUtils::Packlist parses 3210 entries across 17 installed records;
+330 module entries retain the own DESTDIR prefix. Original module tests/imports
+pass, but those records cannot enter final metadata closure unchanged. Prepare
+canonical own-package paths in preserved-archive metadata upgrades, retaining
+all original archives/records. A private native roundtrip of 16 corrected
+fixtures passes all 330 entries; actual installed correction/zero-findings
+acceptance remains pending. No active BDB inputs were changed. See ADR-0045.

@@ -7,17 +7,28 @@ audit=$(dpkg --audit)
 apt-get check
 python3 - <<'PY'
 from pathlib import Path
-import subprocess,json
+import subprocess,json,re
 rows=subprocess.check_output(['dpkg-query','-W','-f=${Package}\t${Status}\t${Version}\n'],text=True).splitlines()
 for row in rows:
  name,status,version=row.split('\t')
  if status!='install ok installed':raise SystemExit('Unconfigured package: '+name)
- if not version.endswith('+toddy1'):raise SystemExit('Old metadata generation: '+name)
+ if not re.search(r'\+toddy[1-9][0-9]*$',version):raise SystemExit('Old metadata generation: '+name)
+ evidence=Path('/sources/evidence/h07-metadata-closure/packages')/(name+'.json')
+ result=json.loads(evidence.read_text())
+ assert result['complete'] and result['version']==version,(name,result)
 for path in Path('/sources/evidence/h07-metadata-closure/packages').glob('*.json'):
  assert json.loads(path.read_text())['complete'],path
 print('All native package metadata upgrades configured and recorded')
 PY
 INNER
+python3 - <<'PYPOLICY'
+from pathlib import Path
+import hashlib,json
+policy=hashlib.sha256(Path('/opt/toddy-build/config/native-package-metadata.json').read_bytes()).hexdigest()
+for path in Path('/mnt/lfs/sources/evidence/h07-metadata-closure/packages').glob('*.json'):
+ assert json.loads(path.read_text())['metadata_policy_sha256']==policy,path
+print('Native metadata progress matches the current frozen closure policy')
+PYPOLICY
 python3 /opt/toddy-build/scripts/build/audit_native_elf.py > /var/log/toddy/h07-final-elf.json
 python3 - <<'PYREPORT'
 import json,subprocess
@@ -62,6 +73,14 @@ assert not report['unknown'],report['unknown']
 print('Final-base package ownership has no unexplained files; generated and H08 configuration remain explicit')
 PYOWNED
 python3 /opt/toddy-build/scripts/build/audit_native_build_flow.py > /var/log/toddy/h07-final-native-build-flow.json
+python3 /opt/toddy-build/scripts/build/audit_native_perl_packlists.py > /var/log/toddy/h07-final-perl-packlists.json
+python3 - <<'PYPACKLISTS'
+from pathlib import Path
+import json
+report=json.loads(Path('/var/log/toddy/h07-final-perl-packlists.json').read_text())
+assert not report['findings'],report['findings']
+print('Native Perl packlists use existing canonical paths owned by their native package')
+PYPACKLISTS
 python3 /opt/toddy-build/scripts/build/audit_native_isa_notes.py > /var/log/toddy/h07-final-isa-notes.json
 python3 - <<'PYISA'
 import json

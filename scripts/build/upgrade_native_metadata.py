@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import sys
 from package_backend import PackageBackend
+from perl_packlists import plan_packlist_rewrites, normalize_packlists
 
 HERE=Path(__file__).resolve().parent
 ROOT=HERE.parents[1]
@@ -29,6 +30,7 @@ def main():
     backend=PackageBackend(TARGET)
     if not backend.native:raise SystemExit('Metadata closure requires accepted native Dpkg')
     plan=json.loads((ROOT/'config/native-package-metadata.json').read_text())
+    policy_sha256=digest(ROOT/'config/native-package-metadata.json')
     additions={r['package']:set(r['add_depends']) for r in plan['packages']}
     output=backend.run('dpkg-query','-W','-f=${Package}\t${Version}\t${Architecture}\t${Status}\t${Depends}\n',capture_output=True,text=True).stdout
     packages={}
@@ -62,17 +64,22 @@ def main():
     progress=destination/'packages';progress.mkdir(exist_ok=True)
     for name,(version,arch,depends) in sorted(packages.items()):
         if args.only and name not in args.only:continue
-        if version.endswith(plan['version_suffix']):
-            accepted=RECORDS/f'{name}_{version}_{arch}.json'
-            row=json.loads(accepted.read_text())
-            if not row['installed'] or digest(CACHE/f'{name}_{version}_{arch}.deb')!=row['archive_sha256']:
-                raise SystemExit('Previously upgraded archive/record mismatch')
-            continue
         archive=CACHE/f'{name}_{version}_{arch}.deb'
         record_path=RECORDS/(archive.stem+'.json')
         record=json.loads(record_path.read_text())
         if not record['installed'] or digest(archive)!=record['archive_sha256']:
             raise SystemExit('Predecessor provenance mismatch')
+        packlists=[p for p in record['payload'] if p.endswith('/.packlist')] if name.startswith('perl-') else []
+        for virtual in packlists:
+            if digest(TARGET/virtual.lstrip('/'))!=record['payload'][virtual]['sha256']:
+                raise SystemExit('Modified installed packlist requires preservation/review')
+        packlist_changes=plan_packlist_rewrites(TARGET,name,packlists,set(record['payload']))
+        revision=re.search(r'\+toddy([1-9][0-9]*)$',version)
+        previous_result=progress/(name+'.json')
+        previous=json.loads(previous_result.read_text()) if previous_result.exists() else {}
+        declared_now=set(re.findall(r'(?:^|[,|])\s*([a-z0-9][a-z0-9+.-]*)',depends))
+        if revision and not packlist_changes and previous.get('complete') and previous.get('version')==version and previous.get('metadata_policy_sha256')==policy_sha256 and set(additions.get(name,[]))<=declared_now:
+            continue
         conffiles=sorted(p for p,e in record['payload'].items() if p.startswith('/etc/') and e.get('sha256'))
         libtool=sorted(p for p,e in record['payload'].items() if p.startswith(('/usr/lib/','/usr/libexec/')) and p.endswith('.la') and e.get('sha256'))
         journal=plan.get('perl_shared_install_journal')
@@ -98,6 +105,7 @@ def main():
             if alias.exists() or alias.is_symlink():raise SystemExit('Unexpected existing Python command payload')
             alias.symlink_to('python3')
         for virtual in libtool+shared_journals:(stage/virtual.lstrip('/')).unlink()
+        normalized_packlists=normalize_packlists(stage,name,packlists,set(record['payload']))
         declared=set(re.findall(r'(?:^|[,|])\s*([a-z0-9][a-z0-9+.-]*)',depends))
         requirements=[]
         for provider in sorted(additions.get(name,[])):
@@ -105,17 +113,24 @@ def main():
             if provider not in declared:
                 # Original version is the frozen ABI baseline, even if provider
                 # metadata was upgraded earlier in this same deterministic loop.
-                requirements.append(f'{provider} (>= {packages[provider][0].removesuffix(plan["version_suffix"])})')
+                baseline=re.sub(r'\+toddy[1-9][0-9]*$','',packages[provider][0])
+                requirements.append(f'{provider} (>= {baseline})')
         revised=', '.join(x for x in [depends,*requirements] if x)
-        new_version=version+plan['version_suffix']
+        new_version=(version[:revision.start()]+'+toddy'+str(int(revision[1])+1)) if revision else version+plan['version_suffix']
         command=[sys.executable,str(HERE/'stage_package.py'),name,new_version,str(stage),'--architecture',arch,
                  '--depends',revised,'--recipe',str(Path(__file__).resolve()),'--install']
         for source in record['sources']:command+=['--source',source['filename']]
         for path in conffiles:command+=['--conffile',path]
         predecessor={'package':name,'previous_version':version,'version':new_version,
+                     'metadata_policy_sha256':policy_sha256,
                      'predecessor_archive_sha256':digest(archive),'predecessor_record_sha256':digest(record_path),
-                     'removed_libtool_archives':libtool,'removed_shared_journals':shared_journals,'conffiles':conffiles,'depends':revised,'complete':False}
-        result_path=progress/(name+'.json');result_path.write_text(json.dumps(predecessor,indent=2)+'\n')
+                     'removed_libtool_archives':libtool,'removed_shared_journals':shared_journals,'normalized_perl_packlists':normalized_packlists,'conffiles':conffiles,'depends':revised,'complete':False}
+        result_path=progress/(name+'.json')
+        if result_path.exists():
+            history=progress/'history';history.mkdir(exist_ok=True)
+            preserved=history/(name+'-'+digest(result_path)+'.json')
+            if not preserved.exists():shutil.copy2(result_path,preserved)
+        result_path.write_text(json.dumps(predecessor,indent=2)+'\n')
         subprocess.run(command,check=True)
         actual=backend.run('dpkg-query','-W','-f=${Status}\t${Version}',name,capture_output=True,text=True).stdout
         if actual!='install ok installed\t'+new_version:raise SystemExit('Metadata upgrade postcondition failed')

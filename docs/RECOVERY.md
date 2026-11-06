@@ -313,3 +313,20 @@ h07/berkeley-db-recovery.sh h07/berkeley-db-check.sh --user root from
 /opt/toddy-build/scripts/build inside the builder. The same-step retry must
 verify the 460-file seed and all 483 Tcl files after applying the correction
 before full standard execution. Keep PID/log/exit; only 0/0 accepts installation.
+
+
+Corrected BDB retry now runs inside the restarted builder: launcher PID 1364,
+runner PID 1365; durable driver prefix /var/log/toddy/
+h07-bdb-corrected-standard-driver (log/pid/exit). Actual build log
+/var/log/toddy/build/h07-berkeley-db.log; standard log
+/mnt/lfs/sources/db-5.3.28/build-test/ALL.OUT. C tests and all three focused
+regressions passed; full standard suite started 2026-11-06 17:12 UTC and is
+unfinished. Do not run full sync or another dispatcher while it owns the lock.
+Original partial suite state preserved under history/
+berkeley-db-before-corrected-suite-20261106T170904Z.
+
+Latest checkout also prepares canonical Perl packlist upgrades (ADR-0045).
+They are NOT installed in the current builder. After BDB reaches a durable
+success/failed result and no recipe remains active, sync current committed
+inputs before h07-final-base-driver.sh. It retains mandatory BDB/APT gates and
+will require zero native packlist findings and exact version/policy evidence.

@@ -8,6 +8,7 @@ base ownership/dependency/license audits and release gates actually pass.
 from datetime import datetime, timezone
 import hashlib
 import json
+import re
 from pathlib import Path
 import subprocess
 
@@ -52,7 +53,8 @@ def main():
         notice_hash = digest(TARGET / notice.lstrip('/'))
         if notice_hash != record['payload'][notice]['sha256']:
             raise SystemExit(f'Installed copyright notice mismatch: {name}')
-        reviewed = next((r for r in license_rows if r['name'] == name and (version.removesuffix('+toddy1') == r['version'] or version.startswith(r['version']+'-'))), None)
+        baseline=re.sub(r'\+toddy[1-9][0-9]*$','',version)
+        reviewed = next((r for r in license_rows if r['name'] == name and (baseline == r['version'] or baseline.startswith(r['version']+'-'))), None)
         components.append({'name': name, 'version': version, 'architecture': architecture,
                            'archive': archive, 'archive_sha256': record['archive_sha256'],
                            'component_record_sha256': digest(metadata),

@@ -65,3 +65,8 @@ corrected-suite acceptance. The recovery sequence applies the exact correction
 before this comparison. Raw refusal log .local/logs/
 h07-bdb-tcl-frozen-files-probe.log SHA-256
 fc3738633be4dfa4814c5a7dd963450f7c0e3d2cf95f192d0b022a462ac9f660.
+
+Actual retry passed fixed-seed verification, all 483 independent Tcl file
+comparisons, repeated C tests and all three focused cases before starting the
+complete standard suite at 17:12 UTC. The complete result remains unfinished;
+there is still no DB installation or acceptance claim.
