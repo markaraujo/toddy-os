@@ -34,15 +34,11 @@ for pair in messagebus:18 systemd-network:76 systemd-resolve:77 systemd-timesync
  [[ $(id -u "$name") == "$uid" ]]
 done
 [[ $(stat -c '%a:%u:%g' /run/dbus) == 755:18:18 ]]
-for unit in dbus.socket systemd-networkd.service systemd-resolved.service systemd-timesyncd.service; do
- [[ $(systemctl --root=/ is-enabled "$unit") == enabled ]]
-done
-if systemctl --root=/ is-enabled --quiet systemd-networkd-wait-online.service; then exit 1;fi
-[[ $(systemctl --root=/ get-default) == multi-user.target ]]
 getent hosts localhost
 findmnt --verify --tab-file /etc/fstab --verbose
 printf 'Native offline configuration accepted; boot, DHCP and service operation remain H12 tests\n'
 INNER
+python3 /opt/toddy-build/scripts/build/h08/offline_services.py --check
 python3 /opt/toddy-build/scripts/build/audit_native_payload.py > /var/log/toddy/h08-base-config-payload.json
 python3 - <<'PY'
 import json

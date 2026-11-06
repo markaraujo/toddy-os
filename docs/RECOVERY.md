@@ -801,3 +801,27 @@ image. Repeat after final H07 metadata closure and any native QA ownership
 transfer. It does not authenticate stored MD5 values, prove dependency closure,
 or waive the shared Info-index payload mismatch. Require independent archive/
 payload verification and native Dpkg/APT checks before release acceptance.
+
+Reproduce the corrected native offline service policy with
+python3 scripts/host/probe_offline_services.py. It uses source-owned units and
+presets in a fresh /mnt/lfs/tmp/toddy-offline-services-* root and never starts
+services. Failure preserves that fixture and native-preset-all.log; raw reports
+are .local/logs/h08-offline-services-probe* with immutable hash copies. The
+original preset failure is retained at toddy-offline-services-8nmlgzef.
+
+After H07 acceptance and synchronized H08 status, the existing base-config
+recipe calls h08/offline_services.py; its postcheck calls the same CLI --check.
+Do not dispatch these production entries while the H07 recipe is active. An
+unexpected unit/link/ownership state must be diagnosed from the captured native
+command output; do not force replacement of an unrelated configuration link.
+Use a fresh private image stage after a failed image configuration attempt.
+
+DBus socket state must be static with the verified vendor wants link. Waiting
+for a literal enabled result would repeat the original defect. The one deliberate
+wait-online mask prevents networkd's Also= from undoing the offline policy when
+presets are reapplied. On an installed Toddy system, an owner who wants blocking
+network-online behavior can run systemctl unmask systemd-networkd-wait-online.service
+followed by systemctl enable systemd-networkd-wait-online.service. Those are
+owner configuration changes on Toddy, not workstation recovery commands.
+Do not remove other masks or relax arbitrary ownership-audit failures. Native
+boot/DHCP/DNS and offline boot timing remain H08/H12 verification obligations.

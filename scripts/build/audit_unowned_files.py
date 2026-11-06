@@ -16,6 +16,12 @@ DERIVED_STATE={'/etc/ld.so.cache':'native ldconfig','/etc/machine-id':'native sy
 
 def generated_configuration_link(root,virtual,path,owners):
     if not path.is_symlink() or path.lstat().st_uid!=0 or path.lstat().st_gid!=0:return None
+    wait='/usr/lib/systemd/system/systemd-networkd-wait-online.service'
+    if (virtual=='/etc/systemd/system/systemd-networkd-wait-online.service'
+            and path.readlink().as_posix()=='/dev/null' and 'systemd' in owners.get(wait,set())
+            and (root/wait.lstrip('/')).is_file() and not (root/wait.lstrip('/')).is_symlink()
+            and (root/wait.lstrip('/')).parent.resolve()==(root/wait.lstrip('/')).parent):
+        return {'path':virtual,'generator':'Native foundation offline-startup mask (ADR-0060)','owned_unit':wait}
     if virtual=='/etc/resolv.conf' and path.readlink().as_posix()=='/run/systemd/resolve/stub-resolv.conf':
         return {'path':virtual,'generator':'Systemd resolved runtime stub link; no runtime resolver bytes are package payload'}
     if virtual=='/etc/localtime':

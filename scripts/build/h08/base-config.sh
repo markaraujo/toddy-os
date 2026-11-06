@@ -22,10 +22,7 @@ fi
 if [[ ! -e /etc/resolv.conf && ! -L /etc/resolv.conf ]]; then
  ln -s /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 fi
-export SYSTEMD_OFFLINE=1
-systemctl --root=/ --no-reload enable dbus.socket systemd-networkd.service systemd-resolved.service systemd-timesyncd.service
-systemctl --root=/ --no-reload disable systemd-networkd-wait-online.service
-systemctl --root=/ set-default multi-user.target
 systemd-tmpfiles --create --prefix=/run/dbus
 INNER
+python3 /opt/toddy-build/scripts/build/h08/offline_services.py
 bash /opt/toddy-build/scripts/build/chroot-resolver.sh

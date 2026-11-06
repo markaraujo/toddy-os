@@ -72,3 +72,12 @@ assumed grant or a declaration that release licensing is complete.
 Read-only pre-change audit: .local/logs/h08-generated-state-audit-before.json,
 SHA-256 77a1c357cec44107e25cea8f550be713f7e594613200f96fcec3c3aff1b9d49d. This is the existing 101-package root,
 not evidence of an H08 installation.
+
+Native offline-policy experiments subsequently found that DBus's socket is
+static and already activated by its owned vendor wants link, and that native
+preset-all re-enables wait-online through networkd's Also= despite a disable
+preset. ADR-0060 amends the prepared recipe: verify the actual static/vendor
+activation, enable the three network/time services, and explicitly mask only
+wait-online after disabling it. Private native configuration, repeat, preset
+and refusal checks pass. H08 execution still requires H07 acceptance; none of
+these experiments changed installed configuration or established real networking.

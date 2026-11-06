@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-06 23:41 UTC
+Last verified: 2026-11-06 23:50 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. Partition block runs Test044 for Hash with callback partitions: two workloads and crash/recovery cycles completed; cycle 3 began at 23:41:36 UTC for 450 seconds. Original driver/runner remain live. No FAIL lines observed in the partial log; complete-suite validation and later groups/method matrix remain pending.
+Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. Hash callback-partition Test044 completed all three crash/recovery cycles, ten file checks and ten salvage checks; partition tests advanced to Test081. Original driver/runner remain live. No FAIL lines observed in the partial log; complete-suite validation and later groups/method matrix remain pending.
 
 Remaining:
 

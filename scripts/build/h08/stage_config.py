@@ -32,7 +32,7 @@ else
 fi
 ''',
  'usr/lib/tmpfiles.d/toddy-base.conf': '# DBus socket parent; static messagebus account is created in LFS 7.6.\nd /run/dbus 0755 messagebus messagebus -\n',
- 'usr/lib/systemd/system-preset/50-toddy-base.preset': 'enable dbus.socket\nenable systemd-networkd.service\nenable systemd-resolved.service\nenable systemd-timesyncd.service\ndisable systemd-networkd-wait-online.service\n',
+ 'usr/lib/systemd/system-preset/50-toddy-base.preset': '# DBus socket activation is supplied by its package-owned vendor wants link.\n# Offline setup also masks wait-online: networkd Also= overrides preset disable (ADR-0060).\nenable systemd-networkd.service\nenable systemd-resolved.service\nenable systemd-timesyncd.service\ndisable systemd-networkd-wait-online.service\n',
 }
 LINKS={'etc/localtime':'../usr/share/zoneinfo/UTC',
        'etc/resolv.conf':'/run/systemd/resolve/stub-resolv.conf'}

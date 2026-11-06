@@ -315,3 +315,16 @@ Corrected the snapshot without excluding DB data checks; recorded ADR-0059 and
 recovery. Installed package state and active build inputs remain unchanged.
 Berkeley DB Hash Test044 completed its second crash/recovery and began cycle 3
 at 23:41:36 for 450 seconds. Driver/runner remain live; full suite still pending.
+
+2026-11-06 23:50 UTC — Native offline service integration found and corrected
+two future H08 failures: DBus's already vendor-activated socket reports static,
+and networkd's Also= re-enables wait-online after preset-all despite the Toddy
+disable rule. Shared native configuration/check code now verifies 329 own unit
+paths, preserves DBus vendor activation and uses an explicit reversible mask
+only for network waiting. Native configure/repeat/preset checks, six negative
+configuration cases and five mask-audit boundaries pass. Installed services/
+configuration and active H07 inputs remain untouched; real boot/networking is
+pending. ADR-0060 records the source-backed book deviation and recovery.
+Berkeley DB Hash callback Test044 completed three crashes/recoveries and ten
+file/salvage verifications each, advancing to Test081 in the partition block.
+Original driver/runner are live; the complete standard-suite result is pending.

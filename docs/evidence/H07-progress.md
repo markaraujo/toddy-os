@@ -1142,3 +1142,14 @@ Full-suite acceptance is pending. Raw observation
 27b63c9f77e1210f5ce045ea6ca50d13316b2073d6b09876325fd33bdbdd8a6c.
 Separate native metadata-copy checks passed without installed changes (ADR-0059).
 They do not bypass the pending H07 package/payload/dependency closure.
+
+2026-11-06 23:50 UTC — Hash callback-partition Test044's segment is complete:
+three workload/crash/recovery cycles, ten file verifications and ten salvage
+verifications. The suite advanced to Test081 in the same partition block;
+driver 1364 and runner 1365 remain live, with zero partial FAIL lines observed.
+This does not accept the complete standard suite or the package. Segment SHA-256:
+d7814ce5abbd6f97be0d32f74e4b7af846880a16ef46320fa205f7a9654b152e.
+Raw observation .local/logs/h07-test044-hash-callback-complete.json SHA-256:
+b2a95c2898911c5ec5dbcce0e7bd3f5d0579b4bd62348076592582566f226137.
+Independent native offline-service checks corrected prepared H08 defects
+(ADR-0060), with no installed package/configuration or running-input changes.

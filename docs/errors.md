@@ -523,3 +523,29 @@ acceptance remains pending. No active BDB inputs were changed. See ADR-0045.
   DB data is unchanged, a held writer refuses the component, both fresh and
   preexisting owned-empty destination layouts pass, and nine negative cases
   preserve inputs. Failure and final evidence are retained in ADR-0059.
+
+### Prepared H08 service check misclassified DBus's static socket
+
+- Symptom: native is-enabled dbus.socket returns static, while the prepared
+  postcheck required enabled.
+- Cause: DBus supplies no [Install] section for that socket; its owned vendor
+  sockets.target.wants link already provides activation.
+- Correction: stop trying to enable the static unit; verify static state plus
+  the exact owned vendor link, retaining the unchanged native unit.
+- Verification: native private-root configuration, repeated checks and preset
+  application preserve correct DBus activation metadata (ADR-0060). Runtime
+  service activation remains pending; this was not a current H07 failure.
+
+### Native preset application re-enabled network wait despite disable policy
+
+- Symptom: after native preset-all, wait-online changed from disabled to enabled
+  in a private fixture, failing the offline policy check.
+- Cause: networkd's Also= installs wait-online indirectly despite the earlier
+  Toddy disable preset. The actual source parser does not clear Also= on an
+  empty assignment, so that drop-in approach cannot remove it here.
+- Correction: retain the book's disable step and explicitly mask only this
+  service in the Toddy target/image; document owner reversal and narrowly audit
+  the generated link. Do not modify upstream units or workstation services.
+- Verification: native configure/repeat/preset/readback checks pass with required
+  services enabled and wait-online masked. Six configuration refusals and five
+  audit boundaries pass. Failure fixture and both report hashes are in ADR-0060.
