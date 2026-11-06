@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-06 22:01 UTC
+Last verified: 2026-11-06 22:10 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. Partition Test044 advanced through its first deliberate crash/recovery into cycle 2 of 3, starting 22:00:51 UTC with a 446-second load interval. The numbered general list ends at Test142 with 135 entries; 91 follow Test044 per pass. Original driver/runner remain live; full result is pending.
+Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. The current range-partition Btree Test044 invocation advanced through two crash/recovery cycles into cycle 3 of 3, starting 22:08:53 UTC with a 370-second load interval. Other method/partition variants still follow. Original driver/runner remain live; full result is pending.
 
 Remaining:
 

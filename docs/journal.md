@@ -200,3 +200,9 @@ two threads. No installed state changed; both fixture package states are
 unpacked and do not claim configured/runtime acceptance. Recorded the remaining
 production archive-preparation/transfer requirement in ADR-0049. DB's original
 full standard suite continues in Test044's second timed cycle.
+
+
+2026-11-06 22:10 UTC — Observed the current Test044 invocation enter its third
+cycle after the second timed crash/recovery. Published the actual 370-second
+load interval and retained the distinction between one invocation and remaining
+method/partition variants. Full DB recipe and H07 acceptance remain pending.

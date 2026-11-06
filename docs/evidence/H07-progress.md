@@ -1056,3 +1056,11 @@ files with exact bytes, modes, ownership and mtimes. Both private packages
 remain explicitly unpacked, not configured. Installed Dpkg state is unchanged.
 This prepares release image work and does not alter H07's 124/126 package count
 or accept the future installed QA split.
+
+
+2026-11-06 22:10 UTC: current range-partition Btree Test044 invocation advanced
+through its second programmed crash at 22:08:17 and recovery/file verification
+into cycle 3 at 22:08:53 (370-second load). Other configurations still follow;
+this is not completion of Test044 across the suite. Original driver/runner
+remain live. Raw .local/logs/h07-test044-cycle2-observation.json SHA-256
+680a839c89af6e48bc081d38f88780cc0a858959f2e0c4e645dea18d09e23a05.
