@@ -98,3 +98,14 @@ No OS build failures exist yet. Do not turn planning risks into invented test fa
   test was removed or marked passed.
 - Primary source: https://man7.org/linux/man-pages/man2/unshare.2.html, EPERM
   chroot condition (since Linux 3.9), consulted 2026-11-05.
+
+## 2026-11-05 — Readline shared Info index
+
+- Symptom: preflight rejected /usr/share/info/dir already owned by Glibc.
+- Cause: each staged manual installation generates a whole shared index.
+- Correction: omit staged copies of the generated index and register primary
+  installed .info manuals through the target install-info utility. Preserve
+  the existing index as derived shared state and reject other file conflicts.
+- Recovery: first attempt changed zero installed paths; preserve its stage and
+  source tree, rebuild cleanly with corrected package integration and verify
+  Readline runtime plus Info lookup. No forced ownership overwrite.

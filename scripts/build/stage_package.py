@@ -102,6 +102,11 @@ def main():
     if not args.recipe.resolve().is_relative_to(ROOT/'scripts') or not args.recipe.is_file():
         raise SystemExit('Recipe provenance must be a project script')
     canonicalize_usrmerge(stage)
+    generated_paths=[]
+    info_index=stage/'usr/share/info/dir'
+    if info_index.exists() or info_index.is_symlink():
+        info_index.unlink()
+        generated_paths.append('/usr/share/info/dir')
     entries = payload(stage)
     if not entries:
         raise SystemExit('Empty package')
@@ -159,7 +164,8 @@ def main():
     subprocess.run(['dpkg-deb', '--build', str(stage), str(archive)], check=True)
     record = {'name': args.name, 'version': args.version, 'archive_sha256': digest(archive),
         'recipe_sha256': digest(args.recipe), 'packager_sha256': digest(Path(__file__)), 'sources': source_rows,
-        'payload': entries, 'installed': False}
+        'payload': entries, 'generated_paths': generated_paths,
+        'runtime_dependency_closure': 'pending final base audit', 'installed': False}
     record_path = RECORDS/(archive.stem+'.json')
     record_path.write_text(json.dumps(record, indent=2)+'\n')
     if args.install:
@@ -168,6 +174,10 @@ def main():
         # Packages contain no maintainer scripts. Target root is always explicit.
         subprocess.run(['dpkg', '--root='+str(TARGET), '--force-confold', '--force-confdef',
                         '--install', str(archive)], check=True)
+        for path in entries:
+            if path.startswith('/usr/share/info/') and re.search(r'\.info(?:\.(?:gz|xz|bz2))?$',path):
+                subprocess.run(['/usr/sbin/chroot',str(TARGET),'/usr/bin/install-info',
+                    '--dir-file=/usr/share/info/dir',path],check=True)
         record['installed'] = True
         record_path.write_text(json.dumps(record, indent=2)+'\n')
     print(json.dumps({'package': args.name, 'sha256': record['archive_sha256'],

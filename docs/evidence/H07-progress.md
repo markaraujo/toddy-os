@@ -57,3 +57,29 @@ RPATH and localhost lookup passed. Locales, tzdata, Zlib, Bzip2 and Xz then
 passed native package installation and postconditions. H07 remains incomplete:
 final compiler/binutils suites and the remaining chapter 8 sequence are still
 required. Current source-based archive/component metadata is outside Git.
+
+## Additional verified native packages
+
+The compression-library block completed with driver exit 0. All listed
+recipes and runtime postchecks returned 0; Readline retry preserves its first
+zero-change ownership failure and corrects shared Info index integration.
+
+| Package | Full log SHA-256 |
+| --- | --- |
+| glibc-install | b2434919fbc875c67e9524bd348cb640b3f58b8624b47d5d1860b6a42580a18d |
+| glibc-locales | c98edf508496d146d5ad90cbd814a54d2c7eaeca598fcc6c462edd43d8e5e58a |
+| tzdata | 09829ff795b273a371ac1252b69c5a33489f8f0e8b96a991cfdc822868c0482f |
+| zlib | c7ed8b369a5d39bd6e2f5bc80f07dc071f642f965e920af042bddbe81771f320 |
+| bzip2 | f98a1d176ac908096889f118172a9312d5260957c83099dd49698187a994f897 |
+| xz | 2f360e15c5427e3ee47321a8d7683422e99fc94264f0422f258016b0e6d29c08 |
+| lz4 | 0a3c04bd1120068b0c9c6d26f2292bd0ccb59f3526aeb17467c3b7e8ddea3439 |
+| zstd | 97da2d226acd26c5fd63617f4f1802d3c8c17136350dc8c775bba245c56a6e57 |
+| file | a2e1d1cff336868b4c29677bc6568a7848e3ddfef505f69ddc8bc4de55d3c3a5 |
+| readline | 7d8bee39e82683494a6491d7cc58126eedf093a77fdbd70ae6079790cf09aef5 |
+| pcre2 | fc836450db42140e94a077c87ce6c7c42b44d3272a63a493ad919eeebd368b41 |
+
+Readline's C API returned version 8.3; target Info located readline.info.
+PCRE2 10.49 passed its full make check and UTF-8 property smoke test. Native
+database currently contains 13 packages. The paired checkpoint h07-early-base
+passed image consistency and copy SHA-256 verification with the VM off. It
+is a partial-H07 recovery point, not a passed G1 or complete final base.

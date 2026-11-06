@@ -70,3 +70,15 @@ ownership checks, preserving file metadata and rejecting duplicate payloads.
 This reproduces the selected target namespace; it does not change configured
 runtime paths. Keep the failed stage/log and repeat staging only, not the
 already accepted critical suite. Record the packager hash with the archive.
+
+## Shared generated indexes and dependency closure
+
+Readline staging exposed /usr/share/info/dir, an index shared by many manuals.
+Omit per-package staged copies of this derived index and register installed
+primary .info files with target install-info after installation. Keep the
+existing first-provider Glibc index as shared generated state; do not force
+another package to own it or overwrite it. Update/removal integration must
+regenerate this index consistently. Payload archives and generated state are
+recorded separately. Final native runtime dependency closure and ownership
+of retained Linux API headers/layout are mandatory before G1; temporary
+providers used by book order are not proof of release dependency closure.

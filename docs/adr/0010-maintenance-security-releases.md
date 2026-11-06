@@ -42,3 +42,11 @@ advisories remain unresolved release obligations.
 - [OpenSSL download/support table](https://openssl-library.org/source/): 4.0.3 is the maintained 4.0 release; checksum linked by publisher.
 - [Python 3.14.10 release](https://www.python.org/downloads/release/python-31410/): expedited security maintenance, certificate distrust and tarfile/cookie fixes; source SHA-256 published.
 - LFS release-13.1 advisory snapshot in ADR-0007 identifies the baseline exposure.
+
+
+PCRE2 10.49 is additionally selected over baseline 10.47 for sa-13.1-023/047.
+The official project release API identifies 10.49 as current stable; source
+SHA-256 53c156e1ba416a20da8e65395daa132da0d80e76910424caca3fcdae7831d384
+matched its published asset digest. The native build, make check and UTF-8
+property smoke test passed; license notices were retained. This does not
+claim other unbuilt security selections have passed their tests.

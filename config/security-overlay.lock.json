@@ -63,6 +63,17 @@
       "sha256": "de414a57119abef52784d8993e341d53aed635fc2b05c2607d9f98a2c5b72032",
       "planned_stage": "H07 final base; exact pinned maintenance release, not moving latest",
       "build_and_regression_tests": "pending"
+    },
+    {
+      "name": "pcre2",
+      "version": "10.49",
+      "baseline_version": "10.47",
+      "filename": "pcre2-10.49.tar.bz2",
+      "url": "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.49/pcre2-10.49.tar.bz2",
+      "sha256": "53c156e1ba416a20da8e65395daa132da0d80e76910424caca3fcdae7831d384",
+      "advisory": "sa-13.1-023 and sa-13.1-047",
+      "published_digest_source": "https://api.github.com/repos/PCRE2Project/pcre2/releases/tags/pcre2-10.49",
+      "build_and_regression_tests": "pending"
     }
   ],
   "remaining_review": [
@@ -70,7 +81,6 @@
     "Vim",
     "Expat",
     "util-linux",
-    "PCRE2",
     "selected BLFS components"
   ]
 }

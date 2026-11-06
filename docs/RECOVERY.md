@@ -68,3 +68,13 @@ begin with 8 compiler jobs, and stop on memory/disk pressure. Before any disk
 operation verify hostname, virtualization, serial, capacity and mounts.
 
 H12 obligation before G1: rerun Glibc container-backed UNSUPPORTED cases in the native booted target; current chroot cannot create nested user namespaces (unshare(2)). Preserve original raw reports and compare actual new outcomes.
+
+
+Latest verified partial-H07 checkpoint: h07-early-base (paired disks and JSON
+manifest under .local/vm/checkpoints). Thirteen native packages passed through
+PCRE2, with retained logs. The current next/running driver is
+/var/log/toddy/h07-test-tools-driver.pid and .log/.exit, covering M4, Bc, Flex
+and Tcl. Inspect actual PID and per-package records before retry. After a VM
+restart, mount-kernfs.sh must run before chroot. Final compiler/binutils suites,
+remaining base packages, native package-manager build, dependency/ownership
+closure and the H12 native container-test rerun are still pending.
