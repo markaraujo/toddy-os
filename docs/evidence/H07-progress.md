@@ -862,3 +862,21 @@ interaction; corrected package/retest acceptance pending. Raw summary:
 .local/logs/h07-ownership-before-spawn-correction.jsonl. Completed support raw
 logs/markers retained outside Git in h07-native-support-121-raw.tar.gz, SHA-256
 2f85f2d29f0a099cb65f660f9377acf6c08d7a5b914151541ef3b66c3a2c7a3d.
+
+
+## Native build-support correction accepted
+
+ADR-0044 correction is now measured: 13.1-2 archive SHA-256
+1e8bbc7d4bb0ad0590682a27980e172d65f9d811caf30291b3521aaaac215dd7;
+runner recipe/postcheck 0/0, log SHA-256
+ae05d8fa5f0856b8a02af6fae7db695075b6f73cd93d8467a780cf8794993846.
+Actual installed-site Autoconf checks no/no/yes/yes, both real spawned-child
+working-directory actions passed. Original failed package/stage/archive remains.
+Independent ownership driver exit 0; 124 accepted packages, no BDB/APT acceptance.
+Raw summary .local/logs/h07-native-spawn-correction-acceptance.json.
+
+
+124-package h07-native-support cold pair saved with exit 0 and verified source
+image consistency/copied hashes. Manifest and hashes are in RECOVERY.md. This
+new pair is not restored or advertised as an ISO; BDB/APT remain unfinished.
+Builder restarted for the complete corrected DB standard retry.

@@ -1,9 +1,9 @@
 # Current build procedure
 
-H01–H06 are validated; H07 final-base implementation is in progress with 123
+H01–H06 are validated; H07 final-base implementation is in progress with 124
 accepted native packages, including native Dpkg, Perl support, Triehash and
-Which/Libseccomp/Tcsh. Independent ownership and the corrected complete Berkeley
-DB Tcl rerun remain pending. This remains a partial build manual; no Toddy ISO exists.
+Which/Libseccomp/Tcsh and API/layout/build-support ownership. The corrected
+complete Berkeley DB Tcl rerun and APT/final closure remain pending. This remains a partial build manual; no Toddy ISO exists.
 Use status.json and the evidence files to distinguish passed milestones from
 recipes still under validation. All commands below run from the checkout root.
 

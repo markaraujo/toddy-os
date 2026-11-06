@@ -415,3 +415,7 @@ assumed by LFS 6.2 cache answers. Preserve failed marker/stage/archive; version
 13.1-2 retains original cross template and enables direct native detection.
 Require actual Autoconf no/no/yes/yes results and child directory-action behavior
 before same-step acceptance. See ADR-0044; no libc upgrade or assertion waiver.
+
+Verification of the spawn-cache correction: 13.1-2 same-step recipe/postcheck
+0/0, direct native configure results no/no/yes/yes and both spawned-child
+directory-action checks passed. Original failure retained; no libc change.

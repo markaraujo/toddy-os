@@ -283,3 +283,33 @@ archive SHA-256
 This is not a bootable checkpoint or demonstrated restoration. The independent
 ownership driver's initial prerequisite refusal made no target changes; use
 its corrected final-Coreutils original/recovery success-marker handling.
+
+
+124-package verified cache: .local/native-package-snapshots/
+20261106T170238245622Z, inventory SHA-256
+6ffae48dab7722834cb29e01c1607ea4cb62346c21ce4dd36f3ab97435583a85,
+archive SHA-256
+0a39ab5a88ea8c950b0f58a9577b3c63533615b9769516109dcc0de330609eed.
+Independent ownership driver exit 0; lfs-build-support 13.1-2 native correction
+accepted with original 13.1-1 failure/archive preserved. Cold pair is being
+saved separately; this package cache itself is not a bootable checkpoint.
+
+
+Newest verified cold pair is now h07-native-support (124 accepted packages),
+created 2026-11-06T17:03:54Z. Save exit 0; both source qcow2 checks and copied
+SHA-256 checks passed. Manifest .local/vm/checkpoints/h07-native-support.json;
+builder SHA-256
+15ae02e094dc1703a94e5ff88df2c37bff1d6888b9c9a25a58103ea9d54470fd,
+target SHA-256
+6ab9dfda166f0d01bc48c247cec0a9c0c3613fc138125b61d2f85a64c1a5eaf1.
+Raw save log/exit: .local/logs/h07-native-support-checkpoint.{log,exit}.
+Not restored in this run; earlier H06 controlled restoration remains the
+demonstrated restore. This pair includes the BDB compiled-test recovery seed,
+old failures and corrected native support; it contains no accepted BDB/APT.
+
+Resume after normal builder start and mount-kernfs.sh, verify/sync committed
+inputs while quiescent, then run_step.py h07-berkeley-db
+h07/berkeley-db-recovery.sh h07/berkeley-db-check.sh --user root from
+/opt/toddy-build/scripts/build inside the builder. The same-step retry must
+verify the 460-file seed and all 483 Tcl files after applying the correction
+before full standard execution. Keep PID/log/exit; only 0/0 accepts installation.

@@ -1,7 +1,7 @@
 # ADR-0044: Detect native spawn capabilities after the frozen Glibc revert
 
 - Date: 2026-11-06
-- Status: Native failure diagnosed; corrected package/postcheck pending
+- Status: Corrected package and native postcheck accepted
 
 The complete ACL retest and Linux API/layout ownership passed. The installed
 lfs-build-support 13.1-1 postcheck then correctly failed compiling the two
@@ -44,3 +44,11 @@ full tests passed, as did M4/Gettext and measured native Autotools build flow.
 The full installed ELF audit and build flow must repeat after final closure;
 these observations do not claim exhaustive absence of all latent defects.
 This correction adds no permission restriction or product scope change.
+
+Actual acceptance: lfs-build-support 13.1-2 archive SHA-256
+1e8bbc7d4bb0ad0590682a27980e172d65f9d811caf30291b3521aaaac215dd7.
+Same-step runner recipe/postcheck 0/0; log SHA-256
+ae05d8fa5f0856b8a02af6fae7db695075b6f73cd93d8467a780cf8794993846.
+Autoconf explicitly loaded the installed native site and detected no/no/yes/yes.
+Separate real child runs proved path and descriptor directory actions. Original
+13.1-1 archive/record/failed log remain preserved. H07 is not yet complete.

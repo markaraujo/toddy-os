@@ -4,7 +4,7 @@ Updated: 2026-11-06
 
 Bootstrap: ready_for_development
 
-Implementation: H01-H06 validated in KVM. H07 has 123 accepted source-built packages; full ACL retest, Linux API and filesystem layout passed. Native build-support cache correction is under verification after frozen Glibc alias revert; Berkeley DB full corrected retest, APT and final closure remain pending. G1/G2 pending; no Toddy ISO.
+Implementation: H01-H06 validated in KVM. H07 has 124 accepted source-built packages and a verified paired cold checkpoint; full ACL retest, API/layout ownership and native build-support correction passed. Resume complete corrected Berkeley DB standard suite, then APT/final closure. G1/G2 pending; no Toddy ISO.
 
 Foundation: **38%** · Agentic desktop: **0%**
 
