@@ -901,3 +901,16 @@ for 126 planned base packages. Counts include real library/module/data/config
 packages and do not measure remaining test duration or whole-release progress.
 Raw count .local/logs/h07-live-package-count.json; future kernel/desktop/agent
 stories and any later package-profile splits are outside this H07 count.
+
+
+Release hygiene research (not H07 completion credit): a scoped Python audit
+identified 15 exact public upstream PEM test fixtures; staged QA partition
+verified 5395 regular test files and 3943 retained runtime entries unchanged.
+No installed packages changed; actual native owner transfer/image exclusion
+remains H11 work in ADR-0049. Full source tests remain preserved.
+
+Raw scoped fixture audit SHA-256:
+`1fad84d1bfad08fb55b2e33c32d6e6cf4544ab6bc08ff908d2453d88f187b540`.
+Raw native archive partition probe SHA-256:
+`bcf00808fc7142dd82895a64fd900750a89ac3d69c67fd68e666d30df850d130`.
+Both reports remain outside Git at the paths recorded in ADR-0049.

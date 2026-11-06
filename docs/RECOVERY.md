@@ -337,3 +337,11 @@ four future image-tool archives (155 total selected inputs) in the checkout
 and host cache only. Native bsdcpio newc private roundtrip passed; no GNU cpio
 component was added, no H10 image exists. Do not sync until BDB's dispatcher
 finishes. H09/H10/H11 remain unstarted; native boot/overlay/ISO gates still apply.
+
+
+Additional H11 preparation: python_qa.py stages an optional regression-data
+partition only after the H10/H11 status gate. Its private own-archive experiment
+passed; no runtime/QA package transfer has run and H07 counts remain unchanged.
+Public upstream test-key fixtures must be separated from default release roots
+and on-medium runtime repositories through real Dpkg ownership transfer, with
+complete QA retained outside the image. See ADR-0049 and the scoped raw audit.
