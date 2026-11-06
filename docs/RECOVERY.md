@@ -40,7 +40,7 @@ contains 31 native packages and the complete classified final GCC build/tests,
 before GCC installation. Older h06-ready was actually restored and retested.
 Checkpoint copies share the workstation disk and are not disaster recovery.
 
-Current live target has 36 native packages, including GCC/runtime, Ncurses, Sed and Psmisc.
+Current live target has 37 native packages, including GCC/runtime, Ncurses, Sed, Psmisc and Gettext.
 Both explicit packaging recoveries passed recipe/postcheck; original failed
 records remain unchanged. Inspect actual records before resuming:
 
@@ -49,7 +49,7 @@ python3 scripts/host/vm.py inspect
 python3 scripts/host/vm.py ssh 'ls /var/log/toddy/build/*.running.json; tail -c 2000 /var/log/toddy/h07-install-final-compiler-driver.log'
 ```
 
-The current driver has passed Sed/Psmisc and continues Gettext, Bison, Grep, test locales and
+The current driver has passed Sed/Psmisc/Gettext and continues Bison, Grep, test locales and
 Bash. Its terminal status is /var/log/toddy/h07-install-final-compiler-driver.exit;
 per-step running/success/failed records are authoritative. After a VM restart,
 run mount-kernfs.sh before any chroot operation. When no step is running, resume:

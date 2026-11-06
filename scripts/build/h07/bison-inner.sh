@@ -7,6 +7,8 @@ test ! -e /sources/stage/bison
 make
 mkdir -p /sources/evidence/h07-bison
 make check 2>&1 | tee /sources/evidence/h07-bison/check.log
+find . -type f \( -name '*.log' -o -name '*.trs' \) -print0 | \
+ tar --null -T - -czf /sources/evidence/h07-bison/test-reports.tar.gz
 make DESTDIR=/sources/stage/bison install
 mkdir -p /sources/stage/bison/usr/share/doc/bison
 cp COPYING /sources/stage/bison/usr/share/doc/bison/copyright

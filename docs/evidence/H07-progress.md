@@ -299,3 +299,23 @@ Recipes for frozen LFS 13.1-systemd sections 8.40–8.45 (Libtool, GDBM, Gperf,
 Expat, Inetutils, Less) are prepared and syntax-checked, not yet accepted in
 the target. Expat uses the explicitly frozen 2.10.0 security overlay from
 ADR-0013. The native-tools driver requires final Bash success before starting.
+
+
+## Post-Bash recipe preparation and Gettext acceptance
+
+Gettext 1.0 passed make check with no FAIL/ERROR in its automake summaries,
+then installation and a native PO -> MO -> PO translation round trip. Native
+count is 37; Bison is running. Full Gettext nested .log/.trs reports were
+collected after completion, in addition to check.log. Future recipes collect
+them directly before staging; the running Bison recipe is preserved unchanged.
+
+Frozen chapter 8 recipes through Meson are now prepared, syntax checked and
+reviewed against their frozen book sections. These remain unvalidated until
+actual guarded target execution. OpenSSL is the selected 4.0.3 overlay.
+Python 3.14.10 source inspection still finds pre-OpenSSL-4 API/tests, so its
+recipe verifies and dry-runs the frozen book compatibility patch with zero
+fuzz before applying. Full Python tests remain mandatory. Optional 3.14.7 HTML
+docs are not presented as 3.14.10 docs. SQLite's autoconf distribution has no
+suite per section 8.52; its postcheck exercises persistent transactions,
+FTS5, integrity and no rpath. Python packaging wheels build/install offline
+from frozen sources. Libffi's explicit generic-CPU choice is ADR-0015.

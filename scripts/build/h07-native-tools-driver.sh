@@ -3,7 +3,7 @@
 set -uo pipefail
 cd /opt/toddy-build/scripts/build
 [[ -f /var/log/toddy/build/h07-bash.success.json ]] || exit 1
-for package in libtool gdbm gperf expat inetutils less; do
+for package in libtool gdbm gperf expat inetutils less perl autoconf automake openssl libelf libffi sqlite mpdecimal python flit-core packaging wheel setuptools meson; do
  if [[ -f /var/log/toddy/build/h07-$package.success.json ]]; then continue; fi
  python3 run_step.py "h07-$package" "h07/$package.sh" "h07/$package-check.sh" --user root
  result=$?

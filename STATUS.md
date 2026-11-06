@@ -4,7 +4,7 @@ Updated: 2026-11-06
 
 Bootstrap: ready_for_development
 
-Implementation: H01-H06 validated in KVM. H07 has 36 native packages including final GCC/runtime Ncurses, Sed and Psmisc; critical libc/Binutils/GCC results accepted. Remaining base, native package-manager/dependency closure and release gates are pending. No Toddy ISO.
+Implementation: H01-H06 validated in KVM. H07 has 37 native packages including final GCC/runtime Ncurses, Sed, Psmisc and Gettext; critical libc/Binutils/GCC results accepted. Remaining base, native package-manager/dependency closure and release gates are pending. No Toddy ISO.
 
 Foundation: **38%** · Agentic desktop: **0%**
 

@@ -13,4 +13,4 @@ find . -type f \( -name '*.log' -o -name '*.trs' \) -print0 | \
 make DESTDIR=/sources/stage/libtool install
 rm -f /sources/stage/libtool/usr/lib/libltdl.a
 mkdir -p /sources/stage/libtool/usr/share/doc/libtool
-cat COPYING > /sources/stage/libtool/usr/share/doc/libtool/copyright
+cat COPYING libltdl/COPYING.LIB > /sources/stage/libtool/usr/share/doc/libtool/copyright
