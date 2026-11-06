@@ -61,3 +61,4 @@ report=json.loads(Path('/var/log/toddy/h07-final-unowned.json').read_text())
 assert not report['unknown'],report['unknown']
 print('Final-base package ownership has no unexplained files; generated and H08 configuration remain explicit')
 PYOWNED
+python3 /opt/toddy-build/scripts/build/audit_native_build_flow.py > /var/log/toddy/h07-final-native-build-flow.json

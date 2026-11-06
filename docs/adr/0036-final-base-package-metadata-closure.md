@@ -95,3 +95,10 @@ H08 work. Every other unowned usr/etc/lib64 regular file/link must be explained
 by actual package ownership after API/layout/cleanup steps; unknowns fail the
 final postcheck. This is not a claim that every mutable state file belongs to a
 binary package or that H08 configuration has already passed.
+
+A separate native Autotools shared-library flow passed against the actual
+101-package root: autoreconf (M4/Autoconf/Automake/Libtoolize), configure, Make,
+GCC/Binutils, libtool test wrapper and DESTDIR install. Raw result outside Git:
+.local/logs/h07-native-build-flow-101.json, SHA-256 4b92878dfad18e26f9fe77042d5af06c1a3c6153cae1461765114263585718ae.
+The final metadata postcheck repeats this flow after cleanup/upgrades. Its
+explicit scope does not replace arbitrary tool/data/dlopen or boot audits.

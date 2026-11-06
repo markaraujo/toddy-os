@@ -34,3 +34,9 @@ actual native CMakeCache and exact notices, not every unused Utilities source.
 This source/legal review does not imply a source-built package passed native
 tests, all remaining licenses are closed, original Toddy licensing D10 is
 approved, or ISO/source release artifacts are already available.
+
+The expanded inventory now covers all 150 frozen inputs including Tcsh:
+880 candidate notice/header texts, inventory SHA-256
+7b8a7227d7b518f351f350cca16491e4badd98fcab857236b0e6a1570ba70986.
+Content-addressed prior generations are preserved; candidate count is not a
+complete license/distribution review or evidence of native package acceptance.
