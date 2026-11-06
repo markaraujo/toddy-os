@@ -78,3 +78,12 @@ and Tcl. Inspect actual PID and per-package records before retry. After a VM
 restart, mount-kernfs.sh must run before chroot. Final compiler/binutils suites,
 remaining base packages, native package-manager build, dependency/ownership
 closure and the H12 native container-test rerun are still pending.
+
+2026-11-06 continuation: M4's signal-environment failure is corrected and its
+full retry passed; Bc and Flex also passed. Inspect the test-tools driver and
+h07-tcl records before resuming. The runner resets inherited ignored signals
+before every recipe/postcheck. Recovery source tree
+/mnt/lfs/sources/recovery-m4-inherited-signal preserves the original failure.
+The prepared h07-harness-driver must start only after Tcl passes; Binutils
+build/test is separate from installation so critical results can be classified
+before changing the live target. No critical suite is skipped.

@@ -20,6 +20,18 @@ TARGET = Path('/mnt/lfs')
 STATE = Path('/var/log/toddy/build')
 
 
+def recipe_command(user):
+    # Detached launchers may inherit SIGINT/SIGQUIT ignored from a shell.
+    # A new session alone does not reset ignored dispositions across exec.
+    command = ['env', '--default-signal=HUP,INT,QUIT,TERM',
+               'bash', '--noprofile', '--norc', '-c',
+               ('source /home/lfs/.bashrc; ' if user == 'lfs' else '') + 'exec bash "$1"',
+               'recipe']
+    if user == 'lfs':
+        command = ['/usr/sbin/runuser', '-u', 'lfs', '--'] + command
+    return command
+
+
 def snapshot():
     result = {}
     for tree in ('usr', 'etc', 'var', 'tools', 'lib64'):
@@ -94,11 +106,7 @@ def main():
                        'TERM': 'dumb',
                        'PATH': '/usr/bin:/bin' if args.user == 'lfs' else '/usr/bin:/usr/sbin:/bin:/sbin',
                        'LC_ALL': 'POSIX'}
-        command = ['bash', '--noprofile', '--norc', '-c',
-                   ('source /home/lfs/.bashrc; ' if args.user == 'lfs' else '') + 'exec bash "$1"',
-                   'recipe']
-        if args.user == 'lfs':
-            command = ['/usr/sbin/runuser', '-u', 'lfs', '--'] + command
+        command = recipe_command(args.user)
         with prefix.with_suffix('.log').open('a') as log:
             process = subprocess.Popen(command + [str(args.recipe.resolve())],
                 env=environment, stdout=log, stderr=subprocess.STDOUT,

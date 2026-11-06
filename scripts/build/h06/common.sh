@@ -7,7 +7,7 @@ guard_target
 SOURCE_TOOL=/opt/toddy-build/scripts/build/source.py
 chroot_run() {
     /usr/sbin/chroot "$LFS" /usr/bin/env -i HOME=/root TERM=dumb \
-        PATH=/usr/bin:/usr/sbin LC_ALL=POSIX MAKEFLAGS=-j8 TESTSUITEFLAGS=-j8 \
+        PATH=/usr/bin:/usr/sbin LC_ALL=POSIX MAKEFLAGS=-j8 TESTSUITEFLAGS=-j8 NINJAJOBS=8 \
         /bin/bash --noprofile --norc -s
 }
 check_native() {

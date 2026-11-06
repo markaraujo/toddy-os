@@ -109,3 +109,22 @@ No OS build failures exist yet. Do not turn planning risks into invented test fa
 - Recovery: first attempt changed zero installed paths; preserve its stage and
   source tree, rebuild cleanly with corrected package integration and verify
   Readline runtime plus Info lookup. No forced ownership overwrite.
+
+## H07 M4: inherited ignored SIGINT in detached runner (2026-11-06)
+
+Symptom: GNU M4 1.4.21 `make check` reported 333 PASS, 48 SKIP and one
+FAIL (`test-execute.sh`, case 5). Recipe exited 2 and changed zero installed
+paths. The child explicitly raises SIGINT; the parent expects signal exit.
+Cause: launching a noninteractive driver in the background inherited ignored
+SIGINT. `start_new_session=True` does not reset ignored dispositions on exec.
+The identical compiled test failed with SIGINT ignored (exit -6) and passed
+with SIGINT default (exit 0) inside the same target.
+
+Correction: the runner invokes GNU env `--default-signal=HUP,INT,QUIT,TERM`
+before Bash, for recipes and postconditions. No test or package was weakened.
+A regression test starts the real command under an ignored launcher SIGINT
+and verifies that the recipe terminates from SIGINT. The first source tree
+and suite report remain in target recovery/evidence directories; the full
+clean-source suite retry passed: 334 PASS, 48 SKIP, zero FAIL; recipe and
+postcondition exit 0. Its full log SHA-256 is
+bbadb5da2e6d3de7eb237250f24b0849aecd3a0f8e728cd7dd5027099f475f29.

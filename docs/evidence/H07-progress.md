@@ -83,3 +83,22 @@ PCRE2 10.49 passed its full make check and UTF-8 property smoke test. Native
 database currently contains 13 packages. The paired checkpoint h07-early-base
 passed image consistency and copy SHA-256 verification with the VM off. It
 is a partial-H07 recovery point, not a passed G1 or complete final base.
+
+## Native test-tool prerequisites (2026-11-06)
+
+M4 1.4.21, Bc 7.0.3 and Flex 2.6.4 passed native recipe and
+postcondition checks. M4's first full suite exposed inherited ignored SIGINT
+from detached execution, corrected in the runner and regression-tested without
+changing package tests. Its clean retry produced 334 PASS, 48 SKIP, zero FAIL.
+The original failure had zero installed changes and remains archived. Bc and
+Flex full test output is retained with their successful build logs.
+
+| Package | Full successful log SHA-256 |
+| --- | --- |
+| m4 | bbadb5da2e6d3de7eb237250f24b0849aecd3a0f8e728cd7dd5027099f475f29 |
+| bc | e581021661a19ec76647fa8bcc83ecb894afe1cd05093d03278cd9972cd27c94 |
+
+Local evidence copy: .local/logs/h07-test-tools/early-tools-and-history.tar.gz.
+The copy includes original runner failure history. Tcl is still running;
+Expect/DejaGNU/Ninja/Pkgconf recipes and the critical Binutils build recipe are
+prepared but not yet verified. H07 and all release gates remain incomplete.
