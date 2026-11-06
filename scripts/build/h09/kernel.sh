@@ -42,6 +42,9 @@ set -euo pipefail
 cd /sources/linux-7.1.8
 export KBUILD_BUILD_USER=toddy KBUILD_BUILD_HOST=builder KBUILD_BUILD_VERSION=1
 export KBUILD_BUILD_TIMESTAMP='2026-11-05 00:00:00 UTC'
+# kernelrelease deliberately skips config synchronization. Refresh auto.conf
+# after merging the fragment before checking the requested local version.
+make prepare
 release=$(make -s kernelrelease)
 [[ $release == 7.1.8-toddy ]]
 stage=/sources/stage/linux-kernel

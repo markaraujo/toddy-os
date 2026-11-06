@@ -109,3 +109,9 @@ option, inode identity, real write propagation, permissions, unchanged read-only
 lower and volatile upper disposal passed. Recorded the required live profile
 and reusable experiment in ADR-0048; actual Squashfs/native-kernel integration
 remains pending. H07 full DB recovery tests continue; no milestone credit added.
+
+2026-11-06: Native private Linux configuration resolved all 139 requested
+settings. The subsequent release query exposed stale auto.conf after the
+fragment merge. Source-backed make prepare correction passed with
+7.1.8-toddy and unchanged resolved config hash. Prepared H09 recipe corrected;
+no kernel image/install/boot produced, and BDB full recovery suite stays active.

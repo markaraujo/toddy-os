@@ -963,3 +963,11 @@ appears in the observed partial log. Raw observation SHA-256
 `bc18d28890a3e607103088de27d46d4b98b574944820e9f3e72b27573d8dfbd1`,
 .local/logs/h07-db-secondary-observation.json. This remains unfinished work;
 124/126 accepted packages, 38% foundation credit and all gates are unchanged.
+
+
+2026-11-06 21:04 UTC: full standard regression continues Recd001 transaction
+recovery variants after secondary-index cases. Driver/runner are live after
+3h55m; observed partial log contains neither FAIL nor the final success sentinel.
+Raw .local/logs/h07-db-recovery-observation.json SHA-256
+`c65daa633cf109eabb885f0058a594a5ecd08e51b43a1e245e7bd92545ad0049`.
+No new package or milestone acceptance is inferred; 124/126 and 38% remain.

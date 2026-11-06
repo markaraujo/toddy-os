@@ -1,7 +1,7 @@
 # ADR-0046: Prepare a gated generic QEMU kernel build
 
 - Date: 2026-11-06
-- Status: Prepared only; no kernel configuration/build/install/boot executed
+- Status: Private native configuration/preparation verified; kernel image/install/boot pending
 
 H07's corrected complete DB standard suite is running. H08 remains unstarted.
 Prepare the next foundation kernel slice without changing those gates. The
@@ -130,5 +130,41 @@ inferred from retaining the upstream notice. Package build remains pending.
 ADR-0051 adds explicit DMI/DMI_SYSFS for the ephemeral test guest's documented
 Systemd SMBIOS channel. The current fragment has 139 source-verified symbols;
 its hash and native generator preflight are in that ADR. The earlier 137-symbol
-hash remains historical evidence. No configuration resolution or kernel build
-has yet occurred, and the new options do not waive any existing boot gate.
+hash remains historical evidence. At that earlier source-only checkpoint, configuration resolution had not run.
+The new options do not waive any existing boot gate.
+
+
+## Native configuration preparation and release-string correction
+
+A private source tree under /mnt/lfs/sources/probes was extracted only after
+verifying the frozen Linux archive SHA-256
+`ff01dcb449279d5b4cfccdb01fee639cf5ff1803f1749a77844dd33915422c49`.
+The native GCC 16.2.0 environment ran mrproper, x86_64_defconfig, the exact
+fragment merge and olddefconfig with two jobs. All 139 requested settings
+survived. Resolved configuration SHA-256:
+`3ad1bf1ce1e1a844ac35a5c0c9769536bff6e30d9ae75dd20ee2341a9f544e0e`.
+No active source tree, installed package or H09 build gate was changed.
+
+The next query exposed a prepared-recipe defect: make -s kernelrelease returned
+7.1.8 even though .config requested CONFIG_LOCALVERSION="-toddy". Its generated
+include/config/auto.conf still held the earlier defconfig values. Frozen
+Makefile's no-sync-config-targets explicitly includes kernelrelease, and
+scripts/setlocalversion reads auto.conf rather than .config. Its own diagnostic
+instructs running make prepare before querying an unprepared release.
+
+Run make prepare after configuration verification and setting the reproducible
+build identity, before the recipe's exact release check. The native private
+retry passed with 7.1.8-toddy and the same resolved configuration hash. It built
+configuration/preparation utilities and generated headers, including Objtool;
+no vmlinux, bzImage, installed modules or boot result is claimed. It does not
+bypass H08/H09 prerequisites or grant H09 acceptance. The real recipe must
+repeat preparation, then build/stage/install and validate actual boot artifacts.
+
+Evidence .local/logs/h09-native-kconfig-probe.json retains the initial command
+log/exit, original requested/resolved configuration, corrected preparation
+log/exit, synchronized auto.conf and kernel.release. SHA-256:
+`f597a18e1696b8775b556b30c4c68a35ea2152d7c28bc933426e88e08a3f5106`.
+Both private drivers exited 0; the initial experiment recorded the unexpected
+release, and the corrected experiment asserted the exact intended release.
+The source tree and logs remain in the printed private probe directory for
+recovery; only temporary configuration/build-preparation files were produced.

@@ -444,3 +444,16 @@ acceptance remains pending. No active BDB inputs were changed. See ADR-0045.
   private stage passed; two boundary tests and all 97 local checks pass. No
   failed installed upgrade is claimed; this defect was caught before dispatch.
   See ADR-0036 and its raw evidence hashes. Full metadata acceptance is pending.
+
+
+### Prepared kernel recipe queried a stale release string
+
+- Symptom: actual native configuration resolved all 139 fragment options, but
+  make -s kernelrelease printed 7.1.8 instead of the requested 7.1.8-toddy.
+- Cause: Linux 7.1.8 excludes kernelrelease from automatic config sync;
+  setlocalversion reads the stale generated auto.conf left by defconfig.
+- Correction: make prepare before the exact release assertion, after setting
+  the build identity. No changed kernel version or weakened assertion.
+- Verification: private native preparation exited 0, returned 7.1.8-toddy and
+  retained the exact resolved config hash. See ADR-0046. No kernel image,
+  installation or native boot acceptance is inferred from preparation.

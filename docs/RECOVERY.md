@@ -512,3 +512,16 @@ On failure, the printed fixture is retained after attempted unmount; verify
 actual mount state before cleanup. No physical block device is opened. A native
 Squashfs/live boot must repeat the metadata/ACL/hardlink/volatile-write checks;
 this builder-kernel experiment cannot satisfy that acceptance (ADR-0048).
+
+
+Native Kconfig preparation evidence (ADR-0046) is preserved outside installed
+state at /mnt/lfs/sources/probes/kernel-config-4wfyi975 in this builder. Its
+driver.log/exit retain the initial configuration and stale release observation;
+prepare.log/prepare.exit retain the corrected native preparation. Both drivers
+finished 0, and the latter asserts 7.1.8-toddy. A full copied evidence record is
+.local/logs/h09-native-kconfig-probe.json. Do not rename this private source
+into the official H09 build or count its helpers as a completed kernel. The
+gated recipe performs a fresh verified extraction and repeats the accepted
+configuration/preparation sequence before the actual build. Inspect these logs
+if its release check differs; do not remove the suffix assertion or change the
+frozen kernel to work around stale generated configuration.
