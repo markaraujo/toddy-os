@@ -345,3 +345,10 @@ passed; no runtime/QA package transfer has run and H07 counts remain unchanged.
 Public upstream test-key fixtures must be separated from default release roots
 and on-medium runtime repositories through real Dpkg ownership transfer, with
 complete QA retained outside the image. See ADR-0049 and the scoped raw audit.
+
+
+H09 direct-root GRUB renderer is source preparation only. It writes stdout,
+requires measured filesystem/GPT UUID arguments, and has not changed /boot or
+the ESP/MBR. Native syntax probe passed in a removed private temporary file;
+see ADR-0046. Actual installation still requires the H09 gate, accepted native
+kernel and repeated designated disk/partition/mount identity guards.

@@ -56,3 +56,21 @@ and dummy module vermagic while explicitly recording boot_validated false.
 GRUB installation, actual BIOS/UEFI early boot, native Kmod/Glibc/Systemd retries
 and H09 acceptance remain mandatory future work. No build or boot is claimed
 by this preparation. Relevant files are scripts/build/h09 and the fragment.
+
+
+Direct-root GRUB configuration preparation follows section 10.4 of the same
+frozen LFS book. Search for the measured ext4 filesystem UUID, then pass the
+measured GPT PARTUUID to the kernel. A filesystem UUID alone requires an
+initramfs; this direct-root builder entry has none. Do not assume hd0 or vdb
+naming remains stable after the target disk is attached to a test guest.
+Serial and virtual console output support early-boot evidence. The pure
+renderer validates both UUIDs before output and performs no disk writes.
+
+An actual native GRUB 2.14 grub-script-check accepted rendered configuration
+using the designated target's measured UUIDs; invalid/injected UUID input was
+rejected before output. Only a private temporary config was created/removed.
+Raw .local/logs/h09-native-grub-config-probe.json SHA-256
+cd3d22a441d102f7cafa89a9f8010064577501ec3579e813e3ea2c3aff677914.
+Syntax success is not module availability, successful GRUB installation or
+kernel boot. Package/stage ownership, guarded BIOS/EFI installation and actual
+early-boot tests remain pending behind H08/H09 prerequisites.

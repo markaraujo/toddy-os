@@ -61,3 +61,5 @@
 | 2026-11-06 | H10 metadata experiment | Identified Squashfs ACL namespace limitation; native numeric/escaped ACL sidecar and effective UID-101 access roundtrip passed with physical restore | Private fixture only, no package/image mutation or boot claim; real overlay/installer integration remains pending in ADR-0048 |
 | 2026-11-06 | H07 progress visibility | Added separate active-story facts/running/remaining panel and explained accepted-only 38% versus H07 24 pending points | 91 checks pass; exported dashboard inspected in browser; no partial credit or changed acceptance, DB suite continues |
 | 2026-11-06 | H11 QA partition preparation | Verified 15 public upstream Python key fixtures; staged 5395 QA files with 3943 runtime entries unchanged from own archive | 95 local checks pass; no installed package/ownership or image change; actual transfer/exclusion still pending, H07 DB suite active |
+
+2026-11-06: Prepared LFS 13.1 direct-root UUID/PARTUUID GRUB renderer; actual native GRUB 2.14 syntax check passed in private temporary staging. No boot configuration or disk changed; H09 installation/boot remain pending (ADR-0046).
