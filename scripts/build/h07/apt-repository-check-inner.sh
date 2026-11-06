@@ -10,6 +10,7 @@ cleanup() {
   kill "$https_pid" 2>/dev/null || true
   wait "$https_pid" 2>/dev/null || true
  fi
+ if [[ -f $fixture/https.log ]]; then cat "$fixture/https.log";fi
  GNUPGHOME="$fixture/keys" gpgconf --kill gpg-agent >/dev/null 2>&1 || true
  rm -rf "$fixture"
 }
@@ -124,10 +125,13 @@ test ! -e "$fixture/root/etc/toddy-apt-probe.conf"
 # The temporary trust anchor is scoped to these commands, never system trust.
 (
  umask 077
- openssl req -x509 -newkey rsa:2048 -noenc -days 1 \
+ if ! openssl req -x509 -newkey rsa:2048 -noenc -days 1 \
   -subj /CN=localhost -addext subjectAltName=DNS:localhost \
   -keyout "$fixture/tls.key" -out "$fixture/tls.crt" \
-  > "$fixture/tls-generation.log" 2>&1
+  > "$fixture/tls-generation.log" 2>&1; then
+  cat "$fixture/tls-generation.log"
+  exit 1
+ fi
 )
 chmod 644 "$fixture/tls.crt"
 python3 - "$fixture" <<'PYSERVER' > "$fixture/https.log" 2>&1 &
@@ -145,7 +149,10 @@ server.serve_forever(poll_interval=0.1)
 PYSERVER
 https_pid=$!
 for attempt in $(seq 1 100); do
- kill -0 "$https_pid"
+ if ! kill -0 "$https_pid"; then
+  cat "$fixture/https.log"
+  exit 1
+ fi
  if [[ -s $fixture/https.port ]]; then break;fi
  sleep 0.1
 done
