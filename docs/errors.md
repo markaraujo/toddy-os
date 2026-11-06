@@ -70,3 +70,31 @@ No OS build failures exist yet. Do not turn planning risks into invented test fa
   PGP verification as unperformed and pinned the verified source hash.
 - Verification: Xz 5.8.4 hash 4ce24038fd4221e0d13bc1a2de7a4db56e90b92b3bf75321f6c14be73f65de4b.
   No authentication bypass or global trust-store change was used.
+
+## 2026-11-05 — Final Glibc staging and merged-/usr
+
+- Symptom: package preflight rejected a real /sbin directory in staged Glibc.
+- Cause: an empty DESTDIR lacks the book target's /sbin -> usr/sbin alias;
+  Glibc placed ldconfig/sln there. Direct installation would follow the alias.
+- Correction: canonicalize staged bin/lib/sbin payloads into /usr before
+  ownership checks, preserving metadata and rejecting duplicates. Register
+  staged /etc/rpc as a conffile too. Failed stage and attempt remain retained.
+- Verification: first attempt had zero changed installed paths and no archive;
+  critical suite remains accepted and unchanged. Retry result recorded in H07.
+
+## 2026-11-05 — Glibc container-test UNSUPPORTED diagnosis
+
+- Symptom: many container-backed tests returned UNSUPPORTED with EPERM and a
+  generic hint suggesting changing Ubuntu's namespace sysctl.
+- Investigation: a temporary named test-job AppArmor profile did not change
+  the result. It was unloaded immediately; sysctl remained 1. A direct
+  comparison passed unshare -Ur in builder root and failed inside LFS chroot.
+- Cause: Linux unshare(2) documents EPERM for CLONE_NEWUSER inside chroot when
+  process root differs from mount-namespace root. The harness's AppArmor hint
+  was not a reliable diagnosis. No global policy was weakened.
+- Next verification: repeat container-backed unsupported tests after actual
+  native target boot (H12), preserving original suite outputs. Unsupported
+  hardware/hugepage/optional-tool cases remain explicitly reported. No failed
+  test was removed or marked passed.
+- Primary source: https://man7.org/linux/man-pages/man2/unshare.2.html, EPERM
+  chroot condition (since Linux 3.9), consulted 2026-11-05.

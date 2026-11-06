@@ -11,6 +11,7 @@ import json
 import os
 from pathlib import Path
 import re
+import shutil
 import subprocess
 from locked_inputs import locked_source
 
@@ -48,6 +49,29 @@ def payload(stage):
     return entries
 
 
+
+def canonicalize_usrmerge(stage):
+    """Match the book target's bin/lib/sbin aliases without losing files."""
+    def merge(source, destination):
+        if source.is_dir() and not source.is_symlink():
+            if destination.is_symlink() or (destination.exists() and not destination.is_dir()):
+                raise SystemExit(f'Staged usrmerge directory collision: {destination}')
+            if not destination.exists():
+                destination.mkdir(parents=True)
+                shutil.copystat(source, destination)
+            for child in list(source.iterdir()):
+                merge(child, destination/child.name)
+            source.rmdir()
+        else:
+            if destination.exists() or destination.is_symlink():
+                raise SystemExit(f'Staged usrmerge payload collision: {destination}')
+            source.rename(destination)
+    for name in ('bin','lib','sbin'):
+        source=stage/name
+        if source.is_dir() and not source.is_symlink():
+            merge(source,stage/'usr'/name)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('name')
@@ -77,6 +101,7 @@ def main():
         raise SystemExit('Unexpected control directory or non-LFS /usr/lib64')
     if not args.recipe.resolve().is_relative_to(ROOT/'scripts') or not args.recipe.is_file():
         raise SystemExit('Recipe provenance must be a project script')
+    canonicalize_usrmerge(stage)
     entries = payload(stage)
     if not entries:
         raise SystemExit('Empty package')
@@ -133,7 +158,7 @@ def main():
     RECORDS.mkdir(parents=True, exist_ok=True)
     subprocess.run(['dpkg-deb', '--build', str(stage), str(archive)], check=True)
     record = {'name': args.name, 'version': args.version, 'archive_sha256': digest(archive),
-        'recipe_sha256': digest(args.recipe), 'sources': source_rows,
+        'recipe_sha256': digest(args.recipe), 'packager_sha256': digest(Path(__file__)), 'sources': source_rows,
         'payload': entries, 'installed': False}
     record_path = RECORDS/(archive.stem+'.json')
     record_path.write_text(json.dumps(record, indent=2)+'\n')

@@ -32,3 +32,28 @@ No --force-overwrite was used.
 Full local evidence: .local/logs/h07/. Recovery checkpoint before final base:
 h06-ready. Security overlay and actual critical suite results must be recorded
 before the final libc can be accepted. No G1 or release claim is made.
+
+## Critical Glibc result and installed first base slice
+
+Final Glibc 2.44 with selected stable patch completed its full critical suite:
+6779 PASS, 16 XFAIL, 583 UNSUPPORTED, 1 FAIL. The sole failure is io/tst-lchmod,
+documented by frozen LFS section 8.5 for chroot. Its output shows descriptor
+path comparisons changing from /sources to /mnt/lfs/sources while retaining
+the same device/inode. No unexplained failure was accepted. Raw suite exit 2
+is preserved; it is not rewritten as a zero-exit suite.
+
+Original summary, raw log, classification and all per-test outputs are copied
+to .local/logs/h07-glibc-tests/. The 29 MiB per-test archive is also retained
+in the target source evidence directory. Some UNSUPPORTED cases are normal
+hardware/hugepage/optional-tool limitations. Container tests hit the documented
+Linux CLONE_NEWUSER-in-chroot EPERM condition, confirmed by an outside/inside
+comparison; a temporary job-specific AppArmor experiment was ineffective and
+removed. No global sysctl changed. H12 must repeat container cases in the
+actual booted native target before G1, retaining both original and new results.
+
+Glibc native package installation passed after staging was canonicalized to
+the book's merged-/usr aliases. Target C execution, libc linkage, no runtime
+RPATH and localhost lookup passed. Locales, tzdata, Zlib, Bzip2 and Xz then
+passed native package installation and postconditions. H07 remains incomplete:
+final compiler/binutils suites and the remaining chapter 8 sequence are still
+required. Current source-based archive/component metadata is outside Git.

@@ -49,7 +49,9 @@ python3 scripts/host/vm.py ssh 'bash /opt/toddy-build/scripts/build/h06/cleanup-
 
 H07 is next: use frozen chapter 8 order, stage final packages, check ownership
 before native .deb installation, and retain critical test results. Man-pages and iana-etc have passed; ownership rejection probe also passed.
-Next is final Glibc with explicit stable security patch and full critical suite.
+Final Glibc critical suite and native installation passed with one explicitly
+documented chroot failure; locales, tzdata, Zlib, Bzip2 and Xz also passed.
+Next is Lz4 in frozen chapter 8 order, then the remaining final base.
 Preserve h06-ready before final libc changes. Security
 overlay research is recorded separately; no fix is claimed built yet.
 
@@ -64,3 +66,5 @@ its serial must be TODDY-LFS-TARGET. The root disk has TODDY-BUILDER serial.
 Never pass workstation block devices into QEMU. Retain 100 GiB host reserve,
 begin with 8 compiler jobs, and stop on memory/disk pressure. Before any disk
 operation verify hostname, virtualization, serial, capacity and mounts.
+
+H12 obligation before G1: rerun Glibc container-backed UNSUPPORTED cases in the native booted target; current chroot cannot create nested user namespaces (unshare(2)). Preserve original raw reports and compare actual new outcomes.

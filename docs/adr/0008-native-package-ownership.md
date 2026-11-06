@@ -58,3 +58,15 @@ DESTDIR), sections 4.2–4.4 (temporary environment); installed dpkg 1.22.6
 manual/help in the disposable Ubuntu builder; actual prototype evidence in
 [H03](../evidence/H03.md). This ADR does not claim APT or dpkg is already
 source-built or available in a Toddy release.
+
+## Staged merged-/usr adaptation, 2026-11-05
+
+The real final Glibc staging experiment installs ldconfig/sln into a physical
+/sbin directory when its DESTDIR is empty. The book's live target instead has
+/sbin -> usr/sbin, so a direct install naturally reaches /usr/sbin. The
+packager rejected the noncanonical staged alias before any target mutation.
+Canonicalize staged bin/lib/sbin directories into usr counterparts before
+ownership checks, preserving file metadata and rejecting duplicate payloads.
+This reproduces the selected target namespace; it does not change configured
+runtime paths. Keep the failed stage/log and repeat staging only, not the
+already accepted critical suite. Record the packager hash with the archive.
