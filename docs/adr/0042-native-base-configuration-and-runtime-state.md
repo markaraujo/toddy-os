@@ -34,7 +34,7 @@ files. This avoids native Dpkg's correct confold preservation retaining stale
 unowned bootstrap identity/DNS. Preserve unexpected owner work for diagnosis.
 A safety regression initially exposed group-writable mkdir defaults under the
 host umask; new recovery directories now request mode 0700 explicitly. All
-four backup/refusal tests pass; no target files were replaced during preparation.
+five backup/refusal tests pass; no target files were replaced during preparation.
 
 Timezone and resolver links are mutable generated state, not immutable package
 payload. The package retains only their default policy; initial configuration
@@ -62,9 +62,13 @@ recreated on chroot re-entry. Packaged /etc/resolv.conf remains a runtime link;
 no static QEMU DNS data enters its payload. Image assembly excludes /run data and
 must verify that exclusion. Native DHCP/DNS tests at boot still required.
 
-Prepared staging/INI/shell checks and 81 local tests pass. Read-only re-audit of
+Prepared staging/INI/shell checks and 82 local tests pass. Read-only re-audit of
 the unchanged native root still has the prior 1968 unowned cleanup/API paths,
 54 generated entries and four pending bootstrap configs: no target acceptance
 was invented. All H08 acceptance boxes and status remain pending. LFS computer
 instructions retain MIT terms; original project licensing remains D10, not an
 assumed grant or a declaration that release licensing is complete.
+
+Read-only pre-change audit: .local/logs/h08-generated-state-audit-before.json,
+SHA-256 77a1c357cec44107e25cea8f550be713f7e594613200f96fcec3c3aff1b9d49d. This is the existing 101-package root,
+not evidence of an H08 installation.
