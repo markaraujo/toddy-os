@@ -1,0 +1,17 @@
+name: Bug report
+description: Report a reproducible Toddy OS failure
+title: "[Bug]: "
+body:
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps, expected behavior and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Build version, hardware/VM and sanitized logs
+      description: Never include credentials, personal documents or API keys.
+    validations:
+      required: true

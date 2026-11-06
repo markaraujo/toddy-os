@@ -1,0 +1,464 @@
+{
+  "schema_version": 1,
+  "project": "Toddy OS",
+  "updated_at": "2026-11-05",
+  "bootstrap": "ready_for_development",
+  "current_scope": "Repository and planning bootstrap only; do not start OS builds.",
+  "next_story": "H01",
+  "gates": {
+    "G1": "pending",
+    "G2": "pending"
+  },
+  "milestones": [
+    {
+      "id": "H01",
+      "phase": "foundation",
+      "title": "Inspect host and select isolated build environment",
+      "weight": 4,
+      "status": "not_started",
+      "depends_on": [],
+      "story": "stories/H01.md",
+      "acceptance": [
+        "Inventory actual CPU, RAM, storage, virtualization and installed build tools without modifying the host.",
+        "Choose a disposable VM and record resource budgets, target disk identity, host/guest boundaries and recovery plan.",
+        "Run the frozen book host-requirement check in the designated environment and record missing prerequisites."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "H02",
+      "phase": "foundation",
+      "title": "Freeze books, sources and integrity manifest",
+      "weight": 4,
+      "status": "not_started",
+      "depends_on": [
+        "H01"
+      ],
+      "story": "stories/H02.md",
+      "acceptance": [
+        "Download versioned LFS/BLFS books and record SHA-256, exact editions and relevant errata.",
+        "Create a package/patch manifest with URLs, versions and upstream integrity data; reject mismatches before extraction.",
+        "Update config/books.lock.json to verified with actual hashes; document any mirror substitutions."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "H03",
+      "phase": "foundation",
+      "title": "Prepare target, build user and package ownership",
+      "weight": 4,
+      "status": "not_started",
+      "depends_on": [
+        "H02"
+      ],
+      "story": "stories/H03.md",
+      "acceptance": [
+        "Validate target paths and mounts; create the lfs user/environment inside the chosen guest.",
+        "Resolve D03 in an ADR and prototype file ownership, install/remove/upgrade and conflict detection before final builds.",
+        "Implement target guards, per-package logging and failed/success marker semantics; demonstrate a safe dry run."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "H04",
+      "phase": "foundation",
+      "title": "Build the cross-toolchain",
+      "weight": 10,
+      "status": "not_started",
+      "depends_on": [
+        "H03"
+      ],
+      "story": "stories/H04.md",
+      "acceptance": [
+        "Compile the book cross-toolchain in order, including binutils, compiler, headers and libc.",
+        "Validate compiler targets, linker search paths and an executable produced for the target.",
+        "Save per-package logs and source/install manifests; no host or temporary path leak remains unexplained."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "H05",
+      "phase": "foundation",
+      "title": "Build temporary tools",
+      "weight": 8,
+      "status": "not_started",
+      "depends_on": [
+        "H04"
+      ],
+      "story": "stories/H05.md",
+      "acceptance": [
+        "Build the frozen temporary-tool set with the correct target compiler and environment.",
+        "Verify expected tools, ownership and PATH without using accidental host substitutes.",
+        "Record package results; demonstrate restart of one safe interrupted step without marking failure successful."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "H06",
+      "phase": "foundation",
+      "title": "Enter chroot and create recoverable checkpoint",
+      "weight": 8,
+      "status": "not_started",
+      "depends_on": [
+        "H05"
+      ],
+      "story": "stories/H06.md",
+      "acceptance": [
+        "Mount only the intended guest virtual filesystems and enter the target chroot.",
+        "Build the additional temporary tools; capture environment and dependency sanity checks.",
+        "Create a checkpoint and demonstrate restoration of a controlled reversible change."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "H07",
+      "phase": "foundation",
+      "title": "Build and test the final base system",
+      "weight": 24,
+      "status": "not_started",
+      "depends_on": [
+        "H06"
+      ],
+      "story": "stories/H07.md",
+      "acceptance": [
+        "Compile the final base packages in frozen book order and track installed file ownership.",
+        "Run critical libc/compiler/binutils suites and classify expected versus unexplained failures using primary sources.",
+        "Compile/run a C program in the final environment and inspect linkage for host or temporary-toolchain dependencies."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "H08",
+      "phase": "foundation",
+      "title": "Configure identity, services and basic networking",
+      "weight": 6,
+      "status": "not_started",
+      "depends_on": [
+        "H07"
+      ],
+      "story": "stories/H08.md",
+      "acceptance": [
+        "Set os-release, hostname defaults, locales, console, users, time and filesystem configuration.",
+        "Configure the selected init/services and minimal network path; record BLFS additions if needed.",
+        "Use no reusable published password or baked-in account/API secret; provide an explicit test-login strategy."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "H09",
+      "phase": "foundation",
+      "title": "Build kernel and boot configuration",
+      "weight": 8,
+      "status": "not_started",
+      "depends_on": [
+        "H08"
+      ],
+      "story": "stories/H09.md",
+      "acceptance": [
+        "Record the release CPU baseline and build kernel support for target storage, VM devices and filesystems.",
+        "Configure bootloader/kernel command line for BIOS and UEFI test targets.",
+        "Save configuration and hashes; verify early boot logs and document driver/firmware exclusions."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "H10",
+      "phase": "foundation",
+      "title": "Assemble the live system",
+      "weight": 8,
+      "status": "not_started",
+      "depends_on": [
+        "H09"
+      ],
+      "story": "stories/H10.md",
+      "acceptance": [
+        "Create initramfs, compressed root and writable live overlay without embedding host mounts.",
+        "Demonstrate correct root discovery and volatile-write behavior in a guest.",
+        "Document persistence limits, rescue access and boot failure diagnostics."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "H11",
+      "phase": "foundation",
+      "title": "Produce hybrid ISO and artifact manifest",
+      "weight": 6,
+      "status": "not_started",
+      "depends_on": [
+        "H10"
+      ],
+      "story": "stories/H11.md",
+      "acceptance": [
+        "Generate a hybrid BIOS/UEFI image from declared inputs and record artifact SHA-256 and size.",
+        "Produce component/source/license inventory and image assembly logs.",
+        "Keep binaries outside Git and verify the distribution contains no development credentials."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "H12",
+      "phase": "foundation",
+      "title": "Verify foundation boot matrix and recovery",
+      "weight": 6,
+      "status": "not_started",
+      "depends_on": [
+        "H11"
+      ],
+      "story": "stories/H12.md",
+      "acceptance": [
+        "Boot/login in QEMU BIOS, UEFI and virtual USB; retain sanitized serial logs and commands.",
+        "Run uname, filesystem/shell checks and compile/execute C in the target.",
+        "Exercise controlled failure/checkpoint recovery; record physical hardware as pending unless actually tested."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "H13",
+      "phase": "foundation",
+      "title": "Deliver and accept foundation gate G1",
+      "weight": 4,
+      "status": "not_started",
+      "depends_on": [
+        "H12"
+      ],
+      "story": "stories/H13.md",
+      "acceptance": [
+        "Review all G1 requirements against actual evidence; no unclassified critical failure remains.",
+        "Deliver ISO/checksum/manifest references, live-media instructions, known issues and the Phase 2 handoff.",
+        "Record the G1 result explicitly; an untested physical boot is not represented as a pass."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B01",
+      "phase": "agentic",
+      "title": "Evaluate desktop, harness, licensing and resource budgets",
+      "weight": 5,
+      "status": "not_started",
+      "depends_on": [
+        "H13"
+      ],
+      "story": "stories/B01.md",
+      "acceptance": [
+        "Document GNOME feasibility, open-source harness reuse/custom-core comparison and firmware/driver policy.",
+        "Establish numeric boot/idle/tool/retrieval budgets and evaluation workloads on identified hardware.",
+        "Record ADRs and exact source/license choices without introducing a mandatory proprietary service."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B02",
+      "phase": "agentic",
+      "title": "Build the graphical desktop and essential applications",
+      "weight": 10,
+      "status": "not_started",
+      "depends_on": [
+        "B01"
+      ],
+      "story": "stories/B02.md",
+      "acceptance": [
+        "Build the selected BLFS graphics/audio/network stack and desktop from pinned recipes.",
+        "Validate login, keyboard/mouse, terminal, editor, browser, file manager and networking in a guest.",
+        "Prove the desktop remains usable with the agent and inference services stopped."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B03",
+      "phase": "agentic",
+      "title": "Integrate provider adapters and local inference",
+      "weight": 8,
+      "status": "not_started",
+      "depends_on": [
+        "B01"
+      ],
+      "story": "stories/B03.md",
+      "acceptance": [
+        "Implement provider capability/streaming/tool/cancellation contracts with mocked protocol tests.",
+        "Test a real supported local llama.cpp profile and opt-in API integrations without storing keys in Git.",
+        "Document context/resource limits and prove local-only mode does not silently call a hosted fallback."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B04",
+      "phase": "agentic",
+      "title": "Implement native tools and privileged execution",
+      "weight": 8,
+      "status": "not_started",
+      "depends_on": [
+        "B03"
+      ],
+      "story": "stories/B04.md",
+      "acceptance": [
+        "Provide structured file, shell, package and service tools through authenticated local IPC.",
+        "Implement the owner-granted full-administration profile, session/standing policy, revocation and audit records.",
+        "Test malicious tool/document content, invalid requests and privilege revocation in a disposable guest."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B05",
+      "phase": "agentic",
+      "title": "Implement durable agent tasks and configuration reconciliation",
+      "weight": 10,
+      "status": "not_started",
+      "depends_on": [
+        "B04"
+      ],
+      "story": "stories/B05.md",
+      "acceptance": [
+        "Implement persisted lifecycle, bounded retries, cancellation and restart-safe side effects.",
+        "Separate declarative desired state from one-off changes and detect/report configuration drift.",
+        "Demonstrate restore of a deliberately broken configuration and a stop request that prevents new actions."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B06",
+      "phase": "agentic",
+      "title": "Provide terminal, desktop and first-run experience",
+      "weight": 10,
+      "status": "not_started",
+      "depends_on": [
+        "B02",
+        "B05"
+      ],
+      "story": "stories/B06.md",
+      "acceptance": [
+        "Expose task creation, progress, stop and history through CLI/TUI and an accessible desktop entry point.",
+        "Implement first-run API/local/deferred setup and protected credential storage.",
+        "Validate keyboard use, visible focus, Portuguese/English copy and normal OS use without a configured model."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B07",
+      "phase": "agentic",
+      "title": "Implement memory, retrieval and portable backup",
+      "weight": 8,
+      "status": "not_started",
+      "depends_on": [
+        "B05"
+      ],
+      "story": "stories/B07.md",
+      "acceptance": [
+        "Implement canonical per-user state with retention, provenance, correction, export and deletion.",
+        "Evaluate SQLite/FTS and optional semantic search using measured quality, latency and resource tests.",
+        "Verify backup/restore and deletion propagation to derived indexes; secrets never enter embeddings."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B08",
+      "phase": "agentic",
+      "title": "Implement proactive health monitoring and automation",
+      "weight": 8,
+      "status": "not_started",
+      "depends_on": [
+        "B07"
+      ],
+      "story": "stories/B08.md",
+      "acceptance": [
+        "Persist schedules and deterministic disk/service probes with deduplication and backoff.",
+        "Run an owner-defined workflow under its authorized standing policy and prevent overlap/replay.",
+        "Verify meaningful-change notifications, quiet unchanged checks, resource budgets and cancellation."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B09",
+      "phase": "agentic",
+      "title": "Add text-to-speech and speech-to-text",
+      "weight": 5,
+      "status": "not_started",
+      "depends_on": [
+        "B06",
+        "B03"
+      ],
+      "story": "stories/B09.md",
+      "acceptance": [
+        "Evaluate separately licensed speech engines/models and test Portuguese and English.",
+        "Provide push-to-talk, device selection, visible microphone state and interruption.",
+        "Prove a transcript uses the same task/permission policy; measure latency and offline behavior."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B10",
+      "phase": "agentic",
+      "title": "Add versioned plugin and MCP interfaces",
+      "weight": 6,
+      "status": "not_started",
+      "depends_on": [
+        "B04",
+        "B05"
+      ],
+      "story": "stories/B10.md",
+      "acceptance": [
+        "Define plugin manifests, capability schemas, process boundaries, timeouts and update provenance.",
+        "Implement a replaceable MCP adapter and one real integration end-to-end.",
+        "Test credential separation, removal/revocation and denial of privileges not granted by owner policy."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B11",
+      "phase": "agentic",
+      "title": "Integrate approved branding and production asset variants",
+      "weight": 8,
+      "status": "not_started",
+      "depends_on": [
+        "B02"
+      ],
+      "story": "stories/B11.md",
+      "acceptance": [
+        "Retain the approved source PNGs and document all derived assets and production resolutions.",
+        "Integrate desktop, boot/login and installer branding with readable contrast and checked small-size icons.",
+        "Produce reviewed scalable/small-size artwork where needed; do not label raster studies vector or 4K masters."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B12",
+      "phase": "agentic",
+      "title": "Build and test the graphical installer",
+      "weight": 9,
+      "status": "not_started",
+      "depends_on": [
+        "B02",
+        "B11"
+      ],
+      "story": "stories/B12.md",
+      "acceptance": [
+        "Evaluate Calamares or a justified alternative with guided disk plan and user/locale/boot setup.",
+        "Install onto a blank virtual disk, remove ISO and reboot with persistent files/settings.",
+        "Test cancellation and recovery; document encryption, dual-boot and Secure Boot support honestly."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "B13",
+      "phase": "agentic",
+      "title": "Verify installed daily-use release and gate G2",
+      "weight": 5,
+      "status": "not_started",
+      "depends_on": [
+        "B03",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B12"
+      ],
+      "story": "stories/B13.md",
+      "acceptance": [
+        "Run the complete installed-system scenarios, update recovery, provider failure and stop/revoke tests.",
+        "Record the physical hardware smoke matrix or explicitly label a release VM-only.",
+        "Prepare hashes, source/build/license inventory, known issues and owner first-ISO/visibility review."
+      ],
+      "evidence": []
+    }
+  ]
+}

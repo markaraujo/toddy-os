@@ -1,0 +1,35 @@
+# Host configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.token
+.local/
+# Build/runtime storage
+build/
+cache/
+sources/
+books/
+logs/
+backups/
+state/
+models/
+*.iso
+*.img
+*.qcow2
+*.vdi
+*.vmdk
+*.gguf
+*.safetensors
+*.tar
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.sqlite*
+*.db
+__pycache__/
+*.pyc
+.venv/
+.DS_Store

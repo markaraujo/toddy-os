@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "status": "proposed_not_downloaded",
+  "lfs": {"version": "13.1-systemd", "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/", "archive_sha256": null},
+  "blfs": {"version": "13.1-systemd", "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/", "archive_sha256": null},
+  "freeze_story": "H02",
+  "note": "H02 must record downloaded artifact hashes, package manifests and errata before build execution. Null hashes are not integrity verification."
+}
