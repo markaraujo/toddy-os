@@ -52,7 +52,7 @@ def main():
         notice_hash = digest(TARGET / notice.lstrip('/'))
         if notice_hash != record['payload'][notice]['sha256']:
             raise SystemExit(f'Installed copyright notice mismatch: {name}')
-        reviewed = next((r for r in license_rows if r['name'] == name and (version == r['version'] or version.startswith(r['version']+'-'))), None)
+        reviewed = next((r for r in license_rows if r['name'] == name and (version.removesuffix('+toddy1') == r['version'] or version.startswith(r['version']+'-'))), None)
         components.append({'name': name, 'version': version, 'architecture': architecture,
                            'archive': archive, 'archive_sha256': record['archive_sha256'],
                            'component_record_sha256': digest(metadata),

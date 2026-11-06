@@ -33,3 +33,9 @@ scripts; https://astron.com/pub/tcsh/tcsh-6.24.16.tar.gz;
 https://peps.python.org/pep-0394/. Raw audit:
 .local/logs/h07-script-interpreters-101.json. No correction is claimed accepted
 before actual native recipe/postcheck evidence.
+
+Full metadata completion runs only after the Python-only alias slice and native
+Tcsh pass. Re-audit real executable shebangs and env dispatch, derive only unique
+missing interpreter-provider edges, and refuse absent/unowned/ambiguous cases.
+Final repeat must have zero findings. The raw pre-upgrade graph is retained by
+content hash. No script assertion/path is omitted just to obtain a clean report.

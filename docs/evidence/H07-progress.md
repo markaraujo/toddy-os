@@ -775,3 +775,12 @@ without dropping executable paths; staged native fixes and final zero-finding
 checks are prepared. No correction/native Tcsh acceptance claimed yet. Seventy
 local checks pass after updating the isolated traversal fixture for the new
 explicit license-policy input; actual unsafe-path rejection remains tested.
+
+
+Expanded legal-notice scan before Tcsh addition: 149 frozen inputs, 878 candidate
+texts/selected source comment blocks; inventory SHA-256
+c4df32691dc57548b0fc898ae978908f810b8fa1a77fab4cce3412013591c11c,
+.local/legal/source-notices/inventory-c4df32691dc57548b0fc898ae978908f810b8fa1a77fab4cce3412013591c11c.json.
+Full LICENSING/README.licensing and selected BSD algorithm headers preserve
+conditions that a general LGPL/MIT label alone cannot represent. Final release
+source availability and actual installed notice verification remain required.

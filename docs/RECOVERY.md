@@ -196,3 +196,23 @@ not permission to delete it blindly. Native backend/notice retention is prepared
 in the checkout but not yet synced to the running target. After quiescent full
 input sync, the next Perl/Triehash support recipe must prove real native Dpkg
 routing; inspect its packaging_backend metadata and native postcheck.
+
+
+Next prepared driver chain after actual BDB result (do not dispatch concurrently):
+1. Inspect h07-berkeley-db success/failed/running and the package-manager driver
+   exit. Active standard suite logs are /sources/db-5.3.28/build-test/ALL.OUT;
+   partial progress without Regression Tests Succeeded is unfinished work.
+2. When no dispatcher remains, run full verified input sync. The checkout now
+   includes native Dpkg routing, ownership policy, complete notice retention,
+   CPAN/Triehash/Which/Libseccomp/Tcsh sources/recipes and interpreter audits;
+   none of those new inputs has been synced while BDB is active.
+3. Run h07-perl-test-tools-driver.sh and inspect every native marker/postcheck.
+4. Its success permits h07-final-base-driver.sh: APT real signed repository,
+   Python-owned command alias metadata, full ACL retest, API/layout ownership,
+   exact bootstrap quarantine and versioned metadata closure. Stop on actual
+   failures for diagnosis; prepared code/driver exit alone is not acceptance.
+The Python-only upgrade preserves old archive/record and writes per-package
+progress under h07-metadata-closure/packages. Full closure reuses that verified
+version, derives actual ELF/interpreter edges and requires zero unqualified
+findings plus native package-manager checks. Additional tool/data/dlopen, image
+credential/source/license and native-kernel obligations still remain before G1.

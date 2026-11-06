@@ -2317,28 +2317,28 @@
       "version": "6.24.16",
       "license": "BSD-3-Clause",
       "evidence": "Original Copyright file has three-clause UC Regents terms; exact notice retained",
-      "native_acceptance": "pending; source/notice selection only"
+      "review_scope": "Source/notice identification only; native installation acceptance is tracked by runner and status gates"
     },
     {
       "name": "berkeley-db",
       "version": "5.3.28+dfsg2-12.1",
       "license": "Sleepycat AND LicenseRef-BerkeleyDB-maintained-source-notices",
       "evidence": "Original LICENSE plus maintained Debian copyright/patch notices; complete corresponding-source availability required by original terms",
-      "native_acceptance": "pending; source/notice selection only"
+      "review_scope": "Source/notice identification only; native installation acceptance is tracked by runner and status gates"
     },
     {
       "name": "apt",
       "version": "3.0.4",
       "license": "GPL-2.0-or-later AND LicenseRef-APT-per-file-notices",
       "evidence": "Original COPYING and source per-file notices; GPL version 3 option selected for OpenSSL Apache-2.0-linked redistribution",
-      "native_acceptance": "pending; source/notice selection only"
+      "review_scope": "Source/notice identification only; native installation acceptance is tracked by runner and status gates"
     },
     {
       "name": "linux-api-headers",
       "version": "7.1.8",
       "license": "GPL-2.0-only WITH Linux-syscall-note AND LicenseRef-Linux-UAPI-per-file-notices",
       "evidence": "Original kernel COPYING, LICENSES and individual UAPI SPDX conditions; userspace syscall exception retained",
-      "native_acceptance": "pending; source/notice selection only"
+      "review_scope": "Source/notice identification only; native installation acceptance is tracked by runner and status gates"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
