@@ -330,3 +330,10 @@ They are NOT installed in the current builder. After BDB reaches a durable
 success/failed result and no recipe remains active, sync current committed
 inputs before h07-final-base-driver.sh. It retains mandatory BDB/APT gates and
 will require zero native packlist findings and exact version/policy evidence.
+
+
+Additional source preparation during the active DB suite: ADR-0047 freezes
+four future image-tool archives (155 total selected inputs) in the checkout
+and host cache only. Native bsdcpio newc private roundtrip passed; no GNU cpio
+component was added, no H10 image exists. Do not sync until BDB's dispatcher
+finishes. H09/H10/H11 remain unstarted; native boot/overlay/ISO gates still apply.

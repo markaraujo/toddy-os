@@ -2353,6 +2353,34 @@
       "license": "GPL-2.0-only AND LicenseRef-Linux-per-file-and-documentation-notices",
       "evidence": "Frozen kernel COPYING, LICENSES and Documentation/per-file SPDX notices; complete corresponding source availability required",
       "review_scope": "Prepared source/notice identification only; no kernel build or boot acceptance yet"
+    },
+    {
+      "name": "libburn",
+      "version": "1.5.8",
+      "license": "GPL-2.0-or-later AND LicenseRef-libburn-per-file-notices",
+      "evidence": "Original COPYING and explicit version-2-or-later source/COPYRIGHT grant; retain per-file and documentation notices and corresponding source",
+      "review_scope": "Source identification only; native builds, functional tests and release legal audit remain pending"
+    },
+    {
+      "name": "libisofs",
+      "version": "1.5.8.pl02",
+      "license": "GPL-2.0-or-later AND LicenseRef-libisofs-per-file-notices",
+      "evidence": "Original COPYING and explicit version-2-or-later source/COPYRIGHT grant; retain per-file and documentation notices and corresponding source",
+      "review_scope": "Source identification only; native builds, functional tests and release legal audit remain pending"
+    },
+    {
+      "name": "libisoburn",
+      "version": "1.5.8.pl02",
+      "license": "GPL-2.0-or-later AND LicenseRef-libisoburn-per-file-notices",
+      "evidence": "Original COPYING and explicit version-2-or-later source/COPYRIGHT grant; retain per-file and documentation notices and corresponding source",
+      "review_scope": "Source identification only; native builds, functional tests and release legal audit remain pending"
+    },
+    {
+      "name": "squashfs-tools",
+      "version": "4.7.5",
+      "license": "GPL-2.0-or-later AND LicenseRef-squashfs-tools-per-file-notices",
+      "evidence": "Original COPYING and explicit version-2-or-later source/COPYRIGHT grant; retain per-file and documentation notices and corresponding source",
+      "review_scope": "Source identification only; native builds, functional tests and release legal audit remain pending"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
