@@ -1092,3 +1092,13 @@ SHA-256 2cdd5a6fd35578cdebf4c4ff6cccc40273a27ee4df7ea07b513a701a98aff95e.
 Case segment SHA-256 9b2dcfaccace8cfada61ac0fb470d053dee483729db62043d8bcbce172cfbf11.
 These two observed Test044 invocations do not accept its remaining matrix or
 the complete DB suite. H07 remains 124/126 packages with full closure pending.
+
+
+2026-11-06 22:55 UTC: both partition Btree Test142 variants have appeared and
+the same original suite has moved to Recd001 hash operation/transaction recovery
+checks. Driver 1364 and runner 1365 remain live; the change of test-family name
+is not a new build or full-suite acceptance. Raw observation
+.local/logs/h07-partition-numbered-progress.json SHA-256
+ a175fc1f034c1bc9f101282d2133108210a9abb12ee9c56278ccd157892081ea.
+The prepared fresh-image account component passes native Shadow checks in a
+private root (ADR-0055); installed accounts and H07 package counts are unchanged.

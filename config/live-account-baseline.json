@@ -1,0 +1,8 @@
+{
+  "source": "LFS 13.1-systemd section 7.6, Creating Essential Files and Symlinks",
+  "source_sha256": "f042fcc6b3389673a39fbc7c99eaca8b2589fce453d87c5b01366408af3d0867",
+  "license": "LICENSES/LFS-MIT.txt",
+  "purpose": "Fresh foundation image service identities; no build tester or inherited credentials",
+  "passwd": "root:x:0:0:root:/root:/bin/bash\nbin:x:1:1:bin:/dev/null:/usr/bin/false\ndaemon:x:6:6:Daemon User:/dev/null:/usr/bin/false\nmessagebus:x:18:18:D-Bus Message Daemon User:/run/dbus:/usr/bin/false\nsystemd-journal-gateway:x:73:73:systemd Journal Gateway:/:/usr/bin/false\nsystemd-journal-remote:x:74:74:systemd Journal Remote:/:/usr/bin/false\nsystemd-journal-upload:x:75:75:systemd Journal Upload:/:/usr/bin/false\nsystemd-network:x:76:76:systemd Network Management:/:/usr/bin/false\nsystemd-resolve:x:77:77:systemd Resolver:/:/usr/bin/false\nsystemd-timesync:x:78:78:systemd Time Synchronization:/:/usr/bin/false\nsystemd-coredump:x:79:79:systemd Core Dumper:/:/usr/bin/false\nuuidd:x:80:80:UUID Generation Daemon User:/dev/null:/usr/bin/false\nsystemd-oom:x:81:81:systemd Out Of Memory Daemon:/:/usr/bin/false\nnobody:x:65534:65534:Unprivileged User:/dev/null:/usr/bin/false\n",
+  "group": "root:x:0:\nbin:x:1:daemon\nsys:x:2:\nkmem:x:3:\ntape:x:4:\ntty:x:5:\ndaemon:x:6:\nfloppy:x:7:\ndisk:x:8:\nlp:x:9:\ndialout:x:10:\naudio:x:11:\nvideo:x:12:\nutmp:x:13:\nclock:x:14:\ncdrom:x:15:\nadm:x:16:\nmessagebus:x:18:\nsystemd-journal:x:23:\ninput:x:24:\nmail:x:34:\nkvm:x:61:\nsystemd-journal-gateway:x:73:\nsystemd-journal-remote:x:74:\nsystemd-journal-upload:x:75:\nsystemd-network:x:76:\nsystemd-resolve:x:77:\nsystemd-timesync:x:78:\nsystemd-coredump:x:79:\nuuidd:x:80:\nsystemd-oom:x:81:\nwheel:x:97:\nusers:x:999:\nnogroup:x:65534:\n"
+}

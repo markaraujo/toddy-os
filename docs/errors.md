@@ -484,3 +484,15 @@ acceptance remains pending. No active BDB inputs were changed. See ADR-0045.
 - Verification: native negative missing-provider preflight is rejected; the
   positive complete 5,395-file preflight and interrupted ownership recovery
   pass. See ADR-0049. Caught before production dispatch; no DB test change.
+
+### Live account probe expected the wrong number of book groups
+
+- Symptom: the private native account probe failed its group-count assertion
+  after pwck and grpck had both returned 0.
+- Cause: the test expected 33 groups; the frozen LFS 13.1 section 7.6 block
+  contains 34, including the documented service and unmapped-ID groups.
+- Correction: correct the probe count from the exact frozen block and retain
+  native checker logs before subsequent assertions. Account data was unchanged.
+- Verification: repeated actual native checkers pass, all locks/metadata and
+  three preservation/refusal cases pass, and installed accounts are unchanged.
+  Original failure and corrected evidence are retained in ADR-0055.

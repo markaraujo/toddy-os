@@ -257,3 +257,15 @@ not every crash point is claimed tested. Gated installed-target execution and
 final image exclusion remain pending. The original DB suite passed both
 observed partition Test044 cases and reached Test081 by 22:45 UTC; H07 remains
 124/126 and incomplete. Active build inputs were not synchronized.
+
+
+2026-11-06 22:56 UTC — Added fresh live-account assembly data/component from the
+exact frozen LFS 7.6 identity blocks. Native Systemd intentionally lacks sysusers
+under the book configuration, so no new dependency or frozen-option change was
+introduced. Actual Shadow pwck/grpck validate 14 locked users/34 groups in a
+private root; existing/redirected input and root-home state are preserved and
+rejected. Corrected a probe-only expected group count and retained its failure.
+Image/boot/login integration remains pending. The original DB suite reached
+both partition Test142 variants, then Recd001 hash recovery; current snapshot
+and active runner IDs are retained outside Git and published without acceptance
+credit. No active build input or installed account was changed.

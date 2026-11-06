@@ -703,3 +703,19 @@ after real core configuration and resumes QA. The current installed target
 status/cache and running DB sources remain unchanged. Reports retain the native
 dependency install output, action logs, durable transaction and postconditions.
 The production gate/entry itself remains unexecuted while H07 is incomplete.
+
+Reproduce fresh live-account generation and native Shadow validation with
+python3 scripts/host/probe_live_accounts.py. The private root is printed as
+/mnt/lfs/tmp/toddy-live-accounts-*. A failure preserves it and the content-addressed
+report; successful fixtures are removed. Native checker output is saved in the
+fixture before an assertion and in successful reports. The initial incorrect
+33-group assertion left fixture toddy-live-accounts-ierq40t7; the frozen book has
+34 groups and the corrected run passes (ADR-0055). Installed target accounts
+remain untouched. Do not copy a failed fixture into a release root.
+
+The prepared live_accounts.stage_accounts component requires absent account/
+identity files and an empty root home in its caller's fresh image stage. It
+never sanitizes inherited password state in place. On refusal, preserve the
+stage, fix the assembly input inventory and reconstruct a fresh stage; do not
+waive the refusal or point it at the installed build target. Image/boot/login
+integration is still pending, with H09/H10 prerequisites unchanged.
