@@ -784,3 +784,14 @@ c4df32691dc57548b0fc898ae978908f810b8fa1a77fab4cce3412013591c11c,
 Full LICENSING/README.licensing and selected BSD algorithm headers preserve
 conditions that a general LGPL/MIT label alone cannot represent. Final release
 source availability and actual installed notice verification remain required.
+
+
+Read-only unowned-file classification before corrections: 1968 unexplained
+paths, 54 explicit generated-state paths and four bootstrap configurations
+reserved for H08. All unexplained paths are the exact planned 931-file
+quarantine, native Linux API headers, config.site and owned filesystem aliases;
+no extra unexplained namespace was found. Raw classification SHA-256 321e8c7b1f92f018f53cc8954b752de05fdb16b6de79f2f1781f13893f77b13f,
+.local/logs/h07-unowned-classification-before.json. Prepared final check requires
+zero unexplained paths after actual package upgrades; generated/H08 state remains
+visible and is not falsely counted as package-owned. Filesystem layout also owns
+book mtab and var/run/var/lock aliases; no mounted API filesystem is packaged.

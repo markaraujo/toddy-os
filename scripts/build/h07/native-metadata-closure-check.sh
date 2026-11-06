@@ -53,3 +53,11 @@ report=json.loads(Path('/var/log/toddy/h07-final-script-interpreters.json').read
 assert not report['findings'],report['findings']
 print('Native executable shebang and env-provider metadata passed')
 PYSCRIPTS
+python3 /opt/toddy-build/scripts/build/audit_unowned_files.py > /var/log/toddy/h07-final-unowned.json
+python3 - <<'PYOWNED'
+import json
+from pathlib import Path
+report=json.loads(Path('/var/log/toddy/h07-final-unowned.json').read_text())
+assert not report['unknown'],report['unknown']
+print('Final-base package ownership has no unexplained files; generated and H08 configuration remain explicit')
+PYOWNED

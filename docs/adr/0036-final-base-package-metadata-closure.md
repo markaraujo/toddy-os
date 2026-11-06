@@ -87,3 +87,11 @@ all recorded hashes, links, modes and owner/group again, require no unexplained
 finding and confirm Info index has no package owner. It also requires native
 APT dependency check and a clean configured package database; successful archive
 creation alone is insufficient.
+
+The final unowned-file audit separately records generated Shadow accounts/locks,
+ldconfig/Info/machine identity and Systemd presets pointing to actual owned unit
+files. Four explicit bootstrap identity/network/filesystem configurations remain
+H08 work. Every other unowned usr/etc/lib64 regular file/link must be explained
+by actual package ownership after API/layout/cleanup steps; unknowns fail the
+final postcheck. This is not a claim that every mutable state file belongs to a
+binary package or that H08 configuration has already passed.
