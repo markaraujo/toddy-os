@@ -352,3 +352,24 @@ requires measured filesystem/GPT UUID arguments, and has not changed /boot or
 the ESP/MBR. Native syntax probe passed in a removed private temporary file;
 see ADR-0046. Actual installation still requires the H09 gate, accepted native
 kernel and repeated designated disk/partition/mount identity guards.
+
+
+## H07 success-gated continuation supervisor
+
+Session-local .local/scripts/h07-after-bdb.py is armed with durable log
+.local/logs/h07-after-bdb.log and atomic state
+.local/logs/h07-after-bdb.state.json. It waits without repeatedly fetching
+unchanged test output. It requires the complete DB driver exit 0, actual
+recipe/postcheck 0/0 and no running recipe, then requires a clean checkout,
+records the selected commit and performs full exclusive input synchronization.
+Only then does it launch h07-final-base-driver.sh in the guest with its durable
+log/PID/exit files. It waits for that result and verifies all final markers.
+Any failure stops for diagnosis; it does not retry an unchanged failure or
+mark H07 complete. Evidence review and the final cold checkpoint still precede
+acceptance. No input transfer occurs while Berkeley DB owns the build lock.
+
+Before resuming, inspect that local state, actual guest processes and final
+markers; do not launch a duplicate dispatcher. The supervisor uses a local
+exclusive lock. If interrupted while waiting, inspect results first and resume
+from the exact verified boundary; do not rerun completed builds. Guest final
+driver logging remains /var/log/toddy/h07-final-base-driver.log and .exit.
