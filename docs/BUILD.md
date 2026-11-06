@@ -139,3 +139,19 @@ To recover an existing named checkpoint, stop the VM, run checkpoint.py restore
 with that name, then restart and verify guest postconditions. Never restore
 images beneath a running process. The checkpoint storage is local to the same
 physical disk; external disaster backup is a separate release requirement.
+
+## Final Glibc critical suite and native package
+
+ADR-0009 selects the pinned stable security patch without changing Glibc 2.44.
+Fetch additions with python3 scripts/fetch_security_overlay.py. Baseline inputs
+stay intact. h07-glibc-build compiles and runs the full critical make check
+suite before installation. Raw exit code, original tests.sum and per-test
+outputs are retained at target /sources/evidence/h07-glibc/. Its classifier
+rejects incomplete evidence, unexplained failures and interrupted runs.
+
+Only after that build/postcheck succeeds may h07-glibc-install stage the
+payload, preserve copyright notices, preflight ownership, build/install the
+native .deb and validate actual C execution. Locales (book minimum plus
+pt_BR.UTF-8) and tzdata are separate tracked packages. Derived ld.so.cache is
+regenerated after installation. Remaining critical compiler/binutils tests
+are separate mandatory H07 work.

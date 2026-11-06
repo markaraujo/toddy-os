@@ -86,6 +86,9 @@ def main():
                   'source_lock_sha256': hashlib.sha256((HERE.parents[1] / 'config/sources.lock.json').read_bytes()).hexdigest(),
                   'book_lock_sha256': hashlib.sha256((HERE.parents[1] / 'config/books.lock.json').read_bytes()).hexdigest()}
 
+        overlay = HERE.parents[1] / 'config/security-overlay.lock.json'
+        if overlay.exists():
+            record['security_overlay_sha256'] = hashlib.sha256(overlay.read_bytes()).hexdigest()
         write(prefix.with_suffix('.running.json'), record)
         environment = {'HOME': '/home/lfs' if args.user == 'lfs' else '/root',
                        'TERM': 'dumb',

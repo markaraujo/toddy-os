@@ -7,6 +7,7 @@ from pathlib import Path
 import socket
 import subprocess
 import tarfile
+from locked_inputs import locked_source
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('filename')
@@ -19,10 +20,7 @@ mounted = subprocess.run(['findmnt', '-n', '-o', 'SOURCE', '--mountpoint', '/mnt
 if mounted != '/dev/vdb4':
     raise SystemExit('Source target mount mismatch')
 root = Path(__file__).resolve().parents[2]
-lock = json.loads((root / 'config/sources.lock.json').read_text())
-if lock['status'] != 'verified':
-    raise SystemExit('Source lock not verified')
-row = next((r for r in lock['packages'] if r['filename'] == args.filename), None)
+row = locked_source(root, args.filename)
 if not row or Path(args.filename).name != args.filename:
     raise SystemExit('Unknown/unsafe source')
 archive = Path('/mnt/lfs/sources') / args.filename

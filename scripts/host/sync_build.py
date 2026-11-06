@@ -13,7 +13,13 @@ subprocess.run([sys.executable, str(VM), 'ssh', check], check=True)
 lock = json.loads((ROOT / 'config/sources.lock.json').read_text())
 if lock['status'] != 'verified':
     raise SystemExit('Source lock not verified')
-for row in lock['packages']:
+rows = list(lock['packages'])
+overlay_path = ROOT / 'config/security-overlay.lock.json'
+if overlay_path.exists():
+    overlay = json.loads(overlay_path.read_text())
+    if overlay['status'] == 'frozen_for_final_build':
+        rows += overlay['components']
+for row in rows:
     path = ROOT / '.local/sources' / row['filename']
     with path.open('rb') as stream:
         actual = hashlib.file_digest(stream, 'sha256').hexdigest()
@@ -32,9 +38,12 @@ def pipe_tar(args, remote):
         raise SystemExit(f'Transfer failed: sender={sender_code}, receiver={result.returncode}')
 
 
-pipe_tar(['-cf', '-', 'scripts/build', 'config/books.lock.json', 'config/sources.lock.json'],
+metadata = ['scripts/build', 'config/books.lock.json', 'config/sources.lock.json']
+if overlay_path.exists():
+    metadata.append('config/security-overlay.lock.json')
+pipe_tar(['-cf', '-'] + metadata,
          'tar --no-overwrite-dir -xf - -C /opt/toddy-build')
 # Enumerating files avoids copying the cache directory's mode over sticky sources.
-pipe_tar(['-C', '.local/sources', '-cf', '-'] + [r['filename'] for r in lock['packages']],
+pipe_tar(['-C', '.local/sources', '-cf', '-'] + [r['filename'] for r in rows],
          check + '; tar --no-overwrite-dir -xf - -C /mnt/lfs/sources')
 print('Build scripts, locks and verified archives transferred; source directory mode preserved.')

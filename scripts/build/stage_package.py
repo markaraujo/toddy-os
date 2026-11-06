@@ -12,6 +12,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+from locked_inputs import locked_source
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -105,7 +106,7 @@ def main():
         raise SystemExit('Baseline source lock not verified')
     source_rows = []
     for name in args.source:
-        row = next((r for r in sources['packages'] if r['filename']==name), None)
+        row = locked_source(ROOT, name)
         if not row or digest(TARGET/'sources'/name) != row['sha256']:
             raise SystemExit(f'Source provenance/integrity mismatch: {name}')
         source_rows.append(row)
