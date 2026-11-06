@@ -1,6 +1,6 @@
 # Development recovery
 
-Current checkpoint: H03 target preparation, package ownership and runner tests passed in the real KVM guest. Target root is /dev/vdb4 mounted at /mnt/lfs; H04 cross-toolchain and target-linked C checks passed.
+Current checkpoint: H05 completed all 17 temporary-tool steps, library/ownership audit and interruption/restart checks. Target root is /dev/vdb4 mounted at /mnt/lfs.
 No ISO exists. Gate G1 and G2 remain pending. Inspect status.json and actual
 processes before continuing; this document is updated at verified boundaries.
 
@@ -34,26 +34,27 @@ disks first. The H01 checkpoint predates target preparation.
 
 ## Latest verified checkpoint and next action
 
-H04 passed: driver exit 0, five recipe/postcheck successes, retained full logs
-and manifests. Latest paired offline checkpoint:
-.local/vm/checkpoints/h04-builder.qcow2 and h04-target.qcow2. Both copies were
-made with QEMU stopped. The guest is restarted with its target mount and swap
-in fstab. Confirm them before any new recipe. See docs/evidence/H04.md.
+H05 passed: driver exit 0, 17 recipe/postcheck successes and verified full log
+hashes. Latest paired offline checkpoint:
+.local/vm/checkpoints/h05-builder.qcow2 and h05-target.qcow2. Copies were made
+with QEMU stopped. H05 failed gzip attempt is retained under runner history/;
+its verified retry succeeded. See docs/evidence/H05.md.
 
-H05 is next: synchronize reviewed chapter 6 scripts, then start its driver.
-The job PID/log/exit files are /var/log/toddy/h05-driver.pid,
-h05-driver.log and h05-driver.exit. Never launch a duplicate driver. Inspect
-processes and all per-package recipe/postcondition records before completion.
+H06 is next/running: synchronize reviewed chapter 7 scripts, start its driver
+only once, then inspect actual processes. PID/log/exit files:
+/var/log/toddy/h06-driver.pid, h06-driver.log and h06-driver.exit. Per-package
+records live at /var/log/toddy/build/h06-*. The bootstrap changes lfs ownership
+to root, mounts guest pseudo filesystems and checks actual native C/C++ in
+chroot. Later steps build eight temporary packages and remove /tools.
 
 ```sh
-python3 scripts/host/vm.py ssh 'source /opt/toddy-build/scripts/build/target.sh; guard_target; swapon --show'
-python3 scripts/host/vm.py ssh 'cat /var/log/toddy/h05-driver.log; ls /var/log/toddy/build/h05-*'
+python3 scripts/host/vm.py ssh 'cat /var/log/toddy/h06-driver.log; ls /var/log/toddy/build/h06-*'
 ```
 
-The source-directory mode issue is corrected in current scripts and H04
-checkpoint. If restoring the older H03 pair, synchronize current scripts,
-restore chmod 1777 /mnt/lfs/sources, and rerun idempotent target preparation
-before continuing. Transfer with sync_build.py; it preserves directory modes.
+If interrupted, inspect the failed/running record and manifest before retry.
+Do not run native chroot recipes directly on the builder root or workstation.
+The H05 pair is the rollback point before ownership/chroot transition. A
+future H06 completion also requires a demonstrated checkpoint restoration.
 
 ## Storage and resource boundaries
 

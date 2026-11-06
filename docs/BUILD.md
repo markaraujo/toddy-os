@@ -103,3 +103,20 @@ python3 scripts/host/vm.py ssh 'nohup bash /opt/toddy-build/scripts/build/h05-dr
 Prerequisites are checked again by the driver. Inspect exit/record files
 before continuing. Do not regenerate or edit running recipes without a
 specific diagnosed correction and a recorded recovery point.
+
+## H06 native chroot
+
+Only after all H05 records pass, use scripts/build/h06-driver.sh. It verifies
+the intended mounted virtual disk, changes temporary payload ownership to
+root, mounts guest dev/proc/sys/run/devpts and builds eight additional tools
+inside an empty-environment chroot. The interactive book shell re-exec is
+adapted to separate clean noninteractive shells. Native C/C++ compile/run is
+checked before proceeding. No tool is installed into the builder's root.
+
+```sh
+python3 scripts/host/vm.py ssh 'nohup bash /opt/toddy-build/scripts/build/h06-driver.sh > /var/log/toddy/h06-driver.log 2>&1 < /dev/null & echo $! > /var/log/toddy/h06-driver.pid'
+```
+
+The cleanup removes /tools and verifies self-hosted C execution afterward.
+Checkpoint restoration remains a separate required H06 acceptance experiment;
+a driver exit alone does not complete the milestone.

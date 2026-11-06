@@ -3,8 +3,8 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-05",
   "bootstrap": "ready_for_development",
-  "current_scope": "Implementation: H01-H04 validated in KVM, including target-linked C execution. H05 temporary tools next; no Toddy kernel, ISO or passed release gate yet.",
-  "next_story": "H05",
+  "current_scope": "Implementation: H01-H05 validated in KVM, including temporary tools and safe interruption/restart. H06 native chroot next; no bootable Toddy ISO or passed release gate yet.",
+  "next_story": "H06",
   "gates": {
     "G1": "pending",
     "G2": "pending"
@@ -89,7 +89,7 @@
       "phase": "foundation",
       "title": "Build temporary tools",
       "weight": 8,
-      "status": "in_progress",
+      "status": "completed",
       "depends_on": [
         "H04"
       ],
@@ -99,14 +99,16 @@
         "Verify expected tools, ownership and PATH without using accidental host substitutes.",
         "Record package results; demonstrate restart of one safe interrupted step without marking failure successful."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/H05.md"
+      ]
     },
     {
       "id": "H06",
       "phase": "foundation",
       "title": "Enter chroot and create recoverable checkpoint",
       "weight": 8,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": [
         "H05"
       ],
