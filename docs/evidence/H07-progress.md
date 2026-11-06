@@ -795,3 +795,22 @@ no extra unexplained namespace was found. Raw classification SHA-256 321e8c7b1f9
 zero unexplained paths after actual package upgrades; generated/H08 state remains
 visible and is not falsely counted as package-owned. Filesystem layout also owns
 book mtab and var/run/var/lock aliases; no mounted API filesystem is packaged.
+
+
+## Triehash recovery and Which acceptance
+
+Triehash repeated all seven original upstream tests and HTML coverage generation
+(96.1% total). Corrected filename-based native generated C lookup/rejection
+passed; same-step runner recipe/postcheck 0/0, zero installed changes. Original
+failed postcheck evidence remains in runner history. Success marker SHA-256
+12a9f81fc4eb91d6a459f2a9239ea4528a8c4e7a75cbd32a1a758ee0ff2a3766;
+log SHA-256 d1340753ff8b440f75766be2451a79121030494e0e8c6122d4c70317a5c1b921.
+
+Which 2.25 was compiled/installed with native Dpkg and its actual Bash lookup
+and version passed. Frozen BLFS 13.1 general/which.html states no upstream
+test suite; make check is not advertised as upstream coverage. Archive SHA-256
+977f057cff28e0357c904de84ee1baccda8bba5827a9a892fd1a0c78f880b7f6.
+Runner recipe/postcheck 0/0; log SHA-256
+87ae3c2336a77b4143ed77dd8eba0a8d4a1b4fbed9db6a9800b35c69099db014.
+119 accepted packages; H07 remains incomplete. Summary outside Git:
+.local/logs/h07-native-support-recovery-summary.jsonl.

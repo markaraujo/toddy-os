@@ -3,7 +3,7 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-06",
   "bootstrap": "ready_for_development",
-  "current_scope": "Implementation: H01-H06 validated in KVM. H07 has 117 accepted source-built packages, including 16 native Perl modules; source-built Dpkg routing verified. Berkeley DB fixture correction passed three focused native cases; complete standard retest/production install still pending. Triehash upstream tests passed; installed CLI postcheck fixture corrected, final recovery acceptance pending. APT/final closure and G1/G2 remain pending; no Toddy ISO.",
+  "current_scope": "Implementation: H01-H06 validated in KVM. H07 has 119 accepted source-built packages, including 16 native Perl modules, recovered Triehash and Which; Libseccomp/Tcsh native tests remain in progress/pending. Berkeley DB focused fixture correction passed; complete standard retest/production install and APT/final closure remain pending. G1/G2 pending; no Toddy ISO.",
   "next_story": "H07",
   "gates": {
     "G1": "pending",

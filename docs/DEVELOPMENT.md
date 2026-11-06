@@ -2,7 +2,7 @@
 
 ## Current scope
 
-The planning repository and approved artwork are prepared. Implementation started by the owner on 2026-11-05. H01 provisions a real KVM build guest using container-packaged QEMU; see docs/evidence/H01.md and docs/RECOVERY.md. Source freeze is H02. H01–H06 passed; H07 final base has 101 accepted packages and its Berkeley DB test142 fixture correction/full retest is pending. See docs/BUILD.md and the current driver section below. No bootable Toddy ISO exists yet. status.json is authoritative for completed milestones.
+The planning repository and approved artwork are prepared. Implementation started by the owner on 2026-11-05. H01 provisions a real KVM build guest using container-packaged QEMU; see docs/evidence/H01.md and docs/RECOVERY.md. Source freeze is H02. H01–H06 passed; H07 final base has 119 accepted packages, including recovered Triehash and Which; Libseccomp/Tcsh and the corrected Berkeley DB full retest remain pending. See docs/BUILD.md and the current driver section below. No bootable Toddy ISO exists yet. status.json is authoritative for completed milestones.
 
 ## Start a development session
 
@@ -72,7 +72,7 @@ Use make site for a local export into ignored _site/. All site data is public; n
 ## Current H07 driver and audit sequence
 
 Use actual runner markers, driver exit files and docs/RECOVERY.md, not a
-historical journal count, to select work. Current accepted boundary is 101
+historical journal count, to select work. Current accepted boundary is 119
 source-built packages; the Berkeley DB standard attempt exposed a reproduced fixture isolation failure.
 Do not sync build inputs or run another dispatcher while that recipe holds the
 exclusive lock. Long Tcl tests update their own ALL.OUT; a quiet tee is not a
@@ -108,3 +108,9 @@ Run independent Perl/Triehash/Which/Libseccomp/Tcsh work after verified quiescen
 sync, then corrected full BDB retest/production acceptance; APT remains gated.
 See docs/errors.md and the latest RECOVERY section. A partial full-suite log or
 focused success sentinel alone does not accept Berkeley DB.
+
+After all native support markers pass, h07-base-ownership-driver.sh may complete
+the independent full ACL retest and API/layout/build-support ownership before
+the long corrected DB suite. It does not run APT or final metadata closure.
+The final-base driver still requires accepted BDB/APT and skips only actual
+existing success markers; no acceptance prerequisite is waived.
