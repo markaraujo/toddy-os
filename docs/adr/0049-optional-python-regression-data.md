@@ -299,3 +299,66 @@ variable would not reach dpkg-deb. The packager now accepts an optional explicit
 retain their previous default. Frozen Dpkg 1.22.22 man/dpkg-deb.pod documents this
 option since 1.21.9. The prepared recipe and successful private native builds
 request two threads explicitly. Active build inputs have not been synchronized.
+
+## Durable native installation and configured recovery probe
+
+Added python_qa_transaction.py and the H11-gated install_python_qa.py entry.
+The executor independently rehashes all three retained archives, re-extracts
+and compares their complete payload manifests, refuses unexpected maintainer
+programs, preserves the original conffile contract and checks the whole pair.
+It binds a private locked journal to the exact target, archive identities and
+record contents (only the installed bookkeeping flag is mutable). Initial
+installed predecessor files and unique ownership must match before any action.
+Missing/mismatched transaction state is not treated as permission to resume.
+
+The journal uses an atomic same-directory replacement, file fsync and directory
+fsync before every native Dpkg mutation. Actions are selected from actual
+version/status pairs, bounded to eight transitions per invocation, and stop on
+failure or an unchanged state after a reported success. Normal native dependency
+and ownership checks remain active. Core configuration precedes QA installation;
+QA paths must be released, with no unexplained unowned files. Completed state
+requires exact file bytes/links/modes/UID/GID and unique ownership, a clean native
+Dpkg audit and actual Python, SSL, SQLite and QA-support imports. The separate
+entry marks successor provenance installed only afterward. A repeated completed
+transaction verifies again without reinstalling. It preserves the predecessor
+archive and does not infer any image/ISO acceptance.
+
+Alternatives rejected: version-only restart detection misses the observed old
+half-install; clearing partial package state destroys recovery evidence; global
+force-overwrite hides ownership defects; treating prepared.json as installation
+success skips native configuration/runtime checks. Frozen Dpkg 1.22.22's
+unpack/configure and status semantics remain the authority. The tradeoff is
+additional retained artifacts and journal I/O; those support deterministic
+recovery and diagnosis instead of silent reconstruction after a partial install.
+
+The configured private probe used 22 actual own source-built dependency packages
+(135,934,568 archive bytes), unpacked and configured with native Dpkg in a fresh
+private root. It interrupted the executor after real core installation and
+configuration but before capturing that action's exit in the journal. The
+journal therefore honestly retains exit=null for that action. An attempt to
+continue without this journal was rejected. Resuming with the original journal
+installed/configured QA, verified all 3,943 runtime files/links and 5,396 QA
+package files (5,395 transferred fixtures plus its copyright notice), passed a
+clean Dpkg audit and executed Python with OpenSSL 4.0.3 and an in-memory SQLite
+query returning 42. A repeated run added no Dpkg actions and left package status
+unchanged. This is real configured recovery, not a mock native package result.
+
+The earlier separate native SIGKILL experiment covers Dpkg half-installed
+recovery; this full controller probe covers interruption after core
+configuration. Do not claim that every possible crash point was exercised.
+Four local boundary checks cover modified/ambiguously owned files, parent
+redirection, durable journal replacement and refusal of a redirected journal
+before package operations. The final target still requires gated execution,
+final image QA exclusion and all release audits; neither H11 nor G1 is accepted.
+
+Raw report with complete dependency install output, native action logs, durable
+transaction, rejection cases and runtime postconditions:
+.local/logs/h11-python-qa-transaction-probe.json, SHA-256 dffbf0fc3c76a0e600d064538e1e21a63c6ebd31f5c0c2b729980ed6b09ea645.
+An immutable SHA-256-suffixed copy is retained. Tested executor SHA-256:
+589d855704da606f82659004b549e30e4762f045ccc797709d5b547b79098764.
+The gated production entry has not executed; SHA-256:
+e49ff36842f00c367060053e9e5a7e4ce63ce7cc5d48f3d225521e1f9fce77e1.
+Reproduce with python3 scripts/host/probe_python_qa_handoff_plan.py --transaction.
+Successful private fixtures are removed only after retaining their logs in the
+report. Failures preserve the exact printed fixture. The installed target status,
+package cache and active DB source inputs remain unchanged.

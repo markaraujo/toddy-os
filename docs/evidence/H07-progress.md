@@ -1080,3 +1080,15 @@ read-only preflight on all 5,395 real installed QA files (ADR-0049). Default
 package conflict refusal is retained; the special plan cannot install. Native
 production archive creation/transfer remains gated and unexecuted. Active
 BDB inputs and installed package state remain unchanged.
+
+
+2026-11-06 22:45 UTC: callback-partition Btree Test044 completed its three
+programmed crash/recovery cycles (last crash 22:41:12), ten database verification
+successes and ten salvage successes, with no FAIL marker in the retained case.
+This callback case has zero dump/load success messages; no such check is claimed.
+The original suite has advanced to Test081, and driver/runner remain live.
+Raw complete case/observation .local/logs/h07-test044-callback-partition.json
+SHA-256 2cdd5a6fd35578cdebf4c4ff6cccc40273a27ee4df7ea07b513a701a98aff95e.
+Case segment SHA-256 9b2dcfaccace8cfada61ac0fb470d053dee483729db62043d8bcbce172cfbf11.
+These two observed Test044 invocations do not accept its remaining matrix or
+the complete DB suite. H07 remains 124/126 packages with full closure pending.

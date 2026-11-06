@@ -245,3 +245,15 @@ negative cases. Installed package state/cache are unchanged. The full gated
 production recipe and transaction controller remain unexecuted/pending; no H11
 credit or active-input synchronization. DB Test044 callback cycle 3 continues
 its programmed load, with the original driver and runner live at 22:38 UTC.
+
+2026-11-06 22:48 UTC — Implemented the gated Python QA transfer entry and durable
+native executor. The private configured probe installs 22 own dependency
+packages, interrupts after real core configuration before exit capture, refuses
+an unrecorded continuation, resumes QA, and passes exact payload/ownership,
+Dpkg audit and Python/SSL/SQLite checks. An idempotent repeat performs no native
+package actions. Retained full dependency/action logs, journal and evidence
+hashes in ADR-0049. The separate direct SIGKILL probe covers half-install state;
+not every crash point is claimed tested. Gated installed-target execution and
+final image exclusion remain pending. The original DB suite passed both
+observed partition Test044 cases and reached Test081 by 22:45 UTC; H07 remains
+124/126 and incomplete. Active build inputs were not synchronized.

@@ -477,14 +477,14 @@
   ],
   "active_work": {
     "story": "H07",
-    "verified_at": "2026-11-06 22:34 UTC",
+    "verified_at": "2026-11-06 22:45 UTC",
     "verified": [
       "124 of 126 currently planned H07 packages installed, configured and accepted; 2 pending (Berkeley DB and APT). All 124 have own-build/source provenance.",
       "Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.",
       "Full ACL retest, API/layout ownership and native configuration correction passed.",
       "Verified paired cold checkpoint at the 124-package boundary."
     ],
-    "running": "Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. The first range-partition Btree Test044 invocation passed three crash/recovery cycles plus database, dump/load and salvage checks. Callback-partition Test044 completed its first two crash/recovery cycles and entered cycle 3 at 22:32:44 UTC with a programmed 508-second load. Original driver/runner remain live; full result pending.",
+    "running": "Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. Both observed partition-Btree Test044 variants completed three crash/recovery cycles, with ten database and salvage successes each and no FAIL marker in their retained segments. The callback variant finished its timed crashes at 22:41:12 UTC; the suite has advanced through subsequent numbered tests to Test081. Original driver/runner remain live; the full suite and later method matrix are still pending.",
     "remaining": [
       "Finish the complete database suite, then production install and transaction/reopen postchecks; later access-method matrix plans 135 x 9 dispatch entries, including inapplicable skips.",
       "Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.",

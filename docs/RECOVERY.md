@@ -624,7 +624,8 @@ For the future production transfer, retain the original archive, both prepared
 new archives and the exact ownership manifest before upgrading the core. If
 interrupted between core and QA, resume from actual package state and verified
 archives; never force QA to overwrite files still owned by Python. The gated
-production transfer/controller remains to be implemented (ADR-0049).
+production transfer/controller is now prepared and privately tested (ADR-0049);
+full gated target execution and image acceptance remain pending.
 
 
 The H11-only --prepare-python-qa-handoff option on stage_package.py can prepare
@@ -632,8 +633,8 @@ the complete unmodified Python QA archive before its old owner releases paths.
 It cannot be combined with --install. A prepared_ownership_handoff record is
 not proof of installation: preserve its predecessor hashes, exact path list
 and both new archives, then require a separate conflict-free install after
-core ownership changes. The durable production install/controller remains
-pending. Do not invoke this option during H07 or weaken the H11 gate.
+core ownership changes. The durable production controller is described below; its gated target
+execution remains pending. Do not invoke this option during H07 or weaken the H11 gate.
 
 python3 scripts/host/probe_python_qa_handoff_plan.py checks this preflight in a
 private /mnt/lfs/tmp/toddy-python-qa-handoff-* fixture against real installed
@@ -649,7 +650,8 @@ all transferred files. The observed old version can survive a failed unpack;
 never infer payload completeness from Version alone. python_qa_transfer.py is
 only a next-action policy: a partial state requires a matching validated
 transaction before retry. It does not install, journal intent or accept the
-release. The production controller still must implement those operations.
+release. The prepared production controller implements those operations; actual gated
+target execution and final release acceptance remain required.
 
 After H11 is eligible and accepted inputs are synchronized, prepare both archives
 with python3 /opt/toddy-build/scripts/build/prepare_python_qa.py under the normal
@@ -664,6 +666,40 @@ refuses to overwrite these or an existing successor cache archive. First check
 that installed Python/status are unchanged, diagnose the exact failing step,
 and preserve the failed stages/artifacts under an explicitly named incident
 checkpoint before reconstructing from the hash-verified original. Do not run
-this recipe again after an installed transfer has begun. The production transfer
-controller, configured dependency/runtime checks and final image exclusion are
-still required; prepared.json is not a completion marker for H11.
+this recipe again after an installed transfer has begun. The prepared transfer controller must run and pass on the designated final
+target, followed by final image exclusion; prepared.json is not a completion
+marker for H11.
+
+
+After successful eligible preparation, the separate production transfer entry is
+python3 /opt/toddy-build/scripts/build/install_python_qa.py. It independently
+enforces H11, reads only the fixed preparation directory and retained package
+records, rehashes and re-extracts all three archives, validates the whole pair
+and preserves the original archive. It uses native Dpkg install/configure with
+normal dependency and conflict checks. Never use force-overwrite or remove
+tracked paths manually to bypass its checks.
+
+The fixed preparation directory contains transaction.json, transaction.lock and
+numbered action logs. Intent is atomically persisted and fsynced before Dpkg
+mutation. On interruption, inspect the log, actual Dpkg version/status and the
+recorded archive identities; correct the diagnosed cause, then rerun the same
+install command with the same artifacts. Do not rerun preparation or delete the
+journal after installation has begun. An old-version half-install is retried
+from the retained successor archive; unpacked/half-configured state is configured
+before proceeding. A missing/mismatched transaction or an unowned residual QA
+file requires diagnosis. No automatic unchanged failed-action loop is used.
+
+Completion requires both packages configured, exact installed files/ownership,
+a clean native Dpkg audit and actual Python/SSL/SQLite/QA imports. Repeating a
+completed transaction revalidates without reinstalling. Candidate provenance
+records are marked installed only after those checks; a crash during that final
+bookkeeping can use the same command again. An action exit left null means its
+exit was not captured; later verified state does not fabricate that exit code.
+
+Reproduce the private configured interruption/recovery/idempotency test with
+python3 scripts/host/probe_python_qa_handoff_plan.py --transaction. It installs
+22 own source-built dependency packages into a new private root, interrupts
+after real core configuration and resumes QA. The current installed target
+status/cache and running DB sources remain unchanged. Reports retain the native
+dependency install output, action logs, durable transaction and postconditions.
+The production gate/entry itself remains unexecuted while H07 is incomplete.

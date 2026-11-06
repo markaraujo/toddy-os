@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Read-only installed provenance check for a private Python QA archive plan."""
 from pathlib import Path
+import argparse
 import base64
 import hashlib
 import json
@@ -8,11 +9,15 @@ import os
 import subprocess
 
 os.chdir(Path(__file__).resolve().parents[2])
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--transaction', action='store_true', help='Also configure a private native dependency closure and verify interrupted transfer')
+options = parser.parse_args()
 sources = {name: base64.b64encode((Path('scripts/build') / name).read_bytes()).decode()
            for name in ('package_backend.py', 'h11/python_qa.py', 'python_qa_handoff.py',
-                        'stage_package.py', 'python_qa_bundle.py', 'prepare_python_qa.py')}
+                        'stage_package.py', 'python_qa_bundle.py', 'prepare_python_qa.py',
+                        'python_qa_transfer.py', 'python_qa_transaction.py')}
 script = r'''from pathlib import Path
-import base64,copy,hashlib,json,re,shutil,sys,tempfile,types
+import base64,copy,hashlib,json,re,shutil,subprocess,sys,tempfile,types
 sys.path.insert(0,'/opt/toddy-build/scripts/build')
 from package_backend import PackageBackend
 root=Path('/mnt/lfs');backend=PackageBackend(root)
@@ -101,11 +106,82 @@ try:
  except ValueError as error:rejected.append({'case':'changed retained runtime','reason':str(error)})
  else:raise AssertionError('Changed runtime accepted')
  core_record['payload'][runtime_path]=original_entry;assert check_bundle()==bundle
+ transaction_result=None
+ if TRANSACTION:
+  raw=backend.run('dpkg-query','-W','-f=${Package}\t${Version}\t${Architecture}\t${Status}\t${Depends}\t${Pre-Depends}\n',capture_output=True,text=True).stdout
+  installed={}
+  for line in raw.splitlines():
+   name,version_value,arch_value,status_value,depends,predepends=line.split('\t')
+   if status_value=='install ok installed':installed[name]=(version_value,arch_value,depends+','+predepends)
+  selected=set();pending=['python','bash','coreutils','filesystem-layout']
+  while pending:
+   name=pending.pop()
+   if name in selected:continue
+   selected.add(name)
+   for group in installed[name][2].split(','):
+    if not group.strip():continue
+    alternatives=[re.match(r'\s*([a-z0-9][a-z0-9+.-]*)',part).group(1) for part in group.split('|')]
+    actual=next((candidate for candidate in alternatives if candidate in installed),None)
+    assert actual is not None,group
+    pending.append(actual)
+  dependency_cache=base/'dependencies';dependency_cache.mkdir()
+  dependency_archives=[]
+  for name in sorted(selected):
+   ver,architecture,_=installed[name];stem=f'{name}_{ver}_{architecture}'
+   source=Path('/var/cache/toddy/packages')/(stem+'.deb')
+   provenance=json.loads((Path('/var/log/toddy/packages')/(stem+'.json')).read_text())
+   assert provenance['installed'] and digest(source)==provenance['archive_sha256']
+   destination=dependency_cache/source.name;shutil.copy2(source,destination)
+   assert digest(destination)==provenance['archive_sha256']
+   dependency_archives.append(destination)
+  target=base/'configured-root';db=target/'var/lib/dpkg';db.mkdir(parents=True);(db/'status').touch()
+  native_root='--root=/'+str(target.relative_to(root))
+  with (base/'dependency-install.log').open('w') as log:
+   backend.run('dpkg',native_root,'--unpack',*('/'+str(path.relative_to(root)) for path in dependency_archives),stdout=log,stderr=subprocess.STDOUT)
+   backend.run('dpkg',native_root,'--configure','--pending',stdout=log,stderr=subprocess.STDOUT)
+  db_before=digest(db/'status')
+  transaction_dir=base/'transaction';transaction_dir.mkdir(mode=0o700)
+  journal=transaction_dir/'transaction.json'
+  archives=[copied,base/(base.name+'-core.deb'),base/(base.name+'-qa.deb')]
+  data=[record,core_record,qa_record]
+  def execute(selected_backend=backend,selected_journal=journal):
+   return modules['python_qa_transaction.py'].execute(selected_backend,target,data,archives,selected_journal,
+     donor_record_sha256=plan['predecessor_record_sha256'])
+  class InterruptAfterCore(modules['package_backend.py'].PackageBackend):
+   def run(self,program,*arguments,**kwargs):
+    result=super().run(program,*arguments,**kwargs)
+    if program=='dpkg' and '--install' in arguments and arguments[-1].endswith('-core.deb'):
+     raise RuntimeError('Controlled interruption after actual core installation, before journal exit capture')
+    return result
+  try:execute(InterruptAfterCore(root))
+  except RuntimeError as error:
+   assert str(error).startswith('Controlled interruption after actual core'),str(error)
+  else:raise AssertionError('Controlled transfer interruption was not reached')
+  interrupted=json.loads(journal.read_text())
+  assert not interrupted['complete'] and interrupted['actions'][-1]['action']=='install_core'
+  assert interrupted['actions'][-1]['exit'] is None
+  current=backend.run('dpkg-query','--admindir=/'+str(db.relative_to(root)),'-W','-f=${Version}\t${Status}','python',capture_output=True,text=True).stdout
+  assert current==successor+'\tinstall ok installed',current
+  try:execute(selected_journal=transaction_dir/'unrecorded.json')
+  except ValueError as error:rejected.append({'case':'unrecorded partial installed transfer','reason':str(error)})
+  else:raise AssertionError('Unrecorded installed transfer accepted')
+  recovered=execute();assert recovered['complete']
+  after=digest(db/'status');replayed=execute()
+  assert len(replayed['actions'])==len(recovered['actions']) and digest(db/'status')==after
+  transaction_result={'dependency_packages':sorted(selected),'dependency_archive_bytes':sum(p.stat().st_size for p in dependency_archives),
+    'native_dependency_install_log':(base/'dependency-install.log').read_text(),
+    'durable_transaction':replayed,
+    'native_action_logs':{path.name:path.read_text() for path in sorted(transaction_dir.glob('action-*.log'))},
+    'controlled_interruption_after_real_core_configuration':True,'missing_transaction_rejected':True,
+    'complete':recovered['complete'],'verification':recovered['verification'],
+    'actions':[{key:value for key,value in step.items() if key in ('action','exit')} for step in recovered['actions']],
+    'idempotent_repeat_added_no_native_actions':True,'idempotent_repeat_package_status_unchanged':True}
  assert digest(root/'var/lib/dpkg/status')==before
  print(json.dumps({'plan':plan,'bundle':bundle,'bundle_native_archive_controls':controls,
   'bundle_archive_sha256':{'core':core_record['archive_sha256'],'qa':qa_record['archive_sha256']},
   'native_archive_reextraction_matches_complete_payloads':True,'compression_threads':2,
   'negative_cases':rejected,'restored_staging_accepted':True,
+  'private_configured_transaction':transaction_result,
   'actual_installed_bytes_modes_owners_timestamps_checked':True,
   'installed_status_unchanged':True,'native_package_cache_changed':False,'production_cli_dispatched':False,
   'source_sha256':{name:hashlib.sha256(base64.b64decode(body)).hexdigest() for name,body in SOURCES.items()},
@@ -114,11 +190,11 @@ except BaseException:
  print('Preserved Python QA handoff fixture:',base,flush=True)
  raise
 else:shutil.rmtree(base)
-'''.replace('SOURCES', repr(sources))
+'''.replace('SOURCES', repr(sources)).replace('TRANSACTION', repr(options.transaction))
 r = subprocess.run(['python3', 'scripts/host/vm.py', 'ssh',
                     'source /opt/toddy-build/scripts/build/target.sh; guard_target && python3 -'],
                    input=script, text=True, capture_output=True)
-p = Path('.local/logs/h11-python-qa-handoff-plan-probe.json')
+p = Path('.local/logs/h11-python-qa-' + ('transaction' if options.transaction else 'handoff-plan') + '-probe.json')
 data = (json.dumps({'exit': r.returncode, 'stdout': r.stdout, 'stderr': r.stderr}, indent=2) + '\n').encode()
 sha = hashlib.sha256(data).hexdigest()
 p.with_name(p.stem + '.' + sha + '.json').write_bytes(data)
