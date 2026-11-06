@@ -31,6 +31,6 @@ Honor the full-administration product requirement with revocable owner policy an
 
 make check validates planning consistency and local references. make progress prints weighted phase progress; make dashboard regenerates STATUS.md and the offline dashboard. No expensive OS build belongs in bootstrap CI. Do not claim installed hardware support or an available ISO until measured. Keep unresolved choices visible in docs/OPEN-DECISIONS.md. Use docs/adr/ for durable decisions. Do not add a new framework merely because a tool is available.
 
-## Workstation documentary memory (optional integration)
+## Project context
 
-When workstation-rag tools are available, use reference_sources, filtered search_references and selective read_reference for versioned documentation/previous decisions. Cite source and version. If useful and unregistered, call workstation-rag-ingest.prepare_project with this checkout's absolute root. After committing docs/adr/ or docs/decisions/, call sync_project. Index only committed documentation; never index source code or uncommitted files. This local integration is optional and is not an OS runtime dependency. If unavailable, state that and use committed docs plus primary sources.
+Use the committed PRD, story files, journal, errors and ADRs as the project's durable development context. The owner explicitly declined workstation RAG for this project. Do not register or synchronize this checkout with workstation-rag and do not add a development RAG dependency. This does not remove the future operating system's product memory requirements.

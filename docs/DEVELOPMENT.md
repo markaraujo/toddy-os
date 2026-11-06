@@ -38,4 +38,4 @@ Before stopping, persist current task, exact failed step, checkpoint, command ex
 
 ## Source and visibility policy
 
-Use a feature branch for implementation, focused commits and pull requests where practical. No force push or history rewriting without a reason. GitHub remains private through the first ISO review; CI uploads must not leak private artifacts. Project licensing must be finalized before public release. The optional workstation RAG stores only committed documentation and ADRs; it is not a substitute for the checkout.
+Use a feature branch for implementation, focused commits and pull requests where practical. No force push or history rewriting without a reason. GitHub remains private through the first ISO review; CI uploads must not leak private artifacts. Project licensing must be finalized before public release. Development context lives in the committed repository files; workstation RAG is excluded by owner decision.
