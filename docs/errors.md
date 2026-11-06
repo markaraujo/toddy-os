@@ -160,3 +160,17 @@ passes, archives reports and only then stages/installs. Do not re-extract or
 rebuild already verified compilation just to correct log parsing. Apply the
 same format correction to the prepared MPFR count. Acceptance thresholds
 are preserved.
+
+## H07 Shadow account audit after builder reboot (2026-11-06)
+
+Native Shadow installation/configuration exited zero; its postcheck exited 2
+because pwck found messagebus's /run/dbus home absent in the fresh /run tmpfs.
+The essential messagebus account and path are exactly those in frozen LFS
+13.1-systemd section 7.6; no password or package build failure occurred.
+Create the runtime directory with that account's ownership before auditing.
+H08 must provide persistent boot-time tmpfiles/service setup. Root remains
+locked; no shared login password was introduced. Preserve the original failed
+marker, verify the installed Shadow package unchanged using dpkg --verify,
+and run a separate shadow-audit step instead of reinstalling. That step and
+its full account creation/unprivileged shell/removal, pwck/grpck postcheck
+passed with zero installed-file changes.

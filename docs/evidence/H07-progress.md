@@ -175,3 +175,32 @@ image SHA-256 verification, with QEMU off; its manifest is under
 .local/vm/checkpoints. The VM restarted and pseudo filesystems remounted.
 There are 25 native packages; Attr/ACL are now running, final GCC and all
 remaining base/release acceptance still pending.
+
+## Extended attributes, capabilities, password libraries and accounts
+
+Attr 2.6.0 passed its suite and real ext4 user-attribute roundtrip. ACL 2.4.0
+had 13 PASS, two XFAIL and the book-documented cp.run FAIL because temporary
+Coreutils lacks ACL support; no other failure accepted. A file ACL granted
+read access to the real unprivileged tester account, verified after dropping
+UID/GID/groups. Repeat ACL-preserving copy after final Coreutils is built.
+
+Libcap 2.78 passed make test plus actual setcap/getcap on a disposable target
+file. Libxcrypt 4.5.2: 38 PASS, 14 SKIP, zero FAIL; native C Yescrypt hashing
+passed without emitting password hashes. Shadow installed and configured
+YESCRYPT with root locked. Its initial pwck found the missing volatile
+/run/dbus directory; a separate audit verified the package unchanged and
+passed after creating the essential account's runtime home. H08 must create
+that directory at boot. No shared account credential is embedded.
+
+Gawk 5.4.1 passed its complete suite as tester and actual arithmetic runtime
+check. Native package count is 31. GCC 16.2.0 final build/critical suite is now
+running under the accounts driver; no GCC install or acceptance is claimed.
+
+| Step | Full successful log SHA-256 |
+| --- | --- |
+| attr | 19ce155e3d3b8ac70c84fcadead0d17a9a202ec3b782beba461e93529e698945 |
+| acl | 8612bb48fa24f57b48b5f0c72294b3b677a79c72621767448c13b32dcbc45665 |
+| libcap | b04c6384c606f53cfafbc359dcae01df90909b99ecf0d2e521403dd8e7a2992a |
+| libxcrypt | c445a671446b2e9ea24b7fac3035fc00caa5989369138d56cf6c18f60277783b |
+| shadow-audit | 9bdedf14c86b20b273dce36fe0d21e5d52fa5b1058eaa498fdad8abd15f3333d |
+| gawk | 53915c81ab7e03fc6c7d586db6dcf418264c3bb9622c7370b7c42ec72e90b854 |

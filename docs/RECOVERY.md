@@ -108,3 +108,16 @@ failure also remains preserved; explicit gmp-install resumed and passed.
 Current job: /var/log/toddy/h07-permissions-driver.{pid,log,exit}, Attr then
 ACL. Inspect package records and exact test outputs before retry. Next in
 book order: Libcap, Libxcrypt, Shadow, Gawk, then final GCC critical suite.
+
+2026-11-06 latest running job: h07-accounts-driver invokes h07-gcc-build after
+verified Shadow/Gawk. /var/log/toddy/build/h07-gcc-build.{log,running.json}
+holds PID/PGID and build output. After compilation, the complete unprivileged
+critical suite writes /mnt/lfs/sources/evidence/h07-gcc/check.log, check.exit,
+test-summary.txt and test-reports.tar.gz. Inspect terminal records; a running
+PID/marker is unfinished. Do not execute test-summary.txt: upstream's report
+is a printed shell mail script, retained as data only. Never send it.
+Classify every unexpected outcome before separate final GCC installation.
+The original Shadow postcheck failure remains preserved; shadow-audit passed
+without reinstalling. Native target has 31 packages, latest cold checkpoint
+h07-native-math predates the six permissions/accounts additions. H08 must
+supply /run/dbus creation at native boot; test ACL copies after final Coreutils.
