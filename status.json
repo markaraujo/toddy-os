@@ -477,14 +477,14 @@
   ],
   "active_work": {
     "story": "H07",
-    "verified_at": "2026-11-06 19:17 UTC",
+    "verified_at": "2026-11-06 19:37 UTC",
     "verified": [
       "124 of 126 currently planned H07 packages installed, configured and accepted; 2 pending (Berkeley DB and APT). All 124 have own-build/source provenance.",
       "Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.",
       "Full ACL retest, API/layout ownership and native configuration correction passed.",
       "Verified paired cold checkpoint at the 124-package boundary."
     ],
-    "running": "Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC; file-operations tests are advancing (Fop012.275 observed). C tests, all three focused regressions and 483-file source comparison already passed.",
+    "running": "Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC; now executing transaction tests (Txn010 observed), after file operations, locking, logging, memory pool and mutex. No final result yet. C tests, focused regressions and 483-file source comparison already passed.",
     "remaining": [
       "Accept the full database result, production installation and persistence/transaction postchecks.",
       "Build and test APT against a real signed repository, including positive and negative HTTPS cases.",

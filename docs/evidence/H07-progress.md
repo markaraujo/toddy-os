@@ -924,3 +924,14 @@ through the twice-processed link passed, exit 0; installed files unchanged.
 Raw .local/logs/h07-native-python-alias-retry.json SHA-256
 `d756d4f25426f625b41f31de0afcf04ede0e5fc087ad67d9d3ea3f2edc630d30`.
 97 local checks pass; real package upgrades/final audit remain pending.
+
+
+2026-11-06 19:37 UTC: live DB driver/runner and continuation supervisor remain
+active. The standard suite reached transaction tests after file operations,
+locking, logging, memory pool and mutex. Txn010's frozen source explicitly
+waits 120 seconds before asserting the two-minute checkpoint condition;
+this observed quiet interval is part of the test, not evidence of termination.
+No final suite success or package acceptance is inferred. Raw partial
+observation .local/logs/h07-db-transaction-observation.json SHA-256
+`fd4660d3c68a884daebd91adc604f529b5d6f3b04ef3150751e294b6814a5fb7`.
+The active-work snapshot advances; foundation credit remains 38%.
