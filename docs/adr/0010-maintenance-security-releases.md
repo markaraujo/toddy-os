@@ -50,3 +50,20 @@ SHA-256 53c156e1ba416a20da8e65395daa132da0d80e76910424caca3fcdae7831d384
 matched its published asset digest. The native build, make check and UTF-8
 property smoke test passed; license notices were retained. This does not
 claim other unbuilt security selections have passed their tests.
+
+## Xz signature verification resolved, 2026-11-06
+
+The original upstream key endpoint remained inaccessible; the GNU public
+keyring did not contain this signing key. An authorized trusted alternative
+succeeded: Debian's official xz-utils 5.8.4-1 source packaging includes
+upstream/signing-key.asc. Both that packaging tar and the identical Xz 5.8.4
+upstream archive matched SHA-256/size in Debian's official DSC over HTTPS.
+Using this maintained upstream key copy, gpgv verified the existing detached
+signature with fingerprint 3690C240CE51B4670D30AD1C38EE757D69184620.
+Key/source hashes and origin are recorded in the security lock; verification
+output remains in .local/upstream-verification/xz-signature-verification.log.
+The DSC OpenPGP signature itself was not independently verified; the key
+retrieval trust basis is the official Debian HTTPS source distribution.
+No host trust store or security policy changed. The selected archive hash and
+already-tested installed bits are unchanged, so this metadata/authenticity
+improvement does not require rebuilding or repeating unchanged package tests.
