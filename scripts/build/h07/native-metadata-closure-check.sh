@@ -62,3 +62,12 @@ assert not report['unknown'],report['unknown']
 print('Final-base package ownership has no unexplained files; generated and H08 configuration remain explicit')
 PYOWNED
 python3 /opt/toddy-build/scripts/build/audit_native_build_flow.py > /var/log/toddy/h07-final-native-build-flow.json
+python3 /opt/toddy-build/scripts/build/audit_native_isa_notes.py > /var/log/toddy/h07-final-isa-notes.json
+python3 - <<'PYISA'
+import json
+from pathlib import Path
+report=json.loads(Path('/var/log/toddy/h07-final-isa-notes.json').read_text())
+assert report['compiler_defaults']=={'-march':'x86-64','-mtune':'generic'},report['compiler_defaults']
+assert set(report['declared_requirements'])<={'x86-64-baseline'},report['declared_requirements']
+print('Generic compiler defaults and declared baseline ISA notes verified; CPU boot test remains separate')
+PYISA

@@ -43,3 +43,14 @@ packaging operation. Preserve a cold tested-GCC checkpoint before installing.
 Sources: frozen LFS 13.1-systemd 8.32 installation/ownership/alias instructions;
 actual Ninja and libgmpxx readelf output in the disposable target; staged
 packaging behavior defined in scripts/build/h07/split-gcc-runtime.py.
+
+Read-only native compiler/ELF inventory against the 101-package root measured
+GCC defaults -march=x86-64 and -mtune=generic. Of 2551 ELFs, 1025 declare only
+x86-64-baseline ISA-needed notes; 1526 have no such note. Absent notes do not
+prove instruction-level compatibility, and runtime-dispatched code needs its
+source context. H12 must still exercise the declared boot CPU profile.
+Use native Binutils 2.47 for this inspection: builder 2.42 returns exit 1 on
+Glibc crt1.o notes while native readelf reads the same object with exit 0.
+Raw .local/logs/h07-native-isa-notes-101.json SHA-256 8aa174c4d0920acd2a2176a47f4cd38bec4b277acebfc141e69dab3a1e796020.
+Reproduce with scripts/build/audit_native_isa_notes.py; this is supplemental
+portability evidence, not an alternate-CPU/hardware test pass.
