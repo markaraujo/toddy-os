@@ -535,3 +535,13 @@ failure or controller interruption, verify the child's actual state and mount
 namespace before removing that exact fixture; never broaden cleanup to /tmp or
 /mnt/lfs. The runtime roots are distinct tmpfs instances, not the installed root.
 This test does not replace initramfs boot or actual Squashfs/overlay switching.
+
+
+The prepared live-media identity/hash component (ADR-0053) is exercised by
+python3 scripts/host/probe_live_media.py. Each run uses its own native private
+/tmp/toddy-media-integrity-* fixture; failures preserve the printed path and
+raw host report, while success removes the fixture. It does not mount a device
+or establish ISO/Squashfs/boot acceptance. Future /init integration must supply
+expected identity/hash from generated initramfs metadata, use a read-only media
+mount, and treat rejection as a diagnostic/recovery condition. Never replace
+an expected digest with one read from a rejected medium to bypass the check.

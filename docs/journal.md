@@ -122,3 +122,9 @@ runtime state. Corrected an initial test-only env dependency and retained its
 failure log. Builder kernel only; no live/ISO boot or H10 acceptance claimed.
 Reusable experiment and recovery recorded in ADR-0052; full BDB suite advances
 through Recd003 recovery cases without a final result yet.
+
+2026-11-06: Prepared live-media identity/root-hash verification using only the
+native minimal runtime. Ten real native file cases passed, covering changed
+bytes, wrong/malformed metadata, absent/redirected payload and non-evaluated
+command-like text. Documented remaining discovery/real-image/boot integration
+in ADR-0053; H07 database recovery tests continue and no H10 credit is claimed.
