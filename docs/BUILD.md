@@ -120,3 +120,22 @@ python3 scripts/host/vm.py ssh 'nohup bash /opt/toddy-build/scripts/build/h06-dr
 The cleanup removes /tools and verifies self-hosted C execution afterward.
 Checkpoint restoration remains a separate required H06 acceptance experiment;
 a driver exit alone does not complete the milestone.
+
+## Verified disk-pair checkpoints
+
+Use scripts/host/checkpoint.py only with QEMU stopped. It refuses a live VM,
+checks qcow2 consistency, hashes the copied disks and records their backing
+image hash. Restoring preserves the current pair before replacing anything;
+an interrupted restoration blocks VM startup until the same restore finishes.
+
+```sh
+python3 scripts/host/vm.py stop
+python3 scripts/host/checkpoint.py save example-checkpoint
+python3 scripts/host/checkpoint.py verify example-checkpoint
+python3 scripts/host/vm.py start
+```
+
+To recover an existing named checkpoint, stop the VM, run checkpoint.py restore
+with that name, then restart and verify guest postconditions. Never restore
+images beneath a running process. The checkpoint storage is local to the same
+physical disk; external disaster backup is a separate release requirement.

@@ -66,6 +66,8 @@ def main():
         if not (VM / 'lfs-target.qcow2').exists():
             qemu_tool('qemu-img', 'create', '-f', 'qcow2', '/vm/lfs-target.qcow2', '180G')
     elif args.action == 'start':
+        if (VM / 'restore-in-progress.json').exists():
+            raise SystemExit('Incomplete checkpoint restore; finish it before VM start')
         for name in ['builder.qcow2', 'lfs-target.qcow2', 'seed.img']:
             if not (VM / name).is_file() or (VM / name).is_symlink():
                 raise SystemExit(f'Missing or unsafe VM file: {name}')
