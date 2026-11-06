@@ -20,3 +20,8 @@ These are planned feasibility decisions, not missing permission to begin H01. Re
 The whole-system license is a collection of component licenses, not the repository's proposed custom-code license. APIs can be optional without making the open local path dependent on them. This planning baseline deliberately does not claim universal Ubuntu binary compatibility.
 
 Release security obligation: assess and freeze tested fixes for baseline advisories before final release (ADR-0007); H02 integrity success is not security approval.
+
+Expat security exposure remains open (ADR-0013): source 2.10.0 is selected,
+but upstream still reports unresolved issues. Audit XML consumers and verify
+bounded unprivileged untrusted-input handling before release; no blanket
+all-vulnerabilities-fixed claim is allowed.

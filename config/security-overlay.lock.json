@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "frozen_for_final_build",
-  "baseline_unchanged": "Original edition inputs retained. Explicit H07 security overlay selections in ADR-0009/0010; compiler versions unchanged. Build/test acceptance remains pending.",
+  "baseline_unchanged": "Original edition inputs retained. Explicit H07 security overlays in ADR-0009/0010/0013; compiler versions unchanged. Unbuilt selections and remaining risks stay visible.",
   "components": [
     {
       "name": "glibc",
@@ -21,7 +21,7 @@
         "CVE-2026-8674"
       ],
       "applicability": "All 49 sequential patches applied with exit 0 to pristine frozen glibc plus the book FHS patch in disposable source copy",
-      "build_and_regression_tests": "pending; not a security acceptance result"
+      "build_and_regression_tests": "Native build and full suite accepted; see docs/evidence/H07-progress.md. Release gate remains pending."
     },
     {
       "name": "xz",
@@ -36,7 +36,7 @@
       "signature_note": "Detached signature downloaded; official signing-key endpoint returns HTTP 403. Publisher SHA-256 verified; no PGP verification claim.",
       "sha256": "4ce24038fd4221e0d13bc1a2de7a4db56e90b92b3bf75321f6c14be73f65de4b",
       "planned_stage": "H07 final base; exact pinned maintenance release, not moving latest",
-      "build_and_regression_tests": "pending"
+      "build_and_regression_tests": "Native build and full suite accepted; see docs/evidence/H07-progress.md. Release gate remains pending."
     },
     {
       "name": "openssl",
@@ -73,6 +73,66 @@
       "sha256": "53c156e1ba416a20da8e65395daa132da0d80e76910424caca3fcdae7831d384",
       "advisory": "sa-13.1-023 and sa-13.1-047",
       "published_digest_source": "https://api.github.com/repos/PCRE2Project/pcre2/releases/tags/pcre2-10.49",
+      "build_and_regression_tests": "Native build and full suite accepted; see docs/evidence/H07-progress.md. Release gate remains pending."
+    },
+    {
+      "name": "patch",
+      "version": "2.8.1",
+      "baseline_version": "2.8",
+      "filename": "patch-2.8.1.tar.xz",
+      "url": "https://mirrors.kernel.org/gnu/patch/patch-2.8.1.tar.xz",
+      "advisory": "sa-13.1-087 / CVE-2026-115207",
+      "signature_verified": true,
+      "signature_fingerprint": "259B3792B3D6D319212CC4DCD5BF9FEB0313653A",
+      "signature_url": "https://mirrors.kernel.org/gnu/patch/patch-2.8.1.tar.xz.sig",
+      "keyring_url": "https://mirrors.kernel.org/gnu/gnu-keyring.gpg",
+      "keyring_sha256": "8013de59880f7a59f53b6bd207f4d2a408d67b84a82fa9cba1dbbf443428e2db",
+      "sha256": "3240c7959c5347c8ed347e3c4201c0337bf4240d5cf09d68889e58eeaba30e17",
+      "planned_stage": "H07 final base, frozen source-backed security addition in ADR-0013",
+      "build_and_regression_tests": "pending"
+    },
+    {
+      "name": "vim",
+      "version": "9.2.1201",
+      "baseline_version": "9.2.0954",
+      "filename": "vim-9.2.1201.tar.gz",
+      "url": "https://github.com/vim/vim/archive/refs/tags/v9.2.1201.tar.gz",
+      "advisory": "sa-13.1-065 / sa-13.1-086",
+      "tag_commit": "b93c000ddfc27c6a1192bcba77204709536cf094",
+      "tag_object": "ec7996232071d56b252a0ff16a201fec451ce10c",
+      "tag_verification": "GitHub API reports valid signed annotated tag; archive OpenPGP not independently verified",
+      "signature_verified": false,
+      "sha256": "b280c2abebc3b32adb5295f3e7f4dd63340a68127cb26300c745024ef8b31af6",
+      "planned_stage": "H07 final base, frozen source-backed security addition in ADR-0013",
+      "build_and_regression_tests": "pending"
+    },
+    {
+      "name": "expat",
+      "version": "2.10.0",
+      "baseline_version": "2.8.3",
+      "filename": "expat-2.10.0.tar.xz",
+      "url": "https://github.com/libexpat/libexpat/releases/download/R_2_10_0/expat-2.10.0.tar.xz",
+      "published_sha256": "c624ba2998fc65df1163a49641ff3f9ab73138b11641d92c86bee0fb01b1bc7f",
+      "published_digest_source": "https://api.github.com/repos/libexpat/libexpat/releases/tags/R_2_10_0",
+      "advisory": "sa-13.1-022/045/064 plus upstream 2.10.0 security release of 2026-11-02",
+      "remaining_security_issues": "Upstream issue #1160 remains open; no claim that all known Expat issues are fixed. Assess application exposure and bounded unprivileged XML processing before release.",
+      "sha256": "c624ba2998fc65df1163a49641ff3f9ab73138b11641d92c86bee0fb01b1bc7f",
+      "planned_stage": "H07 final base, frozen source-backed security addition in ADR-0013",
+      "build_and_regression_tests": "pending"
+    },
+    {
+      "name": "util-linux",
+      "version": "2.42.4",
+      "baseline_version": "2.42.2",
+      "filename": "util-linux-2.42.4.tar.xz",
+      "url": "https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.42/util-linux-2.42.4.tar.xz",
+      "published_sha256": "fbd62a100ab7bb8746ba0661255c3c48185b1e9021507c624da01fbc696330ec",
+      "published_digest_source": "https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.42/sha256sums.asc",
+      "signature_verified": false,
+      "signature_note": "Published SHA-256 in signed upstream sums matched; OpenPGP signature not independently verified.",
+      "advisory": "sa-13.1-048",
+      "sha256": "fbd62a100ab7bb8746ba0661255c3c48185b1e9021507c624da01fbc696330ec",
+      "planned_stage": "H07 final base, frozen source-backed security addition in ADR-0013",
       "build_and_regression_tests": "pending"
     }
   ],
