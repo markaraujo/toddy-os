@@ -74,3 +74,22 @@ cd3d22a441d102f7cafa89a9f8010064577501ec3579e813e3ea2c3aff677914.
 Syntax success is not module availability, successful GRUB installation or
 kernel boot. Package/stage ownership, guarded BIOS/EFI installation and actual
 early-boot tests remain pending behind H08/H09 prerequisites.
+
+
+Prepared boot-config recipe additionally requires actual h09-kernel success.
+It packages /etc/toddy/grub.cfg as a preserved conffile and owns the relative
+/boot/grub/grub.cfg symlink; this honors the existing strict /etc conffile
+policy rather than leaving boot configuration untracked. The recipe itself
+has not been dispatched. Its postcheck requires both native GRUB platform
+module sets (part_gpt/ext2/search_fs_uuid/serial/linux/normal); all twelve
+currently exist, but that alone is not a boot result.
+
+A separate actual native probe formatted only a private 16 MiB regular-file
+ext4 image, populated a configuration and the exact relative symlink with
+native debugfs, then read /boot/grub/grub.cfg through native grub-fstest.
+The observed bytes matched and native grub-script-check passed (exit 0).
+No block device was written or mounted; temporary image/data were removed.
+Raw .local/logs/h09-native-grub-config-link.json SHA-256
+bc3303a6c379c3c2b0be539d96d06d28e5daf36c8467ea297bcc098992243e31.
+This validates the filesystem link channel, not execution of a GRUB core or
+a kernel. BIOS/EFI installation and early boot remain unexecuted and required.
