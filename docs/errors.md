@@ -266,3 +266,15 @@ and complete tests are still pending; patch applicability is not acceptance.
 Resume only the verified untouched original main tree after checking its failed
 record, absence of configuration/stage artifacts and every archived regular
 source file. Do not re-extract over it or install the partly patched probe.
+
+
+## H07 native continuation corrections (2026-11-06)
+
+Python's full initial suite failed two network cases: missing target resolver,
+not an SSL patch defect. A guarded temporary build-only resolver repaired DNS;
+all full-suite retry results and the initial failure were retained. H08 must
+replace it with runtime configuration. Coreutils patch context correction is
+ADR-0019; Findutils' supplied-regex selection and complete regression proof are
+ADR-0020. Both original failures changed zero installed files. Groff's initial
+neqn smoke failure is a missing build-directory PATH entry; focused reproduction
+passes after that correction, with full-suite recovery required before install.

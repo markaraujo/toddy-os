@@ -25,3 +25,11 @@ Expat security exposure remains open (ADR-0013): source 2.10.0 is selected,
 but upstream still reports unresolved issues. Audit XML consumers and verify
 bounded unprivileged untrusted-input handling before release; no blanket
 all-vulnerabilities-fixed claim is allowed.
+
+
+H07 implementation obligations before G1: replace the temporary build-only
+/etc/resolv.conf (QEMU 10.0.2.3) with H08 runtime DHCP/resolved configuration;
+audit remaining GNU regex consumers for the measured Glibc 20381 fastmap issue
+(Findutils uses its supplied fixed replacement, ADR-0020); verify actual native
+kernel module loading in H09/H12 rather than treating builder module listing as
+proof. These obligations do not change the release acceptance criteria.

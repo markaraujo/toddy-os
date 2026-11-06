@@ -42,32 +42,30 @@ original failed preflight, before the corrected Python build. H06 was actually
 restored/retested; this newer pair has been saved/verified, not yet restored.
 Checkpoint copies share the workstation disk and are not disaster recovery.
 
-The VM was restarted, pseudo filesystems remounted, current source locks and
-recipes synced. h07-python-recovery now compiles/tests the corrected frozen
-Python/OpenSSL source combination. Full original-source comparison and adapted
-patch application passed before compilation. Parallel tests are capped at 8;
-the book's timeout and test coverage remain unchanged.
+Live target now has 65 accepted native packages through Findutils. Python full
+retry and native postchecks passed. The latest cold pair remains the earlier
+55-package checkpoint; do not confuse live acceptance with saved disk state.
+Groff recovery repeats its complete suite with built eqn on PATH, then stages,
+installs and runs the native formatter. Its driver continues utilities through
+Texinfo only after actual success.
 
 ```sh
 python3 scripts/host/vm.py inspect
-python3 scripts/host/vm.py ssh 'ls /var/log/toddy/build/*.running.json; tail -c 2000 /var/log/toddy/build/h07-python-recovery.log'
+python3 scripts/host/vm.py ssh 'find /var/log/toddy/build -name "*.running.json" -printf "%f\n"; tail -c 2000 /var/log/toddy/h07-groff-recovery-driver.log'
 ```
 
-Dispatcher PID is recorded in /var/log/toddy/h07-python-recovery.pid. The
-h07-python-to-native driver waits for that specific dispatcher, requires actual
-Python recovery success, then invokes native-tools (Flit-Core through Meson)
-and system-utilities (Kmod through Texinfo). Its .pid/.log/.exit files are under
-/var/log/toddy. A failed package stops the chain; no step is silently skipped.
-The older native-to-utilities queue ended with the earlier failure and is not
-the current waiter. Inspect real processes, running markers and both driver
-states before full sync; never overwrite active streamed recipes.
+Inspect /var/log/toddy/h07-groff-recovery-driver.{pid,exit} and actual processes.
+A failed step stops the chain. Read failure logs before choosing a dedicated
+resume script; never run the pristine Python resumer over the compiled tree.
+After restoring the 55-package cold pair, start/remount/sync, run the guarded
+build-resolver step, then the pristine Python recovery. H08 must replace the
+build-only static resolver before G1 or ISO assembly.
 
-After a guest restart, run mount-kernfs.sh first. If Python recovery failed,
-inspect the source/build state and exact log before retrying; its resume script
-only accepts an untouched pre-configuration tree and must not be blindly
-reused over a compiled tree. On verified Python success, native-tools can be
-resumed directly; it recognizes the separate recovery marker. Prepared final
-Vim/service/filesystem recipes still require actual execution/acceptance.
+After a guest restart, run mount-kernfs.sh first. Full input sync takes the same
+exclusive guest lock as builds and refuses an active step. An input-sync.running
+flag means interrupted input installation; inspect/preserve staging and finish a
+verified sync before dispatch. Prepared Vim/MarkupSafe/Jinja2 and remaining
+service/filesystem recipes require actual execution/acceptance.
 
 Never rerun account bootstrap or re-extract successful build trees. The GCC
 suite marker proves compilation/tests only; installation is separately proved

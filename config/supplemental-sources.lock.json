@@ -134,10 +134,28 @@
       "signature_verified": false,
       "signature_note": "Reviewed project patch pinned to immutable repository commit and SHA-256; no OpenPGP verification claim.",
       "planned_stage": "H07 Python 3.14.10; complete native suite required before installation"
+    },
+    {
+      "name": "coreutils-i18n-context",
+      "version": "9.11-1",
+      "filename": "coreutils-9.11-i18n-context-1.patch",
+      "url": "https://raw.githubusercontent.com/markaraujo/toddy-os/4f4d840b7aa434a103b13b7dd861fb61f77bdff0/patches/coreutils-9.11-i18n-context-1.patch",
+      "sha256": "9a6444bc07dea6c37be682fd7c3ddd3707250a0850eba3ca342d6c84bb90f8e6",
+      "size": 68059,
+      "decision": "ADR-0019",
+      "source_kind": "balanced-context adaptation; identical runtime/test result to frozen book default",
+      "derived_from": {
+        "filename": "coreutils-9.11-i18n-1.patch",
+        "sha256": "7c2aecf9ae24b87b019595e382b9f41d2c96de7f95abe95ad8cacc7e2ce1bbcc"
+      },
+      "signature_verified": false,
+      "signature_note": "Reviewed project patch pinned to immutable repository commit and SHA-256; no OpenPGP claim.",
+      "planned_stage": "H07 Coreutils 9.11; all root and expensive unprivileged tests required"
     }
   ],
   "additional_decisions": [
     "ADR-0017",
-    "ADR-0018"
+    "ADR-0018",
+    "ADR-0019"
   ]
 }

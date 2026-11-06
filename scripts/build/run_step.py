@@ -76,6 +76,8 @@ def main():
         if not path.is_file():
             raise SystemExit(f'Missing recipe/postcondition: {path}')
     STATE.mkdir(parents=True, exist_ok=True)
+    if (STATE/'input-sync.running').exists():
+        raise SystemExit('Build input sync is unfinished; complete verified sync before dispatch')
     with (STATE / 'build.lock').open('w') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         prefix = STATE / args.step

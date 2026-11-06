@@ -6,6 +6,9 @@ cd /opt/toddy-build/scripts/build
 echo $$ > /var/log/toddy/h07-system-utilities-driver.pid
 rm -f /var/log/toddy/h07-system-utilities-driver.exit
 for package in kmod coreutils diffutils findutils groff grub gzip iproute2 kbd libpipeline make patch tar texinfo; do
+ if [[ $package == groff && -f /var/log/toddy/build/h07-groff-recovery.success.json ]]; then continue; fi
+ if [[ $package == findutils && -f /var/log/toddy/build/h07-findutils-recovery.success.json ]]; then continue; fi
+ if [[ $package == coreutils && -f /var/log/toddy/build/h07-coreutils-recovery.success.json ]]; then continue; fi
  if [[ -f /var/log/toddy/build/h07-$package.success.json ]]; then continue; fi
  python3 run_step.py "h07-$package" "h07/$package.sh" "h07/$package-check.sh" --user root
  result=$?

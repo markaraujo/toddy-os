@@ -6,8 +6,8 @@ test ! -e /sources/stage/groff
 mkdir -p /sources/evidence/h07-groff
 PAGE=A4 ./configure --prefix=/usr
 make -j1
-# Preserve any failure for source-backed classification, including known neqn.
-make check 2>&1 | tee /sources/evidence/h07-groff/check.log
+# The neqn wrapper invokes the newly built eqn through PATH.
+PATH="$PWD:$PATH" make check 2>&1 | tee /sources/evidence/h07-groff/check.log
 make DESTDIR=/sources/stage/groff install
 find . -type f \( -name '*.log' -o -name '*.trs' -o -name '*.sum' \) -print0 | \
  tar --null -T - -czf /sources/evidence/h07-groff/test-reports.tar.gz

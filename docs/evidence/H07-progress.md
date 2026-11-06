@@ -1,7 +1,8 @@
 # H07 — In-progress final package evidence
 
-Date: 2026-11-05. H07 is NOT complete. Critical final compiler/libc/binutils
-suites and the remaining chapter 8 packages are pending.
+Updated: 2026-11-06. H07 is NOT complete. Critical compiler/libc/binutils
+results are recorded below; remaining base and package-manager closure are pending.
+Appended entries supersede earlier running-state descriptions.
 
 The first two final packages follow frozen LFS 13.1-systemd sections 8.3/8.4.
 Their installs were redirected into DESTDIR staging, inspected for ownership
@@ -436,3 +437,49 @@ standard suite. Test parallelism is explicitly capped at eight with the book's
 120-second timeout; no test selection changes. A durable gated continuation
 waits for its dispatcher, requires actual success, then continues through
 Meson and the utility driver. Python remains unaccepted while running.
+
+
+## Native continuation through Findutils: 65 accepted packages
+
+The full Python retry reported Result SUCCESS, 48,840 tests with 2,159 skips;
+these are reported totals, not 48,840 unconditional passes. The first run had
+only two networking failures because the target lacked /etc/resolv.conf. A
+guarded build-only resolver step uses the existing QEMU uplink 10.0.2.3, verifies
+native resolution and a real HTTP 404, then repeats the entire compiled PGO
+suite with unchanged selection and timeout. Original failed logs are retained.
+H08 must replace this temporary resolver with runtime network configuration.
+Native Python/SSL/SQLite/Expat/FFI/compression/GDBM/curses/readline imports and
+pip 26.2.2 passed. Flit-Core, Packaging, Wheel, Setuptools and Meson were built
+from frozen inputs offline; a real Meson/Ninja C project passed. Kmod built and
+read the builder kernel's module list; target-kernel load/unload remains H09/H12.
+
+Coreutils' patch required balanced context (ADR-0019), with zero-fuzz result
+byte-identical to the book-default patch result. Root and complete tester suites
+with RUN_EXPENSIVE_TESTS=yes passed, followed by native copy/ACL/hash checks.
+Diffutils full tests and native equal/different comparisons passed. Findutils'
+initial Greek regex failure was corrected by selecting its supplied fixed
+Gnulib implementation (ADR-0020); the full suite and native sigma regression
+passed. This does not globally repair Glibc bug 20381.
+
+| Accepted runner | Recipe/postcheck | Full log SHA-256 |
+| --- | --- | --- |
+| h07-python-test-recovery | 0 / 0 | 007793e1da383398e96de6bc0515cc9dd25458d161b082e1ee06539714d91827 |
+| h07-coreutils-recovery | 0 / 0 | e4e481c19e9f6bd75ae59703740f48a50bbf79ff04aea195a011e3e6f4b35452 |
+
+Native archive SHA-256: Python
+ffb2baa6df3defc9122b3c7e35316afe2156fffab44f2f7ded2fdbbb51f3ad64;
+Coreutils 0d7fe0ed7a6d8bca6a3a1f859ba42b128ecfc1da672ff597248db1c982849410;
+Diffutils 093d20e6c74fd86aee3844d063f311032429720bc708f919f0febbab696e967b;
+Findutils 256fb4d2488d1e00fada09b2c5453a16c8214bf82469b4dcb972851401353eb8.
+
+The initial Groff suite stopped with only neqn-smoke-test failing because its
+wrapper could not find newly built eqn in PATH. No installed files changed.
+The focused probe succeeds with the build directory in PATH. Full-suite retry
+preserves the first logs; acceptance still requires its actual result and
+native formatter postcheck.
+
+Input transfer now shares the dispatcher's exclusive build lock, validates a
+complete per-file hashed staging bundle, and blocks dispatch after interrupted
+installation. Tests cover busy locks, incomplete transfers, hash corruption,
+source escape and symlinks. Actual guest probes verified both refusal paths;
+39 local regression tests pass. No active recipe is overwritten during sync.

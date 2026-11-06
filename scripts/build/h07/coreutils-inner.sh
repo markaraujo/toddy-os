@@ -4,7 +4,7 @@ set -euo pipefail
 cd /sources/coreutils-9.11
 test ! -e /sources/stage/coreutils
 mkdir -p /sources/evidence/h07-coreutils
-patch --batch --forward --fuzz=0 -Np1 -i ../coreutils-9.11-i18n-1.patch
+patch --batch --forward --fuzz=0 -Np1 -i ../coreutils-9.11-i18n-context-1.patch
 autoreconf -fv
 automake -af
 FORCE_UNSAFE_CONFIGURE=1 ./configure --prefix=/usr
