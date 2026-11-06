@@ -496,3 +496,15 @@ acceptance remains pending. No active BDB inputs were changed. See ADR-0045.
 - Verification: repeated actual native checkers pass, all locks/metadata and
   three preservation/refusal cases pass, and installed accounts are unchanged.
   Original failure and corrected evidence are retained in ADR-0055.
+
+### Fresh image account preflight rejected the owned DBus identity alias
+
+- Symptom: a private fixture including the actual DBus package link was rejected
+  before generating account files.
+- Cause: the prepared account helper treated every DBus machine-id path as
+  inherited identity bytes, including the root-owned /etc/machine-id symlink.
+- Correction: retain only that canonical root-owned link under physical parents;
+  continue requiring absent /etc/machine-id and generate it empty. Preserve and
+  reject a regular identity file or another link target.
+- Verification: actual native Shadow checks pass with the owned alias; all five
+  refusal/preservation cases pass. Original and corrected reports are in ADR-0055.

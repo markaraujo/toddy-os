@@ -79,3 +79,28 @@ service operation, whole-image credential inspection and installer owner setup
 remain mandatory. An empty machine-id file is not evidence that boot generated
 an identity correctly. Password locks are not a claim of a working login path.
 H10/G1 remain unaccepted; no running H07 source input or installed account changed.
+
+## Preserve the owned DBus alias without inheriting identity bytes
+
+The actual native package inventory reveals that DBus owns
+/var/lib/dbus/machine-id as a root-owned symlink to /etc/machine-id. Copying that
+public link is distinct from copying a generated identity value. A private
+integration probe with the actual own DBus link reproduced the original blanket
+refusal before account mutation; failure report SHA-256
+50dc9e7d91858d3fa46d28c63c28093592fe55cb183bd29b2004d96f60511fe9.
+
+The account component now retains only that exact root-owned canonical symlink
+under physical parents, without dereferencing it. /etc/machine-id itself must
+still be absent and is generated empty. A regular DBus identity file or a link
+to another target is refused and preserved. The package inventory separately
+requires DBus ownership of the canonical link (ADR-0057). No tracked file is
+silently deleted and no builder identity bytes are imported.
+
+Repeated native Shadow checks pass with the real DBus package link present;
+five preservation/refusal cases include both new DBus negatives. Installed
+accounts/status remain unchanged. Final report .local/logs/h10-live-accounts-probe.json
+SHA-256 27f3861846c36e5765e1c24b89b80ba0c2249f65428d48ffed35d474bcfe22e6.
+Updated component SHA-256:
+c04e359d8420bed294d6b5e20aac93fdda03a0ca1a58c1ea69b4fe835fa8b401.
+The failed fixture remains /mnt/lfs/tmp/toddy-live-accounts-tboszj90. This fixes
+a prepared integration boundary; actual image/boot/login acceptance is pending.

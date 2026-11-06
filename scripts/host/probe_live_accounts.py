@@ -34,7 +34,13 @@ try:
   record=json.loads((Path('/var/log/toddy/packages')/(identity.stdout+'.json')).read_text())
   current=root/virtual.lstrip('/');assert digest(current)==record['payload'][virtual]['sha256']
   shutil.copy2(current,target/virtual.lstrip('/'))
+ identity=native('/usr/bin/dpkg-query','-W','-f=${Package}_${Version}_${Architecture}','dbus');identity.check_returncode()
+ dbus_record=json.loads((Path('/var/log/toddy/packages')/(identity.stdout+'.json')).read_text())
+ dbus_source=root/'var/lib/dbus/machine-id';dbus_alias=target/'var/lib/dbus/machine-id'
+ assert dbus_record['payload']['/var/lib/dbus/machine-id']['symlink']==dbus_source.readlink().as_posix()=='/etc/machine-id'
+ dbus_alias.parent.mkdir(parents=True);shutil.copy2(dbus_source,dbus_alias,follow_symlinks=False)
  report=module.stage_accounts(target,baseline)
+ assert report['canonical_dbus_alias_retained']
  checked=[]
  for program in ('pwck','grpck'):
   result=native('/usr/sbin/'+program,'--read-only','--root=/'+str(target.relative_to(root)))
@@ -43,6 +49,7 @@ try:
   result.check_returncode()
  assert report['users']==14 and report['groups']==34
  assert (target/'etc/machine-id').read_bytes()==b''
+ assert dbus_alias.is_symlink() and dbus_alias.readlink().as_posix()=='/etc/machine-id'
  for name,fields in (('shadow',9),('gshadow',4)):
   path=target/'etc'/name;assert path.stat().st_mode&0o777==0o600
   assert path.stat().st_uid==path.stat().st_gid==0
@@ -50,14 +57,19 @@ try:
   assert all(len(row)==fields and row[1]=='!' for row in rows)
   assert all(row[0]!='tester' for row in rows)
  rejected=[]
- for kind in ('existing-shadow','redirected-etc','nonempty-root-home'):
+ for kind in ('existing-shadow','redirected-etc','nonempty-root-home','dbus-id-regular','dbus-id-other-link'):
   negative=base/kind;negative.mkdir()
   if kind=='existing-shadow':
    (negative/'etc').mkdir();sentinel=negative/'etc/shadow';sentinel.write_text('harmless preservation sentinel\n')
   elif kind=='redirected-etc':
    outside=base/'outside';outside.mkdir();sentinel=outside/'untouched';sentinel.write_text('harmless preservation sentinel\n');(negative/'etc').symlink_to(outside)
-  else:
+  elif kind=='nonempty-root-home':
    (negative/'root').mkdir();sentinel=negative/'root/keep';sentinel.write_text('harmless preservation sentinel\n')
+  else:
+   alias=negative/'var/lib/dbus/machine-id';alias.parent.mkdir(parents=True)
+   sentinel=alias if kind=='dbus-id-regular' else alias.parent/'keep'
+   sentinel.write_text('harmless preservation sentinel\n')
+   if kind=='dbus-id-other-link':alias.symlink_to('keep')
   preserved=digest(sentinel)
   try:module.stage_accounts(negative,baseline)
   except ValueError as error:rejected.append({'case':kind,'reason':str(error)})

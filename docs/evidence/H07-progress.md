@@ -1110,3 +1110,14 @@ private root (ADR-0055); installed accounts and H07 package counts are unchanged
 full standard suite, whose final result is pending. Raw observation
 .local/logs/h07-recd003-progress.json SHA-256
 5fda33864751609ec1794fd9120bcd38c5f6cfe137932e858c673b5bb3532ca8.
+
+
+2026-11-06 23:17 UTC — The original partition recovery suite advanced through Recd011
+timestamp recovery into Recd015 hash prepared-transaction cases. The current
+large cases prepare 10,000 transactions, recover their handles/GIDs and check
+commit/abort outcomes. Driver 1364 and runner 1365 remain live. Raw observation
+.local/logs/h07-recd015-progress.json SHA-256
+f1150b17b0e17ebd8dc8968c0efbc811080b9754f3c6ae8ff6de44835f8eed5e.
+The complete Berkeley DB result remains pending. A separate read-only native
+payload audit found only the already planned shared Info-index ownership issue;
+see ADR-0057. No H07 test or final closure requirement was relaxed.

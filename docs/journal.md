@@ -280,3 +280,15 @@ nodes, filesystem crossings and an existing destination. Full image selection
 and integration remain pending (ADR-0056). The original DB suite progressed to
 Recd003 after Recd001/Recd002; active driver/runner remain live. No installed
 package or running build input changed.
+
+
+2026-11-06 23:17 UTC — Derived an actual 124-package candidate image namespace:
+63,132 paths, including 60,397 files/links. Strict full preflight correctly
+refused the existing Glibc-owned shared Info index; an independent full audit
+found only that known final H07 metadata obligation. No mismatch was waived or
+installed state rewritten. The prepared closure already removes that ownership
+and regenerates the index after DB/APT. Actual inventory also exposed the
+legitimate DBus machine-id symlink; corrected the fresh-account integration to
+retain only its canonical root-owned alias while generating an empty identity.
+Native Shadow and five negative cases pass. Full image integration and H07
+acceptance remain pending. The active DB suite continues its recovery cases.

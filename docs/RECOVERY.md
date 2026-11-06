@@ -736,3 +736,20 @@ correct the selection/source cause and reconstruct into new fresh paths. Do not
 overwrite an existing destination or accept a source that changed during copying.
 Full provenance-based image inventory, account/config generation, compression and
 boot integration remain pending; this copy report is not H10 acceptance.
+
+For the prepared package-payload image inventory, run
+python3 scripts/host/probe_live_root_inventory.py. The source target must remain
+quiescent for a successful final preflight. Its current H07 candidate namespace
+has 63,132 paths from 124 own package records. Full inspection deliberately
+refuses the still-owned Glibc /usr/share/info/dir index. The independent current
+payload audit found only that known mismatch. Do not delete the index, change
+its recorded hash or waive the check. Let the scheduled H07 final metadata
+closure create its corrected package generation and regenerate the shared index,
+then rerun and require clean installed-payload verification (ADR-0057).
+
+The candidate inventory and failure evidence remain outside Git; they do not
+constitute an approved image selection. Generated configuration, package DB,
+accounts, live profile and final image audits must still be integrated. The
+account component now accepts only the canonical root-owned DBus identity link;
+regular identity data or different links still require preserving/rebuilding the
+stage. It never follows that link to read the builder's machine identity.

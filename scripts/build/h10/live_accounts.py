@@ -65,8 +65,17 @@ def stage_accounts(root, baseline=None):
     forbidden = [*files, 'var/lib/dbus/machine-id', 'etc/.pwd.lock',
                  'etc/passwd-', 'etc/group-', 'etc/shadow-', 'etc/gshadow-',
                  'home/tester', 'root/.ssh', 'root/.gnupg']
+    dbus_alias = False
     for relative in forbidden:
         path = root / relative
+        if (relative == 'var/lib/dbus/machine-id' and path.is_symlink()
+                and path.readlink().as_posix() == '/etc/machine-id'
+                and path.parent.resolve() == path.parent
+                and path.lstat().st_uid == path.lstat().st_gid == 0):
+            # The frozen DBus package owns this link, not an identity value.
+            # Never dereference it against the builder's /etc/machine-id.
+            dbus_alias = True
+            continue
         if path.exists() or path.is_symlink() or path.parent.resolve() != path.parent:
             raise ValueError('Image account input already exists or redirects: ' + relative)
     home = root / 'root'
@@ -85,5 +94,6 @@ def stage_accounts(root, baseline=None):
     os.chown(home, 0, 0)
     return {'users': users, 'groups': groups, 'passwords_locked': True,
             'builder_account_included': False, 'machine_id_empty': True,
+            'canonical_dbus_alias_retained': dbus_alias,
             'baseline_sha256': hashlib.sha256(json.dumps(baseline, sort_keys=True).encode()).hexdigest(),
             'generated_paths': sorted(files), 'live_login_verified': False}
