@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-06 21:04 UTC
+Last verified: 2026-11-06 21:24 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC; now executing Recd001 transaction recovery variants after secondary-index tests. Driver remains active; no FAIL or final success sentinel in the observed partial log. C tests, focused regressions and 483-file source comparison already passed.
+Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC; now executing Recd011 transaction-protected increment and checkpoint cases. Driver remains active; no FAIL or final success sentinel in the observed partial log. C tests, focused regressions and 483-file source comparison already passed.
 
 Remaining:
 

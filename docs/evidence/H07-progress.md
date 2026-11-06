@@ -971,3 +971,13 @@ recovery variants after secondary-index cases. Driver/runner are live after
 Raw .local/logs/h07-db-recovery-observation.json SHA-256
 `c65daa633cf109eabb885f0058a594a5ecd08e51b43a1e245e7bd92545ad0049`.
 No new package or milestone acceptance is inferred; 124/126 and 38% remain.
+
+
+2026-11-06 21:24 UTC: driver/runner remain live after 4h15m. Full standard
+regression has advanced to Recd011's transaction-protected increment loop and
+checkpoints. No FAIL or final success sentinel appears in the observed partial
+log. Raw .local/logs/h07-db-recd011-observation.json SHA-256
+`2e720187035ae8c31e6ee9a749c14a8e15fbacdc936dace7c0263380e22b3d0c`.
+The existing continuation supervisor remains active. Accepted packages and
+foundation milestone credit are unchanged; a partial recovery case is not
+complete Berkeley DB acceptance.
