@@ -19,3 +19,10 @@ performs dependency checking, not a simulated database edit. Record the backend
 in every subsequent package record and exercise a real package recipe/postcheck
 before claiming transition acceptance. Regression tests verify chroot routing,
 explicit bootstrap root and invalid acceptance refusal.
+
+The archive build/install path and raw-extraction metadata upgrade share one
+private-workspace validator. Refuse symlinks, unexpected owner or non-0700
+permissions before archive copy/extraction; preserve existing archive inputs for
+diagnosis. Local regression probes cover refusal without writes to a symlink
+target and safe directory reuse. Actual native-backend package acceptance still
+requires the next successful guest recipe/postcheck after input synchronization.

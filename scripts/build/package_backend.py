@@ -34,14 +34,23 @@ class PackageBackend:
                        '/usr/bin/'+program, *arguments]
         return subprocess.run(command, check=True, **kwargs)
 
+    def workspace(self):
+        workspace = self.target/'sources/native-package-output'
+        # Validate the directory itself before copying/extracting any archive.
+        if workspace.is_symlink():
+            raise SystemExit('Native workspace must be a root-owned private directory')
+        workspace.mkdir(mode=0o700, exist_ok=True)
+        current = workspace.lstat()
+        if (not stat.S_ISDIR(current.st_mode) or current.st_uid != os.geteuid()
+                or stat.S_IMODE(current.st_mode) != 0o700):
+            raise SystemExit('Native workspace must be a root-owned private directory')
+        return workspace
+
     def build(self, stage, archive):
         if not self.native:
             self.run('dpkg-deb', '--build', str(stage), str(archive))
             return
-        workspace = self.target/'sources/native-package-output'
-        workspace.mkdir(mode=0o700, exist_ok=True)
-        if workspace.is_symlink() or workspace.stat().st_uid != os.geteuid() or stat.S_IMODE(workspace.stat().st_mode) != 0o700:
-            raise SystemExit('Native output workspace must not be a symlink')
+        workspace = self.workspace()
         output = workspace/archive.name
         if output.exists() or output.is_symlink():
             raise SystemExit('Preserve existing native package output before retry')
@@ -56,10 +65,7 @@ class PackageBackend:
         if not self.native:
             self.run('dpkg', '--root='+str(self.target), '--force-confold', '--force-confdef', '--install', str(archive))
             return
-        workspace = self.target/'sources/native-package-output'
-        workspace.mkdir(mode=0o700, exist_ok=True)
-        if workspace.is_symlink() or workspace.stat().st_uid != os.geteuid() or stat.S_IMODE(workspace.stat().st_mode) != 0o700:
-            raise SystemExit('Native output workspace must not be a symlink')
+        workspace = self.workspace()
         temporary = workspace/archive.name
         if temporary.exists() or temporary.is_symlink():
             raise SystemExit('Preserve existing native package input before retry')

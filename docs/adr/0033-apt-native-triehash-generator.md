@@ -35,3 +35,9 @@ These are build/test tooling; release component inclusion will be explicit.
 Sources: https://metacpan.org/release/PJCJ/Devel-Cover-1.52,
 https://fastapi.metacpan.org/v1/release/Devel-Cover and the exact distributions'
 META.json prereqs. All source hashes are pinned before guest transfer.
+
+Source inspection confirms default cover output inherits Html_minimal and uses
+HTML::Entities, included in the frozen HTML-Parser dependency. Template Toolkit
+is required by Html_basic, not the default backend; do not add an unnecessary
+dependency or replace the unchanged Triehash coverage command. Native execution
+of the complete tests and default report remains the acceptance requirement.

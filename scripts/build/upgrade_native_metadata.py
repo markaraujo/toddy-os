@@ -79,8 +79,7 @@ def main():
         # without new ELF edges, so create one recorded metadata generation for all.
         stage=TARGET/'sources/stage'/('metadata-'+name)
         if stage.exists():raise SystemExit('Existing metadata stage requires diagnosis: '+str(stage))
-        temporary=TARGET/'sources/native-package-output'/archive.name
-        temporary.parent.mkdir(mode=0o700,exist_ok=True)
+        temporary=backend.workspace()/archive.name
         if temporary.exists() or temporary.is_symlink():raise SystemExit('Preserve existing metadata archive input')
         shutil.copy2(archive,temporary)
         try:backend.run('dpkg-deb','--raw-extract','/'+str(temporary.relative_to(TARGET)),'/'+str(stage.relative_to(TARGET)))
