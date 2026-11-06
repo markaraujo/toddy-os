@@ -50,3 +50,12 @@ temporary directory and remove probe-generated state. A focused existing-native
 Fcntl probe passed for owner perl and rejected a deliberately wrong provider;
 new CPAN packages remain unaccepted until their actual recipes/postchecks pass.
 Raw .local/logs/h07-perl-module-provider-preflight.json SHA-256 8d40be86e7c3bffed1fa609e975febf8d5d2e3abf16f1eeb5530651352f76c84.
+
+Actual first native module passed and proved source-built Dpkg routing. The next
+module's suite passed but ownership preflight exposed shared perllocal.pod.
+Use documented native MakeMaker NO_PERLLOCAL=1 during Makefile.PL generation;
+per-module package/packlist metadata remains authoritative. Do not force-overwrite
+another package's diary. The first module's +toddy1 archive removes its generated
+journal while preserving original archive/source/runtime bytes; modified journal
+content must refuse before upgrade. Subsequent module stages require its absence.
+Native correction and retried complete tests are still acceptance work.

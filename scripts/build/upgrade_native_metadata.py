@@ -75,6 +75,11 @@ def main():
             raise SystemExit('Predecessor provenance mismatch')
         conffiles=sorted(p for p,e in record['payload'].items() if p.startswith('/etc/') and e.get('sha256'))
         libtool=sorted(p for p,e in record['payload'].items() if p.startswith(('/usr/lib/','/usr/libexec/')) and p.endswith('.la') and e.get('sha256'))
+        journal=plan.get('perl_shared_install_journal')
+        shared_journals=[journal] if name.startswith('perl-') and journal in record['payload'] else []
+        for virtual in shared_journals:
+            if digest(TARGET/virtual.lstrip('/'))!=record['payload'][virtual]['sha256']:
+                raise SystemExit('Modified shared install journal needs preservation/review')
         # Current target metadata must be complete and consistent even for packages
         # without new ELF edges, so create one recorded metadata generation for all.
         stage=TARGET/'sources/stage'/('metadata-'+name)
@@ -92,7 +97,7 @@ def main():
             alias=stage/'usr/bin/python'
             if alias.exists() or alias.is_symlink():raise SystemExit('Unexpected existing Python command payload')
             alias.symlink_to('python3')
-        for virtual in libtool:(stage/virtual.lstrip('/')).unlink()
+        for virtual in libtool+shared_journals:(stage/virtual.lstrip('/')).unlink()
         declared=set(re.findall(r'(?:^|[,|])\s*([a-z0-9][a-z0-9+.-]*)',depends))
         requirements=[]
         for provider in sorted(additions.get(name,[])):
@@ -109,13 +114,13 @@ def main():
         for path in conffiles:command+=['--conffile',path]
         predecessor={'package':name,'previous_version':version,'version':new_version,
                      'predecessor_archive_sha256':digest(archive),'predecessor_record_sha256':digest(record_path),
-                     'removed_libtool_archives':libtool,'conffiles':conffiles,'depends':revised,'complete':False}
+                     'removed_libtool_archives':libtool,'removed_shared_journals':shared_journals,'conffiles':conffiles,'depends':revised,'complete':False}
         result_path=progress/(name+'.json');result_path.write_text(json.dumps(predecessor,indent=2)+'\n')
         subprocess.run(command,check=True)
         actual=backend.run('dpkg-query','-W','-f=${Status}\t${Version}',name,capture_output=True,text=True).stdout
         if actual!='install ok installed\t'+new_version:raise SystemExit('Metadata upgrade postcondition failed')
-        for path in libtool:
-            if (TARGET/path.lstrip('/')).exists():raise SystemExit('Obsolete Libtool archive remains installed')
+        for path in libtool+shared_journals:
+            if (TARGET/path.lstrip('/')).exists():raise SystemExit('Removed generated/Libtool artifact remains installed')
         predecessor['complete']=True;result_path.write_text(json.dumps(predecessor,indent=2)+'\n')
         print('Native metadata upgrade accepted:',name,new_version,flush=True)
     if args.only:return

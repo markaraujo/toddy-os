@@ -187,5 +187,7 @@
   ],
   "conffiles": "Every packaged regular /etc file",
   "libtool_archives": "Remove /usr/lib and /usr/libexec .la files consistently through versioned upgrades per frozen LFS chapter 8 cleanup; preserve old archives",
-  "version_suffix": "+toddy1"
+  "version_suffix": "+toddy1",
+  "perl_shared_install_journal": "/usr/lib/perl5/5.44/core_perl/perllocal.pod",
+  "perl_journal_policy": "Module-specific package/packlist records replace shared generated perllocal.pod; NO_PERLLOCAL=1 at Makefile generation"
 }

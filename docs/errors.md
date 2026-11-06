@@ -367,3 +367,16 @@ berkeley-db-test142-20261106T161146Z. Failed recipe log SHA-256
 No production DB build/install occurred. Preserve the compiled test tree for
 verified recovery; advance independent CPAN/Triehash/Which/Libseccomp/Tcsh work
 before the corrected complete DB retest. APT still requires accepted Berkeley DB.
+
+## H07 shared Perl installation journal ownership (2026-11-06)
+
+HTML::Tagset passed 33 tests and installed with source-built native Dpkg routing;
+its module-provider postcheck passed. Test::Warnings passed 89 tests, but native
+ownership preflight correctly refused its generated shared perllocal.pod path,
+already owned by the first module. No second-package installation occurred.
+Native Perl 5.44 ExtUtils::MakeMaker documents NO_PERLLOCAL; its MM_Unix generator
+omits all install-journal append rules when that configuration option is true.
+Set NO_PERLLOCAL=1 at Makefile.PL generation, retain module-specific package/
+packlist records, and require no staged shared diary. Correct the first package
+through preserved-archive +toddy1 metadata, refusing modified live journal bytes.
+Full source suites remain unchanged; native correction/retry acceptance pending.
