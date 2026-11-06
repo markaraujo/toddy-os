@@ -15,5 +15,5 @@ def locked_source(root, filename):
         if overlay['status'] == 'frozen_for_final_build':
             for row in overlay['components']:
                 if row['filename'] == filename:
-                    return {key: row[key] for key in ('filename', 'url', 'sha256', 'advisory')}
+                    return dict(row)
     return None

@@ -59,3 +59,14 @@ No OS build failures exist yet. Do not turn planning risks into invented test fa
   applied the sequence to a disposable source copy, not the build root.
 - Verification: all 49 patches applied with exit 0 and no rejected hunks.
   No package version or running build changed; final regression tests pending.
+
+## 2026-11-05 — Xz security-input publication endpoint
+
+- Symptom: multi-command retrieval attempts ended with HTTP 403.
+- Diagnosis: archive and signature downloads had succeeded; the failing
+  operation was the official signing-key endpoint, not the source artifact.
+- Correction: inspected downloaded sizes and compared archive SHA-256 to the
+  publisher's release-asset digest. They match. Retained signature, recorded
+  PGP verification as unperformed and pinned the verified source hash.
+- Verification: Xz 5.8.4 hash 4ce24038fd4221e0d13bc1a2de7a4db56e90b92b3bf75321f6c14be73f65de4b.
+  No authentication bypass or global trust-store change was used.

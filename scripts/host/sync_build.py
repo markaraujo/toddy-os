@@ -38,7 +38,7 @@ def pipe_tar(args, remote):
         raise SystemExit(f'Transfer failed: sender={sender_code}, receiver={result.returncode}')
 
 
-metadata = ['scripts/build', 'config/books.lock.json', 'config/sources.lock.json']
+metadata = ['scripts/build', 'LICENSES', 'config/component-licenses.json', 'config/books.lock.json', 'config/sources.lock.json']
 if overlay_path.exists():
     metadata.append('config/security-overlay.lock.json')
 pipe_tar(['-cf', '-'] + metadata,

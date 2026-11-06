@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "frozen_for_final_build",
-  "baseline_unchanged": "Original edition inputs retained; explicit Glibc stable security patch replacement applies only to H07 final build, pending critical tests.",
+  "baseline_unchanged": "Original edition inputs retained. Explicit H07 security overlay selections in ADR-0009/0010; compiler versions unchanged. Build/test acceptance remains pending.",
   "components": [
     {
       "name": "glibc",
@@ -22,17 +22,55 @@
       ],
       "applicability": "All 49 sequential patches applied with exit 0 to pristine frozen glibc plus the book FHS patch in disposable source copy",
       "build_and_regression_tests": "pending; not a security acceptance result"
+    },
+    {
+      "name": "xz",
+      "version": "5.8.4",
+      "baseline_version": "5.8.3",
+      "filename": "xz-5.8.4.tar.xz",
+      "url": "https://github.com/tukaani-project/xz/releases/download/v5.8.4/xz-5.8.4.tar.xz",
+      "advisory": "sa-13.1-024 / GHSA-5qpq-xqfv-j9pg",
+      "published_sha256": "4ce24038fd4221e0d13bc1a2de7a4db56e90b92b3bf75321f6c14be73f65de4b",
+      "published_digest_source": "https://api.github.com/repos/tukaani-project/xz/releases/tags/v5.8.4",
+      "signature_verified": false,
+      "signature_note": "Detached signature downloaded; official signing-key endpoint returns HTTP 403. Publisher SHA-256 verified; no PGP verification claim.",
+      "sha256": "4ce24038fd4221e0d13bc1a2de7a4db56e90b92b3bf75321f6c14be73f65de4b",
+      "planned_stage": "H07 final base; exact pinned maintenance release, not moving latest",
+      "build_and_regression_tests": "pending"
+    },
+    {
+      "name": "openssl",
+      "version": "4.0.3",
+      "baseline_version": "4.0.1",
+      "filename": "openssl-4.0.3.tar.gz",
+      "url": "https://github.com/openssl/openssl/releases/download/openssl-4.0.3/openssl-4.0.3.tar.gz",
+      "advisory": "sa-13.1-021 and subsequent 4.0 branch maintenance",
+      "published_sha256": "325b5c806167c13b40b1ffeadfe0248197c00eccc4cf123ec1e28d2d2fd216d9",
+      "published_digest_source": "https://github.com/openssl/openssl/releases/download/openssl-4.0.3/openssl-4.0.3.tar.gz.sha256",
+      "sha256": "325b5c806167c13b40b1ffeadfe0248197c00eccc4cf123ec1e28d2d2fd216d9",
+      "planned_stage": "H07 final base; exact pinned maintenance release, not moving latest",
+      "build_and_regression_tests": "pending"
+    },
+    {
+      "name": "python",
+      "version": "3.14.10",
+      "baseline_version": "3.14.7",
+      "filename": "Python-3.14.10.tar.xz",
+      "url": "https://www.python.org/ftp/python/3.14.10/Python-3.14.10.tar.xz",
+      "advisory": "sa-13.1-044, sa-13.1-088, sa-13.1-089 / upstream 3.14 security maintenance",
+      "published_sha256": "de414a57119abef52784d8993e341d53aed635fc2b05c2607d9f98a2c5b72032",
+      "published_digest_source": "https://www.python.org/downloads/release/python-31410/",
+      "sha256": "de414a57119abef52784d8993e341d53aed635fc2b05c2607d9f98a2c5b72032",
+      "planned_stage": "H07 final base; exact pinned maintenance release, not moving latest",
+      "build_and_regression_tests": "pending"
     }
   ],
   "remaining_review": [
-    "Python",
     "patch",
     "Vim",
     "Expat",
     "util-linux",
     "PCRE2",
-    "Xz",
-    "OpenSSL",
     "selected BLFS components"
   ]
 }

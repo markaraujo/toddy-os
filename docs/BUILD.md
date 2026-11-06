@@ -31,6 +31,7 @@ python3 scripts/host/vm.py ssh 'bash -s' < scripts/host/guest-setup.sh
 python3 scripts/host/check_requirements.py
 python3 scripts/fetch_books.py
 python3 scripts/fetch_sources.py
+python3 scripts/fetch_security_overlay.py
 ```
 
 Fetched books are in .local/books/lfs/13.1 and .local/books/blfs. Consult the
