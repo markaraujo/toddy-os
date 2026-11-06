@@ -1036,3 +1036,14 @@ The scan accounts for 9,330 regular files and 293,207,634 bytes without dropping
 bytes. Installed files, active DB sources and package ownership remain unchanged.
 This is future release-audit preparation, not native QA ownership transfer or
 complete image credential acceptance. H07 still awaits the full DB result.
+
+
+2026-11-06 22:01 UTC: Test044's first partition cycle reached its programmed
+crash at 22:00:16, exactly 525 seconds after start, performed recovery/file
+verification, and entered cycle 2 at 22:00:51 with a 446-second load interval.
+Original driver/runner remain live; the complete standard suite and package
+acceptance are still pending. Raw observation
+.local/logs/h07-test044-cycle1-observation.json SHA-256
+440825c0d730ca0ea43616d38ccedcde79a3241aa979ab5ee7a937dbf784ab1b.
+The root-image private-key audit preparation is published with 110 local checks
+and all GitHub workflows passing at 4bab52b; it does not satisfy H11 acceptance.

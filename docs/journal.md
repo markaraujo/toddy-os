@@ -183,3 +183,9 @@ active recipe changed. Three local regressions cover marker boundaries,
 non-disclosure and link handling. Native QA ownership transfer and final image
 audits remain pending. DB Test044 cycle 1 continues its programmed load with
 five CPU-active workers; original runner and supervisor remain live.
+
+
+2026-11-06 22:01 UTC — Observed Test044's timed first-cycle crash, subsequent
+recovery/file verification and transition into cycle 2 (446 seconds). Updated
+the public activity snapshot without assigning completion credit. Both native
+runner and supervisor remain live; the full suite/result is still required.
