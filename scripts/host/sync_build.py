@@ -95,8 +95,10 @@ def main():
     if lock['status'] != 'verified':
         raise SystemExit('Source lock not verified')
     rows = list(lock['packages'])
-    metadata = ['scripts/build','LICENSES','config/component-licenses.json',
+    metadata = ['scripts/build','LICENSES','status.json','config/component-licenses.json',
                 'config/books.lock.json','config/sources.lock.json']
+    if (ROOT/'config/h08-bootstrap-config.json').exists():
+        metadata.append('config/h08-bootstrap-config.json')
     if (ROOT/'config/package-ownership-policy.json').exists():
         metadata.append('config/package-ownership-policy.json')
     if (ROOT/'config/native-bootstrap-cleanup.json').exists():

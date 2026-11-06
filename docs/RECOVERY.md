@@ -226,3 +226,16 @@ archive SHA-256 fcc82a8eb9abc23fe59c9000151fbce2686a79f1c1ace365729f6483eebf7f29
 The current accepted boundary remains 101 while BDB is active. Native build-flow,
 XML consumer/bounds and package-backend archive-only reports under .local/logs
 are supplemental probes, not new installed packages or completed H07 evidence.
+
+
+Prepared H08 is not the next dispatch while H07 remains incomplete. Its guard
+requires synchronized H07 completed/H08 in_progress and actual final native
+closure success. It preserves only the four hash-pinned unowned bootstrap
+configs under /sources/recovery/h08-bootstrap-config-*/ before installing native
+configuration; changed/owned/redirected inputs refuse before deletion. Backup
+files and manifest/directories are fsynced. If installation fails, inspect native
+Dpkg ownership/status and preserved manifest before restoring anything; do not
+copy bootstrap files over package-owned conffiles blindly. Prefer the next
+verified H07 cold pair for whole-target rollback. Timezone/resolver links are
+mutable generated state; /run chroot resolver bytes must never enter an image.
+No H08 target mutation or boot/network acceptance has occurred. See ADR-0042.

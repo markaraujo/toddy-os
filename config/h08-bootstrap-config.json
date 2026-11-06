@@ -1,0 +1,9 @@
+{
+  "scope": "Exact unowned bootstrap files; preserve before native configuration ownership",
+  "files": {
+    "/etc/os-release": "ccb1a2f9ab569041c78685e70316891c716fe71641bb8dcd12551763b8cc0e82",
+    "/etc/hosts": "cfbf872d51b0a778d41e5ddab25772de0cf779d32fb8774bce880e60e41b18b8",
+    "/etc/fstab": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/etc/resolv.conf": "6e4395a56590c92339cec4ea1cccb33c6a7b74db1c10de10b40c1e0c495df17a"
+  }
+}

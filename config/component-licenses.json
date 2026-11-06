@@ -2339,6 +2339,13 @@
       "license": "GPL-2.0-only WITH Linux-syscall-note AND LicenseRef-Linux-UAPI-per-file-notices",
       "evidence": "Original kernel COPYING, LICENSES and individual UAPI SPDX conditions; userspace syscall exception retained",
       "review_scope": "Source/notice identification only; native installation acceptance is tracked by runner and status gates"
+    },
+    {
+      "name": "toddy-base-config",
+      "version": "0.1",
+      "license": "LicenseRef-LFS-Instructions-and-Toddy-Original-Pending",
+      "evidence": "Frozen LFS 13.1-systemd computer instructions retain MIT terms; original Toddy configuration edits remain subject to owner decision D10 (ADR-0042)",
+      "review_status": "original_project_licensing_pending_D10"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

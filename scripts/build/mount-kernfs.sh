@@ -19,3 +19,7 @@ else
     mountpoint -q "$LFS/dev/shm" || mount -t tmpfs -o nosuid,nodev tmpfs "$LFS/dev/shm"
 fi
 findmnt -R "$LFS"
+
+if [[ -L $LFS/etc/resolv.conf && $(readlink "$LFS/etc/resolv.conf") == /run/systemd/resolve/stub-resolv.conf ]]; then
+    bash /opt/toddy-build/scripts/build/chroot-resolver.sh
+fi

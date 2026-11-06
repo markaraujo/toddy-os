@@ -93,3 +93,10 @@ content-addressed generations preserve older evidence. Source grant/collection
 entries identify actual frozen inputs and original terms, not a whole-OS
 relicense. License/source availability, credentials and image inclusion must be
 checked against the actual assembled artifact before G1/G2.
+
+
+H08 configuration preparation is in scripts/build/h08 and ADR-0042. It is not an
+alternate route around H07. After complete H07 acceptance/checkpoint, mark H08
+in_progress, regenerate/commit progress and sync public status.json with build
+inputs before h08-driver.sh. A premature gate probe must refuse. Prepared text,
+backup safety tests and offline checks do not establish native boot networking.
