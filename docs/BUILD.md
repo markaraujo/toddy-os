@@ -86,3 +86,20 @@ See [recovery checkpoints](RECOVERY.md). Stop QEMU cleanly before copying or
 restoring images. Keep source archives, images and logs outside Git. Full
 rebuild reproducibility and final package/license inventories remain release
 acceptance work; the current tooling does not claim byte-identical results.
+
+## H05 temporary tools
+
+After H04 passes, scripts/build/h05-driver.sh builds the chapter 6 sequence.
+Its recipe command blocks were extracted deterministically from the pinned
+book with scripts/derive_temporary_recipes.py, then reviewed. Added wrappers
+verify sources, save logs/configure evidence and check installed target ELF
+binaries using the target loader; original instruction license is retained.
+The native pass-2 compiler is reserved for actual chroot execution in H06.
+
+```sh
+python3 scripts/host/vm.py ssh 'nohup bash /opt/toddy-build/scripts/build/h05-driver.sh > /var/log/toddy/h05-driver.log 2>&1 < /dev/null & echo $! > /var/log/toddy/h05-driver.pid'
+```
+
+Prerequisites are checked again by the driver. Inspect exit/record files
+before continuing. Do not regenerate or edit running recipes without a
+specific diagnosed correction and a recorded recovery point.

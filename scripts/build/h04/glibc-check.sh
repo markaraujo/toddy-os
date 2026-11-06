@@ -11,3 +11,7 @@ grep "$LFS/usr/lib/libc.so.6 succeeded" h04-linker.log
 grep "found ld-linux-x86-64.so.2 at $LFS/usr/lib/ld-linux-x86-64.so.2" h04-linker.log
 # Execute with the target loader and only the target library directory.
 "$LFS/usr/lib/ld-linux-x86-64.so.2" --library-path "$LFS/usr/lib" ./h04-hello | grep -Fx 'Toddy cross libc OK'
+
+! "$LFS_TGT-readelf" -d h04-hello | grep -E '\((RPATH|RUNPATH)\)'
+"$LFS/usr/lib/ld-linux-x86-64.so.2" --library-path "$LFS/usr/lib" --list ./h04-hello > h04-runtime-libraries.txt
+grep "libc.so.6 => $LFS/usr/lib/libc.so.6" h04-runtime-libraries.txt

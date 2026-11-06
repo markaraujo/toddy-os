@@ -6,7 +6,7 @@
 
 **An independent Linux distribution built from source, with an open agentic desktop for development and automation.**
 
-Planning baseline · No OS image built yet · Public development repository
+Implementation in progress · No bootable OS image yet · Public development repository
 
 </div>
 
@@ -16,6 +16,8 @@ Planning baseline · No OS image built yet · Public development repository
 - [Live progress dashboard](https://markaraujo.github.io/toddy-os/)
 - [Current status](STATUS.md)
 - [Development handoff](docs/DEVELOPMENT.md)
+- [Build procedure](docs/BUILD.md)
+- [Recovery checkpoints](docs/RECOVERY.md)
 - [Milestone stories](stories/README.md)
 - [Architecture decisions](docs/adr/README.md)
 - [Visual identity](assets/brand/README.md)

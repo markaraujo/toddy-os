@@ -1,6 +1,6 @@
 # Development recovery
 
-Current checkpoint: H03 target preparation, package ownership and runner tests passed in the real KVM guest. Target root is /dev/vdb4 mounted at /mnt/lfs; H04 binutils pass 1 has passed; GCC pass 1 is running.
+Current checkpoint: H03 target preparation, package ownership and runner tests passed in the real KVM guest. Target root is /dev/vdb4 mounted at /mnt/lfs; H04 cross-toolchain and target-linked C checks passed.
 No ISO exists. Gate G1 and G2 remain pending. Inspect status.json and actual
 processes before continuing; this document is updated at verified boundaries.
 
@@ -32,33 +32,28 @@ Latest paired offline checkpoint: .local/vm/checkpoints/h03-builder.qcow2 and
 h03-target.qcow2. Restore both together with QEMU stopped, preserving the failed
 disks first. The H01 checkpoint predates target preparation.
 
-## Current running job
+## Latest verified checkpoint and next action
 
-H04 driver in the guest: PID file /var/log/toddy/h04-driver.pid (read the
-actual PID, do not assume it is live). Driver log /var/log/toddy/h04-driver.log;
-exit file /var/log/toddy/h04-driver.exit exists only after an observed finish.
-Per-package records: /var/log/toddy/build/h04-*. Running GCC log:
-/var/log/toddy/build/h04-gcc.log. Inspect process, exit code and postconditions;
-do not relaunch while the driver runs. The driver continues through headers,
-glibc and libstdc++ only after each prior recipe/postcheck passes.
+H04 passed: driver exit 0, five recipe/postcheck successes, retained full logs
+and manifests. Latest paired offline checkpoint:
+.local/vm/checkpoints/h04-builder.qcow2 and h04-target.qcow2. Both copies were
+made with QEMU stopped. The guest is restarted with its target mount and swap
+in fstab. Confirm them before any new recipe. See docs/evidence/H04.md.
 
-Known correction after the H03 checkpoint: source transport had reset the
-sources directory to 0755. Restore chmod 1777 /mnt/lfs/sources before building;
-the corrected prepare-target script checks lfs write access. Use sync_build.py
-to transfer archives without overwriting directory metadata. The paired H03
-checkpoint predates this correction; after restoring it, synchronize corrected
-scripts and rerun idempotent target preparation before restarting H04.
+H05 is next: synchronize reviewed chapter 6 scripts, then start its driver.
+The job PID/log/exit files are /var/log/toddy/h05-driver.pid,
+h05-driver.log and h05-driver.exit. Never launch a duplicate driver. Inspect
+processes and all per-package recipe/postcondition records before completion.
 
-## Next action
+```sh
+python3 scripts/host/vm.py ssh 'source /opt/toddy-build/scripts/build/target.sh; guard_target; swapon --show'
+python3 scripts/host/vm.py ssh 'cat /var/log/toddy/h05-driver.log; ls /var/log/toddy/build/h05-*'
+```
 
-H02 source integrity freeze is complete. The source downloader logs to
-.local/logs/fetch-sources.log and captures exit status in
-.local/logs/fetch-sources.exit. Inspect its process and result before retrying.
-The resumable command is python3 scripts/fetch_sources.py. Verified archives
-are reused; mismatches are rejected, never extracted. Start H04 with frozen LFS chapter 5, deriving and reviewing each recipe.
-Build via /opt/toddy-build/scripts/build/run_step.py in the guest; logs, manifests
-and running/failed/success records are at /var/log/toddy/build. An interrupted
-running record requires inspection of partial installation before retry.
+The source-directory mode issue is corrected in current scripts and H04
+checkpoint. If restoring the older H03 pair, synchronize current scripts,
+restore chmod 1777 /mnt/lfs/sources, and rerun idempotent target preparation
+before continuing. Transfer with sync_build.py; it preserves directory modes.
 
 ## Storage and resource boundaries
 
