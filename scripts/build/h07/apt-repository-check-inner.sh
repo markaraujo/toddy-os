@@ -79,7 +79,7 @@ apt-get update
 # Index authentication must reject modified index bytes.
 cp "$fixture/repo/Packages" "$fixture/packages.good"
 printf '\nAltered: true\n' >> "$fixture/repo/Packages"
-rm -f "$fixture/state/lists/"*Packages
+find "$fixture/state/lists" -maxdepth 1 -type f ! -name lock -delete
 expect_rejection tampered-index apt-get update -o APT::Update::Error-Mode=any
 cp "$fixture/packages.good" "$fixture/repo/Packages"
 apt-get update
@@ -88,6 +88,8 @@ payload="$fixture/repo/toddy-apt-probe_2_all.deb"
 cp "$payload" "$fixture/payload.good"
 printf 'tampered' >> "$payload"
 expect_rejection tampered-payload apt-get --yes install toddy-apt-probe
+[[ $(dpkg-query --admindir="$fixture/root/var/lib/dpkg" -W -f='${Version}' toddy-apt-probe) == 1 ]]
+[[ $(dpkg-query --admindir="$fixture/root/var/lib/dpkg" -W -f='${Version}' toddy-apt-dependency) == 1 ]]
 cp "$fixture/payload.good" "$payload"
 apt-get --yes install toddy-apt-probe
 grep -Fx payload-2 "$fixture/root/usr/share/toddy-apt-probe/value"

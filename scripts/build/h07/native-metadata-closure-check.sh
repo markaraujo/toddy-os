@@ -13,9 +13,8 @@ for row in rows:
  name,status,version=row.split('\t')
  if status!='install ok installed':raise SystemExit('Unconfigured package: '+name)
  if not version.endswith('+toddy1'):raise SystemExit('Old metadata generation: '+name)
-for path in Path('/sources/evidence/h07-metadata-closure').glob('*.json'):
- if path.name not in {'direct-elf-before.json','derived-provider-edges.json'}:
-  assert json.loads(path.read_text())['complete'],path
+for path in Path('/sources/evidence/h07-metadata-closure/packages').glob('*.json'):
+ assert json.loads(path.read_text())['complete'],path
 print('All native package metadata upgrades configured and recorded')
 PY
 INNER
@@ -46,3 +45,11 @@ for file in Path('/mnt/lfs/var/lib/dpkg/info').glob('*.list'):
  assert '/usr/share/info/dir' not in file.read_text().splitlines(),file
 print('Native SHA-256/link/mode/ownership audit passed; modified conffiles reported separately')
 PYPAYLOAD
+python3 /opt/toddy-build/scripts/build/audit_script_interpreters.py > /var/log/toddy/h07-final-script-interpreters.json
+python3 - <<'PYSCRIPTS'
+import json
+from pathlib import Path
+report=json.loads(Path('/var/log/toddy/h07-final-script-interpreters.json').read_text())
+assert not report['findings'],report['findings']
+print('Native executable shebang and env-provider metadata passed')
+PYSCRIPTS

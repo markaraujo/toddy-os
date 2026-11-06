@@ -427,7 +427,15 @@
           ]
         }
       ],
-      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable"
+      "review_scope": "Selected native runtime/license grant and named notices; corresponding source per-file conditions remain applicable",
+      "extra_license_headers": {
+        "libuv-v1.52.1.tar.gz": {
+          "paths": [
+            "include/uv/tree.h",
+            "src/inet.c"
+          ]
+        }
+      }
     },
     {
       "name": "lz4",
@@ -760,6 +768,1577 @@
       "review_scope": "Main runtime grant established; retain original bundled/per-file and documentation conditions, not a blanket relicensing of every archive file",
       "review_evidence": ".local/logs/h07-gnu-runtime-license-header-review.txt",
       "review_evidence_sha256": "6f56834c31a1b65ee2d0c013fe3a5b90d519d70d77ff284bd5288b1ab6330209"
+    },
+    {
+      "name": "flit-core",
+      "version": "4.0.2",
+      "license": "BSD-3-Clause",
+      "evidence": "Original LICENSE identifies BSD 3-clause",
+      "source_notice_evidence": [
+        {
+          "filename": "flit_core-4.0.2.tar.gz",
+          "sha256": "b6929defd93884b584d7c87829e0e7b5c26ed6be17b0b873979019314aa841c8",
+          "notice_paths": [
+            "flit_core-4.0.2/LICENSE",
+            "flit_core-4.0.2/flit_core/vendor/tomli-1.2.3.dist-info/LICENSE",
+            "flit_core-4.0.2/tests_core/samples/inclusion/LICENSES/README",
+            "flit_core-4.0.2/tests_core/samples/pep517/LICENSE",
+            "flit_core-4.0.2/tests_core/samples/pep621/LICENSE",
+            "flit_core-4.0.2/tests_core/samples/pep621_license_files/LICENSE",
+            "flit_core-4.0.2/tests_core/samples/pep621_license_files/module/vendor/LICENSE_VENDOR",
+            "flit_core-4.0.2/tests_core/samples/with_data_dir/LICENSE"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "jinja2",
+      "version": "3.1.6",
+      "license": "BSD-3-Clause",
+      "evidence": "Original LICENSE.txt Pallets three-clause terms",
+      "source_notice_evidence": [
+        {
+          "filename": "jinja2-3.1.6.tar.gz",
+          "sha256": "0137fb05990d35f1275a587e9aee6d56da821fc83491a0fb838183be43f66d6d",
+          "notice_paths": [
+            "jinja2-3.1.6/LICENSE.txt",
+            "jinja2-3.1.6/docs/license.rst"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "markupsafe",
+      "version": "3.0.3",
+      "license": "BSD-3-Clause",
+      "evidence": "Original LICENSE.txt Pallets three-clause terms",
+      "source_notice_evidence": [
+        {
+          "filename": "markupsafe-3.0.3.tar.gz",
+          "sha256": "722695808f4b6457b320fdc131280796bdceb04ab50fe1795cd540799ebe1698",
+          "notice_paths": [
+            "markupsafe-3.0.3/LICENSE.txt",
+            "markupsafe-3.0.3/docs/license.rst"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "mpdecimal",
+      "version": "4.0.1",
+      "license": "BSD-2-Clause",
+      "evidence": "Original COPYRIGHT.txt has two redistribution clauses",
+      "source_notice_evidence": [
+        {
+          "filename": "mpdecimal-4.0.1.tar.gz",
+          "sha256": "96d33abb4bb0070c7be0fed4246cd38416188325f820468214471938545b1ac8",
+          "notice_paths": [
+            "mpdecimal-4.0.1/COPYRIGHT.txt",
+            "mpdecimal-4.0.1/doc/COPYRIGHT.txt"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "license": "BSD-2-Clause",
+      "evidence": "Original LICENSE offers Apache/BSD choice; select LICENSE.BSD two-clause option",
+      "source_notice_evidence": [
+        {
+          "filename": "packaging-26.3.tar.gz",
+          "sha256": "94edc256424af38762eb31306eed28beb9f0efc50a8837492c9d6fd6004aed79",
+          "notice_paths": [
+            "packaging-26.3/LICENSE",
+            "packaging-26.3/LICENSE.APACHE",
+            "packaging-26.3/LICENSE.BSD",
+            "packaging-26.3/docs/licenses.rst",
+            "packaging-26.3/src/packaging/licenses/__init__.py",
+            "packaging-26.3/src/packaging/licenses/_spdx.py"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "pkgconf",
+      "version": "3.0.5",
+      "license": "ISC AND LicenseRef-pkgconf-source-notices",
+      "evidence": "Original COPYING permissive ISC-style notice; Meson source listed in build provenance is a build tool with separate Apache-2.0 component entry",
+      "source_notice_evidence": [
+        {
+          "filename": "pkgconf-3.0.5.tar.xz",
+          "sha256": "3acd3a8a3cce65a8d620321855d92fb602e026cbe8e13ee36bdec58483b59ace",
+          "notice_paths": [
+            "pkgconf-3.0.5/t/sbom/license-file-foo.test",
+            "pkgconf-3.0.5/t/sbom/license-isc.test",
+            "pkgconf-3.0.5/t/sbom/license-noassertion.test",
+            "pkgconf-3.0.5/t/sbom/license-malformed-token.test",
+            "pkgconf-3.0.5/t/sbom/license-file-bar.test",
+            "pkgconf-3.0.5/tests/lib1/license-malformed.pc",
+            "pkgconf-3.0.5/COPYING",
+            "pkgconf-3.0.5/libpkgconf/license.c",
+            "pkgconf-3.0.5/AUTHORS"
+          ]
+        },
+        {
+          "filename": "meson-1.12.0.tar.gz",
+          "sha256": "88afe0c20e52030218924ac37d0c81c59b4b5f3ae3752c8c6d7470c7d365886c",
+          "notice_paths": [
+            "meson-1.12.0/COPYING",
+            "meson-1.12.0/packaging/License.rtf",
+            "meson-1.12.0/packaging/macpages/English.lproj/license.html"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "setuptools",
+      "version": "84.0.0",
+      "license": "MIT AND LicenseRef-setuptools-vendored-notices",
+      "evidence": "Original LICENSE MIT; preserve all vendored package license/NOTICE texts rather than applying MIT to every dependency",
+      "source_notice_evidence": [
+        {
+          "filename": "setuptools-84.0.0.tar.gz",
+          "sha256": "f4695c21257f0d9b537ec2692c941d02ee143b7cc1276941349a546573b2ef73",
+          "notice_paths": [
+            "setuptools-84.0.0/LICENSE",
+            "setuptools-84.0.0/docs/userguide/license_migration.rst",
+            "setuptools-84.0.0/setuptools/_vendor/autocommand-2.2.2.dist-info/LICENSE",
+            "setuptools-84.0.0/setuptools/_vendor/backports.tarfile-1.2.0.dist-info/LICENSE",
+            "setuptools-84.0.0/setuptools/_vendor/importlib_metadata-8.7.1.dist-info/licenses/LICENSE",
+            "setuptools-84.0.0/setuptools/_vendor/jaraco.text-4.0.0.dist-info/LICENSE",
+            "setuptools-84.0.0/setuptools/_vendor/jaraco_context-6.1.0.dist-info/licenses/LICENSE",
+            "setuptools-84.0.0/setuptools/_vendor/jaraco_functools-4.4.0.dist-info/licenses/LICENSE",
+            "setuptools-84.0.0/setuptools/_vendor/more_itertools-10.8.0.dist-info/licenses/LICENSE",
+            "setuptools-84.0.0/setuptools/_vendor/packaging/licenses/__init__.py",
+            "setuptools-84.0.0/setuptools/_vendor/packaging/licenses/_spdx.py",
+            "setuptools-84.0.0/setuptools/_vendor/packaging-26.0.dist-info/licenses/LICENSE",
+            "setuptools-84.0.0/setuptools/_vendor/packaging-26.0.dist-info/licenses/LICENSE.APACHE",
+            "setuptools-84.0.0/setuptools/_vendor/packaging-26.0.dist-info/licenses/LICENSE.BSD",
+            "setuptools-84.0.0/setuptools/_vendor/platformdirs-4.4.0.dist-info/licenses/LICENSE",
+            "setuptools-84.0.0/setuptools/_vendor/tomli-2.4.0.dist-info/licenses/LICENSE",
+            "setuptools-84.0.0/setuptools/_vendor/wheel-0.46.3.dist-info/licenses/LICENSE.txt",
+            "setuptools-84.0.0/setuptools/_vendor/zipp-3.23.0.dist-info/licenses/LICENSE",
+            "setuptools-84.0.0/setuptools/config/NOTICE",
+            "setuptools-84.0.0/setuptools/config/_validate_pyproject/NOTICE"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "wheel",
+      "version": "0.48.0",
+      "license": "MIT",
+      "evidence": "Original LICENSE.txt explicitly identifies MIT",
+      "source_notice_evidence": [
+        {
+          "filename": "wheel-0.48.0.tar.gz",
+          "sha256": "94800765601e9171bf5d58d066e640662842bcedcbab982b2c90787a2c987322",
+          "notice_paths": [
+            "wheel-0.48.0/LICENSE.txt"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "mpfr",
+      "version": "4.2.2",
+      "license": "LGPL-3.0-or-later AND LicenseRef-mpfr-documentation",
+      "evidence": "src/mpfr.h explicitly grants LGPL 3 or later; COPYING.LESSER and original documentation conditions retained",
+      "source_notice_evidence": [
+        {
+          "filename": "mpfr-4.2.2.tar.xz",
+          "sha256": "b67ba0383ef7e8a8563734e2e889ef5ec3c3b898a01d00fa0a6869ad81c6ce01",
+          "notice_paths": [
+            "mpfr-4.2.2/COPYING.LESSER",
+            "mpfr-4.2.2/AUTHORS",
+            "mpfr-4.2.2/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "openssl",
+      "version": "4.0.3",
+      "license": "Apache-2.0 AND LicenseRef-openssl-per-file-notices",
+      "evidence": "Original LICENSE.txt and collected imported/per-file notices retained",
+      "source_notice_evidence": [
+        {
+          "filename": "openssl-4.0.3.tar.gz",
+          "sha256": "325b5c806167c13b40b1ffeadfe0248197c00eccc4cf123ec1e28d2d2fd216d9",
+          "notice_paths": [
+            "openssl-4.0.3/AUTHORS.md",
+            "openssl-4.0.3/LICENSE.txt",
+            "openssl-4.0.3/external/perl/Text-Template-1.56/LICENSE",
+            "openssl-4.0.3/util/perl/OpenSSL/copyright.pm"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "tcl",
+      "version": "8.6.18",
+      "license": "TCL AND LicenseRef-Tcl-per-file-notices",
+      "evidence": "Original license.terms grants permission to use/copy/modify/distribute/license, subject to notices and individual file exceptions",
+      "source_notice_evidence": [
+        {
+          "filename": "tcl8.6.18-src.tar.gz",
+          "sha256": "14f9af32b1767ff718477a8f974ad03c34341097e6b43f4ce54644ee974e268e",
+          "notice_paths": [
+            "tcl8.6.18/pkgs/thread2.8.13/license.terms",
+            "tcl8.6.18/pkgs/tdbcsqlite3-1.1.13/license.terms",
+            "tcl8.6.18/pkgs/tdbcpostgres1.1.13/license.terms",
+            "tcl8.6.18/pkgs/tdbcodbc1.1.13/license.terms",
+            "tcl8.6.18/pkgs/tdbcmysql1.1.13/license.terms",
+            "tcl8.6.18/pkgs/tdbc1.1.13/license.terms",
+            "tcl8.6.18/pkgs/sqlite3.53.0/license.terms",
+            "tcl8.6.18/pkgs/itcl4.3.7/license.terms",
+            "tcl8.6.18/pkgs/itcl4.3.7/doc/license.terms",
+            "tcl8.6.18/macosx/license.terms",
+            "tcl8.6.18/win/license.terms",
+            "tcl8.6.18/tests/license.terms",
+            "tcl8.6.18/libtommath/LICENSE",
+            "tcl8.6.18/compat/zlib/contrib/minizip/LICENSE.Info-Zip",
+            "tcl8.6.18/compat/zlib/contrib/dotzlib/LICENSE_1_0.txt",
+            "tcl8.6.18/compat/zlib/LICENSE",
+            "tcl8.6.18/compat/license.terms",
+            "tcl8.6.18/doc/license.terms",
+            "tcl8.6.18/library/license.terms",
+            "tcl8.6.18/license.terms"
+          ]
+        },
+        {
+          "filename": "tcl8.6.18-html.tar.gz",
+          "sha256": "bee2d83a19ce50624eeae951be29fe5f654b171357a6391123caf18107cec543",
+          "notice_paths": []
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "expect",
+      "version": "5.45.4",
+      "license": "LicenseRef-NIST-Expect-public-domain AND TCL",
+      "evidence": "Original license.terms is explicit NIST public-domain dedication; Tcl-derived portions retain Tcl conditions",
+      "source_notice_evidence": [
+        {
+          "filename": "expect5.45.4.tar.gz",
+          "sha256": "49a7da83b0bdd9f46d04a04deec19c7767bb9a323e40c4781f89caf760b92c34",
+          "notice_paths": [
+            "expect5.45.4/license.terms"
+          ]
+        },
+        {
+          "filename": "expect-5.45.4-gcc15-1.patch",
+          "sha256": "ab5fc0af9e2e0f80d7623c1a3a3dbeb1da3d8c9134276792199df401f9eb2cec",
+          "notice_paths": []
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "xxhash",
+      "version": "0.8.4",
+      "license": "BSD-2-Clause AND GPL-2.0-or-later",
+      "evidence": "Library LICENSE BSD-2; cli/xxhsum.c explicitly GPL version 2 or later; package includes both",
+      "source_notice_evidence": [
+        {
+          "filename": "xxHash-0.8.4.tar.gz",
+          "sha256": "5738270935e7c3d38a79b3adf7c9692566ce7895a25f67de43ad52ab504acd32",
+          "notice_paths": [
+            "xxHash-0.8.4/LICENSE",
+            "xxHash-0.8.4/cli/COPYING",
+            "xxHash-0.8.4/tests/bench/LICENSE",
+            "xxHash-0.8.4/tests/collisions/LICENSE"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "texinfo",
+      "version": "7.3",
+      "license": "GPL-3.0-or-later AND LicenseRef-Texinfo-per-file-notices",
+      "evidence": "tta/perl/texi2any.pl explicitly GPL 3 or later; original bundled/documentation terms retained",
+      "source_notice_evidence": [
+        {
+          "filename": "texinfo-7.3.tar.xz",
+          "sha256": "51f74eb0f51cfa9873b85264dfdd5d46e8957ec95b88f0fb762f63d9e164c72e",
+          "notice_paths": [
+            "texinfo-7.3/tta/maintain/lib/Text-Unidecode/LICENSE",
+            "texinfo-7.3/tta/maintain/lib/libintl-perl/COPYING",
+            "texinfo-7.3/tta/perl/t/results/regions/copying_not_closed.pl",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_titlepage_no_nodes/res_html/Copying-information.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_titlepage_no_nodes/res_html/Copying-and-indices.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_titlepage_no_nodes/res_plaintext/Copying-and-indices.txt",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_titlepage_no_nodes_footnotes_default/res_html/Copying-information.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_titlepage_no_nodes_footnotes_default/res_html/Copying-and-indices.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_titlepage_no_nodes_footnotes_default/res_plaintext/Copying-and-indices.txt",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_insertcopying/res_html/Copying-and-indices.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_insertcopying/res_plaintext/Copying-and-indices.txt",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_insertcopying_titlepage_no_nodes/res_html/Copying-information.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_insertcopying_titlepage_no_nodes/res_html/Copying-and-indices.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_insertcopying_titlepage_no_nodes/res_plaintext/Copying-and-indices.txt",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_insertcopying_no_titlepage_no_nodes/res_html/Copying-and-indices.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_insertcopying_no_titlepage_no_nodes/res_plaintext/Copying-and-indices.txt",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_insertcopying_titlepage_no_nodes_footnotes_default/res_html/Copying-information.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_insertcopying_titlepage_no_nodes_footnotes_default/res_html/Copying-and-indices.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_insertcopying_titlepage_no_nodes_footnotes_default/res_plaintext/Copying-and-indices.txt",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region/res_html/Copying-information.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region/res_html/Copying-and-indices.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region/res_plaintext/Copying-and-indices.txt",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_titlepage_no_nodes/res_html/Copying-information.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_titlepage_no_nodes/res_html/Copying-and-indices.html",
+            "texinfo-7.3/tta/perl/t/results/indices/index_special_region_no_titlepage_no_nodes/res_plaintext/Copying-and-indices.txt",
+            "texinfo-7.3/tta/perl/t/results/html_tests/float_copying/res_html/Copying-and-floats.html",
+            "texinfo-7.3/AUTHORS",
+            "texinfo-7.3/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "xz",
+      "version": "5.8.4",
+      "license": "0BSD AND LicenseRef-XZ-scripts-and-per-file-notices",
+      "evidence": "COPYING expressly identifies liblzma/native CLI 0BSD and different wrapper/build/test licenses; retain complete GPL/LGPL/script notices",
+      "source_notice_evidence": [
+        {
+          "filename": "xz-5.8.4.tar.xz",
+          "sha256": "4ce24038fd4221e0d13bc1a2de7a4db56e90b92b3bf75321f6c14be73f65de4b",
+          "notice_paths": [
+            "xz-5.8.4/AUTHORS",
+            "xz-5.8.4/COPYING",
+            "xz-5.8.4/COPYING.0BSD",
+            "xz-5.8.4/COPYING.GPLv2",
+            "xz-5.8.4/COPYING.GPLv3",
+            "xz-5.8.4/COPYING.LGPLv2.1",
+            "xz-5.8.4/build-aux/license-check.sh"
+          ]
+        }
+      ],
+      "review_scope": "Selected native component grant; exact source per-file/bundled/documentation conditions retained, no blanket relicensing"
+    },
+    {
+      "name": "python",
+      "version": "3.14.10",
+      "license": "Python-2.0 AND LicenseRef-CPython-third-party-notices AND LicenseRef-pip-vendored-notices",
+      "evidence": "Full original LICENSE/Doc/license.rst historical grant chain and third-party notices; exact bundled pip wheel legal files retained",
+      "bundled_components": [
+        {
+          "name": "pip",
+          "version": "26.2.2",
+          "license": "MIT AND LicenseRef-pip-vendored-notices",
+          "source_member": "Python-3.14.10/Lib/ensurepip/_bundled/pip-26.2.2-py3-none-any.whl",
+          "sha256": "fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70",
+          "native_binary_members": false,
+          "bundled_components": [
+            {
+              "name": "CacheControl",
+              "version": "0.14.4",
+              "license": "Apache-2.0",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "distlib",
+              "version": "0.4.2",
+              "license": "Python-2.0",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "distro",
+              "version": "1.9.0",
+              "license": "Apache-2.0",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "msgpack",
+              "version": "1.1.2",
+              "license": "Apache-2.0",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "packaging",
+              "version": "26.2",
+              "license": "BSD-2-Clause",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "platformdirs",
+              "version": "4.10.0",
+              "license": "MIT",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "pyproject-hooks",
+              "version": "1.2.0",
+              "license": "MIT",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "requests",
+              "version": "2.34.2",
+              "license": "Apache-2.0",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "certifi",
+              "version": "2026.10.19",
+              "license": "MPL-2.0",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "idna",
+              "version": "3.18",
+              "license": "BSD-3-Clause",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "urllib3",
+              "version": "2.7.0",
+              "license": "MIT",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "rich",
+              "version": "14.2.0",
+              "license": "MIT",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "pygments",
+              "version": "2.20.0",
+              "license": "BSD-2-Clause",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "resolvelib",
+              "version": "1.2.1",
+              "license": "ISC",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "setuptools",
+              "version": "70.3.0",
+              "license": "MIT",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "tomli",
+              "version": "2.4.1",
+              "license": "MIT",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "tomli-w",
+              "version": "1.2.0",
+              "license": "MIT",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            },
+            {
+              "name": "truststore",
+              "version": "0.10.4",
+              "license": "MIT",
+              "evidence": "Exact vendor.txt pin and original license text inside frozen Python-bundled pip wheel"
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "Bundled wheel contains Python source and no native extension binaries; upstream frozen source input, not imported distribution executables",
+        "Packaging vendor BSD option selected explicitly",
+        "Certifi public CA data retains MPL-2.0 terms and is distinct from the system CA bundle",
+        "System Expat/OpenSSL/Libffi/native math providers remain separately inventoried; unused source subdirectories are not claimed runtime copies"
+      ]
+    },
+    {
+      "name": "gmp",
+      "version": "6.3.0",
+      "license": "LGPL-3.0-or-later AND LicenseRef-GMP-per-file-notices",
+      "evidence": "README explicitly offers LGPL 3 or later OR GPL 2 or later; select LGPL option"
+    },
+    {
+      "name": "mpc",
+      "version": "1.4.1",
+      "license": "LGPL-3.0-or-later",
+      "evidence": "src/mpc.h explicitly grants LGPL 3 or later; COPYING.LESSER retained"
+    },
+    {
+      "name": "readline",
+      "version": "8.3",
+      "license": "GPL-3.0-or-later AND LicenseRef-Readline-per-file-notices",
+      "evidence": "readline.c explicitly GPL 3 or later; original documentation terms retained"
+    },
+    {
+      "name": "libpipeline",
+      "version": "1.5.8",
+      "license": "GPL-3.0-or-later AND LicenseRef-libpipeline-per-file-notices",
+      "evidence": "lib/pipeline.c permits GPL 2 or later; choose GPL 3 consistent with bundled COPYING and retain per-file terms"
+    },
+    {
+      "name": "sqlite",
+      "version": "3.53.4",
+      "license": "LicenseRef-SQLite-Public-Domain",
+      "evidence": "sqlite3.c/sqlite3.h/shell.c explicitly disclaim copyright and provide nonbinding blessing; original notices retained"
+    },
+    {
+      "name": "tzdata",
+      "version": "2026c",
+      "license": "LicenseRef-IANA-TZ-Public-Domain",
+      "evidence": "Original LICENSE places data in public domain; separately BSD code exceptions are not claimed as timezone runtime data"
+    },
+    {
+      "name": "zstd",
+      "version": "1.5.7",
+      "license": "BSD-3-Clause AND LicenseRef-Zstd-per-file-notices",
+      "evidence": "programs/zstdcli.c expressly offers BSD root LICENSE OR GPLv2 root COPYING; select BSD option; retain all individual notices"
+    },
+    {
+      "name": "googletest",
+      "version": "1.18.0",
+      "license": "BSD-3-Clause",
+      "evidence": "Original LICENSE three clauses and Google/contributor copyright; build/test dependency"
+    },
+    {
+      "name": "acl",
+      "version": "2.4.0",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later",
+      "evidence": "doc/COPYING and doc/COPYING.LGPL; libacl/acl_get_file.c explicit LGPL 2.1 or later; tools retain GPL notices",
+      "source_notice_evidence": [
+        {
+          "filename": "acl-2.4.0.tar.xz",
+          "sha256": "e661131456d2708a01c614a0f400e11d7d1bfaeb6f3e74b75bb980b72f0161a3",
+          "notice_paths": [
+            "acl-2.4.0/doc/COPYING",
+            "acl-2.4.0/doc/COPYING.LGPL"
+          ]
+        }
+      ],
+      "review_scope": "Exact selected component grant plus retained original per-file/tool/documentation terms"
+    },
+    {
+      "name": "attr",
+      "version": "2.6.0",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later",
+      "evidence": "doc/COPYING/COPYING.LGPL; libattr/libattr.c explicit LGPL 2.1 or later",
+      "source_notice_evidence": [
+        {
+          "filename": "attr-2.6.0.tar.gz",
+          "sha256": "d42fa374513180bb48cb11a46696f488240e5124ff1e6ad88b0abff706985612",
+          "notice_paths": [
+            "attr-2.6.0/doc/COPYING",
+            "attr-2.6.0/doc/COPYING.LGPL"
+          ]
+        }
+      ],
+      "review_scope": "Exact selected component grant plus retained original per-file/tool/documentation terms"
+    },
+    {
+      "name": "automake",
+      "version": "1.18.1",
+      "license": "GPL-2.0-or-later AND LicenseRef-Automake-generated-and-documentation",
+      "evidence": "bin/automake.in explicit GPL 2 or later; generated-file exceptions and documentation terms remain original",
+      "source_notice_evidence": [
+        {
+          "filename": "automake-1.18.1.tar.xz",
+          "sha256": "168aa363278351b89af56684448f525a5bce5079d0b6842bd910fdd3f1646887",
+          "notice_paths": [
+            "automake-1.18.1/lib/COPYING",
+            "automake-1.18.1/t/license.sh",
+            "automake-1.18.1/AUTHORS",
+            "automake-1.18.1/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Exact selected component grant plus retained original per-file/tool/documentation terms"
+    },
+    {
+      "name": "iproute2",
+      "version": "7.1.0",
+      "license": "GPL-2.0-or-later AND LicenseRef-IPRoute2-per-file-notices",
+      "evidence": "ip/ip.c explicit SPDX GPL-2.0-or-later; retain all other source/file conditions",
+      "source_notice_evidence": [
+        {
+          "filename": "iproute2-7.1.0.tar.xz",
+          "sha256": "fd9fa1b95809417157ca83dd72957e3261bdbce896353cb936f80af0b33a4b5c",
+          "notice_paths": [
+            "iproute2-7.1.0/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Exact selected component grant plus retained original per-file/tool/documentation terms"
+    },
+    {
+      "name": "kbd",
+      "version": "2.10.0",
+      "license": "GPL-2.0-only AND LicenseRef-Kbd-keymap-font-and-file-notices",
+      "evidence": "src/loadkeys.c refers to included GPL version 2 COPYING; data/per-file conditions retained individually",
+      "source_notice_evidence": [
+        {
+          "filename": "kbd-2.10.0.tar.xz",
+          "sha256": "6e5ca4f8d76ee9e3a8db700b667f13e12aac9933828a64e1aaad93d26be9b479",
+          "notice_paths": [
+            "kbd-2.10.0/AUTHORS",
+            "kbd-2.10.0/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Exact selected component grant plus retained original per-file/tool/documentation terms"
+    },
+    {
+      "name": "kmod",
+      "version": "34.2",
+      "license": "LGPL-2.1-or-later AND LicenseRef-Kmod-tools-and-file-notices",
+      "evidence": "libkmod/libkmod.c explicit LGPL-2.1-or-later SPDX; source tool/file conditions retained separately",
+      "source_notice_evidence": [
+        {
+          "filename": "kmod-34.2.tar.xz",
+          "sha256": "5a5d5073070cc7e0c7a7a3c6ec2a0e1780850c8b47b3e3892226b93ffcb9cb54",
+          "notice_paths": [
+            "kmod-34.2/COPYING",
+            "kmod-34.2/libkmod/COPYING",
+            "kmod-34.2/testsuite/COPYING",
+            "kmod-34.2/tools/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Exact selected component grant plus retained original per-file/tool/documentation terms"
+    },
+    {
+      "name": "libassuan",
+      "version": "3.0.2",
+      "license": "LGPL-2.1-or-later AND LicenseRef-Libassuan-tools-and-documentation",
+      "evidence": "src/assuan.h.in explicit LGPL-2.1-or-later; original COPYING/COPYING.LIB and documentation notices",
+      "source_notice_evidence": [
+        {
+          "filename": "libassuan-3.0.2.tar.bz2",
+          "sha256": "d2931cdad266e633510f9970e1a2f346055e351bb19f9b78912475b8074c36f6",
+          "notice_paths": [
+            "libassuan-3.0.2/COPYING",
+            "libassuan-3.0.2/AUTHORS",
+            "libassuan-3.0.2/COPYING.LIB"
+          ]
+        }
+      ],
+      "review_scope": "Exact selected component grant plus retained original per-file/tool/documentation terms"
+    },
+    {
+      "name": "libgpg-error",
+      "version": "1.61",
+      "license": "LGPL-2.1-or-later AND LicenseRef-LibgpgError-tools-and-file-notices",
+      "evidence": "src/gpg-error.h.in explicit LGPL-2.1-or-later; source GPL tools and additional notices retained",
+      "source_notice_evidence": [
+        {
+          "filename": "libgpg-error-1.61.tar.bz2",
+          "sha256": "7a85413f2bc354f4f8aa832b718af122e48965e9e0eb9012ee659c13c6385c93",
+          "notice_paths": [
+            "libgpg-error-1.61/COPYING",
+            "libgpg-error-1.61/AUTHORS",
+            "libgpg-error-1.61/COPYING.LIB"
+          ]
+        }
+      ],
+      "review_scope": "Exact selected component grant plus retained original per-file/tool/documentation terms"
+    },
+    {
+      "name": "libksba",
+      "version": "1.8.1",
+      "license": "LGPL-3.0-or-later AND GPL-3.0-or-later AND LicenseRef-KSBA-per-file-notices",
+      "evidence": "AUTHORS explicitly permits library LGPLv3+/GPLv2+, tools/manual GPLv3+; choose LGPL library option and retain all additional contribution notices",
+      "source_notice_evidence": [
+        {
+          "filename": "libksba-1.8.1.tar.bz2",
+          "sha256": "c2f84393011827219ae117131dba8e7684c2bed0961eed11b0642c2acba440b5",
+          "notice_paths": [
+            "libksba-1.8.1/COPYING",
+            "libksba-1.8.1/AUTHORS",
+            "libksba-1.8.1/COPYING.GPLv2",
+            "libksba-1.8.1/COPYING.LGPLv3",
+            "libksba-1.8.1/COPYING.GPLv3"
+          ]
+        }
+      ],
+      "review_scope": "Exact selected component grant plus retained original per-file/tool/documentation terms"
+    },
+    {
+      "name": "npth",
+      "version": "1.8",
+      "license": "LGPL-2.1-or-later AND LicenseRef-nPth-per-file-notices",
+      "evidence": "src/npth.c explicit LGPL 2.1 or later; original COPYING.LIB and author notices",
+      "source_notice_evidence": [
+        {
+          "filename": "npth-1.8.tar.bz2",
+          "sha256": "8bd24b4f23a3065d6e5b26e98aba9ce783ea4fd781069c1b35d149694e90ca3e",
+          "notice_paths": [
+            "npth-1.8/AUTHORS",
+            "npth-1.8/COPYING.LIB"
+          ]
+        }
+      ],
+      "review_scope": "Exact selected component grant plus retained original per-file/tool/documentation terms"
+    },
+    {
+      "name": "libxcrypt",
+      "version": "4.5.2",
+      "license": "LGPL-2.1-or-later AND LicenseRef-Libxcrypt-per-file-notices",
+      "evidence": "lib/crypt.c explicit LGPL 2.1 or later; retain algorithm-specific original notices; full LICENSING inventory and original leading algorithm license comments retained",
+      "source_notice_evidence": [
+        {
+          "filename": "libxcrypt-4.5.2.tar.xz",
+          "sha256": "71513a31c01a428bccd5367a32fd95f115d6dac50fb5b60c779d5c7942aec071",
+          "notice_paths": [
+            "libxcrypt-4.5.2/AUTHORS",
+            "libxcrypt-4.5.2/COPYING.LIB"
+          ]
+        }
+      ],
+      "review_scope": "Exact selected component grant plus retained original per-file/tool/documentation terms",
+      "extra_license_headers": {
+        "libxcrypt-4.5.2.tar.xz": {
+          "prefixes": [
+            "lib/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".S"
+          ]
+        }
+      }
+    },
+    {
+      "name": "autoconf",
+      "version": "2.73",
+      "license": "GPL-3.0-or-later AND LicenseRef-Autoconf-macros-and-documentation",
+      "evidence": "bin/autoconf.in GPL 3 or later; COPYing exception 3.0 applies to designated macros/generated scripts, all original conditions retained",
+      "source_notice_evidence": [
+        {
+          "filename": "autoconf-2.73.tar.xz",
+          "sha256": "9fd672b1c8425fac2fa67fa0477b990987268b90ff36d5f016dae57be0d6b52e",
+          "notice_paths": [
+            "autoconf-2.73/AUTHORS",
+            "autoconf-2.73/COPYING",
+            "autoconf-2.73/COPYING.EXCEPTION",
+            "autoconf-2.73/COPYINGv3"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "binutils",
+      "version": "2.47",
+      "license": "GPL-3.0-or-later AND LicenseRef-Binutils-libraries-and-documentation",
+      "evidence": "ld/ldmain.c GPL 3 or later; original COPYING/COPYING3/LIB and per-file/library conditions retained",
+      "source_notice_evidence": [
+        {
+          "filename": "binutils-2.47.tar.xz",
+          "sha256": "154ab23b60070e8f27013c22977f1129425d67d1e8acd6e13010e617811e4cff",
+          "notice_paths": [
+            "binutils-2.47/COPYING",
+            "binutils-2.47/COPYING.LIB",
+            "binutils-2.47/COPYING3",
+            "binutils-2.47/COPYING3.LIB",
+            "binutils-2.47/bfd/COPYING",
+            "binutils-2.47/gas/COPYING",
+            "binutils-2.47/include/COPYING",
+            "binutils-2.47/include/COPYING3",
+            "binutils-2.47/libiberty/COPYING.LIB",
+            "binutils-2.47/libiberty/copying-lib.texi",
+            "binutils-2.47/zlib/LICENSE",
+            "binutils-2.47/zlib/contrib/dotzlib/LICENSE_1_0.txt"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "bison",
+      "version": "3.8.2",
+      "license": "GPL-3.0-or-later AND LicenseRef-Bison-skeleton-exceptions",
+      "evidence": "src/main.c GPL 3 or later; generated parser skeleton exceptions and documentation remain independently applicable",
+      "source_notice_evidence": [
+        {
+          "filename": "bison-3.8.2.tar.xz",
+          "sha256": "9bba0214ccf7f1079c5d59210045227bcf619519840ebfa80cd3849cff5a5bf2",
+          "notice_paths": [
+            "bison-3.8.2/AUTHORS",
+            "bison-3.8.2/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "dejagnu",
+      "version": "1.6.3",
+      "license": "GPL-3.0-or-later AND LicenseRef-DejaGnu-per-file-notices",
+      "evidence": "runtest.exp GPL 3 or later, COPYING and original documentation terms",
+      "source_notice_evidence": [
+        {
+          "filename": "dejagnu-1.6.3.tar.gz",
+          "sha256": "87daefacd7958b4a69f88c6856dbd1634261963c414079d0c371f589cd66a2e3",
+          "notice_paths": [
+            "dejagnu-1.6.3/AUTHORS",
+            "dejagnu-1.6.3/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "dpkg",
+      "version": "1.22.22",
+      "license": "GPL-2.0-or-later AND LicenseRef-Dpkg-per-file-notices",
+      "evidence": "src/main/main.c GPL 2 or later; retain all contributed/per-file terms",
+      "source_notice_evidence": [
+        {
+          "filename": "dpkg_1.22.22.tar.xz",
+          "sha256": "d5ea9f132deec8030b50ab2a02ade2b49f0c7a195805a302c8301156fe833a57",
+          "notice_paths": [
+            "dpkg-1.22.22/AUTHORS",
+            "dpkg-1.22.22/COPYING",
+            "dpkg-1.22.22/debian/copyright",
+            "dpkg-1.22.22/tests/t-filtering/pkg-somefiles/test/share/doc/pkg-somefiles/copyright"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "e2fsprogs",
+      "version": "1.47.4",
+      "license": "LicenseRef-E2fsprogs-upstream-license-collection",
+      "evidence": "NOTICE explicitly distinguishes GPLv2 utilities, library-GPLv2 ext2fs/e2p and MIT et/ss; individual file notices control; disabled UUID/blkid libraries are not claimed duplicate runtime components",
+      "source_notice_evidence": [
+        {
+          "filename": "e2fsprogs-1.47.4.tar.gz",
+          "sha256": "2cec05f39c20ee621f14926195664e66e6017190ac8e4bbdb16d86082e43c5da",
+          "notice_paths": [
+            "e2fsprogs-1.47.4/NOTICE",
+            "e2fsprogs-1.47.4/debian/copyright",
+            "e2fsprogs-1.47.4/ext2ed/COPYRIGHT",
+            "e2fsprogs-1.47.4/lib/ext2fs/tdb/patches/copyright",
+            "e2fsprogs-1.47.4/lib/uuid/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "gcc",
+      "version": "16.2.0",
+      "license": "GPL-3.0-or-later AND LicenseRef-GCC-auxiliary-and-documentation",
+      "evidence": "gcc/gcc.cc GPL 3 or later; complete COPYING family, runtime exception, bundled and documentation notices retained",
+      "source_notice_evidence": [
+        {
+          "filename": "gcc-16.2.0.tar.xz",
+          "sha256": "e6738e29597f733270731aa90600f37ffdc045079dfc27ec7e8192cc81085c3e",
+          "notice_paths": [
+            "gcc-16.2.0/include/COPYING3",
+            "gcc-16.2.0/include/COPYING",
+            "gcc-16.2.0/libffi/LICENSE-BUILDTOOLS",
+            "gcc-16.2.0/libffi/LICENSE",
+            "gcc-16.2.0/zlib/LICENSE",
+            "gcc-16.2.0/zlib/contrib/dotzlib/LICENSE_1_0.txt",
+            "gcc-16.2.0/libsanitizer/LICENSE.TXT",
+            "gcc-16.2.0/COPYING.RUNTIME",
+            "gcc-16.2.0/libphobos/libdruntime/LICENSE.txt",
+            "gcc-16.2.0/libphobos/src/LICENSE_1_0.txt",
+            "gcc-16.2.0/COPYING3",
+            "gcc-16.2.0/libgo/LICENSE",
+            "gcc-16.2.0/libgo/go/golang.org/x/xerrors/LICENSE",
+            "gcc-16.2.0/libgo/go/golang.org/x/tools/LICENSE",
+            "gcc-16.2.0/libgo/go/golang.org/x/sync/LICENSE",
+            "gcc-16.2.0/libgo/go/golang.org/x/sync/AUTHORS",
+            "gcc-16.2.0/libgo/go/golang.org/x/mod/LICENSE",
+            "gcc-16.2.0/gcc/rust/checks/errors/borrowck/ffi-polonius/vendor/rustc-hash/LICENSE-MIT",
+            "gcc-16.2.0/gcc/rust/checks/errors/borrowck/ffi-polonius/vendor/rustc-hash/LICENSE-APACHE",
+            "gcc-16.2.0/gcc/rust/checks/errors/borrowck/ffi-polonius/vendor/datafrog/LICENSE-MIT",
+            "gcc-16.2.0/gcc/rust/checks/errors/borrowck/ffi-polonius/vendor/datafrog/LICENSE-APACHE",
+            "gcc-16.2.0/gcc/rust/checks/errors/borrowck/ffi-polonius/vendor/log/LICENSE-MIT",
+            "gcc-16.2.0/gcc/rust/checks/errors/borrowck/ffi-polonius/vendor/log/LICENSE-APACHE",
+            "gcc-16.2.0/gcc/rust/checks/errors/feature/contrib/copyright-stub.h",
+            "gcc-16.2.0/gcc/COPYING3",
+            "gcc-16.2.0/gcc/COPYING.LIB",
+            "gcc-16.2.0/gcc/testsuite/gcc.dg/vect/tsvc/license.txt",
+            "gcc-16.2.0/gcc/testsuite/gcc.dg/params/LICENSE",
+            "gcc-16.2.0/gcc/COPYING3.LIB",
+            "gcc-16.2.0/gcc/m2/COPYING.RUNTIME",
+            "gcc-16.2.0/gcc/m2/COPYING3",
+            "gcc-16.2.0/gcc/m2/COPYING3.LIB",
+            "gcc-16.2.0/gcc/m2/COPYING.FDL",
+            "gcc-16.2.0/gcc/m2/images/LICENSE.IMG",
+            "gcc-16.2.0/gcc/ada/doc/share/copyright.tex",
+            "gcc-16.2.0/gcc/go/gofrontend/LICENSE",
+            "gcc-16.2.0/gcc/COPYING",
+            "gcc-16.2.0/COPYING.LIB",
+            "gcc-16.2.0/libgcobol/LICENSE",
+            "gcc-16.2.0/COPYING3.LIB",
+            "gcc-16.2.0/libstdc++-v3/include/pstl/LICENSE.txt",
+            "gcc-16.2.0/libstdc++-v3/doc/html/manual/license.html",
+            "gcc-16.2.0/libstdc++-v3/doc/xml/authors.xml",
+            "gcc-16.2.0/libgrust/rustc-lib/LICENSE-MIT",
+            "gcc-16.2.0/libgrust/rustc-lib/stdarch/crates/core_arch/LICENSE-MIT",
+            "gcc-16.2.0/libgrust/rustc-lib/stdarch/crates/core_arch/LICENSE-APACHE",
+            "gcc-16.2.0/libgrust/rustc-lib/stdarch/crates/std_detect/LICENSE-MIT",
+            "gcc-16.2.0/libgrust/rustc-lib/stdarch/crates/std_detect/LICENSE-APACHE",
+            "gcc-16.2.0/libgrust/rustc-lib/stdarch/LICENSE-MIT",
+            "gcc-16.2.0/libgrust/rustc-lib/stdarch/LICENSE-APACHE",
+            "gcc-16.2.0/libgrust/rustc-lib/LICENSE-APACHE",
+            "gcc-16.2.0/libgrust/libformat_parser/vendor/libc/LICENSE-MIT",
+            "gcc-16.2.0/libgrust/libformat_parser/vendor/libc/LICENSE-APACHE",
+            "gcc-16.2.0/libgrust/libformat_parser/vendor/unicode-xid/LICENSE-MIT",
+            "gcc-16.2.0/libgrust/libformat_parser/vendor/unicode-xid/LICENSE-APACHE",
+            "gcc-16.2.0/libgrust/libformat_parser/vendor/unicode-xid/COPYRIGHT",
+            "gcc-16.2.0/libiberty/copying-lib.texi",
+            "gcc-16.2.0/libiberty/COPYING.LIB",
+            "gcc-16.2.0/libquadmath/COPYING.LIB",
+            "gcc-16.2.0/libcody/LICENSE",
+            "gcc-16.2.0/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "gcc-runtime",
+      "version": "16.2.0",
+      "license": "(GPL-3.0-or-later WITH GCC-exception-3.1) AND LicenseRef-GCC-runtime-bundles",
+      "evidence": "COPYING.RUNTIME version 3.1 applies only to designated GCC runtime files; libcc1, quadmath and sanitizers have distinct terms recorded below",
+      "source_notice_evidence": [
+        {
+          "filename": "gcc-16.2.0.tar.xz",
+          "sha256": "e6738e29597f733270731aa90600f37ffdc045079dfc27ec7e8192cc81085c3e",
+          "notice_paths": [
+            "gcc-16.2.0/include/COPYING3",
+            "gcc-16.2.0/include/COPYING",
+            "gcc-16.2.0/libffi/LICENSE-BUILDTOOLS",
+            "gcc-16.2.0/libffi/LICENSE",
+            "gcc-16.2.0/zlib/LICENSE",
+            "gcc-16.2.0/zlib/contrib/dotzlib/LICENSE_1_0.txt",
+            "gcc-16.2.0/libsanitizer/LICENSE.TXT",
+            "gcc-16.2.0/COPYING.RUNTIME",
+            "gcc-16.2.0/libphobos/libdruntime/LICENSE.txt",
+            "gcc-16.2.0/libphobos/src/LICENSE_1_0.txt",
+            "gcc-16.2.0/COPYING3",
+            "gcc-16.2.0/libgo/LICENSE",
+            "gcc-16.2.0/libgo/go/golang.org/x/xerrors/LICENSE",
+            "gcc-16.2.0/libgo/go/golang.org/x/tools/LICENSE",
+            "gcc-16.2.0/libgo/go/golang.org/x/sync/LICENSE",
+            "gcc-16.2.0/libgo/go/golang.org/x/sync/AUTHORS",
+            "gcc-16.2.0/libgo/go/golang.org/x/mod/LICENSE",
+            "gcc-16.2.0/gcc/rust/checks/errors/borrowck/ffi-polonius/vendor/rustc-hash/LICENSE-MIT",
+            "gcc-16.2.0/gcc/rust/checks/errors/borrowck/ffi-polonius/vendor/rustc-hash/LICENSE-APACHE",
+            "gcc-16.2.0/gcc/rust/checks/errors/borrowck/ffi-polonius/vendor/datafrog/LICENSE-MIT",
+            "gcc-16.2.0/gcc/rust/checks/errors/borrowck/ffi-polonius/vendor/datafrog/LICENSE-APACHE",
+            "gcc-16.2.0/gcc/rust/checks/errors/borrowck/ffi-polonius/vendor/log/LICENSE-MIT",
+            "gcc-16.2.0/gcc/rust/checks/errors/borrowck/ffi-polonius/vendor/log/LICENSE-APACHE",
+            "gcc-16.2.0/gcc/rust/checks/errors/feature/contrib/copyright-stub.h",
+            "gcc-16.2.0/gcc/COPYING3",
+            "gcc-16.2.0/gcc/COPYING.LIB",
+            "gcc-16.2.0/gcc/testsuite/gcc.dg/vect/tsvc/license.txt",
+            "gcc-16.2.0/gcc/testsuite/gcc.dg/params/LICENSE",
+            "gcc-16.2.0/gcc/COPYING3.LIB",
+            "gcc-16.2.0/gcc/m2/COPYING.RUNTIME",
+            "gcc-16.2.0/gcc/m2/COPYING3",
+            "gcc-16.2.0/gcc/m2/COPYING3.LIB",
+            "gcc-16.2.0/gcc/m2/COPYING.FDL",
+            "gcc-16.2.0/gcc/m2/images/LICENSE.IMG",
+            "gcc-16.2.0/gcc/ada/doc/share/copyright.tex",
+            "gcc-16.2.0/gcc/go/gofrontend/LICENSE",
+            "gcc-16.2.0/gcc/COPYING",
+            "gcc-16.2.0/COPYING.LIB",
+            "gcc-16.2.0/libgcobol/LICENSE",
+            "gcc-16.2.0/COPYING3.LIB",
+            "gcc-16.2.0/libstdc++-v3/include/pstl/LICENSE.txt",
+            "gcc-16.2.0/libstdc++-v3/doc/html/manual/license.html",
+            "gcc-16.2.0/libstdc++-v3/doc/xml/authors.xml",
+            "gcc-16.2.0/libgrust/rustc-lib/LICENSE-MIT",
+            "gcc-16.2.0/libgrust/rustc-lib/stdarch/crates/core_arch/LICENSE-MIT",
+            "gcc-16.2.0/libgrust/rustc-lib/stdarch/crates/core_arch/LICENSE-APACHE",
+            "gcc-16.2.0/libgrust/rustc-lib/stdarch/crates/std_detect/LICENSE-MIT",
+            "gcc-16.2.0/libgrust/rustc-lib/stdarch/crates/std_detect/LICENSE-APACHE",
+            "gcc-16.2.0/libgrust/rustc-lib/stdarch/LICENSE-MIT",
+            "gcc-16.2.0/libgrust/rustc-lib/stdarch/LICENSE-APACHE",
+            "gcc-16.2.0/libgrust/rustc-lib/LICENSE-APACHE",
+            "gcc-16.2.0/libgrust/libformat_parser/vendor/libc/LICENSE-MIT",
+            "gcc-16.2.0/libgrust/libformat_parser/vendor/libc/LICENSE-APACHE",
+            "gcc-16.2.0/libgrust/libformat_parser/vendor/unicode-xid/LICENSE-MIT",
+            "gcc-16.2.0/libgrust/libformat_parser/vendor/unicode-xid/LICENSE-APACHE",
+            "gcc-16.2.0/libgrust/libformat_parser/vendor/unicode-xid/COPYRIGHT",
+            "gcc-16.2.0/libiberty/copying-lib.texi",
+            "gcc-16.2.0/libiberty/COPYING.LIB",
+            "gcc-16.2.0/libquadmath/COPYING.LIB",
+            "gcc-16.2.0/libcody/LICENSE",
+            "gcc-16.2.0/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7",
+      "bundled_components": [
+        {
+          "name": "libgcc/libstdc++/libgomp/libatomic/libitm/libssp",
+          "license": "GPL-3.0-or-later WITH GCC-exception-3.1",
+          "note": "Exception only where original file notice grants it"
+        },
+        {
+          "name": "libcc1",
+          "license": "GPL-3.0-or-later",
+          "note": "Compiler/GDB interface; not covered by a blanket runtime exception"
+        },
+        {
+          "name": "libquadmath",
+          "license": "LGPL-2.1-or-later AND LicenseRef-GCC-quadmath-per-file-notices"
+        },
+        {
+          "name": "libasan/liblsan/libtsan/libubsan/libhwasan",
+          "license": "LicenseRef-GCC-sanitizer-per-file-notices",
+          "note": "libsanitizer/LICENSE.TXT offers NCSA/MIT for its covered compiler_rt code; original imported file conditions remain controlling"
+        }
+      ]
+    },
+    {
+      "name": "gettext",
+      "version": "1.0",
+      "license": "GPL-3.0-or-later AND LicenseRef-Gettext-libraries-and-documentation",
+      "evidence": "gettext-runtime/src/gettext.c GPL 3 or later; retain original library, gnulib and documentation conditions",
+      "source_notice_evidence": [
+        {
+          "filename": "gettext-1.0.tar.xz",
+          "sha256": "71132a3fb71e68245b8f2ac4e9e97137d3e5c02f415636eb508ae607bc01add7",
+          "notice_paths": [
+            "gettext-1.0/AUTHORS",
+            "gettext-1.0/gettext-runtime/AUTHORS",
+            "gettext-1.0/gettext-runtime/intl/AUTHORS",
+            "gettext-1.0/gettext-runtime/libasprintf/AUTHORS",
+            "gettext-1.0/gettext-tools/AUTHORS",
+            "gettext-1.0/libtextstyle/AUTHORS",
+            "gettext-1.0/COPYING",
+            "gettext-1.0/gettext-runtime/COPYING",
+            "gettext-1.0/gettext-runtime/libasprintf/COPYING",
+            "gettext-1.0/gettext-tools/COPYING",
+            "gettext-1.0/gettext-tools/gnulib-lib/libxml/COPYING",
+            "gettext-1.0/gnulib-local/lib/libxml/COPYING",
+            "gettext-1.0/libtextstyle/COPYING",
+            "gettext-1.0/libtextstyle/lib/libxml/COPYING",
+            "gettext-1.0/gettext-runtime/intl/COPYING.LIB",
+            "gettext-1.0/gettext-runtime/libasprintf/COPYING.LIB",
+            "gettext-1.0/gettext-tools/tree-sitter-0.23.2/LICENSE",
+            "gettext-1.0/gettext-tools/tree-sitter-0.23.2/lib/src/unicode/LICENSE",
+            "gettext-1.0/gettext-tools/tree-sitter-d-0.8.2/LICENSE",
+            "gettext-1.0/gettext-tools/tree-sitter-go-0.23.4/LICENSE",
+            "gettext-1.0/gettext-tools/tree-sitter-ocaml-0.23.2/LICENSE",
+            "gettext-1.0/gettext-tools/tree-sitter-rust-0.23.2/LICENSE",
+            "gettext-1.0/gettext-tools/tree-sitter-typescript-0.23.2/LICENSE"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "glibc",
+      "version": "2.44",
+      "license": "LGPL-2.1-or-later AND LicenseRef-Glibc-LICENSES-and-utilities",
+      "evidence": "COPYING.LESSERv2 and LICENSES expressly require retaining third-party notices; GPL utility/data and per-file terms remain controlling",
+      "source_notice_evidence": [
+        {
+          "filename": "glibc-2.44.tar.xz",
+          "sha256": "37f600f2bef3c5e8300147059568b2a2e40a7ad6ccc65ce942556d49429cc667",
+          "notice_paths": [
+            "glibc-2.44/COPYING.LESSERv2",
+            "glibc-2.44/COPYINGv2",
+            "glibc-2.44/COPYINGv3",
+            "glibc-2.44/LICENSES",
+            "glibc-2.44/posix/rxspencer/COPYRIGHT",
+            "glibc-2.44/support/bundled/linux/COPYING",
+            "glibc-2.44/support/bundled/linux/LICENSES/exceptions/Linux-syscall-note",
+            "glibc-2.44/support/bundled/linux/LICENSES/preferred/GPL-2.0"
+          ]
+        },
+        {
+          "filename": "glibc-fhs-1.patch",
+          "sha256": "643552db030e2f2d7ffde4f558e0f5f83d3fabf34a2e0e56ebdb49750ac27b0d",
+          "notice_paths": []
+        },
+        {
+          "filename": "glibc-2.44-upstream_fixes-3.patch",
+          "sha256": "cd3245887c9c2564ef18b8e9ed4046093a575fc91bce00fd82eb931102e4a30e",
+          "notice_paths": []
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "glibc-locales",
+      "version": "2.44",
+      "license": "LGPL-2.1-or-later AND LicenseRef-Glibc-locale-notices",
+      "evidence": "Generated locales from exact Glibc source; original locale data/header conditions and complete LICENSES retained",
+      "source_notice_evidence": [
+        {
+          "filename": "glibc-2.44.tar.xz",
+          "sha256": "37f600f2bef3c5e8300147059568b2a2e40a7ad6ccc65ce942556d49429cc667",
+          "notice_paths": [
+            "glibc-2.44/COPYING.LESSERv2",
+            "glibc-2.44/COPYINGv2",
+            "glibc-2.44/COPYINGv3",
+            "glibc-2.44/LICENSES",
+            "glibc-2.44/posix/rxspencer/COPYRIGHT",
+            "glibc-2.44/support/bundled/linux/COPYING",
+            "glibc-2.44/support/bundled/linux/LICENSES/exceptions/Linux-syscall-note",
+            "glibc-2.44/support/bundled/linux/LICENSES/preferred/GPL-2.0"
+          ]
+        },
+        {
+          "filename": "glibc-2.44-upstream_fixes-3.patch",
+          "sha256": "cd3245887c9c2564ef18b8e9ed4046093a575fc91bce00fd82eb931102e4a30e",
+          "notice_paths": []
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "glibc-test-locales",
+      "version": "2.44",
+      "license": "LGPL-2.1-or-later AND LicenseRef-Glibc-locale-notices",
+      "evidence": "Build/test locales generated from exact Glibc source; test-only inclusion must be explicit in image inventory",
+      "source_notice_evidence": [
+        {
+          "filename": "glibc-2.44.tar.xz",
+          "sha256": "37f600f2bef3c5e8300147059568b2a2e40a7ad6ccc65ce942556d49429cc667",
+          "notice_paths": [
+            "glibc-2.44/COPYING.LESSERv2",
+            "glibc-2.44/COPYINGv2",
+            "glibc-2.44/COPYINGv3",
+            "glibc-2.44/LICENSES",
+            "glibc-2.44/posix/rxspencer/COPYRIGHT",
+            "glibc-2.44/support/bundled/linux/COPYING",
+            "glibc-2.44/support/bundled/linux/LICENSES/exceptions/Linux-syscall-note",
+            "glibc-2.44/support/bundled/linux/LICENSES/preferred/GPL-2.0"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "gnupg",
+      "version": "2.5.24",
+      "license": "GPL-3.0-or-later AND LicenseRef-GnuPG-per-file-notices",
+      "evidence": "AUTHORS explicitly GPL-3.0-or-later; COPYING.other/LGPL21/GPL2/CC0 preserve distinct file conditions; disabled service components are not claimed active",
+      "source_notice_evidence": [
+        {
+          "filename": "gnupg-2.5.24.tar.bz2",
+          "sha256": "bf149d01a2b9fcc0e4589b8ae8697d3d5c557ea48ed95a3fa55dd3b1187e6039",
+          "notice_paths": [
+            "gnupg-2.5.24/COPYING.CC0",
+            "gnupg-2.5.24/AUTHORS",
+            "gnupg-2.5.24/tests/gpgscm/LICENSE.TinySCHEME",
+            "gnupg-2.5.24/COPYING.LGPL21",
+            "gnupg-2.5.24/COPYING.other",
+            "gnupg-2.5.24/COPYING",
+            "gnupg-2.5.24/COPYING.GPL2",
+            "gnupg-2.5.24/COPYING.LGPL3"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "grub",
+      "version": "2.14",
+      "license": "GPL-3.0-or-later AND LicenseRef-GRUB-per-file-and-documentation",
+      "evidence": "grub-core/kern/main.c explicit GPL 3 or later; original auxiliary/documentation terms retained",
+      "source_notice_evidence": [
+        {
+          "filename": "grub-2.14.tar.xz",
+          "sha256": "bc8d3c73535b8838d8c8e2654d73edc4e6ae8c8acdb45d5df5dc9a1547446d43",
+          "notice_paths": [
+            "grub-2.14/grub-core/lib/libgcrypt/AUTHORS",
+            "grub-2.14/grub-core/lib/libgcrypt/COPYING",
+            "grub-2.14/grub-core/lib/libgcrypt/COPYING.LIB",
+            "grub-2.14/grub-core/lib/libgcrypt/LICENSES",
+            "grub-2.14/grub-core/lib/libtasn1/COPYING",
+            "grub-2.14/themes/starfield/COPYING.CC-BY-SA-3.0",
+            "grub-2.14/AUTHORS",
+            "grub-2.14/COPYING",
+            "grub-2.14/unicode/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "less",
+      "version": "704",
+      "license": "LicenseRef-Less-License",
+      "evidence": "main.c explicitly permits GPL or Less License; select exact original two-clause Less LICENSE, retain unmodified text",
+      "source_notice_evidence": [
+        {
+          "filename": "less-704.tar.gz",
+          "sha256": "20a0b0a2bb2525fa53c7eee9beb854b4c9cf172eabb209af7020743547bfe9fb",
+          "notice_paths": [
+            "less-704/COPYING",
+            "less-704/LICENSE"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "libarchive",
+      "version": "3.8.11",
+      "license": "BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND LicenseRef-Libarchive-per-file-notices",
+      "evidence": "COPYING defines default BSD-style terms, specific UC Regents files, public-domain archive_parse_date and triple-license archive_blake2.h; select CC0 option for latter",
+      "source_notice_evidence": [
+        {
+          "filename": "libarchive-3.8.11.tar.xz",
+          "sha256": "a3dc0872b1b39da34dc18ef1b944f0f11ffd37425d70ae04be679279f1cf43d2",
+          "notice_paths": [
+            "libarchive-3.8.11/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "libelf",
+      "version": "0.195",
+      "license": "LGPL-3.0-or-later AND LicenseRef-Elfutils-libelf-per-file-notices",
+      "evidence": "libelf/libelf.h explicitly offers LGPL 3 or later OR GPL 2 or later; select LGPL option for native libelf profile",
+      "source_notice_evidence": [
+        {
+          "filename": "elfutils-0.195.tar.bz2",
+          "sha256": "37629fdf7f1f3dc2818e138fca2b8094177d6c2d0f701d3bb650a561218dc026",
+          "notice_paths": [
+            "elfutils-0.195/doc/COPYING-GFDL",
+            "elfutils-0.195/COPYING-LGPLV3",
+            "elfutils-0.195/COPYING-GPLV2",
+            "elfutils-0.195/COPYING",
+            "elfutils-0.195/AUTHORS"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "libgcrypt",
+      "version": "1.12.4",
+      "license": "LGPL-2.1-or-later AND LicenseRef-Libgcrypt-tools-and-LICENSES",
+      "evidence": "src/gcrypt.h.in explicit LGPL-2.1-or-later; full LICENSES contains mandatory BSD and other contributor notices, retained alongside original COPYING family",
+      "source_notice_evidence": [
+        {
+          "filename": "libgcrypt-1.12.4.tar.bz2",
+          "sha256": "d77f68f48879510e79a2f65977ccc68981781ea0923e5bdffac2a193ea3d660e",
+          "notice_paths": [
+            "libgcrypt-1.12.4/COPYING",
+            "libgcrypt-1.12.4/AUTHORS",
+            "libgcrypt-1.12.4/COPYING.LIB",
+            "libgcrypt-1.12.4/LICENSES"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "libtool",
+      "version": "2.6.2",
+      "license": "GPL-2.0-or-later AND LGPL-2.0-or-later AND LicenseRef-Libtool-special-exceptions",
+      "evidence": "build-aux/ltmain.in GPL 2 or later; libltdl/ltdl.c LGPL 2 or later; each has original special inclusion exception, retained verbatim",
+      "source_notice_evidence": [
+        {
+          "filename": "libtool-2.6.2.tar.xz",
+          "sha256": "2ef1067c16c97db930fd740cc9bc3d3ba9a583804ae5ac42cc3e8719e49e191e",
+          "notice_paths": [
+            "libtool-2.6.2/AUTHORS",
+            "libtool-2.6.2/COPYING",
+            "libtool-2.6.2/libltdl/COPYING.LIB"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "man-db",
+      "version": "2.13.1",
+      "license": "GPL-2.0-or-later AND LicenseRef-ManDB-per-file-notices",
+      "evidence": "src/man.c explicitly GPL 2 or later; original collection includes later GPL files and documentation conditions",
+      "source_notice_evidence": [
+        {
+          "filename": "man-db-2.13.1.tar.xz",
+          "sha256": "8afebb6f7eb6bb8542929458841f5c7e6f240e30c86358c1fbcefbea076c87d9",
+          "notice_paths": [
+            "man-db-2.13.1/COPYING",
+            "man-db-2.13.1/docs/COPYING.GPLv2",
+            "man-db-2.13.1/docs/COPYING.LIB"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "perl",
+      "version": "5.44.0",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later) AND LicenseRef-Perl-bundled-notices",
+      "evidence": "Original README licensing, Artistic and Copying grant alternatives; bundled/core module conditions remain original",
+      "source_notice_evidence": [
+        {
+          "filename": "perl-5.44.0.tar.xz",
+          "sha256": "505cf43912e9480495c344c70260452e32aa2a73c546a026b3f100053b23ce91",
+          "notice_paths": [
+            "perl-5.44.0/cpan/CPAN/lib/CPAN/Author.pm",
+            "perl-5.44.0/cpan/Compress-Raw-Bzip2/bzip2-src/LICENSE",
+            "perl-5.44.0/dist/ExtUtils-CBuilder/LICENSE",
+            "perl-5.44.0/t/porting/authors.t",
+            "perl-5.44.0/t/porting/copyright.t",
+            "perl-5.44.0/AUTHORS",
+            "perl-5.44.0/Artistic",
+            "perl-5.44.0/Copying"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "procps-ng",
+      "version": "4.0.7",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND LicenseRef-Procps-per-file-notices",
+      "evidence": "src/free.c GPL 2 or later; library/include/pids.h LGPL 2.1 or later; original COPYING family and source terms retained",
+      "source_notice_evidence": [
+        {
+          "filename": "procps-ng-4.0.7.tar.xz",
+          "sha256": "9d2021f47a4501c667862c9942a92d1953694b21d11bcd1702e83eb594e3d67d",
+          "notice_paths": [
+            "procps-ng-4.0.7/AUTHORS",
+            "procps-ng-4.0.7/COPYING.LIB",
+            "procps-ng-4.0.7/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "psmisc",
+      "version": "23.7",
+      "license": "GPL-2.0-or-later AND LicenseRef-Psmisc-per-file-notices",
+      "evidence": "src/fuser.c explicit GPL 2 or later; original COPYING and source notices",
+      "source_notice_evidence": [
+        {
+          "filename": "psmisc-23.7.tar.xz",
+          "sha256": "58c55d9c1402474065adae669511c191de374b0871eec781239ab400b907c327",
+          "notice_paths": [
+            "psmisc-23.7/AUTHORS",
+            "psmisc-23.7/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "shadow",
+      "version": "4.20.2",
+      "license": "BSD-3-Clause AND LicenseRef-Shadow-per-file-notices",
+      "evidence": "COPYING explicit SPDX BSD-3-Clause default with SPDX/custom per-file exceptions; do not replace those exceptions with a blanket grant",
+      "source_notice_evidence": [
+        {
+          "filename": "shadow-4.20.2.tar.xz",
+          "sha256": "b89f432b75ae55a2d852b446d0365484795fdf533ab97d550e325fa15594a224",
+          "notice_paths": [
+            "shadow-4.20.2/COPYING",
+            "shadow-4.20.2/AUTHORS.md"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "systemd",
+      "version": "261.2",
+      "license": "LGPL-2.1-or-later AND LicenseRef-Systemd-LICENSES",
+      "evidence": "README explicitly LGPL-2.1-or-later except LICENSES/README.md; src/core/main.c matches; complete LICENSES and documentation source notices retained",
+      "source_notice_evidence": [
+        {
+          "filename": "systemd-261.2.tar.gz",
+          "sha256": "ed1059ff964f5df35b6056434cc17cc83f86dc913f10489948a0b19b6081c5ec",
+          "notice_paths": [
+            "systemd-261.2/LICENSE.GPL2",
+            "systemd-261.2/LICENSE.LGPL2.1",
+            "systemd-261.2/LICENSES/BSD-2-Clause.txt",
+            "systemd-261.2/LICENSES/BSD-3-Clause.txt",
+            "systemd-261.2/LICENSES/CC0-1.0.txt",
+            "systemd-261.2/LICENSES/LGPL-2.0-or-later.txt",
+            "systemd-261.2/LICENSES/Linux-syscall-note.txt",
+            "systemd-261.2/LICENSES/MIT-0.txt",
+            "systemd-261.2/LICENSES/MIT.txt",
+            "systemd-261.2/LICENSES/OFL-1.1.txt",
+            "systemd-261.2/LICENSES/README.md",
+            "systemd-261.2/LICENSES/alg-sha1-public-domain.txt",
+            "systemd-261.2/LICENSES/lookup3-public-domain.txt",
+            "systemd-261.2/LICENSES/murmurhash2-public-domain.txt"
+          ]
+        },
+        {
+          "filename": "systemd-man-pages-261.2.tar.xz",
+          "sha256": "9be13865c9c7f9fecba7b86fc5185aecef00164c87ed68b4f6884283aefebe50",
+          "notice_paths": []
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "util-linux",
+      "version": "2.42.4",
+      "license": "LicenseRef-UtilLinux-upstream-license-collection",
+      "evidence": "README.licensing explicitly lists GPL 1+/2-only/2+/3+, LGPL2.1+, MIT, BSD variants, EUPL1.2 and public-domain files; original per-file SPDX/terms control, no blanket license assigned",
+      "source_notice_evidence": [
+        {
+          "filename": "util-linux-2.42.4.tar.xz",
+          "sha256": "fbd62a100ab7bb8746ba0661255c3c48185b1e9021507c624da01fbc696330ec",
+          "notice_paths": [
+            "util-linux-2.42.4/Documentation/licenses/COPYING.BSD-2-Clause",
+            "util-linux-2.42.4/Documentation/licenses/COPYING.BSD-3-Clause",
+            "util-linux-2.42.4/Documentation/licenses/COPYING.BSD-4-Clause-UC",
+            "util-linux-2.42.4/Documentation/licenses/COPYING.EUPL-1.2",
+            "util-linux-2.42.4/Documentation/licenses/COPYING.GPL-2.0-only",
+            "util-linux-2.42.4/Documentation/licenses/COPYING.GPL-2.0-or-later",
+            "util-linux-2.42.4/Documentation/licenses/COPYING.GPL-3.0-or-later",
+            "util-linux-2.42.4/Documentation/licenses/COPYING.ISC",
+            "util-linux-2.42.4/Documentation/licenses/COPYING.LGPL-2.1-or-later",
+            "util-linux-2.42.4/Documentation/licenses/COPYING.MIT",
+            "util-linux-2.42.4/libblkid/COPYING",
+            "util-linux-2.42.4/libfdisk/COPYING",
+            "util-linux-2.42.4/liblastlog2/COPYING",
+            "util-linux-2.42.4/libmount/COPYING",
+            "util-linux-2.42.4/libsmartcols/COPYING",
+            "util-linux-2.42.4/libuuid/COPYING",
+            "util-linux-2.42.4/pam_lastlog2/COPYING",
+            "util-linux-2.42.4/AUTHORS",
+            "util-linux-2.42.4/COPYING"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "vim",
+      "version": "9.2.1201",
+      "license": "Vim AND LicenseRef-Vim-bundled-notices",
+      "evidence": "Original LICENSE Vim terms retained; runtime EditorConfig/netrw/libvterm/xdiff and other bundled file notices stay independently applicable; build-only GLVS plugins excluded from runtime",
+      "source_notice_evidence": [
+        {
+          "filename": "vim-9.2.1201.tar.gz",
+          "sha256": "b280c2abebc3b32adb5295f3e7f4dd63340a68127cb26300c745024ef8b31af6",
+          "notice_paths": [
+            "vim-9.2.1201/LICENSE",
+            "vim-9.2.1201/lang/LICENSE.it.txt",
+            "vim-9.2.1201/lang/LICENSE.ja.txt",
+            "vim-9.2.1201/lang/LICENSE.pt_br.txt",
+            "vim-9.2.1201/lang/LICENSE.ru.txt",
+            "vim-9.2.1201/lang/LICENSE.sr.txt",
+            "vim-9.2.1201/lang/LICENSE.sv.txt",
+            "vim-9.2.1201/lang/LICENSE.zh_cn.txt",
+            "vim-9.2.1201/runtime/pack/dist/opt/editorconfig/LICENSE",
+            "vim-9.2.1201/runtime/pack/dist/opt/editorconfig/LICENSE.PSF",
+            "vim-9.2.1201/runtime/pack/dist/opt/netrw/LICENSE.txt",
+            "vim-9.2.1201/src/libvterm/LICENSE",
+            "vim-9.2.1201/src/xdiff/COPYING",
+            "vim-9.2.1201/src/xpm/COPYRIGHT"
+          ]
+        }
+      ],
+      "review_scope": "Upstream grant/collection identified; original per-file terms retained and corresponding-source distribution still required",
+      "review_evidence": ".local/logs/h07-complex-license-source-review.txt",
+      "review_evidence_sha256": "fdaa7f49f0e0e941e39f413f95385af229a78f12b2185ad02d8413d28c8b9cf7"
+    },
+    {
+      "name": "tcsh",
+      "version": "6.24.16",
+      "license": "BSD-3-Clause",
+      "evidence": "Original Copyright file has three-clause UC Regents terms; exact notice retained",
+      "native_acceptance": "pending; source/notice selection only"
+    },
+    {
+      "name": "berkeley-db",
+      "version": "5.3.28+dfsg2-12.1",
+      "license": "Sleepycat AND LicenseRef-BerkeleyDB-maintained-source-notices",
+      "evidence": "Original LICENSE plus maintained Debian copyright/patch notices; complete corresponding-source availability required by original terms",
+      "native_acceptance": "pending; source/notice selection only"
+    },
+    {
+      "name": "apt",
+      "version": "3.0.4",
+      "license": "GPL-2.0-or-later AND LicenseRef-APT-per-file-notices",
+      "evidence": "Original COPYING and source per-file notices; GPL version 3 option selected for OpenSSL Apache-2.0-linked redistribution",
+      "native_acceptance": "pending; source/notice selection only"
+    },
+    {
+      "name": "linux-api-headers",
+      "version": "7.1.8",
+      "license": "GPL-2.0-only WITH Linux-syscall-note AND LicenseRef-Linux-UAPI-per-file-notices",
+      "evidence": "Original kernel COPYING, LICENSES and individual UAPI SPDX conditions; userspace syscall exception retained",
+      "native_acceptance": "pending; source/notice selection only"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

@@ -707,7 +707,7 @@ upgrades have not run; BDB complete suite still owns the dispatcher lock.
 Source legal-notice inventory examined 149 frozen inputs and identified 680
 named/COPYING-numbered/LICENSES-directory files; inventory SHA-256
 ab117f0dbeee1c2a902451f2c8f3ab2e57b75fd6eadbea0cf40a18c0a7cb511a,
-.local/legal/source-notices/inventory.json. New packager retains exact notice
+.local/legal/source-notices/inventory-ab117f0dbeee1c2a902451f2c8f3ab2e57b75fd6eadbea0cf40a18c0a7cb511a.json. New packager retains exact notice
 bytes and source/path/hash index; this is evidence for, not completion of,
 embedded per-file and bundled-component license review. No release gate changed.
 
@@ -756,3 +756,22 @@ Unexpected helper/mode/identity or build-owned setuid/setgid stops before instal
 67 local checks pass, including escalation-refusal and exact helper-preservation
 tests. CMake correction will occur in the versioned upgrade; none is claimed
 applied while the unchanged BDB standard suite remains active.
+
+
+### Source grant/bundle and executable-interpreter review
+
+All 101 currently installed component names now have identified upstream grant/
+license-collection entries; mixed/per-file terms remain original, not relicensed.
+Actual Python-bundled pip vendor pins/notices and CMake selected bundles are
+recorded (ADR-0038). Expanded source scan includes ARTISTIC, LICENSING, nested
+wheel notices and selected original BSD algorithm headers. Older 670/680-entry
+inventories were reproduced from their committed scanner versions with identical
+hashes and preserved under content-addressed filenames; current scan remains
+incomplete as a release audit until native notice/image/source distribution checks.
+
+Read-only interpreter audit measured 380 provider edges and 275 missing metadata/
+interpreter findings. ADR-0040 resolves actual unversioned Python/C-shell needs
+without dropping executable paths; staged native fixes and final zero-finding
+checks are prepared. No correction/native Tcsh acceptance claimed yet. Seventy
+local checks pass after updating the isolated traversal fixture for the new
+explicit license-policy input; actual unsafe-path rejection remains tested.

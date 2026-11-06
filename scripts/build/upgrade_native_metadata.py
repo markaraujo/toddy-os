@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Version native package metadata from preserved, hash-verified own archives."""
 import hashlib
+import argparse
 import json
 from pathlib import Path
 import re
@@ -21,6 +22,9 @@ def digest(path):
 
 
 def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--only',action='append',default=[])
+    args=parser.parse_args()
     subprocess.run(['bash','-c','source "$1"; guard_target','guard',str(HERE/'target.sh')],check=True)
     backend=PackageBackend(TARGET)
     if not backend.native:raise SystemExit('Metadata closure requires accepted native Dpkg')
@@ -36,6 +40,7 @@ def main():
     # Include source-built additions accepted after the earlier 101-package
     # review, while refusing missing providers or unreviewed loader conditions.
     raw=subprocess.check_output([sys.executable,str(HERE/'audit_native_elf.py')],text=True)
+    (destination/('direct-elf-before-'+hashlib.sha256(raw.encode()).hexdigest()+'.json')).write_text(raw)
     (destination/'direct-elf-before.json').write_text(raw)
     audit=json.loads(raw)
     private={'package':'systemd','file':'/usr/lib/systemd/libsystemd-core-261.so','needed':'libsystemd-shared-261.so','problem':'provider absent from reviewed native search paths'}
@@ -45,8 +50,18 @@ def main():
             additions.setdefault(finding['package'],set()).update(finding['providers'])
         elif finding!=private:
             raise SystemExit('Unreviewed ELF finding before metadata upgrade: '+json.dumps(finding))
+    if not args.only:
+        script_raw=subprocess.check_output([sys.executable,str(HERE/'audit_script_interpreters.py')],text=True)
+        (destination/('script-before-'+hashlib.sha256(script_raw.encode()).hexdigest()+'.json')).write_text(script_raw)
+        for finding in json.loads(script_raw)['findings']:
+            if finding['problem']!='Direct interpreter provider undeclared' or len(finding['providers'])!=1:
+                raise SystemExit('Unresolved script interpreter before metadata upgrade: '+json.dumps(finding))
+            additions.setdefault(finding['package'],set()).update(finding['providers'])
     (destination/'derived-provider-edges.json').write_text(json.dumps({name:sorted(providers) for name,providers in sorted(additions.items())},indent=2)+'\n')
+    if set(args.only)-packages.keys():raise SystemExit('Requested package is not installed')
+    progress=destination/'packages';progress.mkdir(exist_ok=True)
     for name,(version,arch,depends) in sorted(packages.items()):
+        if args.only and name not in args.only:continue
         if version.endswith(plan['version_suffix']):
             accepted=RECORDS/f'{name}_{version}_{arch}.json'
             row=json.loads(accepted.read_text())
@@ -74,6 +89,10 @@ def main():
         if any(p.name not in {'control','md5sums','conffiles'} for p in control.iterdir()):
             raise SystemExit('Unexpected predecessor package control program/data')
         shutil.rmtree(control)
+        if name=='python':
+            alias=stage/'usr/bin/python'
+            if alias.exists() or alias.is_symlink():raise SystemExit('Unexpected existing Python command payload')
+            alias.symlink_to('python3')
         for virtual in libtool:(stage/virtual.lstrip('/')).unlink()
         declared=set(re.findall(r'(?:^|[,|])\s*([a-z0-9][a-z0-9+.-]*)',depends))
         requirements=[]
@@ -92,7 +111,7 @@ def main():
         predecessor={'package':name,'previous_version':version,'version':new_version,
                      'predecessor_archive_sha256':digest(archive),'predecessor_record_sha256':digest(record_path),
                      'removed_libtool_archives':libtool,'conffiles':conffiles,'depends':revised,'complete':False}
-        result_path=destination/(name+'.json');result_path.write_text(json.dumps(predecessor,indent=2)+'\n')
+        result_path=progress/(name+'.json');result_path.write_text(json.dumps(predecessor,indent=2)+'\n')
         subprocess.run(command,check=True)
         actual=backend.run('dpkg-query','-W','-f=${Status}\t${Version}',name,capture_output=True,text=True).stdout
         if actual!='install ok installed\t'+new_version:raise SystemExit('Metadata upgrade postcondition failed')
@@ -100,6 +119,7 @@ def main():
             if (TARGET/path.lstrip('/')).exists():raise SystemExit('Obsolete Libtool archive remains installed')
         predecessor['complete']=True;result_path.write_text(json.dumps(predecessor,indent=2)+'\n')
         print('Native metadata upgrade accepted:',name,new_version,flush=True)
+    if args.only:return
     # Shared Info index is generated state, not the payload of one provider.
     index=TARGET/'usr/share/info/dir'
     if index.exists():index.unlink()

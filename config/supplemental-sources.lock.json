@@ -693,6 +693,20 @@
       "decision": "ADR-0034",
       "book": "BLFS 13.1-systemd",
       "planned_stage": "Native APT acquisition sandbox dependency and complete suite"
+    },
+    {
+      "name": "tcsh",
+      "version": "6.24.16",
+      "filename": "tcsh-6.24.16.tar.gz",
+      "url": "https://astron.com/pub/tcsh/tcsh-6.24.16.tar.gz",
+      "sha256": "4208cf4630fb64d91d81987f854f9570a5a0e8a001a92827def37d0ed8f37364",
+      "size": 958396,
+      "upstream_md5": "448f53f12544abb627c9f078373b8ff5",
+      "signature_verified": false,
+      "signature_note": "Frozen BLFS 13.1 MD5 matches official upstream HTTPS archive; observed SHA-256 pinned, no independent signature claim.",
+      "decision": "ADR-0040",
+      "book": "BLFS 13.1-systemd",
+      "planned_stage": "Source-built C-shell interpreter for installed Vim tool; full suite and native syntax/status checks required"
     }
   ],
   "additional_decisions": [

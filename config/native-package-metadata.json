@@ -123,10 +123,12 @@
     {
       "package": "python",
       "add_depends": [
+        "bash",
+        "coreutils",
         "util-linux",
         "zstd"
       ],
-      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit; executable Python wrapper scripts use Bash and env/Coreutils"
     },
     {
       "package": "readline",
