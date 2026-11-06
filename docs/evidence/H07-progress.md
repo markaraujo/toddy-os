@@ -425,3 +425,14 @@ all upstream tests; unlike the book's downloader-test exclusion, a missing
 prerequisite will stop for investigation. No unavailable plugin test is silently
 removed. The remaining service/filesystem/native package-manager recipes and
 all release gates remain incomplete.
+
+
+The h07-native-crypto cold paired checkpoint has now passed both SHA-256 copy
+comparisons and qemu image checks; save exit 0 is retained in
+.local/logs/h07-native-crypto-checkpoint.{log,exit}. VM restart/remount and full
+input sync passed. Python recovery verified all original archived source bytes
+and applied the complete adapted series before starting its PGO build/full
+standard suite. Test parallelism is explicitly capped at eight with the book's
+120-second timeout; no test selection changes. A durable gated continuation
+waits for its dispatcher, requires actual success, then continues through
+Meson and the utility driver. Python remains unaccepted while running.

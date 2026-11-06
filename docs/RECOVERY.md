@@ -34,31 +34,40 @@ disks first. The H01 checkpoint predates target preparation.
 
 ## Current verified checkpoint and next action
 
-Latest verified cold pair: .local/vm/checkpoints/h07-gcc-tested.json and its
-builder/target qcow2 files. SHA-256 and qemu consistency checks passed. It
-contains 31 native packages and the complete classified final GCC build/tests,
-before GCC installation. Older h06-ready was actually restored and retested.
+Latest verified cold pair: .local/vm/checkpoints/h07-native-crypto.json and its
+builder/target qcow2 files. Both SHA-256 copy comparisons and qemu consistency
+checks passed; save log is .local/logs/h07-native-crypto-checkpoint.log, exit 0.
+It contains 55 accepted native packages plus the untouched Python source and
+original failed preflight, before the corrected Python build. H06 was actually
+restored/retested; this newer pair has been saved/verified, not yet restored.
 Checkpoint copies share the workstation disk and are not disaster recovery.
 
-Current target has 55 accepted native packages through mpdecimal. Python's
-first dry-run failed before compilation/installation with zero installed
-changes. ADR-0018's context-only patch is source-frozen and probe-validated;
-full native Python build/tests are next. The native-tools driver and its
-queued utility handoff both exited 1; no recipe remains running. A new cold
-checkpoint h07-native-crypto is being prepared; do not assume it exists until
-its JSON manifest and verified save log do. Latest verified cold pair remains
-h07-gcc-tested until then.
+The VM was restarted, pseudo filesystems remounted, current source locks and
+recipes synced. h07-python-recovery now compiles/tests the corrected frozen
+Python/OpenSSL source combination. Full original-source comparison and adapted
+patch application passed before compilation. Parallel tests are capped at 8;
+the book's timeout and test coverage remain unchanged.
 
-After the verified checkpoint, start VM, mount-kernfs.sh and sync_build.py.
-Run h07-python-recovery using h07/python-resume.sh and python-check.sh. It
-requires the original zero-change failed record, no build/stage artifacts and
-archive-identical source files. Do not use the partly patched probe as a build.
-After Python recovery passes, restart h07-native-tools-driver.sh; it skips
-completed packages and continues Flit-Core through Meson. Then start the
-utility driver (Kmod through Texinfo). Its optional queued handoff waits for a
-specific native-tools PID and requires actual Meson success; requeue after a
-failed prior native driver. Inspect running records and both driver processes
-before full sync; never overwrite active streamed recipes.
+```sh
+python3 scripts/host/vm.py inspect
+python3 scripts/host/vm.py ssh 'ls /var/log/toddy/build/*.running.json; tail -c 2000 /var/log/toddy/build/h07-python-recovery.log'
+```
+
+Dispatcher PID is recorded in /var/log/toddy/h07-python-recovery.pid. The
+h07-python-to-native driver waits for that specific dispatcher, requires actual
+Python recovery success, then invokes native-tools (Flit-Core through Meson)
+and system-utilities (Kmod through Texinfo). Its .pid/.log/.exit files are under
+/var/log/toddy. A failed package stops the chain; no step is silently skipped.
+The older native-to-utilities queue ended with the earlier failure and is not
+the current waiter. Inspect real processes, running markers and both driver
+states before full sync; never overwrite active streamed recipes.
+
+After a guest restart, run mount-kernfs.sh first. If Python recovery failed,
+inspect the source/build state and exact log before retrying; its resume script
+only accepts an untouched pre-configuration tree and must not be blindly
+reused over a compiled tree. On verified Python success, native-tools can be
+resumed directly; it recognizes the separate recovery marker. Prepared final
+Vim/service/filesystem recipes still require actual execution/acceptance.
 
 Never rerun account bootstrap or re-extract successful build trees. The GCC
 suite marker proves compilation/tests only; installation is separately proved

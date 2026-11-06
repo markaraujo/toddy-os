@@ -9,7 +9,7 @@ patch --batch --forward --fuzz=0 -Np1 -i ../Python-3.14.10-openssl_4-1.patch \
  2>&1 | tee /sources/evidence/h07-python/patch.log
 ./configure --prefix=/usr --enable-shared --with-system-expat --enable-optimizations --without-static-libpython
 make
-make test TESTOPTS="--timeout 120" 2>&1 | tee /sources/evidence/h07-python/check.log
+make test TESTOPTS="-j8 --timeout 120" 2>&1 | tee /sources/evidence/h07-python/check.log
 make DESTDIR=/sources/stage/python install
 mkdir -p /sources/stage/python/etc /sources/stage/python/usr/share/doc/python
 cat > /sources/stage/python/etc/pip.conf <<'CONF'
