@@ -25,7 +25,7 @@ def main():
     backend=PackageBackend(TARGET)
     if not backend.native:raise SystemExit('Metadata closure requires accepted native Dpkg')
     plan=json.loads((ROOT/'config/native-package-metadata.json').read_text())
-    additions={r['package']:r['add_depends'] for r in plan['packages']}
+    additions={r['package']:set(r['add_depends']) for r in plan['packages']}
     output=backend.run('dpkg-query','-W','-f=${Package}\t${Version}\t${Architecture}\t${Status}\t${Depends}\n',capture_output=True,text=True).stdout
     packages={}
     for line in output.splitlines():
@@ -33,6 +33,19 @@ def main():
         if status=='install ok installed':packages[name]=(version,arch,depends)
     destination=TARGET/'sources/evidence/h07-metadata-closure'
     destination.mkdir(parents=True,exist_ok=True)
+    # Include source-built additions accepted after the earlier 101-package
+    # review, while refusing missing providers or unreviewed loader conditions.
+    raw=subprocess.check_output([sys.executable,str(HERE/'audit_native_elf.py')],text=True)
+    (destination/'direct-elf-before.json').write_text(raw)
+    audit=json.loads(raw)
+    private={'package':'systemd','file':'/usr/lib/systemd/libsystemd-core-261.so','needed':'libsystemd-shared-261.so','problem':'provider absent from reviewed native search paths'}
+    for finding in audit['findings']:
+        if finding['problem']=='direct native provider undeclared':
+            if len(finding['providers'])!=1:raise SystemExit('Ambiguous provider requires review')
+            additions.setdefault(finding['package'],set()).update(finding['providers'])
+        elif finding!=private:
+            raise SystemExit('Unreviewed ELF finding before metadata upgrade: '+json.dumps(finding))
+    (destination/'derived-provider-edges.json').write_text(json.dumps({name:sorted(providers) for name,providers in sorted(additions.items())},indent=2)+'\n')
     for name,(version,arch,depends) in sorted(packages.items()):
         if version.endswith(plan['version_suffix']):
             accepted=RECORDS/f'{name}_{version}_{arch}.json'
@@ -64,7 +77,7 @@ def main():
         for virtual in libtool:(stage/virtual.lstrip('/')).unlink()
         declared=set(re.findall(r'(?:^|[,|])\s*([a-z0-9][a-z0-9+.-]*)',depends))
         requirements=[]
-        for provider in additions.get(name,[]):
+        for provider in sorted(additions.get(name,[])):
             if provider not in packages:raise SystemExit('Missing actual provider '+provider)
             if provider not in declared:
                 # Original version is the frozen ABI baseline, even if provider

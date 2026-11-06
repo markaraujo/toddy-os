@@ -68,3 +68,22 @@ our exact-list quarantine preserves recovery instead. Do not apply its broad
 /tmp cleanup while any build/test process is active. Preserve the build-only
 tester account until source builds finish; image assembly must exclude it and
 all test/source/temp data, rather than treating the build root as distributable.
+
+Before upgrading, repeat the actual ELF audit to include accepted additions
+built after the original 101-package review. Derive only unambiguous measured
+missing direct-provider declarations, record the exact input report/derived
+edges, and require every provider installed with its frozen version. Any missing
+provider, build path, ambiguous owner or loader condition other than the exact
+reviewed Systemd private context stops before upgrades. Final repeat still must
+have zero unqualified findings. This is measured metadata completion, not a
+license/tool/dlopen closure substitute. Re-run the unchanged complete ACL suite
+after final Coreutils and require cp.run PASS; its earlier bootstrap failure is
+not permanently waived once the missing capability exists.
+
+Payload verification before upgrades checked 58815 recorded files/links, zero
+missing files/duplicate owners/modified registered conffiles. Only the already
+qualified shared Info index hash differs. Final upgrade postcheck must verify
+all recorded hashes, links, modes and owner/group again, require no unexplained
+finding and confirm Info index has no package owner. It also requires native
+APT dependency check and a clean configured package database; successful archive
+creation alone is insufficient.
