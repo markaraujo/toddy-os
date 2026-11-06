@@ -8,7 +8,7 @@ from locked_inputs import locked_source
 
 
 def is_notice(name):
-    return bool(re.match(r'^(COPYING[0-9]*|COPYRIGHT|LICEN[CS]E|NOTICE|AUTHORS)([._-]|$)',name.name,re.I)) or any(p.lower()=='licenses' for p in name.parts[:-1])
+    return bool(re.match(r'^(COPYINGv?[0-9]*|COPYRIGHT|LICEN[CS]ES?|NOTICE|AUTHORS)([._-]|$)',name.name,re.I)) or any(p.lower()=='licenses' for p in name.parts[:-1])
 
 
 def retain_source_notices(root,target,stage,package,filenames):

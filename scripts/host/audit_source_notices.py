@@ -28,7 +28,7 @@ def audit(row):
         for member in archive:
             name=PurePosixPath(member.name)
             if not member.isfile():continue
-            named=bool(re.match(r'^(COPYING[0-9]*|COPYRIGHT|LICEN[CS]E|NOTICE|AUTHORS)([._-]|$)',name.name,re.I))
+            named=bool(re.match(r'^(COPYINGv?[0-9]*|COPYRIGHT|LICEN[CS]ES?|NOTICE|AUTHORS)([._-]|$)',name.name,re.I))
             legal_directory=any(part.lower()=='licenses' for part in name.parts[:-1])
             if not (named or legal_directory):continue
             if name.is_absolute() or '..' in name.parts or any(c in member.name for c in '\r\n\t'):

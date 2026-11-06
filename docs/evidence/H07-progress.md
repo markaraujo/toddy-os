@@ -704,9 +704,20 @@ conffiles, exact measured provider additions, consistent .la removal and shared
 Info-index regeneration. Filesystem-layout/LFS build-support and Linux API header
 recipes are prepared with book-source hashes and native probes. Quarantine and
 upgrades have not run; BDB complete suite still owns the dispatcher lock.
-Source legal-notice inventory examined 149 frozen inputs and identified 670
+Source legal-notice inventory examined 149 frozen inputs and identified 680
 named/COPYING-numbered/LICENSES-directory files; inventory SHA-256
-0de6994eee826aed0f1e5ea7da2516db4a52b1d92373f2b736749847fc077fa9,
+ab117f0dbeee1c2a902451f2c8f3ab2e57b75fd6eadbea0cf40a18c0a7cb511a,
 .local/legal/source-notices/inventory.json. New packager retains exact notice
 bytes and source/path/hash index; this is evidence for, not completion of,
 embedded per-file and bundled-component license review. No release gate changed.
+
+
+### Read-only native text-consumer probes
+
+ADR-0037 records 18 actual probes: all eight English/Portuguese cases pass;
+three default Greek cases fail (Gawk UTF-8/single-byte and Bash single-byte).
+Explicit existing Gawk GNU matcher passes both Greek encodings. Report retains
+all_cases_pass=false and exact failures; no global engine/source change or full
+locale correctness is claimed. The report SHA-256 is
+3e7546e1ecb70d9616b35b7d54aeb9e905b2016874146c19113f434f4a5efdb4.
+Native boot repetition and remaining consumer review remain required before G1.

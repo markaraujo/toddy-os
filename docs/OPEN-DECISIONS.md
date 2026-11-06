@@ -50,3 +50,9 @@ inputs as nonroot (ADR-0028/0031); preserve those checks on future rebuilds.
 Native Dpkg acceptance passed. APT signed repository, final versioned dependency/
 conffile ownership, Linux API/layout ownership, bootstrap quarantine and license
 closure remain required (ADR-0032 through ADR-0036).
+
+Measured regex limitations (ADR-0037): default Gawk misses Greek final sigma in
+UTF-8 and ISO-8859-7; Bash nocasematch misses it in ISO-8859-7. Grep/Sed and all
+measured English/Portuguese cases pass. Gawk's existing explicit GNU matcher
+passes both Greek cases. Preserve default-failure evidence and release limitation;
+this is not a global Glibc fix or broad locale correctness claim.
