@@ -2346,6 +2346,13 @@
       "license": "LicenseRef-LFS-Instructions-and-Toddy-Original-Pending",
       "evidence": "Frozen LFS 13.1-systemd computer instructions retain MIT terms; original Toddy configuration edits remain subject to owner decision D10 (ADR-0042)",
       "review_status": "original_project_licensing_pending_D10"
+    },
+    {
+      "name": "linux-kernel",
+      "version": "7.1.8",
+      "license": "GPL-2.0-only AND LicenseRef-Linux-per-file-and-documentation-notices",
+      "evidence": "Frozen kernel COPYING, LICENSES and Documentation/per-file SPDX notices; complete corresponding source availability required",
+      "review_scope": "Prepared source/notice identification only; no kernel build or boot acceptance yet"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

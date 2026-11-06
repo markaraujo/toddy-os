@@ -114,3 +114,10 @@ the independent full ACL retest and API/layout/build-support ownership before
 the long corrected DB suite. It does not run APT or final metadata closure.
 The final-base driver still requires accepted BDB/APT and skips only actual
 existing success markers; no acceptance prerequisite is waived.
+
+
+H09 preparation (ADR-0046) is source/configuration work only. Do not dispatch
+its kernel recipe until H08 is accepted and synchronized status marks H09
+in_progress. Its source-symbol/gate probes are not a resolved configuration,
+compiled kernel or actual boot. Kernel artifacts alone cannot complete H09;
+bootloader/early-boot evidence and remaining native-kernel obligations still apply.

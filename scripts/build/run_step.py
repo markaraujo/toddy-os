@@ -35,7 +35,7 @@ def recipe_command(user):
 
 def snapshot():
     result = {}
-    for tree in ('usr', 'etc', 'var', 'tools', 'lib64'):
+    for tree in ('usr', 'etc', 'var', 'tools', 'lib64', 'boot'):
         for base, dirs, files in os.walk(TARGET / tree, followlinks=False):
             for name in dirs + files:
                 path = Path(base) / name
