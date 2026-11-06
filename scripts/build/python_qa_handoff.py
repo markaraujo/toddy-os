@@ -18,6 +18,12 @@ _layout_spec.loader.exec_module(_layout)
 QA_ROOTS = _layout.QA_ROOTS
 
 
+def qa_dependencies(version):
+    # Frozen QA executable fixtures use /bin/bash and /usr/bin/env python3.
+    # Keep direct providers explicit even when Python also depends on them.
+    return f'python (= {version}), bash, coreutils'
+
+
 def is_qa(path):
     return any(path == root or path.startswith(root + '/') for root in QA_ROOTS)
 
@@ -28,8 +34,8 @@ def plan(entries, ownership, donor, *, name, version, architecture, donor_archit
         raise ValueError('Python QA handoff is native archive-only preparation for python-test-support')
     if donor.get('name') != 'python' or donor.get('installed') is not True:
         raise ValueError('Python QA requires an installed native Python predecessor')
-    if architecture != donor_architecture or depends != f'python (= {version})':
-        raise ValueError('QA architecture and exact successor dependency must match')
+    if architecture != donor_architecture or depends != qa_dependencies(version):
+        raise ValueError('QA architecture, exact Python successor and direct interpreter providers must match')
     if sorted(sources) != sorted(row['filename'] for row in donor['sources']):
         raise ValueError('QA must retain the complete predecessor source set')
     expected = {path: value for path, value in donor['payload'].items() if is_qa(path)}

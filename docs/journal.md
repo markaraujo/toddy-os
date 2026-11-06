@@ -224,3 +224,14 @@ phase directory. Explicit project-file loading now passes a fresh-interpreter
 regression and repeated native 5,395-file preflight. Physical private source
 mirrors exercise the actual import behavior; no installed/cache or active DB
 input changes. Original and corrected evidence retained in ADR-0049.
+
+
+2026-11-06 22:34 UTC — Corrected the prepared Python QA direct dependencies
+after native executable-provider inspection. Repeated native preflight passed.
+An actual SIGKILL during replacement unpack in a third private Dpkg root left
+the old version half-installed; replaying preserved core then QA recovered all
+5,395 files without changing installed target state. Added a pure resumable
+next-action policy and replayed actual states with native Python. Production
+controller and configured runtime acceptance remain pending. DB callback
+Test044 has advanced into cycle 3 after two observed load/crash/recovery cycles;
+original driver/runner remain live. No active inputs synchronized.

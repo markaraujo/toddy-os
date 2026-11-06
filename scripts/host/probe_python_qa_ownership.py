@@ -14,7 +14,7 @@ import subprocess
 os.chdir(Path(__file__).resolve().parents[2])
 partition_source = base64.b64encode(Path('scripts/build/h11/python_qa.py').read_bytes()).decode()
 script = r'''from pathlib import Path
-import base64,hashlib,json,os,re,shutil,stat,subprocess,tempfile,types
+import base64,hashlib,json,os,re,shutil,signal,stat,subprocess,tempfile,time,types
 root=Path('/mnt/lfs')
 prefix=['chroot',str(root),'/usr/bin/env','-i','PATH=/usr/bin:/usr/sbin','LC_ALL=C','DPKG_DEB_THREADS_MAX=2']
 def native(program,*args,check=True):
@@ -56,7 +56,7 @@ try:
  rewritten,count=re.subn(r'^Version: .+$','Version: '+new_version,old_control,flags=re.M);assert count==1
  (controls/'control').write_text(rewritten)
  (qa/'DEBIAN').mkdir()
- (qa/'DEBIAN/control').write_text('Package: python-test-support\nVersion: '+new_version+'\nArchitecture: '+arch+'\nMaintainer: Toddy OS Development <noreply@example.invalid>\nDepends: python (= '+new_version+')\nDescription: Private native CPython QA ownership experiment\n')
+ (qa/'DEBIAN/control').write_text('Package: python-test-support\nVersion: '+new_version+'\nArchitecture: '+arch+'\nMaintainer: Toddy OS Development <noreply@example.invalid>\nDepends: python (= '+new_version+'), bash, coreutils\nDescription: Private native CPython QA ownership experiment\n')
  notice=qa/'usr/share/doc/python-test-support/copyright';notice.parent.mkdir(parents=True)
  shutil.copy2(runtime/'usr/share/doc/python/copyright',notice)
  core_deb=base/'runtime.deb';qa_deb=base/'qa.deb'
@@ -65,7 +65,7 @@ try:
  assert native('dpkg-deb','-f',virtual(core_deb),'Depends').stdout.strip()==old_dependencies
  logs=[]
  def unpack(destination,package,check=True):
-  assert destination.parent==base and destination.name in ('wrong-order','correct-order')
+  assert destination.parent==base and destination.name in ('wrong-order','correct-order','interrupted-order')
   db=destination/'var/lib/dpkg';db.mkdir(parents=True,exist_ok=True);(db/'status').touch(exist_ok=True)
   result=native('dpkg','--root='+virtual(destination),'--unpack',virtual(package),check=False)
   logs.append({'root':destination.name,'archive':package.name,'exit':result.returncode,'stdout':result.stdout,'stderr':result.stderr})
@@ -90,16 +90,47 @@ try:
  # original source-built archive still exist outside the temporary package DB.
  assert digest(original)==record['archive_sha256'] and qa_deb.is_file()
  unpack(correct,qa_deb)
- assert set(qa_files)<=listing(correct,'python-test-support')
- assert not (set(qa_files)&listing(correct,'python'))
- for name,entry in qa_files.items():
-  p=correct/name.lstrip('/');info=p.lstat()
-  assert (info.st_mode,info.st_uid,info.st_gid)==(entry['mode'],entry['uid'],entry['gid']),name
-  assert info.st_mtime_ns==entry['mtime_ns'],name
-  if 'sha256' in entry:assert digest(p)==entry['sha256'],name
-  else:assert p.readlink().as_posix()==entry['link'],name
+ def verify_qa(destination):
+  assert set(qa_files)<=listing(destination,'python-test-support')
+  assert not (set(qa_files)&listing(destination,'python'))
+  for name,entry in qa_files.items():
+   p=destination/name.lstrip('/');info=p.lstat()
+   assert (info.st_mode,info.st_uid,info.st_gid)==(entry['mode'],entry['uid'],entry['gid']),name
+   assert info.st_mtime_ns==entry['mtime_ns'],name
+   if 'sha256' in entry:assert digest(p)==entry['sha256'],name
+   else:assert p.readlink().as_posix()==entry['link'],name
+ verify_qa(correct)
  states=native('dpkg-query','--admindir='+virtual(correct/'var/lib/dpkg'),'-W','-f=${Package}\t${Version}\t${Status}\n').stdout
  assert len(states.splitlines())==2 and all(line.endswith('install ok unpacked') for line in states.splitlines()),states
+ # Force an actual interruption only in a third designated private root.
+ # A new process group prevents any signal from reaching the live build job.
+ interrupted=base/'interrupted-order';unpack(interrupted,original)
+ interruption_log=base/'interrupted-unpack.log'
+ with interruption_log.open('w') as output:
+  process=subprocess.Popen(prefix+['/usr/bin/dpkg','--root='+virtual(interrupted),'--unpack',virtual(core_deb)],stdout=output,stderr=subprocess.STDOUT,start_new_session=True)
+  try:
+   deadline=time.monotonic()+10
+   marker='Unpacking python ('+new_version+')'
+   while marker not in interruption_log.read_text():
+    assert process.poll() is None,'Unpack finished before interruption checkpoint'
+    assert time.monotonic()<deadline,'Unpack did not reach interruption checkpoint'
+    time.sleep(0.02)
+   time.sleep(0.05)
+   assert process.poll() is None and os.getpgid(process.pid)==process.pid
+   os.killpg(process.pid,signal.SIGKILL)
+   interrupted_exit=process.wait(timeout=10)
+   assert interrupted_exit==-signal.SIGKILL
+  finally:
+   if process.poll() is None:
+    os.killpg(process.pid,signal.SIGKILL);process.wait(timeout=10)
+ interrupted_state=native('dpkg-query','--admindir='+virtual(interrupted/'var/lib/dpkg'),'-W','-f=${Package}\t${Version}\t${Status}\n').stdout
+ assert 'half-installed' in interrupted_state,interrupted_state
+ assert digest(original)==record['archive_sha256']
+ unpack(interrupted,core_deb)
+ assert not (set(qa_files)&listing(interrupted,'python'))
+ unpack(interrupted,qa_deb);verify_qa(interrupted)
+ recovered_state=native('dpkg-query','--admindir='+virtual(interrupted/'var/lib/dpkg'),'-W','-f=${Package}\t${Version}\t${Status}\n').stdout
+ assert recovered_state==states
  assert digest(root/'var/lib/dpkg/status')==installed_status_sha
  print(json.dumps({'source_package':stem,'source_archive_sha256':record['archive_sha256'],
   'new_version':new_version,'partition':partition,'transferred_file_count':len(qa_files),
@@ -108,6 +139,8 @@ try:
   'core_relinquished_before_qa_received':True,'recovery_archives_present_at_intermediate_boundary':True,
   'new_archive_sha256':{'runtime':digest(core_deb),'qa':digest(qa_deb)},'private_package_states':states,
   'native_installed_status_unchanged':True,'configured_runtime_acceptance':False,
+  'interruption':{'exit':interrupted_exit,'state_after_kill':interrupted_state,'recovered_state':recovered_state,
+   'scoped_native_unpack_log':interruption_log.read_text(),'all_qa_files_verified_after_recovery':True},
   'logs':logs,'fixture_removed_after_checks':True},indent=2))
 except BaseException:
  print('Preserved Python QA ownership fixture:',base,flush=True)

@@ -29,7 +29,7 @@ class PythonQAHandoff(unittest.TestCase):
                  'archive_sha256': '1' * 64, 'sources': [{'filename': 'Python-3.14.10.tar.xz'}],
                  'payload': {root: directory.copy(), root + '/fixture.py': file.copy()}}
         options = dict(name='python-test-support', version='3.14.10-1+toddy2', architecture='amd64',
-                       donor_architecture='amd64', depends='python (= 3.14.10-1+toddy2)',
+                       donor_architecture='amd64', depends='python (= 3.14.10-1+toddy2), bash, coreutils',
                        sources=['Python-3.14.10.tar.xz'], install=False, native=True)
         return entries, owners, donor, options
 
@@ -43,7 +43,8 @@ class PythonQAHandoff(unittest.TestCase):
 
     def test_install_bootstrap_and_unrelated_recipient_are_rejected(self):
         for key, value in [('install', True), ('native', False), ('name', 'another-package'),
-                           ('architecture', 'all'), ('depends', 'python'), ('sources', [])]:
+                           ('architecture', 'all'), ('depends', 'python'),
+                           ('depends', 'python (= 3.14.10-1+toddy2)'), ('sources', [])]:
             entries, owners, donor, options = self.fixture()
             options[key] = value
             with self.subTest(key=key), self.assertRaises(ValueError):

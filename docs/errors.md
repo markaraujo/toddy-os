@@ -471,3 +471,16 @@ acceptance remains pending. No active BDB inputs were changed. See ADR-0045.
   source mirror repeats the actual native preflight on all 5,395 QA files.
   See ADR-0049 for failed/corrected evidence. This was caught before dispatch
   of the new production mode, not a failure of the active DB recipe.
+
+
+### Prepared Python QA omitted direct executable providers
+
+- Symptom: the native executable audit found env/python3 and Bash fixtures,
+  while the proposed QA control declared only the exact Python dependency.
+- Cause: preserving the Python edge alone did not satisfy the project's direct
+  interpreter-provider closure; transitive availability is insufficient.
+- Correction: require bash and coreutils alongside exact successor Python in
+  the archive preparation and native ownership experiment.
+- Verification: native negative missing-provider preflight is rejected; the
+  positive complete 5,395-file preflight and interrupted ownership recovery
+  pass. See ADR-0049. Caught before production dispatch; no DB test change.

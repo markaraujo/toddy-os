@@ -47,10 +47,15 @@ try:
  revision=re.search(r'\+toddy([1-9][0-9]*)$',version)
  successor=(version[:revision.start()]+'+toddy'+str(int(revision[1])+1)) if revision else version+'+toddy1'
  args=types.SimpleNamespace(name='python-test-support',version=successor,architecture=arch,
-  depends=f'python (= {successor})',source=[r['filename'] for r in record['sources']],install=False)
+  depends=modules['python_qa_handoff.py'].qa_dependencies(successor),source=[r['filename'] for r in record['sources']],install=False)
  def prepare():return modules['python_qa_handoff.py'].prepare(backend,root,Path('/var/cache/toddy/packages'),Path('/var/log/toddy/packages'),modules['stage_package.py'].payload(qa),ownership,qa,args)
  plan=prepare();assert plan['transferred_path_count']==5395 and not plan['installation_authorized']
  rejected=[]
+ complete_dependencies=args.depends;args.depends=f'python (= {successor})'
+ try:prepare()
+ except ValueError as error:rejected.append({'case':'missing direct interpreter providers','reason':str(error)})
+ else:raise AssertionError('Incomplete direct dependencies accepted')
+ args.depends=complete_dependencies
  args.install=True
  try:prepare()
  except ValueError as error:rejected.append({'case':'install flag','reason':str(error)})

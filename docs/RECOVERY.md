@@ -641,3 +641,12 @@ Python provenance. It changes neither installed state nor native package cache.
 Failures preserve the printed fixture and content-addressed evidence; successful
 fixtures are removed. Changed installed/staged bytes or timestamps require
 diagnosis, not an override.
+
+The private ownership probe now includes a third interrupted-order root. It
+kills only its newly created native unpack process group, preserves the old
+archive, observes half-installed state, then reapplies core and QA and verifies
+all transferred files. The observed old version can survive a failed unpack;
+never infer payload completeness from Version alone. python_qa_transfer.py is
+only a next-action policy: a partial state requires a matching validated
+transaction before retry. It does not install, journal intent or accept the
+release. The production controller still must implement those operations.

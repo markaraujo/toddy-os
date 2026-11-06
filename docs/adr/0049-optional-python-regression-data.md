@@ -199,3 +199,57 @@ at .local/logs/h11-python-qa-handoff-plan-probe.json, with an immutable
 SHA-256-suffixed copy. Corrected helper SHA-256:
 `0684d5d276786d5fa23705be1996b9a7f8ef3355f3cdbb489ac5db1b2161167b`.
 Installed state/cache and active build inputs remain unchanged.
+
+
+## Direct interpreter dependencies and actual interrupted unpack recovery
+
+The native QA executable audit found six env/python3 and three Bash shebangs
+among 13 executable fixtures. Native owners are coreutils for /usr/bin/env,
+bash for /usr/bin/bash and python for /usr/bin/python3.14. The prepared QA
+package therefore requires python (= successor), bash, coreutils explicitly.
+A Python-only dependency would fail the project's direct-provider audit even
+if those tools were present transitively. The preparation helper and private
+ownership probe now use that closure. A negative native preflight rejects the
+missing direct providers, and the complete 5,395-file positive plan still passes.
+Installed state/cache and active build inputs remain unchanged.
+
+The native ownership probe additionally creates a third private Dpkg root,
+unpacks the original Python and deliberately SIGKILLs a new process group
+while unpacking its replacement. No signal targets the installed target or
+active build process. Dpkg exits -9 and reports the OLD version 3.14.10-1 as
+install reinstreq half-installed. This proves version equality alone cannot
+identify a safe starting state. The preserved archives allow reapplying the
+core followed by QA; both recover to install ok unpacked, with all 5,395 QA
+files verified for bytes, ownership, mode and mtime again. No force-overwrite
+or dependency bypass is used. This verifies unpack recovery, not configured
+runtime acceptance. The unchanged installed Dpkg status hash is checked.
+
+python_qa_transfer.py selects a next action without executing it. A matching
+validated transaction is mandatory before repairing partial state; an old
+version half-install is retried from the preserved successor core archive.
+Unpacked/half-configured core must be configured before QA installation. A
+fully configured pair requests verification without reinstalling. Unexpected
+versions/states are refused. Native replay of the actual current, interrupted
+and recovered observations passes, including refusal without a recorded
+transaction. Seven local regressions cover these boundaries and JSON input.
+The production controller must still validate archive/record identities, persist
+intent before mutation, run each action and verify ownership, dependency and
+runtime postconditions. No production transfer is claimed by this policy.
+
+Evidence (raw reports and immutable SHA-256-suffixed copies under .local/logs):
+
+- h11-python-qa-interpreter-providers.json:
+  ee3ff40f65c60eee24e94d4c448583b06a0f2533721bf50f1424fe1f97fb48c8
+- h11-python-qa-handoff-plan-probe.json:
+  b500a78e73829f8d039e03da51966d85db96edbb8e3d4997cfc442c684ba3152
+- h11-python-qa-ownership-probe.json:
+  94316e1bdd653440e5e8e84f1d1868dd48c03011cf9bd85d96df9b972afcd44d
+- h11-native-python-qa-transfer-policy.json: b73d3ef1e938942b6503cbde166e76b1a4447030b7bcc4cd90785a25b4e7c517
+
+Frozen Dpkg 1.22.22 man/dpkg.pod distinguishes unpack from configuration and
+defines the private --root scope; man/dpkg-deb.pod documents bounded compression
+threads. The probe continues to cap compression at two threads. Reproduce
+with scripts/host/probe_python_qa_ownership.py and
+scripts/host/probe_python_qa_handoff_plan.py in the designated builder. On a
+failure, preserve the reported private fixture and logs; do not retry against
+the installed database or delete partial state as a substitute for recovery.
