@@ -16,4 +16,11 @@ def locked_source(root, filename):
             for row in overlay['components']:
                 if row['filename'] == filename:
                     return dict(row)
+    supplemental_path = root/'config/supplemental-sources.lock.json'
+    if supplemental_path.exists():
+        supplemental = json.loads(supplemental_path.read_text())
+        if supplemental['status'] == 'frozen_for_native_build':
+            for row in supplemental['components']:
+                if row['filename'] == filename:
+                    return dict(row)
     return None

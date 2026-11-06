@@ -19,6 +19,11 @@ if overlay_path.exists():
     overlay = json.loads(overlay_path.read_text())
     if overlay['status'] == 'frozen_for_final_build':
         rows += overlay['components']
+supplemental_path = ROOT / 'config/supplemental-sources.lock.json'
+if supplemental_path.exists():
+    supplemental = json.loads(supplemental_path.read_text())
+    if supplemental['status'] == 'frozen_for_native_build':
+        rows += supplemental['components']
 for row in rows:
     path = ROOT / '.local/sources' / row['filename']
     with path.open('rb') as stream:
@@ -41,6 +46,8 @@ def pipe_tar(args, remote):
 metadata = ['scripts/build', 'LICENSES', 'config/component-licenses.json', 'config/books.lock.json', 'config/sources.lock.json']
 if overlay_path.exists():
     metadata.append('config/security-overlay.lock.json')
+if supplemental_path.exists():
+    metadata.append('config/supplemental-sources.lock.json')
 pipe_tar(['-cf', '-'] + metadata,
          'tar --no-overwrite-dir -xf - -C /opt/toddy-build')
 # Enumerating files avoids copying the cache directory's mode over sticky sources.

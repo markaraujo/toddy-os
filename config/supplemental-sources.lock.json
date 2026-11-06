@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "frozen_for_native_build",
+  "decision": "ADR-0012",
+  "baseline_unchanged": true,
+  "components": [
+    {
+      "name": "dpkg",
+      "version": "1.22.22",
+      "filename": "dpkg_1.22.22.tar.xz",
+      "url": "https://deb.debian.org/debian/pool/main/d/dpkg/dpkg_1.22.22.tar.xz",
+      "sha256": "d5ea9f132deec8030b50ab2a02ade2b49f0c7a195805a302c8301156fe833a57",
+      "size": 5746724,
+      "dsc_url": "https://deb.debian.org/debian/pool/main/d/dpkg/dpkg_1.22.22.dsc",
+      "dsc_sha256": "fc481d9b87cd4416cd55673cc1fa716b57480a6b23253ac0d87c1abbfad4c964",
+      "signature_verified": false,
+      "published_sha256": "d5ea9f132deec8030b50ab2a02ade2b49f0c7a195805a302c8301156fe833a57",
+      "published_digest_source": "https://deb.debian.org/debian/pool/main/d/dpkg/dpkg_1.22.22.dsc",
+      "signature_note": "Publisher DSC SHA-256 verified over official HTTPS; DSC OpenPGP signature not independently verified.",
+      "planned_stage": "After complete frozen LFS base; source build and native signed-repository tests required before release"
+    },
+    {
+      "name": "apt",
+      "version": "3.0.4",
+      "filename": "apt_3.0.4.tar.xz",
+      "url": "https://deb.debian.org/debian/pool/main/a/apt/apt_3.0.4.tar.xz",
+      "sha256": "e853aec49afbe520ebcd4dbcbc98e1c55262c6bf1c119cf43e6aec69752443c6",
+      "size": 2423460,
+      "dsc_url": "https://deb.debian.org/debian/pool/main/a/apt/apt_3.0.4.dsc",
+      "dsc_sha256": "efc029dbfb0e264dfb38a8bf34398a8d3709cd35a463c270153b59e2e4ffb404",
+      "signature_verified": false,
+      "published_sha256": "e853aec49afbe520ebcd4dbcbc98e1c55262c6bf1c119cf43e6aec69752443c6",
+      "published_digest_source": "https://deb.debian.org/debian/pool/main/a/apt/apt_3.0.4.dsc",
+      "signature_note": "Publisher DSC SHA-256 verified over official HTTPS; DSC OpenPGP signature not independently verified.",
+      "planned_stage": "After complete frozen LFS base; source build and native signed-repository tests required before release"
+    }
+  ]
+}

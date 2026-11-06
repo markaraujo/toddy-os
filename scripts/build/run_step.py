@@ -103,6 +103,9 @@ def main():
         overlay = HERE.parents[1] / 'config/security-overlay.lock.json'
         if overlay.exists():
             record['security_overlay_sha256'] = hashlib.sha256(overlay.read_bytes()).hexdigest()
+        supplemental = HERE.parents[1] / 'config/supplemental-sources.lock.json'
+        if supplemental.exists():
+            record['supplemental_source_lock_sha256'] = hashlib.sha256(supplemental.read_bytes()).hexdigest()
         write(prefix.with_suffix('.running.json'), record)
         environment = {'HOME': '/home/lfs' if args.user == 'lfs' else '/root',
                        'TERM': 'dumb',

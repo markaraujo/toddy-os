@@ -176,3 +176,25 @@ historical input hashes. For the already-running final GCC job, a sidecar
 with matching original runner/outer hashes and source commit 3489a9b.
 The critical GCC scripts were unchanged; the later runner instrumentation
 applies to subsequent steps. Preserve both original record and sidecar.
+
+Export a verified partial native inventory in the running builder:
+
+```sh
+python3 scripts/host/vm.py ssh 'python3 /opt/toddy-build/scripts/build/export_inventory.py' > .local/inventories/native-partial.json
+```
+
+This read-only export checks installed version records, every native .deb,
+corresponding source SHA-256 and installed copyright notices. Its first real
+run verified 31 packages. It explicitly reports incomplete release scope,
+pending dependency/license review and missing early supporting-recipe hashes;
+it does not convert historical gaps into claimed verification.
+
+Additional package-manager source archives (ADR-0012) can be fetched/verified:
+
+```sh
+python3 scripts/fetch_security_overlay.py --supplemental
+```
+
+sync_build.py includes the supplemental lock and verifies the pinned archives
+before transferring. Native source.py accepts only frozen listed additions;
+no new source/component is extracted solely because a URL was supplied.
