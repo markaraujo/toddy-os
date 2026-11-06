@@ -14,6 +14,216 @@
       "registry_terms": "https://www.iana.org/help/licensing-terms",
       "generator_license_url": "https://raw.githubusercontent.com/Mic92/iana-etc/9d9a34cef5d474d018e8c6dd9e5428143f08649a/LICENSE",
       "generator_license_sha256": "12a70cb991002fe457b82f14dad29df42a1c1812257da46fee9de64af6b9083a"
+    },
+    {
+      "name": "perl-html-tagset",
+      "version": "3.24",
+      "license": "Artistic-2.0",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-test-warnings",
+      "version": "0.038",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-test-needs",
+      "version": "0.002010",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-mime-base32",
+      "version": "1.303",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-uri",
+      "version": "5.40",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-io-html",
+      "version": "1.004",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-encode-locale",
+      "version": "1.05",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-timedate",
+      "version": "2.35",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-http-date",
+      "version": "6.08",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-b-cow",
+      "version": "0.007",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-clone",
+      "version": "0.51",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-lwp-mediatypes",
+      "version": "6.05",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-try-tiny",
+      "version": "0.32",
+      "license": "MIT",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-http-message",
+      "version": "7.04",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-html-parser",
+      "version": "3.86",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "perl-devel-cover",
+      "version": "1.52",
+      "license": "(Artistic-1.0-Perl OR GPL-1.0-or-later)",
+      "evidence": "Exact CPAN META.json declaration, retained upstream notices/module POD and complete Perl license; pinned supplemental source",
+      "review_status": "upstream_declared_license_reviewed",
+      "runtime_inclusion": "Build/test tooling; release inclusion must be explicit"
+    },
+    {
+      "name": "triehash",
+      "version": "0.3",
+      "license": "MIT",
+      "evidence": "Original LICENSE.md and triehash.pl header"
+    },
+    {
+      "name": "libseccomp",
+      "version": "2.6.1",
+      "license": "LGPL-2.1-only",
+      "evidence": "Exact original LICENSE and src/api.c version-2.1-only header"
+    },
+    {
+      "name": "which",
+      "version": "2.25",
+      "license": "GPL-3.0-or-later",
+      "evidence": "Exact original COPYING and which.c or-later header"
+    },
+    {
+      "name": "time",
+      "version": "1.10",
+      "license": "GPL-3.0-or-later",
+      "evidence": "Exact COPYING and src/time.c or-later header; frozen signature ADR-0029"
+    },
+    {
+      "name": "ca-certificates",
+      "version": "2026.11.05",
+      "license": "MPL-2.0",
+      "evidence": "Dated Mozilla-derived public bundle; complete MPL notice ADR-0021"
+    },
+    {
+      "name": "filesystem-layout",
+      "version": "13.1",
+      "license": "MIT",
+      "evidence": "LFS computer instructions; retained MIT notice/book hashes/recipe; no license grant to original Toddy code"
+    },
+    {
+      "name": "lfs-build-support",
+      "version": "13.1",
+      "license": "MIT",
+      "evidence": "Frozen LFS 13.1 section 6.2 instructions; retained MIT/book/recipe provenance"
+    },
+    {
+      "name": "cmake",
+      "version": "4.4.2",
+      "license": "BSD-3-Clause AND MIT AND Apache-2.0 AND 0BSD AND LicenseRef-CMake-per-file-notices",
+      "evidence": "Exact LICENSE.rst, Licenses/, selected bundled notices; native CMakeCache proves system/bundled choices",
+      "bundled_components": [
+        {
+          "name": "KWSys",
+          "license": "BSD-3-Clause",
+          "source_path": "Source/kwsys/Copyright.txt"
+        },
+        {
+          "name": "KWIML",
+          "license": "BSD-3-Clause",
+          "source_path": "Utilities/KWIML/Copyright.txt"
+        },
+        {
+          "name": "JsonCpp",
+          "license": "MIT",
+          "source_path": "Utilities/cmjsoncpp/LICENSE"
+        },
+        {
+          "name": "cppdap",
+          "license": "Apache-2.0",
+          "source_path": "Utilities/cmcppdap/LICENSE"
+        },
+        {
+          "name": "librhash",
+          "license": "0BSD",
+          "source_path": "Utilities/cmlibrhash/COPYING"
+        }
+      ],
+      "notes": [
+        "JsonCpp explicit MIT option selected; do not rely on public-domain recognition",
+        "cppdap NOTICE retained",
+        "All original Licenses/ notices retained; embedded conditions still apply"
+      ],
+      "system_library_selection_evidence": ".local/logs/h07-cmake-system-library-selection.log"
     }
-  ]
+  ],
+  "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
 }

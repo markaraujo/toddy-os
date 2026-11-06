@@ -35,6 +35,7 @@ def main():
                 hashes[path] = hashlib.file_digest(stream, 'sha256').hexdigest()
         return hashes[path]
 
+    license_rows = json.loads((HERE.parents[1]/'config/component-licenses.json').read_text())['components']
     components = []
     for name, (version, architecture) in sorted(installed.items()):
         archive = f'{name}_{version}_{architecture}.deb'
@@ -51,6 +52,7 @@ def main():
         notice_hash = digest(TARGET / notice.lstrip('/'))
         if notice_hash != record['payload'][notice]['sha256']:
             raise SystemExit(f'Installed copyright notice mismatch: {name}')
+        reviewed = next((r for r in license_rows if r['name'] == name and (version == r['version'] or version.startswith(r['version']+'-'))), None)
         components.append({'name': name, 'version': version, 'architecture': architecture,
                            'archive': archive, 'archive_sha256': record['archive_sha256'],
                            'component_record_sha256': digest(metadata),
@@ -60,7 +62,11 @@ def main():
                            'copyright_sha256': notice_hash,
                            'runtime_dependency_closure': record.get('runtime_dependency_closure',
                                'not recorded in early metadata; final audit required'),
-                           'license_expression': 'pending final license inventory review'})
+                           'packaging_backend': record.get('packaging_backend', {'kind':'builder-bootstrap-dpkg'}),
+                           'book_sources': record.get('book_sources'),
+                           'source_kind': record.get('source_kind', 'upstream-archives-and-versioned-recipe'),
+                           'license_expression': reviewed['license'] if reviewed else 'pending final license inventory review',
+                           'license_review': reviewed})
     print(json.dumps({'schema_version': 1, 'scope': 'installed native packages only',
                       'release_complete': False, 'generated_at': datetime.now(timezone.utc).isoformat(),
                       'package_count': len(components), 'components': components}, indent=2))

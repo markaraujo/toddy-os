@@ -721,3 +721,17 @@ all_cases_pass=false and exact failures; no global engine/source change or full
 locale correctness is claimed. The report SHA-256 is
 3e7546e1ecb70d9616b35b7d54aeb9e905b2016874146c19113f434f4a5efdb4.
 Native boot repetition and remaining consumer review remain required before G1.
+
+
+Verified 101-package recovery cache:
+.local/native-package-snapshots/20261106T104331341467Z, inventory SHA-256
+00b1e1f3709eef2c19ad0b55c5b39b14cb1d6a93514ab9ce2344686306890380,
+archive fcc82a8eb9abc23fe59c9000151fbce2686a79f1c1ace365729f6483eebf7f29.
+This includes accepted Dpkg but remains a cache, not a bootable checkpoint.
+Native CMakeCache confirms system libraries enabled except the explicitly
+bundled JsonCpp/cppdap/librhash (KWSys/KWIML also embedded); their actual notice
+terms were reviewed and recorded in config/component-licenses.json. JsonCpp's
+explicit MIT option is selected. The inventory exporter now exposes reviewed
+licenses/bundles, source kind, book provenance and packaging backend rather than
+marking even reviewed entries generically pending. Unreviewed packages still
+remain pending; no full license closure or native backend acceptance is claimed.

@@ -34,3 +34,12 @@ Source: frozen Gawk 5.4.1 doc/gawk.texi Choosing Matchers and re.c; original Gli
 Findutils reproducer in ADR-0020; native executables, unchanged environments.
 Primary documentation: https://www.gnu.org/software/gawk/manual/html_node/Choosing-Matchers.html
 and https://www.gnu.org/software/gawk/manual/html_node/Case_002dsensitivity.html.
+
+Dynamic-symbol audit inspected all 2551 installed native ELFs and found
+49 importing regex consumers across 25 packages. Full file/symbol
+list is .local/logs/h07-regex-imports-101.json SHA-256 c47c34fa543b52ba0708b4ece27009723bcffde681956205f7696504ada77825.
+This includes optional utilities/libraries as well as direct CLI consumers;
+dynamic imports do not prove each program exercises the affected fastmap case.
+Gawk's MinRX and other static/bundled engines require separate source review.
+The affected locale/pattern remains a release limitation for Glibc consumers,
+not a claim that every listed program is individually broken or fully tested.
