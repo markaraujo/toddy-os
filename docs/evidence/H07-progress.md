@@ -204,3 +204,22 @@ running under the accounts driver; no GCC install or acceptance is claimed.
 | libxcrypt | c445a671446b2e9ea24b7fac3035fc00caa5989369138d56cf6c18f60277783b |
 | shadow-audit | 9bdedf14c86b20b273dce36fe0d21e5d52fa5b1058eaa498fdad8abd15f3333d |
 | gawk | 53915c81ab7e03fc6c7d586db6dcf418264c3bb9622c7370b7c42ec72e90b854 |
+
+## Partial ELF audit and compiler source signature
+
+A read-only actual-target audit inspected 445 ELFs in 31 native packages.
+It found 20 references to still-unowned temporary C++/terminal providers and
+eight missing direct dependency declarations across four consumer/provider
+pairs: Bc -> Readline, Binutils -> Flex, Gawk -> Readline, Shadow -> ACL.
+These are pending final native dependency updates; no closed runtime graph
+is claimed. Glibc gconv's private $ORIGIN libraries resolve correctly and are
+owned by Glibc. The auditor resolves absolute symlinks inside the target
+namespace, not against builder /usr. Full output is retained at
+.local/inventories/h07-native-elf-partial.json. Optional dlopen/tool/data/plugin
+and version-policy checks remain separate obligations.
+
+The unchanged GCC 16.2.0 source archive also passed gpgv signature verification
+with the official GNU keyring obtained through its kernel.org mirror, signer
+7F74F97C103468EE5D750B583AB00996FC26A641. Source hash/version did not change;
+this additional authentication does not rerun unchanged compilation/tests.
+Signature output is retained outside Git in .local/upstream-verification.

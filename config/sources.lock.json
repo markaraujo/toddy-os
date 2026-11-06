@@ -161,7 +161,12 @@
       "url": "https://ftpmirror.gnu.org/gcc/gcc-16.2.0/gcc-16.2.0.tar.xz",
       "upstream_md5": "19b777fb19ea4982731392481306f0d3",
       "sha256": "e6738e29597f733270731aa90600f37ffdc045079dfc27ec7e8192cc81085c3e",
-      "download_url": "https://ftpmirror.gnu.org/gcc/gcc-16.2.0/gcc-16.2.0.tar.xz"
+      "download_url": "https://ftpmirror.gnu.org/gcc/gcc-16.2.0/gcc-16.2.0.tar.xz",
+      "signature_verified": true,
+      "signature_fingerprint": "7F74F97C103468EE5D750B583AB00996FC26A641",
+      "signature_url": "https://mirrors.kernel.org/gnu/gcc/gcc-16.2.0/gcc-16.2.0.tar.xz.sig",
+      "signature_keyring_url": "https://mirrors.kernel.org/gnu/gnu-keyring.gpg",
+      "signature_keyring_sha256": "8013de59880f7a59f53b6bd207f4d2a408d67b84a82fa9cba1dbbf443428e2db"
     },
     {
       "filename": "gdbm-1.26.tar.gz",

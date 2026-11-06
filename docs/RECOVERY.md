@@ -121,3 +121,10 @@ The original Shadow postcheck failure remains preserved; shadow-audit passed
 without reinstalling. Native target has 31 packages, latest cold checkpoint
 h07-native-math predates the six permissions/accounts additions. H08 must
 supply /run/dbus creation at native boot; test ACL copies after final Coreutils.
+
+Before final H07 closure, repair the direct dependency declarations found by
+actual ELF audit: Bc/Readline, Binutils/Flex, Gawk/Readline and Shadow/ACL, plus
+the C++/terminal providers once final gcc-runtime/Ncurses are installed. Use
+versioned native metadata updates with original archives retained. Re-run
+scripts/build/audit_native_elf.py inside the guest; its partial report does not
+cover optional dlopen, tools/data/plugins or dependency version constraints.
