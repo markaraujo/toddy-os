@@ -134,3 +134,9 @@ embedded identity/hash checks, read-only Squashfs, indexed volatile overlay,
 ACL restore and native Systemd switch. Native non-PID-1 refusal passed before
 mounts. Real media discovery/rescue/boot remain untested and gated; the complete
 H07 BDB suite is still progressing through recovery cases.
+
+2026-11-06: Verified actual native set-ID execution with the planned nosuid
+upper storage: overlay execution preserves the reviewed helper semantics before
+and after copy-up, while direct upper execution remains unprivileged. Repeated
+ACL/hardlink/volatility checks passed; older evidence generations preserved.
+Builder-kernel fixture only, with real live-root acceptance still pending.

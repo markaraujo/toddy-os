@@ -558,3 +558,10 @@ console and full failure path have not yet been exercised in a booted guest.
 Ordinary execution refuses before mounts. Thirty discovery passes do not
 promise a hard timeout for kernel storage I/O. Live changes consume RAM and
 are discarded; do not treat them as installed-system persistence.
+
+
+The overlay probe now also tests a private native set-ID executable through
+both overlay and direct nosuid-upper paths. Expected identities are recorded
+in ADR-0048. It performs no installed account/helper changes. Reports retain
+SHA-256-suffixed immutable generations before updating the unsuffixed current
+JSON, so rerunning the experiment does not erase earlier cited evidence.

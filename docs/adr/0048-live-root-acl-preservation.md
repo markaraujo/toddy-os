@@ -81,7 +81,8 @@ pass or assume every kernel/lower combination supports the selected profile.
 
 Reproduce from the checkout with python3 scripts/host/probe_overlay_acl.py off
 and then the same command with on. This deliberately tests private builder
-fixtures only; it does not execute H10 or modify the installed root. Raw logs:
+fixtures only; it does not execute H10 or modify the installed root. Raw logs (SHA-suffixed immutable generations are retained alongside the
+current unsuffixed report):
 
 - .local/logs/h10-overlay-acl-index-off-probe.json, SHA-256
   `7943c3f5b292551d3998c67f03f35ea5abdec0463c3c5813570e32bde9ef6cae`.
@@ -93,3 +94,41 @@ copying/relinking every hardlink into tmpfs before services or using a different
 writable-root design; neither is needed if the intended single-layer indexed
 profile passes the actual Squashfs/native-kernel test. Failure of that test must
 reopen this choice, not discard hardlink semantics or weaken the acceptance.
+
+
+## Administrative helper behavior through the live overlay
+
+The prepared /init places upper/work under a nosuid,nodev tmpfs /run while
+mounting the live root overlay with normal executable semantics. Verify that
+this does not silently disable the final root's reviewed privileged helpers.
+Frozen Linux 7.1.8 fs/exec.c checks mnt_may_suid(file->f_path.mnt) and process
+no_new_privs before applying set-ID credentials; mode bits alone are not proof.
+
+The private builder-kernel experiment now matches those tmpfs options. Native
+GCC compiled a tiny C executable that only prints real/effective UID. It is
+root-owned mode 4755 in the private lower tree. A child drops supplementary
+groups, GID and real/effective UID to 101 before executing it. Actual results:
+
+| Execution path | Real UID | Effective UID |
+| --- | --- | --- |
+| Overlay before copy-up | 101 | 0 |
+| Overlay after copy-up and restored mode | 101 | 0 |
+| Same bytes directly through the nosuid upper mount | 101 | 101 |
+
+The read-only lower executable's bytes/mode stay unchanged. The existing ACL,
+hardlink and volatile-write assertions still pass with indexing enabled; the
+index-disabled control still demonstrates broken hardlink write propagation.
+No installed helper, account or host security policy was changed. The inoffensive
+probe executable and all mounts/fixtures were removed after verification.
+This is not the future agent privileged executor or an installed-system test.
+
+Updated native evidence generations use the same h10-overlay-acl-index-*-probe
+prefix, preserving every earlier cited generation before replacing the current
+report. Off SHA-256:
+`1911babc83d41f0b6646b1b759c11a8d83b25ef149e7c32bbdca282893dd325b`.
+On SHA-256:
+`ec555a0fdb531b6b6201c9ead094aebd8e6be31264523cea2e6cb175c7cd578e`.
+The actual Squashfs/7.1.8 live root must repeat the relevant checks. Keep normal
+root-overlay helper behavior distinct from the nosuid staging path; do not
+weaken the latter globally or claim broad security certification from this
+small executable test.
