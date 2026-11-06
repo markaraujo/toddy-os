@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "components": [
+    {
+      "name": "man-pages",
+      "version": "6.18",
+      "license": "LicenseRef-man-pages-per-file",
+      "evidence": "Source archive per-page notices and LICENSES/*.txt; retain AUTHORS and all license texts in native package"
+    },
+    {
+      "name": "iana-etc",
+      "version": "20260805",
+      "license": "CC0-1.0 AND MIT",
+      "registry_terms": "https://www.iana.org/help/licensing-terms",
+      "generator_license_url": "https://raw.githubusercontent.com/Mic92/iana-etc/9d9a34cef5d474d018e8c6dd9e5428143f08649a/LICENSE",
+      "generator_license_sha256": "12a70cb991002fe457b82f14dad29df42a1c1812257da46fee9de64af6b9083a"
+    }
+  ]
+}

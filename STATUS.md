@@ -4,11 +4,11 @@ Updated: 2026-11-05
 
 Bootstrap: ready_for_development
 
-Implementation: H01-H05 validated in KVM, including temporary tools and safe interruption/restart. H06 native chroot next; no bootable Toddy ISO or passed release gate yet.
+Implementation: H01-H06 validated in KVM. H07 has two final native packages and verified ownership conflict rejection; critical final suites remain pending. No bootable Toddy ISO or passed release gate.
 
-Foundation: **30%** · Agentic desktop: **0%**
+Foundation: **38%** · Agentic desktop: **0%**
 
-G1: pending · G2: pending · Next: **H06**
+G1: pending · G2: pending · Next: **H07**
 
 No milestone earns credit without completed acceptance evidence.
 
@@ -19,8 +19,8 @@ No milestone earns credit without completed acceptance evidence.
 | [H03 — Prepare target, build user and package ownership](stories/H03.md) | foundation | 4 | completed |
 | [H04 — Build the cross-toolchain](stories/H04.md) | foundation | 10 | completed |
 | [H05 — Build temporary tools](stories/H05.md) | foundation | 8 | completed |
-| [H06 — Enter chroot and create recoverable checkpoint](stories/H06.md) | foundation | 8 | in_progress |
-| [H07 — Build and test the final base system](stories/H07.md) | foundation | 24 | not_started |
+| [H06 — Enter chroot and create recoverable checkpoint](stories/H06.md) | foundation | 8 | completed |
+| [H07 — Build and test the final base system](stories/H07.md) | foundation | 24 | in_progress |
 | [H08 — Configure identity, services and basic networking](stories/H08.md) | foundation | 6 | not_started |
 | [H09 — Build kernel and boot configuration](stories/H09.md) | foundation | 8 | not_started |
 | [H10 — Assemble the live system](stories/H10.md) | foundation | 8 | not_started |

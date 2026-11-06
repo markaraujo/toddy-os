@@ -1,0 +1,11 @@
+IANA protocol registry data
+
+The IANA/IETF joint statement dated 2021-11-10 dedicates applicable rights in
+the technical Protocol Registries to CC0 1.0. This includes the protocol-number
+and service-name/port-number registries used by the frozen iana-etc data.
+
+Authoritative statement: https://www.iana.org/help/licensing-terms
+Dedication: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+This notice does not apply that license to RFC documents or unrelated material.
+The iana-etc generator's MIT notice is retained separately.

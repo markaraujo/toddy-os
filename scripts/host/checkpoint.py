@@ -115,7 +115,9 @@ def main():
         backup.mkdir()
         for filename in DISKS.values():
             copy(vm.VM / filename, backup / filename)
-        write(RESTORING, {'name': args.name, 'preserved_current_pair': backup.name})
+        pending = {'name': args.name, 'preserved_current_pair': backup.name}
+        write(RESTORING, pending)
+        print(f'Current disks preserved at checkpoints/{backup.name}', flush=True)
     for kind, disk in data['disks'].items():
         source = FOLDER / disk['file']
         destination = vm.VM / DISKS[kind]
@@ -124,7 +126,9 @@ def main():
         if digest(part) != disk['sha256']:
             raise SystemExit('Restore copy mismatch; VM start remains blocked')
         part.replace(destination)
-    write(vm.VM / 'last-restore.json', data)
+    write(vm.VM / 'last-restore.json', {'checkpoint': data,
+        'restored_utc': datetime.now(timezone.utc).isoformat(),
+        'preserved_current_pair': pending['preserved_current_pair']})
     RESTORING.unlink()
     print(f'Paired checkpoint restored and hashes verified: {args.name}')
 

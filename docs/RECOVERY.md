@@ -1,6 +1,6 @@
 # Development recovery
 
-Current checkpoint: H05 completed all 17 temporary-tool steps, library/ownership audit and interruption/restart checks. Target root is /dev/vdb4 mounted at /mnt/lfs.
+Current checkpoint: H06 native chroot, eight temporary packages, /tools removal and real paired-disk restoration passed. Target root is /dev/vdb4 mounted at /mnt/lfs.
 No ISO exists. Gate G1 and G2 remain pending. Inspect status.json and actual
 processes before continuing; this document is updated at verified boundaries.
 
@@ -34,27 +34,28 @@ disks first. The H01 checkpoint predates target preparation.
 
 ## Latest verified checkpoint and next action
 
-H05 passed: driver exit 0, 17 recipe/postcheck successes and verified full log
-hashes. Latest paired offline checkpoint:
-.local/vm/checkpoints/h05-builder.qcow2 and h05-target.qcow2. Copies were made
-with QEMU stopped. H05 failed gzip attempt is retained under runner history/;
-its verified retry succeeded. See docs/evidence/H05.md.
+H06 passed: ten recipe/postcheck successes, native C/C++ and post-cleanup
+self-hosting tests, plus actual checkpoint restoration. Latest verified pair
+and hash manifest: .local/vm/checkpoints/h06-ready.json, h06-ready-builder.qcow2
+and h06-ready-target.qcow2. The modified pre-restore pair is preserved; see
+.local/vm/last-restore.json for its exact directory. No /tools remains.
 
-H06 is next/running: synchronize reviewed chapter 7 scripts, start its driver
-only once, then inspect actual processes. PID/log/exit files:
-/var/log/toddy/h06-driver.pid, h06-driver.log and h06-driver.exit. Per-package
-records live at /var/log/toddy/build/h06-*. The bootstrap changes lfs ownership
-to root, mounts guest pseudo filesystems and checks actual native C/C++ in
-chroot. Later steps build eight temporary packages and remove /tools.
+The guest is running and pseudo filesystems are mounted. After any restart:
 
 ```sh
-python3 scripts/host/vm.py ssh 'cat /var/log/toddy/h06-driver.log; ls /var/log/toddy/build/h06-*'
+python3 scripts/host/vm.py ssh 'bash /opt/toddy-build/scripts/build/mount-kernfs.sh'
+python3 scripts/host/vm.py ssh 'bash /opt/toddy-build/scripts/build/h06/cleanup-check.sh'
 ```
 
-If interrupted, inspect the failed/running record and manifest before retry.
-Do not run native chroot recipes directly on the builder root or workstation.
-The H05 pair is the rollback point before ownership/chroot transition. A
-future H06 completion also requires a demonstrated checkpoint restoration.
+H07 is next: use frozen chapter 8 order, stage final packages, check ownership
+before native .deb installation, and retain critical test results. Man-pages and iana-etc have passed; ownership rejection probe also passed.
+Next is final Glibc with explicit stable security patch and full critical suite.
+Preserve h06-ready before final libc changes. Security
+overlay research is recorded separately; no fix is claimed built yet.
+
+Never rerun the account-creation bootstrap over existing work. Resume mount
+state with mount-kernfs.sh. Never run chroot recipe bodies on builder root or
+workstation. Check failed/running manifests before retrying a package.
 
 ## Storage and resource boundaries
 
