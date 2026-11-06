@@ -180,6 +180,184 @@
       "signature_note": "Locally reviewed context-only adaptation with all 1327 postimages identical to book-default application; frozen by Git commit and SHA-256.",
       "derived_from_sha256": "8be28dcb11420624a500f2ea4fe975f771174bffee50e54ec8cd295a2dec104e",
       "decision": "ADR-0022"
+    },
+    {
+      "name": "libmd",
+      "version": "1.3.0",
+      "filename": "libmd-1.3.0.tar.xz",
+      "url": "https://archive.hadrons.org/software/libmd/libmd-1.3.0.tar.xz",
+      "sha256": "fc0f1eb6b6766470326f2c014693809190e67dba84274a6fbae9d4912d066706",
+      "size": 292952,
+      "signature_verified": false,
+      "decision": "ADR-0024",
+      "published_sha256": "fc0f1eb6b6766470326f2c014693809190e67dba84274a6fbae9d4912d066706",
+      "published_digest_source": "https://archive.hadrons.org/software/libmd/libmd-1.3.0.announce",
+      "signature_note": "Official publisher SHA-256 verified over HTTPS; no independent signature verification."
+    },
+    {
+      "name": "googletest",
+      "version": "1.18.0",
+      "filename": "googletest-1.18.0.tar.gz",
+      "url": "https://github.com/google/googletest/releases/download/v1.18.0/googletest-1.18.0.tar.gz",
+      "sha256": "6e3191c1455468b3fc35a417fb565c1c5071aee1b7e7f85e30cf48a98d37d8b5",
+      "size": 894741,
+      "signature_verified": false,
+      "decision": "ADR-0024",
+      "published_sha256": "6e3191c1455468b3fc35a417fb565c1c5071aee1b7e7f85e30cf48a98d37d8b5",
+      "published_digest_source": "https://github.com/google/googletest/releases/tag/v1.18.0",
+      "signature_note": "Official publisher SHA-256 verified over HTTPS; no independent signature verification."
+    },
+    {
+      "name": "xxhash",
+      "version": "0.8.4",
+      "filename": "xxHash-0.8.4.tar.gz",
+      "url": "https://github.com/Cyan4973/xxHash/archive/refs/tags/v0.8.4.tar.gz",
+      "sha256": "5738270935e7c3d38a79b3adf7c9692566ce7895a25f67de43ad52ab504acd32",
+      "size": 1167538,
+      "signature_verified": false,
+      "decision": "ADR-0024",
+      "release_source": "https://github.com/Cyan4973/xxHash/releases/tag/v0.8.4",
+      "signature_note": "Official maintainer GitHub release-tag archive over HTTPS; observed SHA-256 pinned, no publisher archive digest or independent signature verification."
+    },
+    {
+      "name": "berkeley-db",
+      "version": "5.3.28+dfsg2",
+      "filename": "db5.3_5.3.28+dfsg2.orig.tar.xz",
+      "url": "https://deb.debian.org/debian/pool/main/d/db5.3/db5.3_5.3.28+dfsg2.orig.tar.xz",
+      "sha256": "ad41b507415dec8316e828b2230242af2251d2c86eefa3c7aa9ef47c5239ef33",
+      "size": 21287688,
+      "signature_verified": false,
+      "decision": "ADR-0024",
+      "published_sha256": "ad41b507415dec8316e828b2230242af2251d2c86eefa3c7aa9ef47c5239ef33",
+      "published_digest_source": "https://deb.debian.org/debian/pool/main/d/db5.3/db5.3_5.3.28+dfsg2-12.dsc",
+      "signature_note": "Official publisher SHA-256 verified over HTTPS; no independent signature verification."
+    },
+    {
+      "name": "berkeley-db-patches",
+      "version": "5.3.28+dfsg2-12",
+      "filename": "db5.3_5.3.28+dfsg2-12.debian.tar.xz",
+      "url": "https://deb.debian.org/debian/pool/main/d/db5.3/db5.3_5.3.28+dfsg2-12.debian.tar.xz",
+      "sha256": "ced49fb5af63eeef6f4edd603903a8ec22e0a598b570eac99e97652c82e8c433",
+      "size": 36544,
+      "signature_verified": false,
+      "decision": "ADR-0024",
+      "published_sha256": "ced49fb5af63eeef6f4edd603903a8ec22e0a598b570eac99e97652c82e8c433",
+      "published_digest_source": "https://deb.debian.org/debian/pool/main/d/db5.3/db5.3_5.3.28+dfsg2-12.dsc",
+      "signature_note": "Official publisher SHA-256 verified over HTTPS; no independent signature verification."
+    },
+    {
+      "name": "libgpg-error",
+      "version": "1.61",
+      "filename": "libgpg-error-1.61.tar.bz2",
+      "url": "https://gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.61.tar.bz2",
+      "sha256": "7a85413f2bc354f4f8aa832b718af122e48965e9e0eb9012ee659c13c6385c93",
+      "size": 1124751,
+      "signature_verified": true,
+      "signing_fingerprints": [
+        "6DAA6E64A76D2840571B4902528897B826403ADA",
+        "AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD"
+      ],
+      "signature_url": "https://gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.61.tar.bz2.sig",
+      "download_url": "https://ftp.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.61.tar.bz2",
+      "key_source": "https://ftp.gnupg.org/signature_key.asc",
+      "fingerprint_source": "https://www.gnupg.org/signature_key.html",
+      "decision": "ADR-0026",
+      "signature_note": "Detached archive signatures verified with gpgv against explicitly scoped upstream release keys; both published Werner Koch and Niibe Yutaka fingerprints matched. No global trust-store changes."
+    },
+    {
+      "name": "libgcrypt",
+      "version": "1.12.4",
+      "filename": "libgcrypt-1.12.4.tar.bz2",
+      "url": "https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.12.4.tar.bz2",
+      "sha256": "d77f68f48879510e79a2f65977ccc68981781ea0923e5bdffac2a193ea3d660e",
+      "size": 4473329,
+      "signature_verified": true,
+      "signing_fingerprints": [
+        "6DAA6E64A76D2840571B4902528897B826403ADA",
+        "AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD"
+      ],
+      "signature_url": "https://gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.12.4.tar.bz2.sig",
+      "download_url": "https://ftp.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.12.4.tar.bz2",
+      "key_source": "https://ftp.gnupg.org/signature_key.asc",
+      "fingerprint_source": "https://www.gnupg.org/signature_key.html",
+      "decision": "ADR-0026",
+      "signature_note": "Detached archive signatures verified with gpgv against explicitly scoped upstream release keys; both published Werner Koch and Niibe Yutaka fingerprints matched. No global trust-store changes."
+    },
+    {
+      "name": "libassuan",
+      "version": "3.0.2",
+      "filename": "libassuan-3.0.2.tar.bz2",
+      "url": "https://gnupg.org/ftp/gcrypt/libassuan/libassuan-3.0.2.tar.bz2",
+      "sha256": "d2931cdad266e633510f9970e1a2f346055e351bb19f9b78912475b8074c36f6",
+      "size": 593917,
+      "signature_verified": true,
+      "signing_fingerprints": [
+        "6DAA6E64A76D2840571B4902528897B826403ADA",
+        "AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD"
+      ],
+      "signature_url": "https://gnupg.org/ftp/gcrypt/libassuan/libassuan-3.0.2.tar.bz2.sig",
+      "download_url": "https://ftp.gnupg.org/ftp/gcrypt/libassuan/libassuan-3.0.2.tar.bz2",
+      "key_source": "https://ftp.gnupg.org/signature_key.asc",
+      "fingerprint_source": "https://www.gnupg.org/signature_key.html",
+      "decision": "ADR-0026",
+      "signature_note": "Detached archive signatures verified with gpgv against explicitly scoped upstream release keys; both published Werner Koch and Niibe Yutaka fingerprints matched. No global trust-store changes."
+    },
+    {
+      "name": "libksba",
+      "version": "1.8.1",
+      "filename": "libksba-1.8.1.tar.bz2",
+      "url": "https://gnupg.org/ftp/gcrypt/libksba/libksba-1.8.1.tar.bz2",
+      "sha256": "c2f84393011827219ae117131dba8e7684c2bed0961eed11b0642c2acba440b5",
+      "size": 722040,
+      "signature_verified": true,
+      "signing_fingerprints": [
+        "6DAA6E64A76D2840571B4902528897B826403ADA",
+        "AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD"
+      ],
+      "signature_url": "https://gnupg.org/ftp/gcrypt/libksba/libksba-1.8.1.tar.bz2.sig",
+      "download_url": "https://ftp.gnupg.org/ftp/gcrypt/libksba/libksba-1.8.1.tar.bz2",
+      "key_source": "https://ftp.gnupg.org/signature_key.asc",
+      "fingerprint_source": "https://www.gnupg.org/signature_key.html",
+      "decision": "ADR-0026",
+      "signature_note": "Detached archive signatures verified with gpgv against explicitly scoped upstream release keys; both published Werner Koch and Niibe Yutaka fingerprints matched. No global trust-store changes."
+    },
+    {
+      "name": "npth",
+      "version": "1.8",
+      "filename": "npth-1.8.tar.bz2",
+      "url": "https://gnupg.org/ftp/gcrypt/npth/npth-1.8.tar.bz2",
+      "sha256": "8bd24b4f23a3065d6e5b26e98aba9ce783ea4fd781069c1b35d149694e90ca3e",
+      "size": 317739,
+      "signature_verified": true,
+      "signing_fingerprints": [
+        "6DAA6E64A76D2840571B4902528897B826403ADA",
+        "AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD"
+      ],
+      "signature_url": "https://gnupg.org/ftp/gcrypt/npth/npth-1.8.tar.bz2.sig",
+      "download_url": "https://ftp.gnupg.org/ftp/gcrypt/npth/npth-1.8.tar.bz2",
+      "key_source": "https://ftp.gnupg.org/signature_key.asc",
+      "fingerprint_source": "https://www.gnupg.org/signature_key.html",
+      "decision": "ADR-0026",
+      "signature_note": "Detached archive signatures verified with gpgv against explicitly scoped upstream release keys; both published Werner Koch and Niibe Yutaka fingerprints matched. No global trust-store changes."
+    },
+    {
+      "name": "gnupg",
+      "version": "2.5.24",
+      "filename": "gnupg-2.5.24.tar.bz2",
+      "url": "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.24.tar.bz2",
+      "sha256": "bf149d01a2b9fcc0e4589b8ae8697d3d5c557ea48ed95a3fa55dd3b1187e6039",
+      "size": 8431157,
+      "signature_verified": true,
+      "signing_fingerprints": [
+        "6DAA6E64A76D2840571B4902528897B826403ADA",
+        "AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD"
+      ],
+      "signature_url": "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.24.tar.bz2.sig",
+      "download_url": "https://ftp.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.24.tar.bz2",
+      "key_source": "https://ftp.gnupg.org/signature_key.asc",
+      "fingerprint_source": "https://www.gnupg.org/signature_key.html",
+      "decision": "ADR-0026",
+      "signature_note": "Detached archive signatures verified with gpgv against explicitly scoped upstream release keys; both published Werner Koch and Niibe Yutaka fingerprints matched. No global trust-store changes."
     }
   ],
   "additional_decisions": [

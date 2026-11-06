@@ -291,3 +291,17 @@ bytes: 223 PASS/20 SKIP/group 233 FAIL, raw make 2. Independent compiled-Tar
 roundtrip preserved security.capability exactly. ADR-0023 and strict classifier
 retain the failure and require installed binary-xattr plus ACL checks. Do not
 use the book's generic SELinux explanation as the measured cause here.
+
+
+## H07 service/filesystem environment and source transport (2026-11-06)
+
+Systemd's four POSIX-locale ellipsis/help-width failures pass in UTF-8. Complete
+retry is 1828 OK/33 SKIP/one exact book-known namespace EPERM; raw exit retained,
+H12 native retry mandatory (ADR-0025). First collector retry used a duplicate
+build/ path and stopped before staging; corrected full repeat/collector passed.
+E2fsprogs' only failure is 232 versus 224 allocated sectors in the book-known
+prezeroed fixture. Strict classification and actual installed ext4 write/remount/
+fsck/persistence passed (ADR-0027); installer must use normal initialization.
+GnuPG primary hostname timed out and mirrors were stale. The official FTP
+hostname exposes the same website at /ftp/gcrypt/; all six archives and both
+published signing fingerprints verified there (ADR-0026), with no trust downgrade.

@@ -522,3 +522,76 @@ recipes are prepared, not yet accepted. ADR-0021 freezes public CA data; Curl's
 initial profile explicitly disables cookies without Libpsl. Vim's unchanged full
 downloader tests are scheduled after native TLS/client prerequisites. Final
 ownership, conffile, runtime-dependency and license-expression closure is pending.
+
+
+## Final services and TLS client: 86 accepted native packages
+
+Tar's strict full-suite classification accepted only the measured getcap display
+difference. Installed ACL copy/read and exact security.capability byte roundtrips
+passed; original raw make exit remains 2. Texinfo, MarkupSafe and Jinja2 native
+checks passed. Systemd's complete UTF-8 suite is 1828 OK/33 SKIP/one book-known
+chroot namespace FAIL (ADR-0025); raw ninja exit 1 is retained. Initial five-fail
+POSIX report and the four-test focused locale correction are preserved. A
+collector path error stopped the first retry before staging; the corrected
+complete retry and classification passed before installation. Installed version,
+init link, udev tool and escaping checks passed. No native boot is claimed.
+H12 must rerun the exact namespace case under the native booted OS before G1.
+
+D-Bus's full configured suite and an actual ListNames call through dbus-run-session
+passed. Man-DB formatted a real native manual; Procps full tester suite and
+process/memory queries passed. Util-linux's complete unprivileged suite and
+native mount-info/UUID probes passed. Root device tests were not run. E2fsprogs'
+393-success/one-known allocation mismatch retains raw make exit 2 (ADR-0027).
+Installed default ext4 creation/check/mount/write/unmount/recheck/remount proved
+persistent exact data inside a disposable regular-file filesystem; cleanup
+removed only its own fixture. Installer use of unproven prezeroed optimization
+is forbidden. Actual installed-disk/ISO boot remains untested.
+
+The frozen public CA package verifies its source SHA, parses all 118 certificates
+and loads them with Python's default SSL context. Nghttp2's suite/native API
+passed. Curl considered 2138 tests and reported 1597/1597 OK; unavailable-feature
+cases remain unclaimed, including cases needing an HTTP/2 server absent from the
+lib-only Nghttp2 build. Installed Curl verified real HTTPS and rejected the
+self-signed endpoint with exit 60. HTTP2 compiled capability is not a claim that
+all end-to-end HTTP/2 server tests ran. Cookie support is explicitly disabled in
+this initial build-client profile (ADR-0021).
+
+| Accepted runner | Recipe/postcheck | Full log SHA-256 |
+| --- | --- | --- |
+| h07-tar-recovery | 0 / 0 | 8565dcd89ad54245c1aaeb7ae972fbbedb69f1fceabc7fdcafadbad361bfc546 |
+| h07-texinfo | 0 / 0 | bf404275e45e74697124176e379104ad25b693e64da2a5c2d78765c984c983f5 |
+| h07-systemd-recovery | 0 / 0 | a7e88dc525ee58d596e04ac4c3dc8c1027165773e88350d806313d7c42081cac |
+| h07-dbus | 0 / 0 | 71259bdfdb8e94dbfaf3b3a3296761a40ffd108f05f832724094c1c621421b9e |
+| h07-man-db | 0 / 0 | 1e07961aaaff3967bb9014071ca9049a4d2992830b0b1aa70b56944f9a9a2dfd |
+| h07-procps-ng | 0 / 0 | 8b416c64d349154f4d9eb4147d72972c7bf5b5d1535e84ca7533d0e6f43fa106 |
+| h07-util-linux | 0 / 0 | e84d7fe00ef3f938ee4ab0ab2b93d46e87b5d64891e599854956b571b036b9e1 |
+| h07-e2fsprogs-recovery | 0 / 0 | c4b3e4acb8f085fef646fcb9227ec8c114b2951eae2c47e7128b51cbd84c60f8 |
+| h07-ca-certificates | 0 / 0 | 354fd70b3bc09b2af7d945d182cc0125df7a2473b25de1c00a60eb64aff298a8 |
+| h07-nghttp2 | 0 / 0 | 75bc4270e8e0aaf6ae9f0195cd68b6bb832213459924da620c6c3983e58d8f3f |
+| h07-curl | 0 / 0 | 189f06fd8cdb8a826e9b4876b6ebb4bd6d9e1f8cdee39d711c1cf98593061ebe |
+
+86-package cache: .local/native-package-snapshots/20261106T081438374341Z.
+Inventory SHA-256 87d1bdd5311848905db42ffac7d4f099208a83835264939e62c6847cbdae67e2;
+cache SHA-256 285a26fb43142e8d48b62304b31cf5d960ae25f71066b9252016b9aa13daa96f.
+Raw runner/nested evidence .local/logs/h07-native-services-86.tar.gz SHA-256
+26e16f61e40d2e2e9fe4a49ae50e31f49dd65b71d20db563bb7281988e2b1d05.
+Both are verified copies, not bootable checkpoints. A cold pair is being saved.
+
+The old orchestration shell was stopped at the completed Curl boundary; no
+build/test was interrupted. Frozen signing inputs/recipes were then synced under
+the exclusive build lock. The fresh supplemental driver skips accepted packages
+and runs Libuv/Libarchive/CMake, package-manager prerequisites and authenticated
+GnuPG support next. It refuses Vim before frozen GLVS downloader inputs exist;
+no mutable third-party plugin may execute before source verification. All Vim
+tests remain required. Fifty local regression tests pass. Final native dpkg/APT,
+ownership/conffile/dependency/license closure and all release gates are pending.
+
+
+The h07-native-services cold paired checkpoint now passed both image checks and
+source/copy SHA comparisons, exit 0. Manifest is
+.local/vm/checkpoints/h07-native-services.json. Builder hash
+04f0d30eaf79e029948feae68255b20c3cab9a79dd4d67756af5128d6de44519;
+target hash 536109a5db3f6f2c44620c33f954fc2ce96570636c9a6b33bbc1b708e57785fd.
+It contains the 86-package accepted boundary and prepared supplemental recipes.
+It has not been restored; the earlier H06 pair remains the demonstrated restore.
+VM restart/remount/sync is the next operation, not an ISO/native OS boot claim.

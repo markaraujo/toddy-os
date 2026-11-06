@@ -34,40 +34,43 @@ disks first. The H01 checkpoint predates target preparation.
 
 ## Current verified checkpoint and next action
 
-Latest verified cold pair: .local/vm/checkpoints/h07-native-crypto.json and its
-builder/target qcow2 files. Both SHA-256 copy comparisons and qemu consistency
-checks passed; save log is .local/logs/h07-native-crypto-checkpoint.log, exit 0.
-It contains 55 accepted native packages plus the untouched Python source and
-original failed preflight, before the corrected Python build. H06 was actually
-restored/retested; this newer pair has been saved/verified, not yet restored.
-Checkpoint copies share the workstation disk and are not disaster recovery.
+Latest verified cold pair: .local/vm/checkpoints/h07-native-services.json with
+86 accepted native packages through Curl. Both copy hashes and qemu image
+checks passed; .local/logs/h07-native-services-checkpoint.exit is 0. Builder
+SHA-256 04f0d30eaf79e029948feae68255b20c3cab9a79dd4d67756af5128d6de44519;
+target SHA-256 536109a5db3f6f2c44620c33f954fc2ce96570636c9a6b33bbc1b708e57785fd.
+This pair was saved/verified, not yet restored. H06 restoration was actually
+exercised. Copies share the workstation disk and are not disaster recovery.
 
-Live target now has 73 accepted native packages through Patch. Python full
-retry and native postchecks passed. The latest cold pair remains the earlier
-55-package checkpoint; do not confuse live acceptance with saved disk state.
-Groff/Kbd recoveries passed; Tar recovery classifies the unchanged complete
-suite and requires installed ACL/capability roundtrips, then continues Texinfo.
-Its original raw make exit 2 remains recorded. See ADR-0023.
+Groff/Kbd/Tar/Systemd/E2fsprogs recoveries passed. Keep qualified raw failures
+and H12 native namespace obligations (ADR-0023/0025/0027). Do not infer all
+upstream tests passed from dispatcher recipe/postcheck zero. Live system still
+requires Vim/native package managers and final ownership/dependency closure.
+
+After verified save:
 
 ```sh
-python3 scripts/host/vm.py inspect
-python3 scripts/host/vm.py ssh 'find /var/log/toddy/build -name "*.running.json" -printf "%f\n"; tail -c 2000 /var/log/toddy/h07-tar-recovery-driver.log'
+python3 scripts/host/vm.py start
+python3 scripts/host/vm.py ssh 'bash /opt/toddy-build/scripts/build/mount-kernfs.sh'
+python3 scripts/host/sync_build.py
+python3 scripts/host/vm.py ssh 'nohup bash /opt/toddy-build/scripts/build/h07-supplemental-tools-driver.sh > /var/log/toddy/h07-supplemental-tools-driver.log 2>&1 < /dev/null & echo $!'
 ```
 
-Inspect /var/log/toddy/h07-tar-recovery-driver.{pid,exit} and actual processes.
-A failed step stops the chain. Read failure logs before choosing a dedicated
-resume script; never run the pristine Python resumer over the compiled tree.
-After restoring the 55-package cold pair, start/remount/sync, run the guarded
-build-resolver step, then the pristine Python recovery. H08 must replace the
-build-only static resolver before G1 or ISO assembly.
+Old supplemental orchestration was deliberately stopped only after Curl's
+success marker and absence of running dispatchers. The boundary record is
+/var/log/toddy/h07-supplemental-boundary-pause.json. Its enclosing E2fsprogs
+driver may record 137 for the stopped shell; this is not a package/test failure.
+Do not resume the old stopped PID. Fresh driver skips accepted packages, then
+runs remaining native support and signing libraries. Vim requires the guarded
+h07-vim-glvs-inputs success before any downloader test; prepare verified pinned
+plugins/responses, not a mutable download or silent test deletion.
 
-After a guest restart, run mount-kernfs.sh first. Full input sync takes the same
-exclusive guest lock as builds and refuses an active step. An input-sync.running
-flag means interrupted input installation; inspect/preserve staging and finish a
-verified sync before dispatch. Prepared final-services driver runs MarkupSafe/Jinja2 through E2fsprogs after
-Texinfo acceptance. Supplemental-tools then runs frozen CA/Nghttp2/Curl/Libuv/
-Libarchive/CMake before unchanged Vim tests. These are prepared recipes and
-require actual target acceptance.
+Full sync must hold the exclusive guest lock and refuses active recipes. An
+input-sync.running flag means interrupted installation; inspect/preserve staging
+and finish verified sync before dispatch. After a guest restart mount kernfs
+first. Never run a pristine-source resumer on an installed/compiled package.
+H08 must replace temporary build resolver 10.0.2.3 and generate proper per-machine
+identity; H12 must rerun Systemd namespace and Glibc container-dependent tests.
 
 Never rerun account bootstrap or re-extract successful build trees. The GCC
 suite marker proves compilation/tests only; installation is separately proved

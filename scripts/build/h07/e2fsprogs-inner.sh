@@ -9,7 +9,15 @@ cd build
 ../configure --prefix=/usr --sysconfdir=/etc --enable-elf-shlibs \
  --disable-libblkid --disable-libuuid --disable-uuidd --disable-fsck
 make
+set +e
 make check 2>&1 | tee /sources/evidence/h07-e2fsprogs/check.log
+results=("${PIPESTATUS[@]}")
+set -e
+[[ ${results[1]} == 0 ]]
+printf '%s\n' "${results[0]}" > /sources/evidence/h07-e2fsprogs/check.exit
+if [[ ${results[0]} != 0 ]]; then
+ python3 /sources/toddy-evaluate-e2fs.py /sources/evidence/h07-e2fsprogs tests ..
+fi
 make DESTDIR=/sources/stage/e2fsprogs install
 rm -f /sources/stage/e2fsprogs/usr/lib/{libcom_err,libe2p,libext2fs,libss}.a
 gunzip /sources/stage/e2fsprogs/usr/share/info/libext2fs.info.gz

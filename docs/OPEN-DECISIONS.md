@@ -39,3 +39,11 @@ initial package dependency subset must gain the final native Util-linux provider
 after that later book package is accepted. Util-linux's optional Systemd linkage
 must also be audited from actual ELFs. This is part of mandatory H07 versioned
 metadata closure; neither initial archive claims a closed dependency graph.
+
+H12 native namespace obligation: Systemd 261.2 test-namespace's
+ test_process_is_owned_by_uid at line 391 is source-qualified EPERM only in
+chroot (ADR-0025); require a real booted-target retry before G1. Keep the Glibc
+container-dependent retests as well. E2fsprogs prezeroed allocation qualification
+(ADR-0027) does not authorize installer use of assume_storage_prezeroed.
+Vim full GLVS suite must use frozen/verified external plugin inputs before any
+plugin executes; current driver stops at that precondition. No test is removed.

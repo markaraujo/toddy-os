@@ -17,7 +17,14 @@ ninja -j8
 if [[ ! -e /etc/os-release ]]; then
  printf 'NAME="Toddy OS"\nID=toddy\nPRETTY_NAME="Toddy OS experimental build"\n' > /etc/os-release
 fi
-unshare -m ninja test 2>&1 | tee /sources/evidence/h07-systemd/check.log
+# UTF-8 is required by upstream ellipsis/terminal-width assertions.
+set +e
+LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 unshare -m ninja test 2>&1 | tee /sources/evidence/h07-systemd/check.log
+results=("${PIPESTATUS[@]}")
+set -e
+[[ ${results[1]} == 0 ]]
+printf '%s\n' "${results[0]}" > /sources/evidence/h07-systemd/check.exit
+python3 /sources/toddy-evaluate-systemd.py /sources/evidence/h07-systemd meson-logs/testlog.json
 DESTDIR=/sources/stage/systemd ninja install
 mkdir -p /sources/stage/systemd/usr/share/man
 tar -xf /sources/systemd-man-pages-261.2.tar.xz --no-same-owner --strip-components=1 -C /sources/stage/systemd/usr/share/man
