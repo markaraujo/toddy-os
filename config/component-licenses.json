@@ -2381,6 +2381,13 @@
       "license": "GPL-2.0-or-later AND LicenseRef-squashfs-tools-per-file-notices",
       "evidence": "Original COPYING and explicit version-2-or-later source/COPYRIGHT grant; retain per-file and documentation notices and corresponding source",
       "review_scope": "Source identification only; native builds, functional tests and release legal audit remain pending"
+    },
+    {
+      "name": "toddy-boot-config",
+      "version": "0.1",
+      "license": "LicenseRef-LFS-Instructions-and-Toddy-Original-Pending",
+      "evidence": "Frozen LFS 13.1-systemd section 10.4 computer instructions retain MIT terms; original Toddy boot configuration edits remain subject to owner decision D10 (ADR-0046)",
+      "review_status": "original_project_licensing_pending_D10"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

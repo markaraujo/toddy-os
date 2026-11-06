@@ -19,6 +19,16 @@ python3 /opt/toddy-build/scripts/build/h09/boot_config.py "$filesystem_uuid" "$p
 # GRUB follows the relative ext4 symlink from its standard configuration path.
 ln -s ../../etc/toddy/grub.cfg "$stage/boot/grub/grub.cfg"
 cp /opt/toddy-build/LICENSES/LFS-MIT.txt "$stage/usr/share/doc/toddy-boot-config/copyright"
+cp /opt/toddy-build/config/books.lock.json "$stage/usr/share/doc/toddy-boot-config/book-sources.json"
+cat > "$stage/usr/share/doc/toddy-boot-config/profile.txt" <<'PROFILE'
+Profile: disposable build target, direct-root boot
+Source: frozen LFS 13.1-systemd section 10.4
+The measured builder filesystem/GPT UUIDs are not portable release defaults.
+Live media must generate its own root discovery and boot configuration.
+The installer must generate configuration for the selected destination disk.
+Original Toddy edits remain subject to licensing decision D10.
+Actual BIOS/UEFI boot acceptance is recorded separately from this package.
+PROFILE
 chroot_run <<'INNER'
 set -euo pipefail
 grub-script-check /sources/stage/toddy-boot-config/etc/toddy/grub.cfg

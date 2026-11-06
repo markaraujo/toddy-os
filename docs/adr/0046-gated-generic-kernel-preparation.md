@@ -117,3 +117,12 @@ then produced the intended H08/H09 status refusal, exit 1. Raw gate report
 c018c4c41ec964098f2d583799cd3269a87d7b3344902764dffe4c7a68edb37e.
 Shell syntax, Python parsing and 97 local checks pass. No bootloader installed,
 no boot sector written, no kernel/boot acceptance credited by these probes.
+
+
+Prepared toddy-boot-config now carries the frozen book lock and an explicit
+build-target profile alongside LFS notices. Its measured UUIDs must not be
+reused as live-media or installed-system defaults; image assembly and the
+installer must generate their own configuration. Component inventory maps
+version 0.1 to the same LFS-instruction/original-Toddy pending-D10 classification
+as base configuration. No new license grant or completed legal review is
+inferred from retaining the upstream notice. Package build remains pending.
