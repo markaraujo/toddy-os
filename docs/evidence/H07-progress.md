@@ -260,4 +260,42 @@ are archived in addition to the complete merged logs.
 Evidence copies: .local/logs/h07-gcc/evidence.tar.gz and runner.tar.gz.
 Reference URL/hash and minimum counts: config/compiler-test-reference.json.
 The printed upstream mail-report script remains unexecuted data only.
-Final GCC/runtime installation is pending; H07 is not complete.
+Final GCC/runtime installation subsequently passed as recorded below; H07 is not complete.
+
+
+## Final compiler installation and Ncurses (2026-11-06)
+
+The h07-gcc-tested paired cold checkpoint passed SHA-256 and qemu image checks
+before installation. Final GCC/runtime split installation then passed the
+explicit h07-gcc-install-recovery recipe and postcheck (both zero), changing
+1031 installed paths. Native C and threaded C++ executed; loader, startup files,
+header ownership and search paths passed, with no temporary toolchain leakage.
+The original failed attempt changed zero installed paths (missing staged
+copyright); it is preserved, not reclassified as passed.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| GCC installation recovery log | 3e0f609c9ae65c79450c17e143c13f5560f303536333446273c00c7e7a9cbb61 |
+| gcc-runtime native archive | 107013667956ccac7fdb840c7d62b24332da6e7ab74383ae6c1099358d296c60 |
+| gcc native archive | 13bbd31ca0815748db0dc070e2b763ca242c97b5a6d0a1d23a7ba6f7cf050c29 |
+
+Ncurses 6.6 staged documentation needed an explicit parent directory in an
+empty DESTDIR. The original failed attempt changed zero installed paths.
+Explicit stage recovery passed recipe/postcheck, including four upstream
+standalone setupterm cases and native terminal output. Current 34 packages
+include GCC/runtime and Ncurses. Sed onward is running; no later acceptance
+is inferred. The native ELF/dependency graph still requires metadata repairs.
+
+
+Sed 4.10 passed both test groups: 66 PASS/9 SKIP and 241 PASS/46 SKIP,
+zero FAIL, then native substitution. Psmisc 23.7 reported 66/2/9 expected
+passes across its three reports. Its first version-stream postcheck failed;
+separate unchanged-package audit passed the corrected version and process/
+signal checks. These bring the installed native count to 36. Compiler,
+Ncurses, Sed and Psmisc records/logs are copied outside Git to
+.local/logs/h07-native-compiler-install/records.tar.gz. Gettext onward is pending.
+
+Recipes for frozen LFS 13.1-systemd sections 8.40–8.45 (Libtool, GDBM, Gperf,
+Expat, Inetutils, Less) are prepared and syntax-checked, not yet accepted in
+the target. Expat uses the explicitly frozen 2.10.0 security overlay from
+ADR-0013. The native-tools driver requires final Bash success before starting.

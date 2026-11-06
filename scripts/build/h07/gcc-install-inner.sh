@@ -15,3 +15,5 @@ mapfile -t plugins < <(find "$stage/usr/libexec/gcc" -name liblto_plugin.so -typ
 ln -sfvr "${plugins[0]}" "$stage/usr/lib/bfd-plugins/"
 mkdir -p "$stage/usr/share/gdb/auto-load/usr/lib"
 mv -v "$stage"/usr/lib/*gdb.py "$stage/usr/share/gdb/auto-load/usr/lib/"
+mkdir -p "$stage/usr/share/doc/gcc"
+cat ../COPYING ../COPYING.LIB ../COPYING3 ../COPYING3.LIB ../COPYING.RUNTIME > "$stage/usr/share/doc/gcc/copyright"

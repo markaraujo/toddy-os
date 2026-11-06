@@ -174,3 +174,36 @@ marker, verify the installed Shadow package unchanged using dpkg --verify,
 and run a separate shadow-audit step instead of reinstalling. That step and
 its full account creation/unprivileged shell/removal, pwck/grpck postcheck
 passed with zero installed-file changes.
+
+
+## H07 empty-stage documentation prerequisites (2026-11-06)
+
+Final GCC staging reached the runtime splitter without a retained copyright
+file. The splitter rejected it before installation; the failed manifest has
+zero changed installed paths. Copy all five upstream GCC license notices
+before splitting. Explicit gcc-install-resume verifies that failure, the
+complete critical classification and existing stage, adds the notices and
+packages without rebuilding. Native compiler/runtime install and C/C++/linkage
+postchecks then passed (h07-gcc-install-recovery).
+
+Ncurses copied its documentation into an empty DESTDIR without first creating
+usr/share/doc. Unlike the book's live root, that parent did not exist. The
+failed attempt changed zero installed paths. Create that parent explicitly;
+ncurses-stage-resume verifies the original failure and existing stage before
+copying documentation and packaging. Recovery recipe/postcheck passed,
+including all four standalone setupterm cases. Neither correction changes
+upstream sources, test thresholds or critical result classification.
+
+
+## H07 Psmisc version stream (2026-11-06)
+
+Psmisc compilation, suite and installation passed; its first postcheck exited
+1 because killall --version writes its successful version output to stderr,
+while check_native filtered stdout. Capture both version streams explicitly
+for this program. A separate psmisc-audit verified installed files with dpkg
+and passed version, process-tree and signal-list checks without reinstalling
+or changing installed files. The original failed record remains intact.
+A mistakenly targeted sed-audit failed its missing-record precondition with
+zero installed changes; Sed itself had passed all along. It was removed from
+future recipes; actual per-step identity is checked before interpreting driver
+output, whose final record can belong to a later package.

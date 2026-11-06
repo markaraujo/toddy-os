@@ -14,6 +14,7 @@ for lib in ncurses form panel menu; do
  ln -sfv ${lib}w.pc /sources/stage/ncurses/usr/lib/pkgconfig/${lib}.pc
 done
 ln -sfv libncursesw.so /sources/stage/ncurses/usr/lib/libcurses.so
+mkdir -p /sources/stage/ncurses/usr/share/doc
 cp -v -R doc -T /sources/stage/ncurses/usr/share/doc/ncurses-6.6
 mkdir -p /sources/stage/ncurses/usr/share/doc/ncurses
 cp COPYING /sources/stage/ncurses/usr/share/doc/ncurses/copyright

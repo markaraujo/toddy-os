@@ -1,6 +1,6 @@
 # Development recovery
 
-Current checkpoint: H06 native chroot, eight temporary packages, /tools removal and real paired-disk restoration passed. Target root is /dev/vdb4 mounted at /mnt/lfs.
+Current stage: H07 final base, after accepted GCC suites and native compiler installation. H06 /tools removal and actual paired-disk restoration passed. Target root is /dev/vdb4 mounted at /mnt/lfs.
 No ISO exists. Gate G1 and G2 remain pending. Inspect status.json and actual
 processes before continuing; this document is updated at verified boundaries.
 
@@ -32,32 +32,40 @@ Latest paired offline checkpoint: .local/vm/checkpoints/h03-builder.qcow2 and
 h03-target.qcow2. Restore both together with QEMU stopped, preserving the failed
 disks first. The H01 checkpoint predates target preparation.
 
-## Latest verified checkpoint and next action
+## Current verified checkpoint and next action
 
-H06 passed: ten recipe/postcheck successes, native C/C++ and post-cleanup
-self-hosting tests, plus actual checkpoint restoration. Latest verified pair
-and hash manifest: .local/vm/checkpoints/h06-ready.json, h06-ready-builder.qcow2
-and h06-ready-target.qcow2. The modified pre-restore pair is preserved; see
-.local/vm/last-restore.json for its exact directory. No /tools remains.
+Latest verified cold pair: .local/vm/checkpoints/h07-gcc-tested.json and its
+builder/target qcow2 files. SHA-256 and qemu consistency checks passed. It
+contains 31 native packages and the complete classified final GCC build/tests,
+before GCC installation. Older h06-ready was actually restored and retested.
+Checkpoint copies share the workstation disk and are not disaster recovery.
 
-The guest is running and pseudo filesystems are mounted. After any restart:
+Current live target has 36 native packages, including GCC/runtime, Ncurses, Sed and Psmisc.
+Both explicit packaging recoveries passed recipe/postcheck; original failed
+records remain unchanged. Inspect actual records before resuming:
+
+```sh
+python3 scripts/host/vm.py inspect
+python3 scripts/host/vm.py ssh 'ls /var/log/toddy/build/*.running.json; tail -c 2000 /var/log/toddy/h07-install-final-compiler-driver.log'
+```
+
+The current driver has passed Sed/Psmisc and continues Gettext, Bison, Grep, test locales and
+Bash. Its terminal status is /var/log/toddy/h07-install-final-compiler-driver.exit;
+per-step running/success/failed records are authoritative. After a VM restart,
+run mount-kernfs.sh before any chroot operation. When no step is running, resume:
 
 ```sh
 python3 scripts/host/vm.py ssh 'bash /opt/toddy-build/scripts/build/mount-kernfs.sh'
-python3 scripts/host/vm.py ssh 'bash /opt/toddy-build/scripts/build/h06/cleanup-check.sh'
+python3 scripts/host/vm.py ssh 'nohup bash /opt/toddy-build/scripts/build/h07-install-final-compiler-driver.sh > /var/log/toddy/h07-install-final-compiler-driver.log 2>&1 < /dev/null &'
 ```
 
-H07 is next: use frozen chapter 8 order, stage final packages, check ownership
-before native .deb installation, and retain critical test results. Man-pages and iana-etc have passed; ownership rejection probe also passed.
-Final Glibc critical suite and native installation passed with one explicitly
-documented chroot failure; locales, tzdata, Zlib, Bzip2 and Xz also passed.
-Next is Lz4 in frozen chapter 8 order, then the remaining final base.
-Preserve h06-ready before final libc changes. Security
-overlay research is recorded separately; no fix is claimed built yet.
-
-Never rerun the account-creation bootstrap over existing work. Resume mount
-state with mount-kernfs.sh. Never run chroot recipe bodies on builder root or
-workstation. Check failed/running manifests before retrying a package.
+Never rerun account bootstrap or re-extract successful build trees. The GCC
+suite marker proves compilation/tests only; installation is separately proved
+by h07-gcc-install-recovery.success.json. Ncurses is separately proved by
+h07-ncurses-recovery.success.json. The first installation attempts changed
+zero installed paths. Fresh builds use corrected original recipes; explicit
+resume scripts only apply to those recorded failures and existing stages.
+Older continuation notes below are historical, not current job instructions.
 
 ## Storage and resource boundaries
 
