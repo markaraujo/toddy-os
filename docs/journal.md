@@ -128,3 +128,9 @@ native minimal runtime. Ten real native file cases passed, covering changed
 bytes, wrong/malformed metadata, absent/redirected payload and non-evaluated
 command-like text. Documented remaining discovery/real-image/boot integration
 in ADR-0053; H07 database recovery tests continue and no H10 credit is claimed.
+
+2026-11-06: Prepared the real live /init sequence: constrained ISO discovery,
+embedded identity/hash checks, read-only Squashfs, indexed volatile overlay,
+ACL restore and native Systemd switch. Native non-PID-1 refusal passed before
+mounts. Real media discovery/rescue/boot remain untested and gated; the complete
+H07 BDB suite is still progressing through recovery cases.

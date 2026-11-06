@@ -51,3 +51,47 @@ Actual device discovery, bounded waiting, recovery console, real media/format
 checks, indexed overlay, ACL restoration, Systemd transition and BIOS/UEFI/USB
 boot remain pending. The H09/H10 gates are unchanged. No script here installs
 or boots a live image, and no milestone credit is assigned to preparation.
+
+
+## Prepared live /init sequence
+
+scripts/build/h10/live_init.sh implements the pending PID-1 sequence using the
+verified minimal runtime. It refuses ordinary command/chroot execution before
+mounts. Generated expected values are read from fixed initramfs files
+/etc/toddy-live/media-id and /etc/toddy-live/rootfs.sha256; the helper is staged
+as /usr/lib/toddy/live_media.sh. These are public build metadata, not copied
+builder configuration or account files. The assembly step remains pending.
+
+The script mounts devtmpfs/proc/sysfs and a volatile tmpfs /run capped at 50%
+of available RAM. Built-in storage/filesystem drivers support the designated
+VM profile; early udev rules, firmware and optional module trees are not copied.
+It scans blkid ISO9660 candidates with an empty cache, constrains device paths,
+mounts candidates read-only/nosuid/nodev/noexec and calls the verified integrity
+component. It makes at most thirty discovery passes separated by one-second
+waits. This bounds retry count, not underlying kernel/device I/O latency.
+Rejected mounted media is not repeatedly hashed; changing that medium requires
+a fresh boot. A failed unmount is an error, not permission to overmount it.
+
+After verification, it mounts the root Squashfs read-only and creates a tmpfs
+upper/work overlay with index=on. Actual mountinfo must expose overlay indexing;
+a silent downgrade stops for recovery. The required numeric ACL stream lives
+at /usr/share/toddy/live-root.acl inside the hash-verified compressed root.
+Native setfacl -P restores it in a chroot before Systemd starts. Util-linux
+switch_root transfers /dev, /proc, /sys and /run, which retains the media/lower/
+upper mounts, and executes /usr/lib/systemd/systemd as the final PID 1.
+
+The explicit toddy.rescue flag or an early error enters a local console shell;
+unknown toddy.* parameters also stop with a diagnostic. No arbitrary init/root
+command is evaluated from media text or kernel arguments. Early console input,
+recovery usability and failure handling still need real guest validation; the
+source is not evidence that those scenarios passed. Live writes are volatile;
+installed-disk persistence is a separate B12/B13 requirement.
+
+A native Bash invocation outside PID 1 refused exit 1 before mounts. Raw
+.local/logs/h10-live-init-non-pid1-refusal.json SHA-256
+`02403912b44c19a1e4aa749ff7cd7e40319760c45400b5daffc4323a6c19900a`;
+tested script SHA-256
+`5c359e6ce8fc2e6b1760749446205da3bcc4c1392a75b901be5cd4daa23b9f86`.
+Syntax validation also passes. No successful device discovery, real Squashfs
+mount, Systemd live transition or boot is claimed. Do not install this prepared
+script or dispatch H10 before accepted H09 and synchronized H10 status.

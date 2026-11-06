@@ -545,3 +545,16 @@ or establish ISO/Squashfs/boot acceptance. Future /init integration must supply
 expected identity/hash from generated initramfs metadata, use a read-only media
 mount, and treat rejection as a diagnostic/recovery condition. Never replace
 an expected digest with one read from a rejected medium to bypass the check.
+
+
+The prepared live /init is scripts/build/h10/live_init.sh. Its future assembly
+must place matching generated identity/hash files in /etc/toddy-live, install
+the integrity helper at /usr/lib/toddy/live_media.sh, and include the numeric
+ACL stream at /usr/share/toddy/live-root.acl in the compressed root. Missing
+metadata or an unsupported overlay profile must not be worked around by
+removing checks. Actual image assembly and boot remain pending behind H09.
+The proposed toddy.rescue kernel flag enters its early local console; this
+console and full failure path have not yet been exercised in a booted guest.
+Ordinary execution refuses before mounts. Thirty discovery passes do not
+promise a hard timeout for kernel storage I/O. Live changes consume RAM and
+are discarded; do not treat them as installed-system persistence.
