@@ -328,3 +328,8 @@ pending. ADR-0060 records the source-backed book deviation and recovery.
 Berkeley DB Hash callback Test044 completed three crashes/recoveries and ten
 file/salvage verifications each, advancing to Test081 in the partition block.
 Original driver/runner are live; the complete standard-suite result is pending.
+
+2026-11-06 23:55 UTC — Berkeley DB full standard run moved from partition tests
+to compression (block 19), with Test014 observed. Original driver/runner remain
+live and the partial log has no FAIL lines. Published this major group transition
+without claiming complete-suite success or changing H07's 124-package boundary.

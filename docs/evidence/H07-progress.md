@@ -1153,3 +1153,11 @@ Raw observation .local/logs/h07-test044-hash-callback-complete.json SHA-256:
 b2a95c2898911c5ec5dbcce0e7bd3f5d0579b4bd62348076592582566f226137.
 Independent native offline-service checks corrected prepared H08 defects
 (ADR-0060), with no installed package/configuration or running-input changes.
+
+2026-11-06 23:55 UTC — The unchanged full standard run advanced beyond the
+partition group into compression (block 19). Test014 was observed within this
+new group. Driver 1364 and runner 1365 remain live; zero partial FAIL lines.
+Group traversal is not final acceptance: later groups/method matrix and the
+complete output validator still must finish. Raw observation
+.local/logs/h07-compression-progress.json SHA-256:
+ee0e32411ab87b95a8befd63590420b89d486396347e54a779176cb269da2ff3.
