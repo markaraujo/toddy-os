@@ -2,7 +2,7 @@
 
 ## Current scope
 
-The planning repository and approved artwork are prepared. Implementation started by the owner on 2026-11-05. H01 provisions a real KVM build guest using container-packaged QEMU; see docs/evidence/H01.md and docs/RECOVERY.md. Source freeze is H02. No Toddy OS build or bootable ISO exists yet. status.json is authoritative for completed milestones.
+The planning repository and approved artwork are prepared. Implementation started by the owner on 2026-11-05. H01 provisions a real KVM build guest using container-packaged QEMU; see docs/evidence/H01.md and docs/RECOVERY.md. Source freeze is H02. H04 cross-toolchain construction is running; see docs/BUILD.md. No bootable Toddy ISO exists yet. status.json is authoritative for completed milestones.
 
 ## Start a development session
 

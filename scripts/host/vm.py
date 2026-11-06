@@ -2,6 +2,7 @@
 """Manage the dedicated build VM; never attach physical host disks."""
 import argparse
 import hashlib
+import json
 import os
 from pathlib import Path
 import subprocess
@@ -46,7 +47,8 @@ def main():
                     if line.split()[-1].lstrip('*') == 'ubuntu-24.04-server-cloudimg-amd64.img']
         with (VM / 'builder-base.img').open('rb') as source:
             actual = hashlib.file_digest(source, 'sha256').hexdigest()
-        if expected != [actual]:
+        locked = json.loads((ROOT / 'config/build-host.lock.json').read_text())
+        if expected != [actual] or actual != locked['image_sha256']:
             raise SystemExit('Ubuntu build-host image integrity mismatch')
         if not (VM / 'id_ed25519').exists():
             run('ssh-keygen', '-q', '-t', 'ed25519', '-N', '', '-f', str(VM / 'id_ed25519'))

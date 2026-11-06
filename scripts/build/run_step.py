@@ -70,11 +70,21 @@ def main():
             raise SystemExit('Step already passed; inspect checkpoint before intentional rebuild')
         if prefix.with_suffix('.running.json').exists():
             raise SystemExit('Interrupted step detected; inspect partial installation before retry')
+        if prefix.with_suffix('.failed.json').exists():
+            history = STATE / 'history' / (args.step + '-' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%f'))
+            history.mkdir(parents=True)
+            for suffix in ('.failed.json', '.manifest.json', '.log'):
+                previous = prefix.with_suffix(suffix)
+                if previous.exists():
+                    previous.replace(history / previous.name)
         before = snapshot()
         record = {'step': args.step, 'started': datetime.now(timezone.utc).isoformat(),
                   'recipe_sha256': hashlib.sha256(args.recipe.read_bytes()).hexdigest(),
                   'postcheck_sha256': hashlib.sha256(args.postcheck.read_bytes()).hexdigest(),
-                  'user': args.user}
+                  'user': args.user,
+                  'source_lock_sha256': hashlib.sha256((HERE.parents[1] / 'config/sources.lock.json').read_bytes()).hexdigest(),
+                  'book_lock_sha256': hashlib.sha256((HERE.parents[1] / 'config/books.lock.json').read_bytes()).hexdigest()}
+
         write(prefix.with_suffix('.running.json'), record)
         environment = {'HOME': '/home/lfs' if args.user == 'lfs' else '/root',
                        'TERM': 'dumb', 'PATH': '/usr/bin:/bin', 'LC_ALL': 'POSIX'}

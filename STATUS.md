@@ -4,7 +4,7 @@ Updated: 2026-11-05
 
 Bootstrap: ready_for_development
 
-Implementation: isolated KVM builder validated; LFS/BLFS 13.1 books and 94 foundation inputs frozen. Preparing guarded target and package ownership; no Toddy ISO yet.
+Implementation: H01-H03 validated in KVM; native package ownership selected. H04 cross-toolchain building with durable per-package logs; no Toddy ISO or passed release gate yet.
 
 Foundation: **12%** · Agentic desktop: **0%**
 

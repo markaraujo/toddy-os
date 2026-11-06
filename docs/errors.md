@@ -34,3 +34,16 @@ No OS build failures exist yet. Do not turn planning risks into invented test fa
 - Separate read-only probe correction: virtio disk serial was queried initially
   at an absent sysfs device/serial path. Use lsblk's SERIAL column; the failed
   guard exited before changes. Target preparation uses the verified method.
+
+## 2026-11-05 — H04 source-directory mode after transport
+
+- Symptom: first H04 binutils attempt exited 1 creating sources/evidence.
+- Cause: transporting the source cache with tar also applied the transport
+  directory's 0755 mode to /mnt/lfs/sources, replacing required 1777 mode.
+- Correction: restored sticky writable mode, verified access as lfs and added
+  that postcondition to target preparation. Future source transport uses tar
+  --no-overwrite-dir to preserve the target directory's metadata. Added guest
+  swap to fstab so reboot retains the selected memory budget.
+- Verification: failed attempt recorded zero changed installed paths and no
+  success marker; prior logs/failed record preserved in runner history before
+  retry. Corrected H04 executes with lfs and validated target guards.

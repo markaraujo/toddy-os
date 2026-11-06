@@ -63,6 +63,11 @@ root_uuid=$(blkid -s UUID -o value "$TARGET_ROOT")
 if ! grep -q ' /mnt/lfs ' /etc/fstab; then
     echo "UUID=$root_uuid /mnt/lfs ext4 defaults,nofail 0 2" >> /etc/fstab
 fi
+swap_uuid=$(blkid -s UUID -o value /dev/vdb3)
+if ! grep -q "UUID=$swap_uuid " /etc/fstab; then
+    echo "UUID=$swap_uuid none swap sw 0 0" >> /etc/fstab
+fi
+/usr/sbin/runuser -u lfs -- test -w "$LFS/sources"
 swapon /dev/vdb3 || [[ $(swapon --show=NAME --noheadings) == /dev/vdb3 ]]
 lsblk -o NAME,SIZE,TYPE,SERIAL,FSTYPE,LABEL,MOUNTPOINTS
 findmnt "$LFS"

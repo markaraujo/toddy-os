@@ -3,7 +3,7 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-05",
   "bootstrap": "ready_for_development",
-  "current_scope": "Implementation: isolated KVM builder validated; LFS/BLFS 13.1 books and 94 foundation inputs frozen. Preparing guarded target and package ownership; no Toddy ISO yet.",
+  "current_scope": "Implementation: H01-H03 validated in KVM; native package ownership selected. H04 cross-toolchain building with durable per-package logs; no Toddy ISO or passed release gate yet.",
   "next_story": "H04",
   "gates": {
     "G1": "pending",

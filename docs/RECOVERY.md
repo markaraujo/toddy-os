@@ -1,6 +1,6 @@
 # Development recovery
 
-Current checkpoint: H03 target preparation, package ownership and runner tests passed in the real KVM guest. Target root is /dev/vdb4 mounted at /mnt/lfs; no cross-toolchain package is installed yet.
+Current checkpoint: H03 target preparation, package ownership and runner tests passed in the real KVM guest. Target root is /dev/vdb4 mounted at /mnt/lfs; H04 binutils pass 1 has passed; GCC pass 1 is running.
 No ISO exists. Gate G1 and G2 remain pending. Inspect status.json and actual
 processes before continuing; this document is updated at verified boundaries.
 
@@ -31,6 +31,23 @@ The checkpoint is a convenience on the same disk, not disaster recovery.
 Latest paired offline checkpoint: .local/vm/checkpoints/h03-builder.qcow2 and
 h03-target.qcow2. Restore both together with QEMU stopped, preserving the failed
 disks first. The H01 checkpoint predates target preparation.
+
+## Current running job
+
+H04 driver in the guest: PID file /var/log/toddy/h04-driver.pid (read the
+actual PID, do not assume it is live). Driver log /var/log/toddy/h04-driver.log;
+exit file /var/log/toddy/h04-driver.exit exists only after an observed finish.
+Per-package records: /var/log/toddy/build/h04-*. Running GCC log:
+/var/log/toddy/build/h04-gcc.log. Inspect process, exit code and postconditions;
+do not relaunch while the driver runs. The driver continues through headers,
+glibc and libstdc++ only after each prior recipe/postcheck passes.
+
+Known correction after the H03 checkpoint: source transport had reset the
+sources directory to 0755. Restore chmod 1777 /mnt/lfs/sources before building;
+the corrected prepare-target script checks lfs write access. Use sync_build.py
+to transfer archives without overwriting directory metadata. The paired H03
+checkpoint predates this correction; after restoring it, synchronize corrected
+scripts and rerun idempotent target preparation before restarting H04.
 
 ## Next action
 

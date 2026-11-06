@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "role": "Disposable build infrastructure, never Toddy release content",
+  "image_url": "https://cloud-images.ubuntu.com/releases/noble/release-20261017/ubuntu-24.04-server-cloudimg-amd64.img",
+  "checksums_url": "https://cloud-images.ubuntu.com/releases/noble/release-20261017/SHA256SUMS",
+  "image_sha256": "04e8f2461a16a44e78a370284471f29616cdd9baf1893df25807b71f985b6c94",
+  "qemu_base_container": "ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852",
+  "guest_vcpus": 12,
+  "guest_ram_mib": 12288,
+  "initial_make_jobs": 8,
+  "builder_disk_gib": 32,
+  "target_disk_gib": 180,
+  "host_free_reserve_gib": 100
+}
