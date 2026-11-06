@@ -53,3 +53,35 @@ class NoticeTests(unittest.TestCase):
         notice=source_notices.leading_c_notice(data)
         self.assertIn(b'Copyright Example',notice)
         self.assertNotIn(b'executable_code',notice)
+
+    def test_unknown_existing_notice_material_is_preserved(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            stage=Path(tmp);destination=stage/'usr/share/doc/probe/source-notices'
+            destination.mkdir(parents=True);original=destination/'upstream-terms';original.write_text('Retain original terms')
+            with self.assertRaises(ValueError):source_notices.prepare_notice_destination(stage,'probe')
+            self.assertEqual(original.read_text(),'Retain original terms')
+
+    def test_complete_own_notice_collection_can_be_regenerated(self):
+        import json,hashlib
+        with tempfile.TemporaryDirectory() as tmp:
+            stage=Path(tmp);destination=source_notices.prepare_notice_destination(stage,'probe')
+            sha=hashlib.sha256(b'Original terms').hexdigest();(destination/sha).write_bytes(b'Original terms')
+            (destination/'index.json').write_text(json.dumps({'scope':source_notices.NOTICE_SCOPE,'sources':[{'notices':[{'sha256':sha}]}]}))
+            self.assertEqual(source_notices.prepare_notice_destination(stage,'probe'),destination)
+            self.assertEqual(list(destination.iterdir()),[])
+
+    def test_notice_parent_link_cannot_escape_stage(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);stage=root/'stage';(stage/'usr/share').mkdir(parents=True)
+            outside=root/'outside';outside.mkdir();(stage/'usr/share/doc').symlink_to(outside,target_is_directory=True)
+            with self.assertRaises(ValueError):source_notices.prepare_notice_destination(stage,'probe')
+            self.assertEqual(list(outside.iterdir()),[])
+
+    def test_modified_own_notice_is_preserved_for_diagnosis(self):
+        import json,hashlib
+        with tempfile.TemporaryDirectory() as tmp:
+            stage=Path(tmp);destination=source_notices.prepare_notice_destination(stage,'probe')
+            sha=hashlib.sha256(b'Original terms').hexdigest();notice=destination/sha;notice.write_bytes(b'Modified terms')
+            (destination/'index.json').write_text(json.dumps({'scope':source_notices.NOTICE_SCOPE,'sources':[{'notices':[{'sha256':sha}]}]}))
+            with self.assertRaises(ValueError):source_notices.prepare_notice_destination(stage,'probe')
+            self.assertEqual(notice.read_bytes(),b'Modified terms')

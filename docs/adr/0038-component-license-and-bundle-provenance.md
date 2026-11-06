@@ -40,3 +40,10 @@ The expanded inventory now covers all 150 frozen inputs including Tcsh:
 7b8a7227d7b518f351f350cca16491e4badd98fcab857236b0e6a1570ba70986.
 Content-addressed prior generations are preserved; candidate count is not a
 complete license/distribution review or evidence of native package acceptance.
+
+Notice regeneration refuses unknown existing material, modified/missing prior
+notice bytes and symlink escapes from staging. It only replaces an unchanged
+complete collection indexed by this helper. Preserve upstream/user terms for
+diagnosis instead of blindly removing an existing source-notices directory.
+Regression probes verify refusal without deleting terms or writing outside the
+staging root, plus valid regeneration of an intact own inventory.

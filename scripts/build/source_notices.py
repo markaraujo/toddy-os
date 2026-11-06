@@ -6,6 +6,7 @@ import json
 from pathlib import Path,PurePosixPath
 import re
 import tarfile
+import shutil
 from locked_inputs import locked_source
 
 
@@ -72,14 +73,41 @@ def selected_header_notices(archive,filename,policies):
     return results
 
 
-def retain_source_notices(root,target,stage,package,filenames):
+NOTICE_SCOPE='Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply'
+
+
+def prepare_notice_destination(stage,package):
     destination=stage/'usr/share/doc'/package/'source-notices'
+    if not destination.parent.resolve().is_relative_to(stage.resolve()):
+        raise ValueError('Notice output escapes staging root')
+    if destination.is_symlink():raise ValueError('Notice output must not be a symlink')
     if destination.exists():
-        # Metadata upgrades regenerate from original source, not stale stage data.
-        import shutil
-        if destination.is_symlink():raise ValueError('Notice output must not be a symlink')
+        # Only regenerate a complete, unchanged collection produced by this
+        # helper. Preserve unexpected upstream/user notice material for review.
+        index=destination/'index.json'
+        if not index.is_file() or index.is_symlink():
+            raise ValueError('Existing notice collection needs diagnosis')
+        previous=json.loads(index.read_text())
+        if previous.get('scope')!=NOTICE_SCOPE or not isinstance(previous.get('sources'),list):
+            raise ValueError('Unrecognized notice inventory')
+        expected={'index.json'}
+        for source in previous['sources']:
+            for notice in source['notices']:
+                sha=notice['sha256']
+                if not re.fullmatch(r'[0-9a-f]{64}',sha):raise ValueError('Invalid notice digest')
+                path=destination/sha
+                if path.is_symlink() or not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest()!=sha:
+                    raise ValueError('Changed or missing existing legal notice')
+                expected.add(sha)
+        if {p.name for p in destination.iterdir()}!=expected:
+            raise ValueError('Unexpected legal notice material needs review')
         shutil.rmtree(destination)
     destination.mkdir(parents=True)
+    return destination
+
+
+def retain_source_notices(root,target,stage,package,filenames):
+    destination=prepare_notice_destination(stage,package)
     inventory=[]
     rows=json.loads((root/'config/component-licenses.json').read_text())['components']
     policies={}
@@ -114,4 +142,4 @@ def retain_source_notices(root,target,stage,package,filenames):
                     (destination/digest).write_bytes(data)
                     result['notices'].append({'path':member.name,'sha256':digest,'size':len(data)})
         inventory.append(result)
-    (destination/'index.json').write_text(json.dumps({'sources':inventory,'scope':'Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply'},indent=2)+'\n')
+    (destination/'index.json').write_text(json.dumps({'sources':inventory,'scope':NOTICE_SCOPE},indent=2)+'\n')
