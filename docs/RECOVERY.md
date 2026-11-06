@@ -252,3 +252,24 @@ assertions retained, capture focused test exits, then rerun the complete BDB
 standard suite before production install/acceptance and APT. No H08 target step
 is eligible until complete H07 acceptance. First new package must prove actual
 source-built native Dpkg routing in its archive record and installed postcheck.
+
+
+Updated continuation after native support progress: 16 CPAN modules accepted;
+117 accepted packages total, 118 installed including Triehash whose old postcheck
+fixture used stdin instead of its documented filename argument. Native corrected
+CLI/C lookup check passed; run h07-triehash recovery with triehash-recovery.sh and
+corrected triehash-check.sh under the same step ID, then resume the support driver
+for Which/Libseccomp/Tcsh. Perl shared-journal ownership correction is accepted
+through preserved-archive Tagset +toddy1; no live perllocal.pod remains.
+
+BDB patch is frozen in supplemental inputs (151 total inputs). Native focused
+plain/range/callback correction cases captured exit 0; full suite still pending.
+Root-protected cached test-build seed is /var/log/toddy/build/
+h07-berkeley-db.recovery-seed.json, 460 verified files, SHA-256
+75d8c0e77db2c0b42af7de2ff813e908ee4f2d5cc470dcb62bb5082013937e63;
+host copy .local/logs/h07-bdb-build-recovery-seed.json. After support jobs finish,
+sync committed inputs and dispatch the same h07-berkeley-db step with
+h07/berkeley-db-recovery.sh and h07/berkeley-db-check.sh. It archives old TESTDIR/
+logs, verifies frozen source/build hashes, applies the exact fixture patch,
+repeats C/focused tests and the complete standard suite before production install.
+Do not mark BDB accepted from the focused result or reuse the failed partial log.

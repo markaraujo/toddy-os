@@ -5,7 +5,8 @@ set -euo pipefail
 fixture=$(mktemp -d /tmp/triehash-native.XXXXXX)
 trap 'rm -rf "$fixture"' EXIT
 cd "$fixture"
-printf 'Alpha = 3\nBeta = 7\n' | triehash --multi-byte=0 -C probe.c -H probe.h
+printf 'Alpha = 3\nBeta = 7\n' > words.input
+triehash --multi-byte=0 -C probe.c -H probe.h words.input
 cat > main.c <<'C'
 #include "probe.h"
 int main(void) {

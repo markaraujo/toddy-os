@@ -707,6 +707,22 @@
       "decision": "ADR-0040",
       "book": "BLFS 13.1-systemd",
       "planned_stage": "Source-built C-shell interpreter for installed Vim tool; full suite and native syntax/status checks required"
+    },
+    {
+      "name": "berkeley-db-test142-fixture",
+      "version": "5.3.28-1",
+      "filename": "db-5.3.28-test142-environment-1.patch",
+      "url": "https://raw.githubusercontent.com/markaraujo/toddy-os/db25caa6eaa344cef555fd5a46961f5a638dba5d/patches/db-5.3.28-test142-environment-1.patch",
+      "sha256": "c624d2855e08cf3c214edec5e8c33eb387c8354398a4844139a409ef93f7669c",
+      "size": 362,
+      "decision": "ADR-0043",
+      "source_kind": "Project test-fixture isolation correction; all original assertions retained; no runtime source changes",
+      "fixture_file": "test/tcl/test142.tcl",
+      "fixture_preimage_sha256": "033f9b71ac70bab8723f13aa4b3467dbf815b76b593bc37123edcfaa39bf9ef9",
+      "fixture_postimage_sha256": "3cacea1ce719d20e585e74d40a7f5b3cc07671f32f78c52aa64aea3c269ac28b",
+      "signature_verified": false,
+      "signature_note": "Focused native plain/range/callback cases exit 0; immutable project commit and SHA-256, no upstream signature claim",
+      "planned_stage": "H07 full standard regression rerun required before production build/install"
     }
   ],
   "additional_decisions": [

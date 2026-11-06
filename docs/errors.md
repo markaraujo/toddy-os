@@ -380,3 +380,15 @@ Set NO_PERLLOCAL=1 at Makefile.PL generation, retain module-specific package/
 packlist records, and require no staged shared diary. Correct the first package
 through preserved-archive +toddy1 metadata, refusing modified live journal bytes.
 Full source suites remain unchanged; native correction/retry acceptance pending.
+
+## H07 Triehash installed CLI fixture (2026-11-06)
+
+All seven unchanged upstream tests and default HTML coverage completed before
+native installation. The postcheck failed because it piped words to a generator
+whose frozen documented CLI opens an input filename. That invocation produced
+an empty hash table, so lookup assertions correctly failed. Create an explicit
+input file and pass its name; retain Alpha=3, Beta=7 and unknown-key assertions.
+Actual corrected native generator/C compile/lookup postcheck exits 0. Preserve
+installed archive/payload hashes, rerun all upstream tests and corrected postcheck
+before accepting the installed package; no generator source change or assertion
+removal. Original recipe exit 0/postcheck 1 remains historical evidence.

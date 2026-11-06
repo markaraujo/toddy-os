@@ -12,8 +12,8 @@ with tarfile.open('/mnt/lfs/sources/db5.3_5.3.28+dfsg2-12.debian.tar.xz') as arc
  assert all(m.isfile() or m.isdir() for m in members)
  archive.extractall(root,members=members,filter='data')
 PY
+python3 /opt/toddy-build/scripts/build/apply_db_test_fixture.py
 chroot_run < /opt/toddy-build/scripts/build/h07/berkeley-db-inner.sh
-python3 /opt/toddy-build/scripts/build/stage_package.py berkeley-db 5.3.28+dfsg2-12.1 \
- "$LFS/sources/stage/berkeley-db" --depends 'glibc (>= 2.44-1)' \
- --source db5.3_5.3.28+dfsg2.orig.tar.xz --source db5.3_5.3.28+dfsg2-12.debian.tar.xz \
- --recipe /opt/toddy-build/scripts/build/h07/berkeley-db.sh --install
+chroot_run < /opt/toddy-build/scripts/build/h07/berkeley-db-fixture-check-inner.sh
+chroot_run < /opt/toddy-build/scripts/build/h07/berkeley-db-finish-inner.sh
+bash /opt/toddy-build/scripts/build/h07/berkeley-db-package.sh "$0"
