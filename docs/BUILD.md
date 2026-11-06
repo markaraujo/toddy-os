@@ -211,3 +211,16 @@ exception still needs actual source-backed classification after observation.
 Two additional Bash test locales are staged with --no-archive in a separate
 native package to preserve glibc-locales ownership; only the explicit ascii
 compatibility warning for these legacy encodings is suppressed, not errors.
+
+Final GCC installation is separately gated by evaluate-gcc.py and the pinned
+compiler-test-reference.json. Require all six merged reports, complete declared
+pass counts at least as large as the official reference, and only exact known
+unexpected-status lines from that same hash-pinned LFS run. New FAIL/XPASS/
+UNRESOLVED/ERROR cases remain rejected. The source-generated report script is
+data only. GCC's raw make exit alone is not acceptance. Preserve raw parallel
+.sum.sep/.log.sep files alongside the merged reports before cleaning source.
+
+ADR-0014 separates gcc-runtime ownership from compiler/development files.
+The prepared installer still needs actual target validation after critical
+acceptance and a cold checkpoint. Existing native C++ consumers' dependency
+metadata remains subject to the final audit; this is not yet a closed graph.

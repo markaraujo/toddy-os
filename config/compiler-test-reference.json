@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "compiler": "GCC 16.2.0",
+  "book": "LFS 13.1-systemd section 8.32",
+  "url": "https://www.linuxfromscratch.org/lfs/build-logs/13.1/i7-14700K/test-logs/830-gcc-16.2.0",
+  "sha256": "271d2913bcfcbb3c24c2c11a72ac8a7dfb74bb04ec9b53eec854f9814aa4d855",
+  "minimum_expected_passes": {
+    "gcc/testsuite/gcc/gcc.sum": 218831,
+    "gcc/testsuite/g++/g++.sum": 267590,
+    "x86_64-pc-linux-gnu/libatomic/testsuite/libatomic.sum": 54,
+    "x86_64-pc-linux-gnu/libgomp/testsuite/libgomp.sum": 6123,
+    "x86_64-pc-linux-gnu/libitm/testsuite/libitm.sum": 44,
+    "x86_64-pc-linux-gnu/libstdc++-v3/testsuite/libstdc++.sum": 18597
+  },
+  "policy": "Require complete merged reports and at least the reference pass counts. Only exact normalized unexpected-status lines already in this pinned official reference are classified known. Any new failure, unexpected success, unresolved/error result or count shortfall requires source-backed investigation before installation."
+}
