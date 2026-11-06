@@ -20,6 +20,7 @@ if testdir.exists():
 print('Preserved failed suite logs/state:',history)
 PY
 python3 /opt/toddy-build/scripts/build/apply_db_test_fixture.py
+python3 /opt/toddy-build/scripts/build/verify_db_tcl_tests.py
 chroot_run <<'INNER'
 set -euo pipefail
 cd /sources/db-5.3.28

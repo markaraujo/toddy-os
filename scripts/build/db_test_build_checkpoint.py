@@ -9,6 +9,7 @@ import subprocess
 
 SOURCE=Path('/mnt/lfs/sources/db-5.3.28')
 SEED=Path('/var/log/toddy/build/h07-berkeley-db.recovery-seed.json')
+RECOVERY_SEED_SHA256='75d8c0e77db2c0b42af7de2ff813e908ee4f2d5cc470dcb62bb5082013937e63'
 
 def digest(path):
     with path.open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
@@ -32,6 +33,9 @@ def main():
             json.dump(data,stream,indent=2);stream.write('\n');stream.flush();os.fsync(stream.fileno())
         SEED.chmod(0o600)
     else:
+        stat=SEED.lstat()
+        if SEED.is_symlink() or stat.st_uid!=0 or stat.st_mode & 0o077 or digest(SEED)!=RECOVERY_SEED_SHA256:
+            raise SystemExit('Recovery seed ownership, permissions or frozen digest changed')
         data=json.loads(SEED.read_text())
         for relative,sha in data['files'].items():
             path=SOURCE/relative

@@ -55,3 +55,13 @@ requires accepted Berkeley DB. H07/G1 remain incomplete; no failed test is remov
 or turned into success by this decision. Sources are exact frozen test139.tcl,
 test142.tcl, test.tcl/testutils.tcl and src/env/env_region.c, plus measured native
 logs; this is a project correction derived from those sources.
+
+Recovery now also checks the fixed recovery-seed digest, root ownership and
+private permissions. Before running Tcl, compare all 483 frozen test/tcl files
+with an independent extraction plus maintained 004-tclsleep.patch and the
+reviewed test142 patch. Refuse unexpected Tcl scripts. The pre-patch read-only
+probe correctly refuses original test142 (preimage hash above); it is not a
+corrected-suite acceptance. The recovery sequence applies the exact correction
+before this comparison. Raw refusal log .local/logs/
+h07-bdb-tcl-frozen-files-probe.log SHA-256
+fc3738633be4dfa4814c5a7dd963450f7c0e3d2cf95f192d0b022a462ac9f660.

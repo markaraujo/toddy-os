@@ -4,7 +4,7 @@ Updated: 2026-11-06
 
 Bootstrap: ready_for_development
 
-Implementation: H01-H06 validated in KVM. H07 has 119 accepted source-built packages, including 16 native Perl modules, recovered Triehash and Which; Libseccomp/Tcsh native tests remain in progress/pending. Berkeley DB focused fixture correction passed; complete standard retest/production install and APT/final closure remain pending. G1/G2 pending; no Toddy ISO.
+Implementation: H01-H06 validated in KVM. H07 has 121 accepted source-built packages, including all native Perl/Triehash/Which/Libseccomp/Tcsh support. Independent ACL/ownership closure is next; Berkeley DB complete corrected standard retest/production install and APT/final closure remain pending. G1/G2 pending; no Toddy ISO.
 
 Foundation: **38%** · Agentic desktop: **0%**
 

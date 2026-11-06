@@ -814,3 +814,23 @@ Runner recipe/postcheck 0/0; log SHA-256
 87ae3c2336a77b4143ed77dd8eba0a8d4a1b4fbed9db6a9800b35c69099db014.
 119 accepted packages; H07 remains incomplete. Summary outside Git:
 .local/logs/h07-native-support-recovery-summary.jsonl.
+
+
+## Remaining native support accepted
+
+Libseccomp 2.6.1: standard suite reports 7928 passed, 86 skipped, zero failed/
+errored; skips retain absent optional Valgrind and default explicitly opt-in
+live cases. Native compiled postcheck actually denies getppid with EPERM while
+allowing getpid on the builder kernel. No Toddy kernel coverage is claimed.
+Archive SHA-256 d1fc165127990dd8284204dcfc88c24ad292c5b1613c962e738608d92cf974c7;
+runner recipe/postcheck 0/0, log SHA-256
+edf5af4c2ab8e08d9fc05ad6c25e1ef49c48a34c55575d5657eea3e865c84373.
+
+Tcsh 6.24.16 unchanged suite: 196 successful, 53 skipped. Native csh alias,
+array/loop and subprocess-exit propagation passed. Archive SHA-256
+1f810b41ab98e3f4c642ad25cba3a04d3a343387e9f31f22ef265e1a9a3710df;
+runner recipe/postcheck 0/0, log SHA-256
+c7a96221bc10e10562696e95877d6c0144c3bc1c2739451a257e822ab7be0622.
+Frozen BLFS 13.1 general/libseccomp.html and postlfs/tcsh.html were reread
+before this sequence. Support driver exit 0. Total 121 accepted packages;
+BDB/APT, final ownership/dependency closure and H07 completion still pending.

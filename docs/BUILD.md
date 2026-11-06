@@ -1,8 +1,9 @@
 # Current build procedure
 
-H01–H06 are validated; H07 final-base implementation is in progress with 119
-accepted native packages through native Dpkg. The complete Berkeley DB Tcl
-suite is active. This remains a partial build manual; no Toddy ISO exists.
+H01–H06 are validated; H07 final-base implementation is in progress with 121
+accepted native packages, including native Dpkg, Perl support, Triehash and
+Which/Libseccomp/Tcsh. Independent ownership and the corrected complete Berkeley
+DB Tcl rerun remain pending. This remains a partial build manual; no Toddy ISO exists.
 Use status.json and the evidence files to distinguish passed milestones from
 recipes still under validation. All commands below run from the checkout root.
 
