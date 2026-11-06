@@ -1121,3 +1121,14 @@ f1150b17b0e17ebd8dc8968c0efbc811080b9754f3c6ae8ff6de44835f8eed5e.
 The complete Berkeley DB result remains pending. A separate read-only native
 payload audit found only the already planned shared Info-index ownership issue;
 see ADR-0057. No H07 test or final closure requirement was relaxed.
+
+2026-11-06 23:33 UTC — Partition block reached Hash callback-partition Test044.
+The first 512-second load ended with its intentional crash at 23:31:48,
+recovery/verification ran, and cycle 2 began at 23:32:24 for 517 seconds.
+Driver 1364 and runner 1365 remain live; the partial log has zero lines starting
+FAIL. Complete-suite output validation and subsequent blocks/method matrix are
+still pending. Raw observation .local/logs/h07-live-console-progress.json SHA-256:
+09eb2ea6c12fe869ef0df2a5f716cec7f58a8e4e4ace1fac06d6eae5d9f903a5.
+Independent private native live-console component checks passed (ADR-0058),
+without changing H07 sources, installed accounts or package state. The accepted
+package boundary remains 124/126; the story is not accepted.

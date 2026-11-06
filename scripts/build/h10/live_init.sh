@@ -37,13 +37,15 @@ mount -t sysfs -o nosuid,nodev,noexec sysfs /sys
 mount -t tmpfs -o mode=0755,nosuid,nodev,size=50% tmpfs /run
 
 read -r -a command_line < /proc/cmdline
+live_requested=0
 for argument in "${command_line[@]}"; do
  case $argument in
-  toddy.live) ;;
+  toddy.live) live_requested=1 ;;
   toddy.rescue) toddy_rescue 'Recovery requested on the kernel command line' ;;
   toddy.*) toddy_rescue 'Unsupported Toddy boot parameter' ;;
  esac
 done
+[[ $live_requested == 1 ]] || toddy_rescue 'Missing required toddy.live boot parameter'
 
 mkdir -p /run/toddy/media /run/toddy/lower /run/toddy/upper /run/toddy/work
 declare -A rejected_media=()
@@ -99,6 +101,9 @@ done < /proc/self/mountinfo
 # The fixed metadata file is inside the hash-verified image. Physical restore
 # runs in the new root before any Systemd service can observe stripped ACLs.
 chroot /newroot /usr/bin/setfacl -P --restore=/usr/share/toddy/live-root.acl
+# Runtime-only condition for the two live getty instances. Never put this file
+# into the compressed root or an installed target (ADR-0058).
+printf '%s\n' "$expected_id" > /run/toddy/live-session
 printf 'TODDY_LIVE_ROOT_READY: writes are volatile\n'
 # /run carries the media, lower and tmpfs upper mounts into the final root.
 # Util-linux also moves /dev, /proc and /sys before executing the native init.

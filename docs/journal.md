@@ -292,3 +292,15 @@ legitimate DBus machine-id symlink; corrected the fresh-account integration to
 retain only its canonical root-owned alias while generating an empty identity.
 Native Shadow and five negative cases pass. Full image integration and H07
 acceptance remain pending. The active DB suite continues its recovery cases.
+
+2026-11-06 23:33 UTC — Implemented a fresh-stage live-console profile for tty1
+and ttyS0 only, guarded by the explicit live kernel parameter and a volatile
+marker created after verified root setup. Native Systemd unit verification and
+both actual agetty/Shadow/Bash terminal commands pass; ordinary locked-password
+login and unprivileged preauthentication are refused. Private namespaces/devpts
+leave installed accounts and package state unchanged. The updated /init also
+passes native archive/extraction and repeatability checks. ADR-0058 records
+source behavior, root-console policy, installer removal requirements and the
+remaining real boot tests. No H10/G1 credit is claimed. Berkeley DB advanced
+through Hash Test044's first 512-second workload and recovery to cycle 2 at
+23:32:24, with its original driver/runner still live and no partial FAIL lines.

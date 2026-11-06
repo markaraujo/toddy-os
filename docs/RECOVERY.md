@@ -753,3 +753,27 @@ accounts, live profile and final image audits must still be integrated. The
 account component now accepts only the canonical root-owned DBus identity link;
 regular identity data or different links still require preserving/rebuilding the
 stage. It never follows that link to read the builder's machine identity.
+
+Reproduce the native live-console chain with
+python3 scripts/host/probe_live_console.py. It uses private PID/mount namespaces
+and a new devpts instance; ordinary login attempts cannot reach builder accounts.
+Success verifies both generated getty commands, native Systemd offline unit
+validation, password/unprivileged refusal and unchanged account/package state.
+The report is .local/logs/h10-live-console-probe.json with an immutable hash copy.
+On failure preserve the printed /mnt/lfs/tmp/toddy-live-console-* fixture and its
+per-session/unit logs. Do not copy a probe fixture into the release image.
+
+The live_console.stage_console helper is only for the future fresh image stage.
+It refuses existing profile inputs and a baked /run/toddy/live-session marker.
+Reconstruct a fresh stage after correcting selection; never remove the guard or
+point it at /mnt/lfs itself. /init requires toddy.live, establishes the marker
+after verified live-root setup, and carries /run across switch_root. Missing
+marker/parameter during real boot requires investigation of initramfs, GRUB and
+serial logs; do not unlock root or remove unit conditions as a workaround.
+toddy.rescue retains the existing early local recovery path, pending boot tests.
+
+Before installed-system delivery, remove/exclude both 50-toddy-live.conf drop-ins
+and usr/share/toddy/live.issue, establish normal console/desktop login and test
+after ISO removal. Their live conditions intentionally prevent starting these
+instances outside live mode. Native PTY success is not a BIOS/UEFI/USB login
+pass. See ADR-0058; H07 and the H09/H10 gates remain unchanged.
