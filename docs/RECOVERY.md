@@ -273,3 +273,13 @@ h07/berkeley-db-recovery.sh and h07/berkeley-db-check.sh. It archives old TESTDI
 logs, verifies frozen source/build hashes, applies the exact fixture patch,
 repeats C/focused tests and the complete standard suite before production install.
 Do not mark BDB accepted from the focused result or reuse the failed partial log.
+
+
+121-package verified native cache: .local/native-package-snapshots/
+20261106T165051482536Z, inventory SHA-256
+28179c27a71eebb3360e61b89321bc91de0cc7acd842398513aaae5e8760316d,
+archive SHA-256
+0144fa27d9c5ceb5daca0ba07c109a20148f97f7c90ec3d588b6e0b853048f38.
+This is not a bootable checkpoint or demonstrated restoration. The independent
+ownership driver's initial prerequisite refusal made no target changes; use
+its corrected final-Coreutils original/recovery success-marker handling.

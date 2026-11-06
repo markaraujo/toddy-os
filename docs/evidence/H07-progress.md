@@ -834,3 +834,11 @@ c7a96221bc10e10562696e95877d6c0144c3bc1c2739451a257e822ab7be0622.
 Frozen BLFS 13.1 general/libseccomp.html and postlfs/tcsh.html were reread
 before this sequence. Support driver exit 0. Total 121 accepted packages;
 BDB/APT, final ownership/dependency closure and H07 completion still pending.
+
+
+Updated source-notice inventory: 151 frozen inputs, 880 named/header/embedded
+notice candidates; SHA-256
+5f0d3737b1ec07840cbf190418fc74cb74b4135176fce42e92c9724f995a4865.
+Content-addressed inventory under .local/legal/source-notices; older versions
+remain preserved. The test-only project patch is a non-tar frozen input; this
+inventory does not grant new rights or replace final legal/source review.

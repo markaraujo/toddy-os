@@ -392,3 +392,15 @@ Actual corrected native generator/C compile/lookup postcheck exits 0. Preserve
 installed archive/payload hashes, rerun all upstream tests and corrected postcheck
 before accepting the installed package; no generator source change or assertion
 removal. Original recipe exit 0/postcheck 1 remains historical evidence.
+
+
+## H07 independent ownership prerequisite marker (2026-11-06)
+
+The new ownership driver refused before dispatch/target mutation because it
+looked only for h07-coreutils.success.json. The actual accepted final package
+is recorded by h07-coreutils-recovery.success.json; its initial failed attempt
+is correctly retained separately. Accept either actual successful runner path,
+and additionally require installed native Coreutils 9.11-1 before the full ACL
+retest. Never rename failed markers to success. Driver prerequisite failures
+now retain exit status as well as PID/log. Retry after verified quiescent sync;
+acceptance still requires the unchanged ACL suite including cp.trs PASS.
