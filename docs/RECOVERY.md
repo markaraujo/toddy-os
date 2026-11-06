@@ -565,3 +565,14 @@ both overlay and direct nosuid-upper paths. Expected identities are recorded
 in ADR-0048. It performs no installed account/helper changes. Reports retain
 SHA-256-suffixed immutable generations before updating the unsuffixed current
 JSON, so rerunning the experiment does not erase earlier cited evidence.
+
+
+For apparently repeated BDB recovery headings, compare the full method/argument
+line, checkpoint counter, file size/mtime and actual child process across two
+observations. Recd011 deliberately waits about 7m04.5s per variant before other
+work; fifteen-iteration checkpoint output is approximately 31.7s apart. See
+docs/evidence/H07-bdb-wait-investigation.md. Parent do_wait and Tcl do_select
+are consistent with this source-defined wait, not by themselves a deadlock.
+If progress stops beyond the current case's expected work, inspect that exact
+case/process and resource state before deciding on recovery. Never restart the
+suite solely because a wrapper log is quiet or a heading repeats.

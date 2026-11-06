@@ -140,3 +140,9 @@ upper storage: overlay execution preserves the reviewed helper semantics before
 and after copy-up, while direct upper execution remains unprivileged. Repeated
 ACL/hardlink/volatility checks passed; older evidence generations preserved.
 Builder-kernel fixture only, with real live-root acceptance still pending.
+
+2026-11-06: Investigated possible hidden BDB block/infinite loop at the owner's
+request. Two live snapshots proved checkpoint 59-to-104 progress in the same
+variant. Verified source shows finite inclusive iteration and timed waits;
+prior variant timing matches. No current resource exhaustion or retry loop
+found. Preserved evidence and continued the original full standard suite.

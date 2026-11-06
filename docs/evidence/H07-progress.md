@@ -981,3 +981,12 @@ log. Raw .local/logs/h07-db-recd011-observation.json SHA-256
 The existing continuation supervisor remains active. Accepted packages and
 foundation milestone credit are unchanged; a partial recovery case is not
 complete Berkeley DB acceptance.
+
+
+2026-11-06 21:33 UTC: investigated the owner's suspected hidden blocker/loop.
+The same Recd011 callback variant advanced checkpoint 59 to 104 between two
+observations. Source proves a finite 201-iteration loop with 424.512 seconds of
+intentional sleeps per variant; the prior range variant took 7m10s. Driver is
+not retrying, and current guest resources are ample. See
+[the investigation](H07-bdb-wait-investigation.md) for measured evidence and
+limits. Continue this execution; no final suite acceptance has been inferred.
