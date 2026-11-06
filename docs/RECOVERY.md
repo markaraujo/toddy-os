@@ -97,3 +97,14 @@ before a separate installation step. Latest cold checkpoint remains
 h07-early-base, preceding these eight native packages. Current target has 21
 packages. Tcl optional client limitations are in ADR-0011; no new credentials
 or service is needed to continue the core book build.
+
+Latest verified cold pair: .local/vm/checkpoints/h07-native-math.json and its
+two qcow2 files. Contains 25 native packages, accepted final Binutils plus
+GMP/MPFR/MPC. The original Binutils build record remains failed with raw suite
+exit 2, while classification accepts only the exact source-documented
+profiler failure; separate binutils-install passed. Do not rebuild it merely
+to turn that original raw exit into zero. GMP's first result-format assertion
+failure also remains preserved; explicit gmp-install resumed and passed.
+Current job: /var/log/toddy/h07-permissions-driver.{pid,log,exit}, Attr then
+ACL. Inspect package records and exact test outputs before retry. Next in
+book order: Libcap, Libxcrypt, Shadow, Gawk, then final GCC critical suite.

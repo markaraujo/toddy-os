@@ -31,10 +31,6 @@ class CriticalSuite(unittest.TestCase):
         self.assertTrue(record['accepted'])
         self.assertEqual(set(record['expected_failures']),{'io/tst-lchmod'})
 
-
-if __name__=='__main__':
-    unittest.main()
-
 # Tcl make test may exit zero despite a failed test, unlike Automake check.
 tcl_spec=importlib.util.spec_from_file_location('tcl_evaluation',ROOT/'scripts/build/h07/evaluate-tcl.py')
 tcl_evaluation=importlib.util.module_from_spec(tcl_spec)
@@ -57,3 +53,7 @@ class TclSuite(unittest.TestCase):
         optional = 'Test file error: couldn\'t load file "libpq.so.5": libpq.so.5: cannot open shared object file: No such file or directory\n'
         self.assertTrue(tcl_evaluation.classify(core + optional)['accepted'])
         self.assertFalse(tcl_evaluation.classify(core + optional.replace('libpq.so.5', 'libtcl8.6.so'))['accepted'])
+
+
+if __name__=='__main__':
+    unittest.main()

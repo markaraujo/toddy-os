@@ -146,3 +146,17 @@ the attempt with zero installed changes. Redirect only the probe's stdin from
 /dev/null; preserve the original unmodified source tree in recovery and retry
 from verified archive. This fixes recipe transport, not upstream source/tests.
 The failed marker/log is archived by the durable runner on retry.
+
+## H07 GMP result-format assertion (2026-11-06)
+
+The complete GMP 6.3.0 make check passed, but the recipe's follow-up count
+looked for ^PASS: in per-test logs. Those logs contain bare PASS; the frozen
+LFS 13.1 section 8.23 explicitly uses ^PASS. Direct inspection found 199
+^PASS and zero ^PASS: lines. The recipe therefore exited 1 with zero target
+changes, despite passing tests. Correct the assertion to the book expression,
+preserve the original log/failed marker and resume the built tree with an
+explicit gmp-install step. That step repeats the full suite, requires >=199
+passes, archives reports and only then stages/installs. Do not re-extract or
+rebuild already verified compilation just to correct log parsing. Apply the
+same format correction to the prepared MPFR count. Acceptance thresholds
+are preserved.

@@ -128,3 +128,50 @@ Native package database now has 21 packages. Final Binutils 2.47 is building
 from the frozen source with system Zlib and the book flags. Its mandatory
 make -k check runs before installation; exact exit and .sum/.log archive are
 retained for classification. It is not accepted or installed yet.
+
+## Critical final Binutils accepted and installed
+
+Frozen Binutils 2.47 completed mandatory make -k check with original exit 2:
+351 binutils PASS, 2098 assembler PASS, 3304 linker PASS/59 XFAIL,
+168 libsframe PASS, 40 libctf PASS, five gprofng PASS and three gprof PASS.
+Only FAIL is gprofng tmpdir/gp-gmon, matching both frozen LFS 13.1-systemd
+8.22 and the exact official x86_64 reference test log:
+https://www.linuxfromscratch.org/lfs/build-logs/13.1/i7-14700K/test-logs/820-binutils-2.47
+Reference SHA-256: 696419ce06c5a849c2724ff7d6c0a04456963ff4eb529fd4900e4b0013f16e78.
+Unsupported/untested cases remain explicitly reported, not counted as passes.
+
+Strict classification rejects missing/truncated suites, other FAIL/XPASS/
+ERROR/UNRESOLVED cases and interrupted exits. Unit regression tests exercise
+these rejections. Original build failed marker is preserved with zero changed
+installed paths; separate classification accepts the documented outcome
+without changing the original exit. Native installation is a separate step.
+Its recipe and postcheck exited 0, including C execution and linker path audit.
+Successful installation log SHA-256:
+0be884559b193ee452c365f4eabe1bbdb9fbea4776986868b6b5c04413d46287.
+
+Raw critical check log SHA-256:
+efb867b05bcea9ac36e74d9255e1efca9a995802aacd8e2c1990eae291ca39c9.
+All per-suite reports archive SHA-256:
+4917bafd33c69b6b90e1b6f812057226c706e02a82633be97721d9282dfb493d.
+A full evidence copy is in .local/logs/h07-binutils/evidence.tar.gz.
+GMP/MPFR/MPC and the final compiler/base sequence remain required.
+
+## Compiler mathematics libraries and cold checkpoint
+
+GMP 6.3.0 completed the corrected >=199 PASS assertion after a full suite
+repeat; generic --host=none-linux-gnu follows the book's portable-library
+option. MPFR 4.2.2 passed all 198 tests; MPC 1.4.1 passed all 75 tests.
+Each native package recipe and runtime metadata postcheck exited 0.
+
+| Step | Successful full log SHA-256 |
+| --- | --- |
+| gmp-install | f91fa6a72cb180b15ca6a9c618319f076dc9e5ea81603d977cc945eb9e2322c1 |
+| mpfr | 740139826e921d7b644d759c7ef723eb72c71a88881a627a838087d7b00c2b00 |
+| mpc | 1535e82fb26373c6c94e58396b798fd4ad3be8567cef6e07fe08a2e6a33c895c |
+
+Raw math suites/report archives copied to .local/logs/h07-math/suites.tar.gz.
+The paired cold checkpoint h07-native-math passed disk consistency and copied
+image SHA-256 verification, with QEMU off; its manifest is under
+.local/vm/checkpoints. The VM restarted and pseudo filesystems remounted.
+There are 25 native packages; Attr/ACL are now running, final GCC and all
+remaining base/release acceptance still pending.
