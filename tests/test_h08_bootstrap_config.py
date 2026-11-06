@@ -1,6 +1,7 @@
 import hashlib
 import importlib.util
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -21,7 +22,10 @@ class BootstrapConfigurationTests(unittest.TestCase):
     def test_backup_preserves_every_byte_before_bootstrap_removal(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);expected=self.fixture(root)
-            backup=module.preserve_bootstrap(root,expected,set(expected),{})
+            previous_umask=os.umask(0o002)
+            try:backup=module.preserve_bootstrap(root,expected,set(expected),{})
+            finally:os.umask(previous_umask)
+            self.assertEqual(backup.parent.stat().st_mode & 0o777,0o700)
             self.assertEqual(json.loads((backup/'manifest.json').read_text())['files'],expected)
             for virtual,sha in expected.items():
                 self.assertFalse((root/virtual.lstrip('/')).exists())
