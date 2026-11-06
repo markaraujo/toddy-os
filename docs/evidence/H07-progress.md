@@ -1005,3 +1005,13 @@ planned 1215-entry access-method matrix, among other standard-suite sections.
 Final H07 also includes APT, Python alias, 931-path bootstrap quarantine,
 126-package metadata review, seven audits and a paired cold checkpoint.
 Counts are measured/planned scopes, not time or test-pass percentages.
+
+
+2026-11-06 21:46 UTC: corrected DB driver/runner still live. Partition recovery
+advanced through Recd024 and into its general Test014 cases; complete suite
+result remains pending. Observation .local/logs/h07-bdb-archive-preparation-observation.json
+SHA-256 3811608ed8a140180c6ca5ee9866388e5ec2a59c168b5bae60df3bf0929bee18.
+During this wait, a private native minimal-initramfs archive roundtrip passed
+(ADR-0054), including same-filesystem duplicate-build equality, exact extraction
+and corruption/truncation rejection. No installed or active BDB input changed;
+this future image preparation does not count toward H07 or live-boot acceptance.

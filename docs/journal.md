@@ -151,3 +151,15 @@ found. Preserved evidence and continued the original full standard suite.
 owner requested concrete scale. Recorded actual pending markers and separated
 package count from the database's nested test matrix and final package audits.
 No tests were shortened and no acceptance percentage changed.
+
+
+2026-11-06 21:46 UTC — Prepared the gated native minimal-initramfs archive
+component and validated two fresh private native assemblies (ADR-0054). Both
+44-entry archives were identical, and real native extraction preserved content,
+modes, root ownership, links and devices. Extracted /init refused non-PID-1
+execution before mounts; integrity-helper loading and embedded metadata readback
+passed. Modified executable/truncation/existing-stage cases were rejected.
+Full raw manifest/provenance retained outside Git; successful fixtures removed.
+Actual kernel unpacking, live-root/ISO construction and boot remain pending.
+The original complete Berkeley DB standard suite continues, now in partition
+Test014 after Recd024; no source sync or installed mutation occurred.

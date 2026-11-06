@@ -576,3 +576,20 @@ are consistent with this source-defined wait, not by themselves a deadlock.
 If progress stops beyond the current case's expected work, inspect that exact
 case/process and resource state before deciding on recovery. Never restart the
 suite solely because a wrapper log is quiet or a heading repeats.
+
+
+The prepared archive component (ADR-0054) runs only after the H10 gate with
+python3 /opt/toddy-build/scripts/build/h10/initramfs_archive.py --media-id
+<generated-identity> --rootfs-sha256 <actual-root-image-digest> --epoch
+<recorded-epoch>. Its fixed /mnt/lfs/sources/stage/toddy-initramfs workspace
+contains runtime/, cpio.log, gzip.log, both archive forms and manifest.json.
+A partial/existing workspace is preserved and refused; inspect logs and exact
+paths before a deliberate retry. Metadata must be derived from the actual image
+assembly, not copied from the private experiment. Boot remains a separate gate.
+
+Reproduce the isolated archive experiment with
+python3 scripts/host/probe_initramfs_archive.py. It uses fresh target /tmp
+fixtures, retains failure paths and content-addressed host reports, and removes
+only its own successful fixtures. No active recipe synchronization is needed.
+The report retains the full staged manifest, native provenance and artifact
+hashes; fixture archives are not release artifacts or evidence of a boot.
