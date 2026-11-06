@@ -1,7 +1,7 @@
 # ADR-0049: Separate optional CPython regression data from release runtime
 
 - Date: 2026-11-06
-- Status: Staged partition implemented/verified; native package transfer and release exclusion pending
+- Status: Staging, marker audit and private unpack ownership transfer verified; configured target transfer and release exclusion pending
 
 A bounded read-only audit found 15 private-key PEM fixtures in the installed
 CPython test/certdata tree. Every byte matches both the own native package
@@ -89,3 +89,55 @@ Three local tests cover all recognized headers, chunk-boundary matching,
 no matched-content disclosure, public certificate/key handling and link safety.
 Native package ownership transfer, normal image exclusion and complete image
 credential inspection remain pending.
+
+
+## Actual native Dpkg ownership-transfer experiment
+
+scripts/host/probe_python_qa_ownership.py now verifies the handoff using real
+source-built Dpkg 1.22.22 and the actual own Python archive in two private
+package roots. Its --root and --admindir behavior follows the frozen
+dpkg-1.22.22/man/dpkg.pod. --unpack deliberately does not configure dependencies;
+these results are ownership evidence, not a configured Python/QA installation.
+No force-overwrite, force-depends or Replaces exception is used.
+
+The probe verifies the predecessor archive against its native record, extracts
+its data/control, applies the existing staged QA partition, increments the
+private package generation and builds two native archives. The runtime retains
+its exact predecessor Depends field and conffile list. The QA package depends
+on that exact new Python version and retains the original copyright notice.
+Compression is bounded by DPKG_DEB_THREADS_MAX=2, documented by the frozen
+dpkg-deb manual. These private archives are not distributable release packages.
+
+In the negative root, unpacking QA before upgrading Python is rejected by
+Dpkg's ownership conflict check. All original QA file bytes/links remain
+unchanged; the rejected root may contain partial package state and is never
+used as the positive result. In a separate fresh root, the original Python
+first owns the complete QA set. The runtime upgrade then removes its QA
+ownership and payload. At this interruption boundary, the original archive
+and both new archives remain available for recovery. Unpacking QA afterward
+assigns all 5,395 files to python-test-support with no duplicate Python owner.
+Every transferred file's bytes, type/mode, UID/GID and mtime are preserved.
+
+Both private final package states are install ok unpacked, explicitly not
+configured. Native installed /var/lib/dpkg/status is unchanged by SHA-256.
+No system package files, running DB sources or actual test coverage change.
+Successful fixtures are removed; failure fixtures are retained with exact
+paths and content-addressed reports.
+
+Final raw report .local/logs/h11-python-qa-ownership-probe.json SHA-256:
+`25138b993d255f866d061eab20a6e13bbfdc86eee3aebe54b6386b920941be45`.
+Tested host probe SHA-256:
+`d9fbb7739c6c741af5b2b1a02cfc2ccd9719c059c85f5a83368134e8c0f97c06`.
+The observed predecessor was 3.14.10-1; the private successor was
+3.14.10-1+toddy1. Production must derive its next generation from the accepted
+current package after H07 closure, not reuse this experiment's version.
+
+The production transfer must prepare both provenance-backed package archives
+and recovery state before removing the original owner, then install/configure
+the runtime first and QA second. The existing general packager currently
+refuses cross-package ownership conflicts even for archive-only preparation.
+Implement a narrowly checked archive-only handoff path while keeping the actual
+installation conflict check intact; do not solve preparation by enabling
+force-overwrite or distributing untracked file deletions. A durable production
+transfer recipe, configured dependency/runtime checks, complete package audits
+and final image exclusion remain required.

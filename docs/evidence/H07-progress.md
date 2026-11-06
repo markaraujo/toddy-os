@@ -1047,3 +1047,12 @@ acceptance are still pending. Raw observation
 440825c0d730ca0ea43616d38ccedcde79a3241aa979ab5ee7a937dbf784ab1b.
 The root-image private-key audit preparation is published with 110 local checks
 and all GitHub workflows passing at 4bab52b; it does not satisfy H11 acceptance.
+
+
+2026-11-06 continuation during Test044 cycle 2: a native Dpkg private-root
+experiment proved the planned Python QA ownership handoff (ADR-0049). Wrong
+order was rejected; core-then-QA unpack transferred all 5,395 real source-built
+files with exact bytes, modes, ownership and mtimes. Both private packages
+remain explicitly unpacked, not configured. Installed Dpkg state is unchanged.
+This prepares release image work and does not alter H07's 124/126 package count
+or accept the future installed QA split.

@@ -189,3 +189,14 @@ five CPU-active workers; original runner and supervisor remain live.
 recovery/file verification and transition into cycle 2 (446 seconds). Updated
 the public activity snapshot without assigning completion credit. Both native
 runner and supervisor remain live; the full suite/result is still required.
+
+
+2026-11-06 22:07 UTC — Verified real native Dpkg ownership transfer for CPython
+QA in separate private package roots. Wrong-order transfer fails without
+overwriting original QA bytes; correct core-then-QA order preserves all 5,395
+file payloads, modes, owners and mtimes. Predecessor/new archives remain
+available at the intermediate recovery boundary. Compression is limited to
+two threads. No installed state changed; both fixture package states are
+unpacked and do not claim configured/runtime acceptance. Recorded the remaining
+production archive-preparation/transfer requirement in ADR-0049. DB's original
+full standard suite continues in Test044's second timed cycle.

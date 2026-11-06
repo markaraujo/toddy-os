@@ -608,3 +608,20 @@ python3 /opt/toddy-build/scripts/build/h11/audit_private_key_material.py
 also fail. Do not waive findings merely because some earlier QA fixtures were
 public. This marker scan is only one part of the required artifact credential
 audit; account/identity/provider state and unrecognized formats remain separate.
+
+
+The private ownership handoff can be reproduced with
+python3 scripts/host/probe_python_qa_ownership.py. It operates only on its
+printed /mnt/lfs/tmp/toddy-python-qa-ownership-* workspace, uses native --unpack
+with explicit private --root paths, and limits compression to two threads.
+The wrong-order failure is intentional and separate from the correct-order
+root. Inspect each command's captured exit/stdout/stderr in the report.
+Package states remain unpacked; do not interpret them as configured acceptance.
+On a failed experiment preserve its exact workspace and archives; on success
+only that workspace is removed. Installed Dpkg status must remain unchanged.
+
+For the future production transfer, retain the original archive, both prepared
+new archives and the exact ownership manifest before upgrading the core. If
+interrupted between core and QA, resume from actual package state and verified
+archives; never force QA to overwrite files still owned by Python. The gated
+production transfer/controller remains to be implemented (ADR-0049).
