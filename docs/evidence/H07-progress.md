@@ -954,3 +954,12 @@ Raw .local/logs/h07-db-dead011-observation.json SHA-256
 `cd2297519d217c1614efeca5104ea5255fbb3a4882a9b1d85498970d2ed1c397`.
 The continuation supervisor remains armed; 124 accepted packages and 38%
 foundation credit are unchanged. Prepared later boot tooling earns no credit.
+
+
+2026-11-06 20:52 UTC: driver/runner remain live after 3h43m; full standard
+regression has advanced from deadlock cases to secondary-index cases Si001
+through Si008 across method combinations. No FAIL or final success sentinel
+appears in the observed partial log. Raw observation SHA-256
+`bc18d28890a3e607103088de27d46d4b98b574944820e9f3e72b27573d8dfbd1`,
+.local/logs/h07-db-secondary-observation.json. This remains unfinished work;
+124/126 accepted packages, 38% foundation credit and all gates are unchanged.

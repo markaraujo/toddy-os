@@ -89,3 +89,10 @@
 2026-11-06: Prepared firmware-only native boot probe with virtual-disk/kernel guards. Actual native Systemd generator/unit verification and wrong-kernel refusal passed; added source-verified DMI sysfs support to the gated kernel fragment. Existing BIOS/UEFI firmware inventoried. No kernel build, firmware import or native boot claimed (ADR-0051); BDB full suite advanced into Dead008.
 
 2026-11-06: Prepared guarded H09 checkpoint-overlay boot executor. Real paused BIOS/UEFI QEMU setup, read-only backing preservation, timeout cleanup, wrong-identity refusal and overlapping-run refusal passed; actual main executor refused premature gates. Four safety tests added. Native Toddy boot remains pending; BDB standard suite advanced to Dead011.
+
+2026-11-06: Prepared a gated native early-userspace runtime and verified its
+twenty files from eight accepted packages in a private real chroot. Program
+execution, content hashing and fixed device nodes passed; no credentials or
+installed changes. Three path/preservation tests pass. This is not a booted
+initramfs or H10 acceptance (ADR-0052). Complete BDB regression remains active,
+advancing through secondary-index tests at 20:52 UTC.

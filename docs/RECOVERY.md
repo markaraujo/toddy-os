@@ -478,3 +478,14 @@ acceptance only, not login, networking, live ISO, persistence or installer proof
 Keep failed workspaces for diagnosis; stopped containers may be removed by their
 exact recorded ID after logs are retained. No blanket container cleanup is
 part of this workflow. No native Toddy boot has run yet.
+
+
+The prepared H10 runtime helper (ADR-0052) must run only after accepted H09 and
+synchronized H10 in_progress status. Its future guest command is
+python3 /opt/toddy-build/scripts/build/h10/initramfs_runtime.py. It refuses an
+existing /mnt/lfs/sources/stage/toddy-initramfs-runtime directory; preserve and
+inspect any partial stage before a deliberate retry. Successful staging writes
+/mnt/lfs/sources/evidence/h10-initramfs/runtime.json. Inspect exact file hashes
+and ownership, not just directory existence. Staging is not a completed
+initramfs or native boot. The private native experiment was removed after its
+checks, and the current installed root/active BDB inputs remain unchanged.
