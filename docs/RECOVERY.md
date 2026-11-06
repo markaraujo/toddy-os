@@ -381,3 +381,17 @@ convention. A missing prerequisite produces an explicit diagnostic and exit
 file instead of leaving the supervisor with an absent result. Syntax and all
 97 local checks pass; actual final dispatch remains pending behind DB success.
 This prepared correction is included at the next quiescent input sync.
+
+
+H09 prepared order after H08 acceptance/status synchronization: run the
+kernel recipe/postcheck, then h09-boot-config with h09/boot-config.sh and
+h09/boot-config-check.sh, then h09-bootloader with h09/bootloader.sh and
+h09/bootloader-check.sh through run_step.py --user root. Preserve a verified
+cold paired VM checkpoint before the bootloader step. The recipe is initial
+installation only and refuses existing output/evidence; inspect partial
+results rather than deleting them to force a rerun. Before-sector snapshots
+and partition dumps are under /sources/evidence/h09-bootloader in the target,
+excluded from release images/Git. Prefer restoring the verified disposable
+cold pair for a failed boot-track experiment; sector backups alone are not a
+complete system checkpoint. Actual BIOS/UEFI early boot remains a separate
+mandatory acceptance step after artifact checks. No H09 dispatch has run yet.

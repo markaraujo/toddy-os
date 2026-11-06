@@ -93,3 +93,27 @@ Raw .local/logs/h09-native-grub-config-link.json SHA-256
 bc3303a6c379c3c2b0be539d96d06d28e5daf36c8467ea297bcc098992243e31.
 This validates the filesystem link channel, not execution of a GRUB core or
 a kernel. BIOS/EFI installation and early boot remain unexecuted and required.
+
+
+Prepared bootloader recipe now follows LFS 13.1 section 10.4 for i386-pc and
+x86_64-efi installation. It requires actual kernel/configuration success and
+the H09 gate, repeats the existing virtual disk serial/size/root guards, and
+checks measured GPT BIOS/ESP types, parent disk, FAT label and mount ownership.
+Unexpected existing platform/EFI payload or recovery evidence causes refusal.
+It preserves the first MiB, BIOS partition and partition table before writes,
+checks that the table and owned configuration/kernel bytes stay unchanged,
+and uses --removable --no-nvram for EFI. Generated files plus the MBR receive
+an explicit hash inventory; a read-only ESP remount postcheck compares them.
+File-format/hash success explicitly does not establish actual BIOS/UEFI boot.
+
+Native GRUB 2.14 help and read-only target inventory confirmed the requested
+options and partition identities. The recipe remains undispatched: current
+build inputs deliberately lack H09 while BDB owns the lock. An initial script
+probe refused at that missing gate file before reaching disk operations; raw
+.local/logs/h09-bootloader-unsynchronized-input-refusal.json is preserved.
+Running the exact gate bytes separately through native guest Python stdin
+then produced the intended H08/H09 status refusal, exit 1. Raw gate report
+.local/logs/h09-bootloader-gate-refusal.json SHA-256
+c018c4c41ec964098f2d583799cd3269a87d7b3344902764dffe4c7a68edb37e.
+Shell syntax, Python parsing and 97 local checks pass. No bootloader installed,
+no boot sector written, no kernel/boot acceptance credited by these probes.
