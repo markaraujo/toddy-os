@@ -51,3 +51,20 @@ That preflight does not claim native APT transport acceptance; the complete APT
 postcheck remains mandatory after its actual build. Configuration semantics
 come from frozen APT 3.0.4 doc/apt-transport-https.1.xml and methods/connect.cc,
 including enabled peer/name verification and scoped CaInfo loading.
+
+Native feature preflight: the four exact frozen APT CMake discovery modules
+found Seccomp 2.6.1, Systemd/Udev 261 and Zstd 1.5.7 inside the target using its
+own CMake/compiler/pkg-config. Module hashes and output are preserved in
+.local/logs/h07-apt-native-feature-probe.log, SHA-256
+`424f984a1b4ef60af836a29ff01837ad63c282dbe09b39daab484f4ea49b31ce`,
+exit 0. The private temporary project was removed; installed files and active
+BDB inputs were unchanged. This is dependency discovery, not full APT acceptance.
+
+Upstream treats these four libraries as optional in CMakeLists.txt. Toddy's
+selected profile requires them: after full configuration, the recipe now
+requires all four HAVE_* definitions in build/include/config.h before compiling.
+It preserves the generated header and CMake cache alongside test evidence.
+Silently accepting optional omission would contradict this profile; forcing
+found values could conceal missing libraries, so neither alternative is used.
+The source template uses bare #define HAVE_* lines, not a trailing numeric 1.
+Full APT configuration/build/repository acceptance remains gated on BDB success.

@@ -13,6 +13,13 @@ cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/
  -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_LIBEXECDIR=libexec \
  -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_INSTALL_LOCALSTATEDIR=/var \
  -DCURRENT_VENDOR=toddy -DDEFAULT_PAGER=less -DWITH_DOC=OFF -DWITH_TESTS=ON -DUSE_NLS=ON
+# These are optional to upstream, but required by the selected native profile.
+# Refuse a silently reduced build if library discovery regresses.
+for feature in SECCOMP SYSTEMD UDEV ZSTD; do
+ grep -Fx "#define HAVE_$feature" build/include/config.h
+done
+cp build/include/config.h /sources/evidence/h07-apt/config.h
+cp build/CMakeCache.txt /sources/evidence/h07-apt/CMakeCache.txt
 cmake --build build -j8
 chown -R tester:tester .
 su tester -c 'cd build && ctest --output-on-failure' 2>&1 | tee /sources/evidence/h07-apt/ctest.log
