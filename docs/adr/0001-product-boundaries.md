@@ -9,7 +9,7 @@ The owner wants an original community Linux distribution inspired by the LFS-bas
 
 ## Decision
 
-Build an independent LFS foundation first and add desktop/agentic capabilities second. Preserve provider independence, optional local inference, text/voice, persistent declarative configuration plus controlled one-off operations, proactive automation and pluggable integration. Target an experimental installable daily-use release, beginning with x86_64 VM validation. Name the product Toddy OS and retain the approved bespectacled Shih-tzu PNG identity. Keep GitHub private through first ISO review. Use English for repository artifacts.
+Build an independent LFS foundation first and add desktop/agentic capabilities second. Preserve provider independence, optional local inference, text/voice, persistent declarative configuration plus controlled one-off operations, proactive automation and pluggable integration. Target an experimental installable daily-use release, beginning with x86_64 VM validation. Name the product Toddy OS and retain the approved bespectacled Shih-tzu PNG identity. The initial preference was to keep GitHub private through first ISO review; this visibility decision is superseded by ADR-0005. Use English for repository artifacts.
 
 ## Alternatives
 

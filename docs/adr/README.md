@@ -5,4 +5,6 @@ An ADR states context, decision, alternatives, consequences, source versions and
 - [0001 — Product boundaries and delivery strategy](0001-product-boundaries.md)
 - [0002 — Repository-native development context](0002-repository-native-context.md)
 - [0003 — Autonomous development unblocking](0003-autonomous-development-unblocking.md)
+- [0004 — One-start autonomous delivery](0004-one-start-autonomy.md)
+- [0005 — Single public repository and Pages](0005-single-public-repository-and-pages.md)
 - [Template](template.md)

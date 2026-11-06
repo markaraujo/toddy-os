@@ -8,7 +8,7 @@ The planning repository and approved artwork are prepared. No LFS source package
 
 Open this repository in Codex. Give the following instruction:
 
-> Read AGENTS.md, PRD.md, STATUS.md, status.json and docs/DEVELOPMENT.md. Start H01, inspect the actual host and choose a disposable build environment. Inspect the versioned candidate in H01 and freeze it in H02, then follow that frozen LFS book through eligible Phase 1 stories, maintain logs, decisions and progress, and validate each milestone. Do not touch physical disks or begin Phase 2 before its gate. Autonomously install and configure required host/guest tools with available administrative privileges, verify fixes and continue; request user action only for concrete unavailable access or actions outside scope. Report concrete blockers and verified results.
+> Read AGENTS.md, PRD.md, STATUS.md, status.json and docs/DEVELOPMENT.md. Start H01, inspect the actual host and choose a disposable build environment. Inspect the versioned candidate in H01 and freeze it in H02, then follow that frozen LFS book through both phases without asking whether to continue, maintain logs, decisions and progress, and validate each milestone. Do not touch physical disks or begin Phase 2 before its gate. Autonomously install and configure required host/guest tools with available administrative privileges, verify fixes and continue; request user action only for concrete unavailable access or actions outside scope. Report concrete blockers and verified results.
 
 Do not paste API keys into the prompt. Do not weaken sandbox/approval configuration globally. A product's full-power profile belongs inside its designated system, not on the author's workstation.
 
@@ -38,7 +38,7 @@ Before stopping, persist current task, exact failed step, checkpoint, command ex
 
 ## Source and visibility policy
 
-Use a feature branch for implementation, focused commits and pull requests where practical. No force push or history rewriting without a reason. GitHub remains private through the first ISO review; CI uploads must not leak private artifacts. Project licensing must be finalized before public release. Development context lives in the committed repository files; workstation RAG is excluded by owner decision.
+Use a feature branch for implementation, focused commits and pull requests where practical. No force push or history rewriting without a reason. The owner authorized a public repository and GitHub Pages dashboard on 2026-11-05. Publish only the dashboard export, not arbitrary runtime/build directories. Preserve secrets and finish the licensing decision before distributing licensed release artifacts. Development context lives in the committed repository files; workstation RAG is excluded by owner decision.
 
 ## Pre-start audit (2026-11-05)
 
@@ -59,3 +59,11 @@ Diagnose blockers, choose a suitable dependency from an official upstream or tru
 This authorization does not create credentials or elevate the actual runtime by itself. If an administrator password, account authentication, unavailable permission, mandatory legal acceptance or a paid resource is required, report that concrete dependency and request only the missing user action. Do not request passwords or tokens in chat or bypass enforced security controls. Preserve unrelated applications, user data and existing work. Formatting physical disks, installing Toddy OS onto the host, destructive unrelated changes, weakening global security and purchasing services remain outside routine dependency installation.
 
 The present task updates this plan only; do not start installations or builds until the owner starts development.
+
+## Published dashboard
+
+Live URL: https://markaraujo.github.io/toddy-os/
+
+A single repository is authoritative. Run make dashboard, commit status.json and generated files, then push validated changes to main. The GitHub Pages workflow checks the planning state, exports an allowlisted static site and deploys it automatically. Feature branches do not deploy. The site links story/PRD details to the same GitHub repository, and includes only the dashboard and its mascot asset. No second repository, cross-repository key or provider account is required.
+
+Use make site for a local export into ignored _site/. All site data is public; never include credentials, local logs, personal memory or machine-specific secret configuration in status data. A dashboard reflects the last published commit, not uncommitted filesystem changes or a live process monitor.

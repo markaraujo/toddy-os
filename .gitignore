@@ -33,3 +33,6 @@ __pycache__/
 *.pyc
 .venv/
 .DS_Store
+
+# Generated publication export
+_site/

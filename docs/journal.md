@@ -6,3 +6,4 @@
 | 2026-11-05 | Bootstrap | Owner declined workstation RAG integration; removed project manifest and instructions | Repository-native context selected in ADR-0002 |
 | 2026-11-05 | Pre-start audit | Read-only host/tool snapshot; fixed H01/H02 source-freeze ordering | Hardware resources/KVM present, VM tooling absent; no provisioning or OS build performed |
 | 2026-11-05 | Autonomy policy | Owner authorized installation/configuration of project dependencies for autonomous unblocking | PRD, AGENTS, handoff and H01 updated; no installation started |
+| 2026-11-05 | Delivery policy | Owner requested one-start autonomous execution and a single public repository with Pages | ADR-0004/0005 recorded; OS build still not started |

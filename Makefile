@@ -1,4 +1,4 @@
-.PHONY: check progress dashboard
+.PHONY: check progress dashboard site
 
 check:
 	python3 scripts/project.py check
@@ -9,3 +9,6 @@ progress:
 
 dashboard:
 	python3 scripts/project.py render
+
+site:
+	python3 scripts/export_site.py

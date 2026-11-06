@@ -10,7 +10,7 @@ The system is built from Linux, GNU and other upstream components, not a newly i
 
 ## 2. Confirmed requirements and delivery boundaries
 
-- Publish the source and build process for community use; keep GitHub PRIVATE until the first ISO exists. Review visibility before changing it; do not automatically publish secrets or make the repository public.
+- Publish the source and build process for community use. The owner authorized making this single repository PUBLIC on 2026-11-05 and publishing its dashboard with GitHub Pages. Never commit secrets or personal runtime data.
 - All repository content, commits, technical documentation, progress labels and generated product copy are in English. The product supports Portuguese and English interaction.
 - Follow two product phases: (1) a reliable LFS foundation; (2) desktop, agentic capabilities and an installable experimental daily-use release.
 - Provide a familiar desktop, terminal-based prompts, basic development tools, automation, voice and a graphical agent entry point.
@@ -143,6 +143,8 @@ Require install, remove, upgrade, configuration preservation, dependency/conflic
 
 ## 8. Development and release workflow
 
+One start instruction authorizes continuous implementation across both phases and autonomous dependency installation. After G1 passes, proceed into Phase 2 without asking for a second start. Resolve ordinary failures, verify outcomes and regularly commit/push progress. End only when the agreed release acceptance passes or a concrete external dependency requires user action. Session limits are real constraints; preserve restartable state rather than promising uninterrupted execution.
+
 Use one story per milestone with goal, prerequisites, steps, acceptance criteria, evidence and recovery notes. status.json is the progress source of truth. STATUS.md and dashboard/index.html are generated from it. Completed work counts only after evidence exists; unfinished work does not earn arbitrary fractional credit. Phase percentages are calculated separately from bootstrap readiness. No promise of completion time until a baseline build is measured.
 
 Record chronological activity in docs/journal.md and each failure as symptom, cause, correction and verification in docs/errors.md. Record architecture in docs/adr/. Follow commit-sized changes and never commit secrets, whole chats, downloaded third-party source trees, model weights, build disks or ISOs. Release artifacts belong in a release store with checksums, licenses, source notices and component inventory.
@@ -161,7 +163,7 @@ Physical hardware tests record exact CPU, RAM, GPU, storage, network and result.
 
 ## 10. Phase 2 release gate G2
 
-All B stories pass with linked evidence. An installed guest survives multiple reboots with persistent data; agent/provider/voice/memory/automation scenarios pass; stop/revoke and recovery are tested. At least one physical machine has a documented daily-use smoke result, or the release is explicitly labeled VM-only. Publish known issues, source/build instructions, license inventory and hashes. The owner reviews the first ISO before public visibility changes. Experimental daily-use is not an enterprise-support or universal-hardware claim.
+All B stories pass with linked evidence. An installed guest survives multiple reboots with persistent data; agent/provider/voice/memory/automation scenarios pass; stop/revoke and recovery are tested. At least one physical machine has a documented daily-use smoke result, or the release is explicitly labeled VM-only. Publish known issues, source/build instructions, license inventory and hashes. The owner can review and test the first ISO; repository visibility is already public by owner decision. Experimental daily-use is not an enterprise-support or universal-hardware claim.
 
 ## 11. Risks and responses
 
