@@ -45,5 +45,8 @@ H12 native namespace obligation: Systemd 261.2 test-namespace's
 chroot (ADR-0025); require a real booted-target retry before G1. Keep the Glibc
 container-dependent retests as well. E2fsprogs prezeroed allocation qualification
 (ADR-0027) does not authorize installer use of assume_storage_prezeroed.
-Vim full GLVS suite must use frozen/verified external plugin inputs before any
-plugin executes; current driver stops at that precondition. No test is removed.
+Vim full unfiltered suite now passed with all four frozen/verified live plugin
+inputs as nonroot (ADR-0028/0031); preserve those checks on future rebuilds.
+Native Dpkg acceptance passed. APT signed repository, final versioned dependency/
+conffile ownership, Linux API/layout ownership, bootstrap quarantine and license
+closure remain required (ADR-0032 through ADR-0036).

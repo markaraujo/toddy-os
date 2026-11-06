@@ -1,0 +1,189 @@
+{
+  "decision": "ADR-0036",
+  "status": "planned_pending_native_validation",
+  "packages": [
+    {
+      "package": "bc",
+      "add_depends": [
+        "readline"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "binutils",
+      "add_depends": [
+        "flex",
+        "gcc-runtime"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "bison",
+      "add_depends": [
+        "gettext",
+        "ncurses"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "coreutils",
+      "add_depends": [
+        "openssl"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "gawk",
+      "add_depends": [
+        "readline"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "gdbm",
+      "add_depends": [
+        "ncurses"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "gettext",
+      "add_depends": [
+        "acl",
+        "attr"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "gmp",
+      "add_depends": [
+        "gcc-runtime"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "gnupg",
+      "add_depends": [
+        "sqlite"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "inetutils",
+      "add_depends": [
+        "libxcrypt"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "kmod",
+      "add_depends": [
+        "openssl"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "libarchive",
+      "add_depends": [
+        "expat",
+        "lz4"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "libelf",
+      "add_depends": [
+        "bzip2",
+        "xz",
+        "zstd"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "markupsafe",
+      "add_depends": [
+        "glibc"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "ninja",
+      "add_depends": [
+        "gcc-runtime"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "perl",
+      "add_depends": [
+        "libxcrypt"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "python",
+      "add_depends": [
+        "util-linux",
+        "zstd"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "readline",
+      "add_depends": [
+        "ncurses"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "sed",
+      "add_depends": [
+        "acl",
+        "attr"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "shadow",
+      "add_depends": [
+        "acl"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "sqlite",
+      "add_depends": [
+        "ncurses"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "systemd",
+      "add_depends": [
+        "util-linux"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "util-linux",
+      "add_depends": [
+        "bzip2",
+        "file",
+        "libxcrypt",
+        "systemd",
+        "xz"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    },
+    {
+      "package": "vim",
+      "add_depends": [
+        "acl"
+      ],
+      "reason": "Measured native DT_NEEDED providers; Systemd/Util-linux book bootstrap closure also explicit"
+    }
+  ],
+  "conffiles": "Every packaged regular /etc file",
+  "libtool_archives": "Remove from staged archive and installed package through versioned upgrade, never only live files",
+  "version_suffix": "+toddy1"
+}

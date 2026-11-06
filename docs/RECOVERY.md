@@ -44,14 +44,21 @@ exercised. Copies share the workstation disk and are not disaster recovery.
 
 Groff/Kbd/Tar/Systemd/E2fsprogs recoveries passed. Keep qualified raw failures
 and H12 native namespace obligations (ADR-0023/0025/0027). Do not infer all
-upstream tests passed from dispatcher recipe/postcheck zero. Live system now has 100 accepted native packages through GnuPG/Vim.
+upstream tests passed from dispatcher recipe/postcheck zero. Live system now has 101 accepted native packages through native Dpkg.
 Full Vim PTY/SHELL retry passed 8014 executed/200 skipped/zero failed and every
 planned result file. Current continuation: h07-package-manager-driver.sh.
 Inspect actual h07-dpkg/h07-berkeley-db records and driver exit before dispatch.
 Initial Dpkg safe extraction refused three official FIFO fixtures before any
 installed changes. Partial tree/failure retained under sources/recovery and
 build/history/dpkg-extraction. Exact archive/name/type allowance added with
-standard path/mode/ownership checks; retry initiated. Native APT, packaging
+standard path/mode/ownership checks; full retry and native Dpkg postcheck passed.
+Berkeley DB complete Tcl suite is running after successful C tests. Test-only
+DBM/compat185 and static object generation satisfy actual upstream test/symbol
+requirements; production still omits DBM/compat185 and stages no .a/.la files.
+Inspect /sources/db-5.3.28/build-test/ALL.OUT for live progress, not only tee tail.
+Prepared native Perl/Triehash/Which/Libseccomp/APT recipes are not yet accepted.
+Once dispatcher is quiescent, sync then run h07-perl-test-tools-driver.sh; it
+uses accepted native Dpkg backend and must pass real package postconditions. Native APT, packaging
 backend transition, ownership/dependency/conffile/license closure remain pending.
 
 After an offline restore/restart:

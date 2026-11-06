@@ -1,0 +1,286 @@
+{
+  "decision": "ADR-0033",
+  "scope": "Native test/build tooling; no CPAN network installation",
+  "components": [
+    {
+      "distribution": "HTML-Tagset",
+      "version": "3.24",
+      "filename": "HTML-Tagset-3.24.tar.gz",
+      "requires_distributions": [],
+      "license": [
+        "artistic_2"
+      ],
+      "source_directory": "HTML-Tagset-3.24",
+      "package": "perl-html-tagset",
+      "depends": [
+        "perl"
+      ],
+      "probe_module": "HTML::Tagset"
+    },
+    {
+      "distribution": "Test-Warnings",
+      "version": "0.038",
+      "filename": "Test-Warnings-0.038.tar.gz",
+      "requires_distributions": [],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "Test-Warnings-0.038",
+      "package": "perl-test-warnings",
+      "depends": [
+        "perl"
+      ],
+      "probe_module": "Test::Warnings"
+    },
+    {
+      "distribution": "Test-Needs",
+      "version": "0.002010",
+      "filename": "Test-Needs-0.002010.tar.gz",
+      "requires_distributions": [],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "Test-Needs-0.002010",
+      "package": "perl-test-needs",
+      "depends": [
+        "perl"
+      ],
+      "probe_module": "Test::Needs"
+    },
+    {
+      "distribution": "MIME-Base32",
+      "version": "1.303",
+      "filename": "MIME-Base32-1.303.tar.gz",
+      "requires_distributions": [],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "MIME-Base32-1.303",
+      "package": "perl-mime-base32",
+      "depends": [
+        "perl"
+      ],
+      "probe_module": "MIME::Base32"
+    },
+    {
+      "distribution": "URI",
+      "version": "5.40",
+      "filename": "URI-5.40.tar.gz",
+      "requires_distributions": [
+        "MIME-Base32",
+        "Test-Needs",
+        "Test-Warnings"
+      ],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "URI-5.40",
+      "package": "perl-uri",
+      "depends": [
+        "perl",
+        "perl-mime-base32",
+        "perl-test-needs",
+        "perl-test-warnings"
+      ],
+      "probe_module": "URI"
+    },
+    {
+      "distribution": "IO-HTML",
+      "version": "1.004",
+      "filename": "IO-HTML-1.004.tar.gz",
+      "requires_distributions": [],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "IO-HTML-1.004",
+      "package": "perl-io-html",
+      "depends": [
+        "perl"
+      ],
+      "probe_module": "IO::HTML"
+    },
+    {
+      "distribution": "Encode-Locale",
+      "version": "1.05",
+      "filename": "Encode-Locale-1.05.tar.gz",
+      "requires_distributions": [],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "Encode-Locale-1.05",
+      "package": "perl-encode-locale",
+      "depends": [
+        "perl"
+      ],
+      "probe_module": "Encode::Locale"
+    },
+    {
+      "distribution": "TimeDate",
+      "version": "2.35",
+      "filename": "TimeDate-2.35.tar.gz",
+      "requires_distributions": [],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "TimeDate-2.35",
+      "package": "perl-timedate",
+      "depends": [
+        "perl"
+      ],
+      "probe_module": "Date::Parse"
+    },
+    {
+      "distribution": "HTTP-Date",
+      "version": "6.08",
+      "filename": "HTTP-Date-6.08.tar.gz",
+      "requires_distributions": [
+        "TimeDate"
+      ],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "HTTP-Date-6.08",
+      "package": "perl-http-date",
+      "depends": [
+        "perl",
+        "perl-timedate"
+      ],
+      "probe_module": "HTTP::Date"
+    },
+    {
+      "distribution": "B-COW",
+      "version": "0.007",
+      "filename": "B-COW-0.007.tar.gz",
+      "requires_distributions": [],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "B-COW-0.007",
+      "package": "perl-b-cow",
+      "depends": [
+        "perl"
+      ],
+      "probe_module": "B::COW"
+    },
+    {
+      "distribution": "Clone",
+      "version": "0.51",
+      "filename": "Clone-0.51.tar.gz",
+      "requires_distributions": [
+        "B-COW"
+      ],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "Clone-0.51",
+      "package": "perl-clone",
+      "depends": [
+        "perl",
+        "perl-b-cow"
+      ],
+      "probe_module": "Clone"
+    },
+    {
+      "distribution": "LWP-MediaTypes",
+      "version": "6.05",
+      "filename": "LWP-MediaTypes-6.05.tar.gz",
+      "requires_distributions": [],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "LWP-MediaTypes-6.05",
+      "package": "perl-lwp-mediatypes",
+      "depends": [
+        "perl"
+      ],
+      "probe_module": "LWP::MediaTypes"
+    },
+    {
+      "distribution": "Try-Tiny",
+      "version": "0.32",
+      "filename": "Try-Tiny-0.32.tar.gz",
+      "requires_distributions": [],
+      "license": [
+        "mit"
+      ],
+      "source_directory": "Try-Tiny-0.32",
+      "package": "perl-try-tiny",
+      "depends": [
+        "perl"
+      ],
+      "probe_module": "Try::Tiny"
+    },
+    {
+      "distribution": "HTTP-Message",
+      "version": "7.04",
+      "filename": "HTTP-Message-7.04.tar.gz",
+      "requires_distributions": [
+        "Clone",
+        "Encode-Locale",
+        "HTTP-Date",
+        "IO-HTML",
+        "LWP-MediaTypes",
+        "Test-Needs",
+        "Try-Tiny",
+        "URI"
+      ],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "HTTP-Message-7.04",
+      "package": "perl-http-message",
+      "depends": [
+        "perl",
+        "perl-clone",
+        "perl-encode-locale",
+        "perl-http-date",
+        "perl-io-html",
+        "perl-lwp-mediatypes",
+        "perl-test-needs",
+        "perl-try-tiny",
+        "perl-uri"
+      ],
+      "probe_module": "HTTP::Message"
+    },
+    {
+      "distribution": "HTML-Parser",
+      "version": "3.86",
+      "filename": "HTML-Parser-3.86.tar.gz",
+      "requires_distributions": [
+        "HTML-Tagset",
+        "HTTP-Message",
+        "URI"
+      ],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "HTML-Parser-3.86",
+      "package": "perl-html-parser",
+      "depends": [
+        "perl",
+        "perl-html-tagset",
+        "perl-http-message",
+        "perl-uri"
+      ],
+      "probe_module": "HTML::Entities"
+    },
+    {
+      "distribution": "Devel-Cover",
+      "version": "1.52",
+      "filename": "Devel-Cover-1.52.tar.gz",
+      "requires_distributions": [
+        "HTML-Parser"
+      ],
+      "license": [
+        "perl_5"
+      ],
+      "source_directory": "Devel-Cover-1.52",
+      "package": "perl-devel-cover",
+      "depends": [
+        "perl",
+        "perl-html-parser"
+      ],
+      "probe_module": "Devel::Cover"
+    }
+  ]
+}

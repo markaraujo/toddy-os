@@ -1,0 +1,37 @@
+# ADR-0033: Freeze APT's mandatory native Triehash generator
+
+- Date: 2026-11-06
+- Status: Accepted source selection; native tests pending
+
+Actual frozen APT 3.0.4 CMakeLists.txt requires triehash unconditionally. Select
+Triehash 0.3, matching the maintained Debian source package, before building APT.
+The original Perl generator archive matches SHA-256 and size published in the
+Debian 0.3-3 DSC over official HTTPS. Signature not independently verified.
+SHA-256: 289a0966c02c2008cd263d3913a8e3c84c97b8ded3e08373d63a382c71d2199c.
+No binary package or Debian maintainer script is imported. Existing native Perl
+runs the generator; compile generated C with native GCC and run upstream tests.
+Retain MIT license. No hosted/build-time network fallback is allowed. Omitting
+this required tool or substituting generated code would hide a build dependency.
+
+Sources:
+- https://deb.debian.org/debian/pool/main/t/triehash/triehash_0.3-3.dsc
+- https://github.com/julian-klode/triehash
+- https://packages.debian.org/source/trixie/triehash
+- Frozen APT 3.0.4 CMakeLists.txt and Triehash 0.3 tests/run-tests.sh/framework.sh.
+
+The unchanged Triehash test framework explicitly instruments every generator
+invocation with Devel::Cover and ends by rendering coverage. Freeze Devel-Cover
+1.52 and its actual required runtime/test dependency closure (16 distributions)
+from original CPAN archives, verified against MetaCPAN release SHA-256 metadata.
+Do not install via a moving CPAN resolver or remove instrumentation/assertions.
+Native Perl 5.44 Module::CoreList determines existing core modules; include only
+runtime/test/configure/build requirements, not author-only x_Dist_Zilla/develop
+release tooling. Exact source versions, license identifiers, dependency edges,
+probes and build order are in config/native-perl-test-tools.lock.json; complete
+individual configured suites are required before package acceptance. Optional
+coverage report backends remain accurately reported by upstream test skips.
+These are build/test tooling; release component inclusion will be explicit.
+
+Sources: https://metacpan.org/release/PJCJ/Devel-Cover-1.52,
+https://fastapi.metacpan.org/v1/release/Devel-Cover and the exact distributions'
+META.json prereqs. All source hashes are pinned before guest transfer.

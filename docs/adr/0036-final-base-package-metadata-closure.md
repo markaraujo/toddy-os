@@ -1,0 +1,51 @@
+# ADR-0036: Close native package metadata with versioned archives
+
+- Date: 2026-11-06
+- Status: Audit/upgrade tooling prepared; closure pending
+
+The actual 101-package audit inspected 2551 ELF files. It found 135 undeclared
+provider edges (repeated across files) plus one private Systemd library context.
+No build-path leak or unresolved public ABI provider was reported. Exact added
+package relationships are in config/native-package-metadata.json. Add final
+Systemd -> Util-linux explicitly after the book-order bootstrap, and retain
+Util-linux's measured Systemd/udev linkage. Version constraints must agree with
+the frozen installed provider versions; a graph alone is not solver evidence.
+
+The remaining library finding is /usr/lib/systemd/libsystemd-core-261.so needing
+libsystemd-shared-261.so. Its actual systemd executable directly needs both and
+has RUNPATH=/usr/lib/systemd; the native dynamic loader --list resolves both to
+that directory. Preserve that explicit execution-context evidence rather than
+claiming every private library is independently loadable or globally adding the
+private directory to ld.so.conf. Native boot still required in H12.
+
+Upgrade metadata as new +toddy1 versions using accepted native Dpkg, retaining
+old archives/records. Re-extract the exact original payload; do not rebuild or
+retime compiler/libc tests, modify installed package databases by hand, or remove
+.la files only from the live tree. Register all packaged regular /etc files as
+conffiles, remove obsolete staged Libtool .la archives consistently, reject
+ownership conflicts before install, and preserve owner-modified configuration.
+Record predecessor archive/source hashes and compare actual post-upgrade payload,
+conffiles, missing/duplicate ownership and dependency audit. Generated state
+(account databases, indexes, machine ID, package DB) needs explicit separate
+classification; native Linux API headers/layout must receive final ownership.
+DT_NEEDED closure does not cover executable scripts, dlopen, tool/data/plugin
+requirements or licenses. Those must be audited independently before H07/G1.
+
+Evidence: .local/logs/h07-elf-101.json, actual native loader command
+`chroot /mnt/lfs /lib64/ld-linux-x86-64.so.2 --list /usr/lib/systemd/systemd`,
+frozen LFS 13.1 package management section and ADR-0008/0035. This ADR does not
+claim any metadata upgrade, full ownership or final closure has passed yet.
+
+### Exact bootstrap-remnant audit
+
+Read-only ownership audit found 2026 unowned regular/symlink paths, zero duplicate
+owners. They include Linux API headers awaiting ownership; generated account/
+service state; merged-/usr/loader aliases; and obsolete bootstrap files. Native
+GCC is x86_64-pc-linux-gnu with no cross-triplet search path. Quarantine only the
+exact unowned x86_64-lfs-linux-gnu subtrees/programs plus obsolete Xz library/GDB
+helper and old Python files absent from the frozen 3.14.10 archive. Preserve
+per-file hashes/links and same-target recovery copies; refuse if any path gains
+an owner or disappears before execution. Do not glob-delete unknown files.
+Native C++ threads, Perl threads, Python imports/trust and Xz version must still
+pass. Other unowned paths need explicit layout/generated-state ownership review;
+this cleanup alone does not close the audit.

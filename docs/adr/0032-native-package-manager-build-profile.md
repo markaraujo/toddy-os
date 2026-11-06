@@ -66,3 +66,11 @@ reference DBM/compat185 types/functions. Enable those interfaces in the disposab
 test build only, as the maintained two-build default permits. Production retains
 disabled DBM/compat185 and no conflicting GDBM interfaces. No tests/source are
 removed or modified. Preserve failed tree/log and rebuild from verified inputs.
+
+The next native link exposed the maintained versioned-symbols patch's reliance
+on non-PIC .o files: it strips .libs/ from Libtool pic_object paths before nm.
+With --disable-static, those files do not exist and the generated global symbol
+list is empty; GNU ld correctly rejects it. Enable static object generation in
+both builds, matching the maintained source default, then exclude .a/.la files
+from the staged production package. Keep symbol versioning and full tests; no
+patch or exported ABI is removed. Preserve failed tree/log before fresh retry.

@@ -15,6 +15,7 @@ import shutil
 import subprocess
 from locked_inputs import locked_source
 from provenance import recipe_set
+from package_backend import PackageBackend
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -92,7 +93,8 @@ def main():
         raise SystemExit('Invalid native package name')
     if not re.fullmatch(r'[0-9][0-9A-Za-z.+:~_-]*', args.version) or '\n' in args.depends:
         raise SystemExit('Invalid native package version/dependency field')
-    subprocess.run(['dpkg', '--validate-version', args.version], check=True)
+    backend = PackageBackend(TARGET)
+    backend.run('dpkg', '--validate-version', args.version)
     stage = args.stage.resolve()
     if args.stage.is_symlink() or not stage.is_relative_to(TARGET/'sources/stage') or not stage.is_dir():
         raise SystemExit('Staging root must be a real directory under target sources/stage')
@@ -162,9 +164,9 @@ def main():
     if args.conffile:
         (control/'conffiles').write_text('\n'.join(args.conffile)+'\n')
     RECORDS.mkdir(parents=True, exist_ok=True)
-    subprocess.run(['dpkg-deb', '--build', str(stage), str(archive)], check=True)
+    backend.build(stage, archive)
     record = {'name': args.name, 'version': args.version, 'archive_sha256': digest(archive),
-        'recipe_sha256': digest(args.recipe), 'packager_sha256': digest(Path(__file__)),
+        'recipe_sha256': digest(args.recipe), 'packager_sha256': digest(Path(__file__)), 'packaging_backend': backend.record,
         'supporting_build_scripts': recipe_set(), 'sources': source_rows,
         'payload': entries, 'generated_paths': generated_paths,
         'runtime_dependency_closure': 'pending final base audit', 'installed': False}
@@ -174,8 +176,7 @@ def main():
         database.mkdir(parents=True, exist_ok=True)
         (database/'status').touch(exist_ok=True)
         # Packages contain no maintainer scripts. Target root is always explicit.
-        subprocess.run(['dpkg', '--root='+str(TARGET), '--force-confold', '--force-confdef',
-                        '--install', str(archive)], check=True)
+        backend.install(archive)
         for path in entries:
             if path.startswith('/usr/share/info/') and re.search(r'\.info(?:\.(?:gz|xz|bz2))?$',path):
                 subprocess.run(['/usr/sbin/chroot',str(TARGET),'/usr/bin/install-info',

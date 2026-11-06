@@ -668,3 +668,30 @@ Raw runner/nested reports: .local/logs/h07-native-support-100.tar.gz SHA-256
 0921173c1c50901a06611d43157b92084f0e1df1ce2c37b379fa1e2ea9d726e8.
 This cache is not a new cold checkpoint or ISO. Native package managers and final
 ownership/dependency/conffile/license closure remain required; H07/G1 incomplete.
+
+
+## Native Dpkg acceptance and closure audit: 101 packages
+
+Dpkg 1.22.22 full configured check and native package build/install/query,
+conffile-preserving upgrade, ownership conflict rejection, removal/purge passed.
+The four reported Perl test groups contain 3991, 712, 12815 and 277 tests;
+raw reports retained. Main target database hash was unchanged by disposable
+postcheck operations. Log SHA-256
+cc609c7462e4b56102228abee78df0aa905cf4622bd1b142771f8769590b65c1.
+
+Berkeley DB's initial test configuration needed DBM/compat185 for unconditional
+Tcl test bindings. Next link exposed maintained symbol generator's reliance on
+static .o files. Both failures changed zero installed paths; trees/logs retained.
+Corrected fresh build passed C tests and is running complete standard Tcl suite.
+Production disables compatibility interfaces and excludes .a/.la staging.
+ADR-0032 records causes/corrections; no DB acceptance claimed while tests run.
+
+Read-only native audit inspected 2551 ELFs in 101 packages, finding 135 missing
+metadata provider declarations and one private Systemd execution context. Actual
+native loader resolves both Systemd private libraries; details in ADR-0036.
+Ownership audit found 2026 unowned files/links, zero duplicate owners. Prepared
+931-path exact quarantine covers obsolete cross-triplet/Python/Xz remnants;
+Linux API headers, layout and generated state remain separate closure work.
+No cleanup or metadata upgrade is claimed executed yet. ADR-0033/0034 freezes
+native APT test/build additions; ADR-0035 prepares native packaging transition.
+61 local tests pass. Published checks for 762dd6b are green; H07/G1/G2 pending.
