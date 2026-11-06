@@ -6,6 +6,16 @@ Read PRD.md, STATUS.md, status.json, docs/DEVELOPMENT.md, docs/OPEN-DECISIONS.md
 
 The current request is repository/requirements bootstrap only. Do not start compiling the OS, install guest dependencies or alter host services as part of setup. After the user explicitly starts development, select H01 and work autonomously through eligible Phase 1 stories. Use the status gates; Phase 2 implementation requires G1. Existing PRD requirements authorize routine technical decisions within scope; record them rather than asking repeatedly. Ask only when essential external access, irreversible actions outside the disposable target or changed product requirements require the owner.
 
+## Autonomous dependency installation and unblocking
+
+Once development is started, the owner explicitly authorizes the development AI to install, update and configure the tools, system packages and build dependencies necessary to develop and test Toddy OS, on the development host as needed and inside the designated VM/chroot. This includes virtualization, compilers, build tools, image/boot utilities, language tooling and test dependencies. The AI may use available administrative privileges, including sudo, for these project-related operations without asking again for each routine installation.
+
+Diagnose blockers, choose a suitable dependency from an official upstream or trusted package source, install/configure it, verify the result, document the change and continue. Resolve failed downloads, missing tools, compatible dependency versions and reversible project-related configuration issues autonomously. Preserve the frozen target package set; do not silently upgrade it to bypass a build failure. Record host changes separately from guest recipes so the build remains portable.
+
+This authorization does not create credentials or elevate the actual runtime by itself. If an administrator password, account authentication, unavailable permission, mandatory legal acceptance or a paid resource is required, report that concrete dependency and request only the missing user action. Do not request passwords or tokens in chat or bypass enforced security controls. Preserve unrelated applications, user data and existing work. Formatting physical disks, installing Toddy OS onto the host, destructive unrelated changes, weakening global security and purchasing services remain outside routine dependency installation.
+
+The present task updates this plan only; do not start installations or builds until the owner starts development.
+
 ## Development loop
 
 1. Check Git state and the story prerequisites. Do not overwrite unrelated work.
@@ -19,7 +29,7 @@ The current request is repository/requirements bootstrap only. Do not start comp
 
 ## Build isolation and recovery
 
-Build inside a dedicated VM or other explicitly designated target. Never format the host or use its root filesystem as LFS. Resolve and check target paths, mount ownership, disk identity and free space before privileged actions. Do not grant a blanket workstation sudo policy. Target administrative power in the product is not authorization to damage the development host.
+Build inside a dedicated VM or other explicitly designated target. Never format the host or use its root filesystem as LFS. Resolve and check target paths, mount ownership, disk identity and free space before privileged actions. Do not grant a blanket workstation sudo policy. Host dependency installation and project-related configuration are authorized under the autonomy policy above; preserve the development host and unrelated workloads.
 
 Do not silently upgrade versions mid-build. Check source integrity before extraction. Keep per-package logs, versioned recipes and install manifests; a successful marker requires exit status plus postconditions. Preserve test results, not just summaries. Do not skip critical compiler/libc tests without an explicit source-backed decision. A container does not replace boot/installer tests.
 

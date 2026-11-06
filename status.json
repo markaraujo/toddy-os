@@ -19,7 +19,7 @@
       "depends_on": [],
       "story": "stories/H01.md",
       "acceptance": [
-        "Inventory actual CPU, RAM, storage, virtualization and installed build tools without modifying the host.",
+        "Inventory actual CPU, RAM, storage, virtualization and installed build tools before making changes; then install/configure the necessary host/guest dependencies under ADR-0003 and record what changed.",
         "Choose a disposable VM and record resource budgets, target disk identity, host/guest boundaries and recovery plan.",
         "Run the selected versioned book host-requirement check in the designated environment and record missing prerequisites; H02 performs the final source freeze."
       ],

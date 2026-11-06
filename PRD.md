@@ -21,6 +21,12 @@ The system is built from Linux, GNU and other upstream components, not a newly i
 - Deliver an ISO first, then a graphical installation experience, and validate on the current machine after VM testing.
 - This bootstrap delivers requirements and development infrastructure only. It does not authorize formatting the workstation, installing Toddy OS on it, launching a long build, or spending on hosted resources.
 
+### Development AI autonomy
+
+The owner authorizes the development AI, once implementation starts, to install, update and configure all necessary development/build/test dependencies, including required tools on the host and in the isolated target, using available administrative privileges. Routine project-related installations and reversible unblocking actions do not require repeated approval. The AI must diagnose, resolve, verify, record and continue instead of stopping at a missing package. Examples include QEMU, build tools, compiler prerequisites, image utilities and test dependencies.
+
+Use trusted package/upstream sources, track versions and changes, and keep host provisioning separate from target-system recipes. Actual credentials/permissions still have to exist. Request user action only for a concrete unavailable authorization or credential, legal acceptance, paid resource or destructive action outside the designated target. Preserve physical disks, personal data, unrelated services and the frozen build baseline. This plan update does not itself start provisioning or compilation. See ADR-0003 and AGENTS.md for the execution policy.
+
 ## 3. Audience and first-release scope
 
 Primary users are developers, software architects, Linux enthusiasts and local-AI users who accept an experimental release. The first supported target is x86_64 PCs and virtual machines. Broad hardware support is an ongoing program with a published test matrix; no promise to support every machine, GPU, architecture or peripheral at launch.
