@@ -8,3 +8,4 @@
 | 2026-11-05 | Autonomy policy | Owner authorized installation/configuration of project dependencies for autonomous unblocking | PRD, AGENTS, handoff and H01 updated; no installation started |
 | 2026-11-05 | Delivery policy | Owner requested one-start autonomous execution and a single public repository with Pages | ADR-0004/0005 recorded; OS build still not started |
 | 2026-11-05 | H01 | Started implementation; inventoried host, provisioned isolated KVM guest and installed guest build dependencies | LFS 13.1-systemd host check passed before/after guest restart; offline builder checkpoint retained; no host package/service changes |
+| 2026-11-05 | H02 | Downloaded pinned LFS/BLFS books; verified 94 systemd inputs; reviewed current advisory application | All upstream MD5 checks and SHA-256 pins passed; corruption negative tests added; known security remediation explicitly retained for release |

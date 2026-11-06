@@ -4,19 +4,19 @@ Updated: 2026-11-05
 
 Bootstrap: ready_for_development
 
-Implementation started: H01 build-host provisioning and isolated VM validation. No Toddy OS image has passed a release gate.
+Implementation: isolated KVM builder validated; LFS/BLFS 13.1 books and 94 foundation inputs frozen. Preparing guarded target and package ownership; no Toddy ISO yet.
 
-Foundation: **4%** · Agentic desktop: **0%**
+Foundation: **8%** · Agentic desktop: **0%**
 
-G1: pending · G2: pending · Next: **H02**
+G1: pending · G2: pending · Next: **H03**
 
 No milestone earns credit without completed acceptance evidence.
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
 | [H01 — Inspect host and select isolated build environment](stories/H01.md) | foundation | 4 | completed |
-| [H02 — Freeze books, sources and integrity manifest](stories/H02.md) | foundation | 4 | in_progress |
-| [H03 — Prepare target, build user and package ownership](stories/H03.md) | foundation | 4 | not_started |
+| [H02 — Freeze books, sources and integrity manifest](stories/H02.md) | foundation | 4 | completed |
+| [H03 — Prepare target, build user and package ownership](stories/H03.md) | foundation | 4 | in_progress |
 | [H04 — Build the cross-toolchain](stories/H04.md) | foundation | 10 | not_started |
 | [H05 — Build temporary tools](stories/H05.md) | foundation | 8 | not_started |
 | [H06 — Enter chroot and create recoverable checkpoint](stories/H06.md) | foundation | 8 | not_started |

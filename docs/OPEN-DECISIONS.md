@@ -4,8 +4,8 @@ These are planned feasibility decisions, not missing permission to begin H01. Re
 
 | ID | Topic | Working recommendation | Resolve by | Evidence required |
 | --- | --- | --- | --- | --- |
-| D01 | Build environment | Disposable QEMU/KVM guest, VirtualBox compatibility | H01 | Actual host inventory, resources and boot-test feasibility |
-| D02 | Book variant and freeze | LFS/BLFS 13.1 systemd | H02 | Versioned book, checksums, errata and source lock |
+| D01 | Build environment | Resolved: container-packaged QEMU/KVM, ADR-0006 | H01 | Real guest boot, requirements and restart passed; VirtualBox untested |
+| D02 | Book variant and freeze | Resolved: LFS/BLFS 13.1-systemd, ADR-0007 | H02 | Archives pinned; 94 sources verified; release security fixes remain mandatory |
 | D03 | Package ownership and distribution | Evaluate dpkg/APT with our own packages/repository; no foreign core repos | H03, before final package recipes | Install/remove/upgrade prototype and manifest/rollback strategy |
 | D04 | Desktop | GNOME/Wayland; evaluate fallback | B02 | Source build dependency plan and VM usability |
 | D05 | Harness reuse versus custom core | Small open provider-independent core or replaceable existing OSS harness | B01 | License/dependency audit and end-to-end comparison |
@@ -18,3 +18,5 @@ These are planned feasibility decisions, not missing permission to begin H01. Re
 | D12 | Production artwork | Preserve approved PNGs; create reviewed scalable/small-size masters | B11 | Render checks and legibility at actual UI sizes |
 
 The whole-system license is a collection of component licenses, not the repository's proposed custom-code license. APIs can be optional without making the open local path dependent on them. This planning baseline deliberately does not claim universal Ubuntu binary compatibility.
+
+Release security obligation: assess and freeze tested fixes for baseline advisories before final release (ADR-0007); H02 integrity success is not security approval.

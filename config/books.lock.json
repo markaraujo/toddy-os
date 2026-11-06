@@ -1,8 +1,32 @@
 {
   "schema_version": 1,
-  "status": "proposed_not_downloaded",
-  "lfs": {"version": "13.1-systemd", "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/", "archive_sha256": null},
-  "blfs": {"version": "13.1-systemd", "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/", "archive_sha256": null},
+  "status": "verified",
+  "lfs": {
+    "version": "13.1-systemd",
+    "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+    "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+    "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+    "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+    "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+    "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+    "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+  },
+  "blfs": {
+    "version": "13.1-systemd",
+    "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+    "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+    "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+    "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+    "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+    "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+    "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+  },
   "freeze_story": "H02",
-  "note": "H02 must record downloaded artifact hashes, package manifests and errata before build execution. Null hashes are not integrity verification."
+  "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+  "security_snapshot": {
+    "url": "https://www.linuxfromscratch.org/advisories/index.php",
+    "query": "stype=Book&release=13.1&desc=true&submit=Search",
+    "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+    "reviewed_at": "2026-11-05"
+  }
 }

@@ -66,6 +66,22 @@ def validate(data, root=ROOT):
         for book in ("lfs", "blfs"):
             if not re.fullmatch(r"[a-fA-F0-9]{64}", books[book].get("archive_sha256") or ""):
                 raise ValueError(f"Missing actual book SHA-256: {book}")
+    if by_id["H02"]["status"] == "completed":
+        sources = json.loads((root / "config/sources.lock.json").read_text())
+        if sources.get("status") != "verified" or not sources.get("packages"):
+            raise ValueError("H02 requires verified source integrity")
+        names = set()
+        for package in sources["packages"]:
+            name = package["filename"]
+            if name in names or Path(name).name != name or name in (".", ".."):
+                raise ValueError("Invalid or duplicate source filename")
+            names.add(name)
+            if not re.fullmatch(r"[a-f0-9]{64}", package.get("sha256") or ""):
+                raise ValueError(f"Missing frozen SHA-256: {name}")
+            if not re.fullmatch(r"[a-f0-9]{32}", package.get("upstream_md5") or ""):
+                raise ValueError(f"Missing upstream integrity: {name}")
+            if not package["url"].startswith("https://"):
+                raise ValueError(f"Insecure source URL: {name}")
     for gate, terminal in (("G1", "H13"), ("G2", "B13")):
         actual = "passed" if by_id[terminal]["status"] == "completed" else "pending"
         if data["gates"][gate] != actual:

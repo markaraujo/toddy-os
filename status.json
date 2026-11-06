@@ -3,8 +3,8 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-05",
   "bootstrap": "ready_for_development",
-  "current_scope": "Implementation started: H01 build-host provisioning and isolated VM validation. No Toddy OS image has passed a release gate.",
-  "next_story": "H02",
+  "current_scope": "Implementation: isolated KVM builder validated; LFS/BLFS 13.1 books and 94 foundation inputs frozen. Preparing guarded target and package ownership; no Toddy ISO yet.",
+  "next_story": "H03",
   "gates": {
     "G1": "pending",
     "G2": "pending"
@@ -32,7 +32,7 @@
       "phase": "foundation",
       "title": "Freeze books, sources and integrity manifest",
       "weight": 4,
-      "status": "in_progress",
+      "status": "completed",
       "depends_on": [
         "H01"
       ],
@@ -42,14 +42,16 @@
         "Create a package/patch manifest with URLs, versions and upstream integrity data; reject mismatches before extraction.",
         "Update config/books.lock.json to verified with actual hashes; document any mirror substitutions."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/H02.md"
+      ]
     },
     {
       "id": "H03",
       "phase": "foundation",
       "title": "Prepare target, build user and package ownership",
       "weight": 4,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": [
         "H02"
       ],
