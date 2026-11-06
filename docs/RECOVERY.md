@@ -719,3 +719,20 @@ never sanitizes inherited password state in place. On refusal, preserve the
 stage, fix the assembly input inventory and reconstruct a fresh stage; do not
 waive the refusal or point it at the installed build target. Image/boot/login
 integration is still pending, with H09/H10 prerequisites unchanged.
+
+Reproduce explicit root-copy metadata preservation with
+python3 scripts/host/probe_selected_root_copy.py. It uses native Tar and a private
+mount namespace; the only tmpfs mount is a disposable negative fixture. Logs
+and content-addressed evidence use .local/logs/h10-selected-root-copy-probe*.
+On failure retain the printed /mnt/lfs/tmp/toddy-selected-root-copy-* fixture.
+A successful run removes that private fixture after retaining its complete result.
+
+The prepared copy_selected_root.copy_selected component requires fresh stage and
+work directories. Its work directory retains selected-paths.nul, selected-root.tar,
+create.log, extract.log and a successful report.json. Metadata mismatch also
+writes expected.json and actual.json (digests, not xattr contents). On a failure,
+inspect that evidence, preserve the failed attempt under an incident checkpoint,
+correct the selection/source cause and reconstruct into new fresh paths. Do not
+overwrite an existing destination or accept a source that changed during copying.
+Full provenance-based image inventory, account/config generation, compression and
+boot integration remain pending; this copy report is not H10 acceptance.

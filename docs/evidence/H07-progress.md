@@ -1102,3 +1102,11 @@ is not a new build or full-suite acceptance. Raw observation
  a175fc1f034c1bc9f101282d2133108210a9abb12ee9c56278ccd157892081ea.
 The prepared fresh-image account component passes native Shadow checks in a
 private root (ADR-0055); installed accounts and H07 package counts are unchanged.
+
+
+2026-11-06 23:04 UTC — Original DB recovery progression observed from Recd001
+(hash) to Recd002 split recovery at 23:00 and Recd003 duplicate recovery at
+23:01 UTC. Runner 1365 and driver 1364 remain live. This remains within the
+full standard suite, whose final result is pending. Raw observation
+.local/logs/h07-recd003-progress.json SHA-256
+5fda33864751609ec1794fd9120bcd38c5f6cfe137932e858c673b5bb3532ca8.

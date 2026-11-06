@@ -269,3 +269,14 @@ Image/boot/login integration remains pending. The original DB suite reached
 both partition Test142 variants, then Recd001 hash recovery; current snapshot
 and active runner IDs are retained outside Git and published without acceptance
 credit. No active build input or installed account was changed.
+
+
+2026-11-06 23:04 UTC — Added an explicit live-root copy component using native GNU
+Tar with a NUL inventory, no recursive descent and verified complete metadata.
+The actual native fixture preserves hardlinks, ACLs, capability/user xattrs,
+special mode/numeric owners, nanosecond mtime and sparse storage. It excludes
+unselected siblings/subtrees and rejects traversal, redirected parents, special
+nodes, filesystem crossings and an existing destination. Full image selection
+and integration remain pending (ADR-0056). The original DB suite progressed to
+Recd003 after Recd001/Recd002; active driver/runner remain live. No installed
+package or running build input changed.
