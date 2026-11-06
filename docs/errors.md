@@ -508,3 +508,18 @@ acceptance remains pending. No active BDB inputs were changed. See ADR-0045.
   reject a regular identity file or another link target.
 - Verification: actual native Shadow checks pass with the owned alias; all five
   refusal/preservation cases pass. Original and corrected reports are in ADR-0055.
+
+### Rejected Dpkg writer changed empty lock-file timestamps
+
+- Symptom: the private database-copy probe observed the expected native Dpkg
+  lock refusal, then failed an assertion that all lock metadata was unchanged.
+- Cause: frozen Dpkg 1.22.22 opens both empty lock files with O_TRUNC before
+  acquiring its POSIX write locks. That updates their mtimes even when locking
+  fails; it does not mean the protected package data changed.
+- Correction: exclude only these two empty lock-file mtimes from the snapshot;
+  preserve file type/ownership/empty-content checks and every DB data check.
+  Do not reopen/close a locked inode, which would release POSIX read locks.
+- Verification: repeated native writer exits 2 while the read lock is held;
+  DB data is unchanged, a held writer refuses the component, both fresh and
+  preexisting owned-empty destination layouts pass, and nine negative cases
+  preserve inputs. Failure and final evidence are retained in ADR-0059.

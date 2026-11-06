@@ -1132,3 +1132,13 @@ still pending. Raw observation .local/logs/h07-live-console-progress.json SHA-25
 Independent private native live-console component checks passed (ADR-0058),
 without changing H07 sources, installed accounts or package state. The accepted
 package boundary remains 124/126; the story is not accepted.
+
+2026-11-06 23:41 UTC — Hash callback-partition Test044 finished its second
+517-second workload with the controlled crash at 23:41:01, completed the next
+recovery/verification, and began cycle 3 at 23:41:36 for 450 seconds. Original
+driver 1364 and runner 1365 remain live; zero partial FAIL lines observed.
+Full-suite acceptance is pending. Raw observation
+.local/logs/h07-package-database-progress.json SHA-256:
+27b63c9f77e1210f5ce045ea6ca50d13316b2073d6b09876325fd33bdbdd8a6c.
+Separate native metadata-copy checks passed without installed changes (ADR-0059).
+They do not bypass the pending H07 package/payload/dependency closure.

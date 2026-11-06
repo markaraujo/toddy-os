@@ -777,3 +777,27 @@ and usr/share/toddy/live.issue, establish normal console/desktop login and test
 after ISO removal. Their live conditions intentionally prevent starting these
 instances outside live mode. Native PTY success is not a BIOS/UEFI/USB login
 pass. See ADR-0058; H07 and the H09/H10 gates remain unchanged.
+
+Reproduce the native package-database copy and actual writer-exclusion check
+with python3 scripts/host/probe_package_database.py. It copies metadata only
+into /mnt/lfs/tmp/toddy-package-database-* and invokes the writer solely against
+a disposable root inside that fixture. On failure retain the printed fixture,
+native-lock-refusal.log and content-addressed report under
+.local/logs/h10-package-database-probe*. The original timestamp-assertion failure
+is preserved at toddy-package-database-woon9hfr (ADR-0059). Successful fixtures
+are removed after their complete per-file evidence is retained outside Git.
+
+For eventual image integration, package_database.stage_database accepts only
+absent destinations or the reviewed empty root-owned Dpkg directory layout in
+guest tmp/staging storage. Any existing state requires diagnosis and a fresh
+stage, never an in-place merge. Do not delete/unlink a lock to bypass a writer.
+An active writer refusal means wait for that exact transaction to finish, inspect
+its result, and retry at the next quiescent boundary. Interrupted copy leaves its
+partial destination for diagnosis; after preserving it, reconstruct a new stage.
+Process exit releases POSIX locks without manual lock-file removal.
+
+The snapshot must correspond to the same accepted payload generation used by the
+image. Repeat after final H07 metadata closure and any native QA ownership
+transfer. It does not authenticate stored MD5 values, prove dependency closure,
+or waive the shared Info-index payload mismatch. Require independent archive/
+payload verification and native Dpkg/APT checks before release acceptance.

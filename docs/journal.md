@@ -304,3 +304,14 @@ source behavior, root-console policy, installer removal requirements and the
 remaining real boot tests. No H10/G1 credit is claimed. Berkeley DB advanced
 through Hash Test044's first 512-second workload and recovery to cycle 2 at
 23:32:24, with its original driver/runner still live and no partial FAIL lines.
+
+2026-11-06 23:41 UTC — Prepared native package-database image state: 261 files,
+7,525,809 bytes, 124 package identities, identical native queries and clean audit.
+Validated both a fresh destination and actual Dpkg-owned empty directory layout.
+Actual Dpkg writer exclusion and nine refusal/preservation cases passed in private
+fixtures. Investigated the first assertion failure: Dpkg truncates its empty lock
+files before attempting locks, changing only their mtimes on a refused writer.
+Corrected the snapshot without excluding DB data checks; recorded ADR-0059 and
+recovery. Installed package state and active build inputs remain unchanged.
+Berkeley DB Hash Test044 completed its second crash/recovery and began cycle 3
+at 23:41:36 for 450 seconds. Driver/runner remain live; full suite still pending.
