@@ -176,4 +176,4 @@ A new kernel from scratch; compatibility with every device; ARM64; enterprise su
 
 ## 13. Decision register and sources
 
-Confirmed decisions are captured in ADR-0001 and the user requirements above. Technical proposals and feasibility work are in docs/OPEN-DECISIONS.md. Canonical sources and exact consulted versions are in docs/references.md. Every implementation story must consult the frozen relevant book section before writing/executing recipes.
+Confirmed decisions are captured in ADR-0001 and the user requirements above. Technical proposals and feasibility work are in docs/OPEN-DECISIONS.md. Canonical sources and exact consulted versions are in docs/references.md. H01 checks the selected versioned candidate; H02 freezes downloaded inputs. Every build story after H02 must consult the frozen relevant book section before writing/executing recipes.

@@ -10,7 +10,7 @@ The current request is repository/requirements bootstrap only. Do not start comp
 
 1. Check Git state and the story prerequisites. Do not overwrite unrelated work.
 2. Mark the story in_progress in status.json and regenerate progress.
-3. Read the frozen book section, record source/version, and implement a small reviewable slice.
+3. During H01-H02, inspect the selected versioned candidate and freeze it in H02. For build steps after H02, read the frozen book section, record source/version, and implement a small reviewable slice.
 4. Use deterministic scripts for repeated work; never use LLM output as the only evidence of success.
 5. Run appropriate tests, save sanitized evidence, update the story and journal.
 6. On failure, record symptom/cause/correction/verification and resume from the last verified checkpoint.

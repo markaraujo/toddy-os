@@ -8,7 +8,7 @@ The planning repository and approved artwork are prepared. No LFS source package
 
 Open this repository in Codex. Give the following instruction:
 
-> Read AGENTS.md, PRD.md, STATUS.md, status.json and docs/DEVELOPMENT.md. Start H01, inspect the actual host and choose a disposable build environment. Follow the frozen LFS book, work through eligible Phase 1 stories, maintain logs, decisions and progress, and validate each milestone. Do not touch physical disks or begin Phase 2 before its gate. Report concrete blockers and verified results.
+> Read AGENTS.md, PRD.md, STATUS.md, status.json and docs/DEVELOPMENT.md. Start H01, inspect the actual host and choose a disposable build environment. Inspect the versioned candidate in H01 and freeze it in H02, then follow that frozen LFS book through eligible Phase 1 stories, maintain logs, decisions and progress, and validate each milestone. Do not touch physical disks or begin Phase 2 before its gate. Report concrete blockers and verified results.
 
 Do not paste API keys into the prompt. Do not weaken sandbox/approval configuration globally. A product's full-power profile belongs inside its designated system, not on the author's workstation.
 
@@ -39,3 +39,13 @@ Before stopping, persist current task, exact failed step, checkpoint, command ex
 ## Source and visibility policy
 
 Use a feature branch for implementation, focused commits and pull requests where practical. No force push or history rewriting without a reason. GitHub remains private through the first ISO review; CI uploads must not leak private artifacts. Project licensing must be finalized before public release. Development context lives in the committed repository files; workstation RAG is excluded by owner decision.
+
+## Pre-start audit (2026-11-05)
+
+A read-only snapshot found an x86_64 AMD Ryzen 9 5900XT with 32 logical CPUs, about 30 GiB RAM (20 GiB available), about 758 GiB available on the repository filesystem, and readable/writable /dev/kvm in the current session. This is not a completed H01 or a successful guest boot.
+
+QEMU, qemu-img, virsh and VBoxManage were not available in PATH. GCC, G++, Make, Python and Git were available; bison and gawk were missing. Recheck actual versions and the designated guest environment during H01. Do not assume a host tool list validates the future build guest.
+
+Before compilation: provision the selected VM, satisfy book requirements, verify/freeze sources in H02 and resolve package ownership in H03. The package-manager prototype may run in a disposable staging environment; do not require a final guest rootfs before the toolchain exists. No software was installed by this audit.
+
+The planning CI checks metadata, dependency gates and progress tooling, not an OS image. The native package strategy is the most consequential early design risk. Desktop/harness/voice/installer feasibility and project licensing are scheduled later; none prevents starting H01. The GitHub social-preview image is a separate cosmetic follow-up, not a build prerequisite.

@@ -21,7 +21,7 @@
       "acceptance": [
         "Inventory actual CPU, RAM, storage, virtualization and installed build tools without modifying the host.",
         "Choose a disposable VM and record resource budgets, target disk identity, host/guest boundaries and recovery plan.",
-        "Run the frozen book host-requirement check in the designated environment and record missing prerequisites."
+        "Run the selected versioned book host-requirement check in the designated environment and record missing prerequisites; H02 performs the final source freeze."
       ],
       "evidence": []
     },
