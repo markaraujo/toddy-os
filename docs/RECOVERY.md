@@ -438,3 +438,15 @@ metadata/corruption check preserves failed private /tmp/toddy-iso-roundtrip-*
 fixtures, and writes iso-roundtrip.json only after success. Inspect actual exit
 and postcheck results, not just image existence. A regular-file roundtrip does
 not accept BIOS/UEFI boot, final live root or H11's distributable image audit.
+
+
+Native boot probe preparation is in scripts/host/boot-probe.py, its .service
+and boot-probe.target.conf (ADR-0051). They are firmware-only disposable-test
+payloads, never installable release files. The native debug-generator/private
+unit verification and wrong-kernel refusal have passed. The actual host boot
+launcher and SMBIOS import/BIOS/UEFI execution are still pending. Do not run the
+probe in the build chroot as a substitute for boot: it deliberately refuses.
+Use a verified cold target checkpoint in a separate disposable writable guest,
+with serial TODDY-BOOT-TEST and pristine private UEFI variables, once the H09
+prerequisites pass. Preserve failed logs/guest overlays for diagnosis; never
+restart or copy the active builder disks to manufacture boot evidence.

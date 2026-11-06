@@ -126,3 +126,9 @@ installer must generate their own configuration. Component inventory maps
 version 0.1 to the same LFS-instruction/original-Toddy pending-D10 classification
 as base configuration. No new license grant or completed legal review is
 inferred from retaining the upstream notice. Package build remains pending.
+
+ADR-0051 adds explicit DMI/DMI_SYSFS for the ephemeral test guest's documented
+Systemd SMBIOS channel. The current fragment has 139 source-verified symbols;
+its hash and native generator preflight are in that ADR. The earlier 137-symbol
+hash remains historical evidence. No configuration resolution or kernel build
+has yet occurred, and the new options do not waive any existing boot gate.

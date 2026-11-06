@@ -1,0 +1,15 @@
+[Unit]
+Description=Toddy disposable native boot acceptance probe
+ConditionPathExists=!/etc/initrd-release
+After=local-fs.target
+OnSuccess=poweroff.target
+OnFailure=poweroff.target
+
+[Service]
+Type=oneshot
+Environment=PATH=/usr/bin:/usr/sbin LC_ALL=C.UTF-8 PYTHONDONTWRITEBYTECODE=1
+LoadCredential=toddy.boot-probe
+ExecStart=/usr/bin/python3 %d/toddy.boot-probe
+TimeoutStartSec=180
+StandardOutput=journal+console
+StandardError=journal+console

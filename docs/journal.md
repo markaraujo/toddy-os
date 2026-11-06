@@ -85,3 +85,5 @@
 2026-11-06: Native private preflight using frozen APT discovery modules found all four selected optional libraries. The prepared APT recipe now refuses missing Seccomp/Systemd/Udev/Zstd definitions and preserves its generated configuration. No installed package or active BDB input changed; full APT acceptance remains pending (ADR-0034).
 
 2026-11-06: Prepared gated source-built libburn/libisofs/libisoburn recipes from frozen BLFS and native API/ISO metadata/corruption checks. Reviewed command/exit semantics against frozen Xorriso source documentation. No target dispatch, new package acceptance or bootable ISO claim; the complete H07 database suite remains active.
+
+2026-11-06: Prepared firmware-only native boot probe with virtual-disk/kernel guards. Actual native Systemd generator/unit verification and wrong-kernel refusal passed; added source-verified DMI sysfs support to the gated kernel fragment. Existing BIOS/UEFI firmware inventoried. No kernel build, firmware import or native boot claimed (ADR-0051); BDB full suite advanced into Dead008.
