@@ -102,3 +102,10 @@ repositories while terminating their child processes and preserving failure
 status. Actual native shell cleanup checks passed exit 0/removal and exit 37/
 retention; this does not claim APT acceptance. BDB complete standard suite is
 still live, now exercising transaction recovery after secondary-index tests.
+
+2026-11-06: Actual private builder-kernel overlay experiment exposed hardlink
+splitting during ACL copy-up with index=off. Repeated with index=on: effective
+option, inode identity, real write propagation, permissions, unchanged read-only
+lower and volatile upper disposal passed. Recorded the required live profile
+and reusable experiment in ADR-0048; actual Squashfs/native-kernel integration
+remains pending. H07 full DB recovery tests continue; no milestone credit added.

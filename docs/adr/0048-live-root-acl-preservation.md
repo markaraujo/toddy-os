@@ -43,3 +43,53 @@ format and introduce a new builder/kernel path solely for this metadata. The
 small explicit metadata channel preserves required semantics while keeping the
 selected compressed-root tools. No source test is removed or classified passed
 from a private fixture. Main-root/installer source and format tests remain open.
+
+
+## Overlay copy-up and hardlinks
+
+A follow-up used the accepted native tools with the builder's Ubuntu
+6.8.0-147-generic kernel in a new private mount namespace. A read-only bind
+of a private ext4 lower fixture and a 64 MiB tmpfs upper/work pair exercised
+actual overlay mounts, numeric ACL restore, UID 101 access, mode 4750/UID 18/
+GID 18 preservation, unchanged lower bytes/ACL, and volatile upper disposal.
+The source fixture has UTF-8/newline names and two hardlinks to one file.
+
+The negative control, index=off, restored the ACLs but split the hardlinks:
+writing one name no longer changed the other. The index=on run retained both
+inode identity and actual write propagation. This is a real behavior difference,
+not an assertion that matching content alone proves hardlink preservation.
+Both profiles completed their expected assertions, and all private mounts and
+fixtures were removed. Overlay was auto-loaded only in the disposable builder;
+no host module, mount or security setting was changed.
+
+Require index=on for the planned live overlay, and verify the effective mounted
+option rather than trusting a successful mount exit. Never silently accept an
+index-disabled fallback after restoring ACLs. Frozen Linux 7.1.8
+Documentation/filesystems/overlayfs.rst, sections Non-directories, Permission
+model and index, explains copy-up and the broken-link behavior without indexing.
+Its fs/overlayfs/super.c ovl_lower_uuid_ok/ovl_get_fsid implementation also shows
+that incompatible lower UUID arrangements may disable indexing. Inspect the
+actual mounted profile and retain an end-to-end hardlink write test.
+
+This experiment used ext4 as lower, not Squashfs. Actual Squashfs export/file
+handles, its null UUID in a single lower filesystem, tmpfs upper, kernel 7.1.8
+and live boot still require verification before H10 acceptance. The frozen
+Squashfs source includes export.o and installs squashfs_export_ops; no obsolete
+SQUASHFS_EXPORT Kconfig symbol is added. The final image must retain export
+metadata. Do not extrapolate the builder-kernel experiment into a native boot
+pass or assume every kernel/lower combination supports the selected profile.
+
+Reproduce from the checkout with python3 scripts/host/probe_overlay_acl.py off
+and then the same command with on. This deliberately tests private builder
+fixtures only; it does not execute H10 or modify the installed root. Raw logs:
+
+- .local/logs/h10-overlay-acl-index-off-probe.json, SHA-256
+  `7943c3f5b292551d3998c67f03f35ea5abdec0463c3c5813570e32bde9ef6cae`.
+- .local/logs/h10-overlay-acl-index-on-probe.json, SHA-256
+  `04797b3788663e4ad3d4ab843eecfe30a32693e130a11c4c800cde26e697d320`.
+
+The earlier default/off observations remain outside Git. Alternatives include
+copying/relinking every hardlink into tmpfs before services or using a different
+writable-root design; neither is needed if the intended single-layer indexed
+profile passes the actual Squashfs/native-kernel test. Failure of that test must
+reopen this choice, not discard hardlink semantics or weaken the acceptance.

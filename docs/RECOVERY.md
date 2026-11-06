@@ -501,3 +501,14 @@ into Git or an image. Retry uses a fresh fixture; remove the specifically
 identified old fixture only after preserving the needed sanitized diagnosis.
 Successful runs remove their fixture, and the original failing exit remains
 nonzero. The active BDB recipe inputs were not synchronized during this review.
+
+
+The private builder-kernel overlay experiment is reproducible with
+python3 scripts/host/probe_overlay_acl.py off and then on. The off case is an
+intentional negative control for hardlink copy-up; it must observe broken
+propagation, while on must preserve it and expose index=on in actual mount
+options. Both use only fresh /mnt/lfs/tmp fixtures inside a private namespace.
+On failure, the printed fixture is retained after attempted unmount; verify
+actual mount state before cleanup. No physical block device is opened. A native
+Squashfs/live boot must repeat the metadata/ACL/hardlink/volatile-write checks;
+this builder-kernel experiment cannot satisfy that acceptance (ADR-0048).
