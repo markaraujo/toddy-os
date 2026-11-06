@@ -593,3 +593,18 @@ fixtures, retains failure paths and content-addressed host reports, and removes
 only its own successful fixtures. No active recipe synchronization is needed.
 The report retains the full staged manifest, native provenance and artifact
 hashes; fixture archives are not release artifacts or evidence of a boot.
+
+
+Reproduce the read-only native Python QA key-marker check with
+python3 scripts/host/probe_python_qa_key_audit.py. It extracts only an own,
+hash-verified native archive into its printed /mnt/lfs/tmp/toddy-python-qa-audit-*
+fixture. A failure preserves that exact tree and the content-addressed report;
+success removes it. It never changes installed package ownership or active
+BDB sources. Preserve finding paths/hashes, not private-key bodies.
+
+After H11 becomes eligible, the prepared production component is
+python3 /opt/toddy-build/scripts/build/h11/audit_private_key_material.py
+/mnt/lfs/sources/stage/SELECTED-RELEASE-ROOT. Findings produce exit 1; read errors
+also fail. Do not waive findings merely because some earlier QA fixtures were
+public. This marker scan is only one part of the required artifact credential
+audit; account/identity/provider state and unrecognized formats remain separate.

@@ -1026,3 +1026,13 @@ Test135; seven numbers are absent upstream and 91 entries follow Test044 in
 one pass. See H07-remaining-volume.md for exact names/source/process evidence.
 This corrects the conversational conflation of entry count and highest number.
 No suite input, test coverage or acceptance boundary was changed.
+
+
+2026-11-06 continuation during Test044's timed load: implemented a read-only
+private-key-marker image audit and exercised it against the real own Python
+3.14.10-1 archive in private staging (ADR-0049). All 15 known upstream test-key
+files remain intact in QA; the separated runtime has zero matching markers.
+The scan accounts for 9,330 regular files and 293,207,634 bytes without dropping
+bytes. Installed files, active DB sources and package ownership remain unchanged.
+This is future release-audit preparation, not native QA ownership transfer or
+complete image credential acceptance. H07 still awaits the full DB result.

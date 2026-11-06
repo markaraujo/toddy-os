@@ -172,3 +172,14 @@ Test044 has three timed load/crash/recovery cycles; current first cycle is
 525 seconds with five CPU-active native workers. Published the precise
 sequence and source-backed wait context without assigning fractional acceptance
 or shortening the suite. Original driver/supervisor remain active.
+
+
+2026-11-06 21:58 UTC — Added a read-only private-key-marker audit that reports
+paths/hashes without key bodies, plus a reproducible native own-archive probe.
+Actual CPython extraction/QA separation preserved all 15 public regression-key
+fixtures outside the prepared runtime, with exact file/byte conservation.
+Recorded evidence and scope limitations in ADR-0049; no installed package or
+active recipe changed. Three local regressions cover marker boundaries,
+non-disclosure and link handling. Native QA ownership transfer and final image
+audits remain pending. DB Test044 cycle 1 continues its programmed load with
+five CPU-active workers; original runner and supervisor remain live.

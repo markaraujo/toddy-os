@@ -45,3 +45,47 @@ paths; never delete tracked files from an image while leaving Dpkg claiming
 ownership. Verify exact original QA data, installed ownership, native SSL/test
 operation, final root inventory and a complete image credential scan. Merely
 hiding scanner findings or deleting source tests is not an alternative.
+
+
+## Repeatable private-key-marker audit of the actual native archive
+
+scripts/build/h11/audit_private_key_material.py now supplies one explicit
+release audit component. It streams every regular file in a canonical private
+staged tree, recognizes PEM/OpenSSH/OpenPGP private-key armor markers across
+read boundaries, and emits only finding paths, reason identifiers and whole-file
+SHA-256. Matched bytes are never printed. It does not follow symlinks, refuses
+cross-filesystem traversal, does not read special nodes and propagates read
+errors. The production CLI retains the H11 gate and accepts only a selected
+root under designated target staging. This is a read-only check, not removal
+of findings or a complete credential detector.
+
+The alternative of treating all upstream QA keys as release-safe would leave
+private-key-shaped material in an ordinary system image. A blanket grep with
+matched lines could disclose actual credentials. Keep QA separately and report
+only metadata. Arbitrary API tokens, passwords, identity state and unarmored
+key/container formats still require their own image checks; zero marker
+findings alone never means a credential-free release.
+
+Reproduce the real native experiment with
+python3 scripts/host/probe_python_qa_key_audit.py. It verifies the current own
+Python archive hash, extracts through native Dpkg into a private guest fixture,
+scans it, partitions QA with the existing helper, and scans both resulting trees.
+The observed Python 3.14.10-1 archive is the same original archive cited above.
+All 15 findings match their recorded package payload hashes and remain byte-for-
+byte in the QA tree. The separated runtime has zero private-key-marker findings.
+
+The scan covered 9,330 regular files and 293,207,634 bytes before partition:
+3,935 files/126,608,219 bytes remain in runtime and 5,395 files/166,599,415 bytes
+move to QA. Eight runtime symlinks were not followed. Both total file count
+and total bytes are conserved; no QA test is changed or discarded. The earlier
+3,943 retained-entry count included those eight links. The successful private
+fixture is removed and the installed package/ownership database is unchanged.
+
+Raw report .local/logs/h11-python-qa-key-audit-probe.json, SHA-256
+`10ebd9a0c6d58e448afd9e8e931396e4ead5e8439e2baaf5dd22d38cbfb4ff76`,
+also retained under a content-addressed filename. Audit helper SHA-256:
+`7c97e36417a150866a04b9d87bceb60419c56ee96b815999cd1abec65d9c64b6`.
+Three local tests cover all recognized headers, chunk-boundary matching,
+no matched-content disclosure, public certificate/key handling and link safety.
+Native package ownership transfer, normal image exclusion and complete image
+credential inspection remain pending.
