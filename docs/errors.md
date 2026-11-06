@@ -245,3 +245,24 @@ to emit the required string.h declaration, then compile/run lookup of one
 present and one absent key. Separate gperf-audit passed package integrity,
 recipe/postcheck zero and zero installed changes; no package reinstall or
 upstream/test modification was needed. Original failure remains preserved.
+
+
+## H07 Python sequential patch/context preflight (2026-11-06)
+
+The first Python recipe stopped before configuration with zero installed
+changes. A single --dry-run cannot carry dependent modifications between the
+five concatenated patch sections and reported extra failures. Actual application
+in an independent source-verified probe reduced those to one real rejected
+SSL test insertion: 3.14.10 introduced callback assignment/deletion assertions
+inside the original hunk context. ADR-0018 updates only that context, retains
+all five changes and all newer assertions, and pins the derived source input.
+
+The adapted probe applies with --fuzz=0 and exit zero/no rejects. Its four
+runtime/tool files exactly match the original series' applied result. AST
+inspection preserves all 207 original SSL methods and adds both upstream
+regressions (209 total). Full original/dry-run/adapted logs and preimage/runtime
+hashes are in .local/logs/h07-python-compatibility. Native Python compilation
+and complete tests are still pending; patch applicability is not acceptance.
+Resume only the verified untouched original main tree after checking its failed
+record, absence of configuration/stage artifacts and every archived regular
+source file. Do not re-extract over it or install the partly patched probe.

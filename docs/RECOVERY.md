@@ -40,23 +40,25 @@ contains 31 native packages and the complete classified final GCC build/tests,
 before GCC installation. Older h06-ready was actually restored and retested.
 Checkpoint copies share the workstation disk and are not disaster recovery.
 
-Current live target has 48 native packages through final Perl; Autoconf onward is running. Final Bash is accepted. The complete
-corrected 86-group suite, installation and separate ordinary printf/SIGUSR1
-audit passed; original rejected results and seven source-qualified diff lines
-remain preserved (ADR-0016). No all-pass Bash-suite claim is made.
+Current target has 55 accepted native packages through mpdecimal. Python's
+first dry-run failed before compilation/installation with zero installed
+changes. ADR-0018's context-only patch is source-frozen and probe-validated;
+full native Python build/tests are next. The native-tools driver and its
+queued utility handoff both exited 1; no recipe remains running. A new cold
+checkpoint h07-native-crypto is being prepared; do not assume it exists until
+its JSON manifest and verified save log do. Latest verified cold pair remains
+h07-gcc-tested until then.
 
-```sh
-python3 scripts/host/vm.py inspect
-python3 scripts/host/vm.py ssh 'ls /var/log/toddy/build/*.running.json; tail -c 2000 /var/log/toddy/h07-native-tools-driver.log'
-```
-
-The running h07-native-tools driver covers Libtool through Meson in frozen
-chapter 8 order. Inspect its PID/log/exit plus per-step terminal records before
-resuming. After a guest restart, mount-kernfs.sh is required before chroot.
-Following verified Meson, h07-system-utilities-driver.sh covers Kmod through
-Texinfo. A known or new upstream suite failure stops for diagnosis. Never
-start a second driver while a recipe runs; the runner also locks concurrent
-installation. Old driver exit files do not prove the current process finished.
+After the verified checkpoint, start VM, mount-kernfs.sh and sync_build.py.
+Run h07-python-recovery using h07/python-resume.sh and python-check.sh. It
+requires the original zero-change failed record, no build/stage artifacts and
+archive-identical source files. Do not use the partly patched probe as a build.
+After Python recovery passes, restart h07-native-tools-driver.sh; it skips
+completed packages and continues Flit-Core through Meson. Then start the
+utility driver (Kmod through Texinfo). Its optional queued handoff waits for a
+specific native-tools PID and requires actual Meson success; requeue after a
+failed prior native driver. Inspect running records and both driver processes
+before full sync; never overwrite active streamed recipes.
 
 Never rerun account bootstrap or re-extract successful build trees. The GCC
 suite marker proves compilation/tests only; installation is separately proved

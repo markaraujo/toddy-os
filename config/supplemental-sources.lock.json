@@ -117,9 +117,27 @@
       "decision": "ADR-0017",
       "book_version": "1.52.1",
       "planned_stage": "After complete frozen LFS base; source build, complete applicable tests and native package acceptance required"
+    },
+    {
+      "name": "python-openssl-compat",
+      "version": "3.14.10-1",
+      "filename": "Python-3.14.10-openssl_4-1.patch",
+      "url": "https://raw.githubusercontent.com/markaraujo/toddy-os/f54be82efbf8d9b9765f1859d4b38651536594fe/patches/Python-3.14.10-openssl_4-1.patch",
+      "sha256": "02a0f09dd64062891c64bd4f8fc7bb3b9a032c91e833784339bd2e3d3d35ba6f",
+      "size": 38830,
+      "decision": "ADR-0018",
+      "source_kind": "attributed context-only adaptation of frozen upstream patch series",
+      "derived_from": {
+        "filename": "Python-3.14.7-openssl_4-1.patch",
+        "sha256": "707a0c457192ac2f3b5b8a51481bc5ebd12db22d57c1dbe0256138ee6e070792"
+      },
+      "signature_verified": false,
+      "signature_note": "Reviewed project patch pinned to immutable repository commit and SHA-256; no OpenPGP verification claim.",
+      "planned_stage": "H07 Python 3.14.10; complete native suite required before installation"
     }
   ],
   "additional_decisions": [
-    "ADR-0017"
+    "ADR-0017",
+    "ADR-0018"
   ]
 }

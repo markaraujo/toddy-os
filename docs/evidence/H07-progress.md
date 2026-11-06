@@ -388,3 +388,40 @@ completed dependency/license audit. Perl was installed after that snapshot.
 ADR-0017 freezes five verified CMake support inputs for later native package-
 manager work. Known-vulnerable old Curl/Libarchive book candidates are not
 selected; no support library was built or silently substituted in this run.
+
+
+## Native crypto/FFI base and Python source recovery
+
+Autoconf and Automake full suites and actual generated configure/distribution
+projects passed. OpenSSL 4.0.3's complete configured suite reports All tests
+successful, 368 files/4413 tests; native SHA-256 and entropy API execution passed.
+Libelf's final test group reports 251 PASS/9 SKIP/zero FAIL/ERROR, and its native
+ELF-reading C program passed. Generic Libffi reports 2564 expected passes and
+its actual ffi_call add(20,22) returned 42. SQLite persisted an FTS5 transaction,
+passed integrity_check and had no rpath. Mpdecimal's local suite and native
+exact 0.1 + 0.2 == 0.3 probe passed. Current installed native count: 55.
+
+Python's initial dry-run failed before compilation with zero installed changes.
+ADR-0018 records the controlled context-only adaptation and complete test-
+preservation proof. Derived patch is published at immutable commit
+f54be82efbf8d9b9765f1859d4b38651536594fe, hash-pinned as a supplemental source.
+The Python/OpenSSL source versions are unchanged; full native tests remain next.
+
+A verified 55-package cache is at
+.local/native-package-snapshots/20261106T055826657515Z. Inventory SHA-256
+9980e36d760435e34aec6909d2a8600f82e910a48cff4ddcd029a3084514c983;
+cache archive SHA-256 7630224b9adb8d8500e76ad463edfae0e8a60ed7ffb0108370da36f81a30a5b9.
+Current raw runner/nested reports are additionally copied to
+.local/logs/h07-native-tools-55.tar.gz. Actual active OpenSSL recipe inputs,
+including then-uncommitted diagnostic helpers, were captured in
+.local/logs/h07-inputs-482560f.tar.gz; its recipe-set hash exactly matched the
+running record, 197ba9d27a767b04e0e89e7baf4a0bf797d3bb379db8b8661b6334f477d228f2.
+Its archive SHA-256 is 00a7ffc9fed95ad2ae4b2b2b2678a117749ca48eac5be0e40c243334ebe57fa0.
+Guest-only diagnostics were preserved outside the recipe search path after all
+jobs stopped. A new cold checkpoint is being prepared, not yet claimed saved.
+
+Vim/MarkupSafe/Jinja2 recipes are prepared, not target-accepted. Vim retains
+all upstream tests; unlike the book's downloader-test exclusion, a missing
+prerequisite will stop for investigation. No unavailable plugin test is silently
+removed. The remaining service/filesystem/native package-manager recipes and
+all release gates remain incomplete.

@@ -4,10 +4,8 @@ set -euo pipefail
 cd /sources/Python-3.14.10
 test ! -e /sources/stage/python
 mkdir -p /sources/evidence/h07-python
-# Frozen book OpenSSL 4 compatibility patch remains absent in 3.14.10.
-patch --batch --forward --fuzz=0 --dry-run -Np1 -i ../Python-3.14.7-openssl_4-1.patch \
- 2>&1 | tee /sources/evidence/h07-python/patch-dry-run.log
-patch --batch --forward --fuzz=0 -Np1 -i ../Python-3.14.7-openssl_4-1.patch \
+# Complete five-change series; context-only adaptation verified in ADR-0018.
+patch --batch --forward --fuzz=0 -Np1 -i ../Python-3.14.10-openssl_4-1.patch \
  2>&1 | tee /sources/evidence/h07-python/patch.log
 ./configure --prefix=/usr --enable-shared --with-system-expat --enable-optimizations --without-static-libpython
 make

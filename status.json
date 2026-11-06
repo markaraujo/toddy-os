@@ -3,7 +3,7 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-06",
   "bootstrap": "ready_for_development",
-  "current_scope": "Implementation: H01-H06 validated in KVM. H07 has 48 native packages through final Perl (1,392,301 tests passed); Autoconf onward is running. Remaining base, package-manager/dependency closure and release gates are pending. No Toddy ISO.",
+  "current_scope": "Implementation: H01-H06 validated in KVM. H07 has 55 native packages through mpdecimal; OpenSSL/Libelf/Libffi suites passed. Python patch context is corrected and source-frozen; native build/test recovery is next. Remaining base, package-manager/dependency closure and release gates are pending. No Toddy ISO.",
   "next_story": "H07",
   "gates": {
     "G1": "pending",
