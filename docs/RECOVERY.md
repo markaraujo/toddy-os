@@ -404,3 +404,12 @@ Do not sync it into the builder while the DB recipe owns the build lock.
 Native build, exact GRUB FAT-image roundtrip and actual ISO UEFI boot are still
 pending. The upstream check target contains no self tests; it cannot replace
 those checks. Existing H07 124/126 package counts exclude this future tool.
+
+
+After H10 acceptance and synchronized H11 in_progress status, Mtools can be
+run through run_step.py h11-mtools h11/mtools.sh h11/mtools-check.sh --user root.
+Its source is already frozen (ADR-0050). Preserve any failed build/staging
+before retry. The postcheck uses only a private regular-file FAT image and
+removes that fixture after checking real EFI bytes/UTF-8/invalid-input refusal.
+Actual ISO assembly and UEFI boot are subsequent requirements. The prepared
+H11 gate currently refuses; do not dispatch it during H07.

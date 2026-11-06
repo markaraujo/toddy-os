@@ -75,3 +75,5 @@
 2026-11-06: Prepared gated dual-platform GRUB installation, target/partition checks, before-sector recovery copies and boot artifact verification. Actual gate refused premature execution; syntax and 97 checks pass. No disk writes or boot acceptance; BDB full suite remains active (ADR-0046).
 
 2026-11-06: Frozen signed GNU Mtools 4.0.50 after verifying the GRUB EFI image dependency, detached signature and safe archive paths. Future native FAT roundtrip/ISO boot remain pending; no active guest inputs changed (ADR-0050).
+
+2026-11-06: Prepared gated native Mtools build and exact GRUB FAT-image acceptance checks. Actual premature H11 gate refusal verified; syntax and 97 local checks pass. No Mtools install/FAT runtime acceptance or active input sync performed (ADR-0050).

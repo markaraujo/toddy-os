@@ -56,3 +56,25 @@ named notice candidates, inventory SHA-256
 d494accd6d3f4169f280b2c3af79b1500bd337d3ddedafb8cceeb9ed50ef2ab9.
 Per-file/manual grants and this additional full license text remain explicitly
 identified; the candidate count is not a claim of exhaustive legal coverage.
+
+
+Prepared H11 recipe follows the archive's configure/Makefile DESTDIR interface,
+with --disable-floppyd --without-x. No floppy server/service is required by
+regular-file image assembly. Retain the compiled tools, upstream helpers,
+man/info documentation, source manual and full GPL/GFDL notices. Declare the
+base helper providers; the upstream uz/lz optional lzip-format branch remains
+explicitly dependent on a separately installed lzip tool, outside the GRUB
+image path and not claimed tested.
+
+The prepared native postcheck generates an actual GRUB x86_64 EFI image,
+uses the exact frozen grub-mkrescue mformat geometry/FAT-length and recursive
+mcopy invocation, compares retrieved bytes, verifies EFI format, exercises
+long UTF-8 names and requires prompt non-crashing invalid-image refusal.
+This postcheck has not run; neither a mock nor Makefile's empty check target
+is accepted as runtime coverage. Native installation requires H10 completed,
+H11 in_progress and the real H09 bootloader success marker. Running the exact
+gate through guest Python stdin refused current premature execution (exit 1).
+Raw .local/logs/h11-mtools-premature-gate-refusal.json SHA-256
+5fffd40a6cc2899f083de34df105b994bb66219396b7d9ca16c5aa3fd3ba5c14.
+Shell syntax/Python parsing and 97 local checks pass. No build, installation,
+FAT roundtrip or boot is claimed by this preparation.
