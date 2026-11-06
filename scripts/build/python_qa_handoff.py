@@ -4,13 +4,18 @@ No install operation is permitted by this plan. The real installer must still
 observe that the predecessor released every transferred path.
 """
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
 import stat
-import sys
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from h11.python_qa import QA_ROOTS
+# h11 is also the name of an unrelated third-party HTTP package. Load the
+# project-owned layout by its explicit path rather than namespace resolution.
+_layout_spec = importlib.util.spec_from_file_location(
+    'toddy_python_qa_layout', Path(__file__).resolve().parent / 'h11/python_qa.py')
+_layout = importlib.util.module_from_spec(_layout_spec)
+_layout_spec.loader.exec_module(_layout)
+QA_ROOTS = _layout.QA_ROOTS
 
 
 def is_qa(path):

@@ -457,3 +457,17 @@ acceptance remains pending. No active BDB inputs were changed. See ADR-0045.
 - Verification: private native preparation exited 0, returned 7.1.8-toddy and
   retained the exact resolved config hash. See ADR-0046. No kernel image,
   installation or native boot acceptance is inferred from preparation.
+
+
+### Python QA handoff import collided with an external package name
+
+- Symptom: a fresh-interpreter regression with an unrelated regular h11 module
+  failed to import the project's h11.python_qa layout (ModuleNotFoundError).
+- Cause: the phase directory was treated as an implicit Python namespace; an
+  installed regular HTTP package with the same name can take precedence.
+- Correction: load the known project layout by its explicit sibling file path;
+  keep both external dependencies and the frozen build inputs unchanged.
+- Verification: the collision regression now passes, and a private physical
+  source mirror repeats the actual native preflight on all 5,395 QA files.
+  See ADR-0049 for failed/corrected evidence. This was caught before dispatch
+  of the new production mode, not a failure of the active DB recipe.

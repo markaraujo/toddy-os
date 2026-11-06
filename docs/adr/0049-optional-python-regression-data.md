@@ -172,10 +172,30 @@ complete/equal data, installed-owner uniqueness, partial/extra/modified data,
 source/architecture/dependency mismatches and install/bootstrap refusal.
 
 Reproduce with python3 scripts/host/probe_python_qa_handoff_plan.py. Raw full
-plan and checks: .local/logs/h11-python-qa-handoff-plan-probe.json SHA-256
+plan and checks: .local/logs/h11-python-qa-handoff-plan-probe.0e75b331a1c7036ca379bcd61d6387c794cd1615bd1f6d75a41d899b242e0679.json SHA-256
 `0e75b331a1c7036ca379bcd61d6387c794cd1615bd1f6d75a41d899b242e0679`.
 Tested handoff helper SHA-256:
 `ea006cf7bc41824db4948ba6049870bf022239e010d5940872d2d59cd4ff634f`;
 tested packager SHA-256:
 `cff8a4469f412ae218536a249324ae5d2b51f06efe9bafa19cd9697802b0ca50`.
 The private fixture was removed. No active DB recipe input was synchronized.
+
+
+A portability regression reproduced a collision with an unrelated regular
+Python package named h11: importing h11.python_qa can resolve to that external
+package instead of this repository's H11 directory. The helper now loads the
+project layout from its explicit sibling file path. No third-party HTTP package
+is installed or removed. The regression supplies an isolated unrelated h11
+module and requires successful project-layout loading in a fresh interpreter.
+The native probe now uses a private physical mirror of the three public source
+files, so its import path matches the corrected production behavior.
+
+Original collision evidence .local/logs/python-qa-h11-namespace-collision.json
+SHA-256 543cfcca0c7b0d34c87a4516e86127ae6d8c1d6ba9d5d99b6ac82d69f1c7bd8f.
+Repeated native preflight passed all 5,395 files and both rejection/restoration
+cases; current full report SHA-256
+`c62754d54b2904231aa7714350cd2b3a19ad3fd7879366e3be7478c3054921a3`
+at .local/logs/h11-python-qa-handoff-plan-probe.json, with an immutable
+SHA-256-suffixed copy. Corrected helper SHA-256:
+`0684d5d276786d5fa23705be1996b9a7f8ef3355f3cdbb489ac5db1b2161167b`.
+Installed state/cache and active build inputs remain unchanged.

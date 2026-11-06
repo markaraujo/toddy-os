@@ -2,6 +2,8 @@ import copy
 import importlib.util
 from pathlib import Path
 import stat
+import subprocess
+import sys
 import unittest
 
 spec = importlib.util.spec_from_file_location('python_qa_handoff', Path(__file__).resolve().parents[1] / 'scripts/build/python_qa_handoff.py')
@@ -10,6 +12,12 @@ spec.loader.exec_module(module)
 
 
 class PythonQAHandoff(unittest.TestCase):
+    def test_unrelated_h11_package_cannot_shadow_project_layout(self):
+        code = ('import sys,types,runpy; p=types.ModuleType("h11"); p.__path__=[]; '
+                'sys.modules["h11"]=p; data=runpy.run_path(sys.argv[1]); '
+                'assert data["QA_ROOTS"][0]=="/usr/lib/python3.14/test"')
+        subprocess.run([sys.executable, '-c', code, str(Path(module.__file__))], check=True)
+
     def fixture(self):
         directory = {'directory': True, 'mode': stat.S_IFDIR | 0o755, 'uid': 0, 'gid': 0}
         file = {'sha256': '0' * 64, 'mode': stat.S_IFREG | 0o644, 'uid': 0, 'gid': 0}

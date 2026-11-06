@@ -216,3 +216,11 @@ restored staging passed. No installed/cache mutation or active recipe sync.
 The first Test044 range-partition invocation finished with three recovery
 cycles plus ten each database/dump-load/salvage successes and no FAIL marker.
 Original suite advanced to callback partition, first cycle 366 seconds.
+
+
+2026-11-06 continuation — Reproduced and corrected a Python namespace collision
+in the prepared QA handoff: a regular external h11 package could shadow the
+phase directory. Explicit project-file loading now passes a fresh-interpreter
+regression and repeated native 5,395-file preflight. Physical private source
+mirrors exercise the actual import behavior; no installed/cache or active DB
+input changes. Original and corrected evidence retained in ADR-0049.

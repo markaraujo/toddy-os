@@ -15,11 +15,14 @@ import base64,hashlib,json,re,shutil,sys,tempfile,types
 sys.path.insert(0,'/opt/toddy-build/scripts/build')
 from package_backend import PackageBackend
 root=Path('/mnt/lfs');backend=PackageBackend(root)
-namespace=types.ModuleType('h11');namespace.__path__=[];sys.modules['h11']=namespace
+base=Path(tempfile.mkdtemp(prefix='toddy-python-qa-handoff-',dir=root/'tmp'))
+print('PYTHON_QA_HANDOFF_FIXTURE '+str(base),flush=True)
+for name,body in SOURCES.items():
+ path=base/'scripts/build'/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(base64.b64decode(body))
 modules={}
 for name,body in SOURCES.items():
- key=name.removesuffix('.py').replace('/','.')
- module=types.ModuleType(key);module.__file__='/opt/toddy-build/scripts/build/'+name
+ key=name.removesuffix('.py').replace('/','_')
+ module=types.ModuleType(key);module.__file__=str(base/'scripts/build'/name)
  sys.modules[key]=module;exec(compile(base64.b64decode(body),module.__file__,'exec'),module.__dict__)
  modules[name]=module
 def digest(path):
@@ -30,8 +33,6 @@ record=json.loads((Path('/var/log/toddy/packages')/f'python_{version}_{arch}.jso
 archive=Path('/var/cache/toddy/packages')/f'python_{version}_{arch}.deb'
 assert digest(archive)==record['archive_sha256']
 before=digest(root/'var/lib/dpkg/status')
-base=Path(tempfile.mkdtemp(prefix='toddy-python-qa-handoff-',dir=root/'tmp'))
-print('PYTHON_QA_HANDOFF_FIXTURE '+str(base),flush=True)
 try:
  copied=base/'source.deb';shutil.copyfile(archive,copied)
  runtime=base/'runtime';qa=base/'qa'
