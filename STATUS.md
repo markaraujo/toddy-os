@@ -4,18 +4,18 @@ Updated: 2026-11-05
 
 Bootstrap: ready_for_development
 
-Repository and planning bootstrap only; do not start OS builds.
+Implementation started: H01 build-host provisioning and isolated VM validation. No Toddy OS image has passed a release gate.
 
-Foundation: **0%** · Agentic desktop: **0%**
+Foundation: **4%** · Agentic desktop: **0%**
 
-G1: pending · G2: pending · Next: **H01**
+G1: pending · G2: pending · Next: **H02**
 
 No milestone earns credit without completed acceptance evidence.
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
-| [H01 — Inspect host and select isolated build environment](stories/H01.md) | foundation | 4 | not_started |
-| [H02 — Freeze books, sources and integrity manifest](stories/H02.md) | foundation | 4 | not_started |
+| [H01 — Inspect host and select isolated build environment](stories/H01.md) | foundation | 4 | completed |
+| [H02 — Freeze books, sources and integrity manifest](stories/H02.md) | foundation | 4 | in_progress |
 | [H03 — Prepare target, build user and package ownership](stories/H03.md) | foundation | 4 | not_started |
 | [H04 — Build the cross-toolchain](stories/H04.md) | foundation | 10 | not_started |
 | [H05 — Build temporary tools](stories/H05.md) | foundation | 8 | not_started |
