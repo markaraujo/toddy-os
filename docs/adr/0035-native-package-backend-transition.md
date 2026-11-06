@@ -26,3 +26,11 @@ permissions before archive copy/extraction; preserve existing archive inputs for
 diagnosis. Local regression probes cover refusal without writes to a symlink
 target and safe directory reuse. Actual native-backend package acceptance still
 requires the next successful guest recipe/postcheck after input synchronization.
+
+Actual native backend archive-only probe passed: source-built Dpkg 1.22.22
+builds an own disposable archive, reads its metadata/content, verifies transfer
+hash and leaves the main status database unchanged. No package was installed.
+Reproduce with scripts/build/probe_native_package_backend.py after normal sync.
+Raw .local/logs/h07-native-backend-archive-probe.log SHA-256 764f7beb60037e7fe11ad60bc0ef250a016765cc1130daabffda915fdf2ddd30.
+This proves actual backend build routing; complete recipe/installation integration
+remains required at the next successful package boundary.
