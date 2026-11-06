@@ -14,6 +14,7 @@ import re
 import shutil
 import subprocess
 from locked_inputs import locked_source
+from provenance import recipe_set
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -163,7 +164,8 @@ def main():
     RECORDS.mkdir(parents=True, exist_ok=True)
     subprocess.run(['dpkg-deb', '--build', str(stage), str(archive)], check=True)
     record = {'name': args.name, 'version': args.version, 'archive_sha256': digest(archive),
-        'recipe_sha256': digest(args.recipe), 'packager_sha256': digest(Path(__file__)), 'sources': source_rows,
+        'recipe_sha256': digest(args.recipe), 'packager_sha256': digest(Path(__file__)),
+        'supporting_build_scripts': recipe_set(), 'sources': source_rows,
         'payload': entries, 'generated_paths': generated_paths,
         'runtime_dependency_closure': 'pending final base audit', 'installed': False}
     record_path = RECORDS/(archive.stem+'.json')

@@ -166,3 +166,13 @@ and every .sum/.log report. For final GMP, use the book-supported
 --host=none-linux-gnu to avoid optimizing the distributed library solely for
 the builder's Ryzen CPU; retain the mandatory full tests and >=199 PASS check.
 This does not yet establish a tested release CPU/hardware baseline.
+
+Build provenance now records the complete supporting .sh/.py recipe set,
+including inner scripts streamed into chroot, with per-file SHA-256 and a
+canonical set hash. Native archive records retain the same set. This extends
+the original outer recipe/runner/source hashes; it does not invent missing
+historical input hashes. For the already-running final GCC job, a sidecar
+/var/log/toddy/build/h07-gcc-build.recipe-set.json was captured during build,
+with matching original runner/outer hashes and source commit 3489a9b.
+The critical GCC scripts were unchanged; the later runner instrumentation
+applies to subsequent steps. Preserve both original record and sidecar.

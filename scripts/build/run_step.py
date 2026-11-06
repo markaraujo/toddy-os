@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+from provenance import recipe_set
 
 HERE = Path(__file__).resolve().parent
 TARGET = Path('/mnt/lfs')
@@ -95,6 +96,7 @@ def main():
                   'postcheck_sha256': hashlib.sha256(args.postcheck.read_bytes()).hexdigest(),
                   'user': args.user,
                   'runner_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                  'supporting_build_scripts': recipe_set(),
                   'source_lock_sha256': hashlib.sha256((HERE.parents[1] / 'config/sources.lock.json').read_bytes()).hexdigest(),
                   'book_lock_sha256': hashlib.sha256((HERE.parents[1] / 'config/books.lock.json').read_bytes()).hexdigest()}
 
