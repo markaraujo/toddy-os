@@ -990,3 +990,9 @@ intentional sleeps per variant; the prior range variant took 7m10s. Driver is
 not retrying, and current guest resources are ample. See
 [the investigation](H07-bdb-wait-investigation.md) for measured evidence and
 limits. Continue this execution; no final suite acceptance has been inferred.
+
+2026-11-06 21:36 UTC: the specifically investigated Recd011 callback variant
+actually completed in 7m10s; its process exited and the original suite advanced
+to Recd012 file-management recovery. See the wait investigation's completion
+record. The suspected infinite loop was disproved for that execution; full DB
+acceptance remains pending and the existing supervisor stays in place.

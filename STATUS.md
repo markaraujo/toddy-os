@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-06 21:33 UTC
+Last verified: 2026-11-06 21:36 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. Recd011 range-partition variant finished in 7m10s; the callback variant advanced from checkpoint 59 to 104 during the block/loop investigation. Source-defined finite timed waits explain this interval; driver remains active, with no final success sentinel. C/focused tests and 483-file source comparison already passed.
+Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. The investigated Recd011 callback variant completed in 7m10s and its process exited; the original suite advanced to Recd012 file-management recovery. No infinite loop in that execution. Full result remains pending; C/focused tests and 483-file source comparison already passed.
 
 Remaining:
 

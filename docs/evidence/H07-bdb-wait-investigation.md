@@ -68,3 +68,20 @@ Raw observations outside Git:
   `2f5b8c334618209a97cd952ad4c2ae3c57e85e66fbfe3c56fa1ba991f654e008`.
 - .local/logs/h07-bdb-loop-investigation-second.json, SHA-256
   `a548267eeb446b7d0fbe6ef5aed8739fae5f5f97a253a5b81deecc782737b218`.
+
+
+## Observed completion of the investigated variant
+
+At 21:36:11 UTC the callback Recd011 variant finished its inclusive increment
+loop and timestamp/before/after recovery checks, also recording 7m10s. Its
+native child process exited; a wait on that exact PID returned 0. The original
+suite continued directly into Recd012 range-partition file-management recovery
+and had reached its iteration 23 by the 21:36:38 snapshot. No restart, source
+change or shortened wait was used. This conclusively resolves the suspected
+infinite loop for the observed Recd011 execution, while full suite acceptance
+and possible later failures remain open.
+
+Raw .local/logs/h07-bdb-loop-investigation-completed-case.json SHA-256
+`16e1c9f2386fb4e1b696afa491dbb255528b22cbae21fbcdc626db2ce44f9ddd`
+retains the end/next-case boundary, vanished case PID and absence of failure or
+final-success sentinels in that partial log. This is not a completed package.
