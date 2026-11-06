@@ -8,7 +8,7 @@ cmake -S . -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr \
  -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON \
  -Dgtest_build_tests=ON -Dgmock_build_tests=ON
 cmake --build build --parallel 8
-chown -R tester .
+chown -R tester:tester .
 su tester -c 'ctest --test-dir build -j8 --output-on-failure --output-junit full-suite.xml' \
  2>&1 | tee /sources/evidence/h07-googletest/check.log
 cp build/full-suite.xml /sources/evidence/h07-googletest/

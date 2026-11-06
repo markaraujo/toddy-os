@@ -97,6 +97,8 @@ def main():
     rows = list(lock['packages'])
     metadata = ['scripts/build','LICENSES','config/component-licenses.json',
                 'config/books.lock.json','config/sources.lock.json']
+    if (ROOT/'config/vim-glvs-inputs.lock.json').exists():
+        metadata.append('config/vim-glvs-inputs.lock.json')
     for filename,required in [('security-overlay.lock.json','frozen_for_final_build'),
                               ('supplemental-sources.lock.json','frozen_for_native_build')]:
         path = ROOT/'config'/filename

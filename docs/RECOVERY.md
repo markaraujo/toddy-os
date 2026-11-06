@@ -44,10 +44,16 @@ exercised. Copies share the workstation disk and are not disaster recovery.
 
 Groff/Kbd/Tar/Systemd/E2fsprogs recoveries passed. Keep qualified raw failures
 and H12 native namespace obligations (ADR-0023/0025/0027). Do not infer all
-upstream tests passed from dispatcher recipe/postcheck zero. Live system still
+upstream tests passed from dispatcher recipe/postcheck zero. Live system now has 90 accepted packages through CMake/Libmd and still
 requires Vim/native package managers and final ownership/dependency closure.
 
-After verified save:
+Current continuation: h07-xxhash-recovery-driver first builds/checks frozen GNU
+Time 1.10, verifies all original XXHash source bytes and repeats its full suite;
+then the fresh supplemental driver continues. Inspect its .pid/.exit and actual
+running markers before any sync. The original XXHash failure changed zero
+installed files and is a missing external time executable, not a waived test.
+
+After an offline restore/restart:
 
 ```sh
 python3 scripts/host/vm.py start
@@ -62,8 +68,10 @@ success marker and absence of running dispatchers. The boundary record is
 driver may record 137 for the stopped shell; this is not a package/test failure.
 Do not resume the old stopped PID. Fresh driver skips accepted packages, then
 runs remaining native support and signing libraries. Vim requires the guarded
-h07-vim-glvs-inputs success before any downloader test; prepare verified pinned
-plugins/responses, not a mutable download or silent test deletion.
+h07-vim-glvs-inputs success before any downloader test. The prepared step checks
+protected cache/archive paths and actual unprivileged HTTPS downloads of the
+four frozen versions (ADR-0028). Preserve failed preflight logs before retry;
+never expose unverified code or delete upstream tests.
 
 Full sync must hold the exclusive guest lock and refuses active recipes. An
 input-sync.running flag means interrupted installation; inspect/preserve staging

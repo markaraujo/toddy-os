@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "decision": "ADR-0028",
+  "upstream_vim": "9.2.1201",
+  "profile": "Unmodified full suite; verify live metadata facts and exact plugin bytes before exposure",
+  "components": [
+    {
+      "kind": "vmb",
+      "script_id": 4979,
+      "source_id": 26454,
+      "upstream_filename": "AnsiEsc.vmb",
+      "page_url": "https://www.vim.org/scripts/script.php?script_id=4979",
+      "page_sha256": "1a9cc8fe93a86ec7967191df78a2479e5910dc4c0ca0a360800f24bb207cd237",
+      "download_url": "https://www.vim.org/scripts/download_script.php?src_id=26454",
+      "sha256": "8dd93eaf6bcb885f2c1dc6666ba5ca4ffa98bc4c9c3f1e8dca4978003be3b890",
+      "size": 330539,
+      "observed_row": "<td class=\"rowodd\" valign=\"top\" nowrap><a href=\"download_script.php?src_id=26454\">AnsiEsc.vmb</a></td>",
+      "filename": "vim-glvs-26454-AnsiEsc.vmb",
+      "build_only": true,
+      "license": "LicenseRef-Vim-plugin-and-bundled-notices"
+    },
+    {
+      "kind": "vim.bz2",
+      "script_id": 514,
+      "source_id": 3276,
+      "upstream_filename": "mrswin.vim.bz2",
+      "page_url": "https://www.vim.org/scripts/script.php?script_id=514",
+      "page_sha256": "23d4222a81555e7fd696bbde5184ae940c87ce9d5420453006a87311b4c4f13a",
+      "download_url": "https://www.vim.org/scripts/download_script.php?src_id=3276",
+      "sha256": "0bd1b3fb4483759e2ad9a8c20963e45b61e8c2d357bae8052ff07e09deb0eccb",
+      "size": 2887,
+      "observed_row": "<td class=\"rowodd\" valign=\"top\" nowrap><a href=\"download_script.php?src_id=3276\">mrswin.vim.bz2</a></td>",
+      "filename": "vim-glvs-3276-mrswin.vim.bz2",
+      "build_only": true,
+      "license": "LicenseRef-build-only-upstream-not-stated"
+    },
+    {
+      "kind": "vba.gz",
+      "script_id": 120,
+      "source_id": 9388,
+      "upstream_filename": "Decho.vba.gz",
+      "page_url": "https://www.vim.org/scripts/script.php?script_id=120",
+      "page_sha256": "1a7cea91a74ab23f540e4575d1521c485c080ea3ec70f92c1764521b2273854c",
+      "download_url": "https://www.vim.org/scripts/download_script.php?src_id=9388",
+      "sha256": "a86808de1b5d24054691745076670e0ffebf9b90c0d884fbb316c832626497fb",
+      "size": 15816,
+      "observed_row": "<td class=\"rowodd\" valign=\"top\" nowrap><a href=\"download_script.php?src_id=9388\">Decho.vba.gz</a></td>",
+      "filename": "vim-glvs-9388-Decho.vba.gz",
+      "build_only": true,
+      "license": "LicenseRef-Vim-plugin-and-bundled-notices"
+    },
+    {
+      "kind": "tar.xz",
+      "script_id": 5632,
+      "source_id": 25749,
+      "upstream_filename": "dumpx.tar.xz",
+      "page_url": "https://www.vim.org/scripts/script.php?script_id=5632",
+      "page_sha256": "14eb2f904eb947701e82da16efadb9702e383db71740c9bf9a252421dd2d4f72",
+      "download_url": "https://www.vim.org/scripts/download_script.php?src_id=25749",
+      "sha256": "d9cb559763f06ab672a4b0c381f443313510bb4a609d76d851c0648b9cfbf6e8",
+      "size": 28828,
+      "observed_row": "<td class=\"rowodd\" valign=\"top\" nowrap><a href=\"download_script.php?src_id=25749\">dumpx.tar.xz</a></td>",
+      "filename": "vim-glvs-25749-dumpx.tar.xz",
+      "build_only": true,
+      "license": "GPL-3.0-only"
+    }
+  ]
+}

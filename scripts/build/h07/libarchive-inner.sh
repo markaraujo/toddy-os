@@ -6,7 +6,7 @@ test ! -e /sources/stage/libarchive
 mkdir -p /sources/evidence/h07-libarchive
 ./configure --prefix=/usr --disable-static
 make
-chown -R tester .
+chown -R tester:tester .
 su tester -c 'make check' 2>&1 | tee /sources/evidence/h07-libarchive/check.log
 make DESTDIR=/sources/stage/libarchive install
 ln -s bsdunzip /sources/stage/libarchive/usr/bin/unzip

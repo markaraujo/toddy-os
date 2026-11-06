@@ -4,5 +4,6 @@ source /opt/toddy-build/scripts/build/h06/common.sh
 chroot_run <<'INNER'
 set -euo pipefail
 printf '' | xxhsum -H64 | grep -F ef46db3751d8e999
+printf '' | xxhsum -H3 | grep -F 2d06800538d394c2
 pkg-config --modversion libxxhash | grep -Fx 0.8.4
 INNER

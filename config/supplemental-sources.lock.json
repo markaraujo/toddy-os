@@ -358,6 +358,74 @@
       "fingerprint_source": "https://www.gnupg.org/signature_key.html",
       "decision": "ADR-0026",
       "signature_note": "Detached archive signatures verified with gpgv against explicitly scoped upstream release keys; both published Werner Koch and Niibe Yutaka fingerprints matched. No global trust-store changes."
+    },
+    {
+      "name": "vim-glvs-4979",
+      "version": "26454",
+      "filename": "vim-glvs-26454-AnsiEsc.vmb",
+      "url": "https://www.vim.org/scripts/download_script.php?src_id=26454",
+      "sha256": "8dd93eaf6bcb885f2c1dc6666ba5ca4ffa98bc4c9c3f1e8dca4978003be3b890",
+      "size": 330539,
+      "signature_verified": false,
+      "signature_note": "Official Vim script version-ID download over HTTPS; observed SHA-256 pinned, no published archive digest or independent signature. Build-only test input, never installed in OS.",
+      "decision": "ADR-0028",
+      "build_only": true,
+      "license": "LicenseRef-Vim-plugin-and-bundled-notices"
+    },
+    {
+      "name": "vim-glvs-514",
+      "version": "3276",
+      "filename": "vim-glvs-3276-mrswin.vim.bz2",
+      "url": "https://www.vim.org/scripts/download_script.php?src_id=3276",
+      "sha256": "0bd1b3fb4483759e2ad9a8c20963e45b61e8c2d357bae8052ff07e09deb0eccb",
+      "size": 2887,
+      "signature_verified": false,
+      "signature_note": "Official Vim script version-ID download over HTTPS; observed SHA-256 pinned, no published archive digest or independent signature. Build-only test input, never installed in OS.",
+      "decision": "ADR-0028",
+      "build_only": true,
+      "license": "LicenseRef-build-only-upstream-not-stated"
+    },
+    {
+      "name": "vim-glvs-120",
+      "version": "9388",
+      "filename": "vim-glvs-9388-Decho.vba.gz",
+      "url": "https://www.vim.org/scripts/download_script.php?src_id=9388",
+      "sha256": "a86808de1b5d24054691745076670e0ffebf9b90c0d884fbb316c832626497fb",
+      "size": 15816,
+      "signature_verified": false,
+      "signature_note": "Official Vim script version-ID download over HTTPS; observed SHA-256 pinned, no published archive digest or independent signature. Build-only test input, never installed in OS.",
+      "decision": "ADR-0028",
+      "build_only": true,
+      "license": "LicenseRef-Vim-plugin-and-bundled-notices"
+    },
+    {
+      "name": "vim-glvs-5632",
+      "version": "25749",
+      "filename": "vim-glvs-25749-dumpx.tar.xz",
+      "url": "https://www.vim.org/scripts/download_script.php?src_id=25749",
+      "sha256": "d9cb559763f06ab672a4b0c381f443313510bb4a609d76d851c0648b9cfbf6e8",
+      "size": 28828,
+      "signature_verified": false,
+      "signature_note": "Official Vim script version-ID download over HTTPS; observed SHA-256 pinned, no published archive digest or independent signature. Build-only test input, never installed in OS.",
+      "decision": "ADR-0028",
+      "build_only": true,
+      "license": "GPL-3.0-only"
+    },
+    {
+      "name": "time",
+      "version": "1.10",
+      "filename": "time-1.10.tar.gz",
+      "url": "https://ftp.gnu.org/gnu/time/time-1.10.tar.gz",
+      "sha256": "e8c29fb4ab599d8478e41e8618f50db8aede9c90af27d0d2ef28ae50d5de09c3",
+      "size": 851192,
+      "upstream_md5": "ded256bf7d215594fb3b51d3d9d74e15",
+      "book": "BLFS 13.1-systemd",
+      "decision": "ADR-0029",
+      "signature_verified": true,
+      "signature_url": "https://ftp.gnu.org/gnu/time/time-1.10.tar.gz.sig",
+      "signing_fingerprints": [
+        "2371185508D1317BD578E5CC8CE6491AE30D7D75"
+      ]
     }
   ],
   "additional_decisions": [

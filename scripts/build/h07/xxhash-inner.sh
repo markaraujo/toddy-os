@@ -4,8 +4,9 @@ set -euo pipefail
 cd /sources/xxHash-0.8.4
 test ! -e /sources/stage/xxhash
 mkdir -p /sources/evidence/h07-xxhash
+test -x /usr/bin/time
 make PREFIX=/usr
-chown -R tester .
+chown -R tester:tester .
 su tester -c 'make test' 2>&1 | tee /sources/evidence/h07-xxhash/check.log
 make PREFIX=/usr DESTDIR=/sources/stage/xxhash install
 mkdir -p /sources/stage/xxhash/usr/share/doc/xxhash

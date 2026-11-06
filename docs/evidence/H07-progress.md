@@ -595,3 +595,43 @@ target hash 536109a5db3f6f2c44620c33f954fc2ce96570636c9a6b33bbc1b708e57785fd.
 It contains the 86-package accepted boundary and prepared supplemental recipes.
 It has not been restored; the earlier H06 pair remains the demonstrated restore.
 VM restart/remount/sync is the next operation, not an ISO/native OS boot claim.
+
+
+## Native build support through Libmd: 90 accepted packages
+
+After checkpoint restart/remount/sync, Libuv's initial complete 507-case suite
+failed only both copyfile variants because archived fixtures retained root GID
+while tester's copies used GID 101. The whole build/test tree was corrected to
+tester:tester; source/tests were unchanged. Complete retry and native loop/API
+passed. Seven platform/environment skips are retained (Windows-only cases,
+recursive watching, root-only identity case and absent controlling TTY).
+Libarchive full unprivileged suite and Zstd archive/extract comparison passed.
+CMake full suite reports 674/674 passing, followed by installed CMake/Ninja C
+configure/build/ctest. No GPU/compiler feature is claimed from test labels that
+internally check unsupported configurations. Libmd full suite and native MD5
+abc vector passed. Native dependency/license closure still remains open.
+
+| Accepted runner | Recipe/postcheck | Full log SHA-256 |
+| --- | --- | --- |
+| h07-libuv-recovery | 0 / 0 | fb444a9db5ab4f56fdbd2f7ac76ca61b90bb7dfc0d8bd96cb1857eefefaa5afd |
+| h07-libarchive | 0 / 0 | 2ebef9503817bb523e1b1d6cab15f46ae65e28a926f4350524fa264cd200b660 |
+| h07-cmake | 0 / 0 | 05480e309ed0e468cbdb0b6cc0312fa172ad9d4803f7fab5c95982dffcb36d61 |
+| h07-libmd | 0 / 0 | 96f17ffdee919117e730cd4755be9033b4e85cc39df70a6899c19a9189fbe733 |
+
+XXHash's full tool target stopped for absent external GNU Time, zero installed
+changes. ADR-0029 freezes authenticated book Time 1.10 and requires its full
+check/native exit-format tests, original-source identity check and complete
+XXHash retry. XXHash remains unaccepted while that driver runs.
+
+ADR-0028 freezes all four actual Vim GLVS plugin-version inputs. The prepared
+test-only download guard uses actual native HTTPS, validates live metadata's
+frozen source ID/name, and verifies exact executable bytes before exposure.
+No upstream Vim test/source/assertion is modified. Host regression checks also
+accept the captured actual metadata/plugin bytes and reject new versions,
+corruption and metadata modelines. Native guarded preflight/full suite remain
+pending; all test-only payloads are excluded from the runtime image.
+
+Berkeley DB source-only patch probe applied all 19 frozen Debian patches with
+zero fuzz in independently verified host-side extractions; no source code was
+executed/installed there. .local/probes/db53-patch-series/verification.json and
+per-patch logs retain the result. Native builds/tests remain pending.

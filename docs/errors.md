@@ -305,3 +305,14 @@ fsck/persistence passed (ADR-0027); installer must use normal initialization.
 GnuPG primary hostname timed out and mirrors were stale. The official FTP
 hostname exposes the same website at /ftp/gcrypt/; all six archives and both
 published signing fingerprints verified there (ADR-0026), with no trust downgrade.
+
+
+## H07 Libuv test fixture group ownership (2026-11-06)
+
+The first complete 507-case run fails only fs_copyfile and fs_copyfile_iouring.
+Both assert destination GID equals the archived root-group fixture, while the
+unprivileged tester creates files with GID 101. The source tree had been chowned
+to tester without changing GID, leaving that fixture group root. Change only the
+build/test tree to tester:tester, retain initial logs and repeat the full suite;
+no privileged group membership, test/source change or global permission change.
+Installation remains gated on the complete retry and native libuv API probe.

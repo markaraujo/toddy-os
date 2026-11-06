@@ -7,7 +7,7 @@ mkdir -p /sources/evidence/h07-libuv
 sh autogen.sh
 ./configure --prefix=/usr --disable-static
 make
-chown -R tester .
+chown -R tester:tester .
 su tester -c 'make check' 2>&1 | tee /sources/evidence/h07-libuv/check.log
 make DESTDIR=/sources/stage/libuv install
 mkdir -p /sources/stage/libuv/usr/share/doc/libuv

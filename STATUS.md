@@ -4,7 +4,7 @@ Updated: 2026-11-06
 
 Bootstrap: ready_for_development
 
-Implementation: H01-H06 validated in KVM. H07 has 86 accepted native packages through final base services and verified native TLS client. Systemd/Tar/E2fsprogs qualifications retain raw failures and explicit native checks; namespace retest remains before G1. Verified h07-native-services cold checkpoint saved; resuming supplemental builds. Native dpkg/APT, Vim and ownership/dependency/license closure remain pending. No Toddy ISO; G1/G2 pending.
+Implementation: H01-H06 validated in KVM. H07 has 90 accepted native packages through CMake/Libmd and a verified 86-package h07-native-services cold checkpoint. GNU Time/full XXHash recovery is running. Native signing libraries, guarded complete Vim tests, dpkg/APT and final ownership/dependency/license closure remain pending. No Toddy ISO; G1/G2 pending.
 
 Foundation: **38%** · Agentic desktop: **0%**
 

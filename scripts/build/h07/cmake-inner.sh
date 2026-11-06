@@ -9,7 +9,7 @@ sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake
  --no-system-jsoncpp --no-system-cppdap --no-system-librhash \
  --docdir=/share/doc/cmake-4.4.2
 make
-chown -R tester .
+chown -R tester:tester .
 su tester -c 'bin/ctest -j8 --output-on-failure --output-junit full-suite.xml' \
  2>&1 | tee /sources/evidence/h07-cmake/check.log
 cp full-suite.xml /sources/evidence/h07-cmake/
