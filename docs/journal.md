@@ -454,3 +454,11 @@ later results. Corrected a shared-memory filesystem mismatch and preserved its
 interrupted attempt; native C tests then passed and corrected run_std advanced
 to Env012. Disarmed the earlier waiting serial-retry supervisor to prevent a
 redundant run. Both full-suite results and production acceptance remain pending.
+
+
+2026-11-07 01:40 UTC — Added independent complete BDB result validation,
+including protected evidence, actual exits, frozen source membership and strict
+terminal summaries. Actual guest rejection probes pass; fixture hash-map
+validation passes for 483 files with six negative cases. Preserved content-
+addressed report generations for future fixture probes. Original recovery and
+corrected file-operation tests continue; no suite or package was accepted.

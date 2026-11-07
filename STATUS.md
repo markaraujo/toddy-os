@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-06
+Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 01:26 UTC
+Last verified: 2026-11-07 01:40 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Both diagnosed replication-manager groups passed privately (20/20 and 11/11). A complete corrected standard suite now runs in a verified private PID/IPC/network/mount view: C tests passed, Env012 active, zero FAIL lines so far. The original attempt continues at Rep079 in block 23 with its two known failures. Full-suite and production/package acceptance remain pending; no partial results are combined into success.
+Running: Corrected complete standard suite: block 4/27, Fop006.80, zero FAIL lines; driver 1107192 is live. Original known-failed attempt: block 25/27, Recd001 recovery, two diagnosed failures, driver 1364 live. The corrected replication-manager groups previously passed 20/20 and 11/11 privately. A read-only result gate rejects unfinished/interrupted runs; full-suite and production/package acceptance remain pending.
 
 Remaining:
 

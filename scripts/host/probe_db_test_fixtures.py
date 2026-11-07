@@ -48,10 +48,11 @@ def main():
                    input=patch, check=True)
     for name, fixture in FIXTURES:
         apply_fixture(ROOT, sources, name, fixture)
-    verify(ROOT, sources, native)
+    verified = verify(ROOT, sources, native)
     snapshot = {str(p.relative_to(native)): digest(p)
                 for p in (native / 'test/tcl').iterdir() if p.is_file()}
     assert len(snapshot) == 483
+    assert verified == snapshot
     for name, fixture in FIXTURES:
         apply_fixture(ROOT, sources, name, fixture)
     assert all(digest(native / path) == sha for path, sha in snapshot.items())
@@ -104,7 +105,10 @@ def main():
               'test_file_sha256': snapshot, 'guest_modified': False,
               'runtime_test_acceptance': False}
     output = ROOT / '.local/logs/h07-db-fixture-preflight.json'
+    if output.exists():
+        shutil.copyfile(output, output.with_name(output.stem + '-' + digest(output) + '.json'))
     output.write_text(json.dumps(result, indent=2) + '\n')
+    shutil.copyfile(output, output.with_name(output.stem + '-' + digest(output) + '.json'))
     print(json.dumps({'report': str(output), 'sha256': digest(output),
                       'verified_files': len(snapshot), 'negative_cases': len(negative)}))
 

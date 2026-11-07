@@ -40,13 +40,17 @@ def verify(root, sources, native_source):
         subprocess.run(['patch','--batch','--fuzz=0','-p1','-d',str(reference)],input=patch,check=True)
         for name in names[2:]:
             subprocess.run(['patch','--batch','--fuzz=0','-p1','-d',str(reference),'-i',str(sources/name)],check=True)
+        verified={}
         for relative in sorted(expected):
             native=native_source/relative
-            if native.is_symlink() or not native.resolve().is_relative_to(native_source) or digest(native)!=digest(reference/relative):
+            reference_sha=digest(reference/relative)
+            if native.is_symlink() or not native.resolve().is_relative_to(native_source) or digest(native)!=reference_sha:
                 raise SystemExit('Cached Tcl test differs from frozen reference: '+str(relative))
+            verified[str(relative)]=reference_sha
         extra={p.relative_to(native_source) for p in (native_source/'test/tcl').rglob('*.tcl')}-expected
         if extra:raise SystemExit('Unexpected cached Tcl scripts: '+str(sorted(extra)))
         print(json.dumps({'verified_test_files':len(expected),'maintained_tcl_patch':'004-tclsleep.patch','fixture_patches':names[2:],'native_files_changed':False}))
+        return verified
 
 def main():
     subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)

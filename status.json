@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-06",
+  "updated_at": "2026-11-07",
   "bootstrap": "ready_for_development",
   "current_scope": "Implementation: H01-H06 validated in KVM. H07 has 124 accepted source-built packages and a verified cold pair. Corrected Berkeley DB C/focused tests and 483-file source comparison passed; complete standard suite running. Perl packlist metadata correction is prepared, not installed; APT/final closure and G1/G2 remain pending. No Toddy ISO. Owner review boundary: deliver H13/G1 for testing and wait for explicit approval before B01-B13.",
   "next_story": "H07",
@@ -477,14 +477,14 @@
   ],
   "active_work": {
     "story": "H07",
-    "verified_at": "2026-11-07 01:26 UTC",
+    "verified_at": "2026-11-07 01:40 UTC",
     "verified": [
       "124 of 126 currently planned H07 packages installed, configured and accepted; 2 pending (Berkeley DB and APT). All 124 have own-build/source provenance.",
       "Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.",
       "Full ACL retest, API/layout ownership and native configuration correction passed.",
       "Verified paired cold checkpoint at the 124-package boundary."
     ],
-    "running": "Both diagnosed replication-manager groups passed privately (20/20 and 11/11). A complete corrected standard suite now runs in a verified private PID/IPC/network/mount view: C tests passed, Env012 active, zero FAIL lines so far. The original attempt continues at Rep079 in block 23 with its two known failures. Full-suite and production/package acceptance remain pending; no partial results are combined into success.",
+    "running": "Corrected complete standard suite: block 4/27, Fop006.80, zero FAIL lines; driver 1107192 is live. Original known-failed attempt: block 25/27, Recd001 recovery, two diagnosed failures, driver 1364 live. The corrected replication-manager groups previously passed 20/20 and 11/11 privately. A read-only result gate rejects unfinished/interrupted runs; full-suite and production/package acceptance remain pending.",
     "remaining": [
       "Finish the complete database suite, then production install and transaction/reopen postchecks; later access-method matrix plans 135 x 9 dispatch entries, including inapplicable skips.",
       "Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.",

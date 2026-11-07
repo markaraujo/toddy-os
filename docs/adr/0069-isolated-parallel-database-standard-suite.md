@@ -110,3 +110,42 @@ inputs/frozen sources, and implement/validate the production handoff under the
 normal exclusive recipe lock. Production build, packaging, native transaction/
 reopen/rollback checks and APT remain pending. No partial log, combined set of
 isolated cases, timeout or prepared script can mark Berkeley DB or H07 complete.
+
+
+## Independent completed-result verifier
+
+scripts/build/db_standard_result.py is a read-only gate for this exercised
+recovery profile. It requires both actual exits zero, no running marker/live
+producer, protected reports/source, the pinned driver/isolation/entry/helper,
+all execution input hashes and every native checkpoint/Tcl reference entry in
+the protected input manifest. It independently reconstructs all 483 Tcl files
+from frozen archives/patches. The upstream success line must occur exactly once
+immediately before its final completion timestamp; the strict stdout sentinel
+must be final, without unexpected output. Namespace evidence must demonstrate
+four distinct private identities and tmpfs shared memory. No branch installs a
+package or writes a success marker.
+
+Actual guest probes with verifier SHA-256
+0ea93792ddb952197810867dc8c95a935e287f85e0d3907bc5642637c24e0cc1
+rejected the still-active corrected run, the interrupted first run and an
+outside source path. Raw .local/logs/h07-db-standard-result-rejections.json
+SHA-256: 5a2ba8210c0b4b865a62aa481b05ad142b6ecbe066fc45119a9cfbe6e79cb070.
+Two local regression methods exercise truncated/failed/duplicate summaries and
+incomplete exit/input/producer profiles; all 152 local checks pass. A positive
+complete native result has not yet been available and is not claimed here.
+
+The Tcl reference verifier now returns its compared hash map, and the native
+input manifest must contain that exact map. Repeated host fixture validation
+passed 483 files, idempotence and six negative cases; current raw report SHA-256
+366e9fbe4b0e1499750b9975f3372cd84d131c89bf26b164a7f3bc5c86b383c5.
+The h07-db-fixture-preflight.json convenience path has been replaced by this
+new observation since ADR-0067. Future runs preserve both previous and new
+reports with their SHA-256 in the filename; the prior cited digest is historical,
+not the current convenience-path contents.
+
+At 01:40 UTC the original run had reached recovery Recd001 (block 25/27), with
+the same two failures. The corrected complete run reached Fop006.80 (block 4/27)
+with no failures. Both drivers remained live and lacked terminal exit files.
+Raw .local/logs/h07-db-standard-progress-<sha256>.json observation SHA-256:
+60c106e5b52cca43ed3b3f9eac394a72697dd6d14d9ca133a82678f7bdd3895d.
+Group position is not a time-weighted completion estimate.

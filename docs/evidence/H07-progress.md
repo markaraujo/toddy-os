@@ -1251,3 +1251,12 @@ private tmp/var/tmp/tmpfs shared memory were measured. An initial ext4 shared-
 memory view was deliberately stopped and corrected, with its failure evidence
 preserved. No package installation or acceptance is authorized by this test-only
 driver. Complete-result/production handoff remains required.
+
+
+2026-11-07 01:40 UTC — Original Berkeley DB standard run is in Recd001,
+block 25/27, with its same two known failures. The corrected complete run is
+in Fop006.80, block 4/27, zero FAIL lines. Both drivers are live with no exit
+files. An independent read-only completed-result verifier now rejects actual
+unfinished/interrupted/outside-path inputs, and all 152 local checks pass.
+ADR-0069 records hashes and limits: no positive full result, production install
+or package acceptance yet. H07 remains 124/126 accepted packages.

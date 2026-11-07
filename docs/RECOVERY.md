@@ -1004,3 +1004,12 @@ Native input-rejection evidence is in db-standard-input-rejection-weajsa4_.
 Session setup/launch observations are .local/logs/h07-parallel-standard-*.json;
 older generations are retained with hash suffixes. See ADR-0069 before changing
 active inputs, namespace mounts or interpreting any terminal result.
+
+
+The completed isolated-result gate is now prepared at
+scripts/build/db_standard_result.py (ADR-0069). After terminal success and a
+verified quiescent input sync, run in the guest:
+python3 -B /opt/toddy-build/scripts/build/db_standard_result.py /mnt/lfs/sources/recovery/db-standard-nfv62s4o
+It must reject the run while unfinished. It does not install, mark a package
+accepted or waive the original terminal installed-change audit. Production
+handoff remains to be implemented and exercised after full native success.
