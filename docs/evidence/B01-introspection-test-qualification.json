@@ -1,0 +1,14 @@
+{
+  "scope": "GI 1.86.0 compiler/preprocessor test mock dispatch only; production source unchanged",
+  "adapter_sha256": "a2c106966a3042290f2ce3cfc05009094b139ccd7932790427d5b3a4ebbe0b47",
+  "setuptools": "84.0.0",
+  "original_groups": 12,
+  "unchanged_passing_groups": 11,
+  "original_log_sha256": "63c3950fbd43631be1793abaea0a864afb3b3d04db34830ce84a23f602942053",
+  "original_test_sha256": "ae0d323b8b59d3fb8d4e950b8d14be110fd2f01dc39c517150144e7125d2cfaa",
+  "corrected_test_sha256": "e1d1a3e8eeb286712b47b20176d85b072ce3b207496cd2bd69b5dc7e65de9225",
+  "corrected_test_exit": 0,
+  "live_preprocessor_exit": 0,
+  "corrected_log_sha256": "f04267452506bc039035406755eafd08b4b36516ca3b46de27b5721b3d500db0",
+  "change": "Only compile_args/preprocess_args mocks: CCompiler.spawn -> CCompiler.call; assertions/skips/expected failures unchanged"
+}
