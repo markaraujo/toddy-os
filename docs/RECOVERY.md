@@ -1013,3 +1013,28 @@ python3 -B /opt/toddy-build/scripts/build/db_standard_result.py /mnt/lfs/sources
 It must reject the run while unfinished. It does not install, mark a package
 accepted or waive the original terminal installed-change audit. Production
 handoff remains to be implemented and exercised after full native success.
+
+
+The production handoff is now prepared (ADR-0069) but must not run until both
+full drivers are terminal and the corrected result is successful. The following
+sequence is the intended next production path; its positive execution remains
+pending. First preserve and inspect both driver exits/logs. Any unknown failure
+requires diagnosis. At the quiescent boundary sync the committed build inputs
+with python3 scripts/host/sync_build.py, which transfers the frozen fixture patch
+and result verifiers. Then, inside the guarded guest, run:
+
+```sh
+python3 -B /opt/toddy-build/scripts/build/db_standard_handoff.py prepare /mnt/lfs/sources/recovery/db-standard-nfv62s4o
+cd /opt/toddy-build/scripts/build
+python3 run_step.py h07-berkeley-db h07/berkeley-db-verified-production.sh h07/berkeley-db-check.sh --user root
+```
+
+Use a detached driver with durable log/PID/exit files for the dispatcher, as
+for other long recipes. Preparation refuses an active runner, any additional
+original failure, changed installed paths, incomplete corrected output or an
+existing nomination. Never remove a nomination/running marker to force a retry.
+After interruption inspect candidate.json in the copied evidence, the protected
+original history, production staging and the normal manifest before deciding
+whether to resume or restore the paired checkpoint. A staged package alone is
+unfinished. Only actual recipe/postcheck 0/0 may unblock APT. Keep the original
+success-only and obsolete serial-retry supervisors from launching duplicates.

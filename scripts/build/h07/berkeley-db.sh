@@ -18,4 +18,5 @@ bash /opt/toddy-build/scripts/build/h07/berkeley-db-test-helper.sh
 python3 /opt/toddy-build/scripts/build/verify_db_tcl_tests.py
 chroot_run < /opt/toddy-build/scripts/build/h07/berkeley-db-fixture-check-inner.sh
 chroot_run < /opt/toddy-build/scripts/build/h07/berkeley-db-finish-inner.sh
+chroot_run < /opt/toddy-build/scripts/build/h07/berkeley-db-production-inner.sh
 bash /opt/toddy-build/scripts/build/h07/berkeley-db-package.sh "$0"

@@ -29,4 +29,5 @@ su tester -c 'cd build-test && ./cutest' 2>&1 | tee /sources/evidence/h07-berkel
 INNER
 chroot_run < /opt/toddy-build/scripts/build/h07/berkeley-db-fixture-check-inner.sh
 chroot_run < /opt/toddy-build/scripts/build/h07/berkeley-db-finish-inner.sh
+chroot_run < /opt/toddy-build/scripts/build/h07/berkeley-db-production-inner.sh
 bash /opt/toddy-build/scripts/build/h07/berkeley-db-package.sh "$0"

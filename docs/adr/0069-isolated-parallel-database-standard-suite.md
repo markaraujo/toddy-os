@@ -149,3 +149,36 @@ with no failures. Both drivers remained live and lacked terminal exit files.
 Raw .local/logs/h07-db-standard-progress-<sha256>.json observation SHA-256:
 60c106e5b52cca43ed3b3f9eac394a72697dd6d14d9ca133a82678f7bdd3895d.
 Group position is not a time-weighted completion estimate.
+
+
+## Prepared production handoff
+
+The read-only result gate now has a separate production path, prepared but not
+positively exercised: db_standard_handoff.py prepare takes the same exclusive
+build lock, requires the exact original terminal failure and zero installed
+changes, validates the complete corrected result, preserves original reports
+in a new root-private history directory and creates a root-private nomination.
+An existing nomination is never overwritten. Unknown failures, unfinished
+runs, truncated output or a nonempty installed-change manifest require diagnosis.
+
+berkeley-db-verified-production.sh can consume that nomination only as a child
+of the recipe PID recorded by run_step.py, with its exclusive lock still held.
+It revalidates protected original reports and the complete corrected result,
+then binds the tested source to its canonical path in a private mount namespace.
+Production build, staging, normal package installation and the existing native
+postcheck still run against the actual target, under the normal installed-file
+audit. No handoff code creates a success marker or accepts H07.
+
+The former finish-inner script was split at the production boundary. Its
+complete standard-suite commands and production commands are byte-for-byte
+preserved in the two resulting script bodies. Both ordinary fresh and recovery
+recipes still execute the complete suite before production. This avoids
+maintaining a different production configuration for the isolated-result path.
+
+Actual guest rejection probes refused prepare while the original runner held
+the lock and consume outside the production dispatcher. No nomination or stage
+was created. Raw .local/logs/h07-db-handoff-rejections-<sha256>.json SHA-256:
+3bf58b99ad3121f69ad7c7271b11a43ea72d914a80e0744fa377c9aa2475f40e.
+Two local regression methods reject changed/unknown/incomplete original results
+and replacement of an existing nomination. The actual positive handoff,
+production compilation, package installation and postcheck remain pending.
