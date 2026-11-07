@@ -595,3 +595,21 @@ verified files, native SSL/SQLite runtime, empty Dpkg audit and APT check.
 Only a later `assemble_root.py --release` removes python-test-support from its
 fresh image; the complete builder QA payload stays available. The prepared
 private experiments are not substituted for this actual gated operation.
+
+### H11 release-profile image and component inventory
+
+After accepted native h11-python-qa, run
+`bash /opt/toddy-build/scripts/build/h11-release-driver.sh` with a durable log.
+It uses fresh h11-release-root, h11-release-root-evidence and
+h11-release-compression generations. All three component calls explicitly use
+--release; the ISO composer uses its default release gate. The shared
+h11-media-driver.sh continuation creates a protected nested generation and
+can resume from accepted release compression after diagnosing a media-only
+failure. Both drivers retain PID/exit files under /var/log/toddy.
+
+After image assembly, `python3 /opt/toddy-build/scripts/build/export_inventory.py
+--image /mnt/lfs/sources/stage/h11-release-root` exports the exact image's
+configured component set. Corresponding source/archive hashes are verified
+against the builder's frozen cache, while copyright bytes are verified in the
+image. Save the JSON beside the ISO and include its SHA-256 in release evidence.
+An inventory alone does not assert release/security/license acceptance.

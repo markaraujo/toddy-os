@@ -22,8 +22,9 @@ Verified:
 
 - H10 full root, compression/readback, bound initramfs and 1,123,698,688-byte validation ISO passed.
 - Actual BIOS/CD live console, volatile write, C/Kmod, Dpkg/APT, DHCP/DNS and QEMU power-off passed; ISO unchanged.
+- Native Python QA ownership transfer passed recipe/postcheck 0/0: 5,395 test files and 3,980 retained runtime files unchanged; SSL/SQLite, Dpkg and APT checks passed.
 
-Running: Preparing the native Python QA ownership transfer before release-profile assembly.
+Running: Preparing fresh release-profile root/compression/ISO, with optional Python QA excluded only from the image.
 
 Remaining:
 

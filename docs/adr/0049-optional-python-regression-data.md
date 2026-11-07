@@ -362,3 +362,15 @@ Reproduce with python3 scripts/host/probe_python_qa_handoff_plan.py --transactio
 Successful private fixtures are removed only after retaining their logs in the
 report. Failures preserve the exact printed fixture. The installed target status,
 package cache and active DB source inputs remain unchanged.
+
+## Actual H11 production transfer accepted (2026-11-07)
+
+After actual H10 live acceptance, the production dispatcher prepared both
+archives and completed the configured native transaction. Python moves from
+3.14.10-1+toddy1 to 3.14.10-1+toddy2, with python-test-support at the matching
+revision. Exactly 5,395 QA files move and 3,980 runtime files/links remain
+unchanged (the final metadata payload includes retained legal notices beyond
+the earlier private fixture). Native SSL/SQLite runtime, Dpkg audit and APT
+check passed; recipe/postcheck are 0/0. Complete builder tests remain available.
+See docs/evidence/H11-python-qa.json. Actual final-image exclusion and full
+credential review remain required; this transfer alone does not accept H11.

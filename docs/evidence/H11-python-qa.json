@@ -1,0 +1,58 @@
+{
+  "predecessor": "python_3.14.10-1+toddy1_amd64",
+  "successors": [
+    "python_3.14.10-1+toddy2_amd64",
+    "python-test-support_3.14.10-1+toddy2_amd64"
+  ],
+  "archive_sha256": [
+    "54f98048228c3810b1be92c52b9fcba9171ab753a3bb906c82b61a2f1757e00a",
+    "5f09a32a9d757ad895e22ceaf705e2f14a747a24305f43b824a74ed246b439d1",
+    "054b640eb42b0b9a91dd2f04aeaa40bf807633f0c3442c290baf750dcdcb79f3"
+  ],
+  "partition": {
+    "roots": [
+      "/usr/lib/python3.14/test",
+      "/usr/lib/python3.14/idlelib/idle_test"
+    ],
+    "regular_files": 5395,
+    "entries": 5632,
+    "runtime_code_changed": false,
+    "tests_modified": false,
+    "native_package_transfer_validated": false
+  },
+  "transaction_complete": true,
+  "verification": {
+    "bundle": {
+      "version": "3.14.10-1+toddy2",
+      "transferred_files": 5395,
+      "retained_runtime_files": 3980,
+      "runtime_payload_unchanged": true,
+      "qa_payload_unchanged": true,
+      "installation_authorized": false
+    },
+    "files": {
+      "python": 3980,
+      "python-test-support": 5432
+    },
+    "dpkg_audit_clean": true,
+    "runtime_stdout": "PYTHON_QA_RUNTIME_OK OpenSSL 4.0.3 29 Sep 2026\n"
+  },
+  "actions": [
+    {
+      "action": "install_core",
+      "exit": 0
+    },
+    {
+      "action": "install_qa",
+      "exit": 0
+    }
+  ],
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "hashes": {
+    "prepared.json": "af7f4f056868936df19769838793aa17e143fdac3dbd4285d0b8d38109126f84",
+    "transaction.json": "3c9b5ddc8bd6cb8e0714b141a1ea8f557984c5e91faa411c4be6ad606d1812d6",
+    "h11-python-qa.success.json": "a799de0ceb66dbcc69b45bcaae85c8d7925e23b96c7a1550855ef16dff6e2067",
+    "h11-python-qa.log": "c45416cfa1a20c5b1768b3635c8b033c5102adb70669f46920ff7648f218c37a"
+  }
+}

@@ -6,6 +6,7 @@ archives or workstation paths. This is a partial inventory until the final
 base ownership/dependency/license audits and release gates actually pass.
 """
 from datetime import datetime, timezone
+import argparse
 import hashlib
 import json
 import re
@@ -18,10 +19,8 @@ CACHE = Path('/var/cache/toddy/packages')
 RECORDS = Path('/var/log/toddy/packages')
 
 
-def main():
-    subprocess.run(['bash', '-c', 'source "$1"; guard_target', 'guard',
-                    str(HERE / 'target.sh')], check=True)
-    output = subprocess.check_output(['dpkg-query', '--admindir=' + str(TARGET / 'var/lib/dpkg'),
+def collect(target=TARGET, source_root=TARGET):
+    output = subprocess.check_output(['dpkg-query', '--admindir=' + str(target / 'var/lib/dpkg'),
                                       '-W', '-f=${Package}\t${Version}\t${Architecture}\t${Status}\n'], text=True)
     installed = {}
     for line in output.splitlines():
@@ -47,10 +46,10 @@ def main():
         if digest(CACHE / archive) != record['archive_sha256']:
             raise SystemExit(f'Native package archive corruption: {name}')
         for source in record['sources']:
-            if digest(TARGET / 'sources' / source['filename']) != source['sha256']:
+            if digest(source_root / 'sources' / source['filename']) != source['sha256']:
                 raise SystemExit(f'Corresponding source corruption: {source["filename"]}')
         notice = '/usr/share/doc/' + name + '/copyright'
-        notice_hash = digest(TARGET / notice.lstrip('/'))
+        notice_hash = digest(target / notice.lstrip('/'))
         if notice_hash != record['payload'][notice]['sha256']:
             raise SystemExit(f'Installed copyright notice mismatch: {name}')
         baseline=re.sub(r'\+toddy[1-9][0-9]*$','',version)
@@ -69,9 +68,25 @@ def main():
                            'source_kind': record.get('source_kind', 'upstream-archives-and-versioned-recipe'),
                            'license_expression': reviewed['license'] if reviewed else 'pending final license inventory review',
                            'license_review': reviewed})
-    print(json.dumps({'schema_version': 1, 'scope': 'installed native packages only',
+    return {'schema_version': 1, 'scope': 'installed native packages only',
                       'release_complete': False, 'generated_at': datetime.now(timezone.utc).isoformat(),
-                      'package_count': len(components), 'components': components}, indent=2))
+                      'package_count': len(components), 'components': components}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--image', type=Path, help='H11 assembled image package set; sources remain in the guarded builder')
+    args = parser.parse_args()
+    subprocess.run(['bash', '-c', 'source "$1"; guard_target', 'guard',
+                    str(HERE / 'target.sh')], check=True)
+    target = TARGET
+    if args.image is not None:
+        subprocess.run(['python3', str(HERE / 'h11/require_gate.py')], check=True)
+        import sys
+        sys.path.insert(0, str(HERE / 'h10'))
+        from initramfs_input import physical
+        target = physical(TARGET, args.image, directory=True)
+    print(json.dumps(collect(target, TARGET), indent=2))
 
 
 if __name__ == '__main__':
