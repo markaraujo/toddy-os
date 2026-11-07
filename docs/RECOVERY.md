@@ -1469,3 +1469,25 @@ is `python3 scripts/host/probe_db_native_build_result.py /mnt/lfs/sources/recove
 it checks the current unfinished state and historical coverage custody without
 starting tests or changing source metadata. Do not rerun it once the full suite
 is terminal expecting the old live-state assertion to remain true.
+
+## Database production output/source separation (ADR-0091)
+
+Private production generation /mnt/lfs/sources/recovery/db-production-nlsr4aoj
+is complete: driver 4116994 and all isolation/configure/build/install/postcheck
+steps exited zero. Collect its durable records with probe_db_production.py;
+do not restart this completed build. Inputs, source-before/source-after snapshots,
+per-stage intent/PID/log/exit files and the private stage remain available.
+
+The real nominated recipe creates a separate root-private db-production-*
+workspace and prints its path in the recipe log. Its source bind is read-only;
+only build-production is overmounted writable. Keep that work directory after
+failure for diagnosis. Never resume by removing source custody or compiling into
+the original fixture. A failed partial private probe is not reusable as an
+accepted production package; inspect actual driver/child PIDs, source snapshots,
+stage logs and exits before choosing a corrected retry. Completed native test
+compilation and the running full suite do not need restarting for production
+output recovery.
+
+Actual package installation still uses the normal dispatcher after complete
+suite acceptance. The independent probe invokes no package installer and its
+private staging path must not be promoted directly into package success.

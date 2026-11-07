@@ -204,3 +204,10 @@ requires the verified native-build/prepared-input binding. Actual unfinished/
 wrong-generation refusals and historical coverage custody passed. Complete
 positive validation is still pending; portable failed-summary coverage and the
 normal private fresh-dispatch/production integration remain required work.
+
+ADR-0091 fixes production evidence preservation before actual handoff: the tested
+source is mounted read-only, with separate writable build output. An actual
+private production compilation/stage and the unchanged transaction/reopen/
+rollback check passed, preserving all 10,606 source entries and bytes. The
+nominated production recipe now uses this view; its complete-suite/dispatcher
+gate remains mandatory. No package was installed or standard suite accepted.

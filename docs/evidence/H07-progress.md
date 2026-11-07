@@ -1581,3 +1581,17 @@ At 10:55 UTC the full driver remained live in recovery 25/27, now Recd001.f in
 the rbtree variant, with zero FAIL and no terminal exits. Recovery case numbers
 restart for each method; this is not a return to the beginning of run_std.
 H07 is still 124/126; production, APT and final closure remain pending.
+
+## Preserved-source production build
+
+ADR-0091 corrects the production view to keep the tested source read-only and
+place generated output in a separate workspace. The actual private experiment
+passed isolation, configure, build, staging and the unchanged transaction/
+rollback/reopen check. All 10,606 source entries/bytes remained identical;
+native package status and shared staging were unchanged. No package installation
+or full-suite acceptance occurred. 173 local checks pass.
+
+At 11:04 UTC the complete corrected driver was still live in recovery 25/27,
+Recd011.b in rbtree -recnum, with zero FAIL and no terminal exits. H07 remains
+124/126; complete qualification, real production packaging, APT and final
+closure/checkpoint are still required.

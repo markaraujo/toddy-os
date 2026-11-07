@@ -868,3 +868,18 @@ both failure and successful evidence from ADR-0086; no test result was relabeled
 - Correction: the test module explicitly adds scripts/build to its import path.
 - Verification: all four isolated result tests and all 173 repository checks
   pass. No native assertions or expected failure cases were removed.
+
+### 2026-11-07 — Production compilation would change the custody tree
+
+- Classification: implementation defect found before production handoff.
+- Symptom: code review showed that the prepared production recipe bound the
+  tested source writable and compiled inside its build-production directory.
+- Cause: namespace isolation preserved the original canonical path view but
+  still allowed writes to the underlying source inode tree recorded by custody.
+- Correction: mount that source read-only and overmount a separate private
+  output directory; preserve stdin across the namespace command wrapper.
+- Verification: actual native production build/staging and unchanged transaction/
+  rollback/reopen checks passed; source write-open returned EROFS, separate output
+  writes/stdin passed, and all 10,606 source entries/bytes remained identical.
+  Outside/redirected target guards refused. See ADR-0091 for logs and hashes.
+- No existing full custody receipt was damaged; real handoff remains pending.

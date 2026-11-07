@@ -776,3 +776,21 @@ The actual full suite progressed to recovery's rbtree variant, Recd001.f, zero
 FAIL and no exits. Case numbering restarts per method. Portable failed-summary
 coverage/qualification and normal fresh dispatcher integration remain the next
 independent slice; complete native positive acceptance is still pending.
+
+### 2026-11-07 11:04 UTC — Preserve source custody through production builds
+
+The preceding status reply inspected the actual live full driver and elapsed
+time; it was a verified wait. This turn identified a real pending handoff defect:
+writable production output inside the tested tree would invalidate source
+custody. Implemented a read-only source/separate-output view and shared staged
+production/postcheck scripts, keeping the full acceptance gate unchanged.
+
+The actual private production build completed all five stages with exit zero.
+Transaction/abort/reopen/persistence checks passed with the staged production
+library. Native EROFS, writable separate output, preserved caller stdin, three
+invalid-target refusals and unchanged 10,606-entry source snapshots passed.
+No package installer or new full suite ran. See ADR-0091 for durable evidence.
+
+The current full driver continues in recovery's rbtree -recnum variant,
+Recd011.b, zero FAIL. Portable failed-summary coverage/qualification and fresh
+full-dispatch integration remain the next independent tasks while it completes.

@@ -529,3 +529,24 @@ Omitting --native-build retains the strict historical recovery gate. Neither pat
 accepts a prepared/live suite. Generic failed-summary coverage/qualification and
 normal fresh-recipe dispatch integration remain pending; this is not yet a
 verified end-to-end fresh build command.
+
+### Preserve database evidence during production compilation
+
+The real nominated production recipe now uses a read-only canonical source and
+a separate db-production-* output directory (ADR-0091). Configuring/compiling
+must not append files to the source tree recorded by custody. The source and
+build-output inode mappings and effective mount flags are checked before use.
+The normal recipe still requires the complete accepted result and dispatcher.
+
+The actual staging-only experiment already passed all five steps and shared
+transaction/rollback/reopen checks, preserving all 10,606 source entries/bytes.
+Collect retained evidence without rebuilding:
+
+```sh
+python3 scripts/host/probe_db_production.py collect /mnt/lfs/sources/recovery/db-production-nlsr4aoj
+```
+
+The probe's private install target is outside the real package staging view;
+its success is not a native package installation or substitute for full tests.
+`probe_db_production.py start` creates a fresh private experiment only when a
+new change warrants repeating it. It never starts the standard Tcl suite.
