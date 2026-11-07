@@ -1,7 +1,7 @@
 # H13 GitHub Release draft verification
 
-The first large-delivery draft exists at
-[`v0.1.0-foundation.1`](https://github.com/markaraujo/toddy-os/releases/tag/untagged-4fec1c479881718b4c29).
+The first large-delivery draft was prepared for
+[`v0.1.0-foundation.1`](https://github.com/markaraujo/toddy-os/releases/tag/v0.1.0-foundation.1).
 GitHub reports it as a draft prerelease, targeting the accepted H13 source commit
 `e24e452399621607a8386db582e5776bd66994da`. The public Git tag is not yet
 created; verify it points to that exact commit when the draft is published.
@@ -33,3 +33,7 @@ The owner subsequently approved MIT for original code and CC BY 4.0 for
 original documentation/artwork. ADR-0104 and the repository license files record
 that later decision. This report preserves the draft's earlier seven-asset state;
 the final published release requires a new tag/source and asset verification.
+
+The licensed ten-asset prerelease was subsequently published. See the separate
+[final public release record](H13-github-release.md); this document retains the
+initial draft's seven-asset evidence and historical pending-license state.

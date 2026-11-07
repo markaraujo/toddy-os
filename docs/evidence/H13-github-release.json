@@ -1,0 +1,101 @@
+{
+  "complete": true,
+  "public": true,
+  "prerelease": true,
+  "tag": "v0.1.0-foundation.1",
+  "release_url": "https://github.com/markaraujo/toddy-os/releases/tag/v0.1.0-foundation.1",
+  "release_id": 437627323,
+  "release_source_commit": "b474b1088ee4c98d64ab3985b731203cf94fc1ac",
+  "tested_build_commit": "e24e452399621607a8386db582e5776bd66994da",
+  "tag_points_to_release_source_commit": true,
+  "asset_count": 10,
+  "assets": [
+    {
+      "id": 720967779,
+      "name": "CC-BY-4.0.txt",
+      "size": 18657,
+      "digest": "sha256:9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+      "state": "uploaded",
+      "browser_download_url": "https://github.com/markaraujo/toddy-os/releases/download/v0.1.0-foundation.1/CC-BY-4.0.txt"
+    },
+    {
+      "id": 720935825,
+      "name": "components.json",
+      "size": 679373,
+      "digest": "sha256:a9c2d193c3ca94cbe8161152c50802fd0cb964ac043635d80c71c518002ea377",
+      "state": "uploaded",
+      "browser_download_url": "https://github.com/markaraujo/toddy-os/releases/download/v0.1.0-foundation.1/components.json"
+    },
+    {
+      "id": 720967687,
+      "name": "LICENSE",
+      "size": 1178,
+      "digest": "sha256:f2160298f6fb81b18cfa5dbbf7460ab4774a268b5b519088b5b6fc8eb08ae3a4",
+      "state": "uploaded",
+      "browser_download_url": "https://github.com/markaraujo/toddy-os/releases/download/v0.1.0-foundation.1/LICENSE"
+    },
+    {
+      "id": 720967886,
+      "name": "LICENSING.md",
+      "size": 2386,
+      "digest": "sha256:23d31ed3b5bf0057f605b491b4546ee421adf9cdcfdbfd26a6d21b84d361771f",
+      "state": "uploaded",
+      "browser_download_url": "https://github.com/markaraujo/toddy-os/releases/download/v0.1.0-foundation.1/LICENSING.md"
+    },
+    {
+      "id": 720968173,
+      "name": "SHA256SUMS",
+      "size": 758,
+      "digest": "sha256:327bd99d2b0720108058dae1c04ff03fa2cdbca914f42018624ddba423920917",
+      "state": "uploaded",
+      "browser_download_url": "https://github.com/markaraujo/toddy-os/releases/download/v0.1.0-foundation.1/SHA256SUMS"
+    },
+    {
+      "id": 720940475,
+      "name": "source-archives.tar",
+      "size": 718551040,
+      "digest": "sha256:f06ae9910e4f38338f35e472e71c92f0031a1b40c4762c30583e3688d4d30911",
+      "state": "uploaded",
+      "browser_download_url": "https://github.com/markaraujo/toddy-os/releases/download/v0.1.0-foundation.1/source-archives.tar"
+    },
+    {
+      "id": 720935952,
+      "name": "source-inputs.json",
+      "size": 80441,
+      "digest": "sha256:87a872c5f118486cb0cf8ecd366a2710737b45c61077fd1fd83de220250da84b",
+      "state": "uploaded",
+      "browser_download_url": "https://github.com/markaraujo/toddy-os/releases/download/v0.1.0-foundation.1/source-inputs.json"
+    },
+    {
+      "id": 720935721,
+      "name": "SOURCE-SHA256SUMS",
+      "size": 12503,
+      "digest": "sha256:34bdc733e0918c6543d8ed268367b2e1cd85f9851567a2d4c09df00cc2ccb1e2",
+      "state": "uploaded",
+      "browser_download_url": "https://github.com/markaraujo/toddy-os/releases/download/v0.1.0-foundation.1/SOURCE-SHA256SUMS"
+    },
+    {
+      "id": 720936145,
+      "name": "toddy-foundation-x86_64.iso",
+      "size": 1095000064,
+      "digest": "sha256:4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "state": "uploaded",
+      "browser_download_url": "https://github.com/markaraujo/toddy-os/releases/download/v0.1.0-foundation.1/toddy-foundation-x86_64.iso"
+    },
+    {
+      "id": 720968021,
+      "name": "toddy-source-history.bundle",
+      "size": 8382651,
+      "digest": "sha256:6f6736a66aab06f338d1819e6ef4f7d404e1492d4158aee406ed1a1215349be2",
+      "state": "uploaded",
+      "browser_download_url": "https://github.com/markaraujo/toddy-os/releases/download/v0.1.0-foundation.1/toddy-source-history.bundle"
+    }
+  ],
+  "asset_digests_match_downloaded_and_rehashed_draft": true,
+  "public_sha256sums_downloaded_and_matched": true,
+  "public_iso_link_http_200_and_bytes": 1095000064,
+  "G1": "passed",
+  "G2": "pending",
+  "physical_hardware": "pending",
+  "B01_to_B13": "not_started"
+}

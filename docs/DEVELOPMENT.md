@@ -8,12 +8,13 @@
 ## Current scope
 
 H01–H13 are accepted; foundation 100%, agentic 0%, G1 passed, G2 pending.
-The final ISO contains 134 source-built packages and 142 corresponding source
-inputs. Final BIOS/UEFI/CD/USB, recovery, XML/EN/PT, 50/50 native follow-up and
-actual owner-console checks passed. The local export is under
-.local/releases/toddy-foundation-2026-11-07, with checksums and exact source
-revision in release-summary.json. Original failed/unsupported results remain
-classified. Await owner testing and approval; the full release is incomplete.
+The licensed public [foundation prerelease](https://github.com/markaraujo/toddy-os/releases/tag/v0.1.0-foundation.1)
+contains the tested ISO, 134 source-built components and 142 corresponding
+source inputs. BIOS/UEFI/CD/USB, recovery, XML/EN/PT, 50/50 native follow-up and
+owner-console checks passed. The local export remains under
+.local/releases/toddy-foundation-2026-11-07. Original failed/unsupported results
+remain classified. Await owner testing and explicit B01 approval; the full
+release is incomplete.
 
 ## Owner review boundary
 

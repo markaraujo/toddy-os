@@ -2,18 +2,15 @@
 
 The repository and Pages dashboard remain the development record. GitHub Releases
 provides downloadable snapshots for major accepted deliveries. See ADR-0103.
-The H13 foundation candidate is `v0.1.0-foundation.1`. The tested image was built
-from commit `e24e452399621607a8386db582e5776bd66994da`. The owner approved
-D10's licenses on 2026-11-07; the final release source tag must include that
-grant as well as the tested recipes. The draft remains under final verification.
-G1 passed in QEMU/KVM; G2, physical hardware and B01-B13 remain pending. The
-foundation ISO has a command-line live system without persistence, desktop,
-agent or graphical installer.
-
-The [initial seven-asset draft](evidence/H13-github-release-draft.md) was
-prepared before licensing. GitHub's asset digests and full downloaded bytes
-matched that candidate. Retargeting the draft, attaching the approved license
-files and verifying the final asset set precede publication.
+The first public [foundation prerelease](https://github.com/markaraujo/toddy-os/releases/tag/v0.1.0-foundation.1)
+is `v0.1.0-foundation.1`. The actual ISO was built and tested from commit
+`e24e452399621607a8386db582e5776bd66994da`; the release tag points to
+`b474b1088ee4c98d64ab3985b731203cf94fc1ac`, which adds the owner's
+approved original-material licenses. The image bytes did not change. Ten public
+assets passed GitHub digest/size and full download verification; see the
+[publication evidence](evidence/H13-github-release.md). G1 passed in QEMU/KVM.
+G2, physical hardware and B01-B13 remain pending. The foundation ISO has a
+command-line volatile live system without desktop, agent or graphical installer.
 
 ## Release checklist
 

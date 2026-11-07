@@ -1,7 +1,7 @@
 # ADR-0103: Use GitHub Releases for accepted delivery artifacts
 
 - Date: 2026-11-07
-- Status: Accepted for release preparation; public foundation publication blocked by D10
+- Status: Accepted; first public foundation prerelease verified
 
 The Pages dashboard tracks development progress. A GitHub Release will hold each
 large, accepted, immutable delivery with its tag, image, corresponding source,
@@ -43,3 +43,12 @@ Alternatives: Git alone cannot host the binary image in this repository; Pages i
 intentionally limited to the dashboard. A second storage provider would create
 unneeded account, synchronization and provenance work for the current artifact.
 GitHub Releases keeps source revision, checksums and download location together.
+
+## First publication result
+
+After the owner approved D10 in ADR-0104, the draft was retargeted to licensed
+source commit `b474b1088ee4c98d64ab3985b731203cf94fc1ac`, retaining the
+original tested image built from `e24e452399621607a8386db582e5776bd66994da`.
+All ten final assets were hashed locally, compared with GitHub's digests and
+fully downloaded for verification before publication. The public tag and
+checksum route were then verified. See [H13 release evidence](../evidence/H13-github-release.md).

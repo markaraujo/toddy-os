@@ -18,6 +18,7 @@ Foundation G1 passed in QEMU · Awaiting owner testing · Desktop and agent pend
 - [Development handoff](docs/DEVELOPMENT.md)
 - [Owner testing guide](docs/FOUNDATION-TESTING.md)
 - [Fresh foundation rebuild](docs/FRESH-BUILD.md)
+- [Download the foundation prerelease](https://github.com/markaraujo/toddy-os/releases/tag/v0.1.0-foundation.1)
 - [Major delivery releases](docs/RELEASES.md)
 - [Build procedure](docs/BUILD.md)
 - [Recovery checkpoints](docs/RECOVERY.md)

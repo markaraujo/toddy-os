@@ -8,6 +8,12 @@ in this ISO. The owner requested testing after H13 before any B story begins.
 
 ## Artifact and verification
 
+The first public [foundation prerelease](https://github.com/markaraujo/toddy-os/releases/tag/v0.1.0-foundation.1)
+contains the same ISO and a release-specific SHA256SUMS. Download its ten assets
+into one directory and run `sha256sum -c SHA256SUMS`. The command below uses the
+local owner-testing export path; when using a downloaded ISO, set `toddy_iso` to
+its absolute path instead. See [publication evidence](evidence/H13-github-release.md).
+
 The verified owner-testing export is outside Git at:
 
 ```text

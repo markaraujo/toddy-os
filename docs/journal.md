@@ -979,3 +979,12 @@ documentation/artwork, with third-party terms preserved. Scoped license files,
 attribution guidance and ADR-0104 now record D10. The original tested ISO hash
 and G1 result remain unchanged. Retarget the GitHub draft to a source commit
 containing these grants before publishing; B01 approval remains a separate gate.
+
+## 2026-11-07 — Public foundation prerelease verified
+
+Published v0.1.0-foundation.1 with ten assets and release-specific checksums.
+The tag points to the licensed source commit; the unchanged ISO remains bound to
+its original tested build commit. GitHub asset digests/sizes, full draft downloads,
+public checksum download, public ISO route and tag commit were verified. This is a
+VM-only command-line G1 prerelease. B01-B13 remain unstarted until separate owner
+approval; G2 and physical hardware are pending.
