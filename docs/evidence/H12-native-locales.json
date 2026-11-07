@@ -1,0 +1,267 @@
+{
+  "complete": true,
+  "token": "8f511bf6dfc249559b7704f9444cc2c0",
+  "firmware": "bios",
+  "medium": "cdrom",
+  "offline": true,
+  "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+  "iso_bytes": 1095000064,
+  "validation_only": false,
+  "physical_hardware_tested": false,
+  "container_image": "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf",
+  "qemu_arguments": [
+    "qemu-system-x86_64",
+    "-enable-kvm",
+    "-machine",
+    "q35",
+    "-cpu",
+    "qemu64",
+    "-smp",
+    "2",
+    "-m",
+    "4096",
+    "-display",
+    "none",
+    "-serial",
+    "unix:/work/serial.sock,server=on,wait=on",
+    "-monitor",
+    "none",
+    "-no-reboot",
+    "-object",
+    "rng-random,id=rng0,filename=/dev/urandom",
+    "-device",
+    "virtio-rng-pci,rng=rng0",
+    "-nic",
+    "none",
+    "-drive",
+    "file=/media/toddy.iso,media=cdrom,readonly=on,format=raw",
+    "-boot",
+    "d"
+  ],
+  "probe_sha256": "27a8c929180dea6ceca963409e7d48226185959875ab161e6461e94a1fc272d2",
+  "probe_profile": "regex",
+  "commit": "d0eb6e44d7f161640d2b7ed6f129cb09eddab6ae",
+  "container_id": "02d0ca47e054bfcd096abf4e412b8e91b437c65195ddcc65663621c0d5467e55",
+  "native_report": {
+    "all_cases_pass": false,
+    "decision": "ADR-0037",
+    "firmware": "bios",
+    "known_failures": [
+      {
+        "program": "gawk",
+        "scope": "greek-utf8"
+      },
+      {
+        "program": "gawk",
+        "scope": "greek-single-byte"
+      },
+      {
+        "program": "bash",
+        "scope": "greek-single-byte"
+      }
+    ],
+    "real_console_login": true,
+    "required_pt_en_cases_pass": true,
+    "results": [
+      {
+        "exit": 0,
+        "expected_stdout_hex": "7461736b0a",
+        "locale": "en_US.UTF-8",
+        "passed": true,
+        "program": "grep",
+        "scope": "required-english",
+        "stderr": "",
+        "stdout_hex": "7461736b0a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "7461736b0a",
+        "locale": "en_US.UTF-8",
+        "passed": true,
+        "program": "sed",
+        "scope": "required-english",
+        "stderr": "",
+        "stdout_hex": "7461736b0a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "7461736b0a",
+        "locale": "en_US.UTF-8",
+        "passed": true,
+        "program": "gawk",
+        "scope": "required-english",
+        "stderr": "",
+        "stdout_hex": "7461736b0a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "7461736b0a",
+        "locale": "en_US.UTF-8",
+        "passed": true,
+        "program": "bash",
+        "scope": "required-english",
+        "stderr": "",
+        "stdout_hex": "7461736b0a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "61c3a7c3a36f0a",
+        "locale": "pt_BR.UTF-8",
+        "passed": true,
+        "program": "grep",
+        "scope": "required-portuguese",
+        "stderr": "",
+        "stdout_hex": "61c3a7c3a36f0a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "61c3a7c3a36f0a",
+        "locale": "pt_BR.UTF-8",
+        "passed": true,
+        "program": "sed",
+        "scope": "required-portuguese",
+        "stderr": "",
+        "stdout_hex": "61c3a7c3a36f0a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "61c3a7c3a36f0a",
+        "locale": "pt_BR.UTF-8",
+        "passed": true,
+        "program": "gawk",
+        "scope": "required-portuguese",
+        "stderr": "",
+        "stdout_hex": "61c3a7c3a36f0a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "61c3a7c3a36f0a",
+        "locale": "pt_BR.UTF-8",
+        "passed": true,
+        "program": "bash",
+        "scope": "required-portuguese",
+        "stderr": "",
+        "stdout_hex": "61c3a7c3a36f0a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "cf820a",
+        "locale": "en_US.UTF-8",
+        "passed": true,
+        "program": "grep",
+        "scope": "greek-utf8",
+        "stderr": "",
+        "stdout_hex": "cf820a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "cf820a",
+        "locale": "en_US.UTF-8",
+        "passed": true,
+        "program": "sed",
+        "scope": "greek-utf8",
+        "stderr": "",
+        "stdout_hex": "cf820a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "cf820a",
+        "locale": "en_US.UTF-8",
+        "passed": false,
+        "program": "gawk",
+        "scope": "greek-utf8",
+        "stderr": "",
+        "stdout_hex": ""
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "cf820a",
+        "locale": "en_US.UTF-8",
+        "passed": true,
+        "program": "bash",
+        "scope": "greek-utf8",
+        "stderr": "",
+        "stdout_hex": "cf820a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "f20a",
+        "locale": "el_GR.iso88597",
+        "passed": true,
+        "program": "grep",
+        "scope": "greek-single-byte",
+        "stderr": "",
+        "stdout_hex": "f20a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "f20a",
+        "locale": "el_GR.iso88597",
+        "passed": true,
+        "program": "sed",
+        "scope": "greek-single-byte",
+        "stderr": "",
+        "stdout_hex": "f20a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "f20a",
+        "locale": "el_GR.iso88597",
+        "passed": false,
+        "program": "gawk",
+        "scope": "greek-single-byte",
+        "stderr": "",
+        "stdout_hex": ""
+      },
+      {
+        "exit": 1,
+        "expected_stdout_hex": "f20a",
+        "locale": "el_GR.iso88597",
+        "passed": false,
+        "program": "bash",
+        "scope": "greek-single-byte",
+        "stderr": "",
+        "stdout_hex": ""
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "cf820a",
+        "locale": "en_US.UTF-8",
+        "passed": true,
+        "program": "gawk-existing-gnu-matchers",
+        "scope": "greek-utf8",
+        "stderr": "",
+        "stdout_hex": "cf820a"
+      },
+      {
+        "exit": 0,
+        "expected_stdout_hex": "f20a",
+        "locale": "el_GR.iso88597",
+        "passed": true,
+        "program": "gawk-existing-gnu-matchers",
+        "scope": "greek-single-byte",
+        "stderr": "",
+        "stdout_hex": "f20a"
+      }
+    ],
+    "scope": "Final live console text-consumer probes; known Greek limitations preserved",
+    "token": "8f511bf6dfc249559b7704f9444cc2c0"
+  },
+  "container_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-11-07T13:43:13.573259031Z",
+    "FinishedAt": "2026-11-07T13:43:30.427323063Z"
+  },
+  "media_unchanged": true,
+  "elapsed_seconds": 17.536023556021973,
+  "serial_sha256": "8ee6bfc9f97b3fcbe7b9801eacb007b0a90015d4dfe20794878b304d51bedbc5",
+  "workspace": ".local/vm/live-tests/bios-cdrom-nafh2mnn"
+}
