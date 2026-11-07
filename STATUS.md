@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 10:23 UTC
+Last verified: 2026-11-07 10:29 UTC
 
 Verified:
 
@@ -26,7 +26,7 @@ Verified:
 - Verified paired cold checkpoint at the 124-package boundary.
 - Independent Linux 7.1.8 native build and BIOS/UEFI diagnostic boots passed, including actual module insertion/removal and namespace creation; no final kernel package, full foundation boot or ISO acceptance.
 
-Running: Corrected Berkeley driver 1107192 remains live in recovery, block 25/27, Recd002.c, zero FAIL entries and no terminal exits. The separate exact terminal-qualification path is prepared and refuses the live/focused runs without changing full-source metadata (ADR-0087). Its complete positive result and production integration remain unverified; the production handoff retains its strict gate. H07 stays 124/126 and APT is gated.
+Running: Corrected Berkeley driver 1107192 is live in recovery, block 25/27, Recd003.i, zero FAIL entries and no terminal exits. Private final-review preflight verified all 483 Tcl and 460 native seed files without changing active inputs. Missing shared review modules/frozen patch are a confirmed deferred deployment; sync them only after actual termination (ADR-0087). Exact full qualification and production integration remain unverified; H07 stays 124/126 and APT is gated.
 
 Remaining:
 

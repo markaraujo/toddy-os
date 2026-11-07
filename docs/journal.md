@@ -707,3 +707,18 @@ portable manifest integration; recorded that concrete remaining build defect
 instead of claiming the current recovery profile is a verified fresh rebuild.
 At observation the full suite was in Recd002.c, recovery 25/27, zero FAIL. H07
 remains 124/126, with APT and all final closure/checkpoint requirements pending.
+
+
+### 2026-11-07 10:29 UTC — Verify deferred review dependencies privately
+
+Confirmed the shared build-input deployment lacks the later frozen repmgr007
+patch/lock row and new review modules. Preserved that active-input boundary.
+A private reference preflight using committed metadata and verified patch bytes
+passed all 483 Tcl and 460 native seed comparisons without modifying shared
+archives or the active fixture. The documented quiescent sync remains the exact
+next deployment step after genuine termination. See ADR-0087 for raw hashes.
+
+The full producer remains live at Recd003.i, recovery 25/27, zero FAIL and no
+terminal exits. No complete positive qualification or production nomination has
+occurred; H07 is still 124/126. Fresh-build portability remains implementation
+work, and full release acceptance remains unachieved.

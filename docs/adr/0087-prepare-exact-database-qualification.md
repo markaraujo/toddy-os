@@ -92,3 +92,35 @@ After genuine terminal completion, inspect actual diagnostics first. The
 prepared qualification command and its remaining production boundary are in
 docs/RECOVERY.md. If the raw suite succeeds instead, use the existing strict
 success path; do not manufacture a failed-summary qualification.
+
+
+## Actual final-review dependency preflight
+
+Read-only inspection confirmed that the shared deployed input set predates the
+repmgr007 patch and the new review/qualification modules. The three older DB
+source inputs are present and match their deployed locks; the 653-byte
+repmgr007 archive patch and its lock row are absent there. This is the deferred
+quiescent deployment already required by recovery policy, not an authentication
+or network blocker and not evidence that the active test is stalled.
+
+To validate the final-review dependency chain without updating active shared
+inputs, scripts/host/probe_bdb_review_inputs.py creates a root-private metadata/
+source-reference directory. It transfers the current frozen public locks and
+verified local patch bytes, refers to existing immutable archives by private
+links, independently extracts/patches the Tcl reference and compares it with
+the running fixture's immutable input manifest. It also verifies all native
+compiled checkpoint entries. No database cases or original-source writes occur.
+
+Actual result: all 483 Tcl files and 460 native seed files match. The full input
+manifest remains 336abd7ca1442e5102249da2f774b30326e06d268cd2b16b65fc81e8c333e6f9;
+shared source archives are unchanged and the deferred patch remains absent from
+the shared location. Its verified private bytes have SHA-256
+7e5bccd45146a7bc3230da2595207bd0c2919a5e565a26eade8aba0b64ba54df.
+Native preflight report SHA-256:
+432eb23619a42d72bd8779be0e16744df594230efdab5a77987d416a5a95d32a.
+
+After the complete standard producer is genuinely terminal and other jobs are
+quiescent, sync the committed input set with scripts/host/sync_build.py before
+using the prepared guest CLI. That receiver transfers the missing frozen patch,
+its lock and the new modules. Do not run an incomplete deployed verifier or
+synchronize the active suite merely to remove this known deployment gap.

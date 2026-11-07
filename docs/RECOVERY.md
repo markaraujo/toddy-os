@@ -1393,3 +1393,20 @@ not an accepted record. Do not overwrite existing records or normalize a raw
 exit to zero. A changed assertion/diagnostic profile needs fresh source-backed
 investigation. Portable fresh-build runner/diagnostic handling is still required
 before H07 acceptance; the current recovery profile pins measured inputs.
+
+
+### Verified final-review source availability
+
+The shared /opt/toddy-build input set still lacks db_standard_review.py and
+db_standard_qualify.py; /mnt/lfs/sources lacks the frozen repmgr007 patch. This
+is an expected deferred deployment, confirmed by read-only inspection. After
+actual full-run termination and quiescence, `python3 scripts/host/sync_build.py`
+transfers the committed modules, supplemental lock and missing frozen patch.
+Do not attempt the prepared guest CLI before that sync, and do not sync early.
+
+While the suite remains live, `python3 scripts/host/probe_bdb_review_inputs.py`
+verified the exact reference privately: 483 Tcl files and 460 compiled seed
+files match, with no shared archive or active source modifications. Retained
+reference: /mnt/lfs/tmp/db-review-inputs-gb5tx0go; raw report SHA-256
+432eb23619a42d72bd8779be0e16744df594230efdab5a77987d416a5a95d32a.
+This is source/provenance readiness, not completion of the native suite.
