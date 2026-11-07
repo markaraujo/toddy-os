@@ -25,5 +25,19 @@
     "original_image_unchanged": true,
     "original_sha256": "c2f4e7e55b0ee33c181ada80b065f9f8a58633c9806e8bd3353253c68324f268",
     "fixture": "/mnt/lfs/sources/stage/h11-magic-negative-grydjv6r"
+  },
+  "preservation": {
+    "relocated": {
+      "/mnt/lfs/sources/stage/h11-release-root": "/mnt/lfs/sources/recovery/h11-magic-marker-20261107/h11-release-root",
+      "/mnt/lfs/sources/stage/h11-release-root-evidence": "/mnt/lfs/sources/recovery/h11-magic-marker-20261107/h11-release-root-evidence"
+    },
+    "hashes": {
+      "assembly.json": "b00f4123b9fe3c5f3e60df1ee16880825bef5c17a7e0a71fd5e60a9542c44602",
+      "19-key-marker-review.json": "431b58ca153e5ed9858f78fc841bc944bffc11e1062aba8b27860d8d7263296a",
+      "magic-source-regression.json": "2932f8c0e1a7c771bf799618ff15a3d4dee0d1fc8cf2729659590e69a5d81e93",
+      "h11-release-driver.pid": "11e4ffa6fe1cc991e8852dedd7ffa22a9de90fb60cd258a2c79b216533cf7686",
+      "h11-release-driver.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "h11-release-launch.log": "625152492457d4c934219e6b821a2fe5e120a6dd686ddfcd4fc9498ae650c81e"
+    }
   }
 }
