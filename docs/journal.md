@@ -1482,3 +1482,14 @@ end, changed inputs and nonzero exit perform no handoff. The runner now records
 the optional Phase 2 source-lock hash without changing H recipes or evidence.
 make check passed 217 tests. Driver result alone is not milestone acceptance;
 actual package/marker/postconditions remain mandatory before further dispatch.
+
+
+## 2026-11-07 — Native Node/Pi and descriptor-safe compiler boundary
+
+Node source build completed once. Install committed; initial missing-procfs
+postcheck failed, then the unchanged postcheck passed in corrected native context
+without reinstall. Preserve original 0/1 and separate corrected 0/0 records.
+Native Pi 1.5.0: 11 cases passed, 0.643 s, peak child RSS 65,912 KiB; JS framing
+also passed. Fixed an inherited writable lock FD gap; actual native FD/path/
+network/compile and parent-lock barrier proof passed. No optimized transaction
+path enabled. Next: native GI/PyGObject/async bridge, then installer no-write spike.

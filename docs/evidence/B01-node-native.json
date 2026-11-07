@@ -1,0 +1,35 @@
+{
+  "b01-node-bootstrap-install": {
+    "kind": "failed",
+    "started": "2026-11-07T23:03:43.989718+00:00",
+    "finished": "2026-11-07T23:04:07.060691+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "recipe_sha256": "20c64af30f9aa54f3695e48f9751fd78c9655e81589abaa994f2ec2ddad1b0c5",
+    "postcheck_sha256": "114cb3cc44a85345a2d03ac48bac0bc2ec9816b1a7744ebfd6f8ec940b18ce2c",
+    "changed_paths": 3505,
+    "log_sha256": "aea180fac78ffd220013f9997571aa492b22544dfcb8f095ddeb9496631454f9",
+    "phase_2_source_lock_sha256": "4ecf3b64b5c3ed1e2bb5441697a2c0002da96eeef2b5694f013e6da04deec52f"
+  },
+  "b01-node-native-context": {
+    "kind": "success",
+    "started": "2026-11-07T23:09:43.959267+00:00",
+    "finished": "2026-11-07T23:09:52.626365+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "recipe_sha256": "a4b6a1c2fe54e4468d75207f81461de40ecef1a48465e2e2ad4569c9e9abe7c2",
+    "postcheck_sha256": "114cb3cc44a85345a2d03ac48bac0bc2ec9816b1a7744ebfd6f8ec940b18ce2c",
+    "changed_paths": 0,
+    "log_sha256": "3d3b813d8bfe97dff70f020adc2b23d7127b7e18ce5785c766428f0bebb470d5",
+    "phase_2_source_lock_sha256": "4ecf3b64b5c3ed1e2bb5441697a2c0002da96eeef2b5694f013e6da04deec52f"
+  },
+  "package": {
+    "name": "nodejs",
+    "version": "24.19.0-1+toddy1",
+    "archive_sha256": "51c69c2f4eff6fb5473432f24f78b0140346aa50f9aa0213cd0381dcf40fa917",
+    "installed": true
+  },
+  "node_binary_sha256": "7a4aa361ae89223b56630874c6151b276956cad68acc0773d0fffb96c2b78b84",
+  "build_lock_bytes": 0,
+  "scope": "Initial committed install/failed procfs-context check preserved; corrected postcheck only passed without reinstall"
+}

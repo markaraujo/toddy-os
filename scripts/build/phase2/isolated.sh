@@ -25,6 +25,9 @@ export TODDY_INPUT=$input TODDY_WORK=$work TODDY_UID=$uid TODDY_GID=$gid
 # inputs are exposed; no guest /root, signing material, sockets or host home.
 exec unshare --mount --pid --net --ipc --fork /bin/bash -s -- "$@" <<'SANDBOX'
 set -euo pipefail
+# The outer unshare parent retains the flock. Never expose its writable lock FD
+# to source/compiler processes, which could otherwise write/unlock it.
+exec 9>&-
 mount --make-rprivate /
 root=$(mktemp -d /run/toddy-build-root.XXXXXX)
 trap 'result=$?; cd /; umount -R "$root"; rmdir "$root"; exit "$result"' EXIT

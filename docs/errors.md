@@ -1087,3 +1087,18 @@ The next complete run must still pass all 50 cases together.
   production authorization check is weakened. Initial authorization commit was
   published before this test failure was reviewed; corrected verification follows.
 - Verification: make check, all 201 tests passed after this fixture-only correction.
+
+
+## 2026-11-07 — Node postcheck procfs context and inherited lock descriptor
+
+Node compile/install recipe passed; postcheck failed because a chroot without
+procfs reports argv0 for process.execPath. Reconciled the committed package/hash,
+mounted native kernel filesystems and ran unchanged postcheck once: passed 0/0,
+zero payload changes. Original failed marker retained, no reinstall/rebuild.
+
+Additional namespace FD inspection found the original inherited writable runner
+lock FD9. Path-denial coverage had missed descriptor authority. Closed FD9 in the
+namespace child while retaining the outer parent's lock; actual barrier/FD/path/
+network/compile probe passed after one correction. Original build receipt hashes
+remain historical, not new-harness optimized cache proof. Full-root native
+transactions remain enabled. Native Pi's 11 cases and JS framing passed afterward.

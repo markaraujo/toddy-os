@@ -1,0 +1,61 @@
+{
+  "scope": "Pi 1.5.0 deterministic fixture; no live API/local model",
+  "node": "v24.19.0",
+  "uid": 101,
+  "cases": [
+    {
+      "case": "pi-fixture-tool-roundtrip",
+      "result": "passed"
+    },
+    {
+      "case": "cancel-pending-tool",
+      "result": "passed"
+    },
+    {
+      "case": "duplicate-json-key",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "unsupported-version",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "unknown-field",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "out-of-run-result",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "invalid-utf8",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "oversized-frame",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "truncated-frame",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "disconnect-pending-tool",
+      "result": "passed-disconnect"
+    },
+    {
+      "case": "wrong-tool-result-id",
+      "result": "passed-rejection"
+    }
+  ],
+  "elapsed_seconds": 0.643,
+  "max_child_rss_kib": 65912,
+  "source_bundle": {
+    "sha256": "93498e8406ac3061bc3f9086beac4b0854d81f4648e9c8c107f08eb355e3701b",
+    "bytes": 90787840,
+    "scope": "native Pi fixture inputs; no model/key/grant",
+    "source_commit": "be84556",
+    "engine_lock_sha256": "569e4a0402932dd396f2d429137a63278821e36d263d4282bb439fbb8e9b11f7"
+  },
+  "native_execution": "LFS userspace in isolated KVM builder, no external network; not desktop boot or actual inference"
+}
