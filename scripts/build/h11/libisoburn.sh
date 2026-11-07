@@ -36,17 +36,9 @@ rm /sources/stage/libisoburn/usr/lib/libisoburn.la
 install -Dm644 COPYING /sources/stage/libisoburn/usr/share/doc/libisoburn/copyright
 cp COPYRIGHT AUTHORS README /sources/stage/libisoburn/usr/share/doc/libisoburn/
 cp libisoburn-symlink-metadata.patch /sources/stage/libisoburn/usr/share/doc/libisoburn/
-cat > /sources/stage/libisoburn/usr/share/doc/libisoburn/profile.txt <<'PROFILE'
-Native shared libburn/libisofs stack; no bundled replacement libraries.
-CLI image construction and extraction are the selected release-build path.
-The retained upstream xorriso-tcltk frontend requires optional Tk/wish;
-it is not exercised or advertised as a working GUI in the foundation.
-Jigdo/libjte and libcdio support are disabled. No physical-media test is claimed.
-Embedded MD5 detects accidental corruption; artifact identity uses SHA-256.
-Toddy ADR-0077 probes Glibc sys/xattr.h and restores symlink ownership/times
-without following link destinations; the source patch is retained here.
-PROFILE
+
 INNER
-python3 /opt/toddy-build/scripts/build/stage_package.py libisoburn 1.5.8.pl02-1 \
+python3 /opt/toddy-build/scripts/build/h11/libisoburn-cli-stage.py "$LFS/sources/stage/libisoburn"
+python3 /opt/toddy-build/scripts/build/stage_package.py libisoburn 1.5.8.pl02-2 \
  "$LFS/sources/stage/libisoburn" --depends 'glibc, libburn, libisofs, acl, zlib, readline, ncurses, bash, coreutils, grep, sed, gawk, util-linux' \
  --source libisoburn-1.5.8.pl02.tar.gz --recipe /opt/toddy-build/scripts/build/h11/libisoburn.sh --install

@@ -47,29 +47,47 @@ try:
   assert source.is_file() and not source.is_symlink() and helper.digest(source)==row['sha256']
   destination.parent.mkdir(parents=True,exist_ok=True)
   if not destination.exists():shutil.copy2(source,destination)
+ null=image/'dev/null';assert null.stat().st_rdev==os.makedev(1,3);null.unlink()
  first=helper.generate_info_index(backend,image,selected)
+ assert first['transient_null_created_and_removed'] and not null.exists()
  data=(image/'usr/share/info/dir').read_bytes()
- readers={}
- for manual in ('libc','coreutils','bash','texinfo'):
-  args=['chroot',str(image),'/usr/bin/info','--directory=/usr/share/info','--where',manual]
-  result=subprocess.run(args,env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C','HOME':'/root'},text=True,capture_output=True,timeout=30)
-  assert result.returncode==0,(manual,result.stdout,result.stderr)
-  assert result.stdout.strip()=='/usr/share/info/'+manual+'.info',result.stdout
-  node=subprocess.run(['chroot',str(image),'/usr/bin/info','--directory=/usr/share/info',
-   '--output=-','--node=Top',manual],env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C','HOME':'/root'},capture_output=True,timeout=30)
-  assert node.returncode==0 and len(node.stdout)>100,(manual,node.returncode,node.stderr)
-  readers[manual]={'where':result.stdout.strip(),'exit':node.returncode,'bytes':len(node.stdout),
-   'sha256':hashlib.sha256(node.stdout).hexdigest()}
- # Traverse actual generated menu entries whose labels differ from filenames.
- menu_readers={}
- for menu in ('Bash','Coreutils'):
-  result=subprocess.run(['chroot',str(image),'/usr/bin/info','--directory=/usr/share/info',
-   '--file=dir','--output=-',menu],env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C','HOME':'/root'},
-   capture_output=True,timeout=30)
-  assert result.returncode==0 and len(result.stdout)>100,(menu,result.returncode,result.stderr)
-  assert hashlib.sha256(result.stdout).hexdigest()==readers[menu.lower()]['sha256']
-  menu_readers[menu]={'exit':result.returncode,'resolved_document_matches':menu.lower()}
+ with helper.temporary_null(image):
+  readers={}
+  for manual in ('libc','coreutils','bash','texinfo'):
+   args=['chroot',str(image),'/usr/bin/info','--directory=/usr/share/info','--where',manual]
+   result=subprocess.run(args,env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C','HOME':'/root'},text=True,capture_output=True,timeout=30)
+   assert result.returncode==0,(manual,result.stdout,result.stderr)
+   assert result.stdout.strip()=='/usr/share/info/'+manual+'.info',result.stdout
+   node=subprocess.run(['chroot',str(image),'/usr/bin/info','--directory=/usr/share/info',
+    '--output=-','--node=Top',manual],env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C','HOME':'/root'},capture_output=True,timeout=30)
+   assert node.returncode==0 and len(node.stdout)>100,(manual,node.returncode,node.stderr)
+   readers[manual]={'where':result.stdout.strip(),'exit':node.returncode,'bytes':len(node.stdout),
+    'sha256':hashlib.sha256(node.stdout).hexdigest()}
+  # Traverse actual generated menu entries whose labels differ from filenames.
+  menu_readers={}
+  for menu in ('Bash','Coreutils'):
+   result=subprocess.run(['chroot',str(image),'/usr/bin/info','--directory=/usr/share/info',
+    '--file=dir','--output=-',menu],env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C','HOME':'/root'},
+    capture_output=True,timeout=30)
+   assert result.returncode==0 and len(result.stdout)>100,(menu,result.returncode,result.stderr)
+   assert hashlib.sha256(result.stdout).hexdigest()==readers[menu.lower()]['sha256']
+   menu_readers[menu]={'exit':result.returncode,'resolved_document_matches':menu.lower()}
  negatives=[]
+ assert not null.exists()
+ try:
+  with helper.temporary_null(image):
+   assert null.stat().st_rdev==os.makedev(1,3)
+   raise RuntimeError('controlled null cleanup failure')
+ except RuntimeError as error:assert str(error)=='controlled null cleanup failure'
+ assert not null.exists()
+ for kind in ('regular','redirected'):
+  if kind=='regular':null.write_text('preserve unexpected device input\n')
+  else:null.symlink_to(base/'outside-device')
+  try:
+   with helper.temporary_null(image):raise AssertionError('Unexpected null accepted')
+  except ValueError as error:negatives.append({'case':kind+' null device','reason':str(error)})
+  assert null.exists() or null.is_symlink()
+  null.unlink()
  def refuse(case,entries):
   before={str(path.relative_to(image/'usr/share/info')):helper.digest(path)
    for path in (image/'usr/share/info').rglob('*') if path.is_file()}
@@ -93,6 +111,7 @@ try:
  partial=directory/'dir-interrupted';partial.write_text('public interrupted index\n');refuse('partial-index-output',selected);partial.unlink()
  second=helper.generate_info_index(backend,image,selected)
  assert (directory/'dir').read_bytes()==data
+ assert second['transient_null_created_and_removed'] and not null.exists()
  assert helper.digest(root/'usr/share/info/dir')==source_index_sha and helper.digest(root/'var/lib/dpkg/status')==status_sha
  report={'first_generation':first,'second_sha256':second['sha256'],'two_generations_byte_identical':True,
   'native_readers':readers,'native_menu_readers':menu_readers,'negative_cases':negatives,'document_providers':sorted({row['name'] for row in providers.values()}),

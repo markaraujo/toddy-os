@@ -3,7 +3,10 @@ source /opt/toddy-build/scripts/build/h06/common.sh
 python3 /opt/toddy-build/scripts/build/h10/require_media_tools.py
 chroot_run <<'INNER'
 set -euo pipefail
-[[ $(dpkg-query -W -f='${Status} ${Version}' libisoburn) == 'install ok installed 1.5.8.pl02-1' ]]
+[[ $(dpkg-query -W -f='${Status} ${Version}' libisoburn) == 'install ok installed 1.5.8.pl02-2' ]]
+for path in /usr/bin/xorriso-tcltk /usr/share/info/xorriso-tcltk.info /usr/share/man/man1/xorriso-tcltk.1; do
+ [[ ! -e $path && ! -L $path ]]
+done
 [[ $(pkg-config --modversion libisoburn-1) == 1.5.8 ]]
 dpkg-query -S /usr/lib/libisoburn.so /usr/include/libisoburn/libisoburn.h
 fixture=$(mktemp -d /tmp/toddy-libisoburn.XXXXXX)

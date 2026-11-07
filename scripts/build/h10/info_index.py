@@ -3,6 +3,7 @@
 The caller must pass the accepted package inventory, after metadata closure has
 removed shared-index ownership. No installed-target or existing index is edited.
 """
+from contextlib import contextmanager
 import hashlib
 import os
 from pathlib import Path
@@ -13,6 +14,40 @@ import subprocess
 def digest(path):
     with path.open('rb') as stream:
         return hashlib.file_digest(stream, 'sha256').hexdigest()
+
+
+@contextmanager
+def temporary_null(image):
+    """Supply only the null device required by native install-info, then remove it."""
+    directory = image / 'dev'
+    if (directory.resolve() != directory or not directory.is_dir()
+            or directory.stat().st_dev != image.stat().st_dev
+            or directory.stat().st_uid or directory.stat().st_gid
+            or directory.stat().st_mode & 0o022):
+        raise ValueError('Info generation requires a protected physical image /dev')
+    path = directory / 'null'
+    created = None
+    if not path.exists() and not path.is_symlink():
+        os.mknod(path, stat.S_IFCHR | 0o600, os.makedev(1, 3))
+        info = path.lstat()
+        created = (info.st_dev, info.st_ino)
+    try:
+        info = path.lstat()
+        if (not stat.S_ISCHR(info.st_mode) or info.st_rdev != os.makedev(1, 3)
+                or info.st_uid or info.st_gid or info.st_nlink != 1):
+            raise ValueError('Refuse an unexpected image /dev/null')
+        if created:
+            path.chmod(0o666)
+        elif stat.S_IMODE(info.st_mode) != 0o666:
+            raise ValueError('Preserve unexpected existing null-device permissions')
+        yield created is not None
+    finally:
+        if created:
+            info = path.lstat()
+            if ((info.st_dev, info.st_ino) != created or not stat.S_ISCHR(info.st_mode)
+                    or info.st_rdev != os.makedev(1, 3)):
+                raise ValueError('Temporary null device changed; preserve it for inspection')
+            path.unlink()
 
 
 def generate_info_index(backend, image, entries):
@@ -63,20 +98,23 @@ def generate_info_index(backend, image, entries):
         raise ValueError('No primary Info documents in accepted inventory')
     operations, no_menu_entry = [], []
     environment = {'PATH': '/usr/bin:/usr/sbin', 'LC_ALL': 'C', 'HOME': '/root'}
-    for virtual in primary:
-        result = subprocess.run(['chroot', str(image), '/usr/bin/install-info',
-                                 '--dir-file=/usr/share/info/dir', virtual],
-                                env=environment, text=True, capture_output=True, timeout=30, umask=0o022)
-        operations.append({'document': virtual, 'exit': result.returncode,
-                           'stdout': result.stdout, 'stderr': result.stderr})
-        if result.returncode:
-            raise ValueError('Native Info generation failed; preserve partial stage: ' + repr(operations[-1]))
-        expected_warning = "install-info: warning: no info dir entry in `" + virtual + "'\n"
-        if (not result.stdout and result.stderr == expected_warning
-                and b'START-INFO-DIR-ENTRY' not in (image / virtual[1:]).read_bytes()):
-            no_menu_entry.append(virtual)
-        elif result.stdout or result.stderr:
-            raise ValueError('Unclassified native Info diagnostics: ' + repr(operations[-1]))
+    # Texinfo 7.3 install-info.c explicitly reopens stdin on NULL_DEVICE.
+    # A full image intentionally has an empty /dev until native boot.
+    with temporary_null(image) as created_null:
+        for virtual in primary:
+            result = subprocess.run(['chroot', str(image), '/usr/bin/install-info',
+                                     '--dir-file=/usr/share/info/dir', virtual],
+                                    env=environment, text=True, capture_output=True, timeout=30, umask=0o022)
+            operations.append({'document': virtual, 'exit': result.returncode,
+                               'stdout': result.stdout, 'stderr': result.stderr})
+            if result.returncode:
+                raise ValueError('Native Info generation failed; preserve partial stage: ' + repr(operations[-1]))
+            expected_warning = "install-info: warning: no info dir entry in `" + virtual + "'\n"
+            if (not result.stdout and result.stderr == expected_warning
+                    and b'START-INFO-DIR-ENTRY' not in (image / virtual[1:]).read_bytes()):
+                no_menu_entry.append(virtual)
+            elif result.stdout or result.stderr:
+                raise ValueError('Unclassified native Info diagnostics: ' + repr(operations[-1]))
     verify_inputs()
     if {'/' + str(path.relative_to(image)) for path in directory.rglob('*')} != {*documents, prefix + 'dir'}:
         raise ValueError('Info generation left unexpected or interrupted outputs')
@@ -94,6 +132,7 @@ def generate_info_index(backend, image, entries):
     finally:
         os.close(descriptor)
     return {'generator': '/usr/bin/install-info', 'generator_sha256': entries[tools[0]]['sha256'],
+            'transient_null_created_and_removed': created_null,
             'input_entries': len(documents), 'primary_documents': len(primary), 'operations': operations,
             'documents_without_menu_entry': no_menu_entry,
             'output': '/usr/share/info/dir', 'sha256': digest(index), 'bytes': len(data),

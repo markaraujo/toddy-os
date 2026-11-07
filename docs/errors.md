@@ -954,3 +954,19 @@ identities from the workstation. Preserve the failed driver/logs, verify the
 transferred baseline hash, and retry the initial generation only after proving
 its output paths remain absent. Full assembly/boot remains pending until the
 actual corrected invocation passes.
+
+## 2026-11-07 — Fresh live root lacked install-info's runtime null device
+
+The corrected baseline transfer succeeded with exact SHA-256
+b4c7eeb9c064fc72fe3dba20f66c9b5bbd2bd925513b4f87155d19911bee3077.
+Full assembly then completed ten stages and failed at info-index because native
+Texinfo explicitly opens /dev/null. The image intentionally has no runtime
+devices. ADR-0097 adds a narrowly scoped temporary null device with verified
+cleanup; actual native generation/readback and failure/refusal checks passed.
+Preserve the failed generation and start a fresh corrected image; do not rebuild
+accepted source packages or mark the original journal successful.
+
+Review also found the optional xorriso-tcltk executable requires absent wish.
+ADR-0098 corrects the package profile while preserving the already-built CLI
+libraries and the unchanged runtime audit. Native revision/roundtrip verification
+and complete image acceptance remain pending until their actual results pass.

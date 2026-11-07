@@ -26,7 +26,7 @@ from compress_root import atomic_json
 from package_backend import PackageBackend
 
 VERSIONS = {'linux-kernel': '7.1.8-1', 'grub': '2.14-1+toddy1', 'mtools': '4.0.50-1',
-            'libburn': '1.5.8-1', 'libisofs': '1.5.8.pl02-1', 'libisoburn': '1.5.8.pl02-1'}
+            'libburn': '1.5.8-1', 'libisofs': '1.5.8.pl02-1', 'libisoburn': '1.5.8.pl02-2'}
 BUILD = Path('/var/log/toddy/build')
 digest = hybrid_media.digest
 
