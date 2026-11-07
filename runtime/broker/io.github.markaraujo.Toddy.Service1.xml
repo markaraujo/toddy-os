@@ -1,0 +1,51 @@
+<node>
+  <interface name="io.github.markaraujo.Toddy.Service1">
+    <method name="GetCapabilities">
+      <arg name="capabilities_json" type="s" direction="out"/>
+    </method>
+    <method name="SubmitTask">
+      <arg name="request_id" type="s" direction="in"/>
+      <arg name="profile_id" type="s" direction="in"/>
+      <arg name="expected_revision" type="s" direction="in"/>
+      <arg name="input_json" type="s" direction="in"/>
+      <arg name="task_id" type="s" direction="out"/>
+    </method>
+    <method name="GetTask">
+      <arg name="task_id" type="s" direction="in"/>
+      <arg name="snapshot_json" type="s" direction="out"/>
+    </method>
+    <method name="RequestCancel">
+      <arg name="task_id" type="s" direction="in"/>
+      <arg name="request_id" type="s" direction="in"/>
+      <arg name="acknowledgement_json" type="s" direction="out"/>
+    </method>
+    <method name="ValidateProfile">
+      <arg name="profile_id" type="s" direction="in"/>
+      <arg name="expected_revision" type="s" direction="in"/>
+      <arg name="candidate_json" type="s" direction="in"/>
+      <arg name="validation_json" type="s" direction="out"/>
+    </method>
+    <method name="ApplyProfile">
+      <arg name="profile_id" type="s" direction="in"/>
+      <arg name="expected_revision" type="s" direction="in"/>
+      <arg name="validated_revision" type="s" direction="in"/>
+      <arg name="result_json" type="s" direction="out"/>
+    </method>
+    <method name="StageProfileBundle">
+      <arg name="profile_id" type="s" direction="in"/>
+      <arg name="expected_revision" type="s" direction="in"/>
+      <arg name="bundle_fd" type="h" direction="in"/>
+      <arg name="validation_json" type="s" direction="out"/>
+    </method>
+    <method name="ExportProfile">
+      <arg name="profile_id" type="s" direction="in"/>
+      <arg name="expected_revision" type="s" direction="in"/>
+      <arg name="export_fd" type="h" direction="out"/>
+    </method>
+    <signal name="TaskChanged">
+      <arg name="task_id" type="s"/>
+      <arg name="sequence" type="t"/>
+      <arg name="snapshot_json" type="s"/>
+    </signal>
+  </interface>
+</node>

@@ -4,13 +4,34 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-G1 passed in QEMU/KVM; foundation prerelease remains accepted and physical hardware validation is pending. Owner explicitly authorized isolated Phase 2 implementation on 2026-11-07 (ADR-0113). B01 accepted-foundation clone inventory is starting; B01–B13 acceptance and G2 remain pending.
+Owner-authorized isolated Phase 2 implementation is active (ADR-0113). B01 cloned/inventoried the accepted foundation, proved native build containment and installed source-built GLib with focused native checks. Native Node compilation is running for the Pi spike; worker protocol fixtures pass on the developer host only. B01 acceptance, B02–B13, G2 and physical hardware validation remain pending.
 
 Foundation: **100%** · Agentic desktop: **0%**
 
 G1: passed · G2: pending · Next: **B01**
 
 No milestone earns credit without completed acceptance evidence.
+
+## Active story: B01 — Freeze the minimal Toddy architecture and delivery slices
+
+The 0% phase total counts completed stories only. B01 is still in progress; its 5 points are not yet counted. Passing this story would raise the phase total to 5%.
+
+Last verified: 2026-11-07T22:24:18.077150+00:00
+
+Verified:
+
+- Read-only-backed disposable KVM clone and native package audit passed.
+- Native isolated compiler/staging/write-denial proof and GLib bootstrap install/postcheck passed.
+- 14 focused GLib/GObject/GDBus cases passed; host-only Pi protocol/tool/cancel fixture passed.
+
+Running: Native Node 24.19.0 source build under isolated unprivileged staging; one guest writer.
+
+Remaining:
+
+- Native Pi and GIO bridge spikes, exact dependency/license/root inventory.
+- Calamares no-write probe, CPU model contract and final B01 budgets/acceptance.
+
+[Acceptance evidence](docs/evidence/B01.md)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |

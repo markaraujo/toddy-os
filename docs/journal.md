@@ -1449,3 +1449,13 @@ unqualified and keep full-root verification. Official SHA-256 files verified the
 BLFS 13.1 GLib/introspection/PyGObject/Node source candidates. GLib bootstrap native
 compile/stage exit zero; focused consumer checks are the next result to assess.
 Repository make check passed 205 tests; no unchanged foundation suite rerun.
+
+
+## 2026-11-07 — Pi worker protocol fixture while native Node compiles
+
+Added exact Pi 1.5.0 npm closure, bounded strict JS/Python framing, one sequential
+broker-facing tool fixture and D-Bus XML candidate. Host-only real-Pi fixture:
+11 cases passed; JS framing 5 groups/Python 6 regressions passed; make check 215
+passed. Native worker/bridge and complete notices still pending. Node source
+build continues under recorded PID/boot/start identity; no second guest writer.
+Status now reports verified B01 slices without awarding milestone credit.

@@ -1,0 +1,65 @@
+{
+  "scope": "Pi 1.5.0 deterministic fixture; no live API/local model",
+  "node": "v24.21.0",
+  "uid": 1000,
+  "cases": [
+    {
+      "case": "pi-fixture-tool-roundtrip",
+      "result": "passed"
+    },
+    {
+      "case": "cancel-pending-tool",
+      "result": "passed"
+    },
+    {
+      "case": "duplicate-json-key",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "unsupported-version",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "unknown-field",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "out-of-run-result",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "invalid-utf8",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "oversized-frame",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "truncated-frame",
+      "result": "passed-rejection"
+    },
+    {
+      "case": "disconnect-pending-tool",
+      "result": "passed-disconnect"
+    },
+    {
+      "case": "wrong-tool-result-id",
+      "result": "passed-rejection"
+    }
+  ],
+  "elapsed_seconds": 0.638,
+  "max_child_rss_kib": 59656,
+  "execution_environment": "developer host fixture only; native Node/Pi acceptance pending",
+  "input_sha256": {
+    "runtime/README.md": "c3de4be14225e7cc9b83f587414ab2c8550c0e50661f7e2a561817e1af8f9ca4",
+    "runtime/broker/io.github.markaraujo.Toddy.Service1.xml": "bc25006ede4359290e874fee26f7a42edef74dc56ace84867249a9b41a5c0810",
+    "runtime/broker/protocol.py": "009b750a09879f2a2ce5bd483f70a59097ab14cfd512009f5986c3a97e54ee93",
+    "runtime/engine/fixture-worker.mjs": "336fdd1b5992f3812b2ed3b77b767fbb07479e038c36d11cb659e4a171582358",
+    "runtime/engine/framing.mjs": "ff6d6adbc22c98ecf06d7e68cefc95ad59afcc79ef5234373564d37b5ab85e8b",
+    "runtime/engine/framing.test.mjs": "557e464de85b94539749faece358f9c791affa173a42cd4fbba86bbf18b222d9",
+    "runtime/engine/package-lock.json": "569e4a0402932dd396f2d429137a63278821e36d263d4282bb439fbb8e9b11f7",
+    "runtime/engine/package.json": "1df19a58baac8ac49da0d9e5a1932367d42b1d1b466ea34144c7ba3ab57985bc",
+    "runtime/engine/spike.py": "eda594d7c592d2704a06d2ea95be9dd6148fdafe17f8fb5a21aff0c7d69ed0e0"
+  }
+}
