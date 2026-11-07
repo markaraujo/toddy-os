@@ -18,6 +18,7 @@ Foundation G1 passed in QEMU · Awaiting owner testing · Desktop and agent pend
 - [Development handoff](docs/DEVELOPMENT.md)
 - [Owner testing guide](docs/FOUNDATION-TESTING.md)
 - [Fresh foundation rebuild](docs/FRESH-BUILD.md)
+- [Major delivery releases](docs/RELEASES.md)
 - [Build procedure](docs/BUILD.md)
 - [Recovery checkpoints](docs/RECOVERY.md)
 - [Milestone stories](stories/README.md)
