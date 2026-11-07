@@ -1037,3 +1037,19 @@ kernel block-node probing while retaining all content/digest/mount checks
 The original normal-boot harness was interrupted after capturing the real early
 failure; its owned container was stopped and its log/result retained. The
 separate diagnostic also terminates failed by design, not a passing USB result.
+
+## 2026-11-07 — Native retest infrastructure and recovery-shell assertion
+
+The first native Systemd namespace test passed, but Glibc's make test tried an
+obsolete AR path during implicit rebuilds. Preserve 49 failed exits and the
+original outputs. ADR-0102 executes the exact expanded upstream command against
+unchanged precompiled tests and byte-identical installed libc/loader. The raw
+report was recovered from a copied overlay after the journal/console lost one
+chunk; its exact original SHA matches and failed cases remain failed.
+
+The first GRUB rescue test reached the actual recovery shell but its harness
+incorrectly expected /proc/1/comm to be bash. Linux names the original executed
+script init (frozen fs/exec.c sets task comm from bprm->filename). Validate the
+actual /proc/1/exe Bash binary instead, retain both expected error/root-absence
+checks, and print the measured executable. The timed-out assertion remains
+failed; repeat the actual menu and failure cases with the corrected probe.

@@ -175,7 +175,8 @@ def main():
                     connection.sendall(b'\x1b[B\r');selected=True
                 if b'Early boot stopped.' in received and b'bash-5.3#' in received and not sent:
                     # Marker is assembled at runtime, so terminal echo cannot satisfy it.
-                    command=("test \"$(cat /proc/1/comm)\" = bash && test ! -e /run/toddy/live-session "
+                    command=("printf 'TODDY_RECOVERY_PID1=%s\\n' \"$(readlink /proc/1/exe)\"; "
+                             "test \"$(readlink /proc/1/exe)\" = /usr/bin/bash && test ! -e /run/toddy/live-session "
                              "&& test ! -e /newroot/usr/lib/systemd/systemd "
                              "&& printf 'TODDY_RECOVERY_%s\\n' 'OK_"+token+"'\n")
                     connection.sendall(command.encode());sent=True

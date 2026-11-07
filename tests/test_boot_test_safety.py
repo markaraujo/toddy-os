@@ -80,6 +80,10 @@ class BootTestSafety(unittest.TestCase):
             boot.qemu_arguments('uefi', {**payloads, 'unreviewed': b'no'})
         with self.assertRaises(ValueError):
             boot.qemu_arguments('unknown', payloads)
+        evidence_args = boot.qemu_arguments('bios', {**payloads, 'toddy.boot-common': b'public fixture'}, True)
+        self.assertIn('file:/work/native-evidence.log', evidence_args)
+        self.assertEqual(evidence_args.count('-serial'), 2)
+        self.assertNotIn('file:/work/native-evidence.log', boot.qemu_arguments('bios', payloads))
 
 
 if __name__ == '__main__':

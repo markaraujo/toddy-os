@@ -1,0 +1,528 @@
+{
+  "scope": "Failed first native retry and exact raw-report recovery, not H12 acceptance",
+  "recovery": {
+    "complete": true,
+    "original_overlay_sha256": "388339fea6994ad7877758fefa4047938ef34cd084c898949394aec5fbcd36ef",
+    "original_report_sha256": "369ba282c246707b545fff696c79c5c36045316447aff1fbddd7e77655b23a2b",
+    "workspace": "/home/marcos-araujo/Repositories/toddy-os/.local/vm/boot-tests/h12-recovered-evidence-ni1rgq3u",
+    "container_id": "a59f8ad9acfc11b014943127c900e0a376dbbfaa0afea47f969413abb8caef81",
+    "container_state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-07T13:34:07.987271776Z",
+      "FinishedAt": "2026-11-07T13:34:20.797800892Z"
+    },
+    "original_overlay_unchanged": true,
+    "recovered_original_report": true,
+    "failed_tests_remain_failed": true
+  },
+  "results": [
+    {
+      "exit": 0,
+      "log_sha256": "e5df36d770abb55c6824300a4f1386f795149d59ab63363614f9ffd745b27273",
+      "passed": true,
+      "seconds": 0.033608810000000044,
+      "test": "systemd-test-namespace",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "0dc83820729550897bde426e2ec76f591570abc1bf7ee629fcc71dfc41fb7c29",
+      "exit": 2,
+      "log_sha256": "a65caf41bd5c98ce1914bb08017c14e117fde6abfbae7425fd484ea58662e150",
+      "passed": false,
+      "seconds": 2.2703580160000003,
+      "test": "debug/tst-fortify-syslog",
+      "test_result": "UNSUPPORTED: debug/tst-fortify-syslog\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "cee1a3b44cccef1200e7c4f68a9d3e798f7e1f36ebb15e00a4be526ba36f3250",
+      "exit": 2,
+      "log_sha256": "d74ea4156525e94a539016430e17980a806af5de7a7ebf88f5f4707e740e64fc",
+      "passed": false,
+      "seconds": 5.009070875000001,
+      "test": "elf/tst-dl-cache-long-path",
+      "test_result": "UNSUPPORTED: elf/tst-dl-cache-long-path\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "1492f5c68dfad778ed49d103edc77d3333b91e85b1304bd3fefc8681b47d2971",
+      "exit": 2,
+      "log_sha256": "7689ee0bb9489a5159f8165da48193d75d0db382b738d85caf72e8108138417f",
+      "passed": false,
+      "seconds": 1.2668512080000003,
+      "test": "elf/tst-dl-cache-old-format",
+      "test_result": "UNSUPPORTED: elf/tst-dl-cache-old-format\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "212844d2ad430b1f5aa43972455c24addeaf0c64bdc8491dfd5d95afbc9c65cb",
+      "exit": 2,
+      "log_sha256": "6fc4874a39af67df319b398a1e2e19143471d7482b77defc1488ffa9f64a6567",
+      "passed": false,
+      "seconds": 0.9152001750000007,
+      "test": "elf/tst-dlopen-self-container",
+      "test_result": "UNSUPPORTED: elf/tst-dlopen-self-container\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "00f5f1a9eae2871954c19218a22959b17a10be8c9e8af8d5a0b4c197ff36db5a",
+      "exit": 2,
+      "log_sha256": "14b5ec38c4826e86b191bf4a78c66b3d468ef5f1b1a0f12a809d235a6dd5a3c8",
+      "passed": false,
+      "seconds": 0.9151267749999992,
+      "test": "elf/tst-dlopen-tlsmodid-container",
+      "test_result": "UNSUPPORTED: elf/tst-dlopen-tlsmodid-container\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "5f519299ab037ca78fd20ba1c2e93577d1cc5d540bbe1ed39277a824857ad3bc",
+      "exit": 2,
+      "log_sha256": "ddd9dfeaec7c2c58d5b1b7c2e424b57f94dd6c78d457bc2efc9fc95e141fdafb",
+      "passed": false,
+      "seconds": 0.9151682050000005,
+      "test": "elf/tst-glibc-hwcaps-2-cache",
+      "test_result": "UNSUPPORTED: elf/tst-glibc-hwcaps-2-cache\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "4db5441466aae0743d6d52c0c151b89236f8ead8c782f068b97f7472bd045223",
+      "exit": 2,
+      "log_sha256": "423095f8b83144eb519f859e1b0e3ea0b346e03562eb2bce9bb71f55f11acba0",
+      "passed": false,
+      "seconds": 0.9151044249999991,
+      "test": "elf/tst-glibc-hwcaps-cache",
+      "test_result": "UNSUPPORTED: elf/tst-glibc-hwcaps-cache\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "b62dc07d8ebb2fb99f167e3230ecfdd4acf73edcd682784cd1ae3633cc8136e8",
+      "exit": 2,
+      "log_sha256": "c35b106cdfba747ca7ef69e74bf388a08a8e871cd5c65776f3d80a2a89097820",
+      "passed": false,
+      "seconds": 0.9163087149999996,
+      "test": "elf/tst-glibc-hwcaps-prepend-cache",
+      "test_result": "UNSUPPORTED: elf/tst-glibc-hwcaps-prepend-cache\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "c33f5c5317689e37001594d7a4665c5cdbf0ec69a993d2bd3fedacac87808445",
+      "exit": 2,
+      "log_sha256": "ff4fd02173a50f8119a68a9774d4c8164b58ab363883d5194c2607890a710ce5",
+      "passed": false,
+      "seconds": 0.9668539749999994,
+      "test": "elf/tst-ldconfig-bad-aux-cache",
+      "test_result": "UNSUPPORTED: elf/tst-ldconfig-bad-aux-cache\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "bafdd1c96ed587538435b5cb52daa2e2bd904f7b97a997cc317849c19c346b51",
+      "exit": 2,
+      "log_sha256": "3d71f053286bf77a2976a3999f12d5301f069f8befb8f3cd48995170a43d084f",
+      "passed": false,
+      "seconds": 1.0156725059999978,
+      "test": "elf/tst-ldconfig-cache",
+      "test_result": "UNSUPPORTED: elf/tst-ldconfig-cache\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "51b5c01894266f710f5a63d712889feabf17f0fa83cbd9d29468472d7b44057b",
+      "exit": 2,
+      "log_sha256": "3f87c70921f0d2900fbc15a4ad8a61c7a44e7c966b86078cb420f96fbee9bc93",
+      "passed": false,
+      "seconds": 0.9657280549999996,
+      "test": "elf/tst-ldconfig-ld_so_conf-update",
+      "test_result": "UNSUPPORTED: elf/tst-ldconfig-ld_so_conf-update\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "1ba31c7603a57ea93cdfff59f445b9a85b616ceb3b5af49cbbdf9db8e6edb9d1",
+      "exit": 2,
+      "log_sha256": "826135f382fc2715a54ee7be2a9561a1ffb64d4291344ee81212717a163e6b9c",
+      "passed": false,
+      "seconds": 1.0165568759999992,
+      "test": "elf/tst-pldd",
+      "test_result": "UNSUPPORTED: elf/tst-pldd\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "5c57e4530dde0a7221ddfa8d3771da810513d30dd435cf0f9d0d43c7a35f954c",
+      "exit": 2,
+      "log_sha256": "8501b9409f138b6357a2c45f449fa2b7a35e171f7f18a861a2ce45e2ff261d40",
+      "passed": false,
+      "seconds": 1.0156395949999997,
+      "test": "elf/tst-preload-pthread-libc",
+      "test_result": "UNSUPPORTED: elf/tst-preload-pthread-libc\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "677d6e34eba17b9169d75e46591495177a221a08015a1fc307b3db0366aeb9af",
+      "exit": 2,
+      "log_sha256": "5fe1ac84ff3f3d05166e21461e33bf890356997c27fcbd98b930997a5af6a872",
+      "passed": false,
+      "seconds": 3.956484188000001,
+      "test": "elf/tst-ptrguard-static-dlopen",
+      "test_result": "UNSUPPORTED: elf/tst-ptrguard-static-dlopen\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "5dc3685b0cc824ca4424d34d71daadfff8654d4d140bc80803b63eab8d59a519",
+      "exit": 2,
+      "log_sha256": "106bbdaac736dbc1bfae49049a82cdf99135b2341bfc7c77eaf235fdb09465d6",
+      "passed": false,
+      "seconds": 1.1656774160000012,
+      "test": "elf/tst-rootdir",
+      "test_result": "UNSUPPORTED: elf/tst-rootdir\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "35db15a65caecb271c5f6adf7c6342c268a6642ebf2a45463a6749addf682075",
+      "exit": 2,
+      "log_sha256": "718128cb8ce4ef14f3dd833ed71cdd5a243874f3e6a9236664e7107db93eafeb",
+      "passed": false,
+      "seconds": 0.9667991059999999,
+      "test": "elf/tst-tunconf1",
+      "test_result": "UNSUPPORTED: elf/tst-tunconf1\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "8ece57eb6f683274d838576fc7f606122f49c1414e156040b661ec5aa59ecca1",
+      "exit": 2,
+      "log_sha256": "89aa6613039926396719c64b9e333d3f707a80110870a0c188ca8dcd828db003",
+      "passed": false,
+      "seconds": 0.8655237639999989,
+      "test": "locale/tst-localedef-path-norm",
+      "test_result": "UNSUPPORTED: locale/tst-localedef-path-norm\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "d27e90caad335290fbbe60e2aa5e0711cb33abdb94a1dd86d1d3a3ade718312f",
+      "exit": 2,
+      "log_sha256": "cf196d74efac73c325a9ee6fb523e290a27defaad8da7b031d4f50d9fef42424",
+      "passed": false,
+      "seconds": 0.1638347600000003,
+      "test": "localedata/tst-localedef-hardlinks",
+      "test_result": "UNSUPPORTED: localedata/tst-localedef-hardlinks\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "2194e1532afb86aa62fe7398150a6d9a414449230578f73dabc21b93eea04436",
+      "exit": 2,
+      "log_sha256": "13045d6d3b6ef371ddfa4720d41e18beed7bdc40266e0e92bed09e85acd83a7c",
+      "passed": false,
+      "seconds": 4.225410181000001,
+      "test": "misc/tst-pidfd_getpid",
+      "test_result": "UNSUPPORTED: misc/tst-pidfd_getpid\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "bbe34e78af9cb8f4a4ff2b273c434dde590f93748dad308f31734c0af51b326f",
+      "exit": 2,
+      "log_sha256": "6a67ffb69b9116e6d1ea580f0f6002b489af07928abb3f684da4ef35399b367e",
+      "passed": false,
+      "seconds": 1.0655804359999976,
+      "test": "misc/tst-syslog",
+      "test_result": "UNSUPPORTED: misc/tst-syslog\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "d73937d5149ca33458b66fec087e4695f715bf8a226219e48e482bafba20f194",
+      "exit": 2,
+      "log_sha256": "99b49e39e6a15167cb0d125d7c6c0ac451cdc395bf2da8a76e735fe5a4f5b5f1",
+      "passed": false,
+      "seconds": 0.3643465409999962,
+      "test": "misc/tst-syslog-long-progname",
+      "test_result": "UNSUPPORTED: misc/tst-syslog-long-progname\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "d0f765dee72b960d19e9e6af0c8ccaf5de899018d123b035e6ddcf74ecf19a38",
+      "exit": 2,
+      "log_sha256": "9e67d46b02cbab28953ad1a051c977248b639ff3ee5855a26ad7d0a3db3a6e4a",
+      "passed": false,
+      "seconds": 6.673463653999995,
+      "test": "nptl/tst-pthread-getattr",
+      "test_result": "UNSUPPORTED: nptl/tst-pthread-getattr\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "1d547f4116913343c8fde227a16f05e3480306a3675d8853b20131710a985665",
+      "exit": 2,
+      "log_sha256": "a1fd1b4ba5d3a80caafcd9885be9c2e4a80515b365609570afce4282ea4964b9",
+      "passed": false,
+      "seconds": 4.977735296000006,
+      "test": "nss/tst-initgroups1",
+      "test_result": "UNSUPPORTED: nss/tst-initgroups1\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "9f70e8c22343fe2f61869d28bfea5cdf433dd83d16a18d1f60e39618b958e176",
+      "exit": 2,
+      "log_sha256": "5ba64a4a2ed3d0535d206aa327ca148e22beb9ff0ab49a64526c4d772774f226",
+      "passed": false,
+      "seconds": 0.7147217229999967,
+      "test": "nss/tst-initgroups2",
+      "test_result": "UNSUPPORTED: nss/tst-initgroups2\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "2bf9d0a7b36d1c3ef2dc95a994211fac63cc2d3a4215a211a9c03cfa89bd901d",
+      "exit": 2,
+      "log_sha256": "c7ca57714540efdd924d0aa4bed6d665fd568367fe9cef31719006a07c99c85e",
+      "passed": false,
+      "seconds": 0.41428599099999985,
+      "test": "nss/tst-nss-action-parse",
+      "test_result": "UNSUPPORTED: nss/tst-nss-action-parse\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "948c1db59d875496ce09718315269c05c51ad1c7bb6dc6f733d508fc0da2cb8b",
+      "exit": 2,
+      "log_sha256": "d8b4dfaf1b8167904354d736a29441ff54546cbbf41342a85026aca263eda017",
+      "passed": false,
+      "seconds": 0.4146860419999996,
+      "test": "nss/tst-nss-compat1",
+      "test_result": "UNSUPPORTED: nss/tst-nss-compat1\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "d53a6a1856f089e3281ce2a48c72a4b657b1a17ed9a823a86642c1d2d85a04f5",
+      "exit": 2,
+      "log_sha256": "e5b438057a3a4f304f44196ae6de97e669cd25b5826584ed69050eb073e2c29a",
+      "passed": false,
+      "seconds": 0.41446946199999957,
+      "test": "nss/tst-nss-db-endgrent",
+      "test_result": "UNSUPPORTED: nss/tst-nss-db-endgrent\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "a8db24b1ba20bc08cceb950723f9281fe48a10e30dbeb4006bd3dbbc21d7c205",
+      "exit": 2,
+      "log_sha256": "d4594b08f3d169438f9baef7d8ae8f9353989fe73177baf9ce01a43467acb6ce",
+      "passed": false,
+      "seconds": 0.41429297100000184,
+      "test": "nss/tst-nss-db-endpwent",
+      "test_result": "UNSUPPORTED: nss/tst-nss-db-endpwent\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "5ae145baca358ddd897e3f26dd63036cd7b00c822cea2c929a4aedacbcc8fccb",
+      "exit": 2,
+      "log_sha256": "b436f557d2cb5063b545dcf19d7e7603280c8d85d09a3ca6afdff4a5bb7642ef",
+      "passed": false,
+      "seconds": 0.4144902419999994,
+      "test": "nss/tst-nss-files-hosts-long",
+      "test_result": "UNSUPPORTED: nss/tst-nss-files-hosts-long\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "2d6e596a2cfc56633e26bb2af323b3622f587f9b76d4c6ca85a15ab5a9701e89",
+      "exit": 2,
+      "log_sha256": "2a9df989a34a95389d56c7e5bd13a0a5805fa463981cf971e0f9ae323e5c4c83",
+      "passed": false,
+      "seconds": 0.3642421710000008,
+      "test": "nss/tst-nss-files-hosts-v4mapped",
+      "test_result": "UNSUPPORTED: nss/tst-nss-files-hosts-v4mapped\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "d6a33c9596ff5382b308c422db5fac87c9afb7f310b3ec5a7dbc8d5ca39a5a60",
+      "exit": 2,
+      "log_sha256": "0114f41a168ee461b2675047ae6730b195f457e66e1ed4a938b782bd031cbe97",
+      "passed": false,
+      "seconds": 0.3651286520000028,
+      "test": "nss/tst-nss-gai-actions",
+      "test_result": "UNSUPPORTED: nss/tst-nss-gai-actions\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "dfe4c597b609506b56d4534e1915a5aa0d261b7ef6ce9238e1c8b1b12e16b0ce",
+      "exit": 2,
+      "log_sha256": "ddaece5037543d917389d3d7c858a9fdea1a0436c478bc1b1ffbfd1900916492",
+      "passed": false,
+      "seconds": 0.3640784310000029,
+      "test": "nss/tst-nss-gai-hv2-canonname",
+      "test_result": "UNSUPPORTED: nss/tst-nss-gai-hv2-canonname\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "ca9aecccbabddbf86fa7dc88f721bcea611053dc3bd6612095dc3475be33afe5",
+      "exit": 2,
+      "log_sha256": "ba0bb54aaed389aa8e508ad915dcf24d9711acdac38621e677d1209c0124a84a",
+      "passed": false,
+      "seconds": 0.4152163919999978,
+      "test": "nss/tst-nss-test3",
+      "test_result": "UNSUPPORTED: nss/tst-nss-test3\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "7cd7d5ac24ddf369559682d9f76f74ea1c2a3e60b1e4db4469a04498f21c0f5f",
+      "exit": 2,
+      "log_sha256": "0905f8429d0e526d7b5289bae59794c7f6c4ae8e5b295756061ed0662577378e",
+      "passed": false,
+      "seconds": 0.46435896099999496,
+      "test": "nss/tst-reload1",
+      "test_result": "UNSUPPORTED: nss/tst-reload1\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "1a64fed3a51da3a25a57bb4e7e405704c7225337eb6294102cf0c68d015776df",
+      "exit": 2,
+      "log_sha256": "63ac4fda4856b32705f69ae8564151ac4706fe1cd9cc8f35f9960901260c72a2",
+      "passed": false,
+      "seconds": 0.4142379410000032,
+      "test": "nss/tst-reload2",
+      "test_result": "UNSUPPORTED: nss/tst-reload2\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "519e4bebea5ee89008a70fd9d2c8927a7cdc37dc5c3ba787b3f1778c2aacd6d8",
+      "exit": 2,
+      "log_sha256": "f05939b6d6781dc4ffc8033055b212fe586359a9b83c0bd42a54737dc32679d9",
+      "passed": false,
+      "seconds": 4.226204940999999,
+      "test": "posix/bug-ga2",
+      "test_result": "UNSUPPORTED: posix/bug-ga2\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "98ccab4d7704780d5e77ab7c6f7fcd781a716f37d47e14fa8f1fafb1d469139a",
+      "exit": 2,
+      "log_sha256": "415bff981f244a26f7c4db3c6a02d5f6452dcd38d053815ec20dabf0ab95bfee",
+      "passed": false,
+      "seconds": 0.6660305940000057,
+      "test": "posix/tst-vfork3",
+      "test_result": "UNSUPPORTED: posix/tst-vfork3\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "09b7b046aa2d99cdf88f7af3aa9e45f82074bf273217752d1b274757ea59145e",
+      "exit": 2,
+      "log_sha256": "906b7f6ebff6b12eb071930d0333aea019a2f0993e99735a319ce9b721ceb109",
+      "passed": false,
+      "seconds": 0.36452499099999613,
+      "test": "posix/tst-wordexp-tilde",
+      "test_result": "UNSUPPORTED: posix/tst-wordexp-tilde\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "aba14a737dc4a50720e91245b445480ffe6b1134f7042004c1e2f2d89b2287cc",
+      "exit": 2,
+      "log_sha256": "19dea5498589968e9cd2e45c16a048ce1abc1864a987bee6c0333fd9ade7e2ea",
+      "passed": false,
+      "seconds": 2.0700919849999977,
+      "test": "resolv/tst-getaddrinfo-eai-again",
+      "test_result": "UNSUPPORTED: resolv/tst-getaddrinfo-eai-again\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "2d46beec000e2cd0a3778ebf630011d7e95d113b4deecbdb08ca161db6711918",
+      "exit": 2,
+      "log_sha256": "4c4c8fba7fb9eb055c90811d0477685486625a98216f6ca32a76e1c8cdf6a03f",
+      "passed": false,
+      "seconds": 0.4151010719999988,
+      "test": "resolv/tst-leaks2",
+      "test_result": "UNSUPPORTED: resolv/tst-leaks2\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "eb46883858765ce28d1c74a631e38711a51bbd9f8ed058935cfc5b966f584f9f",
+      "exit": 2,
+      "log_sha256": "c257b8a4a89505b8116ad00000dde15f0d571129466c661eba994ecfae5e9514",
+      "passed": false,
+      "seconds": 0.31488010000000344,
+      "test": "resolv/tst-resolv-no-search",
+      "test_result": "UNSUPPORTED: resolv/tst-resolv-no-search\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "176028a2410102f7c61aef630b68a8bf18219d38cb169df80362af65ed02b718",
+      "exit": 2,
+      "log_sha256": "ad6ec472e634d42cbe52ffa388ea143174e4c925f24ac15afd5c1544925bfa85",
+      "passed": false,
+      "seconds": 5.0777654970000015,
+      "test": "stdio-common/tst-popen3",
+      "test_result": "UNSUPPORTED: stdio-common/tst-popen3\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "0d26b85dad8b3fbbe3d5969ca54d29ffc15643986ed34d53b2ec0d36908b2668",
+      "exit": 2,
+      "log_sha256": "5490601608aba56759d482e393ac33eb6ea60f6199e3a46ce87d12ac4dac93ce",
+      "passed": false,
+      "seconds": 0.9670898560000012,
+      "test": "stdio-common/tst-setvbuf2",
+      "test_result": "UNSUPPORTED: stdio-common/tst-setvbuf2\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "4f8c3e708e4bf923c757b3104ecbdd205e8eb8ea7fc9b841203831e4523a822e",
+      "exit": 2,
+      "log_sha256": "5daddda8b788b73ce64bb6cd1c67dac12f38139dcce5d107367ca13610974887",
+      "passed": false,
+      "seconds": 0.5646132920000042,
+      "test": "stdio-common/tst-setvbuf2-ind",
+      "test_result": "UNSUPPORTED: stdio-common/tst-setvbuf2-ind\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "5af040bf474a66baf1bc10f5967e57ee53654a7ae7106c01bf7532c0a7e9b3fc",
+      "exit": 2,
+      "log_sha256": "651b4ed2351b2c4bc8915a9085392f79b03c7d0dfdd41d9410c5db7ed2cbdb41",
+      "passed": false,
+      "seconds": 4.879125348000002,
+      "test": "stdlib/tst-system",
+      "test_result": "UNSUPPORTED: stdlib/tst-system\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "0ca99c5c95da92ad22a7f11c255f131f4bc460038cf063ad1c44c88aba124b97",
+      "exit": 2,
+      "log_sha256": "5ca35b92590a12fe1464d6f9d7660774189ad1f2bd3e11b962ca5fa32a428f9c",
+      "passed": false,
+      "seconds": 3.322122784000001,
+      "test": "string/tst-strerror",
+      "test_result": "UNSUPPORTED: string/tst-strerror\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "9b84feded57ec83346f90541c4d80cfda02c586e990a2ec24c7f0af40b2f8340",
+      "exit": 2,
+      "log_sha256": "e27075b723b2815b993e0f63b8365476daddd5159571745fb97b02530effbea1",
+      "passed": false,
+      "seconds": 0.8649084639999955,
+      "test": "string/tst-strsignal",
+      "test_result": "UNSUPPORTED: string/tst-strsignal\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "2b0b3d2aea4f1c11067b908bfb214a67d127bfa14703ccbebe012eb290124205",
+      "exit": 2,
+      "log_sha256": "41e1dcc289d2ed0d0c439df0064b1d65854cdbc590d91e163494c146aa9884cb",
+      "passed": false,
+      "seconds": 4.20679749,
+      "test": "support/tst-support-openpty-c",
+      "test_result": "UNSUPPORTED: support/tst-support-openpty-c\noriginal exit status 77",
+      "timeout": false
+    },
+    {
+      ".test-result_sha256": "7165c305f7665d5bdff4d0befd364a119bae12b3c88ea4ad9009435d0128c7da",
+      "exit": 2,
+      "log_sha256": "5b684b5ae036322d10147bcd16c14ee6c8de74001b51793f5b011c36803ee7e4",
+      "passed": false,
+      "seconds": 2.490385859,
+      "test": "io/tst-lchmod",
+      "test_result": "FAIL: io/tst-lchmod\noriginal exit status 1",
+      "timeout": false
+    }
+  ],
+  "original_failed_workspace": ".local/vm/boot-tests/h09-bios-m2gayrqx",
+  "dedicated_uart_sha256": "6fbb6b2e230b04e39e699df7d3768b29ae1637f03ddbf03e394769e488975b32"
+}

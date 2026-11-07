@@ -81,6 +81,8 @@ def qemu_arguments(firmware, payloads, regressions=False):
                  '-device', 'virtio-rng-pci,rng=rng0',
                  '-drive', 'file=/work/target.qcow2,if=none,id=root,format=qcow2',
                  '-device', 'virtio-blk-pci,drive=root,serial=TODDY-BOOT-TEST']
+    if regressions:
+        arguments += ['-serial', 'file:/work/native-evidence.log']
     if firmware == 'uefi':
         arguments += ['-drive', f'if=pflash,format=raw,readonly=on,file={CODE}',
                       '-drive', 'if=pflash,format=raw,file=/work/OVMF_VARS.fd']
@@ -286,7 +288,7 @@ def main():
             raise ValueError('QEMU did not exit cleanly')
         state['native_report'] = parse_report((work / 'serial.log').read_text(errors='replace'), args.firmware)
         if args.regressions:
-            regression, summary = decode_regressions((work / 'serial.log').read_text(errors='replace'))
+            regression, summary = decode_regressions((work / 'native-evidence.log').read_text())
             (work / 'native-regressions.json').write_text(json.dumps(regression, indent=2) + '\n')
             state['regression_summary'] = summary
             if (regression.get('complete') is not True or summary.get('tests') != 50
