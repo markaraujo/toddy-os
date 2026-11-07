@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 00:04 UTC
+Last verified: 2026-11-07 00:09 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. Compression (block 19) is running Test044 with five processes and ten files; cycle 1 began at 23:57:59 UTC for 554 seconds. Original driver/runner remain live. Later replication/security/recovery/join groups and the final method matrix, then complete-suite validation, remain pending.
+Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. Compression (block 19) Test044 completed its first crash/recovery and began cycle 2 at 00:07:49 UTC for 442 seconds, with five processes and ten files. Original driver/runner remain live. Later replication/security/recovery/join groups and the final method matrix, then complete-suite validation, remain pending.
 
 Remaining:
 

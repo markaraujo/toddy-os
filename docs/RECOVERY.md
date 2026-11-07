@@ -837,3 +837,15 @@ An interrupted configuration attempt requires a fresh image stage, not an
 in-place retry. Final assembly must obtain fstab identity from the accepted H08
 package, preserve its conffile metadata, account for the live transformation,
 and rerun native checks. Actual boot mounts and DNS remain unverified.
+
+
+Reproduce fresh native documentation-index generation with
+python3 scripts/host/probe_info_index.py (ADR-0062). The private fixture is under
+/mnt/lfs/tmp/toddy-info-index-*; failure preserves it, successful validation
+removes it. Raw reports and immutable SHA-256 copies are kept in
+.local/logs/h10-info-index-probe*.json. Preserve a failed or interrupted index
+stage and reconstruct from accepted inputs; do not merge unknown output or
+remove the installed source index to make the preflight pass. The final H10
+caller must use the accepted post-H07-closure package inventory. This component
+refuses an index still listed as package payload and does not resolve that
+outstanding metadata transition itself.

@@ -341,3 +341,13 @@ remain unchanged. Recorded explicit conffile transformation and recovery in
 ADR-0061. Actual base installation and live boot/DNS are still pending.
 Berkeley DB remains in compression Test044, cycle 1 (554 seconds), started at
 23:57:59 UTC; original driver and runner are live. No package acceptance changed.
+
+2026-11-07 00:09 UTC — Fresh native Info-index generation passed with 130
+source-owned document inputs and 71 primary manuals. Two generations yield
+identical bytes; native readers locate/read four manuals and navigate two actual
+menu entries. Eight negative cases preserve inputs. Classified the sole
+no-menu-entry warning against frozen Texinfo behavior and actual gawknotes
+content. Installed index/package state and active build inputs are unchanged.
+Recorded ADR-0062; H07 shared-index metadata closure remains mandatory.
+Berkeley DB compression Test044 completed cycle 1 crash/recovery and started
+cycle 2 at 00:07:49 UTC for 442 seconds. Original driver/runner remain live.
