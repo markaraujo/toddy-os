@@ -852,3 +852,15 @@ private loader context remains. Directory reconciliation changed exactly the
 measured CMake directory, then verified all 2,928 owned directories. Exported
 and verified all native archives/records; the builder powered down cleanly and
 the final paired cold checkpoint copy/hash/qcow2 verification chain is running.
+
+### 2026-11-07 — Accept H07 and start H08
+
+Both final working-disk copies matched their source hashes and independent qcow2
+verification passed. The builder restarted, target mounts were restored, Dpkg
+audit remained empty and APT consistency passed. H07 is accepted with its full
+native evidence and owner-approved Berkeley coverage qualification; foundation
+credit is now 62%. Read frozen chapter 9/10.2 and the prepared H08 recipes. Clarified
+that disabling wait-online while using networkd is Toddy's documented offline
+policy deviation, not the book's conditional advice for not using networkd.
+Marked H08 in_progress for actual target configuration. G1/H13 still require
+native foundation boot/live-media evidence; no B story starts before owner review.

@@ -1573,3 +1573,13 @@ file h07-final-checkpoint.exit. Host shell PID 1318991 owns the sequential
 clean-stop/save/verify/start/remount/check chain. Do not start the VM separately
 while it runs; partial image copies without h07-final-base.json are unfinished.
 On actual terminal zero, inspect the manifest and checks before accepting H07.
+
+### Accepted H07 checkpoint; proceed with H08
+
+H07 is accepted. .local/vm/checkpoints/h07-final-base.json records verified
+builder/target hashes; both qcow2 checks passed. The cold-chain exit is 0, the
+builder restarted and target kernel filesystems were remounted. Strict repeated
+Dpkg audit is empty and apt-get check exits zero. See H07-checkpoint.json.
+H08 is now in_progress; sync committed status/scripts before its guarded driver.
+Use this cold pair if whole-target rollback is required; H06 demonstrated the
+restore workflow. Never restore over an active VM or launch duplicate jobs.

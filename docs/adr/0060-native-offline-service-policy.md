@@ -30,9 +30,10 @@ commands use an explicit --root and do not contact a running service manager.
 The production CLI still requires completed H07, H08 in_progress and real native
 metadata closure. No running build inputs or target configuration changed here.
 
-LFS 13.1-systemd section 9.2 disables networkd-wait-online to avoid waiting for
-network setup on every boot. The explicit mask is a documented extension of that
-offline-startup policy, justified by the reproduced preset behavior. Networkd,
+LFS 13.1-systemd section 9.2 discusses disabling networkd-wait-online when
+networkd is not used. Toddy does use networkd: disabling its wait helper is an
+explicit offline-boot policy deviation, not a verbatim book instruction. The
+mask preserves that chosen policy against the reproduced preset behavior. Networkd,
 DNS and time synchronization remain enabled; no network security control is
 disabled. The mask applies only to the designated Toddy target/image, never the
 workstation or builder OS. An owner who deliberately wants network-online waiting

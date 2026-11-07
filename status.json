@@ -3,8 +3,8 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-07",
   "bootstrap": "ready_for_development",
-  "current_scope": "Implementation: H01-H06 validated in KVM; all 126 H07 package gates passed. Owner-approved focused Berkeley validation and real installed APT signed-repository/HTTPS/sandbox/cache recovery passed. Final metadata/ownership audits and cold checkpoint remain. Full Berkeley standard suite remains incomplete. No Toddy ISO. Deliver H13/G1 for owner testing before any B story.",
-  "next_story": "H07",
+  "current_scope": "H01-H07 completed: 126 native packages, final metadata/audits and cold checkpoint verified. H08 is in progress for identity/services/network configuration. Full Berkeley standard coverage is explicitly reduced by owner approval (ADR-0092). No foundation ISO or G1 yet. Deliver H13/G1 for owner testing and await approval before B01-B13.",
+  "next_story": "H08",
   "gates": {
     "G1": "pending",
     "G2": "pending"
@@ -127,7 +127,7 @@
       "phase": "foundation",
       "title": "Build and test the final base system",
       "weight": 24,
-      "status": "in_progress",
+      "status": "completed",
       "depends_on": [
         "H06"
       ],
@@ -138,7 +138,7 @@
         "Compile/run a C program in the final environment and inspect linkage for host or temporary-toolchain dependencies."
       ],
       "evidence": [
-        "docs/evidence/H07-progress.md"
+        "docs/evidence/H07.md"
       ]
     },
     {
@@ -146,7 +146,7 @@
       "phase": "foundation",
       "title": "Configure identity, services and basic networking",
       "weight": 6,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": [
         "H07"
       ],
@@ -476,20 +476,18 @@
     }
   ],
   "active_work": {
-    "story": "H07",
-    "verified_at": "2026-11-07 11:44 UTC",
+    "story": "H08",
+    "verified_at": "2026-11-07 11:50 UTC",
     "verified": [
-      "All 126 original package build/runtime gates passed, including focused Berkeley and installed APT integration. Final metadata/configuration consistency is being closed separately.",
-      "Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.",
-      "Full ACL retest, API/layout ownership and native configuration correction passed.",
-      "Verified paired cold checkpoint at the 124-package boundary.",
-      "Independent Linux 7.1.8 native build and BIOS/UEFI diagnostic boots passed, including actual module insertion/removal and namespace creation; no final kernel package, full foundation boot or ISO acceptance."
+      "H07 accepted with 126 native packages, eight audits and verified cold pair h07-final-base.",
+      "Frozen LFS 13.1-systemd chapter 9 and 10.2 reviewed; prepared H08 configuration and offline service policy have private-root tests (ADR-0042/0060)."
     ],
-    "running": "All 126 metadata generations and eight native audits passed. Dpkg audit is empty and APT dependency check passed. Verified export of all 126 native archives completed. The VM cleanly powered down; both working disk images are being copied, hashed and checked for the final cold checkpoint before H07 acceptance.",
+    "running": "Applying the guarded native configuration next; actual identity/service/locale/ownership postchecks are pending.",
     "remaining": [
-      "Finish and verify the paired cold checkpoint, restart/remount the builder and recheck package consistency.",
-      "Record final H07 acceptance and start H08; full ISO/native boot gates H09-H13 remain."
+      "Install and verify owned base configuration with preserved bootstrap files.",
+      "Verify offline service policy, locale/account/filesystem settings and ownership.",
+      "Retain actual boot/DHCP/service behavior for H12 verification."
     ],
-    "evidence": "docs/evidence/H07-progress.md"
+    "evidence": "docs/evidence/H07.md"
   }
 }

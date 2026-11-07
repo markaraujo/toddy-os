@@ -1,0 +1,29 @@
+{
+  "observed_at": "2026-11-07T11:50:57.682931+00:00",
+  "chain_exit": 0,
+  "manifest": {
+    "name": "h07-final-base",
+    "created_utc": "2026-11-07T11:43:21.394463+00:00",
+    "base_sha256": "04e8f2461a16a44e78a370284471f29616cdd9baf1893df25807b71f985b6c94",
+    "disks": {
+      "builder": {
+        "file": "h07-final-base-builder.qcow2",
+        "sha256": "a19c5c75dda427a45fffdb33bfbd66f7f5c753ba18abd3dd37a0adf8bf7fb154"
+      },
+      "target": {
+        "file": "h07-final-base-target.qcow2",
+        "sha256": "661aa05b98cafd4468188d10ea868c4122908b11e83d643c6f4ab3d65a5134fe"
+      }
+    }
+  },
+  "manifest_sha256": "8bc7d4f035e2a3971ac063c0b0d1425fab20d84a65fa694ffeb35354d797bbf9",
+  "log_sha256": "fe99cdcd47a68f546bdb38fb642785f40899fe3bcc163094c2771ca8feee1d42",
+  "cold_copy_hashes_and_qcow2_verified": true,
+  "builder_restarted_and_target_remounted": true,
+  "post_restart": {
+    "dpkg_audit_empty": true,
+    "apt_get_check_exit": 0
+  },
+  "restore_repeated_at_h07": false,
+  "controlled_restore_reference": "docs/evidence/H06.md"
+}

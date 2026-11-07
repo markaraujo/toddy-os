@@ -4,36 +4,34 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-Implementation: H01-H06 validated in KVM; all 126 H07 package gates passed. Owner-approved focused Berkeley validation and real installed APT signed-repository/HTTPS/sandbox/cache recovery passed. Final metadata/ownership audits and cold checkpoint remain. Full Berkeley standard suite remains incomplete. No Toddy ISO. Deliver H13/G1 for owner testing before any B story.
+H01-H07 completed: 126 native packages, final metadata/audits and cold checkpoint verified. H08 is in progress for identity/services/network configuration. Full Berkeley standard coverage is explicitly reduced by owner approval (ADR-0092). No foundation ISO or G1 yet. Deliver H13/G1 for owner testing and await approval before B01-B13.
 
-Foundation: **38%** · Agentic desktop: **0%**
+Foundation: **62%** · Agentic desktop: **0%**
 
-G1: pending · G2: pending · Next: **H07**
+G1: pending · G2: pending · Next: **H08**
 
 No milestone earns credit without completed acceptance evidence.
 
-## Active story: H07 — Build and test the final base system
+## Active story: H08 — Configure identity, services and basic networking
 
-The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
+The 62% phase total counts completed stories only. H08 is still in progress; its 6 points are not yet counted. Passing this story would raise the phase total to 68%.
 
-Last verified: 2026-11-07 11:44 UTC
+Last verified: 2026-11-07 11:50 UTC
 
 Verified:
 
-- All 126 original package build/runtime gates passed, including focused Berkeley and installed APT integration. Final metadata/configuration consistency is being closed separately.
-- Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.
-- Full ACL retest, API/layout ownership and native configuration correction passed.
-- Verified paired cold checkpoint at the 124-package boundary.
-- Independent Linux 7.1.8 native build and BIOS/UEFI diagnostic boots passed, including actual module insertion/removal and namespace creation; no final kernel package, full foundation boot or ISO acceptance.
+- H07 accepted with 126 native packages, eight audits and verified cold pair h07-final-base.
+- Frozen LFS 13.1-systemd chapter 9 and 10.2 reviewed; prepared H08 configuration and offline service policy have private-root tests (ADR-0042/0060).
 
-Running: All 126 metadata generations and eight native audits passed. Dpkg audit is empty and APT dependency check passed. Verified export of all 126 native archives completed. The VM cleanly powered down; both working disk images are being copied, hashed and checked for the final cold checkpoint before H07 acceptance.
+Running: Applying the guarded native configuration next; actual identity/service/locale/ownership postchecks are pending.
 
 Remaining:
 
-- Finish and verify the paired cold checkpoint, restart/remount the builder and recheck package consistency.
-- Record final H07 acceptance and start H08; full ISO/native boot gates H09-H13 remain.
+- Install and verify owned base configuration with preserved bootstrap files.
+- Verify offline service policy, locale/account/filesystem settings and ownership.
+- Retain actual boot/DHCP/service behavior for H12 verification.
 
-[Acceptance evidence](docs/evidence/H07-progress.md)
+[Acceptance evidence](docs/evidence/H07.md)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
@@ -43,8 +41,8 @@ Remaining:
 | [H04 — Build the cross-toolchain](stories/H04.md) | foundation | 10 | completed |
 | [H05 — Build temporary tools](stories/H05.md) | foundation | 8 | completed |
 | [H06 — Enter chroot and create recoverable checkpoint](stories/H06.md) | foundation | 8 | completed |
-| [H07 — Build and test the final base system](stories/H07.md) | foundation | 24 | in_progress |
-| [H08 — Configure identity, services and basic networking](stories/H08.md) | foundation | 6 | not_started |
+| [H07 — Build and test the final base system](stories/H07.md) | foundation | 24 | completed |
+| [H08 — Configure identity, services and basic networking](stories/H08.md) | foundation | 6 | in_progress |
 | [H09 — Build kernel and boot configuration](stories/H09.md) | foundation | 8 | not_started |
 | [H10 — Assemble the live system](stories/H10.md) | foundation | 8 | not_started |
 | [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | not_started |
