@@ -384,3 +384,13 @@ redirected parents, a real tmpfs boundary and invalid streams are refused.
 Extended ADR-0048 and recovery; actual Squashfs/native boot remain pending.
 Berkeley DB advanced beyond compression into automated repmgr (block 20);
 original driver/runner remain live and the partial log has zero FAIL lines.
+
+
+2026-11-07 00:37 UTC — Corrected an image integration defect: owned mutable
+directories would otherwise retain builder cache ownership/ACLs. Recreate them
+from package metadata with explicit native APT UID 100/root-group overrides
+(ADR-0066). Native identity/access, inherited-ACL isolation and seven refusal
+cases passed. The full payload preflight still correctly rejects unfinished
+H07 Info metadata. Berkeley DB remains live in automated repmgr election tests,
+zero partial FAIL lines; supervisor remains alive and waiting. No package or
+story acceptance was advanced.

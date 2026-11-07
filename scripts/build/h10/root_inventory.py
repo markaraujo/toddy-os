@@ -11,6 +11,7 @@ import stat
 
 FRESH_DIRECTORIES = {'dev': 0o755, 'proc': 0o755, 'sys': 0o755, 'run': 0o755,
                      'tmp': 0o1777, 'home': 0o755, 'root': 0o700, 'var/tmp': 0o1777}
+MUTABLE_TREES = ('var/cache', 'var/log', 'var/lib/apt')
 GENERATED_ACCOUNTS = {'/etc/' + name for name in ('passwd', 'group', 'shadow', 'gshadow',
     'subuid', 'subgid', 'machine-id', 'passwd-', 'group-', 'shadow-', 'gshadow-', '.pwd.lock')}
 
@@ -45,11 +46,11 @@ def package_inventory(records):
             if path == '/var/lib/dbus/machine-id' and (name != 'dbus' or row != {
                     'mode': stat.S_IFLNK | 0o777, 'uid': 0, 'gid': 0, 'symlink': '/etc/machine-id'}):
                 raise ValueError('DBus must own only the canonical machine-ID link')
-            fresh_tree = next((base for base in FRESH_DIRECTORIES
+            fresh_tree = next((base for base in (*FRESH_DIRECTORIES, *MUTABLE_TREES)
                                if relative == base or relative.startswith(base + '/')), None)
             if fresh_tree is not None:
                 if not row.get('directory'):
-                    raise ValueError('Runtime/home state cannot be package image payload: ' + path)
+                    raise ValueError('Runtime/home/cache/log state cannot be package image payload: ' + path)
                 if relative not in fresh:
                     fresh[relative] = row
                 elif fresh[relative] != row:
@@ -74,6 +75,12 @@ def package_inventory(records):
     for relative in names - {'.'}:
         if '/' + relative not in entries:
             raise ValueError('Selected package parent has no native provenance: /' + relative)
+    # Mutable directories are reconstructed from reviewed package metadata,
+    # never copied with the builder's current service ownership or ACLs.
+    for relative in fresh:
+        parent = PurePosixPath(relative).parent.as_posix()
+        if parent != '.' and parent not in fresh and not entries.get('/' + parent, {}).get('directory'):
+            raise ValueError('Fresh directory parent has no native provenance: /' + relative)
     return {'names': sorted(names), 'entries': entries,
             'owners': {path: sorted(value) for path, value in owners.items()},
             'fresh_directories': fresh, 'packages': packages,

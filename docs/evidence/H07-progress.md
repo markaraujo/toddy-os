@@ -1189,3 +1189,12 @@ partial log has zero FAIL lines. Raw observation
 .local/logs/h07-automated-repmgr-progress.json SHA-256:
 38b814be3c73221619525870eae0daea561573a9380a04a4d1cfcaedcdd2d803.
 This group transition is progress, not complete-suite/package acceptance.
+
+
+2026-11-07 00:37 UTC — Original driver 1364/runner 1365 remain live (7h28m);
+automated repmgr election cases progress through in-memory/on-disk combinations
+and master failure/re-election. Partial ALL.OUT has 4,969,028 bytes, zero FAIL
+lines and no driver exit file. Raw observation
+.local/logs/h07-repmgr-election-progress.json SHA-256:
+0a47aebdf6c8f0300e01895c961d33cd0806b18ba1e18973007b4fd97a2f3d31.
+This remains block 20/27, not complete-suite or package acceptance.

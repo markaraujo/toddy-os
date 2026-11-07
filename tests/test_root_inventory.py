@@ -13,18 +13,19 @@ class RootInventory(unittest.TestCase):
         self.directory = {'mode': 0o40755, 'uid': 0, 'gid': 0, 'directory': True}
         self.file = {'mode': 0o100644, 'uid': 0, 'gid': 0, 'sha256': 'a' * 64}
         self.record = {'name': 'sample', 'version': '1-1', 'installed': True, 'archive_sha256': 'b' * 64,
-                       'payload': {'/usr': self.directory, '/usr/file': self.file, '/run': self.directory}}
+                       'payload': {'/usr': self.directory, '/usr/file': self.file, '/run': self.directory,
+                                   '/var': self.directory}}
 
     def test_package_inventory_excludes_mounted_runtime_state(self):
         inventory = module.package_inventory([self.record])
-        self.assertEqual(inventory['names'], ['.', 'usr', 'usr/file'])
+        self.assertEqual(inventory['names'], ['.', 'usr', 'usr/file', 'var'])
         self.assertIn('run', inventory['fresh_directories'])
         self.assertEqual(inventory['fresh_directories']['tmp']['mode'], 0o41777)
         self.assertFalse(inventory['complete_image_inventory'])
 
     def test_account_or_runtime_bytes_cannot_be_imported_from_package_payload(self):
         for path in ('/etc/shadow', '/etc/machine-id', '/run/pid', '/root/private', '/sources/archive',
-                     '/var/lib/dpkg/status', '/var/log/session', '/var/cache/history'):
+                     '/var/lib/dpkg/status', '/var/log/session', '/var/cache/history', '/var/lib/apt/extended_states'):
             with self.subTest(path=path):
                 record = copy.deepcopy(self.record)
                 record['payload'][path] = self.file
@@ -58,6 +59,19 @@ class RootInventory(unittest.TestCase):
             record['payload'][path] = row
             with self.subTest(path=path), self.assertRaises(ValueError):
                 module.package_inventory([record])
+
+    def test_mutable_directories_use_package_rows_and_require_owned_parents(self):
+        record = copy.deepcopy(self.record)
+        for name in ('/var/cache', '/var/cache/apt', '/var/cache/apt/archives',
+                     '/var/cache/apt/archives/partial', '/var/log', '/var/lib', '/var/lib/apt'):
+            record['payload'][name] = self.directory
+        inventory = module.package_inventory([record])
+        self.assertNotIn('var/cache', inventory['names'])
+        self.assertNotIn('/var/lib/apt', inventory['entries'])
+        self.assertEqual(inventory['fresh_directories']['var/cache/apt/archives/partial'], self.directory)
+        del record['payload']['/var/lib']
+        with self.assertRaisesRegex(ValueError, 'Fresh directory parent'):
+            module.package_inventory([record])
 
 
 if __name__ == '__main__':

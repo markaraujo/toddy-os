@@ -889,3 +889,16 @@ ACL diagnostics. Capture belongs after all final image configuration; any later
 permission/payload change requires a newly generated image/sidecar and audit.
 The first bytearray decoder failure remains at toddy-acl-capture-x3rudrac.
 Actual Squashfs/overlay/native-kernel restoration remains pending (ADR-0048).
+
+
+Reproduce fresh mutable-directory generation with
+python3 scripts/host/probe_fresh_directories.py (ADR-0066). The probe runs in a
+private guest mount namespace, removes its successful fixture and preserves any
+failed fixture. Its initial device-layout error remains in
+/mnt/lfs/tmp/toddy-fresh-directories-9zoyrodt. Hash-addressed raw reports are
+.local/logs/h10-fresh-directories-probe*.json. The image assembly order is explicit
+payload copy, fresh directories, fresh accounts/configuration, derived caches,
+then final ACL capture/audits. Do not copy builder cache directories, merge a
+partial stage, or recursively chown existing image data to suppress a refusal.
+APT partial directories use image UID 100 and GID 0; APT acquisition is still
+unverified. Re-run the full root inventory after real H07 metadata closure.

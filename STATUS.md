@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 00:27 UTC
+Last verified: 2026-11-07 00:37 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. Execution advanced beyond compression into automated replication-manager tests (block 20), exercising master/client transactions with on-disk and in-memory configurations. Original driver/runner remain live; zero FAIL lines observed in the partial log. Later replication/security/recovery/join groups and the final method matrix, then complete-suite validation, remain pending.
+Running: Complete corrected Berkeley DB standard regression suite, started 2026-11-06 17:12 UTC. Automated replication-manager election tests (block 20) are exercising master shutdown, replacement election and client recovery across on-disk/in-memory configurations. Original driver/runner remain live; zero FAIL lines observed in the partial log. Later groups and the final method matrix, then complete-suite validation, remain pending.
 
 Remaining:
 

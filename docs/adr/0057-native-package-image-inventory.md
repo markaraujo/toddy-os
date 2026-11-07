@@ -74,3 +74,9 @@ reviewed generated inputs makes each release file attributable. Primary inputs
 are the actual source-built Dpkg 1.22.22 package database and preserved package
 manifests/archives; fresh identities/directories follow the frozen LFS 13.1
 baseline and ADR-0055. Full H10/H11 execution and G1 remain pending.
+
+
+ADR-0066 extends this selection: owned cache/log/APT-state directories are now
+recreated from reviewed metadata instead of copying mutable builder ownership
+and ACLs. The new candidate has 63,129 copy paths and 12 fresh directories; all
+60,397 file/link inputs remain selected. The shared Info index refusal remains.

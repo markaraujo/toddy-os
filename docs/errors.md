@@ -594,3 +594,20 @@ new dependency or altered package build was needed. Failure evidence is in ADR-0
 - Verification: native capture/restore, empty capture, access/ownership/mode,
   hardlinks/default ACLs and negative boundaries pass; local filename regression
   checks cover the original path. Failure and success hashes are in ADR-0048.
+
+
+### Mutable image directory copy would preserve builder service ownership
+
+- Symptom: integration review found cache/log directories still selected for
+  actual-metadata copying despite fresh image service IDs.
+- Cause: only mutable files were refused; owned directories remained in the
+  copy namespace and could carry runtime ownership/ACLs.
+- Correction: move these trees into explicit fresh-directory generation; apply
+  APT's frozen sandbox UID/root-group directory policy.
+- Verification: native UID 100 writes, UID 101 denial, fresh ACL isolation and
+  seven pre-mutation refusals pass (ADR-0066). Full payload preflight still
+  rejects the known shared Info index pending final H07 metadata closure.
+
+The first directory probe tried to remove a nonempty minimal-runtime dev
+directory. It now verifies and removes only its own console/null fixture nodes
+before testing fresh full-root directories. No installed target path was changed.
