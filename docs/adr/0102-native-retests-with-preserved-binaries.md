@@ -75,3 +75,12 @@ resource-limit assertion, namespace mapping or host policy is modified. The
 regular test-container runtime still isolates filesystem/mount/user state.
 A nonzero/unsupported result still fails the unchanged 50/50 gate. Full corrected
 positive execution remains pending. This is not an exception for the syscall.
+
+The actual unprivileged tst-system retry passed with UID 101. The subsequent
+root-mapped string/PTY cases then failed with an invalid descriptor: their reused
+mutable fixture still contained tester-owned device nodes. The complete run is
+47/50, retained as failed (H12-native-third-retry.json); all binary bytes remained
+unchanged. Restore the original mutable root immediately after the non-root case,
+retaining its separate result directory and restoring lock ownership in finally.
+This prevents cross-identity fixture state from leaking into later tests. Do not
+relax the joint 50/50 acceptance criterion; repeat the complete profile.

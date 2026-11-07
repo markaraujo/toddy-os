@@ -118,13 +118,19 @@ def main():
             if mutable.resolve()!=mutable or not mutable.is_dir() or lockfile.resolve()!=lockfile or not lockfile.is_file():
                 raise ValueError('Unexpected generated container fixture')
             previous=lockfile.stat();lock_sha=digest(lockfile)
-            mutable.rename(work/'container-root-before-unprivileged-system')
+            preserved=work/'container-root-before-unprivileged-system'
+            mutable.rename(preserved)
             mutable.mkdir(mode=0o755);os.chown(mutable,identity.pw_uid,identity.pw_gid)
             os.chown(lockfile,identity.pw_uid,identity.pw_gid)
             try:row=run(name,argv,build.parent/Path(name).parent,120,identity)
-            finally:os.chown(lockfile,previous.st_uid,previous.st_gid)
+            finally:
+                os.chown(lockfile,previous.st_uid,previous.st_gid)
+                # Later root-mapped tests must not inherit tester-owned device
+                # nodes. Retain the private result, then restore the exact root.
+                mutable.rename(work/'container-root-unprivileged-system-result')
+                preserved.rename(mutable)
             if digest(lockfile)!=lock_sha:raise ValueError('Container lock contents changed')
-            row['fixture_policy']='Fresh mutable container root only; original preserved, lock owner restored; no account/syscall/test changes'
+            row['fixture_policy']='Fresh mutable container root only; original root and lock owner restored; private result retained; no account/syscall/test changes'
         else:
             row=run(name,argv,build.parent/Path(name).parent,120)
         row['dry_run_sha256']=hashlib.sha256(planning.stdout.encode()).hexdigest()

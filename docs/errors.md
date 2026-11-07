@@ -1070,3 +1070,9 @@ Select the full gmp recipe for fresh execution, recognize accepted old gmp-insta
 and accept either normal or recovery GnuPG success. Existing recipes/postchecks,
 versions and native results are unchanged. Shell syntax and all documented recipe/
 postcheck paths were checked; a second complete fresh build is not claimed.
+
+The unprivileged RLIMIT correction passed its actual syscall test, but three later
+root-mapped tests inherited tester-owned device nodes in the mutable container
+root. Preserve the 47/50 attempt; restore the original root in finally after
+retaining the separate unprivileged result. Every selected binary stayed unchanged.
+The next complete run must still pass all 50 cases together.
