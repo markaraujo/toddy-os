@@ -437,3 +437,12 @@ and the complete corrected suite are still required.
 Included the new patch in package provenance and external C/Tcl inputs in recipe
 hashes, with a focused regression. Added a production-stage refusal for the
 native test helper. No running build inputs or installed target files changed.
+
+
+2026-11-07 01:08 UTC — Completed the entire twenty-case other_repmgr group,
+including membership removal/rejoin and persistent data checks. Combined with
+the eleven passing multi-process cases, the two known failures now have complete
+isolated group verification. Original full standard execution remains active;
+no suite/package acceptance was granted. Preparing a single success-gated
+continuation that preserves terminal evidence and refuses unknown failures or
+installed changes before syncing corrected inputs.

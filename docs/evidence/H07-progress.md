@@ -1229,3 +1229,13 @@ The repmgr007 patch is frozen and recovery preflight passed idempotence plus six
 negative input checks. See ADR-0067/0068 for complete hashes. The original suite
 continues collecting block 23 results with its two known failures; the separate
 other_repmgr group remains active. H07/package acceptance is still pending.
+
+
+2026-11-07 01:08 UTC — Both diagnosed replication-manager groups now pass
+completely in the private native fixture: other_repmgr 20/20 and multi_repmgr
+11/11, explicit exit 0 and no FAIL lines. Dispatch lists exactly match the
+frozen testparams.tcl definitions. Both group results and hashes are recorded
+in ADR-0067/0068. The original standard suite continues in Rep039 with the same
+two known failures; Berkeley DB is not installed/accepted and APT remains gated.
+Prepared provenance corrections pass all 148 local checks; published commit
+9862c7d contains the helper/patch source-list coverage and production exclusion.

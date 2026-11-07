@@ -960,3 +960,19 @@ retry; the recipe refuses to silently overwrite an interrupted output.
 Reproduce input-only validation with
 python3 scripts/host/probe_db_test_fixtures.py. Its private directory is retained
 in .local/probes/db-fixtures-*; the report never claims native suite acceptance.
+
+
+Both private replication-manager groups are now terminal and passed: 20 cases
+in other-repmgr-driver.log and 11 in multiproc-all-driver.log. Exact exit/log
+hashes are in ADR-0067/0068; both original upstream case lists are intact.
+Session-specific guarded continuation is prepared at
+.local/scripts/h07-repmgr-continuation.py. Its --inspect mode is read-only and
+currently reports ready=false while original driver 1364 remains active.
+It requires the exact two diagnosed failures, the upstream complete failed-suite
+summary with no additional unexpected output, recipe exit 1, no postcheck and
+zero changed installed paths. It archives terminal logs/manifest before sync;
+any unknown result or changed reviewed input stops for diagnosis, never retries
+unchanged inputs automatically. Corrected dispatch keeps the same h07-berkeley-db
+step ID and verifies the cached compiled build before rerunning the full suite.
+Only a later actual 0/0 result may launch the final-base driver. No automatic
+milestone acceptance or H08/Phase 2 progression is part of this supervisor.

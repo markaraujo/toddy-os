@@ -1,7 +1,7 @@
 # ADR-0067: Wait for the asynchronous repmgr007 diagnostic
 
 - Date: 2026-11-07
-- Status: Native focused correction passed; complete suite remains failed/pending
+- Status: All twenty other_repmgr cases passed privately; complete standard suite pending
 - Scope: Test fixture timing only; no C/runtime source or assertion removed
 
 At 00:42 UTC the ongoing Berkeley DB standard suite reached other_repmgr and
@@ -121,3 +121,21 @@ new inventory SHA-256
 The added patch is not a new installed package or a complete license review.
 ADR-0068 records the separately resolved native helper and its eleven passing
 multiprocess cases. The complete twenty-case other_repmgr result remains pending.
+
+
+## Complete other_repmgr result
+
+The full twenty-case group completed with exit 0 and ALL_OTHER_REPMGR_PASSED.
+Every dispatch exactly matches the frozen test_names(other_repmgr) list, including
+all membership/removal/restart variants of repmgr029 and repmgr034. No FAIL line
+was present. Terminal log: 27,480 bytes, SHA-256
+8e975e78018cca3e3cb1bae3ba8d8e02fd8f24c663a60ef53eb688a9e9da080b.
+The unchanged library and the bounded-wait correction now pass this complete
+group privately. Together with ADR-0068, both diagnosed group prerequisites are
+resolved, without dropping any of their 31 original cases.
+
+Raw combined results .local/logs/h07-repmgr-both-groups-complete.json SHA-256:
+003c8ab8c4bea199d29589fdeb1359caa36ce8456f269a68e03c691293461ea4.
+At 01:08 UTC the original full suite was still in replication Rep039 with its
+two known failures. It is not accepted or silently replaced by the isolated
+results. The corrected full run remains mandatory.
