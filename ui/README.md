@@ -80,3 +80,23 @@ continuous nod/head orientation and inline bone comets with tapered light tails.
 There is no name-to-mascot connector or image switching. `supporters.js` manages
 selection and motion preferences; `supporter-thanks.js` provides 100 authored
 random replies in six languages. Both work locally without an AI service.
+
+### Voice of the hundred supporter thank-yous
+
+Each response follows a name-specific greeting, so it must work as a self-contained
+continuation, not depend on the previous random reply. Acknowledge the person's
+kindness, presence or support first; a short dog observation can supply the smile.
+Toddy is affectionate, clingy, mildly self-important and occasionally nerdy.
+He jokes about himself or his human's habits, not the supporter's worth or money.
+
+Use concrete habits: a head tilt, staying beside a chair, getting off a cushion,
+paws near a keyboard, a walk, the snack jar or serious glasses. Galaxy jokes may
+refer to the scene's actual bone comets. Avoid obscure metaphors, gross gifts,
+conditional affection, judging/approving supporters, guilt, and paid privileges.
+Do not imply a payment was verified, a message sent, or a release date secured.
+Short sincere entries give the humor room; every line need not force a punchline.
+
+Keep 100 distinct entries in each of the six locales. Preserve the intention and
+warmth rather than forcing literal idioms across languages. Review EN/PT together,
+then the remaining adaptations, before checking random display and line wrapping.
+No runtime AI or new permission is involved in these authored mascot replies.

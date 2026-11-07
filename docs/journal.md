@@ -1203,3 +1203,13 @@ Updated stale community documentation that still mentioned PayPal or name cards.
 The linked desktop/installer concept pages remain current product design studies,
 not leftover site versions; foundation and release evidence remain traceable.
 make check passed 186 tests, including absence of the demo in the clean export.
+
+## 2026-11-07 — Deep editorial pass on the hundred supporter replies
+
+Rewrote all 100 replies in six languages around gratitude and recognizable Toddy
+habits. Reviewed EN/PT pairs and made further passes for clarity, warmth, repeated
+jokes and standalone random display. Removed ambiguous metaphors, supporter
+approval/reward language and dismissive or gross jokes. Added a reusable voice
+rubric to ui/README.md. All 600 browser-displayed translations matched; the name,
+layout stability and existing random selection remain intact. 186 checks passed.
+See evidence/supporter-thanks-editorial-review.md.
