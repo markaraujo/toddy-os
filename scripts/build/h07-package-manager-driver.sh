@@ -1,7 +1,8 @@
 #!/bin/bash
 set -uo pipefail
 cd /opt/toddy-build/scripts/build
-[[ -f /var/log/toddy/build/h07-libmd.success.json && -f /var/log/toddy/build/h07-gnupg-recovery.success.json ]] || exit 1
+[[ -f /var/log/toddy/build/h07-libmd.success.json ]] || exit 1
+[[ -f /var/log/toddy/build/h07-gnupg.success.json || -f /var/log/toddy/build/h07-gnupg-recovery.success.json ]] || exit 1
 prefix=/var/log/toddy/h07-package-manager-driver
 echo $$ > "$prefix.pid"
 rm -f "$prefix.exit"

@@ -1,3 +1,10 @@
+> Current foundation execution: H01–H11 completed; H12 final ISO boot/recovery
+> matrix passed, native follow-ups remain. Use status.json and the newest evidence
+> for acceptance. The later H07 continuation notes are retained history and are
+> superseded by ADR-0092 where they require full Berkeley Tcl acceptance. Use
+> [FRESH-BUILD.md](FRESH-BUILD.md) for a new build, not historical recovery drivers.
+> Deliver H13 for owner testing; do not start any B story before explicit approval.
+
 # Development handoff
 
 ## Current scope

@@ -10,7 +10,7 @@ def main():
  parser.add_argument('iso',type=P);parser.add_argument('manifest',type=P)
  parser.add_argument('--firmware',choices=['bios','uefi'],required=True)
  parser.add_argument('--medium',choices=['cdrom','usb'],required=True)
- parser.add_argument('--probe',choices=['runtime','security'],default='runtime')
+ parser.add_argument('--probe',choices=['runtime','security','regex'],default='runtime')
  parser.add_argument('--offline',action='store_true');args=parser.parse_args()
  state={r['id']:r['status'] for r in json.loads((boot.ROOT/'status.json').read_text())['milestones']}
  manifest=json.loads(args.manifest.read_text());validation=manifest.get('validation_only')
@@ -47,7 +47,7 @@ def main():
   if {line.split()[1]:line.split()[0] for line in output.splitlines()}!=boot.FIRMWARE_HASHES:raise ValueError('Pinned UEFI firmware changed')
   subprocess.run(['docker','run','--rm','--network=none',*common,image,'cp',boot.VARS,'/work/OVMF_VARS.fd'],check=True)
   qemu+=['-drive',f'if=pflash,format=raw,readonly=on,file={boot.CODE}','-drive','if=pflash,format=raw,file=/work/OVMF_VARS.fd']
- source=(boot.ROOT/'scripts/host'/('live-console-probe.py' if args.probe=='runtime' else 'live-security-probe.py')).read_bytes()
+ source=(boot.ROOT/'scripts/host'/{'runtime':'live-console-probe.py','security':'live-security-probe.py','regex':'live-regex-probe.py'}[args.probe]).read_bytes()
  encoded=base64.b64encode(zlib.compress(source,9)).decode()
  code="import base64,zlib;exec(zlib.decompress(base64.b64decode("+repr(encoded)+")))"
  command=shlex.join(['python3','-c',code,token,'offline' if args.offline else 'online'])+'\n'

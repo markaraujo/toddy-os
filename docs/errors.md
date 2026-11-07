@@ -1053,3 +1053,20 @@ script init (frozen fs/exec.c sets task comm from bprm->filename). Validate the
 actual /proc/1/exe Bash binary instead, retain both expected error/root-absence
 checks, and print the measured executable. The timed-out assertion remains
 failed; repeat the actual menu and failure cases with the corrected probe.
+
+## 2026-11-07 — Last native fixture and fresh-build entry points
+
+The corrected native run passed 49/50 cases with unchanged binaries and complete
+raw evidence. tst-system alone returned unsupported because its root branch
+could not find nobody in the upstream minimal test root. Its single-UID namespace
+also prevents switching to an unmapped nobody UID. Run this unchanged RLIMIT test
+as tester with only a fresh mutable container fixture/lock assigned to that user;
+keep the original root fixture and unsupported record. Complete retry is pending.
+
+Fresh-build instruction review found two historical dispatcher assumptions:
+the math driver selected gmp-install (a resume-only recipe) and the package-manager
+driver required a GnuPG recovery marker even after a normal successful build.
+Select the full gmp recipe for fresh execution, recognize accepted old gmp-install,
+and accept either normal or recovery GnuPG success. Existing recipes/postchecks,
+versions and native results are unchanged. Shell syntax and all documented recipe/
+postcheck paths were checked; a second complete fresh build is not claimed.

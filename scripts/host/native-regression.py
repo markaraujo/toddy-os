@@ -4,6 +4,7 @@ import base64
 import hashlib
 import json
 import os
+import pwd
 from pathlib import Path
 import re
 import runpy
@@ -69,17 +70,20 @@ def main():
     raw=report['raw_evidence'];print('TODDY_NATIVE_REGRESSIONS_WORKSPACE '+str(work),flush=True)
     def save():
         p=work/'progress.json.part';p.write_text(json.dumps(report,indent=2)+'\n');p.replace(work/'progress.json')
-    def run(name,argv,cwd,timeout):
+    def run(name,argv,cwd,timeout,identity=None):
         start=time.monotonic();logpath=work/(name.replace('/','_')+'.log')
+        def demote():
+            os.setgroups([]);os.setgid(identity.pw_gid);os.setuid(identity.pw_uid)
         with logpath.open('xb') as log:
             process=subprocess.Popen(argv,cwd=cwd,stdout=log,stderr=subprocess.STDOUT,
-                env={'PATH':'/usr/bin:/usr/sbin','HOME':'/root','LC_ALL':'C','PYTHONDONTWRITEBYTECODE':'1'},start_new_session=True)
+                env={'PATH':'/usr/bin:/usr/sbin','HOME':identity.pw_dir if identity else '/root','LC_ALL':'C','PYTHONDONTWRITEBYTECODE':'1'},
+                start_new_session=True,preexec_fn=demote if identity else None)
             timed_out=False
             try:process.wait(timeout=timeout)
             except subprocess.TimeoutExpired:
                 timed_out=True;os.killpg(process.pid,signal.SIGKILL);process.wait()
         data=logpath.read_bytes();raw.setdefault(name,{})['command_log']=base64.b64encode(data).decode()
-        row={'test':name,'argv':argv,'cwd':str(cwd),'exit':process.returncode,'timeout':timed_out,
+        row={'test':name,'argv':argv,'cwd':str(cwd),'uid':identity.pw_uid if identity else 0,'exit':process.returncode,'timeout':timed_out,
              'seconds':time.monotonic()-start,'log_sha256':hashlib.sha256(data).hexdigest(),'passed':False}
         report['results'].append(row);save();print('TODDY_NATIVE_REGRESSION_STEP '+json.dumps(row),flush=True)
         return row
@@ -104,7 +108,25 @@ def main():
         if (argv[0]!='env' or argv.count(str(build/name))!=1
                 or any(any(c in token for c in (';','`','|','&','\n','$')) for token in argv)):
             raise ValueError('Unexpected frozen command structure: '+name)
-        row=run(name,argv,build.parent/Path(name).parent,120)
+        if name=='stdlib/tst-system':
+            # Its RLIMIT_NPROC branch must execute as a non-root UID. The
+            # upstream pristine sysroot has no passwd and maps only the caller.
+            # Give only a fresh disposable mutable fixture and its lock to tester.
+            identity=pwd.getpwnam('tester')
+            if identity.pw_uid==0:raise ValueError('Require an unprivileged test identity')
+            mutable=build/'testroot.root';lockfile=build/'testroot.pristine/lock.fd'
+            if mutable.resolve()!=mutable or not mutable.is_dir() or lockfile.resolve()!=lockfile or not lockfile.is_file():
+                raise ValueError('Unexpected generated container fixture')
+            previous=lockfile.stat();lock_sha=digest(lockfile)
+            mutable.rename(work/'container-root-before-unprivileged-system')
+            mutable.mkdir(mode=0o755);os.chown(mutable,identity.pw_uid,identity.pw_gid)
+            os.chown(lockfile,identity.pw_uid,identity.pw_gid)
+            try:row=run(name,argv,build.parent/Path(name).parent,120,identity)
+            finally:os.chown(lockfile,previous.st_uid,previous.st_gid)
+            if digest(lockfile)!=lock_sha:raise ValueError('Container lock contents changed')
+            row['fixture_policy']='Fresh mutable container root only; original preserved, lock owner restored; no account/syscall/test changes'
+        else:
+            row=run(name,argv,build.parent/Path(name).parent,120)
         row['dry_run_sha256']=hashlib.sha256(planning.stdout.encode()).hexdigest()
         evaluated=subprocess.check_output(['/bin/sh',str(build.parent/'scripts/evaluate-test.sh'),name,str(row['exit']),'false','false'],text=True)
         raw[name]['.test-result']=base64.b64encode(evaluated.encode()).decode()

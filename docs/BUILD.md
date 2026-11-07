@@ -1,11 +1,15 @@
 # Current build procedure
 
-H01–H06 are validated; H07 final-base implementation is in progress with 124
-accepted native packages, including native Dpkg, Perl support, Triehash and
-Which/Libseccomp/Tcsh and API/layout/build-support ownership. The corrected
-complete Berkeley DB Tcl rerun and APT/final closure remain pending. This remains a partial build manual; no Toddy ISO exists.
-Use status.json and the evidence files to distinguish passed milestones from
-recipes still under validation. All commands below run from the checkout root.
+H01–H11 have produced the source-built foundation ISO. H12's final-media
+firmware/recovery checks passed; remaining native follow-ups and H13/G1 acceptance
+are recorded in status.json. See [FRESH-BUILD.md](FRESH-BUILD.md) for the complete
+current fresh-build order and independent execution-state procedure, and
+[evidence/H11.md](evidence/H11.md) for the current artifact/inventory.
+
+The detailed sections below retain implementation history and per-component
+recovery notes. Statements about then-pending milestones describe that historical
+stage; they do not override current status/evidence or the fresh-build sequence.
+All commands run from the checkout root unless a guest working directory is stated.
 
 ## Workstation requirements
 

@@ -55,3 +55,23 @@ all chunks and the complete digest, then applies unchanged 50/50 criteria.
 The real recovered-report transfer validates this path; tests still reject
 missing, conflicting and corrupted chunks. Only disposable guest serial settings
 change. No workstation security policy or global runtime restriction changes.
+
+## Actual second run and unprivileged RLIMIT fixture
+
+The second complete run retained unchanged binaries and delivered all raw bytes
+through the dedicated UART. **49/50 passed**, including io/tst-lchmod. Only
+stdlib/tst-system returned 77 at frozen tst-system.c:206: its root-only branch
+requires getpwnam("nobody"), but upstream testroot.pristine intentionally contains
+no passwd database. test-container.c:1254-1289 maps only the original caller UID
+and GID, so merely adding nobody would still leave that UID unmapped. Preserve
+this exact unsupported result in H12-native-second-retry.json.
+
+Execute this unchanged test as existing unprivileged tester (UID 101) so its
+RLIMIT_NPROC assertion actually applies. Preserve the previous generated mutable
+container root, create a fresh one owned only by tester, and temporarily grant
+that user ownership of the existing private container lock. Restore lock ownership
+and verify its bytes afterward. No installed account, source, binary, test result,
+resource-limit assertion, namespace mapping or host policy is modified. The
+regular test-container runtime still isolates filesystem/mount/user state.
+A nonzero/unsupported result still fails the unchanged 50/50 gate. Full corrected
+positive execution remains pending. This is not an exception for the syscall.
