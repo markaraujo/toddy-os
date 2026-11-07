@@ -16,19 +16,19 @@ No milestone earns credit without completed acceptance evidence.
 
 The 76% phase total counts completed stories only. H10 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 84%.
 
-Last verified: 2026-11-07 12:15 UTC
+Last verified: 2026-11-07 12:18 UTC
 
 Verified:
 
 - Production Linux 7.1.8 kernel, boot configuration and guarded BIOS/UEFI loader recipe/postchecks passed.
 - Both native BIOS/UEFI guests passed Systemd startup, C compilation/execution, Kmod load/unload and clean power-off; backing hashes unchanged.
 - Cold h09-boot-ready pair saved, independently verified and builder restarted.
+- All five native media dependencies passed recipe/postcheck 0/0; 134 configured packages and empty Dpkg audit.
 
-Running: Building verified media dependencies before complete live-root/compression/initramfs assembly (ADR-0096).
+Running: Assembling the full live root, then compression, bound initramfs and private validation media.
 
 Remaining:
 
-- Install/check native Squashfs, Mtools and libburnia tools.
 - Assemble and audit the full live root, compress it and bind its initramfs.
 - Boot validation media through the actual live console and verify volatile writes/services/network.
 

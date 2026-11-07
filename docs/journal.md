@@ -883,3 +883,8 @@ hashes. Verified h09-boot-ready and restarted the builder; accepted H09 and
 started H10. ADR-0096 resolves the prepared media-tool dependency cycle while
 retaining separate H10 validation and H11 release profiles. Native console
 validation is prepared; no live/ISO acceptance is claimed yet.
+
+H10 media dependencies all passed actual 0/0 recipe/postchecks: Squashfs 4.7.5,
+Mtools 4.0.50 and libburn/libisofs/libisoburn 1.5.8 (selected pl02 revisions).
+There are 134 configured packages and no Dpkg audit findings. Evidence:
+docs/evidence/H10-media-tools.json. Full live assembly/boot remains unaccepted.

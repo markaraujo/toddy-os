@@ -1,0 +1,59 @@
+{
+  "observed_at": "2026-11-07T12:18:42.184202+00:00",
+  "steps": {
+    "h10-squashfs-tools": {
+      "started": "2026-11-07T12:16:34.946774+00:00",
+      "finished": "2026-11-07T12:16:45.974532+00:00",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "recipe_sha256": "8419f1112bba9ef085cb0825e71c500be8250a51d37fb6313585a4300a04e754",
+      "postcheck_sha256": "8f04ac3ef018f1c03f890fcab3f1cf12987a4f35ad5e065060d7ce5bf28a2673",
+      "log_sha256": "28119fb4fee94c9ebf232e06327cd3041baec3aeb088c1c0bfcc24cb6675b83c",
+      "record_sha256": "720f93bbfc579828ff80c56351c8f9f527beb9fb3ebb5fe1fd74099c82a2552e"
+    },
+    "h11-mtools": {
+      "started": "2026-11-07T12:16:53.940046+00:00",
+      "finished": "2026-11-07T12:17:09.030489+00:00",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "recipe_sha256": "c5e41143249b112fd67c316edf7e91227b4dca0f37a82877a69cbf54131f4e30",
+      "postcheck_sha256": "cbc3d95084f8d39dc68ff77d28a6617703453da42d4301df98484930dc694f50",
+      "log_sha256": "ebe3b688ee0b33b3e03ccbfb1a5980c3ca2de833d8483775675f8bd24e34d524",
+      "record_sha256": "5550fdc6d6f97c32dfa0443cf9a032b1b5f9e6e05d950af4626501e09802deb4"
+    },
+    "h11-libburn": {
+      "started": "2026-11-07T12:17:16.957926+00:00",
+      "finished": "2026-11-07T12:17:30.568246+00:00",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "recipe_sha256": "ca1426544d55f37e461607dbf483090746437a9aa07ecd556f262d7a6349afca",
+      "postcheck_sha256": "7cc544c2e429d1433ae81567550a7429c90f369e9aaa86705311610071301b9c",
+      "log_sha256": "9bb8add40d839a8886f5e3fdc17765c12feddd64cd893000a9c80329c3d7adf9",
+      "record_sha256": "c01750fffb9904f231b7d3acf8a91226cb135be072dbbf2ffee0ea20d6532d25"
+    },
+    "h11-libisofs": {
+      "started": "2026-11-07T12:17:38.475890+00:00",
+      "finished": "2026-11-07T12:17:51.812047+00:00",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "recipe_sha256": "619abef2275cc135edda416ceb3d2484695cb23498c4443053b62f6b20bfb98d",
+      "postcheck_sha256": "960879779e785bf0dd8d91aa9e045677a1994f1b91eb02def4ca05ef8a1bebb5",
+      "log_sha256": "77e22f973dd689e7f55e503f20d8cca6b3520c8e8b97da98e7343ae9ae30e133",
+      "record_sha256": "e05cf2c7b990edaa8627ce305f18bb05cb4d052bd4e4b03df7fc54546b93660f"
+    },
+    "h11-libisoburn": {
+      "started": "2026-11-07T12:17:59.724556+00:00",
+      "finished": "2026-11-07T12:18:14.898365+00:00",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "recipe_sha256": "cf46b48f5dd74b1d0c182e236e13def9e7a7fd02f6d720e315d1eb3e1f860dbd",
+      "postcheck_sha256": "4a7bfe9629bf5fc819d0bd909346b10f718bc0ba5a30a427c871fcaa25587229",
+      "log_sha256": "7b4fc14cda3018b1a379ffde4317755a869ffea560e86c715163f2288ed1673f",
+      "record_sha256": "59115f91a11c67f01efc2d911f99ad4ab927e32b14fbfb0cdb5fa4e01bf95d44"
+    }
+  },
+  "driver_exit": 0,
+  "package_count": 134,
+  "dpkg_audit": "",
+  "live_boot_accepted": false
+}
