@@ -144,32 +144,24 @@ def outputs(data):
                      f'<span class="tag">{esc(row["status"].replace("_", " "))} · {row["weight"]} points</span></summary>'
                      f'<p>Prerequisites: {esc(", ".join(row["depends_on"]) or "None")}</p>'
                      f'<ul>{criteria}</ul><a href="../{esc(row["story"])}">Open story</a></details>')
-    page = '''<!doctype html><html lang="en"><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>Toddy OS — Development dashboard</title>
-<style>
-:root{color-scheme:dark;--bg:#171411;--panel:#24201c;--ink:#f6ecdc;--muted:#c1b5a4;--accent:#e6a16c}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,sans-serif}
-main{max-width:1100px;margin:auto;padding:36px 24px}header{display:flex;gap:24px;align-items:center}
-header img{width:90px;height:90px;object-fit:contain}h1{margin:0;font-size:2rem}p{color:var(--muted)}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}.metric{background:var(--panel);padding:22px;border-radius:14px}
-.metric strong{display:block;font-size:2rem;color:var(--accent)}progress{width:100%;accent-color:var(--accent)}
-.active-work{background:var(--panel);border-left:4px solid var(--accent);border-radius:10px;padding:20px 24px;margin:24px 0}.active-work h2{margin-top:0}.active-work h3{margin-bottom:0;font-size:1rem}.active-work ul{margin-top:6px}
-nav{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0}button{cursor:pointer;background:var(--panel);color:var(--ink);border:1px solid #71604c;border-radius:8px;padding:10px 16px}
-button[aria-pressed=true]{background:#704023}button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
-details{background:var(--panel);border:1px solid #44382d;border-radius:10px;margin:10px 0;padding:16px}summary{cursor:pointer}.id{color:var(--accent);font-weight:700}.tag{display:block;color:var(--muted);font-size:.85rem;margin-left:42px}a{color:#ffc28f}footer{margin-top:36px;font-size:.9rem}li{margin:8px 0}
-@media(max-width:650px){.metrics{grid-template-columns:1fr}header img{width:65px;height:65px}h1{font-size:1.5rem}}
-</style><main><header><img src="../assets/brand/toddy-os-system-icon.png" alt="Toddy OS mascot"><div><h1>Toddy OS</h1><p>Development dashboard · Evidence before progress</p></div></header>
-'''
-    page += f'<p>{esc(data["current_scope"])}</p><p>Bootstrap: {esc(data["bootstrap"])} · Updated {esc(data["updated_at"])}</p>'
-    page += '<section class="metrics" aria-label="Project progress">'
-    for phase, title in (("foundation", "LFS foundation"), ("agentic", "Agentic desktop")):
-        page += f'<article class="metric">{title}<strong>{pct[phase]}%</strong><progress aria-label="{title}" value="{pct[phase]}" max="100"></progress></article>'
-    page += f'<article class="metric">Next milestone<strong>{esc(data["next_story"])}</strong>G1 {esc(data["gates"]["G1"])} · G2 {esc(data["gates"]["G2"])}</article></section>'
-    page += active_page
-    page += '<nav aria-label="Filter milestones"><button data-filter="all" aria-pressed="true">All stories</button><button data-filter="foundation" aria-pressed="false">Phase 1 · Foundation</button><button data-filter="agentic" aria-pressed="false">Phase 2 · Agentic</button></nav>'
-    page += '<section aria-label="Milestones">' + "".join(cards) + '</section>'
-    page += '<footer><a href="../PRD.md">PRD</a> · <a href="../docs/DEVELOPMENT.md">Development handoff</a><p>Published state snapshot, not a live process monitor. No telemetry, API calls or external dependencies. Percentages reflect completed, evidenced weighted milestones.</p></footer></main>'
-    page += '''<script>document.querySelectorAll('button[data-filter]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('button[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.querySelectorAll('details[data-phase]').forEach(d=>d.hidden=b.dataset.filter!=='all'&&d.dataset.phase!==b.dataset.filter)}));</script></html>\n'''
+    metrics = []
+    for phase, title in (("foundation", "LFS foundation"), ("agentic", "Toddy desktop & assistant")):
+        if phase == "foundation":
+            note = "G1 passed · VM-tested" if data["gates"]["G1"] == "passed" else "Foundation work pending"
+        elif data["gates"]["G2"] == "passed":
+            note = "Experimental owner preview · see evidence"
+        elif any(r["phase"] == "agentic" and r["status"] != "not_started" for r in data["milestones"]):
+            note = "Small verified deliveries · see milestone state"
+        else:
+            note = "Replanned · guest implementation pending"
+        metrics.append(f'<article class="metric">{title}<strong>{pct[phase]}%</strong><small>{note}</small><progress aria-label="{title}" value="{pct[phase]}" max="100"></progress></article>')
+    metrics.append(f'<article class="metric">Next guest milestone<strong>{esc(data["next_story"])}</strong><small>G1 {esc(data["gates"]["G1"])} · G2 {esc(data["gates"]["G2"])}</small></article>')
+    page = (ROOT / "dashboard/template.html").read_text()
+    replacements = {"METRICS": "".join(metrics), "SCOPE": esc(data["current_scope"]),
+                    "UPDATED": esc(data["updated_at"]), "ACTIVE_WORK": active_page,
+                    "STORIES": "".join(cards)}
+    for key, value in replacements.items():
+        page = page.replace("{{" + key + "}}", value)
     return {"STATUS.md": text, "dashboard/index.html": page}
 
 

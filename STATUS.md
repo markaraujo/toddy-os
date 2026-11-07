@@ -4,7 +4,7 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-H01-H13 complete; G1 passed in QEMU/KVM and foundation prerelease v0.1.0-foundation.1 is public. Phase 2 has been replanned for a minimal GNOME desktop, native Toddy assistant, optional local/API AI and third-party driver setup, with focused basic tests and small traceable deliveries. Planning and navy brand/UI design are authorized; B01-B13 guest implementation remains unstarted. G2 and physical hardware validation are pending.
+H01-H13 complete; G1 passed in QEMU/KVM and foundation prerelease v0.1.0-foundation.1 is public. Phase 2 has been replanned for a minimal GNOME desktop and customizable native Toddy assistant, with optional local/API AI, developer apps and third-party driver setup. Navy brand assets and labeled UI/installer concepts are prepared; focused basic tests and small traceable deliveries replace exhaustive preview validation. B01-B13 guest implementation remains unstarted; G2 and physical hardware validation are pending.
 
 Foundation: **100%** · Agentic desktop: **0%**
 

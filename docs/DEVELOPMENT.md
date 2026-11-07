@@ -14,7 +14,11 @@ The owner additionally requires user-customizable harness profiles/skills follow
 Hermes/OpenClaw patterns (docs/PHASE-2-HARNESS.md and ADR-0106), plus humorous realistic GNOME installer scenes,
 small traceable commits and a navy public-page redesign preserving the exact logo.
 
-Finish and report planning/brand/page work before provisioning the Phase 2 guest.
+Planning and brand/UI concepts are now prepared in the repository; the public
+page includes selectable desktop/assistant/task/installer concepts. See
+[brand evidence](evidence/navy-brand-preview.md) and
+[Pages evidence](evidence/navy-pages-preview.md). Report this delivery before
+provisioning the Phase 2 guest.
 B stories remain not_started; repository design preparation does not satisfy
 B11 runtime acceptance. G1 is passed, G2 pending, physical hardware unverified.
 Do not interpret a screenshot mockup or an optional package candidate as a working

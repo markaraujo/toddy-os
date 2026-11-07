@@ -1024,3 +1024,13 @@ GNOME-inspired HTML/CSS concepts and a humorous four-scene installer presentatio
 Browser inspection and mobile scene/theme/slideshow checks passed. These are
 labeled design concepts, not guest runtime acceptance. See navy-brand-preview
 verification under docs/evidence; B11 remains unstarted.
+
+## 2026-11-07 — Navy public presentation with selectable experience previews
+
+Replaced the plain dashboard presentation while retaining status.json-driven
+progress, story acceptance/evidence and phase filters. Added four selectable
+concepts and the installer storytelling link on the existing GitHub Pages site.
+The foundation download remains clearly distinct from planned graphics/assistant.
+Export uses an explicit asset/UI allowlist; no new framework, hosted service or
+telemetry. Existing checks and desktop/mobile browser interactions pass. Final
+publication follows this checkpoint; see docs/evidence/navy-pages-preview.md.
