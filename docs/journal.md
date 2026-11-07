@@ -1234,3 +1234,12 @@ The README now links the public site and two clearly labeled current concept
 screens. Separate repository-governance evidence records the owner-authorized
 main/tag rules, CODEOWNERS, contributor/security policies, fork CI permissions and
 secret detection/history audit. Publication checks are recorded after the push.
+
+### Review publication verification
+
+Main a4552ea passed planning/check, public-content and Pages build/deploy; the
+CODEOWNERS API reported no errors. The README rendered the transparent mascot
+and two labeled concepts on GitHub. A strict redacted history scan exited zero
+with no findings (0.921 seconds). Owner-only main/tag control remains active;
+Dependabot PR #1 was left for owner review, not merged automatically. The phase
+progress command still reports 0% guest Phase 2 and execution approval false.

@@ -117,3 +117,21 @@ Git does not invalidate an exposed credential or erase already public copies.
 - [Secret Protection availability](https://docs.github.com/en/code-security/getting-started/quickstart-for-securing-your-repository)
 - [Official pinned scanner release](https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1)
 - [Pinned Pages artifact implementation](https://github.com/actions/upload-pages-artifact/blob/56afc609e74202658d3ffba0e8f6dda462b719fa/action.yml)
+
+### Publication verification completed
+
+The owner-authorized commits were pushed through the exact-owner bypass, with
+GitHub explicitly reporting the applicable protected-branch rules. On main commit
+a4552eafc6b9101f9c92b3f2a039d0aa5b240292, check, public-content, Pages build and
+deploy all completed successfully. Planning run 42408887762, safety run
+42408887964 and Pages run 42408887750 are the recorded workflow evidence.
+The CODEOWNERS errors API with ref=main returned an empty errors array.
+The main ruleset readback still required owner/code-owner approval plus current
+check/public-content results from GitHub Actions. A strict final local history
+scan exited zero with no findings in 0.921 seconds after the three new commits.
+
+Dependabot opened PR #1 for grouped Actions updates. It remains unmerged for
+owner review; enabling dependency alerts did not grant a bot merge authority.
+Playwright inspected the published README: its header uses the approved alpha-
+transparent mascot and the two remaining images are labeled current design
+concepts. No beige header image remains in the README.
