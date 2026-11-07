@@ -825,3 +825,13 @@ without rebuilding. All 142 unit tests and signed-repository/dependency/upgrade/
 conffile/tamper/HTTPS/sandbox/cache/recovery/remove/purge checks passed. There are
 now 126 accepted native packages. Resumed final-base driver 28080 for metadata/
 ownership audits and checkpoint; H07 remains incomplete until those gates pass.
+
+### 2026-11-07 — Preserve numeric owners in metadata extraction
+
+Closure accepted 14 metadata generations before its ownership guard rejected
+CMake after an archive account name mapped numeric 101 to target messagebus 18.
+Preserved the failed stage and unchanged installed CMake. Native numeric data
+extraction corrected the cause under the same ownership policy; CMake's revised
+archive/install passed and closure advanced to GCC (30/126 complete). Existing
+directory owner retention was separately measured; final explicit reviewed
+build-directory reconciliation is prepared and awaits the serial closure.

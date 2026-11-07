@@ -104,8 +104,24 @@ def main():
         temporary=backend.workspace()/archive.name
         if temporary.exists() or temporary.is_symlink():raise SystemExit('Preserve existing metadata archive input')
         shutil.copy2(archive,temporary)
-        try:backend.run('dpkg-deb','--raw-extract','/'+str(temporary.relative_to(TARGET)),'/'+str(stage.relative_to(TARGET)))
-        finally:temporary.unlink()
+        # Historic bootstrap archives carry builder account names as well as
+        # numeric IDs. Native messagebus is UID 18, whereas the original builder
+        # used that name for UID 101 (target tester). Preserve numeric ownership
+        # so the existing reviewed policy can normalize tester, not a service UID.
+        data=temporary.with_name(temporary.name+'.data.tar')
+        if data.exists() or data.is_symlink():raise SystemExit('Preserve existing numeric archive input')
+        try:
+            with data.open('xb') as stream:
+                backend.run('dpkg-deb','--fsys-tarfile','/'+str(temporary.relative_to(TARGET)),stdout=stream)
+            stage.mkdir()
+            backend.run('tar','--extract','--numeric-owner','--same-permissions',
+                        '--file','/'+str(data.relative_to(TARGET)),
+                        '--directory','/'+str(stage.relative_to(TARGET)))
+            backend.run('dpkg-deb','--control','/'+str(temporary.relative_to(TARGET)),
+                        '/'+str((stage/'DEBIAN').relative_to(TARGET)))
+        finally:
+            temporary.unlink()
+            if data.exists():data.unlink()
         control=stage/'DEBIAN'
         if any(p.name not in {'control','md5sums','conffiles'} for p in control.iterdir()):
             raise SystemExit('Unexpected predecessor package control program/data')

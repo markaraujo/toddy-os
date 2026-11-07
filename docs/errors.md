@@ -920,3 +920,13 @@ under pipefail. Capture its first line with sed -n '1p', which consumes the whol
 producer stream, preserving command failure detection. Keep the raw 141 result
 (log 0ebf480e3c70d80bec103a10e72894018dffad02c39718bb7c7c13289ca29e9e),
 then repeat the same installed verification/postconditions; no recompilation.
+
+### 2026-11-07 — Archive owner-name mapping blocked metadata closure at CMake
+
+The ownership guard refused CMake Licenses as 18:18 after native raw extraction;
+its actual original archive record and installed directory are 101:101 (tester).
+Builder account names mapped messagebus differently from the target. Preserve
+numeric ownership using native fsys-tarfile plus tar --numeric-owner before the
+unchanged policy runs. Saved the failed stage and confirmed no CMake metadata
+archive/install occurred; 14 earlier generations remain complete. Retried the
+same serial closure after the correction. See ADR-0094 and its native evidence.

@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 11:27 UTC
+Last verified: 2026-11-07 11:33 UTC
 
 Verified:
 
@@ -26,11 +26,11 @@ Verified:
 - Verified paired cold checkpoint at the 124-package boundary.
 - Independent Linux 7.1.8 native build and BIOS/UEFI diagnostic boots passed, including actual module insertion/removal and namespace creation; no final kernel package, full foundation boot or ISO acceptance.
 
-Running: All 126 package acceptance checks passed. Final closure driver 28080 is applying the owned Python alias, quarantining reviewed bootstrap remnants and closing versioned metadata before seven final audits. H07 still requires those audits and a verified cold checkpoint; full Berkeley standard coverage remains an explicit limitation.
+Running: All 126 package gates passed; owned Python alias and quarantine of 931 bootstrap paths passed. Metadata closure driver 34804 has completed 30/126 generations and is upgrading GCC metadata. Corrected numeric archive ownership after the CMake guard refused a mapped service UID (ADR-0094); final audits, reviewed directory reconciliation and cold checkpoint remain.
 
 Remaining:
 
-- Finish owned Python alias, bootstrap quarantine and metadata closure for all 126 packages.
+- Finish remaining metadata generations; reconcile only verified build-owned directories against reviewed package identities.
 - Pass seven final audits and Dpkg/APT consistency checks; diagnose any real findings.
 - Save final H07 evidence and verified paired cold checkpoint before accepting the story.
 
