@@ -1104,3 +1104,12 @@ state from a failed generation, or disable xattr/hardlink checks. Diagnose its
 producer, correct the implementation and assemble a new generation. The native
 component probe is python3 scripts/host/probe_image_key_marker_review.py --attribution;
 its full-profile assembly/boot fields deliberately remain false.
+
+For an image-runtime-audit failure (ADR-0074), inspect the exact executable,
+PT_INTERP or shebang, and the native loader diagnostic. Compare provider paths
+with image attribution and package provenance. A provider installed in the builder
+does not satisfy an absent image file. Preserve the failed generation; repair the
+package/declaration/assembly cause and create a fresh generation. Do not inject
+builder library paths, disable the audit, or claim optional dlopen/data coverage
+from a successful --list. The native --runtime probe preserves its failed fixture
+and reports its path; its successful fixture is removed only after log capture.

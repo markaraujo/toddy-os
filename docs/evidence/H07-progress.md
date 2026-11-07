@@ -1321,3 +1321,15 @@ d8ed88b0566e2211c79feca478d2528c7f8f3f4de48d53ad1007a0e4a1bb2a36
 (.local/logs/h07-db-standard-progress-<sha256>.json). Independent image-state
 attribution checks are recorded in ADR-0073; no active inputs or installed
 package state changed, and H07 remains 124/126 accepted packages.
+
+
+2026-11-07 02:52 UTC — Both actual Berkeley driver identities remain live, with
+no terminal exits. Original: block 25/27, Recd011 recno recovery iteration 104,
+the same two known failures. Corrected: block 4/27, Fop010.181, zero FAIL entries.
+Raw observation SHA-256:
+d5f513ae80b87bccb973ab4e7bfd1d54984066e301b1c46d1005726a81998751
+(.local/logs/h07-db-standard-progress-<sha256>.json). Independent private native
+image executable-resolution checks passed (ADR-0074): seventeen packages,
+147 dynamic executable entries, 41 scripts, eight refusal cases. The installed
+builder remains unchanged; H07 is still 124/126 accepted packages. No full
+foundation image or later milestone acceptance is claimed.

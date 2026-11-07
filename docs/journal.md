@@ -519,3 +519,11 @@ cases failed as expected; existing payload and marker checks still pass. Native
 Tar input-manifest preservation and the fifteen declared Systemd links were
 independently verified. Full assembly readiness remains correctly refused by
 unfinished H07 metadata; no later milestone or boot acceptance was granted.
+
+2026-11-07 — Added native image loader/shebang availability checks (ADR-0074).
+The first eleven-package marker fixture correctly exposed absent Coreutils/env
+and Libxcrypt; H07 metadata closure remains necessary. Corrected the comparator's
+overly narrow interpreter alias assumption using actual Glibc headers. A fresh
+seventeen-package root then passed 147 dynamic executable entries, 41 scripts and
+eight refusal cases, with the installed builder unchanged. Full assembly stays
+gated on H07-H09; component readiness is not milestone acceptance.

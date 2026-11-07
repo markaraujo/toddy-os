@@ -323,3 +323,11 @@ report together with the final image manifest. Every package/generated path must
 match its declared bytes, metadata and origin; unknown state is a failure. This
 also checks source xattrs and remaining hardlink groups. The comparison does not
 replace arbitrary-secret, dependency, license or actual boot acceptance.
+
+ADR-0074 adds image-runtime-audit after attribution. Each dynamic executable is
+resolved by its own image loader inside the private root, and executable shebang
+providers must exist there with verified bytes and execute permissions. Preserve
+the full provider results and unresolved findings. Reproduce the native component
+with python3 scripts/host/probe_image_key_marker_review.py --runtime. This checks
+executable availability; native package version constraints, optional tool/data/
+plugin dependencies, symbol execution and boot remain separate requirements.

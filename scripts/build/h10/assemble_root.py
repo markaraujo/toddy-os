@@ -24,6 +24,7 @@ import copy_selected_root
 import fresh_directories
 import image_attribution
 import image_payload
+import image_runtime
 import info_index
 import live_accounts
 import live_configuration
@@ -171,6 +172,10 @@ def assemble(backend, image, work, *, release=False, repository=PROJECT,
                 backend, image, plan, copied['hardlink_groups']))
             if not attributed['attribution_check_passed']:
                 raise ValueError('Image contains missing, changed or undeclared state; preserve attribution report')
+            runtime_entries = {'/' + name: entry['expected'] for name, entry in plan.items() if name != '.'}
+            runtime = step('image-runtime-audit', lambda: image_runtime.audit(backend, image, runtime_entries))
+            if not runtime['runtime_availability_check_passed']:
+                raise ValueError('Image executable linkage or interpreter is unavailable; preserve runtime report')
             if release:
                 markers = step('key-marker-review', lambda: review_image_key_markers.review(
                     backend, image, repository, records, cache))

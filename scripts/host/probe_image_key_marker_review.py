@@ -33,6 +33,9 @@ try:
   name,version,arch,state,depends,predepends=line.split('\t')
   if state=='install ok installed':installed[name]=(version,arch,depends+','+predepends)
  pending=['openssl','filesystem-layout'];selected=set()
+ # The original eleven-package marker fixture deliberately did not prove runtime
+ # closure. H07's prepared metadata closure adds these measured providers.
+ if RUNTIME_AUDIT:pending.extend(['coreutils','libxcrypt'])
  while pending:
   name=pending.pop()
   if name in selected:continue
@@ -102,6 +105,43 @@ try:
   payload_result={'positive':payload_positive,'negative_cases':payload_cases,'restored_owned_payload_passed':True,
    'component_sha256':digest(base/'image_payload.py'),'live_profile_positive_verified':False,
    'full_image_accepted':False}
+ runtime_result=None
+ if RUNTIME_AUDIT:
+  import image_runtime
+  runtime_entries={}
+  for name in selected:
+   version,arch,_=installed[name]
+   record=json.loads((Path('/var/log/toddy/packages')/f'{name}_{version}_{arch}.json').read_text())
+   runtime_entries.update(record['payload'])
+  runtime_positive=image_runtime.audit(backend,image,runtime_entries)
+  assert runtime_positive['runtime_availability_check_passed'],runtime_positive['findings']
+  assert runtime_positive['counts']['dynamic-executable']>10 and runtime_positive['counts']['script']>10
+  runtime_cases=[]
+  def runtime_refused(label,call):
+   try:call()
+   except (ValueError,OSError) as error:runtime_cases.append({'case':label,'reason':str(error)})
+   else:raise AssertionError(label+' was accepted')
+  def inspect_openssl():return image_runtime.executable(backend,image,'/usr/bin/openssl',runtime_entries)
+  library=image/'usr/lib/libcrypto.so.4';saved=base/'held-libcrypto'
+  assert library.is_file() and not library.is_symlink()
+  library.rename(saved);runtime_refused('actual loader rejects missing native library',inspect_openssl);saved.rename(library)
+  actual_loader=image/'usr/lib/ld-linux-x86-64.so.2';saved_loader=base/'held-loader'
+  actual_loader.rename(saved_loader);runtime_refused('missing image interpreter',inspect_openssl);saved_loader.rename(actual_loader)
+  without=dict(runtime_entries);del without['/usr/lib/libcrypto.so.4']
+  runtime_refused('resolved library lacks native ownership',lambda:image_runtime.executable(backend,image,'/usr/bin/openssl',without))
+  runtime_refused('builder root is not an image',lambda:image_runtime.audit(backend,root,runtime_entries))
+  shell=image/'usr/bin/bash';oldmode=shell.stat().st_mode & 0o7777
+  shell.chmod(0o644)
+  runtime_refused('shebang interpreter loses execute permission',lambda:image_runtime.shebang(image,'/private-probe',b'#!/bin/bash\n',runtime_entries))
+  shell.chmod(oldmode)
+  runtime_refused('missing absolute shebang provider',lambda:image_runtime.shebang(image,'/private-probe',b'#!/usr/bin/absent-toddy-probe\n',runtime_entries))
+  runtime_refused('relative shebang provider',lambda:image_runtime.shebang(image,'/private-probe',b'#!bash\n',runtime_entries))
+  runtime_refused('builder-only interpreter',lambda:image_runtime.shebang(image,'/private-probe',b'#!/tools/bin/bash\n',runtime_entries))
+  restored_runtime=image_runtime.audit(backend,image,runtime_entries)
+  assert restored_runtime['runtime_availability_check_passed'],restored_runtime['findings']
+  runtime_result={'positive':runtime_positive,'negative_cases':runtime_cases,
+   'restored_runtime_passed':True,'component_sha256':digest(base/'image_runtime.py'),
+   'complete_dependency_closure_verified':False}
  passed=check()
  assert passed['private_key_marker_check_passed'] and len(passed['raw_scan']['findings'])==6
  assert len(passed['qualified_document_examples'])==6 and not passed['unresolved_findings']
@@ -201,7 +241,7 @@ try:
     'complete_foundation_profile_verified':False,'release_image_or_boot_accepted':False}
  assert digest(root/'var/lib/dpkg/status')==before
  result={'fixture':str(base),'configured_packages':sorted(selected),'positive':passed,'negative_cases':cases,
-  'payload_audit':payload_result,
+  'payload_audit':payload_result,'runtime_audit':runtime_result,
   'attribution_audit':attribution_result,
   'native_install_log':(base/'native-install.log').read_text(),
   'native_install_log_sha256':digest(base/'native-install.log'),'builder_status_sha256':before,
@@ -220,8 +260,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--payload', action='store_true', help='Also verify owned image payload and native metadata against real corruption cases')
     parser.add_argument('--attribution', action='store_true', help='Also verify declared image entries, account data and extended metadata')
+    parser.add_argument('--runtime', action='store_true', help='Also verify actual image loader and shebang providers')
     options = parser.parse_args()
-    if options.attribution:
+    if options.attribution or options.runtime:
         options.payload = True
     sources = dict(SOURCES)
     if options.payload:
@@ -231,10 +272,14 @@ def main():
     if options.attribution:
         for name in ('image_attribution.py', 'copy_selected_root.py', 'live_console.py'):
             sources[name] = base64.b64encode((ROOT / 'scripts/build/h10' / name).read_bytes()).decode()
+    if options.runtime:
+        sources['image_runtime.py'] = base64.b64encode((ROOT / 'scripts/build/h10/image_runtime.py').read_bytes()).decode()
+        sources['audit_native_elf.py'] = base64.b64encode((ROOT / 'scripts/build/audit_native_elf.py').read_bytes()).decode()
     baseline = base64.b64encode((ROOT / 'config/live-account-baseline.json').read_bytes()).decode()
     result = subprocess.run(ssh_args() + ['python3 -B -'],
         input='SOURCES=' + repr(sources) + '\nPAYLOAD_AUDIT=' + repr(options.payload)
-            + '\nATTRIBUTION_AUDIT=' + repr(options.attribution) + '\nACCOUNT_BASELINE=' + repr(baseline) + '\n' + REMOTE,
+            + '\nATTRIBUTION_AUDIT=' + repr(options.attribution) + '\nRUNTIME_AUDIT=' + repr(options.runtime)
+            + '\nACCOUNT_BASELINE=' + repr(baseline) + '\n' + REMOTE,
         text=True, capture_output=True, timeout=600)
     raw = (result.stdout + result.stderr).encode()
     sha = hashlib.sha256(raw).hexdigest()
@@ -251,6 +296,7 @@ def main():
         'negative_cases': len(report['negative_cases']), 'real_private_key_rejected': report['real_private_key_rejected'],
         'payload_negative_cases': len(report['payload_audit']['negative_cases']) if report['payload_audit'] else None,
         'attribution_negative_cases': len(report['attribution_audit']['negative_cases']) if report['attribution_audit'] else None,
+        'runtime_negative_cases': len(report['runtime_audit']['negative_cases']) if report['runtime_audit'] else None,
         'whole_image_credential_audit_accepted': False}))
 
 

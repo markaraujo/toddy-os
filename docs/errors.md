@@ -681,3 +681,17 @@ against frozen sources and native OpenSSL parsing. No scanner findings were
 suppressed and no full credential/image acceptance was granted. A variable-name
 collision in the new probe's changed-file case was also corrected before the
 successful rerun. The native component and runtime/source ownership checks pass.
+## Image executable-resolution fixture and interpreter assumption (2026-11-07)
+
+Symptom: the first native image-runtime probe failed for missing env/libcrypt
+and for Glibc utilities whose PT_INTERP did not use /lib64.
+Cause: the eleven-package marker/payload fixture never claimed runtime closure;
+it omitted Coreutils and Libxcrypt. The comparator also incorrectly assumed the
+alias was the only legitimate loader path.
+Correction: add actual native providers to this runtime fixture and accept the
+two measured paths only when they resolve to the same owned loader. Preserve the
+original failed fixture/log; leave active build metadata unchanged. H07's prepared
+metadata closure already handles the measured provider relationships.
+Verification: a fresh seventeen-package fixture passes 147 dynamic entries,
+41 scripts and eight refusal cases, then passes again after restoration. See
+ADR-0074 for source hashes, complete raw evidence and limitations.
