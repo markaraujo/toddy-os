@@ -66,3 +66,20 @@ Reproduction:
 Supply the actual printed fixture for later runs. The legacy local observation
 shortcut now delegates to this versioned command, preventing reuse of the old
 case-only report. H07 remains 124/126 accepted packages and 38% foundation credit.
+
+## Replication detail labels — 2026-11-07 09:03 UTC
+
+The outer group was correctly reported as 20/21, but the configuration field
+recognized only Recd/Fop/Test prefixes and could retain the earlier Test142
+compression description. Extend detail parsing to the actual numbered suite
+labels and Basic repmgr substeps/reproduction commands. These details never
+determine the group, pass state or time estimate. Two regressions cover stale
+configuration replacement, automated replication steps, failure preservation
+and the bounded tail. All six observer regressions pass.
+
+Actual source-qualified observation now reports original 27/hash, Test097,
+and corrected 21/other repmgr, Repmgr025.h. Both identities remain live; no
+terminal exits exist, original retains two failures and corrected has none.
+Raw observation SHA-256:
+db25c36e4e06c63e292f20a84a47c56f21b13e0607fea48dca8c6adc8f9e19a8.
+Only the read-only observer changed; no active test input or acceptance changed.

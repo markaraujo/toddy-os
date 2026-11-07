@@ -1416,3 +1416,14 @@ Independent preparation connected a real private compressed filesystem to its
 native initramfs with strict evidence/profile binding (ADR-0081). Sixteen
 negative bindings and premature production gates passed; full foundation image
 and boot remain pending. No installed package or active H07 input changed.
+
+### Replication detail correction and verified wait — 2026-11-07 09:03 UTC
+
+Original PID 1364 is live in 27/27, hash method 8/9, Test097.c; it completed
+the previous Test044 crash/recovery cycles and retains the same two failures.
+Corrected PID 1107192 is live in 21/27, Repmgr025.h, zero FAIL entries. Neither
+has terminal exits. The observer now replaces stale compression configuration
+labels during replication; outer-group classification is unchanged (ADR-0079).
+Raw observation SHA-256:
+db25c36e4e06c63e292f20a84a47c56f21b13e0607fea48dca8c6adc8f9e19a8.
+H07 stays 124/126; complete corrected suite and production postchecks precede APT.

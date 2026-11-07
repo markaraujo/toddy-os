@@ -40,6 +40,29 @@ class StandardProgressTests(unittest.TestCase):
         self.assertEqual(result['group_count'], 27)
         self.assertEqual(result['outer_header_count'], 35)
 
+    def test_replication_configuration_replaces_previous_access_method(self):
+        for prefix in ('Repmgr', 'Rep', 'Sec'):
+            header = prefix + '024 (btree): current configuration'
+            step = '\t' + prefix + '024.h: current operation'
+            result = progress.details(iter(['Test142: btree -compress\n', header, step]))
+            self.assertEqual(result['configuration'], header)
+            self.assertEqual(result['last_case'], step.strip())
+            self.assertNotIn('progress', result)
+
+    def test_automated_replication_details_keep_failures_and_bounded_tail(self):
+        for kind in ('', 'election ', 'init '):
+            header = 'Repmgr003: automated replication configurations'
+            dispatch = 'To reproduce this case: basic_repmgr_init_test 100 1 0 1 0 0'
+            step = '\tBasic repmgr ' + kind + 'test.h: current operation'
+            failure = 'FAIL: synthetic parser regression'
+            lines = ['older output'] * 8 + [header, dispatch, step, failure]
+            result = progress.details(iter(lines))
+            self.assertEqual(result['configuration'], header)
+            self.assertEqual(result['last_case'], step.strip())
+            self.assertEqual(result['last_dispatch'], dispatch)
+            self.assertEqual(result['failures'], [failure])
+            self.assertEqual(result['tail'], lines[-5:])
+
 
 if __name__ == '__main__':
     unittest.main()

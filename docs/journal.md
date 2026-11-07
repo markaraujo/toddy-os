@@ -590,3 +590,9 @@ journal in the component experiment is explicitly a metadata fixture; no full
 foundation or boot acceptance is claimed. At 08:56 UTC corrected Berkeley is
 still live in group 20/27, zero FAIL entries; original is hash 8/9, Test044 cycle 3,
 with the same two failures. No terminal exits; H07 remains 124/126.
+
+2026-11-07 09:03 UTC — Verified continued DB progress: original final matrix
+hash method 8/9 has reached Test097 after all three Test044 recovery cycles;
+corrected other_repmgr group 21/27 reached Repmgr025.h with no FAIL entries.
+Fixed stale configuration details in the read-only observer and added two
+regressions (ADR-0079). Both drivers are live; terminal results remain pending.

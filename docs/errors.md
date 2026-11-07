@@ -797,3 +797,12 @@ derive the hash/epoch, and recheck input stability. Native component integration
 passed sixteen mismatch/corruption cases; both premature production profiles
 refused before output. Full positive production execution remains gated. ADR-0081
 records evidence and the metadata-fixture limits of the private experiment.
+
+## 2026-11-07 — Replication configuration detail retained an earlier test
+
+The corrected observer identified the outer replication group accurately but
+its narrower configuration regex retained Test142 from compression. Broaden
+only detailed labels to numbered suites and Basic repmgr steps/reproduction
+commands. Keep outer group derivation and strict acceptance unchanged. Two
+regressions and real live observation now show Repmgr025 under group 21; see
+ADR-0079. No database process or input was altered.

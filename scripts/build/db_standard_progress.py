@@ -44,6 +44,27 @@ def classify(outer_log):
             'access_method_count': len(METHODS), 'time_percent_estimated': False}
 
 
+def details(lines):
+    """Detailed log labels never determine outer-group progress or acceptance."""
+    last = configuration = dispatch = None
+    failures = []
+    tail = deque(maxlen=5)
+    for line in lines:
+        line = line.rstrip('\n')
+        tail.append(line)
+        if (re.match(r'^\s*[A-Z][A-Za-z_]*\d{3}[.: ]', line)
+                or re.match(r'^\s*Basic repmgr (?:election |init )?test[.: ]', line)):
+            last = line.strip()
+        if re.match(r'^[A-Z][A-Za-z_]*[0-9]{3}[: (]', line):
+            configuration = line
+        if line.startswith(('eval { test', 'To reproduce this case: ')):
+            dispatch = line
+        if line.startswith('FAIL'):
+            failures.append(line)
+    return {'last_case': last, 'configuration': configuration, 'last_dispatch': dispatch,
+            'tail': list(tail), 'failures': failures}
+
+
 def observe(source, outer_path, all_out):
     source = Path(source)
     for path, expected in ((source / 'test/tcl/test.tcl', SOURCE_SHA256),
@@ -51,27 +72,12 @@ def observe(source, outer_path, all_out):
         if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
             raise ValueError('Suite source/configuration differs from the reviewed progress plan')
     before = Path(outer_path).read_text(errors='replace')
-    last = configuration = dispatch = None
-    failures = []
-    tail = deque(maxlen=5)
     with Path(all_out).open(errors='replace') as stream:
-        for line in stream:
-            line = line.rstrip('\n')
-            tail.append(line)
-            if re.match(r'^\s*[A-Z][A-Za-z_]*\d{3}[.: ]', line):
-                last = line.strip()
-            if re.match(r'^(?:Recd|Fop|Test)[0-9]{3}[: (]', line):
-                configuration = line
-            if line.startswith('eval { test'):
-                dispatch = line
-            if line.startswith('FAIL'):
-                failures.append(line)
+        detail = details(stream)
     after = Path(outer_path).read_text(errors='replace')
     progress = classify(after)
     progress['group_transition_during_observation'] = classify(before)['outer_header'] != progress['outer_header']
     return {'progress': progress, 'outer_log': str(outer_path),
             'outer_log_sha256': hashlib.sha256(after.encode()).hexdigest(),
             'outer_log_snapshot': after, 'suite_source_sha256': SOURCE_SHA256,
-            'suite_config_sha256': CONFIG_SHA256, 'last_case': last,
-            'configuration': configuration, 'last_dispatch': dispatch,
-            'tail': list(tail), 'failures': failures}
+            'suite_config_sha256': CONFIG_SHA256, **detail}
