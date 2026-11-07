@@ -7,9 +7,10 @@ The Pages dashboard tracks development progress. A GitHub Release will hold each
 large, accepted, immutable delivery with its tag, image, corresponding source,
 component inventory, checksums, test summary and explicit limitations. The first
 candidate is the H13 command-line foundation at commit
-`e24e452399621607a8386db582e5776bd66994da`, tagged
-`v0.1.0-foundation.1`. The tag identifies the actual verified source and ISO
-generation; later documentation commits do not change that artifact.
+`e24e452399621607a8386db582e5776bd66994da`, with draft release tag name
+`v0.1.0-foundation.1`. GitHub has not created the public Git tag for this draft.
+At publication, verify that the created tag points to that exact commit. Later
+documentation commits do not change the tested artifact.
 
 Create a draft prerelease first, attach and verify candidate assets, then publish
 only after the owner resolves D10's original-project code/documentation/artwork

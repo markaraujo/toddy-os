@@ -1,0 +1,61 @@
+{
+  "complete": true,
+  "tag": "v0.1.0-foundation.1",
+  "draft": true,
+  "release_id": 437627323,
+  "source_commit": "e24e452399621607a8386db582e5776bd66994da",
+  "assets": [
+    {
+      "id": 720935825,
+      "name": "components.json",
+      "size": 679373,
+      "digest": "sha256:a9c2d193c3ca94cbe8161152c50802fd0cb964ac043635d80c71c518002ea377",
+      "state": "uploaded"
+    },
+    {
+      "id": 720935634,
+      "name": "SHA256SUMS",
+      "size": 525,
+      "digest": "sha256:7b481b9650e838cbf0ec96a01746dd259660a2aeda2d043eeb1b268e6d310d4a",
+      "state": "uploaded"
+    },
+    {
+      "id": 720940475,
+      "name": "source-archives.tar",
+      "size": 718551040,
+      "digest": "sha256:f06ae9910e4f38338f35e472e71c92f0031a1b40c4762c30583e3688d4d30911",
+      "state": "uploaded"
+    },
+    {
+      "id": 720935952,
+      "name": "source-inputs.json",
+      "size": 80441,
+      "digest": "sha256:87a872c5f118486cb0cf8ecd366a2710737b45c61077fd1fd83de220250da84b",
+      "state": "uploaded"
+    },
+    {
+      "id": 720935721,
+      "name": "SOURCE-SHA256SUMS",
+      "size": 12503,
+      "digest": "sha256:34bdc733e0918c6543d8ed268367b2e1cd85f9851567a2d4c09df00cc2ccb1e2",
+      "state": "uploaded"
+    },
+    {
+      "id": 720936145,
+      "name": "toddy-foundation-x86_64.iso",
+      "size": 1095000064,
+      "digest": "sha256:4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "state": "uploaded"
+    },
+    {
+      "id": 720936032,
+      "name": "toddy-source-history.bundle",
+      "size": 8406094,
+      "digest": "sha256:9962f03c4b9b1c8b71d6134834eda6e56e5fb1108d550d6e1d96cb1b0dfb95be",
+      "state": "uploaded"
+    }
+  ],
+  "all_assets_downloaded_and_hashed": true,
+  "all_remote_digests_match": true,
+  "release_specific_sha256sums_matches_assets": true
+}

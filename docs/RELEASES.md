@@ -9,6 +9,11 @@ public download. G1 passed in QEMU/KVM; G2, physical hardware and B01-B13 remain
 pending. The foundation ISO has a command-line live system without persistence,
 desktop, agent or graphical installer.
 
+The [current draft and seven verified assets](evidence/H13-github-release-draft.md)
+are prepared for owner review. The draft name does not yet exist as a public Git
+tag. GitHub's reported asset SHA-256 values and full downloaded bytes match the
+local candidate. Publishing remains gated on D10 and the release checklist below.
+
 ## Release checklist
 
 1. Confirm the milestone gate, source commit, clean checkout and actual test

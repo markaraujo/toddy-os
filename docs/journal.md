@@ -961,3 +961,13 @@ two real console sessions: network, C, package checks, zero failed services,
 volatile-file reset and graceful poweroff; media unchanged. Original upstream
 qualifications remain explicit. Foundation 100%, agentic 0%; the complete release
 is unfinished. Await the owner's test and explicit approval before B01-B13.
+
+## 2026-11-07 — GitHub Release draft prepared
+
+Created draft prerelease `v0.1.0-foundation.1` targeting the exact H13 accepted
+source commit. Uploaded seven selected candidate assets: final ISO, 142-source
+archive, source/component inventories, source checksums, source history and a
+release-specific SHA256SUMS. GitHub's sizes/digests matched and every asset was
+downloaded again with identical SHA-256. Raw local logs remain outside the
+release. D10 original-project licensing remains a required owner decision before
+public binary publication; B01 still awaits separate owner approval.
