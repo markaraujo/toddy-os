@@ -1353,3 +1353,13 @@ SHA-256: 5401327de7abb15a4fee1d5d3189820fbff85b246e13ebdec287be2c2b1a86eb
 (.local/logs/h07-db-standard-progress-<sha256>.json). H07 remains 124/126 accepted
 packages. Independent native compression/readback preparation passed (ADR-0076);
 complete foundation assembly and native-kernel boot remain pending.
+
+### Native ISO preparation while the final DB matrix runs — 2026-11-07 08:20 UTC
+
+Both actual Berkeley driver identities remain live: original 1364 in Test044
+queueext cycle 2 with the same two known failures; corrected 1107192 in Test044
+btree cycle 1 with no FAIL entries. No terminal exit exists. Observation SHA-256
+3ef0f21ba8a0e3988227ec82a8c9de460d081e3ca1d381083cc26f4b557c15e0.
+Native private ISO preparation passed after measured header and symlink fixes
+(ADR-0077): thirteen stages, eight metadata entries and corruption rejection.
+This independent experiment does not increase H07 package count or accept H11.

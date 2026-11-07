@@ -1143,3 +1143,16 @@ comparisons, alter the expected manifest to match output, append to an existing
 image or suppress Unsquashfs errors. The two-hour timeout has a kill-after grace
 for its own process group. Observe its existing process before attempting retry.
 Successful compression does not waive remaining release/boot checks.
+
+Private native ISO-stack preparation (ADR-0077) uses
+`python3 scripts/host/probe_native_libburnia.py start` and
+`python3 scripts/host/probe_native_libburnia.py collect PRINTED_FIXTURE`.
+The protected `/mnt/lfs/sources/recovery/libburnia-native-*` generation retains
+verified archives/inputs, every configure/build/private-install log and exit,
+stage intent/timeout, actual linkage/version output, roundtrip evidence and
+terminal result/driver exit. Inspect the live PID before retrying. No global
+install, package success marker, active-input sync or physical media operation
+belongs to this experiment. Only the private prefix is an installation target.
+Preserve failed generations; use a fresh generation after correcting a cause.
+The native production recipes remain subject to the H11 gate and their own
+package postchecks. An experimental file-only ISO is not the foundation ISO.

@@ -477,14 +477,14 @@
   ],
   "active_work": {
     "story": "H07",
-    "verified_at": "2026-11-07 08:09 UTC",
+    "verified_at": "2026-11-07 08:20 UTC",
     "verified": [
       "124 of 126 currently planned H07 packages installed, configured and accepted; 2 pending (Berkeley DB and APT). All 124 have own-build/source provenance.",
       "Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.",
       "Full ACL retest, API/layout ownership and native configuration correction passed.",
       "Verified paired cold checkpoint at the 124-package boundary."
     ],
-    "running": "Both Berkeley suites remain in block 27/27. Corrected driver 1107192 is live in Test142.h hash/partition callback, zero FAIL entries, after completing Test044 recovery cycles. Original driver 1364 is live in Test044 queueext cycle 1, the same two failures. Neither has terminal exits; package acceptance and APT remain pending. Prepared native root compression passed exact extraction/ACL comparison and fourteen corruption/refusal cases in a private fixture. Full foundation assembly, compression and native-kernel boot remain pending.",
+    "running": "Both Berkeley suites remain live in block 27/27. Corrected driver 1107192 is running Test044 btree cycle 1 with zero FAIL entries; original driver 1364 is running Test044 queueext cycle 2 with the same two known failures. Neither has terminal exits; package acceptance and APT remain pending. A private native ISO-tool build passed thirteen stages, complete metadata readback and deliberate corruption rejection after fixing measured header/symlink defects. Full foundation assembly, hybrid ISO and native-kernel boot remain pending.",
     "remaining": [
       "Finish the complete database suite, then production install and transaction/reopen postchecks; later access-method matrix plans 135 x 9 dispatch entries, including inapplicable skips.",
       "Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.",

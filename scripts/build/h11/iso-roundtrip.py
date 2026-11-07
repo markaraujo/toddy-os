@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Exercise installed Xorriso only against private regular-file ISO images."""
 import hashlib
+import argparse
 import json
 import os
 from pathlib import Path
@@ -40,6 +41,10 @@ def snapshot(root):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--evidence-directory', type=Path,
+                        default=Path('/sources/evidence/h11-libisoburn'))
+    args = parser.parse_args()
     root = Path(tempfile.mkdtemp(prefix='toddy-iso-roundtrip-'))
     print(f'Private ISO fixture: {root}', flush=True)
     try:
@@ -59,6 +64,14 @@ def main():
         assert 'system.posix_acl_access' in os.listxattr(data)
         os.link(data, source / 'hardlink')
         (source / 'relative-link').symlink_to('directory/ação\nmetadata.txt')
+        os.chown(source / 'relative-link', 18, 18, follow_symlinks=False)
+        (source / 'dangling-link').symlink_to('missing-target')
+        sentinel = root / 'outside-sentinel'
+        sentinel.write_bytes(b'Outside target must remain unchanged\n')
+        os.utime(sentinel, (1793900000, 1793900000))
+        sentinel_before = snapshot(sentinel)
+        (source / 'outside-link').symlink_to('../outside-sentinel')
+        os.chown(source / 'outside-link', 18, 18, follow_symlinks=False)
         for path in [source, *source.rglob('*')]:
             os.utime(path, (1793923200, 1793923200), follow_symlinks=False)
         expected = snapshot(source)
@@ -76,6 +89,8 @@ def main():
         run(*common, '-indev', 'stdio:' + str(image), '-osirrox', 'on:check_md5_on',
             '-extract', '/', str(output), '-end')
         actual = snapshot(output)
+        if snapshot(sentinel) != sentinel_before:
+            raise RuntimeError('Extraction followed a symlink outside the destination')
         if expected != actual:
             raise RuntimeError('ISO metadata mismatch: ' + json.dumps({
                 'expected': expected, 'actual': actual}, ensure_ascii=True))
@@ -94,10 +109,11 @@ def main():
             raise RuntimeError('Rejection did not identify a checksum mismatch')
         evidence = {'fixture_entries': len(expected), 'native_metadata_roundtrip': True,
                     'corrupt_payload_rejected': True, 'corrupt_exit': rejection.returncode,
+                    'symlink_owner_time_restored': True, 'outside_symlink_target_unchanged': True,
                     'iso_sha256': hashlib.sha256(image_bytes).hexdigest(),
                     'iso_size': len(image_bytes), 'native_boot_validated': False,
                     'release_iso': False, 'physical_media_accessed': False}
-        destination = Path('/sources/evidence/h11-libisoburn')
+        destination = args.evidence_directory
         destination.mkdir(parents=True, exist_ok=True)
         (destination / 'iso-roundtrip.json').write_text(json.dumps(evidence, indent=2) + '\n')
         print(json.dumps(evidence, sort_keys=True), flush=True)

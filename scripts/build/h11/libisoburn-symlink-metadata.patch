@@ -1,0 +1,42 @@
+--- a/xorriso/read_run.c
++++ b/xorriso/read_run.c
+@@ -541,6 +541,27 @@
+                                   !!(xorriso->do_aaip & (1 << 16)));
+  if(ret <= 0)
+    return(ret);
++ return(1);
++}
++
++
++/* Toddy: preserve symlink metadata without following its destination. */
++int Xorriso_restore_symlink_properties(struct XorrisO *xorriso,
++                                      char *disk_path, IsoNode *node)
++{
++ struct timespec times[2];
++
++ times[0].tv_sec= iso_node_get_atime(node);
++ times[0].tv_nsec= 0;
++ times[1].tv_sec= iso_node_get_mtime(node);
++ times[1].tv_nsec= 0;
++ if(lchown(disk_path, iso_node_get_uid(node), iso_node_get_gid(node)) == -1 ||
++    utimensat(AT_FDCWD, disk_path, times, AT_SYMLINK_NOFOLLOW) == -1) {
++   strcpy(xorriso->info_text, "Cannot restore symlink owner or timestamps: ");
++   Text_shellsafe(disk_path, xorriso->info_text, 1);
++   Xorriso_msgs_submit(xorriso, 0, xorriso->info_text, errno, "FAILURE", 0);
++   return(0);
++ }
+  return(1);
+ }
+ 
+@@ -1535,8 +1556,10 @@
+  }
+ 
+ restore_properties:;
+- if((flag&8) || LIBISO_ISLNK(node))
++ if((flag&8) || (LIBISO_ISLNK(node) && (flag&1)))
+    ret= 1;
++ else if(LIBISO_ISLNK(node))
++   ret= Xorriso_restore_symlink_properties(xorriso, disk_path, node);
+  else
+    ret= Xorriso_restore_properties(xorriso, disk_path, node, flag&1);
+  if(todo < 0)

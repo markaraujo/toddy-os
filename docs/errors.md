@@ -723,3 +723,21 @@ installed package was changed. Failed generations/logs remain preserved.
 Verification: complete native compression/extraction/ACL comparisons pass twice
 with fourteen specific corruptions/refusals and unchanged source/package status.
 See ADR-0076 for raw hashes and actual production-gate refusal evidence.
+
+## 2026-11-07 — Native ISO preparation defects (ADR-0077)
+
+Symptom: private Libisoburn configure could not find its dependency headers;
+its obsolete attr/xattr.h probe also disabled required feature detection. Cause:
+early checks precede pkg-config and the native Glibc provides sys/xattr.h.
+Correction: private CPPFLAGS/LDFLAGS plus a real sys/xattr.h compiler probe.
+A first source edit triggered unavailable Automake 1.14 regeneration; retain
+shipped timestamps while applying matching configure/input changes.
+
+The complete native build then exposed symlink timestamp loss in exact ISO
+extraction comparison. Frozen read_run.c skips link properties. Correct it with
+lchown and utimensat using AT_SYMLINK_NOFOLLOW; preserve errors and original
+minimal-transfer flags. Verify non-root owners, dangling/outside links and an
+unchanged external sentinel. Corrected full build/roundtrip passed all thirteen
+stages and eight fixture entries; payload corruption exited 32 with MISMATCH.
+All failed generations/logs remain preserved; ADR-0077 records hashes and paths.
+No global install, package marker, boot or release acceptance was claimed.

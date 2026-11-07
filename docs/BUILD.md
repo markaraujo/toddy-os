@@ -355,3 +355,14 @@ extracted/restored manifests and comparisons. Full native readback includes ACLs
 hardlinks, xattrs and sparse allocation. Squashfs stores whole-second timestamps;
 the original source manifest retains nanoseconds. Component tests use private
 verified native tools; they do not accept the full image or boot.
+
+## Private native ISO-stack preparation
+
+The optional `python3 scripts/host/probe_native_libburnia.py start` experiment
+builds the frozen shared Libburn/Libisofs/Libisoburn stack with the accepted
+native toolchain in a private target prefix. Collect the printed fixture with
+`python3 scripts/host/probe_native_libburnia.py collect PRINTED_FIXTURE`.
+ADR-0077 explains the actual Glibc xattr-header probe correction. Private-prefix
+CPPFLAGS/LDFLAGS/PKG_CONFIG_PATH are experiment settings, not release paths.
+No installed package or milestone is accepted by this command. H11 still runs
+the gated /usr recipes and actual hybrid boot-image acceptance after H10.

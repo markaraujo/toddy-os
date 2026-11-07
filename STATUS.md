@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 08:09 UTC
+Last verified: 2026-11-07 08:20 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Both Berkeley suites remain in block 27/27. Corrected driver 1107192 is live in Test142.h hash/partition callback, zero FAIL entries, after completing Test044 recovery cycles. Original driver 1364 is live in Test044 queueext cycle 1, the same two failures. Neither has terminal exits; package acceptance and APT remain pending. Prepared native root compression passed exact extraction/ACL comparison and fourteen corruption/refusal cases in a private fixture. Full foundation assembly, compression and native-kernel boot remain pending.
+Running: Both Berkeley suites remain live in block 27/27. Corrected driver 1107192 is running Test044 btree cycle 1 with zero FAIL entries; original driver 1364 is running Test044 queueext cycle 2 with the same two known failures. Neither has terminal exits; package acceptance and APT remain pending. A private native ISO-tool build passed thirteen stages, complete metadata readback and deliberate corruption rejection after fixing measured header/symlink defects. Full foundation assembly, hybrid ISO and native-kernel boot remain pending.
 
 Remaining:
 

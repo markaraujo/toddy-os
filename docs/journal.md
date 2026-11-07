@@ -544,3 +544,10 @@ detected, including required superblock features. Both premature compression
 profiles refuse, and full assembly readiness still stops at H07's shared Info
 index. Both Berkeley drivers remain live; corrected suite reached Test142 hash/
 partition callback without FAIL entries. No milestone acceptance was inferred.
+
+2026-11-07 — Built the frozen shared Libburnia stack privately with native tools
+(ADR-0077). Actual experiments exposed an obsolete xattr header probe and missing
+symlink metadata restoration; corrected both without dropping comparisons. Eight
+ISO fixture entries, ACLs, hardlinks, numeric owners, dangling/outside links and
+corruption rejection passed. All thirteen driver stages exited zero. No package
+or milestone was accepted; both Berkeley suites remain live in block 27/27.
