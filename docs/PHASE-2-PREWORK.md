@@ -20,6 +20,10 @@ Fixtures are not wire payloads, executed tests or a substitute for runtime proof
 Reuse them in the owning slice; do not build a second UI demo or testing framework.
 Keep critical permission/error text neutral and Toddy's humor in optional narrative.
 
+Installer/boot bookends and integration ownership now follow the
+[visual handoff](../assets/brand/installer/README.md), with reusable motion inputs
+and the existing slideshow as the single browser review surface.
+
 ## Native branding decision
 
 Use `toddy-branding` for owned wallpapers, background catalog, identity exports

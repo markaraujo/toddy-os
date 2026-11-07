@@ -26,7 +26,6 @@ Current Phase 2 choices follow [the replanned execution contract](PHASE-2-PLAN.m
 | D15 | Plugin confinement | Closed: Bubblewrap policy; reviewed separate-UID fallback, no unknown-code secret-service access | B01 selection / B10 denial proof | Real dummy-secret/file/egress rejection; otherwise code disabled |
 | D16 | Installed image closure | Closed: GPT/ext4, GRUB BIOS/UEFI and explicit users/identity/repository cleanup | B01 recipe / B12 install | S18/S21/S26, firmware scope, no inherited secrets or live accounts |
 | D17 | Browser integration | Closed: Firefox isolated profile, native launch/scoped accessibility read MVP | B01 contract / B10 runtime | S25 local page, Stop/error, untrusted content and no owner browser credentials |
-
 | D18 | Native brand integration | Closed: toddy-branding package, stable application identity, supported user-overridable GNOME defaults; ADR-0108 | B11 | Exact guest schemas, preference/upgrade/removal behavior, native icon readability; extension only on a proved gap |
 
 The whole-system license is a collection of component licenses, not the repository's proposed custom-code license. APIs can be optional without making the open local path dependent on them. This planning baseline deliberately does not claim universal Ubuntu binary compatibility.

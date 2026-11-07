@@ -1,5 +1,13 @@
 /* Source language: English. Columns: pt-BR, es, zh-Hans, ja, ru. User-requested public UI translations. */
 window.TODDY_TRANSLATIONS = {
+    "Boot splash · design concept": ["Splash de inicialização · conceito visual", "Pantalla de arranque · concepto visual", "启动画面 · 设计概念", "起動画面 · デザインコンセプト", "Заставка загрузки · концепт"],
+    "Your new home. My new keyboard to sit on.": ["Sua casa nova. Meu teclado novo para deitar.", "Tu nuevo hogar. Mi nuevo teclado para tumbarme.", "你的新家，也是我趴键盘的新地方。", "あなたの新しい家。ぼくが座る新しいキーボード。", "Твой новый дом. Моя новая клавиатура, на которой можно лежать."],
+    "Motion study only. No boot or installation is running.": ["Estudo de animação. Nenhuma inicialização ou instalação está em execução.", "Estudio de animación. No hay ningún arranque ni instalación en curso.", "仅为动画设计演示，并未运行启动或安装过程。", "アニメーションの試作です。起動やインストールは実行していません。", "Эскиз анимации. Загрузка и установка не выполняются."],
+    "Installation complete · design concept": ["Instalação concluída · conceito visual", "Instalación completada · concepto visual", "安装完成 · 设计概念", "インストール完了 · デザインコンセプト", "Установка завершена · концепт"],
+    "Welcome home.": ["Bem-vindo a casa.", "Bienvenido a casa.", "欢迎回家。", "おかえり。", "Добро пожаловать домой."],
+    "I saved you a spot beside me.": ["Guardei um lugar do meu lado para você.", "Te guardé un sitio a mi lado.", "我在身边给你留了个位置。", "ぼくの隣、空けておいたよ。", "Я оставил тебе место рядом со мной."],
+    "The real installer shows this only after verifying installation.": ["O instalador real só mostra esta tela depois de verificar a instalação.", "El instalador real solo muestra esta pantalla después de verificar la instalación.", "实际安装程序仅在验证安装后才会显示此画面。", "実際のインストーラーでは、インストールを検証してから表示します。", "Настоящий установщик покажет этот экран только после проверки установки."],
+
     Language: ["Idioma", "Idioma", "语言", "言語", "Язык"],
     "Skip to content": [
         "Pular para o conteúdo",

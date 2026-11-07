@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "design-input-not-runtime-acceptance",
+  "background": "assets/brand/toddy-os-boot-background.png",
+  "mascot": "assets/brand/toddy-os-system-icon.png",
+  "colors": {"background": "#081426", "accent": "#87BDFF", "text": "#F1F6FF"},
+  "boot": {"decoration": "three-opacity-dots", "cycle_ms": 1800, "minimum_display_ms": 0, "mascot_static": true, "progress_source": "actual-boot-events-only"},
+  "installer_scene": {"transition": "opacity-and-small-translation", "duration_ms": 240, "translation_px": 6, "suggested_dwell_ms": 18000, "manual_navigation": true, "pause_available": true},
+  "completion": {"transition": "single-opacity-reveal", "duration_ms": 240, "only_after_verified_install": true, "automatic_restart": false},
+  "accessibility": {"reduced_motion": "static", "high_contrast": "native-controls-and-static-background", "no_flashing": true, "sound": false},
+  "runtime_adapter": "Choose supported native installer/boot interfaces after version lock; do not ship the website as the installer.",
+  "failure_fallback": "Static approved mascot and readable native status; decoration cannot block installer, boot logs or errors."
+}

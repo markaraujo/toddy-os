@@ -1258,3 +1258,13 @@ make check passed 197 tests; temporary desktop-entry validation and strict host
 schema dry-run both exited zero without changing host settings. Target integration,
 resource measurements and B-story acceptance remain pending. No guest build, model
 download or paid API call was started; owner continuation remains false.
+
+## 2026-11-07 — Join installer and boot visual preparation
+
+The owner requested Ubuntu-like installation storytelling and explicitly asked
+that prepared parts be joined during implementation. Extended the existing review
+surface with boot/completion bookends, lightweight motion and portal translations.
+Added native motion inputs and stage ownership, linked from B11/B12 and prework.
+Preserved approved artwork and labeled conceptual GNOME imagery. Basic repository
+and Playwright checks passed; details in evidence/installer-visual-preparation.md.
+No guest implementation, boot engine selection or milestone acceptance implied.

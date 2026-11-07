@@ -214,6 +214,23 @@
                     font-size: 10px;
                 }
             }
+            .bookend { margin: 20px 0; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--surface); }
+            .bookend summary { padding: 16px 24px; cursor: pointer; color: var(--ink); }
+            .boot-stage { min-height: 400px; padding: 44px 24px; text-align: center; display: grid; place-content: center; justify-items: center; background: #081426 url('../assets/brand/toddy-os-boot-background.png') center/cover; }
+            .boot-stage img { width: 132px; height: 132px; object-fit: contain; }
+            .boot-stage h2 { font-size: 28px; margin: 12px 0 4px; letter-spacing: -.6px; }
+            .boot-stage p { max-width: 450px; color: var(--muted); margin: 4px 0; font-size: 14px; }
+            .boot-dots { display: flex; gap: 9px; padding: 24px; }
+            .boot-dots i { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: breathe 1.8s ease-in-out infinite; }
+            .boot-dots i:nth-child(2) { animation-delay: .2s; }
+            .boot-dots i:nth-child(3) { animation-delay: .4s; }
+            .bookend:not([open]) .boot-dots i { animation: none; }
+            .bookend .concept-label { font-size: 11px; margin-top: 22px; }
+            @keyframes breathe { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
+            .slide.reveal { animation: scene-reveal 240ms ease-out both; }
+            @keyframes scene-reveal { from { opacity: .4; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+            @media (prefers-reduced-motion: reduce) { .boot-dots i, .slide.reveal { animation: none; } }
+            @media (forced-colors: active) { .boot-stage { background: Canvas; } .boot-dots { display: none; } }
         </style>
         <script src="translations.js" defer></script>
         <script src="i18n.js" defer></script>
@@ -240,6 +257,16 @@
                     </select></label
                 >
             </header>
+            <details class="bookend">
+                <summary>Boot splash · design concept</summary>
+                <div class="boot-stage">
+                    <img src="../assets/brand/toddy-os-system-icon.png" alt="The unchanged Toddy mascot" width="132" height="132" />
+                    <h2>Toddy OS</h2>
+                    <p>Your new home. My new keyboard to sit on.</p>
+                    <div class="boot-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+                    <p class="concept-label">Motion study only. No boot or installation is running.</p>
+                </div>
+            </details>
             <section
                 class="slideshow"
                 aria-label="Installer slideshow design preview"
@@ -301,6 +328,15 @@
                     ><button id="next">Next →</button>
                 </div>
             </div>
+            <details class="bookend">
+                <summary>Installation complete · design concept</summary>
+                <div class="boot-stage">
+                    <img src="../assets/brand/toddy-os-system-icon.png" alt="The unchanged Toddy mascot" width="132" height="132" />
+                    <h2>Welcome home.</h2>
+                    <p>I saved you a spot beside me.</p>
+                    <p class="concept-label">The real installer shows this only after verifying installation.</p>
+                </div>
+            </details>
             <p class="note">
                 These are simulated GNOME/Toddy screens. Replace them with
                 actual guest screenshots as functionality becomes available. The
@@ -348,6 +384,12 @@
             let index = 0;
             function render() {
                 const s = slides[index];
+                const scene = document.querySelector(".slide");
+                scene.classList.remove("reveal");
+                if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                    void scene.offsetWidth;
+                    scene.classList.add("reveal");
+                }
                 document.getElementById("kicker").textContent = s.kicker;
                 document.getElementById("title").innerHTML = s.title;
                 document.getElementById("description").textContent =

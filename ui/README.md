@@ -100,3 +100,11 @@ Keep 100 distinct entries in each of the six locales. Preserve the intention and
 warmth rather than forcing literal idioms across languages. Review EN/PT together,
 then the remaining adaptations, before checking random display and line wrapping.
 No runtime AI or new permission is involved in these authored mascot replies.
+
+## Installer visual sequence
+
+The existing installer slideshow now also previews the boot splash and completion
+bookends, using the unchanged mascot and existing navy boot artwork. Native
+integration ownership, copy and reduced-motion/static behavior are specified in
+[the installer handoff](../assets/brand/installer/README.md). No new preview page,
+video asset, boot engine or web runtime was introduced.
