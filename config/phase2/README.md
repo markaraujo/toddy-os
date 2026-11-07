@@ -18,3 +18,6 @@ B01 must prove native compatibility, freeze actual schemas/versions and record a
 necessary targeted change. Static/schema checks cannot establish authorization,
 path containment, crash safety or working IPC. Keep all public fixtures fictional;
 never contribute personal profiles, runtime state or connection credentials.
+
+software-catalog.json is the open candidate list with EN/PT copy and no qualified
+releases yet. install-options.json references it; selection never means availability.

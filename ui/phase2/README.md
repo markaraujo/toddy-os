@@ -81,3 +81,8 @@ package ownership and defaults are documented in
 Application IDs follow [GNOME guidance](https://developer.gnome.org/documentation/tutorials/application-id.html);
 launcher syntax follows the [Desktop Entry Specification 1.5](https://specifications.freedesktop.org/desktop-entry/latest/).
 These references are not exact guest-version locks.
+
+Software scenarios now include deferred offline choices, setup without an agent
+and unavailable unqualified candidates. The open catalog/qualification boundary is
+[documented here](../../docs/PHASE-2-SOFTWARE-CATALOG.md); these are not executed
+package tests or an installer protocol.

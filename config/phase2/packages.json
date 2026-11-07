@@ -46,17 +46,21 @@
       "owns": [
         "/usr/bin/toddy",
         "/usr/lib/toddy/ui/",
-        "/usr/share/applications/io.github.markaraujo.Toddy.desktop"
+        "/usr/share/applications/io.github.markaraujo.Toddy.desktop",
+        "/usr/lib/toddy/software/",
+        "/usr/share/toddy/software/"
       ],
       "requires_capabilities": [
         "toddy-branding",
         "gtk4-libadwaita-pygobject"
       ],
       "source_inputs": [
-        "ui/phase2/identity.json"
+        "ui/phase2/identity.json",
+        "config/phase2/software-catalog.json"
       ],
       "offline_base": true,
-      "optional_backend": "toddy-agent; unavailable backend leaves setup/install-later surface usable"
+      "optional_backend": "toddy-agent; unavailable backend leaves setup/install-later surface usable",
+      "software_controller": "Shared unprivileged setup/catalog controller; native authorization independent of absent agent executor."
     },
     {
       "name": "toddy-executor",

@@ -407,6 +407,46 @@
         "en": "Installation could not finish. Review the recovery instructions before retrying or changing the disk.",
         "pt-BR": "A instalação não foi concluída. Confira as instruções de recuperação antes de tentar novamente ou alterar o disco."
       }
+    },
+    {
+      "id": "software.review",
+      "context": "software",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Review the apps, sources and permissions before installing.",
+        "pt-BR": "Confira os aplicativos, as origens e as permissões antes de instalar."
+      }
+    },
+    {
+      "id": "software.pending",
+      "context": "software",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Your choices are saved. Install them later from setup.",
+        "pt-BR": "Suas escolhas foram salvas. Instale depois pela configuração."
+      }
+    },
+    {
+      "id": "software.unavailable",
+      "context": "software",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "This app has not been qualified for this system yet.",
+        "pt-BR": "Este aplicativo ainda não foi validado para este sistema."
+      }
+    },
+    {
+      "id": "software.no_agent",
+      "context": "software",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "You can choose software without configuring the assistant.",
+        "pt-BR": "Você pode escolher programas sem configurar o assistente."
+      }
     }
   ]
 }

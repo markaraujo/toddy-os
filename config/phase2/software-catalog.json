@@ -1,0 +1,625 @@
+{
+  "schema_version": 1,
+  "status": "preparation-only-not-an-installable-catalog",
+  "source_locale": "en",
+  "locales": [
+    "en",
+    "pt-BR"
+  ],
+  "categories": [
+    {
+      "id": "terminal",
+      "name": {
+        "en": "Productive terminal",
+        "pt-BR": "Terminal produtivo"
+      }
+    },
+    {
+      "id": "development",
+      "name": {
+        "en": "Development and editors",
+        "pt-BR": "Desenvolvimento e editores"
+      }
+    },
+    {
+      "id": "containers",
+      "name": {
+        "en": "Containers and infrastructure",
+        "pt-BR": "Containers e infraestrutura"
+      }
+    },
+    {
+      "id": "apis-data",
+      "name": {
+        "en": "APIs and databases",
+        "pt-BR": "APIs e bancos de dados"
+      }
+    },
+    {
+      "id": "everyday",
+      "name": {
+        "en": "Everyday Linux",
+        "pt-BR": "Linux no dia a dia"
+      }
+    },
+    {
+      "id": "media",
+      "name": {
+        "en": "Creation and media",
+        "pt-BR": "Criação e mídia"
+      }
+    }
+  ],
+  "policy": {
+    "selection_stage": "after-base-verification",
+    "acquisition_stage": "installed-user-session-after-review",
+    "recommendations": "on-request-only",
+    "optional_default_selected": false,
+    "flatpak_scope": "user",
+    "credential_entry_in_installer": false,
+    "mise_included": false
+  },
+  "candidates": [
+    {
+      "id": "git",
+      "name": "Git",
+      "category": "development",
+      "backend_candidate": "native",
+      "priority": "base",
+      "default": "required",
+      "project_url": "https://git-scm.com/",
+      "description": {
+        "en": "Version control.",
+        "pt-BR": "Controle de versão."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "docker",
+      "name": "Docker Engine + Compose",
+      "category": "containers",
+      "backend_candidate": "native",
+      "priority": "priority",
+      "default": "off",
+      "project_url": "https://docs.docker.com/compose/",
+      "description": {
+        "en": "Run development containers and multi-service projects.",
+        "pt-BR": "Execute containers e projetos com vários serviços."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "opencode",
+      "name": "OpenCode CLI",
+      "category": "development",
+      "backend_candidate": "native",
+      "priority": "priority",
+      "default": "off",
+      "project_url": "https://opencode.ai/docs/",
+      "description": {
+        "en": "Optional coding assistant, separate from Toddy.",
+        "pt-BR": "Assistente de programação opcional, separado do Toddy."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "vscode",
+      "name": "Visual Studio Code",
+      "category": "development",
+      "backend_candidate": "native",
+      "priority": "priority",
+      "default": "off",
+      "project_url": "https://code.visualstudio.com/",
+      "description": {
+        "en": "Graphical code editor.",
+        "pt-BR": "Editor gráfico de código."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "localsend",
+      "name": "LocalSend",
+      "category": "everyday",
+      "backend_candidate": "flatpak-user",
+      "priority": "priority",
+      "default": "off",
+      "project_url": "https://localsend.org/",
+      "description": {
+        "en": "Share files with devices on your local network.",
+        "pt-BR": "Compartilhe arquivos com dispositivos na rede local."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "starship",
+      "name": "Starship",
+      "category": "terminal",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://starship.rs/",
+      "description": {
+        "en": "Customizable shell prompt.",
+        "pt-BR": "Prompt de shell personalizável."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "fzf",
+      "name": "fzf",
+      "category": "terminal",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://github.com/junegunn/fzf",
+      "description": {
+        "en": "Interactive fuzzy selection.",
+        "pt-BR": "Seleção interativa com busca aproximada."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "ripgrep",
+      "name": "ripgrep",
+      "category": "terminal",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://github.com/BurntSushi/ripgrep",
+      "description": {
+        "en": "Search text in project files.",
+        "pt-BR": "Pesquise texto nos arquivos de projetos."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "fd",
+      "name": "fd",
+      "category": "terminal",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://github.com/sharkdp/fd",
+      "description": {
+        "en": "Find files from the terminal.",
+        "pt-BR": "Encontre arquivos pelo terminal."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "zoxide",
+      "name": "zoxide",
+      "category": "terminal",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://github.com/ajeetdsouza/zoxide",
+      "description": {
+        "en": "Navigate frequently used directories.",
+        "pt-BR": "Navegue por diretórios usados com frequência."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "tmux",
+      "name": "tmux",
+      "category": "terminal",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://github.com/tmux/tmux/wiki",
+      "description": {
+        "en": "Organize terminal sessions and panes.",
+        "pt-BR": "Organize sessões e painéis de terminal."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "btop",
+      "name": "btop",
+      "category": "terminal",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://github.com/aristocratos/btop",
+      "description": {
+        "en": "Inspect system resource usage.",
+        "pt-BR": "Consulte o uso dos recursos do sistema."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "github-cli",
+      "name": "GitHub CLI",
+      "category": "development",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://cli.github.com/",
+      "description": {
+        "en": "Work with GitHub repositories, issues and pull requests.",
+        "pt-BR": "Trabalhe com repositórios, issues e pull requests do GitHub."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "lazygit",
+      "name": "Lazygit",
+      "category": "development",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://github.com/jesseduffield/lazygit",
+      "description": {
+        "en": "Optional terminal interface for Git.",
+        "pt-BR": "Interface de terminal opcional para Git."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js LTS + npm",
+      "category": "development",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://nodejs.org/",
+      "description": {
+        "en": "Optional JavaScript development runtime.",
+        "pt-BR": "Runtime opcional para desenvolvimento JavaScript."
+      },
+      "channel": "lts",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "pnpm",
+      "name": "pnpm",
+      "category": "development",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://pnpm.io/",
+      "description": {
+        "en": "Optional JavaScript dependency manager.",
+        "pt-BR": "Gerenciador opcional de dependências JavaScript."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "uv",
+      "name": "uv",
+      "category": "development",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://docs.astral.sh/uv/",
+      "description": {
+        "en": "Manage Python projects and environments.",
+        "pt-BR": "Gerencie projetos e ambientes Python."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "neovim",
+      "name": "Neovim",
+      "category": "development",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://neovim.io/",
+      "description": {
+        "en": "Extensible terminal editor.",
+        "pt-BR": "Editor de terminal extensível."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "bruno",
+      "name": "Bruno",
+      "category": "apis-data",
+      "backend_candidate": "flatpak-user",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://www.usebruno.com/",
+      "description": {
+        "en": "Test APIs with locally versioned collections.",
+        "pt-BR": "Teste APIs com coleções versionadas localmente."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "postman",
+      "name": "Postman",
+      "category": "apis-data",
+      "backend_candidate": "flatpak-user",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://www.postman.com/",
+      "description": {
+        "en": "Optional API client.",
+        "pt-BR": "Cliente de APIs opcional."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "dbeaver",
+      "name": "DBeaver Community",
+      "category": "apis-data",
+      "backend_candidate": "flatpak-user",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://dbeaver.io/",
+      "description": {
+        "en": "Explore and query databases.",
+        "pt-BR": "Explore bancos de dados e execute consultas."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "kubectl",
+      "name": "kubectl",
+      "category": "containers",
+      "backend_candidate": "native",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://kubernetes.io/docs/reference/kubectl/",
+      "description": {
+        "en": "Client for existing Kubernetes clusters.",
+        "pt-BR": "Cliente para clusters Kubernetes existentes."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "libreoffice",
+      "name": "LibreOffice",
+      "category": "everyday",
+      "backend_candidate": "flatpak-user",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://www.libreoffice.org/",
+      "description": {
+        "en": "Documents, spreadsheets and presentations.",
+        "pt-BR": "Documentos, planilhas e apresentações."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "vlc",
+      "name": "VLC",
+      "category": "media",
+      "backend_candidate": "flatpak-user",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://www.videolan.org/vlc/",
+      "description": {
+        "en": "Play audio and video.",
+        "pt-BR": "Reproduza áudio e vídeo."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "thunderbird",
+      "name": "Thunderbird",
+      "category": "everyday",
+      "backend_candidate": "flatpak-user",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://www.thunderbird.net/",
+      "description": {
+        "en": "Email, calendars and contacts.",
+        "pt-BR": "E-mail, calendários e contatos."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "keepassxc",
+      "name": "KeePassXC",
+      "category": "everyday",
+      "backend_candidate": "flatpak-user",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://keepassxc.org/",
+      "description": {
+        "en": "Local password manager.",
+        "pt-BR": "Gerenciador local de senhas."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "obs",
+      "name": "OBS Studio",
+      "category": "media",
+      "backend_candidate": "flatpak-user",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://obsproject.com/",
+      "description": {
+        "en": "Record and stream video.",
+        "pt-BR": "Grave e transmita vídeo."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    },
+    {
+      "id": "gimp",
+      "name": "GIMP",
+      "category": "media",
+      "backend_candidate": "flatpak-user",
+      "priority": "candidate",
+      "default": "off",
+      "project_url": "https://www.gimp.org/",
+      "description": {
+        "en": "Edit images.",
+        "pt-BR": "Edite imagens."
+      },
+      "channel": "stable",
+      "qualification": "pending",
+      "origin_identity": null,
+      "artifact": null,
+      "license_review": null,
+      "permission_review": null,
+      "evidence": []
+    }
+  ],
+  "qualified_releases": []
+}

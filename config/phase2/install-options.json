@@ -62,17 +62,19 @@
       "id": "opencode",
       "group": "developer",
       "default": "off",
-      "acquisition": "verified-download",
+      "acquisition": "installed-user-session-after-review",
       "owner_story": "B12",
-      "availability": "target-validation-pending"
+      "availability": "target-validation-pending",
+      "catalog_id": "opencode"
     },
     {
       "id": "vscode",
       "group": "developer",
       "default": "off",
-      "acquisition": "verified-download",
+      "acquisition": "installed-user-session-after-review",
       "owner_story": "B12",
-      "availability": "target-validation-pending"
+      "availability": "target-validation-pending",
+      "catalog_id": "vscode"
     },
     {
       "id": "firmware",
@@ -105,6 +107,15 @@
       "acquisition": "verified-download-or-explicit-media-pack",
       "owner_story": "B09",
       "availability": "target-validation-pending"
+    },
+    {
+      "id": "docker",
+      "group": "developer",
+      "default": "off",
+      "acquisition": "installed-user-session-after-review",
+      "owner_story": "B12",
+      "availability": "target-validation-pending",
+      "catalog_id": "docker"
     }
   ],
   "selection_states": [
@@ -118,5 +129,8 @@
   ],
   "optional_failure_policy": "preserve-base-install-and-record-pending-choice",
   "completion_condition": "verified-bootable-base-not-optional-download-completion",
-  "offline_policy": "Install usable desktop and lightweight setup entry only; defer agent backend, executor, models and optional integrations until explicit later setup."
+  "offline_policy": "Install usable desktop and lightweight setup entry only; defer agent backend, executor, models and optional integrations until explicit later setup.",
+  "software_catalog": "config/phase2/software-catalog.json",
+  "software_selection_stage": "after-base-verification",
+  "software_acquisition_stage": "first-or-later-installed-user-session-after-review"
 }

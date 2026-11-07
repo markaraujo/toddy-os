@@ -73,6 +73,62 @@
       "expected_states": ["queued", "planning", "failed"],
       "message_ids": ["setup.local_only_failure", "task.failed"],
       "invariants": ["No request is sent to an external provider.", "Failure does not silently change the user's provider policy."]
+    },
+    {
+      "id": "software-offline-handoff",
+      "fake_inputs": {
+        "network": "offline",
+        "selected": [
+          "docker",
+          "localsend"
+        ]
+      },
+      "expected_states": [
+        "selected",
+        "deferred"
+      ],
+      "message_ids": [
+        "software.pending"
+      ],
+      "invariants": [
+        "Save intent only; no live-session installation or grant.",
+        "Base completion does not depend on optional downloads."
+      ]
+    },
+    {
+      "id": "software-setup-without-agent",
+      "fake_inputs": {
+        "agent_installed": false,
+        "action": "review"
+      },
+      "expected_states": [
+        "review"
+      ],
+      "message_ids": [
+        "software.no_agent",
+        "software.review"
+      ],
+      "invariants": [
+        "Catalog review works without model/broker/executor.",
+        "Confirmation uses ordinary native package authorization."
+      ]
+    },
+    {
+      "id": "software-unqualified-candidate",
+      "fake_inputs": {
+        "catalog_id": "localsend",
+        "qualification": "pending"
+      },
+      "expected_states": [
+        "unavailable"
+      ],
+      "message_ids": [
+        "software.unavailable"
+      ],
+      "invariants": [
+        "A candidate with no qualified artifact cannot be dispatched.",
+        "Priority never implies tested support."
+      ]
     }
   ]
 }
