@@ -1293,3 +1293,21 @@ behavior, version/capability mismatch and opt-in sanitized diagnostics. Selected
 concrete defaults in PHASE-2-OPERATIONAL-PREWORK.md and linked owning stories.
 Reuse existing smoke gates; no new framework/milestone or expensive matrix.
 No guest implementation or runtime acceptance is claimed.
+
+
+## 2026-11-07 — Unattended execution simulation
+
+Reviewed night execution through nominal and all 13 single-story dependency
+faults plus 18 tabletop failure/resumption scenarios. These are structural and
+reasoned simulations, not executed guest acceptance. Found/fixed real selector
+starvation: a blocked B03 previously won over eligible B02. Added regression for
+branch routing and all-blocked visibility without bypassing prerequisites.
+
+Recorded persistent retry fingerprints, bounded diagnosis, selected fallback
+authority, long-build monitoring, session/access preflight and end-of-run handoff
+in PHASE-2-NIGHT-EXECUTION.md and AGENTS.md. No guest start, autonomous scheduler
+or phase approval created. Existing one-writer/safety gates remain enforced.
+
+Validation: make check passed 198 tests in 0.201 seconds; read-only simulation
+covered nominal reachability and all 13 single-story faults. Status/approval and
+B-story runtime states are unchanged.

@@ -4,6 +4,9 @@
 
 # Development handoff
 
+For unattended runs follow [the night-execution simulation and bounded decision policy](PHASE-2-NIGHT-EXECUTION.md).
+This adds no guest-start authorization.
+
 ## Current scope and next work
 
 Phase 2 has been replaced by [PHASE-2-PLAN.md](PHASE-2-PLAN.md),

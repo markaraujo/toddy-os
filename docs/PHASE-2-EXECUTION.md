@@ -13,6 +13,9 @@ Selected reusable contracts: [profile/IPC](PHASE-2-INTERFACES.md),
 [install choices](PHASE-2-INSTALLATION-MATRIX.md), [package lifecycle](PHASE-2-PACKAGES.md)
 and [short owner guide](PHASE-2-OWNER-VALIDATION.md).
 
+For unattended runs follow [the night-execution simulation and bounded decision policy](PHASE-2-NIGHT-EXECUTION.md).
+This adds no guest-start authorization.
+
 ## 1. Authority and one current task
 
 Planning, website work and a passed G1 do not authorize guest implementation.

@@ -105,6 +105,17 @@ class ProgressGates(unittest.TestCase):
         by_id["B02"]["status"] = "in_progress"
         self.assertEqual(project.next_eligible(data), "B02")
 
+    def test_blocked_engine_yields_to_eligible_desktop_without_bypassing_dependencies(self):
+        data = json.loads((ROOT / "status.json").read_text())
+        rows = {row["id"]: row for row in data["milestones"]}
+        rows["B01"]["status"] = "completed"
+        rows["B03"]["status"] = "blocked"
+        self.assertEqual(project.next_eligible(data), "B02")
+        rows["B02"]["status"] = "completed"
+        self.assertEqual(project.next_eligible(data), "B03")
+        self.assertEqual(rows["B04"]["status"], "not_started")
+
+
 
 class DocumentationLinks(unittest.TestCase):
     def test_ignored_sources_are_excluded_but_untracked_docs_are_checked(self):

@@ -93,3 +93,5 @@ backend dependency.
 
 Additional review: [six operational findings and selected defaults](PHASE-2-OPERATIONAL-PREWORK.md)
 cover storage, sessions, cost, downloads, compatibility and diagnostics.
+
+Unattended execution: [structural simulation and failure tabletop](PHASE-2-NIGHT-EXECUTION.md).

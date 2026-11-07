@@ -19,7 +19,8 @@ def next_eligible(data):
     eligible = [ident for ident in order if by_id[ident]["status"] != "completed"
                 and all(by_id[dep]["status"] == "completed" for dep in by_id[ident]["depends_on"])]
     active = [ident for ident in eligible if by_id[ident]["status"] == "in_progress"]
-    return next(iter(active or eligible), "B13")
+    runnable = [ident for ident in eligible if by_id[ident]["status"] != "blocked"]
+    return next(iter(active or runnable or eligible), "B13")
 
 
 def local_file(root, value):

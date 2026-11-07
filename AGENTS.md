@@ -32,6 +32,19 @@ The planning validator now enforces recorded owner approval and B-story/status
 criteria/dependency consistency. It does not grant approval or prove runtime tests.
 Default risk-first next-story priority preserves an in-progress checkpoint.
 
+## Unattended Phase 2 work
+
+Once guest continuation is explicitly authorized, follow docs/PHASE-2-NIGHT-EXECUTION.md.
+Make routine technical decisions autonomously using selected fallbacks and narrow
+source-backed corrections. Keep a persistent failure ledger across compaction.
+One unchanged transient retry only; after two failed corrective attempts or 30
+minutes diagnosing the same cause, checkpoint/block that slice and choose eligible
+independent work. Never skip prerequisites/safety gates, replay uncertain writes,
+repeat unchanged suites, or start a second guest writer. If no useful authorized
+work remains, save exact unblock conditions and stop rather than poll or replan.
+A healthy long build is monitored, not restarted to meet a diagnosis budget.
+Session/usage/power limits remain real; no instruction guarantees an all-night run.
+
 ## Autonomous dependency installation and unblocking
 
 Once development is started, the owner explicitly authorizes the development AI to install, update and configure the tools, system packages and build dependencies necessary to develop and test Toddy OS, on the development host as needed and inside the designated VM/chroot. This includes virtualization, compilers, build tools, image/boot utilities, language tooling and test dependencies. The AI may use available administrative privileges, including sudo, for these project-related operations without asking again for each routine installation.

@@ -1,0 +1,311 @@
+{
+  "scope": "structural simulation only; assumes each visited story passes, no duration or runtime proof",
+  "status_sha256": "5dfbc7e276a223403eff64efa13c9c2f66042ba3f7668d2102da624844ae0809",
+  "actual_approval": false,
+  "nominal": {
+    "simulated_order": [
+      "B01",
+      "B03",
+      "B04",
+      "B05",
+      "B02",
+      "B06",
+      "B11",
+      "B12",
+      "B07",
+      "B08",
+      "B09",
+      "B10",
+      "B13"
+    ],
+    "pending": [],
+    "blocked": []
+  },
+  "single_story_faults": {
+    "B01": {
+      "simulated_order": [],
+      "pending": [
+        "B01",
+        "B03",
+        "B04",
+        "B05",
+        "B02",
+        "B06",
+        "B11",
+        "B12",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B13"
+      ],
+      "blocked": [
+        "B01"
+      ]
+    },
+    "B03": {
+      "simulated_order": [
+        "B01",
+        "B02"
+      ],
+      "pending": [
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B11",
+        "B12",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B13"
+      ],
+      "blocked": [
+        "B03"
+      ]
+    },
+    "B04": {
+      "simulated_order": [
+        "B01",
+        "B03",
+        "B02"
+      ],
+      "pending": [
+        "B04",
+        "B05",
+        "B06",
+        "B11",
+        "B12",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B13"
+      ],
+      "blocked": [
+        "B04"
+      ]
+    },
+    "B05": {
+      "simulated_order": [
+        "B01",
+        "B03",
+        "B04",
+        "B02"
+      ],
+      "pending": [
+        "B05",
+        "B06",
+        "B11",
+        "B12",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B13"
+      ],
+      "blocked": [
+        "B05"
+      ]
+    },
+    "B02": {
+      "simulated_order": [
+        "B01",
+        "B03",
+        "B04",
+        "B05",
+        "B07",
+        "B08"
+      ],
+      "pending": [
+        "B02",
+        "B06",
+        "B11",
+        "B12",
+        "B09",
+        "B10",
+        "B13"
+      ],
+      "blocked": [
+        "B02"
+      ]
+    },
+    "B06": {
+      "simulated_order": [
+        "B01",
+        "B03",
+        "B04",
+        "B05",
+        "B02",
+        "B07",
+        "B08",
+        "B10"
+      ],
+      "pending": [
+        "B06",
+        "B11",
+        "B12",
+        "B09",
+        "B13"
+      ],
+      "blocked": [
+        "B06"
+      ]
+    },
+    "B11": {
+      "simulated_order": [
+        "B01",
+        "B03",
+        "B04",
+        "B05",
+        "B02",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B10"
+      ],
+      "pending": [
+        "B11",
+        "B12",
+        "B13"
+      ],
+      "blocked": [
+        "B11"
+      ]
+    },
+    "B12": {
+      "simulated_order": [
+        "B01",
+        "B03",
+        "B04",
+        "B05",
+        "B02",
+        "B06",
+        "B11",
+        "B07",
+        "B08",
+        "B09",
+        "B10"
+      ],
+      "pending": [
+        "B12",
+        "B13"
+      ],
+      "blocked": [
+        "B12"
+      ]
+    },
+    "B07": {
+      "simulated_order": [
+        "B01",
+        "B03",
+        "B04",
+        "B05",
+        "B02",
+        "B06",
+        "B11",
+        "B12",
+        "B09",
+        "B10"
+      ],
+      "pending": [
+        "B07",
+        "B08",
+        "B13"
+      ],
+      "blocked": [
+        "B07"
+      ]
+    },
+    "B08": {
+      "simulated_order": [
+        "B01",
+        "B03",
+        "B04",
+        "B05",
+        "B02",
+        "B06",
+        "B11",
+        "B12",
+        "B07",
+        "B09",
+        "B10"
+      ],
+      "pending": [
+        "B08",
+        "B13"
+      ],
+      "blocked": [
+        "B08"
+      ]
+    },
+    "B09": {
+      "simulated_order": [
+        "B01",
+        "B03",
+        "B04",
+        "B05",
+        "B02",
+        "B06",
+        "B11",
+        "B12",
+        "B07",
+        "B08",
+        "B10"
+      ],
+      "pending": [
+        "B09",
+        "B13"
+      ],
+      "blocked": [
+        "B09"
+      ]
+    },
+    "B10": {
+      "simulated_order": [
+        "B01",
+        "B03",
+        "B04",
+        "B05",
+        "B02",
+        "B06",
+        "B11",
+        "B12",
+        "B07",
+        "B08",
+        "B09"
+      ],
+      "pending": [
+        "B10",
+        "B13"
+      ],
+      "blocked": [
+        "B10"
+      ]
+    },
+    "B13": {
+      "simulated_order": [
+        "B01",
+        "B03",
+        "B04",
+        "B05",
+        "B02",
+        "B06",
+        "B11",
+        "B12",
+        "B07",
+        "B08",
+        "B09",
+        "B10"
+      ],
+      "pending": [
+        "B13"
+      ],
+      "blocked": [
+        "B13"
+      ]
+    }
+  }
+}
