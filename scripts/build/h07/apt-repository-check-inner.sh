@@ -44,6 +44,7 @@ Dir::Log "$fixture/log";
 APT::Architecture "amd64";
 APT::Architectures { "amd64"; };
 APT::Sandbox::User "_apt";
+APT::Sandbox::Seccomp "true";
 Acquire::Languages "none";
 DPkg::Options { "--root=$fixture/root"; "--log=$fixture/dpkg.log"; "--force-confold"; "--force-confdef"; };
 APTCONF
@@ -53,7 +54,13 @@ export APT_CONFIG="$fixture/apt.conf"
 # Effective worker identities also require observation in the final image.
 apt-get() {
  local result
- if command apt-get "$@" > "$fixture/apt-command.log" 2>&1; then
+ local -a acquisition=(apt-get "$@")
+ if [[ ${observe_https_workers:-false} == true ]]; then
+  acquisition=(python3 -B /sources/evidence/h07-apt/apt-worker-probe.py
+   --output /sources/evidence/h07-apt/https-worker.json
+   --user _apt --executable /usr/libexec/apt/methods/https -- "${acquisition[@]}")
+ fi
+ if command "${acquisition[@]}" > "$fixture/apt-command.log" 2>&1; then
   result=0
  else
   result=$?
@@ -158,12 +165,19 @@ test ! -e "$fixture/root/etc/toddy-apt-probe.conf"
 )
 chmod 644 "$fixture/tls.crt"
 python3 - "$fixture" <<'PYSERVER' > "$fixture/https.log" 2>&1 &
-import functools,http.server,os,pathlib,pwd,ssl,sys
+import functools,http.server,os,pathlib,pwd,ssl,sys,time
 root=pathlib.Path(sys.argv[1])
 context=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 context.load_cert_chain(root/'tls.crt',root/'tls.key')
+class Handler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        # Keep an actual payload request observable without changing its bytes
+        # or authentication. This stays below the five-second client timeout.
+        if self.path.endswith('.deb'):
+            time.sleep(1)
+        super().do_GET()
 server=http.server.ThreadingHTTPServer(('127.0.0.1',0),
-    functools.partial(http.server.SimpleHTTPRequestHandler,directory=str(root/'repo')))
+    functools.partial(Handler,directory=str(root/'repo')))
 server.socket=context.wrap_socket(server.socket,server_side=True)
 (root/'https.port').write_text(str(server.server_port))
 identity=pwd.getpwnam('tester')
@@ -187,7 +201,7 @@ find "$fixture/state/lists" -maxdepth 1 -type f ! -name lock -delete
 find "$fixture/cache/archives" -maxdepth 1 -type f -name '*.deb' -delete
 find "$fixture/cache/archives/partial" -maxdepth 1 -type f -delete
 apt-get "${tls_options[@]}" update -o APT::Update::Error-Mode=any
-apt-get "${tls_options[@]}" --yes install toddy-apt-probe
+observe_https_workers=true apt-get "${tls_options[@]}" --yes install toddy-apt-probe
 grep -Fx payload-2 "$fixture/root/usr/share/toddy-apt-probe/value"
 grep -F 'toddy-apt-probe_2_all.deb' "$fixture/https.log" | grep -F ' 200 '
 find "$fixture/state/lists" -maxdepth 1 -type f ! -name lock -delete

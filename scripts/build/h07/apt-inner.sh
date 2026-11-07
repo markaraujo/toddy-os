@@ -5,6 +5,7 @@ test ! -e /sources/stage/apt
 mkdir -p /sources/evidence/h07-apt vendor/toddy
 cat > vendor/toddy/apt.conf-00toddy <<'APTCONF'
 APT::Sandbox::User "_apt";
+APT::Sandbox::Seccomp "true";
 Acquire::AllowInsecureRepositories "false";
 Acquire::AllowDowngradeToInsecureRepositories "false";
 APT::Get::AllowUnauthenticated "false";

@@ -1260,3 +1260,18 @@ files. An independent read-only completed-result verifier now rejects actual
 unfinished/interrupted/outside-path inputs, and all 152 local checks pass.
 ADR-0069 records hashes and limits: no positive full result, production install
 or package acceptance yet. H07 remains 124/126 accepted packages.
+
+
+2026-11-07 — Independent APT preparation found a runtime seccomp configuration
+omission before installation. ADR-0070 records the correction and native proof
+that the worker observer accepts only the expected credentials plus an additional
+kernel filter. Eight real process scenarios and a native TLS fixture passed;
+154 local checks pass. Actual APT build/acquisition and Berkeley DB acceptance
+remain pending. No package-count or weighted milestone credit is added.
+
+
+2026-11-07 01:52 UTC — Both Berkeley DB drivers remain live with no terminal exits.
+Original: Recd003.e: remove dups 1 at a time prepare-commit; same two failures.
+Corrected: Fop006.196: truncate (a) 0 commit;  rename (foo b) no such file.  Files remaining: b a.; zero failures.
+Raw .local/logs/h07-db-standard-progress-<sha256>.json SHA-256:
+f31ecc5d75d5575b9ca73827db06d74d1b109fc92e2adc4e9ab3cfae6c3066a5.

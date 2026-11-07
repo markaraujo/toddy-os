@@ -1038,3 +1038,15 @@ original history, production staging and the normal manifest before deciding
 whether to resume or restore the paired checkpoint. A staged package alone is
 unfinished. Only actual recipe/postcheck 0/0 may unblock APT. Keep the original
 success-only and obsolete serial-retry supervisors from launching duplicates.
+
+
+APT's next committed input sync includes ADR-0070's explicit runtime seccomp
+setting and the worker observer. The full apt-check.sh runs it during actual
+HTTPS installation and preserves /sources/evidence/h07-apt/https-worker.json.
+Inspect command_exit, expected executable, IDs/groups, capabilities and additional
+filter count together with native-repository.log; an empty/missing observation
+is not acceptance. Before retry preserve any existing observer report and failed
+repository fixture. If APT traps a syscall, keep its exact diagnostic and native
+logs; do not disable the selected filter or add broad exceptions as a shortcut.
+The observer preflight can be repeated independently with
+python3 scripts/host/probe_apt_worker_observer.py; it does not test APT itself.

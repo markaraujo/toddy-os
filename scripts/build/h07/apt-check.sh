@@ -4,8 +4,11 @@ chroot_run <<'INNER'
 set -euo pipefail
 apt-get --version | head -n1 | grep -F 'apt 3.0.4'
 apt-config dump | grep -F 'APT::Sandbox::User "_apt"'
+apt-config dump | grep -Fx 'APT::Sandbox::Seccomp "true";'
 test -x /usr/libexec/apt/methods/gpgv
 test -x /usr/libexec/apt/methods/https
 getent passwd _apt
 INNER
+install -Dm644 /opt/toddy-build/scripts/build/h07/apt-worker-probe.py \
+ "$LFS/sources/evidence/h07-apt/apt-worker-probe.py"
 chroot_run < /opt/toddy-build/scripts/build/h07/apt-repository-check-inner.sh

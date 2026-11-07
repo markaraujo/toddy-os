@@ -471,3 +471,10 @@ transaction/reopen/rollback postchecks, and added protected original-failure
 archival/nomination. Actual guest probes refuse premature preparation and
 out-of-dispatcher consumption. Positive handoff and package acceptance remain
 pending. The previous verifier/status commit passed all three published checks.
+
+
+2026-11-07 — Found and corrected the prepared APT runtime seccomp omission.
+Added an observer to the real HTTPS repository install; inherited filters alone
+cannot satisfy it. Eight native process/filter scenarios and the exact TLS
+fixture passed. Full APT acquisition remains pending. Berkeley DB continues
+without active-input changes, and H07 remains 124 accepted packages.

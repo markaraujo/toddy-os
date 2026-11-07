@@ -661,3 +661,12 @@ preflight refused because findmnt returned two stacked tmpfs rows; changed the
 probe to native stat -f of the effective mount. Corrected preflight passed and
 the fresh complete suite started at db-standard-nfv62s4o. The original full run
 was not stopped or altered. See ADR-0069 for evidence and acceptance boundaries.
+
+
+2026-11-07 — Prepared APT runtime sandbox gap (before native installation).
+Symptom: HAVE_SECCOMP was required, but neither vendor nor fixture configuration
+enabled APT::Sandbox::Seccomp. Cause: frozen APT 3.0.4 defaults that runtime flag
+to false. Correction: explicitly enable it and require measured HTTPS worker
+IDs/groups, zero capabilities, no_new_privs and an additional kernel filter.
+Verification: eight native observer cases and the revised native TLS fixture
+passed; actual APT execution is still gated on Berkeley DB. See ADR-0070.
