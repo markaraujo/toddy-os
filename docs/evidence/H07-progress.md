@@ -1334,8 +1334,9 @@ image executable-resolution checks passed (ADR-0074): seventeen packages,
 builder remains unchanged; H07 is still 124/126 accepted packages. No full
 foundation image or later milestone acceptance is claimed.
 
-2026-11-07 07:59 UTC — Both actual Berkeley driver identities remain live and
-have reached the final access-method matrix (block 27/27). Original: Test091
+2026-11-07 07:59 UTC — Corrected by ADR-0079: both driver identities were live,
+but only the original was in block 27/27. The corrected run was in partition
+(block 18/27); the earlier final-matrix claim was wrong. Original: Test091
 queue configuration, the same two known failures. Corrected: Test044 hash with
 partition callback, third crash/recovery cycle, zero FAIL entries. Neither has
 terminal exits. Raw observation SHA-256:
@@ -1345,7 +1346,8 @@ Test headers as well as Recd/Fop instead of retaining an obsolete recovery
 heading. H07 remains 124/126 accepted packages. Independent private native
 Squashfs/overlay correction and initramfs evidence are in ADR-0075.
 
-2026-11-07 08:09 UTC — Both Berkeley driver identities remain live in block 27/27.
+2026-11-07 08:09 UTC — Corrected by ADR-0079: original block 27/27; corrected
+run still in partition, block 18/27. Both identities were live.
 Original: Test044 queueext cycle 1 with the same two known failures. Corrected:
 Test142.h hash/partition callback, zero FAIL entries, after completing the earlier
 Test044 crash/recovery cycles. Neither driver has terminal exits. Raw observation
@@ -1354,7 +1356,7 @@ SHA-256: 5401327de7abb15a4fee1d5d3189820fbff85b246e13ebdec287be2c2b1a86eb
 packages. Independent native compression/readback preparation passed (ADR-0076);
 complete foundation assembly and native-kernel boot remain pending.
 
-### Native ISO preparation while the final DB matrix runs — 2026-11-07 08:20 UTC
+### Native ISO preparation during the two DB suites — 2026-11-07 08:20 UTC
 
 Both actual Berkeley driver identities remain live: original 1364 in Test044
 queueext cycle 2 with the same two known failures; corrected 1107192 in Test044
@@ -1366,7 +1368,8 @@ This independent experiment does not increase H07 package count or accept H11.
 
 ### FAT and actual loader boots during DB wait — 2026-11-07 08:30 UTC
 
-Both Berkeley driver identities remain live in block 27/27. Original 1364
+Correction (ADR-0079): original block 27/27, corrected compression block 19/27.
+Both driver identities remain live. Original 1364
 finished this configuration's Test044 recovery cycles and reached Test078
 queueext with the same two failures. Corrected 1107192 is verifying Test044
 btree cycle 2, zero FAIL entries. No terminal exit exists. Observation SHA-256
@@ -1375,3 +1378,14 @@ btree cycle 2, zero FAIL entries. No terminal exit exists. Observation SHA-256
 Independent private preparation passed native Mtools FAT readback and four real
 BIOS/UEFI CD-ROM/USB GRUB loader boots (ADR-0078). No kernel/root was included;
 this does not accept the full boot matrix, H07 packages or any later milestone.
+
+### Reporting correction — 2026-11-07 08:36 UTC
+
+ADR-0079 corrects the previous misclassification of the corrected complete run.
+Actual outer dispatcher headers place it in compression, 19/27, not the final
+matrix. It reached Test076 with zero FAIL entries. Original remains live in
+27/27, hash method 8/9, Test044 cycle 1, with its two known failures. Neither has
+a terminal exit. The versioned observer retains each full outer-header snapshot,
+checks source/configuration hashes and refuses malformed sequences. Raw SHA-256
+0ffd396f79afaea39598e11cee701e5b31af7fa6fcf28d5f3fee61742c49787b.
+Package counts and milestone credit were not changed by the reporting error.

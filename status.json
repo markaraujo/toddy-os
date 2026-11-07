@@ -477,14 +477,14 @@
   ],
   "active_work": {
     "story": "H07",
-    "verified_at": "2026-11-07 08:30 UTC",
+    "verified_at": "2026-11-07 08:36 UTC",
     "verified": [
       "124 of 126 currently planned H07 packages installed, configured and accepted; 2 pending (Berkeley DB and APT). All 124 have own-build/source provenance.",
       "Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.",
       "Full ACL retest, API/layout ownership and native configuration correction passed.",
       "Verified paired cold checkpoint at the 124-package boundary."
     ],
-    "running": "Both Berkeley drivers remain live in block 27/27. Original 1364 finished Test044 queueext recovery cycles and reached Test078, with the same two known failures. Corrected 1107192 is verifying Test044 btree cycle 2 with zero FAIL entries. Neither has terminal exits. Private native Mtools FAT checks and four actual BIOS/UEFI CD-ROM/USB GRUB loader boots passed. The test ISO contains no kernel/root; package acceptance, the full foundation ISO and native Linux boot remain pending.",
+    "running": "Reporting correction (ADR-0079): the corrected Berkeley run is in compression, block 19/27, not 27/27 as previously reported. PID 1107192 is live in Test076 btree with zero FAIL entries. Original PID 1364 is live in block 27/27, hash method 8/9, Test044 cycle 1, with the same two known failures. Neither has terminal exits. The observer now uses each run's outer dispatcher headings rather than repeated TestNNN names. H07 remains 124/126 accepted packages; no remaining-time percentage is inferred.",
     "remaining": [
       "Finish the complete database suite, then production install and transaction/reopen postchecks; later access-method matrix plans 135 x 9 dispatch entries, including inapplicable skips.",
       "Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.",

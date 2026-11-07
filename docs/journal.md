@@ -535,7 +535,8 @@ kernel implementation, added targeted unchanged-mode copy-up, and verified ACLs,
 default inheritance, capabilities, hardlink writes, privileges and bad-path
 refusals (ADR-0075). Updated native initramfs archive checks pass. No package or
 milestone was accepted from this private preparation; both Berkeley runs remain
-active in their final access-method matrix, corrected run without FAIL entries.
+active. Correction (ADR-0079): original was in the final matrix, corrected
+was in partition (18/27), without FAIL entries.
 
 2026-11-07 — Prepared gated root compression and independent native full
 extraction/ACL restoration comparison (ADR-0076). The actual metadata fixture
@@ -550,7 +551,8 @@ partition callback without FAIL entries. No milestone acceptance was inferred.
 symlink metadata restoration; corrected both without dropping comparisons. Eight
 ISO fixture entries, ACLs, hardlinks, numeric owners, dangling/outside links and
 corruption rejection passed. All thirteen driver stages exited zero. No package
-or milestone was accepted; both Berkeley suites remain live in block 27/27.
+or milestone was accepted. Correction (ADR-0079): original was in block 27/27;
+corrected was in compression (19/27), not the final matrix.
 
 2026-11-07 — Built frozen Mtools privately and passed genuine EFI FAT copy/readback,
 UTF-8 names and malformed-image refusal. Native media assembly exposed the
@@ -560,3 +562,11 @@ actual boot caught a missing echo module; corrected it and passed all four
 BIOS/UEFI CD-ROM/USB loader boots with exact serial/data markers and clean halts.
 No kernel/rootfs or later milestone was accepted. The same Berkeley drivers
 remain live, corrected with zero FAIL entries.
+
+2026-11-07 — Found and corrected overstated progress for the complete corrected
+Berkeley suite (ADR-0079). Test names repeat across groups; the case-only observer
+did not identify the outer dispatcher. Actual standard.log shows original 27/27
+(hash 8/9) and corrected 19/27 (compression), both live. Added a source-qualified
+read-only observer and four regressions, retained full headers/evidence and
+corrected the public snapshot and historical narrative. No test or acceptance
+criterion was changed; the full corrected result remains required.

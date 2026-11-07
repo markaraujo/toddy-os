@@ -758,3 +758,20 @@ repeat with fresh media. All four BIOS/UEFI CD-ROM/USB cases then executed the
 correct GRUB platform, read unique media data and halted with exit zero. The ISO
 hash is unchanged. Original failed source/serial evidence remains in the private
 generations; ADR-0078 identifies passing evidence. Native Linux boot is pending.
+
+## 2026-11-07 — Corrected database progress was overstated
+
+Symptom: published 07:59–08:30 UTC snapshots incorrectly placed the corrected
+complete rerun in the final access-method matrix (27/27). Cause: repeated
+Test044/Test142 case names were interpreted without their outer dispatcher
+heading. Its actual standard.log showed partition then compression (18/27 and
+19/27); only the original run was in the final matrix. This was a monitoring
+implementation/reporting error, not a new upstream failure or a stalled loop.
+
+Correction: source-qualified read-only outer-header observer, independent run
+identity/terminal checks, exact header-sequence validation and retained full
+snapshots. Four regressions prevent repeated-case and malformed-header mistakes.
+Actual live observation now reports original 27/hash 8 of 9 and corrected
+19/compression, preserving two original failures and zero corrected FAIL entries.
+Corrected public status and annotated historical statements; raw evidence and
+all test/acceptance criteria remain intact. See ADR-0079.

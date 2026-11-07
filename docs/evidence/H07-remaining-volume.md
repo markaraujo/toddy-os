@@ -1,6 +1,7 @@
 # H07 remaining work: volume rather than package percentage
 
-Snapshot: 2026-11-06 21:39 UTC. Native Dpkg reports 124 configured packages
+Current observation: 2026-11-07 08:36 UTC (ADR-0079). The accepted boundary is
+124 configured packages
 against the current 126-package H07 plan. This 98.4% package count is not a
 measurement of completed effort, test cases or remaining wall-clock time.
 
@@ -22,18 +23,25 @@ a new compilation of all 124 accepted packages.
 
 ## Why the single remaining database package is substantial
 
-The live standard-suite dispatch log currently says Running partition tests.
-That is the eighteenth entry of the initial group sequence. The compiled
-feature profile plans 24 initial groups, followed by general recovery, six
-join tests and the final access-method matrix. Initial groups after partition
-cover compression, three replication-manager groups, replication and security.
-The Recd011/Recd012 names recently observed are subcases inside partition;
-they do not mean that the later general recovery section is already complete.
+The original suite is in logical group 27/27, final matrix method hash (8/9),
+with two known failures. The separate complete corrected run is in compression,
+group 19/27, with zero FAIL entries so far. Earlier reports incorrectly put both
+in the final matrix; ADR-0079 corrects that monitoring error using each run's
+actual outer dispatcher log. Repeated Test044/Test142 names do not identify a
+group and progress from one run cannot be transferred to another.
+
+After the current compression group, the corrected run still has eight groups:
+three replication-manager groups, replication, security, recovery, join and the
+final access-method matrix. That is a sequence count, not a remaining-time
+percentage. The compiled feature profile has 24 initial groups, followed by
+recovery, six join tests and the final matrix. Some groups contain many nested
+configurations and lengthy deliberate crash/recovery cycles.
 
 The verified source lists 135 general access test templates and nine configured
 access methods: btree, rbtree, recno, frecno, rrecno, queue, queueext, hash and
 heap. The final matrix therefore schedules 135 * 9 = 1215 dispatch entries.
-That section has not started. Some combinations return early as inapplicable;
+That section is running in the original attempt but has not started in the
+corrected attempt. Some combinations return early as inapplicable;
 these are planned entries, not 1215 independently timed full tests or assertions.
 No duration estimate is derived from multiplying that number by one slow case.
 
@@ -43,7 +51,8 @@ dispatch list. These omissions are upstream list structure, not tests removed
 by this project. Test044 is the forty-fourth listed entry; 91 listed entries
 follow it in one pass. The entry count 135 is not the highest test number.
 
-At 21:54 UTC, the current partition variant was executing Test044 cycle 1.
+Historical observation on 2026-11-06 at 21:54 UTC: the original partition
+variant was executing Test044 cycle 1.
 Its actual source performs three cycles per invocation. Each selects a load
 duration from 300 to 600 seconds, then crashes the workers and verifies recovery.
 The first current cycle logged 525 seconds. Five observed workers were each

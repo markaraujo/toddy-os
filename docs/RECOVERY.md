@@ -1173,3 +1173,22 @@ marker and ISO data read is failure. Never start duplicates, attach the builder
 disk or change a physical disk to diagnose media boot. Correct inputs and use a
 fresh generation after verifying the old run has terminated. The final accepted
 loader-only fixture is not a recovery image or a completed H09/H11/H12 gate.
+
+Database progress correction (ADR-0079): observe each run with
+`python3 scripts/host/observe_bdb.py --corrected-fixture PRINTED_FIXTURE`.
+The original log is /sources/evidence/h07-berkeley-db/standard.log; corrected
+uses its own fixture/standard.log. Only their outer Running headers establish
+the current group. TestNNN and RecdNNN recur inside earlier groups. At the
+corrected 2026-11-07 08:36 UTC snapshot, original is group 27/hash method 8 of 9,
+but corrected is only group 19/compression. Old claims that both had reached
+27/27 were reporting errors. Never combine the original's later position with
+the corrected run's zero-failure count.
+
+The versioned observer verifies frozen source/configuration hashes, complete
+header order, actual PID identity and terminal files. It retains full outer
+log snapshots, detailed last dispatch arguments and any observation-time group
+transition. A mismatch means progress is unknown and needs investigation.
+Do not execute run_std -n inside a live tree: the frozen implementation removes
+and recreates ALL.OUT even in that mode. Do not alter test input or restart a
+process to obtain a progress estimate. Existing strict full-result/production
+handoff criteria remain unchanged; this observer cannot accept a package.
