@@ -16,6 +16,16 @@ spec.loader.exec_module(vm)
 
 
 class Phase2Guards(unittest.TestCase):
+    def test_historical_start_restore_guard_preserves_active_clone_backing(self):
+        with patch.object(vm.vm, 'run', return_value=subprocess.CompletedProcess([], 0, 'toddy-phase2\n')):
+            with self.assertRaisesRegex(SystemExit, 'preserve its cold foundation'):
+                vm.vm.require_phase2_inactive()
+
+    def test_historical_guard_does_not_hide_docker_failure(self):
+        with patch.object(vm.vm, 'run', side_effect=subprocess.CalledProcessError(1, ['docker'])):
+            with self.assertRaises(subprocess.CalledProcessError):
+                vm.vm.require_phase2_inactive()
+
     def test_another_project_vm_prevents_prepare_or_start(self):
         with patch.object(vm, 'run', return_value=subprocess.CompletedProcess([], 0, 'toddy-builder\n')):
             with self.assertRaisesRegex(SystemExit, 'Stop project VMs'):

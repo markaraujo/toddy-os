@@ -24,6 +24,7 @@ def digest(path):
 
 
 def stopped():
+    vm.require_phase2_inactive()
     if vm.VM.is_symlink() or vm.VM.resolve() != vm.VM:
         raise SystemExit('VM storage must be a real project-local directory')
     result = subprocess.run(['docker', 'inspect', '--format', '{{.State.Running}}', vm.NAME],

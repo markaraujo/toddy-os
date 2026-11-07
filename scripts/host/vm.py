@@ -17,6 +17,15 @@ def run(*args, **kwargs):
     return subprocess.run(args, check=True, **kwargs)
 
 
+def require_phase2_inactive():
+    # Original disks are cold backing inputs while Phase 2 overlays are running.
+    # Docker errors must fail closed, never authorize a restore/start by absence.
+    result = run('docker', 'ps', '--filter', 'name=^/toddy-phase2$',
+                 '--format', '{{.Names}}', capture_output=True, text=True)
+    if result.stdout.strip():
+        raise SystemExit('Phase 2 VM is running: preserve its cold foundation backing disks')
+
+
 def qemu_tool(*args):
     run('docker', 'run', '--rm', '--user', f'{os.getuid()}:{os.getgid()}',
         '--cap-drop=ALL', '--security-opt=no-new-privileges',
@@ -35,6 +44,8 @@ def main():
     parser.add_argument('action', choices=['prepare', 'start', 'ssh', 'stop', 'inspect'])
     parser.add_argument('command', nargs=argparse.REMAINDER)
     args = parser.parse_args()
+    if args.action in ('prepare', 'start'):
+        require_phase2_inactive()
     VM.mkdir(parents=True, exist_ok=True, mode=0o700)
     if VM.is_symlink() or VM.resolve() != VM:
         raise SystemExit('VM storage must be a real directory inside this checkout')
