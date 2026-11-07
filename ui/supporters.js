@@ -5,11 +5,16 @@
     if (!sky) return;
     const portrait = sky.querySelector(".wall-portrait");
     const caption = sky.querySelector("[data-reaction-caption]");
-    const path = sky.querySelector(".constellation-link path");
+    const image = portrait.querySelector("img");
+    const halo = portrait.querySelector(".gratitude-halo");
+    const phrases = window.TODDY_SUPPORTER_THANKS || ["You have my attention."];
     const scroller = sky.querySelector(".starfield-scroll");
     const motion = matchMedia("(prefers-reduced-motion: reduce)");
     let selected;
     let frame;
+    let lastPhrase = -1;
+    let nod;
+    let glow;
     const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
     function geometry() {
         frame = undefined;
@@ -17,9 +22,6 @@
         const bounds = sky.getBoundingClientRect();
         const dog = portrait.getBoundingClientRect();
         const name = selected.getBoundingClientRect();
-        const viewport = scroller.getBoundingClientRect();
-        const visible = name.bottom > viewport.top && name.top < viewport.bottom;
-        sky.classList.toggle("has-selection", visible);
         const x = dog.x + dog.width / 2 - bounds.x;
         const y = dog.y + dog.height * .55 - bounds.y;
         const nx = name.x + name.width / 2 - bounds.x;
@@ -29,13 +31,37 @@
             portrait.style.setProperty("--look-y", clamp(-(ny - y) / bounds.height * 15, -8, 8) + "deg");
             portrait.style.setProperty("--look-roll", clamp((nx - x) / bounds.width * 4, -3, 3) + "deg");
         }
-        path.setAttribute("d", `M ${x} ${y} Q ${(x + nx) / 2} ${Math.min(y, ny) - 50} ${nx} ${ny}`);
+    }
+    function thankYou() {
+        let index = Math.floor(Math.random() * (phrases.length - (lastPhrase >= 0 && phrases.length > 1 ? 1 : 0)));
+        if (phrases.length > 1 && lastPhrase >= 0 && index >= lastPhrase) index++;
+        lastPhrase = index;
+        sky.dataset.thanksIndex = String(index);
+        return phrases[index];
+    }
+    function react() {
+        if (motion.matches) return;
+        const start = getComputedStyle(image).transform;
+        nod?.cancel();
+        nod = image.animate([
+            {transform:start, offset:0, easing:"ease-in-out"},
+            {transform:"translateY(-3px) rotate(-4deg)", offset:.3, easing:"ease-in-out"},
+            {transform:"translateY(2px) rotate(3deg)", offset:.65, easing:"ease-in-out"},
+            {transform:"none", offset:1}
+        ], {duration:1300});
+        const opacity = getComputedStyle(halo).opacity;
+        const transform = getComputedStyle(halo).transform;
+        glow?.cancel();
+        glow = halo.animate([
+            {opacity, transform},
+            {opacity:.8, transform:"scale(1.08)", offset:.4},
+            {opacity:0, transform:"scale(1.3)"}
+        ], {duration:1500, easing:"ease-out"});
     }
     function schedule() { if (!frame) frame = requestAnimationFrame(geometry); }
     function reset() {
         if (selected) selected.setAttribute("aria-pressed", "false");
         selected = undefined;
-        sky.classList.remove("has-selection");
         portrait.removeAttribute("style");
         caption.replaceChildren(document.createTextNode("I checked the list."), document.createElement("br"), document.createTextNode("Good humans."));
     }
@@ -48,13 +74,14 @@
         const name = document.createElement("span");
         name.setAttribute("data-no-translate", "");
         name.textContent = button.textContent;
-        caption.replaceChildren(document.createTextNode("Thanks, "), name, document.createElement("br"), document.createTextNode("You have my attention."));
+        caption.replaceChildren(document.createTextNode("Thanks, "), name, document.createElement("br"), document.createTextNode(thankYou()));
+        react();
         schedule();
     });
     sky.addEventListener("keydown", event => { if (event.key === "Escape") reset(); });
     scroller.addEventListener("scroll", schedule, {passive:true});
     window.addEventListener("resize", schedule, {passive:true});
-    motion.addEventListener("change", () => { portrait.removeAttribute("style"); schedule(); });
+    motion.addEventListener("change", () => { portrait.removeAttribute("style"); nod?.cancel(); glow?.cancel(); schedule(); });
     let visible = false;
     const pause = () => sky.classList.toggle("is-offscreen", !visible || document.hidden);
     const observer = new IntersectionObserver(([entry]) => {

@@ -1181,3 +1181,13 @@ There are no image/pose swaps during interaction. Fixed local-perspective overla
 and negative-depth touch hit-testing during browser QA. Desktop/mobile/keyboard,
 48 locale/viewport combinations and first/middle/last touch selection passed.
 See evidence/supporter-galaxy.md for limits and motion/accessibility checks.
+
+## 2026-11-07 — Comet tails and one hundred random thank-yous
+
+Removed the name-to-Toddy connector, gave bone meteors broad tapered light tails,
+and added a continuous grateful nod/halo on selection. Added 100 offline random
+thank-you lines in all six portal languages, with no immediate repeat and no
+image swaps. Fixed caption space prevents name-layout jumps. Playwright checked
+all 600 localized responses, rapid/random clicks, native touch, reduced motion
+and 48 viewport/locale combinations. 186 checks passed. See
+ evidence/supporter-thanks-and-comets.md; no guest/release scope changed.
