@@ -17,3 +17,20 @@ Consulted 2026-11-05. Freeze sources during H02; these links are documentation, 
 | [Docker containers](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/) | Online documentation | Containers share a host kernel; VM tests remain required |
 
 Source versions observed in documentation are not proof that packages have been downloaded, built, tested or licensed for a release. Verify errata/advisories and transitive licenses during implementation.
+
+
+## Phase 2 replanning references
+
+Reviewed 2026-11-07. Moving upstream documentation; exact versions and licenses
+must be frozen in B01 before implementation. No source download or build implied.
+
+| Source | Version/context | Use |
+| --- | --- | --- |
+| [Pi toolkit](https://github.com/earendil-works/pi) | Current upstream, former badlogic/pi-mono; unpinned | Preferred MIT agent/provider components; namespace must be resolved from frozen source |
+| [Pi agent core](https://raw.githubusercontent.com/earendil-works/pi/main/packages/agent/README.md) | Moving main README | Tool loop/events, not a privilege or durable execution guarantee |
+| [Pi providers](https://raw.githubusercontent.com/earendil-works/pi/main/packages/ai/README.md) | Moving main README | Provider abstraction and local compatible endpoints |
+| [GNOME HIG](https://developer.gnome.org/hig/) | GTK4/Libadwaita guidance | Native UI and accessibility |
+| [GNOME shortcuts](https://help.gnome.org/gnome-help/keyboard-shortcuts-set.html) | Current help | Configurable quick-entry launch |
+| [GNOME styling](https://developer.gnome.org/hig/guidelines/ui-styling.html) | Current HIG | Minimal supported customization, light/dark/focus |
+| [Ubuntu installation](https://ubuntu.com/desktop/docs/en/latest/tutorial/install-ubuntu-desktop/) | Experience reference only | Optional third-party driver/firmware selections, not a repository dependency |
+| [NVIDIA kernel modules](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/kernel-modules.html) | Current vendor guide; exact driver unselected | Kernel/module compatibility and license review candidate |

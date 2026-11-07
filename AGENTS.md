@@ -6,6 +6,22 @@ Read PRD.md, STATUS.md, status.json, docs/DEVELOPMENT.md, docs/OPEN-DECISIONS.md
 
 Development was explicitly started by the owner. Continue autonomously through H13 and validate G1. The owner amended the execution boundary on 2026-11-06 (America/Sao_Paulo): deliver the foundation ISO and evidence for owner testing, then wait for explicit owner approval before starting B01 or any later B story. G1 technical acceptance alone does not authorize Phase 2. See docs/adr/0063-owner-review-after-h13.md. Existing PRD requirements still authorize routine technical decisions and dependency installation within the active phase; record decisions rather than requesting routine continuation approval.
 
+## Current Phase 2 contract (2026-11-07)
+
+The owner is replanning Phase 2, not restarting the foundation. Use
+`docs/PHASE-2-PLAN.md`, `docs/PHASE-2-VALIDATION.md`, revised B01-B13 and ADR-0105
+instead of obsolete Phase 2 drafts. Current authorization covers plan replacement,
+navy brand/UI design and public Pages redesign; report completion before guest
+implementation. Preserve exact logo/mascot assets and historical G1 evidence.
+Do not mark B11 complete for repository artwork alone.
+
+Deliver small independently committable slices with checkpoints and exact next
+actions. Tests take time: run focused basic checks and directly affected
+regressions; do not repeat unchanged long foundation suites or launch broad
+hardware/provider/soak matrices as preview gates. Essential boot/install,
+credential/privilege, cancellation/replay and recovery checks remain required.
+Broader coverage is explicit owner-use backlog, never fabricated acceptance.
+
 ## Autonomous dependency installation and unblocking
 
 Once development is started, the owner explicitly authorizes the development AI to install, update and configure the tools, system packages and build dependencies necessary to develop and test Toddy OS, on the development host as needed and inside the designated VM/chroot. This includes virtualization, compilers, build tools, image/boot utilities, language tooling and test dependencies. The AI may use available administrative privileges, including sudo, for these project-related operations without asking again for each routine installation.

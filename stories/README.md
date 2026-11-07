@@ -17,16 +17,16 @@ status.json is the source of truth. Each product phase has 100 weighted points. 
 | H11 | foundation | 6 | [Produce hybrid ISO and artifact manifest](H11.md) |
 | H12 | foundation | 6 | [Verify foundation boot matrix and recovery](H12.md) |
 | H13 | foundation | 4 | [Deliver and accept foundation gate G1](H13.md) |
-| B01 | agentic | 5 | [Evaluate desktop, harness, licensing and resource budgets](B01.md) |
-| B02 | agentic | 10 | [Build the graphical desktop and essential applications](B02.md) |
-| B03 | agentic | 8 | [Integrate provider adapters and local inference](B03.md) |
-| B04 | agentic | 8 | [Implement native tools and privileged execution](B04.md) |
-| B05 | agentic | 10 | [Implement durable agent tasks and configuration reconciliation](B05.md) |
-| B06 | agentic | 10 | [Provide terminal, desktop and first-run experience](B06.md) |
-| B07 | agentic | 8 | [Implement memory, retrieval and portable backup](B07.md) |
-| B08 | agentic | 8 | [Implement proactive health monitoring and automation](B08.md) |
-| B09 | agentic | 5 | [Add text-to-speech and speech-to-text](B09.md) |
-| B10 | agentic | 6 | [Add versioned plugin and MCP interfaces](B10.md) |
-| B11 | agentic | 8 | [Integrate approved branding and production asset variants](B11.md) |
-| B12 | agentic | 9 | [Build and test the graphical installer](B12.md) |
-| B13 | agentic | 5 | [Verify installed daily-use release and gate G2](B13.md) |
+| B01 | agentic | 5 | [Freeze the minimal Toddy architecture and delivery slices](B01.md) |
+| B02 | agentic | 10 | [Deliver the minimal branded GNOME desktop](B02.md) |
+| B03 | agentic | 8 | [Connect provider adapters and one optional local AI profile](B03.md) |
+| B04 | agentic | 8 | [Deliver native tools and the revocable privileged executor](B04.md) |
+| B05 | agentic | 10 | [Persist tasks and recover interrupted system changes](B05.md) |
+| B06 | agentic | 10 | [Deliver Toddy quick entry, native UI and first-run setup](B06.md) |
+| B07 | agentic | 8 | [Deliver inspectable local memory and portable backup](B07.md) |
+| B08 | agentic | 8 | [Deliver quiet health monitoring and one persistent automation](B08.md) |
+| B09 | agentic | 5 | [Deliver optional push-to-talk and spoken Toddy responses](B09.md) |
+| B10 | agentic | 6 | [Deliver a bounded plugin interface and one MCP integration](B10.md) |
+| B11 | agentic | 8 | [Integrate the navy brand and nerdy Toddy installer scenes](B11.md) |
+| B12 | agentic | 9 | [Deliver guided installation and optional AI, apps and drivers](B12.md) |
+| B13 | agentic | 5 | [Deliver the basic-tested experimental owner preview and G2](B13.md) |

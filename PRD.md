@@ -1,6 +1,6 @@
 # Toddy OS — Product Requirements Document
 
-Version: 0.1 · Planning baseline · Owner: Marcos Araujo · Date: 2026-11-05
+Version: 0.2 · Phase 2 replanned · Owner: Marcos Araujo · Date: 2026-11-07
 
 ## 1. Product vision
 
@@ -37,7 +37,7 @@ The daily-use experimental release must support persistent files, networking, a 
 
 Implementation baseline: LFS 13.1-systemd and matching BLFS 13.1 systemd edition, as observed on the official versioned pages on 2026-11-05. H01 must verify availability, errata, checksums and host compatibility before freezing the build lock. Never follow a moving stable URL during a build. The older Sagui reference uses 12.4 SysVinit; its scripts are evidence of process, not commands to execute blindly.
 
-Proposed desktop: GNOME/Wayland for Ubuntu-like familiarity, with a documented X11 fallback if necessary. Validate the build and VM support before committing the desktop ADR. Proposals are explicitly tracked in docs/OPEN-DECISIONS.md; routine selections may be resolved by the implementation agent with evidence, without inventing user approvals.
+Selected product direction: minimal GNOME/Wayland and native GTK4/Libadwaita Toddy UI. Preferred engine: replaceable Pi Agent Core/Pi AI modules behind a per-user service, with a separate privileged executor. Exact versions, compatibility and resource budgets are frozen by B01; a documented fallback requires an actual blocker. See ADR-0105 and docs/PHASE-2-PLAN.md. Do not install OpenClaw or Hermes as the initial assistant.
 
 Logical components:
 
@@ -48,7 +48,7 @@ Logical components:
 5. Integration: documented plugin API and MCP adapter; terminal, files, applications and browser adapters.
 6. Recovery: rescue boot, configuration backups, checkpoints and explicit restore procedures.
 
-The OS remains bootable and usable if the agent, model service or network fails. llama.cpp supplies inference, not the complete agent harness. An existing open-source harness can be reused behind adapters if H/B evaluation proves it preferable to a small custom core. Do not require a proprietary coding assistant to operate the distribution.
+The OS remains bootable and usable if the agent, model service or network fails. llama.cpp supplies inference, not the complete agent harness. The preferred Pi components are reused behind replaceable adapters; Toddy supplies durable tasks, policy, memory and recovery. Do not require a proprietary coding assistant to operate the distribution.
 
 ## 5. Phase 1 — Solid LFS foundation
 
@@ -74,61 +74,121 @@ Book deviations needed for live media, networking or package tracking must cite 
 
 Phase 2 development begins only after G1 passes and the owner explicitly approves continuation following their H13 testing. The owner requested this review boundary on 2026-11-06 (America/Sao_Paulo); see ADR-0063. Research may happen earlier; implementation must not destabilize an unfinished foundation or start B01-B13 before approval.
 
-## 6. Phase 2 — Desktop and agentic system
+## 6. Phase 2 — Minimal desktop and native Toddy assistant
 
-### FR-01 Desktop and essential software
+This section replaces the previous Phase 2 draft. The authoritative detailed
+execution plan is [PHASE-2-PLAN.md](docs/PHASE-2-PLAN.md); scoped acceptance is
+[PHASE-2-VALIDATION.md](docs/PHASE-2-VALIDATION.md). ADR-0105 records the owner's
+2026-11-07 revision. Existing H01-H13 acceptance and G1 evidence remain unchanged.
 
-Provide graphical login/session, network configuration, browser, terminal, editor, file manager, audio and basic development tools (Git, compiler and supported language runtimes). Preserve normal keyboard/mouse access independent of the agent. Integrate the approved Toddy OS artwork with usable contrast and documented branding paths. Current PNG studies require production size/vector work where appropriate.
+### FR-01 Minimal graphical desktop
 
-### FR-02 First-run setup
+Deliver GNOME/Wayland, one browser, file manager, terminal, simple editor,
+settings, networking/audio and required accessibility components. Ubuntu is a
+usability reference, not a binary repository. Keep the application set small;
+OpenCode and VS Code are optional installations, with exact packaging/license
+status disclosed. The desktop stays usable without Toddy, a key, a model or network.
 
-Explain model and permission choices; allow API credentials, a local endpoint or deferred setup. Detect CPU, RAM and accelerator availability; recommend compatible models but never download large weights silently. Store keys in an OS secret service or equivalent protected mechanism, never in shell history or plaintext project configuration. A user can finish setup without purchasing any API service.
+### FR-02 Installation and first-run choices
 
-### FR-03 Provider independence
+Offer API key, local AI and configure-later choices. Detect CPU/RAM/GPU/storage
+before model suggestions; downloads require explicit selection and integrity
+verification. Store API credentials in the installed user's protected OS secret
+service, never live-image state, installer logs or project files. Defer secret
+entry to first login. Optional app/model downloads can resume after offline setup.
 
-Define a stable adapter contract for messages, tool calls, streaming, cancellation, token/cost metadata and model capability discovery. Implement explicit provider adapters where wire protocols differ. Test OpenAI-compatible endpoints, OpenRouter, OpenAI, Anthropic and llama.cpp using mocks plus opt-in real tests. A local model must demonstrate actual tool calling before it is advertised as an agent-capable profile. Preserve model-specific context limits and advertise offline capability only for tested local configurations. Never silently send local-only tasks to a remote fallback.
+### FR-03 Replaceable engine and independent providers
 
-### FR-04 Agent execution
+Prefer Pi Agent Core/Pi AI after B01 pins compatible versions and licenses. Toddy
+owns its engine interface, persona and policy. Support explicit provider adapters
+for OpenAI, Anthropic, OpenRouter and compatible endpoints with focused fixture
+contracts; disclose live-unverified paths without requiring paid tests. Optional
+llama.cpp with one tested licensed local profile must demonstrate a real offline
+tool task. No silent cloud fallback, bundled model or proprietary runtime requirement.
 
-Use a durable task lifecycle: queued, planning, running, waiting, completed, failed, canceled. Each task records intent, selected model, tool actions, results and final verification. Support bounded loops, deadlines, retry limits, subprocess exit tracking, output limits and idempotency keys for side effects. Continue tasks across service restarts without replaying non-idempotent actions. A spoken or typed stop request and a local kill switch must cancel work and revoke new privileged actions.
+### FR-04 Durable tasks and visible control
 
-### FR-05 Full system administration
+Persist queued/planning/running/waiting/completed/failed/canceled states, intent,
+model, tool actions and verified outcomes. Bound retries, context, output and
+deadlines. Reconcile interrupted effects before retry; uncertain outcomes wait for
+review. A visible Stop and independent local cancellation path prevent new actions
+and terminate or report managed subprocesses. Do not promise reversal of every effect.
 
-The owner can grant a full-administration profile spanning files, software, services, network and system configuration. Implement a separate privileged executor with authenticated local IPC, validated structured requests and recorded policy decisions. It must be able to execute the full administrative scope authorized by the owner; ordinary tasks should run with user privileges. The user can authorize a session or standing automation rather than approve every command individually.
+### FR-05 Full administration with revocable owner policy
 
-External pages, emails, repository files and tool output are untrusted task data, not permission grants. Secret retrieval and outbound transfers must follow the owner's policy. Explain destructive changes before execution where policy requires it, offer dry runs when feasible, and prepare recovery points. Full root authority means local logs are not tamper-proof against that authority; do not promise otherwise. Control interfaces must not be exposed unauthenticated on the network.
+The unprivileged conversational service uses a separate authenticated local
+executor for validated administrative tools covering packages, files, services,
+network and configuration. The owner can grant session/standing full administration
+and revoke future actions. External documents/tools cannot grant authority. Protect
+secrets and enforce outbound policy. No unauthenticated network control listener.
+Unrestricted root authority cannot promise tamper-proof local logs or universal rollback.
 
-### FR-06 Declarative configuration and recovery
+### FR-06 Configuration and recovery
 
-Separate persistent desired configuration from one-off operations. Version non-secret configuration changes with origin, previous state and validation result. Reconciliation must report drift and avoid repeatedly fighting deliberate user changes. Verify rollback of representative configuration/package failures in a guest. Backups on the same disk do not count as disaster recovery. Preserve a rescue path if the agent cannot start.
+Track non-secret desired configuration separately from one-off actions; record
+origin, prior state and postcondition. Report drift without fighting deliberate
+user changes. Verify one broken-configuration restoration and preserve a manual
+rescue path plus recoverable update/boot checkpoints. Same-disk backups are not
+disaster recovery.
 
-### FR-07 Memory
+### FR-07 Local inspectable memory
 
-Use a local canonical store for preferences, tasks, history and provenance; SQLite plus full-text search is the proposed minimum. Store long-lived knowledge separately from transient conversation context. Provide retention, export, deletion, user correction, per-user isolation and consistent backup/restore. Secrets must not become memory or embeddings. Retrieval must cite the source and distinguish facts, suggestions and untrusted documents.
+Use canonical per-user SQLite/FTS storage for preferences, history, tasks and
+sources, with inspection, correction, retention, deletion, export and restore.
+Keep secrets out. Retrieval cites provenance and preserves untrusted-data status.
+Semantic adapters are a later measured enhancement, not a required vector daemon.
 
-Support a replaceable semantic search adapter. Qdrant is a candidate optional backend for larger document libraries, not a mandatory daemon on every PC. Derived vector indexes must be rebuildable from canonical data and tied to an embedding-model version. Validate relevance, latency, memory use and deletion propagation before selecting a backend. Bind services locally and authenticate remote access. Publish an evaluation dataset and measured results rather than claiming universal fastest/best performance.
+### FR-08 Quiet automation
 
-### FR-08 Proactive automation
+Persist schedules, event triggers and last results. Deterministic disk/service
+checks avoid unnecessary LLM calls. Prevent overlapping/replayed actions; enforce
+owner policy, budgets/backoff, disable/stop controls and meaningful-change-only
+notifications. Validate one representative automation before expanding coverage.
 
-Provide schedules and event triggers for disk usage, service health and user-defined tasks. Use deterministic probes for system metrics; an LLM interprets and plans only when useful. Persist schedules and last outcomes, prevent overlapping duplicate runs, apply backoff and user-defined budgets, and notify on meaningful changes. Silent monitoring must stay quiet when nothing actionable changes. No paid model call is needed to discover that a disk threshold has not changed.
+### FR-09 Toddy quick entry, personality and optional voice
 
-### FR-09 Text and voice
+Build native GTK4/Libadwaita quick-entry/main windows plus CLI/TUI. Provide a
+conflict-checked configurable shortcut, launcher, conversation/task progress,
+history, errors, provider status and Stop. Exact Spotlight-like placement is a
+presentation enhancement with ordinary app activation as fallback. Optional
+push-to-talk STT/TTS supports Portuguese/English with visible microphone state
+and separately evaluated model/voice licenses. No mandatory always-listening.
+Toddy is an affectionate, needy, witty nerdy Shih-tzu; humor must not obscure
+warnings, permissions, uncertainty or real task outcomes.
 
-Provide a CLI/TUI as a first-class interface and an accessible desktop entry point. Voice includes speech-to-text, text-to-speech, device selection and clear microphone state. Proposed offline components are whisper.cpp and a separately evaluated open-source TTS engine/voice. Begin with push-to-talk; always-listening mode requires an explicit preference. Test Portuguese and English. Treat transcripts as text input under the same policy; background audio never grants new privileges.
+### FR-10 Native tools and bounded plugins
 
-### FR-10 Integrations and plugins
+Start with native file, shell, package, service and browser integration. Use
+versioned manifests/schemas, process/credential boundaries, timeouts and revocable
+capabilities. Ship one actual local MCP integration through a replaceable adapter.
+Connector discovery or plugin installation grants no account/root access. Email,
+calendar and cloud connectors remain optional future extensions.
 
-Define versioned plugin manifests, capabilities, input/output schemas, process boundaries, timeouts and installation provenance. Support MCP via a replaceable adapter plus direct native tools. Initial tools cover files, terminal, package manager, services and browser; email/calendar/cloud integrations are optional. Discovering a connector never grants account access. Plugin install/update must not silently inherit administrative policy.
+### FR-11 Guided installer, third-party support and experience previews
 
-### FR-11 Installation and persistence
+Evaluate Calamares first. Show the exact selected disk plan before destructive
+operations; implement user/locale/timezone/boot setup, safe cancellation and
+persistent blank-virtual-disk installation. Offer optional AI and developer apps,
+and explicit compatible third-party firmware/video-driver/software packs with
+hardware detection, license/source/size disclosure, exact kernel/ABI guards and
+rollback/rescue. Do not enable Ubuntu repositories or silently replace core ABI.
+Actual GPU/Wi-Fi support needs hardware evidence; fixture/VM results are labeled.
+Encryption, dual boot and Secure Boot remain unsupported until separately verified.
 
-First ship a live ISO, then an installer that supports guided installation to a selected virtual/physical target, user creation, locale, time zone, partition plan, bootloader and encrypted-disk option if validated. Calamares is a candidate framework; do not clone Ubuntu's installer blindly. Test actual installation onto a blank virtual disk, remove the live ISO and reboot into the installed system. The installer must show the exact disk plan before destructive operations. Dual boot and Secure Boot are separate future gates unless fully implemented and tested.
+Include an installer slideshow with realistic GNOME/Toddy scenes and short
+humorous nerdy-dog copy. Simulated screens are labeled design previews until actual
+guest captures replace them. Use coherent navy assets, preserve exact approved
+logo/mascot and keep progress/errors/disk warnings unobscured. No advertised feature
+may appear implemented solely because it is pictured in a design preview.
 
-### FR-12 Package installation and updates
+### FR-12 Packages, updates and experimental owner delivery
 
-Decide package ownership before final-system builds. APT/dpkg and .deb are reusable tools/formats, but Ubuntu/Debian binary repositories assume their own dependency versions, filesystem conventions and maintainer scripts. Native compatibility is not guaranteed by installing apt. Default proposal: package our own source-built components and operate a signed project-controlled repository; evaluate feasibility before adoption. Applications may additionally use Flatpak or isolated Debian/Ubuntu developer environments if tested.
-
-Require install, remove, upgrade, configuration preservation, dependency/conflict handling, integrity verification and a tested failed-update recovery path. Do not mix foreign libc/core packages into the host. Publish actual compatibility constraints rather than claiming full Ubuntu package compatibility. The agent invokes the package system; it must not invent untracked system changes as a replacement for it.
+Extend the already selected native source-built .deb/dpkg/APT strategy and signed
+project repository. Verify representative install/remove/upgrade, config
+preservation, signature/conflict rejection and failed-update recovery. Review
+third-party applications/drivers separately; .deb format does not establish Ubuntu
+compatibility. Deliver small working commits and interim owner previews, then a
+basic-tested installed ISO under G2 with explicit deferred owner-use validation.
 
 ## 7. Nonfunctional requirements
 
@@ -143,27 +203,44 @@ Require install, remove, upgrade, configuration preservation, dependency/conflic
 
 ## 8. Development and release workflow
 
-The development-start instruction authorizes autonomous implementation and dependency installation through H13. Resolve ordinary failures, verify outcomes and regularly commit/push progress without routine milestone approval. After H13/G1, deliver the foundation ISO and evidence, then pause for owner testing and explicit approval before B01-B13, as requested in ADR-0063. The full experimental release requirements remain unchanged; H13 does not complete G2. Concrete external dependencies may still require user action. Session limits are real constraints; preserve restartable state rather than promising uninterrupted execution.
+The development-start instruction authorizes autonomous implementation and dependency installation through H13. Resolve ordinary failures, verify outcomes and regularly commit/push progress without routine milestone approval. After H13/G1, deliver the foundation ISO and evidence, then pause for owner testing and explicit approval before B01-B13, as requested in ADR-0063. Phase 2 requirements and basic-preview acceptance are revised by ADR-0105; H13 does not complete G2. The current owner request authorizes replanning and repository navy brand/UI/page work, not guest provisioning or a claim of completed hardware testing. Concrete external dependencies may still require user action. Session limits are real constraints; preserve restartable state rather than promising uninterrupted execution.
 
-Use one story per milestone with goal, prerequisites, steps, acceptance criteria, evidence and recovery notes. status.json is the progress source of truth. STATUS.md and dashboard/index.html are generated from it. Completed work counts only after evidence exists; unfinished work does not earn arbitrary fractional credit. Phase percentages are calculated separately from bootstrap readiness. No promise of completion time until a baseline build is measured.
+Use one story per milestone with goal, prerequisites, steps, acceptance criteria, evidence and recovery notes. status.json is the progress source of truth. STATUS.md and dashboard/index.html are generated from it. Completed work counts only after evidence exists; unfinished work does not earn arbitrary fractional credit. Phase percentages are calculated separately from bootstrap readiness. No promise of completion time until a baseline build is measured. Prefer small independently reviewable delivery slices and bounded focused checks; do not wait for a full B story to commit a working boundary.
 
 Record chronological activity in docs/journal.md and each failure as symptom, cause, correction and verification in docs/errors.md. Record architecture in docs/adr/. Follow commit-sized changes and never commit secrets, whole chats, downloaded third-party source trees, model weights, build disks or ISOs. Release artifacts belong in a release store with checksums, licenses, source notices and component inventory.
 
-## 9. Test and acceptance plan
+## 9. Focused test and acceptance plan
 
-Foundation: host prereqs, source integrity, package manifests, critical upstream suites, compiler checks, checkpoint recovery and boot matrix.
+Foundation evidence is accepted and preserved. Do not repeat unchanged full
+compiler/libc or other long upstream suites for Phase 2 work. Changing core
+components requires a documented selection of affected regressions.
 
-Agentic: unit tests for deterministic boundaries; provider contract tests; full tasks in a disposable guest; restart/cancel/idempotency; malicious document/tool-output scenarios; memory isolation and deletion; offline execution; notification deduplication; voice transcription/action separation; plugin and privilege revocation.
+The owner explicitly requested basic working checks before delivery and broader
+validation during personal use. Follow [PHASE-2-VALIDATION.md](docs/PHASE-2-VALIDATION.md):
+one reference guest, short scoped fixtures and representative real flows; measure
+test durations and diagnose timeouts before retry. No broad hardware/provider
+matrix, long soak or exhaustive suite is a preview prerequisite. Boot/install,
+secret/privilege boundaries, Stop/revoke, restart safety, local-only egress and
+representative recovery remain mandatory for affected advertised capabilities.
 
-Installer: guided disk plan, cancel path, install to a blank virtual disk, first boot without ISO, persistence across reboots, failed-update recovery and documented disk-encryption behavior where supported.
+Make every small working boundary independently committable, with commands,
+results, checkpoint and next action. Basic checks do not guarantee absence of
+failures. Deferred/not-run tests stay explicit; owner feedback drives targeted
+follow-up regressions. No expensive OS build belongs in repository bootstrap CI.
 
-Representative end-to-end tasks: prepare a development workspace; diagnose and restart a deliberately broken guest service; install/remove a managed package; persist a theme preference; retrieve a sourced project decision; execute a scheduled disk warning once; interrupt a long task; recover from a bad configuration.
+## 10. Phase 2 experimental owner-preview gate G2
 
-Physical hardware tests record exact CPU, RAM, GPU, storage, network and result. QEMU/KVM is primary; VirtualBox is a compatibility target. Docker can host build/test processes but shares a host kernel, so it does not validate a new kernel, ISO boot, firmware or installer by itself.
+Every B story passes its revised scoped acceptance with linked evidence. The
+exact image installs to a blank virtual disk, boots without ISO twice, preserves
+data and passes the focused mandatory matrix. Publish hashes, source/build/license
+inventory, recovery and owner-use instructions, known issues and live-tested versus
+fixture-only capabilities. Label VM-only until actual identified hardware passes.
 
-## 10. Phase 2 release gate G2
-
-All B stories pass with linked evidence. An installed guest survives multiple reboots with persistent data; agent/provider/voice/memory/automation scenarios pass; stop/revoke and recovery are tested. At least one physical machine has a documented daily-use smoke result, or the release is explicitly labeled VM-only. Publish known issues, source/build instructions, license inventory and hashes. The owner can review and test the first ISO; repository visibility is already public by owner decision. Experimental daily-use is not an enterprise-support or universal-hardware claim.
+G2 now means a basic-tested experimental owner preview, not exhaustive daily-use
+qualification. Broader GPU/Wi-Fi, suspend/resume, models, accessibility and long soak
+remain a visible owner-use backlog. Never convert deferred coverage or a critical
+failure to passed. No paid provider or broad physical matrix is required to hand
+over the preview; unsupported advanced installer/boot features are explicit.
 
 ## 11. Risks and responses
 

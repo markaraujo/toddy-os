@@ -988,3 +988,19 @@ its original tested build commit. GitHub asset digests/sizes, full draft downloa
 public checksum download, public ISO route and tag commit were verified. This is a
 VM-only command-line G1 prerelease. B01-B13 remain unstarted until separate owner
 approval; G2 and physical hardware are pending.
+
+
+## 2026-11-07 — Phase 2 replanned for native Toddy and owner previews
+
+Replaced the active Phase 2 PRD/stories/status acceptance rather than retaining
+conflicting drafts. Added a detailed execution plan and focused validation matrix,
+preferred replaceable Pi/native GNOME architecture, API/local/later setup, optional
+OpenCode/VS Code, compatible third-party driver/firmware choices and realistic
+humorous installer scenes. The owner requests small traceable commits, basic
+working tests and broader validation during use; ADR-0105 records that scope.
+Guest implementation remains unstarted. Current work continues with navy brand,
+UI concept and public Pages redesign; original logo and G1 artifact are preserved.
+
+Planning checkpoint: make dashboard, planning/link/dependency checks and all 184
+existing repository unit checks passed (0.172 seconds as reported by unittest).
+See docs/evidence/phase2-replanning.md. No OS build or hardware claim is involved.

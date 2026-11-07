@@ -1,30 +1,42 @@
-> H01–H13 complete; G1 passed in QEMU/KVM. The foundation is delivered for
-> owner testing. **Do not start B01-B13 without explicit owner approval.**
-> Use [FOUNDATION-TESTING.md](FOUNDATION-TESTING.md) and [G1 evidence](evidence/H13.md).
-> Historical continuation notes below do not authorize duplicate builds.
+> H01-H13 complete; G1 passed in QEMU/KVM. Foundation evidence and the published
+> ISO remain unchanged. Current authorized work is Phase 2 replanning, navy brand,
+> UI design previews and the public Pages redesign; guest builds have not started.
 
 # Development handoff
 
-## Current scope
+## Current scope and next work
 
-H01–H13 are accepted; foundation 100%, agentic 0%, G1 passed, G2 pending.
-The licensed public [foundation prerelease](https://github.com/markaraujo/toddy-os/releases/tag/v0.1.0-foundation.1)
-contains the tested ISO, 134 source-built components and 142 corresponding
-source inputs. BIOS/UEFI/CD/USB, recovery, XML/EN/PT, 50/50 native follow-up and
-owner-console checks passed. The local export remains under
-.local/releases/toddy-foundation-2026-11-07. Original failed/unsupported results
-remain classified. Await owner testing and explicit B01 approval; the full
-release is incomplete.
+Phase 2 has been replaced by [PHASE-2-PLAN.md](PHASE-2-PLAN.md),
+[PHASE-2-VALIDATION.md](PHASE-2-VALIDATION.md) and revised B01-B13 stories.
+[ADR-0105](adr/0105-toddy-assistant-and-owner-preview.md) records the native Toddy
+assistant, basic-test owner-preview policy and third-party driver/app choices.
+The owner additionally requested humorous realistic GNOME installer scenes,
+small traceable commits and a navy public-page redesign preserving the exact logo.
 
-## Owner review boundary
+Finish and report planning/brand/page work before provisioning the Phase 2 guest.
+B stories remain not_started; repository design preparation does not satisfy
+B11 runtime acceptance. G1 is passed, G2 pending, physical hardware unverified.
+Do not interpret a screenshot mockup or an optional package candidate as a working
+OS feature. Historical implementation/recovery notes below do not override the
+new Phase 2 plan or authorize duplicate foundation builds.
 
-The owner requested on 2026-11-06 (America/Sao_Paulo) that development continue
-through H13, then pause for their foundation testing. Deliver the verified ISO,
-checksum and test/build/recovery evidence after G1. Do not start B01 or later
-B stories until explicit owner approval is received. Foundation work remains
-authorized now. This supersedes automatic progression in ADR-0004; see
-[ADR-0063](adr/0063-owner-review-after-h13.md). The full release remains planned
-and must not be marked complete at H13.
+## Small delivery loop
+
+Take one user-visible behavior or isolated prerequisite at a time. Record its
+inputs/checkpoint, implement a focused diff, run only basic affected checks,
+commit/push a working boundary and leave the exact next command/log. Do not wait
+for an entire B milestone to commit. If a check becomes unexpectedly long, inspect
+its progress/cause and choose a documented narrower meaningful check when safe;
+never rerun a long suite blindly or hide a critical failure. Owner use expands
+coverage after a labeled experimental preview. No unbounded execution promise.
+
+## Owner implementation boundary
+
+ADR-0063's foundation review remains historical and guest continuation must be
+explicitly requested. The current request authorizes the revised plan and
+repository brand/UI/Pages work. It does not assert that owner hardware testing
+already occurred. Continue routine reversible work within that scope without
+asking for milestone confirmation.
 
 ## Start a development session
 
@@ -80,7 +92,7 @@ Diagnose blockers, choose a suitable dependency from an official upstream or tru
 
 This authorization does not create credentials or elevate the actual runtime by itself. If an administrator password, account authentication, unavailable permission, mandatory legal acceptance or a paid resource is required, report that concrete dependency and request only the missing user action. Do not request passwords or tokens in chat or bypass enforced security controls. Preserve unrelated applications, user data and existing work. Formatting physical disks, installing Toddy OS onto the host, destructive unrelated changes, weakening global security and purchasing services remain outside routine dependency installation.
 
-The present task updates this plan only; do not start installations or builds until the owner starts development.
+Current Phase 2 work follows the authorization scope at the top of this handoff; historical provisioning notes do not start a guest build.
 
 ## Published dashboard
 

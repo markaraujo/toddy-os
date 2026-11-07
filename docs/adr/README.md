@@ -7,4 +7,5 @@ An ADR states context, decision, alternatives, consequences, source versions and
 - [0003 — Autonomous development unblocking](0003-autonomous-development-unblocking.md)
 - [0004 — One-start autonomous delivery](0004-one-start-autonomy.md)
 - [0005 — Single public repository and Pages](0005-single-public-repository-and-pages.md)
+- [0105 — Native Toddy and focused owner-preview validation](0105-toddy-assistant-and-owner-preview.md)
 - [Template](template.md)

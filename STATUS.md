@@ -4,7 +4,7 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-H01-H13 complete; G1 passed in QEMU/KVM. The licensed 10-asset foundation prerelease v0.1.0-foundation.1 is public on GitHub, with ISO, 134 components and 142 corresponding source inputs. Awaiting owner testing and separate explicit approval before B01-B13. Physical hardware and the full desktop/agent/installer release remain pending.
+H01-H13 complete; G1 passed in QEMU/KVM and foundation prerelease v0.1.0-foundation.1 is public. Phase 2 has been replanned for a minimal GNOME desktop, native Toddy assistant, optional local/API AI and third-party driver setup, with focused basic tests and small traceable deliveries. Planning and navy brand/UI design are authorized; B01-B13 guest implementation remains unstarted. G2 and physical hardware validation are pending.
 
 Foundation: **100%** · Agentic desktop: **0%**
 
@@ -27,16 +27,16 @@ No milestone earns credit without completed acceptance evidence.
 | [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | completed |
 | [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | completed |
 | [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | completed |
-| [B01 — Evaluate desktop, harness, licensing and resource budgets](stories/B01.md) | agentic | 5 | not_started |
-| [B02 — Build the graphical desktop and essential applications](stories/B02.md) | agentic | 10 | not_started |
-| [B03 — Integrate provider adapters and local inference](stories/B03.md) | agentic | 8 | not_started |
-| [B04 — Implement native tools and privileged execution](stories/B04.md) | agentic | 8 | not_started |
-| [B05 — Implement durable agent tasks and configuration reconciliation](stories/B05.md) | agentic | 10 | not_started |
-| [B06 — Provide terminal, desktop and first-run experience](stories/B06.md) | agentic | 10 | not_started |
-| [B07 — Implement memory, retrieval and portable backup](stories/B07.md) | agentic | 8 | not_started |
-| [B08 — Implement proactive health monitoring and automation](stories/B08.md) | agentic | 8 | not_started |
-| [B09 — Add text-to-speech and speech-to-text](stories/B09.md) | agentic | 5 | not_started |
-| [B10 — Add versioned plugin and MCP interfaces](stories/B10.md) | agentic | 6 | not_started |
-| [B11 — Integrate approved branding and production asset variants](stories/B11.md) | agentic | 8 | not_started |
-| [B12 — Build and test the graphical installer](stories/B12.md) | agentic | 9 | not_started |
-| [B13 — Verify installed daily-use release and gate G2](stories/B13.md) | agentic | 5 | not_started |
+| [B01 — Freeze the minimal Toddy architecture and delivery slices](stories/B01.md) | agentic | 5 | not_started |
+| [B02 — Deliver the minimal branded GNOME desktop](stories/B02.md) | agentic | 10 | not_started |
+| [B03 — Connect provider adapters and one optional local AI profile](stories/B03.md) | agentic | 8 | not_started |
+| [B04 — Deliver native tools and the revocable privileged executor](stories/B04.md) | agentic | 8 | not_started |
+| [B05 — Persist tasks and recover interrupted system changes](stories/B05.md) | agentic | 10 | not_started |
+| [B06 — Deliver Toddy quick entry, native UI and first-run setup](stories/B06.md) | agentic | 10 | not_started |
+| [B07 — Deliver inspectable local memory and portable backup](stories/B07.md) | agentic | 8 | not_started |
+| [B08 — Deliver quiet health monitoring and one persistent automation](stories/B08.md) | agentic | 8 | not_started |
+| [B09 — Deliver optional push-to-talk and spoken Toddy responses](stories/B09.md) | agentic | 5 | not_started |
+| [B10 — Deliver a bounded plugin interface and one MCP integration](stories/B10.md) | agentic | 6 | not_started |
+| [B11 — Integrate the navy brand and nerdy Toddy installer scenes](stories/B11.md) | agentic | 8 | not_started |
+| [B12 — Deliver guided installation and optional AI, apps and drivers](stories/B12.md) | agentic | 9 | not_started |
+| [B13 — Deliver the basic-tested experimental owner preview and G2](stories/B13.md) | agentic | 5 | not_started |

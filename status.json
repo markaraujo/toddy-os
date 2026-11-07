@@ -3,7 +3,7 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-07",
   "bootstrap": "ready_for_development",
-  "current_scope": "H01-H13 complete; G1 passed in QEMU/KVM. The licensed 10-asset foundation prerelease v0.1.0-foundation.1 is public on GitHub, with ISO, 134 components and 142 corresponding source inputs. Awaiting owner testing and separate explicit approval before B01-B13. Physical hardware and the full desktop/agent/installer release remain pending.",
+  "current_scope": "H01-H13 complete; G1 passed in QEMU/KVM and foundation prerelease v0.1.0-foundation.1 is public. Phase 2 has been replanned for a minimal GNOME desktop, native Toddy assistant, optional local/API AI and third-party driver setup, with focused basic tests and small traceable deliveries. Planning and navy brand/UI design are authorized; B01-B13 guest implementation remains unstarted. G2 and physical hardware validation are pending.",
   "next_story": "B01",
   "gates": {
     "G1": "passed",
@@ -264,7 +264,7 @@
     {
       "id": "B01",
       "phase": "agentic",
-      "title": "Evaluate desktop, harness, licensing and resource budgets",
+      "title": "Freeze the minimal Toddy architecture and delivery slices",
       "weight": 5,
       "status": "not_started",
       "depends_on": [
@@ -272,16 +272,16 @@
       ],
       "story": "stories/B01.md",
       "acceptance": [
-        "Document GNOME feasibility, open-source harness reuse/custom-core comparison and firmware/driver policy.",
-        "Establish numeric boot/idle/tool/retrieval budgets and evaluation workloads on identified hardware.",
-        "Record ADRs and exact source/license choices without introducing a mandatory proprietary service."
+        "Record pinned GNOME/native UI/Pi engine candidates, a minimal successful tool spike and license/runtime review; no mandatory proprietary or hosted runtime.",
+        "Define the minimal default application set, optional developer tools and compatible third-party driver/firmware sources without enabling Ubuntu repositories.",
+        "Record reference hardware/VM settings, measured baseline and numeric budgets with a small-commit execution checklist."
       ],
       "evidence": []
     },
     {
       "id": "B02",
       "phase": "agentic",
-      "title": "Build the graphical desktop and essential applications",
+      "title": "Deliver the minimal branded GNOME desktop",
       "weight": 10,
       "status": "not_started",
       "depends_on": [
@@ -289,16 +289,16 @@
       ],
       "story": "stories/B02.md",
       "acceptance": [
-        "Build the selected BLFS graphics/audio/network stack and desktop from pinned recipes.",
-        "Validate login, keyboard/mouse, terminal, editor, browser, file manager and networking in a guest.",
-        "Prove the desktop remains usable with the agent and inference services stopped."
+        "Login and basic browser/files/terminal/editor/network/audio work in the reference guest using pinned owned packages.",
+        "The desktop stays usable without keys, models, network or active agent/inference; optional network applications fail clearly.",
+        "Publish the minimal package manifest, resource measurements and optional-app packaging status; no unsupported package is advertised as working."
       ],
       "evidence": []
     },
     {
       "id": "B03",
       "phase": "agentic",
-      "title": "Integrate provider adapters and local inference",
+      "title": "Connect provider adapters and one optional local AI profile",
       "weight": 8,
       "status": "not_started",
       "depends_on": [
@@ -306,16 +306,16 @@
       ],
       "story": "stories/B03.md",
       "acceptance": [
-        "Implement provider capability/streaming/tool/cancellation contracts with mocked protocol tests.",
-        "Test a real supported local llama.cpp profile and opt-in API integrations without storing keys in Git.",
-        "Document context/resource limits and prove local-only mode does not silently call a hosted fallback."
+        "Advertised provider families pass focused streaming/tool/error/cancellation fixtures; live-tested versus fixture-only support is explicit.",
+        "One actual llama.cpp model profile completes a harmless offline tool task with recorded version, license, resource limits and no hidden cloud fallback.",
+        "API/local/deferred backend choices and verified resumable model downloads work without exposing keys or requiring paid resources."
       ],
       "evidence": []
     },
     {
       "id": "B04",
       "phase": "agentic",
-      "title": "Implement native tools and privileged execution",
+      "title": "Deliver native tools and the revocable privileged executor",
       "weight": 8,
       "status": "not_started",
       "depends_on": [
@@ -323,16 +323,16 @@
       ],
       "story": "stories/B04.md",
       "acceptance": [
-        "Provide structured file, shell, package and service tools through authenticated local IPC.",
-        "Implement the owner-granted full-administration profile, session/standing policy, revocation and audit records.",
-        "Test malicious tool/document content, invalid requests and privilege revocation in a disposable guest."
+        "Native tools use validated authenticated IPC; ordinary tasks run unprivileged and authorized administrative actions actually work.",
+        "The owner can grant session/standing full administration, inspect actions and revoke future dispatch without granting root to the conversational service.",
+        "Focused wrong-user, malformed-request, revocation and malicious-content checks pass; keys do not enter model context or audit exports."
       ],
       "evidence": []
     },
     {
       "id": "B05",
       "phase": "agentic",
-      "title": "Implement durable agent tasks and configuration reconciliation",
+      "title": "Persist tasks and recover interrupted system changes",
       "weight": 10,
       "status": "not_started",
       "depends_on": [
@@ -340,16 +340,16 @@
       ],
       "story": "stories/B05.md",
       "acceptance": [
-        "Implement persisted lifecycle, bounded retries, cancellation and restart-safe side effects.",
-        "Separate declarative desired state from one-off changes and detect/report configuration drift.",
-        "Demonstrate restore of a deliberately broken configuration and a stop request that prevents new actions."
+        "Tasks survive a service restart without duplicating a known side effect; uncertain outcomes wait for review and retries remain bounded.",
+        "Stop prevents queued/new actions and terminates or reports active managed processes; revoke immediately blocks new privileged dispatch.",
+        "One configuration rollback restores service operation, preserves a manual rescue path and reports drift without fighting user intent."
       ],
       "evidence": []
     },
     {
       "id": "B06",
       "phase": "agentic",
-      "title": "Provide terminal, desktop and first-run experience",
+      "title": "Deliver Toddy quick entry, native UI and first-run setup",
       "weight": 10,
       "status": "not_started",
       "depends_on": [
@@ -358,16 +358,16 @@
       ],
       "story": "stories/B06.md",
       "acceptance": [
-        "Expose task creation, progress, stop and history through CLI/TUI and an accessible desktop entry point.",
-        "Implement first-run API/local/deferred setup and protected credential storage.",
-        "Validate keyboard use, visible focus, Portuguese/English copy and normal OS use without a configured model."
+        "Shortcut/launcher opens focused native entry; conversation, real task progress, history, errors and Stop work through desktop and CLI/TUI.",
+        "API/local/later setup works per user with protected credentials; deferred setup leaves the OS usable and local mode never silently changes provider.",
+        "Basic keyboard/focus, EN/PT copy and Stop smoke pass; publish an honestly labeled interim text preview rather than claiming G2."
       ],
       "evidence": []
     },
     {
       "id": "B07",
       "phase": "agentic",
-      "title": "Implement memory, retrieval and portable backup",
+      "title": "Deliver inspectable local memory and portable backup",
       "weight": 8,
       "status": "not_started",
       "depends_on": [
@@ -375,16 +375,16 @@
       ],
       "story": "stories/B07.md",
       "acceptance": [
-        "Implement canonical per-user state with retention, provenance, correction, export and deletion.",
-        "Evaluate SQLite/FTS and optional semantic search using measured quality, latency and resource tests.",
-        "Verify backup/restore and deletion propagation to derived indexes; secrets never enter embeddings."
+        "Store, retrieve with source, correct and delete a preference with per-user isolation and retention controls.",
+        "Export/restore preserves canonical data and deletion reaches FTS/any derived index; secrets are excluded.",
+        "Record latency on the small fixed fixture; SQLite/FTS is sufficient for the preview and no vector daemon is mandatory."
       ],
       "evidence": []
     },
     {
       "id": "B08",
       "phase": "agentic",
-      "title": "Implement proactive health monitoring and automation",
+      "title": "Deliver quiet health monitoring and one persistent automation",
       "weight": 8,
       "status": "not_started",
       "depends_on": [
@@ -392,16 +392,16 @@
       ],
       "story": "stories/B08.md",
       "acceptance": [
-        "Persist schedules and deterministic disk/service probes with deduplication and backoff.",
-        "Run an owner-defined workflow under its authorized standing policy and prevent overlap/replay.",
-        "Verify meaningful-change notifications, quiet unchanged checks, resource budgets and cancellation."
+        "One schedule survives restart and a representative authorized workflow runs once without overlapping or replayed effects.",
+        "Disk/service monitoring stays quiet when unchanged; notifications occur only on meaningful actionable changes.",
+        "Cancellation and resource/cost bounds work without a paid model call for deterministic unchanged checks."
       ],
       "evidence": []
     },
     {
       "id": "B09",
       "phase": "agentic",
-      "title": "Add text-to-speech and speech-to-text",
+      "title": "Deliver optional push-to-talk and spoken Toddy responses",
       "weight": 5,
       "status": "not_started",
       "depends_on": [
@@ -410,16 +410,16 @@
       ],
       "story": "stories/B09.md",
       "acceptance": [
-        "Evaluate separately licensed speech engines/models and test Portuguese and English.",
-        "Provide push-to-talk, device selection, visible microphone state and interruption.",
-        "Prove a transcript uses the same task/permission policy; measure latency and offline behavior."
+        "Short Portuguese/English push-to-talk input and intelligible spoken output work on the tested profile with separate model/voice licensing.",
+        "Microphone/device/loading state and interruption are visible; text continues to work with speech disabled.",
+        "Transcripts follow existing permissions; latency/offline/device evidence is explicit and no always-listening mode is enabled by default."
       ],
       "evidence": []
     },
     {
       "id": "B10",
       "phase": "agentic",
-      "title": "Add versioned plugin and MCP interfaces",
+      "title": "Deliver a bounded plugin interface and one MCP integration",
       "weight": 6,
       "status": "not_started",
       "depends_on": [
@@ -428,67 +428,77 @@
       ],
       "story": "stories/B10.md",
       "acceptance": [
-        "Define plugin manifests, capability schemas, process boundaries, timeouts and update provenance.",
-        "Implement a replaceable MCP adapter and one real integration end-to-end.",
-        "Test credential separation, removal/revocation and denial of privileges not granted by owner policy."
+        "Versioned plugin schemas and one actual local MCP integration work end to end with timeouts and separate credentials.",
+        "Removal/revocation blocks further calls; plugin discovery/install/update grants no implicit account access or administrative privileges.",
+        "One focused capability-denial and isolation check passes; optional external connectors are honestly unverified or disabled."
       ],
       "evidence": []
     },
     {
       "id": "B11",
       "phase": "agentic",
-      "title": "Integrate approved branding and production asset variants",
+      "title": "Integrate the navy brand and nerdy Toddy installer scenes",
       "weight": 8,
       "status": "not_started",
       "depends_on": [
-        "B02"
+        "B02",
+        "B06"
       ],
       "story": "stories/B11.md",
       "acceptance": [
-        "Retain the approved source PNGs and document all derived assets and production resolutions.",
-        "Integrate desktop, boot/login and installer branding with readable contrast and checked small-size icons.",
-        "Produce reviewed scalable/small-size artwork where needed; do not label raster studies vector or 4K masters."
+        "The exact approved logo/mascot remain unchanged and the actual guest login/desktop/Toddy use coherent navy assets with readable light/dark/focus states.",
+        "Installer scene assets show GNOME/Toddy workflow previews and concise nerdy affectionate dog personality; concept versus real capture is explicit.",
+        "Dimensions, original archives, export provenance and runtime screenshots are recorded; repository design work alone earns no guest acceptance."
       ],
       "evidence": []
     },
     {
       "id": "B12",
       "phase": "agentic",
-      "title": "Build and test the graphical installer",
+      "title": "Deliver guided installation and optional AI, apps and drivers",
       "weight": 9,
       "status": "not_started",
       "depends_on": [
         "B02",
+        "B03",
+        "B06",
         "B11"
       ],
       "story": "stories/B12.md",
       "acceptance": [
-        "Evaluate Calamares or a justified alternative with guided disk plan and user/locale/boot setup.",
-        "Install onto a blank virtual disk, remove ISO and reboot with persistent files/settings.",
-        "Test cancellation and recovery; document encryption, dual-boot and Secure Boot support honestly."
+        "Exact virtual disk plan and safe pre-write cancellation work; blank-disk installation boots without ISO twice with persistent user data/settings.",
+        "AI/API/later and optional OpenCode/VS Code selections use verified backends, protected first-run secrets and resumable offline/deferred behavior.",
+        "Third-party drivers/firmware/software choices disclose source/license and enforce hardware/kernel compatibility with tested transaction rollback and a rescue/open fallback.",
+        "Basic native install/remove/upgrade, config preservation, signature/conflict rejection and one failed-update recovery pass; unsupported advanced disk/boot features are explicit.",
+        "The installer includes coherent navy GNOME/Toddy scenes and affectionate nerdy dog copy while progress, errors and destructive choices remain clear."
       ],
       "evidence": []
     },
     {
       "id": "B13",
       "phase": "agentic",
-      "title": "Verify installed daily-use release and gate G2",
+      "title": "Deliver the basic-tested experimental owner preview and G2",
       "weight": 5,
       "status": "not_started",
       "depends_on": [
+        "B01",
+        "B02",
         "B03",
+        "B04",
+        "B05",
         "B06",
         "B07",
         "B08",
         "B09",
         "B10",
+        "B11",
         "B12"
       ],
       "story": "stories/B13.md",
       "acceptance": [
-        "Run the complete installed-system scenarios, update recovery, provider failure and stop/revoke tests.",
-        "Record the physical hardware smoke matrix or explicitly label a release VM-only.",
-        "Prepare hashes, source/build/license inventory, known issues and owner first-ISO/visibility review."
+        "The exact installed release candidate passes the focused mandatory smoke matrix, with no unexplained critical safety or basic-function failure.",
+        "Deliver ISO/checksums/source-build-license inventory, recovery instructions and a concise owner guide with passed/failed/deferred/not-run evidence and test durations when measured.",
+        "Broader hardware/model/accessibility/soak validation is explicitly delegated to owner-use backlog; VM-only and experimental status are truthful and no deferred test is marked passed."
       ],
       "evidence": []
     }
