@@ -97,3 +97,8 @@ no continuously running database server. The full DB standard regression policy
 above validates more library features than that specific repository-cache use.
 Source archive SHA-256: e853aec49afbe520ebcd4dbcbc98e1c55262c6bf1c119cf43e6aec69752443c6.
 No package profile, test requirement or running suite was changed by this review.
+
+
+The owner-approved ADR-0092 supersedes the complete standard Tcl suite requirement
+for the experimental delivery. Retain the above history and failed/incomplete
+results; focused production and actual APT consumer acceptance replace that gate.

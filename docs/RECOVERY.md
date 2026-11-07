@@ -1491,3 +1491,39 @@ output recovery.
 Actual package installation still uses the normal dispatcher after complete
 suite acceptance. The independent probe invokes no package installer and its
 private staging path must not be promoted directly into package success.
+
+### Current owner-approved focused delivery continuation (ADR-0092)
+
+The owner approved focused Berkeley DB delivery validation on 2026-11-07. This
+supersedes earlier instructions to wait for a complete standard suite. Do not
+restart the cancelled driver 1107192 or interpret test exit 143/driver exit 1 as
+an upstream pass. Its owner-stop intent/result and original raw reports remain
+under /mnt/lfs/sources/recovery/db-standard-nfv62s4o. Do not nominate that run
+through the historical strict full-suite handoff.
+
+The existing native test compilation/CuTest provenance remains verified in
+/mnt/lfs/sources/recovery/db-native-m3pjqwd2 (ADR-0089); do not rebuild it merely
+because the full-suite criterion changed. The focused recovery recipe
+h07/berkeley-db-focused-production.sh independently revalidates that provenance,
+reads a guest-root-owned mode-600 selector at
+/var/log/toddy/build/h07-berkeley-db.focused-source, mounts its source read-only,
+builds production in separate output, tests the staged library and then invokes
+the normal package staging/install path. The selector contains the native build
+generation path, not the incomplete standard fixture. Run it only via run_step.py
+with h07/berkeley-db-check.sh, after verified input sync and checking real state.
+The default package-manager driver now selects berkeley-db-focused.sh for clean
+builds; the older complete-suite recipe and strict verifier remain optional.
+
+Private APT generation apt-native-0vvrpixw already compiled and passed 142 unit
+tests. Its final observer failed only because the real binary is under
+build/ftparchive rather than build/bin. Keep that raw failed observer result;
+there is no need to rerun the completed compile. Independent native consumer
+checks passed using the actual executable; see H07-progress and ADR-0092.
+The installed APT recipe/postcheck still must execute, including signed
+repository and HTTPS checks; no private result installs or accepts a package.
+
+Cache recovery: preserve the corrupt/interrupted cache and unpublished candidate,
+remove only the rebuildable cache from the disposable target, regenerate from
+original .deb inputs, reject E:/W:/BDB diagnostics even if apt-ftparchive exits
+zero, validate each indexed size/SHA-256, then replace the published index.
+Never delete original packages or use an unverified candidate as a signed index.

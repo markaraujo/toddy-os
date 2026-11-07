@@ -1595,3 +1595,37 @@ At 11:04 UTC the complete corrected driver was still live in recovery 25/27,
 Recd011.b in rbtree -recnum, with zero FAIL and no terminal exits. H07 remains
 124/126; complete qualification, real production packaging, APT and final
 closure/checkpoint are still required.
+
+### 2026-11-07 — Owner-approved focused Berkeley delivery gate
+
+ADR-0092 records the explicit scope amendment. The corrected full run was stopped
+at the verified timeout child, with test exit 143/driver exit 1 and no remaining
+test process-group members. It is incomplete, not accepted. Retained stop report
+SHA-256: f42ea85a386390302ac0b123ce2b4f2d4e57c0108bd6588a8056ff3ade257cdd.
+
+Actual staged production transaction/abort/reopen plus abrupt writer exit and
+DB_RECOVER passed (7a1b35a45d4da9dd5711757648b8346e2efe47870e5c15361ca783226102d172).
+Private native APT compilation completed all 466 actions and all 142 tests in
+28 suites. The private driver's final binary-path assertion was wrong; preserved
+that failure, fixed the observer path and verified the actual native executable
+independently without repeating compilation. This is not installed APT yet.
+
+The actual apt-ftparchive consumer then passed initial/reopened/refreshed cache
+indexes, observed open cache descriptor followed by SIGKILL (-9), full 128-input
+rebuild, corrupted-cache diagnosis and source-derived rebuild. Every accepted
+record matched the original package size/SHA-256 and no diagnostic-bearing
+candidate replaced the previous index. The main package database was unchanged.
+The first corruption expectation failed because upstream returned zero with
+E:/BDB diagnostics; source inspection and the corrected diagnostic gate are
+recorded in docs/errors.md and ADR-0092, without hiding that failed fixture.
+
+- Private APT generation: /mnt/lfs/sources/recovery/apt-native-0vvrpixw
+- Native compilation log: 47a7cbd4c94de5d96307e80bc400a93e7ec1dcf117fef35e8dd44f4478cee037
+- Native unit-test log: 86f8a2fc30cabcba97fd6ddff5de3a93c5c7f46e9789f1ae3170b51506add149
+- Successful consumer workspace: /mnt/lfs/tmp/toddy-apt-cache-lqctdns9/check
+- Consumer collected report: ce4735cbf86ebd83d01a25d3c649435f54055d6d557140e49a12be9e9d84ff5d
+- Consumer result: f59b10ae843b7416a6f76708c9f48b7573395d7528dcd00eb122f858cbf84cad
+- Actual executable: 5bbdbf1a53f0c753169ec42b67d1d5978725a197a12955b6436fc9556eba3c5a
+
+Still 124/126 accepted packages. Guarded production installation, installed
+postconditions, signed-repository/HTTPS integration and final closure remain.

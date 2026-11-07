@@ -185,3 +185,14 @@ A new kernel from scratch; compatibility with every device; ARM64; enterprise su
 ## 13. Decision register and sources
 
 Confirmed decisions are captured in ADR-0001 and the user requirements above. Technical proposals and feasibility work are in docs/OPEN-DECISIONS.md. Canonical sources and exact consulted versions are in docs/references.md. H01 checks the selected versioned candidate; H02 freezes downloaded inputs. Every build story after H02 must consult the frozen relevant book section before writing/executing recipes.
+
+
+### Current Berkeley DB delivery validation (2026-11-07)
+
+The owner explicitly approved focused Berkeley DB validation for this experimental
+delivery. ADR-0092 supersedes earlier instructions requiring the complete standard
+Tcl suite before production. Preserve the cancelled and failed full runs as such;
+require native C tests, production transaction/reopen/rollback/crash recovery,
+actual APT cache interruption/rebuild and existing signed-repository/HTTPS/package
+checks before H07 acceptance. All other critical suites and H13/G1 gates remain.
+See [ADR-0092](docs/adr/0092-focused-berkeley-delivery-validation.md).

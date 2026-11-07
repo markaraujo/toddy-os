@@ -883,3 +883,22 @@ both failure and successful evidence from ADR-0086; no test result was relabeled
   writes/stdin passed, and all 10,606 source entries/bytes remained identical.
   Outside/redirected target guards refused. See ADR-0091 for logs and hashes.
 - No existing full custody receipt was damaged; real handoff remains pending.
+
+### 2026-11-07 — Focused APT preflight: output location and cache error semantics
+
+The private APT build completed all 466 Ninja actions and all 142 tests in 28
+unit suites, but its final observer expected build/bin/apt-ftparchive. Frozen
+CMake actually emits build/ftparchive/apt-ftparchive. Corrected the observer;
+preserved its original nonzero driver result rather than rebuilding or rewriting
+it. The independent actual consumer check uses the measured executable.
+
+The first focused cache test passed initial/reopened/refreshed indexes and real
+SIGKILL/rebuild, then correctly stopped at its assumed corruption exit 100:
+the actual frozen consumer returned zero while printing BDB and E: errors.
+Source ftparchive/writer.cc PackagesWriter's constructor dumps pending errors,
+so a raw successful command exit is insufficient for accepting a cached index.
+Require absence of BDB/E:/W: diagnostics plus source-derived size/SHA-256 checks
+before publication. The negative case must detect those actual diagnostics,
+retain the previous published index, preserve corrupted cache bytes and rebuild
+from original packages. Retain the first failed test fixture. This changes an
+incorrect test expectation, not the requirement to detect and recover corruption.

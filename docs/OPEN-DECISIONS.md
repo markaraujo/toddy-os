@@ -61,3 +61,14 @@ Initial Expat consumer review is recorded in ADR-0041: nine dynamic consumers
 across five packages; native unprivileged DBus malformed/oversized configuration
 rejection passed. Final-image/desktop consumer enumeration and actual untrusted
 entry-point byte/resource/time limits remain release obligations.
+
+
+### Current Berkeley DB delivery validation (2026-11-07)
+
+The owner explicitly approved focused Berkeley DB validation for this experimental
+delivery. ADR-0092 supersedes earlier instructions requiring the complete standard
+Tcl suite before production. Preserve the cancelled and failed full runs as such;
+require native C tests, production transaction/reopen/rollback/crash recovery,
+actual APT cache interruption/rebuild and existing signed-repository/HTTPS/package
+checks before H07 acceptance. All other critical suites and H13/G1 gates remain.
+See [ADR-0092](adr/0092-focused-berkeley-delivery-validation.md).

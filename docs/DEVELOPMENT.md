@@ -211,3 +211,14 @@ private production compilation/stage and the unchanged transaction/reopen/
 rollback check passed, preserving all 10,606 source entries and bytes. The
 nominated production recipe now uses this view; its complete-suite/dispatcher
 gate remains mandatory. No package was installed or standard suite accepted.
+
+
+### Current Berkeley DB delivery validation (2026-11-07)
+
+The owner explicitly approved focused Berkeley DB validation for this experimental
+delivery. ADR-0092 supersedes earlier instructions requiring the complete standard
+Tcl suite before production. Preserve the cancelled and failed full runs as such;
+require native C tests, production transaction/reopen/rollback/crash recovery,
+actual APT cache interruption/rebuild and existing signed-repository/HTTPS/package
+checks before H07 acceptance. All other critical suites and H13/G1 gates remain.
+See [ADR-0092](adr/0092-focused-berkeley-delivery-validation.md).

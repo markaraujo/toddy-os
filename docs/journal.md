@@ -794,3 +794,19 @@ No package installer or new full suite ran. See ADR-0091 for durable evidence.
 The current full driver continues in recovery's rbtree -recnum variant,
 Recd011.b, zero FAIL. Portable failed-summary coverage/qualification and fresh
 full-dispatch integration remain the next independent tasks while it completes.
+
+### 2026-11-07 — Adopt approved focused delivery and test actual APT consumer
+
+The owner explicitly approved focused Berkeley validation. Recorded ADR-0092,
+updated the current delivery policy, stopped only the identified full-suite
+process group and preserved actual interrupted exits/raw reports. The earlier
+full suite remains incomplete. Added focused clean-build and verified-native
+recovery recipes while retaining optional strict full-suite machinery.
+
+Native production crash recovery passed. APT compiled 466 actions and passed
+142 tests; fixed a wrong observer binary-path expectation without repeating the
+build. Actual cache create/reopen/refresh and SIGKILL/rebuild passed. Corruption
+revealed upstream zero-exit error diagnostics: inspected frozen writer code,
+required explicit diagnostic rejection before publication, retained the failed
+probe and verified the corrected consumer test. Guarded installed BDB/APT and
+signed-repository/HTTPS/final closure remain next, with H07 still incomplete.
