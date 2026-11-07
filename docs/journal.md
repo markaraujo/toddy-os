@@ -896,3 +896,10 @@ empty-device-tree native Info regression passed. Removed only the optional
 Tk frontend from the ISO CLI package: all 41 retained entries and source
 identities match; actual native library/ISO checks passed again. Retrying the
 full image without rebuilding accepted libraries or accepting partial output.
+
+The next full-root attempt passed Info generation, ownership and attribution.
+Runtime auditing found a root-boundary classification defect, not 82 missing
+libraries: nested package directories named tools/sources were rejected. Corrected
+that predicate and added canonical/resolved-path regressions (ADR-0099). All
+180 local tests pass. Actual full-image runtime retry is running separately;
+original failures remain preserved and no live boot is accepted yet.

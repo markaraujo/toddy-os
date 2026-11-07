@@ -970,3 +970,16 @@ Review also found the optional xorriso-tcltk executable requires absent wish.
 ADR-0098 corrects the package profile while preserving the already-built CLI
 libraries and the unchanged runtime audit. Native revision/roundtrip verification
 and complete image acceptance remain pending until their actual results pass.
+
+## 2026-11-07 — Runtime auditor confused nested package directories with build roots
+
+The third assembly completed ownership and full-tree attribution, then reported
+82 path-only findings. Its substring check incorrectly rejected nested Python
+sources fixtures, Linux tools documentation and Vim helpers. ADR-0099 restricts
+the prohibition to actual target-root build trees and also validates resolved
+symlink targets and canonical spelling. Three focused regressions pass; repeat
+the complete native runtime audit before retrying the full image. Preserve the
+original failed report and journal. The first ad-hoc retry attempted to lock the
+fresh image's deliberately absent Dpkg lock files; it made no payload change.
+Use the actual source database read lock plus exclusive build lock, as production
+assembly does, with the image database snapshot checked by the runtime auditor.

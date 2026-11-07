@@ -4,7 +4,7 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-H01-H09 completed: 129 native packages; production kernel and actual BIOS/UEFI Systemd boot passed with native C and Kmod checks. H10 is assembling the live system. No accepted ISO/G1 yet; owner review after H13 precedes B01-B13.
+H01-H09 completed; 134 native packages including live-media tools. Native BIOS/UEFI Systemd boot, C and Kmod passed. H10 full-root integration is under validation; no accepted ISO/G1 yet. Owner review after H13 precedes B01-B13.
 
 Foundation: **76%** · Agentic desktop: **0%**
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 76% phase total counts completed stories only. H10 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 84%.
 
-Last verified: 2026-11-07 12:31 UTC
+Last verified: 2026-11-07 12:36 UTC
 
 Verified:
 
@@ -25,8 +25,9 @@ Verified:
 - Cold h09-boot-ready pair saved, independently verified and builder restarted.
 - All five native media dependencies passed recipe/postcheck 0/0; 134 configured packages and empty Dpkg audit.
 - Fresh-image Info regression passed with transient device cleanup; native libisoburn CLI revision passed with 41 retained payload entries unchanged.
+- Complete root ownership and attribution passed; focused path regressions preserve build-root and symlink rejection (ADR-0099).
 
-Running: Retrying complete live assembly after preserving and correcting the missing baseline/null-device integration failures.
+Running: Repeating the complete native runtime audit after correcting 82 false build-path classifications; preserving the failed generation.
 
 Remaining:
 

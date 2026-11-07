@@ -6,7 +6,7 @@ requirements, symbol execution and boot acceptance remain separate checks.
 """
 import hashlib
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
 import shlex
 import stat
@@ -32,10 +32,18 @@ def private_image(backend, image):
     return image
 
 
-def owned_file(image, virtual, entries, *, executable=False):
-    if not virtual.startswith('/') or any(part in virtual for part in ('/sources/', '/tools/', '/mnt/lfs/')):
+def runtime_path(virtual):
+    path = PurePosixPath(virtual)
+    if (path.anchor != '/' or str(path) != virtual or '..' in path.parts
+            or any(path == PurePosixPath(root) or path.is_relative_to(root)
+                   for root in ('/sources', '/tools', '/mnt/lfs'))):
         raise ValueError('Runtime input uses a noncanonical or build-only path')
+
+
+def owned_file(image, virtual, entries, *, executable=False):
+    runtime_path(virtual)
     path, canonical = target_resolve(image, virtual)
+    runtime_path(canonical)
     row = entries.get(canonical, {})
     if not row.get('sha256'):
         raise ValueError('Runtime input lacks native regular-file ownership: ' + virtual)
