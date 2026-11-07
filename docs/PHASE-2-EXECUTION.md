@@ -71,8 +71,9 @@ while a different eligible story proceeds, with the switch recorded explicitly.
 
 The B06 preview is a VM/checkpoint or labeled text preview, not G2. An installed
 text preview after B12 still lacks later B07-B10 features. B13 must rebuild the
-release assembly with those packages; an earlier B12 ISO cannot be relabeled as
-final merely by changing its filename/tag. Optional *use* of voice/plugins does
+release assembly/catalog with all accepted components available and test their
+acquired configuration as well as the offline base; an earlier B12 ISO cannot be
+relabeled as final merely by changing its filename/tag. Optional *use* of voice/plugins does
 not make their scoped B09/B10 acceptance optional for G2.
 
 ## 3. B01 has to remove the expensive unknowns
@@ -207,3 +208,5 @@ not an improvised rebuild of H01-H13. If access, legal acceptance, paid resource
 or destructive physical-host work is required, report that concrete missing action.
 Continue unrelated authorized work where possible. Never silently replace a pinned
 component, disable a safety check or declare a failed test passed to regain momentum.
+
+Critical-path refinement: [runner overhead, root composition and early build scheduling](PHASE-2-CRITICAL-PATH.md).

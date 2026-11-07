@@ -1311,3 +1311,14 @@ or phase approval created. Existing one-writer/safety gates remain enforced.
 Validation: make check passed 198 tests in 0.201 seconds; read-only simulation
 covered nominal reachability and all 13 single-story faults. Status/approval and
 B-story runtime states are unchanged.
+
+
+## 2026-11-07 — Critical-path bottleneck refinement
+
+Found a concrete scaling hotspot: run_step snapshots/hash-reads the whole target
+before/after every recipe. Documented an early timing and safe-equivalence review,
+without changing accepted runner safety or claiming measured slowness. Clarified
+build/live/offline/acquisition package sets and corrected ambiguous final-image
+wording that could accidentally force agent components into offline installs.
+Prioritize measured heavy eligible branches and reuse compiled probe packages.
+No guest measurements/build/approval or B acceptance were created.

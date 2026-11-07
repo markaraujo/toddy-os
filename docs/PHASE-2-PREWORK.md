@@ -95,3 +95,5 @@ Additional review: [six operational findings and selected defaults](PHASE-2-OPER
 cover storage, sessions, cost, downloads, compatibility and diagnostics.
 
 Unattended execution: [structural simulation and failure tabletop](PHASE-2-NIGHT-EXECUTION.md).
+
+Critical-path refinement: [runner overhead, root composition and early build scheduling](PHASE-2-CRITICAL-PATH.md).

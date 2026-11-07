@@ -120,3 +120,5 @@ B12/B13 prove installation, boot and recovery. Repository preparation does not
 complete their criteria. [B01](../stories/B01.md) and the
 [execution playbook](PHASE-2-EXECUTION.md) remain authoritative for ordering and
 continuation; this audit adds no new acceptance gate or broad test matrix.
+
+Critical-path refinement: [runner overhead, root composition and early build scheduling](PHASE-2-CRITICAL-PATH.md).

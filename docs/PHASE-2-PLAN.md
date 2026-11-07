@@ -267,8 +267,10 @@ not required to duplicate the GTK application.
 
 B12 is deliberately exercised before later optional experience work. Its early
 installed image is labeled with the components actually present. B13 reassembles
-all accepted B packages into the exact final image and checks the installed
-manifest so later memory/automation/voice/plugin packages cannot be omitted.
+the exact final base image and verified acquisition catalog, then checks the
+full experience after acquiring the accepted B components. The offline default
+root remains free of deferred agent components; availability alone never replaces
+their required runtime acceptance.
 Optional apps can be prepared in B02 and selected in B12. B10 includes one narrow
 opt-in browser integration from the existing FR-10 requirement, not a general
 web-automation product or access to the owner's personal authenticated browser.
