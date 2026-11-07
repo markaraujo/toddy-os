@@ -12,6 +12,8 @@ Do not redraw, recolor or regenerate these protected identity files.
 | toddy-os-system-icon.png | Exact original transparent mascot, unchanged |
 | toddy-os-wallpaper-dark.png | Midnight navy flowing matte ribbons; clear desktop space |
 | toddy-os-wallpaper-light.png | Cool mist-blue companion; no beige background |
+| toddy-os-wallpaper-dark-logo.png | Branded midnight navy companion with Toddy on the right |
+| toddy-os-wallpaper-light-logo.png | Branded cool light companion with Toddy on the right |
 | toddy-os-boot-background.png | Quiet navy login/boot surface; real logo/controls layered by the OS |
 | toddy-os-desktop-preview.png | Simulated branded GNOME desktop |
 | toddy-os-assistant-preview.png | Simulated native Toddy quick entry |
@@ -51,8 +53,14 @@ in the runtime product. Product examples in this repository remain in English.
 
 ## Provenance, dimensions and originals
 
-The three new backgrounds were created using the built-in image generation tool.
+The three navy backgrounds and two optional branded wallpaper variants were created
+using the built-in image generation tool.
 Actual output is 1672 x 941 PNG, approximately 16:9: **not a 4K or vector master**.
+The branded variants use the background and approved mascot as generation
+references; they are generated reproductions, not pixel-identical logo composites.
+The protected logo and transparent mascot source files remain unchanged. Keep the
+plain backgrounds available so users can choose their preferred amount of branding.
+
 The UI concept captures are 1320 x 680 PNG rendered in a browser at a 1440 x 1000
 viewport from ui/preview.html. Their original PNG mascot is composited by HTML,
 not regenerated. This keeps the identity source intact.

@@ -24,6 +24,24 @@
       "file": "toddy-os-boot-background.png",
       "input": "toddy-os-wallpaper-dark.png",
       "prompt": "Use case: lighting-weather. Make a BOOT AND LOGIN companion background for the supplied Toddy OS navy wallpaper, wide landscape 16:9. Keep the midnight navy palette and subtle fine matte texture. Simplify dramatically: mostly solid near-black navy #081426, with just a very soft broad blue sculptural ribbon following the bottom edge and lower right corner. Leave the central 70 percent extremely calm and empty for real login controls and the original Toddy logo added by the OS. No bright line through the center, no spotlight. Premium restrained coherent companion to the input. NO logo, NO dog, NO mascot, NO letters, NO progress bar, NO fake interface, NO watermark, NO beige or purple. This is only an empty background, not a mockup."
+    },
+    {
+      "file": "toddy-os-wallpaper-dark-logo.png",
+      "inputs": [
+        "toddy-os-wallpaper-dark.png",
+        "toddy-os-system-icon.png"
+      ],
+      "prompt": "Use case: compositing. Asset: an actual Toddy OS desktop wallpaper, not a mockup. Image 1 is the existing navy wallpaper EDIT TARGET. Image 2 is the approved transparent Toddy Shih-tzu mascot INSERT, not a style suggestion. Preserve the existing background composition, midnight navy palette, blue folds and quiet negative space. Add a precise faithful reproduction of the supplied original mascot on the right third, center at about 80% canvas width and 44% canvas height; mascot about 21% of canvas height, subtle and crisp, not huge. Preserve its chestnut and ivory fur, short muzzle, glasses, eyes, expression, head angle and outlines; do not redesign or recolor the mascot. Below it place small refined cool-white sans-serif text exactly 'Toddy OS', with generous breathing room. Keep left two thirds empty for desktop windows. No rectangle or badge behind the logo, no glow or drop shadow on the mascot, no added slogan, no other text, no desktop icons, no dock, no windows, no border, no watermark. Landscape 16:9, preserve the original premium subdued navy artwork. This is a clean branded wallpaper export.",
+      "method": "Built-in image generation, supplied background and mascot references; inspected generated reproduction, original identity source unchanged."
+    },
+    {
+      "file": "toddy-os-wallpaper-light-logo.png",
+      "inputs": [
+        "toddy-os-wallpaper-light.png",
+        "toddy-os-system-icon.png"
+      ],
+      "prompt": "Use case: compositing. Asset: an actual Toddy OS LIGHT THEME desktop wallpaper, not a mockup. Image 1 is the existing cool light-blue wallpaper EDIT TARGET. Image 2 is the approved transparent Toddy Shih-tzu mascot INSERT, not a style suggestion. Preserve the existing background composition, pale blue-white canvas and sculptural mist-blue folds. Add a precise faithful reproduction of the supplied original mascot on the right third, center at about 80% canvas width and 44% canvas height; mascot about 21% of canvas height, subtle and crisp, not huge. Preserve chestnut and ivory fur, short muzzle, black glasses, eyes, expression, head angle and outlines; do not redesign or recolor the mascot. Below it place small refined midnight-navy sans-serif text exactly 'Toddy OS', with generous breathing room. Match the placement and quiet professional proportions of a companion to a dark navy wallpaper. Keep left two thirds empty for desktop windows. No rectangle or badge, no glow or drop shadow on mascot, no extra slogan, no other text, no desktop icons, no dock, no windows, no watermark, no border. Landscape 16:9; no beige or brown in the environment, only the mascot retains warm natural fur.",
+      "method": "Built-in image generation, supplied background and mascot references; inspected generated reproduction, original identity source unchanged."
     }
   ],
   "ui_concepts": {
@@ -48,6 +66,7 @@
     "Generated PNG backgrounds are 1672x941 despite a higher-resolution request, not 4K/vector masters.",
     "UI scenes are simulations, not running GNOME/agent/installer acceptance evidence.",
     "The original logo contains its original background and colors; it was not recolored.",
-    "Published foundation ISO remains unchanged."
+    "Published foundation ISO remains unchanged.",
+    "Logo wallpaper variants contain generated mascot/label reproductions, not pixel-identical compositing of the protected logo. Original logo and transparent mascot files remain byte-identical."
   ]
 }

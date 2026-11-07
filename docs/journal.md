@@ -1041,3 +1041,13 @@ preview and opened its quick-entry concept. Plan, harness, brand and page work
 were delivered as separate commits. Follow-up formatting keeps source HTML/CSS
 readable, with clean regenerated output and the same 184 passing local checks.
 The owner can review the online concepts; no Phase 2 guest build has started.
+
+
+## 2026-11-07 — Optional Toddy-branded wallpaper companions
+
+The owner requested wallpaper options with the Toddy logo. Generated and inspected
+dark/light right-aligned mascot variants from the existing navy backgrounds and
+approved mascot reference. Actual outputs are 1672x941 PNG. These are generated
+reproductions; protected logo/mascot source hashes remain unchanged, and plain
+wallpapers stay available. Prompts, dimensions and hashes are recorded in the
+brand metadata. Public gallery/download integration follows this asset checkpoint.

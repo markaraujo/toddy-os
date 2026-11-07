@@ -74,5 +74,21 @@
     "mode": "RGB",
     "sha256": "e619d100cbc8812f30abc7a9cb1318416060d7b2eb4fcebe794936377bc543a1",
     "role": "generated-background"
+  },
+  {
+    "file": "toddy-os-wallpaper-dark-logo.png",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "sha256": "3cc689aed97b54282874daf8b1247cb75ea9e8b2d2e3c0c93e14c9b7ce72db6d",
+    "role": "generated-branded-wallpaper"
+  },
+  {
+    "file": "toddy-os-wallpaper-light-logo.png",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "sha256": "8c5083f54632a2810d18094aabd8ab1f084c477372863cd42b8d2ccc3064c4f2",
+    "role": "generated-branded-wallpaper"
   }
 ]
