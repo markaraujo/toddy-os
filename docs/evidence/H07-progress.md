@@ -1161,3 +1161,11 @@ Group traversal is not final acceptance: later groups/method matrix and the
 complete output validator still must finish. Raw observation
 .local/logs/h07-compression-progress.json SHA-256:
 ee0e32411ab87b95a8befd63590420b89d486396347e54a779176cb269da2ff3.
+
+
+2026-11-07 00:16 UTC read-only observation: compression Test044 completed two
+crash/recovery cycles and started cycle 3 at 00:15:46 for 301 seconds. Original
+driver/runner PIDs remain live; the partial 4585452-byte log contains zero FAIL
+lines. Complete standard-suite validation and package acceptance remain pending.
+Raw observation .local/logs/h07-compression-cycle3.json SHA-256:
+7b052c821f75706c3524ed0da6ba085321dd15b43ffd22dadc2868d79d11e67c.

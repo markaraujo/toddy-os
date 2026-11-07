@@ -357,3 +357,11 @@ boundary: continue through H13, deliver the foundation for testing, and wait for
 explicit approval before B01 onward. Recorded ADR-0063 and updated AGENTS, PRD,
 development handoff and published scope. Foundation implementation remains
 active; this is a future review pause, not a present stop or a completed release.
+
+2026-11-07 00:15 UTC — Native image loader-cache component passed: two fresh
+roots generate the same five-entry cache, Bash's native loader trace uses it,
+and twelve invalid-input cases are refused. Corrected the initial full-system
+/lib64 layout assumption from actual frozen LFS/package evidence (ADR-0064).
+Native package links and installed caches/status are unchanged. This is a real
+component subset, not full-root/boot acceptance. Berkeley DB remains active in
+compression Test044; the supervisor still waits for its complete terminal result.

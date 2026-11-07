@@ -849,3 +849,16 @@ remove the installed source index to make the preflight pass. The final H10
 caller must use the accepted post-H07-closure package inventory. This component
 refuses an index still listed as package payload and does not resolve that
 outstanding metadata transition itself.
+
+
+Reproduce native loader-cache preparation with
+python3 scripts/host/probe_loader_cache.py (ADR-0064). Private roots are under
+/mnt/lfs/tmp/toddy-loader-cache-*; failures preserve their state and successful
+fixtures are removed after evidence collection. The original layout-refusal
+fixture is toddy-loader-cache-hq68ba74. Raw reports and immutable hash copies
+are .local/logs/h10-loader-cache-probe*.json. Full-image integration must pass
+the accepted package inventory after H07 closure; the current probe validates
+only its declared native library subset. Never copy builder caches, change the
+owned /lib64 layout to match the minimal initramfs, or overwrite an interrupted
+image cache. Preserve it and reconstruct a fresh stage. Additional loader search
+configuration/tunables need a reviewed extension to the frozen foundation policy.

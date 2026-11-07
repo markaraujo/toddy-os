@@ -549,3 +549,16 @@ acceptance remains pending. No active BDB inputs were changed. See ADR-0045.
 - Verification: native configure/repeat/preset/readback checks pass with required
   services enabled and wait-online masked. Six configuration refusals and five
   audit boundaries pass. Failure fixture and both report hashes are in ADR-0060.
+
+
+### Private loader-cache probe assumed the initramfs library layout
+
+- Symptom: the first loader-cache probe refused with Foundation library alias
+  differs before generating a cache.
+- Cause: the helper assumed /lib64 -> usr/lib from the minimal initramfs profile;
+  the actual full LFS package owns a physical /lib64 and two loader links.
+- Correction: inspect frozen LFS/actual package records, preserve the full-system
+  directory and links, and include those owned paths in the private fixture.
+- Verification: two cache generations are byte-identical, native Bash uses the
+  image cache/libraries, and twelve refusal cases pass. Installed caches/package
+  state are unchanged. ADR-0064 retains original failure and final evidence.
