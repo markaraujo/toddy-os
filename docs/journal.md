@@ -754,3 +754,10 @@ The independent build is now terminal and its evidence is retained (ADR-0089).
 No duplicate complete database suite was started. The same full producer advanced
 to Recd011.b, recovery 25/27, zero FAIL. Portable full-result/coverage integration,
 original full terminal acceptance, production and APT/final closure remain.
+
+Fresh-versus-running comparison after compilation: all 460 native checkpoint
+entries and the shared library/helper/configuration match. Only four static
+archive paths differ among 10,207 inputs; actual native ar confirms identical
+member names/order and all 252/266 member payloads. Preserved the differing raw
+archives and recorded evidence in ADR-0089; no whole-build byte-identity claim
+or full-suite acceptance was inferred.

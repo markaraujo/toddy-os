@@ -95,3 +95,23 @@ and production handoff before calling fresh reconstruction complete. Existing
 recovery-result verifiers remain pinned to their actual measured run; do not
 replace their native seed with this receipt or accept a partial test result.
 H07 stays 124/126 and APT remains gated on accepted database production checks.
+
+## Comparison with the still-running native input profile
+
+A separate read-only comparison found all 460 historical native checkpoint
+entries identical to the fresh build. Of 10,207 copied input paths, only four
+static archive paths differ: build-test/.libs/libdb-5.3.a,
+build-test/.libs/libdb_tcl-5.3.a and their build-test/libdb.a/libdb_tcl.a aliases.
+The shared runtime library, test helper, db_config.h and include.tcl have identical
+hashes to the running input manifest. Native ar then compared both real archives:
+252 and 266 members respectively, identical names/order and zero differing member
+payloads. Archive container bytes still differ; no whole-build byte-identity
+claim or blanket normalization follows from this comparison.
+
+Input comparison report:
+c4411f0e43e571fcdf331072fbc84ca41ce3f5cb3ef2eda1c7ffb0954fea0233.
+Actual native archive-member comparison:
+343ea2b04fbf79018ab9bc75fbedcbcaef4f3c00792bc39ff68e90d5d62ef4c2.
+The running manifest/source and all raw results remain unchanged. This narrows
+the reconstruction difference; it does not accept the running full standard
+suite or authorize substituting this fresh manifest for its measured inputs.
