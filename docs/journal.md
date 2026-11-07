@@ -1459,3 +1459,14 @@ broker-facing tool fixture and D-Bus XML candidate. Host-only real-Pi fixture:
 passed. Native worker/bridge and complete notices still pending. Node source
 build continues under recorded PID/boot/start identity; no second guest writer.
 Status now reports verified B01 slices without awarding milestone credit.
+
+
+## 2026-11-07 — Native bridge/installer binding probes prepared during Node build
+
+Prepared actual GIO async/peer-UID/typed-signal/sealed-FD/pipe-rejection fixture,
+Node native package transaction/postcheck and the next scanner bootstrap recipe.
+Only syntax/existing repository checks and the crypto vector were run so far;
+these preparations are not native acceptance. The source Calamares 3.4.3 archive
+contains Pybind11 2.11.1, so a minimal accepted-Python-3.14 embedding probe is
+prepared before committing to Qt compilation. No installer replacement or core
+Python upgrade is presumed. Node remains the sole healthy guest writer.
