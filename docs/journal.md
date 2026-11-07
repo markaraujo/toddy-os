@@ -1140,3 +1140,13 @@ See evidence/website-patreon.md. This is public website work only.
 At the owner's request, removed the unused PayPal donation configuration and
 renderer. Patreon is the portal's only funding CTA. Historical failure evidence
 is retained as history; no public PayPal link or checkout remains.
+
+## 2026-11-07 — Give the public support copy the author's voice
+
+Rewrote the author introduction and Patreon invitation in first person, based on
+the owner's stated reason for building Toddy OS and the real dog behind its name.
+Replaced generic promotional slogans with concrete work, open progress updates
+and an invitation that also welcomes readers without payment. Updated all six
+portal locales without changing project scope, pricing or release claims.
+Playwright passed 24 locale/viewport combinations (320/390/768/1440), and the
+Portuguese campaign screenshot was inspected locally. All 184 checks passed.

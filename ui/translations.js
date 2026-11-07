@@ -785,36 +785,10 @@ window.TODDY_TRANSLATIONS = {
         "今はプレビュー / 1.0 を目指して",
         "Сегодня preview / впереди 1.0",
     ],
-    "Built independently.": [
-        "Criado de forma independente.",
-        "Creado de forma independiente.",
-        "独立构建。",
-        "独立して開発。",
-        "Независимая разработка.",
-    ],
-    "Improved with real use.": [
-        "Melhorado com uso real.",
-        "Mejorado con el uso real.",
-        "在真实使用中改进。",
-        "実際の利用で磨く。",
-        "Развитие через реальное использование.",
-    ],
-    "Created and maintained by Marcos Araujo, Toddy OS is an independent Linux project developed openly, one verified delivery at a time.":
-        [
-            "Criado e mantido por Marcos Araujo, o Toddy OS é um projeto Linux independente, desenvolvido abertamente, uma entrega verificada de cada vez.",
-            "Creado y mantenido por Marcos Araujo, Toddy OS es un proyecto Linux independiente desarrollado en abierto, una entrega verificada cada vez.",
-            "Toddy OS 由 Marcos Araujo 创建和维护，是公开开发的独立 Linux 项目，每次交付都经过验证。",
-            "Marcos Araujo が制作・保守する Toddy OS は、検証した成果を一歩ずつ公開する独立 Linux プロジェクトです。",
-            "Toddy OS — независимый Linux-проект Marcos Araujo, который разрабатывается открыто, проверенными небольшими выпусками.",
-        ],
-    "The current release is an experimental foundation preview. Desktop and assistant previews come next. Version 1.0 will follow when its scope and acceptance criteria are met; no release date is promised.":
-        [
-            "A versão atual é um preview experimental da foundation. Depois virão as prévias do desktop e do assistente. A versão 1.0 chegará quando seu escopo e critérios de aceitação forem cumpridos, sem data prometida.",
-            "La versión actual es una preview experimental de la base. Después llegarán las previews del escritorio y del asistente. La 1.0 se publicará cuando se cumplan su alcance y criterios, sin fecha prometida.",
-            "当前版本是基础系统的实验性预览。之后将提供桌面和助手预览。达到既定范围和验收条件后才会发布 1.0，暂无承诺的发布日期。",
-            "現在は基盤の実験的プレビューです。次にデスクトップとアシスタントのプレビューを予定。1.0 は範囲と受け入れ条件を満たしてからで、日程は未定です。",
-            "Текущий выпуск — экспериментальная основа. Затем появятся превью рабочего стола и помощника. Версия 1.0 выйдет после выполнения её объёма и критериев; дата не обещана.",
-        ],
+    "Made by Marcos.": ["Feito pelo Marcos.", "Hecho por Marcos.", "Marcos 制作。", "Marcos が作っています。", "Создаёт Маркос."],
+    "Named after Toddy.": ["Com o nome do Toddy.", "Con el nombre de Toddy.", "以 Toddy 命名。", "名前は Toddy から。", "Имя — в честь Тодди."],
+    "I'm Marcos Araujo. Toddy is my Shih Tzu. I'm building this project around the desktop I want to use, with a bit of his personality along the way.": ["Sou o Marcos Araujo. O Toddy é meu Shih-tzu. Estou criando o desktop que eu gostaria de usar e trazendo um pouco da personalidade dele para o projeto.", "Soy Marcos Araujo. Toddy es mi Shih Tzu. Estoy creando el escritorio que me gustaría usar, con un poco de su personalidad por el camino.", "我是 Marcos Araujo，Toddy 是我的西施犬。我正在打造自己想用的桌面，也把它的一点个性带进这个项目。", "Marcos Araujo です。Toddy は私のシーズーです。自分が使いたいデスクトップを作りながら、彼の個性も少し取り入れています。", "Я Маркос Араужо. Тодди — мой ши-тцу. Я создаю рабочий стол, которым сам хотел бы пользоваться, и добавляю в проект немного его характера."],
+    "The foundation is available to try. Now I'm planning the desktop, assistant and installer. I'll call it 1.0 when that experience is ready.": ["A base do sistema já está disponível para testar. Agora estou planejando o desktop, o assistente e o instalador. A versão 1.0 vem quando essa experiência estiver pronta.", "La base del sistema ya se puede probar. Ahora estoy planificando el escritorio, el asistente y el instalador. La versión 1.0 llegará cuando esa experiencia esté lista.", "系统基础已经可以试用了。现在我在规划桌面、助手和安装程序。等这些体验准备好后，才会称它为 1.0。", "システムの土台はすでに試せます。今はデスクトップ、アシスタント、インストーラーを計画しています。その体験が整ったら、1.0 と呼ぶつもりです。", "Основу системы уже можно попробовать. Сейчас я планирую рабочий стол, помощника и установщик. Версией 1.0 она станет, когда всё это будет готово."],
     "Follow future releases ↗": [
         "Acompanhe as próximas versões ↗",
         "Sigue los próximos lanzamientos ↗",
@@ -1850,16 +1824,16 @@ Object.assign(window.TODDY_TRANSLATIONS, {
 /* Owner-approved Patreon campaign; no pricing or unconfigured benefits. */
 Object.assign(window.TODDY_TRANSLATIONS, {
     "Support on Patreon ↗": ["Apoiar no Patreon ↗", "Apoyar en Patreon ↗", "在 Patreon 上支持 ↗", "Patreon で応援する ↗", "Поддержать на Patreon ↗"],
-    "Independent code. A little help from the pack.": ["Código independente. Uma força da turma.", "Código independiente. Una ayuda de la manada.", "独立开发，伙伴相助。", "独立した開発。仲間からの応援。", "Независимый код. Поддержка нашей стаи."],
-    "Help this good boy ship.": ["Ajude esse bom garoto a lançar o Toddy OS.", "Ayuda a este buen chico a lanzar Toddy OS.", "帮这只乖狗狗把 Toddy OS 做出来。", "このいい子と Toddy OS を届けよう。", "Помогите этому хорошему мальчику выпустить Toddy OS."],
-    "A more personal Linux desktop, built by an independent developer. Help turn the Toddy OS preview into a system you can use every day.": ["Um desktop Linux com mais personalidade, criado por um desenvolvedor independente. Ajude a transformar a prévia do Toddy OS em um sistema para o dia a dia.", "Un escritorio Linux con más personalidad, creado por un desarrollador independiente. Ayuda a convertir la versión preliminar de Toddy OS en un sistema para el día a día.", "由独立开发者打造，更有个性的 Linux 桌面。帮助 Toddy OS 从预览版成长为日常可用的系统。", "個人開発者が作る、もっと自分らしい Linux デスクトップ。Toddy OS のプレビューを、毎日使えるシステムへ育てるお手伝いを。", "Рабочий стол Linux с характером от независимого разработчика. Помогите превратить предварительную версию Toddy OS в систему на каждый день."],
-    "Explore membership and support options on Patreon. Choose what works for you.": ["Veja as opções de assinatura e apoio no Patreon. Escolha o que faz sentido para você.", "Explora las opciones de membresía y apoyo en Patreon. Elige lo que te convenga.", "在 Patreon 查看会员及支持选项，选择适合你的方式。", "Patreon でメンバーシップや支援の方法をご覧ください。ご自身に合う方法を選べます。", "Посмотрите варианты подписки и поддержки на Patreon. Выберите подходящий вам."],
-    "More time to build. More care in every release.": ["Mais tempo para criar. Mais cuidado em cada versão.", "Más tiempo para crear. Más cuidado en cada versión.", "更多开发时间，每个版本都更用心。", "開発する時間を増やし、リリースをもっと丁寧に。", "Больше времени на разработку. Больше внимания каждому выпуску."],
-    "Your support helps fund development time, testing and documentation.": ["Seu apoio ajuda a financiar tempo de desenvolvimento, testes e documentação.", "Tu apoyo ayuda a financiar tiempo de desarrollo, pruebas y documentación.", "你的支持帮助投入开发时间、测试和文档编写。", "ご支援は開発時間、テスト、ドキュメント作成に役立ちます。", "Ваша поддержка помогает оплачивать время на разработку, тестирование и документацию."],
-    "Follow progress, previews and release stories.": ["Acompanhe o progresso, as prévias e os bastidores das versões.", "Sigue el progreso, los adelantos y las historias de cada versión.", "关注开发进展、预览和版本背后的故事。", "進捗、プレビュー、リリースの舞台裏をチェック。", "Следите за прогрессом, превью и историями выпусков."],
+    "A note from Marcos": ["Um recado do Marcos", "Un mensaje de Marcos", "Marcos 的话", "Marcos からひとこと", "Несколько слов от Маркоса"],
+    "Want to help me build Toddy OS?": ["Quer fazer parte do Toddy OS?", "¿Me ayudas a crear Toddy OS?", "想帮我一起打造 Toddy OS 吗？", "Toddy OS を一緒に育てませんか？", "Поможете мне создать Toddy OS?"],
+    "I want a Linux desktop with the basics done well and an assistant I can make my own. That's what I'm building here. If you like the idea, you can help me keep it moving.": ["Quero um Linux com o básico bem feito e um assistente que eu possa deixar do meu jeito. É isso que estou construindo aqui. Se a ideia também faz sentido para você, dá para me ajudar a levar o projeto adiante.", "Quiero un Linux con lo esencial bien resuelto y un asistente que pueda adaptar a mi manera. Eso estoy construyendo aquí. Si te gusta la idea, puedes ayudarme a seguir.", "我想要一个把基础做好、助手也能按自己想法调整的 Linux 桌面。这就是我正在做的事。如果你也喜欢这个想法，可以帮我把它继续做下去。", "基本をきちんと押さえ、自分好みに変えられるアシスタントがいる Linux が欲しい。それをここで作っています。この考えに共感してもらえたら、開発を応援していただけるとうれしいです。", "Я хочу Linux с хорошо продуманными основами и помощником, которого можно настроить под себя. Именно это я здесь и создаю. Если вам близка эта идея, вы можете помочь мне продолжить."],
+    "You can see the support options on my Patreon page.": ["As opções de apoio estão na minha página do Patreon.", "Puedes ver las opciones de apoyo en mi página de Patreon.", "支持方式可以在我的 Patreon 页面查看。", "支援の方法は私の Patreon ページでご覧いただけます。", "Варианты поддержки есть на моей странице Patreon."],
+    "What your support helps me do": ["O que seu apoio me ajuda a fazer", "Lo que tu apoyo me permite hacer", "你的支持能帮我做什么", "ご支援でできること", "Что помогает делать ваша поддержка"],
+    "Put more time into the code, test it properly and write down how it all works.": ["Dedicar mais tempo ao código, testar com cuidado e documentar como tudo funciona.", "Dedicar más tiempo al código, probarlo con cuidado y documentar cómo funciona todo.", "投入更多时间写代码、认真测试，并把工作原理记录下来。", "コードを書く時間を増やし、しっかりテストし、仕組みをドキュメントに残すこと。", "Уделять больше времени коду, тщательно его проверять и описывать, как всё работает."],
+    "I'll share what I'm working on, what worked and what needs another try.": ["Vou contar o que estou fazendo, o que deu certo e o que ainda precisa de outra tentativa.", "Compartiré en qué estoy trabajando, qué salió bien y qué necesita otro intento.", "我会分享正在做什么、哪些成功了，以及哪些还需要再试一次。", "取り組んでいること、うまくいったこと、もう一度試す必要があることをお伝えします。", "Я буду рассказывать, над чем работаю, что получилось и что придётся попробовать ещё раз."],
     "Have your name on this website, if you wish.": ["Tenha seu nome neste site, se quiser.", "Incluye tu nombre en este sitio, si lo deseas.", "如果你愿意，可在本网站列出你的名字。", "ご希望の方は、このサイトにお名前を掲載できます。", "При желании ваше имя появится на этом сайте."],
-    "Help an independent Linux project grow from the beginning.": ["Ajude um projeto Linux independente a crescer desde o começo.", "Ayuda a un proyecto Linux independiente a crecer desde el principio.", "从起点开始，帮助一个独立 Linux 项目成长。", "独立した Linux プロジェクトの成長を、最初から応援。", "Помогите независимому Linux-проекту расти с самого начала."],
-    "Still an experimental preview. Supporting the project does not promise a release date or a finished desktop.": ["Ainda estamos em preview experimental. Apoiar o projeto não garante uma data de lançamento nem um desktop finalizado.", "Seguimos en una versión preliminar experimental. Apoyar el proyecto no garantiza una fecha de lanzamiento ni un escritorio terminado.", "目前仍是实验性预览版。支持项目不代表保证发布日期或已完成的桌面。", "現在は実験的なプレビューです。ご支援はリリース日や完成済みのデスクトップを保証するものではありません。", "Это пока экспериментальная версия. Поддержка проекта не гарантирует дату выпуска или готовый рабочий стол."],
+    "You can follow along without paying, too. I'm glad you're here.": ["Você também pode acompanhar sem pagar. Já fico feliz de ter você por aqui.", "También puedes seguir el proyecto sin pagar. Me alegra que estés aquí.", "不付费也可以关注项目。很高兴你能来到这里。", "支援しなくても、開発を見守っていただけます。ここに来てくれただけでもうれしいです。", "Следить за проектом можно и бесплатно. Я рад, что вы здесь."],
+    "The desktop and assistant are next. Today's download is an experimental command-line system.": ["O desktop e o assistente vêm na próxima fase. O download de hoje é um sistema experimental em linha de comando.", "El escritorio y el asistente llegarán en la siguiente fase. La descarga actual es un sistema experimental de línea de comandos.", "桌面和助手将在下一阶段开发。目前可下载的是实验性命令行系统。", "デスクトップとアシスタントは次の段階です。現在ダウンロードできるのは、実験的なコマンドラインシステムです。", "Рабочий стол и помощник — следующий этап. Сейчас доступна экспериментальная система с командной строкой."],
     "Read our first post ↗": ["Leia nosso primeiro post ↗", "Lee nuestro primer post ↗", "阅读第一篇帖子 ↗", "最初の投稿を読む ↗", "Прочитать первый пост ↗"],
     "Help Toddy grow ↗": ["Ajude o Toddy a crescer ↗", "Ayuda a Toddy a crecer ↗", "帮助 Toddy 成长 ↗", "Toddy の成長を応援 ↗", "Помогите Toddy расти ↗"]
 });
