@@ -1150,3 +1150,15 @@ and an invitation that also welcomes readers without payment. Updated all six
 portal locales without changing project scope, pricing or release claims.
 Playwright passed 24 locale/viewport combinations (320/390/768/1440), and the
 Portuguese campaign screenshot was inspected locally. All 184 checks passed.
+
+## 2026-11-07 — Complete public copy review and dedicated supporter wall
+
+Reviewed every landing section and dynamic preview, simplifying the feature,
+installer, wallpaper, roadmap, download and footer copy in six languages while
+retaining the approved headline and deliberate mascot reactions. Added a
+night-sky supporter page with CSS-only ambient/hover motion and reduced-motion
+support. Only approved names in config/community.json drive its generated wall;
+a JSON-only edit is sufficient for automatic Pages publication. No private
+payment information, invented donors or live financial integration is added.
+Basic Playwright checks passed across 48 locale/viewport combinations and all
+preview tabs; make check passed 185 tests. See evidence/website-full-copy-and-supporters.md.

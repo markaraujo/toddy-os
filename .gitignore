@@ -37,3 +37,5 @@ __pycache__/
 # Generated publication export
 _site/
 .playwright-mcp/
+# The public supporter wall is regenerated from community.json at export time.
+/dashboard/supporters.html

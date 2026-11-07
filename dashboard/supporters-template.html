@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#081426" />
+    <title>Toddy OS — Supporters</title>
+    <meta name="description" content="A thank-you to the people supporting the development of Toddy OS." />
+    <link rel="icon" href="../assets/brand/toddy-os-system-icon.png" />
+    <link rel="stylesheet" href="../ui/tokens.css" />
+    <link rel="stylesheet" href="site.css" />
+    <link rel="stylesheet" href="supporters.css" />
+    <script src="../ui/translations.js" defer></script>
+    <script src="../ui/i18n.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <a class="wordmark" href="index.html" aria-label="Toddy OS home"><img src="../assets/brand/toddy-os-system-icon.png" alt="" width="46" height="46" /><span>Toddy <span class="wordmark-os">OS</span></span></a>
+        <a class="back-home" href="index.html">Back to the project ↗</a>
+        <label class="language-picker"><span>Language</span><select aria-label="Language" data-language-picker>
+            <option value="en" lang="en">English</option><option value="pt-BR" lang="pt-BR">Português</option><option value="es" lang="es">Español</option><option value="zh-Hans" lang="zh-Hans">简体中文</option><option value="ja" lang="ja">日本語</option><option value="ru" lang="ru">Русский</option>
+        </select></label>
+    </header>
+    <main id="main" class="supporter-universe">
+        <section class="wall-intro">
+            <p class="eyebrow">The Toddy OS supporters</p>
+            <h1>There's good company<br />behind this project.</h1>
+            <p>I'm building Toddy OS, but I don't have to do it alone. This space is my thank-you to the people who help me keep going.</p>
+        </section>
+        <section class="night-sky" aria-labelledby="wall-title">
+            <div class="sky-dots" aria-hidden="true"></div>
+            <div class="orbits" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="wall-mascot">
+                <img src="../assets/brand/toddy-os-system-icon.png" alt="Toddy, the project's bespectacled Shih Tzu mascot" width="240" height="240" />
+                <p class="toddy-aside">I checked the list.<br />Good humans.</p>
+            </div>
+            <div class="wall-names">
+                <h2 id="wall-title">A place for your name</h2>
+                {{SUPPORTERS}}
+            </div>
+        </section>
+        <section class="wall-invitation">
+            <div>
+                <h2>Want to be part of it?</h2>
+                <p>If you support Toddy OS and want your name here, send me the name you'd like to use through Patreon. I'll only add it with your permission.</p>
+                <p>Every name gets the same place here. You can also support the project without being listed.</p>
+            </div>
+            <div class="wall-action">{{PATREON}}<a href="index.html#progress">See how the project is going ↗</a></div>
+        </section>
+    </main>
+    <footer class="wall-footer"><p>Marcos builds the system. Toddy supervises.</p><a href="index.html">Back to the project ↗</a></footer>
+</body>
+</html>

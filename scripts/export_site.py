@@ -55,7 +55,7 @@ def export(destination):
     project.validate(data)
     page = public_links(project.outputs(data)["dashboard/index.html"])
     # Validate every source before replacing the previous generated export.
-    sources = {"site.css": ROOT / "dashboard/site.css"}
+    sources = {"site.css": ROOT / "dashboard/site.css", "supporters.css": ROOT / "dashboard/supporters.css"}
     sources.update({f"assets/brand/{name}": ROOT / "assets/brand" / name for name in BRAND_FILES})
     sources.update({f"ui/{name}": ROOT / "ui" / name for name in UI_FILES})
     sources.update({f"assets/third-party/gnome/{name}": ROOT / "assets/third-party/gnome" / name for name in ICON_FILES})
@@ -66,6 +66,8 @@ def export(destination):
         shutil.rmtree(destination)
     destination.mkdir(parents=True)
     (destination / "index.html").write_text(version_resources(page, "index.html", sources))
+    supporters = public_links(project.supporter_page())
+    (destination / "supporters.html").write_text(version_resources(supporters, "supporters.html", sources))
     (destination / ".nojekyll").write_text("")
     for relative, source in sources.items():
         target = destination / relative

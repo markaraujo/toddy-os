@@ -133,6 +133,12 @@ def patreon_html():
             '<span>Support on Patreon ↗</span></a>')
 
 
+def supporter_page():
+    """Build the public name wall directly from current community data."""
+    template = (ROOT / "dashboard/supporters-template.html").read_text()
+    return template.replace("{{SUPPORTERS}}", community_html()).replace("{{PATREON}}", patreon_html())
+
+
 def outputs(data):
     pct = percentages(data)
     text = f"# Toddy OS — Current status\n\nUpdated: {data['updated_at']}\n\n"
@@ -178,9 +184,9 @@ def outputs(data):
         elif any(r["phase"] == "agentic" and r["status"] != "not_started" for r in data["milestones"]):
             note = "Small verified deliveries · see milestone state"
         else:
-            note = "Replanned · guest implementation pending"
+            note = "Planned · development not started"
         metrics.append(f'<article class="metric">{title}<strong>{pct[phase]}%</strong><small>{note}</small><progress aria-label="{title}" value="{pct[phase]}" max="100"></progress></article>')
-    metrics.append(f'<article class="metric">Next guest milestone<strong>{esc(data["next_story"])}</strong><small>G1 {esc(data["gates"]["G1"])} · G2 {esc(data["gates"]["G2"])}</small></article>')
+    metrics.append(f'<article class="metric">Next step<strong>{esc(data["next_story"])}</strong><small>G1 {esc(data["gates"]["G1"])} · G2 {esc(data["gates"]["G2"])}</small></article>')
     page = (ROOT / "dashboard/template.html").read_text()
     replacements = {"METRICS": "".join(metrics), "SCOPE": esc(data["current_scope"]),
                     "UPDATED": esc(data["updated_at"]), "ACTIVE_WORK": active_page,
@@ -241,6 +247,7 @@ def main():
         for name, content in outputs(data).items():
             (ROOT / name).parent.mkdir(parents=True, exist_ok=True)
             (ROOT / name).write_text(content)
+        (ROOT / "dashboard/supporters.html").write_text(supporter_page())
         print("Rendered STATUS.md and offline dashboard.")
     elif args.command == "check":
         check_links()

@@ -2,7 +2,10 @@
 import importlib.util
 import hashlib
 import sys
+import json
+import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,7 +19,7 @@ class PublicExport(unittest.TestCase):
         actual = {str(p.relative_to(site)) for p in site.rglob("*") if p.is_file()}
         expected = {
             "assets/third-party/patreon/patreon-symbol.png", "assets/third-party/patreon/README.md",
-            "index.html", ".nojekyll", "site.css",
+            "index.html", ".nojekyll", "site.css", "supporters.html", "supporters.css",
             "ui/tokens.css", "ui/preview.css", "ui/preview.html", "ui/installer-slides.html",
             "ui/i18n.js", "ui/translations.js", "ui/mascot.js",
             "assets/brand/toddy-os-system-icon.png",
@@ -40,6 +43,27 @@ class PublicExport(unittest.TestCase):
         self.assertIn('href="https://www.patreon.com/ToddyOS"', content)
         self.assertIn('src="assets/third-party/patreon/patreon-symbol.png"', content)
         self.assertNotIn('href="https://www.paypal.com/donate', content)
+        self.assertIn('href="supporters.html"', content)
+        wall = (site / "supporters.html").read_text()
+        self.assertNotIn("{{", wall)
+        self.assertIn('href="supporters.css?v=', wall)
+
+    def test_supporter_names_come_from_one_file_and_remain_text(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "config").mkdir()
+            (root / "dashboard").mkdir()
+            (root / "dashboard/supporters-template.html").write_text((ROOT / "dashboard/supporters-template.html").read_text())
+            config = root / "config/community.json"
+            with patch.object(export_site.project, "ROOT", root):
+                config.write_text(json.dumps({"supporters": []}))
+                self.assertIn("supporter-empty", export_site.project.community_html())
+                config.write_text(json.dumps({"supporters": ["Fixture & <name>"]}))
+                rendered = export_site.project.community_html()
+                self.assertIn("Fixture &amp; &lt;name&gt;", rendered)
+                self.assertNotIn("supporter-empty", rendered)
+                self.assertIn("data-no-translate", rendered)
+                self.assertIn("Fixture &amp; &lt;name&gt;", export_site.project.supporter_page())
 
     def test_export_refuses_checkout_or_other_destination(self):
         with self.assertRaises(ValueError):
