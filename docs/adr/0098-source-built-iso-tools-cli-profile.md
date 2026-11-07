@@ -1,7 +1,7 @@
 # ADR-0098: Omit the optional Tk frontend from the foundation ISO tools
 
 - Date: 2026-11-07
-- Status: Actual missing interpreter identified; corrected native package pending
+- Status: Corrected native package and retained-payload/ISO roundtrip verified
 
 Full-root integration review found `/usr/bin/xorriso-tcltk` with the actual
 shebang `#!/usr/bin/wish`, while the foundation contains no Tk/wish. The prior
@@ -30,3 +30,9 @@ scope and dependencies; whitelisting its missing interpreter weakens the image
 audit; leaving an unusable command while only disclaiming it is avoidable.
 This choice removes no PRD feature or test. The graphical installer remains B12
 and is unrelated to this upstream disc-authoring frontend.
+
+Actual revision 2 installation and postcheck passed 0/0. Exactly the three
+frontend files were removed and only profile.txt changed; all 41 retained
+payload entries and all frozen source identities are unchanged. Dpkg audit
+is empty and APT check exited zero. Native C linkage and the metadata/corruption
+ISO roundtrip passed again. See docs/evidence/H10-integration-recovery.json.

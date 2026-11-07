@@ -888,3 +888,11 @@ H10 media dependencies all passed actual 0/0 recipe/postchecks: Squashfs 4.7.5,
 Mtools 4.0.50 and libburn/libisofs/libisoburn 1.5.8 (selected pl02 revisions).
 There are 134 configured packages and no Dpkg audit findings. Evidence:
 docs/evidence/H10-media-tools.json. Full live assembly/boot remains unaccepted.
+
+H10 fresh-root integration caught missing transfer of its public account
+baseline, then missing runtime /dev/null for native install-info. Both causes
+were corrected; failed logs and the complete partial root are preserved. The
+empty-device-tree native Info regression passed. Removed only the optional
+Tk frontend from the ISO CLI package: all 41 retained entries and source
+identities match; actual native library/ISO checks passed again. Retrying the
+full image without rebuilding accepted libraries or accepting partial output.

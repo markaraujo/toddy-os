@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 76% phase total counts completed stories only. H10 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 84%.
 
-Last verified: 2026-11-07 12:18 UTC
+Last verified: 2026-11-07 12:31 UTC
 
 Verified:
 
@@ -24,8 +24,9 @@ Verified:
 - Both native BIOS/UEFI guests passed Systemd startup, C compilation/execution, Kmod load/unload and clean power-off; backing hashes unchanged.
 - Cold h09-boot-ready pair saved, independently verified and builder restarted.
 - All five native media dependencies passed recipe/postcheck 0/0; 134 configured packages and empty Dpkg audit.
+- Fresh-image Info regression passed with transient device cleanup; native libisoburn CLI revision passed with 41 retained payload entries unchanged.
 
-Running: Assembling the full live root, then compression, bound initramfs and private validation media.
+Running: Retrying complete live assembly after preserving and correcting the missing baseline/null-device integration failures.
 
 Remaining:
 

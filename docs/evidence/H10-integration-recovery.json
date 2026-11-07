@@ -1,0 +1,42 @@
+{
+  "observed_at": "2026-11-07T12:30:44.144170+00:00",
+  "libisoburn": {
+    "previous_version": "1.5.8.pl02-1",
+    "current_version": "1.5.8.pl02-2",
+    "previous_archive_sha256": "8410dbdbd8ad79f5b2334c020517c6d4ba4b0242ebb2d407e0d8c83757b99151",
+    "current_archive_sha256": "f903eb4cbda3eb4eca084f37b5fef80dd5330c89c00277390133771948acb6a2",
+    "removed": [
+      "/usr/bin/xorriso-tcltk",
+      "/usr/share/info/xorriso-tcltk.info",
+      "/usr/share/man/man1/xorriso-tcltk.1"
+    ],
+    "changed": [
+      "/usr/share/doc/libisoburn/profile.txt"
+    ],
+    "retained_payload_entries_unchanged": 41,
+    "sources_unchanged": true,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "log_sha256": "c22f7893049f9b73661a4cf5ed2745bc9939f36da130243483b6b3c24cd4af60",
+    "success_record_sha256": "d107f0fcc8e4f744523b74dc17b59fd1201157c29470295f4e6b1ca680dbcdc0",
+    "dpkg_audit_empty": true,
+    "apt_check_exit": 0
+  },
+  "info_regression_sha256": "e7a8ebfa047958c52b86b533cb7d2412e2cf31c2f96e1091340c7dadf72f6449",
+  "preservation": {
+    "relocated": {
+      "/mnt/lfs/sources/stage/h10-live-root": "/mnt/lfs/sources/recovery/h10-info-null-20261107/h10-live-root",
+      "/mnt/lfs/sources/stage/h10-live-root-evidence": "/mnt/lfs/sources/recovery/h10-info-null-20261107/h10-live-root-evidence"
+    },
+    "log_hashes": {
+      "h10-live-driver.pid": "cba41a6a83f401bc28ac0c2d37c76b587159748c9bbc1b72ea34c20f1c794197",
+      "h10-live-driver.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "h10-live-launch.log": "51797bc1806d0358d2e7d40aeb673cda36a2ecc45e2dd89b4a19e36aea8b0b01",
+      "h11-libisoburn.success.json": "59115f91a11c67f01efc2d911f99ad4ab927e32b14fbfb0cdb5fa4e01bf95d44",
+      "h11-libisoburn.manifest.json": "8f6c6709cee557197458679c5b164d7b36fb6adaad13325a0b8ffbf3709e822a",
+      "h11-libisoburn.log": "7b4fc14cda3018b1a379ffde4317755a869ffea560e86c715163f2288ed1673f"
+    },
+    "previous_accepted_libisoburn": "/var/log/toddy/build/history/h11-libisoburn-before-cli-20261107"
+  },
+  "live_assembly_accepted": false
+}
