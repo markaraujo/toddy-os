@@ -477,14 +477,14 @@
   ],
   "active_work": {
     "story": "H07",
-    "verified_at": "2026-11-07 01:08 UTC",
+    "verified_at": "2026-11-07 01:26 UTC",
     "verified": [
       "124 of 126 currently planned H07 packages installed, configured and accepted; 2 pending (Berkeley DB and APT). All 124 have own-build/source provenance.",
       "Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.",
       "Full ACL retest, API/layout ownership and native configuration correction passed.",
       "Verified paired cold checkpoint at the 124-package boundary."
     ],
-    "running": "Both diagnosed Berkeley DB groups now pass privately: other_repmgr 20/20 and multi_repmgr 11/11, exit 0, unchanged assertions. The original standard suite continues in replication (block 23, Rep039), retaining its two known FAIL entries. Corrected recovery inputs are frozen and validated; a complete corrected standard run is still required before production installation or package acceptance.",
+    "running": "Both diagnosed replication-manager groups passed privately (20/20 and 11/11). A complete corrected standard suite now runs in a verified private PID/IPC/network/mount view: C tests passed, Env012 active, zero FAIL lines so far. The original attempt continues at Rep079 in block 23 with its two known failures. Full-suite and production/package acceptance remain pending; no partial results are combined into success.",
     "remaining": [
       "Finish the complete database suite, then production install and transaction/reopen postchecks; later access-method matrix plans 135 x 9 dispatch entries, including inapplicable skips.",
       "Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.",

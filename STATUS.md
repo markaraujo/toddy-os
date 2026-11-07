@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 01:08 UTC
+Last verified: 2026-11-07 01:26 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Both diagnosed Berkeley DB groups now pass privately: other_repmgr 20/20 and multi_repmgr 11/11, exit 0, unchanged assertions. The original standard suite continues in replication (block 23, Rep039), retaining its two known FAIL entries. Corrected recovery inputs are frozen and validated; a complete corrected standard run is still required before production installation or package acceptance.
+Running: Both diagnosed replication-manager groups passed privately (20/20 and 11/11). A complete corrected standard suite now runs in a verified private PID/IPC/network/mount view: C tests passed, Env012 active, zero FAIL lines so far. The original attempt continues at Rep079 in block 23 with its two known failures. Full-suite and production/package acceptance remain pending; no partial results are combined into success.
 
 Remaining:
 

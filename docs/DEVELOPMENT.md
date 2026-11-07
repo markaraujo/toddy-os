@@ -138,3 +138,12 @@ activity, remaining acceptance and a verification timestamp. It never changes
 weighted phase percentages. Update it from actual evidence; project.py set
 clears it when that story completes. The dashboard is a published snapshot,
 not a live guest-process monitor.
+
+
+Current DB continuation uses the isolated complete rerun in ADR-0069. The
+20/20 other_repmgr and 11/11 multi_repmgr corrections passed. The original suite
+continues collecting results but cannot pass with its existing failures. A
+separate complete corrected standard run now uses verified native inputs and
+private namespaces; it must finish with strict success before production
+handoff. The earlier waiting serial-retry supervisor was disarmed. See the last
+RECOVERY section for actual driver paths/PIDs; do not start duplicate tests.

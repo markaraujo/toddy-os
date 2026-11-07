@@ -446,3 +446,11 @@ isolated group verification. Original full standard execution remains active;
 no suite/package acceptance was granted. Preparing a single success-gated
 continuation that preserves terminal evidence and refuses unknown failures or
 installed changes before syncing corrected inputs.
+
+
+2026-11-07 01:26 UTC — Started the corrected complete DB suite in a measured
+private PID/IPC/network/mount view while the known-failed original collects
+later results. Corrected a shared-memory filesystem mismatch and preserved its
+interrupted attempt; native C tests then passed and corrected run_std advanced
+to Env012. Disarmed the earlier waiting serial-retry supervisor to prevent a
+redundant run. Both full-suite results and production acceptance remain pending.

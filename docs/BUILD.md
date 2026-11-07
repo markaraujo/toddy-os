@@ -270,3 +270,14 @@ Fresh and verified recovery builds include it and the two frozen test-fixture
 patches. Complete standard-suite success is still required before production
 packaging. Input preflight is reproducible with
 python3 scripts/host/probe_db_test_fixtures.py after fetching frozen sources.
+
+
+Optional H07 parallel test recovery is documented in ADR-0069. A physical
+private copy of the verified native build and corrected frozen Tcl inputs is
+mapped to the canonical source path only inside private PID/IPC/network/mount
+namespaces. The versioned isolated driver runs CuTest and the complete unchanged
+run_std with strict failure handling and protected input/report hashes. It does
+not install a package. This optimization does not combine partial old results
+or reduce the standard suite. The normal fresh-build recipe remains the default
+reproduction path; production consumption of the isolated complete result still
+requires a separately validated handoff and native package postchecks.

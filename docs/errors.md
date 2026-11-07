@@ -650,3 +650,14 @@ source list and supported input types; added a regression showing that C/Tcl
 changes alter provenance independently of the shell wrapper. Existing accepted
 records are preserved. The native helper itself remains pinned and test-only;
 production staging now refuses its accidental inclusion.
+
+
+2026-11-07 — The first parallel DB test view bind-mounted an ext4 directory
+onto dev/shm. A mount audit identified the mismatch with the original tmpfs;
+only that private process group was stopped (test exit -9, driver exit 1), with
+all 10,208 input hashes unchanged and logs retained at db-standard-yc87i9pi.
+Corrected setup mounts a private tmpfs before binding it. The first corrected
+preflight refused because findmnt returned two stacked tmpfs rows; changed the
+probe to native stat -f of the effective mount. Corrected preflight passed and
+the fresh complete suite started at db-standard-nfv62s4o. The original full run
+was not stopped or altered. See ADR-0069 for evidence and acceptance boundaries.

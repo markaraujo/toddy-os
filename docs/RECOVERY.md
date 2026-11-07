@@ -976,3 +976,31 @@ unchanged inputs automatically. Corrected dispatch keeps the same h07-berkeley-d
 step ID and verifies the cached compiled build before rerunning the full suite.
 Only a later actual 0/0 result may launch the final-base driver. No automatic
 milestone acceptance or H08/Phase 2 progression is part of this supervisor.
+
+
+Current Berkeley DB execution supersedes the earlier serial continuation
+(ADR-0069). Host supervisor 942158 was deliberately disarmed while waiting; its
+state is superseded_by_isolated_parallel_standard_run. Do not restart that
+supervisor or launch another full suite. Original guest driver 1364/runner 1365
+still collect later tests with the two diagnosed FAIL entries.
+
+The corrected complete run is guest driver 1107192, fixture
+/mnt/lfs/sources/recovery/db-standard-nfv62s4o. Inspect driver.log, running.json,
+driver.pid, test.exit, driver.exit and result.json there, plus source/build-test/
+ALL.OUT. A missing exit is not failure; inspect the PID before any retry.
+The protected input manifest hash is
+336abd7ca1442e5102249da2f774b30326e06d268cd2b16b65fc81e8c333e6f9.
+The driver has no installation branch. Complete-suite success must be followed
+by validated production handoff under the normal exclusive runner lock, after
+the original failure and zero-installed-change audit are preserved. That handoff
+is not implemented/accepted yet; do not fabricate a success marker from private
+logs. The ordinary fresh recipe still runs the complete standard suite itself.
+
+The initial private attempt remains at db-standard-yc87i9pi with interruption-
+reason.json, test exit -9, driver exit 1 and protected result-evidence. It was
+stopped to restore tmpfs semantics, not from a timeout. The nfv62s4o fixture also
+retains the first rejected findmnt-based probe and the corrected statfs probe.
+Native input-rejection evidence is in db-standard-input-rejection-weajsa4_.
+Session setup/launch observations are .local/logs/h07-parallel-standard-*.json;
+older generations are retained with hash suffixes. See ADR-0069 before changing
+active inputs, namespace mounts or interpreting any terminal result.

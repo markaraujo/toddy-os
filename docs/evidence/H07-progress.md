@@ -1239,3 +1239,15 @@ in ADR-0067/0068. The original standard suite continues in Rep039 with the same
 two known failures; Berkeley DB is not installed/accepted and APT remains gated.
 Prepared provenance corrections pass all 148 local checks; published commit
 9862c7d contains the helper/patch source-list coverage and production exclusion.
+
+
+2026-11-07 01:26 UTC — A complete corrected Berkeley DB standard run is active
+in a private canonical source view (ADR-0069), guest driver 1107192. It reuses
+460 verified native build files and 483 verified Tcl inputs; all 10,208 copied
+inputs have a protected manifest. Native CuTest passed and the complete run_std
+reached Env012 with zero FAIL lines. Original driver 1364 continues in Rep079
+with its two diagnosed failures. Separate PID/IPC/network/mount namespaces and
+private tmp/var/tmp/tmpfs shared memory were measured. An initial ext4 shared-
+memory view was deliberately stopped and corrected, with its failure evidence
+preserved. No package installation or acceptance is authorized by this test-only
+driver. Complete-result/production handoff remains required.
