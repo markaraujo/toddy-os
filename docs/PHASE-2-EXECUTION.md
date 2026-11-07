@@ -214,3 +214,5 @@ Critical-path refinement: [runner overhead, root composition and early build sch
 Test selection and the approved isolated build strategy follow
 [ADR-0110](adr/0110-isolated-package-builds-and-change-based-validation.md):
 assess each interaction, run only invalidated checks, widen on shared/unknown impact.
+
+Graphical delivery/readiness: [latest integrated review and short reading map](PHASE-2-READINESS-REVIEW.md).

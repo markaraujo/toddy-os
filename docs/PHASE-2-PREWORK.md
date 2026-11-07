@@ -97,3 +97,5 @@ cover storage, sessions, cost, downloads, compatibility and diagnostics.
 Unattended execution: [structural simulation and failure tabletop](PHASE-2-NIGHT-EXECUTION.md).
 
 Critical-path refinement: [runner overhead, root composition and early build scheduling](PHASE-2-CRITICAL-PATH.md).
+
+Graphical delivery/readiness: [latest integrated review and short reading map](PHASE-2-READINESS-REVIEW.md).

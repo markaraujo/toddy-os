@@ -1332,3 +1332,15 @@ maintainer-script/trigger exceptions and required target qualification before
 replacing full per-recipe snapshots. AGENTS/validation now distinguish no-change
 conversation from affected checks, shared-risk regression and final-image gates.
 No sandbox/build implementation or guest-start approval is implied.
+
+
+## 2026-11-07 — Integrated graphical implementation-readiness review
+
+Owner clarified Phase 2 is a graphical product, not just foundation/backend work.
+Reviewed plan after ADR-0110 and closed eight execution gaps: actual native visual
+acceptance, GTK/Qt adaptation, non-happy states, UI-loop/render bounds, text/scale,
+animation lifecycle, asset export timing and documentation/context overhead.
+Linked graphical stories to a scoped interaction checklist; no full UI rerun for
+unchanged backend code. Selected paged history/bounded rendering and a short
+reading map to avoid repeated whole-plan review. Native timings/proofs remain
+pending guest implementation; no runtime acceptance/approval was created.

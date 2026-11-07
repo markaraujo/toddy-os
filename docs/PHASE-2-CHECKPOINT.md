@@ -12,6 +12,7 @@
 - Contracts: [profile/IPC, install, packages and owner guide](PHASE-2-PREWORK.md#reusable-integration-contracts).
 - Prepared inputs: [native branding, copy/fixtures and dependency reuse](PHASE-2-PREWORK.md).
 - Unattended procedure: [simulation, retry budget and blocker routing](PHASE-2-NIGHT-EXECUTION.md).
+- Readiness/graphical validation: [integrated review and reading map](PHASE-2-READINESS-REVIEW.md).
 - Next authorized action: report the completed unattended-execution review. Once the owner
   explicitly authorizes guest continuation, record its evidence and begin B01's
   foundation-clone inventory under [the playbook](PHASE-2-EXECUTION.md).

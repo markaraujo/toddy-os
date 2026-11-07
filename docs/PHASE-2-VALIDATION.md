@@ -191,3 +191,7 @@ match the actual included components, models/voices and third-party packs.
 Owner delivery checklist: [short guide](PHASE-2-OWNER-VALIDATION.md). Include offline
 base installation followed by later agent acquisition, with setup working while
 broker/Node/Pi/executor are absent; map these to S18/S19/S26.
+
+Native graphical slices follow [the readiness review](PHASE-2-READINESS-REVIEW.md):
+actual native interaction plus affected functional checks; browser mockups do not
+prove GNOME/GTK/Qt behavior. No full visual rerun for unchanged internal code.
