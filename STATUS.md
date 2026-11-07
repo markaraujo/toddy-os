@@ -4,37 +4,34 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-H01-H10 completed. The actual BIOS/CD live console passed volatile overlay writes, native C/Kmod, package checks and DHCP/DNS. H11 prepares the release-profile ISO and inventory. No G1/final-media acceptance yet; owner review after H13 precedes B01-B13.
+H01-H11 completed. The 1,094,998,016-byte release-profile foundation ISO and 134-component/source/credential inventory passed. H12 tests the final artifact and native regressions; G1 remains pending. Owner review after H13 precedes B01-B13.
 
-Foundation: **84%** · Agentic desktop: **0%**
+Foundation: **90%** · Agentic desktop: **0%**
 
-G1: pending · G2: pending · Next: **H11**
+G1: pending · G2: pending · Next: **H12**
 
 No milestone earns credit without completed acceptance evidence.
 
-## Active story: H11 — Produce hybrid ISO and artifact manifest
+## Active story: H12 — Verify foundation boot matrix and recovery
 
-The 84% phase total counts completed stories only. H11 is still in progress; its 6 points are not yet counted. Passing this story would raise the phase total to 90%.
+The 90% phase total counts completed stories only. H12 is still in progress; its 6 points are not yet counted. Passing this story would raise the phase total to 96%.
 
-Last verified: 2026-11-07 12:49 UTC
+Last verified: 2026-11-07 13:21 UTC
 
 Verified:
 
-- H10 full root, compression/readback, bound initramfs and 1,123,698,688-byte validation ISO passed.
-- Actual BIOS/CD live console, volatile write, C/Kmod, Dpkg/APT, DHCP/DNS and QEMU power-off passed; ISO unchanged.
-- Native Python QA ownership transfer passed recipe/postcheck 0/0: 5,395 test files and 3,980 retained runtime files unchanged; SSL/SQLite, Dpkg and APT checks passed.
-- Native image QA exclusion passed with unchanged runtime and builder state.
-- Exact File magic database regenerated from 358 frozen source fragments; altered/unrelated marker inputs remain rejected.
+- H11 hybrid ISO, full payload readback and independent SHA-256 passed.
+- 134 image packages, 142 corresponding source inputs, full ownership/runtime/fresh-identity and credential review passed.
 
-Running: Retrying full release assembly after verified QA-notice and source-backed magic-database classifications; original failures retained.
+Running: Starting final-ISO BIOS/UEFI CD/USB console matrix and native namespace follow-ups.
 
 Remaining:
 
-- Separate optional public Python QA data while retaining native runtime bytes and package ownership.
-- Assemble and review fresh release root, component/source/license inventory and final ISO.
-- Run H12 final-artifact firmware, virtual USB, offline and recovery matrix before H13.
+- Final ISO console boots, offline operation and recovery failure injection.
+- Native Glibc/Systemd namespace retests and final security/known-issue review.
+- H13 G1 audit and owner-testing delivery.
 
-[Acceptance evidence](docs/evidence/H10.md)
+[Acceptance evidence](docs/evidence/H11.md)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
@@ -48,8 +45,8 @@ Remaining:
 | [H08 — Configure identity, services and basic networking](stories/H08.md) | foundation | 6 | completed |
 | [H09 — Build kernel and boot configuration](stories/H09.md) | foundation | 8 | completed |
 | [H10 — Assemble the live system](stories/H10.md) | foundation | 8 | completed |
-| [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | in_progress |
-| [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | not_started |
+| [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | completed |
+| [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | in_progress |
 | [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | not_started |
 | [B01 — Evaluate desktop, harness, licensing and resource budgets](stories/B01.md) | agentic | 5 | not_started |
 | [B02 — Build the graphical desktop and essential applications](stories/B02.md) | agentic | 10 | not_started |

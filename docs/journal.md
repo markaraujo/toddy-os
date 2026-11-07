@@ -920,3 +920,12 @@ lower-loop shutdown warning as a qualification. H10 is complete; H11 is active.
 The final release profile still requires optional QA removal and complete image
 credential/component review. H12 must test the final artifact, not reuse this
 validation ISO as final acceptance. Owner testing remains after H13, before B01.
+
+## 2026-11-07 — H11 accepted; final-media H12 begins
+
+The fresh release root passed all 20 stages and native media drivers ended zero.
+Independent SHA/source/component/credential review accepted the 1,094,998,016-byte
+hybrid ISO with 134 components and 142 corresponding source inputs. Exact public
+QA and source-derived format-marker handling retained original failure evidence.
+H12 now tests this final artifact; the earlier validation ISO is not substituted.
+G1 and physical hardware remain pending. No Phase 2 execution is authorized yet.

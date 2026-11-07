@@ -1,0 +1,403 @@
+{
+  "started": "2026-11-07T13:15:21.867562+00:00",
+  "work": "/mnt/lfs/sources/stage/h11-release-media/iso",
+  "complete": true,
+  "release_accepted": false,
+  "validation_only": false,
+  "native_kernel_boot_verified": false,
+  "physical_hardware_tested": false,
+  "stages": [
+    {
+      "name": "config",
+      "argv": [
+        "/usr/bin/grub-script-check",
+        "/sources/stage/h11-release-media/iso/input/boot/grub/grub.cfg"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "bios-core",
+      "argv": [
+        "/usr/bin/grub-mkimage",
+        "-O",
+        "i386-pc-eltorito",
+        "-p",
+        "/boot/grub",
+        "-c",
+        "/sources/stage/h11-release-media/iso/early.cfg",
+        "-o",
+        "/sources/stage/h11-release-media/iso/input/boot/grub/i386-pc/eltorito.img",
+        "biosdisk",
+        "iso9660",
+        "fat",
+        "part_gpt",
+        "part_msdos",
+        "normal",
+        "configfile",
+        "search",
+        "search_fs_file",
+        "serial",
+        "terminal",
+        "cat",
+        "sleep",
+        "halt",
+        "test",
+        "linux",
+        "reboot",
+        "echo"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "uefi-core",
+      "argv": [
+        "/usr/bin/grub-mkimage",
+        "-O",
+        "x86_64-efi",
+        "-p",
+        "/boot/grub",
+        "-c",
+        "/sources/stage/h11-release-media/iso/early.cfg",
+        "-o",
+        "/sources/stage/h11-release-media/iso/EFI/BOOT/BOOTX64.EFI",
+        "iso9660",
+        "fat",
+        "part_gpt",
+        "part_msdos",
+        "normal",
+        "configfile",
+        "search",
+        "search_fs_file",
+        "serial",
+        "terminal",
+        "cat",
+        "sleep",
+        "halt",
+        "test",
+        "linux",
+        "reboot",
+        "echo"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "efi-format",
+      "argv": [
+        "/usr/bin/grub-file",
+        "--is-x86_64-efi",
+        "/sources/stage/h11-release-media/iso/EFI/BOOT/BOOTX64.EFI"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fat-create",
+      "argv": [
+        "/usr/bin/mformat",
+        "-C",
+        "-f",
+        "2880",
+        "-L",
+        "16",
+        "-i",
+        "/sources/stage/h11-release-media/iso/input/efi.img",
+        "::"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fat-copy",
+      "argv": [
+        "/usr/bin/mcopy",
+        "-s",
+        "-i",
+        "/sources/stage/h11-release-media/iso/input/efi.img",
+        "/sources/stage/h11-release-media/iso/EFI",
+        "::/"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fat-readback",
+      "argv": [
+        "/usr/bin/mcopy",
+        "-i",
+        "/sources/stage/h11-release-media/iso/input/efi.img",
+        "::/EFI/BOOT/BOOTX64.EFI",
+        "/sources/stage/h11-release-media/iso/efi-readback"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "assemble",
+      "argv": [
+        "/usr/bin/xorriso",
+        "-no_rc",
+        "-as",
+        "mkisofs",
+        "-R",
+        "-V",
+        "TODDY_OS",
+        "-o",
+        "/sources/stage/h11-release-media/iso/toddy.iso",
+        "--grub2-mbr",
+        "/usr/lib/grub/i386-pc/boot_hybrid.img",
+        "--grub2-boot-info",
+        "-b",
+        "boot/grub/i386-pc/eltorito.img",
+        "-c",
+        "boot/grub/boot.cat",
+        "-no-emul-boot",
+        "-boot-load-size",
+        "4",
+        "-boot-info-table",
+        "--efi-boot",
+        "efi.img",
+        "-efi-boot-part",
+        "--efi-boot-image",
+        "--protective-msdos-label",
+        "/sources/stage/h11-release-media/iso/input"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "a47787a2164e6b81508178042ab442784eca5449846d34b1aadea32b0199b69e"
+    },
+    {
+      "name": "catalog",
+      "argv": [
+        "/usr/bin/xorriso",
+        "-no_rc",
+        "-indev",
+        "stdio:/sources/stage/h11-release-media/iso/toddy.iso",
+        "-report_el_torito",
+        "plain",
+        "-report_system_area",
+        "plain",
+        "-end"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "c0c6209b96cca953350473b96506082b2675e1543f4050e5468c8751de7aba44"
+    },
+    {
+      "name": "readback-0",
+      "argv": [
+        "/usr/bin/xorriso",
+        "-no_rc",
+        "-indev",
+        "stdio:/sources/stage/h11-release-media/iso/toddy.iso",
+        "-osirrox",
+        "on",
+        "-extract",
+        "/.toddy-media-id",
+        "/sources/stage/h11-release-media/iso/readback/0",
+        "-end"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "9f039f6c9ebe26a6905d686dc2e6932077973b54f39533c04d8fc07840b5f159"
+    },
+    {
+      "name": "readback-1",
+      "argv": [
+        "/usr/bin/xorriso",
+        "-no_rc",
+        "-indev",
+        "stdio:/sources/stage/h11-release-media/iso/toddy.iso",
+        "-osirrox",
+        "on",
+        "-extract",
+        "/.toddy/dc1c96381676d98872065193c5ab73949ab7569ce5d49bcf90a928660974818f",
+        "/sources/stage/h11-release-media/iso/readback/1",
+        "-end"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "7788050ab404b7fec2d98c87d6289a47b09ebdb9641d6794b0b80110273b667f"
+    },
+    {
+      "name": "readback-2",
+      "argv": [
+        "/usr/bin/xorriso",
+        "-no_rc",
+        "-indev",
+        "stdio:/sources/stage/h11-release-media/iso/toddy.iso",
+        "-osirrox",
+        "on",
+        "-extract",
+        "/boot/grub/grub.cfg",
+        "/sources/stage/h11-release-media/iso/readback/2",
+        "-end"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "c269c2167491eba1a830beffa088b5e854aa6773e4c212b222c2ed32bb287ddd"
+    },
+    {
+      "name": "readback-3",
+      "argv": [
+        "/usr/bin/xorriso",
+        "-no_rc",
+        "-indev",
+        "stdio:/sources/stage/h11-release-media/iso/toddy.iso",
+        "-osirrox",
+        "on",
+        "-extract",
+        "/boot/initramfs.cpio.gz",
+        "/sources/stage/h11-release-media/iso/readback/3",
+        "-end"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "5a069c0c9992c76187c08054363ba5dcacbc51cb198717dd3b2efb3bb0866dae"
+    },
+    {
+      "name": "readback-4",
+      "argv": [
+        "/usr/bin/xorriso",
+        "-no_rc",
+        "-indev",
+        "stdio:/sources/stage/h11-release-media/iso/toddy.iso",
+        "-osirrox",
+        "on",
+        "-extract",
+        "/boot/vmlinuz-7.1.8-toddy",
+        "/sources/stage/h11-release-media/iso/readback/4",
+        "-end"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "56b121296d7937d4c170eec855395bfbe2d294b07bbe2c6b9a2f3b9d95f0e4c4"
+    },
+    {
+      "name": "readback-5",
+      "argv": [
+        "/usr/bin/xorriso",
+        "-no_rc",
+        "-indev",
+        "stdio:/sources/stage/h11-release-media/iso/toddy.iso",
+        "-osirrox",
+        "on",
+        "-extract",
+        "/live/rootfs.squashfs",
+        "/sources/stage/h11-release-media/iso/readback/5",
+        "-end"
+      ],
+      "exit": 0,
+      "timeout_seconds": 1800,
+      "log_sha256": "82fc25c9963dce6937611abcbee059a435113a75c04375d2e6f7ee8f4dacb669"
+    }
+  ],
+  "native_packages": {
+    "linux-kernel": {
+      "version": "7.1.8-1",
+      "record": "/var/log/toddy/packages/linux-kernel_7.1.8-1_amd64.json",
+      "record_sha256": "d6742aba46fdccfb5c486b6df6be3e05a0de06106bb681fd18f158f63d3f7660",
+      "archive": "/var/cache/toddy/packages/linux-kernel_7.1.8-1_amd64.deb",
+      "archive_sha256": "27d73576eb43dcfccb214b95913a2df2ef46763d25e6d85ef2b10e7118c1ee74"
+    },
+    "grub": {
+      "version": "2.14-1+toddy1",
+      "record": "/var/log/toddy/packages/grub_2.14-1+toddy1_amd64.json",
+      "record_sha256": "ca50043171623d3cf051c616fcff71833410b5443ecd7ccbbe9c65c39a2b7a77",
+      "archive": "/var/cache/toddy/packages/grub_2.14-1+toddy1_amd64.deb",
+      "archive_sha256": "fb3c2517eae569dcc8bc8e976b4b0d94c79784a31a7d8d8831c28c42f8af7feb"
+    },
+    "mtools": {
+      "version": "4.0.50-1",
+      "record": "/var/log/toddy/packages/mtools_4.0.50-1_amd64.json",
+      "record_sha256": "c51569cf0cad79cf4adb7a2c4d4080dcb90be9daead080b5859f420dcd20ebaa",
+      "archive": "/var/cache/toddy/packages/mtools_4.0.50-1_amd64.deb",
+      "archive_sha256": "16f4c846c2348d2c09020ed45a36f72a615210b294b0663157247046c57cbe3a"
+    },
+    "libburn": {
+      "version": "1.5.8-1",
+      "record": "/var/log/toddy/packages/libburn_1.5.8-1_amd64.json",
+      "record_sha256": "a631691f46265524b5014b36c25f70561bd27a32f79bc796acd55ba7a9bc9eaa",
+      "archive": "/var/cache/toddy/packages/libburn_1.5.8-1_amd64.deb",
+      "archive_sha256": "ec84f3d9ea557b1baa292e9dadb7c26175e3f2b6b6f40a44ffec29a0f8f18b2c"
+    },
+    "libisofs": {
+      "version": "1.5.8.pl02-1",
+      "record": "/var/log/toddy/packages/libisofs_1.5.8.pl02-1_amd64.json",
+      "record_sha256": "ea17db5d0285af08a3e66492bd48f3641a9caf47423eee18d66a7b7b25bbd337",
+      "archive": "/var/cache/toddy/packages/libisofs_1.5.8.pl02-1_amd64.deb",
+      "archive_sha256": "db41c3837a13c0b024852ec031ee323e9310a3578505c4c5d367f5606f723729"
+    },
+    "libisoburn": {
+      "version": "1.5.8.pl02-2",
+      "record": "/var/log/toddy/packages/libisoburn_1.5.8.pl02-2_amd64.json",
+      "record_sha256": "efe5da1a5497bb8c8921a897091afb88437d4bcc6f30aa3799fb2a5004271e20",
+      "archive": "/var/cache/toddy/packages/libisoburn_1.5.8.pl02-2_amd64.deb",
+      "archive_sha256": "f903eb4cbda3eb4eca084f37b5fef80dd5330c89c00277390133771948acb6a2"
+    }
+  },
+  "input_sha256": {
+    "/mnt/lfs/boot/vmlinuz-7.1.8-toddy": "3ccb8a6c3f3e125542e3d6892e242af1d37e873833de27ee32e3951871a723a1",
+    "/mnt/lfs/sources/stage/h11-release-media/initramfs/initramfs.cpio.gz": "2cb425dd38712e120f39b33403eaf496e9aecd5b4de7a18afe796d6acf0d961f",
+    "/mnt/lfs/sources/stage/h11-release-compression/rootfs.squashfs": "7a5b454cc9080cc8fe3d28c677688f50acea818da0868e78faf0569323d78b71"
+  },
+  "initramfs_evidence_sha256": {
+    "/mnt/lfs/sources/stage/h11-release-media/initramfs/manifest.json": "d4cc60498608523da529fe02a9819f217ead725cbc499a8c4dff8223b393952f",
+    "/mnt/lfs/sources/stage/h11-release-media/initramfs/initramfs.cpio.gz": "2cb425dd38712e120f39b33403eaf496e9aecd5b4de7a18afe796d6acf0d961f"
+  },
+  "compression_binding": {
+    "compression_bound": true,
+    "release_profile": true,
+    "epoch": 1793836800,
+    "rootfs_sha256": "7a5b454cc9080cc8fe3d28c677688f50acea818da0868e78faf0569323d78b71",
+    "artifact": "/mnt/lfs/sources/stage/h11-release-compression/rootfs.squashfs",
+    "source_image": "/mnt/lfs/sources/stage/h11-release-root",
+    "assembly_evidence_directory": "/mnt/lfs/sources/stage/h11-release-root-evidence",
+    "evidence_sha256": {
+      "/mnt/lfs/sources/stage/h11-release-compression/compression.json": "fdcdce84ce5ede2d320a06456bec0c74c65c8e5f0c0cc83ad6d5140a4b6db82f",
+      "/mnt/lfs/sources/stage/h11-release-root-evidence/assembly.json": "2d580bb375dcee7a6379398b1fd82bccffb7e462d354b55680337f1e41c506f7",
+      "/mnt/lfs/sources/stage/h11-release-root-evidence/20-image-manifest.json": "74d8ec2db4e97a2f43723c2d1634214c245e6e3bba10cb24bbc3fc3350c27780",
+      "/mnt/lfs/sources/stage/h11-release-compression/source-manifest.json": "74d8ec2db4e97a2f43723c2d1634214c245e6e3bba10cb24bbc3fc3350c27780",
+      "/mnt/lfs/sources/stage/h11-release-compression/compress.log": "bdb2b653c67d1a6d3531fb4150d936226e26753f44657ec76ed535d66953eb1d",
+      "/mnt/lfs/sources/stage/h11-release-compression/extract.log": "b21b01cb06d1b2ee216d1d9af8b5905f0302c387b1c4c60b96c76b701dd1d823",
+      "/mnt/lfs/sources/stage/h11-release-compression/restore-acls.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "/mnt/lfs/sources/stage/h11-release-compression/rootfs.squashfs": "7a5b454cc9080cc8fe3d28c677688f50acea818da0868e78faf0569323d78b71"
+    },
+    "native_boot_verified": false
+  },
+  "assembler_sha256": "10b41e80ee6c3977180208680aaffbace4eeb86946b0707cd1e61395a973ae8c",
+  "composer_sha256": "77cd2ec6350dddd2c9aa78ed054efadef18f5c9c7799b8a17741d4ab09906959",
+  "finished": "2026-11-07T13:15:32.136772+00:00",
+  "media": {
+    "artifact": "/mnt/lfs/sources/stage/h11-release-media/iso/toddy.iso",
+    "sha256": "13a70d854501a91f068deb02b9030ef0a39a6c6e2d2cdc998183622b88f96e41",
+    "bytes": 1094998016,
+    "payload_sha256": {
+      ".toddy/dc1c96381676d98872065193c5ab73949ab7569ce5d49bcf90a928660974818f": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      ".toddy-media-id": "fd964166ada33e380ac54e528eef52ec24a895aeacf2b9e1dd5a7677e015d62a",
+      "boot/grub/grub.cfg": "62545942752811733b95901c3dfa3276f66ce9e43bbef808feac079bb945746b",
+      "boot/initramfs.cpio.gz": "2cb425dd38712e120f39b33403eaf496e9aecd5b4de7a18afe796d6acf0d961f",
+      "boot/vmlinuz-7.1.8-toddy": "3ccb8a6c3f3e125542e3d6892e242af1d37e873833de27ee32e3951871a723a1",
+      "live/rootfs.squashfs": "7a5b454cc9080cc8fe3d28c677688f50acea818da0868e78faf0569323d78b71"
+    },
+    "efi_sha256": "6c63aa883cc5e8ff30c5fcf16ce30f2140fd1bb920c8704d6dbaa78848862f2a",
+    "payload_readback_verified": true,
+    "firmware_catalog_verified": true,
+    "native_kernel_boot_verified": false,
+    "release_accepted": false
+  },
+  "pending_acceptance": [
+    "complete component/source/license inventory",
+    "final distribution credential review",
+    "actual native BIOS/UEFI/USB boot and recovery"
+  ]
+}
