@@ -99,6 +99,8 @@ def main():
                 'config/books.lock.json','config/sources.lock.json']
     if (ROOT/'config/h08-bootstrap-config.json').exists():
         metadata.append('config/h08-bootstrap-config.json')
+    if (ROOT/'config/live-account-baseline.json').exists():
+        metadata.append('config/live-account-baseline.json')
     if (ROOT/'config/kernel.config.fragment').exists():
         metadata.append('config/kernel.config.fragment')
     if (ROOT/'config/package-ownership-policy.json').exists():

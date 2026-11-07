@@ -940,3 +940,17 @@ retargeting without relaxing equality. Preserve completed generations and failed
 partial record; a new revision can recover only verified own unpacked payload
 with its accepted predecessor provenance. Generation-specific stages preserve
 older attempts. See ADR-0095; actual native retry is required before closure.
+
+## 2026-11-07 — Full live assembly lacked its declared account baseline
+
+Symptom: the first actual H10 assemble_root invocation exited 1 while reading
+`/opt/toddy-build/config/live-account-baseline.json`. It failed before creating
+the image or assembly journal; all five media-tool packages remained accepted.
+Cause: private component probes supplied their own baseline, but the production
+input synchronization allowlist omitted this committed public configuration.
+Correction: include the exact baseline in the existing content-addressed,
+exclusive input transfer. Never copy builder passwd/shadow or infer service
+identities from the workstation. Preserve the failed driver/logs, verify the
+transferred baseline hash, and retry the initial generation only after proving
+its output paths remain absent. Full assembly/boot remains pending until the
+actual corrected invocation passes.
