@@ -582,3 +582,15 @@ The first expanded account probe requested setpriv, disabled by the frozen
 Util-linux profile. It refused before creating the account fixture. Reused the
 accepted native Coreutils chroot --userspec/--groups instead; no host substitute,
 new dependency or altered package build was needed. Failure evidence is in ADR-0065.
+
+
+### Native ACL filename capture passed a bytearray to fsdecode
+
+- Symptom: the first sidecar probe raised TypeError before writing its output.
+- Cause: the escape decoder accumulated a bytearray, while os.fsdecode accepts
+  bytes/string/path-like input.
+- Correction: convert the decoded accumulator to bytes explicitly; preserve
+  the exact upstream quoting rules for newline, carriage-return and backslash.
+- Verification: native capture/restore, empty capture, access/ownership/mode,
+  hardlinks/default ACLs and negative boundaries pass; local filename regression
+  checks cover the original path. Failure and success hashes are in ADR-0048.

@@ -132,3 +132,67 @@ The actual Squashfs/7.1.8 live root must repeat the relevant checks. Keep normal
 root-overlay helper behavior distinct from the nosuid staging path; do not
 weaken the latter globally or claim broad security certification from this
 small executable test.
+
+
+## Native image-sidecar capture component
+
+scripts/build/h10/acl_sidecar.py now implements the planned capture step for a
+fresh private image. It verifies the accepted native ACL/Bash tool bytes and
+uses getfacl -R -P -p -n --skip-base --one-file-system from the image directory.
+Physical tree inspection rejects special nodes, redirected parents and real
+filesystem boundaries before capture. Validate each relative filename, numeric
+owner/group and special-mode flags against the actual image metadata; require
+exact coverage of paths with extended access/default ACL attributes.
+
+Filename decoding follows the frozen ACL 2.4.0 libmisc/quote.c and tools/getfacl.c:
+newline/carriage-return use octal escapes, while literal backslashes are doubled.
+Reject other escapes, absolute/noncanonical/traversing names, duplicate records,
+changed ownership and incomplete coverage. No source-file content or builder
+account database is copied. Capture verifies modes, UID/GID, inode/link identity
+and extended attributes remain unchanged; creating the output normally updates
+parent-directory timestamps, which are not claimed unchanged.
+
+Write /usr/share/toddy/live-root.acl through an exclusive temporary file with
+fsync and rename, refusing existing/partial output. It is a root-owned 0644
+public metadata file. Remove only its newly inherited access ACL so a default
+ACL on its parent does not recursively include the sidecar in its own capture.
+Native repeated capture must then equal the stored stream. An image without
+extended ACLs gets a valid empty sidecar; native empty restoration also passes.
+The assembly caller must run this after all image configuration and include the
+sidecar inside the hash-verified root before any live service starts.
+
+python3 scripts/host/probe_acl_sidecar.py verifies actual native capture/restore
+in a private mount namespace, including a real cross-filesystem refusal. The
+615-byte fixture stream has four ACL paths, default ACLs, numeric ownership,
+mode 4750, Unicode/spaces/newline/carriage-return/literal-backslash names and
+hardlinks. After intentionally stripping ACLs from a private copy, UID 101
+cannot read the fixture; native restore permits read but not execution, retains
+UID/GID 18:18 and mode 4750, preserves hardlink identity and payload bytes.
+A symlink to an outside fixture is not traversed or modified. The generated
+sidecar has no inherited ACL, despite its parent having a default ACL.
+
+Five stage refusal cases preserve previous output: existing sidecar, partial
+sidecar, redirected parent, FIFO and a mounted tmpfs boundary. Eight malformed
+filename cases and three changed-stream cases are refused. Two local parser
+regressions cover native escaping and invalid paths, including a NUL name.
+The first native attempt found a Python bytearray/fsdecode type error before
+writing the sidecar; converting the accumulated bytes explicitly fixed it.
+Original failure SHA-256:
+9cf898fae8160f5acace5d5ccbae6ebfc84356bd4637c0c1a42ee75053702db9,
+fixture /mnt/lfs/tmp/toddy-acl-capture-x3rudrac.
+
+Final report .local/logs/h10-acl-capture-probe.json SHA-256:
+382fea16b349c3af0af983041053b1984e6334bdd401462e13e63c4e6817f4a8.
+Tested helper SHA-256:
+0ed02725936118a8abc00d85dc86fb142a7d04bdcd3062898accedd9e6d6aadc.
+Fixture sidecar SHA-256:
+c2a2a25dc714ef0d6052df8ed5cc83da6d4f542a30ae29437ce126098f6ad165.
+ACL source archive SHA-256:
+e661131456d2708a01c614a0f400e11d7d1bfaeb6f3e74b75bb980b72f0161a3.
+Frozen LFS chapter08/acl.html SHA-256:
+7a5a5d2bc4054d4a89e4e8fb2a233b904e1b0ddbb7d7c24cdd50e42bb7bca719.
+
+This adds native capture integration evidence to the earlier separate restore/
+overlay experiments. It does not execute Squashfs compression, prove metadata
+restoration on the actual selected kernel, or complete whole-root/live boot
+acceptance. Those original obligations remain mandatory.

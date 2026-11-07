@@ -876,3 +876,16 @@ for missing sandbox identity or unsandboxed root downloads, even with exit 0.
 Do not synchronize this recipe into the active H07 dispatcher; use the next
 successful quiescent boundary. Preserve any failed APT fixture and fix account/
 path access rather than disabling sandboxing or allowing the warning.
+
+
+Reproduce native ACL capture/restore with
+python3 scripts/host/probe_acl_sidecar.py. It uses a private guest mount namespace
+and /mnt/lfs/tmp/toddy-acl-capture-* fixtures; any temporary mount is unmounted
+on exit. Successful fixtures are removed, failures are retained. Raw evidence
+and hash copies are .local/logs/h10-acl-capture-probe*.json. A failed or interrupted
+image capture must preserve its existing sidecar/.part file and reconstruct a
+fresh stage. Do not truncate it, ignore a cross-filesystem refusal, or suppress
+ACL diagnostics. Capture belongs after all final image configuration; any later
+permission/payload change requires a newly generated image/sidecar and audit.
+The first bytearray decoder failure remains at toddy-acl-capture-x3rudrac.
+Actual Squashfs/overlay/native-kernel restoration remains pending (ADR-0048).

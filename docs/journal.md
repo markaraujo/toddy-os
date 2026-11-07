@@ -375,3 +375,12 @@ Prepared APT postchecks now reject root-fallback diagnostics; actual APT
 acquisition remains pending. Active build inputs and installed accounts are
 unchanged. Berkeley DB compression Test044 completed and execution advanced
 to Test076; the complete standard suite is still running.
+
+2026-11-07 00:27 UTC — Implemented native physical/numeric ACL sidecar capture
+for fresh images. Corrected an initial filename-decoder type error, then verified
+native capture/strip/restore with default ACLs, escaped names, hardlinks, special
+mode and UID 101 access boundaries. Existing/partial output, special nodes,
+redirected parents, a real tmpfs boundary and invalid streams are refused.
+Extended ADR-0048 and recovery; actual Squashfs/native boot remain pending.
+Berkeley DB advanced beyond compression into automated repmgr (block 20);
+original driver/runner remain live and the partial log has zero FAIL lines.

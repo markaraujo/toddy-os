@@ -1180,3 +1180,12 @@ package acceptance are still pending. Raw observation
 e5051a5b150efcec79e90a0fd7086c3ad6a76b8bf8ae5ee63750c5cdd49bee6f.
 Test044 segment SHA-256:
 5cc7bd288af58456e7a20c3b7b8641c82fdf7e7ed6e9d6a94076682b9628af62.
+
+
+2026-11-07 00:27 UTC: the full standard run advanced beyond compression into
+automated repmgr (block 20), exercising master/client transactions with mixed
+on-disk/in-memory configurations. Original driver/runner remain live and the
+partial log has zero FAIL lines. Raw observation
+.local/logs/h07-automated-repmgr-progress.json SHA-256:
+38b814be3c73221619525870eae0daea561573a9380a04a4d1cfcaedcdd2d803.
+This group transition is progress, not complete-suite/package acceptance.
