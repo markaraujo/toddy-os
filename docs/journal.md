@@ -1125,3 +1125,12 @@ width appeared correct. Corrected track minimums, fluid heading sizing and
 translation wrapping. Added deterministic CSS/JS URL versions to the public
 export. Thirty viewport/language combinations and image/yawn checks passed;
 see evidence/website-responsive-fix.md. No guest development was started.
+
+## 2026-11-07 — Public Patreon support campaign
+
+Added the owner-approved Patreon creator link, official locally hosted symbol,
+six-language support campaign, first-post link and optional supporter recognition.
+Keep PayPal disabled and avoid invented prices, deadlines or payment options.
+Local Playwright responsive checks passed in 24 language/viewport combinations;
+Patreon checkout itself remains unverified because Cloudflare blocks automation.
+See evidence/website-patreon.md. This is public website work only.

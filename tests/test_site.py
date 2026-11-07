@@ -15,6 +15,7 @@ class PublicExport(unittest.TestCase):
         site = export_site.export(ROOT / "_site")
         actual = {str(p.relative_to(site)) for p in site.rglob("*") if p.is_file()}
         expected = {
+            "assets/third-party/patreon/patreon-symbol.png", "assets/third-party/patreon/README.md",
             "index.html", ".nojekyll", "site.css",
             "ui/tokens.css", "ui/preview.css", "ui/preview.html", "ui/installer-slides.html",
             "ui/i18n.js", "ui/translations.js", "ui/mascot.js",
@@ -36,6 +37,9 @@ class PublicExport(unittest.TestCase):
         # The HTML must request the CSS corresponding to this exact deployment.
         digest = hashlib.sha256((ROOT / "dashboard/site.css").read_bytes()).hexdigest()[:12]
         self.assertIn(f'href="site.css?v={digest}"', content)
+        self.assertIn('href="https://www.patreon.com/ToddyOS"', content)
+        self.assertIn('src="assets/third-party/patreon/patreon-symbol.png"', content)
+        self.assertNotIn('href="https://www.paypal.com/donate', content)
 
     def test_export_refuses_checkout_or_other_destination(self):
         with self.assertRaises(ValueError):

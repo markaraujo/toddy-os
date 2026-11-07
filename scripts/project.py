@@ -109,7 +109,7 @@ def percentages(data):
 
 
 def community_html():
-    """Render only owner-approved public acknowledgments and a verified public link."""
+    """Render only owner-approved public acknowledgments and public support links."""
     from urllib.parse import urlsplit
     community = json.loads((ROOT / "config/community.json").read_text())
     names = community.get("supporters")
@@ -125,6 +125,19 @@ def community_html():
             raise ValueError("Use only the owner-provided public HTTPS PayPal donation URL")
         result += '<a class="button primary" href="' + html.escape(url, quote=True) + '" rel="noopener noreferrer">Support Toddy OS ↗</a>'
     return result
+
+
+def patreon_html():
+    """Keep the public creator link separate from the disabled PayPal checkout."""
+    community = json.loads((ROOT / "config/community.json").read_text())
+    url = community.get("patreon_url")
+    if not url:
+        return ""
+    if url != "https://www.patreon.com/ToddyOS":
+        raise ValueError("Use the owner-approved Toddy OS Patreon creator URL")
+    return ('<a class="button patreon-button" href="' + url + '" target="_blank" rel="noopener noreferrer">'
+            '<img src="../assets/third-party/patreon/patreon-symbol.png" alt="" width="64" height="36" />'
+            '<span>Support on Patreon ↗</span></a>')
 
 
 def outputs(data):
@@ -178,7 +191,7 @@ def outputs(data):
     page = (ROOT / "dashboard/template.html").read_text()
     replacements = {"METRICS": "".join(metrics), "SCOPE": esc(data["current_scope"]),
                     "UPDATED": esc(data["updated_at"]), "ACTIVE_WORK": active_page,
-                    "STORIES": "".join(cards), "SUPPORTERS": community_html()}
+                    "STORIES": "".join(cards), "SUPPORTERS": community_html(), "PATREON": patreon_html()}
     for key, value in replacements.items():
         page = page.replace("{{" + key + "}}", value)
     page = "\n".join(line.rstrip() for line in page.splitlines()) + "\n"

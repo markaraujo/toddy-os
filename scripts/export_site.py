@@ -59,6 +59,7 @@ def export(destination):
     sources.update({f"assets/brand/{name}": ROOT / "assets/brand" / name for name in BRAND_FILES})
     sources.update({f"ui/{name}": ROOT / "ui" / name for name in UI_FILES})
     sources.update({f"assets/third-party/gnome/{name}": ROOT / "assets/third-party/gnome" / name for name in ICON_FILES})
+    sources.update({f"assets/third-party/patreon/{name}": ROOT / "assets/third-party/patreon" / name for name in ("patreon-symbol.png", "README.md")})
     for source in sources.values():
         project.local_file(ROOT, str(source.relative_to(ROOT)))
     if destination.exists():
