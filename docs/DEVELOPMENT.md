@@ -129,9 +129,10 @@ existing success markers; no acceptance prerequisite is waived.
 H09's production kernel recipe remains gated on H08 acceptance and synchronized
 H09 in_progress status. ADR-0046's private native configuration passed; ADR-0085
 extends preparation to an isolated native compilation with private module
-staging, separate from the final package recipe. Collect actual terminal exits
-before claiming build success. Private artifacts do not accept H09; production
-ownership, bootloader/early-boot evidence and native-kernel obligations remain.
+staging, separate from the final package recipe. That build and its diskless
+BIOS/UEFI diagnostic boots now passed with actual terminal exits zero; see
+docs/evidence/H09-private-kernel.md. Private diagnostic success does not accept
+H09; production ownership, complete foundation boot and native regressions remain.
 
 
 The optional active_work record in status.json publishes verified facts, current

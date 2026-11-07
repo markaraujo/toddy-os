@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 10:00 UTC
+Last verified: 2026-11-07 10:03 UTC
 
 Verified:
 
@@ -24,8 +24,9 @@ Verified:
 - Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
+- Independent Linux 7.1.8 native build and BIOS/UEFI diagnostic boots passed, including actual module insertion/removal and namespace creation; no final kernel package, full foundation boot or ISO acceptance.
 
-Running: Corrected Berkeley driver 1107192 is live in replication, block 23/27, Rep079.d, zero FAIL entries and no terminal exits. Independent private Linux 7.1.8 compilation continues with native GCC 16.2.0 and two jobs (ADR-0085). Native diagnostic-init compilation/non-PID-1 refusal passed; BIOS/UEFI kernel boot awaits terminal build artifacts. No kernel package or boot is accepted. Complete database review/qualification remains pending; H07 stays 124/126 and APT is gated.
+Running: Corrected Berkeley driver 1107192 is live in replication, block 23/27, Rep092.d, zero FAIL entries and no terminal exits. Independent native kernel compilation and diskless BIOS/UEFI diagnostic boots passed (ADR-0085); full foundation boot and final kernel packaging remain gated. Complete database review/qualification remains pending; H07 stays 124/126 and APT is gated.
 
 Remaining:
 

@@ -1,7 +1,7 @@
 # ADR-0085: Compile the frozen kernel in a private native fixture
 
 - Date: 2026-11-07
-- Status: Native configuration passed; compilation running
+- Status: Native compilation and BIOS/UEFI diagnostic boots verified; production acceptance pending
 - Extends: ADR-0046
 
 ## Decision
@@ -58,8 +58,9 @@ They cannot prove successful boot or module insertion.
 
 The private driver started at 09:48 UTC. Source verification/extraction and
 configuration/preparation exited zero. Native GCC reports 16.2.0; the exact
-release is 7.1.8-toddy. The make stage is live and compiling native objects.
-No complete kernel image, module-install result or boot is claimed yet.
+release is 7.1.8-toddy. At that first observation the make stage was live and
+compiling native objects; it did not yet establish a complete image or boot.
+The later terminal build and diagnostic boot results are recorded below.
 
 - Launch report SHA-256:
   65c1320d6a7598389e536d9dc2b1f1e3509efae8f9b1643dcd0c4ab61a17db4f.
@@ -110,4 +111,21 @@ ed2b6b692cf8b0cd0eab6a5e77b4d5735d1770a6b23baae0edd554e3a9f1b234.
 The exact helper refused the still-live kernel producer before preparing guest
 payloads or starting QEMU; refusal log SHA-256:
 57d069f21e0aff58b41c950819a454a2f8a7e160a3582bf6514d8b33bce72050.
-Actual successful diagnostic boot is pending kernel compilation.
+That early refusal did not establish successful boot. After compilation
+completed, the actual diagnostic boots passed as recorded below.
+
+## Terminal build and actual BIOS/UEFI result
+
+By 10:02 UTC, the kernel driver, all five native stages, boot driver and its
+supervisor had actual exit zero. Twenty native modules were staged privately;
+the image is 15,553,536 bytes. Both diskless BIOS/UEFI guests ran the compiled
+7.1.8-toddy kernel and passed every diagnostic assertion, including actual
+module insertion/removal and namespace creation. Serial logs and QEMU states
+were independently inspected after the supervisor finished. The complete
+artifact/log hashes and limits are in
+[H09 private-kernel evidence](../evidence/H09-private-kernel.md).
+
+The prepared final package recipe was not dispatched. Full Systemd/root/ISO
+boot, Kmod userland checks and release acceptance remain pending. Keep H09
+not_started until H08 passes, and retain the completed private build for
+inspection/recovery instead of restarting it.

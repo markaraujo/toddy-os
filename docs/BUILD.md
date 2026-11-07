@@ -445,3 +445,25 @@ python3 scripts/host/probe_root_assembly_preflight.py
 The first boots a loader-only artifact in four firmware/media combinations.
 The second uses a small real filesystem and a labeled assembly-metadata fixture.
 Neither substitutes for the full foundation ISO acceptance matrix.
+
+
+## Independent native kernel diagnostic (ADR-0085)
+
+A fresh private feasibility run can be started with
+`python3 scripts/host/probe_native_kernel.py start`; retain its printed fixture
+and collect it with `python3 scripts/host/probe_native_kernel.py collect FIXTURE`.
+It verifies frozen Linux 7.1.8, uses the native compiler and unchanged project
+fragment, limits make to two jobs and stages modules privately. See RECOVERY.md
+before any resume; a live or detached child is not a failed build to restart.
+
+After actual terminal kernel/stage exits zero, run
+`python3 scripts/host/probe_kernel_boot.py FIXTURE` for diskless BIOS/UEFI
+kernel/namespace/module diagnostics. The helper compiles its static init with
+native GCC/libc and uses native cpio/gzip; host QEMU runs only the resulting
+private artifacts. It records exact commands, bytes, serial output and exits.
+
+The current retained generation already passed compilation and both diagnostic
+boots. See docs/evidence/H09-private-kernel.md; do not repeat successful checks
+without a new change or concern. These commands do not install the production
+kernel or accept the full foundation. H08/H09 packaging/bootloader and the
+complete Systemd/root/ISO acceptance sequence remain mandatory.

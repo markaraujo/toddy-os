@@ -1313,3 +1313,28 @@ container ID/label before another test; a running labelled guest is refused.
 Native full boot/login, ISO boot and H09/H12 acceptance remain separate. The
 current early invocation was an expected live-kernel refusal; no kernel boot
 has passed yet. Do not reuse that failure as a later passing result.
+
+
+### Completed private kernel checkpoint — 2026-11-07 10:02 UTC
+
+The kernel driver is terminal with exit zero, all five stages passed and the
+private module stage contains 20 modules. The watcher in
+.local/scripts/watch-native-kernel.py also terminated with exit zero after both
+actual diagnostic BIOS/UEFI boots passed. Its local state is
+.local/logs/h09-native-kernel-watch.json; final exit is
+.local/logs/h09-native-kernel-watch.exit.json. Do not launch another watcher or
+rebuild this completed generation to recover an interrupted collection.
+
+Native boot preparation: `/mnt/lfs/sources/recovery/kernel-smoke-6omiesjt`.
+Host artifacts: `.local/vm/kernel-smoke-tests/probe-d2evqi6m`, including
+result.json, driver.exit.json, per-firmware serial.log/intent.json/exit.json and
+terminal.json. The two owned QEMU containers were stopped and removed after
+actual clean power-off. The original builder and Berkeley suite remain active.
+Inspect the retained evidence; successful diagnostics are not a full-root boot.
+
+Next dependent kernel work is final gated packaging/bootloader and complete
+foundation boot after H07/H08. Current H07 remains at the complete corrected
+Berkeley run; its terminal review and strict-summary qualification are still
+required before production install/APT. See docs/evidence/H09-private-kernel.md
+for hashes and explicit scope. The earlier preflight/live-kernel refusals remain
+preserved as negative evidence, not overwritten by these later successes.

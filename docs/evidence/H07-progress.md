@@ -1506,3 +1506,13 @@ Corrected PID 1107192 remains live in group 23/27, Rep036.c, with zero FAIL and
 no terminal exits. Observation SHA-256:
 4cd1b0f16093513750190d584e39b782e718c7c9fa16ffd9e4e60c6c9e29995d.
 H07 remains 124/126 accepted packages, foundation 38%, APT gated.
+
+
+## Independent native kernel progress while the complete database suite runs
+
+At 10:03 UTC the corrected database driver remained live in replication 23/27,
+Rep092.d, zero FAIL and no terminal exits. H07 remains 124/126 accepted packages.
+Independent Linux 7.1.8 compilation and real diskless BIOS/UEFI diagnostic boots
+passed, including native module insertion/removal and namespace creation.
+See [private-kernel evidence](H09-private-kernel.md) and ADR-0085 for actual
+hashes and exclusions. This does not accept H09, full Systemd boot or an ISO.

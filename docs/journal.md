@@ -653,3 +653,19 @@ Native static C compilation and non-PID-1 refusal passed; the actual launcher
 refused the unfinished kernel before any QEMU guest was created. This prepares
 real BIOS/UEFI kernel/module/namespace checks without accepting a foundation
 boot. All complete-Systemd/live-media gates remain unchanged (ADR-0085).
+
+
+### 2026-11-07 10:03 UTC — Native kernel and two diagnostic boots passed
+
+The private native kernel completed source/configuration/build/private modules/
+artifact stages with all actual exits zero. It produced a 15,553,536-byte image
+and 20 modules. The durable watcher then ran separate diskless BIOS/UEFI guests;
+actual serial/QEMU evidence confirms 7.1.8-toddy boot, volatile data roundtrip,
+namespace creation and dummy module insertion/removal. Both powered off cleanly
+with exit zero. Driver/supervisor exits and artifact/log hashes were inspected,
+and only the test-owned containers were removed. See H09-private-kernel evidence.
+
+The original builder and corrected Berkeley suite were preserved. At 10:03 UTC
+the latter was still live at Rep092.d, replication 23/27, zero FAIL. No final
+kernel package, Systemd/root/ISO acceptance or milestone credit was added;
+H07 remains 124/126. Production package prerequisites and H13 owner review remain.
