@@ -669,3 +669,21 @@ The original builder and corrected Berkeley suite were preserved. At 10:03 UTC
 the latter was still live at Rep092.d, replication 23/27, zero FAIL. No final
 kernel package, Systemd/root/ISO acceptance or milestone credit was added;
 H07 remains 124/126. Production package prerequisites and H13 owner review remain.
+
+
+### 2026-11-07 10:12 UTC — Protect completed coverage while full suite advances
+
+The preceding goal turn made concrete progress: native kernel compilation and
+real BIOS/UEFI diagnostic boots passed and were published. Reinspection found
+clean Git and the corrected Berkeley process still live. Implemented and ran
+root-private custody transfer for the completed native coverage generation;
+source/report bytes and actual results stayed unchanged. Real held-descriptor
+refusal, tester access denial and idempotent receipt verification passed.
+Corrected an absent-runuser assumption using native UID/GID switching. Integrated
+the read-only custody proof into full review; active full-suite refusal remains.
+See ADR-0086. No original full-test input or production package was changed.
+
+The full standard run advanced through replication/security into recovery,
+Recd001.e, block 25/27, with zero FAIL and no terminal exits at observation.
+H07 remains 124/126; strict-summary/full-source custody/fresh-build handling and
+APT/final closure remain pending. 165 local checks pass.

@@ -12,7 +12,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 
-import db_coverage_result
+from db_source_custody import verify_coverage_custody
 import db_standard_diagnostics
 from db_standard_result import open_terminal, verify_execution_evidence
 
@@ -37,7 +37,7 @@ def review(base, coverage):
         base, record, inputs = open_terminal(base, expected_exit=1)
         validate_failure_record(record)
         execution = verify_execution_evidence(base, record, inputs, private_source=False)
-        witness = db_coverage_result.verify(coverage, base)
+        witness = verify_coverage_custody(coverage, base)
         work = Path(tempfile.mkdtemp(prefix='bdb-complete-review-', dir='/mnt/lfs/tmp'))
         native = work / 'checker'
         native.mkdir(mode=0o700)
@@ -52,13 +52,13 @@ def review(base, coverage):
         db_standard_diagnostics.require_diagnostic_profile(diagnostics)
         if verify_execution_evidence(base, record, inputs, private_source=False) != execution:
             raise ValueError('Complete execution evidence changed during review')
-        if db_coverage_result.verify(coverage, base) != witness:
+        if verify_coverage_custody(coverage, base) != witness:
             raise ValueError('Coverage evidence changed during review')
         result = {'review_complete': True, 'raw_driver_exit': 1, 'raw_test_exit': 1,
                   'suite_accepted': False, 'package_accepted': False, 'custody_sealed': False,
                   'work': str(work), 'execution': execution, 'coverage': witness,
                   'diagnostics': diagnostics,
-                  'pending': 'Protected custody and explicit terminal qualification before production nomination'}
+                  'pending': 'Full-suite source custody and explicit terminal qualification before production nomination'}
         with (work / 'review.json').open('x') as stream:
             os.fchmod(stream.fileno(), 0o600)
             json.dump(result, stream, indent=2)

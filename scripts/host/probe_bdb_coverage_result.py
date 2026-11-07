@@ -50,7 +50,7 @@ print(json.dumps({'actual_native_witness':result,'negative_cases':negatives,
 
 def main():
     names = ('db_standard_progress', 'db_standard_diagnostics', 'db_standard_result',
-             'db_coverage_result', 'db_standard_review')
+             'db_coverage_result', 'db_source_custody', 'db_standard_review')
     modules = {name: base64.b64encode((ROOT / 'scripts/build' / (name + '.py')).read_bytes()).decode()
                for name in names}
     run = subprocess.run(ssh_args() + ['python3 -B -'], input='MODULES=' + repr(modules) + '\n' + REMOTE,

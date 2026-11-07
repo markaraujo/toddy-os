@@ -832,3 +832,16 @@ capacity, standalone recovery's private environment and the final hash subcase's
 actual filename. Corrections preserve the original test bodies and comparisons.
 The complete standard suite and strict-summary resolution remain pending;
 a successful focused diagnostic alone does not install or accept the library.
+
+
+### 2026-11-07 — Native custody access check assumed an absent runuser
+
+Symptom: completed coverage source protection succeeded, but its access test
+failed with chroot reporting /usr/sbin/runuser absent. Cause: the diagnostic
+assumed an optional utility not present in the frozen native tool set.
+Correction: use native Python to clear supplementary groups, set tester's
+actual GID/UID and attempt the real protected-file open. No dependency or target
+configuration change was needed. Verification: PermissionError occurred under
+tester; the completed receipt was reverified unchanged, all source/report hashes
+still matched and the integrated unfinished-suite gate still refused. Preserve
+both failure and successful evidence from ADR-0086; no test result was relabeled.

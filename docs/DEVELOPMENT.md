@@ -164,3 +164,11 @@ completed, not that an exit-1 database suite became a passing run. Only exact
 source-backed diagnostics with complete native evidence can proceed to later
 qualification; unknown assertions still fail. Production nomination retains its
 strict current gate until that separate path is implemented and verified.
+
+
+ADR-0086 protects the already completed native coverage source and records a
+separate custody receipt without changing raw test outputs/exits. The full
+review now requires its read-only custody verification. The standard suite is
+still running; its own source remains untouched and unaccepted. Exact terminal
+qualification, full-source custody, production handoff and portable fresh-build
+diagnostic handling remain required before closing H07.

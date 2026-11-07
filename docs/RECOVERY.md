@@ -1338,3 +1338,28 @@ Berkeley run; its terminal review and strict-summary qualification are still
 required before production install/APT. See docs/evidence/H09-private-kernel.md
 for hashes and explicit scope. The earlier preflight/live-kernel refusals remain
 preserved as negative evidence, not overwritten by these later successes.
+
+
+## Protected completed database coverage (ADR-0086)
+
+The completed `/mnt/lfs/sources/recovery/db-standard-coverage-0_05jaht` generation
+now contains root-private source-custody.intent.json and source-custody.json.
+All 10,606 source entries are root-owned, its parent/source directories are
+0700, and native tester access is denied. Raw test outputs, source bytes and
+actual 0/0 exits remain unchanged. The current complete-suite review requires
+this proof; its separate source remains live and must not be sealed yet.
+
+`python3 scripts/host/seal_bdb_coverage.py` verifies/returns the existing receipt
+without changing it, and exercises actual held-descriptor and access boundaries.
+Do not delete the receipt or rewrite the original result to claim acceptance.
+If custody was interrupted, retain the intent and closed path gate, inspect any
+reported actual PID/descriptor/mapping, and retry only after it genuinely ends.
+A missing supervisor or observation timeout is not sufficient. Do not kill the
+unrelated complete standard suite or loosen permissions to bypass a refusal.
+
+The first post-seal test failed because runuser is absent from the target;
+sealing itself had completed. Native Python now switches to the actual tester
+identity and confirms open returns PermissionError. The idempotent retry and
+read-only verification passed, with the same receipt SHA-256
+0a2b9b17cf57a0de76dc20ce426f784c4e92aa401d44a1d3f43817726e6dccb2.
+Full standard-result qualification/production installation is still pending.

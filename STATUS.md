@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 10:03 UTC
+Last verified: 2026-11-07 10:12 UTC
 
 Verified:
 
@@ -26,11 +26,11 @@ Verified:
 - Verified paired cold checkpoint at the 124-package boundary.
 - Independent Linux 7.1.8 native build and BIOS/UEFI diagnostic boots passed, including actual module insertion/removal and namespace creation; no final kernel package, full foundation boot or ISO acceptance.
 
-Running: Corrected Berkeley driver 1107192 is live in replication, block 23/27, Rep092.d, zero FAIL entries and no terminal exits. Independent native kernel compilation and diskless BIOS/UEFI diagnostic boots passed (ADR-0085); full foundation boot and final kernel packaging remain gated. Complete database review/qualification remains pending; H07 stays 124/126 and APT is gated.
+Running: Corrected Berkeley driver 1107192 is live in recovery, block 25/27, Recd001.e, zero FAIL entries and no terminal exits; join and the final access-method matrix follow. Completed native coverage now has verified root-private custody and actual tester access denial (ADR-0086); the full review requires that proof. Full-suite source custody, exact diagnostic qualification and production handoff remain pending. H07 stays 124/126 and APT is gated.
 
 Remaining:
 
-- Finish the complete corrected database run and review every terminal assertion/diagnostic against the source and completed native coverage evidence; preserve raw failures. Resolve the strict-summary handoff before production install and transaction/reopen postchecks.
+- Finish the complete corrected database run and review every terminal assertion/diagnostic against source and protected native coverage evidence; preserve raw failures. Resolve full-source custody, exact-summary qualification/handoff and portable fresh-build diagnostic handling before production install and transaction/reopen postchecks.
 - Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.
 - Quarantine 931 reviewed bootstrap paths, close metadata for all 126 planned packages and pass seven final audits plus Dpkg/APT consistency checks.
 - Save final H07 evidence and a verified paired cold checkpoint of both VM disks before accepting the story.

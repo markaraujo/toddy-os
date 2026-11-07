@@ -1516,3 +1516,19 @@ Independent Linux 7.1.8 compilation and real diskless BIOS/UEFI diagnostic boots
 passed, including native module insertion/removal and namespace creation.
 See [private-kernel evidence](H09-private-kernel.md) and ADR-0085 for actual
 hashes and exclusions. This does not accept H09, full Systemd boot or an ISO.
+
+
+## Completed coverage custody and live recovery stage
+
+At 10:12 UTC the corrected driver was live in recovery, block 25/27, Recd001.e,
+zero FAIL and no terminal exits. Security completed dispatch; join and the final
+access-method matrix remain after recovery. These dispatch counts are not pass
+claims or elapsed-time percentages. H07 remains 124/126 accepted packages.
+
+ADR-0086's actual completed-witness custody transfer passed: 10,606 physical
+source entries protected, all 10,208 manifested inputs and reports unchanged,
+tester open denied, held descriptor detected/released, repeat receipt identical.
+The full review now requires the separate read-only custody proof; actual full
+source/terminal qualification and package install remain pending. See that ADR
+for native hashes and the corrected optional-utility assumption. 165 local
+checks pass; no production or suite acceptance was added by this work.
