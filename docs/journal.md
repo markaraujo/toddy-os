@@ -333,3 +333,11 @@ Original driver/runner are live; the complete standard-suite result is pending.
 to compression (block 19), with Test014 observed. Original driver/runner remain
 live and the partial log has no FAIL lines. Published this major group transition
 without claiming complete-suite success or changing H07's 124-package boundary.
+
+2026-11-07 00:04 UTC — Prepared fresh live filesystem/time/resolver configuration
+and verified native Findmnt, UTC Date and Systemd fstab generation in a private
+root. Eleven refusal cases preserve inputs; installed configuration/Dpkg state
+remain unchanged. Recorded explicit conffile transformation and recovery in
+ADR-0061. Actual base installation and live boot/DNS are still pending.
+Berkeley DB remains in compression Test044, cycle 1 (554 seconds), started at
+23:57:59 UTC; original driver and runner are live. No package acceptance changed.

@@ -825,3 +825,15 @@ followed by systemctl enable systemd-networkd-wait-online.service. Those are
 owner configuration changes on Toddy, not workstation recovery commands.
 Do not remove other masks or relax arbitrary ownership-audit failures. Native
 boot/DHCP/DNS and offline boot timing remain H08/H12 verification obligations.
+
+
+Reproduce fresh live filesystem/time/resolver preparation with
+python3 scripts/host/probe_live_configuration.py (ADR-0061). It uses a private
+/mnt/lfs/tmp/toddy-live-configuration-* root and the prepared base candidate,
+without installing it. Native Findmnt/Date/Systemd output and eleven negative
+cases are retained in .local/logs/h10-live-configuration-probe*.json. Failed
+fixtures remain for diagnosis; successful ones are removed after reporting.
+An interrupted configuration attempt requires a fresh image stage, not an
+in-place retry. Final assembly must obtain fstab identity from the accepted H08
+package, preserve its conffile metadata, account for the live transformation,
+and rerun native checks. Actual boot mounts and DNS remain unverified.
