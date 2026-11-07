@@ -10,6 +10,8 @@
         <title>Toddy OS — Meet your next desktop</title>
         <link rel="icon" href="../assets/brand/toddy-os-system-icon.png" />
         <link rel="stylesheet" href="preview.css" />
+        <script src="translations.js" defer></script>
+        <script src="i18n.js" defer></script>
     </head>
     <body>
         <main class="preview-shell">
@@ -31,6 +33,20 @@
                         A helping paw</button
                     ><button data-scene="installer" aria-pressed="false">
                         Installation</button
+                    ><label class="language-picker"
+                        ><span>Language</span
+                        ><select aria-label="Language" data-language-picker>
+                            <option value="en" lang="en">English</option>
+                            <option value="pt-BR" lang="pt-BR">
+                                Português
+                            </option>
+                            <option value="es" lang="es">Español</option>
+                            <option value="zh-Hans" lang="zh-Hans">
+                                简体中文
+                            </option>
+                            <option value="ja" lang="ja">日本語</option>
+                            <option value="ru" lang="ru">Русский</option>
+                        </select></label
                     ><button id="theme-toggle" aria-pressed="false">
                         Light theme
                     </button>
@@ -41,37 +57,164 @@
                 id="desktop"
                 aria-label="GNOME desktop design concept"
             >
-                <div class="desktop" id="desktop-capture">
+                <div
+                    class="desktop"
+                    lang="en"
+                    data-no-translate
+                    id="desktop-capture"
+                >
                     <div class="topbar">
                         <span class="workspace-pips">● ▬</span
                         ><span>Sat Nov 7 · 10:42</span
-                        ><span>⌁ &nbsp; ◖)) &nbsp; ⏻</span>
+                        ><span
+                            ><img
+                                class="symbolic"
+                                src="../assets/third-party/gnome/network-wireless-signal-excellent-symbolic.svg"
+                                alt="" />
+                            <img
+                                class="symbolic"
+                                src="../assets/third-party/gnome/audio-volume-high-symbolic.svg"
+                                alt="" />
+                            <img
+                                class="symbolic"
+                                src="../assets/third-party/gnome/system-shutdown-symbolic.svg"
+                                alt=""
+                        /></span>
                     </div>
                     <div class="window files">
                         <div class="headerbar">
-                            <span>‹ &nbsp; › &nbsp; Home</span
+                            <span
+                                ><img
+                                    class="symbolic"
+                                    src="../assets/third-party/gnome/go-previous-symbolic.svg"
+                                    alt=""
+                                />
+                                <img
+                                    class="symbolic"
+                                    src="../assets/third-party/gnome/go-next-symbolic.svg"
+                                    alt=""
+                                />
+                                &nbsp; Home</span
                             ><span class="window-buttons"
-                                ><span>⌕</span><span>☰</span
-                                ><span>×</span></span
-                            >
+                                ><span
+                                    ><img
+                                        class="symbolic"
+                                        src="../assets/third-party/gnome/edit-find-symbolic.svg"
+                                        alt="" /></span
+                                ><span
+                                    ><img
+                                        class="symbolic"
+                                        src="../assets/third-party/gnome/open-menu-symbolic.svg"
+                                        alt="" /></span
+                                ><span
+                                    ><img
+                                        class="symbolic"
+                                        src="../assets/third-party/gnome/window-close-symbolic.svg"
+                                        alt="" /></span
+                            ></span>
                         </div>
                         <div class="files-body">
                             <aside class="sidebar">
-                                <div>◷ &nbsp; Recent</div>
-                                <div>☆ &nbsp; Starred</div>
-                                <div class="selected">⌂ &nbsp; Home</div>
-                                <div>↓ &nbsp; Downloads</div>
-                                <div>▧ &nbsp; Documents</div>
-                                <div>▣ &nbsp; Pictures</div>
-                                <div>♧ &nbsp; Trash</div>
+                                <div>
+                                    <img
+                                        class="symbolic"
+                                        src="../assets/third-party/gnome/document-open-recent-symbolic.svg"
+                                        alt=""
+                                    />
+                                    Recent
+                                </div>
+                                <div>
+                                    <img
+                                        class="symbolic"
+                                        src="../assets/third-party/gnome/starred-symbolic.svg"
+                                        alt=""
+                                    />
+                                    Starred
+                                </div>
+                                <div class="selected">
+                                    <img
+                                        class="symbolic"
+                                        src="../assets/third-party/gnome/user-home-symbolic.svg"
+                                        alt=""
+                                    />
+                                    Home
+                                </div>
+                                <div>
+                                    <img
+                                        class="symbolic"
+                                        src="../assets/third-party/gnome/folder-download-symbolic.svg"
+                                        alt=""
+                                    />
+                                    Downloads
+                                </div>
+                                <div>
+                                    <img
+                                        class="symbolic"
+                                        src="../assets/third-party/gnome/folder-documents-symbolic.svg"
+                                        alt=""
+                                    />
+                                    Documents
+                                </div>
+                                <div>
+                                    <img
+                                        class="symbolic"
+                                        src="../assets/third-party/gnome/folder-pictures-symbolic.svg"
+                                        alt=""
+                                    />
+                                    Pictures
+                                </div>
+                                <div>
+                                    <img
+                                        class="symbolic"
+                                        src="../assets/third-party/gnome/user-trash-symbolic.svg"
+                                        alt=""
+                                    />
+                                    Trash
+                                </div>
                             </aside>
                             <div class="file-grid">
-                                <div><i class="folder"></i>Desktop</div>
-                                <div><i class="folder"></i>Documents</div>
-                                <div><i class="folder"></i>Downloads</div>
-                                <div><i class="folder"></i>Music</div>
-                                <div><i class="folder"></i>Pictures</div>
-                                <div><i class="folder"></i>Projects</div>
+                                <div>
+                                    <img
+                                        class="folder"
+                                        src="../assets/third-party/gnome/folder.svg"
+                                        alt=""
+                                    />Desktop
+                                </div>
+                                <div>
+                                    <img
+                                        class="folder"
+                                        src="../assets/third-party/gnome/folder-documents.svg"
+                                        alt=""
+                                    />Documents
+                                </div>
+                                <div>
+                                    <img
+                                        class="folder"
+                                        src="../assets/third-party/gnome/folder-download.svg"
+                                        alt=""
+                                    />Downloads
+                                </div>
+                                <div>
+                                    <img
+                                        class="folder"
+                                        src="../assets/third-party/gnome/folder-music.svg"
+                                        alt=""
+                                    />Music
+                                </div>
+                                <div>
+                                    <img
+                                        class="folder"
+                                        src="../assets/third-party/gnome/folder-pictures.svg"
+                                        alt=""
+                                    />Pictures
+                                </div>
+                                <div>
+                                    <img
+                                        class="folder"
+                                        src="../assets/third-party/gnome/folder.svg"
+                                        alt=""
+                                    />Projects
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -84,15 +227,36 @@
                         <small>YOUR DESKTOP. YOUR PACK.</small>
                     </div>
                     <div class="dock" aria-hidden="true">
-                        <span class="dock-icon browser">◉</span
-                        ><span class="dock-icon">▰</span
-                        ><span class="dock-icon terminal">›_</span
-                        ><span class="dock-icon">⚙</span
+                        <span class="dock-icon browser"
+                            ><img
+                                class="app-icon"
+                                src="../assets/third-party/gnome/org.gnome.Epiphany.svg"
+                                alt="" /></span
+                        ><span class="dock-icon"
+                            ><img
+                                class="app-icon"
+                                src="../assets/third-party/gnome/org.gnome.Nautilus.svg"
+                                alt="" /></span
+                        ><span class="dock-icon terminal"
+                            ><img
+                                class="app-icon"
+                                src="../assets/third-party/gnome/org.gnome.Console.svg"
+                                alt="" /></span
+                        ><span class="dock-icon"
+                            ><img
+                                class="app-icon"
+                                src="../assets/third-party/gnome/org.gnome.Settings.svg"
+                                alt="" /></span
                         ><span class="dock-icon toddy"
                             ><img
                                 src="../assets/brand/toddy-os-system-icon.png"
                                 alt="" /></span
-                        ><span class="dock-icon apps">⠿</span>
+                        ><span class="dock-icon apps"
+                            ><img
+                                class="symbolic"
+                                src="../assets/third-party/gnome/view-app-grid-symbolic.svg"
+                                alt=""
+                        /></span>
                     </div>
                     <span class="design-label"
                         >Design preview — not a running build</span
@@ -113,11 +277,29 @@
                 id="quick"
                 aria-label="Toddy quick-entry design concept"
             >
-                <div class="desktop" id="quick-capture">
+                <div
+                    class="desktop"
+                    lang="en"
+                    data-no-translate
+                    id="quick-capture"
+                >
                     <div class="topbar">
                         <span class="workspace-pips">● ▬</span
                         ><span>Sat Nov 7 · 10:42</span
-                        ><span>⌁ &nbsp; ◖)) &nbsp; ⏻</span>
+                        ><span
+                            ><img
+                                class="symbolic"
+                                src="../assets/third-party/gnome/network-wireless-signal-excellent-symbolic.svg"
+                                alt="" />
+                            <img
+                                class="symbolic"
+                                src="../assets/third-party/gnome/audio-volume-high-symbolic.svg"
+                                alt="" />
+                            <img
+                                class="symbolic"
+                                src="../assets/third-party/gnome/system-shutdown-symbolic.svg"
+                                alt=""
+                        /></span>
                     </div>
                     <div class="window quick">
                         <div class="quick-title">
@@ -132,7 +314,14 @@
                         </div>
                         <div class="quick-input">
                             <span>Ask a question or give me a task…</span
-                            ><span>♩ &nbsp; ↵</span>
+                            ><span
+                                ><img
+                                    class="symbolic"
+                                    src="../assets/third-party/gnome/audio-input-microphone-symbolic.svg"
+                                    alt=""
+                                />
+                                &nbsp; ↵</span
+                            >
                         </div>
                         <div class="quick-foot">
                             <span>● Local AI · illustrative status</span
@@ -164,27 +353,63 @@
                 id="task"
                 aria-label="Toddy task design concept"
             >
-                <div class="desktop" id="task-capture">
+                <div
+                    class="desktop"
+                    lang="en"
+                    data-no-translate
+                    id="task-capture"
+                >
                     <div class="topbar">
                         <span class="workspace-pips">● ▬</span
                         ><span>Sat Nov 7 · 10:42</span
-                        ><span>⌁ &nbsp; ◖)) &nbsp; ⏻</span>
+                        ><span
+                            ><img
+                                class="symbolic"
+                                src="../assets/third-party/gnome/network-wireless-signal-excellent-symbolic.svg"
+                                alt="" />
+                            <img
+                                class="symbolic"
+                                src="../assets/third-party/gnome/audio-volume-high-symbolic.svg"
+                                alt="" />
+                            <img
+                                class="symbolic"
+                                src="../assets/third-party/gnome/system-shutdown-symbolic.svg"
+                                alt=""
+                        /></span>
                     </div>
                     <div class="window task-window">
                         <div class="headerbar">
                             <span>Toddy</span
                             ><span class="window-buttons"
                                 ><span>−</span><span>□</span
-                                ><span>×</span></span
-                            >
+                                ><span
+                                    ><img
+                                        class="symbolic"
+                                        src="../assets/third-party/gnome/window-close-symbolic.svg"
+                                        alt="" /></span
+                            ></span>
                         </div>
                         <div class="task-layout">
                             <aside class="task-sidebar">
                                 <strong>Your helping paw.</strong>
                                 <p>＋ New conversation</p>
-                                <p>◷ &nbsp; Task history</p>
+                                <p>
+                                    <img
+                                        class="symbolic"
+                                        src="../assets/third-party/gnome/document-open-recent-symbolic.svg"
+                                        alt=""
+                                    />
+                                    Task history
+                                </p>
                                 <p>▧ &nbsp; Memory</p>
-                                <p>⚙ &nbsp; Settings</p>
+                                <p>
+                                    <img
+                                        class="small-app"
+                                        src="../assets/third-party/gnome/org.gnome.Settings.svg"
+                                        alt=""
+                                    />
+                                    Settings
+                                </p>
                             </aside>
                             <div class="conversation">
                                 <div class="request">
@@ -234,7 +459,12 @@
                 id="installer"
                 aria-label="Installer slideshow design concept"
             >
-                <div class="installer" id="installer-capture">
+                <div
+                    class="installer"
+                    lang="en"
+                    data-no-translate
+                    id="installer-capture"
+                >
                     <div class="installer-head">
                         <strong>Toddy OS</strong
                         ><span>Installation experience / design concept</span>

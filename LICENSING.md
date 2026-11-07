@@ -29,3 +29,11 @@ The book's legal notice expressly allows extraction of computer instructions
 under MIT. The full notice is retained in [LICENSES/LFS-MIT.txt](LICENSES/LFS-MIT.txt).
 This third-party grant is separate from the owner's original-material licenses.
 Downloaded books retain their own documentation licenses and remain outside Git.
+
+## Public design-preview icon collection
+
+The static portal includes real GNOME/Adwaita SVGs and concept screenshots that
+render them. These are third-party assets with retained source notices, not a
+relicense under the original Toddy artwork grant. See the
+[icon provenance and licenses](assets/third-party/gnome/README.md) and per-file
+manifest. Editable SVG sources and notices are included in the public export.

@@ -12,6 +12,8 @@
         <link rel="icon" href="../assets/brand/toddy-os-system-icon.png" />
         <link rel="stylesheet" href="../ui/tokens.css" />
         <link rel="stylesheet" href="site.css" />
+        <script src="../ui/translations.js" defer></script>
+        <script src="../ui/i18n.js" defer></script>
     </head>
     <body>
         <a class="skip-link" href="#main">Skip to content</a>
@@ -27,13 +29,32 @@
             <nav aria-label="Main navigation">
                 <a href="#experience">The experience</a
                 ><a href="#progress">The build</a
+                ><a href="#releases">Releases</a
                 ><a href="https://github.com/markaraujo/toddy-os">GitHub ↗</a>
             </nav>
             <a class="nav-download" href="#download"
                 >Meet the foundation <span>↗</span></a
             >
+            <label class="language-picker"
+                ><span>Language</span
+                ><select aria-label="Language" data-language-picker>
+                    <option value="en" lang="en">English</option>
+                    <option value="pt-BR" lang="pt-BR">Português</option>
+                    <option value="es" lang="es">Español</option>
+                    <option value="zh-Hans" lang="zh-Hans">简体中文</option>
+                    <option value="ja" lang="ja">日本語</option>
+                    <option value="ru" lang="ru">Русский</option>
+                </select></label
+            >
         </header>
         <main id="main">
+            <aside class="release-notice" aria-label="Release status">
+                <strong>Experimental preview</strong
+                ><span
+                    >Building toward Toddy OS 1.0. Not a stable release
+                    yet.</span
+                ><a href="#releases">See releases ↗</a>
+            </aside>
             <section class="hero">
                 <img
                     class="hero-wall"
@@ -66,6 +87,12 @@
                                 >Follow the build ↗</a
                             >
                         </div>
+                        <p class="author-byline">
+                            An independent project by
+                            <a href="https://github.com/markaraujo"
+                                >Marcos Araujo</a
+                            >.
+                        </p>
                         <p class="hero-disclaimer">
                             Foundation available · Desktop & assistant in
                             planning
@@ -347,6 +374,10 @@
                         Phase 2 · Toddy desktop
                     </button>
                 </nav>
+                <p class="honest-note">
+                    Technical build criteria and linked documentation remain in
+                    English.
+                </p>
                 <section class="stories" aria-label="Milestones">
                     {{STORIES}}
                 </section>
@@ -361,16 +392,18 @@
                 </div>
             </section>
             <section class="download section-wrap" id="download">
+                <span class="anchor-target" id="releases"></span>
                 <div>
-                    <p class="eyebrow">Available now / foundation prerelease</p>
-                    <h2>The foundation is here.<br />The sidekick is next.</h2>
+                    <p class="eyebrow">Releases / experimental preview</p>
+                    <h2>The latest release.<br />The road to 1.0.</h2>
                     <p>
                         The tested command-line base, built from source and
                         verified in QEMU/KVM. For exploration and owner testing
                         — the graphical desktop and assistant are still ahead.
                     </p>
                     <div class="release-tags">
-                        <span>v0.1.0-foundation.1</span><span>VM-tested</span
+                        <span>v0.1.0-foundation.1</span
+                        ><span>Experimental preview</span><span>VM-tested</span
                         ><span>BIOS + UEFI</span>
                     </div>
                 </div>
@@ -381,10 +414,57 @@
                         >Foundation release & checksums ↗</a
                     ><a class="text-link" href="../docs/FOUNDATION-TESTING.md"
                         >Read the testing guide ↗</a
+                    ><a
+                        class="text-link"
+                        href="https://github.com/markaraujo/toddy-os/releases"
+                        >All releases & release notes ↗</a
                     ><small
                         >Physical hardware validation pending.<br />No desktop
                         or assistant in this ISO.</small
                     >
+                </div>
+            </section>
+            <section
+                class="release-roadmap section-wrap"
+                aria-label="Road to version 1.0"
+            >
+                <div>
+                    <p class="eyebrow">Preview today / 1.0 ahead</p>
+                    <h2>Built independently.<br />Improved with real use.</h2>
+                </div>
+                <div>
+                    <p>
+                        Created and maintained by Marcos Araujo, Toddy OS is an
+                        independent Linux project developed openly, one verified
+                        delivery at a time.
+                    </p>
+                    <p>
+                        The current release is an experimental foundation
+                        preview. Desktop and assistant previews come next.
+                        Version 1.0 will follow when its scope and acceptance
+                        criteria are met; no release date is promised.
+                    </p>
+                    <a href="https://github.com/markaraujo/toddy-os/releases"
+                        >Follow future releases ↗</a
+                    >
+                </div>
+            </section>
+            <section
+                class="supporters section-wrap"
+                id="supporters"
+                aria-labelledby="supporters-title"
+            >
+                <div>
+                    <p class="eyebrow">A little help from the pack</p>
+                    <h2 id="supporters-title">Toddy OS supporters</h2>
+                </div>
+                <div>
+                    <p>
+                        Help independent development move forward. Public
+                        acknowledgment is optional; anonymous support is welcome
+                        too.
+                    </p>
+                    {{SUPPORTERS}}
                 </div>
             </section>
         </main>
@@ -407,6 +487,9 @@
                 ><a href="../docs/DEVELOPMENT.md">Development handoff</a
                 ><a href="https://github.com/markaraujo/toddy-os">Source ↗</a>
             </div>
+            <a href="../assets/third-party/gnome/README.md"
+                >Third-party GNOME icon sources & licenses ↗</a
+            >
             <p class="footer-note">
                 Original code MIT · Original docs & art CC BY 4.0 · Third-party
                 terms apply.<br />No telemetry, external fonts or API calls. A

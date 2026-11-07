@@ -1,4 +1,4 @@
-# Large delivery releases
+# Releases and the road to 1.0
 
 The repository and Pages dashboard remain the development record. GitHub Releases
 provides downloadable snapshots for major accepted deliveries. See ADR-0103.
@@ -35,8 +35,8 @@ command-line volatile live system without desktop, agent or graphical installer.
    tested immutable release.
 
 Major Phase 2 previews may use prereleases after their own actual milestone
-acceptance and the owner approval required before B01. A G2 release requires the
-full installed-system and agentic gates. This is a delivery convention, not a
+acceptance and the owner approval required before B01. G2 is the basic-tested experimental owner-preview gate under ADR-0105 and the
+current Phase 2 plan, not automatic promotion to stable 1.0. This is a delivery convention, not a
 promise that an unbuilt feature has passed.
 
 For the H13 source/build and testing instructions, use
@@ -44,3 +44,14 @@ For the H13 source/build and testing instructions, use
 [FRESH-BUILD.md](FRESH-BUILD.md), [RECOVERY.md](RECOVERY.md) and
 [H13 evidence](evidence/H13.md). The complete local owner-testing export stays
 outside Git under `.local/releases/toddy-foundation-2026-11-07/`.
+
+
+## Experimental preview and independent authorship
+
+Toddy OS is an independent project created and maintained by Marcos Araujo.
+The owner requested clear public authorship, a release section and an explicit
+experimental-preview label until version 1.0. The public page links the actual
+foundation prerelease and GitHub release history; it must not invent newer images
+or claim a stable release before one exists. Version 1.0 is a future product
+target, without a promised date. Define and verify its release scope/acceptance
+before publishing it; G1 foundation or G2 owner-preview success alone is not 1.0.

@@ -16,12 +16,15 @@ BRAND_FILES = (
     "toddy-os-desktop-preview.png", "toddy-os-assistant-preview.png",
     "toddy-os-task-preview.png", "toddy-os-installer-preview.png",
 )
-UI_FILES = ("tokens.css", "preview.css", "preview.html", "installer-slides.html")
+UI_FILES = ("tokens.css", "preview.css", "preview.html", "installer-slides.html", "i18n.js", "translations.js")
+
+ICON_FILES = ('ADWAITA-COPYRIGHT.txt', 'CONSOLE-COPYING.txt', 'EPIPHANY-COPYING.txt', 'GPL-2', 'GPL-3', 'NAUTILUS-COPYRIGHT.txt', 'README.md', 'SETTINGS-COPYRIGHT.txt', 'audio-input-microphone-symbolic.svg', 'audio-volume-high-symbolic.svg', 'document-open-recent-symbolic.svg', 'edit-find-symbolic.svg', 'folder-documents-symbolic.svg', 'folder-documents.svg', 'folder-download-symbolic.svg', 'folder-download.svg', 'folder-music.svg', 'folder-pictures-symbolic.svg', 'folder-pictures.svg', 'folder-templates.svg', 'folder.svg', 'go-next-symbolic.svg', 'go-previous-symbolic.svg', 'manifest.json', 'media-playback-stop-symbolic.svg', 'network-wireless-signal-excellent-symbolic.svg', 'open-menu-symbolic.svg', 'org.gnome.Console.svg', 'org.gnome.Epiphany.svg', 'org.gnome.Nautilus.svg', 'org.gnome.Settings.svg', 'starred-symbolic.svg', 'system-shutdown-symbolic.svg', 'user-home-symbolic.svg', 'user-trash-symbolic.svg', 'view-app-grid-symbolic.svg', 'window-close-symbolic.svg')
 
 
 def public_links(content):
     """Keep design pages on Pages, and route repository documentation to GitHub."""
     content = content.replace('src="../assets/', 'src="assets/')
+    content = content.replace('src="../ui/', 'src="ui/')
     content = content.replace('href="../ui/', 'href="ui/')
     content = content.replace('href="../assets/', 'href="assets/')
     return content.replace('href="../', f'href="{REPO_URL}')
@@ -38,6 +41,7 @@ def export(destination):
     sources = {"site.css": ROOT / "dashboard/site.css"}
     sources.update({f"assets/brand/{name}": ROOT / "assets/brand" / name for name in BRAND_FILES})
     sources.update({f"ui/{name}": ROOT / "ui" / name for name in UI_FILES})
+    sources.update({f"assets/third-party/gnome/{name}": ROOT / "assets/third-party/gnome" / name for name in ICON_FILES})
     for source in sources.values():
         project.local_file(ROOT, str(source.relative_to(ROOT)))
     if destination.exists():

@@ -165,22 +165,10 @@ body {
 }
 .folder {
     display: block;
-    margin: auto auto 7px;
-    width: 44px;
-    height: 32px;
-    background: #69a2e7;
-    border-radius: 4px;
-    position: relative;
-}
-.folder:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: -6px;
-    width: 20px;
-    height: 8px;
-    border-radius: 4px 4px 0 0;
-    background: #92bcf0;
+    width: 58px;
+    height: 58px;
+    margin: auto auto 8px;
+    object-fit: contain;
 }
 .dock {
     position: absolute;
@@ -802,5 +790,72 @@ body {
     }
     .preview-nav p {
         font-size: 11px;
+    }
+}
+
+/* Unmodified GNOME/Adwaita SVGs replace approximate glyph and CSS icons. */
+.symbolic {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    vertical-align: middle;
+    filter: invert(0.86);
+    display: inline-block;
+}
+.topbar .symbolic {
+    width: 12px;
+    height: 12px;
+    margin-left: 8px;
+}
+.headerbar .symbolic {
+    width: 14px;
+    height: 14px;
+}
+.sidebar .symbolic {
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+}
+.dock .dock-icon {
+    background: transparent;
+    width: 42px;
+    height: 42px;
+}
+.dock .dock-icon .app-icon,
+.dock .dock-icon img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+.dock .dock-icon.apps .symbolic {
+    width: 28px;
+    height: 28px;
+}
+.small-app {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+@media (max-width: 500px) {
+    .folder {
+        width: 42px;
+        height: 42px;
+    }
+    .dock .dock-icon,
+    .dock .dock-icon .app-icon,
+    .dock .dock-icon img {
+        width: 31px;
+        height: 31px;
+    }
+    .dock .dock-icon.apps .symbolic {
+        width: 24px;
+        height: 24px;
+    }
+    .sidebar .symbolic {
+        width: 11px;
+        height: 11px;
+        margin-right: 3px;
     }
 }

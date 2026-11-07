@@ -11,7 +11,7 @@ The system is built from Linux, GNU and other upstream components, not a newly i
 ## 2. Confirmed requirements and delivery boundaries
 
 - Publish the source and build process for community use. The owner authorized making this single repository PUBLIC on 2026-11-05 and publishing its dashboard with GitHub Pages. Never commit secrets or personal runtime data.
-- All repository content, commits, technical documentation, progress labels and generated product copy are in English. The product supports Portuguese and English interaction.
+- Canonical repository documentation, commits and technical evidence are in English. The owner approved a public portal in English, Brazilian Portuguese, Spanish, Simplified Chinese, Japanese and Russian, with browser-language detection and manual selection. The operating system still targets Portuguese and English interaction; portal translations do not expand its runtime/voice acceptance matrix.
 - Follow two product phases: (1) a reliable LFS foundation; (2) desktop, agentic capabilities and an installable experimental daily-use release.
 - Provide a familiar desktop, terminal-based prompts, basic development tools, automation, voice and a graphical agent entry point.
 - Support external providers including OpenRouter, OpenAI and Anthropic, plus local inference through llama.cpp or interchangeable runtimes. Accounts and subscriptions are optional, never a boot dependency.

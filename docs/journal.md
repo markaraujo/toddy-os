@@ -1056,3 +1056,25 @@ Branded wallpaper gallery added to the public page with full-size PNG downloads
 and retained plain versions. Explicit export allowlist updated for the two assets.
 Desktop/mobile gallery checks, source identity hashes and make check passed
 (184 local checks, 0.174 seconds). See docs/evidence/navy-brand-preview.md.
+
+## 2026-11-07 — Six-language portal, independent author and preview releases
+
+The owner requested browser-language detection, manual language selection and
+four more languages including Japanese, Chinese and Russian. Added English,
+Portuguese, Spanish, Simplified Chinese, Japanese and Russian local resources,
+remembered preference, shareable lang query and storage-unavailable fallback.
+Independent authorship (Marcos Araujo), experimental-preview status and the road
+to version 1.0 now accompany actual release/history links without a promised date.
+Technical source criteria/docs and simulated OS artwork remain labeled English.
+
+Corrected GNOME concepts to use unmodified real GNOME/Adwaita icons with exact
+source/package/commit manifests and retained licenses; recaptured all four PNGs.
+Fresh-browser locale/default/override checks, desktop/mobile interactions and the
+existing repository suite pass. See public-portal-localization.md in evidence.
+PayPal work is pending an owner-supplied public button/link after browser control
+failed; no private account data or guessed payment destination was recorded.
+
+The owner chose a single optional supporter-name acknowledgment instead of tiers.
+Prepared the translated section backed by public-only config/community.json; no
+payment target is guessed, no donor record is auto-published and no special
+ownership/software benefits are implied. The PayPal destination remains pending.

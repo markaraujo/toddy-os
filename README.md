@@ -16,7 +16,9 @@ Foundation G1 passed in QEMU · Awaiting owner testing · Desktop and agent pend
 - [Replanned Phase 2 delivery](docs/PHASE-2-PLAN.md)
 - [User-customizable assistant harness](docs/PHASE-2-HARNESS.md)
 - [Basic tests and owner validation](docs/PHASE-2-VALIDATION.md)
-- [Live progress dashboard](https://markaraujo.github.io/toddy-os/)
+- [Public portal and progress](https://markaraujo.github.io/toddy-os/) — six languages, browser detection and manual selection
+- [Project supporters](https://markaraujo.github.io/toddy-os/#supporters)
+- [Experimental releases](https://markaraujo.github.io/toddy-os/#releases)
 - [Current status](STATUS.md)
 - [Development handoff](docs/DEVELOPMENT.md)
 - [Owner testing guide](docs/FOUNDATION-TESTING.md)

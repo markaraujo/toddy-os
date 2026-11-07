@@ -108,6 +108,25 @@ def percentages(data):
             for phase in ("foundation", "agentic")}
 
 
+def community_html():
+    """Render only owner-approved public acknowledgments and a verified public link."""
+    from urllib.parse import urlsplit
+    community = json.loads((ROOT / "config/community.json").read_text())
+    names = community.get("supporters")
+    if not isinstance(names, list) or any(not isinstance(name, str) or not name.strip() or len(name) > 80 for name in names):
+        raise ValueError("Supporters must be approved public names, each at most 80 characters")
+    if len(set(names)) != len(names):
+        raise ValueError("Duplicate supporter name")
+    result = '<ul class="supporter-list" data-no-translate>' + ''.join('<li>' + html.escape(name) + '</li>' for name in names) + '</ul>' if names else '<p class="supporter-empty">Names appear here only with each supporter&#39;s permission.</p>'
+    url = community.get("donation_url")
+    if url:
+        parsed = urlsplit(url)
+        if parsed.scheme != "https" or parsed.hostname not in {"paypal.com", "www.paypal.com", "paypal.me", "www.paypal.me"} or parsed.username or parsed.password:
+            raise ValueError("Use only the owner-provided public HTTPS PayPal donation URL")
+        result += '<a class="button primary" href="' + html.escape(url, quote=True) + '" rel="noopener noreferrer">Support Toddy OS ↗</a>'
+    return result
+
+
 def outputs(data):
     pct = percentages(data)
     text = f"# Toddy OS — Current status\n\nUpdated: {data['updated_at']}\n\n"
@@ -143,7 +162,7 @@ def outputs(data):
                      f'<summary><span class="id">{esc(row["id"])}</span> {esc(row["title"])} '
                      f'<span class="tag">{esc(row["status"].replace("_", " "))} · {row["weight"]} points</span></summary>'
                      f'<p>Prerequisites: {esc(", ".join(row["depends_on"]) or "None")}</p>'
-                     f'<ul>{criteria}</ul><a href="../{esc(row["story"])}">Open story</a></details>')
+                     f'<p class="technical-note">Technical acceptance criteria (English)</p><ul lang="en" data-no-translate>{criteria}</ul><a href="../{esc(row["story"])}">Open story</a></details>')
     metrics = []
     for phase, title in (("foundation", "LFS foundation"), ("agentic", "Toddy desktop & assistant")):
         if phase == "foundation":
@@ -159,7 +178,7 @@ def outputs(data):
     page = (ROOT / "dashboard/template.html").read_text()
     replacements = {"METRICS": "".join(metrics), "SCOPE": esc(data["current_scope"]),
                     "UPDATED": esc(data["updated_at"]), "ACTIVE_WORK": active_page,
-                    "STORIES": "".join(cards)}
+                    "STORIES": "".join(cards), "SUPPORTERS": community_html()}
     for key, value in replacements.items():
         page = page.replace("{{" + key + "}}", value)
     page = "\n".join(line.rstrip() for line in page.splitlines()) + "\n"

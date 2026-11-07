@@ -74,3 +74,49 @@ button:disabled {
         transition: none !important;
     }
 }
+
+.language-picker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--muted);
+}
+.language-picker select {
+    font: inherit;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 7px 9px;
+    max-width: 115px;
+    cursor: pointer;
+    min-height: 36px;
+}
+.language-picker select:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+html[lang="zh-Hans"],
+html[lang="ja"] {
+    word-break: normal;
+    line-break: strict;
+}
+html[lang="zh-Hans"] h1,
+html[lang="ja"] h1,
+html[lang="zh-Hans"] h2,
+html[lang="ja"] h2 {
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+@media (max-width: 650px) {
+    .language-picker > span {
+        display: none;
+    }
+    .language-picker select {
+        font-size: 10px;
+        padding: 6px;
+        max-width: 92px;
+    }
+}
