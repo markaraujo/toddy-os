@@ -39,6 +39,13 @@ try:
   assert not image.exists() and not work.exists()
   cases.append({'case':'production release gate' if release else 'production H10 gate',
     'exit':result.returncode,'required_gate':required,'output_created':False})
+  compression=project/'scripts/build/h10/compress_root.py'
+  result=subprocess.run([sys.executable,'-B',str(compression),str(base/'absent-assembly.json'),str(work),
+                        '--epoch','1793923200']+(['--release'] if release else []),capture_output=True,text=True)
+  assert result.returncode!=0 and required in result.stderr,(result.returncode,result.stderr)
+  assert not work.exists()
+  cases.append({'case':'production compression release gate' if release else 'production compression H10 gate',
+    'exit':result.returncode,'required_gate':required,'output_created':False})
  def refuse(label,image,work):
   try:assembly.validate_destinations(root,image,work)
   except ValueError as error:cases.append({'case':label,'reason':str(error)})

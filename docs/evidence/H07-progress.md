@@ -1344,3 +1344,12 @@ terminal exits. Raw observation SHA-256:
 Test headers as well as Recd/Fop instead of retaining an obsolete recovery
 heading. H07 remains 124/126 accepted packages. Independent private native
 Squashfs/overlay correction and initramfs evidence are in ADR-0075.
+
+2026-11-07 08:09 UTC — Both Berkeley driver identities remain live in block 27/27.
+Original: Test044 queueext cycle 1 with the same two known failures. Corrected:
+Test142.h hash/partition callback, zero FAIL entries, after completing the earlier
+Test044 crash/recovery cycles. Neither driver has terminal exits. Raw observation
+SHA-256: 5401327de7abb15a4fee1d5d3189820fbff85b246e13ebdec287be2c2b1a86eb
+(.local/logs/h07-db-standard-progress-<sha256>.json). H07 remains 124/126 accepted
+packages. Independent native compression/readback preparation passed (ADR-0076);
+complete foundation assembly and native-kernel boot remain pending.

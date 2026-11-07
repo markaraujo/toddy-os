@@ -339,3 +339,19 @@ Private native Squashfs compilation/roundtrips can be reproduced with
 python3 scripts/host/probe_native_squashfs.py start, then collect the exact printed
 fixture. These tests do not install the H10 package or bypass its gate. Full
 image compression and native Linux 7.1.8 boot remain mandatory.
+
+After a successful gated root assembly, prepare a new compression generation
+with h10/compress_root.py (ADR-0076):
+
+```sh
+python3 -B /opt/toddy-build/scripts/build/h10/compress_root.py /mnt/lfs/sources/stage/h10-live-root-evidence/assembly.json /mnt/lfs/sources/stage/h10-compressed-root --epoch RELEASE_EPOCH
+```
+
+Replace RELEASE_EPOCH with the recorded integer build epoch. Add --release only
+for a matching successful H11 release-profile assembly. The CLI owns build.lock;
+do not nest it inside run_step.py. Installed native Squashfs acceptance is still
+required. Retain compression.json, the artifact/hash, full extraction, original/
+extracted/restored manifests and comparisons. Full native readback includes ACLs,
+hardlinks, xattrs and sparse allocation. Squashfs stores whole-second timestamps;
+the original source manifest retains nanoseconds. Component tests use private
+verified native tools; they do not accept the full image or boot.

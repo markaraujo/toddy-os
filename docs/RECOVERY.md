@@ -1132,3 +1132,14 @@ that process/results. Never restart a live experiment because an observation
 expired. Preserve failed generations; a new start chooses a fresh directory.
 A successful experiment is not h10-squashfs-tools.success.json. The gated
 production package must still pass its own build/roundtrip and boot checks.
+
+For compression failures (ADR-0076), inspect compression.json's last step/exit,
+that native log, superblock.json and the two comparison reports. complete=false
+or an unfinished step remains incomplete even if rootfs.squashfs exists. Preserve
+all failed output and the original source manifest. Diagnose changed input,
+unknown xattrs, metadata/hardlink mismatch, insufficient storage or native tool
+failure; correct the cause and select a new generation. Do not drop failed
+comparisons, alter the expected manifest to match output, append to an existing
+image or suppress Unsquashfs errors. The two-hour timeout has a kill-after grace
+for its own process group. Observe its existing process before attempting retry.
+Successful compression does not waive remaining release/boot checks.

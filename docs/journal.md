@@ -536,3 +536,11 @@ default inheritance, capabilities, hardlink writes, privileges and bad-path
 refusals (ADR-0075). Updated native initramfs archive checks pass. No package or
 milestone was accepted from this private preparation; both Berkeley runs remain
 active in their final access-method matrix, corrected run without FAIL entries.
+
+2026-11-07 — Prepared gated root compression and independent native full
+extraction/ACL restoration comparison (ADR-0076). The actual metadata fixture
+passes twice with identical compressed bytes; fourteen corruptions/refusals are
+detected, including required superblock features. Both premature compression
+profiles refuse, and full assembly readiness still stops at H07's shared Info
+index. Both Berkeley drivers remain live; corrected suite reached Test142 hash/
+partition callback without FAIL entries. No milestone acceptance was inferred.

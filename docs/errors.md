@@ -710,3 +710,16 @@ default ACLs, UID 101 access, special modes, capabilities, hardlinks/write
 propagation, volatile disposal and seven bad-path cases. Index=off remains a
 negative control for hardlinks. Updated native initramfs roundtrip passes.
 See ADR-0075 for original failure/raw hashes; actual Linux 7.1.8 boot is pending.
+
+## 2026-11-07 — Private compression harness dependencies
+
+Symptom: initial component imports required absent QA-transfer files in the
+private bundle; the next fixture setup invoked nonexistent /usr/bin/setcap.
+Cause: an atomic JSON helper imported unrelated QA modules, and the fixture
+assumed the wrong native administration-tool directory.
+Correction: keep the fsynced compression journal writer self-contained; invoke
+the actual /usr/sbin/setcap through the native shell. No active build input or
+installed package was changed. Failed generations/logs remain preserved.
+Verification: complete native compression/extraction/ACL comparisons pass twice
+with fourteen specific corruptions/refusals and unchanged source/package status.
+See ADR-0076 for raw hashes and actual production-gate refusal evidence.
