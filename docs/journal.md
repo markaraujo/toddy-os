@@ -1363,3 +1363,15 @@ offline installation. EN plus five translations are synchronized. make dashboard
 site/check and JavaScript syntax checks passed (198 tests). CUA inventory worked
 but binding the existing portal tab failed with a tool timeoutMs error; no fresh
 visual browser inspection is claimed. Deployment/served-file verification follows.
+
+
+## 2026-11-07 — Per-story strategy and handoff review
+
+Reviewed all B01-B13 slices/acceptance/prerequisites. Removed avoidable model gate
+on executor work: B04 now depends on B01; B05 explicitly joins B03+B04. Fixed
+premature B01 native-setup wording, clarified B03 minimal validation versus B05
+atomic profiles, and aligned B13 instructions with offline/acquisition roots.
+ADR-0111 and PHASE-2-STORY-STRATEGY record tradeoffs and owning proofs.
+Structural fault simulation regenerated; focused selector regression covers
+B03 blocked -> B04, then B04 blocked -> B02, without bypassing B05 prerequisites.
+All B runtime states remain unstarted; no guest approval or execution occurred.

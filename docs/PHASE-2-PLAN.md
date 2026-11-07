@@ -378,3 +378,7 @@ Current authorization: plan revision and repository branding/UI design preparati
 Guest development is not started by these edits. B01-B13 remain not_started until
 explicit implementation continuation; no claim that the owner already completed
 foundation hardware testing. The owner can authorize that continuation separately.
+
+Per-story strategy: [review and handoffs](PHASE-2-STORY-STRATEGY.md).
+B04 consumes B01 contracts independently of B03; B05 requires both branches
+([ADR-0111](adr/0111-independent-executor-and-provider-development.md)).

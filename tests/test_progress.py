@@ -110,10 +110,12 @@ class ProgressGates(unittest.TestCase):
         rows = {row["id"]: row for row in data["milestones"]}
         rows["B01"]["status"] = "completed"
         rows["B03"]["status"] = "blocked"
+        self.assertEqual(project.next_eligible(data), "B04")
+        rows["B04"]["status"] = "blocked"
         self.assertEqual(project.next_eligible(data), "B02")
         rows["B02"]["status"] = "completed"
         self.assertEqual(project.next_eligible(data), "B03")
-        self.assertEqual(rows["B04"]["status"], "not_started")
+        self.assertEqual(rows["B05"]["status"], "not_started")
 
 
 

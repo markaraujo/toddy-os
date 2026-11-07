@@ -39,7 +39,9 @@ def main():
         rows[name]['status'] = 'not_started'
     rows['B01']['status'] = 'completed'
     rows['B03']['status'] = 'blocked'
-    assert next_eligible(probe) == 'B02', 'Blocked engine must not starve eligible desktop'
+    assert next_eligible(probe) == 'B04', 'Blocked model must not starve deterministic executor work'
+    rows['B04']['status'] = 'blocked'
+    assert next_eligible(probe) == 'B02', 'Blocked engine/executor must not starve eligible desktop'
     nominal = walk(stories, set())
     assert not nominal['pending'], 'Dependency cycle or missing prerequisite'
     results = {'scope': 'structural simulation only; assumes each visited story passes, no duration or runtime proof',

@@ -22,3 +22,6 @@ During implementation replace these entries with the current story/slice, actual
 input/target checkpoint identity, last passed result/evidence, unresolved operation,
 next exact action and local runtime-record location. Keep this file short and
 sanitize public data; volatile host process details belong outside Git.
+
+Per-story dependency refinement: [strategy review](PHASE-2-STORY-STRATEGY.md);
+B04 can proceed after B01, B05 waits for B03+B04.

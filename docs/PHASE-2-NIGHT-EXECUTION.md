@@ -51,7 +51,7 @@ actual status input hash. Observed graph results on this revision:
 | Injected blocker | Work still reachable | Implication |
 | --- | --- | --- |
 | B01 | No B-story implementation | Resolve bounded B01 slices; independent source/docs prep only, never mark it passed to continue |
-| B03 | B02 after B01 | Work on desktop while engine cause is isolated; B04 still cannot start |
+| B03 | B04 and B02 after B01 | Executor fixtures and desktop can progress; B05 still waits for both B03 and B04 |
 | B02 | B03/B04/B05/B07/B08 after B01 | Headless service/memory/scheduler can progress; no invented desktop acceptance |
 | B09 | All except B09/B13 | Finish plugin branch; G2 waits for scoped speech proof/fallback |
 | B12 | All except B12/B13 | Other eligible features can progress; never label a live-only image installable |

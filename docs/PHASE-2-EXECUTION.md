@@ -216,3 +216,7 @@ Test selection and the approved isolated build strategy follow
 assess each interaction, run only invalidated checks, widen on shared/unknown impact.
 
 Graphical delivery/readiness: [latest integrated review and short reading map](PHASE-2-READINESS-REVIEW.md).
+
+Per-story strategy: [review and handoffs](PHASE-2-STORY-STRATEGY.md).
+B04 consumes B01 contracts independently of B03; B05 requires both branches
+([ADR-0111](adr/0111-independent-executor-and-provider-development.md)).

@@ -322,7 +322,7 @@
       "weight": 8,
       "status": "not_started",
       "depends_on": [
-        "B03"
+        "B01"
       ],
       "story": "stories/B04.md",
       "acceptance": [
@@ -340,6 +340,7 @@
       "weight": 10,
       "status": "not_started",
       "depends_on": [
+        "B03",
         "B04"
       ],
       "story": "stories/B05.md",
