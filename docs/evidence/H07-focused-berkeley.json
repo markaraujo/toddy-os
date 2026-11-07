@@ -1,0 +1,15 @@
+{
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "changed_paths": 5312,
+  "log_sha256": "80589d984afbe49e5a578c91cfabd3ab1eb340f7aa1ccd1443d608ad2549f032",
+  "success_record_sha256": "c2868d5d3ae36ce09e8bd523bdbc1b48587206acff8a73413029c3dbf7498b70",
+  "component_record_sha256": "386637dee0f8c3ffdcef7aa1dd2632162c3f9ca6df95176d0b6dc880cec6ca13",
+  "library_sha256": "945ad70683f03cd27630336ac003beba9c5c87e64e4251764c23231658bad42c",
+  "configured_package_count": 125,
+  "database_status": [
+    "berkeley-db\tinstall ok installed"
+  ],
+  "scope": "Owner-approved focused Berkeley gate (ADR-0092); full Tcl suite incomplete; H07 remains pending",
+  "observed_at": "2026-11-07T11:24:22.304935+00:00"
+}

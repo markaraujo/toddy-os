@@ -1629,3 +1629,11 @@ recorded in docs/errors.md and ADR-0092, without hiding that failed fixture.
 
 Still 124/126 accepted packages. Guarded production installation, installed
 postconditions, signed-repository/HTTPS integration and final closure remain.
+
+Focused installed acceptance now passed: 125 configured packages. Berkeley was
+compiled from the independently verified native source in a read-only view,
+packaged/installed through run_step, and both staged and installed transaction/
+abort/reopen/crash-recovery checks passed. Production library bytes exactly match
+the independently tested private profile. See [machine-readable evidence](H07-focused-berkeley.json).
+The package remains a focused-qualified component, not full Tcl-suite coverage.
+Final-base driver 22002 is now processing APT and the remaining closure sequence.

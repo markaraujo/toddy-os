@@ -1527,3 +1527,13 @@ remove only the rebuildable cache from the disposable target, regenerate from
 original .deb inputs, reject E:/W:/BDB diagnostics even if apt-ftparchive exits
 zero, validate each indexed size/SHA-256, then replace the published index.
 Never delete original packages or use an unverified candidate as a signed index.
+
+Focused installation completed: h07-berkeley-db.success.json has recipe/postcheck
+exit 0; production library hash equals the private measured profile. There are
+125 configured native packages. Final-base driver 22002 was launched with log
+/var/log/toddy/h07-focused-final-base-launch.log and its usual
+/var/log/toddy/h07-final-base-driver.{pid,exit}. Inspect actual markers/logs before
+retrying. It handles APT, the owned Python alias, existing accepted ownership
+steps, bootstrap quarantine and metadata closure. Do not sync inputs or start a
+second dispatcher while it is active. The final verified cold pair is still the
+124-package checkpoint until a new pair is actually saved and checked.

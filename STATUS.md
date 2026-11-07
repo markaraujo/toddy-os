@@ -4,7 +4,7 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-Implementation: H01-H06 validated in KVM; H07 has 124/126 accepted packages. Owner approved focused Berkeley DB delivery validation (ADR-0092); full rerun cancelled with raw exit 143 preserved. Private native APT compilation/unit/cache recovery checks passed; installed package and signed-repository/HTTPS checks plus final closure remain pending. No Toddy ISO. Deliver H13/G1 for owner testing before any B story.
+Implementation: H01-H06 validated in KVM; H07 has 125/126 accepted source-built packages. Berkeley installed with owner-approved focused production/recovery checks (ADR-0092). APT/final closure driver is running. Full Berkeley standard suite is cancelled/incomplete, not passed. No Toddy ISO. Deliver H13/G1 for owner testing before any B story.
 
 Foundation: **38%** · Agentic desktop: **0%**
 
@@ -16,21 +16,21 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 11:18 UTC
+Last verified: 2026-11-07 11:24 UTC
 
 Verified:
 
-- 124 of 126 currently planned H07 packages installed, configured and accepted; 2 pending (Berkeley DB and APT). All 124 have own-build/source provenance.
+- 125 of 126 currently planned H07 packages installed, configured and accepted; only APT remains. Berkeley production/installed crash recovery passed under owner-approved focused validation (ADR-0092).
 - Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 - Independent Linux 7.1.8 native build and BIOS/UEFI diagnostic boots passed, including actual module insertion/removal and namespace creation; no final kernel package, full foundation boot or ISO acceptance.
 
-Running: Owner-approved focused Berkeley validation is active (ADR-0092); full run stopped with raw 143/1 exits preserved. Actual production crash recovery passed. Private APT compiled 466 actions and passed 142 unit tests; actual cache reopen/refresh/SIGKILL/corruption/rebuild passed with diagnostics checked. Guarded installed Berkeley/APT, signed repository/HTTPS and final closure remain; 124/126 accepted packages.
+Running: Berkeley DB installed through the guarded dispatcher with recipe/postcheck exit 0 and native recovery passed. Final-base driver 22002 is compiling APT, then will run signed-repository/HTTPS/cache checks, ownership/dependency closure and final audits. Full Berkeley standard suite remains explicitly incomplete; H07 is not yet accepted.
 
 Remaining:
 
-- Complete focused native production crash recovery and actual APT cache/reopen/refresh/interruption/rebuild tests; install Berkeley through the guarded dispatcher and verify installed postconditions. Preserve reduced full-suite coverage as a release limitation.
+- Complete actual installed APT unit, cache, signed-repository, dependency/update/conffile and HTTPS/sandbox checks. Focused Berkeley acceptance passed; retain reduced full-suite coverage as a release limitation.
 - Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.
 - Quarantine 931 reviewed bootstrap paths, close metadata for all 126 planned packages and pass seven final audits plus Dpkg/APT consistency checks.
 - Save final H07 evidence and a verified paired cold checkpoint of both VM disks before accepting the story.
