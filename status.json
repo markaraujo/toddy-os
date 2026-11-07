@@ -477,14 +477,14 @@
   ],
   "active_work": {
     "story": "H07",
-    "verified_at": "2026-11-07 00:50 UTC",
+    "verified_at": "2026-11-07 00:58 UTC",
     "verified": [
       "124 of 126 currently planned H07 packages installed, configured and accepted; 2 pending (Berkeley DB and APT). All 124 have own-build/source provenance.",
       "Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.",
       "Full ACL retest, API/layout ownership and native configuration correction passed.",
       "Verified paired cold checkpoint at the 124-package boundary."
     ],
-    "running": "Berkeley DB standard suite remains active in replication (block 23), with two FAIL entries: repmgr007 asynchronous diagnostic assertion and missing db_repsite test helper. The diagnostic race was reproduced and its bounded-wait correction passed three complete native repetitions privately. The helper source is absent upstream; that prerequisite remains unresolved. All twenty other_repmgr tests are being checked separately. No failed group, suite or package is accepted.",
+    "running": "Berkeley DB standard suite continues in replication (block 23, Rep020), with two known FAIL entries. The repmgr007 diagnostic-race correction passed three native repetitions; the full twenty-case group is being revalidated. A real native adapter for the missing db_repsite helper passed the first three unchanged multi-process cases; its full eleven-case group is now running privately. No failed group, suite or package is accepted.",
     "remaining": [
       "Finish the complete database suite, then production install and transaction/reopen postchecks; later access-method matrix plans 135 x 9 dispatch entries, including inapplicable skips.",
       "Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.",

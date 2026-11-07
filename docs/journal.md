@@ -415,3 +415,10 @@ just a disabled C++ build; an isolated C++ attempt fails on the absent source.
 Retained both failures, prepared the fixture patch, and started the complete
 other_repmgr group privately. No active inputs were synchronized, no group was
 removed, and no BDB/APT acceptance advanced. See ADR-0067.
+
+
+2026-11-07 00:58 UTC — Implemented a native test-only C adapter for the missing
+Berkeley DB db_repsite program, using actual frozen library calls and unchanged
+upstream test assertions (ADR-0068). The first three multiprocess cases passed;
+started the complete eleven-case group separately. Other-repmgr and original
+replication tests continue. H07 remains 124 accepted packages and foundation 38%.

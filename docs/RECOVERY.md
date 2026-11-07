@@ -934,3 +934,15 @@ multi-process helper support with native operations and unchanged assertions;
 no source-availability exception has been accepted. Then freeze the tested
 patch and update the fresh/recovery build path at a quiescent boundary. Preserve
 complete original-suite logs and zero-install postconditions before any retry.
+
+
+Berkeley DB multiprocess adapter probe (ADR-0068): first-three driver exited 0;
+its log is multiproc-driver.log and preserved data is source/build-multiproc/
+first-three.TESTDIR under the existing toddy-repmgr-diagnosis-w59p805n fixture.
+The complete eleven-case run is guest PID 1076295, with
+multiproc-all-driver.log/.exit/.pid in that fixture. Inspect the exit and log
+before retrying; a missing exit file alone is not a failure. The bounded driver
+uses timeout 3600 with kill-after 30 and a private network namespace. The
+committed entry point is berkeley-db-multiprocess-regression.tcl. Current helper
+source is test-only and has not been integrated into active build inputs.
+Preserve any failed log/TESTDIR; diagnose actual operations before correction.

@@ -1210,3 +1210,12 @@ frozen and upstream 5.3.28 trees. A C++-enabled isolated build confirmed that
 absence. All twenty other_repmgr cases are now running in a separate bounded
 private fixture. See ADR-0067 and its raw evidence hashes. The current full run
 is collecting additional failures; its failed groups are not counted passed.
+
+
+2026-11-07 00:58 UTC — The independently implemented native db_repsite adapter
+passed unchanged repmgr100/101/102, exit 0, including real replication and
+process-death/failchk recovery. All eleven original multi_repmgr cases now run
+in a private network namespace/build directory; the first-three fixture is
+preserved. The separate twenty-case other_repmgr run is in Repmgr026, and the
+original standard suite is in Rep020 with the same two FAIL lines. See ADR-0068
+for source/binary/log hashes. No full-group, suite or package acceptance yet.
