@@ -25,8 +25,10 @@ volatile. Start with the [testing guide](docs/FOUNDATION-TESTING.md), and read t
 before trying the ISO.
 
 Phase 2 plans the GNOME desktop, native Toddy assistant, optional local/API AI and
-guided installation. Guest implementation has not started and requires explicit
-owner approval after foundation review. Physical hardware validation is pending;
+guided installation. The owner explicitly authorized isolated implementation on
+2026-11-07 ([ADR-0113](docs/adr/0113-owner-authorizes-phase2-implementation.md));
+B01 native bootstrap work is in progress. Desktop/installer/agent acceptance and
+physical hardware validation are pending;
 the project remains experimental until a genuine accepted 1.0 release.
 [Current status](STATUS.md) records what has actually passed.
 

@@ -8,12 +8,15 @@ Development was explicitly started by the owner. Continue autonomously through H
 
 ## Current Phase 2 contract (2026-11-07)
 
-The owner is replanning Phase 2, not restarting the foundation. Use
-`docs/PHASE-2-PLAN.md`, `docs/PHASE-2-VALIDATION.md`, revised B01-B13 and ADR-0105
-instead of obsolete Phase 2 drafts. Current authorization covers plan replacement,
-navy brand/UI design and public Pages redesign; report completion before guest
-implementation. Preserve exact logo/mascot assets and historical G1 evidence.
-Do not mark B11 complete for repository artwork alone.
+The owner approved the revised Phase 2 plan and explicitly authorized isolated
+implementation through B01-B13/G2 and release/portal delivery on 2026-11-07.
+See docs/adr/0113-owner-authorizes-phase2-implementation.md and status.json.
+Physical foundation testing remains pending. Use `docs/PHASE-2-PLAN.md`,
+`docs/PHASE-2-VALIDATION.md`, revised B01-B13 and ADR-0105 instead of obsolete
+drafts; do not restart planning or rebuild the accepted foundation. Preserve
+exact logo/mascot assets and historical G1 evidence.
+Do not mark B11 complete for repository artwork alone. For this authorized run,
+do not use subagents or switch models automatically.
 
 Deliver small independently committable slices with checkpoints and exact next
 actions. Tests take time: run focused basic checks and directly affected

@@ -146,7 +146,7 @@ review/acquire them in the installed user's session, not the live installer.
 The same agent-independent setup/controller serves user-requested agent suggestions.
 Native packages handle core/CLI tools; qualified graphical extras may use per-user
 Flatpak. Candidate breadth is not a new G2 gate. Keep hardware/firmware, models,
-credentials and grants in their separate existing flows. No guest-start approval.
+credentials and grants in their separate existing flows. The catalog alone grants no guest-start approval; current authority is ADR-0113.
 
 
 ### 3.3 Third-party drivers, firmware and packages
@@ -388,10 +388,12 @@ commit/push validated changes through the authorized workflow. No new workstatio
 RAG registration. No new test service, framework or paid resource solely to manage
 this plan. New untrusted XML consumers retain the existing bounds-review obligation.
 
-Current authorization: plan revision and repository branding/UI design preparation.
-Guest development is not started by these edits. B01-B13 remain not_started until
-explicit implementation continuation; no claim that the owner already completed
-foundation hardware testing. The owner can authorize that continuation separately.
+Current authorization: the owner subsequently approved this plan and explicitly
+authorized isolated B01-B13/G2 implementation and release/portal delivery on
+2026-11-07; see [ADR-0113](adr/0113-owner-authorizes-phase2-implementation.md).
+B01 is in progress; native acceptance remains evidence-gated. Physical foundation
+testing remains pending. Planning/artwork alone still grants no implementation
+approval and proves no runtime behavior.
 
 Per-story strategy: [review and handoffs](PHASE-2-STORY-STRATEGY.md).
 B04 consumes B01 contracts independently of B03; B05 requires both branches
