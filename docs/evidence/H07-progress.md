@@ -1484,3 +1484,25 @@ The fixture is /mnt/lfs/sources/recovery/db-standard-coverage-0_05jaht.
 This resolves the question of whether those types can actually be exercised;
 it does not accept the still-running complete standard suite. No acceptance
 gate, source input, terminal exit or failed original output was rewritten.
+
+### Independent complete-output review — 2026-11-07 09:40 UTC
+
+Native Tcl reproduced all 25 diagnostics from the original complete report.
+The new classifier retained both actual failures and refused diagnostic-only
+readiness; it also refused the incomplete corrected report. Exact original
+report hashes now permit history preservation, while actual premature prepare
+still refuses the live corrected run without creating a candidate/archive.
+Raw report SHA-256:
+e1775d2ec868f2693fdf30d2237dccdd33235ffa8521a90e0de5c869c9fcd616.
+
+Independent coverage verification rehashed all 10,208 source entries, confirmed
+the exact native witness and its pairing with the standard input manifest, and
+passed sixteen rejection cases. Raw report SHA-256:
+6839dcca04bc5db9e13b9a0097ec1724d7f9e3ba4d7d34f55ffe1cc3de3eb0e3.
+Complete corrected review, protected custody and production qualification remain
+pending; no package acceptance or exit code changed. See ADR-0084.
+
+Corrected PID 1107192 remains live in group 23/27, Rep036.c, with zero FAIL and
+no terminal exits. Observation SHA-256:
+4cd1b0f16093513750190d584e39b782e718c7c9fa16ffd9e4e60c6c9e29995d.
+H07 remains 124/126 accepted packages, foundation 38%, APT gated.

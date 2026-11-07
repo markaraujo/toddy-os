@@ -155,3 +155,10 @@ the build lock, preserves per-stage evidence and refuses existing generations.
 Native owned-payload/metadata checks pass in a private eleven-package root;
 full source readiness still correctly refuses the unfinished H07 shared Info
 index. Complete positive assembly, remaining image audits and boot are pending.
+
+The latest terminal-review components (ADR-0084) separate raw execution outcomes
+from diagnostic classification. A review exit zero means the review itself
+completed, not that an exit-1 database suite became a passing run. Only exact
+source-backed diagnostics with complete native evidence can proceed to later
+qualification; unknown assertions still fail. Production nomination retains its
+strict current gate until that separate path is implemented and verified.

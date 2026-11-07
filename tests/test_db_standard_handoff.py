@@ -4,6 +4,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 BUILD = Path(__file__).resolve().parents[1] / 'scripts/build'
 sys.path.insert(0, str(BUILD))
@@ -29,6 +30,13 @@ class OriginalDatabaseFailure(unittest.TestCase):
             stdout = '\n'.join(['UNEXPECTED OUTPUT: ' + line for line in handoff.FAILURES] +
                                ['Complete DB regression summary failed']) + '\n'
             paths['standard.log'].write_text(stdout)
+            # Unit-only small reports exercise hash binding. The real native
+            # probe uses the unchanged production pins and complete 12 MB log.
+            pins = patch.multiple(handoff,
+                OLD_ALL_OUT_SHA256=handoff.digest(paths['ALL.OUT']),
+                OLD_STANDARD_SHA256=handoff.digest(paths['standard.log']))
+            pins.start()
+            self.addCleanup(pins.stop)
             handoff.validate_original(paths)
             cases = [('manifest.json', '{"/usr/bin/changed": {}}'), ('driver.exit', '0'),
                      ('ALL.OUT', report + 'FAIL: new unrelated failure\n'),

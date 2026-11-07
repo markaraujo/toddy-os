@@ -619,3 +619,12 @@ unmodified original test assertions plus real disk and named-memory recovery
 comparisons passed. Corrected and retained diagnostic setup failures rather
 than suppressing assertions. Full corrected standard run remains active and
 unaccepted; no production gate or raw exit was changed.
+
+2026-11-07 09:40 UTC — Implemented independent complete-output reconciliation
+and exact recovery-witness verification (ADR-0084). Native Tcl reproduced all
+25 original diagnostics and retained both real failures; incomplete corrected
+review and premature production handoff were refused. Bound all 10,208 witness
+inputs and passed sixteen rejection cases. Original-history validation now
+pins the actual diagnosed terminal reports. Corrected suite advances through
+Rep036 in 23/27 with zero FAIL. Full review/qualification and installation remain
+pending; strict success semantics and all raw exits remain unchanged.

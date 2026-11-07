@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 09:29 UTC
+Last verified: 2026-11-07 09:40 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Corrected Berkeley driver 1107192 remains live in replication, block 23/27, Rep016, with zero FAIL entries so far. Original driver 1364 terminated exit 1 with zero installed changes. Its additional diagnostics were classified: Test142 informational spacing fails the output filter; ten recovery-coverage warnings come from a limited tracker. A separate native diagnostic now passes 0/0 with all ten types observed and actual recovery/data comparisons (ADR-0083). Full corrected terminal review and strict-summary resolution still precede production acceptance; H07 remains 124/126 and APT is gated.
+Running: Corrected Berkeley driver 1107192 is live in replication, block 23/27, Rep036.c, zero FAIL entries and no terminal exits. Independent native review reproduced the original summary, retained its two real failures and confirmed the exact coverage witness against all 10,208 inputs. Premature full review/production nomination correctly refuse the live run (ADR-0084). Complete corrected review, protected custody and diagnostic qualification remain pending; H07 stays 124/126 and APT is gated.
 
 Remaining:
 

@@ -1238,3 +1238,25 @@ explicitly not full-suite/package acceptance. The earlier failed diagnostic
 fixtures are retained. Launch without --collect only for a deliberate new
 experiment after reviewing its current source and all previous terminal states;
 no new full run_std is dispatched by this probe.
+
+Complete Berkeley diagnostic review (ADR-0084): the original-history validator
+now recognizes only the exact independently rechecked terminal reports, while
+retaining their exit 1 and two real failures. Actual premature prepare still
+refuses the live corrected run and creates no candidate/history archive.
+
+After the corrected driver actually terminates, first inspect its result.json,
+report hashes and exit files. For the known exit-1 summary profile, the prepared
+review command after a safe quiescent code sync is:
+
+```sh
+python3 -B /opt/toddy-build/scripts/build/db_standard_review.py \
+  /mnt/lfs/sources/recovery/db-standard-nfv62s4o \
+  --coverage /mnt/lfs/sources/recovery/db-standard-coverage-0_05jaht
+```
+
+This command preserves actual exits and writes a separate private review only.
+It is not a production nomination and does not seal source custody. Inspect all
+assertions and unknown diagnostics; new output requires new diagnosis. Complete
+positive review and any source-qualified production handoff remain pending.
+The existing strict success gate must not be bypassed by manually creating a
+candidate, rewriting its result or changing recorded exits.

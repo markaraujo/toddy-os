@@ -46,6 +46,11 @@ def validate_record(record, inputs, base):
             raise ValueError('Incomplete result: ' + key)
     if record.get('package_accepted') is not False or 'error' in record:
         raise ValueError('Unexpected package claim or diagnosed error')
+    validate_execution(record, inputs, base)
+
+
+def validate_execution(record, inputs, base):
+    """Validate the execution profile independently of its actual success/failure."""
     if record.get('driver_sha256') != DRIVER_SHA256:
         raise ValueError('Unreviewed result producer')
     if record.get('fixture') != str(base) or inputs.get('fixture') != str(base):
@@ -85,7 +90,7 @@ def validate_summary(report, output):
         raise ValueError('Strict standard acceptance missing or unexpected output present')
 
 
-def verify_completed(base):
+def open_terminal(base, expected_exit=0):
     base = Path(base)
     if (base.resolve() != base or base.parent != RECOVERY or
             not re.fullmatch(r'db-standard-[A-Za-z0-9_-]+', base.name)):
@@ -95,15 +100,20 @@ def verify_completed(base):
         raise ValueError('The isolated standard run is still unfinished')
     for name in ('driver.exit', 'test.exit'):
         protected(base / name)
-        if (base / name).read_text().strip() != '0':
-            raise ValueError('The isolated standard run did not pass: ' + name)
+        if (base / name).read_text().strip() != str(expected_exit):
+            raise ValueError('The isolated standard run has a different terminal exit: ' + name)
     for name in ('result.json', 'inputs.json'):
         protected(base / name, private=True)
     record = json.loads((base / 'result.json').read_text())
     inputs = json.loads((base / 'inputs.json').read_text())
     if digest(base / 'inputs.json') != record.get('input_manifest_sha256'):
         raise ValueError('Input manifest changed after execution')
-    validate_record(record, inputs, base)
+    return base, record, inputs
+
+
+def verify_execution_evidence(base, record, inputs, private_source=True):
+    """Verify bytes, provenance and isolation; never assert suite acceptance."""
+    validate_execution(record, inputs, base)
     pid = record.get('driver_pid')
     if type(pid) is not int or pid <= 0:
         raise ValueError('Missing actual driver PID')
@@ -111,7 +121,10 @@ def verify_completed(base):
     if command.exists() and str(base / 'driver.py').encode() in command.read_bytes().split(b'\0'):
         raise ValueError('Result-producing driver is still live')
     source = base / 'source'
-    protected(source, private=True, directory=True)
+    if private_source:
+        protected(source, private=True, directory=True)
+    elif source.resolve() != source or not source.is_dir() or source.stat().st_mode & 0o022:
+        raise ValueError('Failed-run source is redirected or writable by other users')
     for name, expected in [('driver.py', DRIVER_SHA256), ('isolate.sh', ISOLATION_SHA256),
                            ('isolation-probe.py', PROBE_SHA256)]:
         protected(base / name)
@@ -137,7 +150,6 @@ def verify_completed(base):
         protected(evidence / name, private=True)
         if digest(evidence / name) != expected:
             raise ValueError('Preserved report changed: ' + name)
-    validate_summary((evidence / 'ALL.OUT').read_text(), (evidence / 'standard.log').read_text())
     protected(base / 'outer-namespaces.json')
     if digest(base / 'outer-namespaces.json') != inputs['outer_namespace_file_sha256']:
         raise ValueError('Outer namespace reference changed')
@@ -168,11 +180,22 @@ def verify_completed(base):
     for relative, expected in verify(ROOT, Path('/mnt/lfs/sources'), source).items():
         if inputs['source_files'].get(relative) != {'sha256': expected}:
             raise ValueError('Frozen Tcl input was not in the execution manifest: ' + relative)
-    return {'standard_suite_verified': True, 'package_accepted': False,
+    return {'execution_evidence_verified': True, 'package_accepted': False,
             'fixture': str(base), 'source': str(source),
             'result_sha256': digest(base / 'result.json'),
             'input_manifest_sha256': digest(base / 'inputs.json'),
             'report_sha256': record['reports'], 'verified_input_files': len(inputs['source_files'])}
+
+
+def verify_completed(base):
+    base, record, inputs = open_terminal(base)
+    validate_record(record, inputs, base)
+    result = verify_execution_evidence(base, record, inputs)
+    evidence = base / 'result-evidence'
+    validate_summary((evidence / 'ALL.OUT').read_text(), (evidence / 'standard.log').read_text())
+    # Preserve the existing strict success interface only after every old gate.
+    result.pop('execution_evidence_verified')
+    return dict(result, standard_suite_verified=True)
 
 
 def main():

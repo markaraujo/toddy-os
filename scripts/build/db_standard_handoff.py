@@ -21,6 +21,11 @@ CANDIDATE = BUILD / 'h07-berkeley-db.standard-candidate.json'
 RECIPE = HERE / 'h07/berkeley-db-verified-production.sh'
 OLD_START = '2026-11-06T17:09:04.423666+00:00'
 OLD_RECIPE = 'cc31735563a41bcc8498e2afbd69214204892e76531e0eadae1dfe919f9f7dbd'
+# Exact terminal reports independently rechecked with native check_output.
+# They contain two real failures plus the ADR-0083 diagnostics. Archiving this
+# failed attempt never substitutes for corrected-suite acceptance.
+OLD_ALL_OUT_SHA256 = '2f75c918ba8d713db23435355e62af25c3b4b623f1c5a802d09d41b1e2ccab7c'
+OLD_STANDARD_SHA256 = '2d0441963aad69dda37ee0f26fd4814ea35541bec2e5008390eb6a8779c38283'
 FAILURES = [
     'FAIL: run_subsystem: other_repmgr repmgr007:  FAIL:00:42:16 (00:00:00) errchk: expected 1, got 0',
     'FAIL: run_subsystem: multi_repmgr repmgr100:  Skipping: db_repsite executable not found.  Is it built?']
@@ -53,11 +58,9 @@ def validate_original(paths):
             lines[-2] != 'Regression Tests Failed' or
             not re.fullmatch(r'Test suite run completed at: \d{2}:\d{2} \d{2}/\d{2}/(?:\d{2}|\d{4})', lines[-1])):
         raise ValueError('Original suite has additional failures or is incomplete')
-    stdout = paths['standard.log'].read_text().splitlines()
-    unexpected = [line.removeprefix('UNEXPECTED OUTPUT: ') for line in stdout
-                  if line.startswith('UNEXPECTED OUTPUT: ')]
-    if unexpected != FAILURES or not stdout or stdout[-1] != 'Complete DB regression summary failed':
-        raise ValueError('Original standard output has an unexplained result')
+    if (digest(paths['ALL.OUT']) != OLD_ALL_OUT_SHA256
+            or digest(paths['standard.log']) != OLD_STANDARD_SHA256):
+        raise ValueError('Original reports differ from the independently diagnosed terminal evidence')
 
 
 def write_new(path, record):
