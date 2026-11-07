@@ -874,3 +874,12 @@ networking remains pending. Read frozen LFS 13.1-systemd sections 10.3/10.4
 and ADR-0046/0085; start production kernel/configuration through the guarded
 driver, preserving prior private builds. Do not perform boot-sector writes
 until kernel/configuration results and recovery boundaries are checked.
+
+## 2026-11-07 — H09 accepted; complete live assembly begins
+
+Production kernel/config/loader recipes passed 0/0. Both actual native BIOS/UEFI
+boots passed Systemd, C and Kmod checks and powered off with unchanged backing
+hashes. Verified h09-boot-ready and restarted the builder; accepted H09 and
+started H10. ADR-0096 resolves the prepared media-tool dependency cycle while
+retaining separate H10 validation and H11 release profiles. Native console
+validation is prepared; no live/ISO acceptance is claimed yet.

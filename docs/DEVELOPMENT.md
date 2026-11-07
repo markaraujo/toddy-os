@@ -2,7 +2,7 @@
 
 ## Current scope
 
-Implementation is active. H01–H08 passed: 127 native packages, final dependency/ownership audits, verified H07 cold checkpoint and native identity/service/network configuration. H09 is building the production kernel and boot configuration. No foundation ISO or G1 exists yet. status.json and the latest evidence are authoritative; older driver notes below retain historical failure/recovery context. Berkeley DB delivery uses owner-approved focused validation (ADR-0092), not a claimed complete standard-suite pass.
+Implementation is active. H01–H09 passed: 129 native packages, accepted configuration/kernel/loader and actual BIOS/UEFI Systemd boots with C/Kmod checks. The h09-boot-ready cold pair is verified. H10 is building native media dependencies and assembling the live system (ADR-0096). No accepted foundation ISO or G1 exists yet. status.json and latest evidence are authoritative; older driver notes retain historical recovery context. Berkeley DB uses owner-approved focused validation (ADR-0092).
 
 ## Owner review boundary
 

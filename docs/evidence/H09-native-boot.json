@@ -1,0 +1,143 @@
+{
+  "steps": {
+    "kernel": {
+      "started": "2026-11-07T11:55:42.302412+00:00",
+      "finished": "2026-11-07T12:00:39.936686+00:00",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 12022,
+      "log_sha256": "e208b5db2e7a43e786bfbb6e8d1b4af698079275e81cd830d49fe332717aeafd",
+      "recipe_sha256": "56deffaa4e5520ee0cffb2521551ed3f062be3501ebdfa27a1d100247252c4d6",
+      "postcheck_sha256": "4a2b1b857b9da0c460c132326137051d8661dbc442e8feb5031394357fd8ea27"
+    },
+    "boot-config": {
+      "started": "2026-11-07T12:00:47.862807+00:00",
+      "finished": "2026-11-07T12:00:56.273147+00:00",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 15,
+      "log_sha256": "52ff56a5bfc27c7c986fdabbd0a15d9db60a9b5afb1ecc3f48176b3897b0f785",
+      "recipe_sha256": "877e9016582e45c4d6dce2b0b8618e8052067847e39cb179764066656243cae7",
+      "postcheck_sha256": "233da5178b0f729bf61fa665ad2507479cf27b946d42d4303f0db09e1071df98"
+    },
+    "bootloader": {
+      "started": "2026-11-07T12:01:22.684590+00:00",
+      "finished": "2026-11-07T12:01:34.839297+00:00",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 657,
+      "log_sha256": "07643d14d6d9c44a9d152ffcdb6a72c614f36d3bc880dfef56636105aa14cb4e",
+      "recipe_sha256": "31cfc3ec7f535fb4e47f0ac2c129074b43627b4abc3e0c3169f948d1b5885412",
+      "postcheck_sha256": "f922e18733ac9b2861740336654a0e2250e2e736765820648d487953cb8d07fb"
+    }
+  },
+  "files": {
+    "/var/log/toddy/build/h09-kernel.success.json": "f8bf497cbc0c0d4135c10c136947bb82d7738bc1d7a030fc2dafd103f5418b07",
+    "/var/log/toddy/build/h09-boot-config.success.json": "e376446365e6a212d2d3b2ff7303d42148fddf9bf7bf2d2d504d47445e9268a5",
+    "/var/log/toddy/build/h09-bootloader.success.json": "6eb164783409d476d9ed5437f9267dd105267cbb0b14a2b3187f2bc187e597e8",
+    "/mnt/lfs/sources/evidence/h09-kernel/installed-artifacts.json": "9e079d931910480038718b599ad58f2df6146eeb196ef2308cdab973ffe284fe",
+    "/mnt/lfs/sources/evidence/h09-kernel/configuration.json": "e2eb380dfeab11d3bfca11bb59f312006796bfc37940a874c78e60c70d9609cc",
+    "/mnt/lfs/sources/evidence/h09-bootloader/artifacts.json": "21de75dba1c1f40c3501c6c4076fd5d7f299a8eb099e42105a2bd5612aa30482"
+  },
+  "installed-artifacts": {
+    "files": {
+      "/boot/vmlinuz-7.1.8-toddy": {
+        "size": 15553536,
+        "sha256": "3ccb8a6c3f3e125542e3d6892e242af1d37e873833de27ee32e3951871a723a1"
+      },
+      "/boot/System.map-7.1.8-toddy": {
+        "size": 9331743,
+        "sha256": "ae9fb5f1cc894eef4cdafef6db57daf0b3b31e589bb4c9d1d34bcec3f740bd16"
+      },
+      "/boot/config-7.1.8-toddy": {
+        "size": 148814,
+        "sha256": "3ad1bf1ce1e1a844ac35a5c0c9769536bff6e30d9ae75dd20ee2341a9f544e0e"
+      }
+    },
+    "dummy_module": "/lib/modules/7.1.8-toddy/kernel/drivers/net/dummy.ko",
+    "boot_validated": false,
+    "hardware_support_claimed": false
+  },
+  "configuration": {
+    "requested_options": 139,
+    "resolved_sha256": "3ad1bf1ce1e1a844ac35a5c0c9769536bff6e30d9ae75dd20ee2341a9f544e0e",
+    "configuration_only": true,
+    "boot_validated": false
+  },
+  "package_count": 129,
+  "dpkg_audit": "",
+  "observed_at": "2026-11-07T12:14:26.011928+00:00",
+  "boots": [
+    {
+      "firmware": "bios",
+      "workspace": ".local/vm/boot-tests/h09-bios-91laxfs7",
+      "invocation": "python3 scripts/host/boot_test.py bios --checkpoint h09-boot-ready",
+      "commit": "5de57e8fd14cb876fcb1ef01c3404d8a8fc4f733",
+      "phase": "passed",
+      "native_report": {
+        "dummy_load_unload": true,
+        "firmware": "bios",
+        "installer_validated": false,
+        "iso_validated": false,
+        "kernel": "7.1.8-toddy",
+        "login_validated": false,
+        "native_c_execution": true,
+        "native_linkage": "linux-vdso.so.1 (0x00007fc16ed9f000)\n\tlibc.so.6 => /usr/lib/libc.so.6 (0x00007fc16eb98000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fc16eda1000)",
+        "pid1": "systemd",
+        "root_source": "/dev/vda4",
+        "virtualization": "kvm"
+      },
+      "qemu_exit": 0,
+      "checkpoint_unchanged": true,
+      "hashes": {
+        "result.json": "cf03b5bc35513eaedb578337c817cfe7a8d35afa32328e9ebb5b4d99ccb093f0",
+        "serial.log": "f1b5d73dacb15fc767772fbd13fa7dd2196e1b63793545ba858adac05e004b45",
+        "qemu.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "firmware": "uefi",
+      "workspace": ".local/vm/boot-tests/h09-uefi-l72lz1g0",
+      "invocation": "python3 scripts/host/boot_test.py uefi --checkpoint h09-boot-ready",
+      "commit": "5de57e8fd14cb876fcb1ef01c3404d8a8fc4f733",
+      "phase": "passed",
+      "native_report": {
+        "dummy_load_unload": true,
+        "firmware": "uefi",
+        "installer_validated": false,
+        "iso_validated": false,
+        "kernel": "7.1.8-toddy",
+        "login_validated": false,
+        "native_c_execution": true,
+        "native_linkage": "linux-vdso.so.1 (0x00007f0d38791000)\n\tlibc.so.6 => /usr/lib/libc.so.6 (0x00007f0d3858a000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f0d38793000)",
+        "pid1": "systemd",
+        "root_source": "/dev/vda4",
+        "virtualization": "kvm"
+      },
+      "qemu_exit": 0,
+      "checkpoint_unchanged": true,
+      "hashes": {
+        "result.json": "9209edb2d92017e6285d4ec9887c1b1674a8ebc81b4dd524d8b53385b2f648dc",
+        "serial.log": "07254c5758f19e38842286a3355992d95cc4f593dfaf1cfce5763f4732e93817",
+        "qemu.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "checkpoint": {
+    "name": "h09-boot-ready",
+    "created_utc": "2026-11-07T12:01:39.316637+00:00",
+    "base_sha256": "04e8f2461a16a44e78a370284471f29616cdd9baf1893df25807b71f985b6c94",
+    "disks": {
+      "builder": {
+        "file": "h09-boot-ready-builder.qcow2",
+        "sha256": "8ca06a77eafbd0d7def51bce9a35c470bb8ad1bc4bb66f506ce8fda097f4f316"
+      },
+      "target": {
+        "file": "h09-boot-ready-target.qcow2",
+        "sha256": "e2716a4173967b3b400279e87f635c562f369d1fec8b8b55a1c4987dd9612926"
+      }
+    }
+  },
+  "checkpoint_manifest_sha256": "db07aba2b3778ae6a4cfdfccd5d49f9b1ef63f238a27b09d2a50f7c2dfa420bc",
+  "chain_sha256": "82f1fe7efe08ad3038896411260459e52119d931c54376da204e0ff3ce08baee"
+}

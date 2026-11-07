@@ -1,6 +1,6 @@
 #!/bin/bash
 source /opt/toddy-build/scripts/build/h06/common.sh
-python3 /opt/toddy-build/scripts/build/h11/require_gate.py
+python3 /opt/toddy-build/scripts/build/h10/require_media_tools.py
 for package in libburn libisofs; do
  [[ -f /var/log/toddy/build/h11-$package.success.json ]] || exit 1
 done

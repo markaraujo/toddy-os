@@ -1,6 +1,6 @@
 #!/bin/bash
 source /opt/toddy-build/scripts/build/h06/common.sh
-python3 /opt/toddy-build/scripts/build/h11/require_gate.py
+python3 /opt/toddy-build/scripts/build/h10/require_media_tools.py
 chroot_run <<'INNER'
 set -euo pipefail
 [[ $(dpkg-query -W -f='${Status} ${Version}' libisofs) == 'install ok installed 1.5.8.pl02-1' ]]

@@ -25,7 +25,7 @@ import initramfs_input
 from compress_root import atomic_json
 from package_backend import PackageBackend
 
-VERSIONS = {'linux-kernel': '7.1.8-1', 'grub': '2.14-1', 'mtools': '4.0.50-1',
+VERSIONS = {'linux-kernel': '7.1.8-1', 'grub': '2.14-1+toddy1', 'mtools': '4.0.50-1',
             'libburn': '1.5.8-1', 'libisofs': '1.5.8.pl02-1', 'libisoburn': '1.5.8.pl02-1'}
 BUILD = Path('/var/log/toddy/build')
 digest = hybrid_media.digest
@@ -62,16 +62,16 @@ def packages(backend, versions=None):
     return evidence, files
 
 
-def archive_input(root, manifest, scripts=HERE.parent / 'h10'):
+def archive_input(root, manifest, scripts=HERE.parent / 'h10', *, release=True):
     manifest = initramfs_input.physical(root, manifest)
     report = json.loads(manifest.read_text())
     recorded = report.get('compression_binding', {})
-    if recorded.get('compression_bound') is not True or recorded.get('release_profile') is not True:
-        raise ValueError('Require a completed release-profile initramfs handoff')
+    if type(release) is not bool or recorded.get('compression_bound') is not True or recorded.get('release_profile') is not release:
+        raise ValueError('Require the exact completed initramfs assembly profile')
     compression_files = [Path(name) for name in recorded['evidence_sha256'] if Path(name).name == 'compression.json']
     if len(compression_files) != 1:
         raise ValueError('Require a unique bound compression report')
-    binding = initramfs_input.verify(root, compression_files[0], True, assembler=scripts / 'assemble_root.py')
+    binding = initramfs_input.verify(root, compression_files[0], release, assembler=scripts / 'assemble_root.py')
     if recorded != binding or report.get('rootfs_sha256') != binding['rootfs_sha256'] or report.get('epoch') != binding['epoch']:
         raise ValueError('Initramfs and compressed root belong to different generations')
     media_id = report.get('media_id', '')
@@ -101,8 +101,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('initramfs_manifest', type=Path)
     parser.add_argument('work', type=Path)
+    parser.add_argument('--validation', action='store_true',
+        help='H10 validation media only; require the H10 root profile and gate')
     args = parser.parse_args()
-    subprocess.run(['python3', str(HERE / 'require_gate.py')], check=True)
+    gate = HERE.parent / 'h10/require_gate.py' if args.validation else HERE / 'require_gate.py'
+    subprocess.run(['python3', str(gate)], check=True)
     backend = PackageBackend()
     root, work = backend.target, args.work
     with (BUILD / 'build.lock').open('a') as lock:
@@ -122,7 +125,7 @@ def main():
             if marker.get('recipe_exit') != 0 or marker.get('postcheck_exit') != 0:
                 raise ValueError('Required native media prerequisite failed: ' + step)
         initial_packages, files = packages(backend)
-        archive, binding, evidence = archive_input(root, args.initramfs_manifest)
+        archive, binding, evidence = archive_input(root, args.initramfs_manifest, release=not args.validation)
         inputs = {'boot/vmlinuz-7.1.8-toddy': root / 'boot/vmlinuz-7.1.8-toddy',
                   'boot/initramfs.cpio.gz': args.initramfs_manifest.parent / 'initramfs.cpio.gz',
                   'live/rootfs.squashfs': Path(binding['artifact'])}
@@ -144,7 +147,8 @@ def main():
             raise ValueError('Insufficient space for ISO payload, full readback and reserve')
         work.mkdir(mode=0o700)
         result = {'started': datetime.now(timezone.utc).isoformat(), 'work': str(work),
-                  'complete': False, 'release_accepted': False, 'native_kernel_boot_verified': False,
+                  'complete': False, 'release_accepted': False, 'validation_only': args.validation,
+                  'native_kernel_boot_verified': False,
                   'physical_hardware_tested': False, 'stages': [], 'native_packages': initial_packages,
                   'input_sha256': {str(inputs[name]): sha for name, sha in hashes.items()},
                   'initramfs_evidence_sha256': evidence, 'compression_binding': binding,

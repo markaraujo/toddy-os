@@ -1595,3 +1595,21 @@ durable launch log. It captures terminal exit at
 h09-boot-config under /var/log/toddy/build. It deliberately stops before
 bootloader installation. Preserve any failure/source/stage before recovery;
 never rerun mrproper over an unfinished or completed production build.
+
+### H09 accepted; H10 media dependencies and assembly
+
+The complete H09 chain exited zero. Both firmware runs and the verified cold
+pair are recorded in docs/evidence/H09-native-boot.json. The builder is running
+with kernel filesystems remounted. After committed input synchronization run
+`bash /opt/toddy-build/scripts/build/h10-tools-driver.sh` detached. Its terminal
+file is `/var/log/toddy/h10-tools-driver.exit`; each native package retains
+its run_step log/marker. A failed recipe is not permission to overwrite its
+source/stage; preserve it and diagnose before a targeted recovery.
+
+ADR-0096 permits media dependency construction during H10. Release assembly
+still requires H11. H10 uses assemble_root/compress_root/initramfs_archive
+without --release and assemble_iso.py with --validation. The resulting media
+is private validation input, not a distribution candidate. The host
+`live_boot_test.py ISO MANIFEST --firmware bios --medium cdrom` uses actual
+console login and retains its unique workspace under .local/vm/live-tests.
+Do not start a replacement guest while its recorded container remains active.
