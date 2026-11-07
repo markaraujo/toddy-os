@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 01:52 UTC
+Last verified: 2026-11-07 02:07 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Corrected complete Berkeley DB suite: block 4/27, Fop006.196, zero FAIL lines; driver 1107192 live. Original known-failed attempt: block 25/27, Recd003.e, two diagnosed failures; driver 1364 live. Guarded production handoff is prepared, not executed. APT runtime seccomp configuration corrected; eight native observer scenarios passed, actual acquisition still pending.
+Running: Corrected complete Berkeley DB suite: block 4/27, Fop008.33, zero FAIL lines; driver 1107192 live. Original known-failed attempt: block 25/27, Recd011.b (200 iterations), two diagnosed failures; driver 1364 live. Production handoff and APT acquisition remain pending. Independent release preparation passed native image QA removal/runtime checks; full image assembly is not yet executed.
 
 Remaining:
 

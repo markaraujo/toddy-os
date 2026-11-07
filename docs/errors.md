@@ -670,3 +670,14 @@ to false. Correction: explicitly enable it and require measured HTTPS worker
 IDs/groups, zero capabilities, no_new_privs and an additional kernel filter.
 Verification: eight native observer cases and the revised native TLS fixture
 passed; actual APT execution is still gated on Berkeley DB. See ADR-0070.
+
+
+2026-11-07 — Private image-exclusion probe initially reused the Python-only
+marker count for an entire configured dependency root and failed with 21 findings.
+The extra six were OpenSSL manuals; preserved fixture and raw failure are in
+ADR-0071. Corrected the assertion's scope to require all 15 QA findings removed
+and every other finding unchanged, then independently verified the exact manuals
+against frozen sources and native OpenSSL parsing. No scanner findings were
+suppressed and no full credential/image acceptance was granted. A variable-name
+collision in the new probe's changed-file case was also corrected before the
+successful rerun. The native component and runtime/source ownership checks pass.

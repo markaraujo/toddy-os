@@ -1050,3 +1050,19 @@ repository fixture. If APT traps a syscall, keep its exact diagnostic and native
 logs; do not disable the selected filter or add broad exceptions as a shortcut.
 The observer preflight can be repeated independently with
 python3 scripts/host/probe_apt_worker_observer.py; it does not test APT itself.
+
+
+The final image's optional Python QA exclusion is prepared in
+scripts/build/h11/remove_image_qa.py (ADR-0071). Invoke it only from the gated
+assembler after actual H11 ownership transfer and fresh payload/database staging.
+Keep its intent journal and native purge log outside the image. A native exit 0
+with complete=false is a failure: preserve that partial image, diagnose residual
+QA paths or metadata, and rebuild a fresh stage from verified inputs. Never
+remove tracked files by hand or reuse a partial attempt to force acceptance.
+Run final caches/indexes/ACL capture and package/credential audits after exclusion.
+Reproduce the private operation with
+python3 scripts/host/probe_python_qa_handoff_plan.py --image-removal.
+The exact six OpenSSL documentation-marker classifications can be reproduced
+with python3 scripts/host/probe_openssl_document_markers.py; retain raw scanner
+findings and require the exact reviewed hashes. This is not a whole-image
+credential pass and does not cover altered/new findings or arbitrary secrets.

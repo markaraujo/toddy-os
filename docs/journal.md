@@ -478,3 +478,13 @@ Added an observer to the real HTTPS repository install; inherited filters alone
 cannot satisfy it. Eight native process/filter scenarios and the exact TLS
 fixture passed. Full APT acquisition remains pending. Berkeley DB continues
 without active-input changes, and H07 remains 124 accepted packages.
+
+
+2026-11-07 — Implemented optional QA removal through native Dpkg in private
+image staging. A configured 22-package runtime retained all 3,943 Python core
+files/links after removing 5,396 QA entries; runtime imports/SQLite and the Dpkg
+audit passed. A separate untracked-remnant image correctly failed despite purge
+exit 0. Seven new refusal cases passed. Broader marker scanning found six OpenSSL
+manual examples in addition to the known 15 Python QA fixtures; source/archive
+and native-parser checks classify only those exact documentation bytes as format
+placeholders. Raw findings remain reported. Full image assembly remains pending.

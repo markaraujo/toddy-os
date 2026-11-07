@@ -11,11 +11,15 @@ import subprocess
 os.chdir(Path(__file__).resolve().parents[2])
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--transaction', action='store_true', help='Also configure a private native dependency closure and verify interrupted transfer')
+parser.add_argument('--image-removal', action='store_true', help='Also remove QA through native Dpkg in the private configured image')
 options = parser.parse_args()
+if options.image_removal:
+    options.transaction = True
 sources = {name: base64.b64encode((Path('scripts/build') / name).read_bytes()).decode()
            for name in ('package_backend.py', 'h11/python_qa.py', 'python_qa_handoff.py',
                         'stage_package.py', 'python_qa_bundle.py', 'prepare_python_qa.py',
-                        'python_qa_transfer.py', 'python_qa_transaction.py')}
+                        'python_qa_transfer.py', 'python_qa_transaction.py',
+                        'h11/remove_image_qa.py', 'h11/audit_private_key_material.py')}
 script = r'''from pathlib import Path
 import base64,copy,hashlib,json,re,shutil,subprocess,sys,tempfile,types
 sys.path.insert(0,'/opt/toddy-build/scripts/build')
@@ -107,6 +111,7 @@ try:
  else:raise AssertionError('Changed runtime accepted')
  core_record['payload'][runtime_path]=original_entry;assert check_bundle()==bundle
  transaction_result=None
+ image_removal_result=None
  if TRANSACTION:
   raw=backend.run('dpkg-query','-W','-f=${Package}\t${Version}\t${Architecture}\t${Status}\t${Depends}\t${Pre-Depends}\n',capture_output=True,text=True).stdout
   installed={}
@@ -176,12 +181,69 @@ try:
     'complete':recovered['complete'],'verification':recovered['verification'],
     'actions':[{key:value for key,value in step.items() if key in ('action','exit')} for step in recovered['actions']],
     'idempotent_repeat_added_no_native_actions':True,'idempotent_repeat_package_status_unchanged':True}
+  if IMAGE_REMOVAL:
+   remover=modules['h11/remove_image_qa.py'].remove_image_qa
+   audit_keys=modules['h11/audit_private_key_material.py'].scan
+   evidence=base/'image-removal';evidence.mkdir(mode=0o700)
+   initial_keys=audit_keys(target)
+   qa_key_findings=[row for row in initial_keys['findings'] if modules['python_qa_handoff.py'].is_qa(row['path'])]
+   other_key_findings=[row for row in initial_keys['findings'] if not modules['python_qa_handoff.py'].is_qa(row['path'])]
+   assert len(qa_key_findings)==15,initial_keys
+   image_status=digest(db/'status')
+   def refused(label,selected_image=target,selected_core=core_record,selected_qa=qa_record):
+    try:remover(backend,selected_image,selected_core,selected_qa,evidence/'not-created.json')
+    except ValueError as error:rejected.append({'case':label,'reason':str(error)})
+    else:raise AssertionError(label+' unexpectedly accepted')
+    assert not (evidence/'not-created.json').exists() and digest(db/'status')==image_status
+   refused('installed builder is not an image',selected_image=root)
+   changed=copy.deepcopy(qa_record)
+   changed['payload']['/usr/bin/unreviewed-runtime']=next(row for row in core_record['payload'].values() if 'sha256' in row)
+   refused('QA record contains an unrelated runtime file',selected_qa=changed)
+   maintainer=db/'info/python-test-support.postrm';maintainer.write_text('#!/bin/sh\nexit 0\n')
+   refused('QA maintainer script is not authorized');maintainer.unlink()
+   listing=db/'info/python-test-support.list';prior_list=listing.read_bytes()
+   listing.write_bytes(prior_list+b'/usr/bin/unreviewed-runtime\n')
+   refused('unexpected QA database ownership');listing.write_bytes(prior_list)
+   changed_relative=next(path for path in plan['transferred_paths'] if path.endswith('.py'))
+   changed_path=target/changed_relative.lstrip('/');original_bytes=changed_path.read_bytes();original_time=changed_path.stat().st_mtime_ns
+   changed_path.write_bytes(original_bytes+b'\n# changed private QA fixture\n')
+   refused('changed installed image QA bytes');changed_path.write_bytes(original_bytes);os.utime(changed_path,ns=(original_time,original_time))
+   # A separate real image demonstrates that successful Dpkg exit alone is
+   # insufficient: untracked QA remnants must fail the postcondition.
+   residual=base/'residual-qa-image';shutil.copytree(target,residual,symlinks=True)
+   extra=residual/'usr/lib/python3.14/test/toddy-untracked.txt';extra.write_text('private residual fixture\n')
+   try:remover(backend,residual,core_record,qa_record,evidence/'residual.json')
+   except ValueError as error:
+    assert 'residual data' in str(error),str(error)
+    rejected.append({'case':'untracked QA after actual native purge','reason':str(error)})
+   else:raise AssertionError('Untracked image QA data accepted')
+   partial=json.loads((evidence/'residual.json').read_text())
+   assert partial['native_exit']==0 and not partial['complete'] and extra.is_file(),partial
+   removed=remover(backend,target,core_record,qa_record,evidence/'removed.json')
+   assert removed['complete'] and removed['native_exit']==0,removed
+   final_keys=audit_keys(target)
+   assert final_keys['findings']==other_key_findings,final_keys
+   runtime=subprocess.run(['chroot',str(target),'/usr/bin/env','-i','PATH=/usr/bin:/usr/sbin','LC_ALL=C',
+    '/usr/bin/python3','-I','-B','-c','import ssl, sqlite3, ctypes, unittest; db=sqlite3.connect(":memory:"); assert db.execute("select 6*7").fetchone()==(42,); unittest.TestCase().assertTrue(ssl.OPENSSL_VERSION); print("NATIVE_RUNTIME_WITHOUT_QA_OK", ssl.OPENSSL_VERSION)'],capture_output=True,text=True,check=True)
+   try:remover(backend,target,core_record,qa_record,evidence/'removed.json')
+   except ValueError as error:
+    assert 'Preserve prior' in str(error),str(error)
+    rejected.append({'case':'existing removal attempt is preserved','reason':str(error)})
+   else:raise AssertionError('Existing removal journal overwritten')
+   image_removal_result={'complete':True,'native_removal':removed,'residual_qa_rejection':partial,
+    'native_logs':{p.name:p.read_text() for p in evidence.glob('*.dpkg.log')},
+    'key_marker_audit_before':initial_keys,'key_marker_audit_after':final_keys,
+    'qa_key_marker_findings_removed':len(qa_key_findings),
+    'remaining_marker_findings_require_separate_review':len(other_key_findings),
+    'release_credential_audit_accepted':False,
+    'runtime_exit':runtime.returncode,'runtime_stdout':runtime.stdout,'release_image_or_boot_accepted':False}
  assert digest(root/'var/lib/dpkg/status')==before
  print(json.dumps({'plan':plan,'bundle':bundle,'bundle_native_archive_controls':controls,
   'bundle_archive_sha256':{'core':core_record['archive_sha256'],'qa':qa_record['archive_sha256']},
   'native_archive_reextraction_matches_complete_payloads':True,'compression_threads':2,
   'negative_cases':rejected,'restored_staging_accepted':True,
   'private_configured_transaction':transaction_result,
+  'private_image_qa_removal':image_removal_result,
   'actual_installed_bytes_modes_owners_timestamps_checked':True,
   'installed_status_unchanged':True,'native_package_cache_changed':False,'production_cli_dispatched':False,
   'source_sha256':{name:hashlib.sha256(base64.b64decode(body)).hexdigest() for name,body in SOURCES.items()},
@@ -190,11 +252,11 @@ except BaseException:
  print('Preserved Python QA handoff fixture:',base,flush=True)
  raise
 else:shutil.rmtree(base)
-'''.replace('SOURCES', repr(sources)).replace('TRANSACTION', repr(options.transaction))
+'''.replace('SOURCES', repr(sources)).replace('TRANSACTION', repr(options.transaction)).replace('IMAGE_REMOVAL', repr(options.image_removal))
 r = subprocess.run(['python3', 'scripts/host/vm.py', 'ssh',
                     'source /opt/toddy-build/scripts/build/target.sh; guard_target && python3 -'],
                    input=script, text=True, capture_output=True)
-p = Path('.local/logs/h11-python-qa-' + ('transaction' if options.transaction else 'handoff-plan') + '-probe.json')
+p = Path('.local/logs/h11-python-qa-' + ('image-removal' if options.image_removal else 'transaction' if options.transaction else 'handoff-plan') + '-probe.json')
 data = (json.dumps({'exit': r.returncode, 'stdout': r.stdout, 'stderr': r.stderr}, indent=2) + '\n').encode()
 sha = hashlib.sha256(data).hexdigest()
 p.with_name(p.stem + '.' + sha + '.json').write_bytes(data)

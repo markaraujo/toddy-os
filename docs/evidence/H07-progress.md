@@ -1275,3 +1275,19 @@ Original: Recd003.e: remove dups 1 at a time prepare-commit; same two failures.
 Corrected: Fop006.196: truncate (a) 0 commit;  rename (foo b) no such file.  Files remaining: b a.; zero failures.
 Raw .local/logs/h07-db-standard-progress-<sha256>.json SHA-256:
 f31ecc5d75d5575b9ca73827db06d74d1b109fc92e2adc4e9ab3cfae6c3066a5.
+
+
+2026-11-07 — While both complete Berkeley DB runs continue, independent
+release preparation verified native optional Python QA exclusion in a private
+configured root (ADR-0071): 5,396 QA entries removed, 3,943 runtime files/links
+preserved, 22 packages retained and native runtime/database checks passed.
+A controlled residual-data case correctly failed after successful Dpkg exit.
+This is component preparation only; H07 still has 124 accepted packages and
+H10/H11/G1 remain unaccepted.
+
+
+2026-11-07 02:07 UTC — Original driver 1364 remains live in Recd011.b (200 iterations),
+block 25/27, with the same two failures. Corrected driver 1107192 remains live
+in Fop008.33, block 4/27, zero FAIL lines. Raw observation SHA-256:
+c32c917dc2d6ae0b0f870a48a2973f9d346823c6338ee491f0279f1cfc4146b2
+(.local/logs/h07-db-standard-progress-<sha256>.json). No suite/package acceptance.
