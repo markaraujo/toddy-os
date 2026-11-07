@@ -1,0 +1,36 @@
+{
+  "disks": {
+    "builder-base.img": {
+      "sha256": "04e8f2461a16a44e78a370284471f29616cdd9baf1893df25807b71f985b6c94",
+      "bytes": 621284352,
+      "hash_seconds": 0.528
+    },
+    "builder.qcow2": {
+      "sha256": "3afd7b7232c7c59140a9e69f622e9c76c400c5b8598362ba2e27ea1cf41f9292",
+      "bytes": 9028042752,
+      "hash_seconds": 6.988,
+      "check": "No errors were found on the image.\n137714/524288 = 26.27% allocated, 6.48% fragmented, 0.00% compressed clusters\nImage end offset: 9028042752"
+    },
+    "lfs-target.qcow2": {
+      "sha256": "b9d57498e76087c56e06bf50b1175c4e569af8713ae4f497bf922340617f66e1",
+      "bytes": 139424366592,
+      "hash_seconds": 126.127,
+      "check": "No errors were found on the image.\n2127077/2949120 = 72.13% allocated, 5.83% fragmented, 0.00% compressed clusters\nImage end offset: 139424366592"
+    },
+    "seed.img": {
+      "sha256": "08a6721745330569cb653c47bd4e00e377d2709415569729c7552f43ec69e12f",
+      "bytes": 374784,
+      "hash_seconds": 0.001
+    }
+  },
+  "source_commit_at_nomination": "cec4f096638c213f7bda09ff8a72a2cee36388c3",
+  "read_only_backing_mount": true,
+  "writable_mount": "phase2 overlays only",
+  "build_resources": {
+    "vcpus": 12,
+    "ram_mib": 12288,
+    "initial_make_jobs": 8,
+    "host_free_reserve_gib": 100
+  },
+  "physical_hardware": "pending"
+}

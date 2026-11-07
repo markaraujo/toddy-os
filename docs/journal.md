@@ -1426,3 +1426,14 @@ errors after approval changed. The authorization commit was published before thi
 failure was reviewed. Resetting fixture authorization with fixture milestones fixes
 that inconsistency; the corrected 201-test run passes. Clone/runtime evidence will
 be recorded separately after execution.
+
+
+## 2026-11-07 — B01 accepted-foundation disposable clone inventoried
+
+Cold post-H13 builder/target hashes and qcow2 checks passed; new KVM clone writes
+only separate overlays, with original images mounted read-only. Actual guarded
+native Dpkg audit/APT check passed. Existing full runner scan measured 18.714 s
+for 4.56 GB/71,416 regular files. B01-A complete; B01/G2 remain unaccepted.
+Four start/access/backing guard regressions pass. Initial boot-readiness SSH
+failure received one successful post-boot retry without dispatch/replay.
+Next: qualify isolated unprivileged staging, then native dependency/engine spikes.
