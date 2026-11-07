@@ -1633,3 +1633,20 @@ Their journals remain failed; separate regression evidence never relabels them.
 If media generation fails after creating output, preserve its exact directory
 and diagnose that stage. Never discard or rebuild an accepted compressed root
 merely because an independent media step failed.
+
+### Checkpoint retention before release-image assembly
+
+To preserve the workstation's 100 GiB reserve, retired only the superseded
+h07-native-support builder/target pair after re-reading and matching both full
+retained h07-final-base and h09-boot-ready pairs against their original SHA-256.
+All project qcow2 backing headers were inspected: none depends on the retired
+pair. The two actual native boot overlays reference h09-boot-ready, and the
+builder uses its current standalone target and the retained builder-base image.
+The retired manifest and durable deletion receipt remain in the checkpoint
+directory; h07-native-support is no longer a selectable restore point.
+
+Use h07-final-base for the accepted pre-boot-sector base or h09-boot-ready for
+the accepted bootable kernel/loader base. Source archives, package archives,
+failed image generations, raw test evidence and all other checkpoints remain.
+See docs/evidence/H11-checkpoint-retention.json for the exact retained hashes,
+removed filenames and measured available space. No physical disk was touched.

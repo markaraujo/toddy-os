@@ -1,0 +1,127 @@
+{
+  "retained_verified_pairs": {
+    "h07-final-base": {
+      "builder": {
+        "file": "h07-final-base-builder.qcow2",
+        "sha256": "a19c5c75dda427a45fffdb33bfbd66f7f5c753ba18abd3dd37a0adf8bf7fb154",
+        "bytes": 6496976896
+      },
+      "target": {
+        "file": "h07-final-base-target.qcow2",
+        "sha256": "661aa05b98cafd4468188d10ea868c4122908b11e83d643c6f4ab3d65a5134fe",
+        "bytes": 100395450368
+      }
+    },
+    "h09-boot-ready": {
+      "builder": {
+        "file": "h09-boot-ready-builder.qcow2",
+        "sha256": "8ca06a77eafbd0d7def51bce9a35c470bb8ad1bc4bb66f506ce8fda097f4f316",
+        "bytes": 6497894400
+      },
+      "target": {
+        "file": "h09-boot-ready-target.qcow2",
+        "sha256": "e2716a4173967b3b400279e87f635c562f369d1fec8b8b55a1c4987dd9612926",
+        "bytes": 100689117184
+      }
+    }
+  },
+  "retirement_candidate": {
+    "name": "h07-native-support",
+    "created_utc": "2026-11-06T17:03:54.802943+00:00",
+    "base_sha256": "04e8f2461a16a44e78a370284471f29616cdd9baf1893df25807b71f985b6c94",
+    "disks": {
+      "builder": {
+        "file": "h07-native-support-builder.qcow2",
+        "sha256": "15ae02e094dc1703a94e5ff88df2c37bff1d6888b9c9a25a58103ea9d54470fd"
+      },
+      "target": {
+        "file": "h07-native-support-target.qcow2",
+        "sha256": "6ab9dfda166f0d01bc48c247cec0a9c0c3613fc138125b61d2f85a64c1a5eaf1"
+      }
+    }
+  },
+  "reason": "Superseded partial H07 checkpoint; retain accepted H07 and booted H09 pairs to recover, while preserving 100 GiB host reserve for fresh release assembly.",
+  "retirement_complete": true,
+  "host_free_before": 114045661184,
+  "removed": [
+    {
+      "file": "h07-native-support-builder.qcow2",
+      "allocated_bytes": 6450266112
+    },
+    {
+      "file": "h07-native-support-target.qcow2",
+      "allocated_bytes": 76663689216
+    }
+  ],
+  "backing_audit": [
+    {
+      "image": "builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h07-native-crypto-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h09-boot-ready-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h07-native-support-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h05-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h07-final-base-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h04-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h01-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h03-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h07-native-math-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h07-gcc-tested-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h07-native-services-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h06-ready-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h07-early-base-builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "checkpoints/h06-ready-before-restore-20261106T021340082469/builder.qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "image": "boot-tests/h09-bios-91laxfs7/target.qcow2",
+      "backing": "/checkpoint/target.qcow2"
+    },
+    {
+      "image": "boot-tests/h09-uefi-l72lz1g0/target.qcow2",
+      "backing": "/checkpoint/target.qcow2"
+    }
+  ],
+  "host_free_after": 197159612416
+}
