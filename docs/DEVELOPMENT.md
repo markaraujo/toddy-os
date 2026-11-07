@@ -147,3 +147,11 @@ separate complete corrected standard run now uses verified native inputs and
 private namespaces; it must finish with strict success before production
 handoff. The earlier waiting serial-retry supervisor was disarmed. See the last
 RECOVERY section for actual driver paths/PIDs; do not start duplicate tests.
+
+
+The composed fresh-root assembler is prepared at h10/assemble_root.py
+(ADR-0072), with distinct H10 and H11 --release gates. Its standalone CLI owns
+the build lock, preserves per-stage evidence and refuses existing generations.
+Native owned-payload/metadata checks pass in a private eleven-package root;
+full source readiness still correctly refuses the unfinished H07 shared Info
+index. Complete positive assembly, remaining image audits and boot are pending.

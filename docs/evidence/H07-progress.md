@@ -1300,3 +1300,13 @@ were checked and terminal exit files remain absent. Raw observation SHA-256:
 (.local/logs/h07-db-standard-progress-<sha256>.json). H07 remains 124/126; independent
 image marker-review preparation passed its actual native probe (ADR-0071),
 without changing the installed base or granting milestone credit.
+
+
+2026-11-07 02:27 UTC — Both Berkeley drivers remain live with unchanged process
+identities and absent terminal exits. Original: Recd004.c in the next rbtree
+recovery configuration (block 25/27), the same two failures. Corrected:
+Fop008.219 (block 4/27), zero FAIL entries. Raw observation SHA-256:
+8bd1860ef2ea99e10c4d9cdcde16057ad7f85cd467207419c682d11eaf66b3bf
+(.local/logs/h07-db-standard-progress-<sha256>.json). Independent root-assembly
+preparation and actual native payload-audit checks are recorded in ADR-0072;
+H07 remains 124/126 accepted packages, with no new milestone credit.

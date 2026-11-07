@@ -500,3 +500,13 @@ and results are preserved, and the installed builder remained unchanged. All
 identities and no terminal exits. Original recovery reached Recd012, iteration 43,
 with the same two known failures; the corrected full suite reached Fop008.103
 without FAIL entries. No duplicate build or active-input synchronization occurred.
+
+
+2026-11-07 — Composed fresh native root assembly with an exclusive build lock,
+shared Dpkg read transaction, staged reports and separate H10/H11 profiles
+(ADR-0072). Independent payload checks verified 19,170 owned entries in an
+actual eleven-package private root and rejected ten corruption/refusal cases.
+Both premature production profiles and six unsafe output layouts were refused.
+Actual source readiness preserved its failed journal at the known H07 Info-index
+obligation; no complete image or later milestone was accepted. Installed source
+state and the two running Berkeley suites were left unchanged.

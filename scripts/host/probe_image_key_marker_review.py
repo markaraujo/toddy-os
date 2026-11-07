@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Exercise marker review in an actual private native OpenSSL package closure."""
 import base64
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -56,6 +57,51 @@ try:
    *('/'+str(path.relative_to(root)) for path in archives),stdout=log,stderr=subprocess.STDOUT)
   backend.run('dpkg','--root=/'+str(image.relative_to(root)),'--configure','--pending',stdout=log,stderr=subprocess.STDOUT)
  def check():return review(backend,image)
+ payload_result=None
+ if PAYLOAD_AUDIT:
+  from image_payload import audit as audit_payload
+  def payload_check():return audit_payload(backend,image)
+  payload_positive=payload_check()
+  assert payload_positive['owned_payload_check_passed'] and payload_positive['configured_packages']==len(selected)
+  assert not payload_positive['unowned_generated_state_audited'] and not payload_positive['dependency_closure_verified']
+  payload_cases=[]
+  def payload_failure(label):
+   result=payload_check();assert not result['owned_payload_check_passed'] and result['findings'],label
+   payload_cases.append({'case':label,'findings':result['findings']})
+  executable=image/'usr/bin/openssl';original=executable.read_bytes();metadata=executable.stat()
+  executable.write_bytes(original+b'\nprivate corruption probe\n');payload_failure('changed executable bytes')
+  executable.write_bytes(original);os.utime(executable,ns=(metadata.st_atime_ns,metadata.st_mtime_ns))
+  conffile=image/(db/'info/openssl.conffiles').read_text().splitlines()[0].lstrip('/')
+  config_bytes=conffile.read_bytes();config_stat=conffile.stat()
+  conffile.write_bytes(config_bytes+b'\n# unqualified private configuration change\n');payload_failure('changed ordinary conffile')
+  conffile.write_bytes(config_bytes);os.utime(conffile,ns=(config_stat.st_atime_ns,config_stat.st_mtime_ns))
+  held=executable.with_suffix('.private-held');executable.rename(held);payload_failure('missing recorded executable');held.rename(executable)
+  alias=image/'lib';original_link=alias.readlink();alias.unlink();alias.symlink_to('usr/share')
+  payload_failure('changed owned link');alias.unlink();alias.symlink_to(original_link)
+  os.chown(executable,1,0);payload_failure('changed numeric file owner');os.chown(executable,metadata.st_uid,metadata.st_gid)
+  directory=image/'usr/share/doc/openssl';mode=directory.stat().st_mode & 0o7777
+  directory.chmod(0o700);payload_failure('changed owned directory mode');directory.chmod(mode)
+  sums=db/'info/openssl.md5sums';sum_bytes=sums.read_bytes()
+  sums.write_bytes(b'0'*32+sum_bytes[32:]);payload_failure('changed native MD5 value');sums.write_bytes(sum_bytes)
+  def payload_refused(label,call):
+   try:call()
+   except ValueError as error:payload_cases.append({'case':label,'reason':str(error)})
+   else:raise AssertionError(label+' was accepted')
+  listing=db/'info/openssl.list';list_bytes=listing.read_bytes()
+  listing.write_bytes(list_bytes+b'/usr/bin/unowned-private-probe\n')
+  payload_refused('extra native ownership path',payload_check);listing.write_bytes(list_bytes)
+  bad=base/'payload-bad-records';bad.mkdir()
+  for name in selected:
+   version,arch,_=installed[name];filename=f'{name}_{version}_{arch}.json'
+   data=json.loads((Path('/var/log/toddy/packages')/filename).read_text())
+   if name=='openssl':data['archive_sha256']='0'*64
+   (bad/filename).write_text(json.dumps(data))
+  payload_refused('changed own archive identity',lambda:audit_payload(backend,image,records_directory=bad))
+  payload_refused('live transformation without owned base configuration',lambda:audit_payload(backend,image,live_profile=True))
+  restored=payload_check();assert restored['owned_payload_check_passed'] and not restored['qualified_live_transformations']
+  payload_result={'positive':payload_positive,'negative_cases':payload_cases,'restored_owned_payload_passed':True,
+   'component_sha256':digest(base/'image_payload.py'),'live_profile_positive_verified':False,
+   'full_image_accepted':False}
  passed=check()
  assert passed['private_key_marker_check_passed'] and len(passed['raw_scan']['findings'])==6
  assert len(passed['qualified_document_examples'])==6 and not passed['unresolved_findings']
@@ -104,6 +150,7 @@ try:
  final=check();assert final['raw_scan']['findings']==passed['raw_scan']['findings'] and final['private_key_marker_check_passed']
  assert digest(root/'var/lib/dpkg/status')==before
  result={'fixture':str(base),'configured_packages':sorted(selected),'positive':passed,'negative_cases':cases,
+  'payload_audit':payload_result,
   'native_install_log':(base/'native-install.log').read_text(),
   'native_install_log_sha256':digest(base/'native-install.log'),'builder_status_sha256':before,
   'installed_target_modified':False,'component_sha256':digest(base/'review_image_key_markers.py'),
@@ -118,8 +165,17 @@ except BaseException:
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--payload', action='store_true', help='Also verify owned image payload and native metadata against real corruption cases')
+    options = parser.parse_args()
+    sources = dict(SOURCES)
+    if options.payload:
+        for name in ('image_payload.py', 'fresh_directories.py', 'live_accounts.py',
+                     'live_configuration.py', 'root_inventory.py', 'package_database.py'):
+            sources[name] = base64.b64encode((ROOT / 'scripts/build/h10' / name).read_bytes()).decode()
     result = subprocess.run(ssh_args() + ['python3 -B -'],
-        input='SOURCES=' + repr(SOURCES) + '\n' + REMOTE, text=True, capture_output=True, timeout=600)
+        input='SOURCES=' + repr(sources) + '\nPAYLOAD_AUDIT=' + repr(options.payload) + '\n' + REMOTE,
+        text=True, capture_output=True, timeout=600)
     raw = (result.stdout + result.stderr).encode()
     sha = hashlib.sha256(raw).hexdigest()
     path = ROOT / '.local/logs' / ('h11-image-key-marker-review-' + sha + '.log')
@@ -133,6 +189,7 @@ def main():
     print(json.dumps({'configured_packages': len(report['configured_packages']),
         'qualified_examples': len(report['positive']['qualified_document_examples']),
         'negative_cases': len(report['negative_cases']), 'real_private_key_rejected': report['real_private_key_rejected'],
+        'payload_negative_cases': len(report['payload_audit']['negative_cases']) if report['payload_audit'] else None,
         'whole_image_credential_audit_accepted': False}))
 
 

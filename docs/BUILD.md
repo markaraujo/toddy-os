@@ -296,3 +296,21 @@ The command exits nonzero for unresolved armor findings or unread special nodes.
 It retains all raw findings, including exact source/package/parser-qualified
 OpenSSL manual examples. Its success covers only that narrow marker check;
 the separate full credential, identity, payload and release gates still apply.
+
+
+Fresh uncompressed root assembly is prepared in h10/assemble_root.py (ADR-0072).
+After H09 acceptance, H10 in progress and actual native Squashfs tool acceptance,
+invoke the standalone CLI in the guarded builder:
+
+```sh
+python3 -B /opt/toddy-build/scripts/build/h10/assemble_root.py /mnt/lfs/sources/stage/h10-live-root /mnt/lfs/sources/stage/h10-live-root-evidence
+```
+
+Both destinations must be absent. This CLI owns build.lock; do not wrap it in
+run_step.py. It preserves each component report and a durable assembly journal
+outside the image. After H10 acceptance and H11's actual Python ownership
+transfer, refresh a separate release generation using --release and two new
+paths. Root assembly still requires generated/unowned/dependency, complete
+credential/license, compression/initramfs and actual boot checks. Current native
+probes verify component behavior and readiness refusal; full positive assembly
+has not run. Never change the gates to exercise it early.

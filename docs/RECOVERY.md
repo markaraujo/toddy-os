@@ -1077,3 +1077,20 @@ do not modify the reviewed constants to bypass a finding. The private component
 probe is python3 scripts/host/probe_image_key_marker_review.py. It retains its
 native log and all results under .local/logs/h11-image-key-marker-review-<sha>.log;
 unexpected failures preserve the printed disposable fixture path.
+
+
+Root assembly (ADR-0072) preserves assembly.json and numbered component reports
+in its separate private evidence directory. An unfinished action timestamp or
+assembled=false means incomplete work even if a root directory or Tar exists.
+Inspect its stage, native failure output, reports and source stability before
+retry. Preserve that generation and select two new paths; no in-place resume,
+merge or overwrite mode exists. The CLI owns the exclusive build lock itself,
+so do not nest it under run_step.py.
+
+Current source readiness refuses the known H07 /usr/share/info/dir obligation
+from ADR-0057. Complete normal H07 metadata closure, then H08/H09 acceptance;
+do not remove that index or rewrite records during the active Berkeley suite.
+Private reproduction: python3 scripts/host/probe_root_assembly_preflight.py.
+This diagnostic expects today's incomplete H07 state and must be revised after
+real closure, not used as a permanent positive production test. Independent
+payload checks: python3 scripts/host/probe_image_key_marker_review.py --payload.

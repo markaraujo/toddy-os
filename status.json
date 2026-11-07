@@ -477,14 +477,14 @@
   ],
   "active_work": {
     "story": "H07",
-    "verified_at": "2026-11-07 02:15 UTC",
+    "verified_at": "2026-11-07 02:27 UTC",
     "verified": [
       "124 of 126 currently planned H07 packages installed, configured and accepted; 2 pending (Berkeley DB and APT). All 124 have own-build/source provenance.",
       "Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.",
       "Full ACL retest, API/layout ownership and native configuration correction passed.",
       "Verified paired cold checkpoint at the 124-package boundary."
     ],
-    "running": "Corrected complete Berkeley DB suite: block 4/27, Fop008.103, zero FAIL lines; driver 1107192 live. Original known-failed attempt: block 25/27, Recd012 iteration 43, two diagnosed failures; driver 1364 live. Production handoff and APT acquisition remain pending. Independent staged-image marker review passed in an eleven-package native root with nine negative cases; full image assembly is not yet executed.",
+    "running": "Corrected complete Berkeley DB suite: block 4/27, Fop008.219, zero FAIL lines; driver 1107192 live. Original known-failed attempt: block 25/27, Recd004 in the rbtree recovery configuration, two diagnosed failures; driver 1364 live. Production handoff and APT acquisition remain pending. Fresh-root orchestration is prepared; independent native image payload checks passed for 19,170 owned entries with ten corruption/refusal cases. Full root assembly remains gated and unexecuted.",
     "remaining": [
       "Finish the complete database suite, then production install and transaction/reopen postchecks; later access-method matrix plans 135 x 9 dispatch entries, including inapplicable skips.",
       "Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.",
