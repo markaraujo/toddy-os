@@ -23,4 +23,11 @@ def locked_source(root, filename):
             for row in supplemental['components']:
                 if row['filename'] == filename:
                     return dict(row)
+    phase2_path = root/'config/phase2/sources.lock.json'
+    if phase2_path.exists():
+        phase2 = json.loads(phase2_path.read_text())
+        if phase2['status'] == 'frozen_for_phase2_build':
+            for row in phase2['components']:
+                if row['filename'] == filename:
+                    return dict(row)
     return None

@@ -2411,6 +2411,30 @@
         "Contains only the reviewed regression roots and a copy of the original Python copyright notice; the bundled pip runtime is not part of this QA package.",
         "Public upstream test credentials remain available only in the builder QA package and are excluded from release media."
       ]
+    },
+    {
+      "name": "glib",
+      "version": "2.88.3",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Source COPYING; retain per-file and bundled notices through source_notices.py"
+    },
+    {
+      "name": "gobject-introspection",
+      "version": "1.86.0",
+      "license": "LGPL-2.0-or-later AND GPL-2.0-or-later",
+      "evidence": "Source COPYING distinguishes typelib library LGPLv2+ and tools GPLv2+ compatible; retain COPYING.LGPL/COPYING.GPL and bundled notices"
+    },
+    {
+      "name": "pygobject",
+      "version": "3.56.3",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Source COPYING and per-file notices"
+    },
+    {
+      "name": "nodejs",
+      "version": "24.19.0",
+      "license": "MIT AND LicenseRef-Node-bundled-components",
+      "evidence": "Complete source LICENSE contains Node MIT and bundled component terms; bundled dependencies stay private, not foundation replacements"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

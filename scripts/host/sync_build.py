@@ -90,13 +90,20 @@ def stream_inputs(stream, root, metadata, sources, references):
         archive.addfile(marker,io.BytesIO(data))
 
 
-def main():
+def main(metadata_only=False):
     lock = json.loads((ROOT/'config/sources.lock.json').read_text())
     if lock['status'] != 'verified':
         raise SystemExit('Source lock not verified')
     rows = list(lock['packages'])
     metadata = ['scripts/build','LICENSES','status.json','config/component-licenses.json',
                 'config/books.lock.json','config/sources.lock.json']
+    phase2 = ROOT/'config/phase2/sources.lock.json'
+    if phase2.exists():
+        phase2_lock = json.loads(phase2.read_text())
+        if phase2_lock['status'] != 'frozen_for_phase2_build':
+            raise SystemExit('Phase 2 sources are not frozen')
+        rows += phase2_lock['components']
+        metadata.append('config/phase2/sources.lock.json')
     if (ROOT/'config/h08-bootstrap-config.json').exists():
         metadata.append('config/h08-bootstrap-config.json')
     if (ROOT/'config/live-account-baseline.json').exists():
@@ -123,7 +130,7 @@ def main():
             rows += data['components']
             metadata.append('config/'+filename)
     sources = {}
-    for row in rows:
+    for row in ([] if metadata_only else rows):
         path = safe_source(ROOT,row['filename'])
         if digest(path) != row['sha256']:
             raise SystemExit('Source mismatch before transfer: '+row['filename'])
