@@ -1094,3 +1094,13 @@ Added the owner's mandatory per-release portal update rule to AGENTS.md, the
 release checklist and development-harness contract. Version/download/checksum,
 translated copy, scope/limits and actual Pages verification belong to every
 release delivery; this gives no publishing credentials to the installed OS agent.
+
+
+## 2026-11-07 — Donation CTA suspended after owner checkout failure
+
+The owner reports PayPal's live checkout message: the organization is not
+eligible to receive donations. Disabled the public donation link while the
+account/product eligibility is investigated using official sources. Preserve
+the prior hosted identifier and verification limitations in historical evidence;
+do not change PayPal account details or imply a successful payment. Public
+supporter acknowledgment remains optional and no names are invented.
