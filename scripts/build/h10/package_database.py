@@ -14,12 +14,15 @@ from pathlib import Path, PurePosixPath
 import re
 import shutil
 import stat
+import threading
 
 LOCKS = ('lock-frontend', 'lock')
 DIRECTORIES = {'info', 'updates', 'parts', 'alternatives', 'triggers', 'methods',
                'methods/file', 'methods/ftp', 'methods/mnt', 'methods/media'}
 EMPTY_STATE = {*LOCKS, 'triggers/Lock', 'triggers/Unincorp'}
 QUERY = '${Package}\t${Version}\t${Architecture}\t${Status}\n'
+_ACTIVE_LOCKS = {}
+_LOCK_REGISTRY = threading.RLock()
 
 
 def digest(path):
@@ -29,30 +32,60 @@ def digest(path):
 
 @contextmanager
 def database_lock(database):
-    """Hold nonblocking POSIX read locks compatible with Dpkg's F_SETLK locks."""
+    """Share descriptor lifetime across nested native Dpkg read transactions.
+
+    Closing any descriptor for a POSIX-locked inode releases this process's
+    locks, even if another descriptor/context still needs them. Reuse the same
+    descriptors and close only after the last context exits. Registry changes
+    are serialized; the actual image work does not hold the registry mutex.
+    """
     database = Path(database)
     if database.resolve() != database or not database.is_dir():
         raise ValueError('Native database must be a physical canonical directory')
-    descriptors = []
-    try:
-        for name in LOCKS:
-            path = database / name
-            fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
-            descriptors.append(fd)
-            info = os.fstat(fd)
-            if (not stat.S_ISREG(info.st_mode) or info.st_uid != 0 or info.st_gid != 0
-                    or info.st_nlink != 1 or info.st_size != 0):
-                raise ValueError('Unexpected native package lock metadata')
+    info = database.stat()
+    key = (os.getpid(), info.st_dev, info.st_ino)
+    with _LOCK_REGISTRY:
+        held = _ACTIVE_LOCKS.get(key)
+        if held is not None:
+            # lstat/fstat do not reopen and close the locked inodes. Refuse
+            # replaced paths rather than accidentally acquiring another file.
+            for name, fd in zip(LOCKS, held['descriptors']):
+                actual, original = (database / name).lstat(), os.fstat(fd)
+                if (actual.st_dev, actual.st_ino) != (original.st_dev, original.st_ino):
+                    raise ValueError('Native lock inode changed during an active read transaction')
+            held['references'] += 1
+        else:
+            descriptors = []
             try:
-                fcntl.lockf(fd, fcntl.LOCK_SH | fcntl.LOCK_NB)
-            except OSError as error:
-                if error.errno not in (errno.EACCES, errno.EAGAIN):
-                    raise
-                raise ValueError('A package writer is active; preserve state and retry after completion') from error
+                for name in LOCKS:
+                    path = database / name
+                    fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
+                    descriptors.append(fd)
+                    info = os.fstat(fd)
+                    if (not stat.S_ISREG(info.st_mode) or info.st_uid != 0 or info.st_gid != 0
+                            or info.st_nlink != 1 or info.st_size != 0):
+                        raise ValueError('Unexpected native package lock metadata')
+                    try:
+                        fcntl.lockf(fd, fcntl.LOCK_SH | fcntl.LOCK_NB)
+                    except OSError as error:
+                        if error.errno not in (errno.EACCES, errno.EAGAIN):
+                            raise
+                        raise ValueError('A package writer is active; preserve state and retry after completion') from error
+            except BaseException:
+                for fd in reversed(descriptors):
+                    os.close(fd)
+                raise
+            held = {'descriptors': descriptors, 'references': 1}
+            _ACTIVE_LOCKS[key] = held
+    try:
         yield
     finally:
-        for fd in reversed(descriptors):
-            os.close(fd)
+        with _LOCK_REGISTRY:
+            held['references'] -= 1
+            if held['references'] == 0:
+                del _ACTIVE_LOCKS[key]
+                for fd in reversed(held['descriptors']):
+                    os.close(fd)
 
 
 def snapshot(database):

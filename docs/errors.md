@@ -611,3 +611,17 @@ new dependency or altered package build was needed. Failure evidence is in ADR-0
 The first directory probe tried to remove a nonempty minimal-runtime dev
 directory. It now verifies and removes only its own console/null fixture nodes
 before testing fresh full-root directories. No installed target path was changed.
+
+
+### Nested image database copy released the outer POSIX lock
+
+- Symptom: the native private Dpkg writer succeeded after an inner read-lock
+  context ended although its outer context was still active.
+- Cause: POSIX process locks are released when any descriptor for the locked
+  inode is closed; each nested context had opened its own descriptor pair.
+- Correction: reuse a process/database descriptor pair with reference-counted
+  lifetime and check path identity without reopening.
+- Verification: actual native writer exit 2 while nested, after inner exit and
+  inner exception; exit 0 only after final release. A real native database copy
+  nested in an outer transaction preserves both source locks. Full database
+  copy checks pass and installed state is unchanged. See ADR-0059 for hashes.

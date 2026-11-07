@@ -902,3 +902,13 @@ then final ACL capture/audits. Do not copy builder cache directories, merge a
 partial stage, or recursively chown existing image data to suppress a refusal.
 APT partial directories use image UID 100 and GID 0; APT acquisition is still
 unverified. Re-run the full root inventory after real H07 metadata closure.
+
+
+The image database lock now supports nested source transactions (ADR-0059).
+Reproduce with python3 scripts/host/probe_package_database.py. Require native
+writer refusal after inner context exit/exception and success only after the
+last context ends; the full nested database copy must preserve both source
+locks. Do not work around a lock refusal by deleting locks, reopening/closing
+the locked inode elsewhere, or bypassing the shared context manager. The
+pre-fix reproduction remains at /mnt/lfs/tmp/toddy-package-database-heol_10o.
+A failed copy is preserved; retry into a fresh stage after diagnosing its cause.

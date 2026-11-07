@@ -108,3 +108,58 @@ Source archive dpkg_1.22.22.tar.xz SHA-256:
 d5ea9f132deec8030b50ab2a02ade2b49f0c7a195805a302c8301156fe833a57,
 pinned in config/supplemental-sources.lock.json. ADR-0032/0035/0036 define the
 native backend and remaining metadata closure. H07/H10/G1 remain unaccepted.
+
+
+## Nested image assembly lock lifetime correction (2026-11-07)
+
+Integration requires one outer read transaction around payload selection/copy
+and native database staging. The original context manager opened and closed
+its own descriptors on every call. A nested stage_database call therefore
+released the process's outer POSIX locks when its inner context closed a second
+descriptor for the same inode. This is an implementation defect, not an external
+permission failure or a reason to stop the running Berkeley suite.
+
+Reproduced in a disposable database with actual native Dpkg 1.22.22: writer
+exit 2 while both contexts were held, then exit 0 after only the inner context
+ended, despite the outer context still being active. That command was configure
+--pending against a fully configured private copy, never the installed database.
+Failure report SHA-256:
+1e63f1aad05771ea195927a5e39346fe23f7599848e27f7dd5312c1c56cd8ea4;
+fixture /mnt/lfs/tmp/toddy-package-database-heol_10o is preserved.
+
+Share one descriptor pair per process/database device+inode and reference-count
+active contexts. A small mutex serializes registry acquisition/release; it is
+not held across copying or native queries. Nested calls verify that lock path
+inodes still match the held descriptors without reopening them. Only the last
+context closes the descriptors. Exceptions decrement the same reference count.
+Use the same imported package_database module throughout assembly, and never
+open/close/hash these lock inodes through another helper while a transaction is
+held. Do not unlink lock files or replace Dpkg locking with unrelated flock.
+
+Alternatives: separate copy windows plus final hash comparison can detect drift
+but permit interleaving and waste image work; non-nestable contexts force a
+special unlocked database-copy interface that is easy to call incorrectly;
+Linux open-file-description locks require a different fcntl ABI/interface.
+Retaining the tested Dpkg-compatible POSIX lockf path with shared descriptor
+lifetime directly fixes the reproduced problem. Frozen Dpkg lib/dpkg/file.c
+F_WRLCK/F_SETLK and dbmodify.c O_RDWR|O_CREAT|O_TRUNC were re-inspected from
+the same source archive cited above; no package version or recipe changed.
+
+The corrected native probe passes writer refusal with exit 2 while nested, after
+inner exit, and after a controlled inner exception. The writer succeeds with
+exit 0 only after the outer context ends. A real 124-package stage_database copy
+inside an outer source transaction also retains both locks: separate kernel
+write-lock probes report EAGAIN (probe exit 73) for lock-frontend and lock. These
+probes open without truncation and perform no installed database operation.
+All earlier copy/native-query/audit/ownership checks, nine malformed-state
+refusals and opposing writer exclusion pass. The installed database snapshot is
+unchanged; complete copied file/report digest remains
+20c3dbc59c62eee882b4e0772193a8acffcaafb950632725557aefdeaf1f5834.
+
+Current report .local/logs/h10-package-database-probe.json SHA-256:
+2ddb0496a1e67a8bde49fc0fb3e8e96781a859d091be8295a9764c81d362ac11.
+Corrected helper SHA-256:
+abdbc5ef7064500ea72ecf9b4a3c12e90e28bf1081136e5276331d305bc4d6e4.
+This makes nested composition safe for the verified lock lifetime; it does not
+prove complete payload/database generation consistency or assembled-image boot.
+Those remain explicit whole-image acceptance requirements.

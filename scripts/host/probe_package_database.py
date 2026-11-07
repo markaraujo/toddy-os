@@ -21,7 +21,17 @@ exec(compile(base64.b64decode(SOURCE),module.__file__,'exec'),module.__dict__)
 source_before=module.snapshot(root/'var/lib/dpkg')
 try:
  destination=base/'database'
- report=module.stage_database(backend,destination,Path('/var/log/toddy/packages'))
+ with module.database_lock(root/'var/lib/dpkg'):
+  report=module.stage_database(backend,destination,Path('/var/log/toddy/packages'))
+  # Attempt only a kernel lock, never any installed database operation. Opening
+  # r+ does not truncate/write. Both outer locks must survive nested staging.
+  outer_locks=[]
+  for name in module.LOCKS:
+   check=subprocess.run(['python3','-c',
+    'import fcntl,sys; f=open(sys.argv[1],"r+");\ntry: fcntl.lockf(f,fcntl.LOCK_EX|fcntl.LOCK_NB)\nexcept BlockingIOError: sys.exit(73)\nsys.exit(0)',
+    str(root/'var/lib/dpkg'/name)],capture_output=True,text=True,timeout=10)
+   assert check.returncode==73,(name,check.returncode,check.stderr)
+   outer_locks.append({'lock':name,'write_lock_probe_exit':check.returncode})
  records={}
  identities=backend.run('dpkg-query','-W','-f='+module.QUERY,capture_output=True,text=True).stdout
  for line in identities.splitlines():
@@ -82,6 +92,31 @@ try:
   (base/'native-lock-refusal.log').write_text(result.stdout+result.stderr)
   assert result.returncode!=0 and 'lock' in result.stderr.lower(),(result.returncode,result.stdout,result.stderr)
   assert module.snapshot(private)==locked_snapshot
+ # Image assembly will hold a source lock across payload and DB copying.
+ # A component's nested lock must not close the outer lock's inode descriptors.
+ nested_results=[]
+ def writer_check():
+  return subprocess.run(['chroot',str(root),'/usr/bin/env','-i','PATH=/usr/bin:/usr/sbin','LC_ALL=C',
+   '/usr/bin/dpkg','--root=/'+str(lockroot.relative_to(root)),'--configure','--pending'],
+   stdin=subprocess.DEVNULL,text=True,capture_output=True,timeout=10)
+ with module.database_lock(private):
+  with module.database_lock(private):
+   nested=writer_check()
+   assert nested.returncode!=0 and 'lock' in nested.stderr.lower()
+   nested_results.append({'phase':'inner-held','exit':nested.returncode,'stderr':nested.stderr})
+  nested=writer_check()
+  nested_results.append({'phase':'inner-released-outer-held','exit':nested.returncode,'stderr':nested.stderr})
+  (base/'nested-lock-results.json').write_text(json.dumps(nested_results,indent=2)+'\n')
+  assert nested.returncode!=0 and 'lock' in nested.stderr.lower(),nested_results
+  try:
+   with module.database_lock(private):raise RuntimeError('controlled inner interruption')
+  except RuntimeError:pass
+  nested=writer_check()
+  assert nested.returncode!=0 and 'lock' in nested.stderr.lower()
+  nested_results.append({'phase':'inner-exception-outer-held','exit':nested.returncode,'stderr':nested.stderr})
+ released=writer_check()
+ assert released.returncode==0,(released.returncode,released.stdout,released.stderr)
+ nested_results.append({'phase':'outer-released','exit':released.returncode,'stderr':released.stderr})
  # A separately held POSIX write lock must also refuse the copy's read lock.
  locker=subprocess.Popen(['python3','-u','-c',
   'import fcntl,sys; f=open(sys.argv[1],"r+"); fcntl.lockf(f,fcntl.LOCK_EX); print("LOCKED",flush=True); sys.stdin.read()',
@@ -101,6 +136,8 @@ try:
   'complete_database_report_sha256':hashlib.sha256(full).hexdigest(),
   'native_ownership_query':ownership.stdout,'native_writer_refusal':{'exit':result.returncode,'stdout':result.stdout,'stderr':result.stderr},
   'active_writer_read_lock_refusal':writer_refusal,'negative_cases':rejected,
+  'nested_native_writer_checks':nested_results,
+  'outer_source_locks_survive_nested_database_staging':outer_locks,
   'source_sha256':hashlib.sha256(base64.b64decode(SOURCE)).hexdigest(),
   'installed_database_unchanged':True,'fixture_removed_after_checks':True,
   'full_report':report},indent=2))

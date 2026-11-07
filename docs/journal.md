@@ -394,3 +394,13 @@ cases passed. The full payload preflight still correctly rejects unfinished
 H07 Info metadata. Berkeley DB remains live in automated repmgr election tests,
 zero partial FAIL lines; supervisor remains alive and waiting. No package or
 story acceptance was advanced.
+
+
+2026-11-07 00:42 UTC — Reproduced and corrected nested POSIX lock release before
+image composition: real private Dpkg could acquire the database after inner
+context exit. Shared descriptor lifetime now preserves exclusion until the last
+reader exits, including inner failure. Native full-database staging under an
+outer transaction preserves both source locks; all existing database-copy and
+refusal checks pass. Evidence/recovery extend ADR-0059. Berkeley DB remains
+active in automated replication-manager initialization (block 20); H07 acceptance
+and the complete image remain pending.
