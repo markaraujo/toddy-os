@@ -14,6 +14,7 @@ with tarfile.open('/mnt/lfs/sources/db5.3_5.3.28+dfsg2-12.debian.tar.xz') as arc
 PY
 python3 /opt/toddy-build/scripts/build/apply_db_test_fixture.py
 chroot_run < /opt/toddy-build/scripts/build/h07/berkeley-db-inner.sh
+bash /opt/toddy-build/scripts/build/h07/berkeley-db-test-helper.sh
 python3 /opt/toddy-build/scripts/build/verify_db_tcl_tests.py
 chroot_run < /opt/toddy-build/scripts/build/h07/berkeley-db-fixture-check-inner.sh
 chroot_run < /opt/toddy-build/scripts/build/h07/berkeley-db-finish-inner.sh

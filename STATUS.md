@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 00:58 UTC
+Last verified: 2026-11-07 01:01 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Berkeley DB standard suite continues in replication (block 23, Rep020), with two known FAIL entries. The repmgr007 diagnostic-race correction passed three native repetitions; the full twenty-case group is being revalidated. A real native adapter for the missing db_repsite helper passed the first three unchanged multi-process cases; its full eleven-case group is now running privately. No failed group, suite or package is accepted.
+Running: Berkeley DB standard suite continues in replication (block 23, Rep026), retaining two diagnosed FAIL entries. All eleven multi-process cases passed separately with the real native helper, plus five negative checks. The repmgr007 bounded-wait correction passed three native repetitions; its complete twenty-case group is still running (Repmgr029). Corrected fresh/recovery inputs are prepared and frozen, but not synchronized into the active attempt. Full-suite/package acceptance remains pending.
 
 Remaining:
 

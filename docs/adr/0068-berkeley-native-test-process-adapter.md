@@ -1,7 +1,7 @@
 # ADR-0068: Restore the missing Berkeley DB native test-process interface
 
 - Date: 2026-11-07
-- Status: First three native cases passed; complete group validation pending
+- Status: All eleven native cases passed; complete standard suite pending
 - Scope: Test-only process adapter; no production database changes
 
 ADR-0067 established that the frozen 5.3.28 archive and its upstream release
@@ -54,3 +54,28 @@ The sanitized 00:58 UTC observation is
 619f31e3d14dde3c6e7936663eb5b99cdcd86c75c5677e5e4d9982b1e5d26ece.
 It also records the original standard suite progressing through Rep020 with the
 same two FAIL lines. That run cannot authorize production installation or APT.
+
+
+## Complete group result and reproducible build
+
+At 01:01 UTC the full multi_repmgr group finished with exit 0, all eleven
+expected eval repmgr dispatches, no FAIL lines and ALL_MULTI_REPMGR_PASSED.
+Complete log SHA-256:
+3690bccc8c3e5dabe469778a7044c2a4ae698056f8a9db48488b8fe301c4fc3d.
+The 483 private Tcl input hashes match the frozen archive plus exactly the
+maintained env012 patch and reviewed test142/repmgr007 fixture patches.
+Five actual negative invocations also passed: root execution refused (exit 2),
+unknown command, invalid port, start before environment open, and actual native
+open_env failure on a nonexistent directory (each exit 1, no success reply).
+Raw .local/logs/h07-native-repmgr-adapter-results.json SHA-256:
+038c0f03cb46635e1157b91e8ec7c89e5054a1feae6dd12303faa1df3aabcd97.
+
+Fresh/recovery recipes now prepare berkeley-db-test-helper.sh, pin its tested
+source hash and compile against the native build-test library. Replaying its
+exact native shell body in the private build produced the identical already
+exercised executable, exit 0. Raw
+.local/logs/h07-native-adapter-build-replay.json SHA-256:
+7e8e1489e91bc0479fb5367f5136631e12a81f2319e5bbeb79dc96655e97e1ab.
+Integration is prepared in the checkout; active original build inputs have not
+been synchronized or modified. The original standard-suite failure remains a
+failure, and a corrected complete standard run is still mandatory.

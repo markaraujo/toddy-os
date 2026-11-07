@@ -422,3 +422,12 @@ Berkeley DB db_repsite program, using actual frozen library calls and unchanged
 upstream test assertions (ADR-0068). The first three multiprocess cases passed;
 started the complete eleven-case group separately. Other-repmgr and original
 replication tests continue. H07 remains 124 accepted packages and foundation 38%.
+
+
+2026-11-07 01:01 UTC — Completed all eleven native multiprocess Berkeley DB
+cases and five real error-path checks. Prepared the pinned test-only helper in
+fresh/recovery recipes; replayed its compile command and got the identical tested
+binary. Froze the repmgr007 timing patch, validated both fixture corrections
+against 483 files with six rejection cases, and regenerated the 157-input source
+notice inventory. Active standard-suite inputs remain unchanged; other_repmgr
+and the complete corrected suite are still required.

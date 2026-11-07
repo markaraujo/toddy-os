@@ -1219,3 +1219,13 @@ in a private network namespace/build directory; the first-three fixture is
 preserved. The separate twenty-case other_repmgr run is in Repmgr026, and the
 original standard suite is in Rep020 with the same two FAIL lines. See ADR-0068
 for source/binary/log hashes. No full-group, suite or package acceptance yet.
+
+
+2026-11-07 01:01 UTC — All eleven unchanged multi_repmgr cases passed with the
+native adapter (exit 0, no FAIL lines). Five negative native invocations passed;
+all 483 private Tcl input hashes match the independently reconstructed frozen
+reference. Exact recipe compilation reproduced the same tested executable.
+The repmgr007 patch is frozen and recovery preflight passed idempotence plus six
+negative input checks. See ADR-0067/0068 for complete hashes. The original suite
+continues collecting block 23 results with its two known failures; the separate
+other_repmgr group remains active. H07/package acceptance is still pending.

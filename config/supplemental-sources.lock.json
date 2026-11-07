@@ -803,6 +803,22 @@
       "source_directory": "mtools-4.0.50",
       "planned_stage": "H11 source-built mformat/mcopy for GRUB EFI regular-file image construction; native readback and actual UEFI boot required",
       "selection_reason": "Additional GRUB dependency absent from base; current upstream release NEWS reports CVE-2026-118384 fix; no baseline version changed"
+    },
+    {
+      "name": "berkeley-db-repmgr007-fixture",
+      "version": "5.3.28-1",
+      "filename": "db-5.3.28-repmgr007-async-diagnostic-1.patch",
+      "url": "https://raw.githubusercontent.com/markaraujo/toddy-os/4b8fc31e89ab4d3897cf4df12ba26b659808e5ca/patches/db-5.3.28-repmgr007-async-diagnostic-1.patch",
+      "sha256": "7e5bccd45146a7bc3230da2595207bd0c2919a5e565a26eade8aba0b64ba54df",
+      "size": 653,
+      "decision": "ADR-0067",
+      "source_kind": "Project test-fixture asynchronous diagnostic wait; original assertion retained; no runtime source changes",
+      "fixture_file": "test/tcl/repmgr007.tcl",
+      "fixture_preimage_sha256": "d036980f70aacba44c2dc6eab9ac4808fcbb2b5914933cf8bb12279a96f08f0f",
+      "fixture_postimage_sha256": "f3ec292bdd03ea1066c683bde617ed27288c16c814a6eecd3a0cddd5a580fd44",
+      "signature_verified": false,
+      "signature_note": "Three complete native focused repetitions exit 0; immutable project commit and SHA-256, no upstream signature claim",
+      "planned_stage": "H07 corrected full standard suite required before production build/install"
     }
   ],
   "additional_decisions": [

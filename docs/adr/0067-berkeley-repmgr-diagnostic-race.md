@@ -94,3 +94,30 @@ the complete terminal output and installed-state audit when it ends. A separate
 bounded private run of all twenty other_repmgr tests is now collecting results;
 inspect its actual exit file before any acceptance claim. H07 remains at 124
 accepted packages, with Berkeley DB/APT and final closure unaccepted.
+
+
+## Frozen correction and recovery preflight
+
+The correction is now pinned in supplemental-sources.lock.json to immutable
+project commit 4b8fc31e89ab4d3897cf4df12ba26b659808e5ca. A fresh HTTPS download
+matched the recorded 653-byte patch and its SHA-256. The apply/reference scripts
+cover both reviewed fixture corrections, with exact preimage/postimage hashes.
+Fresh/recovery paths remain gated on the full standard suite; these changes are
+not synchronized into the still-running original attempt.
+
+python3 scripts/host/probe_db_test_fixtures.py extracts the frozen Tcl inputs to
+a private host directory, applies the maintained patch and both corrections,
+compares all 483 files against an independently generated reference, and checks
+idempotence. Six negative checks reject changed source, changed patch bytes and
+redirected fixtures for both corrections without altering the rejected input.
+Raw .local/logs/h07-db-fixture-preflight.json SHA-256:
+094224aac25163c8cf5020657b3bd9c9bd7451355032fff6795b49ddc9f5f51f.
+The same 483 expected hashes matched the running private native test fixture.
+This validates input handling, not a replacement for native regression tests.
+
+Source-notice enumeration now covers 157 frozen inputs and 891 notice candidates;
+new inventory SHA-256
+0937212b5d73a90505b58ea34fed170d23d819ff30a6d2c831c46289708cdd26.
+The added patch is not a new installed package or a complete license review.
+ADR-0068 records the separately resolved native helper and its eleven passing
+multiprocess cases. The complete twenty-case other_repmgr result remains pending.

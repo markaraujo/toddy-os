@@ -946,3 +946,17 @@ uses timeout 3600 with kill-after 30 and a private network namespace. The
 committed entry point is berkeley-db-multiprocess-regression.tcl. Current helper
 source is test-only and has not been integrated into active build inputs.
 Preserve any failed log/TESTDIR; diagnose actual operations before correction.
+
+
+The complete private multiprocess run exited 0 with all eleven cases; inspect
+ADR-0068 for terminal log/source/binary hashes. The twenty-case other_repmgr run
+is still independent and must be inspected. Prepared fresh/recovery recipes now
+build the pinned test-only helper and apply/verify both frozen fixture patches.
+After the original driver ends, preserve its final logs and confirm the failure
+record/zero installed changes before any sync or corrected dispatcher launch.
+Do not accept its two FAIL lines merely because isolated corrections passed.
+If helper compilation leaves db_repsite.new, preserve and inspect it before a
+retry; the recipe refuses to silently overwrite an interrupted output.
+Reproduce input-only validation with
+python3 scripts/host/probe_db_test_fixtures.py. Its private directory is retained
+in .local/probes/db-fixtures-*; the report never claims native suite acceptance.

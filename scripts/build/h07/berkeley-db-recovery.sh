@@ -1,7 +1,7 @@
 #!/bin/bash
 # Reuse only the hash-verified compiled test build; rerun the complete suite.
 source /opt/toddy-build/scripts/build/h06/common.sh
-for source in db5.3_5.3.28+dfsg2.orig.tar.xz db5.3_5.3.28+dfsg2-12.debian.tar.xz db-5.3.28-test142-environment-1.patch; do
+for source in db5.3_5.3.28+dfsg2.orig.tar.xz db5.3_5.3.28+dfsg2-12.debian.tar.xz db-5.3.28-test142-environment-1.patch db-5.3.28-repmgr007-async-diagnostic-1.patch; do
  python3 "$SOURCE_TOOL" --verify-only "$source"
 done
 python3 /opt/toddy-build/scripts/build/db_test_build_checkpoint.py verify
@@ -21,6 +21,7 @@ print('Preserved failed suite logs/state:',history)
 PY
 python3 /opt/toddy-build/scripts/build/apply_db_test_fixture.py
 python3 /opt/toddy-build/scripts/build/verify_db_tcl_tests.py
+bash /opt/toddy-build/scripts/build/h07/berkeley-db-test-helper.sh
 chroot_run <<'INNER'
 set -euo pipefail
 cd /sources/db-5.3.28

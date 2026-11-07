@@ -259,3 +259,14 @@ metadata closure). Native APT repository/upgrade integrity and final closure
 remain pending. See docs/RECOVERY.md for exact retained checkpoints and commands.
 Native build integration, backend archive-only and DBus XML bounds probes are
 supplemental evidence; they do not replace full recipe/postcheck acceptance.
+
+
+Berkeley DB test-process prerequisite (ADR-0068): the frozen upstream archive
+omits the helper used by eleven multi-process Tcl cases. The project supplies a
+native C adapter in scripts/build/h07/db_repsite.c, built only in build-test by
+berkeley-db-test-helper.sh. Its pinned implementation passed all eleven unchanged
+upstream cases in a private native fixture; it is excluded from production.
+Fresh and verified recovery builds include it and the two frozen test-fixture
+patches. Complete standard-suite success is still required before production
+packaging. Input preflight is reproducible with
+python3 scripts/host/probe_db_test_fixtures.py after fetching frozen sources.
