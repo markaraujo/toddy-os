@@ -32,22 +32,19 @@ build-only resolver; actual final-ISO networking and Kmod load/unload passed.
 Final live EN/PT text-consumer checks passed; ADR-0037 Greek limitations remain
 explicit (H12-native-locales.json), without claiming a global Glibc regex fix.
 
-Systemd's book-order build still links temporary Util-linux libraries. Its
-initial package dependency subset must gain the final native Util-linux provider
-after that later book package is accepted. Util-linux's optional Systemd linkage
-must also be audited from actual ELFs. This is part of mandatory H07 versioned
-metadata closure; neither initial archive claims a closed dependency graph.
+H07 final native metadata closure resolved the initial Systemd/Util-linux
+provider ordering and established native APT signed repository, exact versioned
+dependencies, conffile ownership, API/layout ownership, bootstrap quarantine and
+source/license attribution. See [H07 acceptance](evidence/H07.md). These are no
+longer outstanding work.
 
-H12 native namespace obligation: Systemd 261.2 test-namespace's
- test_process_is_owned_by_uid at line 391 is source-qualified EPERM only in
-chroot (ADR-0025); require a real booted-target retry before G1. Keep the Glibc
-container-dependent retests as well. E2fsprogs prezeroed allocation qualification
-(ADR-0027) does not authorize installer use of assume_storage_prezeroed.
-Vim full unfiltered suite now passed with all four frozen/verified live plugin
+H12's explicit native follow-up covers Systemd test-namespace and the 48 Glibc
+namespace-restricted cases plus io/tst-lchmod. The original H07 outcomes remain
+unchanged; ADR-0102 records native execution and fixture corrections. Acceptance
+requires the complete 50/50 report and final-image core hash binding, not an
+aggregation of different runs. E2fsprogs ADR-0027 does not authorize installer
+use of assume_storage_prezeroed. Vim's complete suite passed with its frozen
 inputs as nonroot (ADR-0028/0031); preserve those checks on future rebuilds.
-Native Dpkg acceptance passed. APT signed repository, final versioned dependency/
-conffile ownership, Linux API/layout ownership, bootstrap quarantine and license
-closure remain required (ADR-0032 through ADR-0036).
 
 Measured regex limitations (ADR-0037): default Gawk misses Greek final sigma in
 UTF-8 and ISO-8859-7; Bash nocasematch misses it in ISO-8859-7. Grep/Sed and all

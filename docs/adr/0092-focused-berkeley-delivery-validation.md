@@ -1,7 +1,7 @@
 # ADR-0092: Owner-approved focused Berkeley DB delivery validation
 
 - Date: 2026-11-07
-- Status: Approved scope; implementation and acceptance in progress
+- Status: Accepted; focused native production and APT consumer gates passed H07
 - Supersedes: ADR-0032's mandatory complete standard Tcl suite for this experimental delivery, and the dependent full-suite production gates in ADR-0069/0087/0090/0091 only
 
 ## Authorization and decision
@@ -88,3 +88,10 @@ diagnostic-bearing candidates even on raw exit zero and verifies package bytes
 before replacing an index. Cache regeneration, not database repair or silently
 accepting those diagnostics, is the recovery policy. This upstream behavior is a
 release limitation for scripts that check only the command exit code.
+
+## Accepted delivery profile
+
+All required focused production/consumer checks and final native closure passed;
+see [H07 acceptance](../evidence/H07.md) and its actual reports. The earlier
+pending statements above retain the decision chronology. Full Tcl coverage
+remains cancelled/incomplete and is not presented as passed.

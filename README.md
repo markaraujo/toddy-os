@@ -6,7 +6,7 @@
 
 **An independent Linux distribution built from source, with an open agentic desktop for development and automation.**
 
-Implementation in progress · No bootable OS image yet · Public development repository
+Foundation ISO verified in QEMU · H13 owner handoff in progress · Desktop and agent pending
 
 </div>
 
@@ -16,6 +16,8 @@ Implementation in progress · No bootable OS image yet · Public development rep
 - [Live progress dashboard](https://markaraujo.github.io/toddy-os/)
 - [Current status](STATUS.md)
 - [Development handoff](docs/DEVELOPMENT.md)
+- [Owner testing guide](docs/FOUNDATION-TESTING.md)
+- [Fresh foundation rebuild](docs/FRESH-BUILD.md)
 - [Build procedure](docs/BUILD.md)
 - [Recovery checkpoints](docs/RECOVERY.md)
 - [Milestone stories](stories/README.md)

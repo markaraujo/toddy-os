@@ -1,15 +1,18 @@
-> Current foundation execution: H01–H11 completed; H12 final ISO boot/recovery
-> matrix passed, native follow-ups remain. Use status.json and the newest evidence
-> for acceptance. The later H07 continuation notes are retained history and are
-> superseded by ADR-0092 where they require full Berkeley Tcl acceptance. Use
-> [FRESH-BUILD.md](FRESH-BUILD.md) for a new build, not historical recovery drivers.
-> Deliver H13 for owner testing; do not start any B story before explicit approval.
+> H01–H12 completed. The final ISO and complete 50/50 native follow-up passed.
+> H13 is auditing G1 and exporting the local owner-testing delivery. Earlier
+> H07 continuation notes are retained history, superseded by ADR-0092 where
+> they require full Tcl acceptance. Use [FRESH-BUILD.md](FRESH-BUILD.md) for
+> a new build. Do not start B01-B13 before explicit owner approval.
 
 # Development handoff
 
 ## Current scope
 
-Implementation is active. H01–H09 passed: 129 native packages, accepted configuration/kernel/loader and actual BIOS/UEFI Systemd boots with C/Kmod checks. The h09-boot-ready cold pair is verified. H10 is building native media dependencies and assembling the live system (ADR-0096). No accepted foundation ISO or G1 exists yet. status.json and latest evidence are authoritative; older driver notes retain historical recovery context. Berkeley DB uses owner-approved focused validation (ADR-0092).
+H01–H12 are accepted. The final ISO contains 134 source-built packages and 142
+corresponding source inputs. Final BIOS/UEFI/CD/USB, recovery, XML/EN/PT and
+50/50 native follow-up checks passed. H13 is auditing G1 and preparing the local
+owner-testing export. Read status.json and [H12 evidence](evidence/H12.md).
+Original failed or unsupported upstream outcomes remain accurately classified.
 
 ## Owner review boundary
 
@@ -25,7 +28,7 @@ and must not be marked complete at H13.
 
 Open this repository in Codex. Give the following instruction:
 
-> Read AGENTS.md, PRD.md, STATUS.md, status.json and docs/DEVELOPMENT.md. Start H01, inspect the actual host and choose a disposable build environment. Inspect the versioned candidate in H01 and freeze it in H02, then follow that frozen LFS book through H13 without routine continuation questions; deliver the foundation for owner testing and wait for explicit approval before B01-B13, maintain logs, decisions and progress, and validate each milestone. Do not touch physical disks or begin Phase 2 before its gate. Autonomously install and configure required host/guest tools with available administrative privileges, verify fixes and continue; request user action only for concrete unavailable access or actions outside scope. Report concrete blockers and verified results.
+> Read AGENTS.md, PRD.md, STATUS.md, status.json and docs/DEVELOPMENT.md. Inspect actual Git, processes and artifacts; resume the next incomplete eligible story without rebuilding accepted work. For a separate fresh build, start H01 and select an isolated environment. Inspect the versioned candidate in H01 and freeze it in H02, then follow that frozen LFS book through H13 without routine continuation questions; deliver the foundation for owner testing and wait for explicit approval before B01-B13, maintain logs, decisions and progress, and validate each milestone. Do not touch physical disks or begin Phase 2 before its gate. Autonomously install and configure required host/guest tools with available administrative privileges, verify fixes and continue; request user action only for concrete unavailable access or actions outside scope. Report concrete blockers and verified results.
 
 Do not paste API keys into the prompt. Do not weaken sandbox/approval configuration globally. A product's full-power profile belongs inside its designated system, not on the author's workstation.
 
@@ -86,7 +89,7 @@ A single repository is authoritative. Run make dashboard, commit status.json and
 Use make site for a local export into ignored _site/. All site data is public; never include credentials, local logs, personal memory or machine-specific secret configuration in status data. A dashboard reflects the last published commit, not uncommitted filesystem changes or a live process monitor.
 
 
-## Current H07 driver and audit sequence
+## Historical H07 driver and audit sequence
 
 Use actual runner markers, driver exit files and docs/RECOVERY.md, not a
 historical journal count, to select work. Current accepted boundary is 124

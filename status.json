@@ -3,8 +3,8 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-07",
   "bootstrap": "ready_for_development",
-  "current_scope": "H01-H11 completed with a revised ISO after reproduced USB discovery correction. The unchanged 134-package root and revised media integrity passed. H12 repeats final-media tests and corrects native retest infrastructure; G1 remains pending. Owner review after H13 precedes Phase 2.",
-  "next_story": "H12",
+  "current_scope": "H01-H12 completed: final ISO BIOS/UEFI/CD/USB, recovery, XML/locale checks and 50/50 native regressions passed. H13 audits G1 and exports the foundation for owner testing; B01-B13 await explicit owner approval.",
+  "next_story": "H13",
   "gates": {
     "G1": "pending",
     "G2": "pending"
@@ -224,7 +224,7 @@
       "phase": "foundation",
       "title": "Verify foundation boot matrix and recovery",
       "weight": 6,
-      "status": "in_progress",
+      "status": "completed",
       "depends_on": [
         "H11"
       ],
@@ -234,14 +234,18 @@
         "Run uname, filesystem/shell checks and compile/execute C in the target.",
         "Exercise controlled failure/checkpoint recovery; record physical hardware as pending unless actually tested."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/H12.md",
+        "docs/evidence/H12-native-regressions.json",
+        "docs/evidence/H12-final-media.json"
+      ]
     },
     {
       "id": "H13",
       "phase": "foundation",
       "title": "Deliver and accept foundation gate G1",
       "weight": 4,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": [
         "H12"
       ],
@@ -486,19 +490,18 @@
     }
   ],
   "active_work": {
-    "story": "H12",
-    "verified_at": "2026-11-07 13:38 UTC",
+    "story": "H13",
+    "verified_at": "2026-11-07 13:53 UTC",
     "verified": [
-      "4/4 final ISO boots passed: BIOS/UEFI on CD and virtual USB; USB tests offline.",
-      "3/3 actual recovery cases passed: GRUB rescue, absent media and corrupted Squashfs; original ISO unchanged.",
-      "Original ISO booted successfully again after failure injection; final live DBus XML bounds passed.",
-      "Final image has nine measured dynamic Expat consumers across 2,626 ELF files. Systemd native namespace retry passed; Glibc retry remains open."
+      "Final ISO passed all four BIOS/UEFI and CD/USB combinations.",
+      "Recovery, final XML/EN/PT checks and 50/50 native regressions passed.",
+      "134 image packages and 142 corresponding source inputs verified."
     ],
-    "running": "Corrected 50-case native regression profile: verify cold backing, execute preserved upstream tests, retain complete dedicated-UART evidence.",
+    "running": "Audit G1 and export ISO, corresponding sources, test evidence and owner instructions.",
     "remaining": [
-      "Complete and classify native Glibc/Systemd follow-up results.",
-      "H13 G1 audit, reproducible instructions and owner-testing handoff."
+      "Verify complete local delivery bundle and checksums.",
+      "Publish G1 evidence and final checks; wait for owner testing before B01."
     ],
-    "evidence": "docs/evidence/H12-final-media.json"
+    "evidence": "docs/evidence/H12.md"
   }
 }

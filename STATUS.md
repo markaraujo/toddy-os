@@ -4,35 +4,34 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-H01-H11 completed with a revised ISO after reproduced USB discovery correction. The unchanged 134-package root and revised media integrity passed. H12 repeats final-media tests and corrects native retest infrastructure; G1 remains pending. Owner review after H13 precedes Phase 2.
+H01-H12 completed: final ISO BIOS/UEFI/CD/USB, recovery, XML/locale checks and 50/50 native regressions passed. H13 audits G1 and exports the foundation for owner testing; B01-B13 await explicit owner approval.
 
-Foundation: **90%** · Agentic desktop: **0%**
+Foundation: **96%** · Agentic desktop: **0%**
 
-G1: pending · G2: pending · Next: **H12**
+G1: pending · G2: pending · Next: **H13**
 
 No milestone earns credit without completed acceptance evidence.
 
-## Active story: H12 — Verify foundation boot matrix and recovery
+## Active story: H13 — Deliver and accept foundation gate G1
 
-The 90% phase total counts completed stories only. H12 is still in progress; its 6 points are not yet counted. Passing this story would raise the phase total to 96%.
+The 96% phase total counts completed stories only. H13 is still in progress; its 4 points are not yet counted. Passing this story would raise the phase total to 100%.
 
-Last verified: 2026-11-07 13:38 UTC
+Last verified: 2026-11-07 13:53 UTC
 
 Verified:
 
-- 4/4 final ISO boots passed: BIOS/UEFI on CD and virtual USB; USB tests offline.
-- 3/3 actual recovery cases passed: GRUB rescue, absent media and corrupted Squashfs; original ISO unchanged.
-- Original ISO booted successfully again after failure injection; final live DBus XML bounds passed.
-- Final image has nine measured dynamic Expat consumers across 2,626 ELF files. Systemd native namespace retry passed; Glibc retry remains open.
+- Final ISO passed all four BIOS/UEFI and CD/USB combinations.
+- Recovery, final XML/EN/PT checks and 50/50 native regressions passed.
+- 134 image packages and 142 corresponding source inputs verified.
 
-Running: Corrected 50-case native regression profile: verify cold backing, execute preserved upstream tests, retain complete dedicated-UART evidence.
+Running: Audit G1 and export ISO, corresponding sources, test evidence and owner instructions.
 
 Remaining:
 
-- Complete and classify native Glibc/Systemd follow-up results.
-- H13 G1 audit, reproducible instructions and owner-testing handoff.
+- Verify complete local delivery bundle and checksums.
+- Publish G1 evidence and final checks; wait for owner testing before B01.
 
-[Acceptance evidence](docs/evidence/H12-final-media.json)
+[Acceptance evidence](docs/evidence/H12.md)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
@@ -47,8 +46,8 @@ Remaining:
 | [H09 — Build kernel and boot configuration](stories/H09.md) | foundation | 8 | completed |
 | [H10 — Assemble the live system](stories/H10.md) | foundation | 8 | completed |
 | [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | completed |
-| [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | in_progress |
-| [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | not_started |
+| [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | completed |
+| [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | in_progress |
 | [B01 — Evaluate desktop, harness, licensing and resource budgets](stories/B01.md) | agentic | 5 | not_started |
 | [B02 — Build the graphical desktop and essential applications](stories/B02.md) | agentic | 10 | not_started |
 | [B03 — Integrate provider adapters and local inference](stories/B03.md) | agentic | 8 | not_started |

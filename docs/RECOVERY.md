@@ -1701,8 +1701,8 @@ one byte in a copied, hash-verified Squashfs extent, leaving the original intact
 All cases require a real recovery-shell command, absence of accepted-root markers,
 and preserved serial logs. Only the labelled diskless test VM is stopped after
 its evidence; this is not a graceful Systemd shutdown claim. Follow with normal
-boot of the original verified ISO to demonstrate recovery. Native execution of
-these prepared cases is still pending.
+boot of the original verified ISO to demonstrate recovery. All three actual cases and the subsequent intact-media boot passed; see
+docs/evidence/H12.md and H12-final-media.json.
 
 The first native namespace run retained its overlay at
 .local/vm/boot-tests/h09-bios-m2gayrqx. Systemd test-namespace exited zero. Glibc's
@@ -1711,3 +1711,14 @@ ar path, so those executions are failed, not passing native regressions. The
 serial export also missed chunk 67/112; the guest's exact complete report remains
 at /var/tmp/toddy-native-regressions-vzwqsj8n/result.json in that overlay. Preserve
 it for independent recovery; do not trust partial decoded text as acceptance.
+
+### H12 accepted native checkpoint and H13 handoff
+
+The complete fourth native profile passed 50/50 in
+.local/vm/boot-tests/h09-bios-6ch6utes; driver exit zero, unchanged cold backing,
+complete UART report and final-image core hashes are verified in H12 evidence.
+Keep earlier failed overlays and transport recovery reports. Do not restart any
+of these completed jobs. H13 next exports the verified h11-6gt6n78r ISO with
+scripts/host/export_foundation.py into a fresh .local/releases directory,
+verifies its bundled sources and attaches raw serial/test evidence and final
+Git history. Do not run Phase 2 before owner approval.

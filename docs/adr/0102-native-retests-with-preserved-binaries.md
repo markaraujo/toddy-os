@@ -1,7 +1,7 @@
 # ADR-0102: Execute preserved upstream test commands with complete native evidence
 
 - Date: 2026-11-07
-- Status: Cause and evidence recovery verified; corrected complete retest pending
+- Status: Accepted; complete corrected native profile passed
 
 The first H12 native retry ran Systemd test-namespace successfully. All 49 Glibc
 cases failed through the test driver: make test tries implicit rebuilds using the
@@ -84,3 +84,10 @@ unchanged. Restore the original mutable root immediately after the non-root case
 retaining its separate result directory and restoring lock ownership in finally.
 This prevents cross-identity fixture state from leaking into later tests. Do not
 relax the joint 50/50 acceptance criterion; repeat the complete profile.
+
+## Final acceptance
+
+The fourth complete run passed all 50 cases with actual zero exits, complete
+UART evidence and unchanged test binaries/cold backing. All three core hashes
+match the final image manifest. See [H12 native evidence](../evidence/H12-native-regressions.json).
+Original full-suite and failed-retry results are unchanged.

@@ -14,6 +14,9 @@ is a separate recorded gate. The native guests power off with exit zero but
 Systemd reports its read-only lower loop/media busy during final shutdown;
 complete initramfs teardown and persistent-disk behavior are not claimed.
 
+See [FOUNDATION-TESTING.md](FOUNDATION-TESTING.md) for the local artifact layout,
+interactive QEMU command, owner checklist and known limitations.
+
 ## Boot and console
 
 Use the artifact path and SHA-256 from its generated manifest. Verify the hash

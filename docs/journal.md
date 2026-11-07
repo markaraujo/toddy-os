@@ -941,3 +941,13 @@ H12 remains active for native libc follow-ups: Systemd namespaces passed, while
 Glibc's initial make-based retry failed on a quarantined bootstrap AR path. Its
 complete original report was recovered unchanged. ADR-0102 preserves precompiled
 binary identity and original upstream invocation semantics for the corrected run.
+
+## 2026-11-07 — H12 accepted; H13 delivery audit active
+
+All 50 native follow-up tests passed together after restoring the correct mutable
+fixture between UID contexts. Cold backing and test binaries remain unchanged;
+libc/loader/Systemd hashes match the final ISO image manifest. The four final
+firmware/media boots, three recovery cases, intact reboot, XML bounds and required
+EN/PT checks passed. Earlier failed/unsupported outcomes remain preserved.
+H12 is complete; foundation progress is 96%. H13 exports the exact artifact,
+source bundle and test evidence before G1 acceptance and owner review.
