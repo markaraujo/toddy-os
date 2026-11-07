@@ -902,3 +902,21 @@ before publication. The negative case must detect those actual diagnostics,
 retain the previous published index, preserve corrupted cache bytes and rebuild
 from original packages. Retain the first failed test fixture. This changes an
 incorrect test expectation, not the requirement to detect and recover corruption.
+
+### 2026-11-07 — Native APT HTTPS fixture omitted TLS close_notify
+
+Symptom: actual APT installation succeeded, but the HTTPS postcheck exited 100
+with OpenSSL unexpected EOF after the fixture served HTTP 200. File-repository
+signature/dependency/update/conffile/tamper/remove scenarios had passed.
+Cause: Python TCPServer's inherited shutdown_request closes raw TCP without TLS
+shutdown after wrapping the socket. Correction: fixture-only bounded unwrap
+before TCP shutdown; no global TLS option or verification changes. Native retry
+uses verified installed package bytes, preserved original reports and all unit/
+repository/HTTPS/cache checks. See ADR-0093; acceptance waits for the actual retry.
+
+The first recovery attempt stopped before HTTPS with postcheck exit 141 and zero
+installed changes: apt-get --version piped into head -n1 could receive SIGPIPE
+under pipefail. Capture its first line with sed -n '1p', which consumes the whole
+producer stream, preserving command failure detection. Keep the raw 141 result
+(log 0ebf480e3c70d80bec103a10e72894018dffad02c39718bb7c7c13289ca29e9e),
+then repeat the same installed verification/postconditions; no recompilation.

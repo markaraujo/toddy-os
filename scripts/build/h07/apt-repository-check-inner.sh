@@ -28,7 +28,7 @@ gpg --batch --pinentry-mode loopback --passphrase '' --quick-generate-key 'Toddy
 fingerprint=$(gpg --batch --with-colons --list-keys | awk -F: '$1=="fpr" {print $10;exit}')
 gpg --batch --export "$fingerprint" > "$fixture/repository.gpg"
 mkdir -p "$fixture/repo" "$fixture/root/var/lib/dpkg" "$fixture/state/lists/partial" \
- "$fixture/cache/archives/partial" "$fixture/config/parts" "$fixture/config/sources" "$fixture/log"
+ "$fixture/cache/archives/partial" "$fixture/config/parts" "$fixture/config/sources" "$fixture/config/preferences.d" "$fixture/log"
 touch "$fixture/root/var/lib/dpkg/status"
 main_status=$(sha256sum /var/lib/dpkg/status)
 cat > "$fixture/apt.conf" <<APTCONF
@@ -176,7 +176,18 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         if self.path.endswith('.deb'):
             time.sleep(1)
         super().do_GET()
-server=http.server.ThreadingHTTPServer(('127.0.0.1',0),
+class TLSServer(http.server.ThreadingHTTPServer):
+    def shutdown_request(self, request):
+        # socketserver's plain TCP shutdown omits TLS close_notify. Native
+        # OpenSSL correctly rejects that truncated stream; finish TLS first.
+        try:
+            request.settimeout(2)
+            raw = request.unwrap()
+        except (OSError, ssl.SSLError):
+            request.close()
+        else:
+            super().shutdown_request(raw)
+server=TLSServer(('127.0.0.1',0),
     functools.partial(Handler,directory=str(root/'repo')))
 server.socket=context.wrap_socket(server.socket,server_side=True)
 (root/'https.port').write_text(str(server.server_port))

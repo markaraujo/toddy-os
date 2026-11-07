@@ -1637,3 +1637,17 @@ abort/reopen/crash-recovery checks passed. Production library bytes exactly matc
 the independently tested private profile. See [machine-readable evidence](H07-focused-berkeley.json).
 The package remains a focused-qualified component, not full Tcl-suite coverage.
 Final-base driver 22002 is now processing APT and the remaining closure sequence.
+
+### All 126 package gates passed; final H07 closure remains
+
+Installed native APT's recovery step completed recipe/postcheck 0/0 and changed
+zero installed payload paths. All 142 unit tests, dependency install/upgrade,
+conffile preservation, signed index/payload/key rejection, HTTPS trust/name
+rejection, removal/purge, actual sandboxed acquisition and cache recovery passed.
+See [machine-readable APT evidence](H07-focused-apt.json) and ADR-0093 for the
+fixture-only TLS shutdown correction. Actual worker UID/GID 999/998, no effective
+capabilities, NoNewPrivs 1 and seccomp mode 2/filter 1 were observed.
+
+The accepted package count is 126/126. Final closure driver 28080 is now running
+the owned Python alias, bootstrap quarantine, metadata closure and seven audits.
+H07 and its weighted credit remain pending until audits and the cold pair pass.

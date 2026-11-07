@@ -1,0 +1,66 @@
+{
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "changed_paths": 0,
+  "log_sha256": "37d43a529f8e4543413c03af2c259ed955099488d323e89b705474b621ac7b95",
+  "success_record_sha256": "582d86c62e39371486eb2db41b8d60458406548af394899f0da225e3712f9b03",
+  "component_record_sha256": "007c8e97452007afdae71fdbc1131b79b24ef2be55559c37403586a358d9c923",
+  "reports": {
+    "native-repository.log": "15d739565a6bc974a7924bb3546eace1e8865c3d82653a5bb81f98f67df8b539",
+    "https-worker.json": "0c3a4571e70e278c8ff4022761ade055045bc7e801c6478f04b61c65cc4576de",
+    "native-cache-result.json": "7399ccb4b281366d8e4722c28918ead3b85aa8b080a6ebe3c8d5d7a7c68913f8",
+    "ctest.log": "1c3286be8bce8ea751947912be0707e1540a4eb6e9a064469abd5229b4d7238a"
+  },
+  "https_worker": {
+    "started": "2026-11-07T11:26:56.369703+00:00",
+    "expected_executable": "/usr/libexec/apt/methods/http",
+    "uid": 999,
+    "gid": 998,
+    "inherited_seccomp_filters": 0,
+    "states": [
+      {
+        "pid": 27766,
+        "start_time": 6598166,
+        "uids": [
+          999,
+          999,
+          999,
+          999
+        ],
+        "gids": [
+          998,
+          998,
+          998,
+          998
+        ],
+        "groups": [
+          998
+        ],
+        "effective_capabilities": 0,
+        "no_new_privileges": 1,
+        "seccomp_mode": 2,
+        "seccomp_filters": 1
+      }
+    ],
+    "accepted": true,
+    "command_pid": 27763,
+    "command_exit": 0,
+    "sandboxed_workers": [
+      27766
+    ],
+    "finished": "2026-11-07T11:26:58.663179+00:00"
+  },
+  "cache_complete": true,
+  "repository_acceptance": [
+    "EXPECTED_REJECTION tampered-index exit=100",
+    "EXPECTED_REJECTION tampered-payload exit=100",
+    "EXPECTED_REJECTION unrelated-key exit=100",
+    "EXPECTED_REJECTION malformed-signature exit=100",
+    "EXPECTED_REJECTION untrusted-tls exit=100",
+    "EXPECTED_REJECTION wrong-tls-name exit=100",
+    "NATIVE_APT_SIGNED_REPOSITORY_ACCEPTED dependency/conffile/tamper/key/HTTPS/trust/name/recovery/remove/purge; main DB unchanged"
+  ],
+  "observed_at": "2026-11-07T11:27:56.885931+00:00",
+  "unit_tests": 142,
+  "scope": "Installed native APT acceptance; H07 final audits/checkpoint remain."
+}

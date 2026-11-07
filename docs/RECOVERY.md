@@ -1537,3 +1537,13 @@ retrying. It handles APT, the owned Python alias, existing accepted ownership
 steps, bootstrap quarantine and metadata closure. Do not sync inputs or start a
 second dispatcher while it is active. The final verified cold pair is still the
 124-package checkpoint until a new pair is actually saved and checked.
+
+APT installed acceptance now passed after fixture-only TLS shutdown and a
+SIGPIPE-safe version check (ADR-0093). The native archive/payload were reverified;
+recipe/postcheck exited 0/0, zero installed payload changes. All 126 package gates
+are accepted. Current final closure driver is 28080 with launch log
+/var/log/toddy/h07-focused-final-closure-launch.log and standard final-base
+pid/exit files. Its earlier failed exit was preserved as
+/var/log/toddy/h07-focused-final-base-launch.exit. Do not repeat compilation.
+Continue from actual Python-alias/quarantine/metadata/audit results; checkpoint
+is still pending. See H07-focused-apt.json for actual sandbox/repository evidence.

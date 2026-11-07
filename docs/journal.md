@@ -815,3 +815,13 @@ The guarded focused production recipe and installed postcheck both completed
 with exit zero. The actual configured inventory is now 125 packages; Berkeley's
 library hash matches the private tested profile. Started the existing final-base
 driver for APT and subsequent closure. No suite failure was relabeled successful.
+
+### 2026-11-07 — Complete installed APT acceptance; enter final H07 closure
+
+The actual installed APT exposed a disposable server TLS shutdown defect and a
+separate version-check SIGPIPE race. Preserved both failed postchecks, corrected
+their causes, verified the installed archive/full payload and repeated all tests
+without rebuilding. All 142 unit tests and signed-repository/dependency/upgrade/
+conffile/tamper/HTTPS/sandbox/cache/recovery/remove/purge checks passed. There are
+now 126 accepted native packages. Resumed final-base driver 28080 for metadata/
+ownership audits and checkpoint; H07 remains incomplete until those gates pass.

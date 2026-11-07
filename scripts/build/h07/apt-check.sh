@@ -2,7 +2,7 @@
 source /opt/toddy-build/scripts/build/h06/common.sh
 chroot_run <<'INNER'
 set -euo pipefail
-apt-get --version | head -n1 | grep -F 'apt 3.0.4'
+apt-get --version | sed -n '1p' | grep -F 'apt 3.0.4'
 apt-config dump | grep -F 'APT::Sandbox::User "_apt"'
 apt-config dump | grep -Fx 'APT::Sandbox::Seccomp "true";'
 test -x /usr/libexec/apt/methods/gpgv
