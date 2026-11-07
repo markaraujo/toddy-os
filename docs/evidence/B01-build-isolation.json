@@ -1,0 +1,38 @@
+{
+  "uid": 101,
+  "gid": 101,
+  "cap_effective": 0,
+  "cap_permitted": 0,
+  "no_new_privileges": true,
+  "outside_writes_denied": [
+    {
+      "path": "/usr/toddy-denied",
+      "errno": 30
+    },
+    {
+      "path": "/src/toddy-denied",
+      "errno": 30
+    },
+    {
+      "path": "/etc/toddy-denied",
+      "errno": 30
+    },
+    {
+      "path": "/root/toddy-denied",
+      "errno": 2
+    },
+    {
+      "path": "/run/toddy-denied",
+      "errno": 30
+    }
+  ],
+  "external_network_errno": 101,
+  "native_compile_stage_run": "toddy-native-isolated",
+  "exit": 0,
+  "inputs": {
+    "scripts/build/phase2/isolated.sh": "4419fd5c872e79dd82e3db2fa6abdeb2baedde6e6e5bf59e504a7c898bd7f828",
+    "scripts/build/phase2/isolation_probe.py": "149ea8e6025b193204a9104a1e54c09c3268da6e06696c77d290fd18a6a247dd"
+  },
+  "postconditions": "outside paths absent on actual target; private mounts gone; exclusive build lock released",
+  "scope": "build namespace qualification only; optimized package transaction path remains disabled"
+}

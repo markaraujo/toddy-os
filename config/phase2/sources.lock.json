@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "status": "frozen_for_phase2_build",
+  "components": [
+    {
+      "name": "glib",
+      "version": "2.88.3",
+      "filename": "glib-2.88.3.tar.xz",
+      "url": "https://download.gnome.org/sources/glib/2.88/glib-2.88.3.tar.xz",
+      "sha256": "ab24d24e698dfa1e408b7bcdb508f4aafc906185a8b8ce72fdf79bbbdc9b383b",
+      "upstream_sha256_url": "https://download.gnome.org/sources/glib/2.88/glib-2.88.3.sha256sum",
+      "upstream_sha256_file_sha256": "bf9e330b47ec7f15640c07490fd808290d42fc2ab506825ebc7ef32a737d5910",
+      "reference": "BLFS 13.1-systemd",
+      "status": "source_verified_not_built"
+    },
+    {
+      "name": "gobject-introspection",
+      "version": "1.86.0",
+      "filename": "gobject-introspection-1.86.0.tar.xz",
+      "url": "https://download.gnome.org/sources/gobject-introspection/1.86/gobject-introspection-1.86.0.tar.xz",
+      "sha256": "920d1a3fcedeadc32acff95c2e203b319039dd4b4a08dd1a2dfd283d19c0b9ae",
+      "upstream_sha256_url": "https://download.gnome.org/sources/gobject-introspection/1.86/gobject-introspection-1.86.0.sha256sum",
+      "upstream_sha256_file_sha256": "ddaa0e73ccc06e9558c5da1bc58655abc383d6c83b652bd42677054cc8978ad1",
+      "reference": "BLFS 13.1-systemd",
+      "status": "source_verified_not_built"
+    },
+    {
+      "name": "pygobject",
+      "version": "3.56.3",
+      "filename": "pygobject-3.56.3.tar.gz",
+      "url": "https://download.gnome.org/sources/pygobject/3.56/pygobject-3.56.3.tar.gz",
+      "sha256": "12760e4a0e3d04b6eb95e06f7a27e362c826d567ea613373a92c003b6c70d2d6",
+      "upstream_sha256_url": "https://download.gnome.org/sources/pygobject/3.56/pygobject-3.56.3.sha256sum",
+      "upstream_sha256_file_sha256": "7331a37fb533bcc3c065a8c91c2889fd69b0c32aeb8827e0b550511253fb3e53",
+      "reference": "BLFS 13.1-systemd",
+      "status": "source_verified_not_built"
+    },
+    {
+      "name": "nodejs",
+      "version": "24.19.0",
+      "filename": "node-v24.19.0.tar.xz",
+      "url": "https://nodejs.org/dist/v24.19.0/node-v24.19.0.tar.xz",
+      "sha256": "f6d95e10a0431ee1067fc6aabe9f762908b4716dd35324e1ddb4b1466b76659f",
+      "upstream_sha256_url": "https://nodejs.org/dist/v24.19.0/SHASUMS256.txt",
+      "upstream_sha256_file_sha256": "be0629ee2bcd8e40bb856abdd3407f0762101b76bd60a36b8867f637733631c0",
+      "reference": "BLFS 13.1-systemd",
+      "status": "source_verified_not_built"
+    }
+  ]
+}

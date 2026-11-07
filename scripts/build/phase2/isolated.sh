@@ -1,0 +1,71 @@
+#!/bin/bash
+# Guest-only compiler sandbox. No installation or native package transaction here.
+set -euo pipefail
+source /opt/toddy-build/scripts/build/target.sh
+guard_target
+[[ $(id -u) == 0 && $# -ge 3 ]] || exit 64
+input=$(realpath -e -- "$1")
+work=$(realpath -e -- "$2")
+[[ $input == "$1" && $work == "$2" ]] || exit 65
+[[ $input == /mnt/lfs/sources/phase2/inputs/* && -d $input ]] || exit 65
+[[ $work == /mnt/lfs/sources/phase2/work/* && -d $work ]] || exit 65
+[[ $(dirname "$work") == /mnt/lfs/sources/phase2/work ]] || exit 65
+[[ $(dirname "$input") == /mnt/lfs/sources/phase2/inputs ]] || exit 65
+shift 2
+exec 9>/var/log/toddy/build/build.lock
+flock -n -E 75 9
+if compgen -G '/var/log/toddy/build/*.running.json' >/dev/null; then
+    echo 'Unreconciled recipe marker; refusing sandbox' >&2; exit 75
+fi
+uid=$(chroot "$LFS" id -u tester)
+gid=$(chroot "$LFS" id -g tester)
+[[ $uid != 0 && $gid != 0 && $(stat -c %u "$work") == "$uid" ]] || exit 65
+export TODDY_INPUT=$input TODDY_WORK=$work TODDY_UID=$uid TODDY_GID=$gid
+# New PID/network/IPC/mount namespaces. Only native dependencies and declared
+# inputs are exposed; no guest /root, signing material, sockets or host home.
+exec unshare --mount --pid --net --ipc --fork /bin/bash -s -- "$@" <<'SANDBOX'
+set -euo pipefail
+mount --make-rprivate /
+root=$(mktemp -d /run/toddy-build-root.XXXXXX)
+trap 'result=$?; cd /; umount -R "$root"; rmdir "$root"; exit "$result"' EXIT
+mount -t tmpfs -o size=16m,nosuid,nodev tmpfs "$root"
+mkdir -p "$root"/{usr,etc,lib64,src,build,stage,tmp,proc,dev,run}
+ln -s usr/bin "$root/bin"
+ln -s usr/sbin "$root/sbin"
+ln -s usr/lib "$root/lib"
+readonly_bind() {
+    mount --bind "$1" "$2"
+    mount -o remount,bind,ro,nosuid,nodev "$2"
+}
+readonly_bind /mnt/lfs/usr "$root/usr"
+readonly_bind /mnt/lfs/lib64 "$root/lib64"
+readonly_bind "$TODDY_INPUT" "$root/src"
+for name in ld.so.cache ld.so.conf; do
+    if [[ -f /mnt/lfs/etc/$name ]]; then cp /mnt/lfs/etc/$name "$root/etc/$name"; fi
+done
+printf 'root:x:0:0:root:/root:/bin/false\ntester:x:%s:%s:builder:/build/home:/bin/bash\n' "$TODDY_UID" "$TODDY_GID" > "$root/etc/passwd"
+printf 'root:x:0:\ntester:x:%s:\n' "$TODDY_GID" > "$root/etc/group"
+printf 'passwd: files\ngroup: files\nhosts: files\n' > "$root/etc/nsswitch.conf"
+printf '127.0.0.1 localhost\n::1 localhost\n' > "$root/etc/hosts"
+mount --bind "$TODDY_WORK" "$root/build"
+mkdir -p "$TODDY_WORK/stage" "$TODDY_WORK/home"
+chown "$TODDY_UID:$TODDY_GID" "$TODDY_WORK/stage" "$TODDY_WORK/home"
+mount --bind "$TODDY_WORK/stage" "$root/stage"
+mount -t tmpfs -o size=1g,mode=1777,nosuid,nodev tmpfs "$root/tmp"
+mount -t proc -o nosuid,nodev,noexec proc "$root/proc"
+for name in null zero random urandom; do
+    touch "$root/dev/$name"
+    mount --bind "/dev/$name" "$root/dev/$name"
+done
+# Read-only root covers the synthetic /etc and namespace topology, while the
+# explicitly separate /build, /stage and /tmp mounts remain writable.
+mount -o remount,ro "$root"
+cd "$root/build"
+ulimit -n 1024
+ulimit -u 512
+setpriv --no-new-privs --inh-caps=-all --ambient-caps=-all \
+    --bounding-set=-all,+sys_chroot,+setuid,+setgid \
+    chroot --userspec="$TODDY_UID:$TODDY_GID" --groups="$TODDY_GID" "$root" \
+    /usr/bin/env -i HOME=/build/home PATH=/usr/bin:/usr/sbin LC_ALL=C.UTF-8 \
+    CONFIG_SITE=/dev/null MAKEFLAGS=-j8 NINJAJOBS=8 "$@"
+SANDBOX

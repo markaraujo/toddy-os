@@ -1437,3 +1437,15 @@ for 4.56 GB/71,416 regular files. B01-A complete; B01/G2 remain unaccepted.
 Four start/access/backing guard regressions pass. Initial boot-readiness SSH
 failure received one successful post-boot retry without dispatch/replay.
 Next: qualify isolated unprivileged staging, then native dependency/engine spikes.
+
+
+## 2026-11-07 — B01 isolated native compiler/staging proof
+
+Native UID/GID 101 compiled/staged/ran C with zero effective/permitted capabilities,
+no-new-privileges, read-only input/dependencies, absent private roots/sockets and
+network denial. One entry-capability/cwd correction passed; failure retained.
+This qualifies only the build namespace; optimized native transactions remain
+unqualified and keep full-root verification. Official SHA-256 files verified the
+BLFS 13.1 GLib/introspection/PyGObject/Node source candidates. GLib bootstrap native
+compile/stage exit zero; focused consumer checks are the next result to assess.
+Repository make check passed 205 tests; no unchanged foundation suite rerun.
