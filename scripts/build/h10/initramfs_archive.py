@@ -5,6 +5,7 @@ The caller supplies metadata derived from its actual root image. This component
 does not establish Squashfs correctness, boot acceptance or publisher trust.
 """
 import argparse
+import fcntl
 import gzip
 import hashlib
 import json
@@ -156,17 +157,38 @@ def main():
     if os.geteuid() != 0:
         raise ValueError('Requires designated build-guest root')
     here = Path(__file__).resolve().parent
-    subprocess.run(['python3', str(here / 'require_gate.py')], check=True)
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('compression', type=Path, help='Verified native compression.json with assembly binding')
+    parser.add_argument('work', type=Path, help='Fresh private generation under sources/stage')
     parser.add_argument('--media-id', required=True)
-    parser.add_argument('--rootfs-sha256', required=True)
-    parser.add_argument('--epoch', type=int, required=True)
+    parser.add_argument('--release', action='store_true', help='Use the H11 release-profile gate')
     args = parser.parse_args()
+    gate = here.parent / 'h11/require_gate.py' if args.release else here / 'require_gate.py'
+    subprocess.run(['python3', str(gate)], check=True)
     root = Path('/mnt/lfs')
-    report = assemble(root, root / 'sources/stage/toddy-initramfs',
-                      Path('/var/log/toddy/packages'), here / 'live_init.sh', here / 'live_media.sh',
-                      args.media_id, args.rootfs_sha256, args.epoch)
-    print(json.dumps({k: report[k] for k in ('entry_count', 'gzip_sha256', 'gzip_bytes')}))
+    from initramfs_input import physical, verify, unchanged
+    from compress_root import atomic_json
+    build = Path('/var/log/toddy/build')
+    with (build / 'build.lock').open('a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        if (build / 'input-sync.running').exists() or list(build.glob('*.running.json')):
+            raise ValueError('Preserve active build/sync state before initramfs generation')
+        if any(path.resolve() != path or not path.is_relative_to(root / 'sources/stage')
+               for path in (args.compression, args.work)):
+            raise ValueError('Production initramfs requires designated physical staging paths')
+        physical(root, args.work.parent, directory=True)
+        binding = verify(root, args.compression, args.release)
+        if any(args.work.is_relative_to(source) or source.is_relative_to(args.work)
+               for source in (args.compression.parent, Path(binding['source_image']),
+                              Path(binding['assembly_evidence_directory']))):
+            raise ValueError('Preserve disjoint assembly, compression and initramfs generations')
+        report = assemble(root, args.work, Path('/var/log/toddy/packages'),
+                          here / 'live_init.sh', here / 'live_media.sh', args.media_id,
+                          binding['rootfs_sha256'], binding['epoch'])
+        unchanged(root, binding)
+        report['compression_binding'] = binding
+        atomic_json(args.work / 'manifest.json', report)
+        print(json.dumps({k: report[k] for k in ('entry_count', 'gzip_sha256', 'gzip_bytes', 'compression_binding')}))
 
 
 if __name__ == '__main__':

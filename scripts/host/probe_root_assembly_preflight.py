@@ -46,6 +46,13 @@ try:
   assert not work.exists()
   cases.append({'case':'production compression release gate' if release else 'production compression H10 gate',
     'exit':result.returncode,'required_gate':required,'output_created':False})
+  initramfs=project/'scripts/build/h10/initramfs_archive.py'
+  result=subprocess.run([sys.executable,'-B',str(initramfs),str(base/'absent-compression.json'),str(work),
+                        '--media-id','0'*64]+(['--release'] if release else []),capture_output=True,text=True)
+  assert result.returncode!=0 and required in result.stderr,(result.returncode,result.stderr)
+  assert not work.exists()
+  cases.append({'case':'production initramfs release gate' if release else 'production initramfs H10 gate',
+    'exit':result.returncode,'required_gate':required,'output_created':False})
  def refuse(label,image,work):
   try:assembly.validate_destinations(root,image,work)
   except ValueError as error:cases.append({'case':label,'reason':str(error)})

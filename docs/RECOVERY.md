@@ -1201,3 +1201,12 @@ stage accepted. Keep unexpected content private. The probe retains failed
 temporary roots, removes successful ones and saves a content-addressed log.
 It does not operate on installed user accounts and grants no whole-image
 credential or first-boot acceptance.
+
+Compression-bound initramfs recovery (ADR-0081): preserve a failed generation
+and inspect its native cpio/gzip logs, archive manifest and compression input.
+A compression report without assembly_binding or an initramfs manifest without
+compression_binding is not a production handoff. Recheck original assembly,
+source manifest, native stage exits/logs and actual root artifact before choosing
+a fresh generation. Never repair a stale hash, flip the profile flag or reuse
+the intermediate output to force release acceptance. The CLI selects H10 or
+H11 --release gates explicitly and refuses active dispatcher/sync state.

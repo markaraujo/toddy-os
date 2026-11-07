@@ -580,3 +580,13 @@ attribution regressions still pass. Full image and boot acceptance remain open.
 At 08:48 UTC both Berkeley drivers were live: corrected group 20/27 automated
 repmgr with zero FAIL entries; original group 27/hash method 8/9, Test044 cycle 2,
 with the same two known failures. No terminal exits; H07 remains 124/126.
+
+2026-11-07 — Bound initramfs creation to the actual compressed generation
+(ADR-0081), fixing the H10-only CLI and independently supplied digest/epoch.
+Native thirteen-entry compression/readback and 45-entry archive integration
+passed, including sixteen binding negatives and fourteen existing compression
+negatives. Both actual production profiles remain correctly gated. The assembly
+journal in the component experiment is explicitly a metadata fixture; no full
+foundation or boot acceptance is claimed. At 08:56 UTC corrected Berkeley is
+still live in group 20/27, zero FAIL entries; original is hash 8/9, Test044 cycle 3,
+with the same two failures. No terminal exits; H07 remains 124/126.

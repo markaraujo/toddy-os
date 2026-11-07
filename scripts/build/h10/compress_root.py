@@ -242,6 +242,7 @@ def main():
         if evidence.st_uid != 0 or evidence.st_gid != 0 or evidence.st_mode & 0o022:
             raise ValueError('Assembly evidence is not protected native state')
         journal = json.loads(args.assembly.read_text())
+        assembly_sha = digest(args.assembly)
         if (not journal.get('assembled') or journal.get('release_profile') != args.release
                 or journal.get('evidence') != str(args.assembly.parent)
                 or journal.get('assembler_sha256') != digest(HERE / 'assemble_root.py')):
@@ -262,8 +263,15 @@ def main():
         tools = {'accepted_package': True, 'archive_sha256': record['archive_sha256'], 'binaries': {
             name: {'path': str(backend.target / 'usr/bin' / name), 'sha256': record['payload']['/usr/bin/' + name]['sha256']}
             for name in ('mksquashfs', 'unsquashfs')}}
-        print(json.dumps(compress(backend, Path(journal['image']), args.work,
-                                 json.loads(manifest.read_text()), tools, args.epoch), indent=2))
+        report = compress(backend, Path(journal['image']), args.work,
+                          json.loads(manifest.read_text()), tools, args.epoch)
+        if digest(args.assembly) != assembly_sha or digest(manifest) != action['sha256']:
+            raise ValueError('Assembly evidence changed before compression handoff')
+        report['assembly_binding'] = {'journal': str(args.assembly), 'journal_sha256': assembly_sha,
+            'manifest': str(manifest), 'manifest_sha256': action['sha256'],
+            'release_profile': args.release}
+        atomic_json(args.work / 'compression.json', report)
+        print(json.dumps(report, indent=2))
 
 
 if __name__ == '__main__':

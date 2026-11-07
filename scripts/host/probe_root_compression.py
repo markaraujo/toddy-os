@@ -104,12 +104,82 @@ try:
   struct.pack_into('<H',raw,24,flags | (1<<flag) if enabled else flags & ~(1<<flag))
   bad=base/('changed-flag-'+str(flag)+'.squashfs');bad.write_bytes(raw)
   refused(label,lambda:compression.superblock(bad,1793923200))
+ initramfs_result=None
+ if INITRAMFS:
+  import copy,gzip
+  import initramfs_input,initramfs_archive
+  # Only the assembly journal is a metadata fixture. Compression, readback,
+  # native runtime selection and archive creation execute their real code.
+  # This thirteen-entry source is explicitly not a complete foundation root.
+  evidence=base/'assembly';evidence.mkdir(mode=0o700)
+  manifest=evidence/'image-manifest.json';compression.atomic_json(manifest,expected)
+  journal_path=evidence/'assembly.json'
+  journal={'assembled':True,'release_profile':False,'evidence':str(evidence),'image':str(image),
+   'assembler_sha256':digest(base/'assemble_root.py'),
+   'actions':[{'step':'image-manifest','report':manifest.name,'finished':'private metadata fixture',
+    'sha256':digest(manifest)}]}
+  compression.atomic_json(journal_path,journal)
+  def attach(profile):
+   journal['release_profile']=profile;compression.atomic_json(journal_path,journal)
+   first['assembly_binding']={'journal':str(journal_path),'journal_sha256':digest(journal_path),
+    'manifest':str(manifest),'manifest_sha256':digest(manifest),'release_profile':profile}
+   compression.atomic_json(base/'first/compression.json',first)
+  attach(False)
+  input_path=base/'first/compression.json'
+  def binding():return initramfs_input.verify(root,input_path,False)
+  bound=binding();assert bound['rootfs_sha256']==first['artifact_sha256']
+  media_id=hashlib.sha256(b'private compression-bound initramfs').hexdigest()
+  generated=initramfs_archive.assemble(root,base/'initramfs',Path('/var/log/toddy/packages'),
+    base/'live_init.sh',base/'live_media.sh',media_id,bound['rootfs_sha256'],bound['epoch'])
+  initramfs_input.unchanged(root,bound)
+  raw=gzip.decompress((base/'initramfs/initramfs.cpio.gz').read_bytes())
+  assert initramfs_archive.validate_newc(raw,generated['entries'],bound['epoch'])==generated['entry_count']
+  assert (base/'initramfs/runtime/etc/toddy-live/rootfs.sha256').read_text()==first['artifact_sha256']+'\n'
+  initial=len(cases)
+  original_report=input_path.read_bytes()
+  for label,alter in (
+   ('compression has no assembly binding',lambda row:row.pop('assembly_binding')),
+   ('unfinished compression',lambda row:row.update(complete=False)),
+   ('wrong compression profile',lambda row:row['assembly_binding'].update(release_profile=True)),
+   ('failed native extraction',lambda row:row['steps'][1].update(exit=1)),
+   ('missing native stage',lambda row:row['steps'].pop()),
+   ('invalid archive epoch',lambda row:row.update(epoch=2**32)),
+   ('wrong compressed artifact digest',lambda row:row.update(artifact_sha256='0'*64))):
+   changed=copy.deepcopy(first);alter(changed);compression.atomic_json(input_path,changed)
+   refused(label,binding);input_path.write_bytes(original_report)
+  for label,changed_path in (
+    ('changed assembly journal',journal_path),('changed final assembly manifest',manifest),
+    ('changed native extraction log',base/'first/extract.log')):
+   original_bytes=changed_path.read_bytes();changed_path.write_bytes(original_bytes+b'\n')
+   refused(label,binding);changed_path.write_bytes(original_bytes)
+  source=base/'first/source-manifest.json';original_bytes=source.read_bytes()
+  compression.atomic_json(source,{'entries':{},'hardlink_groups':[]})
+  refused('source manifest from another generation',binding);source.write_bytes(original_bytes)
+  original_bytes=artifact.read_bytes();artifact.write_bytes(original_bytes[:-1]+bytes([original_bytes[-1]^1]))
+  refused('changed compressed root',binding)
+  refused('bound input changes during archive creation',lambda:initramfs_input.unchanged(root,bound))
+  artifact.write_bytes(original_bytes)
+  artifact.chmod(0o666);refused('unprotected compressed root',binding);artifact.chmod(0o644)
+  held=base/'held.squashfs';artifact.rename(held);artifact.symlink_to(held)
+  refused('redirected compressed root',binding);artifact.unlink();held.rename(artifact)
+  assert binding()==bound
+  attach(True)
+  release_binding=initramfs_input.verify(root,input_path,True)
+  assert release_binding['rootfs_sha256']==bound['rootfs_sha256']
+  refused('release compression used as H10 input',binding)
+  attach(False);assert binding()==bound
+  initramfs_result={'binding':bound,'release_binding_verified':True,
+   'negative_cases':cases[initial:],'archive_entries':generated['entry_count'],'gzip_bytes':generated['gzip_bytes'],
+   'gzip_sha256':generated['gzip_sha256'],'embedded_actual_compressed_root_digest':True,
+   'native_archive_and_readback':True,'assembly_journal_is_metadata_fixture':True,
+   'full_foundation_assembly_or_boot_verified':False,
+   'component_sha256':{name:digest(base/name) for name in ('initramfs_input.py','initramfs_archive.py','compress_root.py')}}
  assert digest(root/'var/lib/dpkg/status')==before
  reports={str(p.relative_to(base)):p.read_text() for d in ['first','second'] for p in (base/d).glob('*.json')}
  logs={str(p.relative_to(base)):p.read_text() for d in ['first','second'] for p in (base/d).glob('*.log')}
  report={'fixture':str(base),'first':first,'second':second,'negative_cases':cases,'reports':reports,'logs':logs,
  'same_fixture_two_generations_identical':True,'sparse_allocation_preserved':True,'installed_status_unchanged':True,
- 'component_sha256':digest(base/'compress_root.py'),'full_foundation_image_or_boot_verified':False}
+ 'component_sha256':digest(base/'compress_root.py'),'initramfs':initramfs_result,'full_foundation_image_or_boot_verified':False}
  print('COMPRESSION_RESULT '+json.dumps(report),flush=True)
  shutil.rmtree(base)
 except BaseException:
@@ -121,12 +191,17 @@ except BaseException:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('tool_fixture')
+    parser.add_argument('--initramfs', action='store_true', help='Bind and build a native initramfs from the actual compressed fixture')
     args = parser.parse_args()
     sources = {name: base64.b64encode((ROOT / 'scripts/build/h10' / name).read_bytes()).decode()
                for name in ('compress_root.py', 'copy_selected_root.py', 'restore_live_acls.sh')}
+    if args.initramfs:
+        for name in ('initramfs_input.py', 'initramfs_archive.py', 'initramfs_runtime.py',
+                     'assemble_root.py', 'live_init.sh', 'live_media.sh'):
+            sources[name] = base64.b64encode((ROOT / 'scripts/build/h10' / name).read_bytes()).decode()
     sources['package_backend.py'] = base64.b64encode((ROOT / 'scripts/build/package_backend.py').read_bytes()).decode()
     run = subprocess.run(ssh_args() + ['python3 -B -'],
-                         input='SOURCES=' + repr(sources) + '\nTOOL_FIXTURE=' + repr(args.tool_fixture) + '\n' + REMOTE,
+                         input='SOURCES=' + repr(sources) + '\nTOOL_FIXTURE=' + repr(args.tool_fixture) + '\nINITRAMFS=' + repr(args.initramfs) + '\n' + REMOTE,
                          text=True, capture_output=True, timeout=600)
     raw = (run.stdout + run.stderr).encode();sha = hashlib.sha256(raw).hexdigest()
     path = ROOT / '.local/logs' / ('h10-root-compression-' + sha + '.log');path.write_bytes(raw)
@@ -138,6 +213,7 @@ def main():
                              if line.startswith('COMPRESSION_RESULT ')))
     print(json.dumps({'entries': report['first']['entries'], 'bytes': report['first']['artifact_bytes'],
                       'negative_cases': len(report['negative_cases']), 'two_generations_identical': True,
+                      'initramfs_negative_cases': len(report['initramfs']['negative_cases']) if report['initramfs'] else None,
                       'full_foundation_image_or_boot_verified': False}))
 
 

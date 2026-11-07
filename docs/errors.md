@@ -785,3 +785,15 @@ or allow inherited identity bytes. Create the canonical public alias explicitly,
 verify it passes, then replace it for the negative case. Preserve the initial
 failed fixture/report; the complete corrected run passed all eighteen identity
 negative cases and existing marker/payload/attribution regressions. See ADR-0080.
+
+## 2026-11-07 — Initramfs CLI lacked a release-generation handoff
+
+Inspection found that the prepared command always selected the H10 gate and
+accepted an independently entered root hash/epoch. It could not regenerate a
+matching H11 release archive after QA removal and did not enforce compression
+provenance. No production boot failure is claimed. Add explicit generation
+paths and matching H10/H11 gates, bind actual assembly/compression evidence,
+derive the hash/epoch, and recheck input stability. Native component integration
+passed sixteen mismatch/corruption cases; both premature production profiles
+refused before output. Full positive production execution remains gated. ADR-0081
+records evidence and the metadata-fixture limits of the private experiment.

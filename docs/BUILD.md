@@ -396,3 +396,21 @@ unexpected contents, hashes and child names. This bounded check does not
 replace the complete image credential/configuration/license review. Reproduce
 the native positive/eighteen-negative experiment with
 `python3 scripts/host/probe_image_key_marker_review.py --identity`.
+
+## Compression-bound initramfs generation
+
+After successful production root compression, generate a new archive with:
+
+```sh
+python3 /opt/toddy-build/scripts/build/h10/initramfs_archive.py \
+  /mnt/lfs/sources/stage/COMPRESSED_GENERATION/compression.json \
+  /mnt/lfs/sources/stage/INITRAMFS_GENERATION --media-id MEDIA_ID_SHA256
+```
+
+Use actual generation paths and the public 64-hex media identity that the ISO
+will contain. Add --release only for H11 and a matching release-profile
+compression. Root digest and epoch now come from verified compression evidence;
+--rootfs-sha256 and --epoch are no longer independent CLI inputs. The command
+owns the build lock; do not nest it under run_step.py. Retain the archive, native
+logs, per-entry manifest and compression_binding. Missing binding remains an
+incomplete production handoff, even if archive bytes exist. See ADR-0081.

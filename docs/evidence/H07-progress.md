@@ -1403,3 +1403,16 @@ Independent private image preparation passed the fresh-identity audit and
 eighteen rejection cases (ADR-0080). Active H07 inputs and installed packages
 were unchanged. Berkeley production acceptance, APT and final closure remain
 required; H07 stays 124/126 and foundation credit stays 38%.
+
+### Compression/initramfs integration during DB wait — 2026-11-07 08:56 UTC
+
+Both actual driver identities remain live. Original 1364: final matrix 27/27,
+hash method 8/9, Test044 cycle 3, the same two known failures. Corrected 1107192:
+automated repmgr 20/27, initialization tests, zero FAIL entries. Neither has
+terminal exits. Raw observation SHA-256:
+6a13e3281f6acd2461ea7e9e0b480efcea7c6207dbb9f3ce56287f161f02a537.
+
+Independent preparation connected a real private compressed filesystem to its
+native initramfs with strict evidence/profile binding (ADR-0081). Sixteen
+negative bindings and premature production gates passed; full foundation image
+and boot remain pending. No installed package or active H07 input changed.
