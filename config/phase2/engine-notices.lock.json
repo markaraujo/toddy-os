@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "reviewed_declared_terms_with_disclosed_upstream_omission",
+  "supplemental_notices": [
+    {
+      "packages": [
+        "@earendil-works/pi-agent-core",
+        "@earendil-works/pi-ai",
+        "@earendil-works/pi-schema",
+        "@earendil-works/pi-telemetry"
+      ],
+      "url": "https://raw.githubusercontent.com/earendil-works/pi/f9a26365568127461c47a07a37dcb42c140a3ac5/LICENSE",
+      "sha256": "0457f5bcec3b3b211605dfb5d1a49042fd638f3686a410fe099c24a25af13c48",
+      "review": "Pi 1.5.0 tag root MIT notice; scoped npm archives omit the root notice."
+    },
+    {
+      "packages": [
+        "@aws-sdk/credential-provider-http",
+        "@aws-sdk/credential-provider-login",
+        "@aws-sdk/nested-clients"
+      ],
+      "url": "https://raw.githubusercontent.com/aws/aws-sdk-js-v3/ea82eac3afd74c15510e427b91a9eff8292f178b/LICENSE",
+      "sha256": "edea91454b811f127fbdea3d86f378f6719bd372ed440abf82b232f6fca06c3d",
+      "review": "Exact current upstream source package versions 3.972.84, 3.972.89 and 3.998.1 checked at this commit; root Apache-2.0 notice applies. Original manifests/source attribution retained."
+    },
+    {
+      "packages": [
+        "standardwebhooks"
+      ],
+      "url": "https://raw.githubusercontent.com/standard-webhooks/standard-webhooks/b4d2c14fc5b4ccff3ff271e3b087dff812254c59/libraries/LICENSE",
+      "sha256": "5ec8c7b26b64d881a6706617bed25c049f97f2f35de034c756de8546fd6dbe27",
+      "review": "Use the MIT license for libraries at npm gitHead, rather than the root repository Apache-2.0 license."
+    },
+    {
+      "packages": [
+        "proxy-agent-negotiate"
+      ],
+      "url": "https://raw.githubusercontent.com/spdx/license-list-data/v3.28.0/text/MIT.txt",
+      "sha256": "b05785f9f18e6716bab63424b11454513b9943a222595b70411009202fc592b5",
+      "review": "Package 1.1.0 and exact matching upstream source commit 84e41e433b422cbe9f073952d8e16052eb9b0251 declare MIT/author Nathan Rajlich but omit a standalone full notice. Preserve original package/source metadata and this explicitly identified canonical MIT template; do not invent an upstream copyright line. Optional Kerberos peer/proxy authentication remains unqualified and absent."
+    }
+  ]
+}

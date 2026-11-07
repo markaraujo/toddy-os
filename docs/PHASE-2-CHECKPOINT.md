@@ -1,11 +1,12 @@
 # Phase 2 continuation card
 
-- Authority: [ADR-0113](adr/0113-owner-authorizes-phase2-implementation.md); isolated B01–B13/G2 implementation authorized. Physical testing pending.
-- Current: B01 / B01-B native compile namespace passed; GLib bootstrap compile/stage + 14 focused tests passed; B01 acceptance pending.
-- Evidence: [B01](evidence/B01.md), [native inventory](evidence/B01-foundation-inventory.json), [cold clone receipt](evidence/B01-foundation-clone.json).
-- Actual target: toddy-phase2 KVM builder, separate writable qcow2 overlays over read-only post-H13 cold disks. 12 vCPU/12 GiB; /dev/vdb4 mounted at /mnt/lfs passed guards. No recipe writer active at inventory.
-- Last verified: Dpkg audit empty, apt-get check exit 0; unchanged runner scan 18.714 s. GLib and Node absent; accepted dependencies reusable.
-- Jobs/logs: VM running; no current compile/test writer; GLib bootstrap-1 exited zero, 14 focused tests passed. Inspect actual process/lock before the package transaction. Local ignored .local/phase2/runtime.json and failure ledger hold volatile details. Inspect actual container/markers/lock before continuing.
-- Change/check: next B01-B qualifies isolated unprivileged staging and denied writes. No foundation suite invalidated. Unqualified installs keep full-root checks (ADR-0110).
-- Undo: clean shutdown of toddy-phase2, preserve overlays/evidence; cold foundation and released ISO remain unchanged. Never replay prepare over existing state.
-- Last transaction: b01-glib-bootstrap-install recipe/postcheck exit 0 and success marker verified; full-root diff retained (593 paths). Next: launch the native Node 24.19.0 bootstrap once under isolated.sh, four compiler jobs, with durable /var/log/toddy/phase2/node-bootstrap-1.{log,exit,job.json}. Check process identity/log/exit and staged node version before further guest mutations. This potentially >10-minute source build is needed for the native Pi spike; monitor it without restart while progress is healthy. Native GLib 2.88.3/introspection 1.86.0/PyGObject 3.56.3/Node 24.19.0 source hashes are pinned to official SHA-256 files. No Pi execution yet.
+- Authority: [ADR-0113](adr/0113-owner-authorizes-phase2-implementation.md); isolated B01–B13/G2 delivery authorized. Physical testing pending. No subagents/model switching.
+- Current: B01 / native Node bootstrap running; one guest writer. B01 acceptance and G2 pending.
+- Evidence: [B01](evidence/B01.md), [native inventory](evidence/B01-foundation-inventory.json), [cold clone](evidence/B01-foundation-clone.json), [isolation](evidence/B01-build-isolation.json).
+- Target: toddy-phase2 KVM builder, separate writable overlays over read-only post-H13 disks. 12 vCPU/12 GiB; guarded /dev/vdb4 at /mnt/lfs. Historical VM start/restore tools now refuse while this clone runs.
+- Verified: native isolated C compile/stage/write-denial; GLib 2.88.3 native transaction recipe/postcheck exit 0, 14 focused tests, Dpkg/APT audit passed. Full-root diff retained (593 paths). Initial scan 18.714 s. No foundation rebuild.
+- Active job: /var/log/toddy/phase2/node-bootstrap-1.{job.json,log,exit}; four compiler jobs. Check actual PID/boot/start identity from ignored .local/phase2/runtime.json. node-monitor.log records read-only progress. Missing exit is not success. No sync/install/other guest mutation until writer exits/releases lock.
+- Host-only prep: Pi 1.5.0 worker, 11 protocol/tool/cancel/disconnect fixtures and framing checks passed. Native Pi/GIO proof still pending. Exact npm byte/notices audit underway; local failures.json persists causes/corrections across compaction.
+- Checks: compile isolated; unqualified native transactions retain full-root before/after checks. Reuse unchanged foundation suites. make check last passed 217 tests.
+- Recovery: preserve job/overlays/logs; do not stop a healthy build or replay prepare/install. Reconcile exit, stage and actual postconditions first. Cold foundation, released ISO and prior checkpoints remain preserved.
+- Next: continue host source/license and native-binding recipe prep while Node is healthy. Once terminal, inspect exit and staged Node version/crypto, then execute native Pi fixture and proceed with introspection/PyGObject/GIO. Calamares 3.4.3 source SHA-256 verified; no-write Qt/module probe still pending. Do not claim B01 complete from these partial slices.

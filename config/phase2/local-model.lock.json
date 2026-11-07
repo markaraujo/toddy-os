@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "status": "pinned_candidate_runtime_unqualified",
+  "model": {
+    "repository": "Qwen/Qwen3-1.7B-GGUF",
+    "revision": "90862c4b9d2787eaed51d12237eafdfe7c5f6077",
+    "filename": "Qwen3-1.7B-Q8_0.gguf",
+    "url": "https://huggingface.co/Qwen/Qwen3-1.7B-GGUF/resolve/90862c4b9d2787eaed51d12237eafdfe7c5f6077/Qwen3-1.7B-Q8_0.gguf",
+    "sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a",
+    "bytes": 1834426016,
+    "license": "Apache-2.0",
+    "license_url": "https://huggingface.co/Qwen/Qwen3-1.7B-GGUF/resolve/90862c4b9d2787eaed51d12237eafdfe7c5f6077/LICENSE",
+    "license_sha256": "5de36594c10839788a8c589443a8ef9d8b8d17c65a1b5807206ae037fc36c6bd"
+  },
+  "runtime": {
+    "name": "llama.cpp",
+    "version": "v0.9.0",
+    "commit": "cd959bae99ff4bed22bef2604f45241c09bbb8c8",
+    "url": "https://codeload.github.com/ggml-org/llama.cpp/tar.gz/cd959bae99ff4bed22bef2604f45241c09bbb8c8",
+    "filename": "llama.cpp-v0.9.0.tar.gz",
+    "sha256": "fbe74146a3cdc00f706773eb233bc4aedb7d8c3c7e2122440e492a99c1ec5a76",
+    "license": "MIT",
+    "cpu_native_optimization": false,
+    "gpu_layers": 0,
+    "threads": 4,
+    "context_tokens": 4096,
+    "transport": "per-user authenticated loopback only after B03 denial proof; private process fallback",
+    "automatic_cloud_fallback": false
+  },
+  "budgets": {
+    "reference_vcpus": 4,
+    "reference_ram_mib": 8192,
+    "proposed_model_peak_rss_mib": 5120,
+    "measured_model_peak_rss_mib": null,
+    "weights_bytes": 1834426016,
+    "note": "Weights bytes known; runtime/KV/scratch estimates and compatibility unqualified until B03."
+  },
+  "installation": {
+    "default": "not installed",
+    "iso_weights": false,
+    "explicit_acquisition_required": true,
+    "qualifying_story": "B03",
+    "real_offline_tool_task": "not_run"
+  }
+}
