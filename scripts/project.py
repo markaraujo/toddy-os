@@ -142,21 +142,10 @@ def patreon_html():
             '<span>Support on Patreon ↗</span></a>')
 
 
-def supporter_page(preview=False):
+def supporter_page():
     """Build the public name wall directly from current community data."""
     template = (ROOT / "dashboard/supporters-template.html").read_text()
     names = community_html()
-    if preview:
-        community = json.loads((ROOT / "config/community.json").read_text())
-        count = community.get("supporter_preview_count", 100)
-        if type(count) is not int or not 0 <= count <= 500:
-            raise ValueError("Supporter preview count must be an integer from 0 to 500")
-        first = ("Ana", "Bruno", "Camila", "Diego", "Elisa", "Felipe", "Gabriela", "Hugo", "Isabela", "João Pedro")
-        last = ("Lima", "Costa", "Almeida", "Santos", "Oliveira", "Castro", "Ferreira", "Mendes", "Rodrigues", "Nascimento")
-        names = supporter_names_html([f'Demo {i + 1:03d} · {first[(i // 10) % 10]} {last[i % 10]}' for i in range(count)])
-        notice = '<aside class="release-notice"><strong>Layout preview — fictional names, not real supporters.</strong><a href="supporters.html">See the real supporter page ↗</a></aside>'
-        template = template.replace('<main id="main"', notice + '<main id="main"')
-        template = template.replace('</head>', '<meta name="robots" content="noindex,nofollow" /></head>')
     return template.replace("{{SUPPORTERS}}", names).replace("{{PATREON}}", patreon_html())
 
 

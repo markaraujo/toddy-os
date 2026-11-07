@@ -1191,3 +1191,15 @@ image swaps. Fixed caption space prevents name-layout jumps. Playwright checked
 all 600 localized responses, rapid/random clicks, native touch, reduced motion
 and 48 viewport/locale combinations. 186 checks passed. See
  evidence/supporter-thanks-and-comets.md; no guest/release scope changed.
+
+## 2026-11-07 — Remove superseded website demo and brand duplicates
+
+Removed the temporary hundred-name supporter page, its fake-name generator,
+preview-only configuration and localization strings. The only public supporter
+wall now comes from approved community names. Removed the obsolete beige v2
+background copies/metadata from the checkout and pointed provenance to their
+immutable Git history instead. Protected current logo/mascot and navy art remain.
+Updated stale community documentation that still mentioned PayPal or name cards.
+The linked desktop/installer concept pages remain current product design studies,
+not leftover site versions; foundation and release evidence remain traceable.
+make check passed 186 tests, including absence of the demo in the clean export.

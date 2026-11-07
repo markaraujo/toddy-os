@@ -17,7 +17,7 @@ A label must remain on every exported concept image. Replace concepts with real
 guest screenshots when corresponding features work; never use a mockup as evidence.
 
 The exact original logo/mascot and its colors remain unchanged. Wallpaper
-production assets live in assets/brand; the beige predecessors are archived.
+production assets live in assets/brand; the beige predecessors remain recoverable in Git history.
 Installer copy is affectionate, nerdy Shih-tzu humor, kept out of destructive
 warnings. English product examples are source copy; Portuguese localization is
 part of B06/B09/B11/B12 runtime work.
@@ -49,14 +49,14 @@ Real GNOME icon provenance and retained licenses are in
 
 ## Optional public supporter acknowledgments
 
-config/community.json contains only the owner-provided public donation URL and
-names explicitly approved for public acknowledgment. Keep donor email, account
-identifiers, payment amounts/history and private consent evidence out of Git.
-The default has no payment destination and no invented supporter entries. The
-site displays a simple optional acknowledgment section, without paid tiers,
-ownership claims or exclusive software benefits. Add a verified public PayPal
-URL when the owner supplies it; the renderer refuses unrelated/non-HTTPS targets.
+[config/community.json](../config/community.json) contains the owner-approved
+Patreon creator URL and names approved for public acknowledgment. It drives the
+current supporter galaxy automatically during publication. Do not put payment
+amounts, email, account identifiers or private consent records in this file.
 Names are HTML-escaped, deduplicated and never auto-published from payment data.
+There are no paid ranks, ownership claims or exclusive software benefits.
+The temporary hundred-name demonstration has been removed; the public wall
+contains only approved names. See [data instructions](../config/README.md).
 
 ## Website-only mascot personality
 
@@ -72,3 +72,11 @@ Ten two-line comments rotate in a deterministic cycle and are localized through
 the existing six-language catalog. Caption updates use text nodes. Image loading
 failure retains the static original. The author LinkedIn link opens a separate
 tab with noopener/noreferrer. This is portal decoration, not a new product runtime.
+
+## Current supporter galaxy
+
+The supporter page uses the separate happy portrait, floating text names,
+continuous nod/head orientation and inline bone comets with tapered light tails.
+There is no name-to-mascot connector or image switching. `supporters.js` manages
+selection and motion preferences; `supporter-thanks.js` provides 100 authored
+random replies in six languages. Both work locally without an AI service.

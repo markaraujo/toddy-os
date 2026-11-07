@@ -65,10 +65,9 @@ The UI concept captures are 1320 x 680 PNG rendered in a browser at a 1440 x 100
 viewport from ui/preview.html. Their original PNG mascot is composited by HTML,
 not regenerated. This keeps the identity source intact.
 
-[Archived v2 assets](archive/v2/README.original.txt), original metadata and prompt
-records preserve the previous backgrounds. The archived README is verbatim
-historical text; its original relative license link is not a navigable archive
-reference. Current license: [CC BY 4.0](../../LICENSES/CC-BY-4.0.txt), Marcos Araujo /
+The superseded beige backgrounds and their original records are available in
+[Git history](https://github.com/markaraujo/toddy-os/tree/1f6fc3043708665292505a768d350f78a6999788/assets/brand/archive/v2), rather than duplicated in the current checkout.
+Current license: [CC BY 4.0](../../LICENSES/CC-BY-4.0.txt), Marcos Araujo /
 Toddy OS, with modification notices and attribution retained. No trademark rights
 are granted. Background changes do not alter the published foundation ISO.
 

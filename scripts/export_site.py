@@ -68,8 +68,6 @@ def export(destination):
     (destination / "index.html").write_text(version_resources(page, "index.html", sources))
     supporters = public_links(project.supporter_page())
     (destination / "supporters.html").write_text(version_resources(supporters, "supporters.html", sources))
-    preview = public_links(project.supporter_page(preview=True))
-    (destination / "supporters-preview.html").write_text(version_resources(preview, "supporters-preview.html", sources))
     (destination / ".nojekyll").write_text("")
     for relative, source in sources.items():
         target = destination / relative

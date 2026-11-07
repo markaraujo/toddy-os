@@ -28,7 +28,7 @@ class PublicExport(unittest.TestCase):
         actual = {str(p.relative_to(site)) for p in site.rglob("*") if p.is_file()}
         expected = {
             "assets/third-party/patreon/patreon-symbol.png", "assets/third-party/patreon/README.md",
-            "index.html", ".nojekyll", "site.css", "supporters.html", "supporters.css", "supporters-preview.html",
+            "index.html", ".nojekyll", "site.css", "supporters.html", "supporters.css",
             "ui/tokens.css", "ui/preview.css", "ui/preview.html", "ui/installer-slides.html",
             "ui/i18n.js", "ui/translations.js", "ui/mascot.js", "ui/supporters.js", "ui/supporter-thanks.js",
             "assets/brand/toddy-os-system-icon.png",
@@ -56,6 +56,8 @@ class PublicExport(unittest.TestCase):
         self.assertIn('href="supporters.html"', content)
         wall = (site / "supporters.html").read_text()
         self.assertNotIn("{{", wall)
+        self.assertFalse((site / "supporters-preview.html").exists())
+        self.assertNotIn("Demo 001", wall)
         self.assertIn('href="supporters.css?v=', wall)
 
     def test_supporter_names_come_from_one_file_and_remain_text(self):
