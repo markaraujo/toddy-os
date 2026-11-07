@@ -687,3 +687,23 @@ The full standard run advanced through replication/security into recovery,
 Recd001.e, block 25/27, with zero FAIL and no terminal exits at observation.
 H07 remains 124/126; strict-summary/full-source custody/fresh-build handling and
 APT/final closure remain pending. 165 local checks pass.
+
+
+### 2026-11-07 10:23 UTC — Prepare exact terminal qualification
+
+The preceding turn changed authoritative custody state and verified native
+access/descriptor boundaries; it was progress. Current Git was clean and the
+corrected standard driver remained live. Prepared the separate complete-run
+qualification under ADR-0087: full native review, exact known diagnostics,
+protected coverage, full-source custody and preserved raw exits/summary. The
+production handoff remains strict until an actual complete positive result.
+Native live/focused-run refusals wrote no full qualification/custody state and
+left active metadata unchanged. Shared private record publication is atomic and
+non-overwriting; actual native checks and 168 local tests passed. No mock result
+was substituted for the pending complete native execution.
+
+The current fresh Berkeley recipe still needs private namespace/diagnostic and
+portable manifest integration; recorded that concrete remaining build defect
+instead of claiming the current recovery profile is a verified fresh rebuild.
+At observation the full suite was in Recd002.c, recovery 25/27, zero FAIL. H07
+remains 124/126, with APT and all final closure/checkpoint requirements pending.

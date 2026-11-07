@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import stat
+import tempfile
 
 import db_coverage_result
 from db_standard_result import digest, protected
@@ -60,12 +61,27 @@ def refuse_open_references(tree):
 
 
 def save(path, value):
-    with path.open('x') as stream:
-        os.fchmod(stream.fileno(), 0o600)
-        json.dump(value, stream, indent=2)
-        stream.write('\n')
-        stream.flush()
-        os.fsync(stream.fileno())
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode='w', prefix='.' + path.name + '.pending-',
+                                         dir=path.parent, delete=False) as stream:
+            temporary = Path(stream.name)
+            os.fchmod(stream.fileno(), 0o600)
+            json.dump(value, stream, indent=2)
+            stream.write('\n')
+            stream.flush()
+            os.fsync(stream.fileno())
+        # Same-filesystem exclusive publication: never replace an older record,
+        # and never expose a partially written JSON file under its final name.
+        os.link(temporary, path)
+        descriptor = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(descriptor)
+        finally:
+            os.close(descriptor)
+    finally:
+        if temporary is not None:
+            temporary.unlink()
 
 
 def require_protected_tree(tree):
@@ -114,43 +130,48 @@ def seal_coverage(base, standard):
         # Verify actual exits, dead producer, all 10,208 native inputs/reports
         # and the exact standard pairing before changing any fixture metadata.
         verified = db_coverage_result.verify(base, standard)
-        source = base / 'source'
-        intent = base / 'source-custody.intent.json'
-        receipt = base / 'source-custody.json'
-        current = snapshot(source)
-        if receipt.exists():
-            return verify_receipt(base, verified, current)
-        if intent.exists():
-            protected(intent, private=True)
-            original = json.loads(intent.read_text())
-            if original['witness'] != verified or set(original['tree']) != set(current):
-                raise ValueError('Interrupted custody belongs to different evidence')
-            for name, row in current.items():
-                if any(row[key] != original['tree'][name][key]
-                       for key in ('device', 'inode', 'kind', 'links')):
-                    raise ValueError('Interrupted source inode changed: ' + name)
-        else:
-            save(intent, {'witness': verified, 'tree': current})
-        # Close pathname access before checking held descriptors/mappings.
-        # A refusal leaves the access gate closed and the intent for recovery.
-        base.chmod(0o700)
-        os.chown(source, 0, 0, follow_symlinks=False)
-        source.chmod(0o700)
-        refuse_open_references(current)
+        return seal_verified_source(base, verified, lambda: db_coverage_result.verify(base, standard))
+
+
+def seal_verified_source(base, verified, reverify):
+    """Internal custody operation after terminal review under the dispatcher lock."""
+    source = base / 'source'
+    intent = base / 'source-custody.intent.json'
+    receipt = base / 'source-custody.json'
+    current = snapshot(source)
+    if receipt.exists():
+        return verify_receipt(base, verified, current)
+    if intent.exists():
+        protected(intent, private=True)
+        original = json.loads(intent.read_text())
+        if original['witness'] != verified or set(original['tree']) != set(current):
+            raise ValueError('Interrupted custody belongs to different evidence')
         for name, row in current.items():
-            path = source / name
-            info = path.lstat()
-            if (info.st_dev, info.st_ino, stat.S_IFMT(info.st_mode)) != (row['device'], row['inode'], row['kind']):
-                raise ValueError('Source inode changed while sealing: ' + name)
-            os.chown(path, 0, 0, follow_symlinks=False)
-            if row['kind'] != stat.S_IFLNK:
-                path.chmod(0o700 if name == '.' else row['mode'] & ~0o022)
-        final = snapshot(source)
-        require_protected_tree(final)
-        refuse_open_references(final)
-        if db_coverage_result.verify(base, standard) != verified:
-            raise ValueError('Native input/report bytes changed during custody transfer')
-        result = {'custody_sealed': True, 'suite_accepted': False, 'package_accepted': False,
-                  'witness': verified, 'intent_sha256': digest(intent), 'tree': final}
-        save(receipt, result)
-        return result
+            if any(row[key] != original['tree'][name][key]
+                   for key in ('device', 'inode', 'kind', 'links')):
+                raise ValueError('Interrupted source inode changed: ' + name)
+    else:
+        save(intent, {'witness': verified, 'tree': current})
+    # Close pathname access before checking held descriptors/mappings.
+    # A refusal leaves the access gate closed and the intent for recovery.
+    base.chmod(0o700)
+    os.chown(source, 0, 0, follow_symlinks=False)
+    source.chmod(0o700)
+    refuse_open_references(current)
+    for name, row in current.items():
+        path = source / name
+        info = path.lstat()
+        if (info.st_dev, info.st_ino, stat.S_IFMT(info.st_mode)) != (row['device'], row['inode'], row['kind']):
+            raise ValueError('Source inode changed while sealing: ' + name)
+        os.chown(path, 0, 0, follow_symlinks=False)
+        if row['kind'] != stat.S_IFLNK:
+            path.chmod(0o700 if name == '.' else row['mode'] & ~0o022)
+    final = snapshot(source)
+    require_protected_tree(final)
+    refuse_open_references(final)
+    if reverify() != verified:
+        raise ValueError('Native input/report bytes changed during custody transfer')
+    result = {'custody_sealed': True, 'suite_accepted': False, 'package_accepted': False,
+              'witness': verified, 'intent_sha256': digest(intent), 'tree': final}
+    save(receipt, result)
+    return result

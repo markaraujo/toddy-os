@@ -1532,3 +1532,15 @@ The full review now requires the separate read-only custody proof; actual full
 source/terminal qualification and package install remain pending. See that ADR
 for native hashes and the corrected optional-utility assumption. 165 local
 checks pass; no production or suite acceptance was added by this work.
+
+
+## Exact qualification preparation, not full acceptance
+
+At 10:23 UTC the corrected driver was still live in recovery 25/27, Recd002.c,
+zero FAIL and no terminal exits. ADR-0087 prepares a separate source-bound
+terminal qualification that retains raw 1/1 failures and the upstream summary.
+Actual premature/focused-run refusals, unchanged active-source metadata,
+protected-witness verification and exclusive native record publication passed;
+168 local checks pass. No full qualification or source-custody record was created.
+The complete positive qualification, production handoff and portable fresh-build
+runner/diagnostic handling remain pending. H07 stays at 124/126 accepted packages.

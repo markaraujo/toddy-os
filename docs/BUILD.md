@@ -467,3 +467,16 @@ boots. See docs/evidence/H09-private-kernel.md; do not repeat successful checks
 without a new change or concern. These commands do not install the production
 kernel or accept the full foundation. H08/H09 packaging/bootloader and the
 complete Systemd/root/ISO acceptance sequence remain mandatory.
+
+
+## Pending Berkeley fresh-build integration
+
+The current corrected full suite is an isolated recovery execution with retained
+native provenance. Its complete terminal result has not yet passed acceptance.
+The normal fresh Berkeley recipe still needs the private namespace runner and
+source-backed diagnostic handling integrated; do not describe the existing
+plain-chroot standard command as a verified fresh-build solution. ADR-0087's
+prepared exact qualification preserves raw outcomes and remains disconnected
+from production until actual complete positive verification. This integration,
+including portable source/seed/coverage manifests, remains required before H07
+closes and before claiming reproducible complete-release instructions.

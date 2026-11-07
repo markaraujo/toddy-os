@@ -1363,3 +1363,33 @@ identity and confirms open returns PermissionError. The idempotent retry and
 read-only verification passed, with the same receipt SHA-256
 0a2b9b17cf57a0de76dc20ce426f784c4e92aa401d44a1d3f43817726e6dccb2.
 Full standard-result qualification/production installation is still pending.
+
+
+## Prepared complete-run qualification (ADR-0087)
+
+The still-live corrected suite has no qualification or full-source custody
+record. Do not modify its source or synchronize shared build inputs while it
+runs. On actual terminal completion, inspect driver/test exits, every failure
+and the complete independent review. If the raw run passes, keep the strict
+success path. Only the exact known failed-summary diagnostic profile may use
+the prepared command after a safe quiescent input sync:
+
+```sh
+python3 -B /opt/toddy-build/scripts/build/db_standard_qualify.py qualify /mnt/lfs/sources/recovery/db-standard-nfv62s4o --coverage /mnt/lfs/sources/recovery/db-standard-coverage-0_05jaht
+python3 -B /opt/toddy-build/scripts/build/db_standard_qualify.py verify /mnt/lfs/sources/recovery/db-standard-nfv62s4o
+```
+
+This requires actual complete review and protected coverage before any full
+source ownership change. It preserves raw results, protects full source, repeats
+review and publishes a separate qualification only if everything agrees. The
+positive full invocation has NOT run. A qualifying record is not a package
+success; production handoff still uses strict verify_completed. Complete and
+verify the production integration only after actual positive native evidence.
+
+Preserve source-custody.intent.json/source-custody.json after interruption;
+retry the same complete review and immutable source instead of restarting the
+suite. JSON publication is exclusive and atomic; a leftover .pending-* file is
+not an accepted record. Do not overwrite existing records or normalize a raw
+exit to zero. A changed assertion/diagnostic profile needs fresh source-backed
+investigation. Portable fresh-build runner/diagnostic handling is still required
+before H07 acceptance; the current recovery profile pins measured inputs.

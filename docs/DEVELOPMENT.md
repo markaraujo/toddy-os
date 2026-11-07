@@ -172,3 +172,12 @@ review now requires its read-only custody verification. The standard suite is
 still running; its own source remains untouched and unaccepted. Exact terminal
 qualification, full-source custody, production handoff and portable fresh-build
 diagnostic handling remain required before closing H07.
+
+
+ADR-0087 prepares a separate exact diagnostic qualification after complete
+native review and full-source custody. It preserves raw 1/1 exits and the failed
+upstream summary. Native premature/full-versus-focused refusals passed, but the
+complete positive path is still pending. Production nomination remains strict
+and must not be changed to consume this decision until actual full positive
+verification. Current recovery profiles are not yet portable fresh-build
+acceptance; the normal fresh recipe still needs isolated run/diagnostic handling.
