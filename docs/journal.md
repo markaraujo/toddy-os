@@ -738,3 +738,19 @@ At 10:36 UTC the same complete producer remained live in recovery 25/27,
 Recd003.k, zero FAIL and no terminal exits. H07/G1 remain incomplete. Continue
 portable runner/result integration independently, and inspect the genuine full
 terminal outcome before qualification/handoff and APT.
+
+### 2026-11-07 10:46 UTC — Rebuild native DB inputs and verify provenance
+
+The preceding turn implemented and natively verified private preparation; it
+was progress. This turn staged the common native test recipe, rebuilt its inputs
+from frozen archives in a private canonical-path view with -j2, and verified all
+five actual zero exits plus C tests/helper/preparation. The new provenance gate
+binds logs, reviewed recipes, native package context, 483 Tcl references and
+10,207 native input files to the prepared execution manifest. It never accepts
+run_std. Native concurrent/completed/wrong-source/changed-recipe refusals passed.
+Fixed host refusal stderr presentation after a concrete observation failure.
+
+The independent build is now terminal and its evidence is retained (ADR-0089).
+No duplicate complete database suite was started. The same full producer advanced
+to Recd011.b, recovery 25/27, zero FAIL. Portable full-result/coverage integration,
+original full terminal acceptance, production and APT/final closure remain.

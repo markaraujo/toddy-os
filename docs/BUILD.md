@@ -494,3 +494,23 @@ intent/input/probe records. The actual completed-coverage-source probe passed
 without repeating run_std. Fresh dispatch, portable native compile/coverage
 provenance and complete terminal acceptance still need integration before this
 becomes the normal fresh recipe. Do not start a duplicate current full run.
+
+### Fresh native Berkeley test build and provenance
+
+ADR-0089's private compilation now rebuilds from frozen original/maintained
+archives with native tools and the same staged test recipe. It does not reuse
+compiled recovery inputs or launch another standard suite:
+
+```sh
+python3 scripts/host/probe_native_db.py start
+python3 scripts/host/probe_native_db.py collect /mnt/lfs/sources/recovery/db-native-GENERATION
+python3 scripts/host/probe_db_native_build_result.py /mnt/lfs/sources/recovery/db-native-GENERATION
+```
+
+Use the actual generation printed by start. The retained m3pjqwd2 generation
+already passed all five stages, C tests, preparation/isolation and independent
+provenance verification; do not repeat it without a concrete change or concern.
+The result includes source/code/log hashes and a protected build-context status
+snapshot. Compilation provenance binds actual prepared input bytes but never
+accepts the complete standard suite. Generic full-result/coverage integration
+and the normal fresh-recipe switch remain pending before H07 acceptance.

@@ -1431,3 +1431,26 @@ The current normal recipe still needs this component wired into a portable
 runner and result/provenance gate. Its prepared generic manifest deliberately
 does not claim the historical seed profile required by the recovery acceptance
 verifier. Keep native compilation provenance and full-suite acceptance separate.
+
+## Fresh native DB compilation checkpoint (ADR-0089)
+
+The private build /mnt/lfs/sources/recovery/db-native-m3pjqwd2 is complete:
+driver 4055451 terminal, all five stages and actual C tests exited zero. Its
+prepared /mnt/lfs/sources/recovery/db-standard-6gav6kkh has no standard producer.
+Keep the existing complete run at db-standard-nfv62s4o as the sole active suite.
+
+Use `python3 scripts/host/probe_native_db.py collect FIXTURE` to inspect actual
+logs, PIDs and exits. `resume FIXTURE` refuses a live driver/recorded compiler or
+a completed result. Completed stages are reused only with matching input/command/
+log evidence. Diagnose a failed stage before retrying; do not retry an unchanged
+patch/extraction failure over a partially modified tree. Preserve that generation
+and use a new one for corrected source preparation after confirming termination.
+An interrupted preparation after native-build.json requires inspecting the
+printed PREPARATION generation and actual processes; do not infer its subprocess
+ended merely because the supervising process disappeared.
+
+The protected build-context-status snapshot preserves the actual native package
+context; input and native-build digests bind it. Source/build receipts and the
+verification output remain distinct from full-suite acceptance. The verifier
+requires the same reviewed code snapshot as the executed build. Future recipe
+changes must preserve the earlier snapshot/evidence rather than rewrite it.

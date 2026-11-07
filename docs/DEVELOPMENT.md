@@ -189,3 +189,11 @@ preparer's session-directory dependency. It is not yet wired into the normal
 fresh recipe; portable compile/coverage provenance, full execution and terminal
 acceptance integration remain. Do not launch its private generation while the
 existing corrected complete suite remains active.
+
+ADR-0089 adds actual fresh native test compilation using the same staged recipe:
+all five stages, C tests, helper and private preparation passed. Independent
+provenance verification binds frozen sources, reviewed code, native context and
+prepared binary bytes without the historical recovery seed. The retained build
+is complete; do not restart it or launch its prepared suite. The normal fresh
+full runner/coverage/qualification integration remains the next implementation
+slice while the existing full corrected producer finishes.

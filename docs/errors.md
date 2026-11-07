@@ -845,3 +845,16 @@ configuration change was needed. Verification: PermissionError occurred under
 tester; the completed receipt was reverified unchanged, all source/report hashes
 still matched and the integrated unfinished-suite gate still refused. Preserve
 both failure and successful evidence from ADR-0086; no test result was relabeled.
+
+### 2026-11-07 — Private native DB refusal stderr hidden from terminal
+
+- Classification: host observation implementation defect; native guard worked.
+- Symptom: concurrent-start probe returned nonzero but the displayed output did
+  not include the expected live-driver reason.
+- Cause: probe_native_db.py saved stdout and stderr together in its raw evidence
+  but printed stdout only.
+- Correction: display both captured streams while preserving the raw report.
+- Verification: actual concurrent start and resume refused live driver 4055451;
+  completed-result resume later refused as well. No build restart or input change.
+- Original raw refusal: 79b51dcd1db3b11eeb1dd48e58488f9fca344d15acf57dd5138a62fde0a1c6ef.
+  Final evidence is in ADR-0089.

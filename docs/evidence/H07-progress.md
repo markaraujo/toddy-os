@@ -1555,3 +1555,16 @@ a generation. Prior test outcomes are excluded, raw source inputs/coverage
 records remain unchanged, and no duplicate standard suite was started.
 The normal fresh recipe still requires portable runner/provenance/qualification
 integration; H07 remains 124/126, with full DB acceptance and APT pending.
+
+## Fresh native database compilation and provenance
+
+The new private build from frozen archives passed all five stages, native C
+tests, test-helper compilation and preparation/isolation. Independent verification
+binds 10,207 native inputs and 483 Tcl references to the prepared standard source
+view, with preserved native package context and no historical binary seed.
+See ADR-0089 for actual logs, hashes and refusal checks. No package was installed
+and no duplicate complete suite was started.
+
+At 10:46 UTC the existing corrected full driver was live in recovery 25/27,
+Recd011.b, zero FAIL and no terminal exits. H07 remains 124/126; the normal fresh
+full-run/coverage/qualification integration and production/APT acceptance remain.
