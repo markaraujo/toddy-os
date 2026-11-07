@@ -550,3 +550,33 @@ The probe's private install target is outside the real package staging view;
 its success is not a native package installation or substitute for full tests.
 `probe_db_production.py start` creates a fresh private experiment only when a
 new change warrants repeating it. It never starts the standard Tcl suite.
+
+### H10 complete validation generation (ADR-0096)
+
+After H09 acceptance and committed status/input synchronization, build the
+five source-built media dependencies once:
+
+```sh
+bash /opt/toddy-build/scripts/build/h10-tools-driver.sh
+```
+
+Require its actual terminal exit zero and all five recipe/postcheck records.
+At a quiescent input boundary, synchronize any newer committed recipes, then:
+
+```sh
+bash /opt/toddy-build/scripts/build/h10-live-driver.sh
+```
+
+Run these inside the designated builder with detached durable launch logs.
+The latter records `/var/log/toddy/h10-live-driver.exit` and retains fresh
+root/evidence/compression/initramfs/validation-ISO generations beneath
+`/mnt/lfs/sources/stage/h10-*`. It refuses existing generations. Inspect the
+failed stage's journal and process state before recovery; do not overwrite
+completed outputs or relabel an incomplete assembly successful.
+
+The produced `h10-validation-iso/toddy.iso` and `result.json` remain private.
+Transfer both to project-local ignored storage, verify the actual ISO size and
+SHA-256 against that result, then run `scripts/host/live_boot_test.py` with the
+local ISO and manifest and explicit `--firmware bios --medium cdrom`. This
+requires the actual console login and native live behavior. H11 must later
+produce a separate release-profile generation, and H12 tests that final ISO.
