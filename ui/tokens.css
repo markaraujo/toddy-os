@@ -1,4 +1,76 @@
 /* Toddy OS navy identity. Original mascot/logo colors are preserved. */
-:root{color-scheme:dark;--bg:#081426;--surface:#10233f;--raised:#172f50;--ink:#f1f6ff;--muted:#a7bbd4;--accent:#87bdff;--action:#2364b8;--line:#304967;--success:#96deb9;--danger:#ffb4ac;--radius:18px;--font:Inter,Cantarell,"Segoe UI",system-ui,sans-serif}
-[data-theme=light]{color-scheme:light;--bg:#eff5fc;--surface:#fff;--raised:#e2ecf8;--ink:#142944;--muted:#435e7c;--accent:#205fa5;--action:#205fa5;--line:#bacde1;--success:#246346;--danger:#ac302c}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--font)}button,input{font:inherit}button,a,input{touch-action:manipulation}button{cursor:pointer}a{color:var(--accent)}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px}button:disabled{cursor:default}::selection{background:#315e90;color:#fff}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+:root {
+    color-scheme: dark;
+    --bg: #081426;
+    --surface: #10233f;
+    --raised: #172f50;
+    --ink: #f1f6ff;
+    --muted: #a7bbd4;
+    --accent: #87bdff;
+    --action: #2364b8;
+    --line: #304967;
+    --success: #96deb9;
+    --danger: #ffb4ac;
+    --radius: 18px;
+    --font: Inter, Cantarell, "Segoe UI", system-ui, sans-serif;
+}
+[data-theme="light"] {
+    color-scheme: light;
+    --bg: #eff5fc;
+    --surface: #fff;
+    --raised: #e2ecf8;
+    --ink: #142944;
+    --muted: #435e7c;
+    --accent: #205fa5;
+    --action: #205fa5;
+    --line: #bacde1;
+    --success: #246346;
+    --danger: #ac302c;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.6 var(--font);
+}
+button,
+input {
+    font: inherit;
+}
+button,
+a,
+input {
+    touch-action: manipulation;
+}
+button {
+    cursor: pointer;
+}
+a {
+    color: var(--accent);
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+button:disabled {
+    cursor: default;
+}
+::selection {
+    background: #315e90;
+    color: #fff;
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}

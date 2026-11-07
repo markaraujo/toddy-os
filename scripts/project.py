@@ -162,6 +162,7 @@ def outputs(data):
                     "STORIES": "".join(cards)}
     for key, value in replacements.items():
         page = page.replace("{{" + key + "}}", value)
+    page = "\n".join(line.rstrip() for line in page.splitlines()) + "\n"
     return {"STATUS.md": text, "dashboard/index.html": page}
 
 
