@@ -1,0 +1,1289 @@
+{
+  "scope": "Final ISO firmware/media, live runtime, recovery and XML boundary checks; remaining native regressions keep H12/G1 open",
+  "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+  "results": [
+    {
+      "complete": true,
+      "token": "84ecf5576e9f4bd5ac5102c898936728",
+      "firmware": "bios",
+      "medium": "cdrom",
+      "offline": false,
+      "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "iso_bytes": 1095000064,
+      "validation_only": false,
+      "physical_hardware_tested": false,
+      "container_image": "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf",
+      "qemu_arguments": [
+        "qemu-system-x86_64",
+        "-enable-kvm",
+        "-machine",
+        "q35",
+        "-cpu",
+        "qemu64",
+        "-smp",
+        "2",
+        "-m",
+        "4096",
+        "-display",
+        "none",
+        "-serial",
+        "unix:/work/serial.sock,server=on,wait=on",
+        "-monitor",
+        "none",
+        "-no-reboot",
+        "-object",
+        "rng-random,id=rng0,filename=/dev/urandom",
+        "-device",
+        "virtio-rng-pci,rng=rng0",
+        "-netdev",
+        "user,id=n0",
+        "-device",
+        "virtio-net-pci,netdev=n0",
+        "-drive",
+        "file=/media/toddy.iso,media=cdrom,readonly=on,format=raw",
+        "-boot",
+        "d"
+      ],
+      "probe_sha256": "c8ed7b53f70650eb84f08658373c35c01788a2487072fb3b57e53d703247cadc",
+      "commit": "928b73b0d832d612e6e8c7f92d6df13be6af096d",
+      "container_id": "95f67f4d0201cd615e1915d8e7c03e6bdf8ab19218a69cdccba2f92ac23c77c7",
+      "native_report": {
+        "console": "ttyS0",
+        "dhcp_route": [
+          {
+            "dev": "enp0s3",
+            "dst": "default",
+            "flags": [],
+            "gateway": "10.0.2.2",
+            "metric": 1024,
+            "prefsrc": "10.0.2.15",
+            "protocol": "dhcp"
+          }
+        ],
+        "dns_records": 6,
+        "firmware": "bios",
+        "kernel": "7.1.8-toddy",
+        "locked_password": true,
+        "module_load_unload": true,
+        "native_compile_execute": true,
+        "native_linkage": "linux-vdso.so.1 (0x00007f7e60c93000)\n\tlibc.so.6 => /usr/lib/libc.so.6 (0x00007f7e60a8c000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f7e60c95000)",
+        "network": "online",
+        "package_audit": true,
+        "pid1": "systemd",
+        "read_only_lower": true,
+        "read_only_media": true,
+        "real_console_login": true,
+        "root": "overlay",
+        "services": {
+          "dbus.socket": "active",
+          "systemd-networkd": "active",
+          "systemd-resolved": "active"
+        },
+        "token": "84ecf5576e9f4bd5ac5102c898936728",
+        "uptime_seconds": 11.86,
+        "volatile_write": true
+      },
+      "container_state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-07T13:30:32.033480615Z",
+        "FinishedAt": "2026-11-07T13:30:50.567516256Z"
+      },
+      "media_unchanged": true,
+      "elapsed_seconds": 19.29083667899249,
+      "serial_sha256": "fe73d4f3dbc11aded3cad1eac478ec538ecded464d29fba4c8778d6c5f7cb9e2",
+      "workspace": ".local/vm/live-tests/bios-cdrom-usde2f0q",
+      "invocation": [
+        "python3",
+        "scripts/host/live_boot_test.py",
+        ".local/vm/live-media/h11-6gt6n78r/toddy.iso",
+        ".local/vm/live-media/h11-6gt6n78r/result.json",
+        "--firmware",
+        "bios",
+        "--medium",
+        "cdrom"
+      ]
+    },
+    {
+      "complete": true,
+      "token": "744da51aa90d4ec787c07eace904a181",
+      "firmware": "uefi",
+      "medium": "cdrom",
+      "offline": false,
+      "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "iso_bytes": 1095000064,
+      "validation_only": false,
+      "physical_hardware_tested": false,
+      "container_image": "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf",
+      "qemu_arguments": [
+        "qemu-system-x86_64",
+        "-enable-kvm",
+        "-machine",
+        "q35",
+        "-cpu",
+        "qemu64",
+        "-smp",
+        "2",
+        "-m",
+        "4096",
+        "-display",
+        "none",
+        "-serial",
+        "unix:/work/serial.sock,server=on,wait=on",
+        "-monitor",
+        "none",
+        "-no-reboot",
+        "-object",
+        "rng-random,id=rng0,filename=/dev/urandom",
+        "-device",
+        "virtio-rng-pci,rng=rng0",
+        "-netdev",
+        "user,id=n0",
+        "-device",
+        "virtio-net-pci,netdev=n0",
+        "-drive",
+        "file=/media/toddy.iso,media=cdrom,readonly=on,format=raw",
+        "-boot",
+        "d",
+        "-drive",
+        "if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE_4M.fd",
+        "-drive",
+        "if=pflash,format=raw,file=/work/OVMF_VARS.fd"
+      ],
+      "probe_sha256": "c8ed7b53f70650eb84f08658373c35c01788a2487072fb3b57e53d703247cadc",
+      "commit": "928b73b0d832d612e6e8c7f92d6df13be6af096d",
+      "container_id": "eaba1f61eba94607379b75fe5e76ba7c0e5287d9365d39bcb1684a75d2d27ad9",
+      "native_report": {
+        "console": "ttyS0",
+        "dhcp_route": [
+          {
+            "dev": "enp0s3",
+            "dst": "default",
+            "flags": [],
+            "gateway": "10.0.2.2",
+            "metric": 1024,
+            "prefsrc": "10.0.2.15",
+            "protocol": "dhcp"
+          }
+        ],
+        "dns_records": 6,
+        "firmware": "uefi",
+        "kernel": "7.1.8-toddy",
+        "locked_password": true,
+        "module_load_unload": true,
+        "native_compile_execute": true,
+        "native_linkage": "linux-vdso.so.1 (0x00007fa6c697e000)\n\tlibc.so.6 => /usr/lib/libc.so.6 (0x00007fa6c6777000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fa6c6980000)",
+        "network": "online",
+        "package_audit": true,
+        "pid1": "systemd",
+        "read_only_lower": true,
+        "read_only_media": true,
+        "real_console_login": true,
+        "root": "overlay",
+        "services": {
+          "dbus.socket": "active",
+          "systemd-networkd": "active",
+          "systemd-resolved": "active"
+        },
+        "token": "744da51aa90d4ec787c07eace904a181",
+        "uptime_seconds": 11.11,
+        "volatile_write": true
+      },
+      "container_state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-07T13:30:52.6529644Z",
+        "FinishedAt": "2026-11-07T13:31:11.549483299Z"
+      },
+      "media_unchanged": true,
+      "elapsed_seconds": 19.656509644002654,
+      "serial_sha256": "1808dd67bbcbe477672ce783ae315459f84116501f8c37ce6201203118635782",
+      "workspace": ".local/vm/live-tests/uefi-cdrom-evldv61f",
+      "invocation": [
+        "python3",
+        "scripts/host/live_boot_test.py",
+        ".local/vm/live-media/h11-6gt6n78r/toddy.iso",
+        ".local/vm/live-media/h11-6gt6n78r/result.json",
+        "--firmware",
+        "uefi",
+        "--medium",
+        "cdrom"
+      ]
+    },
+    {
+      "complete": true,
+      "token": "f14d40d920754cb2aaabb10eeb780252",
+      "firmware": "bios",
+      "medium": "usb",
+      "offline": true,
+      "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "iso_bytes": 1095000064,
+      "validation_only": false,
+      "physical_hardware_tested": false,
+      "container_image": "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf",
+      "qemu_arguments": [
+        "qemu-system-x86_64",
+        "-enable-kvm",
+        "-machine",
+        "q35",
+        "-cpu",
+        "qemu64",
+        "-smp",
+        "2",
+        "-m",
+        "4096",
+        "-display",
+        "none",
+        "-serial",
+        "unix:/work/serial.sock,server=on,wait=on",
+        "-monitor",
+        "none",
+        "-no-reboot",
+        "-object",
+        "rng-random,id=rng0,filename=/dev/urandom",
+        "-device",
+        "virtio-rng-pci,rng=rng0",
+        "-nic",
+        "none",
+        "-device",
+        "qemu-xhci,id=xhci",
+        "-drive",
+        "if=none,id=live,file=/media/toddy.iso,format=raw,readonly=on",
+        "-device",
+        "usb-storage,drive=live,bootindex=1"
+      ],
+      "probe_sha256": "c8ed7b53f70650eb84f08658373c35c01788a2487072fb3b57e53d703247cadc",
+      "commit": "928b73b0d832d612e6e8c7f92d6df13be6af096d",
+      "container_id": "7b701a8910c94082f506cb1cb3220ea51c10d7ec4321404d1a08daabe8d90f46",
+      "native_report": {
+        "console": "ttyS0",
+        "dhcp_route": [],
+        "dns_records": 0,
+        "firmware": "bios",
+        "kernel": "7.1.8-toddy",
+        "locked_password": true,
+        "module_load_unload": true,
+        "native_compile_execute": true,
+        "native_linkage": "linux-vdso.so.1 (0x00007f07b48d7000)\n\tlibc.so.6 => /usr/lib/libc.so.6 (0x00007f07b46d0000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f07b48d9000)",
+        "network": "offline",
+        "package_audit": true,
+        "pid1": "systemd",
+        "read_only_lower": true,
+        "read_only_media": true,
+        "real_console_login": true,
+        "root": "overlay",
+        "services": {
+          "dbus.socket": "active",
+          "systemd-networkd": "active",
+          "systemd-resolved": "active"
+        },
+        "token": "f14d40d920754cb2aaabb10eeb780252",
+        "uptime_seconds": 12.21,
+        "volatile_write": true
+      },
+      "container_state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-07T13:31:13.166634023Z",
+        "FinishedAt": "2026-11-07T13:31:32.297367769Z"
+      },
+      "media_unchanged": true,
+      "elapsed_seconds": 19.823739337007282,
+      "serial_sha256": "64f332c4d38f3ad1dc7a79f086fd86da44e7e7648e1e3987553aa07c31326974",
+      "workspace": ".local/vm/live-tests/bios-usb-_uka4pdz",
+      "invocation": [
+        "python3",
+        "scripts/host/live_boot_test.py",
+        ".local/vm/live-media/h11-6gt6n78r/toddy.iso",
+        ".local/vm/live-media/h11-6gt6n78r/result.json",
+        "--firmware",
+        "bios",
+        "--medium",
+        "usb",
+        "--offline"
+      ]
+    },
+    {
+      "complete": true,
+      "token": "7bca0bbddc184ba6b40d24509a9e12b3",
+      "firmware": "uefi",
+      "medium": "usb",
+      "offline": true,
+      "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "iso_bytes": 1095000064,
+      "validation_only": false,
+      "physical_hardware_tested": false,
+      "container_image": "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf",
+      "qemu_arguments": [
+        "qemu-system-x86_64",
+        "-enable-kvm",
+        "-machine",
+        "q35",
+        "-cpu",
+        "qemu64",
+        "-smp",
+        "2",
+        "-m",
+        "4096",
+        "-display",
+        "none",
+        "-serial",
+        "unix:/work/serial.sock,server=on,wait=on",
+        "-monitor",
+        "none",
+        "-no-reboot",
+        "-object",
+        "rng-random,id=rng0,filename=/dev/urandom",
+        "-device",
+        "virtio-rng-pci,rng=rng0",
+        "-nic",
+        "none",
+        "-device",
+        "qemu-xhci,id=xhci",
+        "-drive",
+        "if=none,id=live,file=/media/toddy.iso,format=raw,readonly=on",
+        "-device",
+        "usb-storage,drive=live,bootindex=1",
+        "-drive",
+        "if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE_4M.fd",
+        "-drive",
+        "if=pflash,format=raw,file=/work/OVMF_VARS.fd"
+      ],
+      "probe_sha256": "c8ed7b53f70650eb84f08658373c35c01788a2487072fb3b57e53d703247cadc",
+      "commit": "928b73b0d832d612e6e8c7f92d6df13be6af096d",
+      "container_id": "cdf45d8c3e68cb3fed250685efc6fd6bb92baada614346d8a5cdf800013ba0f2",
+      "native_report": {
+        "console": "ttyS0",
+        "dhcp_route": [],
+        "dns_records": 0,
+        "firmware": "uefi",
+        "kernel": "7.1.8-toddy",
+        "locked_password": true,
+        "module_load_unload": true,
+        "native_compile_execute": true,
+        "native_linkage": "linux-vdso.so.1 (0x00007f10c055f000)\n\tlibc.so.6 => /usr/lib/libc.so.6 (0x00007f10c0358000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f10c0561000)",
+        "network": "offline",
+        "package_audit": true,
+        "pid1": "systemd",
+        "read_only_lower": true,
+        "read_only_media": true,
+        "real_console_login": true,
+        "root": "overlay",
+        "services": {
+          "dbus.socket": "active",
+          "systemd-networkd": "active",
+          "systemd-resolved": "active"
+        },
+        "token": "7bca0bbddc184ba6b40d24509a9e12b3",
+        "uptime_seconds": 12.0,
+        "volatile_write": true
+      },
+      "container_state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-07T13:31:34.347900652Z",
+        "FinishedAt": "2026-11-07T13:31:54.10145217Z"
+      },
+      "media_unchanged": true,
+      "elapsed_seconds": 20.435492605000036,
+      "serial_sha256": "5f93d1cafddbe29fdf1739f84a2490b06cd14b997a910a787dd8c69ebe6f4d23",
+      "workspace": ".local/vm/live-tests/uefi-usb-x07xano3",
+      "invocation": [
+        "python3",
+        "scripts/host/live_boot_test.py",
+        ".local/vm/live-media/h11-6gt6n78r/toddy.iso",
+        ".local/vm/live-media/h11-6gt6n78r/result.json",
+        "--firmware",
+        "uefi",
+        "--medium",
+        "usb",
+        "--offline"
+      ]
+    },
+    {
+      "complete": true,
+      "case": "rescue",
+      "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "physical_hardware_tested": false,
+      "commit": "55ec320d6455e0585c11e07c5ef2b87af31eebeb",
+      "qemu_arguments": [
+        "qemu-system-x86_64",
+        "-enable-kvm",
+        "-machine",
+        "q35",
+        "-cpu",
+        "qemu64",
+        "-smp",
+        "2",
+        "-m",
+        "2048",
+        "-display",
+        "none",
+        "-serial",
+        "unix:/work/serial.sock,server=on,wait=on",
+        "-monitor",
+        "none",
+        "-nic",
+        "none",
+        "-no-reboot",
+        "-drive",
+        "file=/media/toddy.iso,media=cdrom,readonly=on,format=raw",
+        "-boot",
+        "d"
+      ],
+      "container_image": "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf",
+      "container_id": "00316f9b0f0144ade90bfcdbed4d3b69680df357e17496904872e6455520512b",
+      "container_state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-07T13:35:07.45964265Z",
+        "FinishedAt": "2026-11-07T13:35:09.493406028Z"
+      },
+      "recovery_shell_executed": true,
+      "unverified_root_not_started": true,
+      "original_iso_unchanged": true,
+      "elapsed_seconds": 2.723129853984574,
+      "shutdown": "Owned diskless recovery-loop VM intentionally stopped after evidence; not graceful guest poweroff",
+      "serial_sha256": "bf155aa51404f371258daa033574ae022023aaefcb6344123e86a4f1a0e10797",
+      "workspace": ".local/vm/live-tests/recovery-rescue-5ozy18oj",
+      "invocation": [
+        "python3",
+        "scripts/host/live_recovery_test.py",
+        ".local/vm/live-media/h11-6gt6n78r/toddy.iso",
+        ".local/vm/live-media/h11-6gt6n78r/result.json",
+        "--case",
+        "rescue"
+      ]
+    },
+    {
+      "complete": true,
+      "case": "missing",
+      "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "physical_hardware_tested": false,
+      "commit": "55ec320d6455e0585c11e07c5ef2b87af31eebeb",
+      "qemu_arguments": [
+        "qemu-system-x86_64",
+        "-enable-kvm",
+        "-machine",
+        "q35",
+        "-cpu",
+        "qemu64",
+        "-smp",
+        "2",
+        "-m",
+        "2048",
+        "-display",
+        "none",
+        "-serial",
+        "unix:/work/serial.sock,server=on,wait=on",
+        "-monitor",
+        "none",
+        "-nic",
+        "none",
+        "-no-reboot",
+        "-kernel",
+        "/work/vmlinuz-7.1.8-toddy",
+        "-initrd",
+        "/work/initramfs.cpio.gz",
+        "-append",
+        "toddy.live console=ttyS0,115200n8"
+      ],
+      "container_image": "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf",
+      "container_id": "bcea221a71c97558f3a1e8a544b56b6fc3b5fe321cdc47ebc01d76ba407f8566",
+      "container_state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-07T13:35:11.043645301Z",
+        "FinishedAt": "2026-11-07T13:35:43.747217747Z"
+      },
+      "recovery_shell_executed": true,
+      "unverified_root_not_started": true,
+      "original_iso_unchanged": true,
+      "elapsed_seconds": 33.38788552500773,
+      "shutdown": "Owned diskless recovery-loop VM intentionally stopped after evidence; not graceful guest poweroff",
+      "serial_sha256": "55efdc08be55ba666c97de340edeabe9201f13c59b6e9fbc15fe846b21095d69",
+      "workspace": ".local/vm/live-tests/recovery-missing-l_t0zp7z",
+      "invocation": [
+        "python3",
+        "scripts/host/live_recovery_test.py",
+        ".local/vm/live-media/h11-6gt6n78r/toddy.iso",
+        ".local/vm/live-media/h11-6gt6n78r/result.json",
+        "--case",
+        "missing"
+      ]
+    },
+    {
+      "complete": true,
+      "case": "corrupt",
+      "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "physical_hardware_tested": false,
+      "commit": "55ec320d6455e0585c11e07c5ef2b87af31eebeb",
+      "corruption": {
+        "offset": 563836928,
+        "xor": 1,
+        "root_extent": [
+          33015808,
+          1061642240
+        ],
+        "sha256": "74dc6b58ea6a0c378f2f06da9dcfce90662f295a9d47f815e4b71813a3f3ff07"
+      },
+      "qemu_arguments": [
+        "qemu-system-x86_64",
+        "-enable-kvm",
+        "-machine",
+        "q35",
+        "-cpu",
+        "qemu64",
+        "-smp",
+        "2",
+        "-m",
+        "2048",
+        "-display",
+        "none",
+        "-serial",
+        "unix:/work/serial.sock,server=on,wait=on",
+        "-monitor",
+        "none",
+        "-nic",
+        "none",
+        "-no-reboot",
+        "-drive",
+        "file=/media/toddy.iso,media=cdrom,readonly=on,format=raw",
+        "-boot",
+        "d"
+      ],
+      "container_image": "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf",
+      "container_id": "ec7e32185f9d3632f03c451bbb8cbfbd3b9a6c6c536e8f32f725bfe4caf75570",
+      "container_state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-07T13:35:46.726652656Z",
+        "FinishedAt": "2026-11-07T13:36:28.466380272Z"
+      },
+      "recovery_shell_executed": true,
+      "unverified_root_not_started": true,
+      "original_iso_unchanged": true,
+      "elapsed_seconds": 42.61663272502483,
+      "shutdown": "Owned diskless recovery-loop VM intentionally stopped after evidence; not graceful guest poweroff",
+      "serial_sha256": "6bbb63df17f08b39b110717ed0ad4493bcc740cc68d1c3760723a287ef3ea6d4",
+      "workspace": ".local/vm/live-tests/recovery-corrupt-rsoknj2n",
+      "invocation": [
+        "python3",
+        "scripts/host/live_recovery_test.py",
+        ".local/vm/live-media/h11-6gt6n78r/toddy.iso",
+        ".local/vm/live-media/h11-6gt6n78r/result.json",
+        "--case",
+        "corrupt"
+      ]
+    },
+    {
+      "complete": true,
+      "token": "15102953d44b41ecafeff4829149150d",
+      "firmware": "bios",
+      "medium": "cdrom",
+      "offline": true,
+      "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "iso_bytes": 1095000064,
+      "validation_only": false,
+      "physical_hardware_tested": false,
+      "container_image": "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf",
+      "qemu_arguments": [
+        "qemu-system-x86_64",
+        "-enable-kvm",
+        "-machine",
+        "q35",
+        "-cpu",
+        "qemu64",
+        "-smp",
+        "2",
+        "-m",
+        "4096",
+        "-display",
+        "none",
+        "-serial",
+        "unix:/work/serial.sock,server=on,wait=on",
+        "-monitor",
+        "none",
+        "-no-reboot",
+        "-object",
+        "rng-random,id=rng0,filename=/dev/urandom",
+        "-device",
+        "virtio-rng-pci,rng=rng0",
+        "-nic",
+        "none",
+        "-drive",
+        "file=/media/toddy.iso,media=cdrom,readonly=on,format=raw",
+        "-boot",
+        "d"
+      ],
+      "probe_sha256": "c8ed7b53f70650eb84f08658373c35c01788a2487072fb3b57e53d703247cadc",
+      "probe_profile": "runtime",
+      "commit": "55ec320d6455e0585c11e07c5ef2b87af31eebeb",
+      "container_id": "1c30cd40b05541523c4b0c1961b72aaa2117f7742a20f92450ce723a3bd129d5",
+      "native_report": {
+        "console": "ttyS0",
+        "dhcp_route": [],
+        "dns_records": 0,
+        "firmware": "bios",
+        "kernel": "7.1.8-toddy",
+        "locked_password": true,
+        "module_load_unload": true,
+        "native_compile_execute": true,
+        "native_linkage": "linux-vdso.so.1 (0x00007f27760ff000)\n\tlibc.so.6 => /usr/lib/libc.so.6 (0x00007f2775ef8000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007f2776101000)",
+        "network": "offline",
+        "package_audit": true,
+        "pid1": "systemd",
+        "read_only_lower": true,
+        "read_only_media": true,
+        "real_console_login": true,
+        "root": "overlay",
+        "services": {
+          "dbus.socket": "active",
+          "systemd-networkd": "active",
+          "systemd-resolved": "active"
+        },
+        "token": "15102953d44b41ecafeff4829149150d",
+        "uptime_seconds": 11.08,
+        "volatile_write": true
+      },
+      "container_state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-07T13:36:29.999792991Z",
+        "FinishedAt": "2026-11-07T13:36:47.64654767Z"
+      },
+      "media_unchanged": true,
+      "elapsed_seconds": 18.339801298017846,
+      "serial_sha256": "cc3163044ee5086814d4ae8a612baea2d00e45044c074307f10e361e5aaeeb8e",
+      "workspace": ".local/vm/live-tests/bios-cdrom-vq63z1d1",
+      "invocation": [
+        "python3",
+        "scripts/host/live_boot_test.py",
+        ".local/vm/live-media/h11-6gt6n78r/toddy.iso",
+        ".local/vm/live-media/h11-6gt6n78r/result.json",
+        "--firmware",
+        "bios",
+        "--medium",
+        "cdrom",
+        "--offline"
+      ]
+    },
+    {
+      "complete": true,
+      "token": "c59eb3dd5fb44dfeae4bec32803c251b",
+      "firmware": "bios",
+      "medium": "cdrom",
+      "offline": true,
+      "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "iso_bytes": 1095000064,
+      "validation_only": false,
+      "physical_hardware_tested": false,
+      "container_image": "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf",
+      "qemu_arguments": [
+        "qemu-system-x86_64",
+        "-enable-kvm",
+        "-machine",
+        "q35",
+        "-cpu",
+        "qemu64",
+        "-smp",
+        "2",
+        "-m",
+        "4096",
+        "-display",
+        "none",
+        "-serial",
+        "unix:/work/serial.sock,server=on,wait=on",
+        "-monitor",
+        "none",
+        "-no-reboot",
+        "-object",
+        "rng-random,id=rng0,filename=/dev/urandom",
+        "-device",
+        "virtio-rng-pci,rng=rng0",
+        "-nic",
+        "none",
+        "-drive",
+        "file=/media/toddy.iso,media=cdrom,readonly=on,format=raw",
+        "-boot",
+        "d"
+      ],
+      "probe_sha256": "0eafb53cd930140a3952b45ef723acd7ecfabdaf7a6357f5789352d4fc3933b1",
+      "probe_profile": "security",
+      "commit": "55ec320d6455e0585c11e07c5ef2b87af31eebeb",
+      "container_id": "5da5f929fdbf0d334276d901a221fb9710b70403b837100147507c462e27b9f0",
+      "native_report": {
+        "cases": [
+          {
+            "bytes": 31,
+            "case": "malformed",
+            "exit": 1,
+            "passed": true,
+            "stderr": "dbus[246]: Failed to start message bus: Error in file /tmp/toddy-xml-bounds-mp17fea8/malformed, line 1, column 31: no element found\n\n"
+          },
+          {
+            "bytes": 1048577,
+            "case": "oversized",
+            "exit": 1,
+            "passed": true,
+            "stderr": "dbus[247]: Failed to start message bus: File size 1048577 of \"/tmp/toddy-xml-bounds-mp17fea8/oversized\" is too large.\n"
+          }
+        ],
+        "core_binary_sha256": {
+          "/usr/bin/dbus-daemon": "7593ffabdf33fb85a59ff6ab56f3fd493fc3dfd1151db6a1e2f33f009063f762",
+          "/usr/lib/libc.so.6": "b17c378fe6f0b34354be1a5c850b8397f3582047875576c1e2b27a71a0a5bd25",
+          "/usr/lib/libexpat.so.1": "ba7cfd347905e564270ec8a7059d84918cd7e0972cf8b937cac14a6c70ae59d6",
+          "/usr/lib/systemd/systemd": "630c01b7346f7084455d6253f8b90311f4639d7c2773c849194d82c25e495f3f"
+        },
+        "firmware": "bios",
+        "limits": {
+          "as": [
+            134217728,
+            134217728
+          ],
+          "cpu": [
+            2,
+            2
+          ],
+          "uid": 65534
+        },
+        "real_console_login": true,
+        "scope": "Final live foundation trusted DBus XML configuration and bounded unprivileged rejection; not complete CVE mitigation or future desktop coverage",
+        "token": "c59eb3dd5fb44dfeae4bec32803c251b",
+        "trusted_configuration": [
+          {
+            "mode": "0o755",
+            "path": "/etc/dbus-1",
+            "resolved": "/etc/dbus-1",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/etc/dbus-1/session.conf",
+            "resolved": "/etc/dbus-1/session.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/etc/dbus-1/system.conf",
+            "resolved": "/etc/dbus-1/system.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o755",
+            "path": "/usr/share/dbus-1",
+            "resolved": "/usr/share/dbus-1",
+            "uid": 0
+          },
+          {
+            "mode": "0o755",
+            "path": "/usr/share/dbus-1/interfaces",
+            "resolved": "/usr/share/dbus-1/interfaces",
+            "uid": 0
+          },
+          {
+            "mode": "0o755",
+            "path": "/usr/share/dbus-1/services",
+            "resolved": "/usr/share/dbus-1/services",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/session.conf",
+            "resolved": "/usr/share/dbus-1/session.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o755",
+            "path": "/usr/share/dbus-1/session.d",
+            "resolved": "/usr/share/dbus-1/session.d",
+            "uid": 0
+          },
+          {
+            "mode": "0o755",
+            "path": "/usr/share/dbus-1/system-services",
+            "resolved": "/usr/share/dbus-1/system-services",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system.conf",
+            "resolved": "/usr/share/dbus-1/system.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o755",
+            "path": "/usr/share/dbus-1/system.d",
+            "resolved": "/usr/share/dbus-1/system.d",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.LogControl1.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.LogControl1.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.hostname1.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.hostname1.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.locale1.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.locale1.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.login1.Manager.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.login1.Manager.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.login1.Seat.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.login1.Seat.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.login1.Session.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.login1.Session.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.login1.User.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.login1.User.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.machine1.Image.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.machine1.Image.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.machine1.Machine.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.machine1.Machine.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.machine1.Manager.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.machine1.Manager.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.network1.DHCPServer.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.network1.DHCPServer.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.network1.DHCPv4Client.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.network1.DHCPv4Client.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.network1.DHCPv6Client.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.network1.DHCPv6Client.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.network1.Link.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.network1.Link.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.network1.Manager.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.network1.Manager.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.network1.Network.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.network1.Network.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.oom1.Manager.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.oom1.Manager.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.portable1.Image.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.portable1.Image.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.portable1.Manager.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.portable1.Manager.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.resolve1.DnsDelegate.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.resolve1.DnsDelegate.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.resolve1.DnssdService.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.resolve1.DnssdService.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.resolve1.Link.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.resolve1.Link.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.resolve1.Manager.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.resolve1.Manager.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Automount.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Automount.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Device.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Device.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Job.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Job.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Manager.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Manager.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Mount.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Mount.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Path.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Path.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Scope.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Scope.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Service.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Service.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Slice.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Slice.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Socket.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Socket.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Swap.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Swap.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Target.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Target.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Timer.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Timer.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Unit.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.systemd1.Unit.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/interfaces/org.freedesktop.timedate1.xml",
+            "resolved": "/usr/share/dbus-1/interfaces/org.freedesktop.timedate1.xml",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/services/org.freedesktop.machine1.service",
+            "resolved": "/usr/share/dbus-1/services/org.freedesktop.machine1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/services/org.freedesktop.portable1.service",
+            "resolved": "/usr/share/dbus-1/services/org.freedesktop.portable1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/services/org.freedesktop.systemd1.service",
+            "resolved": "/usr/share/dbus-1/system-services/org.freedesktop.systemd1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system-services/org.freedesktop.hostname1.service",
+            "resolved": "/usr/share/dbus-1/system-services/org.freedesktop.hostname1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system-services/org.freedesktop.locale1.service",
+            "resolved": "/usr/share/dbus-1/system-services/org.freedesktop.locale1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system-services/org.freedesktop.login1.service",
+            "resolved": "/usr/share/dbus-1/system-services/org.freedesktop.login1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system-services/org.freedesktop.machine1.service",
+            "resolved": "/usr/share/dbus-1/system-services/org.freedesktop.machine1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system-services/org.freedesktop.network1.service",
+            "resolved": "/usr/share/dbus-1/system-services/org.freedesktop.network1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system-services/org.freedesktop.oom1.service",
+            "resolved": "/usr/share/dbus-1/system-services/org.freedesktop.oom1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system-services/org.freedesktop.portable1.service",
+            "resolved": "/usr/share/dbus-1/system-services/org.freedesktop.portable1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system-services/org.freedesktop.resolve1.service",
+            "resolved": "/usr/share/dbus-1/system-services/org.freedesktop.resolve1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system-services/org.freedesktop.systemd1.service",
+            "resolved": "/usr/share/dbus-1/system-services/org.freedesktop.systemd1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system-services/org.freedesktop.timedate1.service",
+            "resolved": "/usr/share/dbus-1/system-services/org.freedesktop.timedate1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system-services/org.freedesktop.timesync1.service",
+            "resolved": "/usr/share/dbus-1/system-services/org.freedesktop.timesync1.service",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system.d/org.freedesktop.hostname1.conf",
+            "resolved": "/usr/share/dbus-1/system.d/org.freedesktop.hostname1.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system.d/org.freedesktop.locale1.conf",
+            "resolved": "/usr/share/dbus-1/system.d/org.freedesktop.locale1.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system.d/org.freedesktop.login1.conf",
+            "resolved": "/usr/share/dbus-1/system.d/org.freedesktop.login1.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system.d/org.freedesktop.machine1.conf",
+            "resolved": "/usr/share/dbus-1/system.d/org.freedesktop.machine1.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system.d/org.freedesktop.network1.conf",
+            "resolved": "/usr/share/dbus-1/system.d/org.freedesktop.network1.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system.d/org.freedesktop.oom1.conf",
+            "resolved": "/usr/share/dbus-1/system.d/org.freedesktop.oom1.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system.d/org.freedesktop.portable1.conf",
+            "resolved": "/usr/share/dbus-1/system.d/org.freedesktop.portable1.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system.d/org.freedesktop.resolve1.conf",
+            "resolved": "/usr/share/dbus-1/system.d/org.freedesktop.resolve1.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system.d/org.freedesktop.systemd1.conf",
+            "resolved": "/usr/share/dbus-1/system.d/org.freedesktop.systemd1.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system.d/org.freedesktop.timedate1.conf",
+            "resolved": "/usr/share/dbus-1/system.d/org.freedesktop.timedate1.conf",
+            "uid": 0
+          },
+          {
+            "mode": "0o644",
+            "path": "/usr/share/dbus-1/system.d/org.freedesktop.timesync1.conf",
+            "resolved": "/usr/share/dbus-1/system.d/org.freedesktop.timesync1.conf",
+            "uid": 0
+          }
+        ]
+      },
+      "container_state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-11-07T13:36:49.177328196Z",
+        "FinishedAt": "2026-11-07T13:37:05.504548459Z"
+      },
+      "media_unchanged": true,
+      "elapsed_seconds": 17.021022821980296,
+      "serial_sha256": "c331607953f10a03ead5444610d143e9425097deedb77b85a6858dff1e31c527",
+      "workspace": ".local/vm/live-tests/bios-cdrom-c5sywop3",
+      "invocation": [
+        "python3",
+        "scripts/host/live_boot_test.py",
+        ".local/vm/live-media/h11-6gt6n78r/toddy.iso",
+        ".local/vm/live-media/h11-6gt6n78r/result.json",
+        "--firmware",
+        "bios",
+        "--medium",
+        "cdrom",
+        "--offline",
+        "--probe",
+        "security"
+      ]
+    }
+  ],
+  "physical_hardware_tested": false
+}

@@ -16,23 +16,23 @@ No milestone earns credit without completed acceptance evidence.
 
 The 90% phase total counts completed stories only. H12 is still in progress; its 6 points are not yet counted. Passing this story would raise the phase total to 96%.
 
-Last verified: 2026-11-07 13:30 UTC
+Last verified: 2026-11-07 13:38 UTC
 
 Verified:
 
-- Revised hybrid ISO and full artifact/source/credential review passed; accepted root and 134 package records unchanged.
-- Original BIOS/CD and UEFI/CD passed; original USB failure preserved and exact cause corrected.
-- Systemd native namespace case exited zero; Glibc retry failed on obsolete build-tool path, still open.
+- 4/4 final ISO boots passed: BIOS/UEFI on CD and virtual USB; USB tests offline.
+- 3/3 actual recovery cases passed: GRUB rescue, absent media and corrupted Squashfs; original ISO unchanged.
+- Original ISO booted successfully again after failure injection; final live DBus XML bounds passed.
+- Final image has nine measured dynamic Expat consumers across 2,626 ELF files. Systemd native namespace retry passed; Glibc retry remains open.
 
-Running: Repeating firmware/media matrix on revised ISO and repairing native regression evidence transport.
+Running: Corrected 50-case native regression profile: verify cold backing, execute preserved upstream tests, retain complete dedicated-UART evidence.
 
 Remaining:
 
-- Four revised ISO boots and three actual recovery cases.
-- Glibc native retests and security/known-issue review.
-- H13 G1 audit and owner testing handoff.
+- Complete and classify native Glibc/Systemd follow-up results.
+- H13 G1 audit, reproducible instructions and owner-testing handoff.
 
-[Acceptance evidence](docs/evidence/H11.md)
+[Acceptance evidence](docs/evidence/H12-final-media.json)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |

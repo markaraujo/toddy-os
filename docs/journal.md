@@ -929,3 +929,15 @@ hybrid ISO with 134 components and 142 corresponding source inputs. Exact public
 QA and source-derived format-marker handling retained original failure evidence.
 H12 now tests this final artifact; the earlier validation ISO is not substituted.
 G1 and physical hardware remain pending. No Phase 2 execution is authorized yet.
+
+## 2026-11-07 — Final ISO firmware and recovery tests pass
+
+The actual first USB boot exposed missing whole-disk enumeration. Its corrected
+initramfs/media generation preserves the same accepted 134-package root. All four
+BIOS/UEFI CD/USB boots now pass, including offline USB. GRUB rescue, missing media,
+corrupted Squashfs rejection and subsequent intact-ISO boot pass. Final-image
+XML enumeration and actual unprivileged live DBus rejection checks also pass.
+H12 remains active for native libc follow-ups: Systemd namespaces passed, while
+Glibc's initial make-based retry failed on a quarantined bootstrap AR path. Its
+complete original report was recovered unchanged. ADR-0102 preserves precompiled
+binary identity and original upstream invocation semantics for the corrected run.

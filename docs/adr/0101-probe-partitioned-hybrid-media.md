@@ -1,7 +1,7 @@
 # ADR-0101: Probe kernel block nodes explicitly for hybrid live media
 
 - Date: 2026-11-07
-- Status: Native cause reproduced; complete corrected boot verification pending
+- Status: Corrected complete BIOS/UEFI CD/USB matrix and recovery passed
 
 H12's exact H11 ISO booted and logged in through BIOS/CD and UEFI/CD. BIOS/USB
 reached the selected kernel but failed media discovery and opened the recovery
@@ -36,3 +36,9 @@ and their reports remain unchanged. Reopen H11 during artifact replacement,
 then repeat the complete H12 matrix against its new exact SHA. Preserve the
 first artifact and both USB failure logs. The host console harness now fails
 promptly on TODDY_LIVE_ERROR rather than waiting for the full login deadline.
+
+Actual correction acceptance: revised ISO SHA-256
+4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9
+passed all four firmware/attachment combinations, including offline USB. Actual
+GRUB rescue, absent media, altered Squashfs rejection and return to intact media
+also passed. See docs/evidence/H12-final-media.json. No physical boot claim.
