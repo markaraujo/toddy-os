@@ -1,6 +1,6 @@
 > H01-H13 complete; G1 passed in QEMU/KVM. Foundation evidence and the published
-> ISO remain unchanged. Current authorized work is Phase 2 replanning, navy brand,
-> UI design previews and the public Pages redesign; guest builds have not started.
+> ISO remain unchanged. The owner explicitly authorized isolated Phase 2
+> implementation on 2026-11-07; see ADR-0113. Physical testing remains pending.
 
 # Development handoff
 
@@ -20,9 +20,9 @@ small traceable commits and a navy public-page redesign preserving the exact log
 Planning, contract/catalog inputs and brand/UI concepts are prepared in the repository; the public
 page includes selectable desktop/assistant/task/installer concepts. See
 [brand evidence](evidence/navy-brand-preview.md) and
-[Pages evidence](evidence/navy-pages-preview.md). Final review is complete; guest continuation still requires its explicit recorded
-authorization. Do not reopen general planning on resume.
-B stories remain not_started; repository design preparation does not satisfy
+[Pages evidence](evidence/navy-pages-preview.md). Final review is complete; guest continuation is now explicitly authorized and recorded
+in [ADR-0113](adr/0113-owner-authorizes-phase2-implementation.md). Begin B01 clone inventory; do not reopen general planning on resume.
+B01 is starting; repository design preparation does not satisfy
 B11 runtime acceptance. G1 is passed, G2 pending, physical hardware unverified.
 Do not interpret a screenshot mockup or an optional package candidate as a working
 OS feature. Historical implementation/recovery notes below do not override the
@@ -65,8 +65,8 @@ coverage after a labeled experimental preview. No unbounded execution promise.
 ## Owner implementation boundary
 
 ADR-0063's foundation review remains historical and guest continuation must be
-explicitly requested. The current request authorizes the revised plan and
-repository brand/UI/Pages work. It does not assert that owner hardware testing
+explicitly requested. The current explicit instruction authorizes isolated implementation through B13/G2
+and release/portal delivery (ADR-0113). It does not assert that owner hardware testing
 already occurred. Continue routine reversible work within that scope without
 asking for milestone confirmation.
 

@@ -4,7 +4,7 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-H01-H13 complete; G1 passed in QEMU/KVM and foundation prerelease v0.1.0-foundation.1 is public. Phase 2 has been replanned for a minimal GNOME desktop and customizable native Toddy assistant, with optional local/API AI, developer apps and third-party driver setup. Navy brand assets and labeled UI/installer concepts are prepared; focused basic tests and small traceable deliveries replace exhaustive preview validation. B01-B13 guest implementation remains unstarted; G2 and physical hardware validation are pending.
+G1 passed in QEMU/KVM; foundation prerelease remains accepted and physical hardware validation is pending. Owner explicitly authorized isolated Phase 2 implementation on 2026-11-07 (ADR-0113). B01 accepted-foundation clone inventory is starting; B01–B13 acceptance and G2 remain pending.
 
 Foundation: **100%** · Agentic desktop: **0%**
 
@@ -27,7 +27,7 @@ No milestone earns credit without completed acceptance evidence.
 | [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | completed |
 | [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | completed |
 | [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | completed |
-| [B01 — Freeze the minimal Toddy architecture and delivery slices](stories/B01.md) | agentic | 5 | not_started |
+| [B01 — Freeze the minimal Toddy architecture and delivery slices](stories/B01.md) | agentic | 5 | in_progress |
 | [B02 — Deliver the minimal branded GNOME desktop](stories/B02.md) | agentic | 10 | not_started |
 | [B03 — Connect provider adapters and one optional local AI profile](stories/B03.md) | agentic | 8 | not_started |
 | [B04 — Deliver native tools and the revocable privileged executor](stories/B04.md) | agentic | 8 | not_started |

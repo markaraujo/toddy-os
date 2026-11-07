@@ -3,7 +3,7 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-07",
   "bootstrap": "ready_for_development",
-  "current_scope": "H01-H13 complete; G1 passed in QEMU/KVM and foundation prerelease v0.1.0-foundation.1 is public. Phase 2 has been replanned for a minimal GNOME desktop and customizable native Toddy assistant, with optional local/API AI, developer apps and third-party driver setup. Navy brand assets and labeled UI/installer concepts are prepared; focused basic tests and small traceable deliveries replace exhaustive preview validation. B01-B13 guest implementation remains unstarted; G2 and physical hardware validation are pending.",
+  "current_scope": "G1 passed in QEMU/KVM; foundation prerelease remains accepted and physical hardware validation is pending. Owner explicitly authorized isolated Phase 2 implementation on 2026-11-07 (ADR-0113). B01 accepted-foundation clone inventory is starting; B01\u2013B13 acceptance and G2 remain pending.",
   "next_story": "B01",
   "gates": {
     "G1": "passed",
@@ -266,7 +266,7 @@
       "phase": "agentic",
       "title": "Freeze the minimal Toddy architecture and delivery slices",
       "weight": 5,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": [
         "H13"
       ],
@@ -524,8 +524,9 @@
     }
   ],
   "owner_review": {
-    "status": "awaiting_foundation_testing",
-    "phase_2_approved": false,
-    "decision": "docs/adr/0063-owner-review-after-h13.md"
+    "status": "approved_for_phase_2",
+    "phase_2_approved": true,
+    "decision": "docs/adr/0063-owner-review-after-h13.md",
+    "approval_evidence": "docs/adr/0113-owner-authorizes-phase2-implementation.md"
   }
 }
