@@ -218,3 +218,12 @@ Add the final committed source history with `git bundle create DESTINATION/
 toddy-source-history.bundle HEAD` (use a single continuous path in the command).
 Keep raw test logs, native component records and checkpoint references with the
 handoff. Do not advertise a partial export as accepted G1 or a public release.
+
+After the G1 acceptance commit, run `python3 scripts/host/finalize_foundation.py
+DESTINATION` with the same directory. It revalidates exported artifact hashes,
+creates/verifies the full Git bundle, writes the final source revision and
+checksums, and reads every delivered file through sha256sum. It refuses a dirty
+checkout or mismatched previous bundle. Preserve an older bundle before binding
+a different revision. Inspect release-summary.json and SHA256SUMS before handing
+the export to the owner. Native build and raw test archives must already match
+the separately reviewed H13 export record; this command never invents tests.

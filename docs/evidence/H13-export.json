@@ -1,0 +1,55 @@
+{
+  "complete": true,
+  "scope": "Verified foundation artifact/source/native build/raw test export for local owner testing; final source revision and publication tracked in release-summary.json",
+  "directory": ".local/releases/toddy-foundation-2026-11-07",
+  "artifacts": {
+    "SOURCE-SHA256SUMS": {
+      "sha256": "34bdc733e0918c6543d8ed268367b2e1cd85f9851567a2d4c09df00cc2ccb1e2",
+      "bytes": 12503
+    },
+    "components.json": {
+      "sha256": "a9c2d193c3ca94cbe8161152c50802fd0cb964ac043635d80c71c518002ea377",
+      "bytes": 679373
+    },
+    "result.json": {
+      "sha256": "b9104473942fa3ba897f8f44b77a5d5c30f3e1b3f0dd3e73648af37c175f9f78",
+      "bytes": 14201
+    },
+    "source-archives.tar": {
+      "sha256": "f06ae9910e4f38338f35e472e71c92f0031a1b40c4762c30583e3688d4d30911",
+      "bytes": 718551040
+    },
+    "source-inputs.json": {
+      "sha256": "87a872c5f118486cb0cf8ecd366a2710737b45c61077fd1fd83de220250da84b",
+      "bytes": 80441
+    },
+    "toddy-foundation-x86_64.iso": {
+      "sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "bytes": 1095000064
+    }
+  },
+  "native_build_evidence": {
+    "complete": true,
+    "component_records": 134,
+    "notices": 134,
+    "build_files": 612,
+    "uncompressed_bytes": 140152361,
+    "sha256": "38baec4678af02c433d136bf970ec46b712611680f4f5b7808e51a40172d6b0c",
+    "bytes": 20938722,
+    "archive": ".local/releases/toddy-foundation-2026-11-07/native-build-evidence.tar.gz"
+  },
+  "test_evidence": {
+    "complete": true,
+    "files": 114,
+    "test_workspaces": 20,
+    "bytes": 2631527,
+    "sha256": "dd3b52bf02d0534a0d650cf56a77f526d319f46d5060747fe5ebf45581360441",
+    "members_verified": true,
+    "scope": "Raw final/failed boot and native follow-up reports, owner-console transcripts and actual H03/H06 ownership/checkpoint recovery logs; original failures remain failures"
+  },
+  "all_h01_h12_completed": true,
+  "all_b_stories_not_started": true,
+  "physical_hardware": "pending",
+  "phase_2_approval": "awaiting owner testing and explicit approval",
+  "public_binary_release": false
+}

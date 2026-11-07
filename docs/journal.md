@@ -951,3 +951,13 @@ firmware/media boots, three recovery cases, intact reboot, XML bounds and requir
 EN/PT checks passed. Earlier failed/unsupported outcomes remain preserved.
 H12 is complete; foundation progress is 96%. H13 exports the exact artifact,
 source bundle and test evidence before G1 acceptance and owner review.
+
+## 2026-11-07 — H13/G1 foundation delivered for owner testing
+
+Audited every G1 criterion against actual H01-H12 evidence and exact final ISO.
+Exported/read back 142 corresponding sources, 134 component records/notices,
+612 build files and 114 raw evidence files. The owner-guide stdio command passed
+two real console sessions: network, C, package checks, zero failed services,
+volatile-file reset and graceful poweroff; media unchanged. Original upstream
+qualifications remain explicit. Foundation 100%, agentic 0%; the complete release
+is unfinished. Await the owner's test and explicit approval before B01-B13.

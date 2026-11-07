@@ -1,18 +1,19 @@
-> H01–H12 completed. The final ISO and complete 50/50 native follow-up passed.
-> H13 is auditing G1 and exporting the local owner-testing delivery. Earlier
-> H07 continuation notes are retained history, superseded by ADR-0092 where
-> they require full Tcl acceptance. Use [FRESH-BUILD.md](FRESH-BUILD.md) for
-> a new build. Do not start B01-B13 before explicit owner approval.
+> H01–H13 complete; G1 passed in QEMU/KVM. The foundation is delivered for
+> owner testing. **Do not start B01-B13 without explicit owner approval.**
+> Use [FOUNDATION-TESTING.md](FOUNDATION-TESTING.md) and [G1 evidence](evidence/H13.md).
+> Historical continuation notes below do not authorize duplicate builds.
 
 # Development handoff
 
 ## Current scope
 
-H01–H12 are accepted. The final ISO contains 134 source-built packages and 142
-corresponding source inputs. Final BIOS/UEFI/CD/USB, recovery, XML/EN/PT and
-50/50 native follow-up checks passed. H13 is auditing G1 and preparing the local
-owner-testing export. Read status.json and [H12 evidence](evidence/H12.md).
-Original failed or unsupported upstream outcomes remain accurately classified.
+H01–H13 are accepted; foundation 100%, agentic 0%, G1 passed, G2 pending.
+The final ISO contains 134 source-built packages and 142 corresponding source
+inputs. Final BIOS/UEFI/CD/USB, recovery, XML/EN/PT, 50/50 native follow-up and
+actual owner-console checks passed. The local export is under
+.local/releases/toddy-foundation-2026-11-07, with checksums and exact source
+revision in release-summary.json. Original failed/unsupported results remain
+classified. Await owner testing and approval; the full release is incomplete.
 
 ## Owner review boundary
 

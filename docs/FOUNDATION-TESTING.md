@@ -19,11 +19,13 @@ The verified owner-testing export is outside Git at:
   SOURCE-SHA256SUMS
   source-archives.tar
   toddy-source-history.bundle
+  native-build-evidence.tar.gz
   test-evidence.tar.gz
+  START-HERE.txt
   release-summary.json
 ```
 
-An export is complete only when its release-summary.json, full checksums and
+G1 passed; see [the requirement audit](evidence/H13.md). An export is complete only when its release-summary.json, full checksums and
 separate G1 evidence exist. The ISO is **1,095,000,064 bytes**, SHA-256:
 
 ```text
@@ -135,6 +137,9 @@ or attach a physical workstation disk as a recovery experiment.
 - Original GCC/Binutils/Glibc test outcomes and exact source-backed qualifications
   remain in H07 evidence. Native namespace follow-ups are separately recorded in
   H12; other unsupported feature/dependency tests are not relabelled as passes.
+- APT cache corruption can emit error diagnostics while apt-ftparchive exits zero.
+  Reject diagnostic-bearing index generation and rebuild disposable caches from
+  verified packages as in ADR-0092; an exit-code-only wrapper is insufficient.
 - English/Portuguese checks passed. Gawk's default matcher and Bash retain the
   exact Greek case-folding limitations documented in ADR-0037; the tested Gawk
   GNU matcher option works for those cases. No universal locale guarantee.

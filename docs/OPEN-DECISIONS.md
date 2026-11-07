@@ -38,11 +38,10 @@ dependencies, conffile ownership, API/layout ownership, bootstrap quarantine and
 source/license attribution. See [H07 acceptance](evidence/H07.md). These are no
 longer outstanding work.
 
-H12's explicit native follow-up covers Systemd test-namespace and the 48 Glibc
+H12's accepted native follow-up passed Systemd test-namespace and the 48 Glibc
 namespace-restricted cases plus io/tst-lchmod. The original H07 outcomes remain
-unchanged; ADR-0102 records native execution and fixture corrections. Acceptance
-requires the complete 50/50 report and final-image core hash binding, not an
-aggregation of different runs. E2fsprogs ADR-0027 does not authorize installer
+unchanged; ADR-0102 records native execution and fixture corrections. The complete 50/50 report and final-image core hash binding passed together;
+see [H12 acceptance](evidence/H12.md). E2fsprogs ADR-0027 does not authorize installer
 use of assume_storage_prezeroed. Vim's complete suite passed with its frozen
 inputs as nonroot (ADR-0028/0031); preserve those checks on future rebuilds.
 

@@ -1,0 +1,36 @@
+{
+  "complete": true,
+  "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+  "iso_unchanged": true,
+  "profile": "Owner guide QEMU stdio console, BIOS/CD, qemu64, 2 CPUs/4 GiB, no hard disk; wrapper adds an exclusive boot lock and owned container label only",
+  "command_file": ".local/logs/h13-owner-run.sh",
+  "command_sha256": "837cf88f5f5b4ddd7da837cde01dc15a087c4c5490e4a7788b33f155f1be9d06",
+  "results": [
+    {
+      "log": ".local/logs/h13-owner-console-first.log",
+      "sha256": "f9102d90c2e1f1a85dab250bc7833ec611b1757f0c84b572e93a5d84098a8fd8",
+      "exit": 0,
+      "actual_console_login": true,
+      "guest_assertions_passed": true,
+      "case": "first"
+    },
+    {
+      "log": ".local/logs/h13-owner-console-second.log",
+      "sha256": "17ecd57d60164666c12dd40afe857b4047ed820300ac92ae6f1422883ee6ac6f",
+      "exit": 0,
+      "actual_console_login": true,
+      "guest_assertions_passed": true,
+      "case": "second"
+    }
+  ],
+  "checks": [
+    "actual console auto-login with locked root password",
+    "Systemd failed-unit list empty in both sessions",
+    "DHCP/DNS, native Dpkg/APT and Portuguese locale",
+    "compile and execute C hello; inspected native libc linkage",
+    "write volatile owner file in first session; absent with compiled program in second",
+    "Systemd poweroff and QEMU exit zero twice"
+  ],
+  "physical_hardware_tested": false,
+  "known_shutdown_limit": "read-only media/loop busy-unmount warnings, then actual poweroff; no persistent disk attached"
+}

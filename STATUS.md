@@ -4,34 +4,13 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-H01-H12 completed: final ISO BIOS/UEFI/CD/USB, recovery, XML/locale checks and 50/50 native regressions passed. H13 audits G1 and exports the foundation for owner testing; B01-B13 await explicit owner approval.
+H01-H13 complete; G1 passed in QEMU/KVM. Foundation ISO, 134 components, 142 source inputs, build/test evidence and owner instructions delivered locally. Awaiting owner testing and explicit approval before B01-B13. Physical hardware and the full desktop/agent/installer release remain pending.
 
-Foundation: **96%** · Agentic desktop: **0%**
+Foundation: **100%** · Agentic desktop: **0%**
 
-G1: pending · G2: pending · Next: **H13**
+G1: passed · G2: pending · Next: **B01**
 
 No milestone earns credit without completed acceptance evidence.
-
-## Active story: H13 — Deliver and accept foundation gate G1
-
-The 96% phase total counts completed stories only. H13 is still in progress; its 4 points are not yet counted. Passing this story would raise the phase total to 100%.
-
-Last verified: 2026-11-07 13:53 UTC
-
-Verified:
-
-- Final ISO passed all four BIOS/UEFI and CD/USB combinations.
-- Recovery, final XML/EN/PT checks and 50/50 native regressions passed.
-- 134 image packages and 142 corresponding source inputs verified.
-
-Running: Audit G1 and export ISO, corresponding sources, test evidence and owner instructions.
-
-Remaining:
-
-- Verify complete local delivery bundle and checksums.
-- Publish G1 evidence and final checks; wait for owner testing before B01.
-
-[Acceptance evidence](docs/evidence/H12.md)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
@@ -47,7 +26,7 @@ Remaining:
 | [H10 — Assemble the live system](stories/H10.md) | foundation | 8 | completed |
 | [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | completed |
 | [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | completed |
-| [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | in_progress |
+| [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | completed |
 | [B01 — Evaluate desktop, harness, licensing and resource budgets](stories/B01.md) | agentic | 5 | not_started |
 | [B02 — Build the graphical desktop and essential applications](stories/B02.md) | agentic | 10 | not_started |
 | [B03 — Integrate provider adapters and local inference](stories/B03.md) | agentic | 8 | not_started |

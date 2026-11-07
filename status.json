@@ -3,10 +3,10 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-07",
   "bootstrap": "ready_for_development",
-  "current_scope": "H01-H12 completed: final ISO BIOS/UEFI/CD/USB, recovery, XML/locale checks and 50/50 native regressions passed. H13 audits G1 and exports the foundation for owner testing; B01-B13 await explicit owner approval.",
-  "next_story": "H13",
+  "current_scope": "H01-H13 complete; G1 passed in QEMU/KVM. Foundation ISO, 134 components, 142 source inputs, build/test evidence and owner instructions delivered locally. Awaiting owner testing and explicit approval before B01-B13. Physical hardware and the full desktop/agent/installer release remain pending.",
+  "next_story": "B01",
   "gates": {
-    "G1": "pending",
+    "G1": "passed",
     "G2": "pending"
   },
   "milestones": [
@@ -245,7 +245,7 @@
       "phase": "foundation",
       "title": "Deliver and accept foundation gate G1",
       "weight": 4,
-      "status": "in_progress",
+      "status": "completed",
       "depends_on": [
         "H12"
       ],
@@ -255,7 +255,11 @@
         "Deliver ISO/checksum/manifest references, live-media instructions, known issues and the Phase 2 handoff.",
         "Record the G1 result explicitly; an untested physical boot is not represented as a pass."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/H13.md",
+        "docs/evidence/H13-export.json",
+        "docs/evidence/H13-owner-console.json"
+      ]
     },
     {
       "id": "B01",
@@ -489,19 +493,9 @@
       "evidence": []
     }
   ],
-  "active_work": {
-    "story": "H13",
-    "verified_at": "2026-11-07 13:53 UTC",
-    "verified": [
-      "Final ISO passed all four BIOS/UEFI and CD/USB combinations.",
-      "Recovery, final XML/EN/PT checks and 50/50 native regressions passed.",
-      "134 image packages and 142 corresponding source inputs verified."
-    ],
-    "running": "Audit G1 and export ISO, corresponding sources, test evidence and owner instructions.",
-    "remaining": [
-      "Verify complete local delivery bundle and checksums.",
-      "Publish G1 evidence and final checks; wait for owner testing before B01."
-    ],
-    "evidence": "docs/evidence/H12.md"
+  "owner_review": {
+    "status": "awaiting_foundation_testing",
+    "phase_2_approved": false,
+    "decision": "docs/adr/0063-owner-review-after-h13.md"
   }
 }

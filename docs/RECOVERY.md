@@ -1,8 +1,8 @@
 # Development recovery
 
-H01–H11 have produced the current foundation ISO. H12 final-media boot and failure
-recovery passed; native follow-ups and H13/G1 status are in status.json. The target
-root remains the designated guest /dev/vdb4 mounted at /mnt/lfs. No physical disk
+H01–H13 are complete; G1 passed. The owner-testing ISO, build/test evidence and
+recovery records are delivered; B01–B13 await explicit approval. When the builder
+is running, the target root is designated guest /dev/vdb4 mounted at /mnt/lfs. No physical disk
 is a test target. Use current evidence and the latest recovery entries below;
 earlier sections retain historical failed generations and must not be mistaken
 for live processes. Current artifact: [evidence/H11.md](evidence/H11.md).
@@ -1722,3 +1722,17 @@ of these completed jobs. H13 next exports the verified h11-6gt6n78r ISO with
 scripts/host/export_foundation.py into a fresh .local/releases directory,
 verifies its bundled sources and attaches raw serial/test evidence and final
 Git history. Do not run Phase 2 before owner approval.
+
+### H13 owner-review checkpoint
+
+G1 passed; H01-H13 are complete and no B story has started. All native/test jobs
+are terminal. The owner-testing directory is
+.local/releases/toddy-foundation-2026-11-07. Its final release-summary.json binds
+the source revision and SHA256SUMS verifies every artifact. The builder receives a normal guest poweroff
+after its exclusive build lock was available and no build tool remained;
+its disks are preserved. No new 100 GiB checkpoint copy was needed: retain the
+verified h07-final-base/h09-boot-ready pairs and the independent ISO/source/export.
+Use vm.py start and mount-kernfs.sh only if further foundation diagnostics are
+needed; do not execute Phase 2 before explicit owner approval. Finalization is
+recoverable with scripts/host/finalize_foundation.py against the same clean source
+revision. A different revision requires preservation of the old source bundle.

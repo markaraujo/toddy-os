@@ -1,10 +1,10 @@
 # Current build procedure
 
-H01–H11 have produced the source-built foundation ISO. H12's final-media
-firmware/recovery checks passed; remaining native follow-ups and H13/G1 acceptance
-are recorded in status.json. See [FRESH-BUILD.md](FRESH-BUILD.md) for the complete
-current fresh-build order and independent execution-state procedure, and
-[evidence/H11.md](evidence/H11.md) for the current artifact/inventory.
+H01–H13 are complete and G1 passed in QEMU/KVM. The foundation is delivered for
+owner testing; B01–B13 require explicit owner approval. See
+[FRESH-BUILD.md](FRESH-BUILD.md) for the complete current rebuild sequence,
+[FOUNDATION-TESTING.md](FOUNDATION-TESTING.md) for the actual VM command, and
+[evidence/H13.md](evidence/H13.md) for artifact and requirement acceptance.
 
 The detailed sections below retain implementation history and per-component
 recovery notes. Statements about then-pending milestones describe that historical

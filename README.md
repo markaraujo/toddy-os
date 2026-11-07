@@ -6,7 +6,7 @@
 
 **An independent Linux distribution built from source, with an open agentic desktop for development and automation.**
 
-Foundation ISO verified in QEMU · H13 owner handoff in progress · Desktop and agent pending
+Foundation G1 passed in QEMU · Awaiting owner testing · Desktop and agent pending
 
 </div>
 
