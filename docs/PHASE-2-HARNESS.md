@@ -158,3 +158,15 @@ The first harness will evolve. The goal is a reliable default and safe inexpensi
 adjustments, not perfect autonomous behavior on the first release. Use owner
 feedback to improve presets/skills in small traceable commits without recompiling
 the desktop or resetting user configuration.
+
+
+## Development harness: release maintenance
+
+The project development agent must update and verify the public landing page for
+every published release, following [the release handoff](RELEASES.md). This owner
+instruction covers version/download/checksum/scope/limitation copy, translations,
+regeneration, checks, commit/push and actual public deployment verification.
+It is separate from the installed assistant's user profiles and permissions: do
+not bake project publishing tokens or automatic website authority into Toddy OS.
+A future user-configured release skill needs that user's explicit repository and
+publishing authorization through the normal tool/policy/credential boundaries.

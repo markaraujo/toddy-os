@@ -62,3 +62,30 @@ languages at 390x844: no horizontal overflow or JavaScript page errors. All main
 page images decoded after eager loading for inspection. All 77 local exported
 HTML references resolved inside the explicit public tree. Supporter text translated
 correctly, and zero PayPal links were rendered while donation_url remains null.
+
+
+## Published portal and owner-provided PayPal identifier
+
+Portal commit bcae8e0e78ec99def3a252c358c29d2b9dd0ac07 passed Planning consistency
+and Pages publication (run 42394817295). Public HTTP requests confirmed the new
+selector/experimental/author copy and local scripts/icons return 200.
+
+The owner manually created a donation setup and provided its PayPal management
+URL with hosted identifier WSJKFVXFUULMC. Configured only its standard public
+donation route, https://www.paypal.com/donate/?hosted_button_id=WSJKFVXFUULMC, in
+config/community.json. No email, account identifier, key or private browser state
+is included. PayPal's Donate documentation describes hosted_button_id integration:
+https://developer.paypal.com/sdk/donate/ (reviewed 2026-11-07). The portal uses a
+simple external link; it does not load a payment SDK, collect card details or
+auto-publish donor information.
+
+Checkout remains unverified: the user's connected Chrome page control failed
+with an internal tooling error; anonymous HTTP/web/Playwright attempts received
+403 or could not inspect checkout. No button/account mutation or payment was
+performed. This is not a claim of tested receipt, recipient or payment completion.
+The source identifier is exactly the one supplied by the owner.
+
+Local integration check: the supporter CTA appears in all six languages and keeps
+exactly the owner-supplied hosted-button identifier in its external HTTPS URL.
+The mobile view has no horizontal overflow. make check passed (184 local checks,
+0.184 seconds in this donation-link run). No payment attempt is part of that pass.

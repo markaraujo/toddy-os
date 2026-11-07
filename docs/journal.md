@@ -1078,3 +1078,19 @@ The owner chose a single optional supporter-name acknowledgment instead of tiers
 Prepared the translated section backed by public-only config/community.json; no
 payment target is guessed, no donor record is auto-published and no special
 ownership/software benefits are implied. The PayPal destination remains pending.
+
+
+## 2026-11-07 — Public portal delivered and release-update rule recorded
+
+The six-language portal, author/release status and real GNOME concepts passed
+Pages publication (run 42394817295, bcae8e0) and public HTTP route checks. The owner
+then supplied their manually created PayPal hosted identifier WSJKFVXFUULMC.
+Configured the standard public donation link and retained the known checkout
+verification limit: PayPal blocks the anonymous test browser with HTTP 403 and
+account-page tooling cannot read the private page. No account changes or payment
+were made. Supporter names remain manually approved and optional.
+
+Added the owner's mandatory per-release portal update rule to AGENTS.md, the
+release checklist and development-harness contract. Version/download/checksum,
+translated copy, scope/limits and actual Pages verification belong to every
+release delivery; this gives no publishing credentials to the installed OS agent.

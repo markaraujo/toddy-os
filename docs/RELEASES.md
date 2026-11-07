@@ -30,7 +30,8 @@ command-line volatile live system without desktop, agent or graphical installer.
    the assets through the release download route and run `sha256sum -c` before
    publishing. Then publish the reviewed draft and verify the public links.
 6. Record the release URL, tag, artifact hashes, known limitations and publication
-   result in repository evidence and regenerate the dashboard. Any later hotfix
+   result in repository evidence. Update and deploy the landing page under the
+   mandatory handoff below before closing the release task. Any later hotfix
    gets a new tag, artifacts and acceptance evidence; do not silently replace a
    tested immutable release.
 
@@ -55,3 +56,37 @@ foundation prerelease and GitHub release history; it must not invent newer image
 or claim a stable release before one exists. Version 1.0 is a future product
 target, without a promised date. Define and verify its release scope/acceptance
 before publishing it; G1 foundation or G2 owner-preview success alone is not 1.0.
+
+
+## Mandatory landing-page handoff for every release
+
+The owner explicitly requested this as part of the development harness on
+2026-11-07. Every public prerelease, release candidate, 1.0 release or later hotfix
+must update https://markaraujo.github.io/toddy-os/ as part of its delivery. This
+is a development-agent responsibility recorded in AGENTS.md, not an implicit
+permission for every installed Toddy personal assistant to publish the project.
+
+1. Inspect the actual published GitHub release/tag and attached artifacts. Do not
+   promote a draft, untested candidate or historical image to current release.
+2. Update dashboard/template.html release/version/download copy, source/build and
+   checksum links, what's new, known issues and VM/physical qualification. Keep
+   current_scope/status evidence consistent without awarding unearned milestones.
+3. Update release-dependent public translation strings in ui/translations.js for
+   all six supported languages. Proper tag names, hashes and URLs stay exact.
+   Use new real screenshots only for implemented behavior; label concepts.
+4. Retain experimental-preview status until the actual 1.0 acceptance and release
+   are complete. G1 or G2 success alone must not silently change that label.
+5. Run make dashboard, make site and make check plus a small affected browser
+   check. Reuse unaffected OS/build results; a portal update does not justify
+   repeating full compiler/libc or hardware suites.
+6. Commit/push the validated page and release notes through the authorized Git
+   workflow. Wait for Pages publication and check the public version/tag, actual
+   download/checksum routes and at least one translated view.
+7. Record release URL, source/page commit, deployment run and actual results in
+   evidence/journal. Mark the release handoff incomplete if page publication or
+   access fails, with the exact next action; never claim both sides are current
+   from a successful GitHub artifact upload alone.
+
+Keep major previews and old release notes accessible through GitHub history. A
+new release does not require redesigning the site, changing repository visibility,
+installing a new framework or adding mandatory external API calls to the portal.

@@ -65,6 +65,18 @@ Honor the full-administration product requirement with revocable owner policy an
 
 make check validates planning consistency and local references. make progress prints weighted phase progress; make dashboard regenerates STATUS.md and the offline dashboard. No expensive OS build belongs in bootstrap CI. Do not claim installed hardware support or an available ISO until measured. Keep unresolved choices visible in docs/OPEN-DECISIONS.md. Use docs/adr/ for durable decisions. Do not add a new framework merely because a tool is available.
 
+## Release-to-portal handoff
+
+Every published release must update the public landing page as part of the same
+release task. Follow docs/RELEASES.md: publish only the actual tag, artifact links,
+checksums, scope, validation and limitations; regenerate the page, run proportional
+checks, commit/push and verify the deployed public version. Keep experimental
+preview labels until a genuine accepted 1.0/stable release exists. A GitHub release
+alone is not a completed delivery while the portal advertises stale information.
+This is part of the authorized development/release workflow, without a routine
+permission prompt; unavailable access still needs a concrete handoff. Do not give
+the installed personal assistant automatic project publishing credentials.
+
 ## Project context
 
 Use the committed PRD, story files, journal, errors and ADRs as the project's durable development context. The owner explicitly declined workstation RAG for this project. Do not register or synchronize this checkout with workstation-rag and do not add a development RAG dependency. This does not remove the future operating system's product memory requirements.
