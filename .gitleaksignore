@@ -1,0 +1,26 @@
+# Reviewed historical false positives only: public test-run UUIDs and SHA-256 values.
+# See docs/evidence/repository-governance.md. Do not suppress a real credential.
+0ef0f129b20428feb2c21a70136f5c0fb1fa09b5:docs/evidence/H11-artifact-review.json:generic-api-key:47
+0ef0f129b20428feb2c21a70136f5c0fb1fa09b5:docs/evidence/H11-components.json:generic-api-key:11103
+475aa2d09ba33b8ab205a154904d86a700c01764:config/security-overlay.lock.json:generic-api-key:42
+7b4f049dadf79ab2a3ab065bfd3117e1718d8efb:docs/evidence/H12-final-media.json:generic-api-key:229
+7b4f049dadf79ab2a3ab065bfd3117e1718d8efb:docs/evidence/H12-final-media.json:generic-api-key:294
+7b4f049dadf79ab2a3ab065bfd3117e1718d8efb:docs/evidence/H12-final-media.json:generic-api-key:329
+7b4f049dadf79ab2a3ab065bfd3117e1718d8efb:docs/evidence/H12-final-media.json:generic-api-key:398
+7b4f049dadf79ab2a3ab065bfd3117e1718d8efb:docs/evidence/H12-final-media.json:generic-api-key:630
+7b4f049dadf79ab2a3ab065bfd3117e1718d8efb:docs/evidence/H12-final-media.json:generic-api-key:694
+7b4f049dadf79ab2a3ab065bfd3117e1718d8efb:docs/evidence/H12-final-media.json:generic-api-key:7
+7b4f049dadf79ab2a3ab065bfd3117e1718d8efb:docs/evidence/H12-final-media.json:generic-api-key:729
+7b4f049dadf79ab2a3ab065bfd3117e1718d8efb:docs/evidence/H12-final-media.json:generic-api-key:808
+7b4f049dadf79ab2a3ab065bfd3117e1718d8efb:docs/evidence/H12-final-media.json:generic-api-key:82
+9ee4e1fd8ea6a56f9b107988172474aae05b9862:docs/evidence/H12-first-media.json:generic-api-key:208
+9ee4e1fd8ea6a56f9b107988172474aae05b9862:docs/evidence/H12-first-media.json:generic-api-key:270
+9ee4e1fd8ea6a56f9b107988172474aae05b9862:docs/evidence/H12-first-media.json:generic-api-key:6
+9ee4e1fd8ea6a56f9b107988172474aae05b9862:docs/evidence/H12-first-media.json:generic-api-key:81
+a3f819c6a5b0083fdd4f8ef313ab8504e9326281:docs/adr/0086-protect-completed-database-coverage.md:generic-api-key:66
+a89273205317c63fdbbde0a5e18ec8a5af457459:docs/evidence/H11-magic-database-review.json:generic-api-key:36
+c38163ac6f798873bd917904d68cb796fdac80db:docs/evidence/H10-native-live.json:generic-api-key:76
+c427112af68ef78c2467e693393ed28f9f0eca93:scripts/build/h11/review_image_key_markers.py:generic-api-key:31
+c427112af68ef78c2467e693393ed28f9f0eca93:scripts/build/h11/review_image_key_markers.py:generic-api-key:32
+e07ab0de3562002c04619c547ff34ef9fcf30888:docs/evidence/H12-native-locales.json:generic-api-key:248
+e07ab0de3562002c04619c547ff34ef9fcf30888:docs/evidence/H12-native-locales.json:generic-api-key:3

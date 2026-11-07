@@ -4,10 +4,16 @@ on:
   pull_request:
 permissions:
   contents: read
+concurrency:
+  group: planning-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
       - name: Validate planning, links and progress gates
         run: make check

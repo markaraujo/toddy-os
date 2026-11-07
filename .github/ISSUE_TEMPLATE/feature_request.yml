@@ -1,0 +1,23 @@
+name: Feature proposal
+description: Discuss a focused improvement before starting substantial work
+title: "[Proposal]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and intended user
+      description: Explain the need with a concrete example. Do not include personal or account data.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior and scope
+      description: Note the affected phase/story and an alternative if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Focused validation and limitations
+      description: How could we verify it without an unnecessary full OS build?

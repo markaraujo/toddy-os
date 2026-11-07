@@ -11,19 +11,27 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
       - name: Validate project
         run: make check
       - name: Export allowlisted dashboard
         run: make site
       - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
-      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
+      - name: Package the allowlisted Pages artifact
+        run: tar --dereference --hard-dereference --directory _site --exclude=.git --exclude=.github -cf "$RUNNER_TEMP/artifact.tar" .
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          path: _site
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       pages: write
       id-token: write
