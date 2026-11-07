@@ -17,11 +17,11 @@ The owner additionally requires user-customizable harness profiles/skills follow
 Hermes/OpenClaw patterns (docs/PHASE-2-HARNESS.md and ADR-0106), plus humorous realistic GNOME installer scenes,
 small traceable commits and a navy public-page redesign preserving the exact logo.
 
-Planning and brand/UI concepts are now prepared in the repository; the public
+Planning, contract/catalog inputs and brand/UI concepts are prepared in the repository; the public
 page includes selectable desktop/assistant/task/installer concepts. See
 [brand evidence](evidence/navy-brand-preview.md) and
-[Pages evidence](evidence/navy-pages-preview.md). Report this delivery before
-provisioning the Phase 2 guest.
+[Pages evidence](evidence/navy-pages-preview.md). Final review is complete; guest continuation still requires its explicit recorded
+authorization. Do not reopen general planning on resume.
 B stories remain not_started; repository design preparation does not satisfy
 B11 runtime acceptance. G1 is passed, G2 pending, physical hardware unverified.
 Do not interpret a screenshot mockup or an optional package candidate as a working
@@ -47,6 +47,10 @@ selects qualified isolated/staged builds and change-based validation. Offline
 base setup works with agent components absent; later acquisition requires no OS
 reinstallation. Native dependencies, UI timings and runtime gates remain unproved
 until guest implementation. Do not restart plan reviews without a concrete new gap.
+
+Shared app selection, deferred acquisition and on-request recommendations follow
+[the software catalog contract](PHASE-2-SOFTWARE-CATALOG.md); candidates are not
+installed packages or new mandatory breadth. Reuse existing S19/S20/S21/S26.
 
 ## Small delivery loop
 
@@ -279,7 +283,3 @@ require native C tests, production transaction/reopen/rollback/crash recovery,
 actual APT cache interruption/rebuild and existing signed-repository/HTTPS/package
 checks before H07 acceptance. All other critical suites and H13/G1 gates remain.
 See [ADR-0092](adr/0092-focused-berkeley-delivery-validation.md).
-
-Shared app selection, deferred acquisition and on-request recommendations follow
-[the software catalog contract](PHASE-2-SOFTWARE-CATALOG.md); candidates are not
-installed packages or new mandatory breadth. Reuse existing S19/S20/S21/S26.

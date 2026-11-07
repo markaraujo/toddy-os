@@ -100,3 +100,14 @@ overnight completed release. B01/B02 measure build stages, B06 native rendering,
 and B12 actual installation. Keep full verification for unqualified root writes;
 never trade away integrity to improve a speculative timing estimate. Quality is
 established by actual scoped acceptance, not by the number of planning reviews.
+
+## Final documentation/portal consistency pass
+
+The final pass incorporates ADR-0111's independent executor branch and ADR-0112's
+shared candidate catalog. Main requirements now explicitly prohibit installer API
+key entry and live-session extra-app acquisition; source and generated story/status
+criteria match. B12 reuses B01's qualified installer instead of repeating the
+architecture survey. B13 distinguishes base media from acquired full experience.
+The short continuation card identifies B01 as the next authorized implementation
+step only after explicit recorded continuation. Historical G1 evidence remains
+historical; no native/Flatpak candidate is presented as qualified by preparation.

@@ -1,6 +1,6 @@
 {
   "scope": "structural simulation only; assumes each visited story passes, no duration or runtime proof",
-  "status_sha256": "d0da91d8c663c01b641f64150461936b14a036015d6598394e3dbecb9eb11280",
+  "status_sha256": "d216622a10a7f144bba471f2d5ec9a7ac2e0f625c0030c9f749a1bafb0307013",
   "actual_approval": false,
   "nominal": {
     "simulated_order": [

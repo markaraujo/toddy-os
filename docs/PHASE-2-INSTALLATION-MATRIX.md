@@ -30,6 +30,7 @@ No office/games/extra browsers/IDEs/model weights in the base image.
 | External provider | Off; mutually exclusive initial AI setup choice | Save non-secret intention; collect key only in the installed user's protected store | Tested adapter, endpoint validation and locked/unavailable-keyring failure |
 | Local AI engine | Off; capability/resource assessment first | Use explicit verified media pack or defer download; no fake ready state | Source/license/hash/runtime profile and authenticated local transport |
 | Local model | Off; requires compatible local engine and explicit separate consent | Show size/terms/space before download; resume, verify bytes, then enable | Exact artifact license/hash/context/resource measurement |
+| Docker Engine + Compose | Off; native rootless qualification target | Save choice; install only after installed-user review | Engine/Compose, authorization, startup/removal and resource proof |
 | OpenCode | Off; independent of AI choice | Defer unavailable downloads; no base-install failure | Supported native install/launch/remove and terms/source closure |
 | VS Code | Off; independent choice | Same; do not silently replace with Code - OSS or VSCodium | Exact distribution/marketplace terms and compatible package path |
 | Firmware | Off; explicitly select applicable reviewed pack | Verified media pack if distributable, otherwise defer with honest networking warning | Device IDs, redistribution and actual package compatibility |
@@ -57,9 +58,10 @@ provider spending. Default unchecked boxes cannot create standing administrative
 grants. Installer contains no API key entry. Credential entry is in the installed
 account after protected secret-store availability is established.
 
-Preflight base media integrity, writable target identity, actual required space,
-firmware boot scope and chosen optional local pack bytes before the final disk
-review. Required base failure is a failed installation with recovery, not a usable
+Preflight base media integrity, writable target identity, actual required space
+and firmware boot scope before the final disk review. Ordinary extra-app packs
+are checked later in the installed user session; essential hardware packs retain
+their separate installation preflight. Required base failure is a failed installation with recovery, not a usable
 completion screen. Network loss on optional downloads preserves a successful base
 and records pending choices. Never auto-restart until the user chooses it.
 

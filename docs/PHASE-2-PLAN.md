@@ -111,9 +111,9 @@ incomplete step. The Toddy persona must not obscure warnings or invent actions.
 
 ### 3.2 Setup, installer and optional software
 
-The installer offers three assistant choices: use my provider key, configure local
-AI, or configure later. Prefer collecting API keys in the installed user's first
-session, never in shared live-image configuration or installer logs. If setup is
+The installer records one non-secret assistant intent: external API, local AI,
+or configure later. Collect API keys only in the installed user's protected
+session, never in the installer, shared live-image configuration or logs. If setup is
 requested in the installer, persist only a non-secret choice and defer credential
 entry to the installed account. Detect CPU/RAM/GPU/free space before suggesting a
 local profile. Show model size, license, download and runtime requirements before
@@ -124,16 +124,30 @@ a mandatory download. Offer another local endpoint through a compatible adapter;
 additional managed runtimes such as Ollama are follow-up candidates, not required
 for the first preview. Local-only mode must never switch to an API silently.
 
-Optional application choices include OpenCode and VS Code, independently selectable.
+Optional application choices include Docker, OpenCode and VS Code, independently
+selectable from the shared catalog; Git stays in base.
 A deferred network download must be labeled pending, resumable after first boot,
-and must not make an otherwise valid base installation fail. Reuse the same
-package/download backend in the installer and first-run UI. Offline installation
+and must not make an otherwise valid base installation fail. The installer saves intent only; the installed setup and agent use the same
+review/authorization/package backend. No ordinary extra-app acquisition occurs
+in the live installer. Offline installation
 must remain possible; per the owner clarification, the offline base installs the
 usable desktop and a lightweight setup entry, while the agent backend/Node/Pi,
 executor, inference/models and optional integrations can be installed later without
 reinstalling the OS. The setup entry must not require these absent components or
 pretend agent tasks work before setup. Online/media-pack acquisition still requires
 explicit verified choices; never label an untested optional package as supported.
+
+### 3.2.1 Shared optional software catalog
+
+Follow [the shared catalog contract](PHASE-2-SOFTWARE-CATALOG.md). Git stays in
+base; Docker/OpenCode are highlighted optional choices and mise is excluded.
+After verifying base installation, save unselected-by-default optional app choices;
+review/acquire them in the installed user's session, not the live installer.
+The same agent-independent setup/controller serves user-requested agent suggestions.
+Native packages handle core/CLI tools; qualified graphical extras may use per-user
+Flatpak. Candidate breadth is not a new G2 gate. Keep hardware/firmware, models,
+credentials and grants in their separate existing flows. No guest-start approval.
+
 
 ### 3.3 Third-party drivers, firmware and packages
 
@@ -382,14 +396,3 @@ foundation hardware testing. The owner can authorize that continuation separatel
 Per-story strategy: [review and handoffs](PHASE-2-STORY-STRATEGY.md).
 B04 consumes B01 contracts independently of B03; B05 requires both branches
 ([ADR-0111](adr/0111-independent-executor-and-provider-development.md)).
-
-## Shared optional software catalog
-
-Follow [the shared catalog contract](PHASE-2-SOFTWARE-CATALOG.md). Git stays in
-base; Docker/OpenCode are highlighted optional choices and mise is excluded.
-After verifying base installation, save unselected-by-default optional app choices;
-review/acquire them in the installed user's session, not the live installer.
-The same agent-independent setup/controller serves user-requested agent suggestions.
-Native packages handle core/CLI tools; qualified graphical extras may use per-user
-Flatpak. Candidate breadth is not a new G2 gate. Keep hardware/firmware, models,
-credentials and grants in their separate existing flows. No guest-start approval.

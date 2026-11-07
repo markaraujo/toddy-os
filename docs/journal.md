@@ -1395,3 +1395,20 @@ installation, credential use or guest-start approval was created.
 Validation: make dashboard/site/check passed; 201 tests in 0.201 seconds.
 Catalog references, six-locale portal copy and unchanged approval/gates/story
 statuses/dependencies were checked. Runtime native/Flatpak proof remains pending.
+
+## 2026-11-07 — Final Phase 2 documentation and portal consistency pass
+
+Reviewed active plan, all B-story graph/criteria, prepared contracts, candidate
+catalog, README, developer handoff, continuation, generated status and portal.
+Removed ambiguous preference for API key entry (now installed-user only), live
+extra acquisition and repeated installer framework evaluation. Clarified B13's
+base/acquired configurations, surfaced catalog handoff and shortened the resume
+card. Public six-language copy now identifies Git in base and Docker/OpenCode/
+VS Code as optional only after verified packaging. Regenerated structural evidence
+against the current status hash. Existing release remains public experimental
+foundation; G1 passed, all B unstarted, G2/physical validation pending.
+
+Protected logo/mascot hashes, 28 unqualified candidates, 44 bilingual messages and
+13 semantic fixtures checked. make dashboard/site/check passed; 201 repository
+tests, JavaScript syntax and local-reference consistency passed. These are not
+native guest or app qualification results. Publication and browser checks follow.

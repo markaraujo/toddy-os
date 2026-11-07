@@ -518,7 +518,7 @@
         "Deliver ISO/checksums/source-build-license inventory, recovery instructions and a concise owner guide with passed/failed/deferred/not-run evidence and test durations when measured.",
         "Broader hardware/model/accessibility/soak validation is explicitly delegated to owner-use backlog; VM-only and experimental status are truthful and no deferred test is marked passed.",
         "The installed preview supports a working customizable default harness, safe profile changes/restore and no imported privilege grant under S24.",
-        "The exact candidate includes all accepted B components and passes installed-image hygiene and browser integration checks; earlier incomplete preview artifacts are not reused as final acceptance."
+        "The exact release provides all accepted B components and verifies both the offline base and acquired full-experience configuration, with installed-image hygiene and browser integration; earlier incomplete previews are not reused as final acceptance."
       ],
       "evidence": []
     }
