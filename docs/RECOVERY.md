@@ -1156,3 +1156,20 @@ belongs to this experiment. Only the private prefix is an installation target.
 Preserve failed generations; use a fresh generation after correcting a cause.
 The native production recipes remain subject to the H11 gate and their own
 package postchecks. An experimental file-only ISO is not the foundation ISO.
+
+Private Mtools and loader-only media recovery (ADR-0078): inspect the printed
+`mtools-native-*` driver PID and result/exit files with
+`python3 scripts/host/probe_native_mtools.py collect PRINTED_FIXTURE`.
+The media probe retains `/sources/recovery/grub-media-*` stage intents/logs/exits
+and its result; host `.local/vm/grub-media-tests/probe-*` retains native input/logs,
+transferred ISO, exact QEMU commands, container IDs, firmware vars, serial logs
+and final states. On an SSH observation timeout, inspect the recorded native
+PID/stage before retrying; do not infer terminal state from lost transport.
+
+Firmware tests share the native boot-test lock and reject existing labeled test
+containers. Their 45-second deadline records failure and stops only the matching
+owned container. Keep failed logs: a clean QEMU exit without the exact platform
+marker and ISO data read is failure. Never start duplicates, attach the builder
+disk or change a physical disk to diagnose media boot. Correct inputs and use a
+fresh generation after verifying the old run has terminated. The final accepted
+loader-only fixture is not a recovery image or a completed H09/H11/H12 gate.

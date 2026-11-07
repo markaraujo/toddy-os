@@ -741,3 +741,20 @@ unchanged external sentinel. Corrected full build/roundtrip passed all thirteen
 stages and eight fixture entries; payload corruption exited 32 with MISMATCH.
 All failed generations/logs remain preserved; ADR-0077 records hashes and paths.
 No global install, package marker, boot or release acceptance was claimed.
+
+## 2026-11-07 — Real hybrid loader preparation (ADR-0078)
+
+Symptom: native grub-mkrescue cannot open unicode.pf2, including after empty
+font/theme options. Cause: its EFI branch unconditionally renders an Apple boot
+label; the base GRUB has no font conversion dependency or PF2 data. Correction:
+for the text/serial x86_64 foundation, explicitly compose the frozen BIOS core,
+EFI FAT and hybrid Xorriso steps without Apple-label generation. No source-built
+font is fabricated and no dependency version is changed. The prepared direct
+grub-install path separately uses supported empty font/theme lists.
+
+The first actual BIOS boot exited zero but serial showed an unavailable echo
+command. The verifier correctly refused it. Embed the actual echo module and
+repeat with fresh media. All four BIOS/UEFI CD-ROM/USB cases then executed the
+correct GRUB platform, read unique media data and halted with exit zero. The ISO
+hash is unchanged. Original failed source/serial evidence remains in the private
+generations; ADR-0078 identifies passing evidence. Native Linux boot is pending.

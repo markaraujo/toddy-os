@@ -78,3 +78,9 @@ Raw .local/logs/h11-mtools-premature-gate-refusal.json SHA-256
 5fffd40a6cc2899f083de34df105b994bb66219396b7d9ca16c5aa3fd3ba5c14.
 Shell syntax/Python parsing and 97 local checks pass. No build, installation,
 FAT roundtrip or boot is claimed by this preparation.
+
+Subsequent actual preparation and decision: ADR-0078 privately built this exact
+Mtools version and passed native FAT behavior plus four real loader-only boots.
+The measured grub-mkrescue Apple font dependency led to explicit source-backed
+x86_64 BIOS/EFI composition. Production installation and full Linux ISO boot
+remain pending; the historical prepared checks above are not release acceptance.

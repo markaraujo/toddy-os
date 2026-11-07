@@ -366,3 +366,22 @@ ADR-0077 explains the actual Glibc xattr-header probe correction. Private-prefix
 CPPFLAGS/LDFLAGS/PKG_CONFIG_PATH are experiment settings, not release paths.
 No installed package or milestone is accepted by this command. H11 still runs
 the gated /usr recipes and actual hybrid boot-image acceptance after H10.
+
+## Private FAT and loader-only hybrid validation
+
+Build/collect the frozen Mtools experiment with
+`python3 scripts/host/probe_native_mtools.py start` and
+`python3 scripts/host/probe_native_mtools.py collect PRINTED_FIXTURE`.
+Then run `python3 scripts/host/probe_grub_media.py MTOOLS_FIXTURE LIBBURNIA_FIXTURE`
+using completed verified private builds. It creates a new protected native media
+generation and host test directory, verifies actual GRUB payload/tool provenance,
+and boots the same read-only loader ISO in BIOS/UEFI through CD-ROM and virtual
+USB. Detailed commands, code/firmware/image hashes, logs and exit states stay in
+the printed directories; see ADR-0078. No disk is attached and no network enabled.
+
+This tests real GRUB firmware execution only. It does not include a kernel,
+Systemd, the live root or installer. The release assembler must use the accepted
+installed tools after H10 and pair its actual kernel/root/initramfs generation;
+the full native boot/login/recovery matrix remains mandatory. The x86_64 text
+profile composes native grub-mkimage/Mtools/Xorriso directly from the frozen
+grub-mkrescue BIOS/EFI recipe, avoiding its unrelated Apple font-label branch.

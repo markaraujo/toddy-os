@@ -1363,3 +1363,15 @@ btree cycle 1 with no FAIL entries. No terminal exit exists. Observation SHA-256
 Native private ISO preparation passed after measured header and symlink fixes
 (ADR-0077): thirteen stages, eight metadata entries and corruption rejection.
 This independent experiment does not increase H07 package count or accept H11.
+
+### FAT and actual loader boots during DB wait — 2026-11-07 08:30 UTC
+
+Both Berkeley driver identities remain live in block 27/27. Original 1364
+finished this configuration's Test044 recovery cycles and reached Test078
+queueext with the same two failures. Corrected 1107192 is verifying Test044
+btree cycle 2, zero FAIL entries. No terminal exit exists. Observation SHA-256
+237daaff4ce9b361951cec936ce3eef6921d442178089ee2d987fdcd2ab191cb.
+
+Independent private preparation passed native Mtools FAT readback and four real
+BIOS/UEFI CD-ROM/USB GRUB loader boots (ADR-0078). No kernel/root was included;
+this does not accept the full boot matrix, H07 packages or any later milestone.

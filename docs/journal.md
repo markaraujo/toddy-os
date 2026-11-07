@@ -551,3 +551,12 @@ symlink metadata restoration; corrected both without dropping comparisons. Eight
 ISO fixture entries, ACLs, hardlinks, numeric owners, dangling/outside links and
 corruption rejection passed. All thirteen driver stages exited zero. No package
 or milestone was accepted; both Berkeley suites remain live in block 27/27.
+
+2026-11-07 — Built frozen Mtools privately and passed genuine EFI FAT copy/readback,
+UTF-8 names and malformed-image refusal. Native media assembly exposed the
+unconditional Apple font-label dependency in grub-mkrescue. Selected explicit
+x86_64 BIOS/EFI composition from its frozen implementation (ADR-0078). First
+actual boot caught a missing echo module; corrected it and passed all four
+BIOS/UEFI CD-ROM/USB loader boots with exact serial/data markers and clean halts.
+No kernel/rootfs or later milestone was accepted. The same Berkeley drivers
+remain live, corrected with zero FAIL entries.

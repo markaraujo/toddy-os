@@ -53,8 +53,10 @@ sha256sum "$LFS/etc/toddy/grub.cfg" "$LFS/boot/vmlinuz-7.1.8-toddy" > "$evidence
 guard_target
 chroot_run <<'INNER'
 set -euo pipefail
-grub-install /dev/vdb --target=i386-pc --boot-directory=/boot --recheck
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --boot-directory=/boot --removable --no-nvram --recheck
+# ADR-0078: the foundation uses native console/serial terminals. The optional
+# Unicode PF2/theme is not built by the frozen base GRUB configuration.
+grub-install /dev/vdb --target=i386-pc --fonts= --themes= --boot-directory=/boot --recheck
+grub-install --target=x86_64-efi --fonts= --themes= --efi-directory=/boot/efi --boot-directory=/boot --removable --no-nvram --recheck
 grub-file --is-x86_64-efi /boot/efi/EFI/BOOT/BOOTX64.EFI
 grub-script-check /boot/grub/grub.cfg
 INNER
