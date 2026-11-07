@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 10:46 UTC
+Last verified: 2026-11-07 10:55 UTC
 
 Verified:
 
@@ -26,7 +26,7 @@ Verified:
 - Verified paired cold checkpoint at the 124-package boundary.
 - Independent Linux 7.1.8 native build and BIOS/UEFI diagnostic boots passed, including actual module insertion/removal and namespace creation; no final kernel package, full foundation boot or ISO acceptance.
 
-Running: Corrected Berkeley driver 1107192 remains live in recovery, block 25/27, Recd011.b, zero FAIL and no terminal exits. A separate fresh native compilation from frozen archives finished all five stages/C tests/helper and preparation; provenance verifies 10,207 native inputs, 483 Tcl files and their prepared-byte binding (ADR-0089). No duplicate full suite started. Fresh full-result/coverage integration, full terminal qualification and production remain pending; H07 is 124/126 and APT is gated.
+Running: Corrected Berkeley driver 1107192 is live in recovery 25/27, Recd001.f in the rbtree variant, zero FAIL and no terminal exits; case numbers restart per method. Fresh result verification now requires actual compiled-generation/input binding while preserving the historical seed gate (ADR-0090). Native premature/mismatched refusals and protected coverage rechecks passed; no new full suite or acceptance. Portable failed-summary/fresh-dispatch integration and production remain pending; H07 is 124/126 and APT is gated.
 
 Remaining:
 

@@ -514,3 +514,18 @@ The result includes source/code/log hashes and a protected build-context status
 snapshot. Compilation provenance binds actual prepared input bytes but never
 accepts the complete standard suite. Generic full-result/coverage integration
 and the normal fresh-recipe switch remain pending before H07 acceptance.
+
+The prepared complete-result interface now distinguishes fresh compilation from
+the historical recovery profile (ADR-0090):
+
+```sh
+# Only after this exact prepared generation has genuinely completed run_std:
+python3 -B /opt/toddy-build/scripts/build/db_standard_result.py /mnt/lfs/sources/recovery/db-standard-GENERATION --native-build /mnt/lfs/sources/recovery/db-native-GENERATION
+```
+
+This requires the actual native receipt bound to that exact standard generation,
+zero raw exits, immutable reports/inputs and the complete ordered dispatch.
+Omitting --native-build retains the strict historical recovery gate. Neither path
+accepts a prepared/live suite. Generic failed-summary coverage/qualification and
+normal fresh-recipe dispatch integration remain pending; this is not yet a
+verified end-to-end fresh build command.

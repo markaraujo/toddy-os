@@ -1454,3 +1454,18 @@ context; input and native-build digests bind it. Source/build receipts and the
 verification output remain distinct from full-suite acceptance. The verifier
 requires the same reviewed code snapshot as the executed build. Future recipe
 changes must preserve the earlier snapshot/evidence rather than rewrite it.
+
+## Separate standard-result provenance paths (ADR-0090)
+
+The current active db-standard-nfv62s4o execution still belongs to the historical
+460-file seed profile. Keep its original records and default result/qualification
+commands. Do not add --native-build to reinterpret that running generation or
+replace its manifest with db-standard-6gav6kkh's newly compiled inputs.
+
+The latter prepared generation has no standard producer and is correctly refused
+by both completion interfaces. Fresh strict results require their exact verified
+native-build receipt and prepared input digest. The private actual refusal probe
+is `python3 scripts/host/probe_db_native_build_result.py /mnt/lfs/sources/recovery/db-native-m3pjqwd2 --unfinished-standard-gates`;
+it checks the current unfinished state and historical coverage custody without
+starting tests or changing source metadata. Do not rerun it once the full suite
+is terminal expecting the old live-state assertion to remain true.

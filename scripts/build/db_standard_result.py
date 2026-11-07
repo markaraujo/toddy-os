@@ -37,7 +37,7 @@ def protected(path, private=False, directory=False):
         raise ValueError('Evidence is redirected, writable or not root protected: ' + str(path))
 
 
-def validate_record(record, inputs, base):
+def validate_success(record):
     if any(type(record.get(key)) is not int or record[key] != 0
            for key in ('driver_exit', 'test_exit')):
         raise ValueError('Both actual process exits must be zero')
@@ -46,10 +46,14 @@ def validate_record(record, inputs, base):
             raise ValueError('Incomplete result: ' + key)
     if record.get('package_accepted') is not False or 'error' in record:
         raise ValueError('Unexpected package claim or diagnosed error')
+
+
+def validate_record(record, inputs, base):
+    validate_success(record)
     validate_execution(record, inputs, base)
 
 
-def validate_execution(record, inputs, base):
+def validate_common_execution(record, inputs, base, cutest_sha256):
     """Validate the execution profile independently of its actual success/failure."""
     if record.get('driver_sha256') != DRIVER_SHA256:
         raise ValueError('Unreviewed result producer')
@@ -61,11 +65,8 @@ def validate_execution(record, inputs, base):
         raise ValueError('The complete standard command was not captured')
     if set(record.get('reports', {})) != REPORTS:
         raise ValueError('Missing complete native reports')
-    if record['reports']['cutest.log'] != CUTEST_SHA256:
+    if record['reports']['cutest.log'] != cutest_sha256:
         raise ValueError('C suite differs from the exercised frozen profile')
-    if (inputs.get('native_build_seed_sha256') != SEED_SHA256 or
-            inputs.get('verified_seed_files') != 460 or inputs.get('verified_tcl_files') != 483):
-        raise ValueError('Unexpected native checkpoint or Tcl input profile')
     if (inputs.get('isolation_script_sha256') != ISOLATION_SHA256 or
             inputs.get('isolation_probe_sha256') != PROBE_SHA256):
         raise ValueError('Input manifest names a different test environment')
@@ -75,6 +76,14 @@ def validate_execution(record, inputs, base):
     started, finished = (datetime.fromisoformat(record[key]) for key in ('started', 'finished'))
     if started.tzinfo is None or finished.tzinfo is None or finished < started:
         raise ValueError('Incomplete execution timestamps')
+
+
+def validate_execution(record, inputs, base):
+    """Keep the measured recovery seed mandatory for the historical interface."""
+    validate_common_execution(record, inputs, base, CUTEST_SHA256)
+    if (inputs.get('native_build_seed_sha256') != SEED_SHA256 or
+            inputs.get('verified_seed_files') != 460 or inputs.get('verified_tcl_files') != 483):
+        raise ValueError('Unexpected native checkpoint or Tcl input profile')
 
 
 def validate_summary(report, output):
@@ -111,9 +120,8 @@ def open_terminal(base, expected_exit=0):
     return base, record, inputs
 
 
-def verify_execution_evidence(base, record, inputs, private_source=True):
-    """Verify bytes, provenance and isolation; never assert suite acceptance."""
-    validate_execution(record, inputs, base)
+def _verify_common_files(base, record, inputs, private_source, helper_binary_sha256):
+    """Check common bytes/isolation; callers separately bind native provenance."""
     pid = record.get('driver_pid')
     if type(pid) is not int or pid <= 0:
         raise ValueError('Missing actual driver PID')
@@ -140,7 +148,7 @@ def verify_execution_evidence(base, record, inputs, private_source=True):
         if actual != expected:
             raise ValueError('Tested source changed: ' + relative)
     for name, expected in [('standard-regression.tcl', ENTRY_SHA256),
-                           ('db_repsite.c', HELPER_SHA256), ('db_repsite', HELPER_BINARY_SHA256)]:
+                           ('db_repsite.c', HELPER_SHA256), ('db_repsite', helper_binary_sha256)]:
         if (inputs['source_files'].get('build-test/' + name) != {'sha256': expected} or
                 digest(source / 'build-test' / name) != expected):
             raise ValueError('Test entry or helper changed: ' + name)
@@ -167,6 +175,13 @@ def verify_execution_evidence(base, record, inputs, private_source=True):
         raise ValueError('Malformed namespace identity')
     if any(isolation['namespaces'][name] == outer[name] for name in outer):
         raise ValueError('A required namespace was shared')
+
+
+def verify_execution_evidence(base, record, inputs, private_source=True):
+    """Verify the original measured recovery provenance and common evidence."""
+    validate_execution(record, inputs, base)
+    _verify_common_files(base, record, inputs, private_source, HELPER_BINARY_SHA256)
+    source = base / 'source'
     seed_path = Path('/var/log/toddy/build/h07-berkeley-db.recovery-seed.json')
     protected(seed_path, private=True)
     if digest(seed_path) != SEED_SHA256:
@@ -180,11 +195,64 @@ def verify_execution_evidence(base, record, inputs, private_source=True):
     for relative, expected in verify(ROOT, Path('/mnt/lfs/sources'), source).items():
         if inputs['source_files'].get(relative) != {'sha256': expected}:
             raise ValueError('Frozen Tcl input was not in the execution manifest: ' + relative)
+    return _execution_proof(base, record, inputs)
+
+
+def _execution_proof(base, record, inputs):
     return {'execution_evidence_verified': True, 'package_accepted': False,
-            'fixture': str(base), 'source': str(source),
+            'fixture': str(base), 'source': str(base / 'source'),
             'result_sha256': digest(base / 'result.json'),
             'input_manifest_sha256': digest(base / 'inputs.json'),
             'report_sha256': record['reports'], 'verified_input_files': len(inputs['source_files'])}
+
+
+def validate_fresh_binding(proof, base, inputs, input_sha256):
+    if (proof.get('native_test_build_verified') is not True or
+            proof.get('prepared_input_binding_verified') is not True or
+            proof.get('standard_suite_verified') is not False or proof.get('package_accepted') is not False or
+            proof.get('prepared_standard_fixture') != str(base) or
+            proof.get('prepared_input_manifest_sha256') != input_sha256 or
+            inputs.get('fixture') != str(base)):
+        raise ValueError('Full execution belongs to a different or unverified native compilation')
+
+
+def validate_dispatch(stdout):
+    from db_standard_progress import HEADERS
+    if [line for line in stdout.splitlines() if line.startswith('Running ')] != HEADERS:
+        raise ValueError('Fresh complete execution lacks the full ordered dispatch')
+
+
+def verify_fresh_execution_evidence(base, record, inputs, native_build, private_source=True):
+    """Require actual fresh compilation provenance; no recovery seed substitution."""
+    from db_native_build_result import verify as verify_native
+    native_build = Path(native_build)
+    proof = verify_native(native_build, reviewed_root=ROOT)
+    validate_fresh_binding(proof, base, inputs, digest(base / 'inputs.json'))
+    native = json.loads((native_build / 'native-build.json').read_text())
+    if digest(native_build / 'native-build.json') != proof['native_build_sha256']:
+        raise ValueError('Fresh native provenance changed during result verification')
+    validate_common_execution(record, inputs, base, proof['cutest_log_sha256'])
+    helper = native['source_inputs']['build-test/db_repsite']['sha256']
+    _verify_common_files(base, record, inputs, private_source, helper)
+    if verify_native(native_build, reviewed_root=ROOT) != proof:
+        raise ValueError('Fresh native build/input binding changed during verification')
+    return dict(_execution_proof(base, record, inputs), native_build=proof)
+
+
+def verify_fresh_completed(base, native_build):
+    base, record, inputs = open_terminal(base)
+    validate_success(record)
+    result = verify_fresh_execution_evidence(base, record, inputs, native_build)
+    evidence = base / 'result-evidence'
+    stdout = (evidence / 'standard.log').read_text()
+    validate_summary((evidence / 'ALL.OUT').read_text(), stdout)
+    from db_standard_progress import SOURCE_SHA256, CONFIG_SHA256
+    for name, expected in (('test/tcl/test.tcl', SOURCE_SHA256), ('build-test/db_config.h', CONFIG_SHA256)):
+        if digest(base / 'source' / name) != expected:
+            raise ValueError('Source/configuration differs from the complete dispatch plan')
+    validate_dispatch(stdout)
+    result.pop('execution_evidence_verified')
+    return dict(result, standard_suite_verified=True)
 
 
 def verify_completed(base):
@@ -201,12 +269,15 @@ def verify_completed(base):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('fixture', type=Path)
+    parser.add_argument('--native-build', type=Path, help='Require fresh compiled provenance instead of the historical recovery seed')
     args = parser.parse_args()
     subprocess.run(['bash', '-c',
                     'source /opt/toddy-build/scripts/build/target.sh; guard_target'], check=True)
     if os.geteuid() != 0:
         raise SystemExit('Disposable guest root required for protected evidence')
-    print(json.dumps(verify_completed(args.fixture), indent=2))
+    result = (verify_fresh_completed(args.fixture, args.native_build) if args.native_build
+              else verify_completed(args.fixture))
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == '__main__':

@@ -477,7 +477,7 @@
   ],
   "active_work": {
     "story": "H07",
-    "verified_at": "2026-11-07 10:46 UTC",
+    "verified_at": "2026-11-07 10:55 UTC",
     "verified": [
       "124 of 126 currently planned H07 packages installed, configured and accepted; 2 pending (Berkeley DB and APT). All 124 have own-build/source provenance.",
       "Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.",
@@ -485,7 +485,7 @@
       "Verified paired cold checkpoint at the 124-package boundary.",
       "Independent Linux 7.1.8 native build and BIOS/UEFI diagnostic boots passed, including actual module insertion/removal and namespace creation; no final kernel package, full foundation boot or ISO acceptance."
     ],
-    "running": "Corrected Berkeley driver 1107192 remains live in recovery, block 25/27, Recd011.b, zero FAIL and no terminal exits. A separate fresh native compilation from frozen archives finished all five stages/C tests/helper and preparation; provenance verifies 10,207 native inputs, 483 Tcl files and their prepared-byte binding (ADR-0089). No duplicate full suite started. Fresh full-result/coverage integration, full terminal qualification and production remain pending; H07 is 124/126 and APT is gated.",
+    "running": "Corrected Berkeley driver 1107192 is live in recovery 25/27, Recd001.f in the rbtree variant, zero FAIL and no terminal exits; case numbers restart per method. Fresh result verification now requires actual compiled-generation/input binding while preserving the historical seed gate (ADR-0090). Native premature/mismatched refusals and protected coverage rechecks passed; no new full suite or acceptance. Portable failed-summary/fresh-dispatch integration and production remain pending; H07 is 124/126 and APT is gated.",
     "remaining": [
       "Finish the complete corrected database run and review every terminal assertion/diagnostic against source and protected native coverage evidence; preserve raw failures. Resolve full-source custody, exact-summary qualification/handoff and portable fresh-build diagnostic handling before production install and transaction/reopen postchecks.",
       "Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.",

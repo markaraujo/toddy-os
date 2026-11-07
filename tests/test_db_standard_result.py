@@ -1,7 +1,10 @@
 import copy
 import importlib.util
 from pathlib import Path
+import sys
 import unittest
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts/build'))
 
 spec = importlib.util.spec_from_file_location(
     'db_standard_result', Path(__file__).resolve().parents[1] /
@@ -69,3 +72,33 @@ class DatabaseStandardResult(unittest.TestCase):
         altered['isolation_probe_sha256'] = '0' * 64
         with self.assertRaises(ValueError):
             result.validate_record(record, altered, base)
+
+    def test_common_shape_never_substitutes_for_native_recovery_provenance(self):
+        base, inputs, record = self.records()
+        for name in ('native_build_seed_sha256', 'verified_seed_files'):
+            inputs.pop(name)
+        result.validate_common_execution(record, inputs, base, result.CUTEST_SHA256)
+        with self.assertRaisesRegex(ValueError, 'native checkpoint'):
+            result.validate_record(record, inputs, base)
+        with self.assertRaisesRegex(ValueError, 'C suite differs'):
+            result.validate_common_execution(record, inputs, base, '0' * 64)
+
+    def test_full_dispatch_and_native_binding_cannot_be_replaced_by_partial_evidence(self):
+        from db_standard_progress import HEADERS
+        result.validate_dispatch('\n'.join(HEADERS))
+        for rows in (HEADERS[:-1], HEADERS[1:], HEADERS + [HEADERS[-1]],
+                     [HEADERS[1], HEADERS[0], *HEADERS[2:]]):
+            with self.assertRaises(ValueError):
+                result.validate_dispatch('\n'.join(rows))
+        base, inputs, _ = self.records()
+        proof = {'native_test_build_verified': True, 'prepared_input_binding_verified': True,
+                 'standard_suite_verified': False, 'package_accepted': False,
+                 'prepared_standard_fixture': str(base), 'prepared_input_manifest_sha256': '1' * 64}
+        result.validate_fresh_binding(proof, base, inputs, '1' * 64)
+        for key, value in (('prepared_standard_fixture', str(base) + '-other'),
+                           ('prepared_input_manifest_sha256', '2' * 64),
+                           ('native_test_build_verified', False), ('package_accepted', True),
+                           ('prepared_input_binding_verified', False), ('standard_suite_verified', True)):
+            changed = dict(proof, **{key: value})
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                result.validate_fresh_binding(changed, base, inputs, '1' * 64)

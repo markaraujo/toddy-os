@@ -858,3 +858,13 @@ both failure and successful evidence from ADR-0086; no test result was relabeled
   completed-result resume later refused as well. No build restart or input change.
 - Original raw refusal: 79b51dcd1db3b11eeb1dd48e58488f9fca344d15acf57dd5138a62fde0a1c6ef.
   Final evidence is in ADR-0089.
+
+### 2026-11-07 — Isolated standard-result test module import
+
+- Symptom: the new ordered-dispatch test raised ModuleNotFoundError for
+  db_standard_progress when run by itself.
+- Cause: importlib loaded the tested file by absolute path without adding its
+  sibling module directory; broader discovery could hide the missing setup.
+- Correction: the test module explicitly adds scripts/build to its import path.
+- Verification: all four isolated result tests and all 173 repository checks
+  pass. No native assertions or expected failure cases were removed.

@@ -761,3 +761,18 @@ archive paths differ among 10,207 inputs; actual native ar confirms identical
 member names/order and all 252/266 member payloads. Preserved the differing raw
 archives and recorded evidence in ADR-0089; no whole-build byte-identity claim
 or full-suite acceptance was inferred.
+
+### 2026-11-07 10:55 UTC — Separate fresh and historical standard provenance
+
+The preceding turn rebuilt native inputs and verified actual provenance/archive
+comparisons; it was progress. This turn factors common result checks while
+preserving the historical seed and adds explicit fresh compile/input binding,
+strict raw-zero success and complete ordered dispatch. Actual native fresh-build
+verification and five premature/mismatched result refusals passed; historical
+coverage custody still verifies unchanged. No full qualification or source
+metadata was changed. Fixed an isolated test import-path error; 173 checks pass.
+
+The actual full suite progressed to recovery's rbtree variant, Recd001.f, zero
+FAIL and no exits. Case numbering restarts per method. Portable failed-summary
+coverage/qualification and normal fresh dispatcher integration remain the next
+independent slice; complete native positive acceptance is still pending.

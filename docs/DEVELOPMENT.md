@@ -197,3 +197,10 @@ prepared binary bytes without the historical recovery seed. The retained build
 is complete; do not restart it or launch its prepared suite. The normal fresh
 full runner/coverage/qualification integration remains the next implementation
 slice while the existing full corrected producer finishes.
+
+ADR-0090 shares execution checks while retaining distinct mandatory provenance:
+historical recovery still requires its measured seed; the fresh standard result
+requires the verified native-build/prepared-input binding. Actual unfinished/
+wrong-generation refusals and historical coverage custody passed. Complete
+positive validation is still pending; portable failed-summary coverage and the
+normal private fresh-dispatch/production integration remain required work.

@@ -1568,3 +1568,16 @@ and no duplicate complete suite was started.
 At 10:46 UTC the existing corrected full driver was live in recovery 25/27,
 Recd011.b, zero FAIL and no terminal exits. H07 remains 124/126; the normal fresh
 full-run/coverage/qualification integration and production/APT acceptance remain.
+
+## Fresh complete-result provenance boundary
+
+ADR-0090 adds the explicit fresh native-build binding while preserving the old
+recovery-seed gate. Actual private verification passed five premature/mismatched
+result refusals, retained full/fresh source metadata, and reverified historical
+coverage custody. No full result was accepted and no new suite was launched.
+173 local checks pass; complete positive/fresh failed-summary handling remains.
+
+At 10:55 UTC the full driver remained live in recovery 25/27, now Recd001.f in
+the rbtree variant, with zero FAIL and no terminal exits. Recovery case numbers
+restart for each method; this is not a return to the beginning of run_std.
+H07 is still 124/126; production, APT and final closure remain pending.
