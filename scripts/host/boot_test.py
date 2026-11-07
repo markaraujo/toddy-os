@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import tempfile
 import uuid
+import zlib
 
 import vm
 
@@ -69,7 +70,7 @@ def read_checkpoint(folder, name):
     return data, folder / data['disks']['target']['file']
 
 
-def qemu_arguments(firmware, payloads):
+def qemu_arguments(firmware, payloads, regressions=False):
     if firmware not in {'bios', 'uefi'}:
         raise ValueError('Unsupported firmware mode')
     arguments = ['qemu-system-x86_64', '-enable-kvm', '-machine', 'q35',
@@ -83,8 +84,9 @@ def qemu_arguments(firmware, payloads):
     if firmware == 'uefi':
         arguments += ['-drive', f'if=pflash,format=raw,readonly=on,file={CODE}',
                       '-drive', 'if=pflash,format=raw,file=/work/OVMF_VARS.fd']
-    if set(payloads) != set(PAYLOADS):
-        raise ValueError('Expected only the three versioned public test payloads')
+    expected = set(PAYLOADS) | ({'toddy.boot-common'} if regressions else set())
+    if set(payloads) != expected:
+        raise ValueError('Expected only the selected versioned public test payloads')
     for name, contents in sorted(payloads.items()):
         encoded = base64.b64encode(contents).decode('ascii')
         if len(encoded) > 16384:
@@ -115,6 +117,31 @@ def parse_report(serial, firmware):
     return report
 
 
+def decode_regressions(serial):
+    chunks, summaries = {}, []
+    for line in serial.splitlines():
+        if 'TODDY_NATIVE_REGRESSIONS_DATA ' in line:
+            index, value = line.split('TODDY_NATIVE_REGRESSIONS_DATA ', 1)[1].split(' ', 1)
+            index = int(index)
+            if index in chunks and chunks[index] != value:
+                raise ValueError('Conflicting native evidence chunk')
+            chunks[index] = value
+        if 'TODDY_NATIVE_REGRESSIONS_RESULT ' in line:
+            summaries.append(json.loads(line.split('TODDY_NATIVE_REGRESSIONS_RESULT ', 1)[1]))
+    if not summaries or any(row != summaries[0] for row in summaries):
+        raise ValueError('Missing or inconsistent native regression summary')
+    summary = summaries[0]
+    if set(chunks) != set(range(summary['chunks'])):
+        raise ValueError('Incomplete native raw evidence stream')
+    compressed = base64.b64decode(''.join(chunks[i] for i in range(len(chunks))), validate=True)
+    decoder = zlib.decompressobj()
+    raw = decoder.decompress(compressed, 64 * 1024**2 + 1)
+    if (len(raw) > 64 * 1024**2 or not decoder.eof or decoder.unused_data
+            or hashlib.sha256(raw).hexdigest() != summary['report_sha256']):
+        raise ValueError('Corrupted or oversized native evidence stream')
+    return json.loads(raw), summary
+
+
 def stop_owned_container(cid, run_id):
     inspection = json.loads(subprocess.check_output(['docker', 'inspect', cid], text=True))[0]
     if (inspection['Config'].get('Labels') or {}).get('toddy.boot-test') != run_id:
@@ -133,15 +160,18 @@ def refuse_running_tests():
         raise ValueError('A native boot test is still running; inspect its existing handle instead of restarting')
 
 
-def prerequisites():
+def prerequisites(regressions=False):
     states = {item['id']: item['status'] for item in json.loads((ROOT / 'status.json').read_text())['milestones']}
-    if states['H08'] != 'completed' or states['H09'] != 'in_progress':
+    if regressions:
+        if (states['H09'], states['H11'], states['H12']) != ('completed', 'completed', 'in_progress'):
+            raise ValueError('Native regression tests require completed H09/H11 and active H12')
+    elif states['H08'] != 'completed' or states['H09'] != 'in_progress':
         raise ValueError('Native boot tests require H08 completed and H09 in_progress')
     if subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True).strip():
         raise ValueError('Commit reviewed inputs before native boot testing')
     source = '''from pathlib import Path
 import json,subprocess
-subprocess.run(['python3','/opt/toddy-build/scripts/build/h09/require_gate.py'],check=True)
+GATE_CHECK
 records={}
 for step in ('kernel','boot-config','bootloader'):
  record=json.loads((Path('/var/log/toddy/build')/('h09-'+step+'.success.json')).read_text())
@@ -149,6 +179,9 @@ for step in ('kernel','boot-config','bootloader'):
  records[step]=record
 print(json.dumps(records))
 '''
+    gate = ("subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)"
+            if regressions else "subprocess.run(['python3','/opt/toddy-build/scripts/build/h09/require_gate.py'],check=True)")
+    source = source.replace('GATE_CHECK', gate)
     output = subprocess.check_output(vm.ssh_args() + ['python3 -c ' + shlex.quote(source)], text=True)
     return json.loads(output)
 
@@ -158,10 +191,11 @@ def main():
     parser.add_argument('firmware', choices=['bios', 'uefi'])
     parser.add_argument('--checkpoint', required=True)
     parser.add_argument('--timeout', type=int, default=300)
+    parser.add_argument('--regressions', action='store_true', help='H12-only native namespace/libc follow-up profile')
     args = parser.parse_args()
     if not 60 <= args.timeout <= 900:
         raise ValueError('Boot timeout must be between 60 and 900 seconds')
-    accepted = prerequisites()
+    accepted = prerequisites(args.regressions)
     checkpoint, source = read_checkpoint(vm.VM / 'checkpoints', args.checkpoint)
     lock = os.open(vm.VM / 'native-boot-test.lock', os.O_CREAT | os.O_RDWR | os.O_NOFOLLOW | os.O_CLOEXEC, 0o600)
     # Hold this descriptor until process exit; a crash releases the flock, while
@@ -228,11 +262,16 @@ def main():
                     stdout=log, stderr=subprocess.STDOUT)
                 if digest(work / 'OVMF_VARS.fd') != FIRMWARE_HASHES[VARS]:
                     raise ValueError('Private UEFI variable template differs')
-        payloads = {key: (ROOT / 'scripts/host' / filename).read_bytes() for key, filename in PAYLOADS.items()}
+        payload_files = dict(PAYLOADS)
+        if args.regressions:
+            payload_files.update({'systemd.extra-unit.toddy-boot-probe.service': 'native-regression.service',
+                                  'toddy.boot-probe': 'native-regression.py', 'toddy.boot-common': 'boot-probe.py'})
+        payloads = {key: (ROOT / 'scripts/host' / filename).read_bytes() for key, filename in payload_files.items()}
+        state['native_regression_profile'] = args.regressions
         state['payload_sha256'] = {key: hashlib.sha256(value).hexdigest() for key, value in payloads.items()}
         command = ['docker', 'create', '--name', name, '--label', 'toddy.boot-test=' + run_id,
                    *docker_base, '--device', '/dev/kvm', '--group-add', str(Path('/dev/kvm').stat().st_gid),
-                   '--memory', '3g', '--cpus', '2', image, *qemu_arguments(args.firmware, payloads)]
+                   '--memory', '3g', '--cpus', '2', image, *qemu_arguments(args.firmware, payloads, args.regressions)]
         cid = subprocess.check_output(command, text=True).strip()
         state.update(container_id=cid, phase='running')
         save()
@@ -246,6 +285,14 @@ def main():
         if inspection['State']['Running'] or inspection['State']['ExitCode'] != 0:
             raise ValueError('QEMU did not exit cleanly')
         state['native_report'] = parse_report((work / 'serial.log').read_text(errors='replace'), args.firmware)
+        if args.regressions:
+            regression, summary = decode_regressions((work / 'serial.log').read_text(errors='replace'))
+            (work / 'native-regressions.json').write_text(json.dumps(regression, indent=2) + '\n')
+            state['regression_summary'] = summary
+            if (regression.get('complete') is not True or summary.get('tests') != 50
+                    or summary.get('passed') != 50 or len(regression.get('results', [])) != 50
+                    or any(row.get('passed') is not True for row in regression['results'])):
+                raise ValueError('Native regression cases did not all pass; inspect retained raw evidence')
         if digest(source) != expected:
             raise ValueError('Cold backing checkpoint changed during boot test')
         state.update(phase='passed', checkpoint_unchanged=True)

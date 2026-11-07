@@ -1650,3 +1650,30 @@ the accepted bootable kernel/loader base. Source archives, package archives,
 failed image generations, raw test evidence and all other checkpoints remain.
 See docs/evidence/H11-checkpoint-retention.json for the exact retained hashes,
 removed filenames and measured available space. No physical disk was touched.
+
+### H12 native namespace follow-up profile (prepared, not yet accepted)
+
+After H11 is completed and H12 is in_progress, the existing cold-overlay
+harness accepts `python3 scripts/host/boot_test.py bios --checkpoint
+h09-boot-ready --timeout 900 --regressions`. Its separate gate does not reopen
+H09 or bypass the final-ISO matrix. The accepted disk image is read-only;
+all writes occur in a fresh labelled test overlay. Native root/serial/QEMU,
+C and Kmod guards run before any test writes.
+
+The public regression payload selects the 48 original Glibc unsupported cases
+whose preserved outputs identify namespace restrictions, adds io/tst-lchmod,
+and runs Systemd test-namespace. It follows frozen Glibc Makefile's documented
+`make test t=SUBDIR/TEST` target. Each process group has a timeout, original
+outputs and command logs are retained, and progress.json records each completed
+case. No commands from diagnostic output are executed and no host/global
+security workaround is applied. Expected count is 50 total cases; an unsupported,
+failed, timed-out or missing result cannot become a pass.
+
+The guest emits checksummed compressed raw results in numbered serial chunks.
+The host retains both the entire serial log and decoded native-regressions.json;
+missing/conflicting/corrupt chunks fail acceptance. If the guest stops before
+export, preserve its writable overlay and the reported /var/tmp workspace rather
+than discarding the only raw logs. The source core-binary hashes in the native
+report must also match the final-image manifest during H12 acceptance. This
+cold-disk test supplies kernel/libc/Systemd follow-up evidence, not final ISO
+boot, login, persistence or recovery acceptance.

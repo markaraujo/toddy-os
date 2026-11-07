@@ -84,3 +84,30 @@ class BootTestSafety(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class NativeEvidenceStream(unittest.TestCase):
+    def stream(self):
+        import base64, hashlib, json, zlib
+        raw=json.dumps({'complete': False, 'results': [{'test':'native-case','exit':1}]}).encode()
+        data=base64.b64encode(zlib.compress(raw)).decode()
+        summary={'chunks':1,'report_sha256':hashlib.sha256(raw).hexdigest()}
+        return 'TODDY_NATIVE_REGRESSIONS_DATA 0 '+data+'\nTODDY_NATIVE_REGRESSIONS_RESULT '+json.dumps(summary)+'\n'
+
+    def test_raw_failure_evidence_is_decoded_without_becoming_acceptance(self):
+        report, summary=boot.decode_regressions(self.stream())
+        self.assertIs(report['complete'],False)
+        self.assertEqual(report['results'][0]['exit'],1)
+
+    def test_missing_conflicting_and_corrupted_chunks_are_rejected(self):
+        stream=self.stream()
+        missing=stream.split('\n',1)[1]
+        conflicting=stream+'TODDY_NATIVE_REGRESSIONS_DATA 0 ZmFrZQ==\n'
+        import json
+        line=stream.splitlines()[-1]
+        summary=json.loads(line.split('TODDY_NATIVE_REGRESSIONS_RESULT ',1)[1])
+        summary['report_sha256']='0'*64
+        corrupted=stream.splitlines()[0]+'\nTODDY_NATIVE_REGRESSIONS_RESULT '+json.dumps(summary)+'\n'
+        for case in (missing,conflicting,corrupted):
+            with self.subTest(case=case),self.assertRaises(ValueError):
+                boot.decode_regressions(case)
