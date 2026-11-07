@@ -160,3 +160,7 @@ References checked 2026-11-07: [JSON Schema draft 2020-12 core](https://json-sch
 (schema dialect, not a guest dependency lock). D-Bus signature details must be
 verified against the actual GIO/D-Bus target during B01; no current-target transport
 proof is inferred from this document.
+
+Retention, session shutdown, capability mismatch and cost/diagnostic defaults follow
+[the operational review](PHASE-2-OPERATIONAL-PREWORK.md). Minimal operation metadata
+is separate from optional conversation history; do not silently expire unknown work.

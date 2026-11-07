@@ -1283,3 +1283,13 @@ config cases. Checked ownership overlaps, input references, offline dependencies
 choice defaults and fixture reconnect consistency. make check passed 197 tests
 in 0.212 seconds; no guest runtime proof, build or paid provider/model use occurred.
 B stories remain unstarted and owner guest continuation remains false.
+
+
+## 2026-11-07 — Additional operational prework review
+
+Identified six remaining design ambiguities: safety metadata versus chat history,
+session/power lifecycle, unknown provider costs, deferred download trust/network
+behavior, version/capability mismatch and opt-in sanitized diagnostics. Selected
+concrete defaults in PHASE-2-OPERATIONAL-PREWORK.md and linked owning stories.
+Reuse existing smoke gates; no new framework/milestone or expensive matrix.
+No guest implementation or runtime acceptance is claimed.

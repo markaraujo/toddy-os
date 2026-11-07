@@ -90,3 +90,6 @@ remain in B01 and owning stories; these inputs do not authorize guest start.
 Offline installs the desktop plus lightweight setup; agent components can be
 acquired later without reinstalling the OS. The setup UI has no mandatory agent
 backend dependency.
+
+Additional review: [six operational findings and selected defaults](PHASE-2-OPERATIONAL-PREWORK.md)
+cover storage, sessions, cost, downloads, compatibility and diagnostics.
