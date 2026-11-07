@@ -1,5 +1,6 @@
 """Prevent publishing private working files or broken relative source links."""
 import importlib.util
+import hashlib
 import sys
 import unittest
 from pathlib import Path
@@ -32,6 +33,9 @@ class PublicExport(unittest.TestCase):
         self.assertNotIn('href="../', content)
         self.assertNotIn("/home/", content)
         self.assertIn("https://github.com/markaraujo/toddy-os/blob/main/PRD.md", content)
+        # The HTML must request the CSS corresponding to this exact deployment.
+        digest = hashlib.sha256((ROOT / "dashboard/site.css").read_bytes()).hexdigest()[:12]
+        self.assertIn(f'href="site.css?v={digest}"', content)
 
     def test_export_refuses_checkout_or_other_destination(self):
         with self.assertRaises(ValueError):

@@ -1116,3 +1116,12 @@ Focused desktop/mobile/keyboard/localization/fallback browser checks passed,
 along with the 184 existing local checks (0.185 seconds); see website-mascot-yawn
 in evidence. The owner handles Patreon for now; no financial profile was changed
 and the broken PayPal CTA remains disabled. No OS story acceptance is claimed.
+
+## 2026-11-07 — Correct translated mobile hero clipping
+
+Reproduced the owner's public layout issue with Playwright: Portuguese hero
+content exceeded the mobile grid and was clipped even though document scroll
+width appeared correct. Corrected track minimums, fluid heading sizing and
+translation wrapping. Added deterministic CSS/JS URL versions to the public
+export. Thirty viewport/language combinations and image/yawn checks passed;
+see evidence/website-responsive-fix.md. No guest development was started.

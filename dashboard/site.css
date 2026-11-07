@@ -90,11 +90,14 @@ html {
 .hero-inner {
     max-width: 1280px;
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
     margin: auto;
     gap: 30px;
     padding: 70px 36px 58px;
     align-items: center;
+}
+.hero-inner > * {
+    min-width: 0;
 }
 .status-dot {
     display: inline-block;
@@ -620,7 +623,7 @@ h2 {
     }
     .hero-inner {
         padding: 50px 28px;
-        grid-template-columns: 1.15fr 1fr;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
     }
     .hero h1 {
         font-size: 70px;
@@ -694,12 +697,12 @@ h2 {
         display: none;
     }
     .hero-inner {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         padding: 40px 22px 30px;
         gap: 15px;
     }
     .hero h1 {
-        font-size: 67px;
+        font-size: clamp(42px, 13vw, 67px);
         letter-spacing: -3.7px;
     }
     .hero .eyebrow {
@@ -998,7 +1001,7 @@ html[lang="ru"] .hero h1 {
     letter-spacing: -0.035em;
 }
 html:not([lang="en"]) .hero h1 {
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 .technical-note {
     font-size: 10px;
@@ -1019,9 +1022,6 @@ html:not([lang="en"]) .hero h1 {
     }
     .site-header nav a[href="#progress"] {
         display: none;
-    }
-    html[lang="ru"] .hero h1 {
-        font-size: 48px;
     }
     .experience-screen figcaption a {
         white-space: normal;

@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Export an explicit public page/design allowlist; never publish the checkout."""
 import argparse
+import hashlib
 import json
+import posixpath
+import re
 import shutil
 from pathlib import Path
 
@@ -31,6 +34,19 @@ def public_links(content):
     return content.replace('href="../', f'href="{REPO_URL}')
 
 
+def version_resources(content, relative, sources):
+    """Keep a refreshed page from reusing incompatible cached CSS or JavaScript."""
+    def replace(match):
+        attribute, url = match.groups()
+        key = posixpath.normpath(posixpath.join(posixpath.dirname(relative), url))
+        source = sources.get(key)
+        if source is None:
+            return match.group(0)
+        digest = hashlib.sha256(source.read_bytes()).hexdigest()[:12]
+        return f'{attribute}="{url}?v={digest}"'
+    return re.sub(r'(href|src)="([^"?]+\.(?:css|js))"', replace, content)
+
+
 def export(destination):
     destination = destination.resolve()
     if destination != ROOT / "_site":
@@ -48,7 +64,7 @@ def export(destination):
     if destination.exists():
         shutil.rmtree(destination)
     destination.mkdir(parents=True)
-    (destination / "index.html").write_text(page)
+    (destination / "index.html").write_text(version_resources(page, "index.html", sources))
     (destination / ".nojekyll").write_text("")
     for relative, source in sources.items():
         target = destination / relative
@@ -57,7 +73,7 @@ def export(destination):
             # The UI pages keep their ../assets paths because they live under ui/.
             content = source.read_text().replace('href="../dashboard/index.html"', 'href="../index.html"')
             content = content.replace('href="../docs/', f'href="{REPO_URL}docs/')
-            target.write_text(content)
+            target.write_text(version_resources(content, relative, sources))
         else:
             shutil.copy2(source, target)
     return destination
