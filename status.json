@@ -469,7 +469,7 @@
     {
       "id": "B12",
       "phase": "agentic",
-      "title": "Deliver guided installation and optional AI, apps and drivers",
+      "title": "Deliver guided offline installation and optional software setup",
       "weight": 9,
       "status": "not_started",
       "depends_on": [

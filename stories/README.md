@@ -28,5 +28,5 @@ status.json is the source of truth. Each product phase has 100 weighted points. 
 | B09 | agentic | 5 | [Deliver optional push-to-talk and spoken Toddy responses](B09.md) |
 | B10 | agentic | 6 | [Deliver a bounded plugin interface and one MCP integration](B10.md) |
 | B11 | agentic | 8 | [Integrate the navy brand and nerdy Toddy installer scenes](B11.md) |
-| B12 | agentic | 9 | [Deliver guided installation and optional AI, apps and drivers](B12.md) |
+| B12 | agentic | 9 | [Deliver guided offline installation and optional software setup](B12.md) |
 | B13 | agentic | 5 | [Deliver the basic-tested experimental owner preview and G2](B13.md) |

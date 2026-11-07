@@ -30,6 +30,13 @@ owner approval after foundation review. Physical hardware validation is pending;
 the project remains experimental until a genuine accepted 1.0 release.
 [Current status](STATUS.md) records what has actually passed.
 
+The planned offline installation includes the basic desktop and a lightweight
+setup entry. Add agent components and choose local/API AI later without
+reinstalling. This describes Phase 2, not the current foundation ISO.
+The [development handoff](docs/DEVELOPMENT.md),
+[implementation plan](docs/PHASE-2-PLAN.md) and
+[prepared contracts](docs/PHASE-2-PREWORK.md) are the starting points for contributors.
+
 ## A look at the planned desktop
 
 These are **design concepts, not screenshots of a running release**. Click an

@@ -1344,3 +1344,22 @@ Linked graphical stories to a scoped interaction checklist; no full UI rerun for
 unchanged backend code. Selected paged history/bounded rendering and a short
 reading map to avoid repeated whole-plan review. Native timings/proofs remain
 pending guest implementation; no runtime acceptance/approval was created.
+
+
+## 2026-11-07 — Documentation and public-portal synchronization
+
+Checked current docs, handoff, status, story titles and portal against the final
+Phase 2 decisions. Updated README/continuation/decision index, clarified historical
+H-driver instructions, and synchronized offline/later-assistant copy in all six
+portal locales. Renamed B12 to guided offline installation/optional software setup
+to remove the misleading implication that installation itself needs an LLM.
+The native installer is deterministic; no internet or AI is needed for base install.
+No release version, asset bytes, guest approval or acceptance states changed.
+
+
+Portal Phase 2 copy review additionally clarified Stop versus rollback, separate
+customization/permissions, verified optional IDE packaging and deterministic
+offline installation. EN plus five translations are synchronized. make dashboard/
+site/check and JavaScript syntax checks passed (198 tests). CUA inventory worked
+but binding the existing portal tab failed with a tool timeoutMs error; no fresh
+visual browser inspection is claimed. Deployment/served-file verification follows.

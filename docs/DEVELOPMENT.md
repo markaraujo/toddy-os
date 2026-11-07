@@ -41,6 +41,12 @@ agent session; private running-job details stay outside Git.
 Reusable [prework inputs](PHASE-2-PREWORK.md) now cover native branding, stable
 identity/icon roles, bilingual semantic scenarios and accepted dependency reuse.
 Read these before creating duplicate assets, strings, packages or build tooling.
+The latest [readiness review](PHASE-2-READINESS-REVIEW.md) closes the integrated
+planning review and supplies a short reading map. [ADR-0110](adr/0110-isolated-package-builds-and-change-based-validation.md)
+selects qualified isolated/staged builds and change-based validation. Offline
+base setup works with agent components absent; later acquisition requires no OS
+reinstallation. Native dependencies, UI timings and runtime gates remain unproved
+until guest implementation. Do not restart plan reviews without a concrete new gap.
 
 ## Small delivery loop
 
@@ -96,7 +102,7 @@ Before stopping, persist current task, exact failed step, checkpoint, command ex
 
 Use a feature branch for implementation, focused commits and pull requests where practical. No force push or history rewriting without a reason. The owner authorized a public repository and GitHub Pages dashboard on 2026-11-05. Publish only the dashboard export, not arbitrary runtime/build directories. Preserve secrets and finish the licensing decision before distributing licensed release artifacts. Development context lives in the committed repository files; workstation RAG is excluded by owner decision.
 
-## Pre-start audit (2026-11-05)
+## Historical pre-start audit (2026-11-05)
 
 A read-only snapshot found an x86_64 AMD Ryzen 9 5900XT with 32 logical CPUs, about 30 GiB RAM (20 GiB available), about 758 GiB available on the repository filesystem, and readable/writable /dev/kvm in the current session. This is not a completed H01 or a successful guest boot.
 
@@ -120,12 +126,17 @@ Current Phase 2 work follows the authorization scope at the top of this handoff;
 
 Live URL: https://markaraujo.github.io/toddy-os/
 
-A single repository is authoritative. Run make dashboard, commit status.json and generated files, then push validated changes to main. The GitHub Pages workflow checks the planning state, exports an allowlisted static site and deploys it automatically. Feature branches do not deploy. The site links story/PRD details to the same GitHub repository, and includes only the dashboard and its mascot asset. No second repository, cross-repository key or provider account is required.
+A single repository is authoritative. Run make dashboard, commit status.json and generated files, then push validated changes to main. The GitHub Pages workflow checks the planning state, exports an allowlisted static site and deploys it automatically. Feature branches do not deploy. The site links story/PRD details to the same GitHub repository, and includes the allowlisted portal, supporter page, design previews and their declared assets. No second repository, cross-repository key or provider account is required.
 
 Use make site for a local export into ignored _site/. All site data is public; never include credentials, local logs, personal memory or machine-specific secret configuration in status data. A dashboard reflects the last published commit, not uncommitted filesystem changes or a live process monitor.
 
 
 ## Historical H07 driver and audit sequence
+
+Archive only: H13/G1 are completed. The counts, commands and running-state notes
+below describe prior attempts, not the next action. Use the current continuation
+card and accepted H13 evidence; do not run these historical drivers on resume.
+
 
 Use actual runner markers, driver exit files and docs/RECOVERY.md, not a
 historical journal count, to select work. Current accepted boundary is 124

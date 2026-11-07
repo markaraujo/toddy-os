@@ -5,6 +5,10 @@ Date: 2026-11-07. Selected behavior, not available packages. Machine-readable
 versions, sizes, license terms and hardware compatibility must come from the
 verified package/artifact catalog, never hard-coded promotional claims.
 
+The installer is deterministic native software. It does not use an LLM to decide
+partitions, execute installation steps or work offline. Optional assistant setup
+is a separate software choice; absent connectivity never creates an AI requirement.
+
 ## Default installation
 
 Minimal GNOME/Wayland, Firefox, files, terminal, simple editor, settings, essential
