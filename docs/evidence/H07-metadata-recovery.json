@@ -1,0 +1,23 @@
+{
+  "recovered": {
+    "gcc": {
+      "version": "16.2.0-1+toddy2",
+      "complete": true,
+      "depends": "gcc-runtime (= 16.2.0-1+toddy1), glibc (>= 2.44-1), gmp, mpfr, mpc, zlib, zstd, bash (>= 5.3-1)",
+      "receipt_sha256": "902881f8533dfacc8531b726afc034c4ebc3e93d4bda54419d969f7f578fe7b9",
+      "unchanged_original_payload": "/usr/bin/gcc",
+      "payload_sha256": "264405a10944e4e3c6976cdcdffdfed989f01c30fbd4f45869acdc0f33d1f916"
+    },
+    "glibc-locales": {
+      "version": "2.44-1+toddy2",
+      "complete": true,
+      "depends": "glibc (= 2.44-1+toddy1)",
+      "receipt_sha256": "182c02f5b61d3cd9104974c631a9b93f6270b8e27eb93673ddee194cbe20271c",
+      "unchanged_original_payload": "/usr/lib/locale/locale-archive",
+      "payload_sha256": "0773d6cb1d99299c734757f50e4d18937d5e2233d582e73325c385bdaf209e46"
+    }
+  },
+  "failed_locale_record_still_unaccepted": true,
+  "observed_at": "2026-11-07T11:39:09.673278+00:00",
+  "scope": "Exact metadata dependency recovery only; full closure and directory reconciliation pending."
+}

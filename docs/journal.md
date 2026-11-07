@@ -835,3 +835,13 @@ extraction corrected the cause under the same ownership policy; CMake's revised
 archive/install passed and closure advanced to GCC (30/126 complete). Existing
 directory owner retention was separately measured; final explicit reviewed
 build-directory reconciliation is prepared and awaits the serial closure.
+
+### 2026-11-07 — Recover exact dependencies without changing compiled payloads
+
+Closure exposed stale equality pins at Glibc-locales and GCC. Preserved the failed
+unconfigured locale generation, implemented provider ordering and same-baseline
+exact-pin retargeting, and verified native new revisions +toddy2 configure
+successfully. Actual GCC executable and locale archive hashes remain identical
+to their original accepted builds; the failed locale record remains unaccepted.
+177 local tests pass. Serial closure continued to 43/126 current receipts and
+will run the prepared directory identity reconciliation and eight final audits.

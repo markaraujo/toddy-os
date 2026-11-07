@@ -1547,3 +1547,20 @@ pid/exit files. Its earlier failed exit was preserved as
 /var/log/toddy/h07-focused-final-base-launch.exit. Do not repeat compilation.
 Continue from actual Python-alias/quarantine/metadata/audit results; checkpoint
 is still pending. See H07-focused-apt.json for actual sandbox/repository evidence.
+
+Current closure retry is driver 39301, launch log
+/var/log/toddy/h07-exact-final-closure-launch.log. Earlier numeric retry exit is
+preserved in h07-numeric-final-closure-launch.exit. Exact-pin recovery passed:
+GCC and Glibc-locales +toddy2 are configured against the current exact provider
+revisions, with original compiler/locale payload bytes unchanged. Their failed
+or earlier generations remain retained. The updater now uses provider-first
+ordering, refuses baseline changes and writes generation-specific stages.
+There were 43 complete current metadata receipts at the latest observation.
+
+The deployed current closure recipe also invokes final reviewed build-directory
+reconciliation before eight audits. Do not dispatch its standalone recovery
+recipe while closure is active. If interrupted during directory changes, retain
+its directory-ownership.intent.json and inspect every planned before/after
+identity before resuming; never remove the receipt to conceal an unknown change.
+Full closure acceptance, the final package export and cold paired checkpoint
+remain pending. H07 must not be marked complete from the package count alone.

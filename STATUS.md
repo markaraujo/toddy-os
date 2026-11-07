@@ -16,22 +16,22 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 11:33 UTC
+Last verified: 2026-11-07 11:39 UTC
 
 Verified:
 
-- 126/126 planned H07 packages installed, configured and accepted. Owner-approved focused Berkeley production/recovery and actual installed APT unit/repository/HTTPS/sandbox/cache tests passed.
+- All 126 original package build/runtime gates passed, including focused Berkeley and installed APT integration. Final metadata/configuration consistency is being closed separately.
 - Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 - Independent Linux 7.1.8 native build and BIOS/UEFI diagnostic boots passed, including actual module insertion/removal and namespace creation; no final kernel package, full foundation boot or ISO acceptance.
 
-Running: All 126 package gates passed; owned Python alias and quarantine of 931 bootstrap paths passed. Metadata closure driver 34804 has completed 30/126 generations and is upgrading GCC metadata. Corrected numeric archive ownership after the CMake guard refused a mapped service UID (ADR-0094); final audits, reviewed directory reconciliation and cold checkpoint remain.
+Running: Metadata closure driver 39301 has completed 43/126 current generations. Exact GCC/GCC-runtime and Glibc-locales/Glibc pins were recovered without changing source-built payload bytes (ADR-0095); both packages are configured. Numeric ownership correction passed CMake. Remaining metadata, reviewed directory reconciliation, eight final audits and the cold checkpoint are pending.
 
 Remaining:
 
 - Finish remaining metadata generations; reconcile only verified build-owned directories against reviewed package identities.
-- Pass seven final audits and Dpkg/APT consistency checks; diagnose any real findings.
+- Pass eight final audits including recorded directory identities, plus Dpkg/APT consistency checks; diagnose real findings.
 - Save final H07 evidence and verified paired cold checkpoint before accepting the story.
 
 [Acceptance evidence](docs/evidence/H07-progress.md)

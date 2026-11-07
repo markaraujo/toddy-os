@@ -32,6 +32,37 @@ def ensure_python_command_alias(stage):
     alias.symlink_to('python3')
 
 
+EXACT_DEPENDENCY=re.compile(r'(?P<name>[a-z0-9][a-z0-9+.-]*)\s*\(\s*=\s*(?P<version>[^\s)]+)\s*\)')
+
+
+def metadata_baseline(version):
+    return re.sub(r'\+toddy[1-9][0-9]*$','',version)
+
+
+def retarget_exact_dependencies(depends,packages):
+    def replace(match):
+        name=match['name']
+        if name not in packages:raise ValueError('Missing exact-version provider: '+name)
+        actual=packages[name][0]
+        if metadata_baseline(actual)!=metadata_baseline(match['version']):
+            raise ValueError('Exact dependency crosses frozen source version: '+name)
+        return name+' (= '+actual+')'
+    return EXACT_DEPENDENCY.sub(replace,depends)
+
+
+def exact_dependency_order(packages):
+    ordered=[];visiting=set();done=set()
+    def visit(name):
+        if name in done:return
+        if name in visiting:raise ValueError('Cyclic exact-version metadata dependencies')
+        if name not in packages:raise ValueError('Missing exact-version provider: '+name)
+        visiting.add(name)
+        for match in EXACT_DEPENDENCY.finditer(packages[name][2]):visit(match['name'])
+        visiting.remove(name);done.add(name);ordered.append(name)
+    for name in sorted(packages):visit(name)
+    return ordered
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--only',action='append',default=[])
@@ -43,10 +74,12 @@ def main():
     policy_sha256=digest(ROOT/'config/native-package-metadata.json')
     additions={r['package']:set(r['add_depends']) for r in plan['packages']}
     output=backend.run('dpkg-query','-W','-f=${Package}\t${Version}\t${Architecture}\t${Status}\t${Depends}\n',capture_output=True,text=True).stdout
-    packages={}
+    packages={}; package_states={}
     for line in output.splitlines():
         name,version,arch,status,depends=line.split('\t')
-        if status=='install ok installed':packages[name]=(version,arch,depends)
+        if status not in ('install ok installed','install ok unpacked'):
+            raise SystemExit('Unreviewed package state before closure: '+name+' '+status)
+        packages[name]=(version,arch,depends);package_states[name]=status
     destination=TARGET/'sources/evidence/h07-metadata-closure'
     destination.mkdir(parents=True,exist_ok=True)
     # Include source-built additions accepted after the earlier 101-package
@@ -72,13 +105,29 @@ def main():
     (destination/'derived-provider-edges.json').write_text(json.dumps({name:sorted(providers) for name,providers in sorted(additions.items())},indent=2)+'\n')
     if set(args.only)-packages.keys():raise SystemExit('Requested package is not installed')
     progress=destination/'packages';progress.mkdir(exist_ok=True)
-    for name,(version,arch,depends) in sorted(packages.items()):
+    for name in exact_dependency_order(packages):
+        version,arch,depends=packages[name]
         if args.only and name not in args.only:continue
         archive=CACHE/f'{name}_{version}_{arch}.deb'
         record_path=RECORDS/(archive.stem+'.json')
         record=json.loads(record_path.read_text())
-        if not record['installed'] or digest(archive)!=record['archive_sha256']:
+        if digest(archive)!=record['archive_sha256']:
             raise SystemExit('Predecessor provenance mismatch')
+        if not record['installed']:
+            pending=json.loads((progress/(name+'.json')).read_text())
+            predecessor=RECORDS/f'{name}_{pending["previous_version"]}_{arch}.json'
+            if (package_states[name]!='install ok unpacked' or pending.get('complete') is not False or
+                    pending['version']!=version or digest(predecessor)!=pending['predecessor_record_sha256'] or
+                    not json.loads(predecessor.read_text())['installed']):
+                raise SystemExit('Unreviewed partial metadata installation')
+            # Recovery may use a failed own archive only if its unpacked bytes
+            # still match; the failed record remains installed=False forever.
+            for virtual,row in record['payload'].items():
+                if row.get('directory'):continue
+                path=TARGET/virtual.lstrip('/')
+                if 'symlink' in row:
+                    if not path.is_symlink() or path.readlink().as_posix()!=row['symlink']:raise SystemExit('Partial payload link changed')
+                elif path.is_symlink() or digest(path)!=row['sha256']:raise SystemExit('Partial payload bytes changed')
         packlists=[p for p in record['payload'] if p.endswith('/.packlist')] if name.startswith('perl-') else []
         for virtual in packlists:
             if digest(TARGET/virtual.lstrip('/'))!=record['payload'][virtual]['sha256']:
@@ -88,7 +137,7 @@ def main():
         previous_result=progress/(name+'.json')
         previous=json.loads(previous_result.read_text()) if previous_result.exists() else {}
         declared_now=set(re.findall(r'(?:^|[,|])\s*([a-z0-9][a-z0-9+.-]*)',depends))
-        if revision and not packlist_changes and previous.get('complete') and previous.get('version')==version and previous.get('metadata_policy_sha256')==policy_sha256 and set(additions.get(name,[]))<=declared_now:
+        if revision and not packlist_changes and previous.get('complete') and previous.get('version')==version and previous.get('metadata_policy_sha256')==policy_sha256 and set(additions.get(name,[]))<=declared_now and retarget_exact_dependencies(depends,packages)==depends:
             continue
         conffiles=sorted(p for p,e in record['payload'].items() if p.startswith('/etc/') and e.get('sha256'))
         libtool=sorted(p for p,e in record['payload'].items() if p.startswith(('/usr/lib/','/usr/libexec/')) and p.endswith('.la') and e.get('sha256'))
@@ -99,7 +148,8 @@ def main():
                 raise SystemExit('Modified shared install journal needs preservation/review')
         # Current target metadata must be complete and consistent even for packages
         # without new ELF edges, so create one recorded metadata generation for all.
-        stage=TARGET/'sources/stage'/('metadata-'+name)
+        new_version=(version[:revision.start()]+'+toddy'+str(int(revision[1])+1)) if revision else version+plan['version_suffix']
+        stage=TARGET/'sources/stage'/('metadata-'+name+'-'+new_version)
         if stage.exists():raise SystemExit('Existing metadata stage requires diagnosis: '+str(stage))
         temporary=backend.workspace()/archive.name
         if temporary.exists() or temporary.is_symlink():raise SystemExit('Preserve existing metadata archive input')
@@ -139,7 +189,7 @@ def main():
                 # metadata was upgraded earlier in this same deterministic loop.
                 baseline=re.sub(r'\+toddy[1-9][0-9]*$','',packages[provider][0])
                 requirements.append(f'{provider} (>= {baseline})')
-        revised=', '.join(x for x in [depends,*requirements] if x)
+        revised=retarget_exact_dependencies(', '.join(x for x in [depends,*requirements] if x),packages)
         new_version=(version[:revision.start()]+'+toddy'+str(int(revision[1])+1)) if revision else version+plan['version_suffix']
         command=[sys.executable,str(HERE/'stage_package.py'),name,new_version,str(stage),'--architecture',arch,
                  '--depends',revised,'--recipe',str(Path(__file__).resolve()),'--install']
@@ -161,6 +211,7 @@ def main():
         for path in libtool+shared_journals:
             if (TARGET/path.lstrip('/')).exists():raise SystemExit('Removed generated/Libtool artifact remains installed')
         predecessor['complete']=True;result_path.write_text(json.dumps(predecessor,indent=2)+'\n')
+        packages[name]=(new_version,arch,revised);package_states[name]='install ok installed'
         print('Native metadata upgrade accepted:',name,new_version,flush=True)
     if args.only:return
     # Shared Info index is generated state, not the payload of one provider.

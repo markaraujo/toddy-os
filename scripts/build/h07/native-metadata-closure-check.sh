@@ -90,3 +90,5 @@ assert report['compiler_defaults']=={'-march':'x86-64','-mtune':'generic'},repor
 assert set(report['declared_requirements'])<={'x86-64-baseline'},report['declared_requirements']
 print('Generic compiler defaults and declared baseline ISA notes verified; CPU boot test remains separate')
 PYISA
+
+python3 /opt/toddy-build/scripts/build/finalize_directory_ownership.py > /var/log/toddy/h07-final-directory-ownership.json

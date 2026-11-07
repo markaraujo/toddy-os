@@ -930,3 +930,13 @@ numeric ownership using native fsys-tarfile plus tar --numeric-owner before the
 unchanged policy runs. Saved the failed stage and confirmed no CMake metadata
 archive/install occurred; 14 earlier generations remain complete. Retried the
 same serial closure after the correction. See ADR-0094 and its native evidence.
+
+### 2026-11-07 — Exact provider pins did not follow metadata revisions
+
+Glibc-locales 2.44-1+toddy1 unpacked but Dpkg refused configuration because its
+exact dependency still required glibc 2.44-1. GCC also retained an earlier exact
+GCC-runtime pin. Added provider-first ordering and same-frozen-baseline exact-pin
+retargeting without relaxing equality. Preserve completed generations and failed
+partial record; a new revision can recover only verified own unpacked payload
+with its accepted predecessor provenance. Generation-specific stages preserve
+older attempts. See ADR-0095; actual native retry is required before closure.
