@@ -28,6 +28,8 @@ Foundation G1 passed in QEMU · Awaiting owner testing · Desktop and agent pend
 - [Milestone stories](stories/README.md)
 - [Architecture decisions](docs/adr/README.md)
 - [Visual identity](assets/brand/README.md)
+- [GNOME and Toddy design concepts](ui/preview.html)
+- [Installer storytelling preview](ui/installer-slides.html)
 
 The project follows two product phases: a verified Linux From Scratch foundation, then the desktop and agentic experience. Read `AGENTS.md` before implementation.
 

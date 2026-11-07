@@ -1,0 +1,38 @@
+[
+  {
+    "file": "toddy-os-logo.png",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGB"
+  },
+  {
+    "file": "toddy-os-system-icon.png",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "fully_transparent_pixels": 651913,
+    "fully_opaque_pixels": 1549
+  },
+  {
+    "file": "toddy-os-wallpaper-dark.png",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB"
+  },
+  {
+    "file": "toddy-os-wallpaper-light.png",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB"
+  },
+  {
+    "file": "toddy-os-boot-background.png",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB"
+  }
+]

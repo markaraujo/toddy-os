@@ -1,46 +1,53 @@
 {
   "brand": "Toddy OS",
-  "version": "v2",
-  "status": "Approved by the owner on 2026-11-05",
-  "provider": "Built-in image generation",
-  "date": "2026-11-05",
-  "rejected_direction": "Abstract glasses-and-ear symbols; previous green wallpapers are superseded and not part of this package.",
-  "reference_research": [
+  "version": "navy-v3",
+  "date": "2026-11-07",
+  "status": "Owner-requested navy direction; original logo/mascot protected",
+  "provider": "Built-in image generation for backgrounds; local HTML/CSS browser rendering for UI concepts",
+  "protected_identity_sha256": {
+    "toddy-os-logo.png": "eb46f81175fca698345870eee2101664ec613ff2de4c2430ef9b4fa27f3a1a81",
+    "toddy-os-system-icon.png": "c743d555c274b317f5832ee47609332d80f40a2d370b278b25706f60eedcf45c"
+  },
+  "previous_record": "archive/v2/generation-record.json",
+  "asset_prompts": [
     {
-      "url": "https://www.purina.co.uk/find-a-pet/owner-stories/dog/Shih-Tzu-Milo-2248",
-      "purpose": "Breed and glasses reference; not copied into the generated artwork"
+      "file": "toddy-os-wallpaper-dark.png",
+      "input": "none",
+      "prompt": "Use case: stylized-concept. Create ONE premium production Linux desktop wallpaper for Toddy OS, landscape 16:9, ideally 3840x2160. Brand direction: MIDNIGHT NAVY, elegant, calm, confident, with personality but not cute. Edge-to-edge sculptural folded fabric-like waves or satin paper ribbons in midnight #081426, deep navy #10233F, ocean blue #24518A and a single restrained icy blue highlight. The curves can subtly echo the soft drooping ears of a Shih-tzu without drawing a dog or any literal object. Composition: broad quiet dark navy negative space across left two thirds for desktop windows, softly illuminated overlapping folds concentrated at bottom right; exquisite controlled lighting, matte tactile surfaces, subtle fine texture, restrained depth, no bright bloom. Suitable as a real GNOME wallpaper, luxurious editorial simplicity. NO text, NO logo, NO mascot, NO dog, NO interface, NO icons, NO stars, NO circuits, NO neon, NO watermark, NO border, NO mockup. Keep the environment predominately blue, no beige, brown or purple."
     },
     {
-      "url": "https://puppylinux-woof-ce.github.io/",
-      "purpose": "Linux distribution identity context; no logo reused"
+      "file": "toddy-os-wallpaper-light.png",
+      "input": "toddy-os-wallpaper-dark.png",
+      "prompt": "Use case: lighting-weather. Create the LIGHT THEME companion wallpaper to this exact Toddy OS dark wallpaper. Preserve the broad elegant flowing ribbon composition and tactile matte subtle fabric texture. Replace the navy background with a very pale cool blue-white #EFF5FC, folds in restrained mist blue #D4E4F5 and slate blue #8DAED1, and only a small deep navy accent at the far lower right. Broad clean negative space on left two thirds, quiet gently illuminated relief, premium GNOME wallpaper. It must read as the light variant of the same identity. Landscape 16:9. No text, no logos, no mascot, no dog, no interface or watermark, no beige, brown or purple."
+    },
+    {
+      "file": "toddy-os-boot-background.png",
+      "input": "toddy-os-wallpaper-dark.png",
+      "prompt": "Use case: lighting-weather. Make a BOOT AND LOGIN companion background for the supplied Toddy OS navy wallpaper, wide landscape 16:9. Keep the midnight navy palette and subtle fine matte texture. Simplify dramatically: mostly solid near-black navy #081426, with just a very soft broad blue sculptural ribbon following the bottom edge and lower right corner. Leave the central 70 percent extremely calm and empty for real login controls and the original Toddy logo added by the OS. No bright line through the center, no spotlight. Premium restrained coherent companion to the input. NO logo, NO dog, NO mascot, NO letters, NO progress bar, NO fake interface, NO watermark, NO beige or purple. This is only an empty background, not a mockup."
     }
   ],
-  "master_prompt": "Start over completely. Create an ORIGINAL premium illustrated mascot LOGO for TODDY OS, a real independent Linux operating system. The dog MUST unmistakably be an ADULT SHIH-TZU, not a generic dog, not a monkey, and not an abstract symbol. Show a head-and-neck portrait in a subtle three-quarter view: very SHORT FLAT MUZZLE, rounded broad head, long silky drooping ears, cream/white moustache and beard with a few expertly designed tufts, warm chestnut-brown ear and eye patches, small black nose. It wears tasteful slightly oversized rounded-square BLACK EYEGLASSES. Actual intelligent expressive eyes are visible through clear lenses, with one subtly raised brow and a very slight head tilt that conveys dry wit: an experienced software architect who has just fixed your computer. Funny through personality, not babyish or goofy. No tongue, no wink, no exaggerated grin, no human body, tie or costume. Design it as a PROFESSIONAL ILLUSTRATOR'S DISTRO MASCOT: confident bold dark outlines of consistent weight, carefully balanced simplified vector-style shapes, 4 restrained flat colors (deep charcoal, warm ivory, chestnut and tiny muted copper accent), elegant negative spaces and highly controlled detail. More sophisticated editorial caricature / classic open-source project identity than cute mobile app sticker. It MUST retain believable Shih-tzu anatomy and its furry short-muzzled face. A beautifully typeset exact wordmark 'Toddy OS' underneath in mature distinctive sans-serif typography, clean spacing. Centered compact composition on a clean solid warm ivory background, ample margins. NO abstract glasses-only icon, NO blank face, NO inverted-U ears-only mark, NO esports shield, NO clipart, NO 3D, NO photorealism, NO gradients or shadows, NO neon or robot/circuit decorations, NO wallpaper or presentation collage, NO watermark. Deliver one carefully crafted identity, with the recognizable funny bespectacled Shih-tzu as the hero.",
-  "asset_prompts": [
-    [
-      "toddy_v2_icon",
-      true,
-      "Create a transparent-background system icon asset from the supplied Toddy OS brand artwork. Faithfully preserve the exact recognizable adult chestnut-and-ivory SHIH-TZU wearing black rounded-square glasses, the short flat muzzle, fluffy moustache and beard, subtle tilted head and dry-witted raised eyebrow. Isolate ONLY the dog's head, remove all lettering. Keep the same professional illustrated identity, clean confident dark outlines and restrained flat colors. Simplify only the finest internal fur details slightly for icon legibility. Center on a square canvas with generous clear margins. Genuine alpha-transparent background around the head; the dog's ivory fur must remain opaque. No wordmark, no tile, no badge, no extra objects, no gradient or shadow, no watermark. Do not replace the dog with an abstract glasses/ear icon."
+  "ui_concepts": {
+    "source": "ui/preview.html",
+    "styles": [
+      "ui/tokens.css",
+      "ui/preview.css"
     ],
-    [
-      "toddy_v2_dark",
-      false,
-      "Create an actual elegant Linux desktop wallpaper, landscape 16:9. Use the supplied Toddy OS artwork as the EXACT mascot reference. A sophisticated graphite-black background with broad subtle matte flowing forms in dark warm brown, a restrained copper edge accent and ample quiet empty space across left and center for desktop windows. On the right third place the recognizable illustrated chestnut-and-ivory SHIH-TZU WITH BLACK GLASSES from the reference at a modest but clearly readable size, about 22 percent canvas height. Preserve the exact short muzzle, fur shapes, glasses, head tilt and expression. Professional editorial mascot artwork, funny through its dry-witted expression, not childish. The mascot should have a crisp silhouette and no rectangular backing. No text, wordmark, dock, taskbar, fake UI, icons, watermark or mockup. Premium desktop art, subtle rather than busy, edge to edge."
+    "viewport": [
+      1440,
+      1000
     ],
-    [
-      "toddy_v2_light",
-      false,
-      "Create an actual elegant Linux desktop wallpaper, landscape 16:9. Use the supplied Toddy OS artwork as the EXACT mascot reference. Warm ivory background with broad quiet sculptural curves in pale sand, one restrained terracotta/copper accent and ample uncluttered negative space across left and center for desktop windows. On the right third place the exact recognizable illustrated chestnut-and-ivory adult SHIH-TZU WITH BLACK GLASSES from the reference, about 22 percent canvas height. Preserve the short flat muzzle, fluffy beard, glasses, head tilt and subtly raised eyebrow. Professional editorial mascot, funny through expression, not childish, crisp silhouette without rectangular backing. No text, wordmark, dock, taskbar, fake UI, icons, watermark or mockup. Premium quiet OS wallpaper, edge to edge."
-    ],
-    [
-      "toddy_v2_boot",
-      false,
-      "Create an actual operating-system boot/login background for Toddy OS, landscape 16:9. Quiet flat near-black warm graphite canvas. In the center slightly above mid-height put a small precise reproduction of the supplied professional illustrated SHIH-TZU WITH BLACK GLASSES logo with its exact 'Toddy OS' wordmark underneath. Preserve the chestnut-and-ivory fur, short muzzle, beard, glasses, head tilt and dry-witted expression. Entire combined logo should occupy about 22 percent canvas height. The logo must be isolated cleanly with NO ivory rectangular background. Refined optical spacing, excellent contrast, large empty areas around and below for the real operating system's controls. No fake interface, no password fields, no progress bars, no loader, no version numbers, no additional text, no watermark, no mockup. Serious polished real OS branding."
-    ]
-  ],
+    "capture_selectors": {
+      "toddy-os-desktop-preview.png": "#desktop-capture",
+      "toddy-os-assistant-preview.png": "#quick-capture",
+      "toddy-os-task-preview.png": "#task-capture",
+      "toddy-os-installer-preview.png": "#installer-capture"
+    },
+    "method": "Playwright element screenshots after selecting each visible scene, using unchanged original mascot; each image contains its own design-preview label."
+  },
   "limitations": [
-    "PNG raster artwork, not an SVG/vector master",
-    "Actual generated dimensions are recorded in assets.json; these are not 4K exports",
-    "The dog represents the breed, not an exact likeness of Toddy, because no personal reference photograph was supplied"
+    "Generated PNG backgrounds are 1672x941 despite a higher-resolution request, not 4K/vector masters.",
+    "UI scenes are simulations, not running GNOME/agent/installer acceptance evidence.",
+    "The original logo contains its original background and colors; it was not recolored.",
+    "Published foundation ISO remains unchanged."
   ]
 }

@@ -1,38 +1,78 @@
 [
   {
+    "file": "toddy-os-assistant-preview.png",
+    "width": 1320,
+    "height": 681,
+    "mode": "RGB",
+    "sha256": "b72c2af068e485e5a702cc7f6a4df61b76989e92c94d732f61ee41d21c370bb7",
+    "role": "design-preview"
+  },
+  {
+    "file": "toddy-os-boot-background.png",
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB",
+    "sha256": "3976fa3074297032613da13fce31674ee399b92c3606c39e30502473c9565cd1",
+    "role": "generated-background"
+  },
+  {
+    "file": "toddy-os-desktop-preview.png",
+    "width": 1320,
+    "height": 681,
+    "mode": "RGB",
+    "sha256": "35e25e433c3a3f363b0a8b8b036d68b274df97a7fa2776b86564e7c7c1493882",
+    "role": "design-preview"
+  },
+  {
+    "file": "toddy-os-installer-preview.png",
+    "width": 1320,
+    "height": 681,
+    "mode": "RGB",
+    "sha256": "607929924d4c39069447e8ef44fb2d3fd0c2a2c61da6885f7290161e78c8154c",
+    "role": "design-preview"
+  },
+  {
     "file": "toddy-os-logo.png",
     "width": 1254,
     "height": 1254,
-    "mode": "RGB"
+    "mode": "RGB",
+    "sha256": "eb46f81175fca698345870eee2101664ec613ff2de4c2430ef9b4fa27f3a1a81",
+    "role": "protected-original"
   },
   {
     "file": "toddy-os-system-icon.png",
     "width": 1254,
     "height": 1254,
     "mode": "RGBA",
+    "sha256": "c743d555c274b317f5832ee47609332d80f40a2d370b278b25706f60eedcf45c",
+    "role": "protected-original",
     "alpha_extrema": [
       0,
       255
-    ],
-    "fully_transparent_pixels": 651913,
-    "fully_opaque_pixels": 1549
+    ]
+  },
+  {
+    "file": "toddy-os-task-preview.png",
+    "width": 1320,
+    "height": 681,
+    "mode": "RGB",
+    "sha256": "88fad2c71d7abd6c84e78585a63b05016d9893e5e428c17b7691a0d74cbccc46",
+    "role": "design-preview"
   },
   {
     "file": "toddy-os-wallpaper-dark.png",
     "width": 1672,
     "height": 941,
-    "mode": "RGB"
+    "mode": "RGB",
+    "sha256": "782de229cd635002de2aadf6a9c916dfe0adcdf212e33494fbf7b86129bc17e9",
+    "role": "generated-background"
   },
   {
     "file": "toddy-os-wallpaper-light.png",
     "width": 1672,
     "height": 941,
-    "mode": "RGB"
-  },
-  {
-    "file": "toddy-os-boot-background.png",
-    "width": 1672,
-    "height": 941,
-    "mode": "RGB"
+    "mode": "RGB",
+    "sha256": "e619d100cbc8812f30abc7a9cb1318416060d7b2eb4fcebe794936377bc543a1",
+    "role": "generated-background"
   }
 ]

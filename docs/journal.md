@@ -1014,3 +1014,13 @@ Toddy profile/persona/config/skill contract, per-profile state, atomic revision 
 restore, secret-free import/export and independent permission boundaries. Updated
 B01/B03-B08/B10/B13 acceptance together with status.json; S24 remains one focused
 fixture sequence rather than a large ecosystem test program. No runtime started.
+
+## 2026-11-07 — Navy identity and realistic static Toddy scenes
+
+Generated dark/light/boot navy backgrounds with the built-in image tool; actual
+1672x941 outputs are disclosed. Original logo/mascot hashes are unchanged; archived
+the beige predecessors and prompt provenance. Added shared navy tokens, four
+GNOME-inspired HTML/CSS concepts and a humorous four-scene installer presentation.
+Browser inspection and mobile scene/theme/slideshow checks passed. These are
+labeled design concepts, not guest runtime acceptance. See navy-brand-preview
+verification under docs/evidence; B11 remains unstarted.

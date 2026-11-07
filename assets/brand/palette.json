@@ -1,0 +1,25 @@
+{
+  "version": "navy-v3",
+  "direction_date": "2026-11-07",
+  "protected_identity_sha256": {
+    "toddy-os-logo.png": "eb46f81175fca698345870eee2101664ec613ff2de4c2430ef9b4fa27f3a1a81",
+    "toddy-os-system-icon.png": "c743d555c274b317f5832ee47609332d80f40a2d370b278b25706f60eedcf45c"
+  },
+  "colors": {
+    "midnight": "#081426",
+    "navy": "#10233F",
+    "raised": "#172F50",
+    "ink": "#F1F6FF",
+    "muted": "#A7BBD4",
+    "accent": "#87BDFF",
+    "action": "#2364B8",
+    "line": "#304967",
+    "success": "#96DEB9",
+    "danger": "#FFB4AC",
+    "light_background": "#EFF5FC",
+    "light_ink": "#142944",
+    "light_muted": "#435E7C",
+    "light_accent": "#205FA5"
+  },
+  "usage": "Use ui/tokens.css for semantic UI colors. Do not recolor the protected logo or mascot. Navy replaces environment colors, not natural fur."
+}
