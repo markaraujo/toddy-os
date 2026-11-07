@@ -57,3 +57,18 @@ site displays a simple optional acknowledgment section, without paid tiers,
 ownership claims or exclusive software benefits. Add a verified public PayPal
 URL when the owner supplies it; the renderer refuses unrelated/non-HTTPS targets.
 Names are HTML-escaped, deduplicated and never auto-published from payment data.
+
+## Website-only mascot personality
+
+The main-page hero uses the exact original mascot at rest. `mascot.js` loads two
+optional transparent expression PNGs only after the first animation interaction,
+then plays a short one-shot bored yawn with CSS. Mouse hover, touch/click and the
+native button's keyboard activation are supported; there is no automatic loop,
+telemetry, animation framework or OS-agent behavior. Overlapping interactions do
+not stack. Switching to reduced motion or hiding the page resets the sequence;
+reduced-motion users retain the original still image and can cycle comments.
+
+Ten two-line comments rotate in a deterministic cycle and are localized through
+the existing six-language catalog. Caption updates use text nodes. Image loading
+failure retains the static original. The author LinkedIn link opens a separate
+tab with noopener/noreferrer. This is portal decoration, not a new product runtime.

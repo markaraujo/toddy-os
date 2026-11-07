@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="site.css" />
         <script src="../ui/translations.js" defer></script>
         <script src="../ui/i18n.js" defer></script>
+        <script src="../ui/mascot.js" defer></script>
     </head>
     <body>
         <a class="skip-link" href="#main">Skip to content</a>
@@ -99,20 +100,55 @@
                         </p>
                     </div>
                     <div class="hero-mascot">
-                        <img
-                            src="../assets/brand/toddy-os-system-icon.png"
-                            alt="Toddy, the bespectacled Shih-tzu mascot"
-                            width="340"
-                            height="340"
-                        />
+                        <button
+                            type="button"
+                            class="mascot-button"
+                            data-mascot-button
+                            data-yawn-state="idle"
+                            data-caption-index="0"
+                            aria-label="Ask Toddy for his opinion"
+                            aria-describedby="mascot-comment"
+                            title="Hover or tap for Toddy's opinion"
+                        >
+                            <img
+                                class="mascot-frame mascot-idle"
+                                src="../assets/brand/toddy-os-system-icon.png"
+                                alt=""
+                                width="1254"
+                                height="1254"
+                            />
+                            <img
+                                class="mascot-frame mascot-half"
+                                data-yawn-src="../assets/brand/web/toddy-yawn-half.png"
+                                alt=""
+                                aria-hidden="true"
+                                width="1254"
+                                height="1254"
+                            />
+                            <img
+                                class="mascot-frame mascot-full"
+                                data-yawn-src="../assets/brand/web/toddy-yawn-full.png"
+                                alt=""
+                                aria-hidden="true"
+                                width="1254"
+                                height="1254"
+                            />
+                        </button>
                         <div class="mascot-note">
                             <span class="tiny-label"
                                 >TODDY / CHIEF DEPENDENCY OFFICER</span
                             >
-                            <p>
+                            <p
+                                id="mascot-comment"
+                                data-mascot-caption
+                                aria-live="polite"
+                            >
                                 Great at dependencies.<br />Terrible at personal
                                 space.
                             </p>
+                            <small class="mascot-hint"
+                                >Hover or tap. He has opinions.</small
+                            >
                         </div>
                     </div>
                 </div>
@@ -485,7 +521,13 @@
             <div>
                 <a href="../PRD.md">Product requirements</a
                 ><a href="../docs/DEVELOPMENT.md">Development handoff</a
-                ><a href="https://github.com/markaraujo/toddy-os">Source ↗</a>
+                ><a href="https://github.com/markaraujo/toddy-os">Source ↗</a
+                ><a
+                    href="https://www.linkedin.com/in/marcos-augusto-castro-araujo/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Meet the creator on LinkedIn ↗</a
+                >
             </div>
             <a href="../assets/third-party/gnome/README.md"
                 >Third-party GNOME icon sources & licenses ↗</a

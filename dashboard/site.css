@@ -164,7 +164,7 @@ html {
     text-align: center;
     padding-top: 20px;
 }
-.hero-mascot > img {
+.hero-mascot > .mascot-button {
     width: 80%;
     height: auto;
     max-width: 340px;
@@ -629,7 +629,7 @@ h2 {
     .hero-description {
         font-size: 14px;
     }
-    .hero-mascot > img {
+    .hero-mascot > .mascot-button {
         width: 90%;
         max-width: 285px;
     }
@@ -727,7 +727,7 @@ h2 {
         gap: 20px;
         text-align: left;
     }
-    .hero-mascot > img {
+    .hero-mascot > .mascot-button {
         width: 135px;
     }
     .mascot-note {
@@ -1153,5 +1153,145 @@ html:not([lang="en"]) .hero h1 {
     }
     .supporters h2 {
         font-size: 30px;
+    }
+}
+
+/* Website-only personality: static original identity until an explicit interaction. */
+.mascot-button {
+    position: relative;
+    display: inline-block;
+    aspect-ratio: 1;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 24px;
+    cursor: pointer;
+    flex-shrink: 0;
+    line-height: 0;
+    touch-action: manipulation;
+    isolation: isolate;
+}
+.mascot-button .mascot-frame {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+.mascot-button .mascot-half,
+.mascot-button .mascot-full {
+    opacity: 0;
+}
+.mascot-button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 8px;
+}
+.mascot-button.is-yawning {
+    animation: toddy-stretch 2.6s ease-in-out both;
+}
+.mascot-button.is-yawning .mascot-idle {
+    animation: toddy-idle 2.6s steps(1, end) both;
+}
+.mascot-button.is-yawning .mascot-half {
+    animation: toddy-half 2.6s steps(1, end) both;
+}
+.mascot-button.is-yawning .mascot-full {
+    animation: toddy-full 2.6s steps(1, end) both;
+}
+.mascot-note p {
+    min-height: 4.5em;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mascot-hint {
+    display: block;
+    margin-top: 7px;
+    font-size: 9px;
+    color: #91a9c7;
+    letter-spacing: 0.025em;
+}
+@keyframes toddy-stretch {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+    40%,
+    65% {
+        transform: translateY(-3px) rotate(-1deg) scale(1.015);
+    }
+}
+@keyframes toddy-idle {
+    0%,
+    13% {
+        opacity: 1;
+    }
+    14%,
+    87% {
+        opacity: 0;
+    }
+    88%,
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes toddy-half {
+    0%,
+    13% {
+        opacity: 0;
+    }
+    14%,
+    30% {
+        opacity: 1;
+    }
+    31%,
+    69% {
+        opacity: 0;
+    }
+    70%,
+    87% {
+        opacity: 1;
+    }
+    88%,
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes toddy-full {
+    0%,
+    30% {
+        opacity: 0;
+    }
+    31%,
+    69% {
+        opacity: 1;
+    }
+    70%,
+    100% {
+        opacity: 0;
+    }
+}
+@media (max-width: 650px) {
+    .mascot-note p {
+        min-height: 6em;
+    }
+    .mascot-hint {
+        font-size: 8px;
+        max-width: 160px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .mascot-button.is-yawning,
+    .mascot-button.is-yawning .mascot-frame {
+        animation: none !important;
+    }
+    .mascot-button .mascot-idle {
+        opacity: 1 !important;
+    }
+    .mascot-button .mascot-half,
+    .mascot-button .mascot-full {
+        opacity: 0 !important;
     }
 }

@@ -1104,3 +1104,15 @@ account/product eligibility is investigated using official sources. Preserve
 the prior hosted identifier and verification limitations in historical evidence;
 do not change PayPal account details or imply a successful payment. Public
 supporter acknowledgment remains optional and no names are invented.
+
+## 2026-11-07 — Website mascot yawn and ten localized opinions
+
+Added two generated transparent expression frames while preserving original
+logo/mascot hashes. The hero now reacts once to hover, tap or keyboard with a
+short bored yawn and one of ten two-line comments in all six portal languages.
+Optional frames load only on interaction; reduced motion and decode failure keep
+the static original. Added the exact owner-supplied LinkedIn profile to the footer.
+Focused desktop/mobile/keyboard/localization/fallback browser checks passed,
+along with the 184 existing local checks (0.185 seconds); see website-mascot-yawn
+in evidence. The owner handles Patreon for now; no financial profile was changed
+and the broken PayPal CTA remains disabled. No OS story acceptance is claimed.

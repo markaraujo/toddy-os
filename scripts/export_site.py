@@ -15,8 +15,9 @@ BRAND_FILES = (
     "toddy-os-wallpaper-dark-logo.png", "toddy-os-wallpaper-light-logo.png",
     "toddy-os-desktop-preview.png", "toddy-os-assistant-preview.png",
     "toddy-os-task-preview.png", "toddy-os-installer-preview.png",
+    "web/toddy-yawn-half.png", "web/toddy-yawn-full.png",
 )
-UI_FILES = ("tokens.css", "preview.css", "preview.html", "installer-slides.html", "i18n.js", "translations.js")
+UI_FILES = ("tokens.css", "preview.css", "preview.html", "installer-slides.html", "i18n.js", "translations.js", "mascot.js")
 
 ICON_FILES = ('ADWAITA-COPYRIGHT.txt', 'CONSOLE-COPYING.txt', 'EPIPHANY-COPYING.txt', 'GPL-2', 'GPL-3', 'NAUTILUS-COPYRIGHT.txt', 'README.md', 'SETTINGS-COPYRIGHT.txt', 'audio-input-microphone-symbolic.svg', 'audio-volume-high-symbolic.svg', 'document-open-recent-symbolic.svg', 'edit-find-symbolic.svg', 'folder-documents-symbolic.svg', 'folder-documents.svg', 'folder-download-symbolic.svg', 'folder-download.svg', 'folder-music.svg', 'folder-pictures-symbolic.svg', 'folder-pictures.svg', 'folder-templates.svg', 'folder.svg', 'go-next-symbolic.svg', 'go-previous-symbolic.svg', 'manifest.json', 'media-playback-stop-symbolic.svg', 'network-wireless-signal-excellent-symbolic.svg', 'open-menu-symbolic.svg', 'org.gnome.Console.svg', 'org.gnome.Epiphany.svg', 'org.gnome.Nautilus.svg', 'org.gnome.Settings.svg', 'starred-symbolic.svg', 'system-shutdown-symbolic.svg', 'user-home-symbolic.svg', 'user-trash-symbolic.svg', 'view-app-grid-symbolic.svg', 'window-close-symbolic.svg')
 
