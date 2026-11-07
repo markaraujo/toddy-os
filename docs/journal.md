@@ -1134,3 +1134,9 @@ Keep PayPal disabled and avoid invented prices, deadlines or payment options.
 Local Playwright responsive checks passed in 24 language/viewport combinations;
 Patreon checkout itself remains unverified because Cloudflare blocks automation.
 See evidence/website-patreon.md. This is public website work only.
+
+## 2026-11-07 — Remove obsolete PayPal integration
+
+At the owner's request, removed the unused PayPal donation configuration and
+renderer. Patreon is the portal's only funding CTA. Historical failure evidence
+is retained as history; no public PayPal link or checkout remains.

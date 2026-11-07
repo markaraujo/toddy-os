@@ -110,7 +110,6 @@ def percentages(data):
 
 def community_html():
     """Render only owner-approved public acknowledgments and public support links."""
-    from urllib.parse import urlsplit
     community = json.loads((ROOT / "config/community.json").read_text())
     names = community.get("supporters")
     if not isinstance(names, list) or any(not isinstance(name, str) or not name.strip() or len(name) > 80 for name in names):
@@ -118,17 +117,11 @@ def community_html():
     if len(set(names)) != len(names):
         raise ValueError("Duplicate supporter name")
     result = '<ul class="supporter-list" data-no-translate>' + ''.join('<li>' + html.escape(name) + '</li>' for name in names) + '</ul>' if names else '<p class="supporter-empty">Names appear here only with each supporter&#39;s permission.</p>'
-    url = community.get("donation_url")
-    if url:
-        parsed = urlsplit(url)
-        if parsed.scheme != "https" or parsed.hostname not in {"paypal.com", "www.paypal.com", "paypal.me", "www.paypal.me"} or parsed.username or parsed.password:
-            raise ValueError("Use only the owner-provided public HTTPS PayPal donation URL")
-        result += '<a class="button primary" href="' + html.escape(url, quote=True) + '" rel="noopener noreferrer">Support Toddy OS ↗</a>'
     return result
 
 
 def patreon_html():
-    """Keep the public creator link separate from the disabled PayPal checkout."""
+    """Render the owner-approved public creator link."""
     community = json.loads((ROOT / "config/community.json").read_text())
     url = community.get("patreon_url")
     if not url:
