@@ -5,9 +5,12 @@ or installer. H13 is an interim owner-testing delivery. Phase 2 requires the
 owner's explicit approval after that review. Physical hardware support remains
 untested unless the release test matrix records an actual result.
 
-Current verification: native disk BIOS/UEFI boots passed H09. The H10 live ISO
-is under integration testing; the instructions below describe the implemented
-profile and do not yet assert a successful live boot or release acceptance.
+Current verification: native disk BIOS/UEFI boots passed H09. The H10 validation
+ISO passed an actual BIOS/CD live console, volatile-write, native C/Kmod and
+DHCP/DNS test. Final release media and its full H12 matrix remain pending.
+The validation guest powered off with exit zero; Systemd reported its read-only
+lower loop still busy during final shutdown. Complete initramfs teardown and
+persistent-disk behavior are not claimed from this no-disk live test.
 
 ## Boot and console
 

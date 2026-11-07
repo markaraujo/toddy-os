@@ -908,3 +908,15 @@ Corrected complete native runtime audit passed with zero findings: 791 dynamic
 executables and 383 scripts. Preserved the failed generation and distinct retry
 report under sources/recovery/h10-runtime-path-20261107. Start a fresh full
 assembly under the production lock; no package rebuild is needed.
+
+## 2026-11-07 — H10 accepted; H11 release preparation starts
+
+The full 134-package root passed all 18 assembly stages. Compression/readback
+preserved 82,011 entries and 1,123 hardlink groups. The protected media-only
+continuation generated a bound initramfs and 1,123,698,688-byte validation ISO.
+Actual BIOS/CD login, volatile writes, C, Kmod, package checks and DHCP/DNS passed;
+QEMU powered off zero and the ISO remained unchanged. Preserve the read-only
+lower-loop shutdown warning as a qualification. H10 is complete; H11 is active.
+The final release profile still requires optional QA removal and complete image
+credential/component review. H12 must test the final artifact, not reuse this
+validation ISO as final acceptance. Owner testing remains after H13, before B01.

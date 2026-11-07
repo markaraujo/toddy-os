@@ -1,7 +1,7 @@
 # ADR-0096: Build media dependencies at their first live-system use
 
 - Date: 2026-11-07
-- Status: Implementation prepared; actual H10 media/console validation pending
+- Status: Native media dependencies and actual H10 BIOS/CD console validation passed
 - Amends the tool-installation ordering in ADR-0050/0077/0082, not release gates
 
 ## Problem and decision

@@ -4,40 +4,34 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-H01-H09 completed; 134 native packages including live-media tools. Native BIOS/UEFI Systemd boot, C and Kmod passed. H10 full-root integration is under validation; no accepted ISO/G1 yet. Owner review after H13 precedes B01-B13.
+H01-H10 completed. The actual BIOS/CD live console passed volatile overlay writes, native C/Kmod, package checks and DHCP/DNS. H11 prepares the release-profile ISO and inventory. No G1/final-media acceptance yet; owner review after H13 precedes B01-B13.
 
-Foundation: **76%** · Agentic desktop: **0%**
+Foundation: **84%** · Agentic desktop: **0%**
 
-G1: pending · G2: pending · Next: **H10**
+G1: pending · G2: pending · Next: **H11**
 
 No milestone earns credit without completed acceptance evidence.
 
-## Active story: H10 — Assemble the live system
+## Active story: H11 — Produce hybrid ISO and artifact manifest
 
-The 76% phase total counts completed stories only. H10 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 84%.
+The 84% phase total counts completed stories only. H11 is still in progress; its 6 points are not yet counted. Passing this story would raise the phase total to 90%.
 
-Last verified: 2026-11-07T12:40:11.099147+00:00
+Last verified: 2026-11-07 12:49 UTC
 
 Verified:
 
-- Production Linux 7.1.8 kernel, boot configuration and guarded BIOS/UEFI loader recipe/postchecks passed.
-- Both native BIOS/UEFI guests passed Systemd startup, C compilation/execution, Kmod load/unload and clean power-off; backing hashes unchanged.
-- Cold h09-boot-ready pair saved, independently verified and builder restarted.
-- All five native media dependencies passed recipe/postcheck 0/0; 134 configured packages and empty Dpkg audit.
-- Fresh-image Info regression passed with transient device cleanup; native libisoburn CLI revision passed with 41 retained payload entries unchanged.
-- Complete root ownership and attribution passed; focused path regressions preserve build-root and symlink rejection (ADR-0099).
-- Full corrected native runtime audit passed: 791 dynamic executables, 383 scripts, zero findings; failed generation retained.
-- Full H10 root assembly passed all 18 stages, including ownership, whole-tree attribution, executable runtime and fresh identity.
-- Native compression, extraction and ACL restoration passed: 1,090,342,912-byte Squashfs; 82,011 entries and 1,123 hardlink groups.
+- H10 full root, compression/readback, bound initramfs and 1,123,698,688-byte validation ISO passed.
+- Actual BIOS/CD live console, volatile write, C/Kmod, Dpkg/APT, DHCP/DNS and QEMU power-off passed; ISO unchanged.
 
-Running: Preparing initramfs/ISO continuation under a protected nested output directory; accepted root and compressed artifact are retained.
+Running: Preparing the native Python QA ownership transfer before release-profile assembly.
 
 Remaining:
 
-- Complete verified compression, bound initramfs and validation ISO.
-- Boot validation media through the actual live console and verify volatile writes/services/network.
+- Separate optional public Python QA data while retaining native runtime bytes and package ownership.
+- Assemble and review fresh release root, component/source/license inventory and final ISO.
+- Run H12 final-artifact firmware, virtual USB, offline and recovery matrix before H13.
 
-[Acceptance evidence](docs/evidence/H09.md)
+[Acceptance evidence](docs/evidence/H10.md)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
@@ -50,8 +44,8 @@ Remaining:
 | [H07 — Build and test the final base system](stories/H07.md) | foundation | 24 | completed |
 | [H08 — Configure identity, services and basic networking](stories/H08.md) | foundation | 6 | completed |
 | [H09 — Build kernel and boot configuration](stories/H09.md) | foundation | 8 | completed |
-| [H10 — Assemble the live system](stories/H10.md) | foundation | 8 | in_progress |
-| [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | not_started |
+| [H10 — Assemble the live system](stories/H10.md) | foundation | 8 | completed |
+| [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | in_progress |
 | [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | not_started |
 | [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | not_started |
 | [B01 — Evaluate desktop, harness, licensing and resource budgets](stories/B01.md) | agentic | 5 | not_started |
