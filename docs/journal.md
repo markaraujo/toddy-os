@@ -603,3 +603,12 @@ passed, plus seven composition rejections. Actual compression/initramfs input
 verification adds six negatives; native GRUB ownership and premature production
 gate checks pass. Full foundation assembly, native kernel boot and release
 acceptance remain pending. No live Berkeley inputs were synchronized.
+
+2026-11-07 09:20 UTC — Original Berkeley suite terminated exit 1 with zero
+installed changes. Diagnosed additional final-output rejection: thirteen
+Test142 informational-spacing lines and ten missing-recovery-record warnings,
+besides the two known failures. Four actual native Tcl controls distinguish
+formatting from real failures/coverage warnings without editing the sources or
+reports. Corrected suite is live at replication 23/27 with zero FAIL entries,
+but its shared formatting defect also needs resolution before strict acceptance.
+Published the newly discovered blocker; no acceptance condition was relaxed.

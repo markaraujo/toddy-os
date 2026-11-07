@@ -1218,3 +1218,14 @@ package/archive provenance, compression binding, actual archive contents and
 kernel/module generation before using a fresh output path. Missing SHA256SUMS
 or complete=false remains unfinished. A successful loader-only probe cannot
 be substituted for an H11 release or native-kernel recovery test.
+
+2026-11-07 original Berkeley terminal update: driver 1364 exited 1 with zero
+installed changes. The prepared handoff now correctly refuses additional output
+beyond its two anticipated failures. Preserve that refusal and all terminal
+reports. Reproduce the bounded native classifier diagnosis with
+`python3 scripts/host/probe_bdb_output_diagnostics.py`. Test142's informational
+spacing and ten recovery-coverage warnings require source-backed resolution;
+never remove lines, flip exits, accept zero FAIL alone or weaken the strict gate.
+Corrected driver 1107192 remains active with immutable inputs. Do not sync or
+modify those inputs. Finish diagnostic work independently, then inspect its
+actual complete result before selecting a reviewed correction/handoff strategy.

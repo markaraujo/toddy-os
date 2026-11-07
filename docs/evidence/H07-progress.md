@@ -1427,3 +1427,45 @@ labels during replication; outer-group classification is unchanged (ADR-0079).
 Raw observation SHA-256:
 db25c36e4e06c63e292f20a84a47c56f21b13e0607fea48dca8c6adc8f9e19a8.
 H07 stays 124/126; complete corrected suite and production postchecks precede APT.
+
+### Original terminal result and output diagnostics — 2026-11-07 09:20 UTC
+
+Original driver 1364 ended at 09:10:53 UTC, recipe/driver exit 1, no postcheck,
+zero installed changes and empty change manifest. Its complete standard output
+contains 25 unexpected lines: the two known repmgr failures, thirteen copies of
+an informational Test142.b line and ten log-record coverage warnings. The
+prepared original-result handoff correctly refused these additional diagnostics;
+no nomination or production installation occurred.
+
+The versioned probe_bdb_output_diagnostics.py extracts the frozen check_output
+procedure without sourcing or executing the test dispatcher. Actual native Tcl
+rejects the informational line's extra space between tab and Test142, accepts
+the identical line without that space, and still rejects deliberately injected
+FAIL and missing-coverage controls. Four checks pass. Original and corrected
+checker, Test142, logtrack implementation and logtrack list have identical
+hashes. Neither source tree nor original output changed. The corrected output
+already contains four copies of the same informational line, so zero FAIL alone
+will not satisfy the current strict final summary. No success is claimed.
+
+Raw diagnostic report SHA-256:
+5a962f29ff257eacf51b97ed0e4d6c2cd436c4d015e8592107775f09786d4a33
+(.local/logs/h07-db-output-diagnostics-<sha256>.json).
+Original standard.log SHA-256:
+2d0441963aad69dda37ee0f26fd4814ea35541bec2e5008390eb6a8779c38283.
+
+Missing recovery records are __bam_irep, __crdel_inmem_create,
+__crdel_inmem_remove, __crdel_inmem_rename, __db_merge, __db_pg_trunc,
+__db_pgno, __db_realloc, __ham_changeslot and __ham_contract. Frozen
+logtrack.tcl:112-117 emits these when its collected database has no matching
+record. Frozen test.tcl:1856-1921 initializes and summarizes that database only
+around run_recds; testutils.tcl:1446 and 1714 collect inside recovery helpers.
+Other access-method tests also exercise compaction/recovery (for example,
+test140), but the current evidence does not establish coverage of these ten
+records. Additional source analysis and actual native coverage/recovery
+experiments are required; broad warning suppression is not an authorized fix.
+
+At 09:20 UTC corrected PID 1107192 is live, group 23/27 replication, Rep002,
+zero FAIL entries and no terminal exits. Raw progress observation SHA-256:
+f94a65c5895842071e52915245bf2556f00bec285bbb44905399b9dbb4a89573.
+H07 remains 124/126; source/coverage corrections, complete terminal review,
+production postchecks, APT and final ownership/audit closure remain pending.

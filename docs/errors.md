@@ -806,3 +806,21 @@ only detailed labels to numbered suites and Basic repmgr steps/reproduction
 commands. Keep outer group derivation and strict acceptance unchanged. Two
 regressions and real live observation now show Repmgr025 under group 21; see
 ADR-0079. No database process or input was altered.
+
+## 2026-11-07 — Terminal Berkeley diagnostics exceed the prepared handoff
+
+The original full run terminated with exit 1 and no installed changes. Its
+25 unexpected lines include two known failures, thirteen informational Test142
+lines and ten missing-recovery-record warnings. The guarded handoff refused the
+additional output; it has not accepted or installed Berkeley DB.
+
+Native Tcl experimentation proves a formatting defect: the Test142.b message
+prints a tab followed by a space, but check_output permits tabs immediately
+followed by TestNNN. Removing only that space in a disposable diagnostic fixture
+passes the original checker; deliberate FAIL and coverage warnings still fail.
+No live source or terminal output was edited. Both runs share this code, and the
+corrected log already contains the message. Waiting alone cannot resolve this
+strict-summary blocker. The ten warnings also need coverage analysis, not a
+blanket allowance. The live corrected run remains useful for collecting the
+complete actual assertions, and must not be restarted or presented as passed.
+See the latest H07 evidence for exact source locations, hashes and next checks.
