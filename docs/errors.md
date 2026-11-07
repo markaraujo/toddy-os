@@ -1013,3 +1013,14 @@ regressions cover legal copies and changed/unrelated/redirected inputs; full
 release assembly must still retry. Original root, regression result and failed
 logs are retained under sources/recovery/h11-qa-notices-20261107 and the matching
 /var/log/toddy/history generation. See H11-qa-notice-removal.json.
+
+## 2026-11-07 — Key-marker scan reached File's format-recognition database
+
+The corrected H11 image passed ownership, attribution, runtime and fresh
+identity. Its unsuppressed marker scan then found the exact File magic database
+in addition to six known OpenSSL manual placeholders. Frozen File 5.48 has
+literal private-key header recognition rules. ADR-0100 verifies all source and
+package identities and recompiles all 358 frozen magic fragments with native
+File, producing the exact installed binary hash. Changed bytes and an unrelated
+path remain rejected. Keep the original failed full assembly and raw scan;
+source-backed classification does not accept the complete release by itself.

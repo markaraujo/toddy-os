@@ -10,7 +10,7 @@ from vm import ssh_args
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCES = {name: base64.b64encode((ROOT / 'scripts/build/h11' / name).read_bytes()).decode()
-           for name in ('review_image_key_markers.py', 'audit_private_key_material.py', 'require_gate.py')}
+           for name in ('review_image_key_markers.py', 'review_magic_database.py', 'audit_private_key_material.py', 'require_gate.py')}
 REMOTE = r'''
 import base64,hashlib,json,os,re,shutil,subprocess,sys,tempfile
 from pathlib import Path

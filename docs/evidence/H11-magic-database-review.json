@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "unresolved": [],
+  "documents": 6,
+  "databases": [
+    {
+      "path": "/usr/share/misc/magic.mgc",
+      "sha256": "c2f4e7e55b0ee33c181ada80b065f9f8a58633c9806e8bd3353253c68324f268",
+      "classification": "Exact source-regenerated format-recognition database; markers are recognition rules",
+      "source_archive_sha256": "ed14656883b23a364b4057c05595d93252da9bc473d30106519519d0da141283",
+      "makefile_sha256": "4871c42e2fa589837f80b333aff9376dca6ef6558a6ae70b50833d744d769dde",
+      "ssh_rule_sha256": "38e6e7049f18a557950a50167c40a4dff7529bbfdaaa240d612889431cd382fd",
+      "native_compile_exit": 0,
+      "regenerated_sha256": "c2f4e7e55b0ee33c181ada80b065f9f8a58633c9806e8bd3353253c68324f268",
+      "compile_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "workspace": "/mnt/lfs/sources/stage/h11-magic-source-wyd3niqy",
+      "package_record_sha256": "86d26d6b5ff588fe5b3c3a758b79a52afd01a6569fcb60a4ddbccd2daee76a91",
+      "package_archive_sha256": "ae8411baf6728af3ed402478821341cf830a5a8b9e6510d4cd3771d91edbe72c"
+    }
+  ],
+  "report_sha256": "2932f8c0e1a7c771bf799618ff15a3d4dee0d1fc8cf2729659590e69a5d81e93",
+  "negative_controls": {
+    "changed_database_refused": true,
+    "same_bytes_under_unreviewed_path_refused": true,
+    "original_image_unchanged": true,
+    "original_sha256": "c2f4e7e55b0ee33c181ada80b065f9f8a58633c9806e8bd3353253c68324f268",
+    "fixture": "/mnt/lfs/sources/stage/h11-magic-negative-grydjv6r"
+  }
+}

@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from audit_private_key_material import MARKER, scan
 from locked_inputs import locked_source
 from package_backend import PackageBackend
+import review_magic_database
 
 SOURCE = 'openssl-4.0.3.tar.gz'
 SOURCE_SHA = '325b5c806167c13b40b1ffeadfe0248197c00eccc4cf123ec1e28d2d2fd216d9'
@@ -76,12 +77,14 @@ def review(backend, image, repository=Path('/opt/toddy-build'),
                        for area in ('tmp', 'sources/stage'))):
         raise ValueError('Key-marker review requires a fresh private native image')
     raw = scan(image)
-    qualified, unresolved = [], []
+    qualified, unresolved, databases = [], [], []
     candidates = []
     for finding in raw['findings']:
         suffix = finding['path'].removeprefix(PREFIX)
         if finding['path'] == PREFIX + suffix and REVIEWED.get(suffix) == finding['sha256']:
             candidates.append((finding, suffix))
+        elif finding['path'] == review_magic_database.PATH and finding['sha256'] == review_magic_database.SHA:
+            databases.append(review_magic_database.prove(backend, image, repository, records, cache))
         else:
             unresolved.append(finding)
     provenance = None
@@ -158,7 +161,7 @@ def review(backend, image, repository=Path('/opt/toddy-build'),
         provenance = {'source_archive_sha256': SOURCE_SHA, 'package_record_sha256': record_sha,
                       'package_archive_sha256': record['archive_sha256'], 'image_status_sha256': status_sha}
     return {'raw_scan': raw, 'qualified_document_examples': qualified, 'unresolved_findings': unresolved,
-            'provenance': provenance, 'private_key_marker_check_passed': not unresolved and not raw['special_nodes_not_read'],
+            'provenance': provenance, 'qualified_format_databases': databases, 'private_key_marker_check_passed': not unresolved and not raw['special_nodes_not_read'],
             'whole_image_credential_audit_accepted': False, 'image_or_boot_accepted': False,
             'raw_findings_suppressed': False}
 
