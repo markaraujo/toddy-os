@@ -1,6 +1,6 @@
 # Toddy OS — Product Requirements Document
 
-Version: 0.2 · Phase 2 replanned · Owner: Marcos Araujo · Date: 2026-11-07
+Version: 0.3 · Phase 2 execution reviewed · Owner: Marcos Araujo · Date: 2026-11-07
 
 ## 1. Product vision
 
@@ -80,6 +80,11 @@ This section replaces the previous Phase 2 draft. The authoritative detailed
 execution plan is [PHASE-2-PLAN.md](docs/PHASE-2-PLAN.md); scoped acceptance is
 [PHASE-2-VALIDATION.md](docs/PHASE-2-VALIDATION.md). ADR-0105 records the owner's
 2026-11-07 revision. Existing H01-H13 acceptance and G1 evidence remain unchanged.
+
+The [execution review](docs/PHASE-2-REVIEW.md) and
+[resume playbook](docs/PHASE-2-EXECUTION.md) refine delivery order, staged checks,
+IPC/confinement and installed-image closure. They preserve required product scope
+and the owner-start boundary; repository checks do not constitute guest acceptance.
 
 ### FR-01 Minimal graphical desktop
 

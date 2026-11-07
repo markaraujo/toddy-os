@@ -2,6 +2,9 @@
 
 Revision: 2026-11-07. Owner-approved product direction; implementation candidates
 remain subject to B01 verification. See [ADR-0105](adr/0105-toddy-assistant-and-owner-preview.md).
+Execution review: [findings and dispositions](PHASE-2-REVIEW.md),
+[resume playbook](PHASE-2-EXECUTION.md) and
+[current continuation card](PHASE-2-CHECKPOINT.md).
 This document refines [PRD.md](../PRD.md); milestone state remains authoritative
 in [status.json](../status.json). No application or guest build is implied by a
 planning change or an artwork preview.
@@ -36,12 +39,12 @@ browser requests may fail normally while the desktop stays usable.
 | --- | --- | --- |
 | Desktop | GNOME/Wayland | Familiar session, supported settings, minimal extensions; no shell fork |
 | Toddy UI | GTK4/Libadwaita native application | Quick entry, conversations, tasks, history, settings and stop; no required Electron/web server |
-| Agent engine | Pi Agent Core + Pi AI, provisional | Provider adapters, model/tool loop and streaming; wrap behind a replaceable internal interface |
+| Agent engine | Pi Agent Core + Pi AI, selected family; B01 version lock | Provider adapters, model/tool loop and streaming; wrap behind a replaceable internal interface |
 | Toddy service | Unprivileged per-user service | Personality, durable jobs, bounded context, routing, memory and schedules |
 | Privileged executor | Separate small authenticated local service | Owner policy, structured operations, argument validation, revocation and audit |
 | Local inference | llama.cpp first | Optional model process; hardware-specific profiles; unload/idle policy |
 | Memory | SQLite + FTS5 | Canonical per-user preferences/history/task provenance; no mandatory vector daemon |
-| Speech | whisper.cpp candidate plus separately licensed TTS | Optional on-demand input/output; no always-listening default |
+| Speech | whisper.cpp, on-demand Piper with eSpeak NG fallback | Optional on-demand input/output; no always-listening default |
 | Integration | Native tools first, replaceable MCP adapter | File/package/service tools; optional connectors with separate credentials |
 
 B01 must pin exact upstream commits/releases, transitive dependencies, license
@@ -55,6 +58,15 @@ Use authenticated local IPC with peer identity and per-user access control. Do
 not open a network control listener for the first release. Separate UI/engine
 interfaces so a future engine replacement does not replace policy or stored data.
 Use OS-supported session activation and an independently protected executor.
+Use the [closed design baseline](PHASE-2-DESIGN-BASELINE.md): Python/PyGObject
+UI and Python/GIO broker, a Pi Node worker on private framed stdio, and an
+independent system-D-Bus executor. B01 must lock compatible versions and freeze
+the asynchronous bridge
+to the JavaScript engine service: versioned messages, IDs, bounded payloads,
+backpressure, cancellation and reconnect semantics. Pin both language runtimes
+and their dependencies; an architecture table is not an implemented bridge.
+Mutating tools start sequentially, with a resource lock in the executor; never
+inherit an upstream engine's concurrent tool scheduling as an OS write policy.
 
 ## 2.1 User-customizable harness
 
@@ -163,12 +175,30 @@ where feasible, and reports effects already committed or still in progress.
 External pages, repository instructions, documents and tool output cannot grant
 permissions or authorize sending secrets. Keep credentials in the OS secret
 service, out of prompts, logs, memory and exports. Enforce data egress according to
-owner policy. No silent telemetry or cloud fallback. Lock down plugins separately.
+owner policy. No silent telemetry or cloud fallback. Lock down plugins separately. A separate process under the same UID is not a
+credential/filesystem sandbox. B01 selects a supported containment mechanism; B10
+proves denial of an out-of-scope file, secret-service access and network egress
+using dummy values. If confinement is unavailable, unknown code stays disabled.
+Profiles owned by one account are logical workspaces, not protection against
+that account's arbitrary code or an authorized unrestricted root shell.
+
+A locked/unavailable secret service must leave API setup pending with text/local
+use available, never fall back to plaintext keys. The provider transport may use
+its credential, but the model, plugin, transcript and exported audit may not.
+Define allowed destinations/data categories explicitly; external content cannot
+expand them. A prompt-injection fixture demonstrates an enforced boundary, not
+proof that broad root authority makes all malicious prompts harmless.
 
 Persist task intent, selected provider/model, policy reference, operation IDs,
 results and verification. Use bounded retries, timeouts and output/context limits.
 On restart, reconcile an interrupted side effect using its postcondition before
 retrying; mark an uncertain operation for review instead of replaying blindly.
+Persist operation preparation before dispatch and observation after the effect.
+Serialize conflicting writers and check the current grant/revocation generation
+at dispatch, not just when the model planned the action. A crash between write
+and recorded result is unknown until inspected; no exactly-once side effect is
+assumed. Package/boot writes may finish a protected commit boundary after Stop,
+while all later actions are blocked and the UI reports the remaining write.
 Stop prevents further dispatch independently of LLM cooperation. Preserve a manual
 rescue path and bounded configuration backups before system changes.
 
@@ -201,32 +231,39 @@ Keep B01-B13 IDs and weights; do not create false completion credit for planning
 Dependencies in status.json are mandatory, not a requirement to bundle every
 optional feature into one first preview.
 
-1. B01: feasibility spike, pinned engine/UI/provider contract, minimal package set,
-   license/driver policy and measured resource baseline. Reject a candidate only
-   for a documented blocker, compare one suitable alternative, and avoid an
-   open-ended framework survey.
-2. B02: graphical login, basic applications and normal use without AI. Preserve a
-   working guest checkpoint before optional drivers or desktop customization.
-3. B03-B05: provider contracts, one working local profile, executor and durable
-   tasks. Text/API development is first; local inference must pass before local
-   agent capability is advertised. Retain a deterministic provider fixture for CI.
-4. B06: native Toddy entry/main UI, CLI/TUI, protected first-run setup and three
-   setup paths. Produce the first text-assistant owner preview after the critical
-   applicable smoke tests pass; this is an interim snapshot, not G2.
-5. B07-B08: inspectable local memory and one quiet deterministic automation.
-6. B09-B10: push-to-talk speech and one end-to-end plugin/MCP integration. Keep
-   both optional to use; never make voice or a connector necessary for boot.
-7. B11 (after B02/B06): integrate the navy brand into the actual guest. Repository artwork and UI
-   previews may be prepared earlier; they do not complete runtime integration.
-8. B12: guided installer, optional apps/AI/third-party choices, blank-disk install,
-   persistence, one supported update/recovery path and a rescue route.
-9. B13: run the focused installed-image checklist, publish an experimental owner
-   preview ISO/checksums/build/license inventory and a concise owner validation
-   guide. State VM-only until physical testing actually occurs.
+The default risk-first order is **B01 -> B03 -> B04 -> B05 -> B02 -> B06 ->
+B11 -> B12 -> B07 -> B08 -> B09 -> B10 -> B13**. See the execution playbook for
+committable outcomes, permitted deviations and checks. Prerequisites remain
+mandatory; an in-progress verified checkpoint is not abandoned for a new priority.
 
-Optional app packaging can be prepared in B02; installer integration is B12.
-B12 depends on B03/B06 as well as B02/B11 so its choices use verified backends.
-B13 depends on every remaining B milestone so no package is omitted accidentally.
+B01 brings installer/package/boot feasibility forward: inspect the current
+Calamares upstream, dependencies and no-write target-plan/module contract before
+large GNOME work. B12 implements the real installer; B11 prepares its assets and
+validates guest branding, while actual installer visual acceptance belongs to
+B12. B01 also pins the bridge, profiles, one CPU-local model, package/image
+closure and build-versus-runtime resource plan.
+
+B03-B05 can be developed headlessly against fixtures and the real local profile.
+B03's harmless file tool is unprivileged test scaffolding, not the B04 executor
+or a claim that B05 restart/Stop guarantees already exist. B06's first text preview
+includes editable persona/model/tools and safe revisions; memory management and
+code-backed skills become available only after B07/B10 acceptance. Do not advertise
+unimplemented controls as working. CLI/TUI means one minimal usable terminal
+surface sharing the service backend; a second elaborate terminal framework is
+not required to duplicate the GTK application.
+
+B12 is deliberately exercised before later optional experience work. Its early
+installed image is labeled with the components actually present. B13 reassembles
+all accepted B packages into the exact final image and checks the installed
+manifest so later memory/automation/voice/plugin packages cannot be omitted.
+Optional apps can be prepared in B02 and selected in B12. B10 includes one narrow
+opt-in browser integration from the existing FR-10 requirement, not a general
+web-automation product or access to the owner's personal authenticated browser.
+
+Voice and plugins are optional for the user to enable; their B-story acceptance
+remains required for G2 under the current scope. A smaller text snapshot is an
+interim preview. Any change to required G2 scope must be explicit and cannot be
+made by silently marking a disabled required feature completed.
 
 ## 7. Basic testing, time control and owner validation
 
@@ -257,7 +294,8 @@ pixels. Use midnight/navy surfaces, restrained clear-blue accents and cool light
 surfaces. Preserve accessible focus, contrast, high-contrast mode and status colors.
 
 Update wallpapers, boot/login background, UI tokens and dashboard coherently.
-Keep original assets/provenance archived and record generated dimensions honestly.
+Keep original identity/provenance recoverable in Git history and record generated
+dimensions honestly; do not duplicate superseded beige assets in the checkout.
 The Toddy app and a static UI design preview may use the full palette; avoid global
 CSS hacks that break unrelated Libadwaita apps. Dark/light preference must work.
 Brand work does not rebuild or change the already published foundation ISO.
@@ -303,6 +341,12 @@ prompt. Build/download jobs may take longer and should be resumable and monitore
 Do not install a new test stack or rerun broad accepted suites for cosmetic edits.
 
 ## 9. Required evidence and handoff
+
+Use the execution playbook and continuation card before every long job, after a
+verified slice, on failure and before yielding. Reconcile actual Git, VM/job/log
+and operation postconditions after compaction; never restart from a chat summary.
+The planning checker enforces owner approval and B-story/status criteria/dependency
+consistency. Eligibility does not itself grant execution authorization.
 
 Each story records exact input versions, commands, exit status, observed
 postconditions, one recovery note and applicable smoke IDs. Keep large logs and

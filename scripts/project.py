@@ -9,6 +9,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 STATES = {"not_started", "in_progress", "blocked", "completed"}
+PHASE2_ORDER = ("B01", "B03", "B04", "B05", "B02", "B06", "B11", "B12", "B07", "B08", "B09", "B10", "B13")
+
+
+def next_eligible(data):
+    """Prefer an active checkpoint, then the documented risk-first delivery order."""
+    by_id = {row["id"]: row for row in data["milestones"]}
+    order = tuple(f"H{i:02d}" for i in range(1, 14)) + PHASE2_ORDER
+    eligible = [ident for ident in order if by_id[ident]["status"] != "completed"
+                and all(by_id[dep]["status"] == "completed" for dep in by_id[ident]["depends_on"])]
+    active = [ident for ident in eligible if by_id[ident]["status"] == "in_progress"]
+    return next(iter(active or eligible), "B13")
 
 
 def local_file(root, value):
@@ -52,7 +63,17 @@ def validate(data, root=ROOT):
         expected_phase = "foundation" if row["id"].startswith("H") else "agentic"
         if row["phase"] != expected_phase or not row.get("acceptance"):
             raise ValueError(f"Invalid phase/acceptance: {row['id']}")
-        local_file(root, row["story"])
+        story = local_file(root, row["story"])
+        if row["id"].startswith("B"):
+            content = story.read_text()
+            criteria = re.search(r"## Acceptance criteria\n(.*?)\n## ", content, re.S)
+            actual = re.findall(r"^- \[[ x]\] (.*)$", criteria.group(1), re.M) if criteria else []
+            if actual != row["acceptance"]:
+                raise ValueError(f"Story/status acceptance mismatch: {row['id']}")
+            prerequisites = re.search(r"## Prerequisites\n\s*([^\n]+)", content)
+            actual_deps = re.findall(r"\b[HB]\d{2}\b", prerequisites.group(1)) if prerequisites else []
+            if actual_deps != row["depends_on"]:
+                raise ValueError(f"Story/status dependency mismatch: {row['id']}")
         if row["status"] in {"in_progress", "completed"}:
             if any(by_id[d]["status"] != "completed" for d in row["depends_on"]):
                 raise ValueError(f"Unfinished prerequisites: {row['id']}")
@@ -89,6 +110,18 @@ def validate(data, root=ROOT):
             raise ValueError(f"Inconsistent gate {gate}")
     if data["next_story"] not in by_id:
         raise ValueError("Unknown next story")
+    review = data.get("owner_review", {})
+    if not isinstance(review, dict) or not isinstance(review.get("phase_2_approved", False), bool):
+        raise ValueError("Owner review requires a boolean phase_2_approved field")
+    approved = review.get("phase_2_approved") is True
+    if approved:
+        if data["gates"]["G1"] != "passed" or not review.get("approval_evidence"):
+            raise ValueError("Phase 2 approval requires G1 and recorded owner approval evidence")
+        if review.get("status") != "approved_for_phase_2":
+            raise ValueError("Phase 2 approval requires consistent approved_for_phase_2 review status")
+        local_file(root, review["approval_evidence"])
+    if any(row["phase"] == "agentic" and row["status"] != "not_started" for row in rows) and not approved:
+        raise ValueError("Phase 2 requires explicit recorded owner approval before any B story starts")
     work=data.get('active_work')
     if work:
         if work.get('story') not in by_id or by_id[work['story']]['status'] not in {'in_progress','blocked'}:
@@ -248,8 +281,7 @@ def main():
         by_id = {r["id"]: r for r in data["milestones"]}
         for gate, terminal in (("G1", "H13"), ("G2", "B13")):
             data["gates"][gate] = "passed" if by_id[terminal]["status"] == "completed" else "pending"
-        eligible = [r for r in data["milestones"] if r["status"] != "completed" and all(by_id[d]["status"] == "completed" for d in r["depends_on"])]
-        data["next_story"] = eligible[0]["id"] if eligible else "B13"
+        data["next_story"] = next_eligible(data)
     validate(data)
     if args.command in ("render", "set"):
         if args.command == "set":
@@ -266,7 +298,8 @@ def main():
                 raise ValueError(f"Stale generated file: {name}; run make dashboard")
         print("Planning checks passed: 26 stories, dependencies, weights, evidence, book lock, links and generated status.")
     else:
-        print(json.dumps({"phase_progress": percentages(data), "next_story": data["next_story"], "gates": data["gates"]}, indent=2))
+        print(json.dumps({"phase_progress": percentages(data), "next_story": data["next_story"], "gates": data["gates"],
+                          "phase_2_execution_allowed": data.get("owner_review", {}).get("phase_2_approved") is True}, indent=2))
 
 
 if __name__ == "__main__":

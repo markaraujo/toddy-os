@@ -64,6 +64,47 @@ class ProgressGates(unittest.TestCase):
         project.validate(self.data)
         self.assertEqual(project.percentages(self.data),{'foundation':0,'agentic':0})
 
+    def test_phase_two_cannot_start_from_a_passed_foundation_alone(self):
+        data = json.loads((ROOT / "status.json").read_text())
+        next(row for row in data["milestones"] if row["id"] == "B01")["status"] = "in_progress"
+        data["owner_review"]["phase_2_approved"] = False
+        with self.assertRaisesRegex(ValueError, "explicit recorded owner approval"):
+            project.validate(data)
+
+    def test_approval_flag_without_evidence_is_insufficient(self):
+        data = json.loads((ROOT / "status.json").read_text())
+        data["owner_review"]["phase_2_approved"] = True
+        data["owner_review"].pop("approval_evidence", None)
+        with self.assertRaisesRegex(ValueError, "approval evidence"):
+            project.validate(data)
+
+    def test_recorded_approval_can_unlock_a_prerequisite_ready_story(self):
+        data = json.loads((ROOT / "status.json").read_text())
+        # Synthetic fixture only; no real approval state or file is changed.
+        data["owner_review"]["phase_2_approved"] = True
+        data["owner_review"]["approval_evidence"] = "docs/adr/0063-owner-review-after-h13.md"
+        data["owner_review"]["status"] = "approved_for_phase_2"
+        next(row for row in data["milestones"] if row["id"] == "B01")["status"] = "in_progress"
+        project.validate(data)
+
+    def test_story_criteria_cannot_silently_drift_from_status(self):
+        self.data["milestones"][13]["acceptance"][0] += " Changed silently."
+        with self.assertRaisesRegex(ValueError, "acceptance mismatch"):
+            project.validate(self.data)
+
+    def test_story_dependencies_cannot_silently_drift_from_status(self):
+        self.data["milestones"][14]["depends_on"] = ["H13"]
+        with self.assertRaisesRegex(ValueError, "dependency mismatch"):
+            project.validate(self.data)
+
+    def test_risk_first_order_and_active_story_are_preserved(self):
+        data = json.loads((ROOT / "status.json").read_text())
+        by_id = {row["id"]: row for row in data["milestones"]}
+        by_id["B01"]["status"] = "completed"
+        self.assertEqual(project.next_eligible(data), "B03")
+        by_id["B02"]["status"] = "in_progress"
+        self.assertEqual(project.next_eligible(data), "B02")
+
 
 class DocumentationLinks(unittest.TestCase):
     def test_ignored_sources_are_excluded_but_untracked_docs_are_checked(self):

@@ -275,7 +275,8 @@
         "Record pinned GNOME/native UI/Pi engine candidates, a minimal successful tool spike and license/runtime review; no mandatory proprietary or hosted runtime.",
         "Define the minimal default application set, optional developer tools and compatible third-party driver/firmware sources without enabling Ubuntu repositories.",
         "Record reference hardware/VM settings, measured baseline and numeric budgets with a small-commit execution checklist.",
-        "Document the customizable profile/config/skill interface, precedence, task revision and independent policy boundaries before UI/service implementation."
+        "Document the customizable profile/config/skill interface, precedence, task revision and independent policy boundaries before UI/service implementation.",
+        "Freeze the UI/engine bridge, early installer/package/image feasibility and one CPU-model contract, with build-versus-runtime budgets and no-write spike evidence."
       ],
       "evidence": []
     },
@@ -292,7 +293,8 @@
       "acceptance": [
         "Login and basic browser/files/terminal/editor/network/audio work in the reference guest using pinned owned packages.",
         "The desktop stays usable without keys, models, network or active agent/inference; optional network applications fail clearly.",
-        "Publish the minimal package manifest, resource measurements and optional-app packaging status; no unsupported package is advertised as working."
+        "Publish the minimal package manifest, resource measurements and optional-app packaging status; no unsupported package is advertised as working.",
+        "New browser/XML/network/privileged consumers have recorded security/ABI review and owned pinned dependencies; no silent frozen-foundation upgrade bypasses a failure."
       ],
       "evidence": []
     },
@@ -326,7 +328,8 @@
       "acceptance": [
         "Native tools use validated authenticated IPC; ordinary tasks run unprivileged and authorized administrative actions actually work.",
         "The owner can grant session/standing full administration, inspect actions and revoke future dispatch without granting root to the conversational service.",
-        "Focused wrong-user, malformed-request, revocation and malicious-content checks pass; keys do not enter model context or audit exports."
+        "Focused wrong-user, malformed-request, revocation and malicious-content checks pass; keys do not enter model context or audit exports.",
+        "Conflicting writes are serialized and a grant revoked between planning and dispatch is rejected independently of model behavior."
       ],
       "evidence": []
     },
@@ -344,7 +347,8 @@
         "Tasks survive a service restart without duplicating a known side effect; uncertain outcomes wait for review and retries remain bounded.",
         "Stop prevents queued/new actions and terminates or reports active managed processes; revoke immediately blocks new privileged dispatch.",
         "One configuration rollback restores service operation, preserves a manual rescue path and reports drift without fighting user intent.",
-        "Invalid profile configuration preserves the working revision; one rollback and task-revision pinning check pass without unexpected replay."
+        "Invalid profile configuration preserves the working revision; one rollback and task-revision pinning check pass without unexpected replay.",
+        "A crash after an effect but before result recording is reconciled or held for review; package/boot Stop respects a documented safe commit boundary."
       ],
       "evidence": []
     },
@@ -363,7 +367,8 @@
         "Shortcut/launcher opens focused native entry; conversation, real task progress, history, errors and Stop work through desktop and CLI/TUI.",
         "API/local/later setup works per user with protected credentials; deferred setup leaves the OS usable and local mode never silently changes provider.",
         "Basic keyboard/focus, EN/PT copy and Stop smoke pass; publish an honestly labeled interim text preview rather than claiming G2.",
-        "The user can customize the harness through profiles/settings, reject invalid changes, restore a revision and export/import without credentials or administrative grants."
+        "The user can customize the harness through profiles/settings, reject invalid changes, restore a revision and export/import without credentials or administrative grants.",
+        "UI/IPC reconnect retrieves the existing task instead of replaying it; locked/missing secret service never causes plaintext credential fallback."
       ],
       "evidence": []
     },
@@ -381,7 +386,8 @@
         "Store, retrieve with source, correct and delete a preference with per-user isolation and retention controls.",
         "Export/restore preserves canonical data and deletion reaches FTS/any derived index; secrets are excluded.",
         "Record latency on the small fixed fixture; SQLite/FTS is sufficient for the preview and no vector daemon is mandatory.",
-        "Two profiles keep memory isolated; explicit memory export/delete and editable user preferences stay consistent with canonical storage."
+        "Two profiles keep memory isolated; explicit memory export/delete and editable user preferences stay consistent with canonical storage.",
+        "Interrupted migration/restore preserves the last valid canonical store, and deletion cannot resurrect preferences from USER.md or retrieval caches."
       ],
       "evidence": []
     },
@@ -398,7 +404,8 @@
       "acceptance": [
         "One schedule survives restart and a representative authorized workflow runs once without overlapping or replayed effects.",
         "Disk/service monitoring stays quiet when unchanged; notifications occur only on meaningful actionable changes.",
-        "Cancellation and resource/cost bounds work without a paid model call for deterministic unchanged checks."
+        "Cancellation and resource/cost bounds work without a paid model call for deterministic unchanged checks.",
+        "Missed-run behavior is explicit; import/clone never enables schedules or copies standing grants."
       ],
       "evidence": []
     },
@@ -427,6 +434,7 @@
       "weight": 6,
       "status": "not_started",
       "depends_on": [
+        "B02",
         "B04",
         "B05"
       ],
@@ -435,7 +443,8 @@
         "Versioned plugin schemas and one actual local MCP integration work end to end with timeouts and separate credentials.",
         "Removal/revocation blocks further calls; plugin discovery/install/update grants no implicit account access or administrative privileges.",
         "One focused capability-denial and isolation check passes; optional external connectors are honestly unverified or disabled.",
-        "One user skill loads only when relevant; unknown code/hooks stay disabled and skill instructions cannot override executor policy."
+        "One user skill loads only when relevant; unknown code/hooks stay disabled and skill instructions cannot override executor policy.",
+        "One opt-in browser tool navigates/reads a harmless local page with an isolated test profile, explicit Stop/error behavior and no authority inherited from page content."
       ],
       "evidence": []
     },
@@ -453,7 +462,7 @@
       "acceptance": [
         "The exact approved logo/mascot remain unchanged and the actual guest login/desktop/Toddy use coherent navy assets with readable light/dark/focus states.",
         "Installer scene assets show GNOME/Toddy workflow previews and concise nerdy affectionate dog personality; concept versus real capture is explicit.",
-        "Dimensions, original archives, export provenance and runtime screenshots are recorded; repository design work alone earns no guest acceptance."
+        "Dimensions, Git-recoverable original provenance, exports and actual guest screenshots are recorded; repository design work alone earns no guest acceptance."
       ],
       "evidence": []
     },
@@ -475,7 +484,8 @@
         "AI/API/later and optional OpenCode/VS Code selections use verified backends, protected first-run secrets and resumable offline/deferred behavior.",
         "Third-party drivers/firmware/software choices disclose source/license and enforce hardware/kernel compatibility with tested transaction rollback and a rescue/open fallback.",
         "Basic native install/remove/upgrade, config preservation, signature/conflict rejection and one failed-update recovery pass; unsupported advanced disk/boot features are explicit.",
-        "The installer includes coherent navy GNOME/Toddy scenes and affectionate nerdy dog copy while progress, errors and destructive choices remain clear."
+        "The installer includes coherent navy GNOME/Toddy scenes and affectionate nerdy dog copy while progress, errors and destructive choices remain clear.",
+        "The installed system removes live-only accounts/autologin, regenerates machine identity and contains no inherited secrets or private signing keys; persistence and rescue are verified."
       ],
       "evidence": []
     },
@@ -504,7 +514,8 @@
         "The exact installed release candidate passes the focused mandatory smoke matrix, with no unexplained critical safety or basic-function failure.",
         "Deliver ISO/checksums/source-build-license inventory, recovery instructions and a concise owner guide with passed/failed/deferred/not-run evidence and test durations when measured.",
         "Broader hardware/model/accessibility/soak validation is explicitly delegated to owner-use backlog; VM-only and experimental status are truthful and no deferred test is marked passed.",
-        "The installed preview supports a working customizable default harness, safe profile changes/restore and no imported privilege grant under S24."
+        "The installed preview supports a working customizable default harness, safe profile changes/restore and no imported privilege grant under S24.",
+        "The exact candidate includes all accepted B components and passes installed-image hygiene and browser integration checks; earlier incomplete preview artifacts are not reused as final acceptance."
       ],
       "evidence": []
     }

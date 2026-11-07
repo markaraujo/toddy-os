@@ -2,7 +2,7 @@
 
 ## Scope and reading order
 
-Read PRD.md, STATUS.md, status.json, docs/DEVELOPMENT.md, docs/OPEN-DECISIONS.md and the next eligible story before making implementation changes. Read current code directly. Canonical repository documentation and commit messages must be English. The owner explicitly approved public portal translations in English, Portuguese, Spanish, Simplified Chinese, Japanese and Russian; locale strings belong in ui/translations.js. Preserve approved artwork in assets/brand/; do not redesign it unless asked.
+Read PRD.md, STATUS.md, status.json, docs/DEVELOPMENT.md, docs/OPEN-DECISIONS.md and the next eligible story before making implementation changes. Read current code directly. Canonical repository documentation and commit messages must be English. The owner explicitly approved public portal translations in English, Portuguese, Spanish, Simplified Chinese, Japanese and Russian; locale strings belong in ui/translations.js and the supporter reply catalog ui/supporter-thanks.js. Preserve approved artwork in assets/brand/; do not redesign it unless asked.
 
 Development was explicitly started by the owner. Continue autonomously through H13 and validate G1. The owner amended the execution boundary on 2026-11-06 (America/Sao_Paulo): deliver the foundation ISO and evidence for owner testing, then wait for explicit owner approval before starting B01 or any later B story. G1 technical acceptance alone does not authorize Phase 2. See docs/adr/0063-owner-review-after-h13.md. Existing PRD requirements still authorize routine technical decisions and dependency installation within the active phase; record decisions rather than requesting routine continuation approval.
 
@@ -21,6 +21,16 @@ regressions; do not repeat unchanged long foundation suites or launch broad
 hardware/provider/soak matrices as preview gates. Essential boot/install,
 credential/privilege, cancellation/replay and recovery checks remain required.
 Broader coverage is explicit owner-use backlog, never fabricated acceptance.
+
+## Phase 2 execution and resumption
+
+Follow docs/PHASE-2-EXECUTION.md, docs/PHASE-2-VALIDATION.md and the short
+PHASE-2-CHECKPOINT.md in docs/. Preserve one current slice and one guest writer.
+After compaction inspect actual Git/VM/job/log and operation postconditions before
+continuing; never replay an uncertain system change from a chat summary or PID.
+The planning validator now enforces recorded owner approval and B-story/status
+criteria/dependency consistency. It does not grant approval or prove runtime tests.
+Default risk-first next-story priority preserves an in-progress checkpoint.
 
 ## Autonomous dependency installation and unblocking
 

@@ -72,7 +72,8 @@ profiles during planning. Respect XDG equivalents when configured.
 
 Require valid profile IDs and canonical path containment; reject traversal,
 out-of-root symlinks and duplicate/conflicting import paths. Keep per-user access
-and per-profile isolation. Exports contain config/persona/skills by default;
+and logical per-profile isolation. Same-UID profiles are not a security boundary
+against arbitrary code owned by that user or an unrestricted root grant. Exports contain config/persona/skills by default;
 include memory/history only through an explicit separate choice. No API keys,
 secret-service values, root grants, automatic token copying or auto-running imports.
 Do not upload personal profiles/memory to the public project repository.
@@ -122,6 +123,13 @@ task under current policy. No startup script or package installation is run just
 because it appears in SKILL.md. Imported bundles require provenance and review;
 unknown hooks remain disabled until a separate plugin activation action.
 
+A separate process alone does not isolate credentials. A B10 plugin must have a
+verified filesystem/IPC/network boundary, a scrubbed environment and only the
+explicitly scoped input/credential access it needs. Probe attempts to read another
+profile dummy secret, contact the secret service and send undeclared network data.
+If the selected guest cannot enforce containment, leave untrusted code disabled;
+do not describe it as isolated merely because it has another PID.
+
 Code extensions run as B10 external plugin/tool processes with declared schemas,
 limits, credentials and capability grants. Keep arbitrary user code outside
 GNOME Shell, the UI process and the root executor. This still allows advanced
@@ -146,6 +154,12 @@ already required. Clearly disclose unrestricted-root consequences.
 - B08: profile-scoped workflows with independent standing authorization.
 - B10: minimum SKILL.md load-on-demand and one bounded extension/MCP process.
 - B13: one integrated S24 check; broader profile/skill ecosystems remain owner use.
+
+S24 is staged to avoid depending on features that do not exist yet. B01 reviews
+contracts only. B05/B06 run S24-A (revision/apply/recovery and editable defaults),
+B07 runs S24-B (canonical memory/profile isolation), B10 runs S24-C (on-demand
+skills/import containment), and B13 combines them. The B06 preview does not claim
+B07/B10 functionality; these controls are absent or explicitly pending.
 
 S24 is a small fixture sequence: edit persona/model/tool selection, reject invalid
 config without losing the working profile, restore a revision, import/export with

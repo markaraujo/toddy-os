@@ -25,6 +25,16 @@ Do not interpret a screenshot mockup or an optional package candidate as a worki
 OS feature. Historical implementation/recovery notes below do not override the
 new Phase 2 plan or authorize duplicate foundation builds.
 
+## Phase 2 execution review
+
+Read [the closed design choices](PHASE-2-DESIGN-BASELINE.md),
+[the findings](PHASE-2-REVIEW.md), [execution/resume playbook](PHASE-2-EXECUTION.md)
+and [current continuation card](PHASE-2-CHECKPOINT.md). The preferred eligible
+sequence front-loads headless engine/policy/recovery and installer feasibility.
+Do not read the historical H-build sequence below as a command to rebuild the
+accepted foundation. Source/target checkpoint and one next action survive a new
+agent session; private running-job details stay outside Git.
+
 ## Small delivery loop
 
 Take one user-visible behavior or isolated prerequisite at a time. Record its
@@ -47,7 +57,7 @@ asking for milestone confirmation.
 
 Open this repository in Codex. Give the following instruction:
 
-> Read AGENTS.md, PRD.md, STATUS.md, status.json and docs/DEVELOPMENT.md. Inspect actual Git, processes and artifacts; resume the next incomplete eligible story without rebuilding accepted work. For a separate fresh build, start H01 and select an isolated environment. Inspect the versioned candidate in H01 and freeze it in H02, then follow that frozen LFS book through H13 without routine continuation questions; deliver the foundation for owner testing and wait for explicit approval before B01-B13, maintain logs, decisions and progress, and validate each milestone. Do not touch physical disks or begin Phase 2 before its gate. Autonomously install and configure required host/guest tools with available administrative privileges, verify fixes and continue; request user action only for concrete unavailable access or actions outside scope. Report concrete blockers and verified results.
+> Read AGENTS.md, STATUS.md/status.json, the current section of docs/DEVELOPMENT.md, docs/OPEN-DECISIONS.md and docs/PHASE-2-CHECKPOINT.md. Follow docs/PHASE-2-EXECUTION.md and the selected eligible story. Inspect actual Git, target/checkpoint, job/log and last verified evidence before resuming its one next action. Do not rebuild accepted H01-H13 or start a duplicate writer. Guest Phase 2 work requires recorded explicit owner continuation; a planning request or next_story=B01 is not approval. Record passing small slices, affected tests, failures and recovery, commit/push through the authorized workflow, and keep the continuation card current. Report concrete missing access/legal/paid/destructive-host dependencies only after authorized alternatives are tried.
 
 Do not paste API keys into the prompt. Do not weaken sandbox/approval configuration globally. A product's full-power profile belongs inside its designated system, not on the author's workstation.
 

@@ -9,4 +9,5 @@ An ADR states context, decision, alternatives, consequences, source versions and
 - [0005 — Single public repository and Pages](0005-single-public-repository-and-pages.md)
 - [0105 — Native Toddy and focused owner-preview validation](0105-toddy-assistant-and-owner-preview.md)
 - [0106 — User-customizable harness and profiles](0106-user-customizable-toddy-harness.md)
+- [0107 — Phase 2 execution and recovery review](0107-phase2-execution-and-recovery-review.md)
 - [Template](template.md)

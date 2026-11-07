@@ -1213,3 +1213,24 @@ approval/reward language and dismissive or gross jokes. Added a reusable voice
 rubric to ui/README.md. All 600 browser-displayed translations matched; the name,
 layout stability and existing random selection remain intact. 186 checks passed.
 See evidence/supporter-thanks-editorial-review.md.
+
+## 2026-11-07 — Phase 2 gap review, design closure and resumable execution
+
+Reviewed PRD, all B stories/status dependencies, harness, smoke coverage and
+handoff/release instructions. Recorded 17 planning gaps and corrections in
+PHASE-2-REVIEW.md, with a risk-first playbook and short continuation card. Closed
+owner-level component/IPC/voice/model/sandbox/browser choices in the design
+baseline while preserving B01 compatibility locks and actual future runtime gates.
+Staged premature S01/S17/S24 checks and added browser/installed-image hygiene
+coverage. Synchronized B criteria/dependencies and retained all B states unstarted.
+
+Planning tools now reject B starts without recorded explicit owner approval,
+reject story/status drift and preserve an active story while choosing the default
+risk-first priority. A rejected CLI B01 start left status.json byte-identical.
+make dashboard/site/check passed; 192 local tests ran in 0.206 seconds. These are
+repository checks, not guest S01-S26 acceptance. No guest job/model/ISO was started.
+
+The README now links the public site and two clearly labeled current concept
+screens. Separate repository-governance evidence records the owner-authorized
+main/tag rules, CODEOWNERS, contributor/security policies, fork CI permissions and
+secret detection/history audit. Publication checks are recorded after the push.
