@@ -94,5 +94,29 @@
     "mode": "RGB",
     "sha256": "8c5083f54632a2810d18094aabd8ab1f084c477372863cd42b8d2ccc3064c4f2",
     "role": "generated-branded-wallpaper"
+  },
+  {
+    "file": "web/toddy-yawn-half.png",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "sha256": "a8786eeaa2b8e169d6136a4646a9febbd02c14469e838185744eae2f91e4e4fd",
+    "role": "web-only-animation-frame",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "web/toddy-yawn-full.png",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "sha256": "9bdbc3686611ae22253b7f3b36255953af84121b08a0a2fc2bcbcc0828e3e119",
+    "role": "web-only-animation-frame",
+    "alpha_extrema": [
+      0,
+      255
+    ]
   }
 ]

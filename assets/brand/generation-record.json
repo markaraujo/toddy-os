@@ -71,5 +71,32 @@
     "Published foundation ISO remains unchanged.",
     "Logo wallpaper variants contain generated mascot/label reproductions, not pixel-identical compositing of the protected logo. Original logo and transparent mascot files remain byte-identical.",
     "Preview screenshots include third-party GNOME/Adwaita icons under their retained licenses; see assets/third-party/gnome/manifest.json and notices. They are not exclusively original Toddy artwork."
-  ]
+  ],
+  "web_animation": {
+    "scope": "Website-only interaction; original OS/logo/wallpaper assets unchanged",
+    "idle": "toddy-os-system-icon.png",
+    "provider": "Built-in image generation",
+    "frames": [
+      {
+        "file": "web/toddy-yawn-half.png",
+        "prompt": "Use case: identity-preserve. Create ONE transparent-background animation keyframe from the supplied Toddy OS mascot. This is the SAME adult chestnut-and-ivory Shih-tzu wearing the SAME black rounded-square glasses, identical short muzzle, warm fur, confident outlines, head angle and raised-brow personality. This is NOT a redesign. Preserve the same square-canvas framing, head scale, top tuft, ear positions, glasses placement and lower beard silhouette as closely as possible for registration in a website animation. Change ONLY the expression into the START of a bored, slightly contemptuous YAWN: eyelids heavy and half-closing, jaw beginning to open in a modest vertical oval below the nose, a tiny glimpse of tongue, no bared teeth. Expression says 'another human meeting? really?' with dry wit. No anger, no crying, no sleep bubble, no stars, no letters. The whole head is visible with the same modest clear margins as the input, not cropped. Genuine alpha-transparent background; ivory fur remains opaque. No shadow, no glow, no tile, no badge, no body, no text, no watermark. Square image. Keep the original professional illustrated identity.",
+        "references": [
+          "toddy-os-system-icon.png"
+        ]
+      },
+      {
+        "file": "web/toddy-yawn-full.png",
+        "prompt": "Use case: identity-preserve. Produce ONE transparent animation keyframe, the PEAK OF A BORED YAWN, for the exact Toddy OS Shih-tzu in these references. Image 1 is the original identity and image 2 is the preceding half-yawn frame. Keep the same head scale and framing, exact head angle, top tuft, outer ear/beard silhouette, chestnut-and-ivory fur shapes, black rounded-square glasses and professional dark outlines. Do not redesign. Change ONLY eyelids and the mouth/jaw area: eyes now closed into relaxed sleepy curves behind the lenses, mouth opening into a wider/taller relaxed vertical yawn below the same nose position, small curved coral tongue visible. This must clearly read as a dog BORED by his human, not an aggressive bark or astonishment. No teeth, no paws, no accessories, no costume, no sleep letters or bubbles, no text, no badge, no shadows/glow. Preserve opaque ivory fur and genuine alpha transparency around the same complete head, modest clear margins. Same square composition as the references for smooth website animation registration. Express an understated, opinionated nerdy Shih-tzu with strong personality.",
+        "references": [
+          "toddy-os-system-icon.png",
+          "web/toddy-yawn-half.png"
+        ]
+      }
+    ],
+    "runtime": "On-demand PNG decode, one-shot CSS keyframes, vanilla JavaScript caption cycling; reduced-motion keeps original still image",
+    "limitations": [
+      "Animation frames are generated expression variants, not pixel-identical edits of the original mascot.",
+      "The original source identity remains the static idle state and is unchanged."
+    ]
+  }
 }
