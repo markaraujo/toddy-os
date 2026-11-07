@@ -995,3 +995,21 @@ check and use sources/stage/h10-live-media/{initramfs,iso}, beneath a root-owned
 The new media-only continuation revalidates completed assembly/compression
 bindings before creating fresh outputs. No root reconstruction or compression
 retry is needed. The original live-driver exit 1 remains preserved evidence.
+
+## 2026-11-07 — Image QA exclusion omitted generated legal-notice copies
+
+The first H11 release root passed source/copy/directory/database stages, then
+refused a source-notices payload entry before Dpkg removal. The universal native
+packager now retains exact legal notices from source archives; the older image
+remover recognized only the manually copied copyright file. Recognize only
+regular legal-metadata entries identical to their corresponding retained Python
+runtime record. Keep rejection of unrelated documents, symlinks and changed
+bytes. Do not remove upstream notices from the native QA package to bypass this.
+
+Actual native purge in the preserved failed root passed: 134 image packages
+remain, 3,980 runtime files/links and the builder database are unchanged, and QA
+payload/ownership is absent. The initial assembly stays failed. Two focused
+regressions cover legal copies and changed/unrelated/redirected inputs; full
+release assembly must still retry. Original root, regression result and failed
+logs are retained under sources/recovery/h11-qa-notices-20261107 and the matching
+/var/log/toddy/history generation. See H11-qa-notice-removal.json.

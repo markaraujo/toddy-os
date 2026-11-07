@@ -374,3 +374,10 @@ the earlier private fixture). Native SSL/SQLite runtime, Dpkg audit and APT
 check passed; recipe/postcheck are 0/0. Complete builder tests remain available.
 See docs/evidence/H11-python-qa.json. Actual final-image exclusion and full
 credential review remain required; this transfer alone does not accept H11.
+
+The first full release-root integration exposed newly retained source-notices
+in the optional QA package. Its image-removal allowlist now admits only regular
+copyright/source-notice metadata exactly matching the corresponding retained
+core record. Native purge passed with unchanged runtime and builder state;
+changed metadata, unrelated files and symlinks remain refused. Full fresh-image
+retry remains required. See docs/evidence/H11-qa-notice-removal.json.

@@ -18,6 +18,18 @@ PACKAGE = 'python-test-support'
 QUERY = '${Package}\t${Version}\t${Architecture}\t${Status}\n'
 
 
+def removable_document(path, row, core):
+    """Only exact copies of the runtime's retained legal metadata may leave."""
+    prefix = '/usr/share/doc/python-test-support/'
+    if not path.startswith(prefix) or not row.get('sha256'):
+        return False
+    suffix = path[len(prefix):]
+    if suffix != 'copyright' and not (suffix.startswith('source-notices/')
+            and '/' not in suffix[len('source-notices/'):]):
+        return False
+    return row == core['payload'].get('/usr/share/doc/python/' + suffix)
+
+
 def remove_image_qa(backend, image, core, qa, journal):
     image, journal = Path(image), Path(journal)
     if (not backend.native or os.geteuid() != 0 or image.resolve() != image or not image.is_dir()
@@ -38,7 +50,7 @@ def remove_image_qa(backend, image, core, qa, journal):
     if any(is_qa(path) for path in core['payload']):
         raise ValueError('Runtime still owns QA paths; complete the ownership transfer first')
     for path, row in qa['payload'].items():
-        if not row.get('directory') and not (is_qa(path) or path == '/usr/share/doc/python-test-support/copyright'):
+        if not row.get('directory') and not (is_qa(path) or removable_document(path, row, core)):
             raise ValueError('QA record contains an unexpected removable payload: ' + path)
     if not any(is_qa(path) and not row.get('directory') for path, row in qa['payload'].items()):
         raise ValueError('An empty QA record is not release exclusion evidence')
