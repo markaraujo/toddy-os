@@ -845,3 +845,10 @@ successfully. Actual GCC executable and locale archive hashes remain identical
 to their original accepted builds; the failed locale record remains unaccepted.
 177 local tests pass. Serial closure continued to 43/126 current receipts and
 will run the prepared directory identity reconciliation and eight final audits.
+
+All 126 metadata generations and eight final audits passed. Dpkg audit is empty,
+APT dependency consistency passed and only the explicitly qualified Systemd
+private loader context remains. Directory reconciliation changed exactly the
+measured CMake directory, then verified all 2,928 owned directories. Exported
+and verified all native archives/records; the builder powered down cleanly and
+the final paired cold checkpoint copy/hash/qcow2 verification chain is running.

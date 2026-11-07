@@ -1,7 +1,7 @@
 # ADR-0095: Preserve exact dependencies across metadata-only revisions
 
 - Date: 2026-11-07
-- Status: Native exact-dependency recovery passed; full closure in progress
+- Status: Accepted after full native closure and Dpkg/APT consistency checks
 
 Final closure completed 35 generations, then Glibc-locales unpacked but could
 not configure: its exact glibc (= 2.44-1) dependency did not match the already
@@ -44,3 +44,7 @@ archive SHA-256 still match their original accepted source-built payloads.
 The failed locale +toddy1 component record remains installed=false. Closure
 continued to 43/126 complete generations. See H07-metadata-recovery.json; this
 is not yet final whole-base dependency/audit acceptance.
+
+All 126 metadata generations subsequently passed. Native dpkg --audit was empty
+and apt-get check exited zero. Eight final audits passed with no unqualified
+findings; see docs/evidence/H07-final-audits.json. Cold checkpoint is separate.

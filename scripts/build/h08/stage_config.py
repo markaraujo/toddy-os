@@ -16,7 +16,7 @@ FILES={
  'etc/adjtime': '0.0 0 0.0\n0\nUTC\n',
  'etc/fstab': '# Disposable build-target profile; live media and installer provide their own filesystem profile.\nLABEL=TODDY_LFS / ext4 defaults 1 1\n# TODDY_ESP is mounted explicitly during bootloader operations (LFS 10.2).\nLABEL=TODDY_SWAP none swap defaults 0 0\n',
  'etc/systemd/network/10-toddy-dhcp.network': '[Match]\nName=en* eth*\n\n[Network]\nDHCP=ipv4\n\n[DHCPv4]\nUseDomains=true\n',
- 'etc/profile': '''# LFS 13.1-systemd section 9.6 computer instructions (MIT).
+ 'etc/profile': '''# LFS 13.1-systemd section 9.7 computer instructions (MIT).
 export PATH=/usr/bin:/usr/sbin
 for i in $(locale); do
   unset "${i%=*}"

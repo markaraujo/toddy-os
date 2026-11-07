@@ -1564,3 +1564,12 @@ its directory-ownership.intent.json and inspect every planned before/after
 identity before resuming; never remove the receipt to conceal an unknown change.
 Full closure acceptance, the final package export and cold paired checkpoint
 remain pending. H07 must not be marked complete from the package count alone.
+
+Final closure driver 39301 is terminal zero. All 126 metadata generations, eight
+audits and Dpkg/APT consistency checks passed (H07-final-audits.json). The native
+archive export completed and verified. Host checkpoint chain is now in
+.local/logs/h07-final-checkpoint-run.sh, log h07-final-checkpoint.log, terminal
+file h07-final-checkpoint.exit. Host shell PID 1318991 owns the sequential
+clean-stop/save/verify/start/remount/check chain. Do not start the VM separately
+while it runs; partial image copies without h07-final-base.json are unfinished.
+On actual terminal zero, inspect the manifest and checks before accepting H07.

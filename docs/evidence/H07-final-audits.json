@@ -1,0 +1,67 @@
+{
+  "driver_exit": 0,
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "closure_log_sha256": "99a962a94b937da10c4b454c5c1e9559af8e28d0d939e5534e01c2209b2115de",
+  "closure_success_sha256": "11fc2fb92d06bee6bceb8c6e778b577827bca777c164aace1ce5863667729c8e",
+  "metadata_complete": 126,
+  "dpkg_audit_empty": true,
+  "apt_get_check_exit": 0,
+  "reports": {
+    "elf": {
+      "sha256": "570479b382dd149cdcd1f58e93d6f9d915035ce10ea6ac78f9de3a2df7bb8d4a",
+      "findings_count": 1,
+      "unqualified_findings_count": 0
+    },
+    "payload": {
+      "sha256": "12de03ca77157d46c4825b573299989fa106854e16083af25ccde4ae2004d256",
+      "findings_count": 0,
+      "duplicate_owners_count": 0,
+      "files": 66517,
+      "modified_conffiles_count": 0
+    },
+    "script-interpreters": {
+      "sha256": "b5644eafaeadfa57667e030eb164ab172481c93650173d7e594633910da7e510",
+      "findings_count": 0
+    },
+    "unowned": {
+      "sha256": "d43712f6b69a011e696c59407bec05e4dc65747371e44efb912ad6af8a5198f1",
+      "unknown_count": 0
+    },
+    "native-build-flow": {
+      "sha256": "aa14f8236286038f7e663d3d82921e4d33603bd986c2b725e030a81881fef344",
+      "passed": true,
+      "exit": 0
+    },
+    "perl-packlists": {
+      "sha256": "d783f7bfbc2c02bc7cd51cc23b955f2872c18bb1d9ab2566a778447247009e62",
+      "findings_count": 0
+    },
+    "isa-notes": {
+      "sha256": "a558a9e95c9d9189f327a45ea4541d64e79c41129eacc3368904e748564bfcdd",
+      "files_count": 1063
+    },
+    "directory-ownership": {
+      "sha256": "ae9f637a0a573ef1c7f1b059a7592a631967e56ededa2e86692203020d127415",
+      "passed": true,
+      "owned_directories": 2928
+    }
+  },
+  "directory_receipt_sha256": "346072afc134c9dcb886bc1f8265770a3ae0027ced1c99d3f7d8657d53749c8b",
+  "directory_changes": [
+    {
+      "path": "/usr/share/doc/cmake/Licenses",
+      "before": [
+        101,
+        101
+      ],
+      "after": [
+        0,
+        0
+      ],
+      "mode": 493
+    }
+  ],
+  "cold_checkpoint_pending": true,
+  "observed_at": "2026-11-07T11:41:58.339589+00:00"
+}

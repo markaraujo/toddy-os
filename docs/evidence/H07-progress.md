@@ -1651,3 +1651,21 @@ capabilities, NoNewPrivs 1 and seccomp mode 2/filter 1 were observed.
 The accepted package count is 126/126. Final closure driver 28080 is now running
 the owned Python alias, bootstrap quarantine, metadata closure and seven audits.
 H07 and its weighted credit remain pending until audits and the cold pair pass.
+
+### Final metadata/audits passed; cold checkpoint in progress
+
+All 126 current metadata receipts are complete; final closure driver and
+recipe/postcheck exited 0/0/0. Dpkg audit is empty and apt-get check passed.
+Eight audits verify 66,517 regular/link payload entries, 2,928 owned directory
+identities, 1,063 ELF ISA-note records, interpreter/dependency ownership, native
+shared-library build execution, Perl packlists and no unexplained unowned files.
+Only the exact source-backed Systemd private-library loader context remains
+qualified (ADR-0036), with zero unqualified ELF findings. See H07-final-audits.json.
+
+The host received and independently verified all 126 native archives/records in
+.local/native-package-snapshots/20261107T114158367182Z. Inventory SHA-256:
+dcd8ec6f227356f44694de4df85fdaf2ea8d817005833da3d56dcde1836fee0d.
+Archive SHA-256: 1e65134ac45ea794c69b0f837f608f49e411291564b5aa160fee3164adc723fb.
+This export is a package cache, not a booted release or demonstrated restore.
+The builder powered down cleanly for the h07-final-base paired checkpoint.
+Acceptance waits for actual copy/hash/qcow2 verification and restart checks.

@@ -1,7 +1,7 @@
 # ADR-0094: Preserve numeric ownership when extracting native metadata inputs
 
 - Date: 2026-11-07
-- Status: Implemented; native closure retry in progress
+- Status: Native closure and final directory reconciliation passed
 - Extends: ADR-0039 build-user normalization; does not change its allowed identities
 
 ## Failure and decision
@@ -56,3 +56,9 @@ retain intent/result receipts and preserve modes; reject redirected paths,
 conflicting providers and unreviewed owners. Future fresh image assembly already
 uses the corrected archive metadata, but the build target must also be verified.
 This final reconciliation remains pending while the serial metadata upgrade runs.
+
+Final native closure passed all 126 generations. The reviewed reconciliation
+changed only /usr/share/doc/cmake/Licenses from 101:101 to 0:0 while preserving
+mode 0755. Independent verification accepted all 2,928 owned directory identities.
+Receipt SHA-256: 346072afc134c9dcb886bc1f8265770a3ae0027ced1c99d3f7d8657d53749c8b.
+No arbitrary service owner or privileged mode exception was introduced.
