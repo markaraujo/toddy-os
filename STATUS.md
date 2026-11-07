@@ -28,8 +28,9 @@ Verified:
 - Complete root ownership and attribution passed; focused path regressions preserve build-root and symlink rejection (ADR-0099).
 - Full corrected native runtime audit passed: 791 dynamic executables, 383 scripts, zero findings; failed generation retained.
 - Full H10 root assembly passed all 18 stages, including ownership, whole-tree attribution, executable runtime and fresh identity.
+- Native compression, extraction and ACL restoration passed: 1,090,342,912-byte Squashfs; 82,011 entries and 1,123 hardlink groups.
 
-Running: Compressing the accepted live root with two native workers; extraction/ACL comparison, initramfs, ISO and real live boot follow.
+Running: Preparing initramfs/ISO continuation under a protected nested output directory; accepted root and compressed artifact are retained.
 
 Remaining:
 

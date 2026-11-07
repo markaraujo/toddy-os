@@ -17,7 +17,7 @@ for step in ('h10-squashfs-tools', 'h11-mtools', 'h11-libburn', 'h11-libisofs', 
     result = json.loads((Path('/var/log/toddy/build') / (step + '.success.json')).read_text())
     assert result['recipe_exit'] == result['postcheck_exit'] == 0, step
 for name in ('h10-live-root', 'h10-live-root-evidence', 'h10-live-compression',
-             'h10-live-initramfs', 'h10-validation-iso'):
+             'h10-live-media'):
     path = Path('/mnt/lfs/sources/stage') / name
     assert not path.exists() and not path.is_symlink(), 'Preserve existing generation: ' + str(path)
 PY
@@ -27,15 +27,4 @@ python3 -B h10/assemble_root.py "$stage/h10-live-root" "$stage/h10-live-root-evi
 epoch=$(python3 -c 'import datetime; print(int(datetime.datetime(2026,11,5,tzinfo=datetime.timezone.utc).timestamp()))')
 python3 -B h10/compress_root.py "$stage/h10-live-root-evidence/assembly.json" \
     "$stage/h10-live-compression" --epoch "$epoch"
-media_id=$(python3 - <<'PY'
-import hashlib,json
-from pathlib import Path
-root = json.loads(Path('/mnt/lfs/sources/stage/h10-live-compression/compression.json').read_text())
-kernel = hashlib.sha256(Path('/mnt/lfs/boot/vmlinuz-7.1.8-toddy').read_bytes()).hexdigest()
-print(hashlib.sha256(('toddy-validation-v1\n' + root['artifact_sha256'] + '\n' + kernel).encode()).hexdigest())
-PY
-)
-python3 -B h10/initramfs_archive.py "$stage/h10-live-compression/compression.json" \
-    "$stage/h10-live-initramfs" --media-id "$media_id"
-python3 -B h11/assemble_iso.py "$stage/h10-live-initramfs/manifest.json" \
-    "$stage/h10-validation-iso" --validation
+bash h10-media-driver.sh

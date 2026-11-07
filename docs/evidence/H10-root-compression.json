@@ -1,0 +1,71 @@
+{
+  "started": "2026-11-07T12:40:24.674428+00:00",
+  "image": "/mnt/lfs/sources/stage/h10-live-root",
+  "work": "/mnt/lfs/sources/stage/h10-live-compression",
+  "complete": true,
+  "native_boot_verified": false,
+  "release_accepted": false,
+  "tools": {
+    "accepted_package": true,
+    "archive_sha256": "84d1cb540ab1c5c48176606026f0867ce1cd595256f993931b23819721055936",
+    "binaries": {
+      "mksquashfs": {
+        "path": "/mnt/lfs/usr/bin/mksquashfs",
+        "sha256": "b2c67b7efc3c65ec8a57202599cc2cb22ffdca4068f534e0565055e1713fe6b4"
+      },
+      "unsquashfs": {
+        "path": "/mnt/lfs/usr/bin/unsquashfs",
+        "sha256": "a60d305ee407fc10f0ae2729b4586c3502707d5024ec1db5fc750007c88183ce"
+      }
+    }
+  },
+  "epoch": 1793836800,
+  "steps": [
+    {
+      "name": "compress",
+      "exit": 0,
+      "log_sha256": "a0c2667fd659e80cd6b900f8420f63465d519745180bef94bc4b8badc38a21f5"
+    },
+    {
+      "name": "extract",
+      "exit": 0,
+      "log_sha256": "794f2572ef40ab45c9bc6977ebfbb98d5dabfcfdfa9802521e79ad3de8d3f6ec"
+    },
+    {
+      "name": "restore-acls",
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "helper_sha256": "527eacc074c38e41324737df924b6ccc95f586cd6469ae7873485509251cd578",
+  "finished": "2026-11-07T12:45:18.460028+00:00",
+  "artifact": "/mnt/lfs/sources/stage/h10-live-compression/rootfs.squashfs",
+  "artifact_sha256": "cd94388bba986fa9594a094d078ad2f6ebcc32f081d5a91c33e33411c7b29293",
+  "artifact_bytes": 1090342912,
+  "entries": 82011,
+  "hardlink_groups": 1123,
+  "superblock": {
+    "format": "4.0",
+    "compression": "xz",
+    "epoch": 1793836800,
+    "inodes": 79572,
+    "bytes_used": 1090341203,
+    "export_table_offset": 1090340553,
+    "exportable": true,
+    "xattrs_enabled": true,
+    "superblock_sha256": "9998dfd9ef44f60b6e9c29e45822a498f80bfaff978e34d60644a963b4bf3509"
+  },
+  "sparse_files": [],
+  "sparse_allocation_preserved": true,
+  "source_unchanged": true,
+  "native_extraction_and_acl_restore_verified": true,
+  "timestamp_policy": "Squashfs uint32 whole seconds; original nanoseconds retained in source manifest",
+  "assembly_binding": {
+    "journal": "/mnt/lfs/sources/stage/h10-live-root-evidence/assembly.json",
+    "journal_sha256": "722a12e94a148bbb28a1d2b8febb3bf04595c7c15aa7057ab58548b78669e016",
+    "manifest": "/mnt/lfs/sources/stage/h10-live-root-evidence/18-image-manifest.json",
+    "manifest_sha256": "4693cfd359b5e0428b24bdaca53d06b561a9c39253dfb013d93f51a17e648398",
+    "release_profile": false
+  },
+  "report_sha256": "1724d5e9874773963186903438a2cf6535f505ba3060dcec874134eff1bc39c6"
+}

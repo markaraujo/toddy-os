@@ -1613,3 +1613,23 @@ is private validation input, not a distribution candidate. The host
 `live_boot_test.py ISO MANIFEST --firmware bios --medium cdrom` uses actual
 console login and retains its unique workspace under .local/vm/live-tests.
 Do not start a replacement guest while its recorded container remains active.
+
+### H10 accepted root/compression and media-only continuation
+
+The accepted H10 root and compression are recorded in H10-root-assembly.json
+and H10-root-compression.json under docs/evidence/. The initial full driver
+ended 1 at the initramfs output-parent preflight; it created no initramfs.
+Keep its original PID/exit/launch log. Do not rerun the full live driver over
+these accepted artifacts. After synchronizing the corrected committed inputs,
+run `bash /opt/toddy-build/scripts/build/h10-media-driver.sh` with a durable
+launch log. It captures h10-media-driver.pid/exit under /var/log/toddy,
+revalidates the source/compression bindings and creates only fresh
+sources/stage/h10-live-media/{initramfs,iso}. The full clean-build driver calls
+the same continuation. The original mount/ownership checks stay unchanged.
+
+The prior failed root generations are retained under
+sources/recovery/h10-info-null-20261107 and h10-runtime-path-20261107.
+Their journals remain failed; separate regression evidence never relabels them.
+If media generation fails after creating output, preserve its exact directory
+and diagnose that stage. Never discard or rebuild an accepted compressed root
+merely because an independent media step failed.

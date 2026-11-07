@@ -983,3 +983,15 @@ original failed report and journal. The first ad-hoc retry attempted to lock the
 fresh image's deliberately absent Dpkg lock files; it made no payload change.
 Use the actual source database read lock plus exclusive build lock, as production
 assembly does, with the image database snapshot checked by the runtime auditor.
+
+## 2026-11-07 — Media output parent violated the existing protection policy
+
+Full root assembly and compression/readback passed. The first production
+initramfs CLI then rejected sources/stage as its immediate output parent:
+its own parent is the book's build-user-owned, mode-1777 /sources. Earlier
+component fixtures used a nested protected directory. Preserve that strict
+check and use sources/stage/h10-live-media/{initramfs,iso}, beneath a root-owned
+0700 generation directory. Do not change /sources ownership or security policy.
+The new media-only continuation revalidates completed assembly/compression
+bindings before creating fresh outputs. No root reconstruction or compression
+retry is needed. The original live-driver exit 1 remains preserved evidence.
