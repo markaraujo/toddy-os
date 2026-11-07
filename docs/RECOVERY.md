@@ -862,3 +862,17 @@ only its declared native library subset. Never copy builder caches, change the
 owned /lib64 layout to match the minimal initramfs, or overwrite an interrupted
 image cache. Preserve it and reconstruct a fresh stage. Additional loader search
 configuration/tunables need a reviewed extension to the frozen foundation policy.
+
+
+Fresh image accounts now include the explicit _apt UID/GID 100 service identity
+(ADR-0065); the book-only 14-user/34-group probe is historical evidence. Current
+reproduction is python3 scripts/host/probe_live_accounts.py, followed by
+python3 scripts/host/probe_live_console.py after account policy changes. Expect
+15 users/35 groups, clean native Shadow checks, native UID/group 100 download
+fixture write and root-only fixture denial. Actual APT acquisition remains
+pending, including effective worker identity and absence of root fallback.
+The prepared repository acceptance wrapper now rejects the frozen APT warnings
+for missing sandbox identity or unsandboxed root downloads, even with exit 0.
+Do not synchronize this recipe into the active H07 dispatcher; use the next
+successful quiescent boundary. Preserve any failed APT fixture and fix account/
+path access rather than disabling sandboxing or allowing the warning.

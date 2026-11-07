@@ -16,10 +16,10 @@ class LiveAccounts(unittest.TestCase):
 
     def test_fresh_identity_preserves_service_ids_and_has_no_credentials(self):
         files, users, groups = module.account_data(self.baseline)
-        self.assertEqual((users, groups), (14, 34))
+        self.assertEqual((users, groups), (15, 35))
         passwd = {row.split(':')[0]: row.split(':') for row in files['etc/passwd'][0].splitlines()}
         for name, uid in [('root', '0'), ('messagebus', '18'), ('systemd-network', '76'),
-                          ('systemd-resolve', '77'), ('systemd-timesync', '78')]:
+                          ('systemd-resolve', '77'), ('systemd-timesync', '78'), ('_apt', '100')]:
             self.assertEqual(passwd[name][2:4], [uid, uid])
         self.assertNotIn('tester', passwd)
         for name in ('shadow', 'gshadow'):
@@ -33,6 +33,14 @@ class LiveAccounts(unittest.TestCase):
                          'service:nonsecret-sentinel:101:101::/:/usr/bin/false\n'):
             data = copy.deepcopy(self.baseline)
             data['passwd'] += addition
+            with self.assertRaises(ValueError):
+                module.account_data(data)
+
+    def test_missing_or_reassigned_apt_sandbox_identity_is_rejected(self):
+        for replacement in ('', '_apt:x:101:100:APT Package Acquisition:/nonexistent:/usr/bin/false\n'):
+            data = copy.deepcopy(self.baseline)
+            data['passwd'] = data['passwd'].replace(
+                '_apt:x:100:100:APT Package Acquisition:/nonexistent:/usr/bin/false\n', replacement)
             with self.assertRaises(ValueError):
                 module.account_data(data)
 

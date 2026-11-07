@@ -365,3 +365,13 @@ and twelve invalid-input cases are refused. Corrected the initial full-system
 Native package links and installed caches/status are unchanged. This is a real
 component subset, not full-root/boot acceptance. Berkeley DB remains active in
 compression Test044; the supervisor still waits for its complete terminal result.
+
+2026-11-07 00:22 UTC — Confirmed Berkeley DB's actual consumer in frozen APT is
+apt-ftparchive's repository metadata cache and recorded the source chain. Image
+integration review found the missing _apt account; added the explicit fresh
+UID/GID 100 identity without inheriting builder accounts. Native Shadow/NSS,
+privilege-drop/access checks and live-console regression pass (ADR-0065).
+Prepared APT postchecks now reject root-fallback diagnostics; actual APT
+acquisition remains pending. Active build inputs and installed accounts are
+unchanged. Berkeley DB compression Test044 completed and execution advanced
+to Test076; the complete standard suite is still running.

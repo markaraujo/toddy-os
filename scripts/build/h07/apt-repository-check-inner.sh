@@ -48,6 +48,23 @@ Acquire::Languages "none";
 DPkg::Options { "--root=$fixture/root"; "--log=$fixture/dpkg.log"; "--force-confold"; "--force-confdef"; };
 APTCONF
 export APT_CONFIG="$fixture/apt.conf"
+# A successful command can still report root fallback. Treat the exact frozen
+# C-locale diagnostics as failed acceptance, not a harmless download warning.
+# Effective worker identities also require observation in the final image.
+apt-get() {
+ local result
+ if command apt-get "$@" > "$fixture/apt-command.log" 2>&1; then
+  result=0
+ else
+  result=$?
+ fi
+ cat "$fixture/apt-command.log"
+ if grep -E 'No sandbox user|Download is performed unsandboxed as root' "$fixture/apt-command.log"; then
+  printf 'Unexpected APT privilege fallback; preserve fixture for diagnosis\n' >&2
+  return 125
+ fi
+ return "$result"
+}
 printf 'deb [signed-by=%s] file:%s ./\n' "$fixture/repository.gpg" "$fixture/repo" > "$fixture/config/sources.list"
 make_package() {
  local name=$1 version=$2 depends=$3

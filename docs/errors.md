@@ -562,3 +562,23 @@ acceptance remains pending. No active BDB inputs were changed. See ADR-0045.
 - Verification: two cache generations are byte-identical, native Bash uses the
   image cache/libraries, and twelve refusal cases pass. Installed caches/package
   state are unchanged. ADR-0064 retains original failure and final evidence.
+
+
+### Fresh image account baseline omitted the selected APT sandbox identity
+
+- Symptom: source/configuration review found the image account generator retained
+  only LFS book accounts while the selected APT profile requires _apt. This is a
+  future image defect; actual APT acquisition has not run yet.
+- Cause: the build recipe creates _apt separately, but fresh image generation
+  deliberately excludes inherited passwd/shadow state. APT's frozen missing-user
+  branch clears the sandbox username and warns instead of failing the command.
+- Correction: add the documented reserved image identity, require it during
+  generation, and make prepared APT acceptance reject root-fallback diagnostics.
+- Verification: native Shadow checks, Glibc identity lookup, Coreutils UID/group
+  drop, partial-download write and root-only read denial pass. Native console
+  regressions pass; actual APT worker/network checks remain pending (ADR-0065).
+
+The first expanded account probe requested setpriv, disabled by the frozen
+Util-linux profile. It refused before creating the account fixture. Reused the
+accepted native Coreutils chroot --userspec/--groups instead; no host substitute,
+new dependency or altered package build was needed. Failure evidence is in ADR-0065.

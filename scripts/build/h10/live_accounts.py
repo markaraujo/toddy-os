@@ -1,4 +1,4 @@
-"""Create fresh book-derived image accounts without reading builder credentials.
+"""Create fresh book/service image accounts without reading builder credentials.
 
 This is an assembly component, not an installed-target account migration tool.
 The caller supplies a fresh private image stage under its milestone guard.
@@ -30,6 +30,9 @@ def account_data(baseline):
             or group_names.get('root') != ['root', 'x', '0', '']
             or 'tester' in users or 'tester' in group_names):
         raise ValueError('Unexpected root or builder test account')
+    if (users.get('_apt') != '_apt:x:100:100:APT Package Acquisition:/nonexistent:/usr/bin/false'.split(':')
+            or group_names.get('_apt') != ['_apt', 'x', '100', '']):
+        raise ValueError('The foundation requires its reserved unprivileged APT identity')
     for row in passwd:
         if not row[2].isdigit() or not row[3].isdigit() or row[3] not in {group[2] for group in groups}:
             raise ValueError('Unresolved numeric account identity')

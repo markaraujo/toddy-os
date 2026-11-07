@@ -82,3 +82,18 @@ issue for that source package. This is a dated review, not an all-vulnerabilitie
 fixed claim; production excludes SQL/network-service/Java/C++ compatibility
 surfaces and APT creates its own local repository cache. Source:
 https://security-tracker.debian.org/tracker/source-package/db5.3.
+
+
+### Berkeley DB's specific role in the selected APT profile
+
+A read of the hash-verified APT 3.0.4 archive confirms CMakeLists.txt uses
+find_package(Berkeley REQUIRED); ftparchive/CMakeLists.txt links apt-ftparchive
+to BERKELEY_LIBRARIES. Its ftparchive/cachedb.h includes db.h and implements
+CacheDB. The supplied apt-ftparchive manual describes caching .deb metadata,
+including size/checksums, to avoid repeated work when producing repository
+indexes. This is the concrete consumer in the selected native APT tool bundle.
+It is not the planned agent-memory database or a kernel dependency, and requires
+no continuously running database server. The full DB standard regression policy
+above validates more library features than that specific repository-cache use.
+Source archive SHA-256: e853aec49afbe520ebcd4dbcbc98e1c55262c6bf1c119cf43e6aec69752443c6.
+No package profile, test requirement or running suite was changed by this review.
