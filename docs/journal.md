@@ -351,3 +351,9 @@ content. Installed index/package state and active build inputs are unchanged.
 Recorded ADR-0062; H07 shared-index metadata closure remains mandatory.
 Berkeley DB compression Test044 completed cycle 1 crash/recovery and started
 cycle 2 at 00:07:49 UTC for 442 seconds. Original driver/runner remain live.
+
+2026-11-07 UTC (2026-11-06 America/Sao_Paulo) — Owner amended the execution
+boundary: continue through H13, deliver the foundation for testing, and wait for
+explicit approval before B01 onward. Recorded ADR-0063 and updated AGENTS, PRD,
+development handoff and published scope. Foundation implementation remains
+active; this is a future review pause, not a present stop or a completed release.

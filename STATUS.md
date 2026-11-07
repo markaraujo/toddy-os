@@ -4,7 +4,7 @@ Updated: 2026-11-06
 
 Bootstrap: ready_for_development
 
-Implementation: H01-H06 validated in KVM. H07 has 124 accepted source-built packages and a verified cold pair. Corrected Berkeley DB C/focused tests and 483-file source comparison passed; complete standard suite running. Perl packlist metadata correction is prepared, not installed; APT/final closure and G1/G2 remain pending. No Toddy ISO.
+Implementation: H01-H06 validated in KVM. H07 has 124 accepted source-built packages and a verified cold pair. Corrected Berkeley DB C/focused tests and 483-file source comparison passed; complete standard suite running. Perl packlist metadata correction is prepared, not installed; APT/final closure and G1/G2 remain pending. No Toddy ISO. Owner review boundary: deliver H13/G1 for testing and wait for explicit approval before B01-B13.
 
 Foundation: **38%** · Agentic desktop: **0%**
 

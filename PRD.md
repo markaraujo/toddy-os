@@ -72,7 +72,7 @@ Book deviations needed for live media, networking or package tracking must cite 
 - ISO, checksum, component manifest, test summary and live-media instructions exist. No credentials are baked into a distributable image.
 - A physical-machine result is separately marked passed, failed or pending; VM success never becomes an invented hardware pass.
 
-Phase 2 development begins only after G1 passes. Research may happen earlier; implementation must not destabilize an unfinished foundation.
+Phase 2 development begins only after G1 passes and the owner explicitly approves continuation following their H13 testing. The owner requested this review boundary on 2026-11-06 (America/Sao_Paulo); see ADR-0063. Research may happen earlier; implementation must not destabilize an unfinished foundation or start B01-B13 before approval.
 
 ## 6. Phase 2 — Desktop and agentic system
 
@@ -143,7 +143,7 @@ Require install, remove, upgrade, configuration preservation, dependency/conflic
 
 ## 8. Development and release workflow
 
-One start instruction authorizes continuous implementation across both phases and autonomous dependency installation. After G1 passes, proceed into Phase 2 without asking for a second start. Resolve ordinary failures, verify outcomes and regularly commit/push progress. End only when the agreed release acceptance passes or a concrete external dependency requires user action. Session limits are real constraints; preserve restartable state rather than promising uninterrupted execution.
+The development-start instruction authorizes autonomous implementation and dependency installation through H13. Resolve ordinary failures, verify outcomes and regularly commit/push progress without routine milestone approval. After H13/G1, deliver the foundation ISO and evidence, then pause for owner testing and explicit approval before B01-B13, as requested in ADR-0063. The full experimental release requirements remain unchanged; H13 does not complete G2. Concrete external dependencies may still require user action. Session limits are real constraints; preserve restartable state rather than promising uninterrupted execution.
 
 Use one story per milestone with goal, prerequisites, steps, acceptance criteria, evidence and recovery notes. status.json is the progress source of truth. STATUS.md and dashboard/index.html are generated from it. Completed work counts only after evidence exists; unfinished work does not earn arbitrary fractional credit. Phase percentages are calculated separately from bootstrap readiness. No promise of completion time until a baseline build is measured.
 

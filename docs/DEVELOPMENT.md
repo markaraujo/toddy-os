@@ -4,11 +4,21 @@
 
 The planning repository and approved artwork are prepared. Implementation started by the owner on 2026-11-05. H01 provisions a real KVM build guest using container-packaged QEMU; see docs/evidence/H01.md and docs/RECOVERY.md. Source freeze is H02. H01–H06 passed; H07 final base has 124 accepted packages, including native support, independent ownership and corrected native capability detection; corrected Berkeley DB full retest and APT/final closure remain pending. See docs/BUILD.md and the current driver section below. No bootable Toddy ISO exists yet. status.json is authoritative for completed milestones.
 
+## Owner review boundary
+
+The owner requested on 2026-11-06 (America/Sao_Paulo) that development continue
+through H13, then pause for their foundation testing. Deliver the verified ISO,
+checksum and test/build/recovery evidence after G1. Do not start B01 or later
+B stories until explicit owner approval is received. Foundation work remains
+authorized now. This supersedes automatic progression in ADR-0004; see
+[ADR-0063](adr/0063-owner-review-after-h13.md). The full release remains planned
+and must not be marked complete at H13.
+
 ## Start a development session
 
 Open this repository in Codex. Give the following instruction:
 
-> Read AGENTS.md, PRD.md, STATUS.md, status.json and docs/DEVELOPMENT.md. Start H01, inspect the actual host and choose a disposable build environment. Inspect the versioned candidate in H01 and freeze it in H02, then follow that frozen LFS book through both phases without asking whether to continue, maintain logs, decisions and progress, and validate each milestone. Do not touch physical disks or begin Phase 2 before its gate. Autonomously install and configure required host/guest tools with available administrative privileges, verify fixes and continue; request user action only for concrete unavailable access or actions outside scope. Report concrete blockers and verified results.
+> Read AGENTS.md, PRD.md, STATUS.md, status.json and docs/DEVELOPMENT.md. Start H01, inspect the actual host and choose a disposable build environment. Inspect the versioned candidate in H01 and freeze it in H02, then follow that frozen LFS book through H13 without routine continuation questions; deliver the foundation for owner testing and wait for explicit approval before B01-B13, maintain logs, decisions and progress, and validate each milestone. Do not touch physical disks or begin Phase 2 before its gate. Autonomously install and configure required host/guest tools with available administrative privileges, verify fixes and continue; request user action only for concrete unavailable access or actions outside scope. Report concrete blockers and verified results.
 
 Do not paste API keys into the prompt. Do not weaken sandbox/approval configuration globally. A product's full-power profile belongs inside its designated system, not on the author's workstation.
 

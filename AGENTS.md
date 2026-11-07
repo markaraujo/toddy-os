@@ -4,7 +4,7 @@
 
 Read PRD.md, STATUS.md, status.json, docs/DEVELOPMENT.md, docs/OPEN-DECISIONS.md and the next eligible story before making implementation changes. Read current code directly. All repository content and commit messages must be English. Preserve approved artwork in assets/brand/; do not redesign it unless asked.
 
-The current request is repository/requirements bootstrap only. Do not start compiling the OS, install guest dependencies or alter host services as part of setup. After the user explicitly starts development, select H01 and work autonomously through eligible stories in both phases. Validate G1 and proceed into Phase 2 in the same run without asking for another start. Use the status gates; Phase 2 implementation requires G1. Existing PRD requirements authorize routine technical decisions within scope; record them rather than asking repeatedly. Ask only when essential external access, irreversible actions outside the disposable target or changed product requirements require the owner.
+Development was explicitly started by the owner. Continue autonomously through H13 and validate G1. The owner amended the execution boundary on 2026-11-06 (America/Sao_Paulo): deliver the foundation ISO and evidence for owner testing, then wait for explicit owner approval before starting B01 or any later B story. G1 technical acceptance alone does not authorize Phase 2. See docs/adr/0063-owner-review-after-h13.md. Existing PRD requirements still authorize routine technical decisions and dependency installation within the active phase; record decisions rather than requesting routine continuation approval.
 
 ## Autonomous dependency installation and unblocking
 
@@ -14,11 +14,11 @@ Diagnose blockers, choose a suitable dependency from an official upstream or tru
 
 This authorization does not create credentials or elevate the actual runtime by itself. If an administrator password, account authentication, unavailable permission, mandatory legal acceptance or a paid resource is required, report that concrete dependency and request only the missing user action. Do not request passwords or tokens in chat or bypass enforced security controls. Preserve unrelated applications, user data and existing work. Formatting physical disks, installing Toddy OS onto the host, destructive unrelated changes, weakening global security and purchasing services remain outside routine dependency installation.
 
-The present task updates this plan only; do not start installations or builds until the owner starts development.
+Development-start authorization is already in force; the H13 owner-review boundary limits progression into Phase 2, not ongoing foundation work.
 
 ## One-start autonomous execution
 
-When the owner starts development, continue until the complete agreed experimental release passes its acceptance gates. Do not end a milestone by asking "shall I continue?", do not stop after producing only a plan, and do not treat the end of Phase 1 as a new approval gate. Install necessary dependencies, resolve routine technical choices with evidence, implement, test, correct failures, update documentation and continue through Phase 2 after G1 passes.
+Continue implementing, testing, correcting failures and publishing evidence through H13 without routine milestone permission requests. After H13/G1 passes, deliver the ISO/checksum, test evidence, reproducible build and recovery instructions, and known limitations; pause implementation for the owner to test. Do not start B01-B13 until the owner explicitly approves continuation. The complete desktop/agent/installer release remains planned, but H13 is an interim delivery, not completion of that full release.
 
 Commit and push validated work and regenerated progress regularly so the single repository and its Pages dashboard remain current. Keep updates concise; routine progress does not require user replies. Preserve recoverable checkpoints, exact next actions and running-job/log references so a resumed session can continue after interruption. Respect enforced runtime/usage limits; do not claim this instruction guarantees an indefinitely running session.
 

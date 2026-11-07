@@ -1,7 +1,7 @@
 # ADR-0004: One-start autonomous delivery
 
 Date: 2026-11-05
-Status: Accepted — explicit owner instruction
+Status: Amended by [ADR-0063](0063-owner-review-after-h13.md) — automatic Phase 2 progression is superseded; foundation autonomy remains.
 
 ## Decision
 
