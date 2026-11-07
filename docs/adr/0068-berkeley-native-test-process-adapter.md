@@ -79,3 +79,14 @@ exercised executable, exit 0. Raw
 Integration is prepared in the checkout; active original build inputs have not
 been synchronized or modified. The original standard-suite failure remains a
 failure, and a corrected complete standard run is still mandatory.
+
+
+Recovery integration review found two provenance omissions before production
+packaging: the package source list named only the earlier test142 correction,
+and supporting recipe enumeration included only .py/.sh files. Add the new
+repmgr007 patch to package source provenance and include .c/.tcl inputs in the
+supporting recipe digest. A regression proves either external source changes
+the recorded digest even when the invoking shell script is unchanged. The helper
+already had an enforced source hash; this also records its named input directly.
+Production staging now explicitly rejects any db_repsite payload. No accepted
+package or original active build record is rewritten by these preparations.

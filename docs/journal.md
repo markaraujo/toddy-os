@@ -431,3 +431,9 @@ binary. Froze the repmgr007 timing patch, validated both fixture corrections
 against 483 files with six rejection cases, and regenerated the 157-input source
 notice inventory. Active standard-suite inputs remain unchanged; other_repmgr
 and the complete corrected suite are still required.
+
+
+2026-11-07 — Reviewed corrected Berkeley DB recovery through package staging.
+Included the new patch in package provenance and external C/Tcl inputs in recipe
+hashes, with a focused regression. Added a production-stage refusal for the
+native test helper. No running build inputs or installed target files changed.

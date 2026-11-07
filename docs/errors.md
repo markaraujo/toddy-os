@@ -640,3 +640,13 @@ before testing fresh full-root directories. No installed target path was changed
   that approach or remove the group. Preserve the current suite's full result.
 - Evidence: ADR-0067 records exact pre/postimage, original/corrected/compile logs
   and primary upstream/distribution source evidence. No runtime C code changed.
+
+
+2026-11-07 — Prepared Berkeley DB recovery provenance omitted the newly frozen
+repmgr007 patch from the package source list and excluded external C/Tcl files
+from supporting recipe enumeration. Detected by reviewing the actual package
+wrapper and provenance.py before any production installation. Corrected the
+source list and supported input types; added a regression showing that C/Tcl
+changes alter provenance independently of the shell wrapper. Existing accepted
+records are preserved. The native helper itself remains pinned and test-only;
+production staging now refuses its accidental inclusion.
