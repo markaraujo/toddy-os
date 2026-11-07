@@ -1034,3 +1034,10 @@ The foundation download remains clearly distinct from planned graphics/assistant
 Export uses an explicit asset/UI allowlist; no new framework, hosted service or
 telemetry. Existing checks and desktop/mobile browser interactions pass. Final
 publication follows this checkpoint; see docs/evidence/navy-pages-preview.md.
+
+Public Pages publication succeeded for 196852e (run 42390489772, deployment
+7623671347); live browser verification loaded the new page, selected the assistant
+preview and opened its quick-entry concept. Plan, harness, brand and page work
+were delivered as separate commits. Follow-up formatting keeps source HTML/CSS
+readable, with clean regenerated output and the same 184 passing local checks.
+The owner can review the online concepts; no Phase 2 guest build has started.

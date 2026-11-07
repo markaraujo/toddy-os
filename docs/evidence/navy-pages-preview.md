@@ -32,3 +32,20 @@ Updated the existing export allowlist regression to cover the public preview.
 
 Deployment status is recorded after the GitHub Pages run completes. Browser QA
 here verifies a static page, not GNOME, inference, hardware or an OS installer.
+
+## Published result
+
+The initial redesigned page commit 196852e482c711910c6385a65cb4e2fe338340ea
+passed both Planning consistency and Publish development dashboard. Pages run
+[42390489772](https://github.com/markaraujo/toddy-os/actions/runs/42390489772)
+completed successfully; deployment 7623671347 reports success on 2026-11-07.
+
+Browser verification on the public URL loaded the new "Your desktop. Your loyal
+sidekick." title, switched to the assistant image and followed its concept link
+to /ui/preview.html#quick. After page load, the quick scene and pressed state are
+correct. The public page and direct concept link are available without local tools.
+
+A follow-up source-formatting commit makes HTML/CSS maintainable without changing
+the artwork or product behavior. Regenerated output remains clean; all 184 local
+checks pass (0.169 seconds in the final source-formatting run). No new runtime
+package dependency was added to the project or public page.
