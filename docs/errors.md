@@ -1076,3 +1076,14 @@ root-mapped tests inherited tester-owned device nodes in the mutable container
 root. Preserve the 47/50 attempt; restore the original root in finally after
 retaining the separate unprivileged result. Every selected binary stayed unchanged.
 The next complete run must still pass all 50 cases together.
+
+
+## 2026-11-07 — Progress fixtures inherited real Phase 2 approval
+
+- Symptom: two make check errors after recording actual owner approval; synthetic
+  unstarted milestones/G1 pending retained phase_2_approved=true from status.json.
+- Cause: test_progress.setUp reset progress but not its authorization prerequisite.
+- Correction: reset the fixture owner review with its unstarted milestones. No
+  production authorization check is weakened. Initial authorization commit was
+  published before this test failure was reviewed; corrected verification follows.
+- Verification: make check, all 201 tests passed after this fixture-only correction.

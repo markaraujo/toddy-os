@@ -1421,5 +1421,8 @@ starts. Physical foundation testing remains pending. B01 is in_progress without
 acceptance credit; first slice inventories the accepted cold post-H13 pair and
 creates separate writable overlays over read-only backing storage. No accepted
 foundation packages are rebuilt. One guest writer, no subagents/model switching,
-bounded diagnosis and affected checks remain required. Repository approval/state
-checks pass; clone/runtime evidence will be recorded separately after execution.
+bounded diagnosis and affected checks remain required. The planning validator passed, but the first make check exposed two unstarted-fixture
+errors after approval changed. The authorization commit was published before this
+failure was reviewed. Resetting fixture authorization with fixture milestones fixes
+that inconsistency; the corrected 201-test run passes. Clone/runtime evidence will
+be recorded separately after execution.

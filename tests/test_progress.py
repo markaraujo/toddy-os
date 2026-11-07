@@ -20,6 +20,10 @@ class ProgressGates(unittest.TestCase):
         for row in self.data["milestones"]:
             row["status"], row["evidence"] = "not_started", []
         self.data["gates"] = {"G1": "pending", "G2": "pending"}
+        self.data["owner_review"] = {
+            "status": "awaiting_foundation_testing", "phase_2_approved": False,
+            "decision": "docs/adr/0063-owner-review-after-h13.md",
+        }
         self.data.pop('active_work',None)
 
     def test_unstarted_baseline_has_zero_os_progress(self):
