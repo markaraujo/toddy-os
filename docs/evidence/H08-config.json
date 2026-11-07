@@ -1,0 +1,39 @@
+{
+  "observed_at": "2026-11-07T11:54:37.253223+00:00",
+  "driver_exit": 0,
+  "files": {
+    "/var/log/toddy/build/h08-base-config.success.json": "7018c86f6fb5dff16988e993d4562d31b52bffdf4ffc1b7df39779c03fbcab7e",
+    "/var/log/toddy/build/h08-base-config.log": "334033a4581f05e590707ae4f5d9a446694ae9e30b4e08ca30fc828f10892521",
+    "/var/log/toddy/h08-base-config-payload.json": "da459c1bf6cbc40df30439d0f5706be493167e574a45047b318459525d37c530",
+    "/var/log/toddy/h08-base-config-unowned.json": "ad9817d2a6b02aec1f64425ea819ea44f1d242e224afc9c72d09de501e6d642c"
+  },
+  "execution": {
+    "started": "2026-11-07T11:51:45.002983+00:00",
+    "finished": "2026-11-07T11:52:00.437467+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 34,
+    "recipe_sha256": "acbbfb7fb23ff2bba6e191ebdade09173db3833ed91138c9d26bcb4236068f79",
+    "postcheck_sha256": "6be58ae5fab84f4c9e0127811ce62d9504397112b4b04ba73dde2bd60097f757"
+  },
+  "payload": {
+    "scope": "Installed native recorded regular/link payload; generated/unowned state separately audited",
+    "files": 66534,
+    "findings": 0,
+    "modified_conffiles": 0,
+    "duplicate_owners": 0
+  },
+  "unowned": {
+    "scope": "Final-base usr/etc/lib64 regular/link ownership; var/package/service data needs separate generated-state audit",
+    "files_inspected": 66585,
+    "unknown": 0,
+    "generated_state": 58,
+    "pending_h08_configuration": 0,
+    "all_files_owned": false
+  },
+  "bootstrap_backups": [
+    "/mnt/lfs/sources/recovery/h08-bootstrap-config-m0xfudfq"
+  ],
+  "package_status": "install ok installed 0.1-1",
+  "boot_network_tested": false
+}

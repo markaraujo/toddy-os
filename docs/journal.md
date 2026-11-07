@@ -864,3 +864,13 @@ that disabling wait-online while using networkd is Toddy's documented offline
 policy deviation, not the book's conditional advice for not using networkd.
 Marked H08 in_progress for actual target configuration. G1/H13 still require
 native foundation boot/live-media evidence; no B story starts before owner review.
+
+## 2026-11-07 — H08 configuration accepted; H09 started
+
+Native H08 driver/recipe/postcheck all exited zero. Recorded 127 installed
+packages, exact identity/locale/filesystem/service checks, zero ownership
+findings and retained bootstrap backups in docs/evidence/H08.md. Actual boot
+networking remains pending. Read frozen LFS 13.1-systemd sections 10.3/10.4
+and ADR-0046/0085; start production kernel/configuration through the guarded
+driver, preserving prior private builds. Do not perform boot-sector writes
+until kernel/configuration results and recovery boundaries are checked.

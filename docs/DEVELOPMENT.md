@@ -2,7 +2,7 @@
 
 ## Current scope
 
-The planning repository and approved artwork are prepared. Implementation started by the owner on 2026-11-05. H01 provisions a real KVM build guest using container-packaged QEMU; see docs/evidence/H01.md and docs/RECOVERY.md. Source freeze is H02. H01–H06 passed; H07 final base has 124 accepted packages, including native support, independent ownership and corrected native capability detection; corrected Berkeley DB full retest and APT/final closure remain pending. See docs/BUILD.md and the current driver section below. No bootable Toddy ISO exists yet. status.json is authoritative for completed milestones.
+Implementation is active. H01–H08 passed: 127 native packages, final dependency/ownership audits, verified H07 cold checkpoint and native identity/service/network configuration. H09 is building the production kernel and boot configuration. No foundation ISO or G1 exists yet. status.json and the latest evidence are authoritative; older driver notes below retain historical failure/recovery context. Berkeley DB delivery uses owner-approved focused validation (ADR-0092), not a claimed complete standard-suite pass.
 
 ## Owner review boundary
 

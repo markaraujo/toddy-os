@@ -1583,3 +1583,15 @@ Dpkg audit is empty and apt-get check exits zero. See H07-checkpoint.json.
 H08 is now in_progress; sync committed status/scripts before its guarded driver.
 Use this cold pair if whole-target rollback is required; H06 demonstrated the
 restore workflow. Never restore over an active VM or launch duplicate jobs.
+
+### H08 accepted; H09 production build
+
+H08 driver exited 0, native recipe/postcheck 0/0. Evidence and exact backup
+location: docs/evidence/H08.md. The accepted h07-final-base cold pair remains
+the pre-boot-sector recovery boundary. After committed input sync, run
+`bash /opt/toddy-build/scripts/build/h09-kernel-driver.sh` detached with a
+durable launch log. It captures terminal exit at
+`/var/log/toddy/h09-kernel-driver.exit`; package logs are h09-kernel and
+h09-boot-config under /var/log/toddy/build. It deliberately stops before
+bootloader installation. Preserve any failure/source/stage before recovery;
+never rerun mrproper over an unfinished or completed production build.

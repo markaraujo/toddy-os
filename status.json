@@ -3,8 +3,8 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-07",
   "bootstrap": "ready_for_development",
-  "current_scope": "H01-H07 completed: 126 native packages, final metadata/audits and cold checkpoint verified. H08 is in progress for identity/services/network configuration. Full Berkeley standard coverage is explicitly reduced by owner approval (ADR-0092). No foundation ISO or G1 yet. Deliver H13/G1 for owner testing and await approval before B01-B13.",
-  "next_story": "H08",
+  "current_scope": "H01-H08 completed: 127 native packages and verified identity/services/network configuration. H09 is in progress for production kernel and BIOS/UEFI boot. Berkeley coverage is owner-qualified (ADR-0092). No ISO/G1 yet; owner review after H13 precedes B01-B13.",
+  "next_story": "H09",
   "gates": {
     "G1": "pending",
     "G2": "pending"
@@ -146,7 +146,7 @@
       "phase": "foundation",
       "title": "Configure identity, services and basic networking",
       "weight": 6,
-      "status": "in_progress",
+      "status": "completed",
       "depends_on": [
         "H07"
       ],
@@ -156,14 +156,17 @@
         "Configure the selected init/services and minimal network path; record BLFS additions if needed.",
         "Use no reusable published password or baked-in account/API secret; provide an explicit test-login strategy."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/H08.md",
+        "docs/evidence/H08-config.json"
+      ]
     },
     {
       "id": "H09",
       "phase": "foundation",
       "title": "Build kernel and boot configuration",
       "weight": 8,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": [
         "H08"
       ],
@@ -476,18 +479,18 @@
     }
   ],
   "active_work": {
-    "story": "H08",
-    "verified_at": "2026-11-07 11:50 UTC",
+    "story": "H09",
+    "verified_at": "2026-11-07 11:54 UTC",
     "verified": [
-      "H07 accepted with 126 native packages, eight audits and verified cold pair h07-final-base.",
-      "Frozen LFS 13.1-systemd chapter 9 and 10.2 reviewed; prepared H08 configuration and offline service policy have private-root tests (ADR-0042/0060)."
+      "H08 native configuration recipe/postcheck and driver exited zero; 127 packages, no ownership findings or pending bootstrap configuration.",
+      "Private native kernel compilation and diskless BIOS/UEFI diagnostics passed earlier (ADR-0085); production package and full native boot remain mandatory."
     ],
-    "running": "Applying the guarded native configuration next; actual identity/service/locale/ownership postchecks are pending.",
+    "running": "Starting the guarded production Linux 7.1.8 kernel and direct-root GRUB configuration build.",
     "remaining": [
-      "Install and verify owned base configuration with preserved bootstrap files.",
-      "Verify offline service policy, locale/account/filesystem settings and ownership.",
-      "Retain actual boot/DHCP/service behavior for H12 verification."
+      "Build/package kernel and verify configuration/module artifacts.",
+      "Install BIOS/UEFI bootloader only on the guarded disposable target.",
+      "Verify actual full native BIOS/UEFI early boot from a cold checkpoint."
     ],
-    "evidence": "docs/evidence/H07.md"
+    "evidence": "docs/evidence/H08.md"
   }
 }

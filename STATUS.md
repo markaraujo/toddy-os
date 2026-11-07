@@ -4,34 +4,34 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-H01-H07 completed: 126 native packages, final metadata/audits and cold checkpoint verified. H08 is in progress for identity/services/network configuration. Full Berkeley standard coverage is explicitly reduced by owner approval (ADR-0092). No foundation ISO or G1 yet. Deliver H13/G1 for owner testing and await approval before B01-B13.
+H01-H08 completed: 127 native packages and verified identity/services/network configuration. H09 is in progress for production kernel and BIOS/UEFI boot. Berkeley coverage is owner-qualified (ADR-0092). No ISO/G1 yet; owner review after H13 precedes B01-B13.
 
-Foundation: **62%** · Agentic desktop: **0%**
+Foundation: **68%** · Agentic desktop: **0%**
 
-G1: pending · G2: pending · Next: **H08**
+G1: pending · G2: pending · Next: **H09**
 
 No milestone earns credit without completed acceptance evidence.
 
-## Active story: H08 — Configure identity, services and basic networking
+## Active story: H09 — Build kernel and boot configuration
 
-The 62% phase total counts completed stories only. H08 is still in progress; its 6 points are not yet counted. Passing this story would raise the phase total to 68%.
+The 68% phase total counts completed stories only. H09 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 76%.
 
-Last verified: 2026-11-07 11:50 UTC
+Last verified: 2026-11-07 11:54 UTC
 
 Verified:
 
-- H07 accepted with 126 native packages, eight audits and verified cold pair h07-final-base.
-- Frozen LFS 13.1-systemd chapter 9 and 10.2 reviewed; prepared H08 configuration and offline service policy have private-root tests (ADR-0042/0060).
+- H08 native configuration recipe/postcheck and driver exited zero; 127 packages, no ownership findings or pending bootstrap configuration.
+- Private native kernel compilation and diskless BIOS/UEFI diagnostics passed earlier (ADR-0085); production package and full native boot remain mandatory.
 
-Running: Applying the guarded native configuration next; actual identity/service/locale/ownership postchecks are pending.
+Running: Starting the guarded production Linux 7.1.8 kernel and direct-root GRUB configuration build.
 
 Remaining:
 
-- Install and verify owned base configuration with preserved bootstrap files.
-- Verify offline service policy, locale/account/filesystem settings and ownership.
-- Retain actual boot/DHCP/service behavior for H12 verification.
+- Build/package kernel and verify configuration/module artifacts.
+- Install BIOS/UEFI bootloader only on the guarded disposable target.
+- Verify actual full native BIOS/UEFI early boot from a cold checkpoint.
 
-[Acceptance evidence](docs/evidence/H07.md)
+[Acceptance evidence](docs/evidence/H08.md)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
@@ -42,8 +42,8 @@ Remaining:
 | [H05 — Build temporary tools](stories/H05.md) | foundation | 8 | completed |
 | [H06 — Enter chroot and create recoverable checkpoint](stories/H06.md) | foundation | 8 | completed |
 | [H07 — Build and test the final base system](stories/H07.md) | foundation | 24 | completed |
-| [H08 — Configure identity, services and basic networking](stories/H08.md) | foundation | 6 | in_progress |
-| [H09 — Build kernel and boot configuration](stories/H09.md) | foundation | 8 | not_started |
+| [H08 — Configure identity, services and basic networking](stories/H08.md) | foundation | 6 | completed |
+| [H09 — Build kernel and boot configuration](stories/H09.md) | foundation | 8 | in_progress |
 | [H10 — Assemble the live system](stories/H10.md) | foundation | 8 | not_started |
 | [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | not_started |
 | [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | not_started |
