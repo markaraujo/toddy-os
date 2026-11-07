@@ -580,3 +580,18 @@ SHA-256 against that result, then run `scripts/host/live_boot_test.py` with the
 local ISO and manifest and explicit `--firmware bios --medium cdrom`. This
 requires the actual console login and native live behavior. H11 must later
 produce a separate release-profile generation, and H12 tests that final ISO.
+
+### H11 optional Python QA transfer
+
+After H10 acceptance and committed H11 in_progress state, synchronize inputs.
+Run `bash /opt/toddy-build/scripts/build/h11-python-qa-driver.sh` with a durable
+launch log. The native dispatcher owns the build lock and captures recipe and
+postcheck exits. Existing prepared.json is reused only through the transaction's
+exact ingredient verification; partial preparation without that result is
+preserved and refused. Both native archives and the predecessor are saved before
+any installed ownership change. Postchecks require both configured packages,
+verified files, native SSL/SQLite runtime, empty Dpkg audit and APT check.
+
+Only a later `assemble_root.py --release` removes python-test-support from its
+fresh image; the complete builder QA payload stays available. The prepared
+private experiments are not substituted for this actual gated operation.

@@ -2401,6 +2401,16 @@
         "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4",
         "requirement": "Copy full text into the native package with upstream documentation notices"
       }
+    },
+    {
+      "name": "python-test-support",
+      "version": "3.14.10",
+      "license": "Python-2.0 AND LicenseRef-CPython-third-party-notices",
+      "evidence": "Same frozen CPython source and notices as Python; optional regression data transferred without byte changes under ADR-0049. Excluded from the release image.",
+      "notes": [
+        "Contains only the reviewed regression roots and a copy of the original Python copyright notice; the bundled pip runtime is not part of this QA package.",
+        "Public upstream test credentials remain available only in the builder QA package and are excluded from release media."
+      ]
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
