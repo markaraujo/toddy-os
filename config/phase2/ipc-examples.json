@@ -1,0 +1,77 @@
+{
+  "protocol_version": 1,
+  "status": "candidate-fixtures-not-executed",
+  "profile_revision": "0000000000000000000000000000000000000000000000000000000000000000",
+  "request": {
+    "request_id": "demo-request-1",
+    "profile_id": "toddy-default",
+    "profile_revision": "0000000000000000000000000000000000000000000000000000000000000000",
+    "input": {
+      "text": "Explain the fictional demo system summary.",
+      "attachments": [],
+      "protocol_version": 1
+    }
+  },
+  "events": [
+    {
+      "task_id": "demo-task-1",
+      "sequence": 1,
+      "state": "queued",
+      "cancel_requested": false,
+      "result_uncertain": false,
+      "summary": "Request saved.",
+      "operation_id": null,
+      "protocol_version": 1,
+      "profile_revision": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "task_id": "demo-task-1",
+      "sequence": 2,
+      "state": "running",
+      "cancel_requested": false,
+      "result_uncertain": false,
+      "summary": "Reading a fictional summary.",
+      "operation_id": "demo-operation-1",
+      "protocol_version": 1,
+      "profile_revision": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "task_id": "demo-task-1",
+      "sequence": 3,
+      "state": "waiting",
+      "cancel_requested": true,
+      "result_uncertain": true,
+      "summary": "Reconciling an interrupted operation; do not replay.",
+      "operation_id": "demo-operation-1",
+      "protocol_version": 1,
+      "profile_revision": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "task_id": "demo-task-1",
+      "sequence": 4,
+      "state": "canceled",
+      "cancel_requested": true,
+      "result_uncertain": false,
+      "summary": "The read stopped. No system change was requested.",
+      "operation_id": "demo-operation-1",
+      "protocol_version": 1,
+      "profile_revision": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "reconnect": {
+    "task_id": "demo-task-1",
+    "after_sequence": 2,
+    "expected_snapshot_sequence": 4,
+    "resubmit_request": false
+  },
+  "worker_example": {
+    "version": 1,
+    "kind": "hello",
+    "worker_id": "demo-worker-1",
+    "capabilities": [
+      "text",
+      "tool-request",
+      "cancel"
+    ]
+  }
+}

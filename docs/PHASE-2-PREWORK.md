@@ -79,3 +79,14 @@ captures only when the corresponding behavior exists.
 
 All B stories remain not_started, G1 passed and G2 pending. No guest job, ISO,
 model, provider call, runtime acceptance or hardware test was created here.
+
+## Reusable integration contracts
+
+The five preparation items are selected and linked: [profile/IPC contract](PHASE-2-INTERFACES.md),
+[installation matrix](PHASE-2-INSTALLATION-MATRIX.md), [package lifecycle](PHASE-2-PACKAGES.md),
+[owner validation guide](PHASE-2-OWNER-VALIDATION.md), and
+[reusable inputs](../config/phase2/README.md). Native proof/final dependency locks
+remain in B01 and owning stories; these inputs do not authorize guest start.
+Offline installs the desktop plus lightweight setup; agent components can be
+acquired later without reinstalling the OS. The setup UI has no mandatory agent
+backend dependency.

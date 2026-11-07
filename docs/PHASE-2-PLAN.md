@@ -13,6 +13,10 @@ Reusable repository inputs and preparation priorities: [Phase 2 prework](PHASE-2
 Native branding follows [ADR-0108](adr/0108-native-branding-and-phase2-prework.md);
 these inputs do not start a B story or replace target validation.
 
+Selected reusable contracts: [profile/IPC](PHASE-2-INTERFACES.md),
+[install choices](PHASE-2-INSTALLATION-MATRIX.md), [package lifecycle](PHASE-2-PACKAGES.md)
+and [short owner guide](PHASE-2-OWNER-VALIDATION.md).
+
 ## 1. Product outcome and scope
 
 Ship an experimental, installable x86_64 desktop with Ubuntu-like everyday
@@ -124,7 +128,12 @@ Optional application choices include OpenCode and VS Code, independently selecta
 A deferred network download must be labeled pending, resumable after first boot,
 and must not make an otherwise valid base installation fail. Reuse the same
 package/download backend in the installer and first-run UI. Offline installation
-must remain possible; never label an untested optional package as supported.
+must remain possible; per the owner clarification, the offline base installs the
+usable desktop and a lightweight setup entry, while the agent backend/Node/Pi,
+executor, inference/models and optional integrations can be installed later without
+reinstalling the OS. The setup entry must not require these absent components or
+pretend agent tasks work before setup. Online/media-pack acquisition still requires
+explicit verified choices; never label an untested optional package as supported.
 
 ### 3.3 Third-party drivers, firmware and packages
 

@@ -1268,3 +1268,18 @@ Added native motion inputs and stage ownership, linked from B11/B12 and prework.
 Preserved approved artwork and labeled conceptual GNOME imagery. Basic repository
 and Playwright checks passed; details in evidence/installer-visual-preparation.md.
 No guest implementation, boot engine selection or milestone acceptance implied.
+
+
+## 2026-11-07 — Resolve five integration prework items
+
+Prepared a non-secret profile/schema/skill example, bounded versioned IPC design
+and cancellation/reconciliation fixtures, installation choices, exclusive package
+ownership/lifecycle and a short owner validation guide. Incorporated owner offline
+clarification: desktop plus setup UI works without agent backend/Node/Pi/executor;
+later verified native acquisition requires no OS reinstall. ADR-0109 records it.
+
+Host JSON Schema validator accepted the schema/default and rejected six malformed
+config cases. Checked ownership overlaps, input references, offline dependencies,
+choice defaults and fixture reconnect consistency. make check passed 197 tests
+in 0.212 seconds; no guest runtime proof, build or paid provider/model use occurred.
+B stories remain unstarted and owner guest continuation remains false.

@@ -165,3 +165,7 @@ that candidate. A subsequent fix gets a new candidate hash and affected tests.
 No test passed on the B06/B12 text-only snapshot is evidence that later packages
 were present in the released image. Corresponding source/license inventory must
 match the actual included components, models/voices and third-party packs.
+
+Owner delivery checklist: [short guide](PHASE-2-OWNER-VALIDATION.md). Include offline
+base installation followed by later agent acquisition, with setup working while
+broker/Node/Pi/executor are absent; map these to S18/S19/S26.

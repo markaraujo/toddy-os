@@ -6,6 +6,10 @@ fixed persona/tool loop. See [ADR-0106](adr/0106-user-customizable-toddy-harness
 The user can meaningfully change how their assistant works without rebuilding
 Toddy OS. Personal customization must not become a hidden administrative grant.
 
+Selected reusable contracts: [profile/IPC](PHASE-2-INTERFACES.md),
+[install choices](PHASE-2-INSTALLATION-MATRIX.md), [package lifecycle](PHASE-2-PACKAGES.md)
+and [short owner guide](PHASE-2-OWNER-VALIDATION.md).
+
 ## 1. Borrow patterns, not complete products
 
 Use the documented Hermes and OpenClaw patterns: independent named profiles,

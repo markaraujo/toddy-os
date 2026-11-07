@@ -48,6 +48,11 @@ Logical components:
 5. Integration: documented plugin API and MCP adapter; terminal, files, applications and browser adapters.
 6. Recovery: rescue boot, configuration backups, checkpoints and explicit restore procedures.
 
+Offline installation provides the usable desktop and a lightweight assistant setup
+entry. Agent backend/runtime, privileged executor, models and optional integrations
+may be installed later through verified native packages, without reinstalling the
+OS; the setup entry must work with those components absent.
+
 The OS remains bootable and usable if the agent, model service or network fails. llama.cpp supplies inference, not the complete agent harness. The preferred Pi components are reused behind replaceable adapters; Toddy supplies durable tasks, policy, memory and recovery. Do not require a proprietary coding assistant to operate the distribution.
 
 ## 5. Phase 1 — Solid LFS foundation

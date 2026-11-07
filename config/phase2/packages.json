@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "status": "ownership-blueprint-not-package-metadata",
+  "upstream_dependency_names": "Symbolic capability groups; actual native package/version closure is frozen in B01.",
+  "packages": [
+    {
+      "name": "toddy-branding",
+      "first_owner_story": "B11",
+      "image_scope": "installed-and-live",
+      "owns": [
+        "/usr/share/backgrounds/toddy-os/",
+        "/usr/share/gnome-background-properties/toddy-os.xml",
+        "/usr/share/glib-2.0/schemas/90-toddy-branding.gschema.override",
+        "/usr/share/icons/hicolor/@SIZE@/apps/io.github.markaraujo.Toddy.png"
+      ],
+      "requires_capabilities": [],
+      "source_inputs": [
+        "assets/brand/gnome/package-map.json"
+      ],
+      "offline_base": true
+    },
+    {
+      "name": "toddy-agent",
+      "first_owner_story": "B03",
+      "image_scope": "installed-and-live",
+      "owns": [
+        "/usr/lib/toddy/broker/",
+        "/usr/lib/toddy/worker/",
+        "/usr/share/dbus-1/services/io.github.markaraujo.Toddy.Service.service",
+        "/usr/lib/systemd/user/toddy-agent.service",
+        "/usr/share/toddy/profiles/"
+      ],
+      "requires_capabilities": [
+        "python-gio",
+        "node-pi",
+        "sqlite-fts5",
+        "secret-service-client"
+      ],
+      "source_inputs": [],
+      "offline_base": false
+    },
+    {
+      "name": "toddy-assistant",
+      "first_owner_story": "B06",
+      "image_scope": "installed-and-live",
+      "owns": [
+        "/usr/bin/toddy",
+        "/usr/lib/toddy/ui/",
+        "/usr/share/applications/io.github.markaraujo.Toddy.desktop"
+      ],
+      "requires_capabilities": [
+        "toddy-branding",
+        "gtk4-libadwaita-pygobject"
+      ],
+      "source_inputs": [
+        "ui/phase2/identity.json"
+      ],
+      "offline_base": true,
+      "optional_backend": "toddy-agent; unavailable backend leaves setup/install-later surface usable"
+    },
+    {
+      "name": "toddy-executor",
+      "first_owner_story": "B04",
+      "image_scope": "installed-and-live",
+      "owns": [
+        "/usr/libexec/toddy-executor",
+        "/usr/lib/toddy/executor/",
+        "/usr/share/dbus-1/system-services/io.github.markaraujo.Toddy.Executor.service",
+        "/usr/share/dbus-1/system.d/io.github.markaraujo.Toddy.Executor.conf",
+        "/usr/lib/systemd/system/toddy-executor.service",
+        "/etc/toddy/executor-policy.json"
+      ],
+      "requires_capabilities": [
+        "python-gio",
+        "native-policy-authentication"
+      ],
+      "source_inputs": [],
+      "offline_base": false
+    },
+    {
+      "name": "toddy-installer",
+      "first_owner_story": "B12",
+      "image_scope": "live-only",
+      "owns": [
+        "/usr/lib/toddy/installer/",
+        "/usr/share/toddy/installer/",
+        "@CALAMARES_MODULE_DIR@/toddy/"
+      ],
+      "requires_capabilities": [
+        "calamares-native-stack",
+        "native-package-backend"
+      ],
+      "source_inputs": [
+        "assets/brand/installer/motion.json",
+        "config/phase2/install-options.json"
+      ],
+      "offline_base": false
+    },
+    {
+      "name": "toddy-voice",
+      "first_owner_story": "B09",
+      "image_scope": "installed-and-live",
+      "owns": [
+        "/usr/lib/toddy/voice/"
+      ],
+      "requires_capabilities": [
+        "audio-session",
+        "whisper-cpp",
+        "piper-or-espeak-ng"
+      ],
+      "source_inputs": [],
+      "offline_base": false
+    },
+    {
+      "name": "toddy-integrations",
+      "first_owner_story": "B10",
+      "image_scope": "installed-and-live",
+      "owns": [
+        "/usr/lib/toddy/integrations/",
+        "/usr/share/toddy/skills/"
+      ],
+      "requires_capabilities": [
+        "bubblewrap-reviewed-policy"
+      ],
+      "source_inputs": [],
+      "offline_base": false
+    }
+  ],
+  "runtime_state": [
+    {
+      "owner": "user",
+      "path": "$XDG_CONFIG_HOME/toddy/profiles/",
+      "remove_policy": "preserve-unless-explicit-user-delete"
+    },
+    {
+      "owner": "user",
+      "path": "$XDG_DATA_HOME/toddy/profiles/",
+      "remove_policy": "preserve-unless-explicit-user-delete"
+    },
+    {
+      "owner": "user",
+      "path": "$XDG_STATE_HOME/toddy/",
+      "remove_policy": "bounded-retention-no-secret-logs"
+    },
+    {
+      "owner": "root",
+      "path": "/var/lib/toddy-executor/",
+      "remove_policy": "revoke-stop-and-reviewed-state-handling-not-automatic-recursive-delete"
+    }
+  ],
+  "installation_policy": "Offline base includes only branding and lightweight setup/entry; agent broker/worker/executor and optional AI/voice/integrations are installable later through verified native packages."
+}

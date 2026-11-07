@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "profile_id": "toddy-default",
+  "display_name": "Toddy",
+  "locale": "en",
+  "provider": {
+    "mode": "deferred",
+    "adapter_id": null,
+    "model_id": null,
+    "connection_ref": null,
+    "allow_remote_fallback": false
+  },
+  "tools": {
+    "enabled": [
+      "system-info"
+    ]
+  },
+  "skills": {
+    "enabled": [
+      "explain-system"
+    ]
+  },
+  "budgets": {
+    "task_deadline_seconds": 300,
+    "max_tool_calls": 8,
+    "max_retries": 0,
+    "max_context_tokens": 4096,
+    "max_output_tokens": 1024,
+    "remote_spending_enabled": false
+  },
+  "memory": {
+    "history_enabled": false,
+    "retention_days": 0
+  },
+  "automation": {
+    "enabled": false,
+    "workflow_ids": []
+  },
+  "extensions": {
+    "enabled": []
+  }
+}

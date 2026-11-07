@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "status": "selection-design-not-availability-catalog",
+  "default_ai_choice": "later",
+  "allowed_ai_choices": [
+    "later",
+    "api",
+    "local"
+  ],
+  "credentials_in_installer": false,
+  "ubuntu_repositories": false,
+  "options": [
+    {
+      "id": "desktop",
+      "group": "base",
+      "default": "required",
+      "acquisition": "offline-media",
+      "owner_story": "B02",
+      "availability": "target-validation-pending"
+    },
+    {
+      "id": "assistant-setup",
+      "group": "base",
+      "default": "required",
+      "acquisition": "offline-media",
+      "owner_story": "B06",
+      "availability": "target-validation-pending"
+    },
+    {
+      "id": "agent-backend",
+      "group": "ai",
+      "default": "off",
+      "acquisition": "verified-download-or-explicit-media-pack",
+      "owner_story": "B03",
+      "availability": "target-validation-pending"
+    },
+    {
+      "id": "api-setup",
+      "group": "ai",
+      "default": "off",
+      "acquisition": "first-user-session",
+      "owner_story": "B03",
+      "availability": "target-validation-pending"
+    },
+    {
+      "id": "local-engine",
+      "group": "ai",
+      "default": "off",
+      "acquisition": "verified-download-or-explicit-media-pack",
+      "owner_story": "B03",
+      "availability": "target-validation-pending"
+    },
+    {
+      "id": "local-model",
+      "group": "ai",
+      "default": "off",
+      "acquisition": "verified-download-or-explicit-media-pack",
+      "owner_story": "B03",
+      "availability": "target-validation-pending"
+    },
+    {
+      "id": "opencode",
+      "group": "developer",
+      "default": "off",
+      "acquisition": "verified-download",
+      "owner_story": "B12",
+      "availability": "target-validation-pending"
+    },
+    {
+      "id": "vscode",
+      "group": "developer",
+      "default": "off",
+      "acquisition": "verified-download",
+      "owner_story": "B12",
+      "availability": "target-validation-pending"
+    },
+    {
+      "id": "firmware",
+      "group": "hardware",
+      "default": "off",
+      "acquisition": "reviewed-media-pack-or-download",
+      "owner_story": "B12",
+      "availability": "target-validation-pending"
+    },
+    {
+      "id": "proprietary-gpu",
+      "group": "hardware",
+      "default": "off",
+      "acquisition": "reviewed-media-pack-or-download",
+      "owner_story": "B12",
+      "availability": "target-validation-pending"
+    },
+    {
+      "id": "codecs",
+      "group": "software",
+      "default": "off",
+      "acquisition": "verified-download",
+      "owner_story": "B12",
+      "availability": "target-validation-pending"
+    },
+    {
+      "id": "speech",
+      "group": "accessibility",
+      "default": "off",
+      "acquisition": "verified-download-or-explicit-media-pack",
+      "owner_story": "B09",
+      "availability": "target-validation-pending"
+    }
+  ],
+  "selection_states": [
+    "unavailable",
+    "available",
+    "selected",
+    "deferred",
+    "installing",
+    "installed",
+    "failed"
+  ],
+  "optional_failure_policy": "preserve-base-install-and-record-pending-choice",
+  "completion_condition": "verified-bootable-base-not-optional-download-completion",
+  "offline_policy": "Install usable desktop and lightweight setup entry only; defer agent backend, executor, models and optional integrations until explicit later setup."
+}

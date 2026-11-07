@@ -9,6 +9,10 @@ Reusable repository inputs and preparation priorities: [Phase 2 prework](PHASE-2
 Native branding follows [ADR-0108](adr/0108-native-branding-and-phase2-prework.md);
 these inputs do not start a B story or replace target validation.
 
+Selected reusable contracts: [profile/IPC](PHASE-2-INTERFACES.md),
+[install choices](PHASE-2-INSTALLATION-MATRIX.md), [package lifecycle](PHASE-2-PACKAGES.md)
+and [short owner guide](PHASE-2-OWNER-VALIDATION.md).
+
 ## 1. Authority and one current task
 
 Planning, website work and a passed G1 do not authorize guest implementation.

@@ -28,6 +28,8 @@ Current Phase 2 choices follow [the replanned execution contract](PHASE-2-PLAN.m
 | D17 | Browser integration | Closed: Firefox isolated profile, native launch/scoped accessibility read MVP | B01 contract / B10 runtime | S25 local page, Stop/error, untrusted content and no owner browser credentials |
 | D18 | Native brand integration | Closed: toddy-branding package, stable application identity, supported user-overridable GNOME defaults; ADR-0108 | B11 | Exact guest schemas, preference/upgrade/removal behavior, native icon readability; extension only on a proved gap |
 
+| D19 | Integration prework/offline installation | Closed: v1 profile/IPC inputs, install matrix and package lifecycle; lightweight setup without agent backend offline, later native acquisition; ADR-0109 | B01/B06/B12 | Locked native contracts, absent-backend setup, offline install and later acquisition/recovery |
+
 The whole-system license is a collection of component licenses, not the repository's proposed custom-code license. APIs can be optional without making the open local path dependent on them. This planning baseline deliberately does not claim universal Ubuntu binary compatibility.
 
 Release security obligation: assess and freeze tested fixes for baseline advisories before final release (ADR-0007); H02 integrity success is not security approval.
