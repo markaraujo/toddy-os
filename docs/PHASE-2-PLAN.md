@@ -9,6 +9,10 @@ This document refines [PRD.md](../PRD.md); milestone state remains authoritative
 in [status.json](../status.json). No application or guest build is implied by a
 planning change or an artwork preview.
 
+Reusable repository inputs and preparation priorities: [Phase 2 prework](PHASE-2-PREWORK.md).
+Native branding follows [ADR-0108](adr/0108-native-branding-and-phase2-prework.md);
+these inputs do not start a B story or replace target validation.
+
 ## 1. Product outcome and scope
 
 Ship an experimental, installable x86_64 desktop with Ubuntu-like everyday

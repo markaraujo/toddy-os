@@ -5,6 +5,10 @@ assistant's harness. Product requirements remain in [the plan](PHASE-2-PLAN.md),
 acceptance in [validation](PHASE-2-VALIDATION.md), and milestone state in
 [status.json](../status.json). See [the review](PHASE-2-REVIEW.md).
 
+Reusable repository inputs and preparation priorities: [Phase 2 prework](PHASE-2-PREWORK.md).
+Native branding follows [ADR-0108](adr/0108-native-branding-and-phase2-prework.md);
+these inputs do not start a B story or replace target validation.
+
 ## 1. Authority and one current task
 
 Planning, website work and a passed G1 do not authorize guest implementation.

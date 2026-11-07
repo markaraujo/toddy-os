@@ -35,6 +35,10 @@ Do not read the historical H-build sequence below as a command to rebuild the
 accepted foundation. Source/target checkpoint and one next action survive a new
 agent session; private running-job details stay outside Git.
 
+Reusable [prework inputs](PHASE-2-PREWORK.md) now cover native branding, stable
+identity/icon roles, bilingual semantic scenarios and accepted dependency reuse.
+Read these before creating duplicate assets, strings, packages or build tooling.
+
 ## Small delivery loop
 
 Take one user-visible behavior or isolated prerequisite at a time. Record its

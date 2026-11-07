@@ -1243,3 +1243,18 @@ and two labeled concepts on GitHub. A strict redacted history scan exited zero
 with no findings (0.921 seconds). Owner-only main/tag control remains active;
 Dependabot PR #1 was left for owner review, not merged automatically. The phase
 progress command still reports 0% guest Phase 2 and execution approval false.
+
+
+## 2026-11-07 — Phase 2 execution prework
+
+Prepared native branding package inputs using existing approved art, wallpaper
+catalog/default templates, stable application identity and semantic icon roles.
+Added 40 EN/PT messages and 10 non-executed scenarios for deterministic UI work.
+Audited accepted dependency reuse and heavy new chains; SQLite/FTS5 and existing
+build/package tooling need no duplicate stack. ADR-0108 records native branding
+without a large Shell theme extension or forced user preference resets.
+
+make check passed 197 tests; temporary desktop-entry validation and strict host
+schema dry-run both exited zero without changing host settings. Target integration,
+resource measurements and B-story acceptance remain pending. No guest build, model
+download or paid API call was started; owner continuation remains false.

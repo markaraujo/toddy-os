@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "kind": "semantic-ui-fixtures",
+  "execution_status": "not-run",
+  "scope": "Expected UI states and safety invariants for future implementation; not a service protocol or runtime evidence.",
+  "scenarios": [
+    {
+      "id": "verified-success",
+      "fake_inputs": {"request": "Open the demonstration app", "application": "Demo app"},
+      "expected_states": ["queued", "planning", "running", "completed"],
+      "message_ids": ["task.queued", "task.planning", "task.running", "task.completed"],
+      "invariants": ["Completion is shown only after the requested result is verified.", "Rendering a fixture must never execute its request."]
+    },
+    {
+      "id": "cancel-queued-action",
+      "fake_inputs": {"request": "Start a demonstration action", "stop_requested_at": "queued"},
+      "expected_states": ["queued", "canceled"],
+      "message_ids": ["task.queued", "task.stop_action", "task.canceled"],
+      "invariants": ["The queued action does not start after Stop.", "No side effect occurs for an action canceled before execution."]
+    },
+    {
+      "id": "stop-during-safe-commit",
+      "fake_inputs": {"request": "Save a demonstration document", "stop_requested_at": "write-in-progress"},
+      "expected_states": ["running", "waiting", "canceled"],
+      "message_ids": ["task.running", "task.stop_pending_commit", "task.no_automatic_undo", "task.canceled"],
+      "invariants": ["Stop blocks subsequent actions immediately.", "An active write reaches a defined safe stopping point before cancellation is reported.", "The UI reports changes already made; cancellation is not rollback."]
+    },
+    {
+      "id": "interrupted-uncertain-operation",
+      "fake_inputs": {"request": "Apply a demonstration setting", "interruption": "connection-lost-after-dispatch"},
+      "expected_states": ["running", "waiting"],
+      "message_ids": ["task.outcome_uncertain", "task.reconnected"],
+      "invariants": ["An unknown outcome is not labeled completed, failed or canceled without reconciliation.", "Reconnect attaches to the existing task without dispatching a duplicate.", "An uncertain operation is not automatically replayed."]
+    },
+    {
+      "id": "offline-later-setup",
+      "fake_inputs": {"network": "offline", "assistant_setup": "later"},
+      "expected_states": ["setup-deferred"],
+      "message_ids": ["setup.offline_deferral", "setup.later_choice", "setup.deferred", "setup.download_pending"],
+      "invariants": ["Optional downloads do not block the base installation.", "The desktop remains usable without an assistant provider or model.", "Deferral does not claim an optional component was installed."]
+    },
+    {
+      "id": "invalid-profile-revision",
+      "fake_inputs": {"active_revision": "demo-valid", "candidate_revision": "demo-invalid", "validation_error": "unknown-setting"},
+      "expected_states": ["profile-validation-error"],
+      "message_ids": ["profile.invalid_revision"],
+      "invariants": ["Invalid edits leave the previously valid revision active.", "Validation errors contain no credentials or administrative grants."]
+    },
+    {
+      "id": "locked-secret-store",
+      "fake_inputs": {"provider": "Example provider", "credential_store": "locked"},
+      "expected_states": ["setup-blocked"],
+      "message_ids": ["setup.keyring_locked", "setup.local_choice", "setup.later_choice"],
+      "invariants": ["No credential value is available to the fixture or rendered copy.", "A locked store does not trigger a plaintext fallback.", "Provider execution waits until the user resolves setup or chooses an available alternative."]
+    },
+    {
+      "id": "unsafe-disk-rejected",
+      "fake_inputs": {"disk": "Demo installation medium", "target_role": "installation-source"},
+      "expected_states": ["disk-review", "target-rejected"],
+      "message_ids": ["installer.unsafe_target"],
+      "invariants": ["An in-use disk or installation source cannot be selected for destructive writes.", "No write starts while the target is rejected.", "The fixture uses a display label, never a real device path."]
+    },
+    {
+      "id": "disk-review-canceled",
+      "fake_inputs": {"disk": "Demo empty disk", "decision": "cancel-before-write"},
+      "expected_states": ["disk-review", "installation-canceled"],
+      "message_ids": ["installer.review_disk", "installer.cancel_before_write"],
+      "invariants": ["The exact selected disk is reviewed before any destructive operation.", "Cancel before writing leaves the disk unchanged."]
+    },
+    {
+      "id": "local-only-unavailable",
+      "fake_inputs": {"provider_policy": "local-only", "local_model": "unavailable"},
+      "expected_states": ["queued", "planning", "failed"],
+      "message_ids": ["setup.local_only_failure", "task.failed"],
+      "invariants": ["No request is sent to an external provider.", "Failure does not silently change the user's provider policy."]
+    }
+  ]
+}

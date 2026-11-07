@@ -9,7 +9,8 @@
   checks recorded in [PHASE-2-REVIEW.md](PHASE-2-REVIEW.md).
 - Current guest checkpoint/job/log: none created by this review. Do not fabricate
   a disk path, PID, runtime test or accepted B-story slice from planning work.
-- Next authorized action: complete/report the planning review. Once the owner
+- Prepared inputs: [native branding, copy/fixtures and dependency reuse](PHASE-2-PREWORK.md).
+- Next authorized action: report the completed execution/prework review. Once the owner
   explicitly authorizes guest continuation, record its evidence and begin B01's
   foundation-clone inventory under [the playbook](PHASE-2-EXECUTION.md).
 - No accepted foundation rebuild, physical disk installation or runtime

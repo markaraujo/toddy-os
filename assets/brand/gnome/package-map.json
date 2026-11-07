@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "status": "packaging-blueprint-not-installed",
+  "package": "toddy-branding",
+  "source_asset_manifest": "assets/brand/assets.json",
+  "product_identity": "ui/phase2/identity.json",
+  "payload": [
+    {
+      "source": "assets/brand/toddy-os-wallpaper-dark.png",
+      "destination": "/usr/share/backgrounds/toddy-os/toddy-os-wallpaper-dark.png",
+      "kind": "wallpaper"
+    },
+    {
+      "source": "assets/brand/toddy-os-wallpaper-light.png",
+      "destination": "/usr/share/backgrounds/toddy-os/toddy-os-wallpaper-light.png",
+      "kind": "wallpaper"
+    },
+    {
+      "source": "assets/brand/toddy-os-wallpaper-dark-logo.png",
+      "destination": "/usr/share/backgrounds/toddy-os/toddy-os-wallpaper-dark-logo.png",
+      "kind": "wallpaper"
+    },
+    {
+      "source": "assets/brand/toddy-os-wallpaper-light-logo.png",
+      "destination": "/usr/share/backgrounds/toddy-os/toddy-os-wallpaper-light-logo.png",
+      "kind": "wallpaper"
+    },
+    {
+      "source": "assets/brand/gnome/toddy-backgrounds.xml",
+      "destination": "/usr/share/gnome-background-properties/toddy-os.xml",
+      "kind": "wallpaper-catalog"
+    }
+  ],
+  "templates": [
+    {
+      "source": "assets/brand/gnome/90-toddy-branding.gschema.override.in",
+      "destination": "/usr/share/glib-2.0/schemas/90-toddy-branding.gschema.override",
+      "activation_gate": "B11 pinned guest key/schema validation and package transaction"
+    }
+  ],
+  "pending_exports": [
+    {
+      "source": "assets/brand/toddy-os-system-icon.png",
+      "icon_name": "io.github.markaraujo.Toddy",
+      "sizes": [
+        32,
+        48,
+        64,
+        128,
+        256
+      ],
+      "format": "PNG with alpha",
+      "gate": "B11 size/readability review; no fabricated SVG/vector master"
+    }
+  ],
+  "defaults": {
+    "respect_existing_user_values": true,
+    "reapply_at_login": false,
+    "dconf_locks": false,
+    "global_gtk_css": false,
+    "shell_extension_required": false,
+    "dark_by_default": true,
+    "allow_light_and_high_contrast": true
+  },
+  "excluded_runtime_assets": {
+    "web_only": [
+      "assets/brand/web/toddy-happy.png",
+      "assets/brand/web/toddy-yawn-half.png",
+      "assets/brand/web/toddy-yawn-full.png"
+    ],
+    "concept_only": [
+      "assets/brand/toddy-os-desktop-preview.png",
+      "assets/brand/toddy-os-assistant-preview.png",
+      "assets/brand/toddy-os-task-preview.png",
+      "assets/brand/toddy-os-installer-preview.png"
+    ]
+  },
+  "login_boot_policy": "Preserve a usable native GDM login. Apply only supported distribution branding; no Shell/GDM CSS resource patch or arbitrary image claimed supported. Boot surface integration remains target-tested."
+}

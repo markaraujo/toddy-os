@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>Toddy OS — Midnight</name>
+    <name xml:lang="pt_BR">Toddy OS — Azul-marinho</name>
+    <filename>/usr/share/backgrounds/toddy-os/toddy-os-wallpaper-dark-logo.png</filename>
+    <options>zoom</options><shade_type>solid</shade_type>
+    <pcolor>#081426</pcolor><scolor>#081426</scolor>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Toddy OS — Daylight</name>
+    <name xml:lang="pt_BR">Toddy OS — Azul-claro</name>
+    <filename>/usr/share/backgrounds/toddy-os/toddy-os-wallpaper-light-logo.png</filename>
+    <options>zoom</options><shade_type>solid</shade_type>
+    <pcolor>#EFF5FC</pcolor><scolor>#EFF5FC</scolor>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Toddy OS — Midnight, plain</name>
+    <name xml:lang="pt_BR">Toddy OS — Azul-marinho, sem mascote</name>
+    <filename>/usr/share/backgrounds/toddy-os/toddy-os-wallpaper-dark.png</filename>
+    <options>zoom</options><shade_type>solid</shade_type>
+    <pcolor>#081426</pcolor><scolor>#081426</scolor>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Toddy OS — Daylight, plain</name>
+    <name xml:lang="pt_BR">Toddy OS — Azul-claro, sem mascote</name>
+    <filename>/usr/share/backgrounds/toddy-os/toddy-os-wallpaper-light.png</filename>
+    <options>zoom</options><shade_type>solid</shade_type>
+    <pcolor>#EFF5FC</pcolor><scolor>#EFF5FC</scolor>
+  </wallpaper>
+</wallpapers>

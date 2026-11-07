@@ -1,0 +1,412 @@
+{
+  "schema_version": 1,
+  "kind": "semantic-copy-prework",
+  "source_locale": "en",
+  "locales": [
+    "en",
+    "pt-BR"
+  ],
+  "status": "prepared-copy-not-runtime-acceptance",
+  "messages": [
+    {
+      "id": "assistant.welcome",
+      "context": "assistant",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Ask Toddy a question or describe what you want to do.",
+        "pt-BR": "Pergunte ao Toddy ou descreva o que você quer fazer."
+      }
+    },
+    {
+      "id": "task.queued",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Queued. No action has started yet.",
+        "pt-BR": "Na fila. Nenhuma ação foi iniciada ainda."
+      }
+    },
+    {
+      "id": "task.planning",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Planning the task.",
+        "pt-BR": "Preparando a tarefa."
+      }
+    },
+    {
+      "id": "task.running",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Working on the task.",
+        "pt-BR": "Executando a tarefa."
+      }
+    },
+    {
+      "id": "task.waiting",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Waiting for {reason}.",
+        "pt-BR": "Aguardando {reason}."
+      }
+    },
+    {
+      "id": "task.completed",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The task finished and its results were verified.",
+        "pt-BR": "A tarefa terminou e seus resultados foram verificados."
+      }
+    },
+    {
+      "id": "task.failed",
+      "context": "task",
+      "severity": "error",
+      "humor_allowed": false,
+      "text": {
+        "en": "The task did not finish. Review the error and any changes already made.",
+        "pt-BR": "A tarefa não foi concluída. Confira o erro e as mudanças já realizadas."
+      }
+    },
+    {
+      "id": "task.canceled",
+      "context": "task",
+      "severity": "warning",
+      "humor_allowed": false,
+      "text": {
+        "en": "The task stopped. Review any changes already made.",
+        "pt-BR": "A tarefa foi interrompida. Confira as mudanças já realizadas."
+      }
+    },
+    {
+      "id": "task.stop_action",
+      "context": "control",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Stop task",
+        "pt-BR": "Parar tarefa"
+      }
+    },
+    {
+      "id": "task.stop_pending_commit",
+      "context": "task",
+      "severity": "warning",
+      "humor_allowed": false,
+      "text": {
+        "en": "Waiting for the current write to reach a safe stopping point. No further actions will start.",
+        "pt-BR": "Aguardando a gravação atual chegar a um ponto seguro de parada. Nenhuma nova ação será iniciada."
+      }
+    },
+    {
+      "id": "task.outcome_uncertain",
+      "context": "task",
+      "severity": "warning",
+      "humor_allowed": false,
+      "text": {
+        "en": "The result of the interrupted action is unknown. Review it before retrying.",
+        "pt-BR": "O resultado da ação interrompida é desconhecido. Confira o que aconteceu antes de tentar novamente."
+      }
+    },
+    {
+      "id": "task.reconnected",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Reconnected to the existing task. No new task was created.",
+        "pt-BR": "Conexão retomada com a tarefa existente. Nenhuma nova tarefa foi criada."
+      }
+    },
+    {
+      "id": "task.permission_revoked",
+      "context": "task",
+      "severity": "warning",
+      "humor_allowed": false,
+      "text": {
+        "en": "Permission was revoked. No further actions are allowed under this grant.",
+        "pt-BR": "A permissão foi revogada. Nenhuma nova ação pode usar essa autorização."
+      }
+    },
+    {
+      "id": "task.no_automatic_undo",
+      "context": "task",
+      "severity": "warning",
+      "humor_allowed": false,
+      "text": {
+        "en": "Stopping a task does not automatically undo changes already made.",
+        "pt-BR": "Parar uma tarefa não desfaz automaticamente as mudanças já realizadas."
+      }
+    },
+    {
+      "id": "setup.title",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Set up Toddy",
+        "pt-BR": "Configurar o Toddy"
+      }
+    },
+    {
+      "id": "setup.api_choice",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Use my provider",
+        "pt-BR": "Usar meu provedor"
+      }
+    },
+    {
+      "id": "setup.local_choice",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Use local AI",
+        "pt-BR": "Usar IA local"
+      }
+    },
+    {
+      "id": "setup.later_choice",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Set up later",
+        "pt-BR": "Configurar depois"
+      }
+    },
+    {
+      "id": "setup.deferred",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "You can use the desktop now and set up Toddy later.",
+        "pt-BR": "Você pode usar o desktop agora e configurar o Toddy depois."
+      }
+    },
+    {
+      "id": "setup.missing_key",
+      "context": "setup",
+      "severity": "warning",
+      "humor_allowed": false,
+      "text": {
+        "en": "Add a credential for {provider}, choose local AI, or set up later.",
+        "pt-BR": "Adicione uma credencial para {provider}, escolha IA local ou configure depois."
+      }
+    },
+    {
+      "id": "setup.missing_model",
+      "context": "setup",
+      "severity": "warning",
+      "humor_allowed": false,
+      "text": {
+        "en": "No local model is ready. Choose a compatible model or set up later.",
+        "pt-BR": "Nenhum modelo local está pronto. Escolha um modelo compatível ou configure depois."
+      }
+    },
+    {
+      "id": "setup.keyring_locked",
+      "context": "setup",
+      "severity": "warning",
+      "humor_allowed": false,
+      "text": {
+        "en": "Your credential store is locked. Unlock it to use {provider}, or choose local AI or set up later.",
+        "pt-BR": "Seu cofre de credenciais está bloqueado. Desbloqueie-o para usar {provider}, escolha IA local ou configure depois."
+      }
+    },
+    {
+      "id": "setup.keyring_unavailable",
+      "context": "setup",
+      "severity": "error",
+      "humor_allowed": false,
+      "text": {
+        "en": "The credential store is unavailable. Provider credentials will not be saved in plain text. You can use local AI or set up later.",
+        "pt-BR": "O cofre de credenciais está indisponível. As credenciais do provedor não serão salvas em texto simples. Você pode usar IA local ou configurar depois."
+      }
+    },
+    {
+      "id": "setup.local_only_failure",
+      "context": "setup",
+      "severity": "error",
+      "humor_allowed": false,
+      "text": {
+        "en": "Local AI is unavailable. This task will not switch to an external provider.",
+        "pt-BR": "A IA local está indisponível. Esta tarefa não será enviada a um provedor externo."
+      }
+    },
+    {
+      "id": "setup.download_pending",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The optional download is pending. The base installation can continue.",
+        "pt-BR": "O download opcional está pendente. A instalação do sistema básico pode continuar."
+      }
+    },
+    {
+      "id": "setup.offline_deferral",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "You are offline. Optional downloads can be completed after installation.",
+        "pt-BR": "Você está sem conexão. Os downloads opcionais podem ser concluídos após a instalação."
+      }
+    },
+    {
+      "id": "setup.model_download_review",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Review the model license, download size and memory requirements before downloading {model}.",
+        "pt-BR": "Confira a licença, o tamanho do download e os requisitos de memória antes de baixar {model}."
+      }
+    },
+    {
+      "id": "profile.invalid_revision",
+      "context": "profile",
+      "severity": "error",
+      "humor_allowed": false,
+      "text": {
+        "en": "These profile changes are invalid. The previous working revision remains active.",
+        "pt-BR": "As alterações do perfil são inválidas. A revisão anterior continua ativa."
+      }
+    },
+    {
+      "id": "profile.restore",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Restore the previous revision",
+        "pt-BR": "Restaurar a revisão anterior"
+      }
+    },
+    {
+      "id": "profile.concurrent_edit",
+      "context": "profile",
+      "severity": "warning",
+      "humor_allowed": false,
+      "text": {
+        "en": "This profile changed elsewhere. Review the current revision before applying your changes.",
+        "pt-BR": "Este perfil foi alterado em outro lugar. Confira a revisão atual antes de aplicar suas mudanças."
+      }
+    },
+    {
+      "id": "profile.secret_free_export",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "This profile export excludes credentials and administrative grants.",
+        "pt-BR": "Esta exportação do perfil não inclui credenciais nem autorizações administrativas."
+      }
+    },
+    {
+      "id": "installer.review_disk",
+      "context": "installer",
+      "severity": "critical",
+      "humor_allowed": false,
+      "text": {
+        "en": "Installing will erase all data on {disk}. Review the selected disk before continuing.",
+        "pt-BR": "A instalação apagará todos os dados de {disk}. Confira o disco selecionado antes de continuar."
+      }
+    },
+    {
+      "id": "installer.cancel_before_write",
+      "context": "installer",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Installation canceled before any disk changes.",
+        "pt-BR": "Instalação cancelada antes de qualquer alteração no disco."
+      }
+    },
+    {
+      "id": "installer.unsafe_target",
+      "context": "installer",
+      "severity": "critical",
+      "humor_allowed": false,
+      "text": {
+        "en": "This disk is in use or is the installation source. Select a different disk.",
+        "pt-BR": "Este disco está em uso ou contém a origem da instalação. Selecione outro disco."
+      }
+    },
+    {
+      "id": "installer.target_changed_before_write",
+      "context": "installer",
+      "severity": "critical",
+      "humor_allowed": false,
+      "text": {
+        "en": "The selected disk identity changed before installation started. Review the target again.",
+        "pt-BR": "A identidade do disco selecionado mudou antes do início da instalação. Confira o destino novamente."
+      }
+    },
+    {
+      "id": "installer.unsupported_feature",
+      "context": "installer",
+      "severity": "warning",
+      "humor_allowed": false,
+      "text": {
+        "en": "{feature} is not supported in this preview. Choose a supported installation option.",
+        "pt-BR": "{feature} não é compatível com esta prévia. Escolha uma opção de instalação compatível."
+      }
+    },
+    {
+      "id": "installer.optional_pack_unavailable",
+      "context": "installer",
+      "severity": "warning",
+      "humor_allowed": false,
+      "text": {
+        "en": "{package} is unavailable for this system. The base installation can continue without it.",
+        "pt-BR": "{package} está indisponível para este sistema. A instalação básica pode continuar sem ele."
+      }
+    },
+    {
+      "id": "installer.driver_unverified",
+      "context": "installer",
+      "severity": "warning",
+      "humor_allowed": false,
+      "text": {
+        "en": "Support for this hardware has not been verified. Detection alone does not confirm driver compatibility.",
+        "pt-BR": "O suporte a este hardware não foi verificado. A detecção, sozinha, não confirma a compatibilidade do driver."
+      }
+    },
+    {
+      "id": "installer.insufficient_space",
+      "context": "installer",
+      "severity": "error",
+      "humor_allowed": false,
+      "text": {
+        "en": "There is not enough free space for the selected installation. Review the disk plan.",
+        "pt-BR": "Não há espaço livre suficiente para a instalação selecionada. Confira o plano do disco."
+      }
+    },
+    {
+      "id": "installer.recovery_required",
+      "context": "installer",
+      "severity": "critical",
+      "humor_allowed": false,
+      "text": {
+        "en": "Installation could not finish. Review the recovery instructions before retrying or changing the disk.",
+        "pt-BR": "A instalação não foi concluída. Confira as instruções de recuperação antes de tentar novamente ou alterar o disco."
+      }
+    }
+  ]
+}

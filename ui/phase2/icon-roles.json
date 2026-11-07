@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "status": "semantic-map-target-theme-lookup-pending",
+  "policy": "Use installed GNOME theme icons for native controls; shipped copies are provenance references for mockups, not a second OS theme. Keep text/accessibility labels and a text fallback.",
+  "provenance_manifest": "assets/third-party/gnome/manifest.json",
+  "roles": [
+    {
+      "role": "microphone",
+      "theme_name": "audio-input-microphone-symbolic",
+      "reference": "assets/third-party/gnome/audio-input-microphone-symbolic.svg",
+      "fallback": "visible-text-label"
+    },
+    {
+      "role": "stop",
+      "theme_name": "media-playback-stop-symbolic",
+      "reference": "assets/third-party/gnome/media-playback-stop-symbolic.svg",
+      "fallback": "visible-text-label"
+    },
+    {
+      "role": "history",
+      "theme_name": "document-open-recent-symbolic",
+      "reference": "assets/third-party/gnome/document-open-recent-symbolic.svg",
+      "fallback": "visible-text-label"
+    },
+    {
+      "role": "search",
+      "theme_name": "edit-find-symbolic",
+      "reference": "assets/third-party/gnome/edit-find-symbolic.svg",
+      "fallback": "visible-text-label"
+    },
+    {
+      "role": "menu",
+      "theme_name": "open-menu-symbolic",
+      "reference": "assets/third-party/gnome/open-menu-symbolic.svg",
+      "fallback": "visible-text-label"
+    },
+    {
+      "role": "back",
+      "theme_name": "go-previous-symbolic",
+      "reference": "assets/third-party/gnome/go-previous-symbolic.svg",
+      "fallback": "visible-text-label"
+    },
+    {
+      "role": "next",
+      "theme_name": "go-next-symbolic",
+      "reference": "assets/third-party/gnome/go-next-symbolic.svg",
+      "fallback": "visible-text-label"
+    },
+    {
+      "role": "close",
+      "theme_name": "window-close-symbolic",
+      "reference": "assets/third-party/gnome/window-close-symbolic.svg",
+      "fallback": "visible-text-label"
+    },
+    {
+      "role": "home",
+      "theme_name": "user-home-symbolic",
+      "reference": "assets/third-party/gnome/user-home-symbolic.svg",
+      "fallback": "visible-text-label"
+    },
+    {
+      "role": "network",
+      "theme_name": "network-wireless-signal-excellent-symbolic",
+      "reference": "assets/third-party/gnome/network-wireless-signal-excellent-symbolic.svg",
+      "fallback": "visible-text-label"
+    },
+    {
+      "role": "audio",
+      "theme_name": "audio-volume-high-symbolic",
+      "reference": "assets/third-party/gnome/audio-volume-high-symbolic.svg",
+      "fallback": "visible-text-label"
+    },
+    {
+      "role": "applications",
+      "theme_name": "view-app-grid-symbolic",
+      "reference": "assets/third-party/gnome/view-app-grid-symbolic.svg",
+      "fallback": "visible-text-label"
+    }
+  ],
+  "send_action": {
+    "fallback": "visible-text-label",
+    "custom_icon_required": false
+  },
+  "busy_indicator": "GtkSpinner, not an animated mascot or downloaded sprite sheet"
+}

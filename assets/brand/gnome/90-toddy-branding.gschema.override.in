@@ -1,0 +1,9 @@
+# Inactive packaging input; compile only against the pinned guest schemas.
+# Distribution defaults, not forced user settings or a login script.
+[org.gnome.desktop.background]
+picture-uri='file:///usr/share/backgrounds/toddy-os/toddy-os-wallpaper-light-logo.png'
+picture-uri-dark='file:///usr/share/backgrounds/toddy-os/toddy-os-wallpaper-dark-logo.png'
+picture-options='zoom'
+
+[org.gnome.desktop.interface]
+color-scheme='prefer-dark'

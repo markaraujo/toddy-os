@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Toddy
+GenericName=Personal Assistant
+GenericName[pt_BR]=Assistente pessoal
+Comment=Ask Toddy and follow your tasks
+Comment[pt_BR]=Converse com o Toddy e acompanhe suas tarefas
+Exec=@TODDY_EXECUTABLE@
+Icon=io.github.markaraujo.Toddy
+Terminal=false
+Categories=Utility;
+StartupNotify=true
+DBusActivatable=false

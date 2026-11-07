@@ -6,6 +6,10 @@ are not a claim that packages, models or hardware were tested. No owner product
 choice is awaiting an answer. B01 is still responsible for locking compatible
 versions/bytes and proving its small spikes before large integration builds.
 
+Reusable repository inputs and preparation priorities: [Phase 2 prework](PHASE-2-PREWORK.md).
+Native branding follows [ADR-0108](adr/0108-native-branding-and-phase2-prework.md);
+these inputs do not start a B story or replace target validation.
+
 ## Selected baseline
 
 | Area | Selected default | Fallback and proof gate |

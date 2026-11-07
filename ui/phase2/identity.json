@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "repository-preparation-not-installed",
+  "application": {
+    "id": "io.github.markaraujo.Toddy",
+    "display_name": "Toddy",
+    "icon_name": "io.github.markaraujo.Toddy",
+    "resource_prefix": "/io/github/markaraujo/Toddy",
+    "desktop_template": "ui/phase2/io.github.markaraujo.Toddy.desktop.in"
+  },
+  "planned_services": {
+    "session_broker": "io.github.markaraujo.Toddy.Service",
+    "system_executor": "io.github.markaraujo.Toddy.Executor"
+  },
+  "branding_package": "toddy-branding",
+  "assistant_package": "toddy-assistant",
+  "protected_identity": "assets/brand/toddy-os-system-icon.png",
+  "canonical_asset_manifest": "assets/brand/assets.json",
+  "canonical_palette": "ui/tokens.css",
+  "profile_name_changes_application_id": false,
+  "namespace_basis": "Maintainer-controlled GitHub Pages namespace; not an unowned commercial domain."
+}
