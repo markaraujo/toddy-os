@@ -1,56 +1,97 @@
 <div align="center">
 
-<img src="assets/brand/toddy-os-logo.png" alt="Toddy OS — a Shih-tzu wearing glasses" width="320">
+<img src="assets/brand/toddy-os-system-icon.png" alt="Toddy — the project's bespectacled Shih-tzu mascot, on a transparent background" width="180">
 
 # Toddy OS
 
-**An independent Linux distribution built from source, with an open agentic desktop for development and automation.**
+**Linux built from source. A familiar desktop and a personal assistant you can customize are next.**
 
-Foundation G1 passed in QEMU · Awaiting owner testing · Desktop and agent pending
+Experimental preview · Foundation tested in QEMU/KVM · Working toward 1.0
+
+**[Explore the website](https://markaraujo.github.io/toddy-os/)** · **[Download the foundation preview](https://github.com/markaraujo/toddy-os/releases/tag/v0.1.0-foundation.1)**
 
 </div>
 
-## Start here
+Toddy OS is an independent Linux project created by Marcos Araujo and named after
+his Shih-tzu, Toddy. The goal is a minimal GNOME desktop with everyday essentials
+and an assistant whose personality, tools and model you can choose.
 
-- [Product requirements](PRD.md)
-- [Replanned Phase 2 delivery](docs/PHASE-2-PLAN.md)
-- [User-customizable assistant harness](docs/PHASE-2-HARNESS.md)
-- [Basic tests and owner validation](docs/PHASE-2-VALIDATION.md)
-- [Public portal and progress](https://markaraujo.github.io/toddy-os/) — six languages, browser detection and manual selection
-- [Project supporters](https://markaraujo.github.io/toddy-os/#supporters)
-- [Experimental releases](https://markaraujo.github.io/toddy-os/#releases)
-- [Current status](STATUS.md)
-- [Development handoff](docs/DEVELOPMENT.md)
-- [Owner testing guide](docs/FOUNDATION-TESTING.md)
-- [Fresh foundation rebuild](docs/FRESH-BUILD.md)
-- [Download the foundation prerelease](https://github.com/markaraujo/toddy-os/releases/tag/v0.1.0-foundation.1)
-- [Major delivery releases](docs/RELEASES.md)
-- [Build procedure](docs/BUILD.md)
-- [Recovery checkpoints](docs/RECOVERY.md)
-- [Milestone stories](stories/README.md)
-- [Architecture decisions](docs/adr/README.md)
-- [Visual identity](assets/brand/README.md)
-- [GNOME and Toddy design concepts](ui/preview.html)
-- [Installer storytelling preview](ui/installer-slides.html)
+## What you can try today
 
-The project follows two product phases: a verified Linux From Scratch foundation, then the desktop and agentic experience. Read `AGENTS.md` before implementation.
+The current release, **v0.1.0-foundation.1**, provides a command-line live foundation
+built with Linux From Scratch and tested in QEMU/KVM. Its live filesystem is
+volatile. Start with the [testing guide](docs/FOUNDATION-TESTING.md), and read the
+[release notes and checksums](https://github.com/markaraujo/toddy-os/releases/tag/v0.1.0-foundation.1)
+before trying the ISO.
+
+Phase 2 plans the GNOME desktop, native Toddy assistant, optional local/API AI and
+guided installation. Guest implementation has not started and requires explicit
+owner approval after foundation review. Physical hardware validation is pending;
+the project remains experimental until a genuine accepted 1.0 release.
+[Current status](STATUS.md) records what has actually passed.
+
+## A look at the planned desktop
+
+These are **design concepts, not screenshots of a running release**. Click an
+image to explore its interactive preview. The downloadable foundation does not
+yet include this interface.
+
+[![Design concept: navy GNOME desktop with a file manager and the Toddy mascot](assets/brand/toddy-os-desktop-preview.png)](https://markaraujo.github.io/toddy-os/ui/preview.html#desktop)
+
+*A familiar desktop with a focused selection of everyday apps.*
+
+[![Design concept: Toddy's compact assistant entry window on the navy desktop](assets/brand/toddy-os-assistant-preview.png)](https://markaraujo.github.io/toddy-os/ui/preview.html#quick)
+
+*The planned quick-entry window for asking Toddy a question or giving him a task.*
+
+The [website](https://markaraujo.github.io/toddy-os/) has more previews, wallpapers,
+release information and progress in six languages, with browser-language detection
+and manual selection. Meet the [project supporters](https://markaraujo.github.io/toddy-os/supporters.html)
+or [support development on Patreon](https://www.patreon.com/ToddyOS).
+
+## Follow the work
+
+- [Phase 2 plan](docs/PHASE-2-PLAN.md) and [customizable assistant harness](docs/PHASE-2-HARNESS.md)
+- [Focused tests and owner validation](docs/PHASE-2-VALIDATION.md)
+- [Development handoff](docs/DEVELOPMENT.md) and [milestone stories](stories/README.md)
+- [Releases and the road to 1.0](docs/RELEASES.md)
+
+For contributions, read the [contributor guide](CONTRIBUTING.md). For a suspected
+vulnerability, follow the [security reporting policy](SECURITY.md).
+
+Read [AGENTS.md](AGENTS.md) before implementation. Keep deliveries small, preserve
+verified checkpoints and record observed results instead of estimating progress.
+Repository consistency checks are intentionally separate from OS builds:
 
 ```sh
 make check
 make progress
 ```
 
-The static dashboard in `dashboard/index.html` opens directly in a browser; it requires no service or external assets. Progress means verified acceptance criteria, not time elapsed.
+The generated `dashboard/index.html` also opens directly in a browser without a
+service or external assets.
 
-This repository contains build recipes, configuration, documentation, tests and approved brand assets. Source archives, model weights, disk images, ISO files, secrets and runtime memory do not belong in Git. Release artifacts will be distributed separately.
+<details>
+<summary>Build, recovery and design documentation</summary>
 
-## Project identity
+- [Product requirements](PRD.md)
+- [Build procedure](docs/BUILD.md)
+- [Fresh foundation rebuild](docs/FRESH-BUILD.md)
+- [Recovery checkpoints](docs/RECOVERY.md)
+- [Foundation delivery evidence](docs/evidence/H13.md)
+- [Architecture decisions](docs/adr/README.md)
+- [Visual identity](assets/brand/README.md)
+- [GNOME and Toddy concept sources](ui/preview.html)
+- [Installer storytelling preview](https://markaraujo.github.io/toddy-os/ui/installer-slides.html)
 
-Toddy OS is named after the founder’s Shih-tzu, Toddy. Its illustrated mascot is a proposal approved by the founder; current assets are PNG artwork, not vector masters.
+</details>
+
+Source archives, model weights, disk images, ISO files, secrets and runtime memory
+stay outside Git. Downloadable artifacts are distributed through GitHub Releases.
 
 ## Licensing
 
-The owner's original code is [MIT licensed](LICENSE); original documentation and
-approved artwork are [CC BY 4.0](LICENSES/CC-BY-4.0.txt). See
-[LICENSING.md](LICENSING.md) for scope and attribution. Linux, GNU tools,
-libraries and other third-party components keep their own terms.
+Original code is [MIT licensed](LICENSE); original documentation and approved
+artwork are [CC BY 4.0](LICENSES/CC-BY-4.0.txt). See [LICENSING.md](LICENSING.md)
+for scope and attribution. Linux, GNU tools, libraries and other third-party
+components keep their own terms. Current brand artwork is PNG, not a vector master.
