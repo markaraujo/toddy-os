@@ -1,0 +1,87 @@
+{
+  "started": "2026-11-07T12:37:06.612785+00:00",
+  "finished": "2026-11-07T12:40:11.099147+00:00",
+  "release_profile": false,
+  "configured_packages": 134,
+  "image_entries": 82011,
+  "assembled": true,
+  "boot_verified": false,
+  "release_accepted": false,
+  "assembler_sha256": "36c27e2ae3c7dcc3e4a7700430aa0d62be013ca643612a7c7fdc14c9cdc2ff74",
+  "baseline_sha256": "b4c7eeb9c064fc72fe3dba20f66c9b5bbd2bd925513b4f87155d19911bee3077",
+  "assembly_sha256": "722a12e94a148bbb28a1d2b8febb3bf04595c7c15aa7057ab58548b78669e016",
+  "stages": [
+    {
+      "step": "source-inventory",
+      "report_sha256": "debd9f77a245f16ca0af9ba2697bfeedd83a48a91489f27e1a015b91c1ef8c27"
+    },
+    {
+      "step": "copy-payload",
+      "report_sha256": "6d4bc9ccabe760104b06450bdadfbe4751a6cd07fdb1e7e6d6e73252a5e505ee"
+    },
+    {
+      "step": "fresh-directories",
+      "report_sha256": "cb137080476fec6748bc48d0db9d46050e5f6c990c246d6bcfb4d08a5de3f244"
+    },
+    {
+      "step": "native-database",
+      "report_sha256": "b30cac849b31d66ab3b04041e95a12c09b91ff7db3f3395a3b485f4a0d08b0bd"
+    },
+    {
+      "step": "image-database-state",
+      "report_sha256": "89e01c08c499f28d4cf8743c132facc951bcaa42520876541d5230ad88631d1b"
+    },
+    {
+      "step": "fresh-accounts",
+      "report_sha256": "4ac0455b23555778fd5d49c2058c32b872013a68689cc6ecea527a5623f8df3d"
+    },
+    {
+      "step": "live-configuration",
+      "report_sha256": "b27677a86dfbb805cab6b5b4069626bc7a90a56d25f2ca18c05ad3c7188e8421"
+    },
+    {
+      "step": "offline-services",
+      "report_sha256": "61229706662a7030c937b35af1ed4f2438869953f881ef8b3a49dd66371a4e49"
+    },
+    {
+      "step": "live-console",
+      "report_sha256": "a435885a1b8113f036989d4c306ef382a91a0292e0dd5c96c611bc36a11f79df"
+    },
+    {
+      "step": "loader-cache",
+      "report_sha256": "a510416d2e4cde7c99af4d4d678cc35afc7c6cf974e95edabc17186ef92bb232"
+    },
+    {
+      "step": "info-index",
+      "report_sha256": "fb3e088fbbf0c8b0eda255a3fafd61593d56eebeb7bd3a71e19f0e6dbfaecab9"
+    },
+    {
+      "step": "acl-sidecar",
+      "report_sha256": "af477f225b5627ae63c9a29f5c04787de6f6383dd7bf5074b1f8c775d30824fb"
+    },
+    {
+      "step": "owned-payload-audit",
+      "report_sha256": "53bd46ded86931ea9ef6e1521fa8d4f5a49969cb7cf454d75d139879637e092b"
+    },
+    {
+      "step": "image-attribution-plan",
+      "report_sha256": "e50ce9b6b88cbc81155c4e7fa7a27e8840f1a99834695afed2222b7e9ffb6af7"
+    },
+    {
+      "step": "image-attribution-audit",
+      "report_sha256": "c4bf7e5aee8351f676af9ffe0d955611710ff23b61f406b6c3f886b0a3ee1b03"
+    },
+    {
+      "step": "image-runtime-audit",
+      "report_sha256": "59e4b1168a861aec625708282bb66b093e23f461bb3f6c79bd024531cf8a70ff"
+    },
+    {
+      "step": "fresh-identity-audit",
+      "report_sha256": "bf3c03e962f80c8d6d5948da8c990d9d2923bc21f34454860c38ef2ce332e9ad"
+    },
+    {
+      "step": "image-manifest",
+      "report_sha256": "4693cfd359b5e0428b24bdaca53d06b561a9c39253dfb013d93f51a17e648398"
+    }
+  ]
+}
