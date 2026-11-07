@@ -1296,3 +1296,20 @@ build just to retry collection. A fresh independent experiment can be launched
 with `python3 scripts/host/probe_native_kernel.py start` only after earlier
 processes are terminal; all old logs remain. This command does not install a
 kernel or accept any milestone. The production recipe still requires H08.
+
+
+After the private kernel finishes with verified actual driver/stage exits zero,
+the independent diagnostic boot command is:
+
+```sh
+python3 scripts/host/probe_kernel_boot.py /mnt/lfs/sources/recovery/kernel-native-dn1rodsa
+```
+
+It preserves reports under .local/vm/kernel-smoke-tests and a new guest
+sources/recovery/kernel-smoke-* fixture. It uses a separate diskless guest,
+never the active builder disk, and records exact Docker/QEMU arguments, serial
+logs, exits and hashes. An interrupted boot must be inspected using its saved
+container ID/label before another test; a running labelled guest is refused.
+Native full boot/login, ISO boot and H09/H12 acceptance remain separate. The
+current early invocation was an expected live-kernel refusal; no kernel boot
+has passed yet. Do not reuse that failure as a later passing result.

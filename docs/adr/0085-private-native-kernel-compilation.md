@@ -75,3 +75,39 @@ fixture, PID and next command are in the local checkpoint and recovery notes.
 Collect and inspect terminal exits, artifacts and postconditions before any
 later claim of successful compilation. Production packaging and complete native
 boot tests remain mandatory behind H08/H09.
+
+
+## Prepared diagnostic boot, distinct from foundation boot
+
+The next independent experiment uses the completed private kernel and a tiny
+native static-libc diagnostic PID 1 in a separate diskless QEMU guest. Frozen
+Linux 7.1.8 init/main.c implements rdinit and /init; its initrd documentation
+explains compressed cpio initialization, and include/uapi/linux/reboot.h defines
+guest power-off. The prepared probe uses these interfaces without changing the
+kernel configuration or final H09/H10 boot recipes.
+
+Before creating guest artifacts, require the kernel producer to be terminal
+with actual exit zero, all five completed-stage exits/log hashes, unchanged
+inputs/native package status and current artifact hashes. Build diagnostic C
+with the native GCC/static libc, package it and the actual dummy.ko using native
+bsdcpio/gzip, and verify transferred kernel/initramfs hashes. BIOS and pinned
+OVMF runs use a generic qemu64 CPU, no disk/network and separate firmware
+variables. The existing boot-test lock/container ownership helpers protect
+other guests; only the newly created labelled containers may be stopped.
+
+The real diagnostic assertions will check kernel/firmware identity, volatile
+file write/read, user/mount/IPC/network namespace creation and actual native
+module insertion/removal. A per-invocation token, exact success marker, no
+failure/panic and actual QEMU exit zero are all required. Power-off occurs
+inside this disposable guest. This is not Systemd/login, GRUB/ISO boot, the live
+root/overlay, native compiler-runtime regressions, installation or G1 acceptance.
+Those complete-system checks remain mandatory.
+
+Native preparation evidence so far: the diagnostic C compiled with -static,
+-Wall -Wextra -Werror and no ELF interpreter. Execution as an ordinary builder
+process correctly returned 125 before mounts or reboot. Raw preflight SHA-256:
+ed2b6b692cf8b0cd0eab6a5e77b4d5735d1770a6b23baae0edd554e3a9f1b234.
+The exact helper refused the still-live kernel producer before preparing guest
+payloads or starting QEMU; refusal log SHA-256:
+57d069f21e0aff58b41c950819a454a2f8a7e160a3582bf6514d8b33bce72050.
+Actual successful diagnostic boot is pending kernel compilation.
