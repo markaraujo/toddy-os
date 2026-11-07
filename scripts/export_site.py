@@ -12,6 +12,7 @@ REPO_URL = "https://github.com/markaraujo/toddy-os/blob/main/"
 BRAND_FILES = (
     "toddy-os-system-icon.png", "toddy-os-wallpaper-dark.png",
     "toddy-os-wallpaper-light.png", "toddy-os-boot-background.png",
+    "toddy-os-wallpaper-dark-logo.png", "toddy-os-wallpaper-light-logo.png",
     "toddy-os-desktop-preview.png", "toddy-os-assistant-preview.png",
     "toddy-os-task-preview.png", "toddy-os-installer-preview.png",
 )

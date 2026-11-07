@@ -918,3 +918,69 @@ h2 {
         font-size: 9px;
     }
 }
+
+/* Optional branded wallpaper downloads; the plain backgrounds remain available. */
+.wallpapers {
+    border-bottom: 1px solid #203854;
+}
+.wallpaper-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+.wallpaper-grid figure {
+    margin: 0;
+    min-width: 0;
+}
+.wallpaper-grid figure > a {
+    display: block;
+}
+.wallpaper-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #38516f;
+    border-radius: 10px;
+}
+.wallpaper-grid figcaption {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 15px;
+    padding-top: 18px;
+}
+.wallpaper-grid h3 {
+    font-size: 17px;
+    font-weight: 550;
+    margin: 0 0 4px;
+}
+.wallpaper-grid figcaption p {
+    font-size: 11px;
+    color: var(--muted);
+    margin: 0;
+}
+.wallpaper-grid figcaption > a {
+    font-size: 10px;
+    white-space: nowrap;
+    text-decoration: none;
+    padding-top: 3px;
+}
+.wallpapers > .honest-note {
+    max-width: 1000px;
+    line-height: 1.8;
+}
+@media (max-width: 650px) {
+    .wallpaper-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .wallpaper-grid h3 {
+        font-size: 16px;
+    }
+    .wallpaper-grid figcaption p {
+        font-size: 10px;
+    }
+    .wallpaper-grid figcaption > a {
+        font-size: 10px;
+    }
+}

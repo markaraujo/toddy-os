@@ -29,3 +29,21 @@ This is not a complete accessibility audit of every pixel or third-party app.
 
 No GNOME, model, driver or installer was built or tested. Guest B11 is not
 accepted by these assets. Published foundation ISO is unchanged.
+
+## Optional branded wallpaper extension
+
+The owner requested wallpapers with the Toddy logo after the initial refresh.
+Added dark/light companions, each 1672x941 PNG, generated using the built-in image
+tool with the existing background and approved mascot as references. Visual
+inspection confirmed the right-aligned mascot/label, navy/cool-light composition
+and quiet desktop space. These are generated reproductions; original identity
+source files remain byte-identical and the plain wallpaper options remain.
+Prompts and exact output hashes are in assets/brand/generation-record.json and
+assets/brand/assets.json.
+
+Added a responsive gallery at the public page's #wallpapers anchor with full-size
+links and explicit PNG downloads for branded and plain variants. Local exported
+browser inspection at 1440x1000 and 390x844: both images decode, all four download
+URLs/filenames point to the intended allowlisted PNGs, no horizontal overflow.
+make dashboard/make site/make check passed; 184 existing local checks took 0.174
+seconds. No new OS/runtime/hardware test was needed for this asset-only extension.

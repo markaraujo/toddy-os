@@ -19,6 +19,7 @@ class PublicExport(unittest.TestCase):
             "assets/brand/toddy-os-system-icon.png",
             "assets/brand/toddy-os-wallpaper-dark.png", "assets/brand/toddy-os-wallpaper-light.png",
             "assets/brand/toddy-os-boot-background.png",
+            "assets/brand/toddy-os-wallpaper-dark-logo.png", "assets/brand/toddy-os-wallpaper-light-logo.png",
             "assets/brand/toddy-os-desktop-preview.png", "assets/brand/toddy-os-assistant-preview.png",
             "assets/brand/toddy-os-task-preview.png", "assets/brand/toddy-os-installer-preview.png",
         })

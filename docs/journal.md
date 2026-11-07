@@ -1051,3 +1051,8 @@ approved mascot reference. Actual outputs are 1672x941 PNG. These are generated
 reproductions; protected logo/mascot source hashes remain unchanged, and plain
 wallpapers stay available. Prompts, dimensions and hashes are recorded in the
 brand metadata. Public gallery/download integration follows this asset checkpoint.
+
+Branded wallpaper gallery added to the public page with full-size PNG downloads
+and retained plain versions. Explicit export allowlist updated for the two assets.
+Desktop/mobile gallery checks, source identity hashes and make check passed
+(184 local checks, 0.174 seconds). See docs/evidence/navy-brand-preview.md.
