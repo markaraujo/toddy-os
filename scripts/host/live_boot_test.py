@@ -82,6 +82,7 @@ def main():
     if not sent and marker in received:
      handshake=True;connection.sendall(b'stty -echo\n');time.sleep(.1);connection.sendall(command.encode());sent=True
     text=received.decode(errors='replace')
+    if 'TODDY_LIVE_ERROR:' in text:raise RuntimeError('Early init entered recovery; inspect preserved serial log')
     if 'TODDY_LIVE_TEST_FAIL ' in text:raise RuntimeError('Native live console probe failed; inspect preserved serial log')
     for line in text.splitlines():
      if 'TODDY_LIVE_TEST_OK ' in line:

@@ -3,8 +3,8 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-07",
   "bootstrap": "ready_for_development",
-  "current_scope": "H01-H11 completed. The 1,094,998,016-byte release-profile foundation ISO and 134-component/source/credential inventory passed. H12 tests the final artifact and native regressions; G1 remains pending. Owner review after H13 precedes B01-B13.",
-  "next_story": "H12",
+  "current_scope": "H11 artifact revision in progress after H12 found a reproduced USB discovery defect. Original BIOS/CD and UEFI/CD passed; USB failed. Preserve accepted root/compression, replace only initramfs/media, then repeat the full matrix. Owner review after H13 precedes Phase 2.",
+  "next_story": "H11",
   "gates": {
     "G1": "pending",
     "G2": "pending"
@@ -205,7 +205,7 @@
       "phase": "foundation",
       "title": "Produce hybrid ISO and artifact manifest",
       "weight": 6,
-      "status": "completed",
+      "status": "in_progress",
       "depends_on": [
         "H10"
       ],
@@ -224,7 +224,7 @@
       "phase": "foundation",
       "title": "Verify foundation boot matrix and recovery",
       "weight": 6,
-      "status": "in_progress",
+      "status": "not_started",
       "depends_on": [
         "H11"
       ],
@@ -486,18 +486,18 @@
     }
   ],
   "active_work": {
-    "story": "H12",
-    "verified_at": "2026-11-07 13:21 UTC",
+    "story": "H11",
+    "verified_at": "2026-11-07 13:25 UTC",
     "verified": [
-      "H11 hybrid ISO, full payload readback and independent SHA-256 passed.",
-      "134 image packages, 142 corresponding source inputs, full ownership/runtime/fresh-identity and credential review passed."
+      "First final ISO passed BIOS/CD and UEFI/CD console/runtime/network checks.",
+      "USB defect reproduced: automatic blkid omits the partitioned whole disk; explicit native probing and read-only mount succeed.",
+      "Accepted root, 134-component inventory and compression unchanged."
     ],
-    "running": "Starting final-ISO BIOS/UEFI CD/USB console matrix and native namespace follow-ups.",
+    "running": "Replacing initramfs/media with explicit block-node discovery; original failed artifacts retained.",
     "remaining": [
-      "Final ISO console boots, offline operation and recovery failure injection.",
-      "Native Glibc/Systemd namespace retests and final security/known-issue review.",
-      "H13 G1 audit and owner-testing delivery."
+      "Repeat final-media BIOS/UEFI/CD/USB matrix after correction.",
+      "Native namespace regressions, failure recovery and H13 G1 audit."
     ],
-    "evidence": "docs/evidence/H11.md"
+    "evidence": "docs/evidence/H12-first-media.json"
   }
 }

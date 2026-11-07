@@ -4,34 +4,34 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-H01-H11 completed. The 1,094,998,016-byte release-profile foundation ISO and 134-component/source/credential inventory passed. H12 tests the final artifact and native regressions; G1 remains pending. Owner review after H13 precedes B01-B13.
+H11 artifact revision in progress after H12 found a reproduced USB discovery defect. Original BIOS/CD and UEFI/CD passed; USB failed. Preserve accepted root/compression, replace only initramfs/media, then repeat the full matrix. Owner review after H13 precedes Phase 2.
 
-Foundation: **90%** · Agentic desktop: **0%**
+Foundation: **84%** · Agentic desktop: **0%**
 
-G1: pending · G2: pending · Next: **H12**
+G1: pending · G2: pending · Next: **H11**
 
 No milestone earns credit without completed acceptance evidence.
 
-## Active story: H12 — Verify foundation boot matrix and recovery
+## Active story: H11 — Produce hybrid ISO and artifact manifest
 
-The 90% phase total counts completed stories only. H12 is still in progress; its 6 points are not yet counted. Passing this story would raise the phase total to 96%.
+The 84% phase total counts completed stories only. H11 is still in progress; its 6 points are not yet counted. Passing this story would raise the phase total to 90%.
 
-Last verified: 2026-11-07 13:21 UTC
+Last verified: 2026-11-07 13:25 UTC
 
 Verified:
 
-- H11 hybrid ISO, full payload readback and independent SHA-256 passed.
-- 134 image packages, 142 corresponding source inputs, full ownership/runtime/fresh-identity and credential review passed.
+- First final ISO passed BIOS/CD and UEFI/CD console/runtime/network checks.
+- USB defect reproduced: automatic blkid omits the partitioned whole disk; explicit native probing and read-only mount succeed.
+- Accepted root, 134-component inventory and compression unchanged.
 
-Running: Starting final-ISO BIOS/UEFI CD/USB console matrix and native namespace follow-ups.
+Running: Replacing initramfs/media with explicit block-node discovery; original failed artifacts retained.
 
 Remaining:
 
-- Final ISO console boots, offline operation and recovery failure injection.
-- Native Glibc/Systemd namespace retests and final security/known-issue review.
-- H13 G1 audit and owner-testing delivery.
+- Repeat final-media BIOS/UEFI/CD/USB matrix after correction.
+- Native namespace regressions, failure recovery and H13 G1 audit.
 
-[Acceptance evidence](docs/evidence/H11.md)
+[Acceptance evidence](docs/evidence/H12-first-media.json)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
@@ -45,8 +45,8 @@ Remaining:
 | [H08 — Configure identity, services and basic networking](stories/H08.md) | foundation | 6 | completed |
 | [H09 — Build kernel and boot configuration](stories/H09.md) | foundation | 8 | completed |
 | [H10 — Assemble the live system](stories/H10.md) | foundation | 8 | completed |
-| [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | completed |
-| [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | in_progress |
+| [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | in_progress |
+| [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | not_started |
 | [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | not_started |
 | [B01 — Evaluate desktop, harness, licensing and resource budgets](stories/B01.md) | agentic | 5 | not_started |
 | [B02 — Build the graphical desktop and essential applications](stories/B02.md) | agentic | 10 | not_started |

@@ -1,6 +1,22 @@
 #!/bin/bash
 # Source from the future /init after mounting an ISO candidate read-only.
 # Expected values come from generated initramfs data, never evaluated media text.
+toddy_media_candidates() {
+ local sysdev name device filesystem
+ for sysdev in /sys/class/block/*; do
+  [[ -e $sysdev ]] || continue
+  name=${sysdev##*/}
+  [[ $name =~ ^[A-Za-z0-9._-]+$ ]] || continue
+  device=/dev/$name
+  [[ -b $device && ! -L $device ]] || continue
+  # Require success and the complete exact TYPE; ambiguous probes are refused.
+  filesystem=$(blkid -p -s TYPE -o value "$device") || continue
+  [[ $filesystem == iso9660 ]] || continue
+  printf '%s\n' "$device"
+ done
+ return 0
+}
+
 toddy_verify_media() {
  if [[ $# != 3 ]]; then
   printf 'Toddy media verification requires mount, identity and root digest\n' >&2

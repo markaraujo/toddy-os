@@ -51,9 +51,10 @@ mkdir -p /run/toddy/media /run/toddy/lower /run/toddy/upper /run/toddy/work
 declare -A rejected_media=()
 media_found=0
 for ((attempt=1; attempt<=30; attempt++)); do
- # Device names originate from blkid and are constrained before mounting.
- # Read-only mounts plus embedded content checks decide acceptance, not names.
- candidates=$(blkid -c /dev/null -t TYPE=iso9660 -o device) || candidates=
+ # Automatic blkid enumeration omits partitioned whole disks, including our
+ # hybrid USB. Probe each kernel-published node explicitly (Util-linux 2.42.4).
+ # Read-only mounts plus embedded content checks still decide acceptance.
+ candidates=$(toddy_media_candidates)
  while IFS= read -r device; do
   [[ $device =~ ^/dev/[A-Za-z0-9._-]+$ && -b $device ]] || continue
   [[ ! ${rejected_media[$device]+present} ]] || continue

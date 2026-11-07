@@ -1024,3 +1024,16 @@ package identities and recompiles all 358 frozen magic fragments with native
 File, producing the exact installed binary hash. Changed bytes and an unrelated
 path remain rejected. Keep the original failed full assembly and raw scan;
 source-backed classification does not accept the complete release by itself.
+
+## 2026-11-07 — H12 partitioned USB media discovery
+
+Symptom: the actual BIOS/USB guest reached Linux then opened early recovery with
+No verified Toddy ISO filesystem found. Both CD firmware boots passed.
+Cause: automatic blkid enumeration skipped the partitioned whole hybrid disk.
+A separate native shell probe showed TYPE=iso9660/PTTYPE=gpt on explicit sda and
+successfully read its identity through a read-only mount. Correction: explicit
+kernel block-node probing while retaining all content/digest/mount checks
+(ADR-0101). Complete corrected firmware/media testing remains pending.
+The original normal-boot harness was interrupted after capturing the real early
+failure; its owned container was stopped and its log/result retained. The
+separate diagnostic also terminates failed by design, not a passing USB result.
