@@ -2,17 +2,18 @@
 
 The repository and Pages dashboard remain the development record. GitHub Releases
 provides downloadable snapshots for major accepted deliveries. See ADR-0103.
-The H13 foundation candidate is `v0.1.0-foundation.1`, bound to the accepted
-source commit `e24e452399621607a8386db582e5776bd66994da`. It is a draft until
-the owner resolves original-project licensing decision D10. A draft is not a
-public download. G1 passed in QEMU/KVM; G2, physical hardware and B01-B13 remain
-pending. The foundation ISO has a command-line live system without persistence,
-desktop, agent or graphical installer.
+The H13 foundation candidate is `v0.1.0-foundation.1`. The tested image was built
+from commit `e24e452399621607a8386db582e5776bd66994da`. The owner approved
+D10's licenses on 2026-11-07; the final release source tag must include that
+grant as well as the tested recipes. The draft remains under final verification.
+G1 passed in QEMU/KVM; G2, physical hardware and B01-B13 remain pending. The
+foundation ISO has a command-line live system without persistence, desktop,
+agent or graphical installer.
 
-The [current draft and seven verified assets](evidence/H13-github-release-draft.md)
-are prepared for owner review. The draft name does not yet exist as a public Git
-tag. GitHub's reported asset SHA-256 values and full downloaded bytes match the
-local candidate. Publishing remains gated on D10 and the release checklist below.
+The [initial seven-asset draft](evidence/H13-github-release-draft.md) was
+prepared before licensing. GitHub's asset digests and full downloaded bytes
+matched that candidate. Retargeting the draft, attaching the approved license
+files and verifying the final asset set precede publication.
 
 ## Release checklist
 

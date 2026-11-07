@@ -4,7 +4,7 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-H01-H13 complete; G1 passed in QEMU/KVM. Foundation ISO, 134 components, 142 source inputs, build/test evidence and owner instructions delivered locally. A GitHub Release draft with seven verified assets is prepared; original-project licensing D10 must be resolved before public binary publication. Awaiting owner testing and explicit approval before B01-B13. Physical hardware and the full desktop/agent/installer release remain pending.
+H01-H13 complete; G1 passed in QEMU/KVM. Foundation ISO, 134 components, 142 source inputs, build/test evidence and owner instructions delivered. The owner approved MIT for original code and CC BY 4.0 for original docs/art. GitHub Release draft is being retargeted and verified for public foundation publication. B01-B13 still await separate explicit owner approval. Physical hardware and the full desktop/agent/installer release remain pending.
 
 Foundation: **100%** · Agentic desktop: **0%**
 

@@ -147,9 +147,10 @@ or attach a physical workstation disk as a recovery experiment.
   consumers were enumerated and trusted DBus configuration/bounded rejection
   tested. General CLI/library use is not automatically sandboxed; new desktop,
   agent and installer entry points need their own bounds before Phase 2 release.
-- This artifact is for the owner's local testing. D10's project-original license
-  decision is still required before public binary redistribution. Each third-party
-  component retains its own license; no blanket whole-OS relicense is implied.
+- The owner approved MIT for original code and CC BY 4.0 for original
+  documentation/artwork (ADR-0104). Each third-party component retains its own
+  license; no blanket whole-OS relicense is implied. The VM-only testing limits
+  apply equally when a public prerelease is available.
 - Checkpoints are local to the same workstation storage, not an off-host disaster
   backup. [RECOVERY.md](RECOVERY.md) describes exact retained states and failed runs.
 

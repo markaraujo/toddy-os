@@ -28,3 +28,8 @@ applicable; no owner approval of those terms has been inferred. Component terms
 remain individual. The H13 owner-review boundary before B01 is separate and
 unchanged. The draft can be published only after the license decision and the
 final release checklist in [RELEASES.md](../RELEASES.md) pass.
+
+The owner subsequently approved MIT for original code and CC BY 4.0 for
+original documentation/artwork. ADR-0104 and the repository license files record
+that later decision. This report preserves the draft's earlier seven-asset state;
+the final published release requires a new tag/source and asset verification.

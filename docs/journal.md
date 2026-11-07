@@ -971,3 +971,11 @@ release-specific SHA256SUMS. GitHub's sizes/digests matched and every asset was
 downloaded again with identical SHA-256. Raw local logs remain outside the
 release. D10 original-project licensing remains a required owner decision before
 public binary publication; B01 still awaits separate owner approval.
+
+## 2026-11-07 — Original-material licenses approved
+
+The owner explicitly approved MIT for original code and CC BY 4.0 for original
+documentation/artwork, with third-party terms preserved. Scoped license files,
+attribution guidance and ADR-0104 now record D10. The original tested ISO hash
+and G1 result remain unchanged. Retarget the GitHub draft to a source commit
+containing these grants before publishing; B01 approval remains a separate gate.

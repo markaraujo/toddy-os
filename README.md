@@ -42,4 +42,7 @@ Toddy OS is named after the founder’s Shih-tzu, Toddy. Its illustrated mascot 
 
 ## Licensing
 
-The open-source licensing policy is tracked in [LICENSING.md](LICENSING.md). Do not treat one repository license as a replacement for the licenses of Linux, GNU tools, libraries, models, firmware or third-party artwork.
+The owner's original code is [MIT licensed](LICENSE); original documentation and
+approved artwork are [CC BY 4.0](LICENSES/CC-BY-4.0.txt). See
+[LICENSING.md](LICENSING.md) for scope and attribution. Linux, GNU tools,
+libraries and other third-party components keep their own terms.

@@ -10,3 +10,8 @@ The founder approved these v2 PNG assets on 2026-11-05. Earlier green/abstract-s
 - generation-record.json — original prompts and generation provenance.
 
 Approval preserves the direction; it does not imply a vector master or 4K production assets exist. B11 produces reviewed system exports, small-size variants and any necessary scalable artwork. Do not redraw the identity during unrelated work. Preserve originals when deriving variants. No Higgsfield service is required.
+
+The approved original artwork is licensed under
+[CC BY 4.0](../../LICENSES/CC-BY-4.0.txt) by Marcos Araujo / Toddy OS. Retain
+attribution, license link and modification notices when reusing it. This is a
+copyright grant, not a grant of rights to the Toddy OS name or logo as marks.

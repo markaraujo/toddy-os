@@ -13,7 +13,7 @@ These are planned feasibility decisions, not missing permission to begin H01. Re
 | D07 | Speech synthesis | Evaluate open TTS engines and separately licensed voices | B09 | Portuguese/English quality, latency and redistribution terms |
 | D08 | Installer | Evaluate Calamares | B12 | Dependency footprint, blank-disk install and recovery tests |
 | D09 | Proprietary firmware/driver policy | Open core with clearly separate optional hardware packs | B01 | Target hardware requirements and license inventory |
-| D10 | Project licensing | Proposed MIT for original code, CC BY 4.0 for original docs/art where applicable; seven-asset GitHub Release draft verified, not public | Before public release | Owner decision and component/source notices |
+| D10 | Project licensing | Resolved: owner approved MIT for original code and CC BY 4.0 for original docs/art; ADR-0104 | Before public release | LICENSE, LICENSES/CC-BY-4.0.txt, separate component/source notices |
 | D11 | Performance budgets | Establish measured acceptance budgets on the chosen target | B01 | Idle RAM/CPU, boot, agent/tool/search workload baselines |
 | D12 | Production artwork | Preserve approved PNGs; create reviewed scalable/small-size masters | B11 | Render checks and legibility at actual UI sizes |
 
