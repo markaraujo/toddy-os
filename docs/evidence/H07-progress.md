@@ -1291,3 +1291,12 @@ block 25/27, with the same two failures. Corrected driver 1107192 remains live
 in Fop008.33, block 4/27, zero FAIL lines. Raw observation SHA-256:
 c32c917dc2d6ae0b0f870a48a2973f9d346823c6338ee491f0279f1cfc4146b2
 (.local/logs/h07-db-standard-progress-<sha256>.json). No suite/package acceptance.
+
+2026-11-07 02:15 UTC — Original driver 1364 is live in Recd012, iteration 43,
+block 25/27, with the same two failures. Corrected driver 1107192 is live in
+Fop008.103, block 4/27, with zero FAIL entries. Both process identities/start ticks
+were checked and terminal exit files remain absent. Raw observation SHA-256:
+8e996a1782ca24f135ada840959c8c2b54dd5f16dde03795c73c53b8353d93cb
+(.local/logs/h07-db-standard-progress-<sha256>.json). H07 remains 124/126; independent
+image marker-review preparation passed its actual native probe (ADR-0071),
+without changing the installed base or granting milestone credit.

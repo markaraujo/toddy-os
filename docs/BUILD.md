@@ -281,3 +281,18 @@ not install a package. This optimization does not combine partial old results
 or reduce the standard suite. The normal fresh-build recipe remains the default
 reproduction path; production consumption of the isolated complete result still
 requires a separately validated handoff and native package postchecks.
+
+The final staged image's private-key armor review is prepared in
+scripts/build/h11/review_image_key_markers.py (ADR-0071). After the actual H11
+gate and optional QA removal, run it against the designated fresh image root:
+
+```sh
+python3 -B /opt/toddy-build/scripts/build/h11/review_image_key_markers.py /mnt/lfs/sources/stage/RELEASE_ROOT
+```
+
+Replace RELEASE_ROOT with the actual completed staging generation; do not point
+it at the installed builder. Preserve the complete JSON report outside the image.
+The command exits nonzero for unresolved armor findings or unread special nodes.
+It retains all raw findings, including exact source/package/parser-qualified
+OpenSSL manual examples. Its success covers only that narrow marker check;
+the separate full credential, identity, payload and release gates still apply.

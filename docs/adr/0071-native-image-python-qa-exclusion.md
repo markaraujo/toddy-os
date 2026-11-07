@@ -127,3 +127,49 @@ additional findings require fresh review. Public QA key fixtures themselves
 remain excluded from the release; this documentation classification does not
 authorize including them. Full image credentials, identity state, provider data,
 unarmored secrets, package closure, compression and actual boot remain untested.
+
+## Reusable image marker review
+
+scripts/build/h11/review_image_key_markers.py now applies this exact qualification
+to a private staged image. It retains the unmodified scanner report and separately
+lists qualified examples and unresolved findings. It checks the image's configured
+native OpenSSL identity, its own installed record/archive and the frozen source
+archive; image file hashes, mode and ownership must match that record and the six
+reviewed constants above. POD bytes and normalized HTML examples must match the
+frozen source, including the non-Base64 placeholder and native parser rejection.
+Unknown paths, changed hashes and real keys remain unresolved. Unread special
+nodes also prevent this narrow check from passing. There is no path-pattern
+allowlist and no new generic credential detection claim.
+
+The alternative of treating every manual marker as a real private key would
+contradict the measured frozen content; silently filtering documentation paths
+would accept future changed material. Retaining raw findings with exact source,
+package and parser evidence permits reproducible review without either behavior.
+A future source/security update must obtain a new reviewed qualification; changing
+the expected hashes merely to satisfy the check is not authorized.
+
+The production CLI requires H10 completed and H11 in progress. Component-only
+verification uses a disposable native Dpkg root containing eleven actual own-built
+packages, including the complete OpenSSL dependency closure. Reproduce with:
+
+```sh
+python3 scripts/host/probe_image_key_marker_review.py
+```
+
+All six real manual findings remained in the raw report and were qualified.
+Nine negative cases passed: changed document bytes, the same example at an
+unreviewed path, a newly generated and successfully parsed real Ed25519 private
+key, an unread FIFO, changed document mode, an unconfigured OpenSSL identity,
+changed own-archive provenance, the installed builder as image and premature
+production CLI invocation. No key contents are emitted or committed. The private
+key and successful fixture were removed after result capture. The actual native
+install log, complete positive report and negative results are preserved locally.
+
+Raw .local/logs/h11-image-key-marker-review-<sha256>.log SHA-256:
+9bde68a88a0754b69f77544e6f2fa79e4af80985169bd970b432cc7845deec1a.
+Component SHA-256:
+fc41f92525a6b752d99d19024023c70d59b0c1d97cf4a1185b7f97c19444b5c0.
+The installed builder's package status remained unchanged. All 154 local checks
+pass. These results establish only this component's marker review; the full image
+assembler must retain the report and still satisfy account/identity, arbitrary
+credential, payload, package, license, compression and boot gates.

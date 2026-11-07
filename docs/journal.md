@@ -488,3 +488,15 @@ exit 0. Seven new refusal cases passed. Broader marker scanning found six OpenSS
 manual examples in addition to the known 15 Python QA fixtures; source/archive
 and native-parser checks classify only those exact documentation bytes as format
 placeholders. Raw findings remain reported. Full image assembly remains pending.
+
+2026-11-07 — Integrated ADR-0071's exact manual classification into a gated
+staged-image marker review. An actual eleven-package native root retained and
+qualified six manual findings; nine negative cases passed, including a real
+generated Ed25519 private key and a premature production CLI. Full native logs
+and results are preserved, and the installed builder remained unchanged. All
+154 local checks pass. This does not accept the complete credential audit or ISO.
+
+2026-11-07 02:15 UTC — Both Berkeley DB drivers remain live with verified process
+identities and no terminal exits. Original recovery reached Recd012, iteration 43,
+with the same two known failures; the corrected full suite reached Fop008.103
+without FAIL entries. No duplicate build or active-input synchronization occurred.

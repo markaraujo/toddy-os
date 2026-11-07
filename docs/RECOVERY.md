@@ -993,8 +993,9 @@ The protected input manifest hash is
 The driver has no installation branch. Complete-suite success must be followed
 by validated production handoff under the normal exclusive runner lock, after
 the original failure and zero-installed-change audit are preserved. That handoff
-is not implemented/accepted yet; do not fabricate a success marker from private
-logs. The ordinary fresh recipe still runs the complete standard suite itself.
+is now prepared below but not positively accepted yet; do not fabricate a success
+marker from private logs. The ordinary fresh recipe still runs the complete
+standard suite itself.
 
 The initial private attempt remains at db-standard-yc87i9pi with interruption-
 reason.json, test exit -9, driver exit 1 and protected result-evidence. It was
@@ -1012,7 +1013,7 @@ verified quiescent input sync, run in the guest:
 python3 -B /opt/toddy-build/scripts/build/db_standard_result.py /mnt/lfs/sources/recovery/db-standard-nfv62s4o
 It must reject the run while unfinished. It does not install, mark a package
 accepted or waive the original terminal installed-change audit. Production
-handoff remains to be implemented and exercised after full native success.
+handoff is prepared below and must be exercised after full native success.
 
 
 The production handoff is now prepared (ADR-0069) but must not run until both
@@ -1066,3 +1067,13 @@ The exact six OpenSSL documentation-marker classifications can be reproduced
 with python3 scripts/host/probe_openssl_document_markers.py; retain raw scanner
 findings and require the exact reviewed hashes. This is not a whole-image
 credential pass and does not cover altered/new findings or arbitrary secrets.
+
+Use h11/review_image_key_markers.py for the staged image's narrow armor-marker
+review after the H11 gate. Keep its complete raw_scan, qualified examples,
+unresolved findings and provenance together. A passing marker check does not
+complete credential or image acceptance. Changed document bytes, unknown paths,
+incomplete native identity/provenance or a parser discrepancy require diagnosis;
+do not modify the reviewed constants to bypass a finding. The private component
+probe is python3 scripts/host/probe_image_key_marker_review.py. It retains its
+native log and all results under .local/logs/h11-image-key-marker-review-<sha>.log;
+unexpected failures preserve the printed disposable fixture path.
