@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build and boot a loader-only native ISO; no kernel or foundation acceptance."""
 import argparse
+import base64
 import fcntl
 import hashlib
 import json
@@ -66,7 +67,9 @@ def main():
         raise ValueError('Private test storage must be canonical')
     base = Path(tempfile.mkdtemp(prefix='probe-', dir=folder))
     print('HOST_GRUB_MEDIA_FIXTURE ' + str(base), flush=True)
-    source = (boot.ROOT / 'scripts/build/h11/grub_media_probe.py').read_bytes()
+    module = (boot.ROOT / 'scripts/build/h11/hybrid_media.py').read_bytes()
+    source = (('HYBRID_MODULE=' + repr(base64.b64encode(module).decode()) + '\n').encode()
+              + (boot.ROOT / 'scripts/build/h11/grub_media_probe.py').read_bytes())
     (base / 'native-build.py').write_bytes(source)
     save(base / 'intent.json', {'pid': os.getpid(), 'mtools': args.mtools_fixture,
          'libburnia': args.libburnia_fixture, 'source_sha256': hashlib.sha256(source).hexdigest()})

@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Assemble loader-only native GRUB media in private storage, never a release."""
 import argparse
+import base64
+import types
 import hashlib
 import json
 import os
 from pathlib import Path
-import shlex
 import subprocess
 import tempfile
 
@@ -70,6 +71,11 @@ def main():
             raise ValueError('Native GRUB payload differs: ' + str(path))
     before = digest(root / 'var/lib/dpkg/status')
     base = Path(tempfile.mkdtemp(prefix='grub-media-', dir=root / 'sources/recovery'))
+    module_bytes = (base64.b64decode(HYBRID_MODULE) if 'HYBRID_MODULE' in globals()
+                    else Path(__file__).with_name('hybrid_media.py').read_bytes())
+    (base / 'hybrid_media.py').write_bytes(module_bytes)
+    hybrid = types.ModuleType('hybrid_media')
+    exec(compile(module_bytes, str(base / 'hybrid_media.py'), 'exec'), hybrid.__dict__)
     native = '/' + str(base.relative_to(root))
     mtools = '/' + str(args.mtools.relative_to(root)) + '/prefix'
     libburnia = '/' + str(args.libburnia.relative_to(root)) + '/prefix'
@@ -89,9 +95,6 @@ def main():
             'serial --unit=0 --speed=115200\nterminal_input serial\nterminal_output serial\n'
             'echo TODDY_GRUB_MEDIA_EXEC platform=$grub_platform token=' + token + '\n'
             'cat /probe-id\nsleep 1\nhalt\n')
-        wrapper = base / 'xorriso-no-rc'
-        wrapper.write_text('#!/bin/bash\nexec ' + shlex.quote(libburnia + '/bin/xorriso') + ' -no_rc "$@"\n')
-        wrapper.chmod(0o700)
         command = ['chroot', str(root), '/usr/bin/env', '-i', 'HOME=' + native,
                    'PATH=' + mtools + '/bin:/usr/bin:/usr/sbin', 'LC_ALL=C.UTF-8',
                    'LD_LIBRARY_PATH=' + libburnia + '/lib', 'MTOOLSRC=/dev/null']
@@ -109,47 +112,50 @@ def main():
             if run.returncode:
                 raise ValueError('Native media stage failed: ' + name)
 
-        stage('config', ['/usr/bin/grub-script-check', native + '/input/boot/grub/grub.cfg'])
-        # Follow frozen grub-mkrescue's BIOS/FAT/hybrid recipe explicitly.
-        # Its unconditional Apple label renderer needs an unrelated font.
-        # This x86_64 text profile has no Apple boot or graphical-label claim.
-        early = base / 'early.cfg'
-        early.write_text('search --no-floppy --file --set=root /probe-id\n'
-                         'set prefix=($root)/boot/grub\n')
-        (source / 'boot/grub/i386-pc').mkdir()
-        (base / 'EFI/BOOT').mkdir(parents=True)
-        modules = ['iso9660', 'fat', 'part_gpt', 'part_msdos', 'normal', 'configfile',
-                   'search', 'search_fs_file', 'serial', 'terminal', 'cat', 'sleep',
-                   'halt', 'test', 'linux', 'reboot', 'echo']
-        stage('bios-core', ['/usr/bin/grub-mkimage', '-O', 'i386-pc-eltorito',
-                            '-p', '/boot/grub', '-c', native + '/early.cfg',
-                            '-o', native + '/input/boot/grub/i386-pc/eltorito.img',
-                            'biosdisk', *modules])
-        stage('uefi-core', ['/usr/bin/grub-mkimage', '-O', 'x86_64-efi',
-                            '-p', '/boot/grub', '-c', native + '/early.cfg',
-                            '-o', native + '/EFI/BOOT/BOOTX64.EFI', *modules])
-        stage('efi-format', ['/usr/bin/grub-file', '--is-x86_64-efi', native + '/EFI/BOOT/BOOTX64.EFI'])
-        stage('fat-create', [mtools + '/bin/mformat', '-C', '-f', '2880', '-L', '16',
-                            '-i', native + '/input/efi.img', '::'])
-        stage('fat-copy', [mtools + '/bin/mcopy', '-s', '-i', native + '/input/efi.img', native + '/EFI', '::/'])
-        stage('assemble', [native + '/xorriso-no-rc', '-as', 'mkisofs', '-R', '-V', 'TODDY_PROBE',
-                           '-o', native + '/loader-probe.iso',
-                           '--grub2-mbr', '/usr/lib/grub/i386-pc/boot_hybrid.img', '--grub2-boot-info',
-                           '-b', 'boot/grub/i386-pc/eltorito.img', '-c', 'boot/grub/boot.cat',
-                           '-no-emul-boot', '-boot-load-size', '4', '-boot-info-table',
-                           '--efi-boot', 'efi.img', '-efi-boot-part', '--efi-boot-image',
-                           '--protective-msdos-label', native + '/input'])
-        stage('catalog', [native + '/xorriso-no-rc', '-indev', 'stdio:' + native + '/loader-probe.iso',
-                          '-report_el_torito', 'plain', '-report_system_area', 'plain', '-end'])
-        stage('readback', [native + '/xorriso-no-rc', '-indev', 'stdio:' + native + '/loader-probe.iso',
-                           '-osirrox', 'on', '-extract', '/probe-id', native + '/readback-id',
-                           '-extract', '/boot/grub/grub.cfg', native + '/readback.cfg', '-end'])
-        if ((base / 'readback-id').read_bytes() != (source / 'probe-id').read_bytes()
-                or (base / 'readback.cfg').read_bytes() != (source / 'boot/grub/grub.cfg').read_bytes()):
-            raise ValueError('Native ISO readback differs')
-        catalog = (base / 'catalog.log').read_text()
-        if not all(term in catalog for term in ('BIOS', 'UEFI', 'GPT')):
-            raise ValueError('Missing dual firmware/hybrid image catalog')
+        # The actual production composer is also exercised by all four loader
+        # boots; this fixture deliberately contains no kernel or live root.
+        preview = base / 'live-preview.cfg'
+        preview.write_text(hybrid.live_configuration())
+        stage('live-config-parse', ['/usr/bin/grub-script-check', native + '/live-preview.cfg'])
+        negative = []
+        def refused(label, call):
+            count = len(result['stages'])
+            try:
+                call()
+            except ValueError as error:
+                negative.append({'case': label, 'reason': str(error)})
+            else:
+                raise AssertionError(label + ' was accepted')
+            assert len(result['stages']) == count, 'Unsafe input reached a native writer'
+        def compose(marker='/probe-id'):
+            return hybrid.compose(root, base, stage, mtools=mtools,
+                xorriso=libburnia + '/bin/xorriso', marker=marker,
+                volume='TODDY_PROBE', filename='loader-probe.iso')
+        refused('marker containing GRUB syntax', lambda: compose('/probe-id;halt'))
+        refused('missing media marker', lambda: compose('/missing'))
+        (source / 'probe-id').chmod(0o666)
+        refused('writable media input', compose)
+        (source / 'probe-id').chmod(0o644)
+        outside = base / 'outside-sentinel'
+        outside.write_text('Preserve private sentinel.\n')
+        (source / 'redirect').symlink_to(outside)
+        refused('redirected media input', compose)
+        (source / 'redirect').unlink()
+        assert outside.read_text() == 'Preserve private sentinel.\n'
+        os.mkfifo(source / 'fifo', 0o600)
+        refused('special input rejected without reading', compose)
+        (source / 'fifo').unlink()
+        (base / 'early.cfg').write_text('Preserve prior generation.\n')
+        refused('existing composition output', compose)
+        assert (base / 'early.cfg').read_text() == 'Preserve prior generation.\n'
+        (base / 'early.cfg').unlink()
+        composition = hybrid.compose(root, base, stage, mtools=mtools,
+            xorriso=libburnia + '/bin/xorriso', marker='/probe-id',
+            volume='TODDY_PROBE', filename='loader-probe.iso')
+        refused('completed generation cannot be reused', compose)
+        result['negative_cases'] = negative
+        result['composition'] = composition
+        result['composer_sha256'] = hashlib.sha256(module_bytes).hexdigest()
         for path, sha in owned.items():
             if digest(path) != sha:
                 raise ValueError('GRUB source state changed')

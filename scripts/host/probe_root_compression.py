@@ -167,12 +167,36 @@ try:
   release_binding=initramfs_input.verify(root,input_path,True)
   assert release_binding['rootfs_sha256']==bound['rootfs_sha256']
   refused('release compression used as H10 input',binding)
+  import assemble_iso
+  generated['compression_binding']=release_binding
+  archive_manifest=base/'initramfs/manifest.json';compression.atomic_json(archive_manifest,generated)
+  def iso_input():return assemble_iso.archive_input(root,archive_manifest,base)
+  checked_archive,checked_binding,checked_evidence=iso_input()
+  assert checked_binding==release_binding and checked_archive['gzip_sha256']==generated['gzip_sha256']
+  iso_initial=len(cases)
+  manifest_bytes=archive_manifest.read_bytes()
+  for label,alter in (
+   ('ISO archive has no compression binding',lambda row:row.pop('compression_binding')),
+   ('ISO archive has different media identity',lambda row:row.update(media_id='f'*64)),
+   ('ISO archive has different epoch',lambda row:row.update(epoch=row['epoch']+1)),
+   ('ISO archive has different entry count',lambda row:row.update(entry_count=row['entry_count']+1))):
+   changed=copy.deepcopy(generated);alter(changed);compression.atomic_json(archive_manifest,changed)
+   refused(label,iso_input);archive_manifest.write_bytes(manifest_bytes)
+  compressed_archive=base/'initramfs/initramfs.cpio.gz';gzip_bytes=compressed_archive.read_bytes()
+  compressed_archive.write_bytes(gzip_bytes[:-1]+bytes([gzip_bytes[-1]^1]))
+  refused('ISO rejects changed initramfs bytes',iso_input);compressed_archive.write_bytes(gzip_bytes)
+  script=base/'live_init.sh';script_bytes=script.read_bytes();script.write_bytes(script_bytes+b'\n# changed reviewed input\n')
+  refused('ISO rejects outdated reviewed init script',iso_input);script.write_bytes(script_bytes)
+  assert iso_input()[0]==checked_archive
+  iso_input_result={'native_archive_binding_verified':True,'negative_cases':cases[iso_initial:],
+    'complete_release_assembly_verified':False,'assembler_sha256':digest(base/'assemble_iso.py')}
   attach(False);assert binding()==bound
   initramfs_result={'binding':bound,'release_binding_verified':True,
    'negative_cases':cases[initial:],'archive_entries':generated['entry_count'],'gzip_bytes':generated['gzip_bytes'],
    'gzip_sha256':generated['gzip_sha256'],'embedded_actual_compressed_root_digest':True,
    'native_archive_and_readback':True,'assembly_journal_is_metadata_fixture':True,
    'full_foundation_assembly_or_boot_verified':False,
+   'iso_input':iso_input_result,
    'component_sha256':{name:digest(base/name) for name in ('initramfs_input.py','initramfs_archive.py','compress_root.py')}}
  assert digest(root/'var/lib/dpkg/status')==before
  reports={str(p.relative_to(base)):p.read_text() for d in ['first','second'] for p in (base/d).glob('*.json')}
@@ -199,6 +223,8 @@ def main():
         for name in ('initramfs_input.py', 'initramfs_archive.py', 'initramfs_runtime.py',
                      'assemble_root.py', 'live_init.sh', 'live_media.sh'):
             sources[name] = base64.b64encode((ROOT / 'scripts/build/h10' / name).read_bytes()).decode()
+        for name in ('assemble_iso.py', 'hybrid_media.py'):
+            sources[name] = base64.b64encode((ROOT / 'scripts/build/h11' / name).read_bytes()).decode()
     sources['package_backend.py'] = base64.b64encode((ROOT / 'scripts/build/package_backend.py').read_bytes()).decode()
     run = subprocess.run(ssh_args() + ['python3 -B -'],
                          input='SOURCES=' + repr(sources) + '\nTOOL_FIXTURE=' + repr(args.tool_fixture) + '\nINITRAMFS=' + repr(args.initramfs) + '\n' + REMOTE,

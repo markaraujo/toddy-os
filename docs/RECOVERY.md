@@ -1210,3 +1210,11 @@ source manifest, native stage exits/logs and actual root artifact before choosin
 a fresh generation. Never repair a stale hash, flip the profile flag or reuse
 the intermediate output to force release acceptance. The CLI selects H10 or
 H11 --release gates explicitly and refuses active dispatcher/sync state.
+
+Bound hybrid-media recovery (ADR-0082): inspect result.json and each recorded
+native stage/exit/log in the failed ISO generation. Preserve all original input
+generations and output; the composer refuses existing outputs. Recheck native
+package/archive provenance, compression binding, actual archive contents and
+kernel/module generation before using a fresh output path. Missing SHA256SUMS
+or complete=false remains unfinished. A successful loader-only probe cannot
+be substituted for an H11 release or native-kernel recovery test.

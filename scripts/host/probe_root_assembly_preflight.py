@@ -53,6 +53,22 @@ try:
   assert not work.exists()
   cases.append({'case':'production initramfs release gate' if release else 'production initramfs H10 gate',
     'exit':result.returncode,'required_gate':required,'output_created':False})
+ iso=project/'scripts/build/h11/assemble_iso.py'
+ iso_work=base/'unused-iso'
+ result=subprocess.run([sys.executable,'-B',str(iso),str(base/'absent-initramfs.json'),str(iso_work)],
+   capture_output=True,text=True)
+ assert result.returncode!=0 and 'H11 requires H10 completed and H11 in_progress' in result.stderr,(result.returncode,result.stderr)
+ assert not iso_work.exists()
+ cases.append({'case':'production hybrid ISO gate','exit':result.returncode,
+   'required_gate':'H10 completed and H11 in_progress','output_created':False})
+ import assemble_iso
+ media_packages,media_files=assemble_iso.packages(backend,{'grub':'2.14-1'})
+ assert set(media_packages)=={'grub'}
+ assert {'/usr/bin/grub-mkimage','/usr/bin/grub-script-check','/usr/bin/grub-file',
+         '/usr/lib/grub/i386-pc/boot_hybrid.img'}<=media_files.keys()
+ try:assemble_iso.packages(backend,{'grub':'0-1'})
+ except ValueError as error:cases.append({'case':'wrong installed media tool version','reason':str(error)})
+ else:raise AssertionError('Wrong installed tool generation accepted')
  def refuse(label,image,work):
   try:assembly.validate_destinations(root,image,work)
   except ValueError as error:cases.append({'case':label,'reason':str(error)})
@@ -83,6 +99,9 @@ try:
  report={'fixture':str(base),'negative_cases':cases,'actual_readiness_refusal':reason,
   'durable_failed_preflight':journal,'builder_status_sha256':before,'installed_target_modified':False,
   'assembler_sha256':digest(script),'complete_assembly_verified':False,'native_boot_verified':False}
+ report['media_package_probe']={'packages':media_packages,'regular_files':len(media_files),
+   'assembler_sha256':digest(iso),
+   'scope':'Accepted native GRUB only; H11 tools and native kernel acceptance remain pending'}
  print('ASSEMBLY_RESULT '+json.dumps(report),flush=True)
  shutil.rmtree(base)
 except BaseException:

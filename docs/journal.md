@@ -596,3 +596,10 @@ hash method 8/9 has reached Test097 after all three Test044 recovery cycles;
 corrected other_repmgr group 21/27 reached Repmgr025.h with no FAIL entries.
 Fixed stale configuration details in the read-only observer and added two
 regressions (ADR-0079). Both drivers are live; terminal results remain pending.
+
+2026-11-07 — Shared native hybrid composition between the actual four-mode
+loader probe and prepared H11 CLI (ADR-0082). All four BIOS/UEFI CD/USB probes
+passed, plus seven composition rejections. Actual compression/initramfs input
+verification adds six negatives; native GRUB ownership and premature production
+gate checks pass. Full foundation assembly, native kernel boot and release
+acceptance remain pending. No live Berkeley inputs were synchronized.

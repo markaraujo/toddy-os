@@ -414,3 +414,34 @@ compression. Root digest and epoch now come from verified compression evidence;
 owns the build lock; do not nest it under run_step.py. Retain the archive, native
 logs, per-entry manifest and compression_binding. Missing binding remains an
 incomplete production handoff, even if archive bytes exist. See ADR-0081.
+
+## Bound hybrid ISO composition
+
+After H10 acceptance, H11 native tool installation and a release-profile
+root/compression/initramfs generation, the prepared standalone command is:
+
+```sh
+python3 /opt/toddy-build/scripts/build/h11/assemble_iso.py \
+  /mnt/lfs/sources/stage/INITRAMFS_GENERATION/manifest.json \
+  /mnt/lfs/sources/stage/ISO_GENERATION
+```
+
+Use the actual archive manifest filename produced by initramfs_archive.py and
+fresh generation paths. This command owns the build lock; do not nest it under
+run_step.py. It records native stages and returns toddy.iso, SHA256SUMS and
+result.json after payload readback. This is artifact creation, not release
+acceptance. Full inventory/license/credential review and actual native-kernel
+boot/recovery remain mandatory (ADR-0082). The complete production invocation
+has not yet passed its prerequisites or run positively.
+
+The shared composer and its input components have actual native probes:
+
+```sh
+python3 scripts/host/probe_grub_media.py PRINTED_MTOOLS_FIXTURE PRINTED_LIBBURNIA_FIXTURE
+python3 scripts/host/probe_root_compression.py PRINTED_SQUASHFS_FIXTURE --initramfs
+python3 scripts/host/probe_root_assembly_preflight.py
+```
+
+The first boots a loader-only artifact in four firmware/media combinations.
+The second uses a small real filesystem and a labeled assembly-metadata fixture.
+Neither substitutes for the full foundation ISO acceptance matrix.
