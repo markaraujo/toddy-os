@@ -912,3 +912,25 @@ locks. Do not work around a lock refusal by deleting locks, reopening/closing
 the locked inode elsewhere, or bypassing the shared context manager. The
 pre-fix reproduction remains at /mnt/lfs/tmp/toddy-package-database-heol_10o.
 A failed copy is preserved; retry into a fresh stage after diagnosing its cause.
+
+
+Current Berkeley DB investigation (ADR-0067): the original driver 1364/runner
+1365 remains active, but its partial ALL.OUT has repmgr007 and repmgr100 FAIL
+entries. APT remains success-gated and must not start from this result. Do not
+sync active inputs or restart the same missing-helper configuration. The private
+fixture is /mnt/lfs/tmp/toddy-repmgr-diagnosis-w59p805n. Original race reproduction
+exit 12, corrected three-case exit 0, and C++ helper build exit 2 are preserved
+in original.*, corrected-driver.* and cxx-driver.* respectively. The source
+test/repmgr/db_repsite.cpp is absent upstream; it is not an installation approval
+issue. The prepared patch changes only bounded diagnostic waiting.
+
+Next inspect the separate all-twenty-case run, launched as guest PID 1073235:
+python3 scripts/host/vm.py ssh 'tail -n 30 /mnt/lfs/tmp/toddy-repmgr-diagnosis-w59p805n/other-repmgr-driver.log; if test -f /mnt/lfs/tmp/toddy-repmgr-diagnosis-w59p805n/other-repmgr-driver.exit; then cat /mnt/lfs/tmp/toddy-repmgr-diagnosis-w59p805n/other-repmgr-driver.exit; fi'
+
+That driver uses a private network namespace, native tester/Tcl/library, a
+3600-second limit and an explicit terminal exit file. Inspect its process when
+the exit is absent; never restart from an observation timeout. Resolve actual
+multi-process helper support with native operations and unchanged assertions;
+no source-availability exception has been accepted. Then freeze the tested
+patch and update the fresh/recovery build path at a quiescent boundary. Preserve
+complete original-suite logs and zero-install postconditions before any retry.

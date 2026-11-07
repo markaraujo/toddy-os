@@ -1,0 +1,21 @@
+--- a/test/tcl/repmgr007.tcl
++++ b/test/tcl/repmgr007.tcl
+@@ -143,7 +143,17 @@
+ 	puts $msock $garbage
+ 	close $msock
+ 	set maserrfile [open $testdir/rm7mas.err r]
+-	set maserr [read $maserrfile]
++	# The repmgr input thread records this diagnostic asynchronously.  Wait
++	# for it with a bound; preserve the original diagnostic assertion below.
++	set maserr ""
++	for {set attempt 0} {$attempt < 20} {incr attempt} {
++		seek $maserrfile 0 start
++		set maserr [read $maserrfile]
++		if {[is_substr $maserr "unexpected msg type"]} {
++			break
++		}
++		tclsleep 1
++	}
+ 	close $maserrfile
+ 	error_check_good errchk [is_substr $maserr "unexpected msg type"] 1
+ 

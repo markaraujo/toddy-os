@@ -625,3 +625,18 @@ before testing fresh full-root directories. No installed target path was changed
   inner exception; exit 0 only after final release. A real native database copy
   nested in an outer transaction preserves both source locks. Full database
   copy checks pass and installed state is unchanged. See ADR-0059 for hashes.
+
+
+### Berkeley DB repmgr007 asynchronous diagnostic and absent db_repsite
+
+- Symptom: standard group 21 fails repmgr007 errchk (expected 1, got 0); group
+  22 fails repmgr100 because db_repsite is absent.
+- Causes: immediate log read races with the replication input thread; the
+  multi-process helper source itself is absent from the published 5.3.28 tree.
+- Correction verified so far: bounded repmgr007 diagnostic reread, preserving
+  the original assertion, passes three complete native repetitions.
+- Remaining: all other_repmgr cases and actual multi-process helper resolution.
+  Enabling C++ alone failed on missing test/repmgr/db_repsite.cpp; do not repeat
+  that approach or remove the group. Preserve the current suite's full result.
+- Evidence: ADR-0067 records exact pre/postimage, original/corrected/compile logs
+  and primary upstream/distribution source evidence. No runtime C code changed.

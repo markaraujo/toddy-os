@@ -404,3 +404,14 @@ outer transaction preserves both source locks; all existing database-copy and
 refusal checks pass. Evidence/recovery extend ADR-0059. Berkeley DB remains
 active in automated replication-manager initialization (block 20); H07 acceptance
 and the complete image remain pending.
+
+
+2026-11-07 00:50 UTC — Berkeley DB advanced beyond automated repmgr, revealing
+two failures. Reproduced repmgr007's asynchronous diagnostic race with unchanged
+native binaries; the expected message appeared 200 ms later. A bounded-read
+correction preserves the assertion and passed three complete repetitions.
+Confirmed the separate db_repsite failure is missing upstream test source, not
+just a disabled C++ build; an isolated C++ attempt fails on the absent source.
+Retained both failures, prepared the fixture patch, and started the complete
+other_repmgr group privately. No active inputs were synchronized, no group was
+removed, and no BDB/APT acceptance advanced. See ADR-0067.

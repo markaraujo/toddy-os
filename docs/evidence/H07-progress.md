@@ -1198,3 +1198,15 @@ lines and no driver exit file. Raw observation
 .local/logs/h07-repmgr-election-progress.json SHA-256:
 0a47aebdf6c8f0300e01895c961d33cd0806b18ba1e18973007b4fd97a2f3d31.
 This remains block 20/27, not complete-suite or package acceptance.
+
+
+2026-11-07 00:50 UTC — The complete suite has two actual FAIL entries, first
+observed at 00:42:16: repmgr007 reads an asynchronous error log too early, and
+repmgr100 cannot find db_repsite. Original driver/runner remain live in block 23
+(replication, observed Rep016); no suite or package acceptance is claimed.
+The timing failure was reproduced and corrected privately with three complete
+native repetitions passing; the missing helper's source is absent from the
+frozen and upstream 5.3.28 trees. A C++-enabled isolated build confirmed that
+absence. All twenty other_repmgr cases are now running in a separate bounded
+private fixture. See ADR-0067 and its raw evidence hashes. The current full run
+is collecting additional failures; its failed groups are not counted passed.
