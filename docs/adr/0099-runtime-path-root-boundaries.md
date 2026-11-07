@@ -1,7 +1,7 @@
 # ADR-0099: Check runtime build paths at target-root boundaries
 
 - Date: 2026-11-07
-- Status: Regression checks passed; full native runtime retry pending
+- Status: Full native runtime re-audit passed; fresh assembly/boot still pending
 
 The third complete H10 generation passed ownership and whole-tree attribution,
 then failed runtime availability with exactly 82 identical path findings. The
@@ -27,3 +27,8 @@ ADR-0074 native loader contract. No upstream version or release gate changes.
 Focused regressions exercise owned nested paths, direct build roots, traversal,
 noncanonical spelling and a /usr/bin alias into /tools. The failed original
 assembly and report remain failed; any native rerun is separate evidence.
+
+Actual corrected audit: 791 dynamic executables and 383 executable scripts,
+zero findings; 1,835 ELF entries without PT_INTERP retain their documented limit.
+Raw report SHA-256: 1fa8c49fab0bc545ca7003ab7c69f6fb1512f96dcb27448a992b03727eeb1669.
+See docs/evidence/H10-runtime-path-recovery.json for failed/report identities.

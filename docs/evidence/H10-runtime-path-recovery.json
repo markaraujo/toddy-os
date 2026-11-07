@@ -1,0 +1,28 @@
+{
+  "counts": {
+    "data": 67696,
+    "script": 383,
+    "dynamic-executable": 791,
+    "elf-without-interpreter": 1835
+  },
+  "findings": [],
+  "passed": true,
+  "report_sha256": "1fa8c49fab0bc545ca7003ab7c69f6fb1512f96dcb27448a992b03727eeb1669",
+  "previous_report_sha256": "ed029dafb1f8ba9d25fe55a592b471229be50be0849007043d98cf7759750ae7",
+  "auditor_sha256": "2699e532accf8fd86ab16c5c2d57bfb32f7c50d80628a06c0dd7a7e6d5384178",
+  "preservation": {
+    "relocated": {
+      "/mnt/lfs/sources/stage/h10-live-root": "/mnt/lfs/sources/recovery/h10-runtime-path-20261107/h10-live-root",
+      "/mnt/lfs/sources/stage/h10-live-root-evidence": "/mnt/lfs/sources/recovery/h10-runtime-path-20261107/h10-live-root-evidence"
+    },
+    "hashes": {
+      "assembly.json": "94bdda1c5084fb4756fe7479cceec3f81b34396fe01d66a83df67bef29677bab",
+      "16-image-runtime-audit.json": "ed029dafb1f8ba9d25fe55a592b471229be50be0849007043d98cf7759750ae7",
+      "runtime-path-regression.json": "1fa8c49fab0bc545ca7003ab7c69f6fb1512f96dcb27448a992b03727eeb1669",
+      "h10-live-driver.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "h10-live-driver.pid": "605b248b8fd597933d8ea5d2836463cd4349b36db6bbb15a604e465be0c068ec",
+      "h10-live-launch.log": "5902038ef81b95f9a278513e1ae5603a0ee32d34928f2cc0952cdd3b9d98f8fa"
+    }
+  },
+  "scope": "Actual full-image runtime re-audit; original assembly remains failed; no boot acceptance"
+}

@@ -26,8 +26,9 @@ Verified:
 - All five native media dependencies passed recipe/postcheck 0/0; 134 configured packages and empty Dpkg audit.
 - Fresh-image Info regression passed with transient device cleanup; native libisoburn CLI revision passed with 41 retained payload entries unchanged.
 - Complete root ownership and attribution passed; focused path regressions preserve build-root and symlink rejection (ADR-0099).
+- Full corrected native runtime audit passed: 791 dynamic executables, 383 scripts, zero findings; failed generation retained.
 
-Running: Repeating the complete native runtime audit after correcting 82 false build-path classifications; preserving the failed generation.
+Running: Preparing a fresh live generation after the complete runtime re-audit passed.
 
 Remaining:
 

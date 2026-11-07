@@ -903,3 +903,8 @@ libraries: nested package directories named tools/sources were rejected. Correct
 that predicate and added canonical/resolved-path regressions (ADR-0099). All
 180 local tests pass. Actual full-image runtime retry is running separately;
 original failures remain preserved and no live boot is accepted yet.
+
+Corrected complete native runtime audit passed with zero findings: 791 dynamic
+executables and 383 scripts. Preserved the failed generation and distinct retry
+report under sources/recovery/h10-runtime-path-20261107. Start a fresh full
+assembly under the production lock; no package rebuild is needed.
