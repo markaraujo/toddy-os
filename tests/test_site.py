@@ -19,7 +19,7 @@ class PublicExport(unittest.TestCase):
         actual = {str(p.relative_to(site)) for p in site.rglob("*") if p.is_file()}
         expected = {
             "assets/third-party/patreon/patreon-symbol.png", "assets/third-party/patreon/README.md",
-            "index.html", ".nojekyll", "site.css", "supporters.html", "supporters.css",
+            "index.html", ".nojekyll", "site.css", "supporters.html", "supporters.css", "supporters-preview.html",
             "ui/tokens.css", "ui/preview.css", "ui/preview.html", "ui/installer-slides.html",
             "ui/i18n.js", "ui/translations.js", "ui/mascot.js",
             "assets/brand/toddy-os-system-icon.png",

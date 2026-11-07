@@ -1560,3 +1560,7 @@ Object.assign(window.TODDY_TRANSLATIONS, {
     "See how the project is going ↗": ["Veja como está o projeto ↗","Mira cómo va el proyecto ↗","查看项目进展 ↗","開発の進み具合を見る ↗","Посмотреть ход разработки ↗"],
     "Marcos builds the system. Toddy supervises.": ["O Marcos constrói o sistema. O Toddy fiscaliza.","Marcos construye el sistema. Toddy supervisa.","Marcos 构建系统，Toddy 负责监督。","Marcos が作り、Toddy が見守ります。","Маркос создаёт систему. Тодди наблюдает."]
 });
+Object.assign(window.TODDY_TRANSLATIONS, {
+    "Layout preview — fictional names, not real supporters.": ["Demonstração do layout — nomes fictícios, não são apoiadores reais.","Demostración del diseño: nombres ficticios, no son apoyos reales.","布局演示：虚构姓名，并非真实支持者。","レイアウトのデモです。架空の名前で、実際のサポーターではありません。","Демонстрация оформления: вымышленные имена, не реальные участники."],
+    "See the real supporter page ↗": ["Ver a página real dos apoiadores ↗","Ver la página real de apoyos ↗","查看真实支持者页面 ↗","実際のサポーターページへ ↗","Перейти к настоящей странице поддержки ↗"]
+});

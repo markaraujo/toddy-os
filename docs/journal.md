@@ -1162,3 +1162,12 @@ a JSON-only edit is sufficient for automatic Pages publication. No private
 payment information, invented donors or live financial integration is added.
 Basic Playwright checks passed across 48 locale/viewport combinations and all
 preview tabs; make check passed 185 tests. See evidence/website-full-copy-and-supporters.md.
+
+## 2026-11-07 — Hundred-name layout demonstration
+
+At the owner's request, added a separate supporter-wall preview with 100 numbered
+fictional display names, a localized demonstration notice and noindex metadata.
+The real list keeps only Marcos Araujo. A single supporter_preview_count field in
+config/community.json controls the demonstration size, capped at 500 names.
+Playwright confirmed 100 cards at 320/390/768/1440 pixels without horizontal
+overflow and only the approved owner name on the real wall. 185 checks passed.
