@@ -722,3 +722,19 @@ The full producer remains live at Recd003.i, recovery 25/27, zero FAIL and no
 terminal exits. No complete positive qualification or production nomination has
 occurred; H07 is still 124/126. Fresh-build portability remains implementation
 work, and full release acceptance remains unachieved.
+
+### 2026-11-07 10:39 UTC — Version native DB test preparation
+
+The previous status-only turn verified the specific live full producer; it was
+a verified wait. This turn replaces the ignored launcher's temporary-source
+preparation dependency with a versioned factory. Actual private preparation
+passed with completed native inputs, all 483 Tcl/460 checkpoint matches and
+measured namespace/tmpfs isolation. It excludes previous outputs and preserves
+raw/protected source evidence. Outside/uncorrected source refusals passed.
+See ADR-0088 for exact artifacts/hashes and remaining fresh-recipe integration.
+No duplicate suite, production nomination or package installation was started.
+
+At 10:36 UTC the same complete producer remained live in recovery 25/27,
+Recd003.k, zero FAIL and no terminal exits. H07/G1 remain incomplete. Continue
+portable runner/result integration independently, and inspect the genuine full
+terminal outcome before qualification/handoff and APT.

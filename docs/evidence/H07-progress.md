@@ -1544,3 +1544,14 @@ protected-witness verification and exclusive native record publication passed;
 168 local checks pass. No full qualification or source-custody record was created.
 The complete positive qualification, production handoff and portable fresh-build
 runner/diagnostic handling remain pending. H07 stays at 124/126 accepted packages.
+
+## Versioned private test preparation
+
+ADR-0088 records an actual isolated preparation using completed native inputs:
+10,207 copied files, 483 independently reconstructed Tcl references, all 460
+compiled checkpoint matches and a successful native namespace/tmpfs probe.
+The original uncorrected tree and an outside path are refused before allocating
+a generation. Prior test outcomes are excluded, raw source inputs/coverage
+records remain unchanged, and no duplicate standard suite was started.
+The normal fresh recipe still requires portable runner/provenance/qualification
+integration; H07 remains 124/126, with full DB acceptance and APT pending.

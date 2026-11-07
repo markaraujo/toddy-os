@@ -181,3 +181,11 @@ complete positive path is still pending. Production nomination remains strict
 and must not be changed to consume this decision until actual full positive
 verification. Current recovery profiles are not yet portable fresh-build
 acceptance; the normal fresh recipe still needs isolated run/diagnostic handling.
+
+ADR-0088 versions private test preparation and verifies it against completed
+native inputs: 10,207 copied files, 483 frozen Tcl comparisons, 460 checkpoint
+matches and actual private namespace/tmpfs probe passed. This removes the
+preparer's session-directory dependency. It is not yet wired into the normal
+fresh recipe; portable compile/coverage provenance, full execution and terminal
+acceptance integration remain. Do not launch its private generation while the
+existing corrected complete suite remains active.

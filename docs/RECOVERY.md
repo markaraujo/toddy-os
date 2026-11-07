@@ -1410,3 +1410,24 @@ files match, with no shared archive or active source modifications. Retained
 reference: /mnt/lfs/tmp/db-review-inputs-gb5tx0go; raw report SHA-256
 432eb23619a42d72bd8779be0e16744df594230efdab5a77987d416a5a95d32a.
 This is source/provenance readiness, not completion of the native suite.
+
+## Versioned private DB preparation (ADR-0088)
+
+The actual new preparation probe passed in
+/mnt/lfs/sources/recovery/db-standard-z4zf__8c. Its preparation.json and
+isolation-probe.exit record preparation only; there is no running standard
+producer for this generation. Do not confuse it with the active full attempt
+at db-standard-nfv62s4o or launch another full suite from it.
+
+The preparer prints its generation path immediately and preserves
+preparation.intent.json, inputs.json and probe output. On interruption inspect
+that exact generation and any actual process before acting. An absent final
+preparation.json is unfinished preparation, not a successful suite. Do not
+manually manufacture the final record or overwrite partial evidence. A new
+private preparation may be created after the prior preparation is confirmed
+terminal; no completed compilation or long test run needs restarting for this.
+
+The current normal recipe still needs this component wired into a portable
+runner and result/provenance gate. Its prepared generic manifest deliberately
+does not claim the historical seed profile required by the recovery acceptance
+verifier. Keep native compilation provenance and full-suite acceptance separate.

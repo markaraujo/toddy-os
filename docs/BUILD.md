@@ -480,3 +480,17 @@ prepared exact qualification preserves raw outcomes and remains disconnected
 from production until actual complete positive verification. This integration,
 including portable source/seed/coverage manifests, remains required before H07
 closes and before claiming reproducible complete-release instructions.
+
+The private preparation component is now versioned and exercised (ADR-0088):
+
+```sh
+# Inside the guarded build guest, after a verified native test compilation:
+python3 -B /opt/toddy-build/scripts/build/db_standard_prepare.py --source /mnt/lfs/sources/db-5.3.28
+```
+
+This only copies verified inputs and measures isolation; it does not run the
+suite or authorize production. Retain the printed PREPARATION path and its
+intent/input/probe records. The actual completed-coverage-source probe passed
+without repeating run_std. Fresh dispatch, portable native compile/coverage
+provenance and complete terminal acceptance still need integration before this
+becomes the normal fresh recipe. Do not start a duplicate current full run.
