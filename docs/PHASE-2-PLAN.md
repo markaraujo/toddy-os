@@ -382,3 +382,14 @@ foundation hardware testing. The owner can authorize that continuation separatel
 Per-story strategy: [review and handoffs](PHASE-2-STORY-STRATEGY.md).
 B04 consumes B01 contracts independently of B03; B05 requires both branches
 ([ADR-0111](adr/0111-independent-executor-and-provider-development.md)).
+
+## Shared optional software catalog
+
+Follow [the shared catalog contract](PHASE-2-SOFTWARE-CATALOG.md). Git stays in
+base; Docker/OpenCode are highlighted optional choices and mise is excluded.
+After verifying base installation, save unselected-by-default optional app choices;
+review/acquire them in the installed user's session, not the live installer.
+The same agent-independent setup/controller serves user-requested agent suggestions.
+Native packages handle core/CLI tools; qualified graphical extras may use per-user
+Flatpak. Candidate breadth is not a new G2 gate. Keep hardware/firmware, models,
+credentials and grants in their separate existing flows. No guest-start approval.

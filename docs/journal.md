@@ -1375,3 +1375,23 @@ ADR-0111 and PHASE-2-STORY-STRATEGY record tradeoffs and owning proofs.
 Structural fault simulation regenerated; focused selector regression covers
 B03 blocked -> B04, then B04 blocked -> B02, without bypassing B05 prerequisites.
 All B runtime states remain unstarted; no guest approval or execution occurred.
+
+
+## 2026-11-07 — Shared optional-software catalog preparation
+
+Implemented approved preparation: 28 open candidates, six categories, EN/PT
+descriptions, no qualified release artifacts. Git base; Docker/OpenCode optional;
+mise excluded. Final installer selection saves intent for installed-user review
+and acquisition. Native CLI/core and qualified per-user Flatpak GUI share existing
+setup/pending/authorization paths, independent of the agent. Agent recommendations
+are on request; essential hardware/model/key/grant flows remain separate.
+
+Added ADR-0112, catalog/lifecycle contract, owning B slices and synchronized B06/B12
+criteria/status without changing prerequisites or runtime progress. Added three
+semantic scenarios/four messages and three catalog integrity tests. Portal copy
+reflects deferred acquisition in all six locales. No binaries, guest build, Flatpak
+installation, credential use or guest-start approval was created.
+
+Validation: make dashboard/site/check passed; 201 tests in 0.201 seconds.
+Catalog references, six-locale portal copy and unchanged approval/gates/story
+statuses/dependencies were checked. Runtime native/Flatpak proof remains pending.

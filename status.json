@@ -369,7 +369,8 @@
         "API/local/later setup works per user with protected credentials; deferred setup leaves the OS usable and local mode never silently changes provider.",
         "Basic keyboard/focus, EN/PT copy and Stop smoke pass; publish an honestly labeled interim text preview rather than claiming G2.",
         "The user can customize the harness through profiles/settings, reject invalid changes, restore a revision and export/import without credentials or administrative grants.",
-        "UI/IPC reconnect retrieves the existing task instead of replaying it; locked/missing secret service never causes plaintext credential fallback."
+        "UI/IPC reconnect retrieves the existing task instead of replaying it; locked/missing secret service never causes plaintext credential fallback.",
+        "Optional software selection/review remains usable with the agent absent, recovers pending choices and does not install without current authorization."
       ],
       "evidence": []
     },
@@ -486,7 +487,8 @@
         "Third-party drivers/firmware/software choices disclose source/license and enforce hardware/kernel compatibility with tested transaction rollback and a rescue/open fallback.",
         "Basic native install/remove/upgrade, config preservation, signature/conflict rejection and one failed-update recovery pass; unsupported advanced disk/boot features are explicit.",
         "The installer includes coherent navy GNOME/Toddy scenes and affectionate nerdy dog copy while progress, errors and destructive choices remain clear.",
-        "The installed system removes live-only accounts/autologin, regenerates machine identity and contains no inherited secrets or private signing keys; persistence and rescue are verified."
+        "The installed system removes live-only accounts/autologin, regenerates machine identity and contains no inherited secrets or private signing keys; persistence and rescue are verified.",
+        "Final optional app selection defers acquisition to the installed user; qualified native/Flatpak paths reuse the catalog, transaction backend and pending manifest without blocking offline base completion."
       ],
       "evidence": []
     },

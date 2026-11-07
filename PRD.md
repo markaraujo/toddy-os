@@ -51,7 +51,11 @@ Logical components:
 Offline installation provides the usable desktop and a lightweight assistant setup
 entry. Agent backend/runtime, privileged executor, models and optional integrations
 may be installed later through verified native packages, without reinstalling the
-OS; the setup entry must work with those components absent.
+OS; the setup entry must work with those components absent. Optional software
+choices are saved after base verification and acquired after installed-user review.
+Git remains in base; Docker/OpenCode are optional. A shared catalog supports native
+CLI/system packages and qualified per-user Flatpak graphical extras, independently
+of the agent; agent recommendations are on request only.
 
 The OS remains bootable and usable if the agent, model service or network fails. llama.cpp supplies inference, not the complete agent harness. The preferred Pi components are reused behind replaceable adapters; Toddy supplies durable tasks, policy, memory and recovery. Do not require a proprietary coding assistant to operate the distribution.
 

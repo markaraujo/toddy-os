@@ -279,3 +279,7 @@ require native C tests, production transaction/reopen/rollback/crash recovery,
 actual APT cache interruption/rebuild and existing signed-repository/HTTPS/package
 checks before H07 acceptance. All other critical suites and H13/G1 gates remain.
 See [ADR-0092](adr/0092-focused-berkeley-delivery-validation.md).
+
+Shared app selection, deferred acquisition and on-request recommendations follow
+[the software catalog contract](PHASE-2-SOFTWARE-CATALOG.md); candidates are not
+installed packages or new mandatory breadth. Reuse existing S19/S20/S21/S26.

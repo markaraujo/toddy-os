@@ -195,3 +195,7 @@ broker/Node/Pi/executor are absent; map these to S18/S19/S26.
 Native graphical slices follow [the readiness review](PHASE-2-READINESS-REVIEW.md):
 actual native interaction plus affected functional checks; browser mockups do not
 prove GNOME/GTK/Qt behavior. No full visual rerun for unchanged internal code.
+
+Shared app selection, deferred acquisition and on-request recommendations follow
+[the software catalog contract](PHASE-2-SOFTWARE-CATALOG.md); candidates are not
+installed packages or new mandatory breadth. Reuse existing S19/S20/S21/S26.

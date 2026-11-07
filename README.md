@@ -32,7 +32,9 @@ the project remains experimental until a genuine accepted 1.0 release.
 
 The planned offline installation includes the basic desktop and a lightweight
 setup entry. Add agent components and choose local/API AI later without
-reinstalling. This describes Phase 2, not the current foundation ISO.
+reinstalling. Optional app choices will be saved at installation end and reviewed
+after login; the same catalog will serve on-request assistant suggestions.
+This describes Phase 2, not the current foundation ISO.
 The [development handoff](docs/DEVELOPMENT.md),
 [implementation plan](docs/PHASE-2-PLAN.md) and
 [prepared contracts](docs/PHASE-2-PREWORK.md) are the starting points for contributors.

@@ -32,6 +32,8 @@ Current Phase 2 choices follow [the replanned execution contract](PHASE-2-PLAN.m
 
 | D20 | Build integrity and test scope | Closed: qualified isolated builds/staging, controlled native transactions and affected checks; ADR-0110 | B01/B02 | Denied outside writes, complete side-effect coverage, measured overhead; unqualified root recipes retain full verification |
 
+| D21 | Shared optional software | Closed: Git base, Docker/OpenCode optional, no mise; final selection then installed-user acquisition; native CLI/core and qualified per-user Flatpak GUI; on-request recommendations; ADR-0112 | B01/B06/B12 | Backend-independent setup, qualified artifacts/permissions and S19/S20/S21/S26 |
+
 The whole-system license is a collection of component licenses, not the repository's proposed custom-code license. APIs can be optional without making the open local path dependent on them. This planning baseline deliberately does not claim universal Ubuntu binary compatibility.
 
 Release security obligation: assess and freeze tested fixes for baseline advisories before final release (ADR-0007); H02 integrity success is not security approval.

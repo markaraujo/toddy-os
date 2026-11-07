@@ -25,3 +25,6 @@ sanitize public data; volatile host process details belong outside Git.
 
 Per-story dependency refinement: [strategy review](PHASE-2-STORY-STRATEGY.md);
 B04 can proceed after B01, B05 waits for B03+B04.
+
+Software selection preparation: [shared catalog and deferred acquisition](PHASE-2-SOFTWARE-CATALOG.md).
+No new guest job or runtime acceptance created.

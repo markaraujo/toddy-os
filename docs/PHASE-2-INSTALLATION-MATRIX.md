@@ -13,7 +13,7 @@ is a separate software choice; absent connectivity never creates an AI requireme
 
 Minimal GNOME/Wayland, Firefox, files, terminal, simple editor, settings, essential
 network/audio/accessibility, native packaging/recovery and a lightweight Toddy
-setup/entry surface. Offline base does not require the agent broker/Pi/Node,
+setup/entry surface. Offline base does not require Flatpak or the agent broker/Pi/Node,
 executor, inference engines, models, speech or plugins. Install these later through
 verified native packages after explicit setup, without reinstalling the OS.
 Keep the accepted foundation tools; avoid the full GNOME app collection. The
@@ -83,3 +83,14 @@ B01 locks candidate feasibility/catalog requirements. B11 prepares art; B12 join
 real backend, choice handoff and [visual sequence](../assets/brand/installer/README.md).
 S18-S22/S26 prove disk/install/package/recovery behavior. No build/download or
 working installer is claimed by this preparation.
+
+## Shared optional software catalog
+
+Follow [the shared catalog contract](PHASE-2-SOFTWARE-CATALOG.md). Git stays in
+base; Docker/OpenCode are highlighted optional choices and mise is excluded.
+After verifying base installation, save unselected-by-default optional app choices;
+review/acquire them in the installed user's session, not the live installer.
+The same agent-independent setup/controller serves user-requested agent suggestions.
+Native packages handle core/CLI tools; qualified graphical extras may use per-user
+Flatpak. Candidate breadth is not a new G2 gate. Keep hardware/firmware, models,
+credentials and grants in their separate existing flows. No guest-start approval.

@@ -15,7 +15,7 @@ recorded explicit continuation under ADR-0063.
 | 4 | [Stable application identity](../ui/phase2/identity.json) and [icon roles](../ui/phase2/icon-roles.json) | Avoid incompatible desktop/D-Bus/icon names and ad hoc icon replacement later | Native launcher activation, target theme lookup and readable production icon exports |
 | 5 | Dependency graph and cache receipts described in the dependency audit | Schedule independent source/build branches without stale cache reuse or duplicate package writers | Target-dependent graph/receipt completion belongs to B01 |
 
-Prepared copy contains 40 bilingual messages and 10 fictional semantic scenarios.
+Prepared copy contains 44 bilingual messages and 13 fictional semantic scenarios.
 Fixtures are not wire payloads, executed tests or a substitute for runtime proofs.
 Reuse them in the owning slice; do not build a second UI demo or testing framework.
 Keep critical permission/error text neutral and Toddy's humor in optional narrative.
@@ -99,3 +99,7 @@ Unattended execution: [structural simulation and failure tabletop](PHASE-2-NIGHT
 Critical-path refinement: [runner overhead, root composition and early build scheduling](PHASE-2-CRITICAL-PATH.md).
 
 Graphical delivery/readiness: [latest integrated review and short reading map](PHASE-2-READINESS-REVIEW.md).
+
+Shared app selection, deferred acquisition and on-request recommendations follow
+[the software catalog contract](PHASE-2-SOFTWARE-CATALOG.md); candidates are not
+installed packages or new mandatory breadth. Reuse existing S19/S20/S21/S26.
