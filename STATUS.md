@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 08:36 UTC
+Last verified: 2026-11-07 08:48 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Reporting correction (ADR-0079): the corrected Berkeley run is in compression, block 19/27, not 27/27 as previously reported. PID 1107192 is live in Test076 btree with zero FAIL entries. Original PID 1364 is live in block 27/27, hash method 8/9, Test044 cycle 1, with the same two known failures. Neither has terminal exits. The observer now uses each run's outer dispatcher headings rather than repeated TestNNN names. H07 remains 124/126 accepted packages; no remaining-time percentage is inferred.
+Running: Corrected Berkeley driver 1107192 is live in automated repmgr, block 20/27, with zero FAIL entries; it advanced beyond compression. Original driver 1364 is live in block 27/27, hash method 8/9, Test044 cycle 2, with the same two known failures. Neither has terminal exits. Progress uses each run's own outer dispatcher (ADR-0079). Independent private image identity checks passed eighteen rejection cases (ADR-0080); full image and boot remain pending. H07 stays 124/126 accepted packages; no remaining-time percentage is inferred.
 
 Remaining:
 

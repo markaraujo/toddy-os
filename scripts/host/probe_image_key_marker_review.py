@@ -189,6 +189,7 @@ try:
  cases.append({'case':'premature production CLI','exit':gate.returncode,'required_gate':'H10 completed and H11 in_progress'})
  final=check();assert final['raw_scan']['findings']==passed['raw_scan']['findings'] and final['private_key_marker_check_passed']
  attribution_result=None
+ identity_result=None
  if ATTRIBUTION_AUDIT:
   import copy,stat
   import image_attribution as attribution
@@ -239,10 +240,61 @@ try:
     'component_sha256':digest(base/'image_attribution.py'),
     'scope':'Actual eleven-package private root, native database and generated account state only',
     'complete_foundation_profile_verified':False,'release_image_or_boot_accepted':False}
+ if IDENTITY_AUDIT:
+  import image_identity
+  def identity_check():return image_identity.audit(image,baseline)
+  identity_positive=identity_check();assert identity_positive['fresh_identity_check_passed'],identity_positive
+  identity_cases=[]
+  def identity_failure(label):
+   report=identity_check()
+   assert not report['fresh_identity_check_passed'] and report['findings'],label
+   assert not report['unexpected_content_exported'] and not report['whole_image_credential_audit_accepted']
+   assert 'SYNTHETIC-PRIVATE-PROBE' not in json.dumps(report)
+   identity_cases.append({'case':label,'findings':report['findings']})
+  # This synthetic credential can be explicitly declared by attribution, yet
+  # remains forbidden by the independent distribution policy.
+  auth=image/'etc/apt/auth.conf';auth.parent.mkdir(parents=True,exist_ok=True)
+  auth.write_text('SYNTHETIC-PRIVATE-PROBE\n');auth.chmod(0o600)
+  declared=copy.deepcopy(plan)
+  attribution.add(declared,'etc/apt/auth.conf',attribution.regular('SYNTHETIC-PRIVATE-PROBE\n',0o600),'private-test-declaration')
+  assert attribution.audit(backend,image,declared,copied['hardlink_groups'])['attribution_check_passed']
+  identity_failure('declared APT authentication still forbidden');auth.unlink()
+  for relative in ('var/lib/systemd/credential.secret','var/lib/systemd/random-seed','etc/shadow-'):
+   path=image/relative;path.parent.mkdir(parents=True,exist_ok=True)
+   path.write_text('SYNTHETIC-PRIVATE-PROBE\n');path.chmod(0o600)
+   identity_failure('forbidden '+relative);path.unlink()
+  for relative in ('root/.netrc','home/private/.ssh/authorized_keys','etc/apt/auth.conf.d/private',
+    'usr/lib/credstore.encrypted/private','etc/ssl/private/private','etc/ssh/ssh_host_ed25519_key'):
+   path=image/relative;path.parent.mkdir(parents=True,exist_ok=True)
+   path.write_text('SYNTHETIC-PRIVATE-PROBE\n');path.chmod(0o600)
+   identity_failure('forbidden state in '+relative.rsplit('/',1)[0]);path.unlink()
+   if relative.startswith('home/'):shutil.rmtree(image/'home/private')
+  shadow=image/'etc/shadow';shadow_bytes=shadow.read_bytes()
+  shadow.write_bytes(shadow_bytes.replace(b'root:!',b'root:*',1));identity_failure('changed same-length locked credential');shadow.write_bytes(shadow_bytes)
+  shadow.chmod(0o644);identity_failure('readable shadow mode');shadow.chmod(0o600)
+  os.setxattr(shadow,'user.private-test',b'SYNTHETIC-PRIVATE-PROBE');identity_failure('credential in account extended attribute');os.removexattr(shadow,'user.private-test')
+  identity=image/'etc/machine-id';identity.write_text('1'*32+'\n');identity_failure('inherited machine identity');identity.write_bytes(b'')
+  alias=image/'var/lib/dbus/machine-id';alias.parent.mkdir(parents=True,exist_ok=True)
+  if not alias.is_symlink():
+   assert not alias.exists();alias.symlink_to('/etc/machine-id')
+  assert identity_check()['fresh_identity_check_passed']
+  alias.unlink();alias.write_text('SYNTHETIC-PRIVATE-PROBE\n');identity_failure('DBus identity bytes instead of alias');alias.unlink();alias.symlink_to('/etc/machine-id')
+  outside=base/'identity-outside';outside.mkdir();(outside/'private').write_text('SYNTHETIC-PRIVATE-PROBE\n')
+  creds=image/'etc/credstore';assert not creds.exists();creds.symlink_to(outside)
+  identity_failure('credential store points outside image');creds.unlink()
+  assert (outside/'private').read_text()=='SYNTHETIC-PRIVATE-PROBE\n'
+  auth=image/'etc/apt/auth.conf';os.mkfifo(auth,0o600)
+  identity_failure('FIFO authentication input is rejected without reading');auth.unlink()
+  link=base/'shadow-alias';os.link(shadow,link);identity_failure('external hardlink to account file');link.unlink()
+  final_identity=identity_check();assert final_identity['fresh_identity_check_passed'],final_identity
+  identity_result={'positive':identity_positive,'negative_cases':identity_cases,
+   'restored_identity_passed':True,'declared_authentication_rejected':True,
+   'component_sha256':digest(base/'image_identity.py'),
+   'whole_image_credential_audit_accepted':False,'release_image_or_boot_accepted':False}
  assert digest(root/'var/lib/dpkg/status')==before
  result={'fixture':str(base),'configured_packages':sorted(selected),'positive':passed,'negative_cases':cases,
   'payload_audit':payload_result,'runtime_audit':runtime_result,
-  'attribution_audit':attribution_result,
+  'attribution_audit':attribution_result,'identity_audit':identity_result,
   'native_install_log':(base/'native-install.log').read_text(),
   'native_install_log_sha256':digest(base/'native-install.log'),'builder_status_sha256':before,
   'installed_target_modified':False,'component_sha256':digest(base/'review_image_key_markers.py'),
@@ -261,7 +313,10 @@ def main():
     parser.add_argument('--payload', action='store_true', help='Also verify owned image payload and native metadata against real corruption cases')
     parser.add_argument('--attribution', action='store_true', help='Also verify declared image entries, account data and extended metadata')
     parser.add_argument('--runtime', action='store_true', help='Also verify actual image loader and shebang providers')
+    parser.add_argument('--identity', action='store_true', help='Also reject inherited foundation identity and authentication state')
     options = parser.parse_args()
+    if options.identity:
+        options.attribution = True
     if options.attribution or options.runtime:
         options.payload = True
     sources = dict(SOURCES)
@@ -275,10 +330,13 @@ def main():
     if options.runtime:
         sources['image_runtime.py'] = base64.b64encode((ROOT / 'scripts/build/h10/image_runtime.py').read_bytes()).decode()
         sources['audit_native_elf.py'] = base64.b64encode((ROOT / 'scripts/build/audit_native_elf.py').read_bytes()).decode()
+    if options.identity:
+        sources['image_identity.py'] = base64.b64encode((ROOT / 'scripts/build/h10/image_identity.py').read_bytes()).decode()
     baseline = base64.b64encode((ROOT / 'config/live-account-baseline.json').read_bytes()).decode()
     result = subprocess.run(ssh_args() + ['python3 -B -'],
         input='SOURCES=' + repr(sources) + '\nPAYLOAD_AUDIT=' + repr(options.payload)
             + '\nATTRIBUTION_AUDIT=' + repr(options.attribution) + '\nRUNTIME_AUDIT=' + repr(options.runtime)
+            + '\nIDENTITY_AUDIT=' + repr(options.identity)
             + '\nACCOUNT_BASELINE=' + repr(baseline) + '\n' + REMOTE,
         text=True, capture_output=True, timeout=600)
     raw = (result.stdout + result.stderr).encode()
@@ -297,6 +355,7 @@ def main():
         'payload_negative_cases': len(report['payload_audit']['negative_cases']) if report['payload_audit'] else None,
         'attribution_negative_cases': len(report['attribution_audit']['negative_cases']) if report['attribution_audit'] else None,
         'runtime_negative_cases': len(report['runtime_audit']['negative_cases']) if report['runtime_audit'] else None,
+        'identity_negative_cases': len(report['identity_audit']['negative_cases']) if report['identity_audit'] else None,
         'whole_image_credential_audit_accepted': False}))
 
 

@@ -385,3 +385,14 @@ installed tools after H10 and pair its actual kernel/root/initramfs generation;
 the full native boot/login/recovery matrix remains mandatory. The x86_64 text
 profile composes native grub-mkimage/Mtools/Xorriso directly from the frozen
 grub-mkrescue BIOS/EFI recipe, avoiding its unrelated Apple font-label branch.
+
+## Fresh distribution identity audit
+
+Both assembler profiles now run the read-only image_identity component after
+payload/attribution/runtime validation (ADR-0080). It checks the exact fresh
+account baseline and rejects inherited authentication and host identity at
+known sensitive locations, independently of package ownership. Findings omit
+unexpected contents, hashes and child names. This bounded check does not
+replace the complete image credential/configuration/license review. Reproduce
+the native positive/eighteen-negative experiment with
+`python3 scripts/host/probe_image_key_marker_review.py --identity`.

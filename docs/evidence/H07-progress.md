@@ -1389,3 +1389,17 @@ a terminal exit. The versioned observer retains each full outer-header snapshot,
 checks source/configuration hashes and refuses malformed sequences. Raw SHA-256
 0ffd396f79afaea39598e11cee701e5b31af7fa6fcf28d5f3fee61742c49787b.
 Package counts and milestone credit were not changed by the reporting error.
+
+### Independent identity audit and verified database wait — 2026-11-07 08:48 UTC
+
+Original driver 1364 remains live in group 27/27, hash method 8/9, Test044 cycle 2
+with the same two failures. Corrected driver 1107192 is live in group 20/27,
+automated repmgr, zero FAIL entries. Neither has terminal exit files. The
+corrected run has advanced beyond compression; returned groups are not separate
+acceptance claims. Complete raw observation SHA-256:
+ba771b0d7940f738a412fc89290155c35390ce5e53cb31a32119ea24fb42249b.
+
+Independent private image preparation passed the fresh-identity audit and
+eighteen rejection cases (ADR-0080). Active H07 inputs and installed packages
+were unchanged. Berkeley production acceptance, APT and final closure remain
+required; H07 stays 124/126 and foundation credit stays 38%.

@@ -23,6 +23,7 @@ import acl_sidecar
 import copy_selected_root
 import fresh_directories
 import image_attribution
+import image_identity
 import image_payload
 import image_runtime
 import info_index
@@ -176,6 +177,9 @@ def assemble(backend, image, work, *, release=False, repository=PROJECT,
             runtime = step('image-runtime-audit', lambda: image_runtime.audit(backend, image, runtime_entries))
             if not runtime['runtime_availability_check_passed']:
                 raise ValueError('Image executable linkage or interpreter is unavailable; preserve runtime report')
+            identity = step('fresh-identity-audit', lambda: image_identity.audit(image, baseline))
+            if not identity['fresh_identity_check_passed']:
+                raise ValueError('Image contains inherited identity/authentication state; preserve audit report')
             if release:
                 markers = step('key-marker-review', lambda: review_image_key_markers.review(
                     backend, image, repository, records, cache))

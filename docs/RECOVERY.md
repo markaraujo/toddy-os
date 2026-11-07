@@ -1192,3 +1192,12 @@ Do not execute run_std -n inside a live tree: the frozen implementation removes
 and recreates ALL.OUT even in that mode. Do not alter test input or restart a
 process to obtain a progress estimate. Existing strict full-result/production
 handoff criteria remain unchanged; this observer cannot accept a package.
+
+Fresh-image identity audit recovery (ADR-0080): inspect the preserved
+fresh-identity-audit report and assembly journal. A declared or owned credential
+is still a failure. Correct the originating recipe or explicit copy selection,
+then create a new stage; never delete credentials in place and relabel the old
+stage accepted. Keep unexpected content private. The probe retains failed
+temporary roots, removes successful ones and saves a content-addressed log.
+It does not operate on installed user accounts and grants no whole-image
+credential or first-boot acceptance.

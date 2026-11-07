@@ -775,3 +775,13 @@ Actual live observation now reports original 27/hash 8 of 9 and corrected
 19/compression, preserving two original failures and zero corrected FAIL entries.
 Corrected public status and annotated historical statements; raw evidence and
 all test/acceptance criteria remain intact. See ADR-0079.
+
+## 2026-11-07 — Identity probe assumed DBus in the minimal package closure
+
+The first fresh-identity integration probe stopped at its DBus fixture assertion.
+The eleven-package OpenSSL closure does not include DBus or its machine-id alias.
+This was a probe setup error, not a reason to add an unrelated runtime dependency
+or allow inherited identity bytes. Create the canonical public alias explicitly,
+verify it passes, then replace it for the negative case. Preserve the initial
+failed fixture/report; the complete corrected run passed all eighteen identity
+negative cases and existing marker/payload/attribution regressions. See ADR-0080.

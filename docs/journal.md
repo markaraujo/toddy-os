@@ -570,3 +570,13 @@ did not identify the outer dispatcher. Actual standard.log shows original 27/27
 read-only observer and four regressions, retained full headers/evidence and
 corrected the public snapshot and historical narrative. No test or acceptance
 criterion was changed; the full corrected result remains required.
+
+2026-11-07 — Added independent fresh-image authentication/identity audit
+(ADR-0080). A private eleven-package native image passes; eighteen deliberately
+invalid states fail without exporting their contents, including authentication
+that the attribution plan explicitly declares. Corrected a DBus-alias setup
+assumption in the probe and preserved its failure. Existing marker/payload/
+attribution regressions still pass. Full image and boot acceptance remain open.
+At 08:48 UTC both Berkeley drivers were live: corrected group 20/27 automated
+repmgr with zero FAIL entries; original group 27/hash method 8/9, Test044 cycle 2,
+with the same two known failures. No terminal exits; H07 remains 124/126.
