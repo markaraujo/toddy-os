@@ -1,8 +1,11 @@
 # Development recovery
 
-Current stage: H07 final base, after accepted GCC suites and native compiler installation. H06 /tools removal and actual paired-disk restoration passed. Target root is /dev/vdb4 mounted at /mnt/lfs.
-No ISO exists. Gate G1 and G2 remain pending. Inspect status.json and actual
-processes before continuing; this document is updated at verified boundaries.
+H01–H11 have produced the current foundation ISO. H12 final-media boot and failure
+recovery passed; native follow-ups and H13/G1 status are in status.json. The target
+root remains the designated guest /dev/vdb4 mounted at /mnt/lfs. No physical disk
+is a test target. Use current evidence and the latest recovery entries below;
+earlier sections retain historical failed generations and must not be mistaken
+for live processes. Current artifact: [evidence/H11.md](evidence/H11.md).
 
 ## VM lifecycle
 

@@ -5,12 +5,14 @@ or installer. H13 is an interim owner-testing delivery. Phase 2 requires the
 owner's explicit approval after that review. Physical hardware support remains
 untested unless the release test matrix records an actual result.
 
-Current verification: native disk BIOS/UEFI boots passed H09. The H10 validation
-ISO passed an actual BIOS/CD live console, volatile-write, native C/Kmod and
-DHCP/DNS test. Final release media and its full H12 matrix remain pending.
-The validation guest powered off with exit zero; Systemd reported its read-only
-lower loop still busy during final shutdown. Complete initramfs teardown and
-persistent-disk behavior are not claimed from this no-disk live test.
+Current verification: the revised foundation ISO passed actual BIOS/UEFI boots
+through both CD-ROM and virtual USB, including offline USB, real console login,
+volatile writes, native C/Kmod and package checks. Actual GRUB recovery, absent
+media, corrupted-root rejection and subsequent intact-media boot passed. See
+[evidence/H12-final-media.json](evidence/H12-final-media.json). H13/G1 acceptance
+is a separate recorded gate. The native guests power off with exit zero but
+Systemd reports its read-only lower loop/media busy during final shutdown;
+complete initramfs teardown and persistent-disk behavior are not claimed.
 
 ## Boot and console
 

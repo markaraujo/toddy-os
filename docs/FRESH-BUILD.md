@@ -208,3 +208,13 @@ Audit every G1 criterion against these results. Record physical hardware pending
 unless actually tested. Deliver artifact/checksum/component inventory, live and
 recovery instructions, exact source commit and limitations. Stop at the explicit
 H13 owner-review boundary; technical G1 acceptance does not authorize B01.
+
+After H12 passes and H13 is active, `scripts/host/export_foundation.py ISO MANIFEST
+INVENTORY DESTINATION` creates a fresh local release directory, validates the
+artifact against its independent review, bundles and reads back every
+corresponding source archive, and verifies the copied ISO. Inputs and destination
+must be physical project-local files/directories; binaries remain outside Git.
+Add the final committed source history with `git bundle create DESTINATION/
+toddy-source-history.bundle HEAD` (use a single continuous path in the command).
+Keep raw test logs, native component records and checkpoint references with the
+handoff. Do not advertise a partial export as accepted G1 or a public release.
