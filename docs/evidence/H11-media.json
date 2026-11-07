@@ -1,5 +1,5 @@
 {
-  "started": "2026-11-07T13:15:21.867562+00:00",
+  "started": "2026-11-07T13:26:30.350124+00:00",
   "work": "/mnt/lfs/sources/stage/h11-release-media/iso",
   "complete": true,
   "release_accepted": false,
@@ -173,7 +173,7 @@
       ],
       "exit": 0,
       "timeout_seconds": 1800,
-      "log_sha256": "a47787a2164e6b81508178042ab442784eca5449846d34b1aadea32b0199b69e"
+      "log_sha256": "e3aced6639c99435151f03e328597d8a6f053c0cca387efcf0dad1bd9656f79d"
     },
     {
       "name": "catalog",
@@ -190,7 +190,7 @@
       ],
       "exit": 0,
       "timeout_seconds": 1800,
-      "log_sha256": "c0c6209b96cca953350473b96506082b2675e1543f4050e5468c8751de7aba44"
+      "log_sha256": "6116d6121540a331d9bc667d835dffeec5dccf5cd61567309007bcb11d0a6177"
     },
     {
       "name": "readback-0",
@@ -208,7 +208,7 @@
       ],
       "exit": 0,
       "timeout_seconds": 1800,
-      "log_sha256": "9f039f6c9ebe26a6905d686dc2e6932077973b54f39533c04d8fc07840b5f159"
+      "log_sha256": "c1b322edbc07e020b8e9a135b5fa901ff8f4b9b9672fdfd3c09de400c35d70c9"
     },
     {
       "name": "readback-1",
@@ -226,7 +226,7 @@
       ],
       "exit": 0,
       "timeout_seconds": 1800,
-      "log_sha256": "7788050ab404b7fec2d98c87d6289a47b09ebdb9641d6794b0b80110273b667f"
+      "log_sha256": "b311ffbffc049d4bb901a0ec019b9a4d734b4c70fa9206a925fbfd0266c5c219"
     },
     {
       "name": "readback-2",
@@ -244,7 +244,7 @@
       ],
       "exit": 0,
       "timeout_seconds": 1800,
-      "log_sha256": "c269c2167491eba1a830beffa088b5e854aa6773e4c212b222c2ed32bb287ddd"
+      "log_sha256": "817a3ef167972d43e27c7fb663908e1da91ec02bf42bf2dbae9fa6073fc77447"
     },
     {
       "name": "readback-3",
@@ -262,7 +262,7 @@
       ],
       "exit": 0,
       "timeout_seconds": 1800,
-      "log_sha256": "5a069c0c9992c76187c08054363ba5dcacbc51cb198717dd3b2efb3bb0866dae"
+      "log_sha256": "106d9616ad5a43a771180e70e4c4f855e60ee8e62d545319bba30c64e7bb12b8"
     },
     {
       "name": "readback-4",
@@ -280,7 +280,7 @@
       ],
       "exit": 0,
       "timeout_seconds": 1800,
-      "log_sha256": "56b121296d7937d4c170eec855395bfbe2d294b07bbe2c6b9a2f3b9d95f0e4c4"
+      "log_sha256": "0a96dd27db9fe6bcdbb3efb44d4e4cb48da969445714b7b46c375bbbff305ece"
     },
     {
       "name": "readback-5",
@@ -298,7 +298,7 @@
       ],
       "exit": 0,
       "timeout_seconds": 1800,
-      "log_sha256": "82fc25c9963dce6937611abcbee059a435113a75c04375d2e6f7ee8f4dacb669"
+      "log_sha256": "a9c69490883c7d00b3b7162e142df055801aa0071ea2805b1aa33a0d7c70a44b"
     }
   ],
   "native_packages": {
@@ -347,12 +347,12 @@
   },
   "input_sha256": {
     "/mnt/lfs/boot/vmlinuz-7.1.8-toddy": "3ccb8a6c3f3e125542e3d6892e242af1d37e873833de27ee32e3951871a723a1",
-    "/mnt/lfs/sources/stage/h11-release-media/initramfs/initramfs.cpio.gz": "2cb425dd38712e120f39b33403eaf496e9aecd5b4de7a18afe796d6acf0d961f",
+    "/mnt/lfs/sources/stage/h11-release-media/initramfs/initramfs.cpio.gz": "fb66b4e32997b17ac2e4877ce4eb58c641a16ea463821c2172ff8c19cdd1d097",
     "/mnt/lfs/sources/stage/h11-release-compression/rootfs.squashfs": "7a5b454cc9080cc8fe3d28c677688f50acea818da0868e78faf0569323d78b71"
   },
   "initramfs_evidence_sha256": {
-    "/mnt/lfs/sources/stage/h11-release-media/initramfs/manifest.json": "d4cc60498608523da529fe02a9819f217ead725cbc499a8c4dff8223b393952f",
-    "/mnt/lfs/sources/stage/h11-release-media/initramfs/initramfs.cpio.gz": "2cb425dd38712e120f39b33403eaf496e9aecd5b4de7a18afe796d6acf0d961f"
+    "/mnt/lfs/sources/stage/h11-release-media/initramfs/manifest.json": "2555305d6e201d6e75ffb28128093101d45c51665d1d59374df96581b9c3035a",
+    "/mnt/lfs/sources/stage/h11-release-media/initramfs/initramfs.cpio.gz": "fb66b4e32997b17ac2e4877ce4eb58c641a16ea463821c2172ff8c19cdd1d097"
   },
   "compression_binding": {
     "compression_bound": true,
@@ -376,16 +376,16 @@
   },
   "assembler_sha256": "10b41e80ee6c3977180208680aaffbace4eeb86946b0707cd1e61395a973ae8c",
   "composer_sha256": "77cd2ec6350dddd2c9aa78ed054efadef18f5c9c7799b8a17741d4ab09906959",
-  "finished": "2026-11-07T13:15:32.136772+00:00",
+  "finished": "2026-11-07T13:26:37.762335+00:00",
   "media": {
     "artifact": "/mnt/lfs/sources/stage/h11-release-media/iso/toddy.iso",
-    "sha256": "13a70d854501a91f068deb02b9030ef0a39a6c6e2d2cdc998183622b88f96e41",
-    "bytes": 1094998016,
+    "sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+    "bytes": 1095000064,
     "payload_sha256": {
       ".toddy/dc1c96381676d98872065193c5ab73949ab7569ce5d49bcf90a928660974818f": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       ".toddy-media-id": "fd964166ada33e380ac54e528eef52ec24a895aeacf2b9e1dd5a7677e015d62a",
       "boot/grub/grub.cfg": "62545942752811733b95901c3dfa3276f66ce9e43bbef808feac079bb945746b",
-      "boot/initramfs.cpio.gz": "2cb425dd38712e120f39b33403eaf496e9aecd5b4de7a18afe796d6acf0d961f",
+      "boot/initramfs.cpio.gz": "fb66b4e32997b17ac2e4877ce4eb58c641a16ea463821c2172ff8c19cdd1d097",
       "boot/vmlinuz-7.1.8-toddy": "3ccb8a6c3f3e125542e3d6892e242af1d37e873833de27ee32e3951871a723a1",
       "live/rootfs.squashfs": "7a5b454cc9080cc8fe3d28c677688f50acea818da0868e78faf0569323d78b71"
     },

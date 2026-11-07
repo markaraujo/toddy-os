@@ -1677,3 +1677,34 @@ than discarding the only raw logs. The source core-binary hashes in the native
 report must also match the final-image manifest during H12 acceptance. This
 cold-disk test supplies kernel/libc/Systemd follow-up evidence, not final ISO
 boot, login, persistence or recovery acceptance.
+
+### H12 USB discovery correction and recovery probes
+
+The original release ISO failed actual USB discovery (ADR-0101). It remains at
+.local/vm/live-media/h11-vtrx6uo3 and in the guest under
+sources/recovery/h12-usb-discovery-20261107/h11-release-media. Its original media
+driver logs are in /var/log/toddy/history/h12-usb-discovery-20261107. An initial
+cross-filesystem log rename refused after relocating the media; a same-filesystem
+log rename completed the recorded recovery. A premature driver correctly refused
+its existing markers. No accepted root, package or compression was rebuilt.
+The media-only continuation then ended zero with the revised initramfs and ISO.
+Current artifact paths/hashes are in docs/evidence/H11.md.
+
+The prepared scripts/host/live_recovery_test.py requires H11 completed and H12
+in_progress and a verified final ISO/manifest. Its rescue case selects the actual
+GRUB recovery menu. Its missing case boots byte-verified kernel/initramfs extracted
+from that ISO without attaching any media disk. Its corrupt case flips exactly
+one byte in a copied, hash-verified Squashfs extent, leaving the original intact.
+All cases require a real recovery-shell command, absence of accepted-root markers,
+and preserved serial logs. Only the labelled diskless test VM is stopped after
+its evidence; this is not a graceful Systemd shutdown claim. Follow with normal
+boot of the original verified ISO to demonstrate recovery. Native execution of
+these prepared cases is still pending.
+
+The first native namespace run retained its overlay at
+.local/vm/boot-tests/h09-bios-m2gayrqx. Systemd test-namespace exited zero. Glibc's
+make test convenience target tried implicit rebuilds against its old bootstrap
+ar path, so those executions are failed, not passing native regressions. The
+serial export also missed chunk 67/112; the guest's exact complete report remains
+at /var/tmp/toddy-native-regressions-vzwqsj8n/result.json in that overlay. Preserve
+it for independent recovery; do not trust partial decoded text as acceptance.

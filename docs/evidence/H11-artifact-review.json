@@ -1,11 +1,11 @@
 {
   "complete": true,
   "scope": "H11 artifact, component/source inventory and development-credential review; final boot/G1 remain pending",
-  "iso_sha256": "13a70d854501a91f068deb02b9030ef0a39a6c6e2d2cdc998183622b88f96e41",
-  "iso_bytes": 1094998016,
-  "iso_local_path": ".local/vm/live-media/h11-vtrx6uo3/toddy.iso",
-  "inventory_local_path": ".local/vm/live-media/h11-vtrx6uo3/components.json",
-  "inventory_sha256": "d6ad501413e0fc8330571030203b22b4aa985c736accd1f1bb212401215eab69",
+  "iso_sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+  "iso_bytes": 1095000064,
+  "iso_local_path": ".local/vm/live-media/h11-6gt6n78r/toddy.iso",
+  "inventory_local_path": ".local/vm/live-media/h11-6gt6n78r/components.json",
+  "inventory_sha256": "a9c2d193c3ca94cbe8161152c50802fd0cb964ac043635d80c71c518002ea377",
   "component_count": 134,
   "corresponding_source_inputs": 142,
   "development_credential_review": {
@@ -135,8 +135,8 @@
       },
       "native_boot_verified": false
     },
-    "initramfs_sha256": "2cb425dd38712e120f39b33403eaf496e9aecd5b4de7a18afe796d6acf0d961f",
-    "initramfs_bytes": 14272358
+    "initramfs_sha256": "fb66b4e32997b17ac2e4877ce4eb58c641a16ea463821c2172ff8c19cdd1d097",
+    "initramfs_bytes": 14272661
   },
   "final_iso_boot_verified": false,
   "G1_passed": false
