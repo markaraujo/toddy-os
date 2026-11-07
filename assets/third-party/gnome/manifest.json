@@ -1,0 +1,226 @@
+[
+  {
+    "file": "audio-input-microphone-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "2ed932d679852639c7b2c89652d404bdfaa42916719ff3f134fac1f4f575d0ff",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "audio-volume-high-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "ed111cb22410a2c6b0556678662308f4ba3aa1cbca53b12fdd4939a52c0c7f52",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "document-open-recent-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "0102761f9d1d01d855a0b0eefe545eeb110c278d118d531e91424c8d088cd4e9",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "edit-find-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "e65ed504332ab9ff5792b22fdf8a1f0c3baad0803c3fdd13ceace101600185bc",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "folder-documents-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "459ca39a1cdf777e3d1d25f18c00855b835fb6e5ad79412e58d2f0ca1b697df0",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "folder-documents.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "9adc199ee595398be592cc9989bbbc02d8ca42355b18e8e1a6c8cc125abe5b5f",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "folder-download-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "2ccce38c79b191db02fa6e5773e44fd0224443b92b9ff30980dd1f5e986010b0",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "folder-download.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "97caa710fd560edb479dfeb8e04fa587ae65504bbe02df6c2fde8a22514e8746",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "folder-music.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "4b46e981e7c6e0e9503aed6cd5ca7acbc2c89a66f4a0b62283f08b03fda8201d",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "folder-pictures-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "25822ef99a9588167f82772f9203b044b326f57e196a3da58d443453e072fcb1",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "folder-pictures.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "4b36a3dc78d0689537a76bef4380bd6aefd61d93cfea3432b8ed198c064625ed",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "folder-templates.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "490f984055418dafb1c17385e25af6b789da133fe5623572c6b7e31a3fbdbc12",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "folder.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "1ad4aea2e388f553fd958fa0ce8120fb80d48319a004d48ce777d89e051c179d",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "go-next-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "d868d51ab13b03a9ef999b6355e5472f082c697c02ba12bb18e2db7562ed8b79",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "go-previous-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "989eaa987a8c96a0bcd4265839274e97f27e8761cc1ae9d2e41df37ea5840118",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "media-playback-stop-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "de717251084ed2ee64ae328919a4d75ec13dcc620061c67143dab5bb68f0c9df",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "network-wireless-signal-excellent-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "818f6738b6c21c6c09350a888dc73274e2411b221b70d5bfa11d9a45cc94d166",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "open-menu-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "dd3f1c117437a6f5124905de7212a1a320e76f9b33d8411bf70dbdbefa8e9bad",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "org.gnome.Console.svg",
+    "source": "https://github.com/GNOME/console",
+    "version": "5bd9698ad00c9b1fecfb2aedabaf2cbc91055cf8",
+    "license": "GPL-3.0-or-later (upstream COPYING; no narrower icon grant found)",
+    "sha256": "76274314c637b6bc820e1e3853f8b3551d27924107969322268ece8d0c18b13b",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "org.gnome.Epiphany.svg",
+    "source": "https://github.com/GNOME/epiphany",
+    "version": "f3d691141b647e447d04e88c26b62e00ac32fd43",
+    "license": "GPL-3.0-or-later (upstream COPYING; no narrower icon grant found)",
+    "sha256": "3615a3f0a5b183a0ea34273313ac593cded265eb6f1102c9ce68bf76b9a3c661",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "org.gnome.Nautilus.svg",
+    "source": "https://gitlab.gnome.org/GNOME/nautilus",
+    "version": "Ubuntu package 1:50.2.2-0ubuntu0.2",
+    "license": "CC-BY-SA-4.0 (embedded SVG metadata, GNOME Design Team)",
+    "sha256": "a7b916cf68a7f42f27fd0c967995845adbf7590952815fc2564e23b34590db8c",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "org.gnome.Settings.svg",
+    "source": "https://gitlab.gnome.org/GNOME/gnome-control-center",
+    "version": "Ubuntu package 1:50.3-0ubuntu0.2",
+    "license": "Upstream GPL-2.0-or-later / GPL-3.0-or-later; retain full package notice",
+    "sha256": "2c0b1142832bb6e9727696e7048010a11484ca4a72dcc9f530ae39baada3c7fc",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "starred-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "ff070bd852a68a8f3002c4fdf73ab659e3819228e3d441e8a46af70a2964ec20",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "system-shutdown-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "f486625bee93179b337afe78325c76268b479588898a17002f9604814ebbe65f",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "user-home-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "598a1df26a791c8a9bd79288b67fdb351c2c7eef2781c1b56ea6386475a3541a",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "user-trash-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "515969c8bba92bc48cab84120e7df22320d648cc2619a7a765e3e9bb3e0c1c20",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "view-app-grid-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "5ecdd45e1ddf8146b84981eaabbf4c3483bf27df09b8b43e9df0c354ccf5eae3",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  },
+  {
+    "file": "window-close-symbolic.svg",
+    "source": "https://gitlab.gnome.org/GNOME/adwaita-icon-theme",
+    "version": "50.0-1",
+    "license": "CC-BY-SA-3.0-US or LGPL-3.0; additional CC-BY-SA-4.0 entries as described in upstream/package notice",
+    "sha256": "75668d97d7466b1fafea21767c5de1ba31efd48fb319f43a6e16ddbf455d6465",
+    "modification": "none; rendered at UI size, symbolic foreground styled by CSS"
+  }
+]

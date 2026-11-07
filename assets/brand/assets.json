@@ -4,8 +4,9 @@
     "width": 1320,
     "height": 681,
     "mode": "RGB",
-    "sha256": "b72c2af068e485e5a702cc7f6a4df61b76989e92c94d732f61ee41d21c370bb7",
-    "role": "design-preview"
+    "sha256": "35e29842007a3f41cf3d6abb10faba945db143e5b12d2f1184e00f91ca031f73",
+    "role": "design-preview",
+    "third_party_artwork_manifest": "../third-party/gnome/manifest.json"
   },
   {
     "file": "toddy-os-boot-background.png",
@@ -20,16 +21,18 @@
     "width": 1320,
     "height": 681,
     "mode": "RGB",
-    "sha256": "35e25e433c3a3f363b0a8b8b036d68b274df97a7fa2776b86564e7c7c1493882",
-    "role": "design-preview"
+    "sha256": "3e71d45b81ebc6b2b623b8045f91a644a4e5c99f884026c91592015eb7d86e01",
+    "role": "design-preview",
+    "third_party_artwork_manifest": "../third-party/gnome/manifest.json"
   },
   {
     "file": "toddy-os-installer-preview.png",
     "width": 1320,
     "height": 681,
     "mode": "RGB",
-    "sha256": "607929924d4c39069447e8ef44fb2d3fd0c2a2c61da6885f7290161e78c8154c",
-    "role": "design-preview"
+    "sha256": "5bc353c4f2b7f702b7f30bb7c9f0a02647a15523a553886b054b2efe3af0afbe",
+    "role": "design-preview",
+    "third_party_artwork_manifest": "../third-party/gnome/manifest.json"
   },
   {
     "file": "toddy-os-logo.png",
@@ -56,8 +59,9 @@
     "width": 1320,
     "height": 681,
     "mode": "RGB",
-    "sha256": "88fad2c71d7abd6c84e78585a63b05016d9893e5e428c17b7691a0d74cbccc46",
-    "role": "design-preview"
+    "sha256": "ff19e7171c301a5455815c9d7ebb6bc84524d511ceb85b154cda9a036e850f2d",
+    "role": "design-preview",
+    "third_party_artwork_manifest": "../third-party/gnome/manifest.json"
   },
   {
     "file": "toddy-os-wallpaper-dark.png",

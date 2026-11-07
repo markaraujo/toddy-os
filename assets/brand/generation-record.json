@@ -60,13 +60,16 @@
       "toddy-os-task-preview.png": "#task-capture",
       "toddy-os-installer-preview.png": "#installer-capture"
     },
-    "method": "Playwright element screenshots after selecting each visible scene, using unchanged original mascot; each image contains its own design-preview label."
+    "method": "Playwright element screenshots after selecting each visible scene at ?lang=en, using original mascot and unmodified GNOME/Adwaita source SVGs; every image retains a design-preview label.",
+    "capture_locale": "en",
+    "third_party_icons": "../third-party/gnome/manifest.json"
   },
   "limitations": [
     "Generated PNG backgrounds are 1672x941 despite a higher-resolution request, not 4K/vector masters.",
     "UI scenes are simulations, not running GNOME/agent/installer acceptance evidence.",
     "The original logo contains its original background and colors; it was not recolored.",
     "Published foundation ISO remains unchanged.",
-    "Logo wallpaper variants contain generated mascot/label reproductions, not pixel-identical compositing of the protected logo. Original logo and transparent mascot files remain byte-identical."
+    "Logo wallpaper variants contain generated mascot/label reproductions, not pixel-identical compositing of the protected logo. Original logo and transparent mascot files remain byte-identical.",
+    "Preview screenshots include third-party GNOME/Adwaita icons under their retained licenses; see assets/third-party/gnome/manifest.json and notices. They are not exclusively original Toddy artwork."
   ]
 }

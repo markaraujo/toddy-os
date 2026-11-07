@@ -71,3 +71,17 @@ historical text; its original relative license link is not a navigable archive
 reference. Current license: [CC BY 4.0](../../LICENSES/CC-BY-4.0.txt), Marcos Araujo /
 Toddy OS, with modification notices and attribution retained. No trademark rights
 are granted. Background changes do not alter the published foundation ISO.
+
+
+## Real icon sources in UI concepts
+
+Updated the simulated GNOME desktop, dock, folders and symbolic controls to use
+unmodified real GNOME/Adwaita SVG artwork instead of CSS-drawn shapes and text
+glyph substitutes. Attribution, versions, licenses and source hashes are in
+[the icon collection](../third-party/gnome/README.md). Browser/Web, Files, Console
+and Settings are illustrated using their real app icons; the browser icon is
+illustrative and does not change the planned default-browser selection.
+
+Concept PNGs containing those icons preserve third-party terms and must not be
+presented as exclusively CC BY 4.0 original artwork. The original Toddy identity
+and plain/branded wallpaper files remain unchanged by this correction.
