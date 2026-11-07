@@ -9,6 +9,28 @@ coverage. This policy changes Phase 2 acceptance, not historical G1 evidence.
 Execution sequencing and resumption follow [the playbook](PHASE-2-EXECUTION.md).
 The [review](PHASE-2-REVIEW.md) records corrected gaps; no runtime result is implied.
 
+## Change-based test decision at each work boundary
+
+Follow [ADR-0110](adr/0110-isolated-package-builds-and-change-based-validation.md).
+Every interaction decides whether evidence was invalidated; it does not run all
+tests. Inspect actual diff/input identities and any unresolved failure first.
+
+| Trigger | Required scope |
+| --- | --- |
+| Explanation/status only, unchanged inputs | Reuse identified evidence; no test run |
+| Docs/planning-only delivery | make check; no guest build |
+| Visible UI/site change | Affected behavior/layout/locales/accessibility plus repository checks |
+| Local tool/recipe change | Changed behavior, negative case and direct consumers |
+| Shared protocol/schema/ABI/store or sandbox/policy change | Affected consumer closure and changed safety/restart edges |
+| Package/boot/kernel/installer change | Affected transaction, boot/install/recovery and relevant integrity checks |
+| Unexplained regression or unknown impact | Diagnose/trace closure, then broaden the affected integration set |
+| Final candidate | Existing combined release gate on the exact artifact |
+
+Record scope/checks/reused evidence in the existing slice card, not a new checklist
+per chat. Do not rerun passing unchanged checks for reassurance. A changed package
+or dependency invalidates its consumers' relevant evidence, not every unrelated
+foundation result. Cheap required repository checks still run before delivery.
+
 ## Execution rules
 
 - Use one disposable reference guest and its checkpoints. All disk tests target

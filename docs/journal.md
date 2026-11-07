@@ -1322,3 +1322,13 @@ build/live/offline/acquisition package sets and corrected ambiguous final-image
 wording that could accidentally force agent components into offline installs.
 Prioritize measured heavy eligible branches and reuse compiled probe packages.
 No guest measurements/build/approval or B acceptance were created.
+
+
+## 2026-11-07 — Approved isolation and change-based validation strategy
+
+Owner accepted isolated builds/staging/controlled transactions and requested a
+test-scope decision each interaction. ADR-0110 records prevention versus detection,
+maintainer-script/trigger exceptions and required target qualification before
+replacing full per-recipe snapshots. AGENTS/validation now distinguish no-change
+conversation from affected checks, shared-risk regression and final-image gates.
+No sandbox/build implementation or guest-start approval is implied.

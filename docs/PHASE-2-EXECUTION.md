@@ -210,3 +210,7 @@ Continue unrelated authorized work where possible. Never silently replace a pinn
 component, disable a safety check or declare a failed test passed to regain momentum.
 
 Critical-path refinement: [runner overhead, root composition and early build scheduling](PHASE-2-CRITICAL-PATH.md).
+
+Test selection and the approved isolated build strategy follow
+[ADR-0110](adr/0110-isolated-package-builds-and-change-based-validation.md):
+assess each interaction, run only invalidated checks, widen on shared/unknown impact.

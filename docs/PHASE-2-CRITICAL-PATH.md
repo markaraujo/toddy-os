@@ -24,6 +24,10 @@ integrity, introduce a cache without invalidation, or change accepted H recipes.
 A tiny synthetic fixture can qualify modified/removed/out-of-scope-file detection
 before measuring a real recipe. Final image closure remains a full check once.
 
+The owner selected the isolation/staging/controlled-transaction strategy in
+[ADR-0110](adr/0110-isolated-package-builds-and-change-based-validation.md).
+Qualify it before enabling optimizations; broad root scripts keep full verification.
+
 ## 2. Build environment versus shipped roots: avoid rebuilding the wrong image
 
 Maintain explicit package sets, with dependency closure and immutable identities:
