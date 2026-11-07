@@ -1,5 +1,9 @@
 # ADR-0048: Preserve POSIX ACLs outside Squashfs inode metadata
 
+Current refinement: ADR-0075 proves actual private Squashfs roundtrips and finds
+that direct ACL restore needs prior unchanged-mode copy-up. Its helper replaces
+the original direct setfacl boot command. Native Linux 7.1.8 boot remains pending.
+
 - Date: 2026-11-06
 - Status: Native metadata-channel experiment passed; real image integration pending
 

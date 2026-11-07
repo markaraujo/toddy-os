@@ -331,3 +331,11 @@ the full provider results and unresolved findings. Reproduce the native componen
 with python3 scripts/host/probe_image_key_marker_review.py --runtime. This checks
 executable availability; native package version constraints, optional tool/data/
 plugin dependencies, symbol execution and boot remain separate requirements.
+
+The initramfs ACL helper now copies declared ACL paths into the indexed upper
+with unchanged modes before restoring the numeric sidecar (ADR-0075). Direct
+setfacl against Squashfs-backed lower inodes failed in an actual experiment.
+Private native Squashfs compilation/roundtrips can be reproduced with
+python3 scripts/host/probe_native_squashfs.py start, then collect the exact printed
+fixture. These tests do not install the H10 package or bypass its gate. Full
+image compression and native Linux 7.1.8 boot remain mandatory.

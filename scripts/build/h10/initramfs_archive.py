@@ -117,6 +117,7 @@ def assemble(root, work, records, init_script, media_helper, media_id, root_sha2
     additions = {
         'init': (init_script.read_bytes(), 0o755),
         'usr/lib/toddy/live_media.sh': (media_helper.read_bytes(), 0o644),
+        'usr/lib/toddy/restore_live_acls.sh': (init_script.with_name('restore_live_acls.sh').read_bytes(), 0o644),
         'etc/toddy-live/media-id': ((media_id + '\n').encode(), 0o644),
         'etc/toddy-live/rootfs.sha256': ((root_sha256 + '\n').encode(), 0o644),
     }

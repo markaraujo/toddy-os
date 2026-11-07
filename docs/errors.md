@@ -695,3 +695,18 @@ metadata closure already handles the measured provider relationships.
 Verification: a fresh seventeen-package fixture passes 147 dynamic entries,
 41 scripts and eight refusal cases, then passes again after restoration. See
 ADR-0074 for source hashes, complete raw evidence and limitations.
+
+## 2026-11-07 — ACL restore on actual Squashfs lower
+
+Symptom: direct native setfacl restore on Squashfs plus indexed OverlayFS returned
+Operation not supported. Earlier ext4-lower checks had passed.
+Cause: the real lower Squashfs inode lacks set_acl; frozen Linux 7.1.8's
+ovl_set_acl checks it before its automatic copy-up path.
+Correction: validate the numeric sidecar names, copy only those paths up using
+unchanged-mode chmod, then restore ACLs before services. Preserve index=on and
+existing rescue behavior. The helper is carried in the verified initramfs.
+Verification: actual native source-built xz Squashfs/overlay now passes access/
+default ACLs, UID 101 access, special modes, capabilities, hardlinks/write
+propagation, volatile disposal and seven bad-path cases. Index=off remains a
+negative control for hardlinks. Updated native initramfs roundtrip passes.
+See ADR-0075 for original failure/raw hashes; actual Linux 7.1.8 boot is pending.

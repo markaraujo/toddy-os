@@ -1333,3 +1333,14 @@ image executable-resolution checks passed (ADR-0074): seventeen packages,
 147 dynamic executable entries, 41 scripts, eight refusal cases. The installed
 builder remains unchanged; H07 is still 124/126 accepted packages. No full
 foundation image or later milestone acceptance is claimed.
+
+2026-11-07 07:59 UTC — Both actual Berkeley driver identities remain live and
+have reached the final access-method matrix (block 27/27). Original: Test091
+queue configuration, the same two known failures. Corrected: Test044 hash with
+partition callback, third crash/recovery cycle, zero FAIL entries. Neither has
+terminal exits. Raw observation SHA-256:
+729e4c8728c2d28d456b84929bc54646562f34afb0e674b221326727ee3016ca
+(.local/logs/h07-db-standard-progress-<sha256>.json). The observer now reports
+Test headers as well as Recd/Fop instead of retaining an obsolete recovery
+heading. H07 remains 124/126 accepted packages. Independent private native
+Squashfs/overlay correction and initramfs evidence are in ADR-0075.

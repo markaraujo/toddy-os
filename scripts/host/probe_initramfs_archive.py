@@ -12,7 +12,7 @@ import subprocess
 
 os.chdir(Path(__file__).resolve().parents[2])
 sources = {name: base64.b64encode((Path('scripts/build/h10') / name).read_bytes()).decode()
-           for name in ('initramfs_runtime.py', 'initramfs_archive.py', 'live_init.sh', 'live_media.sh')}
+           for name in ('initramfs_runtime.py', 'initramfs_archive.py', 'live_init.sh', 'live_media.sh', 'restore_live_acls.sh')}
 script = r'''from pathlib import Path
 import base64,gzip,hashlib,json,os,shutil,stat,subprocess,sys,tempfile,types
 root=Path('/mnt/lfs');base=Path(tempfile.mkdtemp(prefix='toddy-initramfs-archive-',dir=root/'tmp'))

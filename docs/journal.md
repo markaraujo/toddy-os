@@ -527,3 +527,12 @@ overly narrow interpreter alias assumption using actual Glibc headers. A fresh
 seventeen-package root then passed 147 dynamic executable entries, 41 scripts and
 eight refusal cases, with the installed builder unchanged. Full assembly stays
 gated on H07-H09; component readiness is not milestone acceptance.
+
+2026-11-07 — Built frozen Squashfs 4.7.5 privately with native tools; gzip/xz/zstd
+metadata roundtrips passed. The first real Squashfs-lower overlay experiment found
+an ACL restore failure hidden by the ext4-lower fixture. Diagnosed the frozen
+kernel implementation, added targeted unchanged-mode copy-up, and verified ACLs,
+default inheritance, capabilities, hardlink writes, privileges and bad-path
+refusals (ADR-0075). Updated native initramfs archive checks pass. No package or
+milestone was accepted from this private preparation; both Berkeley runs remain
+active in their final access-method matrix, corrected run without FAIL entries.

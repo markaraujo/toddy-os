@@ -419,9 +419,9 @@ After H09 acceptance and synchronized H10 in_progress status, run Squashfs
 through run_step.py h10-squashfs-tools h10/squashfs-tools.sh
 h10/squashfs-tools-check.sh --user root. Native tests use private regular
 image files with bounded processors/memory; failures preserve the fixture
-path reported in the log. Inspect it before retrying. Actual source build and
-all three compressor/metadata/ACL roundtrips remain pending. Passing extraction
-checks cannot substitute for the later native-kernel live/overlay boot gate.
+path reported in the log. Inspect it before retrying. Private native builds and
+all three roundtrips passed in ADR-0075; the gated installed package still needs
+its own acceptance. Extraction cannot substitute for native-kernel live boot.
 
 
 After H10 acceptance and H11 status/input synchronization, the prepared ISO
@@ -549,7 +549,8 @@ an expected digest with one read from a rejected medium to bypass the check.
 
 The prepared live /init is scripts/build/h10/live_init.sh. Its future assembly
 must place matching generated identity/hash files in /etc/toddy-live, install
-the integrity helper at /usr/lib/toddy/live_media.sh, and include the numeric
+the integrity helper at /usr/lib/toddy/live_media.sh and ACL copy-up helper at
+/usr/lib/toddy/restore_live_acls.sh, and include the numeric
 ACL stream at /usr/share/toddy/live-root.acl in the compressed root. Missing
 metadata or an unsupported overlay profile must not be worked around by
 removing checks. Actual image assembly and boot remain pending behind H09.
@@ -888,7 +889,8 @@ fresh stage. Do not truncate it, ignore a cross-filesystem refusal, or suppress
 ACL diagnostics. Capture belongs after all final image configuration; any later
 permission/payload change requires a newly generated image/sidecar and audit.
 The first bytearray decoder failure remains at toddy-acl-capture-x3rudrac.
-Actual Squashfs/overlay/native-kernel restoration remains pending (ADR-0048).
+Actual private Squashfs/overlay restoration passed with the ADR-0075 correction;
+complete-image and native Linux 7.1.8 boot restoration remain pending.
 
 
 Reproduce fresh mutable-directory generation with
@@ -1113,3 +1115,20 @@ package/declaration/assembly cause and create a fresh generation. Do not inject
 builder library paths, disable the audit, or claim optional dlopen/data coverage
 from a successful --list. The native --runtime probe preserves its failed fixture
 and reports its path; its successful fixture is removed only after log capture.
+
+ADR-0075 supersedes direct Squashfs ACL restoration: use the initramfs
+restore_live_acls.sh helper before Systemd. If restoration fails, remain in the
+existing rescue path. Inspect the exact sidecar name, physical parent, upper
+filesystem support and effective index=on mount option. Never drop ACL records,
+disable indexing or start services with incomplete permission restoration.
+The helper copies only named files/directories up with unchanged modes; RAM
+exhaustion or a malformed path must fail visibly rather than changing policy.
+
+Private native tool experiments retain inputs.json, running.json, driver.pid,
+driver.log, each stage's log/exit, result.json and driver.exit.json below the
+printed /mnt/lfs/sources/recovery/squashfs-native-* directory. Use
+python3 scripts/host/probe_native_squashfs.py collect PRINTED_FIXTURE to inspect
+that process/results. Never restart a live experiment because an observation
+expired. Preserve failed generations; a new start chooses a fresh directory.
+A successful experiment is not h10-squashfs-tools.success.json. The gated
+production package must still pass its own build/roundtrip and boot checks.

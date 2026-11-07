@@ -100,7 +100,8 @@ done < /proc/self/mountinfo
 
 # The fixed metadata file is inside the hash-verified image. Physical restore
 # runs in the new root before any Systemd service can observe stripped ACLs.
-chroot /newroot /usr/bin/setfacl -P --restore=/usr/share/toddy/live-root.acl
+chroot /newroot /bin/bash --noprofile --norc -s -- /usr/share/toddy/live-root.acl \
+ < /usr/lib/toddy/restore_live_acls.sh
 # Runtime-only condition for the two live getty instances. Never put this file
 # into the compressed root or an installed target (ADR-0058).
 printf '%s\n' "$expected_id" > /run/toddy/live-session
