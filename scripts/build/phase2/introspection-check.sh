@@ -6,7 +6,8 @@ set -euo pipefail
 g-ir-scanner --version | grep -F '1.86.0'
 g-ir-compiler --version | grep -F '1.86.0'
 [[ $(pkg-config --modversion gobject-introspection-1.0) == 1.86.0 ]]
-python3 -c 'from giscanner import _giscanner; assert _giscanner.__file__.startswith("/usr/lib/")'
+PYTHONPATH="$(pkg-config --variable=libdir gobject-introspection-1.0)/gobject-introspection" \
+    python3 -c 'from giscanner import _giscanner; assert _giscanner.__file__.startswith("/usr/lib/gobject-introspection/giscanner/")'
 test -z "$(dpkg --audit)"
 apt-get check
 NATIVE
