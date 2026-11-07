@@ -1470,3 +1470,15 @@ these preparations are not native acceptance. The source Calamares 3.4.3 archive
 contains Pybind11 2.11.1, so a minimal accepted-Python-3.14 embedding probe is
 prepared before committing to Qt compilation. No installer replacement or core
 Python upgrade is presumed. Node remains the sole healthy guest writer.
+
+
+## 2026-11-07 — Success-gated native Node handoff prepared
+
+Added a deterministic host driver which observes the existing Node build without
+another guest writer, accepts only actual exit zero with pinned source inputs,
+refuses any existing running/failed/success transaction marker, then runs the
+reviewed native Node package transaction once. Missing identity, timeout/window
+end, changed inputs and nonzero exit perform no handoff. The runner now records
+the optional Phase 2 source-lock hash without changing H recipes or evidence.
+make check passed 217 tests. Driver result alone is not milestone acceptance;
+actual package/marker/postconditions remain mandatory before further dispatch.
