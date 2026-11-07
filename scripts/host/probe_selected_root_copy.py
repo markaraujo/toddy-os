@@ -67,6 +67,8 @@ try:
  expected=module.snapshot(source,names)
  destination=base/'image';work=base/'copy-work'
  report=module.copy_selected(backend,source,destination,work,names)
+ assert json.loads((work/report['input_manifest']).read_text())==expected
+ assert digest(work/report['input_manifest'])==report['input_manifest_sha256']
  assert not (destination/'usr/share/example/omitted.txt').exists()
  assert not (destination/'omitted-tree').exists() and not (destination/'OPTION_EXECUTED').exists()
  assert not (source/'OPTION_EXECUTED').exists()

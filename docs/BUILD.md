@@ -310,7 +310,16 @@ Both destinations must be absent. This CLI owns build.lock; do not wrap it in
 run_step.py. It preserves each component report and a durable assembly journal
 outside the image. After H10 acceptance and H11's actual Python ownership
 transfer, refresh a separate release generation using --release and two new
-paths. Root assembly still requires generated/unowned/dependency, complete
-credential/license, compression/initramfs and actual boot checks. Current native
+paths. The prepared CLI checks owned/generated attribution; dependency closure,
+complete credential/license, compression/initramfs and actual boot checks remain
+required after root assembly. Current native
 probes verify component behavior and readiness refusal; full positive assembly
 has not run. Never change the gates to exercise it early.
+
+
+ADR-0073 adds a separate whole-tree attribution step to the prepared assembler.
+Keep the verified copy input-manifest.json, image-attribution-plan and comparison
+report together with the final image manifest. Every package/generated path must
+match its declared bytes, metadata and origin; unknown state is a failure. This
+also checks source xattrs and remaining hardlink groups. The comparison does not
+replace arbitrary-secret, dependency, license or actual boot acceptance.

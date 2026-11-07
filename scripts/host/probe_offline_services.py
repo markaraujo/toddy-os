@@ -7,8 +7,13 @@ import json
 import os
 import runpy
 import subprocess
+import sys
 
 os.chdir(Path(__file__).resolve().parents[2])
+sys.path.insert(0, 'scripts/build/h10')
+from image_attribution import SERVICE_LINKS, UNIT_PREFIX
+declared_links = {'/etc/systemd/system/' + name: UNIT_PREFIX + target if target else '/dev/null'
+                  for name, target in SERVICE_LINKS.items()}
 source = base64.b64encode(Path('scripts/build/h08/offline_services.py').read_bytes()).decode()
 auditor_code = base64.b64encode(Path('scripts/build/audit_unowned_files.py').read_bytes()).decode()
 policy = runpy.run_path('scripts/build/h08/stage_config.py')['FILES']['usr/lib/systemd/system-preset/50-toddy-base.preset']
@@ -45,6 +50,7 @@ try:
  old=backend.run('systemctl','--root=/'+str(image.relative_to(root)),'is-enabled','dbus.socket',capture_output=True,text=True)
  assert old.stdout.strip()=='static' and old.stdout.strip()!='enabled'
  report=module.configure_services(backend,image,Path('/var/log/toddy/packages'))
+ assert {name:row['symlink'] for name,row in report['generated_links'].items()}==DECLARED_LINKS
  after=configuration_snapshot(image/'etc/systemd/system')
  repeat=module.configure_services(backend,image,Path('/var/log/toddy/packages'))
  checked=module.configure_services(backend,image,Path('/var/log/toddy/packages'),check_only=True)
@@ -97,7 +103,8 @@ try:
  assert configuration_snapshot(root/'etc/systemd/system')==before
  assert module.digest(root/'var/lib/dpkg/status')==status_before
  print(json.dumps({'original_expected_enabled_would_fail':{'native_state':old.stdout.strip(),'expected_by_old_check':'enabled'},
-  'configured':report,'repeat_configure_same_links':True,'check_only_same_links':True,
+  'configured':report,'declared_image_links_match_native_enablement':True,
+  'repeat_configure_same_links':True,'check_only_same_links':True,
   'native_preset_all':{'exit':preset.returncode,'stdout':preset.stdout,'stderr':preset.stderr},
   'preset_policy_sha256':hashlib.sha256(PRESET_POLICY.encode()).hexdigest(),
   'native_vendor_preset_sha256':module.digest(image/'usr/lib/systemd/system-preset/90-systemd.preset'),
@@ -111,7 +118,7 @@ except BaseException:
  print('Preserved offline services fixture: '+str(base),flush=True)
  raise
 else:shutil.rmtree(base)
-'''.replace('SOURCE', repr(source)).replace('PRESET_POLICY', repr(policy)).replace('AUDITOR_CODE', repr(auditor_code))
+'''.replace('SOURCE', repr(source)).replace('PRESET_POLICY', repr(policy)).replace('AUDITOR_CODE', repr(auditor_code)).replace('DECLARED_LINKS', repr(declared_links))
 result = subprocess.run(['python3', 'scripts/host/vm.py', 'ssh',
     'source /opt/toddy-build/scripts/build/target.sh; guard_target && python3 -'],
     input=script, text=True, capture_output=True)

@@ -22,6 +22,7 @@ for directory in (HERE.parent, HERE.parent / 'h08', HERE.parent / 'h11', HERE):
 import acl_sidecar
 import copy_selected_root
 import fresh_directories
+import image_attribution
 import image_payload
 import info_index
 import live_accounts
@@ -113,9 +114,13 @@ def assemble(backend, image, work, *, release=False, repository=PROJECT,
             space = os.statvfs(work)
             if space.f_bavail * space.f_frsize < reserve:
                 raise ValueError('Insufficient space for fresh payload, retained Tar evidence and reserve')
-            step('copy-payload', lambda: copy_selected_root.copy_selected(
+            copied_report = step('copy-payload', lambda: copy_selected_root.copy_selected(
                 backend, root, image, work / 'copy', inventory['names'], records))
-            step('fresh-directories', lambda: fresh_directories.stage_directories(
+            copied_path = work / 'copy' / copied_report['input_manifest']
+            if digest(copied_path) != copied_report['input_manifest_sha256']:
+                raise ValueError('Preserved copy-input manifest differs')
+            copied = json.loads(copied_path.read_text())
+            fresh = step('fresh-directories', lambda: fresh_directories.stage_directories(
                 backend, image, inventory['fresh_directories'], baseline))
             step('native-database', lambda: package_database.stage_database(backend, image / 'var/lib/dpkg', records))
 
@@ -132,20 +137,40 @@ def assemble(backend, image, work, *, release=False, repository=PROJECT,
             if release:
                 step('remove-optional-qa', lambda: remove_image_qa.remove_image_qa(backend, image,
                     package_record('python'), package_record('python-test-support'), work / 'qa-removal.json'))
+            database_state = step('image-database-state', lambda: package_database.snapshot(image / 'var/lib/dpkg'))
             step('fresh-accounts', lambda: live_accounts.stage_accounts(image, baseline))
             step('live-configuration', lambda: live_configuration.stage_live_configuration(
                 backend, image, inventory['entries']['/etc/fstab']['sha256'],
                 live_configuration.DEFAULT_LINKS, records))
             step('offline-services', lambda: offline_services.configure_services(backend, image, records))
             step('live-console', lambda: live_console.stage_console(image))
-            step('loader-cache', lambda: loader_cache.generate_loader_cache(backend, image, inventory['entries']))
-            step('info-index', lambda: info_index.generate_info_index(backend, image, inventory['entries']))
-            step('acl-sidecar', lambda: acl_sidecar.stage_acl(backend, image, records))
+            cache_report = step('loader-cache', lambda: loader_cache.generate_loader_cache(backend, image, inventory['entries']))
+            info_report = step('info-index', lambda: info_index.generate_info_index(backend, image, inventory['entries']))
+            acl_report = step('acl-sidecar', lambda: acl_sidecar.stage_acl(backend, image, records))
             payload = step('owned-payload-audit', lambda: image_payload.audit(
                 backend, image, records, cache, live_profile=True))
             expected_packages = set(inventory['packages']) - ({'python-test-support'} if release else set())
             if not payload['owned_payload_check_passed'] or set(payload['package_names']) != expected_packages:
                 raise ValueError('Final native image payload or package set differs; preserve audit findings')
+            owned = {}
+            for name, sha in payload['record_sha256'].items():
+                path = Path(name)
+                if digest(path) != sha:
+                    raise ValueError('Native provenance changed before image attribution')
+                record = json.loads(path.read_text())
+                owned[record['name']] = record
+            plan = image_attribution.owned_plan(owned, copied)
+            image_attribution.declare_fresh(plan, fresh)
+            image_attribution.declare_database(plan, database_state)
+            image_attribution.declare_accounts(plan, baseline)
+            image_attribution.declare_live_profile(plan)
+            for kind, report in (('loader-cache', cache_report), ('info-index', info_report), ('acl-sidecar', acl_report)):
+                image_attribution.declare_artifact(plan, kind, report)
+            step('image-attribution-plan', lambda: plan)
+            attributed = step('image-attribution-audit', lambda: image_attribution.audit(
+                backend, image, plan, copied['hardlink_groups']))
+            if not attributed['attribution_check_passed']:
+                raise ValueError('Image contains missing, changed or undeclared state; preserve attribution report')
             if release:
                 markers = step('key-marker-review', lambda: review_image_key_markers.review(
                     backend, image, repository, records, cache))
@@ -159,7 +184,7 @@ def assemble(backend, image, work, *, release=False, repository=PROJECT,
                 raise ValueError('Source package/account generation changed during assembly')
             journal.update(assembled=True, finished=now(), configured_packages=payload['configured_packages'],
                 image_entries=len(manifest['entries']),
-                pending_acceptance=['unowned/generated state and dependency closure audits',
+                pending_acceptance=['dependency closure audit',
                     'complete credential/identity/license inspection', 'compression and initramfs assembly',
                     'actual BIOS/UEFI/virtual USB boot and live behavior'])
             atomic_json(journal_path, journal)

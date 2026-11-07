@@ -1310,3 +1310,14 @@ Fop008.219 (block 4/27), zero FAIL entries. Raw observation SHA-256:
 (.local/logs/h07-db-standard-progress-<sha256>.json). Independent root-assembly
 preparation and actual native payload-audit checks are recorded in ADR-0072;
 H07 remains 124/126 accepted packages, with no new milestone credit.
+
+
+2026-11-07 02:43 UTC — Original Berkeley driver 1364 is live in Recd001.h,
+now using recno after the earlier btree/rbtree recovery configurations (block
+25/27), with the same two failures. Corrected driver 1107192 is live in
+Fop010.98 (block 4/27), zero FAIL entries. Both retain their original process
+identities and lack terminal exits. Raw observation SHA-256:
+d8ed88b0566e2211c79feca478d2528c7f8f3f4de48d53ad1007a0e4a1bb2a36
+(.local/logs/h07-db-standard-progress-<sha256>.json). Independent image-state
+attribution checks are recorded in ADR-0073; no active inputs or installed
+package state changed, and H07 remains 124/126 accepted packages.

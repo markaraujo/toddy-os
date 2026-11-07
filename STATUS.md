@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 02:27 UTC
+Last verified: 2026-11-07 02:43 UTC
 
 Verified:
 
@@ -25,7 +25,7 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Corrected complete Berkeley DB suite: block 4/27, Fop008.219, zero FAIL lines; driver 1107192 live. Original known-failed attempt: block 25/27, Recd004 in the rbtree recovery configuration, two diagnosed failures; driver 1364 live. Production handoff and APT acquisition remain pending. Fresh-root orchestration is prepared; independent native image payload checks passed for 19,170 owned entries with ten corruption/refusal cases. Full root assembly remains gated and unexecuted.
+Running: Corrected complete Berkeley DB suite: block 4/27, Fop010.98, zero FAIL lines; driver 1107192 live. Original known-failed attempt: block 25/27, Recd001 in the recno recovery configuration, the same two failures; driver 1364 live. Production handoff and APT remain pending. Prepared root assembly now includes declared-state attribution; a private native root passed 19,214 entries and 686 hardlink groups with ten altered-state cases rejected. Full foundation image assembly remains gated and unexecuted.
 
 Remaining:
 

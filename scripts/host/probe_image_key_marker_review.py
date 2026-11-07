@@ -148,9 +148,61 @@ try:
  assert gate.returncode!=0 and 'H11 requires H10 completed and H11 in_progress' in gate.stderr
  cases.append({'case':'premature production CLI','exit':gate.returncode,'required_gate':'H10 completed and H11 in_progress'})
  final=check();assert final['raw_scan']['findings']==passed['raw_scan']['findings'] and final['private_key_marker_check_passed']
+ attribution_result=None
+ if ATTRIBUTION_AUDIT:
+  import copy,stat
+  import image_attribution as attribution
+  import copy_selected_root,live_accounts,package_database
+  copied=copy_selected_root.snapshot(image,copy_selected_root.tree_names(image))
+  own={}
+  for name in selected:
+   version,arch,_=installed[name]
+   own[name]=json.loads((Path('/var/log/toddy/packages')/f'{name}_{version}_{arch}.json').read_text())
+  plan=attribution.owned_plan(own,copied)
+  attribution.declare_database(plan,package_database.snapshot(db))
+  baseline=json.loads(base64.b64decode(ACCOUNT_BASELINE))
+  accounts=live_accounts.stage_accounts(image,baseline)
+  attribution.declare_accounts(plan,baseline)
+  def attributed():return attribution.audit(backend,image,plan,copied['hardlink_groups'])
+  positive=attributed();assert positive['attribution_check_passed'],positive
+  attribution_cases=[]
+  def attribution_failure(label):
+   result=attributed();assert not result['attribution_check_passed'],label
+   attribution_cases.append({'case':label,'result':result})
+  extra=image/'root/private-build-data';extra.write_text('Synthetic data must not enter the image.\n')
+  attribution_failure('undeclared build data');extra.unlink()
+  outside=base/'outside-sentinel';outside.write_text('Do not import this private fixture.\n')
+  link=image/'root/outside-alias';link.symlink_to(outside)
+  attribution_failure('undeclared outside symlink');link.unlink()
+  shadow=image/'etc/shadow';shadow_bytes=shadow.read_bytes()
+  shadow.write_bytes(shadow_bytes.replace(b'root:!',b'root:',1));attribution_failure('changed locked account state');shadow.write_bytes(shadow_bytes)
+  shadow.chmod(0o644);attribution_failure('changed account permissions');shadow.chmod(0o600)
+  os.setxattr(shadow,'user.toddy-probe',b'not-a-secret');attribution_failure('undeclared account extended attribute');os.removexattr(shadow,'user.toddy-probe')
+  identity=image/'etc/machine-id';identity.write_text('1'*32+'\n');attribution_failure('inherited machine identity');identity.write_bytes(b'')
+  status_bytes=(db/'status').read_bytes();(db/'status').write_bytes(status_bytes+b'\n');attribution_failure('changed generated native database');(db/'status').write_bytes(status_bytes)
+  pairs=[group for group in copied['hardlink_groups'] if stat.S_ISREG((image/group[0]).lstat().st_mode)]
+  assert pairs,'Real native package fixture lacks a hardlink group; revise fixture, not the assertion'
+  name,peer=pairs[0][:2];path=image/name;other=image/peer;held=base/'split-hardlink'
+  shutil.copy2(path,held);path.unlink();shutil.copy2(held,path)
+  attribution_failure('split native hardlink group');path.unlink();os.link(other,path);held.unlink()
+  fifo=image/'root/unreviewed-fifo';os.mkfifo(fifo,0o600)
+  try:attributed()
+  except ValueError as error:attribution_cases.append({'case':'special image node','reason':str(error)})
+  else:raise AssertionError('Special image node accepted')
+  fifo.unlink()
+  try:attribution.add(copy.deepcopy(plan),'../outside',attribution.directory(),'invalid-fixture')
+  except ValueError as error:attribution_cases.append({'case':'traversal declaration','reason':str(error)})
+  else:raise AssertionError('Traversal declaration accepted')
+  restored_attribution=attributed();assert restored_attribution['attribution_check_passed'],restored_attribution
+  attribution_result={'positive':positive,'negative_cases':attribution_cases,'fresh_accounts':accounts,
+    'restored_attribution_passed':True,'source_hardlink_groups':len(copied['hardlink_groups']),
+    'component_sha256':digest(base/'image_attribution.py'),
+    'scope':'Actual eleven-package private root, native database and generated account state only',
+    'complete_foundation_profile_verified':False,'release_image_or_boot_accepted':False}
  assert digest(root/'var/lib/dpkg/status')==before
  result={'fixture':str(base),'configured_packages':sorted(selected),'positive':passed,'negative_cases':cases,
   'payload_audit':payload_result,
+  'attribution_audit':attribution_result,
   'native_install_log':(base/'native-install.log').read_text(),
   'native_install_log_sha256':digest(base/'native-install.log'),'builder_status_sha256':before,
   'installed_target_modified':False,'component_sha256':digest(base/'review_image_key_markers.py'),
@@ -167,14 +219,22 @@ except BaseException:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--payload', action='store_true', help='Also verify owned image payload and native metadata against real corruption cases')
+    parser.add_argument('--attribution', action='store_true', help='Also verify declared image entries, account data and extended metadata')
     options = parser.parse_args()
+    if options.attribution:
+        options.payload = True
     sources = dict(SOURCES)
     if options.payload:
         for name in ('image_payload.py', 'fresh_directories.py', 'live_accounts.py',
                      'live_configuration.py', 'root_inventory.py', 'package_database.py'):
             sources[name] = base64.b64encode((ROOT / 'scripts/build/h10' / name).read_bytes()).decode()
+    if options.attribution:
+        for name in ('image_attribution.py', 'copy_selected_root.py', 'live_console.py'):
+            sources[name] = base64.b64encode((ROOT / 'scripts/build/h10' / name).read_bytes()).decode()
+    baseline = base64.b64encode((ROOT / 'config/live-account-baseline.json').read_bytes()).decode()
     result = subprocess.run(ssh_args() + ['python3 -B -'],
-        input='SOURCES=' + repr(sources) + '\nPAYLOAD_AUDIT=' + repr(options.payload) + '\n' + REMOTE,
+        input='SOURCES=' + repr(sources) + '\nPAYLOAD_AUDIT=' + repr(options.payload)
+            + '\nATTRIBUTION_AUDIT=' + repr(options.attribution) + '\nACCOUNT_BASELINE=' + repr(baseline) + '\n' + REMOTE,
         text=True, capture_output=True, timeout=600)
     raw = (result.stdout + result.stderr).encode()
     sha = hashlib.sha256(raw).hexdigest()
@@ -190,6 +250,7 @@ def main():
         'qualified_examples': len(report['positive']['qualified_document_examples']),
         'negative_cases': len(report['negative_cases']), 'real_private_key_rejected': report['real_private_key_rejected'],
         'payload_negative_cases': len(report['payload_audit']['negative_cases']) if report['payload_audit'] else None,
+        'attribution_negative_cases': len(report['attribution_audit']['negative_cases']) if report['attribution_audit'] else None,
         'whole_image_credential_audit_accepted': False}))
 
 

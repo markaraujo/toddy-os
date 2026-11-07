@@ -111,3 +111,8 @@ d5ea9f132deec8030b50ab2a02ade2b49f0c7a195805a302c8301156fe833a57.
 The Dpkg manual distinguishes metadata integrity from security purposes.
 The live fstab/root-home changes remain the previously documented extensions;
 no physical disk or installed-host configuration is touched.
+
+
+ADR-0073 subsequently adds explicit generated-state attribution and full physical
+namespace comparison inside this prepared orchestrator. Its partial native
+component checks pass; complete positive foundation assembly remains pending.

@@ -100,6 +100,14 @@ def copy_selected(backend, source, destination, work, names, records=Path('/var/
         raise ValueError('Unexpected native Tar version')
     work.mkdir(mode=0o700)
     destination.mkdir(mode=0o700)
+    # Preserve the already inspected source generation, including ACL/xattr
+    # hashes, so final image attribution need not trust a later source read.
+    input_manifest = work / 'input-manifest.json'
+    with input_manifest.open('x') as stream:
+        json.dump(expected, stream, indent=2, sort_keys=True)
+        stream.write('\n')
+        stream.flush()
+        os.fsync(stream.fileno())
     listing = b'\0'.join(os.fsencode(name) for name in names) + b'\0'
     (work / 'selected-paths.nul').write_bytes(listing)
     def virtual(path):
@@ -126,6 +134,7 @@ def copy_selected(backend, source, destination, work, names, records=Path('/var/
     report = {'entries': len(names), 'regular_files': sum('sha256' in row for row in expected['entries'].values()),
               'hardlink_groups': expected['hardlink_groups'], 'exact_inventory_and_metadata': True,
               'archive_sha256': digest(archive), 'inventory_sha256': hashlib.sha256(listing).hexdigest(),
+              'input_manifest': input_manifest.name, 'input_manifest_sha256': digest(input_manifest),
               'native_tar': {'version': tool_version, 'sha256': digest(executable),
                              'own_archive_sha256': record['archive_sha256']},
               'root_image_or_boot_verified': False}

@@ -1094,3 +1094,13 @@ Private reproduction: python3 scripts/host/probe_root_assembly_preflight.py.
 This diagnostic expects today's incomplete H07 state and must be revised after
 real closure, not used as a permanent positive production test. Independent
 payload checks: python3 scripts/host/probe_image_key_marker_review.py --payload.
+
+
+For an image-attribution failure (ADR-0073), inspect missing, unknown, changed
+and hardlink_groups_match in the separate report. Compare the declaration plan
+with its named package/generator and preserved copy input manifest. Do not add
+an observed unexpected file to the plan to force acceptance, delete unknown
+state from a failed generation, or disable xattr/hardlink checks. Diagnose its
+producer, correct the implementation and assemble a new generation. The native
+component probe is python3 scripts/host/probe_image_key_marker_review.py --attribution;
+its full-profile assembly/boot fields deliberately remain false.

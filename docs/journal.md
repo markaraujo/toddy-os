@@ -510,3 +510,12 @@ Both premature production profiles and six unsafe output layouts were refused.
 Actual source readiness preserved its failed journal at the known H07 Info-index
 obligation; no complete image or later milestone was accepted. Installed source
 state and the two running Berkeley suites were left unchanged.
+
+
+2026-11-07 — Added explicit image-state attribution to the prepared assembler
+(ADR-0073). An actual eleven-package private root with fresh accounts passed
+all 19,214 path declarations and 686 native hardlink groups. Ten altered-state
+cases failed as expected; existing payload and marker checks still pass. Native
+Tar input-manifest preservation and the fifteen declared Systemd links were
+independently verified. Full assembly readiness remains correctly refused by
+unfinished H07 metadata; no later milestone or boot acceptance was granted.
