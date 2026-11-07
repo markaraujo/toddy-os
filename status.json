@@ -477,14 +477,14 @@
   ],
   "active_work": {
     "story": "H07",
-    "verified_at": "2026-11-07 09:40 UTC",
+    "verified_at": "2026-11-07 09:50 UTC",
     "verified": [
       "124 of 126 currently planned H07 packages installed, configured and accepted; 2 pending (Berkeley DB and APT). All 124 have own-build/source provenance.",
       "Compiler/libc/binutils suites classified with preserved evidence; required native-kernel follow-ups remain open.",
       "Full ACL retest, API/layout ownership and native configuration correction passed.",
       "Verified paired cold checkpoint at the 124-package boundary."
     ],
-    "running": "Corrected Berkeley driver 1107192 is live in replication, block 23/27, Rep036.c, zero FAIL entries and no terminal exits. Independent native review reproduced the original summary, retained its two real failures and confirmed the exact coverage witness against all 10,208 inputs. Premature full review/production nomination correctly refuse the live run (ADR-0084). Complete corrected review, protected custody and diagnostic qualification remain pending; H07 stays 124/126 and APT is gated.",
+    "running": "Corrected Berkeley driver 1107192 is live in replication, block 23/27, Rep061.a, zero FAIL entries and no terminal exits. Independent private Linux 7.1.8 compilation is running with native GCC 16.2.0 and two jobs after source/configuration checks passed (ADR-0085); no kernel package or boot is accepted. Complete database review, protected custody and diagnostic qualification remain pending; H07 stays 124/126 and APT is gated.",
     "remaining": [
       "Finish the complete corrected database run and review every terminal assertion/diagnostic against the source and completed native coverage evidence; preserve raw failures. Resolve the strict-summary handoff before production install and transaction/reopen postchecks.",
       "Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.",

@@ -126,11 +126,12 @@ The final-base driver still requires accepted BDB/APT and skips only actual
 existing success markers; no acceptance prerequisite is waived.
 
 
-H09 preparation (ADR-0046) is source/configuration work only. Do not dispatch
-its kernel recipe until H08 is accepted and synchronized status marks H09
-in_progress. Its source-symbol/gate probes are not a resolved configuration,
-compiled kernel or actual boot. Kernel artifacts alone cannot complete H09;
-bootloader/early-boot evidence and remaining native-kernel obligations still apply.
+H09's production kernel recipe remains gated on H08 acceptance and synchronized
+H09 in_progress status. ADR-0046's private native configuration passed; ADR-0085
+extends preparation to an isolated native compilation with private module
+staging, separate from the final package recipe. Collect actual terminal exits
+before claiming build success. Private artifacts do not accept H09; production
+ownership, bootloader/early-boot evidence and native-kernel obligations remain.
 
 
 The optional active_work record in status.json publishes verified facts, current

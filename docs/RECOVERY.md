@@ -1260,3 +1260,39 @@ assertions and unknown diagnostics; new output requires new diagnosis. Complete
 positive review and any source-qualified production handoff remain pending.
 The existing strict success gate must not be bypassed by manually creating a
 candidate, rewriting its result or changing recorded exits.
+
+
+## Private native kernel compilation (ADR-0085)
+
+The independent experiment is `/mnt/lfs/sources/recovery/kernel-native-dn1rodsa`
+in the disposable builder; initial driver PID 3871397. It does not own the
+production build dispatcher and must not be mistaken for an H09 package build.
+Do not reboot the builder or modify/synchronize the active Berkeley inputs.
+
+```sh
+python3 scripts/host/probe_native_kernel.py collect /mnt/lfs/sources/recovery/kernel-native-dn1rodsa
+```
+
+Inspect the actual driver and stage processes, attempt logs/exits, completed
+stage records and result.json. Live source/configuration/build output is not
+terminal success. Initial source/configuration stages passed; compilation was
+still running at the recorded checkpoint. Each stage has a durable log and
+actual exit; a terminal successful result must also have driver exit zero.
+
+After a genuine terminal failure, diagnose its attempt/error.json and stage
+log. If the correction leaves frozen input/compiler bytes unchanged, resume
+that exact generation without clearing source/configuration/build checkpoints:
+
+```sh
+python3 scripts/host/probe_native_kernel.py resume /mnt/lfs/sources/recovery/kernel-native-dn1rodsa
+```
+
+This refuses a live supervisor or still-existing detached stage child. Do not
+restart merely because SSH timed out or a supervisor disappeared. If extraction
+is partial, or inputs/native package state changed, preserve the fixture and
+review before choosing a fresh generation. Do not rewrite completion records,
+change input hashes to match modified files, or call mrproper on a completed
+build just to retry collection. A fresh independent experiment can be launched
+with `python3 scripts/host/probe_native_kernel.py start` only after earlier
+processes are terminal; all old logs remain. This command does not install a
+kernel or accept any milestone. The production recipe still requires H08.

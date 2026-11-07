@@ -628,3 +628,21 @@ inputs and passed sixteen rejection cases. Original-history validation now
 pins the actual diagnosed terminal reports. Corrected suite advances through
 Rep036 in 23/27 with zero FAIL. Full review/qualification and installation remain
 pending; strict success semantics and all raw exits remain unchanged.
+
+
+### 2026-11-07 — Private native kernel compilation started
+
+The preceding status turn was a verified wait: corrected Berkeley PID 1107192
+was live in replication at Rep041, zero FAIL, no terminal exits. CI and Pages
+for 5849afe passed; exact published HTML matched SHA-256
+d92496988b1172eebd50e6e15ee510d9599f504aeb988ea83833995d65de57ad.
+
+Read the frozen LFS 13.1-systemd section 10.3 and extended private kernel
+preparation into a durable native build (ADR-0085). Actual free resources
+supported two make jobs. Fresh extraction/configuration passed with native GCC
+16.2.0 and release 7.1.8-toddy; object compilation is running. Native duplicate
+start/resume refusals passed. No shared build-input synchronization, installed
+package mutation, boot sector operation or builder reboot was performed.
+
+At 09:50 UTC the database suite was still live at Rep061.a, replication 23/27,
+zero FAIL. H07 remains 124/126; final kernel packaging and boot remain gated.
