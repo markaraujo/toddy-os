@@ -274,7 +274,8 @@
       "acceptance": [
         "Record pinned GNOME/native UI/Pi engine candidates, a minimal successful tool spike and license/runtime review; no mandatory proprietary or hosted runtime.",
         "Define the minimal default application set, optional developer tools and compatible third-party driver/firmware sources without enabling Ubuntu repositories.",
-        "Record reference hardware/VM settings, measured baseline and numeric budgets with a small-commit execution checklist."
+        "Record reference hardware/VM settings, measured baseline and numeric budgets with a small-commit execution checklist.",
+        "Document the customizable profile/config/skill interface, precedence, task revision and independent policy boundaries before UI/service implementation."
       ],
       "evidence": []
     },
@@ -342,7 +343,8 @@
       "acceptance": [
         "Tasks survive a service restart without duplicating a known side effect; uncertain outcomes wait for review and retries remain bounded.",
         "Stop prevents queued/new actions and terminates or reports active managed processes; revoke immediately blocks new privileged dispatch.",
-        "One configuration rollback restores service operation, preserves a manual rescue path and reports drift without fighting user intent."
+        "One configuration rollback restores service operation, preserves a manual rescue path and reports drift without fighting user intent.",
+        "Invalid profile configuration preserves the working revision; one rollback and task-revision pinning check pass without unexpected replay."
       ],
       "evidence": []
     },
@@ -360,7 +362,8 @@
       "acceptance": [
         "Shortcut/launcher opens focused native entry; conversation, real task progress, history, errors and Stop work through desktop and CLI/TUI.",
         "API/local/later setup works per user with protected credentials; deferred setup leaves the OS usable and local mode never silently changes provider.",
-        "Basic keyboard/focus, EN/PT copy and Stop smoke pass; publish an honestly labeled interim text preview rather than claiming G2."
+        "Basic keyboard/focus, EN/PT copy and Stop smoke pass; publish an honestly labeled interim text preview rather than claiming G2.",
+        "The user can customize the harness through profiles/settings, reject invalid changes, restore a revision and export/import without credentials or administrative grants."
       ],
       "evidence": []
     },
@@ -377,7 +380,8 @@
       "acceptance": [
         "Store, retrieve with source, correct and delete a preference with per-user isolation and retention controls.",
         "Export/restore preserves canonical data and deletion reaches FTS/any derived index; secrets are excluded.",
-        "Record latency on the small fixed fixture; SQLite/FTS is sufficient for the preview and no vector daemon is mandatory."
+        "Record latency on the small fixed fixture; SQLite/FTS is sufficient for the preview and no vector daemon is mandatory.",
+        "Two profiles keep memory isolated; explicit memory export/delete and editable user preferences stay consistent with canonical storage."
       ],
       "evidence": []
     },
@@ -430,7 +434,8 @@
       "acceptance": [
         "Versioned plugin schemas and one actual local MCP integration work end to end with timeouts and separate credentials.",
         "Removal/revocation blocks further calls; plugin discovery/install/update grants no implicit account access or administrative privileges.",
-        "One focused capability-denial and isolation check passes; optional external connectors are honestly unverified or disabled."
+        "One focused capability-denial and isolation check passes; optional external connectors are honestly unverified or disabled.",
+        "One user skill loads only when relevant; unknown code/hooks stay disabled and skill instructions cannot override executor policy."
       ],
       "evidence": []
     },
@@ -498,7 +503,8 @@
       "acceptance": [
         "The exact installed release candidate passes the focused mandatory smoke matrix, with no unexplained critical safety or basic-function failure.",
         "Deliver ISO/checksums/source-build-license inventory, recovery instructions and a concise owner guide with passed/failed/deferred/not-run evidence and test durations when measured.",
-        "Broader hardware/model/accessibility/soak validation is explicitly delegated to owner-use backlog; VM-only and experimental status are truthful and no deferred test is marked passed."
+        "Broader hardware/model/accessibility/soak validation is explicitly delegated to owner-use backlog; VM-only and experimental status are truthful and no deferred test is marked passed.",
+        "The installed preview supports a working customizable default harness, safe profile changes/restore and no imported privilege grant under S24."
       ],
       "evidence": []
     }

@@ -156,6 +156,19 @@ and separately evaluated model/voice licenses. No mandatory always-listening.
 Toddy is an affectionate, needy, witty nerdy Shih-tzu; humor must not obscure
 warnings, permissions, uncertainty or real task outcomes.
 
+### FR-09a User-customizable harness
+
+Provide independent named profiles, editable SOUL.md/IDENTITY.md/USER.md/task
+instructions, validated versioned configuration and on-demand SKILL.md bundles
+inspired by Hermes/OpenClaw. Users can customize persona, model/provider, enabled
+tools, skills, memory, workflows and execution budgets without rebuilding the OS.
+Ship a working Toddy default with settings/CLI controls, secret-free import/export,
+atomic apply, previous-revision restore and broken-profile recovery. Pin profile
+revisions per task. Extensions use isolated versioned plugin processes; imported
+instructions/config cannot grant root or bypass credential/Stop policy. See
+[the harness contract](docs/PHASE-2-HARNESS.md) and ADR-0106. Full external ecosystem
+compatibility and a visual workflow builder are not preview requirements.
+
 ### FR-10 Native tools and bounded plugins
 
 Start with native file, shell, package, service and browser integration. Use

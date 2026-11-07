@@ -10,7 +10,8 @@ Phase 2 has been replaced by [PHASE-2-PLAN.md](PHASE-2-PLAN.md),
 [PHASE-2-VALIDATION.md](PHASE-2-VALIDATION.md) and revised B01-B13 stories.
 [ADR-0105](adr/0105-toddy-assistant-and-owner-preview.md) records the native Toddy
 assistant, basic-test owner-preview policy and third-party driver/app choices.
-The owner additionally requested humorous realistic GNOME installer scenes,
+The owner additionally requires user-customizable harness profiles/skills following
+Hermes/OpenClaw patterns (docs/PHASE-2-HARNESS.md and ADR-0106), plus humorous realistic GNOME installer scenes,
 small traceable commits and a navy public-page redesign preserving the exact logo.
 
 Finish and report planning/brand/page work before provisioning the Phase 2 guest.

@@ -17,6 +17,8 @@ Current Phase 2 choices follow [the replanned execution contract](PHASE-2-PLAN.m
 | D11 | Performance budgets | Establish measured acceptance budgets on the chosen target | B01 | Idle RAM/CPU, boot, agent/tool/search workload baselines |
 | D12 | Production artwork | Navy environment palette; exact logo/mascot unchanged; realistic GNOME installer scenes and nerdy dog copy | B11 | Asset provenance, real versus concept labels, readable light/dark/focus states and actual guest captures |
 
+| D13 | User-customizable harness | Accepted: Hermes/OpenClaw-inspired profiles/persona/skills; own validated schema and independent policy, ADR-0106 | B01/B06/B10 | Pin contract; atomic revision/restore, secret-free import/export, profile isolation and S24 |
+
 The whole-system license is a collection of component licenses, not the repository's proposed custom-code license. APIs can be optional without making the open local path dependent on them. This planning baseline deliberately does not claim universal Ubuntu binary compatibility.
 
 Release security obligation: assess and freeze tested fixes for baseline advisories before final release (ADR-0007); H02 integrity success is not security approval.

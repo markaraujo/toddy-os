@@ -57,7 +57,8 @@ coverage. This policy changes Phase 2 acceptance, not historical G1 evidence.
 | S20 | B12 | One representative optional app install/launch/remove path per advertised supported app; unsupported candidates clearly unavailable |
 | S21 | B12 | Install/remove/upgrade a native package preserving config; invalid signature/conflict rejected; one controlled failed update restored and boots |
 | S22 | B12/B13 | Third-party selection uses device fixtures and a reviewed package transaction; previous kernel/text rescue remains available; hardware status is explicit |
-| S23 | B13 | Exact final image: boot/live networking, installed basic desktop plus text-agent task and applicable S05-S22 scenarios; hashes/license inventory match |
+| S23 | B13 | Exact final image: boot/live networking, installed basic desktop plus text-agent task and applicable S05-S22/S24 scenarios; hashes/license inventory match |
+| S24 | B05/B06/B07/B10 | Edit profile persona/model/tools, reject invalid config, restore revision, switch without memory bleed, export/import without secrets/grants and reject path traversal; skill loads on demand and cannot grant privilege |
 
 Audio/device fixtures cannot substitute for actual audio if sound is advertised
 as verified. Headless speech tests may verify the engine while microphone/device

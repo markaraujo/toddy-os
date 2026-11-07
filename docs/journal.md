@@ -1004,3 +1004,13 @@ UI concept and public Pages redesign; original logo and G1 artifact are preserve
 Planning checkpoint: make dashboard, planning/link/dependency checks and all 184
 existing repository unit checks passed (0.172 seconds as reported by unittest).
 See docs/evidence/phase2-replanning.md. No OS build or hardware claim is involved.
+
+
+## 2026-11-07 — User-customizable harness added before implementation
+
+The owner requires a customizable harness and asked for Hermes/OpenClaw patterns.
+Reviewed their official profile/workspace/skill/memory documentation; added the
+Toddy profile/persona/config/skill contract, per-profile state, atomic revision and
+restore, secret-free import/export and independent permission boundaries. Updated
+B01/B03-B08/B10/B13 acceptance together with status.json; S24 remains one focused
+fixture sequence rather than a large ecosystem test program. No runtime started.

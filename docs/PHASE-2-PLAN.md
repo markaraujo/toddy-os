@@ -56,6 +56,17 @@ not open a network control listener for the first release. Separate UI/engine
 interfaces so a future engine replacement does not replace policy or stored data.
 Use OS-supported session activation and an independently protected executor.
 
+## 2.1 User-customizable harness
+
+The assistant harness is user-customizable from its first usable preview, following
+Hermes/OpenClaw profile, persona-file and on-demand skill patterns. Read the full
+[PHASE-2-HARNESS.md](PHASE-2-HARNESS.md) contract: editable persona/instructions,
+provider/tool selection, per-profile memory/workflows, budgets, validated config,
+secret-free import/export, revisions, rollback and recovery mode. Customization
+must not grant privileges or inject arbitrary code into GNOME/the root executor.
+B01 freezes these contracts before the UI/service schemas harden. This is a core
+requirement, not a cosmetic future settings panel.
+
 ## 3. User experience
 
 ### 3.1 Quick access and main application
