@@ -612,3 +612,10 @@ formatting from real failures/coverage warnings without editing the sources or
 reports. Corrected suite is live at replication 23/27 with zero FAIL entries,
 but its shared formatting defect also needs resolution before strict acceptance.
 Published the newly discovered blocker; no acceptance condition was relaxed.
+
+2026-11-07 09:29 UTC — Completed native log-coverage/recovery diagnosis
+(ADR-0083): actual exits 0/0, all ten warning-named record types observed,
+unmodified original test assertions plus real disk and named-memory recovery
+comparisons passed. Corrected and retained diagnostic setup failures rather
+than suppressing assertions. Full corrected standard run remains active and
+unaccepted; no production gate or raw exit was changed.

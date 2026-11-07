@@ -1469,3 +1469,18 @@ zero FAIL entries and no terminal exits. Raw progress observation SHA-256:
 f94a65c5895842071e52915245bf2556f00bec285bbb44905399b9dbb4a89573.
 H07 remains 124/126; source/coverage corrections, complete terminal review,
 production postchecks, APT and final ownership/audit closure remain pending.
+
+### Native recovery-coverage diagnosis completed — 2026-11-07 09:29 UTC
+
+The separate ADR-0083 experiment passed with actual test/driver exits 0/0.
+All ten warning-named log types were observed through native db_printlog after
+unmodified hash-recovery, named-memory, 80,000-entry deep-tree and 10,000-entry
+hash-compaction tests. Disk data compared equal across actual recovery; committed
+named-memory data survived recovery/reopen using the documented retained
+environment mode. Commit/abort behavior and source/input stability also passed.
+
+Report SHA-256: b2730bcd16ec81fb3d228c20afdeef5dd32d4f0fd9b7091416f1a273e5afd5af.
+The fixture is /mnt/lfs/sources/recovery/db-standard-coverage-0_05jaht.
+This resolves the question of whether those types can actually be exercised;
+it does not accept the still-running complete standard suite. No acceptance
+gate, source input, terminal exit or failed original output was rewritten.

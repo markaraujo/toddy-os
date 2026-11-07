@@ -1229,3 +1229,12 @@ never remove lines, flip exits, accept zero FAIL alone or weaken the strict gate
 Corrected driver 1107192 remains active with immutable inputs. Do not sync or
 modify those inputs. Finish diagnostic work independently, then inspect its
 actual complete result before selecting a reviewed correction/handoff strategy.
+
+Recovery-coverage diagnostic (ADR-0083): the completed passing fixture is
+/sources/recovery/db-standard-coverage-0_05jaht (prepend /mnt/lfs outside chroot).
+Use `probe_bdb_recovery_coverage.py --collect PRINTED_FIXTURE` to recheck terminal
+exits, source hashes and raw reports without launching work. Its result is
+explicitly not full-suite/package acceptance. The earlier failed diagnostic
+fixtures are retained. Launch without --collect only for a deliberate new
+experiment after reviewing its current source and all previous terminal states;
+no new full run_std is dispatched by this probe.

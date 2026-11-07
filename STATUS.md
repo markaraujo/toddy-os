@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 38% phase total counts completed stories only. H07 is still in progress; its 24 points are not yet counted. Passing this story would raise the phase total to 62%.
 
-Last verified: 2026-11-07 09:20 UTC
+Last verified: 2026-11-07 09:29 UTC
 
 Verified:
 
@@ -25,11 +25,11 @@ Verified:
 - Full ACL retest, API/layout ownership and native configuration correction passed.
 - Verified paired cold checkpoint at the 124-package boundary.
 
-Running: Corrected Berkeley driver 1107192 is live in replication, block 23/27, Rep002, with zero FAIL entries so far. Original driver 1364 terminated with exit 1 at 09:10 UTC and zero installed changes. Its 25 unexpected-output lines comprise two known failures, thirteen Test142 informational-format rejections and ten uncovered recovery-record warnings. Native Tcl reproduced the formatting defect; the corrected run already contains that same message. Strict acceptance therefore needs diagnostic resolution even if no assertion fails. Sources, exits and acceptance gates remain unchanged. H07 stays 124/126; APT and final closure remain pending.
+Running: Corrected Berkeley driver 1107192 remains live in replication, block 23/27, Rep016, with zero FAIL entries so far. Original driver 1364 terminated exit 1 with zero installed changes. Its additional diagnostics were classified: Test142 informational spacing fails the output filter; ten recovery-coverage warnings come from a limited tracker. A separate native diagnostic now passes 0/0 with all ten types observed and actual recovery/data comparisons (ADR-0083). Full corrected terminal review and strict-summary resolution still precede production acceptance; H07 remains 124/126 and APT is gated.
 
 Remaining:
 
-- Finish the complete corrected database run and resolve its output-classifier defect and recovery-coverage diagnostics with source-backed tests; preserve raw failures. Production install and transaction/reopen postchecks still precede APT.
+- Finish the complete corrected database run and review every terminal assertion/diagnostic against the source and completed native coverage evidence; preserve raw failures. Resolve the strict-summary handoff before production install and transaction/reopen postchecks.
 - Build/test APT with signed-repository and HTTPS failure/recovery checks; apply the owned Python command alias.
 - Quarantine 931 reviewed bootstrap paths, close metadata for all 126 planned packages and pass seven final audits plus Dpkg/APT consistency checks.
 - Save final H07 evidence and a verified paired cold checkpoint of both VM disks before accepting the story.

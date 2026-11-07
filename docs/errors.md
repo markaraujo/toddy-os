@@ -824,3 +824,11 @@ strict-summary blocker. The ten warnings also need coverage analysis, not a
 blanket allowance. The live corrected run remains useful for collecting the
 complete actual assertions, and must not be restarted or presented as passed.
 See the latest H07 evidence for exact source locations, hashes and next checks.
+
+The separate recovery-coverage experiment now passes with all ten actual log
+types and real recovery/data comparisons (ADR-0083). Its initial failures were
+diagnosed and preserved: Tcl global env-array collision, default lock/cache
+capacity, standalone recovery's private environment and the final hash subcase's
+actual filename. Corrections preserve the original test bodies and comparisons.
+The complete standard suite and strict-summary resolution remain pending;
+a successful focused diagnostic alone does not install or accept the library.
