@@ -28,9 +28,14 @@ set -euo pipefail
 # The outer unshare parent retains the flock. Never expose its writable lock FD
 # to source/compiler processes, which could otherwise write/unlock it.
 exec 9>&-
+[[ $$ == 1 ]] || { echo 'Private PID namespace init required' >&2; exit 70; }
 mount --make-rprivate /
 root=$(mktemp -d /run/toddy-build-root.XXXXXX)
-trap 'result=$?; cd /; umount -R "$root"; rmdir "$root"; exit "$result"' EXIT
+# A session daemon can still be closing descriptors after its launcher returns.
+# Detach this private tree; PID-namespace init exit terminates remaining children,
+# then the outer unshare parent exits and releases all namespace references/lock.
+# This sandbox cannot access package databases or writable system payloads.
+trap 'result=$?; cd /; umount -R --lazy "$root"; rmdir "$root"; exit "$result"' EXIT
 mount -t tmpfs -o size=16m,nosuid,nodev tmpfs "$root"
 mkdir -p "$root"/{usr,etc,lib64,src,build,stage,tmp,proc,dev,run}
 ln -s usr/bin "$root/bin"

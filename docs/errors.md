@@ -1102,3 +1102,14 @@ namespace child while retaining the outer parent's lock; actual barrier/FD/path/
 network/compile probe passed after one correction. Original build receipt hashes
 remain historical, not new-harness optimized cache proof. Full-root native
 transactions remain enabled. Native Pi's 11 cases and JS framing passed afterward.
+
+
+## 2026-11-07 — GIO bridge namespace teardown
+
+All native bridge body assertions passed, but whole command exited32 because
+session D-Bus still held /dev/null at immediate unmount. This remained failed.
+Require private PID namespace init1 and lazy-detach only the private mount tree;
+init exit terminates children and outer unshare releases namespace/lock references.
+Rechecked inherited FDs/parent lock/path/network/C fixture and affected GIO bridge:
+all exit0; actual namespace process count0 afterward. No package write runs in
+this compile namespace; no native transaction was killed or replayed.

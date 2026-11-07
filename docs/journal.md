@@ -1493,3 +1493,14 @@ Native Pi 1.5.0: 11 cases passed, 0.643 s, peak child RSS 65,912 KiB; JS framing
 also passed. Fixed an inherited writable lock FD gap; actual native FD/path/
 network/compile and parent-lock barrier proof passed. No optimized transaction
 path enabled. Next: native GI/PyGObject/async bridge, then installer no-write spike.
+
+
+## 2026-11-07 — GLib typelibs and native GIO bridge staged
+
+Installed GLib-owned metadata with unchanged core library bytes, reusing fourteen
+checks. PyGObject compiled/staged and actual GIO async/peer/signal/FD boundary
+fixture passed. Fixed a session-daemon teardown race after preserving whole-command
+exit32; rechecked FD/parent-lock isolation, bridge and actual process cleanup:
+exit0/no namespace processes. GTK/Cairo/native desktop not yet tested.
+Next: install owned PyGObject package, repeat affected installed binding fixture,
+then Calamares/Python no-write compatibility probe. make check217 passed.

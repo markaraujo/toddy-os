@@ -1,0 +1,26 @@
+{
+  "unchanged_core_libraries": true,
+  "before": {
+    "libgio-2.0.so.0.8800.3": "278e15678ebaae14bb8e34c45bad4e5adafec8b2180392854294d91d56e88cc6",
+    "libgirepository-2.0.so.0.8800.3": "77d53ac78f18fdab598eb4168c1c1c99f2cc96b0ffb47d952d4b49eb3c874847",
+    "libglib-2.0.so.0.8800.3": "82ccd3f3d61455787db9f2f738f8258481be86847cdde1528b6088818e1c9457",
+    "libgmodule-2.0.so.0.8800.3": "29781f636be5f0572bf70d1e640f0c46d7923e1d119047d2b86523b7c6fd7218",
+    "libgobject-2.0.so.0.8800.3": "78c9429d8808c43da9311ce38c41d7408f9cbaccc40cef9a115fc14eb2c36929",
+    "libgthread-2.0.so.0.8800.3": "65f84dd127852c61fa54a02302ed3de824286a0c33d559b859b356d8e05e0038"
+  },
+  "after": {
+    "libglib-2.0.so.0.8800.3": "82ccd3f3d61455787db9f2f738f8258481be86847cdde1528b6088818e1c9457",
+    "libgio-2.0.so.0.8800.3": "278e15678ebaae14bb8e34c45bad4e5adafec8b2180392854294d91d56e88cc6",
+    "libgmodule-2.0.so.0.8800.3": "29781f636be5f0572bf70d1e640f0c46d7923e1d119047d2b86523b7c6fd7218",
+    "libgthread-2.0.so.0.8800.3": "65f84dd127852c61fa54a02302ed3de824286a0c33d559b859b356d8e05e0038",
+    "libgobject-2.0.so.0.8800.3": "78c9429d8808c43da9311ce38c41d7408f9cbaccc40cef9a115fc14eb2c36929",
+    "libgirepository-2.0.so.0.8800.3": "77d53ac78f18fdab598eb4168c1c1c99f2cc96b0ffb47d952d4b49eb3c874847"
+  },
+  "core_checks": "reused identical libraries",
+  "required_typelibs": [
+    "GLib-2.0",
+    "GObject-2.0",
+    "Gio-2.0",
+    "GIRepository-3.0"
+  ]
+}

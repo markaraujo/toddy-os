@@ -164,6 +164,7 @@ def client():
             'uid': os.getuid(), 'gio_version': [GLib.MAJOR_VERSION, GLib.MINOR_VERSION, GLib.MICRO_VERSION],
             'async_call': 'passed', 'actual_peer_uid': 'passed', 'typed_signal': 'passed',
             'sealed_readonly_fd_roundtrip': 'passed', 'pipe_fd_rejected': 'passed',
+            'pid_namespace': os.readlink('/proc/self/ns/pid'),
             'elapsed_seconds': round(time.monotonic() - started, 3)}, indent=2))
     finally:
         server.terminate()
