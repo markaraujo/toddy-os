@@ -21,7 +21,7 @@ class PublicExport(unittest.TestCase):
             "assets/third-party/patreon/patreon-symbol.png", "assets/third-party/patreon/README.md",
             "index.html", ".nojekyll", "site.css", "supporters.html", "supporters.css", "supporters-preview.html",
             "ui/tokens.css", "ui/preview.css", "ui/preview.html", "ui/installer-slides.html",
-            "ui/i18n.js", "ui/translations.js", "ui/mascot.js",
+            "ui/i18n.js", "ui/translations.js", "ui/mascot.js", "ui/supporters.js",
             "assets/brand/toddy-os-system-icon.png",
             "assets/brand/toddy-os-wallpaper-dark.png", "assets/brand/toddy-os-wallpaper-light.png",
             "assets/brand/toddy-os-boot-background.png",
@@ -29,6 +29,7 @@ class PublicExport(unittest.TestCase):
             "assets/brand/toddy-os-desktop-preview.png", "assets/brand/toddy-os-assistant-preview.png",
             "assets/brand/toddy-os-task-preview.png", "assets/brand/toddy-os-installer-preview.png",
             "assets/brand/web/toddy-yawn-half.png", "assets/brand/web/toddy-yawn-full.png",
+            "assets/brand/web/toddy-happy.png",
         }
         expected.update("assets/third-party/gnome/" + name for name in ('ADWAITA-COPYRIGHT.txt', 'CONSOLE-COPYING.txt', 'EPIPHANY-COPYING.txt', 'GPL-2', 'GPL-3', 'NAUTILUS-COPYRIGHT.txt', 'README.md', 'SETTINGS-COPYRIGHT.txt', 'audio-input-microphone-symbolic.svg', 'audio-volume-high-symbolic.svg', 'document-open-recent-symbolic.svg', 'edit-find-symbolic.svg', 'folder-documents-symbolic.svg', 'folder-documents.svg', 'folder-download-symbolic.svg', 'folder-download.svg', 'folder-music.svg', 'folder-pictures-symbolic.svg', 'folder-pictures.svg', 'folder-templates.svg', 'folder.svg', 'go-next-symbolic.svg', 'go-previous-symbolic.svg', 'manifest.json', 'media-playback-stop-symbolic.svg', 'network-wireless-signal-excellent-symbolic.svg', 'open-menu-symbolic.svg', 'org.gnome.Console.svg', 'org.gnome.Epiphany.svg', 'org.gnome.Nautilus.svg', 'org.gnome.Settings.svg', 'starred-symbolic.svg', 'system-shutdown-symbolic.svg', 'user-home-symbolic.svg', 'user-trash-symbolic.svg', 'view-app-grid-symbolic.svg', 'window-close-symbolic.svg'))
         self.assertEqual(actual, expected)

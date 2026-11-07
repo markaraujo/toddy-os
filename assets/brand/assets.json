@@ -118,5 +118,13 @@
       0,
       255
     ]
+  },
+  {
+    "file": "web/toddy-happy.png",
+    "width": 1254,
+    "height": 1254,
+    "mode": "RGBA",
+    "sha256": "97a79d1ee5b57b7fe4ea969a2a0463b2ef2b0a5814ce21fd90ea203d23e53a26",
+    "role": "website-only-happy-expression"
   }
 ]

@@ -1171,3 +1171,13 @@ The real list keeps only Marcos Araujo. A single supporter_preview_count field i
 config/community.json controls the demonstration size, capped at 500 names.
 Playwright confirmed 100 cards at 320/390/768/1440 pixels without horizontal
 overflow and only the approved owner name on the real wall. 185 checks passed.
+
+## 2026-11-07 — Floating-name galaxy and happy Toddy
+
+Replaced name cards with floating text, continuous 3D head orientation, selection
+constellations, localized greetings and small bone meteors. Generated a separate
+happy website portrait with the built-in image tool and preserved original art.
+There are no image/pose swaps during interaction. Fixed local-perspective overlap
+and negative-depth touch hit-testing during browser QA. Desktop/mobile/keyboard,
+48 locale/viewport combinations and first/middle/last touch selection passed.
+See evidence/supporter-galaxy.md for limits and motion/accessibility checks.

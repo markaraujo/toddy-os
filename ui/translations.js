@@ -1564,3 +1564,9 @@ Object.assign(window.TODDY_TRANSLATIONS, {
     "Layout preview — fictional names, not real supporters.": ["Demonstração do layout — nomes fictícios, não são apoiadores reais.","Demostración del diseño: nombres ficticios, no son apoyos reales.","布局演示：虚构姓名，并非真实支持者。","レイアウトのデモです。架空の名前で、実際のサポーターではありません。","Демонстрация оформления: вымышленные имена, не реальные участники."],
     "See the real supporter page ↗": ["Ver a página real dos apoiadores ↗","Ver la página real de apoyos ↗","查看真实支持者页面 ↗","実際のサポーターページへ ↗","Перейти к настоящей странице поддержки ↗"]
 });
+Object.assign(window.TODDY_TRANSLATIONS, {
+    "Select a name to say hello. Scroll to explore the galaxy.": ["Escolha um nome para dar um oi. Role para explorar a galáxia.","Elige un nombre para saludar. Desplázate para explorar la galaxia.","选择一个名字打声招呼，滚动探索星系。","名前を選んでごあいさつ。スクロールして銀河を探検してください。","Выберите имя, чтобы поздороваться. Прокрутите, чтобы исследовать галактику."],
+    "Supporter names": ["Nomes dos apoiadores","Nombres de quienes apoyan","支持者姓名","サポーターのお名前","Имена участников"],
+    "Thanks,": ["Valeu,","Gracias,","谢谢，","ありがとう、","Спасибо,"],
+    "You have my attention.": ["Agora você tem minha atenção.","Ahora tienes mi atención.","现在我的注意力都在你身上。","ちゃんと見ているよ。","Теперь всё моё внимание — вам."]
+});

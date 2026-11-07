@@ -108,6 +108,15 @@ def percentages(data):
             for phase in ("foundation", "agentic")}
 
 
+def supporter_names_html(names):
+    """Names stay text; deterministic depth is decorative, never a paid ranking."""
+    items = []
+    for i, name in enumerate(names):
+        style = f'--offset-x:{(i * 17) % 25 - 12}px;--offset-y:{(i * 11) % 21 - 10}px;--depth:{(i * 13) % 25 + 8}px;--tilt:{(i * 7) % 11 - 5}deg;--delay:-{(i * 3) % 19}s'
+        items.append(f'<li style="{style}"><button class="supporter-star" type="button" aria-pressed="false"><span class="star-name">{html.escape(name)}</span></button></li>')
+    return '<ul class="supporter-list" data-no-translate>' + ''.join(items) + '</ul>'
+
+
 def community_html():
     """Render only owner-approved public acknowledgments and public support links."""
     community = json.loads((ROOT / "config/community.json").read_text())
@@ -116,7 +125,7 @@ def community_html():
         raise ValueError("Supporters must be approved public names, each at most 80 characters")
     if len(set(names)) != len(names):
         raise ValueError("Duplicate supporter name")
-    result = '<ul class="supporter-list" data-no-translate>' + ''.join('<li>' + html.escape(name) + '</li>' for name in names) + '</ul>' if names else '<p class="supporter-empty">Names appear here only with each supporter&#39;s permission.</p>'
+    result = supporter_names_html(names) if names else '<p class="supporter-empty">Names appear here only with each supporter&#39;s permission.</p>'
     return result
 
 
@@ -144,8 +153,7 @@ def supporter_page(preview=False):
             raise ValueError("Supporter preview count must be an integer from 0 to 500")
         first = ("Ana", "Bruno", "Camila", "Diego", "Elisa", "Felipe", "Gabriela", "Hugo", "Isabela", "João Pedro")
         last = ("Lima", "Costa", "Almeida", "Santos", "Oliveira", "Castro", "Ferreira", "Mendes", "Rodrigues", "Nascimento")
-        names = '<ul class="supporter-list" data-no-translate>' + ''.join(
-            f'<li>Demo {i + 1:03d} · {first[(i // 10) % 10]} {last[i % 10]}</li>' for i in range(count)) + '</ul>'
+        names = supporter_names_html([f'Demo {i + 1:03d} · {first[(i // 10) % 10]} {last[i % 10]}' for i in range(count)])
         notice = '<aside class="release-notice"><strong>Layout preview — fictional names, not real supporters.</strong><a href="supporters.html">See the real supporter page ↗</a></aside>'
         template = template.replace('<main id="main"', notice + '<main id="main"')
         template = template.replace('</head>', '<meta name="robots" content="noindex,nofollow" /></head>')

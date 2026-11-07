@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="supporters.css" />
     <script src="../ui/translations.js" defer></script>
     <script src="../ui/i18n.js" defer></script>
+    <script src="../ui/supporters.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -31,13 +32,21 @@
         <section class="night-sky" aria-labelledby="wall-title">
             <div class="sky-dots" aria-hidden="true"></div>
             <div class="orbits" aria-hidden="true"><span></span><span></span><span></span></div>
+            <svg class="bone-meteor" viewBox="0 0 250 70" aria-hidden="true"><defs><linearGradient id="bone-trail"><stop stop-color="#add7ff" stop-opacity="0"/><stop offset="1" stop-color="#d2e9ff" stop-opacity=".7"/></linearGradient></defs><path d="M0 35 H202" stroke="url(#bone-trail)" stroke-width="2"/><g transform="translate(198 23)"><path id="bone-shape" d="M9 7 C3 -1,-3 5,3 11 C-3 17,3 23,9 15 L31 15 C37 23,43 17,37 11 C43 5,37 -1,31 7Z" fill="#e7f2ff"/></g></svg>
+            <svg class="bone-meteor bone-meteor-far" viewBox="0 0 250 70" aria-hidden="true"><path d="M0 35 H202" stroke="url(#bone-trail)" stroke-width="1"/><use href="#bone-shape" x="198" y="23"/></svg>
+            <svg class="constellation-link" aria-hidden="true"><path></path></svg>
+            <div class="galaxy-stage">
             <div class="wall-mascot">
-                <img src="../assets/brand/toddy-os-system-icon.png" alt="Toddy, the project's bespectacled Shih Tzu mascot" width="240" height="240" />
-                <p class="toddy-aside">I checked the list.<br />Good humans.</p>
+                <div class="wall-portrait"><img src="../assets/brand/web/toddy-happy.png" alt="Toddy, the project's bespectacled Shih Tzu mascot" width="240" height="240" /></div>
+                <p class="toddy-aside" data-reaction-caption aria-live="polite">I checked the list.<br />Good humans.</p>
             </div>
             <div class="wall-names">
                 <h2 id="wall-title">A place for your name</h2>
+                <p class="galaxy-hint">Select a name to say hello. Scroll to explore the galaxy.</p>
+                <div class="starfield-scroll" tabindex="0" role="region" aria-label="Supporter names">
                 {{SUPPORTERS}}
+                </div>
+            </div>
             </div>
         </section>
         <section class="wall-invitation">

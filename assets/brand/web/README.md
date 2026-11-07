@@ -19,3 +19,9 @@ available. A failed image decode also falls back to the static identity.
 
 Original Toddy artwork and these variants: Marcos Araujo / Toddy OS,
 [CC BY 4.0](../../../LICENSES/CC-BY-4.0.txt), with this modification notice retained.
+
+`toddy-happy.png` is an additional generated happy
+expression for the supporter galaxy. It is displayed as one fixed portrait, not
+alternated with other frames. Head orientation and breathing are continuous CSS
+transforms, with a vector constellation line toward the selected name. The
+original logo remains unchanged. Prompt/reference/hash: parent brand metadata.

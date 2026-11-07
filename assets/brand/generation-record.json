@@ -98,5 +98,12 @@
       "Animation frames are generated expression variants, not pixel-identical edits of the original mascot.",
       "The original source identity remains the static idle state and is unchanged."
     ]
+  },
+  "supporter_portrait": {
+    "file": "web/toddy-happy.png",
+    "provider": "Built-in image generation",
+    "reference": "toddy-os-system-icon.png",
+    "prompt": "Use case: identity-preserve. Edit the reference Toddy OS mascot into ONE happy expression keyframe for a website thank-you interaction. Preserve the exact same adult chestnut-and-ivory Shih Tzu, dark confident professional illustration outlines, black rounded-square glasses, head tilt, warm fur markings, outer silhouette, forehead tuft and square framing. Change only the facial expression: delighted but understated friendly dog smile, relaxed open mouth with small pink tongue, eyes a little brighter and more open behind the SAME glasses. He recognizes a favorite human. Not a yawn, not surprised, not a different puppy. Keep full head centered at the same scale with modest margins. No body, paws, costume, text, stars, badges, shadow or glow. Genuine transparent alpha background, ivory fur remains opaque. This is a website-only sibling expression, not a new logo.",
+    "scope": "A fixed website-only happy portrait. Continuous head orientation uses geometry; no pose/image switching. Original logo/mascot bytes unchanged."
   }
 }
