@@ -135,3 +135,20 @@ owner review; enabling dependency alerts did not grant a bot merge authority.
 Playwright inspected the published README: its header uses the approved alpha-
 transparent mascot and the two remaining images are labeled current design
 concepts. No beige header image remains in the README.
+
+### Phase 2 denial-text false positives — 2026-11-08 UTC
+
+Public-content run42436373548 failed the pinned8.30.1 history scan. Local replay
+with the same verified scanner archive and flags found five generic-api-key
+fingerprints in historical status/dashboard outputs across b9f8f55,5b448b1 and
+cdc446f. Each candidate was privately compared against the exact authored public
+sentence reporting Unix socket/key access denial and graceful cleanup; every
+candidate was a substring of that fixed prose, not a generated bearer credential.
+No candidate values or unredacted report entered Git/log output.
+
+Added only those five exact commit/path/rule/line fingerprints to the existing
+reviewed ignore list. No rule, regex/path exemption or scanner weakening. The
+strict local full-history replay then exited0 with no findings. Reports/scanner
+cache stay private under.local/security/gitleaks. A new remote run must confirm
+publication; previous failed runs remain failed. The latest make check passed
+before this documentation/ignore-list-only change; planning references rechecked.

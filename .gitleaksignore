@@ -1,4 +1,4 @@
-# Reviewed historical false positives only: public test-run UUIDs and SHA-256 values.
+# Reviewed historical false positives only: public identifiers/digests and authored denial text.
 # See docs/evidence/repository-governance.md. Do not suppress a real credential.
 0ef0f129b20428feb2c21a70136f5c0fb1fa09b5:docs/evidence/H11-artifact-review.json:generic-api-key:47
 0ef0f129b20428feb2c21a70136f5c0fb1fa09b5:docs/evidence/H11-components.json:generic-api-key:11103
@@ -24,3 +24,10 @@ c427112af68ef78c2467e693393ed28f9f0eca93:scripts/build/h11/review_image_key_mark
 c427112af68ef78c2467e693393ed28f9f0eca93:scripts/build/h11/review_image_key_markers.py:generic-api-key:32
 e07ab0de3562002c04619c547ff34ef9fcf30888:docs/evidence/H12-native-locales.json:generic-api-key:248
 e07ab0de3562002c04619c547ff34ef9fcf30888:docs/evidence/H12-native-locales.json:generic-api-key:3
+
+# Reviewed B03 authored authentication-denial sentence; no credential values.
+5b448b16ec6b17bbeb93f89b1224ab3d34b12e9a:status.json:generic-api-key:547
+b9f8f55c6adbd786b6631ac48109848d6e58363e:STATUS.md:generic-api-key:28
+b9f8f55c6adbd786b6631ac48109848d6e58363e:dashboard/index.html:generic-api-key:381
+b9f8f55c6adbd786b6631ac48109848d6e58363e:status.json:generic-api-key:545
+cdc446f24e0323ede712735e7e8f2b44531c8021:dashboard/index.html:generic-api-key:381
