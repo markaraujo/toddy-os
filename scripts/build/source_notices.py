@@ -16,7 +16,7 @@ def is_notice(name):
     collection=any(p.lower()=='licenses' for p in name.parts[:-1])
     # Packaging's licenses Python module is code, not a legal-text collection.
     code=name.suffix.lower() in {'.py','.c','.h','.cc','.cpp','.js','.ts','.rs'}
-    return named or (collection and not code)
+    return named or name.name in {'FTL.TXT','GPLv2.TXT'} or (collection and not code)
 
 
 def embedded_zip_notices(data,member_name):
@@ -110,9 +110,11 @@ def retain_source_notices(root,target,stage,package,filenames):
     destination=prepare_notice_destination(stage,package)
     inventory=[]
     rows=json.loads((root/'config/component-licenses.json').read_text())['components']
-    policies={}
+    policies={};explicit={}
     for component in rows:
-        if component['name']==package:policies.update(component.get('extra_license_headers',{}))
+        if component['name']==package:
+            policies.update(component.get('extra_license_headers',{}))
+            explicit.update(component.get('extra_license_files',{}))
     for filename in filenames:
         row=locked_source(root,filename)
         if not row:raise ValueError('Unknown notice source')
@@ -134,7 +136,7 @@ def retain_source_notices(root,target,stage,package,filenames):
                         for nested,payload in embedded_zip_notices(data,member.name):
                             (destination/nested['sha256']).write_bytes(payload)
                             result['notices'].append(nested)
-                    if not member.isfile() or not is_notice(name):continue
+                    if not member.isfile() or not (is_notice(name) or '/'.join(name.parts[1:]) in explicit.get(filename,[])):continue
                     if name.is_absolute() or '..' in name.parts or any(c in member.name for c in '\r\n\t'):
                         raise ValueError('Unsafe legal notice source path')
                     data=archive.extractfile(member).read()

@@ -420,6 +420,54 @@
       "book_md5": "5e78e6fdce5a61d3075e4c25e9852f84",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "fontconfig",
+      "version": "2.18.3",
+      "filename": "fontconfig-2.18.3.tar.xz",
+      "url": "https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/fontconfig/2.18.3/fontconfig-2.18.3.tar.xz",
+      "sha256": "4f7b554a38cdf78c033f666c8871f3749e14a094f65a07f630c91ed0b43d35e3",
+      "reference": "BLFS13.1-systemd general/fontconfig.html",
+      "book_page_sha256": "f5eadf71c58f0906812884df3982b1f9d5fe53e8088290eacf16f3857237bc7f",
+      "book_md5": "ce819e229ca6fb7d1be47a192d6681a3",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "fribidi",
+      "version": "1.0.16",
+      "filename": "fribidi-1.0.16.tar.xz",
+      "url": "https://github.com/fribidi/fribidi/releases/download/v1.0.16/fribidi-1.0.16.tar.xz",
+      "sha256": "1b1cde5b235d40479e91be2f0e88a309e3214c8ab470ec8a2744d82a5a9ea05c",
+      "reference": "BLFS13.1-systemd general/fribidi.html",
+      "book_page_sha256": "7b199fdcaeeefdc18d7dbafaa90a2f82b8a6fc993abf4aab53910ae3a57b4caf",
+      "book_md5": "333ad150991097a627755b752b87f9ff",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "harfbuzz",
+      "version": "14.3.1",
+      "filename": "harfbuzz-14.3.1.tar.xz",
+      "url": "https://github.com/harfbuzz/harfbuzz/releases/download/14.3.1/harfbuzz-14.3.1.tar.xz",
+      "sha256": "9dae9538aae2ffdf70cec31f2c27bf68e2aaeeae3112688467697d5faf6194f7",
+      "reference": "BLFS13.1-systemd general/harfbuzz.html",
+      "book_page_sha256": "b35ee7da5eaf4542c853e30440446f6b355dbd145ae1a0d2725cf19d90ebd306",
+      "book_md5": "4baccda978c92e5f27702ed8b3ceefa7",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "cairo",
+      "version": "1.18.4",
+      "filename": "cairo-1.18.4.tar.xz",
+      "url": "https://www.cairographics.org/releases/cairo-1.18.4.tar.xz",
+      "sha256": "445ed8208a6e4823de1226a74ca319d3600e83f6369f99b14265006599c32ccb",
+      "reference": "BLFS13.1-systemd x/cairo.html",
+      "book_page_sha256": "33e705dcf1e78c6f703a1cb37180eea8cd9bd411254d4c1997a0d6c767f77157",
+      "book_md5": "db575fb41bbda127e0147e401f36f8ac",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

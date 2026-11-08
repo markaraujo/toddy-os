@@ -14,6 +14,8 @@ from package_copyright import write_copyright
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'freetype': ('2.14.3', 'glibc (>= 2.44-1), zlib (>= 1.3.2-1), bzip2 (>= 1.0.8-1), libpng (>= 1.6.58-1+toddy1)',
+                 'freetype-2.14.3.tar.xz', 'usr/lib/pkgconfig/freetype2.pc'),
     'libpng': ('1.6.58', 'glibc (>= 2.44-1), zlib (>= 1.3.2-1)',
                'libpng-1.6.58.tar.xz', 'usr/lib/pkgconfig/libpng16.pc'),
     'pixman': ('0.46.4', 'glibc (>= 2.44-1)',
@@ -51,6 +53,9 @@ if __name__ == '__main__':
     if name in ('wayland-protocols','pixman'):
         rows=[json.loads(line) for line in (Path('/mnt/lfs/sources/phase2/work')/(name+'-1')/'compile/meson-logs/testlog.json').read_text().splitlines()]
         assert rows and all(r['result']=='OK' and r['returncode']==0 and not r['is_fail'] for r in rows)
+    if name=='freetype':
+        proof=json.loads(Path('/mnt/lfs/sources/phase2/work/freetype-1/test-results.json').read_text())
+        assert proof['staged_consumer_exit']==0 and proof['upstream_suite']=='not provided'
     if name=='libpng':
         counts=json.loads(Path('/mnt/lfs/sources/phase2/work/libpng-1/test-results.json').read_text())
         assert counts['TOTAL']>0 and counts['TOTAL']==counts['PASS']
@@ -75,6 +80,9 @@ if __name__ == '__main__':
     if name=='libxml2':
         wrapper=destination/'usr/bin/xml2-config'
         wrapper.write_text(wrapper.read_text().replace('--static','--shared'))
+    if name=='freetype':
+        doc=destination/'usr/share/doc/freetype';doc.mkdir(parents=True,exist_ok=True)
+        (doc/'README.Toddy').write_text('This software is based in part on the work of the FreeType Team.\nPortions copyright 1996-2026 The FreeType Project (https://freetype.org). All rights reserved.\nFTL license option selected; exact upstream terms in copyright/source-notices.\nSource modifications: enabled gxvalid/otvalid modules and FT_CONFIG_OPTION_SUBPIXEL_RENDERING per BLFS13.1.\nDynamic HarfBuzz loading; optional reference manual not included.\n')
     write_copyright(destination, name, [archive])
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,
                     version+'-1+toddy1', str(destination), '--source', archive,

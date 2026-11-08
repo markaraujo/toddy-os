@@ -2665,6 +2665,30 @@
       "version": "1.6.58",
       "license": "Libpng-2.0 AND LicenseRef-libpng-per-file",
       "evidence": "Authenticated LICENSE/root per-file notices; standard unpatched PNG for Cairo/GDK. APNG is not advertised; Firefox must use its separately frozen bundled PNG unless a system APNG profile is explicitly qualified."
+    },
+    {
+      "name": "freetype",
+      "version": "2.14.3",
+      "license": "FTL AND MIT AND Zlib AND LicenseRef-freetype-per-file",
+      "evidence": "FTL option selected; exact FTL/GPLv2 alternative texts retained. This software is based in part on the work of the FreeType Team. Portions copyright 1996-2026 The FreeType Project (https://freetype.org). BDF/PCF full README terms and source/header notices retained. Book table-validation and subpixel source edits recorded.",
+      "extra_license_files": {
+        "freetype-2.14.3.tar.xz": [
+          "src/bdf/README",
+          "src/pcf/README"
+        ]
+      },
+      "extra_license_headers": {
+        "freetype-2.14.3.tar.xz": {
+          "prefixes": [
+            "src/",
+            "include/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

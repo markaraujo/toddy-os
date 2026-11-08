@@ -14,6 +14,8 @@ import source_notices
 class NoticeTests(unittest.TestCase):
     def test_numeric_gnu_and_nested_spdx_notices(self):
         self.assertTrue(source_notices.is_notice(Path('gcc/COPYING3')))
+        self.assertTrue(source_notices.is_notice(Path('freetype/docs/FTL.TXT')))
+        self.assertTrue(source_notices.is_notice(Path('freetype/docs/GPLv2.TXT')))
         self.assertTrue(source_notices.is_notice(Path('glibc/COPYINGv2')))
         self.assertTrue(source_notices.is_notice(Path('glibc/LICENSES')))
         self.assertTrue(source_notices.is_notice(Path('perl/Artistic')))

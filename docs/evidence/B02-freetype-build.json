@@ -1,0 +1,32 @@
+{
+  "job": "freetype-1",
+  "exit": 0,
+  "scope": "native UID101 compile/stage, version and authored BDF glyph fixture; no desktop font/session acceptance",
+  "source": {
+    "source_sha256": "36bc4f1cc413335368ee656c42afca65c5a3987e8768cc28cf11ba775e785a5f",
+    "reference": "BLFS13.1-systemd general/freetype2.html",
+    "book_page_sha256": "fd2b201c5ccdb587f5a192c1e67bb95c7d678fe84b7874f28405d91049fdc34c",
+    "source_patches": [
+      {
+        "path": "modules.cfg",
+        "before_sha256": "452446eb9dbce41b02f805b50728a6c16744f1808e32777b815d39ed2a209892",
+        "after_sha256": "2b180457b34ee27a003ff71f6447dd68ad260700a799cff25d061611aef45113",
+        "reference": "BLFS13.1 general/freetype2.html"
+      },
+      {
+        "path": "include/freetype/config/ftoption.h",
+        "before_sha256": "9014bc786e9c20ef03bb12cf9e4d6f273f0da24af5b9291a88eda976325ef457",
+        "after_sha256": "a07f0bcf3d6d6daf33e5fbcaead03f24c64e987054c36cd545be4f6342413053",
+        "reference": "BLFS13.1 general/freetype2.html"
+      }
+    ],
+    "recipe_sha256": "4199ca536ef848bbe2bb0b443b237bba86f85b0fa25bdc298ad3fb91dc6c609e",
+    "probe_sha256": "ab70fc8dfb73d3b5fe07d3a2b5b187feab3c8167c05b8852567ecd8937f113eb"
+  },
+  "tests": {
+    "upstream_suite": "not provided",
+    "staged_consumer_exit": 0,
+    "scope": "version and authored BDF glyph bytes; not a default desktop font"
+  },
+  "compiler_log_sha256": "e702293e7ae6efe02675e105c061b1067b7a1ee4dfc5e410e09cd0d45aa7f562"
+}

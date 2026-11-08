@@ -312,7 +312,9 @@
         "docs/evidence/B02-pixman-build.json",
         "docs/evidence/B02-pixman-install.json",
         "docs/evidence/B02-libpng-build.json",
-        "docs/evidence/B02-libpng-install.json"
+        "docs/evidence/B02-libpng-install.json",
+        "docs/evidence/B02-freetype-build.json",
+        "docs/evidence/B02-freetype-install.json"
       ]
     },
     {

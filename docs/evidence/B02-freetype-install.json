@@ -1,0 +1,45 @@
+{
+  "scope": "native FreeType API/BDF glyph and owned package; no desktop/default font acceptance",
+  "step": {
+    "step": "b02-freetype-install",
+    "started": "2026-11-08T03:42:54.011274+00:00",
+    "finished": "2026-11-08T03:43:06.347499+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 561,
+    "log_sha256": "f9a40149d1f7223f075711666b48cd4b45a11e78206d255f5c70516bafb1fd68"
+  },
+  "success_record_sha256": "f108f24f8123200796e4ca47eb0747379a55f6922c828a32fdbaf507fe3c3362",
+  "package": {
+    "name": "freetype",
+    "version": "2.14.3-1+toddy1",
+    "archive_sha256": "b0c7923b86cf3383aa65baffb94a63d60eda8bcd7145e912bf6fb9338a6408df",
+    "installed": true
+  },
+  "exact_license_files_verified": [
+    "FTL.TXT",
+    "GPLv2.TXT",
+    "src/bdf/README",
+    "src/pcf/README"
+  ],
+  "retained_notice_count": 486,
+  "full_root_timing": {
+    "step": "b02-freetype-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 8.955,
+        "entries": 92792,
+        "regular_files": 80135,
+        "regular_bytes": 4910735070
+      },
+      {
+        "seconds": 8.952,
+        "entries": 93348,
+        "regular_files": 80684,
+        "regular_bytes": 4916689393
+      }
+    ],
+    "total_seconds": 21.921
+  }
+}
