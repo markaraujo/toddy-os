@@ -1,0 +1,33 @@
+{
+  "scope": "B03 native CPU inference/auth/egress only; no Pi tool/UI/executor acceptance",
+  "uid": 101,
+  "cap_effective": 0,
+  "no_new_privileges": true,
+  "llama_version": "0.9.0",
+  "model_sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a",
+  "model_bytes": 1834426016,
+  "model_license": "Apache-2.0",
+  "cpu_affinity_count": 4,
+  "threads": 4,
+  "context_tokens": 4096,
+  "gpu_layers": 0,
+  "load_to_health_seconds": 0.812,
+  "request_first_text_seconds": 0.289,
+  "request_complete_seconds": 0.33,
+  "peak_model_rss_kib": 2320036,
+  "unauthorized_statuses": [
+    401,
+    401
+  ],
+  "external_network_errno": 101,
+  "remote_fallback": false,
+  "stream_done": true,
+  "expected_response": true,
+  "usage": {
+    "prompt_tokens": 24,
+    "completion_tokens": 2,
+    "total_tokens": 26
+  },
+  "server_exit": 0,
+  "credential_file_removed": true
+}

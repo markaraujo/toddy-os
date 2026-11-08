@@ -1148,3 +1148,19 @@ Its output exposed Boolean values converted to QVariant integers. Selected typed
 JSON string boundary and native Boolean type checks passed4. Preserve every original
 log/exit/output and the persistent per-cause ledger. No upstream source or core
 ABI replacement, repeat compile or disk write was used to bypass these failures.
+
+
+## 2026-11-07 — B03 transition exposed live-state test fixtures
+
+Three synthetic approval/selector tests still reloaded live B-story states instead
+of the unstarted fixture. Once B03 became in_progress they saw false prerequisites
+or a second active story. Reset B states/evidence/active-work in one test helper,
+retaining accepted foundation inputs. Production approval/dependency gates and
+actual status were not relaxed. Corrected217 tests passed; original failed log
+retained. The isolated CPU compile was not accepted or installed on this basis.
+
+
+B03 loopback containment's first command named /src/probe.py; the preserved input
+is actually /src/isolation_probe.py. Nothing ran in that failed invocation. Read
+the input inventory, corrected only the invocation and passed the real FD/path/
+network/C/parent-lock qualification. No mount/security change was used to hide it.

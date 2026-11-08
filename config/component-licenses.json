@@ -2597,6 +2597,12 @@
       "version": "0.4.11",
       "license": "LGPL-2.1-or-later",
       "evidence": "Authenticated source COPYING LGPL2.1, per-file source conditions; docs/evidence/B01-desktop-root-notices.json. Native editor dependency candidate, not built."
+    },
+    {
+      "name": "llama-cpp",
+      "version": "0.9.0",
+      "license": "MIT AND LicenseRef-llama-bundled-components",
+      "evidence": "Pinned source LICENSE, bundled GGML and third-party licenses retained in source notices; only selected CPU server/completion targets, no downloaded UI/Connect or subprocess tools."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

@@ -12,6 +12,8 @@ import subprocess
 import time
 
 parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--loopback', action='store_true',
+                    help='Private inference namespace loopback; no external route')
 parser.add_argument('name')
 parser.add_argument('input')
 parser.add_argument('work')
@@ -25,8 +27,10 @@ prefix = root / args.name
 with prefix.with_suffix('.dispatch.lock').open('a') as lock:
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     assert not any(prefix.with_suffix(s).exists() for s in ['.job.json', '.log', '.exit']), 'Reconcile existing job; no replay'
-    command = ['/bin/bash', '/opt/toddy-build/scripts/build/phase2/isolated.sh',
-               args.input, args.work, *args.command]
+    command = ['/bin/bash', '/opt/toddy-build/scripts/build/phase2/isolated.sh']
+    if args.loopback:
+        command.append('--loopback')
+    command += [args.input, args.work, *args.command]
     record = {'pid': os.getpid(), 'boot_id': Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
               'proc_start_ticks': Path('/proc/self/stat').read_text().split()[21],
               'started_unix': time.time(), 'command': command,

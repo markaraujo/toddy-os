@@ -26,6 +26,17 @@ class ProgressGates(unittest.TestCase):
         }
         self.data.pop('active_work',None)
 
+    def phase_two_fixture(self):
+        # Keep accepted foundation inputs, but never inherit live B-story state.
+        data = json.loads((ROOT / "status.json").read_text())
+        for row in data["milestones"]:
+            if row["id"].startswith("B"):
+                row["status"], row["evidence"] = "not_started", []
+        data["gates"]["G2"] = "pending"
+        data.pop("active_work", None)
+        data["next_story"] = "B01"
+        return data
+
     def test_unstarted_baseline_has_zero_os_progress(self):
         project.validate(self.data)
         self.assertEqual(project.percentages(self.data), {"foundation": 0, "agentic": 0})
@@ -69,21 +80,21 @@ class ProgressGates(unittest.TestCase):
         self.assertEqual(project.percentages(self.data),{'foundation':0,'agentic':0})
 
     def test_phase_two_cannot_start_from_a_passed_foundation_alone(self):
-        data = json.loads((ROOT / "status.json").read_text())
+        data = self.phase_two_fixture()
         next(row for row in data["milestones"] if row["id"] == "B01")["status"] = "in_progress"
         data["owner_review"]["phase_2_approved"] = False
         with self.assertRaisesRegex(ValueError, "explicit recorded owner approval"):
             project.validate(data)
 
     def test_approval_flag_without_evidence_is_insufficient(self):
-        data = json.loads((ROOT / "status.json").read_text())
+        data = self.phase_two_fixture()
         data["owner_review"]["phase_2_approved"] = True
         data["owner_review"].pop("approval_evidence", None)
         with self.assertRaisesRegex(ValueError, "approval evidence"):
             project.validate(data)
 
     def test_recorded_approval_can_unlock_a_prerequisite_ready_story(self):
-        data = json.loads((ROOT / "status.json").read_text())
+        data = self.phase_two_fixture()
         # Synthetic fixture only; no real approval state or file is changed.
         data["owner_review"]["phase_2_approved"] = True
         data["owner_review"]["approval_evidence"] = "docs/adr/0063-owner-review-after-h13.md"
@@ -102,7 +113,7 @@ class ProgressGates(unittest.TestCase):
             project.validate(self.data)
 
     def test_risk_first_order_and_active_story_are_preserved(self):
-        data = json.loads((ROOT / "status.json").read_text())
+        data = self.phase_two_fixture()
         by_id = {row["id"]: row for row in data["milestones"]}
         by_id["B01"]["status"] = "completed"
         self.assertEqual(project.next_eligible(data), "B03")
@@ -110,7 +121,7 @@ class ProgressGates(unittest.TestCase):
         self.assertEqual(project.next_eligible(data), "B02")
 
     def test_blocked_engine_yields_to_eligible_desktop_without_bypassing_dependencies(self):
-        data = json.loads((ROOT / "status.json").read_text())
+        data = self.phase_two_fixture()
         rows = {row["id"]: row for row in data["milestones"]}
         rows["B01"]["status"] = "completed"
         rows["B03"]["status"] = "blocked"

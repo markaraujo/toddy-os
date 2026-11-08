@@ -25,7 +25,19 @@
     "threads": 4,
     "context_tokens": 4096,
     "transport": "per-user authenticated loopback only after B03 denial proof; private process fallback",
-    "automatic_cloud_fallback": false
+    "automatic_cloud_fallback": false,
+    "cpu_profile": "x86_64 AVX2/FMA/F16C/BMI2/SSE4.2, optional acquisition gated by actual CPU flags",
+    "required_cpu_flags": [
+      "sse4_2",
+      "avx",
+      "avx2",
+      "fma",
+      "f16c",
+      "bmi2"
+    ],
+    "source_build_jobs": 4,
+    "https_client": false,
+    "subprocess_tools": false
   },
   "budgets": {
     "reference_vcpus": 4,

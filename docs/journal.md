@@ -1543,3 +1543,13 @@ installed-root account/boot/trust/recovery recipe. Ten native additions and
 Calamares/GIO/Pi proofs retained. Source-only candidates stay unqualified until
 the owning build/runtime story. Phase2 weighted progress5%; G2/physical pending.
 Next B03 by default selector: actual local CPU inference/tool slice, reusing Node.
+
+
+## 2026-11-07 — B03 native CPU inference boundary
+
+llama-cpp0.9.0 compiled/staged and native package/postcheck0/0. Optional private
+loopback namespace containment/parent-lock proof passed with no external route.
+Actual Qwen3-1.7B-Q8_0 streamed READY:0.812s health,0.289s first text,2,320,036KiB
+peak,4CPU affinity/4threads on development VM. Unauthorized generation401/401,
+server shutdown0 and token file removed. No Pi tool task/provider/acquisition
+acceptance yet; native Node/Pi/GIO/runtime packages will be reused.

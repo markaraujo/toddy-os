@@ -3,6 +3,11 @@
 set -euo pipefail
 source /opt/toddy-build/scripts/build/target.sh
 guard_target
+loopback=0
+if [[ ${1:-} == --loopback ]]; then
+    loopback=1
+    shift
+fi
 [[ $(id -u) == 0 && $# -ge 3 ]] || exit 64
 input=$(realpath -e -- "$1")
 work=$(realpath -e -- "$2")
@@ -21,6 +26,7 @@ uid=$(chroot "$LFS" id -u tester)
 gid=$(chroot "$LFS" id -g tester)
 [[ $uid != 0 && $gid != 0 && $(stat -c %u "$work") == "$uid" ]] || exit 65
 export TODDY_INPUT=$input TODDY_WORK=$work TODDY_UID=$uid TODDY_GID=$gid
+export TODDY_PRIVATE_LOOPBACK=$loopback
 # New PID/network/IPC/mount namespaces. Only native dependencies and declared
 # inputs are exposed; no guest /root, signing material, sockets or host home.
 exec unshare --mount --pid --net --ipc --fork /bin/bash -s -- "$@" <<'SANDBOX'
@@ -30,6 +36,12 @@ set -euo pipefail
 exec 9>&-
 [[ $$ == 1 ]] || { echo 'Private PID namespace init required' >&2; exit 70; }
 mount --make-rprivate /
+# Optional native inference fixture transport. This is the newly created network
+# namespace: loopback only, no inherited interfaces or external routes. Compiler
+# jobs retain the default down loopback. The child still drops all capabilities.
+if [[ $TODDY_PRIVATE_LOOPBACK == 1 ]]; then
+    /usr/sbin/ip link set dev lo up
+fi
 root=$(mktemp -d /run/toddy-build-root.XXXXXX)
 # A session daemon can still be closing descriptors after its launcher returns.
 # Detach this private tree; PID-namespace init exit terminates remaining children,
