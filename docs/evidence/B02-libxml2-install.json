@@ -1,0 +1,48 @@
+{
+  "record_files": [
+    "/var/log/toddy/packages/libxml2_2.15.3-1+toddy1_amd64.json"
+  ],
+  "step": {
+    "step": "b02-libxml2-install",
+    "started": "2026-11-08T02:26:12.353643+00:00",
+    "finished": "2026-11-08T02:26:23.621940+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 72,
+    "recipe_sha256": "d5ceea07cb959a76a75043c4d11f65f46b405db4f4cb521aef4fce4b7b940270",
+    "postcheck_sha256": "e9ada89da32159f38ebfd146645f085b2c29a3d76f30b08f2f942562fa5f686a",
+    "log_sha256": "b5790d97fedf1d33c862af443d4bd9a888641684f9e2d681ffed6e306221badf"
+  },
+  "success_record_sha256": "1003b2214f3239c2840a5692628ebfa66209e3030b55807ded2a1f07a52a52ae",
+  "timing": {
+    "step": "b02-libxml2-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 10.449,
+        "entries": 92383,
+        "regular_files": 79822,
+        "regular_bytes": 4903373370
+      },
+      {
+        "seconds": 8.879,
+        "entries": 92450,
+        "regular_files": 79882,
+        "regular_bytes": 4905579236
+      }
+    ],
+    "total_seconds": 22.343
+  },
+  "package": {
+    "name": "libxml2",
+    "version": "2.15.3-1+toddy1",
+    "archive_sha256": "be79a9104f14de3446f7a69d49abc4337251cb6d06e07daf63a756ec19b105df",
+    "native_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "package_record_sha256": "a06172b9ba0d1963197cf53404679dc664ddc04edf2ffde1593e6722812d506a"
+  }
+}

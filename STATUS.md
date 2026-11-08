@@ -8,34 +8,30 @@ B01 accepted for architecture/native feasibility (5% Phase2). B03 optional CPU-l
 
 Foundation: **100%** · Agentic desktop: **13%**
 
-G1: passed · G2: pending · Next: **B04**
+G1: passed · G2: pending · Next: **B02**
 
 No milestone earns credit without completed acceptance evidence.
 
-## Active story: B04 — Deliver native tools and the revocable privileged executor
+## Active story: B02 — Deliver the minimal branded GNOME desktop
 
-The 13% phase total counts completed stories only. B04 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 21%.
+The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-08T02:13:38.808098+00:00
+Last verified: 2026-11-08T02:33:00.332387+00:00
 
 Verified:
 
-- B01 prerequisite and B03 native provider/local/acquisition evidence accepted; no guest writer active.
-- Native policy-core-1 six SQLite/grant/revocation/concurrency/process-loss tests passed; no root IPC or privileged effect claim.
-- Native executor-ipc-3 actual root service/UID101 configuration mutation and unrestricted root id0, UID65534/wrong-schema/import escalation/revocation/policy-read denials passed in synthetic root.
-- Native executor-ipc-5 active root Stop86ms/process absent and service SIGKILL ->child absent/restart uncertain/no replay passed; policy-core-2 eight storage/migration/cancel/recovery tests passed.
-- Native executor-ipc-6 active revocation stopped already-started root work90ms; new dispatch denied and outcome uncertain. policy-core-3 eight affected tests passed.
-- Native user-tools-1 five real UID101 file/shell/Stop/path/hash/metadata/bounds tests passed; executor-ipc-7 FIFO rejected without blocking, remaining boundaries passed.
-- Native executor-ipc-13 signed toy APT install1/upgrade2/remove with owner conffile preservation and Stop during real maintainer script reached safe commit; policy-core-4 nine tests passed.
+- B01 accepted graph and native GLib/GIO/introspection/PyGObject/Qt/Node packages reused; B03 accepted.
+- B04 core/user tools/signed native package and Stop/revoke/recovery verified; final runtime integration blocked by absent native NM/polkit/running system bus.
+- Native libxml2-2.15.3 compile7 programs/3904 regression cases/stage0; native package install/post0/0 and XML external-loader deny/positive control passed. Full-root scans19.328s of22.343s; optimization not enabled.
 
-Running: Implementing service/network backends; signed native package wrapper verified in synthetic root, no installed repository/image claim.
+Running: Implementing pinned Wayland1.26.0/Protocols1.49; libxml2 owned package verified, no guest writer active.
 
 Remaining:
 
-- Structured service/network integration and broker routing of ordinary tools.
-- Installed systemd cgroup lifecycle plus dedicated owner-authenticated policy surface/logind; all B04 criteria remain pending.
+- Pinned incremental desktop dependencies and first working native GNOME session.
+- Minimal apps/branding/offline usability, security/ABI review and reference guest measurements.
 
-[Acceptance evidence](docs/evidence/B04.md)
+[Acceptance evidence](docs/evidence/B02.md)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
@@ -53,9 +49,9 @@ Remaining:
 | [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | completed |
 | [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | completed |
 | [B01 — Freeze the minimal Toddy architecture and delivery slices](stories/B01.md) | agentic | 5 | completed |
-| [B02 — Deliver the minimal branded GNOME desktop](stories/B02.md) | agentic | 10 | not_started |
+| [B02 — Deliver the minimal branded GNOME desktop](stories/B02.md) | agentic | 10 | in_progress |
 | [B03 — Connect provider adapters and one optional local AI profile](stories/B03.md) | agentic | 8 | completed |
-| [B04 — Deliver native tools and the revocable privileged executor](stories/B04.md) | agentic | 8 | in_progress |
+| [B04 — Deliver native tools and the revocable privileged executor](stories/B04.md) | agentic | 8 | blocked |
 | [B05 — Persist tasks and recover interrupted system changes](stories/B05.md) | agentic | 10 | not_started |
 | [B06 — Deliver Toddy quick entry, native UI and first-run setup](stories/B06.md) | agentic | 10 | not_started |
 | [B07 — Deliver inspectable local memory and portable backup](stories/B07.md) | agentic | 8 | not_started |

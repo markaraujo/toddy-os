@@ -1640,3 +1640,20 @@ writes. Original8 control-mode and9/10/11 cache-path failures retained;12 passed
 13 extends maintainer boundary. policy-core-4 nine changed checks passed. ADR-0120
 records source-backed APT flags, no product key or final installed-source claim.
 Service/network/owner runtime prerequisites still pending; no B04 completion.
+
+### B02 native runtime branch — 2026-11-08 UTC
+
+Preserved B04 verified checkpoint; actual remaining NM/polkit/logind/systemd
+integration cannot pass in the current chroot with missing native runtime.
+Marked B04 blocked and B02 in_progress, no prerequisite changes or user dependency.
+Begin selected XML/Wayland/graphics dependencies, reuse B01 packages and preserve
+one guest writer. First native graphical session and all B02 criteria still due.
+
+### B02 first native XML package — 2026-11-08 UTC
+
+libxml2-1 source/stage0 with7 upstream programs/3904 regressions; native owned
+2.15.3 install/post0/0 and actual external-loader denial/positive control passed.
+Exact notices and source/recipe hashes retained. Full-root scan overhead19.328s
+of22.343s measured by wrapper around unchanged runner, no optimization bypass.
+Wayland1.26/Protocols1.49 verified against frozen book MD5/official HTTPS and
+SHA256-pinned before extraction. Desktop/native GUI still entirely pending.

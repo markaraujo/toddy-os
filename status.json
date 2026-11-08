@@ -4,7 +4,7 @@
   "updated_at": "2026-11-07",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 accepted for architecture/native feasibility (5% Phase2). B03 optional CPU-local runtime implementation started with pinned sources and explicit CPU gates. Provider/model tasks, native GNOME, installed Phase2 ISO, B02/B04\u2013B13/G2 and physical validation remain pending.",
-  "next_story": "B04",
+  "next_story": "B02",
   "gates": {
     "G1": "passed",
     "G2": "pending"
@@ -290,7 +290,7 @@
       "phase": "agentic",
       "title": "Deliver the minimal branded GNOME desktop",
       "weight": 10,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": [
         "B01"
       ],
@@ -301,7 +301,11 @@
         "Publish the minimal package manifest, resource measurements and optional-app packaging status; no unsupported package is advertised as working.",
         "New browser/XML/network/privileged consumers have recorded security/ABI review and owned pinned dependencies; no silent frozen-foundation upgrade bypasses a failure."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/B02.md",
+        "docs/evidence/B02-libxml2-build.json",
+        "docs/evidence/B02-libxml2-install.json"
+      ]
     },
     {
       "id": "B03",
@@ -329,7 +333,7 @@
       "phase": "agentic",
       "title": "Deliver native tools and the revocable privileged executor",
       "weight": 8,
-      "status": "in_progress",
+      "status": "blocked",
       "depends_on": [
         "B01"
       ],
@@ -544,22 +548,18 @@
     "approval_evidence": "docs/adr/0113-owner-authorizes-phase2-implementation.md"
   },
   "active_work": {
-    "story": "B04",
+    "story": "B02",
     "verified": [
-      "B01 prerequisite and B03 native provider/local/acquisition evidence accepted; no guest writer active.",
-      "Native policy-core-1 six SQLite/grant/revocation/concurrency/process-loss tests passed; no root IPC or privileged effect claim.",
-      "Native executor-ipc-3 actual root service/UID101 configuration mutation and unrestricted root id0, UID65534/wrong-schema/import escalation/revocation/policy-read denials passed in synthetic root.",
-      "Native executor-ipc-5 active root Stop86ms/process absent and service SIGKILL ->child absent/restart uncertain/no replay passed; policy-core-2 eight storage/migration/cancel/recovery tests passed.",
-      "Native executor-ipc-6 active revocation stopped already-started root work90ms; new dispatch denied and outcome uncertain. policy-core-3 eight affected tests passed.",
-      "Native user-tools-1 five real UID101 file/shell/Stop/path/hash/metadata/bounds tests passed; executor-ipc-7 FIFO rejected without blocking, remaining boundaries passed.",
-      "Native executor-ipc-13 signed toy APT install1/upgrade2/remove with owner conffile preservation and Stop during real maintainer script reached safe commit; policy-core-4 nine tests passed."
+      "B01 accepted graph and native GLib/GIO/introspection/PyGObject/Qt/Node packages reused; B03 accepted.",
+      "B04 core/user tools/signed native package and Stop/revoke/recovery verified; final runtime integration blocked by absent native NM/polkit/running system bus.",
+      "Native libxml2-2.15.3 compile7 programs/3904 regression cases/stage0; native package install/post0/0 and XML external-loader deny/positive control passed. Full-root scans19.328s of22.343s; optimization not enabled."
     ],
-    "running": "Implementing service/network backends; signed native package wrapper verified in synthetic root, no installed repository/image claim.",
+    "running": "Implementing pinned Wayland1.26.0/Protocols1.49; libxml2 owned package verified, no guest writer active.",
     "remaining": [
-      "Structured service/network integration and broker routing of ordinary tools.",
-      "Installed systemd cgroup lifecycle plus dedicated owner-authenticated policy surface/logind; all B04 criteria remain pending."
+      "Pinned incremental desktop dependencies and first working native GNOME session.",
+      "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-08T02:13:38.808098+00:00",
-    "evidence": "docs/evidence/B04.md"
+    "verified_at": "2026-11-08T02:33:00.332387+00:00",
+    "evidence": "docs/evidence/B02.md"
   }
 }

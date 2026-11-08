@@ -2603,6 +2603,20 @@
       "version": "0.9.0",
       "license": "MIT AND LicenseRef-llama-bundled-components",
       "evidence": "Pinned source LICENSE, bundled GGML and third-party licenses retained in source notices; only selected CPU server/completion targets, no downloaded UI/Connect or subprocess tools."
+    },
+    {
+      "name": "libxml2",
+      "version": "2.15.3",
+      "license": "MIT AND LicenseRef-libxml2-per-file",
+      "evidence": "Authenticated Copyright root MIT notice, distinct ISC-style dict.c/list.c leading notices retained; other per-file conditions apply. New XML dependency, no blanket security claim.",
+      "extra_license_headers": {
+        "libxml2-2.15.3.tar.xz": {
+          "paths": [
+            "dict.c",
+            "list.c"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

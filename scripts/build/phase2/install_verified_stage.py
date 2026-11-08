@@ -14,6 +14,8 @@ from package_copyright import write_copyright
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libxml2': ('2.15.3', 'glibc (>= 2.44-1), zlib (>= 1.3.2-1)',
+               'libxml2-2.15.3.tar.xz', 'usr/lib/pkgconfig/libxml-2.0.pc'),
     'qtsvg': ('6.11.2', 'qtbase (>= 6.11.2-1+toddy1)',
               'qtsvg-everywhere-src-6.11.2.tar.xz', 'usr/lib/libQt6Svg.so.6.11.2'),
     'qttools-linguist': ('6.11.2', 'qtbase (>= 6.11.2-1+toddy1)',
@@ -32,6 +34,15 @@ if __name__ == '__main__':
     subprocess.run(['bash', '-c', 'source /opt/toddy-build/scripts/build/target.sh; guard_target'], check=True)
     log = Path('/var/log/toddy/phase2')
     assert (log / (name+'-1.exit')).read_text().strip() == '0', 'Reconcile actual compiler exit first'
+    if name=='libxml2':
+        status=json.loads((ROOT/'status.json').read_text())
+        assert status['owner_review']['phase_2_approved'] is True
+        assert next(r for r in status['milestones'] if r['id']=='B02')['status']=='in_progress'
+        work=Path('/mnt/lfs/sources/phase2/work/libxml2-1')
+        tests=json.loads((work/'test-results.json').read_text())
+        assert {t['name'] for t in tests}=={'testdict','testchar','testparser','testrecurse','testcatalog','testapi','runtest'}
+        assert len(tests)==7 and all(t['exit']==0 for t in tests)
+        assert (work/'test-logs/runtest.log').read_text().rstrip().endswith('Total 3904 tests, no errors')
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
     before = inspect_stage(source)
     assert required in before['entries'], 'Missing declared payload'
@@ -40,6 +51,9 @@ if __name__ == '__main__':
     shutil.copytree(source, destination, symlinks=True)
     assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
+    if name=='libxml2':
+        wrapper=destination/'usr/bin/xml2-config'
+        wrapper.write_text(wrapper.read_text().replace('--static','--shared'))
     write_copyright(destination, name, [archive])
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,
                     version+'-1+toddy1', str(destination), '--source', archive,

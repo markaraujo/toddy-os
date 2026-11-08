@@ -1,0 +1,76 @@
+{
+  "job": "libxml2-1",
+  "exit": 0,
+  "scope": "native UID101 source compile/upstream tests/stage only; not installed or a graphical session",
+  "source": {
+    "source_sha256": "78262a6e7ac170d6528ebfe2efccdf220191a5af6a6cd61ea4a9a9a5042c7a07",
+    "book_reference": "BLFS13.1 general/libxml2.html",
+    "patch": "Exact four-line git-describe removal from frozen book; no native Git requirement at this bootstrap",
+    "prepared_meson_sha256": "d5ace38ac786c07d90a6ac87ad03a9df0d52c1fab257848600d18e8eaf569acb",
+    "recipe_sha256": "69b8d59459052126e394a35943b09c534560208086660dcedd31a496f7777e4e"
+  },
+  "stage_manifest_sha256": "205e81693a6f71d0054f5c0de5e44b78617321f6f80e5f3d206115c7ddcb360e",
+  "stage_entries": 63,
+  "tests": [
+    {
+      "name": "testdict",
+      "exit": 0,
+      "seconds": 0.281
+    },
+    {
+      "name": "testchar",
+      "exit": 0,
+      "seconds": 0.239
+    },
+    {
+      "name": "testparser",
+      "exit": 0,
+      "seconds": 0.456
+    },
+    {
+      "name": "testrecurse",
+      "exit": 0,
+      "seconds": 0.397
+    },
+    {
+      "name": "testcatalog",
+      "exit": 0,
+      "seconds": 0.001
+    },
+    {
+      "name": "testapi",
+      "exit": 0,
+      "seconds": 0.001
+    },
+    {
+      "name": "runtest",
+      "exit": 0,
+      "seconds": 1.321
+    }
+  ],
+  "runtest_cases": 3904,
+  "upstream_log_sha256": {
+    "testdict": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "testchar": "c76e3fcd92f38bc4e5d8bec0b4d99cb2cc544039e7a800dd5863285436ae70c4",
+    "testparser": "f7ff473490eca0884a2d5bc8ba10e62fae6ad5b213d2b77a39a55c8fd8ec752c",
+    "testrecurse": "36fc3156e94cefa44588e050a34f4803e67f65a96e3e781705105d6ccb25c9bb",
+    "testcatalog": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "testapi": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtest": "ad6174be3fecc761a1ef7a4f6ea81e8d0412f167d7f66e9ed2a2ef84c97a19ef"
+  },
+  "job_receipt": {
+    "pid": 87636,
+    "boot_id": "d7e6d578-c18b-4997-835e-8ac7b0711798",
+    "proc_start_ticks": "1566089",
+    "started_unix": 1794104539.2244241,
+    "command": [
+      "/bin/bash",
+      "/opt/toddy-build/scripts/build/phase2/isolated.sh",
+      "/mnt/lfs/sources/phase2/inputs/libxml2-2.15.3",
+      "/mnt/lfs/sources/phase2/work/libxml2-1",
+      "bash",
+      "/src/toddy-build.sh"
+    ],
+    "harness_sha256": "a120494e027eef82c959ef8c5c072792728d079cb7a58f6dc6a158cb53b94e81"
+  }
+}
