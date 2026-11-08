@@ -34,3 +34,6 @@ cdc446f24e0323ede712735e7e8f2b44531c8021:dashboard/index.html:generic-api-key:38
 
 # Reviewed libxml2 testapi empty-output SHA256, not an API credential.
 fb35be223aa171d470c913959bf44ef0c17e0b59:docs/evidence/B02-libxml2-build.json:generic-api-key:58
+
+# Reviewed SHA256 of the public GNOME wm.keybindings schema; actual native bytes verified.
+a05bb3f37d502b2d2513f7e22ec2079b79b3f019:docs/evidence/B02-desktop-resources-install.json:generic-api-key:90

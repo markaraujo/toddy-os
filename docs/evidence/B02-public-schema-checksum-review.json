@@ -1,0 +1,10 @@
+{
+  "scope": "Exact historical secret-scan false positive only; no wildcard/rule/security-policy suppression",
+  "fingerprint": "a05bb3f37d502b2d2513f7e22ec2079b79b3f019:docs/evidence/B02-desktop-resources-install.json:generic-api-key:90",
+  "classification": "Public generated schema file SHA256, not a credential",
+  "native_schema_file": "/usr/share/glib-2.0/schemas/org.gnome.desktop.wm.keybindings.gschema.xml",
+  "native_bytes_match_recorded_checksum": true,
+  "source_component": "gsettings-desktop-schemas-50.1",
+  "representation_correction": "Source input manifests now use explicit file/sha256 records; native transaction data and checksums unchanged",
+  "history_note": "Keep published history intact; ignore only this reviewed commit/file/rule/line fingerprint"
+}
