@@ -9,7 +9,7 @@ import sys
 import phase2_vm
 ROOT=phase2_vm.ROOT
 NAME=sys.argv[1]
-assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','libjpeg-turbo','psutil')
+assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil')
 if __name__=='__main__':
     row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==NAME)
     archive=ROOT/'.local/sources'/row['filename'];data=archive.read_bytes()
@@ -44,7 +44,7 @@ lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
 '''+f'row={row!r}\nrecipe={recipe!r}\nprobe={probe!r}\nextra={extra!r}\n'+'''
 base=Path('/mnt/lfs/sources');archive=base/row['filename'];part=base/(row['filename']+'.part')
-source_name='llvm-project-'+row['version']+'.src' if row['name']=='llvm' else row['name']+'-'+row['version']
+source_name='llvm-project-'+row['version']+'.src' if row['name']=='llvm' else 'dejavu-fonts-ttf-'+row['version'] if row['name']=='dejavu-fonts' else row['name']+'-'+row['version']
 source=base/'phase2/inputs'/source_name;work=base/'phase2/work'/(row['name']+'-1')
 assert not source.exists() and not work.exists() and not part.exists(),'Reconcile existing source/job; no replay'
 if archive.exists():

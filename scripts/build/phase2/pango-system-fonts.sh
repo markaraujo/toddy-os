@@ -1,33 +1,40 @@
 #!/bin/bash
-# Only font-sensitive drivers whose system-font inputs changed after Adwaita.
+# Only font-sensitive drivers whose installed font inputs actually changed.
 set -euo pipefail
-[[ $(id -u) == 101 && -d /build/compile && ! -e /build/system-fonts ]]
+label=${1:-system-fonts}
+[[ $label == system-fonts || $label == system-fonts-serif ]]
+[[ $(id -u) == 101 && -d /build/compile && ! -e /build/$label ]]
+export TODDY_FONT_TEST_DIR=/build/$label
 ulimit -c 0
 export XDG_DATA_HOME=/build/test-default-data
-mkdir /build/system-fonts
+mkdir "$TODDY_FONT_TEST_DIR"
 python3 - <<'BEFORE'
-import hashlib,json,subprocess
+import hashlib,json,os,subprocess
 from pathlib import Path
 before=json.loads(Path('/build/font-recovery/before.json').read_text())
 assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==sha for p,sha in before.items())
 fonts=list(Path('/usr/share/fonts/Adwaita').glob('*.ttf'));assert len(fonts)==6
+directory=Path(os.environ['TODDY_FONT_TEST_DIR'])
+if directory.name=='system-fonts-serif':
+    serif=list(Path('/usr/share/fonts/dejavu').glob('*.ttf'));assert len(serif)==4
+    fonts+=serif
 inputs={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(fonts)}
 cantarell=Path('/src/tests/fonts/Cantarell-VF.otf');inputs[str(cantarell)]=hashlib.sha256(cantarell.read_bytes()).hexdigest()
 resolved={f:subprocess.check_output(['fc-match','-f','%{family}|%{file}\n',f],text=True).strip() for f in ['serif','sans-serif','monospace']}
-Path('/build/system-fonts/inputs.json').write_text(json.dumps({'font_sha256':inputs,'effective_defaults':resolved,'compiled_binaries':before},indent=2)+'\n')
+(directory/'inputs.json').write_text(json.dumps({'font_sha256':inputs,'effective_defaults':resolved,'compiled_binaries':before},indent=2)+'\n')
 BEFORE
 meson test -C /build/compile --no-rebuild --print-errorlogs --num-processes 4 \
-    --logbase system-fonts-testlog \
+    --logbase "$label-testlog" \
     test-bidi testcontext testiter test-ellipsize markup-parse test-itemize \
     test-font testattributes test-harfbuzz test-break testmisc testserialize \
     test-layout test-layout2 test-fonts test-no-fonts test-pangocairo-threads
 python3 - <<'AFTER'
-import hashlib,json
+import hashlib,json,os
 from pathlib import Path
-directory=Path('/build/system-fonts');proof=json.loads((directory/'inputs.json').read_text())
+directory=Path(os.environ['TODDY_FONT_TEST_DIR']);proof=json.loads((directory/'inputs.json').read_text())
 for field in ['font_sha256','compiled_binaries']:
     assert all(hashlib.sha256(Path(p).read_bytes()).hexdigest()==sha for p,sha in proof[field].items())
-log=Path('/build/compile/meson-logs/system-fonts-testlog.json')
+log=Path('/build/compile/meson-logs')/(directory.name+'-testlog.json')
 rows=[json.loads(line) for line in log.read_text().splitlines()]
 assert len(rows)==17 and len({r['name'] for r in rows})==17
 assert all(r['result']=='OK' and r['returncode']==0 for r in rows)

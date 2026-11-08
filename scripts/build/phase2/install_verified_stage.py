@@ -18,6 +18,8 @@ from llvm_recover import merge_support_results
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'dejavu-fonts': ('2.37', 'fontconfig (>= 2.18.3-1+toddy1)',
+                     'dejavu-fonts-ttf-2.37.tar.bz2', 'usr/share/fonts/dejavu/DejaVuSerif.ttf'),
     'psutil': ('7.2.2', 'python (>= 3.14), python (<< 3.15), glibc (>= 2.44-1)',
                'psutil-7.2.2.tar.gz', 'usr/lib/python3.14/site-packages/psutil/__init__.py'),
     'libjpeg-turbo': ('3.2.0', 'glibc (>= 2.44-1)',
@@ -113,6 +115,21 @@ if __name__ == '__main__':
             path=work/'stage/usr/share/fonts/Adwaita'/row['file']
             assert path.parent==work/'stage/usr/share/fonts/Adwaita'
             assert hashlib.sha256(path.read_bytes()).hexdigest()==row['sha256']
+    if name=='dejavu-fonts':
+        work=Path('/mnt/lfs/sources/phase2/work/dejavu-fonts-1')
+        source=Path('/mnt/lfs/sources/phase2/inputs/dejavu-fonts-ttf-2.37')
+        proof=json.loads((work/'font-inputs.json').read_text())
+        expected={'DejaVuSerif.ttf','DejaVuSerif-Bold.ttf',
+                  'DejaVuSerif-Italic.ttf','DejaVuSerif-BoldItalic.ttf'}
+        assert proof['source_fonts_byte_identical']
+        assert {r['file'] for r in proof['fonts']}==expected and len(proof['fonts'])==4
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/dejavu-fonts-build.sh').read_bytes()
+        assert json.loads((log/'dejavu-fonts-1.job.json').read_text())['command'][-1]=='/src/toddy-build.sh'
+        for row in proof['fonts']:
+            path=work/'stage/usr/share/fonts/dejavu'/row['file']
+            assert path.parent==work/'stage/usr/share/fonts/dejavu'
+            assert hashlib.sha256(path.read_bytes()).hexdigest()==row['sha256']
+            assert path.read_bytes()==(source/'ttf'/row['file']).read_bytes()
     if name=='llvm':
         assert (log/'llvm-1.exit').read_text().strip()=='0'
         if llvm_resume or llvm_recovery:assert (log/'llvm-qualify-2.exit').read_text().strip()=='1'

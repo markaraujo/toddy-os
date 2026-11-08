@@ -687,6 +687,28 @@
       "book_md5": "a1c5c30f68a927053be09592d1a4be53",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "dejavu-fonts",
+      "version": "2.37",
+      "filename": "dejavu-fonts-ttf-2.37.tar.bz2",
+      "url": "https://downloads.sourceforge.net/project/dejavu/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2",
+      "sha256": "fa9ca4d13871dd122f61258a80d01751d603b4d3ee14095d65453b4e846e17d7",
+      "reference": "BLFS13.1-systemd x/TTF-and-OTF-fonts.html#dejavu-fonts; upstream official2.37 release",
+      "book_page_sha256": "9bab59bd0a61a6c41f63dcf365e4a7db652fbc88239ddf278c43615bbc512115",
+      "integrity": "Official SourceForge release matched size and SHA256 published at https://dejavu-fonts.github.io/Download.html; GitHub asset HTTP504, no unverified mirror",
+      "status": "source_verified"
+    },
+    {
+      "name": "libxkbcommon-upstream-fix",
+      "version": "1.13.2-1",
+      "filename": "libxkbcommon-1.13.2-upstream_fix-1.patch",
+      "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/libxkbcommon-1.13.2-upstream_fix-1.patch",
+      "sha256": "d978cac5875fed73b7223866a1138718afeba58c1390a412affdcf2cd7744a34",
+      "reference": "BLFS13.1-systemd general/libxkbcommon.html required patch",
+      "upstream_commit": "75b7da3f8698b3482ba6b11f3835561a3efb6a29",
+      "integrity": "Required frozen-book patch fetched over official HTTPS; SHA256 frozen before exact application",
+      "status": "source_verified"
     }
   ]
 }

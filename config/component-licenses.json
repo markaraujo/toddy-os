@@ -2874,31 +2874,31 @@
       "name": "rustc-stage0",
       "version": "1.96.0",
       "license": "(Apache-2.0 OR MIT) AND LicenseRef-Rust-toolchain-components",
-      "evidence": "Build-only official bootstrap archive, SHA authenticated by Rust1.97.1 src/stage0. Original Apache/MIT/COPYRIGHT text hashes retained in B02-rust-bootstrap-input.json; per-component conditions apply. Never executed/installed or accepted as final product compiler."
+      "evidence": "Build-only official bootstrap archive, SHA authenticated by Rust1.97.1 src/stage0. Original Apache/MIT/COPYRIGHT text hashes retained in B02-rust-bootstrap-input.json; per-component conditions apply. Executed only in private build namespace; actual seed versions/commit/sysroot verified in B02-rust-input.json. Never installed as product compiler."
     },
     {
       "name": "rust-std-stage0",
       "version": "1.96.0",
       "license": "(Apache-2.0 OR MIT) AND LicenseRef-Rust-toolchain-components",
-      "evidence": "Build-only official bootstrap archive, SHA authenticated by Rust1.97.1 src/stage0. Original Apache/MIT/COPYRIGHT text hashes retained in B02-rust-bootstrap-input.json; per-component conditions apply. Never executed/installed or accepted as final product compiler."
+      "evidence": "Build-only official bootstrap archive, SHA authenticated by Rust1.97.1 src/stage0. Original Apache/MIT/COPYRIGHT text hashes retained in B02-rust-bootstrap-input.json; per-component conditions apply. Executed only in private build namespace; actual seed versions/commit/sysroot verified in B02-rust-input.json. Never installed as product compiler."
     },
     {
       "name": "cargo-stage0",
       "version": "1.96.0",
       "license": "(Apache-2.0 OR MIT) AND LicenseRef-Rust-toolchain-components",
-      "evidence": "Build-only official bootstrap archive, SHA authenticated by Rust1.97.1 src/stage0. Original Apache/MIT/COPYRIGHT text hashes retained in B02-rust-bootstrap-input.json; per-component conditions apply. Never executed/installed or accepted as final product compiler."
+      "evidence": "Build-only official bootstrap archive, SHA authenticated by Rust1.97.1 src/stage0. Original Apache/MIT/COPYRIGHT text hashes retained in B02-rust-bootstrap-input.json; per-component conditions apply. Executed only in private build namespace; actual seed versions/commit/sysroot verified in B02-rust-input.json. Never installed as product compiler."
     },
     {
       "name": "adwaita-fonts",
       "version": "50.0",
       "license": "OFL-1.1",
-      "evidence": "Authenticated GNOME50 source LICENSE names original font authors and includes full SIL Open Font License1.1. Six unmodified TTF files; no font renaming or outline changes. Native font/cache qualification pending."
+      "evidence": "Authenticated GNOME50 source LICENSE names original font authors and includes full SIL Open Font License1.1. Six unmodified TTF files; no font renaming or outline changes. Native owned install/post0/0, actual eight style queries and font/cache qualification in B02-adwaita-fonts-install.json; no graphical-session acceptance."
     },
     {
       "name": "libjpeg-turbo",
       "version": "3.2.0",
       "license": "IJG AND BSD-3-Clause AND Zlib AND libpng-2.0 AND BSD-2-Clause",
-      "evidence": "Authenticated source LICENSE.md summarizes component terms; preserve full README.ijg, all named legal texts and source notices. Portable C backend, optional assembler/SIMD not enabled; native build/qualification pending.",
+      "evidence": "Authenticated source LICENSE.md summarizes component terms; preserve full README.ijg, all named legal texts and source notices. Portable C backend, optional assembler/SIMD not enabled; 332 native CTest cases and native memory JPEG pixels install/post0/0 passed; no SIMD performance or graphical-session acceptance.",
       "extra_license_files": {
         "libjpeg-turbo-3.2.0.tar.gz": [
           "README.ijg"
@@ -2942,6 +2942,18 @@
           ]
         }
       }
+    },
+    {
+      "name": "dejavu-fonts",
+      "version": "2.37",
+      "license": "Bitstream-Vera AND LicenseRef-Arev-Fonts AND LicenseRef-DejaVu-public-domain",
+      "evidence": "Official unmodified TTF2.37 archive verified against upstream published SHA256/size. Retain full LICENSE with Bitstream/Arev copyright/trademark/renaming/no-font-only-sale conditions and public-domain DejaVu changes. Only four original Serif faces staged; native qualification pending."
+    },
+    {
+      "name": "libxkbcommon-upstream-fix",
+      "version": "1.13.2-1",
+      "license": "MIT AND LicenseRef-libxkbcommon-per-file",
+      "evidence": "Frozen BLFS13.1 required tools/info.c conditional-macro correction from upstream commit75b7da3f8698b3482ba6b11f3835561a3efb6a29. Patch authorship retained, source per-file notices apply; native applicability/build pending."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
