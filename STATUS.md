@@ -4,7 +4,7 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-Owner-authorized isolated Phase 2 implementation active (ADR-0113). B01 verified native GLib/Node/GI/PyGObject packages, Pi tool/cancel/protocol and installed GIO async/peer/signal/FD fixtures. Calamares bundled Pybind11 embeds accepted Python unchanged. Minimal Qt prerequisites for its no-write probe are building; B01 acceptance, B02–B13, G2 and physical validation remain pending.
+Owner-authorized isolated Phase2 implementation active. B01 verified native engine/GIO and Calamares no-write feasibility, including typed JSON and real JobResult. Final source/root/budget/interface freeze remains before B01 acceptance. Native GNOME, B02–B13/G2, installable Phase2 ISO and physical validation remain pending.
 
 Foundation: **100%** · Agentic desktop: **0%**
 
@@ -26,13 +26,13 @@ Verified:
 - Native GI/GLib core metadata/PyGObject installed; installed GIO async/actual peer/signal/FD fixture passed with no namespace children.
 - Calamares3.4.3 bundled Pybind11 2.11.1 compiled/linked/embedded native Python3.14.10 unchanged.
 - Native QtBase6.11.2 source/stage/package and offscreen Widgets/TLS/DBus/Concurrent consumer passed; visual/display/font integration pending.
+- Calamares3.4.3 source/stage/startup and actual PythonJob/JobResult synthetic plan with nine negative cases passed; typed JSON Boolean boundary verified.
 
-Running: Sequential minimal QtSvg/LinguistTools/ECM/CoreAddons/YAML prerequisites for native Calamares no-write probe; one guest writer.
+Running: Final B01 architecture/root/license/budget freeze using verified probes and exact source identities; no guest writer active.
 
 Remaining:
 
-- Minimal Calamares Qt/module/target-plan no-write probe.
-- Final dependency/license/root inventory, CPU model contract and B01 budgets/acceptance.
+- Final source/license/root/ABI and resource contracts; assess all B01 criteria before completion.
 
 [Acceptance evidence](docs/evidence/B01.md)
 

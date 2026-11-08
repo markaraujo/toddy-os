@@ -1,0 +1,40 @@
+{
+  "scope": "B01 no-write native startup/Python-job fixture, not a graphical/disk-install proof",
+  "calamares": "3.4.3",
+  "python": "3.14.10",
+  "pybind11": "bundled2.11.1",
+  "qt": "6.11.2 offscreen",
+  "compile_stage": "completed in job1 before its shell-tail failure",
+  "consumer_job": "calamares-probe-4",
+  "command_exit": 0,
+  "native_job_result": "succeeded",
+  "cli_version": "calamares3.4.3",
+  "plan": {
+    "acquisition": "later",
+    "boot_mode": "uefi",
+    "credentials_in_installer": false,
+    "extras_deferred": [
+      "docker",
+      "opencode"
+    ],
+    "git_in_base": true,
+    "mandatory_agent_backend": false,
+    "negative_cases": 9,
+    "offline_desktop": true,
+    "offline_setup": true,
+    "review_in_installed_session": true,
+    "schema_version": 1,
+    "scope": "synthetic-no-write",
+    "target_serial": "TODDY-INSTALL-FIXTURE"
+  },
+  "stage_manifest_sha256": "439015aa8fd7c97674e0577862bfd8f21999a1fcb09a67976e848347334b2c03",
+  "stage_entries": 373,
+  "stage_bytes": 5468441,
+  "limitations": [
+    "all upstream install modules skipped for this fixture",
+    "no Polkit policy installation, QML or real disk access",
+    "display/font/native visual qualification pending B02/B12",
+    "account/boot/package trust/image persistence/recovery pending B12",
+    "no local model inference or physical testing claimed"
+  ]
+}

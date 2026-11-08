@@ -1,0 +1,48 @@
+{
+  "scope": "native B01 no-write installer prerequisites only; no installer/desktop acceptance",
+  "source_commit": "2be12411e367844a44e8047f73c2ae705be2e69a",
+  "results": [
+    {
+      "step": "b01-qtsvg-install",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 132,
+      "log_sha256": "a295b8632425ad719b2ea66466c00b210af612036ba3dbc4e37444b138bdad49"
+    },
+    {
+      "step": "b01-qttools-linguist-install",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 219,
+      "log_sha256": "2cfe4ff30209853ceae946f53efa9ed7ca1a6c01570a7b57fd1995752279bf1a"
+    },
+    {
+      "step": "b01-extra-cmake-modules-install",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 154,
+      "log_sha256": "47bbc108ebcb5fe06af7a3a402c118b68e0b8516a98a45b4257c2166e471a5f7"
+    },
+    {
+      "step": "b01-kcoreaddons-install",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 277,
+      "log_sha256": "2d38baeba8448b327ffa1235ffa577bf171a0d1d051b5a5e5b6218363f0844cf"
+    },
+    {
+      "step": "b01-yaml-cpp-install",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 62,
+      "log_sha256": "39ff088a72d946daee006b46d31c4c21b83387ee072f48501dacbc22a7877b83"
+    }
+  ],
+  "consumer_scope": {
+    "qtsvg": "render actual SVG pixel; malformed SVG rejected",
+    "qttools-linguist": "compile Portuguese TS into QM, load and translate via QTranslator",
+    "extra-cmake-modules": "CMake native consumer and libdir convention",
+    "kcoreaddons": "native AboutData and plugin metadata consumer",
+    "yaml-cpp": "actual parse and malformed-input ParserException"
+  }
+}

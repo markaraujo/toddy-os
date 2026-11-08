@@ -1136,3 +1136,15 @@ Verified original stage entries and absence of installation, retained original
 failed marker, consolidated authenticated upstream notices and completed one
 separate package step0/0. Shared prerequisite packaging now retains the same
 exact notice metadata before the backend; no guard was relaxed.
+
+
+## 2026-11-07 — Calamares fixture shell, public ABI and Boolean transport
+
+Compile/stage completed; job1 shell process substitution referenced absent /dev/fd.
+Avoided substitution without changing the compiler namespace, then consumer-only
+job2 failed linking private concrete virtual methods. Native nm and upstream
+PythonJobModule confirm the public Job pointer path; corrected fixture passed3.
+Its output exposed Boolean values converted to QVariant integers. Selected typed
+JSON string boundary and native Boolean type checks passed4. Preserve every original
+log/exit/output and the persistent per-cause ledger. No upstream source or core
+ABI replacement, repeat compile or disk write was used to bypass these failures.

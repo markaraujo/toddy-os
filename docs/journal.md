@@ -1521,3 +1521,14 @@ copyright guard failure with changed0. Native offscreen Widgets action/render,
 TLS availability, private DBus and Concurrent consumer passed. Font/display/visual
 qualification remains pending. Added a one-shot sequential prerequisite controller
 with terminal receipts and no retry/replay; no foundation suites repeated.
+
+
+## 2026-11-07 — Calamares native no-write integration verified
+
+Five minimal prerequisites passed sequential native consumers. Calamares3.4.3
+compiles/stages and starts natively; real PythonJob/JobResult executes a synthetic
+plan and nine invalid-input cases. Preserved shell/consumer-ABI failures; resumed
+only affected consumer, no source rebuild. Raw Boolean map conversion exposed a
+typed boundary issue; schema-versioned JSON string/native Boolean checks passed.
+ADR-0116 records the selected contract. Final graphical/disk/privilege/boot/package
+trust/recovery proof remains B12; B01 final architecture/root/budget freeze next.
