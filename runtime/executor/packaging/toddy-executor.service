@@ -1,0 +1,23 @@
+[Unit]
+Description=Toddy independent privileged executor
+Requires=dbus.service
+After=dbus.service
+
+[Service]
+Type=dbus
+BusName=io.github.markaraujo.Toddy.Executor
+ExecStart=/usr/bin/python3 /usr/lib/toddy/runtime/executor/service.py
+User=root
+Group=root
+StateDirectory=toddy/executor
+StateDirectoryMode=0700
+UMask=0077
+LimitCORE=0
+KillMode=control-group
+TimeoutStopSec=10s
+SendSIGKILL=yes
+Restart=on-failure
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target

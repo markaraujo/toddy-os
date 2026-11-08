@@ -91,6 +91,28 @@ class ExecutorStoreTests(unittest.TestCase):
         self.assertIsNotNone(process.exitcode);self.assertEqual(store.recover(),1);self.assertEqual(store.recover(),0)
         result=store.dispatch(101,None,'crash','configuration',{'synthetic':'input'},lambda *_:self.fail())
         self.assertEqual(result['state'],'uncertain');self.assertEqual(marker.read_text(),'effect happened')
+    def test_cancel_before_dispatch_and_running_persists(self):
+        self.grant();self.plan('before');self.store.revoke(101)
+        canceled=self.store.cancel(101,'before');self.assertEqual(canceled['state'],'canceled')
+        self.assertTrue(canceled['cancel_requested'])
+        self.assertEqual(self.dispatch_operation('before',lambda *_:self.fail()),canceled)
+        self.grant();self.plan('running')
+        def apply(*_):
+            with self.assertRaisesRegex(PolicyError,'operation_unknown'):self.store.cancel(102,'running')
+            self.store.cancel(101,'running')
+            self.assertTrue(Store(self.path).inspect(101,'running')['cancel_requested'])
+            raise OSError('effect outcome requires verification')
+        with self.assertRaisesRegex(PolicyError,'operation_uncertain'):self.dispatch_operation('running',apply)
+        result=Store(self.path).inspect(101,'running');self.assertEqual(result['state'],'uncertain')
+        self.assertTrue(result['cancel_requested'])
+    def test_prior_store_migrates_without_losing_operation_identity(self):
+        other=self.path.parent/'old';other.mkdir(mode=0o700)
+        with sqlite3.connect(other/'state.sqlite') as db:
+            db.execute('CREATE TABLE operations(id TEXT PRIMARY KEY,uid INTEGER NOT NULL,kind TEXT NOT NULL,input_hash TEXT NOT NULL,generation INTEGER NOT NULL,state TEXT NOT NULL,result TEXT,created REAL NOT NULL)')
+            db.execute("INSERT INTO operations VALUES('old',101,'configuration','digest',1,'completed','{}',1000)")
+        (other/'state.sqlite').chmod(0o600)
+        migrated=Store(other);result=migrated.inspect(101,'old')
+        self.assertEqual(result['state'],'completed');self.assertFalse(result['cancel_requested'])
     def test_strict_inputs_store_permissions_and_nonsecret_audit(self):
         with self.assertRaisesRegex(PolicyError,'invalid_owner'):self.store.revoke(True)
         with self.assertRaisesRegex(PolicyError,'invalid_grant'):self.store.set_grant(101,'standing',expires=float('nan'))

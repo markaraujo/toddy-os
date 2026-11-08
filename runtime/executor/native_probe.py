@@ -35,6 +35,14 @@ def client():
         denied('GetOperation',('allowed',),'operation_unknown','(s)')
         assert call('GetAudit',(0,),'(t)')==[]
         return {'uid':os.getuid(),'grant_denied':True,'other_user_operation_hidden':True}
+    if sys.argv[2]=='crash':
+        command={'argv':['/usr/bin/python3','-c',"from pathlib import Path;import time;Path('/etc/toddy-restart-marker').write_text('started');time.sleep(20)"],
+                 'timeout_seconds':20,'acknowledge_unrestricted_root':True}
+        encoded=json.dumps(command)
+        assert call('PlanOperation',('service-crash','root_command',encoded))['state']=='planned'
+        try:call('DispatchOperation',('service-crash','root_command',encoded))
+        except GLib.Error:return {'connection_lost':True}
+        raise AssertionError('crash fixture unexpectedly completed')
     if sys.argv[2]=='revoked':
         denied('DispatchOperation',('stale','config_replace',json.dumps({**args,'expected_sha256':hashlib.sha256(args['text'].encode()).hexdigest()})),'grant_required')
         return {'revoked_dispatch_denied':True}
@@ -52,13 +60,34 @@ def client():
     assert call('PlanOperation',('root-id','root_command',json.dumps(command)))['state']=='planned'
     root=call('DispatchOperation',('root-id','root_command',json.dumps(command)))
     assert root['result']['exit']==0 and root['result']['output_sha256']==hashlib.sha256(b'0\n').hexdigest()
+    # Observe a real already-started root process, then request Stop over IPC.
+    import threading
+    command={'argv':['/usr/bin/python3','-c',"from pathlib import Path;import time;Path('/etc/toddy-cancel-marker').write_text('started');time.sleep(20)"],
+             'timeout_seconds':20,'acknowledge_unrestricted_root':True}
+    cancel_args=json.dumps(command)
+    assert call('PlanOperation',('active-cancel','root_command',cancel_args))['state']=='planned'
+    outcomes=[]
+    def dispatch_active():
+        try:call('DispatchOperation',('active-cancel','root_command',cancel_args));outcomes.append('unexpected_success')
+        except GLib.Error as error:outcomes.append('uncertain' if 'operation_uncertain' in error.message else 'unexpected_error')
+    thread=threading.Thread(target=dispatch_active);thread.start()
+    deadline=time.monotonic()+5
+    while not Path('/etc/toddy-cancel-marker').exists() and time.monotonic()<deadline:time.sleep(.01)
+    assert Path('/etc/toddy-cancel-marker').exists(),'root process never started'
+    stopped_at=time.monotonic()
+    request=call('CancelOperation',('active-cancel',),'(s)');assert request['cancel_requested']
+    thread.join(3);assert not thread.is_alive() and outcomes==['uncertain'],outcomes
+    stop_ms=round((time.monotonic()-stopped_at)*1000);assert stop_ms<2000
+    canceled=call('GetOperation',('active-cancel',),'(s)');assert canceled['state']=='uncertain' and canceled['cancel_requested']
+    assert call('DispatchOperation',('active-cancel','root_command',cancel_args))==canceled
     stale={**args,'expected_sha256':hashlib.sha256(args['text'].encode()).hexdigest()}
     assert call('PlanOperation',('stale','config_replace',json.dumps(stale)))['state']=='planned'
     audit=call('GetAudit',(0,),'(t)')
     serialized=json.dumps(audit);assert args['text'].strip() not in serialized and 'dummy secret' not in serialized
     return {'authenticated_uid':101,'root_configuration_verified':True,'ordinary_write_denied':True,
         'unrestricted_root_process_uid':0,'duplicate_dispatch_same_result':True,'schema_escalation_duplicate_json_denied':True,
-        'audit_no_arguments_or_output':True,'stale_operation_planned':True}
+        'audit_no_arguments_or_output':True,'stale_operation_planned':True,
+        'active_root_stop_ms':stop_ms,'canceled_outcome_uncertain_no_replay':True}
 
 
 def main():
@@ -78,11 +107,28 @@ def main():
     buslog=open('/build/bus.log','xb')
     bus=subprocess.Popen(['dbus-daemon','--nofork','--config-file='+str(ROOT/'dbus-probe.conf'),'--print-address=1'],stdout=buslog,stderr=subprocess.STDOUT)
     service=None
+    report={}
     def run_client(mode,uid=101):
         command=['python3',str(ROOT/'linux_identity.py'),str(uid),'python3',str(Path(__file__)),'--client',mode]
         p=subprocess.run(command,env={**os.environ,'HOME':'/build/client'},capture_output=True,text=True,timeout=15)
         if p.returncode:raise RuntimeError('client failed: '+p.stderr[-3000:])
         return json.loads(p.stdout)
+    def client_process(mode):
+        return subprocess.Popen(['python3',str(ROOT/'linux_identity.py'),'101','python3',str(Path(__file__)),'--client',mode],
+            env={**os.environ,'HOME':'/build/client'},stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+    def start_service():
+        child=subprocess.Popen(['python3',str(ROOT/'service.py'),'--state-dir','/build/policy'],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+        with selectors.DefaultSelector() as selector:
+            selector.register(child.stdout,selectors.EVENT_READ);assert selector.select(5),'service readiness timeout'
+            line=child.stdout.readline();assert line.strip()=='READY'
+        return child
+    def expected_stderr(child):
+        error=child.stderr.read()
+        import re
+        known=r'^/src/runtime/executor/service\.py:[0-9]+: DeprecationWarning: Gio\.DBusConnection\.register_object is deprecated\n  connection\.register_object\(OBJECT,INFO\.interfaces\[0\],handle,None,None\)\n$'
+        assert not error or re.fullmatch(known,error),error[-3000:]
+        child.stdout.close();child.stderr.close()
+        return bool(error)
     def policy(action):
         command=['python3',str(ROOT/'policy.py'),action,'--uid','101','--state-dir','/build/policy']
         if action=='grant':command+=['--mode','standing','--expires-in','60']
@@ -93,19 +139,46 @@ def main():
             assert bus.poll() is None and time.monotonic()<deadline;time.sleep(.01)
         os.environ['DBUS_SYSTEM_BUS_ADDRESS']='unix:path=/run/toddy-executor-test-bus'
         policy('grant')
-        service=subprocess.Popen(['python3',str(ROOT/'service.py'),'--state-dir','/build/policy'],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
-        with selectors.DefaultSelector() as selector:
-            selector.register(service.stdout,selectors.EVENT_READ);assert selector.select(5),'service readiness timeout'
-            line=service.stdout.readline();assert line.strip()=='READY',service.stderr.read(3000)
+        service=start_service()
         allowed=run_client('allowed');wrong=run_client('wrong-user',65534)
         current=Path('/etc/toddy-executor-fixture.conf').read_bytes();assert current==b'verified native mutation\n'
+        crash=client_process('crash')
+        deadline=time.monotonic()+5
+        while not Path('/etc/toddy-restart-marker').exists() and time.monotonic()<deadline:time.sleep(.01)
+        assert Path('/etc/toddy-restart-marker').exists(),'root process never started before service loss'
+        service.kill();service.wait(timeout=5);first_warning=expected_stderr(service);service=None
+        crash_stdout,crash_stderr=crash.communicate(timeout=5)
+        assert crash.returncode==0 and json.loads(crash_stdout)['connection_lost'] and not crash_stderr
+        deadline=time.monotonic()+3
+        while True:
+            live=[]
+            for process in Path('/proc').iterdir():
+                if process.name.isdigit():
+                    try:
+                        if b'toddy-restart-marker' in (process/'cmdline').read_bytes():live.append(process.name)
+                    except FileNotFoundError:pass
+            if not live:break
+            assert time.monotonic()<deadline,live
+            time.sleep(.01)
+        service=start_service()
+        from store import Store
+        store=Store(Path('/build/policy'));recovered=store.inspect(101,'service-crash')
+        assert recovered['state']=='uncertain' and recovered['result']['code']=='restart_reconciliation_required'
+        assert Path('/etc/toddy-restart-marker').read_text()=='started'
+        survivors=[]
+        for process in Path('/proc').iterdir():
+            if process.name.isdigit():
+                try:
+                    if b'time.sleep(20)' in (process/'cmdline').read_bytes():survivors.append(process.name)
+                except FileNotFoundError:pass
+        assert not survivors,survivors
         revoked=policy('revoke');denial=run_client('revoked')
         assert Path('/etc/toddy-executor-fixture.conf').read_bytes()==current
         # A client cannot mutate/read the independent root-owned policy store.
         peer=subprocess.run(['python3',str(ROOT/'linux_identity.py'),'101','python3','-c',"from pathlib import Path; Path('/build/policy/state.sqlite').read_bytes()"],capture_output=True,text=True)
         assert peer.returncode!=0 and 'PermissionError' in peer.stderr
         report={'scope':'native root/UID system-D-Bus in synthetic /etc only; no installed configuration changed',
-            'allowed':allowed,'wrong_user':wrong,'revocation':denial,'private_policy_denied':True,
+            'allowed':allowed,'wrong_user':wrong,'revocation':denial,'private_policy_denied':True,'canceled_process_absent':True,'service_loss_child_absent':True,'restart_outcome_uncertain_no_replay':True,
             'namespace_root_capabilities':hex(capabilities),'logind_session':'not present; session grants core-tested only',
             'pending':'package/service/network operations and authenticated graphical owner surface'}
     finally:
@@ -113,11 +186,7 @@ def main():
             service.terminate()
             try:service.wait(timeout=5)
             except subprocess.TimeoutExpired:service.kill();service.wait()
-            error=service.stderr.read()
-            import re
-            known=r'^/src/runtime/executor/service\.py:[0-9]+: DeprecationWarning: Gio\.DBusConnection\.register_object is deprecated\n  connection\.register_object\(OBJECT,INFO\.interfaces\[0\],handle,None,None\)\n$'
-            assert not error or re.fullmatch(known,error),error[-3000:]
-            report['expected_gio_deprecation_warning']=bool(error)
+            report['expected_gio_deprecation_warning']=expected_stderr(service)
         bus.terminate();bus.wait(timeout=5);buslog.close()
     print(json.dumps(report))
 

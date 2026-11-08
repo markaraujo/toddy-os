@@ -12,6 +12,10 @@
       <arg name="arguments_json" type="s" direction="in"/>
       <arg name="operation_json" type="s" direction="out"/>
     </method>
+    <method name="CancelOperation">
+      <arg name="operation_id" type="s" direction="in"/>
+      <arg name="operation_json" type="s" direction="out"/>
+    </method>
     <method name="GetOperation">
       <arg name="operation_id" type="s" direction="in"/>
       <arg name="operation_json" type="s" direction="out"/>

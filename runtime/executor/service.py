@@ -59,7 +59,8 @@ def main():
     def execute(invocation,sender,op,kind,arguments):
         try:
             uid,session=identity(connection,sender)
-            result=store.dispatch(uid,session,op,kind,arguments,apply)
+            result=store.dispatch(uid,session,op,kind,arguments,
+                lambda selected,values:apply(selected,values,lambda:store.inspect(uid,op)['cancel_requested']))
             GLib.idle_add(reply,invocation,result,None)
         except PolicyError as error:GLib.idle_add(reply,invocation,None,str(error))
         except Exception:GLib.idle_add(reply,invocation,None,'executor_internal_error')
@@ -77,6 +78,7 @@ def main():
                     if pending:raise PolicyError('executor_busy')
                     pending=True;pool.submit(execute,invocation,sender,op,kind,arguments)
                     return
+            elif method=='CancelOperation':result=store.cancel(uid,values[0])
             elif method=='GetOperation':result=store.inspect(uid,values[0])
             elif method=='GetAudit':result=store.audit(uid,values[0])
             else:raise PolicyError('method_unavailable')

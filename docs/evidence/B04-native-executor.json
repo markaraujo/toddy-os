@@ -8,7 +8,9 @@
     "duplicate_dispatch_same_result": true,
     "schema_escalation_duplicate_json_denied": true,
     "audit_no_arguments_or_output": true,
-    "stale_operation_planned": true
+    "stale_operation_planned": true,
+    "active_root_stop_ms": 86,
+    "canceled_outcome_uncertain_no_replay": true
   },
   "wrong_user": {
     "uid": 65534,
@@ -19,20 +21,24 @@
     "revoked_dispatch_denied": true
   },
   "private_policy_denied": true,
+  "canceled_process_absent": true,
+  "service_loss_child_absent": true,
+  "restart_outcome_uncertain_no_replay": true,
   "namespace_root_capabilities": "0xeb",
   "logind_session": "not present; session grants core-tested only",
   "pending": "package/service/network operations and authenticated graphical owner surface",
   "expected_gio_deprecation_warning": true,
-  "job": "executor-ipc-3",
+  "job": "executor-ipc-5",
   "own_input_sha256": {
-    "runtime/executor/store.py": "6488d954cf7c223296196acb1ecb3fa1b35f7d89437bab268895c9710c453276",
-    "runtime/executor/operations.py": "5ba740a23b6c378612f682a1c2e44a45791148198a28dd6a8302e4dc95c33c20",
-    "runtime/executor/service.py": "6b11de4bdeb3da764a08802c2bf4b5c0c531dbaa401a056b879656e3123ff717",
+    "runtime/executor/store.py": "d82b0d7e551d256f6588c46b628eaa610d0b1dd56171cfd0c70d861a4d628697",
+    "runtime/executor/operations.py": "c5bc53dd7e6724e7cdd95adbe9d8bbdee3e875cccd847cb0ab08818977e9856a",
+    "runtime/executor/service.py": "72edbe2fc72459acdea4ca5880f1fcc337cf9caefbbb1757e18b785df952a828",
     "runtime/executor/policy.py": "65559463c74781ca8db83d6e97b8847deb891ea1882177f2ce7f157a58befeb2",
-    "runtime/executor/native_probe.py": "9be5f668d51d4567158789d5f2e25fce95914eab9378ea3649dc8c41cdb1555b",
+    "runtime/executor/native_probe.py": "b932f54e4c7f4c746627a323c15be1eab4bde9442c07c9a8713ec097927caf01",
+    "runtime/executor/command_child.py": "2b0e56cca8b84fb1e824761961916960935025fe46d593cbc9d6ef28406a5d4b",
     "runtime/executor/linux_identity.py": "3aafb9131f81aae4bf72bbac7ac799a5ba51f519fc98e1b73679970f683db755",
     "runtime/executor/dbus-probe.conf": "80ea6aec660229055f009f0d27abaf4557e266426edd90fa8d39a86455709077",
-    "runtime/executor/io.github.markaraujo.Toddy.Executor1.xml": "b36def4af39870e8b3ee5860586fce8b0f324ff57c2cdfe16e5e69632ad2fe71",
+    "runtime/executor/io.github.markaraujo.Toddy.Executor1.xml": "893f284ca0c94675b443accc5de1da4f4f84411e7b6b4ccae238a813aab6b12e",
     "runtime/broker/protocol.py": "009b750a09879f2a2ce5bd483f70a59097ab14cfd512009f5986c3a97e54ee93",
     "scripts/build/phase2/executor-probe.sh": "312f70cc9097adea1ec3849d59ae8ea49db692a7391863f2bc0d633b7d2dfe8e"
   }

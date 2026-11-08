@@ -1600,3 +1600,12 @@ setpriv corrected with proof-only identity helper; native2 failed exact known GI
 deprecation cleanup, native3 passed after precise classification. All original
 exits retained. Owner polkit/logind surface, user tools, Stop and structured
 package/service/network remain pending; no B04 criterion marked complete.
+
+### B04 Stop and service-loss recovery — 2026-11-08 UTC
+
+Native executor-ipc-5 passed root Stop86ms/actual child absence, service SIGKILL
+with child absence, restart uncertain/no replay and unchanged boundary denials.
+Native policy-core-2 eight tests passed, including old-store migration and durable
+cancellation. ADR-0119 explains parent-death and unrestricted-root limits; staged
+systemd control-group lifecycle remains to prove. User tools/package/service/
+network and authenticated owner/logind surface still pending; B04 incomplete.

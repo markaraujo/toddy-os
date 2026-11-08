@@ -12,7 +12,7 @@ ROOT=phase2_vm.ROOT
 NAME=sys.argv[1] if len(sys.argv)>1 else 'executor-ipc-1'
 assert re.fullmatch(r'executor-ipc-[1-9][0-9]*',NAME)
 FILES=['runtime/executor/'+n for n in ['store.py','operations.py','service.py','policy.py','native_probe.py',
-       'linux_identity.py','dbus-probe.conf','io.github.markaraujo.Toddy.Executor1.xml']]+['runtime/broker/protocol.py']
+       'command_child.py','linux_identity.py','dbus-probe.conf','io.github.markaraujo.Toddy.Executor1.xml']]+['runtime/broker/protocol.py']
 HARNESS='scripts/build/phase2/executor-probe.sh'
 if __name__=='__main__':
     payload={n:(ROOT/n).read_text() for n in FILES+[HARNESS]}

@@ -16,20 +16,21 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B04 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 21%.
 
-Last verified: 2026-11-08T01:47:44.068665+00:00
+Last verified: 2026-11-08T01:51:33.052908+00:00
 
 Verified:
 
 - B01 prerequisite and B03 native provider/local/acquisition evidence accepted; no guest writer active.
 - Native policy-core-1 six SQLite/grant/revocation/concurrency/process-loss tests passed; no root IPC or privileged effect claim.
 - Native executor-ipc-3 actual root service/UID101 configuration mutation and unrestricted root id0, UID65534/wrong-schema/import escalation/revocation/policy-read denials passed in synthetic root.
+- Native executor-ipc-5 active root Stop86ms/process absent and service SIGKILL ->child absent/restart uncertain/no replay passed; policy-core-2 eight storage/migration/cancel/recovery tests passed.
 
-Running: Extending native tools and executor cancellation/package/service/network paths; root policy client remains explicit administrator-only until polkit surface qualified.
+Running: Implementing remaining native tools and administrative backends; no guest writer active.
 
 Remaining:
 
-- Native user tools, explicit executor Stop and structured package/service/network integration.
-- Dedicated owner-authenticated session/standing policy UI and real logind/session validation; all B04 criteria remain pending.
+- Native user tools and structured package/service/network integration.
+- Installed systemd cgroup lifecycle plus dedicated owner-authenticated policy surface/logind; all B04 criteria remain pending.
 
 [Acceptance evidence](docs/evidence/B04.md)
 

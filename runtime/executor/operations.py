@@ -11,6 +11,7 @@ import selectors
 import signal
 import stat
 import subprocess
+import sys
 import time
 from store import PolicyError
 
@@ -62,7 +63,7 @@ def _file_hash(directory,name):
         return hashlib.file_digest(file,'sha256').hexdigest(),info
 
 
-def config_replace(args):
+def config_replace(args,canceled=lambda:False):
     path=Path(args['path']);directory=_parent(path)
     temporary=None
     try:
@@ -82,6 +83,7 @@ def config_replace(args):
         # executor locking; unrestricted root can defeat any local protection.
         current,_=_file_hash(directory,path.name)
         if current!=before:raise PolicyError('configuration_changed')
+        if canceled():raise PolicyError('operation_canceled_before_commit')
         os.replace(temporary,path.name,src_dir_fd=directory,dst_dir_fd=directory)
         temporary=None;os.fsync(directory)
         after,_=_file_hash(directory,path.name)
@@ -95,9 +97,9 @@ def config_replace(args):
         os.close(directory)
 
 
-def root_command(args):
+def root_command(args,canceled=lambda:False):
     deadline=time.monotonic()+args['timeout_seconds']
-    process=subprocess.Popen(args['argv'],stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,
+    process=subprocess.Popen([sys.executable,str(Path(__file__).with_name('command_child.py')),str(os.getpid()),*args['argv']],stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,cwd='/',env={'PATH':'/usr/sbin:/usr/bin','LANG':'C.UTF-8','HOME':'/root'},
         start_new_session=True,umask=0o077,close_fds=True)
     digest=hashlib.sha256();count=0
@@ -105,6 +107,7 @@ def root_command(args):
         with selectors.DefaultSelector() as selector:
             selector.register(process.stdout,selectors.EVENT_READ)
             while selector.get_map():
+                if canceled():raise PolicyError('root_command_canceled')
                 remaining=deadline-time.monotonic()
                 if remaining<=0:raise PolicyError('root_command_deadline')
                 for key,_ in selector.select(min(remaining,.1)):
@@ -118,6 +121,7 @@ def root_command(args):
             while True:
                 exited=os.waitid(os.P_PID,process.pid,os.WEXITED|os.WNOWAIT|os.WNOHANG)
                 if exited is not None:break
+                if canceled():raise PolicyError('root_command_canceled')
                 if time.monotonic()>=deadline:raise PolicyError('root_command_deadline')
                 time.sleep(.01)
             code=exited.si_status if exited.si_code==os.CLD_EXITED else -exited.si_status
@@ -130,8 +134,9 @@ def root_command(args):
         process.wait();process.stdout.close()
 
 
-def apply(kind,args):
+def apply(kind,args,canceled=lambda:False):
     if os.geteuid()!=0:raise PolicyError('root_executor_required')
     validate(kind,args)
-    if kind=='config_replace':return config_replace(args)
-    return root_command(args)
+    if canceled():raise PolicyError('operation_canceled_before_dispatch')
+    if kind=='config_replace':return config_replace(args,canceled)
+    return root_command(args,canceled)

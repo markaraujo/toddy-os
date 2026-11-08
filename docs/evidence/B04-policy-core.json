@@ -1,11 +1,11 @@
 {
-  "job": "policy-core-1",
+  "job": "policy-core-2",
   "scope": "native UID101 policy/SQLite/process-loss tests only; no authenticated root IPC",
   "exit": 0,
-  "tests": 6,
-  "log": "test_actual_process_loss_recovery_no_replay (__main__.ExecutorStoreTests.test_actual_process_loss_recovery_no_replay) ... ok\ntest_conflicting_dispatch_and_revocation_during_inflight (__main__.ExecutorStoreTests.test_conflicting_dispatch_and_revocation_during_inflight) ... ok\ntest_failed_effect_uncertain_never_replayed (__main__.ExecutorStoreTests.test_failed_effect_uncertain_never_replayed) ... ok\ntest_no_grant_wrong_user_expiry_and_session (__main__.ExecutorStoreTests.test_no_grant_wrong_user_expiry_and_session) ... ok\ntest_revocation_generation_and_no_replay (__main__.ExecutorStoreTests.test_revocation_generation_and_no_replay) ... ok\ntest_strict_inputs_store_permissions_and_nonsecret_audit (__main__.ExecutorStoreTests.test_strict_inputs_store_permissions_and_nonsecret_audit) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.091s\n\nOK\n",
+  "tests": 8,
+  "log": "test_actual_process_loss_recovery_no_replay (__main__.ExecutorStoreTests.test_actual_process_loss_recovery_no_replay) ... ok\ntest_cancel_before_dispatch_and_running_persists (__main__.ExecutorStoreTests.test_cancel_before_dispatch_and_running_persists) ... ok\ntest_conflicting_dispatch_and_revocation_during_inflight (__main__.ExecutorStoreTests.test_conflicting_dispatch_and_revocation_during_inflight) ... ok\ntest_failed_effect_uncertain_never_replayed (__main__.ExecutorStoreTests.test_failed_effect_uncertain_never_replayed) ... ok\ntest_no_grant_wrong_user_expiry_and_session (__main__.ExecutorStoreTests.test_no_grant_wrong_user_expiry_and_session) ... ok\ntest_prior_store_migrates_without_losing_operation_identity (__main__.ExecutorStoreTests.test_prior_store_migrates_without_losing_operation_identity) ... ok\ntest_revocation_generation_and_no_replay (__main__.ExecutorStoreTests.test_revocation_generation_and_no_replay) ... ok\ntest_strict_inputs_store_permissions_and_nonsecret_audit (__main__.ExecutorStoreTests.test_strict_inputs_store_permissions_and_nonsecret_audit) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.095s\n\nOK\n",
   "own_input_sha256": {
-    "runtime/executor/store.py": "6488d954cf7c223296196acb1ecb3fa1b35f7d89437bab268895c9710c453276",
-    "tests/test_executor_store.py": "6ecba7357d4538055dad3e50f25e86ab8b38cbab9a23039646c1f6c3912c8354"
+    "runtime/executor/store.py": "d82b0d7e551d256f6588c46b628eaa610d0b1dd56171cfd0c70d861a4d628697",
+    "tests/test_executor_store.py": "113b3726ade89929e9442ec5c56a77a31fd1aecfd983cf7e76157fb5987fbd81"
   }
 }

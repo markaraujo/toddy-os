@@ -70,10 +70,14 @@ class Store:
                 session TEXT,expires REAL NOT NULL,enabled INTEGER NOT NULL);
                 CREATE TABLE IF NOT EXISTS operations(
                 id TEXT PRIMARY KEY,uid INTEGER NOT NULL,kind TEXT NOT NULL,input_hash TEXT NOT NULL,
-                generation INTEGER NOT NULL,state TEXT NOT NULL,result TEXT,created REAL NOT NULL);
+                generation INTEGER NOT NULL,state TEXT NOT NULL,result TEXT,created REAL NOT NULL,
+                cancel_requested INTEGER NOT NULL DEFAULT 0);
                 CREATE TABLE IF NOT EXISTS audit(
                 sequence INTEGER PRIMARY KEY,at REAL NOT NULL,event TEXT NOT NULL,uid INTEGER NOT NULL,
                 operation TEXT,kind TEXT,generation INTEGER NOT NULL,state TEXT);''')
+            # Reopen the earlier B04 core schema without discarding operation IDs.
+            if 'cancel_requested' not in {row['name'] for row in db.execute('PRAGMA table_info(operations)')}:
+                db.execute('ALTER TABLE operations ADD COLUMN cancel_requested INTEGER NOT NULL DEFAULT 0')
 
     @contextmanager
     def _db(self):
@@ -136,15 +140,15 @@ class Store:
                     raise PolicyError('operation_identity_conflict')
                 return self._view(existing)
             grant=self._grant(db,uid,session)
-            db.execute('INSERT INTO operations VALUES(?,?,?,?,?,?,NULL,?)',
+            db.execute('INSERT INTO operations(id,uid,kind,input_hash,generation,state,result,created) VALUES(?,?,?,?,?,?,NULL,?)',
                 (op,uid,kind,digest,grant['generation'],'planned',self.clock()))
             self._audit(db,'plan',uid,grant['generation'],op,kind,'planned')
-            return {'id':op,'state':'planned','generation':grant['generation'],'result':None}
+            return {'id':op,'state':'planned','generation':grant['generation'],'result':None,'cancel_requested':False}
 
     @staticmethod
     def _view(row):
         return {'id':row['id'],'state':row['state'],'generation':row['generation'],
-                'result':json.loads(row['result']) if row['result'] else None}
+                'result':json.loads(row['result']) if row['result'] else None,'cancel_requested':bool(row['cancel_requested'])}
 
     def inspect(self,uid,op):
         owner(uid);identifier(op)
@@ -152,6 +156,19 @@ class Store:
             row=db.execute('SELECT * FROM operations WHERE id=? AND uid=?',(op,uid)).fetchone()
             if not row:raise PolicyError('operation_unknown')
             return self._view(row)
+
+    def cancel(self,uid,op):
+        # Stopping one's accepted work remains possible after grant revocation.
+        owner(uid);identifier(op)
+        with self._transaction() as db:
+            row=db.execute('SELECT * FROM operations WHERE id=? AND uid=?',(op,uid)).fetchone()
+            if not row:raise PolicyError('operation_unknown')
+            if row['state'] in ('planned','running'):
+                state='canceled' if row['state']=='planned' else 'running'
+                result='{"code":"canceled_before_dispatch"}' if state=='canceled' else row['result']
+                db.execute('UPDATE operations SET cancel_requested=1,state=?,result=? WHERE id=?',(state,result,op))
+                self._audit(db,'cancel_request',uid,row['generation'],op,row['kind'],state)
+        return self.inspect(uid,op)
 
     def dispatch(self,uid,session,op,kind,arguments,apply):
         """Serialize mutations, recheck current grant, durably mark before effect.
