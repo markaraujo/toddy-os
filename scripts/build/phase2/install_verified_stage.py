@@ -14,6 +14,10 @@ from package_copyright import write_copyright
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'wayland': ('1.26.0', 'glibc (>= 2.44-1), libffi (>= 3.8.0-1), libxml2 (>= 2.15.3-1+toddy1)',
+                'wayland-1.26.0.tar.xz', 'usr/lib/libwayland-client.so.0'),
+    'wayland-protocols': ('1.49', 'wayland (>= 1.26.0-1+toddy1)',
+                          'wayland-protocols-1.49.tar.xz', 'usr/share/pkgconfig/wayland-protocols.pc'),
     'libxml2': ('2.15.3', 'glibc (>= 2.44-1), zlib (>= 1.3.2-1)',
                'libxml2-2.15.3.tar.xz', 'usr/lib/pkgconfig/libxml-2.0.pc'),
     'qtsvg': ('6.11.2', 'qtbase (>= 6.11.2-1+toddy1)',
@@ -33,7 +37,16 @@ if __name__ == '__main__':
     version, depends, archive, required = PROFILES[name]
     subprocess.run(['bash', '-c', 'source /opt/toddy-build/scripts/build/target.sh; guard_target'], check=True)
     log = Path('/var/log/toddy/phase2')
-    assert (log / (name+'-1.exit')).read_text().strip() == '0', 'Reconcile actual compiler exit first'
+    qualifier='wayland-recheck-2' if name=='wayland' else name+'-1'
+    assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
+    if name=='wayland':
+        proof=json.loads(Path('/mnt/lfs/sources/phase2/work/wayland-1/qualified-tests.json').read_text())
+        assert proof['total']==26 and proof['original_passed']==6 and proof['corrected_passed']==20 and proof['compiled_binaries_unchanged']
+        command=json.loads((log/'wayland-recheck-2.job.json').read_text())['command']
+        assert command[-1]==(ROOT/'scripts/build/phase2/wayland-recheck.sh').read_text()
+    if name=='wayland-protocols':
+        rows=[json.loads(line) for line in Path('/mnt/lfs/sources/phase2/work/wayland-protocols-1/compile/meson-logs/testlog.json').read_text().splitlines()]
+        assert rows and all(r['result']=='OK' and r['returncode']==0 and not r['is_fail'] for r in rows)
     if name=='libxml2':
         status=json.loads((ROOT/'status.json').read_text())
         assert status['owner_review']['phase_2_approved'] is True

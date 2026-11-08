@@ -2617,6 +2617,31 @@
           ]
         }
       }
+    },
+    {
+      "name": "wayland",
+      "version": "1.26.0",
+      "license": "MIT AND LicenseRef-wayland-per-file",
+      "evidence": "Authenticated root COPYING MIT/Expat-style permission; per-file notices/protocol XML copyrights retained. Source notice review only; native package qualification separate.",
+      "extra_license_headers": {
+        "wayland-1.26.0.tar.xz": {
+          "prefixes": [
+            "src/",
+            "cursor/",
+            "egl/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
+    },
+    {
+      "name": "wayland-protocols",
+      "version": "1.49",
+      "license": "MIT AND LicenseRef-wayland-protocols-per-file",
+      "evidence": "Authenticated root COPYING MIT/Expat-style permission; per-file notices/protocol XML copyrights retained. Source notice review only; native package qualification separate."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

@@ -16,15 +16,16 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-08T02:33:00.332387+00:00
+Last verified: 2026-11-08T02:58:46.550442+00:00
 
 Verified:
 
 - B01 accepted graph and native GLib/GIO/introspection/PyGObject/Qt/Node packages reused; B03 accepted.
 - B04 core/user tools/signed native package and Stop/revoke/recovery verified; final runtime integration blocked by absent native NM/polkit/running system bus.
 - Native libxml2-2.15.3 compile7 programs/3904 regression cases/stage0; native package install/post0/0 and XML external-loader deny/positive control passed. Full-root scans19.328s of22.343s; optimization not enabled.
+- Owned native Wayland1.26 after26 combined tests, unchanged-binary FD correction and postcheck-only EGL metadata reconciliation; actual client/server sync passed. Protocols1.49 native191 tests/install/post0/0.
 
-Running: Implementing pinned Wayland1.26.0/Protocols1.49; libxml2 owned package verified, no guest writer active.
+Running: Continuing selected graphics/font dependencies toward the first GNOME session; no guest writer active.
 
 Remaining:
 

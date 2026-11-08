@@ -1,0 +1,38 @@
+{
+  "scope": "native protocol definitions/scanner/C consumer only, no desktop session",
+  "step": {
+    "step": "b02-wayland-protocols-install",
+    "started": "2026-11-08T02:49:48.618570+00:00",
+    "finished": "2026-11-08T02:49:59.043061+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 192,
+    "log_sha256": "6daf1694c8e3ec4d37e39107e11680f67a47463f91dad26d25ad40b425dc9867"
+  },
+  "success_record_sha256": "2e7354cc2f1a79c830e4925a500c2f7de505b4917af884d505648e03a822109f",
+  "package": {
+    "name": "wayland-protocols",
+    "version": "1.49-1+toddy1",
+    "archive_sha256": "cccd0920af9e4003e1cb7aefb38bf28d20df3c3d06f4357a165c53f817b2f649",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-wayland-protocols-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 9.064,
+        "entries": 92514,
+        "regular_files": 79935,
+        "regular_bytes": 4906651987
+      },
+      {
+        "seconds": 8.896,
+        "entries": 92703,
+        "regular_files": 80063,
+        "regular_bytes": 4907711978
+      }
+    ],
+    "total_seconds": 20.125
+  }
+}

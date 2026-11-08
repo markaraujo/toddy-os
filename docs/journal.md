@@ -1665,3 +1665,11 @@ to the already exposed private/proc/self/fd. alias-probe-1 proved FD/source writ
 denial, caps0, outside/egress refusal, native C and actual parent lock held/released.
 No global security change or unchanged model/foundation suite rerun. Original
 Wayland failure preserved; affected recheck recorded separately.
+
+### B02 native Wayland and protocol packages — 2026-11-08 UTC
+
+Wayland six original+twenty corrected test drivers passed without binary rebuild;
+FD alias guard/lock proof passed. Original install0/post1 reconciled postcheck-only
+0/0 after reading upstream EGL version18.1/backend3; no reinstall. Native client/
+server sync and scanner passed. Protocols1.49 native191 tests/install/post0/0.
+Own archives/notices/provenance retained; no GNOME/compositor acceptance yet.

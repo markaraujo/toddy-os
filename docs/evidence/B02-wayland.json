@@ -1,0 +1,117 @@
+{
+  "scope": "native Wayland libraries/scanner/tests and Unix roundtrip; no compositor/GNOME session",
+  "source": {
+    "source_sha256": "64176eaa46e4969903e286f8e5ef8331affc17fdf03ac9b58381d2b23162b7a3",
+    "reference": "BLFS13.1-systemd general/wayland.html",
+    "book_page_sha256": "eefa2b65220754f29e1aca165c0834bb7aaee385c47b746b08f01d6b4c27a0ef",
+    "source_patches": [],
+    "recipe_sha256": "2f49d8cd39e3dcbdc146f47d020eac4f8d4e7bed983ad437db0f7b4a93294360"
+  },
+  "initial_job_exit": 1,
+  "corrected_job": "wayland-recheck-2",
+  "corrected_job_exit": 0,
+  "tests": {
+    "original_passed": 6,
+    "corrected_passed": 20,
+    "total": 26,
+    "compiled_binaries_unchanged": true,
+    "binary_sha256": {
+      "/build/compile/egl/wayland-egl-abi-check": "c5fdf070a7f82fcf92ac7810d403344ba3e15c9321c767f27a63e176637c46cc",
+      "/build/compile/tests/cpp-compile-test": "8fcbc5e1f4a3edf601c4513235aaae16574ed625dd1792913a2876efb195ad10",
+      "/src/egl/wayland-egl-symbols-check": "c83693d752622765b4cf3804d6a51a3977225d941e9a1e89b21101bd4174a770",
+      "/src/tests/scanner-test.sh": "61c3cdf8b3a91ff0d37c2cca587a017cb2e8d6f50c2173351b27c5be4ea6330e",
+      "/build/compile/tests/client-test": "f2acc442bc30f0cdd7f7b6e047cbcb6c0b5d10e2bf4a915c1bf18a55e95100c6",
+      "/build/compile/tests/array-test": "0f22119fd8fffc0952706b8144ad5c34e111f027ba006d9559d5d8488c219cc1",
+      "/build/compile/tests/fixed-test": "9e36b2ec11446fea85ce61ec605dd1fab3e3ec0ea4ce8dbb864bca838033e385",
+      "/build/compile/tests/interface-test": "f884276e85eb702ddf9a0afd01c344e3434f5081f2444a3afd9b4fc9068fc9f2",
+      "/build/compile/tests/event-loop-test": "d0df278785c97371530a91ebf6b1f321dea953b508c6c705882ca68f4f9e6e8b",
+      "/build/compile/tests/list-test": "8df1e57fd4c299c070f1725893277be2c26954d3ae7392ca5d457feccb6c5d7e",
+      "/build/compile/tests/map-test": "f1d85b708333dae05a5e912a37dbcca5b55f87ed1e785b607034556e5eaad184",
+      "/build/compile/tests/connection-test": "3eaf64cc7799ba61c8b66eeb342065bb99c6f38bc9818951c98ec2859877d0b9",
+      "/build/compile/tests/socket-test": "f468850533846eeb9248aaf36dce9b2ef98cf2f28aa755071afa25c71f67469b",
+      "/build/compile/tests/signal-test": "4dc6a779eea273a77b3fe09a8aa7a2f7ea7d677c05f435175d5264a03cc3f130",
+      "/build/compile/tests/display-test": "e6495c6688bea93b99e0422c5d2fb8def5cfea7a348e11b2349f776002a01322",
+      "/build/compile/tests/queue-test": "6053de953e8355f27da85591b24fa0b074b5964190289842da1da02b462ecbcd",
+      "/build/compile/tests/newsignal-test": "c6757865cb033fe7d7e824117d245b1b9d24e75c103612d03571186ec2428bc8",
+      "/build/compile/tests/resources-test": "8da59d8899d2053f83f7e1c78e1235b7f578702859f5579bf6e71ab3a251b8bf",
+      "/build/compile/tests/protocol-logger-test": "336efc6181c3ac31b6ab5149c5c0745c4c0cc6b793830983f5827c42b75d72d3",
+      "/build/compile/tests/headers-test": "18fd0e927935a8d2b342da226b96cf30db0336dd521036e500aa5d047f79616b",
+      "/build/compile/tests/message-test": "50e090533e85c548bfd71dcb531d2902a68c0475f5f39d9dcdb37758a5f841d9",
+      "/build/compile/tests/compositor-introspection-test": "c25bf2dc953b42bbc0efbd0d29db17aa79386e2e5f50f27e59f3b9f812a84e50",
+      "/build/compile/tests/enum-validator-test": "3f6f0df2f8ce421304e90dccb08a98bc1e58d87f9315d83030d37b845e09c872",
+      "/build/compile/tests/proxy-test": "77a1d0fffe7b2821e1535b736ec0971709f5ee8260e44b8044ca4c0f40025a5f",
+      "/build/compile/tests/sanity-test": "bacbb4edc85bd0a813f00c091ed88fbf52b71530bd715a18995d50e40ebc19c4",
+      "/build/compile/tests/os-wrappers-test": "ea4351f9c2624c6e879120ef1b0a83d37afb69bd9d16965e709e20988eff09a2",
+      "/build/compile/src/wayland-scanner": "41d8d5e8fe7ed269c1aff23d557695891e3420972c62fb53bc5a1c642a85d544"
+    }
+  },
+  "initial_test_log_sha256": "8487a2c22dd3189044a72016ffda8f2c635be2f1f9ba91f7f127c1c65ca3ba38",
+  "corrected_test_log_sha256": "69ba4216a96c150f708a4d1329c814126b8951594e11fa4e214fbb77f513cc78",
+  "original_install": {
+    "step": "b02-wayland-install",
+    "started": "2026-11-08T02:42:11.387811+00:00",
+    "finished": "2026-11-08T02:42:21.751205+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "log_sha256": "650141c879d4f21bfba129032388ed15d522ff761046b27535b97e01b84481b6",
+    "changed_paths": 68
+  },
+  "postcheck_only_reconciliation": {
+    "step": "b02-wayland-postcheck",
+    "started": "2026-11-08T02:44:26.530685+00:00",
+    "finished": "2026-11-08T02:44:36.252688+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "log_sha256": "03bac76b2760f6dcbe5efae68165248ef2a2b3b8c0d1a7a9ddc4a1d2c0f37032",
+    "changed_paths": 1
+  },
+  "post_success_record_sha256": "53b8a81912b64ef2d2d0065088cee764b1f9fb506f2b7d52cb138d0654ecf12c",
+  "package": {
+    "name": "wayland",
+    "version": "1.26.0-1+toddy1",
+    "archive_sha256": "0031e4f647de651dc3209c9692ca8294fb6c408b0cad439ccffa4e4d7ff85f48",
+    "installed": true
+  },
+  "upstream_distinct_egl_pkgconfig_version": "18.1.0; backend3, declared in egl/meson.build",
+  "package_reinstalled": false,
+  "full_root_timing": {
+    "b02-wayland-install": {
+      "step": "b02-wayland-install",
+      "scope": "same full-root snapshot function, timing only",
+      "snapshots": [
+        {
+          "seconds": 9.403,
+          "entries": 92450,
+          "regular_files": 79882,
+          "regular_bytes": 4905579236
+        },
+        {
+          "seconds": 8.825,
+          "entries": 92514,
+          "regular_files": 79935,
+          "regular_bytes": 4906651951
+        }
+      ],
+      "total_seconds": 20.381
+    },
+    "b02-wayland-postcheck": {
+      "step": "b02-wayland-postcheck",
+      "scope": "same full-root snapshot function, timing only",
+      "snapshots": [
+        {
+          "seconds": 9.07,
+          "entries": 92514,
+          "regular_files": 79935,
+          "regular_bytes": 4906651951
+        },
+        {
+          "seconds": 8.852,
+          "entries": 92514,
+          "regular_files": 79935,
+          "regular_bytes": 4906651987
+        }
+      ],
+      "total_seconds": 19.42
+    }
+  }
+}
