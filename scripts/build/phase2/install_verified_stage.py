@@ -14,6 +14,8 @@ from package_copyright import write_copyright
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'pixman': ('0.46.4', 'glibc (>= 2.44-1)',
+               'pixman-0.46.4.tar.gz', 'usr/lib/pkgconfig/pixman-1.pc'),
     'wayland': ('1.26.0', 'glibc (>= 2.44-1), libffi (>= 3.8.0-1), libxml2 (>= 2.15.3-1+toddy1)',
                 'wayland-1.26.0.tar.xz', 'usr/lib/libwayland-client.so.0'),
     'wayland-protocols': ('1.49', 'wayland (>= 1.26.0-1+toddy1)',
@@ -44,8 +46,8 @@ if __name__ == '__main__':
         assert proof['total']==26 and proof['original_passed']==6 and proof['corrected_passed']==20 and proof['compiled_binaries_unchanged']
         command=json.loads((log/'wayland-recheck-2.job.json').read_text())['command']
         assert command[-1]==(ROOT/'scripts/build/phase2/wayland-recheck.sh').read_text()
-    if name=='wayland-protocols':
-        rows=[json.loads(line) for line in Path('/mnt/lfs/sources/phase2/work/wayland-protocols-1/compile/meson-logs/testlog.json').read_text().splitlines()]
+    if name in ('wayland-protocols','pixman'):
+        rows=[json.loads(line) for line in (Path('/mnt/lfs/sources/phase2/work')/(name+'-1')/'compile/meson-logs/testlog.json').read_text().splitlines()]
         assert rows and all(r['result']=='OK' and r['returncode']==0 and not r['is_fail'] for r in rows)
     if name=='libxml2':
         status=json.loads((ROOT/'status.json').read_text())

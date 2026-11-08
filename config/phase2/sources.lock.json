@@ -384,6 +384,18 @@
       "book_md5": "5685f769a227f2d4143d983ad07edaba",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 then frozen for all guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "pixman",
+      "version": "0.46.4",
+      "filename": "pixman-0.46.4.tar.gz",
+      "url": "https://www.cairographics.org/releases/pixman-0.46.4.tar.gz",
+      "sha256": "d09c44ebc3bd5bee7021c79f922fe8fb2fb57f7320f55e97ff9914d2346a591c",
+      "reference": "BLFS13.1-systemd general/pixman.html",
+      "book_page_sha256": "5e4b07e1ad713fe3df2a2204e3844cff904e75a16caeff1f66e7a7797456d4c7",
+      "book_md5": "c08173c8e1d2cc79428d931c13ffda59",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

@@ -1,0 +1,38 @@
+{
+  "scope": "native Pixman pixel operations/owned package only; no graphical session",
+  "step": {
+    "step": "b02-pixman-install",
+    "started": "2026-11-08T03:10:49.044440+00:00",
+    "finished": "2026-11-08T03:10:59.557984+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 59,
+    "log_sha256": "09cac79c55687b3e6256f13fee9e7e17fb4adec4d778343698488c8cc19d2d2a"
+  },
+  "success_record_sha256": "c5f9576ed3c4a9f83de9f1b4b15e5c23fe631d7e4cbaf6de9b0e5213d7dfd9cb",
+  "package": {
+    "name": "pixman",
+    "version": "0.46.4-1+toddy1",
+    "archive_sha256": "29d9b5f9e4f094d450b27b0e6ac5d76f4afc20c4df1f1c093caf0ada2aaf2d09",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-pixman-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 9.174,
+        "entries": 92703,
+        "regular_files": 80063,
+        "regular_bytes": 4907711978
+      },
+      {
+        "seconds": 8.866,
+        "entries": 92757,
+        "regular_files": 80112,
+        "regular_bytes": 4909157659
+      }
+    ],
+    "total_seconds": 20.324
+  }
+}

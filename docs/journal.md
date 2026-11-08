@@ -1673,3 +1673,10 @@ FD alias guard/lock proof passed. Original install0/post1 reconciled postcheck-o
 0/0 after reading upstream EGL version18.1/backend3; no reinstall. Native client/
 server sync and scanner passed. Protocols1.49 native191 tests/install/post0/0.
 Own archives/notices/provenance retained; no GNOME/compositor acceptance yet.
+
+### B02 Pixman native pixel operations — 2026-11-08 UTC
+
+pixman-1 native35 tests/stage0; owned0.46.4 install/post0/0, actual pixel-composite
+consumer and notices verified. No optional GTK/PNG/OpenMP dependencies or repeated
+old suites. Existing kernel config enables virtual DRM/namespaces/seccomp, not a
+hardware test; no kernel rebuild. Next pinned image/font dependencies for GTK.

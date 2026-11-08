@@ -1,0 +1,191 @@
+{
+  "job": "pixman-1",
+  "exit": 0,
+  "scope": "native UID101 pixel library compile/test/stage, no graphical session",
+  "source": {
+    "source_sha256": "d09c44ebc3bd5bee7021c79f922fe8fb2fb57f7320f55e97ff9914d2346a591c",
+    "reference": "BLFS13.1-systemd general/pixman.html",
+    "book_page_sha256": "5e4b07e1ad713fe3df2a2204e3844cff904e75a16caeff1f66e7a7797456d4c7",
+    "source_patches": [],
+    "recipe_sha256": "9db1ec56c7234b61b3b09819f5541d11dce50005736ec2a2a45a9b839f92cf8d"
+  },
+  "outer_tests_passed": 35,
+  "tests": [
+    {
+      "name": "pixman:oob-test",
+      "exit": 0,
+      "seconds": 0.010320901870727539
+    },
+    {
+      "name": "pixman:infinite-loop",
+      "exit": 0,
+      "seconds": 0.00826263427734375
+    },
+    {
+      "name": "pixman:trap-crasher",
+      "exit": 0,
+      "seconds": 0.005951642990112305
+    },
+    {
+      "name": "pixman:region-translate-test",
+      "exit": 0,
+      "seconds": 0.007844924926757812
+    },
+    {
+      "name": "pixman:fetch-test",
+      "exit": 0,
+      "seconds": 0.005948305130004883
+    },
+    {
+      "name": "pixman:a1-trap-test",
+      "exit": 0,
+      "seconds": 0.008342742919921875
+    },
+    {
+      "name": "pixman:fence-image-self-test",
+      "exit": 0,
+      "seconds": 0.02028369903564453
+    },
+    {
+      "name": "pixman:prng-test",
+      "exit": 0,
+      "seconds": 0.011214494705200195
+    },
+    {
+      "name": "pixman:radial-invalid",
+      "exit": 0,
+      "seconds": 0.009261846542358398
+    },
+    {
+      "name": "pixman:pdf-op-test",
+      "exit": 0,
+      "seconds": 0.011080503463745117
+    },
+    {
+      "name": "pixman:region-test",
+      "exit": 0,
+      "seconds": 0.01124882698059082
+    },
+    {
+      "name": "pixman:region-fractional-test",
+      "exit": 0,
+      "seconds": 0.011291980743408203
+    },
+    {
+      "name": "pixman:combiner-test",
+      "exit": 0,
+      "seconds": 0.009557962417602539
+    },
+    {
+      "name": "pixman:alpha-loop",
+      "exit": 0,
+      "seconds": 0.008518218994140625
+    },
+    {
+      "name": "pixman:scaling-helpers-test",
+      "exit": 0,
+      "seconds": 0.03864336013793945
+    },
+    {
+      "name": "pixman:scaling-crash-test",
+      "exit": 0,
+      "seconds": 0.06576275825500488
+    },
+    {
+      "name": "pixman:gradient-crash-test",
+      "exit": 0,
+      "seconds": 0.07538485527038574
+    },
+    {
+      "name": "pixman:rotate-test",
+      "exit": 0,
+      "seconds": 0.1582179069519043
+    },
+    {
+      "name": "pixman:pixel-test",
+      "exit": 0,
+      "seconds": 0.3753044605255127
+    },
+    {
+      "name": "pixman:alphamap",
+      "exit": 0,
+      "seconds": 1.4171175956726074
+    },
+    {
+      "name": "pixman:matrix-test",
+      "exit": 0,
+      "seconds": 1.3782315254211426
+    },
+    {
+      "name": "pixman:filter-reduction-test",
+      "exit": 0,
+      "seconds": 1.5000641345977783
+    },
+    {
+      "name": "pixman:composite-traps-test",
+      "exit": 0,
+      "seconds": 3.247195243835449
+    },
+    {
+      "name": "pixman:glyph-test",
+      "exit": 0,
+      "seconds": 2.268599033355713
+    },
+    {
+      "name": "pixman:region-contains-test",
+      "exit": 0,
+      "seconds": 4.712555885314941
+    },
+    {
+      "name": "pixman:solid-test",
+      "exit": 0,
+      "seconds": 5.141223669052124
+    },
+    {
+      "name": "pixman:stress-test",
+      "exit": 0,
+      "seconds": 7.241351366043091
+    },
+    {
+      "name": "pixman:cover-test",
+      "exit": 0,
+      "seconds": 9.582567691802979
+    },
+    {
+      "name": "pixman:blitters-test",
+      "exit": 0,
+      "seconds": 7.803164958953857
+    },
+    {
+      "name": "pixman:affine-test",
+      "exit": 0,
+      "seconds": 10.065504550933838
+    },
+    {
+      "name": "pixman:neg-stride-test",
+      "exit": 0,
+      "seconds": 0.0038776397705078125
+    },
+    {
+      "name": "pixman:thread-test",
+      "exit": 0,
+      "seconds": 0.031642913818359375
+    },
+    {
+      "name": "pixman:scaling-test",
+      "exit": 0,
+      "seconds": 12.642324447631836
+    },
+    {
+      "name": "pixman:tolerance-test",
+      "exit": 0,
+      "seconds": 21.831101655960083
+    },
+    {
+      "name": "pixman:composite",
+      "exit": 0,
+      "seconds": 23.347062587738037
+    }
+  ],
+  "raw_test_log_sha256": "52d6696668b7554516d49891e367928732bbf316cdc5bf564773a86941b9d9d7"
+}

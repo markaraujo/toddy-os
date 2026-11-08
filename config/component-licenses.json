@@ -2642,6 +2642,23 @@
       "version": "1.49",
       "license": "MIT AND LicenseRef-wayland-protocols-per-file",
       "evidence": "Authenticated root COPYING MIT/Expat-style permission; per-file notices/protocol XML copyrights retained. Source notice review only; native package qualification separate."
+    },
+    {
+      "name": "pixman",
+      "version": "0.46.4",
+      "license": "MIT AND LicenseRef-pixman-per-file",
+      "evidence": "Authenticated root COPYING MIT text/contributor list; per-file compiled C/header notices retained, other corresponding-source conditions apply.",
+      "extra_license_headers": {
+        "pixman-0.46.4.tar.gz": {
+          "prefixes": [
+            "pixman/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
