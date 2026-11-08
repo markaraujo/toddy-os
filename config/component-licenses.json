@@ -2967,6 +2967,252 @@
         "raw_inventory_sha256": "b1130d59078857c29afa6df49d7e963da02d66c2a69f3fa5979de0876ec52c5d",
         "scope": "Source-only audit confirmed by native package notice inventory; exact index and archive SHA in B02-rust-build.json/B02-rustc-install.json."
       }
+    },
+    {
+      "name": "mako",
+      "version": "1.4.1",
+      "license": "MIT",
+      "evidence": "Authenticated BLFS13.1 Mako1.4.1 MIT/AUTHORS retained in owned package; isolated wheel/six real native functional/codegen checks and owned install/post0/0. Readability-only public doc0600\u21920644 correction preserves all bytes. No full pytest suite claim. Build-only Mesa prerequisite, not automatic offline/base/live payload.",
+      "source_notice_evidence": [
+        {
+          "filename": "mako-1.4.1.tar.gz",
+          "sha256": "d7904710b662996425a21627710c4777c45053146942cf8a7aebf757c92b8c27",
+          "notices": [
+            {
+              "path": "mako-1.4.1/AUTHORS",
+              "sha256": "228d95c3bd268d84bbc85714b89c6120688c510b7c15626ec628b0c945b55918"
+            },
+            {
+              "path": "mako-1.4.1/LICENSE",
+              "sha256": "8c1d171bc5d341ad9cd33d5e2c39b96a82c7bd49b3ae89a470c37e5822232054"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1",
+      "license": "MIT",
+      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "source_notice_evidence": [
+        {
+          "filename": "pytest-9.1.1.tar.gz",
+          "sha256": "1088fbde8f2b49d95a549a195707afa7a76a3ce9bcadc26b6d71f0ffda5fe313",
+          "notices": [
+            {
+              "path": "pytest-9.1.1/AUTHORS",
+              "sha256": "a8299b4d736906f437711bf8b88bc90b07162da2134ef6908e6e7845999133b6"
+            },
+            {
+              "path": "pytest-9.1.1/LICENSE",
+              "sha256": "ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.0",
+      "license": "MIT",
+      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "source_notice_evidence": [
+        {
+          "filename": "iniconfig-2.3.0.tar.gz",
+          "sha256": "c76315c77db068650d49c5b56314774a7804df16fee4402c1f19d6d15d8c4730",
+          "notices": [
+            {
+              "path": "iniconfig-2.3.0/LICENSE",
+              "sha256": "3409fa91f7ace557894632676656e32264fe5ef7581535725dc9a23774551bd4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pluggy",
+      "version": "1.6.0",
+      "license": "MIT",
+      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "source_notice_evidence": [
+        {
+          "filename": "pluggy-1.6.0.tar.gz",
+          "sha256": "7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3",
+          "notices": [
+            {
+              "path": "pluggy-1.6.0/LICENSE",
+              "sha256": "d6b65e6c213a5d0b577911d34d6e5949b9f59d76c238c5071a2f3fc16cfb2606"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pygments",
+      "version": "2.20.0",
+      "license": "BSD-2-Clause",
+      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "source_notice_evidence": [
+        {
+          "filename": "pygments-2.20.0.tar.gz",
+          "sha256": "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f",
+          "notices": [
+            {
+              "path": "pygments-2.20.0/AUTHORS",
+              "sha256": "0db603a5f4499f690c4425477ff664c166da325d3acc3b5a8d4de3db072443d0"
+            },
+            {
+              "path": "pygments-2.20.0/LICENSE",
+              "sha256": "a9d66f1d526df02e29dce73436d34e56e8632f46c275bbdffc70569e882f9f17"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "setuptools-scm",
+      "version": "10.1.2",
+      "license": "MIT",
+      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "source_notice_evidence": [
+        {
+          "filename": "setuptools_scm-10.1.2.tar.gz",
+          "sha256": "24079818acc46e99aae0d65b8d511fafe965970d9cbd060c7b9f7275ded520fb",
+          "notices": [
+            {
+              "path": "setuptools_scm-10.1.2/LICENSE",
+              "sha256": "89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "vcs-versioning",
+      "version": "2.2.4",
+      "license": "MIT",
+      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "source_notice_evidence": [
+        {
+          "filename": "vcs_versioning-2.2.4.tar.gz",
+          "sha256": "ed718fdee42170e128a8add6f23f53aa64dc7d9ab2de87d3083a691df881a809",
+          "notices": [
+            {
+              "path": "vcs_versioning-2.2.4/LICENSE.txt",
+              "sha256": "f52f6085a2f4acdb7f425fac78d4bb013b2d723616792fb173a9f8aea191d8f0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hatchling",
+      "version": "1.32.0",
+      "license": "MIT",
+      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "source_notice_evidence": [
+        {
+          "filename": "hatchling-1.32.0.tar.gz",
+          "sha256": "0bdbde4a52b06c37e3eca395f85a762bf0ef06fe374fd8ae429dc6be10230f5f",
+          "notices": [
+            {
+              "path": "hatchling-1.32.0/LICENSE.txt",
+              "sha256": "7f143a8127ad4873862d70854b5bd2abd0085aa73e64fd2b08704a3b9f5c07fc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pathspec",
+      "version": "1.1.1",
+      "license": "MPL-2.0",
+      "evidence": "Authenticated frozen/explicit upstream build-backend source; exact original legal text hashes retained. Native build/runtime qualification pending. Build/test-only prerequisite, not automatic base/live/catalog availability.",
+      "source_notice_evidence": [
+        {
+          "filename": "pathspec-1.1.1.tar.gz",
+          "sha256": "17db5ecd524104a120e173814c90367a96a98d07c45b2e10c2f3919fff91bf5a",
+          "notices": [
+            {
+              "path": "pathspec-1.1.1/LICENSE",
+              "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tomlkit",
+      "version": "0.15.1",
+      "license": "MIT",
+      "evidence": "Authenticated frozen/explicit upstream build-backend source; exact original legal text hashes retained. Native build/runtime qualification pending. Build/test-only prerequisite, not automatic base/live/catalog availability.",
+      "source_notice_evidence": [
+        {
+          "filename": "tomlkit-0.15.1.tar.gz",
+          "sha256": "e25bbf38843005246210a12982776f27f99cb9be67160e14434d0c0d21ee1e97",
+          "notices": [
+            {
+              "path": "tomlkit-0.15.1/LICENSE",
+              "sha256": "f2f9b460ba719da6626add264d3782f275a4ff7aab677beda08b330911e23adb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "trove-classifiers",
+      "version": "2026.6.1.19",
+      "license": "Apache-2.0",
+      "evidence": "Authenticated frozen/explicit upstream build-backend source; exact original legal text hashes retained. Native build/runtime qualification pending. Build/test-only prerequisite, not automatic base/live/catalog availability.",
+      "source_notice_evidence": [
+        {
+          "filename": "trove_classifiers-2026.6.1.19.tar.gz",
+          "sha256": "c5132b4b61a829d11cfbd2d72e97f20a45ed6edb95e45c5efdeb5e00836b2745",
+          "notices": [
+            {
+              "path": "trove_classifiers-2026.6.1.19/LICENSE",
+              "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "poetry-core",
+      "version": "2.4.1",
+      "license": "MIT",
+      "evidence": "Authenticated frozen/explicit upstream build-backend source; exact original legal text hashes retained. Native build/runtime qualification pending. Build/test-only prerequisite, not automatic base/live/catalog availability.",
+      "source_notice_evidence": [
+        {
+          "filename": "poetry_core-2.4.1.tar.gz",
+          "sha256": "89dceb6c10e9c6d8650a16183400e3c9ff9ddee13b0a81023b5575334a2b3744",
+          "notices": [
+            {
+              "path": "poetry_core-2.4.1/LICENSE",
+              "sha256": "f1978133782b90f4733bc308ddb19267c3fe04797c88d9ed3bc219032495a982"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "calver",
+      "version": "2025.10.20",
+      "license": "Apache-2.0",
+      "evidence": "Authenticated frozen/explicit upstream build-backend source; exact original legal text hashes retained. Native build/runtime qualification pending. Build/test-only prerequisite, not automatic base/live/catalog availability.",
+      "source_notice_evidence": [
+        {
+          "filename": "calver-2025.10.20.tar.gz",
+          "sha256": "c98b376c2424642224d456b2f70c51402343e008c63d204634665e1a2a2835f5",
+          "notices": [
+            {
+              "path": "calver-2025.10.20/LICENSE",
+              "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+            }
+          ]
+        }
+      ]
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

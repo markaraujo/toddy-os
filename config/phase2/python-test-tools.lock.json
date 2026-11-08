@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "scope": "Build/test-only Python tools for native keyboard/graphics validation; no base/live/catalog enablement",
+  "status": "source_prepared_native_qualification_pending",
+  "reuse_native": {
+    "python": "3.14",
+    "packaging": "26.3",
+    "setuptools": "84.0.0",
+    "flit_core": "existing native >=3.2,<5",
+    "wheel": "existing native wheel/pip"
+  },
+  "packages": [
+    {
+      "name": "calver",
+      "version": "2025.10.20",
+      "archive": "calver-2025.10.20.tar.gz",
+      "source_sha256": "c98b376c2424642224d456b2f70c51402343e008c63d204634665e1a2a2835f5",
+      "source_root": "calver-2025.10.20",
+      "source_date_epoch": 1760918400
+    },
+    {
+      "name": "vcs-versioning",
+      "version": "2.2.4",
+      "archive": "vcs_versioning-2.2.4.tar.gz",
+      "source_sha256": "ed718fdee42170e128a8add6f23f53aa64dc7d9ab2de87d3083a691df881a809",
+      "source_root": "vcs_versioning-2.2.4",
+      "source_date_epoch": 1780340400
+    },
+    {
+      "name": "setuptools-scm",
+      "version": "10.1.2",
+      "archive": "setuptools_scm-10.1.2.tar.gz",
+      "source_sha256": "24079818acc46e99aae0d65b8d511fafe965970d9cbd060c7b9f7275ded520fb",
+      "source_root": "setuptools_scm-10.1.2",
+      "source_date_epoch": 1780340400
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.0",
+      "archive": "iniconfig-2.3.0.tar.gz",
+      "source_sha256": "c76315c77db068650d49c5b56314774a7804df16fee4402c1f19d6d15d8c4730",
+      "source_root": "iniconfig-2.3.0",
+      "source_date_epoch": 1780340400
+    },
+    {
+      "name": "pluggy",
+      "version": "1.6.0",
+      "archive": "pluggy-1.6.0.tar.gz",
+      "source_sha256": "7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3",
+      "source_root": "pluggy-1.6.0",
+      "source_date_epoch": 1780340400
+    },
+    {
+      "name": "poetry-core",
+      "version": "2.4.1",
+      "archive": "poetry_core-2.4.1.tar.gz",
+      "source_sha256": "89dceb6c10e9c6d8650a16183400e3c9ff9ddee13b0a81023b5575334a2b3744",
+      "source_root": "poetry_core-2.4.1",
+      "source_date_epoch": 1780340400
+    },
+    {
+      "name": "pathspec",
+      "version": "1.1.1",
+      "archive": "pathspec-1.1.1.tar.gz",
+      "source_sha256": "17db5ecd524104a120e173814c90367a96a98d07c45b2e10c2f3919fff91bf5a",
+      "source_root": "pathspec-1.1.1",
+      "source_date_epoch": 1780340400
+    },
+    {
+      "name": "tomlkit",
+      "version": "0.15.1",
+      "archive": "tomlkit-0.15.1.tar.gz",
+      "source_sha256": "e25bbf38843005246210a12982776f27f99cb9be67160e14434d0c0d21ee1e97",
+      "source_root": "tomlkit-0.15.1",
+      "source_date_epoch": 1780340400
+    },
+    {
+      "name": "trove-classifiers",
+      "version": "2026.6.1.19",
+      "archive": "trove_classifiers-2026.6.1.19.tar.gz",
+      "source_sha256": "c5132b4b61a829d11cfbd2d72e97f20a45ed6edb95e45c5efdeb5e00836b2745",
+      "source_root": "trove_classifiers-2026.6.1.19",
+      "source_date_epoch": 1780340400
+    },
+    {
+      "name": "hatchling",
+      "version": "1.32.0",
+      "archive": "hatchling-1.32.0.tar.gz",
+      "source_sha256": "0bdbde4a52b06c37e3eca395f85a762bf0ef06fe374fd8ae429dc6be10230f5f",
+      "source_root": "hatchling-1.32.0",
+      "source_date_epoch": 1780340400
+    },
+    {
+      "name": "pygments",
+      "version": "2.20.0",
+      "archive": "pygments-2.20.0.tar.gz",
+      "source_sha256": "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f",
+      "source_root": "pygments-2.20.0",
+      "source_date_epoch": 1780340400
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1",
+      "archive": "pytest-9.1.1.tar.gz",
+      "source_sha256": "1088fbde8f2b49d95a549a195707afa7a76a3ce9bcadc26b6d71f0ffda5fe313",
+      "source_root": "pytest-9.1.1",
+      "source_date_epoch": 1780340400
+    }
+  ],
+  "version_rule": "Every resulting wheel metadata version must equal its frozen source version. Calver/Trove SOURCE_DATE_EPOCH prevents current-date drift. No dependency downloads or foundation upgrades."
+}

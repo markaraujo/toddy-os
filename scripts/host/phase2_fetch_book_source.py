@@ -23,14 +23,32 @@ def reference_scope(tree, anchor):
     raise AssertionError('Package anchor has no scoped section')
 
 
+def dependency_reference_allowed(reference, parent_name, components, read_node=graph.node):
+    parents=[row for row in components if row['name']==parent_name]
+    assert len(parents)==1, 'Select one already frozen parent source'
+    parent=parents[0]
+    assert parent['reference'].startswith('BLFS13.1-systemd ')
+    parent_ref=parent['reference'].removeprefix('BLFS13.1-systemd ')
+    assert re.fullmatch(r'[A-Za-z0-9/_+.-]+[.]html(?:#[A-Za-z0-9_+.-]+)?',parent_ref)
+    node=read_node(parent_ref)
+    assert node['book_page_sha256']==parent['book_page_sha256']
+    return any(edge['reference']==reference and edge['kind'] in {'required','recommended'}
+               for edge in node['edges'])
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('reference');parser.add_argument('name');parser.add_argument('version')
+    parser.add_argument('--dependency-of', help='Explicit required/recommended dependency of one already frozen leaf')
     args=parser.parse_args()
     assert re.fullmatch(r'[a-z0-9][a-z0-9+.-]{0,95}',args.name)
     assert re.fullmatch(r'[0-9][a-zA-Z0-9._+-]{0,95}',args.version)
     nodes=json.loads((ROOT/'config/phase2/desktop-dependencies.json').read_text())['nodes']
-    assert args.reference in nodes or any(e['reference']==args.reference for n in nodes.values() for e in n['edges']), 'Source must belong to the selected graph or an explicit referenced dependency'
+    selected=args.reference in nodes or any(e['reference']==args.reference for n in nodes.values() for e in n['edges'])
+    if not selected and args.dependency_of:
+        components=json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components']
+        selected=dependency_reference_allowed(args.reference,args.dependency_of,components)
+    assert selected, 'Source must belong to the selected graph or an explicit frozen-parent dependency'
     node=nodes.get(args.reference) or graph.node(args.reference)
     filename,_,anchor=args.reference.partition('#')
     page=graph.BOOK/filename;raw=page.read_bytes()

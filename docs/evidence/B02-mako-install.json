@@ -1,0 +1,38 @@
+{
+  "scope": "Native owned Mako1.4.1 build-only template/code-generation prerequisite, six actual native consumers; original source-only readability failure preserved, no full pytest suite or graphical acceptance",
+  "step": {
+    "step": "b02-mako-install",
+    "started": "2026-11-08T11:08:13.566737+00:00",
+    "finished": "2026-11-08T11:08:26.996126+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 58,
+    "log_sha256": "fa700cf0aaeaf670445b61d3e88b5978b23cbc981ff90df55fcb326c041f4c00"
+  },
+  "success_record_sha256": "9148e77c6b67ecba3d9f93ce609f81f6493479a01e9d46dacec723ff0254098b",
+  "package": {
+    "name": "mako",
+    "version": "1.4.1-1+toddy1",
+    "archive_sha256": "c756322bb52db1a542afff87b51cea84b8985e2d2229b84281449273e04f2a02",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-mako-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 12.641,
+        "entries": 121478,
+        "regular_files": 107525,
+        "regular_bytes": 6344011205
+      },
+      {
+        "seconds": 11.758,
+        "entries": 121533,
+        "regular_files": 107573,
+        "regular_bytes": 6344303229
+      }
+    ],
+    "total_seconds": 26.907
+  }
+}

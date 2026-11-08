@@ -1957,3 +1957,23 @@ affected drivers with original binaries unchanged;11 font SHA inputs retained.
 Unrelated core/metric cases reused and original golden failure preserved. No
 graphical GNOME/browser acceptance. Next native Mako/keyboard/graphics prerequisites,
 Pytest/backends host source cache only, one guest writer remains required.
+
+### B02 native Mako and scoped test-tool source closure — 2026-11-08 UTC
+
+Mako1.4.1 first copy failed before wheel: one public archive doc was0600/root
+owned. Verify archive and extracted contentSHA a5620499...1e31, normalize only
+that file0644 with explicit operation/prepared receipt; all bytes/version intact.
+Preserve partial source and original failure. Resume2 native0, wheel and six real
+Unicode/escape/loop/inheritance-cache/syntax-rejection/C-codegen consumers asUID101.
+Owned install/post0/0, same six installed consumers, original MIT/AUTHORS retained.
+No full pytest or GUI acceptance. Source helper records the normalization for
+fresh builds rather than weakening compiler isolation or global permissions.
+
+Pytest's frozen backend closure is source-prepared only. Existing native
+packaging26.3/Setuptools84/flit_core are reused; no foundation upgrade. Poetry-core
+2.4.1/Pathspec1.1.1/Tomlkit0.15.1/Trove-Classifiers2026.6.1.19 source pinned from
+required frozen leaf links. Trove's actual pyproject also requires Calver absent
+from its book paragraph: official PyPI2025.10.20 source SHA c98b376c...835f5 frozen,
+not a product runtime dependency. Its documented SOURCE_DATE_EPOCH control must
+preserve Trove's2026.6.1.19 calendar version when building later; do not silently
+produce a current-date package. Native test-tool build/qualification remains next.

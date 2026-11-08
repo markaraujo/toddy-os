@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'mako': ('1.4.1', 'python (>= 3.14), python (<< 3.15), markupsafe (>= 2.0)',
+              'mako-1.4.1.tar.gz', 'usr/lib/python3.14/site-packages/mako/__init__.py'),
     'rustc': ('1.97.1', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), llvm-runtime (= 22.1.8-1+toddy1), curl (>= 8.23.0-1), openssl (>= 4.0.3-1), sqlite (>= 3.53.4-1), zlib (>= 1.3.2-1)',
                'rustc-1.97.1-src.tar.xz', 'usr/bin/rustc'),
     'dejavu-fonts': ('2.37', 'fontconfig (>= 2.18.3-1+toddy1)',
@@ -79,7 +81,8 @@ if __name__ == '__main__':
     llvm_resume=name=='llvm' and (log/'llvm-qualify-resume-3.job.json').exists()
     llvm_recovery=name=='llvm' and (log/'llvm-qualify-recovery-4.job.json').exists()
     rust_legacy=name=='rustc' and (log/'rustc-tools-finish-8.job.json').exists()
-    qualifier=('rustc-tools-finish-8' if rust_legacy else 'rustc-stage-4') if name=='rustc' else 'pango-stage-6' if name=='pango' else 'llvm-qualify-recovery-4' if llvm_recovery else 'llvm-qualify-resume-3' if llvm_resume else 'llvm-qualify-2' if name=='llvm' else 'wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
+    mako_resume=name=='mako' and (log/'mako-resume-2.job.json').exists()
+    qualifier=('rustc-tools-finish-8' if rust_legacy else 'rustc-stage-4') if name=='rustc' else 'mako-resume-2' if mako_resume else 'pango-stage-6' if name=='pango' else 'llvm-qualify-recovery-4' if llvm_recovery else 'llvm-qualify-resume-3' if llvm_resume else 'llvm-qualify-2' if name=='llvm' else 'wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
         work=Path('/mnt/lfs/sources/phase2/work/rustc-1')
@@ -148,6 +151,24 @@ if __name__ == '__main__':
         assert proof['version']=='7.2.2' and proof['uid']==101
         assert proof['own_process_memory_cpu'] and proof['timeout_then_terminate_exit']==-15
         assert proof['recursive_child_kill_and_reap']
+    if name=='mako':
+        source=Path('/mnt/lfs/sources/phase2/inputs/mako-1.4.1')
+        work=Path('/mnt/lfs/sources/phase2/work/mako-1')
+        proof=json.loads((work/'consumer.json').read_text())
+        assert proof['version']=='1.4.1' and proof['uid']==101 and proof['c_consumer_exit']==0
+        assert proof['checks']==['unicode-expression','html-escape','loop','lookup-inheritance-cache',
+                                 'invalid-syntax-rejected','generated-c-compile-execute']
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/mako-build.sh').read_bytes()
+        assert (source/'toddy-probe.py').read_bytes()==(ROOT/'scripts/build/phase2/mako-probe.py').read_bytes()
+        assert json.loads((log/'mako-1.job.json').read_text())['command'][-1]=='/src/toddy-build.sh'
+        if mako_resume:
+            assert (log/'mako-1.exit').read_text().strip()=='1'
+            assert 'Permission denied' in (log/'mako-1.log').read_text()
+            assert json.loads((log/'mako-resume-2.job.json').read_text())['command'][-1]==(ROOT/'scripts/build/phase2/mako-resume.sh').read_text()
+        receipt=json.loads((source/'toddy-prepared.json').read_text())
+        assert receipt['source_patches']==[{'path':'doc/build/changelog.rst','before_mode':0o600,'after_mode':0o644,
+                'content_sha256':'a5620499d6c083972b0ba7ea307b99b06e783966fa46b3e5c73d00fe96f51e31',
+                'reason':'Public release doc is owner-readable only; expose unchanged bytes to unprivileged read-only-input compiler'}]
     if name=='libjpeg-turbo':
         import xml.etree.ElementTree as ET
         work=Path('/mnt/lfs/sources/phase2/work/libjpeg-turbo-1')

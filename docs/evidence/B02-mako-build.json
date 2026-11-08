@@ -1,0 +1,60 @@
+{
+  "scope": "Native isolated build and six actual template/code-generation consumers; source-only initial permission failure preserved, no full pytest suite",
+  "original_job_exit": 1,
+  "corrected_job_exit": 0,
+  "prepared": {
+    "source_sha256": "d7904710b662996425a21627710c4777c45053146942cf8a7aebf757c92b8c27",
+    "reference": "BLFS13.1-systemd general/python-modules.html#Mako",
+    "book_page_sha256": "eeca0df3449c611069e44d356162b7438e05151c39d225e72c601f049a66a72d",
+    "source_patches": [
+      {
+        "path": "doc/build/changelog.rst",
+        "before_mode": 384,
+        "after_mode": 420,
+        "content_sha256": "a5620499d6c083972b0ba7ea307b99b06e783966fa46b3e5c73d00fe96f51e31",
+        "reason": "Public release doc is owner-readable only; expose unchanged bytes to unprivileged read-only-input compiler"
+      }
+    ],
+    "recipe_sha256": "6be23895bf07abd59325f2da8a96e94f8cd5062e96b5a8143388b08b84bf0468",
+    "probe_sha256": "0bcaa992ac624d1cd426be03699f8440968388ed1f097c59f10b6c75dc6377e7"
+  },
+  "consumer": {
+    "version": "1.4.1",
+    "uid": 101,
+    "checks": [
+      "unicode-expression",
+      "html-escape",
+      "loop",
+      "lookup-inheritance-cache",
+      "invalid-syntax-rejected",
+      "generated-c-compile-execute"
+    ],
+    "c_consumer_exit": 0,
+    "scope": "Six actual native library/code-generation consumers; pytest upstream suite not executed"
+  },
+  "installed_consumer": {
+    "version": "1.4.1",
+    "uid": 0,
+    "checks": [
+      "unicode-expression",
+      "html-escape",
+      "loop",
+      "lookup-inheritance-cache",
+      "invalid-syntax-rejected",
+      "generated-c-compile-execute"
+    ],
+    "c_consumer_exit": 0,
+    "scope": "Six actual native library/code-generation consumers; pytest upstream suite not executed"
+  },
+  "readability": {
+    "state": "verified",
+    "patch": {
+      "path": "doc/build/changelog.rst",
+      "before_mode": 384,
+      "after_mode": 420,
+      "content_sha256": "a5620499d6c083972b0ba7ea307b99b06e783966fa46b3e5c73d00fe96f51e31",
+      "reason": "Public release doc is owner-readable only; expose unchanged bytes to unprivileged read-only-input compiler"
+    },
+    "archive_code_bytes_changed": false
+  }
+}
