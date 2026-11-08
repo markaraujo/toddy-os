@@ -19,6 +19,12 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gtk': ('4.22.4', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), pango (= 1.58.2-1+toddy1), cairo (>= 1.18.4-1+toddy1), harfbuzz (>= 14.3.1-1+toddy1), fribidi (>= 1.0.16-1+toddy1), fontconfig (>= 2.18.3-1+toddy1), gdk-pixbuf (= 2.44.7-1+toddy2), graphene (= 1.10.8-1+toddy1), libepoxy (= 1.5.10-1+toddy1), wayland (>= 1.26.0-1+toddy1), libxkbcommon (= 1.13.2-1+toddy1), libpng (>= 1.6.58-1+toddy1), libjpeg-turbo (= 3.2.0-1+toddy1), tiff (= 4.7.2-1+toddy1), librsvg (= 2.62.3-1+toddy1), iso-codes (= 4.20.1-1+toddy1)',
+            'gtk-4.22.4.tar.xz', 'usr/lib/girepository-1.0/Gtk-4.0.typelib'),
+    'iso-codes': ('4.20.1', 'glibc (>= 2.44-1)',
+                  'iso-codes-v4.20.1.tar.gz', 'usr/share/iso-codes/json/iso_3166-1.json'),
+    'tiff': ('4.7.2', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), libjpeg-turbo (= 3.2.0-1+toddy1), zlib (>= 1.3.2-1), xz (>= 5.8.3-1), zstd (>= 1.5.7-1)',
+             'tiff-4.7.2.tar.gz', 'usr/lib/libtiff.so.6'),
     'gdk-pixbuf': ('2.44.7', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), libpng (>= 1.6.58-1+toddy1), libjpeg-turbo (= 3.2.0-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)',
                     'gdk-pixbuf-2.44.7.tar.xz', 'usr/lib/girepository-1.0/GdkPixbuf-2.0.typelib'),
     'libepoxy': ('1.5.10', 'glibc (>= 2.44-1), mesa (= 26.1.7-1+toddy1)',
@@ -433,6 +439,43 @@ if __name__ == '__main__':
         assert {t['name'] for t in tests}=={'testdict','testchar','testparser','testrecurse','testcatalog','testapi','runtest'}
         assert len(tests)==7 and all(t['exit']==0 for t in tests)
         assert (work/'test-logs/runtest.log').read_text().rstrip().endswith('Total 3904 tests, no errors')
+    if name=='gtk':
+        import re
+        work=Path('/mnt/lfs/sources/phase2/work/gtk-1');source=Path('/mnt/lfs/sources/phase2/inputs/gtk-4.22.4')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/gtk-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/gtk-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==proof['gi_exit']==0
+        tests=proof['upstream_selected'];assert len(tests)==3 and {r['name'] for r in tests}=={'bitset','stringlist','rgba'}
+        for r in tests:
+            assert r['native_exit']==0 and (work/('upstream-'+r['name']+'.exit')).read_text().strip()=='0'
+            text=(work/('upstream-'+r['name']+'.log')).read_text()
+            assert len(re.findall(r'^ok\s+\d+',text,re.M))==r['passed_cases'] and r['passed_cases']>0
+            assert not re.search(r'^not ok|#\s*SKIP',text,re.M)
+        assert hashlib.sha256((work/'stage/usr/share/glib-2.0/schemas/gschemas.compiled').read_bytes()).hexdigest()==proof['schema_cache_sha256']
+        volume=json.loads((log/'gtk-build-volume.json').read_text());assert volume['state']=='mounted'
+        assert subprocess.check_output(['findmnt','-n','-o','UUID','--mountpoint',str(work)],text=True).strip()==volume['filesystem_uuid']
+    if name=='iso-codes':
+        work=Path('/mnt/lfs/sources/phase2/work/iso-codes-1')
+        source=Path('/mnt/lfs/sources/phase2/inputs/iso-codes-v4.20.1')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/iso-codes-build.sh').read_bytes()
+        assert (source/'toddy-probe.py').read_bytes()==(ROOT/'scripts/build/phase2/iso-codes-probe.py').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text())
+        assert proof['staged_consumer_exit']==0 and proof['registered_drivers']==8
+        results=proof['actual_source_utf8'];assert len(results)==8
+        assert all(r['native_exit']==0 and r['actual_po_files']>0 for r in results)
+        for row in results:
+            assert len(list((source/row['domain']).glob('*.po')))==row['actual_po_files']
+            assert (work/('utf8-'+row['domain']+'.exit')).read_text().strip()=='0'
+    if name=='tiff':
+        import xml.etree.ElementTree as ET
+        work=Path('/mnt/lfs/sources/phase2/work/tiff-1')
+        source=Path('/mnt/lfs/sources/phase2/inputs/tiff-4.7.2')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/tiff-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/tiff-probe.c').read_bytes()
+        report=ET.parse(work/'ctest.xml').getroot();cases=report.findall('.//testcase')
+        assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
+        proof=json.loads((work/'test-results.json').read_text())
+        assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
     assert not (source/'.toddy-retired.json').exists(),'Stage retired under verified archive custody; reuse the native package, no promotion replay'
     before = inspect_stage(source)

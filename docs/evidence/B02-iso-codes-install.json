@@ -1,0 +1,48 @@
+{
+  "scope": "Owned native ISO country/language data, actual nonempty source UTF8 coverage and Portuguese gettext verification; no graphical locale UI acceptance",
+  "step": {
+    "step": "b02-iso-codes-install",
+    "started": "2026-11-08T15:41:09.028266+00:00",
+    "finished": "2026-11-08T15:41:40.396609+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 1327,
+    "log_sha256": "b2048c0e9699c99a124ae65212f4ab69da8ad860537b8b14d4014e3962ff0ef4"
+  },
+  "success_record_sha256": "5c2ed383d15aa38eafbe82e148cd0933e1ae7f1f9d1083f8d4f3970c709caa2f",
+  "package": {
+    "name": "iso-codes",
+    "version": "4.20.1-1+toddy1",
+    "archive_sha256": "343be27edb43dfca6ce555f9c01e5c3c32206431e24aa37b8ac5395482b0d6a6",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-iso-codes-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 27.858,
+        "entries": 134736,
+        "regular_files": 120368,
+        "regular_bytes": 6625088108
+      },
+      {
+        "seconds": 23.272,
+        "entries": 136060,
+        "regular_files": 121107,
+        "regular_bytes": 6648646864
+      }
+    ],
+    "total_seconds": 60.2
+  },
+  "consumer": {
+    "native_consumer_exit": 0,
+    "consumer": {
+      "scope": "Real native country/language database and Portuguese translation data, not graphical locale selection",
+      "json_files": 16,
+      "countries": 249,
+      "languages": 7923,
+      "pt_BR_Brazil": "Brasil"
+    }
+  }
+}

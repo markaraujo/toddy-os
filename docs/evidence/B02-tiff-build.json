@@ -1,0 +1,22 @@
+{
+  "scope": "Actual native TIFF upstream tests and compressed image roundtrip/invalid input refusal; no graphical session",
+  "registered_tests": 156,
+  "upstream_exit": 0,
+  "staged_consumer_exit": 0,
+  "native_image_stdout": "/tmp/toddy-tiff-XwcKbB: Cannot read TIFF header.\nNative TIFF LZW/Deflate exact RGB roundtrip and invalid header refusal with16MiB allocation bound passed\n",
+  "input": {
+    "source_sha256": "672bd7d10aee4606171afb864f3570b83340f6a33e2c186dc0512f7145ffdf6a",
+    "reference": "BLFS13.1-systemd general/tiff.html",
+    "book_page_sha256": "6d48dfa16864db4fbba28919ce59e9c07db37ae73ab046a1887de3b3c8ae5be5",
+    "source_patches": [],
+    "recipe_sha256": "811d2f0f2266fa561375229f1d5fe6a74328fa21b47b497999eb21e95026940b",
+    "probe_sha256": "54c5c87c6d6f01f433406f9f882b8d96a2e6645289e834c1db74f1fba6bee6fb"
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-tiff-native-evidence.tar.gz",
+    "bytes": 208801,
+    "sha256": "30eeb8567db3d60a60885289616daa60e9c3eac88c41af2a37a00fdc77ea8984",
+    "members": 16,
+    "scope": "Raw TIFF native156upstreamcases/LZW-Deflate image/refusal/owned package proof; retain final release"
+  }
+}

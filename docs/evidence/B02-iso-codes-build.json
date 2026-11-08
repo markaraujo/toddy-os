@@ -1,0 +1,70 @@
+{
+  "scope": "Native ISO data/gettext APIs and actual source-file UTF8 checks; no window/session acceptance",
+  "registered_drivers": 8,
+  "registered_driver_note": "Bare-domain checker glob can be empty; not used alone as UTF8 evidence",
+  "actual_source_utf8": [
+    {
+      "domain": "iso_15924",
+      "actual_po_files": 70,
+      "native_exit": 0
+    },
+    {
+      "domain": "iso_3166-1",
+      "actual_po_files": 159,
+      "native_exit": 0
+    },
+    {
+      "domain": "iso_3166-2",
+      "actual_po_files": 70,
+      "native_exit": 0
+    },
+    {
+      "domain": "iso_3166-3",
+      "actual_po_files": 112,
+      "native_exit": 0
+    },
+    {
+      "domain": "iso_4217",
+      "actual_po_files": 64,
+      "native_exit": 0
+    },
+    {
+      "domain": "iso_639-2",
+      "actual_po_files": 101,
+      "native_exit": 0
+    },
+    {
+      "domain": "iso_639-3",
+      "actual_po_files": 94,
+      "native_exit": 0
+    },
+    {
+      "domain": "iso_639-5",
+      "actual_po_files": 45,
+      "native_exit": 0
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "consumer": {
+    "scope": "Real native country/language database and Portuguese translation data, not graphical locale selection",
+    "json_files": 16,
+    "countries": 249,
+    "languages": 7923,
+    "pt_BR_Brazil": "Brasil"
+  },
+  "input": {
+    "source_sha256": "2d7d9f6084ab9ce6c534ce71a3dd5144b6e474f3c97616459a88f73f44a64bff",
+    "reference": "BLFS13.1-systemd general/iso-codes.html",
+    "book_page_sha256": "c4517c8fcff589c4c9a1e1059635b54a8548376f317a3f1d3cf48ea535ec4d73",
+    "source_patches": [],
+    "recipe_sha256": "62df28ff8e688d995d9b42641c908368727c72ec78aeb46fd8270e3f1e758e69",
+    "probe_sha256": "4804ca310326f8ec896fcb13ab58e9a79ec39b5dd6405107351e311190a0445e"
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-iso-codes-native-evidence.tar.gz",
+    "bytes": 190177,
+    "sha256": "51116323c5984f4ee0f671d9e3b305f953fad3f8282d1da7b76a897f9e56eb31",
+    "members": 36,
+    "scope": "Raw native ISO data/gettext/source715UTF8files, original driver empty-glob caveat and owned-package proof; retain final release"
+  }
+}

@@ -1,0 +1,399 @@
+{
+  "scope": "Native SVG renderer/staged C API and Gdk loader; upstream golden still failed, selected Pango1.58 geometry independently qualified under ADR0134; no GUI/session acceptance",
+  "tests": [
+    {
+      "name": "librsvg:Rust tests (rsvg)",
+      "result": "FAIL",
+      "returncode": 1
+    },
+    {
+      "name": "librsvg:Rust tests (librsvg)",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "librsvg:C API tests",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "librsvg:Rust tests (rsvg_convert)",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "librsvg:Rust tests (pixbufloader-svg)",
+      "result": "OK",
+      "returncode": 0
+    }
+  ],
+  "known_golden_failure": {
+    "name": "tests::svg1_1_text_text_03_b_svg",
+    "upstream_passed": false,
+    "pango_geometry_oracle": {
+      "pango_version": "1.58.2",
+      "origin_x": 39,
+      "baseline_y": 147,
+      "logical_x": 0.0,
+      "logical_width": 177.484375,
+      "ink_x": 2.640625,
+      "ink_width": 172.71875,
+      "strike_y": 139.0,
+      "strike_height": 1.59375,
+      "changed_pixels": 12,
+      "outside_decoration_changes": 0,
+      "upstream_golden_passed": false
+    }
+  },
+  "checks": [
+    {
+      "name": "stage",
+      "native_exit": 0,
+      "command": [
+        "ninja",
+        "-C",
+        "/build/compile",
+        "install"
+      ]
+    },
+    {
+      "name": "loader-query",
+      "native_exit": 0,
+      "command": [
+        "gdk-pixbuf-query-loaders",
+        "/stage/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader_svg.so"
+      ]
+    },
+    {
+      "name": "consumer-compile",
+      "native_exit": 0,
+      "command": [
+        "cc",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "/src/toddy-probe.c",
+        "-I/stage/usr/include/librsvg-2.0",
+        "-L/stage/usr/lib",
+        "-I/usr/include/librsvg-2.0",
+        "-I/usr/include/cairo",
+        "-I/usr/include/pango-1.0",
+        "-I/usr/include/fribidi",
+        "-I/usr/include/libxml2",
+        "-I/usr/include/pixman-1",
+        "-I/usr/include/harfbuzz",
+        "-I/usr/include/freetype2",
+        "-I/usr/include/gdk-pixbuf-2.0",
+        "-I/usr/include/libpng16",
+        "-pthread",
+        "-I/usr/include/glib-2.0",
+        "-I/usr/lib/glib-2.0/include",
+        "-I/usr/include/libmount",
+        "-I/usr/include/blkid",
+        "-lrsvg-2",
+        "-lcairo",
+        "-lgdk_pixbuf-2.0",
+        "-lgio-2.0",
+        "-lgobject-2.0",
+        "-lglib-2.0",
+        "-o",
+        "/build/finish-6/svg-consumer"
+      ]
+    },
+    {
+      "name": "consumer",
+      "native_exit": 0,
+      "command": [
+        "/build/finish-6/svg-consumer"
+      ]
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "consumer_stdout": "Native SVG/Cairo ARGB=ff002040, Gdk SVG RGB=0,32,64 and malformed SVG refusal passed\n",
+  "unchanged_compiled_elf_files": 144,
+  "free_bytes_after_stage": 18091495424,
+  "generated_cache_scope": "Private staged-module cache only; actual installed cache requires owned controlled update",
+  "prepared_input": {
+    "scope": "Frozen native SVG source/offline vendor input, no build acceptance",
+    "sources": [
+      {
+        "name": "librsvg",
+        "version": "2.62.3",
+        "filename": "librsvg-2.62.3.tar.xz",
+        "url": "https://download.gnome.org/sources/librsvg/2.62/librsvg-2.62.3.tar.xz",
+        "sha256": "7eb449b2722a768021356f66dfee3202c229b54ed4e6a70ce40c090e97ff16f2",
+        "reference": "BLFS13.1-systemd general/librsvg.html",
+        "book_page_sha256": "6679ab1b6bcf8919a95763c732853ade904002481ef730cfd0617b6afe75c28f",
+        "book_md5": "bf6d56ffe4cfa5426cf1a67bcabdf5ce",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      },
+      {
+        "name": "librsvg-vendor",
+        "version": "2.62.3",
+        "filename": "librsvg-2.62.3-vendor.tar.gz",
+        "sha256": "67a52cab6d6723c7302369b52fcc3e7db7b2edf043348be7bae4f37f53a53ec7",
+        "bytes": 46140658,
+        "url": "generated:phase2_rust_vendor/librsvg-vendor",
+        "reference": "Derived Cargo vendor from authenticated primary/published lock; all registry package/file checksums verified",
+        "parent_source_sha256": "7eb449b2722a768021356f66dfee3202c229b54ed4e6a70ce40c090e97ff16f2",
+        "cargo_lock_sha256": "86ddeb5d8077e320083e8cf3fbd2d72e9735e4f37d84ce2e3845b0a95ef053d1",
+        "producer_sha256": "6d8c8eeacf73038ed430e979fed371c69423c31cab0d5f624c062bc12752b536",
+        "registry_crates": 352,
+        "integrity": "Official Cargo vendor plus independent exact package/file-manifest verification before archive freezing",
+        "status": "source_verified"
+      }
+    ],
+    "cargo_lock_sha256": "86ddeb5d8077e320083e8cf3fbd2d72e9735e4f37d84ce2e3845b0a95ef053d1",
+    "registry_crates": 352,
+    "recipe_sha256": "9ec8e7b892b30388015234f6c054a9605614ee3240846bfd84e69d73ac1c6a97",
+    "probe_sha256": "b64dbb46e490b44115cf2a0ca1aa483441a8875a7a896a9350eaf7079d52a677",
+    "cargo_config_sha256": "fb59e9b16be8fb0e61488ec17a0104be0eb95493da6c89b435aeb004fec96e9b",
+    "public_vendor_readability": [
+      {
+        "path": "fnv-1.0.7/.travis.yml",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "e68d7a670a6431d08d1a75a3992f5050753f202fd6f4dcd198ae283482bdf9fa"
+      },
+      {
+        "path": "fnv-1.0.7/Cargo.toml.orig",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "21e110ea0ca79e72c211d078d5107ae8926abe4d7ea7eb6b127903c98450c593"
+      },
+      {
+        "path": "fnv-1.0.7/LICENSE-APACHE",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+      },
+      {
+        "path": "fnv-1.0.7/LICENSE-MIT",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "65fdb6c76cd61612070c066eec9ecdb30ee74fb27859d0d9af58b9f499fd0c3e"
+      },
+      {
+        "path": "fnv-1.0.7/README.md",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "7653d488c5bdf93a3069bf41770650897b85815521f67f69a4a90d0fefb4fa1f"
+      },
+      {
+        "path": "fnv-1.0.7/lib.rs",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "32bf17ff841b4c285985d9e9df79c5099318c11bf0436ee8582dec30fc9ec826"
+      }
+    ],
+    "free_bytes_before_build": 19951616000
+  },
+  "rust_case_summaries": [
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 295,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 6,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 14,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 3,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 14,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 4,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 21,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 24,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 4,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 11,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "FAILED",
+      "passed": 753,
+      "failed": 1,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 42,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 2,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 10,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg)",
+      "status": "ok",
+      "passed": 16,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (librsvg)",
+      "status": "ok",
+      "passed": 6,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (librsvg)",
+      "status": "ok",
+      "passed": 8,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (librsvg)",
+      "status": "ok",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg_convert)",
+      "status": "ok",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg_convert)",
+      "status": "ok",
+      "passed": 24,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg_convert)",
+      "status": "ok",
+      "passed": 101,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (rsvg_convert)",
+      "status": "ok",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    },
+    {
+      "driver": "librsvg:Rust tests (pixbufloader-svg)",
+      "status": "ok",
+      "passed": 5,
+      "failed": 0,
+      "ignored": 0,
+      "filtered_out": 0
+    }
+  ],
+  "rust_case_totals": {
+    "passed": 1364,
+    "failed": 1,
+    "ignored": 0,
+    "filtered_out": 0
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-librsvg-native-evidence.tar.gz",
+    "bytes": 636290,
+    "sha256": "7d204cc54e87029d4610ab6c655f13319230dd881c446dd51756dc795b2d3828",
+    "members": 72,
+    "scope": "Raw SVG original upstream reference failure/diagnostic manifest failure/unchanged compiled144ELFs/Pango geometry/staged+installed pixel-GI/cache/owned package proof; retain final release"
+  }
+}

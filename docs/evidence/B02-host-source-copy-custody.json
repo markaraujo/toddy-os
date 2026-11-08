@@ -1,0 +1,43 @@
+{
+  "scope": "Host source duplicates only; complete corresponding archives, private Cargo cache, logs, all guest compiled tests and raw evidence retained",
+  "state": "complete",
+  "sources": [
+    {
+      "name": "cargo-c-vendor",
+      "path": ".local/phase2/rust-vendor-1/cargo-c/vendor",
+      "archive": ".local/sources/cargo-c-0.10.24-vendor.tar.gz",
+      "archive_sha256": "878eb5b65da8f2fdff3ec2ff54ace08eb717c3b17ff06affd6dda22b88324d52",
+      "payload_entries": 27238,
+      "payload_bytes": 422530675,
+      "manifest_sha256": "2d78f448b4eaec25c1d3ea9e0171a7401a39d4f531a1bf67fa41f623c467b36f",
+      "directory_inode": 12062792,
+      "state": "retired"
+    },
+    {
+      "name": "librsvg-vendor",
+      "path": ".local/phase2/rust-vendor-1/librsvg/vendor",
+      "archive": ".local/sources/librsvg-2.62.3-vendor.tar.gz",
+      "archive_sha256": "67a52cab6d6723c7302369b52fcc3e7db7b2edf043348be7bae4f37f53a53ec7",
+      "payload_entries": 19348,
+      "payload_bytes": 309997271,
+      "manifest_sha256": "fc2597e80275dfaf0002c09a4934a87ff51179dcd49e1605a085acbc9cf229ae",
+      "directory_inode": 12224288,
+      "state": "retired"
+    },
+    {
+      "name": "mesa",
+      "path": ".local/phase2/mesa-source-review-1/mesa-26.1.7",
+      "archive": ".local/sources/mesa-26.1.7.tar.xz",
+      "archive_sha256": "25e0a669e6638c3563e7be32a0a09f1888317e6eed0d047dc41d49dc8de26c7d",
+      "payload_entries": 12556,
+      "payload_bytes": 371862223,
+      "manifest_sha256": "f1b7084ebe890141571347d7141f13286dc5351fcbf9d3444a69099f43fe03fa",
+      "directory_inode": 11949784,
+      "state": "retired"
+    }
+  ],
+  "host_free_before": 110008037376,
+  "host_free_after": 111285563392,
+  "reclaimed_bytes": 1277526016,
+  "recovery": "Restore only the listed unchanged source archive/root if needed. Do not rerun retirement or Cargo acquisition. Existing private Cargo registry cache remains reusable."
+}

@@ -1113,6 +1113,56 @@
       "registry_crates": 352,
       "integrity": "Official Cargo vendor plus independent exact package/file-manifest verification before archive freezing",
       "status": "source_verified"
+    },
+    {
+      "name": "adwaita-icon-theme",
+      "version": "50.0",
+      "filename": "adwaita-icon-theme-50.0.tar.xz",
+      "url": "https://download.gnome.org/sources/adwaita-icon-theme/50/adwaita-icon-theme-50.0.tar.xz",
+      "sha256": "fac6e0401fca714780561a081b8f7e27c3bc1db34ebda4da175081f26b24d460",
+      "reference": "BLFS13.1-systemd x/adwaita-icon-theme.html",
+      "book_page_sha256": "42906c03beca98d110272189edd50a103d9ff76a83866c7bf87552975a690b5e",
+      "book_md5": "a03d8d68377a88fcf06e090ba6a6ec2f",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "hicolor-icon-theme",
+      "version": "0.18",
+      "filename": "hicolor-icon-theme-0.18.tar.xz",
+      "url": "https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.18.tar.xz",
+      "sha256": "db0e50a80aa3bf64bb45cbca5cf9f75efd9348cf2ac690b907435238c3cf81d7",
+      "reference": "BLFS13.1-systemd x/hicolor-icon-theme.html",
+      "book_page_sha256": "b0c3d30bc3b28fdf6e937e7c551a042c4b4b65c6026ee6aaa64418385c40f023",
+      "book_md5": "ef14f3af03bcde9ed134aad626bdbaad",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "tiff",
+      "version": "4.7.2",
+      "filename": "tiff-4.7.2.tar.gz",
+      "url": "https://download.osgeo.org/libtiff/tiff-4.7.2.tar.gz",
+      "sha256": "672bd7d10aee4606171afb864f3570b83340f6a33e2c186dc0512f7145ffdf6a",
+      "reference": "BLFS13.1-systemd general/tiff.html",
+      "book_page_sha256": "6d48dfa16864db4fbba28919ce59e9c07db37ae73ab046a1887de3b3c8ae5be5",
+      "book_md5": "a2a65ea450b8f469c667128848ffebfc",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "iso-codes",
+      "version": "4.20.1",
+      "filename": "iso-codes-v4.20.1.tar.gz",
+      "url": "https://salsa.debian.org/iso-codes-team/iso-codes/-/archive/v4.20.1/iso-codes-v4.20.1.tar.gz",
+      "sha256": "2d7d9f6084ab9ce6c534ce71a3dd5144b6e474f3c97616459a88f73f44a64bff",
+      "reference": "BLFS13.1-systemd general/iso-codes.html",
+      "book_page_sha256": "c4517c8fcff589c4c9a1e1059635b54a8548376f317a3f1d3cf48ea535ec4d73",
+      "book_md5": "a8f16a62662ec13e55ca255a7c036ee3",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified",
+      "verified_mirror": "https://ftp.osuosl.org/pub/blfs/conglomeration/iso-codes/iso-codes-v4.20.1.tar.gz",
+      "mirror_evidence": "Original+single retry were identical truncated180224B and quarantined before extraction. Trusted BLFS mirror complete16408049B, frozen book MD5/gzip/SHA256 verified."
     }
   ]
 }

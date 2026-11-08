@@ -1,0 +1,68 @@
+{
+  "scope": "Owned native SVG renderer with selected-Pango golden compatibility exception ADR0134; actual installed SVG/Cairo/Gdk/GI pixel and controlled cache proof, no GUI acceptance",
+  "step": {
+    "step": "b02-librsvg-install",
+    "started": "2026-11-08T15:20:47.557395+00:00",
+    "finished": "2026-11-08T15:22:06.701082+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 1653,
+    "log_sha256": "9e99f0541ebb0f7eaed15267326795d9997a5ce5d3a1ad5df58d15eea93909cf"
+  },
+  "success_record_sha256": "c3505460c00a45b2587ef1e909f95528b2c9f01d804a383caff51cc5c4abcc93",
+  "package": {
+    "name": "librsvg",
+    "version": "2.62.3-1+toddy1",
+    "archive_sha256": "8ea71609cd4cd23b56e43b9a90695640ad134e10af68575e592178098961ca15",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-librsvg-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 27.641,
+        "entries": 132958,
+        "regular_files": 118604,
+        "regular_bytes": 6597838557
+      },
+      {
+        "seconds": 24.76,
+        "entries": 134606,
+        "regular_files": 120245,
+        "regular_bytes": 6623043636
+      }
+    ],
+    "total_seconds": 107.717
+  },
+  "consumer": {
+    "scope": "Actual installed native SVG/Cairo/Gdk loader/generated owned cache and GI SVG+PNG pixel roundtrip; no graphical window/session acceptance",
+    "native_consumer_exit": 0,
+    "stdout": "Native SVG/Cairo ARGB=ff002040, Gdk SVG RGB=0,32,64 and malformed SVG refusal passed\n",
+    "gi_exit": 0,
+    "gi_stdout": "native-rsvg-gi-svg-pixels-and-png-roundtrip\n",
+    "cache_transaction": {
+      "scope": "Same-owner generated cache replacement only; unchanged native Gdk library/builtin loader/legal payload reused",
+      "old_package_version": "2.44.7-1+toddy1",
+      "old_archive_sha256": "f8ee4621b7f6c6011d3a9782b0ce91848ae6d2a99b2d7309c948175c48689a12",
+      "old_cache_sha256": "9ad91ea7abf71583e0581ca5e5d26b5bb55f57eebb419ad6f687ccd9d9cc1714",
+      "new_cache_sha256": "756bea55f0aada7f6750be7489bd3b7306ae47ddb298b5735586a14e1cd3af9f",
+      "changed_paths": [
+        "/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"
+      ],
+      "external_modules": [
+        "/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader_svg.so"
+      ],
+      "unchanged_other_payload_entries": 446,
+      "complete": true
+    }
+  },
+  "gdk_cache_package": {
+    "name": "gdk-pixbuf",
+    "version": "2.44.7-1+toddy2",
+    "archive_sha256": "621baa0a090e54f364639b9059cd3e267ad6d74d7a99472ff7d5e27c342b2347",
+    "installed": true
+  },
+  "retained_notices": 6849,
+  "notice_index_sha256": "1d8be0dc26ef007d557c80f06ed6855a960c76c89abfbe8f92cb66f9558579be"
+}

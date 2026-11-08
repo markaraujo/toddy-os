@@ -1,0 +1,42 @@
+{
+  "scope": "Native bootstrap Wayland GTK APIs and selected headless source tests only; GUI/compositor/session/media runtime still pending",
+  "upstream_selected": [
+    {
+      "name": "bitset",
+      "native_exit": 0,
+      "passed_cases": 15
+    },
+    {
+      "name": "stringlist",
+      "native_exit": 0,
+      "passed_cases": 10
+    },
+    {
+      "name": "rgba",
+      "native_exit": 0,
+      "passed_cases": 5
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "gi_exit": 0,
+  "native_api_stdout": "Native GTK4.22.4 version/bitset/Unicode list model/navy color APIs passed; no window opened\n",
+  "native_gi_stdout": "Native Gtk/Gdk/Gsk GI/version/Unicode model/color APIs, no graphical window\n",
+  "schema_cache_sha256": "1605c9a93a02cdc62155da2be9d0ac7c36ad524c88c12889fbd178b104fff44b",
+  "pending": "Actual Wayland window/focus/actions/responsiveness, display-dependent upstream tests, media and integrated GNOME acceptance",
+  "input": {
+    "source_sha256": "51bd9f60c7d23a665a556c7364c21fb2e4e282566b3e7e092455e8f910330893",
+    "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+    "book_page_sha256": null,
+    "source_patches": [],
+    "recipe_sha256": "e5d06088bf3a56562a7c92bb5cdc73e54d7649d643e7f01ae25b15f9efdc6f35",
+    "probe_sha256": "338564fbdcfc7c297da72328e46a6d23d721c26b801f6302b314c45a862f5027"
+  },
+  "native_job_exit": 0,
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-gtk-native-evidence.tar.gz",
+    "bytes": 471548,
+    "sha256": "aac6fa6b87abe79fcc618dfe2e1f9adbe51baacdc0832cb1736f7142a09ef2dd",
+    "members": 28,
+    "scope": "Raw native GTK30headless cases/C-GI-schema/bootstrap/regular-file volume/original postcondition failure/recovery proof; no window acceptance; retain final release"
+  }
+}

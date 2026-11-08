@@ -1,0 +1,45 @@
+{
+  "scope": "Owned native TIFF4.7.2,156actual upstream cases and LZW/Deflate image roundtrip/invalid header refusal with16MiB allocation bound; no Gdk TIFF loader or window acceptance",
+  "step": {
+    "step": "b02-tiff-install",
+    "started": "2026-11-08T15:26:57.631672+00:00",
+    "finished": "2026-11-08T15:27:26.266676+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 133,
+    "log_sha256": "38b42a58c2cbb61caf90d442d1d7a23f8518f402d5d9f2f1cc6bbdb4e0a78afc"
+  },
+  "success_record_sha256": "fe748429bad3003110d36d46c86a5c24b12d48667ed5b942a7e8b20451d5442f",
+  "package": {
+    "name": "tiff",
+    "version": "4.7.2-1+toddy1",
+    "archive_sha256": "2c90246f4b5f156cbd0c3ba3903aee8aacce1cd28a3727b35f57922ff37d86ca",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-tiff-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 25.588,
+        "entries": 134606,
+        "regular_files": 120245,
+        "regular_bytes": 6623043636
+      },
+      {
+        "seconds": 26.319,
+        "entries": 134736,
+        "regular_files": 120368,
+        "regular_bytes": 6625088108
+      }
+    ],
+    "total_seconds": 55.17
+  },
+  "consumer": {
+    "scope": "Native installed bounded TIFF image APIs, not Gdk TIFF loader or a graphical session",
+    "native_consumer_exit": 0,
+    "stdout": "Native TIFF LZW/Deflate exact RGB roundtrip and invalid header refusal with16MiB allocation bound passed\n",
+    "stderr": "/tmp/toddy-tiff-oe7Zne: Cannot read TIFF header.\n",
+    "allocation_limit_bytes": 16777216
+  }
+}

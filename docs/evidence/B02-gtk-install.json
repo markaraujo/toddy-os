@@ -1,0 +1,77 @@
+{
+  "scope": "Native installed Wayland bootstrap GTK only; no window/GNOME/media acceptance",
+  "original_install": {
+    "step": "b02-gtk-install",
+    "started": "2026-11-08T15:56:28.769029+00:00",
+    "finished": "2026-11-08T15:57:06.883397+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "changed_paths": 1692,
+    "log_sha256": "5de5d6fc0a151e411093b5dd7501526962bdcb2ee31b73e7c97141fe78ce56b6"
+  },
+  "postcheck_recovery": {
+    "step": "b02-gtk-postcheck-reconcile",
+    "started": "2026-11-08T16:01:42.083239+00:00",
+    "finished": "2026-11-08T16:02:06.362648+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 0,
+    "log_sha256": "cc82a08d5a046a9c74a25d3170a62ef199727381c5df2123e7b510ffebd0d710"
+  },
+  "package": {
+    "name": "gtk",
+    "version": "4.22.4-1+toddy1",
+    "archive_sha256": "71926defa7412777f080e97a4ad41ed49b328b272008caa5ddb3d9c8592c3b00",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-gtk-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 27.71,
+        "entries": 136060,
+        "regular_files": 121107,
+        "regular_bytes": 6648646864
+      },
+      {
+        "seconds": 23.795,
+        "entries": 137749,
+        "regular_files": 122764,
+        "regular_bytes": 6740654372
+      }
+    ],
+    "total_seconds": 66.77
+  },
+  "recovery_full_root_timing": {
+    "step": "b02-gtk-postcheck-reconcile",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 27.717,
+        "entries": 137749,
+        "regular_files": 122764,
+        "regular_bytes": 6740654372
+      },
+      {
+        "seconds": 22.368,
+        "entries": 137749,
+        "regular_files": 122764,
+        "regular_bytes": 6740654372
+      }
+    ],
+    "total_seconds": 52.969
+  },
+  "consumer": {
+    "scope": "Native installed bootstrap GTK C/GI/model/color/owned schema APIs only; no graphical window/session/media acceptance",
+    "native_consumer_exit": 0,
+    "stdout": "Native GTK4.22.4 version/bitset/Unicode list model/navy color APIs passed; no window opened\n",
+    "gi_exit": 0,
+    "gi_stdout": "native-gtk-gdk-gsk-gi-unicode-model-color-owned-schema, no window\n",
+    "schema_cache_sha256": "1605c9a93a02cdc62155da2be9d0ac7c36ad524c88c12889fbd178b104fff44b",
+    "pending": "Actual native Wayland/GNOME UI QA, media and integrated icon/MIME/schema registry updates with their package owners"
+  },
+  "retained_notices": 2132,
+  "notice_index_sha256": "804a8b4fd2baf22a4cfa0051336c725147e00762242960fc9cae7fc3cc1a42ad",
+  "recovery": "Original0/1 preserved; GTK3 schema assertion corrected to actual GTK4 namespace. Full installed payload/archive verified unchanged, postcheck-only recovery0/0; no reinstall/source/upstream replay."
+}
