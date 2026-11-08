@@ -1,0 +1,14 @@
+{
+  "scope": "New Glycin expanded source/vendor and re-expanded Cargo registry sources only; all compressed archives, locks, index, guest inputs, compiled packages and evidence retained",
+  "state": "complete",
+  "available_before": 110043648000,
+  "available_after": 110502612992,
+  "reclaimed_bytes": 458964992,
+  "recovery": "Restore exact retained source/vendor archives only into absent paths when needed. Cargo re-extracts retained checked compressed cache; do not rerun custody.",
+  "source_directories": 309,
+  "payload_entries": 30076,
+  "all_sources_archive_identical_before_retirement": true,
+  "compressed_sources_and_cargo_cache_retained": true,
+  "private_receipt_sha256": "16b82cf1286be4f519b286cd1e90685e53c7460c5e142ffff360b978c9f1deb4",
+  "native_compilations_or_installs": 0
+}

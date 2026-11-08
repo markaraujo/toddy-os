@@ -1,0 +1,42 @@
+{
+  "scope": "Native staged hardware-name databases/PnP lookup input only; not device/driver/hardware acceptance",
+  "data_inputs": [
+    {
+      "file": "pci.ids",
+      "sha256": "171941ee30cde6a624c020106344cdef03dc40ccdb5cf41759e7ce814f1a9fd5",
+      "bytes": 1653928,
+      "utf8_exit": 0
+    },
+    {
+      "file": "usb.ids",
+      "sha256": "34b2b2289508a866cf38b96e54b37ac52c0ab7ce8361a56116af24e3fd094421",
+      "bytes": 730602,
+      "utf8_exit": 0
+    },
+    {
+      "file": "oui.txt",
+      "sha256": "98fec97cb78335cf7968fea095cd27d0fa23be9b4cf225a0f319d94bb23a0b48",
+      "bytes": 6284447,
+      "utf8_exit": 0
+    },
+    {
+      "file": "iab.txt",
+      "sha256": "82cbf0c3e5d3b0b0d8b25f2897d69c42497ec10e24f81b66993ef192a8cb60bd",
+      "bytes": 1778484,
+      "utf8_exit": 0
+    },
+    {
+      "file": "pnp.ids",
+      "sha256": "51566e35fae4ac7f6fc98ba93433696c29972b51f267642358236b2159aa4c66",
+      "bytes": 63481,
+      "utf8_exit": 0
+    }
+  ],
+  "upstream_pci_order_exit": 0,
+  "pnp_records": 2557,
+  "pnp_duplicate_ids": 0,
+  "upstream_lspci_dump": "Unavailable lspci utility; not counted as pass",
+  "upstream_usb_device_test": "Explicit NO_DOCKER=1 skip: privileged external podman/device test outside compiler scope",
+  "staged_consumer_exit": 0,
+  "modprobe_blacklist_installed": false
+}

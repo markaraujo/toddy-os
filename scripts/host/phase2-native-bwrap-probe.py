@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+"""Ephemeral system credential probe; native disposable target only, never install."""
+import base64
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+import tempfile
+import zlib
+
+
+def command(args, **kwargs):
+    return subprocess.run(args, capture_output=True, text=True, timeout=90, **kwargs)
+
+
+def output(args):
+    r=command(args);assert r.returncode==0,(args,r.returncode,r.stderr)
+    return r.stdout.strip()
+
+
+def main():
+    assert os.geteuid()==0 and os.uname().release=='7.1.8-toddy'
+    assert Path('/proc/1/comm').read_text().strip()=='systemd'
+    assert output(['systemd-detect-virt','--vm']) in ['kvm','qemu']
+    device=output(['findmnt','-n','-o','SOURCE','/'])
+    assert re.fullmatch(r'/dev/[a-z0-9]+',device)
+    parent=output(['lsblk','-ndo','PKNAME',device]);assert re.fullmatch('[a-z0-9]+',parent)
+    assert output(['lsblk','-dnro','SERIAL','/dev/'+parent])=='TODDY-BOOT-TEST'
+    assert output(['blkid','-s','LABEL','-o','value',device])=='TODDY_LFS'
+    assert output(['findmnt','-n','-o','FSTYPE','/'])=='ext4'
+    work=Path('/sources/phase2/work/bubblewrap-1')
+    source=Path('/sources/phase2/inputs/bubblewrap-0.11.2')
+    binary=work/'compile/bwrap'
+    assert hashlib.sha256(binary.read_bytes()).hexdigest()=='f36c7341c009446dc7b79417d6baaa9ec583eccb9690553dd53e4d22ac19869f'
+    assert source.stat().st_uid==0 and work.stat().st_uid==101
+    before={}
+    for p in (work/'compile').rglob('*'):
+        if p.is_file() and not p.is_symlink():
+            with p.open('rb') as f:
+                if f.read(4)==b'\x7fELF':
+                    f.seek(0);before[str(p.relative_to(work/'compile'))]=hashlib.file_digest(f,'sha256').hexdigest()
+    assert before and not list((work/'stage').iterdir())
+    env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C.UTF-8','HOME':'/tmp',
+         'BWRAP':str(binary),'G_TEST_SRCDIR':str(source),
+         'G_TEST_BUILDDIR':str(work/'compile'),'BWRAP_MUST_WORK':'1'}
+    prefix=['setpriv','--reuid=101','--regid=101','--clear-groups','--no-new-privs']
+    runs=[]
+    # Private /var/tmp belongs to the disposable runtime root, never a host path.
+    tests=[('namespace-consumer',['python3','-B',str(source/'toddy-probe.py'),str(binary)])]
+    tests += [(n,['bash',str(source/'tests'/n)]) for n in ['test-run.sh','test-specifying-pidns.sh','test-specifying-userns.sh']]
+    with tempfile.TemporaryDirectory(prefix='toddy-bwrap-runtime-') as temporary:
+        os.chown(temporary,101,101)
+        for name,args in tests:
+            r=command(prefix+args,env=env,cwd=temporary)
+            # Never retain accidental password-hash lines from a failing security
+            # regression; only sanitized data enters the public serial channel.
+            def sanitize(text):
+                return re.sub(r'(?m)^([^:\n]+):(?:\$[^:\n]+|[!*][^:\n]*):[^\n]*$',r'\1:[REDACTED]',text)
+            runs.append({'name':name,'exit':r.returncode,'stdout':sanitize(r.stdout),'stderr':sanitize(r.stderr)})
+    for relative,digest in before.items():
+        with (work/'compile'/relative).open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==digest
+    raw=json.dumps({'scope':'Native Toddy kernel bwrap namespace/original affected shell drivers; no graphical/ISO/hardware acceptance',
+                    'kernel':os.uname().release,'pid1':'systemd','root_source':device,
+                    'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),
+                    'existing_compiled_elf_files_unchanged':len(before),'runs':runs},sort_keys=True).encode()
+    compressed=zlib.compress(raw,9);encoded=base64.b64encode(compressed).decode()
+    chunks=[encoded[i:i+1024] for i in range(0,len(encoded),1024)]
+    for i,chunk in enumerate(chunks):print('TODDY_B02_RUNTIME_DATA',i,chunk,flush=True)
+    success=all(r['exit']==0 for r in runs)
+    print('TODDY_B02_RUNTIME_RESULT',json.dumps({'kernel':os.uname().release,'all_selected_exits_zero':success,'report_sha256':hashlib.sha256(raw).hexdigest(),'chunks':len(chunks)}),flush=True)
+    assert success,'Native failures remain failures; preserve original report'
+
+
+if __name__=='__main__':
+    try:main()
+    except Exception as error:
+        print('TODDY_B02_RUNTIME_FAIL',type(error).__name__,str(error),flush=True)
+        raise

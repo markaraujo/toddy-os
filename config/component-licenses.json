@@ -153,7 +153,7 @@
       "name": "libseccomp",
       "version": "2.6.1",
       "license": "LGPL-2.1-only",
-      "evidence": "Exact original LICENSE and src/api.c version-2.1-only header"
+      "evidence": "Existing accepted foundation2.6.1-1+toddy1 reused: archive/full payload unchanged, actual installed child syscall refusal/parent unaffected0. Additional same-source C regressions7928PASS/86explicit skips plus11kernel-livePASS retained; unnecessary new package attempt refused existing archive before target install. No foundation rebuild accepted, no global policy change."
     },
     {
       "name": "which",
@@ -10287,6 +10287,18 @@
       "version": "2.19.1",
       "license": "MIT",
       "evidence": "Exact authenticated upstream LICENSE retained; optional GPL fastfloat/threaded products disabled. Native core testcms0 and staged ICC serialize/reopen/navy-identity/malformed-refusal0; Owned native install0/post1 wrong pkg-config patch-version assertion retained; source-backed verify-only recovery0/0 with full installed payload/archive unchanged, installed ICC consumer0. Upstream Meson advertises2.19; archive/package remains2.19.1."
+    },
+    {
+      "name": "libseccomp",
+      "version": "2.6.1",
+      "license": "LGPL-2.1-only",
+      "evidence": "Exact authenticated upstream COPYING/source notices retained. Native C default7928PASS/86explicit skips, additional previously excluded kernel-live11PASS/no skips; stage child syscall refusal/parent unaffected0. Optional Python binding disabled; no global policy/security weakening. Owned promotion pending."
+    },
+    {
+      "name": "hwdata",
+      "version": "0.410",
+      "license": "GPL-2.0-or-later OR XFree86-1.0",
+      "evidence": "Upstream LICENSE permits either data license; exact source/COPYING retained. Five unchanged UTF8 databases/PnP2557 unique keys and original PCI sorting script0; optional lspci/privileged external USB tests unavailable/skipped, no hardware claim. Supported configure --disable-blacklist avoids kernel module policy. Native owned install/post0/0 with all installed data byte-identical and PnP2557 unique records; no hardware support claim."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

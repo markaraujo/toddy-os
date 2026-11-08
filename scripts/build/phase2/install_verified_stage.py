@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'hwdata': ('0.410', '', 'hwdata-0.410.tar.gz', 'usr/share/hwdata/pnp.ids'),
     'lcms2': ('2.19.1', 'glibc (>= 2.44-1), libjpeg-turbo (= 3.2.0-1+toddy1), tiff (= 4.7.2-1+toddy1)',
               'lcms2-2.19.1.tar.gz', 'usr/lib/pkgconfig/lcms2.pc'),
     'at-spi2-core': ('2.60.6', 'glib (>= 2.88.3-1+toddy1), dbus (>= 1.16.2-1), systemd (>= 261.2-1)',
@@ -445,6 +446,18 @@ if __name__ == '__main__':
             assert all(r['returncode']==0 and not r['is_fail'] and (r['result']=='OK' or (r['name'] in optional and r['result']=='SKIP' and r.get('stdout','').strip()=='# fonttools is not present, skipping test.')) for r in rows)
         else:
             assert rows and all(r['result']=='OK' and r['returncode']==0 and not r['is_fail'] for r in rows)
+    if name=='hwdata':
+        work=Path('/mnt/lfs/sources/phase2/work/hwdata-1')
+        source=Path('/mnt/lfs/sources/phase2/inputs/hwdata-0.410')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/hwdata-build.sh').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text())
+        assert proof['upstream_pci_order_exit']==proof['staged_consumer_exit']==0
+        assert proof['pnp_records']==2557 and proof['pnp_duplicate_ids']==0 and not proof['modprobe_blacklist_installed']
+        assert {r['file'] for r in proof['data_inputs']}=={'pci.ids','usb.ids','oui.txt','iab.txt','pnp.ids'}
+        for row in proof['data_inputs']:
+            assert row['utf8_exit']==0
+            assert (source/row['file']).read_bytes()==(work/'stage/usr/share/hwdata'/row['file']).read_bytes()
+            assert hashlib.sha256((source/row['file']).read_bytes()).hexdigest()==row['sha256']
     if name=='lcms2':
         work=Path('/mnt/lfs/sources/phase2/work/lcms2-1')
         source=Path('/mnt/lfs/sources/phase2/inputs/lcms2-2.19.1')

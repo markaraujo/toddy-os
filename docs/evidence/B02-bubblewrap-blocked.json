@@ -1,0 +1,17 @@
+{
+  "scope": "Native compiled sandbox candidate, unqualified and not installed",
+  "upstream_utility_cases_passed": 26,
+  "upstream_shell_drivers_failed": 3,
+  "optional_python_seccomp_driver": "SKIPPED: no seccomp Python binding; never counted as pass",
+  "native_namespace_consumer": "FAILED: namespace creation denied; preserved attempts2/3/5",
+  "temporary_builder_profile": "Correct attachment observed but no successful namespace; removed after no active users, global restriction remained1",
+  "corrective_attempts_failed": 2,
+  "next_action": "Independent B02 desktop dependencies; native Toddy kernel/runtime namespace validation before promotion, then affected original tests/private var/tmp fixture",
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-sandbox-dependency-evidence.tar.gz",
+    "bytes": 298376,
+    "sha256": "b383938c7d3603aa1829caa7ab67c3daeb5c8bb5b441ac64ded60db37a742aee",
+    "members": 54,
+    "scope": "Source seccomp regressions/accepted installed reuse, original bwrap failures and scoped profile attempts/verified removal; no bwrap qualification"
+  }
+}

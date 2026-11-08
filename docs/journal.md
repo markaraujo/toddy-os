@@ -2407,3 +2407,45 @@ hits. Source-only host Cargo with a metadata-only compiler guard: zero host
 source compilations. Closure/source archives retained, native Glycin compilation
 and loader sandbox/image tests pending. Frozen required LittleCMS/libseccomp/
 bubblewrap sources selected; no broad recommended image-codec matrix added.
+
+### B02 sandbox prerequisites and bounded namespace diagnosis — 2026-11-08
+
+Glycin host expanded source custody completed309directories/archive-identical,
+458,964,992B reclaimed; compressed307-crate closure, source/index/cache, all guest
+inputs/packages/evidence retained. Receipt/evidence forbid replay.
+
+An unnecessary same-source Libseccomp2.6.1 build repeated default7928C passes
+and86explicit skips. Final assertion expected a nonexistent parallel-Automake
+summary; corrected qualification reused those results/unchanged binaries and ran
+only11previously excluded real-kernel live cases, all passed/no skips. Attempted
+new promotion refused the already accepted foundation archive before install.
+This was an avoidable inventory oversight; existing foundation package remains
+unchanged and separately passed complete payload/archive verification and actual
+installed child syscall refusal/parent-unaffected0. Generic preparation now
+refuses installed owned packages before extraction to prevent this recurrence.
+No new Libseccomp runtime package or replacement foundation acceptance is claimed.
+
+Bubblewrap0.11.2 compiled/26utility cases passed. Three shell drivers failed in
+shared setup because /var/tmp is absent in the synthetic compiler; optional
+Python-secomp driver skipped. Native namespace consumer EPERM is a real runtime
+blocker. Ubuntu builder namespace settings/per-executable AppArmor approach
+reviewed in ADR0142; two scoped corrections failed, second confirmed attachment
+label but namespace still refused. Exact profile unloaded/unlinked after proving
+no users; global restriction remained1. No NoNewPrivs/capability/network/source
+protection was relaxed. Package not promoted. Preserve cache/logs and validate
+planned native kernel/runtime before affected tests. Continue independent B02
+hwdata/display-info dependencies, no new story; stop after full B02 per owner.
+
+Hwdata0.410 owned install/post0/0 at20:34:39Z, unchanged fiveUTF8 datasets,
+2557unique PnP names, original PCI sorting0; optional lspci/privileged external
+USB checks explicitly unavailable/skipped. No modprobe policy installed.
+
+Prepared a focused changed-environment bwrap test: stop builder only when idle,
+boot current Phase2 packages on native7.1.8 in a fresh disposable overlay,
+read-only backing chain, no network, ephemeral public SMBIOS/Systemd test
+credentials. Existing accepted boot infrastructure reused; only one BIOS run,
+not an unchanged foundation firmware matrix. UID101/NoNewPrivs actual namespace
+consumer and only3affected shell drivers; no utilities replay or success inferred
+from timeout. Native runtime/graphics not yet proven. Inspect actual controller/
+container/log receipt before any recovery; builder restart remains a separate
+verified action with same-volume UUID/inode restoration and no new mkfs/trim.

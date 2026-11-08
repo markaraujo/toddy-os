@@ -1362,6 +1362,30 @@
       "book_md5": "6376255e2e505100e01b20c2dafa7faf",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "libdisplay-info",
+      "version": "0.4.0",
+      "filename": "libdisplay-info-0.4.0.tar.xz",
+      "url": "https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/0.4.0/downloads/libdisplay-info-0.4.0.tar.xz",
+      "sha256": "43b180baa143e2035654759d84e2b2f5ee77d5fe817c423838c7fe59c0d68459",
+      "reference": "BLFS13.1-systemd general/libdisplay-info.html",
+      "book_page_sha256": "3c273f105bcb319fdf6b56a2e7772f88f57d3f5a61afdbccac12788e935790c7",
+      "book_md5": "af9f07493bd5ff560a98b95ea4c5c129",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "hwdata",
+      "version": "0.410",
+      "filename": "hwdata-0.410.tar.gz",
+      "url": "https://github.com/vcrhonek/hwdata/archive/v0.410/hwdata-0.410.tar.gz",
+      "sha256": "2864b061b179b8ad8cb6a7339ca07678240a183d9cedce8677a4950acaf798e0",
+      "reference": "BLFS13.1-systemd general/hwdata.html",
+      "book_page_sha256": "29809129a66cae0dc7d9f0ab4212abffd91ae274ac9c24c52138b54b726cd160",
+      "book_md5": "07f1de937ff5b830280f6157221164eb",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

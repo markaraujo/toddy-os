@@ -1,0 +1,26 @@
+{
+  "scope": "Accepted foundation package archive/full payload verified unchanged, installed real child syscall denial and parent unaffected; no reinstall or foundation rebuild accepted",
+  "step": {
+    "step": "b02-libseccomp-installed-reuse",
+    "finished": "2026-11-08T20:20:22.483756+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 0
+  },
+  "package": {
+    "name": "libseccomp",
+    "version": "2.6.1-1+toddy1",
+    "archive_sha256": "aade9d84ea9c5fcfaee79cc14100d61119145578844e316b4e277047ac428ff1",
+    "installed": true
+  },
+  "consumer": {
+    "scope": "Native installed child-only syscall denial, parent unaffected; no global policy change or application sandbox acceptance",
+    "native_consumer_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "child_syscall_denied": true,
+    "parent_unaffected": true,
+    "malformed_action_refused": true
+  },
+  "new_native_package_installed": false
+}

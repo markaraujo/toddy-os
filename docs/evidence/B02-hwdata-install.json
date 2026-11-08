@@ -1,0 +1,38 @@
+{
+  "scope": "Installed byte-identical hardware-name databases/PnP lookup input; no device/driver acceptance",
+  "step": {
+    "step": "b02-hwdata-install",
+    "started": "2026-11-08T20:34:22.122005+00:00",
+    "finished": "2026-11-08T20:34:39.083077+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 18,
+    "log_sha256": "6bf86c520a3e4ce8f61e39905b111c6ce355f4e66f27590d48ea61c90e7bedd8"
+  },
+  "success_record_sha256": "c8eea922b95415cdcb85c8c91bfd21bcab00e8a9f32a7cb11bab28cd9d6013ab",
+  "package": {
+    "name": "hwdata",
+    "version": "0.410-1+toddy1",
+    "archive_sha256": "5c8c9f446032c9c74827c82c60cbfa732a8ba8aa5f794465ba31a81e5d67f386",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-hwdata-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 13.184,
+        "entries": 140363,
+        "regular_files": 124538,
+        "regular_bytes": 6812798552
+      },
+      {
+        "seconds": 13.093,
+        "entries": 140378,
+        "regular_files": 124550,
+        "regular_bytes": 6823349093
+      }
+    ],
+    "total_seconds": 31.094
+  }
+}

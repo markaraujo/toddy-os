@@ -1,0 +1,37 @@
+{
+  "scope": "Additional source-qualified C regressions; accepted foundation package separately reused unchanged, no new package installed",
+  "upstream_exit": 0,
+  "original_summary": {
+    "run": 7928,
+    "skipped": 86,
+    "passed": 7928,
+    "failed": 0,
+    "errored": 0
+  },
+  "original_skipped_reasons": {
+    "valgrind not installed": 40,
+    "architecture difference": 35,
+    "must specify live tests": 11
+  },
+  "live_summary": {
+    "run": 11,
+    "skipped": 0,
+    "passed": 11,
+    "failed": 0,
+    "errored": 0
+  },
+  "live_skipped_reasons": {},
+  "existing_compiled_elf_files_unchanged": 197,
+  "staged_consumer_exit": 0,
+  "child_syscall_denied": true,
+  "parent_unaffected": true,
+  "malformed_action_refused": true,
+  "profile": "Shared C library/tools; optional Python binding disabled; optional Valgrind and incompatible architecture subcases not counted as passes",
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-sandbox-dependency-evidence.tar.gz",
+    "bytes": 298376,
+    "sha256": "b383938c7d3603aa1829caa7ab67c3daeb5c8bb5b441ac64ded60db37a742aee",
+    "members": 54,
+    "scope": "Source seccomp regressions/accepted installed reuse, original bwrap failures and scoped profile attempts/verified removal; no bwrap qualification"
+  }
+}
