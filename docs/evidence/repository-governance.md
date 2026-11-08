@@ -152,3 +152,11 @@ strict local full-history replay then exited0 with no findings. Reports/scanner
 cache stay private under.local/security/gitleaks. A new remote run must confirm
 publication; previous failed runs remain failed. The latest make check passed
 before this documentation/ignore-list-only change; planning references rechecked.
+
+Phase2 source evidence produced one additional generic-api-key false positive:
+safety run42440751585, commit fb35be2, B02-libxml2-build.json line58. Privately
+validated the entire finding line as the testapi empty-output SHA256 (standard
+empty-byte digest); no credential or arbitrary value. Added only that exact
+commit/path/rule/line fingerprint, with no broad path/pattern/rule exclusion.
+Pinned8.30.1 full-history replay exited0 after review. Prior failed runs remain
+failed; remote confirmation follows the pushed correction.

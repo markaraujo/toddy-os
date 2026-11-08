@@ -31,3 +31,6 @@ b9f8f55c6adbd786b6631ac48109848d6e58363e:STATUS.md:generic-api-key:28
 b9f8f55c6adbd786b6631ac48109848d6e58363e:dashboard/index.html:generic-api-key:381
 b9f8f55c6adbd786b6631ac48109848d6e58363e:status.json:generic-api-key:545
 cdc446f24e0323ede712735e7e8f2b44531c8021:dashboard/index.html:generic-api-key:381
+
+# Reviewed libxml2 testapi empty-output SHA256, not an API credential.
+fb35be223aa171d470c913959bf44ef0c17e0b59:docs/evidence/B02-libxml2-build.json:generic-api-key:58
