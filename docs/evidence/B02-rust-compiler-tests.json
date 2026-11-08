@@ -1,0 +1,58 @@
+{
+  "scope": "Original native UI compiler suites for ownership, async, FFI, external linkage, editions and thread Send/Sync; not GTK UI tests",
+  "command": [
+    "python3",
+    "x.py",
+    "--config",
+    "/src/bootstrap.toml",
+    "--build-dir",
+    "/build/compile",
+    "test",
+    "tests/ui/borrowck",
+    "tests/ui/async-await",
+    "tests/ui/ffi",
+    "tests/ui/extern",
+    "tests/ui/editions",
+    "tests/ui/rust-2024",
+    "tests/ui/threads-sendsync"
+  ],
+  "native_exit": 0,
+  "summaries": [
+    [
+      "ok",
+      "1552",
+      "0",
+      "7",
+      "0",
+      "19666"
+    ]
+  ],
+  "log_sha256": "117ce7adf37a44c6407976936e8e03d6d74cc9238028939317afd7a8f2db94d8",
+  "compiler_before_sha256": "676b1c8d1e4800c23c08ab31cbb68e1ac654aad58ad673f0da3e8893367a2112",
+  "compiler_after_sha256": "676b1c8d1e4800c23c08ab31cbb68e1ac654aad58ad673f0da3e8893367a2112",
+  "upstream_std_ignored": [
+    {
+      "driver": "coretests-cbca55648c91ef56",
+      "case": "num::flt2dec::random::shortest_f32_exhaustive_equivalence_test"
+    },
+    {
+      "driver": "coretests-cbca55648c91ef56",
+      "case": "num::flt2dec::random::shortest_f64_hard_random_equivalence_test"
+    },
+    {
+      "driver": "std-3191924a3419ea77",
+      "case": "fs::tests::recursive_rmdir_toctou"
+    },
+    {
+      "driver": "env_modify-edb74370cea9d0ce",
+      "case": "test_env_get_set_multithreaded"
+    },
+    {
+      "driver": "sync-e09c565c12f9875b",
+      "case": "oneshot::recv_timeout_before_send"
+    }
+  ],
+  "free_bytes_after_tests": 22509453312,
+  "compiler_hash_scope": "rustc ELF launcher only; not a complete driver/stdlib artifact before-after manifest",
+  "native_job_exit": 0
+}

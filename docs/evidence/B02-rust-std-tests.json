@@ -303,5 +303,32 @@
     "measured": 0,
     "filtered": 0
   },
-  "pending": "Identify upstream ignored cases; separate compiler/tool tests, stage/install and installed consumers remain required"
+  "pending": "Separate compiler/tool tests, stage/install and installed consumers remain required",
+  "upstream_ignored_reasons": [
+    {
+      "case": "num::flt2dec::random::shortest_f32_exhaustive_equivalence_test",
+      "source": "library/coretests/tests/num/flt2dec/random.rs",
+      "reason": "upstream ignore: too expensive"
+    },
+    {
+      "case": "num::flt2dec::random::shortest_f64_hard_random_equivalence_test",
+      "source": "library/coretests/tests/num/flt2dec/random.rs",
+      "reason": "upstream ignore: too expensive"
+    },
+    {
+      "case": "fs::tests::recursive_rmdir_toctou",
+      "source": "library/std/src/fs/tests.rs",
+      "reason": "upstream ignore: takes too much time"
+    },
+    {
+      "case": "test_env_get_set_multithreaded",
+      "source": "library/std/tests/env_modify.rs",
+      "reason": "upstream cfg_attr ignores outside Miri (or Emscripten)"
+    },
+    {
+      "case": "oneshot::recv_timeout_before_send",
+      "source": "library/std/tests/sync/oneshot.rs",
+      "reason": "upstream ignore: inherently flaky, several CI failures"
+    }
+  ]
 }

@@ -1883,3 +1883,20 @@ the same pinned8.30.1 asset and mandatory SHA256, read-only job permissions and
 redacted scan/approved exact exceptions. Host gh release acquisition succeeded
 and matched551f6fc8...f2470eb; corrected remote execution pending. The step uses
 only the ephemeral workflow token, never installed product credentials.
+
+### B02 native Rust compiler tests and next stage — 2026-11-08 UTC
+
+rustc-compiler-3 terminal0 after11m50s:1552 PASS/7 upstreamignored/19666 filtered
+outside selected ownership/async/FFI/linkage/edition/Send-Sync paths. Actual native
+exit saved, launcher hash stable (not full driver/stdlib proof), target20.96GiB.
+Original std ignores identified from native --list without rerunning cases; exact
+upstream source reasons retained. rustc-stage-4/PID323437/monitor3660 now staging
+and qualifying real Cargo/Clippy/Rustfmt/Rustdoc, no owned native install yet.
+
+ADR0128 prepares four unmodified DejaVuSerif2.37 faces for the observed proportional
+serif gap. Official GitHub transport504; official SourceForge exact size/SHA0.
+Recipes preserve Adwaita/user preferences, full notices, generated cache manifest,
+real i/W FreeType spacing and family/style/coverage checks. Native stage/install
+and changed-input Pango17 remain pending. Keyboard2.48/libxkbcommon1.13.2 sources
+and frozen required upstream patch cached, native pending. Corrected scanner CI
+6822bbb all3 workflows passed with unchanged required scanner hash/scan policy.
