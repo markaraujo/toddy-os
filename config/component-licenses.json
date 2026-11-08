@@ -2954,6 +2954,19 @@
       "version": "1.13.2-1",
       "license": "MIT AND LicenseRef-libxkbcommon-per-file",
       "evidence": "Frozen BLFS13.1 required tools/info.c conditional-macro correction from upstream commit75b7da3f8698b3482ba6b11f3835561a3efb6a29. Patch authorship retained, source per-file notices apply; native applicability/build pending."
+    },
+    {
+      "name": "rustc",
+      "version": "1.97.1",
+      "license": "(Apache-2.0 OR MIT) AND LicenseRef-Rust-vendored-per-file",
+      "evidence": "Authenticated Rust1.97.1 source includes Cargo0.98.0 library/1.97.0 CLI, compiler/std/rustdoc/clippy/rustfmt and vendored dependencies. Retain complete named COPYRIGHT/LICENSE/APACHE/MIT/NOTICE and license collections, source per-file conditions remain applicable. Native compiler/std selected checks recorded; staged/owned SDK legal inventory and installed tools pending. Build-only SDK, not automatic offline/base/live payload.",
+      "source_legal_review": {
+        "source_sha256": "0ed06fdaffd4722a7702e0b4eebfafc897ab8f513e8e1b247cdd7e5c6df6ded2",
+        "named_notices": 3850,
+        "unique_sha256": 731,
+        "raw_inventory_sha256": "b1130d59078857c29afa6df49d7e963da02d66c2a69f3fa5979de0876ec52c5d",
+        "scope": "Host source-only; native package exact notice retention/inventory pending"
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

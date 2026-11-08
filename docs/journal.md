@@ -1900,3 +1900,16 @@ real i/W FreeType spacing and family/style/coverage checks. Native stage/install
 and changed-input Pango17 remain pending. Keyboard2.48/libxkbcommon1.13.2 sources
 and frozen required upstream patch cached, native pending. Corrected scanner CI
 6822bbb all3 workflows passed with unchanged required scanner hash/scan policy.
+
+### Rust stage collector and package guard preparation — 2026-11-08 UTC
+
+Source Cargo0.98.0 renders CLI1.97.0 in cargo/version.rs independently of
+rustc1.97.1. Correct canonical tool expectation/persist versions before checks.
+Healthy stage4 still uses original probe; preserve it. Host controller60103
+waits actual terminal and can dispatch only guarded unprivileged tools recovery5
+with successful install0/known assertion/empty original consumer tree and unchanged
+stage. No restaging, compiler/std replay or automatic owned install. Reconcile
+controller/tools5 before metadata sync. Strict future promotion and actual installed
+consumer checks prepared; not executed or accepted. Native dependencies queried
+read-only; source legal audit3850 named texts/731 unique hashes. Exact native
+package notice retention remains a gate. make check264 passed.
