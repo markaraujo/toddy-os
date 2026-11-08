@@ -1,0 +1,107 @@
+{
+  "job": "fontconfig-1",
+  "exit": 0,
+  "scope": "native offline core tests with bundled fonts; external font downloads/bwrap/pytest not qualified",
+  "source": {
+    "source_sha256": "4f7b554a38cdf78c033f666c8871f3749e14a094f65a07f630c91ed0b43d35e3",
+    "reference": "BLFS13.1-systemd general/fontconfig.html",
+    "book_page_sha256": "f5eadf71c58f0906812884df3982b1f9d5fe53e8088290eacf16f3857237bc7f",
+    "source_patches": [],
+    "recipe_sha256": "839725ad5def952ad87179ee32aff25a529293f5edf1b1133b124304b20b845d"
+  },
+  "outer_tests_passed": 15,
+  "tests": [
+    {
+      "name": "fontconfig:test_bz89617",
+      "exit": 0,
+      "seconds": 0.011263370513916016,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_bz131804",
+      "exit": 0,
+      "seconds": 0.00881648063659668,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_bz96676",
+      "exit": 0,
+      "seconds": 0.006342649459838867,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_name_parse",
+      "exit": 0,
+      "seconds": 0.01101994514465332,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_bz106618",
+      "exit": 0,
+      "seconds": 0.010716676712036133,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_bz1744377",
+      "exit": 0,
+      "seconds": 0.01117086410522461,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_issue180",
+      "exit": 0,
+      "seconds": 0.009212255477905273,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_family_matching",
+      "exit": 0,
+      "seconds": 0.011181116104125977,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_ptrlist",
+      "exit": 0,
+      "seconds": 0.010750532150268555,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_ostest",
+      "exit": 0,
+      "seconds": 0.00821828842163086,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_issue107",
+      "exit": 0,
+      "seconds": 4.004295110702515,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_bz106632",
+      "exit": 0,
+      "seconds": 6.026372909545898,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_crbug1004254",
+      "exit": 0,
+      "seconds": 0.14426827430725098,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_mt_fccfg",
+      "exit": 0,
+      "seconds": 0.007784366607666016,
+      "no_match_diagnostics": 0
+    },
+    {
+      "name": "fontconfig:test_const_name",
+      "exit": 0,
+      "seconds": 0.0036449432373046875,
+      "no_match_diagnostics": 0
+    }
+  ],
+  "raw_test_log_sha256": "719f21147a9458d16ea9afd6fe5a94c42c6b033abf34ea257a8f20caf1608008",
+  "stage_manifest_sha256": "f0e209ea5024166c7860472bda18d85f60c6cccb5dda339061573da286696de5"
+}

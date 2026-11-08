@@ -1,0 +1,38 @@
+{
+  "scope": "native Hebrew visual order/index maps/embedding levels and owned package; no graphical text/UI acceptance",
+  "step": {
+    "step": "b02-fribidi-install",
+    "started": "2026-11-08T03:48:42.819905+00:00",
+    "finished": "2026-11-08T03:48:53.664204+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 84,
+    "log_sha256": "daa8f839657b4a528f5be801277d0a071f39977ddf5bc8c84225d7212a249d23"
+  },
+  "success_record_sha256": "bf5eb4cd3ef9103468b0fe3330979ec97e3e22e7561ee3685b62e4fba5494c67",
+  "package": {
+    "name": "fribidi",
+    "version": "1.0.16-1+toddy1",
+    "archive_sha256": "95cac9833c70e944302265386527887c2724054b9400c00c06d9882c541fded6",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-fribidi-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 9.105,
+        "entries": 93501,
+        "regular_files": 80803,
+        "regular_bytes": 4917907684
+      },
+      {
+        "seconds": 9.2,
+        "entries": 93580,
+        "regular_files": 80877,
+        "regular_bytes": 4918346756
+      }
+    ],
+    "total_seconds": 20.597
+  }
+}

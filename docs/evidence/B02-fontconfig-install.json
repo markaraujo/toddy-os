@@ -1,0 +1,38 @@
+{
+  "scope": "native config XML/PCF query/match and owned package; no default fonts/native graphical session",
+  "step": {
+    "step": "b02-fontconfig-install",
+    "started": "2026-11-08T03:47:12.884780+00:00",
+    "finished": "2026-11-08T03:47:23.848199+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 158,
+    "log_sha256": "bfc08948368b3b10839b2140335d52483ba62da3f72fb22ff5861d34dacedf9f"
+  },
+  "success_record_sha256": "aea905a1e4f46dfebe1368ff191515ac547b9f276df7bca432d15ef13b91d243",
+  "package": {
+    "name": "fontconfig",
+    "version": "2.18.3-1+toddy1",
+    "archive_sha256": "db3126fcda79d3710396ada19281c2dc4ad74736089292d374a7d548748d91fe",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-fontconfig-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 9.103,
+        "entries": 93348,
+        "regular_files": 80684,
+        "regular_bytes": 4916689393
+      },
+      {
+        "seconds": 9.048,
+        "entries": 93501,
+        "regular_files": 80803,
+        "regular_bytes": 4917907684
+      }
+    ],
+    "total_seconds": 20.737
+  }
+}

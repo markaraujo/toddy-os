@@ -2689,6 +2689,42 @@
           ]
         }
       }
+    },
+    {
+      "name": "fontconfig",
+      "version": "2.18.3",
+      "license": "HPND-sell-variant AND MIT AND LicenseRef-fontconfig-per-file",
+      "evidence": "Authenticated COPYING includes core permission and distinct per-file terms; source/header notices and bundled test fixture legal texts retained. Native library XML backend explicitly uses owned libxml2, not frozen Expat.",
+      "extra_license_headers": {
+        "fontconfig-2.18.3.tar.xz": {
+          "prefixes": [
+            "src/",
+            "fontconfig/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
+    },
+    {
+      "name": "fribidi",
+      "version": "1.0.16",
+      "license": "LGPL-2.1-or-later AND LicenseRef-fribidi-per-file",
+      "evidence": "Authenticated LGPL COPYING and per-file core headers; native shared-library source remains available with build recipes. Unicode test data/conditions retained in corresponding archive.",
+      "extra_license_headers": {
+        "fribidi-1.0.16.tar.xz": {
+          "prefixes": [
+            "lib/",
+            "charset/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

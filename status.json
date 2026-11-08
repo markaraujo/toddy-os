@@ -314,7 +314,11 @@
         "docs/evidence/B02-libpng-build.json",
         "docs/evidence/B02-libpng-install.json",
         "docs/evidence/B02-freetype-build.json",
-        "docs/evidence/B02-freetype-install.json"
+        "docs/evidence/B02-freetype-install.json",
+        "docs/evidence/B02-fontconfig-build.json",
+        "docs/evidence/B02-fontconfig-install.json",
+        "docs/evidence/B02-fribidi-build.json",
+        "docs/evidence/B02-fribidi-install.json"
       ]
     },
     {

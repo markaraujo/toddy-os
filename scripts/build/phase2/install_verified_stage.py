@@ -14,6 +14,10 @@ from package_copyright import write_copyright
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'fribidi': ('1.0.16', 'glibc (>= 2.44-1)',
+                'fribidi-1.0.16.tar.xz', 'usr/lib/pkgconfig/fribidi.pc'),
+    'fontconfig': ('2.18.3', 'glibc (>= 2.44-1), freetype (>= 2.14.3-1+toddy1), libxml2 (>= 2.15.3-1+toddy1)',
+                   'fontconfig-2.18.3.tar.xz', 'usr/lib/pkgconfig/fontconfig.pc'),
     'freetype': ('2.14.3', 'glibc (>= 2.44-1), zlib (>= 1.3.2-1), bzip2 (>= 1.0.8-1), libpng (>= 1.6.58-1+toddy1)',
                  'freetype-2.14.3.tar.xz', 'usr/lib/pkgconfig/freetype2.pc'),
     'libpng': ('1.6.58', 'glibc (>= 2.44-1), zlib (>= 1.3.2-1)',
@@ -50,7 +54,7 @@ if __name__ == '__main__':
         assert proof['total']==26 and proof['original_passed']==6 and proof['corrected_passed']==20 and proof['compiled_binaries_unchanged']
         command=json.loads((log/'wayland-recheck-2.job.json').read_text())['command']
         assert command[-1]==(ROOT/'scripts/build/phase2/wayland-recheck.sh').read_text()
-    if name in ('wayland-protocols','pixman'):
+    if name in ('wayland-protocols','pixman','fontconfig','fribidi'):
         rows=[json.loads(line) for line in (Path('/mnt/lfs/sources/phase2/work')/(name+'-1')/'compile/meson-logs/testlog.json').read_text().splitlines()]
         assert rows and all(r['result']=='OK' and r['returncode']==0 and not r['is_fail'] for r in rows)
     if name=='freetype':
@@ -84,7 +88,11 @@ if __name__ == '__main__':
         doc=destination/'usr/share/doc/freetype';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('This software is based in part on the work of the FreeType Team.\nPortions copyright 1996-2026 The FreeType Project (https://freetype.org). All rights reserved.\nFTL license option selected; exact upstream terms in copyright/source-notices.\nSource modifications: enabled gxvalid/otvalid modules and FT_CONFIG_OPTION_SUBPIXEL_RENDERING per BLFS13.1.\nDynamic HarfBuzz loading; optional reference manual not included.\n')
     write_copyright(destination, name, [archive])
+    conffiles=[]
+    if name=='fontconfig':
+        for relative,row in before['entries'].items():
+            if relative.startswith('etc/') and 'sha256' in row: conffiles+=['--conffile','/'+relative]
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,
                     version+'-1+toddy1', str(destination), '--source', archive,
                     '--recipe', 'scripts/build/phase2/'+name+'-install.sh',
-                    '--depends', depends, '--install'], cwd=ROOT, check=True)
+                    '--depends', depends, '--install', *conffiles], cwd=ROOT, check=True)

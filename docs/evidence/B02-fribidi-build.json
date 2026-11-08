@@ -1,0 +1,57 @@
+{
+  "job": "fribidi-1",
+  "exit": 0,
+  "scope": "native regression/Unicode tests and stage, no graphical text/UI acceptance",
+  "source": {
+    "source_sha256": "1b1cde5b235d40479e91be2f0e88a309e3214c8ab470ec8a2744d82a5a9ea05c",
+    "reference": "BLFS13.1-systemd general/fribidi.html",
+    "book_page_sha256": "7b199fdcaeeefdc18d7dbafaa90a2f82b8a6fc993abf4aab53910ae3a57b4caf",
+    "source_patches": [],
+    "recipe_sha256": "82183f6fc9fc17ef8e078e3a796fb7bdb2e86d089a16607d087aacad942fd9fa"
+  },
+  "outer_tests_passed": 8,
+  "tests": [
+    {
+      "name": "fribidi:CapRTL_explicit",
+      "exit": 0,
+      "seconds": 0.02437901496887207
+    },
+    {
+      "name": "fribidi:CapRTL_implicit",
+      "exit": 0,
+      "seconds": 0.02581954002380371
+    },
+    {
+      "name": "fribidi:CapRTL_isolate",
+      "exit": 0,
+      "seconds": 0.027204275131225586
+    },
+    {
+      "name": "fribidi:ISO8859-8_hebrew",
+      "exit": 0,
+      "seconds": 0.02544260025024414
+    },
+    {
+      "name": "fribidi:UTF-8_persian",
+      "exit": 0,
+      "seconds": 0.025143146514892578
+    },
+    {
+      "name": "fribidi:UTF-8_reordernsm",
+      "exit": 0,
+      "seconds": 0.02413630485534668
+    },
+    {
+      "name": "fribidi:BidiCharacterTest",
+      "exit": 0,
+      "seconds": 0.08462977409362793
+    },
+    {
+      "name": "fribidi:BidiTest",
+      "exit": 0,
+      "seconds": 0.24971675872802734
+    }
+  ],
+  "raw_test_log_sha256": "6da271cb9527db1341a273e5b3b5f978997b6a05f8582a1b8da74e4a112ba664",
+  "stage_manifest_sha256": "aa9cc2277e0188d1bdf58f1c82ae2377300e0c55d57c3fe5f25940910acffb94"
+}
