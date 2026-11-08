@@ -329,7 +329,7 @@
       "phase": "agentic",
       "title": "Deliver native tools and the revocable privileged executor",
       "weight": 8,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": [
         "B01"
       ],
@@ -340,7 +340,10 @@
         "Focused wrong-user, malformed-request, revocation and malicious-content checks pass; keys do not enter model context or audit exports.",
         "Conflicting writes are serialized and a grant revoked between planning and dispatch is rejected independently of model behavior."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/B04.md",
+        "docs/evidence/B04-policy-core.json"
+      ]
     },
     {
       "id": "B05",
@@ -538,5 +541,17 @@
     "decision": "docs/adr/0063-owner-review-after-h13.md",
     "approval_evidence": "docs/adr/0113-owner-authorizes-phase2-implementation.md"
   },
-  "active_work": null
+  "active_work": {
+    "story": "B04",
+    "verified": [
+      "B01 prerequisite and B03 native provider/local/acquisition evidence accepted; no guest writer active.",
+      "Native policy-core-1 six SQLite/grant/revocation/concurrency/process-loss tests passed; no root IPC or privileged effect claim."
+    ],
+    "running": "Implementing system-D-Bus executor boundary after native policy core pass; no guest writer active.",
+    "remaining": [
+      "Authenticated native executor/tools with dedicated owner policy surface and actual allowed/denied operations; full B04 criterion proof pending."
+    ],
+    "verified_at": "2026-11-08T01:40:21.541256+00:00",
+    "evidence": "docs/evidence/B04.md"
+  }
 }

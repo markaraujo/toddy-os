@@ -12,6 +12,25 @@ G1: passed · G2: pending · Next: **B04**
 
 No milestone earns credit without completed acceptance evidence.
 
+## Active story: B04 — Deliver native tools and the revocable privileged executor
+
+The 13% phase total counts completed stories only. B04 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 21%.
+
+Last verified: 2026-11-08T01:40:21.541256+00:00
+
+Verified:
+
+- B01 prerequisite and B03 native provider/local/acquisition evidence accepted; no guest writer active.
+- Native policy-core-1 six SQLite/grant/revocation/concurrency/process-loss tests passed; no root IPC or privileged effect claim.
+
+Running: Implementing system-D-Bus executor boundary after native policy core pass; no guest writer active.
+
+Remaining:
+
+- Authenticated native executor/tools with dedicated owner policy surface and actual allowed/denied operations; full B04 criterion proof pending.
+
+[Acceptance evidence](docs/evidence/B04.md)
+
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
 | [H01 — Inspect host and select isolated build environment](stories/H01.md) | foundation | 4 | completed |
@@ -30,7 +49,7 @@ No milestone earns credit without completed acceptance evidence.
 | [B01 — Freeze the minimal Toddy architecture and delivery slices](stories/B01.md) | agentic | 5 | completed |
 | [B02 — Deliver the minimal branded GNOME desktop](stories/B02.md) | agentic | 10 | not_started |
 | [B03 — Connect provider adapters and one optional local AI profile](stories/B03.md) | agentic | 8 | completed |
-| [B04 — Deliver native tools and the revocable privileged executor](stories/B04.md) | agentic | 8 | not_started |
+| [B04 — Deliver native tools and the revocable privileged executor](stories/B04.md) | agentic | 8 | in_progress |
 | [B05 — Persist tasks and recover interrupted system changes](stories/B05.md) | agentic | 10 | not_started |
 | [B06 — Deliver Toddy quick entry, native UI and first-run setup](stories/B06.md) | agentic | 10 | not_started |
 | [B07 — Deliver inspectable local memory and portable backup](stories/B07.md) | agentic | 8 | not_started |

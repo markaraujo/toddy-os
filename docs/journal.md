@@ -1582,3 +1582,11 @@ First native fixture environment errors retained and corrected once. Added narro
 HTTPException classification and affected regression. ADR-0118 records scope and
 network cancellation timeout. B03 complete in headless scope; B04 next. B05/B06/B12
 retain activation/secret/UI/installed integration, no G2 or physical claim.
+
+### B04 independent policy/operation core — 2026-11-08 UTC
+
+B04 started after B01; native policy-core-1 six focused tests passed. Persisted
+session/standing expiry/revocation generations, input-bound IDs, serialized effects
+and actual child-loss uncertain/no-replay recovery. No root IPC/privileged effect
+acceptance yet. Next strict system-D-Bus boundary and independent owner policy
+client. Unchanged B03 model/package proofs reused.
