@@ -1736,3 +1736,16 @@ Native font qualification pending; no graphical acceptance. Host syntax and
 make check247 tests passed. Latest pushed3a833fc has all3 remote workflows green.
 llvm-1 continues healthy, latest direct step3494/4451 and35GiB target free.
 No second guest writer or repeat of previous suites.
+
+### B02 portable Pango and JPEG preparation — 2026-11-08 UTC
+
+Prepared pango-stage-6 and strict native promotion for ADR0122: require the new
+independent oracle0, unchanged binaries,9 original core passes,17 curated font
+driver passes and2 empty upstream drivers. Preserve original failed golden;
+no native oracle/stage/install accepted yet. Prepared libjpeg-turbo3.2.0 CMake/
+CTest JUnit stage and installed JPEG memory consumer with explicit lossy tolerance.
+Optional assembler/SIMD disabled; no performance acceptance. Source legal texts
+include full IJG README, component terms retained. NASM is outside the selected
+graph; source preparer refused it before mutation, no mandatory dependency added.
+Host syntax and make check247 passed. d003170 all3 remote workflows green.
+Guest llvm-1 remains the only healthy writer; no metadata sync or test replay.

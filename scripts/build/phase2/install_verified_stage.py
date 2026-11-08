@@ -16,6 +16,8 @@ from package_copyright import write_copyright
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libjpeg-turbo': ('3.2.0', 'glibc (>= 2.44-1)',
+                      'libjpeg-turbo-3.2.0.tar.gz', 'usr/lib/libjpeg.so'),
     'adwaita-fonts': ('50.0', 'fontconfig (>= 2.18.3-1+toddy1)',
                       'adwaita-fonts-50.0.tar.xz', 'usr/share/fonts/Adwaita/AdwaitaSans-Regular.ttf'),
     'llvm': ('22.1.8', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
@@ -65,8 +67,32 @@ if __name__ == '__main__':
     version, depends, archive, required = PROFILES[name]
     subprocess.run(['bash', '-c', 'source /opt/toddy-build/scripts/build/target.sh; guard_target'], check=True)
     log = Path('/var/log/toddy/phase2')
-    qualifier='llvm-qualify-2' if name=='llvm' else 'wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
+    qualifier='pango-stage-6' if name=='pango' else 'llvm-qualify-2' if name=='llvm' else 'wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
+    if name=='libjpeg-turbo':
+        import xml.etree.ElementTree as ET
+        work=Path('/mnt/lfs/sources/phase2/work/libjpeg-turbo-1')
+        report=ET.fromstring((work/'ctest.xml').read_bytes())
+        assert report.tag=='testsuite' and int(report.get('tests'))>0
+        assert all(int(report.get(k,'0'))==0 for k in ['failures','errors','disabled','skipped'])
+        cases=report.findall('testcase');assert len(cases)==int(report.get('tests'))
+        assert all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
+        source=Path('/mnt/lfs/sources/phase2/inputs/libjpeg-turbo-3.2.0')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libjpeg-turbo-build.sh').read_bytes()
+    if name=='pango':
+        assert (log/'pango-1.exit').read_text().strip()=='1'
+        assert (log/'pango-metric-oracle-5.exit').read_text().strip()=='0'
+        assert json.loads((log/'pango-metric-oracle-5.job.json').read_text())['command'][-2:]==[(ROOT/'scripts/build/phase2/pango_metric_fixture.py').read_text(),'qualify']
+        assert json.loads((log/'pango-stage-6.job.json').read_text())['command'][-1]==(ROOT/'scripts/build/phase2/pango-stage.sh').read_text()
+        work=Path('/mnt/lfs/sources/phase2/work/pango-1')
+        proof=json.loads((work/'portable-qualified.json').read_text())
+        assert proof['original_binaries_unchanged'] and (proof['core_passed'],proof['curated_passed'],proof['empty_drivers'],proof['portable_metric_cases_passed'])==(9,17,2,3)
+        for relative,sha in proof['proofs'].items():
+            assert (work/relative).resolve().is_relative_to(work.resolve())
+            assert hashlib.sha256((work/relative).read_bytes()).hexdigest()==sha
+        for path,sha in proof['binaries'].items():
+            assert path.startswith('/build/')
+            assert hashlib.sha256((work/path.removeprefix('/build/')).read_bytes()).hexdigest()==sha
     if name=='adwaita-fonts':
         work=Path('/mnt/lfs/sources/phase2/work/adwaita-fonts-1')
         proof=json.loads((work/'font-inputs.json').read_text())
@@ -100,7 +126,7 @@ if __name__ == '__main__':
         assert proof['total']==26 and proof['original_passed']==6 and proof['corrected_passed']==20 and proof['compiled_binaries_unchanged']
         command=json.loads((log/'wayland-recheck-2.job.json').read_text())['command']
         assert command[-1]==(ROOT/'scripts/build/phase2/wayland-recheck.sh').read_text()
-    if name in ('wayland-protocols','pixman','fontconfig','fribidi','harfbuzz','pango','graphene','shared-mime-info'):
+    if name in ('wayland-protocols','pixman','fontconfig','fribidi','harfbuzz','graphene','shared-mime-info'):
         rows=[json.loads(line) for line in (Path('/mnt/lfs/sources/phase2/work')/(name+'-1')/'compile/meson-logs/testlog.json').read_text().splitlines()]
         if name=='harfbuzz':
             # Frozen BLFS optional FontTools is absent; upstream explicitly skips

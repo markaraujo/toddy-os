@@ -2893,6 +2893,17 @@
       "version": "50.0",
       "license": "OFL-1.1",
       "evidence": "Authenticated GNOME50 source LICENSE names original font authors and includes full SIL Open Font License1.1. Six unmodified TTF files; no font renaming or outline changes. Native font/cache qualification pending."
+    },
+    {
+      "name": "libjpeg-turbo",
+      "version": "3.2.0",
+      "license": "IJG AND BSD-3-Clause AND Zlib AND libpng-2.0 AND BSD-2-Clause",
+      "evidence": "Authenticated source LICENSE.md summarizes component terms; preserve full README.ijg, all named legal texts and source notices. Portable C backend, optional assembler/SIMD not enabled; native build/qualification pending.",
+      "extra_license_files": {
+        "libjpeg-turbo-3.2.0.tar.gz": [
+          "README.ijg"
+        ]
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
