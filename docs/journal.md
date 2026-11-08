@@ -1609,3 +1609,10 @@ Native policy-core-2 eight tests passed, including old-store migration and durab
 cancellation. ADR-0119 explains parent-death and unrestricted-root limits; staged
 systemd control-group lifecycle remains to prove. User tools/package/service/
 network and authenticated owner/logind surface still pending; B04 incomplete.
+
+### B04 active revocation — 2026-11-08 UTC
+
+Extended revoke to persist Stop requests for managed running effects. Native
+executor-ipc-6 stopped an actually started root command90ms after revoke, retained
+uncertain outcome and denied later dispatch. policy-core-3 eight changed storage
+checks passed. Exact source hashes/evidence retained; no B04 completion yet.

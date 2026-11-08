@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B04 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 21%.
 
-Last verified: 2026-11-08T01:51:33.052908+00:00
+Last verified: 2026-11-08T01:52:55.035357+00:00
 
 Verified:
 
@@ -24,6 +24,7 @@ Verified:
 - Native policy-core-1 six SQLite/grant/revocation/concurrency/process-loss tests passed; no root IPC or privileged effect claim.
 - Native executor-ipc-3 actual root service/UID101 configuration mutation and unrestricted root id0, UID65534/wrong-schema/import escalation/revocation/policy-read denials passed in synthetic root.
 - Native executor-ipc-5 active root Stop86ms/process absent and service SIGKILL ->child absent/restart uncertain/no replay passed; policy-core-2 eight storage/migration/cancel/recovery tests passed.
+- Native executor-ipc-6 active revocation stopped already-started root work90ms; new dispatch denied and outcome uncertain. policy-core-3 eight affected tests passed.
 
 Running: Implementing remaining native tools and administrative backends; no guest writer active.
 

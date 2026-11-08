@@ -65,6 +65,7 @@ class ExecutorStoreTests(unittest.TestCase):
             self.assertTrue(started.wait(5))
             with self.assertRaisesRegex(PolicyError,'executor_busy'):self.dispatch_operation('b',lambda *_:self.fail())
             self.store.revoke(101)
+            self.assertTrue(self.store.inspect(101,'a')['cancel_requested'])
         finally:release.set();thread.join(5)
         self.assertEqual(out[0]['state'],'completed')
         with self.assertRaisesRegex(PolicyError,'grant_required'):self.dispatch_operation('b',lambda *_:self.fail())

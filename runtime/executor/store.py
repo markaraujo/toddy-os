@@ -123,6 +123,12 @@ class Store:
             generation=old['generation']+1 if old else 1
             db.execute('INSERT OR REPLACE INTO grants VALUES(?,?,?,NULL,0,0)',(uid,generation,'standing'))
             self._audit(db,'revoke',uid,generation)
+            # Stop managed in-flight work where its safe boundary permits it;
+            # already committed effects remain explicit in their result.
+            running=db.execute("SELECT * FROM operations WHERE uid=? AND state='running'",(uid,)).fetchall()
+            for operation in running:
+                db.execute('UPDATE operations SET cancel_requested=1 WHERE id=?',(operation['id'],))
+                self._audit(db,'revoke_cancel',uid,generation,operation['id'],operation['kind'],'running')
         return generation
 
     def _grant(self,db,uid,session):

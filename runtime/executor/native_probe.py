@@ -35,13 +35,20 @@ def client():
         denied('GetOperation',('allowed',),'operation_unknown','(s)')
         assert call('GetAudit',(0,),'(t)')==[]
         return {'uid':os.getuid(),'grant_denied':True,'other_user_operation_hidden':True}
-    if sys.argv[2]=='crash':
+    if sys.argv[2] in ('crash','revoke-active'):
         command={'argv':['/usr/bin/python3','-c',"from pathlib import Path;import time;Path('/etc/toddy-restart-marker').write_text('started');time.sleep(20)"],
                  'timeout_seconds':20,'acknowledge_unrestricted_root':True}
+        active_revoke=sys.argv[2]=='revoke-active'
+        op='revoke-active' if active_revoke else 'service-crash'
+        if active_revoke:command['argv'][2]=command['argv'][2].replace('toddy-restart-marker','toddy-revoke-marker')
         encoded=json.dumps(command)
-        assert call('PlanOperation',('service-crash','root_command',encoded))['state']=='planned'
-        try:call('DispatchOperation',('service-crash','root_command',encoded))
-        except GLib.Error:return {'connection_lost':True}
+        assert call('PlanOperation',(op,'root_command',encoded))['state']=='planned'
+        try:call('DispatchOperation',(op,'root_command',encoded))
+        except GLib.Error as error:
+            if active_revoke:
+                assert 'operation_uncertain' in error.message
+                return {'revoked_active_uncertain':True}
+            return {'connection_lost':True}
         raise AssertionError('crash fixture unexpectedly completed')
     if sys.argv[2]=='revoked':
         denied('DispatchOperation',('stale','config_replace',json.dumps({**args,'expected_sha256':hashlib.sha256(args['text'].encode()).hexdigest()})),'grant_required')
@@ -172,13 +179,22 @@ def main():
                     if b'time.sleep(20)' in (process/'cmdline').read_bytes():survivors.append(process.name)
                 except FileNotFoundError:pass
         assert not survivors,survivors
-        revoked=policy('revoke');denial=run_client('revoked')
+        revoke_client=client_process('revoke-active')
+        deadline=time.monotonic()+5
+        while not Path('/etc/toddy-revoke-marker').exists() and time.monotonic()<deadline:time.sleep(.01)
+        assert Path('/etc/toddy-revoke-marker').exists(),'root revocation fixture never started'
+        revoke_at=time.monotonic();revoked=policy('revoke')
+        revoked_stdout,revoked_stderr=revoke_client.communicate(timeout=3)
+        assert revoke_client.returncode==0 and not revoked_stderr and json.loads(revoked_stdout)['revoked_active_uncertain']
+        revoke_ms=round((time.monotonic()-revoke_at)*1000);assert revoke_ms<2000
+        record=store.inspect(101,'revoke-active');assert record['state']=='uncertain' and record['cancel_requested']
+        denial=run_client('revoked')
         assert Path('/etc/toddy-executor-fixture.conf').read_bytes()==current
         # A client cannot mutate/read the independent root-owned policy store.
         peer=subprocess.run(['python3',str(ROOT/'linux_identity.py'),'101','python3','-c',"from pathlib import Path; Path('/build/policy/state.sqlite').read_bytes()"],capture_output=True,text=True)
         assert peer.returncode!=0 and 'PermissionError' in peer.stderr
         report={'scope':'native root/UID system-D-Bus in synthetic /etc only; no installed configuration changed',
-            'allowed':allowed,'wrong_user':wrong,'revocation':denial,'private_policy_denied':True,'canceled_process_absent':True,'service_loss_child_absent':True,'restart_outcome_uncertain_no_replay':True,
+            'allowed':allowed,'wrong_user':wrong,'revocation':denial,'private_policy_denied':True,'canceled_process_absent':True,'service_loss_child_absent':True,'restart_outcome_uncertain_no_replay':True,'active_revoke_stop_ms':revoke_ms,
             'namespace_root_capabilities':hex(capabilities),'logind_session':'not present; session grants core-tested only',
             'pending':'package/service/network operations and authenticated graphical owner surface'}
     finally:
