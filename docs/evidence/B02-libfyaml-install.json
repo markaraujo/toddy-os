@@ -1,0 +1,38 @@
+{
+  "scope": "Native portable YAML library; original535passes reused,286affected unit cases0,9privateSDKCTest0/179ELFs unchanged/installed YAML Unicode+refusal0",
+  "step": {
+    "step": "b02-libfyaml-install",
+    "started": "2026-11-08T18:08:21.533002+00:00",
+    "finished": "2026-11-08T18:08:44.166271+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 158,
+    "log_sha256": "beae12080486b7815c6a2deedfd4fbd787c9f4a9ea4e5161fb7d35f990326982"
+  },
+  "success_record_sha256": "f4b9f64d7acf328eb0d21cd664c00fc99b243648ab94db08deae1bd840602e38",
+  "package": {
+    "name": "libfyaml",
+    "version": "0.9.6-1+toddy1",
+    "archive_sha256": "d4c2923b94e82cc820150a5fb22b92f78de0baf82352ca896373c2be6e846d8a",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-libfyaml-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 25.274,
+        "entries": 139686,
+        "regular_files": 123922,
+        "regular_bytes": 6793240499
+      },
+      {
+        "seconds": 20.106,
+        "entries": 139841,
+        "regular_files": 124060,
+        "regular_bytes": 6796272487
+      }
+    ],
+    "total_seconds": 48.9
+  }
+}

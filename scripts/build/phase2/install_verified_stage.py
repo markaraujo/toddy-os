@@ -19,6 +19,10 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'appstream': ('1.1.6', 'glib (>= 2.88.3-1+toddy1), curl (>= 8.23.0-1), libxml2 (= 2.15.3-1+toddy1), libfyaml (= 0.9.6-1+toddy1), libxmlb (= 0.3.29-1+toddy1), zstd (>= 1.5.7-1)',
+                   'AppStream-1.1.6.tar.xz', 'usr/lib/pkgconfig/appstream.pc'),
+    'libfyaml': ('0.9.6', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1)',
+                 'libfyaml-0.9.6.tar.gz', 'usr/lib/pkgconfig/libfyaml.pc'),
     'libxmlb': ('0.3.29', 'glib (>= 2.88.3-1+toddy1), xz (>= 5.8.3-1), zstd (>= 1.5.7-1)',
                 'libxmlb-0.3.29.tar.xz', 'usr/lib/pkgconfig/xmlb.pc'),
     'itstool': ('2.0.7', 'python (= 3.14.10-1+toddy2), libxml2-python (= 2.15.3-1+toddy1), gettext (>= 1.0-1)',
@@ -117,6 +121,8 @@ if __name__ == '__main__':
     if pci_resume:qualifier='libpciaccess-resume-2'
     doxygen_finish=name=='doxygen' and (log/'doxygen-finish-2.job.json').exists()
     if doxygen_finish:qualifier='doxygen-finish-2'
+    if name=='appstream' and (log/'appstream-probe-4.job.json').exists():qualifier='appstream-probe-4'
+    if name=='libfyaml' and (log/'libfyaml-finish-2.job.json').exists():qualifier='libfyaml-finish-2'
     if name=='itstool' and (log/'itstool-recovery-2.job.json').exists():qualifier='itstool-recovery-2'
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
     if name=='libxml2-python':qualifier='libxml2-python-probe-5'
@@ -452,6 +458,55 @@ if __name__ == '__main__':
         assert {t['name'] for t in tests}=={'testdict','testchar','testparser','testrecurse','testcatalog','testapi','runtest'}
         assert len(tests)==7 and all(t['exit']==0 for t in tests)
         assert (work/'test-logs/runtest.log').read_text().rstrip().endswith('Total 3904 tests, no errors')
+    if name=='appstream':
+        work=Path('/mnt/lfs/sources/phase2/work/appstream-1')
+        source=Path('/mnt/lfs/sources/phase2/inputs/AppStream-1.1.6')
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/appstream-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==proof['gi_exit']==0
+        rows=[json.loads(l) for l in (work/'compile/meson-logs/testlog.json').read_text().splitlines() if l.strip()]
+        assert len(rows)==8 and all(r['result']=='OK' and r['returncode']==0 for r in rows)
+        if qualifier=='appstream-probe-4':
+            assert (log/'appstream-configure-3.exit').read_text().strip()=='1'
+            command=json.loads((log/'appstream-configure-3.job.json').read_text())['command']
+            assert hashlib.sha256(command[-1].encode()).hexdigest()=='252782d8a01dfa8ffe0043ad9f84f9e87db3245b1c5d8adcfcd20f5a6ffb2852'
+            assert json.loads((log/'appstream-probe-4.job.json').read_text())['command'][-3:]==['python3','-c',(ROOT/'scripts/build/phase2/appstream_finish.py').read_text()]
+            for relative,digest in json.loads((work/'probe-4/binaries-before.json').read_text()).items():
+                with (work/'compile'/relative).open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==digest
+            expected=json.loads((work/'probe-4/stage-before.json').read_text());actual=inspect_stage(work/'stage')['entries']
+            assert set(actual)==set(expected)
+            for relative,row in expected.items():
+                path=work/'stage'/relative;st=path.lstat()
+                assert (st.st_mode,st.st_uid,st.st_gid)==(row['mode'],row['uid'],row['gid'])
+                if 'link' in row:assert str(path.readlink())==row['link']
+                if 'sha256' in row:assert actual[relative]['sha256']==row['sha256']
+        else:assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/appstream-build.sh').read_bytes()
+    if name=='libfyaml':
+        import xml.etree.ElementTree as ET
+        work=Path('/mnt/lfs/sources/phase2/work/libfyaml-1')
+        original=json.loads((log/'libfyaml-1.job.json').read_text())['command']
+        if qualifier=='libfyaml-finish-2':
+            assert (log/'libfyaml-1.exit').read_text().strip()=='2'
+            assert hashlib.sha256(original[-1].encode()).hexdigest()=='7484f54ca53df4029de7ee890cad19ab7e1d49649a6efc5a834ddd8fa1bbd9c0'
+            assert json.loads((log/'libfyaml-finish-2.job.json').read_text())['command'][-3:]==['python3','-c',(ROOT/'scripts/build/phase2/libfyaml_finish.py').read_text()]
+        else:
+            canonical=(ROOT/'scripts/build/phase2/libfyaml-build.sh').read_text()
+            if original[-2:]==['bash','/src/toddy-build.sh']:
+                assert Path('/mnt/lfs/sources/phase2/inputs/libfyaml-0.9.6/toddy-build.sh').read_text()==canonical
+            else:assert original[-3:]==['bash','-c',canonical]
+        source=Path('/mnt/lfs/sources/phase2/inputs/libfyaml-0.9.6')
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libfyaml-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==0
+        tests=ET.parse(work/'check-ctest.xml').getroot().findall('.//testcase');assert tests and len(tests)==proof['check_sdk_ctest_cases']
+        assert all(not any(t.find(k) is not None for k in ['failure','error','skipped']) for t in tests)
+        if qualifier=='libfyaml-finish-2':
+            assert proof['original_summary']=={'TOTAL':537,'PASS':535,'SKIP':0,'XFAIL':0,'FAIL':0,'XPASS':0,'ERROR':2}
+            for relative,digest in json.loads((work/'finish-2/binaries-before.json').read_text()).items():
+                with (work/relative).open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==digest
+            summary=proof['affected_unit_summary']
+        else:summary=proof['upstream_summary']
+        assert summary['TOTAL']>0 and summary['TOTAL']==summary['PASS']
+        assert all(summary.get(k,0)==0 for k in ['SKIP','XFAIL','FAIL','XPASS','ERROR'])
+        assert '#define HAVE_COMPATIBLE_CHECK 1' in (work/'compile/config.h').read_text()
     if name=='libxmlb':
         work=Path('/mnt/lfs/sources/phase2/work/libxmlb-1');source=Path('/mnt/lfs/sources/phase2/inputs/libxmlb-0.3.29')
         assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libxmlb-build.sh').read_bytes()

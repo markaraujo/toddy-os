@@ -1,0 +1,38 @@
+{
+  "scope": "Native core metadata bootstrap;8upstream driver exits0,97ELFs/225stage entries unchanged, installed UTF8 metadata/refusal/GI0; no graphical/catalog availability",
+  "step": {
+    "step": "b02-appstream-install",
+    "started": "2026-11-08T18:20:53.839448+00:00",
+    "finished": "2026-11-08T18:21:19.459128+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 227,
+    "log_sha256": "53c4d8028ab95a1c3137848bbc84e8a1b5342a3b7a3f9c049d1b01c236c0e27f"
+  },
+  "success_record_sha256": "0fd386655be69dfd1a39de062669f1f50e4e8a15c46d6095125ffb8357563f85",
+  "package": {
+    "name": "appstream",
+    "version": "1.1.6-1+toddy1",
+    "archive_sha256": "621748ce5e4f6c1e7a7158b7e8eabdd4bb1a26939a59ab4593246b0c6c6c3d6e",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-appstream-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 23.273,
+        "entries": 139841,
+        "regular_files": 124060,
+        "regular_bytes": 6796272487
+      },
+      {
+        "seconds": 21.697,
+        "entries": 140065,
+        "regular_files": 124273,
+        "regular_bytes": 6803288602
+      }
+    ],
+    "total_seconds": 49.883
+  }
+}

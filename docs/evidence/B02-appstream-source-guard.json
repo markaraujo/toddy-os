@@ -1,0 +1,17 @@
+{
+  "scope": "Actual initial extraction refusal/recovery and source-guard safety checks, not a graphical test",
+  "initial_preparation_exit": 1,
+  "corrected_preparation_exit": 0,
+  "source_filter_tests": 6,
+  "repository_tests": 279,
+  "native_fixture_preserved": {
+    "target": "/nonexistent",
+    "target_absent": true
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-appstream-source-evidence.tar.gz",
+    "members": 7,
+    "bytes": 10553,
+    "sha256": "f7bc6b5e8bb060e773055176346c2d5e3185f4a9bead537b6719323cc78419ee"
+  }
+}

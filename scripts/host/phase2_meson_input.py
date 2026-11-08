@@ -4,22 +4,26 @@ import hashlib
 import json
 from pathlib import Path
 import shlex
+import re
 import subprocess
 import sys
 import phase2_vm
 ROOT=phase2_vm.ROOT
 NAME=sys.argv[1]
-assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa','libepoxy','gdk-pixbuf','tiff','iso-codes','gtk','doxygen','itstool','libxmlb')
+assert len(sys.argv) in (2,3)
+receipt_suffix='-'+sys.argv[2] if len(sys.argv)==3 else ''
+assert not receipt_suffix or re.fullmatch(r'-[a-z][a-z0-9-]{0,31}',receipt_suffix)
+assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa','libepoxy','gdk-pixbuf','tiff','iso-codes','gtk','doxygen','itstool','libxmlb','libfyaml','appstream')
 if __name__=='__main__':
     row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==NAME)
     archive=ROOT/'.local/sources'/row['filename'];data=archive.read_bytes()
     assert hashlib.sha256(data).hexdigest()==row['sha256']
-    probes={'libxmlb':'libxmlb-probe.c','itstool':'itstool-probe.py','doxygen':'doxygen-probe.py','iso-codes':'iso-codes-probe.py','gtk':'gtk-probe.c','tiff':'tiff-probe.c','gdk-pixbuf':'gdk-pixbuf-probe.c','libepoxy':'libepoxy-probe.c','mesa':'mesa-probe.c','pyyaml':'pyyaml-probe.py','libpciaccess':'libpciaccess-probe.c','libdrm':'libdrm-probe.c','freetype':'freetype-probe.c','psutil':'psutil-probe.py','mako':'mako-probe.py'}
+    probes={'appstream':'appstream-probe.c','libfyaml':'libfyaml-probe.c','libxmlb':'libxmlb-probe.c','itstool':'itstool-probe.py','doxygen':'doxygen-probe.py','iso-codes':'iso-codes-probe.py','gtk':'gtk-probe.c','tiff':'tiff-probe.c','gdk-pixbuf':'gdk-pixbuf-probe.c','libepoxy':'libepoxy-probe.c','mesa':'mesa-probe.c','pyyaml':'pyyaml-probe.py','libpciaccess':'libpciaccess-probe.c','libdrm':'libdrm-probe.c','freetype':'freetype-probe.c','psutil':'psutil-probe.py','mako':'mako-probe.py'}
     probe_filename='toddy-probe.py' if probes.get(NAME,'').endswith('.py') else 'toddy-probe.c'
     probe=(ROOT/'scripts/build/phase2'/probes[NAME]).read_text() if NAME in probes else None
     extra=None
-    if NAME in ('shared-mime-info','llvm'):
-        extra_name='xdgmime-tests' if NAME=='shared-mime-info' else 'llvm-upstream-fix'
+    if NAME in ('shared-mime-info','llvm','libfyaml'):
+        extra_name='check' if NAME=='libfyaml' else 'xdgmime-tests' if NAME=='shared-mime-info' else 'llvm-upstream-fix'
         extra=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==extra_name)
         extra_data=(ROOT/'.local/sources'/extra['filename']).read_bytes()
         assert hashlib.sha256(extra_data).hexdigest()==extra['sha256']
@@ -46,7 +50,7 @@ lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
 '''+f'row={row!r}\nrecipe={recipe!r}\nprobe={probe!r}\nprobe_filename={probe_filename!r}\nextra={extra!r}\n'+'''
 base=Path('/mnt/lfs/sources');archive=base/row['filename'];part=base/(row['filename']+'.part')
-source_name='iso-codes-v'+row['version'] if row['name']=='iso-codes' else 'llvm-project-'+row['version']+'.src' if row['name']=='llvm' else 'dejavu-fonts-ttf-'+row['version'] if row['name']=='dejavu-fonts' else row['name']+'-'+row['version']
+source_name='AppStream-'+row['version'] if row['name']=='appstream' else 'iso-codes-v'+row['version'] if row['name']=='iso-codes' else 'llvm-project-'+row['version']+'.src' if row['name']=='llvm' else 'dejavu-fonts-ttf-'+row['version'] if row['name']=='dejavu-fonts' else row['name']+'-'+row['version']
 source=base/'phase2/inputs'/source_name;work=base/'phase2/work'/(row['name']+'-1')
 assert not source.exists() and not work.exists() and not part.exists(),'Reconcile existing source/job; no replay'
 if archive.exists():
@@ -69,6 +73,10 @@ if row['name']=='mako':
     path.chmod(0o644)
     patches.append({'path':'doc/build/changelog.rst','before_mode':before,'after_mode':0o644,
                     'content_sha256':sha,'reason':'Public release doc is owner-readable only; expose unchanged bytes to unprivileged read-only-input compiler'})
+if row['name']=='libfyaml':
+    assert extra['name']=='check'
+    (source/'subprojects').mkdir(exist_ok=True)
+    subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',extra['filename']],cwd=source/'subprojects',check=True)
 if row['name']=='shared-mime-info':
     assert extra['name']=='xdgmime-tests'
     subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',extra['filename']],cwd=source/'subprojects',check=True)
@@ -119,7 +127,7 @@ if probe is not None:
 work.mkdir();os.chown(work,101,101)
 print(json.dumps(receipt))
 '''
-    prefix=ROOT/'.local/phase2'/(NAME+'-input')
+    prefix=ROOT/'.local/phase2'/(NAME+'-input'+receipt_suffix)
     with prefix.with_suffix('.log').open('xb') as log:
         result=subprocess.run(phase2_vm.ssh_args()+['python3 -c '+shlex.quote(remote)],input=data,stdout=log,stderr=subprocess.STDOUT)
     prefix.with_suffix('.exit').write_text(str(result.returncode)+'\n')

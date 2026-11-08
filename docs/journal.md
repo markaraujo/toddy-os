@@ -2267,3 +2267,55 @@ staged Unicode XML query/malformed refusal and GI; [controlled native promotion]
 passed0/0 with actual installed C query/refusal and GI. The20-member raw bundle
 is retained in [build evidence](evidence/B02-libxmlb-build.json).
 Libfyaml/AppStream/Libadwaita and real session integration remain.
+
+### B02 portable native YAML metadata dependency
+
+[Libfyaml0.9.6](evidence/B02-libfyaml-build.json) compiled with a private
+Check0.15.2 SDK authenticated from its actual upstream-pinned tag. All nine
+Check CTest programs passed in352 seconds. The YAML suite initially passed535
+cases and reported two harness errors because the unit executable could not
+load private libcheck.so.0. It exited127 before running unit cases.
+
+Recovery exposed that SDK directory only through the isolated compiler loader
+environment and reran only the affected upstream unit group:286 cases passed.
+The535 approved cases and nine SDK programs were reused, all179 existing ELF
+hashes stayed unchanged, and actual staged Unicode YAML mapping/lifetime and
+malformed-input refusal passed. The[owned package](evidence/B02-libfyaml-install.json)
+passed recipe/postcheck0/0 and the installed semantic consumer. Preserve the
+original errors and corrected proof in the45-member raw evidence bundle.
+The SDK is not a runtime/catalog dependency; compiler network suites and optional
+libclang reflection remain disabled explicitly. No graphical acceptance claim.
+
+AppStream1.1.6 preparation initially rejected a deliberate upstream negative
+symlink before extraction. A dependent preflight job was incorrectly attempted
+after that refusal and was safely blocked before compilation.
+[ADR0140](adr/0140-appstream-negative-link-fixture.md) preserves only the exact
+frozen negative fixture after ordinary path checks, with an absent referent
+guard. Six affected extraction tests passed; unknown absolute links, hardlinks
+and external-alias writes remain refused. Corrected preparation keeps a separate
+receipt and requires successful postconditions before compiler dispatch. Actual
+AppStream native tests/stage/ownership remain separate required gates.
+
+### B02 native AppStream core metadata
+
+[Corrected source extraction](evidence/B02-appstream-source-guard.json) retained
+the exact upstream negative link; all ordinary source/production stage guards
+remain enforced. Native configuration then found every core dependency but
+needed the upstream optional bash-completion feature disabled in this metadata
+bootstrap. No shell/user preferences or runtime version were changed.
+
+[AppStream1.1.6](evidence/B02-appstream-build.json) compiled, staged and passed
+all eight registered native core programs, including metainfo CLI validation.
+The final recipe summary originally expected seven; that assertion failure is
+retained. A probe-only recovery proved actual C Unicode metadata/malformed-input
+refusal and GI with all97 compiled ELF hashes and225 stage entries unchanged.
+No compiler, upstream program or staging operation was repeated.
+
+[Independent native installation](evidence/B02-appstream-install.json) passed
+recipe/postcheck0/0 and actual installed C/GI consumers. Preserve the35-member
+native bundle and separate seven-member source-guard bundle. This core bootstrap
+disables compose, stemming, systemd hooks, Qt, shell completions and Debian APT
+integration; it is not graphical or software-catalog application qualification.
+Libadwaita1.9.3 follows. Its actual upstream GTK widget tests require a display;
+compile/ABI staging alone must remain unqualified until a native compositor can
+run them. Continue eligible planned compositor dependencies if display blocks.

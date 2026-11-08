@@ -1,0 +1,49 @@
+{
+  "scope": "Native core metadata bootstrap/API/GI, not graphical or application catalog acceptance",
+  "upstream_drivers": [
+    {
+      "name": "AppStream:as-validate_metainfo.cli",
+      "native_exit": 0
+    },
+    {
+      "name": "AppStream:as-test_xml",
+      "native_exit": 0
+    },
+    {
+      "name": "AppStream:as-test_basic",
+      "native_exit": 0
+    },
+    {
+      "name": "AppStream:as-test_yaml",
+      "native_exit": 0
+    },
+    {
+      "name": "AppStream:as-test_validate",
+      "native_exit": 0
+    },
+    {
+      "name": "AppStream:as-test_perf",
+      "native_exit": 0
+    },
+    {
+      "name": "AppStream:as-test_misc",
+      "native_exit": 0
+    },
+    {
+      "name": "AppStream:as-test_pool",
+      "native_exit": 0
+    }
+  ],
+  "existing_compiled_elf_files_unchanged": 97,
+  "stage_entries_unchanged": 225,
+  "staged_consumer_exit": 0,
+  "gi_exit": 0,
+  "limitations": "Compose, stemming, systemd hooks, Qt, shell completions and Debian APT integration disabled in bootstrap profile",
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-appstream-native-evidence.tar.gz",
+    "bytes": 164511,
+    "sha256": "45b7385963e1aedb397af12c268b5a66d3f2424b1880f4ea69130d379290fa86",
+    "members": 35,
+    "scope": "Raw AppStream8native driver exits0/97ELFs+225stage entries unchanged/UTF8 metadata-refusal/GI/owned0/0; initial source/completion/proof failures retained"
+  }
+}

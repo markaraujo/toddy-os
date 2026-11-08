@@ -10109,6 +10109,107 @@
           ]
         }
       ]
+    },
+    {
+      "name": "check",
+      "version": "0.15.2",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Official upstream0.15.2 tag11970a7e112dfe243a2e68773f014687df2900e8 and CMake header LGPL2.1+; exact source license text retained. Private native test SDK compiled and all9CTest passed in352s; native libfyaml unit group286cases0 with explicit isolated loader path. No runtime installation.",
+      "runtime_inclusion": "Private build/test-only SDK, not installed runtime/catalog or a public application",
+      "source_notice_evidence": [
+        {
+          "filename": "check-0.15.2.tar.gz",
+          "sha256": "998d355294bb94072f40584272cf4424571c396c631620ce463f6ea97aa67d2e",
+          "notices": [
+            {
+              "path": "check-0.15.2/COPYING.LESSER",
+              "sha256": "a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "libfyaml",
+      "version": "0.9.6",
+      "license": "LicenseRef-libfyaml-MIT-and-bundled-notices",
+      "evidence": "Upstream MIT LICENSE/README, embedded xxHash BSD2 full header and per-file terms retained. Portable native compiler0;9CheckSDKCTest0, original535PASS/2loaderERROR retained, only affected unit group286PASS corrected;179preexistingELFs unchanged. Staged UTF8 YAML mapping/refusal0; actual installed Unicode YAML/refusal0 and owned recipe0/post0.",
+      "runtime_inclusion": "Native metadata dependency; test SDK remains private, no application/catalog qualification",
+      "source_notice_evidence": [
+        {
+          "filename": "libfyaml-0.9.6.tar.gz",
+          "sha256": "a59cc3331e2eb903ec36933ad52a45888041cac31e44f553a00511131242c483",
+          "notices": [
+            {
+              "path": "libfyaml-0.9.6/LICENSE",
+              "sha256": "8c6ab373d0f40d39fc976227010f22a52e83e0e40fd25e5ac8f19945fed8aa5a"
+            },
+            {
+              "path": "libfyaml-0.9.6/README.md",
+              "sha256": "b7c51b0356f2f3edddd6edcc1f4059f423121d91877944afe0dffd6a40a43712"
+            },
+            {
+              "path": "libfyaml-0.9.6/src/xxhash/xxhash.h",
+              "sha256": "4fd2cefb0b18dafd2bd2fcc46fac49f4d7fe14d2c6ca9fce291dc9d6bd5175c0"
+            },
+            {
+              "path": "libfyaml-0.9.6/include/libfyaml/libfyaml-blake3.h",
+              "sha256": "1e5092d5d6ce771cb683241439efe58439ed9d30d67fcfe6397f7fa74f915b4a"
+            }
+          ]
+        }
+      ],
+      "extra_license_headers": {
+        "libfyaml-0.9.6.tar.gz": {
+          "prefixes": [
+            ""
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".S"
+          ]
+        }
+      }
+    },
+    {
+      "name": "appstream",
+      "version": "1.1.6",
+      "license": "LicenseRef-AppStream-and-bundled-per-file",
+      "evidence": "Frozen AppStream core LGPL2.1-or-later headers/COPYING, bundled/test/font/documentation notices retained. Native8upstream core driver exits0; original final7-count assertion failure retained. Probe-only C metadata/GI0 with97ELFs/225stage entries unchanged. Native owned recipe0/post0 and installed UTF8 metadata/refusal/GI0. Core bootstrap has compose/stemming/systemd/Qt/completion/APT integration disabled; no catalog/graphical availability claim.",
+      "source_notice_evidence": [
+        {
+          "filename": "AppStream-1.1.6.tar.xz",
+          "sha256": "e298929f39729e84a70f6be6941f3e7f3fc2ee3c83cb3ea1b1b5b280a8fe3a24",
+          "notices": [
+            {
+              "path": "./AppStream-1.1.6/COPYING",
+              "sha256": "20e50fe7aae3e56378ebf0417d9de904f55a0e61e4df315333e632a4d3555d95"
+            },
+            {
+              "path": "./AppStream-1.1.6/tests/samples/compose/Raleway.LICENSE",
+              "sha256": "378db2d5645543913dc9f21c9a3da08202fbe259f1772128af3a40a47cb8cec7"
+            },
+            {
+              "path": "./AppStream-1.1.6/docs/xml/Legal_Notice.xml",
+              "sha256": "84fc6f23ed95ddcee179747fcdb7dddd8d8878c7b51a70a693c73a23f7e29fda"
+            }
+          ]
+        }
+      ],
+      "extra_license_headers": {
+        "AppStream-1.1.6.tar.xz": {
+          "prefixes": [
+            ""
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".cpp",
+            ".hpp"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

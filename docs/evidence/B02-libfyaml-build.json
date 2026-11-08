@@ -1,0 +1,34 @@
+{
+  "scope": "Native portable YAML parser; private SDK loader recovery only",
+  "check_sdk_ctest_cases": 9,
+  "original_summary": {
+    "TOTAL": 537,
+    "PASS": 535,
+    "SKIP": 0,
+    "XFAIL": 0,
+    "FAIL": 0,
+    "XPASS": 0,
+    "ERROR": 2
+  },
+  "affected_unit_summary": {
+    "TOTAL": 286,
+    "PASS": 286,
+    "SKIP": 0,
+    "XFAIL": 0,
+    "FAIL": 0,
+    "XPASS": 0,
+    "ERROR": 0
+  },
+  "reused_passed_cases": 535,
+  "existing_compiled_elf_files_unchanged": 179,
+  "staged_consumer_exit": 0,
+  "network_suites": "Explicitly disabled; no compiler network",
+  "reflection": "Optional libclang reflection disabled",
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-libfyaml-native-evidence.tar.gz",
+    "bytes": 192162,
+    "sha256": "f1d1c0c296d0d1082cacf7d70e1cbd5803d6e41f047c3a6b882c82bb280db2c8",
+    "members": 45,
+    "scope": "Native9SDKCTest0/original535PASS+2loaderERROR preserved/affected286PASS/179ELFs unchanged/YAML semantic+owned0/0"
+  }
+}
