@@ -1,0 +1,24 @@
+<node>
+  <interface name="io.github.markaraujo.Toddy.Executor1">
+    <method name="PlanOperation">
+      <arg name="operation_id" type="s" direction="in"/>
+      <arg name="kind" type="s" direction="in"/>
+      <arg name="arguments_json" type="s" direction="in"/>
+      <arg name="operation_json" type="s" direction="out"/>
+    </method>
+    <method name="DispatchOperation">
+      <arg name="operation_id" type="s" direction="in"/>
+      <arg name="kind" type="s" direction="in"/>
+      <arg name="arguments_json" type="s" direction="in"/>
+      <arg name="operation_json" type="s" direction="out"/>
+    </method>
+    <method name="GetOperation">
+      <arg name="operation_id" type="s" direction="in"/>
+      <arg name="operation_json" type="s" direction="out"/>
+    </method>
+    <method name="GetAudit">
+      <arg name="after_sequence" type="t" direction="in"/>
+      <arg name="audit_json" type="s" direction="out"/>
+    </method>
+  </interface>
+</node>

@@ -1590,3 +1590,13 @@ session/standing expiry/revocation generations, input-bound IDs, serialized effe
 and actual child-loss uncertain/no-replay recovery. No root IPC/privileged effect
 acceptance yet. Next strict system-D-Bus boundary and independent owner policy
 client. Unchanged B03 model/package proofs reused.
+
+### B04 actual native root/user executor boundary — 2026-11-08 UTC
+
+executor-ipc-3 passed root service/UID101 configuration postcondition, acknowledged
+root id0, duplicate dispatch and wrongUID/schema/escalation/revoked/policy-read
+denials in synthetic root. No installed/etc changed. Native1 missing optional
+setpriv corrected with proof-only identity helper; native2 failed exact known GIO
+deprecation cleanup, native3 passed after precise classification. All original
+exits retained. Owner polkit/logind surface, user tools, Stop and structured
+package/service/network remain pending; no B04 criterion marked complete.
