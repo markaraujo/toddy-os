@@ -14,6 +14,10 @@ from package_copyright import write_copyright
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'shared-mime-info': ('2.5.1', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), glib (>= 2.88.3-1+toddy1), libxml2 (>= 2.15.3-1+toddy1)',
+                         'shared-mime-info-2.5.1.tar.gz', 'usr/share/mime/mime.cache'),
+    'graphene': ('1.10.8', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1)',
+                 'graphene-1.10.8.tar.xz', 'usr/lib/girepository-1.0/Graphene-1.0.typelib'),
     'pango': ('1.58.2', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), freetype (>= 2.14.3-1+toddy1), fontconfig (>= 2.18.3-1+toddy1), fribidi (>= 1.0.16-1+toddy1), harfbuzz (>= 14.3.1-1+toddy1), cairo (>= 1.18.4-1+toddy1), gi-desktop-types (>= 1.86.0-1+toddy1)',
               'pango-1.58.2.tar.xz', 'usr/lib/girepository-1.0/PangoCairo-1.0.typelib'),
     'gi-desktop-types': ('1.86.0', 'gobject-introspection (>= 1.86.0-1+toddy1), freetype (>= 2.14.3-1+toddy1), fontconfig (>= 2.18.3-1+toddy1), libxml2 (>= 2.15.3-1+toddy1), cairo (>= 1.18.4-1+toddy1)',
@@ -67,7 +71,7 @@ if __name__ == '__main__':
         assert proof['total']==26 and proof['original_passed']==6 and proof['corrected_passed']==20 and proof['compiled_binaries_unchanged']
         command=json.loads((log/'wayland-recheck-2.job.json').read_text())['command']
         assert command[-1]==(ROOT/'scripts/build/phase2/wayland-recheck.sh').read_text()
-    if name in ('wayland-protocols','pixman','fontconfig','fribidi','harfbuzz','pango'):
+    if name in ('wayland-protocols','pixman','fontconfig','fribidi','harfbuzz','pango','graphene','shared-mime-info'):
         rows=[json.loads(line) for line in (Path('/mnt/lfs/sources/phase2/work')/(name+'-1')/'compile/meson-logs/testlog.json').read_text().splitlines()]
         if name=='harfbuzz':
             # Frozen BLFS optional FontTools is absent; upstream explicitly skips
@@ -118,12 +122,17 @@ if __name__ == '__main__':
     if name=='freetype':
         doc=destination/'usr/share/doc/freetype';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('This software is based in part on the work of the FreeType Team.\nPortions copyright 1996-2026 The FreeType Project (https://freetype.org). All rights reserved.\nFTL license option selected; exact upstream terms in copyright/source-notices.\nSource modifications: enabled gxvalid/otvalid modules and FT_CONFIG_OPTION_SUBPIXEL_RENDERING per BLFS13.1.\nDynamic HarfBuzz loading; optional reference manual not included.\n')
-    write_copyright(destination, name, [archive])
+    archives=[archive]
+    if name=='shared-mime-info':
+        row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']=='xdgmime-tests')
+        archives.append(row['filename'])
+    write_copyright(destination, name, archives)
+    source_args=[arg for item in archives for arg in ['--source',item]]
     conffiles=[]
     if name=='fontconfig':
         for relative,row in before['entries'].items():
             if relative.startswith('etc/') and 'sha256' in row: conffiles+=['--conffile','/'+relative]
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,
-                    version+'-1+toddy1', str(destination), '--source', archive,
+                    version+'-1+toddy1', str(destination), *source_args,
                     '--recipe', 'scripts/build/phase2/'+name+'-install.sh',
                     '--depends', depends, '--install', *conffiles], cwd=ROOT, check=True)

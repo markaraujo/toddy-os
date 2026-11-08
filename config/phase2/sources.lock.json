@@ -516,6 +516,42 @@
       "book_md5": "2a12da2133476b7b36fbfcadd7133315",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "xdgmime-tests",
+      "version": "git-a3d616249427",
+      "filename": "xdgmime-a3d6162494270676fdfeb923cb0900517c4bd72f.tar.gz",
+      "url": "https://gitlab.freedesktop.org/xdg/xdgmime/-/archive/a3d6162494270676fdfeb923cb0900517c4bd72f/xdgmime-a3d6162494270676fdfeb923cb0900517c4bd72f.tar.gz",
+      "sha256": "6686d8ac9d47a48cbd22d35fb175f7d483df67078a477006a925806ad9aa07f5",
+      "commit": "a3d6162494270676fdfeb923cb0900517c4bd72f",
+      "reference": "shared-mime-info2.5.1 subprojects/xdgmime.wrap official upstream master resolved once",
+      "integrity": "Official GitLab HTTPS commit metadata and exact-commit archive; archive SHA256 frozen before guest extraction; no independent signature claimed",
+      "scope": "build/test helper only; never installed as a desktop package",
+      "status": "source_verified"
+    },
+    {
+      "name": "llvm",
+      "version": "22.1.8",
+      "filename": "llvm-project-22.1.8.src.tar.xz",
+      "url": "https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.8/llvm-project-22.1.8.src.tar.xz",
+      "sha256": "922f1817a0df7b1489272d18134ee0087a8b068828f87ac63b9861b1a9965888",
+      "reference": "BLFS13.1-systemd general/llvm.html",
+      "book_page_sha256": "fbadf2aea39a17abf64a3241f1e4958249d2a9ad519b7e472cb4c56478a565c2",
+      "book_md5": "69065494ebcb1150b2a329c1b3db7584",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "rustc",
+      "version": "1.97.1",
+      "filename": "rustc-1.97.1-src.tar.xz",
+      "url": "https://static.rust-lang.org/dist/rustc-1.97.1-src.tar.xz",
+      "sha256": "0ed06fdaffd4722a7702e0b4eebfafc897ab8f513e8e1b247cdd7e5c6df6ded2",
+      "reference": "BLFS13.1-systemd general/rust.html",
+      "book_page_sha256": "155c228b1fd5a88ce7eb1e746a92a89eee97f06fb2f4ad70a7f18e144d30cd46",
+      "book_md5": "c6fc3febcd3b1235cf4f00c3e05559b3",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

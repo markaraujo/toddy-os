@@ -1,0 +1,22 @@
+{
+  "job": "graphene-1",
+  "exit": 0,
+  "scope": "native CPU math/GObject/GI source/tests/stage only; no graphical session",
+  "source": {
+    "source_sha256": "a37bb0e78a419dcbeaa9c7027bcff52f5ec2367c25ec859da31dfde2928f279a",
+    "reference": "BLFS13.1-systemd x/graphene.html",
+    "book_page_sha256": "3660d909c7b8d2fb9f670a7d8d7cfb244541abbfedd55afc9b01e4f4aa37e9d2",
+    "source_patches": [],
+    "recipe_sha256": "0895edb63b23219fd9618e680acf472411c4ac4a958f89ef725e81747bc67efd"
+  },
+  "outer_tests_passed": 1,
+  "tests": [
+    {
+      "name": "graphene:introspection.py",
+      "exit": 0,
+      "seconds": 0.08075165748596191
+    }
+  ],
+  "raw_test_log_sha256": "1a96ebb76c5422e2c215bac299be0738ac3dc7658700cb03c27b2fd71df092d4",
+  "stage_manifest_sha256": "0ab5c763a64227f4a43efe0925a27c820697b32e57a51e2f7a0215b8708c7b94"
+}

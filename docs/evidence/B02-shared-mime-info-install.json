@@ -1,0 +1,38 @@
+{
+  "scope": "native generated MIME cache ownership and GIO TXT/PNG/JSON classification; no file-manager/native UI acceptance",
+  "step": {
+    "step": "b02-shared-mime-info-install",
+    "started": "2026-11-08T06:05:57.218082+00:00",
+    "finished": "2026-11-08T06:06:10.698434+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 1185,
+    "log_sha256": "a734190aa6d32425a24db9a5f75f01709e094992dc5b6ab65edf4f13b8e6a443"
+  },
+  "success_record_sha256": "dfc6579536242be8faceedee9fe2759ea1dc482171dd5a2f7a9fd364c19421d5",
+  "package": {
+    "name": "shared-mime-info",
+    "version": "2.5.1-1+toddy1",
+    "archive_sha256": "4c156c8b4f5024c32fa4c7cdfba833bc725e53ca398630fe12beee2facff1d71",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-shared-mime-info-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 10.922,
+        "entries": 94148,
+        "regular_files": 81414,
+        "regular_bytes": 4930283745
+      },
+      {
+        "seconds": 9.161,
+        "entries": 95330,
+        "regular_files": 82579,
+        "regular_bytes": 4940211023
+      }
+    ],
+    "total_seconds": 25.043
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "scope": "Native vector normalization/matrix translation/GObject/Python GI point fields; initial upstream GI driver and supplemental18 math drivers bind identical installed core bytes. No native UI acceptance.",
+  "step": {
+    "step": "b02-graphene-install",
+    "started": "2026-11-08T04:17:17.196447+00:00",
+    "finished": "2026-11-08T04:17:27.962286+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 100,
+    "log_sha256": "83059da426ab4db039417b43af7c0b9881ebe2d48786001d869dc14704d3c65e"
+  },
+  "success_record_sha256": "74e87dfe7ea4fc00e321fbf5506c7d1c5f8b430ec137e529ec32c62ed87a906b",
+  "package": {
+    "name": "graphene",
+    "version": "1.10.8-1+toddy1",
+    "archive_sha256": "fee05e9f618143bcb15ca301148cea8d244e12ce194610dd30dee48c2da51f5c",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-graphene-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 9.164,
+        "entries": 94053,
+        "regular_files": 81328,
+        "regular_bytes": 4929046177
+      },
+      {
+        "seconds": 9.068,
+        "entries": 94148,
+        "regular_files": 81414,
+        "regular_bytes": 4930283745
+      }
+    ],
+    "total_seconds": 20.573
+  },
+  "supplemental_math_evidence": "docs/evidence/B02-graphene-math.json"
+}

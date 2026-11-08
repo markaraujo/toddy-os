@@ -1,0 +1,121 @@
+{
+  "job": "shared-mime-info-1",
+  "exit": 0,
+  "scope": "native MIME source/test helper tests and generated cache stage; no native UI acceptance",
+  "source": {
+    "source_sha256": "ea248ea157b7fa0165f4fe282c84919fa84c3f175553642f229c8f1ab7539128",
+    "reference": "BLFS13.1-systemd general/shared-mime-info.html",
+    "book_page_sha256": "78d5d838586ea7ed703eab950cf0a53849d4abd322402824e268e060c1699d7c",
+    "source_patches": [
+      {
+        "path": "tests/meson.build",
+        "before_sha256": "2a89f0238beecc7de1c60d1b570ba0cf0f3e2f9a8058dcb082c5d4b0dba17d25",
+        "after_sha256": "095fd7df3bf7ca657a7c1cc79c25e061ba5780c1f2f4a0c42890b3b864731a0e",
+        "reason": "Writable generated MIME cache test fixture under private /build; expected XML/tests unchanged"
+      }
+    ],
+    "recipe_sha256": "61c5d3eb0d060e9028de17a1cddd472c02710daed8ac6459cb5c1d04c651af9d",
+    "extra_test_source": {
+      "name": "xdgmime-tests",
+      "version": "git-a3d616249427",
+      "filename": "xdgmime-a3d6162494270676fdfeb923cb0900517c4bd72f.tar.gz",
+      "url": "https://gitlab.freedesktop.org/xdg/xdgmime/-/archive/a3d6162494270676fdfeb923cb0900517c4bd72f/xdgmime-a3d6162494270676fdfeb923cb0900517c4bd72f.tar.gz",
+      "sha256": "6686d8ac9d47a48cbd22d35fb175f7d483df67078a477006a925806ad9aa07f5",
+      "commit": "a3d6162494270676fdfeb923cb0900517c4bd72f",
+      "reference": "shared-mime-info2.5.1 subprojects/xdgmime.wrap official upstream master resolved once",
+      "integrity": "Official GitLab HTTPS commit metadata and exact-commit archive; archive SHA256 frozen before guest extraction; no independent signature claimed",
+      "scope": "build/test helper only; never installed as a desktop package",
+      "status": "source_verified"
+    }
+  },
+  "outer_tests_passed": 17,
+  "tests": [
+    {
+      "name": "xdgmime - xdgmime:internal",
+      "exit": 0,
+      "seconds": 0.008772850036621094
+    },
+    {
+      "name": "xdgmime - xdgmime:magic",
+      "exit": 0,
+      "seconds": 0.00690150260925293
+    },
+    {
+      "name": "xdgmime - xdgmime:parent",
+      "exit": 0,
+      "seconds": 0.009150505065917969
+    },
+    {
+      "name": "fuzzing - xdgmime:fuzz_dump",
+      "exit": 0,
+      "seconds": 0.008277654647827148
+    },
+    {
+      "name": "fuzzing - xdgmime:fuzz_is_valid_mime_type",
+      "exit": 0,
+      "seconds": 0.006600379943847656
+    },
+    {
+      "name": "fuzzing - xdgmime:fuzz_magic",
+      "exit": 0,
+      "seconds": 0.007814168930053711
+    },
+    {
+      "name": "fuzzing - xdgmime:fuzz_parent",
+      "exit": 0,
+      "seconds": 0.007490634918212891
+    },
+    {
+      "name": "shared-mime-info:test-staging",
+      "exit": 0,
+      "seconds": 0.007983684539794922
+    },
+    {
+      "name": "shared-mime-info:No duplicate mime-types",
+      "exit": 0,
+      "seconds": 0.09495401382446289
+    },
+    {
+      "name": "shared-mime-info:Single spelling case",
+      "exit": 0,
+      "seconds": 0.12647366523742676
+    },
+    {
+      "name": "shared-mime-info:xmllint freedesktop.org.xml",
+      "exit": 0,
+      "seconds": 0.07121038436889648
+    },
+    {
+      "name": "shared-mime-info:Case sensitivity",
+      "exit": 0,
+      "seconds": 0.020710468292236328
+    },
+    {
+      "name": "shared-mime-info:Sanity check sub-class-of",
+      "exit": 0,
+      "seconds": 0.13568758964538574
+    },
+    {
+      "name": "shared-mime-info:ITS validation",
+      "exit": 0,
+      "seconds": 0.0051424503326416016
+    },
+    {
+      "name": "shared-mime-info:translations",
+      "exit": 0,
+      "seconds": 0.36941003799438477
+    },
+    {
+      "name": "shared-mime-info:update-mime-database",
+      "exit": 0,
+      "seconds": 0.12181806564331055
+    },
+    {
+      "name": "shared-mime-info:test-mime",
+      "exit": 0,
+      "seconds": 0.40076446533203125
+    }
+  ],
+  "raw_test_log_sha256": "c1044495ab1e1aee2b08558ba66737bd0e6fdbc3a1380f96cf4839d99a8c686a",
+  "stage_manifest_sha256": "3bc359e7be02f9c7b21160e5b6d9dc8d22ddf68d7aa5a7eb51a33b22f5af6e34"
+}

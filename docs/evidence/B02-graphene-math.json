@@ -1,0 +1,129 @@
+{
+  "job": "graphene-math-2",
+  "exit": 0,
+  "scope": "18 newly available native math drivers, original1 GI driver reused, same shared library bytes; no reinstall/UI acceptance",
+  "qualification": {
+    "prior_shared_libraries_unchanged": true,
+    "before": {
+      "/build/compile/src/libgraphene-1.0.so.0.1000.8": "56545c02a461378967377d3c1d71a939e500dafd6df6408601c36f044ace8c20"
+    },
+    "after": {
+      "/build/compile/src/libgraphene-1.0.so.0.1000.8": "56545c02a461378967377d3c1d71a939e500dafd6df6408601c36f044ace8c20"
+    },
+    "new_math_drivers": 18,
+    "dependency": "original archive bundled MIT MuTest2019.1; nodownload local fallback only",
+    "prior_introspection_driver_reused": 1
+  },
+  "tests": [
+    {
+      "name": "graphene:box",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012870311737060547
+    },
+    {
+      "name": "graphene:euler",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.010776042938232422
+    },
+    {
+      "name": "graphene:frustum",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.00824594497680664
+    },
+    {
+      "name": "graphene:matrix",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013199090957641602
+    },
+    {
+      "name": "graphene:plane",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011538505554199219
+    },
+    {
+      "name": "graphene:point",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.009923219680786133
+    },
+    {
+      "name": "graphene:point3d",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.007833003997802734
+    },
+    {
+      "name": "graphene:quad",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011717796325683594
+    },
+    {
+      "name": "graphene:quaternion",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011461973190307617
+    },
+    {
+      "name": "graphene:ray",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.009834527969360352
+    },
+    {
+      "name": "graphene:rect",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.007756233215332031
+    },
+    {
+      "name": "graphene:simd",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012626886367797852
+    },
+    {
+      "name": "graphene:size",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011602163314819336
+    },
+    {
+      "name": "graphene:sphere",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.009783267974853516
+    },
+    {
+      "name": "graphene:triangle",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.007825374603271484
+    },
+    {
+      "name": "graphene:vec2",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.009929180145263672
+    },
+    {
+      "name": "graphene:vec3",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.006926536560058594
+    },
+    {
+      "name": "graphene:vec4",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.007971525192260742
+    }
+  ],
+  "raw_test_log_sha256": "938b6f636ff73e87af2b23e04251d665b9765936adb537cc15c77037f4325b85",
+  "source": "Original authenticated Graphene1.10.8 archive already bundles MIT MuTest2019.1; original nofallback omitted it, corrected local-only nodownload test dependency selection."
+}

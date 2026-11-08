@@ -1705,3 +1705,11 @@ metrics still failed with and without fallback. Two corrections exhausted for th
 cause; all recorded library/test binaries unchanged. No stage/package accepted.
 Failure/evidence/next unblock preserved; move to independent Graphene/MIME/pixbuf.
 Do not resume the same guesses or mark the remaining assertion passed.
+
+### B02 native vector math and MIME data — 2026-11-08 UTC
+
+Graphene installed0/0 with vec/matrix/GObject/Python proof; source-bundled MuTest
+then enabled locally,18 new math drivers0 and prior shared hashes unchanged.
+MIME17 native drivers and owned generated cache install/post0/0, GIO TXT/PNG/JSON
+passed. Exact official XDGMime commit pinned as test-only source; no compiler
+network or repeated old suites. Pango metric slice stays blocked/uninstalled.

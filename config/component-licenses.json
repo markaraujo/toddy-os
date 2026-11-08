@@ -2791,6 +2791,57 @@
           ]
         }
       }
+    },
+    {
+      "name": "graphene",
+      "version": "1.10.8",
+      "license": "MIT AND LicenseRef-graphene-per-file",
+      "evidence": "Authenticated MIT COPYING and compiled source/header legal comments retained. Native CPU math/GObject/GI only; no graphics device/session acceptance.",
+      "extra_license_headers": {
+        "graphene-1.10.8.tar.xz": {
+          "prefixes": [
+            "src/",
+            "include/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
+    },
+    {
+      "name": "xdgmime-tests",
+      "version": "git-a3d616249427",
+      "license": "LGPL-2.1-or-later OR AFL-2.0",
+      "evidence": "Official exact-commit source, src/xdgmime.c SPDX dual terms. LGPL2.1 option selected; full unmodified LGPL2.1 license retained in LICENSES/third-party/LGPL-2.1.txt from authenticated Cairo source. Build/test helper only, no installed runtime code."
+    },
+    {
+      "name": "shared-mime-info",
+      "version": "2.5.1",
+      "license": "GPL-2.0-or-later AND LicenseRef-shared-mime-data",
+      "evidence": "Authenticated COPYING, tool/data source notices and fixed test-helper headers retained. Generated MIME cache staged/owned; optional future package cache-update triggers remain separate integration.",
+      "extra_license_headers": {
+        "shared-mime-info-2.5.1.tar.gz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".cpp"
+          ]
+        },
+        "xdgmime-a3d6162494270676fdfeb923cb0900517c4bd72f.tar.gz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
