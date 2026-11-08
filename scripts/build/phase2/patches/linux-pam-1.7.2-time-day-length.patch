@@ -1,0 +1,31 @@
+From 7d30b44815c39b5d20f5896bbef7fbec6c7bde6d Mon Sep 17 00:00:00 2001
+From: "Dmitry V. Levin" <ldv@strace.io>
+Date: Tue, 15 Sep 2026 08:00:00 +0000
+Subject: [PATCH] pam_time: fix day-parsing loop to decrement len by 2
+
+Each day code is 2 characters (e.g. "Al", "Mo"), and the loop body
+advances j by 2, but the for-loop increment only decremented len
+by 1.  This made len too generous after day parsing, and allowed the
+loop to enter with only 1 character remaining, reading past the
+token boundary for the second character of the day code.
+
+Change the loop guard from "len > 0" to "len > 1" and the decrement
+from "--len" to "len -= 2" to correctly track the remaining token
+length.
+---
+ modules/pam_time/pam_time.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/pam_time/pam_time.c b/modules/pam_time/pam_time.c
+index 5306667d6..e072f72de 100644
+--- a/modules/pam_time/pam_time.c
++++ b/modules/pam_time/pam_time.c
+@@ -452,7 +452,7 @@ check_time(pam_handle_t *pamh, const void *AT, const char *times,
+ 	  return FALSE;
+      }
+ 
+-     for (marked_day = 0; len > 0 && isalpha((unsigned char)times[j]); --len) {
++     for (marked_day = 0; len > 1 && isalpha((unsigned char)times[j]); len -= 2) {
+ 	  int this_day=-1;
+ 
+ 	  D(("%c%c ?", times[j], times[j+1]));

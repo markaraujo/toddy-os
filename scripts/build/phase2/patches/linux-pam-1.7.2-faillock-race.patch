@@ -1,0 +1,47 @@
+From 76770257108a7b7cb701872ae5ac6568d50ea66d Mon Sep 17 00:00:00 2001
+From: "Dmitry V. Levin" <ldv@strace.io>
+Date: Sun, 30 Aug 2026 08:00:00 +0000
+Subject: [PATCH] pam_faillock: fix tally loss under concurrent auth failures
+
+When the tally file does not exist (e.g. after reboot on tmpfs),
+check_tally() returns with fd=-1 and empty in-memory tallies.
+write_tally() then creates the file and acquires LOCK_EX, but
+uses the stale empty tallies instead of re-reading.  This causes
+concurrent auth failures to overwrite each other's records, so
+only one failure is recorded regardless of how many actually
+occurred, potentially allowing the deny= threshold to be bypassed.
+
+Fix this by re-reading the tally file in write_tally() after
+open_tally(create=1) succeeds on the fallback path, so that
+records written by concurrent processes that held the lock
+earlier are picked up before appending the new failure.
+---
+ modules/pam_faillock/pam_faillock.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/modules/pam_faillock/pam_faillock.c b/modules/pam_faillock/pam_faillock.c
+index a8363b6cc..6cc36cd49 100644
+--- a/modules/pam_faillock/pam_faillock.c
++++ b/modules/pam_faillock/pam_faillock.c
+@@ -301,6 +301,21 @@ write_tally(pam_handle_t *pamh, struct options *opts, struct tally_data *tallies
+ 
+ 	if (*fd == -1) {
+ 		*fd = open_tally(dir, opts->user, opts->uid, 1);
++		if (*fd != -1) {
++			/*
++			 * Re-read the tally now that we hold the lock:
++			 * a concurrent process may have written records
++			 * between our earlier failed open and this one.
++			 */
++			free(tallies->records);
++			memset(tallies, 0, sizeof(*tallies));
++			if (read_tally(*fd, tallies) != 0) {
++				pam_syslog(pamh, LOG_ERR,
++					   "Error reading the tally file for %s: %m",
++					   opts->user);
++				return PAM_SYSTEM_ERR;
++			}
++		}
+ 	}
+ 	if (*fd == -1) {
+ 		if (errno == EACCES) {

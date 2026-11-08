@@ -37,3 +37,13 @@ render them. These are third-party assets with retained source notices, not a
 relicense under the original Toddy artwork grant. See the
 [icon provenance and licenses](assets/third-party/gnome/README.md) and per-file
 manifest. Editable SVG sources and notices are included in the public export.
+
+## Linux-PAM security backports
+
+The Linux-PAM1.7.2 patches in scripts/build/phase2/patches/ retain their upstream
+terms and authorship. They are outside the original-code MIT grant. The default
+[Linux-PAM license](LICENSES/third-party/Linux-PAM.txt) and exact
+[patched-file notices](LICENSES/third-party/Linux-PAM-source-notices.txt) are
+retained under its BSD-style redistribution option. The source and patch hashes,
+upstream commits and the frozen-table adaptation are recorded in
+[the patch manifest](config/phase2/pam-patches.lock.json).

@@ -1,0 +1,141 @@
+{
+  "scope": "Host-only security-source preparation/replay and C mask-table fixture, not native PAM acceptance",
+  "source": {
+    "name": "linux-pam",
+    "version": "1.7.2",
+    "filename": "Linux-PAM-1.7.2.tar.xz",
+    "url": "https://github.com/linux-pam/linux-pam/releases/download/v1.7.2/Linux-PAM-1.7.2.tar.xz",
+    "sha256": "3d86b6383fb5fd9eb9578d2cd47d92801191f4bf3f9bc61419bfefc8aa1e531a",
+    "reference": "BLFS13.1-systemd postlfs/linux-pam.html",
+    "book_page_sha256": "341f6f23114e22d4a8a1f23b7664be1ecb9d6f53909afe1f1a22ed19e7fc4c26",
+    "book_md5": "934c26eca3fada956356a30489e86291",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "patches": [
+    {
+      "order": 1,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-env-buffer.patch",
+      "sha256": "3c0f57ca1fee4bf35bc102c24a5abb0367bf172ab6914aaba05ea0c9e6a805de",
+      "upstream_commit": "dc1a6009fe536f7f8d90a57fe2193441e81bbd7d",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/dc1a6009fe536f7f8d90a57fe2193441e81bbd7d.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 2,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-userdb-timing.patch",
+      "sha256": "18867075bd5f2a01f0f1868bb23c5a9edecfef7306a382d373eb507683f4f621",
+      "upstream_commit": "30708d973b63891bf700299ce3ae0f1086398284",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/30708d973b63891bf700299ce3ae0f1086398284.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 3,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-faillock-race.patch",
+      "sha256": "6504ee72b957bcbe41d37483397b07b428311ae60278807b6f1b0a9ef5fdea2c",
+      "upstream_commit": "76770257108a7b7cb701872ae5ac6568d50ea66d",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/76770257108a7b7cb701872ae5ac6568d50ea66d.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 4,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-umask-gecos.patch",
+      "sha256": "252a1cf6af05e47b737de54cd12377353da302bdcd5e2875cccbdd9276d23def",
+      "upstream_commit": "9330e6b7a8e533ecb12ee321ff800f17bac30835",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/9330e6b7a8e533ecb12ee321ff800f17bac30835.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 5,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-time-negation-prerequisite-api.patch",
+      "sha256": "fc3bb08e8cc0a393ccba9ce000c8ee40d8d702050e0bd7bbbd5f91f01084c213",
+      "upstream_commit": "936802e0cf63a20d107856d6516fcdfc6a9e4729",
+      "upstream_url": "https://api.github.com/repos/linux-pam/linux-pam/commits/936802e0cf63a20d107856d6516fcdfc6a9e4729",
+      "kind": "complete official API hunks with transport wrapper"
+    },
+    {
+      "order": 6,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-time-day-length.patch",
+      "sha256": "de815ed32bd6ac20187177a02c5e8d85ada35a518a81c688045c7fdbf1f28104",
+      "upstream_commit": "7d30b44815c39b5d20f5896bbef7fbec6c7bde6d",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/7d30b44815c39b5d20f5896bbef7fbec6c7bde6d.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 7,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-time-wildcard.patch",
+      "sha256": "a2b4b6b575079636dbe800b3cf9455644e45872d5e2242e71b23c754896d3258",
+      "upstream_commit": "66a099ead9604c511454cd7dfe8f420d868d6163",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/66a099ead9604c511454cd7dfe8f420d868d6163.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 8,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-group-wildcard.patch",
+      "sha256": "cf86757d5b429fa985c3ba0531c0d530b4016c5d7fc15d6b3e82a709ae7f5412",
+      "upstream_commit": "a24aa940376154ad492867246adfb45a2e9b2428",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/a24aa940376154ad492867246adfb45a2e9b2428.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 9,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-unix-option-mask.patch",
+      "sha256": "747c22c4ea659b18523f8f033736882dcb0b25f2f14b072f925ed5b66441babf",
+      "upstream_commit": "eaed34aa274bb7606a7cd64fa11706d81055420a",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/eaed34aa274bb7606a7cd64fa11706d81055420a",
+      "kind": "named mask adapted to frozen DES/BIGCRYPT table; no default/algorithm changes"
+    }
+  ],
+  "fresh_exact_patch_replay_exit": 0,
+  "fresh_source_matches_reviewed_tree": true,
+  "apply_log_sha256": "22e06badfc7bb20880fb6bbc98c70427abf5d860962f6c8aab20ee23b7efe637",
+  "changed_source_files": {
+    "libpam/include/pam_inline.h": "63ccce4235c96cc763c7e0036a99d1b5e880a3d358ce521eff067a3f055f4b83",
+    "modules/pam_env/pam_env.c": "cabf101b7ce43dffab61cfac0c7915a329edace3ec57035413e5a608a4772349",
+    "modules/pam_faillock/pam_faillock.c": "0f95be828782da4a86997ccfda4047aa41ee4244b1701fe7ecb350ef1f2c630a",
+    "modules/pam_group/pam_group.c": "667b4581a7c2f45ed2fe7e573ad9bfdf4ffe1e39be48833c0c3de57ab9c9938f",
+    "modules/pam_time/pam_time.c": "295c9b8de4bd75693a85d18d64e1e13ee49e3af41f6d7cc16f75c303962df402",
+    "modules/pam_umask/pam_umask.c": "d7a5857a0f20caddb4a500f01fc72827a1b364ec7606d1560676ece0ce0e4ccb",
+    "modules/pam_unix/support.h": "e8858408a089be280e3b6f70ab4a85ceddce95388bd1d1645f5d3899dd604ab5",
+    "modules/pam_userdb/pam_userdb.c": "5cb8ae5edc2a4dddc37bdec1b04425994bc7d5873f903587dfc8b9cb7173046a"
+  },
+  "unix_mask": {
+    "scope": "Host source/table fixture only; native PAM/module/password/session tests pending",
+    "upstream_commit": "eaed34aa274bb7606a7cd64fa11706d81055420a",
+    "source_sha256": "3d86b6383fb5fd9eb9578d2cd47d92801191f4bf3f9bc61419bfefc8aa1e531a",
+    "before_sha256": "35e03746c032d18798e6a91a46b29e669ee46d77e6989c6a0c7f6cc87340df90",
+    "after_sha256": "e8858408a089be280e3b6f70ab4a85ceddce95388bd1d1645f5d3899dd604ab5",
+    "patch_sha256": "747c22c4ea659b18523f8f033736882dcb0b25f2f14b072f925ed5b66441babf",
+    "algorithm_flags_octal": {
+      "UNIX_MD5_PASS": "020000",
+      "UNIX_BIGCRYPT": "0400000",
+      "UNIX_SHA256_PASS": "020000000",
+      "UNIX_SHA512_PASS": "040000000",
+      "UNIX_BLOWFISH_PASS": "0200000000",
+      "UNIX_GOST_YESCRYPT_PASS": "04000000000",
+      "UNIX_YESCRYPT_PASS": "010000000000"
+    },
+    "correct_mask_octal": "0o14260420000",
+    "quiet_and_minlen_excluded": true,
+    "legacy_des_bigcrypt_preserved": true,
+    "table_fixture": {
+      "original": {
+        "exit": 7,
+        "fixture_sha256": "cb4e1e25f0fc9220e8105563b333736c0efe8f85268c57b3817375381f653ac8"
+      },
+      "adapted": {
+        "exit": 0,
+        "fixture_sha256": "863ad5b8d64c9c460d4b89e1e446d092501a9eccd666e232b637a11ed52fedee"
+      }
+    }
+  },
+  "raw_transport_failure": "GitHub prerequisite.patch HTTP504 plus one unchanged retry; complete official API hunks already available, reconstructed wrapper applied fuzz0",
+  "native_tests": "pending; actual modules/password/privilege/session and recovery checks required before acceptance",
+  "raw_evidence_bundle": {
+    "filename": "B02-pam-source-evidence.tar.gz",
+    "bytes": 6753,
+    "sha256": "0e5bd7146b78b40fb426769ff68e2ec4f4def4ac33d07ba19bc3b5bb70a70ede",
+    "members": 7,
+    "release_handoff": "Retain in final release evidence; not yet a published release artifact"
+  }
+}

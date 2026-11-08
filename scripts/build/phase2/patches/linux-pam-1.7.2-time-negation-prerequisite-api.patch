@@ -1,0 +1,39 @@
+From 936802e0cf63a20d107856d6516fcdfc6a9e4729
+Source: https://api.github.com/repos/linux-pam/linux-pam/commits/936802e0cf63a20d107856d6516fcdfc6a9e4729
+Exact complete official API hunks; raw GitHub patch endpoint HTTP504 twice.
+
+diff --git a/modules/pam_time/pam_time.c b/modules/pam_time/pam_time.c
+--- a/modules/pam_time/pam_time.c
++++ b/modules/pam_time/pam_time.c
+@@ -436,7 +436,7 @@ static int
+ check_time(pam_handle_t *pamh, const void *AT, const char *times,
+ 	   int len, int rule)
+ {
+-     int not,pass;
++     int pass;
+      int marked_day, time_start, time_end;
+      const TIME *at;
+      int i,j=0;
+@@ -452,13 +452,6 @@ check_time(pam_handle_t *pamh, const void *AT, const char *times,
+ 	  return FALSE;
+      }
+ 
+-     if (times[j] == '!') {
+-	  ++j;
+-	  not = TRUE;
+-     } else {
+-	  not = FALSE;
+-     }
+-
+      for (marked_day = 0; len > 0 && isalpha((unsigned char)times[j]); --len) {
+ 	  int this_day=-1;
+ 
+@@ -532,7 +525,7 @@ check_time(pam_handle_t *pamh, const void *AT, const char *times,
+ 	  }
+      }
+ 
+-     return (not ^ pass);
++     return pass;
+ }
+ 
+ static int

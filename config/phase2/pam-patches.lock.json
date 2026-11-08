@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "component": "linux-pam",
+  "version": "1.7.2",
+  "source_sha256": "3d86b6383fb5fd9eb9578d2cd47d92801191f4bf3f9bc61419bfefc8aa1e531a",
+  "status": "source_applicability_and_host_table_fixture_verified_native_pending",
+  "reviewed_release": "https://github.com/linux-pam/linux-pam/releases/tag/v1.7.3",
+  "patches": [
+    {
+      "order": 1,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-env-buffer.patch",
+      "sha256": "3c0f57ca1fee4bf35bc102c24a5abb0367bf172ab6914aaba05ea0c9e6a805de",
+      "upstream_commit": "dc1a6009fe536f7f8d90a57fe2193441e81bbd7d",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/dc1a6009fe536f7f8d90a57fe2193441e81bbd7d.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 2,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-userdb-timing.patch",
+      "sha256": "18867075bd5f2a01f0f1868bb23c5a9edecfef7306a382d373eb507683f4f621",
+      "upstream_commit": "30708d973b63891bf700299ce3ae0f1086398284",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/30708d973b63891bf700299ce3ae0f1086398284.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 3,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-faillock-race.patch",
+      "sha256": "6504ee72b957bcbe41d37483397b07b428311ae60278807b6f1b0a9ef5fdea2c",
+      "upstream_commit": "76770257108a7b7cb701872ae5ac6568d50ea66d",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/76770257108a7b7cb701872ae5ac6568d50ea66d.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 4,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-umask-gecos.patch",
+      "sha256": "252a1cf6af05e47b737de54cd12377353da302bdcd5e2875cccbdd9276d23def",
+      "upstream_commit": "9330e6b7a8e533ecb12ee321ff800f17bac30835",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/9330e6b7a8e533ecb12ee321ff800f17bac30835.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 5,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-time-negation-prerequisite-api.patch",
+      "sha256": "fc3bb08e8cc0a393ccba9ce000c8ee40d8d702050e0bd7bbbd5f91f01084c213",
+      "upstream_commit": "936802e0cf63a20d107856d6516fcdfc6a9e4729",
+      "upstream_url": "https://api.github.com/repos/linux-pam/linux-pam/commits/936802e0cf63a20d107856d6516fcdfc6a9e4729",
+      "kind": "complete official API hunks with transport wrapper"
+    },
+    {
+      "order": 6,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-time-day-length.patch",
+      "sha256": "de815ed32bd6ac20187177a02c5e8d85ada35a518a81c688045c7fdbf1f28104",
+      "upstream_commit": "7d30b44815c39b5d20f5896bbef7fbec6c7bde6d",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/7d30b44815c39b5d20f5896bbef7fbec6c7bde6d.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 7,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-time-wildcard.patch",
+      "sha256": "a2b4b6b575079636dbe800b3cf9455644e45872d5e2242e71b23c754896d3258",
+      "upstream_commit": "66a099ead9604c511454cd7dfe8f420d868d6163",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/66a099ead9604c511454cd7dfe8f420d868d6163.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 8,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-group-wildcard.patch",
+      "sha256": "cf86757d5b429fa985c3ba0531c0d530b4016c5d7fc15d6b3e82a709ae7f5412",
+      "upstream_commit": "a24aa940376154ad492867246adfb45a2e9b2428",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/a24aa940376154ad492867246adfb45a2e9b2428.patch",
+      "kind": "verbatim official upstream patch"
+    },
+    {
+      "order": 9,
+      "file": "scripts/build/phase2/patches/linux-pam-1.7.2-unix-option-mask.patch",
+      "sha256": "747c22c4ea659b18523f8f033736882dcb0b25f2f14b072f925ed5b66441babf",
+      "upstream_commit": "eaed34aa274bb7606a7cd64fa11706d81055420a",
+      "upstream_url": "https://github.com/linux-pam/linux-pam/commit/eaed34aa274bb7606a7cd64fa11706d81055420a",
+      "kind": "named mask adapted to frozen DES/BIGCRYPT table; no default/algorithm changes"
+    }
+  ],
+  "not_selected": "Unrelated1.7.3 defaults/DES removal and malformed-rule ignore semantics are not imported. Production password stack still requires explicit yescrypt.",
+  "native_qualification": "Not run; no PAM/Shadow/systemd install or login acceptance"
+}

@@ -1,0 +1,58 @@
+Subject: Preserve quiet/minlen flags in frozen Linux-PAM1.7.2
+Upstream: https://github.com/linux-pam/linux-pam/commit/eaed34aa274bb7606a7cd64fa11706d81055420a
+Adapt the upstream named mask to retain the frozen DES/BIGCRYPT interfaces.
+Do not import unrelated1.7.3 defaults or change algorithm flag values.
+
+--- a/modules/pam_unix/support.h
++++ b/modules/pam_unix/support.h
+@@ -107,6 +107,15 @@
+ 
+ #define UNIX_DES_CRYPT(ctrl)	(off(UNIX_MD5_PASS,ctrl)&&off(UNIX_BIGCRYPT,ctrl)&&off(UNIX_SHA256_PASS,ctrl)&&off(UNIX_SHA512_PASS,ctrl)&&off(UNIX_BLOWFISH_PASS,ctrl)&&off(UNIX_GOST_YESCRYPT_PASS,ctrl)&&off(UNIX_YESCRYPT_PASS,ctrl))
+ 
++#define UNIX_HASH_ALGO_FLAGS \
++    (020000ULL /* UNIX_MD5_PASS */ \
++    | 0400000ULL /* UNIX_BIGCRYPT */ \
++    | 020000000ULL /* UNIX_SHA256_PASS */ \
++    | 040000000ULL /* UNIX_SHA512_PASS */ \
++    | 0200000000ULL /* UNIX_BLOWFISH_PASS */ \
++    | 04000000000ULL /* UNIX_GOST_YESCRYPT_PASS */ \
++    | 010000000000ULL /* UNIX_YESCRYPT_PASS */)
++
+ static const UNIX_Ctrls unix_args[UNIX_CTRLS_] =
+ {
+ /* symbol                      token name          ctrl mask                  ctrl             *
+@@ -125,26 +134,26 @@
+ /* UNIX__QUIET */              {NULL,               _ALL_ON_,                           02000, 0},
+ /* UNIX_USE_AUTHTOK */         {"use_authtok",      _ALL_ON_,                           04000, 0},
+ /* UNIX_SHADOW */              {"shadow",           _ALL_ON_,                          010000, 0},
+-/* UNIX_MD5_PASS */            {"md5",              _ALL_ON_^(015660420000ULL),        020000, 1},
++/* UNIX_MD5_PASS */            {"md5",              _ALL_ON_^UNIX_HASH_ALGO_FLAGS,        020000, 1},
+ /* UNIX__NULLOK */             {"nullok",           _ALL_ON_^(01000ULL),                    0, 0},
+ /* UNIX_DEBUG */               {"debug",            _ALL_ON_,                          040000, 0},
+ /* UNIX_NODELAY */             {"nodelay",          _ALL_ON_,                         0100000, 0},
+ /* UNIX_NIS */                 {"nis",              _ALL_ON_,                         0200000, 0},
+-/* UNIX_BIGCRYPT */            {"bigcrypt",         _ALL_ON_^(015660420000ULL),       0400000, 1},
++/* UNIX_BIGCRYPT */            {"bigcrypt",         _ALL_ON_^UNIX_HASH_ALGO_FLAGS,       0400000, 1},
+ /* UNIX_LIKE_AUTH */           {"likeauth",         _ALL_ON_,                        01000000, 0},
+ /* UNIX_REMEMBER_PASSWD */     {"remember=",        _ALL_ON_,                        02000000, 0},
+ /* UNIX_NOREAP */              {"noreap",           _ALL_ON_,                        04000000, 0},
+ /* UNIX_BROKEN_SHADOW */       {"broken_shadow",    _ALL_ON_,                       010000000, 0},
+-/* UNIX_SHA256_PASS */         {"sha256",           _ALL_ON_^(015660420000ULL),     020000000, 1},
+-/* UNIX_SHA512_PASS */         {"sha512",           _ALL_ON_^(015660420000ULL),     040000000, 1},
++/* UNIX_SHA256_PASS */         {"sha256",           _ALL_ON_^UNIX_HASH_ALGO_FLAGS,     020000000, 1},
++/* UNIX_SHA512_PASS */         {"sha512",           _ALL_ON_^UNIX_HASH_ALGO_FLAGS,     040000000, 1},
+ /* UNIX_ALGO_ROUNDS */         {"rounds=",          _ALL_ON_,                      0100000000, 0},
+-/* UNIX_BLOWFISH_PASS */       {"blowfish",         _ALL_ON_^(015660420000ULL),    0200000000, 1},
++/* UNIX_BLOWFISH_PASS */       {"blowfish",         _ALL_ON_^UNIX_HASH_ALGO_FLAGS,    0200000000, 1},
+ /* UNIX_MIN_PASS_LEN */        {"minlen=",          _ALL_ON_,                      0400000000, 0},
+ /* UNIX_QUIET */               {"quiet",            _ALL_ON_,                     01000000000, 0},
+ /* UNIX_NO_PASS_EXPIRY */      {"no_pass_expiry",   _ALL_ON_,                     02000000000, 0},
+-/* UNIX_DES */                 {"des",              _ALL_ON_^(015660420000ULL),             0, 1},
+-/* UNIX_GOST_YESCRYPT_PASS */  {"gost_yescrypt",    _ALL_ON_^(015660420000ULL),   04000000000, 1},
+-/* UNIX_YESCRYPT_PASS */       {"yescrypt",         _ALL_ON_^(015660420000ULL),  010000000000, 1},
++/* UNIX_DES */                 {"des",              _ALL_ON_^UNIX_HASH_ALGO_FLAGS,             0, 1},
++/* UNIX_GOST_YESCRYPT_PASS */  {"gost_yescrypt",    _ALL_ON_^UNIX_HASH_ALGO_FLAGS,   04000000000, 1},
++/* UNIX_YESCRYPT_PASS */       {"yescrypt",         _ALL_ON_^UNIX_HASH_ALGO_FLAGS,  010000000000, 1},
+ /* UNIX_NULLRESETOK */         {"nullresetok",      _ALL_ON_,                    020000000000, 0},
+ /* UNIX_EXPIRED_ONLY */        {NULL,               _ALL_ON_,                    040000000000, 0},
+ };
