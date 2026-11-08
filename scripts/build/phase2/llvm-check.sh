@@ -7,6 +7,8 @@ set -euo pipefail
 clang --version | grep -F 'clang version 22.1.8'
 [[ $(llvm-config --link-shared --shared-mode core orcjit native) == shared ]]
 [[ $(dpkg-query -W -f='${Status}' llvm) == 'install ok installed' ]]
+[[ $(dpkg-query -W -f='${Status}' llvm-runtime) == 'install ok installed' ]]
+dpkg-query -S /usr/lib/libLLVM.so.22.1 | grep -F 'llvm-runtime: '
 dpkg-query -W -f='${Conffiles}' llvm | grep -F ' /etc/clang/clang.cfg '
 test -z "$(dpkg --audit)"
 apt-get check

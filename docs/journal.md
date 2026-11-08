@@ -1763,3 +1763,15 @@ verified absent source/work, preserved empty artifact, corrected invocation once
 Next writer llvm-qualify-2 builds critical test dependencies then seven suites,
 no compiler restart. All desktop/runtime criteria remain pending actual GNOME.
 Keyboard1.13.2/config2.48 source archives authenticated host-only for later input.
+
+### B02 LLVM runtime/SDK ownership preparation — 2026-11-08 UTC
+
+Actual compiler output names libLLVM.so.22.1 plus relative libLLVM.so alias.
+ADR0123 implements existing base/live SDK exclusions before first LLVM package
+installation: split these two exact paths into llvm-runtime, preserve library
+bytes/notices, make build-only llvm depend on its exact version. Existing native
+backend/full-root verification retained; no foundation changes. Three focused
+partition fixtures passed (SDK exclusion/bytes, bad alias, existing output refusal),
+make check250 passed. Native split/install/ABI and image scope remain pending.
+llvm-qualify-2 healthy critical dependency build174/1068; do not restart. Metadata
+sync required after its terminal result and before LLVM promotion.

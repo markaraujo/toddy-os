@@ -13,6 +13,7 @@ import sys
 
 from verify_stage import inspect_stage
 from package_copyright import write_copyright
+from llvm_runtime import split_runtime
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
@@ -20,7 +21,7 @@ PROFILES = {
                       'libjpeg-turbo-3.2.0.tar.gz', 'usr/lib/libjpeg.so'),
     'adwaita-fonts': ('50.0', 'fontconfig (>= 2.18.3-1+toddy1)',
                       'adwaita-fonts-50.0.tar.xz', 'usr/share/fonts/Adwaita/AdwaitaSans-Regular.ttf'),
-    'llvm': ('22.1.8', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
+    'llvm': ('22.1.8', 'llvm-runtime (= 22.1.8-1+toddy1), glibc (>= 2.44-1), gcc (>= 16.2.0-1)',
              'llvm-project-22.1.8.src.tar.xz', 'usr/bin/llvm-config'),
     'shared-mime-info': ('2.5.1', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), glib (>= 2.88.3-1+toddy1), libxml2 (>= 2.15.3-1+toddy1)',
                          'shared-mime-info-2.5.1.tar.gz', 'usr/share/mime/mime.cache'),
@@ -184,6 +185,16 @@ if __name__ == '__main__':
         archives.append(row['filename'])
     write_copyright(destination, name, archives)
     source_args=[arg for item in archives for arg in ['--source',item]]
+    if name=='llvm':
+        runtime=destination.with_name('phase2-llvm-runtime')
+        partition=split_runtime(destination,runtime)
+        write_copyright(runtime,'llvm-runtime',archives)
+        (log/'llvm-runtime-partition.json').write_text(json.dumps(partition,indent=2)+'\n')
+        subprocess.run([sys.executable,str(ROOT/'scripts/build/stage_package.py'),'llvm-runtime',
+                        version+'-1+toddy1',str(runtime),*source_args,
+                        '--recipe','scripts/build/phase2/llvm-install.sh',
+                        '--depends','glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
+                        '--install'],cwd=ROOT,check=True)
     conffiles=[]
     if name in ('fontconfig','llvm'):
         for relative,row in before['entries'].items():

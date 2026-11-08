@@ -2847,7 +2847,7 @@
       "name": "llvm",
       "version": "22.1.8",
       "license": "Apache-2.0 WITH LLVM-exception AND LicenseRef-llvm-per-file",
-      "evidence": "Frozen official monorepo; core/Clang headers and exact named legal texts required before native packaging. Required upstream poison/select patch provenance recorded. Build running only; runtime/test acceptance pending.",
+      "evidence": "Frozen official monorepo; core/Clang headers and exact named legal texts retained before native packaging. Required upstream poison/select patch provenance recorded. Native compilation0; critical tests running, package/runtime acceptance pending. Build SDK separated from libLLVM shared runtime per ADR0123.",
       "extra_license_headers": {
         "llvm-project-22.1.8.src.tar.xz": {
           "prefixes": [
@@ -2903,6 +2903,27 @@
         "libjpeg-turbo-3.2.0.tar.gz": [
           "README.ijg"
         ]
+      }
+    },
+    {
+      "name": "llvm-runtime",
+      "version": "22.1.8",
+      "license": "Apache-2.0 WITH LLVM-exception AND LicenseRef-llvm-per-file",
+      "evidence": "Exact same authenticated LLVM22.1.8 source/required patch and legal texts; libLLVM.so.22.1 plus relative linker alias only. Native package/ABI and final-image scope pending; SDK stays build-only per ADR0123.",
+      "extra_license_headers": {
+        "llvm-project-22.1.8.src.tar.xz": {
+          "prefixes": [
+            "llvm/lib/",
+            "llvm/include/",
+            "clang/lib/",
+            "clang/include/"
+          ],
+          "suffixes": [
+            ".c",
+            ".cpp",
+            ".h"
+          ]
+        }
       }
     }
   ],
