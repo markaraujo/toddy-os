@@ -2458,3 +2458,15 @@ Focused correction uses native Python subprocess UID/GID101/empty groups and
 child prctl NNP1 with observed UID/CapEff0 assertions; no base rebuild or weaker
 privileges. Native2 is a fresh cold follow-up only after actual stopped-container/
 label/no-writer/base-identity checks; no uncertain repeat of builder stop/native1.
+
+Native2 verified UID101/GID101/empty groups/NNP1/CapEff0 execution and actual
+original userns/pidns joining drivers0/0 on native7.1.8;11compiled ELFs unchanged.
+Own consumer first UID assertion expected0, whereas original bwrap.c defaults
+opt_sandbox_uid to real_uid101; preserve owner rather than requesting root.
+Original test-run.sh passed35cases then its private root fixture assumed
+/lib64->usr/lib64; accepted LFS has /lib64 directory/no usr/lib64. Retain both
+failures, no bwrap qualification. Correct only own oracle and private shared
+fixture loader mapping, require original assertion-bearing driver unchanged and
+fixture digests. Native3 fresh cold overlay reuses two approved native drivers;
+only consumer/test-run rerun. No source/compiler/foundation changes or Ubuntu
+retries. Native2 report/container stopped0/base unchanged are prerequisites.

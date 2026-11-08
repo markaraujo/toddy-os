@@ -7,9 +7,14 @@ import json
 import os
 from pathlib import Path
 import re
+import shutil
 import subprocess
 import tempfile
 import zlib
+
+
+CONSUMER_SOURCE = None
+REUSED_NATIVE_PROOF = None
 
 
 def command(args, **kwargs):
@@ -53,10 +58,30 @@ def main():
         assert 'NoNewPrivs:\t1' in status and 'CapEff:\t0000000000000000' in status
     runs=[]
     # Private /var/tmp belongs to the disposable runtime root, never a host path.
-    tests=[('namespace-consumer',['python3','-B',str(source/'toddy-probe.py'),str(binary)])]
-    tests += [(n,['bash',str(source/'tests'/n)]) for n in ['test-run.sh','test-specifying-pidns.sh','test-specifying-userns.sh']]
+    assert isinstance(CONSUMER_SOURCE,str) and CONSUMER_SOURCE
+    tests=[('namespace-consumer',['python3','-B','-c',CONSUMER_SOURCE,str(binary)])]
+    names=['test-run.sh','test-specifying-pidns.sh','test-specifying-userns.sh']
+    if REUSED_NATIVE_PROOF is not None:
+        assert REUSED_NATIVE_PROOF['kernel']==os.uname().release and REUSED_NATIVE_PROOF['binary_sha256']==hashlib.sha256(binary.read_bytes()).hexdigest()
+        assert {r['name'] for r in REUSED_NATIVE_PROOF['runs']}=={'test-specifying-pidns.sh','test-specifying-userns.sh'}
+        assert all(r['exit']==0 for r in REUSED_NATIVE_PROOF['runs'])
+        names=['test-run.sh']
     with tempfile.TemporaryDirectory(prefix='toddy-bwrap-runtime-') as temporary:
         os.chown(temporary,101,101)
+        fixture=Path(temporary)/'fixture'
+        fixture.mkdir()
+        shutil.copytree(source/'tests',fixture/'tests')
+        helper=fixture/'tests/libtest.sh';original=helper.read_bytes()
+        assert Path('/lib64').is_dir() and not Path('/usr/lib64').exists()
+        old=b'--symlink usr/lib64 /lib64';assert original.count(old)==1
+        helper.write_bytes(original.replace(old,b'--ro-bind /lib64 /lib64'))
+        patch={'file':'tests/libtest.sh','before_sha256':hashlib.sha256(original).hexdigest(),
+               'after_sha256':hashlib.sha256(helper.read_bytes()).hexdigest(),
+               'reason':'Private runtime fixture uses actual LFS /lib64 directory; original assertion-bearing driver code unchanged'}
+        for name in names:
+            assert (fixture/'tests'/name).read_bytes()==(source/'tests'/name).read_bytes()
+        env['G_TEST_SRCDIR']=str(fixture)
+        tests += [(n,['bash',str(fixture/'tests'/n)]) for n in names]
         for name,args in tests:
             r=command(args,env=env,cwd=temporary,user=101,group=101,extra_groups=[],preexec_fn=no_new_privileges)
             # Never retain accidental password-hash lines from a failing security
@@ -69,7 +94,7 @@ def main():
     raw=json.dumps({'scope':'Native Toddy kernel bwrap namespace/original affected shell drivers; no graphical/ISO/hardware acceptance',
                     'kernel':os.uname().release,'pid1':'systemd','root_source':device,
                     'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),
-                    'existing_compiled_elf_files_unchanged':len(before),'runs':runs},sort_keys=True).encode()
+                    'existing_compiled_elf_files_unchanged':len(before),'runs':runs,'reused_native_proof':REUSED_NATIVE_PROOF,'private_fixture_patch':patch},sort_keys=True).encode()
     compressed=zlib.compress(raw,9);encoded=base64.b64encode(compressed).decode()
     chunks=[encoded[i:i+1024] for i in range(0,len(encoded),1024)]
     for i,chunk in enumerate(chunks):print('TODDY_B02_RUNTIME_DATA',i,chunk,flush=True)

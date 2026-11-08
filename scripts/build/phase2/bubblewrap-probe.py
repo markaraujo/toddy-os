@@ -8,7 +8,7 @@ import sys
 bwrap = sys.argv[1]
 assert Path(bwrap).is_file()
 probe = '''import os,pathlib
-assert os.getuid()==0 and os.getpid()==1
+assert os.getuid()==101 and os.getpid()==1, (os.getuid(),os.getpid())
 assert all(not pathlib.Path(p).exists() for p in ['/src','/build','/stage'])
 p=pathlib.Path('/tmp/private');p.write_text('navy');assert p.read_text()=='navy'
 try:

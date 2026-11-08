@@ -29,13 +29,16 @@ def run(args,**kwargs):
 
 def main():
     global CONTEXT
-    assert sys.argv[1:] in [[],['--cold-followup']]
-    followup=sys.argv[1:]==['--cold-followup']
+    assert sys.argv[1:] in [[],['--cold-followup'],['--cold-layout-followup']]
+    layout_followup=sys.argv[1:]==['--cold-layout-followup']
+    followup=bool(sys.argv[1:])
     previous=None
     if followup:
+        if layout_followup:CONTEXT=ROOT/'.local/phase2/native-bwrap-runtime-2'
         previous=json.loads((CONTEXT/'result.json').read_text())
-        CONTEXT=ROOT/'.local/phase2/native-bwrap-runtime-2'
-        assert previous['phase']=='native-stopped' and not previous['container_final_state']['Running']
+        previous_context=CONTEXT
+        CONTEXT=ROOT/'.local/phase2'/('native-bwrap-runtime-3' if layout_followup else 'native-bwrap-runtime-2')
+        assert previous['phase'] in ['native-stopped','native-report-recorded'] and not previous['container_final_state']['Running']
         assert previous['container_final_state']['ExitCode']==0
         info=json.loads(subprocess.check_output(['docker','inspect',previous['container_id']],text=True))[0]
         assert (info['Config'].get('Labels') or {}).get('toddy.boot-test')==previous['run_id'] and not info['State']['Running']
@@ -46,8 +49,18 @@ def main():
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
     lock=open(vm.VM/'native-boot-test.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     boot.refuse_running_tests()
-    probe=(ROOT/'scripts/host/phase2-native-bwrap-probe.py').read_bytes()
-    assert hashlib.sha256(probe).hexdigest()
+    probe_text=(ROOT/'scripts/host/phase2-native-bwrap-probe.py').read_text()
+    consumer=(ROOT/'scripts/build/phase2/bubblewrap-probe.py').read_text()
+    assert probe_text.count('CONSUMER_SOURCE = None')==1
+    probe_text=probe_text.replace('CONSUMER_SOURCE = None','CONSUMER_SOURCE = '+repr(consumer))
+    if layout_followup:
+        report=json.loads((previous_context/'native-report.json').read_text())
+        reused=[{k:r[k] for k in ['name','exit']} for r in report['runs'] if r['name'] in ['test-specifying-pidns.sh','test-specifying-userns.sh']]
+        assert len(reused)==2 and all(r['exit']==0 for r in reused)
+        proof={'kernel':report['kernel'],'binary_sha256':report['binary_sha256'],'runs':reused,'report_sha256':previous['summary']['report_sha256']}
+        assert probe_text.count('REUSED_NATIVE_PROOF = None')==1
+        probe_text=probe_text.replace('REUSED_NATIVE_PROOF = None','REUSED_NATIVE_PROOF = '+repr(proof))
+    probe=probe_text.encode()
     code='''from pathlib import Path
 import json,hashlib,subprocess
 subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
@@ -80,7 +93,7 @@ print(json.dumps({'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read
             state['phase']='stopping-builder';save()
             run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
     else:
-        state['cold_followup_of']='native-bwrap-runtime-1'
+        state['cold_followup_of']=previous_context.name
     assert subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()==''
     state['phase']='builder-stopped';save()
     source=WORK/'lfs-target.qcow2';assert source.is_file() and not source.is_symlink()
