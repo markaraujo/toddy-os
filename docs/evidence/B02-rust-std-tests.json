@@ -1,0 +1,307 @@
+{
+  "scope": "Derived qualification from preserved native bootstrap terminal output; no repeat of passed tests",
+  "original_wrapper_exit": 1,
+  "original_wrapper_failure": "Collector attempted hashing removed stage2/bin/clippy-driver after bootstrap reassembled sysroot",
+  "qualification_exit": 0,
+  "native_bootstrap_result": "Build completed successfully; original1.97.1 bootstrap.py emits this only on normal exit0, not an independently saved native exit file",
+  "native_exit_file": "Unavailable in original wrapper; corrected collector records it before postchecks",
+  "compiler_tools_before_after": "Unavailable: original collector failed before persisting its in-memory before hashes. No unchanged-tool claim for this run. Cached tools remain outside temporary stage2/bin.",
+  "bootstrap_sha256": "71e7dc66d15b4bda582cda168b948ab86140e0a12d7e8a47c50a559402368de1",
+  "log_sha256": "c54647a8f33ffbd3dd2afc862867c3b4447984974781ff7df0e444957f3a1786",
+  "wrapper_log_sha256": "a069bf611642c6e741a8fbde75b99f2c114797b4844bc2c1c2acc5f042344688",
+  "drivers": [
+    {
+      "driver": "unittests lib.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/alloctests-c5c92e659d405489)",
+      "passed": 334,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/lib.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/alloctests-ce203de8b69063af)",
+      "passed": 1330,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/vec_deque_alloc_error.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/vec_deque_alloc_error-71045007ab5a0342)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "benches/lib.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/allocbenches-c63424893d024da7)",
+      "passed": 468,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/lib.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/coretests-cbca55648c91ef56)",
+      "passed": 2449,
+      "failed": 0,
+      "ignored": 2,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "benches/lib.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/corebenches-28cc32a76ddebd10)",
+      "passed": 572,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "unittests src/lib.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/std-3191924a3419ea77)",
+      "passed": 567,
+      "failed": 0,
+      "ignored": 1,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/ambiguous-hash_map.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/ambiguous_hash_map-20ced499a2c100f1)",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/builtin-clone.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/builtin_clone-b022e0100feb2761)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/create_dir_all_bare.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/create_dir_all_bare-ebe4fcb336fda599)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/env.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/env-83b220eb6e19c813)",
+      "passed": 8,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/env_modify.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/env_modify-edb74370cea9d0ce)",
+      "passed": 7,
+      "failed": 0,
+      "ignored": 1,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/eq-multidispatch.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/eq_multidispatch-d18235df09110d40)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/error.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/error-9c4c6e682711b814)",
+      "passed": 14,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/istr.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/istr-1d6d8d4367d2c5be)",
+      "passed": 5,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/log-knows-the-names-of-variants-in-std.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/log_knows_the_names_of_variants_in_std-d200e20f039ca0f1)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/minmax-stability-issue-23687.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/minmax_stability_issue_23687-f4768b9101be0c48)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/num.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/num-f9cf35c60fd61fc9)",
+      "passed": 25,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/panic.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/panic-26e3f0cdcf1fc7fd)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/path.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/path-d17bd846f3a64604)",
+      "passed": 35,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/process_spawning.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/process_spawning-814afa4989429682)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/run-time-detect.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/run_time_detect-f2a32165f04bd0f4)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/seq-compare.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/seq_compare-cf84a9a049d2d5f4)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/slice-from-array-issue-113238.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/slice_from_array_issue_113238-2ca05987998eb5be)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/switch-stdout.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/switch_stdout-2b1f56d650365dc6)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/sync/lib.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/sync-e09c565c12f9875b)",
+      "passed": 337,
+      "failed": 0,
+      "ignored": 1,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/thread.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/thread-bf643049c517b509)",
+      "passed": 5,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/thread_local/lib.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/thread_local-e5a154bd242db442)",
+      "passed": 12,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/time.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/time-24f66bd66b3afa6b)",
+      "passed": 15,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/type-name-unsized.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/type_name_unsized-65bb94a13426f9f1)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/volatile-fat-ptr.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/volatile_fat_ptr-2e55f8d555683749)",
+      "passed": 1,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/win_delete_self.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/win_delete_self-0c623309a4d8f94b)",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/windows.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/windows-da8c5bb9fac496ea)",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "tests/windows_unix_socket.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/windows_unix_socket-2cdfa0d4779f3f1f)",
+      "passed": 0,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    },
+    {
+      "driver": "benches/lib.rs (/build/compile/x86_64-unknown-linux-gnu/stage2-std/x86_64-unknown-linux-gnu/dist/deps/stdbenches-6e3c951fb635b07a)",
+      "passed": 26,
+      "failed": 0,
+      "ignored": 0,
+      "measured": 0,
+      "filtered": 0
+    }
+  ],
+  "custom_driver": {
+    "name": "pipe_subprocess.rs",
+    "result": "Test pipe_subprocess.rs success",
+    "counted_in_libtest_passes": false
+  },
+  "totals": {
+    "passed": 6223,
+    "failed": 0,
+    "ignored": 5,
+    "measured": 0,
+    "filtered": 0
+  },
+  "pending": "Identify upstream ignored cases; separate compiler/tool tests, stage/install and installed consumers remain required"
+}

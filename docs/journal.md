@@ -1845,3 +1845,31 @@ Private seed1.96.0 versions/commit/sysroot passed; rustc-1 now compiling actual
 Rust1.97.1/compiler LLVM wrapper/crates with4 workers, thin LTO/systemLLVM22.1.8,
 source-vendored offline dependencies. No critical Rust tests/stage/install yet.
 Current guest jobPID248700/monitor74685, source input rust-toolchain-1.97.1.
+
+### B02 Rust compiler result, standard tests and PAM source preparation — 2026-11-08 UTC
+
+rustc-1 terminal0 after27m40s, native Rust1.97.1/LLVM22.1.8 and real Vec/thread
+consumer0. Post-build target21.36GiB. Preserve compiled cache. ADR0127 selects
+original core/alloc/std unit/integration tests with source-supported --tests,
+private loopback/four threads, raw reports/tool hashes and16GiB reserve. Actual
+rustc-std-2 dispatched PID271179, monitor74621; test/stage/install gates pending.
+No native graphical acceptance or Phase2 ISO yet.
+
+ADR0126 preserves frozen PAM1.7.2 with nine explicitly sourced ordered patches.
+Fresh authenticated host replay0/fuzz0, eight source files match reviewed tree;
+algorithm mask uses actual frozen flags, preserves DES/BIGCRYPT/defaults and
+quiet/minlen. Original host table fixture7/adapted0,64 transitions. One context
+prerequisite, two raw HTTP504 transport attempts and one pre-write adapter guard
+failure preserved in ledger; complete official API hunks used for prerequisite.
+Exact default/per-file notices retained. Raw fixture/replay evidence bundle and
+hash retained for final release. No guest PAM/Shadow/systemd change or native
+credential/privilege/session acceptance. GitHub f9cc3b3 scanner download failed
+504 before executing; one failed-job rerun now passed, no ignore rule changed.
+
+Native Rust std bootstrap completed:35 libtest drivers6223 PASS/5 upstreamignored
+and custom pipe-subprocess sentinel success. Collector wrapper1 afterwards from
+removed temporary clippy path preserved; source-backed derived qualification0,
+no independently saved native exit/before-after hash claim. Four recovery guard
+regressions0. Upstream recreates sysroot; correct collector persistence/retained
+artifact paths, no passed-test replay. rustc-compiler-3/PID282672/monitor82919 now
+tests original ownership/async/FFI/linkage/editions/Send-Sync compiler suites.
