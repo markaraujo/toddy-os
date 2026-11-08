@@ -1873,3 +1873,13 @@ no independently saved native exit/before-after hash claim. Four recovery guard
 regressions0. Upstream recreates sysroot; correct collector persistence/retained
 artifact paths, no passed-test replay. rustc-compiler-3/PID282672/monitor82919 now
 tests original ownership/async/FFI/linkage/editions/Send-Sync compiler suites.
+
+### Public scanner transport recovery — 2026-11-08 UTC
+
+The next public-safety run42469282524 again failed HTTP504 before the scanner
+executed. Local redacted history scan passed. Avoid repeated unchanged reruns: add
+one official GitHub release API fallback after bounded browser transport, retain
+the same pinned8.30.1 asset and mandatory SHA256, read-only job permissions and
+redacted scan/approved exact exceptions. Host gh release acquisition succeeded
+and matched551f6fc8...f2470eb; corrected remote execution pending. The step uses
+only the ephemeral workflow token, never installed product credentials.
