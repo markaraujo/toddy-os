@@ -82,6 +82,8 @@ def main():
             assert (fixture/'tests'/name).read_bytes()==(source/'tests'/name).read_bytes()
         env['G_TEST_SRCDIR']=str(fixture)
         tests += [(n,['bash',str(fixture/'tests'/n)]) for n in names]
+        if REUSED_NATIVE_PROOF is None:
+            tests.append(('optional-python-seccomp',['python3','-B',str(source/'tests/test-seccomp.py')]))
         for name,args in tests:
             r=command(args,env=env,cwd=temporary,user=101,group=101,extra_groups=[],preexec_fn=no_new_privileges)
             # Never retain accidental password-hash lines from a failing security

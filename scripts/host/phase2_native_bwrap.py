@@ -15,6 +15,7 @@ import uuid
 import zlib
 
 import boot_test as boot
+from phase2_native_report import decode
 import phase2_vm
 import vm
 
@@ -65,9 +66,12 @@ def main():
 import json,hashlib,subprocess
 subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
-assert Path('/var/log/toddy/phase2/bubblewrap-native-probe-5.exit').read_text().strip()=='1'
-assert json.loads(Path('/var/log/toddy/phase2/builder-bwrap-userns-profile.json').read_text())['state']=='removed-after-bounded-failure'
-r=json.loads(Path('/var/log/toddy/build/b02-hwdata-install.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0
+legacy=Path('/var/log/toddy/phase2/bubblewrap-native-probe-5.exit')
+if legacy.exists():assert legacy.read_text().strip()=='1'
+else:
+ r=json.loads(Path('/mnt/lfs/sources/phase2/work/bubblewrap-1/build-results.json').read_text());assert r['portable_utility_exit']==0 and not r['package_promotable']
+profile=Path('/var/log/toddy/phase2/builder-bwrap-userns-profile.json')
+if profile.exists():assert json.loads(profile.read_text())['state']=='removed-after-bounded-failure'
 p=Path('/mnt/lfs/sources/phase2/work/bubblewrap-1/compile/bwrap');assert hashlib.sha256(p.read_bytes()).hexdigest()=='f36c7341c009446dc7b79417d6baaa9ec583eccb9690553dd53e4d22ac19869f'
 print(json.dumps({'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'bwrap_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'target_serial':'TODDY-LFS-TARGET','native_kernel_expected':'7.1.8-toddy'}))
 '''
@@ -126,17 +130,9 @@ print(json.dumps({'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read
         state['phase']='native-stopped';save()
     assert phase2_vm.backing_identity(source)==identity,'Read-only backing identity changed; do not restart builder'
     serial=(CONTEXT/'serial.log').read_text(errors='replace')
-    summaries=[];chunks={}
-    for line in serial.splitlines():
-        if 'TODDY_B02_RUNTIME_DATA ' in line:
-            i,data=line.split('TODDY_B02_RUNTIME_DATA ',1)[1].split(' ',1);i=int(i)
-            assert i not in chunks or chunks[i]==data;chunks[i]=data
-        if 'TODDY_B02_RUNTIME_RESULT ' in line:summaries.append(json.loads(line.split('TODDY_B02_RUNTIME_RESULT ',1)[1]))
-    assert summaries and all(r==summaries[0] for r in summaries),'No consistent actual native report; no success inference'
-    summary=summaries[0];assert set(chunks)==set(range(summary['chunks']))
-    raw=zlib.decompress(base64.b64decode(''.join(chunks[i] for i in range(len(chunks))),validate=True))
-    assert len(raw)<4*1024**2 and hashlib.sha256(raw).hexdigest()==summary['report_sha256']
-    report=json.loads(raw);(CONTEXT/'native-report.json').write_text(json.dumps(report,indent=2)+'\n')
+    report,summary,recovered=decode(serial)
+    (CONTEXT/'native-report.json').write_text(json.dumps(report,indent=2)+'\n')
+    state['recovered_protocol_markers']=recovered
     state.update(phase='native-report-recorded',summary=summary,backing_unchanged=True,
                  native_selected_passed=summary['all_selected_exits_zero'],builder_restart='pending explicit reconciliation of real container/image/cache state')
     save()

@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-08T20:38:48.079918+00:00
+Last verified: 2026-11-08T21:27:54.540241+00:00
 
 Verified:
 
@@ -40,8 +40,10 @@ Verified:
 - Owned full ATK/AT-SPI2.60.6 core/bridge0/0: nine original drivers qualified (seven reused, two real private-bus recovery), staged/installed C/GI states0 and163compiledELFs unchanged. No GNOME/session acceptance.
 - Owned LCMS2.19.1 native testcms0/5.59s and ICC serialize/reopen/navy identity/refusal0. Original install0/post1 source-version assertion retained; verify-only0/0/full payload unchanged, no reinstall. Glycin307-crate closure source-verified only.
 - Accepted foundation Libseccomp archive/full payload reused unchanged; actual installed child-only syscall refusal0, no reinstall. Additional source7928+11passes retained separately. Hwdata0.410 owned0/0, five byte-identical UTF8 tables/PnP2557 unique names; no device support claim.
+- Actual native7.1.8/Systemd sandbox0 on4CPU/4GiB BIOS/noNIC; bwrap26portable+66native upstream passes/5explicit optional skips, native consumer0,11ELFs unchanged. Checksum-reconciled split serial marker without native replay; owned0755 byte-identical install/post0/0. Builder/same3scratch volumes restored, no formatting/trim.
+- Owned display-info0.4.0 install/post0/0/all68registered EDID fixtures0, actual QEMU/PnP/malformed+truncated refusal0; both parser/hwdata source-license inventories retained. No physical monitor or graphical-session acceptance.
 
-Running: Preparing one cold native Toddy kernel runtime test of blocked bwrap namespaces/three affected original drivers; current Ubuntu-builder attempts preserved and scoped profile removed, no global weakening. All67Libadwaita widgets and GNOME/basic app acceptance remain pending.
+Running: No guest writer; capacity/source-archive custody preflight before native Glycin image decoder and remaining GNOME dependencies. All67Libadwaita widgets and B02 login/basic-app/graphical acceptance pending; stop after full B02 per owner.
 
 Remaining:
 

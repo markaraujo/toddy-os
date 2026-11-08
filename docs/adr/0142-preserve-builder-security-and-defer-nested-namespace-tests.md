@@ -40,3 +40,30 @@ and native consumer. The /var/tmp fixture also requires an explicit private
 runtime path; neither absence nor skips count as successful sandbox acceptance.
 
 No broader architecture or foundation rebuild is authorized by this blocker.
+
+## Native follow-up and resolution
+
+Actual disposable BIOS boots of current Phase2 packages ran native7.1.8/Systemd
+with no NIC and read-only backing access. First launcher failed before namespace
+tests (absent setpriv); Python UID/GID101/empty groups/prctl NNP1/CapEff0 preserved
+privilege checks without rebuilding the base. Native2 passed both original
+namespace-joining drivers. Native3 corrected our own owner-UID oracle (upstream
+preserves101) and privately mapped the actual LFS /lib64 directory in the shared
+fixture, with original assertion-bearing driver unchanged. Actual namespace
+consumer0 and test-run69entries/64PASS/5optionalSKIP; two native2 passes reused.
+All11compiled ELFs stayed identical. This validates the native runtime, without
+proving a single precise cause for the differently confined Ubuntu compiler.
+
+A kernel printk split one console protocol marker, leaving its entire payload
+intact. Host-only exact-marker recovery reconstructed all chunks and verified the
+full advertised SHA256fc8fd0165531240ce2c3ef099329b4ef837d313dccc2388dbca41983a428aeb5;
+no native test replay or invented bytes. Missing-chunk/bad-checksum controls refuse
+acceptance. Original parser/controller failure and serial bytes remain retained.
+
+The builder restarted only after all three native containers actually stopped
+and the cold backing identity was unchanged. Same three scratch filesystems were
+restored by UUID/inode, without formatting/trim. Bwrap stage/install retains the
+identical native-tested executable and source-backed cases, with setuid disabled.
+[Bwrap evidence](../evidence/B02-bubblewrap-build.json) and
+[installed qualification](../evidence/B02-bubblewrap-install.json) prove this
+resolution; no graphical/Glycin/physical-hardware acceptance is implied.

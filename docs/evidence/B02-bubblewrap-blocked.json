@@ -13,5 +13,11 @@
     "sha256": "b383938c7d3603aa1829caa7ab67c3daeb5c8bb5b441ac64ded60db37a742aee",
     "members": 54,
     "scope": "Source seccomp regressions/accepted installed reuse, original bwrap failures and scoped profile attempts/verified removal; no bwrap qualification"
+  },
+  "resolution": {
+    "state": "Resolved on actual native Toddy kernel, original Ubuntu failures retained",
+    "evidence": "B02-bubblewrap-build.json",
+    "installed_evidence": "B02-bubblewrap-install.json",
+    "namespace_qualification_not_from_ubuntu": true
   }
 }

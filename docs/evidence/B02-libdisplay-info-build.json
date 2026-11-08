@@ -1,0 +1,288 @@
+{
+  "scope": "Native EDID/DisplayID parser and actual QEMU fixture/PnP lookup/malformed-input refusal; no physical monitor/driver or graphical acceptance",
+  "upstream_drivers": [
+    {
+      "name": "libdisplay-info:print-acer-p1276",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-acer-p1276",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-amazon-fire-tv-48",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-amazon-fire-tv-48",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-apple-xdr-dp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-apple-xdr-dp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-asus-ux3405",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-asus-ux3405",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-ayaneo-wxga",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-ayaneo-wxga",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-cta-timings",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-cta-timings",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-cta-timings",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-cta-timings",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-cta-vfpdb",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-cta-vfpdb",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-custom-uncommon-cta-vesa",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-custom-uncommon-cta-vesa",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-cvt",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-cvt",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-dell-2408wfp-dp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-dell-2408wfp-dp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-goldstar-37lg5000",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-goldstar-37lg5000",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-goldstar-e2441",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-goldstar-e2441",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-goldstar-ite6604-hdmi",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-goldstar-ite6604-hdmi",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-hisense-55u8k",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-hisense-55u8k",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-hitachi-55r6+",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-hitachi-55r6+",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-hp-5dq99aa-hdmi",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-hp-5dq99aa-hdmi",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-jdi-lpm135m467-edp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-jdi-lpm135m467-edp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-lenovo-t24s28",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-lenovo-t24s28",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-lenovo-t27p10",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-lenovo-t27p10",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-msi-mag321curv-dp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-msi-mag321curv-dp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-panasonic-mei96a2-dp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-panasonic-mei96a2-dp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-philips-4k-2023",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-philips-4k-2023",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-philips-ftv-2017",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-philips-ftv-2017",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-philips-ftv-490",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-philips-ftv-490",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-qemu",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-qemu",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-samsung-odyssey-g60sd",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-samsung-odyssey-g60sd",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-samsung-q800t-hdmi2.0",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-samsung-q800t-hdmi2.0",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-samsung-qn900b-8k",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-samsung-qn900b-8k",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-samsung-s27a950d-dp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-samsung-s27a950d-dp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-sun-gh19ps-dvi",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-sun-gh19ps-dvi",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-tcl-smart-tv-5655",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-tcl-smart-tv-5655",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-viewsonic-vp2768-dp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-viewsonic-vp2768-dp",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:decode-vizio-d40fj09",
+      "native_exit": 0
+    },
+    {
+      "name": "libdisplay-info:print-vizio-d40fj09",
+      "native_exit": 0
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "qemu_pnp_make": "Red Hat, Inc.",
+  "invalid_header_and_truncated_input_refused": true,
+  "profile": "Frozen hwdata0.410 lookup data; optional external reference decoder not required or used for passes",
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-libdisplay-info-native-evidence.tar.gz",
+    "bytes": 108064,
+    "sha256": "12b1b672aeed496ad864aafe8705b556376d239d1a38dd37697d5407537453f8",
+    "members": 16,
+    "scope": "Full registered native EDID fixtures/QEMU-PnP/refusal and owned install/post0/0; no physical device/GUI claim"
+  }
+}

@@ -19,6 +19,10 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libdisplay-info': ('0.4.0', 'glibc (>= 2.44-1), hwdata (>= 0.410-1+toddy1)',
+                        'libdisplay-info-0.4.0.tar.xz', 'usr/lib/pkgconfig/libdisplay-info.pc'),
+    'bubblewrap': ('0.11.2', 'glibc (>= 2.44-1), libcap (>= 2.78-1)',
+                   'bubblewrap-0.11.2.tar.xz', 'usr/bin/bwrap'),
     'hwdata': ('0.410', '', 'hwdata-0.410.tar.gz', 'usr/share/hwdata/pnp.ids'),
     'lcms2': ('2.19.1', 'glibc (>= 2.44-1), libjpeg-turbo (= 3.2.0-1+toddy1), tiff (= 4.7.2-1+toddy1)',
               'lcms2-2.19.1.tar.gz', 'usr/lib/pkgconfig/lcms2.pc'),
@@ -138,6 +142,7 @@ if __name__ == '__main__':
     if name=='itstool' and (log/'itstool-recovery-2.job.json').exists():qualifier='itstool-recovery-2'
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
     if name=='at-spi2-core' and (log/'atspi-finish-4.job.json').exists():qualifier='atspi-finish-4'
+    if name=='bubblewrap':qualifier='bubblewrap-stage-6'
     if name=='libxml2-python':qualifier='libxml2-python-probe-5'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
@@ -446,6 +451,60 @@ if __name__ == '__main__':
             assert all(r['returncode']==0 and not r['is_fail'] and (r['result']=='OK' or (r['name'] in optional and r['result']=='SKIP' and r.get('stdout','').strip()=='# fonttools is not present, skipping test.')) for r in rows)
         else:
             assert rows and all(r['result']=='OK' and r['returncode']==0 and not r['is_fail'] for r in rows)
+    if name=='bubblewrap':
+        import re
+        work=Path('/mnt/lfs/sources/phase2/work/bubblewrap-1')
+        source=Path('/mnt/lfs/sources/phase2/inputs/bubblewrap-0.11.2')
+        command=json.loads((log/'bubblewrap-stage-6.job.json').read_text())['command']
+        assert command[-4:-1]==['python3','-c',(ROOT/'scripts/build/phase2/bubblewrap_stage.py').read_text()]
+        qualification=json.loads(command[-1]);proof=json.loads((work/'test-results.json').read_text())
+        assert proof['qualification']==qualification and proof['native_namespace_consumer_exit']==0
+        assert qualification['consumer_source_sha256']==hashlib.sha256((ROOT/'scripts/build/phase2/bubblewrap-probe.py').read_bytes()).hexdigest()
+        legacy=hashlib.sha256((source/'toddy-build.sh').read_bytes()).hexdigest()=='6d1847751b1e523579165990c3856c186f8ac745312e8eb8160c6ab877b94f4a'
+        if legacy:
+            assert hashlib.sha256((source/'toddy-probe.py').read_bytes()).hexdigest()=='b38d6b8f475fa8da5d5c5934e7539144b3973047007ea08ce3bc66058c3c94db'
+        else:
+            assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/bubblewrap-build.sh').read_bytes()
+            assert (source/'toddy-probe.py').read_bytes()==(ROOT/'scripts/build/phase2/bubblewrap-probe.py').read_bytes()
+        main_file=qualification.get('native_report_file','bubblewrap-native-runtime-3.json')
+        assert re.fullmatch(r'bubblewrap-native-runtime-[0-9]+[.]json',main_file)
+        native=json.loads((log/main_file).read_text())
+        assert hashlib.sha256(json.dumps(native,sort_keys=True).encode()).hexdigest()==qualification['native_report_sha256']
+        assert native['kernel']==qualification['kernel']=='7.1.8-toddy'
+        assert native['binary_sha256']==qualification['binary_sha256']
+        assert len(native['runs'])>=2 and all(r['exit']==0 for r in native['runs'])
+        runs={r['name']:r for r in native['runs']}
+        if native.get('reused_native_proof') is not None:
+            reused_file=qualification.get('reused_report_file','bubblewrap-native-runtime-2.json')
+            assert re.fullmatch(r'bubblewrap-native-runtime-[0-9]+[.]json',reused_file)
+            old=json.loads((log/reused_file).read_text())
+            assert hashlib.sha256(json.dumps(old,sort_keys=True).encode()).hexdigest()==qualification['reused_report_sha256']==native['reused_native_proof']['report_sha256']
+            assert old['kernel']==native['kernel'] and old['binary_sha256']==native['binary_sha256']
+            for row in native['reused_native_proof']['runs']:
+                original=next(r for r in old['runs'] if r['name']==row['name'])
+                assert row['exit']==original['exit']==0
+                assert row['name'] not in runs;runs[row['name']]=original
+        assert {'namespace-consumer','test-run.sh','test-specifying-pidns.sh','test-specifying-userns.sh'}<=set(runs)
+        tests=runs['test-run.sh']['stdout']
+        assert len(re.findall(r'^ok\b',tests,re.M))==69 and '1..69' in tests
+        assert len(re.findall(r'^ok[^\n]*# SKIP',tests,re.M))==5 and not re.search(r'^not ok',tests,re.M)
+        for driver_name in ['test-specifying-pidns.sh','test-specifying-userns.sh']:
+            assert '1..1' in runs[driver_name]['stdout'] and len(re.findall(r'^ok\b',runs[driver_name]['stdout'],re.M))==1 and not re.search(r'^not ok',runs[driver_name]['stdout'],re.M)
+        assert hashlib.sha256((work/'stage/usr/bin/bwrap').read_bytes()).hexdigest()==qualification['binary_sha256']
+        assert (work/'stage/usr/bin/bwrap').stat().st_mode & 0o6000==0
+        for relative,digest in json.loads((work/'stage-6/binaries-before.json').read_text()).items():
+            with (work/'compile'/relative).open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==digest
+    if name=='libdisplay-info':
+        work=Path('/mnt/lfs/sources/phase2/work/libdisplay-info-1')
+        source=Path('/mnt/lfs/sources/phase2/inputs/libdisplay-info-0.4.0')
+        for local,canonical in [('toddy-build.sh','libdisplay-info-build.sh'),('toddy-probe.c','libdisplay-info-probe.c')]:
+            assert (source/local).read_bytes()==(ROOT/'scripts/build/phase2'/canonical).read_bytes()
+        proof=json.loads((work/'test-results.json').read_text())
+        registered=json.loads((work/'compile/meson-info/intro-tests.json').read_text())
+        rows=[json.loads(x) for x in (work/'compile/meson-logs/testlog.json').read_text().splitlines()]
+        assert len(rows)==len(registered)>0 and all(r['result']=='OK' and r['returncode']==0 for r in rows)
+        assert proof['staged_consumer_exit']==0 and proof['invalid_header_and_truncated_input_refused']
+        assert proof['qemu_pnp_make']=='Red Hat, Inc.'
     if name=='hwdata':
         work=Path('/mnt/lfs/sources/phase2/work/hwdata-1')
         source=Path('/mnt/lfs/sources/phase2/inputs/hwdata-0.410')
@@ -692,6 +751,7 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    assert name==sys.argv[1], 'Package identity changed during qualification'
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
     if name=='libxml2-python':source=Path('/mnt/lfs/sources/phase2/work/libxml2-1/python-binding-1/stage')
     assert not (source/'.toddy-retired.json').exists(),'Stage retired under verified archive custody; reuse the native package, no promotion replay'
@@ -713,6 +773,9 @@ if __name__ == '__main__':
         extra_name='xdgmime-tests' if name=='shared-mime-info' else 'llvm-upstream-fix'
         row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==extra_name)
         archives.append(row['filename'])
+    if name=='libdisplay-info':
+        extra=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']=='hwdata')
+        archives.append(extra['filename'])
     write_copyright(destination, name, archives)
     source_args=[arg for item in archives for arg in ['--source',item]]
     if name=='llvm':

@@ -2470,3 +2470,32 @@ fixture loader mapping, require original assertion-bearing driver unchanged and
 fixture digests. Native3 fresh cold overlay reuses two approved native drivers;
 only consumer/test-run rerun. No source/compiler/foundation changes or Ubuntu
 retries. Native2 report/container stopped0/base unchanged are prerequisites.
+
+### B02 native runtime resolution and owned display parser — 2026-11-08
+
+Native3 actually passed own namespace/private-filesystem/read-only/NNP consumer
+and original test-run64cases/5explicit FUSE/strace skips. Reused two native2
+joining-driver passes and26portable utilities;11compiled ELFs unchanged. One
+protocol marker split by kernel printk caused original host decoder failure.
+Recovered only the exact split marker, unchanged payload/all advertised chunks,
+full raw SHAfc8fd0165531240ce2c3ef099329b4ef837d313dccc2388dbca41983a428aeb5.
+No VM/test replay; actual native2/native3 decoder checks0 and missing-chunk/
+wrong-checksum refusals0. Historical controller failure/raw serial retained.
+
+All3native containers stopped0 and backing identity checked before builder
+restart. New builder bootd6365027-c886-4648-957f-4174ebcd23a1; original3scratch
+filesystems restored by UUID/inode/size/backing, no mkfs/trim. Unchanged bwrap
+staging0; initial owned promotion refused nonexistent stage because qualification
+loop shadowed package name, before package/archive/destination writes. Corrected
+loop, added identity invariant, explicitly verified actual absence/unchanged
+stage, new controlled install-native-2 recipe0/post0 at21:05:01Z. Installed0755
+executable matches actual native-tested SHA, no namespace replay in unsupported
+Ubuntu compiler. Raw72-member bundle SHA606f4abd4bf12b59cf1d7afe9791bd431df52b70d960ea901f04f74e65580fb3.
+
+Display-info0.4.0 all68registered EDID fixtures/native QEMU PnP name/refusal0,
+owned install/post0/0 at21:16:31Z. Both source archives retained for MIT parser
+plus generated hwdata PnP data (GPL option). Raw16-member bundle
+SHA12b1b672aeed496ad864aafe8705b556376d239d1a38dd37697d5407537453f8.
+No physical monitor or native GNOME window. Capacity preflight/source/archive
+custody is next for Glycin; preserves100GiB host/16GiB target and pending67
+Libadwaita widgets. Owner boundary remains pause only after full B02 acceptance.

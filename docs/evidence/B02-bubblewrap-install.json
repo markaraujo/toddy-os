@@ -1,0 +1,46 @@
+{
+  "scope": "Installed0755 byte-identical executable validated on actual native Toddy7.1.8; loader/version0, no Ubuntu namespace replay or graphical acceptance",
+  "step": {
+    "step": "b02-bubblewrap-install-native-2",
+    "started": "2026-11-08T21:04:46.793274+00:00",
+    "finished": "2026-11-08T21:05:01.266066+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 11,
+    "log_sha256": "370d5de0ec98c70d3315a4610095c7f31db9b9c751285f5cd58bd968d12a3d7b"
+  },
+  "package": {
+    "name": "bubblewrap",
+    "version": "0.11.2-1+toddy1",
+    "archive_sha256": "14716d04580a7f605bcf9deeb6915e6ed32b837bc742bd686e69741faf825c72",
+    "installed": true
+  },
+  "consumer": {
+    "scope": "Installed root-owned0755 executable byte-identical to actual native7.1.8 namespace-tested binary; version/loader0, no unsupported Ubuntu namespace replay or graphical acceptance",
+    "native_tested_binary_sha256": "f36c7341c009446dc7b79417d6baaa9ec583eccb9690553dd53e4d22ac19869f",
+    "installed_binary_identical": true,
+    "native_namespace_consumer_exit": 0,
+    "installed_version_exit": 0,
+    "setuid_or_setgid": false,
+    "native_runtime_report_sha256": "fc8fd0165531240ce2c3ef099329b4ef837d313dccc2388dbca41983a428aeb5"
+  },
+  "full_root_timing": {
+    "step": "b02-bubblewrap-install-native-2",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 13.038,
+        "entries": 140378,
+        "regular_files": 124550,
+        "regular_bytes": 6823349093
+      },
+      {
+        "seconds": 12.855,
+        "entries": 140386,
+        "regular_files": 124556,
+        "regular_bytes": 6823497849
+      }
+    ],
+    "total_seconds": 28.448
+  }
+}

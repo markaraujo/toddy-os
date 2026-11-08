@@ -10299,6 +10299,18 @@
       "version": "0.410",
       "license": "GPL-2.0-or-later OR XFree86-1.0",
       "evidence": "Upstream LICENSE permits either data license; exact source/COPYING retained. Five unchanged UTF8 databases/PnP2557 unique keys and original PCI sorting script0; optional lspci/privileged external USB tests unavailable/skipped, no hardware claim. Supported configure --disable-blacklist avoids kernel module policy. Native owned install/post0/0 with all installed data byte-identical and PnP2557 unique records; no hardware support claim."
+    },
+    {
+      "name": "bubblewrap",
+      "version": "0.11.2",
+      "license": "LGPL-2.0-or-later",
+      "evidence": "Exact upstream COPYING/source notices retained. Actual native Toddy7.1.8 consumer0 and original namespace drivers0;26portable utility cases plus64native test-run cases/2joining cases passed,5explicit FUSE/strace skips and optional Python binding skip retained. Private loader fixture maps actual LFS /lib64 without changing original driver assertions;11ELFs unchanged. Stage is byte-identical to native-tested executable; no Ubuntu namespace replay, setuid or global security change. Owned install-native-2 recipe0/post0; installed0755 payload matches actual native-tested binary. Initial package-name shadowing refused nonexistent stage before any package write, fixed and postconditions checked before new controlled transaction."
+    },
+    {
+      "name": "libdisplay-info",
+      "version": "0.4.0",
+      "license": "MIT AND GPL-2.0-or-later",
+      "evidence": "Upstream MIT parser source plus compiled PnP-name table from frozen hwdata0.410 (GPL option selected from its dual license). Retain both exact source archives/notices/full GPL text. All registered native EDID fixtures and QEMU/PnP/refusal consumer0; owned install/post0/0;68registered drivers and installed QEMU/PnP/refusal0. No physical monitor/driver claim."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

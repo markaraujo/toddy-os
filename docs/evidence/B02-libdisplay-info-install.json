@@ -1,0 +1,38 @@
+{
+  "scope": "Installed native EDID/PnP parser and QEMU fixture/refusal; no physical display or graphical session acceptance",
+  "step": {
+    "step": "b02-libdisplay-info-install",
+    "started": "2026-11-08T21:16:16.922026+00:00",
+    "finished": "2026-11-08T21:16:31.674770+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 29,
+    "log_sha256": "6a53399e5ab6e980a7dcf88667bfa7241708096c48100b960225b1375d0f78e1"
+  },
+  "success_record_sha256": "2090637876502948dccd20b5cdc3f74ea7b8d2489cd588000bb00c6a7797e364",
+  "package": {
+    "name": "libdisplay-info",
+    "version": "0.4.0-1+toddy1",
+    "archive_sha256": "c31de01fb2a433a99c4c9d58250f695a4984cc2620bcdd8b121b07bdb638791b",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-libdisplay-info-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.408,
+        "entries": 140386,
+        "regular_files": 124556,
+        "regular_bytes": 6823497849
+      },
+      {
+        "seconds": 12.953,
+        "entries": 140412,
+        "regular_files": 124577,
+        "regular_bytes": 6824029825
+      }
+    ],
+    "total_seconds": 30.112
+  }
+}

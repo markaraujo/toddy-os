@@ -1,0 +1,63 @@
+{
+  "scope": "Native unprivileged bwrap on actual Toddy7.1.8 kernel; unchanged stage only, not graphical/complete Glycin/application sandbox acceptance",
+  "qualification": {
+    "kernel": "7.1.8-toddy",
+    "binary_sha256": "f36c7341c009446dc7b79417d6baaa9ec583eccb9690553dd53e4d22ac19869f",
+    "native_report_sha256": "fc8fd0165531240ce2c3ef099329b4ef837d313dccc2388dbca41983a428aeb5",
+    "native_probe_sha256": "637464dd05c0cdba717286cbd09a1c6e28b1d83c44ab44fb49fe114aa983a53d",
+    "consumer_source_sha256": "99691a30d3855fe7e35e3d3d45cd4fe5aa1ea474c94dce0a1076993a0cfc6592",
+    "reused_report_sha256": "b23f5c4bef0876f311d067556e3fa6e29bb5eaa1a3a81fc30b315ed60c72c29e",
+    "existing_compiled_elf_files_unchanged": 11
+  },
+  "upstream_utility_cases": 26,
+  "native_test_run": {
+    "passed_cases": 64,
+    "skipped_cases": 5,
+    "skip_reasons": {
+      "no FUSE support": 4,
+      "no strace fault injection": 1
+    }
+  },
+  "native_namespace_joining_drivers": {
+    "test-specifying-pidns.sh": 0,
+    "test-specifying-userns.sh": 0
+  },
+  "optional_python_seccomp_driver": "Unavailable optional Python binding; original SKIP retained, not a pass",
+  "existing_compiled_elf_files_unchanged": 11,
+  "staged_consumer_exit": 0,
+  "native_namespace_consumer_exit": 0,
+  "profile": "support_setuid=false, selinux disabled, no global security changes. Private upstream fixture maps actual LFS /lib64; original driver assertions unchanged.",
+  "staged_consumer_exit_interpretation": "Reused actual native namespace consumer0 for the byte-identical staged executable; no second staged-path namespace execution in unsupported Ubuntu compiler.",
+  "native_runtime": {
+    "kernel": "7.1.8-toddy",
+    "pid1": "systemd",
+    "firmware": "BIOS",
+    "vm_cpus": 4,
+    "vm_memory_mib": 4096,
+    "network": "none",
+    "native_upstream_cases_passed": 66,
+    "native_upstream_cases_skipped": 5,
+    "portable_utility_cases_passed": 26,
+    "original_optional_python_driver": "SKIP: missing optional binding, not counted as a pass"
+  },
+  "serial_reconciliation": {
+    "serial_sha256": "7197d8285ca1b7f77e036e2d75dd9cf1a79face8dc006a44c246a67c31677acd",
+    "recovered_markers": [
+      {
+        "index": 1,
+        "payload_bytes_changed": 0,
+        "reason": "Exact TOD + DY marker split by kernel stack-depth printk; full payload line retained"
+      }
+    ],
+    "verified_full_report_sha256": "fc8fd0165531240ce2c3ef099329b4ef837d313dccc2388dbca41983a428aeb5",
+    "native_tests_replayed": 0,
+    "original_controller_parser_failure_retained": true
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-bubblewrap-native-evidence.tar.gz",
+    "bytes": 303775,
+    "sha256": "606f4abd4bf12b59cf1d7afe9791bd431df52b70d960ea901f04f74e65580fb3",
+    "members": 72,
+    "scope": "All three actual native boots/reports/original failures/reconciliation, no compiler/native test replay; controlled installed byte identity and restored original builder volumes. No GUI/ISO/hardware acceptance."
+  }
+}

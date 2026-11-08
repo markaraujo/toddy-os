@@ -1,0 +1,25 @@
+{
+  "scope": "Host protocol decoding of actual native logs, no native test replay or new runtime acceptance",
+  "cases": [
+    {
+      "case": "actual-native-2",
+      "exit": 0,
+      "report_sha256": "b23f5c4bef0876f311d067556e3fa6e29bb5eaa1a3a81fc30b315ed60c72c29e",
+      "recovered_markers": 0
+    },
+    {
+      "case": "actual-native-3",
+      "exit": 0,
+      "report_sha256": "fc8fd0165531240ce2c3ef099329b4ef837d313dccc2388dbca41983a428aeb5",
+      "recovered_markers": 1
+    },
+    {
+      "case": "missing-chunk",
+      "refused": true
+    },
+    {
+      "case": "wrong-checksum",
+      "refused": true
+    }
+  ]
+}
