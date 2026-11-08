@@ -1504,3 +1504,11 @@ exit32; rechecked FD/parent-lock isolation, bridge and actual process cleanup:
 exit0/no namespace processes. GTK/Cairo/native desktop not yet tested.
 Next: install owned PyGObject package, repeat affected installed binding fixture,
 then Calamares/Python no-write compatibility probe. make check217 passed.
+
+
+## 2026-11-07 — Installed native GIO and Calamares embedding boundary
+
+PyGObject transaction0/0 and installed GIO fixture0 passed. Calamares3.4.3
+bundled Pybind11 2.11.1 compiles/links/runs with native Python3.14.10 unchanged;
+deprecation warnings recorded. Next: minimal QtBase/Svg/LinguistTools dependencies
+for no-write installer feasibility, not final graphical desktop acceptance.

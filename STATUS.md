@@ -4,7 +4,7 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-Owner-authorized isolated Phase 2 implementation is active (ADR-0113). B01 cloned the accepted foundation, verified native GLib/Node packages and passed the native Pi 1.5.0 tool/cancel/protocol fixture. A procfs postcheck context and inherited-lock-FD gap were corrected with preserved evidence. Native GIO binding and Calamares no-write probes remain; B01 acceptance, B02–B13, G2 and physical hardware validation are pending.
+Owner-authorized isolated Phase 2 implementation active (ADR-0113). B01 verified native GLib/Node/GI/PyGObject packages, Pi tool/cancel/protocol and installed GIO async/peer/signal/FD fixtures. Calamares bundled Pybind11 embeds accepted Python unchanged. Minimal Qt prerequisites for its no-write probe are building; B01 acceptance, B02–B13, G2 and physical validation remain pending.
 
 Foundation: **100%** · Agentic desktop: **0%**
 
@@ -16,20 +16,22 @@ No milestone earns credit without completed acceptance evidence.
 
 The 0% phase total counts completed stories only. B01 is still in progress; its 5 points are not yet counted. Passing this story would raise the phase total to 5%.
 
-Last verified: 2026-11-07T23:18:23.771200+00:00
+Last verified: 2026-11-07T23:59:15.867467+00:00
 
 Verified:
 
 - Read-only-backed KVM clone, native GLib package and 14 focused GObject/GDBus cases passed.
 - Native Node installed and corrected postcheck passed without replay; original failed context record preserved.
 - 11 native Pi tool/cancel/disconnect/protocol cases passed; descriptor-safe compiler and parent-lock proof passed.
+- Native GI/GLib core metadata/PyGObject installed; installed GIO async/actual peer/signal/FD fixture passed with no namespace children.
+- Calamares3.4.3 bundled Pybind11 2.11.1 compiled/linked/embedded native Python3.14.10 unchanged.
 
-Running: Preparing native introspection/PyGObject bridge and early Calamares binding probes; one guest writer.
+Running: QtBase6.11.2 minimal offscreen prerequisites for Calamares no-write probe; one guest writer.
 
 Remaining:
 
-- Native Pi and GIO bridge spikes, exact dependency/license/root inventory.
-- Calamares no-write probe, CPU model contract and final B01 budgets/acceptance.
+- Minimal Calamares Qt/module/target-plan no-write probe.
+- Final dependency/license/root inventory, CPU model contract and B01 budgets/acceptance.
 
 [Acceptance evidence](docs/evidence/B01.md)
 

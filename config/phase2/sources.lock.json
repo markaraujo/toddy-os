@@ -55,6 +55,39 @@
       "upstream_sha256_url": "https://codeberg.org/Calamares/calamares/releases/tag/v3.4.3",
       "reference": "Official Codeberg Calamares v3.4.3 release; Qt6 baseline with project modules",
       "status": "source_verified_not_built"
+    },
+    {
+      "name": "qtbase",
+      "version": "6.11.2",
+      "filename": "qtbase-everywhere-src-6.11.2.tar.xz",
+      "url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qtbase-everywhere-src-6.11.2.tar.xz",
+      "sha256": "5b2e00eccaf5a4d8c14134ffa0ea8dfd0a35ae1ffc7f8d87fa4305a1ed23cf22",
+      "upstream_sha256_url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qtbase-everywhere-src-6.11.2.tar.xz.sha256",
+      "status": "source_verified_not_built",
+      "reference": "BLFS 13.1-systemd Qt6; module-only B01 offscreen probe, not final desktop qualification",
+      "upstream_sha256_file_sha256": "4d6fb6ed17d89b879abd45ee79f0db1b9ae5c9ef3dd6a50f35a2a69818ca083d"
+    },
+    {
+      "name": "qtsvg",
+      "version": "6.11.2",
+      "filename": "qtsvg-everywhere-src-6.11.2.tar.xz",
+      "url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qtsvg-everywhere-src-6.11.2.tar.xz",
+      "sha256": "d594337feca84c26fb67fe87b85e6a5c12fda404b611d905f9d138210c311876",
+      "upstream_sha256_url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qtsvg-everywhere-src-6.11.2.tar.xz.sha256",
+      "status": "source_verified_not_built",
+      "reference": "BLFS 13.1-systemd Qt6; module-only B01 offscreen probe, not final desktop qualification",
+      "upstream_sha256_file_sha256": "67b8b52b6f63935a93c344b3377272eb1edcf57043eb4b5dbcc2fc33fb0c9ad8"
+    },
+    {
+      "name": "qttools",
+      "version": "6.11.2",
+      "filename": "qttools-everywhere-src-6.11.2.tar.xz",
+      "url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qttools-everywhere-src-6.11.2.tar.xz",
+      "sha256": "9ea75af35c512f7e09e61c8c3af3997f13b4d43bb099cf43fcec470126b4041e",
+      "upstream_sha256_url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qttools-everywhere-src-6.11.2.tar.xz.sha256",
+      "status": "source_verified_not_built",
+      "reference": "BLFS 13.1-systemd Qt6; module-only B01 offscreen probe, not final desktop qualification",
+      "upstream_sha256_file_sha256": "c437876cf37fff074f6e04f8d1203d573f340ee0535af3497eed6cc31d98ee32"
     }
   ]
 }
