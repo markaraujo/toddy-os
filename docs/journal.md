@@ -1532,3 +1532,14 @@ only affected consumer, no source rebuild. Raw Boolean map conversion exposed a
 typed boundary issue; schema-versioned JSON string/native Boolean checks passed.
 ADR-0116 records the selected contract. Final graphical/disk/privilege/boot/package
 trust/recovery proof remains B12; B01 final architecture/root/budget freeze next.
+
+
+## 2026-11-07 — B01 scoped acceptance and exact continuation
+
+All five B01 criteria audited against real native probes and frozen contracts,
+not desktop/installation claims. Pinned31 root/shared inputs, legal notice hashes,
+scoped GNOME graph (alternative desktop backends excluded), CPU-model/budget and
+installed-root account/boot/trust/recovery recipe. Ten native additions and
+Calamares/GIO/Pi proofs retained. Source-only candidates stay unqualified until
+the owning build/runtime story. Phase2 weighted progress5%; G2/physical pending.
+Next B03 by default selector: actual local CPU inference/tool slice, reusing Node.

@@ -1,0 +1,59 @@
+{
+  "scope": "B01 actual development target additions, not release payload",
+  "packages": [
+    {
+      "name": "glib",
+      "version": "2.88.3-1+toddy2",
+      "archive_sha256": "80d51a1e285e823e6806810543ab2c76c580d6be643b86090d23f4f44c28cef7"
+    },
+    {
+      "name": "gobject-introspection",
+      "version": "1.86.0-1+toddy1",
+      "archive_sha256": "e9ffd207fb12621b2b5533227431eae88643b5bc276dc8f98c374cad3984fe6b"
+    },
+    {
+      "name": "pygobject",
+      "version": "3.56.3-1+toddy1",
+      "archive_sha256": "056632e77b9ad788d5a51da12f2c8a0e4e6fc4754232c5b0b3b263210dbabee6"
+    },
+    {
+      "name": "nodejs",
+      "version": "24.19.0-1+toddy1",
+      "archive_sha256": "51c69c2f4eff6fb5473432f24f78b0140346aa50f9aa0213cd0381dcf40fa917"
+    },
+    {
+      "name": "qtbase",
+      "version": "6.11.2-1+toddy1",
+      "archive_sha256": "03a7deaeaca8fa66c65a0fcc67330e9f0fbf52f738e99767577cb29b43b927fa"
+    },
+    {
+      "name": "qtsvg",
+      "version": "6.11.2-1+toddy1",
+      "archive_sha256": "07dd6cc8d1142d7d6addf579799e79d92cefa62c565e47a2489cc9c295d810cc"
+    },
+    {
+      "name": "qttools-linguist",
+      "version": "6.11.2-1+toddy1",
+      "archive_sha256": "926d60037dc159f82d0c7bd4b9ecb084263d4c941a57d8274421d54a9a9dc8a4"
+    },
+    {
+      "name": "extra-cmake-modules",
+      "version": "6.29.0-1+toddy1",
+      "archive_sha256": "03a4cf972c6450561a3be9957c78bb270ad20b8459d5646398c65fd3e0925cf7"
+    },
+    {
+      "name": "kcoreaddons",
+      "version": "6.29.0-1+toddy1",
+      "archive_sha256": "1e00080f1054fd57ba540820dff1e92e1808a0c91356a9f253a889796e8a09ea"
+    },
+    {
+      "name": "yaml-cpp",
+      "version": "0.9.0-1+toddy1",
+      "archive_sha256": "50b9adba19c9b9b686604e940ab737754bf4d2b61335ef40762fdf4ea06434ca"
+    }
+  ],
+  "target_free_bytes": 44655878144,
+  "vm_cpu_count": 12,
+  "product_reference": "4vCPU8GiB unmeasured until B02/B03",
+  "foundation_physical": "pending"
+}

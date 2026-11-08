@@ -4,37 +4,13 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-Owner-authorized isolated Phase2 implementation active. B01 verified native engine/GIO and Calamares no-write feasibility, including typed JSON and real JobResult. Final source/root/budget/interface freeze remains before B01 acceptance. Native GNOME, B02–B13/G2, installable Phase2 ISO and physical validation remain pending.
+B01 architecture/native feasibility accepted with scoped evidence: pinned roots/licenses/ABI, native Pi/GIO/Calamares probes, image/account/boot/trust and profile/model/resource contracts. Phase2 is 5% by completed story weight. Next B03 implements provider/local inference; B02–B13/G2, native desktop, Phase2 installed ISO and physical validation remain pending.
 
-Foundation: **100%** · Agentic desktop: **0%**
+Foundation: **100%** · Agentic desktop: **5%**
 
-G1: passed · G2: pending · Next: **B01**
+G1: passed · G2: pending · Next: **B03**
 
 No milestone earns credit without completed acceptance evidence.
-
-## Active story: B01 — Freeze the minimal Toddy architecture and delivery slices
-
-The 0% phase total counts completed stories only. B01 is still in progress; its 5 points are not yet counted. Passing this story would raise the phase total to 5%.
-
-Last verified: 2026-11-07T23:59:15.867467+00:00
-
-Verified:
-
-- Read-only-backed KVM clone, native GLib package and 14 focused GObject/GDBus cases passed.
-- Native Node installed and corrected postcheck passed without replay; original failed context record preserved.
-- 11 native Pi tool/cancel/disconnect/protocol cases passed; descriptor-safe compiler and parent-lock proof passed.
-- Native GI/GLib core metadata/PyGObject installed; installed GIO async/actual peer/signal/FD fixture passed with no namespace children.
-- Calamares3.4.3 bundled Pybind11 2.11.1 compiled/linked/embedded native Python3.14.10 unchanged.
-- Native QtBase6.11.2 source/stage/package and offscreen Widgets/TLS/DBus/Concurrent consumer passed; visual/display/font integration pending.
-- Calamares3.4.3 source/stage/startup and actual PythonJob/JobResult synthetic plan with nine negative cases passed; typed JSON Boolean boundary verified.
-
-Running: Final B01 architecture/root/license/budget freeze using verified probes and exact source identities; no guest writer active.
-
-Remaining:
-
-- Final source/license/root/ABI and resource contracts; assess all B01 criteria before completion.
-
-[Acceptance evidence](docs/evidence/B01.md)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
@@ -51,7 +27,7 @@ Remaining:
 | [H11 — Produce hybrid ISO and artifact manifest](stories/H11.md) | foundation | 6 | completed |
 | [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | completed |
 | [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | completed |
-| [B01 — Freeze the minimal Toddy architecture and delivery slices](stories/B01.md) | agentic | 5 | in_progress |
+| [B01 — Freeze the minimal Toddy architecture and delivery slices](stories/B01.md) | agentic | 5 | completed |
 | [B02 — Deliver the minimal branded GNOME desktop](stories/B02.md) | agentic | 10 | not_started |
 | [B03 — Connect provider adapters and one optional local AI profile](stories/B03.md) | agentic | 8 | not_started |
 | [B04 — Deliver native tools and the revocable privileged executor](stories/B04.md) | agentic | 8 | not_started |

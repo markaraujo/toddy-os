@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "status": "frozen_B01_candidates_and_contracts_not_release_acceptance",
+  "foundation": {
+    "book": "LFS/BLFS13.1-systemd",
+    "kernel": "7.1.8-toddy",
+    "glibc": "2.44",
+    "gcc": "16.2.0",
+    "python": "3.14.10",
+    "openssl": "4.0.3",
+    "rebuild_accepted_foundation": false,
+    "evidence": "docs/evidence/H13.md",
+    "physical_validation": "pending"
+  },
+  "desktop_roots": [
+    {
+      "name": "gtk",
+      "version": "4.22.4",
+      "source_sha256": "51bd9f60c7d23a665a556c7364c21fb2e4e282566b3e7e092455e8f910330893"
+    },
+    {
+      "name": "libadwaita",
+      "version": "1.9.3",
+      "source_sha256": "fc59b37028fe0126308e7b805d2f6e4e80227080a1797715e5e6286b8111e723"
+    },
+    {
+      "name": "gdm",
+      "version": "50.2",
+      "source_sha256": "8a4679e47cddfe8b0a1bd9d3836042deb68fb3e1b0e7e62dfd0631dc5b6fc541"
+    },
+    {
+      "name": "mutter",
+      "version": "50.4",
+      "source_sha256": "273d33c875abcb4b6cbea3f4ec045d18155fbc510c3521fc7e47926371310988"
+    },
+    {
+      "name": "gnome-shell",
+      "version": "50.4",
+      "source_sha256": "c531939539db316a41aef23670370abd1330d3254f84bcb0f9f4dae5d6e362cf"
+    },
+    {
+      "name": "gnome-session",
+      "version": "50.1",
+      "source_sha256": "6289b6afa44d3e4c999ce5761ff8b2c10ba309f55f9425f2b13f98208c81f6fb"
+    },
+    {
+      "name": "gnome-control-center",
+      "version": "50.4",
+      "source_sha256": "5856c73999bedf45e74f73bac3d61e2b5ec1689f8bcf1943737baeee8204fb11"
+    },
+    {
+      "name": "gnome-settings-daemon",
+      "version": "50.1",
+      "source_sha256": "dd2c9730914f0ececa0229dd8a8c2940a57ddeb0802434558d4b164d79cfe05c"
+    },
+    {
+      "name": "gnome-keyring",
+      "version": "50.0",
+      "source_sha256": "cbd72062c53c9702bc2c4733991ad5f051ca682882b30905a2829bcf1a8ecc7c"
+    },
+    {
+      "name": "libsecret",
+      "version": "0.21.7",
+      "source_sha256": "6b452e4750590a2b5617adc40026f28d2f4903de15f1250e1d1c40bfd68ed55e"
+    },
+    {
+      "name": "nautilus",
+      "version": "50.2.2",
+      "source_sha256": "e1e285efddf42ed30dda5b29f7f8d242dab4bc1409a9054863b367bad4b34d5a"
+    },
+    {
+      "name": "xdg-desktop-portal-gnome",
+      "version": "50.0",
+      "source_sha256": "ceeef2fb68b34b3f66a3def0a332a22a70af272641fb6c50065b7a2fde3d5759"
+    },
+    {
+      "name": "gnome-text-editor",
+      "version": "50.1",
+      "source_sha256": "f68036b09d378faa883bfe936e479c6ff37027c2ffed101daf912df70c51d0e6"
+    },
+    {
+      "name": "gnome-terminal",
+      "version": "3.60.0",
+      "source_sha256": "6c006523d2c21282fd62c64fc44f63546aaa216e66eb439b8129af68db11df7c"
+    },
+    {
+      "name": "pipewire",
+      "version": "1.6.8",
+      "source_sha256": "efbaedf80450e5b08bb3196a4ca7ea17850d4a71ec1a8ae321e8937a7c95779e"
+    },
+    {
+      "name": "wireplumber",
+      "version": "0.5.15",
+      "source_sha256": "fb192f5d884155aedd6f01438e94cc12b263f482f0f39e5706c1e2cff9ad0c6d"
+    },
+    {
+      "name": "networkmanager",
+      "version": "1.58.1",
+      "source_sha256": "262864cfd198123d3e5dbe91937441b97ee9059d6d712e1a5bfbb1c54668d14d"
+    },
+    {
+      "name": "git",
+      "version": "2.55.0",
+      "source_sha256": "457fdb04dc8728e007d4688695e6912e6f680727920f2a40bf11eacc17505357"
+    },
+    {
+      "name": "firefox",
+      "version": "153.2.0esr",
+      "source_sha256": "c443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c"
+    }
+  ],
+  "native_ui": {
+    "toolkit": "GTK4.22.4/Libadwaita1.9.3",
+    "binding": "PyGObject3.56.3 / accepted Python3.14.10",
+    "broker": "GLib/GIO2.88.3 session D-Bus",
+    "executor": "independent GLib/GIO system D-Bus; no GTK/provider/plugin code",
+    "gobject_introspection": "1.86.0 build scanner; GLib owns core GIR/typelibs",
+    "brand": "assets/brand/gnome/package-map.json; preserve exact masters",
+    "terminal_customization": "lightweight shell/profile prompt, preserve user configuration",
+    "browser_branding": "source-build default branding until any official trademark use is qualified",
+    "editor_spelling": "libspelling0.4.11 / GtkSourceView5.20.0, selected Enchant/ICU backend"
+  },
+  "engine": {
+    "packages": {
+      "@earendil-works/pi-agent-core": "1.5.0",
+      "@earendil-works/pi-ai": "1.5.0"
+    },
+    "nodejs": "24.19.0",
+    "lock": "runtime/engine/package-lock.json",
+    "inventory": "docs/evidence/B01-engine-components.json",
+    "transport": "bounded version1 4-byte length/strict UTF8 JSON; runtime/broker/protocol.py and worker.schema.json",
+    "mandatory_hosted_provider": false,
+    "runtime_npm_required": false
+  },
+  "installer": {
+    "calamares": "3.4.3",
+    "qt": "6.11.2",
+    "yaml_cpp": "0.9.0",
+    "ecm_coreaddons": "6.29.0",
+    "python_binding": "unchanged bundled Pybind11 2.11.1",
+    "plan_body": "bounded schema-versioned JSON string across GlobalStorage; strict persisted manifest validation in B12",
+    "probe": "docs/evidence/B01-calamares-native-probe.json",
+    "final_modules_display_privileges": "B12 qualification pending; probe module omissions are not release policy"
+  },
+  "profiles": {
+    "schema": "config/phase2/profile.schema.json",
+    "preset": "config/phase2/profile/config.json",
+    "skill": "config/phase2/profile/skills/explain-system/SKILL.md",
+    "precedence": [
+      "defaults",
+      "selected-profile",
+      "bounded-task-options"
+    ],
+    "revision": "SHA256 sorted validated relative-path/hash manifest, excluding secrets/state",
+    "root_policy": "independent authenticated revocable owner grant; profile/skill/import cannot grant authority",
+    "ipc_xml": "runtime/broker/io.github.markaraujo.Toddy.Service1.xml",
+    "semantics": "docs/PHASE-2-INTERFACES.md"
+  },
+  "local_model_contract": "config/phase2/local-model.lock.json",
+  "image_assembly": {
+    "strategy": "verified native own-package archives plus explicit per-image allowlists; reuse accepted H13 payload/recipes, no dirty development-root copy as sole closure",
+    "foundation_payload": "preserve accepted required H13 tools; preserve QA/credential exclusions and native payload/runtime/ownership audits",
+    "offline_base_roots": [
+      "gnome-shell",
+      "gnome-session",
+      "gdm",
+      "gnome-control-center",
+      "gnome-settings-daemon",
+      "gnome-keyring",
+      "nautilus",
+      "gnome-terminal",
+      "gnome-text-editor",
+      "firefox",
+      "networkmanager",
+      "pipewire",
+      "wireplumber",
+      "xdg-desktop-portal-gnome",
+      "git",
+      "toddy-branding",
+      "toddy-assistant"
+    ],
+    "live_only_roots": [
+      "calamares",
+      "toddy-installer"
+    ],
+    "acquisition_only_roots": [
+      "nodejs",
+      "toddy-agent",
+      "toddy-executor",
+      "toddy-voice",
+      "toddy-integrations"
+    ],
+    "build_only_new_inputs": [
+      "gobject-introspection scanner SDK",
+      "extra-cmake-modules",
+      "Qt translation/build tools",
+      "any newly required compiler SDK"
+    ],
+    "forbidden_installed_inputs": [
+      "live autologin/accounts",
+      "builder/test credentials",
+      "private signing keys",
+      "source/build caches",
+      "copied machine identity",
+      "automatic provider connections or owner grants"
+    ],
+    "agent_backend_required_offline": false,
+    "weights_on_default_iso": false,
+    "transitive_runtime_closure": "resolve exact packages from required consumer features; stage/hash/ownership/dependency/ELF checks before assembly; candidates unavailable until qualified"
+  },
+  "installation_closure": {
+    "base": "deterministic offline native desktop/setup; no LLM required",
+    "accounts": "fresh target owner/UID/home and account authentication in dedicated B12 flow; never inherit live/builder identity",
+    "boot": "preserve accepted kernel/initramfs/media-integrity and BIOS/UEFI route; Phase2 installed boot/persistence still needs B12 proof",
+    "package_trust": "native Dpkg/APT own archives and authenticated repository metadata; no Ubuntu/Debian repositories or unverified vendor scripts",
+    "optional_extras": "unselected by default, save non-secret intent at end; review/acquire in installed session",
+    "provider_credentials": "installed account protected store only, separate from Linux account setup",
+    "permissions": "independent authenticated/revocable owner policy; no imported grants",
+    "recovery": "transaction IDs/postconditions, no unknown-write replay; actual cancellation/install/update/recovery proofs remain mandatory"
+  },
+  "optional_catalog": {
+    "source": "config/phase2/software-catalog.json",
+    "git": "base",
+    "docker": "optional rootless qualification candidate",
+    "opencode": "optional candidate",
+    "vscode": "optional exact vendor distribution/terms qualification candidate",
+    "mise": "excluded",
+    "native": "core/CLI packages",
+    "flatpak": "qualified per-user graphical extras only",
+    "unqualified_candidates": "unavailable; not all mandatory for G2",
+    "hardware": "source/redistribution/device/kernel-ABI evidence per pack; no Ubuntu repos, detection alone is not support"
+  },
+  "budgets": {
+    "build_vm_vcpus": 12,
+    "build_vm_ram_mib": 12288,
+    "generic_jobs_max": 8,
+    "node_jobs": 4,
+    "qt_cpp_jobs": 6,
+    "host_free_reserve_gib": 100,
+    "guest_free_preflight_min_gib": 16,
+    "reference_runtime_vcpus": 4,
+    "reference_runtime_ram_mib": 8192,
+    "gpu_passthrough": false,
+    "targets": {
+      "desktop_boot_to_login_seconds": 45,
+      "desktop_idle_used_mib": 2048,
+      "service_idle_rss_mib": 250,
+      "service_idle_cpu_core_percent_over_60_seconds": 1,
+      "warm_entry_ms": 300,
+      "simple_fixture_tool_seconds": 1,
+      "lookup_1000_records_ms": 200
+    },
+    "measurement_stages": "S01-A inventory/spike B01; desktop B02; service/entry B06; lookup B07; integrated B13",
+    "model_peak_rss_candidate_mib": 5120,
+    "native_pi_measurement": {
+      "target": "12vCPU12GiB build guest, not product reference",
+      "eleven_cases_seconds": 0.643,
+      "peak_child_rss_kib": 65912
+    },
+    "whole_snapshot_baseline_seconds": 18.714,
+    "no_reference_desktop_or_model_performance_claim": true
+  },
+  "next_slices": [
+    "B02 smallest native graphics/login package chain and real session, source-backed consumer dependencies only",
+    "B03 pinned worker/local inference/tool integration, no hosted credential prerequisite",
+    "B04 authenticated owner policy/privileged executor after B01; B05 waits for B03+B04",
+    "B12 native installer real disk/boot/accounts/trust/offline base and later acquisition",
+    "B13 integrated supported preview/ISO/source-license/recovery/release portal proof"
+  ],
+  "desktop_dependency_graph": "config/phase2/desktop-dependencies.json",
+  "plugin_contract": {
+    "launcher": "Bubblewrap selected; separately reviewed UID fallback only if same denial boundary proved",
+    "runtime_acceptance": "B10 dummy secret/file/egress denial; unknown code disabled until qualified",
+    "browser": "isolated Firefox-source profile; native launch/scoped accessibility read, Stop and untrusted-content handling; no owner browser credentials"
+  },
+  "installed_root_recipe": "docs/PHASE-2-ROOT-RECIPE.md"
+}

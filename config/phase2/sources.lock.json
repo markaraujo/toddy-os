@@ -11,7 +11,7 @@
       "upstream_sha256_url": "https://download.gnome.org/sources/glib/2.88/glib-2.88.3.sha256sum",
       "upstream_sha256_file_sha256": "bf9e330b47ec7f15640c07490fd808290d42fc2ab506825ebc7ef32a737d5910",
       "reference": "BLFS 13.1-systemd",
-      "status": "source_verified_not_built"
+      "status": "source_verified"
     },
     {
       "name": "gobject-introspection",
@@ -22,7 +22,7 @@
       "upstream_sha256_url": "https://download.gnome.org/sources/gobject-introspection/1.86/gobject-introspection-1.86.0.sha256sum",
       "upstream_sha256_file_sha256": "ddaa0e73ccc06e9558c5da1bc58655abc383d6c83b652bd42677054cc8978ad1",
       "reference": "BLFS 13.1-systemd",
-      "status": "source_verified_not_built"
+      "status": "source_verified"
     },
     {
       "name": "pygobject",
@@ -33,7 +33,7 @@
       "upstream_sha256_url": "https://download.gnome.org/sources/pygobject/3.56/pygobject-3.56.3.sha256sum",
       "upstream_sha256_file_sha256": "7331a37fb533bcc3c065a8c91c2889fd69b0c32aeb8827e0b550511253fb3e53",
       "reference": "BLFS 13.1-systemd",
-      "status": "source_verified_not_built"
+      "status": "source_verified"
     },
     {
       "name": "nodejs",
@@ -44,7 +44,7 @@
       "upstream_sha256_url": "https://nodejs.org/dist/v24.19.0/SHASUMS256.txt",
       "upstream_sha256_file_sha256": "be0629ee2bcd8e40bb856abdd3407f0762101b76bd60a36b8867f637733631c0",
       "reference": "BLFS 13.1-systemd",
-      "status": "source_verified_not_built"
+      "status": "source_verified"
     },
     {
       "name": "calamares",
@@ -54,7 +54,7 @@
       "sha256": "144cbbf6bdcebfb21685950db4f0777218519df095f62f4aa392f28348110d18",
       "upstream_sha256_url": "https://codeberg.org/Calamares/calamares/releases/tag/v3.4.3",
       "reference": "Official Codeberg Calamares v3.4.3 release; Qt6 baseline with project modules",
-      "status": "source_verified_not_built"
+      "status": "source_verified"
     },
     {
       "name": "qtbase",
@@ -63,7 +63,7 @@
       "url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qtbase-everywhere-src-6.11.2.tar.xz",
       "sha256": "5b2e00eccaf5a4d8c14134ffa0ea8dfd0a35ae1ffc7f8d87fa4305a1ed23cf22",
       "upstream_sha256_url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qtbase-everywhere-src-6.11.2.tar.xz.sha256",
-      "status": "source_verified_not_built",
+      "status": "source_verified",
       "reference": "BLFS 13.1-systemd Qt6; module-only B01 offscreen probe, not final desktop qualification",
       "upstream_sha256_file_sha256": "4d6fb6ed17d89b879abd45ee79f0db1b9ae5c9ef3dd6a50f35a2a69818ca083d"
     },
@@ -74,7 +74,7 @@
       "url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qtsvg-everywhere-src-6.11.2.tar.xz",
       "sha256": "d594337feca84c26fb67fe87b85e6a5c12fda404b611d905f9d138210c311876",
       "upstream_sha256_url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qtsvg-everywhere-src-6.11.2.tar.xz.sha256",
-      "status": "source_verified_not_built",
+      "status": "source_verified",
       "reference": "BLFS 13.1-systemd Qt6; module-only B01 offscreen probe, not final desktop qualification",
       "upstream_sha256_file_sha256": "67b8b52b6f63935a93c344b3377272eb1edcf57043eb4b5dbcc2fc33fb0c9ad8"
     },
@@ -85,7 +85,7 @@
       "url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qttools-everywhere-src-6.11.2.tar.xz",
       "sha256": "9ea75af35c512f7e09e61c8c3af3997f13b4d43bb099cf43fcec470126b4041e",
       "upstream_sha256_url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qttools-everywhere-src-6.11.2.tar.xz.sha256",
-      "status": "source_verified_not_built",
+      "status": "source_verified",
       "reference": "BLFS 13.1-systemd Qt6; module-only B01 offscreen probe, not final desktop qualification",
       "upstream_sha256_file_sha256": "c437876cf37fff074f6e04f8d1203d573f340ee0535af3497eed6cc31d98ee32"
     },
@@ -96,7 +96,7 @@
       "url": "https://download.kde.org/stable/frameworks/6.29/extra-cmake-modules-6.29.0.tar.xz",
       "sha256": "aaf2542edd5c5af9ea56a46468892d38a7978af65f0f3518379fa8ce66cad2b8",
       "reference": "BLFS13.1-systemd frozen framework version and MD5; official release asset SHA256 for yaml-cpp",
-      "status": "source_verified_not_built",
+      "status": "source_verified",
       "upstream_md5": "b3795f9b843a58746ca5461713c088d8"
     },
     {
@@ -106,7 +106,7 @@
       "url": "https://download.kde.org/stable/frameworks/6.29/kcoreaddons-6.29.0.tar.xz",
       "sha256": "771f7fee754a356fa284d0ad7b8b159b890cbbfac082e49ce441b43d4943027e",
       "reference": "BLFS13.1-systemd frozen framework version and MD5; official release asset SHA256 for yaml-cpp",
-      "status": "source_verified_not_built",
+      "status": "source_verified",
       "upstream_md5": "9513021c1335227ec38b7cc7b92152f2",
       "verified_mirror": "https://kde.c3sl.ufpr.br/stable/frameworks/6.29/kcoreaddons-6.29.0.tar.xz"
     },
@@ -117,8 +117,228 @@
       "url": "https://github.com/jbeder/yaml-cpp/releases/download/yaml-cpp-0.9.0/yaml-cpp-yaml-cpp-0.9.0.tar.gz",
       "sha256": "298593d9c440fd9034b8b193d96318b76d49bc97c6ceadb7b0836edf0b6d7539",
       "reference": "BLFS13.1-systemd frozen framework version and MD5; official release asset SHA256 for yaml-cpp",
-      "status": "source_verified_not_built",
+      "status": "source_verified",
       "upstream_sha256_url": "https://api.github.com/repos/jbeder/yaml-cpp/releases/283124253"
+    },
+    {
+      "name": "gtk",
+      "version": "4.22.4",
+      "filename": "gtk-4.22.4.tar.xz",
+      "url": "https://download.gnome.org/sources/gtk/4.22/gtk-4.22.4.tar.xz",
+      "sha256": "51bd9f60c7d23a665a556c7364c21fb2e4e282566b3e7e092455e8f910330893",
+      "upstream_sha256_url": "https://download.gnome.org/sources/gtk/4.22/gtk-4.22.4.sha256sum",
+      "upstream_sha256_file_sha256": "4017e43e4a4460307cab24b11a86b131de17619e99dbcc024ac85b036a2f5212",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "libadwaita",
+      "version": "1.9.3",
+      "filename": "libadwaita-1.9.3.tar.xz",
+      "url": "https://download.gnome.org/sources/libadwaita/1.9/libadwaita-1.9.3.tar.xz",
+      "sha256": "fc59b37028fe0126308e7b805d2f6e4e80227080a1797715e5e6286b8111e723",
+      "upstream_sha256_url": "https://download.gnome.org/sources/libadwaita/1.9/libadwaita-1.9.3.sha256sum",
+      "upstream_sha256_file_sha256": "5e20eefaef85d88ac82083f150a613e99a5767e735091ce646a8c42a56a58ddf",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "gdm",
+      "version": "50.2",
+      "filename": "gdm-50.2.tar.xz",
+      "url": "https://download.gnome.org/sources/gdm/50/gdm-50.2.tar.xz",
+      "sha256": "8a4679e47cddfe8b0a1bd9d3836042deb68fb3e1b0e7e62dfd0631dc5b6fc541",
+      "upstream_sha256_url": "https://download.gnome.org/sources/gdm/50/gdm-50.2.sha256sum",
+      "upstream_sha256_file_sha256": "a0710a7bbe52c117bfa45ea724c4c9242ff66d373c5d98c29adca5d1414fd72f",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "mutter",
+      "version": "50.4",
+      "filename": "mutter-50.4.tar.xz",
+      "url": "https://download.gnome.org/sources/mutter/50/mutter-50.4.tar.xz",
+      "sha256": "273d33c875abcb4b6cbea3f4ec045d18155fbc510c3521fc7e47926371310988",
+      "upstream_sha256_url": "https://download.gnome.org/sources/mutter/50/mutter-50.4.sha256sum",
+      "upstream_sha256_file_sha256": "70283b8cefa290ce9d22126613422e56bd9a47a0d215b95c70bc3f71d3c0b5d6",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "gnome-shell",
+      "version": "50.4",
+      "filename": "gnome-shell-50.4.tar.xz",
+      "url": "https://download.gnome.org/sources/gnome-shell/50/gnome-shell-50.4.tar.xz",
+      "sha256": "c531939539db316a41aef23670370abd1330d3254f84bcb0f9f4dae5d6e362cf",
+      "upstream_sha256_url": "https://download.gnome.org/sources/gnome-shell/50/gnome-shell-50.4.sha256sum",
+      "upstream_sha256_file_sha256": "97836574197071c8e68885c50107d7b3d36661a5ef50980ae4a0949166b61f2a",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "gnome-session",
+      "version": "50.1",
+      "filename": "gnome-session-50.1.tar.xz",
+      "url": "https://download.gnome.org/sources/gnome-session/50/gnome-session-50.1.tar.xz",
+      "sha256": "6289b6afa44d3e4c999ce5761ff8b2c10ba309f55f9425f2b13f98208c81f6fb",
+      "upstream_sha256_url": "https://download.gnome.org/sources/gnome-session/50/gnome-session-50.1.sha256sum",
+      "upstream_sha256_file_sha256": "7fbaeaaea3c6550fec5a001513ee0b292ce4c5f30fbb68080f6342f7952f9bfd",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "gnome-control-center",
+      "version": "50.4",
+      "filename": "gnome-control-center-50.4.tar.xz",
+      "url": "https://download.gnome.org/sources/gnome-control-center/50/gnome-control-center-50.4.tar.xz",
+      "sha256": "5856c73999bedf45e74f73bac3d61e2b5ec1689f8bcf1943737baeee8204fb11",
+      "upstream_sha256_url": "https://download.gnome.org/sources/gnome-control-center/50/gnome-control-center-50.4.sha256sum",
+      "upstream_sha256_file_sha256": "ab856cab36da5e798d6facc96354ed921a4b9a352eda46b21304eb2c2679908a",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "gnome-settings-daemon",
+      "version": "50.1",
+      "filename": "gnome-settings-daemon-50.1.tar.xz",
+      "url": "https://download.gnome.org/sources/gnome-settings-daemon/50/gnome-settings-daemon-50.1.tar.xz",
+      "sha256": "dd2c9730914f0ececa0229dd8a8c2940a57ddeb0802434558d4b164d79cfe05c",
+      "upstream_sha256_url": "https://download.gnome.org/sources/gnome-settings-daemon/50/gnome-settings-daemon-50.1.sha256sum",
+      "upstream_sha256_file_sha256": "2f12c736849cb23925c4984169f087cd27ec9311995c574e1b2dc987dc323a08",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "gnome-keyring",
+      "version": "50.0",
+      "filename": "gnome-keyring-50.0.tar.xz",
+      "url": "https://download.gnome.org/sources/gnome-keyring/50/gnome-keyring-50.0.tar.xz",
+      "sha256": "cbd72062c53c9702bc2c4733991ad5f051ca682882b30905a2829bcf1a8ecc7c",
+      "upstream_sha256_url": "https://download.gnome.org/sources/gnome-keyring/50/gnome-keyring-50.0.sha256sum",
+      "upstream_sha256_file_sha256": "359b1c8c744757def56d59106080ada7b4999feaae6ff3652c548614be84a651",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "libsecret",
+      "version": "0.21.7",
+      "filename": "libsecret-0.21.7.tar.xz",
+      "url": "https://download.gnome.org/sources/libsecret/0.21/libsecret-0.21.7.tar.xz",
+      "sha256": "6b452e4750590a2b5617adc40026f28d2f4903de15f1250e1d1c40bfd68ed55e",
+      "upstream_sha256_url": "https://download.gnome.org/sources/libsecret/0.21/libsecret-0.21.7.sha256sum",
+      "upstream_sha256_file_sha256": "6c8298ac5fe1cca434750fd886dc8579591264fb18139f0ba664cb1a7a48e5cb",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "nautilus",
+      "version": "50.2.2",
+      "filename": "nautilus-50.2.2.tar.xz",
+      "url": "https://download.gnome.org/sources/nautilus/50/nautilus-50.2.2.tar.xz",
+      "sha256": "e1e285efddf42ed30dda5b29f7f8d242dab4bc1409a9054863b367bad4b34d5a",
+      "upstream_sha256_url": "https://download.gnome.org/sources/nautilus/50/nautilus-50.2.2.sha256sum",
+      "upstream_sha256_file_sha256": "9ac95195ec06c471a47398fbb21897f8eb899e45a716fb53f76b91727f9ffa23",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "xdg-desktop-portal-gnome",
+      "version": "50.0",
+      "filename": "xdg-desktop-portal-gnome-50.0.tar.xz",
+      "url": "https://download.gnome.org/sources/xdg-desktop-portal-gnome/50/xdg-desktop-portal-gnome-50.0.tar.xz",
+      "sha256": "ceeef2fb68b34b3f66a3def0a332a22a70af272641fb6c50065b7a2fde3d5759",
+      "upstream_sha256_url": "https://download.gnome.org/sources/xdg-desktop-portal-gnome/50/xdg-desktop-portal-gnome-50.0.sha256sum",
+      "upstream_sha256_file_sha256": "0dc698bf5b071e9cfe102bc6e273f19b49fef6cbb09c3eac8af769edb186617e",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "gnome-text-editor",
+      "version": "50.1",
+      "filename": "gnome-text-editor-50.1.tar.xz",
+      "url": "https://download.gnome.org/sources/gnome-text-editor/50/gnome-text-editor-50.1.tar.xz",
+      "sha256": "f68036b09d378faa883bfe936e479c6ff37027c2ffed101daf912df70c51d0e6",
+      "upstream_sha256_url": "https://download.gnome.org/sources/gnome-text-editor/50/gnome-text-editor-50.1.sha256sum",
+      "upstream_sha256_file_sha256": "bc5ff8035a28a2c7e5f9cae66b5b406ba75bdc460b59673f605cd3067831f595",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    {
+      "name": "gnome-terminal",
+      "version": "3.60.0",
+      "filename": "gnome-terminal-3.60.0.tar.gz",
+      "url": "https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/3.60.0/gnome-terminal-3.60.0.tar.gz",
+      "upstream_md5": "fed6d01626aa09f320e806d4347d4fe6",
+      "reference": "BLFS13.1-systemd gnome/gnome-terminal.html",
+      "book_page_sha256": "88e7839f2585a1258fb78aad1be2d64fb0871e10349e41d8d101de76c870c3f9",
+      "status": "source_verified",
+      "sha256": "6c006523d2c21282fd62c64fc44f63546aaa216e66eb439b8129af68db11df7c"
+    },
+    {
+      "name": "pipewire",
+      "version": "1.6.8",
+      "filename": "pipewire-1.6.8.tar.bz2",
+      "url": "https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.6.8/pipewire-1.6.8.tar.bz2",
+      "upstream_md5": "9ae75812a76951c93210a26272c90ef3",
+      "reference": "BLFS13.1-systemd multimedia/pipewire.html",
+      "book_page_sha256": "ab94978ffb0a871dbfb13c4794a6ab649764e0e88b6daf84668dc5579043052d",
+      "status": "source_verified",
+      "sha256": "efbaedf80450e5b08bb3196a4ca7ea17850d4a71ec1a8ae321e8937a7c95779e"
+    },
+    {
+      "name": "wireplumber",
+      "version": "0.5.15",
+      "filename": "wireplumber-0.5.15.tar.bz2",
+      "url": "https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.5.15/wireplumber-0.5.15.tar.bz2",
+      "upstream_md5": "dba978afa67ba317d99ef03285ad4733",
+      "reference": "BLFS13.1-systemd multimedia/wireplumber.html",
+      "book_page_sha256": "2784d2c6bf1bd5e4e570458c51de13bef1be47f6b206919f11d0666a5e897049",
+      "status": "source_verified",
+      "sha256": "fb192f5d884155aedd6f01438e94cc12b263f482f0f39e5706c1e2cff9ad0c6d"
+    },
+    {
+      "name": "networkmanager",
+      "version": "1.58.1",
+      "filename": "NetworkManager-1.58.1.tar.xz",
+      "url": "https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/releases/1.58.1/downloads/NetworkManager-1.58.1.tar.xz",
+      "upstream_md5": "7b06b1dd7b56adffc1dbbf3d04bedf8e",
+      "reference": "BLFS13.1-systemd basicnet/networkmanager.html",
+      "book_page_sha256": "64c368839d1b9bfeced2e25dbad83cfea97ecca475432a37ba0ebf25a719a6d6",
+      "status": "source_verified",
+      "sha256": "262864cfd198123d3e5dbe91937441b97ee9059d6d712e1a5bfbb1c54668d14d"
+    },
+    {
+      "name": "git",
+      "version": "2.55.0",
+      "filename": "git-2.55.0.tar.xz",
+      "url": "https://www.kernel.org/pub/software/scm/git/git-2.55.0.tar.xz",
+      "upstream_md5": "758c02a1b621cc0868ee0a0d99573e6b",
+      "reference": "BLFS13.1-systemd general/git.html",
+      "book_page_sha256": "76af90f0c4ffe9d1a48a1ed0c0b38dbacd349af08eaa7b28e5c6d9bb00c83500",
+      "status": "source_verified",
+      "sha256": "457fdb04dc8728e007d4688695e6912e6f680727920f2a40bf11eacc17505357"
+    },
+    {
+      "name": "firefox",
+      "version": "153.2.0esr",
+      "filename": "firefox-153.2.0esr.source.tar.xz",
+      "url": "https://archive.mozilla.org/pub/firefox/releases/153.2.0esr/source/firefox-153.2.0esr.source.tar.xz",
+      "upstream_md5": "127f9c7fe72cf8cc9a47f35a051303f0",
+      "reference": "BLFS13.1-systemd xsoft/firefox.html",
+      "book_page_sha256": "e3fcd198bbfa3b8ecae24abce029c2a04809bc300c9dc295de92a9446889d0a8",
+      "status": "source_verified",
+      "sha256": "c443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c"
+    },
+    {
+      "name": "libspelling",
+      "version": "0.4.11",
+      "filename": "libspelling-0.4.11.tar.xz",
+      "url": "https://download.gnome.org/sources/libspelling/0.4/libspelling-0.4.11.tar.xz",
+      "sha256": "52e53ec3fba0f604cfd0931e26af7f7241a0d4f0208dd5574f43b3589f6d28b2",
+      "upstream_sha256_url": "https://download.gnome.org/sources/libspelling/0.4/libspelling-0.4.11.sha256sum",
+      "upstream_sha256_file_sha256": "e35efaa5d9ac10f63ebfc9fcdae9de5ebeb6cc60c84783ca03587deccf908f0e",
+      "reference": "GNOME Text Editor50.1 meson.build requires libspelling>=0.4; official libspelling0.4.11 source series candidate",
+      "status": "source_verified"
     }
   ]
 }

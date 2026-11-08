@@ -2477,6 +2477,126 @@
       "version": "3.4.3",
       "license": "GPL-3.0-or-later AND LicenseRef-Calamares-bundled-components",
       "evidence": "Source per-file SPDX, LICENSES and bundled Pybind11 BSD-3-Clause; retain notices. Source verified/embedding fixture passed, full installer not yet installed."
+    },
+    {
+      "name": "gtk",
+      "version": "4.22.4",
+      "license": "LicenseRef-gtk-per-file",
+      "evidence": "Primary authenticated root notices: LGPL2 primary library text. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "libadwaita",
+      "version": "1.9.3",
+      "license": "LicenseRef-libadwaita-per-file",
+      "evidence": "Primary authenticated root notices: LGPL2.1. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "gdm",
+      "version": "50.2",
+      "license": "LicenseRef-gdm-per-file",
+      "evidence": "Primary authenticated root notices: GPL2. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "mutter",
+      "version": "50.4",
+      "license": "LicenseRef-mutter-per-file",
+      "evidence": "Primary authenticated root notices: GPL2. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "gnome-shell",
+      "version": "50.4",
+      "license": "LicenseRef-gnome-shell-per-file",
+      "evidence": "Primary authenticated root notices: GPL2. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "gnome-session",
+      "version": "50.1",
+      "license": "LicenseRef-gnome-session-per-file",
+      "evidence": "Primary authenticated root notices: GPL2. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "gnome-control-center",
+      "version": "50.4",
+      "license": "LicenseRef-gnome-control-center-per-file",
+      "evidence": "Primary authenticated root notices: GPL2. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "gnome-settings-daemon",
+      "version": "50.1",
+      "license": "LicenseRef-gnome-settings-daemon-per-file",
+      "evidence": "Primary authenticated root notices: GPL2 and LGPL2.1. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "gnome-keyring",
+      "version": "50.0",
+      "license": "LicenseRef-gnome-keyring-per-file",
+      "evidence": "Primary authenticated root notices: GPL2 and LGPL2.1. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "libsecret",
+      "version": "0.21.7",
+      "license": "LicenseRef-libsecret-per-file",
+      "evidence": "Primary authenticated root notices: LGPL2.1, separately licensed tests. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "nautilus",
+      "version": "50.2.2",
+      "license": "LicenseRef-nautilus-per-file",
+      "evidence": "Primary authenticated root notices: GPL3. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "xdg-desktop-portal-gnome",
+      "version": "50.0",
+      "license": "LicenseRef-xdg-desktop-portal-gnome-per-file",
+      "evidence": "Primary authenticated root notices: LGPL2.1. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "gnome-text-editor",
+      "version": "50.1",
+      "license": "LicenseRef-gnome-text-editor-per-file",
+      "evidence": "Primary authenticated root notices: GPL3. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "gnome-terminal",
+      "version": "3.60.0",
+      "license": "LicenseRef-gnome-terminal-per-file",
+      "evidence": "Primary authenticated root notices: GPL3 and GFDL1.3 documentation. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "pipewire",
+      "version": "1.6.8",
+      "license": "LicenseRef-pipewire-per-file",
+      "evidence": "Primary authenticated root notices: MIT with explicit LGPL ALSA SPA/GPL2 JACK-server exceptions. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "wireplumber",
+      "version": "0.5.15",
+      "license": "LicenseRef-wireplumber-per-file",
+      "evidence": "Primary authenticated root notices: MIT. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "networkmanager",
+      "version": "1.58.1",
+      "license": "LicenseRef-networkmanager-per-file",
+      "evidence": "Primary authenticated root notices: GPL2, LGPL2.1 and GFDL1.1 documentation. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "git",
+      "version": "2.55.0",
+      "license": "LicenseRef-git-per-file",
+      "evidence": "Primary authenticated root notices: GPL2 with exact upstream migration/exception wording. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "firefox",
+      "version": "153.2.0esr",
+      "license": "LicenseRef-firefox-per-file",
+      "evidence": "Primary authenticated root notices: MPL2 and bundled terms in toolkit/content/license.html; root LICENSE explicitly withholds trademark rights. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+    },
+    {
+      "name": "libspelling",
+      "version": "0.4.11",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Authenticated source COPYING LGPL2.1, per-file source conditions; docs/evidence/B01-desktop-root-notices.json. Native editor dependency candidate, not built."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

@@ -3,8 +3,8 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-07",
   "bootstrap": "ready_for_development",
-  "current_scope": "Owner-authorized isolated Phase2 implementation active. B01 verified native engine/GIO and Calamares no-write feasibility, including typed JSON and real JobResult. Final source/root/budget/interface freeze remains before B01 acceptance. Native GNOME, B02–B13/G2, installable Phase2 ISO and physical validation remain pending.",
-  "next_story": "B01",
+  "current_scope": "B01 architecture/native feasibility accepted with scoped evidence: pinned roots/licenses/ABI, native Pi/GIO/Calamares probes, image/account/boot/trust and profile/model/resource contracts. Phase2 is 5% by completed story weight. Next B03 implements provider/local inference; B02–B13/G2, native desktop, Phase2 installed ISO and physical validation remain pending.",
+  "next_story": "B03",
   "gates": {
     "G1": "passed",
     "G2": "pending"
@@ -266,7 +266,7 @@
       "phase": "agentic",
       "title": "Freeze the minimal Toddy architecture and delivery slices",
       "weight": 5,
-      "status": "in_progress",
+      "status": "completed",
       "depends_on": [
         "H13"
       ],
@@ -278,7 +278,12 @@
         "Document the customizable profile/config/skill interface, precedence, task revision and independent policy boundaries before UI/service implementation.",
         "Freeze the UI/engine bridge, early installer/package/image feasibility and one CPU-model contract, with build-versus-runtime budgets and no-write spike evidence."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/B01-acceptance.md",
+        "docs/evidence/B01.md",
+        "docs/evidence/B01-native-packages.json",
+        "docs/evidence/B01-calamares-native-probe.json"
+      ]
     },
     {
       "id": "B02",
@@ -528,23 +533,5 @@
     "phase_2_approved": true,
     "decision": "docs/adr/0063-owner-review-after-h13.md",
     "approval_evidence": "docs/adr/0113-owner-authorizes-phase2-implementation.md"
-  },
-  "active_work": {
-    "story": "B01",
-    "verified": [
-      "Read-only-backed KVM clone, native GLib package and 14 focused GObject/GDBus cases passed.",
-      "Native Node installed and corrected postcheck passed without replay; original failed context record preserved.",
-      "11 native Pi tool/cancel/disconnect/protocol cases passed; descriptor-safe compiler and parent-lock proof passed.",
-      "Native GI/GLib core metadata/PyGObject installed; installed GIO async/actual peer/signal/FD fixture passed with no namespace children.",
-      "Calamares3.4.3 bundled Pybind11 2.11.1 compiled/linked/embedded native Python3.14.10 unchanged.",
-      "Native QtBase6.11.2 source/stage/package and offscreen Widgets/TLS/DBus/Concurrent consumer passed; visual/display/font integration pending.",
-      "Calamares3.4.3 source/stage/startup and actual PythonJob/JobResult synthetic plan with nine negative cases passed; typed JSON Boolean boundary verified."
-    ],
-    "running": "Final B01 architecture/root/license/budget freeze using verified probes and exact source identities; no guest writer active.",
-    "remaining": [
-      "Final source/license/root/ABI and resource contracts; assess all B01 criteria before completion."
-    ],
-    "verified_at": "2026-11-07T23:59:15.867467+00:00",
-    "evidence": "docs/evidence/B01.md"
   }
 }

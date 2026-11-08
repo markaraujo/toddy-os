@@ -1,0 +1,305 @@
+{
+  "components": [
+    {
+      "name": "gtk",
+      "version": "4.22.4",
+      "archive_sha256": "51bd9f60c7d23a665a556c7364c21fb2e4e282566b3e7e092455e8f910330893",
+      "notices": [
+        {
+          "path": "gtk-4.22.4/COPYING",
+          "sha256": "b7993225104d90ddd8024fd838faf300bea5e83d91203eab98e29512acebd69c",
+          "bytes": 25383
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "libadwaita",
+      "version": "1.9.3",
+      "archive_sha256": "fc59b37028fe0126308e7b805d2f6e4e80227080a1797715e5e6286b8111e723",
+      "notices": [
+        {
+          "path": "libadwaita-1.9.3/COPYING",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "bytes": 26530
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "gdm",
+      "version": "50.2",
+      "archive_sha256": "8a4679e47cddfe8b0a1bd9d3836042deb68fb3e1b0e7e62dfd0631dc5b6fc541",
+      "notices": [
+        {
+          "path": "gdm-50.2/COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "bytes": 18092
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "mutter",
+      "version": "50.4",
+      "archive_sha256": "273d33c875abcb4b6cbea3f4ec045d18155fbc510c3521fc7e47926371310988",
+      "notices": [
+        {
+          "path": "mutter-50.4/COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "bytes": 18092
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "gnome-shell",
+      "version": "50.4",
+      "archive_sha256": "c531939539db316a41aef23670370abd1330d3254f84bcb0f9f4dae5d6e362cf",
+      "notices": [
+        {
+          "path": "gnome-shell-50.4/COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "bytes": 18092
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "gnome-session",
+      "version": "50.1",
+      "archive_sha256": "6289b6afa44d3e4c999ce5761ff8b2c10ba309f55f9425f2b13f98208c81f6fb",
+      "notices": [
+        {
+          "path": "gnome-session-50.1/COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "bytes": 18092
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "gnome-control-center",
+      "version": "50.4",
+      "archive_sha256": "5856c73999bedf45e74f73bac3d61e2b5ec1689f8bcf1943737baeee8204fb11",
+      "notices": [
+        {
+          "path": "gnome-control-center-50.4/COPYING",
+          "sha256": "640d90f6ee401241ff62834d0d1b33f83049e99b8bfdfa04ed1b0a1635dde3e7",
+          "bytes": 18093
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "gnome-settings-daemon",
+      "version": "50.1",
+      "archive_sha256": "dd2c9730914f0ececa0229dd8a8c2940a57ddeb0802434558d4b164d79cfe05c",
+      "notices": [
+        {
+          "path": "gnome-settings-daemon-50.1/COPYING",
+          "sha256": "231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c",
+          "bytes": 18002
+        },
+        {
+          "path": "gnome-settings-daemon-50.1/COPYING.LIB",
+          "sha256": "5df07007198989c622f5d41de8d703e7bef3d0e79d62e24332ee739a452af62a",
+          "bytes": 26436
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "gnome-keyring",
+      "version": "50.0",
+      "archive_sha256": "cbd72062c53c9702bc2c4733991ad5f051ca682882b30905a2829bcf1a8ecc7c",
+      "notices": [
+        {
+          "path": "gnome-keyring-50.0/COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "bytes": 18092
+        },
+        {
+          "path": "gnome-keyring-50.0/COPYING.LIB",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "bytes": 26530
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "libsecret",
+      "version": "0.21.7",
+      "archive_sha256": "6b452e4750590a2b5617adc40026f28d2f4903de15f1250e1d1c40bfd68ed55e",
+      "notices": [
+        {
+          "path": "libsecret-0.21.7/COPYING",
+          "sha256": "a1a33180d02960ab1c5de36cf20b1a2f0fe9888d83826ad263da5db52f1b183b",
+          "bytes": 26529
+        },
+        {
+          "path": "libsecret-0.21.7/COPYING.TESTS",
+          "sha256": "7332b58f6bfc9ef4c15ecd5f9e41e36f5682af71bc17719420e5c02055d77309",
+          "bytes": 31602
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "nautilus",
+      "version": "50.2.2",
+      "archive_sha256": "e1e285efddf42ed30dda5b29f7f8d242dab4bc1409a9054863b367bad4b34d5a",
+      "notices": [
+        {
+          "path": "nautilus-50.2.2/LICENSE",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "bytes": 35147
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "xdg-desktop-portal-gnome",
+      "version": "50.0",
+      "archive_sha256": "ceeef2fb68b34b3f66a3def0a332a22a70af272641fb6c50065b7a2fde3d5759",
+      "notices": [
+        {
+          "path": "xdg-desktop-portal-gnome-50.0/COPYING",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "bytes": 26530
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "gnome-text-editor",
+      "version": "50.1",
+      "archive_sha256": "f68036b09d378faa883bfe936e479c6ff37027c2ffed101daf912df70c51d0e6",
+      "notices": [
+        {
+          "path": "gnome-text-editor-50.1/COPYING",
+          "sha256": "0ae0485a5bd37a63e63603596417e4eb0e653334fa6c7f932ca3a0e85d4af227",
+          "bytes": 35148
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "gnome-terminal",
+      "version": "3.60.0",
+      "archive_sha256": "6c006523d2c21282fd62c64fc44f63546aaa216e66eb439b8129af68db11df7c",
+      "notices": [
+        {
+          "path": "gnome-terminal-3.60.0/COPYING",
+          "sha256": "fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7",
+          "bytes": 35068
+        },
+        {
+          "path": "gnome-terminal-3.60.0/COPYING.GFDL",
+          "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4",
+          "bytes": 22955
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "pipewire",
+      "version": "1.6.8",
+      "archive_sha256": "efbaedf80450e5b08bb3196a4ca7ea17850d4a71ec1a8ae321e8937a7c95779e",
+      "notices": [
+        {
+          "path": "pipewire-1.6.8/COPYING",
+          "sha256": "8909c319a7e27dbb33a15b9035f89ab3b7b2f6a12f8bcddc755206a8db1ada44",
+          "bytes": 1218
+        },
+        {
+          "path": "pipewire-1.6.8/LICENSE",
+          "sha256": "be4be5d77424833edf31f53fc1f1cecb6996b9e2d747d9e6fb8f878362ebc92b",
+          "bytes": 349
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "wireplumber",
+      "version": "0.5.15",
+      "archive_sha256": "fb192f5d884155aedd6f01438e94cc12b263f482f0f39e5706c1e2cff9ad0c6d",
+      "notices": [
+        {
+          "path": "wireplumber-0.5.15/LICENSE",
+          "sha256": "ff2eb9af5b05d92ac3a38cffcad27582ef555a31ff1781e1c1d4e087f77c9c81",
+          "bytes": 1094
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "networkmanager",
+      "version": "1.58.1",
+      "archive_sha256": "262864cfd198123d3e5dbe91937441b97ee9059d6d712e1a5bfbb1c54668d14d",
+      "notices": [
+        {
+          "path": "NetworkManager-1.58.1/COPYING",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+          "bytes": 18092
+        },
+        {
+          "path": "NetworkManager-1.58.1/COPYING.GFDL",
+          "sha256": "d054d9104adacf508dcfec7cd139cd58070e845215b09c1801c3dbb0e1f0c375",
+          "bytes": 18139
+        },
+        {
+          "path": "NetworkManager-1.58.1/COPYING.LGPL",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "bytes": 26530
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "git",
+      "version": "2.55.0",
+      "archive_sha256": "457fdb04dc8728e007d4688695e6912e6f680727920f2a40bf11eacc17505357",
+      "notices": [
+        {
+          "path": "git-2.55.0/COPYING",
+          "sha256": "5b2198d1645f767585e8a88ac0499b04472164c0d2da22e75ecf97ef443ab32e",
+          "bytes": 18765
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "firefox",
+      "version": "153.2.0esr",
+      "archive_sha256": "c443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c",
+      "notices": [
+        {
+          "path": "firefox-153.2.0/LICENSE",
+          "sha256": "a799adf18bfb1911f16086dc0e2a6d1cd0e31272f47e7ee6841b465b74d249de",
+          "bytes": 389
+        },
+        {
+          "path": "firefox-153.2.0/toolkit/content/license.html",
+          "sha256": "d06106956e51196b2780a19df5d40294529b3fa08d8cea0b87172cf825c50cce",
+          "bytes": 341733,
+          "scope": "Primary license index referenced by root LICENSE; includes MPL and bundled terms"
+        }
+      ],
+      "scope": "Primary root/LICENSES notices; per-file and bundled source conditions remain applicable; native package collection mandatory"
+    },
+    {
+      "name": "libspelling",
+      "version": "0.4.11",
+      "archive_sha256": "52e53ec3fba0f604cfd0931e26af7f7241a0d4f0208dd5574f43b3589f6d28b2",
+      "notices": [
+        {
+          "path": "libspelling-0.4.11/COPYING",
+          "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+          "bytes": 26530
+        }
+      ],
+      "scope": "Primary LGPL2.1 notice; per-file source/bundled terms retained at native package qualification"
+    }
+  ]
+}
