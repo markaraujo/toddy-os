@@ -1,0 +1,38 @@
+{
+  "scope": "native GI metadata load/record lookup only; no scanner/GLib rebuild or Python Cairo foreign-converter acceptance",
+  "step": {
+    "step": "b02-gi-desktop-types-install",
+    "started": "2026-11-08T03:57:19.824764+00:00",
+    "finished": "2026-11-08T03:57:30.501754+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 25,
+    "log_sha256": "3ec59d6b5c86bc36fdfdf71fe47ef56c41a77305138e334cf8c0f1062e7bcc3b"
+  },
+  "success_record_sha256": "f021e1a28ccf6c302aa62426f6c17a32efb5024efec4df96c1e375fb71a371c5",
+  "package": {
+    "name": "gi-desktop-types",
+    "version": "1.86.0-1+toddy1",
+    "archive_sha256": "c42fe21f39b8cc25071cddf3571ab846232a7cc9da24767240db0e1b5d2a7a55",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-gi-desktop-types-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 9.096,
+        "entries": 93820,
+        "regular_files": 81107,
+        "regular_bytes": 4921591303
+      },
+      {
+        "seconds": 8.971,
+        "entries": 93842,
+        "regular_files": 81127,
+        "regular_bytes": 4921881930
+      }
+    ],
+    "total_seconds": 20.418
+  }
+}

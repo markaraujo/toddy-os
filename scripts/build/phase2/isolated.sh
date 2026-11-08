@@ -59,6 +59,12 @@ readonly_bind() {
 }
 readonly_bind /mnt/lfs/usr "$root/usr"
 readonly_bind /mnt/lfs/lib64 "$root/lib64"
+# Font-dependent native tests use the installed system configuration. Expose only
+# this declared nonsecret dependency, read-only, never the guest's general /etc.
+if [[ -d /mnt/lfs/etc/fonts && ! -L /mnt/lfs/etc/fonts ]]; then
+    mkdir "$root/etc/fonts"
+    readonly_bind /mnt/lfs/etc/fonts "$root/etc/fonts"
+fi
 readonly_bind "$TODDY_INPUT" "$root/src"
 for name in ld.so.cache ld.so.conf; do
     if [[ -f /mnt/lfs/etc/$name ]]; then cp /mnt/lfs/etc/$name "$root/etc/$name"; fi

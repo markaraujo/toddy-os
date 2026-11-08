@@ -21,8 +21,9 @@ Planning, contract/catalog inputs and brand/UI concepts are prepared in the repo
 page includes selectable desktop/assistant/task/installer concepts. See
 [brand evidence](evidence/navy-brand-preview.md) and
 [Pages evidence](evidence/navy-pages-preview.md). Final review is complete; guest continuation is now explicitly authorized and recorded
-in [ADR-0113](adr/0113-owner-authorizes-phase2-implementation.md). Begin B01 clone inventory; do not reopen general planning on resume.
-B01 is starting; repository design preparation does not satisfy
+in [ADR-0113](adr/0113-owner-authorizes-phase2-implementation.md). B01 and B03 are completed; B02 is building native desktop prerequisites. B04 is
+blocked on the actual logind/NM/polkit runtime, with headless executor proofs retained.
+Follow the current checkpoint; do not reopen general planning on resume. repository design preparation does not satisfy
 B11 runtime acceptance. G1 is passed, G2 pending, physical hardware unverified.
 Do not interpret a screenshot mockup or an optional package candidate as a working
 OS feature. Historical implementation/recovery notes below do not override the

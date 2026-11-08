@@ -1,0 +1,35 @@
+{
+  "job": "cairo-1",
+  "exit": 0,
+  "scope": "native image/font/GObject library source and stage; full visual suite not qualified",
+  "source": {
+    "source_sha256": "445ed8208a6e4823de1226a74ca319d3600e83f6369f99b14265006599c32ccb",
+    "reference": "BLFS13.1-systemd x/cairo.html",
+    "book_page_sha256": "33e705dcf1e78c6f703a1cb37180eea8cd9bd411254d4c1997a0d6c767f77157",
+    "source_patches": [],
+    "recipe_sha256": "2304a10bffaa33c5977e4b7cdad68c06f9b5a15e22356d557ea957f04caea18b"
+  },
+  "tests": {
+    "full_upstream_suite": "not qualified; BLFS states not working",
+    "registered_driver_failures": 0,
+    "registered_drivers": [
+      {
+        "name": "fast+lint - cairo:check-headers.sh",
+        "exit": 0,
+        "seconds": 0.009522438049316406
+      },
+      {
+        "name": "fast+lint - cairo:check-preprocessor-syntax.sh",
+        "exit": 0,
+        "seconds": 0.3555164337158203
+      },
+      {
+        "name": "fast+lint - cairo:check-doc-syntax.sh",
+        "exit": 0,
+        "seconds": 0.48192811012268066
+      }
+    ]
+  },
+  "compiler_log_sha256": "b7d472e6fb78d8aeceb41404f5cd8e90ce0d6130b8d02bac4defd68239dc4785",
+  "stage_manifest_sha256": "d0d9ac4374614e5f05edf041d8dcdf1e49fea99fabb25e5c970c96de76bd8bcc"
+}

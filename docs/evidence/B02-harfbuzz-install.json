@@ -1,0 +1,70 @@
+{
+  "scope": "native FT/TTF glyphs/indices/advances and real Python GI buffer calls; optional7 FontTools repack drivers unavailable, no native UI acceptance",
+  "original_install": {
+    "step": "b02-harfbuzz-install",
+    "started": "2026-11-08T04:00:09.898784+00:00",
+    "finished": "2026-11-08T04:00:24.807333+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "changed_paths": 216,
+    "log_sha256": "9ff41e608c2aec113563005f9c79656f5f0e627cce906357f5a88430888ce44b"
+  },
+  "postcheck": {
+    "step": "b02-harfbuzz-postcheck",
+    "started": "2026-11-08T04:02:33.576157+00:00",
+    "finished": "2026-11-08T04:02:43.461602+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 0,
+    "log_sha256": "79a16aa05c67744c66ef8c1a4e9b117a0fc33a0d59ff0ffd8082020d056d6260"
+  },
+  "original_failed_record_sha256": "e051c325c511ee9ee85d3aa9d6765a627a2aa6f158227a244880d0a2beb64f2d",
+  "success_record_sha256": "3ff05e6e57d6d9dcfffbed7d34a49b41fa0dfffa13476be7ddf211298f2a2dc5",
+  "reconciliation": "Original package installed; erroneous GI version_string expectation replaced with actual upstream generated buffer_create/allocation_successful/get_length. C version check retained; no reinstall.",
+  "package": {
+    "name": "harfbuzz",
+    "version": "14.3.1-1+toddy1",
+    "archive_sha256": "21428e45e4d84ee41760caa25b3e67a671c98a8f31ecd105a3c81b72b79cd66b",
+    "installed": true
+  },
+  "full_root_timing": {
+    "original": {
+      "step": "b02-harfbuzz-install",
+      "scope": "same full-root snapshot function, timing only",
+      "snapshots": [
+        {
+          "seconds": 9.046,
+          "entries": 93842,
+          "regular_files": 81127,
+          "regular_bytes": 4921881930
+        },
+        {
+          "seconds": 8.941,
+          "entries": 94053,
+          "regular_files": 81328,
+          "regular_bytes": 4929046177
+        }
+      ],
+      "total_seconds": 24.583
+    },
+    "verify_only": {
+      "step": "b02-harfbuzz-postcheck",
+      "scope": "same full-root snapshot function, timing only",
+      "snapshots": [
+        {
+          "seconds": 9.039,
+          "entries": 94053,
+          "regular_files": 81328,
+          "regular_bytes": 4929046177
+        },
+        {
+          "seconds": 8.945,
+          "entries": 94053,
+          "regular_files": 81328,
+          "regular_bytes": 4929046177
+        }
+      ],
+      "total_seconds": 19.565
+    }
+  }
+}

@@ -1,0 +1,1352 @@
+{
+  "job": "harfbuzz-resume-2",
+  "exit": 0,
+  "original_job": {
+    "name": "harfbuzz-1",
+    "exit": 1,
+    "cause": "missing freetype2 GIR dependency; preserved"
+  },
+  "scope": "native selected shaping/subset/GLib/GObject/FT/GI; seven optional Python-oracle repack drivers unavailable without FontTools; no native UI acceptance",
+  "source": {
+    "source_sha256": "9dae9538aae2ffdf70cec31f2c27bf68e2aaeeae3112688467697d5faf6194f7",
+    "reference": "BLFS13.1-systemd general/harfbuzz.html",
+    "book_page_sha256": "b35ee7da5eaf4542c853e30440446f6b355dbd145ae1a0d2725cf19d90ebd306",
+    "source_patches": [],
+    "recipe_sha256": "7a1b63c17ce6659043e0fc96a45c22e5d9a7123dabdbae9c317e00af4a0ba0c4"
+  },
+  "outer_tests_passed": 211,
+  "outer_tests_skipped": 7,
+  "tests": [
+    {
+      "name": "src - harfbuzz:test-algs",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013763189315795898
+    },
+    {
+      "name": "src - harfbuzz:test-array",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011389970779418945
+    },
+    {
+      "name": "src - harfbuzz:test-bimap",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.009035110473632812
+    },
+    {
+      "name": "src - harfbuzz:test-cff",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.006833314895629883
+    },
+    {
+      "name": "src - harfbuzz:test-classdef-graph",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011090993881225586
+    },
+    {
+      "name": "src - harfbuzz:test-decycler",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.00911402702331543
+    },
+    {
+      "name": "src - harfbuzz:test-iter",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.006718873977661133
+    },
+    {
+      "name": "src - harfbuzz:test-geometry",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012249231338500977
+    },
+    {
+      "name": "src - harfbuzz:test-machinery",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011856794357299805
+    },
+    {
+      "name": "src - harfbuzz:test-map",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.009926319122314453
+    },
+    {
+      "name": "src - harfbuzz:test-multimap",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.007492542266845703
+    },
+    {
+      "name": "src - harfbuzz:test-number",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011456727981567383
+    },
+    {
+      "name": "src - harfbuzz:test-ot-tag",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011074542999267578
+    },
+    {
+      "name": "src - harfbuzz:test-set",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.008957862854003906
+    },
+    {
+      "name": "src - harfbuzz:test-serialize",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.006659269332885742
+    },
+    {
+      "name": "src - harfbuzz:test-vector",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011691808700561523
+    },
+    {
+      "name": "src - harfbuzz:test-instancer-solver",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.008931398391723633
+    },
+    {
+      "name": "src - harfbuzz:test-priority-queue",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.009111404418945312
+    },
+    {
+      "name": "src - harfbuzz:test-tuple-varstore",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.009392023086547852
+    },
+    {
+      "name": "src - harfbuzz:test-unicode-ranges",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.0068705081939697266
+    },
+    {
+      "name": "src - harfbuzz:test-repacker",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04295706748962402
+    },
+    {
+      "name": "src - harfbuzz:check-externs",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.0262758731842041
+    },
+    {
+      "name": "src - harfbuzz:check-c-linkage-decls",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.030594587326049805
+    },
+    {
+      "name": "src - harfbuzz:test-item-varstore",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04822850227355957
+    },
+    {
+      "name": "src - harfbuzz:check-header-guards",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.042066335678100586
+    },
+    {
+      "name": "src - harfbuzz:check-includes",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04366469383239746
+    },
+    {
+      "name": "harfbuzz:check-release-notes",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.015525102615356445
+    },
+    {
+      "name": "src - harfbuzz:check-symbols",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05437421798706055
+    },
+    {
+      "name": "api - harfbuzz:test-aat-layout",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.007984638214111328
+    },
+    {
+      "name": "src - harfbuzz:check-static-inits",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.06673622131347656
+    },
+    {
+      "name": "api - harfbuzz:test-baseline",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.010271787643432617
+    },
+    {
+      "name": "api - harfbuzz:test-base-minmax",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.00929117202758789
+    },
+    {
+      "name": "api - harfbuzz:test-be-glyph-advance",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.009819984436035156
+    },
+    {
+      "name": "api - harfbuzz:test-be-num-glyphs",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.00951528549194336
+    },
+    {
+      "name": "api - harfbuzz:test-blob",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01048135757446289
+    },
+    {
+      "name": "api - harfbuzz:test-buffer",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01083517074584961
+    },
+    {
+      "name": "api - harfbuzz:test-c",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012125253677368164
+    },
+    {
+      "name": "src - harfbuzz:check-libstdc++",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.06188201904296875
+    },
+    {
+      "name": "api - harfbuzz:test-collect-unicodes",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013949394226074219
+    },
+    {
+      "name": "api - harfbuzz:test-cplusplus",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012815475463867188
+    },
+    {
+      "name": "api - harfbuzz:test-common",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012533187866210938
+    },
+    {
+      "name": "api - harfbuzz:test-draw",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01063990592956543
+    },
+    {
+      "name": "api - harfbuzz:test-draw-varc",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012893438339233398
+    },
+    {
+      "name": "api - harfbuzz:test-extents",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01341700553894043
+    },
+    {
+      "name": "api - harfbuzz:test-face",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013217449188232422
+    },
+    {
+      "name": "api - harfbuzz:test-font",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011168718338012695
+    },
+    {
+      "name": "api - harfbuzz:test-font-scale",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013530254364013672
+    },
+    {
+      "name": "api - harfbuzz:test-get-table-tags",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013100385665893555
+    },
+    {
+      "name": "api - harfbuzz:test-glyph-names",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013040781021118164
+    },
+    {
+      "name": "api+subset - harfbuzz:test-instance-cff2",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011288166046142578
+    },
+    {
+      "name": "api - harfbuzz:test-map",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013026237487792969
+    },
+    {
+      "name": "api - harfbuzz:test-object",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013034582138061523
+    },
+    {
+      "name": "api - harfbuzz:test-ot-alternates",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012587785720825195
+    },
+    {
+      "name": "api - harfbuzz:test-ot-collect-glyphs",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01067495346069336
+    },
+    {
+      "name": "api - harfbuzz:test-ot-color",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012963056564331055
+    },
+    {
+      "name": "api - harfbuzz:test-ot-face",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01293492317199707
+    },
+    {
+      "name": "api - harfbuzz:test-ot-fetch",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012764692306518555
+    },
+    {
+      "name": "api - harfbuzz:test-ot-glyphname",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.010895729064941406
+    },
+    {
+      "name": "api - harfbuzz:test-ot-layout",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012915611267089844
+    },
+    {
+      "name": "api - harfbuzz:test-ot-ligature-carets",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012882471084594727
+    },
+    {
+      "name": "api - harfbuzz:test-ot-name",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012251853942871094
+    },
+    {
+      "name": "api - harfbuzz:test-ot-nullable-output",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01038360595703125
+    },
+    {
+      "name": "api - harfbuzz:test-ot-math",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01254582405090332
+    },
+    {
+      "name": "api - harfbuzz:test-ot-meta",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012537717819213867
+    },
+    {
+      "name": "api - harfbuzz:test-ot-metrics",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013010740280151367
+    },
+    {
+      "name": "api - harfbuzz:test-ot-tag",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013718605041503906
+    },
+    {
+      "name": "api - harfbuzz:test-ot-extents-cff",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.014063358306884766
+    },
+    {
+      "name": "api - harfbuzz:test-ot-metrics-tt-var",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013714313507080078
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-repacker",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011158227920532227
+    },
+    {
+      "name": "api - harfbuzz:test-set",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011881113052368164
+    },
+    {
+      "name": "api - harfbuzz:test-shape",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01163339614868164
+    },
+    {
+      "name": "api - harfbuzz:test-shape-plan",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01156926155090332
+    },
+    {
+      "name": "api - harfbuzz:test-style",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011464834213256836
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.011713266372680664
+    },
+    {
+      "name": "api - harfbuzz:test-paint",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.03981661796569824
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-avar2",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.017158031463623047
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-cmap",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.016831636428833008
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-drop-tables",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.015897274017333984
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-glyf",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013596534729003906
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-hdmx",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013674736022949219
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-hmtx",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013792753219604492
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-nameids",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013330221176147461
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-os2",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013231277465820312
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-post",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012793302536010742
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-vmtx",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012874841690063477
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-cff1",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01300501823425293
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-cff2",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013218164443969727
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-gvar",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013149499893188477
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-hvar",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01336050033569336
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-vvar",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013051986694335938
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-sbix",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012799501419067383
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-gpos",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012368440628051758
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-colr",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.012504100799560547
+    },
+    {
+      "name": "api+subset - harfbuzz:test-subset-cbdt",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01617717742919922
+    },
+    {
+      "name": "api - harfbuzz:test-unicode",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.018518447875976562
+    },
+    {
+      "name": "api - harfbuzz:test-var-coords",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.021132946014404297
+    },
+    {
+      "name": "api - harfbuzz:test-version",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.022142648696899414
+    },
+    {
+      "name": "api - harfbuzz:test-ft",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.016947507858276367
+    },
+    {
+      "name": "api - harfbuzz:test-multithread",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.014653921127319336
+    },
+    {
+      "name": "fuzzing - harfbuzz:shape-fuzzer-chunk-0",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.016156673431396484
+    },
+    {
+      "name": "fuzzing - harfbuzz:shape-fuzzer-chunk-2",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01192927360534668
+    },
+    {
+      "name": "fuzzing - harfbuzz:shape-fuzzer-chunk-4",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.008306741714477539
+    },
+    {
+      "name": "fuzzing - harfbuzz:shape-fuzzer-chunk-3",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01838397979736328
+    },
+    {
+      "name": "fuzzing - harfbuzz:shape-fuzzer-chunk-1",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.029805898666381836
+    },
+    {
+      "name": "fuzzing - harfbuzz:shape-fuzzer-chunk-6",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.013792753219604492
+    },
+    {
+      "name": "fuzzing - harfbuzz:shape-fuzzer-chunk-5",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.023702144622802734
+    },
+    {
+      "name": "fuzzing - harfbuzz:shape-fuzzer-chunk-7",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.019468069076538086
+    },
+    {
+      "name": "fuzzing - harfbuzz:subset-fuzzer-chunk-0",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.016184091567993164
+    },
+    {
+      "name": "fuzzing - harfbuzz:subset-fuzzer-chunk-1",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.018076419830322266
+    },
+    {
+      "name": "fuzzing - harfbuzz:subset-fuzzer-chunk-4",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.01847243309020996
+    },
+    {
+      "name": "fuzzing - harfbuzz:subset-fuzzer-chunk-3",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.02751779556274414
+    },
+    {
+      "name": "fuzzing - harfbuzz:subset-fuzzer-chunk-5",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.022149085998535156
+    },
+    {
+      "name": "fuzzing - harfbuzz:subset-fuzzer-chunk-2",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04526519775390625
+    },
+    {
+      "name": "fuzzing - harfbuzz:subset-fuzzer-chunk-8",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.018390655517578125
+    },
+    {
+      "name": "fuzzing - harfbuzz:subset-fuzzer-chunk-9",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.016840696334838867
+    },
+    {
+      "name": "fuzzing - harfbuzz:subset-fuzzer-chunk-6",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.07069706916809082
+    },
+    {
+      "name": "fuzzing - harfbuzz:repacker-fuzzer-chunk-0",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04667520523071289
+    },
+    {
+      "name": "subset - harfbuzz:basics",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.08952784538269043
+    },
+    {
+      "name": "subset - harfbuzz:bidi",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.048711299896240234
+    },
+    {
+      "name": "fuzzing - harfbuzz:subset-fuzzer-chunk-7",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.2801671028137207
+    },
+    {
+      "name": "threads+slow - harfbuzz:subset_threads",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.2500758171081543
+    },
+    {
+      "name": "subset - harfbuzz:cmap4_overflow",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05026888847351074
+    },
+    {
+      "name": "subset - harfbuzz:cmap14",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.09924435615539551
+    },
+    {
+      "name": "subset - harfbuzz:preprocess",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04651784896850586
+    },
+    {
+      "name": "subset - harfbuzz:full-font",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.08857107162475586
+    },
+    {
+      "name": "subset - harfbuzz:cff-full-font",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.07174277305603027
+    },
+    {
+      "name": "subset - harfbuzz:cmap",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.29235267639160156
+    },
+    {
+      "name": "subset - harfbuzz:japanese",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.06286048889160156
+    },
+    {
+      "name": "subset - harfbuzz:cff.notoserifmyanmar",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04793882369995117
+    },
+    {
+      "name": "subset - harfbuzz:glyf_bug_3131",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.050983428955078125
+    },
+    {
+      "name": "subset - harfbuzz:layout",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04637885093688965
+    },
+    {
+      "name": "subset - harfbuzz:cff-japanese",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.11833500862121582
+    },
+    {
+      "name": "subset - harfbuzz:layout.gpos",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04840278625488281
+    },
+    {
+      "name": "subset - harfbuzz:layout.gpos3",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04613447189331055
+    },
+    {
+      "name": "subset - harfbuzz:layout.gpos2",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05585908889770508
+    },
+    {
+      "name": "subset - harfbuzz:layout.gpos4",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.06265521049499512
+    },
+    {
+      "name": "subset - harfbuzz:layout.gpos5",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.0546412467956543
+    },
+    {
+      "name": "subset - harfbuzz:layout.gpos6",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05107736587524414
+    },
+    {
+      "name": "subset - harfbuzz:layout.gpos9",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04290437698364258
+    },
+    {
+      "name": "subset - harfbuzz:layout.gpos8",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05866193771362305
+    },
+    {
+      "name": "subset - harfbuzz:layout.gpos8.amiri",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.06170463562011719
+    },
+    {
+      "name": "subset - harfbuzz:layout.gsub3",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.0457301139831543
+    },
+    {
+      "name": "subset - harfbuzz:layout.gsub5_format2",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04304027557373047
+    },
+    {
+      "name": "subset - harfbuzz:layout.gsub5",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.055373191833496094
+    },
+    {
+      "name": "threads+slow - harfbuzz:shape_threads",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.8206546306610107
+    },
+    {
+      "name": "subset - harfbuzz:layout.gsub6",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05109906196594238
+    },
+    {
+      "name": "subset - harfbuzz:layout.gsub8",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05177617073059082
+    },
+    {
+      "name": "subset - harfbuzz:layout.gdef",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05007767677307129
+    },
+    {
+      "name": "subset - harfbuzz:layout.gdef.glyphset",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.049124956130981445
+    },
+    {
+      "name": "subset - harfbuzz:layout.khmer",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04775691032409668
+    },
+    {
+      "name": "subset - harfbuzz:layout.context",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05474209785461426
+    },
+    {
+      "name": "subset - harfbuzz:layout.context_format2",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05615949630737305
+    },
+    {
+      "name": "subset - harfbuzz:layout.gdef-attachlist",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05016517639160156
+    },
+    {
+      "name": "subset - harfbuzz:layout.gdef-varstore",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.06085324287414551
+    },
+    {
+      "name": "subset - harfbuzz:layout.markfilteringset",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04456448554992676
+    },
+    {
+      "name": "subset - harfbuzz:layout.duplicate_features",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.050777435302734375
+    },
+    {
+      "name": "subset - harfbuzz:layout.unsorted_featurelist",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05485200881958008
+    },
+    {
+      "name": "subset - harfbuzz:layout.tinos",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.07464313507080078
+    },
+    {
+      "name": "subset - harfbuzz:layout.drop_feature",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05416131019592285
+    },
+    {
+      "name": "subset - harfbuzz:no_layout_closure",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04364323616027832
+    },
+    {
+      "name": "subset - harfbuzz:sbix",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05319833755493164
+    },
+    {
+      "name": "subset - harfbuzz:colr_glyphs",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.041687965393066406
+    },
+    {
+      "name": "subset - harfbuzz:colr",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.05384349822998047
+    },
+    {
+      "name": "subset - harfbuzz:subset_base",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04774880409240723
+    },
+    {
+      "name": "subset - harfbuzz:math_coverage_offset",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.06182289123535156
+    },
+    {
+      "name": "subset - harfbuzz:math",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.0973060131072998
+    },
+    {
+      "name": "subset - harfbuzz:colrv1_subset_varstore",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.046885013580322266
+    },
+    {
+      "name": "subset - harfbuzz:colr_with_components",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04497981071472168
+    },
+    {
+      "name": "subset - harfbuzz:colrv1",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.06294083595275879
+    },
+    {
+      "name": "subset - harfbuzz:layout.notonastaliqurdu",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.34128475189208984
+    },
+    {
+      "name": "subset - harfbuzz:variable",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04777693748474121
+    },
+    {
+      "name": "subset - harfbuzz:glyph_names",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.050640106201171875
+    },
+    {
+      "name": "subset - harfbuzz:cbdt",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.0891733169555664
+    },
+    {
+      "name": "subset - harfbuzz:glyph_map",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04899311065673828
+    },
+    {
+      "name": "subset - harfbuzz:32bit_var_store",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04861140251159668
+    },
+    {
+      "name": "subset - harfbuzz:post",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.0745389461517334
+    },
+    {
+      "name": "subset - harfbuzz:pin_all_at_default",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.0412745475769043
+    },
+    {
+      "name": "subset - harfbuzz:instantiate_base",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04124593734741211
+    },
+    {
+      "name": "subset - harfbuzz:instantiate_colrv1",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.045842647552490234
+    },
+    {
+      "name": "subset - harfbuzz:instantiate_glyf",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.045888662338256836
+    },
+    {
+      "name": "subset - harfbuzz:instantiate_cff2",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.0525362491607666
+    },
+    {
+      "name": "subset - harfbuzz:downgrade_cff2",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.040566444396972656
+    },
+    {
+      "name": "subset - harfbuzz:instantiate_cff2_tsb",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.040869951248168945
+    },
+    {
+      "name": "subset - harfbuzz:instantiate_cff2_partial",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.1017918586730957
+    },
+    {
+      "name": "subset - harfbuzz:instance_feature_variations",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.0517125129699707
+    },
+    {
+      "name": "subset - harfbuzz:full_instance",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.06777238845825195
+    },
+    {
+      "name": "subset - harfbuzz:instance_no_double_free",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04546976089477539
+    },
+    {
+      "name": "subset - harfbuzz:mvar_full_instance",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04150390625
+    },
+    {
+      "name": "subset - harfbuzz:instance_comp_glyph_empty_child",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04053950309753418
+    },
+    {
+      "name": "subset - harfbuzz:post_apply_mvar_delta",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04139447212219238
+    },
+    {
+      "name": "subset - harfbuzz:apply_cvar_delta",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.054306983947753906
+    },
+    {
+      "name": "subset - harfbuzz:collect_name_ids",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04119420051574707
+    },
+    {
+      "name": "subset - harfbuzz:instantiate_cff2_update_metrics",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.043682098388671875
+    },
+    {
+      "name": "subset - harfbuzz:layout.empty_ligature_offset",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04261612892150879
+    },
+    {
+      "name": "subset - harfbuzz:glyf_partial_instancing",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.0438532829284668
+    },
+    {
+      "name": "subset - harfbuzz:hvar_partial_instance_implicit_map",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04287838935852051
+    },
+    {
+      "name": "subset - harfbuzz:mvar_partial_instance",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.047254323959350586
+    },
+    {
+      "name": "subset - harfbuzz:feature_variations_partial_instance",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04394364356994629
+    },
+    {
+      "name": "subset - harfbuzz:gdef_partial_instance",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04234814643859863
+    },
+    {
+      "name": "subset - harfbuzz:value_format_partial_instance",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.044751882553100586
+    },
+    {
+      "name": "subset - harfbuzz:feature_variation_instance_collect_lookups",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04435014724731445
+    },
+    {
+      "name": "subset - harfbuzz:sync_vmetrics",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04236197471618652
+    },
+    {
+      "name": "subset - harfbuzz:update_def_wght",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.11908888816833496
+    },
+    {
+      "name": "subset - harfbuzz:empty_region_vardata",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.047121286392211914
+    },
+    {
+      "name": "subset - harfbuzz:colrv1_partial_instance",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04231572151184082
+    },
+    {
+      "name": "subset - harfbuzz:instantiate_gvar_padding",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04303145408630371
+    },
+    {
+      "name": "subset - harfbuzz:avar2_full_instance",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04215383529663086
+    },
+    {
+      "name": "subset - harfbuzz:subset_gvar_padding",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.04654335975646973
+    },
+    {
+      "name": "subset+repack - harfbuzz:basic",
+      "exit": 0,
+      "result": "SKIP",
+      "seconds": 0.03722333908081055,
+      "skip_reason": "# fonttools is not present, skipping test."
+    },
+    {
+      "name": "subset+repack - harfbuzz:prioritization",
+      "exit": 0,
+      "result": "SKIP",
+      "seconds": 0.038747549057006836,
+      "skip_reason": "# fonttools is not present, skipping test."
+    },
+    {
+      "name": "subset+repack - harfbuzz:table_duplication",
+      "exit": 0,
+      "result": "SKIP",
+      "seconds": 0.037973880767822266,
+      "skip_reason": "# fonttools is not present, skipping test."
+    },
+    {
+      "name": "subset+repack - harfbuzz:isolation",
+      "exit": 0,
+      "result": "SKIP",
+      "seconds": 0.035479068756103516,
+      "skip_reason": "# fonttools is not present, skipping test."
+    },
+    {
+      "name": "subset+repack - harfbuzz:advanced_prioritization",
+      "exit": 0,
+      "result": "SKIP",
+      "seconds": 0.03394293785095215,
+      "skip_reason": "# fonttools is not present, skipping test."
+    },
+    {
+      "name": "subset+repack - harfbuzz:space_splitting",
+      "exit": 0,
+      "result": "SKIP",
+      "seconds": 0.03425741195678711,
+      "skip_reason": "# fonttools is not present, skipping test."
+    },
+    {
+      "name": "subset+repack - harfbuzz:duplicate_before_mutation",
+      "exit": 0,
+      "result": "SKIP",
+      "seconds": 0.03549671173095703,
+      "skip_reason": "# fonttools is not present, skipping test."
+    },
+    {
+      "name": "shape+aots - harfbuzz:aots",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.08355855941772461
+    },
+    {
+      "name": "shape+text-rendering-tests - harfbuzz:text-rendering-tests",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.14146852493286133
+    },
+    {
+      "name": "shape+in-house - harfbuzz:in-house",
+      "exit": 0,
+      "result": "OK",
+      "seconds": 0.3338131904602051
+    }
+  ],
+  "raw_test_log_sha256": "f2fa0d6ba8e6d83ef9b733e140bbd8b5cd568323233399147816ca018f6403c1",
+  "dependency_recovery": {
+    "original_core_libraries_unchanged": true,
+    "before": {
+      "libharfbuzz.so.0.61431.0": "11e8ef9af0f89b5caa1d70e0a6150168a90eb41b8fa7c4181577e86a35ebf791",
+      "libharfbuzz-gobject.so.0.61431.0": "52c72f34e2653f687d7320d6333c2c9269825743fb127c41ed890e051150f14a",
+      "libharfbuzz-subset.so.0.61431.0": "eb69c5db98ef11ee34f0eb91f0581233bbfa2dbb3c51ff031e1ac9d7e7c879a4"
+    },
+    "after": {
+      "libharfbuzz.so.0.61431.0": "11e8ef9af0f89b5caa1d70e0a6150168a90eb41b8fa7c4181577e86a35ebf791",
+      "libharfbuzz-gobject.so.0.61431.0": "52c72f34e2653f687d7320d6333c2c9269825743fb127c41ed890e051150f14a",
+      "libharfbuzz-subset.so.0.61431.0": "eb69c5db98ef11ee34f0eb91f0581233bbfa2dbb3c51ff031e1ac9d7e7c879a4"
+    },
+    "correction": "owned GI desktop declarative types installed; resume existing Ninja graph"
+  },
+  "stage_manifest_sha256": "1532b0f82e3f4e57d7f11887a43ff8e1c674f329f2bf6d9f3c94b390456528a0"
+}

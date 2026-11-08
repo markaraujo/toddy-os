@@ -2725,6 +2725,49 @@
           ]
         }
       }
+    },
+    {
+      "name": "harfbuzz",
+      "version": "14.3.1",
+      "license": "MIT AND LicenseRef-harfbuzz-per-file",
+      "evidence": "Authenticated root old-MIT COPYING and nested/per-file notices retained; bundled test font licensing remains in corresponding source. Selected shaping/subset/GLib/GObject/FreeType/introspection; optional renderers/backends excluded.",
+      "extra_license_headers": {
+        "harfbuzz-14.3.1.tar.xz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".c",
+            ".cc",
+            ".h",
+            ".hh"
+          ]
+        }
+      }
+    },
+    {
+      "name": "cairo",
+      "version": "1.18.4",
+      "license": "LGPL-2.1-only AND LicenseRef-cairo-per-file",
+      "evidence": "LGPL2.1 option selected for Cairo core; exact COPYING-LGPL-2.1/MPL alternative and per-file source/util notices retained. Upstream full visual suite is not working according to frozen BLFS13.1; direct native consumers required.",
+      "extra_license_headers": {
+        "cairo-1.18.4.tar.xz": {
+          "prefixes": [
+            "src/",
+            "util/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
+    },
+    {
+      "name": "gi-desktop-types",
+      "version": "1.86.0",
+      "license": "LGPL-2.0-or-later AND GPL-2.0-or-later",
+      "evidence": "Selected original freetype2/fontconfig/libxml2/cairo declarative GIR files from the same authenticated GI1.86.0 archive; Cairo placeholders configured as upstream gir/meson.build. Original COPYING/GPL/LGPL terms retained. No GLib/scanner/core payload replacement."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

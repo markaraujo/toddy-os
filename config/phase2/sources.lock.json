@@ -468,6 +468,18 @@
       "book_md5": "db575fb41bbda127e0147e401f36f8ac",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "pango",
+      "version": "1.58.2",
+      "filename": "pango-1.58.2.tar.xz",
+      "url": "https://download.gnome.org/sources/pango/1.58/pango-1.58.2.tar.xz",
+      "sha256": "342385b6ca3b7c73455d7c80a13b7dbe4489e00bc3bd4c5bd6ed4dce421e374a",
+      "reference": "BLFS13.1-systemd x/pango.html",
+      "book_page_sha256": "1139cf3d49dfeb11613783d4d45ee6d969e832f3e6e53d4c3764b266ff1f1b2a",
+      "book_md5": "7b5640fd9adfa24554a88b2b9a6cd3f3",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

@@ -318,7 +318,14 @@
         "docs/evidence/B02-fontconfig-build.json",
         "docs/evidence/B02-fontconfig-install.json",
         "docs/evidence/B02-fribidi-build.json",
-        "docs/evidence/B02-fribidi-install.json"
+        "docs/evidence/B02-fribidi-install.json",
+        "docs/evidence/B02-cairo-build.json",
+        "docs/evidence/B02-cairo-install.json",
+        "docs/evidence/B02-gi-desktop-types-build.json",
+        "docs/evidence/B02-gi-desktop-types-install.json",
+        "docs/evidence/B02-harfbuzz-build.json",
+        "docs/evidence/B02-harfbuzz-install.json",
+        "docs/evidence/B02-namespace-font-config.json"
       ]
     },
     {

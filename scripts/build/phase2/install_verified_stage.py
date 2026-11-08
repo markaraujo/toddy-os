@@ -14,6 +14,12 @@ from package_copyright import write_copyright
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gi-desktop-types': ('1.86.0', 'gobject-introspection (>= 1.86.0-1+toddy1), freetype (>= 2.14.3-1+toddy1), fontconfig (>= 2.18.3-1+toddy1), libxml2 (>= 2.15.3-1+toddy1), cairo (>= 1.18.4-1+toddy1)',
+                        'gobject-introspection-1.86.0.tar.xz', 'usr/lib/girepository-1.0/freetype2-2.0.typelib'),
+    'cairo': ('1.18.4', 'glibc (>= 2.44-1), pixman (>= 0.46.4-1+toddy1), libpng (>= 1.6.58-1+toddy1), freetype (>= 2.14.3-1+toddy1), fontconfig (>= 2.18.3-1+toddy1), glib (>= 2.88.3-1+toddy1), zlib (>= 1.3.2-1)',
+              'cairo-1.18.4.tar.xz', 'usr/lib/pkgconfig/cairo-gobject.pc'),
+    'harfbuzz': ('14.3.1', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), freetype (>= 2.14.3-1+toddy1), zlib (>= 1.3.2-1)',
+                 'harfbuzz-14.3.1.tar.xz', 'usr/lib/girepository-1.0/HarfBuzz-0.0.typelib'),
     'fribidi': ('1.0.16', 'glibc (>= 2.44-1)',
                 'fribidi-1.0.16.tar.xz', 'usr/lib/pkgconfig/fribidi.pc'),
     'fontconfig': ('2.18.3', 'glibc (>= 2.44-1), freetype (>= 2.14.3-1+toddy1), libxml2 (>= 2.15.3-1+toddy1)',
@@ -47,16 +53,39 @@ if __name__ == '__main__':
     version, depends, archive, required = PROFILES[name]
     subprocess.run(['bash', '-c', 'source /opt/toddy-build/scripts/build/target.sh; guard_target'], check=True)
     log = Path('/var/log/toddy/phase2')
-    qualifier='wayland-recheck-2' if name=='wayland' else name+'-1'
+    qualifier='wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
+    if name=='harfbuzz':
+        assert (log/'harfbuzz-1.exit').read_text().strip()=='1'
+        proof=json.loads(Path('/mnt/lfs/sources/phase2/work/harfbuzz-1/dependency-recovery/qualified.json').read_text())
+        assert proof['original_core_libraries_unchanged'] and proof['before']==proof['after']
+        assert json.loads((log/'harfbuzz-resume-2.job.json').read_text())['command'][-1]==(ROOT/'scripts/build/phase2/harfbuzz-resume.sh').read_text()
     if name=='wayland':
         proof=json.loads(Path('/mnt/lfs/sources/phase2/work/wayland-1/qualified-tests.json').read_text())
         assert proof['total']==26 and proof['original_passed']==6 and proof['corrected_passed']==20 and proof['compiled_binaries_unchanged']
         command=json.loads((log/'wayland-recheck-2.job.json').read_text())['command']
         assert command[-1]==(ROOT/'scripts/build/phase2/wayland-recheck.sh').read_text()
-    if name in ('wayland-protocols','pixman','fontconfig','fribidi'):
+    if name in ('wayland-protocols','pixman','fontconfig','fribidi','harfbuzz'):
         rows=[json.loads(line) for line in (Path('/mnt/lfs/sources/phase2/work')/(name+'-1')/'compile/meson-logs/testlog.json').read_text().splitlines()]
-        assert rows and all(r['result']=='OK' and r['returncode']==0 and not r['is_fail'] for r in rows)
+        if name=='harfbuzz':
+            # Frozen BLFS optional FontTools is absent; upstream explicitly skips
+            # only these Python-oracle repack drivers, not native API regressions.
+            optional={'subset+repack - harfbuzz:'+n for n in ['basic','prioritization','table_duplication','isolation','advanced_prioritization','space_splitting','duplicate_before_mutation']}
+            skipped={r['name'] for r in rows if r['result']=='SKIP'}
+            assert skipped==optional
+            assert len(rows)==218 and sum(r['result']=='OK' for r in rows)==211
+            assert all(r['returncode']==0 and not r['is_fail'] and (r['result']=='OK' or (r['name'] in optional and r['result']=='SKIP' and r.get('stdout','').strip()=='# fonttools is not present, skipping test.')) for r in rows)
+        else:
+            assert rows and all(r['result']=='OK' and r['returncode']==0 and not r['is_fail'] for r in rows)
+    if name=='gi-desktop-types':
+        proof=json.loads(Path('/mnt/lfs/sources/phase2/work/gi-desktop-types-1/test-results.json').read_text())
+        assert {r['name'] for r in proof['types']}=={'freetype2-2.0','fontconfig-2.0','libxml2-2.0','cairo-1.0'}
+        command=json.loads((log/'gi-desktop-types-1.job.json').read_text())['command']
+        assert command[-1]==(ROOT/'scripts/build/phase2/gi-desktop-types-build.sh').read_text()
+    if name=='cairo':
+        proof=json.loads(Path('/mnt/lfs/sources/phase2/work/cairo-1/test-results.json').read_text())
+        assert proof['full_upstream_suite']=='not qualified; BLFS states not working'
+        assert proof['registered_driver_failures']==0
     if name=='freetype':
         proof=json.loads(Path('/mnt/lfs/sources/phase2/work/freetype-1/test-results.json').read_text())
         assert proof['staged_consumer_exit']==0 and proof['upstream_suite']=='not provided'

@@ -1,0 +1,46 @@
+{
+  "job": "gi-desktop-types-1",
+  "exit": 0,
+  "scope": "four selected original GI1.86.0 declarative types only; existing scanner/GLib core unchanged",
+  "source": {
+    "source_sha256": "920d1a3fcedeadc32acff95c2e203b319039dd4b4a08dd1a2dfd283d19c0b9ae",
+    "gir_inputs": {
+      "freetype2-2.0.gir": "4bc33cddc0de0de17cfc6770d7b88f46240c3375241d9fa585ae8dfa94a35441",
+      "fontconfig-2.0.gir": "47b3d3bdb84b930a584b1b20ac6a59903ea6f064c5aa0dd106bac714a39054d1",
+      "libxml2-2.0.gir": "3d771c3b8de38e859818de34fc2cb3f75adeb71deadb42622e29f02a71a17b13",
+      "cairo-1.0.gir.in": "b3570f998464c67c1ff77417a2e48d761584237e67c5133bb61f6a8e79c2465f"
+    },
+    "scope": "reuse authenticated immutable GI1.86.0 source; do not rebuild qualified core"
+  },
+  "tests": {
+    "scope": "four selected upstream declarative GIR types compiled; no GI/core rebuild",
+    "types": [
+      {
+        "name": "freetype2-2.0",
+        "source_sha256": "4bc33cddc0de0de17cfc6770d7b88f46240c3375241d9fa585ae8dfa94a35441",
+        "configured_gir_sha256": "4bc33cddc0de0de17cfc6770d7b88f46240c3375241d9fa585ae8dfa94a35441",
+        "typelib_sha256": "77695d83d33b8f84f252b7c0e05adced1e9feb3b3a43431f0be8b0fc53d2343a"
+      },
+      {
+        "name": "fontconfig-2.0",
+        "source_sha256": "47b3d3bdb84b930a584b1b20ac6a59903ea6f064c5aa0dd106bac714a39054d1",
+        "configured_gir_sha256": "47b3d3bdb84b930a584b1b20ac6a59903ea6f064c5aa0dd106bac714a39054d1",
+        "typelib_sha256": "eafb681ad77f80f43f9f758c8b5b91c58ff2586132318e61c92f521e46937bf3"
+      },
+      {
+        "name": "libxml2-2.0",
+        "source_sha256": "3d771c3b8de38e859818de34fc2cb3f75adeb71deadb42622e29f02a71a17b13",
+        "configured_gir_sha256": "3d771c3b8de38e859818de34fc2cb3f75adeb71deadb42622e29f02a71a17b13",
+        "typelib_sha256": "4af5467d48dc3f9c34bb4afd1edf2433d5d0d9c975e9df60fb2494728541b48f"
+      },
+      {
+        "name": "cairo-1.0",
+        "source_sha256": "b3570f998464c67c1ff77417a2e48d761584237e67c5133bb61f6a8e79c2465f",
+        "configured_gir_sha256": "bd16d118a7238e6e26566e483a1a2b608ec086a3339ec06b64b486cb23154ba8",
+        "typelib_sha256": "5cbad042e62d37dca8ce907f25a4fe205395b4cdc3999461a64a2e0db09b4e06"
+      }
+    ]
+  },
+  "compiler_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stage_manifest_sha256": "644f3979b0241d11d3036cfcf51d8bc70efdc4692619408ce14ef49a1de5a24f"
+}

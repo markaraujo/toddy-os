@@ -1680,3 +1680,19 @@ pixman-1 native35 tests/stage0; owned0.46.4 install/post0/0, actual pixel-compos
 consumer and notices verified. No optional GTK/PNG/OpenMP dependencies or repeated
 old suites. Existing kernel config enables virtual DRM/namespaces/seccomp, not a
 hardware test; no kernel rebuild. Next pinned image/font dependencies for GTK.
+
+### B02 native image and font prerequisites — 2026-11-08 UTC
+
+Standard libpng36 tests/installed PNG memory roundtrip, FreeType staged/installed
+version+BDF pixels, Fontconfig15 offline drivers/installed XML+PCF match, and
+FriBidi8 drivers/installed Hebrew order/maps/levels passed. All owned native
+transactions0/0; full-root checks retained, source notices verified. Stock system
+PNG serves Cairo/GDK; Firefox bundled PNG remains selected unless APNG qualified.
+No repeated foundation/model suites or native GUI acceptance.
+
+Cairo3 registered header/syntax checks and installed pixels/text/PNG/GObject passed.
+HarfBuzz original compile stopped on missing FreeType GIR; preserve linked objects
+and original failure. The B01 scanner-only bootstrap deliberately omitted data.
+Prepare four selected original GI1.86.0 declarative types separately, preserving
+qualified scanner/GLib binaries; resume same HarfBuzz graph after actual dependency
+installation. No foundation rebuild or global architecture change.

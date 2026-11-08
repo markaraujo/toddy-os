@@ -1,0 +1,48 @@
+{
+  "uid": 101,
+  "gid": 101,
+  "cap_effective": 0,
+  "cap_permitted": 0,
+  "no_new_privileges": true,
+  "inherited_writable_fds": [],
+  "outside_writes_denied": [
+    {
+      "path": "/usr/toddy-denied",
+      "errno": 30
+    },
+    {
+      "path": "/src/toddy-denied",
+      "errno": 30
+    },
+    {
+      "path": "/etc/toddy-denied",
+      "errno": 30
+    },
+    {
+      "path": "/root/toddy-denied",
+      "errno": 2
+    },
+    {
+      "path": "/run/toddy-denied",
+      "errno": 30
+    }
+  ],
+  "external_network_errno": 101,
+  "native_compile_stage_run": "toddy-native-isolated",
+  "exit": 0,
+  "dev_fd_alias": "private /proc/self/fd",
+  "source_fd_write_denied": true,
+  "font_configuration": {
+    "sha256": "21d98f29b610fb4342d2331f6653ee93f920629fbe8d474033a79a77d37f5d41",
+    "write_denied": true,
+    "config_links_read": 23
+  },
+  "job": "font-config-probe-1",
+  "harness_sha256": "491a92d9a07670240c7e7d4cdf7d21dbaeb8c0e3415e72c2e12adf4515162353",
+  "parent_lock_held_exit": 75,
+  "parent_lock_released_exit": 0,
+  "own_probe_sha256": {
+    "namespace_alias_probe.py": "7263787baa51c42a94207c735b7d0fb2be4c70c7b1325787f20cd4b2f7a2de2e",
+    "isolation_probe.py": "1779bd073fc11c8b80a603ec96ca20d74c46522701f79c0512c1b948f91794d6"
+  }
+}

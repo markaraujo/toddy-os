@@ -1,0 +1,38 @@
+{
+  "scope": "native actual pixel/text/PNG roundtrip and GObject consumer; no compositor/native UI acceptance",
+  "step": {
+    "step": "b02-cairo-install",
+    "started": "2026-11-08T03:55:39.684925+00:00",
+    "finished": "2026-11-08T03:55:55.909212+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 245,
+    "log_sha256": "84d78c66c5ada5e3936889428ac98e07f329ff415792d84699495f756170c9b1"
+  },
+  "success_record_sha256": "86649401b5dc652d9f4df91a0b0f4d9f1ba3149cf68ed9c5992b8614e1605c15",
+  "package": {
+    "name": "cairo",
+    "version": "1.18.4-1+toddy1",
+    "archive_sha256": "be22d95546637482f67b2daf70a3086c0544350b208e383c686ba69eae419674",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-cairo-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 9.036,
+        "entries": 93580,
+        "regular_files": 80877,
+        "regular_bytes": 4918346756
+      },
+      {
+        "seconds": 9.009,
+        "entries": 93820,
+        "regular_files": 81107,
+        "regular_bytes": 4921591303
+      }
+    ],
+    "total_seconds": 25.913
+  }
+}
