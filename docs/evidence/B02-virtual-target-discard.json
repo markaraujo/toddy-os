@@ -1,0 +1,54 @@
+{
+  "scope": "Actual builder-KVM storage maintenance, not native release boot/GUI/physical hardware acceptance",
+  "native": {
+    "scope": "Free-block discard only in designated disposable virtual /dev/vdb4; no formatting, file deletion or physical-host device operation",
+    "state": "complete",
+    "boot_before": "d7e6d578-c18b-4997-835e-8ac7b0711798",
+    "target_serial": "TODDY-LFS-TARGET",
+    "target_root": "/dev/vdb4",
+    "full_entries_before": 140102,
+    "pending_cache_entries_before": 1111,
+    "discard_max_before": 2147483136,
+    "checkpointed_unix": 1794165432.3472316,
+    "restored_volumes": [
+      {
+        "work": "/mnt/lfs/sources/phase2/work/gtk-1",
+        "uuid": "1593a243-4338-45fb-86f6-7b699b4b3235",
+        "image_inode": 786439,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/desktop-resources-1",
+        "uuid": "a1385a38-a9ed-481b-96d8-b0120b4f1e7c",
+        "image_inode": 786440,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/doxygen-1",
+        "uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+        "image_inode": 786441,
+        "restored_existing_filesystem": true
+      }
+    ],
+    "boot_after": "e38199bc-fb46-4daf-9068-072143e7adf6",
+    "discard_max_after": 2147483136,
+    "trim_exit": 0,
+    "changed_paths": [],
+    "pending_cache_changed_paths": [],
+    "full_entries_after": 140102,
+    "pending_cache_entries_after": 1111
+  },
+  "host": {
+    "host_available_before": 108917788672,
+    "host_available_after": 109600018432,
+    "host_available_delta": 682229760,
+    "target_allocated_before_trim": 43062775808,
+    "target_allocated_after_trim": 42376839168,
+    "target_file_bytes_reclaimed": 685936640,
+    "cold_qcow_checks": {
+      "builder.qcow2": "No errors were found on the image.\n42035/524288 = 8.02% allocated, 5.44% fragmented, 0.00% compressed clusters\nImage end offset: 2756640768",
+      "lfs-target.qcow2": "No errors were found on the image.\n656823/2949120 = 22.27% allocated, 7.33% fragmented, 0.00% compressed clusters\nImage end offset: 43062263808"
+    }
+  },
+  "limitations": "Only virtual free extents reclaimed; full existing package snapshot and pending Libadwaita cache compared. No native target kernel/session validation."
+}

@@ -123,7 +123,7 @@ def main():
             '-qmp', 'unix:/vm/phase2/qmp.sock,server=on,wait=off',
             '-drive', 'file=/vm/phase2/builder.qcow2,if=none,id=builder,format=qcow2',
             '-device', 'virtio-blk-pci,drive=builder,serial=TODDY-BUILDER',
-            '-drive', 'file=/vm/phase2/lfs-target.qcow2,if=none,id=lfs,format=qcow2',
+            '-drive', 'file=/vm/phase2/lfs-target.qcow2,if=none,id=lfs,format=qcow2,discard=unmap',
             '-device', 'virtio-blk-pci,drive=lfs,serial=TODDY-LFS-TARGET',
             '-drive', 'file=/vm/seed.img,if=virtio,format=raw,readonly=on',
             '-netdev', 'user,id=net0,hostfwd=tcp:0.0.0.0:2223-:22',

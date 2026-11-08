@@ -1,0 +1,16 @@
+{
+  "scope": "Expanded source-only duplicates; all compressed .crate/source archives, Cargo indexes, compiled artifacts, guest caches, logs and evidence retained",
+  "state": "complete",
+  "retired_source_directories": 715,
+  "verified_source_entries": 55491,
+  "host_available_before": 109597609984,
+  "host_available_after": 110616727552,
+  "reclaimed_bytes": 1019117568,
+  "retained": "All corresponding compressed .crate/frozen archives, Cargo index, guest sources/compiled tests/stages/packages/logs/raw evidence; Cargo automatically re-extracts compressed cache if needed",
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-storage-custody-evidence.tar.gz",
+    "members": 7,
+    "bytes": 80417,
+    "sha256": "797be04cba95dc47cf1eda0d7390ada007488ddcf137e1fd390448ef4ec1b4b4"
+  }
+}
