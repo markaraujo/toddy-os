@@ -616,12 +616,12 @@
       "Actual native7.1.8/Systemd sandbox0 on4CPU/4GiB BIOS/noNIC; bwrap26portable+66native upstream passes/5explicit optional skips, native consumer0,11ELFs unchanged. Checksum-reconciled split serial marker without native replay; owned0755 byte-identical install/post0/0. Builder/same3scratch volumes restored, no formatting/trim.",
       "Owned display-info0.4.0 install/post0/0/all68registered EDID fixtures0, actual QEMU/PnP/malformed+truncated refusal0; both parser/hwdata source-license inventories retained. No physical monitor or graphical-session acceptance."
     ],
-    "running": "Glycin2.1.5 offline core/two-loader compile/stage/C+GI constructors0; unqualified pending actual native sandbox/image tests. Original test executables compiling only in glycin-tests-1; one writer. All67Libadwaita widgets and GNOME/B02 criteria pending.",
+    "running": "PAUSED at the owner stop request. No guest writer; builder powered off cleanly0 and removed. Glycin main/test-executable compile0; actual native image/sandbox tests and GNOME/B02 acceptance pending. B02 remains in_progress, weighted Phase2 progress13%.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-08T22:18:35.336568+00:00",
+    "verified_at": "2026-11-08T22:25:10.608651+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

@@ -2531,3 +2531,15 @@ Original tests compile-only job glycin-tests-1 started with immutable upstream
 sources and explicit unsupported extension filtering; actual native tests pending.
 Asked owner to clarify immediate pause versus waiting for full B02 because the
 GNOME session/basic apps remain substantial unfinished work.
+
+### Owner pause at verified B02 boundary — 2026-11-08
+
+Owner requested stopping to return on another day. Asked to clarify immediate
+pause versus completing all B02 because native GNOME/basic apps remain unfinished;
+no clarification received yet. Paused conservatively at a verified safe boundary.
+Original Glycin test executable compilation finished0 in4m09s; all7final hashes
+verified, source lock unchanged. No native image/sandbox execution or graphical
+acceptance claimed. Both live jobs finished0 before clean builder poweroff;
+docker wait0/container removed, same cold overlays and all4scratch filesystems
+preserved. Resume from B02-owner-pause.json/current card; do not replay custody,
+provisioning, completed builds or trim. B02 stays in_progress/Phase2 weighted13%.

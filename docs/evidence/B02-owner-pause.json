@@ -1,0 +1,28 @@
+{
+  "scope": "Owner pause checkpoint only; B02 remains incomplete and Phase2/G2 is not accepted",
+  "paused_at": "2026-11-08T22:25:10.608651+00:00",
+  "last_source_commit": "65c2967",
+  "guest_writer": "none",
+  "completed_jobs": {
+    "glycin-1": 0,
+    "glycin-tests-1": 0
+  },
+  "builder_shutdown_exit": 0,
+  "container_removed": true,
+  "shutdown_log": ".local/phase2/owner-pause-glycin-stop.log",
+  "mutable_disks": {
+    "builder.qcow2": {
+      "bytes": 4416274432,
+      "mtime_ns": 1794176655382864357,
+      "device": 66306,
+      "inode": 11929204
+    },
+    "lfs-target.qcow2": {
+      "bytes": 43083628544,
+      "mtime_ns": 1794176655202866439,
+      "device": 66306,
+      "inode": 11929205
+    }
+  },
+  "next_action": "Inspect Git and cold disk identities, start the same Phase2 overlays, verify target guard/new boot and restore the same four existing scratch filesystems by guarded restore_volumes() only. Inspect glycin test receipts; prepare small verified native runtime fixture and run actual native sandbox/image tests before promotion. Never replay provisioning, retirement, completed builds or virtual trim."
+}
