@@ -2435,6 +2435,48 @@
       "version": "24.19.0",
       "license": "MIT AND LicenseRef-Node-bundled-components",
       "evidence": "Complete source LICENSE contains Node MIT and bundled component terms; bundled dependencies stay private, not foundation replacements"
+    },
+    {
+      "name": "qtbase",
+      "version": "6.11.2",
+      "license": "LicenseRef-Qt6-per-file-and-bundled-components",
+      "evidence": "Open-source shared Qt Core/Gui/Widgets/Network/DBus/Concurrent libraries: LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only where offered; build tools carry GPL/Qt exception/BSD conditions. Retain exact LICENSES, per-file SPDX, REUSE.toml and bundled notices; no commercial license selected."
+    },
+    {
+      "name": "qtsvg",
+      "version": "6.11.2",
+      "license": "LicenseRef-Qt6-per-file-and-bundled-components",
+      "evidence": "Open-source shared Svg/SvgWidgets: offered LGPL-3.0-only/GPL alternatives and bundled notices; retain LICENSES and per-file SPDX."
+    },
+    {
+      "name": "qttools-linguist",
+      "version": "6.11.2",
+      "license": "LicenseRef-Qt6-per-file-and-bundled-components",
+      "evidence": "Linguist translation/build tools and UiTools plugin prerequisites only; source GPL-3.0-only WITH Qt-GPL-exception-1.0/BSD and offered library LGPL/GPL alternatives; retain exact per-file SPDX and LICENSES."
+    },
+    {
+      "name": "extra-cmake-modules",
+      "version": "6.29.0",
+      "license": "BSD-3-Clause",
+      "evidence": "Frozen source LICENSES and per-module SPDX; retain full notices."
+    },
+    {
+      "name": "kcoreaddons",
+      "version": "6.29.0",
+      "license": "LicenseRef-KCoreAddons-per-file",
+      "evidence": "Source LICENSES includes LGPL/GPL/BSD and historical KDE terms; selected shared CoreAddons only, no QML/PySide; retain per-file SPDX and complete notices."
+    },
+    {
+      "name": "yaml-cpp",
+      "version": "0.9.0",
+      "license": "MIT",
+      "evidence": "Source LICENSE; shared library built without bundled GoogleTest/test dependency."
+    },
+    {
+      "name": "calamares",
+      "version": "3.4.3",
+      "license": "GPL-3.0-or-later AND LicenseRef-Calamares-bundled-components",
+      "evidence": "Source per-file SPDX, LICENSES and bundled Pybind11 BSD-3-Clause; retain notices. Source verified/embedding fixture passed, full installer not yet installed."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

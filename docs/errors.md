@@ -1113,3 +1113,26 @@ init exit terminates children and outer unshare releases namespace/lock referenc
 Rechecked inherited FDs/parent lock/path/network/C fixture and affected GIO bridge:
 all exit0; actual namespace process count0 afterward. No package write runs in
 this compile namespace; no native transaction was killed or replayed.
+
+
+## 2026-11-07 — Minimal QtBase configure/build context
+
+Qt6.11.2 no-GL configure first rejected FEATURE_opengl=OFF alone: its upstream
+report explicitly checks INPUT_opengl=no. Corrected the selected input; configure
+passed. Build later failed when build-tree rcc could not locate build-tree QtCore:
+blanket CMAKE_SKIP_RPATH also suppresses tool build RPATH. Corrected only to keep
+build RPATH and suppress installed RPATH; reused compiled objects. Original guest
+qtbase-probe-1 exit1 and qtbase-probe-2 exit127/logs retained. No foundation library
+upgrade or new display stack was introduced to bypass either error.
+
+KCoreAddons official redirect selected an unreachable mirror. Downloaded the same
+6.29.0 archive from the official server's advertised c3sl mirror, verified frozen
+BLFS MD5 and pinned SHA256; ECM/YAML successful downloads reused unchanged.
+
+
+QtBase initial package preparation also omitted the conventional copyright file.
+The backend correctly refused before Dpkg/archive creation; changed_paths0.
+Verified original stage entries and absence of installation, retained original
+failed marker, consolidated authenticated upstream notices and completed one
+separate package step0/0. Shared prerequisite packaging now retains the same
+exact notice metadata before the backend; no guard was relaxed.

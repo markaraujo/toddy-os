@@ -5,7 +5,7 @@ set -euo pipefail
 [[ $(id -u) == 101 && -f /src/CMakeLists.txt && -d /stage ]]
 cmake -S /src -B /build/compile -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_RPATH=OFF -DCMAKE_SKIP_INSTALL_RPATH=ON \
     -DQT_BUILD_TESTS=OFF -DQT_BUILD_EXAMPLES=OFF -DQT_GENERATE_SBOM=OFF \
     -DINPUT_xcb=no -DINPUT_opengl=no -DFEATURE_vulkan=OFF \
     -DFEATURE_vnc=OFF -DFEATURE_sql=OFF -DFEATURE_printsupport=OFF \

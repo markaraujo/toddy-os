@@ -1512,3 +1512,12 @@ PyGObject transaction0/0 and installed GIO fixture0 passed. Calamares3.4.3
 bundled Pybind11 2.11.1 compiles/links/runs with native Python3.14.10 unchanged;
 deprecation warnings recorded. Next: minimal QtBase/Svg/LinguistTools dependencies
 for no-write installer feasibility, not final graphical desktop acceptance.
+
+
+## 2026-11-07 — Native QtBase offscreen package
+
+Qt6.11.2 compile/stage0; native package/postcheck0/0 after reconciling a pre-install
+copyright guard failure with changed0. Native offscreen Widgets action/render,
+TLS availability, private DBus and Concurrent consumer passed. Font/display/visual
+qualification remains pending. Added a one-shot sequential prerequisite controller
+with terminal receipts and no retry/replay; no foundation suites repeated.

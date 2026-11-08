@@ -88,6 +88,37 @@
       "status": "source_verified_not_built",
       "reference": "BLFS 13.1-systemd Qt6; module-only B01 offscreen probe, not final desktop qualification",
       "upstream_sha256_file_sha256": "c437876cf37fff074f6e04f8d1203d573f340ee0535af3497eed6cc31d98ee32"
+    },
+    {
+      "name": "extra-cmake-modules",
+      "version": "6.29.0",
+      "filename": "extra-cmake-modules-6.29.0.tar.xz",
+      "url": "https://download.kde.org/stable/frameworks/6.29/extra-cmake-modules-6.29.0.tar.xz",
+      "sha256": "aaf2542edd5c5af9ea56a46468892d38a7978af65f0f3518379fa8ce66cad2b8",
+      "reference": "BLFS13.1-systemd frozen framework version and MD5; official release asset SHA256 for yaml-cpp",
+      "status": "source_verified_not_built",
+      "upstream_md5": "b3795f9b843a58746ca5461713c088d8"
+    },
+    {
+      "name": "kcoreaddons",
+      "version": "6.29.0",
+      "filename": "kcoreaddons-6.29.0.tar.xz",
+      "url": "https://download.kde.org/stable/frameworks/6.29/kcoreaddons-6.29.0.tar.xz",
+      "sha256": "771f7fee754a356fa284d0ad7b8b159b890cbbfac082e49ce441b43d4943027e",
+      "reference": "BLFS13.1-systemd frozen framework version and MD5; official release asset SHA256 for yaml-cpp",
+      "status": "source_verified_not_built",
+      "upstream_md5": "9513021c1335227ec38b7cc7b92152f2",
+      "verified_mirror": "https://kde.c3sl.ufpr.br/stable/frameworks/6.29/kcoreaddons-6.29.0.tar.xz"
+    },
+    {
+      "name": "yaml-cpp",
+      "version": "0.9.0",
+      "filename": "yaml-cpp-yaml-cpp-0.9.0.tar.gz",
+      "url": "https://github.com/jbeder/yaml-cpp/releases/download/yaml-cpp-0.9.0/yaml-cpp-yaml-cpp-0.9.0.tar.gz",
+      "sha256": "298593d9c440fd9034b8b193d96318b76d49bc97c6ceadb7b0836edf0b6d7539",
+      "reference": "BLFS13.1-systemd frozen framework version and MD5; official release asset SHA256 for yaml-cpp",
+      "status": "source_verified_not_built",
+      "upstream_sha256_url": "https://api.github.com/repos/jbeder/yaml-cpp/releases/283124253"
     }
   ]
 }

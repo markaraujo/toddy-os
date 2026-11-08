@@ -25,8 +25,9 @@ Verified:
 - 11 native Pi tool/cancel/disconnect/protocol cases passed; descriptor-safe compiler and parent-lock proof passed.
 - Native GI/GLib core metadata/PyGObject installed; installed GIO async/actual peer/signal/FD fixture passed with no namespace children.
 - Calamares3.4.3 bundled Pybind11 2.11.1 compiled/linked/embedded native Python3.14.10 unchanged.
+- Native QtBase6.11.2 source/stage/package and offscreen Widgets/TLS/DBus/Concurrent consumer passed; visual/display/font integration pending.
 
-Running: QtBase6.11.2 minimal offscreen prerequisites for Calamares no-write probe; one guest writer.
+Running: Sequential minimal QtSvg/LinguistTools/ECM/CoreAddons/YAML prerequisites for native Calamares no-write probe; one guest writer.
 
 Remaining:
 
