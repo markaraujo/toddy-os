@@ -38,11 +38,11 @@ for name,text in json.load(sys.stdin).items():
 import hashlib,json
 p=Path('/var/log/toddy/phase2/policy-core-1')
 assert p.with_suffix('.exit').read_text().strip()=='0'
-log=p.with_suffix('.log').read_text();assert 'Ran 8 tests' in log and log.rstrip().endswith('OK')
+log=p.with_suffix('.log').read_text();assert 'Ran 9 tests' in log and log.rstrip().endswith('OK')
 root=Path('/mnt/lfs/sources/phase2/inputs/policy-core-1')
 files=['runtime/executor/store.py','tests/test_executor_store.py']
 print(json.dumps({'job':'policy-core-1','scope':'native UID101 policy/SQLite/process-loss tests only; no authenticated root IPC',
-'exit':0,'tests':8,'log':log,'own_input_sha256':{n:hashlib.sha256((root/n).read_bytes()).hexdigest() for n in files}},indent=2))
+'exit':0,'tests':9,'log':log,'own_input_sha256':{n:hashlib.sha256((root/n).read_bytes()).hexdigest() for n in files}},indent=2))
 '''
     result=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=collect.replace('policy-core-1',NAME).encode(),capture_output=True,check=True)
     report=json.loads(result.stdout)

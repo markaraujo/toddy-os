@@ -25,23 +25,70 @@
   "canceled_process_absent": true,
   "service_loss_child_absent": true,
   "restart_outcome_uncertain_no_replay": true,
-  "active_revoke_stop_ms": 94,
+  "active_revoke_stop_ms": 98,
   "namespace_root_capabilities": "0xeb",
   "logind_session": "not present; session grants core-tested only",
-  "pending": "package/service/network operations and authenticated graphical owner surface",
-  "expected_gio_deprecation_warning": true,
-  "job": "executor-ipc-7",
+  "packages": {
+    "install": {
+      "verified": true,
+      "backend": "native-apt-dpkg",
+      "action": "install",
+      "packages": {
+        "toddy-managed-probe": {
+          "status": "installed",
+          "version": "1"
+        }
+      },
+      "configuration_policy": "preserve-owner-modified-conffiles",
+      "cancellation_requested": true,
+      "cancellation_boundary": "completed native transaction; committed effects retained"
+    },
+    "upgrade": {
+      "verified": true,
+      "backend": "native-apt-dpkg",
+      "action": "upgrade",
+      "packages": {
+        "toddy-managed-probe": {
+          "status": "installed",
+          "version": "2"
+        }
+      },
+      "configuration_policy": "preserve-owner-modified-conffiles",
+      "cancellation_requested": false,
+      "cancellation_boundary": "completed native transaction; committed effects retained"
+    },
+    "remove": {
+      "verified": true,
+      "backend": "native-apt-dpkg",
+      "action": "remove",
+      "packages": {
+        "toddy-managed-probe": {
+          "status": "config-files",
+          "version": "2"
+        }
+      },
+      "configuration_policy": "preserve-owner-modified-conffiles",
+      "cancellation_requested": false,
+      "cancellation_boundary": "completed native transaction; committed effects retained"
+    },
+    "owner_config_preserved": true
+  },
+  "pending": "service/network operations and authenticated graphical owner surface",
+  "expected_gio_deprecation_warning": false,
+  "job": "executor-ipc-13",
   "own_input_sha256": {
-    "runtime/executor/store.py": "0d84b62bd1a3f4617e6c174489536658cd68e5f22ac34b63d199935c7fadb711",
-    "runtime/executor/operations.py": "4e2a0bc8f1c9acc8eacbe02d3cf1c4d43008f22a3690c77ce12fc7575dfff6e7",
-    "runtime/executor/service.py": "72edbe2fc72459acdea4ca5880f1fcc337cf9caefbbb1757e18b785df952a828",
+    "runtime/executor/store.py": "ccc356f6a1e238fb083f7691548a581d90e0b43ba5c973c58c617cfcb10f0a45",
+    "runtime/executor/operations.py": "b3dca9046fef72e5e29a3cffcb10df47634a6b64589c5751afa6519469b67af4",
+    "runtime/executor/service.py": "a1ba134b003153e844982db6dea80d60e5dc70faf5fca20027737ae2540fe6c2",
     "runtime/executor/policy.py": "65559463c74781ca8db83d6e97b8847deb891ea1882177f2ce7f157a58befeb2",
-    "runtime/executor/native_probe.py": "30dcc26fee0c826e8e8ea7e928061254699b0cc0defb6e0174b6c042200999c4",
+    "runtime/executor/native_probe.py": "86adc44ce454bdab63836bf317ed92a101e3bba6b302d96d9c9762ce9e7f993d",
+    "runtime/executor/native_backends.py": "ab751159ce692ea1c640db0619c0a189f71ea33607bd3643c5afb50dead2fd90",
+    "runtime/executor/package_probe.py": "05648b188f3baa99aac2d9171742c897ed0a006939156509f78df13ad8911db5",
+    "runtime/executor/package_debug_launcher.py": "921cb37bfe505264bc2ff865840846940b3d21b652e809b8344b364c8742b769",
     "runtime/executor/command_child.py": "2b0e56cca8b84fb1e824761961916960935025fe46d593cbc9d6ef28406a5d4b",
     "runtime/executor/linux_identity.py": "3aafb9131f81aae4bf72bbac7ac799a5ba51f519fc98e1b73679970f683db755",
     "runtime/executor/dbus-probe.conf": "80ea6aec660229055f009f0d27abaf4557e266426edd90fa8d39a86455709077",
     "runtime/executor/io.github.markaraujo.Toddy.Executor1.xml": "893f284ca0c94675b443accc5de1da4f4f84411e7b6b4ccae238a813aab6b12e",
-    "runtime/broker/protocol.py": "009b750a09879f2a2ce5bd483f70a59097ab14cfd512009f5986c3a97e54ee93",
-    "scripts/build/phase2/executor-probe.sh": "312f70cc9097adea1ec3849d59ae8ea49db692a7391863f2bc0d633b7d2dfe8e"
+    "scripts/build/phase2/executor-probe.sh": "714074353279b4f14abd38c91847b6e96fab2ab55cc3e8d4b99e86310b6ec079"
   }
 }

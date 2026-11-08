@@ -28,8 +28,8 @@ for pair in "/mnt/lfs/usr:$root/usr" "/mnt/lfs/lib64:$root/lib64" "$TODDY_PROBE_
 done
 mount --bind "$TODDY_PROBE_WORK" "$root/build"
 for name in ld.so.cache ld.so.conf;do [[ ! -f /mnt/lfs/etc/$name ]] || cp /mnt/lfs/etc/$name "$root/etc/$name";done
-printf 'root:x:0:0:root:/root:/bin/false\ntester:x:101:101:tester:/build/client:/bin/false\nnobody:x:65534:65534:nobody:/:/bin/false\n' > "$root/etc/passwd"
-printf 'root:x:0:\ntester:x:101:\nnogroup:x:65534:\n' > "$root/etc/group"
+printf 'root:x:0:0:root:/root:/bin/false\ntester:x:101:101:tester:/build/client:/bin/false\nnobody:x:65534:65534:nobody:/:/bin/false\n_apt:x:42:42:apt:/:/bin/false\n' > "$root/etc/passwd"
+printf 'root:x:0:\ntester:x:101:\nnogroup:x:65534:\n_apt:x:42:\n' > "$root/etc/group"
 printf 'passwd: files\ngroup: files\nhosts: files\n' > "$root/etc/nsswitch.conf"
 printf '127.0.0.1 localhost\n' > "$root/etc/hosts"
 printf '0123456789abcdef0123456789abcdef\n' > "$root/etc/machine-id"

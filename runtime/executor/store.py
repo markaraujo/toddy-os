@@ -202,8 +202,13 @@ class Store:
                 if not isinstance(result,dict) or len(encoded.encode())>4096:
                     raise PolicyError('invalid_postcondition')
                 state='completed'
-            except BaseException:
-                state='uncertain';encoded='{"code":"postcondition_unverified"}'
+            except BaseException as error:
+                safe_codes={'package_status_unverified','package_recovery_required',
+                    'package_transaction_requires_reconciliation','package_postcondition_failed',
+                    'native_package_backend_unavailable','package_not_installed',
+                    'operation_canceled_before_package_write'}
+                code=str(error) if isinstance(error,PolicyError) and str(error) in safe_codes else 'postcondition_unverified'
+                state='uncertain';encoded=json.dumps({'code':code})
                 self._finish(uid,op,kind,row['generation'],state,encoded)
                 raise PolicyError('operation_uncertain') from None
             self._finish(uid,op,kind,row['generation'],state,encoded)

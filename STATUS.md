@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B04 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 21%.
 
-Last verified: 2026-11-08T01:59:03.907587+00:00
+Last verified: 2026-11-08T02:13:38.808098+00:00
 
 Verified:
 
@@ -26,12 +26,13 @@ Verified:
 - Native executor-ipc-5 active root Stop86ms/process absent and service SIGKILL ->child absent/restart uncertain/no replay passed; policy-core-2 eight storage/migration/cancel/recovery tests passed.
 - Native executor-ipc-6 active revocation stopped already-started root work90ms; new dispatch denied and outcome uncertain. policy-core-3 eight affected tests passed.
 - Native user-tools-1 five real UID101 file/shell/Stop/path/hash/metadata/bounds tests passed; executor-ipc-7 FIFO rejected without blocking, remaining boundaries passed.
+- Native executor-ipc-13 signed toy APT install1/upgrade2/remove with owner conffile preservation and Stop during real maintainer script reached safe commit; policy-core-4 nine tests passed.
 
-Running: Implementing remaining native tools and administrative backends; no guest writer active.
+Running: Implementing service/network backends; signed native package wrapper verified in synthetic root, no installed repository/image claim.
 
 Remaining:
 
-- Structured native package/service/network integration and broker routing of ordinary tools.
+- Structured service/network integration and broker routing of ordinary tools.
 - Installed systemd cgroup lifecycle plus dedicated owner-authenticated policy surface/logind; all B04 criteria remain pending.
 
 [Acceptance evidence](docs/evidence/B04.md)

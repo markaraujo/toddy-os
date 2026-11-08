@@ -6,7 +6,7 @@ import sys
 import tempfile
 import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'runtime/executor'))
-from operations import validate,_parent,root_command
+from operations import validate,_parent,root_command,run_command
 from store import PolicyError
 
 class OperationTests(unittest.TestCase):
@@ -33,6 +33,15 @@ class OperationTests(unittest.TestCase):
         finally:os.environ.pop('TODDY_DUMMY_SECRET')
         self.assertEqual(result['exit'],0);self.assertEqual(result['output_sha256'],hashlib.sha256(b'absent\n').hexdigest())
         self.assertNotIn('do-not-transfer',str(result));self.assertFalse(result['side_effects_verified'])
+    def test_native_transaction_output_drain_does_not_kill_on_text_limit(self):
+        result=run_command({'argv':[sys.executable,'-c','print("x"*70000)'],'timeout_seconds':None},capture=True,drain_unbounded=True)
+        self.assertEqual(result['exit'],0);self.assertEqual(result['output_bytes'],70001)
+        self.assertEqual(len(result['_private_output']),65536);self.assertTrue(result['output_truncated'])
+    def test_package_schema_blocks_flags_paths_and_unknown_fields(self):
+        validate('package_transaction',{'action':'install','packages':['git=2.55-1+toddy1']})
+        for packages in [['--allow-unauthenticated'],['/tmp/foreign.deb'],['https://fixture.invalid/pkg'],['git','git'],[{}],[]]:
+            with self.assertRaises(PolicyError):validate('package_transaction',{'action':'install','packages':packages})
+        with self.assertRaises(PolicyError):validate('package_transaction',{'action':'install','packages':['git'],'repository':'untrusted'})
     def test_process_timeout_and_output_bound(self):
         for code,error in [('import time;time.sleep(10)','root_command_deadline'),('print("x"*70000)','root_command_output_limit')]:
             with self.assertRaisesRegex(PolicyError,error):root_command({'argv':[sys.executable,'-c',code],'timeout_seconds':1})

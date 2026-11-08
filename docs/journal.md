@@ -1630,3 +1630,13 @@ writes, path/metadata/bounds, clean environment and active Stop/process absence.
 Fixed blocking FIFO read before type inspection; executor-ipc-7 tested the affected
 root reader and existing boundary/recovery paths, all0. Ordinary tools still need
 broker routing; package/service/network and installed owner/systemd remain pending.
+
+### B04 native package transactions — 2026-11-08 UTC
+
+executor-ipc-13 signed toy APT install1/upgrade2/remove preserved owner conffile;
+Stop during real postinst waited safe commit, with actual status/audit/version
+proof. Unbounded drain/bounded retention prevents a text limit killing native
+writes. Original8 control-mode and9/10/11 cache-path failures retained;12 passed,
+13 extends maintainer boundary. policy-core-4 nine changed checks passed. ADR-0120
+records source-backed APT flags, no product key or final installed-source claim.
+Service/network/owner runtime prerequisites still pending; no B04 completion.

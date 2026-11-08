@@ -1,11 +1,11 @@
 {
-  "job": "policy-core-3",
+  "job": "policy-core-4",
   "scope": "native UID101 policy/SQLite/process-loss tests only; no authenticated root IPC",
   "exit": 0,
-  "tests": 8,
-  "log": "test_actual_process_loss_recovery_no_replay (__main__.ExecutorStoreTests.test_actual_process_loss_recovery_no_replay) ... ok\ntest_cancel_before_dispatch_and_running_persists (__main__.ExecutorStoreTests.test_cancel_before_dispatch_and_running_persists) ... ok\ntest_conflicting_dispatch_and_revocation_during_inflight (__main__.ExecutorStoreTests.test_conflicting_dispatch_and_revocation_during_inflight) ... ok\ntest_failed_effect_uncertain_never_replayed (__main__.ExecutorStoreTests.test_failed_effect_uncertain_never_replayed) ... ok\ntest_no_grant_wrong_user_expiry_and_session (__main__.ExecutorStoreTests.test_no_grant_wrong_user_expiry_and_session) ... ok\ntest_prior_store_migrates_without_losing_operation_identity (__main__.ExecutorStoreTests.test_prior_store_migrates_without_losing_operation_identity) ... ok\ntest_revocation_generation_and_no_replay (__main__.ExecutorStoreTests.test_revocation_generation_and_no_replay) ... ok\ntest_strict_inputs_store_permissions_and_nonsecret_audit (__main__.ExecutorStoreTests.test_strict_inputs_store_permissions_and_nonsecret_audit) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.095s\n\nOK\n",
+  "tests": 9,
+  "log": "test_actual_process_loss_recovery_no_replay (__main__.ExecutorStoreTests.test_actual_process_loss_recovery_no_replay) ... ok\ntest_allowlisted_package_error_code_without_arbitrary_payload (__main__.ExecutorStoreTests.test_allowlisted_package_error_code_without_arbitrary_payload) ... ok\ntest_cancel_before_dispatch_and_running_persists (__main__.ExecutorStoreTests.test_cancel_before_dispatch_and_running_persists) ... ok\ntest_conflicting_dispatch_and_revocation_during_inflight (__main__.ExecutorStoreTests.test_conflicting_dispatch_and_revocation_during_inflight) ... ok\ntest_failed_effect_uncertain_never_replayed (__main__.ExecutorStoreTests.test_failed_effect_uncertain_never_replayed) ... ok\ntest_no_grant_wrong_user_expiry_and_session (__main__.ExecutorStoreTests.test_no_grant_wrong_user_expiry_and_session) ... ok\ntest_prior_store_migrates_without_losing_operation_identity (__main__.ExecutorStoreTests.test_prior_store_migrates_without_losing_operation_identity) ... ok\ntest_revocation_generation_and_no_replay (__main__.ExecutorStoreTests.test_revocation_generation_and_no_replay) ... ok\ntest_strict_inputs_store_permissions_and_nonsecret_audit (__main__.ExecutorStoreTests.test_strict_inputs_store_permissions_and_nonsecret_audit) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.097s\n\nOK\n",
   "own_input_sha256": {
-    "runtime/executor/store.py": "0d84b62bd1a3f4617e6c174489536658cd68e5f22ac34b63d199935c7fadb711",
-    "tests/test_executor_store.py": "ea555ea6b017340c1b38b6c53dafb7cefbf93ac8dbd09a0c1d7d92e7307c954c"
+    "runtime/executor/store.py": "ccc356f6a1e238fb083f7691548a581d90e0b43ba5c973c58c617cfcb10f0a45",
+    "tests/test_executor_store.py": "993f2dc8f3b4913c708cc4d6216bbb64daa7698c947e3b431f7ea88fcb4cadc2"
   }
 }

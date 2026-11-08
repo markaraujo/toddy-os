@@ -13,8 +13,22 @@ gi.require_version('Gio','2.0')
 from gi.repository import Gio,GLib
 from store import Store,PolicyError
 from operations import validate,apply
-sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'broker'))
-from protocol import strict_json
+def strict_json(data):
+    # Executor arguments have a small independent schema: no floating values,
+    # duplicate keys or nonfinite constants. No optional agent-package import.
+    def pairs(items):
+        result={}
+        for key,value in items:
+            if key in result:raise ValueError('duplicate_json_key')
+            result[key]=value
+        return result
+    def reject(_):raise ValueError('noninteger_json_number')
+    def number(value):
+        result=int(value)
+        if abs(result)>2**53-1:raise ValueError('json_integer_range')
+        return result
+    return json.loads(data.decode('utf-8',errors='strict'),object_pairs_hook=pairs,
+        parse_constant=reject,parse_float=reject,parse_int=number)
 
 BUS='io.github.markaraujo.Toddy.Executor'
 OBJECT='/io/github/markaraujo/Toddy/Executor'

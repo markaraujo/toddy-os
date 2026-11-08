@@ -77,6 +77,11 @@ class ExecutorStoreTests(unittest.TestCase):
         audit=json.dumps(self.store.audit(101))
         self.assertNotIn('dummy-secret',audit);self.assertNotIn('private dummy',audit)
         self.assertEqual(self.store.audit(102),[])
+    def test_allowlisted_package_error_code_without_arbitrary_payload(self):
+        self.grant();self.plan()
+        def fail(*_):raise PolicyError('package_status_unverified')
+        with self.assertRaisesRegex(PolicyError,'operation_uncertain'):self.dispatch_operation(apply=fail)
+        self.assertEqual(self.store.inspect(101,'operation')['result'],{'code':'package_status_unverified'})
     def test_actual_process_loss_recovery_no_replay(self):
         # Real process loss after an observable effect and before terminal record.
         store=Store(self.path);store.set_grant(101,'standing',expires=__import__('time').time()+60)

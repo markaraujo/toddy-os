@@ -6,7 +6,7 @@ After=dbus.service
 [Service]
 Type=dbus
 BusName=io.github.markaraujo.Toddy.Executor
-ExecStart=/usr/bin/python3 /usr/lib/toddy/runtime/executor/service.py
+ExecStart=/usr/bin/python3 /usr/lib/toddy/executor/service.py
 User=root
 Group=root
 StateDirectory=toddy/executor

@@ -28,6 +28,26 @@ def client():
         except GLib.Error as error:
             assert code in error.message,(code,error.message);return
         raise AssertionError('expected denial')
+    if sys.argv[2] in ('package-v1','package-v2','package-remove'):
+        mode=sys.argv[2];action='remove' if mode=='package-remove' else 'upgrade' if mode=='package-v2' else 'install'
+        package='toddy-managed-probe'+('=2' if mode=='package-v2' else '=1' if mode=='package-v1' else '')
+        encoded=json.dumps({'action':action,'packages':[package]})
+        assert call('PlanOperation',(mode,'package_transaction',encoded))['state']=='planned'
+        if mode=='package-v1':
+            import threading
+            outcomes=[]
+            def install():outcomes.append(call('DispatchOperation',(mode,'package_transaction',encoded)))
+            thread=threading.Thread(target=install);thread.start()
+            deadline=time.monotonic()+5
+            while not Path('/etc/toddy-package-inflight').exists() and time.monotonic()<deadline:time.sleep(.01)
+            assert Path('/etc/toddy-package-inflight').exists(),'maintainer script never started'
+            request=call('CancelOperation',(mode,),'(s)');assert request['cancel_requested'] and request['state']=='running'
+            thread.join(4);assert not thread.is_alive() and len(outcomes)==1
+            result=outcomes[0]
+            assert result['cancel_requested'] and result['result']['cancellation_requested']
+        else:result=call('DispatchOperation',(mode,'package_transaction',encoded))
+        assert result['state']=='completed' and result['result']['verified']
+        return result['result']
     args={'path':'/etc/toddy-executor-fixture.conf','text':'verified native mutation\n','expected_sha256':None}
     encoded=json.dumps(args)
     if sys.argv[2]=='wrong-user':
@@ -130,7 +150,7 @@ def main():
         return subprocess.Popen(['python3',str(ROOT/'linux_identity.py'),'101','python3',str(Path(__file__)),'--client',mode],
             env={**os.environ,'HOME':'/build/client'},stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
     def start_service():
-        child=subprocess.Popen(['python3',str(ROOT/'service.py'),'--state-dir','/build/policy'],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
+        child=subprocess.Popen(['python3',str(ROOT/'package_debug_launcher.py'),'--state-dir','/build/policy'],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
         with selectors.DefaultSelector() as selector:
             selector.register(child.stdout,selectors.EVENT_READ);assert selector.select(5),'service readiness timeout'
             line=child.stdout.readline();assert line.strip()=='READY'
@@ -151,8 +171,17 @@ def main():
         while not Path('/run/toddy-executor-test-bus').exists():
             assert bus.poll() is None and time.monotonic()<deadline;time.sleep(.01)
         os.environ['DBUS_SYSTEM_BUS_ADDRESS']='unix:path=/run/toddy-executor-test-bus'
+        from package_probe import prepare,publish,finish
+        prepare()
         policy('grant')
         service=start_service()
+        package_v1=run_client('package-v1')
+        assert Path('/etc/toddy-managed-probe.conf').read_text()=='default-1\n'
+        Path('/etc/toddy-managed-probe.conf').write_text('owner-customized\n')
+        publish('2');package_v2=run_client('package-v2')
+        assert Path('/etc/toddy-managed-probe.conf').read_text()=='owner-customized\n'
+        package_removed=run_client('package-remove')
+        assert Path('/etc/toddy-managed-probe.conf').read_text()=='owner-customized\n'
         allowed=run_client('allowed');wrong=run_client('wrong-user',65534)
         current=Path('/etc/toddy-executor-fixture.conf').read_bytes();assert current==b'verified native mutation\n'
         crash=client_process('crash')
@@ -202,7 +231,8 @@ def main():
         report={'scope':'native root/UID system-D-Bus in synthetic /etc only; no installed configuration changed',
             'allowed':allowed,'wrong_user':wrong,'revocation':denial,'private_policy_denied':True,'canceled_process_absent':True,'service_loss_child_absent':True,'restart_outcome_uncertain_no_replay':True,'active_revoke_stop_ms':revoke_ms,
             'namespace_root_capabilities':hex(capabilities),'logind_session':'not present; session grants core-tested only',
-            'pending':'package/service/network operations and authenticated graphical owner surface'}
+            'packages':{'install':package_v1,'upgrade':package_v2,'remove':package_removed,'owner_config_preserved':True},
+            'pending':'service/network operations and authenticated graphical owner surface'}
     finally:
         if service:
             service.terminate()
@@ -210,6 +240,8 @@ def main():
             except subprocess.TimeoutExpired:service.kill();service.wait()
             report['expected_gio_deprecation_warning']=expected_stderr(service)
         bus.terminate();bus.wait(timeout=5);buslog.close()
+        from package_probe import finish
+        if Path('/build/package-proof/keys').exists():finish()
     print(json.dumps(report))
 
 if __name__=='__main__':

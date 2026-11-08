@@ -37,6 +37,9 @@ def validate(kind,args):
            not argv[0].startswith('/') or sum(len(arg.encode()) for arg in argv)>16384 or \
            type(args['timeout_seconds']) is not int or not 1<=args['timeout_seconds']<=120:
             raise PolicyError('invalid_operation')
+    elif kind=='package_transaction':
+        from native_backends import validate_package
+        validate_package(args)
     else:raise PolicyError('operation_unavailable')
     return args
 
@@ -97,12 +100,12 @@ def config_replace(args,canceled=lambda:False):
         os.close(directory)
 
 
-def root_command(args,canceled=lambda:False):
-    deadline=time.monotonic()+args['timeout_seconds']
+def run_command(args,canceled=lambda:False,*,capture=False,drain_unbounded=False):
+    deadline=time.monotonic()+args['timeout_seconds'] if args['timeout_seconds'] is not None else float('inf')
     process=subprocess.Popen([sys.executable,str(Path(__file__).with_name('command_child.py')),str(os.getpid()),*args['argv']],stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,cwd='/',env={'PATH':'/usr/sbin:/usr/bin','LANG':'C.UTF-8','HOME':'/root'},
         start_new_session=True,umask=0o077,close_fds=True)
-    digest=hashlib.sha256();count=0
+    digest=hashlib.sha256();count=0;chunks=[];captured=0
     try:
         with selectors.DefaultSelector() as selector:
             selector.register(process.stdout,selectors.EVENT_READ)
@@ -114,8 +117,10 @@ def root_command(args,canceled=lambda:False):
                     chunk=os.read(key.fd,8192)
                     if not chunk:selector.unregister(key.fileobj);continue
                     count+=len(chunk)
-                    if count>65536:raise PolicyError('root_command_output_limit')
+                    if count>65536 and not drain_unbounded:raise PolicyError('root_command_output_limit')
                     digest.update(chunk)
+                    if capture and captured<65536:
+                        retained=chunk[:65536-captured];chunks.append(retained);captured+=len(retained)
             # Keep the exited leader unreaped until group cleanup, avoiding a
             # reused PID/group identity between wait and killpg.
             while True:
@@ -126,12 +131,18 @@ def root_command(args,canceled=lambda:False):
                 time.sleep(.01)
             code=exited.si_status if exited.si_code==os.CLD_EXITED else -exited.si_status
         # This verifies process termination only, not arbitrary shell side effects.
-        return {'process_exit_verified':True,'exit':code,'output_bytes':count,'output_sha256':digest.hexdigest(),
-                'unrestricted_root':True,'side_effects_verified':False}
+        result={'process_exit_verified':True,'exit':code,'output_bytes':count,'output_sha256':digest.hexdigest(),
+                'unrestricted_root':True,'side_effects_verified':False,'output_truncated':bool(capture and count>65536)}
+        if capture:result['_private_output']=b''.join(chunks)
+        return result
     finally:
         try:os.killpg(process.pid,signal.SIGKILL)
         except ProcessLookupError:pass
         process.wait();process.stdout.close()
+
+
+def root_command(args,canceled=lambda:False):
+    return run_command(args,canceled)
 
 
 def apply(kind,args,canceled=lambda:False):
@@ -139,4 +150,7 @@ def apply(kind,args,canceled=lambda:False):
     validate(kind,args)
     if canceled():raise PolicyError('operation_canceled_before_dispatch')
     if kind=='config_replace':return config_replace(args,canceled)
+    if kind=='package_transaction':
+        from native_backends import package_transaction
+        return package_transaction(args,canceled)
     return root_command(args,canceled)
