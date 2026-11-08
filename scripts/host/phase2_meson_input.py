@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prepare a selected immutable Meson source/recipe input, never install it."""
+"""Prepare a selected immutable source/recipe input, never install it."""
 import hashlib
 import json
 from pathlib import Path
@@ -9,7 +9,7 @@ import sys
 import phase2_vm
 ROOT=phase2_vm.ROOT
 NAME=sys.argv[1]
-assert NAME in ('wayland','wayland-protocols','pixman')
+assert NAME in ('wayland','wayland-protocols','pixman','libpng')
 if __name__=='__main__':
     row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==NAME)
     archive=ROOT/'.local/sources'/row['filename'];data=archive.read_bytes()

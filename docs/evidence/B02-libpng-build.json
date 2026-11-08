@@ -1,0 +1,22 @@
+{
+  "job": "libpng-1",
+  "exit": 0,
+  "scope": "native UID101 standard PNG source/tests/stage; APNG not included",
+  "source": {
+    "source_sha256": "28eb403f51f0f7405249132cecfe82ea5c0ef97f1b32c5a65828814ae0d34775",
+    "reference": "BLFS13.1-systemd general/libpng.html",
+    "book_page_sha256": "c8ad48a89f56191ead0ad71063eb5309484ec899ac44c90722048fd6810a96a4",
+    "source_patches": [],
+    "recipe_sha256": "a487296f134534bc2a4925aaeeded71aad240415f1180ba4c51bc989041d1969"
+  },
+  "automake_counts": {
+    "TOTAL": 36,
+    "PASS": 36,
+    "SKIP": 0,
+    "XFAIL": 0,
+    "FAIL": 0,
+    "XPASS": 0,
+    "ERROR": 0
+  },
+  "raw_test_log_sha256": "22510d4696c11fea02716e7c47685e808ffb692bebdd00401179aa04448fb7b2"
+}

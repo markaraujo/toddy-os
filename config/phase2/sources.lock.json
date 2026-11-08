@@ -396,6 +396,30 @@
       "book_md5": "c08173c8e1d2cc79428d931c13ffda59",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "libpng",
+      "version": "1.6.58",
+      "filename": "libpng-1.6.58.tar.xz",
+      "url": "https://downloads.sourceforge.net/libpng/libpng-1.6.58.tar.xz",
+      "sha256": "28eb403f51f0f7405249132cecfe82ea5c0ef97f1b32c5a65828814ae0d34775",
+      "reference": "BLFS13.1-systemd general/libpng.html",
+      "book_page_sha256": "c8ad48a89f56191ead0ad71063eb5309484ec899ac44c90722048fd6810a96a4",
+      "book_md5": "c6c372a9d7754c66e0b77a8d34987a3b",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "freetype",
+      "version": "2.14.3",
+      "filename": "freetype-2.14.3.tar.xz",
+      "url": "https://downloads.sourceforge.net/freetype/freetype-2.14.3.tar.xz",
+      "sha256": "36bc4f1cc413335368ee656c42afca65c5a3987e8768cc28cf11ba775e785a5f",
+      "reference": "BLFS13.1-systemd general/freetype2.html",
+      "book_page_sha256": "fd2b201c5ccdb587f5a192c1e67bb95c7d678fe84b7874f28405d91049fdc34c",
+      "book_md5": "5e78e6fdce5a61d3075e4c25e9852f84",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

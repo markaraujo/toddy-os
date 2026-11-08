@@ -310,7 +310,9 @@
         "docs/evidence/B02-wayland-protocols-build.json",
         "docs/evidence/B02-wayland-protocols-install.json",
         "docs/evidence/B02-pixman-build.json",
-        "docs/evidence/B02-pixman-install.json"
+        "docs/evidence/B02-pixman-install.json",
+        "docs/evidence/B02-libpng-build.json",
+        "docs/evidence/B02-libpng-install.json"
       ]
     },
     {

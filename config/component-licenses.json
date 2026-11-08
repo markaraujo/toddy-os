@@ -2659,6 +2659,12 @@
           ]
         }
       }
+    },
+    {
+      "name": "libpng",
+      "version": "1.6.58",
+      "license": "Libpng-2.0 AND LicenseRef-libpng-per-file",
+      "evidence": "Authenticated LICENSE/root per-file notices; standard unpatched PNG for Cairo/GDK. APNG is not advertised; Firefox must use its separately frozen bundled PNG unless a system APNG profile is explicitly qualified."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

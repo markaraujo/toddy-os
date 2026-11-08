@@ -14,6 +14,8 @@ from package_copyright import write_copyright
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libpng': ('1.6.58', 'glibc (>= 2.44-1), zlib (>= 1.3.2-1)',
+               'libpng-1.6.58.tar.xz', 'usr/lib/pkgconfig/libpng16.pc'),
     'pixman': ('0.46.4', 'glibc (>= 2.44-1)',
                'pixman-0.46.4.tar.gz', 'usr/lib/pkgconfig/pixman-1.pc'),
     'wayland': ('1.26.0', 'glibc (>= 2.44-1), libffi (>= 3.8.0-1), libxml2 (>= 2.15.3-1+toddy1)',
@@ -49,6 +51,10 @@ if __name__ == '__main__':
     if name in ('wayland-protocols','pixman'):
         rows=[json.loads(line) for line in (Path('/mnt/lfs/sources/phase2/work')/(name+'-1')/'compile/meson-logs/testlog.json').read_text().splitlines()]
         assert rows and all(r['result']=='OK' and r['returncode']==0 and not r['is_fail'] for r in rows)
+    if name=='libpng':
+        counts=json.loads(Path('/mnt/lfs/sources/phase2/work/libpng-1/test-results.json').read_text())
+        assert counts['TOTAL']>0 and counts['TOTAL']==counts['PASS']
+        assert all(counts[k]==0 for k in ['SKIP','XFAIL','FAIL','XPASS','ERROR'])
     if name=='libxml2':
         status=json.loads((ROOT/'status.json').read_text())
         assert status['owner_review']['phase_2_approved'] is True

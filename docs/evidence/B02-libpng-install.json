@@ -1,0 +1,38 @@
+{
+  "scope": "native standard PNG encode/decode and owned package only; no APNG or graphical session",
+  "step": {
+    "step": "b02-libpng-install",
+    "started": "2026-11-08T03:36:03.913718+00:00",
+    "finished": "2026-11-08T03:36:14.469109+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 40,
+    "log_sha256": "f7dd64facb5d975ffd203b6f69a66fb7ae5372ae0e362a3e1fc018eecadda3fb"
+  },
+  "success_record_sha256": "8816ded36cd013e14b00efe3b1510446f07c2c429197aabb0f2e58ea6f3159c8",
+  "package": {
+    "name": "libpng",
+    "version": "1.6.58-1+toddy1",
+    "archive_sha256": "f1509b9177c16956d81d1f4c4e9061a67329d65d3de1e6f328ff3ac5c353721c",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-libpng-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 9.257,
+        "entries": 92757,
+        "regular_files": 80112,
+        "regular_bytes": 4909157659
+      },
+      {
+        "seconds": 8.855,
+        "entries": 92792,
+        "regular_files": 80135,
+        "regular_bytes": 4910735070
+      }
+    ],
+    "total_seconds": 20.447
+  }
+}
