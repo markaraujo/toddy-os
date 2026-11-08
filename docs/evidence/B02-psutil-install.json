@@ -1,0 +1,38 @@
+{
+  "scope": "Owned native build/test module; staged UID101 and installed process CPU/memory, real timeout, terminate and recursive descendant kill/reap APIs used by lit. Broad upstream host/network matrix not run; build-only dependency.",
+  "step": {
+    "step": "b02-psutil-install",
+    "started": "2026-11-08T08:00:19.914027+00:00",
+    "finished": "2026-11-08T08:00:30.515703+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 74,
+    "log_sha256": "e17b9b26a980b25310f0885b3d0381cb94a6d68aa54552842ad2b0f3cd67f128"
+  },
+  "success_record_sha256": "ee0ebc8029b60ef37cb85ea620f352d6399133f77f7091502dd7ba2553b92927",
+  "package": {
+    "name": "psutil",
+    "version": "7.2.2-1+toddy1",
+    "archive_sha256": "1bf797707c4f99f905b36c89c04f0da0739c2b76995248ed2f74991a5f30591f",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-psutil-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.801,
+        "entries": 95563,
+        "regular_files": 82792,
+        "regular_bytes": 4950960598
+      },
+      {
+        "seconds": 9.089,
+        "entries": 95634,
+        "regular_files": 82858,
+        "regular_bytes": 4951560364
+      }
+    ],
+    "total_seconds": 26.054
+  }
+}

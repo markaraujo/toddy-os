@@ -2925,6 +2925,23 @@
           ]
         }
       }
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2",
+      "license": "BSD-3-Clause AND LicenseRef-psutil-per-file",
+      "evidence": "Authenticated frozen BLFS13.1 scoped source; full root LICENSE and C/header notices retained. Build/test dependency for lit timeout process-tree APIs only; native qualification pending, no broad network/system matrix or image-runtime acceptance.",
+      "extra_license_headers": {
+        "psutil-7.2.2.tar.gz": {
+          "prefixes": [
+            "psutil/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

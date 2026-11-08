@@ -3,6 +3,7 @@
 set -euo pipefail
 [[ $(id -u) == 101 && -f /build/compile-result.json && ! -e /stage/usr ]]
 ulimit -c 0
+python3 -c "import psutil;assert psutil.__version__=='7.2.2'"
 python3 - <<'SPACE'
 import os,json
 from pathlib import Path
@@ -11,6 +12,7 @@ s=os.statvfs('/build');assert s.f_bavail*s.f_frsize>=24*1024**3,'Preserve16GiB p
 SPACE
 mkdir /build/critical-tests
 ninja -C /build/compile -j4 UnitTests ClangUnitTests llvm-test-depends clang-test-depends > /build/critical-tests/build.log 2>&1
+cd /build/compile
 python3 - <<'TESTS'
 from pathlib import Path
 import collections,hashlib,json,os,subprocess

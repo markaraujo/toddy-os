@@ -9,12 +9,12 @@ import sys
 import phase2_vm
 ROOT=phase2_vm.ROOT
 NAME=sys.argv[1]
-assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','libjpeg-turbo')
+assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','libjpeg-turbo','psutil')
 if __name__=='__main__':
     row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==NAME)
     archive=ROOT/'.local/sources'/row['filename'];data=archive.read_bytes()
     assert hashlib.sha256(data).hexdigest()==row['sha256']
-    probe=(ROOT/'scripts/build/phase2/freetype-probe.c').read_text() if NAME=='freetype' else None
+    probe=(ROOT/'scripts/build/phase2/freetype-probe.c').read_text() if NAME=='freetype' else (ROOT/'scripts/build/phase2/psutil-probe.py').read_text() if NAME=='psutil' else None
     extra=None
     if NAME in ('shared-mime-info','llvm'):
         extra_name='xdgmime-tests' if NAME=='shared-mime-info' else 'llvm-upstream-fix'
@@ -103,7 +103,7 @@ receipt={'source_sha256':row['sha256'],'reference':row['reference'],
          'recipe_sha256':hashlib.sha256(recipe.encode()).hexdigest()}
 if extra is not None:receipt['extra_source']=extra
 if probe is not None:
-    (source/'toddy-probe.c').write_text(probe)
+    (source/('toddy-probe.py' if row['name']=='psutil' else 'toddy-probe.c')).write_text(probe)
     receipt['probe_sha256']=hashlib.sha256(probe.encode()).hexdigest()
 (source/'toddy-prepared.json').write_text(json.dumps(receipt,indent=2)+'\\n')
 work.mkdir();os.chown(work,101,101)

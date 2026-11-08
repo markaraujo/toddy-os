@@ -1775,3 +1775,36 @@ partition fixtures passed (SDK exclusion/bytes, bad alias, existing output refus
 make check250 passed. Native split/install/ABI and image scope remain pending.
 llvm-qualify-2 healthy critical dependency build174/1068; do not restart. Metadata
 sync required after its terminal result and before LLVM promotion.
+
+### B02 observer correction and changed-font selection — 2026-11-08 UTC
+
+Monitor70454 exited3 falsely: live-child CPU sums fell as compiler processes
+finished, outer output redirected to critical-tests/build.log. Actual Ninja
+progress continued. Corrected observer to nonnegative deltas keyed by PID/start
+identity and optional explicit private progress-log metadata. Three regressions
+passed; replacement monitor89697 observes real writer unchanged, no restart.
+Prepared pango-system-fonts-7 for17 font-sensitive drivers because installed
+Adwaita changes fallback inputs. Nine core/independent geometry proofs reused;
+no full unchanged suite or install replay. Native affected run pending writer.
+PAM1.7.2 source cached host-only. Its [official1.7.3 release](https://github.com/linux-pam/linux-pam/releases/tag/v1.7.3)
+lists memory/authentication fixes requiring targeted source review before native
+privileged integration. Existing [namespace advisory](https://github.com/linux-pam/linux-pam/security/advisories/GHSA-f9p8-gjr4-j9gx)
+was fixed before1.7.2; that observation alone is not complete security acceptance.
+No guest PAM changes, silent version upgrade or foundation rebuild.
+
+### B02 native compiler-test dependency and affected unit recovery — 2026-11-08 UTC
+
+LLVM critical dependencies1068 steps completed, first lit launch refused missing
+psutil before cases. Pinned scoped book psutil7.2.2, isolated offline wheel/stage
+and native owned install/post0/0; actual UID101/installed process memory/CPU,
+timeout, terminate and recursive child kill/reap passed. Full upstream system/
+network matrix not claimed; build-only dependency. Scoped source reader now
+selects the exact referenced module section, tested against wrong-first-download
+and missing-anchor fixtures. No foundation rebuild.
+
+Resume3 dependency dry-run was no-op;10501 LLVM unit PASS and one relative-path
+FAIL from root cwd. ADR0124 preserves raw failure; job4 from normal build cwd
+rechecked1646 affected Support cases0, reuses8856 other native passes, no binary
+recompile. Clang-unit26497 PASS and Transforms9189 PASS/1592 UNSUPPORTED/38 XFAIL
+recorded; other critical suites/stage/install pending. Three negative/merge gate
+checks and make check258 passed. Current writer job4/PID156881/monitor79334.

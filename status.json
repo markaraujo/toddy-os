@@ -339,7 +339,8 @@
         "docs/evidence/B02-pango-build.json",
         "docs/evidence/B02-pango-install.json",
         "docs/evidence/B02-adwaita-fonts-install.json",
-        "docs/evidence/B02-llvm-compile.json"
+        "docs/evidence/B02-llvm-compile.json",
+        "docs/evidence/B02-psutil-install.json"
       ]
     },
     {

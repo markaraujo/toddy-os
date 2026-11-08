@@ -663,6 +663,30 @@
       "book_md5": "575106aff79b589abe4aff6c4bff4782",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "linux-pam",
+      "version": "1.7.2",
+      "filename": "Linux-PAM-1.7.2.tar.xz",
+      "url": "https://github.com/linux-pam/linux-pam/releases/download/v1.7.2/Linux-PAM-1.7.2.tar.xz",
+      "sha256": "3d86b6383fb5fd9eb9578d2cd47d92801191f4bf3f9bc61419bfefc8aa1e531a",
+      "reference": "BLFS13.1-systemd postlfs/linux-pam.html",
+      "book_page_sha256": "341f6f23114e22d4a8a1f23b7664be1ecb9d6f53909afe1f1a22ed19e7fc4c26",
+      "book_md5": "934c26eca3fada956356a30489e86291",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2",
+      "filename": "psutil-7.2.2.tar.gz",
+      "url": "https://files.pythonhosted.org/packages/source/p/psutil/psutil-7.2.2.tar.gz",
+      "sha256": "0746f5f8d406af344fd547f1c8daa5f5c33dbc293bb8d6a16d80b4bb88f59372",
+      "reference": "BLFS13.1-systemd general/python-modules.html#psutil",
+      "book_page_sha256": "eeca0df3449c611069e44d356162b7438e05151c39d225e72c601f049a66a72d",
+      "book_md5": "a1c5c30f68a927053be09592d1a4be53",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

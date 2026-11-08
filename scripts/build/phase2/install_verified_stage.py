@@ -14,9 +14,12 @@ import sys
 from verify_stage import inspect_stage
 from package_copyright import write_copyright
 from llvm_runtime import split_runtime
+from llvm_recover import merge_support_results
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'psutil': ('7.2.2', 'python (>= 3.14), python (<< 3.15), glibc (>= 2.44-1)',
+               'psutil-7.2.2.tar.gz', 'usr/lib/python3.14/site-packages/psutil/__init__.py'),
     'libjpeg-turbo': ('3.2.0', 'glibc (>= 2.44-1)',
                       'libjpeg-turbo-3.2.0.tar.gz', 'usr/lib/libjpeg.so'),
     'adwaita-fonts': ('50.0', 'fontconfig (>= 2.18.3-1+toddy1)',
@@ -68,8 +71,15 @@ if __name__ == '__main__':
     version, depends, archive, required = PROFILES[name]
     subprocess.run(['bash', '-c', 'source /opt/toddy-build/scripts/build/target.sh; guard_target'], check=True)
     log = Path('/var/log/toddy/phase2')
-    qualifier='pango-stage-6' if name=='pango' else 'llvm-qualify-2' if name=='llvm' else 'wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
+    llvm_resume=name=='llvm' and (log/'llvm-qualify-resume-3.job.json').exists()
+    llvm_recovery=name=='llvm' and (log/'llvm-qualify-recovery-4.job.json').exists()
+    qualifier='pango-stage-6' if name=='pango' else 'llvm-qualify-recovery-4' if llvm_recovery else 'llvm-qualify-resume-3' if llvm_resume else 'llvm-qualify-2' if name=='llvm' else 'wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
+    if name=='psutil':
+        proof=json.loads(Path('/mnt/lfs/sources/phase2/work/psutil-1/consumer.json').read_text())
+        assert proof['version']=='7.2.2' and proof['uid']==101
+        assert proof['own_process_memory_cpu'] and proof['timeout_then_terminate_exit']==-15
+        assert proof['recursive_child_kill_and_reap']
     if name=='libjpeg-turbo':
         import xml.etree.ElementTree as ET
         work=Path('/mnt/lfs/sources/phase2/work/libjpeg-turbo-1')
@@ -105,17 +115,38 @@ if __name__ == '__main__':
             assert hashlib.sha256(path.read_bytes()).hexdigest()==row['sha256']
     if name=='llvm':
         assert (log/'llvm-1.exit').read_text().strip()=='0'
-        assert json.loads((log/'llvm-qualify-2.job.json').read_text())['command'][-1]==(ROOT/'scripts/build/phase2/llvm-qualify.sh').read_text()
-        directory=Path('/mnt/lfs/sources/phase2/work/llvm-1/critical-tests')
+        if llvm_resume or llvm_recovery:assert (log/'llvm-qualify-2.exit').read_text().strip()=='1'
+        if llvm_recovery:assert (log/'llvm-qualify-resume-3.exit').read_text().strip()=='1'
+        recipe='llvm_recover.py' if llvm_recovery else 'llvm-resume.sh' if llvm_resume else 'llvm-qualify.sh'
+        assert json.loads((log/(qualifier+'.job.json')).read_text())['command'][-1]==(ROOT/'scripts/build/phase2'/recipe).read_text()
+        work=Path('/mnt/lfs/sources/phase2/work/llvm-1')
+        directory=work/('critical-tests-recovery-4' if llvm_recovery else 'critical-tests-resume' if llvm_resume else 'critical-tests')
         proof=json.loads((directory/'qualified.json').read_text())
         required_suites={'llvm-unit','clang-unit','llvm-transforms','llvm-x86','llvm-execution-engine','clang-codegen','clang-codegen-cxx'}
         assert {r['name'] for r in proof['suites']}==required_suites and len(proof['suites'])==7
         assert proof['required_poison_select_regression']=='PASS'
+        if llvm_recovery:
+            assert proof['binaries_unchanged'] and proof['unit_recovery']['cwd']=='/build/compile'
+            original=work/'critical-tests-resume/llvm-unit.json';corrected=directory/'llvm-unit-support.json'
+            recovery=proof['unit_recovery']
+            assert hashlib.sha256(original.read_bytes()).hexdigest()==recovery['original_report_sha256']
+            assert hashlib.sha256(corrected.read_bytes()).hexdigest()==recovery['affected_report_sha256']
+            merged=merge_support_results(json.loads(original.read_text())['tests'],json.loads(corrected.read_text())['tests'])
+            derived=json.loads((directory/'llvm-unit.json').read_text())
+            assert derived['tests']==merged and derived['qualification']==recovery
+            for path,sha in proof['binary_inputs'].items():
+                assert path.startswith('/build/compile/')
+                actual=work/path.removeprefix('/build/')
+                assert actual.resolve().is_relative_to((work/'compile').resolve())
+                assert hashlib.sha256(actual.read_bytes()).hexdigest()==sha
         for row in proof['suites']:
             report=directory/(row['name']+'.json');raw=report.read_bytes()
             assert hashlib.sha256(raw).hexdigest()==row['report_sha256']
             tests=json.loads(raw)['tests'];counts=dict(collections.Counter(t['code'] for t in tests))
-            assert row['exit']==0 and tests and counts==row['counts'] and counts.get('PASS',0)>0
+            if llvm_recovery and row['name']=='llvm-unit':
+                assert row['qualification_exit']==0 and row['original_native_exit']==1 and row['affected_native_exit']==0
+            else:assert row['exit']==0
+            assert tests and counts==row['counts'] and counts.get('PASS',0)>0
             assert set(counts)<={'PASS','XFAIL','UNSUPPORTED'}
     if name=='harfbuzz':
         assert (log/'harfbuzz-1.exit').read_text().strip()=='1'

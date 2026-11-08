@@ -10,6 +10,19 @@ from urllib.parse import urlsplit
 import phase2_dependency_graph as graph
 
 ROOT=Path(__file__).resolve().parents[2]
+
+
+def reference_scope(tree, anchor):
+    if not anchor:return tree
+    parents={child:parent for parent in tree.iter() for child in parent}
+    found=next((e for e in tree.iter() if e.get('id')==anchor),None)
+    assert found is not None,'Missing package anchor'
+    while found in parents:
+        found=parents[found]
+        if found.tag.endswith('}div') and found.get('class')=='sect2':return found
+    raise AssertionError('Package anchor has no scoped section')
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('reference');parser.add_argument('name');parser.add_argument('version')
@@ -17,10 +30,13 @@ if __name__=='__main__':
     assert re.fullmatch(r'[a-z0-9][a-z0-9+.-]{0,95}',args.name)
     assert re.fullmatch(r'[0-9][a-zA-Z0-9._+-]{0,95}',args.version)
     nodes=json.loads((ROOT/'config/phase2/desktop-dependencies.json').read_text())['nodes']
-    node=nodes[args.reference];assert '#' not in args.reference,'Use a separately scoped module source preparer'
-    page=graph.BOOK/args.reference;raw=page.read_bytes()
+    assert args.reference in nodes or any(e['reference']==args.reference for n in nodes.values() for e in n['edges']), 'Source must belong to the selected graph or an explicit referenced dependency'
+    node=nodes.get(args.reference) or graph.node(args.reference)
+    filename,_,anchor=args.reference.partition('#')
+    page=graph.BOOK/filename;raw=page.read_bytes()
     assert hashlib.sha256(raw).hexdigest()==node['book_page_sha256']
     tree=graph.ET.fromstring(re.sub(r'&([A-Za-z][A-Za-z0-9]*);',graph.entity,raw.decode()))
+    tree=reference_scope(tree,anchor)
     url=md5=None
     for paragraph in tree.findall('.//x:p',graph.NS):
         text=' '.join(''.join(paragraph.itertext()).split())
