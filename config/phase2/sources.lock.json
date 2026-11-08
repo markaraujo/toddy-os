@@ -1260,6 +1260,32 @@
       "integrity": "Primary HTTPS upstream tag archive; actual upstream Git tag identity recorded; full tar member checks before native extraction",
       "scope": "Private native unit-test SDK only; not a runtime/catalog dependency",
       "status": "source_verified"
+    },
+    {
+      "name": "sassc",
+      "version": "3.6.2",
+      "filename": "sassc-3.6.2.tar.gz",
+      "url": "https://github.com/sass/sassc/archive/3.6.2/sassc-3.6.2.tar.gz",
+      "sha256": "608dc9002b45a91d11ed59e352469ecc05e4f58fc1259fc9a9f5b8f0f8348a03",
+      "book_md5": "4c3b06ce2979f2a9f0a35093e501d8bb",
+      "book_page_sha256": "eecfb3dd16a29a4efc8f8f08996f1edefdd734c0e323cad52d5d7e90502b4241",
+      "reference": "BLFS13.1-systemd general/sassc.html",
+      "integrity": "Official primary HTTPS archive matched frozen book MD5; complete gzip/tar parsed, SHA256 frozen",
+      "status": "source_verified",
+      "scope": "Native stylesheet build tools, no desktop/catalog qualification"
+    },
+    {
+      "name": "libsass",
+      "version": "3.6.6",
+      "filename": "libsass-3.6.6.tar.gz",
+      "url": "https://github.com/sass/libsass/archive/3.6.6/libsass-3.6.6.tar.gz",
+      "sha256": "11f0bb3709a4f20285507419d7618f3877a425c0131ea8df40fe6196129df15d",
+      "book_md5": "afda97284d75a030cabadf5b9f998a3b",
+      "book_page_sha256": "eecfb3dd16a29a4efc8f8f08996f1edefdd734c0e323cad52d5d7e90502b4241",
+      "reference": "BLFS13.1-systemd general/sassc.html",
+      "integrity": "Official primary HTTPS archive matched frozen book MD5; complete gzip/tar parsed, SHA256 frozen",
+      "status": "source_verified",
+      "scope": "Native stylesheet build tools, no desktop/catalog qualification"
     }
   ]
 }

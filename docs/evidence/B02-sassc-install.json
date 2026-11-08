@@ -1,0 +1,38 @@
+{
+  "scope": "Native stylesheet CLI; actual3.6.2/LibSass3.6.6 versions, nested Unicode+navy/include/refusal staged+installed0; no GUI/catalog qualification",
+  "step": {
+    "step": "b02-sassc-install",
+    "started": "2026-11-08T19:01:23.138221+00:00",
+    "finished": "2026-11-08T19:01:45.202963+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 11,
+    "log_sha256": "9520d9256aebe0fe69ea1919e6a9365fdbad8e6fc36d1daf451832886d06e3dd"
+  },
+  "success_record_sha256": "7f6aac954311838b47bbb28441d7caf2c292941d44daca33b5c81cd5563df2b1",
+  "package": {
+    "name": "sassc",
+    "version": "3.6.2-1+toddy1",
+    "archive_sha256": "55a216246bfca0b74c86bcfc118b741df029174cedca5082922ae4d79e0d0a9c",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-sassc-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 21.499,
+        "entries": 140094,
+        "regular_files": 124297,
+        "regular_bytes": 6806786563
+      },
+      {
+        "seconds": 20.377,
+        "entries": 140102,
+        "regular_files": 124303,
+        "regular_bytes": 6806818295
+      }
+    ],
+    "total_seconds": 44.551
+  }
+}

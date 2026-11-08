@@ -2319,3 +2319,31 @@ integration; it is not graphical or software-catalog application qualification.
 Libadwaita1.9.3 follows. Its actual upstream GTK widget tests require a display;
 compile/ABI staging alone must remain unqualified until a native compositor can
 run them. Continue eligible planned compositor dependencies if display blocks.
+
+### B02 native stylesheet tools and Libadwaita stage
+
+Libadwaita1.9.3 configuration found every core library but required Sassc. Both
+stylesheet archives matched the frozen BLFS13.1 general/sassc.html MD5 and primary
+HTTPS source SHA256. [LibSass3.6.6](evidence/B02-libsass-build.json) compiled and
+passed its two unmodified bundled C++ programs,27 cases, plus actual nested navy
+SCSS and malformed-input refusal. The upstream configure step replaces only the
+tracked version header placeholder[NA] with the authenticated tag3.6.6. An
+overly broad unchanged-source assertion initially rejected that generated
+metadata; qualification-only recovery retained all actual exits and verified
+every other original code file unchanged. No native work was replayed.
+
+[LibSass ownership](evidence/B02-libsass-install.json) and
+[Sassc3.6.2 ownership](evidence/B02-sassc-install.json) passed0/0. The real
+[Sassc CLI](evidence/B02-sassc-build.json) proved both frozen versions, nested
+navy/Unicode CSS, private include resolution and malformed-input refusal. Native
+upstream version.sh environment overrides supply authenticated archive versions
+without requiring Git metadata. No external Ruby Sass-spec matrix is bundled or
+claimed passed. The48-member shared raw evidence bundle preserves these results.
+
+[Libadwaita native compilation/stage](evidence/B02-libadwaita-stage.json) then
+passed, including actual stylesheet compilation, C version linkage and Python/GI
+version1.9.3. All67 registered GTK widget programs remain pending a native display:
+their original gtk_test_init/adw_init requires it. No unit success, graphical
+acceptance, installed package or software-catalog availability is claimed. Keep
+the compiled cache/stage and15-member raw bundle; advance the planned Mutter
+compositor dependencies to provide the display without a substitute framework.

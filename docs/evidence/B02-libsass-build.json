@@ -1,0 +1,75 @@
+{
+  "scope": "Native stylesheet dependency; exact generated version metadata qualification only",
+  "phases": [
+    {
+      "phase": "bootstrap",
+      "native_exit": 0,
+      "reserve_stop": false,
+      "seconds": 4.006,
+      "free_bytes_after": 17774936064
+    },
+    {
+      "phase": "configure",
+      "native_exit": 0,
+      "reserve_stop": false,
+      "seconds": 4.001,
+      "free_bytes_after": 17774313472
+    },
+    {
+      "phase": "build",
+      "native_exit": 0,
+      "reserve_stop": false,
+      "seconds": 24.003,
+      "free_bytes_after": 17761259520
+    },
+    {
+      "phase": "upstream-cpp",
+      "native_exit": 0,
+      "reserve_stop": false,
+      "seconds": 2.001,
+      "free_bytes_after": 17760096256
+    },
+    {
+      "phase": "stage",
+      "native_exit": 0,
+      "reserve_stop": false,
+      "seconds": 2.001,
+      "free_bytes_after": 17756569600
+    },
+    {
+      "phase": "consumer-build",
+      "native_exit": 0,
+      "reserve_stop": false,
+      "seconds": 2.001,
+      "free_bytes_after": 17756545024
+    },
+    {
+      "phase": "consumer",
+      "native_exit": 0,
+      "reserve_stop": false,
+      "seconds": 2.001,
+      "free_bytes_after": 17756540928
+    }
+  ],
+  "bundled_upstream_cpp_programs": 2,
+  "bundled_upstream_cpp_cases": 27,
+  "bundled_upstream_exit": 0,
+  "staged_consumer_exit": 0,
+  "unchanged_original_code_files": 155,
+  "generated_version_header": {
+    "file": "include/sass/version.h",
+    "input_sha256": "e6fdbea6a28c220dc1f3b572783e38ef12bb31abb6e179b466b679851d8b8f4c",
+    "output_sha256": "f2ae72b1fb20b8d2762353592895ad64e0c28330df535827d5f13e0692cf814b",
+    "change": "Only upstream configure version placeholder [NA] -> authenticated3.6.6"
+  },
+  "preserved_compiled_elf_files": 68,
+  "preserved_stage_files_links": 12,
+  "limitations": "External Ruby Sass-spec matrix not bundled or claimed passed. Native CSS API/negative input/two bundled C++ programs qualified; actual Libadwaita stylesheet compilation remains required.",
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-sass-tools-native-evidence.tar.gz",
+    "bytes": 255728,
+    "sha256": "d36db6c0f4dd5526f9dfff05e81938accedd82be2f3c4db8081ad4ad8f8d49b5",
+    "members": 48,
+    "scope": "LibSass27bundledCppcases/nativeCAPI0/exact generated-header recovery and Sassc4CLIchecks including expected malformed refusal; both owned0/0, no GUI claim"
+  }
+}

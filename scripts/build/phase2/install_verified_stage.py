@@ -19,6 +19,10 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'sassc': ('3.6.2', 'libsass (= 3.6.6-1+toddy1), glibc (>= 2.44-1), gcc (>= 16.2.0-1)',
+              'sassc-3.6.2.tar.gz', 'usr/bin/sassc'),
+    'libsass': ('3.6.6', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1)',
+               'libsass-3.6.6.tar.gz', 'usr/lib/pkgconfig/libsass.pc'),
     'appstream': ('1.1.6', 'glib (>= 2.88.3-1+toddy1), curl (>= 8.23.0-1), libxml2 (= 2.15.3-1+toddy1), libfyaml (= 0.9.6-1+toddy1), libxmlb (= 0.3.29-1+toddy1), zstd (>= 1.5.7-1)',
                    'AppStream-1.1.6.tar.xz', 'usr/lib/pkgconfig/appstream.pc'),
     'libfyaml': ('0.9.6', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1)',
@@ -121,6 +125,7 @@ if __name__ == '__main__':
     if pci_resume:qualifier='libpciaccess-resume-2'
     doxygen_finish=name=='doxygen' and (log/'doxygen-finish-2.job.json').exists()
     if doxygen_finish:qualifier='doxygen-finish-2'
+    if name=='libsass' and (log/'libsass-qualify-2.job.json').exists():qualifier='libsass-qualify-2'
     if name=='appstream' and (log/'appstream-probe-4.job.json').exists():qualifier='appstream-probe-4'
     if name=='libfyaml' and (log/'libfyaml-finish-2.job.json').exists():qualifier='libfyaml-finish-2'
     if name=='itstool' and (log/'itstool-recovery-2.job.json').exists():qualifier='itstool-recovery-2'
@@ -458,6 +463,32 @@ if __name__ == '__main__':
         assert {t['name'] for t in tests}=={'testdict','testchar','testparser','testrecurse','testcatalog','testapi','runtest'}
         assert len(tests)==7 and all(t['exit']==0 for t in tests)
         assert (work/'test-logs/runtest.log').read_text().rstrip().endswith('Total 3904 tests, no errors')
+    if name=='sassc':
+        work=Path('/mnt/lfs/sources/phase2/work/sassc-1');source=Path('/mnt/lfs/sources/phase2/inputs/sassc-3.6.2')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/sassc-build.sh').read_bytes()
+        assert (source/'toddy-probe.py').read_bytes()==(ROOT/'scripts/build/phase2/sassc-probe.py').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==0
+        checks=proof['consumer']['checks'];assert len(checks)==4
+        assert all((r['native_exit']!=0) if r['expected_refusal'] else (r['native_exit']==0) for r in checks)
+        assert [r['name'] for r in checks]==['version','nested-unicode','private-include','malformed-refusal']
+    if name=='libsass':
+        work=Path('/mnt/lfs/sources/phase2/work/libsass-1');source=Path('/mnt/lfs/sources/phase2/inputs/libsass-3.6.6')
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libsass-probe.c').read_bytes()
+        if qualifier=='libsass-qualify-2':
+            assert (log/'libsass-1.exit').read_text().strip()=='1'
+            assert json.loads((log/'libsass-qualify-2.job.json').read_text())['command'][-3:]==['python3','-c',(ROOT/'scripts/build/phase2/libsass_qualify.py').read_text()]
+            for relative,digest in json.loads((work/'qualify-2/binaries.json').read_text()).items():
+                with (work/'compile'/relative).open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==digest
+            for relative,row in json.loads((work/'qualify-2/stage-files.json').read_text()).items():
+                path=work/'stage'/relative
+                if 'link' in row:assert str(path.readlink())==row['link']
+                else:
+                    with path.open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==row['sha256']
+        else:assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libsass-build.sh').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['bundled_upstream_cpp_programs']==2 and proof['bundled_upstream_exit']==proof['staged_consumer_exit']==0
+        assert all(r['native_exit']==0 and not r['reserve_stop'] for r in proof['phases'])
+        original=source/'include/sass/version.h';generated=work/'compile/include/sass/version.h'
+        assert generated.read_bytes()==original.read_bytes().replace(b'"[NA]"',b'"3.6.6"',1)
     if name=='appstream':
         work=Path('/mnt/lfs/sources/phase2/work/appstream-1')
         source=Path('/mnt/lfs/sources/phase2/inputs/AppStream-1.1.6')

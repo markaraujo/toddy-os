@@ -1,0 +1,49 @@
+{
+  "scope": "Native stylesheet build wrapper; no graphical or catalog acceptance",
+  "registered_upstream_suite": "Not bundled; frozen BLFS13.1 states no test suite, external Ruby Sass-spec not claimed passed",
+  "staged_consumer_exit": 0,
+  "consumer": {
+    "scope": "Native stylesheet build CLI, no GUI/catalog acceptance",
+    "checks": [
+      {
+        "name": "version",
+        "native_exit": 0,
+        "expected_refusal": false,
+        "stdout": "sassc: 3.6.2\nlibsass: 3.6.6\nsass2scss: 1.1.1\nsass: 3.5\n",
+        "stderr": ""
+      },
+      {
+        "name": "nested-unicode",
+        "native_exit": 0,
+        "expected_refusal": false,
+        "stdout": "@charset \"UTF-8\";\n.toddy {\n  color: #002040;\n  content: \"a\u00e7\u00e3o \u65e5\u672c\u8a9e\";\n}\n\n.toddy:hover {\n  opacity: 0.9;\n}\n",
+        "stderr": ""
+      },
+      {
+        "name": "private-include",
+        "native_exit": 0,
+        "expected_refusal": false,
+        "stdout": ".toddy {\n  color: #002040;\n}\n",
+        "stderr": ""
+      },
+      {
+        "name": "malformed-refusal",
+        "native_exit": 65,
+        "expected_refusal": true,
+        "stdout": "",
+        "stderr": "Error: style declaration must contain a value\n        on line 1:15 of stdin\n>> .toddy { color:;\n   --------------^\n"
+      }
+    ],
+    "navy_nested_unicode": true,
+    "private_include": true,
+    "malformed_refusal": true
+  },
+  "version_source": "Supported upstream SASSC_VERSION=3.6.2 override for authenticated archive without VCS metadata",
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-sass-tools-native-evidence.tar.gz",
+    "bytes": 255728,
+    "sha256": "d36db6c0f4dd5526f9dfff05e81938accedd82be2f3c4db8081ad4ad8f8d49b5",
+    "members": 48,
+    "scope": "LibSass27bundledCppcases/nativeCAPI0/exact generated-header recovery and Sassc4CLIchecks including expected malformed refusal; both owned0/0, no GUI claim"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "scope": "Native stylesheet library; two bundled C++ programs27cases0/nested navy SCSS+refusal0/qualified generated version header/owned0/0",
+  "step": {
+    "step": "b02-libsass-install",
+    "started": "2026-11-08T18:55:11.292674+00:00",
+    "finished": "2026-11-08T18:55:33.966129+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 32,
+    "log_sha256": "4033a277fc7380e18e14f953f454734c8443f16963c87a1a5eb89610dd7197e7"
+  },
+  "success_record_sha256": "f0bcf3cdec359ece31557af831f63239a7ce15ed3f2ead674d30250ce214aa34",
+  "package": {
+    "name": "libsass",
+    "version": "3.6.6-1+toddy1",
+    "archive_sha256": "3a9de2190c8c8e756a720fe4becd0ec91c075a130f36222bae2acc97d2dc23b6",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-libsass-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 22.12,
+        "entries": 140065,
+        "regular_files": 124273,
+        "regular_bytes": 6803288602
+      },
+      {
+        "seconds": 20.262,
+        "entries": 140094,
+        "regular_files": 124297,
+        "regular_bytes": 6806786563
+      }
+    ],
+    "total_seconds": 45.781
+  }
+}

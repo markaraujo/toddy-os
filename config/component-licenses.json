@@ -10210,6 +10210,65 @@
           ]
         }
       }
+    },
+    {
+      "name": "libsass",
+      "version": "3.6.6",
+      "license": "LicenseRef-LibSass-MIT-and-per-file",
+      "evidence": "Primary frozen source MIT/COPYING and bundled per-file notices retained. Native compile0/two bundled C++ programs27cases0/C navy SCSS+malformed refusal0. Original generated-version comparison failure retained; only exact upstream version placeholder [NA]->3.6.6 qualified. Owned recipe0/post0 and installed native consumer0; no full external Ruby Sass-spec or graphical/catalog claim.",
+      "runtime_inclusion": "Native stylesheet build-tool library; release inclusion explicit",
+      "source_notice_evidence": [
+        {
+          "filename": "libsass-3.6.6.tar.gz",
+          "sha256": "11f0bb3709a4f20285507419d7618f3877a425c0131ea8df40fe6196129df15d",
+          "notices": [
+            {
+              "path": "libsass-3.6.6/LICENSE",
+              "sha256": "c6c99a8e1263e7227fa10d7f31e265ec2da06cd08562b7c42a4e63afefabda88"
+            },
+            {
+              "path": "libsass-3.6.6/COPYING",
+              "sha256": "619c195be45054a9b8d6e4c114381fe0a015fddc9663ca7940660312b74d7592"
+            },
+            {
+              "path": "libsass-3.6.6/src/json.cpp",
+              "sha256": "57f2da391b8ba6d36a431914c2c54db8650815a57d70b1fee1309af5655e1dc6"
+            }
+          ]
+        }
+      ],
+      "extra_license_headers": {
+        "libsass-3.6.6.tar.gz": {
+          "prefixes": [
+            ""
+          ],
+          "suffixes": [
+            ".c",
+            ".cpp",
+            ".h",
+            ".hpp"
+          ]
+        }
+      }
+    },
+    {
+      "name": "sassc",
+      "version": "3.6.2",
+      "license": "MIT",
+      "evidence": "Frozen primary source LICENSE/header terms retained. Native CLI version/Libsass3.6.6 ABI/nested navy+Unicode SCSS/private include/malformed-refusal consumer0. External Ruby Sass-spec suite not bundled or claimed passed. Owned recipe0/post0 and installed native consumer0; no GUI/catalog availability.",
+      "runtime_inclusion": "Native stylesheet build tool; release inclusion explicit",
+      "source_notice_evidence": [
+        {
+          "filename": "sassc-3.6.2.tar.gz",
+          "sha256": "608dc9002b45a91d11ed59e352469ecc05e4f58fc1259fc9a9f5b8f0f8348a03",
+          "notices": [
+            {
+              "path": "sassc-3.6.2/LICENSE",
+              "sha256": "c6c99a8e1263e7227fa10d7f31e265ec2da06cd08562b7c42a4e63afefabda88"
+            }
+          ]
+        }
+      ]
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
