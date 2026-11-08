@@ -2347,3 +2347,63 @@ their original gtk_test_init/adw_init requires it. No unit success, graphical
 acceptance, installed package or software-catalog availability is claimed. Keep
 the compiled cache/stage and15-member raw bundle; advance the planned Mutter
 compositor dependencies to provide the display without a substitute framework.
+
+### B02 virtual storage integrity and source custody
+
+[ADR0141](adr/0141-virtual-target-free-block-reclamation.md) enabled target-only
+virtual discard after a full checkpoint and clean builder-VM shutdown. Both
+mutable QCOW2 checks passed; the same guarded overlays restarted and the three
+original compiler filesystems were restored by exact UUID/inode/size/backing.
+[Actual trim](evidence/B02-virtual-target-discard.json) exited0 and reclaimed
+685,936,640 allocated image bytes. All140,102 existing full-root entries and
+1,111 pending Libadwaita cache entries remained identical. No physical device,
+file deletion, immutable backing write or reserve reduction occurred in trim.
+This is builder maintenance, not native target boot/GUI acceptance.
+
+[Expanded source custody](evidence/B02-expanded-source-custody.json) separately
+verified exact frozen archive/crate payload equality before retiring duplicate
+host review trees and Cargo registry/src expansions. It preserved every
+compressed .crate/frozen archive, index, guest source/compiled stage/test/package
+and raw evidence. Only the known seven-byte Cargo extraction marker differed
+from the original crate payload. This reclaimed1,019,117,568 additional bytes;
+Cargo can reuse retained compressed caches without a new download. Never replay
+completed retirement or trim. Native accessibility/compositor dependencies
+continue; Libadwaita's67 actual widget tests remain pending a real display.
+
+### B02 native accessibility core — 2026-11-08
+
+Added only original GI1.86 DBus GIR/typelib metadata omitted from the accepted
+scanner bootstrap; native compiler/enum and owned install/post0/0. Existing
+AT-SPI2.60.6 cache resumed without reconfigure, remaining compile0. Original
+nine drivers yielded seven passes/two missing-accessibility-bus aborts. First
+private bus correction failed because activation inherited the pre-address
+environment; preserved memory timeout/atk-test abort. Second correction binds
+the supported AT_SPI_BUS_ADDRESS before starting the real private daemon,
+activating the unchanged compiled registry. Only memory/atk-test reran:0/0;
+seven approved results reused. Staged and installed C/Python states passed;
+163compiled ELFs unchanged. Owned promotion recipe0/post0. No graphical session
+or accessibility focus/navigation acceptance claimed. Raw57-member bundle SHA
+recorded with the public build evidence.
+
+Owner requested stopping after fully completed/validated B02, before another
+story. Boundary recorded; dependencies alone do not satisfy B02. Next color
+management LCMS2.19.1 source authenticated against frozen BLFS13.1. Initial host
+receipt collision refused before SSH; subsequent source prep refused an
+unsynchronized source lock before extraction. Metadata sync/reconcile precedes
+a fresh preparation receipt; no uncertain guest write replay.
+
+LCMS2.19.1 native testcms0/5.59s and staged ICC serialize/reopen/navy
+identity/malformed-refusal0. Installed recipe0, original postcheck1 because
+upstream Meson advertises2.19, while authenticated archive/package is2.19.1;
+source header LCMS_VERSION2190 confirms API version. Retained original failure,
+verified every installed payload entry/archive unchanged and ran corrected
+postcheck-only reconciliation0/0. No native reinstall or upstream suite replay.
+Raw21-member bundle digest recorded in build evidence. Optional GPL fastfloat/
+threaded plugin products disabled; core test program includes plugin API tests.
+
+Glycin2.1.5 official archive matched frozen BLFS13.1 MD5; all307 registry crates
+vendored/independently file-verified from original Cargo.lock,144compressed-cache
+hits. Source-only host Cargo with a metadata-only compiler guard: zero host
+source compilations. Closure/source archives retained, native Glycin compilation
+and loader sandbox/image tests pending. Frozen required LittleCMS/libseccomp/
+bubblewrap sources selected; no broad recommended image-codec matrix added.

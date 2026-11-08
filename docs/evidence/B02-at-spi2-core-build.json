@@ -1,0 +1,55 @@
+{
+  "scope": "Native full ATK/AT-SPI core and bridge; real private D-Bus/registry fixture, not a graphical desktop or installed session",
+  "upstream_drivers": [
+    {
+      "name": "at-spi2-core:dbind-test",
+      "native_exit": 0
+    },
+    {
+      "name": "at-spi2-core:droute-test",
+      "native_exit": 0
+    },
+    {
+      "name": "at-spi2-core:testdocument",
+      "native_exit": 0
+    },
+    {
+      "name": "at-spi2-core:testrole",
+      "native_exit": 0
+    },
+    {
+      "name": "at-spi2-core:testrelation",
+      "native_exit": 0
+    },
+    {
+      "name": "at-spi2-core:teststateset",
+      "native_exit": 0
+    },
+    {
+      "name": "at-spi2-core:testvalue",
+      "native_exit": 0
+    },
+    {
+      "name": "at-spi2-core:memory",
+      "native_exit": 0
+    },
+    {
+      "name": "at-spi2-core:atk-test",
+      "native_exit": 0
+    }
+  ],
+  "reused_passed_drivers": 7,
+  "affected_private_bus_drivers": 2,
+  "existing_compiled_elf_files_unchanged": 163,
+  "resume_2_existing_elf_files_unchanged": 119,
+  "staged_consumer_exit": 0,
+  "gi_exit": 0,
+  "profile": "Wayland; X11 and optional GTK2 module disabled; introspection and systemd integration enabled",
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-accessibility-native-evidence.tar.gz",
+    "bytes": 259298,
+    "sha256": "3a350da723e5db0e617d176294950833e66b844298b5f33534a9924fd6c98ce4",
+    "members": 57,
+    "scope": "Raw metadata/accessibility compiler, original failed and corrected private-bus tests, consumers and owned installation; not graphical acceptance"
+  }
+}

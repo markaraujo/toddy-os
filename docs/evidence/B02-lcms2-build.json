@@ -1,0 +1,22 @@
+{
+  "scope": "Native color-management core and ICC serialize/reopen/navy identity/refusal; not a display or physical color calibration",
+  "upstream_drivers": [
+    {
+      "name": "Little-CMS:testcms",
+      "native_exit": 0
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "icc_roundtrip": true,
+  "navy_identity_tolerance_per_channel": 1,
+  "malformed_icc_refusal": true,
+  "profile": "Core plus JPEG/TIFF utilities; optional GPL fastfloat/threaded plugin products disabled; upstream core plugin API tests retained",
+  "upstream_duration_seconds": 5.58752179145813,
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-lcms2-native-evidence.tar.gz",
+    "bytes": 193820,
+    "sha256": "d098143e1af6552564da53ef0986221d01e8e8dd617c30b053af49770efdc9aa",
+    "members": 21,
+    "scope": "Original native tests/consumer, install0/post1 wrong pkg-config assertion and verify-only recovery0/0; no calibration claim"
+  }
+}

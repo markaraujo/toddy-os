@@ -4,7 +4,7 @@ Updated: 2026-11-07
 
 Bootstrap: ready_for_development
 
-B01 accepted for architecture/native feasibility (5% Phase2). B03 optional CPU-local runtime implementation started with pinned sources and explicit CPU gates. Provider/model tasks, native GNOME, installed Phase2 ISO, B02/B04–B13/G2 and physical validation remain pending.
+B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05–B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.
 
 Foundation: **100%** · Agentic desktop: **13%**
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-08T16:34:29.635210+00:00
+Last verified: 2026-11-08T20:10:26.727241+00:00
 
 Verified:
 
@@ -34,8 +34,13 @@ Verified:
 - Owned ISO Codes4.20.1 native data/Portuguese gettext0/0 and715actual source-file UTF8 checks; original bare-domain driver empty-glob caveat retained. Bounded3GiB regular-file GTK compiler volume verified in disposable builder; no target repartition/physical disk change.
 - Owned GTK4.22.4 Wayland bootstrap native30headless cases/C-GI/schema0. Original install0/post1 GTK3-name assertion retained, corrected GTK4 namespace postcheck-only recovery0/0/full installed payload unchanged; no window/GNOME/media acceptance.
 - Owned native Hicolor0.18/Adwaita icons50/GSettings schemas50.1 and controlled GTK2 schema/legal-only upgrade0/0. Actual52schemas/fonts/GI/icons/SVG/cursor data0; all other GTK runtime payload unchanged. Original plain-C enum probe failure retained/probe-only recovery0,938stagefiles unchanged.
+- Owned native Doxygen XML role, optional libxml2 Python48cases, Itstool64cases and Libxmlb56cases qualified. Original failures and narrowly affected recovery results retained.
+- Owned Libfyaml native535+286cases/private Check9CTest and AppStream8drivers/C+GI passed. Owned LibSass27C++cases and Sassc4CLIchecks passed; Libadwaita staged/version1.9.3, all67widgettests await native display.
+- Controlled virtual target free-block trim and source-only archive custody complete, target/full pending cache identical. Original GI1.86 DBus declarative types compiled/owned0/0; no GUI acceptance.
+- Owned full ATK/AT-SPI2.60.6 core/bridge0/0: nine original drivers qualified (seven reused, two real private-bus recovery), staged/installed C/GI states0 and163compiledELFs unchanged. No GNOME/session acceptance.
+- Owned LCMS2.19.1 native testcms0/5.59s and ICC serialize/reopen/navy identity/refusal0. Original install0/post1 source-version assertion retained; verify-only0/0/full payload unchanged, no reinstall. Glycin307-crate closure source-verified only.
 
-Running: No guest writer; preparing AppStream/Libadwaita dependency slice after native resource/cache integration. Actual Wayland/GNOME windows, media, MIME and service integration remain pending.
+Running: No guest writer; preparing required image-loader sandbox prerequisites toward native GNOME. All67Libadwaita widget programs and B02 graphical acceptance remain pending; stop after full B02 per owner.
 
 Remaining:
 

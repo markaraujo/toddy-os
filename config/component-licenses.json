@@ -3014,7 +3014,7 @@
       "name": "mako",
       "version": "1.4.1",
       "license": "MIT",
-      "evidence": "Authenticated BLFS13.1 Mako1.4.1 MIT/AUTHORS retained in owned package; isolated wheel/six real native functional/codegen checks and owned install/post0/0. Readability-only public doc0600\u21920644 correction preserves all bytes. No full pytest suite claim. Build-only Mesa prerequisite, not automatic offline/base/live payload.",
+      "evidence": "Authenticated BLFS13.1 Mako1.4.1 MIT/AUTHORS retained in owned package; isolated wheel/six real native functional/codegen checks and owned install/post0/0. Readability-only public doc0600→0644 correction preserves all bytes. No full pytest suite claim. Build-only Mesa prerequisite, not automatic offline/base/live payload.",
       "source_notice_evidence": [
         {
           "filename": "mako-1.4.1.tar.gz",
@@ -10269,6 +10269,24 @@
           ]
         }
       ]
+    },
+    {
+      "name": "gi-dbus-types",
+      "version": "1.86.0",
+      "license": "LGPL-2.0-or-later AND GPL-2.0-or-later",
+      "evidence": "Unchanged upstream GI1.86.0 declarative DBus-1.0.gir and native typelib; archive/file digest bound, native enum consumer. No GI core rebuild or full D-Bus/GUI qualification; owned metadata compiler/enum/install/post0/0 verified."
+    },
+    {
+      "name": "at-spi2-core",
+      "version": "2.60.6",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Authenticated upstream COPYING and source notices retained. Full ATK/AT-SPI core/bridge, optional X11/GTK2 module disabled; nine upstream drivers qualified (seven reused, two on real private accessibility bus), staged C/GI states0. Owned install/post0/0 with installed C/GI states; no graphical session claim."
+    },
+    {
+      "name": "lcms2",
+      "version": "2.19.1",
+      "license": "MIT",
+      "evidence": "Exact authenticated upstream LICENSE retained; optional GPL fastfloat/threaded products disabled. Native core testcms0 and staged ICC serialize/reopen/navy-identity/malformed-refusal0; Owned native install0/post1 wrong pkg-config patch-version assertion retained; source-backed verify-only recovery0/0 with full installed payload/archive unchanged, installed ICC consumer0. Upstream Meson advertises2.19; archive/package remains2.19.1."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

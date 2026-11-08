@@ -1286,6 +1286,82 @@
       "integrity": "Official primary HTTPS archive matched frozen book MD5; complete gzip/tar parsed, SHA256 frozen",
       "status": "source_verified",
       "scope": "Native stylesheet build tools, no desktop/catalog qualification"
+    },
+    {
+      "name": "at-spi2-core",
+      "version": "2.60.6",
+      "filename": "at-spi2-core-2.60.6.tar.xz",
+      "url": "https://download.gnome.org/sources/at-spi2-core/2.60/at-spi2-core-2.60.6.tar.xz",
+      "sha256": "a89b64a8b217a8042bdf0e35cbfab629ceee35640dba75df578afde9aa789d57",
+      "book_md5": "1082626c9a82694b7900f8283b20dfac",
+      "book_page_sha256": "9932ce42bbf79bc019b0b98292a03369a347194815d15c4447948df82ce0c6be",
+      "reference": "BLFS13.1-systemd x/at-spi2-core.html",
+      "integrity": "Official primary HTTPS archive matched frozen book MD5; complete XZ/tar parsed and SHA256 frozen",
+      "status": "source_verified",
+      "scope": "Native accessibility dependency candidate, no installed/graphical/catalog qualification"
+    },
+    {
+      "name": "glycin",
+      "version": "2.1.5",
+      "filename": "glycin-2.1.5.tar.xz",
+      "url": "https://download.gnome.org/sources/glycin/2.1/glycin-2.1.5.tar.xz",
+      "sha256": "6c09757ee906330a60b6705753aa56bca007ad219b95e6e3537510d41bc341c8",
+      "reference": "BLFS13.1-systemd general/glycin.html",
+      "book_page_sha256": "5eee5d41eef30cadd756b8b75e9af1a4fd4aa3953dee9f4e857f344c446751fa",
+      "book_md5": "d9224a846ad1ed964d07e1ebb48d4458",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "lcms2",
+      "version": "2.19.1",
+      "filename": "lcms2-2.19.1.tar.gz",
+      "url": "https://github.com/mm2/Little-CMS/releases/download/lcms2.19.1/lcms2-2.19.1.tar.gz",
+      "sha256": "bfc54f7bab59fbc921012014a8032e4cba4abd46db47d46b76416a8c0b2815c8",
+      "reference": "BLFS13.1-systemd general/lcms2.html",
+      "book_page_sha256": "6d836f19dd9c20deac93e650ae72b5b6eb4464bcb105011b7a8411204d1c416b",
+      "book_md5": "541978f73749499e9e0277bfe5a3c868",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "glycin-vendor",
+      "version": "2.1.5",
+      "filename": "glycin-2.1.5-vendor.tar.gz",
+      "sha256": "deb6c120a053b5d9e1403033386b87b604e2ddf0a5265dde199703334ba79984",
+      "bytes": 32824367,
+      "url": "generated:phase2_glycin_vendor/glycin-vendor",
+      "reference": "Derived Cargo vendor from authenticated primary/published lock; all registry package/file checksums verified",
+      "parent_source_sha256": "6c09757ee906330a60b6705753aa56bca007ad219b95e6e3537510d41bc341c8",
+      "cargo_lock_sha256": "5ff1ad293efde5c927f19df0f488dc80a04814367dbc480a3cc45847646bc669",
+      "producer_sha256": "cd0e1960125b3d38396b0362d326648424717d92aff80fa01d0321a9b349e054",
+      "registry_crates": 307,
+      "integrity": "Official Cargo vendor plus independent exact package/file-manifest verification before archive freezing",
+      "status": "source_verified"
+    },
+    {
+      "name": "libseccomp",
+      "version": "2.6.1",
+      "filename": "libseccomp-2.6.1.tar.gz",
+      "url": "https://github.com/seccomp/libseccomp/releases/download/v2.6.1/libseccomp-2.6.1.tar.gz",
+      "sha256": "501f66c667225d53791b97e1d7cf85ab764c297d04881f60f38f451c4b0ee1be",
+      "reference": "BLFS13.1-systemd general/libseccomp.html",
+      "book_page_sha256": "3c4320e84eaaf3b9ae5f07d9a2b22d93e2f2898550a9d37c05bf0ef95376b0c8",
+      "book_md5": "33a3a5d4c526a739515ff4dc53cdc192",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "bubblewrap",
+      "version": "0.11.2",
+      "filename": "bubblewrap-0.11.2.tar.xz",
+      "url": "https://github.com/containers/bubblewrap/releases/download/v0.11.2/bubblewrap-0.11.2.tar.xz",
+      "sha256": "69abc30005d2186baf7737feacd8da35633b93cf5af38838ecff17c5f8e924f6",
+      "reference": "BLFS13.1-systemd general/bubblewrap.html",
+      "book_page_sha256": "0e54eb9a455abfd911e1453879cd581719ed3493873a2acacc75b652afd4fe9b",
+      "book_md5": "6376255e2e505100e01b20c2dafa7faf",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

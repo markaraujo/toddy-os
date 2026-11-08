@@ -1,0 +1,38 @@
+{
+  "scope": "Installed ATK and AT-SPI states APIs, nine upstream drivers qualified; not a graphical GNOME session",
+  "step": {
+    "step": "b02-at-spi2-core-install",
+    "started": "2026-11-08T20:03:23.519199+00:00",
+    "finished": "2026-11-08T20:03:39.264689+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 221,
+    "log_sha256": "795727d3278ae790e7edc96ef27e2fd863cf97565bb13161869c85ac7a5b8e7c"
+  },
+  "success_record_sha256": "03228027bd2d1837147c385adb43afefb1972a015b0edd77ae558a4faf6fcb20",
+  "package": {
+    "name": "at-spi2-core",
+    "version": "2.60.6-1+toddy1",
+    "archive_sha256": "0dd718ed6e05e3d07a34f9fcfb3beaae52bebd2603c5d5a0526d7ddbd4a490ec",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-at-spi2-core-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 13.13,
+        "entries": 140118,
+        "regular_files": 124317,
+        "regular_bytes": 6807066998
+      },
+      {
+        "seconds": 13.043,
+        "entries": 140336,
+        "regular_files": 124515,
+        "regular_bytes": 6811666189
+      }
+    ],
+    "total_seconds": 29.81
+  }
+}

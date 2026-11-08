@@ -19,6 +19,12 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'lcms2': ('2.19.1', 'glibc (>= 2.44-1), libjpeg-turbo (= 3.2.0-1+toddy1), tiff (= 4.7.2-1+toddy1)',
+              'lcms2-2.19.1.tar.gz', 'usr/lib/pkgconfig/lcms2.pc'),
+    'at-spi2-core': ('2.60.6', 'glib (>= 2.88.3-1+toddy1), dbus (>= 1.16.2-1), systemd (>= 261.2-1)',
+                     'at-spi2-core-2.60.6.tar.xz', 'usr/lib/pkgconfig/atspi-2.pc'),
+    'gi-dbus-types': ('1.86.0', 'gobject-introspection (>= 1.86.0-1+toddy1), dbus (>= 1.16.2-1)',
+                      'gobject-introspection-1.86.0.tar.xz', 'usr/share/gir-1.0/DBus-1.0.gir'),
     'sassc': ('3.6.2', 'libsass (= 3.6.6-1+toddy1), glibc (>= 2.44-1), gcc (>= 16.2.0-1)',
               'sassc-3.6.2.tar.gz', 'usr/bin/sassc'),
     'libsass': ('3.6.6', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1)',
@@ -130,6 +136,7 @@ if __name__ == '__main__':
     if name=='libfyaml' and (log/'libfyaml-finish-2.job.json').exists():qualifier='libfyaml-finish-2'
     if name=='itstool' and (log/'itstool-recovery-2.job.json').exists():qualifier='itstool-recovery-2'
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
+    if name=='at-spi2-core' and (log/'atspi-finish-4.job.json').exists():qualifier='atspi-finish-4'
     if name=='libxml2-python':qualifier='libxml2-python-probe-5'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
@@ -438,6 +445,48 @@ if __name__ == '__main__':
             assert all(r['returncode']==0 and not r['is_fail'] and (r['result']=='OK' or (r['name'] in optional and r['result']=='SKIP' and r.get('stdout','').strip()=='# fonttools is not present, skipping test.')) for r in rows)
         else:
             assert rows and all(r['result']=='OK' and r['returncode']==0 and not r['is_fail'] for r in rows)
+    if name=='lcms2':
+        work=Path('/mnt/lfs/sources/phase2/work/lcms2-1')
+        source=Path('/mnt/lfs/sources/phase2/inputs/lcms2-2.19.1')
+        assert json.loads((log/'lcms2-1.job.json').read_text())['command'][-2:]==['bash','/src/toddy-build.sh']
+        for local,canonical in [('toddy-build.sh','lcms2-build.sh'),('toddy-probe.c','lcms2-probe.c')]:
+            assert (source/local).read_bytes()==(ROOT/'scripts/build/phase2'/canonical).read_bytes()
+        proof=json.loads((work/'test-results.json').read_text())
+        rows=[json.loads(x) for x in (work/'compile/meson-logs/testlog.json').read_text().splitlines()]
+        assert len(rows)==1 and rows[0]['name']=='Little-CMS:testcms'
+        assert rows[0]['result']=='OK' and rows[0]['returncode']==0
+        assert proof['staged_consumer_exit']==0 and proof['icc_roundtrip'] and proof['malformed_icc_refusal']
+    if name=='at-spi2-core':
+        work=Path('/mnt/lfs/sources/phase2/work/at-spi2-core-1')
+        source=Path('/mnt/lfs/sources/phase2/inputs/at-spi2-core-2.60.6')
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/at-spi2-core-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text())
+        expected={'dbind-test','droute-test','memory','testdocument','testrole','testrelation','teststateset','testvalue','atk-test'}
+        rows=proof['upstream_drivers']
+        assert len(rows)==9 and {r['name'].split(':')[-1] for r in rows}==expected
+        assert all(r['native_exit']==0 for r in rows)
+        assert proof['staged_consumer_exit']==proof['gi_exit']==0
+        if qualifier=='atspi-finish-4':
+            command=json.loads((log/(qualifier+'.job.json')).read_text())['command']
+            assert command[-5:]==['python3','-c',(ROOT/'scripts/build/phase2/atspi_finish.py').read_text(),(ROOT/'scripts/build/phase2/atspi_private_bus.py').read_text(),(ROOT/'scripts/build/phase2/at-spi2-core-build.sh').read_text()]
+            assert proof['reused_passed_drivers']==7 and proof['affected_private_bus_drivers']==2
+            for relative,digest in json.loads((work/'finish-4/binaries-before.json').read_text()).items():
+                with (work/'compile'/relative).open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==digest
+            original=[json.loads(x) for x in (work/'finish-4/original-testlog.json').read_text().splitlines()]
+            affected=[json.loads(x) for x in (work/'finish-4/affected-testlog.json').read_text().splitlines()]
+            assert len(original)==9 and sum(r['result']=='OK' for r in original)==7
+            assert {r['name'].split(':')[-1] for r in original if r['result']!='OK'}=={'memory','atk-test'}
+            assert len(affected)==2 and all(r['result']=='OK' and r['returncode']==0 for r in affected)
+        else:
+            assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/at-spi2-core-build.sh').read_bytes()
+            assert (source/'toddy-private-bus.py').read_bytes()==(ROOT/'scripts/build/phase2/atspi_private_bus.py').read_bytes()
+    if name=='gi-dbus-types':
+        work=Path('/mnt/lfs/sources/phase2/work/gi-dbus-types-1')
+        assert json.loads((log/'gi-dbus-types-1.job.json').read_text())['command'][-1]==(ROOT/'scripts/build/phase2/gi-dbus-types-build.sh').read_text()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['native_compiler_exit']==proof['native_enum_consumer_exit']==0
+        source=Path('/mnt/lfs/sources/phase2/inputs/gobject-introspection-1.86.0/gir/DBus-1.0.gir')
+        assert source.read_bytes()==(work/'stage/usr/share/gir-1.0/DBus-1.0.gir').read_bytes()
+        assert hashlib.sha256(source.read_bytes()).hexdigest()==proof['source_sha256']
     if name=='gi-desktop-types':
         proof=json.loads(Path('/mnt/lfs/sources/phase2/work/gi-desktop-types-1/test-results.json').read_text())
         assert {r['name'] for r in proof['types']}=={'freetype2-2.0','fontconfig-2.0','libxml2-2.0','cairo-1.0'}
@@ -664,7 +713,7 @@ if __name__ == '__main__':
                         '--depends','glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
-    if name in ('fontconfig','llvm','rustc'):
+    if name in ('fontconfig','llvm','rustc','at-spi2-core'):
         for relative,row in before['entries'].items():
             if relative.startswith('etc/') and 'sha256' in row: conffiles+=['--conffile','/'+relative]
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,

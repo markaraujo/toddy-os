@@ -1,0 +1,33 @@
+{
+  "scope": "Installed native ICC serialize/reopen/navy identity/refusal; no display/calibration claim",
+  "original_step": {
+    "step": "b02-lcms2-install",
+    "finished": "2026-11-08T20:07:42.338733+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 1
+  },
+  "verify_only_reconciliation": {
+    "step": "b02-lcms2-postcheck-reconcile",
+    "finished": "2026-11-08T20:09:06.438849+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 1
+  },
+  "package": {
+    "name": "lcms2",
+    "version": "2.19.1-1+toddy1",
+    "archive_sha256": "09bb612d90d6f7f0a0d0141b136ef45ff7596fe1b5c41755f74e85850cfcad72",
+    "installed": true
+  },
+  "consumer": {
+    "scope": "Native installed ICC serialization/reopen/navy identity and malformed-profile refusal; not physical color calibration",
+    "native_consumer_exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "icc_roundtrip": true,
+    "malformed_icc_refusal": true
+  },
+  "upstream_pkgconfig_version": "2.19",
+  "archive_package_version": "2.19.1",
+  "reinstalled": false
+}

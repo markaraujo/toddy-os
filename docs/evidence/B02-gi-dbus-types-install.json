@@ -1,0 +1,38 @@
+{
+  "scope": "Installed declarative upstream DBus GIR/typelib; native enum consumer only, not a graphical session",
+  "step": {
+    "step": "b02-gi-dbus-types-install",
+    "started": "2026-11-08T19:49:16.532678+00:00",
+    "finished": "2026-11-08T19:49:31.459087+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 18,
+    "log_sha256": "2a71c3cab63c4c41532ee63ce98f73db04a54bc204bc8f3741de736e01a7b20b"
+  },
+  "success_record_sha256": "7e7dba0254f2339dc622154bbacb88065202e0c86128c28704b223542ef48c0f",
+  "package": {
+    "name": "gi-dbus-types",
+    "version": "1.86.0-1+toddy1",
+    "archive_sha256": "e89e7a3b650a1085c4e200a2db4b6561769332208ce24212bed3feb0e2b46885",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-gi-dbus-types-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 13.1,
+        "entries": 140102,
+        "regular_files": 124303,
+        "regular_bytes": 6806818295
+      },
+      {
+        "seconds": 12.954,
+        "entries": 140118,
+        "regular_files": 124317,
+        "regular_bytes": 6807066998
+      }
+    ],
+    "total_seconds": 28.976
+  }
+}
