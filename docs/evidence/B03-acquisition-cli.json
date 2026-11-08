@@ -1,0 +1,34 @@
+{
+  "job": "acquisition-cli-1",
+  "exit": 0,
+  "cases": [
+    {
+      "state": "deferred",
+      "base_desktop_available": true,
+      "network_required": false,
+      "remote_fallback": false
+    },
+    {
+      "state": "consent_required",
+      "adapter_id": "openai",
+      "model_id": "fixture",
+      "connection_ref": "synthetic-ref",
+      "support": "fixture-only-live-unverified",
+      "cost_estimate": null,
+      "remote_fallback": false,
+      "network_required": true
+    },
+    {
+      "state": "ready_for_credentials",
+      "adapter_id": "openai",
+      "model_id": "fixture",
+      "connection_ref": "synthetic-ref",
+      "support": "fixture-only-live-unverified",
+      "cost_estimate": null,
+      "remote_fallback": false,
+      "network_required": true
+    }
+  ],
+  "invalid_download_rejected": true,
+  "scope": "native headless choice client only; no download/secret/UI activation"
+}

@@ -1572,3 +1572,13 @@ classified errors, no retry/redirect, cancel/deadline and limits passed. All rem
 families remain fixture-only/live-unverified. Two synthetic host harness mistakes
 were corrected before one native passing job; production provider unchanged.
 B03 first criterion accepted; acquisition/choice remains. No package/model rerun.
+
+### B03 accepted; explicit resumable acquisition — 2026-11-08 UTC
+
+Native acquisition-3 ten file/TLS-loopback checks and acquisition-cli-1 passed.
+Explicit hash/license/network consent, private partial/Range/final integrity,
+unsafe path/conflict/space/concurrency denial and no credential-forwarding tested.
+First native fixture environment errors retained and corrected once. Added narrow
+HTTPException classification and affected regression. ADR-0118 records scope and
+network cancellation timeout. B03 complete in headless scope; B04 next. B05/B06/B12
+retain activation/secret/UI/installed integration, no G2 or physical claim.

@@ -6,35 +6,11 @@ Bootstrap: ready_for_development
 
 B01 accepted for architecture/native feasibility (5% Phase2). B03 optional CPU-local runtime implementation started with pinned sources and explicit CPU gates. Provider/model tasks, native GNOME, installed Phase2 ISO, B02/B04–B13/G2 and physical validation remain pending.
 
-Foundation: **100%** · Agentic desktop: **5%**
+Foundation: **100%** · Agentic desktop: **13%**
 
-G1: passed · G2: pending · Next: **B03**
+G1: passed · G2: pending · Next: **B04**
 
 No milestone earns credit without completed acceptance evidence.
-
-## Active story: B03 — Connect provider adapters and one optional local AI profile
-
-The 5% phase total counts completed stories only. B03 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 13%.
-
-Last verified: 2026-11-08T01:30:52.044588+00:00
-
-Verified:
-
-- B01 native Node/Pi/GIO packages and scoped Calamares proof accepted; core foundation unchanged.
-- Pinned llama.cpp0.9.0 source and Qwen3-1.7B-Q8_0 bytes/license verified in host cache; model inference not yet run.
-- Native llama-cpp0.9.0 source/stage/package/postcheck0/0; runtime only22MiB, no bundled weights.
-- Actual Qwen CPU streaming response, no/wrong-token401, external route denied and graceful shutdown passed; first text0.289s, peak2,320,036KiB on development VM.
-- Actual Pi local file-tool task4.29s, active cancel6ms/new response0.34s, exact context rejection before generation; native source/contract hashes retained.
-- Private Unix runtime/ephemeral bearer: UID65534 socket/key EACCES, no/wrong-token401, graceful/idempotent Stop and private cleanup0.
-- Native Node24.19/Pi1.5 four-family offline streaming/tool/usage/error/cancel/deadline/limits fixtures passed; remote families remain live-unverified.
-
-Running: Implementing verified acquisition/choice flow; native provider-fixtures-1 terminal0, no guest writer active.
-
-Remaining:
-
-- Validated API/local/deferred selection and safe verified/resumable model acquisition.
-
-[Acceptance evidence](docs/evidence/B03.md)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
@@ -53,7 +29,7 @@ Remaining:
 | [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | completed |
 | [B01 — Freeze the minimal Toddy architecture and delivery slices](stories/B01.md) | agentic | 5 | completed |
 | [B02 — Deliver the minimal branded GNOME desktop](stories/B02.md) | agentic | 10 | not_started |
-| [B03 — Connect provider adapters and one optional local AI profile](stories/B03.md) | agentic | 8 | in_progress |
+| [B03 — Connect provider adapters and one optional local AI profile](stories/B03.md) | agentic | 8 | completed |
 | [B04 — Deliver native tools and the revocable privileged executor](stories/B04.md) | agentic | 8 | not_started |
 | [B05 — Persist tasks and recover interrupted system changes](stories/B05.md) | agentic | 10 | not_started |
 | [B06 — Deliver Toddy quick entry, native UI and first-run setup](stories/B06.md) | agentic | 10 | not_started |

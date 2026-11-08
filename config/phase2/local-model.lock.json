@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "native_runtime_tool_cancel_passed_acquisition_pending",
+  "status": "native_runtime_tool_cancel_and_acquisition_contract_passed",
   "model": {
     "repository": "Qwen/Qwen3-1.7B-GGUF",
     "revision": "90862c4b9d2787eaed51d12237eafdfe7c5f6077",
@@ -46,7 +46,7 @@
     "proposed_model_peak_rss_mib": 5120,
     "measured_model_peak_rss_mib": 2311.633,
     "weights_bytes": 1834426016,
-    "note": "Weights bytes known; runtime/KV/scratch estimates and compatibility unqualified until B03.",
+    "note": "Actual model/runtime peak measured on development VM; product reference desktop memory remains B02/B06 validation.",
     "measurement_target": "12vCPU/12GiB development VM, inference pinned to4CPUs; no product reference/hardware claim"
   },
   "installation": {
@@ -54,7 +54,7 @@
     "iso_weights": false,
     "explicit_acquisition_required": true,
     "qualifying_story": "B03",
-    "real_offline_tool_task": "passed native local-tool-8; artifact acquisition flow still pending"
+    "real_offline_tool_task": "passed native local-tool-8; acquisition contract acquisition-3 passed separately"
   },
   "evidence": "docs/evidence/B03-native-local-tool.json"
 }

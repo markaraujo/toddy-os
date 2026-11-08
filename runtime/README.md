@@ -34,3 +34,20 @@ connection references and credentials; native implementation belongs to B06.
 
 Offline base setup remains independent of these engine/backend files; acquisition
 of the assistant later must not require OS reinstallation.
+
+## B03 optional backend setup
+
+The provider factory and private local runtime now have native evidence under
+B03. Remote adapters are protocol-fixture-only/live-unverified. No default remote
+spend, fallback, model download or activation. `runtime/acquisition/cli.py plan
+--mode deferred` returns offline-base availability. API planning accepts adapter,
+model ID and connection reference; never pass a credential on its command line.
+
+For local acquisition create an owned0700 cache, inspect `plan --mode local
+--cache /absolute/cache`, read the pinned license and approve the network/size.
+`download --mode local --cache /absolute/cache --approve-network
+--approve-license Apache-2.0 --artifact-sha256 <displayed-sha>` acquires only the
+trusted catalog artifact. SIGINT/SIGTERM preserves private partial bytes; repeat
+the explicit command to resume after inspecting the result. Verified cache reuse
+rehashes bytes. Integrity/conflict errors require explicit inspect/remove; no
+failed artifact activates. The library/API is reused by later native settings.
