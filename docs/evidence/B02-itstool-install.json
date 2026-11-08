@@ -1,0 +1,38 @@
+{
+  "scope": "Native XML ITS/gettext acquisition helper; original64tests62PASS/2missing-DTD failures retained, only2affected corrected0 and installed extraction/Portuguese merge0",
+  "step": {
+    "step": "b02-itstool-install",
+    "started": "2026-11-08T17:47:34.122624+00:00",
+    "finished": "2026-11-08T17:48:02.893416+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 23,
+    "log_sha256": "28b1c0b0d3d5ac8e0dc957e64cc669427ff51a41361243fe391ce8ba1d4e6484"
+  },
+  "success_record_sha256": "1f5f77b12446a4c7814081df70db8c7b9634164039fd7a7e415c736d1e015347",
+  "package": {
+    "name": "itstool",
+    "version": "2.0.7-1+toddy1",
+    "archive_sha256": "df786941978dabfee0eb10971ea9120752f1e2aef7ffb3599f5e92daba3f1e5c",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-itstool-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 27.091,
+        "entries": 139615,
+        "regular_files": 123865,
+        "regular_bytes": 6791599828
+      },
+      {
+        "seconds": 26.812,
+        "entries": 139636,
+        "regular_files": 123881,
+        "regular_bytes": 6792149466
+      }
+    ],
+    "total_seconds": 56.833
+  }
+}

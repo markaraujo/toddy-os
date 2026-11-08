@@ -1235,6 +1235,19 @@
       "book_md5": "09a61abc2ae853b4a5185201a1ab07fd",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "docbook-xml",
+      "version": "4.5",
+      "filename": "docbook-xml-4.5.zip",
+      "url": "https://archive.docbook.org/xml/4.5/docbook-xml-4.5.zip",
+      "sha256": "4e4e037a2b83c98c6c94818390d4bdd3f6e10f6ec62dd79188594e26190dc7b4",
+      "book_md5": "03083e288e87a7e829e437358da7ef9e",
+      "book_page_sha256": "b67b901a15f62a40e18016dbf075d54f8920181a5080928e671f892e0a9d1ced",
+      "reference": "BLFS 13.1-systemd pst/docbook.html",
+      "integrity": "Official HTTPS ZIP matched frozen book MD5; complete ZIP CRC verified, SHA256 frozen",
+      "status": "source_verified",
+      "scope": "Read-only offline data for two native itstool upstream fixtures; no runtime/catalog qualification"
     }
   ]
 }

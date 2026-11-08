@@ -1,0 +1,75 @@
+{
+  "scope": "Native ITS XML/gettext tool; original full-suite failures retained",
+  "upstream_python_tests": 64,
+  "original_passed": 62,
+  "original_failed": [
+    "test_IT_keep_entities_1",
+    "test_IT_translate_with_external_dtds"
+  ],
+  "affected_retested": [
+    "test_IT_keep_entities_1",
+    "test_IT_translate_with_external_dtds"
+  ],
+  "affected_native_exit": 0,
+  "staged_consumer_exit": 0,
+  "consumer": {
+    "scope": "Actual native ITS extraction and UTF-8 gettext merge; no GUI acceptance",
+    "xml_extraction": true,
+    "compiled_gettext_catalog": true,
+    "portuguese_merge": true,
+    "commands": [
+      [
+        "itstool",
+        "-o",
+        "/build/consumer/fixture.pot",
+        "/build/consumer/fixture.xml"
+      ],
+      [
+        "msgfmt",
+        "-o",
+        "/build/consumer/pt.mo",
+        "/build/consumer/pt.po"
+      ],
+      [
+        "itstool",
+        "-m",
+        "/build/consumer/pt.mo",
+        "-o",
+        "/build/consumer/translated.xml",
+        "/build/consumer/fixture.xml"
+      ]
+    ]
+  },
+  "source_supplement": {
+    "scope": "Readonly supplemental offline DocBook fixture; no runtime install",
+    "source": {
+      "name": "docbook-xml",
+      "version": "4.5",
+      "filename": "docbook-xml-4.5.zip",
+      "url": "https://archive.docbook.org/xml/4.5/docbook-xml-4.5.zip",
+      "sha256": "4e4e037a2b83c98c6c94818390d4bdd3f6e10f6ec62dd79188594e26190dc7b4",
+      "book_md5": "03083e288e87a7e829e437358da7ef9e",
+      "book_page_sha256": "b67b901a15f62a40e18016dbf075d54f8920181a5080928e671f892e0a9d1ced",
+      "reference": "BLFS 13.1-systemd pst/docbook.html",
+      "integrity": "Official HTTPS ZIP matched frozen book MD5; complete ZIP CRC verified, SHA256 frozen",
+      "status": "source_verified",
+      "scope": "Read-only offline data for two native itstool upstream fixtures; no runtime/catalog qualification"
+    },
+    "parent_prepared": {
+      "source_sha256": "fba78a37dc3535e4686c7f57407b97d03c676e3a57beac5fb2315162b0cc3176",
+      "reference": "BLFS13.1-systemd pst/itstool.html",
+      "book_page_sha256": "03278c3f379fab627bf1d2be29d5665aaeddbfd415fb069d16540823da0de473",
+      "source_patches": [],
+      "recipe_sha256": "14e56a0887cf6d62e7df8d4619708e16ba00528e69c375a27962fdc46fb130b4",
+      "probe_sha256": "774a7140d69698de98431585d21fe4776b49524c4828fe3cf29b5318126abf10"
+    },
+    "members": 33
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-itstool-native-evidence.tar.gz",
+    "bytes": 101745,
+    "sha256": "b8fc0c393da4f4ce465fdf3ae0a0d2eaa5889b2d225218ceccdf772628492789",
+    "members": 29,
+    "scope": "Raw itstool original64tests62PASS/2DTDfail,2affected corrected0, immutable official DTD receipt, staged/installed real ITS-UTF8 translation and owned0/0"
+  }
+}

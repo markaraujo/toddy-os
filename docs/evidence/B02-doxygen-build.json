@@ -1,0 +1,32 @@
+{
+  "scope": "Build-only C/API XML generator qualified; optional bibliography unavailable, original012_cite failure retained",
+  "upstream_total": 122,
+  "original_passed": 121,
+  "original_failed": [
+    {
+      "name": "012_cite",
+      "reason": "External optional BibTeX absent; Perl5.44 available",
+      "passed": false
+    }
+  ],
+  "existing_compiled_elf_files_unchanged": 172,
+  "staged_consumer_exit": 0,
+  "consumer": {
+    "scope": "Native build-tool version, real C function/parameter XML generation and XSD validation; no desktop application qualification",
+    "version": "1.18.0",
+    "generator_exit": 0,
+    "schema_exit": 0,
+    "function": "toddy_answer",
+    "xml_files_with_function": [
+      "fixture_8h.xml"
+    ]
+  },
+  "limitations": "Bibliography/citation integration requires optional BibTeX. No full-suite success, GUI, desktop/catalog availability claim.",
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-doxygen-native-evidence.tar.gz",
+    "bytes": 178051,
+    "sha256": "60b6f06a718c595ac80911d25059eae30de097cdd766f8a0e4b20484c7e95820",
+    "members": 39,
+    "scope": "Raw Doxygen122cases/121pass/one retained bibliography failure; unchanged172ELFs and real XML-XSD owned proof"
+  }
+}

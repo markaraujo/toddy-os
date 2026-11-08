@@ -1,0 +1,26 @@
+{
+  "scope": "Native compressed XML query/API/GI dependency; no window acceptance",
+  "upstream_drivers": [
+    {
+      "name": "libxmlb:libxmlb-exported-api",
+      "native_exit": 0,
+      "passed_tap_cases": 0,
+      "skipped_tap_cases": []
+    },
+    {
+      "name": "libxmlb:xb-self-test",
+      "native_exit": 0,
+      "passed_tap_cases": 56,
+      "skipped_tap_cases": []
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "gi_exit": 0,
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-libxmlb-native-evidence.tar.gz",
+    "bytes": 125741,
+    "sha256": "05cf2d7c5a16175f0d7fbb652cec92ddc17257bb9faba31d935a67bdf5afb624",
+    "members": 20,
+    "scope": "Raw libxmlb exportedAPI/56native selftests/Unicode query-refusal/GI/owned0/0; not a window"
+  }
+}

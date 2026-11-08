@@ -1,0 +1,266 @@
+{
+  "scope": "Optional native Python binding only; accepted core and C suite reused",
+  "upstream_python_scripts": [
+    {
+      "name": "attribs.py",
+      "exit": 0,
+      "seconds": 0.061
+    },
+    {
+      "name": "build.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "compareNodes.py",
+      "exit": 0,
+      "seconds": 0.014
+    },
+    {
+      "name": "ctxterror.py",
+      "exit": 0,
+      "seconds": 0.076
+    },
+    {
+      "name": "cutnpaste.py",
+      "exit": 0,
+      "seconds": 0.014
+    },
+    {
+      "name": "dtdvalid.py",
+      "exit": 0,
+      "seconds": 0.014
+    },
+    {
+      "name": "error.py",
+      "exit": 0,
+      "seconds": 0.062
+    },
+    {
+      "name": "inbuf.py",
+      "exit": 0,
+      "seconds": 0.022
+    },
+    {
+      "name": "indexes.py",
+      "exit": 0,
+      "seconds": 0.144
+    },
+    {
+      "name": "input_callback.py",
+      "exit": 0,
+      "seconds": 0.017
+    },
+    {
+      "name": "nsdel.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "outbuf.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "push.py",
+      "exit": 0,
+      "seconds": 0.051
+    },
+    {
+      "name": "pushSAX.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "pushSAXhtml.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "reader.py",
+      "exit": 0,
+      "seconds": 0.017
+    },
+    {
+      "name": "reader2.py",
+      "exit": 0,
+      "seconds": 0.033
+    },
+    {
+      "name": "reader3.py",
+      "exit": 0,
+      "seconds": 0.016
+    },
+    {
+      "name": "reader4.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "reader5.py",
+      "exit": 0,
+      "seconds": 0.019
+    },
+    {
+      "name": "reader6.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "reader7.py",
+      "exit": 0,
+      "seconds": 0.014
+    },
+    {
+      "name": "reader8.py",
+      "exit": 0,
+      "seconds": 0.014
+    },
+    {
+      "name": "readererr.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "readernext.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "regexp.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "relaxng.py",
+      "exit": 0,
+      "seconds": 0.014
+    },
+    {
+      "name": "resolver.py",
+      "exit": 0,
+      "seconds": 0.042
+    },
+    {
+      "name": "schema.py",
+      "exit": 0,
+      "seconds": 0.014
+    },
+    {
+      "name": "serialize.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "sync.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "thread2.py",
+      "exit": 0,
+      "seconds": 3.022
+    },
+    {
+      "name": "tst.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "tstLastError.py",
+      "exit": 0,
+      "seconds": 0.04
+    },
+    {
+      "name": "tstURI.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "tstmem.py",
+      "exit": 0,
+      "seconds": 0.014
+    },
+    {
+      "name": "tstxpath.py",
+      "exit": 0,
+      "seconds": 0.045
+    },
+    {
+      "name": "unicode.py",
+      "exit": 0,
+      "seconds": 0.048
+    },
+    {
+      "name": "validDTD.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "validRNG.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "validSchemas.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "validate.py",
+      "exit": 0,
+      "seconds": 0.049
+    },
+    {
+      "name": "walker.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "xpath.py",
+      "exit": 0,
+      "seconds": 0.03
+    },
+    {
+      "name": "xpathext.py",
+      "exit": 0,
+      "seconds": 0.037
+    },
+    {
+      "name": "xpathleak.py",
+      "exit": 0,
+      "seconds": 0.015
+    },
+    {
+      "name": "xpathns.py",
+      "exit": 0,
+      "seconds": 0.014
+    },
+    {
+      "name": "xpathret.py",
+      "exit": 0,
+      "seconds": 0.014
+    }
+  ],
+  "existing_core_elf_files_unchanged": 99,
+  "payload": [
+    "usr/lib/python3.14/site-packages/drv_libxml2.py",
+    "usr/lib/python3.14/site-packages/libxml2.py",
+    "usr/lib/python3.14/site-packages/libxml2mod.cpython-314-x86_64-linux-gnu.so"
+  ],
+  "consumer": {
+    "scope": "Native optional Python binding semantic consumer; not graphical acceptance",
+    "unicode_xpath": true,
+    "explicit_document_lifetime": true,
+    "external_entity_positive_control": true,
+    "no_xxe_refusal": true
+  },
+  "staged_consumer_exit": 0,
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-libxml2-python-native-evidence.tar.gz",
+    "bytes": 152540,
+    "sha256": "45d6cee0373cc75105663409ff1f779db129f1334519d7ac167a91a5ed1656ea",
+    "members": 92,
+    "scope": "Original failures/recovery,48native scripts/99unchangedcoreELFs,semantic NO_XXE positive control and actual owned package0/0"
+  }
+}

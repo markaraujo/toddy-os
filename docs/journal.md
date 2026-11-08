@@ -2218,3 +2218,52 @@ Frozen libxml2's Python Meson generator explicitly requires Doxygen even when AP
 HTML installation is disabled. Doxygen1.18.0 source is authenticated/cached; build
 it before the optional binding. This adds a concrete generator dependency, not a
 core XML rebuild, mandatory desktop application or catalog availability claim.
+
+### B02 native XML generator
+
+[Doxygen1.18.0](evidence/B02-doxygen-build.json) compiled natively and executed
+122 upstream cases:121 passed,012_cite failed because external BibTeX is absent.
+[ADR0138](adr/0138-doxygen-xml-generator-profile.md) qualifies only the required
+C/API XML generator role. The original bibliography failure remains unqualified.
+A stage-only finish preserved172 compiled ELF hashes and proved a real function
+and parameter in generated XML with native XSD validation. The separate
+[owned installation](evidence/B02-doxygen-install.json) passed recipe/postcheck0/0
+and the same actual installed generator consumer. No TeX distribution, core XML
+rebuild, upstream suite replay, graphical acceptance or catalog availability claim.
+
+The current optional libxml2 Python slice reuses its accepted native cache with
+separate output/staging and48 original scripts in private writable fixtures.
+Initial hidden-alias and ABI-target-name preparation failures are retained;
+recovery verifies99 original ELF hashes and never replays successful reconfiguration.
+Actual script results and independent binding ownership remain required.
+
+### B02 optional native XML binding and ITS translation
+
+[Optional libxml2 Python binding](evidence/B02-libxml2-python-build.json) passed
+all48 original scripts in private writable fixtures;99 existing core ELF files
+remained unchanged. The accepted3904 C cases were reused. Independent
+[Python-only installation](evidence/B02-libxml2-python-install.json) passed0/0
+and actual Unicode XPath/document lifetime/NO_XXE with an external-file positive
+control. The first promotion correctly rejected a derived Python bytecode cache
+before any package copy/install; private probe-only recovery removed that exact
+cache and disabled bytecode writes. All failed preparation/preflight records
+remain in the92-member raw bundle. See[ADR0139](adr/0139-optional-xml-python-cache-reuse.md).
+
+[Itstool2.0.7](evidence/B02-itstool-build.json) needed native autoreconf because
+the pinned source has configure.ac rather than generated configure. The original
+64-case upstream runner passed62 and failed two unavailable DocBook4.5 DTD cases.
+The official unchanged33-member DTD ZIP matched the frozen BLFS13.1 MD5, complete
+ZIP CRC and newly frozen SHA256. A separate immutable input and private XML
+catalog supplied only this offline fixture dependency. Only the two affected
+cases were repeated; both passed. No tests/source/goldens/global XML policy were
+changed, and the original full-suite failure remains preserved.
+
+[Owned itstool installation](evidence/B02-itstool-install.json) passed0/0 and
+real XML extraction/compiled gettext/Portuguese translation merge. The29-member
+raw bundle retains original failures and corrected proof. These are dependency
+results, not graphical session, application-catalog or physical GPU acceptance.
+Libxmlb0.3.29 next passed its exported-API driver and56 original self-test cases,
+staged Unicode XML query/malformed refusal and GI; [controlled native promotion](evidence/B02-libxmlb-install.json)
+passed0/0 with actual installed C query/refusal and GI. The20-member raw bundle
+is retained in [build evidence](evidence/B02-libxmlb-build.json).
+Libfyaml/AppStream/Libadwaita and real session integration remain.

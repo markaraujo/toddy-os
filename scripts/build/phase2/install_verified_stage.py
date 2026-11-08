@@ -19,6 +19,14 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libxmlb': ('0.3.29', 'glib (>= 2.88.3-1+toddy1), xz (>= 5.8.3-1), zstd (>= 1.5.7-1)',
+                'libxmlb-0.3.29.tar.xz', 'usr/lib/pkgconfig/xmlb.pc'),
+    'itstool': ('2.0.7', 'python (= 3.14.10-1+toddy2), libxml2-python (= 2.15.3-1+toddy1), gettext (>= 1.0-1)',
+                'itstool-2.0.7.tar.gz', 'usr/bin/itstool'),
+    'libxml2-python': ('2.15.3', 'libxml2 (= 2.15.3-1+toddy1), python (= 3.14.10-1+toddy2)',
+                       'libxml2-2.15.3.tar.xz', 'usr/lib/python3.14/site-packages/libxml2.py'),
+    'doxygen': ('1.18.0', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), sqlite (>= 3.53.4-1)',
+                'doxygen-1.18.0.src.tar.gz', 'usr/bin/doxygen'),
     'gtk': ('4.22.4', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), pango (= 1.58.2-1+toddy1), cairo (>= 1.18.4-1+toddy1), harfbuzz (>= 14.3.1-1+toddy1), fribidi (>= 1.0.16-1+toddy1), fontconfig (>= 2.18.3-1+toddy1), gdk-pixbuf (= 2.44.7-1+toddy2), graphene (= 1.10.8-1+toddy1), libepoxy (= 1.5.10-1+toddy1), wayland (>= 1.26.0-1+toddy1), libxkbcommon (= 1.13.2-1+toddy1), libpng (>= 1.6.58-1+toddy1), libjpeg-turbo (= 3.2.0-1+toddy1), tiff (= 4.7.2-1+toddy1), librsvg (= 2.62.3-1+toddy1), iso-codes (= 4.20.1-1+toddy1)',
             'gtk-4.22.4.tar.xz', 'usr/lib/girepository-1.0/Gtk-4.0.typelib'),
     'iso-codes': ('4.20.1', 'glibc (>= 2.44-1)',
@@ -107,6 +115,11 @@ if __name__ == '__main__':
     if mesa_finish:qualifier='mesa-finish-3'
     pci_resume=name=='libpciaccess' and (log/'libpciaccess-resume-2.job.json').exists()
     if pci_resume:qualifier='libpciaccess-resume-2'
+    doxygen_finish=name=='doxygen' and (log/'doxygen-finish-2.job.json').exists()
+    if doxygen_finish:qualifier='doxygen-finish-2'
+    if name=='itstool' and (log/'itstool-recovery-2.job.json').exists():qualifier='itstool-recovery-2'
+    if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
+    if name=='libxml2-python':qualifier='libxml2-python-probe-5'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
         work=Path('/mnt/lfs/sources/phase2/work/rustc-1')
@@ -439,6 +452,61 @@ if __name__ == '__main__':
         assert {t['name'] for t in tests}=={'testdict','testchar','testparser','testrecurse','testcatalog','testapi','runtest'}
         assert len(tests)==7 and all(t['exit']==0 for t in tests)
         assert (work/'test-logs/runtest.log').read_text().rstrip().endswith('Total 3904 tests, no errors')
+    if name=='libxmlb':
+        work=Path('/mnt/lfs/sources/phase2/work/libxmlb-1');source=Path('/mnt/lfs/sources/phase2/inputs/libxmlb-0.3.29')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libxmlb-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libxmlb-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==proof['gi_exit']==0
+        rows=[json.loads(l) for l in (work/'compile/meson-logs/testlog.json').read_text().splitlines() if l.strip()]
+        assert len(rows)==2 and all(r['result']=='OK' and r['returncode']==0 for r in rows)
+        assert sum(r['passed_tap_cases'] for r in proof['upstream_drivers'])==56
+    if name=='itstool':
+        work=Path('/mnt/lfs/sources/phase2/work/itstool-1');source=Path('/mnt/lfs/sources/phase2/inputs/itstool-2.0.7')
+        proof=json.loads((work/'test-results.json').read_text());assert proof['upstream_python_tests']==64 and proof['staged_consumer_exit']==0
+        if qualifier=='itstool-dtd-finish-3':
+            assert (log/'itstool-recovery-2.exit').read_text().strip()=='1'
+            assert json.loads((log/'itstool-dtd-finish-3.job.json').read_text())['command'][-3:]==['python3','-c',(ROOT/'scripts/build/phase2/itstool_finish.py').read_text()]
+            assert proof['original_passed']==62 and proof['affected_native_exit']==0
+            assert proof['original_failed']==proof['affected_retested']==['test_IT_keep_entities_1','test_IT_translate_with_external_dtds']
+            old=(work/'upstream-tests.log').read_text();assert 'Ran 64 tests' in old and old.rstrip().endswith('FAILED (failures=2)')
+            new=(work/'dtd-affected-tests.log').read_text();assert 'Ran 2 tests' in new and new.rstrip().endswith('OK')
+        else:
+            assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/itstool-build.sh').read_bytes()
+            assert proof['upstream_exit']==0
+        assert (source/'toddy-probe.py').read_bytes()==(ROOT/'scripts/build/phase2/itstool-probe.py').read_bytes()
+        assert all(proof['consumer'][k] is True for k in ['xml_extraction','compiled_gettext_catalog','portuguese_merge'])
+    if name=='libxml2-python':
+        work=Path('/mnt/lfs/sources/phase2/work/libxml2-1');output=work/'python-binding-1'
+        proof=json.loads((output/'qualified-5.json').read_text())
+        rows=proof['upstream_python_scripts'];assert len(rows)==48 and len({r['name'] for r in rows})==48
+        assert all(r['exit']==0 for r in rows) and proof['staged_consumer_exit']==0
+        assert (log/'libxml2-python-target-3.exit').read_text().strip()=='0'
+        assert json.loads((log/'libxml2-python-target-3.job.json').read_text())['command'][-3:]==['python3','-c',(ROOT/'scripts/build/phase2/xml_python_build.py').read_text()]
+        assert json.loads((log/'libxml2-python-probe-5.job.json').read_text())['command'][-4:]==['python3','-c',(ROOT/'scripts/build/phase2/xml_python_qualify.py').read_text(),(ROOT/'scripts/build/phase2/xml_python_probe.py').read_text()]
+        for relative,digest in json.loads((output/'core-before.json').read_text()).items():
+            with (work/'compile'/relative).open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==digest
+        files={str(p.relative_to(output/'stage')) for p in (output/'stage').rglob('*') if p.is_file()}
+        assert files==set(proof['payload']) and len(files)==3
+        assert all('/site-packages/' in p and Path(p).suffix in ('.py','.so') for p in files)
+        core=json.loads((log.parent/'packages/libxml2_2.15.3-1+toddy1_amd64.json').read_text());assert core['installed']
+    if name=='doxygen':
+        import xml.etree.ElementTree as ET
+        work=Path('/mnt/lfs/sources/phase2/work/doxygen-1');source=Path('/mnt/lfs/sources/phase2/inputs/doxygen-1.18.0')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/doxygen-build.sh').read_bytes()
+        assert (source/'toddy-probe.py').read_bytes()==(ROOT/'scripts/build/phase2/doxygen-probe.py').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==0
+        tests=ET.parse(work/'ctest.xml').getroot().findall('.//testcase');assert len(tests)==122
+        failed=[r for r in tests if r.find('failure') is not None or r.find('error') is not None]
+        if doxygen_finish:
+            assert (log/'doxygen-1.exit').read_text().strip()=='8'
+            assert len(failed)==1 and failed[0].get('name')=='012_cite'
+            assert proof['original_passed']==121 and proof['original_failed'][0]['passed'] is False
+            assert json.loads((log/'doxygen-finish-2.job.json').read_text())['command'][-3:]==['python3','-c',(ROOT/'scripts/build/phase2/doxygen_finish.py').read_text()]
+            for relative,digest in json.loads((work/'finish-2/binaries-before.json').read_text()).items():
+                with (work/'compile'/relative).open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==digest
+        else:assert not failed and proof['upstream_exit']==0
+        assert not any(r.find('skipped') is not None for r in tests)
+        assert proof['consumer']['generator_exit']==proof['consumer']['schema_exit']==0
     if name=='gtk':
         import re
         work=Path('/mnt/lfs/sources/phase2/work/gtk-1');source=Path('/mnt/lfs/sources/phase2/inputs/gtk-4.22.4')
@@ -477,6 +545,7 @@ if __name__ == '__main__':
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
+    if name=='libxml2-python':source=Path('/mnt/lfs/sources/phase2/work/libxml2-1/python-binding-1/stage')
     assert not (source/'.toddy-retired.json').exists(),'Stage retired under verified archive custody; reuse the native package, no promotion replay'
     before = inspect_stage(source)
     assert required in before['entries'], 'Missing declared payload'

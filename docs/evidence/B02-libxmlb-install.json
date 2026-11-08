@@ -1,0 +1,38 @@
+{
+  "scope": "Native compressed XML library/query/GI; exported API driver and56selftests0, actual installed Unicode/malformed XML refusal and GI0",
+  "step": {
+    "step": "b02-libxmlb-install",
+    "started": "2026-11-08T17:50:18.846627+00:00",
+    "finished": "2026-11-08T17:50:38.554544+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 53,
+    "log_sha256": "1c416bc369f77da1b45f132d8c96405cd66f5c2643fe06dbb80f0b8f3985d4d6"
+  },
+  "success_record_sha256": "72ac2e1fa075ff51e7e83b075256a2e78c570beb2622bdebf06c2fd993ae8036",
+  "package": {
+    "name": "libxmlb",
+    "version": "0.3.29-1+toddy1",
+    "archive_sha256": "2f7dbc2d293ce6883b9bfa28df06d4f1a66dd3d194c4772c82ef5855f0c0c174",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-libxmlb-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 26.571,
+        "entries": 139636,
+        "regular_files": 123881,
+        "regular_bytes": 6792149466
+      },
+      {
+        "seconds": 17.654,
+        "entries": 139686,
+        "regular_files": 123922,
+        "regular_bytes": 6793240499
+      }
+    ],
+    "total_seconds": 47.248
+  }
+}

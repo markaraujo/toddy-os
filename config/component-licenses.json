@@ -9974,6 +9974,141 @@
           ]
         }
       ]
+    },
+    {
+      "name": "doxygen",
+      "version": "1.18.0",
+      "license": "LicenseRef-doxygen-and-bundled-per-file",
+      "evidence": "Frozen native build-only XML generator, primary/bundled fmt/spdlog/header terms retained; system SQLite reused.122upstream cases121PASS/012_citeFAIL because optional external BibTeX absent, retained under ADR0138. Stage/XML C function+parameter/XSD consumer0 and172existing ELFs unchanged. Installed actual XML/XSD0, owned recipe0/post0; no full-suite/desktop/catalog claim.",
+      "source_notice_evidence": [
+        {
+          "filename": "doxygen-1.18.0.src.tar.gz",
+          "sha256": "a1deed70a6785bbec95a2b2a9e419dc7f7b223a9d74a8644ae611c8e2dcdd354",
+          "notices": [
+            {
+              "path": "doxygen-1.18.0/LICENSE",
+              "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+            },
+            {
+              "path": "doxygen-1.18.0/examples/author.cfg",
+              "sha256": "8cd144170c47fa64207d88938fdf411317bfb44df1885adc336010074a1a727b"
+            },
+            {
+              "path": "doxygen-1.18.0/examples/author.cpp",
+              "sha256": "1f5e9d61d52979e624999c64a8a1048582ec2e7606dde1b6fc5f136b5a1a80f0"
+            },
+            {
+              "path": "doxygen-1.18.0/deps/libmscgen/COPYING",
+              "sha256": "1b64a58ba8fb2d2e9df21cd9b7a842f283118fce342aba9dc35e9b101389009c"
+            },
+            {
+              "path": "doxygen-1.18.0/deps/spdlog/LICENSE",
+              "sha256": "334d9489bed5e2c83623466b81621e6a3883a8a87de8b4751d6faa2b57b5444f"
+            },
+            {
+              "path": "doxygen-1.18.0/addon/doxmlparser/LICENSE",
+              "sha256": "f23aa5e494ad7c6d358a334b7c65d80e7dd4a6e82005722fc0f820d1540a9599"
+            }
+          ]
+        }
+      ],
+      "extra_license_headers": {
+        "doxygen-1.18.0.src.tar.gz": {
+          "prefixes": [
+            ""
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".cc",
+            ".cpp",
+            ".hpp"
+          ]
+        }
+      },
+      "runtime_inclusion": "Qualified native build-only XML generator; installed XML/XSD consumer0. Bibliography unavailable (121/122 upstream cases passed; original012_cite failure retained). Not a qualified desktop/catalog application."
+    },
+    {
+      "name": "libxml2-python",
+      "version": "2.15.3",
+      "license": "MIT AND LicenseRef-libxml2-per-file",
+      "evidence": "Same frozen libxml2 source terms; separate optional Python binding,48 native scripts passed,99 accepted core ELFs unchanged. Independent owned recipe0/post0 and installed Unicode/XPath/NO_XXE positive+refusal consumer0; raw48script results retained.",
+      "extra_license_headers": {
+        "libxml2-2.15.3.tar.xz": {
+          "paths": [
+            "dict.c",
+            "list.c"
+          ]
+        }
+      }
+    },
+    {
+      "name": "itstool",
+      "version": "2.0.7",
+      "license": "GPL-3.0-or-later",
+      "evidence": "Frozen upstream itstool.in GPL3-or-later header, COPYING and COPYING.GPL3. Original64cases62PASS/2missing-DTD failures retained; only2affected corrected0 with authenticated private offline DTD. Native staged/installed ITS extraction/Portuguese merge0, owned0/0; no application/catalog availability.",
+      "source_notice_evidence": [
+        {
+          "filename": "itstool-2.0.7.tar.gz",
+          "sha256": "fba78a37dc3535e4686c7f57407b97d03c676e3a57beac5fb2315162b0cc3176",
+          "notices": [
+            {
+              "path": "itstool-2.0.7/COPYING",
+              "sha256": "f907bf6e8a3f4911af6904597c9dcb6b415ab2facf8d403fa3c5afa1f533ab90"
+            },
+            {
+              "path": "itstool-2.0.7/COPYING.GPL3",
+              "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+            }
+          ]
+        }
+      ],
+      "runtime_inclusion": "Build-only XML/gettext data tool; explicit release inventory required"
+    },
+    {
+      "name": "docbook-xml",
+      "version": "4.5",
+      "license": "LicenseRef-DocBook-XML-4.5-per-file",
+      "evidence": "Official DocBook4.5 ZIP matched frozen BLFS13.1 book MD5 and ZIP CRC. docbookx.dtd includes OASIS permissive retention/variant notice; retain all33 original members and per-file entity notices unchanged.",
+      "runtime_inclusion": "Read-only offline test fixture dependency only; no native runtime or catalog availability claim",
+      "source_notice_evidence": [
+        {
+          "filename": "docbook-xml-4.5.zip",
+          "sha256": "4e4e037a2b83c98c6c94818390d4bdd3f6e10f6ec62dd79188594e26190dc7b4",
+          "notices": [
+            {
+              "path": "docbookx.dtd",
+              "sha256": "e5616d42877c0630779143a6cada440b189538b87d07ad33c72c422af70aef78"
+            },
+            {
+              "path": "README",
+              "sha256": "b45706de2787967d17176d287b8309fd32b49b8d25a451c2da198cfa8d72a640"
+            },
+            {
+              "path": "ent/README",
+              "sha256": "2abb0d5858d65a080a36165d00235edf647e095301f31a145ae184cf69e94b37"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "libxmlb",
+      "version": "0.3.29",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Frozen source meson.build SPDX and LICENSE retained. Native two drivers/56TAPcases/API map0, staged Unicode XML/refusal/GI0; actual installed API/GI0, independently owned recipe0/post0.",
+      "source_notice_evidence": [
+        {
+          "filename": "libxmlb-0.3.29.tar.xz",
+          "sha256": "448294be33bfae62f00fa66e506f1cae80237ce71b7ab6530aefa75005eeb08a",
+          "notices": [
+            {
+              "path": "libxmlb-0.3.29/LICENSE",
+              "sha256": "20c17d8b8c48a600800dfd14f95d5cb9ff47066a9641ddeab48dc54aec96e331"
+            }
+          ]
+        }
+      ]
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

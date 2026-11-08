@@ -1,0 +1,38 @@
+{
+  "scope": "Native optional XML Python binding;48scripts passed/99coreELFs unchanged/installed Unicode and NO_XXE with positive control0",
+  "step": {
+    "step": "b02-libxml2-python-install-native-2",
+    "started": "2026-11-08T17:40:37.710385+00:00",
+    "finished": "2026-11-08T17:41:07.460754+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 15,
+    "log_sha256": "2d232c042a67a32e9cf0163759f67318c4d9992eeeb4e5e7a21a60911f8dd729"
+  },
+  "success_record_sha256": "d8fdd39ad77d22285ee75a392bdafe69bfd845d0f32e8f0e570a2cc18556e0d9",
+  "package": {
+    "name": "libxml2-python",
+    "version": "2.15.3-1+toddy1",
+    "archive_sha256": "7d6eb6f1c691ec1f3df8e3911cd4c73613a71e72a6c973a73395c39324c11573",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-libxml2-python-install-native-2",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 25.369,
+        "entries": 139602,
+        "regular_files": 123854,
+        "regular_bytes": 6790898011
+      },
+      {
+        "seconds": 27.263,
+        "entries": 139615,
+        "regular_files": 123865,
+        "regular_bytes": 6791599828
+      }
+    ],
+    "total_seconds": 56.092
+  }
+}

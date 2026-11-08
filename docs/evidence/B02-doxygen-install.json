@@ -1,0 +1,38 @@
+{
+  "scope": "Build-only native C/API XML generator; bibliography remains unqualified",
+  "step": {
+    "step": "b02-doxygen-install",
+    "started": "2026-11-08T17:23:33.012945+00:00",
+    "finished": "2026-11-08T17:24:07.151451+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 166,
+    "log_sha256": "25671d99d6cecae0421428ddc5934334be7d48ef5370639dd8cf7f91bb7126d2"
+  },
+  "success_record_sha256": "eaec3667f42811eba951dddc3dce21f95268139ec9f09d1a8d91ae30e2e41122",
+  "package": {
+    "name": "doxygen",
+    "version": "1.18.0-1+toddy1",
+    "archive_sha256": "5738659077073c305c48d2130040c2e1ed671838ad90ee33730b193e96ccd07b",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-doxygen-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 30.464,
+        "entries": 139439,
+        "regular_files": 123693,
+        "regular_bytes": 6760718423
+      },
+      {
+        "seconds": 26.196,
+        "entries": 139602,
+        "regular_files": 123854,
+        "regular_bytes": 6790898011
+      }
+    ],
+    "total_seconds": 65.579
+  }
+}
