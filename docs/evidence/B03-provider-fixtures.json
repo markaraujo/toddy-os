@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "scope": "offline pinned Pi 1.5.0 protocol fixtures; no paid calls, no live provider qualification",
+  "task_deadline": true,
+  "results": [
+    {
+      "family": "openai-compatible",
+      "scope": "synthetic protocol only; live-unverified",
+      "text_unicode_fragmented": true,
+      "structured_tool": true,
+      "usage": true,
+      "auth_rate_redirect_no_retry": true,
+      "truncated_malformed_rejected": true,
+      "active_cancel": true,
+      "busy_request_limit": true,
+      "output_tool_limits": true,
+      "pre_dispatch_policy": true
+    },
+    {
+      "family": "openai",
+      "scope": "synthetic protocol only; live-unverified",
+      "text_unicode_fragmented": true,
+      "structured_tool": true,
+      "usage": true,
+      "auth_rate_redirect_no_retry": true,
+      "truncated_malformed_rejected": true,
+      "active_cancel": true,
+      "busy_request_limit": true,
+      "output_tool_limits": true,
+      "pre_dispatch_policy": true
+    },
+    {
+      "family": "anthropic",
+      "scope": "synthetic protocol only; live-unverified",
+      "text_unicode_fragmented": true,
+      "structured_tool": true,
+      "usage": true,
+      "auth_rate_redirect_no_retry": true,
+      "truncated_malformed_rejected": true,
+      "active_cancel": true,
+      "busy_request_limit": true,
+      "output_tool_limits": true,
+      "pre_dispatch_policy": true
+    },
+    {
+      "family": "openrouter",
+      "scope": "synthetic protocol only; live-unverified",
+      "text_unicode_fragmented": true,
+      "structured_tool": true,
+      "usage": true,
+      "auth_rate_redirect_no_retry": true,
+      "truncated_malformed_rejected": true,
+      "active_cancel": true,
+      "busy_request_limit": true,
+      "output_tool_limits": true,
+      "pre_dispatch_policy": true
+    }
+  ],
+  "native_job": "provider-fixtures-1",
+  "expected_malformed_sdk_stderr_lines": 6,
+  "own_input_sha256": {
+    "provider.mjs": "24c2b04719d1ceff58341b1a140847e28a6415ba16d244cf1f2768b2581a0fb2",
+    "local-transport.mjs": "cc734411ba25b3736370e820478cd0347e6fe28e6a53159137702671f2a0c2c6",
+    "provider-fixtures.mjs": "7d9ba93939bef440b3b77af2e98c4ff02389439e0389826be936973d5b615323"
+  },
+  "node_version": "v24.19.0"
+}

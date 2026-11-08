@@ -1563,3 +1563,12 @@ exact tokenizer context admission0generation, otherUID socket/key EACCES and bea
 input contract snapshot retained; final local profile temperature0. Original
 failed/stochastic/formatting runs and bounded correction ledger preserved.
 B03 local-task criterion passes; provider protocols/acquisition/choices remain.
+
+### B03 native provider protocol fixtures — 2026-11-08 UTC
+
+Qualified four advertised protocol families against actual pinned Pi1.5.0 on
+native Node24.19 in the existing no-network namespace. Streaming/tool/usage,
+classified errors, no retry/redirect, cancel/deadline and limits passed. All remote
+families remain fixture-only/live-unverified. Two synthetic host harness mistakes
+were corrected before one native passing job; production provider unchanged.
+B03 first criterion accepted; acquisition/choice remains. No package/model rerun.

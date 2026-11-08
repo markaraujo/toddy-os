@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 5% phase total counts completed stories only. B03 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 13%.
 
-Last verified: 2026-11-08T01:22:45.072130+00:00
+Last verified: 2026-11-08T01:30:52.044588+00:00
 
 Verified:
 
@@ -26,12 +26,12 @@ Verified:
 - Actual Qwen CPU streaming response, no/wrong-token401, external route denied and graceful shutdown passed; first text0.289s, peak2,320,036KiB on development VM.
 - Actual Pi local file-tool task4.29s, active cancel6ms/new response0.34s, exact context rejection before generation; native source/contract hashes retained.
 - Private Unix runtime/ephemeral bearer: UID65534 socket/key EACCES, no/wrong-token401, graceful/idempotent Stop and private cleanup0.
+- Native Node24.19/Pi1.5 four-family offline streaming/tool/usage/error/cancel/deadline/limits fixtures passed; remote families remain live-unverified.
 
-Running: Implementing focused provider-family protocol fixtures and verified acquisition/choice flow; no guest writer active.
+Running: Implementing verified acquisition/choice flow; native provider-fixtures-1 terminal0, no guest writer active.
 
 Remaining:
 
-- Provider-family streaming/tool/error/cancel fixtures, with explicit live-unverified status.
 - Validated API/local/deferred selection and safe verified/resumable model acquisition.
 
 [Acceptance evidence](docs/evidence/B03.md)

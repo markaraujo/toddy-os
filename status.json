@@ -3,7 +3,7 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-07",
   "bootstrap": "ready_for_development",
-  "current_scope": "B01 accepted for architecture/native feasibility (5% Phase2). B03 optional CPU-local runtime implementation started with pinned sources and explicit CPU gates. Provider/model tasks, native GNOME, installed Phase2 ISO, B02/B04–B13/G2 and physical validation remain pending.",
+  "current_scope": "B01 accepted for architecture/native feasibility (5% Phase2). B03 optional CPU-local runtime implementation started with pinned sources and explicit CPU gates. Provider/model tasks, native GNOME, installed Phase2 ISO, B02/B04\u2013B13/G2 and physical validation remain pending.",
   "next_story": "B03",
   "gates": {
     "G1": "passed",
@@ -318,7 +318,9 @@
         "One actual llama.cpp model profile completes a harmless offline tool task with recorded version, license, resource limits and no hidden cloud fallback.",
         "API/local/deferred backend choices and verified resumable model downloads work without exposing keys or requiring paid resources."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/B03-provider-fixtures.json"
+      ]
     },
     {
       "id": "B04",
@@ -542,14 +544,14 @@
       "Native llama-cpp0.9.0 source/stage/package/postcheck0/0; runtime only22MiB, no bundled weights.",
       "Actual Qwen CPU streaming response, no/wrong-token401, external route denied and graceful shutdown passed; first text0.289s, peak2,320,036KiB on development VM.",
       "Actual Pi local file-tool task4.29s, active cancel6ms/new response0.34s, exact context rejection before generation; native source/contract hashes retained.",
-      "Private Unix runtime/ephemeral bearer: UID65534 socket/key EACCES, no/wrong-token401, graceful/idempotent Stop and private cleanup0."
+      "Private Unix runtime/ephemeral bearer: UID65534 socket/key EACCES, no/wrong-token401, graceful/idempotent Stop and private cleanup0.",
+      "Native Node24.19/Pi1.5 four-family offline streaming/tool/usage/error/cancel/deadline/limits fixtures passed; remote families remain live-unverified."
     ],
-    "running": "Implementing focused provider-family protocol fixtures and verified acquisition/choice flow; no guest writer active.",
+    "running": "Implementing verified acquisition/choice flow; native provider-fixtures-1 terminal0, no guest writer active.",
     "remaining": [
-      "Provider-family streaming/tool/error/cancel fixtures, with explicit live-unverified status.",
       "Validated API/local/deferred selection and safe verified/resumable model acquisition."
     ],
-    "verified_at": "2026-11-08T01:22:45.072130+00:00",
+    "verified_at": "2026-11-08T01:30:52.044588+00:00",
     "evidence": "docs/evidence/B03.md"
   }
 }
