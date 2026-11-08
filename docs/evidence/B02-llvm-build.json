@@ -1,0 +1,134 @@
+{
+  "scope": "ADR0121 critical suites with ADR0124 affected Support cwd correction; original raw unit failure retained, other unit cases reused, no full cross-target/compiler-rt matrix",
+  "suites": [
+    {
+      "name": "llvm-unit",
+      "qualification_exit": 0,
+      "original_native_exit": 1,
+      "affected_native_exit": 0,
+      "lit_entries": 10502,
+      "counts": {
+        "PASS": 10502
+      },
+      "report_sha256": "85b089fc5109267094b43e52e9d62ff4f0fd9c28416f9c35ffb029d5396bcc41"
+    },
+    {
+      "name": "clang-unit",
+      "exit": 0,
+      "lit_entries": 26497,
+      "counts": {
+        "PASS": 26497
+      },
+      "report_sha256": "62f597be832bdcc7e99ed49a00c3a121b55f4ff887c326f2ca9d490162fe01b4",
+      "log_sha256": "8a90288ae1acd0b2885a0485e5d1c855e86846ac4561e835e10236f82c49bc9d"
+    },
+    {
+      "name": "llvm-transforms",
+      "exit": 0,
+      "lit_entries": 10819,
+      "counts": {
+        "PASS": 9189,
+        "UNSUPPORTED": 1592,
+        "XFAIL": 38
+      },
+      "report_sha256": "c3f0533d8a855f40d5971cef5aba80c2965b5d986ebd8cd0c45b87660b6ace7d",
+      "log_sha256": "7cb1630651d9599c0596eb7715e6dbe7abea92bc0cfca48e38d8132ef78186c4"
+    },
+    {
+      "name": "llvm-x86",
+      "exit": 0,
+      "lit_entries": 5370,
+      "counts": {
+        "UNSUPPORTED": 78,
+        "PASS": 5279,
+        "XFAIL": 13
+      },
+      "report_sha256": "ae2c84e4aebde053828ca3293cffae8fb58008f83b7f672e486855b4b143f1fa",
+      "log_sha256": "8df1ca81eae13370c7f417edde92d437f6bf63209b2c978d5d192fe78d39b06e"
+    },
+    {
+      "name": "llvm-execution-engine",
+      "exit": 0,
+      "lit_entries": 371,
+      "counts": {
+        "PASS": 224,
+        "UNSUPPORTED": 145,
+        "XFAIL": 2
+      },
+      "report_sha256": "b644dde90d0e718d2b55732548b26eee193376b3fcb8dfcd031662238a582aba",
+      "log_sha256": "dc03435f8f0ab77a84382b517e11d4cde18cd9a50a172bc10011a2821a204782"
+    },
+    {
+      "name": "clang-codegen",
+      "exit": 0,
+      "lit_entries": 5913,
+      "counts": {
+        "PASS": 2175,
+        "UNSUPPORTED": 3734,
+        "XFAIL": 4
+      },
+      "report_sha256": "a4e208626141740b1ef956cfd03c8fd16b77409614daee03c80bbca8fdea29ef",
+      "log_sha256": "671e08bb4006f50fb066abfdc6e3291c6591c2ccbe80e199c3f9fb48d10c6410"
+    },
+    {
+      "name": "clang-codegen-cxx",
+      "exit": 0,
+      "lit_entries": 1228,
+      "counts": {
+        "PASS": 1197,
+        "UNSUPPORTED": 27,
+        "XFAIL": 4
+      },
+      "report_sha256": "3fa1f32f11cf4c7f3c629c3e70397f8085256c0eaf56817b4e6785a355cd8b24",
+      "log_sha256": "82baea25ebd1c1ac72139bc2a9913f609b379dd87d4f73ad3130abd2b0e7d713"
+    }
+  ],
+  "unit_recovery": {
+    "original_report_sha256": "dd093a69828521bf7a31d9759a9037d30bca4639bf864497542a8c3702430091",
+    "affected_report_sha256": "7e4efd633b63447c425114f581528fd4e16fea8d620f15128b1936e29da40518",
+    "original_native_exit": 1,
+    "affected_native_exit": 0,
+    "cwd": "/build/compile",
+    "reused_passed_cases": 8856,
+    "affected_passed_cases": 1646,
+    "original_failure_preserved": "LLVM-Unit :: Support/./SupportTests/VFSFromYAMLTest/RelativePaths"
+  },
+  "binaries_unchanged": true,
+  "required_poison_select_regression": "PASS",
+  "binary_input_count": 882,
+  "binary_input_manifest_sha256": "8731385765955842b6b7cbde32eb0f573cc19127cd6abd535f9daa1c86a79f9a",
+  "full_native_proof_sha256": "19959fd70dd54ec390027a8cc7e86952e6963e6dc9a1ebf324b5158b684a20a4",
+  "jobs": {
+    "llvm-1": {
+      "exit": 0,
+      "harness_sha256": "2ead2db07803f13b5037dc2c5a0941717df198505a16b76523cd306e9b235ee9",
+      "command_sha256": "2330f3c2bd48df00ff26491cf47e5c39fb30ea85d6617700b44ee22b37e79bcd",
+      "log_sha256": "fec88fff7fd799ea4de15072a04912d1a488cc1ff2f464d9aa5b3e50ab9d435a"
+    },
+    "llvm-qualify-2": {
+      "exit": 1,
+      "harness_sha256": "2ead2db07803f13b5037dc2c5a0941717df198505a16b76523cd306e9b235ee9",
+      "command_sha256": "5cacd892df77a7f9732414466a6aec1378435bc18ef303cbf9619303cd849e79",
+      "log_sha256": "c22bf6376c7c12e2abf0ad6bd20279a3bfa71e3abdb76bbd32e087a647fcc910"
+    },
+    "llvm-qualify-resume-3": {
+      "exit": 1,
+      "harness_sha256": "2ead2db07803f13b5037dc2c5a0941717df198505a16b76523cd306e9b235ee9",
+      "command_sha256": "5372877dd5c9ea000687adfc01dc1c0e659fceeb990bd52b86be7b50af91638c",
+      "log_sha256": "a138a557f88725a479c90422044bc09b228981aea416663905e54755178a73a2"
+    },
+    "llvm-qualify-recovery-4": {
+      "exit": 0,
+      "harness_sha256": "2ead2db07803f13b5037dc2c5a0941717df198505a16b76523cd306e9b235ee9",
+      "command_sha256": "ba63eceebf8aca23feb3f800aa03bbe511f80619ba93807f006f0b9d9dbc3451",
+      "log_sha256": "dc7fd01b288c7d3017a8a408857930efacbcc0b37d617c8f612b9594093f7778"
+    }
+  },
+  "preserved_native_bundle": {
+    "path": ".local/phase2/exports/B02-llvm-native-evidence.tar.gz",
+    "sha256": "d19d3021d121f5801affd363f0c0be5b6232aa22a44420b937ab052c12153055",
+    "bytes": 2819413,
+    "members": 39,
+    "publication": "local preserved artifact; include in final Phase2 release evidence, not a released ISO"
+  }
+}

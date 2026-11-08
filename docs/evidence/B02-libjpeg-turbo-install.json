@@ -1,0 +1,38 @@
+{
+  "scope": "Portable C backend: upstream native CTest drivers, owned install/version and actual JPEG memory encode/decode with explicit lossy pixel tolerance. Optional SIMD disabled; no graphical/browser or physical-hardware acceptance.",
+  "step": {
+    "step": "b02-libjpeg-turbo-install",
+    "started": "2026-11-08T08:33:28.841692+00:00",
+    "finished": "2026-11-08T08:33:42.033123+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 58,
+    "log_sha256": "5168c74134fe916eccd372270d6145459badd10902242171f8cdcefa3b3a640b"
+  },
+  "success_record_sha256": "0c4e0f68fa9f6eb3fd7e78a0ae281dae2908cd91ecb7a7a913ebd414a1f4282c",
+  "package": {
+    "name": "libjpeg-turbo",
+    "version": "3.2.0-1+toddy1",
+    "archive_sha256": "1a5256951901f6d6c0a26aad13f744122ff7551f90f5e028ca6bc33e583d6a44",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-libjpeg-turbo-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 11.269,
+        "entries": 116048,
+        "regular_files": 103029,
+        "regular_bytes": 5965969702
+      },
+      {
+        "seconds": 11.155,
+        "entries": 116101,
+        "regular_files": 103074,
+        "regular_bytes": 5969377171
+      }
+    ],
+    "total_seconds": 25.265
+  }
+}

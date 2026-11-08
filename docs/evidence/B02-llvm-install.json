@@ -1,0 +1,72 @@
+{
+  "scope": "Owned native LLVM runtime/SDK packages, C++ compilation/execution, default PIE and SSP, actual ORC JIT IR, libclang parse and FileCheck. ADR0121 selected critical tests plus ADR0124 affected unit recovery passed; no full cross-target matrix or GNOME acceptance.",
+  "step": {
+    "step": "b02-llvm-install",
+    "started": "2026-11-08T08:16:33.404759+00:00",
+    "finished": "2026-11-08T08:19:04.334801+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 20419,
+    "log_sha256": "721a1a7072296953631bbe4d3dfb29553749dbebe504add3cb049289a5e96d9b"
+  },
+  "success_record_sha256": "5476912cb9f0b41f0a6c82fdb9b0d6de49956223d34035157888c970c40aea0f",
+  "package": {
+    "name": "llvm",
+    "version": "22.1.8-1+toddy1",
+    "archive_sha256": "8cac0218934786fcb2330861174da1c81702327e2800f7479f6bf29ebd60b79b",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-llvm-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 9.465,
+        "entries": 95634,
+        "regular_files": 82858,
+        "regular_bytes": 4951560364
+      },
+      {
+        "seconds": 11.432,
+        "entries": 116048,
+        "regular_files": 103029,
+        "regular_bytes": 5965969702
+      }
+    ],
+    "total_seconds": 161.052
+  },
+  "runtime_split": {
+    "package": {
+      "name": "llvm-runtime",
+      "version": "22.1.8-1+toddy1",
+      "archive_sha256": "53288231be2081f43ffeea0ed106786196028be6a5076c96658fde47c666ea58",
+      "installed": true
+    },
+    "payload_files": 8169,
+    "library_paths": [
+      "/usr/lib/libLLVM.so",
+      "/usr/lib/libLLVM.so.22.1"
+    ],
+    "no_compiler_or_headers_in_runtime_payload": true,
+    "dt_needed": [
+      "libffi.so.8",
+      "libz.so.1",
+      "libzstd.so.1",
+      "libstdc++.so.6",
+      "libm.so.6",
+      "libgcc_s.so.1",
+      "libc.so.6",
+      "ld-linux-x86-64.so.2"
+    ],
+    "partition": {
+      "abi": "22.1",
+      "library_sha256": "9b896a4acdcddc879a2e822f83946626186a75617f8e4c7c6d020d2ea9b819a3",
+      "payload": [
+        "usr/lib/libLLVM.so.22.1",
+        "usr/lib/libLLVM.so"
+      ],
+      "scope": "Shared runtime only; compiler/headers/libclang/tools remain in build-only llvm package"
+    },
+    "image_scope": "Runtime candidate for actual Mesa closure only; base/live assembly and desktop qualification pending"
+  }
+}

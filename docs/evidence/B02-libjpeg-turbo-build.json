@@ -1,0 +1,18 @@
+{
+  "scope": "Native C backend CMake/CTest/stage; no optional SIMD qualification",
+  "terminal_exit": 0,
+  "ctest": {
+    "name": "(empty)",
+    "tests": "332",
+    "failures": "0",
+    "disabled": "0",
+    "skipped": "0",
+    "hostname": "",
+    "time": "19",
+    "timestamp": "2026-11-08T08:31:24"
+  },
+  "report_sha256": "1d9649601ad12dabe2d46295aecc72f618e5f4f7383950449e14119785cdd075",
+  "test_cases": 332,
+  "harness_sha256": "2ead2db07803f13b5037dc2c5a0941717df198505a16b76523cd306e9b235ee9",
+  "log_sha256": "02045fdfb1fece3aa6712231e54c66f8d3237102281f4e787a311d4d9a4e02e1"
+}

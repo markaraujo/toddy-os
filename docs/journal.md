@@ -1808,3 +1808,19 @@ rechecked1646 affected Support cases0, reuses8856 other native passes, no binary
 recompile. Clang-unit26497 PASS and Transforms9189 PASS/1592 UNSUPPORTED/38 XFAIL
 recorded; other critical suites/stage/install pending. Three negative/merge gate
 checks and make check258 passed. Current writer job4/PID156881/monitor79334.
+
+### B02 native LLVM, changed fonts and JPEG — 2026-11-08 UTC
+
+LLVM job4 terminal0, all7 selected suites qualified:55063 PASS/5576 UNSUPPORTED/
+61 XFAIL, poison-select PASS,882 compiler/test binaries unchanged. Original unit
+failure preserved,1646 affected Support cases rechecked with normal build cwd.
+Full raw native reports/receipts preserved in host evidence bundle d19d3021...
+53055. Owned separate runtime/SDK install/post0/0 passed C++/PIE/SSP/libclang/
+ORC/FileCheck; full-root transaction161.052s. Runtime payload contains only
+libLLVM ABI22.1/alias and legal docs; no SDK. Final consumer/image closure pending.
+Adwaita changed-input Pango17 drivers0/no binary rebuild. Serif currently maps
+to Mono; add an actual proportional serif before browser acceptance. JPEG C
+backend upstream CTest/stage and owned native memory pixels install/post0/0.
+No native desktop/physical test claimed. Next Rust offline input/compiler slice,
+measured target30GiB/host122GiB and existing reserves preserved. b2eb657 all3
+remote workflows green. No guest writer or queued continuation remains.
