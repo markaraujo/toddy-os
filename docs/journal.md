@@ -1657,3 +1657,11 @@ Exact notices and source/recipe hashes retained. Full-root scan overhead19.328s
 of22.343s measured by wrapper around unchanged runner, no optimization bypass.
 Wayland1.26/Protocols1.49 verified against frozen book MD5/official HTTPS and
 SHA256-pinned before extraction. Desktop/native GUI still entirely pending.
+
+### B02 private descriptor alias qualification — 2026-11-08 UTC
+
+Added the standard/dev/fd alias needed by Wayland descriptor-leak tests, pointing
+to the already exposed private/proc/self/fd. alias-probe-1 proved FD/source write
+denial, caps0, outside/egress refusal, native C and actual parent lock held/released.
+No global security change or unchanged model/foundation suite rerun. Original
+Wayland failure preserved; affected recheck recorded separately.

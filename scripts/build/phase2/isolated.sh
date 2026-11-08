@@ -77,6 +77,8 @@ for name in null zero random urandom; do
     touch "$root/dev/$name"
     mount --bind "/dev/$name" "$root/dev/$name"
 done
+# Standard alias to this process's already exposed private proc descriptors.
+ln -s /proc/self/fd "$root/dev/fd"
 # Read-only root covers the synthetic /etc and namespace topology, while the
 # explicitly separate /build, /stage and /tmp mounts remain writable.
 mount -o remount,ro "$root"
