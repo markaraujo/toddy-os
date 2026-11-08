@@ -1,0 +1,17 @@
+{
+  "scope": "Only duplicate native-package staging copy; installed Rust SDK, original work/stage, compiled tests/caches, sources, native archive, evidence and immutable backings retained",
+  "state": "complete",
+  "archive": {
+    "path": "/var/cache/toddy/packages/rustc_1.97.1-1+toddy1_amd64.deb",
+    "sha256": "4db0e6bfec65c41773f54017e6a49aa3c97b2a1e0098ee548284943a4e53cf63",
+    "version": "1.97.1-1+toddy1"
+  },
+  "record_sha256": "cdfb47672715f412f5f19461942206dcd39e5b324db9c874b481201731df7918",
+  "stage": "/mnt/lfs/sources/stage/phase2-rustc",
+  "stage_inode": 551445,
+  "payload_entries": 5369,
+  "before_free_bytes": 17416830976,
+  "after_free_bytes": 17804242944,
+  "reclaimed_bytes": 387411968,
+  "recovery": "Verify retained native archive SHA and extract into a NEW staging directory only if needed; reuse installed SDK/original work cache, never rerun retirement or reinstall."
+}

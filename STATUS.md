@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-08T21:27:54.540241+00:00
+Last verified: 2026-11-08T22:18:35.336568+00:00
 
 Verified:
 
@@ -43,7 +43,7 @@ Verified:
 - Actual native7.1.8/Systemd sandbox0 on4CPU/4GiB BIOS/noNIC; bwrap26portable+66native upstream passes/5explicit optional skips, native consumer0,11ELFs unchanged. Checksum-reconciled split serial marker without native replay; owned0755 byte-identical install/post0/0. Builder/same3scratch volumes restored, no formatting/trim.
 - Owned display-info0.4.0 install/post0/0/all68registered EDID fixtures0, actual QEMU/PnP/malformed+truncated refusal0; both parser/hwdata source-license inventories retained. No physical monitor or graphical-session acceptance.
 
-Running: No guest writer; capacity/source-archive custody preflight before native Glycin image decoder and remaining GNOME dependencies. All67Libadwaita widgets and B02 login/basic-app/graphical acceptance pending; stop after full B02 per owner.
+Running: Glycin2.1.5 offline core/two-loader compile/stage/C+GI constructors0; unqualified pending actual native sandbox/image tests. Original test executables compiling only in glycin-tests-1; one writer. All67Libadwaita widgets and GNOME/B02 criteria pending.
 
 Remaining:
 

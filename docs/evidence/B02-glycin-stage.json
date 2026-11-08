@@ -1,0 +1,128 @@
+{
+  "scope": "Offline compiled Glycin core/two loaders, staged C/GI type construction only; UNQUALIFIED pending real native sandbox/image/upstream tests",
+  "bundle_version": "2.1.5",
+  "libglycin_api_version": "2.1.0",
+  "loaders": [
+    "glycin-image-rs",
+    "glycin-svg"
+  ],
+  "cargo_lock_sha256": "5ff1ad293efde5c927f19df0f488dc80a04814367dbc480a3cc45847646bc669",
+  "native_compile_exit": 0,
+  "staged_type_constructor_exit": 0,
+  "gi_type_constructor_exit": 0,
+  "upstream_tests_passed": 0,
+  "native_runtime_pending": [
+    "install-integration-test",
+    "setup-integration-test-glycin-image-rs",
+    "setup-integration-test-glycin-svg",
+    "cargo-test"
+  ],
+  "profile": "No HEIF/JXL/raw loader products, thumbnailer/GTK4 companion/Vala/docs; source tests enabled for later native execution, sandbox never disabled",
+  "package_promotable": false,
+  "job": "glycin-1",
+  "job_exit": 0,
+  "phase_exits": {
+    "consumer-build.exit": 0,
+    "compile.exit": 0,
+    "gi.exit": 0,
+    "configure.exit": 0,
+    "consumer.exit": 0,
+    "stage.exit": 0
+  },
+  "retained_logs": {
+    "bwrap-version.log": {
+      "bytes": 18,
+      "sha256": "a58db7b9882f2b7a666ca3027a3add85575578ca80567034b5fe29f3a259b229"
+    },
+    "compile.log": {
+      "bytes": 8148,
+      "sha256": "579cd3ab583a03540413e7291f787ead12c8c4ee7c069c2ea241d031668088ed"
+    },
+    "configure.log": {
+      "bytes": 2733,
+      "sha256": "7e1a061bba39da4298f3db6a50c7dc51ccdf6ba06f6126c211d5aa14bdbfdd77"
+    },
+    "consumer.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stage.log": {
+      "bytes": 965,
+      "sha256": "8cf66cb22b877567d1905aafb6feb18b9f941c5d516a0c3308732512f609a967"
+    },
+    "consumer-build.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "rustc-version.log": {
+      "bytes": 71,
+      "sha256": "433b9a914b5ee5ba6e705b333eb0ee3013de18341bcc05064b38c1d79e75301b"
+    },
+    "cargo-version.log": {
+      "bytes": 71,
+      "sha256": "d75c5e40b16ea970bb3882657c72eaf089fe3899aaa2882fcd245af431d5c226"
+    },
+    "gi.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "prepared_inputs": {
+    "scope": "Frozen native Glycin source/offline vendor input, no build acceptance",
+    "sources": [
+      {
+        "name": "glycin",
+        "version": "2.1.5",
+        "filename": "glycin-2.1.5.tar.xz",
+        "url": "https://download.gnome.org/sources/glycin/2.1/glycin-2.1.5.tar.xz",
+        "sha256": "6c09757ee906330a60b6705753aa56bca007ad219b95e6e3537510d41bc341c8",
+        "reference": "BLFS13.1-systemd general/glycin.html",
+        "book_page_sha256": "5eee5d41eef30cadd756b8b75e9af1a4fd4aa3953dee9f4e857f344c446751fa",
+        "book_md5": "d9224a846ad1ed964d07e1ebb48d4458",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      },
+      {
+        "name": "glycin-vendor",
+        "version": "2.1.5",
+        "filename": "glycin-2.1.5-vendor.tar.gz",
+        "sha256": "deb6c120a053b5d9e1403033386b87b604e2ddf0a5265dde199703334ba79984",
+        "bytes": 32824367,
+        "url": "generated:phase2_glycin_vendor/glycin-vendor",
+        "reference": "Derived Cargo vendor from authenticated primary/published lock; all registry package/file checksums verified",
+        "parent_source_sha256": "6c09757ee906330a60b6705753aa56bca007ad219b95e6e3537510d41bc341c8",
+        "cargo_lock_sha256": "5ff1ad293efde5c927f19df0f488dc80a04814367dbc480a3cc45847646bc669",
+        "producer_sha256": "cd0e1960125b3d38396b0362d326648424717d92aff80fa01d0321a9b349e054",
+        "registry_crates": 307,
+        "integrity": "Official Cargo vendor plus independent exact package/file-manifest verification before archive freezing",
+        "status": "source_verified"
+      }
+    ],
+    "cargo_lock_sha256": "5ff1ad293efde5c927f19df0f488dc80a04814367dbc480a3cc45847646bc669",
+    "registry_crates": 307,
+    "recipe_sha256": "f8bb7e04f1b645ff17c5816f23d688c7ec07c5a07b1387404ae3652ebf4baf79",
+    "probe_sha256": "66d94b95fb9f12f0187f790e08d8f0096db5f4b65ebca8c4bfd73652861ac6cc",
+    "cargo_config_sha256": "fb59e9b16be8fb0e61488ec17a0104be0eb95493da6c89b435aeb004fec96e9b",
+    "public_vendor_readability": [],
+    "free_bytes_before_build": 17527361536,
+    "work_volume": {
+      "scope": "Bounded compiler scratch only, regular file in disposable builder VM; not an installation target or physical disk",
+      "image": "/var/lib/toddy/phase2-scratch/glycin-1.ext4",
+      "work_mount": "/mnt/lfs/sources/phase2/work/glycin-1",
+      "size_bytes": 2684354560,
+      "filesystem_uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+      "label": "TODDY_GLY_BUILD",
+      "state": "mounted",
+      "image_inode": 786463,
+      "owner_uid": 101,
+      "mount_options": "rw,nosuid,nodev,relatime",
+      "recovery": "After guest restart inspect image UUID and complete mount postcondition before remounting this same file; never reformat. Preserve contents/logs/compiled tests."
+    }
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-glycin-stage-evidence.tar.gz",
+    "sha256": "5c7d10ee784806c5cf42fd8ce5b086f546ee213a9f1f2a1fccd85911fa61c0f9",
+    "members": 16,
+    "bytes": 4153
+  }
+}

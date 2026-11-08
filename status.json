@@ -3,7 +3,7 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-07",
   "bootstrap": "ready_for_development",
-  "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05–B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
+  "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05\u2013B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
   "gates": {
     "G1": "passed",
@@ -616,12 +616,12 @@
       "Actual native7.1.8/Systemd sandbox0 on4CPU/4GiB BIOS/noNIC; bwrap26portable+66native upstream passes/5explicit optional skips, native consumer0,11ELFs unchanged. Checksum-reconciled split serial marker without native replay; owned0755 byte-identical install/post0/0. Builder/same3scratch volumes restored, no formatting/trim.",
       "Owned display-info0.4.0 install/post0/0/all68registered EDID fixtures0, actual QEMU/PnP/malformed+truncated refusal0; both parser/hwdata source-license inventories retained. No physical monitor or graphical-session acceptance."
     ],
-    "running": "No guest writer; capacity/source-archive custody preflight before native Glycin image decoder and remaining GNOME dependencies. All67Libadwaita widgets and B02 login/basic-app/graphical acceptance pending; stop after full B02 per owner.",
+    "running": "Glycin2.1.5 offline core/two-loader compile/stage/C+GI constructors0; unqualified pending actual native sandbox/image tests. Original test executables compiling only in glycin-tests-1; one writer. All67Libadwaita widgets and GNOME/B02 criteria pending.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-08T21:27:54.540241+00:00",
+    "verified_at": "2026-11-08T22:18:35.336568+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

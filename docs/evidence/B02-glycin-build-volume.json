@@ -1,0 +1,13 @@
+{
+  "scope": "Bounded compiler scratch only, regular file in disposable builder VM; not an installation target or physical disk",
+  "image": "/var/lib/toddy/phase2-scratch/glycin-1.ext4",
+  "work_mount": "/mnt/lfs/sources/phase2/work/glycin-1",
+  "size_bytes": 2684354560,
+  "filesystem_uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+  "label": "TODDY_GLY_BUILD",
+  "state": "mounted",
+  "image_inode": 786463,
+  "owner_uid": 101,
+  "mount_options": "rw,nosuid,nodev,relatime",
+  "recovery": "After guest restart inspect image UUID and complete mount postcondition before remounting this same file; never reformat. Preserve contents/logs/compiled tests."
+}

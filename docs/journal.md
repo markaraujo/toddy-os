@@ -2499,3 +2499,35 @@ SHA12b1b672aeed496ad864aafe8705b556376d239d1a38dd37697d5407537453f8.
 No physical monitor or native GNOME window. Capacity preflight/source/archive
 custody is next for Glycin; preserves100GiB host/16GiB target and pending67
 Libadwaita widgets. Owner boundary remains pause only after full B02 acceptance.
+
+### B02 bounded Glycin compiler work — 2026-11-08
+
+Reclaimed only one Rust SDK staging copy after exact5369entry payload/owned
+archive verification (387,411,968B); installed SDK/original work/stage/tests and
+source/archive retained. Compressed all3stopped native test overlay files after
+full decompression/SHA equality,60,514,304 allocated bytes reclaimed; raw byte
+archives/logs/reports/base images retained. Neither operation may be replayed.
+
+Host preflight preserved100GiB plus2560MiB bounded volume/256MiB transfer buffer.
+Created only new private regular-file ext4 compiler volume in disposable builder,
+UUID1ae14c30-65f3-4e02-be0a-b257719455f2/inode786463, nosuid/nodev/UID101. No
+existing filesystem or physical disk formatted; future restorer recognizes this
+fourth known volume. Source preparer first refused missing new crate contract
+before any extraction/archive mutation; explicit sync allowlist corrected and
+real absence/empty-volume checked. Recovery2verified307crate/file manifests,
+Cargo.lock unchanged, no permission corrections, target17,527,361,536B free.
+
+Native glycin-1 PID5480 started under unchanged UID101/read-only-input/offline
+compiler harness. Configure0, release Rust core/image-rs+SVG loaders progressing.
+Global bundle2.1.5/libglycinAPI2.1.0 are intentionally different upstream versions.
+HEIF/JXL/raw, thumbnailer/GTK4 companion/Vala/docs not selected. Original tests
+enabled for later native execution; no image/sandbox acceptance from construction
+checks and no unsafe sandbox-off fallback. Healthy compile is monitored, not
+restarted. Owner boundary remains full B02 acceptance then pause.
+
+Glycin offline build finished0 with configure/compile/stage/C+GI type exits0.
+This is explicitly unqualified staging, not native image/sandbox acceptance.
+Original tests compile-only job glycin-tests-1 started with immutable upstream
+sources and explicit unsupported extension filtering; actual native tests pending.
+Asked owner to clarify immediate pause versus waiting for full B02 because the
+GNOME session/basic apps remain substantial unfinished work.

@@ -1,0 +1,40 @@
+{
+  "scope": "Only three stopped disposable native test overlays; every source byte retained compressed, all native logs/reports, mutable builder/target and immutable foundation backings retained",
+  "state": "complete",
+  "host_available_before": 110309781504,
+  "host_available_after": 110370279424,
+  "overlay_allocation_reclaimed_bytes": 60514304,
+  "recovery": "Verify compressed/archive and decompressed source SHA before restoring an absent exact path. These are disposable test deltas, not standalone checkpoints; never boot against a changed mutable parent or replay existing native contexts.",
+  "overlays": [
+    {
+      "path": ".local/phase2/native-bwrap-runtime-1/target.qcow2",
+      "source_bytes": 22937600,
+      "source_sha256": "38e6707dafe40a504cf78953a45d532e7ebab2960c941b6aacda1945c897e4a4",
+      "archive": ".local/phase2/native-bwrap-runtime-1/target.qcow2.gz",
+      "archive_sha256": "632e807aa8490fd50daafa68c97b395f52ca4aa6ca0672e01ce6e362769d8e22",
+      "archive_bytes": 2912459,
+      "native_container_stopped": true,
+      "state": "retired-raw-bytes-retained"
+    },
+    {
+      "path": ".local/phase2/native-bwrap-runtime-2/target.qcow2",
+      "source_bytes": 22872064,
+      "source_sha256": "9a317ffa629b7e0412ccab87c04f242003ea1c2ca69db0e32c54b0b51cd04265",
+      "archive": ".local/phase2/native-bwrap-runtime-2/target.qcow2.gz",
+      "archive_sha256": "d003274ec84c640ea99602c4d5ad89d2f617866296733a22fbfc76b34dec8d8b",
+      "archive_bytes": 2926068,
+      "native_container_stopped": true,
+      "state": "retired-raw-bytes-retained"
+    },
+    {
+      "path": ".local/phase2/native-bwrap-runtime-3/target.qcow2",
+      "source_bytes": 23658496,
+      "source_sha256": "db1d84c68ae7a38126895c706ca66ac8855575c6016980a1ee1684532b000218",
+      "archive": ".local/phase2/native-bwrap-runtime-3/target.qcow2.gz",
+      "archive_sha256": "aa12f4eecb20702163f74d0b3fb11abdd05ea8867314edca34f039e421fcd429",
+      "archive_bytes": 2936124,
+      "native_container_stopped": true,
+      "state": "retired-raw-bytes-retained"
+    }
+  ]
+}
