@@ -104,6 +104,8 @@ def main(metadata_only=False):
             raise SystemExit('Phase 2 sources are not frozen')
         rows += phase2_lock['components']
         metadata.append('config/phase2/sources.lock.json')
+    if (ROOT/'config/phase2/rust-bootstrap.toml').exists():
+        metadata.append('config/phase2/rust-bootstrap.toml')
     if (ROOT/'config/h08-bootstrap-config.json').exists():
         metadata.append('config/h08-bootstrap-config.json')
     if (ROOT/'config/live-account-baseline.json').exists():

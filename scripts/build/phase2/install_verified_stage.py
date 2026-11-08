@@ -196,6 +196,7 @@ if __name__ == '__main__':
         assert len(tests)==7 and all(t['exit']==0 for t in tests)
         assert (work/'test-logs/runtest.log').read_text().rstrip().endswith('Total 3904 tests, no errors')
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
+    assert not (source/'.toddy-retired.json').exists(),'Stage retired under verified archive custody; reuse the native package, no promotion replay'
     before = inspect_stage(source)
     assert required in before['entries'], 'Missing declared payload'
     destination = Path('/mnt/lfs/sources/stage') / ('phase2-'+name)

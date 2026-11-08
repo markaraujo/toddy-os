@@ -1,0 +1,34 @@
+{
+  "scope": "Verified duplicate staging only, no installed payload/source/compile/evidence deletion",
+  "archives": [
+    {
+      "name": "llvm",
+      "path": "/var/cache/toddy/packages/llvm_22.1.8-1+toddy1_amd64.deb",
+      "sha256": "8cac0218934786fcb2330861174da1c81702327e2800f7479f6bf29ebd60b79b"
+    },
+    {
+      "name": "llvm-runtime",
+      "path": "/var/cache/toddy/packages/llvm-runtime_22.1.8-1+toddy1_amd64.deb",
+      "sha256": "53288231be2081f43ffeea0ed106786196028be6a5076c96658fde47c666ea58"
+    }
+  ],
+  "original_stage_manifest_sha256": "3d106c10a75d8f6c2d2d038a119c5d1e74eebb3bf44ba705e263890d26cf81fe",
+  "before_free_bytes": 26489098240,
+  "stages": [
+    {
+      "path": "/mnt/lfs/sources/stage/phase2-llvm",
+      "state": "retired"
+    },
+    {
+      "path": "/mnt/lfs/sources/stage/phase2-llvm-runtime",
+      "state": "retired"
+    },
+    {
+      "path": "/mnt/lfs/sources/phase2/work/llvm-1/stage",
+      "state": "retired"
+    }
+  ],
+  "recovery": "Canonical native archives retained, SHA check before extraction to a new stage. Never rerun an uncertain retirement or install. Retired markers prevent promotion replay.",
+  "after_free_bytes": 28558237696,
+  "state": "complete"
+}

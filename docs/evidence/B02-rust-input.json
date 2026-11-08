@@ -1,0 +1,85 @@
+{
+  "scope": "Authenticated immutable source/seed preparation and actual private seed execution; native stage2 compilation running, no test/stage/install acceptance",
+  "prepared": {
+    "scope": "Immutable Rust source plus official build-only seeds; no compiler execution/install",
+    "sources": [
+      {
+        "name": "rustc",
+        "version": "1.97.1",
+        "filename": "rustc-1.97.1-src.tar.xz",
+        "url": "https://static.rust-lang.org/dist/rustc-1.97.1-src.tar.xz",
+        "sha256": "0ed06fdaffd4722a7702e0b4eebfafc897ab8f513e8e1b247cdd7e5c6df6ded2",
+        "reference": "BLFS13.1-systemd general/rust.html",
+        "book_page_sha256": "155c228b1fd5a88ce7eb1e746a92a89eee97f06fb2f4ad70a7f18e144d30cd46",
+        "book_md5": "c6fc3febcd3b1235cf4f00c3e05559b3",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      },
+      {
+        "name": "rustc-stage0",
+        "version": "1.96.0",
+        "filename": "rustc-1.96.0-x86_64-unknown-linux-gnu.tar.xz",
+        "url": "https://static.rust-lang.org/dist/2026-05-28/rustc-1.96.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "7d7fa1d0cfb0fab71a956bb78f41107202c17f30ab56c45288e869a37fd9633d",
+        "reference": "Rustc1.97.1 authenticated src/stage0",
+        "parent_source_sha256": "0ed06fdaffd4722a7702e0b4eebfafc897ab8f513e8e1b247cdd7e5c6df6ded2",
+        "stage0_metadata_sha256": "be7f5a93b78128cb5d81e258261c3103eac251b912c1d59e77425045074d2a49",
+        "compiler_git_commit_hash": "ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96",
+        "scope": "x86_64 build bootstrap only; not final product compiler/runtime",
+        "integrity": "Artifact SHA256 matched value inside frozen authenticated Rust source before any extraction/execution",
+        "status": "source_verified"
+      },
+      {
+        "name": "rust-std-stage0",
+        "version": "1.96.0",
+        "filename": "rust-std-1.96.0-x86_64-unknown-linux-gnu.tar.xz",
+        "url": "https://static.rust-lang.org/dist/2026-05-28/rust-std-1.96.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "c09c7c646248f14f473f5f7a029af15ee57c3a9f9bc93dfa72d9621938586b82",
+        "reference": "Rustc1.97.1 authenticated src/stage0",
+        "parent_source_sha256": "0ed06fdaffd4722a7702e0b4eebfafc897ab8f513e8e1b247cdd7e5c6df6ded2",
+        "stage0_metadata_sha256": "be7f5a93b78128cb5d81e258261c3103eac251b912c1d59e77425045074d2a49",
+        "compiler_git_commit_hash": "ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96",
+        "scope": "x86_64 build bootstrap only; not final product compiler/runtime",
+        "integrity": "Artifact SHA256 matched value inside frozen authenticated Rust source before any extraction/execution",
+        "status": "source_verified"
+      },
+      {
+        "name": "cargo-stage0",
+        "version": "1.96.0",
+        "filename": "cargo-1.96.0-x86_64-unknown-linux-gnu.tar.xz",
+        "url": "https://static.rust-lang.org/dist/2026-05-28/cargo-1.96.0-x86_64-unknown-linux-gnu.tar.xz",
+        "sha256": "dee75c3c8f9f600ad75bc0c93249e767d3047845a4dd668327ce43ab039ba266",
+        "reference": "Rustc1.97.1 authenticated src/stage0",
+        "parent_source_sha256": "0ed06fdaffd4722a7702e0b4eebfafc897ab8f513e8e1b247cdd7e5c6df6ded2",
+        "stage0_metadata_sha256": "be7f5a93b78128cb5d81e258261c3103eac251b912c1d59e77425045074d2a49",
+        "compiler_git_commit_hash": "ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96",
+        "scope": "x86_64 build bootstrap only; not final product compiler/runtime",
+        "integrity": "Artifact SHA256 matched value inside frozen authenticated Rust source before any extraction/execution",
+        "status": "source_verified"
+      }
+    ],
+    "recipe_sha256": "e429a2ae77a21a61d0c600b21de5a550a7a73a3a76e50d96891d4ee2e4c15a17",
+    "config_sha256": "1de6af4a1f0a43cc582640eeedf013540d129f57663d51a56878cc3503ee4add"
+  },
+  "prepared_receipt_sha256": "68606132e0f34237317004dc8a4201920f58d1650f0e2ac854b6d42f936d126f",
+  "seed": {
+    "scope": "Authenticated build-only seed in private work; not installed product compiler",
+    "versions": {
+      "rustc": "rustc 1.96.0 (ac68faa20 2026-05-25)",
+      "cargo": "cargo 1.96.0 (30a34c682 2026-05-25)",
+      "rustdoc": "rustdoc 1.96.0 (ac68faa20 2026-05-25)"
+    },
+    "rustc_verbose": "rustc 1.96.0 (ac68faa20 2026-05-25)\nbinary: rustc\ncommit-hash: ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96\ncommit-date: 2026-05-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.96.0\nLLVM version: 22.1.2\n",
+    "source_manifest_commit": "ac68faa20c58cbccd01ee7208bf3b6e93a7d7f96"
+  },
+  "current_job": {
+    "name": "rustc-1",
+    "pid": 248700,
+    "boot_id": "d7e6d578-c18b-4997-835e-8ac7b0711798",
+    "proc_start_ticks": "3992273",
+    "harness_sha256": "2ead2db07803f13b5037dc2c5a0941717df198505a16b76523cd306e9b235ee9",
+    "command_sha256": "da6f3898dcd5b47f384f7e0752e7f83dfa41692c2a736ed8311c0fae4688965f"
+  },
+  "target_free_bytes_at_observation": 25835405312,
+  "host_free_bytes_at_observation": 124942868480
+}

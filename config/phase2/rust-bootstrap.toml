@@ -1,0 +1,43 @@
+change-id = 154587
+
+[llvm]
+link-shared = true
+targets = "X86"
+download-ci-llvm = false
+
+[build]
+description = "Toddy OS native build; BLFS 13.1"
+build = "x86_64-unknown-linux-gnu"
+build-dir = "/build/compile"
+build-stage = 2
+test-stage = 2
+extended = true
+tools = ["cargo", "clippy", "rustdoc", "rustfmt", "src"]
+docs = false
+vendor = true
+locked-deps = true
+jobs = 4
+rustc = "/build/bootstrap/usr/bin/rustc"
+cargo = "/build/bootstrap/usr/bin/cargo"
+rustdoc = "/build/bootstrap/usr/bin/rustdoc"
+
+[install]
+prefix = "/usr"
+libdir = "lib"
+docdir = "share/doc/rustc-1.97.1"
+
+[rust]
+channel = "stable"
+lto = "thin"
+codegen-units = 1
+incremental = false
+download-rustc = false
+llvm-bitcode-linker = false
+llvm-tools = false
+lld = false
+bootstrap-override-lld = false
+rpath = true
+
+[target.x86_64-unknown-linux-gnu]
+llvm-config = "/usr/bin/llvm-config"
+default-linker-linux-override = "off"

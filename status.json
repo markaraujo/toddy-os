@@ -345,7 +345,9 @@
         "docs/evidence/B02-llvm-install.json",
         "docs/evidence/B02-pango-system-fonts.json",
         "docs/evidence/B02-libjpeg-turbo-build.json",
-        "docs/evidence/B02-libjpeg-turbo-install.json"
+        "docs/evidence/B02-libjpeg-turbo-install.json",
+        "docs/evidence/B02-rust-input.json",
+        "docs/evidence/B02-llvm-stage-retirement.json"
       ]
     },
     {

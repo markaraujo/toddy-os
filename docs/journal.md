@@ -1824,3 +1824,24 @@ backend upstream CTest/stage and owned native memory pixels install/post0/0.
 No native desktop/physical test claimed. Next Rust offline input/compiler slice,
 measured target30GiB/host122GiB and existing reserves preserved. b2eb657 all3
 remote workflows green. No guest writer or queued continuation remains.
+
+### B02 offline Rust native compiler dispatch — 2026-11-08 UTC
+
+ADR0125 versions the external read-only source config/private build-dir and
+source-authenticated official seed installers under private DESTDIR/caps0/no
+network. Initial generated remote newline syntax refused before extraction;
+verified absent source/work and4 cached archive SHAs, preserved failed log, used
+chr(10)/compiled generated programs before RPC. Second input preparation0.
+
+After extraction target24.7GiB was below26GiB compiler gate. Native helper
+verified installed LLVM0/0, both canonical archive hashes and exact3 stage
+manifests before retiring only duplicate usr/etc stage trees. Archives, source,
+882 compiled binaries and raw evidence retained, DEBIAN metadata/retirement
+markers preserved; promotion replay blocked. Target26.6GiB at dispatch. Two
+unknown/changed-payload safety regressions and make check260 passed. No physical
+disk operation, source rebuild or global security change.
+
+Private seed1.96.0 versions/commit/sysroot passed; rustc-1 now compiling actual
+Rust1.97.1/compiler LLVM wrapper/crates with4 workers, thin LTO/systemLLVM22.1.8,
+source-vendored offline dependencies. No critical Rust tests/stage/install yet.
+Current guest jobPID248700/monitor74685, source input rust-toolchain-1.97.1.
