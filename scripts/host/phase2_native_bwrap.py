@@ -28,6 +28,19 @@ def run(args,**kwargs):
 
 
 def main():
+    global CONTEXT
+    assert sys.argv[1:] in [[],['--cold-followup']]
+    followup=sys.argv[1:]==['--cold-followup']
+    previous=None
+    if followup:
+        previous=json.loads((CONTEXT/'result.json').read_text())
+        CONTEXT=ROOT/'.local/phase2/native-bwrap-runtime-2'
+        assert previous['phase']=='native-stopped' and not previous['container_final_state']['Running']
+        assert previous['container_final_state']['ExitCode']==0
+        info=json.loads(subprocess.check_output(['docker','inspect',previous['container_id']],text=True))[0]
+        assert (info['Config'].get('Labels') or {}).get('toddy.boot-test')==previous['run_id'] and not info['State']['Running']
+        assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==previous['source_identity']
+        assert not subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()
     assert not CONTEXT.exists(),'Reconcile prior native runtime receipt; never replay'
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip(),'Commit reviewed inputs before native boot'
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
@@ -45,22 +58,29 @@ r=json.loads(Path('/var/log/toddy/build/b02-hwdata-install.success.json').read_t
 p=Path('/mnt/lfs/sources/phase2/work/bubblewrap-1/compile/bwrap');assert hashlib.sha256(p.read_bytes()).hexdigest()=='f36c7341c009446dc7b79417d6baaa9ec583eccb9690553dd53e4d22ac19869f'
 print(json.dumps({'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'bwrap_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'target_serial':'TODDY-LFS-TARGET','native_kernel_expected':'7.1.8-toddy'}))
 '''
-    accepted=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
+    if followup:
+        accepted_record=previous['accepted']
+    else:
+        accepted=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
+        accepted_record=json.loads(accepted.stdout)
     CONTEXT.mkdir()
     state={'scope':'Disposable native Phase2 runtime namespace probe only; no B02/G2 completion or physical/graphical acceptance',
            'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
            'started_utc':datetime.now(timezone.utc).isoformat(),
            'controller_pid':os.getpid(),'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
            'controller_start_ticks':Path('/proc/self/stat').read_text().split()[21],
-           'accepted':json.loads(accepted.stdout),'probe_sha256':hashlib.sha256(probe).hexdigest(),'phase':'prepared'}
+           'accepted':accepted_record,'probe_sha256':hashlib.sha256(probe).hexdigest(),'phase':'prepared'}
     def save():
         part=CONTEXT/'result.json.part';assert not part.exists()
         part.write_text(json.dumps(state,indent=2)+'\n');part.replace(CONTEXT/'result.json')
         print(json.dumps({'phase':state['phase'],'context':str(CONTEXT)}),flush=True)
     save()
-    with (CONTEXT/'builder-stop.log').open('x') as log:
-        state['phase']='stopping-builder';save()
-        run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
+    if not followup:
+        with (CONTEXT/'builder-stop.log').open('x') as log:
+            state['phase']='stopping-builder';save()
+            run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
+    else:
+        state['cold_followup_of']='native-bwrap-runtime-1'
     assert subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()==''
     state['phase']='builder-stopped';save()
     source=WORK/'lfs-target.qcow2';assert source.is_file() and not source.is_symlink()

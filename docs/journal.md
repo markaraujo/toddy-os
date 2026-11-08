@@ -2449,3 +2449,12 @@ consumer and only3affected shell drivers; no utilities replay or success inferre
 from timeout. Native runtime/graphics not yet proven. Inspect actual controller/
 container/log receipt before any recovery; builder restart remains a separate
 verified action with same-volume UUID/inode restoration and no new mkfs/trim.
+
+Native runtime1 actually booted7.1.8/systemd and passed disposable disk/root
+guards, then failed before namespace tests because accepted base has no setpriv
+utility. Clean native shutdown/QEMU0 is not a probe pass. Cold backing identity
+unchanged, builder remains stopped. Native1 receipt/serial/overlay retained.
+Focused correction uses native Python subprocess UID/GID101/empty groups and
+child prctl NNP1 with observed UID/CapEff0 assertions; no base rebuild or weaker
+privileges. Native2 is a fresh cold follow-up only after actual stopped-container/
+label/no-writer/base-identity checks; no uncertain repeat of builder stop/native1.

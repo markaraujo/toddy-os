@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Ephemeral system credential probe; native disposable target only, never install."""
 import base64
+import ctypes
 import hashlib
 import json
 import os
@@ -45,7 +46,11 @@ def main():
     env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C.UTF-8','HOME':'/tmp',
          'BWRAP':str(binary),'G_TEST_SRCDIR':str(source),
          'G_TEST_BUILDDIR':str(work/'compile'),'BWRAP_MUST_WORK':'1'}
-    prefix=['setpriv','--reuid=101','--regid=101','--clear-groups','--no-new-privs']
+    def no_new_privileges():
+        assert os.geteuid()==101 and os.getegid()==101
+        assert ctypes.CDLL(None,use_errno=True).prctl(38,1,0,0,0)==0
+        status=Path('/proc/self/status').read_text()
+        assert 'NoNewPrivs:\t1' in status and 'CapEff:\t0000000000000000' in status
     runs=[]
     # Private /var/tmp belongs to the disposable runtime root, never a host path.
     tests=[('namespace-consumer',['python3','-B',str(source/'toddy-probe.py'),str(binary)])]
@@ -53,7 +58,7 @@ def main():
     with tempfile.TemporaryDirectory(prefix='toddy-bwrap-runtime-') as temporary:
         os.chown(temporary,101,101)
         for name,args in tests:
-            r=command(prefix+args,env=env,cwd=temporary)
+            r=command(args,env=env,cwd=temporary,user=101,group=101,extra_groups=[],preexec_fn=no_new_privileges)
             # Never retain accidental password-hash lines from a failing security
             # regression; only sanitized data enters the public serial channel.
             def sanitize(text):
