@@ -1,0 +1,237 @@
+{
+  "step": {
+    "step": "b02-python-test-tools-install",
+    "started": "2026-11-08T11:37:14.277593+00:00",
+    "finished": "2026-11-08T11:37:35.291921+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 1118,
+    "log_sha256": "e9a78abd015350d4628d981fa999b72992fbeb5f0ea1fa3417a6abf04031dc7e"
+  },
+  "success_record_sha256": "dbb336f944e7cde199de4685c571873642ee26593a5f19b1f97498d3cc05abb6",
+  "packages": [
+    {
+      "name": "calver",
+      "version": "2025.10.20-1+toddy1",
+      "archive_sha256": "22ed5162443aeebc818c4449d5969307f1d30d6aeb58a06d578ed10f58f9f816",
+      "installed": true,
+      "notice_index_sha256": "c060da26ea470e9ab77d619cd89654d9f91e378e44513fa301782dbf189e40bc",
+      "notice_count": 1
+    },
+    {
+      "name": "vcs-versioning",
+      "version": "2.2.4-1+toddy1",
+      "archive_sha256": "4a6b013b4e90f97e9bca4902ab11c2d8839f7d5e3e918a1111eff613c3c330d6",
+      "installed": true,
+      "notice_index_sha256": "24f4724ac0b63b58148cae0a3cc23bd0381bc3f9cf46c037b720171a76acac4b",
+      "notice_count": 1
+    },
+    {
+      "name": "setuptools-scm",
+      "version": "10.1.2-1+toddy1",
+      "archive_sha256": "a780967decc8ae4e987d62b556360be2f7b118eca37c573104ed5df0c5311b2c",
+      "installed": true,
+      "notice_index_sha256": "4054bc1dc79afb7620bcaba23b9289d527a54c46d02d6b2999a4a02980239bc6",
+      "notice_count": 1
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.0-1+toddy1",
+      "archive_sha256": "eb7469db2b8306c8db64713b68ede0dc784c9bbe5b0d9ee42e30558d7b703108",
+      "installed": true,
+      "notice_index_sha256": "371911adba11b18055f9b0b49592fe10f17583e47e329ae91fa1d0208c284ff7",
+      "notice_count": 1
+    },
+    {
+      "name": "pluggy",
+      "version": "1.6.0-1+toddy1",
+      "archive_sha256": "1a9ecadb698c11111f84ce9e7eb891956909f9e0c9725d8ba36b3a1f6ee78d2e",
+      "installed": true,
+      "notice_index_sha256": "a7052c8a6e7046b62b527425c7d31af2eb1ef113e5a24fc57456f842f492d19e",
+      "notice_count": 1
+    },
+    {
+      "name": "poetry-core",
+      "version": "2.4.1-1+toddy1",
+      "archive_sha256": "5414b88cf1eb533ae9bd7844b1fdd9470a6bb9ccd97e3b56fbcac2202959b9dd",
+      "installed": true,
+      "notice_index_sha256": "41396e364a074754ec85f333a90a04d59c1256f3afc31d16003ef680dd9bfe97",
+      "notice_count": 36
+    },
+    {
+      "name": "pathspec",
+      "version": "1.1.1-1+toddy1",
+      "archive_sha256": "1908291ef7530a5b350be14b5002a123e60973646ec902fef6b762b28a821b71",
+      "installed": true,
+      "notice_index_sha256": "d7d5247a4e699457f38f2c5b5406c04c198c01e4a7e8b838d62084b190b63e42",
+      "notice_count": 1
+    },
+    {
+      "name": "tomlkit",
+      "version": "0.15.1-1+toddy1",
+      "archive_sha256": "8c9499c2ddd2442cee73e3c2380d3bba862ff8631946f46e78d784df703c8636",
+      "installed": true,
+      "notice_index_sha256": "74b0aaff0b0ac837def2eb76c73736d1c5269dfbb9114d302d745efb4121beae",
+      "notice_count": 2
+    },
+    {
+      "name": "trove-classifiers",
+      "version": "2026.6.1.19-1+toddy1",
+      "archive_sha256": "fdea0d3316ef0866deece813a80ccf3570e4bbf8292133fd6c2461bd98d05d2d",
+      "installed": true,
+      "notice_index_sha256": "c2e915bed2bc1d5c621e37b3417fd58767dc9cffc8967b75d188e8249d040121",
+      "notice_count": 1
+    },
+    {
+      "name": "hatchling",
+      "version": "1.32.0-1+toddy1",
+      "archive_sha256": "9e791ed83f4e1903f291fbea6661fd3d3c2941cacf175debc30576508ab93ff7",
+      "installed": true,
+      "notice_index_sha256": "5abc4b7d34a3810ef9c1e1ea39e05433cebd04094ac091c4bd3bf35c0a697878",
+      "notice_count": 1
+    },
+    {
+      "name": "pygments",
+      "version": "2.20.0-1+toddy1",
+      "archive_sha256": "e2d97b9e3181d08073adbccc8c487c67cdb4896948974af64d1129baad3f019f",
+      "installed": true,
+      "notice_index_sha256": "1846b9891856c1affd7064a37a5bc3eee9c73579c8a8c90c01299b53b83645c5",
+      "notice_count": 3
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1-1+toddy1",
+      "archive_sha256": "23ce5cdc02a1320cc9aaaea4e535b3a5fab5eb4c6e130448959ecd33476e7a90",
+      "installed": true,
+      "notice_index_sha256": "dd877b3a2a4deff5f6d0f6db831f8a8facbb476d39e5e4c7359ef850cee5c795",
+      "notice_count": 3
+    }
+  ],
+  "timing": {
+    "step": "b02-python-test-tools-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 13.061,
+        "entries": 121533,
+        "regular_files": 107573,
+        "regular_bytes": 6344303229
+      },
+      {
+        "seconds": 11.821,
+        "entries": 122648,
+        "regular_files": 108555,
+        "regular_bytes": 6353257397
+      }
+    ],
+    "total_seconds": 34.93
+  },
+  "consumer": {
+    "scope": "Actual native frozen wheel versions/dependency closure, TOML comment-preserving edit, C lexer HTML, Pytest fixture/param pass2 and deliberate fail1; not full upstream suites",
+    "uid": 0,
+    "versions": {
+      "calver": "2025.10.20",
+      "vcs-versioning": "2.2.4",
+      "setuptools-scm": "10.1.2",
+      "iniconfig": "2.3.0",
+      "pluggy": "1.6.0",
+      "poetry-core": "2.4.1",
+      "pathspec": "1.1.1",
+      "tomlkit": "0.15.1",
+      "trove-classifiers": "2026.6.1.19",
+      "hatchling": "1.32.0",
+      "pygments": "2.20.0",
+      "pytest": "9.1.1"
+    },
+    "dependencies": [
+      {
+        "consumer": "vcs-versioning",
+        "requirement": "packaging>=26.2",
+        "actual_version": "26.3"
+      },
+      {
+        "consumer": "setuptools-scm",
+        "requirement": "vcs-versioning<3,>=2.0.0.dev0",
+        "actual_version": "2.2.4"
+      },
+      {
+        "consumer": "setuptools-scm",
+        "requirement": "packaging>=20",
+        "actual_version": "26.3"
+      },
+      {
+        "consumer": "setuptools-scm",
+        "requirement": "setuptools",
+        "actual_version": "84.0.0"
+      },
+      {
+        "consumer": "hatchling",
+        "requirement": "packaging>=24.2",
+        "actual_version": "26.3"
+      },
+      {
+        "consumer": "hatchling",
+        "requirement": "pathspec>=0.10.1",
+        "actual_version": "1.1.1"
+      },
+      {
+        "consumer": "hatchling",
+        "requirement": "pluggy>=1.0.0",
+        "actual_version": "1.6.0"
+      },
+      {
+        "consumer": "hatchling",
+        "requirement": "tomlkit>=0.11.1",
+        "actual_version": "0.15.1"
+      },
+      {
+        "consumer": "hatchling",
+        "requirement": "trove-classifiers",
+        "actual_version": "2026.6.1.19"
+      },
+      {
+        "consumer": "pytest",
+        "requirement": "iniconfig>=1.0.1",
+        "actual_version": "2.3.0"
+      },
+      {
+        "consumer": "pytest",
+        "requirement": "packaging>=22",
+        "actual_version": "26.3"
+      },
+      {
+        "consumer": "pytest",
+        "requirement": "pluggy<2,>=1.5",
+        "actual_version": "1.6.0"
+      },
+      {
+        "consumer": "pytest",
+        "requirement": "pygments>=2.7.2",
+        "actual_version": "2.20.0"
+      }
+    ],
+    "pytest": [
+      {
+        "name": "pytest-positive",
+        "native_exit": 0,
+        "expected_exit": 0,
+        "passed": 2,
+        "expected_failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "pytest-negative",
+        "native_exit": 1,
+        "expected_exit": 1,
+        "passed": 0,
+        "expected_failures": 1,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "toml_roundtrip": true,
+    "lexer_html": true
+  },
+  "free_bytes": 20294246400
+}

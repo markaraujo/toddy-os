@@ -1977,3 +1977,16 @@ from its book paragraph: official PyPI2025.10.20 source SHA c98b376c...835f5 fro
 not a product runtime dependency. Its documented SOURCE_DATE_EPOCH control must
 preserve Trove's2026.6.1.19 calendar version when building later; do not silently
 produce a current-date package. Native test-tool build/qualification remains next.
+
+### B02 native Python test-tool closure — 2026-11-08 UTC
+
+Twelve independent source-authenticated wheels/stages0 under existing UID101/
+caps0/offline/RO-input isolation. Exact frozen wheel metadata, including Calver
+2025.10.20/Trove2026.6.1.19 under fixed SOURCE_DATE_EPOCH, verified before private
+installation. Actual dependency closure, TOML comments, C lexer and Pytest native
+fixture/parameterized pass2 + deliberate fail1/JUnit results passed. No full
+upstream-suite claim. Controlled per-package owned archives and installed checks
+recipe/post0/0, one34.93s full-root slice; existing foundation modules unchanged.
+Complete named notices include Poetry-core vendors; all package archives/index
+SHAs and raw evidence retained. Three wrong-package/version/ambiguous-wheel guards
+and make check269 passed. Next keyboard data/libxkbcommon pair, not old SDK suites.

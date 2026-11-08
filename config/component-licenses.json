@@ -2994,7 +2994,7 @@
       "name": "pytest",
       "version": "9.1.1",
       "license": "MIT",
-      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "evidence": "Authenticated pinned source, native isolated independent wheel/stage/version/dependency qualification and owned per-package archive0/0 in full-root slice. Native Pytest pass2/deliberate-fail1, TOML comment-preserving edit and C lexer HTML consumers passed. Not full upstream suites; build/test-only, no automatic base/live/catalog availability. Exact retained named source texts and archive SHA in B02-python-test-tools-install.json.",
       "source_notice_evidence": [
         {
           "filename": "pytest-9.1.1.tar.gz",
@@ -3016,7 +3016,7 @@
       "name": "iniconfig",
       "version": "2.3.0",
       "license": "MIT",
-      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "evidence": "Authenticated pinned source, native isolated independent wheel/stage/version/dependency qualification and owned per-package archive0/0 in full-root slice. Native Pytest pass2/deliberate-fail1, TOML comment-preserving edit and C lexer HTML consumers passed. Not full upstream suites; build/test-only, no automatic base/live/catalog availability. Exact retained named source texts and archive SHA in B02-python-test-tools-install.json.",
       "source_notice_evidence": [
         {
           "filename": "iniconfig-2.3.0.tar.gz",
@@ -3034,7 +3034,7 @@
       "name": "pluggy",
       "version": "1.6.0",
       "license": "MIT",
-      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "evidence": "Authenticated pinned source, native isolated independent wheel/stage/version/dependency qualification and owned per-package archive0/0 in full-root slice. Native Pytest pass2/deliberate-fail1, TOML comment-preserving edit and C lexer HTML consumers passed. Not full upstream suites; build/test-only, no automatic base/live/catalog availability. Exact retained named source texts and archive SHA in B02-python-test-tools-install.json.",
       "source_notice_evidence": [
         {
           "filename": "pluggy-1.6.0.tar.gz",
@@ -3052,7 +3052,7 @@
       "name": "pygments",
       "version": "2.20.0",
       "license": "BSD-2-Clause",
-      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "evidence": "Authenticated pinned source, native isolated independent wheel/stage/version/dependency qualification and owned per-package archive0/0 in full-root slice. Native Pytest pass2/deliberate-fail1, TOML comment-preserving edit and C lexer HTML consumers passed. Not full upstream suites; build/test-only, no automatic base/live/catalog availability. Exact retained named source texts and archive SHA in B02-python-test-tools-install.json.",
       "source_notice_evidence": [
         {
           "filename": "pygments-2.20.0.tar.gz",
@@ -3074,7 +3074,7 @@
       "name": "setuptools-scm",
       "version": "10.1.2",
       "license": "MIT",
-      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "evidence": "Authenticated pinned source, native isolated independent wheel/stage/version/dependency qualification and owned per-package archive0/0 in full-root slice. Native Pytest pass2/deliberate-fail1, TOML comment-preserving edit and C lexer HTML consumers passed. Not full upstream suites; build/test-only, no automatic base/live/catalog availability. Exact retained named source texts and archive SHA in B02-python-test-tools-install.json.",
       "source_notice_evidence": [
         {
           "filename": "setuptools_scm-10.1.2.tar.gz",
@@ -3092,7 +3092,7 @@
       "name": "vcs-versioning",
       "version": "2.2.4",
       "license": "MIT",
-      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "evidence": "Authenticated pinned source, native isolated independent wheel/stage/version/dependency qualification and owned per-package archive0/0 in full-root slice. Native Pytest pass2/deliberate-fail1, TOML comment-preserving edit and C lexer HTML consumers passed. Not full upstream suites; build/test-only, no automatic base/live/catalog availability. Exact retained named source texts and archive SHA in B02-python-test-tools-install.json.",
       "source_notice_evidence": [
         {
           "filename": "vcs_versioning-2.2.4.tar.gz",
@@ -3110,7 +3110,7 @@
       "name": "hatchling",
       "version": "1.32.0",
       "license": "MIT",
-      "evidence": "Authenticated frozen BLFS13.1 source; exact original top-level license/authors hashes retained. Source preparation only; native build/runtime/tests not accepted. Build/test prerequisite, not automatic offline/base/live payload.",
+      "evidence": "Authenticated pinned source, native isolated independent wheel/stage/version/dependency qualification and owned per-package archive0/0 in full-root slice. Native Pytest pass2/deliberate-fail1, TOML comment-preserving edit and C lexer HTML consumers passed. Not full upstream suites; build/test-only, no automatic base/live/catalog availability. Exact retained named source texts and archive SHA in B02-python-test-tools-install.json.",
       "source_notice_evidence": [
         {
           "filename": "hatchling-1.32.0.tar.gz",
@@ -3128,7 +3128,7 @@
       "name": "pathspec",
       "version": "1.1.1",
       "license": "MPL-2.0",
-      "evidence": "Authenticated frozen/explicit upstream build-backend source; exact original legal text hashes retained. Native build/runtime qualification pending. Build/test-only prerequisite, not automatic base/live/catalog availability.",
+      "evidence": "Authenticated pinned source, native isolated independent wheel/stage/version/dependency qualification and owned per-package archive0/0 in full-root slice. Native Pytest pass2/deliberate-fail1, TOML comment-preserving edit and C lexer HTML consumers passed. Not full upstream suites; build/test-only, no automatic base/live/catalog availability. Exact retained named source texts and archive SHA in B02-python-test-tools-install.json.",
       "source_notice_evidence": [
         {
           "filename": "pathspec-1.1.1.tar.gz",
@@ -3146,7 +3146,7 @@
       "name": "tomlkit",
       "version": "0.15.1",
       "license": "MIT",
-      "evidence": "Authenticated frozen/explicit upstream build-backend source; exact original legal text hashes retained. Native build/runtime qualification pending. Build/test-only prerequisite, not automatic base/live/catalog availability.",
+      "evidence": "Authenticated pinned source, native isolated independent wheel/stage/version/dependency qualification and owned per-package archive0/0 in full-root slice. Native Pytest pass2/deliberate-fail1, TOML comment-preserving edit and C lexer HTML consumers passed. Not full upstream suites; build/test-only, no automatic base/live/catalog availability. Exact retained named source texts and archive SHA in B02-python-test-tools-install.json.",
       "source_notice_evidence": [
         {
           "filename": "tomlkit-0.15.1.tar.gz",
@@ -3164,7 +3164,7 @@
       "name": "trove-classifiers",
       "version": "2026.6.1.19",
       "license": "Apache-2.0",
-      "evidence": "Authenticated frozen/explicit upstream build-backend source; exact original legal text hashes retained. Native build/runtime qualification pending. Build/test-only prerequisite, not automatic base/live/catalog availability.",
+      "evidence": "Authenticated pinned source, native isolated independent wheel/stage/version/dependency qualification and owned per-package archive0/0 in full-root slice. Native Pytest pass2/deliberate-fail1, TOML comment-preserving edit and C lexer HTML consumers passed. Not full upstream suites; build/test-only, no automatic base/live/catalog availability. Exact retained named source texts and archive SHA in B02-python-test-tools-install.json.",
       "source_notice_evidence": [
         {
           "filename": "trove_classifiers-2026.6.1.19.tar.gz",
@@ -3181,8 +3181,8 @@
     {
       "name": "poetry-core",
       "version": "2.4.1",
-      "license": "MIT",
-      "evidence": "Authenticated frozen/explicit upstream build-backend source; exact original legal text hashes retained. Native build/runtime qualification pending. Build/test-only prerequisite, not automatic base/live/catalog availability.",
+      "license": "MIT AND LicenseRef-poetry-core-vendored-per-file",
+      "evidence": "Authenticated pinned source, native isolated independent wheel/stage/version/dependency qualification and owned per-package archive0/0 in full-root slice. Native Pytest pass2/deliberate-fail1, TOML comment-preserving edit and C lexer HTML consumers passed. Not full upstream suites; build/test-only, no automatic base/live/catalog availability. Exact retained named source texts and archive SHA in B02-python-test-tools-install.json. Vendored fastjsonschema/lark/packaging/tomli notices retained with source per-file conditions; root MIT is not a blanket relicense.",
       "source_notice_evidence": [
         {
           "filename": "poetry_core-2.4.1.tar.gz",
@@ -3200,7 +3200,7 @@
       "name": "calver",
       "version": "2025.10.20",
       "license": "Apache-2.0",
-      "evidence": "Authenticated frozen/explicit upstream build-backend source; exact original legal text hashes retained. Native build/runtime qualification pending. Build/test-only prerequisite, not automatic base/live/catalog availability.",
+      "evidence": "Authenticated pinned source, native isolated independent wheel/stage/version/dependency qualification and owned per-package archive0/0 in full-root slice. Native Pytest pass2/deliberate-fail1, TOML comment-preserving edit and C lexer HTML consumers passed. Not full upstream suites; build/test-only, no automatic base/live/catalog availability. Exact retained named source texts and archive SHA in B02-python-test-tools-install.json.",
       "source_notice_evidence": [
         {
           "filename": "calver-2025.10.20.tar.gz",

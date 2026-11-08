@@ -1,7 +1,7 @@
 # ADR-0129: Frozen Python test-tool backends without version drift
 
 - Date: 2026-11-08
-- Status: Accepted source/build contract; native Pytest closure pending
+- Status: Accepted; native isolated and owned test-tool closure completed
 
 Native keyboard/graphics tests need Pytest9.1.1; Mesa needs Mako1.4.1. Reuse
 existing native Python3.14, packaging26.3, Setuptools84, flit_core, wheel and
@@ -41,3 +41,17 @@ postchecks; staging alone is not an installation-confinement proof. Keep full-ro
 verification until an alternative installation strategy is qualified. Preserve
 raw logs and bounded failure identities. Native Pytest/backend acceptance remains
 pending; this ADR does not substitute source preparation for executed tests.
+
+## Native outcome
+
+All12 frozen wheels and independent stages completed0, including exact Calver
+2025.10.20/Trove2026.6.1.19 metadata under fixed epochs. Actual native version/
+dependency closure, TOML comment-preserving edit, C lexer HTML and Pytest fixture/
+parameterized pass2 plus deliberate fail1/JUnit results qualified. Owned per-package
+archives installed with actual recipe/post0/0 in one34.93s full-root work slice.
+Existing foundation packaging26.3/Setuptools84/flit_core reused without upgrades.
+Poetry-core's vendored per-file conditions and all named source notices retained.
+No full upstream, graphical, hardware or release acceptance claimed. Raw evidence
+bundle and archive/source/index hashes are in B02-python-test-tools-build.json and
+B02-python-test-tools-install.json. Input lock describes frozen preparation;
+these measured records establish current native acceptance.

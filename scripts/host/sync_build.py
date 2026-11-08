@@ -106,6 +106,8 @@ def main(metadata_only=False):
         metadata.append('config/phase2/sources.lock.json')
     if (ROOT/'config/phase2/rust-bootstrap.toml').exists():
         metadata.append('config/phase2/rust-bootstrap.toml')
+    if (ROOT/'config/phase2/python-test-tools.lock.json').exists():
+        metadata.append('config/phase2/python-test-tools.lock.json')
     if (ROOT/'config/h08-bootstrap-config.json').exists():
         metadata.append('config/h08-bootstrap-config.json')
     if (ROOT/'config/live-account-baseline.json').exists():

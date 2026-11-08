@@ -1,0 +1,804 @@
+{
+  "scope": "Independent source-authenticated Python test/backend wheels and stages, no native owned install",
+  "packages": [
+    {
+      "name": "calver",
+      "version": "2025.10.20",
+      "source_sha256": "c98b376c2424642224d456b2f70c51402343e008c63d204634665e1a2a2835f5",
+      "source_date_epoch": 1760918400,
+      "commands": [
+        [
+          "pip3",
+          "wheel",
+          "--no-index",
+          "--no-cache-dir",
+          "--no-build-isolation",
+          "--no-deps",
+          "--wheel-dir",
+          "/build/python-tools/wheels",
+          "."
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--target",
+          "/build/python-tools/bootstrap",
+          "/build/python-tools/wheels/calver-2025.10.20-py3-none-any.whl"
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--root",
+          "/stage/calver",
+          "--prefix",
+          "/usr",
+          "/build/python-tools/wheels/calver-2025.10.20-py3-none-any.whl"
+        ]
+      ],
+      "wheel": "/build/python-tools/wheels/calver-2025.10.20-py3-none-any.whl",
+      "wheel_sha256": "cc0a5f176d91662047193d8df6085155bd7483e88e4e7da92ad355f4e2da5872",
+      "identity": {
+        "name": "calver",
+        "version": "2025.10.20",
+        "requires_dist": []
+      },
+      "log_sha256": "fa6a3de77d2ffc23f78344f336f774d9f9f5e682e7fcc2548109b3a23109fa01",
+      "stage_file_entries": 11,
+      "stage_manifest_sha256": "739974f12f29ebc6a5df3cbe9b009c840e7f5e94e10a9577a691134db8b9da14"
+    },
+    {
+      "name": "vcs-versioning",
+      "version": "2.2.4",
+      "source_sha256": "ed718fdee42170e128a8add6f23f53aa64dc7d9ab2de87d3083a691df881a809",
+      "source_date_epoch": 1780340400,
+      "commands": [
+        [
+          "pip3",
+          "wheel",
+          "--no-index",
+          "--no-cache-dir",
+          "--no-build-isolation",
+          "--no-deps",
+          "--wheel-dir",
+          "/build/python-tools/wheels",
+          "."
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--target",
+          "/build/python-tools/bootstrap",
+          "/build/python-tools/wheels/vcs_versioning-2.2.4-py3-none-any.whl"
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--root",
+          "/stage/vcs-versioning",
+          "--prefix",
+          "/usr",
+          "/build/python-tools/wheels/vcs_versioning-2.2.4-py3-none-any.whl"
+        ]
+      ],
+      "wheel": "/build/python-tools/wheels/vcs_versioning-2.2.4-py3-none-any.whl",
+      "wheel_sha256": "e8edf9609b19fa71b3f0276668e65dedc87d637f93f5f88587a734f9753732bb",
+      "identity": {
+        "name": "vcs-versioning",
+        "version": "2.2.4",
+        "requires_dist": [
+          "packaging>=26.2",
+          "tomli>=1; python_version < \"3.11\"",
+          "typing-extensions>=4.1; python_version < \"3.11\""
+        ]
+      },
+      "log_sha256": "19df5fabd59827fddf33417945828ab1b509fef4ab5be7bf951bd715ece48fb2",
+      "stage_file_entries": 66,
+      "stage_manifest_sha256": "24feb35f548b7af603dfba4e8d5daa89a7b080d30c1dd10dff86bfbae34ee8e7"
+    },
+    {
+      "name": "setuptools-scm",
+      "version": "10.1.2",
+      "source_sha256": "24079818acc46e99aae0d65b8d511fafe965970d9cbd060c7b9f7275ded520fb",
+      "source_date_epoch": 1780340400,
+      "commands": [
+        [
+          "pip3",
+          "wheel",
+          "--no-index",
+          "--no-cache-dir",
+          "--no-build-isolation",
+          "--no-deps",
+          "--wheel-dir",
+          "/build/python-tools/wheels",
+          "."
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--target",
+          "/build/python-tools/bootstrap",
+          "/build/python-tools/wheels/setuptools_scm-10.1.2-py3-none-any.whl"
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--root",
+          "/stage/setuptools-scm",
+          "--prefix",
+          "/usr",
+          "/build/python-tools/wheels/setuptools_scm-10.1.2-py3-none-any.whl"
+        ]
+      ],
+      "wheel": "/build/python-tools/wheels/setuptools_scm-10.1.2-py3-none-any.whl",
+      "wheel_sha256": "7f9131c35714fca6b3e59ee0954f4475695f6075d9fb4ffa4a167fa1b25f15a8",
+      "identity": {
+        "name": "setuptools-scm",
+        "version": "10.1.2",
+        "requires_dist": [
+          "vcs-versioning<3,>=2.0.0.dev0",
+          "packaging>=20",
+          "setuptools",
+          "tomli>=1; python_version < \"3.11\"",
+          "typing-extensions; python_version < \"3.11\"",
+          "rich; extra == \"rich\""
+        ]
+      },
+      "log_sha256": "0cbc9f751c89c04b25a006832c7f175efcec43c567067071d829a992a3449aaf",
+      "stage_file_entries": 33,
+      "stage_manifest_sha256": "5a823baaf4a6602648b282d037106d707901507e5e07842124c29dfe12de6f2f"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.0",
+      "source_sha256": "c76315c77db068650d49c5b56314774a7804df16fee4402c1f19d6d15d8c4730",
+      "source_date_epoch": 1780340400,
+      "commands": [
+        [
+          "pip3",
+          "wheel",
+          "--no-index",
+          "--no-cache-dir",
+          "--no-build-isolation",
+          "--no-deps",
+          "--wheel-dir",
+          "/build/python-tools/wheels",
+          "."
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--target",
+          "/build/python-tools/bootstrap",
+          "/build/python-tools/wheels/iniconfig-2.3.0-py3-none-any.whl"
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--root",
+          "/stage/iniconfig",
+          "--prefix",
+          "/usr",
+          "/build/python-tools/wheels/iniconfig-2.3.0-py3-none-any.whl"
+        ]
+      ],
+      "wheel": "/build/python-tools/wheels/iniconfig-2.3.0-py3-none-any.whl",
+      "wheel_sha256": "e24b38a3ddb74854a9e49153edab86eacf857d831e1e9f6279eec810e85da602",
+      "identity": {
+        "name": "iniconfig",
+        "version": "2.3.0",
+        "requires_dist": []
+      },
+      "log_sha256": "49badfda7f201943ea375980c4b5a5a7b86e8cc8e8773f680b49530399a27b6c",
+      "stage_file_entries": 13,
+      "stage_manifest_sha256": "a40bcb153b7d709097a939735b1ba392948d0b8f9365b85840415c337e71eb27"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.6.0",
+      "source_sha256": "7dcc130b76258d33b90f61b658791dede3486c3e6bfb003ee5c9bfb396dd22f3",
+      "source_date_epoch": 1780340400,
+      "commands": [
+        [
+          "pip3",
+          "wheel",
+          "--no-index",
+          "--no-cache-dir",
+          "--no-build-isolation",
+          "--no-deps",
+          "--wheel-dir",
+          "/build/python-tools/wheels",
+          "."
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--target",
+          "/build/python-tools/bootstrap",
+          "/build/python-tools/wheels/pluggy-1.6.0-py3-none-any.whl"
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--root",
+          "/stage/pluggy",
+          "--prefix",
+          "/usr",
+          "/build/python-tools/wheels/pluggy-1.6.0-py3-none-any.whl"
+        ]
+      ],
+      "wheel": "/build/python-tools/wheels/pluggy-1.6.0-py3-none-any.whl",
+      "wheel_sha256": "a2485232de5b24a2658b8e130c8bf95712471a487293c62da173c7f805804719",
+      "identity": {
+        "name": "pluggy",
+        "version": "1.6.0",
+        "requires_dist": [
+          "pre-commit; extra == \"dev\"",
+          "tox; extra == \"dev\"",
+          "pytest; extra == \"testing\"",
+          "pytest-benchmark; extra == \"testing\"",
+          "coverage; extra == \"testing\""
+        ]
+      },
+      "log_sha256": "ad33e6e22b7f9bef472d061615557042369bd7f64b45e92e4a051351e3e1e9bd",
+      "stage_file_entries": 17,
+      "stage_manifest_sha256": "9327ea04c9645af3d44a8bff3324be60472bb0ba0ca5122b1a85b1b244b499e7"
+    },
+    {
+      "name": "poetry-core",
+      "version": "2.4.1",
+      "source_sha256": "89dceb6c10e9c6d8650a16183400e3c9ff9ddee13b0a81023b5575334a2b3744",
+      "source_date_epoch": 1780340400,
+      "commands": [
+        [
+          "pip3",
+          "wheel",
+          "--no-index",
+          "--no-cache-dir",
+          "--no-build-isolation",
+          "--no-deps",
+          "--wheel-dir",
+          "/build/python-tools/wheels",
+          "."
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--target",
+          "/build/python-tools/bootstrap",
+          "/build/python-tools/wheels/poetry_core-2.4.1-py3-none-any.whl"
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--root",
+          "/stage/poetry-core",
+          "--prefix",
+          "/usr",
+          "/build/python-tools/wheels/poetry_core-2.4.1-py3-none-any.whl"
+        ]
+      ],
+      "wheel": "/build/python-tools/wheels/poetry_core-2.4.1-py3-none-any.whl",
+      "wheel_sha256": "10dd3b263e7bb3f23b454c898220f2fb740f41cff117e6d97ae32be1027d1731",
+      "identity": {
+        "name": "poetry-core",
+        "version": "2.4.1",
+        "requires_dist": []
+      },
+      "log_sha256": "8c72c8215b6d0e1e71cf5cf28af3c89bdcf6f608f0cd146bc9b6b4fdd646ae3f",
+      "stage_file_entries": 174,
+      "stage_manifest_sha256": "3fd600af8ad4dd78396cc3ab4cffd86cfd7943f0abc4561dd71f532445103078"
+    },
+    {
+      "name": "pathspec",
+      "version": "1.1.1",
+      "source_sha256": "17db5ecd524104a120e173814c90367a96a98d07c45b2e10c2f3919fff91bf5a",
+      "source_date_epoch": 1780340400,
+      "commands": [
+        [
+          "pip3",
+          "wheel",
+          "--no-index",
+          "--no-cache-dir",
+          "--no-build-isolation",
+          "--no-deps",
+          "--wheel-dir",
+          "/build/python-tools/wheels",
+          "."
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--target",
+          "/build/python-tools/bootstrap",
+          "/build/python-tools/wheels/pathspec-1.1.1-py3-none-any.whl"
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--root",
+          "/stage/pathspec",
+          "--prefix",
+          "/usr",
+          "/build/python-tools/wheels/pathspec-1.1.1-py3-none-any.whl"
+        ]
+      ],
+      "wheel": "/build/python-tools/wheels/pathspec-1.1.1-py3-none-any.whl",
+      "wheel_sha256": "0d2568708e2246380f1524e66f59213fffd28272c7b100a07b5222a703053241",
+      "identity": {
+        "name": "pathspec",
+        "version": "1.1.1",
+        "requires_dist": [
+          "hyperscan >=0.7 ; extra == \"hyperscan\"",
+          "typing-extensions >=4 ; extra == \"optional\"",
+          "google-re2 >=1.1 ; extra == \"re2\""
+        ]
+      },
+      "log_sha256": "ba6357822ca4e56b72f21fdc1043fa0b1b272a78244e82c38eb6ca300553a976",
+      "stage_file_entries": 39,
+      "stage_manifest_sha256": "77234f9c5b5dcbf4e57fade7b161196c41c90cb8c549918eba02ebafc6d7c3dc"
+    },
+    {
+      "name": "tomlkit",
+      "version": "0.15.1",
+      "source_sha256": "e25bbf38843005246210a12982776f27f99cb9be67160e14434d0c0d21ee1e97",
+      "source_date_epoch": 1780340400,
+      "commands": [
+        [
+          "pip3",
+          "wheel",
+          "--no-index",
+          "--no-cache-dir",
+          "--no-build-isolation",
+          "--no-deps",
+          "--wheel-dir",
+          "/build/python-tools/wheels",
+          "."
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--target",
+          "/build/python-tools/bootstrap",
+          "/build/python-tools/wheels/tomlkit-0.15.1-py3-none-any.whl"
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--root",
+          "/stage/tomlkit",
+          "--prefix",
+          "/usr",
+          "/build/python-tools/wheels/tomlkit-0.15.1-py3-none-any.whl"
+        ]
+      ],
+      "wheel": "/build/python-tools/wheels/tomlkit-0.15.1-py3-none-any.whl",
+      "wheel_sha256": "32f4f0c97f1b25ce683dc6d1307a631eb76a54b7affa97d1d44fd542954bed9d",
+      "identity": {
+        "name": "tomlkit",
+        "version": "0.15.1",
+        "requires_dist": []
+      },
+      "log_sha256": "2bd613132fcf76f6910440c02dbfd6b1dcd67c3a4509d419f68d63bafd825cb0",
+      "stage_file_entries": 20,
+      "stage_manifest_sha256": "78254bb346f815643501f27af51f5c6735c810be60163e85c85ad2c537450671"
+    },
+    {
+      "name": "trove-classifiers",
+      "version": "2026.6.1.19",
+      "source_sha256": "c5132b4b61a829d11cfbd2d72e97f20a45ed6edb95e45c5efdeb5e00836b2745",
+      "source_date_epoch": 1780340400,
+      "commands": [
+        [
+          "pip3",
+          "wheel",
+          "--no-index",
+          "--no-cache-dir",
+          "--no-build-isolation",
+          "--no-deps",
+          "--wheel-dir",
+          "/build/python-tools/wheels",
+          "."
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--target",
+          "/build/python-tools/bootstrap",
+          "/build/python-tools/wheels/trove_classifiers-2026.6.1.19-py3-none-any.whl"
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--root",
+          "/stage/trove-classifiers",
+          "--prefix",
+          "/usr",
+          "/build/python-tools/wheels/trove_classifiers-2026.6.1.19-py3-none-any.whl"
+        ]
+      ],
+      "wheel": "/build/python-tools/wheels/trove_classifiers-2026.6.1.19-py3-none-any.whl",
+      "wheel_sha256": "06e693714f967a74228121fd9d7f91ba7b98ca56cf993eedaa646a4b051d8858",
+      "identity": {
+        "name": "trove-classifiers",
+        "version": "2026.6.1.19",
+        "requires_dist": []
+      },
+      "log_sha256": "d3af5d92eec8953f91672501fe00d906c91c3ea62a821dbd264ea41e0bfa8d98",
+      "stage_file_entries": 13,
+      "stage_manifest_sha256": "c16674ac78aa7c48257fe918033325a5860a01dfb18634a66f0258e394ed6dc0"
+    },
+    {
+      "name": "hatchling",
+      "version": "1.32.0",
+      "source_sha256": "0bdbde4a52b06c37e3eca395f85a762bf0ef06fe374fd8ae429dc6be10230f5f",
+      "source_date_epoch": 1780340400,
+      "commands": [
+        [
+          "pip3",
+          "wheel",
+          "--no-index",
+          "--no-cache-dir",
+          "--no-build-isolation",
+          "--no-deps",
+          "--wheel-dir",
+          "/build/python-tools/wheels",
+          "."
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--target",
+          "/build/python-tools/bootstrap",
+          "/build/python-tools/wheels/hatchling-1.32.0-py3-none-any.whl"
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--root",
+          "/stage/hatchling",
+          "--prefix",
+          "/usr",
+          "/build/python-tools/wheels/hatchling-1.32.0-py3-none-any.whl"
+        ]
+      ],
+      "wheel": "/build/python-tools/wheels/hatchling-1.32.0-py3-none-any.whl",
+      "wheel_sha256": "2ff047efcace0176e8bc18d33a4161d4f72287bc747ba25fce7ed047d4fcdbf0",
+      "identity": {
+        "name": "hatchling",
+        "version": "1.32.0",
+        "requires_dist": [
+          "packaging>=24.2",
+          "pathspec>=0.10.1",
+          "pluggy>=1.0.0",
+          "tomli>=1.2.2; python_version < '3.11'",
+          "tomlkit>=0.11.1",
+          "trove-classifiers"
+        ]
+      },
+      "log_sha256": "2dba875720b69ace150c06f7b14edd06bb7340f0984622ded1631974d0b1dc11",
+      "stage_file_entries": 77,
+      "stage_manifest_sha256": "b17f917865dacbf6f9ac4775a1be517437628ca9aec9134d156e0c6e30eba2ff"
+    },
+    {
+      "name": "pygments",
+      "version": "2.20.0",
+      "source_sha256": "6757cd03768053ff99f3039c1a36d6c0aa0b263438fcab17520b30a303a82b5f",
+      "source_date_epoch": 1780340400,
+      "commands": [
+        [
+          "pip3",
+          "wheel",
+          "--no-index",
+          "--no-cache-dir",
+          "--no-build-isolation",
+          "--no-deps",
+          "--wheel-dir",
+          "/build/python-tools/wheels",
+          "."
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--target",
+          "/build/python-tools/bootstrap",
+          "/build/python-tools/wheels/pygments-2.20.0-py3-none-any.whl"
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--root",
+          "/stage/pygments",
+          "--prefix",
+          "/usr",
+          "/build/python-tools/wheels/pygments-2.20.0-py3-none-any.whl"
+        ]
+      ],
+      "wheel": "/build/python-tools/wheels/pygments-2.20.0-py3-none-any.whl",
+      "wheel_sha256": "1e17112f45ae528d7f65c2967ce4c5fe7753461611960bed82eff9569d7eb479",
+      "identity": {
+        "name": "Pygments",
+        "version": "2.20.0",
+        "requires_dist": [
+          "colorama>=0.4.6; extra == 'windows-terminal'"
+        ]
+      },
+      "log_sha256": "2e662a60f7454e22bdc366a4886cfae73f9be3d1cfcadc9943e3bcfce266b198",
+      "stage_file_entries": 349,
+      "stage_manifest_sha256": "8a3c1c3113ab02b347449e5ba79e24042277665470159aac6e72e147d90acd5d"
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1",
+      "source_sha256": "1088fbde8f2b49d95a549a195707afa7a76a3ce9bcadc26b6d71f0ffda5fe313",
+      "source_date_epoch": 1780340400,
+      "commands": [
+        [
+          "pip3",
+          "wheel",
+          "--no-index",
+          "--no-cache-dir",
+          "--no-build-isolation",
+          "--no-deps",
+          "--wheel-dir",
+          "/build/python-tools/wheels",
+          "."
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--target",
+          "/build/python-tools/bootstrap",
+          "/build/python-tools/wheels/pytest-9.1.1-py3-none-any.whl"
+        ],
+        [
+          "pip3",
+          "install",
+          "--ignore-installed",
+          "--no-index",
+          "--no-deps",
+          "--no-compile",
+          "--root",
+          "/stage/pytest",
+          "--prefix",
+          "/usr",
+          "/build/python-tools/wheels/pytest-9.1.1-py3-none-any.whl"
+        ]
+      ],
+      "wheel": "/build/python-tools/wheels/pytest-9.1.1-py3-none-any.whl",
+      "wheel_sha256": "c70b77fdcbfabfe1cf7cb51cdb0a1d7564c71806819e6e7ec74d2714084a501a",
+      "identity": {
+        "name": "pytest",
+        "version": "9.1.1",
+        "requires_dist": [
+          "colorama>=0.4; sys_platform == \"win32\"",
+          "exceptiongroup>=1; python_version < \"3.11\"",
+          "iniconfig>=1.0.1",
+          "packaging>=22",
+          "pluggy<2,>=1.5",
+          "pygments>=2.7.2",
+          "tomli>=1; python_version < \"3.11\"",
+          "argcomplete; extra == \"dev\"",
+          "attrs>=19.2; extra == \"dev\"",
+          "hypothesis>=3.56; extra == \"dev\"",
+          "mock; extra == \"dev\"",
+          "requests; extra == \"dev\"",
+          "setuptools; extra == \"dev\"",
+          "xmlschema; extra == \"dev\""
+        ]
+      },
+      "log_sha256": "c7125ceab5a643c2414b7b153b42962c59dd5476ece4c6250d8ccd490fdf7adc",
+      "stage_file_entries": 94,
+      "stage_manifest_sha256": "c99dcf2b1a1c131aeb0c2f0c864fe571b7e47c322beadfb00933c708d2d62037"
+    }
+  ],
+  "probe_exit": 0,
+  "probe_log_sha256": "2daeeb62d61f5f925c0e65651a00c4e22fb0bb0f19d419fd13059e2131c8c299",
+  "consumer": {
+    "scope": "Actual native frozen wheel versions/dependency closure, TOML comment-preserving edit, C lexer HTML, Pytest fixture/param pass2 and deliberate fail1; not full upstream suites",
+    "uid": 101,
+    "versions": {
+      "calver": "2025.10.20",
+      "vcs-versioning": "2.2.4",
+      "setuptools-scm": "10.1.2",
+      "iniconfig": "2.3.0",
+      "pluggy": "1.6.0",
+      "poetry-core": "2.4.1",
+      "pathspec": "1.1.1",
+      "tomlkit": "0.15.1",
+      "trove-classifiers": "2026.6.1.19",
+      "hatchling": "1.32.0",
+      "pygments": "2.20.0",
+      "pytest": "9.1.1"
+    },
+    "dependencies": [
+      {
+        "consumer": "vcs-versioning",
+        "requirement": "packaging>=26.2",
+        "actual_version": "26.3"
+      },
+      {
+        "consumer": "setuptools-scm",
+        "requirement": "vcs-versioning<3,>=2.0.0.dev0",
+        "actual_version": "2.2.4"
+      },
+      {
+        "consumer": "setuptools-scm",
+        "requirement": "packaging>=20",
+        "actual_version": "26.3"
+      },
+      {
+        "consumer": "setuptools-scm",
+        "requirement": "setuptools",
+        "actual_version": "84.0.0"
+      },
+      {
+        "consumer": "hatchling",
+        "requirement": "packaging>=24.2",
+        "actual_version": "26.3"
+      },
+      {
+        "consumer": "hatchling",
+        "requirement": "pathspec>=0.10.1",
+        "actual_version": "1.1.1"
+      },
+      {
+        "consumer": "hatchling",
+        "requirement": "pluggy>=1.0.0",
+        "actual_version": "1.6.0"
+      },
+      {
+        "consumer": "hatchling",
+        "requirement": "tomlkit>=0.11.1",
+        "actual_version": "0.15.1"
+      },
+      {
+        "consumer": "hatchling",
+        "requirement": "trove-classifiers",
+        "actual_version": "2026.6.1.19"
+      },
+      {
+        "consumer": "pytest",
+        "requirement": "iniconfig>=1.0.1",
+        "actual_version": "2.3.0"
+      },
+      {
+        "consumer": "pytest",
+        "requirement": "packaging>=22",
+        "actual_version": "26.3"
+      },
+      {
+        "consumer": "pytest",
+        "requirement": "pluggy<2,>=1.5",
+        "actual_version": "1.6.0"
+      },
+      {
+        "consumer": "pytest",
+        "requirement": "pygments>=2.7.2",
+        "actual_version": "2.20.0"
+      }
+    ],
+    "pytest": [
+      {
+        "name": "pytest-positive",
+        "native_exit": 0,
+        "expected_exit": 0,
+        "passed": 2,
+        "expected_failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "pytest-negative",
+        "native_exit": 1,
+        "expected_exit": 1,
+        "passed": 0,
+        "expected_failures": 1,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "toml_roundtrip": true,
+    "lexer_html": true
+  },
+  "config_sha256": "f78ba9845202cafa204d126d1437553d71bd19271589f2a8b8bf6ba65fa3e9a8",
+  "free_bytes_after_build": 20318056448,
+  "raw_native_evidence_bundle": {
+    "filename": "B02-python-test-tools-native-evidence.tar.gz",
+    "sha256": "1dbd2582206e33625f564f10231ae6a6c100602121e2a817991006dd7e456421",
+    "bytes": 637953,
+    "members": 90,
+    "release_handoff": "Retain raw native evidence; not a published release artifact"
+  }
+}
