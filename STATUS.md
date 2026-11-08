@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B04 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 21%.
 
-Last verified: 2026-11-08T01:52:55.035357+00:00
+Last verified: 2026-11-08T01:59:03.907587+00:00
 
 Verified:
 
@@ -25,12 +25,13 @@ Verified:
 - Native executor-ipc-3 actual root service/UID101 configuration mutation and unrestricted root id0, UID65534/wrong-schema/import escalation/revocation/policy-read denials passed in synthetic root.
 - Native executor-ipc-5 active root Stop86ms/process absent and service SIGKILL ->child absent/restart uncertain/no replay passed; policy-core-2 eight storage/migration/cancel/recovery tests passed.
 - Native executor-ipc-6 active revocation stopped already-started root work90ms; new dispatch denied and outcome uncertain. policy-core-3 eight affected tests passed.
+- Native user-tools-1 five real UID101 file/shell/Stop/path/hash/metadata/bounds tests passed; executor-ipc-7 FIFO rejected without blocking, remaining boundaries passed.
 
 Running: Implementing remaining native tools and administrative backends; no guest writer active.
 
 Remaining:
 
-- Native user tools and structured package/service/network integration.
+- Structured native package/service/network integration and broker routing of ordinary tools.
 - Installed systemd cgroup lifecycle plus dedicated owner-authenticated policy surface/logind; all B04 criteria remain pending.
 
 [Acceptance evidence](docs/evidence/B04.md)

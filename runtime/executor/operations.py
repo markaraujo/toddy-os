@@ -53,7 +53,7 @@ def _parent(path):
 
 
 def _file_hash(directory,name):
-    try:fd=os.open(name,os.O_RDONLY|os.O_NOFOLLOW|os.O_CLOEXEC,dir_fd=directory)
+    try:fd=os.open(name,os.O_RDONLY|os.O_NONBLOCK|os.O_NOCTTY|os.O_NOFOLLOW|os.O_CLOEXEC,dir_fd=directory)
     except FileNotFoundError:return None,None
     with os.fdopen(fd,'rb') as file:
         info=os.fstat(file.fileno())

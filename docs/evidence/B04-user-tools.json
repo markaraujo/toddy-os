@@ -1,0 +1,12 @@
+{
+  "job": "user-tools-1",
+  "scope": "native UID101 file/process tools; no root or plugin containment",
+  "exit": 0,
+  "tests": 5,
+  "log": "test_active_stop_no_silent_rollback_or_leftover_process (__main__.UserToolTests.test_active_stop_no_silent_rollback_or_leftover_process) ... ok\ntest_path_symlink_hardlink_fifo_and_size_denial (__main__.UserToolTests.test_path_symlink_hardlink_fifo_and_size_denial) ... ok\ntest_read_write_exact_hash_and_configuration_preservation (__main__.UserToolTests.test_read_write_exact_hash_and_configuration_preservation) ... ok\ntest_shell_actual_user_cwd_clean_environment (__main__.UserToolTests.test_shell_actual_user_cwd_clean_environment) ... ok\ntest_shell_output_deadline_and_explicit_argv (__main__.UserToolTests.test_shell_output_deadline_and_explicit_argv) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 1.113s\n\nOK\n",
+  "own_input_sha256": {
+    "runtime/tools/native.py": "922eabe23262e36fe173fbd5123eab536553587c3c5874da29fad0697557cd00",
+    "runtime/tools/child.py": "68f177503509bb5e60520bca7da43a544a1791c515f4f1418bc61139b437ee06",
+    "tests/test_user_tools.py": "ae11f3ce662c46e33fd8a00c190d7910691a2629cdb4dc6e981000300148ecce"
+  }
+}

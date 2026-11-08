@@ -1622,3 +1622,11 @@ checks passed. Exact source hashes/evidence retained; no B04 completion yet.
 Tightened synthetic CA rejection to actual SSLCertVerificationError with proxies
 explicitly disabled. Native acquisition-4 ten affected checks passed; production
 download/runtime bytes unchanged. Earlier generic assertion not used as new proof.
+
+### B04 native ordinary tools and FIFO denial — 2026-11-08 UTC
+
+user-tools-1 five actual UID101 filesystem/process tests passed1.113s: exact hash
+writes, path/metadata/bounds, clean environment and active Stop/process absence.
+Fixed blocking FIFO read before type inspection; executor-ipc-7 tested the affected
+root reader and existing boundary/recovery paths, all0. Ordinary tools still need
+broker routing; package/service/network and installed owner/systemd remain pending.

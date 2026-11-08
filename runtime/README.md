@@ -1,9 +1,10 @@
 # Native Toddy runtime source
 
 Phase 2 implementation is authorized by ADR-0113. This directory currently contains
-the B01 Pi 1.5.0 deterministic worker spike, strict Python/JavaScript framing and
-the session-D-Bus introspection contract. It is not an installed assistant, actual
-provider/local-model proof, privileged executor, durable task service or GTK UI.
+the native-qualified B01 Pi1.5 worker/framing/session-D-Bus contract and B03
+provider/local/acquisition components. B04 adds a separately tested root executor
+and ordinary tools. This is not yet an installed integrated assistant, canonical
+task service, GTK UI or G2 release; see each evidence file for exact native scope.
 
 The exact engine npm closure is in engine/package-lock.json. Lifecycle scripts
 are disabled when acquiring it; no model, credentials or root grant is supplied.
@@ -51,3 +52,10 @@ trusted catalog artifact. SIGINT/SIGTERM preserves private partial bytes; repeat
 the explicit command to resume after inspecting the result. Verified cache reuse
 rehashes bytes. Integrity/conflict errors require explicit inspect/remove; no
 failed artifact activates. The library/API is reused by later native settings.
+
+B04 user file/shell tools run without root, scope file methods to an owned workspace
+and bound process/output/Stop behavior. Arbitrary shell has normal account powers,
+not plugin confinement. The independent executor has no grant mutation in its
+broker-facing API. Deliberate root policy client grants/revokes until the owner
+polkit surface is qualified. Active root Stop/revocation/service-loss recovery are
+native-tested; installed cgroup and package/service/network paths remain pending.
