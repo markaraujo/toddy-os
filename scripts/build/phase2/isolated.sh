@@ -85,6 +85,10 @@ for name in null zero random urandom; do
 done
 # Standard alias to this process's already exposed private proc descriptors.
 ln -s /proc/self/fd "$root/dev/fd"
+# POSIX shared memory for native ORC/JIT/compiler tests. New tmpfs in this
+# mount/IPC namespace only; never bind the guest/host shared-memory directory.
+mkdir "$root/dev/shm"
+mount -t tmpfs -o size=256m,mode=1777,nosuid,nodev tmpfs "$root/dev/shm"
 # Read-only root covers the synthetic /etc and namespace topology, while the
 # explicitly separate /build, /stage and /tmp mounts remain writable.
 mount -o remount,ro "$root"

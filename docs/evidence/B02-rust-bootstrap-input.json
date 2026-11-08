@@ -1,0 +1,90 @@
+{
+  "scope": "Host-only authenticated x86_64 build bootstrap cache; never executed, installed or accepted as final product compiler",
+  "target_rust_version": "1.97.1",
+  "stage0_version": "1.96.0",
+  "artifacts": [
+    {
+      "name": "rustc-stage0",
+      "version": "1.96.0",
+      "url": "https://static.rust-lang.org/dist/2026-05-28/rustc-1.96.0-x86_64-unknown-linux-gnu.tar.xz",
+      "expected_sha256": "7d7fa1d0cfb0fab71a956bb78f41107202c17f30ab56c45288e869a37fd9633d",
+      "actual_sha256": "7d7fa1d0cfb0fab71a956bb78f41107202c17f30ab56c45288e869a37fd9633d",
+      "metadata_source_sha256": "be7f5a93b78128cb5d81e258261c3103eac251b912c1d59e77425045074d2a49",
+      "parent_source_sha256": "0ed06fdaffd4722a7702e0b4eebfafc897ab8f513e8e1b247cdd7e5c6df6ded2",
+      "legal_texts": [
+        {
+          "path": "rustc-1.96.0-x86_64-unknown-linux-gnu/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "bytes": 9723
+        },
+        {
+          "path": "rustc-1.96.0-x86_64-unknown-linux-gnu/COPYRIGHT",
+          "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af",
+          "bytes": 1571
+        },
+        {
+          "path": "rustc-1.96.0-x86_64-unknown-linux-gnu/LICENSE-MIT",
+          "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1",
+          "bytes": 1068
+        }
+      ]
+    },
+    {
+      "name": "rust-std-stage0",
+      "version": "1.96.0",
+      "url": "https://static.rust-lang.org/dist/2026-05-28/rust-std-1.96.0-x86_64-unknown-linux-gnu.tar.xz",
+      "expected_sha256": "c09c7c646248f14f473f5f7a029af15ee57c3a9f9bc93dfa72d9621938586b82",
+      "actual_sha256": "c09c7c646248f14f473f5f7a029af15ee57c3a9f9bc93dfa72d9621938586b82",
+      "metadata_source_sha256": "be7f5a93b78128cb5d81e258261c3103eac251b912c1d59e77425045074d2a49",
+      "parent_source_sha256": "0ed06fdaffd4722a7702e0b4eebfafc897ab8f513e8e1b247cdd7e5c6df6ded2",
+      "legal_texts": [
+        {
+          "path": "rust-std-1.96.0-x86_64-unknown-linux-gnu/LICENSE-APACHE",
+          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+          "bytes": 9723
+        },
+        {
+          "path": "rust-std-1.96.0-x86_64-unknown-linux-gnu/COPYRIGHT",
+          "sha256": "172020dbfd5b53a226dfde77616190a48dcff519b0bc0e6deb91a8450782c4af",
+          "bytes": 1571
+        },
+        {
+          "path": "rust-std-1.96.0-x86_64-unknown-linux-gnu/LICENSE-MIT",
+          "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1",
+          "bytes": 1068
+        }
+      ]
+    },
+    {
+      "name": "cargo-stage0",
+      "version": "1.96.0",
+      "url": "https://static.rust-lang.org/dist/2026-05-28/cargo-1.96.0-x86_64-unknown-linux-gnu.tar.xz",
+      "expected_sha256": "dee75c3c8f9f600ad75bc0c93249e767d3047845a4dd668327ce43ab039ba266",
+      "actual_sha256": "dee75c3c8f9f600ad75bc0c93249e767d3047845a4dd668327ce43ab039ba266",
+      "metadata_source_sha256": "be7f5a93b78128cb5d81e258261c3103eac251b912c1d59e77425045074d2a49",
+      "parent_source_sha256": "0ed06fdaffd4722a7702e0b4eebfafc897ab8f513e8e1b247cdd7e5c6df6ded2",
+      "legal_texts": [
+        {
+          "path": "cargo-1.96.0-x86_64-unknown-linux-gnu/cargo/share/doc/cargo/LICENSE-APACHE",
+          "sha256": "8ada45cd9f843acf64e4722ae262c622a2b3b3007c7310ef36ac1061a30f6adb",
+          "bytes": 10860
+        },
+        {
+          "path": "cargo-1.96.0-x86_64-unknown-linux-gnu/LICENSE-APACHE",
+          "sha256": "8ada45cd9f843acf64e4722ae262c622a2b3b3007c7310ef36ac1061a30f6adb",
+          "bytes": 10860
+        },
+        {
+          "path": "cargo-1.96.0-x86_64-unknown-linux-gnu/cargo/share/doc/cargo/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "bytes": 1023
+        },
+        {
+          "path": "cargo-1.96.0-x86_64-unknown-linux-gnu/LICENSE-MIT",
+          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+          "bytes": 1023
+        }
+      ]
+    }
+  ]
+}

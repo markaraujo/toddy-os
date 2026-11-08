@@ -9,15 +9,16 @@ import sys
 import phase2_vm
 ROOT=phase2_vm.ROOT
 NAME=sys.argv[1]
-assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info')
+assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm')
 if __name__=='__main__':
     row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==NAME)
     archive=ROOT/'.local/sources'/row['filename'];data=archive.read_bytes()
     assert hashlib.sha256(data).hexdigest()==row['sha256']
     probe=(ROOT/'scripts/build/phase2/freetype-probe.c').read_text() if NAME=='freetype' else None
     extra=None
-    if NAME=='shared-mime-info':
-        extra=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']=='xdgmime-tests')
+    if NAME in ('shared-mime-info','llvm'):
+        extra_name='xdgmime-tests' if NAME=='shared-mime-info' else 'llvm-upstream-fix'
+        extra=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==extra_name)
         extra_data=(ROOT/'.local/sources'/extra['filename']).read_bytes()
         assert hashlib.sha256(extra_data).hexdigest()==extra['sha256']
         transfer='''from pathlib import Path
@@ -43,7 +44,8 @@ lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
 '''+f'row={row!r}\nrecipe={recipe!r}\nprobe={probe!r}\nextra={extra!r}\n'+'''
 base=Path('/mnt/lfs/sources');archive=base/row['filename'];part=base/(row['filename']+'.part')
-source=base/'phase2/inputs'/(row['name']+'-'+row['version']);work=base/'phase2/work'/(row['name']+'-1')
+source_name='llvm-project-'+row['version']+'.src' if row['name']=='llvm' else row['name']+'-'+row['version']
+source=base/'phase2/inputs'/source_name;work=base/'phase2/work'/(row['name']+'-1')
 assert not source.exists() and not work.exists() and not part.exists(),'Reconcile existing source/job; no replay'
 if archive.exists():
     assert hashlib.sha256(archive.read_bytes()).hexdigest()==row['sha256']
@@ -57,14 +59,33 @@ else:
 assert os.statvfs(base).f_bavail*os.statvfs(base).f_frsize>=16*1024**3
 subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',row['filename']],cwd=base/'phase2/inputs',check=True)
 patches=[]
-if extra is not None:
-    assert row['name']=='shared-mime-info'
+if row['name']=='shared-mime-info':
+    assert extra['name']=='xdgmime-tests'
     subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',extra['filename']],cwd=source/'subprojects',check=True)
     (source/'subprojects'/('xdgmime-'+extra['commit'])).rename(source/'subprojects/xdgmime')
     path=source/'tests/meson.build';before=path.read_bytes();text=before.decode()
     old="args: meson.current_source_dir() / 'mime-db-tests',";assert text.count(old)==1
     text=text.replace(old,"args: '/build/mime-db-tests',");path.write_text(text)
     patches.append({'path':'tests/meson.build','before_sha256':hashlib.sha256(before).hexdigest(),'after_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'reason':'Writable generated MIME cache test fixture under private /build; expected XML/tests unchanged'})
+if row['name']=='llvm':
+    import re
+    assert extra['name']=='llvm-upstream-fix'
+    subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',extra['filename'],'--verify-only'],check=True)
+    patch_path=base/extra['filename'];body=patch_path.read_text()
+    paths=re.findall(r'^[+][+][+] b/(.+)$',body,re.M)
+    assert len(paths)==14 and all(p.startswith('llvm/') and '..' not in Path(p).parts for p in paths)
+    before={p:hashlib.sha256((source/p).read_bytes()).hexdigest() if (source/p).exists() else None for p in paths}
+    subprocess.run(['patch','--batch','--forward','--fuzz=0','-Np1','-i',str(patch_path)],cwd=source,check=True)
+    patches.extend({'path':p,'before_sha256':before[p],'after_sha256':hashlib.sha256((source/p).read_bytes()).hexdigest(),'patch_sha256':extra['sha256']} for p in paths)
+    path=source/'llvm/utils/FileCheck/CMakeLists.txt';data=path.read_bytes();text=data.decode();assert text.count('utility')==1
+    path.write_text(text.replace('utility','tool'))
+    patches.append({'path':'llvm/utils/FileCheck/CMakeLists.txt','before_sha256':hashlib.sha256(data).hexdigest(),'after_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'reference':'BLFS13.1 install required FileCheck tool'})
+    for path in source.rglob('*'):
+        if not path.is_file() or path.is_symlink():continue
+        with path.open('rb') as f:first=f.readline(4096)
+        if re.fullmatch(rb'#![^\\n]*python\\r?\\n',first):
+            before=path.read_bytes();after=first.rstrip().removesuffix(b'python')+b'python3\\n'+before[len(first):];path.write_bytes(after)
+            patches.append({'path':str(path.relative_to(source)),'before_sha256':hashlib.sha256(before).hexdigest(),'after_sha256':hashlib.sha256(after).hexdigest(),'reference':'BLFS13.1 Python3 shebang selection'})
 if row['name']=='freetype':
     import re
     for relative in ['modules.cfg','include/freetype/config/ftoption.h']:
@@ -80,7 +101,7 @@ if row['name']=='freetype':
 receipt={'source_sha256':row['sha256'],'reference':row['reference'],
          'book_page_sha256':row['book_page_sha256'],'source_patches':patches,
          'recipe_sha256':hashlib.sha256(recipe.encode()).hexdigest()}
-if extra is not None:receipt['extra_test_source']=extra
+if extra is not None:receipt['extra_source']=extra
 if probe is not None:
     (source/'toddy-probe.c').write_text(probe)
     receipt['probe_sha256']=hashlib.sha256(probe.encode()).hexdigest()

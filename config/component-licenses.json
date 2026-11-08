@@ -2842,6 +2842,36 @@
           ]
         }
       }
+    },
+    {
+      "name": "llvm",
+      "version": "22.1.8",
+      "license": "Apache-2.0 WITH LLVM-exception AND LicenseRef-llvm-per-file",
+      "evidence": "Frozen official monorepo; core/Clang headers and exact named legal texts required before native packaging. Required upstream poison/select patch provenance recorded. Build running only; runtime/test acceptance pending."
+    },
+    {
+      "name": "llvm-upstream-fix",
+      "version": "22.1.8-1",
+      "license": "Apache-2.0 WITH LLVM-exception",
+      "evidence": "BLFS13.1 required upstream codegen fix from Rust LLVM commitabcef279cd33492fe8301c8873fc535fa4dbf0d5, changes existing Apache2/LLVM-exception source and regression tests; no separate runtime artifact."
+    },
+    {
+      "name": "rustc-stage0",
+      "version": "1.96.0",
+      "license": "(Apache-2.0 OR MIT) AND LicenseRef-Rust-toolchain-components",
+      "evidence": "Build-only official bootstrap archive, SHA authenticated by Rust1.97.1 src/stage0. Original Apache/MIT/COPYRIGHT text hashes retained in B02-rust-bootstrap-input.json; per-component conditions apply. Never executed/installed or accepted as final product compiler."
+    },
+    {
+      "name": "rust-std-stage0",
+      "version": "1.96.0",
+      "license": "(Apache-2.0 OR MIT) AND LicenseRef-Rust-toolchain-components",
+      "evidence": "Build-only official bootstrap archive, SHA authenticated by Rust1.97.1 src/stage0. Original Apache/MIT/COPYRIGHT text hashes retained in B02-rust-bootstrap-input.json; per-component conditions apply. Never executed/installed or accepted as final product compiler."
+    },
+    {
+      "name": "cargo-stage0",
+      "version": "1.96.0",
+      "license": "(Apache-2.0 OR MIT) AND LicenseRef-Rust-toolchain-components",
+      "evidence": "Build-only official bootstrap archive, SHA authenticated by Rust1.97.1 src/stage0. Original Apache/MIT/COPYRIGHT text hashes retained in B02-rust-bootstrap-input.json; per-component conditions apply. Never executed/installed or accepted as final product compiler."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

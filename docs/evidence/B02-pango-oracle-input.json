@@ -1,0 +1,21 @@
+{
+  "original_font_sha256": "53115b8ef48e9c9745ece9ab2c13acf565a204b1d1a75f163fcc406ab3b1508a",
+  "ttx_sha256": "50ea4a6fcc3a45e5bab3854a1c7f8b9bcc3e81661c1b335621f40b5f1de75cbc",
+  "derived_font_sha256": "4a9a161f3afb5e7897bff0f4f1341686d8536b8630e9edd22d60118ccc2c92d2",
+  "ascii_range": [
+    32,
+    126
+  ],
+  "glyph_count": 18,
+  "units_per_em": 1024,
+  "advance_units": 1024,
+  "expected_advance_at_100px_in_pango_units": 102400,
+  "existing_glyph_outlines_unchanged": true,
+  "full_font_checksum": "b1b0afba",
+  "scope": "Host-only independent font data preparation/FreeType scan; native portable driver and installed Pango not accepted",
+  "host_font_scan": [
+    "Boxes",
+    "20-7e"
+  ],
+  "native_result": "pending exclusive guest writer availability; original failed budget retained"
+}

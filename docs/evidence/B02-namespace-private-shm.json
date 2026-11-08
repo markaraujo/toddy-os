@@ -1,0 +1,53 @@
+{
+  "uid": 101,
+  "gid": 101,
+  "cap_effective": 0,
+  "cap_permitted": 0,
+  "no_new_privileges": true,
+  "inherited_writable_fds": [],
+  "outside_writes_denied": [
+    {
+      "path": "/usr/toddy-denied",
+      "errno": 30
+    },
+    {
+      "path": "/src/toddy-denied",
+      "errno": 30
+    },
+    {
+      "path": "/etc/toddy-denied",
+      "errno": 30
+    },
+    {
+      "path": "/root/toddy-denied",
+      "errno": 2
+    },
+    {
+      "path": "/run/toddy-denied",
+      "errno": 30
+    }
+  ],
+  "external_network_errno": 101,
+  "native_compile_stage_run": "toddy-native-isolated",
+  "exit": 0,
+  "dev_fd_alias": "private /proc/self/fd",
+  "source_fd_write_denied": true,
+  "font_configuration": {
+    "sha256": "21d98f29b610fb4342d2331f6653ee93f920629fbe8d474033a79a77d37f5d41",
+    "write_denied": true,
+    "config_links_read": 23
+  },
+  "private_shared_memory": {
+    "native_posix_shared_child_rx_execution": true,
+    "private_tmpfs_bytes": 268435456
+  },
+  "job": "private-shm-probe-1",
+  "harness_sha256": "2ead2db07803f13b5037dc2c5a0941717df198505a16b76523cd306e9b235ee9",
+  "parent_lock_held_exit": 75,
+  "parent_shared_memory_visible": false,
+  "parent_lock_released_exit": 0,
+  "own_probe_sha256": {
+    "namespace_alias_probe.py": "336e2a5eae74982e7eb5392289fc2cd459079baed3f91d37cf23fb8950deffce",
+    "isolation_probe.py": "1779bd073fc11c8b80a603ec96ca20d74c46522701f79c0512c1b948f91794d6"
+  }
+}

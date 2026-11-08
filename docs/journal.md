@@ -1713,3 +1713,14 @@ then enabled locally,18 new math drivers0 and prior shared hashes unchanged.
 MIME17 native drivers and owned generated cache install/post0/0, GIO TXT/PNG/JSON
 passed. Exact official XDGMime commit pinned as test-only source; no compiler
 network or repeated old suites. Pango metric slice stays blocked/uninstalled.
+
+### B02 LLVM compiler prerequisite dispatch — 2026-11-08 UTC
+
+ADR0121 records frozen LLVM22.1.8 core/Clang, required Rust poison-select codegen
+patch, measured disk reserve and mandatory scoped compiler/JIT validation. Private
+256MiB POSIX SHM added only inside compiler namespace; actual child RX execution,
+parent invisibility and all existing denial/cap/FD/lock checks passed. LLVM input
+verified before extraction/patching,198 recorded source edits (14 upstream patch,
+FileCheck install and Python3 shebangs). llvm-1 compiling with4 workers/1 linker;
+no stage/install/acceptance yet. Rust source-authenticated stage0 host prefetch is
+independent; no second guest writer, no paid service or foundation replacement.

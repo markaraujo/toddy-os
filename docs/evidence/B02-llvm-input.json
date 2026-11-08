@@ -1,0 +1,29 @@
+{
+  "scope": "authenticated immutable LLVM input preparation only; compile/tests/install not accepted",
+  "source_sha256": "922f1817a0df7b1489272d18134ee0087a8b068828f87ac63b9861b1a9965888",
+  "reference": "BLFS13.1-systemd general/llvm.html",
+  "book_page_sha256": "fbadf2aea39a17abf64a3241f1e4958249d2a9ad519b7e472cb4c56478a565c2",
+  "recipe_sha256": "a9e2767834b987a87528642fc032a8ac16d4d3e480bab39782f324a0dc2b6973",
+  "extra_source": {
+    "name": "llvm-upstream-fix",
+    "version": "22.1.8-1",
+    "filename": "llvm-22.1.8-upstream_fix-1.patch",
+    "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/llvm-22.1.8-upstream_fix-1.patch",
+    "sha256": "4a2084f9714f2f3babc0ed58065c3a6b83cd2828ea19aec1518995a6d2376187",
+    "reference": "BLFS13.1-systemd general/llvm.html required upstream fix, Rust LLVM commitabcef279cd33492fe8301c8873fc535fa4dbf0d5",
+    "status": "source_verified",
+    "scope": "Required codegen poison/select-load fix and corresponding tests before Rust1.97.1"
+  },
+  "prepared_receipt_sha256": "0ed35fd2abe0891f4f96807cc8ebb78c97343af726c266dfab7ed19a4c68777f",
+  "source_change_count": 198,
+  "codegen_patch_files": 14,
+  "filecheck_tool_selection": [
+    {
+      "path": "llvm/utils/FileCheck/CMakeLists.txt",
+      "before_sha256": "e026a83d66c6486ae76a9d26984be26f4cf1f79355f554d49ee0be5a209ee6b6",
+      "after_sha256": "530c23bf0f8fded97f7f916adb6c92a606cb45bbf688ad127de2e3917ecab666",
+      "reference": "BLFS13.1 install required FileCheck tool"
+    }
+  ],
+  "python3_shebang_files": 183
+}
