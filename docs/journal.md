@@ -1749,3 +1749,17 @@ include full IJG README, component terms retained. NASM is outside the selected
 graph; source preparer refused it before mutation, no mandatory dependency added.
 Host syntax and make check247 passed. d003170 all3 remote workflows green.
 Guest llvm-1 remains the only healthy writer; no metadata sync or test replay.
+
+### B02 native Pango/default fonts and completed LLVM compilation — 2026-11-08 UTC
+
+LLVM4451 compilation steps actual0, source-patched22.1.8 X86+AMDGPU confirmed.
+One-time guarded controller synchronized metadata only after terminal0, dispatched
+new portable Pango oracle:3 native cases0, original binaries unchanged. Stage6
+then native Pango install/post0/0 passed Portuguese wrapping/pixels/markup/GI.
+Original golden failure remains visible; no old-budget reset or upstream-all-pass
+claim. Adwaita50 six original TTFs staged and installed0/0, font matching/cache
+passed. Host input-log redirection collision refused before any guest write;
+verified absent source/work, preserved empty artifact, corrected invocation once.
+Next writer llvm-qualify-2 builds critical test dependencies then seven suites,
+no compiler restart. All desktop/runtime criteria remain pending actual GNOME.
+Keyboard1.13.2/config2.48 source archives authenticated host-only for later input.

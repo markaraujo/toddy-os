@@ -1,0 +1,16 @@
+{
+  "scope": "native LLVM/Clang compile only; no test/stage/package acceptance",
+  "version": "22.1.8",
+  "targets": [
+    "X86",
+    "AMDGPU"
+  ],
+  "clang_version": "clang version 22.1.8",
+  "cmake_cache_sha256": "b47f92758bdf5447bfdacb887dfad12dc338cb39809f43ba624b264e207fc77e",
+  "free_bytes_after_compile": 35994537984,
+  "next": "Required native compiler/JIT validation and verified stage per ADR0121",
+  "actual_terminal_exit": 0,
+  "harness_sha256": "2ead2db07803f13b5037dc2c5a0941717df198505a16b76523cd306e9b235ee9",
+  "build_log_sha256": "fec88fff7fd799ea4de15072a04912d1a488cc1ff2f464d9aa5b3e50ab9d435a",
+  "critical_tests": "llvm-qualify-2 in progress; not accepted or installed"
+}

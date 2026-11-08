@@ -1,0 +1,38 @@
+{
+  "scope": "Native installed version/ownership, Portuguese wrapping, actual Cairo text pixels, rejected invalid markup and Python GI. Independently qualified portable metric fixture; original upstream golden failure retained. No GNOME/GTK session acceptance.",
+  "step": {
+    "step": "b02-pango-install",
+    "started": "2026-11-08T07:23:01.474153+00:00",
+    "finished": "2026-11-08T07:23:13.178945+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 214,
+    "log_sha256": "644d348434a91894898ec74c6058e0c2263d6bf94e8e0a8a10df56c5b7847ec5"
+  },
+  "success_record_sha256": "3290fbb888afb79752fd99be8dc9f434f3211a765d76d7b1ed58af40691b0020",
+  "package": {
+    "name": "pango",
+    "version": "1.58.2-1+toddy1",
+    "archive_sha256": "6fee3bf356aede7e17584e972aee4ae6bfaae7224eb1e194b3c1ccb82511e29c",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-pango-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 15.334,
+        "entries": 95330,
+        "regular_files": 82579,
+        "regular_bytes": 4940211023
+      },
+      {
+        "seconds": 9.193,
+        "entries": 95539,
+        "regular_files": 82778,
+        "regular_bytes": 4943258936
+      }
+    ],
+    "total_seconds": 27.7
+  }
+}

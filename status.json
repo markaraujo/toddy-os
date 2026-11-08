@@ -335,7 +335,11 @@
         "docs/evidence/B02-namespace-private-shm.json",
         "docs/evidence/B02-llvm-input.json",
         "docs/evidence/B02-rust-bootstrap-input.json",
-        "docs/evidence/B02-pango-oracle-input.json"
+        "docs/evidence/B02-pango-oracle-input.json",
+        "docs/evidence/B02-pango-build.json",
+        "docs/evidence/B02-pango-install.json",
+        "docs/evidence/B02-adwaita-fonts-install.json",
+        "docs/evidence/B02-llvm-compile.json"
       ]
     },
     {
