@@ -78,36 +78,63 @@ if __name__ == '__main__':
     log = Path('/var/log/toddy/phase2')
     llvm_resume=name=='llvm' and (log/'llvm-qualify-resume-3.job.json').exists()
     llvm_recovery=name=='llvm' and (log/'llvm-qualify-recovery-4.job.json').exists()
-    qualifier='rustc-tools-recovery-5' if name=='rustc' else 'pango-stage-6' if name=='pango' else 'llvm-qualify-recovery-4' if llvm_recovery else 'llvm-qualify-resume-3' if llvm_resume else 'llvm-qualify-2' if name=='llvm' else 'wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
+    rust_legacy=name=='rustc' and (log/'rustc-tools-finish-8.job.json').exists()
+    qualifier=('rustc-tools-finish-8' if rust_legacy else 'rustc-stage-4') if name=='rustc' else 'pango-stage-6' if name=='pango' else 'llvm-qualify-recovery-4' if llvm_recovery else 'llvm-qualify-resume-3' if llvm_resume else 'llvm-qualify-2' if name=='llvm' else 'wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
         work=Path('/mnt/lfs/sources/phase2/work/rustc-1')
-        for job,expected in [('rustc-1','0'),('rustc-std-2','1'),
-                             ('rustc-compiler-3','0'),('rustc-stage-4','1')]:
-            assert (log/(job+'.exit')).read_text().strip()==expected
-        original=(work/'std-tests-2.log').read_text()
-        summaries=qualify_preserved_log(original)
+        assert (log/'rustc-1.exit').read_text().strip()=='0'
+        assert (log/'rustc-compiler-3.exit').read_text().strip()=='0'
+        std_exit=(log/'rustc-std-2.exit').read_text().strip()
+        if std_exit=='1':
+            assert 'stage2/bin/clippy-driver' in (log/'rustc-std-2.log').read_text()
+        else:
+            assert std_exit=='0'
+            assert (work/'std-tests-2-native.exit').read_text().strip()=='0'
+        summaries=qualify_preserved_log((work/'std-tests-2.log').read_text())
         assert sum(r['passed'] for r in summaries)==6223
         assert sum(r['ignored'] for r in summaries)==5
-        assert 'stage2/bin/clippy-driver' in (log/'rustc-std-2.log').read_text()
         compiler=json.loads((work/'compiler-tests-3/results.json').read_text())
         assert compiler['native_exit']==0
         assert compiler['summaries']==[['ok','1552','0','7','0','19666']]
         assert (work/'compiler-tests-3/native.exit').read_text().strip()=='0'
         assert hashlib.sha256((work/'compiler-tests-3/native.log').read_bytes()).hexdigest()==compiler['log_sha256']
-        proof=json.loads((work/'stage-tests-recovery-5/results.json').read_text())
-        assert proof['original_install_exit']==0 and proof['original_tool_probe_exit']==1
-        assert proof['tools_exit']==0 and proof['stage_unchanged_by_probe']
-        assert proof['probe_sha256']==hashlib.sha256((ROOT/'scripts/build/phase2/rust_tools_probe.py').read_bytes()).hexdigest()
-        record=json.loads((log/'rustc-tools-recovery-5.job.json').read_text())
-        assert record['command'][-3]==(ROOT/'scripts/build/phase2/rust_stage_recover.py').read_text()
-        assert record['command'][-2]==(ROOT/'scripts/build/phase2/rust_tools_probe.py').read_text()
-        assert json.loads((log/'rustc-stage-4.job.json').read_text())['command'][-3]==(ROOT/'scripts/build/phase2/rust_stage.py').read_text()
         assert json.loads((log/'rustc-compiler-3.job.json').read_text())['command'][-1]==(ROOT/'scripts/build/phase2/rust_compiler_tests.py').read_text()
+        canonical_probe=(ROOT/'scripts/build/phase2/rust_tools_probe.py').read_text()
+        stage_job=json.loads((log/'rustc-stage-4.job.json').read_text())
+        if rust_legacy:
+            for job in ['rustc-stage-4','rustc-tools-recovery-5','rustc-tools-recovery-6','rustc-tools-recovery-7']:
+                assert (log/(job+'.exit')).read_text().strip()=='1'
+            assert hashlib.sha256(stage_job['command'][-3].encode()).hexdigest()=='b081cf6b85698b41a927d587fbf5593e359c565c38bf30e00689e5e5c6d1c1c4'
+            proof=json.loads((work/'tool-docs-8/qualified.json').read_text())
+            assert proof['qualification_exit']==0 and proof['rustdoc_native_exit']==0
+            assert proof['stage_unchanged_by_probe']
+            assert proof['original_wrapper_exits']=={'stage4':1,'guard5':1,'probe6':1,'collector7':1}
+            record=json.loads((log/'rustc-tools-finish-8.job.json').read_text())
+            assert record['command'][-3]==(ROOT/'scripts/build/phase2/rust_finish_tools.py').read_text()
+            assert record['command'][-2]==canonical_probe
+            assert record['command'][-1]==canonical_probe.replace("101, 'clippy::eq-op'", "101, 'clippy::eq_op'")
+            assert json.loads((log/'rustc-tools-recovery-7.job.json').read_text())['command'][-2]==record['command'][-1]
+            assert hashlib.sha256((work/'stage-tests-recovery-7/tools.log').read_bytes()).hexdigest()==proof['previous_tools_log_sha256']
+            expected={'c-ffi-compile':0,'c-ffi-archive':0,'rustfmt-reject':1,'rustfmt-format':0,
+                      'rustfmt-check':0,'cargo-test':0,'cargo-clippy':0,'clippy-reject':101,'rustdoc':0}
+            assert {r['name'] for r in proof['checks']}==set(expected) and len(proof['checks'])==9
+            for row in proof['checks']:
+                name_=row['name']
+                directory=work/('tool-docs-8' if name_=='rustdoc' else 'tool-consumers-7')
+                assert hashlib.sha256((directory/(name_+'.log')).read_bytes()).hexdigest()==row['log_sha256']
+                assert row.get('native_exit',row.get('expected_exit'))==expected[name_]
+            assert (work/'tool-docs-8/rustdoc.exit').read_text().strip()=='0'
+        else:
+            proof=json.loads((work/'stage-tests-4/results.json').read_text())
+            assert proof['install_exit']==0 and proof['tools_exit']==0
+            assert stage_job['command'][-3]==(ROOT/'scripts/build/phase2/rust_stage.py').read_text()
+            assert stage_job['command'][-2]==canonical_probe
+            assert (work/'stage-tests-4/tools.exit').read_text().strip()=='0'
+            assert hashlib.sha256((work/'stage-tests-4/tools.log').read_bytes()).hexdigest()==proof['tools_log_sha256']
+        assert proof['probe_sha256']==hashlib.sha256(canonical_probe.encode()).hexdigest()
         assert (work/'stage-tests-4/install.exit').read_text().strip()=='0'
-        assert (work/'stage-tests-recovery-5/tools.exit').read_text().strip()=='0'
         assert hashlib.sha256((work/'stage-tests-4/install.log').read_bytes()).hexdigest()==proof['install_log_sha256']
-        assert hashlib.sha256((work/'stage-tests-recovery-5/tools.log').read_bytes()).hexdigest()==proof['tools_log_sha256']
         actual={str(p.relative_to(work/'stage')) for p in (work/'stage').rglob('*')
                 if p.is_file() or p.is_symlink()}
         assert actual==set(proof['entries']), 'Unexpected stage payload'
@@ -284,7 +311,7 @@ if __name__ == '__main__':
                         '--depends','glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
-    if name in ('fontconfig','llvm'):
+    if name in ('fontconfig','llvm','rustc'):
         for relative,row in before['entries'].items():
             if relative.startswith('etc/') and 'sha256' in row: conffiles+=['--conffile','/'+relative]
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,

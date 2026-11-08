@@ -1,7 +1,7 @@
 # ADR-0125: Offline native Rust bootstrap in the qualified build namespace
 
 - Date: 2026-11-08
-- Status: Accepted preparation/build contract; native execution pending
+- Status: Accepted; native selected qualification and owned SDK install completed
 
 Use frozen BLFS13.1 Rust1.97.1 source, completed patched LLVM22.1.8 and the three
 official1.96.0 seed archives authenticated by Rust's original src/stage0 metadata.
@@ -38,3 +38,17 @@ Rust is a build SDK for librsvg/Firefox and stays out of the offline base/live
 image unless an explicit real runtime dependency proves otherwise. Preserve valid
 native archives and raw evidence; retire qualified scratch only after measured
 need and verified archive/state, never uncertain work or historical G1 backings.
+
+## Native outcome
+
+Compiler1.97.1/LLVM22.1.8 and Vec/thread consumer0; selected standard-library
+tests6223PASS/5 upstreamignored plus custom pipe success, selected compiler tests
+1552PASS/7ignored/19666filtered. Actual staged tool consumers qualified with
+explicit preserved collector recoveries (ADR0127); owned native install/post0/0
+then ran all nine actual installed tool checks. Cargo CLI is1.97.1 through
+bootstrap CFG_RELEASE, despite Cargo.toml library0.98.0/fallback CLI1.97.0.
+Native legal inventory retains3850 named texts/731 unique SHA256s. Full-root
+transaction103.551s. Details and raw61-member evidence bundle SHA are in
+[B02-rust-build](../evidence/B02-rust-build.json) and
+[B02-rustc-install](../evidence/B02-rustc-install.json). Full Rust tests, native
+graphics/browser consumers and final image closure are not claimed by this SDK.

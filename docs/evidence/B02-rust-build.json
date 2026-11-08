@@ -1,0 +1,154 @@
+{
+  "scope": "Derived qualification of preserved real native tool consumers plus Rustdoc-only completion",
+  "original_install_exit": 0,
+  "original_wrapper_exits": {
+    "stage4": 1,
+    "guard5": 1,
+    "probe6": 1,
+    "collector7": 1
+  },
+  "previous_collector_cause": "Clippy normalizes diagnostic option eq_op to eq-op; expected101 already observed by runner",
+  "qualification_exit": 0,
+  "rustdoc_native_exit": 0,
+  "probe_sha256": "3a60b2dbbcca9ff3b20181b6be3c6d71da011f232b930bc1ef98d8371d039024",
+  "original_probe_sha256": "10c95af726fb5ff2de383153cdf2c419ab81bb121b788f24faa1bbef37534635",
+  "previous_tools_log_sha256": "b7868d72f5061cdd72930905e7ed75642da489a95aaae490a37d064bf67f4620",
+  "install_log_sha256": "d655caad8cd81040460c43727803117d997eae48d0e47c212d7e66ab00b24bf8",
+  "versions": {
+    "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14) (Toddy OS native build; BLFS 13.1)",
+    "cargo": "cargo 1.97.1 (c980f4866 2026-06-30) (Toddy OS native build; BLFS 13.1)",
+    "rustdoc": "rustdoc 1.97.1 (8bab26f4f 2026-07-14) (Toddy OS native build; BLFS 13.1)",
+    "rustfmt": "rustfmt 1.9.0",
+    "clippy-driver": "clippy 0.1.97"
+  },
+  "checks": [
+    {
+      "name": "c-ffi-compile",
+      "expected_exit": 0,
+      "qualification": "Preserved job7 runner reached the subsequent Clippy text assertion; no separate per-command exit file",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "c-ffi-archive",
+      "expected_exit": 0,
+      "qualification": "Preserved job7 runner reached the subsequent Clippy text assertion; no separate per-command exit file",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "rustfmt-reject",
+      "expected_exit": 1,
+      "qualification": "Preserved job7 runner reached the subsequent Clippy text assertion; no separate per-command exit file",
+      "log_sha256": "d4453c750a6804f79df54ec3f7f45a73275d7e21a87f330cab7131bbed2d2ce4"
+    },
+    {
+      "name": "rustfmt-format",
+      "expected_exit": 0,
+      "qualification": "Preserved job7 runner reached the subsequent Clippy text assertion; no separate per-command exit file",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "rustfmt-check",
+      "expected_exit": 0,
+      "qualification": "Preserved job7 runner reached the subsequent Clippy text assertion; no separate per-command exit file",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "cargo-test",
+      "expected_exit": 0,
+      "qualification": "Preserved job7 runner reached the subsequent Clippy text assertion; no separate per-command exit file",
+      "log_sha256": "d496aeb2c2ebbd1249870b36ebc4ce5bd89c97d38e5565a74dae0884a1bc0344"
+    },
+    {
+      "name": "cargo-clippy",
+      "expected_exit": 0,
+      "qualification": "Preserved job7 runner reached the subsequent Clippy text assertion; no separate per-command exit file",
+      "log_sha256": "54276bb192906c8faae56adacb6e389bddf4d8846057fb1158b8d9ba45e17b40"
+    },
+    {
+      "name": "clippy-reject",
+      "expected_exit": 101,
+      "qualification": "Preserved job7 runner reached the subsequent Clippy text assertion; no separate per-command exit file",
+      "log_sha256": "faae9ceda58b76cfdf5484b0fe5bb076e754367450e06bcb7df9dcfaf4ae6cda"
+    },
+    {
+      "name": "rustdoc",
+      "native_exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "html_sha256": "1e9f863c699a175b1b44e1b00239f5c6ad1c70d3b87623d38695a0123b467eb1"
+    }
+  ],
+  "stage_unchanged_by_probe": true,
+  "free_bytes_after_probe": 21316493312,
+  "stage_entries_count": 3704,
+  "stage_manifest_sha256": "9b37ee2805dbc8a42173c5129a6feb625ee83824472f45c21e63aba0e3666ec2",
+  "owned_install": "B02-rustc-install.json",
+  "actual_installed_tools": {
+    "scope": "Actual offline Cargo unit/doctest + C static FFI/thread, Clippy success/rejection, Rustfmt rejection/format/check, Rustdoc HTML",
+    "prefix": "/usr",
+    "versions": {
+      "rustc": "rustc 1.97.1 (8bab26f4f 2026-07-14) (Toddy OS native build; BLFS 13.1)",
+      "cargo": "cargo 1.97.1 (c980f4866 2026-06-30) (Toddy OS native build; BLFS 13.1)",
+      "rustdoc": "rustdoc 1.97.1 (8bab26f4f 2026-07-14) (Toddy OS native build; BLFS 13.1)",
+      "rustfmt": "rustfmt 1.9.0",
+      "clippy-driver": "clippy 0.1.97"
+    },
+    "rustc_verbose": "rustc 1.97.1 (8bab26f4f 2026-07-14) (Toddy OS native build; BLFS 13.1)\nbinary: rustc\ncommit-hash: 8bab26f4f68e0e26f0bb7960be334d5b520ea452\ncommit-date: 2026-07-14\nhost: x86_64-unknown-linux-gnu\nrelease: 1.97.1\nLLVM version: 22.1.8\n",
+    "checks": [
+      {
+        "name": "c-ffi-compile",
+        "exit": 0,
+        "expected_exit": 0
+      },
+      {
+        "name": "c-ffi-archive",
+        "exit": 0,
+        "expected_exit": 0
+      },
+      {
+        "name": "rustfmt-reject",
+        "exit": 1,
+        "expected_exit": 1
+      },
+      {
+        "name": "rustfmt-format",
+        "exit": 0,
+        "expected_exit": 0
+      },
+      {
+        "name": "rustfmt-check",
+        "exit": 0,
+        "expected_exit": 0
+      },
+      {
+        "name": "cargo-test",
+        "exit": 0,
+        "expected_exit": 0
+      },
+      {
+        "name": "cargo-clippy",
+        "exit": 0,
+        "expected_exit": 0
+      },
+      {
+        "name": "clippy-reject",
+        "exit": 101,
+        "expected_exit": 101
+      },
+      {
+        "name": "rustdoc",
+        "exit": 0,
+        "expected_exit": 0
+      }
+    ]
+  },
+  "native_notice_index_sha256": "25de901a4aef69557bef9de7ec2b6584e95a28c0082c403a1f86f7eb38b073ac",
+  "named_legal_texts": 3850,
+  "free_bytes_after_install": 20540051456,
+  "raw_native_evidence_bundle": {
+    "filename": "B02-rust-native-evidence.tar.gz",
+    "bytes": 791894,
+    "sha256": "760e2b6af530c7de4c13ad7f9d16c9d229790fbcc4c677f4f3acae47f1829340",
+    "members": 61,
+    "scope": "Preserved actual native compiler/std/compiler/tool/stage/owned results including failed collectors; release handoff artifact, not yet a published release"
+  }
+}

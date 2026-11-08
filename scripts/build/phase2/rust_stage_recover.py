@@ -1,10 +1,9 @@
-"""Reuse a successful Rust stage after the known Cargo-version probe assertion."""
+"""Reuse the successful Rust stage after the known nonempty sysconfdir cleanup failure."""
 import hashlib
 import json
 import os
 from pathlib import Path
 import resource
-import re
 import subprocess
 import sys
 
@@ -27,44 +26,53 @@ def entries():
 def main():
     assert os.getuid() == 101
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
-    probe, original_probe = sys.argv[1:]
+    probe, original_failure = sys.argv[1:]
     compile(probe, 'rust_tools_probe.py', 'exec')
     root = Path('/build/stage-tests-4')
     assert (root / 'install.exit').read_text().strip() == '0'
-    assert (root / 'tools.exit').read_text().strip() == '1'
-    original = (root / 'tools.log').read_text()
-    assert original.rstrip().endswith('AssertionError')
-    expected = "    assert versions['cargo'].startswith('cargo 1.97.1 ')"
-    lines = original_probe.splitlines()
-    assert lines.count(expected) == 1
-    failed_line = lines.index(expected) + 1
-    # Python -c tracebacks carry line numbers, not the original statement text.
-    # The parent supplies the exact original probe from job4's immutable receipt.
-    frames = re.findall(r'File "<string>", line (\d+), in (\w+|<module>)', original)
-    assert len(frames) == 2 and frames[-1] == (str(failed_line), 'main'), original
-    assert not list(Path('/build/tool-consumers-4').iterdir()), 'Unexpected earlier consumer writes'
-    work = Path('/build/stage-tests-recovery-5')
-    assert not work.exists() and not Path('/build/tool-consumers-5').exists()
+    assert not (root / 'tools.exit').exists()
+    assert original_failure.rstrip().endswith("OSError: [Errno 39] Directory not empty: '/stage/etc'")
+    assert 'completion.parent.parent.rmdir()' in original_failure
+    assert not Path('/build/tool-consumers-4').exists()
+    assert not Path('/build/tool-consumers-5').exists()
+    assert not Path('/build/stage-tests-recovery-5').exists()
+    schema = Path('/stage/etc/target-spec-json-schema.json')
+    assert schema.is_file() and not schema.is_symlink()
+    assert set(p.name for p in schema.parent.iterdir()) == {schema.name}
+    assert json.loads(schema.read_text())['title'] == 'TargetSpecJson'
+    assert Path('/stage/usr/share/bash-completion/completions/cargo').is_file()
+    assert not Path('/stage/etc/bash_completion.d').exists()
+    previous = Path('/build/stage-tests-recovery-6')
+    assert (previous / 'tools.exit').read_text().strip() == '1'
+    assert "assert versions['cargo'].startswith('cargo 1.97.0 ')" in (previous / 'tools.log').read_text()
+    attempted = Path('/build/tool-consumers-6')
+    assert {p.name for p in attempted.iterdir()} == {'versions.json'}
+    assert json.loads((attempted / 'versions.json').read_text())['cargo'].startswith('cargo 1.97.1 ')
+    work = Path('/build/stage-tests-recovery-7')
+    assert not work.exists() and not Path('/build/tool-consumers-7').exists()
     stat = os.statvfs('/build')
     assert stat.f_bavail * stat.f_frsize >= 17 * 1024**3
     work.mkdir()
     before = entries()
+    assert before == json.loads((previous / 'stage-before.json').read_text()), 'Earlier probe changed stage'
     (work / 'stage-before.json').write_text(json.dumps(before, indent=2) + '\n')
     with (work / 'tools.log').open('xb') as output:
-        result = subprocess.run(['python3', '-c', probe, '/stage/usr', '/build/tool-consumers-5'],
+        result = subprocess.run(['python3', '-c', probe, '/stage/usr', '/build/tool-consumers-7'],
                                 stdout=output, stderr=subprocess.STDOUT)
     (work / 'tools.exit').write_text(str(result.returncode) + '\n')
     assert result.returncode == 0, 'Preserve output and diagnose; never restage to retry a probe'
     after = entries()
     assert before == after, 'A tool consumer changed the SDK stage'
-    consumers = json.loads(Path('/build/tool-consumers-5/results.json').read_text())
-    assert consumers['versions']['cargo'].startswith('cargo 1.97.0 ')
+    consumers = json.loads(Path('/build/tool-consumers-7/results.json').read_text())
+    assert consumers['versions']['cargo'].startswith('cargo 1.97.1 ')
     stat = os.statvfs('/build')
     row = {'scope': 'Preserved successful native stage plus corrected actual tool probe; no install replay',
-           'original_install_exit': 0, 'original_tool_probe_exit': 1,
-           'original_tool_probe_cause': 'Incorrect assumption that Cargo patch version equals rustc patch',
+           'original_install_exit': 0, 'original_stage_wrapper_exit': 1, 'refused_prediction_job_exit': 1,
+           'original_stage_wrapper_cause': 'Cleanup tried removing sysconfdir containing legitimate target schema',
+           'previous_probe_exit': 1, 'previous_probe_cause': 'Collector used Cargo fallback version; bootstrap CFG_RELEASE overrides it',
            'tools_exit': result.returncode, 'probe_sha256': hashlib.sha256(probe.encode()).hexdigest(),
-           'original_tools_log_sha256': digest(root / 'tools.log'),
+           'original_failure_sha256': hashlib.sha256(original_failure.encode()).hexdigest(),
+           'retained_schema_sha256': digest(schema),
            'install_log_sha256': digest(root / 'install.log'),
            'tools_log_sha256': digest(work / 'tools.log'), 'consumers': consumers,
            'entries': after, 'stage_unchanged_by_probe': True,

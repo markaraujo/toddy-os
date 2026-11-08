@@ -23,9 +23,9 @@ def main():
                                                 env=env, text=True).strip()
     (work / 'versions.json').write_text(json.dumps(versions, indent=2) + '\n')
     assert versions['rustc'].startswith('rustc 1.97.1 ')
-    # Cargo has its own package patch version: this authenticated Rust1.97.1
-    # source contains Cargo0.98.0, rendered by cargo/version.rs as1.97.0.
-    assert versions['cargo'].startswith('cargo 1.97.0 ')
+    # bootstrap supplies CFG_RELEASE; Cargo's own Cargo.toml version is only
+    # a fallback when built independently. Check the actual selected toolchain.
+    assert versions['cargo'].startswith('cargo 1.97.1 ')
     assert versions['rustdoc'].startswith('rustdoc 1.97.1 ')
     verbose = subprocess.check_output([env['RUSTC'], '-vV'], env=env, text=True)
     assert 'LLVM version: 22.1.8' in verbose
@@ -72,7 +72,7 @@ assert_eq!(std::thread::spawn(|| super::add(20,22)).join().unwrap(),42);
     formatted = lib.read_text()
     lib.write_text('pub fn invalid(a:i32)->bool { a == a }\n')
     run('clippy-reject', [str(prefix / 'bin/cargo'), 'clippy', '--offline', '--', '-D', 'clippy::eq_op'],
-        101, 'clippy::eq_op')
+        101, 'clippy::eq-op')
     lib.write_text(formatted)
     run('rustdoc', [env['RUSTDOC'], '--edition', '2024', '--crate-name', 'toddy_tool_probe',
                     str(lib), '-o', str(work / 'doc')])

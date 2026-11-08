@@ -1913,3 +1913,47 @@ controller/tools5 before metadata sync. Strict future promotion and actual insta
 consumer checks prepared; not executed or accepted. Native dependencies queried
 read-only; source legal audit3850 named texts/731 unique hashes. Exact native
 package notice retention remains a gate. make check264 passed.
+
+### Rust stage reconciliation and actual tools — 2026-11-08 UTC
+
+Actual x.py install0 after24m29. Collector4 then tried rmdir/etc despite the
+legitimate target-spec-json-schema.json. Preserve schema as owned conffile and
+already moved completion; no install replay. Guard5 refused the predicted wrong
+cause before writes. Probe6 showed Cargo1.97.1, overriding its Cargo.toml fallback
+through preceding CFG_RELEASE branch. The earlier source-only fallback inference
+was wrong; canonical probe corrected against actual versions/source branch.
+
+Probe7 passed real C/FFI/thread/Cargo unit+doctest, Rustfmt and Clippy positive/
+negative checks. Collector stopped only because the native diagnostic normalizes
+clippy::eq_op to eq-op; its runner already checked expected exit101. Native8 ran
+only the missing Rustdoc0, HTML verified. Derived recovery explicitly preserves
+all wrapper failures and per-command exit-file limitation; no passed-test replay.
+3704 payload file/symlink entries unchanged,4634 inspected entries,365726903 bytes.
+Actual9 ELF dependency sets match existing libc/GCC/LLVM22.1/OpenSSL4/curl/sqlite/
+zlib packages. No source version or target security change. Native full-root
+b02-rustc-install/PID384579 now performs owned package/legal retention and actual
+installed all-tool checks. No owned result accepted until real recipe/post exits.
+
+Host-only Mako1.4.1/Pytest9.1.1 and required build-backend sources authenticated
+from frozen book; native Jinja2/MarkupSafe already present, Pytest/Mako absent.
+Leaf fetch now permits an explicitly named frozen-parent required/recommended
+edge with matching book hash, refusing optional/unrelated/changed/ambiguous
+parents; two regressions0, make check266. No Python SDK install or additional
+guest writer. No GUI/ISO/physical acceptance.
+
+### B02 owned Rust and proportional serif delivered — 2026-11-08 UTC
+
+Native Rust owned install/post0/0,103.551s with unchanged full-root snapshots;
+archive4db0e6bf...3cf63. All nine actual installed tools/FFI/thread/doctest/
+positive-negative checks passed. Complete3850 named legal texts retained. Raw61
+member evidence bundle791894 bytes SHA760e2b6af530c7de4c13ad7f9d16c9d229790fbcc4c677f4f3acae47f1829340
+retained for final release; no release artifact/ISO availability claim. Preserve
+all failed collectors, successful compiler/std evidence and archives; no rebuild.
+
+DejaVuSerif four original faces isolated0, owned install/post0/0. Real native
+family/weight/slant/Portuguese/Cyrillic and FreeType i/W advances passed; generic
+serif now DejaVu Serif, Sans/Mono remain Adwaita. Pango serif-fonts8 actual0,17
+affected drivers with original binaries unchanged;11 font SHA inputs retained.
+Unrelated core/metric cases reused and original golden failure preserved. No
+graphical GNOME/browser acceptance. Next native Mako/keyboard/graphics prerequisites,
+Pytest/backends host source cache only, one guest writer remains required.

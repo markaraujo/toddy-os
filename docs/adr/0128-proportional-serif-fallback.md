@@ -1,7 +1,7 @@
 # ADR-0128: Unmodified proportional serif fallback
 
 - Date: 2026-11-08
-- Status: Accepted source/recipe preparation; native qualification pending
+- Status: Accepted; owned native font and changed-input Pango qualification completed
 
 With the six approved Adwaita50 fonts installed, native Fontconfig resolves serif
 to Adwaita Mono. Browser/document serif text needs an actual proportional face.
@@ -28,3 +28,14 @@ None of these gates has yet run. A changed installed font set then requires the
 17 affected Pango drivers with unchanged library/test binaries, reusing unrelated
 core/metric evidence. GUI/browser rendering and locale coverage remain separate
 native product checks; do not claim CJK coverage from this font selection.
+
+## Native outcome
+
+Four original faces byte-identical in isolated stage; native owned install/post0/0
+passed family/weight/slant, Latin/Portuguese/Cyrillic, ownership/cache and actual
+FreeType proportional i/W advance checks. Generic defaults now resolve to
+DejaVu Serif/Adwaita Sans/Adwaita Mono. The17 affected Pango drivers returned0
+with all original binaries unchanged and eleven font hashes bound to evidence.
+Other nine core passes and independent metric oracle reused; original upstream
+golden failure remains visible. See B02-dejavu-fonts-install.json and
+B02-pango-serif-fonts.json. Native GNOME/browser visual acceptance remains pending.

@@ -1,0 +1,38 @@
+{
+  "scope": "Native owned Rust1.97.1 build SDK and actual installed offline Cargo/FFI/thread/doctest, Clippy, Rustfmt and Rustdoc; no GNOME/ISO acceptance",
+  "step": {
+    "step": "b02-rustc-install",
+    "started": "2026-11-08T10:42:56.828124+00:00",
+    "finished": "2026-11-08T10:44:15.298921+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 5363,
+    "log_sha256": "6686b9ec7f292249e756697f1255a798a968df892e35a9f6892163f1a1b2d306"
+  },
+  "success_record_sha256": "fbca80b5bf925c716bb8d224efb895413dd1cb33eed18b1fbe73cf1184e5aeba",
+  "package": {
+    "name": "rustc",
+    "version": "1.97.1-1+toddy1",
+    "archive_sha256": "4db0e6bfec65c41773f54017e6a49aa3c97b2a1e0098ee548284943a4e53cf63",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-rustc-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 24.281,
+        "entries": 116101,
+        "regular_files": 103074,
+        "regular_bytes": 5969377171
+      },
+      {
+        "seconds": 20.483,
+        "entries": 121461,
+        "regular_files": 107514,
+        "regular_bytes": 6342549026
+      }
+    ],
+    "total_seconds": 103.551
+  }
+}

@@ -1,7 +1,7 @@
 # ADR-0127: Native Rust validation in separate bounded gates
 
 - Date: 2026-11-08
-- Status: Accepted validation selection; actual test acceptance pending
+- Status: Accepted; selected native gates and owned installed tool checks completed
 
 Native Rust1.97.1 compiler-only build completed0 with LLVM22.1.8 and a real
 Vec/thread program. Preserve that cache. The target has21.36GiB free after build;
@@ -50,3 +50,23 @@ saved native exit file or unchanged-tool proof. Four recovery guard tests pass.
 Corrected future collector persists input hashes and native exit before optional
 postchecks. Already passed std tests are reused. Compiler job3 explicitly saves
 its own native exit and hashes the actual rustc before/after.
+
+## Compiler, stage and installed outcome
+
+Original selected compiler paths returned0/1552PASS/7ignored/19666filtered.
+x.py install completed0, then collector4 incorrectly tried removing/etc with
+its valid target-spec schema. Preserve schema and already moved completion;
+future collector removes only empty directories. Guard5 refused before writes.
+Probe6 used a wrong Cargo fallback expectation; actual bootstrap CFG_RELEASE
+sets CLI1.97.1. Probe7 passed C/FFI/thread/Cargo unit+doctest, Rustfmt and Clippy;
+its collector stopped only on the diagnostic's eq_op→eq-op normalization.
+Native8 completed Rustdoc only with exit0 and HTML verification. Preserve all
+failures and qualify reused outcomes as derived, not new per-command exit files.
+
+Stage payload3704 file/symlink entries remained unchanged; inspected manifest
+4634 entries/365726903 bytes. Actual9 ELF closures match existing native
+OpenSSL4/curl/sqlite/zlib/LLVM22.1/libc/GCC dependencies. Owned install/post0/0
+then ran all nine installed checks directly, with no derived wrapper qualification
+needed for that installed outcome. Do not repeat the passed original suites.
+Raw61-member bundle and source/legal/native record hashes are retained in
+B02-rust-build.json; no native GUI, physical machine or release acceptance.

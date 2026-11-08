@@ -1,0 +1,92 @@
+{
+  "scope": "Native owned unmodified proportional DejaVuSerif2.37 four-face fallback, real family/style/Latin/Portuguese/Cyrillic/FreeType width checks and preserved Adwaita defaults; no GUI acceptance",
+  "step": {
+    "step": "b02-dejavu-fonts-install",
+    "started": "2026-11-08T10:49:12.599557+00:00",
+    "finished": "2026-11-08T10:49:29.020160+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 21,
+    "log_sha256": "523b8f18bd3a8e2dbef856860f862c2917bfcaec777ac1465a9095193bf2c6c6"
+  },
+  "success_record_sha256": "e269e11364afe1f0b854eea7aad81245bde54d863b614d28b495937ee85e167b",
+  "package": {
+    "name": "dejavu-fonts",
+    "version": "2.37-1+toddy1",
+    "archive_sha256": "a78234586bde0a252ff22793faacf7dee4c1037459684ab218f01375abe589c0",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-dejavu-fonts-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 11.9,
+        "entries": 121461,
+        "regular_files": 107514,
+        "regular_bytes": 6342549026
+      },
+      {
+        "seconds": 11.883,
+        "entries": 121478,
+        "regular_files": 107525,
+        "regular_bytes": 6344011205
+      }
+    ],
+    "total_seconds": 29.162
+  },
+  "font_inputs": {
+    "fonts": [
+      {
+        "file": "DejaVuSerif-Bold.ttf",
+        "sha256": "c47b5527bcdc8dcf9ea8c77054454c5a884beaca2f44851a2a823ee639cbf07f"
+      },
+      {
+        "file": "DejaVuSerif-BoldItalic.ttf",
+        "sha256": "8d3dd3d31350309042ed226af82b34539bd773518e6107cb352712853ba80308"
+      },
+      {
+        "file": "DejaVuSerif-Italic.ttf",
+        "sha256": "2e39b1d50f90b933b00c7bb54a96afd3f86419b3d717c7cf202e36f2d4973e47"
+      },
+      {
+        "file": "DejaVuSerif.ttf",
+        "sha256": "42d1edeb7952f31b1f96d767ed7030b08a39e0c372b0071641518864e2bffb51"
+      }
+    ],
+    "source_fonts_byte_identical": true,
+    "upstream_suite": "Official data-only TTF release; no executable upstream suite",
+    "selection": "Four original DejaVuSerif faces, preserve Adwaita Sans/Mono and user font preferences"
+  },
+  "generated_cache": {
+    "generator": "native fc-cache -f /usr/share/fonts/dejavu",
+    "scope": "generated runtime cache, not portable package payload; regenerate in final image",
+    "files": [
+      {
+        "path": "var/cache/fontconfig/12b26b760a24f8b4feb03ad48a333a72-le64.cache-12",
+        "sha256": "350f4f1c30ad95a11b7f9c61c59b8b60e5b352aea83b4cf623e96f03c79cc086",
+        "size": 9960
+      },
+      {
+        "path": "var/cache/fontconfig/3830d5c3ddfd5cd38a049b759396e72e-le64.cache-12",
+        "sha256": "23ac5612ec26accb880c40123c785db2d91f4ca9845cab9db40aaa07952e464b",
+        "size": 184
+      },
+      {
+        "path": "var/cache/fontconfig/4b31aef11cb0687b6d280d34cbe23592-le64.cache-12",
+        "sha256": "7b7bf21bd94d1b926ddb65b6ec7ece856e3f4634cf09b734393499f5c1966e31",
+        "size": 46944
+      },
+      {
+        "path": "var/cache/fontconfig/CACHEDIR.TAG",
+        "sha256": "05e7633fb31bf1f6f8d89020c16b9f24587fdf7638e951c9745b192f5fc3b682",
+        "size": 200
+      }
+    ]
+  },
+  "effective_defaults": {
+    "serif": "DejaVu Serif|/usr/share/fonts/dejavu/DejaVuSerif.ttf",
+    "sans-serif": "Adwaita Sans|/usr/share/fonts/Adwaita/AdwaitaSans-Regular.ttf",
+    "monospace": "Adwaita Mono|/usr/share/fonts/Adwaita/AdwaitaMono-Regular.ttf"
+  }
+}

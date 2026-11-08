@@ -50,7 +50,10 @@ def main():
         assert not destination.exists()
         shutil.move(completion, destination)
         completion.parent.rmdir()
-        completion.parent.parent.rmdir()
+        # Rust also installs its target-spec JSON schema under sysconfdir.
+        # Keep legitimate payload; remove only a genuinely empty directory.
+        if not any(completion.parent.parent.iterdir()):
+            completion.parent.parent.rmdir()
         moved = True
     with (root / 'tools.log').open('xb') as output:
         result = subprocess.run(['python3', '-c', probe, '/stage/usr', '/build/tool-consumers-4'],
