@@ -1,0 +1,24 @@
+{
+  "scope": "Only two duplicate foundation GCC metadata stages in disposable Phase2 overlay; no installed compiler, source, compiled tests, recovery directory, package/archive or foundation backing deletion",
+  "archive": {
+    "path": "/var/cache/toddy/packages/gcc_16.2.0-1+toddy2_amd64.deb",
+    "sha256": "213faf901ece62e0e7cf5833d1c2a2bae5c39c63a54a67435afef6aa79c0507c",
+    "version": "16.2.0-1+toddy2"
+  },
+  "record_sha256": "b65609d0d10557f503b56df51efc10d32bc707383a385a7c0070370bd9863efb",
+  "payload_entries_per_stage": 1975,
+  "before_free_bytes": 19809042432,
+  "stages": [
+    {
+      "path": "/mnt/lfs/sources/stage/metadata-gcc",
+      "state": "retired"
+    },
+    {
+      "path": "/mnt/lfs/sources/stage/metadata-gcc-16.2.0-1+toddy2",
+      "state": "retired"
+    }
+  ],
+  "recovery": "Verify retained canonical archive SHA256, extract to a NEW staging directory; never reinstall compiler or reuse retired staging. Preserve original immutable foundation backing and recovery evidence.",
+  "after_free_bytes": 23630069760,
+  "state": "complete"
+}

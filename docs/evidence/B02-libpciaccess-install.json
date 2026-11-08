@@ -1,0 +1,38 @@
+{
+  "scope": "Owned native PCI API prerequisite; unknown-ID/cleanup consumer, no hardware qualification",
+  "step": {
+    "step": "b02-libpciaccess-install",
+    "started": "2026-11-08T12:54:24.183828+00:00",
+    "finished": "2026-11-08T12:54:37.883459+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 40,
+    "log_sha256": "b1e16f5e2090fa0578cd00e83df71fb9e59e6d3e2ffb327ee66e92a66144bcfe"
+  },
+  "success_record_sha256": "6865131a5d2eb44ca0281878aa30f9e05bb986e69b5ae58f7f3da1abb71aa81c",
+  "package": {
+    "name": "libpciaccess",
+    "version": "0.19-1+toddy1",
+    "archive_sha256": "5994523eab457dc7d68586105ad059a2fc435fbcf91f53a88cfe197353cb8b8c",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-libpciaccess-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 12.883,
+        "entries": 127403,
+        "regular_files": 113117,
+        "regular_bytes": 6394281327
+      },
+      {
+        "seconds": 12.159,
+        "entries": 127440,
+        "regular_files": 113150,
+        "regular_bytes": 6394443959
+      }
+    ],
+    "total_seconds": 27.452
+  }
+}

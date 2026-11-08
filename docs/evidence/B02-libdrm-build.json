@@ -1,0 +1,106 @@
+{
+  "registered_upstream_tests": 15,
+  "tests": [
+    {
+      "name": "libdrm:gen4-3d.batch",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:gen45-3d.batch",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:gen5-3d.batch",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:gen6-3d.batch",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:gen7-3d.batch",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:gen7-2d-copy.batch",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:core-symbols-check",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:intel-symbols-check",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:nouveau-symbols-check",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:hash",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:radeon-symbols-check",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:drmdevice",
+      "result": "SKIP",
+      "returncode": 77
+    },
+    {
+      "name": "libdrm:amdgpu-symbols-check",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:drmsl",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libdrm:threaded",
+      "result": "SKIP",
+      "returncode": 77
+    }
+  ],
+  "log_sha256": "0d11aa554e30e038e2335d51b9b5b7efd9250cadd0e94dc84745cca0046d4ebd",
+  "staged_consumer_exit": 0,
+  "scope": "Native prerequisite build/stage/test; no graphics session or physical device acceptance",
+  "prepared_source": {
+    "source_sha256": "ac5e74d157830eb8bee44c6a6bf3ad49774ef0dd2a72bdad74a8f20308b52a95",
+    "reference": "BLFS13.1-systemd x/libdrm.html",
+    "book_page_sha256": "7cb38e2d3a00673658c793d521c2c7a364005e4fd5a16506169f131bd8e2502e",
+    "source_patches": [],
+    "recipe_sha256": "467b53e549982af871f19f8e29deddcd391a795a873b67f3d3d7b1b552b695c0",
+    "probe_sha256": "db17ac185524bc810d9354f565d58411c20f2e82ee379ad619dcbd4a351b32ec"
+  },
+  "original_job_exit": 0,
+  "installed_consumer": {
+    "scope": "Native installed API consumer, not physical device/graphics acceptance",
+    "name": "libdrm",
+    "version": "2.4.134",
+    "native_consumer_exit": 0,
+    "stdout": "native-drm-hash-format-modifier-invalid-fd"
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-render-prerequisites-native-evidence.tar.gz",
+    "bytes": 304847,
+    "sha256": "f030bd12ba1071d6dadd527aad3b410e2f034d547d665fe67c35d092629880e6",
+    "members": 50,
+    "scope": "Raw PCI/DRM/PyYAML build/test/owned-install, filename-recovery and duplicate-stage custody proof; retain for final release"
+  }
+}

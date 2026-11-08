@@ -1,0 +1,38 @@
+{
+  "scope": "Owned native DRM memory/format APIs and invalid-FD refusal, no GPU/display qualification",
+  "step": {
+    "step": "b02-libdrm-install",
+    "started": "2026-11-08T12:56:57.601524+00:00",
+    "finished": "2026-11-08T12:57:23.575645+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 183,
+    "log_sha256": "d0a26c60cac6e6beaab17e5c3ab0921f3d4d7b452c8bf5a25a88bd375c6b2b6e"
+  },
+  "success_record_sha256": "cf4dabcaf4a5b325131556e154752b069723a493386efba431feb371190531ea",
+  "package": {
+    "name": "libdrm",
+    "version": "2.4.134-1+toddy1",
+    "archive_sha256": "607fba57edddd7d28c432131a8a12f28d089648b4054e43e4b39369b2bbda31a",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-libdrm-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 22.79,
+        "entries": 127440,
+        "regular_files": 113150,
+        "regular_bytes": 6394443959
+      },
+      {
+        "seconds": 23.856,
+        "entries": 127620,
+        "regular_files": 113314,
+        "regular_bytes": 6396084877
+      }
+    ],
+    "total_seconds": 49.708
+  }
+}

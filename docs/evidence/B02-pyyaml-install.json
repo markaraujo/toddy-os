@@ -1,0 +1,38 @@
+{
+  "scope": "Owned pure-Python Mesa build tool, optional LibYAML accelerator absent; safe-loader/roundtrip/refusal native checks",
+  "step": {
+    "step": "b02-pyyaml-install",
+    "started": "2026-11-08T13:00:45.523149+00:00",
+    "finished": "2026-11-08T13:01:11.810644+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 39,
+    "log_sha256": "872cb0c9e2cc1440c2bc7568121faec82f3a2f2e2982cbd99e78166fb8e6459f"
+  },
+  "success_record_sha256": "17af17f8bc54b20f0b32da29bdaf11671e62bc75427b690b94a742e0d016d2cb",
+  "package": {
+    "name": "pyyaml",
+    "version": "6.0.3-1+toddy1",
+    "archive_sha256": "dfca8a9ab54a6ee8412636e3bbc4f2b68a14efc096780b78af73e02d177f10aa",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-pyyaml-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 26.159,
+        "entries": 127620,
+        "regular_files": 113314,
+        "regular_bytes": 6396084877
+      },
+      {
+        "seconds": 24.573,
+        "entries": 127656,
+        "regular_files": 113344,
+        "regular_bytes": 6396317138
+      }
+    ],
+    "total_seconds": 53.343
+  }
+}

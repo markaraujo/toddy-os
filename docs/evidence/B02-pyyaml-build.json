@@ -1,0 +1,44 @@
+{
+  "pure_python_upstream_cases": 1283,
+  "upstream_boolean_result": true,
+  "upstream_log_sha256": "d11d91e47e79fb22139d822d261c3ad608d567cf9757da774c76727e08481e7d",
+  "native_exit": 0,
+  "optional_libyaml_c_accelerator": "Not built; associated extension collection not registered",
+  "staged_consumer": {
+    "uid": 101,
+    "version": "6.0.3",
+    "libyaml_accelerator": false,
+    "safe_unicode_roundtrip": true,
+    "anchor_alias": true,
+    "unsafe_constructor_rejected": true,
+    "invalid_yaml_rejected": true,
+    "scope": "Pure-Python build tool for Mesa; optional C accelerator not built"
+  },
+  "prepared_source": {
+    "source_sha256": "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f",
+    "reference": "BLFS13.1-systemd general/python-modules.html#PyYAML",
+    "book_page_sha256": "eeca0df3449c611069e44d356162b7438e05151c39d225e72c601f049a66a72d",
+    "source_patches": [],
+    "recipe_sha256": "4b2cee2c1505a60fde0c3d109babfbb677180aa7dbb8b95738a957145390ac66",
+    "probe_sha256": "24e6ab4bef90003febc98db0f3ff752b0bbfb6c7dc05f8d761f3f7c3ebf2ee8a"
+  },
+  "scope": "Native prerequisite build/stage/test; no graphics session or physical device acceptance",
+  "original_job_exit": 0,
+  "installed_consumer": {
+    "uid": 0,
+    "version": "6.0.3",
+    "libyaml_accelerator": false,
+    "safe_unicode_roundtrip": true,
+    "anchor_alias": true,
+    "unsafe_constructor_rejected": true,
+    "invalid_yaml_rejected": true,
+    "scope": "Pure-Python build tool for Mesa; optional C accelerator not built"
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-render-prerequisites-native-evidence.tar.gz",
+    "bytes": 304847,
+    "sha256": "f030bd12ba1071d6dadd527aad3b410e2f034d547d665fe67c35d092629880e6",
+    "members": 50,
+    "scope": "Raw PCI/DRM/PyYAML build/test/owned-install, filename-recovery and duplicate-stage custody proof; retain for final release"
+  }
+}

@@ -19,6 +19,12 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'pyyaml': ('6.0.3', 'python (>= 3.14), python (<< 3.15)',
+               'pyyaml-6.0.3.tar.gz', 'usr/lib/python3.14/site-packages/yaml/__init__.py'),
+    'libpciaccess': ('0.19', 'glibc (>= 2.44-1), zlib (>= 1.3.2-1)',
+                     'libpciaccess-0.19.tar.xz', 'usr/lib/libpciaccess.so.0'),
+    'libdrm': ('2.4.134', 'glibc (>= 2.44-1), libpciaccess (= 0.19-1+toddy1)',
+                'libdrm-2.4.134.tar.xz', 'usr/lib/libdrm_intel.so.1'),
     'mako': ('1.4.1', 'python (>= 3.14), python (<< 3.15), markupsafe (>= 2.0)',
               'mako-1.4.1.tar.gz', 'usr/lib/python3.14/site-packages/mako/__init__.py'),
     'rustc': ('1.97.1', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), llvm-runtime (= 22.1.8-1+toddy1), curl (>= 8.23.0-1), openssl (>= 4.0.3-1), sqlite (>= 3.53.4-1), zlib (>= 1.3.2-1)',
@@ -83,6 +89,8 @@ if __name__ == '__main__':
     rust_legacy=name=='rustc' and (log/'rustc-tools-finish-8.job.json').exists()
     mako_resume=name=='mako' and (log/'mako-resume-2.job.json').exists()
     qualifier=('rustc-tools-finish-8' if rust_legacy else 'rustc-stage-4') if name=='rustc' else 'mako-resume-2' if mako_resume else 'pango-stage-6' if name=='pango' else 'llvm-qualify-recovery-4' if llvm_recovery else 'llvm-qualify-resume-3' if llvm_resume else 'llvm-qualify-2' if name=='llvm' else 'wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
+    pci_resume=name=='libpciaccess' and (log/'libpciaccess-resume-2.job.json').exists()
+    if pci_resume:qualifier='libpciaccess-resume-2'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
         work=Path('/mnt/lfs/sources/phase2/work/rustc-1')
@@ -146,6 +154,36 @@ if __name__ == '__main__':
             assert path.is_relative_to(work/'stage') and '..' not in Path(relative).parts
             if 'symlink' in row:assert path.is_symlink() and path.readlink().as_posix()==row['symlink']
             else:assert not path.is_symlink() and hashlib.sha256(path.read_bytes()).hexdigest()==row['sha256']
+    if name in ('libpciaccess','libdrm'):
+        work=Path('/mnt/lfs/sources/phase2/work')/(name+'-1')
+        input_=Path('/mnt/lfs/sources/phase2/inputs')/(name+'-'+version)
+        assert (input_/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2'/(name+'-build.sh')).read_bytes()
+        assert (input_/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2'/(name+'-probe.c')).read_bytes()
+        assert json.loads((log/(name+'-1.job.json')).read_text())['command'][-1]=='/src/toddy-build.sh'
+        proof=json.loads((work/'test-results.json').read_text())
+        assert proof['staged_consumer_exit']==0
+        if name=='libdrm':
+            assert proof['registered_upstream_tests']>3
+            assert proof['log_sha256']==hashlib.sha256((work/'compile/meson-logs/testlog.json').read_bytes()).hexdigest()
+            assert all((r['result']=='OK' and r['returncode']==0) or (r['result']=='SKIP' and r['returncode']==77) for r in proof['tests'])
+        else:
+            assert proof['registered_upstream_tests']==0
+            if pci_resume:
+                assert (log/'libpciaccess-1.exit').read_text().strip()=='1'
+                assert 'toddy-probe.c: No such file or directory' in (log/'libpciaccess-1.log').read_text()
+                assert json.loads((log/'libpciaccess-resume-2.job.json').read_text())['command'][-1]==(ROOT/'scripts/build/phase2/libpciaccess-resume.sh').read_text()
+                assert proof['stage_regular_files_unchanged']>0
+
+    if name=='pyyaml':
+        input_=Path('/mnt/lfs/sources/phase2/inputs/pyyaml-6.0.3')
+        work=Path('/mnt/lfs/sources/phase2/work/pyyaml-1')
+        assert (input_/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/pyyaml-build.sh').read_bytes()
+        assert (input_/'toddy-probe.py').read_bytes()==(ROOT/'scripts/build/phase2/pyyaml-probe.py').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text())
+        assert proof['native_exit']==0 and proof['upstream_boolean_result'] and proof['pure_python_upstream_cases']>1000
+        assert proof['upstream_log_sha256']==hashlib.sha256((work/'upstream-tests.log').read_bytes()).hexdigest()
+        assert proof['staged_consumer']['uid']==101 and proof['staged_consumer']['version']=='6.0.3'
+        assert proof['staged_consumer']['safe_unicode_roundtrip'] and proof['staged_consumer']['unsafe_constructor_rejected']
     if name=='psutil':
         proof=json.loads(Path('/mnt/lfs/sources/phase2/work/psutil-1/consumer.json').read_text())
         assert proof['version']=='7.2.2' and proof['uid']==101

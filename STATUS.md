@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-08T12:44:12+00:00
+Last verified: 2026-11-08T13:01:11+00:00
 
 Verified:
 
@@ -27,8 +27,9 @@ Verified:
 - Native Pixman0.46.4 source35 tests/stage0, owned install/post0/0 with opaque/transparent pixel-composite consumer; kernel config already enables virtual DRM/user namespaces/seccomp (configuration only).
 - Owned Rust1.97.1 SDK, proportional serif/fonts/Pango and12 independent Python test-tool backends qualified; original compiler/test evidence reused.
 - Native keyboard data2.48/libxkbcommon1.13.2 with exact patch owned0/0;26 library+2 locale tests,5516 data PASS/3164 optional pycountry SKIP, actual US/BR/PT Shift/registry;411 ELFs unchanged. Headless xkbcomp1.5.0 SDK independently owned0/0; no X server/GUI acceptance.
+- Owned PCI/DRM/PyYAML prerequisites0/0: DRM13PASS/2deviceSKIP77, native API/invalid-FD checks; PyYAML1283 pure-backend cases and safe-loader refusal. Duplicate GCC staging custody reclaimed3.82GB; native compiler/source/tests/recovery unchanged.
 
-Running: No guest writer after owned keyboard pair install/post0/0; continuing pinned graphics/render prerequisites for actual native GTK/GNOME session.
+Running: mesa-1 isolated build for reference Wayland/software EGL/GBM/llvmpipe profile; full registered tests, shader/pixel consumer, stage and owned install pending.
 
 Remaining:
 

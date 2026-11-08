@@ -2012,3 +2012,29 @@ versions/default data root verified. Raw failures/tests/archives/notice inventor
 retained. No native GNOME, physical input, installer or G2 acceptance inferred.
 Grouped-book exact-archive guard adds two regressions; make check271passed.
 Next selected graphics/render prerequisites for actual GTK/GNOME session.
+
+
+### B02 native render prerequisites and scratch custody — 2026-11-08 UTC
+
+Libpciaccess0.19 unknown-ID/cleanup consumer0 and owned install/post0/0 (27.452s).
+No upstream executable suite is registered. Original build1 completed/staged but
+fixture was misnamed.py; exact bytes renamed.c with explicit receipt, host helper
+now derives suffix from selected probe. Consumer-only resume2 passed, three stage
+files unchanged; no rebuild. Libdrm2.4.134 with Intel/Radeon/AMDGPU/Nouveau/vmwgfx
+libraries passed13 registered tests; drmdevice/threaded upstream SKIP77 without
+devices. Native hash/format/modifier/invalid-FD checks0 and owned install/post0/0
+(49.708s). This does not qualify a GPU, window or display.
+
+PyYAML6.0.3 pure-Python build tool passed1283 original fixtures and native Unicode/
+anchor/invalid-YAML/unsafe-constructor-refusal consumers; optional LibYAML C
+accelerator explicitly absent. The upstream main ignores its boolean result;
+asserted real boolean plus nonempty/error-free count. Owned install/post0/0 in
+53.343s. Full notices and raw native/failure/recovery evidence retained.
+
+ADR0131 verified both duplicate GCC metadata stages against all1975 canonical
+payload entries and retained archiveSHA before guarded retirement. Reclaimed
+3,821,027,328B; target free23,630,069,760B. Installed compiler/source/compiled tests/
+recovery/backings untouched. Receipt/sentinels prevent uncertain replay. No compiler
+suite rerun. Mesa26.1.7 first reference Wayland/software render source authenticated
+and isolated mesa-1 started; tests, stage, native EGL/GLES pixel proof and owned
+installation pending (ADR0132). No native GNOME/Phase2ISO/G2 acceptance claimed.

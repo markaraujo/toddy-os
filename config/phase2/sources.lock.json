@@ -985,6 +985,54 @@
       "book_md5": "b8128ff6816897bd385ca437cd2886ee",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "libdrm",
+      "version": "2.4.134",
+      "filename": "libdrm-2.4.134.tar.xz",
+      "url": "https://dri.freedesktop.org/libdrm/libdrm-2.4.134.tar.xz",
+      "sha256": "ac5e74d157830eb8bee44c6a6bf3ad49774ef0dd2a72bdad74a8f20308b52a95",
+      "reference": "BLFS13.1-systemd x/libdrm.html",
+      "book_page_sha256": "7cb38e2d3a00673658c793d521c2c7a364005e4fd5a16506169f131bd8e2502e",
+      "book_md5": "0e70607bb5c2f7ecbc411e6a2fab8b22",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "mesa",
+      "version": "26.1.7",
+      "filename": "mesa-26.1.7.tar.xz",
+      "url": "https://mesa.freedesktop.org/archive/mesa-26.1.7.tar.xz",
+      "sha256": "25e0a669e6638c3563e7be32a0a09f1888317e6eed0d047dc41d49dc8de26c7d",
+      "reference": "BLFS13.1-systemd x/mesa.html",
+      "book_page_sha256": "549e9a7c1706fa958c5ca1216411fa93005fa23b921a70bc16a6e450726aef70",
+      "book_md5": "1a3ea044abc823e2db8c6041e5adcc4f",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libpciaccess",
+      "version": "0.19",
+      "filename": "libpciaccess-0.19.tar.xz",
+      "url": "https://www.x.org/pub/individual/lib/libpciaccess-0.19.tar.xz",
+      "sha256": "3c55aa86c82e54a4e3109786f0463530d53b36b6d1cfd14616454f985dd2aa43",
+      "reference": "BLFS13.1-systemd x/x7lib.html",
+      "book_page_sha256": "6ca8e4e691b6b799f8f4168258692811a02b080f82863ee5fb911118ca9e7498",
+      "book_md5": "0c11ea502b531e59563a9aa7979146fc",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "pyyaml",
+      "version": "6.0.3",
+      "filename": "pyyaml-6.0.3.tar.gz",
+      "url": "https://files.pythonhosted.org/packages/source/P/PyYAML/pyyaml-6.0.3.tar.gz",
+      "sha256": "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f",
+      "reference": "BLFS13.1-systemd general/python-modules.html#PyYAML",
+      "book_page_sha256": "eeca0df3449c611069e44d356162b7438e05151c39d225e72c601f049a66a72d",
+      "book_md5": "dbc6f815cd75160ccf12e470be1c8d6e",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

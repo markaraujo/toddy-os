@@ -3761,6 +3761,165 @@
           ]
         }
       }
+    },
+    {
+      "name": "libpciaccess",
+      "version": "0.19",
+      "license": "LicenseRef-Xorg-DRM-per-file",
+      "evidence": "Authenticated frozen source named legal texts and leading C/header conditions retained; source review is separate from native execution, no physical GPU acceptance. Native staged/installed API consumers and independent owned package install/post0/0 verified; libdrm13PASS/2deviceSKIP77, libpciaccess has no registered upstream suite. Exact evidence in B02-libpciaccess-build.json/install.json.",
+      "source_notice_evidence": [
+        {
+          "filename": "libpciaccess-0.19.tar.xz",
+          "sha256": "3c55aa86c82e54a4e3109786f0463530d53b36b6d1cfd14616454f985dd2aa43",
+          "notices": [
+            {
+              "path": "libpciaccess-0.19/AUTHORS",
+              "sha256": "a64073025524f45963790c575a2f107198ddd0d31966146865ab07400b913ff7"
+            },
+            {
+              "path": "libpciaccess-0.19/COPYING",
+              "sha256": "f33f360f8905940dac01aa21597fe8a6727ca6f4ffa43b380e2116fd0666aa8a"
+            }
+          ]
+        }
+      ],
+      "extra_license_headers": {
+        "libpciaccess-0.19.tar.xz": {
+          "prefixes": [
+            ""
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".cc",
+            ".cpp"
+          ]
+        }
+      }
+    },
+    {
+      "name": "libdrm",
+      "version": "2.4.134",
+      "license": "LicenseRef-Xorg-DRM-per-file",
+      "evidence": "Authenticated frozen source named legal texts and leading C/header conditions retained; source review is separate from native execution, no physical GPU acceptance. Native staged/installed API consumers and independent owned package install/post0/0 verified; libdrm13PASS/2deviceSKIP77, libpciaccess has no registered upstream suite. Exact evidence in B02-libdrm-build.json/install.json.",
+      "source_notice_evidence": [
+        {
+          "filename": "libdrm-2.4.134.tar.xz",
+          "sha256": "ac5e74d157830eb8bee44c6a6bf3ad49774ef0dd2a72bdad74a8f20308b52a95",
+          "notices": [
+            {
+              "path": "libdrm-2.4.134/tests/ttmtest/AUTHORS",
+              "sha256": "27ab7a6c7485ab66d7504f56da37a8658228abc8c083c4becc22916cedc748ea"
+            }
+          ]
+        }
+      ],
+      "extra_license_headers": {
+        "libdrm-2.4.134.tar.xz": {
+          "prefixes": [
+            ""
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".cc",
+            ".cpp"
+          ]
+        }
+      }
+    },
+    {
+      "name": "pyyaml",
+      "version": "6.0.3",
+      "license": "MIT",
+      "evidence": "Exact authenticated LICENSE retained; pure-Python build/test dependency, optional LibYAML C accelerator excluded explicitly, native original1283 fixture cases plus safe Unicode/anchor/invalid/unsafe-constructor consumers0 and owned install/post0/0; exact results in B02-pyyaml-build.json/install.json.",
+      "source_notice_evidence": [
+        {
+          "filename": "pyyaml-6.0.3.tar.gz",
+          "sha256": "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f",
+          "notices": [
+            {
+              "path": "pyyaml-6.0.3/LICENSE",
+              "sha256": "8d3928f9dc4490fd635707cb88eb26bd764102a7282954307d3e5167a577e8a4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mesa",
+      "version": "26.1.7",
+      "license": "LicenseRef-Mesa-per-file",
+      "evidence": "Authenticated frozen Mesa source and per-file/vendor conditions; named legal notices and leading C/C++ header comments retained. Reference Wayland/software build qualification pending, no hardware/GLX/Vulkan/desktop availability claim.",
+      "source_notice_evidence": [
+        {
+          "filename": "mesa-26.1.7.tar.xz",
+          "sha256": "25e0a669e6638c3563e7be32a0a09f1888317e6eed0d047dc41d49dc8de26c7d",
+          "notices": [
+            {
+              "path": "mesa-26.1.7/docs/license.rst",
+              "sha256": "0d1a0472ecc81830e75c20d59b0ea02841e3db21255e0ebad97ab682c54d6615"
+            },
+            {
+              "path": "mesa-26.1.7/licenses/Apache-2.0",
+              "sha256": "7e4d3fba250d15e9e0afa380d4b611828fa2560cc8fdebe95bcf2f01a487de12"
+            },
+            {
+              "path": "mesa-26.1.7/licenses/BSL-1.0",
+              "sha256": "9b9fea7520a816107fcac2598b7c0155222f16bc430e989706b22f4367f1df7d"
+            },
+            {
+              "path": "mesa-26.1.7/licenses/GPL-1.0-or-later",
+              "sha256": "8ff76f1528e6e4e9400c0f6b1f2d19d4979aaac3bcc44bb707a55389132825c4"
+            },
+            {
+              "path": "mesa-26.1.7/licenses/GPL-2.0-only",
+              "sha256": "6667ad4063569cd53b13500550d93fcd3dc11bcf82c5514296af013a0b720ba5"
+            },
+            {
+              "path": "mesa-26.1.7/licenses/MIT",
+              "sha256": "323c587d0ccf10e376f8bf9a7f31fb4ca6078105194b42e0b1e0ee2bc9bde71f"
+            },
+            {
+              "path": "mesa-26.1.7/licenses/SGI-B-2.0",
+              "sha256": "686bf035a1fd22076416fd3b90370ac67771e884bf57f55693d51f8ce7c710a7"
+            },
+            {
+              "path": "mesa-26.1.7/licenses/exceptions/Linux-Syscall-Note",
+              "sha256": "9b4084655174654608fd037e9ddb4feeadfada01cd042e9c17b05aa7105b2b9f"
+            },
+            {
+              "path": "mesa-26.1.7/src/imgui/LICENSE.txt",
+              "sha256": "a20fc5424a3ade98104f40fc93bd531a6fb211a902f3b73dd0253795fbe68721"
+            },
+            {
+              "path": "mesa-26.1.7/src/mesa/glapi/glapi/gen/license.py",
+              "sha256": "9f11bc368fa08ad8a0fed990e5d54235425e4d1908625a4b06e860bb9aa1352a"
+            },
+            {
+              "path": "mesa-26.1.7/src/vulkan/runtime/radix_sort/LICENSE",
+              "sha256": "83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32"
+            },
+            {
+              "path": "mesa-26.1.7/src/vulkan/screenshot-layer/LICENSE.txt",
+              "sha256": "fa4df3322d1cc1fbb50194ca094de9f5f7ae06373ca8d7e66878d902d746f95a"
+            }
+          ]
+        }
+      ],
+      "extra_license_headers": {
+        "mesa-26.1.7.tar.xz": {
+          "prefixes": [
+            ""
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".cc",
+            ".cpp"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

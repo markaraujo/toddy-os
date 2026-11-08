@@ -9,12 +9,13 @@ import sys
 import phase2_vm
 ROOT=phase2_vm.ROOT
 NAME=sys.argv[1]
-assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako')
+assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa')
 if __name__=='__main__':
     row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==NAME)
     archive=ROOT/'.local/sources'/row['filename'];data=archive.read_bytes()
     assert hashlib.sha256(data).hexdigest()==row['sha256']
-    probes={'freetype':'freetype-probe.c','psutil':'psutil-probe.py','mako':'mako-probe.py'}
+    probes={'mesa':'mesa-probe.c','pyyaml':'pyyaml-probe.py','libpciaccess':'libpciaccess-probe.c','libdrm':'libdrm-probe.c','freetype':'freetype-probe.c','psutil':'psutil-probe.py','mako':'mako-probe.py'}
+    probe_filename='toddy-probe.py' if probes.get(NAME,'').endswith('.py') else 'toddy-probe.c'
     probe=(ROOT/'scripts/build/phase2'/probes[NAME]).read_text() if NAME in probes else None
     extra=None
     if NAME in ('shared-mime-info','llvm'):
@@ -43,7 +44,7 @@ import fcntl,hashlib,json,os,subprocess,sys
 subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
 lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
-'''+f'row={row!r}\nrecipe={recipe!r}\nprobe={probe!r}\nextra={extra!r}\n'+'''
+'''+f'row={row!r}\nrecipe={recipe!r}\nprobe={probe!r}\nprobe_filename={probe_filename!r}\nextra={extra!r}\n'+'''
 base=Path('/mnt/lfs/sources');archive=base/row['filename'];part=base/(row['filename']+'.part')
 source_name='llvm-project-'+row['version']+'.src' if row['name']=='llvm' else 'dejavu-fonts-ttf-'+row['version'] if row['name']=='dejavu-fonts' else row['name']+'-'+row['version']
 source=base/'phase2/inputs'/source_name;work=base/'phase2/work'/(row['name']+'-1')
@@ -112,7 +113,7 @@ receipt={'source_sha256':row['sha256'],'reference':row['reference'],
          'recipe_sha256':hashlib.sha256(recipe.encode()).hexdigest()}
 if extra is not None:receipt['extra_source']=extra
 if probe is not None:
-    (source/('toddy-probe.py' if row['name'] in ('psutil','mako') else 'toddy-probe.c')).write_text(probe)
+    (source/probe_filename).write_text(probe)
     receipt['probe_sha256']=hashlib.sha256(probe.encode()).hexdigest()
 (source/'toddy-prepared.json').write_text(json.dumps(receipt,indent=2)+'\\n')
 work.mkdir();os.chown(work,101,101)

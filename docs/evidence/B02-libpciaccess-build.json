@@ -1,0 +1,38 @@
+{
+  "registered_upstream_tests": 0,
+  "upstream_suite": "Not provided by source Meson recipe; empty target is not test acceptance",
+  "staged_consumer_exit": 0,
+  "stage_regular_files_unchanged": 3,
+  "recovery": "Original1 compiled/staged; only C fixture extension corrected, consumer-only resume2; no rebuild",
+  "scope": "Native prerequisite build/stage/test; no graphics session or physical device acceptance",
+  "prepared_source": {
+    "source_sha256": "3c55aa86c82e54a4e3109786f0463530d53b36b6d1cfd14616454f985dd2aa43",
+    "reference": "BLFS13.1-systemd x/x7lib.html",
+    "book_page_sha256": "6ca8e4e691b6b799f8f4168258692811a02b080f82863ee5fb911118ca9e7498",
+    "source_patches": [],
+    "recipe_sha256": "6eac90ee97dbc7ea8c8617e0055d47c85174d1f9971c1c1f871eaeb8f231addd",
+    "probe_sha256": "95e667cdec6622580e64ab8ea19d5a1e39ee0a74d6c9610fb249c4542a590da9",
+    "probe_filename_fix": {
+      "scope": "Correct only misnamed C fixture extension; bytes/archive/build/stages unchanged",
+      "old_name": "toddy-probe.py",
+      "new_name": "toddy-probe.c",
+      "content_sha256": "95e667cdec6622580e64ab8ea19d5a1e39ee0a74d6c9610fb249c4542a590da9"
+    }
+  },
+  "original_job_exit": 1,
+  "consumer_recovery_exit": 0,
+  "installed_consumer": {
+    "scope": "Native installed API consumer, not physical device/graphics acceptance",
+    "name": "libpciaccess",
+    "version": "0.19",
+    "native_consumer_exit": 0,
+    "stdout": "native-pciaccess-unknown-id-cleanup"
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-render-prerequisites-native-evidence.tar.gz",
+    "bytes": 304847,
+    "sha256": "f030bd12ba1071d6dadd527aad3b410e2f034d547d665fe67c35d092629880e6",
+    "members": 50,
+    "scope": "Raw PCI/DRM/PyYAML build/test/owned-install, filename-recovery and duplicate-stage custody proof; retain for final release"
+  }
+}
