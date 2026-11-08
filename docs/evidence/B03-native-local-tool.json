@@ -1,0 +1,72 @@
+{
+  "scope": "actual local Pi tool/runtime lifecycle; not durable service/root/UI acceptance",
+  "uid": 101,
+  "transport": "private0700-directory Unix socket + ephemeral bearer",
+  "other_uid": 65534,
+  "other_uid_socket_errno": 13,
+  "other_uid_key_errno": 13,
+  "unauthorized_statuses": [
+    401,
+    401
+  ],
+  "load_and_integrity_seconds": 2.083,
+  "peak_model_rss_kib": 2367112,
+  "task": {
+    "scope": "native Pi Agent/local model/disposable file only; no executor/durable task/UI claim",
+    "actual_tool_executions": 1,
+    "actual_file_content_matched": true,
+    "text_delta_events": 8,
+    "elapsed_seconds": 4.29,
+    "model_id": "toddy-qwen3-1.7b-q8_0",
+    "api": "openai-completions",
+    "remote_fallback": false,
+    "automatic_retries": 0,
+    "cost_estimate": null,
+    "final_stop_reason": "stop",
+    "usage": {
+      "input_uncached": 46,
+      "cache_read": 222,
+      "cache_write": 0,
+      "output": 9,
+      "total": 277
+    }
+  },
+  "cancellation_and_context": {
+    "scope": "native active inference cancellation/context admission only",
+    "cancel_after_text_delta": true,
+    "deltas_before_abort": 1,
+    "cancel_latency_ms": 6,
+    "stop_reason": "aborted",
+    "classified_code": "canceled",
+    "post_cancel_ready": true,
+    "post_cancel_seconds": 0.34,
+    "context_limit_code": "provider_context_limit",
+    "overbudget_generation_requests": 0,
+    "followup_usage": {
+      "input_uncached": 19,
+      "cache_read": 1,
+      "cache_write": 0,
+      "output": 3,
+      "total": 23
+    },
+    "remote_fallback": false,
+    "automatic_retries": 0
+  },
+  "stop": {
+    "exit": 0,
+    "forced": false,
+    "private_state_removed": true
+  },
+  "second_stop": "same reconciled result",
+  "own_input_sha256": {
+    "runtime/local/server.py": "517e0b633302a4106702a3b468f6089c1b992e52affeefbd76a2f02b1f9c2606",
+    "runtime/local/tool_probe.py": "3dbb333f5f04756810071ef8105357c142f07f2e552461022759995c97cef378",
+    "runtime/engine/provider.mjs": "24c2b04719d1ceff58341b1a140847e28a6415ba16d244cf1f2768b2581a0fb2",
+    "runtime/engine/local-transport.mjs": "cc734411ba25b3736370e820478cd0347e6fe28e6a53159137702671f2a0c2c6",
+    "runtime/engine/local-tool-spike.mjs": "fe0dc994c81a1b41ba07004a1de76c4e4ee9553a4a923366a3d2c1fffdcfe528",
+    "runtime/engine/local-cancel-spike.mjs": "49d729e8207addf6f4f7ea5718a6428f19c53250994708da8e2aa4bd334503dd"
+  },
+  "native_job": "local-tool-8",
+  "model_contract_input_sha256": "61ac4a79c81119abddca05b9033834279e624cf950a1c6522e77d59ce87503d6",
+  "model_contract_snapshot": "docs/evidence/B03-local-tool-contract-input.json"
+}

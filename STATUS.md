@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 5% phase total counts completed stories only. B03 is still in progress; its 8 points are not yet counted. Passing this story would raise the phase total to 13%.
 
-Last verified: 2026-11-08T00:49:46.272406+00:00
+Last verified: 2026-11-08T01:22:45.072130+00:00
 
 Verified:
 
@@ -24,13 +24,15 @@ Verified:
 - Pinned llama.cpp0.9.0 source and Qwen3-1.7B-Q8_0 bytes/license verified in host cache; model inference not yet run.
 - Native llama-cpp0.9.0 source/stage/package/postcheck0/0; runtime only22MiB, no bundled weights.
 - Actual Qwen CPU streaming response, no/wrong-token401, external route denied and graceful shutdown passed; first text0.289s, peak2,320,036KiB on development VM.
+- Actual Pi local file-tool task4.29s, active cancel6ms/new response0.34s, exact context rejection before generation; native source/contract hashes retained.
+- Private Unix runtime/ephemeral bearer: UID65534 socket/key EACCES, no/wrong-token401, graceful/idempotent Stop and private cleanup0.
 
-Running: Connecting pinned Pi provider stream to actual local runtime and disposable file tool; no guest writer active.
+Running: Implementing focused provider-family protocol fixtures and verified acquisition/choice flow; no guest writer active.
 
 Remaining:
 
-- Actual Pi-agent offline file-tool task, Stop/cancellation and local transport boundaries.
-- Provider streaming/tool/error/cancel fixtures; API/local/deferred choices and verified resumable acquisition.
+- Provider-family streaming/tool/error/cancel fixtures, with explicit live-unverified status.
+- Validated API/local/deferred selection and safe verified/resumable model acquisition.
 
 [Acceptance evidence](docs/evidence/B03.md)
 

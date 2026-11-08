@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "pinned_candidate_runtime_unqualified",
+  "status": "native_runtime_tool_cancel_passed_acquisition_pending",
   "model": {
     "repository": "Qwen/Qwen3-1.7B-GGUF",
     "revision": "90862c4b9d2787eaed51d12237eafdfe7c5f6077",
@@ -24,7 +24,7 @@
     "gpu_layers": 0,
     "threads": 4,
     "context_tokens": 4096,
-    "transport": "per-user authenticated loopback only after B03 denial proof; private process fallback",
+    "transport": "per-user private Unix socket in0700 directory plus ephemeral bearer; actual other-UID/socket/key and no/wrong-token denials passed",
     "automatic_cloud_fallback": false,
     "cpu_profile": "x86_64 AVX2/FMA/F16C/BMI2/SSE4.2, optional acquisition gated by actual CPU flags",
     "required_cpu_flags": [
@@ -37,21 +37,24 @@
     ],
     "source_build_jobs": 4,
     "https_client": false,
-    "subprocess_tools": false
+    "subprocess_tools": false,
+    "temperature": 0
   },
   "budgets": {
     "reference_vcpus": 4,
     "reference_ram_mib": 8192,
     "proposed_model_peak_rss_mib": 5120,
-    "measured_model_peak_rss_mib": null,
+    "measured_model_peak_rss_mib": 2311.633,
     "weights_bytes": 1834426016,
-    "note": "Weights bytes known; runtime/KV/scratch estimates and compatibility unqualified until B03."
+    "note": "Weights bytes known; runtime/KV/scratch estimates and compatibility unqualified until B03.",
+    "measurement_target": "12vCPU/12GiB development VM, inference pinned to4CPUs; no product reference/hardware claim"
   },
   "installation": {
     "default": "not installed",
     "iso_weights": false,
     "explicit_acquisition_required": true,
     "qualifying_story": "B03",
-    "real_offline_tool_task": "not_run"
-  }
+    "real_offline_tool_task": "passed native local-tool-8; artifact acquisition flow still pending"
+  },
+  "evidence": "docs/evidence/B03-native-local-tool.json"
 }

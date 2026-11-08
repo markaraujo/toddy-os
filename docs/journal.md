@@ -1553,3 +1553,13 @@ Actual Qwen3-1.7B-Q8_0 streamed READY:0.812s health,0.289s first text,2,320,036K
 peak,4CPU affinity/4threads on development VM. Unauthorized generation401/401,
 server shutdown0 and token file removed. No Pi tool task/provider/acquisition
 acceptance yet; native Node/Pi/GIO/runtime packages will be reused.
+
+
+## 2026-11-07 — Real Pi local tool/cancel and per-user runtime
+
+Native8 passed real file-tool task4.29s, active cancellation6ms/new response0.34s,
+exact tokenizer context admission0generation, otherUID socket/key EACCES and bearer
+401/401, runtime exit0/private cleanup/idempotent Stop. Source hashes and the exact
+input contract snapshot retained; final local profile temperature0. Original
+failed/stochastic/formatting runs and bounded correction ledger preserved.
+B03 local-task criterion passes; provider protocols/acquisition/choices remain.

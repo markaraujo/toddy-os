@@ -1164,3 +1164,17 @@ B03 loopback containment's first command named /src/probe.py; the preserved inpu
 is actually /src/isolation_probe.py. Nothing ran in that failed invocation. Read
 the input inventory, corrected only the invocation and passed the real FD/path/
 network/C/parent-lock qualification. No mount/security change was used to hide it.
+
+
+## 2026-11-07 — Native Pi/local tool qualification and preserved failures
+
+Real file reads occurred, but early second turns exposed sanitized provider errors
+and a fixture that demanded an identical full sentence. Fixed the provider's
+request lease and avoided aborting completed streams. Requiring the actual full
+file content in the answer matches the harmless read task; prose is not failure.
+Job4 passed; stochastic errors/length and a strict READY formatter later failed.
+Kept original ledger clock/attempts and all logs. Final correction2 uses explicit
+temperature0/short unknown marker; job8 passed real task, active cancel, post-cancel
+response, exact pre-generation context limit and other-UID/auth/Stop assertions.
+No package/model upgrade, hidden retry or failed marker rewrite was used. Earlier
+sanitation did not retain a precise upstream error cause; do not overstate it.
