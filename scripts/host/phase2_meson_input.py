@@ -9,7 +9,7 @@ import sys
 import phase2_vm
 ROOT=phase2_vm.ROOT
 NAME=sys.argv[1]
-assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm')
+assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts')
 if __name__=='__main__':
     row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==NAME)
     archive=ROOT/'.local/sources'/row['filename'];data=archive.read_bytes()
@@ -99,7 +99,7 @@ if row['name']=='freetype':
         patches.append({'path':relative,'before_sha256':hashlib.sha256(before).hexdigest(),'after_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'reference':'BLFS13.1 general/freetype2.html'})
 (source/'toddy-build.sh').write_text(recipe)
 receipt={'source_sha256':row['sha256'],'reference':row['reference'],
-         'book_page_sha256':row['book_page_sha256'],'source_patches':patches,
+         'book_page_sha256':row.get('book_page_sha256'),'source_patches':patches,
          'recipe_sha256':hashlib.sha256(recipe.encode()).hexdigest()}
 if extra is not None:receipt['extra_source']=extra
 if probe is not None:

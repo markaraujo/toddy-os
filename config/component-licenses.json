@@ -2847,7 +2847,22 @@
       "name": "llvm",
       "version": "22.1.8",
       "license": "Apache-2.0 WITH LLVM-exception AND LicenseRef-llvm-per-file",
-      "evidence": "Frozen official monorepo; core/Clang headers and exact named legal texts required before native packaging. Required upstream poison/select patch provenance recorded. Build running only; runtime/test acceptance pending."
+      "evidence": "Frozen official monorepo; core/Clang headers and exact named legal texts required before native packaging. Required upstream poison/select patch provenance recorded. Build running only; runtime/test acceptance pending.",
+      "extra_license_headers": {
+        "llvm-project-22.1.8.src.tar.xz": {
+          "prefixes": [
+            "llvm/lib/",
+            "llvm/include/",
+            "clang/lib/",
+            "clang/include/"
+          ],
+          "suffixes": [
+            ".c",
+            ".cpp",
+            ".h"
+          ]
+        }
+      }
     },
     {
       "name": "llvm-upstream-fix",
@@ -2872,6 +2887,12 @@
       "version": "1.96.0",
       "license": "(Apache-2.0 OR MIT) AND LicenseRef-Rust-toolchain-components",
       "evidence": "Build-only official bootstrap archive, SHA authenticated by Rust1.97.1 src/stage0. Original Apache/MIT/COPYRIGHT text hashes retained in B02-rust-bootstrap-input.json; per-component conditions apply. Never executed/installed or accepted as final product compiler."
+    },
+    {
+      "name": "adwaita-fonts",
+      "version": "50.0",
+      "license": "OFL-1.1",
+      "evidence": "Authenticated GNOME50 source LICENSE names original font authors and includes full SIL Open Font License1.1. Six unmodified TTF files; no font renaming or outline changes. Native font/cache qualification pending."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

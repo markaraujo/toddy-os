@@ -604,6 +604,29 @@
       "scope": "x86_64 build bootstrap only; not final product compiler/runtime",
       "integrity": "Artifact SHA256 matched value inside frozen authenticated Rust source before any extraction/execution",
       "status": "source_verified"
+    },
+    {
+      "name": "gsettings-desktop-schemas",
+      "version": "50.1",
+      "filename": "gsettings-desktop-schemas-50.1.tar.xz",
+      "url": "https://download.gnome.org/sources/gsettings-desktop-schemas/50/gsettings-desktop-schemas-50.1.tar.xz",
+      "sha256": "0a2aa25082672585d16fcdab61c7b0e33f035fb87476505c794f29565afa485b",
+      "reference": "BLFS13.1-systemd gnome/gsettings-desktop-schemas.html",
+      "book_page_sha256": "8607b26ce377a2523010f4aa03abaa91afce2460e682f797cf1b5c7a804a2ff8",
+      "book_md5": "b3851a1d2dd684f7ea1a1d032e2a7dfb",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "adwaita-fonts",
+      "version": "50.0",
+      "filename": "adwaita-fonts-50.0.tar.xz",
+      "url": "https://download.gnome.org/sources/adwaita-fonts/50/adwaita-fonts-50.0.tar.xz",
+      "sha256": "4c927fbfeec1c503801ba510c2c94e0054c82c522cf7ba0d3be5d4d41fcf5c86",
+      "reference": "GNOME50 release; gsettings-desktop-schemas50.1 actual default Adwaita Sans/Mono",
+      "checksum_url": "https://download.gnome.org/sources/adwaita-fonts/50/adwaita-fonts-50.0.sha256sum",
+      "integrity": "Archive matched official upstream SHA256 before extraction/use",
+      "status": "source_verified"
     }
   ]
 }

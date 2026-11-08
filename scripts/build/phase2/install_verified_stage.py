@@ -3,6 +3,8 @@
 
 Invoked inside run_step's full-root transaction, never by the compiler namespace.
 """
+import collections
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -14,6 +16,10 @@ from package_copyright import write_copyright
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'adwaita-fonts': ('50.0', 'fontconfig (>= 2.18.3-1+toddy1)',
+                      'adwaita-fonts-50.0.tar.xz', 'usr/share/fonts/Adwaita/AdwaitaSans-Regular.ttf'),
+    'llvm': ('22.1.8', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
+             'llvm-project-22.1.8.src.tar.xz', 'usr/bin/llvm-config'),
     'shared-mime-info': ('2.5.1', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), glib (>= 2.88.3-1+toddy1), libxml2 (>= 2.15.3-1+toddy1)',
                          'shared-mime-info-2.5.1.tar.gz', 'usr/share/mime/mime.cache'),
     'graphene': ('1.10.8', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1)',
@@ -59,8 +65,31 @@ if __name__ == '__main__':
     version, depends, archive, required = PROFILES[name]
     subprocess.run(['bash', '-c', 'source /opt/toddy-build/scripts/build/target.sh; guard_target'], check=True)
     log = Path('/var/log/toddy/phase2')
-    qualifier='wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
+    qualifier='llvm-qualify-2' if name=='llvm' else 'wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
+    if name=='adwaita-fonts':
+        work=Path('/mnt/lfs/sources/phase2/work/adwaita-fonts-1')
+        proof=json.loads((work/'font-inputs.json').read_text())
+        assert proof['source_fonts_byte_identical'] and len(proof['fonts'])==6
+        assert json.loads((log/'adwaita-fonts-1.job.json').read_text())['command'][-1]=='/src/toddy-build.sh'
+        for row in proof['fonts']:
+            path=work/'stage/usr/share/fonts/Adwaita'/row['file']
+            assert path.parent==work/'stage/usr/share/fonts/Adwaita'
+            assert hashlib.sha256(path.read_bytes()).hexdigest()==row['sha256']
+    if name=='llvm':
+        assert (log/'llvm-1.exit').read_text().strip()=='0'
+        assert json.loads((log/'llvm-qualify-2.job.json').read_text())['command'][-1]==(ROOT/'scripts/build/phase2/llvm-qualify.sh').read_text()
+        directory=Path('/mnt/lfs/sources/phase2/work/llvm-1/critical-tests')
+        proof=json.loads((directory/'qualified.json').read_text())
+        required_suites={'llvm-unit','clang-unit','llvm-transforms','llvm-x86','llvm-execution-engine','clang-codegen','clang-codegen-cxx'}
+        assert {r['name'] for r in proof['suites']}==required_suites and len(proof['suites'])==7
+        assert proof['required_poison_select_regression']=='PASS'
+        for row in proof['suites']:
+            report=directory/(row['name']+'.json');raw=report.read_bytes()
+            assert hashlib.sha256(raw).hexdigest()==row['report_sha256']
+            tests=json.loads(raw)['tests'];counts=dict(collections.Counter(t['code'] for t in tests))
+            assert row['exit']==0 and tests and counts==row['counts'] and counts.get('PASS',0)>0
+            assert set(counts)<={'PASS','XFAIL','UNSUPPORTED'}
     if name=='harfbuzz':
         assert (log/'harfbuzz-1.exit').read_text().strip()=='1'
         proof=json.loads(Path('/mnt/lfs/sources/phase2/work/harfbuzz-1/dependency-recovery/qualified.json').read_text())
@@ -123,13 +152,14 @@ if __name__ == '__main__':
         doc=destination/'usr/share/doc/freetype';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('This software is based in part on the work of the FreeType Team.\nPortions copyright 1996-2026 The FreeType Project (https://freetype.org). All rights reserved.\nFTL license option selected; exact upstream terms in copyright/source-notices.\nSource modifications: enabled gxvalid/otvalid modules and FT_CONFIG_OPTION_SUBPIXEL_RENDERING per BLFS13.1.\nDynamic HarfBuzz loading; optional reference manual not included.\n')
     archives=[archive]
-    if name=='shared-mime-info':
-        row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']=='xdgmime-tests')
+    if name in ('shared-mime-info','llvm'):
+        extra_name='xdgmime-tests' if name=='shared-mime-info' else 'llvm-upstream-fix'
+        row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==extra_name)
         archives.append(row['filename'])
     write_copyright(destination, name, archives)
     source_args=[arg for item in archives for arg in ['--source',item]]
     conffiles=[]
-    if name=='fontconfig':
+    if name in ('fontconfig','llvm'):
         for relative,row in before['entries'].items():
             if relative.startswith('etc/') and 'sha256' in row: conffiles+=['--conffile','/'+relative]
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,
