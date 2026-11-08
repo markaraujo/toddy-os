@@ -1163,6 +1163,78 @@
       "status": "source_verified",
       "verified_mirror": "https://ftp.osuosl.org/pub/blfs/conglomeration/iso-codes/iso-codes-v4.20.1.tar.gz",
       "mirror_evidence": "Original+single retry were identical truncated180224B and quarantined before extraction. Trusted BLFS mirror complete16408049B, frozen book MD5/gzip/SHA256 verified."
+    },
+    {
+      "name": "appstream",
+      "version": "1.1.6",
+      "filename": "AppStream-1.1.6.tar.xz",
+      "url": "https://www.freedesktop.org/software/appstream/releases/AppStream-1.1.6.tar.xz",
+      "sha256": "e298929f39729e84a70f6be6941f3e7f3fc2ee3c83cb3ea1b1b5b280a8fe3a24",
+      "reference": "BLFS13.1-systemd general/appstream.html",
+      "book_page_sha256": "bf1cd55471c659b7e0ffea47280db0e6b441a48adbe41a3b2abdc2c8c3fa8912",
+      "book_md5": "cc07d222289ec963be208c3757bde6a9",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libxmlb",
+      "version": "0.3.29",
+      "filename": "libxmlb-0.3.29.tar.xz",
+      "url": "https://github.com/hughsie/libxmlb/releases/download/0.3.29/libxmlb-0.3.29.tar.xz",
+      "sha256": "448294be33bfae62f00fa66e506f1cae80237ce71b7ab6530aefa75005eeb08a",
+      "reference": "BLFS13.1-systemd general/libxmlb.html",
+      "book_page_sha256": "aba32b408d3ed640b9124b63f55a8621660974e6914a90e16712682d744b3a40",
+      "book_md5": "83f87e2ce1fd6b34b25e7f5e1443293c",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libfyaml",
+      "version": "0.9.6",
+      "filename": "libfyaml-0.9.6.tar.gz",
+      "url": "https://github.com/pantoniou/libfyaml/releases/download/v0.9.6/libfyaml-0.9.6.tar.gz",
+      "sha256": "a59cc3331e2eb903ec36933ad52a45888041cac31e44f553a00511131242c483",
+      "reference": "BLFS13.1-systemd general/libfyaml.html",
+      "book_page_sha256": "51a9a6c986234541092e1dc4e9a11313adfd89c7e0a62175b47537625302831f",
+      "book_md5": "f6d3756a80cb1ff99714e510cf4ce13d",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libxslt",
+      "version": "1.1.45",
+      "filename": "libxslt-1.1.45.tar.xz",
+      "url": "https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.45.tar.xz",
+      "sha256": "9acfe68419c4d06a45c550321b3212762d92f41465062ca4ea19e632ee5d216e",
+      "reference": "BLFS13.1-systemd general/libxslt.html",
+      "book_page_sha256": "011a30cdc3794f2047578347ab1a20adc1b67cbcea95cadd42e09e567f7ca8ae",
+      "book_md5": "84bb3f6ba7f5ee98af5dcd72e828c73e",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "itstool",
+      "version": "2.0.7",
+      "filename": "itstool-2.0.7.tar.gz",
+      "url": "https://github.com/itstool/itstool/archive/2.0.7/itstool-2.0.7.tar.gz",
+      "sha256": "fba78a37dc3535e4686c7f57407b97d03c676e3a57beac5fb2315162b0cc3176",
+      "reference": "BLFS13.1-systemd pst/itstool.html",
+      "book_page_sha256": "03278c3f379fab627bf1d2be29d5665aaeddbfd415fb069d16540823da0de473",
+      "book_md5": "e759b258617a912acce630de3fa43957",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "doxygen",
+      "version": "1.18.0",
+      "filename": "doxygen-1.18.0.src.tar.gz",
+      "url": "https://doxygen.nl/files/doxygen-1.18.0.src.tar.gz",
+      "sha256": "a1deed70a6785bbec95a2b2a9e419dc7f7b223a9d74a8644ae611c8e2dcdd354",
+      "reference": "BLFS13.1-systemd general/doxygen.html",
+      "book_page_sha256": "05c892b0634804ab9abb35ecce95d11ea499733b35709f450bf1d855d9dbb37d",
+      "book_md5": "09a61abc2ae853b4a5185201a1ab07fd",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

@@ -1,0 +1,153 @@
+{
+  "scope": "Native desktop resource data/cache/API qualification, no graphical session/window/pointer acceptance",
+  "input": {
+    "scope": "Authenticated desktop data source preparation only, no native execution/install",
+    "config_sha256": "eccae0ae7d6a53333cbed7438f5bc9d842918748589fa5e260b22ed35aded548",
+    "recipe_sha256": "de3003d1241f5709098e10a149dc6bef5f150e5f4cf73f25d3d5f1585f38d9dd",
+    "probe_sha256": "42d87ec710247fb608426b3d2f4162f420fd74aad3f7f1b53c23b38bcb2acb59",
+    "sources": [
+      {
+        "name": "hicolor-icon-theme",
+        "version": "0.18",
+        "archive": "hicolor-icon-theme-0.18.tar.xz",
+        "source_sha256": "db0e50a80aa3bf64bb45cbca5cf9f75efd9348cf2ac690b907435238c3cf81d7",
+        "source_root": "hicolor-icon-theme-0.18",
+        "options": []
+      },
+      {
+        "name": "adwaita-icon-theme",
+        "version": "50.0",
+        "archive": "adwaita-icon-theme-50.0.tar.xz",
+        "source_sha256": "fac6e0401fca714780561a081b8f7e27c3bc1db34ebda4da175081f26b24d460",
+        "source_root": "adwaita-icon-theme-50.0",
+        "options": []
+      },
+      {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1",
+        "archive": "gsettings-desktop-schemas-50.1.tar.xz",
+        "source_sha256": "0a2aa25082672585d16fcdab61c7b0e33f035fb87476505c794f29565afa485b",
+        "source_root": "gsettings-desktop-schemas-50.1",
+        "options": [
+          "-Dintrospection=true"
+        ]
+      }
+    ]
+  },
+  "packages": [
+    {
+      "name": "hicolor-icon-theme",
+      "version": "0.18",
+      "archive": "hicolor-icon-theme-0.18.tar.xz",
+      "source_sha256": "db0e50a80aa3bf64bb45cbca5cf9f75efd9348cf2ac690b907435238c3cf81d7",
+      "source_root": "hicolor-icon-theme-0.18",
+      "options": [],
+      "phases": [
+        {
+          "phase": "configure",
+          "native_exit": 0,
+          "log_sha256": "74145a9ef2165417389fcce2b841a6a368b3a9a0762de854a5ca020dd0e9b566"
+        },
+        {
+          "phase": "build",
+          "native_exit": 0,
+          "log_sha256": "7ee804c9dac815412e22ee9089ad51e7cece685b19d4c691653cf748e837499f"
+        },
+        {
+          "phase": "stage",
+          "native_exit": 0,
+          "log_sha256": "97a1f9f040dc7503c702b2f699c4f22e8ad7aa7e8c7df63a258362d32b37170b"
+        }
+      ],
+      "registered_upstream_tests": 0,
+      "upstream_note": "No registered executable suite; not counted as passes"
+    },
+    {
+      "name": "adwaita-icon-theme",
+      "version": "50.0",
+      "archive": "adwaita-icon-theme-50.0.tar.xz",
+      "source_sha256": "fac6e0401fca714780561a081b8f7e27c3bc1db34ebda4da175081f26b24d460",
+      "source_root": "adwaita-icon-theme-50.0",
+      "options": [],
+      "phases": [
+        {
+          "phase": "configure",
+          "native_exit": 0,
+          "log_sha256": "781832b584034ff2cdf7d8edd7ed2fa7622bddef8793676b0cb3a40b921ced89"
+        },
+        {
+          "phase": "build",
+          "native_exit": 0,
+          "log_sha256": "584d6196d42a39b6f46be77b1f648eb52bf145f37de0879502285cb8c5c922a3"
+        },
+        {
+          "phase": "stage",
+          "native_exit": 0,
+          "log_sha256": "d5f56d270b9b14784ab8a27cbaca5197548d6cda791e8cb3a63cbee815ba2c2a"
+        }
+      ],
+      "registered_upstream_tests": 0,
+      "upstream_note": "No registered executable suite; not counted as passes"
+    },
+    {
+      "name": "gsettings-desktop-schemas",
+      "version": "50.1",
+      "archive": "gsettings-desktop-schemas-50.1.tar.xz",
+      "source_sha256": "0a2aa25082672585d16fcdab61c7b0e33f035fb87476505c794f29565afa485b",
+      "source_root": "gsettings-desktop-schemas-50.1",
+      "options": [
+        "-Dintrospection=true"
+      ],
+      "phases": [
+        {
+          "phase": "configure",
+          "native_exit": 0,
+          "log_sha256": "0ca0a45bf756735b3db00f9dd78dba41019d514fa6b31637876287d1c2cbc299"
+        },
+        {
+          "phase": "build",
+          "native_exit": 0,
+          "log_sha256": "7aa0b938db7cc58d883a981bdb380a4e3096d6c37b119945d2af98ff16bd1a37"
+        },
+        {
+          "phase": "stage",
+          "native_exit": 0,
+          "log_sha256": "125e77fa8da483af1c3bc3699749f34c627dc937f9ee617176c35b9fe85ad0f5"
+        }
+      ],
+      "registered_upstream_tests": 0,
+      "upstream_note": "No registered executable suite; not counted as passes"
+    }
+  ],
+  "original_job_exit": 1,
+  "recovery_job_exit": 0,
+  "recovery": {
+    "scope": "Probe-only plain C enum invocation correction; original three package stages/caches retained",
+    "native_exit": 0,
+    "stage_files_unchanged": 938,
+    "consumer": {
+      "scope": "Native schema/default-font/GI enum/icon lookup/SVG pixels/cursor data; no window/session/pointer interaction acceptance",
+      "schemas": 52,
+      "font_default": "Adwaita Sans 11",
+      "monospace_default": "Adwaita Mono 11",
+      "enum_zoom": 5,
+      "icon_names": [
+        "folder-symbolic",
+        "document-open-symbolic"
+      ],
+      "svg_size": [
+        32,
+        32
+      ],
+      "png_bytes": 435,
+      "cursor_magic": "Xcur"
+    }
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-desktop-resources-native-evidence.tar.gz",
+    "bytes": 579948,
+    "sha256": "29f5f3b9e027f065e9213014760bf1a0bc11419e71c81672aab0ebf46db6975f",
+    "members": 94,
+    "scope": "Raw native three-resource build/cache/enum probe failure+recovery/52schemas-icons-SVG-cursor/independent packages/GTK cache-only integration proof; retain final release"
+  }
+}

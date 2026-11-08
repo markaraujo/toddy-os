@@ -2174,3 +2174,47 @@ checks0,2132 retained legal notices. Archive
 Raw28-member bundle SHAaac6fa6b87abe79fcc618dfe2e1f9adbe51baacdc0832cb1736f7142a09ef2dd
 retained. This is not an opened window, GNOME session or media qualification.
 Theme/schema/AppStream/Libadwaita/service integration and actual UI QA remain next.
+
+
+### B02 native resource/cache integration
+
+[Resource qualification](evidence/B02-desktop-resources-build.json) stages Hicolor0.18,
+Adwaita icons50 and GSettings schemas50.1 independently. No executable upstream
+suites are registered; zero is not a pass count. Both real icon caches validate.
+Original probe1 requested a property unavailable on a plain C enum; frozen header
+ZOOM=5 and probe-only recovery2actual0, all938stage files/links unchanged.
+
+[Owned native resources](evidence/B02-desktop-resources-install.json) and GTK4.22.4-1+toddy2
+schema/legal-only cache upgrade installed/post0/0 in70.624s. Compare complete
+installed schema inputs to the qualified private union first; other GTK runtime
+payload entries unchanged, no library rebuild/user preference writes. Actual
+native52schemas, default Adwaita Sans/Mono fonts, GI enum, two named icons,
+32x32 SVG-to-PNG and Xcursor data checks0. [ADR0137](adr/0137-native-desktop-resource-transactions.md)
+records ownership/recovery and the bounded512MiB compiler volume.
+Raw94-member bundle SHA29f5f3b9e027f065e9213014760bf1a0bc11419e71c81672aab0ebf46db6975f
+retained. No graphical GNOME/window/pointer interaction acceptance follows.
+
+Next: native AppStream1.1.6 required by actual Libadwaita source. Its data build
+needs itstool and therefore the optional Python binding of the already owned
+libxml2-2.15.3; preserve the core library/tests and frozen version. Authenticated
+libxmlb0.3.29/libfyaml0.9.6/libxslt1.1.45/itstool2.0.7 sources are cached. Select
+actual bootstrap requirements from source; source qualification alone does not
+make packages/catalog candidates available.
+
+
+### B02 verified native vendor source custody
+
+
+[Native expanded-vendor custody](evidence/B02-native-vendor-source-custody.json) retired only
+two archive-identical public input copies after accepted cargo-c/librsvg package
+and archive verification. Compared27,238+19,348 file entries, reclaimed872,890,368B;
+target free17,240,117,248→18,113,007,616B. Source archives, locks/prepared receipts,
+compiled binaries/tests, native packages and raw evidence remain. Restore only
+from frozen archives if a changed Rust slice needs them; never repeat acquisition,
+retirement or an accepted build. This preserves the16GiB target reserve for the
+next native dependencies.
+
+Frozen libxml2's Python Meson generator explicitly requires Doxygen even when API
+HTML installation is disabled. Doxygen1.18.0 source is authenticated/cached; build
+it before the optional binding. This adds a concrete generator dependency, not a
+core XML rebuild, mandatory desktop application or catalog availability claim.

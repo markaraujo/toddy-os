@@ -1,0 +1,34 @@
+{
+  "scope": "Expanded authenticated public vendor inputs only; complete source archives, locks/receipts, native packages/compiled tests/logs retained",
+  "state": "complete",
+  "sources": [
+    {
+      "package": "cargo-c",
+      "path": "/mnt/lfs/sources/phase2/inputs/cargo-c-tool-0.10.24/vendor",
+      "archive": "/mnt/lfs/sources/cargo-c-0.10.24-vendor.tar.gz",
+      "archive_sha256": "878eb5b65da8f2fdff3ec2ff54ace08eb717c3b17ff06affd6dda22b88324d52",
+      "native_archive_sha256": "d32a863ce17d454ffd3ecc4987c6184fe473f2336edfb19a6da3c78b660c1da8",
+      "payload_entries": 27238,
+      "payload_bytes": 422530675,
+      "manifest_sha256": "2d78f448b4eaec25c1d3ea9e0171a7401a39d4f531a1bf67fa41f623c467b36f",
+      "directory_inode": 1855414,
+      "state": "retired"
+    },
+    {
+      "package": "librsvg",
+      "path": "/mnt/lfs/sources/phase2/inputs/librsvg-2.62.3/vendor",
+      "archive": "/mnt/lfs/sources/librsvg-2.62.3-vendor.tar.gz",
+      "archive_sha256": "67a52cab6d6723c7302369b52fcc3e7db7b2edf043348be7bae4f37f53a53ec7",
+      "native_archive_sha256": "8ea71609cd4cd23b56e43b9a90695640ad134e10af68575e592178098961ca15",
+      "payload_entries": 19348,
+      "payload_bytes": 309997271,
+      "manifest_sha256": "fc2597e80275dfaf0002c09a4934a87ff51179dcd49e1605a085acbc9cf229ae",
+      "directory_inode": 1895522,
+      "state": "retired"
+    }
+  ],
+  "free_bytes_before": 17240117248,
+  "free_bytes_after": 18113007616,
+  "reclaimed_bytes": 872890368,
+  "recovery": "Do not rerun retirement/acquisition/build. If a changed Rust slice needs this input, restore only the frozen vendor archive into a new temporary directory, verify full file manifests, apply authenticated public readability, then atomically restore the absent vendor path. Keep the retirement/restore receipts."
+}

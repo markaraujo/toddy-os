@@ -6,7 +6,11 @@ python3 - <<'PY'
 from pathlib import Path
 import hashlib,json,shlex,subprocess,tempfile
 root=Path('/opt/toddy-build');prefix=['chroot','/mnt/lfs'];env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C.UTF-8','HOME':'/root','PYTHONDONTWRITEBYTECODE':'1'}
-assert subprocess.check_output(prefix+['dpkg-query','-W','-f=${Status} ${Version}','gtk'],env=env,text=True)=='install ok installed 4.22.4-1+toddy1'
+resource_receipt=Path('/var/log/toddy/phase2/desktop-resources-transaction.json')
+resources=json.loads(resource_receipt.read_text()) if resource_receipt.exists() else None
+integrated=resources is not None and resources['state']=='complete'
+version='4.22.4-1+toddy2' if integrated else '4.22.4-1+toddy1'
+assert subprocess.check_output(prefix+['dpkg-query','-W','-f=${Status} ${Version}','gtk'],env=env,text=True)=='install ok installed '+version
 assert subprocess.check_output(prefix+['pkg-config','--modversion','gtk4'],env=env,text=True).strip()=='4.22.4'
 assert not subprocess.check_output(prefix+['dpkg','--audit'],env=env,text=True).strip()
 subprocess.run(prefix+['apt-get','check'],env=env,check=True)
@@ -27,7 +31,7 @@ print('native-gtk-gdk-gsk-gi-unicode-model-color-owned-schema, no window')
 '''
 gi=subprocess.run(prefix+['python3','-B','-c',body],env=env,text=True,capture_output=True,check=True)
 cache=Path('/mnt/lfs/usr/share/glib-2.0/schemas/gschemas.compiled')
-expected=json.loads(Path('/mnt/lfs/sources/phase2/work/gtk-1/test-results.json').read_text())['schema_cache_sha256']
+expected=resources['new_schema_cache_sha256'] if integrated else json.loads(Path('/mnt/lfs/sources/phase2/work/gtk-1/test-results.json').read_text())['schema_cache_sha256']
 assert hashlib.sha256(cache.read_bytes()).hexdigest()==expected
 proof={'scope':'Native installed bootstrap GTK C/GI/model/color/owned schema APIs only; no graphical window/session/media acceptance',
     'native_consumer_exit':0,'stdout':c.stdout,'gi_exit':0,'gi_stdout':gi.stdout,'schema_cache_sha256':expected,

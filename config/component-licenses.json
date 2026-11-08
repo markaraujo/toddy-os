@@ -2482,7 +2482,7 @@
       "name": "gtk",
       "version": "4.22.4",
       "license": "LicenseRef-gtk-per-file",
-      "evidence": "Frozen GTK4.22.4 primary/per-file terms and full named/header collection retained. Native Wayland bootstrap30selected headless source cases/C API/GI/schema0; no native window/GNOME/media acceptance. Owned install0/original post1 preserved; GTK4 namespace postcheck-only recovery0/0 with unchanged full installed payload/archive,2132 retained notices; ADR0136.",
+      "evidence": "Frozen GTK4.22.4 primary/per-file terms and full named/header collection retained. Native Wayland bootstrap30selected headless source cases/C API/GI/schema0; no native window/GNOME/media acceptance. Owned install0/original post1 preserved; GTK4 namespace postcheck-only recovery0/0 with unchanged full installed payload/archive,2132 retained notices; ADR0136. Controlled desktop schema/legal metadata upgrade4.22.4-1+toddy2 installed/post0/0,2134 notices; other GTK runtime payload entries unchanged.",
       "extra_license_headers": {
         "gtk-4.22.4.tar.xz": {
           "prefixes": [
@@ -9900,6 +9900,76 @@
             {
               "path": "iso-codes-v4.20.1/LICENSES/LGPL-2.1-or-later.txt",
               "sha256": "5749785c8bdefafcb5d798270ed0a967036fe2ca63dcedade1627565dfef81d2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hicolor-icon-theme",
+      "version": "0.18",
+      "license": "LicenseRef-hicolor-icon-theme-per-file",
+      "evidence": "Frozen source/named license texts retained. Three native resource stages/cache validation passed; corrected plain-C enum probe-only recovery0 with stages unchanged, actual52schemas/default fonts/icons/SVG/cursor APIs. No upstream executable suites registered. Owned native three-package installation and controlled GTK2 cache integration/post0/0 in70.624s; no window/session acceptance.",
+      "source_notice_evidence": [
+        {
+          "filename": "hicolor-icon-theme-0.18.tar.xz",
+          "sha256": "db0e50a80aa3bf64bb45cbca5cf9f75efd9348cf2ac690b907435238c3cf81d7",
+          "notices": [
+            {
+              "path": "hicolor-icon-theme-0.18/COPYING",
+              "sha256": "b0a64377d4ee87b7dbcf418ce4fb33ec3b2d7081b6732890e4af06b8118c4526"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "adwaita-icon-theme",
+      "version": "50.0",
+      "license": "LicenseRef-adwaita-icon-theme-per-file",
+      "evidence": "Frozen source/named license texts retained. Three native resource stages/cache validation passed; corrected plain-C enum probe-only recovery0 with stages unchanged, actual52schemas/default fonts/icons/SVG/cursor APIs. No upstream executable suites registered. Owned native three-package installation and controlled GTK2 cache integration/post0/0 in70.624s; no window/session acceptance.",
+      "source_notice_evidence": [
+        {
+          "filename": "adwaita-icon-theme-50.0.tar.xz",
+          "sha256": "fac6e0401fca714780561a081b8f7e27c3bc1db34ebda4da175081f26b24d460",
+          "notices": [
+            {
+              "path": "adwaita-icon-theme-50.0/AUTHORS",
+              "sha256": "4462e7cdc9c2f10f209714179c732c56b07344f02156fa414cb8ddde55537399"
+            },
+            {
+              "path": "adwaita-icon-theme-50.0/COPYING",
+              "sha256": "51f83b2b4e9ed2beebc9b8eed2ecad29314a58ed8c5184b22ad8f9df703d3ce5"
+            },
+            {
+              "path": "adwaita-icon-theme-50.0/COPYING_CCBYSA3",
+              "sha256": "207fe75c396c0ae197c57d42c727163428b6667d98cef3644e41c6f1afe1895f"
+            },
+            {
+              "path": "adwaita-icon-theme-50.0/COPYING_LGPL",
+              "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gsettings-desktop-schemas",
+      "version": "50.1",
+      "license": "LicenseRef-gsettings-desktop-schemas-per-file",
+      "evidence": "Frozen source/named license texts retained. Three native resource stages/cache validation passed; corrected plain-C enum probe-only recovery0 with stages unchanged, actual52schemas/default fonts/icons/SVG/cursor APIs. No upstream executable suites registered. Owned native three-package installation and controlled GTK2 cache integration/post0/0 in70.624s; no window/session acceptance.",
+      "source_notice_evidence": [
+        {
+          "filename": "gsettings-desktop-schemas-50.1.tar.xz",
+          "sha256": "0a2aa25082672585d16fcdab61c7b0e33f035fb87476505c794f29565afa485b",
+          "notices": [
+            {
+              "path": "gsettings-desktop-schemas-50.1/AUTHORS",
+              "sha256": "95530ebeab6b80a58e340b9e73e22d939ec246e58fa61a945502974850746762"
+            },
+            {
+              "path": "gsettings-desktop-schemas-50.1/COPYING",
+              "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
             }
           ]
         }

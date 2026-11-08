@@ -114,6 +114,8 @@ def main(metadata_only=False):
         metadata.append('config/phase2/xorg-validation-sdk.lock.json')
     if (ROOT/'config/phase2/rust-crates.lock.json').exists():
         metadata.append('config/phase2/rust-crates.lock.json')
+    if (ROOT/'config/phase2/desktop-resources.lock.json').exists():
+        metadata.append('config/phase2/desktop-resources.lock.json')
     if (ROOT/'config/h08-bootstrap-config.json').exists():
         metadata.append('config/h08-bootstrap-config.json')
     if (ROOT/'config/live-account-baseline.json').exists():

@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-08T16:02:06.362648+00:00
+Last verified: 2026-11-08T16:34:29.635210+00:00
 
 Verified:
 
@@ -33,8 +33,9 @@ Verified:
 - Owned SVG2.62.3 renderer/Gdk cache0/0, real C+GI SVG/PNG pixels/refusal; original1of1365Rust golden failure retained under source-backed Pango geometry exception ADR0134/144ELFs unchanged. Owned TIFF4.7.2 native156tests/image APIs0/0, no Gdk TIFF loader/window acceptance.
 - Owned ISO Codes4.20.1 native data/Portuguese gettext0/0 and715actual source-file UTF8 checks; original bare-domain driver empty-glob caveat retained. Bounded3GiB regular-file GTK compiler volume verified in disposable builder; no target repartition/physical disk change.
 - Owned GTK4.22.4 Wayland bootstrap native30headless cases/C-GI/schema0. Original install0/post1 GTK3-name assertion retained, corrected GTK4 namespace postcheck-only recovery0/0/full installed payload unchanged; no window/GNOME/media acceptance.
+- Owned native Hicolor0.18/Adwaita icons50/GSettings schemas50.1 and controlled GTK2 schema/legal-only upgrade0/0. Actual52schemas/fonts/GI/icons/SVG/cursor data0; all other GTK runtime payload unchanged. Original plain-C enum probe failure retained/probe-only recovery0,938stagefiles unchanged.
 
-Running: No guest writer; preparing native themes/schema/AppStream/Libadwaita dependencies after verified GTK bootstrap. Global MIME/icon/schema integration, actual Wayland/GNOME window and media QA pending.
+Running: No guest writer; preparing AppStream/Libadwaita dependency slice after native resource/cache integration. Actual Wayland/GNOME windows, media, MIME and service integration remain pending.
 
 Remaining:
 
