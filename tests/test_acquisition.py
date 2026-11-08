@@ -95,7 +95,7 @@ class AcquisitionTests(unittest.TestCase):
         with patch.object(self,'send',side_effect=http.client.IncompleteRead(b'synthetic-partial')):
             with self.assertRaisesRegex(AcquisitionError,'^artifact_transport_failed$'):self.run_download()
     def test_real_https_range_and_tls_verification(self):
-        import http.server, ssl, subprocess, threading
+        import http.server, ssl, subprocess, threading, urllib.error
         cert=Path(self.temp.name)/'cert.pem';key=Path(self.temp.name)/'key.pem'
         subprocess.run(['openssl','req','-x509','-newkey','rsa:2048','-nodes','-days','1',
             '-config','/dev/null','-subj','/CN=localhost','-addext','subjectAltName=DNS:localhost',
@@ -132,7 +132,10 @@ class AcquisitionTests(unittest.TestCase):
             self.assertEqual(final['state'],'verified');self.assertEqual(ranges,[None,f"bytes={first['bytes']}-"])
             self.assertEqual(Path(final['path']).read_bytes(),DATA)
             # Default trust rejects the disposable CA; no verify=False path exists.
-            with self.assertRaises(Exception):urllib.request.urlopen(record['url'],timeout=3)
+            import urllib.error
+            untrusted=urllib.request.build_opener(urllib.request.ProxyHandler({}))
+            with self.assertRaises(urllib.error.URLError) as rejected:untrusted.open(record['url'],timeout=3)
+            self.assertIsInstance(rejected.exception.reason,ssl.SSLCertVerificationError)
         finally:server.shutdown();server.server_close();thread.join()
 
     def test_backend_choices_have_no_side_effects(self):

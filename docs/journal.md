@@ -1616,3 +1616,9 @@ Extended revoke to persist Stop requests for managed running effects. Native
 executor-ipc-6 stopped an actually started root command90ms after revoke, retained
 uncertain outcome and denied later dispatch. policy-core-3 eight changed storage
 checks passed. Exact source hashes/evidence retained; no B04 completion yet.
+
+### B03 TLS assertion precision — 2026-11-08 UTC
+
+Tightened synthetic CA rejection to actual SSLCertVerificationError with proxies
+explicitly disabled. Native acquisition-4 ten affected checks passed; production
+download/runtime bytes unchanged. Earlier generic assertion not used as new proof.
