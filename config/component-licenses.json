@@ -2768,6 +2768,29 @@
       "version": "1.86.0",
       "license": "LGPL-2.0-or-later AND GPL-2.0-or-later",
       "evidence": "Selected original freetype2/fontconfig/libxml2/cairo declarative GIR files from the same authenticated GI1.86.0 archive; Cairo placeholders configured as upstream gir/meson.build. Original COPYING/GPL/LGPL terms retained. No GLib/scanner/core payload replacement."
+    },
+    {
+      "name": "pango",
+      "version": "1.58.2",
+      "license": "LGPL-2.0-or-later AND LicenseRef-pango-per-file",
+      "evidence": "Authenticated root COPYING and source/util legal headers retained. Bundled source fonts used only as test fixtures, not selected desktop fonts or installed in runtime package; corresponding archive per-file/font conditions apply.",
+      "extra_license_files": {
+        "pango-1.58.2.tar.xz": [
+          "tests/fonts/README"
+        ]
+      },
+      "extra_license_headers": {
+        "pango-1.58.2.tar.xz": {
+          "prefixes": [
+            "pango/",
+            "utils/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

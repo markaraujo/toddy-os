@@ -480,6 +480,42 @@
       "book_md5": "7b5640fd9adfa24554a88b2b9a6cd3f3",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "graphene",
+      "version": "1.10.8",
+      "filename": "graphene-1.10.8.tar.xz",
+      "url": "https://download.gnome.org/sources/graphene/1.10/graphene-1.10.8.tar.xz",
+      "sha256": "a37bb0e78a419dcbeaa9c7027bcff52f5ec2367c25ec859da31dfde2928f279a",
+      "reference": "BLFS13.1-systemd x/graphene.html",
+      "book_page_sha256": "3660d909c7b8d2fb9f670a7d8d7cfb244541abbfedd55afc9b01e4f4aa37e9d2",
+      "book_md5": "169e3c507b5a5c26e9af492412070b81",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "shared-mime-info",
+      "version": "2.5.1",
+      "filename": "shared-mime-info-2.5.1.tar.gz",
+      "url": "https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.5.1/shared-mime-info-2.5.1.tar.gz",
+      "sha256": "ea248ea157b7fa0165f4fe282c84919fa84c3f175553642f229c8f1ab7539128",
+      "reference": "BLFS13.1-systemd general/shared-mime-info.html",
+      "book_page_sha256": "78d5d838586ea7ed703eab950cf0a53849d4abd322402824e268e060c1699d7c",
+      "book_md5": "5f8baa7bac254ea9e65782f754a2880b",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "gdk-pixbuf",
+      "version": "2.44.7",
+      "filename": "gdk-pixbuf-2.44.7.tar.xz",
+      "url": "https://download.gnome.org/sources/gdk-pixbuf/2.44/gdk-pixbuf-2.44.7.tar.xz",
+      "sha256": "172f80e3626ec31520a970400f1a3694e04718f6c2cd2885f75250fb5a6995a4",
+      "reference": "BLFS13.1-systemd x/gdk-pixbuf.html",
+      "book_page_sha256": "f88e67ea462bf4390c0c528160003db1103f19e3fed8c886ed4ee550e23bcb33",
+      "book_md5": "2a12da2133476b7b36fbfcadd7133315",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

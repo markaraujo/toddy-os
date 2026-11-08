@@ -325,7 +325,8 @@
         "docs/evidence/B02-gi-desktop-types-install.json",
         "docs/evidence/B02-harfbuzz-build.json",
         "docs/evidence/B02-harfbuzz-install.json",
-        "docs/evidence/B02-namespace-font-config.json"
+        "docs/evidence/B02-namespace-font-config.json",
+        "docs/evidence/B02-pango-pending.json"
       ]
     },
     {

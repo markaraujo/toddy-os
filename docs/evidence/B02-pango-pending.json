@@ -1,0 +1,109 @@
+{
+  "scope": "native Pango compiled, failed font metric qualification; no accepted stage/install/UI",
+  "attempts": {
+    "original": {
+      "counts": {
+        "OK": 24,
+        "FAIL": 1,
+        "SKIP": 2,
+        "ERROR": 2
+      },
+      "raw_test_log_sha256": "ebc10da39a67472ce3fa3701ba8b3b1f85eb38f3e7f6ea7b8985e09d5768e70c",
+      "failed": [
+        {
+          "name": "pango - pango:test-font-data",
+          "exit": 1,
+          "stderr": "**\nERROR:../../src/tests/test-font-data.c:153:test_boxes_font_metrics: assertion failed (metrics->approximate_char_width == boxes_unhinted_metrics.approximate_char_width): (52935 == 49273)\n**\nERROR:../../src/tests/test-font-data.c:154:test_boxes_font_metrics: assertion failed (metrics->approximate_digit_width == boxes_unhinted_metrics.approximate_digit_width): (65536 == 58368)\n"
+        },
+        {
+          "name": "pango - pango:test-ellipsize",
+          "exit": -6,
+          "stderr": "**\nERROR:../../src/tests/test-ellipsize.c:117:test_ellipsize_fully: assertion failed (ink.width == ink2.width): (14336 == 13312)\n"
+        },
+        {
+          "name": "pango - pango:testmisc",
+          "exit": -6,
+          "stderr": "**\nERROR:../../src/tests/testmisc.c:168:test_line_height2: assertion failed (height1 == height2): (19456 == 29696)\n"
+        }
+      ]
+    },
+    "cantarell_default": {
+      "counts": {
+        "FAIL": 1,
+        "OK": 17,
+        "SKIP": 2
+      },
+      "raw_test_log_sha256": "fe743d6b03871016066b321152996edebd162185c169f9e3bfe8f9c0087b57e9",
+      "failed": [
+        {
+          "name": "pango - pango:test-font-data",
+          "exit": 1,
+          "stderr": "**\nERROR:../../src/tests/test-font-data.c:153:test_boxes_font_metrics: assertion failed (metrics->approximate_char_width == boxes_unhinted_metrics.approximate_char_width): (46201 == 49273)\n**\nERROR:../../src/tests/test-font-data.c:154:test_boxes_font_metrics: assertion failed (metrics->approximate_digit_width == boxes_unhinted_metrics.approximate_digit_width): (62464 == 58368)\n"
+        }
+      ]
+    },
+    "no_fallback_boxes": {
+      "counts": {
+        "FAIL": 1
+      },
+      "raw_test_log_sha256": "446b7b83b1d37906b35752eb714e2afca80c3fcd3f2b1b6cb26ee700c58a4421",
+      "failed": [
+        {
+          "name": "pango - pango:test-font-data",
+          "exit": 1,
+          "stderr": "**\nERROR:../../src/tests/test-font-data.c:153:test_boxes_font_metrics: assertion failed (metrics->approximate_char_width == boxes_unhinted_metrics.approximate_char_width): (49499 == 49273)\n**\nERROR:../../src/tests/test-font-data.c:154:test_boxes_font_metrics: assertion failed (metrics->approximate_digit_width == boxes_unhinted_metrics.approximate_digit_width): (53248 == 58368)\n"
+        }
+      ]
+    }
+  },
+  "diagnostic": "offset=0 length=54 font=Cantarell 75 file=/build/test-default-data/fonts/Cantarell-VF.otf zero_advance=62874\n",
+  "source": {
+    "source_sha256": "342385b6ca3b7c73455d7c80a13b7dbe4489e00bc3bd4c5bd6ed4dce421e374a",
+    "reference": "BLFS13.1-systemd x/pango.html",
+    "book_page_sha256": "1139cf3d49dfeb11613783d4d45ee6d969e832f3e6e53d4c3764b266ff1f1b2a",
+    "source_patches": [],
+    "recipe_sha256": "c719d7eea37620392a6cd6fc32e261e76549f38ef7ace9ee43c471cac1c1ed55"
+  },
+  "jobs": {
+    "pango-1": 1,
+    "pango-font-recheck-2": 1,
+    "pango-font-diagnostic-3": 0,
+    "pango-boxes-recheck-4": 1
+  },
+  "compiled_binaries_unchanged": true,
+  "compiled_sha256": {
+    "/build/compile/pango/libpango-1.0.so.0.5800.2": "308993b14c03d1b28d01bf8c1240156137951d76580dec517b0cb16d625f4a22",
+    "/build/compile/pango/libpangocairo-1.0.so.0.5800.2": "1c0170214169dcc3678ad3cb01e414a48e8477656411210601b89269c52f6790",
+    "/build/compile/pango/libpangoft2-1.0.so.0.5800.2": "3b03ec37c66a7dbedd02fcf5db3380ae4e628f7fc3b71f68690bd55eef27138a",
+    "/build/compile/tests/cxx-test": "35d9bdc020d9b4e178a5d92a83e0f58a73d70640ab8e996b1eefe50b9d62eb31",
+    "/build/compile/tests/markup-parse": "3004e7de3c6f1bf77be93cff515bab5c2dda319c992d815c71d04c487048264d",
+    "/build/compile/tests/test-bidi": "25ba2a4d50f16633f2ae7c5038f5aa042018e647f54599eb9d998224b81b25cd",
+    "/build/compile/tests/test-break": "a230ed42f54754446d5f4eb13f34c5bd624bdab622478bc8389d12b404ab3b60",
+    "/build/compile/tests/test-coverage": "fc4c82cd665aa155b7d51824ff2c98324cd2bed00b00dccf23e1d4d36c291a24",
+    "/build/compile/tests/test-ellipsize": "999681c1d9c7b62b93e25c21a8fbf8beb3a18aa6b5cd76e9f775e393992b9a19",
+    "/build/compile/tests/test-font": "4b74ddf49ea36ccccd7e63da81053b8137fbc1cc47a88357cccfb2285dee583b",
+    "/build/compile/tests/test-font-data": "e4193ea7da79f68cd45adc3d3e96127c29dc17f6445e33bcf59bce76b6bea861",
+    "/build/compile/tests/test-fonts": "92294a24d1c1360eb567d89988fc2e4af1e886eaa17f698e96b1b51ece6ac031",
+    "/build/compile/tests/test-harfbuzz": "20a8dea3931278c55ba853fc441c50ea64857f8220771e0e50ac5d5debe59f21",
+    "/build/compile/tests/test-itemize": "4260afe4d1f869f12862599656753cf2cafbbc9ab8c2fb0e18d2cd4c1eae2490",
+    "/build/compile/tests/test-layout": "a58e8ef30a42071e6dec106946e3c5b68fdac1c61a2878ac75186215515af437",
+    "/build/compile/tests/test-layout2": "5ecaee036ddce257b4f6b0f101b6d16c11ac44e59716ebe9f9c4aa5cd5df466e",
+    "/build/compile/tests/test-no-fonts": "373d24f1226467cd86dffc7d6e73c28913c2c61535066af9426e81e0af07a285",
+    "/build/compile/tests/test-ot-tags": "a868129d7064d9971f0d39493ea83235281af5c1420065cdcba8ad0a9d0d518f",
+    "/build/compile/tests/test-pangocairo-threads": "4a19ccd138a6ac7a80ed0e563d3f21bb581f218e7f46c6c6d650be357069729c",
+    "/build/compile/tests/test-shape": "7df9ef62ba63a170f85f26f80e81932df33065488b76eb897397319b489902d5",
+    "/build/compile/tests/testattributes": "ebcb1f47dd7e3a569e7a986f90957f9b1f95eb54b2fa869eb7533018a3bf7fe9",
+    "/build/compile/tests/testboundaries": "4fbd4ab6f6b752f01105973e75e4c548f7acce9c613e27bbbf6624a007fa55c9",
+    "/build/compile/tests/testboundaries_ucd": "de0a85a421539a2a8ab43a669a9994daf8d572d50398622ea269bc709d4f2e9c",
+    "/build/compile/tests/testcolor": "d3f77c28f7d9259e4cb8aa249114c0220770acfbee850b48f98724c6029056ff",
+    "/build/compile/tests/testcontext": "204cbe72a83ceca09c356781848e9ca371a94c7cb70a93536e212db51c23bc84",
+    "/build/compile/tests/testiter": "9aee1b3aaa062f9872df6a643120afe7b881d7e138636123b32d57623baa8833",
+    "/build/compile/tests/testlanguage": "2b680fbfbcc1cada46afea114728cf3a3dc254e95e2802fd2a887b0ed6186fb7",
+    "/build/compile/tests/testmatrix": "58906963c3f0691a7b18d3c2402144000509910368f1a375e133c0665ce7b75b",
+    "/build/compile/tests/testmisc": "70b748063c24917db13a8c824c5d37b3fe36869245502b571777878f2ba2e0c2",
+    "/build/compile/tests/testscript": "62bff28b35fe92182bb2fc535b060808016c31e2759c642fa8a8743d935713cd",
+    "/build/compile/tests/testserialize": "2ec097756ef506300b12b21cd2b27870c76e522692f3d1348739af4683be43ae",
+    "/build/compile/tests/testtabs": "031cd6c5351fed76ef55e1e13e474865a079520e6e0d53bc45aa9ba51a7f5d18"
+  },
+  "stage_accepted": false
+}

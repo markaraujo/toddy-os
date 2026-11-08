@@ -1696,3 +1696,12 @@ and original failure. The B01 scanner-only bootstrap deliberately omitted data.
 Prepare four selected original GI1.86.0 declarative types separately, preserving
 qualified scanner/GLib binaries; resume same HarfBuzz graph after actual dependency
 installation. No foundation rebuild or global architecture change.
+
+### B02 bounded Pango metric checkpoint — 2026-11-08 UTC
+
+Pango/GI compiled, but original font fixture selection produced3 failed drivers.
+Curated full Cantarell fixed ellipsis/empty-line invariants; Boxes hardcoded derived
+metrics still failed with and without fallback. Two corrections exhausted for this
+cause; all recorded library/test binaries unchanged. No stage/package accepted.
+Failure/evidence/next unblock preserved; move to independent Graphene/MIME/pixbuf.
+Do not resume the same guesses or mark the remaining assertion passed.

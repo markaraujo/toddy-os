@@ -14,6 +14,8 @@ from package_copyright import write_copyright
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'pango': ('1.58.2', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), freetype (>= 2.14.3-1+toddy1), fontconfig (>= 2.18.3-1+toddy1), fribidi (>= 1.0.16-1+toddy1), harfbuzz (>= 14.3.1-1+toddy1), cairo (>= 1.18.4-1+toddy1), gi-desktop-types (>= 1.86.0-1+toddy1)',
+              'pango-1.58.2.tar.xz', 'usr/lib/girepository-1.0/PangoCairo-1.0.typelib'),
     'gi-desktop-types': ('1.86.0', 'gobject-introspection (>= 1.86.0-1+toddy1), freetype (>= 2.14.3-1+toddy1), fontconfig (>= 2.18.3-1+toddy1), libxml2 (>= 2.15.3-1+toddy1), cairo (>= 1.18.4-1+toddy1)',
                         'gobject-introspection-1.86.0.tar.xz', 'usr/lib/girepository-1.0/freetype2-2.0.typelib'),
     'cairo': ('1.18.4', 'glibc (>= 2.44-1), pixman (>= 0.46.4-1+toddy1), libpng (>= 1.6.58-1+toddy1), freetype (>= 2.14.3-1+toddy1), fontconfig (>= 2.18.3-1+toddy1), glib (>= 2.88.3-1+toddy1), zlib (>= 1.3.2-1)',
@@ -65,7 +67,7 @@ if __name__ == '__main__':
         assert proof['total']==26 and proof['original_passed']==6 and proof['corrected_passed']==20 and proof['compiled_binaries_unchanged']
         command=json.loads((log/'wayland-recheck-2.job.json').read_text())['command']
         assert command[-1]==(ROOT/'scripts/build/phase2/wayland-recheck.sh').read_text()
-    if name in ('wayland-protocols','pixman','fontconfig','fribidi','harfbuzz'):
+    if name in ('wayland-protocols','pixman','fontconfig','fribidi','harfbuzz','pango'):
         rows=[json.loads(line) for line in (Path('/mnt/lfs/sources/phase2/work')/(name+'-1')/'compile/meson-logs/testlog.json').read_text().splitlines()]
         if name=='harfbuzz':
             # Frozen BLFS optional FontTools is absent; upstream explicitly skips
