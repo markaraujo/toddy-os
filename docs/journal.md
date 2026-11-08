@@ -2038,3 +2038,26 @@ recovery/backings untouched. Receipt/sentinels prevent uncertain replay. No comp
 suite rerun. Mesa26.1.7 first reference Wayland/software render source authenticated
 and isolated mesa-1 started; tests, stage, native EGL/GLES pixel proof and owned
 installation pending (ADR0132). No native GNOME/Phase2ISO/G2 acceptance claimed.
+
+
+### B02 owned native Wayland software rendering — 2026-11-08 UTC
+
+Mesa26.1.7 reference EGL/GBM/GLES/llvmpipe/softpipe/virgl/svga profile compiled.
+Original43/48 upstream drivers passed; five Python wrappers lacked two executable
+build_by_default:false test dependencies omitted by --no-rebuild. Resume2 built
+only those tools and rechecked5/5, original1266 ELF hashes unchanged. First stage0;
+consumer link then needed indirect libgallium/gbm search. Consumer-only finish3
+uses link-time rpath-link/no runtimeRPATH; complete stage and original ELFs unchanged.
+Original job1/job2 failures remain1, final3actual0. No source/test assertion edits,
+no core rebuild or passed-suite replay. Fresh recipe declares missing tools/path.
+
+Staged and owned installed actual EGL1.5/GLES shader compilation, triangle draw
+and pixel readback0,32,64,255 via llvmpipe LLVM22.1.8. Native install/post0/0 in
+77.302s; archive169289ff...48f121,6876 named/header notices retained, real dynamic
+ABI audit recorded. EGL/GLES/GBM pkg-config versions use source project26.1.7,
+not EGL API1.5. Epoxy1.5.10 EGL-only native4 portable upstream tests0 plus actual
+staged/installed Epoxy dispatch/version/shader/raster/pixel0; owned0/0 in48.281s,
+42 notices. X11-dependent upstream contexts unregistered, independent real
+surfaceless consumer required. Raw failures/tests/pixels/package proof bundles
+retained. No GNOME/window, physical GPU, GLX/Vulkan or Phase2ISO/G2 acceptance.
+Next native GdkPixbuf2.44.7 PNG/JPEG/GI and frozen librsvg/GTK prerequisites.

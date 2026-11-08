@@ -3850,7 +3850,7 @@
       "name": "mesa",
       "version": "26.1.7",
       "license": "LicenseRef-Mesa-per-file",
-      "evidence": "Authenticated frozen Mesa source and per-file/vendor conditions; named legal notices and leading C/C++ header comments retained. Reference Wayland/software build qualification pending, no hardware/GLX/Vulkan/desktop availability claim.",
+      "evidence": "Authenticated frozen Mesa source and per-file/vendor conditions; named legal notices and leading C/C++ header comments retained. Reference Wayland/software native48 upstream drivers qualified (43original+5affected-only recovery),1266 compiled ELF hashes unchanged; actual staged/installed llvmpipe EGL/GLES shader/raster/pixel0, owned install/post0/0,6876 named/header notices retained in archive. B02-mesa-build.json/install.json, no hardware/GLX/Vulkan/desktop availability claim.",
       "source_notice_evidence": [
         {
           "filename": "mesa-26.1.7.tar.xz",
@@ -3909,6 +3909,37 @@
       ],
       "extra_license_headers": {
         "mesa-26.1.7.tar.xz": {
+          "prefixes": [
+            ""
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".cc",
+            ".cpp"
+          ]
+        }
+      }
+    },
+    {
+      "name": "libepoxy",
+      "version": "1.5.10",
+      "license": "LicenseRef-Epoxy-per-file",
+      "evidence": "Authenticated frozen source COPYING/named legal files and leading C/header conditions retained; native EGL-only4 portable tests0 and actual staged/installed Epoxy shader/raster/pixel0, owned install/post0/0;42 named/header notices retained, B02-libepoxy-build.json/install.json, no X11/physical/desktop acceptance.",
+      "source_notice_evidence": [
+        {
+          "filename": "libepoxy-1.5.10.tar.xz",
+          "sha256": "072cda4b59dd098bba8c2363a6247299db1fa89411dc221c8b81b8ee8192e623",
+          "notices": [
+            {
+              "path": "libepoxy-1.5.10/COPYING",
+              "sha256": "8d5144666f9c4df9bbd69b8900086d5979259152a1060421cdcc0fb9061a1c12"
+            }
+          ]
+        }
+      ],
+      "extra_license_headers": {
+        "libepoxy-1.5.10.tar.xz": {
           "prefixes": [
             ""
           ],

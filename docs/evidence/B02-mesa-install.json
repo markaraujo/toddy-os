@@ -1,0 +1,38 @@
+{
+  "scope": "Owned reference Wayland software/virtual Mesa26.1.7, native llvmpipe EGL/GLES shader/raster/pixel readback; no GNOME/window/physical GPU acceptance",
+  "step": {
+    "step": "b02-mesa-install",
+    "started": "2026-11-08T13:20:46.864836+00:00",
+    "finished": "2026-11-08T13:21:37.125844+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 2588,
+    "log_sha256": "2d414d580e5c2791dc3f2873c141bef33199db6bc4e0eae90d8a8adf9fcfeb65"
+  },
+  "success_record_sha256": "9d7211ab5fa4665bece2e81a8b78c9c8f758d7609342a480cb8bbd95377f146b",
+  "package": {
+    "name": "mesa",
+    "version": "26.1.7-1+toddy1",
+    "archive_sha256": "169289ffb0a68159ec37fbcc8b9ef50db8f4d8c911a5bb2df65451bb0d48f121",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-mesa-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 26.13,
+        "entries": 127656,
+        "regular_files": 113344,
+        "regular_bytes": 6396317138
+      },
+      {
+        "seconds": 21.232,
+        "entries": 130241,
+        "regular_files": 115915,
+        "regular_bytes": 6432845315
+      }
+    ],
+    "total_seconds": 77.302
+  }
+}

@@ -1,7 +1,7 @@
 # ADR-0132: First reference Wayland software render profile
 
 - Date: 2026-11-08
-- Status: Accepted; native Mesa build/qualification pending
+- Status: Accepted; reference software Mesa owned install/post0/0
 
 Build frozen Mesa26.1.7 for the reference guest's first working graphics path:
 Wayland, EGL, GBM, GLES2/3, desktop OpenGL and llvmpipe/softpipe/virgl/svga.
@@ -34,3 +34,22 @@ before/after compiled ELF hashes, account for actual upstream skips. Preflight
 reserve; retain sources/packages/evidence. Native installation requires its own
 verified stage, independent owned archive, legal notices, full-root transaction
 and actual installed render consumer before runtime availability.
+
+
+## Native outcome
+
+All48 registered upstream drivers qualified:43 original passes retained, five
+wrappers rerun after building only their two build_by_default:false dependencies.
+Original --no-rebuild had omitted these tools; preserve job1 failure. First stage
+completed in job2; consumer link then lacked indirect libgallium/libgbm lookup.
+Consumer-only finish3 adds -rpath-link for link-time staging, with no persistent
+RPATH/RUNPATH. Both original failures remain exit1. Source/tests/assertions were
+unchanged; original1266 compiled ELFs and complete stage stayed identical.
+Fresh recipe explicitly builds the two test dependencies and sets link-time path.
+
+Actual staged and installed EGL1.5/GLES shader compilation, triangle rasterization
+and readback returned RGBA0/32/64/255 using llvmpipe(LLVM22.1.8,256bits). Native
+owned install/post0/0 in77.302s, archive169289ffb0a68159ec37fbcc8b9ef50db8f4d8c911a5bb2df65451bb0d48f121.
+Source/version/package/ABI dependency audit and6876 retained named/header notices
+in B02-mesa-build.json/install.json; raw bundle retained. No native GNOME/window,
+physical GPU, Vulkan/GLX or final image acceptance follows from this profile.

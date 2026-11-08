@@ -15,6 +15,8 @@ meson setup /build/compile /src --prefix=/usr --libdir=lib --buildtype=release -
     -Dgallium-va=disabled -Dgallium-rusticl=false -Dvideo-codecs=[] \
     -Dvalgrind=disabled -Dlibunwind=disabled -Dlmsensors=disabled -Dbuild-tests=true
 ninja -C /build/compile -j4
+# These registered test dependencies are explicitly build_by_default:false.
+ninja -C /build/compile -j4 src/compiler/glsl/glcpp/glcpp src/compiler/glsl/glsl_compiler
 python3 - <<'PY'
 from pathlib import Path
 import hashlib,json
@@ -28,7 +30,7 @@ assert rows;Path('/build/compiled-binaries.json').write_text(json.dumps(rows,ind
 PY
 meson test -C /build/compile --no-rebuild --print-errorlogs --num-processes 4 --timeout-multiplier 4
 DESTDIR=/stage ninja -C /build/compile install
-cc -Wall -Wextra -Werror /src/toddy-probe.c -I/stage/usr/include -L/stage/usr/lib \
+cc -Wall -Wextra -Werror /src/toddy-probe.c -I/stage/usr/include -L/stage/usr/lib -Wl,-rpath-link,/stage/usr/lib \
     $(PKG_CONFIG_PATH=/stage/usr/lib/pkgconfig pkg-config --cflags --libs egl glesv2) -o /build/mesa-consumer
 export LD_LIBRARY_PATH=/stage/usr/lib LIBGL_DRIVERS_PATH=/stage/usr/lib/dri
 export LIBGL_ALWAYS_SOFTWARE=1 GALLIUM_DRIVER=llvmpipe EGL_PLATFORM=surfaceless

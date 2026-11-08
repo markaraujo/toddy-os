@@ -1,0 +1,38 @@
+{
+  "scope": "Owned native Epoxy1.5.10 EGL-only dispatch; actual surfaceless GLES shader/raster/pixel over Mesa, no window/X11/physical GPU claim",
+  "step": {
+    "step": "b02-libepoxy-install",
+    "started": "2026-11-08T13:28:21.586675+00:00",
+    "finished": "2026-11-08T13:28:47.973044+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 43,
+    "log_sha256": "0d969cccf0ebd0b349d2f048fed1305b69c9e3ae79deb3bfd08b3655f7bc628b"
+  },
+  "success_record_sha256": "b60596cc7396f9e2309bfab8ef25632db3512659f93e4f5a5994e7ef02959a65",
+  "package": {
+    "name": "libepoxy",
+    "version": "1.5.10-1+toddy1",
+    "archive_sha256": "dc8f66485ca00413f9071fb781f6b50c1971063b08bbda29d6e573bc9cfa3d83",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-libepoxy-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 20.966,
+        "entries": 130241,
+        "regular_files": 115915,
+        "regular_bytes": 6432845315
+      },
+      {
+        "seconds": 24.017,
+        "entries": 130281,
+        "regular_files": 115950,
+        "regular_bytes": 6436207585
+      }
+    ],
+    "total_seconds": 48.281
+  }
+}

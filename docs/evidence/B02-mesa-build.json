@@ -1,0 +1,353 @@
+{
+  "scope": "Reference software/virtual Wayland EGL/GBM profile, native CPU shader/raster/pixel proof; not GNOME/window/hardware acceptance",
+  "registered_tests": 48,
+  "tests": [
+    {
+      "name": "util - mesa:drirc xml validation",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:xmlconfig",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:util_tests",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:process",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:process_with_overrides",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:clear",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:collision",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:delete_and_lookup",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:delete_management",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:destroy_callback",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:insert_and_lookup",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:insert_many",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:null_destroy",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:random_entry",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:remove_key",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:remove_null",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:replacement",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "util - mesa:vma_random",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "format - mesa:srgb",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "format - mesa:u_format_compatible_test",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "format - mesa:u_format_test",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "compiler+spirv - mesa:spirv_tests",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "compiler+glcpp - mesa:glcpp test (windows)",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "compiler+glcpp - mesa:glcpp test (unix)",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "compiler+glcpp - mesa:glcpp test (oldmac)",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "compiler+glcpp - mesa:glcpp test (bizarro)",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "compiler+glsl - mesa:sampler_types_test",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "compiler+glsl - mesa:list_iterators",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "compiler+glsl - mesa:general_ir_test",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "gallium - mesa:gallium-aux",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "compiler+glsl - mesa:glsl compiler warnings",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "compiler+nir - mesa:nir_algebraic_parser",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "llvmpipe - mesa:lp_test_arit",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "llvmpipe - mesa:lp_test_lerp",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "llvmpipe - mesa:lp_test_format",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "llvmpipe - mesa:lp_test_printf",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "llvmpipe - mesa:lp_test_lookup_multiple",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "virgl - mesa:virgl_staging_mgr",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "glapi - mesa:es2-ABI-check",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "mesa - mesa:main-test",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "st_mesa - mesa:st_format_test",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "gbm - mesa:gbm-abi-check",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "gbm - mesa:gbm-symbols-check",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "llvmpipe - mesa:lp_test_conv",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "egl - mesa:egl-entrypoint-check",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "egl - mesa:egl-symbols-check",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "compiler+nir - mesa:nir_tests",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "llvmpipe - mesa:lp_test_blend",
+      "result": "OK",
+      "returncode": 0
+    }
+  ],
+  "original_wrapper_exit": 1,
+  "test_recovery_wrapper_exit": 1,
+  "original_tests": {
+    "passed": 43,
+    "failed": 5,
+    "log_sha256": "1b92c6b1ea6ae831ef910466ab63d2be6846770a07fd8eef3da0c88f25ca6adf"
+  },
+  "affected_recheck": {
+    "passed": 5,
+    "failed": 0,
+    "log_sha256": "0a4d86ecb2ad806c5ff2504dcfb7db881a87bc2bc4443af1e6fec475778f0416"
+  },
+  "upstream_log_sha256": "1b92c6b1ea6ae831ef910466ab63d2be6846770a07fd8eef3da0c88f25ca6adf",
+  "consumer_exit": 0,
+  "native_render_stdout": "renderer: llvmpipe (LLVM 22.1.8, 256 bits)\negl: 1.5\npixel: 0 32 64 255\n",
+  "native_render_sha256": "cc64d325c166ce110023cc91b384d4f1736738bbba389e4b8c6b72180433dd97",
+  "unchanged_compiled_elfs": 1266,
+  "stage_unchanged_by_consumer": true,
+  "consumer_command": [
+    "cc",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "/src/toddy-probe.c",
+    "-I/stage/usr/include",
+    "-L/stage/usr/lib",
+    "-Wl,-rpath-link,/stage/usr/lib",
+    "-I/usr/include/libdrm",
+    "-lEGL",
+    "-lGLESv2",
+    "-o",
+    "/build/mesa-consumer"
+  ],
+  "consumer_runtime_rpath": false,
+  "free_bytes_after_build": 22693060608,
+  "recovery": "Missing test tools built/rechecked five only, original43passes reused. Complete first stage reused; consumer-only link-search fix3, no persistent RPATH. Original job1/job2 failures preserved.",
+  "stage": {
+    "file_entries": 36,
+    "manifest_sha256": "d7ab441e7d5e95eac864b9628df4ef9838d8d57128b3a35a405cdaafbd85d4bd"
+  },
+  "prepared_source": {
+    "source_sha256": "25e0a669e6638c3563e7be32a0a09f1888317e6eed0d047dc41d49dc8de26c7d",
+    "reference": "BLFS13.1-systemd x/mesa.html",
+    "book_page_sha256": "549e9a7c1706fa958c5ca1216411fa93005fa23b921a70bc16a6e450726aef70",
+    "source_patches": [],
+    "recipe_sha256": "40f33d0c1b92b6e3f6107069f094a5632f2e19d1f5b631d291d272382f864744",
+    "probe_sha256": "a8eabb0bbba1df5298ae3451796f8c44df15d6f1cbc927d0ccd03168c312f3f4"
+  },
+  "actual_job_exits": {
+    "mesa-1": 1,
+    "mesa-resume-2": 1,
+    "mesa-finish-3": 0
+  },
+  "installed_consumer": {
+    "scope": "Native installed software EGL/GLES shaders/rasterization/pixel readback, not GNOME/window/physical GPU acceptance",
+    "native_consumer_exit": 0,
+    "version": "26.1.7",
+    "render_stdout": "renderer: llvmpipe (LLVM 22.1.8, 256 bits)\negl: 1.5\npixel: 0 32 64 255\n",
+    "stderr": "",
+    "runtime_versions": {
+      "egl": "26.1.7",
+      "glesv2": "26.1.7",
+      "gbm": "26.1.7"
+    }
+  },
+  "installed_notice_index_sha256": "d07602dda0f074aad9b3facebe349f097a554879c6415f343ee796d3ba0497ac",
+  "retained_named_and_selected_header_notices": 6876,
+  "dynamic_dependencies": {
+    "libEGL.so.1.0.0": [
+      "libgallium-26.1.7.so",
+      "libgbm.so.1",
+      "libexpat.so.1",
+      "libdrm.so.2",
+      "libwayland-client.so.0",
+      "libm.so.6",
+      "libgcc_s.so.1",
+      "libc.so.6"
+    ],
+    "libGLESv2.so.2.0.0": [
+      "libgallium-26.1.7.so"
+    ],
+    "libgallium-26.1.7.so": [
+      "libdrm.so.2",
+      "libLLVM.so.22.1",
+      "libexpat.so.1",
+      "libz.so.1",
+      "libzstd.so.1",
+      "libstdc++.so.6",
+      "libm.so.6",
+      "libgcc_s.so.1",
+      "libc.so.6"
+    ],
+    "libgbm.so.1.0.0": [
+      "libdrm.so.2",
+      "libexpat.so.1",
+      "libm.so.6",
+      "libgcc_s.so.1",
+      "libc.so.6"
+    ]
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-mesa-native-evidence.tar.gz",
+    "bytes": 972118,
+    "sha256": "963d11701b707493184e8d3faeaa726d2df2537af24fe90ac551a295aaa04e42",
+    "members": 41,
+    "scope": "Raw Mesa compile/upstream48 qualification, missing-test/link failures/recoveries, pixel and owned-install evidence; retain for final release"
+  }
+}

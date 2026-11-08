@@ -1,0 +1,55 @@
+{
+  "scope": "Native Epoxy EGL/GLES dispatch, shaders/raster/pixel readback over owned Mesa, no window/physical/X11 acceptance",
+  "registered_tests": 4,
+  "tests": [
+    {
+      "name": "libepoxy:header_guards",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libepoxy:misc_defines",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libepoxy:khronos_typedefs",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "libepoxy:gl_version",
+      "result": "OK",
+      "returncode": 0
+    }
+  ],
+  "upstream_log_sha256": "1353cc7d5ba1230ae2e1930dbd80bf0f404adc9982f2a7c607cd0f243aa30040",
+  "staged_consumer_exit": 0,
+  "native_render_stdout": "renderer: llvmpipe (LLVM 22.1.8, 256 bits)\negl: 1.5\npixel: 0 32 64 255\n",
+  "unregistered_tests": "Upstream EGL/GLX tests require X11. Current EGL-only profile registers four portable tests; independent real surfaceless EGL/GLES consumer required.",
+  "prepared_source": {
+    "source_sha256": "072cda4b59dd098bba8c2363a6247299db1fa89411dc221c8b81b8ee8192e623",
+    "reference": "BLFS13.1-systemd x/libepoxy.html",
+    "book_page_sha256": "c63f49d468dbb992d9028a7102e73b347a126f7f184128bd7c0ab7048b6c0764",
+    "source_patches": [],
+    "recipe_sha256": "251f6cbf62d6dcc55b7e75a7dc33958a46662cae51b2719c7c400392eba55388",
+    "probe_sha256": "5c4fa12bd9f7e8ff09f79065d051b5b58fdc84b114e945eba5d2ce9bae765c75"
+  },
+  "original_job_exit": 0,
+  "installed_consumer": {
+    "scope": "Native installed Epoxy dispatch over Mesa EGL/GLES shader/raster/pixel, no GNOME/window/physical/X11 acceptance",
+    "native_consumer_exit": 0,
+    "version": "1.5.10",
+    "render_stdout": "renderer: llvmpipe (LLVM 22.1.8, 256 bits)\negl: 1.5\npixel: 0 32 64 255\n",
+    "stderr": ""
+  },
+  "retained_named_and_selected_header_notices": 42,
+  "installed_notice_index_sha256": "f0a4340e9cc5264a1f42da175bd5a9efcd2bdcebb5b7fd87d29cd0c2c0629c8b",
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-libepoxy-native-evidence.tar.gz",
+    "bytes": 99400,
+    "sha256": "e13d07564a9ceee9fba268635e9bd13d8427639bbed1c9c2ff147cef16ea1553",
+    "members": 19,
+    "scope": "Raw Epoxy EGL-only upstream4 and real staged/installed shader/raster/pixel/owned-package proof; retain final release"
+  }
+}

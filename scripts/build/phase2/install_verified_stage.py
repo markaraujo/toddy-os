@@ -19,6 +19,10 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libepoxy': ('1.5.10', 'glibc (>= 2.44-1), mesa (= 26.1.7-1+toddy1)',
+                 'libepoxy-1.5.10.tar.xz', 'usr/lib/libepoxy.so.0'),
+    'mesa': ('26.1.7', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), llvm-runtime (= 22.1.8-1+toddy1), libdrm (= 2.4.134-1+toddy1), wayland (>= 1.26.0-1+toddy1), systemd (>= 261.2-1), libelf (>= 0.195-1), expat (>= 2.10.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
+             'mesa-26.1.7.tar.xz', 'usr/lib/libEGL.so.1'),
     'pyyaml': ('6.0.3', 'python (>= 3.14), python (<< 3.15)',
                'pyyaml-6.0.3.tar.gz', 'usr/lib/python3.14/site-packages/yaml/__init__.py'),
     'libpciaccess': ('0.19', 'glibc (>= 2.44-1), zlib (>= 1.3.2-1)',
@@ -89,6 +93,10 @@ if __name__ == '__main__':
     rust_legacy=name=='rustc' and (log/'rustc-tools-finish-8.job.json').exists()
     mako_resume=name=='mako' and (log/'mako-resume-2.job.json').exists()
     qualifier=('rustc-tools-finish-8' if rust_legacy else 'rustc-stage-4') if name=='rustc' else 'mako-resume-2' if mako_resume else 'pango-stage-6' if name=='pango' else 'llvm-qualify-recovery-4' if llvm_recovery else 'llvm-qualify-resume-3' if llvm_resume else 'llvm-qualify-2' if name=='llvm' else 'wayland-recheck-2' if name=='wayland' else 'harfbuzz-resume-2' if name=='harfbuzz' else name+'-1'
+    mesa_resume=name=='mesa' and (log/'mesa-resume-2.job.json').exists()
+    if mesa_resume:qualifier='mesa-resume-2'
+    mesa_finish=name=='mesa' and (log/'mesa-finish-3.job.json').exists()
+    if mesa_finish:qualifier='mesa-finish-3'
     pci_resume=name=='libpciaccess' and (log/'libpciaccess-resume-2.job.json').exists()
     if pci_resume:qualifier='libpciaccess-resume-2'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
@@ -174,6 +182,79 @@ if __name__ == '__main__':
                 assert json.loads((log/'libpciaccess-resume-2.job.json').read_text())['command'][-1]==(ROOT/'scripts/build/phase2/libpciaccess-resume.sh').read_text()
                 assert proof['stage_regular_files_unchanged']>0
 
+    if name=='mesa':
+        input_=Path('/mnt/lfs/sources/phase2/inputs/mesa-26.1.7')
+        work=Path('/mnt/lfs/sources/phase2/work/mesa-1')
+        canonical=(ROOT/'scripts/build/phase2/mesa-build.sh').read_text()
+        if mesa_resume:
+            assert (log/'mesa-1.exit').read_text().strip()=='1'
+            assert hashlib.sha256((input_/'toddy-build.sh').read_bytes()).hexdigest()=='40f33d0c1b92b6e3f6107069f094a5632f2e19d1f5b631d291d272382f864744'
+            added='# These registered test dependencies are explicitly build_by_default:false.\nninja -C /build/compile -j4 src/compiler/glsl/glcpp/glcpp src/compiler/glsl/glsl_compiler\n'
+            assert canonical.count(added)==1 and canonical.count(' -Wl,-rpath-link,/stage/usr/lib')==1
+            assert canonical.replace(added,'').replace(' -Wl,-rpath-link,/stage/usr/lib','')==(input_/'toddy-build.sh').read_text()
+            recovery_job=json.loads((log/'mesa-resume-2.job.json').read_text())
+            assert recovery_job['command'][-3:]==['python3','-c',(ROOT/'scripts/build/phase2/mesa_resume.py').read_text()]
+            assert recovery_job['harness_sha256']==hashlib.sha256((ROOT/'scripts/build/phase2/isolated.sh').read_bytes()).hexdigest()
+        else:
+            assert (input_/'toddy-build.sh').read_text()==canonical
+        assert (input_/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/mesa-probe.c').read_bytes()
+        job=json.loads((log/'mesa-1.job.json').read_text())
+        assert job['command'][-1]=='/src/toddy-build.sh'
+        assert job['harness_sha256']==hashlib.sha256((ROOT/'scripts/build/phase2/isolated.sh').read_bytes()).hexdigest()
+        proof=json.loads((work/'test-results.json').read_text())
+        assert proof['consumer_exit']==0 and proof['registered_tests']>10
+        assert all((r['result']=='OK' and r['returncode']==0) or (r['result']=='SKIP' and r['returncode']==77) for r in proof['tests'])
+        path=work/'compile/meson-logs/testlog.json'
+        assert proof['upstream_log_sha256']==hashlib.sha256(path.read_bytes()).hexdigest()
+        rows=[json.loads(line) for line in path.read_text().splitlines()]
+        if mesa_resume:
+            assert len(rows)==48 and sum(r['result']=='OK' and r['returncode']==0 for r in rows)==43
+            failed=[r for r in rows if r['result']!='OK']
+            assert len(failed)==5 and all(r['returncode']==1 and 'FileNotFoundError' in r['stderr'] for r in failed)
+            corrected_path=work/'compile/meson-logs/testlog-recovery-2.json'
+            corrected=[json.loads(line) for line in corrected_path.read_text().splitlines()]
+            assert len(corrected)==5 and all(r['result']=='OK' and r['returncode']==0 for r in corrected)
+            assert {r['name'] for r in failed}=={r['name'] for r in corrected}
+            assert proof['affected_recheck']['log_sha256']==hashlib.sha256(corrected_path.read_bytes()).hexdigest()
+            merged={r['name']:{k:r[k] for k in ['name','result','returncode']} for r in rows}
+            for r in corrected:merged[r['name']]={k:r[k] for k in ['name','result','returncode']}
+            assert list(merged.values())==proof['tests'] and proof['original_wrapper_exit']==1
+            for label in ['missing-test-tools','affected-tests','first-stage']:
+                assert (work/'mesa-recovery-2'/(label+'.exit')).read_text().strip()=='0'
+            if mesa_finish:
+                assert (log/'mesa-resume-2.exit').read_text().strip()=='1'
+                assert (work/'mesa-recovery-2/consumer-compile.exit').read_text().strip()=='1'
+                final_job=json.loads((log/'mesa-finish-3.job.json').read_text())
+                assert final_job['command'][-3:]==['python3','-c',(ROOT/'scripts/build/phase2/mesa_finish.py').read_text()]
+                assert final_job['harness_sha256']==hashlib.sha256((ROOT/'scripts/build/phase2/isolated.sh').read_bytes()).hexdigest()
+                for label in ['consumer-compile','render']:
+                    assert (work/'mesa-finish-3'/(label+'.exit')).read_text().strip()=='0'
+                assert proof['stage_unchanged_by_consumer'] and proof['consumer_runtime_rpath'] is False
+                from xorg_sdk_build import entries as stage_entries
+                assert stage_entries(work/'stage')==proof['stages']
+            else:
+                for label in ['consumer-compile','render']:
+                    assert (work/'mesa-recovery-2'/(label+'.exit')).read_text().strip()=='0'
+        else:
+            assert [{'name':r['name'],'result':r['result'],'returncode':r['returncode']} for r in rows]==proof['tests']
+        assert proof['native_render_sha256']==hashlib.sha256((work/'native-render.log').read_bytes()).hexdigest()
+        assert 'renderer: llvmpipe' in proof['native_render_stdout']
+        binaries=json.loads((work/'compiled-binaries.json').read_text())
+        assert len(binaries)==proof['unchanged_compiled_elfs']
+        for relative,sha in binaries.items():
+            path=work/relative
+            assert path.resolve().is_relative_to(work) and not path.is_symlink()
+            with path.open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==sha
+    if name=='libepoxy':
+        input_=Path('/mnt/lfs/sources/phase2/inputs/libepoxy-1.5.10')
+        work=Path('/mnt/lfs/sources/phase2/work/libepoxy-1')
+        assert (input_/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libepoxy-build.sh').read_bytes()
+        assert (input_/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libepoxy-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text())
+        assert proof['staged_consumer_exit']==0 and proof['registered_tests']==4
+        assert proof['upstream_log_sha256']==hashlib.sha256((work/'compile/meson-logs/testlog.json').read_bytes()).hexdigest()
+        assert all(r['result']=='OK' and r['returncode']==0 for r in proof['tests'])
+        assert 'renderer: llvmpipe' in proof['native_render_stdout']
     if name=='pyyaml':
         input_=Path('/mnt/lfs/sources/phase2/inputs/pyyaml-6.0.3')
         work=Path('/mnt/lfs/sources/phase2/work/pyyaml-1')

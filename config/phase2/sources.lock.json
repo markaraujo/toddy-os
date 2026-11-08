@@ -1033,6 +1033,18 @@
       "book_md5": "dbc6f815cd75160ccf12e470be1c8d6e",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "libepoxy",
+      "version": "1.5.10",
+      "filename": "libepoxy-1.5.10.tar.xz",
+      "url": "https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz",
+      "sha256": "072cda4b59dd098bba8c2363a6247299db1fa89411dc221c8b81b8ee8192e623",
+      "reference": "BLFS13.1-systemd x/libepoxy.html",
+      "book_page_sha256": "c63f49d468dbb992d9028a7102e73b347a126f7f184128bd7c0ab7048b6c0764",
+      "book_md5": "10c635557904aed5239a4885a7c4efb7",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }
