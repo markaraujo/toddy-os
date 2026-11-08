@@ -1,0 +1,162 @@
+{
+  "scope": "Native PNG/JPEG stream roundtrip, invalid image rejection and builtin PNG/JPEG/GIF registry; no window/desktop acceptance",
+  "registered_tests": 23,
+  "tests": [
+    {
+      "name": "conform - gdk-pixbuf:pixbuf-construction",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "format - gdk-pixbuf:animation",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "conform - gdk-pixbuf:pixbuf-icon-serialize",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "conform+slow - gdk-pixbuf:pixbuf-fail",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "io - gdk-pixbuf:pixbuf-threads",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "io - gdk-pixbuf:pixbuf-gif",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "io - gdk-pixbuf:pixbuf-icc",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "io - gdk-pixbuf:pixbuf-dpi",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "format - gdk-pixbuf:pixbuf-pixdata",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "io - gdk-pixbuf:pixbuf-stream",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "conform - gdk-pixbuf:pixbuf-reftest",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "io - gdk-pixbuf:pixbuf-resource",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "ops - gdk-pixbuf:pixbuf-scale",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "format - gdk-pixbuf:pixbuf-jpeg",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "ops - gdk-pixbuf:pixbuf-scale-two-step",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "format - gdk-pixbuf:pixbuf-gif-circular-table",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "io - gdk-pixbuf:pixbuf-save",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "conform - gdk-pixbuf:pixbuf-readonly-to-mutable",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "ops - gdk-pixbuf:pixbuf-composite",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "slow - gdk-pixbuf:pixbuf-area-updated",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "format - gdk-pixbuf:pixbuf-short-gif-write",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "security - gdk-pixbuf:cve-2015-4491",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "slow - gdk-pixbuf:pixbuf-randomly-modified",
+      "result": "OK",
+      "returncode": 0
+    }
+  ],
+  "upstream_log_sha256": "1f63d2a04d9219c9e0742dd43fd59ed31b14233b9e3625fca5519899ea5c3e8b",
+  "staged_consumer_exit": 0,
+  "native_image_stdout": "native-pixbuf-png-jpeg-roundtrip-invalid-denied-builtin-png-jpeg-gif\n",
+  "generated_cache": {
+    "scope": "Actual native generated empty external-loader cache; PNG/JPEG/GIF builtin, future SVG acquisition requires controlled cache update",
+    "path": "usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache",
+    "sha256": "9ad91ea7abf71583e0581ca5e5d26b5bb55f57eebb419ad6f687ccd9d9cc1714",
+    "external_module_records": 0
+  },
+  "optional_loaders": "Glycin/TIFF/weakly-maintained others disabled in this initial profile; SVG still requires native librsvg loader qualification",
+  "prepared_source": {
+    "source_sha256": "172f80e3626ec31520a970400f1a3694e04718f6c2cd2885f75250fb5a6995a4",
+    "reference": "BLFS13.1-systemd x/gdk-pixbuf.html",
+    "book_page_sha256": "f88e67ea462bf4390c0c528160003db1103f19e3fed8c886ed4ee550e23bcb33",
+    "source_patches": [],
+    "recipe_sha256": "3cbd1879c8bd4fef15b6aeefbdd60fb0bb08327226b02465c7e66f620d043455",
+    "probe_sha256": "dd54d4ba8eb3ff507123fb133fa5b84be04a5099d1c5018a6c6afcbc6a65ff24"
+  },
+  "original_job_exit": 0,
+  "installed_consumer": {
+    "scope": "Native installed image APIs, generated cache and actual GI PNG pixel roundtrip; no graphical window acceptance",
+    "version": "2.44.7",
+    "native_consumer_exit": 0,
+    "stdout": "native-pixbuf-png-jpeg-roundtrip-invalid-denied-builtin-png-jpeg-gif\n",
+    "gi_exit": 0,
+    "gi_stdout": "native-pixbuf-gi-png-pixels\n",
+    "cache_sha256": "9ad91ea7abf71583e0581ca5e5d26b5bb55f57eebb419ad6f687ccd9d9cc1714",
+    "builtin_loaders": [
+      "png",
+      "jpeg",
+      "gif"
+    ],
+    "external_loaders": 0
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-gdk-pixbuf-native-evidence.tar.gz",
+    "bytes": 145258,
+    "sha256": "cb5c4b4767c33b6aae86b6d9e986f5cd48d74dbbbc93edbf8070f228e41c75be",
+    "members": 20,
+    "scope": "Native Pixbuf23 upstream tests, PNG/JPEG/GIF and malformed image/actual GI/cache/owned archive evidence; retain final release"
+  }
+}

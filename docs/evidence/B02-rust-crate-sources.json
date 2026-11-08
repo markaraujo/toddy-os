@@ -1,0 +1,48 @@
+{
+  "scope": "Frozen Rust dependency source acquisition only; no native cargo-c/librsvg compilation/install/UI acceptance",
+  "published_lock_supplement": {
+    "scope": "Published lock supplement only; original frozen GitHub source unchanged",
+    "crate_sha256": "e033742583695968c690582ab678f65c133779767940c9bc35718e990a235d45",
+    "crate_filename": "cargo-c-0.10.24+cargo-0.98.0.crate",
+    "url": "https://static.crates.io/crates/cargo-c/cargo-c-0.10.24+cargo-0.98.0.crate",
+    "source_commit": "d7d1743e8d94faa858b4326e7d45e201f4347b27",
+    "matching_rust_source_files": 12,
+    "cargo_toml_original_exact_match": true,
+    "cargo_lock_sha256": "d7cd5b83a35fb486298c29d7a685d4bbb3b46e2454f93aaff5bc213369fde8a5",
+    "packages": 419
+  },
+  "host_source_compilations": 0,
+  "metadata_requests": 0,
+  "parents": [
+    {
+      "name": "cargo-c",
+      "version": "0.10.24",
+      "primary_archive": "cargo-c-0.10.24.tar.gz",
+      "primary_source_sha256": "91c6e0be34aa0ad26b7ef21ce21a390c95635e4e6e00b7a6ff07323f9af8550b",
+      "cargo_lock_sha256": "d7cd5b83a35fb486298c29d7a685d4bbb3b46e2454f93aaff5bc213369fde8a5",
+      "vendor_exit": 0,
+      "artifact": {
+        "filename": "cargo-c-0.10.24-vendor.tar.gz",
+        "sha256": "878eb5b65da8f2fdff3ec2ff54ace08eb717c3b17ff06affd6dda22b88324d52",
+        "bytes": 69562960
+      },
+      "registry_crates": 418
+    },
+    {
+      "name": "librsvg",
+      "version": "2.62.3",
+      "primary_archive": "librsvg-2.62.3.tar.xz",
+      "primary_source_sha256": "7eb449b2722a768021356f66dfee3202c229b54ed4e6a70ce40c090e97ff16f2",
+      "cargo_lock_sha256": "86ddeb5d8077e320083e8cf3fbd2d72e9735e4f37d84ce2e3845b0a95ef053d1",
+      "vendor_exit": 0,
+      "artifact": {
+        "filename": "librsvg-2.62.3-vendor.tar.gz",
+        "sha256": "67a52cab6d6723c7302369b52fcc3e7db7b2edf043348be7bae4f37f53a53ec7",
+        "bytes": 46140658
+      },
+      "registry_crates": 352
+    }
+  ],
+  "source_contract": "config/phase2/rust-crates.lock.json",
+  "guard_regressions": "3 registry/path/hash and mutated/extra/linked-cache refusals passed; byte-preserving public-source mode correction regression1 passed"
+}

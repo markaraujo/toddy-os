@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gdk-pixbuf': ('2.44.7', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), libpng (>= 1.6.58-1+toddy1), libjpeg-turbo (= 3.2.0-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)',
+                    'gdk-pixbuf-2.44.7.tar.xz', 'usr/lib/girepository-1.0/GdkPixbuf-2.0.typelib'),
     'libepoxy': ('1.5.10', 'glibc (>= 2.44-1), mesa (= 26.1.7-1+toddy1)',
                  'libepoxy-1.5.10.tar.xz', 'usr/lib/libepoxy.so.0'),
     'mesa': ('26.1.7', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), llvm-runtime (= 22.1.8-1+toddy1), libdrm (= 2.4.134-1+toddy1), wayland (>= 1.26.0-1+toddy1), systemd (>= 261.2-1), libelf (>= 0.195-1), expat (>= 2.10.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
@@ -245,6 +247,19 @@ if __name__ == '__main__':
             path=work/relative
             assert path.resolve().is_relative_to(work) and not path.is_symlink()
             with path.open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==sha
+    if name=='gdk-pixbuf':
+        input_=Path('/mnt/lfs/sources/phase2/inputs/gdk-pixbuf-2.44.7')
+        work=Path('/mnt/lfs/sources/phase2/work/gdk-pixbuf-1')
+        assert (input_/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/gdk-pixbuf-build.sh').read_bytes()
+        assert (input_/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/gdk-pixbuf-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text())
+        assert proof['staged_consumer_exit']==0 and proof['registered_tests']>10
+        assert proof['upstream_log_sha256']==hashlib.sha256((work/'compile/meson-logs/testlog.json').read_bytes()).hexdigest()
+        assert all((r['result']=='OK' and r['returncode']==0) or (r['result']=='SKIP' and r['returncode']==77) for r in proof['tests'])
+        cache=work/'stage'/proof['generated_cache']['path']
+        assert cache.resolve().is_relative_to(work/'stage') and not cache.is_symlink()
+        assert hashlib.sha256(cache.read_bytes()).hexdigest()==proof['generated_cache']['sha256']
+        assert proof['generated_cache']['external_module_records']==0
     if name=='libepoxy':
         input_=Path('/mnt/lfs/sources/phase2/inputs/libepoxy-1.5.10')
         work=Path('/mnt/lfs/sources/phase2/work/libepoxy-1')

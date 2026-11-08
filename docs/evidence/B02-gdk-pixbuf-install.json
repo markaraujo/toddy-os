@@ -1,0 +1,38 @@
+{
+  "scope": "Owned native PNG/JPEG/GIF builtin image/GI profile; actual encode/decode and malformed-image refusal, generated loader cache, no GTK window proof",
+  "step": {
+    "step": "b02-gdk-pixbuf-install",
+    "started": "2026-11-08T13:39:18.611169+00:00",
+    "finished": "2026-11-08T13:39:46.408369+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 236,
+    "log_sha256": "f779f1ef7935556ef83d4ece05515ddf26c133404049791dda79754c57c2c20d"
+  },
+  "success_record_sha256": "891939a4a370665d2ecd65d4849c906a80ad181e2292485833336544dc09a93e",
+  "package": {
+    "name": "gdk-pixbuf",
+    "version": "2.44.7-1+toddy1",
+    "archive_sha256": "f8ee4621b7f6c6011d3a9782b0ce91848ae6d2a99b2d7309c948175c48689a12",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-gdk-pixbuf-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 26.496,
+        "entries": 130281,
+        "regular_files": 115950,
+        "regular_bytes": 6436207585
+      },
+      {
+        "seconds": 24.666,
+        "entries": 130514,
+        "regular_files": 116162,
+        "regular_bytes": 6439735616
+      }
+    ],
+    "total_seconds": 55.229
+  }
+}

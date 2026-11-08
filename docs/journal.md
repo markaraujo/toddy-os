@@ -2061,3 +2061,45 @@ staged/installed Epoxy dispatch/version/shader/raster/pixel0; owned0/0 in48.281s
 surfaceless consumer required. Raw failures/tests/pixels/package proof bundles
 retained. No GNOME/window, physical GPU, GLX/Vulkan or Phase2ISO/G2 acceptance.
 Next native GdkPixbuf2.44.7 PNG/JPEG/GI and frozen librsvg/GTK prerequisites.
+
+
+### B02 native image primitives and frozen Rust sources — 2026-11-08 UTC
+
+GdkPixbuf2.44.7 PNG/JPEG/GIF builtin/GI profile passed23 registered upstream tests,
+actual PNG/JPEG stream roundtrip, malformed-image refusal and format registry.
+Upstream suppresses global loader-cache updates under DESTDIR: retained actual
+native generated comments-only external-loader cache, asserted no temporary paths
+and owned it. Native install/post0/0 in55.229s plus actual Python GI PNG/pixel0 and
+cache hash. SVG and optional loader profiles remain unqualified; no GTK window.
+
+Cargo-c0.10.24 GitHub source omits Cargo.lock. Authenticated official published
+crate0.10.24+cargo-0.98.0 lock supplement: same VCS/tagd7d174...7b27, exact original
+Cargo.toml and12 published Rust files; source/version unchanged. API route403
+replaced by official sparse registry checksum, no retry/auth workaround. Reused
+cached official1.96 seeds privately for source-only Cargo vendor; no host install/
+source compilation, native product SDK1.97.1 unchanged. Both parent sources frozen:
+418 cargo-c and352 librsvg registry crates, full package/file checksums verified,
+unchanged locks, deterministic vendor archives and per-crate licenses. Three input/
+cache refusal guards passed. Source acquisition is not native build acceptance.
+
+Native cargo-c1 stopped before compilation: six public fnv1.0.7 files extracted
+root-owned0640 deny UID101 checksum reads. All vendor hashes verified, only six
+modes0640→0644 with exact byte preservation/receipts, initial101/wrapper1 logs kept.
+Future preparer normalizes verified public readability. One regression confirms
+bytes/private sibling unchanged. Unique native resume2 reuses exact source/config
+and cached metadata; no privilege/source/version change or passed-suite replay.
+Native cargo-c/librsvg/SVG/GTK and complete desktop acceptance remain pending.
+
+
+### B02 native cargo-c qualification
+
+[Native build and probe recovery](evidence/B02-cargo-c-build.json) preserve the original
+public-source readability failure101 and unaccepted version-help probe. Same-byte
+six-file mode correction yielded native build0/upstream25PASS/0ignored. Direct
+plugin version correction qualified11 actual checks, Rust fixture1PASS and C ABI
+header/pkg-config/shared+static consumers returning42. Four stage binaries unchanged;
+no successful source/compiler suite replay. [Owned installation](evidence/B02-cargo-c-install.json)
+recipe/post0/0 in110.292s and installed offline C ABI checks0;9143 legal notices.
+Build-only tool, no base/live/catalog availability implied. Raw53-member evidence
+SHA68f4e20df4751d24b3108fdbdbdc22be2996b586138dcc9a9c18c87d1996b2d9
+retained for release. Native librsvg/SVG/GTK/desktop acceptance remains pending.

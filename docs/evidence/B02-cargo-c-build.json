@@ -1,0 +1,363 @@
+{
+  "scope": "Native build-only cargo-c qualification, not base/live/catalog availability or graphical acceptance",
+  "consumer_exit": 0,
+  "stage_bins_unchanged": [
+    {
+      "name": "cargo-capi",
+      "sha256": "783077b5933ea9c0de3e6393ef43a91f819af428ce640f581cf337e3e4112b0d"
+    },
+    {
+      "name": "cargo-cbuild",
+      "sha256": "a638200747079a45501730e130bd2aeca0f533da722010e3dc38fe1c40fa0c11"
+    },
+    {
+      "name": "cargo-cinstall",
+      "sha256": "05152703bd832d295966c29e3a34a0701eb68bb257f31c7078b50d6d2626e4ad"
+    },
+    {
+      "name": "cargo-ctest",
+      "sha256": "5cce4af3750430237200d4ac50e88f6fba03a4382bddc42462d81bbf34322fb6"
+    }
+  ],
+  "consumer": {
+    "scope": "Native build-tool plugins, real generated header/pkg-config/shared+static C ABI and Rust fixture test; no product UI",
+    "uid": 101,
+    "versions": {
+      "capi": "cargo-c 0.10.24+cargo-0.98.0",
+      "cbuild": "cargo-c 0.10.24+cargo-0.98.0",
+      "cinstall": "cargo-c 0.10.24+cargo-0.98.0",
+      "ctest": "cargo-c 0.10.24+cargo-0.98.0"
+    },
+    "checks": [
+      {
+        "name": "version-capi",
+        "native_exit": 0,
+        "command": [
+          "cargo-capi",
+          "--version"
+        ]
+      },
+      {
+        "name": "version-cbuild",
+        "native_exit": 0,
+        "command": [
+          "cargo-cbuild",
+          "--version"
+        ]
+      },
+      {
+        "name": "version-cinstall",
+        "native_exit": 0,
+        "command": [
+          "cargo-cinstall",
+          "--version"
+        ]
+      },
+      {
+        "name": "version-ctest",
+        "native_exit": 0,
+        "command": [
+          "cargo-ctest",
+          "--version"
+        ]
+      },
+      {
+        "name": "cbuild",
+        "native_exit": 0,
+        "command": [
+          "cargo",
+          "cbuild",
+          "--release",
+          "--offline"
+        ]
+      },
+      {
+        "name": "cinstall",
+        "native_exit": 0,
+        "command": [
+          "cargo",
+          "cinstall",
+          "--release",
+          "--offline",
+          "--prefix=/usr",
+          "--libdir=lib",
+          "--destdir=/build/capi-consumer-recovery-3/stage"
+        ]
+      },
+      {
+        "name": "ctest",
+        "native_exit": 0,
+        "command": [
+          "cargo",
+          "ctest",
+          "--release",
+          "--offline"
+        ]
+      },
+      {
+        "name": "c-shared-compile",
+        "native_exit": 0,
+        "command": [
+          "cc",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "/build/capi-consumer-recovery-3/consumer.c",
+          "-I/build/capi-consumer-recovery-3/stage/usr/include",
+          "-L/build/capi-consumer-recovery-3/stage/usr/lib",
+          "-ltoddy_fixture",
+          "-o",
+          "/build/capi-consumer-recovery-3/shared-consumer"
+        ]
+      },
+      {
+        "name": "c-shared-execute",
+        "native_exit": 0,
+        "command": [
+          "/build/capi-consumer-recovery-3/shared-consumer"
+        ]
+      },
+      {
+        "name": "c-static-compile",
+        "native_exit": 0,
+        "command": [
+          "cc",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "/build/capi-consumer-recovery-3/consumer.c",
+          "-I/build/capi-consumer-recovery-3/stage/usr/include",
+          "/build/capi-consumer-recovery-3/stage/usr/lib/libtoddy_fixture.a",
+          "-lgcc_s",
+          "-lutil",
+          "-lrt",
+          "-lpthread",
+          "-lm",
+          "-ldl",
+          "-lc",
+          "-o",
+          "/build/capi-consumer-recovery-3/static-consumer"
+        ]
+      },
+      {
+        "name": "c-static-execute",
+        "native_exit": 0,
+        "command": [
+          "/build/capi-consumer-recovery-3/static-consumer"
+        ]
+      }
+    ],
+    "expected_answer": 42,
+    "prefix": "/usr",
+    "fixture_acquisition": "offline, no external dependencies"
+  },
+  "upstream": {
+    "native_exit": 0,
+    "passed": 25,
+    "ignored": 0,
+    "log_sha256": "2fa8b2d7bf30cdef1a1ed2539eef1ac6eab491edc00c110a0b73ab7b498d8320"
+  },
+  "native_build": {
+    "native_exit": 0,
+    "log_sha256": "61904d8b36a6679637e3818499bfbee954003ed038d933af4c5f1a7f263df737"
+  },
+  "jobs": {
+    "cargo-c-1": 1,
+    "cargo-c-readability-resume-2": 1,
+    "cargo-c-probe-recovery-3": 0
+  },
+  "source_readability": {
+    "scope": "Six authenticated public fnv1.0.7 source/legal files only; byte-preserving0640->0644, no compiler privilege/global security change",
+    "state": "complete",
+    "planned_changes": [
+      {
+        "path": "fnv-1.0.7/.travis.yml",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "e68d7a670a6431d08d1a75a3992f5050753f202fd6f4dcd198ae283482bdf9fa"
+      },
+      {
+        "path": "fnv-1.0.7/Cargo.toml.orig",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "21e110ea0ca79e72c211d078d5107ae8926abe4d7ea7eb6b127903c98450c593"
+      },
+      {
+        "path": "fnv-1.0.7/LICENSE-APACHE",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+      },
+      {
+        "path": "fnv-1.0.7/LICENSE-MIT",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "65fdb6c76cd61612070c066eec9ecdb30ee74fb27859d0d9af58b9f499fd0c3e"
+      },
+      {
+        "path": "fnv-1.0.7/README.md",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "7653d488c5bdf93a3069bf41770650897b85815521f67f69a4a90d0fefb4fa1f"
+      },
+      {
+        "path": "fnv-1.0.7/lib.rs",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "32bf17ff841b4c285985d9e9df79c5099318c11bf0436ee8582dec30fc9ec826"
+      }
+    ],
+    "previous_prepared_sha256": "6610deeda5d8cdb496a51504f703f77f37cd50890c4517cdbd3cc6ad354b4ac8",
+    "previous_prepared": {
+      "scope": "Authenticated immutable cargo-c source/published same-commit lock/vendor input only, not compilation/install",
+      "sources": [
+        {
+          "name": "cargo-c",
+          "version": "0.10.24",
+          "filename": "cargo-c-0.10.24.tar.gz",
+          "url": "https://github.com/lu-zero/cargo-c/archive/v0.10.24/cargo-c-0.10.24.tar.gz",
+          "sha256": "91c6e0be34aa0ad26b7ef21ce21a390c95635e4e6e00b7a6ff07323f9af8550b",
+          "reference": "BLFS13.1-systemd general/cargo-c.html",
+          "book_page_sha256": "3ca542f96fe52d5843b4d9de968ca0da273de7d6221fadbf9f071af8ba789aa7",
+          "book_md5": "b6247bf8f5eac962f001ee8a37f1c25f",
+          "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+          "status": "source_verified"
+        },
+        {
+          "name": "cargo-c-vendor",
+          "version": "0.10.24",
+          "filename": "cargo-c-0.10.24-vendor.tar.gz",
+          "sha256": "878eb5b65da8f2fdff3ec2ff54ace08eb717c3b17ff06affd6dda22b88324d52",
+          "bytes": 69562960,
+          "url": "generated:phase2_rust_vendor/cargo-c-vendor",
+          "reference": "Derived Cargo vendor from authenticated primary/published lock; all registry package/file checksums verified",
+          "parent_source_sha256": "91c6e0be34aa0ad26b7ef21ce21a390c95635e4e6e00b7a6ff07323f9af8550b",
+          "cargo_lock_sha256": "d7cd5b83a35fb486298c29d7a685d4bbb3b46e2454f93aaff5bc213369fde8a5",
+          "producer_sha256": "6d8c8eeacf73038ed430e979fed371c69423c31cab0d5f624c062bc12752b536",
+          "registry_crates": 418,
+          "integrity": "Official Cargo vendor plus independent exact package/file-manifest verification before archive freezing",
+          "status": "source_verified"
+        },
+        {
+          "name": "cargo-c-published-source",
+          "version": "0.10.24+cargo-0.98.0",
+          "filename": "cargo-c-0.10.24+cargo-0.98.0.crate",
+          "url": "https://static.crates.io/crates/cargo-c/cargo-c-0.10.24+cargo-0.98.0.crate",
+          "sha256": "e033742583695968c690582ab678f65c133779767940c9bc35718e990a235d45",
+          "reference": "Official crates.io release lock supplement for same frozen cargo-c0.10.24 Git commit; source Cargo.toml and all published Rust files match primary archive",
+          "registry_index_url": "https://index.crates.io/ca/rg/cargo-c",
+          "registry_index_sha256": "96b01cc647646fddcab7d5ad68e9ea18bbd52cd10d771446d4655b9fed5af524",
+          "source_commit": "d7d1743e8d94faa858b4326e7d45e201f4347b27",
+          "cargo_lock_sha256": "d7cd5b83a35fb486298c29d7a685d4bbb3b46e2454f93aaff5bc213369fde8a5",
+          "integrity": "Official registry checksum and same-commit/source identity matched before using supplementary Cargo.lock",
+          "status": "source_verified"
+        }
+      ],
+      "cargo_lock_sha256": "d7cd5b83a35fb486298c29d7a685d4bbb3b46e2454f93aaff5bc213369fde8a5",
+      "registry_crates": 418,
+      "recipe_sha256": "af413407cfd4c09a6170bcf851d12df9b6f3b2c3e8c77f3ddbf190b0c0a16d5e",
+      "probe_sha256": "c19d6d5b92993e3c684c73e83d88a62bc3c9a8adcd1cbbf8a82f27d828a44cf5",
+      "cargo_config_sha256": "fb59e9b16be8fb0e61488ec17a0104be0eb95493da6c89b435aeb004fec96e9b",
+      "free_bytes_before_build": 21942403072
+    },
+    "prepared_sha256": "2a999357db5fba07e30f9550e189982332969282a906fb1abceea312b914e69e"
+  },
+  "recovery": "Original build101 before compilation retained; six authenticated public fnv files0640->0644 preserve bytes. Resume2 build0/upstream25pass; wrapper1 rejected help from version invocation. Probe-only recovery3 direct plugin versions and11 actual C ABI checks0; four stage binary hashes unchanged. No compiler/upstream replay.",
+  "input": {
+    "scope": "Authenticated immutable cargo-c source/published same-commit lock/vendor input only, not compilation/install",
+    "sources": [
+      {
+        "name": "cargo-c",
+        "version": "0.10.24",
+        "filename": "cargo-c-0.10.24.tar.gz",
+        "url": "https://github.com/lu-zero/cargo-c/archive/v0.10.24/cargo-c-0.10.24.tar.gz",
+        "sha256": "91c6e0be34aa0ad26b7ef21ce21a390c95635e4e6e00b7a6ff07323f9af8550b",
+        "reference": "BLFS13.1-systemd general/cargo-c.html",
+        "book_page_sha256": "3ca542f96fe52d5843b4d9de968ca0da273de7d6221fadbf9f071af8ba789aa7",
+        "book_md5": "b6247bf8f5eac962f001ee8a37f1c25f",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      },
+      {
+        "name": "cargo-c-vendor",
+        "version": "0.10.24",
+        "filename": "cargo-c-0.10.24-vendor.tar.gz",
+        "sha256": "878eb5b65da8f2fdff3ec2ff54ace08eb717c3b17ff06affd6dda22b88324d52",
+        "bytes": 69562960,
+        "url": "generated:phase2_rust_vendor/cargo-c-vendor",
+        "reference": "Derived Cargo vendor from authenticated primary/published lock; all registry package/file checksums verified",
+        "parent_source_sha256": "91c6e0be34aa0ad26b7ef21ce21a390c95635e4e6e00b7a6ff07323f9af8550b",
+        "cargo_lock_sha256": "d7cd5b83a35fb486298c29d7a685d4bbb3b46e2454f93aaff5bc213369fde8a5",
+        "producer_sha256": "6d8c8eeacf73038ed430e979fed371c69423c31cab0d5f624c062bc12752b536",
+        "registry_crates": 418,
+        "integrity": "Official Cargo vendor plus independent exact package/file-manifest verification before archive freezing",
+        "status": "source_verified"
+      },
+      {
+        "name": "cargo-c-published-source",
+        "version": "0.10.24+cargo-0.98.0",
+        "filename": "cargo-c-0.10.24+cargo-0.98.0.crate",
+        "url": "https://static.crates.io/crates/cargo-c/cargo-c-0.10.24+cargo-0.98.0.crate",
+        "sha256": "e033742583695968c690582ab678f65c133779767940c9bc35718e990a235d45",
+        "reference": "Official crates.io release lock supplement for same frozen cargo-c0.10.24 Git commit; source Cargo.toml and all published Rust files match primary archive",
+        "registry_index_url": "https://index.crates.io/ca/rg/cargo-c",
+        "registry_index_sha256": "96b01cc647646fddcab7d5ad68e9ea18bbd52cd10d771446d4655b9fed5af524",
+        "source_commit": "d7d1743e8d94faa858b4326e7d45e201f4347b27",
+        "cargo_lock_sha256": "d7cd5b83a35fb486298c29d7a685d4bbb3b46e2454f93aaff5bc213369fde8a5",
+        "integrity": "Official registry checksum and same-commit/source identity matched before using supplementary Cargo.lock",
+        "status": "source_verified"
+      }
+    ],
+    "cargo_lock_sha256": "d7cd5b83a35fb486298c29d7a685d4bbb3b46e2454f93aaff5bc213369fde8a5",
+    "registry_crates": 418,
+    "recipe_sha256": "af413407cfd4c09a6170bcf851d12df9b6f3b2c3e8c77f3ddbf190b0c0a16d5e",
+    "probe_sha256": "c19d6d5b92993e3c684c73e83d88a62bc3c9a8adcd1cbbf8a82f27d828a44cf5",
+    "cargo_config_sha256": "fb59e9b16be8fb0e61488ec17a0104be0eb95493da6c89b435aeb004fec96e9b",
+    "free_bytes_before_build": 21942403072,
+    "public_vendor_readability": [
+      {
+        "path": "fnv-1.0.7/.travis.yml",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "e68d7a670a6431d08d1a75a3992f5050753f202fd6f4dcd198ae283482bdf9fa"
+      },
+      {
+        "path": "fnv-1.0.7/Cargo.toml.orig",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "21e110ea0ca79e72c211d078d5107ae8926abe4d7ea7eb6b127903c98450c593"
+      },
+      {
+        "path": "fnv-1.0.7/LICENSE-APACHE",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+      },
+      {
+        "path": "fnv-1.0.7/LICENSE-MIT",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "65fdb6c76cd61612070c066eec9ecdb30ee74fb27859d0d9af58b9f499fd0c3e"
+      },
+      {
+        "path": "fnv-1.0.7/README.md",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "7653d488c5bdf93a3069bf41770650897b85815521f67f69a4a90d0fefb4fa1f"
+      },
+      {
+        "path": "fnv-1.0.7/lib.rs",
+        "before_mode": 416,
+        "after_mode": 420,
+        "content_sha256": "32bf17ff841b4c285985d9e9df79c5099318c11bf0436ee8582dec30fc9ec826"
+      }
+    ]
+  },
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-cargo-c-native-evidence.tar.gz",
+    "bytes": 620313,
+    "sha256": "68f4e20df4751d24b3108fdbdbdc22be2996b586138dcc9a9c18c87d1996b2d9",
+    "members": 53,
+    "scope": "Raw CargoC original failures/source-readability/native25tests/probe-only recovery11checks/installed C ABI and owned-package proof; retain final release"
+  }
+}

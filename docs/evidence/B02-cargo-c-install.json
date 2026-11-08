@@ -1,0 +1,173 @@
+{
+  "scope": "Owned native build-only cargo-c plugins; actual installed offline C ABI fixture generation/shared+static C consumers; no UI acceptance",
+  "step": {
+    "step": "b02-cargo-c-install",
+    "started": "2026-11-08T14:57:32.746701+00:00",
+    "finished": "2026-11-08T14:58:55.115918+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 2447,
+    "log_sha256": "5c722da3c95e41fdeab058a904b761b33b37fcec7e257693ca80d5870af187d0"
+  },
+  "success_record_sha256": "766df1667e082b68ed2dfa5ef4392abef66bcbbe0bab17eeb98354e39825ab9e",
+  "package": {
+    "name": "cargo-c",
+    "version": "0.10.24-1+toddy1",
+    "archive_sha256": "d32a863ce17d454ffd3ecc4987c6184fe473f2336edfb19a6da3c78b660c1da8",
+    "installed": true
+  },
+  "full_root_timing": {
+    "step": "b02-cargo-c-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 26.987,
+        "entries": 130514,
+        "regular_files": 116162,
+        "regular_bytes": 6439735616
+      },
+      {
+        "seconds": 21.46,
+        "entries": 132958,
+        "regular_files": 118604,
+        "regular_bytes": 6597838557
+      }
+    ],
+    "total_seconds": 110.292
+  },
+  "consumer": {
+    "scope": "Native build-tool plugins, real generated header/pkg-config/shared+static C ABI and Rust fixture test; no product UI",
+    "uid": 0,
+    "versions": {
+      "capi": "cargo-c 0.10.24+cargo-0.98.0",
+      "cbuild": "cargo-c 0.10.24+cargo-0.98.0",
+      "cinstall": "cargo-c 0.10.24+cargo-0.98.0",
+      "ctest": "cargo-c 0.10.24+cargo-0.98.0"
+    },
+    "checks": [
+      {
+        "name": "version-capi",
+        "native_exit": 0,
+        "command": [
+          "cargo-capi",
+          "--version"
+        ]
+      },
+      {
+        "name": "version-cbuild",
+        "native_exit": 0,
+        "command": [
+          "cargo-cbuild",
+          "--version"
+        ]
+      },
+      {
+        "name": "version-cinstall",
+        "native_exit": 0,
+        "command": [
+          "cargo-cinstall",
+          "--version"
+        ]
+      },
+      {
+        "name": "version-ctest",
+        "native_exit": 0,
+        "command": [
+          "cargo-ctest",
+          "--version"
+        ]
+      },
+      {
+        "name": "cbuild",
+        "native_exit": 0,
+        "command": [
+          "cargo",
+          "cbuild",
+          "--release",
+          "--offline"
+        ]
+      },
+      {
+        "name": "cinstall",
+        "native_exit": 0,
+        "command": [
+          "cargo",
+          "cinstall",
+          "--release",
+          "--offline",
+          "--prefix=/usr",
+          "--libdir=lib",
+          "--destdir=/tmp/toddy-cargo-c-6rzy791v/consumer/stage"
+        ]
+      },
+      {
+        "name": "ctest",
+        "native_exit": 0,
+        "command": [
+          "cargo",
+          "ctest",
+          "--release",
+          "--offline"
+        ]
+      },
+      {
+        "name": "c-shared-compile",
+        "native_exit": 0,
+        "command": [
+          "cc",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "/tmp/toddy-cargo-c-6rzy791v/consumer/consumer.c",
+          "-I/tmp/toddy-cargo-c-6rzy791v/consumer/stage/usr/include",
+          "-L/tmp/toddy-cargo-c-6rzy791v/consumer/stage/usr/lib",
+          "-ltoddy_fixture",
+          "-o",
+          "/tmp/toddy-cargo-c-6rzy791v/consumer/shared-consumer"
+        ]
+      },
+      {
+        "name": "c-shared-execute",
+        "native_exit": 0,
+        "command": [
+          "/tmp/toddy-cargo-c-6rzy791v/consumer/shared-consumer"
+        ]
+      },
+      {
+        "name": "c-static-compile",
+        "native_exit": 0,
+        "command": [
+          "cc",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "/tmp/toddy-cargo-c-6rzy791v/consumer/consumer.c",
+          "-I/tmp/toddy-cargo-c-6rzy791v/consumer/stage/usr/include",
+          "/tmp/toddy-cargo-c-6rzy791v/consumer/stage/usr/lib/libtoddy_fixture.a",
+          "-lgcc_s",
+          "-lutil",
+          "-lrt",
+          "-lpthread",
+          "-lm",
+          "-ldl",
+          "-lc",
+          "-o",
+          "/tmp/toddy-cargo-c-6rzy791v/consumer/static-consumer"
+        ]
+      },
+      {
+        "name": "c-static-execute",
+        "native_exit": 0,
+        "command": [
+          "/tmp/toddy-cargo-c-6rzy791v/consumer/static-consumer"
+        ]
+      }
+    ],
+    "expected_answer": 42,
+    "prefix": "/usr",
+    "fixture_acquisition": "offline, no external dependencies"
+  },
+  "notice_index_sha256": "885973551e067fd9b1a1cdc513eda89f5da44addeb6428744fc6ad33e3dc9688",
+  "retained_notices": 9143,
+  "target_free_bytes": 20395237376
+}
