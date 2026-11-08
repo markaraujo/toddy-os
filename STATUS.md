@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-08T03:25:29.787644+00:00
+Last verified: 2026-11-08T12:44:12+00:00
 
 Verified:
 
@@ -25,8 +25,10 @@ Verified:
 - Native libxml2-2.15.3 compile7 programs/3904 regression cases/stage0; native package install/post0/0 and XML external-loader deny/positive control passed. Full-root scans19.328s of22.343s; optimization not enabled.
 - Owned native Wayland1.26 after26 combined tests, unchanged-binary FD correction and postcheck-only EGL metadata reconciliation; actual client/server sync passed. Protocols1.49 native191 tests/install/post0/0.
 - Native Pixman0.46.4 source35 tests/stage0, owned install/post0/0 with opaque/transparent pixel-composite consumer; kernel config already enables virtual DRM/user namespaces/seccomp (configuration only).
+- Owned Rust1.97.1 SDK, proportional serif/fonts/Pango and12 independent Python test-tool backends qualified; original compiler/test evidence reused.
+- Native keyboard data2.48/libxkbcommon1.13.2 with exact patch owned0/0;26 library+2 locale tests,5516 data PASS/3164 optional pycountry SKIP, actual US/BR/PT Shift/registry;411 ELFs unchanged. Headless xkbcomp1.5.0 SDK independently owned0/0; no X server/GUI acceptance.
 
-Running: Continuing image/font prerequisites for Cairo/GTK; four native desktop dependencies owned, no guest writer active.
+Running: No guest writer after owned keyboard pair install/post0/0; continuing pinned graphics/render prerequisites for actual native GTK/GNOME session.
 
 Remaining:
 

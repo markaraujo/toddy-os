@@ -1,0 +1,648 @@
+{
+  "scope": "Headless Xorg SDK stages with explicit compiler-fixture-only recovery, no session/physical claim",
+  "packages": [
+    {
+      "name": "util-macros",
+      "version": "1.20.2",
+      "source_sha256": "9ac269eba24f672d7d7b3574e4be5f333d13f04a7712303b1821b2a51ac82e8e",
+      "commands": [
+        [
+          "/build/xorg-sdk/source/util-macros/configure",
+          "--prefix=/usr",
+          "--libdir=/usr/lib",
+          "--disable-static",
+          "--docdir=/usr/share/doc/util-macros-1.20.2"
+        ],
+        [
+          "make",
+          "-j4"
+        ],
+        [
+          "make",
+          "-j4",
+          "check"
+        ],
+        [
+          "make",
+          "DESTDIR=/stage/util-macros",
+          "install"
+        ]
+      ],
+      "command_exits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "test_artifacts": [],
+      "removed_libtool_archives": [],
+      "elfs_without_runtime_build_paths": 0,
+      "log_sha256": "cc8541bcbd74b5ba9d86d3d3ce08d1f9eedd08ee25766c0a9c2ee8f155970b92",
+      "stage_file_entries": 3,
+      "stage_manifest_sha256": "56ff5d9cc8aaea056e6665b70f5cdf3780f6dccd9279675efeea3a052eb16fb5",
+      "actual_test_reports": []
+    },
+    {
+      "name": "xorgproto",
+      "version": "2025.1",
+      "source_sha256": "56898c716c0578df8a2d828c9c3e5c528277705c0484381a81960fe1a67668e8",
+      "commands": [
+        [
+          "meson",
+          "setup",
+          "/build/xorg-sdk/compile/xorgproto",
+          "/build/xorg-sdk/source/xorgproto",
+          "--prefix=/usr",
+          "--libdir=lib",
+          "--buildtype=release",
+          "--wrap-mode=nofallback"
+        ],
+        [
+          "ninja",
+          "-C",
+          "/build/xorg-sdk/compile/xorgproto",
+          "-j4"
+        ],
+        [
+          "meson",
+          "test",
+          "-C",
+          "/build/xorg-sdk/compile/xorgproto",
+          "--no-rebuild",
+          "--print-errorlogs",
+          "--logbase",
+          "toddy-tests"
+        ],
+        [
+          "ninja",
+          "-C",
+          "/build/xorg-sdk/compile/xorgproto",
+          "install"
+        ]
+      ],
+      "command_exits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "test_artifacts": [
+        {
+          "path": "/build/xorg-sdk/compile/xorgproto/meson-logs/toddy-tests.json",
+          "sha256": "2c6ff49b92c384413fd7064f296a181af7d53548691f0b8f8eb1b1cac35edb53"
+        }
+      ],
+      "removed_libtool_archives": [],
+      "elfs_without_runtime_build_paths": 0,
+      "log_sha256": "f3fac9a028a59cab636848e10a35c1e677318231b47f5b78c61cbbc03afb16b7",
+      "stage_file_entries": 169,
+      "stage_manifest_sha256": "d167fbd53ee1b24d84d2b999e74a467b679d1a7d9a667633d5a2309ea87fcc82",
+      "actual_test_reports": [
+        {
+          "path": "/build/xorg-sdk/compile/xorgproto/meson-logs/toddy-tests.json",
+          "drivers": [
+            {
+              "name": "xorgproto:evdev-keysym-check",
+              "result": "SKIP",
+              "returncode": 77
+            }
+          ],
+          "sha256": "2c6ff49b92c384413fd7064f296a181af7d53548691f0b8f8eb1b1cac35edb53"
+        }
+      ]
+    },
+    {
+      "name": "libxau",
+      "version": "1.0.12",
+      "source_sha256": "74d0e4dfa3d39ad8939e99bda37f5967aba528211076828464d2777d477fc0fb",
+      "commands": [
+        [
+          "/build/xorg-sdk/source/libxau/configure",
+          "--prefix=/usr",
+          "--libdir=/usr/lib",
+          "--disable-static",
+          "--docdir=/usr/share/doc/libxau-1.0.12"
+        ],
+        [
+          "make",
+          "-j4"
+        ],
+        [
+          "make",
+          "-j4",
+          "check"
+        ],
+        [
+          "make",
+          "DESTDIR=/stage/libxau",
+          "install"
+        ]
+      ],
+      "command_exits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "test_artifacts": [
+        {
+          "path": "/build/xorg-sdk/compile/libxau/Autest.trs",
+          "sha256": "7f175f2f5d04511903d382671ba96ca623e127f57730d53966587cf2c2689229"
+        },
+        {
+          "path": "/build/xorg-sdk/compile/libxau/test-suite.log",
+          "sha256": "7afc9b94da168d7268ee0696b42206b8dbd2f2234b175668bf4abdb0cd91eb5f"
+        }
+      ],
+      "removed_libtool_archives": [
+        "usr/lib/libXau.la"
+      ],
+      "elfs_without_runtime_build_paths": 1,
+      "log_sha256": "5840da0fcd2fd5c9bd73ddd7bde292223f5b52402b79a45af016270da6c8c631",
+      "stage_file_entries": 14,
+      "stage_manifest_sha256": "2183b7cc0246d47761e043b92cfea60b5abccccbc35786dceaa996048c751ffa",
+      "actual_test_reports": [
+        {
+          "path": "/build/xorg-sdk/compile/libxau/test-suite.log",
+          "counts": {
+            "TOTAL": 1,
+            "PASS": 1,
+            "SKIP": 0,
+            "XFAIL": 0,
+            "FAIL": 0,
+            "XPASS": 0,
+            "ERROR": 0
+          },
+          "sha256": "7afc9b94da168d7268ee0696b42206b8dbd2f2234b175668bf4abdb0cd91eb5f"
+        }
+      ]
+    },
+    {
+      "name": "libxdmcp",
+      "version": "1.1.5",
+      "source_sha256": "d8a5222828c3adab70adf69a5583f1d32eb5ece04304f7f8392b6a353aa2228c",
+      "commands": [
+        [
+          "/build/xorg-sdk/source/libxdmcp/configure",
+          "--prefix=/usr",
+          "--libdir=/usr/lib",
+          "--disable-static",
+          "--docdir=/usr/share/doc/libxdmcp-1.1.5",
+          "--disable-docs"
+        ],
+        [
+          "make",
+          "-j4"
+        ],
+        [
+          "make",
+          "-j4",
+          "check"
+        ],
+        [
+          "make",
+          "DESTDIR=/stage/libxdmcp",
+          "install"
+        ]
+      ],
+      "command_exits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "test_artifacts": [
+        {
+          "path": "/build/xorg-sdk/compile/libxdmcp/test/Array.trs",
+          "sha256": "7f175f2f5d04511903d382671ba96ca623e127f57730d53966587cf2c2689229"
+        },
+        {
+          "path": "/build/xorg-sdk/compile/libxdmcp/test/test-suite.log",
+          "sha256": "fe728c2158c1bcd91d09f65a55e969e925db6b216cc2cae0478158c686526753"
+        }
+      ],
+      "removed_libtool_archives": [
+        "usr/lib/libXdmcp.la"
+      ],
+      "elfs_without_runtime_build_paths": 1,
+      "log_sha256": "9fd48d6c9d9e960fa377c7a481d9d57e481e6ef54f85214e4e5c7d704ea855e5",
+      "stage_file_entries": 5,
+      "stage_manifest_sha256": "0aff4df0cddb1a0e9b7843b49c4fa9564b7a49032930ecf9494d89bc6a365376",
+      "actual_test_reports": [
+        {
+          "path": "/build/xorg-sdk/compile/libxdmcp/test/test-suite.log",
+          "counts": {
+            "TOTAL": 1,
+            "PASS": 1,
+            "SKIP": 0,
+            "XFAIL": 0,
+            "FAIL": 0,
+            "XPASS": 0,
+            "ERROR": 0
+          },
+          "sha256": "fe728c2158c1bcd91d09f65a55e969e925db6b216cc2cae0478158c686526753"
+        }
+      ]
+    },
+    {
+      "name": "xcb-proto",
+      "version": "1.17.0",
+      "source_sha256": "2c1bacd2110f4799f74de6ebb714b94cf6f80fb112316b1219480fd22562148c",
+      "commands": [
+        [
+          "/build/xorg-sdk/source/xcb-proto/configure",
+          "--prefix=/usr",
+          "--libdir=/usr/lib",
+          "--disable-static",
+          "--docdir=/usr/share/doc/xcb-proto-1.17.0"
+        ],
+        [
+          "make",
+          "-j4"
+        ],
+        [
+          "make",
+          "-j4",
+          "check"
+        ],
+        [
+          "make",
+          "DESTDIR=/stage/xcb-proto",
+          "install"
+        ]
+      ],
+      "command_exits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "test_artifacts": [],
+      "removed_libtool_archives": [],
+      "elfs_without_runtime_build_paths": 0,
+      "log_sha256": "dacb98bba76b9029699fa4575e82f7982aba6ebd162bc0c2de3ae6bba1a63255",
+      "stage_file_entries": 62,
+      "stage_manifest_sha256": "ffd4e9fe0dbc5780c480f6161870445bb660b2478b38dd45bf9e4422b5507feb",
+      "actual_test_reports": []
+    },
+    {
+      "name": "libxcb",
+      "version": "1.17.0",
+      "source_sha256": "599ebf9996710fea71622e6e184f3a8ad5b43d0e5fa8c4e407123c88a59a6d55",
+      "commands": [
+        [
+          "/build/xorg-sdk/source/libxcb/configure",
+          "--prefix=/usr",
+          "--libdir=/usr/lib",
+          "--disable-static",
+          "--docdir=/usr/share/doc/libxcb-1.17.0",
+          "--without-doxygen",
+          "--disable-devel-docs"
+        ],
+        [
+          "make",
+          "-j4"
+        ],
+        [
+          "make",
+          "-j4",
+          "check"
+        ],
+        [
+          "make",
+          "DESTDIR=/stage/libxcb",
+          "install"
+        ]
+      ],
+      "command_exits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "test_artifacts": [
+        {
+          "path": "/build/xorg-sdk/compile/libxcb/check-pc-requires.trs",
+          "sha256": "7f175f2f5d04511903d382671ba96ca623e127f57730d53966587cf2c2689229"
+        },
+        {
+          "path": "/build/xorg-sdk/compile/libxcb/test-suite.log",
+          "sha256": "d1a6d660b926678116c5ed5823eab19c1c41d14b0731ba3f02d7c225737d5106"
+        },
+        {
+          "path": "/build/xorg-sdk/compile/libxcb/tests/test-suite.log",
+          "sha256": "3f7b572310f023a8b77af08bd18a14035252ac477c6bdb9d68a9586e707e5b73"
+        }
+      ],
+      "removed_libtool_archives": [
+        "usr/lib/libxcb-sync.la",
+        "usr/lib/libxcb-dri2.la",
+        "usr/lib/libxcb-xinerama.la",
+        "usr/lib/libxcb-render.la",
+        "usr/lib/libxcb-screensaver.la",
+        "usr/lib/libxcb-xf86dri.la",
+        "usr/lib/libxcb-xv.la",
+        "usr/lib/libxcb-record.la",
+        "usr/lib/libxcb-xkb.la",
+        "usr/lib/libxcb.la",
+        "usr/lib/libxcb-glx.la",
+        "usr/lib/libxcb-res.la",
+        "usr/lib/libxcb-dri3.la",
+        "usr/lib/libxcb-present.la",
+        "usr/lib/libxcb-xfixes.la",
+        "usr/lib/libxcb-dbe.la",
+        "usr/lib/libxcb-randr.la",
+        "usr/lib/libxcb-shm.la",
+        "usr/lib/libxcb-xtest.la",
+        "usr/lib/libxcb-shape.la",
+        "usr/lib/libxcb-damage.la",
+        "usr/lib/libxcb-xvmc.la",
+        "usr/lib/libxcb-dpms.la",
+        "usr/lib/libxcb-composite.la",
+        "usr/lib/libxcb-xinput.la"
+      ],
+      "elfs_without_runtime_build_paths": 25,
+      "log_sha256": "0a4d17b5823c39e993ff2661bc7f73ecb262feb9a500480064d3860db424b362",
+      "optional_check_framework": "Unavailable; Check-based unit tests not registered. make check exit alone is not unit acceptance.",
+      "stage_file_entries": 2446,
+      "stage_manifest_sha256": "2ef33f8e640cf028ac1a94d1485f1f45a8246f541ad86d97f8be95ae7ebb9c57",
+      "actual_test_reports": [
+        {
+          "path": "/build/xorg-sdk/compile/libxcb/test-suite.log",
+          "counts": {
+            "TOTAL": 1,
+            "PASS": 1,
+            "SKIP": 0,
+            "XFAIL": 0,
+            "FAIL": 0,
+            "XPASS": 0,
+            "ERROR": 0
+          },
+          "sha256": "d1a6d660b926678116c5ed5823eab19c1c41d14b0731ba3f02d7c225737d5106"
+        },
+        {
+          "path": "/build/xorg-sdk/compile/libxcb/tests/test-suite.log",
+          "counts": {
+            "TOTAL": 0,
+            "PASS": 0,
+            "SKIP": 0,
+            "XFAIL": 0,
+            "FAIL": 0,
+            "XPASS": 0,
+            "ERROR": 0
+          },
+          "sha256": "3f7b572310f023a8b77af08bd18a14035252ac477c6bdb9d68a9586e707e5b73"
+        }
+      ]
+    },
+    {
+      "name": "xtrans",
+      "version": "1.6.0",
+      "source_sha256": "faafea166bf2451a173d9d593352940ec6404145c5d1da5c213423ce4d359e92",
+      "commands": [
+        [
+          "/build/xorg-sdk/source/xtrans/configure",
+          "--prefix=/usr",
+          "--libdir=/usr/lib",
+          "--disable-static",
+          "--docdir=/usr/share/doc/xtrans-1.6.0"
+        ],
+        [
+          "make",
+          "-j4"
+        ],
+        [
+          "make",
+          "-j4",
+          "check"
+        ],
+        [
+          "make",
+          "DESTDIR=/stage/xtrans",
+          "install"
+        ]
+      ],
+      "command_exits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "test_artifacts": [],
+      "removed_libtool_archives": [],
+      "elfs_without_runtime_build_paths": 0,
+      "log_sha256": "0cf32dd9e00b168fdfa2a5d57854079ea56b73ed2f39b240a541bcf172e2f4a7",
+      "stage_file_entries": 10,
+      "stage_manifest_sha256": "cbf84af8356da601bc8440084de81131e9dcd3fb8eeb84d76fbd4ecfd977d685",
+      "actual_test_reports": []
+    },
+    {
+      "name": "libx11",
+      "version": "1.8.13",
+      "source_sha256": "69606f485c2c07c14ef64f75b7bb326d48587af33795d9ab3e607c0b5f94f11c",
+      "commands": [
+        [
+          "/build/xorg-sdk/source/libx11/configure",
+          "--prefix=/usr",
+          "--libdir=/usr/lib",
+          "--disable-static",
+          "--docdir=/usr/share/doc/libx11-1.8.13",
+          "--disable-specs",
+          "--without-xmlto",
+          "--without-fop"
+        ],
+        [
+          "make",
+          "-j4"
+        ],
+        [
+          "make",
+          "-j4",
+          "check"
+        ],
+        [
+          "make",
+          "DESTDIR=/stage/libx11",
+          "install"
+        ]
+      ],
+      "command_exits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "test_artifacts": [
+        {
+          "path": "/build/xorg-sdk/compile/libx11/nls/compose-check.pl.trs",
+          "sha256": "7f175f2f5d04511903d382671ba96ca623e127f57730d53966587cf2c2689229"
+        },
+        {
+          "path": "/build/xorg-sdk/compile/libx11/nls/test-suite.log",
+          "sha256": "e2b669ac87ec5117da705264c6334bc459f69a605cfff0816ba859d4f835c3c6"
+        }
+      ],
+      "removed_libtool_archives": [
+        "usr/lib/libX11-xcb.la",
+        "usr/lib/libX11.la"
+      ],
+      "elfs_without_runtime_build_paths": 2,
+      "log_sha256": "1950fe06aea15729733019529ced2814c52a8b415eece6262fc0a48c429187b7",
+      "stage_file_entries": 1021,
+      "stage_manifest_sha256": "4ccc39f0d5e93e6128ae1af56a5671ca00a23a5a1a9fe98a8bcd38606dd5bf5d",
+      "actual_test_reports": [
+        {
+          "path": "/build/xorg-sdk/compile/libx11/nls/test-suite.log",
+          "counts": {
+            "TOTAL": 1,
+            "PASS": 1,
+            "SKIP": 0,
+            "XFAIL": 0,
+            "FAIL": 0,
+            "XPASS": 0,
+            "ERROR": 0
+          },
+          "sha256": "e2b669ac87ec5117da705264c6334bc459f69a605cfff0816ba859d4f835c3c6"
+        }
+      ]
+    },
+    {
+      "name": "libxkbfile",
+      "version": "1.2.0",
+      "source_sha256": "7f71884e5faf56fb0e823f3848599cf9b5a9afce51c90982baeb64f635233ebf",
+      "commands": [
+        [
+          "meson",
+          "setup",
+          "/build/xorg-sdk/compile/libxkbfile",
+          "/build/xorg-sdk/source/libxkbfile",
+          "--prefix=/usr",
+          "--libdir=lib",
+          "--buildtype=release",
+          "--wrap-mode=nofallback"
+        ],
+        [
+          "ninja",
+          "-C",
+          "/build/xorg-sdk/compile/libxkbfile",
+          "-j4"
+        ],
+        [
+          "meson",
+          "test",
+          "-C",
+          "/build/xorg-sdk/compile/libxkbfile",
+          "--no-rebuild",
+          "--print-errorlogs",
+          "--logbase",
+          "toddy-tests"
+        ],
+        [
+          "ninja",
+          "-C",
+          "/build/xorg-sdk/compile/libxkbfile",
+          "install"
+        ]
+      ],
+      "command_exits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "test_artifacts": [],
+      "removed_libtool_archives": [],
+      "elfs_without_runtime_build_paths": 1,
+      "log_sha256": "893c8a98459a9a38648043ced55ad6e27e18cb7f72aa8dac5fce8e3463ed1c45",
+      "stage_file_entries": 10,
+      "stage_manifest_sha256": "5e2cc881e23ab710c2fa8c82e9ceed71b49d54c5354e5b99ebc26b7a724de455",
+      "actual_test_reports": []
+    },
+    {
+      "name": "xkbcomp",
+      "version": "1.5.0",
+      "source_sha256": "2ac31f26600776db6d9cd79b3fcd272263faebac7eb85fb2f33c7141b8486060",
+      "commands": [
+        [
+          "meson",
+          "setup",
+          "/build/xorg-sdk/compile/xkbcomp",
+          "/build/xorg-sdk/source/xkbcomp",
+          "--prefix=/usr",
+          "--libdir=lib",
+          "--buildtype=release",
+          "--wrap-mode=nofallback",
+          "-Dxkb-config-root=/usr/share/xkeyboard-config-2"
+        ],
+        [
+          "ninja",
+          "-C",
+          "/build/xorg-sdk/compile/xkbcomp",
+          "-j4"
+        ],
+        [
+          "meson",
+          "test",
+          "-C",
+          "/build/xorg-sdk/compile/xkbcomp",
+          "--no-rebuild",
+          "--print-errorlogs",
+          "--logbase",
+          "toddy-tests"
+        ],
+        [
+          "ninja",
+          "-C",
+          "/build/xorg-sdk/compile/xkbcomp",
+          "install"
+        ]
+      ],
+      "command_exits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "test_artifacts": [],
+      "removed_libtool_archives": [],
+      "elfs_without_runtime_build_paths": 1,
+      "log_sha256": "31e6cdd08377722161c93c97ffc219fc95c9af114b42f6591857879e327391f6",
+      "stage_file_entries": 3,
+      "stage_manifest_sha256": "e0e1d9ce55d0ba8c4d5e24dacbf568fc1bb564480e5467f9ba2bcdcdbeb6d253",
+      "actual_test_reports": []
+    }
+  ],
+  "config_sha256": "1d48096119d59d85cc78a482f00a5ac3f369c33a064847337ae9a62e3b186782",
+  "probe_exit": 0,
+  "probe_log_sha256": "c2c2c8805a259d62d4d362af53f433281253498a744aa5e47514156902bc74cf",
+  "original_probe_log_sha256": "1c10e32e566b37adf887c2b367018ec7dfba611cd70320d0a16804be3c7bf2f2",
+  "consumer": {
+    "uid": 101,
+    "scope": "Headless protocol APIs and real xkbcomp positive/negative compilation; synthetic auth, no display or login",
+    "c_api_exit": 0,
+    "xkbcomp_version": "1.5.0",
+    "xkbcomp": [
+      {
+        "name": "valid",
+        "actual_exit": 0,
+        "expected_exit": 0
+      },
+      {
+        "name": "invalid",
+        "actual_exit": 1,
+        "expected_exit": 1
+      }
+    ],
+    "c_api_evidence": "Reused original native C exit0: exact original probe prints sentinel only after check=True consumer succeeds; original subsequent compiler-fixture failure preserved."
+  },
+  "recovery": "Original SDK job1 exit1 retained after all10 build/check/stage0 and C consumer0; only corrected compiler cases rerun in job2.",
+  "original_job_exit": 1,
+  "compiler_fixture_recovery_job_exit": 0,
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-xorg-validation-sdk-native-evidence.tar.gz",
+    "bytes": 1207183,
+    "sha256": "ec1cbbdb4dea805bed8f8d2762f4418fe18ddd859f57d7d00dc8793cd177ab48",
+    "members": 114,
+    "scope": "Raw native build/test/failed fixture/recovery/owned-install evidence; retain for final release"
+  }
+}

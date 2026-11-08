@@ -865,6 +865,126 @@
       "metadata_sha256": "34a225e9d0e8c910f2192da7e67ce2eeeb6cfaa29760910294729a5c1d6b0f16",
       "integrity": "Official versioned PyPI HTTPS metadata and published SHA256 matched; new build-only backend dependency, no frozen component upgrade",
       "status": "source_verified"
+    },
+    {
+      "name": "util-macros",
+      "version": "1.20.2",
+      "filename": "util-macros-1.20.2.tar.xz",
+      "url": "https://www.x.org/pub/individual/util/util-macros-1.20.2.tar.xz",
+      "sha256": "9ac269eba24f672d7d7b3574e4be5f333d13f04a7712303b1821b2a51ac82e8e",
+      "reference": "BLFS13.1-systemd x/util-macros.html",
+      "book_page_sha256": "b4d5a0886606340d28e9aae1c9d5d6aaf95523ba1c91ae172c5c13934323c9ac",
+      "book_md5": "5f683a1966834b0a6ae07b3680bcb863",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "xorgproto",
+      "version": "2025.1",
+      "filename": "xorgproto-2025.1.tar.xz",
+      "url": "https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2025.1.tar.xz",
+      "sha256": "56898c716c0578df8a2d828c9c3e5c528277705c0484381a81960fe1a67668e8",
+      "reference": "BLFS13.1-systemd x/xorgproto.html",
+      "book_page_sha256": "6b9f8f67cabf7efcb3dc936f9ffd27448d76bee3f04acf4cd410d8b81cc93073",
+      "book_md5": "15534fa6fb13a6a70afe7561c1424f3c",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libxau",
+      "version": "1.0.12",
+      "filename": "libXau-1.0.12.tar.xz",
+      "url": "https://www.x.org/pub/individual/lib/libXau-1.0.12.tar.xz",
+      "sha256": "74d0e4dfa3d39ad8939e99bda37f5967aba528211076828464d2777d477fc0fb",
+      "reference": "BLFS13.1-systemd x/libXau.html",
+      "book_page_sha256": "38acc6309cc10535e7cd285ed552cd98554a33f55342b061d7bf3bd43ae8f4d0",
+      "book_md5": "4c9f81acf00b62e5de56a912691bd737",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libxdmcp",
+      "version": "1.1.5",
+      "filename": "libXdmcp-1.1.5.tar.xz",
+      "url": "https://www.x.org/pub/individual/lib/libXdmcp-1.1.5.tar.xz",
+      "sha256": "d8a5222828c3adab70adf69a5583f1d32eb5ece04304f7f8392b6a353aa2228c",
+      "reference": "BLFS13.1-systemd x/libXdmcp.html",
+      "book_page_sha256": "e505fc9e47d26cbf2eb6888d61209fc97c6bb8ffa5dcb04c415916f47298d7b5",
+      "book_md5": "ce0af51de211e4c99a111e64ae1df290",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "xcb-proto",
+      "version": "1.17.0",
+      "filename": "xcb-proto-1.17.0.tar.xz",
+      "url": "https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-1.17.0.tar.xz",
+      "sha256": "2c1bacd2110f4799f74de6ebb714b94cf6f80fb112316b1219480fd22562148c",
+      "reference": "BLFS13.1-systemd x/xcb-proto.html",
+      "book_page_sha256": "91ad04d603b0d92de5c36e9fafca575a99a9b8f58212beeb7033c0660f9511b9",
+      "book_md5": "c415553d2ee1a8cea43c3234a079b53f",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libxcb",
+      "version": "1.17.0",
+      "filename": "libxcb-1.17.0.tar.xz",
+      "url": "https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.17.0.tar.xz",
+      "sha256": "599ebf9996710fea71622e6e184f3a8ad5b43d0e5fa8c4e407123c88a59a6d55",
+      "reference": "BLFS13.1-systemd x/libxcb.html",
+      "book_page_sha256": "d177f101d7d9b3995b7eabae55bbc314e7409c18f92691271505248652ee4eff",
+      "book_md5": "96565523e9f9b701fcb35d31f1d4086e",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "xtrans",
+      "version": "1.6.0",
+      "filename": "xtrans-1.6.0.tar.xz",
+      "url": "https://www.x.org/pub/individual/lib/xtrans-1.6.0.tar.xz",
+      "sha256": "faafea166bf2451a173d9d593352940ec6404145c5d1da5c213423ce4d359e92",
+      "reference": "BLFS13.1-systemd x/x7lib.html",
+      "book_page_sha256": "6ca8e4e691b6b799f8f4168258692811a02b080f82863ee5fb911118ca9e7498",
+      "book_md5": "6ad67d4858814ac24e618b8072900664",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libx11",
+      "version": "1.8.13",
+      "filename": "libX11-1.8.13.tar.xz",
+      "url": "https://www.x.org/pub/individual/lib/libX11-1.8.13.tar.xz",
+      "sha256": "69606f485c2c07c14ef64f75b7bb326d48587af33795d9ab3e607c0b5f94f11c",
+      "reference": "BLFS13.1-systemd x/x7lib.html",
+      "book_page_sha256": "6ca8e4e691b6b799f8f4168258692811a02b080f82863ee5fb911118ca9e7498",
+      "book_md5": "b617a053d2003cc81309f4e13d01379c",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libxkbfile",
+      "version": "1.2.0",
+      "filename": "libxkbfile-1.2.0.tar.xz",
+      "url": "https://www.x.org/pub/individual/lib/libxkbfile-1.2.0.tar.xz",
+      "sha256": "7f71884e5faf56fb0e823f3848599cf9b5a9afce51c90982baeb64f635233ebf",
+      "reference": "BLFS13.1-systemd x/x7lib.html",
+      "book_page_sha256": "6ca8e4e691b6b799f8f4168258692811a02b080f82863ee5fb911118ca9e7498",
+      "book_md5": "fa0faa5b6a8e726186c535d73712ccea",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "xkbcomp",
+      "version": "1.5.0",
+      "filename": "xkbcomp-1.5.0.tar.xz",
+      "url": "https://www.x.org/pub/individual/app/xkbcomp-1.5.0.tar.xz",
+      "sha256": "2ac31f26600776db6d9cd79b3fcd272263faebac7eb85fb2f33c7141b8486060",
+      "reference": "BLFS13.1-systemd x/x7app.html",
+      "book_page_sha256": "353f210314fb5453bdcf58c6a7d2cefa3ed26877be6723b42e3f89cb44eab289",
+      "book_md5": "b8128ff6816897bd385ca437cd2886ee",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

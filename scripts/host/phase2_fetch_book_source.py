@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit,urljoin
 import phase2_dependency_graph as graph
 
 ROOT=Path(__file__).resolve().parents[2]
@@ -36,10 +36,19 @@ def dependency_reference_allowed(reference, parent_name, components, read_node=g
                for edge in node['edges'])
 
 
+def grouped_archive_source(base_url, text, filename):
+    assert re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._+-]{1,180}',filename)
+    assert base_url.endswith('/')
+    matches=re.findall(r'^([a-f0-9]{32})\s+'+re.escape(filename)+r'\s*$',text,re.M)
+    assert len(matches)==1,'Select one exact frozen checksum-table entry'
+    return urljoin(base_url,filename),matches[0]
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('reference');parser.add_argument('name');parser.add_argument('version')
     parser.add_argument('--dependency-of', help='Explicit required/recommended dependency of one already frozen leaf')
+    parser.add_argument('--archive', help='One exact archive in a frozen grouped Xorg checksum table')
     args=parser.parse_args()
     assert re.fullmatch(r'[a-z0-9][a-z0-9+.-]{0,95}',args.name)
     assert re.fullmatch(r'[0-9][a-zA-Z0-9._+-]{0,95}',args.version)
@@ -62,6 +71,9 @@ if __name__=='__main__':
             url=paragraph.find('.//x:a',graph.NS).get('href')
         if text.startswith('Download MD5 sum:') and md5 is None:
             md5=text.rsplit(' ',1)[-1]
+    if args.archive:
+        assert args.reference in {'x/x7lib.html','x/x7app.html'}
+        url,md5=grouped_archive_source(url,''.join(tree.itertext()),args.archive)
     parsed=urlsplit(url)
     assert parsed.scheme=='https' and not parsed.username and not parsed.password
     assert re.fullmatch(r'[a-f0-9]{32}',md5)

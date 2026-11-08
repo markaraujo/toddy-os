@@ -1,0 +1,133 @@
+{
+  "scope": "Ten independent owned headless Xorg prerequisite archives; actual installed native APIs/compiler/Compose data, not X server/GUI/physical input",
+  "step": {
+    "step": "b02-xorg-validation-sdk-install",
+    "started": "2026-11-08T12:39:49.829718+00:00",
+    "finished": "2026-11-08T12:40:14.632694+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 4238,
+    "log_sha256": "d97a0dbeca5398640c4d5cae44a78ab5aac9221b3e6dc7aba1a10b5c9837286c"
+  },
+  "success_record_sha256": "431ea17a359bb144255da862fa7cb15e21880b68f98498119d5e941186e10bb6",
+  "full_root_timing": {
+    "step": "b02-xorg-validation-sdk-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 12.902,
+        "entries": 122648,
+        "regular_files": 108555,
+        "regular_bytes": 6353257397
+      },
+      {
+        "seconds": 12.126,
+        "entries": 126883,
+        "regular_files": 112631,
+        "regular_bytes": 6381920897
+      }
+    ],
+    "total_seconds": 38.552
+  },
+  "consumer": {
+    "uid": 0,
+    "scope": "Headless protocol APIs and real xkbcomp positive/negative compilation; synthetic auth, no display or login",
+    "c_api_exit": 0,
+    "xkbcomp_version": "1.5.0",
+    "xkbcomp": [
+      {
+        "name": "valid",
+        "actual_exit": 0,
+        "expected_exit": 0
+      },
+      {
+        "name": "invalid",
+        "actual_exit": 1,
+        "expected_exit": 1
+      }
+    ],
+    "installed_compose_data": true
+  },
+  "packages": [
+    {
+      "name": "util-macros",
+      "version": "1.20.2-1+toddy1",
+      "archive_sha256": "c7918a4fff4e126a17c0522c68c81bb427abdaee638654c1692173221ace14f0",
+      "installed": true,
+      "notice_index_sha256": "5469efc1375d5f38562eab019c951b8268ec37496dc2ff7940321688e2cf18a1",
+      "named_and_selected_header_notices": 1
+    },
+    {
+      "name": "xorgproto",
+      "version": "2025.1-1+toddy1",
+      "archive_sha256": "935b23c84a9c34d8345765e91aec7f3d00e27729d3ea89fb288a042661bd22ab",
+      "installed": true,
+      "notice_index_sha256": "4b08f99a736050c69044d42ef3d90e1512f0af1b30e2b5355f41b6281168a03e",
+      "named_and_selected_header_notices": 161
+    },
+    {
+      "name": "libxau",
+      "version": "1.0.12-1+toddy1",
+      "archive_sha256": "d48f8fa4e9c753e78c7fbf5f384d7d3661f1a7ab5a074e14a5ea962f8e41b7b8",
+      "installed": true,
+      "notice_index_sha256": "abed476dd5bacd836fb2b0dd4e084b5ec61a8fdd2154a62ea2fbdb76a3eb1f62",
+      "named_and_selected_header_notices": 12
+    },
+    {
+      "name": "libxdmcp",
+      "version": "1.1.5-1+toddy1",
+      "archive_sha256": "a23f62ce426e7d1eea36d8e9bb9f4048d084b66929e0428d44cdb819a7c0f148",
+      "installed": true,
+      "notice_index_sha256": "19c5c619e5bc0c6da6bb8283dffb277487da4c8755c1cf054f2322917ce1c675",
+      "named_and_selected_header_notices": 12
+    },
+    {
+      "name": "xcb-proto",
+      "version": "1.17.0-1+toddy1",
+      "archive_sha256": "4b4f9398d857f86a0d4047898286bf69e360deab30f2f169415e45e97bd67db9",
+      "installed": true,
+      "notice_index_sha256": "bf50761f9efc5200f4ddfc0e634c5bd3e22a399de2bc8b89b6c1a674888b977c",
+      "named_and_selected_header_notices": 1
+    },
+    {
+      "name": "libxcb",
+      "version": "1.17.0-1+toddy1",
+      "archive_sha256": "ec8fe44ba2571677594f4ef039d1bce469b7fa1ec202f5cca143568965e64254",
+      "installed": true,
+      "notice_index_sha256": "53a098e8a0c6ecd06348d990944e9cc9b00c3fb33b229c816e2fb912cb8617b5",
+      "named_and_selected_header_notices": 13
+    },
+    {
+      "name": "xtrans",
+      "version": "1.6.0-1+toddy1",
+      "archive_sha256": "b98c3257531dbb7d64489bd73ff0b1eba53210bfbaa77c2050684643f7fdae41",
+      "installed": true,
+      "notice_index_sha256": "8dffd6ac357bbdb9307e464b8374751e5ef302fc1a6362429f6377fb84238cab",
+      "named_and_selected_header_notices": 9
+    },
+    {
+      "name": "libx11",
+      "version": "1.8.13-1+toddy1",
+      "archive_sha256": "4b76441536605306aafd3c4462a89ec166f282fe58c9bd04ad784819bf2590ae",
+      "installed": true,
+      "notice_index_sha256": "dcc40daee8f047084fde88b99ae95881ad59f33fd51235c76a837500cfe7a547",
+      "named_and_selected_header_notices": 451
+    },
+    {
+      "name": "libxkbfile",
+      "version": "1.2.0-1+toddy1",
+      "archive_sha256": "30447ee1391256e9e9be034a1120710f1c34dae7282be7c8248ac4cae8fd1275",
+      "installed": true,
+      "notice_index_sha256": "40ee1345e7a6d890ef8e37542e67cab168bd6d258b43ad3f387f953d6220ee22",
+      "named_and_selected_header_notices": 16
+    },
+    {
+      "name": "xkbcomp",
+      "version": "1.5.0-1+toddy1",
+      "archive_sha256": "5cc06a7d20915161c1d81fdd035ab2cda444582fa48b25a5fee2138daf864058",
+      "installed": true,
+      "notice_index_sha256": "e83eefdb9c68220120bf481f9ceab0d4448f2a120c8828c70294ceaa590d694f",
+      "named_and_selected_header_notices": 31
+    }
+  ]
+}

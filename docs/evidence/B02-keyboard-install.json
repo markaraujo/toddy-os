@@ -1,0 +1,61 @@
+{
+  "scope": "Native installed minimal Wayland keyboard pair; not graphical or physical input acceptance",
+  "step": {
+    "step": "b02-keyboard-install",
+    "started": "2026-11-08T12:43:55.944546+00:00",
+    "finished": "2026-11-08T12:44:12.126185+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 523,
+    "log_sha256": "f75b30f7cb129fba2ec279814c0e05749ba42ad32ad6a8337de9daa5a6608ecc"
+  },
+  "success_record_sha256": "d5bec26d8911e25e60054d9c1de658226810108e60dd40abf180763ab9ef3cd2",
+  "full_root_timing": {
+    "step": "b02-keyboard-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 12.349,
+        "entries": 126883,
+        "regular_files": 112631,
+        "regular_bytes": 6381920897
+      },
+      {
+        "seconds": 12.147,
+        "entries": 127403,
+        "regular_files": 113117,
+        "regular_bytes": 6394281327
+      }
+    ],
+    "total_seconds": 29.409
+  },
+  "consumer": {
+    "scope": "Native installed US/BR/PT keymaps, Shift a/A/a, registry and frozen default include root; no physical/GUI proof",
+    "consumer_exit": 0,
+    "versions": {
+      "xkeyboard-config": "2.48",
+      "xkbcommon": "1.13.2",
+      "xkbregistry": "1.13.2"
+    },
+    "wayland": true,
+    "x11_library": false
+  },
+  "packages": [
+    {
+      "name": "xkeyboard-config",
+      "version": "2.48-1+toddy1",
+      "archive_sha256": "fdc6938ecfe631d86c383bcbadfc5d0258dd16bdad53eb70045a610ab7b70002",
+      "installed": true,
+      "notice_index_sha256": "9fb412ca6c36423317f104c9f4a79b5959651fe6c7f08e9d3be58cb62a5ff527",
+      "named_and_selected_header_notices": 2
+    },
+    {
+      "name": "libxkbcommon",
+      "version": "1.13.2-1+toddy1",
+      "archive_sha256": "a78c5c0796160c6e0e46931b868847df5cf2319796ec848beb672dab71a56914",
+      "installed": true,
+      "notice_index_sha256": "74f7a0990b6501d3e461df3149dcda77d1ef1eaecd1736143399f45e7b412d96",
+      "named_and_selected_header_notices": 150
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "scope": "Pinned headless xkbcomp validation prerequisites; no X server/session/physical input acceptance",
+  "reason": "Original keyboard data pytest invokes Xorg xkbcomp even in minimal Wayland profile; preserve rather than discard the upstream comparison",
+  "packages": [
+    {
+      "name": "util-macros",
+      "version": "1.20.2",
+      "archive": "util-macros-1.20.2.tar.xz",
+      "source_sha256": "9ac269eba24f672d7d7b3574e4be5f333d13f04a7712303b1821b2a51ac82e8e",
+      "source_root": "util-macros-1.20.2",
+      "build_system": "autotools",
+      "options": []
+    },
+    {
+      "name": "xorgproto",
+      "version": "2025.1",
+      "archive": "xorgproto-2025.1.tar.xz",
+      "source_sha256": "56898c716c0578df8a2d828c9c3e5c528277705c0484381a81960fe1a67668e8",
+      "source_root": "xorgproto-2025.1",
+      "build_system": "meson",
+      "options": []
+    },
+    {
+      "name": "libxau",
+      "version": "1.0.12",
+      "archive": "libXau-1.0.12.tar.xz",
+      "source_sha256": "74d0e4dfa3d39ad8939e99bda37f5967aba528211076828464d2777d477fc0fb",
+      "source_root": "libXau-1.0.12",
+      "build_system": "autotools",
+      "options": []
+    },
+    {
+      "name": "libxdmcp",
+      "version": "1.1.5",
+      "archive": "libXdmcp-1.1.5.tar.xz",
+      "source_sha256": "d8a5222828c3adab70adf69a5583f1d32eb5ece04304f7f8392b6a353aa2228c",
+      "source_root": "libXdmcp-1.1.5",
+      "build_system": "autotools",
+      "options": [
+        "--disable-docs"
+      ]
+    },
+    {
+      "name": "xcb-proto",
+      "version": "1.17.0",
+      "archive": "xcb-proto-1.17.0.tar.xz",
+      "source_sha256": "2c1bacd2110f4799f74de6ebb714b94cf6f80fb112316b1219480fd22562148c",
+      "source_root": "xcb-proto-1.17.0",
+      "build_system": "autotools",
+      "options": []
+    },
+    {
+      "name": "libxcb",
+      "version": "1.17.0",
+      "archive": "libxcb-1.17.0.tar.xz",
+      "source_sha256": "599ebf9996710fea71622e6e184f3a8ad5b43d0e5fa8c4e407123c88a59a6d55",
+      "source_root": "libxcb-1.17.0",
+      "build_system": "autotools",
+      "options": [
+        "--without-doxygen",
+        "--disable-devel-docs"
+      ]
+    },
+    {
+      "name": "xtrans",
+      "version": "1.6.0",
+      "archive": "xtrans-1.6.0.tar.xz",
+      "source_sha256": "faafea166bf2451a173d9d593352940ec6404145c5d1da5c213423ce4d359e92",
+      "source_root": "xtrans-1.6.0",
+      "build_system": "autotools",
+      "options": []
+    },
+    {
+      "name": "libx11",
+      "version": "1.8.13",
+      "archive": "libX11-1.8.13.tar.xz",
+      "source_sha256": "69606f485c2c07c14ef64f75b7bb326d48587af33795d9ab3e607c0b5f94f11c",
+      "source_root": "libX11-1.8.13",
+      "build_system": "autotools",
+      "options": [
+        "--disable-specs",
+        "--without-xmlto",
+        "--without-fop"
+      ]
+    },
+    {
+      "name": "libxkbfile",
+      "version": "1.2.0",
+      "archive": "libxkbfile-1.2.0.tar.xz",
+      "source_sha256": "7f71884e5faf56fb0e823f3848599cf9b5a9afce51c90982baeb64f635233ebf",
+      "source_root": "libxkbfile-1.2.0",
+      "build_system": "meson",
+      "options": []
+    },
+    {
+      "name": "xkbcomp",
+      "version": "1.5.0",
+      "archive": "xkbcomp-1.5.0.tar.xz",
+      "source_sha256": "2ac31f26600776db6d9cd79b3fcd272263faebac7eb85fb2f33c7141b8486060",
+      "source_root": "xkbcomp-1.5.0",
+      "build_system": "meson",
+      "options": [
+        "-Dxkb-config-root=/usr/share/xkeyboard-config-2"
+      ]
+    }
+  ],
+  "optional_test_framework": "libxcb Check-based tests require unavailable optional Check framework; report actual test registration, never invent passes. Basic native protocol APIs and actual xkbcomp/data validation remain required."
+}

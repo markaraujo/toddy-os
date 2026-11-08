@@ -1,0 +1,120 @@
+{
+  "scope": "Native staged minimal Wayland keyboard APIs/data, original library26 plus affected locale2 and full upstream data driver; no physical/GUI input proof",
+  "reports": [
+    {
+      "name": "library",
+      "drivers": 26,
+      "exit": 0,
+      "log_sha256": "0dd6ac7ed3f7246aece7ba776fe851fb9ed6e4256aac8f83f04408b16a5f3d1c",
+      "tests": [
+        "libxkbcommon:filecomp",
+        "libxkbcommon:context",
+        "libxkbcommon:rules-file",
+        "libxkbcommon:keymap",
+        "libxkbcommon:rules-file-includes",
+        "libxkbcommon:stringcomp",
+        "libxkbcommon:keysym-unicode",
+        "libxkbcommon:introspection",
+        "libxkbcommon:buffercomp",
+        "libxkbcommon:extensions-directories",
+        "libxkbcommon:log",
+        "libxkbcommon:utf8",
+        "libxkbcommon:atom",
+        "libxkbcommon:keyseq",
+        "libxkbcommon:keysym",
+        "libxkbcommon:state",
+        "libxkbcommon:merge-modes",
+        "libxkbcommon:utils",
+        "libxkbcommon:modifiers",
+        "libxkbcommon:messages",
+        "python-tests - libxkbcommon:symbols-leak-test",
+        "libxkbcommon:registry",
+        "libxkbcommon:rulescomp",
+        "libxkbcommon:compose",
+        "python-tests - libxkbcommon:keysym-test-XF86Macro23",
+        "python-tests - libxkbcommon:tool-option-parsing"
+      ]
+    },
+    {
+      "name": "locale-recheck",
+      "drivers": 2,
+      "exit": 0,
+      "log_sha256": "4725c9244d8c767ba7a8b6c9ab8e7e6bd670af7bbd2cbaa32295e912bdbbcf76",
+      "tests": [
+        "libxkbcommon:context",
+        "libxkbcommon:compose"
+      ]
+    },
+    {
+      "name": "data",
+      "drivers": 1,
+      "exit": 0,
+      "log_sha256": "7a926801a2f1411a8fd81e28ede34990a57034e035b3d774c0ecb94a129a1897",
+      "tests": [
+        "xkeyboard-config:pytest"
+      ]
+    }
+  ],
+  "stages": {
+    "xkeyboard-config": {
+      "file_entries": 388,
+      "manifest_sha256": "7b0f616cc6e3ed23ab83f1f16c1605ea1d2280910aea098874c65baa0fbd2722"
+    },
+    "libxkbcommon": {
+      "file_entries": 35,
+      "manifest_sha256": "7dab41ed8a50214b277b86660d7d341b7ac82a55b57c46d04431fede2bd61800"
+    }
+  },
+  "consumer_exit": 0,
+  "us_br_pt_shift_registry": true,
+  "unchanged_library_elfs": 411,
+  "relative_compatibility_link": "usr/share/X11/xkb -> ../xkeyboard-config-2",
+  "recovery": "Original keyboard1 failure retained: absent Xorg comparator and60s timeout. Native xkbcomp1.5.0 supplied; same library/data stages reused, no rebuild.",
+  "prepared_source": {
+    "scope": "Authenticated keyboard source pair and exact required patch only; native build/tests/install pending",
+    "sources": [
+      {
+        "name": "xkeyboard-config",
+        "version": "2.48",
+        "archive": "xkeyboard-config-2.48.tar.xz",
+        "source_sha256": "b77041324f0109f77161ee43743fe04baa485866af8460d31e476ad3f7648fd5",
+        "source_root": "xkeyboard-config-2.48"
+      },
+      {
+        "name": "libxkbcommon",
+        "version": "1.13.2",
+        "archive": "libxkbcommon-1.13.2.tar.gz",
+        "source_sha256": "e5d5eff0ea09d82c44a96aec75c719b6969fdc602da82e6b1c9aa74cac5fd488",
+        "source_root": "libxkbcommon-1.13.2"
+      }
+    ],
+    "source_patch": {
+      "path": "libxkbcommon-1.13.2/tools/info.c",
+      "before_sha256": "b9770c18a48f76e2d5384c0e64b56f06dfaf303d38213ee09800ed4393821af9",
+      "after_sha256": "8a15fe8afd7553d3ab0ea8a6f07bc5d96e3757142b58618e06acec369873625c",
+      "patch_sha256": "d978cac5875fed73b7223866a1138718afeba58c1390a412affdcf2cd7744a34"
+    },
+    "config_sha256": "8379bd9c18257c14ab7fadc3550507ba2b1372340fc323c0f7ab8c2eb0392d32",
+    "recipe_sha256": "fa153b15ef6266291af08048d67bc624e85be3fb5b45dcc52a6bd139bbf89cb8",
+    "probe_sha256": "405a2185a9f775f1b1c8d28c3615a85e5eaa4373408c1563126906972f953118"
+  },
+  "data_cases": {
+    "passed": 5516,
+    "skipped": 3164,
+    "skip_functions": {
+      "tests/test_rules_xml.py::test_iso3166": 1582,
+      "tests/test_rules_xml.py::test_iso639": 1582
+    },
+    "reason": "Upstream pytest.importorskip pycountry for optional ISO-country/language validation; not counted as pass",
+    "driver_seconds": 14.721169233322144
+  },
+  "original_job_exit": 1,
+  "resume_job_exit": 0,
+  "raw_evidence_bundle": {
+    "path": ".local/phase2/exports/B02-keyboard-native-evidence.tar.gz",
+    "bytes": 820319,
+    "sha256": "55c947a7ddbe25632e672134a554db5e9e9561ddc91f450817796a35335b25ef",
+    "members": 36,
+    "scope": "Raw native keyboard library/data tests, failed original timeout, actual recovery, owned package and postcondition evidence; retain for final release"
+  }
+}

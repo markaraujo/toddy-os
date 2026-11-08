@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "scope": "Minimal Wayland keyboard data/library; no physical/GUI input acceptance",
+  "packages": [
+    {
+      "name": "xkeyboard-config",
+      "version": "2.48",
+      "archive": "xkeyboard-config-2.48.tar.xz",
+      "source_sha256": "b77041324f0109f77161ee43743fe04baa485866af8460d31e476ad3f7648fd5",
+      "source_root": "xkeyboard-config-2.48"
+    },
+    {
+      "name": "libxkbcommon",
+      "version": "1.13.2",
+      "archive": "libxkbcommon-1.13.2.tar.gz",
+      "source_sha256": "e5d5eff0ea09d82c44a96aec75c719b6969fdc602da82e6b1c9aa74cac5fd488",
+      "source_root": "libxkbcommon-1.13.2"
+    }
+  ],
+  "patch": {
+    "name": "libxkbcommon-upstream-fix",
+    "version": "1.13.2-1",
+    "filename": "libxkbcommon-1.13.2-upstream_fix-1.patch",
+    "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/libxkbcommon-1.13.2-upstream_fix-1.patch",
+    "sha256": "d978cac5875fed73b7223866a1138718afeba58c1390a412affdcf2cd7744a34",
+    "reference": "BLFS13.1-systemd general/libxkbcommon.html required patch",
+    "upstream_commit": "75b7da3f8698b3482ba6b11f3835561a3efb6a29",
+    "integrity": "Required frozen-book patch fetched over official HTTPS; SHA256 frozen before exact application",
+    "status": "source_verified"
+  },
+  "options": {
+    "x11": false,
+    "wayland": true,
+    "registry": true,
+    "docs": false,
+    "runtime_data_root": "/usr/share/xkeyboard-config-2"
+  }
+}

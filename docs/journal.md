@@ -1990,3 +1990,25 @@ recipe/post0/0, one34.93s full-root slice; existing foundation modules unchanged
 Complete named notices include Poetry-core vendors; all package archives/index
 SHAs and raw evidence retained. Three wrong-package/version/ambiguous-wheel guards
 and make check269 passed. Next keyboard data/libxkbcommon pair, not old SDK suites.
+
+
+### B02 native keyboard and headless validation SDK — 2026-11-08 UTC
+
+Pinned keyboard data2.48/libxkbcommon1.13.2 with exact required book patch built
+in qualified UID101/offline/RO-input isolation. Original library26 drivers passed;
+data failed because upstream invokes missing xkbcomp and reached60s timeout.
+Preserved failure and compiled/staged outputs. Built selected ten-source headless
+Xorg SDK including xkbcomp1.5.0, independent stages/archives. libXau1/libXdmcp1/
+libxcb check-pc1/libX11 Compose1 passed; optional Check units0registered and
+xorgproto libevdev verification upstream SKIP explicit. C API consumer0; original
+empty compatibility-map fixture failed after API success, corrected compiler-only
+recovery2 valid0/invalid1 with stages unchanged. SDK owned recipe/post0/0 in38.552s.
+
+Original keyboard data rerun with real comparator:5516PASS/3164optional pycountry
+ISO-country/language SKIP in14.72s. New locale/Compose affected library2rechecks0;
+411 original library ELF hashes and both stages unchanged. Actual US/BR/PT Shift
+and registry consumer0, owned pair recipe/post0/0 in29.409s, installed frozen
+versions/default data root verified. Raw failures/tests/archives/notice inventories
+retained. No native GNOME, physical input, installer or G2 acceptance inferred.
+Grouped-book exact-archive guard adds two regressions; make check271passed.
+Next selected graphics/render prerequisites for actual GTK/GNOME session.
