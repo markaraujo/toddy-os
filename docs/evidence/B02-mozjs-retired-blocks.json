@@ -1,0 +1,23 @@
+{
+  "scope": "NEW free-block discard after completed Mozilla baseline source custody; exact virtual /dev/vdb4 only, no formatting/source deletion/physical-host operation; older discard/custody never replayed",
+  "state": "complete",
+  "pid": 3292,
+  "boot_id": "568b17f7-1b0d-4b6c-bcd4-8fba4913a526",
+  "proc_start_ticks": "49131",
+  "producer_sha256": "d1e660aff3d989b817eeb2aac91743708135903959fe98a2943ee424f40328c8",
+  "started_unix": 1794245548.1676488,
+  "custody_receipt_sha256": "83eb108b2ee3ad878c3ac826fe2a456912382f686c51611b4cb42b41091e2ac7",
+  "archive_sha256": "0034632f70329e0bdf92f5d6fdd4cd9d08721f041f989abee65bfc5e5655dea6",
+  "root_entries": 151017,
+  "pending_entries": 1697,
+  "recovery": "Inspect durable receipt, real process start identity, trim log and .exit before any action. Never repeat trim_running/trim_done; reconcile snapshots and archive against retained before manifests. Old main/trim/custody commands must not run.",
+  "trim_exit": 0,
+  "changed_paths": [],
+  "pending_changed_paths": [],
+  "archive_unchanged": true,
+  "finished_unix": 1794245564.1648977,
+  "host_available_observed_before": 108766560256,
+  "host_available_observed_after": 114692669440,
+  "observed_host_available_delta": 5926109184,
+  "claim": "Measured free-space delta across operation; not a standalone storage benchmark. Actual installed-root and1697pending artifact entries unchanged. No source/package/native-test replay."
+}

@@ -39,16 +39,19 @@ GUI remain pending. Shared schema union still REQUIRED before graphical acceptan
 Positional init-worker removed from help probe BEFORE first compiler job; exact
 old/new probe hashes in source prepared receipt. NEVER repeat build/install.
 
-Current writer: none. Host free108766560256B (~1.3GiB over100GiBreserve).
-Review-copy directories are already small; no new host source retirement executed.
-Exact next: new guarded virtual free-block discard generation after completed
-Mozilla baseline source custody (4.36GBtarget freed, no host reclamation yet).
-Verify prior custody/archive/sole marker, target virtual serial/root/mount/discard,
-no writer and current full root/pending artifacts before trim; use a NEW receipt,
-never old virtual_discard_checkpoint.main/trim, no reformat or source retirement
-replay. Reconcile real postconditions after interruption, no uncertain trim replay.
-Then remaining GNOME/GDM/apps and final shared cache unions/native GUI checks.
-Complete ALL B02 then stop before another story.
+Current writer: none. NEW virtual source-block reclamation COMPLETE, receipt
+`/var/log/toddy/phase2/mozjs-baseline-source-discard-1.json`, fstrim0/installed-root
+151017entries unchanged/pending1697entries unchanged/archive unchanged.
+[Proof](evidence/B02-mozjs-retired-blocks.json). Host observed availability
+114692669440B (~6.8GiB over100GiBreserve). NEVER rerun this trim, older trim or
+any source custody. No physical operation, formatting or source deletion.
+
+Exact next: frozen p11-kit0.26.5/libtasn1 dependency for Gcr4 and remaining actual
+GNOME Shell dependencies, using same frozen graph/current security overlay.
+Shell source requires EDS/Gcr unconditionally; no supported calendar-disable
+option was found, do not invent feature bypasses. Finish controlled shared hwdb/
+schema cache unions before actual GNOME/GDM/apps/native GUI/focus/offline/resource
+acceptance. Complete ALL B02 then stop before another story.
 
 JSON-C0.19-1+toddy1 now OWNED/install/post0/0,64changed paths.28original programs
 covered by27reused passes plus repaired original build-only CLI case; original
