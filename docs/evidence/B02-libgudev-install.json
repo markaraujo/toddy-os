@@ -1,0 +1,19 @@
+{
+  "step": "b02-libgudev-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T03:04:12.236038+00:00",
+  "package": {
+    "name": "libgudev",
+    "version": "238-1+toddy1",
+    "archive_sha256": "ffa2fa99b3e8ad5b3c75465512f3e0542ffe1e64d38181458e84d76552dfa0f4"
+  },
+  "payload_entries": 28,
+  "consumer": {
+    "scope": "Native installed GUdev client/enumerator/filter lifecycle/negative queries and GI; no real device/event/GNOME acceptance",
+    "name": "libgudev",
+    "version": "238",
+    "native_consumer_exit": 0,
+    "stdout": "native GUdev client/enumerator/filter lifecycle and absent-path/subsystem queries; no device detection claim"
+  }
+}

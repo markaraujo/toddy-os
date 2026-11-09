@@ -2700,3 +2700,18 @@ owned install/post0/0; exact embedded MIT notices selected. All three distinct
 failures (stale patch context, probe macro comparison, legal collection) retained
 and narrowly corrected without library/test replay. Wireplumber0.5.15 with owned
 Lua/Pipewire and private-bus tests started; no actual session/audio/GNOME acceptance.
+
+2026-11-09: Wireplumber0.5.15 owned install/post0/0;53original drivers and
+135unchanged compiled ELFs after generated-POT output-only correction. Native
+libnotify0.8.8 owned0/0/C/GI/private-empty-bus refusal0; original optional mock
+suites unavailable/not passes. Generated input nested-escape failure refused
+before execution, absence confirmed, compile preflight and syntax-2 preparation0.
+Started isolated libgudev238 tags/C/GI qualification; no sysfs/device exposure.
+Commit677f8f2 safety42552944264/planning42552944263/Pages42552944278 passed;
+publicHTTP200 equals export SHAad95a2a6a0b07fb928ae18643bcb061d92aa977ca6f5a0f68355533045be3f45.
+Active card shortened; immutable custody specifics preserved in linked historical card.
+
+2026-11-09: GUdev238 source original tags1case/environment fixture/C/GI0 and
+owned install/post0/0. Three optional umockdev suites not available/not passes;
+no new sysfs/device exposure or physical event claim. Next required libwacom
+source authenticated; native GNOME and B02 acceptance remain pending.

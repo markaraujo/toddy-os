@@ -4,7 +4,7 @@ set -euo pipefail
 meson setup /build/compile /src --prefix=/usr --libdir=lib --sysconfdir=/etc \
     --buildtype=release --wrap-mode=nofallback -Dsystem-lua=true \
     -Dsystemd=enabled -Delogind=disabled -Dsystemd-system-service=false \
-    -Dsystemd-user-service=true -Ddoc=disabled -Dintrospection=enabled \
+    -Dsystemd-user-service=true -Ddoc=disabled -Dintrospection=disabled \
     -Dtests=true -Ddbus-tests=true > /build/configure.log 2>&1
 ninja -C /build/compile -j4 > /build/compile.log 2>&1
 meson test -C /build/compile --no-rebuild --print-errorlogs > /build/upstream-tests.log 2>&1

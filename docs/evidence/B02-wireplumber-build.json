@@ -1,0 +1,283 @@
+{
+  "scope": "Native Wireplumber original tests/library/core/refusal/CLI only; no actual device routing, audible or GNOME acceptance",
+  "upstream_drivers": [
+    {
+      "name": "wireplumber:test-object-interest",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-properties",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-spa-json",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-spa-pod",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-spa-type",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-metadata",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-object-manager",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-core",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-component-loader",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-events",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-proxy",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-session-item",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-transition",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-state",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-factory",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-json-utils",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-wplua",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-settings",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-lua-pod",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-lua-json",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-lua-json-utils",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-lua-monitor-rules",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-lua-require",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-lua-settings",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-lua-event-hooks",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-lua-properties",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-non-default-device-node",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-non-default-device-node-capture",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-default-device-node",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-default-device-node-capture",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-target-object-name",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-lua-async-activation",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-target-object-int",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-target-object-string-capture",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-target-object-int-capture",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-target-object-name-capture",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-node-target",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-target-object-string",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-dbus-connection",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-file-monitor",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-reserve-device",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-node-target-capture",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-si-node",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-target-node-metadata",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-target-node-metadata-capture",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-target-object-metadata",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-si-audio-adapter",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-target-object-metadata-capture",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-target-object-int-metadata",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-linking-defined-device-node-target-object-int-metadata-capture",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:test-si-standard-link",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "wireplumber:00-test-default-nodes-initial-metadata-update",
+      "result": "OK",
+      "exit": 0
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "cli_version_exit": 0,
+  "profile": "Pinned system Lua5.4.8 and owned Pipewire1.6.8; no network subproject fetch, systemd user service only; PAM/login integration pending native session",
+  "generated_output_recovery": {
+    "routing_record": "pot-3/routing.json",
+    "preserved_elfs_unchanged": 135
+  },
+  "optional_introspection": "Disabled: no frozen GNOME C/JS consumer needs Wp GI; no lxml/doc build dependency added",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-wireplumber-native-evidence.tar.gz",
+    "members": 25,
+    "sha256": "1b8ec2fa51ec91655bbeeabb3278eb003cdf52890a994b1a3330f9e511108769"
+  }
+}

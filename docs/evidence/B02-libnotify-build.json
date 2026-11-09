@@ -1,0 +1,14 @@
+{
+  "scope": "Native notification library C/GI/empty-private-bus refusal only; no displayed GNOME notification or accessibility acceptance",
+  "registered_upstream_tests": 0,
+  "upstream_status": "Original test setup requires optional Python dbus/dbusmock; unavailable, no upstream passes claimed. Actual graphical/interactive notification behavior remains for native GNOME.",
+  "staged_consumer_exit": 0,
+  "gi_exit": 0,
+  "no_external_bus": true,
+  "profile": "Native library, notify-send and Notify0.7 introspection; API docs/man dependencies omitted",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libnotify-native-evidence.tar.gz",
+    "members": 12,
+    "sha256": "c539f9b40d1f9e45b0e80d9e05871c4f34003b9c85182643ecc8439756810ef2"
+  }
+}

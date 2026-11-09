@@ -19,6 +19,12 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libgudev': ('238', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), systemd (>= 261.2-1)',
+                 'libgudev-238.tar.xz', 'usr/lib/pkgconfig/gudev-1.0.pc'),
+    'libnotify': ('0.8.8', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), gdk-pixbuf (= 2.44.7-1+toddy2), dbus (>= 1.16.2-1)',
+                  'libnotify-0.8.8.tar.xz', 'usr/lib/pkgconfig/libnotify.pc'),
+    'wireplumber': ('0.5.15', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), systemd (>= 261.2-1), pipewire (= 1.6.8-1+toddy1), lua (= 5.4.8-1+toddy1)',
+                    'wireplumber-0.5.15.tar.bz2', 'usr/lib/pkgconfig/wireplumber-0.5.pc'),
     'lua': ('5.4.8', 'glibc (>= 2.44-1)',
             'lua-5.4.8.tar.gz', 'usr/lib/pkgconfig/lua.pc'),
     'pipewire': ('1.6.8', 'glibc (>= 2.44-1), systemd (>= 261.2-1), dbus (>= 1.16.2-1), glib (>= 2.88.3-1+toddy1), alsa-lib (= 1.2.16.1-1+toddy1)',
@@ -163,6 +169,7 @@ if __name__ == '__main__':
     if name=='libinput':qualifier='libinput-probe-2'
     if name=='alsa-lib':qualifier='alsa-lib-probe-2'
     if name=='lua':qualifier='lua-probe-3'
+    if name=='wireplumber':qualifier='wireplumber-pot-3'
     if name=='libxml2-python':qualifier='libxml2-python-probe-5'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
@@ -771,6 +778,35 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='libgudev':
+        work=Path('/mnt/lfs/sources/phase2/work/libgudev-1');source=Path('/mnt/lfs/sources/phase2/inputs/libgudev-238')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libgudev-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libgudev-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==proof['gi_exit']==0 and proof['upstream_tag_cases']==1
+        assert 'ok 1 /gudev/tags' in (work/'upstream-tags.log').read_text()
+        assert json.loads((work/'compile/meson-info/intro-tests.json').read_text())==[]
+    if name=='libnotify':
+        work=Path('/mnt/lfs/sources/phase2/work/libnotify-1');source=Path('/mnt/lfs/sources/phase2/inputs/libnotify-0.8.8')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libnotify-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libnotify-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==proof['gi_exit']==0
+        assert proof['registered_upstream_tests']==0 and json.loads((work/'compile/meson-info/intro-tests.json').read_text())==[]
+        assert 'org.freedesktop.DBus.Error.ServiceUnknown' in (work/'consumer.log').read_text()
+    if name=='wireplumber':
+        work=Path('/mnt/lfs/sources/phase2/work/wireplumber-1');source=Path('/mnt/lfs/sources/phase2/inputs/wireplumber-0.5.15')
+        recipe=(ROOT/'scripts/build/phase2/wireplumber-build.sh').read_text()
+        assert (source/'toddy-build.sh').read_text()==recipe.replace('-Dintrospection=disabled','-Dintrospection=enabled')
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/wireplumber-probe.c').read_bytes()
+        code=(ROOT/'scripts/build/phase2/wireplumber_pot_recover.py').read_text()+'\nmain('+repr(recipe)+')\n'
+        assert json.loads((log/'wireplumber-pot-3.job.json').read_text())['command'][-3:]==['python3','-c',code]
+        rows=[json.loads(s) for s in (work/'compile-2/meson-logs/testlog.json').read_text().splitlines() if s.strip()]
+        assert len(rows)==53 and all(r['result']=='OK' and r['returncode']==0 for r in rows)
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==proof['cli_version_exit']==0
+        routing=json.loads((work/'pot-3/routing.json').read_text());assert routing['preserved_elfs']
+        assert all(hashlib.sha256((work/n).read_bytes()).hexdigest()==h for n,h in routing['preserved_elfs'].items())
+        assert hashlib.sha256((work/'compile-2/build.ninja').read_bytes()).hexdigest()==routing['after_sha256']
+        assert ' -o ../../src/po/conf.pot ' not in (work/'compile-2/build.ninja').read_text()
+        assert 'msgid' in (work/'compile-2/po/conf.pot').read_text()
     if name=='lua':
         work=Path('/mnt/lfs/sources/phase2/work/lua-1');source=Path('/mnt/lfs/sources/phase2/inputs/lua-5.4.8')
         recipe=(ROOT/'scripts/build/phase2/lua-build.sh').read_text()

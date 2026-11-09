@@ -1,0 +1,19 @@
+{
+  "step": "b02-wireplumber-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T02:54:20.803826+00:00",
+  "package": {
+    "name": "wireplumber",
+    "version": "0.5.15-1+toddy1",
+    "archive_sha256": "da61061fd3dde030810d4d5962f6c533f2e73cd16c9e3685997dedf964dc40d8"
+  },
+  "payload_entries": 358,
+  "consumer": {
+    "scope": "Native installed Wireplumber properties/core lifecycle/absent-remote refusal; no audible sound, session routing or GNOME acceptance",
+    "name": "wireplumber",
+    "version": "0.5.15",
+    "native_consumer_exit": 0,
+    "stdout": "native Wireplumber0.5.15 properties/copy isolation/core lifecycle and absent-remote refusal"
+  }
+}

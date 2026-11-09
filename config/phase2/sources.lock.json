@@ -1518,6 +1518,42 @@
       "integrity": "Exact frozen book supplementary HTTPS URL; SHA256 frozen before guest use",
       "status": "source_verified",
       "scope": "Original upstream basic qualification suite, not runtime payload"
+    },
+    {
+      "name": "libnotify",
+      "version": "0.8.8",
+      "filename": "libnotify-0.8.8.tar.xz",
+      "url": "https://download.gnome.org/sources/libnotify/0.8/libnotify-0.8.8.tar.xz",
+      "sha256": "23420ef619dc2cb5aebad613f4823a2fa41c07e5a1d05628d40f6ec4b35bfddd",
+      "reference": "BLFS13.1-systemd x/libnotify.html",
+      "book_page_sha256": "69308a509001173374bdf520e848b0aa7de40b27fd60836928d4cf2f35417da2",
+      "book_md5": "35bef24dc1e9a336394556d09345e078",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libgudev",
+      "version": "238",
+      "filename": "libgudev-238.tar.xz",
+      "url": "https://download.gnome.org/sources/libgudev/238/libgudev-238.tar.xz",
+      "sha256": "61266ab1afc9d73dbc60a8b2af73e99d2fdff47d99544d085760e4fa667b5dd1",
+      "reference": "BLFS13.1-systemd general/libgudev.html",
+      "book_page_sha256": "ecb863a9b9500341b0a197a8ee97fb5aee87496ef9bcb40610e2e243cf4095e0",
+      "book_md5": "46da30a1c69101c3a13fa660d9ab7b73",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libwacom",
+      "version": "2.19.1",
+      "filename": "libwacom-2.19.1.tar.xz",
+      "url": "https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.19.1/libwacom-2.19.1.tar.xz",
+      "sha256": "a1e5b1e7ef60fa70ed05b55d888d980ec7e86bd15594857f3c48c529b661bf32",
+      "reference": "BLFS13.1-systemd general/libwacom.html",
+      "book_page_sha256": "0cd46e5ef26caf31e2ac2dbfcd55984682e86f6ce6ac08d49856aac21fcab200",
+      "book_md5": "83baa1eb388d506b670d13a8a18ff224",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

@@ -13,12 +13,12 @@ NAME=sys.argv[1]
 assert len(sys.argv) in (2,3)
 receipt_suffix='-'+sys.argv[2] if len(sys.argv)==3 else ''
 assert not receipt_suffix or re.fullmatch(r'-[a-z][a-z0-9-]{0,31}',receipt_suffix)
-assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa','libepoxy','gdk-pixbuf','tiff','iso-codes','gtk','doxygen','itstool','libxmlb','libfyaml','appstream','libadwaita','libsass','sassc','at-spi2-core','lcms2','libseccomp','bubblewrap','hwdata','libdisplay-info','mtdev','libevdev','libxcvt','libei','libinput','alsa-lib','pipewire','lua','wireplumber')
+assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa','libepoxy','gdk-pixbuf','tiff','iso-codes','gtk','doxygen','itstool','libxmlb','libfyaml','appstream','libadwaita','libsass','sassc','at-spi2-core','lcms2','libseccomp','bubblewrap','hwdata','libdisplay-info','mtdev','libevdev','libxcvt','libei','libinput','alsa-lib','pipewire','lua','wireplumber','libnotify','libgudev')
 if __name__=='__main__':
     row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==NAME)
     archive=ROOT/'.local/sources'/row['filename'];data=archive.read_bytes()
     assert hashlib.sha256(data).hexdigest()==row['sha256']
-    probes={'wireplumber':'wireplumber-probe.c','lua':'lua-probe.c','pipewire':'pipewire-probe.c','alsa-lib':'alsa-lib-probe.c','libinput':'libinput-probe.c','libei':'libei-probe.c','libxcvt':'libxcvt-probe.c','libevdev':'libevdev-probe.c','mtdev':'mtdev-probe.c','libdisplay-info':'libdisplay-info-probe.c','bubblewrap':'bubblewrap-probe.py','libseccomp':'libseccomp-probe.c','lcms2':'lcms2-probe.c','at-spi2-core':'at-spi2-core-probe.c','sassc':'sassc-probe.py','libsass':'libsass-probe.c','libadwaita':'libadwaita-probe.c','appstream':'appstream-probe.c','libfyaml':'libfyaml-probe.c','libxmlb':'libxmlb-probe.c','itstool':'itstool-probe.py','doxygen':'doxygen-probe.py','iso-codes':'iso-codes-probe.py','gtk':'gtk-probe.c','tiff':'tiff-probe.c','gdk-pixbuf':'gdk-pixbuf-probe.c','libepoxy':'libepoxy-probe.c','mesa':'mesa-probe.c','pyyaml':'pyyaml-probe.py','libpciaccess':'libpciaccess-probe.c','libdrm':'libdrm-probe.c','freetype':'freetype-probe.c','psutil':'psutil-probe.py','mako':'mako-probe.py'}
+    probes={'libgudev':'libgudev-probe.c','libnotify':'libnotify-probe.c','wireplumber':'wireplumber-probe.c','lua':'lua-probe.c','pipewire':'pipewire-probe.c','alsa-lib':'alsa-lib-probe.c','libinput':'libinput-probe.c','libei':'libei-probe.c','libxcvt':'libxcvt-probe.c','libevdev':'libevdev-probe.c','mtdev':'mtdev-probe.c','libdisplay-info':'libdisplay-info-probe.c','bubblewrap':'bubblewrap-probe.py','libseccomp':'libseccomp-probe.c','lcms2':'lcms2-probe.c','at-spi2-core':'at-spi2-core-probe.c','sassc':'sassc-probe.py','libsass':'libsass-probe.c','libadwaita':'libadwaita-probe.c','appstream':'appstream-probe.c','libfyaml':'libfyaml-probe.c','libxmlb':'libxmlb-probe.c','itstool':'itstool-probe.py','doxygen':'doxygen-probe.py','iso-codes':'iso-codes-probe.py','gtk':'gtk-probe.c','tiff':'tiff-probe.c','gdk-pixbuf':'gdk-pixbuf-probe.c','libepoxy':'libepoxy-probe.c','mesa':'mesa-probe.c','pyyaml':'pyyaml-probe.py','libpciaccess':'libpciaccess-probe.c','libdrm':'libdrm-probe.c','freetype':'freetype-probe.c','psutil':'psutil-probe.py','mako':'mako-probe.py'}
     probe_filename='toddy-probe.py' if probes.get(NAME,'').endswith('.py') else 'toddy-probe.c'
     probe=(ROOT/'scripts/build/phase2'/probes[NAME]).read_text() if NAME in probes else None
     private_bus=(ROOT/'scripts/build/phase2/atspi_private_bus.py').read_text() if NAME=='at-spi2-core' else None
@@ -78,6 +78,11 @@ if row['name']=='mako':
     path.chmod(0o644)
     patches.append({'path':'doc/build/changelog.rst','before_mode':before,'after_mode':0o644,
                     'content_sha256':sha,'reason':'Public release doc is owner-readable only; expose unchanged bytes to unprivileged read-only-input compiler'})
+if row['name']=='wireplumber':
+    path=source/'po/meson.build';before=path.read_bytes();old=b"      '-o', '@CURRENT_SOURCE_DIR@/conf.pot',\\n"
+    assert before.count(old)==1 and b'capture: true' in before
+    path.write_bytes(before.replace(old,b''))
+    patches.append({'path':'po/meson.build','before_sha256':hashlib.sha256(before).hexdigest(),'after_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'reason':'Use existing Meson capture for private POT output; no source-tree write or translation/content changes'})
 if row['name']=='libfyaml':
     assert extra['name']=='check'
     (source/'subprojects').mkdir(exist_ok=True)
@@ -171,6 +176,7 @@ if probe is not None:
 work.mkdir();os.chown(work,101,101)
 print(json.dumps(receipt))
 '''
+    compile(remote, '<phase2-input-preflight>', 'exec')
     prefix=ROOT/'.local/phase2'/(NAME+'-input'+receipt_suffix)
     with prefix.with_suffix('.log').open('xb') as log:
         result=subprocess.run(phase2_vm.ssh_args()+['python3 -c '+shlex.quote(remote)],input=data,stdout=log,stderr=subprocess.STDOUT)

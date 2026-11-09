@@ -1,0 +1,19 @@
+{
+  "step": "b02-libnotify-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T02:59:29.935048+00:00",
+  "package": {
+    "name": "libnotify",
+    "version": "0.8.8-1+toddy1",
+    "archive_sha256": "fae107381e8a1e881bf4eb7cd46891706fc7348ecb4f06166d8cfebbe3e0be44"
+  },
+  "payload_entries": 28,
+  "consumer": {
+    "scope": "Native installed libnotify C/GI/properties/hints/cleanup/private-bus absent-server refusal; no displayed notification or GNOME acceptance",
+    "name": "libnotify",
+    "version": "0.8.8",
+    "native_consumer_exit": 0,
+    "stdout": "private empty-bus refusal: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files\nnative libnotify initialization/update/properties/hints/cleanup and absent-server refusal; no displayed notification"
+  }
+}

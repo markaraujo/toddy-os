@@ -1,0 +1,14 @@
+{
+  "scope": "Native GUdev GObject/C/GI/negative queries and original environment-based tag fixture only; no real device/udev event/GNOME acceptance",
+  "original_portable_driver": "Unchanged test-gudevdevice.c plus gudevdevice.c, exact upstream target sources/define; tags1case exit0",
+  "upstream_tag_cases": 1,
+  "staged_consumer_exit": 0,
+  "gi_exit": 0,
+  "not_selected": "Three umockdev-dependent original suites unavailable, not passes; no sysfs/device exposure added to compiler isolation",
+  "profile": "GUdev shared library/introspection; optional Vala bindings and docs omitted",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libgudev-native-evidence.tar.gz",
+    "members": 13,
+    "sha256": "18811748387eee03b7ea304f4e492f92855a7084a7dcc986957c1191fc91eb08"
+  }
+}

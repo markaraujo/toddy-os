@@ -10394,6 +10394,20 @@
           "all.lua"
         ]
       }
+    },
+    {
+      "name": "libnotify",
+      "version": "0.8.8",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Exact authenticated primary COPYING/per-file legal notices retained",
+      "runtime_inclusion": "B02 native notifications C API, notify-send, Notify0.7 GI; actual GNOME notification/focus/accessibility pending"
+    },
+    {
+      "name": "libgudev",
+      "version": "238",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Frozen primary COPYING and per-file notices retained; unchanged original environment-based tags test used, no umockdev bundled",
+      "runtime_inclusion": "B02 native GUdev library/GI; actual udev events/device/session integration pending"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
