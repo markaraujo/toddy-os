@@ -1,0 +1,78 @@
+{
+  "scope": "Native GJS C/internal API original drivers plus real C/CLI/GI/event/refusal/recovery; all display-dependent JS/native GNOME suites pending",
+  "native_build_exit": 0,
+  "stage_exit": 0,
+  "original_api_drivers": [
+    {
+      "name": "C - gjs:API tests",
+      "returncode": 0,
+      "result": "OK"
+    },
+    {
+      "name": "C - gjs:Internal API tests",
+      "returncode": 0,
+      "result": "OK"
+    }
+  ],
+  "native_c_consumer_exit": 0,
+  "cli": {
+    "scope": "Real GJS CLI ES module/native GLib event/typed Gio refusal and syntax refusal; no GTK/session acceptance",
+    "records": [
+      {
+        "name": "version",
+        "exit": 0,
+        "stdout_sha256": "e41470341a6e9daf2e82fbe1c92babe441c124ef627ffeaf17859be9171114e5",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "module",
+        "exit": 0,
+        "stdout_sha256": "8d102a45a7c1eab630f599dd5675a0344d508dae60416f94eeeedd5cea4a3f1e",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "invalid",
+        "exit": 1,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "995e215a398aa795c65e76db397801430b9a6234d895cb00abd0ace2aa08b4fe"
+      }
+    ],
+    "module_sha256": "439d888b520ce69fb1c7b0d52017389e1826bf23576a71efb4deb96056575fcd"
+  },
+  "unqualified": "Display-dependent JS suites, actual GJS GTK windows and GNOME Shell remain pending before integration acceptance",
+  "original_c_case_details": [
+    {
+      "name": "C - gjs:API tests",
+      "exit": 0,
+      "result": "OK",
+      "passed_cases": 74,
+      "skipped_cases": 0,
+      "skip_lines": []
+    },
+    {
+      "name": "C - gjs:Internal API tests",
+      "exit": 0,
+      "result": "OK",
+      "passed_cases": 128,
+      "skipped_cases": 0,
+      "skip_lines": []
+    }
+  ],
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-desktop-libraries-gjs-evidence.tar.gz",
+    "members": 37,
+    "sha256": "706747da38635bf22a501dd99df07935838a175272fd84be3c6474a697036090"
+  },
+  "source": {
+    "name": "gjs",
+    "version": "1.88.1",
+    "filename": "gjs-1.88.1.tar.xz",
+    "url": "https://download.gnome.org/sources/gjs/1.88/gjs-1.88.1.tar.xz",
+    "sha256": "767bab80e665d672cb00563c25f0b392a9ec8c2996ed1d4454c698b4c2f0a3d9",
+    "reference": "BLFS13.1-systemd gnome/gjs.html",
+    "book_page_sha256": "be77542b017ecb589a13efd289e22a75259c9e8174d76a1877c0a00299870313",
+    "book_md5": "851963b653cbcf8534dff8b9e719592e",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  }
+}
