@@ -1,0 +1,41 @@
+--- a/gtksourceview/implregex.c
++++ b/gtksourceview/implregex.c
+@@ -1024,6 +1024,38 @@
+ 		return impl_match_info_fetch_pos (match_info, num, start_pos, end_pos);
+ 	}
+ 
++	/* A name shared by alternative captures has no unique group number.
++	 * Select the first participating capture, as PCRE2's named extraction
++	 * API does, rather than rejecting a valid matched duplicate name.
++	 */
++	if (num == PCRE2_ERROR_NOUNIQUESUBSTRING)
++	{
++		PCRE2_SPTR first;
++		PCRE2_SPTR last;
++		int entry_size;
++
++		entry_size = pcre2_substring_nametable_scan (match_info->regex->code,
++		                                            (PCRE2_SPTR)name,
++		                                            &first, &last);
++		if (entry_size > 2)
++		{
++			for (PCRE2_SPTR entry = first; entry <= last; entry += entry_size)
++			{
++				int begin;
++				int end;
++				int group = (entry[0] << 8) | entry[1];
++
++				if (impl_match_info_fetch_pos (match_info, group, &begin, &end) &&
++				    begin >= 0 && end >= 0)
++				{
++					*start_pos = begin;
++					*end_pos = end;
++					return TRUE;
++				}
++			}
++		}
++	}
++
+ 	return FALSE;
+ }
+ 
