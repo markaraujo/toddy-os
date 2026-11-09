@@ -1,0 +1,201 @@
+{
+  "scope": "Owned default GIO/GnuTLS/system trust/malformed certificate refusal/recovery; six original local TLS/proxy drivers, changed shared-cache DConf persistence/new-bus/reset. Remote network/DTLS/native GNOME pending",
+  "source": {
+    "name": "glib-networking",
+    "version": "2.80.1",
+    "filename": "glib-networking-2.80.1.tar.xz",
+    "url": "https://download.gnome.org/sources/glib-networking/2.80/glib-networking-2.80.1.tar.xz",
+    "sha256": "b80e2874157cd55071f1b6710fa0b911d5ac5de106a9ee2a4c9c7bee61782f8e",
+    "reference": "BLFS13.1-systemd basicnet/glib-networking.html",
+    "book_page_sha256": "5ec416746350b05c7ae991014efc702083162b938cee2fa50839f75c936570fe",
+    "book_md5": "405e6c058723217a1307ba8415615f9d",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "All six enabled original proxy/certificate/database/TLS drivers qualified with actual read-only factory trust. Three initial missing-root failures retained. Only own C input corrected from OpenSSL auxiliary PEM to standard PEM bundle; original tests/stage not repeated. Native GIO/default root/malformed certificate refusal/recovery; DTLS/remote network/installed shared cache/native GNOME pending.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "glib-networking:environment-libproxy",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "glib-networking:gnome",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "glib-networking:certificate-gnutls",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "glib-networking:file-database-gnutls",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "glib-networking:connection-gnutls",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "glib-networking:connection-gnutls-tls1.2",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "initial_failed_tests_retained": true,
+    "public_trust_readonly": true,
+    "prior_ELFs_unchanged": true,
+    "stage_unchanged_by_consumer_correction": true,
+    "consumer": {
+      "actual_GnuTLS_GIO_backend": true,
+      "default_installed_factory_root_verified": true,
+      "malformed_certificate_refused": true,
+      "post_refusal_recovery_cycles": 2,
+      "real_credentials_used": false
+    },
+    "artifacts_count": 38,
+    "artifacts_manifest_sha256": "ef6f0bdf9be1bc830a3b706a0375b52fb446b6c3e57092c71b0ad549e4341b02",
+    "stage_sha256_count": 79,
+    "stage_sha256_manifest_sha256": "c35b158580fd1f4207d79e25c92665b22bc0fbca598edad8f35a9c48250d4e69"
+  },
+  "transaction": {
+    "step": "b02-glib-networking-install",
+    "started": "2026-11-09T21:55:23.780199+00:00",
+    "recipe_sha256": "36ac9b550abefe81483adfdd3c50703ee8e14453943ee9060ade459b617dbcc2",
+    "postcheck_sha256": "0410841f08b74046ee45b52561a5da9d1932a41658c5d1e2e54cb185e72f1c4e",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "bbe5388202c31fedd49ac438aaf0b68a9775110755bb12d610e6e47a53910c49",
+    "recipe_pid": 354124,
+    "recipe_pgid": 354124,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T21:55:40.101889+00:00",
+    "changed_paths": 90,
+    "log_sha256": "65599cbe26dd74448eded812fd6559192f5a66559b30f5146a50edf8f0a95465",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "4a898ffe569663e9e6c7fbb65d5664150cf2a2e4728cf48872f06dde8bca0892"
+  },
+  "timing": {
+    "step": "b02-glib-networking-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.218,
+        "entries": 153364,
+        "regular_files": 136551,
+        "regular_bytes": 7201424251
+      },
+      {
+        "seconds": 14.035,
+        "entries": 153450,
+        "regular_files": 136635,
+        "regular_bytes": 7202261889
+      }
+    ],
+    "total_seconds": 31.582
+  },
+  "installed_consumer": {
+    "scope": "Owned actual default GIO/GnuTLS factory trust/malformed certificate refusal/recovery and changed shared-cache DConf GSettings persistence/new-bus/reset. Original local TLS/proxy fixtures reused; remote network/native GNOME/DTLS pending.",
+    "consumer": {
+      "actual_GnuTLS_GIO_backend": true,
+      "default_installed_factory_root_verified": true,
+      "malformed_certificate_refused": true,
+      "post_refusal_recovery_cycles": 2,
+      "real_credentials_used": false
+    },
+    "GSettings_changed_cache_consumer": {
+      "scope": "Actual GSettings DConf backend/private schema/private user database, no user settings changed",
+      "mode": "installed",
+      "cycles": [
+        {
+          "backend": "DConfSettingsBackend",
+          "write": true,
+          "sync": true
+        },
+        {
+          "backend": "DConfSettingsBackend",
+          "persisted_after_new_bus": true,
+          "reset": true
+        }
+      ],
+      "unrelated_configuration_changed": false
+    },
+    "shared_cache_modules": 4,
+    "module_override_used": false
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-glib-networking-install-evidence.tar.gz",
+    "sha256": "b0b167afe7dd545b2788f3b9c9aaabb04920729a534069ae26a8bca460783a45",
+    "members": [
+      "build/b02-glib-networking-install.log",
+      "build/b02-glib-networking-install.manifest.json",
+      "build/b02-glib-networking-install.success.json",
+      "phase2/b02-glib-networking-install-controller.log",
+      "phase2/b02-glib-networking-install-timing.json",
+      "phase2/gio-network-resources-1.json",
+      "phase2/glib-networking-1-controller.log",
+      "phase2/glib-networking-1.exit",
+      "phase2/glib-networking-1.job.json",
+      "phase2/glib-networking-1.log",
+      "phase2/glib-networking-consumer-3-controller.log",
+      "phase2/glib-networking-consumer-3.exit",
+      "phase2/glib-networking-consumer-3.job.json",
+      "phase2/glib-networking-consumer-3.log",
+      "phase2/glib-networking-installed-consumer.json",
+      "phase2/glib-networking-stage.json",
+      "phase2/glib-networking-tls-2-controller.log",
+      "phase2/glib-networking-tls-2.exit",
+      "phase2/glib-networking-tls-2.job.json",
+      "phase2/glib-networking-tls-2.log",
+      "work/ELFs-before-TLS-2.json",
+      "work/TLS-remaining-2.exit",
+      "work/TLS-remaining-2.log",
+      "work/compile/meson-logs/testlog.json",
+      "work/initial-testlog-1.json",
+      "work/native-consumer-3.json",
+      "work/native-consumer-3.stderr",
+      "work/native-consumer.json",
+      "work/original-tests.log",
+      "work/remaining-testlog-2.json",
+      "work/stage-before-consumer-3.json",
+      "work/stage-results.json"
+    ]
+  },
+  "shared_GIO_resource_transaction": {
+    "state": "complete",
+    "old_cache_text": "libdconfsettings.so: gsettings-backend\n",
+    "old_generated_resource": {
+      "generator": "/usr/bin/gio-querymodules",
+      "input_sha256": "97609bb83b8e49fc458984db194d040b711a5c73b4b1441a97b67714b06b036c",
+      "sha256": "58a30f87703d65521c086359252484420f879eb5c18991bc17e994097d32f6fb",
+      "scope": "Generated runtime cache, not archive payload; regenerate proportionally when qualified module inputs change"
+    },
+    "old_archive_sha256": "4d34b74732069dd2fce67d173ddc29d9519648963d2bec781a2750eb845dbb00",
+    "new_network_entries": {
+      "libgiognomeproxy.so": "gio-proxy-resolver",
+      "libgiognutls.so": "gio-tls-backend",
+      "libgiolibproxy.so": "gio-proxy-resolver"
+    },
+    "stage_cache_sha256": "ecc5e13246f28440d85911a3651d872fc37574f4fc65d414d525b6cb32891dfd",
+    "recovery": "Inspect native package and resource receipts before replay. Retained old DConf resource metadata/cache text can be restored only with verified prior module inputs after reverting/removing the new owned network package. No rollback has been executed.",
+    "new_cache_sha256": "2fe7ad576c5bec7552846c4a3fd662ebc0c9c398eb8e9e4b416e51862cb9e74d",
+    "module_inputs_sha256": {
+      "libdconfsettings.so": "97609bb83b8e49fc458984db194d040b711a5c73b4b1441a97b67714b06b036c",
+      "libgiognomeproxy.so": "7907a7dd28c6fc49f29da80d4fd390421ff990a81b63926125338a12dced49f2",
+      "libgiognutls.so": "3129f76eb817b74c069d3b77171d79b3718836f359a9a7eaa0d51fb4ed871332",
+      "libgiolibproxy.so": "27df9d570a79cd91082fdb568bedc72943c2622c49b7a12993cf1bbae74e3e87"
+    },
+    "dconf_archive_unchanged": true
+  }
+}

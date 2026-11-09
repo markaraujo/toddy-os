@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'glib-networking': ('2.80.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gnutls (= 3.8.13-1+toddy1), libproxy (= 0.5.12-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1)', 'glib-networking-2.80.1.tar.xz', 'usr/lib/gio/modules/libgiognutls.so'),
+    'libproxy': ('0.5.12', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), curl (>= 8.23.0-1), duktape (= 2.7.0-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1)', 'libproxy-0.5.12.tar.gz', 'usr/lib/pkgconfig/libproxy-1.0.pc'),
     'gnutls': ('3.8.13', 'glibc (>= 2.44-1+toddy1), nettle (= 4.0-1+toddy1), libunistring (= 1.4.2-1+toddy1), libidn2 (= 2.3.8-1+toddy1), libtasn1 (= 4.21.0-1+toddy1), p11-kit (>= 0.26.5-1+toddy1), p11-kit (<< 0.26.6), ca-certificates (>= 2026.11.09-1+toddy1)', 'gnutls-3.8.13.tar.xz', 'usr/lib/pkgconfig/gnutls.pc'),
     'libidn2': ('2.3.8', 'glibc (>= 2.44-1+toddy1), libunistring (= 1.4.2-1+toddy1)', 'libidn2-2.3.8.tar.gz', 'usr/lib/pkgconfig/libidn2.pc'),
     'libunistring': ('1.4.2', 'glibc (>= 2.44-1+toddy1)', 'libunistring-1.4.2.tar.xz', 'usr/include/unistring/version.h'),
@@ -233,6 +235,7 @@ if __name__ == '__main__':
     if name=='libpsl':qualifier='libpsl-metadata-2'
     if name=='nettle':qualifier='nettle-consumer-2'
     if name=='gnutls':qualifier='gnutls-stage-5'
+    if name=='glib-networking':qualifier='glib-networking-consumer-3'
     if name=='libunistring':qualifier='libunistring-consumer-2'
     if name=='gcr':qualifier='gcr-finish-4'
     if name=='upower':qualifier='upower-consumer-4'
@@ -1178,6 +1181,14 @@ if __name__ == '__main__':
     if name=='gnutls':
         from qualify_gnutls import qualify as qualify_gnutls
         qualify_gnutls(ROOT)
+    if name=='libproxy':
+        from qualify_libproxy import qualify as qualify_libproxy
+        qualify_libproxy(ROOT)
+    if name=='glib-networking':
+        from qualify_glib_networking import qualify as qualify_glib_networking
+        qualify_glib_networking(ROOT)
+        from gio_network_resources import prepare as prepare_gio_network
+        prepare_gio_network()
     if name=='gcr3':
         from qualify_gcr3 import qualify as qualify_gcr3
         qualify_gcr3(ROOT)
@@ -1264,6 +1275,10 @@ if __name__ == '__main__':
         shutil.copytree(source, destination, symlinks=True)
         assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
+    if name=='glib-networking':
+        # Compiler-local discovery contains only network modules, while the
+        # installed resource also serves DConf. Never package/overwrite it.
+        (destination/'usr/lib/gio/modules/giomodule.cache').unlink()
     if name=='nss':
         # Original test modules stay in immutable qualification evidence only.
         # The book's glob also matches them after gtests are enabled.
@@ -1383,3 +1398,6 @@ if __name__ == '__main__':
                     version+('-1+toddy2' if name=='linux-pam' else '-1+toddy1'), str(destination), *source_args,
                     '--recipe', 'scripts/build/phase2/'+name+'-install.sh',
                     '--depends', depends, '--install', *conffiles], cwd=ROOT, check=True)
+    if name=='glib-networking':
+        from gio_network_resources import finish as finish_gio_network
+        finish_gio_network()

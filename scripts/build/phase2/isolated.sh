@@ -66,6 +66,23 @@ if [[ -d /mnt/lfs/etc/fonts && ! -L /mnt/lfs/etc/fonts ]]; then
     readonly_bind /mnt/lfs/etc/fonts "$root/etc/fonts"
 fi
 readonly_bind "$TODDY_INPUT" "$root/src"
+# This selected TLS consumer requires the qualified public factory CA policy.
+# Expose only public anchors/certificates read-only, never SSL private/config
+# directories or the guest's general /etc. CA generation uses its separate
+# private-output profile below and cannot match this input identity.
+if [[ "$TODDY_INPUT" == /mnt/lfs/sources/phase2/inputs/glib-networking-2.80.1 ]]; then
+    python3 - <<'PY'
+import json
+from pathlib import Path
+r=json.loads(Path('/var/log/toddy/packages/ca-certificates_2026.11.09-1+toddy1_amd64.json').read_text())
+assert r['installed']
+assert len(list(Path('/mnt/lfs/etc/pki/anchors').glob('*.p11-kit')))==172
+PY
+    mkdir -p "$root/etc/pki/anchors" "$root/etc/ssl/certs"
+    readonly_bind /mnt/lfs/etc/pki/anchors "$root/etc/pki/anchors"
+    readonly_bind /mnt/lfs/etc/ssl/certs "$root/etc/ssl/certs"
+    ln -s certs/ca-certificates.crt "$root/etc/ssl/cert.pem"
+fi
 # CA generation needs writable private trust paths at their real module names.
 # These are aliases to this worker's outputs, never the installed /etc. Keep
 # existing OpenSSL configuration/scripts mounted read-only from authenticated input.

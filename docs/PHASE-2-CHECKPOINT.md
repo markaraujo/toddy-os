@@ -7,7 +7,29 @@ foundation tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Current slice and exact next action
 
-Current slice: next GLib TLS/proxy prerequisite preparation. No active writer;
+Current verified slice: owned GLib-networking2.80.1/default TLS/shared GIO cache.
+No active writer. `b02-glib-networking-install.success.json` proves recipe/post0/0,
+90changed paths/240owned entries. Shared cache now four modules; unchanged DConf
+archive/module retained, generated-resource metadata updated under controlled
+receipt`gio-network-resources-1.json`. Actual installed default GIO/GnuTLS/system
+root/malformed certificate refusal/recovery and private DConf GSettings persistence/
+new-bus/reset passed, without module or TLS overrides. All six enabled originals
+passed; three initial proxy/certificate drivers reused, only three TLS programs
+repeated after exposing actual public anchors read-only. Own auxiliary-PEM input
+corrected consumer-only3; original38ELFs/stage unchanged. No suite/stage replay.
+[Proof](evidence/B02-glib-networking-install.json), ADR0165. Never reinstall.
+
+Exact next: prepare frozen libsoup3.6.6 build/probe using owned GLib-networking/
+GnuTLS/libproxy/libpsl/nghttp2. Source cached and host review extracted at ignored
+`.local/probes/libsoup-3.6.6-review`. No guest input/job/stage exists yet. Keep
+actual TLS check enabled, introspection/original tests; optional GSSAPI/NTLM/
+Brotli/Vala/docs/profiling/external Autobahn unavailable unless qualified. Use
+private loopback/public read-only trust; no external compiler route. Then EDS3.60.2
+and GNOME Shell/GDM/apps. Libproxy install/post0/0 changed23paths/29owned entries.
+P11 local update/recovery/NSS unified-root alias and fresh combined recipe
+qualification remain explicit pending integration, not acceptance.
+
+Prior verified slices:
 `b02-ca-native-install.success.json` and `b02-gnutls-install-2.success.json`
 both prove recipe/post0/0. CA data changed717paths,721owned entries, all9803
 OpenSSL package entries unchanged. Actual installed default P11/GnuTLS/OpenSSL
@@ -22,17 +44,7 @@ failed only ordered enumeration comparison, ZEROroot changes/no promotion stage/
 archive. Install2 compares exact917name/result maps. NEVER replay successful
 CA preparation/generation/finish/acceptance/native install or GnuTLS stage/install.
 
-Exact next: prepare frozen libproxy0.5.12 build/probe, then GLib-networking2.80.1
-using owned GnuTLS and existing gsettings-desktop-schemas50.1/Duktape2.7.0.
-Libproxy source cached/verified; no guest preparation/build yet. GLib-networking
-source cached, no recipe/guest build yet. Use one isolated compiler writer and
-private loopback for actual local TLS peers. Public DNS remains FAILED/unqualified
-until actual native network. P11 callback/local trust update/recovery/NSS shared
-root alias are pending controlled follow-ups, never claim them operational.
-Fresh combined trust/GnuTLS build recipe portability remains pending; preserve
-historical exact-input jobs and finishing helpers. No Phase2 ISO/native desktop.
-
-Then glib-networking/libsoup/EDS and remaining GNOME/GDM/apps/network/audio/offline/
+Then libsoup/EDS and remaining GNOME/GDM/apps/network/audio/offline/
 focus/responsiveness/resources. Shared caches/trust integration below remain gates.
 
 ## Latest verified boundaries — reuse, never rebuild/reinstall/retest unchanged
@@ -126,8 +138,8 @@ full actual422093entry restore verified before retirement. Current140.17source/
 compiled/tests retained. [Custody/recovery](evidence/B02-runtime-custody-checkpoint.md).
 Restore into a NEW absent private path only after full archive/manifest check.
 
-Latest verified public495e4120043bd9f335b9f6874849c938cfa6a1a8: safety42692748744/
-planning42692749158/Pages42692748869 allsuccess; exact public HTTP200/indexSHA
+Latest verified publicfce0fa619f709a48fe019673b03c1fca2d285d65: safety42705178783/
+planning42705178710/Pages42705178787 allsuccess; exact public HTTP200/indexSHA
 bad4f5bca19631af7948f1c0283967255d2cf1045664e81062360c8614948963 verified.
 Historical GitHub internal zero-job failures/retry retained; no further unchanged
 retry. Select checks by changed impact, no unchanged long suites. Commit/push

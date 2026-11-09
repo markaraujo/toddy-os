@@ -1,0 +1,134 @@
+{
+  "scope": "Owned proxy/PAC runtime; five originals including private loopback fixtures, actual installed public API/direct/bypass/malformed-URI safe fallback/boxed-copy lifetime/SDK. Remote proxy/WPAD/portal/native GNOME pending",
+  "source": {
+    "name": "libproxy",
+    "version": "0.5.12",
+    "filename": "libproxy-0.5.12.tar.gz",
+    "url": "https://github.com/libproxy/libproxy/archive/0.5.12/libproxy-0.5.12.tar.gz",
+    "sha256": "a1fa55991998b80a567450a9e84382421a7176a84446c95caaa8b72cf09fa86f",
+    "reference": "BLFS13.1-systemd general/libproxy.html",
+    "book_page_sha256": "bfbeff515ca203e535e056779cd4cb32229efdcc08e6dbe6560ad1b13917d09b",
+    "book_md5": "db615bbae5c20eb209a2cdbfe62e0fa3",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Five original libproxy/manager/environment/sysconfig/GNOME drivers including private loopback PAC/Duktape fixtures; actual public API direct/bypass/malformed-URI safe fallback and lifecycle. No remote proxy/WPAD/native desktop acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "libproxy:Libproxy test",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "libproxy:PX Manager test",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "libproxy:Config Environment test",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "libproxy:Config sysconfig test",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "libproxy:Config GNOME test",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "consumer": {
+      "public_direct_resolution": true,
+      "malformed_URI_safe_direct_fallback": true,
+      "bypass_and_post_fallback_recovery": true,
+      "boxed_copy_lifetime": true,
+      "lifecycle_cycles": 2,
+      "network_requests_sent": false
+    },
+    "artifacts_count": 29,
+    "artifacts_manifest_sha256": "51e1eb232f646af34ddb2abcecb77c04ab2194a3a676f6e576071a27ad7895e3",
+    "stage_sha256_count": 9,
+    "stage_sha256_manifest_sha256": "e796d04bea784c077eabfbfb0db327d7b9ccfed51004fbeaacfd793853bb0974"
+  },
+  "transaction": {
+    "step": "b02-libproxy-install",
+    "started": "2026-11-09T21:47:32.425713+00:00",
+    "recipe_sha256": "5cf2bd9247c820654551b82ed167f5da51bb06169c5b813766e90dc2eda28958",
+    "postcheck_sha256": "3073ab3dae7db6317b5772f30c5edd46ffc13bd498369c96b17e06ba30db2c9f",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "bbe5388202c31fedd49ac438aaf0b68a9775110755bb12d610e6e47a53910c49",
+    "recipe_pid": 352128,
+    "recipe_pgid": 352128,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T21:47:48.094130+00:00",
+    "changed_paths": 23,
+    "log_sha256": "0f0beb8c6976a861433f9b9d32c20fb1e869afe6a7af30c60c8c79a6076233db",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "f72f5789132d506aa124971f9f16a550e06a152fa5d83a4dd4cceb10a656a013"
+  },
+  "timing": {
+    "step": "b02-libproxy-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.028,
+        "entries": 153344,
+        "regular_files": 136537,
+        "regular_bytes": 7201243206
+      },
+      {
+        "seconds": 13.881,
+        "entries": 153364,
+        "regular_files": 136551,
+        "regular_bytes": 7201424251
+      }
+    ],
+    "total_seconds": 30.713
+  },
+  "installed_consumer": {
+    "scope": "Owned public direct/bypass/malformed-URI safe fallback/boxed lifetime and SDK only; original loopback PAC/Duktape fixtures reused. Remote proxy/PAC/WPAD/portal and native GNOME integration pending.",
+    "consumer": {
+      "public_direct_resolution": true,
+      "malformed_URI_safe_direct_fallback": true,
+      "bypass_and_post_fallback_recovery": true,
+      "boxed_copy_lifetime": true,
+      "lifecycle_cycles": 2,
+      "network_requests_sent": false
+    },
+    "loaded_owned_frontend_and_backend": true,
+    "SDK_version": "0.5.12"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libproxy-install-evidence.tar.gz",
+    "sha256": "c7a6c23f01843f45cf1580938ee6b7efe64b2b89397b5d8f5676fbe1c2db883a",
+    "members": [
+      "build/b02-libproxy-install.log",
+      "build/b02-libproxy-install.manifest.json",
+      "build/b02-libproxy-install.success.json",
+      "phase2/b02-libproxy-install-controller.log",
+      "phase2/b02-libproxy-install-timing.json",
+      "phase2/libproxy-1-controller.log",
+      "phase2/libproxy-1.exit",
+      "phase2/libproxy-1.job.json",
+      "phase2/libproxy-1.log",
+      "phase2/libproxy-installed-consumer.json",
+      "phase2/libproxy-stage.json",
+      "work/compile/meson-logs/testlog.json",
+      "work/native-consumer.json",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}
