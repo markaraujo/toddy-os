@@ -41,3 +41,7 @@ a05bb3f37d502b2d2513f7e22ec2079b79b3f019:docs/evidence/B02-desktop-resources-ins
 # Reviewed public GNOME wm.keybindings schema SHA256 in GTK3 shared-cache proofs.
 docs/evidence/B02-gtk3-resources-install.json:generic-api-key:36
 docs/evidence/B02-gtk3-resources-build.json:generic-api-key:92
+
+# Reviewed exact historical JSON-C public object/header SHA256; actual native bytes verified.
+2bc013961fa25c790ef87dc9b5efb03799ee8114:docs/evidence/B02-json-c-install.json:generic-api-key:94
+2bc013961fa25c790ef87dc9b5efb03799ee8114:docs/evidence/B02-json-c-install.json:generic-api-key:136

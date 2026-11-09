@@ -160,3 +160,11 @@ empty-byte digest); no credential or arbitrary value. Added only that exact
 commit/path/rule/line fingerprint, with no broad path/pattern/rule exclusion.
 Pinned8.30.1 full-history replay exited0 after review. Prior failed runs remain
 failed; remote confirmation follows the pushed correction.
+
+2026-11-09: public safety run42663415109 refused two historical generic-api-key
+matches in2bc0139, B02-json-c-install.json lines94/136. Both are SHA256 inventory
+values for public json_tokener.c.o/json_tokener.h, independently recomputed from
+the actual guest compiler/stage files and matched exactly. Add only the two exact
+commit/file/rule/line fingerprints; no new path/rule/value wildcard or scanner
+change, no credential exception. Retain sanitized local report and failing run;
+rerun full history with existing pinned scanner before publishing the correction.
