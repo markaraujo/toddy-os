@@ -6,7 +6,7 @@ from pathlib import Path
 def output(args):return subprocess.check_output(args,text=True,timeout=15).strip()
 def digest(p):
     with p.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
-ACCOUNT_CLIENT="import json,re,sys\nfrom gi.repository import Gio,GLib\nrequest=json.load(sys.stdin);bus=Gio.bus_get_sync(Gio.BusType.SYSTEM,None)\nmethod=request['method'];assert method in ['SetRealName','SetPassword','SetIconFile']\nsignature='(ss)' if method=='SetPassword' else '(s)'\ntry:\n bus.call_sync('org.freedesktop.Accounts',request['path'],'org.freedesktop.Accounts.User',method,GLib.Variant(signature,tuple(request['values'])),None,Gio.DBusCallFlags.NO_AUTO_START,15000,None)\n result={'authorized':True}\nexcept GLib.Error as error:\n result={'authorized':False,'remote_error':Gio.DBusError.get_remote_error(error),'permission_refused':bool(re.search('permission|denied|not allowed|readable|access|ownership',error.message,re.I))}\nrequest=None;print(json.dumps(result))\n"
+ACCOUNT_CLIENT='import json,re,sys\nfrom gi.repository import Gio,GLib\nrequest=json.load(sys.stdin);bus=Gio.bus_get_sync(Gio.BusType.SYSTEM,None)\nmethod=request[\'method\'];assert method in [\'SetRealName\',\'SetPassword\',\'SetIconFile\']\nsignature=\'(ss)\' if method==\'SetPassword\' else \'(s)\'\ntry:\n bus.call_sync(\'org.freedesktop.Accounts\',request[\'path\'],\'org.freedesktop.Accounts.User\',method,GLib.Variant(signature,tuple(request[\'values\'])),None,Gio.DBusCallFlags.NO_AUTO_START,15000,None)\n result={\'authorized\':True}\nexcept GLib.Error as error:\n result={\'authorized\':False,\'remote_error\':Gio.DBusError.get_remote_error(error),\'protected_read_failed\':error.message.endswith("reading file \'/etc/shadow\' failed"),\'permission_refused\':bool(re.search(\'permission|denied|not allowed|readable|access|ownership\',error.message,re.I))}\nrequest=None;print(json.dumps(result))\n'
 
 def main():
     assert os.geteuid()==0 and os.uname().release=='7.1.8-toddy'
@@ -71,7 +71,9 @@ def main():
     result=client(12346,{'method':'SetPassword','path':paths[0],'values':[new_hash,'fixture']});assert not result['authorized'] and result['remote_error']=='org.freedesktop.Accounts.Error.PermissionDenied' and shadow(users[0][0])==before_hash
     runs.append({'name':'other-user-password-denied-shadow-unchanged','expected_outcome_passed':True,'secrets_retained':False})
     icon_before=properties(paths[1])['IconFile']
-    result=client(12346,{'method':'SetIconFile','path':paths[1],'values':['/etc/shadow']});assert not result['authorized'] and result['remote_error'] in ['org.freedesktop.Accounts.Error.Failed','org.freedesktop.Accounts.Error.PermissionDenied'] and result['permission_refused']
+    result=client(12346,{'method':'SetIconFile','path':paths[1],'values':['/etc/shadow']});assert not result['authorized'] and result['remote_error'] in ['org.freedesktop.Accounts.Error.Failed','org.freedesktop.Accounts.Error.PermissionDenied'] and (result['permission_refused'] or result['protected_read_failed']),json.dumps(result)
+    refused=subprocess.run(['python3','-c',"import os,errno; fd=None\ntry: fd=os.open('/etc/shadow',os.O_RDONLY)\nexcept OSError as error: assert error.errno==errno.EACCES\nelse: os.close(fd); raise AssertionError('Protected file readable')"],user=12346,group=12346,extra_groups=[],capture_output=True,timeout=10)
+    assert refused.returncode==0,'Direct peer protected-file refusal failed'
     assert properties(paths[1])['IconFile']==icon_before and not (Path('/var/lib/AccountsService/icons')/users[1][0]).exists()
     runs.append({'name':'protected-shadow-icon-read-refused','expected_outcome_passed':True,'no_icon_effect':True})
     call(destination,paths[0],account_iface,'SetPassword',GLib.Variant('(ss)',(new_hash,'fixture')))

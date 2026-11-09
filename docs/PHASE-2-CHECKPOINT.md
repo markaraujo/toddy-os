@@ -22,8 +22,13 @@ archive reconciled, verify-only `b02-polkit-verify-2` recipe/post0/0 changed_pat
 Installed private parser13cases/9NULL-error controls, metadata/CLI/APT0. [Install](evidence/B02-polkit-install.json).
 NEVER reinstall/rebuild/replay these steps or completed native tests.
 
-Exact next: clean reviewed commit, then `python3 scripts/host/phase2_native_accountsservice.py`
-once with `.local/phase2/native-accountsservice-1-controller.log`; NEW native-accountsservice-runtime-1.
+Native attempt1 stopped0/OOMfalse; backing identity verified BEFORE builder
+restart; six existing scratch volumes and authenticated source bind restored.
+Failure at protected-icon message classifier retained in serial/failure ledger.
+Source maps failed child read to generic diagnostic; corrected exact classifier
+and direct same-peer EACCES control prepared. Exact next: clean reviewed commit,
+then `python3 scripts/host/phase2_native_accountsservice.py` once with
+`.local/phase2/native-accountsservice-2-controller.log`; NEW context2.
 AccountsService26.27.3 staged, CLI/GI0,14original runtime programs+four repaired
 original daemon cases pass,27compiled ELFs unchanged. Synthetic input-only
 machine-id and private en_IE LOCPATH fixtures fixed actual missing-data failures;

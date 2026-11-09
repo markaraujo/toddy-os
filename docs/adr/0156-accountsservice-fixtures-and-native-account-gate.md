@@ -34,3 +34,10 @@ own data from administration; user_change_password_authorized_cb sends encrypted
 input to chpasswd-e through stdin and logs only user identity. No password/hash
 in command arguments, logs or evidence. Optional homed remains unavailable; no
 GDM/graphical/physical acceptance follows from fixtures or this service gate.
+
+Native attempt1 started actual daemon and reached protected-icon refusal but
+its message classifier rejected upstream's generic `reading file ... failed`
+message. Preserve failure; source user.c maps the helper's failed read to this
+message. Accept only that exact protected path or permission diagnostic, retain
+remote-error/no-icon-effect assertions and add direct same-peer EACCES proof.
+Use a fresh disposable context2; no runtime source/security change or rebuild.

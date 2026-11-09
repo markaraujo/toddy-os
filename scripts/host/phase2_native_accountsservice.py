@@ -8,7 +8,7 @@ from phase2_native_report import decode
 import phase2_vm
 import vm
 ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
-CONTEXT=ROOT/'.local/phase2/native-accountsservice-runtime-1'
+CONTEXT=ROOT/'.local/phase2/native-accountsservice-runtime-2'
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def main():
     assert len(sys.argv)==1
@@ -19,7 +19,7 @@ def main():
     source_probe=(ROOT/'scripts/host/phase2-native-accountsservice-probe.py').read_bytes()
     source_probe_sha256=hashlib.sha256(source_probe).hexdigest()
     packed=base64.b64encode(zlib.compress(source_probe,9)).decode()
-    probe=('import base64,zlib,hashlib\nsource=zlib.decompress(base64.b64decode('+repr(packed)+'))\nassert hashlib.sha256(source).hexdigest()=='+repr(source_probe_sha256)+'\nexec(compile(source,"<verified-polkit-native-probe>","exec"))\n').encode()
+    probe=('import base64,zlib,hashlib\nsource=zlib.decompress(base64.b64decode('+repr(packed)+'))\nassert hashlib.sha256(source).hexdigest()=='+repr(source_probe_sha256)+'\nexec(compile(source,"<verified-accountsservice-native-probe>","exec"))\n').encode()
     assert len(probe)<16000 and zlib.decompress(base64.b64decode(packed))==source_probe
     code="""from pathlib import Path
 import fcntl,hashlib,json,subprocess
