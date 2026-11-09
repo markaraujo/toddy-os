@@ -1,0 +1,32 @@
+{
+  "state": "complete",
+  "scope": "Only new full-package promotion replica, after actual new-PID1/session recovery qualification; installed files/original six-file compiler stage/source/tests/both archives retained",
+  "stage": "/mnt/lfs/sources/stage/phase2-systemd-pam-3",
+  "stage_inode": 7415180,
+  "archive": "/var/cache/toddy/packages/systemd_261.2-1+toddy3_amd64.deb",
+  "archive_sha256": "c059a1dd232a3655da4a67f662e01932bec81d9855cd33ef4b8ca6141de96b90",
+  "record_sha256": "ff9421bb60d93b55ca5817bdab3211bb43a30eb2ef3d6e5ee77513245e16cb15",
+  "payload_entries": 2486,
+  "before_free_bytes": 17242607616,
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 17324716032,
+  "recovery": "Verify retained native archive/record and extract to a NEW stage if needed; never reinstall or replay retirement. Original compiler stage/source/raw evidence remain.",
+  "reclaimed_bytes": 82108416,
+  "native_acceptance": {
+    "state": "native-boot-session-qualified",
+    "version": "261.2-1+toddy3",
+    "native_kernel": "7.1.8-toddy",
+    "native_report_sha256": "f880d12c0f5e4a020e659c1d72b3535290e96f98f82583ed43668b244a8d424f",
+    "real_policy_cases": 4,
+    "real_session_cycles": 2,
+    "unchanged_installed_artifacts": 8,
+    "scope": "Actual native new PID1/PAMName/Stop/logind/user-manager/user-D-Bus/recovery; no GDM/GNOME or physical acceptance",
+    "no_package_or_test_replay": true
+  },
+  "retained_prewrite_failure": "The first generic LLVM top-directory guard refused Systemd var payload before receipt/deletion; actual complete native payload equality had passed. A local exact usr/etc/var/DEBIAN check preserved the generic guard. Corrected custody completed with installed root changed0; staged var only, no installed var data removed.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-duktape-systemd-custody-evidence.tar.gz",
+    "members": 12,
+    "sha256": "6b9f435f222f3768d3360cae5010460b7287a8d8c301e81a339dbad183218c76"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "ephemeral_account_removed": true,
+  "fixture_manifest_sha256": "2a84b3afd31480edf531be7cb30d775c326eb6d80bc3472b1076004f89e793f7",
+  "kernel": "7.1.8-toddy",
+  "passwords_or_tokens_used": false,
+  "pid1": "systemd",
+  "runs": [
+    {
+      "dbus": "active",
+      "exit": 0,
+      "features": "+PAM -AUDIT -SELINUX -APPARMOR +IMA +IPE +SMACK -SECCOMP -GCRYPT -GNUTLS +OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 +KMOD -LIBCRYPTSETUP -LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -BTF -XKBCOMMON +UTMP -LIBARCHIVE",
+      "logind": "active",
+      "name": "cold-boot-new-PID1-PAM",
+      "pid1_sha256": "9151bbaffe4d6857aa461c3633e289b1d0a772037b6749c6c0d3690cbc027eb0"
+    },
+    {
+      "exit": 0,
+      "name": "PAMName-allow-and-stop-cleanup",
+      "pam_name": "toddy-pam-allow",
+      "service_cgroup_empty": true
+    },
+    {
+      "actual_exec_status": 224,
+      "exit": 0,
+      "expected_exec_status": 224,
+      "name": "PAMName-account-denied"
+    },
+    {
+      "actual_uid": 12345,
+      "exit": 0,
+      "name": "PAMName-service-recovery-as-user"
+    }
+  ],
+  "scope": "Actual updated Systemd261.2 cold boot/PAMName allow-deny-stop-recovery and two real PAM/logind/user-manager/user-bus cycles; no GDM/GNOME/physical acceptance",
+  "session_cycles": [
+    {
+      "bus_id_sha256": "adbd239d1fd0953d668c4c803443859f5babcb7c7e1689cacb855fc78fdff727",
+      "client_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cycle": 1,
+      "pam_close_exit": 0,
+      "pam_end_exit": 0,
+      "pam_open_exit": 0,
+      "runtime_mode": "0700",
+      "runtime_owner_uid": 12345,
+      "session": {
+        "Class": "user",
+        "Leader": "289",
+        "Name": "toddy-session-probe",
+        "Seat": "seat0",
+        "Service": "toddy-session",
+        "State": "active",
+        "Type": "tty",
+        "User": "12345"
+      },
+      "session_and_runtime_removed": true,
+      "user_bus_get_id_exit": 0,
+      "user_default_target": "active",
+      "user_manager": "active"
+    },
+    {
+      "bus_id_sha256": "a2bd0bd617f3846365a2c17e1131d58eb6b82afee9b3df4f1b30768ee57ab3c1",
+      "client_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cycle": 2,
+      "pam_close_exit": 0,
+      "pam_end_exit": 0,
+      "pam_open_exit": 0,
+      "runtime_mode": "0700",
+      "runtime_owner_uid": 12345,
+      "session": {
+        "Class": "user",
+        "Leader": "323",
+        "Name": "toddy-session-probe",
+        "Seat": "seat0",
+        "Service": "toddy-session",
+        "State": "active",
+        "Type": "tty",
+        "User": "12345"
+      },
+      "session_and_runtime_removed": true,
+      "user_bus_get_id_exit": 0,
+      "user_default_target": "active",
+      "user_manager": "active"
+    }
+  ],
+  "unchanged_fixture_files": 1,
+  "unchanged_installed_artifacts": 8,
+  "native_report_sha256": "f880d12c0f5e4a020e659c1d72b3535290e96f98f82583ed43668b244a8d424f",
+  "native_container_stopped_exit": 0,
+  "source_parent_unchanged_before_restart": true,
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-systemd-session-native-1-evidence.tar.gz",
+    "members": 10,
+    "sha256": "e9155c7d86214ce150955e30fb8b81cd862083569b0c85562e4426c18af1aacb"
+  }
+}

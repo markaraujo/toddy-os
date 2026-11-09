@@ -1,7 +1,7 @@
 # ADR-0149: Add PAM to the frozen Systemd session runtime
 
 - Date: 2026-11-09
-- Status: Original native core gate and controlled installation passed; new-runtime boot/session gate pending
+- Status: Accepted native core, installed runtime and cold-boot/session recovery profile
 
 The accepted261.2 runtime reports -PAM. Its original
 src/core/load-fragment-gperf.gperf.in174–178 explicitly maps PAMName to an
@@ -58,3 +58,23 @@ remains available. Native cold boot/PAMName/session/recovery remains pending,
 with a separate no-password ephemeral-user fixture prepared. See
 [installation](../evidence/B02-systemd-pam-install.json) and
 [original native drivers](../evidence/B02-systemd-pam-native-1.json).
+
+The separate updated-PID1 cold boot passed four actual policy/lifecycle cases:
+PAMName allow, denial with executor status224, Stop/cgroup cleanup and subsequent
+execution as the selected user. Two actual PAM/logind sessions each had active
+user manager/default target and a private user D-Bus; close/terminate removed the
+session/runtime. Recovery obtained a different real bus identity. No password or
+token was needed for these root-requested service/session tests; earlier actual
+yescrypt/helper tests remain separate evidence. Eight installed artifacts and the
+client were unchanged; temporary account removed, child stopped0/OOMfalse, source
+parent unchanged before restart. Report SHA256
+f880d12c0f5e4a020e659c1d72b3535290e96f98f82583ed43668b244a8d424f.
+See [native session proof](../evidence/B02-systemd-session-native-1.json).
+
+After that acceptance, only the new archive-identical full-package promotion
+replica was retired:82108416Breclaimed, full installed root snapshot changed0.
+Original compiler stage/source/raw tests and both native archives remain. The
+first LLVM-specific root-directory guard refused before any retirement; the
+corrected exact Systemd usr/etc/var/DEBIAN check preserves the generic guard.
+[Custody/recovery](../evidence/B02-systemd-pam-stage-custody.json) is complete
+and must not replay. No GDM/GNOME/physical/B02 acceptance follows from this slice.
