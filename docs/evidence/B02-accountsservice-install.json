@@ -1,0 +1,85 @@
+{
+  "scope": "Owned AccountsService26.27.3 CLI/GI/package audit plus separately bound native real account permissions/password/Stop/reconnect; no GNOME/GDM/UI acceptance",
+  "source": {
+    "name": "accountsservice",
+    "version": "26.27.3",
+    "filename": "accountsservice-26.27.3.tar.bz2",
+    "url": "https://gitlab.freedesktop.org/accountsservice/accountsservice/-/archive/26.27.3/accountsservice-26.27.3.tar.bz2",
+    "sha256": "77e26080fd644df3e339fef561bb77f901e43557dc73e620afb6c10789b9a9e8",
+    "reference": "BLFS13.1-systemd general/accountsservice.html",
+    "book_page_sha256": "ba8bad85ee584008c5cf6af2798b0ab9fc785f2251404c95903dc33876ebf152",
+    "book_md5": "61f56055b9d4564ad29bab799222e386",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "transaction": {
+    "step": "b02-accountsservice-install",
+    "started": "2026-11-09T17:12:54.002329+00:00",
+    "recipe_sha256": "119802b82f8040166ea8683ebfc642b8eda9028b285d693906c61e9cc558a560",
+    "postcheck_sha256": "2fb424a1e1995bcea3729eb11447102a78796571751eb735be2bd5f97b3252d5",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "68b3e949712c20923433f203699e35a49f2cf0b25455399c1a0626b1dafa1ed2",
+    "recipe_pid": 1554,
+    "recipe_pgid": 1554,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T17:13:09.743139+00:00",
+    "changed_paths": 111,
+    "log_sha256": "a6397dbc4ab48fe5a36ba0ee9f96a36f75592065a4daf74f6b811c3e590820b2",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "2ca0f9e1b37bf734687442c1ce44a5f32e9a27e1b522227386471822836f7432",
+    "supporting_build_scripts_inventory": "Full script path/hash inventory retained in SHA-bound private raw evidence; public record summarizes it."
+  },
+  "timing": {
+    "step": "b02-accountsservice-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 24.268,
+        "entries": 150702,
+        "regular_files": 134378,
+        "regular_bytes": 7133167183
+      },
+      {
+        "seconds": 13.581,
+        "entries": 150810,
+        "regular_files": 134475,
+        "regular_bytes": 7134172797
+      }
+    ],
+    "total_seconds": 41.015
+  },
+  "installed_consumer": {
+    "scope": "Installed CLI/GI/SDK/package audit; real native account gate separately source-bound, GNOME UI pending",
+    "consumer": {
+      "version": "26.27.3",
+      "daemon_version_exit": 0,
+      "native_gi_types": [
+        "ActUser",
+        "ActUserManager"
+      ],
+      "password_mode_enum": 0,
+      "administrator_enum": 1,
+      "scope": "CLI/GI link only; original private-bus fixtures separate, no real account/privilege/GDM claim"
+    }
+  },
+  "native_evidence": "docs/evidence/B02-accountsservice-native.json",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-accountsservice-install-evidence.tar.gz",
+    "sha256": "4813d2e29cf1f2e140081e345e4c67ea7a4cc3ee684a1723ae863a7d51077d02",
+    "members": [
+      "build/b02-accountsservice-install.success.json",
+      "build/b02-accountsservice-install.manifest.json",
+      "build/b02-accountsservice-install.log",
+      "phase2/accountsservice-native-acceptance-1.json",
+      "phase2/accountsservice-installed-consumer.json",
+      "phase2/accountsservice-stage.json",
+      "phase2/b02-accountsservice-install-timing.json"
+    ]
+  }
+}

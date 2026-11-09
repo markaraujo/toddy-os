@@ -7,39 +7,23 @@ tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO acceptance.
 
 ## Current slice and exact next action
 
-Current writer: none. Builder boot `5b99526e-22c0-4f6c-a2b4-4fb0c1107673`.
-DConf0.49.0 owned/install/post0/0,16original programs and actual CLI/GSettings
-private database persistence/refusal/recovery0; no GUI claim. [Proof](evidence/B02-dconf-install.json).
+Current writer: none. AccountsService26.27.3-1+toddy1 OWNED, controlled
+install/post0/0 changed111paths, installed CLI/GI/SDK/APT0.
+[Installation](evidence/B02-accountsservice-install.json).
+Fresh native context2 passed10real account/password/PAM/peer-permission/protected
+file/Stop/reconnect/persistence outcomes;94fixture files unchanged, temporary
+users removed, no secrets retained. ReportSHA
+2e3a8d930a6336bb75099302deebaa55f1ff20e58fa5a85ffe50604666fffd97.
+[Native](evidence/B02-accountsservice-native.json). Initial context1 icon-message
+classifier failure retained; source-backed exact diagnostic plus peer EACCES
+control fixed only the probe, no runtime weakening/rebuild. Both children stopped0/
+OOMfalse; backing identity verified before each builder restart; existing SIX
+scratch volumes and authenticated Systemd source bind restored. NEVER replay
+native acceptance, package install or prior completed tests; no GDM/GUI acceptance.
 
-Polkit127-1+toddy1 OWNED/193paths/archiveSHA cbc1fbfda81423c018321402c7f05ec36742ce250176e228a6de39a8f4df2a17.
-Five original native programs/59TAP cases and11actual standard-helper expected
-outcomes passed;479fixture files unchanged. Exact root:root4755 helpers, root:27
-0750 rules, locked UID/GID27 service account; no owner test rules shipped. Native
-root-only UID/EUID/GID0 proof, wrong password/unsolicited cookie/NNP/Stop/no effect/
-helper cleanup/recovery/reconnect/revoked action replay. [Native](evidence/B02-polkit-standard-native.json).
-Initial installation0/post1 missing-proc consumer retained; full193entry payload/
-archive reconciled, verify-only `b02-polkit-verify-2` recipe/post0/0 changed_paths0.
-Installed private parser13cases/9NULL-error controls, metadata/CLI/APT0. [Install](evidence/B02-polkit-install.json).
-NEVER reinstall/rebuild/replay these steps or completed native tests.
-
-Native attempt1 stopped0/OOMfalse; backing identity verified BEFORE builder
-restart; six existing scratch volumes and authenticated source bind restored.
-Failure at protected-icon message classifier retained in serial/failure ledger.
-Source maps failed child read to generic diagnostic; corrected exact classifier
-and direct same-peer EACCES control prepared. Exact next: clean reviewed commit,
-then `python3 scripts/host/phase2_native_accountsservice.py` once with
-`.local/phase2/native-accountsservice-2-controller.log`; NEW context2.
-AccountsService26.27.3 staged, CLI/GI0,14original runtime programs+four repaired
-original daemon cases pass,27compiled ELFs unchanged. Synthetic input-only
-machine-id and private en_IE LOCPATH fixtures fixed actual missing-data failures;
-no system identity/locale changes. No real account/privilege/GDM acceptance yet.
-[Fixture proof](evidence/B02-accountsservice-stage.json). Native fixture94files,
-manifestSHA5742f96b2c330bb154bce093dd7d4ea8ca2f52158b7b2edd953f75128247073f,
-uses exact stage and previously qualified PAM client. ADR0156 requires actual
-passwd/shadow/peer permissions/PAM/protected-file refusal/Stop/recovery with two
-ephemeral accounts, upstream service hardening, no mock environment and no
-retained credentials. Inspect actual child/report/backing identity before any
-restart/retry. After native acceptance, controlled owned promotion still required.
+Next eligible B02 branch: frozen UPower1.91.3 then GNOME session dependencies,
+real GNOME/GDM/apps/network/audio/offline/focus/resource acceptance. Keep all
+original package/source/runtime integrity checks. No new B story before owner stop.
 
 JSON-C0.19-1+toddy1 now OWNED/install/post0/0,64changed paths.28original programs
 covered by27reused passes plus repaired original build-only CLI case; original

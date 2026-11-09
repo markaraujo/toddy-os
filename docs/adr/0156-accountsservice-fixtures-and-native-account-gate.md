@@ -1,6 +1,6 @@
 # ADR0156: AccountsService fixtures and real native account gate
 
-Status: fixture stage qualified; real native account gate pending, 2026-11-09.
+Status: fixtures and real native account gate qualified; owned package installed, 2026-11-09.
 
 Frozen AccountsService26.27.3 meson.build162 requires JSON-C>=0.15 even when
 create_homed=false. The book's paragraph omits that dependency; JSON-C0.19 already
@@ -41,3 +41,10 @@ message. Preserve failure; source user.c maps the helper's failed read to this
 message. Accept only that exact protected path or permission diagnostic, retain
 remote-error/no-icon-effect assertions and add direct same-peer EACCES proof.
 Use a fresh disposable context2; no runtime source/security change or rebuild.
+
+Fresh native context2 passed10real outcomes,94fixture files unchanged, accounts
+removed, no secrets retained. Child stopped0/OOMfalse and backing identity checked
+before restart. Source-bound receipt accepted once; controlled owned promotion
+26.27.3-1+toddy1 recipe/post0/0 changed111paths, CLI/GI/SDK/audit0.
+[Native](../evidence/B02-accountsservice-native.json),
+[installation](../evidence/B02-accountsservice-install.json). GDM/GUI remains pending.

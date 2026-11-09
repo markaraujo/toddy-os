@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-09T17:01:20.858536+00:00
+Updated: 2026-11-09T17:18:03.976750+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T17:01:20.858536+00:00
+Last verified: 2026-11-09T17:18:03.976750+00:00
 
 Verified:
 
@@ -91,8 +91,9 @@ Verified:
 - Owned DConf0.49.0 install/post0/0 changed41paths:14original core/runtime/ABI+2GVDB programs0; exact15bundled GVDB files matched immutable upstream commit. Actual installed CLI/GSettings private user DB typed persistence/malformed refusal/new bus/reset and generated GIO cache/audits0. No GNOME graphical acceptance.
 - Owned Polkit127-1+toddy1/193paths: original native5programs/59TAP cases and11actual standard-helper expected outcomes passed,479fixture files unchanged. Root-only UID/EUID/GID0 proof, wrong password/unsolicited cookie/NNP/Stop-no-effect/helper cleanup/recovery/reconnect/revoked action replay. Exact root:root4755 helpers/root:27 0750 rules, locked UID27 service account. Initial install0/post1 missing-proc consumer reconciled verify-only0/0 changed0; installed parser13+9/CLI/APT0. Optional socket transport remains failed/unqualified, no GNOME permission UI acceptance.
 - Owned JSON-C0.19 install/post0/0 changed64paths: original27program passes reused, only missing upstream build-only CLI/security test built/run;28covered, original ELFs unchanged. Actual strict identity/UTF8/depth/refusal/recovery C consumer staged/installed/APT0. AccountsService26.27.3 compile/stage/CLI/GI0;14original programs plus four repaired original daemon cases,27ELFs unchanged. Synthetic input-only machine-id/private en_IE fixture, no global identity/locale changes. Real account/privilege/GDM gate pending.
+- AccountsService26.27.3-1+toddy1 owned/install/post0/0 changed111paths. Actual native10account/password/PAM/peer-permission/protected-file/Stop/reconnect/persistence outcomes passed;94fixture files unchanged, ephemeral users removed. Initial protected-icon message gate failure retained/source-backed correction only, no rebuild. GNOME/GDM GUI pending.
 
-Running: B02 AccountsService staged and original fixtures verified; next one cold native real-account/password/PAM/privilege/protected-file/Stop/recovery gate,94file fixture. No owned AccountsService/GDM/graphical acceptance yet. Complete ALL B02 then stop before another story.
+Running: AccountsService owned; next frozen UPower/session dependencies and native GNOME/apps integration. Complete ALL B02 then stop before another story.
 
 Remaining:
 

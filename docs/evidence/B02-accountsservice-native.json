@@ -1,0 +1,103 @@
+{
+  "scope": "Actual native AccountsService; parent owned promotion and graphical acceptance pending",
+  "proof": {
+    "report": {
+      "daemon_uid": 0,
+      "ephemeral_accounts_removed": true,
+      "fixture_manifest_sha256": "5742f96b2c330bb154bce093dd7d4ea8ca2f52158b7b2edd953f75128247073f",
+      "kernel": "7.1.8-toddy",
+      "runs": [
+        {
+          "expected_outcome_passed": true,
+          "name": "real-system-bus-user-lookup",
+          "uids": [
+            12345,
+            12346
+          ]
+        },
+        {
+          "expected_outcome_passed": true,
+          "name": "own-real-name-and-actual-passwd-update"
+        },
+        {
+          "expected_outcome_passed": true,
+          "name": "other-user-real-name-denied"
+        },
+        {
+          "expected_outcome_passed": true,
+          "name": "other-user-password-denied-shadow-unchanged",
+          "secrets_retained": false
+        },
+        {
+          "expected_outcome_passed": true,
+          "name": "protected-shadow-icon-read-refused",
+          "no_icon_effect": true
+        },
+        {
+          "expected_authenticated": true,
+          "expected_outcome_passed": true,
+          "name": "administrator-password-change-real-PAM-new-password",
+          "pam_result": {
+            "account": 0,
+            "auth": 0,
+            "credential": 0,
+            "end": 0,
+            "start": 0
+          },
+          "secrets_retained": false
+        },
+        {
+          "expected_authenticated": false,
+          "expected_outcome_passed": true,
+          "name": "old-password-after-change-refused",
+          "pam_result": {
+            "account": 0,
+            "auth": 7,
+            "credential": -1,
+            "end": 0,
+            "start": 0
+          },
+          "secrets_retained": false
+        },
+        {
+          "expected_outcome_passed": true,
+          "name": "stop-removes-bus-owner"
+        },
+        {
+          "expected_authenticated": true,
+          "expected_outcome_passed": true,
+          "name": "restart-recovery-password-persists",
+          "pam_result": {
+            "account": 0,
+            "auth": 0,
+            "credential": 0,
+            "end": 0,
+            "start": 0
+          },
+          "secrets_retained": false
+        },
+        {
+          "expected_outcome_passed": true,
+          "name": "reconnect-new-owner-and-persistent-user-data"
+        }
+      ],
+      "scope": "Real native AccountsService account/passwd/shadow/PAM/privilege/protected-file refusal/Stop/reconnect/persistence in disposable guest only; owned package/GDM/GUI still pending",
+      "secrets_retained": false,
+      "service_has_no_mock_environment": true,
+      "unchanged_fixture_files": 94,
+      "upstream_service_hardening_used": true
+    },
+    "summary": {
+      "kernel": "7.1.8-toddy",
+      "all_selected_exits_zero": true,
+      "report_sha256": "2e3a8d930a6336bb75099302deebaa55f1ff20e58fa5a85ffe50604666fffd97",
+      "chunks": 1
+    },
+    "child_stopped": true,
+    "child_exit": 0,
+    "child_oom": false,
+    "parent_verified_before_builder_restart": true,
+    "commit": "25ad44b4e31cedaed636003f0b4d2e8c276f807f",
+    "source_probe_sha256": "9dcace3ea252a4f6f0319ee7cab0170db9c9affba8685a5cb6372d1436da5b50"
+  }
+}
