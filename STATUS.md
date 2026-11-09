@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T12:20:45.917066+00:00
+Last verified: 2026-11-09T12:28:14.813018+00:00
 
 Verified:
 
@@ -79,8 +79,9 @@ Verified:
 - Primary Rust cache custody complete:39151entries846hardlink groups restored exactly with archive/source metadata verified, source unchanged before retirement, installed-root changed_paths0.7.24GBtarget reclaimed; SDK remains usable, all archive/manifests/logs retained. Mozilla compile/stage and original API evidence follows; no GUI acceptance.
 - Additional host margin from NEW h07cold backup only: byte/metadata/OFD/backing checks0, observed4.83GB recovered; no completed custody replay. Mozilla140.14 source643MB and exact Python3.14 patch5paths authenticated/prepared0; no foundation update. Compile/stage0, shell42; original901API tests0 with501ELFs unchanged, no promotion. GJS1.88.1 source authenticated only.
 - Owned GJS1.88.1 native install/post0/0,158changed paths; original two C202cases plus native78programs/2741PASS/147original pending SKIPs,124artifacts361sources unchanged; actual installed C/CLI/GI/event/refusal/recovery0. Exact Meson RUNPATH removal/three mutation refusals; prewrite failure retained. No full GNOME acceptance.
+- Frozen PAM1.7.2 plus nine ADR0126 backports staged0;77original unit drivers and real permit/deny/missing-module/malformed/recovery0. New password client compiled0, original ELFs unchanged;157file native fixture prepared. No real passwords/helper/login acceptance yet.
 
-Running: GJS owned and verified; prepare patched frozen PAM1.7.2 for real login prerequisite. Full GNOME/apps/B02 pending; complete ALL B02 then stop.
+Running: PAM native credential qualification next on new disposable no-NIC overlay; GJS owned0/0. Full GNOME/apps/B02 pending; finish ALL B02 then stop.
 
 Remaining:
 

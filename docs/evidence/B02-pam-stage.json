@@ -1,0 +1,423 @@
+{
+  "scope": "Original unprivileged native PAM unit drivers and actual staged API/module allow-deny/malformed/refusal recovery; real passwords/privileged helper/login/session still pending",
+  "build_exit": 0,
+  "stage_exit": 0,
+  "consumer_exit": 0,
+  "original_tests": [
+    {
+      "name": "Linux-PAM:tst-dlopen",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_start",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_end",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_fail_delay",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_open_session",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_close_session",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_acct_mgmt",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_authenticate",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_chauthtok",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_setcred",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_get_authtok",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_get_item",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_set_item",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_getenvlist",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_get_user",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_get_data",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_set_data",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_mkargv",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_start_confdir",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_access",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_canonicalize_user",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_debug",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_canonicalize_user-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_debug-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_deny",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_deny-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_echo",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_env",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_echo-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_exec",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_env-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_faildelay",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_faillock",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_faildelay-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_filter",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_ftp",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_group",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_issue",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_keyinit",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_limits",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_listfile",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_listfile-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_localuser",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_localuser-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_loginuid",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_mail",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_mkhomedir",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_mkhomedir-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_motd",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_namespace",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_nologin",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_nologin-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_permit",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_permit-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_pwhistory",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_pwhistory-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_rhosts",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_rootok",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_rootok-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_securetty",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_setquota",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_shells",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_stress",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_succeed_if",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_succeed_if-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_time",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_time-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_timestamp",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:pam_timestamp hmacfile",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_umask",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_unix",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_usertype",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_warn",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_warn-retval",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_wheel",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:dlopen pam_xauth",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "Linux-PAM:tst-pam_faillock-retval",
+      "result": "OK",
+      "returncode": 0
+    }
+  ],
+  "unqualified": "Optional pam_userdb/NIS/SELinux/audit/libeconf disabled; privileged xtests and real shadow password/helper/session/boot not yet run",
+  "unchanged_original_elfs": 255,
+  "native_fixture": {
+    "state": "complete",
+    "fixture": "/mnt/lfs/sources/phase2/native-fixtures/pam-1",
+    "stage_manifest_sha256": "44cd9f8ee2d316322ac6f67575fbfb275b4488255dd4ed3501bd6a863420a85b",
+    "pid": 5659,
+    "boot_id": "cc2afa83-8448-4d2a-abb9-b78d25bc5103",
+    "artifacts": 157,
+    "manifest_sha256": "8eab8f94f1a08b0b2836d2b94548f5a3d965c7b3e27c0f72ec795c00453674d3"
+  },
+  "scratch": {
+    "scope": "Bounded compiler scratch only, regular file in disposable builder VM; not an installation target or physical disk",
+    "image": "/var/lib/toddy/phase2-scratch/pam-1.ext4",
+    "work_mount": "/mnt/lfs/sources/phase2/work/pam-1",
+    "size_bytes": 536870912,
+    "filesystem_uuid": "cb42a655-39b6-4988-ad44-1c643059db63",
+    "label": "TODDY_PAM_BUILD",
+    "state": "mounted",
+    "image_inode": 786443,
+    "owner_uid": 101,
+    "mount_options": "rw,nosuid,nodev,relatime",
+    "recovery": "After guest restart inspect image UUID and complete mount postcondition before remounting this same file; never reformat. Preserve contents/logs/compiled tests."
+  },
+  "source_preparation": "B02-pam-source-preparation.json",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-pam-stage-evidence.tar.gz",
+    "members": 16,
+    "sha256": "8ccc7ac14812a950f17c96ddc18f3afc5ed7d9e42caf346dce88ad1cf9163128"
+  }
+}

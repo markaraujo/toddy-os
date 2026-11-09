@@ -37,7 +37,7 @@ def cache_snapshot():
 
 def restore_volumes():
     rows=[]
-    for name in ['gtk','desktop-resources','doxygen']+(['glycin'] if (LOG/'glycin-build-volume.json').exists() else []):
+    for name in ['gtk','desktop-resources','doxygen']+[name for name in ['glycin','pam'] if (LOG/(name+'-build-volume.json')).exists()]:
         r=json.loads((LOG/(name+'-build-volume.json')).read_text());assert r['state']=='mounted'
         image=Path(r['image']);work=Path(r['work_mount']);st=image.lstat()
         assert image.parent==Path('/var/lib/toddy/phase2-scratch') and image.resolve()==image

@@ -66,6 +66,12 @@ if [[ -d /mnt/lfs/etc/fonts && ! -L /mnt/lfs/etc/fonts ]]; then
     readonly_bind /mnt/lfs/etc/fonts "$root/etc/fonts"
 fi
 readonly_bind "$TODDY_INPUT" "$root/src"
+# PAM's original unit drivers require the first-install deny policy. This is
+# private to its synthetic read-only /etc, never a guest login configuration.
+if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/linux-pam-1.7.2-security-1 ]]; then
+    mkdir "$root/etc/pam.d"
+    printf 'auth required /build/compile/modules/pam_deny/pam_deny.so\naccount required /build/compile/modules/pam_deny/pam_deny.so\npassword required /build/compile/modules/pam_deny/pam_deny.so\nsession required /build/compile/modules/pam_deny/pam_deny.so\n' > "$root/etc/pam.d/other"
+fi
 for name in ld.so.cache ld.so.conf; do
     if [[ -f /mnt/lfs/etc/$name ]]; then cp /mnt/lfs/etc/$name "$root/etc/$name"; fi
 done
