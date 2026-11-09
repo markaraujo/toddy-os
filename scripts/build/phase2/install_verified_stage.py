@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libadwaita': ('1.9.3', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), gtk (>= 4.22.4-1+toddy4), pango (= 1.58.2-1+toddy1), fribidi (= 1.0.16-1+toddy1), graphene (= 1.10.8-1+toddy1), appstream (= 1.1.6-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)', 'libadwaita-1.9.3.tar.xz', 'usr/lib/pkgconfig/libadwaita-1.pc'),
     'gi-gl-types': ('1.86.0', 'gobject-introspection (>= 1.86.0-1+toddy1)', 'gobject-introspection-1.86.0.tar.xz', 'usr/share/gir-1.0/GL-1.0.gir'),
     'docutils': ('0.23', 'python (>= 3.14), python (<< 3.15)', 'docutils-0.23.tar.gz', 'usr/bin/rst2man'),
     'colord': ('1.4.8', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), lcms2 (= 2.19.1-1+toddy1), libgusb (= 0.4.9-1+toddy1), libgudev (= 238-1+toddy1), systemd (>= 261.2-1+toddy2)', 'colord-1.4.8.tar.xz', 'usr/lib/pkgconfig/colord.pc'),
@@ -192,6 +193,7 @@ if __name__ == '__main__':
     if name=='lua':qualifier='lua-probe-3'
     if name=='wireplumber':qualifier='wireplumber-pot-3'
     if name=='gnome-desktop':qualifier='gnome-desktop-finish-3'
+    if name=='libadwaita':qualifier='libadwaita-build-2'
     if name=='libxml2-python':qualifier='libxml2-python-probe-5'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
@@ -807,6 +809,22 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='libadwaita':
+        work=Path('/mnt/lfs/sources/phase2/work/libadwaita-1');source=Path('/mnt/lfs/sources/phase2/inputs/libadwaita-1.9.3')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libadwaita-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libadwaita-probe.c').read_bytes()
+        stage=json.loads((work/'stage-results.json').read_text());assert stage['native_build_exit']==stage['stage_exit']==stage['c_version_exit']==stage['gi_version_exit']==0
+        raw=(log/'native-mutter-1-report.json').read_bytes();assert hashlib.sha256(raw).hexdigest()=='18108d6681186c55dd19f1be9256f37ae569cdffbd5dc167b6224298a2117d65'
+        report=json.loads(raw);assert report['kernel']=='7.1.8-toddy' and report['all_selected_exits_zero'] is True
+        assert report['suite']['widget_drivers_exit_zero']==67 and report['suite']['passed_case_executions']==408 and report['suite']['skipped_case_executions']==0
+        manifest=Path('/mnt/lfs/sources/phase2/native-fixtures/mutter-1/accepted.json');assert hashlib.sha256(manifest.read_bytes()).hexdigest()==report['manifest_sha256']
+        accepted=json.loads(manifest.read_text());registered=json.loads((work/'compile/meson-info/intro-tests.json').read_text());assert len(registered)==67
+        runs={r['name']:r for r in report['runs'] if r['name']!='native-gtk-window'}
+        assert set(runs)=={r['name'] for r in registered} and all(r['exit']==0 for r in runs.values())
+        for p,digest in accepted['artifacts'].items():assert hashlib.sha256((Path('/mnt/lfs')/p.lstrip('/')).read_bytes()).hexdigest()==digest
+        before={str(p.relative_to(source/'tests')):hashlib.sha256(p.read_bytes()).hexdigest() for p in (source/'tests').rglob('*') if p.is_file() and not p.is_symlink()}
+        assert hashlib.sha256(json.dumps(before,sort_keys=True).encode()).hexdigest()==accepted['source_test_assets_sha256']
+        assert (work/'compile/src/libadwaita-1.so.0').read_bytes()==(work/'stage/usr/lib/libadwaita-1.so.0').read_bytes()
     if name=='docutils':
         work=Path('/mnt/lfs/sources/phase2/work/docutils-1');source=Path('/mnt/lfs/sources/phase2/inputs/docutils-0.23')
         assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/docutils-build.sh').read_bytes()

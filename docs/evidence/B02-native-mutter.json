@@ -1,0 +1,128 @@
+{
+  "scope": "Native7.1.8 headless Mutter/Wayland/GTK fixture and pending original Libadwaita tests only; not GDM/KMS/full GNOME/physical acceptance",
+  "commit": "38c248e498bab8e0118543c31a03cc92c66b7899",
+  "started_utc": "2026-11-09T06:35:57.392783+00:00",
+  "kernel": "7.1.8-toddy",
+  "pid1": "systemd",
+  "uid": 101,
+  "profile": "12CPU/12GiB KVM/no NIC; private D-Bus; headless Mutter50.4 native Wayland/llvmpipe; UID/GID101 caps0 NoNewPrivs1",
+  "compositor_exit": 0,
+  "elapsed_seconds": 6.176,
+  "gtk_window": {
+    "action_callback_us": 250309,
+    "active_observed": false,
+    "clicks": 1,
+    "elapsed_us": 2729441,
+    "focus_selected": true,
+    "initial_size": [
+      640,
+      420
+    ],
+    "mapped": true,
+    "resized_size": [
+      900,
+      620
+    ],
+    "scope": "Actual native GTK4 mapped Wayland fixture and client renderer snapshots; programmatic actions, not GNOME/GDM/KMS or physical input acceptance",
+    "wayland": true
+  },
+  "widget_drivers_passed": 67,
+  "passed_case_executions": 408,
+  "skipped_case_executions": 0,
+  "artifacts_unchanged": 69,
+  "source_test_files_unchanged": 89,
+  "manifest_sha256": "a9656c2b600c3bf47689bb1f1b93a7f046b256a4bf380aec6ceda39b923d128a",
+  "native_report_sha256": "18108d6681186c55dd19f1be9256f37ae569cdffbd5dc167b6224298a2117d65",
+  "transcript_reconciliation": {
+    "scope": "Read-only existing native transcript reassembly, no VM/test replay",
+    "serial_sha256": "9234f9a22851db4fa14adbf4764f8b7f8afad30c8bf7c91b3fef7deaa8b41e25",
+    "report_sha256": "18108d6681186c55dd19f1be9256f37ae569cdffbd5dc167b6224298a2117d65",
+    "recovered": [
+      {
+        "line": 907,
+        "payload_bytes_changed": 0,
+        "reason": "Exact watchdog printk split a complete base64 chunk; concatenate original fragments, verify full report SHA256"
+      }
+    ],
+    "negative_checks": [
+      {
+        "case": "unknown-printk",
+        "rejected": "AssertionError"
+      },
+      {
+        "case": "damaged-chunk",
+        "rejected": "AssertionError"
+      }
+    ],
+    "native_summary": {
+      "kernel": "7.1.8-toddy",
+      "all_selected_exits_zero": true,
+      "report_sha256": "18108d6681186c55dd19f1be9256f37ae569cdffbd5dc167b6224298a2117d65",
+      "chunks": 141
+    }
+  },
+  "native_stop_exit": 0,
+  "source_backing_unchanged_before_builder_restart": true,
+  "builder_restored": {
+    "boot": "f896aac7-8c48-4639-9317-f55d21f1d724",
+    "restored": [
+      {
+        "work": "/mnt/lfs/sources/phase2/work/gtk-1",
+        "uuid": "1593a243-4338-45fb-86f6-7b699b4b3235",
+        "image_inode": 786439,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/desktop-resources-1",
+        "uuid": "a1385a38-a9ed-481b-96d8-b0120b4f1e7c",
+        "image_inode": 786440,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/doxygen-1",
+        "uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+        "image_inode": 786441,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/glycin-1",
+        "uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+        "image_inode": 786463,
+        "restored_existing_filesystem": true
+      }
+    ],
+    "scope": "Guarded same existing four filesystem mounts only; no trim/format/recreation"
+  },
+  "images": [
+    {
+      "path": "docs/evidence/screenshots/B02-native-mutter-gtk-action.png",
+      "sha256": "ac9f53090f5f8c00937018b36cd63955d160213c9e98eb8541413bb41e18fc08",
+      "bytes": 31202,
+      "scope": "Actual native GTK4 client renderer snapshot of validation fixture; not full desktop/product screenshot"
+    },
+    {
+      "path": "docs/evidence/screenshots/B02-native-mutter-gtk-initial.png",
+      "sha256": "80dec11788c21cb5580124a252f1a2dee274c8068a6e7d7818fe178c509fec72",
+      "bytes": 31452,
+      "scope": "Actual native GTK4 client renderer snapshot of validation fixture; not full desktop/product screenshot"
+    },
+    {
+      "path": "docs/evidence/screenshots/B02-native-mutter-gtk-resized.png",
+      "sha256": "1a7e23da37984d2e8631c90f165791c93c8e1acc5151b180fa2a2ab4debed6bd",
+      "bytes": 33327,
+      "scope": "Actual native GTK4 client renderer snapshot of validation fixture; not full desktop/product screenshot"
+    }
+  ],
+  "limitations": [
+    "Programmatic GTK actions and client renderer captures validate native fixture, not integrated Toddy product UI.",
+    "Headless seat has no real keyboard; active_observed=false. Active focus/input/navigation remain pending.",
+    "No GDM/KMS/full GNOME session/browser/files/editor/network/audible audio/offline/measurement/physical-hardware acceptance.",
+    "Original controller exit1 was strict report decoding, not native test failure; exact original fragments rejoined with full141chunk SHA256 and two negative refusals, without VM/test replay.",
+    "Old disposable overlay must never boot after source parent changed."
+  ],
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-native-mutter-evidence.tar.gz",
+    "members": 8,
+    "sha256": "9827c3698c401f2e9acd688bdce423afa06d9f89f46f37cacd40995b6a43aa01"
+  }
+}

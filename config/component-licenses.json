@@ -2530,7 +2530,18 @@
       "name": "libadwaita",
       "version": "1.9.3",
       "license": "LicenseRef-libadwaita-per-file",
-      "evidence": "Primary authenticated root notices: LGPL2.1. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+      "evidence": "Primary authenticated COPYING and per-file/bundled notices retained; native7.1.8/Mutter Wayland67original widget drivers408cases0/skips0 with identical compiled/staged library; no full GNOME session claim.",
+      "extra_license_headers": {
+        "libadwaita-1.9.3.tar.xz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     },
     {
       "name": "gdm",

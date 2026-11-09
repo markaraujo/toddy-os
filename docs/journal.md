@@ -2863,3 +2863,22 @@ Ledger preserves attempt budget. Controller requires clean commit before cold
 stop, refuses reused contexts, records real reports and validates parent
 identity; no success by timeout or absent logs. Restore only same scratch
 volumes if builder resumed. Complete ALL B02 before requested pause.
+
+### B02 native compositor and owned Libadwaita
+
+Real native7.1.8/Systemd KVM/12CPU12GiB/noNIC headless Mutter50.4 mapped an
+unprivileged GTK4 Wayland fixture, activated a button and resized640x420→900x620.
+Three native client-render PNGs were visually inspected;67 unchanged original
+Libadwaita drivers408cases/no skips passed,69artifacts89source assets unchanged.
+Original native process0/source backings unchanged; host controller1 was only an
+exact clocksource-printk split in report chunk75. Full141chunk SHA256 reassembly
+and noise/corruption refusals recovered evidence read-only, no native replay.
+Builder/same4scratch filesystems restored, no trim/format; old overlay never reused.
+Libadwaita1.9.3-1+toddy1 native promotion/post0/0 at2026-11-09T06:59:41Z after
+correcting a prewrite old-source-job selector failure (changed_paths0).
+Installed C/GI ABI/APT0; no library rebuild/widget replay. Tests selected:
+changed decoder integrity/refusal cases and required repository make check;
+accepted foundation/library suites reused. Full GNOME/product UI/active focus,
+login/basic apps/network/audible audio/offline/security/measurements remain pending.
+Next eligible B02 slice is pinned GtkSourceView5.20 for the basic editor.
+Owner boundary remains complete ALL B02, then stop before another story.

@@ -1,0 +1,50 @@
+{
+  "step": "b02-libadwaita-install-2",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T06:59:41.325814+00:00",
+  "package": {
+    "name": "libadwaita",
+    "version": "1.9.3-1+toddy1",
+    "archive_sha256": "ca9b53224291372dcb8f9829fc2c892c826a2275bf147ae3c1b73bf90b35537e"
+  },
+  "payload_entries": 355,
+  "consumer": {
+    "scope": "Native installed Libadwaita C/GI ABI version/owned payload after actual native67widget drivers408cases; no complete GNOME session acceptance",
+    "name": "libadwaita",
+    "version": "1.9.3",
+    "native_consumer_exit": 0,
+    "stdout": ""
+  },
+  "timing": {
+    "step": "b02-libadwaita-install-2",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 13.591,
+        "entries": 147345,
+        "regular_files": 131156,
+        "regular_bytes": 6989031040
+      },
+      {
+        "seconds": 13.534,
+        "entries": 147581,
+        "regular_files": 131388,
+        "regular_bytes": 6994995630
+      }
+    ],
+    "total_seconds": 32.392
+  },
+  "native_widget_evidence": "docs/evidence/B02-native-mutter.json",
+  "initial_failure": {
+    "recipe_exit": 1,
+    "postcheck_exit": null,
+    "changed_paths": 0,
+    "cause": "Selected original failed source job instead of successful libadwaita-build-2; corrected only dispatcher qualification, no package state changed in failed step."
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libadwaita-native-evidence.tar.gz",
+    "members": 18,
+    "sha256": "bd1819b3e1c1008765e4b751c3aa8196fe6936971d18ebc73f2669226a5530d3"
+  }
+}
