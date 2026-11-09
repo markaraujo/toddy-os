@@ -8,7 +8,7 @@ from phase2_native_report import decode
 import phase2_vm
 import vm
 ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
-CONTEXT=ROOT/'.local/phase2/native-polkit-privilege-runtime-2'
+CONTEXT=ROOT/'.local/phase2/native-polkit-privilege-runtime-3'
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def main():
     assert len(sys.argv)==1
@@ -30,7 +30,7 @@ for p,row in json.loads(manifest.read_text())['files'].items():
 assert (Path('/var/log/toddy/phase2/polkit-full-1.exit').read_text().strip())=='0'
 print(json.dumps({'fixture_manifest_sha256':r['manifest_sha256'],'fixture_files':r['artifact_files'],'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'target_serial':'TODDY-LFS-TARGET','native_kernel_expected':'7.1.8-toddy'}))
 """
-    prior=json.loads((ROOT/'.local/phase2/native-polkit-privilege-runtime-1/result.json').read_text())
+    prior=json.loads((ROOT/'.local/phase2/native-polkit-privilege-runtime-2/result.json').read_text())
     actual=json.loads(subprocess.check_output(['docker','inspect','--format','{{json .State}}',prior['container_id']],text=True))
     assert not actual['Running'] and actual['ExitCode']==0 and not actual['OOMKilled']
     assert prior['backing_unchanged_after_failure']

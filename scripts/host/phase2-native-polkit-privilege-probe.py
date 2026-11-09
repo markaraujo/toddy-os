@@ -55,10 +55,11 @@ def main():
         code='import os;from pathlib import Path;p=os.getpid();start=Path("/proc/self/stat").read_text().split()[21];os.execv("/usr/bin/pkcheck",["pkcheck","--action-id",'+repr(action)+',"--process",f"{p},{start},{os.getuid()}"])'
         r=subprocess.run(['python3','-c',code],user=uid,group=uid,extra_groups=[],env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C.UTF-8'},capture_output=True,timeout=15)
         assert r.returncode==expected,'Authorization decision mismatch: '+label
-        runs.append({'name':label,'exit':r.returncode,'expected':expected})
+        if expected==2:assert b"Authorization requires authentication and -u wasn't passed." in r.stderr
+        runs.append({'name':label,'exit':r.returncode,'expected':expected,'challenge_requires_interaction':expected==2})
     decision('allow-kernel-peer','org.toddy.test.allow',0)
     decision('explicit-deny','org.toddy.test.deny',1)
-    decision('challenge-without-agent-refused','org.toddy.test.challenge',1)
+    decision('challenge-without-agent-refused','org.toddy.test.challenge',2)
     def authenticate(label,secret,expect_success=False,cancel=False):
         child,fd=pty.fork()
         if child==0:
