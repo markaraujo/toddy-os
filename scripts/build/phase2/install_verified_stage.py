@@ -19,6 +19,10 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libinput': ('1.31.3', 'glibc (>= 2.44-1), systemd (>= 261.2-1), libevdev (= 1.13.6-1+toddy1), mtdev (= 1.1.7-1+toddy1)',
+                  'libinput-1.31.3.tar.gz', 'usr/lib/pkgconfig/libinput.pc'),
+    'libei': ('1.6.0', 'glibc (>= 2.44-1), systemd (>= 261.2-1), libevdev (= 1.13.6-1+toddy1), libxkbcommon (= 1.13.2-1+toddy1)',
+               'libei-1.6.0.tar.bz2', 'usr/lib/pkgconfig/libei-1.0.pc'),
     'libxcvt': ('0.1.3', 'glibc (>= 2.44-1)',
                  'libxcvt-0.1.3.tar.xz', 'usr/lib/pkgconfig/libxcvt.pc'),
     'libevdev': ('1.13.6', 'glibc (>= 2.44-1)',
@@ -149,6 +153,8 @@ if __name__ == '__main__':
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
     if name=='at-spi2-core' and (log/'atspi-finish-4.job.json').exists():qualifier='atspi-finish-4'
     if name=='bubblewrap':qualifier='bubblewrap-stage-6'
+    if name=='libei':qualifier='libei-dtd-2'
+    if name=='libinput':qualifier='libinput-probe-2'
     if name=='libxml2-python':qualifier='libxml2-python-probe-5'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
@@ -757,6 +763,37 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='libinput':
+        work=Path('/mnt/lfs/sources/phase2/work/libinput-1');source=Path('/mnt/lfs/sources/phase2/inputs/libinput-1.31.3')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libinput-build.sh').read_bytes()
+        prepared=json.loads((source/'toddy-prepared.json').read_text())
+        assert inspect_stage(source/'toddy-test-sdk')==prepared['private_test_sdk']['manifest']
+        assert prepared['private_test_sdk']['upstream_sdk_cases_reused']==9
+        code=(ROOT/'scripts/build/phase2/libinput_qualify.py').read_text()+'\nmain('+repr((ROOT/'scripts/build/phase2/libinput-probe.c').read_text())+')\n'
+        assert json.loads((log/'libinput-probe-2.job.json').read_text())['command'][-3:]==['python3','-c',code]
+        assert (work/'probe-2/consumer.c').read_bytes()==(ROOT/'scripts/build/phase2/libinput-probe.c').read_bytes()
+        assert (work/'probe-2/consumer.exit').read_text().strip()=='0'
+        rows=[json.loads(s) for s in (work/'compile/meson-logs/testlog.json').read_text().splitlines() if s.strip()]
+        assert len(rows)==10 and all(r['result']=='OK' and r['returncode']==0 for r in rows)
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==0
+        assert proof['profile']=={'mtdev':True,'libwacom':False,'lua_plugins':False,'internal_event_debugging':False,'debug_gui':False}
+    if name=='libei':
+        work=Path('/mnt/lfs/sources/phase2/work/libei-1');source=Path('/mnt/lfs/sources/phase2/inputs/libei-1.6.0')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libei-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libei-probe.c').read_bytes()
+        prepared=json.loads((source/'toddy-prepared.json').read_text())
+        assert prepared['extra_source']['name']=='munit-test-dependency'
+        assert 'revision='+prepared['extra_source']['commit'] in (source/'subprojects/munit.wrap').read_text()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==0 and not proof['test_dependency_installed']
+        assert (log/'libei-1.exit').read_text().strip()=='0'
+        assert json.loads((log/'libei-dtd-2.job.json').read_text())['command'][-3:]==['python3','-c',(ROOT/'scripts/build/phase2/libei_schema_qualify.py').read_text()]
+        assert proof['source_schema_validation']['name']=='dtdcheck' and proof['source_schema_validation']['native_exit']==0
+        assert (work/'schema-2/dtd.exit').read_text().strip()=='0'
+        assert hashlib.sha256((work/'schema-2/dtd.log').read_bytes()).hexdigest()==proof['source_schema_validation']['log_sha256']
+        assert len(proof['upstream_selected'])==6 and sum(r['case_executions'] for r in proof['upstream_selected'])>0
+        rows=[json.loads(s) for s in (work/'compile/meson-logs/testlog.json').read_text().splitlines() if s.strip()]
+        assert len(rows)==6 and all(r['result']=='OK' and r['returncode']==0 for r in rows)
+        assert not any('munit' in str(p.relative_to(work/'stage')) for p in (work/'stage').rglob('*'))
     if name=='libxcvt':
         work=Path('/mnt/lfs/sources/phase2/work/libxcvt-1');source=Path('/mnt/lfs/sources/phase2/inputs/libxcvt-0.1.3')
         assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libxcvt-build.sh').read_bytes()
@@ -817,6 +854,9 @@ if __name__ == '__main__':
         archives.append(row['filename'])
     if name=='libdisplay-info':
         extra=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']=='hwdata')
+        archives.append(extra['filename'])
+    if name=='libei':
+        extra=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']=='munit-test-dependency')
         archives.append(extra['filename'])
     write_copyright(destination, name, archives)
     source_args=[arg for item in archives for arg in ['--source',item]]

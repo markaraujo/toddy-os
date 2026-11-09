@@ -1,0 +1,18 @@
+{
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T02:22:32.090779+00:00",
+  "package": {
+    "name": "libinput",
+    "version": "1.31.3-1+toddy1",
+    "archive_sha256": "7bfff8327eb80cf934f2200d25bb3324ff433eb16d75f58b655addb3b0768a11"
+  },
+  "payload_entries": 129,
+  "consumer": {
+    "scope": "Native installed libinput lifecycle/FD/suspend/resume/invalid-path refusal; no actual device events or graphical/physical input acceptance",
+    "name": "libinput",
+    "version": "1.31.3",
+    "native_consumer_exit": 0,
+    "stdout": "native libinput context/FD/empty dispatch/log policy/suspend/resume and invalid-path refusal before open callback"
+  }
+}

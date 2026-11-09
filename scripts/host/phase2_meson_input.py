@@ -13,18 +13,18 @@ NAME=sys.argv[1]
 assert len(sys.argv) in (2,3)
 receipt_suffix='-'+sys.argv[2] if len(sys.argv)==3 else ''
 assert not receipt_suffix or re.fullmatch(r'-[a-z][a-z0-9-]{0,31}',receipt_suffix)
-assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa','libepoxy','gdk-pixbuf','tiff','iso-codes','gtk','doxygen','itstool','libxmlb','libfyaml','appstream','libadwaita','libsass','sassc','at-spi2-core','lcms2','libseccomp','bubblewrap','hwdata','libdisplay-info','mtdev','libevdev','libxcvt')
+assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa','libepoxy','gdk-pixbuf','tiff','iso-codes','gtk','doxygen','itstool','libxmlb','libfyaml','appstream','libadwaita','libsass','sassc','at-spi2-core','lcms2','libseccomp','bubblewrap','hwdata','libdisplay-info','mtdev','libevdev','libxcvt','libei','libinput')
 if __name__=='__main__':
     row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==NAME)
     archive=ROOT/'.local/sources'/row['filename'];data=archive.read_bytes()
     assert hashlib.sha256(data).hexdigest()==row['sha256']
-    probes={'libxcvt':'libxcvt-probe.c','libevdev':'libevdev-probe.c','mtdev':'mtdev-probe.c','libdisplay-info':'libdisplay-info-probe.c','bubblewrap':'bubblewrap-probe.py','libseccomp':'libseccomp-probe.c','lcms2':'lcms2-probe.c','at-spi2-core':'at-spi2-core-probe.c','sassc':'sassc-probe.py','libsass':'libsass-probe.c','libadwaita':'libadwaita-probe.c','appstream':'appstream-probe.c','libfyaml':'libfyaml-probe.c','libxmlb':'libxmlb-probe.c','itstool':'itstool-probe.py','doxygen':'doxygen-probe.py','iso-codes':'iso-codes-probe.py','gtk':'gtk-probe.c','tiff':'tiff-probe.c','gdk-pixbuf':'gdk-pixbuf-probe.c','libepoxy':'libepoxy-probe.c','mesa':'mesa-probe.c','pyyaml':'pyyaml-probe.py','libpciaccess':'libpciaccess-probe.c','libdrm':'libdrm-probe.c','freetype':'freetype-probe.c','psutil':'psutil-probe.py','mako':'mako-probe.py'}
+    probes={'libinput':'libinput-probe.c','libei':'libei-probe.c','libxcvt':'libxcvt-probe.c','libevdev':'libevdev-probe.c','mtdev':'mtdev-probe.c','libdisplay-info':'libdisplay-info-probe.c','bubblewrap':'bubblewrap-probe.py','libseccomp':'libseccomp-probe.c','lcms2':'lcms2-probe.c','at-spi2-core':'at-spi2-core-probe.c','sassc':'sassc-probe.py','libsass':'libsass-probe.c','libadwaita':'libadwaita-probe.c','appstream':'appstream-probe.c','libfyaml':'libfyaml-probe.c','libxmlb':'libxmlb-probe.c','itstool':'itstool-probe.py','doxygen':'doxygen-probe.py','iso-codes':'iso-codes-probe.py','gtk':'gtk-probe.c','tiff':'tiff-probe.c','gdk-pixbuf':'gdk-pixbuf-probe.c','libepoxy':'libepoxy-probe.c','mesa':'mesa-probe.c','pyyaml':'pyyaml-probe.py','libpciaccess':'libpciaccess-probe.c','libdrm':'libdrm-probe.c','freetype':'freetype-probe.c','psutil':'psutil-probe.py','mako':'mako-probe.py'}
     probe_filename='toddy-probe.py' if probes.get(NAME,'').endswith('.py') else 'toddy-probe.c'
     probe=(ROOT/'scripts/build/phase2'/probes[NAME]).read_text() if NAME in probes else None
     private_bus=(ROOT/'scripts/build/phase2/atspi_private_bus.py').read_text() if NAME=='at-spi2-core' else None
     extra=None
-    if NAME in ('shared-mime-info','llvm','libfyaml'):
-        extra_name='check' if NAME=='libfyaml' else 'xdgmime-tests' if NAME=='shared-mime-info' else 'llvm-upstream-fix'
+    if NAME in ('shared-mime-info','llvm','libfyaml','libei'):
+        extra_name='munit-test-dependency' if NAME=='libei' else 'check' if NAME=='libfyaml' else 'xdgmime-tests' if NAME=='shared-mime-info' else 'llvm-upstream-fix'
         extra=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==extra_name)
         extra_data=(ROOT/'.local/sources'/extra['filename']).read_bytes()
         assert hashlib.sha256(extra_data).hexdigest()==extra['sha256']
@@ -81,6 +81,15 @@ if row['name']=='libfyaml':
     assert extra['name']=='check'
     (source/'subprojects').mkdir(exist_ok=True)
     subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',extra['filename']],cwd=source/'subprojects',check=True)
+if row['name']=='libei':
+    assert extra['name']=='munit-test-dependency' and len(extra['commit'])==40
+    folder=source/'subprojects';assert folder.is_dir() and not (folder/'munit').exists()
+    subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',extra['filename']],cwd=folder,check=True)
+    (folder/('munit-'+extra['commit'])).rename(folder/'munit')
+    assert (folder/'munit/meson.build').is_file()
+    wrap=folder/'munit.wrap';before=wrap.read_bytes();text=before.decode();assert text.count('revision=head')==1
+    wrap.write_text(text.replace('revision=head','revision='+extra['commit']))
+    patches.append({'path':'subprojects/munit.wrap','before_sha256':hashlib.sha256(before).hexdigest(),'after_sha256':hashlib.sha256(wrap.read_bytes()).hexdigest(),'reason':'Freeze existing upstream test-only moving revision to exact supplied immutable local source; no C/tests/assertion changes'})
 if row['name']=='shared-mime-info':
     assert extra['name']=='xdgmime-tests'
     subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',extra['filename']],cwd=source/'subprojects',check=True)
@@ -119,7 +128,7 @@ if row['name']=='freetype':
             assert text.count(old)==1;text=text.replace(old,'#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING')
         path.write_text(text)
         patches.append({'path':relative,'before_sha256':hashlib.sha256(before).hexdigest(),'after_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'reference':'BLFS13.1 general/freetype2.html'})
-if row['name']=='libevdev':
+if row['name'] in ('libevdev','libinput'):
     import shutil,xml.etree.ElementTree as ET
     sys.path.insert(0,'/opt/toddy-build/scripts/build/phase2')
     from verify_stage import inspect_stage
@@ -145,7 +154,7 @@ receipt={'source_sha256':row['sha256'],'reference':row['reference'],
          'book_page_sha256':row.get('book_page_sha256'),'source_patches':patches,
          'recipe_sha256':hashlib.sha256(recipe.encode()).hexdigest()}
 if extra is not None:receipt['extra_source']=extra
-if row['name']=='libevdev':receipt['private_test_sdk']=private_sdk
+if row['name'] in ('libevdev','libinput'):receipt['private_test_sdk']=private_sdk
 if probe is not None:
     (source/probe_filename).write_text(probe)
     receipt['probe_sha256']=hashlib.sha256(probe.encode()).hexdigest()

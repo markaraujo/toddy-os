@@ -1,0 +1,16 @@
+{
+  "scope": "Owned native CVT timing/API only, no physical monitor/mode-setting/GNOME claim",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T02:06:00.783423+00:00",
+  "archive_sha256": "ddaa8fdc3c403f291ae1c2f881acc3209e375d1b9f18c3c44c7c1018a0c540fc",
+  "payload_entries": 23,
+  "package_version": "0.1.3-1+toddy1",
+  "installed_consumer": {
+    "scope": "Native installed CVT timing arithmetic/API; no physical monitor or mode-setting acceptance",
+    "name": "libxcvt",
+    "version": "0.1.3",
+    "native_consumer_exit": 0,
+    "stdout": "native CVT1920x1080 normal=173000 reduced=138500 refresh=59.963/59.934"
+  }
+}

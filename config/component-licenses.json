@@ -10358,6 +10358,20 @@
       "license": "MIT AND HPND-sell-variant",
       "evidence": "Exact upstream COPYING/header terms retained. Mode header wording matched the official SPDX HPND-sell-variant template; core also carries MIT terms. Native normal/reduced-blank CVT/API and CLI0; no upstream unit suite; owned promotion pending, no physical monitor claim.",
       "license_identifier_reference": "https://spdx.org/licenses/HPND-sell-variant.html"
+    },
+    {
+      "name": "libei",
+      "version": "1.6.0",
+      "license": "MIT",
+      "evidence": "Authenticated primary COPYING retained; selected upstream Munit test-only dependency pinned at exact commit, same MIT notice retained but SDK excluded from installed runtime. Native C unit/protocol and factory/state/FD cleanup/refusal checks passed; no desktop portal or physical-input acceptance."
+    },
+    {
+      "name": "libinput",
+      "version": "1.31.3",
+      "license": "MIT",
+      "evidence": "Frozen source COPYING and retained per-file notices; optional libwacom/Lua omitted; private Check SDK remains test-only",
+      "review_status": "source_notices_reviewed",
+      "runtime_inclusion": "B02 native input library/tools/quirks; actual device and GNOME validation pending"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

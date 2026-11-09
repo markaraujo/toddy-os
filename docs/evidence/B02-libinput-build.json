@@ -1,0 +1,103 @@
+{
+  "scope": "Native portable libinput tests/API only; no device events, graphical input, tablet or physical acceptance",
+  "selected_drivers": [
+    {
+      "name": "all - libinput:leftover-rules",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libinput:validate-quirks",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libinput:tools-builddir-lookup",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libinput:test-library-version",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libinput:tools-builddir-lookup-installed",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all+valgrind - libinput:libinput-test-deviceless",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libinput:symbols-leak-test",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libinput:validate-quirks-files",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libinput:test-litest-selftest",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libinput:test-utils",
+      "result": "OK",
+      "exit": 0
+    }
+  ],
+  "hardware_drivers_not_selected": [
+    "list-devices",
+    "libinput-test-suite-device",
+    "libinput-test-suite-gestures",
+    "libinput-test-suite-keyboard",
+    "libinput-test-suite-log",
+    "libinput-test-suite-misc",
+    "libinput-test-suite-pad",
+    "libinput-test-suite-path",
+    "libinput-test-suite-pointer",
+    "libinput-test-suite-quirks",
+    "libinput-test-suite-switch",
+    "libinput-test-suite-tablet",
+    "libinput-test-suite-tablet_eraser",
+    "libinput-test-suite-tablet_left_handed",
+    "libinput-test-suite-tablet_proximity",
+    "libinput-test-suite-tablet_tip",
+    "libinput-test-suite-totem",
+    "libinput-test-suite-touch",
+    "libinput-test-suite-touchpad",
+    "libinput-test-suite-touchpad_buttons",
+    "libinput-test-suite-touchpad_dwt",
+    "libinput-test-suite-touchpad_palm",
+    "libinput-test-suite-touchpad_tap",
+    "libinput-test-suite-touchpad_tap_drag",
+    "libinput-test-suite-touchpad_tap_palm",
+    "libinput-test-suite-trackball",
+    "libinput-test-suite-trackpoint",
+    "libinput-test-suite-udev"
+  ],
+  "staged_consumer_exit": 0,
+  "stage_files_unchanged": 105,
+  "private_check_sdk": "Reused qualified Check0.15.2, not installed",
+  "profile": {
+    "mtdev": true,
+    "libwacom": false,
+    "lua_plugins": false,
+    "internal_event_debugging": false,
+    "debug_gui": false
+  },
+  "consumer_recovery": "Original absent-path assertion failed before open callback; frozen source validates udev path first. Probe-only correction, original ten passing drivers/build/stage retained.",
+  "limitations": "Hardware suites not selected; libwacom tablet identification and optional Lua plugins unavailable",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-input-native-evidence.tar.gz",
+    "sha256": "c0bf03715d378e32a0476f7640500ce65e3af4cea40a2f2ab054f4de8b70551a",
+    "members": 29,
+    "expanded_bytes": 446595
+  }
+}

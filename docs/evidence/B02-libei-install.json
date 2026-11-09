@@ -1,0 +1,18 @@
+{
+  "install": {
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T02:17:59.180763+00:00"
+  },
+  "consumer": {
+    "scope": "Native installed EI/EIS/Oeffis lifecycle/state/FD/refusal APIs only; no actual portal/physical input/GNOME acceptance",
+    "native_consumer_exit": 0,
+    "stdout": "native EI/EIS/Oeffis context/state/user-data/fd cleanup and disconnected-portal refusal\n"
+  },
+  "package": {
+    "name": "libei",
+    "version": "1.6.0-1+toddy1",
+    "archive_sha256": "a4310ee90bea4adf383ef299b7576bf9984a0398252dfd04d2adb96da93321ce",
+    "payload_entries": 30
+  }
+}

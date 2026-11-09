@@ -2662,3 +2662,19 @@ commitfbbdf1467eb0d04a6ee465def2e529e4c87f2118, SHA d0c8bf80b9804d4df5301bd42870
 before guest extraction. Native compatibility pending; no runtime/foundation
 version change. Upstream subproject installs by default, so selected recipe must
 skip installing Munit. Complete all B02 before owner-requested pause.
+
+libxcvt owned install/post0/0 and installed CVT timing consumer0, no physical
+mode-setting acceptance. libei1.6.0 input prepared0 with exact local Munitcommit
+fbbdf1467eb0d04a6ee465def2e529e4c87f2118; upstream moving test wrap pinned, no C/
+assertion change. One unprivileged job libei-1 PID8769; six original C suites
+selected, optional Python/format matrices not treated as passes. Skip installing
+Munit subproject to keep test SDK out of runtime. Actual results pending; no
+second guest writer or routine pause before all B02 acceptance.
+
+
+2026-11-09: B02 native libei1.6.0 owned recipe/post0/0, six original C drivers237
+case executions plus schema validation0; test-only exact Munit commit supplied
+offline and excluded from installation. Reused C results for schema-only follow-up.
+Started libinput1.31.3 with reused private CheckSDK/mtdev; optional tablet-ID/Lua
+omitted and internal key tracing disabled. Owner boundary remains complete ALL
+B02 then stop, not a dependency checkpoint. No native GNOME acceptance yet.

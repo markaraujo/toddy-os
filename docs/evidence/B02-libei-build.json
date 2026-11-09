@@ -1,0 +1,91 @@
+{
+  "scope": "Native selected original C EI/EIS/Oeffis and in-process protocol tests plus context/FD consumer; no actual desktop portal or physical input acceptance",
+  "upstream_selected": [
+    {
+      "name": "libei:unit-tests-utils",
+      "exit": 0,
+      "case_executions": 36,
+      "skipped_cases": 0
+    },
+    {
+      "name": "libei:unit-tests-ei",
+      "exit": 0,
+      "case_executions": 10,
+      "skipped_cases": 0
+    },
+    {
+      "name": "libei:unit-tests-eis",
+      "exit": 0,
+      "case_executions": 7,
+      "skipped_cases": 0
+    },
+    {
+      "name": "libei:unit-tests-oeffis",
+      "exit": 0,
+      "case_executions": 2,
+      "skipped_cases": 0
+    },
+    {
+      "name": "nosigalrm - libei:eierpecken-no-sigalrm",
+      "exit": 0,
+      "case_executions": 91,
+      "skipped_cases": 0
+    },
+    {
+      "name": "sigalrm - libei:eierpecken",
+      "exit": 0,
+      "case_executions": 91,
+      "skipped_cases": 0
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "test_dependency_installed": false,
+  "registered_not_selected": [],
+  "counting": "C driver case executions; signal/no-signal drivers reuse cases in distinct original upstream modes, not unique-case count",
+  "source_schema_validation": {
+    "name": "dtdcheck",
+    "native_exit": 0,
+    "command": [
+      "/usr/bin/xmllint",
+      "--dtdvalid",
+      "/src/proto/protocol.dtd",
+      "/src/proto/protocol.xml"
+    ],
+    "stage_files_unchanged": 10,
+    "log_sha256": "4b9d72dd3953b254a030068e1dae2f07a36176a85b754a64e90830903c3d6b46"
+  },
+  "job_exit": 0,
+  "schema_job_exit": 0,
+  "retained_logs": {
+    "configure.log": {
+      "bytes": 4076,
+      "sha256": "695421e71baa4ad7ac952481abaeec66e62194a8114bbb4a8ea6389bd67fd960"
+    },
+    "compile.log": {
+      "bytes": 10734,
+      "sha256": "b4fbcc3851cf44a4b2dd16c7598014a238d61e0670a7156e3c4eb5bef40ea8a7"
+    },
+    "stage.log": {
+      "bytes": 1085,
+      "sha256": "a32fa8b6710b6877580d47493bf48d2869c3886c24b8140db6f47fa25220e59b"
+    },
+    "consumer.log": {
+      "bytes": 88,
+      "sha256": "a62f54af6f2646489045f0a9829dab634ede4f9e58eb9f5fa5f03c95c04ae7d6"
+    },
+    "compile/meson-logs/testlog.json": {
+      "bytes": 25053,
+      "sha256": "b76df5e97e0f354221829c2663be9329ae652e30ac4ebd48517e89d5b283a7f2"
+    },
+    "schema-2/dtd.log": {
+      "bytes": 82067,
+      "sha256": "4b9d72dd3953b254a030068e1dae2f07a36176a85b754a64e90830903c3d6b46"
+    }
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-input-native-evidence.tar.gz",
+    "sha256": "c0bf03715d378e32a0476f7640500ce65e3af4cea40a2f2ab054f4de8b70551a",
+    "members": 29,
+    "expanded_bytes": 446595
+  }
+}
