@@ -1,5 +1,5 @@
 """Run five unchanged Polkit drivers with native user/mount namespaces."""
-import base64,hashlib,json,os,re,subprocess,zlib,shutil,secrets,pty,select,signal,time
+import base64,hashlib,json,os,re,subprocess,zlib,shutil,secrets,pty,select,signal,time,pwd
 from pathlib import Path
 
 def output(args):return subprocess.check_output(args,text=True,timeout=15).strip()
@@ -31,8 +31,9 @@ def main():
         p=Path('/')/name;assert digest(p)==digest(stage/name);os.chown(p,0,0);p.chmod(0o4755)
         helpers.append({'path':'/'+name,'sha256':digest(p),'uid':0,'gid':0,'mode':'4755'})
     subprocess.run(['ldconfig'],check=True)
-    subprocess.run(['systemd-sysusers','/usr/lib/sysusers.d/polkit.conf'],check=True,capture_output=True)
-    subprocess.run(['systemd-tmpfiles','--create','/usr/lib/tmpfiles.d/polkit-tmpfiles.conf'],check=True,capture_output=True)
+    subprocess.run(['useradd','-r','-U','-M','-s','/usr/bin/nologin','polkitd'],check=True,capture_output=True)
+    daemon=pwd.getpwnam('polkitd');assert daemon.pw_uid!=0
+    directory=Path('/etc/polkit-1/rules.d');os.chown(directory,0,daemon.pw_gid);directory.chmod(0o750)
     name='toddy-polkit-probe';uid=12345
     assert not any(row.split(':')[0]==name or row.split(':')[2]==str(uid) for row in Path('/etc/passwd').read_text().splitlines())
     subprocess.run(['useradd','-M','-U','-u',str(uid),'-s','/bin/sh',name],capture_output=True,check=True)

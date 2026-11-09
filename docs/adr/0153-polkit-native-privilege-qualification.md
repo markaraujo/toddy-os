@@ -29,3 +29,9 @@ authentication, recovery, distinct daemon bus identity after restart, and refusa
 after policy revocation. Verify all479source/build/stage fixture files unchanged.
 These are native VM results, not physical tests, a GNOME permission UI, a B04
 completion, or an accepted installed package. A failure remains a failure.
+
+The accepted Systemd profile has no systemd-sysusers helper. Initial native setup
+failed before any authorization attempt. Use the already qualified Shadow useradd
+for the isolated service account and apply the exact upstream tmpfiles directory
+policy root:polkitd0750. No foundation rebuild or service hardening change. Keep
+the declarative upstream sysusers/tmpfiles files for compatible future profiles.
