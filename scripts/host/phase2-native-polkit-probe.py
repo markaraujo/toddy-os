@@ -29,8 +29,9 @@ def main():
     for row in accepted['tests']:
         env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C.UTF-8','HOME':'/tmp','PYTHONDONTWRITEBYTECODE':'1',**row['env']}
         assert row['cmd'][0]=='/src/test/wrapper.py'
-        command=['setpriv','--reuid=101','--regid=101','--clear-groups','--',*row['cmd']]
-        r=subprocess.run(command,env=env,cwd='/tmp',capture_output=True,text=True,timeout=row['timeout']+30)
+        def drop_user():
+            os.setgroups([]);os.setgid(101);os.setuid(101)
+        r=subprocess.run(row['cmd'],env=env,cwd='/tmp',preexec_fn=drop_user,capture_output=True,text=True,timeout=row['timeout']+30)
         combined=r.stdout+'\n'+r.stderr
         runs.append({'name':row['name'],'exit':r.returncode,'stdout':r.stdout,'stderr':r.stderr,'skip_diagnostics':[line for line in combined.splitlines() if re.search('skipp',line,re.I)]})
     verify()
