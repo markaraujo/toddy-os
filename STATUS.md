@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T23:40:13.980775+00:00
+Last verified: 2026-11-09T23:52:01.550092+00:00
 
 Verified:
 
@@ -111,8 +111,9 @@ Verified:
 - IBus frozen tag1.5.34 embeds rc2 metadata; private Wayland/GTK3+4/GI/Unicode profile build/stage0, seven portable originals and UTF8/key parsing/refusal/recovery0;177originalELFs unchanged during synthetic machine-ID recovery;179total after two stage link outputs. Native install/bus/cache/schema/GUI pending.
 - Owned IBus1.5.34~rc2-1+toddy1 install/post0/0,235changedpaths/397entries; installed UTF8/key parser/refusal/recovery/SDK0. GTK4same-version toddy6 schema/control/legal-only update0/0 changes13paths, preserves906old nonlegal entries and76schemas/571keys; actual default81/618 verified. Service IPC and GTK3 IM cache/GNOME keyboard gates remain separate.
 - Actual installed IBus UID101/default Compose engine commitsã in two distinct private buses; pre-cancelled read/refusal/recovery and requested Stop0; native recipe/post0/0,installed root changes0,successful profile removed. Three failed own fixture profiles/logs retained. GTK3 IM-cache/native GNOME keyboard pending.
+- GTK3same-upstream3.24.52toddy2 IM-cache/legal-only install0/post1 reconciled verify-only0/0,zero root changes. All1882owned entries/archive unchanged; actual UID101 query12modules/11prior registrations/969old nonlegal entries preserved. Own IBus locale/GTK argv0 metadata errors retained, no install/cache/suite replay. Native GTK/GNOME graphical input pending.
 
-Running: B02: IBus owned package/default Compose IPC and shared81schema/618key cache verified; controlled GTK3 IM-cache/native GNOME input next. Complete ALL B02 then stop.
+Running: B02: IBus runtime and owned GTK3 input cache verified; required libgweather/GeoClue/network/login/Shell dependencies and first working native GNOME session next. Complete ALL B02 then stop.
 
 Remaining:
 

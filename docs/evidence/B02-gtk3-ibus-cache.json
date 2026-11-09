@@ -1,0 +1,393 @@
+{
+  "scope": "Owned GTK3 same-upstream IM-cache/legal-only revision; actual UID101 query loads12owned modules with11prior registrations unchanged and IBus added. Initial locale-metadata and argv0 own-check errors retained; verify-only0/0, no reinstall. Native GTK/GNOME focus/keyboard and arbitrary module lifecycle pending.",
+  "isolated_query": {
+    "scope": "Actual installed GTK3 query tool loads twelve owned IM modules read-only; eleven previous module registrations preserved and IBus added. No display/focus/GNOME keyboard claim.",
+    "query_exit": 0,
+    "old_module_count": 11,
+    "new_module_count": 12,
+    "entries": {
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-am-et.so": [
+        [
+          "am_et",
+          "Amharic (EZ+)",
+          "gtk30",
+          "/usr/share/locale",
+          "am"
+        ]
+      ],
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-cedilla.so": [
+        [
+          "cedilla",
+          "Cedilla",
+          "gtk30",
+          "/usr/share/locale",
+          "az:ca:co:fr:gv:oc:pt:sq:tr:wa"
+        ]
+      ],
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-cyrillic-translit.so": [
+        [
+          "cyrillic_translit",
+          "Cyrillic (Transliterated)",
+          "gtk30",
+          "/usr/share/locale",
+          ""
+        ]
+      ],
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-ibus.so": [
+        [
+          "ibus",
+          "IBus (Intelligent Input Bus)",
+          "ibus",
+          "",
+          "ja:ko:zh:*"
+        ]
+      ],
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-inuktitut.so": [
+        [
+          "inuktitut",
+          "Inuktitut (Transliterated)",
+          "gtk30",
+          "/usr/share/locale",
+          "iu"
+        ]
+      ],
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-ipa.so": [
+        [
+          "ipa",
+          "IPA",
+          "gtk30",
+          "/usr/share/locale",
+          ""
+        ]
+      ],
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-multipress.so": [
+        [
+          "multipress",
+          "Multipress",
+          "gtk30",
+          "/usr/share/locale",
+          ""
+        ]
+      ],
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-thai.so": [
+        [
+          "thai",
+          "Thai-Lao",
+          "gtk30",
+          "/usr/share/locale",
+          "lo:th"
+        ]
+      ],
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-ti-er.so": [
+        [
+          "ti_er",
+          "Tigrigna-Eritrean (EZ+)",
+          "gtk30",
+          "/usr/share/locale",
+          "ti"
+        ]
+      ],
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-ti-et.so": [
+        [
+          "ti_et",
+          "Tigrigna-Ethiopian (EZ+)",
+          "gtk30",
+          "/usr/share/locale",
+          "ti"
+        ]
+      ],
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-viqr.so": [
+        [
+          "viqr",
+          "Vietnamese (VIQR)",
+          "gtk30",
+          "/usr/share/locale",
+          ""
+        ]
+      ],
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-wayland.so": [
+        [
+          "wayland",
+          "Wayland",
+          "gtk30",
+          "/usr/share/locale",
+          ""
+        ]
+      ]
+    },
+    "modules": {
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-ibus.so": {
+        "owner": "ibus",
+        "version": "1.5.34~rc2-1+toddy1",
+        "sha256": "5ec10b20bca11486d18a2d27c81ea4f5acd0eb8e0fba0a0867fde8afd1133032"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-viqr.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "5de6daf43cbd22645b0440ebd7ad19fa58c952243f7370010daa425de9468aac"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-multipress.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "87d17e00530da966b248e6b4911abd27ddae1c1bdd31f265f0f677a63f7b50da"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-inuktitut.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "8ff996408587794e213f098bcc4b6d1a891a0a5fe2596985fedfb1341543092b"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-thai.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "241079bb4bb07b53f870502110c5c32b657dbb67c452f9705130f1ee959c247d"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-wayland.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "42b4ddb828240197ac1b36820f16cc3d938a636c043b171ce7933fdd68d04fb0"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-cedilla.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "463b252308e90c721c7c4677470d6c21078b7513bc8e49a635e1dc8c080f5af0"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-cyrillic-translit.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "e03b2a1444bdb67b27c75a2cd077b13b666e105bd63306426795b8b8c7e0dacd"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-ti-et.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "21f5600f708de36320cb5218b5400aa20bfd5d455586b0e92d0e41e5cb81c641"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-ti-er.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "b3dfa8793c440a7cb3f11492b8ec207cf0d3ffa8ce445e9d34df9557336eecab"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-ipa.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "591acbf6bd9d271b1c9c5f1fa8bb8cf2cc54f0f90d07a988d117bfae87ec586c"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-am-et.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "ea3139f6c6911a813d39cd1f94d96142177a3f57f95376a3f153f98b655b14d5"
+      }
+    },
+    "tool_sha256": "d6e18c66d04b067b1ff9d36df407879a315773937e95edc0eac68b3e02b9900b",
+    "cache_sha256": "ca7ca0c62312109e0cf29107c4f9be5d28e6a404c93d50fe0ff86d9e21355828",
+    "baseline_cache_sha256": "d3a00a8eed77864086955dedbb542d5d7af823726b567eb1525697ac9594639b"
+  },
+  "native_transaction": {
+    "state": "complete",
+    "scope": "GTK3 same-upstream cache/legal-only revision; all existing runtime/header/config and prior IM registration payload preserved. No user settings or graphical keyboard proof.",
+    "old_version": "3.24.52-1+toddy1",
+    "new_version": "3.24.52-1+toddy2",
+    "old_archive_sha256": "6be366b3ae5f61717c58f1ebc1b02a8ab8120ded8e4e6fbb5ce8447223ede6e3",
+    "old_cache_sha256": "d3a00a8eed77864086955dedbb542d5d7af823726b567eb1525697ac9594639b",
+    "new_cache_sha256": "ca7ca0c62312109e0cf29107c4f9be5d28e6a404c93d50fe0ff86d9e21355828",
+    "modules": {
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-ibus.so": {
+        "owner": "ibus",
+        "version": "1.5.34~rc2-1+toddy1",
+        "sha256": "5ec10b20bca11486d18a2d27c81ea4f5acd0eb8e0fba0a0867fde8afd1133032"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-viqr.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "5de6daf43cbd22645b0440ebd7ad19fa58c952243f7370010daa425de9468aac"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-multipress.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "87d17e00530da966b248e6b4911abd27ddae1c1bdd31f265f0f677a63f7b50da"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-inuktitut.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "8ff996408587794e213f098bcc4b6d1a891a0a5fe2596985fedfb1341543092b"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-thai.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "241079bb4bb07b53f870502110c5c32b657dbb67c452f9705130f1ee959c247d"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-wayland.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "42b4ddb828240197ac1b36820f16cc3d938a636c043b171ce7933fdd68d04fb0"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-cedilla.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "463b252308e90c721c7c4677470d6c21078b7513bc8e49a635e1dc8c080f5af0"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-cyrillic-translit.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "e03b2a1444bdb67b27c75a2cd077b13b666e105bd63306426795b8b8c7e0dacd"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-ti-et.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "21f5600f708de36320cb5218b5400aa20bfd5d455586b0e92d0e41e5cb81c641"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-ti-er.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "b3dfa8793c440a7cb3f11492b8ec207cf0d3ffa8ce445e9d34df9557336eecab"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-ipa.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "591acbf6bd9d271b1c9c5f1fa8bb8cf2cc54f0f90d07a988d117bfae87ec586c"
+      },
+      "/usr/lib/gtk-3.0/3.0.0/immodules/im-am-et.so": {
+        "owner": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "sha256": "ea3139f6c6911a813d39cd1f94d96142177a3f57f95376a3f153f98b655b14d5"
+      }
+    },
+    "recovery": "Inspect actual package/transaction/postconditions before action; retain old GTK3 archive/record/cache and module input hashes. Future module install/removal must regenerate this owned cache through a controlled transaction; general module lifecycle is not qualified here. No rollback/replay executed.",
+    "archive_sha256": "658601ca770907cd84b191465782f814600c5dc772c51c51918a58d087fbd71e",
+    "old_nonlegal_entries_unchanged": 969
+  },
+  "initial_install_transaction": {
+    "step": "b02-gtk3-ibus-cache-install",
+    "started": "2026-11-09T23:47:22.686369+00:00",
+    "recipe_sha256": "c274e133259b2e722c12936eb196b81bdfd11371fa8005449ee03ef7903b63b2",
+    "postcheck_sha256": "554f4d59f1537f98dadf380946526f18ab5faae95655a9327a32c7b4e5f4d551",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "668b5dbc18070ca621f746959b4527e06949b336408d147d9987375e6c77cc66",
+    "recipe_pid": 496842,
+    "recipe_pgid": 496842,
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "finished": "2026-11-09T23:47:47.859537+00:00",
+    "changed_paths": 13,
+    "log_sha256": "1926d57a184ee2afe35cf382d6295a402a5667dcc3ccacb836461c49d10c0655",
+    "supporting_build_scripts_sha256": "dbf3a7c0e43f4fb09e152c2d6d42da9c89b979200ae1cbc2a78cc55acb2ce168"
+  },
+  "verify_only_transaction": {
+    "step": "b02-gtk3-ibus-cache-verify-2",
+    "started": "2026-11-09T23:49:53.098441+00:00",
+    "recipe_sha256": "6d9d50bb723e69964d3b06d079245174e3e2da52ad8a309b6b586c0d27a3ef9e",
+    "postcheck_sha256": "8aa93c163b0a7bcae97013a4f923fd00579a2d3e7265151daf1ccfc1fe920d39",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "668b5dbc18070ca621f746959b4527e06949b336408d147d9987375e6c77cc66",
+    "recipe_pid": 497223,
+    "recipe_pgid": 497223,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T23:50:08.622516+00:00",
+    "changed_paths": 0,
+    "log_sha256": "79a16aa05c67744c66ef8c1a4e9b117a0fc33a0d59ff0ffd8082020d056d6260",
+    "supporting_build_scripts_sha256": "4bf9d020ae04a4df3cc7833ec10e8e082a5078b20b74159a2ae92fc332d5e8d5"
+  },
+  "initial_timing": {
+    "step": "b02-gtk3-ibus-cache-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.395,
+        "entries": 154936,
+        "regular_files": 138009,
+        "regular_bytes": 7302558047
+      },
+      {
+        "seconds": 14.144,
+        "entries": 154941,
+        "regular_files": 138014,
+        "regular_bytes": 7302628458
+      }
+    ],
+    "total_seconds": 40.588
+  },
+  "verify_timing": {
+    "step": "b02-gtk3-ibus-cache-verify-2",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.206,
+        "entries": 154941,
+        "regular_files": 138014,
+        "regular_bytes": 7302628458
+      },
+      {
+        "seconds": 14.113,
+        "entries": 154941,
+        "regular_files": 138014,
+        "regular_bytes": 7302628458
+      }
+    ],
+    "total_seconds": 30.775
+  },
+  "payload_verification": {
+    "scope": "Read-only diagnosis/verification after successful native install: original invocation differs solely in GTK documented argv0 comment; every registration byte and all1882owned payload entries/archive unchanged. No install/cache/query generation replay.",
+    "original_query_exit": 0,
+    "original_query_stderr_empty": true,
+    "only_difference_argv0_header": true,
+    "owned_payload_entries_verified": 1882,
+    "archive_sha256": "658601ca770907cd84b191465782f814600c5dc772c51c51918a58d087fbd71e",
+    "cache_sha256": "ca7ca0c62312109e0cf29107c4f9be5d28e6a404c93d50fe0ff86d9e21355828"
+  },
+  "installed_consumer": {
+    "scope": "Actual installed GTK3 query tool as UID101 loads twelve owned IM modules; exact cache output/eleven prior registrations and IBus registration verified. All old runtime/header/config payload retained, SDK/APT0. No window/focus/GNOME input or arbitrary module lifecycle acceptance.",
+    "uid": 101,
+    "query_exit": 0,
+    "modules": 12,
+    "prior_module_registrations_preserved": 11,
+    "IBus_registered": true,
+    "all_source_notices_retained": true,
+    "old_nonlegal_entries_unchanged": 969
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gtk3-ibus-cache-evidence.tar.gz",
+    "sha256": "c148daa3238eef0e2d28ee7b64c41d61db4dd1e43af96c0f0a279ae44b48234f",
+    "members": [
+      "build/b02-gtk3-ibus-cache-install.failed.json",
+      "build/b02-gtk3-ibus-cache-install.log",
+      "build/b02-gtk3-ibus-cache-install.manifest.json",
+      "build/b02-gtk3-ibus-cache-verify-2.log",
+      "build/b02-gtk3-ibus-cache-verify-2.manifest.json",
+      "build/b02-gtk3-ibus-cache-verify-2.success.json",
+      "input/baseline.cache",
+      "input/toddy-input.json",
+      "package.json",
+      "phase2/b02-gtk3-ibus-cache-install-controller.log",
+      "phase2/b02-gtk3-ibus-cache-install-timing.json",
+      "phase2/b02-gtk3-ibus-cache-verify-2-controller.log",
+      "phase2/b02-gtk3-ibus-cache-verify-2-timing.json",
+      "phase2/gtk3-ibus-cache-1-controller.log",
+      "phase2/gtk3-ibus-cache-1.dispatch.lock",
+      "phase2/gtk3-ibus-cache-1.exit",
+      "phase2/gtk3-ibus-cache-1.job.json",
+      "phase2/gtk3-ibus-cache-1.log",
+      "phase2/gtk3-ibus-cache-installed-consumer.json",
+      "phase2/gtk3-ibus-cache-metadata-2-controller.log",
+      "phase2/gtk3-ibus-cache-metadata-2.dispatch.lock",
+      "phase2/gtk3-ibus-cache-metadata-2.exit",
+      "phase2/gtk3-ibus-cache-metadata-2.job.json",
+      "phase2/gtk3-ibus-cache-metadata-2.log",
+      "phase2/gtk3-ibus-cache-prepared-1.json",
+      "phase2/gtk3-ibus-cache-transaction-1.json",
+      "phase2/gtk3-ibus-cache-verify-2.json",
+      "work/immodules.cache",
+      "work/query.stderr",
+      "work/test-results.json"
+    ]
+  }
+}

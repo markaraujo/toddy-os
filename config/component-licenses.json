@@ -10469,7 +10469,15 @@
           ]
         }
       },
-      "runtime_inclusion": "Owned B02 GTK3 Wayland/GI bootstrap; actual graphical window/GDM/IME input tests pending"
+      "runtime_inclusion": "Owned B02 GTK3 Wayland/GI bootstrap; actual graphical window/GDM/IME input tests pending",
+      "extra_license_files": {
+        "UCD-17.0.0.zip": [
+          "ReadMe.txt"
+        ]
+      },
+      "plain_license_sources": [
+        "Unicode-License-3.0.txt"
+      ]
     },
     {
       "name": "gnome-desktop",

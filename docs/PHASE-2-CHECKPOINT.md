@@ -7,32 +7,37 @@ foundation tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Current slice and exact next action
 
-Current verified slice: IBus OWNED1.5.34~rc2-1+toddy1 install/post0/0,
-235changedpaths/397entries, installed UTF8/key parser/refusal/recovery/SDK0.
-The frozen tag1.5.34 embeds1.5.34-rc2; version disclosed, bytes unchanged.
-Same-version GTK4 schema/control/legal update totoddy6 install/post0/0,
-13changedpaths/906old nonlegal entries unchanged. Default81schemas/618keys,
-prior76/571 preserved; new five IBus schemas. ADR0170.
+Current verified slice: GTK3 owned IBus IM cache integrated. Native GTK3
+same-upstream3.24.52 toddy1→toddy2 install0/initial post1; verify-only2 recipe/post0/0,
+ZERO installed-root changes. Original post failure was only documented argv0
+header, confirmed by exact byte comparison. All1882owned payload/archive entries
+verified. Native UID101 actual query loads12owned modules, prior11registrations
+unchanged;969old nonlegal entries unchanged, SDK/APT/notices0. No active writer.
+[Proof](evidence/B02-gtk3-ibus-cache.json), ADR0171. NEVER replay native install,
+cache generation, verification or already accepted original suites.
+New archiveSHA658601ca770907cd84b191465782f814600c5dc772c51c51918a58d087fbd71e;
+cacheSHAca7ca0c62312109e0cf29107c4f9be5d28e6a404c93d50fe0ff86d9e21355828.
+Input/work gtk3-ibus-cache-1; isolated jobs gtk3-ibus-cache-1 terminal1 (own wrong
+locale metadata expectation), gtk3-ibus-cache-metadata-2 terminal0 (same cache).
+Native transaction receipt gtk3-ibus-cache-transaction-1.json COMPLETE.
+Raw evidenceSHAc148daa3238eef0e2d28ee7b64c41d61db4dd1e43af96c0f0a279ae44b48234f.
+Actual module metadata loading is not graphical GTK/GNOME focus/keyboard proof.
 
-No active guest writer. Actual `b02-ibus-installed-services-4` recipe/post0/0,
-ZERO installed-root changes. Installed simple engine UID101/private HOME/XDG/
-loopback-only/default installed schemas and libraries; dead_tilde+a commitsã,
-precancelled read/refusal/recovery/Stop and distinct new session bus passed twice.
-974 engine descriptions discovered; no hardware support inferred. Profile4 removed;
-old failed profiles1/2/3 preserved with logs and no live old private processes.
-Optional Ctrl+Shift+U is disabled by upstream default, not a failure or enabled
-product claim. Exact source-backed corrections/failure ledger retained. Actual
-portal activation was observed; no direct-only or graphical keyboard claim.
-[Native services](evidence/B02-ibus-installed-services.json),
-[owned package](evidence/B02-ibus-install.json),
-[schema union](evidence/B02-ibus-shared-schema-union.json), ADR0170.
-NEVER repeat these successful native installs/schema transaction/service writes.
+Exact next: continue actual required GNOME Shell dependency chain from already
+reviewed libgweather4.6.0. Freeze/fetch its required geocode-glib3.26.4 and
+ gweather-locations2026.2 with phase2_fetch_book_source.py references
+`gnome/geocode-glib.html` and `gnome/gweather-locations.html`, --dependency-of
+libgweather. Current frozen parent bookSHA73e831e427d1e9b7916a94c26dcaf35d144f0a1eb0704a8655d5f3e464432e69.
+No guest input/work/job exists for these dependencies. Read exact source/options,
+build isolated/qualify/native package, then libgweather, required GeoClue/NM/GDM/
+Shell and first native GNOME session. Native GTK IM discovery/input must be tested
+in that display path; do not add another mockup or award graphical acceptance for
+this metadata cache. No provider/paid weather key is required or selected.
 
-Exact next: controlled same-upstream GTK3 IM-cache ownership update, preserving
-current GTK3 payload and using owned module inputs; GTK4toddy6 revision range now
-permits this. Then actual GTK module discovery/native GNOME input interaction.
-Inspect actual package/cache/version/hash state before preparing any transaction.
-CurrentGTK3 is3.24.52-1+toddy1, GTK4 is4.22.4-1+toddy6. No cache update performed yet.
+GTK4toddy6 shared81schema/618key cache complete. IBus1.5.34~rc2 native install/post0/0
+and actual installed service4 default Composeã/cancel/refusal/recovery/Stop/two
+buses0, ZERO root changes; never replay. Failed service profiles1/2/3 retained,
+no live old services; successful profile4 removed. ADR0170 and evidence index.
 
 Retained private build: source `/mnt/lfs/sources/phase2/inputs/ibus-1.5.34`,
 work `/mnt/lfs/sources/phase2/work/ibus-1`, successful job ibus-machine-5 exit0,
@@ -44,8 +49,8 @@ Keep GTK3/4/Wayland/GI/Unicode/setup/UI/DConf; optional XIM/X11/GTK2/Python2/
 appindicator/emoji dictionary omitted. Bus/display/uinput/locale-sensitive originals
 remain unexecuted unless separately recorded; native GNOME keyboard pending.
 
-GTK4toddy6 now allows only GTK3 same-upstream3.24.52 revisions; current GTK3toddy1
-IM cache still needs controlled update. Preserve all accepted runtime payloads.
+GTK4toddy6 allows only GTK3 same-upstream3.24.52 revisions; GTK3toddy2 cache
+transaction and verify-only recovery complete. Preserve all runtime payloads.
 Schema union81/618 complete; never replay either completed schema transaction.
 
 Prior Vala0.56.19 and UCD17 native install/post0/0;1435compiler original passes,
@@ -54,9 +59,9 @@ EDS native real SourceRegistry/calendar persistence/new-bus/cancel/recovery0,
 GTK4same-version cache/legal-only toddy5 preserves prior67schemas/500keys; actual
 76/571 verified. Reuse [index](evidence/B02.md), ADR0167–0168.
 
-Publication eb2c669b13f1f2c4de50d8d15d7d97e72d586d36: planning42718870061/
-safety42718870345/Pages42718870357 allsuccess; actual HTTP200 exact indexSHA
- a5b42298990193f66fa5418935ac339ad959a45104e105d3ef7c281084d636c5.
+Publication61b0b968f447fda266a9ac77a2f49eeb47b681d3: planning42722455120/
+safety42722454934/Pages42722454788 allsuccess; actual HTTP200 exact indexSHA
+3f218537edb1ef31bf185dd5f93e6cf1e104d3610a4cf669c4a42d3e724c7a56.
 
 GNOME Shell50.4 source reviewed: Gdm/GWeather/IBus/GeoClue required typelibs,
 NM/NMA selected networking, Bluetooth compile-time optional. Weather still needs
