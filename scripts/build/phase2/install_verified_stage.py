@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'icu': ('78.3', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1)', 'icu4c-78.3-sources.tgz', 'usr/lib/pkgconfig/icu-uc.pc'),
     'libadwaita': ('1.9.3', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), gtk (>= 4.22.4-1+toddy4), pango (= 1.58.2-1+toddy1), fribidi (= 1.0.16-1+toddy1), graphene (= 1.10.8-1+toddy1), appstream (= 1.1.6-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)', 'libadwaita-1.9.3.tar.xz', 'usr/lib/pkgconfig/libadwaita-1.pc'),
     'gi-gl-types': ('1.86.0', 'gobject-introspection (>= 1.86.0-1+toddy1)', 'gobject-introspection-1.86.0.tar.xz', 'usr/share/gir-1.0/GL-1.0.gir'),
     'docutils': ('0.23', 'python (>= 3.14), python (<< 3.15)', 'docutils-0.23.tar.gz', 'usr/bin/rst2man'),
@@ -809,6 +810,16 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='icu':
+        work=Path('/mnt/lfs/sources/phase2/work/icu-1');source=Path('/mnt/lfs/sources/phase2/inputs/icu')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/icu-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/icu-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['version']=='78.3'
+        assert proof['upstream_exit']==proof['staged_consumer_exit']==proof['staged_cli_exit']==0 and proof['converted_bytes']==8
+        assert (work/'upstream-check.exit').read_text().strip()=='0'
+        text=(work/'upstream-check.log').read_text()
+        assert 'All tests OK:  testdata intltest iotest cintltst' in text and 'PASS: config selfcheck OK' in text
+        assert (work/'stage/usr/lib/libicuuc.so.78.3').is_file() and (work/'stage/usr/lib/libicudata.so.78.3').is_file()
     if name=='libadwaita':
         work=Path('/mnt/lfs/sources/phase2/work/libadwaita-1');source=Path('/mnt/lfs/sources/phase2/inputs/libadwaita-1.9.3')
         assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libadwaita-build.sh').read_bytes()

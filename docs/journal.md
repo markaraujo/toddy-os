@@ -2937,3 +2937,20 @@ started as icu-1 UID101/no-network/read-only inputs. Host109693071360B/target
 22871994368B pass1536MiB additional budget above100/16GiB reserves. No foundation
 upgrade/package install or new desktop acceptance. Actual job/controller/log/card
 recorded; monitor healthy progress instead of restart. Owner boundary full B02 then stop.
+
+### B02 owned ICU78.3; next cbindgen tool sources
+
+Original isolated ICU make check testdata/intltest/iotest/cintltst/config selfcheck
+passed. Staged/installed C NFC/PT collation/invalid UTF8 refusal and uconv conversion
+passed. Known original Arabic ICU-23229 retained, no all-locales/GUI claim.
+Native owned291paths installed once; original recipe0/post1 was own C link omission
+of icu-uc. Archive/full payload verify-only and corrected direct link0/0 changed_paths0
+at2026-11-09T07:46:41Z; no library/test/reinstall replay. Exact source/legal/raw proof
+preserved. Changed postcheck/root qualification paths require repository checks;
+accepted foundation/library suites reused. No B02 criterion marked complete.
+
+Next independent prerequisite cbindgen0.29.4 official/frozen source verified;
+Cargo.lock names72exact public-registry crates. Reuse authenticated caches and
+vendor offline before native build. Frozen book documents3unstable-profile tests
+incompatible with accepted Rust policy; retain actual classification without
+changing foundational Rust. Host compilation not authorized as target substitute.

@@ -10611,7 +10611,7 @@
       "name": "icu",
       "version": "78.3",
       "license": "LicenseRef-icu-per-file",
-      "evidence": "Exact authenticated ICU78.3 primary LICENSE (Unicode License V3), license.html and bundled/per-file conditions retained. Frozen BLFS13.1 general/icu.html. Native source build/check running; no installed runtime or GNOME/browser acceptance yet.",
+      "evidence": "Exact authenticated ICU78.3 LICENSE (Unicode License V3), license.html and bundled/per-file conditions retained. Original native make check four groups/config selfcheck and staged/installed Unicode normalization/PT collation/malformed UTF8/uconv passed; no GNOME/browser acceptance. Known upstream Arabic ICU-23229 retained.",
       "extra_license_files": {
         "icu4c-78.3-sources.tgz": [
           "LICENSE",

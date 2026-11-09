@@ -1743,6 +1743,18 @@
       "book_md5": "a7b736b570ef0e180c96a31715a00c78",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "cbindgen",
+      "version": "0.29.4",
+      "filename": "cbindgen-0.29.4.tar.gz",
+      "url": "https://github.com/mozilla/cbindgen/archive/v0.29.4/cbindgen-0.29.4.tar.gz",
+      "sha256": "9b5757e915cf8be523d3aca282b9b5651bafa112e14bf1ba488562ba282807d6",
+      "reference": "BLFS13.1-systemd general/cbindgen.html",
+      "book_page_sha256": "c16c3d819a36e67061f3859f08eed41b5bcd8a8d51d88139adce672921d2152d",
+      "book_md5": "7e790e024bc678ad1b4431b0350679e9",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

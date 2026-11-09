@@ -1,0 +1,36 @@
+{
+  "scope": "Native original ICU make check, NFC/Portuguese collation/malformed UTF8 refusal and real uconv CLI; no GNOME/browser acceptance",
+  "version": "78.3",
+  "upstream_exit": 0,
+  "staged_consumer_exit": 0,
+  "staged_cli_exit": 0,
+  "converted_bytes": 8,
+  "source": {
+    "name": "icu",
+    "version": "78.3",
+    "filename": "icu4c-78.3-sources.tgz",
+    "url": "https://github.com/unicode-org/icu/releases/download/release-78.3/icu4c-78.3-sources.tgz",
+    "sha256": "3a2e7a47604ba702f345878308e6fefeca612ee895cf4a5f222e7955fabfe0c0",
+    "reference": "BLFS13.1-systemd general/icu.html",
+    "book_page_sha256": "25bcd5b5c43eef0ca461d82b24b61babc49ae24c93cec041cee7fefd63a5d741",
+    "book_md5": "a7b736b570ef0e180c96a31715a00c78",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "original_make_check_groups": [
+    "testdata",
+    "intltest",
+    "iotest",
+    "cintltst"
+  ],
+  "config_selfcheck_exit": 0,
+  "limitations": [
+    "Original make check logs retain known ICU-23229 Arabic volume-unit issue; no all-locales-fixed claim.",
+    "No GNOME/browser or graphical acceptance from Unicode library checks."
+  ],
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-icu-native-evidence.tar.gz",
+    "members": 20,
+    "sha256": "9e21df935a658e357c9631ffbd02420b596f42b8054a73acabf1bdcc4f880de4"
+  }
+}

@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T07:39:21.977210+00:00
+Last verified: 2026-11-09T07:51:42.254312+00:00
 
 Verified:
 
@@ -72,8 +72,9 @@ Verified:
 - Native GtkSourceView26drivers exit0/273PASS/116SKIP;18known upstream languages plus98syntax cases unexercised due original relative fixture path.27artifacts39test files unchanged; no package promotion. Exact shutdown-sync serial fragment/fullSHA reconciled read-only.
 - Native syntax private layout corrected:9original cases completed, original invalidUTF8 file.cir refused by GTK/driver-6 retained;2artifacts390source/data files unchanged. ADR0144 scopes only88remaining valid cases; no aggregate pass/promotion.
 - GtkSourceView grammar qualification checkpointed: native4 collector failed/no accepted partial results; isolated24additional cases and Python2/3pass, GDB known-regex/shell HDB warnings unresolved.230ELFs390source-data files unchanged; no promotion.
+- Owned ICU78.3-1+toddy1: original make check testdata/intltest/iotest/cintltst/config selfcheck0, C NFC/PT collation/malformedUTF8/uconv0. Install0/post1 own direct-link omission reconciled verify-only0/0 changed_paths0;291owned paths, no reinstall/test replay. Known upstream Arabic ICU-23229 retained.
 
-Running: ICU78.3 isolated source build/check/stage icu-1 on builder e22e024f; grammar branch checkpointed after bounded failed attempts. Inspect actual job/exit before intervention; full B02 then pause.
+Running: No guest writer. Next cbindgen0.29.4 source pinned; freeze/reuse72exact registry crates, native offline tool build/tests for GNOME/browser prerequisites. GtkSourceView grammar branch checkpointed. Complete ALL B02 then pause.
 
 Remaining:
 

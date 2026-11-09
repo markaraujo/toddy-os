@@ -1,0 +1,38 @@
+{
+  "scope": "Owned native ICU78.3 installed once; verify-only direct-link postcheck recovery, no reinstall",
+  "original": {
+    "step": "b02-icu-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "finished": "2026-11-09T07:45:21.818821+00:00",
+    "changed_paths": 285
+  },
+  "reconciled": {
+    "step": "b02-icu-postcheck-2",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T07:46:41.348362+00:00",
+    "changed_paths": 0
+  },
+  "package": {
+    "name": "icu",
+    "version": "78.3-1+toddy1",
+    "archive_sha256": "89058389ee0b1e5cb22e6c871fbb2dca79698f02ead5869e54084ea8ee26a56c"
+  },
+  "payload_entries": 291,
+  "consumer": {
+    "scope": "Native installed ICU normalization, Portuguese collation, invalid UTF8 refusal and actual uconv; no GNOME/browser acceptance",
+    "name": "icu",
+    "version": "78.3",
+    "native_consumer_exit": 0,
+    "native_cli_exit": 0,
+    "stdout": "ICU78.3 NFC Portuguese collation and invalid UTF8 refusal passed",
+    "converted_bytes": 8
+  },
+  "recovery": "Original postcheck omitted direct icu-uc link while staged consumer used it. Verify-only archive/full payload unchanged; corrected C link matches actual symbols. No library/upstream suite replay.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-icu-native-evidence.tar.gz",
+    "members": 20,
+    "sha256": "9e21df935a658e357c9631ffbd02420b596f42b8054a73acabf1bdcc4f880de4"
+  }
+}
