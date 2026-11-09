@@ -1,0 +1,36 @@
+{
+  "scope": "Explicit ADR0147 candidate source prepared/native compile/stage/shell smoke only; not installed or security/API/GJS/GNOME qualified",
+  "stage": {
+    "scope": "Native compile/install staging and actual JS shell arithmetic smoke only; original critical/API/JIT suites pending, no promotion or GNOME acceptance",
+    "version": "JavaScript-C140.17.0",
+    "native_build_exit": 0,
+    "stage_exit": 0,
+    "staged_shell_exit": 0,
+    "arithmetic": "42",
+    "unqualified": "Critical original JS/API/JIT suites and dynamic consumer still required before owned promotion",
+    "static_archive_omitted": {
+      "path": "usr/lib/libjs_static.ajs",
+      "sha256": "999f44c642f89489773f593d780cfd569efae58fa5b05deb3480c740616e1f98",
+      "reason": "Frozen BLFS13.1 explicitly omits static archive from runtime stage"
+    },
+    "js_config_original_sha256": "31bfbb4ecc606f7911a36bfad4532d1ef566da70dc09f8ccdd5c0a69d0bd53f7",
+    "js_config_removed_lines": [
+      "NSPR_CFLAGS='@NSPR_CFLAGS@'\n"
+    ],
+    "header_original_sha256": "afadb0066a8aceb50e5d0d99d970d149b7afcfa2b78fa7e13c76cebdb3bd3348",
+    "header_fixed_sha256": "bfd324ad962bc7fcb5e367507964c9e6408c2fb1113d95d98f396e57c09f0812"
+  },
+  "source_sha256": "4d6ed3b18b2069c55bab12d8ba95da6013ac0b036d8a031df8b9f39a25d05c33",
+  "capacity_before_transfer": {
+    "target_free_bytes": 23636439040,
+    "additional_budget_bytes": 6442450944,
+    "reserve_bytes": 17179869184,
+    "passed": true
+  },
+  "free_bytes_after_preparation": 18629615616,
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-mozjs-security-stage.tar.gz",
+    "sha256": "bc88e49108b48f97d9d9c281efc9dfb45dee8dcffda3c728dba636dc60d07ffd",
+    "members": 13
+  }
+}

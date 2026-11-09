@@ -1,0 +1,73 @@
+{
+  "scope": "Actual source-byte delta of engine/public API/mfbt/Rust vendor and root Cargo files; no binary/test/security acceptance",
+  "versions": [
+    "140.14.0",
+    "140.17.0"
+  ],
+  "files": [
+    88523,
+    88524
+  ],
+  "changed": [
+    "js/src/gc/Nursery.cpp",
+    "js/src/jit-test/tests/ion/object-keys-04.js",
+    "js/src/jit-test/tests/modules/bug-2027274.js",
+    "js/src/jit-test/tests/wasm/tail-calls/bug2067190.js",
+    "js/src/jit-test/tests/wasm/tail-calls/bug2072413.js",
+    "js/src/jit/JitFrames.cpp",
+    "js/src/jit/MIR.cpp",
+    "js/src/proxy/Proxy.cpp",
+    "js/src/vm/JitActivation.cpp",
+    "js/src/vm/TypedArrayObject.cpp",
+    "js/src/wasm/WasmBCFrame.cpp",
+    "js/src/wasm/WasmBaselineCompile.cpp",
+    "js/src/wasm/WasmFrameIter.cpp",
+    "js/src/wasm/WasmFrameIter.h",
+    "js/src/wasm/WasmStubs.cpp"
+  ],
+  "unchanged": 88510,
+  "changed_runtime": [
+    "js/src/gc/Nursery.cpp",
+    "js/src/jit/JitFrames.cpp",
+    "js/src/jit/MIR.cpp",
+    "js/src/proxy/Proxy.cpp",
+    "js/src/vm/JitActivation.cpp",
+    "js/src/vm/TypedArrayObject.cpp",
+    "js/src/wasm/WasmBCFrame.cpp",
+    "js/src/wasm/WasmBaselineCompile.cpp",
+    "js/src/wasm/WasmFrameIter.cpp",
+    "js/src/wasm/WasmFrameIter.h",
+    "js/src/wasm/WasmStubs.cpp"
+  ],
+  "source": {
+    "name": "mozjs-security-14017",
+    "version": "140.17.0",
+    "filename": "firefox-140.17.0esr.source.tar.xz",
+    "url": "https://archive.mozilla.org/pub/firefox/releases/140.17.0esr/source/firefox-140.17.0esr.source.tar.xz",
+    "sha256": "4d6ed3b18b2069c55bab12d8ba95da6013ac0b036d8a031df8b9f39a25d05c33",
+    "publisher_sha512": "c569f4f1ecbadec4c24ab60af6c8ff03f6c1292e7b2446edca7cc6f5575bd8d98e3ee9efb9877eba98bdb15354a4c4260515f8c6fd9aa9d198b26722f60ae5f4",
+    "reference": "ADR-0147; Mozilla MFSA2026-92/99 same mozjs-140 security overlay",
+    "integrity": "Official HTTPS source matches exact official SHA512SUMS; SHA256 frozen before extraction. No verified OpenPGP signature claim. Original140.14 baseline retained.",
+    "status": "source_verified_not_built"
+  },
+  "python_patch_review": {
+    "scope": "Exact5Python compatibility paths reviewed against official security candidate, no guest preparation or native build",
+    "archive_sha256": "4d6ed3b18b2069c55bab12d8ba95da6013ac0b036d8a031df8b9f39a25d05c33",
+    "members": 422112,
+    "paths": {
+      "third_party/python/jsonschema/jsonschema/validators.py": "cf07dd6a2405bc7f99f44a041fe1bf061f21090cce8ab260ebefc01684fcfe8c",
+      "python/mozbuild/mozbuild/vendor/vendor_python.py": "2357aa7d4e5299fa6379f97937b446b2be18ad0f51c3af88a94a43cf5857f6db",
+      "python/mozbuild/mozbuild/vendor/rewrite_mozbuild.py": "96fbf93bd801240d432fc6c3fe33a20b6ff99b4723b51c4691d613c8efab40e8",
+      "python/mozbuild/mozbuild/frontend/reader.py": "7b702390a2694e65c80f1a70a4dae8c3980408a6b50c9d6f0be90394cf57e369",
+      "python/mach/mach/command_util.py": "5af2a808a0d5fbd4206c8d7095e012fd7a7716f8c7863e04ad4f3761af87171b"
+    },
+    "old_patch_dry_run_exit": 0,
+    "patch_sha256": "24183878004982be0d7d87af2daa49a36d327a279b0abcf222c0c99e805e2ed7"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-mozjs-security-source-delta.tar.gz",
+    "members": 3,
+    "sha256": "710e010ab1946633931f0e69660f247ed6593278d958fb14c20925464d2766bc"
+  },
+  "qualification": "Source integrity and selected source-byte comparison only; candidate not prepared/built/installed. No vulnerability exploit test or security acceptance."
+}
