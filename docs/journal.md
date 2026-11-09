@@ -3047,3 +3047,5 @@ Initial job stages only; original critical/API/JIT suites and installed consumer
 remain required before promotion. No desktop/GUI/ISO acceptance. Full B02 then stop.
 
 | 2026-11-09 | B02 Mozilla compile/API | Frozen140.14 source/required Python patch compiled and staged; original901JSAPI cases0/501ELFs unchanged; JIT running | Main log-path startup and initial Python-module failures retained; supported routing/build interpreter correction prepared. Later Mozilla JIT/WebAssembly advisories block release qualification. GtkSource duplicate-capture root cause/one-file candidate documented in ADR0146, not yet runtime verified. |
+
+| 2026-11-09 | B02 critical engine/regex slices | Baseline55812JIT passes0, main103actual failures retained, native C++ embedding0; explicit security140.17 candidate compiled/staged0 | Source delta15files within inspected scope; critical candidate tests pending. GtkSource duplicate probe original failure/corrected6pass and rebuilt5original syntax cases0; native original regex display test next, no package/UI completion. |

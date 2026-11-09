@@ -1,0 +1,39 @@
+{
+  "scope": "Real original vs locally corrected private regex consumer only; full package/syntax/native UI qualification still pending",
+  "commands": [
+    {
+      "name": "apply",
+      "exit": 0
+    },
+    {
+      "name": "original-compile",
+      "exit": 0
+    },
+    {
+      "name": "original-run",
+      "exit": 2
+    },
+    {
+      "name": "corrected-compile",
+      "exit": 0
+    },
+    {
+      "name": "corrected-run",
+      "exit": 0
+    }
+  ],
+  "compiled_artifacts": 230,
+  "changed_artifacts": [],
+  "original_source_sha256": "dae0ad9a27dd40150a58e3b4b64b03be759c64ff5c838dcafd5ee2568982b4b3",
+  "corrected_source_sha256": "61e800f3276fda73c5bf238188ffc3e5b6ae5af4230c2a5a4593d850b2e0a877",
+  "patch_sha256": "e11b1044f2f646415d373d0346c95ac69257190fedf9f6d0c5bdc94a951ac0a8",
+  "probe_sha256": "e4150e63a5e8ffa037725d2f882efdc88fcd46d9120ce90aa64544860c9a9a63",
+  "original_output": "PASS: expected=[END] actual=[END]\nFAIL: expected=[EOF] actual=[NULL]\nFAIL: expected=[END] actual=[NULL]\nFAIL: expected=[] actual=[NULL]\nFAIL: expected=[] actual=[NULL]\nFAIL: expected=[a] actual=[NULL]\ncases=6 failed=5; missing-name refusal checked each time\n",
+  "corrected_output": "PASS: expected=[END] actual=[END]\nPASS: expected=[EOF] actual=[EOF]\nPASS: expected=[END] actual=[END]\nPASS: expected=[] actual=[]\nPASS: expected=[] actual=[]\nPASS: expected=[a] actual=[a]\ncases=6 failed=0; missing-name refusal checked each time\n",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-mozjs-tests-gtksource-diagnosis.tar.gz",
+    "sha256": "a150198caa3271c6a76dc808b15cf4d88daa2aa977d026ecf991ec1a378074ea",
+    "members": 43
+  },
+  "decision": "docs/adr/0146-gtksource-duplicate-named-capture.md"
+}

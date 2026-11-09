@@ -36,17 +36,19 @@ def main():
     assert output(['findmnt','-n','-o','FSTYPE','/'])=='ext4'
     reference=ACCEPTED;assert isinstance(reference,dict)
     component=reference.get('component','libadwaita');assert component in ['libadwaita','gtksourceview']
+    patched_regex=reference.get('patched_regex',False);assert not patched_regex or component=='gtksourceview'
     syntax_only=reference.get('syntax_only',False);assert not syntax_only or component=='gtksourceview'
     remaining_syntax=reference.get('remaining_syntax',False);assert not remaining_syntax or syntax_only
-    fixture_name='gtksourceview-syntax-valid-1' if remaining_syntax else 'gtksourceview-syntax-1' if syntax_only else 'mutter-1' if component=='libadwaita' else 'gtksourceview-1'
+    fixture_name='gtksourceview-patched-regex-1' if patched_regex else 'gtksourceview-syntax-valid-1' if remaining_syntax else 'gtksourceview-syntax-1' if syntax_only else 'mutter-1' if component=='libadwaita' else 'gtksourceview-1'
     manifest=Path(reference['manifest']);assert str(manifest)=='/sources/phase2/native-fixtures/'+fixture_name+'/accepted.json'
     assert manifest.is_file() and not manifest.is_symlink() and manifest.stat().st_uid==0 and not manifest.stat().st_mode&0o222
     data=manifest.read_bytes();assert len(data)<256*1024 and hashlib.sha256(data).hexdigest()==reference['manifest_sha256']
-    accepted=json.loads(data);assert len(accepted['tests'])==(1 if syntax_only else 67 if component=='libadwaita' else 26)
+    accepted=json.loads(data);assert len(accepted['tests'])==(1 if syntax_only or patched_regex else 67 if component=='libadwaita' else 26)
     assert accepted.get('component','libadwaita')==component
+    assert accepted.get('patched_regex',False)==patched_regex
 
     version='1.9.3' if component=='libadwaita' else '5.20.0'
-    work=Path('/sources/phase2/work')/(component+'-1');source=Path('/sources/phase2/inputs')/(component+'-'+version)
+    work=Path('/sources/phase2/work')/('gtksourceview-patched-1' if patched_regex else component+'-1');source=Path('/sources/phase2/inputs')/('gtksourceview-5.20.0-duplicate-1' if patched_regex else component+'-'+version)
     asset_dirs=accepted.get('asset_dirs',['tests' if component=='libadwaita' else 'testsuite'])
     assert asset_dirs==(['testsuite','tests','data'] if syntax_only else ['tests' if component=='libadwaita' else 'testsuite'])
     for path,digest in accepted['artifacts'].items():assert sha(Path(path))==digest

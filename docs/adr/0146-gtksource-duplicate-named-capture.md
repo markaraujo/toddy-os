@@ -1,6 +1,6 @@
 # ADR-0146: Resolve GtkSourceView duplicate named captures without changing fixtures
 
-Status: Proposed; source diagnosis verified, native correction not yet executed.
+Status: Accepted one-file correction; native diagnosis and affected pure syntax passed, original display driver/product UI pending.
 Date: 2026-11-09
 Scope: B02 GtkSourceView5.20.0 private PCRE2 wrapper, not the foundation regex ABI.
 
@@ -44,3 +44,19 @@ finish before any guest diagnostic job is dispatched.
   consulted 2026-11-09; explicit duplicate-name error and name-table alternative.
 - [PCRE2 name-table API](https://www.pcre.org/current/doc/html/pcre2_substring_nametable_scan.html),
   consulted 2026-11-09; entry length and first/last matching entries.
+
+## Observed native result
+
+[Actual original-vs-corrected probe](../evidence/B02-gtksourceview-duplicate-diagnosis.json)
+reproduced five duplicate-name failures in the original implementation; corrected
+six cases passed, including the unchanged unique-name control and missing-name
+refusal. All230previous compiled artifacts remained unchanged. The package was
+then rebuilt/staged from a distinct copied input;765original input files remained
+unchanged and exactly one library source file was patched.
+
+[Actual affected verification](../evidence/B02-gtksourceview-patched-stage.json)
+passed original Python2/3, shell, JSON and XML syntax cases, with230new compiled
+artifacts unchanged after tests. The first original regex driver invocation
+aborted before cases because its gtk_test_init requires a display. Preserve that
+failure; run this single driver in a fresh native Mutter context. No rebuild,
+full corpus retry, original assertion change, installation or editor acceptance.
