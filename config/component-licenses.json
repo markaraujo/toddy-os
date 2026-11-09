@@ -10372,6 +10372,28 @@
       "evidence": "Frozen source COPYING and retained per-file notices; optional libwacom/Lua omitted; private Check SDK remains test-only",
       "review_status": "source_notices_reviewed",
       "runtime_inclusion": "B02 native input library/tools/quirks; actual device and GNOME validation pending"
+    },
+    {
+      "name": "alsa-lib",
+      "version": "1.2.16.1",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Frozen COPYING and per-file notices retained; source-only manual test utilities have their own notices",
+      "runtime_inclusion": "B02 shared ALSA user-space library; physical audio/VM sound validation pending"
+    },
+    {
+      "name": "lua",
+      "version": "5.4.8",
+      "license": "MIT",
+      "evidence": "Exact frozen source doc/readme.html copyright/MIT grant; original test-suite notices and BLFS shared patch retained with source inputs",
+      "runtime_inclusion": "Native shared scripting dependency for Wireplumber; no added shell framework or assistant publishing credentials",
+      "extra_license_files": {
+        "lua-5.4.8.tar.gz": [
+          "doc/readme.html"
+        ],
+        "lua-5.4.8-tests.tar.gz": [
+          "all.lua"
+        ]
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

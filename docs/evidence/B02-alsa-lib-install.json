@@ -1,0 +1,18 @@
+{
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T02:28:09.514463+00:00",
+  "package": {
+    "name": "alsa-lib",
+    "version": "1.2.16.1-1+toddy1",
+    "archive_sha256": "cac61af310575b0e8acee9a423bd964e2de5b347e8f8ec309f01e4b201eb32d5"
+  },
+  "payload_entries": 162,
+  "consumer": {
+    "scope": "Native installed ALSA configuration/null PCM stereo48000Hz480frames/drain/unknown PCM refusal; no actual sound device or Pipewire/GNOME acceptance",
+    "name": "alsa-lib",
+    "version": "1.2.16.1",
+    "native_consumer_exit": 0,
+    "stdout": "native ALSA configuration parse/null PCM stereo48000Hz480frames/drain/close and unknown-PCM refusal"
+  }
+}

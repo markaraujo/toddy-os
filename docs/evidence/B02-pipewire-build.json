@@ -1,0 +1,264 @@
+{
+  "scope": "Native Pipewire private daemon/client core and original tests; no audible, physical, routing/session-manager or GNOME acceptance",
+  "upstream_drivers": [
+    {
+      "name": "pipewire:test-peaks",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-mixer-ump-sort",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-pipewire.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-client.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-audioadapter",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-mix-ops",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-channelmix",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-audioconvert",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-jack.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-minimal.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-pipewire-pulse.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-pipewire-avb.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-pipewire-aes67.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-pipewire-uninstalled.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-pipewire-10-rates.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-pipewire-20-upmix.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-resample",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-pipewire-50-raop.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-client-20-upmix.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-pulse-20-upmix.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain-demonic.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain-source-duplicate-FL.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain-sink-mix-FL-FR.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain-sink-make-LFE.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain-sink-virtual-surround-5.1-kemar.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain-sink-virtual-surround-7.1-hesuvi.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain-sink-dolby-surround.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain-sink-dolby-pro-logic-ii.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain-sink-eq6.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain-sink-matrix-spatialiser.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain-source-rnnoise.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:validate-json-filter-chain-sink-upmix-5.1-filter.conf",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:pw-test-protocol-native",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:pw-test-endpoint",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:pw-test-interfaces",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:pw-test-stream",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-resample-delay",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:pw-test-filter",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:pw-test-security-context",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:pw-test-cpp",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-pwtest",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-lib",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-client",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-loop",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-context",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-support",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-pw-utils",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-spa",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "pipewire:test-fmt-ops",
+      "result": "OK",
+      "exit": 0
+    }
+  ],
+  "staged_daemon_client_exit": 0,
+  "private_runtime": true,
+  "daemon_stopped": true,
+  "profile": "ALSA/udev/systemd/logind/DBus/Flatpak integration; no bundled Wireplumber, JACK/V4L2 compatibility or PAM limit modifications",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-pipewire-native-evidence.tar.gz",
+    "members": 25,
+    "sha256": "48f6b76420edc77421237de7c871cfbd8f791f825f3f9d2bf298bbd1480ef2db"
+  }
+}

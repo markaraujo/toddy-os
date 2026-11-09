@@ -1,0 +1,24 @@
+{
+  "scope": "Native Lua shared library/interpreter and original upstream basic suite for Wireplumber; no desktop/session routing acceptance",
+  "upstream_basic_suite_exit": 0,
+  "upstream_mode": "_U=true as frozen BLFS13.1; portable/soft basic mode, internal C harness and long/nonportable tests omitted",
+  "upstream_final_marker": "final OK",
+  "version_banner_only": "make test is version output, not an additional passing suite",
+  "staged_consumer_exit": 0,
+  "profile": "BLFS13.1 shared-library patch and pkg-config layout; no shell/user preference edits",
+  "consumer_recovery": "luaL_dostring is a boolean macro; use loadstring then pcall for exact LUA_ERRRUN, preserving error-text/stack assertions. No library or basic-suite replay.",
+  "stage_files_unchanged": 11,
+  "patch_context": {
+    "scope": "One unchanged context line gains ios to match frozen5.4.8 Makefile; all BLFS patch additions/deletions unchanged",
+    "original_sha256": "44324a802822f0a35d095aaad2f5f58fa7b1821ae87ae44dbcfc8a23fcd2e67e",
+    "adjusted_sha256": "5de3f1dffdc52ee92808d392887bd67d94604005af98b226ca45669989596d82",
+    "old_context": " PLATS= guess aix bsd c89 freebsd generic linux linux-readline macosx mingw posix solaris\n",
+    "new_context": " PLATS= guess aix bsd c89 freebsd generic ios linux linux-readline macosx mingw posix solaris\n",
+    "recovery": "Original failed partial project retained; fresh project-2 for first actual compilation, no frozen version change"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-lua-native-evidence.tar.gz",
+    "members": 25,
+    "sha256": "c99f78ef5c3a53603fd00cbe73f6bba196ee49f09679b8ed6cfd1f6e9966caf4"
+  }
+}

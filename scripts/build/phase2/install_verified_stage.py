@@ -19,6 +19,12 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'lua': ('5.4.8', 'glibc (>= 2.44-1)',
+            'lua-5.4.8.tar.gz', 'usr/lib/pkgconfig/lua.pc'),
+    'pipewire': ('1.6.8', 'glibc (>= 2.44-1), systemd (>= 261.2-1), dbus (>= 1.16.2-1), glib (>= 2.88.3-1+toddy1), alsa-lib (= 1.2.16.1-1+toddy1)',
+                 'pipewire-1.6.8.tar.bz2', 'usr/lib/pkgconfig/libpipewire-0.3.pc'),
+    'alsa-lib': ('1.2.16.1', 'glibc (>= 2.44-1)',
+                 'alsa-lib-1.2.16.1.tar.bz2', 'usr/lib/pkgconfig/alsa.pc'),
     'libinput': ('1.31.3', 'glibc (>= 2.44-1), systemd (>= 261.2-1), libevdev (= 1.13.6-1+toddy1), mtdev (= 1.1.7-1+toddy1)',
                   'libinput-1.31.3.tar.gz', 'usr/lib/pkgconfig/libinput.pc'),
     'libei': ('1.6.0', 'glibc (>= 2.44-1), systemd (>= 261.2-1), libevdev (= 1.13.6-1+toddy1), libxkbcommon (= 1.13.2-1+toddy1)',
@@ -155,6 +161,8 @@ if __name__ == '__main__':
     if name=='bubblewrap':qualifier='bubblewrap-stage-6'
     if name=='libei':qualifier='libei-dtd-2'
     if name=='libinput':qualifier='libinput-probe-2'
+    if name=='alsa-lib':qualifier='alsa-lib-probe-2'
+    if name=='lua':qualifier='lua-probe-3'
     if name=='libxml2-python':qualifier='libxml2-python-probe-5'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
@@ -763,6 +771,41 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='lua':
+        work=Path('/mnt/lfs/sources/phase2/work/lua-1');source=Path('/mnt/lfs/sources/phase2/inputs/lua-5.4.8')
+        recipe=(ROOT/'scripts/build/phase2/lua-build.sh').read_text()
+        probe=(ROOT/'scripts/build/phase2/lua-probe.c').read_text()
+        assert (source/'toddy-build.sh').read_text()==recipe
+        code=(ROOT/'scripts/build/phase2/lua_probe_qualify.py').read_text()+'\nmain('+repr(probe)+','+repr(recipe)+')\n'
+        assert json.loads((log/'lua-probe-3.job.json').read_text())['command'][-3:]==['python3','-c',code]
+        context=(ROOT/'scripts/build/phase2/lua_patch_recover.py').read_text()+'\nmain('+repr(recipe)+')\n'
+        assert json.loads((log/'lua-context-2.job.json').read_text())['command'][-3:]==['python3','-c',context]
+        assert (work/'probe-3/consumer.c').read_text()==probe and (work/'probe-3/consumer.exit').read_text().strip()=='0'
+        assert 'final OK' in (work/'upstream-tests.log').read_text()
+        assert (work/'project-2/src/liblua.so.5.4.8').read_bytes()==(work/'stage/usr/lib/liblua.so.5.4.8').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['upstream_basic_suite_exit']==proof['staged_consumer_exit']==0
+        patch=json.loads((work/'patch-context-2.json').read_text());assert patch['original_sha256']=='44324a802822f0a35d095aaad2f5f58fa7b1821ae87ae44dbcfc8a23fcd2e67e'
+    if name=='pipewire':
+        work=Path('/mnt/lfs/sources/phase2/work/pipewire-1');source=Path('/mnt/lfs/sources/phase2/inputs/pipewire-1.6.8')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/pipewire-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/pipewire-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_daemon_client_exit']==0 and proof['daemon_stopped']
+        rows=[json.loads(s) for s in (work/'compile/meson-logs/testlog.json').read_text().splitlines() if s.strip()]
+        assert len(rows)==50 and all(r['result']=='OK' and r['returncode']==0 for r in rows)
+        assert any(r['type']=='PipeWire:Interface:Core' for r in json.loads((work/'core-dump.json').read_text()))
+        options={r['name']:r['value'] for r in json.loads((work/'compile/meson-info/intro-buildoptions.json').read_text())}
+        assert options['alsa']=='enabled' and options['udev']=='enabled' and options['session-managers']==[]
+        assert not options['pam-defaults-install'] and not options['rlimits-install']
+    if name=='alsa-lib':
+        work=Path('/mnt/lfs/sources/phase2/work/alsa-lib-1');source=Path('/mnt/lfs/sources/phase2/inputs/alsa-lib-1.2.16.1')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/alsa-lib-build.sh').read_bytes()
+        code=(ROOT/'scripts/build/phase2/alsa_lib_qualify.py').read_text()+'\nmain('+repr((ROOT/'scripts/build/phase2/alsa-lib-probe.c').read_text())+')\n'
+        assert json.loads((log/'alsa-lib-probe-2.job.json').read_text())['command'][-3:]==['python3','-c',code]
+        assert (work/'probe-2/consumer.c').read_bytes()==(ROOT/'scripts/build/phase2/alsa-lib-probe.c').read_bytes()
+        assert (work/'probe-2/consumer.exit').read_text().strip()=='0'
+        for test in ['config','midi_event']:
+            assert ':test-result: PASS' in (work/('compile/test/lsb/'+test+'.trs')).read_text()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['upstream_check_exit']==proof['staged_consumer_exit']==0
     if name=='libinput':
         work=Path('/mnt/lfs/sources/phase2/work/libinput-1');source=Path('/mnt/lfs/sources/phase2/inputs/libinput-1.31.3')
         assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libinput-build.sh').read_bytes()
@@ -837,9 +880,26 @@ if __name__ == '__main__':
     before = inspect_stage(source)
     assert required in before['entries'], 'Missing declared payload'
     destination = Path('/mnt/lfs/sources/stage') / ('phase2-'+name)
-    assert not destination.exists(), 'Reconcile existing stage; no replay'
-    shutil.copytree(source, destination, symlinks=True)
-    assert inspect_stage(destination) == before
+    if name=='lua' and destination.exists():
+        # The first transaction stopped while collecting embedded legal notices,
+        # before archive creation/dpkg. Resume that proven staging state only.
+        prior=json.loads((log.parent/'build/b02-lua-install.failed.json').read_text())
+        assert prior['recipe_exit']==1 and prior['postcheck_exit'] is None
+        assert 'No upstream notice found; review before packaging' in (log.parent/'build/b02-lua-install.log').read_text()
+        assert not Path('/var/cache/toddy/packages/lua_5.4.8-1+toddy1_amd64.deb').exists()
+        assert not Path('/var/log/toddy/packages/lua_5.4.8-1+toddy1_amd64.json').exists()
+        state=subprocess.run(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Status}','lua'],capture_output=True,text=True)
+        assert state.returncode in (0,1) and state.stdout.strip()!='install ok installed'
+        current=inspect_stage(destination)['entries']
+        assert all(current[k]==v for k,v in before['entries'].items())
+        allowed={'usr/share/doc','usr/share/doc/lua','usr/share/doc/lua/source-notices','usr/share/doc/lua/source-notices/index.json'}
+        assert set(current)-set(before['entries'])<=allowed
+        notice=json.loads((destination/'usr/share/doc/lua/source-notices/index.json').read_text())
+        assert all(not r['notices'] for r in notice['sources'])
+    else:
+        assert not destination.exists(), 'Reconcile existing stage; no replay'
+        shutil.copytree(source, destination, symlinks=True)
+        assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
     if name=='libxml2':
         wrapper=destination/'usr/bin/xml2-config'
@@ -858,6 +918,8 @@ if __name__ == '__main__':
     if name=='libei':
         extra=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']=='munit-test-dependency')
         archives.append(extra['filename'])
+    if name=='lua':
+        archives += [r['filename'] for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name'] in ('lua-shared-library-patch','lua-test-suite')]
     write_copyright(destination, name, archives)
     source_args=[arg for item in archives for arg in ['--source',item]]
     if name=='llvm':

@@ -1470,6 +1470,54 @@
       "parent_source_sha256": "5ed6078fa63afd554cc04b1001675615da0ed8fe23b80492ab63403140b5a830",
       "scope": "Build/test source only, not runtime/catalog; required upstream Meson integration present, native qualification pending",
       "status": "source_verified"
+    },
+    {
+      "name": "alsa-lib",
+      "version": "1.2.16.1",
+      "filename": "alsa-lib-1.2.16.1.tar.bz2",
+      "url": "https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.16.1.tar.bz2",
+      "sha256": "f740db7f488255944ffd4428416ee3390a96742856916433df468c281436480e",
+      "reference": "BLFS13.1-systemd multimedia/alsa-lib.html",
+      "book_page_sha256": "fa066d4f1b1ce2b0e788f7beb68f272a5e1906a46d6b4e25e2ba5f2e69161261",
+      "book_md5": "c14c9f94f78f76924c13668954997a33",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "lua",
+      "version": "5.4.8",
+      "filename": "lua-5.4.8.tar.gz",
+      "url": "https://www.lua.org/ftp/lua-5.4.8.tar.gz",
+      "sha256": "4f18ddae154e793e46eeab727c59ef1c0c0c2b744e7b94219710d76f530629ae",
+      "reference": "BLFS13.1-systemd general/lua.html",
+      "book_page_sha256": "80875d1680f7152a739401ed801dfeeb987efd54780604040f91f4c0821eec8a",
+      "book_md5": "81cf5265b8634967d8a7480d238168ce",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "lua-shared-library-patch",
+      "version": "5.4.8",
+      "filename": "lua-5.4.8-shared_library-1.patch",
+      "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/lua-5.4.8-shared_library-1.patch",
+      "sha256": "44324a802822f0a35d095aaad2f5f58fa7b1821ae87ae44dbcfc8a23fcd2e67e",
+      "reference": "BLFS13.1-systemd general/lua.html",
+      "book_page_sha256": "80875d1680f7152a739401ed801dfeeb987efd54780604040f91f4c0821eec8a",
+      "integrity": "Exact frozen book supplementary HTTPS URL; SHA256 frozen before guest use",
+      "status": "source_verified",
+      "scope": "Lua shared-library build recipe patch"
+    },
+    {
+      "name": "lua-test-suite",
+      "version": "5.4.8",
+      "filename": "lua-5.4.8-tests.tar.gz",
+      "url": "https://www.lua.org/tests/lua-5.4.8-tests.tar.gz",
+      "sha256": "9581d5a7c39ffbf29b8ccde2709083c380f7bbddbd968dcb15712d2f2e33f4e5",
+      "reference": "BLFS13.1-systemd general/lua.html",
+      "book_page_sha256": "80875d1680f7152a739401ed801dfeeb987efd54780604040f91f4c0821eec8a",
+      "integrity": "Exact frozen book supplementary HTTPS URL; SHA256 frozen before guest use",
+      "status": "source_verified",
+      "scope": "Original upstream basic qualification suite, not runtime payload"
     }
   ]
 }

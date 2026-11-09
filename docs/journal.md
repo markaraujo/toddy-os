@@ -2678,3 +2678,25 @@ offline and excluded from installation. Reused C results for schema-only follow-
 Started libinput1.31.3 with reused private CheckSDK/mtdev; optional tablet-ID/Lua
 omitted and internal key tracing disabled. Owner boundary remains complete ALL
 B02 then stop, not a dependency checkpoint. No native GNOME acceptance yet.
+
+2026-11-09: ALSA1.2.16.1 installed/post0/0; original LSB config/MIDI2PASS
+and real null PCM stream API0. One probe-only POSIX macro correction reused
+accepted build/stage, original error retained. Started Pipewire1.6.8 with native
+ALSA/udev/Systemd and no PAM limit modifications/bundled session manager.
+Commit1608946 pushed; planning42550756588/safety42550756577/Pages42550756720
+all passed; publicHTTP200 byte-identical export SHA
+e951bc26a7596077d6cd453e45a099a6df67ff8f2dfd6bd458704693fba895c0.
+
+2026-11-09: Pipewire1.6.8 source50drivers/private daemon-client0; owned install0
+post1 retained. Absent native setpriv launcher then absent chroot proc are distinct
+verified harness causes. Full payload/archive verified unchanged; final private
+namespace installed UID101/caps0/NNP daemon-client0, stopped0, changed_paths0, no
+global proc mount. No reinstall/test replay. Lua5.4.8 source/basic suite pinned;
+frozen BLFS shared patch stale ios context refusedfuzz0 beforecompile; context-only
+correction/fresh private project2 running, original preserved.
+
+2026-11-09: Lua5.4.8 shared library/basic original suite0/final OK/C API0 and
+owned install/post0/0; exact embedded MIT notices selected. All three distinct
+failures (stale patch context, probe macro comparison, legal collection) retained
+and narrowly corrected without library/test replay. Wireplumber0.5.15 with owned
+Lua/Pipewire and private-bus tests started; no actual session/audio/GNOME acceptance.

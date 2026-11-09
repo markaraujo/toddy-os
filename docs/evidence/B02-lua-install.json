@@ -1,0 +1,20 @@
+{
+  "step": "b02-lua-legal-stage-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T02:45:46.909335+00:00",
+  "package": {
+    "name": "lua",
+    "version": "5.4.8-1+toddy1",
+    "archive_sha256": "f5a3d4582575f52f62e40286a9a7d9a1b341517bf2b22088609ee0c104cb42ee"
+  },
+  "payload_entries": 32,
+  "consumer": {
+    "scope": "Native installed Lua shared C API/table sorting/integer/protected error/stack cleanup; no Wireplumber session or GNOME acceptance",
+    "name": "lua",
+    "version": "5.4.8",
+    "native_consumer_exit": 0,
+    "stdout": "native Lua5.4.8 shared C API/table sorting/integer result/protected error/stack cleanup"
+  },
+  "legal_stage_resume": "Original b02-lua-install refused empty named legal collection before archive/dpkg. Exact primary doc/readme.html and original test all.lua notices explicitly selected. Verified absent archive/registry/installed package and identical existing runtime stage before first native install; no library/upstream replay."
+}

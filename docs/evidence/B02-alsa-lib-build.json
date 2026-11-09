@@ -1,0 +1,24 @@
+{
+  "scope": "Native ALSA configuration and null PCM API; no audible/physical or Pipewire/GNOME acceptance",
+  "upstream_check_exit": 0,
+  "upstream_lsb_tests": [
+    {
+      "name": "config",
+      "result": "PASS"
+    },
+    {
+      "name": "midi_event",
+      "result": "PASS"
+    }
+  ],
+  "upstream_examples": "Original manual/hardware examples compiled, not exercised/countable as passes",
+  "staged_consumer_exit": 0,
+  "stage_files_unchanged": 136,
+  "consumer_recovery": "POSIX_C_SOURCE200809L declared before ALSA includes for strict C11; no library/test/assertion changes",
+  "profile": "Shared libasound/topology/default source configuration; no user preference edits or physical hardware claim",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-alsa-lib-native-evidence.tar.gz",
+    "members": 19,
+    "sha256": "3e066539d7e97bbcc9e3369fb155c1e3f5e8ec902320b3a055cb49d909a2eb21"
+  }
+}

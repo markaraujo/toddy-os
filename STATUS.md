@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T02:23:14.447222+00:00
+Last verified: 2026-11-09T02:47:35.051898+00:00
 
 Verified:
 
@@ -43,8 +43,11 @@ Verified:
 - Actual native7.1.8/Systemd sandbox0 on4CPU/4GiB BIOS/noNIC; bwrap26portable+66native upstream passes/5explicit optional skips, native consumer0,11ELFs unchanged. Checksum-reconciled split serial marker without native replay; owned0755 byte-identical install/post0/0. Builder/same3scratch volumes restored, no formatting/trim.
 - Owned display-info0.4.0 install/post0/0/all68registered EDID fixtures0, actual QEMU/PnP/malformed+truncated refusal0; both parser/hwdata source-license inventories retained. No physical monitor or graphical-session acceptance.
 - Owned libei1.6.0 C6drivers237case executions/schema0 and libinput1.31.3 ten portable drivers0; both install/post0/0. No portal/device/physical/GNOME acceptance.
+- Owned ALSA1.2.16.1 install/post0/0, original LSB config/MIDI2PASS and null PCM480frames@48000Hz API0; no audible-device claim.
+- Owned Pipewire1.6.8 original50drivers/private IPC0; install0/post1 retained, full payload/archive verify-only plus actual installed UID101/caps0/NNP daemon-client0/daemon stopped0, changed_paths0. No audible/session routing acceptance.
+- Owned Lua5.4.8 shared library/basic upstream suite/final OK/C API and interpreter UTF8 installed0/post0; original patch/probe/legal failures retained and narrowly reconciled, no suite/library replay.
 
-Running: No guest writer. libinput owned; next pinned Pipewire/audio and remaining Mutter/GNOME prerequisites. Complete ALL B02 then pause.
+Running: Single unprivileged Wireplumber0.5.15 job wireplumber-1 PID32112 using owned Lua/Pipewire and original/private-bus tests. Actual routing/GNOME/apps pending; complete ALL B02 then pause.
 
 Remaining:
 

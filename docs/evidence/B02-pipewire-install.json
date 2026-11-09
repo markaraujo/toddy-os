@@ -1,0 +1,31 @@
+{
+  "original": {
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "finished": "2026-11-09T02:32:34.565679+00:00"
+  },
+  "verify_only_recovery": {
+    "step": "b02-pipewire-postcheck-nativeproc",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T02:37:30.482758+00:00",
+    "changed_paths": 0
+  },
+  "package": {
+    "name": "pipewire",
+    "version": "1.6.8-1+toddy1",
+    "archive_sha256": "6fcccccb584101ebf0899dcabbc64ff8551f8cc4e58356bc8878febc6a17c56a"
+  },
+  "payload_entries": 649,
+  "consumer": {
+    "scope": "Actual installed private UID101/NNP daemon/client core synchronization only; no audible sound, session routing or desktop acceptance",
+    "native_consumer_exit": 0,
+    "stdout": "native Pipewire1.6.8 real private daemon/client core synchronization and cleanup\n",
+    "daemon_stopped": true,
+    "daemon_exit": 0,
+    "runtime_uid": 101,
+    "runtime_nnp": true
+  },
+  "global_proc_mount_after": false,
+  "failure_chain": "Original launcher absent native setpriv; next actual client timeout from absent chroot proc/Flatpak peer lookup. Builder launcher and private proc/shm namespace corrected; original failures preserved, no package/build/upstream replay."
+}
