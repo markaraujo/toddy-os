@@ -16,13 +16,16 @@ No source API change, original suite/compiler/stage replay or user-key change.
 Initial nofallback/duplicate extraction and inaccessible /opt probe failures remain.
 NEVER reinstall/rebuild/replay these jobs.
 
-Exact next: source-backed separate standard SUID-helper Polkit native profile.
-The failed profile explicitly enabled optional helper.socket; frozen source has
-an independent supported SUID fallback. Diagnose authentication-session cookie/UID
-binding from exact source, not an assumed missing logind session. Preserve old
-socket-profile budget and failures; new transport profile must be qualified from
-real native results before any owned package promotion. Complete remaining B02
-GNOME/GDM/apps/network/audio/offline/native GUI/focus/resources, then STOP.
+Exact next: clean reviewed commit, then `python3 scripts/host/phase2_native_polkit_suid.py`
+once with `.local/phase2/native-polkit-suid-1-controller.log`; NEW native-polkit-suid-runtime-1.
+ADR0155 selects the explicit upstream standard SUID-helper fallback with optional
+helper.socket unstarted. The old socket cookie/UID branch remains parked with two
+failed corrections; its budget is not reset. This is an authentication-session
+binding diagnosis, not an assumed missing logind session. New profile must prove
+actual correct/wrong password, unsolicited-cookie refusal, child NNP refusal,
+Stop/no effect/helper cleanup, recovery, new daemon bus identity and policy action
+replay refusal. Inspect real child/report/parent identity before restart/retry.
+No parent Polkit installation yet. Continue remaining B02 then STOP.
 
 ## Parked branch: Polkit actual authentication
 

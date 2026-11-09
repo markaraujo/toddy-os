@@ -1,5 +1,5 @@
 """Run five unchanged Polkit drivers with native user/mount namespaces."""
-import base64,hashlib,json,os,re,subprocess,zlib,shutil,secrets,pty,select,signal,time,pwd
+import base64,hashlib,json,os,re,subprocess,zlib,shutil,secrets,pty,select,signal,time,pwd,ctypes
 from pathlib import Path
 
 def output(args):return subprocess.check_output(args,text=True,timeout=15).strip()
@@ -47,7 +47,8 @@ def main():
     rules.write_text('polkit.addAdminRule(function(action, subject) { return ["unix-user:'+name+'"]; });\npolkit.addRule(function(action, subject) { if(subject.user != "'+name+'") return null; if(action.id == "org.toddy.test.allow") return polkit.Result.YES; if(action.id == "org.toddy.test.deny") return polkit.Result.NO; if(action.id == "org.toddy.test.challenge") return polkit.Result.AUTH_ADMIN; });\n')
     subprocess.run(['dbus-send','--system','--type=method_call','--print-reply','--dest=org.freedesktop.DBus','/','org.freedesktop.DBus.ReloadConfig'],check=True,capture_output=True)
     subprocess.run(['systemctl','daemon-reload'],check=True)
-    subprocess.run(['systemctl','start','polkit-agent-helper.socket','polkit.service'],check=True,timeout=30)
+    subprocess.run(['systemctl','start','polkit.service'],check=True,timeout=30)
+    assert subprocess.run(['systemctl','is-active','--quiet','polkit-agent-helper.socket']).returncode!=0
     assert output(['systemctl','is-active','polkit.service'])=='active'
     owner1=output(['busctl','--system','call','org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','GetNameOwner','s','org.freedesktop.PolicyKit1'])
     runs=[]
@@ -60,12 +61,14 @@ def main():
     decision('allow-kernel-peer','org.toddy.test.allow',0)
     decision('explicit-deny','org.toddy.test.deny',1)
     decision('challenge-without-agent-refused','org.toddy.test.challenge',2)
+    marker=Path('/tmp/toddy-polkit-cancel-effect');assert not marker.exists()
     def authenticate(label,secret,expect_success=False,cancel=False):
         child,fd=pty.fork()
         if child==0:
             os.setgroups([]);os.setgid(uid);os.setuid(uid)
             os.environ.clear();os.environ.update(PATH='/usr/bin:/usr/sbin',LC_ALL='C.UTF-8',HOME='/tmp',TERM='dumb')
-            os.execv('/usr/bin/pkexec',['pkexec','/usr/bin/id','-u'])
+            command=['pkexec','/usr/bin/touch',str(marker)] if cancel else ['pkexec','/usr/bin/id','-u']
+            os.execv('/usr/bin/pkexec',command)
         os.set_blocking(fd,False);tail=b'';transcript=b'';prompts=0;status=None;deadline=time.monotonic()+35
         try:
             while time.monotonic()<deadline:
@@ -101,15 +104,37 @@ def main():
             assert prompts>0,'No real PAM prompt observed: '+label
             if expect_success:assert status==0 and re.search(rb'(?m)^0\r?$',transcript),'Expected root execution: '+label
             else:assert status!=0,'Unexpected privileged execution: '+label
+            if cancel:assert not marker.exists(),'Cancelled operation produced a target effect'
             # Never retain raw tty traffic or secrets (even on failures).
-            runs.append({'name':label,'exit':status,'expected_authenticated':expect_success,'pam_prompts':prompts,'raw_tty_retained':False})
+            remaining=[]
+            for attempt in range(40):
+                remaining=[]
+                for executable in Path('/proc').glob('[0-9]*/exe'):
+                    try:
+                        if str(executable.readlink())=='/usr/lib/polkit-1/polkit-agent-helper-1':remaining.append(executable.parent.name)
+                    except (FileNotFoundError,PermissionError,ProcessLookupError):pass
+                if not remaining:break
+                time.sleep(0.05)
+            assert not remaining,'Authentication helper still running after client completion'
+            runs.append({'name':label,'exit':status,'expected_authenticated':expect_success,'pam_prompts':prompts,'raw_tty_retained':False,'active_helper_executables_after_completion':0,'cancelled_operation_no_effect':not marker.exists() if cancel else None})
         finally:os.close(fd)
     authenticate('correct-password-root-execution',password,True)
+    fake_cookie=secrets.token_urlsafe(24)
+    unsolicited=subprocess.run(['/usr/lib/polkit-1/polkit-agent-helper-1',name],input=fake_cookie+'\n'+password+'\n',text=True,capture_output=True,timeout=20,user=uid,group=uid,extra_groups=[])
+    assert unsolicited.returncode!=0 and unsolicited.stdout.rstrip().endswith('FAILURE') and 'No session for cookie' in unsolicited.stderr
+    runs.append({'name':'unsolicited-cookie-with-correct-password-refused','exit':unsolicited.returncode,'expected_authorized':False,'cookie_retained':False})
+    fake_cookie=None
     authenticate('wrong-password-refused',secrets.token_urlsafe(32))
     authenticate('stop-at-authentication',password,cancel=True)
     authenticate('recovery-after-stop',password,True)
+    def no_new_privileges():
+        libc=ctypes.CDLL(None,use_errno=True)
+        if libc.prctl(38,1,0,0,0)!=0:raise OSError(ctypes.get_errno(),'Child NNP refused')
+    nnp=subprocess.run(['/usr/bin/pkexec','/usr/bin/id','-u'],user=uid,group=uid,extra_groups=[],preexec_fn=no_new_privileges,stdin=subprocess.DEVNULL,capture_output=True,text=True,timeout=15)
+    assert nnp.returncode!=0 and 'pkexec must be setuid root' in nnp.stderr
+    runs.append({'name':'no-new-privileges-refuses-setuid-execution','exit':nnp.returncode,'no_new_privileges':True})
     subprocess.run(['systemctl','stop','polkit.service'],check=True,timeout=20)
-    assert output(['systemctl','is-active','polkit-agent-helper.socket'])=='active'
+    assert subprocess.run(['systemctl','is-active','--quiet','polkit-agent-helper.socket']).returncode!=0
     subprocess.run(['systemctl','start','polkit.service'],check=True,timeout=30)
     owner2=output(['busctl','--system','call','org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','GetNameOwner','s','org.freedesktop.PolicyKit1']);assert owner2!=owner1
     decision('daemon-reconnect-recovery','org.toddy.test.allow',0)
@@ -121,7 +146,7 @@ def main():
     password=None;subprocess.run(['userdel',name],capture_output=True,check=True)
     assert not any(row.startswith(name+':') for row in Path('/etc/passwd').read_text().splitlines())
     verify()
-    raw=json.dumps({'scope':'Real Polkit system-bus, exact privileged helper/PAM password/challenge/refusal/Stop/restart/revocation in disposable native fixture only; package promotion and GNOME UI still pending','kernel':os.uname().release,'fixture_manifest_sha256':digest(fixture/'accepted.json'),'unchanged_fixture_files':len(accepted['files']),'helpers':helpers,'runs':runs,'distinct_daemon_bus_owners':True,'ephemeral_account_removed':True,'secrets_retained':False},sort_keys=True).encode()
+    raw=json.dumps({'scope':'Real Polkit system-bus, exact privileged helper/PAM password/challenge/refusal/Stop/restart/revocation in disposable native fixture only; package promotion and GNOME UI still pending','kernel':os.uname().release,'fixture_manifest_sha256':digest(fixture/'accepted.json'),'unchanged_fixture_files':len(accepted['files']),'helpers':helpers,'runs':runs,'transport_profile':'Upstream standard SUID helper fallback; optional systemd helper socket unstarted/unqualified','distinct_daemon_bus_owners':True,'ephemeral_account_removed':True,'secrets_retained':False},sort_keys=True).encode()
     success=True
     encoded=base64.b64encode(zlib.compress(raw,9)).decode();chunks=[encoded[i:i+1024] for i in range(0,len(encoded),1024)]
     for i,chunk in enumerate(chunks):print('TODDY_B02_RUNTIME_DATA',i,chunk,flush=True)
