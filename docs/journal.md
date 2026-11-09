@@ -2599,3 +2599,14 @@ restore real-directory topology with every original file byte verified unchanged
 for a new native5 affected-only color run. Candidate-stage hashes and native4GI0
 reused, all original assertions/images/sandbox unchanged. Linked-directory
 behavior remains visible; do not infer native5 success before actual report.
+
+Native5 original color passed0 after byte-identical real-directory fixture
+recovery; combined24actual Rust cases plus actual updated-loader forced-bwrap
+PNG/SVG/refusal0. Frozen payloads reconstructed from exact Git commits and literal
+inputs; actual native reports1/4/5/SHA chains imported under guarded single-writer
+lock. Earlier errors/unsupported/ignored/zero-case status retained. Native5
+container actually stopped0/backing unchanged before builder restart; new
+boot20687a68-08f4-4841-896e-2adbafb288d9 and all4same-volume restores verified.
+Owned promotion verifies exact native-tested source/stage/hash chain, retains
+primary/vendor/Rust legal texts and exact patch; installed-default-path native
+image check remains next native desktop gate. No GNOME/B02 completion yet.

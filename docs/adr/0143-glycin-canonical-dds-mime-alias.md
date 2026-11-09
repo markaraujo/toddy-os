@@ -1,6 +1,6 @@
 # ADR-0143: Recognize the frozen canonical DDS MIME type in Glycin configuration
 
-Status: accepted for the selected Phase 2 decoder profile; native follow-up pending.
+Status: accepted; actual native DDS/color follow-up passed, owned promotion pending.
 
 ## Evidence and cause
 
@@ -54,3 +54,16 @@ does not authorize promotion. The original failed report remains visible.
 This affects configured DDS availability only. It does not qualify GNOME,
 hardware, omitted optional decoders or G2, and does not alter the owner's boundary:
 complete all B02 acceptance, then pause before another story.
+
+## Actual follow-up
+
+Native4 passed DDS pixel/exif comparison after the one-arm source correction,
+with only image-rs/config staged files changed. Its actual forced-bwrap PNG/SVG
+GI/refusal consumer passed. The original color driver then exposed a separate
+relative-image SVG fixture issue under our synthetic symlinked test root.
+Native5 restored a real directory of byte-identical original image files and
+passed the original color case unchanged, reusing23actual original Rust passes
+and exact native4 candidate-stage hashes/GI proof. Preserve every earlier failure;
+the linked-directory behavior remains a visible limitation. No tolerance, golden
+image or sandbox change. Frozen probe payloads and all three qualification reports
+were independently verified/imported; see B02-glycin-build.json.

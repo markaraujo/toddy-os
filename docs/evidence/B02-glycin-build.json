@@ -1,0 +1,53 @@
+{
+  "scope": "Native Glycin selected core/two-loader image qualification only; GNOME/B02/G2 pending",
+  "bundle_version": "2.1.5",
+  "libglycin_api_version": "2.1.0",
+  "native_kernel": "7.1.8-toddy",
+  "vm": "BIOS/4CPU/4GiB/noNIC disposable native overlay; not physical hardware",
+  "native_upstream_cases_passed": 24,
+  "case_sources": {
+    "baseline_image_cases": 10,
+    "encoding": 8,
+    "editing": 4,
+    "memory_format": 1,
+    "affected_original_color_recovery": 1
+  },
+  "non_passes": {
+    "loader_binary_unit_programs": "Two programs contain zero cases",
+    "upstream_dbus_api_test": "1ignored",
+    "write_avif": "1filtered because optional decoder absent",
+    "avif_heif_jxl_raw_products": "Not selected; original extension filter, not passes"
+  },
+  "actual_native_gi_consumer": "Forced bwrap PNG/SVG2x1 navy pixel reads and2malformed-input refusals0, UID101/NoNewPrivs/CapEff0",
+  "native_evidence": {
+    "scope": "Native Glycin selected original tests; retained failure/recovery chain, no GNOME/G2 acceptance",
+    "reports": {
+      "1": {
+        "file": "glycin-native-runtime-1.json",
+        "sha256": "e96b6024983854cff51331a0375545e148b36fee6d410c1d245b806ac3d5b7b8",
+        "probe_sha256": "71aeda1db8056a3914aad3a6b28cea8c64080e22a1b16ddf1b4ddd92670e85bd",
+        "commit": "efceda65f192ae78436600b7202699ee4d5e1910"
+      },
+      "4": {
+        "file": "glycin-native-runtime-4.json",
+        "sha256": "e5fcf248340048c5858f87d7be8f775d61dd29b24465f307c392587f2236564c",
+        "probe_sha256": "9db960bf0a5abcdf3fbe425fd0b1a6d0859d6e0ba4b1b9fa206b6aa6606e76d4",
+        "commit": "7d26c0181a177f242612d28ece103fdc3776424d"
+      },
+      "5": {
+        "file": "glycin-native-runtime-5.json",
+        "sha256": "f1a557f4b9f7f524ae463328292fc80459910c7e6be61d4c7bf6857c83edc70c",
+        "probe_sha256": "d0d0b6bae6848598b00d55d3b5a50fc3002ac4e9b44df582c9f5a7cd40f13044",
+        "commit": "ef34c211b06f4982ad7aac9c69971f9da7b8aca7"
+      }
+    },
+    "baseline_fixture_payload_sha256": "2d6d46dfe85ec559407905c3428fa72c1bfb94a2ef5086ed6a827b2675650831",
+    "candidate_fixture_payload_sha256": "488f5796f6ac455a13b521cdfa453e49fff0dfe7fa6d89ae9d32cf859dd5200c",
+    "kernel": "7.1.8-toddy",
+    "all_selected_qualified": true
+  },
+  "changed_candidate": "Only canonical DDS spelling in existing decoder match arm and loader config; original source/binary retained, no version upgrade/core rebuild",
+  "fixture_recovery": "Original color driver and all golden images/assertions unchanged. Private test image root copied as real directory, every source file hash equal; original symlinked-root external-image SVG failure remains visible.",
+  "installed_default_path_native_image_test": "Pending next native desktop boot; not established by stage-path tests",
+  "promotion": "Root owned-package transaction pending"
+}

@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T00:37:00.531824+00:00
+Last verified: 2026-11-09T00:45:06.363978+00:00
 
 Verified:
 
@@ -43,7 +43,7 @@ Verified:
 - Actual native7.1.8/Systemd sandbox0 on4CPU/4GiB BIOS/noNIC; bwrap26portable+66native upstream passes/5explicit optional skips, native consumer0,11ELFs unchanged. Checksum-reconciled split serial marker without native replay; owned0755 byte-identical install/post0/0. Builder/same3scratch volumes restored, no formatting/trim.
 - Owned display-info0.4.0 install/post0/0/all68registered EDID fixtures0, actual QEMU/PnP/malformed+truncated refusal0; both parser/hwdata source-license inventories retained. No physical monitor or graphical-session acceptance.
 
-Running: Native updated Glycin GI PNG/SVG/refusals0 and DDS image/exif comparison passed. Only external-image SVG under synthetic symlinked test root fails; real byte-identical fixture directory followup pending. No promotion yet; complete ALL B02 then pause.
+Running: Native Glycin selected24Rust cases + forced-bwrap PNG/SVG pixels/refusal qualified with exact report/stage hashes; all earlier failures/exclusions preserved. Builder/same4scratch volumes restored, no writer; owned decoder package promotion next. GNOME/B02 criteria remain pending. Complete ALL B02 then pause.
 
 Remaining:
 
