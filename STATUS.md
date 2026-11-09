@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T07:51:42.254312+00:00
+Last verified: 2026-11-09T08:17:43.901926+00:00
 
 Verified:
 
@@ -73,8 +73,10 @@ Verified:
 - Native syntax private layout corrected:9original cases completed, original invalidUTF8 file.cir refused by GTK/driver-6 retained;2artifacts390source/data files unchanged. ADR0144 scopes only88remaining valid cases; no aggregate pass/promotion.
 - GtkSourceView grammar qualification checkpointed: native4 collector failed/no accepted partial results; isolated24additional cases and Python2/3pass, GDB known-regex/shell HDB warnings unresolved.230ELFs390source-data files unchanged; no promotion.
 - Owned ICU78.3-1+toddy1: original make check testdata/intltest/iotest/cintltst/config selfcheck0, C NFC/PT collation/malformedUTF8/uconv0. Install0/post1 own direct-link omission reconciled verify-only0/0 changed_paths0;291owned paths, no reinstall/test replay. Known upstream Arabic ICU-23229 retained.
+- Cbindgen0.29.4 exact Cargo.lock72registry archives/file checksums authenticated;20cached/52downloaded, no host compilation. Native source/vendor preparation0 after pre-transfer metadata allowlist correction; source tests/consumer build running, not installed.
+- Owned cbindgen0.29.4 C/C++ build-tool profile install/post0/0:55paths,2original library+3depfile cases0, staged/installed generated C/C++ header/native Rust shared ABI42/malformed Rust refusal0. Original source/expectations unchanged. Macro/Cython/unstable-profile matrices explicitly unrun/unqualified.
 
-Running: No guest writer. Next cbindgen0.29.4 source pinned; freeze/reuse72exact registry crates, native offline tool build/tests for GNOME/browser prerequisites. GtkSourceView grammar branch checkpointed. Complete ALL B02 then pause.
+Running: No writer; next qualify reversible byte-exact cold-checkpoint compression to provide capacity for Mozilla/GJS chain.47image metadata entries inspected; six cold candidates have no backing consumers, no compression started. GtkSourceView grammar checkpointed; full B02 then pause.
 
 Remaining:
 

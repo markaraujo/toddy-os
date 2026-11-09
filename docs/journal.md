@@ -2954,3 +2954,34 @@ Cargo.lock names72exact public-registry crates. Reuse authenticated caches and
 vendor offline before native build. Frozen book documents3unstable-profile tests
 incompatible with accepted Rust policy; retain actual classification without
 changing foundational Rust. Host compilation not authorized as target substitute.
+
+### B02 offline cbindgen build-tool profile
+
+Pinned0.29.4 main/test locks require72official-registry crates.20compressed caches
+reused/52downloaded, exact package SHA and every file verified before deterministic
+bundle. No host compiler. Native prepare first failed missing new exact sync
+allowlist entry BEFORE any transfer/source/work creation; absence verified,
+metadata-2 correction0. No uncertain write replay. Native cbindgen-1 PID16483 on
+boote22e024f starts isolated/offline with1GiB budget above100/16GiB reserves
+(host108995473408B/target22282293248B).
+
+Selected original library/depfile tests and actual generated C/C++ header/Rust ABI
+consumer; optional combined Cython matrix and3source-book unstable-profile tests
+are explicitly unrun/unqualified. This narrows unrelated test backends without
+changing library/test assertions or Rust policy; real Mozilla consumer remains due.
+No package installed or GUI criterion complete; actual job/log/card recorded.
+
+### B02 cbindgen C/C++ profile owned
+
+Native offline source2library+3depfile cases0, generated C/C++ header/native Rust
+shared ABI42 and malformed Rust refusal0, original source/expectation bytes
+unchanged. Owned55paths recipe/post0/0 at2026-11-09T08:04:18Z; installed actual
+consumers0. Source/vendor72license inventory retained. No rebuild/upstream replay;
+macro/Cython/unstable-profile matrices unrun/unqualified. New profile/transfer
+allowlist paths require repository checks; accepted foundation/library suites reused.
+
+Next capacity boundary: read-only47image metadata inspection found six cold
+checkpoint candidates not referenced as backings. Qualify reversible byte-exact
+gzip custody/full SHA+metadata/recovery before any retirement; active/backing/master
+artifacts excluded,100/16GiB reserves retained, no trim or completed custody replay.
+No compression or new Mozilla build started yet. Full B02 then owner stop.

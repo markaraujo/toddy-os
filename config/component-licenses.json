@@ -10618,6 +10618,22 @@
           "license.html"
         ]
       }
+    },
+    {
+      "name": "cbindgen",
+      "version": "0.29.4",
+      "license": "MPL-2.0 AND LicenseRef-cbindgen-vendor-per-file",
+      "evidence": "Authenticated primary Cargo.toml MPL-2.0/LICENSE and all72vendor package declarations/legal files retained; exact config/phase2/cbindgen-crates.lock.json. Native2library+3depfile cases and staged/installed generated C/C++ headers/Rust ABI/refusal0. Macro/Cython/desktop profile unqualified.",
+      "extra_license_headers": {
+        "cbindgen-0.29.4.tar.gz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".rs"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

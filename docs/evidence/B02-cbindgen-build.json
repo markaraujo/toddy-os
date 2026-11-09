@@ -1,0 +1,84 @@
+{
+  "scope": "Native offline cbindgen C/C++ build-tool profile only; no macro expansion/Cython/desktop qualification",
+  "version": "0.29.4",
+  "commands": [
+    {
+      "name": "build",
+      "exit": 0,
+      "command": [
+        "cargo",
+        "build",
+        "--release",
+        "--frozen",
+        "--jobs",
+        "4",
+        "--target-dir",
+        "/build/compile"
+      ],
+      "log_sha256": "dc461561ce388d4400edab420381aa4631a4ab4b3b2fc1073e43536bf61e3752"
+    },
+    {
+      "name": "upstream-selected",
+      "exit": 0,
+      "command": [
+        "cargo",
+        "test",
+        "--release",
+        "--frozen",
+        "--jobs",
+        "4",
+        "--target-dir",
+        "/build/compile",
+        "--lib",
+        "--test",
+        "depfile"
+      ],
+      "log_sha256": "5b5b49dabf25ee014768dce2d4d662165dbaf546b17ae4da329727aa40c36663"
+    }
+  ],
+  "upstream_summaries": [
+    [
+      "ok",
+      "2",
+      "0",
+      "0"
+    ],
+    [
+      "ok",
+      "3",
+      "0",
+      "0"
+    ]
+  ],
+  "upstream_selected_exit": 0,
+  "consumer_exit": 0,
+  "consumer": {
+    "scope": "Native C/C++ generated header and Rust shared ABI42 plus malformed Rust refusal; not macro expansion/Cython/desktop acceptance",
+    "outcomes": [
+      {
+        "language": "c",
+        "generate_exit": 0,
+        "compile_exit": 0,
+        "native_abi_exit": 0
+      },
+      {
+        "language": "c++",
+        "generate_exit": 0,
+        "compile_exit": 0,
+        "native_abi_exit": 0
+      }
+    ],
+    "malformed_exit": 1
+  },
+  "binary_sha256": "3e61bce8caf4616013233aaddd0c3caebe4115d9f6ae09beb9dcb73c71fb34be",
+  "original_inputs_unchanged": true,
+  "unqualified": [
+    "Full generated C/C++/Cython matrix not selected for basic C/C++ tool profile.",
+    "Book documents3profile tests relying on disabled Rust unstable features; not run/not passes."
+  ],
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-cbindgen-native-evidence.tar.gz",
+    "members": 19,
+    "sha256": "e593bfc28a5fa6b072598778827417c984037bc6c416569606f0f4ec3a1666d4"
+  }
+}

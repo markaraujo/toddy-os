@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'cbindgen': ('0.29.4', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1)', 'cbindgen-0.29.4.tar.gz', 'usr/bin/cbindgen'),
     'icu': ('78.3', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1)', 'icu4c-78.3-sources.tgz', 'usr/lib/pkgconfig/icu-uc.pc'),
     'libadwaita': ('1.9.3', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), gtk (>= 4.22.4-1+toddy4), pango (= 1.58.2-1+toddy1), fribidi (= 1.0.16-1+toddy1), graphene (= 1.10.8-1+toddy1), appstream (= 1.1.6-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)', 'libadwaita-1.9.3.tar.xz', 'usr/lib/pkgconfig/libadwaita-1.pc'),
     'gi-gl-types': ('1.86.0', 'gobject-introspection (>= 1.86.0-1+toddy1)', 'gobject-introspection-1.86.0.tar.xz', 'usr/share/gir-1.0/GL-1.0.gir'),
@@ -810,6 +811,19 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='cbindgen':
+        work=Path('/mnt/lfs/sources/phase2/work/cbindgen-1');source=Path('/mnt/lfs/sources/phase2/inputs/cbindgen-tool-0.29.4')
+        for prepared,canonical in [('toddy-build.py','cbindgen_build.py'),('toddy-probe.py','cbindgen_probe.py')]:
+            assert (source/prepared).read_bytes()==(ROOT/'scripts/build/phase2'/canonical).read_bytes()
+        config=json.loads((source/'toddy-crates.json').read_text());assert config==json.loads((ROOT/'config/phase2/cbindgen-crates.lock.json').read_text()) and len(config['packages'])==72
+        assert hashlib.sha256((source/'project/Cargo.lock').read_bytes()).hexdigest()==config['cargo_lock_sha256']
+        proof=json.loads((work/'test-results.json').read_text());assert proof['upstream_selected_exit']==proof['consumer_exit']==0 and proof['original_inputs_unchanged'] is True
+        assert proof['upstream_summaries']==[['ok','2','0','0'],['ok','3','0','0']]
+        assert proof['consumer']['malformed_exit']==1
+        assert [r['language'] for r in proof['consumer']['outcomes']]==['c','c++']
+        assert all(r['generate_exit']==r['compile_exit']==r['native_abi_exit']==0 for r in proof['consumer']['outcomes'])
+        assert hashlib.sha256((work/'compile/release/cbindgen').read_bytes()).hexdigest()==proof['binary_sha256']
+        assert (work/'compile/release/cbindgen').read_bytes()==(work/'stage/usr/bin/cbindgen').read_bytes()
     if name=='icu':
         work=Path('/mnt/lfs/sources/phase2/work/icu-1');source=Path('/mnt/lfs/sources/phase2/inputs/icu')
         assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/icu-build.sh').read_bytes()
@@ -1129,6 +1143,7 @@ if __name__ == '__main__':
             'omitted':omitted},indent=2)+'\n')
     archives=[archive]
     if name=='docutils':archives.append('flit_core-3.12.0.tar.gz')
+    if name=='cbindgen':archives.append('cbindgen-0.29.4-vendor.tar.gz')
     if name=='libcanberra':archives.append('libcanberra-0.30-wayland-1.patch')
     if name in ('shared-mime-info','llvm'):
         extra_name='xdgmime-tests' if name=='shared-mime-info' else 'llvm-upstream-fix'

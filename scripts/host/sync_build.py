@@ -116,6 +116,8 @@ def main(metadata_only=False):
         metadata.append('config/phase2/rust-crates.lock.json')
     if (ROOT/'config/phase2/glycin-crates.lock.json').exists():
         metadata.append('config/phase2/glycin-crates.lock.json')
+    if (ROOT/'config/phase2/cbindgen-crates.lock.json').exists():
+        metadata.append('config/phase2/cbindgen-crates.lock.json')
     if (ROOT/'config/phase2/desktop-resources.lock.json').exists():
         metadata.append('config/phase2/desktop-resources.lock.json')
     if (ROOT/'config/h08-bootstrap-config.json').exists():

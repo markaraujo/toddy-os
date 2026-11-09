@@ -1755,6 +1755,21 @@
       "book_md5": "7e790e024bc678ad1b4431b0350679e9",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "cbindgen-vendor",
+      "version": "0.29.4",
+      "filename": "cbindgen-0.29.4-vendor.tar.gz",
+      "sha256": "994f3f3f7bfc44063441ce6d830f6b26986ad1bed2c7414ee34296baf8b9a1ab",
+      "bytes": 14519316,
+      "url": "generated:phase2_cbindgen_vendor/cbindgen-vendor",
+      "reference": "Exact Cargo.lock registry checksums from authenticated primary source; full archive/file verification, no host compiler",
+      "parent_source_sha256": "9b5757e915cf8be523d3aca282b9b5651bafa112e14bf1ba488562ba282807d6",
+      "cargo_lock_sha256": "ae418e51a671338591852c91797d6c4be7577093967d9c0ef94f812b4aed5109",
+      "producer_sha256": "28cc8ecbc13fde82d33f87f5e5f2028846b19cc24a11674d33e44932946cf070",
+      "registry_crates": 72,
+      "integrity": "Each official registry archive SHA256 matched exact source lock; verified every extracted file and independent generated Cargo checksums before deterministic bundle",
+      "status": "source_verified"
     }
   ]
 }
