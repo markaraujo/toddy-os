@@ -8,7 +8,7 @@ from phase2_native_report import decode
 import phase2_vm
 import vm
 ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
-CONTEXT=ROOT/'.local/phase2/native-polkit-suid-runtime-2'
+CONTEXT=ROOT/'.local/phase2/native-polkit-suid-runtime-3'
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def main():
     assert len(sys.argv)==1
@@ -34,8 +34,13 @@ for p,row in json.loads(manifest.read_text())['files'].items():
 assert (Path('/var/log/toddy/phase2/polkit-full-1.exit').read_text().strip())=='0'
 print(json.dumps({'fixture_manifest_sha256':r['manifest_sha256'],'fixture_files':r['artifact_files'],'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'target_serial':'TODDY-LFS-TARGET','native_kernel_expected':'7.1.8-toddy'}))
 """
-    accepted=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
-    accepted_record=json.loads(accepted.stdout)
+    prior=json.loads((ROOT/'.local/phase2/native-polkit-suid-runtime-2/result.json').read_text())
+    actual=json.loads(subprocess.check_output(['docker','inspect','--format','{{json .State}}',prior['container_id']],text=True))
+    assert not actual['Running'] and actual['ExitCode']==0 and not actual['OOMKilled']
+    assert prior['backing_unchanged_after_failure']
+    assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==prior['source_identity']
+    assert subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()==''
+    accepted_record=prior['accepted']
     CONTEXT.mkdir()
     state={'scope':'Disposable native Phase2 Polkit real privilege/PAM/Stop/recovery probe only; no B02/G2 completion or physical/graphical acceptance',
            'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
@@ -48,11 +53,7 @@ print(json.dumps({'fixture_manifest_sha256':r['manifest_sha256'],'fixture_files'
         part.write_text(json.dumps(state,indent=2)+'\n');part.replace(CONTEXT/'result.json')
         print(json.dumps({'phase':state['phase'],'context':str(CONTEXT)}),flush=True)
     save()
-    with (CONTEXT/'builder-stop.log').open('x') as log:
-        state['phase']='stopping-builder';save()
-        run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
-    assert subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()==''
-    state['phase']='builder-stopped';save()
+    state['phase']='builder-already-stopped-parent-verified';save()
     source=WORK/'lfs-target.qcow2';assert source.is_file() and not source.is_symlink()
     identity=phase2_vm.backing_identity(source);state['source_identity']=identity
     image=subprocess.check_output(['docker','image','inspect','--format','{{.Id}}',vm.IMAGE],text=True).strip()

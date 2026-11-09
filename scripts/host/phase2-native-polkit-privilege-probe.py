@@ -31,7 +31,8 @@ def main():
         p=Path('/')/name;assert digest(p)==digest(stage/name);os.chown(p,0,0);p.chmod(0o4755)
         helpers.append({'path':'/'+name,'sha256':digest(p),'uid':0,'gid':0,'mode':'4755'})
     subprocess.run(['ldconfig'],check=True)
-    subprocess.run(['useradd','-r','-U','-M','-s','/usr/bin/nologin','polkitd'],check=True,capture_output=True)
+    subprocess.run(['groupadd','-g','27','polkitd'],check=True,capture_output=True)
+    subprocess.run(['useradd','-r','-u','27','-g','27','-M','-d','/etc/polkit-1','-s','/bin/false','polkitd'],check=True,capture_output=True)
     daemon=pwd.getpwnam('polkitd');assert daemon.pw_uid!=0
     directory=Path('/etc/polkit-1/rules.d');os.chown(directory,0,daemon.pw_gid);directory.chmod(0o750)
     name='toddy-polkit-probe';uid=12345
@@ -62,12 +63,15 @@ def main():
     decision('explicit-deny','org.toddy.test.deny',1)
     decision('challenge-without-agent-refused','org.toddy.test.challenge',2)
     marker=Path('/tmp/toddy-polkit-cancel-effect');assert not marker.exists()
+    proofroot=Path('/run/toddy-polkit-proof');assert not proofroot.exists();proofroot.mkdir(mode=0o700)
     def authenticate(label,secret,expect_success=False,cancel=False):
+        artifact=proofroot/label;assert not artifact.exists()
+        rootcode='import os,json;assert os.getuid()==os.geteuid()==os.getgid()==0;fd=os.open('+repr(str(artifact))+',os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600);os.write(fd,json.dumps({"uid":os.getuid(),"euid":os.geteuid(),"gid":os.getgid()}).encode());os.close(fd)'
         child,fd=pty.fork()
         if child==0:
             os.setgroups([]);os.setgid(uid);os.setuid(uid)
             os.environ.clear();os.environ.update(PATH='/usr/bin:/usr/sbin',LC_ALL='C.UTF-8',HOME='/tmp',TERM='dumb')
-            command=['pkexec','/usr/bin/touch',str(marker)] if cancel else ['pkexec','/usr/bin/id','-u']
+            command=['pkexec','/usr/bin/touch',str(marker)] if cancel else ['pkexec','/usr/bin/python3','-c',rootcode]
             os.execv('/usr/bin/pkexec',command)
         os.set_blocking(fd,False);tail=b'';transcript=b'';prompts=0;status=None;deadline=time.monotonic()+35
         try:
@@ -102,8 +106,11 @@ def main():
                 diagnostic['journal_error_classes']=[v for v in vocabulary if v in journal.stdout]
             print('TODDY_B02_POLKIT_CASE',json.dumps(diagnostic),flush=True)
             assert prompts>0,'No real PAM prompt observed: '+label
-            if expect_success:assert status==0 and re.search(rb'(?m)^0\r?$',transcript),'Expected root execution: '+label
-            else:assert status!=0,'Unexpected privileged execution: '+label
+            if expect_success:
+                assert status==0 and artifact.is_file(),'Expected root proof artifact: '+label
+                st=artifact.stat();assert (st.st_uid,st.st_gid,st.st_mode&0o7777)==(0,0,0o600)
+                assert json.loads(artifact.read_text())=={'uid':0,'euid':0,'gid':0}
+            else:assert status!=0 and not artifact.exists(),'Unexpected privileged execution: '+label
             if cancel:assert not marker.exists(),'Cancelled operation produced a target effect'
             # Never retain raw tty traffic or secrets (even on failures).
             remaining=[]
@@ -116,7 +123,7 @@ def main():
                 if not remaining:break
                 time.sleep(0.05)
             assert not remaining,'Authentication helper still running after client completion'
-            runs.append({'name':label,'exit':status,'expected_authenticated':expect_success,'pam_prompts':prompts,'raw_tty_retained':False,'active_helper_executables_after_completion':0,'cancelled_operation_no_effect':not marker.exists() if cancel else None})
+            runs.append({'name':label,'exit':status,'expected_authenticated':expect_success,'pam_prompts':prompts,'raw_tty_retained':False,'root_identity_proof':{'uid':0,'euid':0,'gid':0,'artifact_mode':'0600','parent_mode':'0700'} if expect_success else None,'active_helper_executables_after_completion':0,'cancelled_operation_no_effect':not marker.exists() if cancel else None})
         finally:os.close(fd)
     authenticate('correct-password-root-execution',password,True)
     fake_cookie=secrets.token_urlsafe(24)
@@ -143,6 +150,7 @@ def main():
     subprocess.run(['systemctl','restart','polkit.service'],check=True,timeout=30)
     decision('revoked-policy-replay-refused','org.toddy.test.allow',1)
     subprocess.run(['systemctl','stop','polkit.service','polkit-agent-helper.socket'],check=True,timeout=20)
+    shutil.rmtree(proofroot)
     password=None;subprocess.run(['userdel',name],capture_output=True,check=True)
     assert not any(row.startswith(name+':') for row in Path('/etc/passwd').read_text().splitlines())
     verify()
