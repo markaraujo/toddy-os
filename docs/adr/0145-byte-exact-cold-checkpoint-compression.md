@@ -54,3 +54,9 @@ unchanged. Bounded read-only container correction verified already-retired sourc
 postconditions and resumed remaining files without recompressing the first.
 No guest filesystem, active/backing/master image, ISO, physical disk or accepted
 foundation payload was modified. This is archive proof, not historical boot proof.
+
+A second, separately identified operation subsequently compressed only the new
+h07-early-base-builder backup for the Mozilla working margin. The same raw-byte,
+metadata, graph/exclusivity and structural guards passed; observed gain4835282944B,
+host118046519296Bavailable. It did not replay any previous source. Explicit profile
+choices remain fixed to audited candidates, never arbitrary active image paths.

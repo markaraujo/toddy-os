@@ -18,6 +18,7 @@ from copy_selected_root import snapshot,tree_names
 SOURCE=Path('/mnt/lfs/sources/phase2/work/rustc-1')
 CONTEXT=Path('/var/lib/toddy/phase2-custody/rust-primary-work-1')
 RECEIPT=Path('/var/log/toddy/phase2/rust-primary-work-custody.json')
+TAR_ENV={'PATH':'/usr/bin:/bin','LC_ALL':'C.UTF-8','HOME':'/root'}
 
 
 def sha(path):
@@ -44,7 +45,7 @@ def main():
     assert SOURCE.resolve()==SOURCE and SOURCE.is_dir() and not SOURCE.is_symlink() and not (SOURCE/'.toddy-retired.json').exists()
     mounts=[Path(p) for p in subprocess.check_output(['findmnt','-rn','-o','TARGET'],text=True).splitlines()]
     assert not any(p==SOURCE or p.is_relative_to(SOURCE) for p in mounts)
-    version=subprocess.check_output(['tar','--version'],text=True).splitlines()[0];assert version=='tar (GNU tar) 1.35'
+    version=subprocess.check_output(['/usr/bin/tar','--version'],env=TAR_ENV,text=True).splitlines()[0];assert version=='tar (GNU tar) 1.35'
     assert subprocess.check_output(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Status} ${Version}','rustc'],text=True)=='install ok installed 1.97.1-1+toddy1'
     assert subprocess.check_output(['chroot','/mnt/lfs','rustc','--version'],text=True).startswith('rustc 1.97.1 ')
     assert shutil.disk_usage('/mnt/lfs').free>=16*1024**3
@@ -61,9 +62,9 @@ def main():
                 st=(SOURCE/n).stat();unique[(st.st_dev,st.st_ino)]=st.st_size
         logical=sum(unique.values());assert logical<8*1024**3 and shutil.disk_usage('/').free>=logical+5*1024**3
         archive=CONTEXT/'work.tar.gz';state.update(state='archiving',entries=len(expected['entries']),hardlink_groups=len(expected['hardlink_groups']),unique_regular_bytes=logical,archive=str(archive));save(RECEIPT,state)
-        command=['tar','--create','--file=-','--format=pax','--acls','--xattrs','--xattrs-include=*','--numeric-owner','--sparse','--directory='+str(SOURCE),'.']
+        command=['/usr/bin/tar','--create','--file=-','--format=pax','--acls','--xattrs','--xattrs-include=*','--numeric-owner','--sparse','--directory='+str(SOURCE),'.']
         with (CONTEXT/'create.log').open('xb') as errors:
-            process=subprocess.Popen(command,stdout=subprocess.PIPE,stderr=errors)
+            process=subprocess.Popen(command,env=TAR_ENV,stdout=subprocess.PIPE,stderr=errors)
             try:
                 with archive.open('xb') as raw:
                     os.fchmod(raw.fileno(),0o600)
@@ -84,7 +85,7 @@ def main():
         state.update(state='extracting',archive_sha256=sha(archive),archive_bytes=archive.stat().st_size);save(RECEIPT,state)
         restored=CONTEXT/'restored';restored.mkdir(mode=0o700)
         with (CONTEXT/'extract.log').open('xb') as log:
-            r=subprocess.run(['tar','--extract','--gzip','--file='+str(archive),'--directory='+str(restored),'--acls','--xattrs','--xattrs-include=*','--numeric-owner','--same-owner','--same-permissions','--delay-directory-restore'],stdout=log,stderr=subprocess.STDOUT)
+            r=subprocess.run(['/usr/bin/tar','--extract','--gzip','--file='+str(archive),'--directory='+str(restored),'--acls','--xattrs','--xattrs-include=*','--numeric-owner','--same-owner','--same-permissions','--delay-directory-restore'],env=TAR_ENV,stdout=log,stderr=subprocess.STDOUT)
         state['archive_extract_exit']=r.returncode;assert r.returncode==0
         actual=snapshot(restored,tree_names(restored));save(CONTEXT/'restored-manifest.json',actual)
         assert actual==expected,'Actual recovery bytes/metadata/hardlinks differ; preserve original'

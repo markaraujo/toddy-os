@@ -1,0 +1,37 @@
+{
+  "scope": "Reversible gzip representation of explicit cold backup images only; no active/backing/master/live artifact or guest file deletion, no trim",
+  "profile": "mozilla-margin",
+  "state": "complete",
+  "host_available_before": 113211236352,
+  "host_available_after": 118046519296,
+  "reclaimed_bytes": 4835282944,
+  "recovery": "Verify archive SHA; restore gzip stream to a NEW .part at exact source path, verify raw SHA/size, restore recorded mode/uid/gid/xattrs/atime/mtime and fsync; rename only when original absent, then qemu-img check. Preserve archives. Never give compressed file to QEMU or overwrite an existing image.",
+  "image": {
+    "source": ".local/vm/checkpoints/h07-early-base-builder.qcow2",
+    "archive": ".local/vm/checkpoints/h07-early-base-builder.qcow2.gz",
+    "identity": {
+      "device": 66306,
+      "inode": 11832130,
+      "bytes": 5932449792,
+      "mtime_ns": 1793933943170759085,
+      "ctime_ns": 1793933943170759085,
+      "mode": 33188,
+      "uid": 1000,
+      "gid": 1000,
+      "nlink": 1
+    },
+    "xattrs": {},
+    "qemu_check_exit": 0,
+    "source_sha256": "b4ea58203396953f19bad40480c422d5c82d6789624de71a6995e99df501bf70",
+    "roundtrip": {
+      "restored_bytes": 5932449792,
+      "restored_sha256": "b4ea58203396953f19bad40480c422d5c82d6789624de71a6995e99df501bf70"
+    },
+    "archive_sha256": "3a114145c6f55e48c97f39c0861c5e121ba357ddd3ab1a310e7bd0d25fc4dc07",
+    "archive_bytes": 1061060540,
+    "state": "retired"
+  },
+  "runtime_receipt": ".local/phase2/cold-checkpoint-compression-2/result.json",
+  "receipt_sha256": "605627c84c98aba633ec86607157f7c634a180c33ab891774cb0827e7d2dc908",
+  "no_previous_custody_replay": true
+}

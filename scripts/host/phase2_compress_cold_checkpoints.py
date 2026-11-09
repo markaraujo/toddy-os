@@ -62,12 +62,17 @@ def save(value):
 
 
 def main():
+    global CONTEXT
     assert os.geteuid()!=0 and ROOT.resolve()==ROOT
     cold=ROOT/'.local/vm/checkpoints';assert cold.resolve()==cold and not cold.is_symlink()
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--resume-check-context',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--resume-check-context',action='store_true');parser.add_argument('--profile',choices=['foundation-six','mozilla-margin'],default='foundation-six');args=parser.parse_args()
+    assert not args.resume_check_context or args.profile=='foundation-six'
+    selected=SELECTED if args.profile=='foundation-six' else ['h07-early-base-builder.qcow2']
+    goal=(112 if args.profile=='foundation-six' else 108)*1024**3
+    CONTEXT=ROOT/'.local/phase2'/('cold-checkpoint-compression-1' if args.profile=='foundation-six' else 'cold-checkpoint-compression-2')
     assert shutil.disk_usage(ROOT).free>=RESERVE+256*1024**2
     lock=open(ROOT/'.local/phase2/cold-checkpoint-compression.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-    references,metadata=referenced_backings();assert all(n not in references for n in SELECTED)
+    references,metadata=referenced_backings();assert all(n not in references for n in selected)
     if args.resume_check_context:
         state=json.loads((CONTEXT/'result.json').read_text());assert state['state']=='failed-preserved'
         assert len(state['images'])==1 and state['images'][0]['state']=='retired'
@@ -85,11 +90,11 @@ def main():
     else:
         assert not CONTEXT.exists(),'Inspect actual sources/archives/receipt before continuation; never replay custody'
         CONTEXT.mkdir();(CONTEXT/'image-graph-before.json').write_text(json.dumps(metadata,indent=2)+'\n')
-        state={'scope':'Reversible gzip representation of six explicit cold backup images only; no active/backing/master/live artifact or guest file deletion, no trim','producer_sha256':sha(Path(__file__)),'pid':os.getpid(),'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'proc_start_ticks':Path('/proc/self/stat').read_text().split()[21],'host_available_before':shutil.disk_usage(ROOT).free,'state':'running','images':[]};save(state)
+        state={'scope':'Reversible gzip representation of explicit cold backup images only; no active/backing/master/live artifact or guest file deletion, no trim','profile':args.profile,'target_free_bytes':goal,'producer_sha256':sha(Path(__file__)),'pid':os.getpid(),'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'proc_start_ticks':Path('/proc/self/stat').read_text().split()[21],'host_available_before':shutil.disk_usage(ROOT).free,'state':'running','images':[]};save(state)
     try:
-        for name in SELECTED:
+        for name in selected:
             if any(r['source']==str((cold/name).relative_to(ROOT)) and r['state']=='retired' for r in state['images']):continue
-            if shutil.disk_usage(ROOT).free>=112*1024**3:break
+            if shutil.disk_usage(ROOT).free>=goal:break
             p=cold/name;archive=p.with_suffix(p.suffix+'.gz');part=archive.with_suffix(archive.suffix+'.part')
             assert p.resolve()==p and p.parent==cold and p.is_file() and not p.is_symlink() and not archive.exists() and not part.exists()
             st=p.stat();assert stat.S_ISREG(st.st_mode) and st.st_nlink==1 and st.st_uid==os.getuid()
