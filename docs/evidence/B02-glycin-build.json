@@ -49,5 +49,12 @@
   "changed_candidate": "Only canonical DDS spelling in existing decoder match arm and loader config; original source/binary retained, no version upgrade/core rebuild",
   "fixture_recovery": "Original color driver and all golden images/assertions unchanged. Private test image root copied as real directory, every source file hash equal; original symlinked-root external-image SVG failure remains visible.",
   "installed_default_path_native_image_test": "Pending next native desktop boot; not established by stage-path tests",
-  "promotion": "Root owned-package transaction pending"
+  "promotion": "Owned glycin2.1.5-1+toddy1 install/post0/0; archiveb23e696853191f9123354b6144645a515ef24079fb86db8155e2b60d33ef9372. Installed default-path native image gate still pending.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-glycin-native-evidence.tar.gz",
+    "sha256": "81f61748d0fd6f89c6d83a33ae6ce373dc71fc55cf7104f29dd0c3b787e363fa",
+    "members": 32,
+    "expanded_bytes": 479726,
+    "bytes": 236499
+  }
 }

@@ -3014,7 +3014,7 @@
       "name": "mako",
       "version": "1.4.1",
       "license": "MIT",
-      "evidence": "Authenticated BLFS13.1 Mako1.4.1 MIT/AUTHORS retained in owned package; isolated wheel/six real native functional/codegen checks and owned install/post0/0. Readability-only public doc0600→0644 correction preserves all bytes. No full pytest suite claim. Build-only Mesa prerequisite, not automatic offline/base/live payload.",
+      "evidence": "Authenticated BLFS13.1 Mako1.4.1 MIT/AUTHORS retained in owned package; isolated wheel/six real native functional/codegen checks and owned install/post0/0. Readability-only public doc0600\u21920644 correction preserves all bytes. No full pytest suite claim. Build-only Mesa prerequisite, not automatic offline/base/live payload.",
       "source_notice_evidence": [
         {
           "filename": "mako-1.4.1.tar.gz",
@@ -10311,6 +10311,40 @@
       "version": "0.4.0",
       "license": "MIT AND GPL-2.0-or-later",
       "evidence": "Upstream MIT parser source plus compiled PnP-name table from frozen hwdata0.410 (GPL option selected from its dual license). Retain both exact source archives/notices/full GPL text. All registered native EDID fixtures and QEMU/PnP/refusal consumer0; owned install/post0/0;68registered drivers and installed QEMU/PnP/refusal0. No physical monitor/driver claim."
+    },
+    {
+      "name": "glycin",
+      "version": "2.1.5",
+      "license": "(MPL-2.0 OR LGPL-2.1-or-later) AND LicenseRef-glycin-vendored-per-file AND (MIT OR Apache-2.0)",
+      "evidence": "Authenticated primary LICENSE/workspace declaration and307-crate lock/vendor license graph. Selected core/image-rs/SVG; omitted HEIF/AVIF/JXL/raw products not advertised. Exact named notices and LICENSES collections retained for primary/vendor/static Rust runtime; per-file source terms also apply. ADR0143 canonical DDS spelling patch/helper retained. Actual native24Rust cases/forced-bwrap GI pixels/refusal qualified; owned install/post0/0 and installed payload/C+GI/dependency identity0; installed-default-path native image operation pending desktop boot gate. Original failures/exclusions remain visible.",
+      "native_notice_inventory": {
+        "path": "/usr/share/doc/glycin/source-notices/index.json",
+        "sha256": "a9e44663aad6dddc3eddcf63b7067c66c258683a51583f7e59d357f151ddd29a",
+        "source_archives": [
+          {
+            "filename": "glycin-2.1.5.tar.xz",
+            "source_sha256": "6c09757ee906330a60b6705753aa56bca007ad219b95e6e3537510d41bc341c8",
+            "notices": 4
+          },
+          {
+            "filename": "glycin-2.1.5-vendor.tar.gz",
+            "source_sha256": "deb6c120a053b5d9e1403033386b87b604e2ddf0a5265dde199703334ba79984",
+            "notices": 567
+          },
+          {
+            "filename": "rustc-1.97.1-src.tar.xz",
+            "source_sha256": "0ed06fdaffd4722a7702e0b4eebfafc897ab8f513e8e1b247cdd7e5c6df6ded2",
+            "notices": 3850
+          }
+        ],
+        "records": 4421
+      }
+    },
+    {
+      "name": "mtdev",
+      "version": "1.1.7",
+      "license": "MIT",
+      "evidence": "Authenticated upstream COPYING with Henrik Rydberg/Canonical notices retained in owned native package. Selected virtual capability/event-frame/refusal and independent matching oracle; physical devices/GNOME acceptance pending."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

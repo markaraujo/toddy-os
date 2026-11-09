@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'mtdev': ('1.1.7', 'glibc (>= 2.44-1)',
+               'mtdev-1.1.7.tar.bz2', 'usr/lib/pkgconfig/mtdev.pc'),
     'libdisplay-info': ('0.4.0', 'glibc (>= 2.44-1), hwdata (>= 0.410-1+toddy1)',
                         'libdisplay-info-0.4.0.tar.xz', 'usr/lib/pkgconfig/libdisplay-info.pc'),
     'bubblewrap': ('0.11.2', 'glibc (>= 2.44-1), libcap (>= 2.78-1)',
@@ -751,6 +753,13 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='mtdev':
+        work=Path('/mnt/lfs/sources/phase2/work/mtdev-1');source=Path('/mnt/lfs/sources/phase2/inputs/mtdev-1.1.7')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/mtdev-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/mtdev-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text())
+        assert proof['staged_consumer_exit']==proof['upstream_diagnostic_exit']==0 and proof['matching_cases']==2
+        assert len(proof['matching_oracle'])==2 and all(r['matching_cost']==r['independent_exhaustive_optimum'] for r in proof['matching_oracle'])
     assert name==sys.argv[1], 'Package identity changed during qualification'
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
     if name=='libxml2-python':source=Path('/mnt/lfs/sources/phase2/work/libxml2-1/python-binding-1/stage')

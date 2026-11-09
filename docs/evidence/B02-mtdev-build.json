@@ -1,0 +1,46 @@
+{
+  "scope": "Native matching examples with independent exhaustive oracle and actual C capability/frame/invalid-FD APIs; not physical multitouch acceptance",
+  "upstream_diagnostic_exit": 0,
+  "matching_oracle": [
+    {
+      "name": "test1",
+      "rows": 4,
+      "matching_cost": 1642991,
+      "independent_exhaustive_optimum": 1642991
+    },
+    {
+      "name": "test2",
+      "rows": 5,
+      "matching_cost": 719933,
+      "independent_exhaustive_optimum": 719933
+    }
+  ],
+  "matching_cases": 2,
+  "staged_consumer_exit": 0,
+  "upstream_benchmark": "Original diagnostic also prints timing, not a performance gate or an assertion suite",
+  "physical_device_programs": "mtdev-test/mtdev-kernel not executed; no physical device exposed",
+  "job_exit": 0,
+  "consumer_stdout": "mtdev native capabilities, event frame, cleanup and invalid-FD refusal\n",
+  "retained_logs": {
+    "stage.log": {
+      "sha256": "e114b17fd26e5566ad1373be7ceebf431f87d109ebce42dac117dc36461ea9e5",
+      "bytes": 1946
+    },
+    "consumer.log": {
+      "sha256": "17c81180a5d75b4a2f04f0c3193db5fb6f0a97aebaa97de403619ed569f2ff7c",
+      "bytes": 71
+    },
+    "compile.log": {
+      "sha256": "08e62cd9dd5979ed1521bb8c2f085664ff7603824ef5b5a8b421226818a38097",
+      "bytes": 757
+    },
+    "upstream-matching.log": {
+      "sha256": "33e69abfb7c85d434b27d66f743c1fd720b9fea6e5e390786d7ddc1529eee50d",
+      "bytes": 322
+    },
+    "configure.log": {
+      "sha256": "e9e238fd2c274652161b4fce8dbc76adf89fa605b823c8bcbb471ab1e092b5b9",
+      "bytes": 4289
+    }
+  }
+}

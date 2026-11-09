@@ -1,0 +1,38 @@
+{
+  "scope": "Owned installed Glycin selected native-tested profile and C/GI type/dependency closure, installed default-path native image test pending",
+  "package_version": "2.1.5-1+toddy1",
+  "archive_sha256": "b23e696853191f9123354b6144645a515ef24079fb86db8155e2b60d33ef9372",
+  "payload_entries": 834,
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T00:47:20.684262+00:00",
+  "installed_consumer": {
+    "scope": "Owned installed Glycin dependency closure/C+GI types and exact payload identity with actual native-tested stage; no Ubuntu namespace retry",
+    "installed_payload_files_verified": 11,
+    "native_consumer_exit": 0,
+    "gi_type_exit": 0,
+    "native_selected_upstream_cases": 24,
+    "installed_default_path_sandbox_image_test": "Pending subsequent native desktop boot gate",
+    "original_failures_preserved": true
+  },
+  "notice_index_sha256": "a9e44663aad6dddc3eddcf63b7067c66c258683a51583f7e59d357f151ddd29a",
+  "notice_sources": [
+    {
+      "filename": "glycin-2.1.5.tar.xz",
+      "source_sha256": "6c09757ee906330a60b6705753aa56bca007ad219b95e6e3537510d41bc341c8",
+      "notices": 4
+    },
+    {
+      "filename": "glycin-2.1.5-vendor.tar.gz",
+      "source_sha256": "deb6c120a053b5d9e1403033386b87b604e2ddf0a5265dde199703334ba79984",
+      "notices": 567
+    },
+    {
+      "filename": "rustc-1.97.1-src.tar.xz",
+      "source_sha256": "0ed06fdaffd4722a7702e0b4eebfafc897ab8f513e8e1b247cdd7e5c6df6ded2",
+      "notices": 3850
+    }
+  ],
+  "notice_records": 4421,
+  "free_target_bytes": 17366900736
+}

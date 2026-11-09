@@ -2610,3 +2610,12 @@ boot20687a68-08f4-4841-896e-2adbafb288d9 and all4same-volume restores verified.
 Owned promotion verifies exact native-tested source/stage/hash chain, retains
 primary/vendor/Rust legal texts and exact patch; installed-default-path native
 image check remains next native desktop gate. No GNOME/B02 completion yet.
+
+Glycin owned native install/post0/0,834payload entries, archiveb23e696853191f9123354b6144645a515ef24079fb86db8155e2b60d33ef9372;
+4421exact named legal notices retained across primary/vendor/static Rust archives.
+Raw32-member evidence bundle SHA81f61748d0fd6f89c6d83a33ae6ce373dc71fc55cf7104f29dd0c3b787e363fa
+preserved. No installed-path native sandbox or graphical session claim. Pinned
+next five compositor-input sources from exact existing frozen book pages; source
+integrity does not advertise installed support. Started one isolated mtdev-1
+PID2628; next checks are actual C capability/frame/refusal and2original matching
+examples with independent exhaustive optimum, not physical devices/benchmarks.
