@@ -1,0 +1,12 @@
+{
+  "scope": "Native Canberra core properties/lifecycle/disabled-event refusal and staged modules; no actual audible output",
+  "registered_upstream_suites": 0,
+  "upstream_note": "Package has no automated suite per frozen BLFS; interactive example is not a pass",
+  "staged_consumer_exit": 0,
+  "profile": "Shared core with ALSA/Pulse/null modules; GTK2/GTK3 bindings omitted: selected GNOME50 consumers use core libcanberra, not legacy X11-only binding source. Frozen Wayland patch retained/applied, C GNU17 compatibility profile; no GTK4 extension invented",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libcanberra-native-evidence.tar.gz",
+    "members": 22,
+    "sha256": "a638565b265cd0fde7456b3e1c46dd2f229d42cd0547e209a76b7036f4cee110"
+  }
+}

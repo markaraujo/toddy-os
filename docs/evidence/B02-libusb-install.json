@@ -1,0 +1,19 @@
+{
+  "step": "b02-libusb-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T05:08:02.875294+00:00",
+  "package": {
+    "name": "libusb",
+    "version": "1.0.30-1+toddy1",
+    "archive_sha256": "304fc91d82f46cf3c7a14cf61d78c2394783d57b01acb306952a81af2ac80478"
+  },
+  "payload_entries": 19,
+  "consumer": {
+    "scope": "Native installed libusb version/no-discovery lifecycle/empty-list/invalid-option refusal; no physical USB access",
+    "name": "libusb",
+    "version": "1.0.30",
+    "native_consumer_exit": 0,
+    "stdout": "native libusb no-discovery lifecycle/version/empty-list and invalid-option refusal; no physical USB access"
+  }
+}

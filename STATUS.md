@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T04:55:03.935420+00:00
+Last verified: 2026-11-09T05:16:07.003098+00:00
 
 Verified:
 
@@ -54,8 +54,14 @@ Verified:
 - Owned JSON-GLib1.10.8 install/post0/0,17original unit/conformance drivers/570TAPcases0/skips0 and C/GI/parser-refusal0; no UI/network/service acceptance.
 - Owned Ogg1.3.6 recipe/post0/0, original bitpack/framing2PASS and packet/page/CRC-refusal C0; no audible output acceptance.
 - Owned Vorbis1.3.7:528original codec roundtrips/C0,149stagefiles unchanged after documented callback macro correction; install0/post1 direct-link omission reconciled verify-only0/0 changed_paths0, no reinstall/audio claim.
+- Owned libsndfile1.2.2 original old-Automake audio-file/header tests and exact WAV C0; summary-only recovery/no replay; unsupported external codecs explicitly not passes.
+- Owned PulseAudio17 client-only libraries/tools0/0,12original drivers0; private staged indirect-library lookup recovery preserves105stagefiles. No Pulse daemon/autospawn/device audio claim.
+- Owned Canberra0.30 ALSA/Pulse/null modules0/0; native null callback/cancel/state/refusal0, no original suite or audible output. Exact LGPL/header notices retained after bounded preinstall legal-stage recovery.
+- Owned libusb1.0.30 options/init drivers/C no-discovery/refusal0/0; stress and umockdev omitted, no physical USB acceptance.
+- Pulse17.0/Canberra0.30 legal metadata upgraded to toddy2 with complete LGPL/GPL;105Pulse/25Canberra nonlegal files unchanged, native C/refusal0/0; no compile/upstream replay.
+- Owned GUsb0.4.9 original API map/2ID+JSON fixture cases/C/GI0/0,21stagefiles unchanged by final probe. Upstream optional polling getter bug explicitly unqualified; no physical USB claim.
 
-Running: Single unprivileged libsndfile1.2.2 source job libsndfile-1 PID57847; next PulseAudio17 client-only libraries for Pipewire, then Canberra. Native GNOME/login/apps/network/audio/offline pending; complete ALL B02 then pause.
+Running: Single unprivileged Colord1.4.8 client/ICC-data source job colord-1 PID91959; original private data/API/refusal checks before Mutter dependency. No native GNOME/login/apps/network/audio/offline acceptance; complete ALL B02 then pause.
 
 Remaining:
 

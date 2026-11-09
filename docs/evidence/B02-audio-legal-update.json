@@ -1,0 +1,34 @@
+{
+  "scope": "Exact full Pulse LGPL/GPL texts and legal metadata; no runtime/build/test/library change. Canberra exact dependency follows same-source Pulse metadata version.",
+  "state": "complete",
+  "packages": [
+    {
+      "name": "pulseaudio",
+      "version": "17.0-1+toddy2",
+      "archive_sha256": "7998e5b026f8dd6463a5c6503e7a5af2bff40e3ceb8fa777eca15a50be907434",
+      "installed": true,
+      "old_archive_sha256": "6d5f4fe16511efbf483194c56633939153f68db49f29b42e2e168d873321ae71",
+      "old_nonlegal_regular_files_unchanged": 105
+    },
+    {
+      "name": "libcanberra",
+      "version": "0.30-1+toddy2",
+      "archive_sha256": "90c4c0d62f1beaa8db88b573d98ab0802c67b80534351dcc034539e87a75a354",
+      "installed": true,
+      "old_archive_sha256": "901877b03b32d465e0bde5dbc882ba9c05c3e5d0c5b1db478ec3eeaea2be6d1f",
+      "old_nonlegal_regular_files_unchanged": 25
+    }
+  ],
+  "rollback": "Inspect receipt/dpkg and full payload first. Retained prior Canberra then Pulse archives allow restoring the paired old exact dependency versions; never replay an uncertain transaction.",
+  "run": {
+    "step": "b02-audio-legal-update",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T05:13:20.415347+00:00"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-audio-legal-update-evidence.tar.gz",
+    "members": 10,
+    "sha256": "6e6ad6886efca49ad83396443c056b8300de7e9d8e7e448d5d09993a34cec400"
+  }
+}

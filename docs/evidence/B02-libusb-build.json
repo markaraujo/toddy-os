@@ -1,0 +1,20 @@
+{
+  "scope": "Native original libusb initialization/options drivers and no-device-discovery C lifecycle; no real USB hardware access",
+  "upstream_drivers": [
+    {
+      "name": "set_option",
+      "result": "PASS"
+    },
+    {
+      "name": "init_context",
+      "result": "PASS"
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "omitted": "Unneeded 10000-iteration stress/stress_mt and unavailable umockdev hardware simulation are not passes; test logs preserve any original internal SKIP",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libusb-native-evidence.tar.gz",
+    "members": 22,
+    "sha256": "c9e86cdb9b877d11458d70d8e137e7c4d8c320a9a99e0ddeb0de1274d1b95b38"
+  }
+}

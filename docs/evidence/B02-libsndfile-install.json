@@ -1,0 +1,19 @@
+{
+  "step": "b02-libsndfile-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T04:57:39.147257+00:00",
+  "package": {
+    "name": "libsndfile",
+    "version": "1.2.2-1+toddy1",
+    "archive_sha256": "08f996cdc8c87eacb67ab836ae0df34e9acd152d014b5cf1cfe07fbc6b60d695"
+  },
+  "payload_entries": 59,
+  "consumer": {
+    "scope": "Native installed exact PCM WAV write/reopen/samples/absent-file refusal; no audible output acceptance",
+    "name": "libsndfile",
+    "version": "1.2.2",
+    "native_consumer_exit": 0,
+    "stdout": "native PCM WAV write/reopen/exact samples and absent-file refusal; no device output"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "scope": "Native GUsb exported API map, original USB ID lookup and JSON event replay fixtures plus own context/refusal APIs; no physical USB access",
+  "exported_api_exit": 0,
+  "original_portable_cases": 2,
+  "staged_consumer_exit": 0,
+  "omitted": "Physical devices/context enumeration requiring devices and unavailable umockdev tests not selected; JSON replay is a fixture, not hardware acceptance",
+  "consumer_recovery": "Upstream0.4.9 polling interval getter returns source ID, not interval. Do not qualify that broken optional API; unchanged source retained. Own test now checks main-context reference roundtrip; original API/ID/JSON checks not replayed.",
+  "stage_files_unchanged": 21,
+  "limitations": "Optional polling interval getter bug retained; selected Linux hotplug/Colord/Mutter consumers do not use it. Physical USB access not accepted.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libgusb-native-evidence.tar.gz",
+    "members": 39,
+    "sha256": "5cb1c5619d63690d6a59c92f641f731efc4ff2cc977c69e6c0d3cb6655e8f504"
+  }
+}

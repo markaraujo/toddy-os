@@ -10474,6 +10474,76 @@
       "version": "1.2.2",
       "license": "LGPL-2.1-or-later",
       "evidence": "Primary COPYING and per-file source notices retained; optional external codecs disabled"
+    },
+    {
+      "name": "pulseaudio",
+      "version": "17.0",
+      "license": "LicenseRef-pulseaudio-per-file",
+      "evidence": "Exact primary LICENSE/COPYING and per-file notices retained; client-only build, component license details follow upstream LICENSE rather than assuming one license",
+      "extra_license_files": {
+        "pulseaudio-17.0.tar.xz": [
+          "LGPL",
+          "GPL"
+        ]
+      }
+    },
+    {
+      "name": "libcanberra",
+      "version": "0.30",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Primary LGPL and exact source/Wayland patch notices retained; core/audio modules selected, legacy GTK bindings omitted",
+      "extra_license_files": {
+        "libcanberra-0.30.tar.xz": [
+          "LGPL"
+        ]
+      },
+      "extra_license_headers": {
+        "libcanberra-0.30.tar.xz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
+    },
+    {
+      "name": "libcanberra-wayland-patch",
+      "version": "0.30-wayland-1",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Frozen BLFS upstream-origin compatibility patch of LGPL-2.1-or-later source files; patch/header retained with libcanberra notices"
+    },
+    {
+      "name": "libusb",
+      "version": "1.0.30",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Primary COPYING and per-file notices retained; userspace API does not grant raw USB permissions"
+    },
+    {
+      "name": "libgusb",
+      "version": "0.4.9",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Primary COPYING and SPDX source notices retained; original JSON event replay tests are fixtures, no USB permission policy change"
+    },
+    {
+      "name": "colord",
+      "version": "1.4.8",
+      "license": "LicenseRef-colord-per-file",
+      "evidence": "Primary COPYING and per-file client/library/data notices retained; supported daemon=false bootstrap, no system color service advertised",
+      "extra_license_headers": {
+        "colord-1.4.8.tar.xz": {
+          "prefixes": [
+            "lib/",
+            "client/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

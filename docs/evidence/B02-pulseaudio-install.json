@@ -1,0 +1,28 @@
+{
+  "step": "b02-pulseaudio-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T05:01:03.164049+00:00",
+  "package": {
+    "name": "pulseaudio",
+    "version": "17.0-1+toddy1",
+    "archive_sha256": "6d5f4fe16511efbf483194c56633939153f68db49f29b42e2e168d873321ae71"
+  },
+  "payload_entries": 250,
+  "consumer": {
+    "scope": "Native installed Pulse client sample/channel/volume/Unicode/mainloops/refusal, no daemon/autospawn/device output",
+    "name": "pulseaudio",
+    "version": "17.0",
+    "native_consumer_exit": 0,
+    "stdout": "native Pulse client sample/channel/volume/Unicode/mainloops and absent-server refusal, autospawn disabled; no audible output"
+  },
+  "subsequent_legal_metadata_update": {
+    "evidence": "docs/evidence/B02-audio-legal-update.json",
+    "name": "pulseaudio",
+    "version": "17.0-1+toddy2",
+    "archive_sha256": "7998e5b026f8dd6463a5c6503e7a5af2bff40e3ceb8fa777eca15a50be907434",
+    "installed": true,
+    "old_archive_sha256": "6d5f4fe16511efbf483194c56633939153f68db49f29b42e2e168d873321ae71",
+    "old_nonlegal_regular_files_unchanged": 105
+  }
+}

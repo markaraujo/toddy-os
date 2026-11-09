@@ -13,17 +13,17 @@ NAME=sys.argv[1]
 assert len(sys.argv) in (2,3)
 receipt_suffix='-'+sys.argv[2] if len(sys.argv)==3 else ''
 assert not receipt_suffix or re.fullmatch(r'-[a-z][a-z0-9-]{0,31}',receipt_suffix)
-assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa','libepoxy','gdk-pixbuf','tiff','iso-codes','gtk','doxygen','itstool','libxmlb','libfyaml','appstream','libadwaita','libsass','sassc','at-spi2-core','lcms2','libseccomp','bubblewrap','hwdata','libdisplay-info','mtdev','libevdev','libxcvt','libei','libinput','alsa-lib','pipewire','lua','wireplumber','libnotify','libgudev','libwacom','gtk3','gnome-desktop','json-glib','libogg','libvorbis','libsndfile')
+assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa','libepoxy','gdk-pixbuf','tiff','iso-codes','gtk','doxygen','itstool','libxmlb','libfyaml','appstream','libadwaita','libsass','sassc','at-spi2-core','lcms2','libseccomp','bubblewrap','hwdata','libdisplay-info','mtdev','libevdev','libxcvt','libei','libinput','alsa-lib','pipewire','lua','wireplumber','libnotify','libgudev','libwacom','gtk3','gnome-desktop','json-glib','libogg','libvorbis','libsndfile','pulseaudio','libcanberra','libusb','libgusb','colord')
 if __name__=='__main__':
     row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==NAME)
     archive=ROOT/'.local/sources'/row['filename'];data=archive.read_bytes()
     assert hashlib.sha256(data).hexdigest()==row['sha256']
-    probes={'libsndfile':'libsndfile-probe.c','libvorbis':'libvorbis-probe.c','libogg':'libogg-probe.c','json-glib':'json-glib-probe.c','gnome-desktop':'gnome-desktop-probe.c','gtk3':'gtk3-probe.c','libwacom':'libwacom-probe.c','libgudev':'libgudev-probe.c','libnotify':'libnotify-probe.c','wireplumber':'wireplumber-probe.c','lua':'lua-probe.c','pipewire':'pipewire-probe.c','alsa-lib':'alsa-lib-probe.c','libinput':'libinput-probe.c','libei':'libei-probe.c','libxcvt':'libxcvt-probe.c','libevdev':'libevdev-probe.c','mtdev':'mtdev-probe.c','libdisplay-info':'libdisplay-info-probe.c','bubblewrap':'bubblewrap-probe.py','libseccomp':'libseccomp-probe.c','lcms2':'lcms2-probe.c','at-spi2-core':'at-spi2-core-probe.c','sassc':'sassc-probe.py','libsass':'libsass-probe.c','libadwaita':'libadwaita-probe.c','appstream':'appstream-probe.c','libfyaml':'libfyaml-probe.c','libxmlb':'libxmlb-probe.c','itstool':'itstool-probe.py','doxygen':'doxygen-probe.py','iso-codes':'iso-codes-probe.py','gtk':'gtk-probe.c','tiff':'tiff-probe.c','gdk-pixbuf':'gdk-pixbuf-probe.c','libepoxy':'libepoxy-probe.c','mesa':'mesa-probe.c','pyyaml':'pyyaml-probe.py','libpciaccess':'libpciaccess-probe.c','libdrm':'libdrm-probe.c','freetype':'freetype-probe.c','psutil':'psutil-probe.py','mako':'mako-probe.py'}
+    probes={'colord':'colord-probe.c','libgusb':'libgusb-probe.c','libusb':'libusb-probe.c','libcanberra':'libcanberra-probe.c','pulseaudio':'pulseaudio-probe.c','libsndfile':'libsndfile-probe.c','libvorbis':'libvorbis-probe.c','libogg':'libogg-probe.c','json-glib':'json-glib-probe.c','gnome-desktop':'gnome-desktop-probe.c','gtk3':'gtk3-probe.c','libwacom':'libwacom-probe.c','libgudev':'libgudev-probe.c','libnotify':'libnotify-probe.c','wireplumber':'wireplumber-probe.c','lua':'lua-probe.c','pipewire':'pipewire-probe.c','alsa-lib':'alsa-lib-probe.c','libinput':'libinput-probe.c','libei':'libei-probe.c','libxcvt':'libxcvt-probe.c','libevdev':'libevdev-probe.c','mtdev':'mtdev-probe.c','libdisplay-info':'libdisplay-info-probe.c','bubblewrap':'bubblewrap-probe.py','libseccomp':'libseccomp-probe.c','lcms2':'lcms2-probe.c','at-spi2-core':'at-spi2-core-probe.c','sassc':'sassc-probe.py','libsass':'libsass-probe.c','libadwaita':'libadwaita-probe.c','appstream':'appstream-probe.c','libfyaml':'libfyaml-probe.c','libxmlb':'libxmlb-probe.c','itstool':'itstool-probe.py','doxygen':'doxygen-probe.py','iso-codes':'iso-codes-probe.py','gtk':'gtk-probe.c','tiff':'tiff-probe.c','gdk-pixbuf':'gdk-pixbuf-probe.c','libepoxy':'libepoxy-probe.c','mesa':'mesa-probe.c','pyyaml':'pyyaml-probe.py','libpciaccess':'libpciaccess-probe.c','libdrm':'libdrm-probe.c','freetype':'freetype-probe.c','psutil':'psutil-probe.py','mako':'mako-probe.py'}
     probe_filename='toddy-probe.py' if probes.get(NAME,'').endswith('.py') else 'toddy-probe.c'
     probe=(ROOT/'scripts/build/phase2'/probes[NAME]).read_text() if NAME in probes else None
     private_bus=(ROOT/'scripts/build/phase2/atspi_private_bus.py').read_text() if NAME=='at-spi2-core' else None
     extra=None;extras=[]
-    extra_names=['lua-shared-library-patch','lua-test-suite'] if NAME=='lua' else ['munit-test-dependency' if NAME=='libei' else 'check' if NAME=='libfyaml' else 'xdgmime-tests' if NAME=='shared-mime-info' else 'llvm-upstream-fix'] if NAME in ('shared-mime-info','llvm','libfyaml','libei') else []
+    extra_names=['libcanberra-wayland-patch'] if NAME=='libcanberra' else ['lua-shared-library-patch','lua-test-suite'] if NAME=='lua' else ['munit-test-dependency' if NAME=='libei' else 'check' if NAME=='libfyaml' else 'xdgmime-tests' if NAME=='shared-mime-info' else 'llvm-upstream-fix'] if NAME in ('shared-mime-info','llvm','libfyaml','libei') else []
     for extra_name in extra_names:
         extra=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==extra_name)
         extras.append(extra)
@@ -70,6 +70,18 @@ else:
 assert os.statvfs(base).f_bavail*os.statvfs(base).f_frsize>=16*1024**3
 subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',row['filename']],cwd=base/'phase2/inputs',check=True)
 patches=[]
+if row['name']=='libgusb':
+    path=source/'contrib/generate-version-script.py';before=path.read_bytes()
+    assert b'from pkg_resources import parse_version' in before
+    after=before.replace(b'from pkg_resources import parse_version',b'from packaging.version import parse').replace(b'parse_version',b'parse')
+    path.write_bytes(after)
+    patches.append({'path':str(path.relative_to(source)),'before_sha256':hashlib.sha256(before).hexdigest(),'after_sha256':hashlib.sha256(after).hexdigest(),'reason':'Frozen BLFS13.1 libgusb test generator uses maintained packaging.version instead of removed pkg_resources; exported API assertions unchanged'})
+if row['name']=='libcanberra':
+    assert extra['name']=='libcanberra-wayland-patch'
+    names=['src/canberra-gtk.c','src/canberra-gtk-module.c']
+    before={p:hashlib.sha256((source/p).read_bytes()).hexdigest() for p in names}
+    subprocess.run(['patch','--batch','--forward','--fuzz=0','-Np1','-i',str(base/extra['filename'])],cwd=source,check=True)
+    patches.extend({'path':p,'before_sha256':before[p],'after_sha256':hashlib.sha256((source/p).read_bytes()).hexdigest(),'patch_sha256':extra['sha256']} for p in names)
 if row['name']=='libsndfile':
     import re
     for name in ['alac_encoder.c','alac_decoder.c']:
@@ -149,7 +161,7 @@ if row['name']=='freetype':
             assert text.count(old)==1;text=text.replace(old,'#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING')
         path.write_text(text)
         patches.append({'path':relative,'before_sha256':hashlib.sha256(before).hexdigest(),'after_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'reference':'BLFS13.1 general/freetype2.html'})
-if row['name'] in ('libevdev','libinput'):
+if row['name'] in ('libevdev','libinput','pulseaudio'):
     import shutil,xml.etree.ElementTree as ET
     sys.path.insert(0,'/opt/toddy-build/scripts/build/phase2')
     from verify_stage import inspect_stage
@@ -176,7 +188,7 @@ receipt={'source_sha256':row['sha256'],'reference':row['reference'],
          'recipe_sha256':hashlib.sha256(recipe.encode()).hexdigest()}
 if extra is not None:receipt['extra_source']=extra
 if extras:receipt['extra_sources']=extras
-if row['name'] in ('libevdev','libinput'):receipt['private_test_sdk']=private_sdk
+if row['name'] in ('libevdev','libinput','pulseaudio'):receipt['private_test_sdk']=private_sdk
 if probe is not None:
     (source/probe_filename).write_text(probe)
     receipt['probe_sha256']=hashlib.sha256(probe.encode()).hexdigest()

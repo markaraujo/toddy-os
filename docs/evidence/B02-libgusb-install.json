@@ -1,0 +1,19 @@
+{
+  "step": "b02-libgusb-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T05:14:23.058315+00:00",
+  "package": {
+    "name": "libgusb",
+    "version": "0.4.9-1+toddy1",
+    "archive_sha256": "f1d97130f540d50c67b2c13bf0641afa745bfe95083e0200a55b7ea37fb097b6"
+  },
+  "payload_entries": 40,
+  "consumer": {
+    "scope": "Native installed GUsb context/version/main-context roundtrip/unknown-device refusal; no physical USB access",
+    "name": "libgusb",
+    "version": "0.4.9",
+    "native_consumer_exit": 0,
+    "stdout": "native GUsb context/version/configuration and unknown-device refusal; no USB device operation"
+  }
+}

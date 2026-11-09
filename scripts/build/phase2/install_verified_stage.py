@@ -19,6 +19,11 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libgusb': ('0.4.9', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), libusb (= 1.0.30-1+toddy1), hwdata (= 0.410-1+toddy1)', 'libgusb-0.4.9.tar.xz', 'usr/lib/pkgconfig/gusb.pc'),
+    'libusb': ('1.0.30', 'glibc (>= 2.44-1), systemd (>= 261.2-1)', 'libusb-1.0.30.tar.bz2', 'usr/lib/pkgconfig/libusb-1.0.pc'),
+    'libcanberra': ('0.30', 'glibc (>= 2.44-1), libvorbis (= 1.3.7-1+toddy1), alsa-lib (= 1.2.16.1-1+toddy1), pulseaudio (= 17.0-1+toddy1), libtool (>= 2.5.4-1)', 'libcanberra-0.30.tar.xz', 'usr/lib/pkgconfig/libcanberra.pc'),
+    'pulseaudio': ('17.0', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), dbus (>= 1.16.2-1), systemd (>= 261.2-1), libsndfile (= 1.2.2-1+toddy1)', 'pulseaudio-17.0.tar.xz', 'usr/lib/pkgconfig/libpulse.pc'),
+    'libsndfile': ('1.2.2', 'glibc (>= 2.44-1), alsa-lib (= 1.2.16.1-1+toddy1)', 'libsndfile-1.2.2.tar.xz', 'usr/lib/pkgconfig/sndfile.pc'),
     'libvorbis': ('1.3.7', 'glibc (>= 2.44-1), libogg (= 1.3.6-1+toddy1)', 'libvorbis-1.3.7.tar.xz', 'usr/lib/pkgconfig/vorbis.pc'),
     'libogg': ('1.3.6', 'glibc (>= 2.44-1)', 'libogg-1.3.6.tar.xz', 'usr/lib/pkgconfig/ogg.pc'),
     'json-glib': ('1.10.8', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1)',
@@ -173,6 +178,9 @@ if __name__ == '__main__':
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
     if name=='at-spi2-core' and (log/'atspi-finish-4.job.json').exists():qualifier='atspi-finish-4'
     if name=='bubblewrap':qualifier='bubblewrap-stage-6'
+    if name=='libgusb':qualifier='libgusb-probe-3'
+    if name=='pulseaudio':qualifier='pulseaudio-probe-2'
+    if name=='libsndfile':qualifier='libsndfile-qualify-2'
     if name=='libvorbis':qualifier='libvorbis-probe-2'
     if name=='libei':qualifier='libei-dtd-2'
     if name=='libinput':qualifier='libinput-probe-2'
@@ -788,6 +796,52 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='libgusb':
+        work=Path('/mnt/lfs/sources/phase2/work/libgusb-1');source=Path('/mnt/lfs/sources/phase2/inputs/libgusb-0.4.9')
+        recipe=(ROOT/'scripts/build/phase2/libgusb-build.sh').read_text();probe=(ROOT/'scripts/build/phase2/libgusb-probe.c').read_text()
+        assert (source/'toddy-build.sh').read_text()==recipe.replace('ninja -C /build/compile gusb/libgusb.ver > /build/api-map.log 2>&1\n','')
+        original_probe=probe.replace('GMainContext *main_context=g_main_context_new();g_usb_context_set_main_context(context,main_context);assert(g_usb_context_get_main_context(context)==main_context);g_main_context_unref(main_context);','g_usb_context_set_hotplug_poll_interval(context,5000);assert(g_usb_context_get_hotplug_poll_interval(context)==5000);')
+        assert (source/'toddy-probe.c').read_text()==original_probe
+        finish=(ROOT/'scripts/build/phase2/gusb_finish.py').read_text()+'\nmain('+repr(recipe)+')\n'
+        assert json.loads((log/'libgusb-finish-2.job.json').read_text())['command'][-3:]==['python3','-c',finish]
+        code=(ROOT/'scripts/build/phase2/gusb_probe_qualify.py').read_text()+'\nmain('+repr(probe)+','+repr(recipe)+')\n'
+        assert json.loads((log/'libgusb-probe-3.job.json').read_text())['command'][-3:]==['python3','-c',code]
+        assert (work/'probe-3/consumer.exit').read_text().strip()=='0'
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==proof['exported_api_exit']==0 and proof['original_portable_cases']==2
+        rows=[json.loads(s) for s in (work/'compile/meson-logs/testlog.json').read_text().splitlines() if s.strip()]
+        assert len(rows)==1 and rows[0]['result']=='OK' and rows[0]['returncode']==0
+    if name=='libusb':
+        work=Path('/mnt/lfs/sources/phase2/work/libusb-1');source=Path('/mnt/lfs/sources/phase2/inputs/libusb-1.0.30')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libusb-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libusb-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==0
+        for name2 in ['set_option','init_context']:
+            assert ':test-result: PASS' in (work/('compile/tests/'+name2+'.trs')).read_text()
+    if name=='libcanberra':
+        work=Path('/mnt/lfs/sources/phase2/work/libcanberra-1');source=Path('/mnt/lfs/sources/phase2/inputs/libcanberra-0.30')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libcanberra-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libcanberra-probe.c').read_bytes()
+        prepared=json.loads((source/'toddy-prepared.json').read_text());assert prepared['extra_source']['name']=='libcanberra-wayland-patch' and len(prepared['source_patches'])==2
+        proof=json.loads((work/'test-results.json').read_text());assert proof['registered_upstream_suites']==0 and proof['staged_consumer_exit']==0
+    if name=='pulseaudio':
+        work=Path('/mnt/lfs/sources/phase2/work/pulseaudio-1');source=Path('/mnt/lfs/sources/phase2/inputs/pulseaudio-17.0')
+        recipe=(ROOT/'scripts/build/phase2/pulseaudio-build.sh').read_text()
+        assert (source/'toddy-build.sh').read_text()==recipe.replace('LD_LIBRARY_PATH=/stage/usr/lib:/stage/usr/lib/pulseaudio /build/consumer >','/build/consumer >')
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/pulseaudio-probe.c').read_bytes()
+        code=(ROOT/'scripts/build/phase2/pulse_probe_qualify.py').read_text()+'\nmain('+repr(recipe)+')\n'
+        assert json.loads((log/'pulseaudio-probe-2.job.json').read_text())['command'][-3:]==['python3','-c',code]
+        assert (work/'consumer-2.exit').read_text().strip()=='0'
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==0 and len(proof['upstream_drivers'])==12
+        rows=[json.loads(s) for s in (work/'compile/meson-logs/testlog.json').read_text().splitlines() if s.strip()]
+        assert len(rows)==12 and all(r['result']=='OK' and r['returncode']==0 for r in rows)
+    if name=='libsndfile':
+        work=Path('/mnt/lfs/sources/phase2/work/libsndfile-1');source=Path('/mnt/lfs/sources/phase2/inputs/libsndfile-1.2.2')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libsndfile-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libsndfile-probe.c').read_bytes()
+        code=(ROOT/'scripts/build/phase2/sndfile_qualify.py').read_text()+'\nmain()\n'
+        assert json.loads((log/'libsndfile-qualify-2.job.json').read_text())['command'][-3:]==['python3','-c',code]
+        proof=json.loads((work/'test-results.json').read_text());assert proof['upstream_make_check_exit']==proof['staged_consumer_exit']==0
+        assert hashlib.sha256((work/'upstream-tests.log').read_bytes()).hexdigest()==proof['log_sha256']
     if name=='libvorbis':
         work=Path('/mnt/lfs/sources/phase2/work/libvorbis-1');source=Path('/mnt/lfs/sources/phase2/inputs/libvorbis-1.3.7')
         recipe=(ROOT/'scripts/build/phase2/libvorbis-build.sh').read_text();probe=(ROOT/'scripts/build/phase2/libvorbis-probe.c').read_text()
@@ -975,21 +1029,21 @@ if __name__ == '__main__':
     before = inspect_stage(source)
     assert required in before['entries'], 'Missing declared payload'
     destination = Path('/mnt/lfs/sources/stage') / ('phase2-'+name)
-    if name=='lua' and destination.exists():
+    if name in ('lua','libcanberra') and destination.exists():
         # The first transaction stopped while collecting embedded legal notices,
         # before archive creation/dpkg. Resume that proven staging state only.
-        prior=json.loads((log.parent/'build/b02-lua-install.failed.json').read_text())
+        prior=json.loads((log.parent/('build/b02-'+name+'-install.failed.json')).read_text())
         assert prior['recipe_exit']==1 and prior['postcheck_exit'] is None
-        assert 'No upstream notice found; review before packaging' in (log.parent/'build/b02-lua-install.log').read_text()
-        assert not Path('/var/cache/toddy/packages/lua_5.4.8-1+toddy1_amd64.deb').exists()
-        assert not Path('/var/log/toddy/packages/lua_5.4.8-1+toddy1_amd64.json').exists()
-        state=subprocess.run(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Status}','lua'],capture_output=True,text=True)
+        assert 'No upstream notice found; review before packaging' in (log.parent/('build/b02-'+name+'-install.log')).read_text()
+        assert not (Path('/var/cache/toddy/packages')/(name+'_'+version+'-1+toddy1_amd64.deb')).exists()
+        assert not (Path('/var/log/toddy/packages')/(name+'_'+version+'-1+toddy1_amd64.json')).exists()
+        state=subprocess.run(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Status}',name],capture_output=True,text=True)
         assert state.returncode in (0,1) and state.stdout.strip()!='install ok installed'
         current=inspect_stage(destination)['entries']
         assert all(current[k]==v for k,v in before['entries'].items())
-        allowed={'usr/share/doc','usr/share/doc/lua','usr/share/doc/lua/source-notices','usr/share/doc/lua/source-notices/index.json'}
+        allowed={'usr/share/doc','usr/share/doc/'+name,'usr/share/doc/'+name+'/source-notices','usr/share/doc/'+name+'/source-notices/index.json'}
         assert set(current)-set(before['entries'])<=allowed
-        notice=json.loads((destination/'usr/share/doc/lua/source-notices/index.json').read_text())
+        notice=json.loads((destination/('usr/share/doc/'+name+'/source-notices/index.json')).read_text())
         assert all(not r['notices'] for r in notice['sources'])
     else:
         assert not destination.exists(), 'Reconcile existing stage; no replay'
@@ -1013,6 +1067,7 @@ if __name__ == '__main__':
             'scope':'Omit only optional Python show-stylus CLI/man whose libevdev/pyudev bindings are unavailable. Original source/test stage retained; native C library/tools/database/udev inputs unchanged.',
             'omitted':omitted},indent=2)+'\n')
     archives=[archive]
+    if name=='libcanberra':archives.append('libcanberra-0.30-wayland-1.patch')
     if name in ('shared-mime-info','llvm'):
         extra_name='xdgmime-tests' if name=='shared-mime-info' else 'llvm-upstream-fix'
         row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==extra_name)

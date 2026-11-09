@@ -1,0 +1,25 @@
+{
+  "scope": "Native original libsndfile make-check and PCM WAV/refusal APIs; no audible/device acceptance",
+  "upstream_make_check_exit": 0,
+  "automake_registered_header_tests": 1,
+  "original_internal_audio_format_driver": "Completed original test_wrapper.sh, with unsupported external formats explicitly omitted; generic passed banners for absent codecs are not passes",
+  "unsupported_codec_messages": [
+    "No FLAC tests because FLAC support was not compiled in.",
+    "No FLAC tests because support was not compiled in.",
+    "No MP3 tests because MPEG support was not compiled in.",
+    "No MPEG tests because mpg123/lame support was not compiled in.",
+    "No MPEG tests because support was not compiled in.",
+    "No Ogg Vorbis tests because support was not compiled in.",
+    "No Ogg/Opus tests because Ogg/Opus support was not compiled in.",
+    "No Ogg/Vorbis tests because Ogg/Vorbis support was not compiled in.",
+    "No Opus tests because support was not compiled in."
+  ],
+  "staged_consumer_exit": 0,
+  "summary_recovery": "Original old Automake emits no .trs files; verify existing completed output and consumer, no build/stage/test/consumer replay",
+  "log_sha256": "47a7080bf106bed78e2695bb8986e0352382be164b90ab070fd8b1665d6f4074",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libsndfile-native-evidence.tar.gz",
+    "members": 20,
+    "sha256": "bd524209cb3de1311cf356b686936ed2539d7b51ef0e1cf20a10cde8b8aacc65"
+  }
+}

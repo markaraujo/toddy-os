@@ -1,0 +1,30 @@
+{
+  "step": "b02-libcanberra-legal-stage-2",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T05:06:07.339670+00:00",
+  "package": {
+    "name": "libcanberra",
+    "version": "0.30-1+toddy1",
+    "archive_sha256": "901877b03b32d465e0bde5dbc882ba9c05c3e5d0c5b1db478ec3eeaea2be6d1f"
+  },
+  "payload_entries": 42,
+  "original_preinstall_legal_failure": true,
+  "first_legal_resume_guard_failure": "Path/string expression before state change",
+  "consumer": {
+    "scope": "Native installed Canberra null-module callback/cancel/state/refusal; no audible device or session acceptance",
+    "name": "libcanberra",
+    "version": "0.30",
+    "native_consumer_exit": 0,
+    "stdout": "native Canberra installed null-module callback/cancel/state/refusal; no audible output"
+  },
+  "subsequent_legal_metadata_update": {
+    "evidence": "docs/evidence/B02-audio-legal-update.json",
+    "name": "libcanberra",
+    "version": "0.30-1+toddy2",
+    "archive_sha256": "90c4c0d62f1beaa8db88b573d98ab0802c67b80534351dcc034539e87a75a354",
+    "installed": true,
+    "old_archive_sha256": "901877b03b32d465e0bde5dbc882ba9c05c3e5d0c5b1db478ec3eeaea2be6d1f",
+    "old_nonlegal_regular_files_unchanged": 25
+  }
+}

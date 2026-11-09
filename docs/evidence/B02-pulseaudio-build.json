@@ -1,0 +1,63 @@
+{
+  "scope": "Native original Pulse client tests and sample/channel/volume/mainloop/refusal APIs; no server or audible-device acceptance",
+  "upstream_drivers": [
+    {
+      "name": "pulseaudio:hashmap-test",
+      "exit": 0
+    },
+    {
+      "name": "pulseaudio:proplist-test",
+      "exit": 0
+    },
+    {
+      "name": "pulseaudio:utf8-test",
+      "exit": 0
+    },
+    {
+      "name": "pulseaudio:channelmap-test",
+      "exit": 0
+    },
+    {
+      "name": "pulseaudio:get-binary-name-test",
+      "exit": 0
+    },
+    {
+      "name": "pulseaudio:json-test",
+      "exit": 0
+    },
+    {
+      "name": "pulseaudio:mainloop-test-glib",
+      "exit": 0
+    },
+    {
+      "name": "pulseaudio:srbchannel-test",
+      "exit": 0
+    },
+    {
+      "name": "pulseaudio:core-util-test",
+      "exit": 0
+    },
+    {
+      "name": "pulseaudio:volume-test",
+      "exit": 0
+    },
+    {
+      "name": "pulseaudio:mainloop-test",
+      "exit": 0
+    },
+    {
+      "name": "pulseaudio:thread-mainloop-test",
+      "exit": 0
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "profile": "Client libraries/tools only, GLib/DBus/systemd, no PulseAudio daemon/system user/units; Pipewire provides the future session server",
+  "private_check_sdk": "Reused qualified Check0.15.2, not installed",
+  "consumer_recovery": "Explicit private staged libpulsecommon lookup; installed canonical /usr/lib/pulseaudio RUNPATH remains unchanged. No compile/upstream/stage replay.",
+  "stage_files_unchanged": 105,
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-pulseaudio-native-evidence.tar.gz",
+    "members": 28,
+    "sha256": "df8b8966ed733af5b935d693233b98d9f14412a6ca7efb8795214d1376d5734b"
+  }
+}

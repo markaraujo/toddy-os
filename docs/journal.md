@@ -2763,3 +2763,34 @@ not a second sound daemon. Required libsndfile1.2.2 source authenticated and
 GCC15+ ALAC bool keyword correction applied before build as documented by
 the frozen book. PCM/internal codec/ALSA profile; optional external codecs
 omitted. Single libsndfile-1 source job, actual audio/session still pending.
+
+### B02 owned client audio/USB boundary — 2026-11-09
+
+Owned libsndfile1.2.2, client-only PulseAudio17, Canberra0.30 and libusb1.0.30
+all recipe/post0/0, raw evidence retained in B02 evidence links. Pulse original
+12drivers0; no second audio daemon. Existing original sndfile output qualified
+without replay; optional codec banners are not passes. Canberra LGPL basename
+required exact explicit notice policy; first Path-expression recovery failed
+before state change, final bounded correction0. Installed null callback/cancel/
+state/refusal0, no audible sound/device claim. USB options/init/C0, no long
+stress/hardware matrix. GUsb0.4.9 selected original ID/JSON fixture tests next.
+Published226bed8 workflows planning/safety/Pages all0; public index/CSS/translation
+bytes equal exact committed export (HTTP200). Native GNOME still pending; owner
+requires completion of ALL B02 before pause, no later story progression.
+
+### B02 complete audio legal notices and GUsb data scope — 2026-11-09
+
+Pulse source names full license texts LGPL/GPL, which the default named-notice
+collector omitted. Explicit exact-file policy and controlled owned metadata-only
+upgrade to toddy2 fixes this; Canberra exact Pulse dependency follows.105Pulse/
+25Canberra nonlegal files unchanged, full payload/archive verified and native
+postchecks0/0; no compiler/upstream replay. Retained paired previous archives/
+records and exact transaction receipt for recovery. GUsb0.4.9 original API map/
+ID lookup/JSON replay cases0. Explicit missing test prerequisite generation and
+private version-parser correction preserved binaries; own C then found frozen
+upstream poll getter returns source ID, not documented interval. Getter remains
+unqualified/limitation, selected Linux consumers do not use it. Probe-only main
+context/refusal0 preserves21stagefiles; owned C/GI0/0. No physical hardware claim.
+Selected Colord supported daemon=false library bootstrap supplies Mutter client
+API without claiming privileged color service/policy/sensor integration; that
+integration remains unqualified. Single colord-1 job; continue all B02 then stop.

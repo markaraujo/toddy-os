@@ -1661,6 +1661,42 @@
       "book_md5": "04e2e6f726da7c5dc87f8cf72f250d04",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "colord",
+      "version": "1.4.8",
+      "filename": "colord-1.4.8.tar.xz",
+      "url": "https://www.freedesktop.org/software/colord/releases/colord-1.4.8.tar.xz",
+      "sha256": "21500bd68975312a7f0f3ce6019d9f75f42aacaa75ca7115ec720b5445406896",
+      "reference": "BLFS13.1-systemd general/colord.html",
+      "book_page_sha256": "115267f9c2dc85275eec965a7385a755a30c95edeb8faf48d3ddcaeb7d0fba53",
+      "book_md5": "4d17dea7fe5460c2ea16aee64dca2ecb",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libgusb",
+      "version": "0.4.9",
+      "filename": "libgusb-0.4.9.tar.xz",
+      "url": "https://github.com/hughsie/libgusb/releases/download/0.4.9/libgusb-0.4.9.tar.xz",
+      "sha256": "9df5ef301d6a4b361002aa52cce1165a87a89744055879bdbab31e7e86f1e846",
+      "reference": "BLFS13.1-systemd general/libgusb.html",
+      "book_page_sha256": "27cf508010e72e499eb9ecbf074042ec0a4595a36d223bc08c789a6007e772cc",
+      "book_md5": "354a3227334991ea4e924843c144bd82",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libusb",
+      "version": "1.0.30",
+      "filename": "libusb-1.0.30.tar.bz2",
+      "url": "https://github.com/libusb/libusb/releases/download/v1.0.30/libusb-1.0.30.tar.bz2",
+      "sha256": "fea36f34f9156400209595e300840767ab1a385ede1dc7ee893015aea9c6dbaf",
+      "reference": "BLFS13.1-systemd general/libusb.html",
+      "book_page_sha256": "1800622f6a22a38610596f32bee902ca1918893ac3017a63fa05686a139141e7",
+      "book_md5": "b0b0bacc2c6919515db8e863f0517db8",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }
