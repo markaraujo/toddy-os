@@ -1,6 +1,6 @@
 # ADR-0145 — Reversible byte-exact cold checkpoint compression
 
-Status: accepted capacity procedure; actual compression not yet performed.
+Status: accepted and executed; six images verified, capacity recovered.
 
 ## Concrete need
 
@@ -42,3 +42,15 @@ Ensure enough real capacity above reserves first; sparse restoration may preserv
 zero runs. Keep the gzip archive. Never pass gzip to QEMU, overwrite an existing
 image, or silently rewrite historical checkpoint manifests. Raw content hashes
 remain unchanged; historical restore tools require this explicit restoration step.
+
+## Observed result
+
+[Actual evidence](../evidence/B02-cold-checkpoint-compression.json) records six
+full image SHA/byte-count gzip roundtrips, preserved metadata, structural checks0,
+no backing consumers and exclusive source locks. Host availability increased from
+108674478080 to123148398592bytes (14473920512bytes observed gain), above112GiB.
+Second-file check first used a host context unable to resolve /vm; that file was
+unchanged. Bounded read-only container correction verified already-retired source
+postconditions and resumed remaining files without recompressing the first.
+No guest filesystem, active/backing/master image, ISO, physical disk or accepted
+foundation payload was modified. This is archive proof, not historical boot proof.

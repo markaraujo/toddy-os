@@ -1,0 +1,47 @@
+{
+  "scope": "Inactive primary Rust work cache only, full archive+real restored bytes/metadata/hardlinks proof before retirement; installed SDK/inputs/tests/evidence retained, no compiler rebuild/trim/OS recovery claim",
+  "state": "complete",
+  "pid": 19246,
+  "boot_id": "e22e024f-7c15-4bc4-be30-301f55ae5b93",
+  "proc_start_ticks": "455165",
+  "producer_sha256": "aebe753bfa5bf6aecfd05473f4f46b25520698046f9cc1df06c18e69054fc4d4",
+  "source": "/mnt/lfs/sources/phase2/work/rustc-1",
+  "source_inode": 1105057,
+  "source_uid": 101,
+  "source_gid": 101,
+  "source_mode": 16877,
+  "before_target_free": 22059409408,
+  "before_builder_free": 23338049536,
+  "tar": {
+    "version": "tar (GNU tar) 1.35",
+    "sha256": "3ee2c3c0b4dd9aacebfd2f0fbae44bad36348203acff78a44888dd58c05f811c"
+  },
+  "entries": 39151,
+  "hardlink_groups": 846,
+  "unique_regular_bytes": 7135716019,
+  "archive": "/var/lib/toddy/phase2-custody/rust-primary-work-1/work.tar.gz",
+  "archive_create_exit": 0,
+  "archive_sha256": "5bb91d6efd46aecb5bc1849656c1cb1809adedaef06c38c15a4dd4fe37175914",
+  "archive_bytes": 2226053865,
+  "archive_extract_exit": 0,
+  "source_unchanged": true,
+  "restored_exact": true,
+  "manifest_sha256": "e4dbc80f17886e849b83c1e212fd237e9bc27ec95c8323a31d271c61f6250138",
+  "installed_root_changed_paths": 0,
+  "after_target_free": 29301858304,
+  "after_builder_free": 21057200128,
+  "reclaimed_target_bytes": 7242448896,
+  "recovery": "Verify archive/source-manifest SHA. Restore to a NEW private directory using recorded GNU tar PAX ACL/xattr/owner/permission flags; compare full snapshot and hardlink groups with source-manifest. To restore original work, first reconcile sole .toddy-retired marker/receipt, never overwrite an existing/unknown work tree. Keep archive/manifests/logs; use installed SDK without rebuilding.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-rust-primary-work-custody-evidence.tar.gz",
+    "members": 8,
+    "sha256": "c41c726f117957adfce0a0a764fc940e53739538832a84af5189e4f174d35205"
+  },
+  "installed_rust_after_retirement": "rustc 1.97.1 (8bab26f4f 2026-07-14) (Toddy OS native build; BLFS 13.1)",
+  "controller_environment": {
+    "tar_path": "/usr/bin/tar",
+    "TAR_OPTIONS_present": false,
+    "GZIP_present": false,
+    "observation": "Actual controller environment read while archiving; values not exposed"
+  }
+}

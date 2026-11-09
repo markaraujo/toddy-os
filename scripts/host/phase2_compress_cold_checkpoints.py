@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Byte-exact reversible custody of explicit cold, unreferenced backup images."""
+import argparse
 import base64
 import fcntl
 import gzip
@@ -63,20 +64,37 @@ def save(value):
 def main():
     assert os.geteuid()!=0 and ROOT.resolve()==ROOT
     cold=ROOT/'.local/vm/checkpoints';assert cold.resolve()==cold and not cold.is_symlink()
-    assert not CONTEXT.exists(),'Inspect actual sources/archives/receipt before any continuation; never replay custody'
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--resume-check-context',action='store_true');args=parser.parse_args()
     assert shutil.disk_usage(ROOT).free>=RESERVE+256*1024**2
     lock=open(ROOT/'.local/phase2/cold-checkpoint-compression.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     references,metadata=referenced_backings();assert all(n not in references for n in SELECTED)
-    CONTEXT.mkdir();(CONTEXT/'image-graph-before.json').write_text(json.dumps(metadata,indent=2)+'\n')
-    state={'scope':'Reversible gzip representation of six explicit cold backup images only; no active/backing/master/live artifact or guest file deletion, no trim','producer_sha256':sha(Path(__file__)),'pid':os.getpid(),'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'proc_start_ticks':Path('/proc/self/stat').read_text().split()[21],'host_available_before':shutil.disk_usage(ROOT).free,'state':'running','images':[]};save(state)
+    if args.resume_check_context:
+        state=json.loads((CONTEXT/'result.json').read_text());assert state['state']=='failed-preserved'
+        assert len(state['images'])==1 and state['images'][0]['state']=='retired'
+        assert "Could not open '/vm/builder-base.img'" in state['error']['message']
+        old=Path('/proc')/str(state['pid'])/'stat'
+        assert not old.exists() or old.read_text().split()[21]!=state['proc_start_ticks'],'Original controller still active'
+        for row in state['images']:
+            assert not (ROOT/row['source']).exists()
+            assert identity((ROOT/row['archive']).stat())==row['archive_identity']
+            assert sha(ROOT/row['archive'])==row['archive_sha256']
+            verify_gzip(ROOT/row['archive'],row['source_sha256'],row['identity']['bytes'])
+        original={k:state[k] for k in ['pid','boot_id','proc_start_ticks','producer_sha256','error']}
+        state['resume']={'previous':original,'producer_sha256':sha(Path(__file__)),'correction':'Read-only /vm QEMU context resolves frozen backing paths; skip only verified retired source, no recompression'}
+        state.update(state='running',pid=os.getpid(),boot_id=Path('/proc/sys/kernel/random/boot_id').read_text().strip(),proc_start_ticks=Path('/proc/self/stat').read_text().split()[21]);save(state)
+    else:
+        assert not CONTEXT.exists(),'Inspect actual sources/archives/receipt before continuation; never replay custody'
+        CONTEXT.mkdir();(CONTEXT/'image-graph-before.json').write_text(json.dumps(metadata,indent=2)+'\n')
+        state={'scope':'Reversible gzip representation of six explicit cold backup images only; no active/backing/master/live artifact or guest file deletion, no trim','producer_sha256':sha(Path(__file__)),'pid':os.getpid(),'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'proc_start_ticks':Path('/proc/self/stat').read_text().split()[21],'host_available_before':shutil.disk_usage(ROOT).free,'state':'running','images':[]};save(state)
     try:
         for name in SELECTED:
+            if any(r['source']==str((cold/name).relative_to(ROOT)) and r['state']=='retired' for r in state['images']):continue
             if shutil.disk_usage(ROOT).free>=112*1024**3:break
             p=cold/name;archive=p.with_suffix(p.suffix+'.gz');part=archive.with_suffix(archive.suffix+'.part')
             assert p.resolve()==p and p.parent==cold and p.is_file() and not p.is_symlink() and not archive.exists() and not part.exists()
             st=p.stat();assert stat.S_ISREG(st.st_mode) and st.st_nlink==1 and st.st_uid==os.getuid()
             references,_=referenced_backings();assert name not in references,'Backing consumer appeared; preserve source'
-            checked=subprocess.run(['qemu-img','check',str(p)],capture_output=True,text=True);assert checked.returncode==0,checked.stderr
+            checked=subprocess.run(['docker','run','--rm','--user',str(os.getuid())+':'+str(os.getgid()),'--cap-drop=ALL','--security-opt=no-new-privileges','--network=none','--read-only','-v',str(ROOT/'.local/vm')+':/vm:ro','toddy-qemu:h01','qemu-img','check','/vm/checkpoints/'+name],capture_output=True,text=True);assert checked.returncode==0,checked.stderr
             assert identity(p.stat())==identity(st),'Image changed during read-only structural check'
             fd=os.open(p,os.O_RDWR|os.O_NOFOLLOW);exclusive(fd)
             try:

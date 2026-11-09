@@ -1770,6 +1770,18 @@
       "registry_crates": 72,
       "integrity": "Each official registry archive SHA256 matched exact source lock; verified every extracted file and independent generated Cargo checksums before deterministic bundle",
       "status": "source_verified"
+    },
+    {
+      "name": "mozjs",
+      "version": "140.14.0",
+      "filename": "firefox-140.14.0esr.source.tar.xz",
+      "url": "https://archive.mozilla.org/pub/firefox/releases/140.14.0esr/source/firefox-140.14.0esr.source.tar.xz",
+      "sha256": "28006bd454e703932e1ea804918165774a1e21478b18e551cd1b38111d664239",
+      "reference": "BLFS13.1-systemd general/spidermonkey.html",
+      "book_page_sha256": "d22f08d9ecefcbd9dda85e70108b6d3e233e0f970cd52828e78a13f0b50c58c7",
+      "book_md5": "c2eb4ac79de8b34cb3353272bea1cbd3",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

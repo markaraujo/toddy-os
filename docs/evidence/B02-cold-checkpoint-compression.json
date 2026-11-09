@@ -1,0 +1,168 @@
+{
+  "scope": "Reversible gzip representation of six explicit cold backup images only; no active/backing/master/live artifact or guest file deletion, no trim",
+  "state": "complete",
+  "host_available_before": 108674478080,
+  "host_available_after": 123148398592,
+  "reclaimed_bytes": 14473920512,
+  "recovery": "Verify archive SHA; restore gzip stream to a NEW .part at exact source path, verify raw SHA/size, restore recorded mode/uid/gid/xattrs/atime/mtime and fsync; rename only when original absent, then qemu-img check. Preserve archives. Never give compressed file to QEMU or overwrite an existing image.",
+  "images": [
+    {
+      "source": ".local/vm/checkpoints/h03-target.qcow2",
+      "archive": ".local/vm/checkpoints/h03-target.qcow2.gz",
+      "identity": {
+        "device": 66306,
+        "inode": 11810631,
+        "bytes": 680722432,
+        "mtime_ns": 1793928667167334608,
+        "ctime_ns": 1793928667167334608,
+        "mode": 33188,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1
+      },
+      "xattrs": {},
+      "qemu_check_exit": 0,
+      "source_sha256": "28904dfce5de67cf6e779db416a3a447db4191006edcfcba89e8fe3c924f9c8c",
+      "roundtrip": {
+        "restored_bytes": 680722432,
+        "restored_sha256": "28904dfce5de67cf6e779db416a3a447db4191006edcfcba89e8fe3c924f9c8c"
+      },
+      "archive_sha256": "02d42c1c88bff9e3ba1617ec41b4601dc2eab9fc30b80024f48e8d0f5897fce2",
+      "archive_bytes": 657767608,
+      "state": "retired"
+    },
+    {
+      "source": ".local/vm/checkpoints/h01-builder.qcow2",
+      "archive": ".local/vm/checkpoints/h01-builder.qcow2.gz",
+      "identity": {
+        "device": 66306,
+        "inode": 11809375,
+        "bytes": 859176960,
+        "mtime_ns": 1793928243316549461,
+        "ctime_ns": 1793928243316549461,
+        "mode": 33188,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1
+      },
+      "xattrs": {},
+      "qemu_check_exit": 0,
+      "source_sha256": "bc9f2d9a8f6f64ed6c07943355c149dcc263625671b3271fe22987def48ba8b4",
+      "roundtrip": {
+        "restored_bytes": 859176960,
+        "restored_sha256": "bc9f2d9a8f6f64ed6c07943355c149dcc263625671b3271fe22987def48ba8b4"
+      },
+      "archive_sha256": "2886436a5b32f17c1b67aeb1bd55f81bd2186accef3d162b3b9aba8cfb29347f",
+      "archive_bytes": 310770404,
+      "state": "retired"
+    },
+    {
+      "source": ".local/vm/checkpoints/h03-builder.qcow2",
+      "archive": ".local/vm/checkpoints/h03-builder.qcow2.gz",
+      "identity": {
+        "device": 66306,
+        "inode": 11809376,
+        "bytes": 865665024,
+        "mtime_ns": 1793928666986336408,
+        "ctime_ns": 1793928666986336408,
+        "mode": 33188,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1
+      },
+      "xattrs": {},
+      "qemu_check_exit": 0,
+      "source_sha256": "2026d77f42c3653cdae7ba6b903608fb7f52f13e097e658a7b7af2fdf5d795f5",
+      "roundtrip": {
+        "restored_bytes": 865665024,
+        "restored_sha256": "2026d77f42c3653cdae7ba6b903608fb7f52f13e097e658a7b7af2fdf5d795f5"
+      },
+      "archive_sha256": "4e0a0d5849ab7df1ed6a7edb2c7c2e03ecd1761857b4e450fc92747308ebc10b",
+      "archive_bytes": 311024306,
+      "state": "retired"
+    },
+    {
+      "source": ".local/vm/checkpoints/h04-builder.qcow2",
+      "archive": ".local/vm/checkpoints/h04-builder.qcow2.gz",
+      "identity": {
+        "device": 66306,
+        "inode": 11810632,
+        "bytes": 4536532992,
+        "mtime_ns": 1793929439248578851,
+        "ctime_ns": 1793929439248578851,
+        "mode": 33188,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1
+      },
+      "xattrs": {},
+      "qemu_check_exit": 0,
+      "source_sha256": "d9f40a3b54a3f52f6358905c2779669a421b0af6d347d01707487006df81fd02",
+      "roundtrip": {
+        "restored_bytes": 4536532992,
+        "restored_sha256": "d9f40a3b54a3f52f6358905c2779669a421b0af6d347d01707487006df81fd02"
+      },
+      "archive_sha256": "aec591f3bf9974d2e5fc1eae1e65d9a95596ebe6aa6ff465d5d5fa5315ea0352",
+      "archive_bytes": 824264970,
+      "state": "retired"
+    },
+    {
+      "source": ".local/vm/checkpoints/h05-builder.qcow2",
+      "archive": ".local/vm/checkpoints/h05-builder.qcow2.gz",
+      "identity": {
+        "device": 66306,
+        "inode": 11810808,
+        "bytes": 5910102016,
+        "mtime_ns": 1793930494948553818,
+        "ctime_ns": 1793930494948553818,
+        "mode": 33188,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1
+      },
+      "xattrs": {},
+      "qemu_check_exit": 0,
+      "source_sha256": "10a193c28249e6a8608289854bb01a7d3c752a54c65256dedfef485e287fef43",
+      "roundtrip": {
+        "restored_bytes": 5910102016,
+        "restored_sha256": "10a193c28249e6a8608289854bb01a7d3c752a54c65256dedfef485e287fef43"
+      },
+      "archive_sha256": "caa38edbe08ddb528de0cf841c3e5a040bcbfac0b233dcffe1848be0d0ee15a2",
+      "archive_bytes": 1020389722,
+      "state": "retired"
+    },
+    {
+      "source": ".local/vm/checkpoints/h06-ready-builder.qcow2",
+      "archive": ".local/vm/checkpoints/h06-ready-builder.qcow2.gz",
+      "identity": {
+        "device": 66306,
+        "inode": 11832037,
+        "bytes": 5922947072,
+        "mtime_ns": 1793931082383414602,
+        "ctime_ns": 1793931082383414602,
+        "mode": 33188,
+        "uid": 1000,
+        "gid": 1000,
+        "nlink": 1
+      },
+      "xattrs": {},
+      "qemu_check_exit": 0,
+      "source_sha256": "fd7dd5058dcd45d08a8df8a246ec296c5e077613453edb959f147dccc61009ad",
+      "roundtrip": {
+        "restored_bytes": 5922947072,
+        "restored_sha256": "fd7dd5058dcd45d08a8df8a246ec296c5e077613453edb959f147dccc61009ad"
+      },
+      "archive_sha256": "488563a487eb150ced00ea14cc0f4b7d331a935e009679faf949b4be459fc8d8",
+      "archive_bytes": 1021538138,
+      "state": "retired"
+    }
+  ],
+  "original_check_failure": "Host qemu-img could not resolve frozen /vm backing path on second file; second source/archive untouched. Read-only container context fixed; first verified image was not recompressed.",
+  "limitations": [
+    "Roundtrip restores exact image bytes/metadata; no historical VM boot/hardware acceptance.",
+    "Compressed checkpoint must be restored to absent exact original path before legacy recovery; no active/backing/master image compressed."
+  ],
+  "receipt_sha256": "590d139d13ae841cc669d53dc0a515e93fe000e35cac42711832048145a01fe7",
+  "runtime_receipt": ".local/phase2/cold-checkpoint-compression-1/result.json",
+  "images_metadata_inspected_before": 47
+}

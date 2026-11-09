@@ -2995,3 +2995,36 @@ cross-process OFD lock-denial checks passed. Full actual-source SHA256/byte-coun
 roundtrip, metadata/identity/exclusivity and reserve checks remain mandatory before
 retirement. No compression started; commit/check then one uniquely recorded job.
 Active/backing/master artifacts and all guest files preserved; no trim/replay.
+
+### B02 cold image custody completed and guest-capacity boundary
+
+Six explicit unreferenced backups passed structural0, exclusive locks, full gzip
+raw SHA/byte roundtrip and preserved file metadata before raw retirement. Host
+availability108674478080→123148398592B, observed14473920512B gain. Original second
+check could not resolve /vm backing from host; source unchanged. Read-only container
+correction verified already-completed archive/raw/source-absence and resumed only
+remaining files. No guest/active/backing/master/ISO modification, trim or boot claim.
+ADR0145/evidence/private receipt preserve recovery; never repeat completed custody.
+
+Next concrete target capacity:22059409408B free minus16GiB reserve leaves4.9GB,
+not enough margin for614MB Mozilla archive+4.7GB estimated work. Builderroot has
+23338082304B free. Qualify full protected archive+actual extraction/metadata proof
+of inactive Rust6.8GiB work before retirement; installed SDK/sources/tests/evidence
+retained, no compiler rebuild or old stage retirement replay. Target Python3.14.10/
+Which2.25 already owned; reuse. Frozen SpiderMonkey Python3.14 patch is due.
+
+### B02 primary Rust cache recovery verified
+
+VM builder tar1.35/gzip archive and real extraction matched39151entries/846hardlink
+groups, full bytes/uid/gid/mode/ns/xattrs. Original source snapshots unchanged;
+installed-root changed_paths0. Source children retired only after complete proof,
+marker/receipt retained.7242448896Btarget reclaimed; installed Rust1.97.1 still
+works. Full2226053865Barchive/SHA/manifests/raw logs/executed recipe retained.
+No compiler rebuild, trim, old custody replay, OS boot or hardware claim.
+Actual environment TAR_OPTIONS/GZIP absent and /usr/bin/tar verified while running.
+
+Mozilla140.14ESR official archive643083928B/frozen MD5/SHA now authenticated on
+host, no extraction/build. Target29301858304B free; actual host113225838592B after
+real cache recovery verification needs a small extra margin above100GiB for this
+next branch. Use a NEW explicit unreferenced h07 cold backup custody, never repeat
+the completed six images, then source/patch/build. Full B02 owner boundary unchanged.

@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T08:17:43.901926+00:00
+Last verified: 2026-11-09T08:57:42.527392+00:00
 
 Verified:
 
@@ -75,8 +75,10 @@ Verified:
 - Owned ICU78.3-1+toddy1: original make check testdata/intltest/iotest/cintltst/config selfcheck0, C NFC/PT collation/malformedUTF8/uconv0. Install0/post1 own direct-link omission reconciled verify-only0/0 changed_paths0;291owned paths, no reinstall/test replay. Known upstream Arabic ICU-23229 retained.
 - Cbindgen0.29.4 exact Cargo.lock72registry archives/file checksums authenticated;20cached/52downloaded, no host compilation. Native source/vendor preparation0 after pre-transfer metadata allowlist correction; source tests/consumer build running, not installed.
 - Owned cbindgen0.29.4 C/C++ build-tool profile install/post0/0:55paths,2original library+3depfile cases0, staged/installed generated C/C++ header/native Rust shared ABI42/malformed Rust refusal0. Original source/expectations unchanged. Macro/Cython/unstable-profile matrices explicitly unrun/unqualified.
+- Cold capacity custody complete:6unreferenced backup images structurally checked and gzip/full raw SHA/byte metadata verified before retirement; host availability123148398592B, observed14.47GB gain. Source first-image verification reused after read-only check-context correction. No guest/active/backing/master/ISO change or historical boot claim.
+- Primary Rust cache custody complete:39151entries846hardlink groups restored exactly with archive/source metadata verified, source unchanged before retirement, installed-root changed_paths0.7.24GBtarget reclaimed; SDK remains usable, all archive/manifests/logs retained. Authenticated Mozilla140.14esr archive cached only; no JS/GUI acceptance.
 
-Running: No writer; next qualify reversible byte-exact cold-checkpoint compression to provide capacity for Mozilla/GJS chain.47image metadata entries inspected; six cold candidates have no backing consumers, no compression started. GtkSourceView grammar checkpointed; full B02 then pause.
+Running: No writer. Need small additional host margin after real Rust-cache recovery verification; prepare NEW unreferenced h07 cold backup custody, preserving completed operations. Then pinned SpiderMonkey/GJS source build. Full B02 then pause.
 
 Remaining:
 
