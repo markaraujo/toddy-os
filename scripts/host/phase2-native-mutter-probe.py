@@ -35,29 +35,38 @@ def main():
     assert output(['blkid','-s','LABEL','-o','value',device])=='TODDY_LFS'
     assert output(['findmnt','-n','-o','FSTYPE','/'])=='ext4'
     reference=ACCEPTED;assert isinstance(reference,dict)
-    component=reference.get('component','libadwaita');assert component in ['libadwaita','gtksourceview']
+    component=reference.get('component','libadwaita');assert component in ['libadwaita','gtksourceview','gjs']
     patched_regex=reference.get('patched_regex',False);assert not patched_regex or component=='gtksourceview'
     syntax_only=reference.get('syntax_only',False);assert not syntax_only or component=='gtksourceview'
     remaining_syntax=reference.get('remaining_syntax',False);assert not remaining_syntax or syntax_only
-    fixture_name='gtksourceview-patched-regex-1' if patched_regex else 'gtksourceview-syntax-valid-1' if remaining_syntax else 'gtksourceview-syntax-1' if syntax_only else 'mutter-1' if component=='libadwaita' else 'gtksourceview-1'
+    fixture_name='gjs-1' if component=='gjs' else 'gtksourceview-patched-regex-1' if patched_regex else 'gtksourceview-syntax-valid-1' if remaining_syntax else 'gtksourceview-syntax-1' if syntax_only else 'mutter-1' if component=='libadwaita' else 'gtksourceview-1'
     manifest=Path(reference['manifest']);assert str(manifest)=='/sources/phase2/native-fixtures/'+fixture_name+'/accepted.json'
     assert manifest.is_file() and not manifest.is_symlink() and manifest.stat().st_uid==0 and not manifest.stat().st_mode&0o222
     data=manifest.read_bytes();assert len(data)<256*1024 and hashlib.sha256(data).hexdigest()==reference['manifest_sha256']
-    accepted=json.loads(data);assert len(accepted['tests'])==(1 if syntax_only or patched_regex else 67 if component=='libadwaita' else 26)
+    accepted=json.loads(data);assert len(accepted['tests'])==(1 if syntax_only or patched_regex or component=='gjs' else 67 if component=='libadwaita' else 26)
     assert accepted.get('component','libadwaita')==component
     assert accepted.get('patched_regex',False)==patched_regex
 
-    version='1.9.3' if component=='libadwaita' else '5.20.0'
+    version={'libadwaita':'1.9.3','gtksourceview':'5.20.0','gjs':'1.88.1'}[component]
     work=Path('/sources/phase2/work')/('gtksourceview-patched-1' if patched_regex else component+'-1');source=Path('/sources/phase2/inputs')/('gtksourceview-5.20.0-duplicate-1' if patched_regex else component+'-'+version)
     asset_dirs=accepted.get('asset_dirs',['tests' if component=='libadwaita' else 'testsuite'])
-    assert asset_dirs==(['testsuite','tests','data'] if syntax_only else ['tests' if component=='libadwaita' else 'testsuite'])
+    assert asset_dirs==(['installed-tests','modules','test','subprojects'] if component=='gjs' else ['testsuite','tests','data'] if syntax_only else ['tests' if component=='libadwaita' else 'testsuite'])
     for path,digest in accepted['artifacts'].items():assert sha(Path(path))==digest
     assets={str(p.relative_to(source)):sha(p) for directory in asset_dirs for p in (source/directory).rglob('*') if p.is_file() and not p.is_symlink()}
     assert hashlib.sha256(json.dumps(assets,sort_keys=True).encode()).hexdigest()==accepted['source_test_assets_sha256']
     assert sha(Path('/usr/share/glib-2.0/schemas/gschemas.compiled'))==accepted['schema_cache_sha256']
     for name,version in [('mutter','50.4-1+toddy1'),('gtk','4.22.4-1+toddy4')]:assert output(['dpkg-query','-W','-f=${Version}',name])==version
     assert not Path('/build').exists() and not Path('/src').exists()
-    Path('/build').symlink_to(work,target_is_directory=True);Path('/src').symlink_to(source,target_is_directory=True)
+    if component=='gjs':
+        # Original Meson commands contain /build/compile/../../src; real binds
+        # preserve that namespace instead of following symlink .. to work/src.
+        Path('/build').mkdir();Path('/src').mkdir()
+        subprocess.run(['mount','--bind',str(work),'/build'],check=True)
+        subprocess.run(['mount','-o','remount,bind,nosuid,nodev','/build'],check=True)
+        subprocess.run(['mount','--bind',str(source),'/src'],check=True)
+        subprocess.run(['mount','-o','remount,bind,ro,nosuid,nodev','/src'],check=True)
+    else:
+        Path('/build').symlink_to(work,target_is_directory=True);Path('/src').symlink_to(source,target_is_directory=True)
     resource.setrlimit(resource.RLIMIT_CORE,(0,0))
     report={'scope':'Native7.1.8 headless Mutter/Wayland original '+component+' tests only; not GDM/KMS/full GNOME/physical acceptance','component':component,'syntax_only':syntax_only,'remaining_syntax':remaining_syntax,'reused_partial_syntax':accepted.get('reused_partial_syntax'),'reused_native_proof':accepted.get('reused_native_proof'),'kernel':os.uname().release,'pid1':'systemd','uid':101,'manifest_sha256':reference['manifest_sha256'],'accepted_input_sha256':hashlib.sha256(json.dumps(accepted,sort_keys=True).encode()).hexdigest(),'runs':[],'all_selected_exits_zero':False}
     def nnp():
@@ -66,7 +75,7 @@ def main():
         status=Path('/proc/self/status').read_text();assert 'NoNewPrivs:\t1' in status and 'CapEff:\t0000000000000000' in status
     with tempfile.TemporaryDirectory(prefix='toddy-native-mutter-') as directory:
         root=Path(directory);os.chown(root,101,101);runtime=root/'runtime';runtime.mkdir(mode=0o700);os.chown(runtime,101,101)
-        config={'root':str(root),'component':component,'syntax_only':syntax_only,'syntax_cases':accepted.get('syntax_cases'),'source':str(source),'fixture':accepted['fixture'],'tests':accepted['tests'],'test_env':accepted['test_env'],'test_binary_prefix':'/build/compile/'+('tests/' if component=='libadwaita' else 'testsuite/'),'test_library_path':'/build/compile/'+('src' if component=='libadwaita' else 'gtksourceview')+':/build/stage/usr/lib'}
+        config={'root':str(root),'component':component,'syntax_only':syntax_only,'syntax_cases':accepted.get('syntax_cases'),'source':str(source),'fixture':accepted['fixture'],'tests':accepted['tests'],'test_env':accepted['test_env'],'test_binary_prefix':'/usr/bin/meson' if component=='gjs' else '/build/compile/'+('tests/' if component=='libadwaita' else 'testsuite/'),'test_library_path':'/build/compile:/build/stage/usr/lib' if component=='gjs' else '/build/compile/'+('src' if component=='libadwaita' else 'gtksourceview')+':/build/stage/usr/lib'}
         script=root/'suite.py';assert SUITE_SOURCE.count('CONFIG = None')==1;script.write_text(SUITE_SOURCE.replace('CONFIG = None','CONFIG = '+repr(config)));script.chmod(0o644)
         env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C.UTF-8','HOME':str(root),'XDG_RUNTIME_DIR':str(runtime),'XDG_CACHE_HOME':str(root/'cache'),'XDG_CONFIG_HOME':str(root/'config'),'XDG_DATA_HOME':str(root/'data'),'XDG_SESSION_TYPE':'wayland','XDG_CURRENT_DESKTOP':'GNOME','LIBGL_ALWAYS_SOFTWARE':'1','GALLIUM_DRIVER':'llvmpipe','GDK_DISABLE':'vulkan','PYTHONDONTWRITEBYTECODE':'1'}
         args=['dbus-run-session','--','mutter','--wayland','--headless','--virtual-monitor=1280x720','--wayland-display=toddy-native-proof','--','python3','-B',str(script)]

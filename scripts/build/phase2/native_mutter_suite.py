@@ -48,6 +48,17 @@ def main():
                     text=r.stdout;lines=re.findall(r'^ok\s+[0-9]+(?:\s+.*)?$',text,re.M)
                     skipped=[s for s in lines if '# SKIP' in s]
                     item={'exit':r.returncode,'passed_case_executions':len(lines)-len(skipped),'skipped_case_executions':len(skipped),'skip_lines':skipped}
+                    if test.get('protocol')=='meson':
+                        original_results=[json.loads(line) for line in Path('/build/compile/meson-logs/testlog.json').read_text().splitlines() if line.strip()]
+                        actual_names=[row['name'].split(':',1)[-1] for row in original_results]
+                        item['meson_coverage_complete']=len(actual_names)==len(test['expected_test_names']) and set(actual_names)==set(test['expected_test_names'])
+                        item['meson_all_results_ok']=bool(original_results) and all(row['result']=='OK' and row['returncode']==0 for row in original_results)
+                        item['meson_original_results']=original_results
+                        tap=[line for row in original_results for line in (row.get('stdout') or '').splitlines() if re.match(r'^ok\s+\d+(?:\s|$)',line)]
+                        skipped=[line for line in tap if re.search(r'#\s*SKIP\b',line,re.I)]
+                        item['passed_case_executions']=len(tap)-len(skipped)
+                        item['skipped_case_executions']=len(skipped)
+                        item['skip_lines']=skipped
                     if case is not None:
                         item['case']=case
                         assert len(lines)==1 and case in lines[0], 'Selected original case did not execute exactly once'
@@ -59,6 +70,9 @@ def main():
                 if item['exit']!=0:
                     selected_exit=item['exit'];break
             row={'name':test['name'],'exit':selected_exit,'passed_case_executions':sum(x.get('passed_case_executions',0) for x in outcomes),'skipped_case_executions':sum(x.get('skipped_case_executions',0) for x in outcomes),'skip_lines':[s for x in outcomes for s in x.get('skip_lines',[])],'stdout':''.join(stdout),'stderr':''.join(stderr)}
+            if test.get('protocol')=='meson':
+                assert len(outcomes)==1
+                row.update({key:outcomes[0].get(key) for key in ['meson_coverage_complete','meson_all_results_ok','meson_original_results']})
             if config.get('syntax_cases'):row['selected_original_subcases']=outcomes
             runs.append(row);save()
             print('TODDY_NATIVE_WIDGET_PROGRESS',test['name'],row['exit'],flush=True)
@@ -68,7 +82,7 @@ def main():
         result['widget_drivers_exit_zero']=sum(1 for r in runs if r['name']!='native-gtk-window' and r['exit']==0)
         result['passed_case_executions']=sum(r.get('passed_case_executions',0) for r in runs)
         result['skipped_case_executions']=sum(r.get('skipped_case_executions',0) for r in runs)
-        result['all_selected_exits_zero']=len(runs)==len(config['tests'])+int(bool(config['fixture'])) and all(r['exit']==0 for r in runs)
+        result['all_selected_exits_zero']=len(runs)==len(config['tests'])+int(bool(config['fixture'])) and all(r['exit']==0 and r.get('meson_coverage_complete',True) and r.get('meson_all_results_ok',True) for r in runs)
     except Exception as error:
         result['suite_error']={'type':type(error).__name__,'message':str(error)};result['all_selected_exits_zero']=False
     finally:save()

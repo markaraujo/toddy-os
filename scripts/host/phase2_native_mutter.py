@@ -22,7 +22,7 @@ ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
 
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--context',default='native-mutter-runtime-1');parser.add_argument('--component',choices=['libadwaita','gtksourceview'],default='libadwaita');parser.add_argument('--patched-regex',action='store_true');parser.add_argument('--only-syntax',action='store_true');parser.add_argument('--remaining-syntax',action='store_true');args=parser.parse_args();assert not args.only_syntax or args.component=='gtksourceview';assert not args.remaining_syntax or args.only_syntax;assert not args.patched_regex or (args.component=='gtksourceview' and not args.only_syntax and not args.remaining_syntax)
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--context',default='native-mutter-runtime-1');parser.add_argument('--component',choices=['libadwaita','gtksourceview','gjs'],default='libadwaita');parser.add_argument('--patched-regex',action='store_true');parser.add_argument('--only-syntax',action='store_true');parser.add_argument('--remaining-syntax',action='store_true');args=parser.parse_args();assert not args.only_syntax or args.component=='gtksourceview';assert not args.remaining_syntax or args.only_syntax;assert not args.patched_regex or (args.component=='gtksourceview' and not args.only_syntax and not args.remaining_syntax)
     assert re.fullmatch(r'native-mutter-runtime-[1-9][0-9]?',args.context)
     context=ROOT/'.local/phase2'/args.context;assert not context.exists(),'Reconcile existing operation; never replay'
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()
@@ -35,15 +35,24 @@ lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
 l=Path('/var/log/toddy/phase2')
 if component=='libadwaita':assert (l/'native-window-fixture-1.exit').read_text().strip()=='0'
+elif component=='gjs':assert (l/'gjs-1.exit').read_text().strip()=='0'
 elif patched_regex:assert (l/'gtksourceview-patched-verify-9.exit').read_text().strip()=='0'
 else:assert (l/'gtksourceview-probe-2.exit').read_text().strip()=='0'
 r=json.loads(Path('/var/log/toddy/build/b02-mutter-resources-install.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
-version='1.9.3' if component=='libadwaita' else '5.20.0'
+version={'libadwaita':'1.9.3','gtksourceview':'5.20.0','gjs':'1.88.1'}[component]
 w=Path('/mnt/lfs/sources/phase2/work')/('gtksourceview-patched-1' if patched_regex else component+'-1');s=Path('/mnt/lfs/sources/phase2/inputs')/('gtksourceview-5.20.0-duplicate-1' if patched_regex else component+'-'+version);stage=json.loads((w/'stage-results.json').read_text())
-assert stage['native_build_exit']==stage['stage_exit']==stage['gi_version_exit']==0
-assert stage['c_version_exit' if component=='libadwaita' else 'c_version_data_exit']==0
-registered=json.loads((w/'compile/meson-info/intro-tests.json').read_text());assert len(registered)==(67 if component=='libadwaita' else 26)
+assert stage['native_build_exit']==stage['stage_exit']==0
+if component=='gjs':
+ assert stage['native_c_consumer_exit']==0 and len(stage['original_api_drivers'])==2
+ assert all(r['returncode']==0 and r['result']=='OK' for r in stage['original_api_drivers'])
+else:
+ assert stage['gi_version_exit']==stage['c_version_exit' if component=='libadwaita' else 'c_version_data_exit']==0
+registered=json.loads((w/'compile/meson-info/intro-tests.json').read_text());assert len(registered)=={'libadwaita':67,'gtksourceview':26,'gjs':80}[component]
+gjs_remaining=None
+if component=='gjs':
+ gjs_remaining=[t['name'] for t in registered if t['name'] not in ['API tests','Internal API tests']];assert len(gjs_remaining)==78 and len(set(gjs_remaining))==78
+ registered=[{'name':'Original remaining GJS suites','cmd':['/usr/bin/meson','test','-C','/build/compile','--no-rebuild','--print-errorlogs','--num-processes=2',*gjs_remaining],'workdir':'/build/compile','timeout':290,'env':{},'protocol':'meson','expected_test_names':gjs_remaining}]
 reused=None
 if syntax_only:
  raw=(l/'native-gtksource-2-report.json').read_bytes();expected='a865921bc8aaa2af2d4dff7f86068f1e4bcc3b6f49ddec56b27aac914c67475c';assert hashlib.sha256(raw).hexdigest()==expected
@@ -77,25 +86,30 @@ if patched_regex:
 binary_prefix='/build/compile/'+('tests/' if component=='libadwaita' else 'testsuite/')
 artifacts={};tests=[]
 for t in registered:
- assert t['cmd'][0].startswith(binary_prefix)
- p=w/Path(t['cmd'][0]).relative_to('/build');assert p.is_file() and not p.is_symlink()
+ assert t['cmd'][0]=='/usr/bin/meson' if component=='gjs' else t['cmd'][0].startswith(binary_prefix)
+ p=Path('/mnt/lfs/usr/bin/meson') if component=='gjs' else w/Path(t['cmd'][0]).relative_to('/build');assert p.is_file() and not p.is_symlink()
  digest=sha(p);artifacts[str(p).removeprefix('/mnt/lfs')]=digest
  assert t['env']==registered[0]['env']
- tests.append({**{k:t[k] for k in ['name','cmd','workdir','timeout'] if k in t},'sha256':digest})
-libdir='src' if component=='libadwaita' else 'gtksourceview'
-libpattern='libadwaita-1.so.*' if component=='libadwaita' else 'libgtksourceview-5.so.*'
+ tests.append({**{k:t[k] for k in ['name','cmd','workdir','timeout','protocol','expected_test_names'] if k in t},'sha256':digest})
+libdir={'libadwaita':'src','gtksourceview':'gtksourceview','gjs':'.'}[component]
+libpattern={'libadwaita':'libadwaita-1.so.*','gtksourceview':'libgtksourceview-5.so.*','gjs':'libgjs.so.*'}[component]
 libs=[p for p in (w/'compile'/libdir).glob(libpattern) if p.is_file() and not p.is_symlink()];assert len(libs)==1
 artifacts[str(libs[0]).removeprefix('/mnt/lfs')]=sha(libs[0])
+if component=='gjs':
+ for p in (w/'compile').rglob('*'):
+  if p.is_file() and not p.is_symlink():
+   with p.open('rb') as stream:elf=stream.read(4)==b'\x7fELF'
+   if elf or p.suffix=='.typelib':artifacts[str(p).removeprefix('/mnt/lfs')]=sha(p)
 fixture=None;fixture_source_sha=None
 if component=='libadwaita':
  f=Path('/mnt/lfs/sources/phase2/work/native-window-fixture-1');fixture=json.loads((f/'fixture.json').read_text());assert fixture['compile_exit']==0
  assert sha(f/'window-fixture')==fixture['binary_sha256'];artifacts[str(f/'window-fixture').removeprefix('/mnt/lfs')]=fixture['binary_sha256'];fixture_source_sha=fixture['source_sha256'];fixture=str(f/'window-fixture').removeprefix('/mnt/lfs')
-asset_dirs=['testsuite','tests','data'] if syntax_only else ['tests' if component=='libadwaita' else 'testsuite']
+asset_dirs=['installed-tests','modules','test','subprojects'] if component=='gjs' else ['testsuite','tests','data'] if syntax_only else ['tests' if component=='libadwaita' else 'testsuite']
 assets={str(p.relative_to(s)):sha(p) for directory in asset_dirs for p in (s/directory).rglob('*') if p.is_file() and not p.is_symlink()}
 assert s.stat().st_uid==0 and not s.stat().st_mode&0o022
-record={'patched_regex':patched_regex,'scope':'Frozen native '+component+' original display drivers only; no full GNOME/product acceptance','component':component,'syntax_only':syntax_only,'remaining_syntax':remaining_syntax,'syntax_cases':syntax_cases,'reused_partial_syntax':partial,'reused_native_proof':reused,'asset_dirs':asset_dirs,'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'fixture_source_sha256':fixture_source_sha,'fixture':fixture,'tests':tests,'test_env':registered[0]['env'],'artifacts':artifacts,'source_test_assets_sha256':hashlib.sha256(json.dumps(assets,sort_keys=True).encode()).hexdigest(),'source_test_files':len(assets),'schema_cache_sha256':sha(Path('/mnt/lfs/usr/share/glib-2.0/schemas/gschemas.compiled'))}
+record={'gjs_remaining':gjs_remaining,'patched_regex':patched_regex,'scope':'Frozen native '+component+' original display drivers only; no full GNOME/product acceptance','component':component,'syntax_only':syntax_only,'remaining_syntax':remaining_syntax,'syntax_cases':syntax_cases,'reused_partial_syntax':partial,'reused_native_proof':reused,'asset_dirs':asset_dirs,'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'fixture_source_sha256':fixture_source_sha,'fixture':fixture,'tests':tests,'test_env':registered[0]['env'],'artifacts':artifacts,'source_test_assets_sha256':hashlib.sha256(json.dumps(assets,sort_keys=True).encode()).hexdigest(),'source_test_files':len(assets),'schema_cache_sha256':sha(Path('/mnt/lfs/usr/share/glib-2.0/schemas/gschemas.compiled'))}
 data=json.dumps(record,sort_keys=True).encode()+bytes([10])
-folder=Path('/mnt/lfs/sources/phase2/native-fixtures')/('gtksourceview-patched-regex-1' if patched_regex else 'gtksourceview-syntax-valid-1' if remaining_syntax else 'gtksourceview-syntax-1' if syntax_only else 'mutter-1' if component=='libadwaita' else 'gtksourceview-1');folder.mkdir(mode=0o755,exist_ok=True)
+folder=Path('/mnt/lfs/sources/phase2/native-fixtures')/('gjs-1' if component=='gjs' else 'gtksourceview-patched-regex-1' if patched_regex else 'gtksourceview-syntax-valid-1' if remaining_syntax else 'gtksourceview-syntax-1' if syntax_only else 'mutter-1' if component=='libadwaita' else 'gtksourceview-1');folder.mkdir(mode=0o755,exist_ok=True)
 assert folder.stat().st_uid==0 and not folder.is_symlink()
 manifest=folder/'accepted.json'
 if manifest.exists():
