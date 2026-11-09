@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gnutls': ('3.8.13', 'glibc (>= 2.44-1+toddy1), nettle (= 4.0-1+toddy1), libunistring (= 1.4.2-1+toddy1), libidn2 (= 2.3.8-1+toddy1), libtasn1 (= 4.21.0-1+toddy1), p11-kit (>= 0.26.5-1+toddy1), p11-kit (<< 0.26.6), ca-certificates (>= 2026.11.09-1+toddy1)', 'gnutls-3.8.13.tar.xz', 'usr/lib/pkgconfig/gnutls.pc'),
     'libidn2': ('2.3.8', 'glibc (>= 2.44-1+toddy1), libunistring (= 1.4.2-1+toddy1)', 'libidn2-2.3.8.tar.gz', 'usr/lib/pkgconfig/libidn2.pc'),
     'libunistring': ('1.4.2', 'glibc (>= 2.44-1+toddy1)', 'libunistring-1.4.2.tar.xz', 'usr/include/unistring/version.h'),
     'nettle': ('4.0', 'glibc (>= 2.44-1+toddy1), gmp (= 6.3.0-1+toddy1)', 'nettle-4.0.tar.gz', 'usr/lib/pkgconfig/hogweed.pc'),
@@ -231,6 +232,7 @@ if __name__ == '__main__':
     if name=='libical':qualifier='libical-finish-2'
     if name=='libpsl':qualifier='libpsl-metadata-2'
     if name=='nettle':qualifier='nettle-consumer-2'
+    if name=='gnutls':qualifier='gnutls-stage-5'
     if name=='libunistring':qualifier='libunistring-consumer-2'
     if name=='gcr':qualifier='gcr-finish-4'
     if name=='upower':qualifier='upower-consumer-4'
@@ -1173,6 +1175,9 @@ if __name__ == '__main__':
     if name=='libidn2':
         from qualify_libidn2 import qualify as qualify_libidn2
         qualify_libidn2(ROOT)
+    if name=='gnutls':
+        from qualify_gnutls import qualify as qualify_gnutls
+        qualify_gnutls(ROOT)
     if name=='gcr3':
         from qualify_gcr3 import qualify as qualify_gcr3
         qualify_gcr3(ROOT)

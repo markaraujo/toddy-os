@@ -1,0 +1,152 @@
+{
+  "scope": "Qualified private real Mozilla CA/P11/GnuTLS/OpenSSL stage only; installed trust/provider/update hook/recovery/native GNOME/remote network pending",
+  "source": {
+    "name": "make-ca",
+    "version": "1.16.1",
+    "filename": "make-ca-1.16.1.tar.gz",
+    "url": "https://github.com/lfs-book/make-ca/archive/v1.16.1/make-ca-1.16.1.tar.gz",
+    "sha256": "98c7e6fded1938b972d0177b5d5e925d318be87f84ee9e4cad680656a8c29414",
+    "reference": "BLFS13.1-systemd postlfs/make-ca.html",
+    "book_page_sha256": "0d28a7a305e87cbd9c75cb073793e682a34e51f7c4a540d654a40c698fd32aeb",
+    "book_md5": "bf9cea2d24fc5344d4951b49f275c595",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "tool_stage": {
+    "scope": "make-ca1.16.1 tool stage/CLI only; real Mozilla data/default trust/provider/update/recovery pending",
+    "build_exit": 0,
+    "stage_exit": 0,
+    "upstream_tests": "No registered automated suite in source Makefile; actual data/provider tests are separate gates",
+    "book_correction": {
+      "reference": "Frozen BLFS13.1-systemd postlfs/make-ca.html remove obsolete mktemp -t, private worker copy only",
+      "before_sha256": "fdd19b76854863b155887f15033bfa151f70ccde939d3c0171abba061abe0024",
+      "after_sha256": "2e0130e88cbf65fd50e6bfaa173b95da0c4209819460794fae39a1a692cca6b9"
+    },
+    "consumer": {
+      "version": "1.16.1",
+      "CLI_runs": [
+        {
+          "args": [
+            "--version"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "--help"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "--toddy-invalid-option"
+          ],
+          "exit": 1
+        }
+      ],
+      "temporary_data_removed": true,
+      "scope": "CLI/version/invalid option only; no CA/PKCS11/default trust/update/recovery acceptance"
+    },
+    "stage_regular_files": 8,
+    "stage_manifest_sha256": "86d77bbae2b44bdaff8360cbf8852ef17f7b31e42b40aac811dc4f840c78b252"
+  },
+  "private_real_CA_data": {
+    "scope": "Real frozen NSS3.126 CA policy/make-ca/P11/default GnuTLS/ISRG verification in private worker paths only. Original generation and consumer results reused; only own compatibility-file metadata finalization corrected. Installed provider/store/update hook/native GNOME/remote DNS/TLS pending",
+    "uid": 101,
+    "no_new_privileges": true,
+    "input_config_readonly": true,
+    "certdata_sha256": "81b7f2576333a2e360e673f912d7b0b7a765d836c731003e348a46cac5d37198",
+    "generation_exit": 0,
+    "anchors": 172,
+    "server_auth_certificates": 121,
+    "baseline_server_auth_certificates": 118,
+    "server_auth_DER_membership_unchanged": false,
+    "added_server_auth_DER_sha256": [
+      "125609aa301da0a249b97a8239cb6a34216f44dcac9f3954b14292f2e8c8608f",
+      "86a1ecba089c4a8d3bbe2734c612ba341d813e043cf9e8a862cd5c57a36bbe6b",
+      "bc4d809b15189d78db3e1d8cf4f9726a795da1643ca5f1358e1ddb0edc0d7eb3"
+    ],
+    "removed_server_auth_DER_sha256": [],
+    "foundation_bundle_bytes_preserved": false,
+    "original_trust_store_exit": 0,
+    "original_trust_store_ELF_sha256": "242540a916f3364807fce02f1476564d065077e6958948d30557c9ad0bf6e452",
+    "ISRG_Root_X1_verification_exit": 0,
+    "generation_and_original_trust_test_not_repeated": true,
+    "preexisting_candidate_files_unchanged": true,
+    "generation_log_sha256": "9073cb7f0ea025c4785b531bbea5a9d3b865f6d9eff8b6bd20d1d2dba26a1b68",
+    "original_trust_store_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "trust_list_log_sha256": "5dda38cf9da2a2c18f0bcfbf290c520a7b0e7b5f57ca91650e104998b6d3618b",
+    "sealed_certificate_directory_mode": "0555",
+    "generated_regular_files": 360,
+    "generated_manifest_sha256": "b520ad52fda81d7f995a677a2609f1836498cef2baea3d6acecb893420f24762"
+  },
+  "installed_root_verification": {
+    "state": "private-stage-data-qualified-not-installed",
+    "scope": "Real frozen NSS3.126 CA policy/make-ca/P11/default GnuTLS/ISRG verification in private worker paths only. Original generation and consumer results reused; only own compatibility-file metadata finalization corrected. Installed provider/store/update hook/native GNOME/remote DNS/TLS pending",
+    "installed_root_entries_unchanged": 152574,
+    "installed_root_changed_paths": 0,
+    "private_data_result_sha256": "cf0f7ef1b8577cbccb811d2d2873565db9baee4d4977cc5abe1a0d599a88dc1d",
+    "certdata_sha256": "81b7f2576333a2e360e673f912d7b0b7a765d836c731003e348a46cac5d37198",
+    "anchors": 172,
+    "server_auth_certificates": 121,
+    "baseline_server_auth_certificates": 118,
+    "added_server_auth_DER_sha256": [
+      "125609aa301da0a249b97a8239cb6a34216f44dcac9f3954b14292f2e8c8608f",
+      "86a1ecba089c4a8d3bbe2734c612ba341d813e043cf9e8a862cd5c57a36bbe6b",
+      "bc4d809b15189d78db3e1d8cf4f9726a795da1643ca5f1358e1ddb0edc0d7eb3"
+    ],
+    "removed_server_auth_DER_sha256": [],
+    "original_GnuTLS_trust_store_passed": true,
+    "ISRG_Root_X1_verified": true,
+    "source": "/mnt/lfs/sources/phase2/inputs/make-ca-data-2",
+    "work": "/mnt/lfs/sources/phase2/work/make-ca-data-2",
+    "native_install_provider_hook_update_recovery_pending": true,
+    "recovery": "Keep immutable inputs and failed candidates1; do not rerun generation/original trust/metadata completion/acceptance. Native promotion must use verified staged data and preserve ownership/user configuration under its own controlled transaction."
+  },
+  "failures_preserved": [
+    {
+      "job": "make-ca-data-1",
+      "cause": "Missing standard /dev/stdin in private sandbox; generator0 rejected by explicit missing-anchor postcondition",
+      "recovery": "Added standard self-proc fd aliases, fresh private data2; failed1 retained,152574installed entries unchanged"
+    },
+    {
+      "job": "make-ca-data-2",
+      "cause": "Core generation/original trust/ISRG succeeded; own final compatibility copy failed in output directory deliberately sealed0555 by trust extract",
+      "recovery": "Metadata-only finish3 briefly adjusts only private output directory mode, creates compatibility file, restores0555; no generation/original consumer replay"
+    }
+  ],
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-ca-stage-evidence.tar.gz",
+    "sha256": "93def93b28f6f27e1c5d7e0220ba2159939d0a27c043e845c3acaff46f6f57ac",
+    "members": [
+      "data1/generation.exit",
+      "data1/generation.log",
+      "data2/data-results.json",
+      "data2/generation.exit",
+      "data2/generation.log",
+      "data2/original-trust-store.exit",
+      "data2/original-trust-store.log",
+      "data2/root-verify.log",
+      "data2/trust-list.log",
+      "phase2/ca-data-acceptance-1.json",
+      "phase2/ca-data-failed-1-root-verify.json",
+      "phase2/ca-data-prepared-1.json",
+      "phase2/ca-data-prepared-2.json",
+      "phase2/make-ca-1.exit",
+      "phase2/make-ca-1.job.json",
+      "phase2/make-ca-1.log",
+      "phase2/make-ca-data-1.exit",
+      "phase2/make-ca-data-1.job.json",
+      "phase2/make-ca-data-1.log",
+      "phase2/make-ca-data-2.exit",
+      "phase2/make-ca-data-2.job.json",
+      "phase2/make-ca-data-2.log",
+      "phase2/make-ca-data-finish-3.exit",
+      "phase2/make-ca-data-finish-3.job.json",
+      "phase2/make-ca-data-finish-3.log",
+      "tool/native-consumer.json",
+      "tool/stage-results.json"
+    ],
+    "full_root_before_manifests": "Retained privately in builder /var/log/toddy/phase2/ca-data-prepared-{1,2}-root-before.json; acceptance records exact SHA and zero changes"
+  }
+}

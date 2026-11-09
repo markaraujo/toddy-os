@@ -66,6 +66,25 @@ if [[ -d /mnt/lfs/etc/fonts && ! -L /mnt/lfs/etc/fonts ]]; then
     readonly_bind /mnt/lfs/etc/fonts "$root/etc/fonts"
 fi
 readonly_bind "$TODDY_INPUT" "$root/src"
+# CA generation needs writable private trust paths at their real module names.
+# These are aliases to this worker's outputs, never the installed /etc. Keep
+# existing OpenSSL configuration/scripts mounted read-only from authenticated input.
+if [[ ( $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/make-ca-data-1 && $TODDY_WORK == /mnt/lfs/sources/phase2/work/make-ca-data-1 ) || ( $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/make-ca-data-2 && $TODDY_WORK == /mnt/lfs/sources/phase2/work/make-ca-data-2 ) ]]; then
+    python3 - "$TODDY_INPUT" "$TODDY_WORK" <<'CACHECK'
+from pathlib import Path
+import json,sys
+source,work=map(Path,sys.argv[1:]);r=json.loads((source/'toddy-ca-data.json').read_text())
+assert r['state']=='prepared' and r['source']==str(source) and r['work']==str(work)
+for name,inode in r['candidate_inodes'].items():
+ p=work/name;assert p.is_dir() and not p.is_symlink() and p.resolve().parent==work and p.stat().st_ino==inode
+CACHECK
+    mkdir -p "$root/etc/ssl" "$root/etc/pki"
+    mount --bind "$TODDY_WORK/candidate-ssl" "$root/etc/ssl"
+    mount --bind "$TODDY_WORK/candidate-pki" "$root/etc/pki"
+    for config in openssl.cnf openssl.cnf.dist ct_log_list.cnf ct_log_list.cnf.dist misc private; do
+        readonly_bind "$TODDY_INPUT/ssl-template/$config" "$root/etc/ssl/$config"
+    done
+fi
 # One upstream Gcr test chmods this public encrypted sample before deriving its
 # public key. Map only a byte-identical private worker copy; source stays RO.
 if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/gcr-4.4.0.1 || $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/gcr-3.41.2 || $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/gcr-3.41.2-ssh-agent-1 ]]; then
@@ -114,6 +133,9 @@ for name in null zero random urandom; do
 done
 # Standard alias to this process's already exposed private proc descriptors.
 ln -s /proc/self/fd "$root/dev/fd"
+ln -s /proc/self/fd/0 "$root/dev/stdin"
+ln -s /proc/self/fd/1 "$root/dev/stdout"
+ln -s /proc/self/fd/2 "$root/dev/stderr"
 # POSIX shared memory for native ORC/JIT/compiler tests. New tmpfs in this
 # mount/IPC namespace only; never bind the guest/host shared-memory directory.
 mkdir "$root/dev/shm"

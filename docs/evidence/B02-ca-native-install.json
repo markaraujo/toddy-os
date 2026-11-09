@@ -1,0 +1,189 @@
+{
+  "scope": "Installed factory trust/P11/default GnuTLS original/OpenSSL default bundle and owned legacy aliases only. Local trust update hook/recovery, NSS unified alias, remote DNS/TLS and native desktop pending.",
+  "transaction": {
+    "step": "b02-ca-native-install",
+    "started": "2026-11-09T21:38:03.957494+00:00",
+    "recipe_sha256": "539fe57104937f46a127e67cc57f9e66fe4f39c9c0fff5578261aaf423890102",
+    "postcheck_sha256": "c9f68b85c1fac133b3faddba8860f28a2717287f688b1576f6ffbfcd774ae9d5",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "e0c51aaf6886ecf3fa7f14c8298471a12f3aa876bd35298ed9e820c743dfe673",
+    "recipe_pid": 349976,
+    "recipe_pgid": 349976,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T21:38:22.710639+00:00",
+    "changed_paths": 717,
+    "log_sha256": "9b525845d27aeea2956ada3e2d0875a0606c58cd5f28af3f84aae69a7274b818",
+    "supporting_build_scripts": {
+      "count": 2,
+      "sha256": "55b736f08741df20f81691c435373516dc3ce02a22990a5cd55afd6b1ada3442"
+    }
+  },
+  "package": {
+    "name": "ca-certificates",
+    "version": "2026.11.09-1+toddy1",
+    "archive_sha256": "b2d0d96f300cce3cb99c988bfa683a201354648125f6f07ce4d7ac66e9ed5846",
+    "recipe_sha256": "539fe57104937f46a127e67cc57f9e66fe4f39c9c0fff5578261aaf423890102",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "ca-certificates",
+        "version": "2026.11.05",
+        "filename": "cacert-2026-11-05.pem",
+        "url": "https://curl.se/ca/cacert-2026-11-05.pem",
+        "sha256": "427c064216761a1e72a8b30f0d954d08cb6e4435a82091fb865afd20c8497285",
+        "size": 200116,
+        "published_sha256": "427c064216761a1e72a8b30f0d954d08cb6e4435a82091fb865afd20c8497285",
+        "published_digest_source": "https://curl.se/ca/cacert-2026-11-05.pem.sha256",
+        "signature_verified": false,
+        "signature_note": "Official dated curl Mozilla-conversion PEM and publisher SHA-256 verified over HTTPS; no separate signature.",
+        "decision": "ADR-0021",
+        "license": "MPL-2.0",
+        "certificate_count": 118
+      },
+      {
+        "name": "nss",
+        "version": "3.126",
+        "filename": "nss-3.126.tar.gz",
+        "url": "https://archive.mozilla.org/pub/security/nss/releases/NSS_3_126_RTM/src/nss-3.126.tar.gz",
+        "sha256": "7aa07c758be1453d82d739240b249ffb7aef0041be488067e1c0f348e1f9e337",
+        "reference": "BLFS13.1-systemd postlfs/nss.html",
+        "book_page_sha256": "c3f1b41079594657a8486d4321910b26e620f0098d81a733dd5d1fe253a03401",
+        "book_md5": "0ca322cec564a53ac5a59ce130d96f46",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      },
+      {
+        "name": "make-ca",
+        "version": "1.16.1",
+        "filename": "make-ca-1.16.1.tar.gz",
+        "url": "https://github.com/lfs-book/make-ca/archive/v1.16.1/make-ca-1.16.1.tar.gz",
+        "sha256": "98c7e6fded1938b972d0177b5d5e925d318be87f84ee9e4cad680656a8c29414",
+        "reference": "BLFS13.1-systemd postlfs/make-ca.html",
+        "book_page_sha256": "0d28a7a305e87cbd9c75cb073793e682a34e51f7c4a540d654a40c698fd32aeb",
+        "book_md5": "bf9cea2d24fc5344d4951b49f275c595",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "payload": {
+      "entries": 721,
+      "sha256": "e4daa6546e69bc58ec611bc3e68eece905d68343b86e9b20404824aafecec8c6"
+    },
+    "supporting_build_scripts": {
+      "count": 2,
+      "sha256": "55b736f08741df20f81691c435373516dc3ce02a22990a5cd55afd6b1ada3442"
+    }
+  },
+  "timing": {
+    "step": "b02-ca-native-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.679,
+        "entries": 152574,
+        "regular_files": 136120,
+        "regular_bytes": 7183758919
+      },
+      {
+        "seconds": 13.965,
+        "entries": 153281,
+        "regular_files": 136479,
+        "regular_bytes": 7186950784
+      }
+    ],
+    "total_seconds": 34.478
+  },
+  "installed_consumer": {
+    "scope": "Installed factory trust/P11/default GnuTLS original/OpenSSL default bundle and owned legacy aliases only. Local trust update hook/recovery, NSS unified alias, remote DNS/TLS and native desktop pending.",
+    "server_auth_certificates": 121,
+    "anchors": 172,
+    "original_default_GnuTLS_trust_store_exit": 0,
+    "OpenSSL_default_ISRG_root_exit": 0,
+    "package_audit_exit": 0,
+    "real_credentials_used": false
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-ca-native-install-evidence.tar.gz",
+    "sha256": "937f4b0335f1c176887f2c7088f36b7df7a99e95646e98f4a0b02dc3ae2b72c3",
+    "members": [
+      "build/b02-ca-native-install.log",
+      "build/b02-ca-native-install.manifest.json",
+      "build/b02-ca-native-install.success.json",
+      "package.json",
+      "phase2/b02-ca-native-install-controller.log",
+      "phase2/b02-ca-native-install-timing.json",
+      "phase2/ca-native-installed-consumer.json",
+      "phase2/ca-native-original-trust.log",
+      "phase2/ca-native-transaction-1.json"
+    ]
+  },
+  "data_transaction": {
+    "state": "complete",
+    "scope": "Factory CA data only; no OpenSSL binary/configuration or NSS module change. Local trust update hook/recovery and remote TLS remain pending.",
+    "old_version": "2026.11.05-1+toddy1",
+    "new_version": "2026.11.09-1+toddy1",
+    "old_archive_sha256": "862396ce6fdabeb6e5da123082c2fd56dbdcba153e394abd084d3e30b9a84fbe",
+    "candidate_result_sha256": "cf0f7ef1b8577cbccb811d2d2873565db9baee4d4977cc5abe1a0d599a88dc1d",
+    "anchors": 172,
+    "server_auth_certificates": 121,
+    "added_server_auth_DER_sha256": [
+      "125609aa301da0a249b97a8239cb6a34216f44dcac9f3954b14292f2e8c8608f",
+      "86a1ecba089c4a8d3bbe2734c612ba341d813e043cf9e8a862cd5c57a36bbe6b",
+      "bc4d809b15189d78db3e1d8cf4f9726a795da1643ca5f1358e1ddb0edc0d7eb3"
+    ],
+    "rollback": "Inspect transaction, dpkg and payload before action. Retained old ca-certificates archive restores previous bundle and removes only new package-owned data; verify original package and all OpenSSL payload. Never replay uncertain install.",
+    "archive_sha256": "b2d0d96f300cce3cb99c988bfa683a201354648125f6f07ce4d7ac66e9ed5846",
+    "payload_entries": 721,
+    "openssl_payload_entries_unchanged": 9803
+  }
+}

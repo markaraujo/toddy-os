@@ -2147,6 +2147,42 @@
       "book_md5": "a8e113e040d57a523684e141970eea7a",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "glib-networking",
+      "version": "2.80.1",
+      "filename": "glib-networking-2.80.1.tar.xz",
+      "url": "https://download.gnome.org/sources/glib-networking/2.80/glib-networking-2.80.1.tar.xz",
+      "sha256": "b80e2874157cd55071f1b6710fa0b911d5ac5de106a9ee2a4c9c7bee61782f8e",
+      "reference": "BLFS13.1-systemd basicnet/glib-networking.html",
+      "book_page_sha256": "5ec416746350b05c7ae991014efc702083162b938cee2fa50839f75c936570fe",
+      "book_md5": "405e6c058723217a1307ba8415615f9d",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "make-ca",
+      "version": "1.16.1",
+      "filename": "make-ca-1.16.1.tar.gz",
+      "url": "https://github.com/lfs-book/make-ca/archive/v1.16.1/make-ca-1.16.1.tar.gz",
+      "sha256": "98c7e6fded1938b972d0177b5d5e925d318be87f84ee9e4cad680656a8c29414",
+      "reference": "BLFS13.1-systemd postlfs/make-ca.html",
+      "book_page_sha256": "0d28a7a305e87cbd9c75cb073793e682a34e51f7c4a540d654a40c698fd32aeb",
+      "book_md5": "bf9cea2d24fc5344d4951b49f275c595",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libproxy",
+      "version": "0.5.12",
+      "filename": "libproxy-0.5.12.tar.gz",
+      "url": "https://github.com/libproxy/libproxy/archive/0.5.12/libproxy-0.5.12.tar.gz",
+      "sha256": "a1fa55991998b80a567450a9e84382421a7176a84446c95caaa8b72cf09fa86f",
+      "reference": "BLFS13.1-systemd general/libproxy.html",
+      "book_page_sha256": "bfbeff515ca203e535e056779cd4cb32229efdcc08e6dbe6560ad1b13917d09b",
+      "book_md5": "db615bbae5c20eb209a2cdbfe62e0fa3",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

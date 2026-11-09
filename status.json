@@ -368,7 +368,11 @@
         "docs/evidence/B02-libpsl-install.json",
         "docs/evidence/B02-nettle-install.json",
         "docs/evidence/B02-libunistring-install.json",
-        "docs/evidence/B02-libidn2-install.json"
+        "docs/evidence/B02-libidn2-install.json",
+        "docs/evidence/B02-ca-stage.json",
+        "docs/evidence/B02-ca-native-install.json",
+        "docs/evidence/B02-gnutls-stage.json",
+        "docs/evidence/B02-gnutls-install.json"
       ]
     },
     {

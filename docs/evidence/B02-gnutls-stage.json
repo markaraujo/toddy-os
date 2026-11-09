@@ -1,0 +1,63 @@
+{
+  "scope": "813distinct original standard passes/102skips reused, two original failures preserved. Default trust repaired in separate real CA stage; public DNS unqualified. Native crypto/default UTF8/IDNA/priority/refusal/recovery, not installed system trust/network/GNOME acceptance",
+  "compile_exit": 0,
+  "stage_exit": 0,
+  "consumer": {
+    "SHA256_and_AEAD_roundtrip": true,
+    "tampered_tag_refused_and_recovered": true,
+    "actual_password_API_invalid_UTF8_refused": true,
+    "NFC_prior_state_preserved": true,
+    "IDNA2008_conversion": true,
+    "TLS13_priority_and_invalid_priority_refusal": true,
+    "lifecycle_cycles": 2,
+    "real_credentials_used": false
+  },
+  "original_ELFs_unchanged": true,
+  "original_tests": {
+    "distinct_records": 917,
+    "counts": {
+      "PASS": 813,
+      "SKIP": 102,
+      "FAIL": 2
+    },
+    "failures": [
+      "tests/trust-store.trs",
+      "src/gl/tests/test-getaddrinfo.trs"
+    ],
+    "records_sha256": "b416445ce7cefe4ec31deafb9b8e772eb3524e5ce1ae9b7e3483cece93a175f6",
+    "duplicate_certificate_entries": "Upstream summary80 entries includes seven duplicated names; actual73 unique PASS driver records, all preserved. Never count duplicates as additional results."
+  },
+  "artifacts": {
+    "regular_files": 2024,
+    "manifest_sha256": "b742337c7141bc793d979908e0d327ea048101d2fdaa555b6de4f49181a455d9",
+    "full_manifest": "Retained in raw evidence work/stage-results.json"
+  },
+  "stage_sha256": {
+    "regular_files": 46,
+    "manifest_sha256": "3756c7c592f5802a244335b92920e19cfd7240f53b4d5981d28943acfa621406",
+    "full_manifest": "Retained in raw evidence work/stage-results.json"
+  },
+  "source": {
+    "name": "gnutls",
+    "version": "3.8.13",
+    "filename": "gnutls-3.8.13.tar.xz",
+    "url": "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.13.tar.xz",
+    "sha256": "ffed8ec1bf09c2426d4f14aae377de4753b53e537d685e604e99a8b16ca9c97e",
+    "reference": "BLFS13.1-systemd postlfs/gnutls.html",
+    "book_page_sha256": "87d25ea60a20204db11e86ec8c858e04de40243aeec38adf151b179f4dd919a7",
+    "book_md5": "a97671c1839340c6b43c23ccb3237180",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "failure_recovery": {
+    "own_stage4_failed_before_staging": "Expected924/820 instead of917/813 distinct records. Corrected own count bound to retained upstream list/PASS records; stage5 exit0, no original test replay.",
+    "missing_default_trust": "Original FAIL preserved. Actual unchanged original passed separately against qualified private frozen-NSS CA candidate; installed validation separate.",
+    "public_DNS": "Original getaddrinfo FAIL in route-free sandbox remains unqualified; real native DNS check mandatory before B02 acceptance."
+  },
+  "native_install_pending": true,
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gnutls-stage-evidence.tar.gz",
+    "sha256": "aef0909f55c1581d6ae9d54c7694b6e42aa418d4b8f7cb3cfa427b3d441f60a6",
+    "members": 1862
+  }
+}

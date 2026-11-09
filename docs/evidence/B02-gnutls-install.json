@@ -1,0 +1,177 @@
+{
+  "scope": "Owned installed crypto/default UTF8/IDNA/priority/refusal/recovery/SDK, unchanged original default system trust. Public DNS, remote TLS, native GNOME and local-trust update/recovery remain pending.",
+  "transaction": {
+    "step": "b02-gnutls-install-2",
+    "started": "2026-11-09T21:41:19.788206+00:00",
+    "recipe_sha256": "f31a7530e4cdda794b75f149be4690f756850c3188ee03bfb7ca6cddfc96d14f",
+    "postcheck_sha256": "eac898b020200f9bc6b877c909b0a1f544a6bf0c07e0debcf11240d5d57d7ea6",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "e0c51aaf6886ecf3fa7f14c8298471a12f3aa876bd35298ed9e820c743dfe673",
+    "recipe_pid": 350762,
+    "recipe_pgid": 350762,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T21:41:39.637248+00:00",
+    "changed_paths": 66,
+    "log_sha256": "a646a59ba6e8caae682d99dc0d65f96e3167ddc5bc446f29428fc34907840a36",
+    "supporting_build_scripts": {
+      "count": 2,
+      "sha256": "10d2c16cf624dae413f3d0b5e54963b08ce7a4f22874d0eeb40b7cd3a0b92d37"
+    }
+  },
+  "package": {
+    "name": "gnutls",
+    "version": "3.8.13-1+toddy1",
+    "archive_sha256": "a0ae9647396974810cd52340e2c578f85f4b5dc4f10afd815ee86ae787adc51e",
+    "recipe_sha256": "f31a7530e4cdda794b75f149be4690f756850c3188ee03bfb7ca6cddfc96d14f",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "gnutls",
+        "version": "3.8.13",
+        "filename": "gnutls-3.8.13.tar.xz",
+        "url": "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.13.tar.xz",
+        "sha256": "ffed8ec1bf09c2426d4f14aae377de4753b53e537d685e604e99a8b16ca9c97e",
+        "reference": "BLFS13.1-systemd postlfs/gnutls.html",
+        "book_page_sha256": "87d25ea60a20204db11e86ec8c858e04de40243aeec38adf151b179f4dd919a7",
+        "book_md5": "a97671c1839340c6b43c23ccb3237180",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "payload": {
+      "entries": 105,
+      "sha256": "7f16f091a483f19854f5bb9cdb745fbec1a4c8a139b8cfa3a34ce593821d48c8"
+    },
+    "supporting_build_scripts": {
+      "count": 2,
+      "sha256": "10d2c16cf624dae413f3d0b5e54963b08ce7a4f22874d0eeb40b7cd3a0b92d37"
+    }
+  },
+  "timing": {
+    "step": "b02-gnutls-install-2",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.05,
+        "entries": 153281,
+        "regular_files": 136479,
+        "regular_bytes": 7186950784
+      },
+      {
+        "seconds": 13.926,
+        "entries": 153344,
+        "regular_files": 136537,
+        "regular_bytes": 7201243206
+      }
+    ],
+    "total_seconds": 34.946
+  },
+  "installed_consumer": {
+    "scope": "Owned installed crypto/default UTF8/IDNA/priority/refusal/recovery/SDK, unchanged original default system trust. Public DNS, remote TLS, native GNOME and local-trust update/recovery remain pending.",
+    "consumer": {
+      "SHA256_and_AEAD_roundtrip": true,
+      "tampered_tag_refused_and_recovered": true,
+      "actual_password_API_invalid_UTF8_refused": true,
+      "NFC_prior_state_preserved": true,
+      "IDNA2008_conversion": true,
+      "TLS13_priority_and_invalid_priority_refusal": true,
+      "lifecycle_cycles": 2,
+      "real_credentials_used": false
+    },
+    "original_default_trust_exit": 0,
+    "loaded_owned_library": true,
+    "SDK_version": "3.8.13"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gnutls-install-evidence.tar.gz",
+    "sha256": "9716bcba2c186469329de80eadbad3155ef1679ba322a4f649fea082f69b0817",
+    "members": [
+      "build/b02-gnutls-install-2.log",
+      "build/b02-gnutls-install-2.manifest.json",
+      "build/b02-gnutls-install-2.success.json",
+      "build/b02-gnutls-install.failed.json",
+      "build/b02-gnutls-install.log",
+      "build/b02-gnutls-install.manifest.json",
+      "package.json",
+      "phase2/b02-gnutls-install-2-controller.log",
+      "phase2/b02-gnutls-install-2-timing.json",
+      "phase2/gnutls-installed-consumer.json",
+      "phase2/gnutls-installed-original-trust.log"
+    ]
+  },
+  "original_failed_qualification": {
+    "step": "b02-gnutls-install",
+    "started": "2026-11-09T21:40:14.185920+00:00",
+    "recipe_sha256": "f31a7530e4cdda794b75f149be4690f756850c3188ee03bfb7ca6cddfc96d14f",
+    "postcheck_sha256": "eac898b020200f9bc6b877c909b0a1f544a6bf0c07e0debcf11240d5d57d7ea6",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "e0c51aaf6886ecf3fa7f14c8298471a12f3aa876bd35298ed9e820c743dfe673",
+    "recipe_pid": 350431,
+    "recipe_pgid": 350431,
+    "recipe_exit": 1,
+    "postcheck_exit": null,
+    "finished": "2026-11-09T21:40:29.414726+00:00",
+    "changed_paths": 0,
+    "log_sha256": "4a2080cefef80e7cfd3c67c56fccfbc73f903e592e5cb63be32912929c1a3819",
+    "supporting_build_scripts": {
+      "count": 2,
+      "sha256": "ccb5a64c67b27abc6b23236aff27a3be03242c3167684d294b1d81e7fcccda69"
+    }
+  },
+  "correction": "Exact917name/result maps identical; compare mapping and cardinality rather than filesystem enumeration order. No original test or stage replay."
+}

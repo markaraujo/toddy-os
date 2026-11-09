@@ -69,7 +69,7 @@ if __name__=='__main__':
         text=' '.join(''.join(paragraph.itertext()).split())
         if text.startswith('Download (HTTP):') and url is None:
             url=paragraph.find('.//x:a',graph.NS).get('href')
-        if text.startswith('Download MD5 sum:') and md5 is None:
+        if text.startswith(('Download MD5 sum:', 'Download MD5 Sum:')) and md5 is None:
             md5=text.rsplit(' ',1)[-1]
     if args.archive:
         assert args.reference in {'x/x7lib.html','x/x7app.html'}

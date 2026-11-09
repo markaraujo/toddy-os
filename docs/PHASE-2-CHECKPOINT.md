@@ -7,22 +7,30 @@ foundation tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Current slice and exact next action
 
-Current writer: isolated `gnutls-1`, guestPID191184 (verify actual boot/start/job),
-input`/mnt/lfs/sources/phase2/inputs/gnutls-3.8.13`,
-work`/mnt/lfs/sources/phase2/work/gnutls-1`, logs
-`/var/log/toddy/phase2/gnutls-1.{job.json,log,exit}`. Uses `job.py --loopback`:
-private loopback only, no external route; command receipt has `--loopback` before
-source/work (do not assume fixed command[2:] without inspecting profile).
-SourceSHAffed8ec1bf09c2426d4f14aae377de4753b53e537d685e604e99a8b16ca9c97e.
-All required crypto/Unicode/IDNA dependencies now owned. Source explicitly supports
-Nettle4 APIs and validates malformed UTF8 before password transformations.
-Supported minimal flags preserve NORMAL policy/PKCS11, omit optional C++/DANE/TPM/
-leancrypto/Brotli/docs/extended interop/Valgrind. Standard original make check and
-actual crypto/UTF8/IDNA/priority/refusal/recovery selected; critical TLS13 supported
-versions/replay originals must actually pass. Exact next: inspect actual job exit/
-source/test/stage/consumer postconditions, correct only bounded source-backed
-causes; never repeat an uncertain mutation or unchanged approved test suite.
-No remote network, default system trust or native GNOME acceptance inferred.
+Current slice: next GLib TLS/proxy prerequisite preparation. No active writer;
+`b02-ca-native-install.success.json` and `b02-gnutls-install-2.success.json`
+both prove recipe/post0/0. CA data changed717paths,721owned entries, all9803
+OpenSSL package entries unchanged. Actual installed default P11/GnuTLS/OpenSSL
+trust and legacy aliases pass. GnuTLS changed66paths; installed library/SDK/
+crypto/UTF8/IDNA/priority/refusal/recovery and unchanged original trust program0.
+[Decision/evidence](adr/0164-real-system-trust-and-gnutls-integration.md).
+
+GnuTLS retains917distinct original records:813PASS/102SKIP/two original FAILs.
+Certificate list80entries includes seven duplicates,73unique PASS driver records;
+own stage4 count corrected in stage5 without test replay. First native qualifier
+failed only ordered enumeration comparison, ZEROroot changes/no promotion stage/
+archive. Install2 compares exact917name/result maps. NEVER replay successful
+CA preparation/generation/finish/acceptance/native install or GnuTLS stage/install.
+
+Exact next: prepare frozen libproxy0.5.12 build/probe, then GLib-networking2.80.1
+using owned GnuTLS and existing gsettings-desktop-schemas50.1/Duktape2.7.0.
+Libproxy source cached/verified; no guest preparation/build yet. GLib-networking
+source cached, no recipe/guest build yet. Use one isolated compiler writer and
+private loopback for actual local TLS peers. Public DNS remains FAILED/unqualified
+until actual native network. P11 callback/local trust update/recovery/NSS shared
+root alias are pending controlled follow-ups, never claim them operational.
+Fresh combined trust/GnuTLS build recipe portability remains pending; preserve
+historical exact-input jobs and finishing helpers. No Phase2 ISO/native desktop.
 
 Then glib-networking/libsoup/EDS and remaining GNOME/GDM/apps/network/audio/offline/
 focus/responsiveness/resources. Shared caches/trust integration below remain gates.
@@ -118,9 +126,9 @@ full actual422093entry restore verified before retirement. Current140.17source/
 compiled/tests retained. [Custody/recovery](evidence/B02-runtime-custody-checkpoint.md).
 Restore into a NEW absent private path only after full archive/manifest check.
 
-Latest push ef8ca44f7caf48bfd04b7bf7da8501afbc7028bd: safety42689217672/
-planning42689217715/Pages42689217916 allsuccess; exact public HTTP200/indexSHA
- e93371e68bca1d7beaf213862d8a5005774719186c88241b4d88687042113f08 verified.
+Latest verified public495e4120043bd9f335b9f6874849c938cfa6a1a8: safety42692748744/
+planning42692749158/Pages42692748869 allsuccess; exact public HTTP200/indexSHA
+bad4f5bca19631af7948f1c0283967255d2cf1045664e81062360c8614948963 verified.
 Historical GitHub internal zero-job failures/retry retained; no further unchanged
 retry. Select checks by changed impact, no unchanged long suites. Commit/push
 validated slices and verify exact committed public page. No host installation/
