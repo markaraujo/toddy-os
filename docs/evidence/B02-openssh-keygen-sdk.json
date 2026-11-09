@@ -1,0 +1,67 @@
+{
+  "scope": "Private build/test SDK only; no installed OpenSSH package, network client/server or agent acceptance",
+  "source": {
+    "name": "openssh",
+    "version": "10.5p1",
+    "filename": "openssh-10.5p1.tar.gz",
+    "url": "https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-10.5p1.tar.gz",
+    "sha256": "d44d28a839ea9daf969cc69150fde59910b2b39361dad81a3bd6cbd19218db11",
+    "reference": "BLFS13.1-systemd postlfs/openssh.html",
+    "book_page_sha256": "d5c5c6b5bb343bc20404bb947ca2efb127cfa7892fdb79acc6ceadf35345007e",
+    "book_md5": "a95119f402dfa0166c9dd1237239085c",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "result": {
+    "scope": "Private keygen/crypto SDK only; final source version whitespace gate repaired without compile/test/stage/consumer replay. No installed OpenSSH package/server/network acceptance",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "source_version": "10.5p1",
+    "original_programs": [
+      {
+        "name": "sshkey",
+        "exit": 0,
+        "observed_original_cases": 101,
+        "log_sha256": "3baef7bf9613a393e6e1884c7eef3a93e0d4045f29c3d81cdf53fc374114d803"
+      },
+      {
+        "name": "crypto",
+        "exit": 0,
+        "observed_original_cases": 18,
+        "log_sha256": "bc7a81f6e02fc258487ccb7610c1289496a7bcbafc292a31fdb799f95d02c89d"
+      }
+    ],
+    "consumer": {
+      "version": "10.5p1",
+      "ephemeral_ed25519_generate_derive_match": true,
+      "malformed_key_refused": true,
+      "recovery_fingerprint": true,
+      "temporary_keys_removed": true,
+      "key_material_retained": false,
+      "scope": "Private keygen fixture tool only; no SSH network/client/server qualification"
+    },
+    "sdk_sha256": "046578df1befe68aed066503ca6a09be0171914f92ca295ba16da210b8df8d12",
+    "unchanged_original_elfs_count": 191,
+    "unchanged_original_elfs_manifest_sha256": "aba32c6236d4dc69e0fa0026232290a4b692fad316e56b8a3b7b123a4be38901"
+  },
+  "original_recipe_sha256": "56ed56d80a19aa537825f425ee12d13bf2e8e228985d674a49c7e691c3ff2f3c",
+  "metadata_finish_job": "openssh-keygen-metadata-2",
+  "gcr_handoff_receipt": "/var/log/toddy/phase2/gcr-askpass-prepare-1.json",
+  "evidence_location": "/mnt/lfs/sources/phase2/work/openssh-1; original logs and stage-results retained",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-openssh-keygen-sdk-evidence.tar.gz",
+    "sha256": "368992d5d400450310a3ad46cc616729ed4dd945699be3696aaf5a392ae6d8cf",
+    "members": [
+      "phase2/openssh-keygen-1.job.json",
+      "phase2/openssh-keygen-1.log",
+      "phase2/openssh-keygen-1.exit",
+      "phase2/openssh-keygen-metadata-2.job.json",
+      "phase2/openssh-keygen-metadata-2.log",
+      "phase2/openssh-keygen-metadata-2.exit",
+      "stage-results.json",
+      "original-sshkey.log",
+      "original-crypto.log",
+      "native-consumer.json"
+    ]
+  }
+}

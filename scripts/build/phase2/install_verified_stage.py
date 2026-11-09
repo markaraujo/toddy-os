@@ -19,6 +19,9 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gcr': ('4.4.0.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy4), p11-kit (= 0.26.5-1+toddy1), libgcrypt (>= 1.12.4-1), gnupg (>= 2.5.24-1)', 'gcr-4.4.0.1.tar.xz', 'usr/lib/pkgconfig/gcr-4.pc'),
+    'p11-kit': ('0.26.5', 'glibc (>= 2.44-1+toddy1), libffi (>= 3.8.0-1), libtasn1 (= 4.21.0-1+toddy1)', 'p11-kit-0.26.5.tar.xz', 'usr/lib/pkgconfig/p11-kit-1.pc'),
+    'libtasn1': ('4.21.0', 'glibc (>= 2.44-1+toddy1)', 'libtasn1-4.21.0.tar.gz', 'usr/lib/pkgconfig/libtasn1.pc'),
     'gnome-session': ('50.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gnome-desktop (= 44.5-1+toddy1), json-glib (= 1.10.8-1+toddy1), upower (= 1.91.3-1+toddy1), systemd (>= 261.2-1+toddy3)', 'gnome-session-50.1.tar.xz', 'usr/bin/gnome-session'),
     'upower': ('1.91.3', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libgudev (= 238-1+toddy1), polkit (= 127-1+toddy1), systemd (>= 261.2-1+toddy3)', 'upower-v1.91.3.tar.bz2', 'usr/lib/pkgconfig/upower-glib.pc'),
     'accountsservice': ('26.27.3', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), polkit (= 127-1+toddy1), json-c (= 0.19-1+toddy1), libxcrypt (= 4.5.2-1+toddy1), systemd (>= 261.2-1+toddy3), shadow (>= 4.20.2-1)', 'accountsservice-26.27.3.tar.bz2', 'usr/lib/pkgconfig/accountsservice.pc'),
@@ -213,6 +216,7 @@ if __name__ == '__main__':
     if name=='mozjs':qualifier='mozjs-signal-check-4'
     if name=='json-c' and (log/'json-c-finish-3.exit').exists():qualifier='json-c-finish-3'
     if name=='polkit':qualifier='polkit-full-1'
+    if name=='gcr':qualifier='gcr-finish-4'
     if name=='upower':qualifier='upower-consumer-4'
     if name=='accountsservice':qualifier='accountsservice-locale-5'
     if name=='dconf':qualifier='dconf-gsettings-4'
@@ -1129,6 +1133,15 @@ if __name__ == '__main__':
     if name=='polkit':
         from qualify_polkit import qualify as qualify_polkit
         qualify_polkit(ROOT)
+    if name=='gcr':
+        from qualify_gcr import qualify as qualify_gcr
+        qualify_gcr(ROOT)
+    if name=='p11-kit':
+        from qualify_p11_kit import qualify as qualify_p11_kit
+        qualify_p11_kit(ROOT)
+    if name=='libtasn1':
+        from qualify_libtasn1 import qualify as qualify_libtasn1
+        qualify_libtasn1(ROOT)
     if name=='gnome-session':
         from qualify_gnome_session import qualify as qualify_gnome_session
         qualify_gnome_session(ROOT)

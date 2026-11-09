@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-09T17:31:07.365352+00:00
+Updated: 2026-11-09T18:07:06.927737+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T17:31:07.365352+00:00
+Last verified: 2026-11-09T18:07:06.927737+00:00
 
 Verified:
 
@@ -94,8 +94,11 @@ Verified:
 - AccountsService26.27.3-1+toddy1 owned/install/post0/0 changed111paths. Actual native10account/password/PAM/peer-permission/protected-file/Stop/reconnect/persistence outcomes passed;94fixture files unchanged, ephemeral users removed. Initial protected-icon message gate failure retained/source-backed correction only, no rebuild. GNOME/GDM GUI pending.
 - UPower1.91.3-1+toddy1 owned/install/post0/0 changed52paths. Five original portable plus two actual native system-bus original cases passed; real Linux service/query/CLI/refusal/Stop/reconnect,39files unchanged. Native report checksum recovered from exact kernel-console split, no rerun. Shared Systemd hwdb cache integration remains pending before complete desktop/device acceptance; optional battery/Umockdev/power transitions unqualified.
 - GNOME session50.1-1+toddy1 owned/install/post0/0 changed161paths, native5CLI help/version/invalid-option refusal/private two-key schema/session target0. No registered original automated tests; manual D-Bus client and real SessionManager/login/desktop gate pending. Shared schema cache union pending, no graphical acceptance.
+- libtasn1 4.21.0 owned/install/post0/0 changed67paths;40original programs/no skips,111ELFs retained. Installed strict DER typed roundtrip/truncation refusal/two recovery cycles and SDK/APT0. New guarded virtual free-block generation completed/root151017+pending1697entries unchanged, host observed+5.93GB, no old custody/trim replay.
+- p11-kit0.26.5 owned/install/post0/0;67original programs,1077observed TAP passes/two nested skips retained,334ELFs retained. Installed typed URI/refusal/two-cycle recovery/SDK/APT0; no real credentials/server/root-store acceptance. Gcr4.4.0.1 compiled,38original programs passed; askpass keygen fixture needs qualified same-book private ssh-keygen SDK.
+- Gcr4.4.0.1-1+toddy1 owned339paths.38original programs plus three repaired original askpass cases passed;203ELFs unchanged, private byte-identical RW sample only/source unchanged, qualified private OpenSSH10.5p1 SDK119cases. Actual installed transport/refusal/two-cycle recovery/GI/SDK/APT0. Install0/post1 own Gck pkg-config-version assertion corrected verify-only0/0, owned payload/archive unchanged, sole generated APT cache change. No graphical prompt/keyring/real credential acceptance.
 
-Running: No guest writer. Next bounded virtual-disk capacity recovery for verified retired Mozilla baseline source, then remaining GNOME/GDM/application dependencies and controlled shared cache unions. Complete ALL B02 then stop.
+Running: No guest writer. Next native libsecret0.21.7 build/original fixtures/API, then GNOME keyring/EDS/NSS and remaining Shell/GDM dependencies. Shared cache/root trust/browser/desktop acceptance pending. Complete ALL B02 then stop.
 
 Remaining:
 

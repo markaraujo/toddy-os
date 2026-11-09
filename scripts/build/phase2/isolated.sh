@@ -66,6 +66,23 @@ if [[ -d /mnt/lfs/etc/fonts && ! -L /mnt/lfs/etc/fonts ]]; then
     readonly_bind /mnt/lfs/etc/fonts "$root/etc/fonts"
 fi
 readonly_bind "$TODDY_INPUT" "$root/src"
+# One upstream Gcr test chmods this public encrypted sample before deriving its
+# public key. Map only a byte-identical private worker copy; source stays RO.
+if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/gcr-4.4.0.1 ]]; then
+    sample="$TODDY_INPUT/gcr/fixtures/pem-rsa-enc.key"
+    expected=55b32dbd31618e5e949be919fb42ed7ca519f8e4ad5b352c9136ab7202e6ef4e
+    [[ ! -L $sample && $(sha256sum "$sample" | cut -d' ' -f1) == "$expected" ]]
+    fixture_dir="$TODDY_WORK/source-fixtures"
+    [[ ! -L $fixture_dir ]]
+    mkdir -p "$fixture_dir"
+    [[ $(realpath -e "$fixture_dir") == "$fixture_dir" ]]
+    fixture="$fixture_dir/pem-rsa-enc.key"
+    if [[ ! -e $fixture && ! -L $fixture ]]; then
+        install -m0600 -o "$TODDY_UID" -g "$TODDY_GID" "$sample" "$fixture"
+    fi
+    [[ -f $fixture && ! -L $fixture && $(sha256sum "$fixture" | cut -d' ' -f1) == "$expected" ]]
+    mount --bind "$fixture" "$root/src/gcr/fixtures/pem-rsa-enc.key"
+fi
 # PAM's original unit drivers require the first-install deny policy. This is
 # private to its synthetic read-only /etc, never a guest login configuration.
 if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/linux-pam-1.7.2-security-1 ]]; then

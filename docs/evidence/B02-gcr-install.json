@@ -1,0 +1,346 @@
+{
+  "scope": "Owned Gcr/Gck native API/crypto/GI only; original fixture failures and partial skips retained, no actual graphical prompt/keyring/real credential acceptance",
+  "source": {
+    "name": "gcr",
+    "version": "4.4.0.1",
+    "filename": "gcr-4.4.0.1.tar.xz",
+    "url": "https://download.gnome.org/sources/gcr/4.4/gcr-4.4.0.1.tar.xz",
+    "sha256": "0c3c341e49f9f4f2532a4884509804190a0c2663e6120360bb298c5d174a8098",
+    "reference": "BLFS13.1-systemd gnome/gcr4.html",
+    "book_page_sha256": "822f7cdc78943b463652ac63fd615fa3cca98e1acf9536f985af9f3d3bbe12ca",
+    "book_md5": "01da4445b5b16801c6dcc7d8945b4cc4",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "38reused original Gcr/Gck/egg programs plus three repaired original askpass cases; native transport/GI only, no graphical credential prompt/keyring/real credential acceptance",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "reused_original_programs": 38,
+    "original_tests": [
+      {
+        "name": "egg - gcr:asn1x",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gcr:asn1",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gcr:dn",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gcr:decimal",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gcr:hex",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gcr:hkdf",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gcr:oid",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gcr:padding",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gcr:armor",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gcr:dh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gcr:symkey",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gcr:openssl",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gcr:secmem",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gck - gcr:attributes",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gck - gcr:module",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gck - gcr:slot",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gck - gcr:session",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gck - gcr:object",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gck - gcr:crypto",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gck - gcr:uri",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gck - gcr:enumerator",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gck - gcr:modules",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:util",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:simple-certificate",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:certificate",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:secret-exchange",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:certificate-chain",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:fingerprint",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:pkcs11-certificate",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:openpgp",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:subject-public-key",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:openssh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:secure-memory",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:trust",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:record",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:gnupg-process",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:parser",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gcr - gcr:system-prompt",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "original_nested_skips": [],
+    "repaired_original_askpass_cases": [
+      {
+        "name": "properties",
+        "exit": 0
+      },
+      {
+        "name": "ssh-keygen",
+        "exit": 0,
+        "expected_outcome_passed": true,
+        "stdout_sha256": "4bca1720a4c40022b063b285a271f4671a5efb61a7d524cbe77d8ae4f23a9c31",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "cancelled",
+        "exit": 0,
+        "expected_outcome_passed": true,
+        "stdout_sha256": "d77c0111b7014b49a42191f9eb211ae622c7b4dcf7610727f356e7c38eb6fb4f",
+        "stderr_sha256": "aac6dd3c498550d0831df080f71c2e1a6c3e236042612c33710114ef68aacc58"
+      }
+    ],
+    "consumer": {
+      "libgcrypt_transport_roundtrip": true,
+      "malformed_exchange_refused": true,
+      "prior_state_preserved": true,
+      "recovery_cycles": 2,
+      "real_credentials_used": false
+    },
+    "gi": {
+      "native_gi_types": [
+        "GcrSecretExchange",
+        "GckModule"
+      ],
+      "scope": "GI types only; graphical prompt pending"
+    },
+    "unchanged_original_elfs_count": 203,
+    "unchanged_original_elfs_manifest_sha256": "bc18bd6f768b262c5ca3af389623c810a9334c99bb1124b875084a69a83195af",
+    "stage_regular_files": 134,
+    "stage_sha256_manifest_sha256": "9a4b56d56341c820bf8c630e81876703ac8449034253ef285aab82a09ad172cf"
+  },
+  "initial_install": {
+    "step": "b02-gcr-install",
+    "started": "2026-11-09T18:01:04.553614+00:00",
+    "recipe_sha256": "8e9420ed3a7c8d31053b6c3d507965ed7874f94ac8fca2d910d2f34e9509951f",
+    "postcheck_sha256": "7e25bb1d6864b5a2ab24e8180e4ff785e958d14d2f08fd2450e16a295b1b59f9",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "70fe7afd582553e728c02e80a84e64a3d0ca4e4b8e2d71b73bcced4c95c527b0",
+    "recipe_pid": 31037,
+    "recipe_pgid": 31037,
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "finished": "2026-11-09T18:01:20.697491+00:00",
+    "changed_paths": 152,
+    "log_sha256": "f6e89c323fed500ec6d600e0db1dafd1190d7306349d0d0c01ebf9deb7ab17d8",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "ce7dcbf00c73364f73635f95a7f37f3039cdd2f773397efd658ea8c04361a25d"
+  },
+  "verify_only": {
+    "step": "b02-gcr-verify-2",
+    "started": "2026-11-09T18:03:13.079020+00:00",
+    "recipe_sha256": "0eb78c2a052828f28a0f6bad247e5b675ac62477fc2031df99a39e54bd9cf54f",
+    "postcheck_sha256": "545af059fc390d9ba102bb0ad4380840c5b8be549ee424091fdebfb8d7a7a653",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "70fe7afd582553e728c02e80a84e64a3d0ca4e4b8e2d71b73bcced4c95c527b0",
+    "recipe_pid": 31471,
+    "recipe_pgid": 31471,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T18:03:28.117814+00:00",
+    "changed_paths": 1,
+    "log_sha256": "b69052ed54bc309a055d0d50bafe4b7327fbaa18f958c1bd0dd3fc856df026a7",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "c7339dc231e27eaf7d1d9b3b57ec962a9543a8b7130937653cd57d035ab935af"
+  },
+  "verify_only_changed_paths": [
+    "/var/cache/apt/pkgcache.bin"
+  ],
+  "owned_payload_unchanged": "All339payload entries and original archive verified; only APT generated cache changed during postcheck",
+  "installed_consumer": {
+    "scope": "Installed transport/GI/SDK/package audit, no graphical prompt/keyring/real-credential acceptance. Optional SSH-agent not built/enabled",
+    "consumer": {
+      "libgcrypt_transport_roundtrip": true,
+      "malformed_exchange_refused": true,
+      "prior_state_preserved": true,
+      "recovery_cycles": 2,
+      "real_credentials_used": false
+    },
+    "gi": {
+      "native_gi_types": [
+        "GcrSecretExchange",
+        "GckModule"
+      ]
+    }
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gcr-install-evidence.tar.gz",
+    "sha256": "4b2d8d1bf5c6ba378a30bb3aacd8f5313d66fb32cff4f2b51687daef937b07ff",
+    "members": [
+      "build/b02-gcr-install.failed.json",
+      "build/b02-gcr-install.manifest.json",
+      "build/b02-gcr-install.log",
+      "build/b02-gcr-verify-2.success.json",
+      "build/b02-gcr-verify-2.manifest.json",
+      "build/b02-gcr-verify-2.log",
+      "phase2/gcr-installed-consumer.json",
+      "phase2/gcr-stage.json",
+      "phase2/gcr-askpass-prepare-1.json",
+      "phase2/b02-gcr-install-timing.json",
+      "phase2/b02-gcr-verify-2-timing.json",
+      "initial-testlog-1.json",
+      "original-tests.log",
+      "askpass-2.json",
+      "askpass-2.log",
+      "askpass-cases-3.json",
+      "askpass-3-ssh-keygen.stdout",
+      "askpass-3-ssh-keygen.stderr",
+      "askpass-3-cancelled.stdout",
+      "askpass-3-cancelled.stderr",
+      "stage-results.json",
+      "native-consumer.json",
+      "native-consumer.stderr",
+      "native-gi.json"
+    ]
+  }
+}

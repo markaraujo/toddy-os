@@ -1,0 +1,448 @@
+{
+  "scope": "Owned p11-kit API/trust-module fixtures only; actual root-store/credential/token/server integration pending",
+  "source": {
+    "name": "p11-kit",
+    "version": "0.26.5",
+    "filename": "p11-kit-0.26.5.tar.xz",
+    "url": "https://github.com/p11-glue/p11-kit/releases/download/0.26.5/p11-kit-0.26.5.tar.xz",
+    "sha256": "f2cc09111e44bf3fea58f023180b33acea90aa82d042d6fbb623fbc5ba033bb7",
+    "reference": "BLFS13.1-systemd postlfs/p11-kit.html",
+    "book_page_sha256": "2353f7ab4026dff5e978a01003f43c618d351660e4ccacac1d762d1a30b04200",
+    "book_md5": "308306e889850bff08fae74ae7897a21",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Original PKCS11/trust fixture programs and typed URI/refusal/recovery API consumer only; fixtures are not real credentials, hardware tokens or installed root-store acceptance",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "p11-kit:test-tests",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-compat",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-hash",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-array",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-dict",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-hex",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-constants",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-attrs",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-buffer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-url",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-path",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-lexer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-message",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-argv",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-runtime",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-asn1",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-oid",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-progname",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-util",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-conf",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-uri",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-pin",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-modules",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-init",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-deprecated",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-proxy",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-proxy3",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-iter",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-rpc-message",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-virtual",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-managed",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-log",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-log3",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-filter",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-rpc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-transport",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-version",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-server",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-objects.sh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-lists.sh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-messages.sh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-server.sh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-list-mechanisms.sh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-list-tokens.sh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-generate-keypair.sh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-export-public.sh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-import-public.sh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-profiles.sh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-digest",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-base64",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-pem",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-utf8",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-x509",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-persist",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-index",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-parser",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-builder",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-transport3",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-module",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-save",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-enumerate",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-cer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-bundle",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-openssl",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-edk2",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-jks",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "p11-kit:test-token",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "consumer": {
+      "typed_PKCS11_URI_roundtrip": true,
+      "bad_scheme_and_encoding_refused": true,
+      "recovery_cycles": 2,
+      "credentials_loaded": false
+    },
+    "artifacts_entries": 334,
+    "artifacts_manifest_sha256": "c2226632658939a1022a2eb8e29c0ba96db1bea16cbbf2eae1e2bff6c3a7b289",
+    "stage_sha256_entries": 95,
+    "stage_sha256_manifest_sha256": "1f1c3a91f23a2a6cc9fc6bfc4b6d76c06c5207b3fe263362c83cb2ad9d7f7cf9",
+    "observed_tap_pass_lines": 1077,
+    "original_nested_skips": [
+      {
+        "program": "p11-kit:test-compat",
+        "reason": "getprogname path contains symlink"
+      },
+      {
+        "program": "p11-kit:test-server.sh",
+        "reason": "Optional p11tool absent; server-access case not qualified"
+      }
+    ]
+  },
+  "transaction": {
+    "step": "b02-p11-kit-install",
+    "started": "2026-11-09T17:41:10.368034+00:00",
+    "recipe_sha256": "cac2cff3c6e9909b7d42e13f55568a2a1c051b5879d5cebe38f83cc31930b6bf",
+    "postcheck_sha256": "edc6f95faf6cdafa915d70574ed0211013587986c2c52eb8fe1ae5c76bea0b24",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "0b6d5e01f664eb82d589dbccc76b1aede9fb53ee1f19bc05719901d4d9cfaf2e",
+    "recipe_pid": 18603,
+    "recipe_pgid": 18603,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T17:41:27.340077+00:00",
+    "changed_paths": 116,
+    "log_sha256": "2f666aa543c653ab8f2722fe89b2dd06d8509eeb9349256ad7e118d4a699c8ce",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "df2dc3743e866d00302ced0dbf01c362fd155e724ecc83c70e8170c8ed4ca882"
+  },
+  "timing": {
+    "step": "b02-p11-kit-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 13.776,
+        "entries": 151080,
+        "regular_files": 134724,
+        "regular_bytes": 7137055465
+      },
+      {
+        "seconds": 13.634,
+        "entries": 151193,
+        "regular_files": 134825,
+        "regular_bytes": 7143916881
+      }
+    ],
+    "total_seconds": 31.748
+  },
+  "installed_consumer": {
+    "scope": "Actual installed URI/refusal/recovery/SDK/package audit only; no real credentials/token/root-store acceptance",
+    "consumer": {
+      "typed_PKCS11_URI_roundtrip": true,
+      "bad_scheme_and_encoding_refused": true,
+      "recovery_cycles": 2,
+      "credentials_loaded": false
+    },
+    "server_not_enabled_by_slice": true,
+    "root_store_make_ca_and_NSS_alias": "Pending separate qualified integration"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-p11-kit-install-evidence.tar.gz",
+    "sha256": "ea8e20efee6375f08af44fb8873abb2dd6fae699a6ba9cfce4a3763468ac269f",
+    "members": [
+      "build/b02-p11-kit-install.success.json",
+      "build/b02-p11-kit-install.manifest.json",
+      "build/b02-p11-kit-install.log",
+      "phase2/p11-kit-installed-consumer.json",
+      "phase2/p11-kit-stage.json",
+      "phase2/b02-p11-kit-install-timing.json",
+      "phase2/p11-kit-1.job.json",
+      "phase2/p11-kit-1.log",
+      "phase2/p11-kit-1.exit",
+      "original-tests.log",
+      "compile/meson-logs/testlog.json",
+      "stage-results.json"
+    ]
+  }
+}
