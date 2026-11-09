@@ -25,8 +25,27 @@ def run(args,**kwargs):
 
 
 def main():
-    assert len(sys.argv)==1
-    context=ROOT/'.local/phase2/native-glycin-runtime-1'
+    assert sys.argv[1:] in [[],['--dds-followup']]
+    followup=bool(sys.argv[1:]);previous=None;reused=None
+    context=ROOT/'.local/phase2'/('native-glycin-runtime-2' if followup else 'native-glycin-runtime-1')
+    if followup:
+        old=context.parent/'native-glycin-runtime-1'
+        previous=json.loads((old/'result.json').read_text());report=json.loads((old/'native-report.json').read_text())
+        assert previous['phase']=='native-report-recorded' and previous['backing_unchanged'] and not previous['native_selected_passed']
+        assert hashlib.sha256(json.dumps(report,sort_keys=True).encode()).hexdigest()==previous['summary']['report_sha256']
+        container=json.loads(subprocess.check_output(['docker','inspect',previous['container_id']],text=True))[0]
+        assert not container['State']['Running'] and container['State']['ExitCode']==0
+        assert (container['Config'].get('Labels') or {}).get('toddy.boot-test')==previous['run_id']
+        assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==previous['source_identity']
+        failed=[r for r in report['runs'] if r['exit']!=0];assert len(failed)==1 and failed[0]['name']=='tests'
+        assert 'UnknownImageFormat("image/vnd.ms-dds"' in failed[0]['stderr']
+        assert '10 passed; 1 failed;' in failed[0]['stdout']
+        assert not subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()
+        reused={'kernel':report['kernel'],'test_artifacts':report['test_artifacts'],
+                'report_sha256':previous['summary']['report_sha256'],
+                'runs':[{k:r[k] for k in ['name','exit']} for r in report['runs'] if r['exit']==0],
+                'original_image_driver_passed_cases':10,'original_image_driver_failed_case':'color',
+                'original_driver_failure_retained':True}
     assert not context.exists(),'Reconcile existing native operation; never replay'
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
@@ -35,7 +54,12 @@ def main():
     consumer=(ROOT/'scripts/build/phase2/glycin-native-consumer.py').read_text()
     body=(ROOT/'scripts/host/phase2-native-glycin-probe.py').read_text()
     assert body.count('CONSUMER_SOURCE = None')==1
-    probe=body.replace('CONSUMER_SOURCE = None','CONSUMER_SOURCE = '+repr(consumer)).encode()
+    body=body.replace('CONSUMER_SOURCE = None','CONSUMER_SOURCE = '+repr(consumer))
+    compat=(ROOT/'scripts/build/phase2/glycin_mime_compat.py').read_text()
+    assert body.count('MIME_COMPAT_SOURCE = None')==1 and body.count('REUSED_NATIVE_PROOF = None')==1
+    body=body.replace('MIME_COMPAT_SOURCE = None','MIME_COMPAT_SOURCE = '+repr(compat))
+    body=body.replace('REUSED_NATIVE_PROOF = None','REUSED_NATIVE_PROOF = '+repr(reused))
+    probe=body.encode()
     code='''from pathlib import Path
 import fcntl,hashlib,json,subprocess
 subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
@@ -52,22 +76,27 @@ print(json.dumps({'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read
  'fixture_receipt_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),
  'fixture_payload_sha256':hashlib.sha256(json.dumps(r['payload'],sort_keys=True).encode()).hexdigest()}))
 '''
-    accepted=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
+    if followup:accepted_record=previous['accepted']
+    else:
+        accepted=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
+        accepted_record=json.loads(accepted.stdout)
     context.mkdir()
     state={'scope':'Native Glycin selected image tests only; GNOME/B02/G2 remain pending',
            'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
            'started_utc':datetime.now(timezone.utc).isoformat(),'controller_pid':os.getpid(),
            'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
            'controller_start_ticks':Path('/proc/self/stat').read_text().split()[21],
-           'accepted':json.loads(accepted.stdout),'probe_sha256':hashlib.sha256(probe).hexdigest(),'phase':'prepared'}
+           'accepted':accepted_record,'probe_sha256':hashlib.sha256(probe).hexdigest(),'phase':'prepared'}
+    if followup:state['cold_followup_of']='native-glycin-runtime-1'
     def save():
         part=context/'result.json.part';assert not part.exists()
         part.write_text(json.dumps(state,indent=2)+'\n');part.replace(context/'result.json')
         print(json.dumps({'phase':state['phase'],'context':str(context)}),flush=True)
     save()
-    with (context/'builder-stop.log').open('x') as log:
-        state['phase']='stopping-builder';save()
-        run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
+    if not followup:
+        with (context/'builder-stop.log').open('x') as log:
+            state['phase']='stopping-builder';save()
+            run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
     assert not subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()
     state['phase']='builder-stopped';save()
     source=WORK/'lfs-target.qcow2';assert source.is_file() and not source.is_symlink()

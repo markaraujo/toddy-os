@@ -2558,3 +2558,12 @@ Copied only54.5MB native Glycin runtime/original tests/executable fixture after
 free. Native controller/probe retains forced-bwrap real image decoding and
 original tests with explicit unsupported formats, no package promotion from
 compile-only results. Planned one cold native BIOS4CPU/4GiB/noNIC execution.
+
+Actual native Glycin runtime1 cleanly stopped0 with unchanged read-only backing.
+Forced-bwrap PNG/SVG navy pixels and2malformed refusals passed; upstream23Rust
+cases passed (10image,8encoding,4editing,1memory-format). Original color failed
+UnknownImageFormat image/vnd.ms-dds. Source-backed ADR0143 adds only canonical
+DDS alias to same configured decoder, without changing source/binaries/sandbox
+or golden assertions. Cold runtime2 will rerun only color and reuse bound actual
+passes; no promotion yet. Zero-case loader programs,1upstream ignore and1omitted
+AVIF creator are explicitly not passes. Native report/failure remains retained.

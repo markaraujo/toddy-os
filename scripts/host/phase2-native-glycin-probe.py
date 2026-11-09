@@ -13,6 +13,8 @@ import time
 import zlib
 
 CONSUMER_SOURCE = None
+MIME_COMPAT_SOURCE = None
+REUSED_NATIVE_PROOF = None
 
 
 def output(args):
@@ -39,7 +41,13 @@ def main():
     for row in tests['executables']:assert digest(fixture/'executables'/row['name'])==row['sha256']
     before={str(p.relative_to(fixture)):digest(p) for p in fixture.rglob('*') if p.is_file() and not p.is_symlink()}
     assert isinstance(CONSUMER_SOURCE,str) and CONSUMER_SOURCE
-    runs=[]
+    runs=[];config_compat=[]
+    assert isinstance(MIME_COMPAT_SOURCE,str) and MIME_COMPAT_SOURCE
+    compat={};exec(compile(MIME_COMPAT_SOURCE,'glycin-mime-compat','exec'),compat)
+    if REUSED_NATIVE_PROOF is not None:
+        assert REUSED_NATIVE_PROOF['kernel']==os.uname().release
+        assert REUSED_NATIVE_PROOF['test_artifacts']==tests['executables']
+        assert all(r['exit']==0 for r in REUSED_NATIVE_PROOF['runs'])
     def no_new_privileges():
         assert os.geteuid()==101 and os.getegid()==101
         assert ctypes.CDLL(None,use_errno=True).prctl(38,1,0,0,0)==0
@@ -49,6 +57,13 @@ def main():
         tmp=Path(tmp);os.chown(tmp,101,101)
         # Private writable data/config/outputs in this disposable runtime root.
         stage=tmp/'stage';shutil.copytree(fixture/'stage',stage,symlinks=True)
+        config=stage/'usr/share/glycin-loaders/2+/conf.d/glycin-image-rs.conf'
+        original=config.read_bytes();updated=compat['add_dds_canonical_alias'](original)
+        config.write_bytes(updated)
+        config_compat.append({'path':'usr/share/glycin-loaders/2+/conf.d/glycin-image-rs.conf',
+                              'before_sha256':hashlib.sha256(original).hexdigest(),
+                              'after_sha256':hashlib.sha256(updated).hexdigest(),
+                              'change':'Add canonical image/vnd.ms-dds alias with exact same existing DDS loader; every other configuration entry unchanged'})
         for config in (stage/'usr/share/glycin-loaders/2+/conf.d').glob('*.conf'):
             env=dict(os.environ,DESTDIR=str(stage),CONFIG_FILE='/usr/share/glycin-loaders/2+/conf.d/'+config.name)
             helper=Path('/sources/phase2/inputs/glycin-2.1.5/project/build-aux/setup-integration-test.py')
@@ -64,9 +79,11 @@ def main():
         env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C.UTF-8','HOME':str(tmp),'XDG_CACHE_HOME':str(tmp/'cache'),
              'GLYCIN_DATA_DIR':str(stage/'usr/share'),'GI_TYPELIB_PATH':str(stage/'usr/lib/girepository-1.0'),
              'LD_LIBRARY_PATH':str(stage/'usr/lib'),'RUST_LOG':'warn','PYTHONDONTWRITEBYTECODE':'1'}
-        commands=[('native-GI-bwrap-images',['python3','-B','-c',CONSUMER_SOURCE])]
+        commands=[] if REUSED_NATIVE_PROOF is not None else [('native-GI-bwrap-images',['python3','-B','-c',CONSUMER_SOURCE])]
         for row in tests['executables']:
+            if REUSED_NATIVE_PROOF is not None and row['name']!='tests':continue
             args=[str(fixture/'executables'/row['name']),'--test-threads=1','--nocapture']
+            if REUSED_NATIVE_PROOF is not None:args+=['--exact','color']
             if row['name']=='encoding':args+=['--skip','write_avif']
             commands.append((row['name'],args))
         deadline=time.monotonic()+420
@@ -89,7 +106,8 @@ def main():
     raw=json.dumps({'scope':'Native kernel Glycin selected original image/edit/encode tests and forced-bwrap GI consumer; no GNOME or hardware acceptance',
                     'kernel':os.uname().release,'pid1':'systemd','runs':runs,'test_artifacts':tests['executables'],
                     'fixture_files_unchanged':len(before),'unsupported_extensions':tests['unsupported_extensions'],
-                    'runtime_exclusions':tests['runtime_exclusions']},sort_keys=True).encode()
+                    'runtime_exclusions':tests['runtime_exclusions'],'config_compatibility':config_compat,
+                    'reused_native_proof':REUSED_NATIVE_PROOF},sort_keys=True).encode()
     assert len(raw)<=4*1024**2
     encoded=base64.b64encode(zlib.compress(raw,9)).decode();chunks=[encoded[i:i+1024] for i in range(0,len(encoded),1024)]
     for i,chunk in enumerate(chunks):print('TODDY_B02_RUNTIME_DATA',i,chunk,flush=True)
