@@ -3028,3 +3028,22 @@ host, no extraction/build. Target29301858304B free; actual host113225838592B aft
 real cache recovery verification needs a small extra margin above100GiB for this
 next branch. Use a NEW explicit unreferenced h07 cold backup custody, never repeat
 the completed six images, then source/patch/build. Full B02 owner boundary unchanged.
+
+### B02 new Mozilla margin and native engine compilation
+
+New explicit h07backup custody2 passed raw-byte/metadata/exclusivity/structural
+checks,4835282944Bobserved capacity recovered; no previous source replay.
+Archive tool now has fixed audited profile choices. Rust-custody future archive
+commands use absolute GNU tar/minimal environment matching observed safe inputs;
+completed actual recipe remains preserved in its evidence/Git version, no rerun.
+
+Mozilla140.14ESR643083928B/frozen SHA and exact required BLFS Python3.14 patch
+were verified. Five patch paths dry-run0/native --fuzz0 apply0;422090archive members
+prepared0. TargetPython3.14.10/Which2.25/ICU/Cbindgen/LLVM/Rust reused, no foundation
+upgrade. Initial8GiB preparation and remaining4GiB compile budgets passed above
+100GiBhost/16GiBtarget reserves (115454132224B/24289832960Bafter preparation).
+mozjs-1 PID20290/boote22e024f has configure0 and healthy Clang22/Rust compilation.
+Initial job stages only; original critical/API/JIT suites and installed consumer
+remain required before promotion. No desktop/GUI/ISO acceptance. Full B02 then stop.
+
+| 2026-11-09 | B02 Mozilla compile/API | Frozen140.14 source/required Python patch compiled and staged; original901JSAPI cases0/501ELFs unchanged; JIT running | Main log-path startup and initial Python-module failures retained; supported routing/build interpreter correction prepared. Later Mozilla JIT/WebAssembly advisories block release qualification. GtkSource duplicate-capture root cause/one-file candidate documented in ADR0146, not yet runtime verified. |

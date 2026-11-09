@@ -649,14 +649,15 @@
       "Cbindgen0.29.4 exact Cargo.lock72registry archives/file checksums authenticated;20cached/52downloaded, no host compilation. Native source/vendor preparation0 after pre-transfer metadata allowlist correction; source tests/consumer build running, not installed.",
       "Owned cbindgen0.29.4 C/C++ build-tool profile install/post0/0:55paths,2original library+3depfile cases0, staged/installed generated C/C++ header/native Rust shared ABI42/malformed Rust refusal0. Original source/expectations unchanged. Macro/Cython/unstable-profile matrices explicitly unrun/unqualified.",
       "Cold capacity custody complete:6unreferenced backup images structurally checked and gzip/full raw SHA/byte metadata verified before retirement; host availability123148398592B, observed14.47GB gain. Source first-image verification reused after read-only check-context correction. No guest/active/backing/master/ISO change or historical boot claim.",
-      "Primary Rust cache custody complete:39151entries846hardlink groups restored exactly with archive/source metadata verified, source unchanged before retirement, installed-root changed_paths0.7.24GBtarget reclaimed; SDK remains usable, all archive/manifests/logs retained. Authenticated Mozilla140.14esr archive cached only; no JS/GUI acceptance."
+      "Primary Rust cache custody complete:39151entries846hardlink groups restored exactly with archive/source metadata verified, source unchanged before retirement, installed-root changed_paths0.7.24GBtarget reclaimed; SDK remains usable, all archive/manifests/logs retained. Mozilla compile/stage and original API evidence follows; no GUI acceptance.",
+      "Additional host margin from NEW h07cold backup only: byte/metadata/OFD/backing checks0, observed4.83GB recovered; no completed custody replay. Mozilla140.14 source643MB and exact Python3.14 patch5paths authenticated/prepared0; no foundation update. Compile/stage0, shell42; original901API tests0 with501ELFs unchanged, no promotion. GJS1.88.1 source authenticated only."
     ],
-    "running": "No writer. Need small additional host margin after real Rust-cache recovery verification; prepare NEW unreferenced h07 cold backup custody, preserving completed operations. Then pinned SpiderMonkey/GJS source build. Full B02 then pause.",
+    "running": "mozjs-original-tests-4 isolated JIT/all configurations/one worker progressing; source compile/stage0 and901original API cases0/501ELFs unchanged. Main startup log routing correction and dynamic consumer queued uniquely after JIT terminal. Later Mozilla advisories block release qualification; full GNOME/B02 pending, complete ALL B02 then pause.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-09T08:57:42.527392+00:00",
+    "verified_at": "2026-11-09T09:31:33.130019+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

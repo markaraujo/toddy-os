@@ -1782,6 +1782,29 @@
       "book_md5": "c2eb4ac79de8b34cb3353272bea1cbd3",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "mozjs-python314-patch",
+      "version": "140.14.0-1",
+      "filename": "spidermonkey-140.14.0-python_3.14_fixes-1.patch",
+      "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/spidermonkey-140.14.0-python_3.14_fixes-1.patch",
+      "sha256": "24183878004982be0d7d87af2daa49a36d327a279b0abcf222c0c99e805e2ed7",
+      "reference": "BLFS13.1-systemd general/spidermonkey.html required Python3.14 patch",
+      "book_page_sha256": "d22f08d9ecefcbd9dda85e70108b6d3e233e0f970cd52828e78a13f0b50c58c7",
+      "integrity": "Exact required versioned official BLFS HTTPS patch; SHA256 frozen before guest application, no foundation Python update",
+      "status": "source_verified"
+    },
+    {
+      "name": "gjs",
+      "version": "1.88.1",
+      "filename": "gjs-1.88.1.tar.xz",
+      "url": "https://download.gnome.org/sources/gjs/1.88/gjs-1.88.1.tar.xz",
+      "sha256": "767bab80e665d672cb00563c25f0b392a9ec8c2996ed1d4454c698b4c2f0a3d9",
+      "reference": "BLFS13.1-systemd gnome/gjs.html",
+      "book_page_sha256": "be77542b017ecb589a13efd289e22a75259c9e8174d76a1877c0a00299870313",
+      "book_md5": "851963b653cbcf8534dff8b9e719592e",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

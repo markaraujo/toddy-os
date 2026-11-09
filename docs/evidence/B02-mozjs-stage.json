@@ -1,0 +1,74 @@
+{
+  "scope": "Frozen SpiderMonkey compile/stage/shell smoke and original API suite only; not installed or release qualified",
+  "stage": {
+    "scope": "Native compile/install staging and actual JS shell arithmetic smoke only; original critical/API/JIT suites pending, no promotion or GNOME acceptance",
+    "version": "JavaScript-C140.14.0",
+    "native_build_exit": 0,
+    "stage_exit": 0,
+    "staged_shell_exit": 0,
+    "arithmetic": "42",
+    "unqualified": "Critical original JS/API/JIT suites and dynamic consumer still required before owned promotion",
+    "static_archive_omitted": {
+      "path": "usr/lib/libjs_static.ajs",
+      "sha256": "67636b1e64b109de8f1ebba9ffc5d4ea0fcf7fafac3f35f4445755226e5910e7",
+      "reason": "Frozen BLFS13.1 explicitly omits static archive from runtime stage"
+    },
+    "js_config_original_sha256": "5593f05e37bdfdf87b423d8aa94ead803b647c94489f584463aba8d48f8950c1",
+    "js_config_removed_lines": [
+      "NSPR_CFLAGS='@NSPR_CFLAGS@'\n"
+    ],
+    "header_original_sha256": "ba76aa318cad4852bd5402f1f4ca0d537888038c7fb7bf2c186ae1008852f50b",
+    "header_fixed_sha256": "58957d64a2ec9b685f2d006c75102fea2e97cfd9a2182b966477e4e9a1730592"
+  },
+  "original_api": {
+    "scope": "Original complete compiled JSAPI suite only; main/JIT, dynamic consumer and security qualification pending",
+    "exit": 0,
+    "seconds": 7.699918270111084,
+    "compiled_artifacts": 501,
+    "changed_artifacts": [],
+    "stdout_sha256": "7f39d339856afb748feda870fef4877028c7ddcfd6ef410bdefd88684f00e351",
+    "stderr_sha256": "eb5b24a4186155c5b7c8ed6527425498cf702b3c9e9f135d5e35066bca0c44c5",
+    "passed_tests": 901
+  },
+  "source": {
+    "name": "mozjs",
+    "version": "140.14.0",
+    "filename": "firefox-140.14.0esr.source.tar.xz",
+    "url": "https://archive.mozilla.org/pub/firefox/releases/140.14.0esr/source/firefox-140.14.0esr.source.tar.xz",
+    "sha256": "28006bd454e703932e1ea804918165774a1e21478b18e551cd1b38111d664239",
+    "reference": "BLFS13.1-systemd general/spidermonkey.html",
+    "book_page_sha256": "d22f08d9ecefcbd9dda85e70108b6d3e233e0f970cd52828e78a13f0b50c58c7",
+    "book_md5": "c2eb4ac79de8b34cb3353272bea1cbd3",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "security_gate": "Blocked for release: official later advisories identify JavaScript JIT/WebAssembly UAF fixes. Explicit tested security overlay required; no silent source replacement.",
+  "security_sources": [
+    {
+      "url": "https://www.mozilla.org/en-US/security/advisories/mfsa2026-92/",
+      "fixed_in": "140.16",
+      "id": "CVE-2026-92021",
+      "component": "JavaScript Engine:JIT",
+      "impact": "high"
+    },
+    {
+      "url": "https://www.mozilla.org/en-US/security/advisories/mfsa2026-99/",
+      "fixed_in": "140.17",
+      "ids": [
+        "CVE-2026-100769",
+        "CVE-2026-100776"
+      ],
+      "component": "JavaScript:WebAssembly",
+      "impact": "high"
+    }
+  ],
+  "limitations": [
+    "Main/JIT tests still pending classification; first main startup attempted readonly log and executed no cases.",
+    "No installed dynamic consumer, GJS, Shell, GNOME login, ISO or physical hardware acceptance."
+  ],
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-mozjs-stage-api-evidence.tar.gz",
+    "members": 23,
+    "sha256": "31822760c51652ddce57df7ca5377323d2b35460bcf04a51bf14e57e58f5141d"
+  }
+}
