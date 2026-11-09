@@ -2794,3 +2794,54 @@ context/refusal0 preserves21stagefiles; owned C/GI0/0. No physical hardware clai
 Selected Colord supported daemon=false library bootstrap supplies Mutter client
 API without claiming privileged color service/policy/sensor integration; that
 integration remains unqualified. Single colord-1 job; continue all B02 then stop.
+
+### B02 shared hardware database and color client qualification — 2026-11-09
+
+Colord original EDID lookup exposed missing compiled hwdb despite40owned stock
+inputs. Compile the exact current union with accepted same-version systemd-hwdb
+in private unprivileged staging; existing Systemd remains cache owner through
+metadata-only261.2-1+toddy2. No source rebuild/configuration/service changes;
+2119old nonlegal files unchanged. First own negative fixture accidentally matched
+real ZZZ vendor; probe-only correction preserved generated cache. Original
+install0/post1 launcher option mistake preserved; whole archive/payload read-only
+reconciliation then corrected unprivileged original EDID0, changed_paths0.
+Colord source private suite qualified across4original passes+EDID1+remaining33,
+76ELFs unchanged; original full-driver failure and generated-data SKIP retained.
+Private relative-path fixture uses exact existing generated/source files; no
+assertion/library modification or accepted-case replay. Owned client/ICC C/GI
+install/post0/0, no privileged color service/sensor claim. Mutter's mandatory
+rst2man tool requires Docutils0.23; exact source asks Flit>=3.11,<4, whereas
+accepted foundation has4.0.2. Use exact official private3.12.0 backend, preserve
+foundation, offline wheel/native man writer checks; no automatic upgrade.
+Published fb56658 safety/planning/Pages all0 and public index matches committed
+export HTTP200 SHAc91be9b441b9ae36e79286dac555528f59df185fa6e07d625080277195e6023d.
+All B02 native session/app/GUI/offline criteria still pending; stop after B02.
+
+### B02 compositor bootstrap and exact declaration dependency — 2026-11-09
+
+Docutils0.23 man-writer4original cases/API/CLI and owned0/0 passed; foundation
+Flit4.0.2 unchanged, exact private3.12.0 source meets declared constraint.
+Measured Mutter capacity reserves100GiB/16GiB plus1GiB budget passed. Selected
+supported Wayland/EGL/GLES2 native/logind/udev/Wacom/GnomeDesktop/Pipewire/GI
+bootstrap, no Xwayland/desktop OpenGL/MDK/Sysprof. Four original portable Mtk
+programs compile with assertions enabled per frozen BLFS guidance; full
+display/X11/KVM suite not claimed. First compile stops at Cogl GL-1.0.gir include
+after318tasks. Reuse exact accepted GI1.86 primary declarative GL GIR/typelib,
+own13record metadata0/0; no legacy function/GPU/provider/core rebuild. Resume
+existing Ninja directory with preserved original failure and before/after ELF
+checks, no source configure replay. Shared GSettings cache must stay under
+existing owner and actual native compositor/window tests remain required.
+
+### B02 owned Mutter bootstrap — 2026-11-09
+
+Mutter source/resume0, GVDB/four original Mtk programs15cases0;211existing
+ELF artifacts unchanged, staged CLI/GI0. Private schema union includes
+4Mutter plus pending already-owned Colord schema; corrected own expected-ID
+oracle reuses identical cache and validates39new defaults/types/ranges.
+Existing GTK4 stays shared-cache owner through controlled schema/legal-only
+toddy4 update,624old nonlegal files unchanged; new Mutter50.4 owned0/0, native
+CLI/GI/global61fixed+6relocatable schemas0. Prior archives/records retained,
+no user preference writes, GTK4 library rebuild or upstream replay. Actual
+compositor/window/GDM/KMS/GNOME acceptance still pending. Next fresh native
+7.1.8 disposable headless Wayland/GTK/Libadwaita validation context; never
+boot old overlays against changed parent. Complete all B02 then stop.

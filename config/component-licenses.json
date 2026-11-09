@@ -2542,7 +2542,21 @@
       "name": "mutter",
       "version": "50.4",
       "license": "LicenseRef-mutter-per-file",
-      "evidence": "Primary authenticated root notices: GPL2. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+      "evidence": "Primary authenticated COPYING (GPL2) plus per-file/bundled notices; retain full exact source collection including GVDB LGPL. Pinned source reviewed in B01; current Wayland/EGL/GLES2 native-backend bootstrap is not graphical/runtime acceptance.",
+      "extra_license_headers": {
+        "mutter-50.4.tar.xz": {
+          "prefixes": [
+            "src/",
+            "cogl/",
+            "clutter/",
+            "mtk/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     },
     {
       "name": "gnome-shell",
@@ -10544,6 +10558,24 @@
           ]
         }
       }
+    },
+    {
+      "name": "docutils",
+      "version": "0.23",
+      "license": "LicenseRef-docutils-per-file",
+      "evidence": "Primary COPYING.rst/licenses and per-file notices retained, exact wheel includes source license files; build-only manpage tool"
+    },
+    {
+      "name": "docutils-flit-backend",
+      "version": "3.12.0",
+      "license": "MIT",
+      "evidence": "Exact official source LICENSE retained; private read-only build backend only, accepted foundation Flit4.0.2 unchanged"
+    },
+    {
+      "name": "gi-gl-types",
+      "version": "1.86.0",
+      "license": "LicenseRef-gobject-introspection-per-file",
+      "evidence": "Exact primary GI1.86.0 notices and unchanged GL-1.0.gir retained; declarations/typelib only, no provider or core rebuild"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

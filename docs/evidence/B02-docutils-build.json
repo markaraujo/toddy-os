@@ -1,0 +1,19 @@
+{
+  "scope": "Native original man writer cases, actual rst2man CLI and explicit include/raw-policy consumer; build tooling only, no desktop acceptance",
+  "upstream_manpage_cases": 4,
+  "upstream_exit": 0,
+  "staged_consumer": {
+    "scope": "Native Docutils manpage generation and explicit include-disabled refusal; no global document/security policy claim",
+    "version": "0.23",
+    "native_consumer_exit": 0,
+    "man_output_bytes": 819
+  },
+  "staged_cli_exit": 0,
+  "private_backend": "Exact Flit3.12.0 per source >=3.11,<4; base4.0.2 unchanged",
+  "wheel_sha256": "3db8aa37cefbc20a25970b60b6f407ebceaf20957b9916e23be3d22348235d97",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-docutils-native-evidence.tar.gz",
+    "members": 18,
+    "sha256": "34d2e269f0e165a1dc85ec005999875ad3caf93f55e9ec6c535b1f718237ca38"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "step": "b02-colord-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T05:28:43.553149+00:00",
+  "package": {
+    "name": "colord",
+    "version": "1.4.8-1+toddy1",
+    "archive_sha256": "5a48263cca73f22a9cca08aa0ef4559065a00e7aae5d6e90b692f859b9a475bc"
+  },
+  "payload_entries": 404,
+  "consumer": {
+    "scope": "Native installed Colord RGB ICC serialization/reopen/refusal and client/GI lifecycle; no color service/device acceptance",
+    "name": "colord",
+    "version": "1.4.8",
+    "native_consumer_exit": 0,
+    "stdout": "native Colord default RGB ICC serialize/reopen, client lifecycle and malformed-profile refusal; no color service/device acceptance"
+  }
+}

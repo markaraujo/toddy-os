@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T05:16:07.003098+00:00
+Last verified: 2026-11-09T06:05:30.661179+00:00
 
 Verified:
 
@@ -60,8 +60,14 @@ Verified:
 - Owned libusb1.0.30 options/init drivers/C no-discovery/refusal0/0; stress and umockdev omitted, no physical USB acceptance.
 - Pulse17.0/Canberra0.30 legal metadata upgraded to toddy2 with complete LGPL/GPL;105Pulse/25Canberra nonlegal files unchanged, native C/refusal0/0; no compile/upstream replay.
 - Owned GUsb0.4.9 original API map/2ID+JSON fixture cases/C/GI0/0,21stagefiles unchanged by final probe. Upstream optional polling getter bug explicitly unqualified; no physical USB claim.
+- Same-version Systemd261.2-1+toddy2 owns qualified40-input hardware database;2119old nonlegal files unchanged. Native vendor/refusal/API/CLI0 and corrected launch-only original Colord EDID0; verify-only0/0 changed_paths0, no source rebuild or hardware claim.
+- Owned Colord1.4.8 client/ICC bootstrap0/0,38distinct original cases across verified partitions/76ELFs unchanged; original failed monolithic run and generated-data SKIP retained. Native RGB ICC/refusal/GI0; no privileged color service/sensor acceptance.
+- Owned Docutils0.23 install/post0/0,4original man writer cases/API/CLI/include-disabled consumer0; private source-required Flit3.12 backend leaves foundation4.0.2 unchanged. Build tooling only.
+- Owned unchanged GI1.86 GL namespace declarations/compiler/typelib import0/0,13record definitions; no legacy GL invocation/provider/GPU claim/core rebuild.
+- Mutter50.4 source bootstrap0: GVDB+four original Mtk programs15cases/CLI/GI/private schemas0;211previous compiled ELFs unchanged after exact GL declaration prerequisite, no actual compositor/display claim.
+- Owned Mutter50.4-1+toddy1 and existing GTK4 schema/legal-only4.22.4-1+toddy4 upgrade0/0:624oldGTK4regular files unchanged, actual global61fixed+6relocatable schemas/39new defaults0, including pending Colord ColorHelper. No user preferences/GTK4 rebuild/GUI acceptance.
 
-Running: Single unprivileged Colord1.4.8 client/ICC-data source job colord-1 PID91959; original private data/API/refusal checks before Mutter dependency. No native GNOME/login/apps/network/audio/offline acceptance; complete ALL B02 then pause.
+Running: No writer; owned Mutter50.4/GTK4 schema-owner metadata0/0. Prepare fresh native7.1.8 headless Wayland/GTK/67Libadwaita tests after committed checkpoint; actual compositor/window/GNOME/login/apps/network/audio/offline acceptance pending; complete ALL B02 then pause.
 
 Remaining:
 

@@ -1,0 +1,235 @@
+{
+  "scope": "New Mutter owned Wayland bootstrap and existing GTK4 shared schema/legal-only metadata update; no GTK4 library rebuild or user preference change",
+  "state": "complete",
+  "packages": [
+    {
+      "name": "mutter",
+      "version": "50.4-1+toddy1",
+      "archive_sha256": "8d2881bb20c7310a370463e274ad12ab5ef70520547885ddc3018439318b3f69"
+    },
+    {
+      "name": "gtk",
+      "version": "4.22.4-1+toddy4",
+      "archive_sha256": "afd2eaeb4d3d50c14c1c7ccdf5523895c09e0c079218f24290a71d6da9d87fbd"
+    }
+  ],
+  "old_gtk_archive_sha256": "9fa9c541646592421b060ada42934f4f6561ef3a9fc69ad65344f1a0395a429c",
+  "old_cache_sha256": "310d5f4f97596655f5b75d917b4e208a6b05212aa842be90dcb3bce1e856f6aa",
+  "new_cache_sha256": "8ad54fb2b61db7d23c39a74349962a25866cf7ce4319f6d7b65781e909413f45",
+  "schema_inputs": [
+    {
+      "path": "org.gnome.desktop.search-providers.gschema.xml",
+      "sha256": "00e6c4931d9a4005be80abae2d28bb7b716724cedc19c7be9e6d015a0ac0ea9c"
+    },
+    {
+      "path": "org.gtk.gtk4.Settings.Debug.gschema.xml",
+      "sha256": "f3093b00e9184a19289f0755345e3414921aafe15433342b36b327ade2048998"
+    },
+    {
+      "path": "org.freedesktop.ColorHelper.gschema.xml",
+      "sha256": "096896a93ff7316edca288a2f7866f62417793b686b1a3e04427c548c191ae74"
+    },
+    {
+      "path": "org.gnome.desktop.app-folders.gschema.xml",
+      "sha256": "f6a6be999af5d5ed29079432182af7708adefc0a2c7beeb7418254487ee4b772"
+    },
+    {
+      "path": "org.gnome.desktop.sound.gschema.xml",
+      "sha256": "ff7dcae2b2b3d6109bf4d75511f0ce1538e39b0593bfcd33f35f12653c62be92"
+    },
+    {
+      "path": "org.gnome.desktop.interface.gschema.xml",
+      "sha256": "ff7b0f1f22c85ee8a134ca4ce78eb293f416409032efefdde9a5923f1bc2d478"
+    },
+    {
+      "path": "org.gnome.desktop.break-reminders.gschema.xml",
+      "sha256": "de47dd4e0b171c1eb0b7e81761a78f23d043abe662895e37e39a314f96bb192b"
+    },
+    {
+      "path": "org.gtk.Settings.FileChooser.gschema.xml",
+      "sha256": "c7089f41d22b3854c05fe4996ff271949b40148a40b9c6f0ae0349792dc94b77"
+    },
+    {
+      "path": "org.gnome.desktop.default-applications.gschema.xml",
+      "sha256": "a7c99035d26c1065e9c06541515d06e5ed4d105313f18afad44e628ba32ff280"
+    },
+    {
+      "path": "org.gnome.desktop.a11y.keyboard.gschema.xml",
+      "sha256": "429b25000a947e1b03724546e88b0f3dd6d3bac42addaec36d6cf81062c89cbb"
+    },
+    {
+      "path": "org.gnome.desktop.wm.keybindings.gschema.xml",
+      "sha256": "23ab886d75e93a79b5829677d1d41f55d4ec27a823b239e9f1b80d5b7dd64efa"
+    },
+    {
+      "path": "org.gnome.desktop.a11y.gschema.xml",
+      "sha256": "f471028deedc07708638c7ea056ed1c6eb6632b987905321085288e836f337a8"
+    },
+    {
+      "path": "org.gtk.gtk4.Settings.ColorChooser.gschema.xml",
+      "sha256": "3c60a020ac823ad9c02394c8579296711a148fb6e15dac1c4dffa3470303af32"
+    },
+    {
+      "path": "org.gtk.Demo4.gschema.xml",
+      "sha256": "e20a078510ee04476c87f9f8452371ba829ee7de2f2d862ea732793719e74846"
+    },
+    {
+      "path": "gschema.dtd",
+      "sha256": "44a12f339042a3f5568a9cc86bb617fabaf4a25836b8c9510aa9de22431930c6"
+    },
+    {
+      "path": "org.gtk.Settings.EmojiChooser.gschema.xml",
+      "sha256": "22aba28a5a78745d87eeded88f1b86f7ddea24b1b90771151ef494c660a1b591"
+    },
+    {
+      "path": "org.gnome.desktop.input-sources.gschema.xml",
+      "sha256": "1255b1e6ba8fcccf43a87ff6ca2343fd55b99f2d89a936556ff1fa6a9b23069e"
+    },
+    {
+      "path": "org.gtk.gtk4.Inspector.gschema.xml",
+      "sha256": "0a716456c56ff6a4f3ad1d72b2205b2e982a231a9586cba32bc7d1bcc93cf45a"
+    },
+    {
+      "path": "org.gnome.desktop.datetime.gschema.xml",
+      "sha256": "db8f91d8966e24570844f4f0e52b6d5e4d0212cb398c71509f5f3cab6b39d292"
+    },
+    {
+      "path": "org.gnome.desktop.a11y.mouse.gschema.xml",
+      "sha256": "2409903ede1c85e899ff6576bc9711b9016704ee0434c22287d34d7e8c888c36"
+    },
+    {
+      "path": "org.gnome.desktop.calendar.gschema.xml",
+      "sha256": "9c2f2169d8cc6cc818179e340db60e3edf1f1d804b0e84415d1ad1c7315d01e0"
+    },
+    {
+      "path": "org.gnome.desktop.privacy.gschema.xml",
+      "sha256": "304f26f2030d538f0e7ab1a8bae486e2b5e5879bc55c618e8931dc822284abd5"
+    },
+    {
+      "path": "org.gnome.desktop.thumbnailers.gschema.xml",
+      "sha256": "899bfc15c310051674714addc541824556a1e6d65b32cb715cba18662dc6ea02"
+    },
+    {
+      "path": "org.gnome.system.proxy.gschema.xml",
+      "sha256": "0f02db915e726017c17c1619ee9fd8f9ee7e6d4698f0fc160a0eb88b29f2bafd"
+    },
+    {
+      "path": "org.gnome.desktop.peripherals.gschema.xml",
+      "sha256": "cc4e5467c6d171852d8ca898d876848e8b57f347902a432990ab91c7439efee1"
+    },
+    {
+      "path": "org.gtk.gtk4.Settings.EmojiChooser.gschema.xml",
+      "sha256": "893b260569e832bb96bfa5ff95893f85d81543069799f22bf66dd419ad50a702"
+    },
+    {
+      "path": "org.gnome.system.locale.gschema.xml",
+      "sha256": "5b1e65629a77dcd201f4d86932ad62c0c41ec61fb117f151966d13e69411e2dc"
+    },
+    {
+      "path": "org.gnome.desktop.session.gschema.xml",
+      "sha256": "a18788e5bc793c92ed0763c57aa33560a07527e785029c6d7fb224c95796c858"
+    },
+    {
+      "path": "org.gnome.desktop.wm.preferences.gschema.xml",
+      "sha256": "cccc86360fb6fbe451e8b27c97d756c711d85dc21bc191075dab2b8613b055a1"
+    },
+    {
+      "path": "org.gnome.desktop.a11y.interface.gschema.xml",
+      "sha256": "a78954d4d3a60ca3b11790b0b9dec7a3f6f865d8fdb8106d08881756522c6624"
+    },
+    {
+      "path": "org.gnome.desktop.background.gschema.xml",
+      "sha256": "5947187d029261164eb3e938b529aafff3b3625f2f0bdc6185bbf5776afd28c6"
+    },
+    {
+      "path": "org.gtk.Settings.Debug.gschema.xml",
+      "sha256": "de0685fdc2f6e890e32445a79aa938e5566b8dd406dd71d6c6a66c69e3f941e3"
+    },
+    {
+      "path": "org.gnome.desktop.notifications.gschema.xml",
+      "sha256": "b7e983b5fa4cedccba7e6494c89de0997274986cdc69377a51589d97ac07acb4"
+    },
+    {
+      "path": "org.gtk.Settings.ColorChooser.gschema.xml",
+      "sha256": "e476913ef61e6719ff56c2e4c5b8b276af3020bfb0d007263c2a241835730882"
+    },
+    {
+      "path": "org.gnome.desktop.thumbnail-cache.gschema.xml",
+      "sha256": "20246fc5002a989287eb7e5e351cfd79245df63d0978b879882ff3d534b8f9fb"
+    },
+    {
+      "path": "org.gnome.desktop.enums.xml",
+      "sha256": "8f8b68a34689ad5ede33a1d1d1c7ab3a8691aea83cf15bd3dcce82d9ded94f41"
+    },
+    {
+      "path": "org.gnome.desktop.media-handling.gschema.xml",
+      "sha256": "cdaa8e9740fb99852b237cfae8efcd0bb85d2de8b32ea483aad4919e3c87bb10"
+    },
+    {
+      "path": "org.gnome.desktop.a11y.magnifier.gschema.xml",
+      "sha256": "0316beb1020bf0e1594c1578d4ee17044d8d4f04a58e788631b054503f07e0a0"
+    },
+    {
+      "path": "org.gtk.gtk4.Settings.FileChooser.gschema.xml",
+      "sha256": "e7a7482f7937a0588961613df2b14e509b08c1281bdb0b12ab279856d7d8fcea"
+    },
+    {
+      "path": "org.gnome.desktop.screen-time-limits.gschema.xml",
+      "sha256": "252058749b1c7c24fc497061f7c15623d7fffe988c3961b17ee05e7ae4fd9d51"
+    },
+    {
+      "path": "org.gnome.system.location.gschema.xml",
+      "sha256": "3fe90ebe8c851340249a1febe741b777c65b49a823201ead02f341be861060ed"
+    },
+    {
+      "path": "org.gnome.desktop.screensaver.gschema.xml",
+      "sha256": "82e61a216bfe8bdad9b98400389cb179f149071dba8ff89720a03cc83ca633a8"
+    },
+    {
+      "path": "org.gnome.desktop.a11y.applications.gschema.xml",
+      "sha256": "6e67c6d900b0e698681454948dc6a11904edc1059af69d83ae8ff1c69abfe4ca"
+    },
+    {
+      "path": "org.gnome.desktop.lockdown.gschema.xml",
+      "sha256": "3578e779ecee25ec24cb69e7170411c03f578ecda3f48455b86305b442fcad65"
+    },
+    {
+      "path": "org.gnome.mutter.wayland.gschema.xml",
+      "sha256": "a9f5c8057f6fb4bf19459862f1a47e29a863800dce1db5fc1b6cf810010a2dad"
+    },
+    {
+      "path": "org.gnome.mutter.gschema.xml",
+      "sha256": "acd1808a1b6c846943872d8d13a935c31ffc572e224828f68b103dd4c5fe21a3"
+    }
+  ],
+  "new_schemas": {
+    "org.freedesktop.ColorHelper": "/org/freedesktop/color-helper/",
+    "org.gnome.mutter.wayland.keybindings": "/org/gnome/mutter/wayland/keybindings/",
+    "org.gnome.mutter.wayland": "/org/gnome/mutter/wayland/",
+    "org.gnome.mutter": "/org/gnome/mutter/",
+    "org.gnome.mutter.keybindings": "/org/gnome/mutter/keybindings/"
+  },
+  "new_default_values_checked": 39,
+  "rollback": "Inspect actual dpkg/receipt first. Retained GTK4 toddy3 archive restores previous cache/owner metadata, then remove only newly installed Mutter; verify old cache and remaining stock XML. ColorHelper XML was already installed before this transaction. Never replay an uncertain step.",
+  "old_gtk_nonlegal_regular_files_unchanged": 624,
+  "run": {
+    "step": "b02-mutter-resources-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T05:54:11.300481+00:00"
+  },
+  "consumer": {
+    "native_gi_exit": 0,
+    "native_schema_exit": 0,
+    "fixed_schemas": 61,
+    "relocatable_schemas": 6,
+    "scope": "Native installed Mutter Wayland bootstrap CLI/GI/shared schema ownership only; actual compositor/window/session still pending",
+    "version": "mutter 50.4",
+    "old_gtk_nonlegal_regular_files_unchanged": 624
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-mutter-resources-evidence.tar.gz",
+    "members": 16,
+    "sha256": "e822604ddb093f88cf73452a5b820f311dd9e7fc0045eeb643371d0290677905"
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "scope": "Original Colord client/ICC/data cases across verified partitions, no color service/device acceptance",
+  "original_full_driver_exit": "SIGABRT before hwdb existed, retained; not a passed monolithic run",
+  "original_cases_reused": [
+    "/colord/spectrum",
+    "/colord/spectrum{planckian}",
+    "/colord/spectrum{subtract}",
+    "/colord/spectrum{cx}"
+  ],
+  "native_edid_case_recovered": {
+    "name": "/colord/edid",
+    "native_exit": 0,
+    "log_sha256": "7452fccda1cf011a3d234dab2a7aae677c3b815977d7d2dd70736ca14448477e"
+  },
+  "pending_case_results": [
+    {
+      "name": "/colord/transform",
+      "native_exit": 0,
+      "log": "/build/finish-2/05.log",
+      "sha256": "ff87685054e3562d22fdc4940ad84af0652be41684c9d9db079f04d493a30aa0"
+    },
+    {
+      "name": "/colord/icc",
+      "native_exit": 0,
+      "log": "/build/finish-2/06.log",
+      "sha256": "08c537d63d6c829a9a011466d705af05f1d78e6a88e8bfbf63b01658c8e9385c"
+    },
+    {
+      "name": "/colord/icc{util}",
+      "native_exit": 0,
+      "log": "/build/finish-2/07.log",
+      "sha256": "e58a2fef4a832138b86828ba376bef0a8f2a0dcd1762c7a15e8391232893dfec"
+    },
+    {
+      "name": "/colord/icc{localized}",
+      "native_exit": 0,
+      "log": "/build/finish-2/08.log",
+      "sha256": "7d06c67cfd4e756ace6f080e707e8f22e06d8f5e0b4afec24ec7e9b4db193703"
+    },
+    {
+      "name": "/colord/icc{edid}",
+      "native_exit": 0,
+      "log": "/build/finish-2/09.log",
+      "sha256": "4003d87c3f5dfe8321d31fbbd5ba0173bb0d5cd97eae2faea368cc6cd231943a"
+    },
+    {
+      "name": "/colord/icc{characterization}",
+      "native_exit": 0,
+      "log": "/build/finish-2/10.log",
+      "sha256": "dbb8e6c1fa84b091495da7c3204585659a5ef660570c1d3bb3f398a50cc8d9ee"
+    },
+    {
+      "name": "/colord/icc{save}",
+      "native_exit": 0,
+      "log": "/build/finish-2/11.log",
+      "sha256": "7fd4725cbf61188d2ea043c02bdcfbfa8693c7b9188a22f97dd4bc4d7c1ce438"
+    },
+    {
+      "name": "/colord/icc{empty}",
+      "native_exit": 0,
+      "log": "/build/finish-2/12.log",
+      "sha256": "7f8b3209d86ecdc7c7525e0bb88a6237aaab131eeae8b8e59b5a23c58308033b"
+    },
+    {
+      "name": "/colord/icc{corrupt-dict}",
+      "native_exit": 0,
+      "log": "/build/finish-2/13.log",
+      "sha256": "d1bab6d1347af80693f78b4c1a694e637cf1a861fd7c1296010e979f7c62d758"
+    },
+    {
+      "name": "/colord/icc{clear}",
+      "native_exit": 0,
+      "log": "/build/finish-2/14.log",
+      "sha256": "6efc17b6e9f76d01d8fe91df33b99b1f72672c1cffc53fa679aac079712c8ea4"
+    },
+    {
+      "name": "/colord/icc{tags}",
+      "native_exit": 0,
+      "log": "/build/finish-2/15.log",
+      "sha256": "7c0a95861ecf5335188569f51ba89f38d594c57ac4dc78b83eceb402f6e6a21c"
+    },
+    {
+      "name": "/colord/icc-store",
+      "native_exit": 0,
+      "log": "/build/finish-2/16.log",
+      "sha256": "e634af683ce85afe166be929f04357f55b7611c8c99b4c29f5f2abfe6c1393b6"
+    },
+    {
+      "name": "/colord/buffer",
+      "native_exit": 0,
+      "log": "/build/finish-2/17.log",
+      "sha256": "cd8508ecb4263bb7a2521ba084f60191f0ae37c592efc67ba99c70794c967639"
+    },
+    {
+      "name": "/colord/enum",
+      "native_exit": 0,
+      "log": "/build/finish-2/18.log",
+      "sha256": "dd043d6e20687f1ed64430819bcb841d44708cddf2998a538d43c55f2ac6206b"
+    },
+    {
+      "name": "/colord/dom",
+      "native_exit": 0,
+      "log": "/build/finish-2/19.log",
+      "sha256": "8b2da154ea9dba2e8d2ce5d2c75917e0026d487aa5411ace97b2aaf47b73ef59"
+    },
+    {
+      "name": "/colord/dom{color}",
+      "native_exit": 0,
+      "log": "/build/finish-2/20.log",
+      "sha256": "fe4b8aabd26e7b0005ae6b4202366c171880aefb4842af966d88b01aadd5ada0"
+    },
+    {
+      "name": "/colord/dom{localized}",
+      "native_exit": 0,
+      "log": "/build/finish-2/21.log",
+      "sha256": "11230d7eec3cdf05b34d717d60b449d8bcd0fb232cc42ea9f4afaf127b150b26"
+    },
+    {
+      "name": "/colord/interp{linear}",
+      "native_exit": 0,
+      "log": "/build/finish-2/22.log",
+      "sha256": "8d2cd39b54c5a0548b03966cab4a1554d4313e65074cb102176725f8c5072a0f"
+    },
+    {
+      "name": "/colord/interp{akima}",
+      "native_exit": 0,
+      "log": "/build/finish-2/23.log",
+      "sha256": "7ea93a9486ce5cb8c60e208adf08a1ced361a035c5161d55997ef0f804e0076a"
+    },
+    {
+      "name": "/colord/color",
+      "native_exit": 0,
+      "log": "/build/finish-2/24.log",
+      "sha256": "f2173af8e28ac712fcfcd5e70598dac68043fb16ce646a38f9c497982ddd9832"
+    },
+    {
+      "name": "/colord/color{interpolate}",
+      "native_exit": 0,
+      "log": "/build/finish-2/25.log",
+      "sha256": "86d825197a865580d466f055e31452ce9c85daca7715c778bdbdea6c7e18939a"
+    },
+    {
+      "name": "/colord/color{blackbody}",
+      "native_exit": 0,
+      "log": "/build/finish-2/26.log",
+      "sha256": "f4c0ac04b714a239e8efabbcd961acb7e639ec7d038d46359c262bf9527f5116"
+    },
+    {
+      "name": "/colord/math",
+      "native_exit": 0,
+      "log": "/build/finish-2/27.log",
+      "sha256": "a7f65ab956056ea5b01175755495d131e9a6bf02a3cd88c9430f1aced205b5f6"
+    },
+    {
+      "name": "/colord/it8{raw}",
+      "native_exit": 0,
+      "log": "/build/finish-2/28.log",
+      "sha256": "db940dfa2f862c3da41acc5508715e28009dc88b9739534af94fee193dbac4e9"
+    },
+    {
+      "name": "/colord/it8{gamma}",
+      "native_exit": 0,
+      "log": "/build/finish-2/29.log",
+      "sha256": "43896d6d177248922f5e27f90d6ba758e992b425a89c9415bf57ee9e59e27d26"
+    },
+    {
+      "name": "/colord/it8{locale}",
+      "native_exit": 0,
+      "log": "/build/finish-2/30.log",
+      "sha256": "1bf92377ec936a1dd3f4e1bcd4ee9e806ff2733df49ad56af0538ea7e1727438"
+    },
+    {
+      "name": "/colord/it8{normalized}",
+      "native_exit": 0,
+      "log": "/build/finish-2/31.log",
+      "sha256": "e0a630a9abb7a89928f17211f94ab5b820b3b319834c6fc18806f68def46d062"
+    },
+    {
+      "name": "/colord/it8{ccmx}",
+      "native_exit": 0,
+      "log": "/build/finish-2/32.log",
+      "sha256": "143f63f0819d03969f18bebc48e8e45921677fa974182cd75cffb3f0e019f910"
+    },
+    {
+      "name": "/colord/it8{ccmx-util}",
+      "native_exit": 0,
+      "log": "/build/finish-2/33.log",
+      "sha256": "c7cc9c1d35775d7c1d231b56e3fc5e6b4f234210ffca12f19a8fd1e2960d55fa"
+    },
+    {
+      "name": "/colord/it8{spectra-util}",
+      "native_exit": 0,
+      "log": "/build/finish-2/34.log",
+      "sha256": "103f55631505cc90c23265619e0079224e078ff4f00d0fd9b866956a82557555"
+    },
+    {
+      "name": "/colord/it8{cri-util}",
+      "native_exit": 0,
+      "log": "/build/finish-3/30.log",
+      "sha256": "46c4cbec4d1a5890a87603aedabb638db73a8c4d97f80924a09b0c5e6aac8620"
+    },
+    {
+      "name": "/colord/it8{ccss}",
+      "native_exit": 0,
+      "log": "/build/finish-3/31.log",
+      "sha256": "b48b1f30e755ae063576e9c9fc332664e7d8659b2f280234e342361f7f500170"
+    },
+    {
+      "name": "/colord/it8{spect}",
+      "native_exit": 0,
+      "log": "/build/finish-3/32.log",
+      "sha256": "ee0e4e15dd010626304f4103c9bff593e47d6885540e957e30009624e53b1dac"
+    }
+  ],
+  "distinct_original_cases_qualified": 38,
+  "compiled_elf_files_unchanged": 76,
+  "staged_consumer_exit": 0,
+  "fixture_recovery": {
+    "original_skip": "generated files not available",
+    "current_case_exit": 0,
+    "inputs": {
+      "build/data/cmf/CIE1931-2deg-XYZ.cmf": "e25a42f273eb6bec32e5f7143c7ec168aba7facfb9ce034ad5e40a6ac5cd2bd1",
+      "build/data/illuminant/CIE-F4.sp": "f91f187da5bd8208ce9925bf77b7d68015d438a8531acc27acea8dcab4febadd",
+      "data/ref/CIE-TCS.sp": "ae7d42c42e585b82df2865629d45cb0f27e3e8eb5b1b097829c72b8c4e3bf87b"
+    },
+    "action": "Private expected relative-path layout points to unchanged existing generated/source data; no library/test/assertion patch or replay of accepted30cases"
+  },
+  "profile": "Supported daemon=false client bootstrap for Mutter; no privileged color service/policy/sensor acceptance",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-colord-native-evidence.tar.gz",
+    "members": 65,
+    "sha256": "e034387062e280796d3540898d950ff630057925cb79cda6b3a01b8a7fd33eb0"
+  }
+}

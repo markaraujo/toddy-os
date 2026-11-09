@@ -19,6 +19,9 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gi-gl-types': ('1.86.0', 'gobject-introspection (>= 1.86.0-1+toddy1)', 'gobject-introspection-1.86.0.tar.xz', 'usr/share/gir-1.0/GL-1.0.gir'),
+    'docutils': ('0.23', 'python (>= 3.14), python (<< 3.15)', 'docutils-0.23.tar.gz', 'usr/bin/rst2man'),
+    'colord': ('1.4.8', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), lcms2 (= 2.19.1-1+toddy1), libgusb (= 0.4.9-1+toddy1), libgudev (= 238-1+toddy1), systemd (>= 261.2-1+toddy2)', 'colord-1.4.8.tar.xz', 'usr/lib/pkgconfig/colord.pc'),
     'libgusb': ('0.4.9', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), libusb (= 1.0.30-1+toddy1), hwdata (= 0.410-1+toddy1)', 'libgusb-0.4.9.tar.xz', 'usr/lib/pkgconfig/gusb.pc'),
     'libusb': ('1.0.30', 'glibc (>= 2.44-1), systemd (>= 261.2-1)', 'libusb-1.0.30.tar.bz2', 'usr/lib/pkgconfig/libusb-1.0.pc'),
     'libcanberra': ('0.30', 'glibc (>= 2.44-1), libvorbis (= 1.3.7-1+toddy1), alsa-lib (= 1.2.16.1-1+toddy1), pulseaudio (= 17.0-1+toddy1), libtool (>= 2.5.4-1)', 'libcanberra-0.30.tar.xz', 'usr/lib/pkgconfig/libcanberra.pc'),
@@ -178,6 +181,7 @@ if __name__ == '__main__':
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
     if name=='at-spi2-core' and (log/'atspi-finish-4.job.json').exists():qualifier='atspi-finish-4'
     if name=='bubblewrap':qualifier='bubblewrap-stage-6'
+    if name=='colord':qualifier='colord-finish-3'
     if name=='libgusb':qualifier='libgusb-probe-3'
     if name=='pulseaudio':qualifier='pulseaudio-probe-2'
     if name=='libsndfile':qualifier='libsndfile-qualify-2'
@@ -597,6 +601,13 @@ if __name__ == '__main__':
         else:
             assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/at-spi2-core-build.sh').read_bytes()
             assert (source/'toddy-private-bus.py').read_bytes()==(ROOT/'scripts/build/phase2/atspi_private_bus.py').read_bytes()
+    if name=='gi-gl-types':
+        work=Path('/mnt/lfs/sources/phase2/work/gi-gl-types-1')
+        assert json.loads((log/'gi-gl-types-1.job.json').read_text())['command'][-1]==(ROOT/'scripts/build/phase2/gi-gl-types-build.sh').read_text()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['native_compiler_exit']==proof['native_import_exit']==0 and proof['records']==13
+        source=Path('/mnt/lfs/sources/phase2/inputs/gobject-introspection-1.86.0/gir/GL-1.0.gir')
+        assert source.read_bytes()==(work/'stage/usr/share/gir-1.0/GL-1.0.gir').read_bytes()
+        assert hashlib.sha256(source.read_bytes()).hexdigest()==proof['source_sha256']
     if name=='gi-dbus-types':
         work=Path('/mnt/lfs/sources/phase2/work/gi-dbus-types-1')
         assert json.loads((log/'gi-dbus-types-1.job.json').read_text())['command'][-1]==(ROOT/'scripts/build/phase2/gi-dbus-types-build.sh').read_text()
@@ -796,6 +807,27 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='docutils':
+        work=Path('/mnt/lfs/sources/phase2/work/docutils-1');source=Path('/mnt/lfs/sources/phase2/inputs/docutils-0.23')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/docutils-build.sh').read_bytes()
+        assert (source/'toddy-probe.py').read_bytes()==(ROOT/'scripts/build/phase2/docutils-probe.py').read_bytes()
+        prepared=json.loads((source/'toddy-prepared.json').read_text());assert prepared['extra_source']['name']=='docutils-flit-backend' and prepared['extra_source']['version']=='3.12.0'
+        proof=json.loads((work/'test-results.json').read_text());assert proof['upstream_exit']==proof['staged_cli_exit']==proof['staged_consumer']['native_consumer_exit']==0 and proof['upstream_manpage_cases']==4
+        wheels=list((work/'wheels').glob('*.whl'));assert len(wheels)==1 and hashlib.sha256(wheels[0].read_bytes()).hexdigest()==proof['wheel_sha256']
+    if name=='colord':
+        work=Path('/mnt/lfs/sources/phase2/work/colord-1');source=Path('/mnt/lfs/sources/phase2/inputs/colord-1.4.8')
+        recipe=(ROOT/'scripts/build/phase2/colord-build.sh').read_text()
+        assert (source/'toddy-build.sh').read_text()==recipe
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/colord-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==0 and proof['distinct_original_cases_qualified']==38
+        edid=hashlib.sha256((log/'hwdb-colord-edid-2.log').read_bytes()).hexdigest();assert edid==proof['native_edid_case_recovered']['log_sha256']
+        native=json.loads((log.parent/'build/b02-hwdb-cache-edid-postcheck.success.json').read_text());assert native['recipe_exit']==native['postcheck_exit']==0
+        code=(ROOT/'scripts/build/phase2/colord_complete.py').read_text()+'\nmain('+repr(recipe)+','+repr(edid)+')\n'
+        assert json.loads((log/'colord-finish-3.job.json').read_text())['command'][-3:]==['python3','-c',code]
+        assert len(proof['original_cases_reused'])==4 and len(proof['pending_case_results'])==33
+        for row in proof['pending_case_results']:
+            p=Path(str(row['log']).replace('/build/',str(work)+'/',1));assert row['native_exit']==0 and hashlib.sha256(p.read_bytes()).hexdigest()==row['sha256']
+            assert 'ok 1 '+row['name'] in p.read_text() and '# SKIP' not in p.read_text()
     if name=='libgusb':
         work=Path('/mnt/lfs/sources/phase2/work/libgusb-1');source=Path('/mnt/lfs/sources/phase2/inputs/libgusb-0.4.9')
         recipe=(ROOT/'scripts/build/phase2/libgusb-build.sh').read_text();probe=(ROOT/'scripts/build/phase2/libgusb-probe.c').read_text()
@@ -1067,6 +1099,7 @@ if __name__ == '__main__':
             'scope':'Omit only optional Python show-stylus CLI/man whose libevdev/pyudev bindings are unavailable. Original source/test stage retained; native C library/tools/database/udev inputs unchanged.',
             'omitted':omitted},indent=2)+'\n')
     archives=[archive]
+    if name=='docutils':archives.append('flit_core-3.12.0.tar.gz')
     if name=='libcanberra':archives.append('libcanberra-0.30-wayland-1.patch')
     if name in ('shared-mime-info','llvm'):
         extra_name='xdgmime-tests' if name=='shared-mime-info' else 'llvm-upstream-fix'

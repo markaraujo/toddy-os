@@ -1,0 +1,175 @@
+{
+  "scope": "Actual current owned hardware database source compilation and native lookup/refusal, no hardware acceptance",
+  "cache_sha256": "31b7d7b16270fc5cd40369cd80613ad8aa24e64a9642ced9ee2be0554a433daf",
+  "native_consumer_exit": 0,
+  "compiler": "Accepted same-version systemd-hwdb261.2, no source/library rebuild",
+  "profile": "Complete40existing native stock inputs, no host/sysfs/device access or /etc override",
+  "probe_recovery": "ZZZ is a real Boca Research vendor wildcard; use syntactically invalid PNP ID for true negative. Existing native cache bytes unchanged, no generator replay.",
+  "inputs": [
+    {
+      "path": "70-lights.hwdb",
+      "sha256": "29a8faf797aa098fc1aedffee0748528139618baa56a3ca34891994c396ac821"
+    },
+    {
+      "path": "40-imds.hwdb",
+      "sha256": "6300a82cac6db706b3a8dbd98cdd0b612aa47d1091f717f036a65ea597518292"
+    },
+    {
+      "path": "80-ieee1394-unit-function.hwdb",
+      "sha256": "302b78f3f1f405790899ac186bfff5e7e9d7ec2780ad7f4dab56cd5c8ed5fed4"
+    },
+    {
+      "path": "60-sensor.hwdb",
+      "sha256": "6bd5b14a4c460d67ab24c356ca935130164e36a8993188c070a1c9c7831d4745"
+    },
+    {
+      "path": "70-hardware-wallets.hwdb",
+      "sha256": "698aa552cd8696d34d22c9978bc034ebf7a86dddcde3c6fb497b400f54bb2150"
+    },
+    {
+      "path": "70-av-production.hwdb",
+      "sha256": "32e19b8ffa60e0475cb1c06dde7f68f43b37ed1345c221ccca28b6cec9695c01"
+    },
+    {
+      "path": "70-vsock.hwdb",
+      "sha256": "622c3fd2e2f8e46fe21570034d8c97ca997f800250b9927884bebaf0cb78b31f"
+    },
+    {
+      "path": "20-acpi-vendor.hwdb",
+      "sha256": "e501227ccc949ca9fc48d308f066f2867d3d88560617fdb005338bf466df8994"
+    },
+    {
+      "path": "70-pointingstick.hwdb",
+      "sha256": "2f896f73c4eeacd0380e674b2edc924245a9aa7cced17b67a8be85003343c674"
+    },
+    {
+      "path": "20-usb-vendor-model.hwdb",
+      "sha256": "ae990c8421673440bf5ec66ec7e3accc15966226401ccde57a2f90b6105167fb"
+    },
+    {
+      "path": "70-analyzers.hwdb",
+      "sha256": "45142275b7ef93ceda8467e9a14eadb1a9676fc4795ee263432cd466b03e7857"
+    },
+    {
+      "path": "60-seat.hwdb",
+      "sha256": "dcf105b747fddc8f0d70bc653e78e09fb92e4c2c3e156fd1bd068f9dcc712501"
+    },
+    {
+      "path": "70-maker-tools.hwdb",
+      "sha256": "003a100aea4f24f14f96cba471ec6c2f77a3f2b86bc5d0220aa16abe1bcefd38"
+    },
+    {
+      "path": "70-sound-card.hwdb",
+      "sha256": "08f2ec613ca5b486558d77eb53c415d5eec4747dca747b7048f47a9fdc5ed7e5"
+    },
+    {
+      "path": "20-sdio-classes.hwdb",
+      "sha256": "acd02dcf5b5abfb44a46deabe5b0c038da1e7e4172a85f4f60d2d3b887adfbce"
+    },
+    {
+      "path": "60-evdev.hwdb",
+      "sha256": "be474d5b3714b7b4481115907576c5e444564dbb56ca2f759ad1b6d4f10928b0"
+    },
+    {
+      "path": "20-dmi-id.hwdb",
+      "sha256": "91b4694073f120ebdc4711ced9c73ba1041333b1a6e91322b61dd93bc74b2611"
+    },
+    {
+      "path": "70-cameras.hwdb",
+      "sha256": "126c817553924120bea09451f4711f1dee770b63d88fa3dcd503b55f430888e2"
+    },
+    {
+      "path": "60-tpm2.hwdb",
+      "sha256": "41da4c49de29bab67ec4d0214805f2e54db684035ec8835673a1ab137143d75d"
+    },
+    {
+      "path": "20-bluetooth-vendor-product.hwdb",
+      "sha256": "6a6ad8bd08e79a995f11459f6191d922126b4cc2452ca685c2c874b7839caae6"
+    },
+    {
+      "path": "70-mouse.hwdb",
+      "sha256": "b36eb4d81e7f8520964372973887b3ba6314027c949624a5376f496df2cd27a8"
+    },
+    {
+      "path": "60-autosuspend.hwdb",
+      "sha256": "dfa6d85cdc00b2cbfed6d8e63d16bd92f3875623b6ac1fe84d993481818e5d1a"
+    },
+    {
+      "path": "20-usb-classes.hwdb",
+      "sha256": "510b33148b2da0526b952c0cb827be0a7bd29643e218ce087448cb2a47af3a4b"
+    },
+    {
+      "path": "65-libwacom.hwdb",
+      "sha256": "fd692577dbccfbf89fbe0d4295656a5c6bd924b44ff115e58426f58fbb1d4c9c"
+    },
+    {
+      "path": "70-pda.hwdb",
+      "sha256": "e63bdbcaab2ee101a5007e6428ce9cdcd67cd27ec7c4c120789869d8ea45b1c4"
+    },
+    {
+      "path": "20-pci-vendor-model.hwdb",
+      "sha256": "34c031d8319d073c40b778c7e67b3e8d567814af14008e4428d45d4281da0891"
+    },
+    {
+      "path": "82-net-auto-link-local.hwdb",
+      "sha256": "2aea27db2b0fa51cf9b3f08d492ec9402d60f67846f5c2f721b16d789c98a73b"
+    },
+    {
+      "path": "20-OUI.hwdb",
+      "sha256": "04586b3cca72e3bddcc22b597e23d292a9e1109b87df4a93c10c908770b36492"
+    },
+    {
+      "path": "20-vmbus-class.hwdb",
+      "sha256": "08e7bdd8e85d9cbaa0cb8c44bda9bad6a784f316eb64fbd839d02588ae68c925"
+    },
+    {
+      "path": "70-joystick.hwdb",
+      "sha256": "e0fd699ba304d20809baebd9a88cf049723123c88608b4c48ce1b98706743971"
+    },
+    {
+      "path": "60-input-id.hwdb",
+      "sha256": "34b5877de503e491781f9341ff0a588e46290791977d8ee31b023f8fc61ed506"
+    },
+    {
+      "path": "20-sdio-vendor-model.hwdb",
+      "sha256": "9eb89fc7a64772697cf84fb588197c057c3a8bb4ed2be7552b5a9dc48de2774a"
+    },
+    {
+      "path": "60-keyboard.hwdb",
+      "sha256": "ea8fe98bd418335d6537aad23ecc3da4912a5e70b268fad0486495245b4ffb58"
+    },
+    {
+      "path": "60-autosuspend-chromiumos.hwdb",
+      "sha256": "ec80a0c6ddc147bb57361baeae5ee3cdccdfbb3b4ceafc1ebcbfceb87dfb1503"
+    },
+    {
+      "path": "20-pci-classes.hwdb",
+      "sha256": "ffd30f04e8fba7b7fbe6808f4fd3385194f3886ee61f84c90b7dad6573174a6a"
+    },
+    {
+      "path": "70-touchpad.hwdb",
+      "sha256": "f6436452d4de344ed8edd7aaed302e662b6dca5e90f55eceb6e78a3fddeda551"
+    },
+    {
+      "path": "70-debug-appliance.hwdb",
+      "sha256": "4229140bd83e07481bed77ec66ce3eebe8bfb9cdea9d8093d7dac430b1f4a06e"
+    },
+    {
+      "path": "60-autosuspend-fingerprint-reader.hwdb",
+      "sha256": "e8d8f6e57f59198c0554ca165ba7132ccff3a39d1e76fb741555b90a0aad955f"
+    },
+    {
+      "path": "70-software-radio.hwdb",
+      "sha256": "f6220bebbd525c5fc2b1866577d43dcc58374f7755c7656d9ca19bb5b602c28a"
+    },
+    {
+      "path": "20-net-ifname.hwdb",
+      "sha256": "f59c9967b3c6665b1abc1ad115d1afe8ed18d451571476a5d14b9aff4d0e1488"
+    }
+  ],
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-hwdb-cache-native-evidence.tar.gz",
+    "members": 26,
+    "sha256": "89433355c7f4e463e9ef081818521f19ab56516076b2c76c5cb2c6c31d6e5755"
+  }
+}

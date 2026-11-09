@@ -1,0 +1,15 @@
+{
+  "scope": "Unchanged original GI1.86 GL namespace declarations/native typelib compilation/import only; not legacy GL function or GPU runtime acceptance",
+  "source_sha256": "3a45fd8a802c84ac66099d10f7f64a89a28f678be623f6fde61962e0924db849",
+  "typelib_sha256": "3d9a4b9f5645a5e2bbe8c74538e11a9bf64dc0c559e16b8689bdede41d3a2c8c",
+  "native_compiler_exit": 0,
+  "native_import_exit": 0,
+  "records": 13,
+  "legacy_function_not_invoked": "glInitNames",
+  "upstream_suite": "Declarative GIR, no executable suite; no GL provider or foundation core rebuild",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gi-gl-types-native-evidence.tar.gz",
+    "members": 13,
+    "sha256": "b4fd065e7acda680572b35fe0ae1441fd99cc969c1f7b93213b3be614647a27f"
+  }
+}

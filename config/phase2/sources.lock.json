@@ -1697,6 +1697,28 @@
       "book_md5": "b0b0bacc2c6919515db8e863f0517db8",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "docutils",
+      "version": "0.23",
+      "filename": "docutils-0.23.tar.gz",
+      "url": "https://files.pythonhosted.org/packages/source/d/docutils/docutils-0.23.tar.gz",
+      "sha256": "746f5060322511280a1e50eb76846ed6bf2342984b2ac04dc42caa1a8d78799e",
+      "reference": "BLFS13.1-systemd general/python-modules.html#docutils",
+      "book_page_sha256": "eeca0df3449c611069e44d356162b7438e05151c39d225e72c601f049a66a72d",
+      "book_md5": "39d10acfd1fc81b87f5de84418b88be9",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "docutils-flit-backend",
+      "version": "3.12.0",
+      "filename": "flit_core-3.12.0.tar.gz",
+      "url": "https://files.pythonhosted.org/packages/69/59/b6fc2188dfc7ea4f936cd12b49d707f66a1cb7a1d2c16172963534db741b/flit_core-3.12.0.tar.gz",
+      "sha256": "18f63100d6f94385c6ed57a72073443e1a71a4acb4339491615d0f16d6ff01b2",
+      "reference": "Frozen Docutils0.23 pyproject.toml requires flit_core>=3.11,<4; exact official PyPI3.12.0 source metadata verified",
+      "integrity": "Official PyPI version metadata SHA256 verified before private use; accepted foundation Flit4.0.2 remains installed unchanged",
+      "status": "source_verified"
     }
   ]
 }

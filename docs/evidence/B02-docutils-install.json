@@ -1,0 +1,20 @@
+{
+  "step": "b02-docutils-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T05:35:38.017298+00:00",
+  "package": {
+    "name": "docutils",
+    "version": "0.23-1+toddy1",
+    "archive_sha256": "52e006073a2d042d64e71ca61d9ebb9453f4f31f533d28ee8d9cbedaabb38ec8"
+  },
+  "payload_entries": 275,
+  "consumer": {
+    "scope": "Native Docutils manpage generation and explicit include-disabled refusal; no global document/security policy claim",
+    "version": "0.23",
+    "native_consumer_exit": 0,
+    "man_output_bytes": 819,
+    "installed_cli_exit": 0,
+    "base_flit_unchanged": "4.0.2"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "step": "b02-gi-gl-types-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T05:42:14.295646+00:00",
+  "package": {
+    "name": "gi-gl-types",
+    "version": "1.86.0-1+toddy1",
+    "archive_sha256": "320fe6a1653b033154dbc1ff108548c99757901525c2a053363ab2395bf47dec"
+  },
+  "payload_entries": 20,
+  "consumer": {
+    "scope": "Native installed exact original GL declarations/GIR/typelib import, no legacy GL call/provider/GPU or GUI acceptance",
+    "native_import_exit": 0,
+    "source_sha256": "3a45fd8a802c84ac66099d10f7f64a89a28f678be623f6fde61962e0924db849"
+  }
+}
