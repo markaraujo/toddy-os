@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "component": "polkit",
+  "version": "127",
+  "source_sha256": "9b7bc16f086479dcc626c575976568ba4a85d34297a750d8ab3d2e57f6d8b988",
+  "source_file": "src/polkit/polkitsubject.c",
+  "before_sha256": "760e7f8230896e5e54bda8ab88eb85f9e984a7ec8d8671b3ba6ad2f711453bb3",
+  "after_sha256": "f314fad12594bbb42b0e665874c430217938e9e30f40481ca4c190c39985a0f9",
+  "patch_file": "scripts/build/phase2/patches/polkit-127-typed-subject-1.patch",
+  "patch_sha256": "2875d047f95af956f1da0c0e8f0b3f1f960e9ade2594a014944bdcd41628516c",
+  "upstream_issue": "https://github.com/polkit-org/polkit/issues/701",
+  "scope": "Reject malformed or duplicate known process identity fields before optional lookup; preserve absent-uid legacy parsing/unknown attributes. Avoid second GError on wrong type and balance invalid unique-name value reference. No authorization grant or public ABI change.",
+  "native_qualification": "pending; original uninstalled library reproduced malformed unsigned uid and duplicate uid acceptance, no daemon/package installed"
+}

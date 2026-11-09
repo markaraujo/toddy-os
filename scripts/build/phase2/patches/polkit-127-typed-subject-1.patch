@@ -1,0 +1,79 @@
+--- a/src/polkit/polkitsubject.c
++++ b/src/polkit/polkitsubject.c
+@@ -371,7 +371,7 @@
+                            type_string);
+               g_free (type_string);
+               g_variant_unref (value);
+-              goto out;
++              return NULL;
+             }
+           ret = value;
+           goto out;
+@@ -396,6 +396,49 @@
+   return ret;
+ }
+ 
++/* Validate identity fields before selecting a process representation. */
++static gboolean
++validate_process_details (GVariant *dict, GError **error)
++{
++  static const struct {
++    const gchar *key;
++    const GVariantType *type;
++  } fields[] = {
++    { "uid", G_VARIANT_TYPE_INT32 },
++    { "pid", G_VARIANT_TYPE_UINT32 },
++    { "start-time", G_VARIANT_TYPE_UINT64 },
++    { "pidfd", G_VARIANT_TYPE_HANDLE },
++  };
++  GVariantIter iter;
++  const gchar *key;
++  GVariant *value;
++  guint seen = 0;
++
++  g_variant_iter_init (&iter, dict);
++  while (g_variant_iter_next (&iter, "{&sv}", &key, &value))
++    {
++      for (guint i = 0; i < G_N_ELEMENTS (fields); i++)
++        if (g_str_equal (key, fields[i].key))
++          {
++            if ((seen & (1u << i)) ||
++                !g_variant_is_of_type (value, fields[i].type))
++              {
++                g_set_error (error, POLKIT_ERROR, POLKIT_ERROR_FAILED,
++                             "Invalid unix-process subject field `%s' (%s; type %s, expected %s)",
++                             key, (seen & (1u << i)) ? "duplicate" : "wrong type",
++                             g_variant_get_type_string (value),
++                             g_variant_type_peek_string (fields[i].type));
++                g_variant_unref (value);
++                return FALSE;
++              }
++            seen |= 1u << i;
++            break;
++          }
++      g_variant_unref (value);
++    }
++  return TRUE;
++}
++
+ PolkitSubject *
+ polkit_subject_new_for_gvariant_invocation (GVariant              *variant,
+                                             GDBusMethodInvocation *invocation,
+@@ -420,6 +463,9 @@
+       guint32 pid;
+       guint64 start_time;
+       gint32 uid;
++
++      if (!validate_process_details (details_gvariant, error))
++        goto out;
+ 
+       v = lookup_asv (details_gvariant, "uid", G_VARIANT_TYPE_INT32, NULL);
+       if (v != NULL)
+@@ -514,6 +560,7 @@
+                        POLKIT_ERROR_FAILED,
+                        "Error parsing system-bus-name subject: `%s' is not a valid unique name",
+                        name);
++          g_variant_unref (v);
+           goto out;
+         }
+       ret = polkit_system_bus_name_new (name);

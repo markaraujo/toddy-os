@@ -1,0 +1,65 @@
+{
+  "scope": "Actual unprivileged original-vs-corrected pure Polkit subject decoder only; NO daemon, authorization, privileged helper or installed Polkit qualification",
+  "source": {
+    "name": "polkit",
+    "version": "127",
+    "filename": "polkit-127.tar.gz",
+    "url": "https://github.com/polkit-org/polkit/archive/127/polkit-127.tar.gz",
+    "sha256": "9b7bc16f086479dcc626c575976568ba4a85d34297a750d8ab3d2e57f6d8b988",
+    "reference": "BLFS13.1-systemd postlfs/polkit.html",
+    "book_page_sha256": "b630bd24ae409c23d863891cf71114bb4d8b41175216c2ac5a76571e595c5ece",
+    "book_md5": "2cc95f1b02fc1de6c9e52db986642ec4",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "original": {
+    "scope": "UNQUALIFIED original source diagnosis",
+    "valid_signed_uid_accepted": true,
+    "malformed_unsigned_uid_accepted": true,
+    "duplicate_uid_accepted": true,
+    "package_promotable": false,
+    "source_sha256": "760e7f8230896e5e54bda8ab88eb85f9e984a7ec8d8671b3ba6ad2f711453bb3",
+    "next": "Narrow strict field/type/error correction and original native suite plus live authorization/credential tests required; no daemon or package installed."
+  },
+  "corrected": {
+    "scope": "Corrected pure subject decoding, not authorization",
+    "cases": 13,
+    "invalid_subject_cases_refused": 9,
+    "error_pointer_null_controls": 9,
+    "legacy_missing_uid_preserved": true,
+    "unknown_attribute_preserved_as_data": true,
+    "package_promotable": false,
+    "source_sha256": "f314fad12594bbb42b0e665874c430217938e9e30f40481ca4c190c39985a0f9",
+    "next": "Full daemon/helper/original native tests and live privilege/credential/cancellation/recovery remain mandatory; no installed package."
+  },
+  "patched_input": {
+    "state": "complete",
+    "source": "/mnt/lfs/sources/phase2/inputs/polkit-127-typed-subject-1",
+    "work": "/mnt/lfs/sources/phase2/work/polkit-patched-library-1",
+    "boot_id": "f80ce164-7476-4297-b215-dd7113f22d26",
+    "pid": 3986,
+    "started_unix": 1794233015.498755,
+    "patch_sha256": "2875d047f95af956f1da0c0e8f0b3f1f960e9ade2594a014944bdcd41628516c",
+    "original_files_unchanged": 234,
+    "modified_library_source_files": 1
+  },
+  "patch": {
+    "schema_version": 1,
+    "component": "polkit",
+    "version": "127",
+    "source_sha256": "9b7bc16f086479dcc626c575976568ba4a85d34297a750d8ab3d2e57f6d8b988",
+    "source_file": "src/polkit/polkitsubject.c",
+    "before_sha256": "760e7f8230896e5e54bda8ab88eb85f9e984a7ec8d8671b3ba6ad2f711453bb3",
+    "after_sha256": "f314fad12594bbb42b0e665874c430217938e9e30f40481ca4c190c39985a0f9",
+    "patch_file": "scripts/build/phase2/patches/polkit-127-typed-subject-1.patch",
+    "patch_sha256": "2875d047f95af956f1da0c0e8f0b3f1f960e9ade2594a014944bdcd41628516c",
+    "upstream_issue": "https://github.com/polkit-org/polkit/issues/701",
+    "scope": "Reject malformed or duplicate known process identity fields before optional lookup; preserve absent-uid legacy parsing/unknown attributes. Avoid second GError on wrong type and balance invalid unique-name value reference. No authorization grant or public ABI change.",
+    "native_qualification": "pending; original uninstalled library reproduced malformed unsigned uid and duplicate uid acceptance, no daemon/package installed"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-polkit-subject-diagnosis-evidence.tar.gz",
+    "members": 10,
+    "sha256": "adf5bde9687a5b23755f432132574bc035c19ace40e98ed0638692944fa57a52"
+  }
+}
