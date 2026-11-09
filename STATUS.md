@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T07:24:52.045147+00:00
+Last verified: 2026-11-09T07:39:21.977210+00:00
 
 Verified:
 
@@ -71,8 +71,9 @@ Verified:
 - GtkSourceView5.20 frozen source compiled/staged; own data-path probe-only recovery0 preserves230ELFs169stagefiles, C/GI encoding/language/refusal0.26original drivers pending native display; not installed.
 - Native GtkSourceView26drivers exit0/273PASS/116SKIP;18known upstream languages plus98syntax cases unexercised due original relative fixture path.27artifacts39test files unchanged; no package promotion. Exact shutdown-sync serial fragment/fullSHA reconciled read-only.
 - Native syntax private layout corrected:9original cases completed, original invalidUTF8 file.cir refused by GTK/driver-6 retained;2artifacts390source/data files unchanged. ADR0144 scopes only88remaining valid cases; no aggregate pass/promotion.
+- GtkSourceView grammar qualification checkpointed: native4 collector failed/no accepted partial results; isolated24additional cases and Python2/3pass, GDB known-regex/shell HDB warnings unresolved.230ELFs390source-data files unchanged; no promotion.
 
-Running: No writer. Fresh native-mutter-runtime-4 --component gtksourceview --only-syntax --remaining-syntax after commit selects88valid pending original cases, reuses9completed+25other drivers. Full B02 then pause.
+Running: ICU78.3 isolated source build/check/stage icu-1 on builder e22e024f; grammar branch checkpointed after bounded failed attempts. Inspect actual job/exit before intervention; full B02 then pause.
 
 Remaining:
 

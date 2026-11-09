@@ -1,0 +1,72 @@
+{
+  "scope": "Actual failed GtkSourceView qualification branch, no package promotion or editor acceptance",
+  "native4": {
+    "commit": "285eb8dccc194a93ca0933cd0876a7e78131ab4b",
+    "report_sha256": "6b5188e4424ec625e3a1570242ddd222ce5e715cb1ddfc2ea3f761e280404b72",
+    "compositor_exit": 1,
+    "suite_error": {
+      "message": "Selected original case did not execute exactly once",
+      "type": "AssertionError"
+    },
+    "accepted_partial_results": 0,
+    "artifacts_unchanged": 2,
+    "source_data_files_unchanged": 390,
+    "backing_unchanged": true,
+    "raw_evidence": {
+      "path": ".local/phase2/exports/B02-gtksourceview-native-4-evidence.tar.gz",
+      "members": 6,
+      "sha256": "1bf89e89d0a41d4fb759c2a345711ff44e46bfab6cb1841d61bd395b18a2596c"
+    }
+  },
+  "isolated5": {
+    "native_exit": 1,
+    "passed_cases": [
+      "/syntax-highlighting/file.Rnw",
+      "/syntax-highlighting/file.abnf",
+      "/syntax-highlighting/file.asciidoc",
+      "/syntax-highlighting/file.asp",
+      "/syntax-highlighting/file.astro",
+      "/syntax-highlighting/file.awk",
+      "/syntax-highlighting/file.blp",
+      "/syntax-highlighting/file.c",
+      "/syntax-highlighting/file.cc",
+      "/syntax-highlighting/file.cmake",
+      "/syntax-highlighting/file.cob",
+      "/syntax-highlighting/file.css",
+      "/syntax-highlighting/file.cu",
+      "/syntax-highlighting/file.dart",
+      "/syntax-highlighting/file.desktop",
+      "/syntax-highlighting/file.diff",
+      "/syntax-highlighting/file.dtd",
+      "/syntax-highlighting/file.erb",
+      "/syntax-highlighting/file.exs",
+      "/syntax-highlighting/file.f",
+      "/syntax-highlighting/file.fcl",
+      "/syntax-highlighting/file.frt",
+      "/syntax-highlighting/file.fs",
+      "/syntax-highlighting/file.ftl"
+    ],
+    "failed_case": "/syntax-highlighting/file.gdb",
+    "reason": "Original gdb-log regex duplicate named subpatterns warning is fatal under g_test; same grammar already skipped by original language driver"
+  },
+  "isolated6": {
+    "native_exit": 1,
+    "passed_cases": [
+      "/syntax-highlighting/file.py",
+      "/syntax-highlighting/file.py3"
+    ],
+    "failed_case": "/syntax-highlighting/file.sh",
+    "reason": "Original shell grammar GtkSourceView-FATAL-WARNING Invalid group: HDB; unresolved, not qualified"
+  },
+  "post_failure_integrity": {
+    "compiled_elf_files_unchanged": 230,
+    "source_data_files_unchanged": 390
+  },
+  "decision": "docs/adr/0144-gtksource-invalid-utf8-test-fixture.md",
+  "next": "Checkpoint grammar branch. Continue independent pinned ICU78.3 B02 prerequisite. Resume grammar only with concrete source-backed diagnosis; no more unchanged corpus/aggregate retries.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gtksourceview-qualification-block.tar.gz",
+    "members": 65,
+    "sha256": "a1841d48e7f1f630b2da1d15b19df26f28921a56e345507309d1d6adc1268718"
+  }
+}

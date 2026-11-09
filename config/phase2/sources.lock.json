@@ -1731,6 +1731,18 @@
       "book_md5": "08a754c0b10c05c6e74f77695e6e04ce",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "icu",
+      "version": "78.3",
+      "filename": "icu4c-78.3-sources.tgz",
+      "url": "https://github.com/unicode-org/icu/releases/download/release-78.3/icu4c-78.3-sources.tgz",
+      "sha256": "3a2e7a47604ba702f345878308e6fefeca612ee895cf4a5f222e7955fabfe0c0",
+      "reference": "BLFS13.1-systemd general/icu.html",
+      "book_page_sha256": "25bcd5b5c43eef0ca461d82b24b61babc49ae24c93cec041cee7fefd63a5d741",
+      "book_md5": "a7b736b570ef0e180c96a31715a00c78",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

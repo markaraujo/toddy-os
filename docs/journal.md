@@ -2918,3 +2918,22 @@ original failure/refusal and9completed cases; new context4 selects only88remaini
 valid originals, without editing fixtures, library or assertions. Same2artifacts/
 390source-data files unchanged; native stopped0 and parent unchanged before
 builder/same4scratch restore. No full original driver pass or package promotion.
+
+### B02 grammar branch checkpoint; independent ICU build
+
+Native4 original-syntax collector assertion accepted no partial results.
+Pure-text source inspection confirms test-syntax uses g_test_init without GTK
+initialization/display; qualified isolation preserves actual child logs before
+assertion. Isolated5 records24additional passes then known GDB regex warning;
+isolated6 passes Python2/3 then shell Invalid group HDB fails.230compiledELFs/
+390source-data files unchanged. Grammar qualification is checkpointed after bounded
+attempts, no package promotion. Resume only with a concrete source-backed diagnosis,
+not another unchanged corpus run; ADR0144/raw logs retain failures and partial proof.
+
+Continue independent B02 ICU78.3 from frozen BLFS13.1 general/icu.html. First official
+HTTP504 had no partial file; one unchanged retry matched pinned MD5/SHA before
+extraction. Native out-of-source build/original make check/Unicode API/CLI recipe
+started as icu-1 UID101/no-network/read-only inputs. Host109693071360B/target
+22871994368B pass1536MiB additional budget above100/16GiB reserves. No foundation
+upgrade/package install or new desktop acceptance. Actual job/controller/log/card
+recorded; monitor healthy progress instead of restart. Owner boundary full B02 then stop.

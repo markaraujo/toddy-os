@@ -10606,6 +10606,18 @@
           ]
         }
       }
+    },
+    {
+      "name": "icu",
+      "version": "78.3",
+      "license": "LicenseRef-icu-per-file",
+      "evidence": "Exact authenticated ICU78.3 primary LICENSE (Unicode License V3), license.html and bundled/per-file conditions retained. Frozen BLFS13.1 general/icu.html. Native source build/check running; no installed runtime or GNOME/browser acceptance yet.",
+      "extra_license_files": {
+        "icu4c-78.3-sources.tgz": [
+          "LICENSE",
+          "license.html"
+        ]
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
