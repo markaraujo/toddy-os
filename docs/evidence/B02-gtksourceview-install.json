@@ -1,0 +1,30 @@
+{
+  "scope": "Owned native gtksourceview archive and real installed consumer checks only; full desktop/product GUI still pending",
+  "run": {
+    "step": "b02-gtksourceview-install-2",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T11:20:31.506484+00:00",
+    "changed_paths": 269
+  },
+  "package": {
+    "name": "gtksourceview",
+    "version": "5.20.0-1+toddy1",
+    "archive_sha256": "c150e36be92df1ce734a761a5ed942ca75be4cf4fd4abce1abeac15fff0bfbf0",
+    "installed": true
+  },
+  "payload_entries": 453,
+  "consumer": {
+    "scope": "Native installed corrected GtkSource C/GI encoding/language/refusal, owned payload after native original regex3cases/pure syntax5cases; no editor/full GNOME acceptance",
+    "name": "gtksourceview",
+    "version": "5.20.0",
+    "native_consumer_exit": 0,
+    "stdout": "GtkSourceView5.20.0 native encoding/language data/refusal passed"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-desktop-libraries-gjs-evidence.tar.gz",
+    "members": 37,
+    "sha256": "706747da38635bf22a501dd99df07935838a175272fd84be3c6474a697036090"
+  },
+  "initial_precondition_failure": "First relative recipe path rejected before any runner/stage/archive/installed change; verified actual absence, fresh measured step2 used absolute project paths. No source rebuild or native test replay."
+}

@@ -10592,7 +10592,7 @@
       "name": "gtksourceview",
       "version": "5.20.0",
       "license": "LicenseRef-gtksourceview-per-file",
-      "evidence": "Primary COPYING LGPL2.1/AUTHORS and per-file library/language notices; frozen BLFS13.1 x/gtksourceview5.html, source SHAe38bcd23f52b86eadf0fe4d8bde698e3a8ca102322b8b4cf1a51ac294a448c1b. Native compilation/data/ABI qualified only; display tests and package promotion pending.",
+      "evidence": "Authenticated primary COPYING LGPL2.1/AUTHORS and exact per-file library/language notices retained. ADR0146 derivative patch/native6case diagnostic/pure5syntax/native3regex and real owned installed C/GI/refusal/audit0. Original invalidUTF8/GDB grammar remain unqualified; no complete editor/GNOME claim.",
       "extra_license_headers": {
         "gtksourceview-5.20.0.tar.xz": {
           "prefixes": [
@@ -10630,6 +10630,27 @@
             "src/"
           ],
           "suffixes": [
+            ".rs"
+          ]
+        }
+      }
+    },
+    {
+      "name": "mozjs",
+      "version": "140.17.0",
+      "license": "LicenseRef-mozjs-per-file",
+      "evidence": "Explicit ADR0147 security140.17 source, full exact MPL2/bundled/per-file notices retained. Original901API/55824JIT and real staged+installed C++/PT-date/simple-unit/refusal/recovery0; exact foreground signal case reconciled with immutable501ELFs.103baseline main diagnostics remain nonpasses, not full Intl/GNOME/G2 approval.",
+      "extra_license_headers": {
+        "firefox-140.17.0esr.source.tar.xz": {
+          "prefixes": [
+            "js/",
+            "mfbt/",
+            "intl/components/"
+          ],
+          "suffixes": [
+            ".c",
+            ".cpp",
+            ".h",
             ".rs"
           ]
         }

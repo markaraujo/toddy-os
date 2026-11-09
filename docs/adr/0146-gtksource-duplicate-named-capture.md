@@ -60,3 +60,9 @@ artifacts unchanged after tests. The first original regex driver invocation
 aborted before cases because its gtk_test_init requires a display. Preserve that
 failure; run this single driver in a fresh native Mutter context. No rebuild,
 full corpus retry, original assertion change, installation or editor acceptance.
+
+[Fresh native5 regex proof](../evidence/B02-gtksourceview-native-5.json) subsequently
+passed all3original cases/no skips under real Linux7.1.8/Systemd/Mutter. Two test/
+library artifacts and39source-test files remained unchanged. Parent identity was
+verified before restarting the builder; old disposable children must not be
+reused after parent changes. Installed package and editor UI still pending.

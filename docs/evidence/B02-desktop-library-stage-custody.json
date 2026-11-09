@@ -1,0 +1,37 @@
+{
+  "scope": "Only two new verified promotion replicas; installed packages/original build stages/source/test evidence/native archives retained, no old custody replay or trim",
+  "state": "complete",
+  "producer_sha256": "68250d9ee5ee642a21ae89555accd9adba9cffe488156a87a76459fdba6fa6fa",
+  "stages": [
+    {
+      "name": "gtksourceview",
+      "stage": "/mnt/lfs/sources/stage/phase2-gtksourceview",
+      "inode": 7414085,
+      "archive": "/var/cache/toddy/packages/gtksourceview_5.20.0-1+toddy1_amd64.deb",
+      "archive_sha256": "c150e36be92df1ce734a761a5ed942ca75be4cf4fd4abce1abeac15fff0bfbf0",
+      "record_sha256": "06c52495b9b2922d4c3d8eb70fba767f42a1cf02c2f87bb5f58ffb238d83fcea",
+      "payload_entries": 453,
+      "state": "retired"
+    },
+    {
+      "name": "mozjs",
+      "stage": "/mnt/lfs/sources/stage/phase2-mozjs",
+      "inode": 7414541,
+      "archive": "/var/cache/toddy/packages/mozjs_140.17.0-1+toddy1_amd64.deb",
+      "archive_sha256": "cc94cf461f694ad558d9bd16241ec1df0539914b4377104b1dff7eec3c51dd63",
+      "record_sha256": "57a5979228863b58cc72074d4b833d887f0c43fe47a9a7f559452d8b53136e4a",
+      "payload_entries": 1693,
+      "state": "retired"
+    }
+  ],
+  "before_free_bytes": 17652047872,
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 17726279680,
+  "recovery": "Verify native archive/record SHA and extract to a NEW stage if needed; never reinstall or replay retirement. Original compiler stages, sources and raw tests remain.",
+  "reclaimed_bytes": 74231808,
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-desktop-libraries-gjs-evidence.tar.gz",
+    "members": 37,
+    "sha256": "706747da38635bf22a501dd99df07935838a175272fd84be3c6474a697036090"
+  }
+}

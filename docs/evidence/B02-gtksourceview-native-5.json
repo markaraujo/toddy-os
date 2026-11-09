@@ -1,0 +1,70 @@
+{
+  "scope": "Actual Linux7.1.8/Systemd/KVM headless Mutter/Wayland execution of unchanged original patched GtkSource regex driver; no product editor/full GNOME/hardware acceptance",
+  "commit": "ae71480210629ce594a0c43170996adefd25c1c1",
+  "report_sha256": "349460bd2c0c544285e35eba0c20773f395b7e553882c3a57b79a2aea17da0f3",
+  "kernel": "7.1.8-toddy",
+  "compositor_exit": 0,
+  "suite": {
+    "all_selected_exits_zero": true,
+    "display": "toddy-native-proof",
+    "passed_case_executions": 3,
+    "runs": [
+      {
+        "exit": 0,
+        "name": "test-regex",
+        "passed_case_executions": 3,
+        "skip_lines": [],
+        "skipped_case_executions": 0,
+        "stderr": "",
+        "stdout": "TAP version 14\n# random seed: R02Sec7b2e33f37c90f5832655822b2aacc4\n1..3\n# Start of Regex tests\nok 1 /Regex/slash-c\nok 2 /Regex/compare-g-regex\nok 3 /Regex/issue_198\n# End of Regex tests\n"
+      }
+    ],
+    "scope": "Native kernel headless Mutter/Wayland and original gtksourceview display drivers; no GDM/KMS/full GNOME/product acceptance",
+    "skipped_case_executions": 0,
+    "widget_drivers_attempted": 1,
+    "widget_drivers_exit_zero": 1
+  },
+  "artifacts_unchanged": 2,
+  "source_test_files_unchanged": 39,
+  "manifest_sha256": "336182cc572929417d3988f6fced9751150d259f64b591e979031b459401abee",
+  "backing_unchanged": true,
+  "container_stopped": true,
+  "container_exit": 0,
+  "oom_killed": false,
+  "recovered_protocol_markers": [],
+  "builder_recovery": {
+    "boot": "36aec2ff-acac-4099-a8be-8d55f0d93958",
+    "restored": [
+      {
+        "work": "/mnt/lfs/sources/phase2/work/gtk-1",
+        "uuid": "1593a243-4338-45fb-86f6-7b699b4b3235",
+        "image_inode": 786439,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/desktop-resources-1",
+        "uuid": "a1385a38-a9ed-481b-96d8-b0120b4f1e7c",
+        "image_inode": 786440,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/doxygen-1",
+        "uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+        "image_inode": 786441,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/glycin-1",
+        "uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+        "image_inode": 786463,
+        "restored_existing_filesystem": true
+      }
+    ],
+    "scope": "Same existing4scratch filesystems/UUIDs/inodes; no trim/format/recreation"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gtksourceview-native-5-evidence.tar.gz",
+    "members": 12,
+    "sha256": "9a6ad66c26aa4e305cd8deb9d1a83f98a780952c421f5a904af4a835c3134e6d"
+  }
+}

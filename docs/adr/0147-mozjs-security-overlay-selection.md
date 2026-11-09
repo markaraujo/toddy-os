@@ -70,3 +70,20 @@ This does not assert that uninspected Firefox components are unchanged.
 staged successfully with the existing compilers/ICU/cbindgen; actual shell
 version140.17.0/arithmetic42. The6GiB capacity budget above16GiB target reserve
 passed before transfer. Original baseline retained, no owned promotion.
+
+## Installed-profile verification
+
+[Actual critical tests](../evidence/B02-mozjs-security-tests.json) passed901API/
+55824JIT cases and the staged C++ consumer.103baseline diagnostics remain explicit
+nonpasses. The additional shell/os.js failure was traced to ignored background
+SIGINT/SIGQUIT (source Bash5.3 doc/bashref.texi Signals contract; Python3.14 Popen
+restore_signals excludes these signals). Exact original one-case selection and
+foreground child dispositions passed,501ELFs unchanged. First mistaken additive
+selector timed out; no partial results accepted or full suites repeated to repair
+that selector. Original failed aggregate remains unchanged in evidence.
+
+[Owned native install](../evidence/B02-mozjs-install.json) recipe/post0/0 verifies
+dynamic C++/GC/typed array/Unicode/Intl/refusal/recovery plus installed shell
+Portuguese date/simple unit and package audits. This is the GNOME engine profile
+with documented limitations, not a fully passing Intl suite or full release/G2
+security approval. Original140.14 source and tests remain retained.

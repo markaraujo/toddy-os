@@ -1,0 +1,740 @@
+{
+  "scope": "Real security-candidate critical engine suites plus exact signal-environment reconciliation; original main failures remain nonpasses, installed/GJS/GNOME acceptance pending",
+  "primary_suite_job_exit": 1,
+  "primary": {
+    "scope": "Original critical suites for security candidate, real staged C++ consumer and strict ASCII property; retained main failures are NOT passes or full Intl qualification",
+    "version": "JavaScript-C140.17.0",
+    "drivers": [
+      {
+        "name": "api",
+        "exit": 0,
+        "seconds": 7.285613536834717,
+        "stdout_sha256": "cfd91d6cd21f00248ec7218424965fd6dcf48aff57a35d57d686ef7bfe59b5e0",
+        "stderr_sha256": "dcc0663052429ff22ef5d198f73a23fba4b480748c1dfe351d44e91230eab4d4"
+      },
+      {
+        "name": "main",
+        "exit": 1,
+        "seconds": 350.1634078025818,
+        "stdout_sha256": "b676b24dc1610c5e9865eff1cea49b7cefe5f7efc10badf4a5306abde25d1fb1",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "jit",
+        "exit": 0,
+        "seconds": 1199.8003480434418,
+        "stdout_sha256": "9544ee0c7f900af0ba072a5ecfed6cd31e28162b9294ef8d41402a9ea62952ab",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "consumer-compile",
+        "exit": 0,
+        "seconds": 1.2575981616973877,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "consumer-run",
+        "exit": 0,
+        "seconds": 0.014403343200683594,
+        "stdout_sha256": "1bc80dc29e497eb09d95dea4d004d67d4ab7d3c14ac4fff5b3dd663d7f796dcb",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "main_automation_counts": {
+      "TEST-PASS": 50586,
+      "TEST-KNOWN-FAIL": 1932,
+      "TEST-UNEXPECTED-FAIL": 104,
+      "TEST-PASS (EXPECTED RANDOM)": 5
+    },
+    "main_failures": {
+      "shell/os.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "shell/os.js:29:9 Error: Assertion failed: got true, expected false: killed process should not have exitStatus"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Kannada.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script_Extensions=Kannada}` should match U+000CDC (`\u0cdc`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Decimal_Number.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Decimal_Number}` should match U+011DE0 (`\ud807\udde0`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Diacritic.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Diacritic}` should match U+0005A2 (`\u05a2`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/ID_Start.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{ID_Start}` should match U+00A7D2 (`\ua7d2`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Common.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script_Extensions=Common}` should match U+002B96 (`\u2b96`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Emoji.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Emoji}` should match U+01F6D8 (`\ud83d\uded8`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Math.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Math}` should match U+01CEF0 (`\ud833\udef0`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Alphabetic.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Alphabetic}` should match U+00A7D2 (`\ua7d2`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Tifinagh.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script_Extensions=Tifinagh}` should match U+000308 (`\u0308`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Number.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Number}` should match U+011DE0 (`\ud807\udde0`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Currency_Symbol.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Currency_Symbol}` should match U+0020C1 (`\u20c1`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Cased.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\p{Cased}` should match U+000295 (`\u0295`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_-_Telugu.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script=Telugu}` should match U+000C5C (`\u0c5c`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_-_Common.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script=Common}` should match U+002B96 (`\u2b96`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Other_Symbol.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Other_Symbol}` should match U+002B96 (`\u2b96`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Lowercase_Letter.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\p{General_Category=Lowercase_Letter}` should match U+000295 (`\u0295`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Telugu.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script_Extensions=Telugu}` should match U+000C5C (`\u0c5c`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_-_Arabic.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script=Arabic}` should match U+00088F (`\u088f`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Newa.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script_Extensions=Newa}` should match U+000951 (`\u0951`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Other.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\p{General_Category=Other}` should match U+002B96 (`\u2b96`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Tangut.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script_Extensions=Tangut}` should match U+0187F8 (`\ud821\udff8`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Mark.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Mark}` should match U+001ACF (`\u1acf`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Latin.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\p{Script_Extensions=Latin}` should match U+000320 (`\u0320`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Sharada.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script_Extensions=Sharada}` should match U+001CEA (`\u1cea`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Case_Ignorable.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Case_Ignorable}` should match U+001ACF (`\u1acf`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_-_Han.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script=Han}` should match U+016FF2 (`\ud81b\udff2`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Lowercase.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\p{Lowercase}` should match U+000295 (`\u0295`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Grapheme_Base.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Grapheme_Base}` should match U+002B96 (`\u2b96`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Inherited.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script_Extensions=Inherited}` should match U+000320 (`\u0320`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Nonspacing_Mark.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Nonspacing_Mark}` should match U+001ACF (`\u1acf`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Cased_Letter.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\p{General_Category=Cased_Letter}` should match U+000295 (`\u0295`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Letter.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Letter}` should match U+00A7D2 (`\ua7d2`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Syriac.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\p{Script_Extensions=Syriac}` should match U+000320 (`\u0320`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Changes_When_NFKC_Casefolded.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Changes_When_NFKC_Casefolded}` should match U+00A7CE (`\ua7ce`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Other_Letter.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Other_Letter}` should match U+000295 (`\u0295`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Nandinagari.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script_Extensions=Nandinagari}` should match U+000951 (`\u0951`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Unified_Ideograph.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Unified_Ideograph}` should match U+02B73A (`\ud86d\udf3a`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/ID_Continue.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{ID_Continue}` should match U+00A7D2 (`\ua7d2`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Punctuation.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Punctuation}` should match U+010ED0 (`\ud803\uded0`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Changes_When_Casemapped.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Changes_When_Casemapped}` should match U+00A7CE (`\ua7ce`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Emoji_Presentation.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Emoji_Presentation}` should match U+01F6D8 (`\ud83d\uded8`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Math_Symbol.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Math_Symbol}` should match U+01CEF0 (`\ud833\udef0`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Symbol.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Symbol}` should match U+002B96 (`\u2b96`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Changes_When_Uppercased.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Changes_When_Uppercased}` should match U+00A7CF (`\ua7cf`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Arabic.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script_Extensions=Arabic}` should match U+00088F (`\u088f`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Modifier_Letter.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Modifier_Letter}` should match U+00A7F1 (`\ua7f1`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Uppercase.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Uppercase}` should match U+00A7CE (`\ua7ce`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_-_Inherited.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script=Inherited}` should match U+001ACF (`\u1acf`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_-_Latin.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script=Latin}` should match U+00A7D2 (`\ua7d2`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Spacing_Mark.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Spacing_Mark}` should match U+011B61 (`\ud806\udf61`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Han.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script_Extensions=Han}` should match U+016FF2 (`\ud81b\udff2`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_Extensions_-_Tirhuta.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script_Extensions=Tirhuta}` should match U+001CD5 (`\u1cd5`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/XID_Continue.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{XID_Continue}` should match U+00A7D2 (`\ua7d2`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Letter_Number.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Letter_Number}` should match U+016FF4 (`\ud81b\udff4`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Changes_When_Titlecased.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Changes_When_Titlecased}` should match U+00A7CF (`\ua7cf`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Other_Punctuation.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Other_Punctuation}` should match U+010ED0 (`\ud803\uded0`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Uppercase_Letter.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{General_Category=Uppercase_Letter}` should match U+00A7CE (`\ua7ce`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/General_Category_-_Unassigned.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\p{General_Category=Unassigned}` should match U+00088F (`\u088f`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Assigned.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Assigned}` should match U+00088F (`\u088f`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_-_Kannada.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script=Kannada}` should match U+000CDC (`\u0cdc`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Changes_When_Lowercased.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Changes_When_Lowercased}` should match U+00A7CE (`\ua7ce`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Ideographic.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Ideographic}` should match U+016FF2 (`\ud81b\udff2`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Changes_When_Casefolded.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Changes_When_Casefolded}` should match U+00A7CE (`\ua7ce`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/XID_Start.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{XID_Start}` should match U+00A7D2 (`\ua7d2`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Extender.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Extender}` should match U+011DD9 (`\ud807\uddd9`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_-_Sharada.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script=Sharada}` should match U+011B60 (`\ud806\udf60`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Script_-_Tangut.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Script=Tangut}` should match U+0187F8 (`\ud821\udff8`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Extended_Pictographic.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\p{Extended_Pictographic}` should match U+002388 (`\u2388`)"
+        ]
+      },
+      "test262/built-ins/RegExp/property-escapes/generated/Grapheme_Extend.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: `\\P{Grapheme_Extend}` should match U+001ACF (`\u1acf`)"
+        ]
+      },
+      "test262/staging/Intl402/Temporal/old/non-iso-calendars-indian.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:51:9 uncaught exception: Test262Error: era component of 2000-01-01T00:00Z formatted in indian Expected SameValue(\u00ab\"\u015aaka\"\u00bb, \u00ab\"Saka\"\u00bb) to be true"
+        ]
+      },
+      "test262/staging/Intl402/Temporal/old/indian-calendar.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:103:9 uncaught exception: Test262Error: Expected a RangeError to be thrown but no exception was thrown at all"
+        ]
+      },
+      "test262/staging/Intl402/Temporal/old/non-iso-calendars-coptic.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:51:9 uncaught exception: Test262Error: era component of 2000-01-01T00:00Z formatted in coptic Expected SameValue(\u00ab\"AM\"\u00bb, \u00ab\"ERA1\"\u00bb) to be true"
+        ]
+      },
+      "test262/staging/Intl402/Temporal/old/zoneddatetime-dst-corner-cases.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: Expected true but got false"
+        ]
+      },
+      "test262/staging/Intl402/Temporal/old/non-iso-calendars-ethioaa.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:51:9 uncaught exception: Test262Error: era component of 2000-01-01T00:00Z formatted in ethioaa Expected SameValue(\u00ab\"AA\"\u00bb, \u00ab\"ERA0\"\u00bb) to be true"
+        ]
+      },
+      "test262/staging/Intl402/Temporal/old/non-iso-calendars-ethiopic.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:51:9 uncaught exception: Test262Error: era component of 2000-01-01T00:00Z formatted in ethiopic Expected SameValue(\u00ab\"AM\"\u00bb, \u00ab\"ERA1\"\u00bb) to be true"
+        ]
+      },
+      "test262/intl402/Temporal/ZonedDateTime/prototype/getTimeZoneTransition/specific-tzdb-values.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:51:9 uncaught exception: Test262Error: Expected SameValue(\u00ab1805007600000000000n\u00bb, \u00ab1572760800000000000n\u00bb) to be true"
+        ]
+      },
+      "test262/intl402/Temporal/ZonedDateTime/prototype/getTimeZoneTransition/result-type.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:20:9 uncaught exception: Test262Error: getTimeZoneTransition(next) does not return its input"
+        ]
+      },
+      "test262/intl402/Temporal/ZonedDateTime/prototype/getTimeZoneTransition/transition-at-instant-boundaries.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:51:9 uncaught exception: Test262Error: There shouldn't be any previous transition before |min| Expected SameValue(\u00ab1912-01-01T00:16:08+00:00[Africa/Abidjan]\u00bb, \u00abnull\u00bb) to be true"
+        ]
+      },
+      "test262/intl402/Temporal/ZonedDateTime/prototype/getTimeZoneTransition/nanoseconds-subtracted-or-added-at-dst-transition.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/shell.js:51:9 uncaught exception: Test262Error: DST transition minus one nanosecond Expected SameValue(\u00ab\"2026-10-25T02:00:00+01:00[Europe/Berlin]\"\u00bb, \u00ab\"2020-10-25T02:00:00+01:00[Europe/Berlin]\"\u00bb) to be true"
+        ]
+      },
+      "test262/intl402/Temporal/ZonedDateTime/prototype/getTimeZoneTransition/transitions-close-together.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/intl402/Temporal/ZonedDateTime/prototype/getTimeZoneTransition/transitions-close-together.js:37:14 TypeError: can't access property \"epochNanoseconds\", before.getTimeZoneTransition(...) is null"
+        ]
+      },
+      "test262/intl402/NumberFormat/prototype/format/units.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "test262/intl402/NumberFormat/prototype/format/units.js:12:20 Error: internal error while computing Intl data"
+        ]
+      },
+      "non262/Temporal/Intl/consistent-dates.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Temporal/Intl/consistent-dates.js:392:17 Error: Assertion failed: got 2042, expected 2043"
+        ]
+      },
+      "non262/Intl/available-locales-supported.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "shell.js:143:13 Error: Exception thrown at index 28: Error: Assertion failed: got \"en-US-posix\", expected \"en-US-POSIX\": mismatch at element 28"
+        ]
+      },
+      "non262/Intl/available-locales-resolved.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/available-locales-resolved.js:36:13 Error: Assertion failed: got \"en-US\", expected \"en-US-POSIX\""
+        ]
+      },
+      "non262/Intl/NumberFormat/unit-compound-combinations.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/NumberFormat/unit-compound-combinations.js:60:21 Error: internal error while computing Intl data"
+        ]
+      },
+      "non262/Intl/NumberFormat/unit-formatToParts-has-unit-field.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/NumberFormat/unit-formatToParts-has-unit-field.js:71:19 Error: internal error while computing Intl data"
+        ]
+      },
+      "non262/Intl/NumberFormat/unit-well-formed.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/NumberFormat/unit-well-formed.js:263:21 Error: internal error while computing Intl data"
+        ]
+      },
+      "non262/Intl/Collator/big5han-gb2312han.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "shell.js:143:13 Error: Exception thrown at index 3: Error: Assertion failed: got \"\\uD840\\uDDF2\", expected \"\\u3467\": mismatch at element 3"
+        ]
+      },
+      "non262/Intl/Collator/implicithan.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "shell.js:143:13 Error: Exception thrown at index 0: Error: Assertion failed: got \"\\uD840\\uDDF2\", expected \"\\u5047\": mismatch at element 0"
+        ]
+      },
+      "non262/Intl/DateTimeFormat/formatRange-timeZone-offset.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DateTimeFormat/shell.js:131:13 Error: Assertion failed: got 7, expected 9: parts count mismatch"
+        ]
+      },
+      "non262/Intl/DateTimeFormat/era.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DateTimeFormat/shell.js:32:17 Error: Assertion failed: got \"01\", expected \"1\": value mismatch at 0"
+        ]
+      },
+      "non262/Intl/DateTimeFormat/dateTimeStyle-locale.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DateTimeFormat/dateTimeStyle-locale.js:116:13 Error: Assertion failed: got \"12\\u664230\\u520645\\u79D2 \\u7C73\\u56FD\\u592A\\u5E73\\u6D0B\\u6A19\\u6E96\\u6642\", expected \"12\\u664230\\u520645\\u79D2 \\u30A2\\u30E1\\u30EA\\u30AB\\u592A\\u5E73\\u6D0B\\u6A19\\u6E96\\u6642\""
+        ]
+      },
+      "non262/Intl/DateTimeFormat/formatRange-timeZoneName-matches-format.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DateTimeFormat/formatRange-timeZoneName-matches-format.js:39:15 Error: Assertion failed: got (void 0), expected \"GMT+0\""
+        ]
+      },
+      "non262/Intl/DateTimeFormat/timeZone_version.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DateTimeFormat/timeZone_version.js:13:9 Error: Assertion failed: got \"2026a\", expected \"2026b\""
+        ]
+      },
+      "non262/Intl/DateTimeFormat/formatRange-hour-cycle.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DateTimeFormat/formatRange-hour-cycle.js:433:15 Error: Assertion failed: got \"0 \\u2013 10 AM\", expected \"0 \\u2013 10 Uhr AM\": hourCycle: h11"
+        ]
+      },
+      "non262/Intl/DateTimeFormat/implied-script-has-consistent-output.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DateTimeFormat/implied-script-has-consistent-output.js:54:13 Error: Assertion failed: got \"03:00 PM\", expected \"15:00\": Mismatch for locale \"ku-IQ\" (ku-Arab-IQ)"
+        ]
+      },
+      "non262/Intl/DateTimeFormat/japanese-gannen-year.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DateTimeFormat/japanese-gannen-year.js:50:9 Error: Assertion failed: got \"\\u662D\\u548C\\u0666\\u0664/\\u0661\", expected \"\\u662D\\u548C64\\u5E74\\u0661\\u6708\""
+        ]
+      },
+      "non262/Intl/DateTimeFormat/fractional-second-digits-append-item.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DateTimeFormat/shell.js:32:17 Error: Assertion failed: got \" \\u251CF14: \", expected \" (Fractional Second: \": value mismatch at 3"
+        ]
+      },
+      "non262/Intl/DateTimeFormat/formatRange-timeZoneName.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DateTimeFormat/shell.js:131:13 Error: Assertion failed: got 7, expected 9: parts count mismatch"
+        ]
+      },
+      "non262/Intl/DateTimeFormat/day-period-hour-cycle.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DateTimeFormat/day-period-hour-cycle.js:93:17 Error: Assertion failed: got \"12 Uhr mittags\", expected \"12 mittags\": locale=de, date=Tue Jan 01 2019 12:00:00 GMT-0800 (Pacific Standard Time), options={\"dayPeriod\":\"short\",\"hour\":\"numeric\",\"hour12\":true}"
+        ]
+      },
+      "non262/Intl/Locale/likely-subtags-generated.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/Locale/likely-subtags-generated.js:15246:13 Error: Assertion failed: got \"bsq-Latn-LR\", expected \"bsq-Bass-LR\""
+        ]
+      },
+      "non262/Intl/DisplayNames/calendar.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DisplayNames/calendar.js:70:15 Error: Assertion failed: got \"Gregorian Calendar (ISO 8601 Weeks)\", expected \"ISO-8601 Calendar\""
+        ]
+      },
+      "non262/Intl/DurationFormat/basic.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "non262/Intl/DurationFormat/basic.js:562:15 Error: Assertion failed: got \"1h, 2 Min.\", expected \"1 Std., 2 Min.\": de [{\"style\":\"narrow\"}]: {\"hours\":1,\"minutes\":2}"
+        ]
+      }
+    },
+    "novel_failure_diagnostics": {
+      "shell/os.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "shell/os.js:29:9 Error: Assertion failed: got true, expected false: killed process should not have exitStatus"
+        ]
+      }
+    },
+    "baseline_failures_no_longer_present": [],
+    "main_suite_end_observed": true,
+    "compiled_artifacts": 501,
+    "changed_artifacts": [],
+    "changed_stage_files": [],
+    "strict_ascii_property": {
+      "files": 5,
+      "failed": [],
+      "original_vcs_checker": "Known source-archive metadata failure retained; not replayed or claimed passed"
+    }
+  },
+  "original_api_passed": 901,
+  "original_jit_passed": 55824,
+  "original_jit_failed": 0,
+  "signal_reconciled": {
+    "scope": "Original one-case SIGINT test with foreground child signal dispositions only; all original failures retained, no engine/source/assertion rebuild or full suite replay",
+    "exit": 0,
+    "passed": [
+      "shell/os.js"
+    ],
+    "child_signals": {
+      "int_ignored": false,
+      "quit_ignored": false
+    },
+    "parent_int_ignored": true,
+    "parent_quit_ignored": true,
+    "changed_artifacts": [],
+    "compiled_artifacts": 501,
+    "stdout_sha256": "a9122cdc4f5cb165002eccd896be15caf3cd456c6d72e5fdb5f7bdcfaf534050",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "selection": {
+      "count": 1,
+      "selected": [
+        "shell/os.js"
+      ]
+    },
+    "original_suite_failure": {
+      "shell/os.js": {
+        "exit": 3,
+        "primary_diagnostics": [
+          "shell/os.js:29:9 Error: Assertion failed: got true, expected false: killed process should not have exitStatus"
+        ]
+      }
+    }
+  },
+  "incorrect_selector_attempt": {
+    "exit": null,
+    "partial_case_lines_discarded": 5411,
+    "reason": "Original --include option did not restrict positional requested paths. Bound100s timeout terminated attempt; no partial acceptance. Controlled cancellation tried afterward refused absent PID, no signal sent. Corrected -f exact list and source-level selection count guard prove1case before execution."
+  },
+  "retained_nonpasses": "103 unchanged baseline Unicode/Intl/compound-unit diagnostics retained. Additional initial shell/os.js failure60s exposed inherited ignored SIGINT/SIGQUIT; unchanged one-case foreground-disposition test passed. Neither failed aggregate was rewritten or declared fully passing.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-mozjs-security-tests.tar.gz",
+    "members": 38,
+    "sha256": "79af06f40f3c285f9da10b23746850740d0610690b42033fe6613bfb918d76af"
+  }
+}

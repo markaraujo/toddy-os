@@ -1816,6 +1816,16 @@
       "reference": "ADR-0147; Mozilla MFSA2026-92/99 same mozjs-140 security overlay",
       "integrity": "Official HTTPS source matches exact official SHA512SUMS; SHA256 frozen before extraction. No verified OpenPGP signature claim. Original140.14 baseline retained.",
       "status": "source_verified"
+    },
+    {
+      "name": "gtksourceview-duplicate-capture-patch",
+      "version": "5.20.0-1",
+      "filename": "gtksourceview-5.20.0-duplicate-capture-1.patch",
+      "url": "https://raw.githubusercontent.com/markaraujo/toddy-os/8c0625e0fe566dc65ddfe05981f28bfecbae02a4/patches/phase2/gtksourceview-5.20.0-duplicate-capture-1.patch",
+      "sha256": "e11b1044f2f646415d373d0346c95ac69257190fedf9f6d0c5bdc94a951ac0a8",
+      "reference": "ADR-0146; exact owner-repository committed derivative patch; original/corrected native regression and affected original/native driver evidence",
+      "integrity": "Byte-identical to exact committed Git blob and independently native-tested source correction; original upstream archive unchanged",
+      "status": "source_verified"
     }
   ]
 }

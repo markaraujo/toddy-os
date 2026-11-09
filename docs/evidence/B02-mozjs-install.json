@@ -1,0 +1,31 @@
+{
+  "scope": "Owned native mozjs archive and real installed consumer checks only; full desktop/product GUI still pending",
+  "run": {
+    "step": "b02-mozjs-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T11:25:06.298167+00:00",
+    "changed_paths": 1691
+  },
+  "package": {
+    "name": "mozjs",
+    "version": "140.17.0-1+toddy1",
+    "archive_sha256": "cc94cf461f694ad558d9bd16241ec1df0539914b4377104b1dff7eec3c51dd63",
+    "installed": true
+  },
+  "payload_entries": 1693,
+  "consumer": {
+    "scope": "Real installed dynamic C++ embedding/GC/typed array/Unicode/Intl/refusal/recovery, shell and desktop PT-date/simple-unit consumer; retained main-suite failures are NOT full Intl qualification",
+    "version": "140.17.0",
+    "native_consumer_exit": 0,
+    "stdout": "dynamic embedding: typed array/GC/Unicode/Intl/refusal/recovery=42",
+    "native_cli_exit": 0,
+    "cli_stdout": "installed PT date/simple unit=42"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-desktop-libraries-gjs-evidence.tar.gz",
+    "members": 37,
+    "sha256": "706747da38635bf22a501dd99df07935838a175272fd84be3c6474a697036090"
+  },
+  "limitations": "103unchanged baseline main failures remain nonpasses; one additional detached signal case reconciled by exact original foreground-disposition case with immutable artifacts. Original aggregate failures retained; no completely passing main suite claim."
+}

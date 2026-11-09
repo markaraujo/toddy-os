@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'mozjs': ('140.17.0', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), icu (= 78.3-1+toddy1), readline (>= 8.3-1), zlib (>= 1.3.2-1)', 'firefox-140.17.0esr.source.tar.xz', 'usr/lib/pkgconfig/mozjs-140.pc'),
+    'gtksourceview': ('5.20.0', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), gtk (>= 4.22.4-1+toddy4), pcre2 (>= 10.49-1+toddy1), libxml2 (= 2.15.3-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)', 'gtksourceview-5.20.0.tar.xz', 'usr/lib/pkgconfig/gtksourceview-5.pc'),
     'cbindgen': ('0.29.4', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1)', 'cbindgen-0.29.4.tar.gz', 'usr/bin/cbindgen'),
     'icu': ('78.3', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1)', 'icu4c-78.3-sources.tgz', 'usr/lib/pkgconfig/icu-uc.pc'),
     'libadwaita': ('1.9.3', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), gtk (>= 4.22.4-1+toddy4), pango (= 1.58.2-1+toddy1), fribidi (= 1.0.16-1+toddy1), graphene (= 1.10.8-1+toddy1), appstream (= 1.1.6-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)', 'libadwaita-1.9.3.tar.xz', 'usr/lib/pkgconfig/libadwaita-1.pc'),
@@ -196,6 +198,8 @@ if __name__ == '__main__':
     if name=='wireplumber':qualifier='wireplumber-pot-3'
     if name=='gnome-desktop':qualifier='gnome-desktop-finish-3'
     if name=='libadwaita':qualifier='libadwaita-build-2'
+    if name=='gtksourceview':qualifier='gtksourceview-patched-verify-9'
+    if name=='mozjs':qualifier='mozjs-signal-check-4'
     if name=='libxml2-python':qualifier='libxml2-python-probe-5'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
@@ -1097,8 +1101,16 @@ if __name__ == '__main__':
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['staged_consumer_exit']==proof['upstream_diagnostic_exit']==0 and proof['matching_cases']==2
         assert len(proof['matching_oracle'])==2 and all(r['matching_cost']==r['independent_exhaustive_optimum'] for r in proof['matching_oracle'])
+    if name=='mozjs':
+        from qualify_mozjs_security import qualify as qualify_mozjs
+        qualify_mozjs(ROOT)
+    if name=='gtksourceview':
+        from qualify_gtksource_patch import qualify
+        qualify(ROOT,log)
     assert name==sys.argv[1], 'Package identity changed during qualification'
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
+    if name=='mozjs':source=Path('/mnt/lfs/sources/phase2/work/mozjs-security-1/stage')
+    if name=='gtksourceview':source=Path('/mnt/lfs/sources/phase2/work/gtksourceview-patched-1/stage')
     if name=='libxml2-python':source=Path('/mnt/lfs/sources/phase2/work/libxml2-1/python-binding-1/stage')
     assert not (source/'.toddy-retired.json').exists(),'Stage retired under verified archive custody; reuse the native package, no promotion replay'
     before = inspect_stage(source)
@@ -1142,6 +1154,8 @@ if __name__ == '__main__':
             'scope':'Omit only optional Python show-stylus CLI/man whose libevdev/pyudev bindings are unavailable. Original source/test stage retained; native C library/tools/database/udev inputs unchanged.',
             'omitted':omitted},indent=2)+'\n')
     archives=[archive]
+    if name=='mozjs':archives.append('spidermonkey-140.14.0-python_3.14_fixes-1.patch')
+    if name=='gtksourceview':archives.append('gtksourceview-5.20.0-duplicate-capture-1.patch')
     if name=='docutils':archives.append('flit_core-3.12.0.tar.gz')
     if name=='cbindgen':archives.append('cbindgen-0.29.4-vendor.tar.gz')
     if name=='libcanberra':archives.append('libcanberra-0.30-wayland-1.patch')
@@ -1158,6 +1172,12 @@ if __name__ == '__main__':
     if name=='lua':
         archives += [r['filename'] for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name'] in ('lua-shared-library-patch','lua-test-suite')]
     write_copyright(destination, name, archives)
+    if name=='gtksourceview':
+        document=destination/'usr/share/doc/gtksourceview'
+        shutil.copyfile('/mnt/lfs/sources/gtksourceview-5.20.0-duplicate-capture-1.patch',document/'duplicate-capture.patch')
+        (document/'README.Toddy').write_text('Source-backed private duplicate-capture fix: ADR0146. Original6case consumer reproduced5failures; corrected6cases and5original syntax cases passed. Original regex3cases passed under native7.1.8/Mutter. Full editor/GNOME integration is a separate B02 gate. Original invalidUTF8 file.cir and known GDB grammar remain unqualified. Upstream full legal notices retained; downstream derivative patch follows upstream LGPL terms.\n')
+    if name=='mozjs':
+        (destination/'usr/share/doc/mozjs/README.Toddy').write_text('Explicit same-family security overlay140.17.0, ADR0147. Original API/JIT and real dynamic consumer qualified; detached SIGINT case reconciled by one unchanged foreground-disposition test, with original aggregate failure preserved. Main-suite retained baseline diagnostics are NOT passing tests or full Intl qualification. Baseline bundles ICU77.1; system ICU78.3 differs from Unicode16/generated locale/calendar/timezone fixtures, and four compound-unit tests report functional errors. Exact diagnostics/case counts retained in release evidence. Original source-archive VCS-dependent message checker remains unavailable; strict ASCII property verified separately. No browser/full GNOME/hardware acceptance. Full source legal notices retained.\n')
     source_args=[arg for item in archives for arg in ['--source',item]]
     if name=='llvm':
         runtime=destination.with_name('phase2-llvm-runtime')
