@@ -1,0 +1,594 @@
+{
+  "scope": "Actual native7.1.8/Systemd/KVM headless Mutter/Wayland GJS remaining78original programs; original C202cases reused separately, no complete GNOME/login/product/hardware acceptance",
+  "commit": "66e8ec0db9b0133c93714dcaf8cd0f96efc0f3de",
+  "report_sha256": "ca60c6fef7c0a2719e5da2c0c85136ab7e207f2703639d6db7522b8ab8865fbf",
+  "kernel": "7.1.8-toddy",
+  "compositor_exit": 0,
+  "all_selected_exits_zero": true,
+  "programs": [
+    {
+      "name": "Scripts - gjs:CommandLineModules",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Scripts - gjs:Warnings",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Scripts - gjs:Gtk4Warnings",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:self",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Async",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:AsyncMainloop",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Cairo",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Console",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Encoding",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:ESModules",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Exceptions",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Fundamental",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Gettext",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:GIMarshalling",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Gio",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Scripts - gjs:CommandLine",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:GLibLogWriter",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Global",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:GObject",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:GObjectClass",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:GObjectInterface",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:GObjectValue",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:GTypeClass",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Introspection",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Namespace",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:ParamSpec",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Print",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Promise",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Regress",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:System",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:GLib",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Utility",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:WarnLib",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:WeakRef",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:GObjectDestructionAccess",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Gtk3",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Timers",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Gtk4",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "dbus - gjs:GDBus",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Format",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Importer",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Importer2",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Lang",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:LegacyByteArray",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:LegacyCairo",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:LegacyClass",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:LegacyGObject",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Overrides",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Package",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Mainloop",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Signals",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:Tweener",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "JS - gjs:LegacyGtk",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:backtrace command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:breakpoint command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:continue command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:detach command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:delete command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:down-up command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:finish command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:frame command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:keys command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:lastvalues command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:list command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:next command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:print command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:quit command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:return command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:set command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:step command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:throw command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:until command",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:sourcemap dynamic module",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:sourcemap separate module",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:sourcemap separate",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:sourcemap inlined",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:sourcemap inlined module",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "Debugger - gjs:throw ignored",
+      "result": "OK",
+      "exit": 0
+    }
+  ],
+  "passed_case_executions": 2741,
+  "skipped_case_executions": 147,
+  "skip_lines": [
+    "ok 51 Cairo GI test suite for FontOptions can be marshalled as a return value with transfer none # SKIP pending",
+    "ok 52 Cairo GI test suite for FontOptions can be marshalled as an in parameter with transfer none # SKIP pending",
+    "ok 53 Cairo GI test suite for FontOptions can be marshalled as a return value with transfer full # SKIP pending",
+    "ok 54 Cairo GI test suite for FontOptions can be marshalled as an in parameter with transfer full # SKIP pending",
+    "ok 55 Cairo GI test suite for FontFace can be marshalled as a return value with transfer full # SKIP pending",
+    "ok 56 Cairo GI test suite for ScaledFont can be marshalled as a return value with transfer full # SKIP pending",
+    "ok 57 Cairo GI test suite for matrix can be marshalled as a return value # SKIP pending",
+    "ok 58 Cairo GI test suite for matrix can be marshalled as an in parameter # SKIP pending",
+    "ok 59 Cairo GI test suite for matrix can be marshalled as a caller-allocates out parameter # SKIP pending",
+    "ok 29 Interoperation with Error.isError returned GError # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/700",
+    "ok 41 Integer int64-typed marshals signed value as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 44 Integer int64-typed marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 46 Integer int64-typed marshals unsigned value as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 49 Integer int64-typed marshals unsigned value as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 71 Integer long-typed marshals signed value as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 74 Integer long-typed marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 76 Integer long-typed marshals unsigned value as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 79 Integer long-typed marshals unsigned value as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 81 Integer ssize-typed marshals signed value as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 84 Integer ssize-typed marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 86 Integer ssize-typed marshals unsigned value as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 89 Integer ssize-typed marshals unsigned value as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 122 dev_t marshals as an inout parameter # SKIP true",
+    "ok 161 UTF-8 string with transfer full marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/issues/192",
+    "ok 199 C array with length of boxed structs passed by value marshals as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/44",
+    "ok 200 C array with length of simple structs marshals as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/44",
+    "ok 234 Exhaustive test of UTF-8 sequences length in transfer container # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/44",
+    "ok 235 Exhaustive test of UTF-8 sequences length inout transfer container # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/44",
+    "ok 246 Exhaustive test of UTF-8 sequences fixed in transfer container # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/44",
+    "ok 247 Exhaustive test of UTF-8 sequences fixed inout transfer container # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/44",
+    "ok 258 Exhaustive test of UTF-8 sequences zero_terminated in transfer container # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/44",
+    "ok 259 Exhaustive test of UTF-8 sequences zero_terminated inout transfer container # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/44",
+    "ok 277 GArray of strings with transfer full marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/issues/192",
+    "ok 279 GArray of strings with transfer container marshals as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/44",
+    "ok 282 GArray of strings with transfer container marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/44",
+    "ok 283 GArray of strings marshals as a transfer-full caller-allocated out parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/106",
+    "ok 297 GPtrArray of strings with transfer full marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/issues/192",
+    "ok 299 GPtrArray of strings with transfer container marshals as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/44",
+    "ok 302 GPtrArray of strings with transfer container marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/44",
+    "ok 325 Array of GStrv length in transfer container # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/44",
+    "ok 326 Array of GStrv length inout transfer container # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/44",
+    "ok 337 Array of GStrv fixed in transfer container # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/44",
+    "ok 338 Array of GStrv fixed inout transfer container # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/44",
+    "ok 349 Array of GStrv zero_terminated in transfer container # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/44",
+    "ok 350 Array of GStrv zero_terminated inout transfer container # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/44",
+    "ok 368 GList of strings with transfer full marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/issues/192",
+    "ok 370 GList of strings with transfer container marshals as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/44",
+    "ok 373 GList of strings with transfer container marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/44",
+    "ok 385 GSList of strings with transfer full marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/issues/192",
+    "ok 387 GSList of strings with transfer container marshals as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/44",
+    "ok 390 GSList of strings with transfer container marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/44",
+    "ok 402 GHashTable with string values with transfer full marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/issues/192",
+    "ok 404 GHashTable with string values with transfer container marshals as an in parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/44",
+    "ok 407 GHashTable with string values with transfer container marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/44",
+    "ok 417 GValue marshals as an inout parameter # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/issues/192",
+    "ok 424 GValue enum can be passed into a function and packed # SKIP we don't know to pack enums in a GValue as enum and not int",
+    "ok 426 GValue flags can be passed into a function and packed # SKIP we don't know to pack flags in a GValue as flags and not int",
+    "ok 435 GValue array can roundtrip with GValues intact # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/272",
+    "ok 447 Callback GClosure marshals a GClosure as a return value # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/80",
+    "ok 453 Callback marshals an array out parameter # SKIP Function not added to gobject-introspection test suite yet",
+    "ok 491 Union cannot be constructed with wrong-type properties # SKIP We implicitly convert wrong typed values",
+    "ok 498 Union marshals unregistered initialized union with pointer # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/109",
+    "ok 578 Virtual function marshals a callback # SKIP callback parameters to vfuncs not supported",
+    "ok 604 Virtual function marshals an object in parameter with transfer full # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/275",
+    "ok 605 Wrong virtual functions marshals a return value # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/311",
+    "ok 606 Wrong virtual functions marshals one out parameter # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/311",
+    "ok 615 Static virtual functions has static_name # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/543",
+    "ok 616 Static virtual functions has static_typed_name # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/543",
+    "ok 617 Static virtual functions has static_create_new # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/543",
+    "ok 618 Static virtual functions has static_create_new_out # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/543",
+    "ok 826 GObject signals checks emission of signal with boxed-struct argument and transfer full # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/470",
+    "ok 828 GObject signals not-ref-counted boxed types with transfer full originating from C are properly handled # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/470",
+    "ok 36 - --profile should dump profiling data to the default file name # SKIP profiler is disabled",
+    "ok 37 - --profile with argument should dump profiling data to the named file # SKIP profiler is disabled",
+    "ok 38 - GJS_ENABLE_PROFILER=1 should enable the profiler # SKIP profiler is disabled",
+    "ok 66 GObject virtual function supports static methods # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/543",
+    "ok 68 GObject virtual function must be static for methods # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/543",
+    "ok 84 GObject value (GValue) can be marshalled and un-marshalled from JS gtype # SKIP Not supported - always implicitly converted",
+    "ok 116 GObject value (GValue) initialized sets and gets boxed # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/402",
+    "ok 117 GObject value (GValue) initialized can be passed to a function and returns a boxed # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/402",
+    "ok 118 GObject value (GValue) initialized copies boxed # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/402",
+    "ok 123 GObject value (GValue) initialized sets and gets gvalue # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/272",
+    "ok 124 GObject value (GValue) initialized can be passed to a function and returns a gvalue # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/272",
+    "ok 125 GObject value (GValue) initialized copies gvalue # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/272",
+    "ok 126 GObject value (GValue) can be marshalled and un-marshalled from JS gvalue # SKIP Not supported - always implicitly converted",
+    "ok 151 GObject value (GValue) initialized sets and gets instance # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/402",
+    "ok 152 GObject value (GValue) initialized can be passed to a function and returns a instance # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/402",
+    "ok 153 GObject value (GValue) initialized copies instance # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/402",
+    "ok 179 GObject value (GValue) initialized sets and gets boxed # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/402",
+    "ok 180 GObject value (GValue) initialized can be passed to a function and returns a boxed # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/402",
+    "ok 181 GObject value (GValue) initialized copies boxed # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/402",
+    "ok 68 Life, the Universe and Everything UTF-8 strings as in-out parameters # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/issues/192",
+    "ok 83 Life, the Universe and Everything inout arrays of integers # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/issues/192",
+    "ok 104 Life, the Universe and Everything glist types in with transfer-container # SKIP Function not added to gobject-introspection test suite yet",
+    "ok 111 Life, the Universe and Everything gslist types in with transfer-container # SKIP Function not added to gobject-introspection test suite yet",
+    "ok 116 Life, the Universe and Everything GHash type with GValue value type in # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/272",
+    "ok 142 Life, the Universe and Everything Struct with non-basic member sets fields correctly # SKIP pending",
+    "ok 143 Life, the Universe and Everything Struct with annotated fields sets fields correctly # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/83",
+    "ok 144 Life, the Universe and Everything Struct with array of anonymous unions sets fields correctly # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/714",
+    "ok 145 Life, the Universe and Everything Struct with const/volatile members sets fields correctly # SKIP pending",
+    "ok 190 Life, the Universe and Everything Introspected GObject GProperty Hash table # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/83",
+    "ok 191 Life, the Universe and Everything Introspected GObject GProperty List # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/83",
+    "ok 192 Life, the Universe and Everything Introspected GObject GProperty Pointer array # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/83",
+    "ok 193 Life, the Universe and Everything Introspected GObject GProperty Hash table with old-style annotation # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/83",
+    "ok 194 Life, the Universe and Everything Introspected GObject GProperty List with old-style annotation # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/83",
+    "ok 199 Life, the Universe and Everything Introspected GObject GProperty GType object # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/83",
+    "ok 200 Life, the Universe and Everything Introspected GObject GProperty Byte array # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/715",
+    "ok 212 Life, the Universe and Everything Introspected GObject Signal connection signal with int64 gets correct value # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 213 Life, the Universe and Everything Introspected GObject Signal connection signal with uint64 gets correct value # SKIP https://gitlab.gnome.org/GNOME/gjs/issues/271",
+    "ok 214 Life, the Universe and Everything Introspected GObject Signal connection signal with array parameter is properly handled # SKIP Not yet implemented",
+    "ok 215 Life, the Universe and Everything Introspected GObject Signal connection signal with hash parameter is properly handled # SKIP Not yet implemented",
+    "ok 219 Life, the Universe and Everything Introspected GObject Signal connection signal with GStrv parameter and transfer full is properly handled # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/470",
+    "ok 220 Life, the Universe and Everything Introspected GObject Signal connection signal with int array ret parameter is properly handled # SKIP Not yet implemented",
+    "ok 221 Life, the Universe and Everything Introspected GObject Signal connection can pass parameter to signal with array len parameter via emit # SKIP Not yet implemented",
+    "ok 222 Life, the Universe and Everything Introspected GObject Signal connection can pass null to signal with array len parameter # SKIP Not yet implemented",
+    "ok 223 Life, the Universe and Everything Introspected GObject Signal connection signal with int in-out parameter # SKIP Not yet implemented",
+    "ok 274 Life, the Universe and Everything callback with inout array # SKIP Temporarily disabled with xit",
+    "ok 283 Life, the Universe and Everything callback with destroy-notify and no user data # SKIP Callback with destroy-notify and no user data not currently supported",
+    "ok 321 Life, the Universe and Everything Flat array of structs caller-allocated out parameter # SKIP Not supported",
+    "ok 327 Annotations object handles a callback property # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/83",
+    "ok 329 Annotations object handles a signal which takes a pointer argument but annotated as a string # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/57",
+    "ok 330 Annotations object handles a signal which takes a list of strings # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/57",
+    "ok 333 Annotations object handles an in-argument passed by pointer # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/652",
+    "ok 334 Annotations object handles an optional in-out argument # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/53",
+    "ok 336 Annotations object handles a GPtrArray of GValue # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/272 (maybe)",
+    "ok 337 Annotations object handles a struct with a fixed length array field # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/525",
+    "ok 339 Annotations object handles an integer constant larger than 32 bits # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/526",
+    "ok 344 Regress.Foo interface with vfunc that takes a callback # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/72",
+    "ok 358 Regress.Foo Primitive type union fields # SKIP https://gitlab.gnome.org/GNOME/gjs/-/merge_requests/770",
+    "ok 359 Regress.Foo Union field that is a pointer to a boxed type # SKIP https://gitlab.gnome.org/GNOME/gjs/-/merge_requests/770",
+    "ok 364 Regress.Foo Foreign struct via introspected constructor # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/656",
+    "ok 381 Class with action signals returns a new object # SKIP https://gitlab.gnome.org/GNOME/gjs/-/issues/661",
+    "ok 383 Bitmask fundamental type can be created # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection-tests/-/issues/7",
+    "ok 3 Utility unions/structs TaggedValue # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/569",
+    "ok 4 Utility unions/structs Byte # SKIP https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/569",
+    "ok 6 Utility unions/structs Struct # SKIP Bitfields not supported. Open an issue if you need this",
+    "ok 54 GObject with toggle references can be toggled up-down from various threads while getting a GWeakRef from main # SKIP Flaky, see https://gitlab.gnome.org/GNOME/gjs/-/issues/568",
+    "ok 16 Gtk overrides Class inheriting from template class sets up internal and public template children # SKIP pending",
+    "ok 17 Gtk overrides Class inheriting from template class sets up public template children with the correct widgets # SKIP pending",
+    "ok 18 Gtk overrides Class inheriting from template class sets up internal template children with the correct widgets # SKIP pending",
+    "ok 19 Gtk overrides Class inheriting from template class connects template callbacks to the correct handler # SKIP pending",
+    "ok 20 Gtk overrides Class inheriting from template class binds template callbacks to the correct object # SKIP pending",
+    "ok 21 Gtk 4 overrides Class inheriting from template class sets up internal and public template children # SKIP pending",
+    "ok 22 Gtk 4 overrides Class inheriting from template class sets up public template children with the correct widgets # SKIP pending",
+    "ok 23 Gtk 4 overrides Class inheriting from template class sets up internal template children with the correct widgets # SKIP pending",
+    "ok 24 Gtk 4 overrides Class inheriting from template class connects template callbacks to the correct handler # SKIP pending",
+    "ok 25 Gtk 4 overrides Class inheriting from template class binds template callbacks to the correct object # SKIP pending"
+  ],
+  "artifacts_unchanged": 124,
+  "source_test_files_unchanged": 361,
+  "manifest_sha256": "aa614b923137c74d137ec852ad2be64d294298bb6bffcbbc4a019e28d28411e3",
+  "backing_unchanged": true,
+  "container_stopped": true,
+  "container_exit": 0,
+  "oom_killed": false,
+  "recovered_protocol_markers": [],
+  "builder_recovery": {
+    "boot": "cc2afa83-8448-4d2a-abb9-b78d25bc5103",
+    "restored": [
+      {
+        "work": "/mnt/lfs/sources/phase2/work/gtk-1",
+        "uuid": "1593a243-4338-45fb-86f6-7b699b4b3235",
+        "image_inode": 786439,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/desktop-resources-1",
+        "uuid": "a1385a38-a9ed-481b-96d8-b0120b4f1e7c",
+        "image_inode": 786440,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/doxygen-1",
+        "uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+        "image_inode": 786441,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/glycin-1",
+        "uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+        "image_inode": 786463,
+        "restored_existing_filesystem": true
+      }
+    ],
+    "scope": "Same existing4scratch UUIDs/inodes only; no trim/format/recreation"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gjs-native-6-evidence.tar.gz",
+    "members": 12,
+    "sha256": "96e458ee1604312ae0a4de08f4357cec1ca82b7b78e9757ceeece07134be3fcd"
+  }
+}

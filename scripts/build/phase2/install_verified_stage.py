@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gjs': ('1.88.1', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), glib (>= 2.88.3-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1), cairo (= 1.18.4-1+toddy1), libffi (>= 3.8.0-1), mozjs (= 140.17.0-1+toddy1), readline (>= 8.3-1)', 'gjs-1.88.1.tar.xz', 'usr/lib/pkgconfig/gjs-1.0.pc'),
     'mozjs': ('140.17.0', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), icu (= 78.3-1+toddy1), readline (>= 8.3-1), zlib (>= 1.3.2-1)', 'firefox-140.17.0esr.source.tar.xz', 'usr/lib/pkgconfig/mozjs-140.pc'),
     'gtksourceview': ('5.20.0', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), gtk (>= 4.22.4-1+toddy4), pcre2 (>= 10.49-1+toddy1), libxml2 (= 2.15.3-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)', 'gtksourceview-5.20.0.tar.xz', 'usr/lib/pkgconfig/gtksourceview-5.pc'),
     'cbindgen': ('0.29.4', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1)', 'cbindgen-0.29.4.tar.gz', 'usr/bin/cbindgen'),
@@ -1101,6 +1102,9 @@ if __name__ == '__main__':
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['staged_consumer_exit']==proof['upstream_diagnostic_exit']==0 and proof['matching_cases']==2
         assert len(proof['matching_oracle'])==2 and all(r['matching_cost']==r['independent_exhaustive_optimum'] for r in proof['matching_oracle'])
+    if name=='gjs':
+        from qualify_gjs import qualify as qualify_gjs
+        qualify_gjs(ROOT,log)
     if name=='mozjs':
         from qualify_mozjs_security import qualify as qualify_mozjs
         qualify_mozjs(ROOT)
@@ -1178,6 +1182,8 @@ if __name__ == '__main__':
         (document/'README.Toddy').write_text('Source-backed private duplicate-capture fix: ADR0146. Original6case consumer reproduced5failures; corrected6cases and5original syntax cases passed. Original regex3cases passed under native7.1.8/Mutter. Full editor/GNOME integration is a separate B02 gate. Original invalidUTF8 file.cir and known GDB grammar remain unqualified. Upstream full legal notices retained; downstream derivative patch follows upstream LGPL terms.\n')
     if name=='mozjs':
         (destination/'usr/share/doc/mozjs/README.Toddy').write_text('Explicit same-family security overlay140.17.0, ADR0147. Original API/JIT and real dynamic consumer qualified; detached SIGINT case reconciled by one unchanged foreground-disposition test, with original aggregate failure preserved. Main-suite retained baseline diagnostics are NOT passing tests or full Intl qualification. Baseline bundles ICU77.1; system ICU78.3 differs from Unicode16/generated locale/calendar/timezone fixtures, and four compound-unit tests report functional errors. Exact diagnostics/case counts retained in release evidence. Original source-archive VCS-dependent message checker remains unavailable; strict ASCII property verified separately. No browser/full GNOME/hardware acceptance. Full source legal notices retained.\n')
+    if name=='gjs':
+        (destination/'usr/share/doc/gjs/README.Toddy').write_text('Pinned GJS1.88.1: original two C drivers202cases passed; actual native7.1.8/Mutter remaining78original programs OK/2741passed cases/147upstream pending skips. Skips remain unqualified, not passes. Native C/CLI/GI/event/refusal/recovery qualified; full GNOME session and product interaction remain separate B02 gates. Profiler/installed test payload omitted for minimal runtime; full exact source legal notices retained.\n')
     source_args=[arg for item in archives for arg in ['--source',item]]
     if name=='llvm':
         runtime=destination.with_name('phase2-llvm-runtime')

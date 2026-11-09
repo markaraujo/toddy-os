@@ -1,0 +1,65 @@
+{
+  "scope": "Owned native GJS and actual installed public API/CLI checks; full GNOME/login remains pending",
+  "run": {
+    "step": "b02-gjs-install-2",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T12:17:22.938576+00:00",
+    "changed_paths": 158
+  },
+  "package": {
+    "name": "gjs",
+    "version": "1.88.1-1+toddy1",
+    "archive_sha256": "d5f2fda78570362e46ddf3df187de82a0f00cf26084ff3ea4943d6f197de529c"
+  },
+  "payload_entries": 162,
+  "consumer": {
+    "scope": "Actual installed GJS public C embedding/GI/refusal/recovery and CLI ES module/native GLib event/Gio refusal; native original78drivers passed separately,147upstream pending cases remain skips; no full GNOME session claim",
+    "version": "1.88.1",
+    "native_c_consumer_exit": 0,
+    "stdout": "GJS native C/JS/GI/refusal/recovery=42",
+    "cli": {
+      "scope": "Real GJS CLI ES module/native GLib event/typed Gio refusal and syntax refusal; no GTK/session acceptance",
+      "records": [
+        {
+          "name": "version",
+          "exit": 0,
+          "stdout_sha256": "e41470341a6e9daf2e82fbe1c92babe441c124ef627ffeaf17859be9171114e5",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "module",
+          "exit": 0,
+          "stdout_sha256": "8d102a45a7c1eab630f599dd5675a0344d508dae60416f94eeeedd5cea4a3f1e",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": "invalid",
+          "exit": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "4914924445cda7383a36cdd7bbc2fb17dbfd5ab141ef296b4431be102c828e75"
+        }
+      ],
+      "module_sha256": "6a3f252a8bea6b104bdb1d697f12a4096d92093648c582d33b90bdcb505ae988"
+    }
+  },
+  "runpath_install_transition": {
+    "scope": "Exact Meson install RUNPATH removal only; all other dynamic entries and ELF bytes identical",
+    "compiled_sha256": "c18d6fe6ec19d160ef533fe488e19a46c0aa64c0f515e681385152c4eb26ea40",
+    "staged_sha256": "dd889e123d67c07e15a903f8fb59f23f455804600249342eac303048a7574c00",
+    "removed_runpath": "$ORIGIN/",
+    "different_bytes": 96,
+    "negative_mutations_refused": [
+      ".text",
+      ".dynstr",
+      ".dynamic"
+    ]
+  },
+  "original_native_suite": "B02-gjs-native-6.json",
+  "retained_failure": "First qualifier refused compiled/staged byte inequality before mutation (changed_paths0). Exact installed Meson depfixer removes RUNPATH, replaces old string with X, preserves all other bytes. First in-memory validator incorrectly expected zero padding and refused without mutation. Corrected exact transition passed and three independent .text/.dynstr/.dynamic mutations were refused. Source compilation/staging/original suites were not replayed.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gjs-install-evidence.tar.gz",
+    "members": 10,
+    "sha256": "a37de5ce88ddd4550aa938feed0287987d85c36e37393ffc5fda7e3c9ba1d9cc"
+  }
+}

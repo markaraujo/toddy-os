@@ -10655,6 +10655,28 @@
           ]
         }
       }
+    },
+    {
+      "name": "gjs",
+      "version": "1.88.1",
+      "license": "LicenseRef-gjs-per-file",
+      "evidence": "Authenticated primary MIT/LGPL choice and exact source/vendor per-file notices retained. Original two C drivers202cases0; actual native7.1.8/Mutter remaining78programs OK/2741passed/147upstream pending skips. Real C/CLI/GI/event/refusal/recovery0; installed/full GNOME acceptance pending.",
+      "extra_license_headers": {
+        "gjs-1.88.1.tar.xz": {
+          "prefixes": [
+            "gjs/",
+            "gi/",
+            "libgjs-private/",
+            "modules/"
+          ],
+          "suffixes": [
+            ".c",
+            ".cpp",
+            ".h",
+            ".js"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
