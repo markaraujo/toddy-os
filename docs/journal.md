@@ -2619,3 +2619,13 @@ next five compositor-input sources from exact existing frozen book pages; source
 integrity does not advertise installed support. Started one isolated mtdev-1
 PID2628; next checks are actual C capability/frame/refusal and2original matching
 examples with independent exhaustive optimum, not physical devices/benchmarks.
+
+mtdev owned install/post0/0,21payload entries and installed capability/frame/
+invalid-FD checks0; archive5f811e5001fd2722b76e08305e142cf8195845b5077593bef01ad5b19bdee09b.
+Host immutable ISO/source-archive copies shared after full SHA/identity equality;
+every path/content retained, read-only0444 normalization recorded with reversible
+per-alias metadata. Exact3627122688B allocation reclaimed, no VM/backing change.
+Target ~0.18GB above16GiB reserve; next bounded custody checks only two old
+extraction-validation duplicates against existing complete restored metadata and
+accepted Squashfs/helper hashes, retaining all historical proofs/archives/source
+roots/ISOs. No foundation reconstruction or unchanged test/compression replay.

@@ -1,0 +1,61 @@
+{
+  "scope": "Only frozen local release ISO/upstream-source archive copies; every pathname/content/checksum retained, no VM disk or published remote artifact changed",
+  "state": "complete",
+  "allocation_reclaimed_bytes": 3627122688,
+  "before_free_bytes": 108237447168,
+  "after_free_bytes": 111864561664,
+  "artifact_mode": "Verified immutable artifact groups normalized to read-only0444; old per-path metadata retained here",
+  "recovery": "Content remains at every original path. To restore independent ownership/mode/timestamp metadata, copy verified canonical bytes to a new temporary file, apply recorded metadata and atomically replace only that alias; never edit shared immutable artifacts in place.",
+  "artifacts": [
+    {
+      "path": ".local/releases/toddy-foundation-2026-11-07/toddy-foundation-x86_64.iso",
+      "sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "bytes": 1095000064
+    },
+    {
+      "path": ".local/releases/toddy-foundation-2026-11-07/source-archives.tar",
+      "sha256": "f06ae9910e4f38338f35e472e71c92f0031a1b40c4762c30583e3688d4d30911",
+      "bytes": 718551040
+    },
+    {
+      "path": ".local/releases/foundation-2026-11-07/toddy-foundation-x86_64.iso",
+      "sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "bytes": 1095000064
+    },
+    {
+      "path": ".local/releases/foundation-2026-11-07/source-archives.tar",
+      "sha256": "f06ae9910e4f38338f35e472e71c92f0031a1b40c4762c30583e3688d4d30911",
+      "bytes": 718551040
+    },
+    {
+      "path": ".local/release-staging/v0.1.0-foundation.1/toddy-foundation-x86_64.iso",
+      "sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "bytes": 1095000064
+    },
+    {
+      "path": ".local/release-staging/v0.1.0-foundation.1/source-archives.tar",
+      "sha256": "f06ae9910e4f38338f35e472e71c92f0031a1b40c4762c30583e3688d4d30911",
+      "bytes": 718551040
+    },
+    {
+      "path": ".local/release-staging/download-audit/toddy-foundation-x86_64.iso",
+      "sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "bytes": 1095000064
+    },
+    {
+      "path": ".local/release-staging/download-audit/source-archives.tar",
+      "sha256": "f06ae9910e4f38338f35e472e71c92f0031a1b40c4762c30583e3688d4d30911",
+      "bytes": 718551040
+    },
+    {
+      "path": ".local/release-staging/licensed-download-audit/toddy-foundation-x86_64.iso",
+      "sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+      "bytes": 1095000064
+    },
+    {
+      "path": ".local/release-staging/licensed-download-audit/source-archives.tar",
+      "sha256": "f06ae9910e4f38338f35e472e71c92f0031a1b40c4762c30583e3688d4d30911",
+      "bytes": 718551040
+    }
+  ]
+}

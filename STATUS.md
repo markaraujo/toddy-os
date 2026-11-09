@@ -43,7 +43,7 @@ Verified:
 - Actual native7.1.8/Systemd sandbox0 on4CPU/4GiB BIOS/noNIC; bwrap26portable+66native upstream passes/5explicit optional skips, native consumer0,11ELFs unchanged. Checksum-reconciled split serial marker without native replay; owned0755 byte-identical install/post0/0. Builder/same3scratch volumes restored, no formatting/trim.
 - Owned display-info0.4.0 install/post0/0/all68registered EDID fixtures0, actual QEMU/PnP/malformed+truncated refusal0; both parser/hwdata source-license inventories retained. No physical monitor or graphical-session acceptance.
 
-Running: Glycin owned recipe/post0/0 and native24cases; mtdev source compile/stage/C capability+frame/refusal and2independent matching oracles0. No guest writer; mtdev owned promotion next, remaining GNOME/B02 criteria pending. Complete ALL B02 then pause.
+Running: Glycin and mtdev owned install/post0/0; native decoder24Rust cases/sandbox and mtdev2matching oracles/C APIs qualified. No writer; capacity custody before further GNOME inputs. Host artifact paths/checksums retained,3.627GB duplicate allocation reclaimed. Complete ALL B02 then pause; GNOME criteria pending.
 
 Remaining:
 

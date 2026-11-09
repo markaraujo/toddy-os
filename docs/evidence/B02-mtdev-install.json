@@ -1,0 +1,14 @@
+{
+  "scope": "Owned native mtdev/API primitives only, no physical device/GNOME acceptance",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T00:59:37.564957+00:00",
+  "package_version": "1.1.7-1+toddy1",
+  "archive_sha256": "5f811e5001fd2722b76e08305e142cf8195845b5077593bef01ad5b19bdee09b",
+  "payload_entries": 21,
+  "installed_consumer": {
+    "scope": "Native installed capabilities/event-frame/cleanup/refusal only; physical device and GNOME input pending",
+    "native_consumer_exit": 0,
+    "stdout": "mtdev native capabilities, event frame, cleanup and invalid-FD refusal\n"
+  }
+}
