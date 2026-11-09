@@ -1,0 +1,150 @@
+{
+  "scope": "Actual installed IBus simple engine/private input context/default dead-key Compose IPC commit, pre-cancelled read/refusal/recovery/Stop and distinct reconnected session bus. No build module/library/schema overrides, real accounts, external route or GNOME GUI/hardware acceptance.",
+  "actual_installed_services": {
+    "scope": "Actual installed IBus simple engine/private input context/default dead-key Compose IPC commit, pre-cancelled read/refusal/recovery/Stop and distinct reconnected session bus. No build module/library/schema overrides, real accounts, external route or GNOME GUI/hardware acceptance.",
+    "records": [
+      {
+        "mode": "first",
+        "exit": 0,
+        "result": {
+          "mode": "first",
+          "bus_guid": "822c5bcd09a5f4db9672d7936af25982",
+          "IBus_address": "unix:path=/tmp/toddy-ibus-installed-services-4/cache/ibus/dbus-CpPqBoUb,guid=1f3d79c444962746aafdf4d46af25982",
+          "actual_installed_engine_commit": [
+            "\u00e3"
+          ],
+          "precancelled_read_refused": true,
+          "post_cancel_engine_read_recovered": true,
+          "default_dead_key_Compose": true,
+          "optional_hex_hotkey_not_handled": true,
+          "engine": "xkb:us::eng",
+          "engine_count": 974,
+          "daemon_pid": 495458,
+          "graphical_keyboard_tested": false,
+          "requested_Stop_exit": 0
+        },
+        "private_services_terminated_after_bus_close": []
+      },
+      {
+        "mode": "reconnect",
+        "exit": 0,
+        "result": {
+          "mode": "reconnect",
+          "bus_guid": "e9b9ee3ff144645a31fa8af26af25982",
+          "IBus_address": "unix:path=/tmp/toddy-ibus-installed-services-4/cache/ibus/dbus-HF1YqCSa,guid=f488af1a497988322bf77a276af25982",
+          "actual_installed_engine_commit": [
+            "\u00e3"
+          ],
+          "precancelled_read_refused": true,
+          "post_cancel_engine_read_recovered": true,
+          "default_dead_key_Compose": true,
+          "optional_hex_hotkey_not_handled": true,
+          "engine": "xkb:us::eng",
+          "engine_count": 974,
+          "daemon_pid": 495485,
+          "graphical_keyboard_tested": false,
+          "requested_Stop_exit": 0
+        },
+        "private_services_terminated_after_bus_close": []
+      }
+    ],
+    "uid": 101,
+    "network_interfaces": [
+      "lo"
+    ],
+    "external_routes": 0,
+    "private_process_cleanup_verified": true,
+    "private_profile_removed": true
+  },
+  "full_root_transaction": {
+    "step": "b02-ibus-installed-services-4",
+    "started": "2026-11-09T23:38:42.208180+00:00",
+    "recipe_sha256": "4a5c517898d7fc4353cf985452955e82c915e78baf021eb993fea51608c65185",
+    "postcheck_sha256": "6b74114f952c8fcdc6f1b595cd744984c27bc232aaf82d607de4bc3911ae00f0",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "668b5dbc18070ca621f746959b4527e06949b336408d147d9987375e6c77cc66",
+    "recipe_pid": 495431,
+    "recipe_pgid": 495431,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T23:38:57.956135+00:00",
+    "changed_paths": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "supporting_build_scripts_sha256": "066987150ea5d1334f0957e66892d464bb2cbc8f25080a45974859bd314829bd"
+  },
+  "timing": {
+    "step": "b02-ibus-installed-services-4",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.342,
+        "entries": 154936,
+        "regular_files": 138009,
+        "regular_bytes": 7302558047
+      },
+      {
+        "seconds": 14.134,
+        "entries": 154936,
+        "regular_files": 138009,
+        "regular_bytes": 7302558047
+      }
+    ],
+    "total_seconds": 31.14
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-ibus-installed-services-evidence.tar.gz",
+    "sha256": "49c2636282d283a8f7848da4d69b98eca80009f9d2c10f9ab93d9f4fff3ca512",
+    "members": [
+      "build/b02-ibus-installed-services-2.failed.json",
+      "build/b02-ibus-installed-services-2.log",
+      "build/b02-ibus-installed-services-2.manifest.json",
+      "build/b02-ibus-installed-services-3.failed.json",
+      "build/b02-ibus-installed-services-3.log",
+      "build/b02-ibus-installed-services-3.manifest.json",
+      "build/b02-ibus-installed-services-4.log",
+      "build/b02-ibus-installed-services-4.manifest.json",
+      "build/b02-ibus-installed-services-4.success.json",
+      "build/b02-ibus-installed-services.failed.json",
+      "build/b02-ibus-installed-services.log",
+      "build/b02-ibus-installed-services.manifest.json",
+      "failed-profile-1/cache/ibus-address",
+      "failed-profile-1/client.py",
+      "failed-profile-1/first-daemon.log",
+      "failed-profile-2/cache/ibus-address",
+      "failed-profile-2/client.py",
+      "failed-profile-2/first-daemon.log",
+      "failed-profile-3/cache/ibus-address",
+      "failed-profile-3/client.py",
+      "failed-profile-3/first-daemon.log",
+      "phase2/b02-ibus-installed-services-2-controller.log",
+      "phase2/b02-ibus-installed-services-2-timing.json",
+      "phase2/b02-ibus-installed-services-3-controller.log",
+      "phase2/b02-ibus-installed-services-3-timing.json",
+      "phase2/b02-ibus-installed-services-4-controller.log",
+      "phase2/b02-ibus-installed-services-4-timing.json",
+      "phase2/b02-ibus-installed-services-controller.log",
+      "phase2/b02-ibus-installed-services-timing.json",
+      "phase2/ibus-installed-services-4.json",
+      "phase2/ibus-services-2-first.exit",
+      "phase2/ibus-services-2-first.stderr",
+      "phase2/ibus-services-2-first.stdout",
+      "phase2/ibus-services-3-first.exit",
+      "phase2/ibus-services-3-first.stderr",
+      "phase2/ibus-services-3-first.stdout",
+      "phase2/ibus-services-4-first.exit",
+      "phase2/ibus-services-4-first.stderr",
+      "phase2/ibus-services-4-first.stdout",
+      "phase2/ibus-services-4-reconnect.exit",
+      "phase2/ibus-services-4-reconnect.stderr",
+      "phase2/ibus-services-4-reconnect.stdout",
+      "phase2/ibus-services-first.exit",
+      "phase2/ibus-services-first.stderr",
+      "phase2/ibus-services-first.stdout"
+    ]
+  }
+}

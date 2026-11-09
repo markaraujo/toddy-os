@@ -1,0 +1,209 @@
+{
+  "scope": "Owned frozen-tag1.5.34/embedded1.5.34-rc2 IBus1.5.34~rc2; seven portable originals and installed library/SDK/UTF8/key parser refusal/recovery. Native bus/cache/schema/graphical validation separately recorded; no GNOME/hardware acceptance.",
+  "source": {
+    "name": "ibus",
+    "version": "1.5.34",
+    "filename": "ibus-1.5.34.tar.gz",
+    "url": "https://github.com/ibus/ibus/archive/1.5.34/ibus-1.5.34.tar.gz",
+    "sha256": "ff8f511770844203108119727dc8686c29afb286e9cb535e0870f18d40fddbbb",
+    "reference": "BLFS13.1-systemd general/ibus.html",
+    "book_page_sha256": "ad41f2c64f8d20e4e97c9968b67de7c733d0cf60bea66fc1e91c30d08c85b724",
+    "book_md5": "7504f9c694d12e3cfe1e9e358f84c21f",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Seven selected portable original drivers and actual UTF8 serialization/key parser refusal/recovery. Private-bus/display/uinput/locale-sensitive originals and GNOME/real keyboard remain pending.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "src/tests/ibus-registry.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "src/tests/ibus-util.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "src/tests/ibus-keyval.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "src/tests/ibus-serializable.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "src/tests/ibus-share.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "src/tests/ibus-keynames.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "bus/test-matchrule.trs",
+        "result": "PASS"
+      }
+    ],
+    "consumer": {
+      "UTF8_serialization_roundtrip": true,
+      "unknown_modifier_refused": true,
+      "valid_key_recovery": true,
+      "cycles": 2,
+      "display_or_real_input_tested": false
+    },
+    "source_corrections": [
+      {
+        "path": "data/dconf/org.freedesktop.ibus.gschema.xml",
+        "before_sha256": "d9ba6742625cd40dcf97556e4dd86aa41b963eae4c807f097d2cc738b12473c2",
+        "after_sha256": "80faacf042cd2d4692536f5b2b4e76b7ce2d4c82fcfc4c2cd8493b238bc38b7a"
+      },
+      {
+        "path": "Makefile.am",
+        "before_sha256": "8eb91091d0a6af43987c3bc7f3d7d3b83fb7abfb25df05d200aee1231a4cf63b",
+        "after_sha256": "1def9c0679d3bb28454a57441132b9c73de15bece96bcc81f6c081f606baf2a0"
+      },
+      {
+        "path": "configure.ac",
+        "before_sha256": "3a0e1df9372680b2cab97627de0346a42928e53d4c79509ba5df710cc7215b3f",
+        "after_sha256": "0efccde9741cb7576e475b7904a17d07445cdfc481e6b7cc63986aa4fb6c9d80"
+      },
+      {
+        "path": "client/gtk2/ibusimcontext.c",
+        "before_sha256": "e01cf48ee1e197f0d76f6f836196e6b39ab1f18b584ca7737a064b8b19d1a1c8",
+        "after_sha256": "d2f60cb1aabe01bba76a138b1b892789cdab29020a045eca5ece0be07a11dbf2",
+        "reason": "Shared GTK2/3/4 source needs actual GDK X11 backend as well as IBus XIM server; Wayland display lookup remains unconditional"
+      }
+    ],
+    "artifacts_count": 179,
+    "artifacts_manifest_sha256": "429172886e9bce39508cc6068a0daa1f5d71f8e189be1b022b258386e93f1021",
+    "stage_sha256_count": 200,
+    "stage_sha256_manifest_sha256": "b6ea871c44c1d6d0807e494b4ecfd3c792075b585c065b8727501a250eeb7c7f"
+  },
+  "transaction": {
+    "step": "b02-ibus-install",
+    "started": "2026-11-09T23:29:05.165576+00:00",
+    "recipe_sha256": "5ef9ea1a333789435938a349c9bbdb89df5ce553b229ae2fe94055b1baeaba95",
+    "postcheck_sha256": "7a9d7cfd54f8d6c5c682532c69fcdfe0b91348f963e59f8f52c047b1ee949f06",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "668b5dbc18070ca621f746959b4527e06949b336408d147d9987375e6c77cc66",
+    "recipe_pid": 492999,
+    "recipe_pgid": 492999,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T23:29:22.952674+00:00",
+    "changed_paths": 235,
+    "log_sha256": "b7ce23993a47a05ed800c80f2f5c0af9e419e7b056bd4ed0dd3c37c21ff011b7",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "bcba78684f449ba7fa38d2117544565baafbcae500998eda138b9e3b54c42313"
+  },
+  "timing": {
+    "step": "b02-ibus-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.33,
+        "entries": 154699,
+        "regular_files": 137793,
+        "regular_bytes": 7291382598
+      },
+      {
+        "seconds": 13.973,
+        "entries": 154931,
+        "regular_files": 138004,
+        "regular_bytes": 7302480392
+      }
+    ],
+    "total_seconds": 33.142
+  },
+  "installed_consumer": {
+    "scope": "Owned IBus public UTF8 serialization/key parser refusal/two-cycle recovery and SDK/modules only. Actual service/bus, shared IM/schema caches and graphical keyboard/desktop pending.",
+    "consumer": {
+      "UTF8_serialization_roundtrip": true,
+      "unknown_modifier_refused": true,
+      "valid_key_recovery": true,
+      "cycles": 2,
+      "display_or_real_input_tested": false
+    },
+    "loaded_owned_library": true,
+    "source_tag": "1.5.34",
+    "embedded_version": "IBus 1.5.34-rc2",
+    "package_version": "1.5.34~rc2-1+toddy1",
+    "complete_source_and_Unicode_notices": true
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-ibus-install-evidence.tar.gz",
+    "sha256": "c653b473d927d1a95d10af017390ee82d678493d07083fd8c3b5af64bb794eb5",
+    "members": [
+      "build/b02-ibus-install.log",
+      "build/b02-ibus-install.manifest.json",
+      "build/b02-ibus-install.success.json",
+      "build/b02-ibus-installed-services-2.failed.json",
+      "build/b02-ibus-installed-services-2.log",
+      "build/b02-ibus-installed-services-2.manifest.json",
+      "build/b02-ibus-installed-services-3.failed.json",
+      "build/b02-ibus-installed-services-3.log",
+      "build/b02-ibus-installed-services-3.manifest.json",
+      "build/b02-ibus-installed-services-4.log",
+      "build/b02-ibus-installed-services-4.manifest.json",
+      "build/b02-ibus-installed-services-4.success.json",
+      "build/b02-ibus-installed-services.failed.json",
+      "build/b02-ibus-installed-services.log",
+      "build/b02-ibus-installed-services.manifest.json",
+      "phase2/b02-ibus-install-controller.log",
+      "phase2/b02-ibus-install-timing.json",
+      "phase2/b02-ibus-installed-services-2-controller.log",
+      "phase2/b02-ibus-installed-services-2-timing.json",
+      "phase2/b02-ibus-installed-services-3-controller.log",
+      "phase2/b02-ibus-installed-services-3-timing.json",
+      "phase2/b02-ibus-installed-services-4-controller.log",
+      "phase2/b02-ibus-installed-services-4-timing.json",
+      "phase2/b02-ibus-installed-services-controller.log",
+      "phase2/b02-ibus-installed-services-timing.json",
+      "phase2/ibus-1-controller.log",
+      "phase2/ibus-1.exit",
+      "phase2/ibus-1.job.json",
+      "phase2/ibus-1.log",
+      "phase2/ibus-gtk4-2-controller.log",
+      "phase2/ibus-gtk4-2.exit",
+      "phase2/ibus-gtk4-2.job.json",
+      "phase2/ibus-gtk4-2.log",
+      "phase2/ibus-installed-consumer.json",
+      "phase2/ibus-installed-services-4.json",
+      "phase2/ibus-link-4-controller.log",
+      "phase2/ibus-link-4.exit",
+      "phase2/ibus-link-4.job.json",
+      "phase2/ibus-link-4.log",
+      "phase2/ibus-machine-5-controller.log",
+      "phase2/ibus-machine-5.exit",
+      "phase2/ibus-machine-5.job.json",
+      "phase2/ibus-machine-5.log",
+      "phase2/ibus-schema-union-1-controller.log",
+      "phase2/ibus-schema-union-1.exit",
+      "phase2/ibus-schema-union-1.job.json",
+      "phase2/ibus-schema-union-1.log",
+      "phase2/ibus-schema-union-installed-consumer.json",
+      "phase2/ibus-schema-union-prepared-1.json",
+      "phase2/ibus-schema-union-transaction-1.json",
+      "phase2/ibus-services-2-first.exit",
+      "phase2/ibus-services-3-first.exit",
+      "phase2/ibus-services-4-first.exit",
+      "phase2/ibus-services-4-reconnect.exit",
+      "phase2/ibus-services-first.exit",
+      "phase2/ibus-stage.json",
+      "phase2/ibus-wayland-3-controller.log",
+      "phase2/ibus-wayland-3.exit",
+      "phase2/ibus-wayland-3.job.json",
+      "phase2/ibus-wayland-3.log",
+      "work/native-consumer.json",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}

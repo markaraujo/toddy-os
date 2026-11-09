@@ -1,0 +1,367 @@
+{
+  "scope": "Owned same-version GTK schema/legal-only update, actual default-source81schemas/618keys with baseline76/571 contracts unchanged. No GTK rebuild/user preference or graphical acceptance; EDS service activation pending.",
+  "qualification": {
+    "scope": "Strict complete installed stock schema union and actual Gio schema/key/default/range lookup only; no user preferences written or native GUI acceptance",
+    "compile_exit": 0,
+    "native_consumer_exit": 0,
+    "cache_sha256": "0c7e20ac3b7c625e72bb4769e5fc4c4d5d056cf4c3026dc27d31f9ae1c718488",
+    "baseline_cache_sha256": "910bb2c36975aea4a865e388830d4ea82cc450d001c62eafa220de82d5c84931",
+    "baseline_schemas_preserved": 76,
+    "baseline_keys_preserved": 571,
+    "total_schemas": 81,
+    "total_keys": 618,
+    "added_schemas": [
+      "org.freedesktop.ibus",
+      "org.freedesktop.ibus.general",
+      "org.freedesktop.ibus.general.hotkey",
+      "org.freedesktop.ibus.panel",
+      "org.freedesktop.ibus.panel.emoji"
+    ],
+    "required_schema_lookup": [
+      "org.gnome.SessionManager",
+      "org.gnome.crypto.pgp",
+      "org.gnome.evolution-data-server",
+      "org.gnome.evolution-data-server.calendar",
+      "org.gnome.evolution-data-server.addressbook",
+      "org.gnome.Evolution.DefaultSources"
+    ],
+    "inputs": {
+      "entries": 56,
+      "manifest_sha256": "6e0498a7c221e42778d4a71c424e115a2f87d98741221ae7cc6224b42375be27"
+    },
+    "descriptions": {
+      "entries": 81,
+      "manifest_sha256": "110d452513ce55a795fdef404e32daf3480f97f7937eb595047db85e51c976c5"
+    }
+  },
+  "native_transaction": {
+    "state": "complete",
+    "scope": "Same-version GTK4 schema/legal-only update; all libraries/configurations/preferences unchanged. Actual IBus stock schema union plus GTK3 same-upstream revision control range; no graphical acceptance.",
+    "old_version": "4.22.4-1+toddy5",
+    "new_version": "4.22.4-1+toddy6",
+    "old_archive_sha256": "0435783abb195d092aeb44bda3430bac5c9b5b709a34d5a98a825778e2891b06",
+    "old_cache_sha256": "910bb2c36975aea4a865e388830d4ea82cc450d001c62eafa220de82d5c84931",
+    "new_cache_sha256": "0c7e20ac3b7c625e72bb4769e5fc4c4d5d056cf4c3026dc27d31f9ae1c718488",
+    "added_schemas": [
+      "org.freedesktop.ibus",
+      "org.freedesktop.ibus.general",
+      "org.freedesktop.ibus.general.hotkey",
+      "org.freedesktop.ibus.panel",
+      "org.freedesktop.ibus.panel.emoji"
+    ],
+    "source_owners": {
+      "org.gnome.desktop.search-providers.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.evolution-data-server.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gnome.mutter.wayland.gschema.xml": {
+        "name": "mutter",
+        "version": "50.4-1+toddy1"
+      },
+      "org.gnome.evolution.shell.network-config.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gtk.gtk4.Settings.Debug.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy5"
+      },
+      "org.freedesktop.ColorHelper.gschema.xml": {
+        "name": "colord",
+        "version": "1.4.8-1+toddy1"
+      },
+      "org.gnome.SessionManager.gschema.xml": {
+        "name": "gnome-session",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.evolution-data-server.calendar.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gnome.desktop.app-folders.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.sound.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.interface.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.break-reminders.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.crypto.pgp.gschema.xml": {
+        "name": "gcr3",
+        "version": "3.41.2-1+toddy1"
+      },
+      "org.gtk.Settings.FileChooser.gschema.xml": {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy1"
+      },
+      "org.gnome.desktop.default-applications.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.keyboard.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.wm.keybindings.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.gtk4.Settings.ColorChooser.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy5"
+      },
+      "org.gtk.Demo4.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy5"
+      },
+      "org.gnome.crypto.cache.gschema.xml": {
+        "name": "gnome-keyring",
+        "version": "50.0-1+toddy1"
+      },
+      "gschema.dtd": {
+        "name": "glib",
+        "version": "2.88.3-1+toddy2"
+      },
+      "org.gtk.Settings.EmojiChooser.gschema.xml": {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy1"
+      },
+      "org.gnome.desktop.input-sources.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.gtk4.Inspector.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy5"
+      },
+      "org.gnome.mutter.gschema.xml": {
+        "name": "mutter",
+        "version": "50.4-1+toddy1"
+      },
+      "org.gnome.desktop.datetime.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.mouse.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.calendar.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.privacy.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.freedesktop.ibus.gschema.xml": {
+        "name": "ibus",
+        "version": "1.5.34~rc2-1+toddy1"
+      },
+      "org.gnome.desktop.thumbnailers.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.system.proxy.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.peripherals.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.gtk4.Settings.EmojiChooser.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy5"
+      },
+      "org.gnome.system.locale.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.session.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.wm.preferences.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.interface.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.background.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.Settings.Debug.gschema.xml": {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy1"
+      },
+      "org.gnome.desktop.notifications.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.Settings.ColorChooser.gschema.xml": {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy1"
+      },
+      "org.gnome.desktop.thumbnail-cache.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.enums.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.media-handling.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.magnifier.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.evolution-data-server.addressbook.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gtk.gtk4.Settings.FileChooser.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy5"
+      },
+      "org.gnome.desktop.screen-time-limits.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.system.location.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.Evolution.DefaultSources.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gnome.desktop.screensaver.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.applications.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.lockdown.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.evolution.eds-shell.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      }
+    },
+    "recovery": "Inspect package/receipt/postconditions before action. Retained GTK toddy5 archive/record restores previous owned cache and metadata; installed source XML remains intact. Verify old payload. No rollback executed and no uncertain replay.",
+    "old_depends": "glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), pango (= 1.58.2-1+toddy1), cairo (>= 1.18.4-1+toddy1), harfbuzz (>= 14.3.1-1+toddy1), fribidi (>= 1.0.16-1+toddy1), fontconfig (>= 2.18.3-1+toddy1), gdk-pixbuf (= 2.44.7-1+toddy2), graphene (= 1.10.8-1+toddy1), libepoxy (= 1.5.10-1+toddy1), wayland (>= 1.26.0-1+toddy1), libxkbcommon (= 1.13.2-1+toddy1), libpng (>= 1.6.58-1+toddy1), libjpeg-turbo (= 3.2.0-1+toddy1), tiff (= 4.7.2-1+toddy1), librsvg (= 2.62.3-1+toddy1), iso-codes (= 4.20.1-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1), gtk3 (= 3.24.52-1+toddy1)",
+    "new_depends": "glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), pango (= 1.58.2-1+toddy1), cairo (>= 1.18.4-1+toddy1), harfbuzz (>= 14.3.1-1+toddy1), fribidi (>= 1.0.16-1+toddy1), fontconfig (>= 2.18.3-1+toddy1), gdk-pixbuf (= 2.44.7-1+toddy2), graphene (= 1.10.8-1+toddy1), libepoxy (= 1.5.10-1+toddy1), wayland (>= 1.26.0-1+toddy1), libxkbcommon (= 1.13.2-1+toddy1), libpng (>= 1.6.58-1+toddy1), libjpeg-turbo (= 3.2.0-1+toddy1), tiff (= 4.7.2-1+toddy1), librsvg (= 2.62.3-1+toddy1), iso-codes (= 4.20.1-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1), gtk3 (>= 3.24.52-1+toddy1), gtk3 (<< 3.24.53)",
+    "archive_sha256": "9fc10b109552a83f9b22403a7cc52ecb73d91f00ca3ccd904f14e227b62c9d5b",
+    "old_nonlegal_entries_unchanged": 906,
+    "schema_inputs": {
+      "entries": 56,
+      "manifest_sha256": "6e0498a7c221e42778d4a71c424e115a2f87d98741221ae7cc6224b42375be27"
+    }
+  },
+  "full_root_transaction": {
+    "step": "b02-ibus-schema-union-install",
+    "started": "2026-11-09T23:31:24.397957+00:00",
+    "recipe_sha256": "1b270e64568c1da209e529c0f259c85e51e4a0351d1eb3d97c0ebc710a0602b1",
+    "postcheck_sha256": "74853c10d609c92c59c9f9d713a6e4ff65c362b08bdea31401602f0c55067130",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "668b5dbc18070ca621f746959b4527e06949b336408d147d9987375e6c77cc66",
+    "recipe_pid": 493862,
+    "recipe_pgid": 493862,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T23:31:56.662841+00:00",
+    "changed_paths": 13,
+    "log_sha256": "75ee1999195d5f3abc2e0c1f09ed36dc1475e4d08dea23f4c61485e7f39d05da",
+    "supporting_build_scripts_sha256": "429b0b67b1430a55148a9519806dbf8929563679bdc335b36f31fcfbaa65569a"
+  },
+  "timing": {
+    "step": "b02-ibus-schema-union-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.148,
+        "entries": 154931,
+        "regular_files": 138004,
+        "regular_bytes": 7302480392
+      },
+      {
+        "seconds": 14.097,
+        "entries": 154936,
+        "regular_files": 138009,
+        "regular_bytes": 7302558047
+      }
+    ],
+    "total_seconds": 47.459
+  },
+  "installed_consumer": {
+    "scope": "Owned GTK same-version shared schema cache: actual installed default-source lookup and all618key/type/default/range contracts; no user values changed. Native EDS service activation/GNOME graphical acceptance pending.",
+    "schemas": 81,
+    "keys": 618,
+    "baseline_schemas_preserved": 76,
+    "baseline_keys_preserved": 571,
+    "new_schemas": [
+      "org.freedesktop.ibus",
+      "org.freedesktop.ibus.general",
+      "org.freedesktop.ibus.general.hotkey",
+      "org.freedesktop.ibus.panel",
+      "org.freedesktop.ibus.panel.emoji"
+    ],
+    "module_or_schema_override_used": false,
+    "GTK_runtime_entries_unchanged": 906
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-ibus-shared-schema-union-evidence.tar.gz",
+    "sha256": "d0ad0894c6aa380866c1641fd97b247521dcef708605c162e7805efebd7287d1",
+    "members": [
+      "build/b02-ibus-schema-union-install.log",
+      "build/b02-ibus-schema-union-install.manifest.json",
+      "build/b02-ibus-schema-union-install.success.json",
+      "package.json",
+      "phase2/b02-ibus-schema-union-install-controller.log",
+      "phase2/b02-ibus-schema-union-install-timing.json",
+      "phase2/ibus-schema-union-1-controller.log",
+      "phase2/ibus-schema-union-1.dispatch.lock",
+      "phase2/ibus-schema-union-1.exit",
+      "phase2/ibus-schema-union-1.job.json",
+      "phase2/ibus-schema-union-1.log",
+      "phase2/ibus-schema-union-installed-consumer.json",
+      "phase2/ibus-schema-union-prepared-1.json",
+      "phase2/ibus-schema-union-transaction-1.json",
+      "work/compile-schemas.exit",
+      "work/compile-schemas.log",
+      "work/test-results.json"
+    ]
+  }
+}

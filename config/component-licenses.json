@@ -2524,6 +2524,14 @@
             }
           ]
         }
+      ],
+      "extra_license_files": {
+        "UCD-17.0.0.zip": [
+          "ReadMe.txt"
+        ]
+      },
+      "plain_license_sources": [
+        "Unicode-License-3.0.txt"
       ]
     },
     {
@@ -10825,6 +10833,20 @@
         "Unicode-License-3.0.txt"
       ],
       "runtime_inclusion": "IBus build data; final base/runtime closure must be selected explicitly"
+    },
+    {
+      "name": "ibus",
+      "version": "1.5.34~rc2",
+      "license": "LGPL-2.1-or-later AND Unicode-DFS-2016 AND Unicode-3.0",
+      "evidence": "Frozen official tag1.5.34 declares1.5.34-rc2; source COPYING/COPYING.unicode and generated UCD17 dictionary/full Unicode3 notice retained. Per-file source conditions apply.",
+      "extra_license_files": {
+        "UCD-17.0.0.zip": [
+          "ReadMe.txt"
+        ]
+      },
+      "plain_license_sources": [
+        "Unicode-License-3.0.txt"
+      ]
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

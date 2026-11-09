@@ -54,7 +54,8 @@ only ibus-share failed because the isolated namespace had no machine ID. Extend
 the existing exact-input synthetic /etc/machine-id fixture to this IBus input,
 without copying real identities. Preserve the six initial logs/results, repeat
 only ibus-share, then run test-matchrule for the first time. All seven selected
-originals passed,179 compiled artifacts remained unchanged,200 regular staged
+originals passed,177 original compiled artifacts remained unchanged; staging added two linker
+outputs for179 retained total,200 regular staged
 files retained, own UTF8 roundtrip/key parser refusal/two-cycle recovery passed.
 Job ibus-machine-5 terminal0. No native installation/private-bus/GUI acceptance.
 

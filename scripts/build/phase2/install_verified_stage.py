@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'ibus': ('1.5.34~rc2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy5), gtk3 (>= 3.24.52-1+toddy1), dconf (= 0.49.0-1+toddy1), dbus (>= 1.16.2-1), wayland (>= 1.26.0-1+toddy1), libxkbcommon (= 1.13.2-1+toddy1), libnotify (= 0.8.8-1+toddy1), libevdev (= 1.13.6-1+toddy1), libx11 (= 1.8.13-1+toddy1), python (>= 3.14), python (<< 3.15), pygobject (= 3.56.3-1+toddy1), gnome-desktop (= 44.5-1+toddy1), iso-codes (= 4.20.1-1+toddy1), xkeyboard-config (= 2.48-1+toddy1), systemd (>= 261.2-1+toddy3)', 'ibus-1.5.34.tar.gz', 'usr/lib/pkgconfig/ibus-1.0.pc'),
     'unicode-ucd': ('17.0.0', '', 'UCD-17.0.0.zip', 'usr/share/unicode/ucd/UnicodeData.txt'),
     'vala': ('0.56.19', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gcc (>= 16.2.0-1), pkgconf (>= 2.5.1-1)', 'vala-0.56.19.tar.xz', 'usr/lib/pkgconfig/libvala-0.56.pc'),
     'evolution-data-server': ('3.60.2', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1), glib (>= 2.88.3-1+toddy2), libsoup (= 3.6.6-1+toddy1), libical (= 4.0.5-1+toddy1), libsecret (= 0.21.7-1+toddy1), libxml2 (= 2.15.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), nss (= 3.126-1+toddy1), nspr (= 4.40-1+toddy1), sqlite (= 3.53.4-1+toddy1), icu (= 78.3-1+toddy1), gtk (>= 4.22.4-1+toddy4), gtk3 (>= 3.24.52-1+toddy1), zlib (>= 1.3.2-1), util-linux (>= 2.42.4-1)', 'evolution-data-server-3.60.2.tar.xz', 'usr/lib/pkgconfig/libecal-2.0.pc'),
@@ -241,6 +242,7 @@ if __name__ == '__main__':
     if name=='gnutls':qualifier='gnutls-stage-5'
     if name=='glib-networking':qualifier='glib-networking-consumer-3'
     if name=='evolution-data-server':qualifier='evolution-data-server-private-4'
+    if name=='ibus':qualifier='ibus-machine-5'
     if name=='vala':qualifier='vala-consumer-2'
     if name=='libunistring':qualifier='libunistring-consumer-2'
     if name=='gcr':qualifier='gcr-finish-4'
@@ -1196,6 +1198,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='ibus':
+        from qualify_ibus import qualify as qualify_ibus
+        qualify_ibus(ROOT)
     if name=='vala':
         from qualify_vala import qualify as qualify_vala
         qualify_vala(ROOT)
@@ -1364,7 +1369,11 @@ if __name__ == '__main__':
     if name=='gnome-keyring':
         doc=destination/'usr/share/doc/gnome-keyring';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('Frozen50.0 production debug-mode=false: test-only service/login/prompter hooks disabled.57original production programs and five original private debug-only fixture programs qualified separately; fixture daemon never shipped. Actual production Secret Service store/read/lock/wrong-master/Stop/restart persistence qualified with ephemeral synthetic data. PAM module loads, but no PAM login policy is enabled by this package. Actual native PAM/GNOME/graphical and shared schema integration remain separate gates. Optional SSH agent/libcap-ng/SELinux omitted via supported options. Book schema path correction preserved in source preparation receipt.\n')
+    if name=='ibus':
+        doc=destination/'usr/share/doc/ibus';doc.mkdir(parents=True,exist_ok=True)
+        (doc/'README.Toddy').write_text('Frozen official tag1.5.34 embeds1.5.34-rc2; native1.5.34~rc2-1+toddy1 preserves and discloses source version. Minimal GTK3/4+Wayland/GI/Unicode/setup/UI profile; XIM/X11 agent, GTK2, Python2, appindicator and optional emoji dict omitted. Seven portable original programs and UTF8/key parser refusal/recovery qualified; actual service, graphical keyboard and shared IM/schema caches remain separate pending gates. Full source/UCD/Unicode3 notices retained. ADR0169 records backend guard and original Xlib fixture link correction.\n')
     archives=[archive]
+    if name=='ibus':archives+=['UCD-17.0.0.zip','Unicode-License-3.0.txt']
     if name=='unicode-ucd':archives.append('Unicode-License-3.0.txt')
     if name=='nss':archives.append('nss-standalone-1.patch')
     if name=='dconf':archives.append('gvdb-4758f6fb7f889e074e13df3f914328f3eecb1fd3.tar.gz')
@@ -1408,6 +1417,7 @@ if __name__ == '__main__':
                         '--depends','glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
+    if name=='ibus':conffiles=['--conffile','/etc/dconf/profile/ibus','--conffile','/etc/dconf/db/ibus.d/00-upstream-settings']
     if name=='polkit':conffiles=['--conffile','/etc/pam.d/polkit-auth']
     if name=='linux-pam':conffiles=['--conffile','/etc/pam.d/other']
     if name in ('fontconfig','llvm','rustc','at-spi2-core'):

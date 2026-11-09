@@ -7,33 +7,46 @@ foundation tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Current slice and exact next action
 
-Current verified slice: IBus private build/stage and seven portable originals.
-No active guest writer; no native IBus install. `ibus-machine-5` PID490310 terminal0,
-compiled179ELFs/staged200regular files. Actual UTF8 text serialization/key parsing/
-invalid modifier refusal/two-cycle recovery0. Five original passes reused; only
-machine-ID original repeated with synthetic private /etc/machine-id. Original
-failure and before-after artifact/log records retained. [Proof](evidence/B02-ibus-build.json).
+Current verified slice: IBus OWNED1.5.34~rc2-1+toddy1 install/post0/0,
+235changedpaths/397entries, installed UTF8/key parser/refusal/recovery/SDK0.
+The frozen tag1.5.34 embeds1.5.34-rc2; version disclosed, bytes unchanged.
+Same-version GTK4 schema/control/legal update totoddy6 install/post0/0,
+13changedpaths/906old nonlegal entries unchanged. Default81schemas/618keys,
+prior76/571 preserved; new five IBus schemas. ADR0170.
 
-Immutable input `/mnt/lfs/sources/phase2/inputs/ibus-1.5.34`, work
-`/mnt/lfs/sources/phase2/work/ibus-1`. Logs/receipts under
-`/var/log/toddy/phase2/ibus-{1,gtk4-2,wayland-3,link-4,machine-5}.*`;
-work autogen/configure/configure-3/compile/compile-2/compile-3/compile-4/
-original-tests/original-share-5/original-bus-5/stage logs.
-Frozen source SHAff8f511770844203108119727dc8686c29afb286e9cb535e0870f18d40fddbbb;
-initial recipe160a21219c0b11be1cb53c29b256830f502cc9a7a9e4fe2553961548bf6fcc6d.
-Failed backend/XIM/test-Xlib/machine-ID inputs preserved; ADR0169/ledger.
-NEVER repeat preparation/autogen/build/stage or seven successful originals.
+No active guest writer. Actual `b02-ibus-installed-services-4` recipe/post0/0,
+ZERO installed-root changes. Installed simple engine UID101/private HOME/XDG/
+loopback-only/default installed schemas and libraries; dead_tilde+a commitsã,
+precancelled read/refusal/recovery/Stop and distinct new session bus passed twice.
+974 engine descriptions discovered; no hardware support inferred. Profile4 removed;
+old failed profiles1/2/3 preserved with logs and no live old private processes.
+Optional Ctrl+Shift+U is disabled by upstream default, not a failure or enabled
+product claim. Exact source-backed corrections/failure ledger retained. Actual
+portal activation was observed; no direct-only or graphical keyboard claim.
+[Native services](evidence/B02-ibus-installed-services.json),
+[owned package](evidence/B02-ibus-install.json),
+[schema union](evidence/B02-ibus-shared-schema-union.json), ADR0170.
+NEVER repeat these successful native installs/schema transaction/service writes.
 
-Exact next: implement IBus native stage qualifier/owned install/postchecks,
-explicitly disclose frozen tag1.5.34's embedded1.5.34-rc2 metadata in package version
-mapping, then actual private-bus service/reconnect/cancel recovery and controlled
-GTK3 IM cache/schema ownership. Keep GTK3/4/Wayland/GI/Unicode/setup/UI/DConf;
-XIM/X11 agent disabled for actual Wayland-only GTK backends, optional emoji dict/
-appindicator/GTK2/Python2 omitted. Private-bus/display/uinput/locale-sensitive
-originals remain unexecuted, never passes. Actual keyboard/GNOME acceptance pending.
-GTK4toddy5 currently pins GTK3toddy1 exactly: loosen only revision control before
-GTK3 cache-only revision; preserve all accepted runtime payloads. Schema union is
-76schemas/571keys; new IBus union must preserve them, never replay old union.
+Exact next: controlled same-upstream GTK3 IM-cache ownership update, preserving
+current GTK3 payload and using owned module inputs; GTK4toddy6 revision range now
+permits this. Then actual GTK module discovery/native GNOME input interaction.
+Inspect actual package/cache/version/hash state before preparing any transaction.
+CurrentGTK3 is3.24.52-1+toddy1, GTK4 is4.22.4-1+toddy6. No cache update performed yet.
+
+Retained private build: source `/mnt/lfs/sources/phase2/inputs/ibus-1.5.34`,
+work `/mnt/lfs/sources/phase2/work/ibus-1`, successful job ibus-machine-5 exit0,
+seven portable originals/UTF8/refusal/recovery. Original177ELFs retained unchanged,
+staging added two linker outputs/179final,200staged files. [Proof](evidence/B02-ibus-build.json).
+NEVER repeat preparation/autogen/build/stage/seven successful originals. Raw archive
+SHA2c5d6700e2a961dfe3976047811f4c3961090fdc89ac9f6e720a5e27e956e572.
+Keep GTK3/4/Wayland/GI/Unicode/setup/UI/DConf; optional XIM/X11/GTK2/Python2/
+appindicator/emoji dictionary omitted. Bus/display/uinput/locale-sensitive originals
+remain unexecuted unless separately recorded; native GNOME keyboard pending.
+
+GTK4toddy6 now allows only GTK3 same-upstream3.24.52 revisions; current GTK3toddy1
+IM cache still needs controlled update. Preserve all accepted runtime payloads.
+Schema union81/618 complete; never replay either completed schema transaction.
 
 Prior Vala0.56.19 and UCD17 native install/post0/0;1435compiler original passes,
 71exactdata files/full Unicode3 notices retained. Never reinstall/retest.

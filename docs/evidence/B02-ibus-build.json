@@ -136,5 +136,10 @@
   "recovery": "Reuse completed work/stage/originals. No native IBus installation yet. Never repeat successful build/stage/tests. Native ownership/bus/cache/schema/GUI validation pending.",
   "five_prior_original_passes_reused": true,
   "only_original_ibus_share_repeated_after_synthetic_identity": true,
-  "compiled_artifacts_preserved_during_fixture_recovery": 179
+  "compiled_artifacts_preserved_during_fixture_recovery": 177,
+  "stage_install_additional_linker_outputs": [
+    "client/gtk3/.libs/im-ibus.soT",
+    "client/gtk4/.libs/libim-ibus.soT"
+  ],
+  "artifact_count_reconciliation": "177 before fixture recovery remain byte-identical; staging creates two additional libtool module .soT link outputs, bringing final retained total to179. No original replay."
 }
