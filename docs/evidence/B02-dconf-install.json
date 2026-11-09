@@ -1,0 +1,254 @@
+{
+  "scope": "Owned DConf core/runtime and actual CLI/GSettings private database; no GNOME/login or graphical editor acceptance",
+  "source": {
+    "name": "dconf",
+    "version": "0.49.0",
+    "filename": "dconf-0.49.0.tar.xz",
+    "url": "https://download.gnome.org/sources/dconf/0.49/dconf-0.49.0.tar.xz",
+    "sha256": "16a47e49a58156dbb96578e1708325299e4c19eea9be128d5bd12fd0963d6c36",
+    "reference": "BLFS13.1-systemd gnome/dconf.html",
+    "book_page_sha256": "2bad12a074acc8855bb1edb2efb52237a0b1945adba649d98e0bff9c8835eaf7",
+    "book_md5": "1a3ff8a464a4d9ebbaf112005bfed95a",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "bundled_source": {
+    "name": "dconf-gvdb",
+    "version": "0+git.4758f6fb7f88",
+    "commit": "4758f6fb7f889e074e13df3f914328f3eecb1fd3",
+    "filename": "gvdb-4758f6fb7f889e074e13df3f914328f3eecb1fd3.tar.gz",
+    "url": "https://gitlab.gnome.org/GNOME/gvdb/-/archive/4758f6fb7f889e074e13df3f914328f3eecb1fd3/gvdb-4758f6fb7f889e074e13df3f914328f3eecb1fd3.tar.gz",
+    "sha256": "da3680bd38314546a915df5ea265f8c963a42ff5ddc7d69dc1b339775f05dbd6",
+    "reference": "Exact immutable official GVDB commit in frozen DConf0.49.0 subprojects/gvdb.wrap; local read-only bundled fallback only, no network in compiler",
+    "parent_source_sha256": "16a47e49a58156dbb96578e1708325299e4c19eea9be128d5bd12fd0963d6c36",
+    "scope": "DConf static source dependency, upstream native/core qualification pending",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Original DConf core/runtime/ABI tests and actual private-bus typed persistence/error/reconnect/reset; no full GNOME settings acceptance",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "gvdb - gvdb:gvdb",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gvdb - gvdb:autoptr",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:paths",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:changeset",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:shm",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:gvdb",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:gdbus-thread",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:gdbus-filter",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:gdbus-thread-leak",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:gdbus-filter-leak",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:engine",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:client",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:writer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:gsettings",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:libdconf",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dconf:dconf",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "excluded": "Optional shellcheck lint suite, not a runtime pass; graphical DConf Editor not selected",
+    "consumer": {
+      "cycles": [
+        {
+          "typed_write": true,
+          "malformed_refused": true,
+          "state_preserved": true
+        },
+        {
+          "persisted_after_bus_restart": true,
+          "dump": true,
+          "reset": true
+        }
+      ],
+      "isolated_user_database": true,
+      "unrelated_configuration_changed": false
+    },
+    "stage_sha256": {
+      "usr/libexec/dconf-service": "5d5ef8e7b72f94f71829bb39c70644784ee032e46d82e5d6c3214c8280c0caf3",
+      "usr/bin/dconf": "3317a12f5ff4425f61b886b361ca88f83c39968d4263697da82409fe00ee4a0f",
+      "usr/lib/libdconf.so.1.0.0": "c19ab87a50d91dfa58bac69007bb9a532ee7d3b95f54f827ac05c25a84291a3e",
+      "usr/lib/pkgconfig/dconf.pc": "df7e881c7814ea5996417a242367ce1fafbffde0ae25ff8c3e1109fa1f76d508",
+      "usr/lib/gio/modules/libdconfsettings.so": "97609bb83b8e49fc458984db194d040b711a5c73b4b1441a97b67714b06b036c",
+      "usr/lib/systemd/user/dconf.service": "c3f3b85e365aed31fe2956f9949d22144d38a9e5e22e810d6668b8ec5259f045",
+      "usr/include/dconf/dconf.h": "35688394fc27d9e44d9f7c9723cb028a0a77af7a9942b6a5dc7be12dd94d051d",
+      "usr/include/dconf/client/dconf-client.h": "d96b1d7da6202a61a95ba70bd675b384ef3bdc198e165f7354d615f8d0a9c783",
+      "usr/include/dconf/common/dconf-paths.h": "a5cda7200088556025405fd92a39c299a10d30bac755be846504593bd9295d6a",
+      "usr/include/dconf/common/dconf-changeset.h": "3d83c52a2d606218636b936470a3b76f7d7c05280204e03ba88e1cee1a4960f7",
+      "usr/include/dconf/common/dconf-enums.h": "4d3ab4d29074d77a9031de92276e43ec849d8b6a68d8aa3f2e7e72f78df2b27e",
+      "usr/share/dbus-1/services/ca.desrt.dconf.service": "a7eb06ad7d88c96dd34bf74510ddd92c249d61ec48a27cc15b85977f0dfa493f"
+    }
+  },
+  "gsettings_stage": {
+    "scope": "Actual GSettings DConf backend/private schema/private user database, no user settings changed",
+    "mode": "stage",
+    "cycles": [
+      {
+        "backend": "DConfSettingsBackend",
+        "write": true,
+        "sync": true
+      },
+      {
+        "backend": "DConfSettingsBackend",
+        "persisted_after_new_bus": true,
+        "reset": true
+      }
+    ],
+    "unrelated_configuration_changed": false
+  },
+  "input": {
+    "state": "complete",
+    "source": "/mnt/lfs/sources/phase2/inputs/dconf-0.49.0-gvdb-1",
+    "work": "/mnt/lfs/sources/phase2/work/dconf-vendored-1",
+    "extra_source": {
+      "name": "dconf-gvdb",
+      "version": "0+git.4758f6fb7f88",
+      "commit": "4758f6fb7f889e074e13df3f914328f3eecb1fd3",
+      "filename": "gvdb-4758f6fb7f889e074e13df3f914328f3eecb1fd3.tar.gz",
+      "url": "https://gitlab.gnome.org/GNOME/gvdb/-/archive/4758f6fb7f889e074e13df3f914328f3eecb1fd3/gvdb-4758f6fb7f889e074e13df3f914328f3eecb1fd3.tar.gz",
+      "sha256": "da3680bd38314546a915df5ea265f8c963a42ff5ddc7d69dc1b339775f05dbd6",
+      "reference": "Exact immutable official GVDB commit in frozen DConf0.49.0 subprojects/gvdb.wrap; local read-only bundled fallback only, no network in compiler",
+      "parent_source_sha256": "16a47e49a58156dbb96578e1708325299e4c19eea9be128d5bd12fd0963d6c36",
+      "scope": "DConf static source dependency, upstream native/core qualification pending",
+      "status": "source_verified"
+    },
+    "boot_id": "1e7ed85f-b694-49c4-beb3-742dfa145bac",
+    "pid": 2227,
+    "started_unix": 1794237382.0921602,
+    "bundled_gvdb_files": 15,
+    "original_files_unchanged": 133,
+    "recipe_sha256": "b3afdb5edd25974c5fe1596c15e56740b5a9fddfa1790d532a9649b08cea203c"
+  },
+  "run": {
+    "step": "b02-dconf-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T15:23:16.634930+00:00",
+    "changed_paths": 41
+  },
+  "package": {
+    "name": "dconf",
+    "version": "0.49.0-1+toddy1",
+    "archive_sha256": "4d34b74732069dd2fce67d173ddc29d9519648963d2bec781a2750eb845dbb00",
+    "installed": true
+  },
+  "payload_entries": 49,
+  "generated_resources": {
+    "/usr/lib/gio/modules/giomodule.cache": {
+      "generator": "/usr/bin/gio-querymodules",
+      "input_sha256": "97609bb83b8e49fc458984db194d040b711a5c73b4b1441a97b67714b06b036c",
+      "sha256": "58a30f87703d65521c086359252484420f879eb5c18991bc17e994097d32f6fb",
+      "scope": "Generated runtime cache, not archive payload; regenerate proportionally when qualified module inputs change"
+    }
+  },
+  "consumer": {
+    "scope": "Actual installed native CLI/GSettings/private user DB persistence/refusal/reconnect/reset; no GNOME graphical acceptance",
+    "results": {
+      "cli": {
+        "cycles": [
+          {
+            "typed_write": true,
+            "malformed_refused": true,
+            "state_preserved": true
+          },
+          {
+            "persisted_after_bus_restart": true,
+            "dump": true,
+            "reset": true
+          }
+        ],
+        "isolated_user_database": true,
+        "unrelated_configuration_changed": false
+      },
+      "gsettings": {
+        "scope": "Actual GSettings DConf backend/private schema/private user database, no user settings changed",
+        "mode": "installed",
+        "cycles": [
+          {
+            "backend": "DConfSettingsBackend",
+            "write": true,
+            "sync": true
+          },
+          {
+            "backend": "DConfSettingsBackend",
+            "persisted_after_new_bus": true,
+            "reset": true
+          }
+        ],
+        "unrelated_configuration_changed": false
+      }
+    }
+  },
+  "retained_failures": [
+    "Own nofallback option refused bundled GVDB; exact15files match official frozen commit. Unnecessary duplicate extraction rename refused, known-copy state verified and finished without replay.",
+    "Initial GSettings dispatch used intentionally unavailable /opt in private namespace; refused before consumer. New exact python3 -c versioned code passed; no compiler/stage/original suite replay."
+  ],
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-dconf-install-evidence.tar.gz",
+    "members": 22,
+    "sha256": "dadff68e1bad0b7ea33e63b72f9b644f824734052f2d95d0ce54703d3b8322f6"
+  }
+}

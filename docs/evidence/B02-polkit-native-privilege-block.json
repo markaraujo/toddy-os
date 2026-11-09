@@ -1,0 +1,119 @@
+{
+  "scope": "Failed actual native Polkit privilege fixtures; original five-program suite remains independently passed. NO installed Polkit/GNOME/real password or privilege acceptance.",
+  "attempts": [
+    {
+      "attempt": 1,
+      "commit": "630e768f55903b125a1ff988f682c655f08622ee",
+      "started_utc": "2026-11-09T15:03:42.422339+00:00",
+      "fixture_manifest_sha256": "c6e923f09e4cb34a99ffcae35e145ba2672cb8ec930233a91cb71db3ee0ab65d",
+      "probe_sha256": "4c1aa5d4fca636510e1fbd26c2fc62be72af12e458dca2fa30e51502b80bcf96",
+      "native_success": false,
+      "safe_cases": [],
+      "failure": "Accepted Systemd profile lacks systemd-sysusers; setup failed before any real authorization attempt. Use existing qualified Shadow useradd and exact root:polkitd0750 rule directory permissions; no Systemd rebuild.",
+      "container_stopped": true,
+      "container_exit": 0,
+      "container_oom": false
+    },
+    {
+      "attempt": 2,
+      "commit": "d4935bf8bc5e3c274c74db3c73aee915b7c41010",
+      "started_utc": "2026-11-09T15:05:27.981224+00:00",
+      "fixture_manifest_sha256": "c6e923f09e4cb34a99ffcae35e145ba2672cb8ec930233a91cb71db3ee0ab65d",
+      "probe_sha256": "090cef3722c45f1034fa7048356b6ae371d03a738f50aa000623dacac82e6367",
+      "native_success": false,
+      "safe_cases": [],
+      "failure": "Own gate expected pkcheck1 for authentication challenge without -u. Frozen src/programs/pkcheck.c explicitly returns2 with exact authentication-required diagnostic; expected1 is explicit denial only. No PAM credential attempt reached.",
+      "container_stopped": true,
+      "container_exit": 0,
+      "container_oom": false
+    },
+    {
+      "attempt": 3,
+      "commit": "cbb53003776790ae6bb66898f0345f37bfacb1ca",
+      "started_utc": "2026-11-09T15:06:49.333743+00:00",
+      "fixture_manifest_sha256": "c6e923f09e4cb34a99ffcae35e145ba2672cb8ec930233a91cb71db3ee0ab65d",
+      "probe_sha256": "c9759793094cdd01906d7dcbecd0cf11c7f795529bbbc7b6f750211ae160939a",
+      "native_success": false,
+      "safe_cases": [],
+      "failure": "Correct-password attempt observed a PAM prompt but root-execution verification failed; old collector retained neither terminal nor exit diagnostics. Result remains failed/unknown, not an authentication pass. Source inspection found collector can stop at waitpid before draining final tty output.",
+      "container_stopped": true,
+      "container_exit": 0,
+      "container_oom": false
+    },
+    {
+      "attempt": 4,
+      "commit": "944e075566c5abb9bd33579cdeec20258697ba8b",
+      "started_utc": "2026-11-09T15:08:02.652516+00:00",
+      "fixture_manifest_sha256": "c6e923f09e4cb34a99ffcae35e145ba2672cb8ec930233a91cb71db3ee0ab65d",
+      "probe_sha256": "808ca7fdbe1639bbacfbee46985ef4af9e0f8b428f767482b7c5dd2aebc4259f",
+      "native_success": false,
+      "safe_cases": [
+        {
+          "name": "correct-password-root-execution",
+          "exit": 127,
+          "pam_prompts": 1,
+          "root_uid_line": false,
+          "known_errors": {
+            "Authentication failure": false,
+            "Error executing command": true,
+            "FAILED": true,
+            "not authorized": false,
+            "Invalid cookie": false,
+            "SHELL": false
+          },
+          "raw_tty_retained": false
+        }
+      ],
+      "failure": "Correct password attempt actually returned127 after one PAM prompt, no root UID output. Safe diagnostics show FAILED/Error executing command, not a pass. Collector drain correction did not resolve. Source review also proves pkexec calls pam_open_session, so session deny is an invalid candidate service profile.",
+      "container_stopped": true,
+      "container_exit": 0,
+      "container_oom": false
+    },
+    {
+      "attempt": 5,
+      "commit": "1e22e1b5ed2daa66d2b92afccc27cde981511d49",
+      "started_utc": "2026-11-09T15:09:50.740427+00:00",
+      "fixture_manifest_sha256": "c6e923f09e4cb34a99ffcae35e145ba2672cb8ec930233a91cb71db3ee0ab65d",
+      "probe_sha256": "b3c31981b5cb71a49f73275e808e9fc898de07b7e0131563a931fce2fae67851",
+      "native_success": false,
+      "safe_cases": [
+        {
+          "name": "correct-password-root-execution",
+          "exit": 127,
+          "pam_prompts": 1,
+          "root_uid_line": false,
+          "known_errors": {
+            "Authentication failure": false,
+            "Error executing command": true,
+            "FAILED": true,
+            "not authorized": false,
+            "Invalid cookie": false,
+            "SHELL": false
+          },
+          "raw_tty_retained": false,
+          "terminal_error_classes": [
+            "cookie",
+            "No session"
+          ],
+          "journal_error_classes": []
+        }
+      ],
+      "failure": "Correct-password root-execution failed127 after one PAM prompt; safe terminal classes cookie/No session, no root UID line. No real authentication/privilege acceptance. Two corrections failed; park unchanged auth branch.",
+      "container_stopped": true,
+      "container_exit": 0,
+      "container_oom": false
+    }
+  ],
+  "current_auth_failure_budget": {
+    "failed_corrections": 2,
+    "correction_attempts": 2,
+    "branch": "parked"
+  },
+  "next_independent_work": "DConf core/runtime configuration persistence",
+  "unblock": "Diagnose exact No session/cookie semantics and qualify a genuinely changed real-owner PAM/logind session or source-backed helper transport profile. Do not replay unchanged no-session fixture; continue independent DConf first.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-polkit-native-privilege-attempts-evidence.tar.gz",
+    "members": 15,
+    "sha256": "04b9806d6bf9c7c687c6d9c6a23b865da283bb62ec63cb572635b4d919da0018"
+  }
+}

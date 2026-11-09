@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'dconf': ('0.49.0', 'glib (>= 2.88.3-1+toddy2), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3)', 'dconf-0.49.0.tar.xz', 'usr/lib/pkgconfig/dconf.pc'),
     'python-dbusmock': ('0.38.1', 'python (>= 3.14), python (<< 3.15), dbus-python (= 1.4.0-1+toddy1), pygobject (>= 3.56.3-1+toddy1)', 'python_dbusmock-0.38.1.tar.gz', 'usr/lib/python3.14/site-packages/dbusmock/__init__.py'),
     'dbus-python': ('1.4.0', 'python (>= 3.14), python (<< 3.15), dbus (>= 1.16.2-1), glib (>= 2.88.3-1+toddy2)', 'dbus-python-1.4.0.tar.xz', 'usr/lib/pkgconfig/dbus-python.pc'),
     'duktape': ('2.7.0', 'glibc (>= 2.44-1)', 'duktape-2.7.0.tar.xz', 'usr/lib/pkgconfig/duktape.pc'),
@@ -205,6 +206,7 @@ if __name__ == '__main__':
     if name=='libadwaita':qualifier='libadwaita-build-2'
     if name=='gtksourceview':qualifier='gtksourceview-patched-verify-9'
     if name=='mozjs':qualifier='mozjs-signal-check-4'
+    if name=='dconf':qualifier='dconf-gsettings-4'
     if name=='python-dbusmock':qualifier='python-dbusmock-2'
     if name=='linux-pam':qualifier='pam-1'
     if name=='dbus-python' and (log/'dbus-python-verify-2.exit').exists():qualifier='dbus-python-verify-2'
@@ -1112,6 +1114,9 @@ if __name__ == '__main__':
     if name=='dbus-python':
         from qualify_dbus_python import qualify as qualify_dbus_python
         qualify_dbus_python(ROOT,log)
+    if name=='dconf':
+        from qualify_dconf import qualify as qualify_dconf
+        qualify_dconf(ROOT)
     if name=='python-dbusmock':
         from qualify_dbusmock import qualify as qualify_dbusmock
         qualify_dbusmock(ROOT)
@@ -1132,6 +1137,7 @@ if __name__ == '__main__':
         qualify(ROOT,log)
     assert name==sys.argv[1], 'Package identity changed during qualification'
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
+    if name=='dconf':source=Path('/mnt/lfs/sources/phase2/work/dconf-vendored-1/stage')
     if name=='mozjs':source=Path('/mnt/lfs/sources/phase2/work/mozjs-security-1/stage')
     if name=='linux-pam':source=Path('/mnt/lfs/sources/phase2/work/pam-1/stage')
     if name=='gtksourceview':source=Path('/mnt/lfs/sources/phase2/work/gtksourceview-patched-1/stage')
@@ -1194,6 +1200,7 @@ if __name__ == '__main__':
         (doc/'security-backports.json').write_text(json.dumps(patches,indent=2)+'\n')
         (doc/'README.Toddy').write_text('Frozen Linux-PAM1.7.2 with nine ordered ADR0126 upstream security backports. Original77unit drivers and native7.1.8 real yescrypt/helper/refusal/lock/recovery7cases passed. Generic other policy denies all four management groups. Optional userdb/NIS/SELinux/audit/libeconf disabled. Shadow, pam_systemd, authenticated session boot and GDM integration remain separate gates. No existing account or password is changed.\n')
     archives=[archive]
+    if name=='dconf':archives.append('gvdb-4758f6fb7f889e074e13df3f914328f3eecb1fd3.tar.gz')
     if name=='mozjs':archives.append('spidermonkey-140.14.0-python_3.14_fixes-1.patch')
     if name=='gtksourceview':archives.append('gtksourceview-5.20.0-duplicate-capture-1.patch')
     if name=='docutils':archives.append('flit_core-3.12.0.tar.gz')

@@ -1886,6 +1886,18 @@
       "book_md5": "1a3ff8a464a4d9ebbaf112005bfed95a",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "dconf-gvdb",
+      "version": "0+git.4758f6fb7f88",
+      "commit": "4758f6fb7f889e074e13df3f914328f3eecb1fd3",
+      "filename": "gvdb-4758f6fb7f889e074e13df3f914328f3eecb1fd3.tar.gz",
+      "url": "https://gitlab.gnome.org/GNOME/gvdb/-/archive/4758f6fb7f889e074e13df3f914328f3eecb1fd3/gvdb-4758f6fb7f889e074e13df3f914328f3eecb1fd3.tar.gz",
+      "sha256": "da3680bd38314546a915df5ea265f8c963a42ff5ddc7d69dc1b339775f05dbd6",
+      "reference": "Exact immutable official GVDB commit in frozen DConf0.49.0 subprojects/gvdb.wrap; local read-only bundled fallback only, no network in compiler",
+      "parent_source_sha256": "16a47e49a58156dbb96578e1708325299e4c19eea9be128d5bd12fd0963d6c36",
+      "scope": "DConf static source dependency, upstream native/core qualification pending",
+      "status": "source_verified"
     }
   ]
 }

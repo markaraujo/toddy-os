@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-09T14:46:42.616834+00:00
+Updated: 2026-11-09T15:26:54.685692+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T14:46:42.616834+00:00
+Last verified: 2026-11-09T15:26:54.685692+00:00
 
 Verified:
 
@@ -86,8 +86,11 @@ Verified:
 - Actual new Systemd PID1 native boot/session gate passed: four PAMName/deny224/Stop/recovery cases and two logind/user-manager/private-user-bus cycles; cleanup/new bus identity and eight installed artifacts unchanged. Only new promotion stage custody reclaimed82108416B/root unchanged; no GNOME login claim.
 - Owned Duktape2.7.0 normal/debug policy-engine15checks each and original hello0; supported bytecode load/dump disabled. Corrected uninstalled Polkit subject decoder13cases+9NULL-error controls0; full daemon/helper authorization still pending.
 - Owned D-Bus Python1.4.0 install/post0/0; seven original programs passed, exact upstream Python>=3.12 embedded-repeat SKIP retained. Verify-only reconciliation32ELFs unchanged and installed typed private bus/error/reconnect0. Owned DBusMock0.38.1 install/post0/0; core60PASS/1missing UPower client SKIP, actual mock typed RPC/error/restart0. Fixtures not real service authorization.
+- Polkit full patched127 compile/stage0, five original native programs/59observed TAP cases0/no skips,479fixture files unchanged. Real authentication gate failed127/No session-cookie; two corrections failed, branch parked without package promotion. Independent DConf next.
+- Inactive baseline Mozilla140.14 source custody:422093entries actually restored/metadata matched in tmpfs,952148485Barchive retained, installed root changed0,4368916480Btarget reclaimed; current140.17source/build and baseline compiled/tests retained. No custody replay.
+- Owned DConf0.49.0 install/post0/0 changed41paths:14original core/runtime/ABI+2GVDB programs0; exact15bundled GVDB files matched immutable upstream commit. Actual installed CLI/GSettings private user DB typed persistence/malformed refusal/new bus/reset and generated GIO cache/audits0. No GNOME graphical acceptance.
 
-Running: B02 test dependencies installed; next full corrected Polkit build/original native suite and actual privilege/PAM/recovery. GNOME/GDM/apps/network/audio/offline/focus/resources remain pending. Finish ALL B02 then stop before another story.
+Running: DConf core/runtime owned and verified. Polkit optional socket authentication profile parked after two failed corrections; source-backed standard SUID-helper profile is next qualification, no parent Polkit install yet. GNOME/GDM/apps/network/audio/offline/focus/resources pending. Complete ALL B02 then stop before another story.
 
 Remaining:
 

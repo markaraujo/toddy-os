@@ -10741,6 +10741,31 @@
       "version": "0.38.1",
       "license": "LGPL-3.0-or-later",
       "evidence": "Frozen published COPYING and SPDX per-file notices retained. Qualified core API/CLI and private mock RPC profile; external service templates remain separate, never real authorization or device evidence."
+    },
+    {
+      "name": "dconf",
+      "version": "0.49.0",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Frozen DConf and exact bundled GVDB commit COPYING/license texts and leading source notices retained. LGPL2-or-later headers are distributed under compatible LGPL2.1-or-later project choice. No graphical editor packaged.",
+      "extra_license_headers": {
+        "dconf-0.49.0.tar.xz": {
+          "prefixes": [
+            "bin/",
+            "client/",
+            "common/",
+            "engine/",
+            "gdbus/",
+            "gsettings/",
+            "service/",
+            "shm/",
+            "subprojects/gvdb/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
