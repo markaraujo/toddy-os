@@ -2543,3 +2543,18 @@ acceptance claimed. Both live jobs finished0 before clean builder poweroff;
 docker wait0/container removed, same cold overlays and all4scratch filesystems
 preserved. Resume from B02-owner-pause.json/current card; do not replay custody,
 provisioning, completed builds or trim. B02 stays in_progress/Phase2 weighted13%.
+
+### Owner clarifies B02 stop boundary and execution resumes — 2026-11-08
+
+Owner answered the pause question: complete all B02 and stop. This supersedes
+the conservative immediate pause; continue B02 until full acceptance before
+pausing, without starting another story. Verified clean17dd9ad and both cold
+overlay identities against the pause receipt, restarted same VM and restored
+all4original compiler volumes by UUID/inode/backing, no formatting/rebuild.
+Target guard/new bootd6277cc1-c7c5-4258-9c60-604754078c44 verified.
+
+Copied only54.5MB native Glycin runtime/original tests/executable fixture after
+16GiB reserve preflight,181entries verified before/after; target17472856064B
+free. Native controller/probe retains forced-bwrap real image decoding and
+original tests with explicit unsupported formats, no package promotion from
+compile-only results. Planned one cold native BIOS4CPU/4GiB/noNIC execution.

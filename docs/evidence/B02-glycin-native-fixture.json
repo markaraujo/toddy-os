@@ -1,0 +1,54 @@
+{
+  "scope": "Copied runtime/test fixture only; no installation or qualification",
+  "state": "complete",
+  "fixture": "/mnt/lfs/sources/phase2/native-fixtures/glycin-1",
+  "payload_entries": 181,
+  "payload_manifest_sha256": "2d6d46dfe85ec559407905c3428fa72c1bfb94a2ef5086ed6a827b2675650831",
+  "receipt_sha256": "22cd0a2f91e7c764c3f2d78465567690db63bd9915c723c0344071fa9532f8cf",
+  "free_target_bytes": 17472856064,
+  "copied_executables": [
+    {
+      "name": "glycin-svg",
+      "path": "/build/compile/cargo-target/tests/release/deps/glycin_svg-64e878101e127c71",
+      "sha256": "95dabe96de419802dd6da59705a4b7f636c1db51c7f729d9441a1e774f7e2577",
+      "bytes": 966360
+    },
+    {
+      "name": "glycin-image-rs",
+      "path": "/build/compile/cargo-target/tests/release/deps/glycin_image_rs-9bcb0fc4dfb955db",
+      "sha256": "1cfaad3aa05b1e81d994546569046f0a26f39164f5e77ae170797b6c81fb503f",
+      "bytes": 966368
+    },
+    {
+      "name": "dbus_api_stability",
+      "path": "/build/compile/cargo-target/tests/release/deps/dbus_api_stability-cf3258a1e585c5e7",
+      "sha256": "6e97fc6e6ca3ec1d667142e69853e5746de2d916a0da52aae416ec7cce6cd5f7",
+      "bytes": 3657920
+    },
+    {
+      "name": "tests",
+      "path": "/build/compile/cargo-target/tests/release/deps/tests-31f9fe3ab792b286",
+      "sha256": "d87d085154400046c2a9d6937b599cfb540d75cd96b20eba5f24eef3c74c722d",
+      "bytes": 5248864
+    },
+    {
+      "name": "encoding",
+      "path": "/build/compile/cargo-target/tests/release/deps/encoding-188aa2db54ba4509",
+      "sha256": "df6d19ebf0c91353e75f54b59b59e6fe5a5e104ab9130c55f6a01ab290264e6f",
+      "bytes": 5548264
+    },
+    {
+      "name": "editing",
+      "path": "/build/compile/cargo-target/tests/release/deps/editing-764380e769480fc6",
+      "sha256": "4f843affb62238652906fe43cdead68f7c77a1b7d14b6fe05fdd515e9928ad82",
+      "bytes": 5644184
+    },
+    {
+      "name": "change_memory_format",
+      "path": "/build/compile/cargo-target/tests/release/deps/change_memory_format-07198b865b91ea64",
+      "sha256": "d502ae9f7ae3f830a5f0937a7d2f37061d80bcd83b5e606b6fe3255d63963ac0",
+      "bytes": 4185320
+    }
+  ],
+  "package_promotable": false
+}

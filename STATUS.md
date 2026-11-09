@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-08T22:25:10.608651+00:00
+Last verified: 2026-11-09T00:23:03.356411+00:00
 
 Verified:
 
@@ -43,7 +43,7 @@ Verified:
 - Actual native7.1.8/Systemd sandbox0 on4CPU/4GiB BIOS/noNIC; bwrap26portable+66native upstream passes/5explicit optional skips, native consumer0,11ELFs unchanged. Checksum-reconciled split serial marker without native replay; owned0755 byte-identical install/post0/0. Builder/same3scratch volumes restored, no formatting/trim.
 - Owned display-info0.4.0 install/post0/0/all68registered EDID fixtures0, actual QEMU/PnP/malformed+truncated refusal0; both parser/hwdata source-license inventories retained. No physical monitor or graphical-session acceptance.
 
-Running: PAUSED at the owner stop request. No guest writer; builder powered off cleanly0 and removed. Glycin main/test-executable compile0; actual native image/sandbox tests and GNOME/B02 acceptance pending. B02 remains in_progress, weighted Phase2 progress13%.
+Running: Owner clarified: complete ALL B02, then stop before another story. Resumed same verified disks and restored same4scratch filesystems. Glycin selected native test fixture copied/181entries verified, no installation. Preparing cold native7.1.8 sandbox/image tests; GNOME/B02 acceptance still pending.
 
 Remaining:
 
