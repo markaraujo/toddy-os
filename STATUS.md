@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T01:44:08.012112+00:00
+Last verified: 2026-11-09T02:04:22.291318+00:00
 
 Verified:
 
@@ -43,7 +43,7 @@ Verified:
 - Actual native7.1.8/Systemd sandbox0 on4CPU/4GiB BIOS/noNIC; bwrap26portable+66native upstream passes/5explicit optional skips, native consumer0,11ELFs unchanged. Checksum-reconciled split serial marker without native replay; owned0755 byte-identical install/post0/0. Builder/same3scratch volumes restored, no formatting/trim.
 - Owned display-info0.4.0 install/post0/0/all68registered EDID fixtures0, actual QEMU/PnP/malformed+truncated refusal0; both parser/hwdata source-license inventories retained. No physical monitor or graphical-session acceptance.
 
-Running: Glycin/mtdev owned0/0, storage custodies complete/reserves unchanged. libevdev build/stage45portableCheck cases +static-symbol ABI +C state/refusal0,3root/uinput SKIP77 explicitly untested; no writer, owned promotion next. GNOME/B02 incomplete; complete ALL B02 then pause.
+Running: Owned Glycin/mtdev/libevdev install/post0/0; libevdev45portable cases/ABI/C APIs,3root/uinput SKIP77. libxcvt source/CVT timing API+CLI0, no suite or physical mode setting; no writer, owned promotion next. Immutable test dependency prepared for libei. GNOME/B02 pending; complete ALL B02 then pause.
 
 Remaining:
 

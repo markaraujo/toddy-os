@@ -1,0 +1,16 @@
+{
+  "scope": "Owned portable input API qualification, no kernel device/physical/GNOME claim",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T01:48:58.586074+00:00",
+  "package_version": "1.13.6-1+toddy1",
+  "archive_sha256": "42870c827cfc9aabcb1f81ad2a5a1a15e3e87a6f1eb52dc4499a5e5d0384bd60",
+  "payload_entries": 32,
+  "installed_consumer": {
+    "scope": "Native installed input-name/capability/event-state/invalid-FD API consumer; no physical device/GNOME acceptance",
+    "name": "libevdev",
+    "version": "1.13.6",
+    "native_consumer_exit": 0,
+    "stdout": "libevdev native name/capability/event-state/code mapping/cleanup/invalid-FD refusal"
+  }
+}

@@ -10350,7 +10350,14 @@
       "name": "libevdev",
       "version": "1.13.6",
       "license": "MIT",
-      "evidence": "Authenticated upstream COPYING with Red Hat/David Herrmann notices and Linux-header provenance statement retained. Native LFS userspace portable45Check cases plus original static-symbol ABI driver and C capability/event-state/refusal0; three root/uinput drivers SKIP77 are not tested or passes. Private qualified Check0.15.2 SDK reused byte-identical from accepted compiler artifacts/9oldSDKcases, no rebuild/global install/runtime dependency. Owned promotion pending."
+      "evidence": "Authenticated upstream COPYING with Red Hat/David Herrmann notices and Linux-header provenance statement retained. Native LFS userspace portable45Check cases plus original static-symbol ABI driver and C capability/event-state/refusal0; three root/uinput drivers SKIP77 are not tested or passes. Private qualified Check0.15.2 SDK reused byte-identical from accepted compiler artifacts/9oldSDKcases, no rebuild/global install/runtime dependency. Owned install/post0/0 and installed C API0."
+    },
+    {
+      "name": "libxcvt",
+      "version": "0.1.3",
+      "license": "MIT AND HPND-sell-variant",
+      "evidence": "Exact upstream COPYING/header terms retained. Mode header wording matched the official SPDX HPND-sell-variant template; core also carries MIT terms. Native normal/reduced-blank CVT/API and CLI0; no upstream unit suite; owned promotion pending, no physical monitor claim.",
+      "license_identifier_reference": "https://spdx.org/licenses/HPND-sell-variant.html"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

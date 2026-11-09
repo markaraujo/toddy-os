@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libxcvt': ('0.1.3', 'glibc (>= 2.44-1)',
+                 'libxcvt-0.1.3.tar.xz', 'usr/lib/pkgconfig/libxcvt.pc'),
     'libevdev': ('1.13.6', 'glibc (>= 2.44-1)',
                   'libevdev-1.13.6.tar.xz', 'usr/lib/pkgconfig/libevdev.pc'),
     'mtdev': ('1.1.7', 'glibc (>= 2.44-1)',
@@ -755,6 +757,13 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='libxcvt':
+        work=Path('/mnt/lfs/sources/phase2/work/libxcvt-1');source=Path('/mnt/lfs/sources/phase2/inputs/libxcvt-0.1.3')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libxcvt-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libxcvt-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text())
+        assert proof['registered_upstream_tests']==0 and proof['staged_consumer_exit']==proof['cli_exit']==0
+        assert json.loads((work/'compile/meson-info/intro-tests.json').read_text())==[]
     if name=='libevdev':
         import re
         work=Path('/mnt/lfs/sources/phase2/work/libevdev-1');source=Path('/mnt/lfs/sources/phase2/inputs/libevdev-1.13.6')

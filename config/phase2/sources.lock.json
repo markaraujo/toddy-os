@@ -1446,6 +1446,30 @@
       "book_md5": "7fb9c51d33a680f724f34da41768b1d0",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "munit-test-sdk",
+      "version": "0.2.0",
+      "commit": "ad67a3a2ca6b0e106c9c8d515772359eadcefad6",
+      "filename": "munit-0.2.0-ad67a3a2.tar.gz",
+      "url": "https://codeload.github.com/nemequ/munit/tar.gz/ad67a3a2ca6b0e106c9c8d515772359eadcefad6",
+      "sha256": "74e14890607cf6f7dfe75df95bc66cab73db18dae4558ce7933392146fa29cb9",
+      "reference": "Exact official upstream v0.2.0 tag selected to replace unpinned HEAD in libei1.6.0 test-only wrap; native compatibility/qualification pending",
+      "parent_source_sha256": "5ed6078fa63afd554cc04b1001675615da0ed8fe23b80492ab63403140b5a830",
+      "scope": "Unselected source-only v0.2.0 candidate: required Meson integration absent; never used in guest/runtime",
+      "status": "source_verified"
+    },
+    {
+      "name": "munit-test-dependency",
+      "version": "0.2.0+git.fbbdf1467eb0",
+      "commit": "fbbdf1467eb0d04a6ee465def2e529e4c87f2118",
+      "filename": "munit-fbbdf1467eb0d04a6ee465def2e529e4c87f2118.tar.gz",
+      "url": "https://codeload.github.com/nemequ/munit/tar.gz/fbbdf1467eb0d04a6ee465def2e529e4c87f2118",
+      "sha256": "d0c8bf80b9804d4df5301bd428702352fe7e14f84f22027c3a2c084a0d9f69a7",
+      "reference": "Exact official upstream commit resolved once from libei1.6.0 moving HEAD test wrap; immutable archive/commit before guest use",
+      "parent_source_sha256": "5ed6078fa63afd554cc04b1001675615da0ed8fe23b80492ab63403140b5a830",
+      "scope": "Build/test source only, not runtime/catalog; required upstream Meson integration present, native qualification pending",
+      "status": "source_verified"
     }
   ]
 }

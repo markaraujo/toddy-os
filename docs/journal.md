@@ -2650,3 +2650,15 @@ root/uinput programs returned77/SKIP, explicitly not passed. Native LFS userspac
 on Ubuntu builder kernel, no physical or native7.1driver/GNOME acceptance. Private
 Check0.15.2 SDK reused/hashed against original compile artifacts and9oldSDKcases;
 no SDK rebuild/global install. Source stage eligible for guarded owned promotion.
+
+libevdev owned install/post0/0 and installed C APIs0; three original root/uinput
+skips remain explicitly untested. libxcvt source/stage/normal+reduced CVT timing
+API/CLI0, no upstream suite or physical mode-setting claim; owned promotion next.
+
+libei1.6.0 test wrap declares moving Munit HEAD. Official v0.2.0 source-only
+candidate lacks required Meson integration, never used in guest. Preserved that
+unselected archive/row and pinned a new test-only dependency at exact official
+commitfbbdf1467eb0d04a6ee465def2e529e4c87f2118, SHA d0c8bf80b9804d4df5301bd428702352fe7e14f84f22027c3a2c084a0d9f69a7
+before guest extraction. Native compatibility pending; no runtime/foundation
+version change. Upstream subproject installs by default, so selected recipe must
+skip installing Munit. Complete all B02 before owner-requested pause.
