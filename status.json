@@ -3,7 +3,7 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-09T23:09:51.566007+00:00",
   "bootstrap": "ready_for_development",
-  "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05–B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
+  "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05\u2013B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
   "gates": {
     "G1": "passed",
@@ -687,7 +687,7 @@
       "Owned GJS1.88.1 native install/post0/0,158changed paths; original two C202cases plus native78programs/2741PASS/147original pending SKIPs,124artifacts361sources unchanged; actual installed C/CLI/GI/event/refusal/recovery0. Exact Meson RUNPATH removal/three mutation refusals; prewrite failure retained. No full GNOME acceptance.",
       "Frozen PAM1.7.2 plus nine ADR0126 backports staged0;77original unit drivers and real permit/deny/missing-module/malformed/recovery0. New password client compiled0, original ELFs unchanged;157file native fixture prepared. No real passwords/helper/login acceptance yet.",
       "Owned Linux-PAM1.7.2-1+toddy2: original77unit drivers; real native7.1.8 yescrypt/setuid helper7correct/refusal/NNP/lock/recovery cases0,157fixture files unchanged/account removed/child stopped0. Metadata-only dependency recovery preserved457payload entries, recipe/post0/0,installed C/API/module/audit0; prior failures retained. Full login still pending.",
-      "Same frozen Systemd261.2 PAM delta compiled/staged:7193authenticated source files reused read-only, sole prior udev rule correction; sole HAVE/ENABLE change HAVE_PAM0→1. Four original driversOK/two exact cgroup SKIP77 retained; stage-only recovery0/12artifacts unchanged, Meson install RPATH/CLI+PAM/module load0. Installed runtime unchanged -PAM; native two-driver/boot/session gates pending.",
+      "Same frozen Systemd261.2 PAM delta compiled/staged:7193authenticated source files reused read-only, sole prior udev rule correction; sole HAVE/ENABLE change HAVE_PAM0\u21921. Four original driversOK/two exact cgroup SKIP77 retained; stage-only recovery0/12artifacts unchanged, Meson install RPATH/CLI+PAM/module load0. Installed runtime unchanged -PAM; native two-driver/boot/session gates pending.",
       "Systemd PAM original two cgroup drivers passed on native7.1.8 (65+1observed headers/no skip diagnostics),7193source12fixture files unchanged. Controlled261.2-1+toddy3 install/post0/0 replaced four runtime files, added PAM module/policy/two directories,2478existing entries unchanged; full2486payload reviewed before install. Private1112core6205shared exports preserved,+33PAM symbols. Actual CLI/module/APT0; new-runtime cold boot/session pending.",
       "Actual new Systemd PID1 native boot/session gate passed: four PAMName/deny224/Stop/recovery cases and two logind/user-manager/private-user-bus cycles; cleanup/new bus identity and eight installed artifacts unchanged. Only new promotion stage custody reclaimed82108416B/root unchanged; no GNOME login claim.",
       "Owned Duktape2.7.0 normal/debug policy-engine15checks each and original hello0; supported bytecode load/dump disabled. Corrected uninstalled Polkit subject decoder13cases+9NULL-error controls0; full daemon/helper authorization still pending.",
@@ -713,14 +713,15 @@
       "GTK4.22.4-1+toddy5 cache/legal-only install/post0/0 changed24paths,906old nonlegal entries unchanged. Actual installed default76schemas/571key contracts verified; prior67/500 unchanged, no user values or library rebuild.",
       "Actual installed EDS UID101 services/private profile/two distinct buses/no external route passed create/read/disk-file/persisted event/pre-cancelled read/refusal/recovery/remove. No EDS_TESTING/build overrides; services exited/private profile removed. Native recipe/post0/0 with ZERO installed root changes; no GNOME graphical/physical acceptance.",
       "Owned Vala0.56.19 build SDK install/post0/0 changed366paths/373entries;1435original passes,282ELFs retained. Own private staging lookup corrected consumer-only2; actual installed native code generation/GObject/UTF8/signals/typed error/invalid-source refusal/recovery/SDK0. Not IBus/GUI acceptance.",
-      "Owned architecture-all UCD17 build data install/post0/0 changed87paths/85entries;71exact data files,40575ordered scalars/346blocks/PT+emoji metadata and pinned full Unicode3 terms+ReadMe verified. Official versioned HTTPS/CRC/version/SHA pin, no publisher signature claim. No conformance/glyph/input proof."
+      "Owned architecture-all UCD17 build data install/post0/0 changed87paths/85entries;71exact data files,40575ordered scalars/346blocks/PT+emoji metadata and pinned full Unicode3 terms+ReadMe verified. Official versioned HTTPS/CRC/version/SHA pin, no publisher signature claim. No conformance/glyph/input proof.",
+      "IBus frozen tag1.5.34 embeds rc2 metadata; private Wayland/GTK3+4/GI/Unicode profile build/stage0, seven portable originals and UTF8/key parsing/refusal/recovery0;179ELFs unchanged during synthetic machine-ID recovery. Native install/bus/cache/schema/GUI pending."
     ],
-    "running": "B02: Vala compiler SDK and Unicode17 build data owned/validated; IBus native input integration next. Complete ALL B02 then stop.",
+    "running": "B02: IBus private build/stage and seven portable originals passed; native ownership/service/cache/schema and graphical input integration next. Complete ALL B02 then stop.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-09T23:06:01.919515+00:00",
+    "verified_at": "2026-11-09T23:23:24.136010+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

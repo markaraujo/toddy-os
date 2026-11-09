@@ -7,98 +7,49 @@ foundation tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Current slice and exact next action
 
-Current verified slice: owned EDS/shared schema/native installed services.
-No active writer. EDS install/post0/0 changed659paths/853owned entries, original
-101programs/799ELFs retained. GTK4 same-version schema/legal-only update to
-4.22.4-1+toddy5 install/post0/0 changed24paths,906old nonlegal entries unchanged.
-Actual76schemas/571key contracts verified; prior67/500 unchanged.
-Native `b02-eds-installed-services.success.json` recipe/post0/0, ZERO installed
-root changes. Real installed UID101 SourceRegistry/calendar factories used default
-schemas/modules/libraries, no EDS_TESTING/build overrides, private HOME/XDG and
-loopback-only net namespace. Actual event create/read/ICS-file postcondition,
-distinct new bus GUID/reopened event/pre-cancelled read/refusal/recovery/remove/
-disk postcondition all passed. Services exited after bus close without forced
-termination; private profile removed. NEVER replay native writes/tests/installs.
-[Eds proof](evidence/B02-eds-installed-services.json),
-[shared cache](evidence/B02-shared-schema-union.json), ADR0167.
+Current verified slice: IBus private build/stage and seven portable originals.
+No active guest writer; no native IBus install. `ibus-machine-5` PID490310 terminal0,
+compiled179ELFs/staged200regular files. Actual UTF8 text serialization/key parsing/
+invalid modifier refusal/two-cycle recovery0. Five original passes reused; only
+machine-ID original repeated with synthetic private /etc/machine-id. Original
+failure and before-after artifact/log records retained. [Proof](evidence/B02-ibus-build.json).
 
-Current verified slice: Vala/UCD prerequisites owned. No active writer.
-Vala0.56.19 install/post0/0 changed366paths/373entries;1435original passes,
-282compiledELFs/340staged files retained. Private codegen lookup corrected
-consumer-only2; original artifacts/results/stage unchanged. Actual installed
-native GObject/UTF8/signal/typed-error generation/invalid-source refusal/no binary/
-two-cycle recovery/SDK0. [Proof](evidence/B02-vala-install.json). Never reinstall.
-UCD17 architecture-all install/post0/0 changed87paths/85entries; all71data files
-preserved,40575scalar records/346blocks/PT/emoji metadata and full pinned Unicode3
-license+ReadMe verified. Static data has no executable suite; no conformance/
-glyph/input claim. [Proof](evidence/B02-unicode-ucd-install.json), ADR0168.
-Source notice preservation12tests and UCD archive3safety cases passed; tar source
-extractor unchanged. ZIP publisher signature/digest NOT claimed, SHA frozen after
-official versioned HTTPS/CRC/version verification before guest use. No replay.
+Immutable input `/mnt/lfs/sources/phase2/inputs/ibus-1.5.34`, work
+`/mnt/lfs/sources/phase2/work/ibus-1`. Logs/receipts under
+`/var/log/toddy/phase2/ibus-{1,gtk4-2,wayland-3,link-4,machine-5}.*`;
+work autogen/configure/configure-3/compile/compile-2/compile-3/compile-4/
+original-tests/original-share-5/original-bus-5/stage logs.
+Frozen source SHAff8f511770844203108119727dc8686c29afb286e9cb535e0870f18d40fddbbb;
+initial recipe160a21219c0b11be1cb53c29b256830f502cc9a7a9e4fe2553961548bf6fcc6d.
+Failed backend/XIM/test-Xlib/machine-ID inputs preserved; ADR0169/ledger.
+NEVER repeat preparation/autogen/build/stage or seven successful originals.
 
-Exact next: implement IBus1.5.34 private-working-copy autotools recipe/probe from
-existing `.local/probes/ibus-1.5.34-review/ibus-1.5.34`; source cached/frozen.
-No guest IBus input/work/job yet. Apply frozen book schema-path/GTK-doc/autogen/
-Python3 corrections only to declared private copy; SAVE_DIST_FILES=1 NOCONFIGURE=1.
-Select GTK3/4/Wayland/GI, disable book optional GTK2/Python2/appindicator/emoji dict;
-UCD Unicode dict enabled, Vala now available. Inspect actual optional flags/tool
-requirements and test runtest contract. Private bus/core originals; display/
-uinput/locale/known xkeyboard2.48 mapping cases explicitly unqualified until
-native verification, never fake skips as passes. One writer, exact-input guards.
-Prepare input once then isolated build. Stage before native promotion; future
-GTK3 IM cache update must preserve GTK3 payload and loosen only existing GTK4
-exact GTK3 revision control pin before controlled cache update. Global stock
-schema cache now GTK4 toddy5/76schemas, do not replay prior union.
-GNOME Shell50.4 host source already reviewed: Gdm/GWeather/IBus/GeoClue required
-typelibs, NM/NMA selected networking, Bluetooth compile-time optional. Weather
-needs gweather-locations2026.2/geocode-glib3.26.4 (not frozen/built yet).
-After input prerequisites: actual GNOME/GDM/apps/offline/network/audio/focus/
-responsiveness, pending trust callback/NSS alias/shared hwdb and fresh combined
-qualification. No native GNOME UI or Phase2 ISO acceptance yet.
+Exact next: implement IBus native stage qualifier/owned install/postchecks,
+explicitly disclose frozen tag1.5.34's embedded1.5.34-rc2 metadata in package version
+mapping, then actual private-bus service/reconnect/cancel recovery and controlled
+GTK3 IM cache/schema ownership. Keep GTK3/4/Wayland/GI/Unicode/setup/UI/DConf;
+XIM/X11 agent disabled for actual Wayland-only GTK backends, optional emoji dict/
+appindicator/GTK2/Python2 omitted. Private-bus/display/uinput/locale-sensitive
+originals remain unexecuted, never passes. Actual keyboard/GNOME acceptance pending.
+GTK4toddy5 currently pins GTK3toddy1 exactly: loosen only revision control before
+GTK3 cache-only revision; preserve all accepted runtime payloads. Schema union is
+76schemas/571keys; new IBus union must preserve them, never replay old union.
 
-Completed EDS profile: GTK3/4/SMIME/GI/original tests and SQLite storage;
-optional WebKit OAuth/GOA/weather/Kerberos/LDAP/phone/Vala/docs/examples/legacy
-BDB migration/legacy Canberra-GTK alarm sound off through supported source flags.
-All build inputs/work/jobs and failure receipts remain immutable. Do NOT execute
-old EDS preparation/compile/consumer/native recipes again. Retained sources and
-[owned EDS evidence](evidence/B02-evolution-data-server-install.json) document
-exact recovery. P11 local trust update/NSS alias and fresh combined recipe
-qualification remain pending independently; core desktop audio still mandatory.
+Prior Vala0.56.19 and UCD17 native install/post0/0;1435compiler original passes,
+71exactdata files/full Unicode3 notices retained. Never reinstall/retest.
+EDS native real SourceRegistry/calendar persistence/new-bus/cancel/recovery0,
+GTK4same-version cache/legal-only toddy5 preserves prior67schemas/500keys; actual
+76/571 verified. Reuse [index](evidence/B02.md), ADR0167–0168.
 
-Latest verified libsoup3.6.6: install/post0/0,133changed paths/281owned entries,
-35original driver passes/22nested skips/246ELFs, installed actual HTTP/pre-cancel/
-no-dispatch/recovery0. Never replay. Publication35393668006d4b7346d50b90a695bc04f1e4805c
-planning42708429656/safety42708429724/Pages42708429837 allsuccess; exact HTTP200
-public indexSHA bad4f5bca19631af7948f1c0283967255d2cf1045664e81062360c8614948963.
+Publication eb2c669b13f1f2c4de50d8d15d7d97e72d586d36: planning42718870061/
+safety42718870345/Pages42718870357 allsuccess; actual HTTP200 exact indexSHA
+ a5b42298990193f66fa5418935ac339ad959a45104e105d3ef7c281084d636c5.
 
-Prior verified slice: owned GLib-networking2.80.1/default TLS/shared GIO cache. `b02-glib-networking-install.success.json` proves recipe/post0/0,
-90changed paths/240owned entries. Shared cache now four modules; unchanged DConf
-archive/module retained, generated-resource metadata updated under controlled
-receipt`gio-network-resources-1.json`. Actual installed default GIO/GnuTLS/system
-root/malformed certificate refusal/recovery and private DConf GSettings persistence/
-new-bus/reset passed, without module or TLS overrides. All six enabled originals
-passed; three initial proxy/certificate drivers reused, only three TLS programs
-repeated after exposing actual public anchors read-only. Own auxiliary-PEM input
-corrected consumer-only3; original38ELFs/stage unchanged. No suite/stage replay.
-[Proof](evidence/B02-glib-networking-install.json), ADR0165. Never reinstall.
-
-Prior verified slices:
-`b02-ca-native-install.success.json` and `b02-gnutls-install-2.success.json`
-both prove recipe/post0/0. CA data changed717paths,721owned entries, all9803
-OpenSSL package entries unchanged. Actual installed default P11/GnuTLS/OpenSSL
-trust and legacy aliases pass. GnuTLS changed66paths; installed library/SDK/
-crypto/UTF8/IDNA/priority/refusal/recovery and unchanged original trust program0.
-[Decision/evidence](adr/0164-real-system-trust-and-gnutls-integration.md).
-
-GnuTLS retains917distinct original records:813PASS/102SKIP/two original FAILs.
-Certificate list80entries includes seven duplicates,73unique PASS driver records;
-own stage4 count corrected in stage5 without test replay. First native qualifier
-failed only ordered enumeration comparison, ZEROroot changes/no promotion stage/
-archive. Install2 compares exact917name/result maps. NEVER replay successful
-CA preparation/generation/finish/acceptance/native install or GnuTLS stage/install.
-
-Then remaining GNOME/GDM/apps/network/audio/offline/
-focus/responsiveness/resources. Shared caches/trust integration below remain gates.
+GNOME Shell50.4 source reviewed: Gdm/GWeather/IBus/GeoClue required typelibs,
+NM/NMA selected networking, Bluetooth compile-time optional. Weather still needs
+locations2026.2/geocode-glib3.26.4. Then actual GNOME/GDM/apps/offline/network/audio/
+focus/responsiveness, pending trust callback/NSS alias/shared hwdb and fresh combined
+qualification. No native GNOME UI, Phase2 ISO or physical-machine acceptance.
 
 ## Latest verified boundaries — reuse, never rebuild/reinstall/retest unchanged
 
@@ -201,3 +152,7 @@ retry. Select checks by changed impact, no unchanged long suites. Commit/push
 validated slices and verify exact committed public page. No host installation/
 physical disk/global security weakening/paid services/new agents/model change/
 workstation RAG. Finish ALL B02, then honor requested stop.
+
+Vala/UCD publication commit eb2c669b13f1f2c4de50d8d15d7d97e72d586d36: planning
+42718870061/safety42718870345/Pages42718870357 allsuccess; actual public HTTP200
+exact indexSHA a5b42298990193f66fa5418935ac339ad959a45104e105d3ef7c281084d636c5.

@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T23:06:01.919515+00:00
+Last verified: 2026-11-09T23:23:24.136010+00:00
 
 Verified:
 
@@ -108,8 +108,9 @@ Verified:
 - Actual installed EDS UID101 services/private profile/two distinct buses/no external route passed create/read/disk-file/persisted event/pre-cancelled read/refusal/recovery/remove. No EDS_TESTING/build overrides; services exited/private profile removed. Native recipe/post0/0 with ZERO installed root changes; no GNOME graphical/physical acceptance.
 - Owned Vala0.56.19 build SDK install/post0/0 changed366paths/373entries;1435original passes,282ELFs retained. Own private staging lookup corrected consumer-only2; actual installed native code generation/GObject/UTF8/signals/typed error/invalid-source refusal/recovery/SDK0. Not IBus/GUI acceptance.
 - Owned architecture-all UCD17 build data install/post0/0 changed87paths/85entries;71exact data files,40575ordered scalars/346blocks/PT+emoji metadata and pinned full Unicode3 terms+ReadMe verified. Official versioned HTTPS/CRC/version/SHA pin, no publisher signature claim. No conformance/glyph/input proof.
+- IBus frozen tag1.5.34 embeds rc2 metadata; private Wayland/GTK3+4/GI/Unicode profile build/stage0, seven portable originals and UTF8/key parsing/refusal/recovery0;179ELFs unchanged during synthetic machine-ID recovery. Native install/bus/cache/schema/GUI pending.
 
-Running: B02: Vala compiler SDK and Unicode17 build data owned/validated; IBus native input integration next. Complete ALL B02 then stop.
+Running: B02: IBus private build/stage and seven portable originals passed; native ownership/service/cache/schema and graphical input integration next. Complete ALL B02 then stop.
 
 Remaining:
 
