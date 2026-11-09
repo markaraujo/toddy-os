@@ -21,9 +21,18 @@ OOMfalse; backing identity verified before each builder restart; existing SIX
 scratch volumes and authenticated Systemd source bind restored. NEVER replay
 native acceptance, package install or prior completed tests; no GDM/GUI acceptance.
 
-Next eligible B02 branch: frozen UPower1.91.3 then GNOME session dependencies,
-real GNOME/GDM/apps/network/audio/offline/focus/resource acceptance. Keep all
-original package/source/runtime integrity checks. No new B story before owner stop.
+Current slice: UPower1.91.3 stage/portable tests and corrected CLI/GI/history0.
+Five original cases passed; two bus-dependent originals explicitly omitted, no
+fake pass. Initial CLI-version system-bus failure and wrong GI method placement
+retained; consumer4passed/all original ELFs unchanged, no compile/stage/test replay.
+[Stage](evidence/B02-upower-stage.json), ADR0157. Native fixture39files,
+manifestSHA605c5587a2a90c0804a49080c07e9599f46dd784c257fcacbecd869f416e1f20.
+Exact next: clean reviewed commit then `python3 scripts/host/phase2_native_upower.py`
+once with `.local/phase2/native-upower-1-controller.log`, NEW context1.
+Inspect child/report/backing identity before restart; never retry old overlays.
+Then controlled owned promotion, frozen GNOME session dependencies and real
+GNOME/GDM/apps/network/audio/offline/focus/resource acceptance; finish ALL B02
+then stop before another story.
 
 JSON-C0.19-1+toddy1 now OWNED/install/post0/0,64changed paths.28original programs
 covered by27reused passes plus repaired original build-only CLI case; original

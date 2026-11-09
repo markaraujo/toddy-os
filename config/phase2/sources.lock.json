@@ -1944,6 +1944,18 @@
       "book_md5": "5678f1373ba51e0041b574c0411c696b",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "upower",
+      "version": "1.91.3",
+      "filename": "upower-v1.91.3.tar.bz2",
+      "url": "https://gitlab.freedesktop.org/upower/upower/-/archive/v1.91.3/upower-v1.91.3.tar.bz2",
+      "sha256": "12227b3dcd34c5097bbda25984b192ea0bd5e11dce479358d9ef70415a38e4b6",
+      "reference": "BLFS13.1-systemd general/upower.html",
+      "book_page_sha256": "89862aad0be36627e9dfaff40b317fa87f261b29b66b2c800836225dd140e18a",
+      "book_md5": "bf09da2eb695224e249e38077460414c",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }
