@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T12:40:49.581988+00:00
+Last verified: 2026-11-09T12:58:39.395625+00:00
 
 Verified:
 
@@ -81,8 +81,9 @@ Verified:
 - Owned GJS1.88.1 native install/post0/0,158changed paths; original two C202cases plus native78programs/2741PASS/147original pending SKIPs,124artifacts361sources unchanged; actual installed C/CLI/GI/event/refusal/recovery0. Exact Meson RUNPATH removal/three mutation refusals; prewrite failure retained. No full GNOME acceptance.
 - Frozen PAM1.7.2 plus nine ADR0126 backports staged0;77original unit drivers and real permit/deny/missing-module/malformed/recovery0. New password client compiled0, original ELFs unchanged;157file native fixture prepared. No real passwords/helper/login acceptance yet.
 - Owned Linux-PAM1.7.2-1+toddy2: original77unit drivers; real native7.1.8 yescrypt/setuid helper7correct/refusal/NNP/lock/recovery cases0,157fixture files unchanged/account removed/child stopped0. Metadata-only dependency recovery preserved457payload entries, recipe/post0/0,installed C/API/module/audit0; prior failures retained. Full login still pending.
+- Same frozen Systemd261.2 PAM delta compiled/staged:7193authenticated source files reused read-only, sole prior udev rule correction; sole HAVE/ENABLE change HAVE_PAM0→1. Four original driversOK/two exact cgroup SKIP77 retained; stage-only recovery0/12artifacts unchanged, Meson install RPATH/CLI+PAM/module load0. Installed runtime unchanged -PAM; native two-driver/boot/session gates pending.
 
-Running: PAM owned and real native credential gate passed. Inspect frozen Systemd261.2 PAM/session integration: existing -PAM core ignores PAMName, so module alone cannot prove full integration. Full GNOME/apps/B02 pending; finish ALL B02 then stop.
+Running: Systemd PAM staged; native two original cgroup-dependent core drivers next in NEW disposable native-systemd-pam-runtime-1. Full updated-runtime boot/PAMName/session/GNOME/apps/B02 pending; complete ALL B02 then stop.
 
 Remaining:
 

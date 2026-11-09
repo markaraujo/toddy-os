@@ -1,0 +1,149 @@
+{
+  "scope": "Only same-version Systemd PAM runtime delta, staged loader/CLI and six affected original drivers (retain two exact cgroup prerequisite skips); native two-driver/boot/session gate remains mandatory",
+  "compile_exit": 0,
+  "stage_exit": 0,
+  "staged_version_exit": 0,
+  "staged_module_load_exit": 0,
+  "unchanged_selected_artifacts": {
+    "src/shared/libsystemd-shared-261.so": "ef71f5e3799f6f7f95394b93b9f3f556b032bccde4a4c6520fcae8f30440e05b",
+    "src/core/libsystemd-core-261.so": "129416256cf6a423e832d68cf9adfaec4199e69b4d98cc2bfafbb4871c1243e4",
+    "src/login/systemd-user": "902ea0260ad54b79e780ad9ab53a0a7c44d38712e791ed08028a330cc4708ee4",
+    "systemd": "b9993375220af26f90c9183145bccec8db6785ff1973369ef9772fd612d30c32",
+    "systemd-executor": "267f320ed74a74daa9881a4e46a3d603e4e66608ffb3c9cddfece3466a8e5714",
+    "test-login-tables": "83714a352a437586b83d26a1ad8e4545590751cc818f376bdf2fd1c170fa70cd",
+    "test-load-fragment": "30e8ad89be1a9419b21eaf6184f2775cf873ac9d64a0b9dd1556db4ea4f54c48",
+    "test-unit-serialize": "b4bf184bb9ec547b4827a31952dd6d81f978aeae14d550268d45843174e860f3",
+    "test-login-shared": "5ede074e5dc0c1c73ccd4f500af913a2f7730dbc67097bc8b1b107ea3c02150b",
+    "test-login-util": "bc2c0f3495fb32d14f3fae6b7a998af30cff5164dd7be12e215b553bb821186e",
+    "test-serialize": "d658d96d164aa6f226f98d9481465e09ef2bcce70b408db569ee851f3b7779b9",
+    "pam_systemd.so": "a30e60bcca2f8f4a5929b9b1133b1df3e14d26d0ed8b676c41d64fb891d59118"
+  },
+  "feature_delta": {
+    "HAVE_PAM": {
+      "old": "0",
+      "new": "1"
+    }
+  },
+  "artifacts": {
+    "usr/lib/systemd/libsystemd-shared-261.so": "ef71f5e3799f6f7f95394b93b9f3f556b032bccde4a4c6520fcae8f30440e05b",
+    "usr/lib/systemd/libsystemd-core-261.so": "b7f9a0ae4097b3fabad75ad645858f4722226c4a8514d86d99954dc5624cbd43",
+    "etc/pam.d/systemd-user": "902ea0260ad54b79e780ad9ab53a0a7c44d38712e791ed08028a330cc4708ee4",
+    "usr/lib/systemd/systemd": "9151bbaffe4d6857aa461c3633e289b1d0a772037b6749c6c0d3690cbc027eb0",
+    "usr/lib/systemd/systemd-executor": "3a99d8d7993ecafb0f72772013e06ec693cfd3785bb8a590eb2d3e7586ce3efb",
+    "usr/lib/security/pam_systemd.so": "a30e60bcca2f8f4a5929b9b1133b1df3e14d26d0ed8b676c41d64fb891d59118"
+  },
+  "meson_rpath_transitions": [
+    {
+      "path": "usr/lib/systemd/libsystemd-shared-261.so",
+      "compiled_sha256": "ef71f5e3799f6f7f95394b93b9f3f556b032bccde4a4c6520fcae8f30440e05b",
+      "staged_sha256": "ef71f5e3799f6f7f95394b93b9f3f556b032bccde4a4c6520fcae8f30440e05b",
+      "meson_install_rpath": ""
+    },
+    {
+      "path": "usr/lib/systemd/libsystemd-core-261.so",
+      "compiled_sha256": "129416256cf6a423e832d68cf9adfaec4199e69b4d98cc2bfafbb4871c1243e4",
+      "staged_sha256": "b7f9a0ae4097b3fabad75ad645858f4722226c4a8514d86d99954dc5624cbd43",
+      "meson_install_rpath": ""
+    },
+    {
+      "path": "usr/lib/systemd/systemd",
+      "compiled_sha256": "b9993375220af26f90c9183145bccec8db6785ff1973369ef9772fd612d30c32",
+      "staged_sha256": "9151bbaffe4d6857aa461c3633e289b1d0a772037b6749c6c0d3690cbc027eb0",
+      "meson_install_rpath": "/usr/lib/systemd"
+    },
+    {
+      "path": "usr/lib/systemd/systemd-executor",
+      "compiled_sha256": "267f320ed74a74daa9881a4e46a3d603e4e66608ffb3c9cddfece3466a8e5714",
+      "staged_sha256": "3a99d8d7993ecafb0f72772013e06ec693cfd3785bb8a590eb2d3e7586ce3efb",
+      "meson_install_rpath": "/usr/lib/systemd"
+    },
+    {
+      "path": "usr/lib/security/pam_systemd.so",
+      "compiled_sha256": "a30e60bcca2f8f4a5929b9b1133b1df3e14d26d0ed8b676c41d64fb891d59118",
+      "staged_sha256": "a30e60bcca2f8f4a5929b9b1133b1df3e14d26d0ed8b676c41d64fb891d59118",
+      "meson_install_rpath": ""
+    }
+  ],
+  "original_tests": [
+    {
+      "name": "login - systemd:test-login-tables",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "core - systemd:test-load-fragment",
+      "result": "SKIP",
+      "returncode": 77
+    },
+    {
+      "name": "core - systemd:test-unit-serialize",
+      "result": "SKIP",
+      "returncode": 77
+    },
+    {
+      "name": "login - systemd:test-login-shared",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "test - systemd:test-login-util",
+      "result": "OK",
+      "returncode": 0
+    },
+    {
+      "name": "test - systemd:test-serialize",
+      "result": "OK",
+      "returncode": 0
+    }
+  ],
+  "unqualified": "New PID1/core/executor and pam_systemd require controlled native boot, PAMName allow/deny, logind/user-session/recovery validation before acceptance",
+  "source_input": {
+    "state": "complete",
+    "source": "/mnt/lfs/sources/systemd-261.2",
+    "input": "/mnt/lfs/sources/phase2/inputs/systemd-pam-261.2",
+    "source_sha256": "ed1059ff964f5df35b6056434cc17cc83f86dc913f10489948a0b19b6081c5ec",
+    "source_manifest_sha256": "2a683ffe0cdab7349a4b2b64b932fab647baaab4e7ab5b7c64520ff3443c5667",
+    "authenticated_files": 7193,
+    "source_changes": [
+      "rules.d/50-udev-default.rules.in"
+    ],
+    "source_inode": 8930333,
+    "boot_id": "5404b36e-9a83-4952-8977-256d239d45d2",
+    "pid": 4893,
+    "underlying_input_inode": 7547189,
+    "mount_options": [
+      "ro",
+      "nosuid",
+      "nodev",
+      "relatime"
+    ],
+    "recovery": "After actual mount inspection restore only this same source inode bind as ro,nosuid,nodev. Never re-extract or edit accepted source; compiler work stays separate."
+  },
+  "scratch": {
+    "scope": "Bounded compiler scratch only, regular file in disposable builder VM; not an installation target or physical disk",
+    "image": "/var/lib/toddy/phase2-scratch/systemd-pam-1.ext4",
+    "work_mount": "/mnt/lfs/sources/phase2/work/systemd-pam-1",
+    "size_bytes": 2147483648,
+    "filesystem_uuid": "8163c489-7aab-4b0b-be6d-f36de1645e74",
+    "label": "TODDY_SYSPAM",
+    "state": "mounted",
+    "image_inode": 786446,
+    "owner_uid": 101,
+    "mount_options": "rw,nosuid,nodev,relatime",
+    "recovery": "After guest restart inspect image UUID and complete mount postcondition before remounting this same file; never reformat. Preserve contents/logs/compiled tests."
+  },
+  "native_fixture": {
+    "state": "complete",
+    "fixture": "/mnt/lfs/sources/phase2/native-fixtures/systemd-pam-1",
+    "boot_id": "5404b36e-9a83-4952-8977-256d239d45d2",
+    "pid": 8653,
+    "manifest_sha256": "cf5f8c876f582dd43c8418d2e02a272b7d14cbe5d97aaffae1f3f9bbf2e6abfe",
+    "artifact_files": 12
+  },
+  "retained_failure": "Initial source job1 exit1 after successful compiler/test dispatcher: own exact-name/allOK gate refused actual prefixed names/fourOK/two cgroup prerequisite SKIP77. Stage-only2 passed without compiler/test replay;12selected artifacts unchanged; two native original drivers and updated-runtime boot/session gates pending.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-systemd-pam-stage-evidence.tar.gz",
+    "members": 17,
+    "sha256": "5c6d533360f607813ab11251e9f01a2684f58188d23cc5314ec2ad460cda0918"
+  }
+}
