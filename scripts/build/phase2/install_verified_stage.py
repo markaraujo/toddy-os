@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'json-c': ('0.19', 'glibc (>= 2.44-1+toddy1)', 'json-c-0.19.tar.gz', 'usr/lib/pkgconfig/json-c.pc'),
     'polkit': ('127', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), linux-pam (= 1.7.2-1+toddy2), duktape (= 2.7.0-1+toddy1), systemd (>= 261.2-1+toddy3), expat (>= 2.10.0-1+toddy1), dbus (>= 1.16.2-1), shadow (>= 4.20.2-1)', 'polkit-127.tar.gz', 'usr/lib/pkgconfig/polkit-gobject-1.pc'),
     'dconf': ('0.49.0', 'glib (>= 2.88.3-1+toddy2), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3)', 'dconf-0.49.0.tar.xz', 'usr/lib/pkgconfig/dconf.pc'),
     'python-dbusmock': ('0.38.1', 'python (>= 3.14), python (<< 3.15), dbus-python (= 1.4.0-1+toddy1), pygobject (>= 3.56.3-1+toddy1)', 'python_dbusmock-0.38.1.tar.gz', 'usr/lib/python3.14/site-packages/dbusmock/__init__.py'),
@@ -207,6 +208,7 @@ if __name__ == '__main__':
     if name=='libadwaita':qualifier='libadwaita-build-2'
     if name=='gtksourceview':qualifier='gtksourceview-patched-verify-9'
     if name=='mozjs':qualifier='mozjs-signal-check-4'
+    if name=='json-c' and (log/'json-c-finish-3.exit').exists():qualifier='json-c-finish-3'
     if name=='polkit':qualifier='polkit-full-1'
     if name=='dconf':qualifier='dconf-gsettings-4'
     if name=='python-dbusmock':qualifier='python-dbusmock-2'
@@ -1116,6 +1118,9 @@ if __name__ == '__main__':
     if name=='dbus-python':
         from qualify_dbus_python import qualify as qualify_dbus_python
         qualify_dbus_python(ROOT,log)
+    if name=='json-c':
+        from qualify_json_c import qualify as qualify_json_c
+        qualify_json_c(ROOT)
     if name=='polkit':
         from qualify_polkit import qualify as qualify_polkit
         qualify_polkit(ROOT)

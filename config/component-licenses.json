@@ -10784,6 +10784,32 @@
           ]
         }
       }
+    },
+    {
+      "name": "json-c",
+      "version": "0.19",
+      "license": "MIT",
+      "evidence": "Frozen upstream COPYING and actual runtime C/header leading notices retained. Original28programs composed without replaying27approved programs; strict UTF8/depth/refusal/recovery consumer passed. Library only, no optional application installed.",
+      "extra_license_headers": {
+        "json-c-0.19.tar.gz": {
+          "prefixes": [
+            "arraylist.",
+            "debug.",
+            "json_",
+            "linkhash.",
+            "math_compat.",
+            "printbuf.",
+            "random_seed.",
+            "strdup_compat.",
+            "strerror_override.",
+            "snprintf_compat."
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

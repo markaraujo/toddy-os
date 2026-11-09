@@ -79,6 +79,12 @@ printf 'root:x:0:0:root:/root:/bin/false\ntester:x:%s:%s:builder:/build/home:/bi
 printf 'root:x:0:\ntester:x:%s:\n' "$TODDY_GID" > "$root/etc/group"
 printf 'passwd: files\ngroup: files\nhosts: files\n' > "$root/etc/nsswitch.conf"
 printf '127.0.0.1 localhost\n::1 localhost\n' > "$root/etc/hosts"
+# AccountsService's original unprivileged daemon fixture requires a machine ID.
+# Synthetic per-sandbox data only; never read/copy/change either real machine ID.
+if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/accountsservice-26.27.3 ]]; then
+    printf '%s\n' 00000000000000000000000000000001 > "$root/etc/machine-id"
+    chmod 0444 "$root/etc/machine-id"
+fi
 mount --bind "$TODDY_WORK" "$root/build"
 mkdir -p "$TODDY_WORK/stage" "$TODDY_WORK/home"
 chown "$TODDY_UID:$TODDY_GID" "$TODDY_WORK/stage" "$TODDY_WORK/home"
