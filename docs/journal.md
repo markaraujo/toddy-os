@@ -2845,3 +2845,21 @@ no user preference writes, GTK4 library rebuild or upstream replay. Actual
 compositor/window/GDM/KMS/GNOME acceptance still pending. Next fresh native
 7.1.8 disposable headless Wayland/GTK/Libadwaita validation context; never
 boot old overlays against changed parent. Complete all B02 then stop.
+
+### B02 native compositor/GTK harness preparation — 2026-11-09
+
+Compile actual GTK fixture under isolated UID101 only, source/binary hashes
+frozen, no window pass yet. Fresh cold native controller uses current parent
+identity and a new disposable overlay, native7.1.8/Systemd/12CPU12GiB/noNIC.
+Run actual mapped Wayland GTK fixture with programmatic action/focus selection/
+resize/client-render PNG captures and original67Libadwaita drivers, preserving
+69binary/89source test identities. Headless client snapshots do not establish
+GDM/KMS/full GNOME/user-input acceptance. First host-only payload check exceeded
+unchanged SMBIOS16KiB limit; environment factoring alone insufficient. Final
+correction freezes exact root-owned accepted manifest in target source fixture
+and sends a bounded hash reference. Exact commands/environments/hashes retained,
+no protocol weakening, native context/stop/boot not started during preflight.
+Ledger preserves attempt budget. Controller requires clean commit before cold
+stop, refuses reused contexts, records real reports and validates parent
+identity; no success by timeout or absent logs. Restore only same scratch
+volumes if builder resumed. Complete ALL B02 before requested pause.
