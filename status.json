@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-09T20:01:03.968216+00:00",
+  "updated_at": "2026-11-09T20:23:23.851027+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05–B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -365,7 +365,10 @@
         "docs/evidence/B02-libical-install.json",
         "docs/evidence/B02-nspr-install.json",
         "docs/evidence/B02-nss-install.json",
-        "docs/evidence/B02-libpsl-install.json"
+        "docs/evidence/B02-libpsl-install.json",
+        "docs/evidence/B02-nettle-install.json",
+        "docs/evidence/B02-libunistring-install.json",
+        "docs/evidence/B02-libidn2-install.json"
       ]
     },
     {

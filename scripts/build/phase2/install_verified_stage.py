@@ -19,6 +19,9 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libidn2': ('2.3.8', 'glibc (>= 2.44-1+toddy1), libunistring (= 1.4.2-1+toddy1)', 'libidn2-2.3.8.tar.gz', 'usr/lib/pkgconfig/libidn2.pc'),
+    'libunistring': ('1.4.2', 'glibc (>= 2.44-1+toddy1)', 'libunistring-1.4.2.tar.xz', 'usr/include/unistring/version.h'),
+    'nettle': ('4.0', 'glibc (>= 2.44-1+toddy1), gmp (= 6.3.0-1+toddy1)', 'nettle-4.0.tar.gz', 'usr/lib/pkgconfig/hogweed.pc'),
     'libpsl': ('0.23.3', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1), icu (= 78.3-1+toddy1)', 'libpsl-0.23.3.tar.gz', 'usr/lib/pkgconfig/libpsl.pc'),
     'nss': ('3.126', 'glibc (>= 2.44-1+toddy1), nspr (= 4.40-1+toddy1), sqlite (= 3.53.4-1+toddy1), zlib (= 1.3.2-1+toddy1)', 'nss-3.126.tar.gz', 'usr/lib/pkgconfig/nss.pc'),
     'nspr': ('4.40', 'glibc (>= 2.44-1+toddy1)', 'nspr-4.40.tar.gz', 'usr/lib/pkgconfig/nspr.pc'),
@@ -227,6 +230,8 @@ if __name__ == '__main__':
     if name=='gnome-keyring':qualifier='gnome-keyring-backend-4'
     if name=='libical':qualifier='libical-finish-2'
     if name=='libpsl':qualifier='libpsl-metadata-2'
+    if name=='nettle':qualifier='nettle-consumer-2'
+    if name=='libunistring':qualifier='libunistring-consumer-2'
     if name=='gcr':qualifier='gcr-finish-4'
     if name=='upower':qualifier='upower-consumer-4'
     if name=='accountsservice':qualifier='accountsservice-locale-5'
@@ -1159,6 +1164,15 @@ if __name__ == '__main__':
     if name=='libpsl':
         from qualify_libpsl import qualify as qualify_libpsl
         qualify_libpsl(ROOT)
+    if name=='nettle':
+        from qualify_nettle import qualify as qualify_nettle
+        qualify_nettle(ROOT)
+    if name=='libunistring':
+        from qualify_libunistring import qualify as qualify_libunistring
+        qualify_libunistring(ROOT)
+    if name=='libidn2':
+        from qualify_libidn2 import qualify as qualify_libidn2
+        qualify_libidn2(ROOT)
     if name=='gcr3':
         from qualify_gcr3 import qualify as qualify_gcr3
         qualify_gcr3(ROOT)

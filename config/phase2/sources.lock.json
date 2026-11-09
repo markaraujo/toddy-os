@@ -2123,6 +2123,30 @@
       "book_md5": "a97671c1839340c6b43c23ccb3237180",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "libunistring",
+      "version": "1.4.2",
+      "filename": "libunistring-1.4.2.tar.xz",
+      "url": "https://ftpmirror.gnu.org/libunistring/libunistring-1.4.2.tar.xz",
+      "sha256": "5b46e74377ed7409c5b75e7a96f95377b095623b689d8522620927964a41499c",
+      "reference": "BLFS13.1-systemd general/libunistring.html",
+      "book_page_sha256": "303bf41d3a9643093bbe2f00be7df13d2d0cdc5a04692f5e2dbe023cfc05d66c",
+      "book_md5": "e033195d90d0803063f3fecc77148124",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libidn2",
+      "version": "2.3.8",
+      "filename": "libidn2-2.3.8.tar.gz",
+      "url": "https://ftpmirror.gnu.org/libidn/libidn2-2.3.8.tar.gz",
+      "sha256": "f557911bf6171621e1f72ff35f5b1825bb35b52ed45325dcdee931e5d3c0787a",
+      "reference": "BLFS13.1-systemd general/libidn2.html",
+      "book_page_sha256": "50d2346a176d0ac8d88a2f7737367c9b0b51b9e4c6927631989ccd0f4c1fed35",
+      "book_md5": "a8e113e040d57a523684e141970eea7a",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

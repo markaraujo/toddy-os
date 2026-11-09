@@ -1,0 +1,194 @@
+{
+  "scope": "Owned IDNA/UTF8/punycode/nontransitional/refusal/recovery only; DNS/TLS/GNOME pending",
+  "source": {
+    "name": "libidn2",
+    "version": "2.3.8",
+    "filename": "libidn2-2.3.8.tar.gz",
+    "url": "https://ftpmirror.gnu.org/libidn/libidn2-2.3.8.tar.gz",
+    "sha256": "f557911bf6171621e1f72ff35f5b1825bb35b52ed45325dcdee931e5d3c0787a",
+    "reference": "BLFS13.1-systemd general/libidn2.html",
+    "book_page_sha256": "50d2346a176d0ac8d88a2f7737367c9b0b51b9e4c6927631989ccd0f4c1fed35",
+    "book_md5": "a8e113e040d57a523684e141970eea7a",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Original IDNA programs and native UTF8/punycode/nontransitional/refusal/recovery; no actual DNS/TLS/remote network/GNOME acceptance",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "tests/test-register.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "tests/test-punycode.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "tests/test-compat-punycode.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "tests/test-strerror.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "tests/test-IdnaTest-txt.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "tests/test-locale.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "tests/test-idn2.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "tests/test-version.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "tests/test-lookup.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "tests/test-tounicode.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "tests/test-IdnaTest-inc.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "tests/test-glibc.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "fuzz/libidn2_register_fuzzer.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "fuzz/libidn2_to_ascii_8z_fuzzer.trs",
+        "result": "PASS"
+      },
+      {
+        "name": "fuzz/libidn2_to_unicode_8z8z_fuzzer.trs",
+        "result": "PASS"
+      }
+    ],
+    "consumer": {
+      "UTF8_punycode_roundtrip": true,
+      "nontransitional_sharp_s": true,
+      "invalid_UTF8_and_leading_hyphen_refused": true,
+      "post_refusal_recovery": true,
+      "cycles": 2
+    },
+    "artifacts_count": 78,
+    "artifacts_manifest_sha256": "83726b5a5967a4e5e9e8798288a29691ea820f94577a3f60ed4129e3ea712ef1",
+    "stage_sha256_count": 53,
+    "stage_sha256_manifest_sha256": "a7862d4c00dad0f5589229695e76a02bf63df78087fb6d71cca7e6c666b2e03d"
+  },
+  "transaction": {
+    "step": "b02-libidn2-install",
+    "started": "2026-11-09T20:20:34.169140+00:00",
+    "recipe_sha256": "4a1ff938abb551fdb22f564f4c626e36c880fb56cf9058f48ffb3546eac10035",
+    "postcheck_sha256": "39b7bbc7528ff57f7d0b1148087289309269080bba2752f3812443b6f40382dd",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "e7246c8630306f6a88986221f940ae77acc1596890355a167539febec862bea3",
+    "recipe_pid": 190711,
+    "recipe_pgid": 190711,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T20:20:50.039100+00:00",
+    "changed_paths": 69,
+    "log_sha256": "90d002be7f220835b9d898b7382e7dd25b10fd28df262b0b96fae0817bef36ae",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "10337175ce3dd128959f2a9150684b4855fa50ccd78c0d72af3c0009c241e756"
+  },
+  "timing": {
+    "step": "b02-libidn2-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.012,
+        "entries": 152509,
+        "regular_files": 136059,
+        "regular_bytes": 7182905063
+      },
+      {
+        "seconds": 13.815,
+        "entries": 152574,
+        "regular_files": 136120,
+        "regular_bytes": 7183758919
+      }
+    ],
+    "total_seconds": 30.904
+  },
+  "installed_consumer": {
+    "scope": "Installed UTF8/punycode/nontransitional/invalid UTF8/bad-label/refusal/recovery/SDK/audit only; actual DNS/TLS/native GNOME pending",
+    "consumer": {
+      "UTF8_punycode_roundtrip": true,
+      "nontransitional_sharp_s": true,
+      "invalid_UTF8_and_leading_hyphen_refused": true,
+      "post_refusal_recovery": true,
+      "cycles": 2
+    }
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libidn2-install-evidence.tar.gz",
+    "sha256": "e1fbe5c783a27cde066ab118518926cd0b342494f9d313e3bc107dcfaeffb8c9",
+    "members": [
+      "build/b02-libidn2-install.log",
+      "build/b02-libidn2-install.manifest.json",
+      "build/b02-libidn2-install.success.json",
+      "phase2/b02-libidn2-install-controller.log",
+      "phase2/b02-libidn2-install-timing.json",
+      "phase2/libidn2-1-controller.log",
+      "phase2/libidn2-1.exit",
+      "phase2/libidn2-1.job.json",
+      "phase2/libidn2-1.log",
+      "phase2/libidn2-installed-consumer.json",
+      "phase2/libidn2-stage.json",
+      "work/compile/fuzz/libidn2_register_fuzzer.log",
+      "work/compile/fuzz/libidn2_register_fuzzer.trs",
+      "work/compile/fuzz/libidn2_to_ascii_8z_fuzzer.log",
+      "work/compile/fuzz/libidn2_to_ascii_8z_fuzzer.trs",
+      "work/compile/fuzz/libidn2_to_unicode_8z8z_fuzzer.log",
+      "work/compile/fuzz/libidn2_to_unicode_8z8z_fuzzer.trs",
+      "work/compile/tests/test-IdnaTest-inc.log",
+      "work/compile/tests/test-IdnaTest-inc.trs",
+      "work/compile/tests/test-IdnaTest-txt.log",
+      "work/compile/tests/test-IdnaTest-txt.trs",
+      "work/compile/tests/test-compat-punycode.log",
+      "work/compile/tests/test-compat-punycode.trs",
+      "work/compile/tests/test-glibc.log",
+      "work/compile/tests/test-glibc.trs",
+      "work/compile/tests/test-idn2.log",
+      "work/compile/tests/test-idn2.trs",
+      "work/compile/tests/test-locale.log",
+      "work/compile/tests/test-locale.trs",
+      "work/compile/tests/test-lookup.log",
+      "work/compile/tests/test-lookup.trs",
+      "work/compile/tests/test-punycode.log",
+      "work/compile/tests/test-punycode.trs",
+      "work/compile/tests/test-register.log",
+      "work/compile/tests/test-register.trs",
+      "work/compile/tests/test-strerror.log",
+      "work/compile/tests/test-strerror.trs",
+      "work/compile/tests/test-tounicode.log",
+      "work/compile/tests/test-tounicode.trs",
+      "work/compile/tests/test-version.log",
+      "work/compile/tests/test-version.trs",
+      "work/native-consumer.json",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}

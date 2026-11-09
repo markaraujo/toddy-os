@@ -1,0 +1,605 @@
+{
+  "scope": "Owned Nettle/Hogweed122original crypto passes/one optional IBT skip and installed SHA256/P256/refusal/recovery; no GnuTLS/TLS/GNOME acceptance",
+  "source": {
+    "name": "nettle",
+    "version": "4.0",
+    "filename": "nettle-4.0.tar.gz",
+    "url": "https://ftpmirror.gnu.org/nettle/nettle-4.0.tar.gz",
+    "sha256": "3addbc00da01846b232fb3bc453538ea5468da43033f21bb345cb1e9073f5094",
+    "reference": "BLFS13.1-systemd postlfs/nettle.html",
+    "book_page_sha256": "b8208389c45e200d0a4e1c373bfebc6d018e3adbcfbb7e7bbb981a561f70a5b0",
+    "book_md5": "144401453f9f35e53938bcacfc59800e",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "122original crypto program passes and1upstream CET/IBT skip; own fixed Nettle4 two-argument digest API consumer, not TLS/GnuTLS/remote network acceptance",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "aes",
+        "result": "PASS"
+      },
+      {
+        "name": "aes-keywrap",
+        "result": "PASS"
+      },
+      {
+        "name": "arcfour",
+        "result": "PASS"
+      },
+      {
+        "name": "arctwo",
+        "result": "PASS"
+      },
+      {
+        "name": "balloon",
+        "result": "PASS"
+      },
+      {
+        "name": "blowfish",
+        "result": "PASS"
+      },
+      {
+        "name": "bcrypt",
+        "result": "PASS"
+      },
+      {
+        "name": "cast128",
+        "result": "PASS"
+      },
+      {
+        "name": "base16",
+        "result": "PASS"
+      },
+      {
+        "name": "base64",
+        "result": "PASS"
+      },
+      {
+        "name": "camellia",
+        "result": "PASS"
+      },
+      {
+        "name": "chacha",
+        "result": "PASS"
+      },
+      {
+        "name": "cnd-memcpy",
+        "result": "PASS"
+      },
+      {
+        "name": "des",
+        "result": "PASS"
+      },
+      {
+        "name": "des3",
+        "result": "PASS"
+      },
+      {
+        "name": "md2",
+        "result": "PASS"
+      },
+      {
+        "name": "md4",
+        "result": "PASS"
+      },
+      {
+        "name": "md5",
+        "result": "PASS"
+      },
+      {
+        "name": "memeql",
+        "result": "PASS"
+      },
+      {
+        "name": "memxor",
+        "result": "PASS"
+      },
+      {
+        "name": "gosthash94",
+        "result": "PASS"
+      },
+      {
+        "name": "ripemd160",
+        "result": "PASS"
+      },
+      {
+        "name": "hkdf",
+        "result": "PASS"
+      },
+      {
+        "name": "salsa20",
+        "result": "PASS"
+      },
+      {
+        "name": "sha1",
+        "result": "PASS"
+      },
+      {
+        "name": "sha224",
+        "result": "PASS"
+      },
+      {
+        "name": "sha256",
+        "result": "PASS"
+      },
+      {
+        "name": "sha384",
+        "result": "PASS"
+      },
+      {
+        "name": "sha512",
+        "result": "PASS"
+      },
+      {
+        "name": "sha512-224",
+        "result": "PASS"
+      },
+      {
+        "name": "sha512-256",
+        "result": "PASS"
+      },
+      {
+        "name": "sha3-permute",
+        "result": "PASS"
+      },
+      {
+        "name": "sha3-224",
+        "result": "PASS"
+      },
+      {
+        "name": "sha3-256",
+        "result": "PASS"
+      },
+      {
+        "name": "sha3-384",
+        "result": "PASS"
+      },
+      {
+        "name": "sha3-512",
+        "result": "PASS"
+      },
+      {
+        "name": "shake128",
+        "result": "PASS"
+      },
+      {
+        "name": "shake256",
+        "result": "PASS"
+      },
+      {
+        "name": "streebog",
+        "result": "PASS"
+      },
+      {
+        "name": "sm3",
+        "result": "PASS"
+      },
+      {
+        "name": "sm4",
+        "result": "PASS"
+      },
+      {
+        "name": "serpent",
+        "result": "PASS"
+      },
+      {
+        "name": "twofish",
+        "result": "PASS"
+      },
+      {
+        "name": "version",
+        "result": "PASS"
+      },
+      {
+        "name": "knuth-lfib",
+        "result": "PASS"
+      },
+      {
+        "name": "cbc",
+        "result": "PASS"
+      },
+      {
+        "name": "cfb",
+        "result": "PASS"
+      },
+      {
+        "name": "ctr",
+        "result": "PASS"
+      },
+      {
+        "name": "gcm",
+        "result": "PASS"
+      },
+      {
+        "name": "eax",
+        "result": "PASS"
+      },
+      {
+        "name": "ccm",
+        "result": "PASS"
+      },
+      {
+        "name": "cmac",
+        "result": "PASS"
+      },
+      {
+        "name": "ocb",
+        "result": "PASS"
+      },
+      {
+        "name": "siv-cmac",
+        "result": "PASS"
+      },
+      {
+        "name": "siv-gcm",
+        "result": "PASS"
+      },
+      {
+        "name": "poly1305",
+        "result": "PASS"
+      },
+      {
+        "name": "chacha-poly1305",
+        "result": "PASS"
+      },
+      {
+        "name": "hmac",
+        "result": "PASS"
+      },
+      {
+        "name": "umac",
+        "result": "PASS"
+      },
+      {
+        "name": "meta-hash",
+        "result": "PASS"
+      },
+      {
+        "name": "meta-cipher",
+        "result": "PASS"
+      },
+      {
+        "name": "meta-aead",
+        "result": "PASS"
+      },
+      {
+        "name": "meta-mac",
+        "result": "PASS"
+      },
+      {
+        "name": "buffer",
+        "result": "PASS"
+      },
+      {
+        "name": "yarrow",
+        "result": "PASS"
+      },
+      {
+        "name": "xts",
+        "result": "PASS"
+      },
+      {
+        "name": "pbkdf2",
+        "result": "PASS"
+      },
+      {
+        "name": "x86-ibt",
+        "result": "SKIP"
+      },
+      {
+        "name": "drbg-ctr-aes256",
+        "result": "PASS"
+      },
+      {
+        "name": "slh-dsa",
+        "result": "PASS"
+      },
+      {
+        "name": "sexp",
+        "result": "PASS"
+      },
+      {
+        "name": "sexp-format",
+        "result": "PASS"
+      },
+      {
+        "name": "rsa2sexp",
+        "result": "PASS"
+      },
+      {
+        "name": "sexp2rsa",
+        "result": "PASS"
+      },
+      {
+        "name": "bignum",
+        "result": "PASS"
+      },
+      {
+        "name": "random-prime",
+        "result": "PASS"
+      },
+      {
+        "name": "pkcs1",
+        "result": "PASS"
+      },
+      {
+        "name": "pkcs1-sec-decrypt",
+        "result": "PASS"
+      },
+      {
+        "name": "pss",
+        "result": "PASS"
+      },
+      {
+        "name": "rsa-sign-tr",
+        "result": "PASS"
+      },
+      {
+        "name": "pss-mgf1",
+        "result": "PASS"
+      },
+      {
+        "name": "rsa-pss-sign-tr",
+        "result": "PASS"
+      },
+      {
+        "name": "rsa",
+        "result": "PASS"
+      },
+      {
+        "name": "rsa-encrypt",
+        "result": "PASS"
+      },
+      {
+        "name": "rsa-keygen",
+        "result": "PASS"
+      },
+      {
+        "name": "rsa-oaep-encrypt",
+        "result": "PASS"
+      },
+      {
+        "name": "rsa-sec-decrypt",
+        "result": "PASS"
+      },
+      {
+        "name": "rsa-compute-root",
+        "result": "PASS"
+      },
+      {
+        "name": "dsa",
+        "result": "PASS"
+      },
+      {
+        "name": "dsa-keygen",
+        "result": "PASS"
+      },
+      {
+        "name": "curve25519-dh",
+        "result": "PASS"
+      },
+      {
+        "name": "curve448-dh",
+        "result": "PASS"
+      },
+      {
+        "name": "ecc-mod-arith",
+        "result": "PASS"
+      },
+      {
+        "name": "ecc-mod",
+        "result": "PASS"
+      },
+      {
+        "name": "ecc-modinv",
+        "result": "PASS"
+      },
+      {
+        "name": "ecc-redc",
+        "result": "PASS"
+      },
+      {
+        "name": "ecc-sqrt",
+        "result": "PASS"
+      },
+      {
+        "name": "ecc-dup",
+        "result": "PASS"
+      },
+      {
+        "name": "ecc-add",
+        "result": "PASS"
+      },
+      {
+        "name": "ecc-mul-g",
+        "result": "PASS"
+      },
+      {
+        "name": "ecc-mul-a",
+        "result": "PASS"
+      },
+      {
+        "name": "ecdsa-sign",
+        "result": "PASS"
+      },
+      {
+        "name": "ecdsa-verify",
+        "result": "PASS"
+      },
+      {
+        "name": "ecdsa-keygen",
+        "result": "PASS"
+      },
+      {
+        "name": "ecdh",
+        "result": "PASS"
+      },
+      {
+        "name": "eddsa-compress",
+        "result": "PASS"
+      },
+      {
+        "name": "eddsa-sign",
+        "result": "PASS"
+      },
+      {
+        "name": "eddsa-verify",
+        "result": "PASS"
+      },
+      {
+        "name": "ed25519",
+        "result": "PASS"
+      },
+      {
+        "name": "ed448",
+        "result": "PASS"
+      },
+      {
+        "name": "gostdsa-sign",
+        "result": "PASS"
+      },
+      {
+        "name": "gostdsa-verify",
+        "result": "PASS"
+      },
+      {
+        "name": "gostdsa-keygen",
+        "result": "PASS"
+      },
+      {
+        "name": "gostdsa-vko",
+        "result": "PASS"
+      },
+      {
+        "name": "cxx",
+        "result": "PASS"
+      },
+      {
+        "name": "symbols",
+        "result": "PASS"
+      },
+      {
+        "name": "dlopen",
+        "result": "PASS"
+      },
+      {
+        "name": "sexp-conv",
+        "result": "PASS"
+      },
+      {
+        "name": "pkcs1-conv",
+        "result": "PASS"
+      },
+      {
+        "name": "nettle-pbkdf2",
+        "result": "PASS"
+      },
+      {
+        "name": "rsa-sign",
+        "result": "PASS"
+      },
+      {
+        "name": "rsa-verify",
+        "result": "PASS"
+      },
+      {
+        "name": "rsa-encrypt",
+        "result": "PASS"
+      }
+    ],
+    "consumer": {
+      "SHA256_known_answer": true,
+      "Hogweed_P256_generator_known_answer": true,
+      "zero_scalar_and_off_curve_point_refused": true,
+      "post_refusal_recovery": true,
+      "lifecycle_cycles": 2
+    },
+    "consumer_source_sha256": "9bd55892106b89f9d1db59a9b0907ea7f9855cc9ff101550f3895607bfd8e8f4",
+    "consumer_binary_sha256": "0fbe6df3e2fb894886fa5ba8e7a64985438accbe501d5dcb89b575f4b6f9b68d",
+    "original_ELFs_unchanged": true,
+    "stage_unchanged": true,
+    "artifacts_count": 691,
+    "artifacts_manifest_sha256": "6f517656bc907a0fe338112cbb771adbbf7de07a2698324256198184d9376a0a",
+    "stage_sha256_count": 81,
+    "stage_sha256_manifest_sha256": "3a107c1f4eb351a4a53f1612507324e078c8482b2da23bcc3393ac1342a4f8ea"
+  },
+  "transaction": {
+    "step": "b02-nettle-install",
+    "started": "2026-11-09T20:04:35.270114+00:00",
+    "recipe_sha256": "27a5825f62fbe9618a23eebc824f57b5e7f7c39ea450bd4628348566ad7966ed",
+    "postcheck_sha256": "8e9d52a779f6ec69335d4188eed8f6d61947ecfb54fbeceb6f3e958901466755",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "de100c902644edf7421b551c27697b883745f4295bf5dc9839754667e0b6be22",
+    "recipe_pid": 67002,
+    "recipe_pgid": 67002,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T20:04:51.599385+00:00",
+    "changed_paths": 99,
+    "log_sha256": "991207700a4ee9648c7bb8e9cfb7dfd7b0a478b720e1e66b4293ce1efb79814e",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "4ecf7fda1e48e6e3f2d6af711024364fbcb8195e10bac2757e52d6da658c1dbb"
+  },
+  "timing": {
+    "step": "b02-nettle-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.673,
+        "entries": 152353,
+        "regular_files": 135915,
+        "regular_bytes": 7174025920
+      },
+      {
+        "seconds": 13.815,
+        "entries": 152448,
+        "regular_files": 136003,
+        "regular_bytes": 7177900259
+      }
+    ],
+    "total_seconds": 32.021
+  },
+  "installed_consumer": {
+    "scope": "Installed actual SHA256/Hogweed P256/zero-scalar/off-curve refusal/recovery/SDK/audit only; original x86-ibt unavailable, TLS/GnuTLS/network/native GNOME pending",
+    "consumer": {
+      "SHA256_known_answer": true,
+      "Hogweed_P256_generator_known_answer": true,
+      "zero_scalar_and_off_curve_point_refused": true,
+      "post_refusal_recovery": true,
+      "lifecycle_cycles": 2
+    }
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-nettle-install-evidence.tar.gz",
+    "sha256": "b9fe73d1cce02d66c9957c01252b968dfb0f3605a52205dd6e019b4d94f4f24e",
+    "members": [
+      "build/b02-nettle-install.log",
+      "build/b02-nettle-install.manifest.json",
+      "build/b02-nettle-install.success.json",
+      "phase2/b02-nettle-install-controller.log",
+      "phase2/b02-nettle-install-timing.json",
+      "phase2/nettle-1-controller.log",
+      "phase2/nettle-1.exit",
+      "phase2/nettle-1.job.json",
+      "phase2/nettle-1.log",
+      "phase2/nettle-consumer-2-controller.log",
+      "phase2/nettle-consumer-2.exit",
+      "phase2/nettle-consumer-2.job.json",
+      "phase2/nettle-consumer-2.log",
+      "phase2/nettle-installed-consumer.json",
+      "phase2/nettle-stage.json",
+      "work/native-consumer-2.json",
+      "work/native-consumer-2.stderr",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}
