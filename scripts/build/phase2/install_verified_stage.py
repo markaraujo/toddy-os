@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libpsl': ('0.23.3', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1), icu (= 78.3-1+toddy1)', 'libpsl-0.23.3.tar.gz', 'usr/lib/pkgconfig/libpsl.pc'),
+    'nss': ('3.126', 'glibc (>= 2.44-1+toddy1), nspr (= 4.40-1+toddy1), sqlite (= 3.53.4-1+toddy1), zlib (= 1.3.2-1+toddy1)', 'nss-3.126.tar.gz', 'usr/lib/pkgconfig/nss.pc'),
     'nspr': ('4.40', 'glibc (>= 2.44-1+toddy1)', 'nspr-4.40.tar.gz', 'usr/lib/pkgconfig/nspr.pc'),
     'libical': ('4.0.5', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1), glib (>= 2.88.3-1+toddy2), icu (= 78.3-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'libical-4.0.5.tar.gz', 'usr/lib/pkgconfig/libical-glib.pc'),
     'gnome-keyring': ('50.0', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gcr3 (= 3.41.2-1+toddy1), libgcrypt (>= 1.12.4-1), p11-kit (= 0.26.5-1+toddy1), linux-pam (= 1.7.2-1+toddy2), libsecret (= 0.21.7-1+toddy1)', 'gnome-keyring-50.0.tar.xz', 'usr/bin/gnome-keyring-daemon'),
@@ -224,6 +226,7 @@ if __name__ == '__main__':
     if name=='gcr3':qualifier='gcr3-patched-2'
     if name=='gnome-keyring':qualifier='gnome-keyring-backend-4'
     if name=='libical':qualifier='libical-finish-2'
+    if name=='libpsl':qualifier='libpsl-metadata-2'
     if name=='gcr':qualifier='gcr-finish-4'
     if name=='upower':qualifier='upower-consumer-4'
     if name=='accountsservice':qualifier='accountsservice-locale-5'
@@ -1150,6 +1153,12 @@ if __name__ == '__main__':
     if name=='nspr':
         from qualify_nspr import qualify as qualify_nspr
         qualify_nspr(ROOT)
+    if name=='nss':
+        from qualify_nss import qualify as qualify_nss
+        qualify_nss(ROOT)
+    if name=='libpsl':
+        from qualify_libpsl import qualify as qualify_libpsl
+        qualify_libpsl(ROOT)
     if name=='gcr3':
         from qualify_gcr3 import qualify as qualify_gcr3
         qualify_gcr3(ROOT)
@@ -1236,6 +1245,20 @@ if __name__ == '__main__':
         shutil.copytree(source, destination, symlinks=True)
         assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
+    if name=='nss':
+        # Original test modules stay in immutable qualification evidence only.
+        # The book's glob also matches them after gtests are enabled.
+        removed={}
+        for filename in ['libpkcs11testmodule.so','libnssckbi-testlib.so']:
+            path=destination/'usr/lib'/filename;assert path.is_file() and not path.is_symlink()
+            removed['usr/lib/'+filename]=hashlib.sha256(path.read_bytes()).hexdigest();path.unlink()
+        doc=destination/'usr/share/doc/nss';(doc/'patches').mkdir(parents=True)
+        patch=json.loads((ROOT/'config/phase2/nss-patches.lock.json').read_text())
+        shutil.copy2(ROOT/patch['patch_file'],doc/'patches'/Path(patch['patch_file']).name)
+        shutil.copy2('/mnt/lfs/sources/nss-standalone-1.patch',doc/'patches/nss-standalone-1.patch')
+        (doc/'source-patch.json').write_text(json.dumps(patch,indent=2)+'\n')
+        (doc/'README.Toddy').write_text('Frozen NSS3.126/shared dynamic SDK and certutil/nss-config/pk12util. Required book standalone patch only updates final manifest context for this source; same five build/install changes, no runtime code patch. Five selected original crypto/DER/API programs2271passes/three upstream disabled cases, not full potentially hanging network suite. Actual SHA256/random/AES-GCM/tamper/refusal/recovery qualified. Two test modules excluded after immutable stage validation; private test databases are never shipped. Upstream bundled roots retained until separately qualified p11-kit/make-ca integration; TLS/trust-store/native GNOME remain separate gates.\n')
+        (log/'nss-production-selection.json').write_text(json.dumps({'excluded_test_modules':removed,'unchanged_qualification_stage':True,'root_provider':'Upstream bundled roots; qualified p11-kit/make-ca integration pending'},indent=2)+'\n')
     if name=='polkit':
         acceptance=json.loads((log/'polkit-standard-native-acceptance-1.json').read_text())
         import os
@@ -1290,6 +1313,7 @@ if __name__ == '__main__':
         doc=destination/'usr/share/doc/gnome-keyring';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('Frozen50.0 production debug-mode=false: test-only service/login/prompter hooks disabled.57original production programs and five original private debug-only fixture programs qualified separately; fixture daemon never shipped. Actual production Secret Service store/read/lock/wrong-master/Stop/restart persistence qualified with ephemeral synthetic data. PAM module loads, but no PAM login policy is enabled by this package. Actual native PAM/GNOME/graphical and shared schema integration remain separate gates. Optional SSH agent/libcap-ng/SELinux omitted via supported options. Book schema path correction preserved in source preparation receipt.\n')
     archives=[archive]
+    if name=='nss':archives.append('nss-standalone-1.patch')
     if name=='dconf':archives.append('gvdb-4758f6fb7f889e074e13df3f914328f3eecb1fd3.tar.gz')
     if name=='mozjs':archives.append('spidermonkey-140.14.0-python_3.14_fixes-1.patch')
     if name=='gtksourceview':archives.append('gtksourceview-5.20.0-duplicate-capture-1.patch')

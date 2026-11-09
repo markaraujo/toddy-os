@@ -1,0 +1,221 @@
+{
+  "scope": "Owned NSS3.126/shared crypto and SQL certificate DB/refusal only; full suite/TLS/trust-provider/remote network/GNOME pending",
+  "source": {
+    "name": "nss",
+    "version": "3.126",
+    "filename": "nss-3.126.tar.gz",
+    "url": "https://archive.mozilla.org/pub/security/nss/releases/NSS_3_126_RTM/src/nss-3.126.tar.gz",
+    "sha256": "7aa07c758be1453d82d739240b249ffb7aef0041be488067e1c0f348e1f9e337",
+    "reference": "BLFS13.1-systemd postlfs/nss.html",
+    "book_page_sha256": "c3f1b41079594657a8486d4321910b26e620f0098d81a733dd5d1fe253a03401",
+    "book_md5": "0ca322cec564a53ac5a59ce130d96f46",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Five bounded original crypto/DER/container/API drivers and native SHA256/random/AES-GCM/tamper/refusal/recovery; full suite/PK11 database/TLS/trust-store/remote network/GNOME pending",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "base_gtest",
+        "exit": 0,
+        "passed": 1,
+        "skipped": [],
+        "failures": []
+      },
+      {
+        "name": "der_gtest",
+        "exit": 0,
+        "passed": 22,
+        "skipped": [],
+        "failures": []
+      },
+      {
+        "name": "cryptohi_gtest",
+        "exit": 0,
+        "passed": 165,
+        "skipped": [],
+        "failures": []
+      },
+      {
+        "name": "freebl_gtest",
+        "exit": 0,
+        "passed": 38,
+        "skipped": [],
+        "failures": []
+      },
+      {
+        "name": "util_gtest",
+        "exit": 0,
+        "passed": 2045,
+        "skipped": [
+          "B64EncodeDecodeTest.DISABLED_LongFakeDecTest1",
+          "B64EncodeDecodeTest.DISABLED_LongFakeEncDecTest1",
+          "B64EncodeDecodeTest.DISABLED_LongFakeEncDecTest2"
+        ],
+        "failures": []
+      }
+    ],
+    "consumer": {
+      "SHA256_known_answer": true,
+      "native_random_bytes": true,
+      "AES_GCM_roundtrip": true,
+      "tampered_tag_refused": true,
+      "post_refusal_recovery": true,
+      "init_shutdown_cycles": 2,
+      "real_credentials_used": false
+    },
+    "root_provider": "Upstream bundled roots retained; qualified p11-kit/make-ca integration pending",
+    "artifacts_count": 745,
+    "artifacts_manifest_sha256": "314a4c007d85706063e95db7339a4a8bd2f22fe37e15d60d306c782add83bd11",
+    "stage_sha256_count": 271,
+    "stage_sha256_manifest_sha256": "b95f314d66fae42f356f40a6c0eeb1cb87d4ae495a082db9a0d6e4b948e2a35b"
+  },
+  "transaction": {
+    "step": "b02-nss-install",
+    "started": "2026-11-09T19:51:57.396303+00:00",
+    "recipe_sha256": "10f88bed1447e53d3c0a0d446bbf3b8aace24a13f25e33bc1e2f2ad0a5709a09",
+    "postcheck_sha256": "9d334dd0d566ad347c27ce67388076b4e9109afaccb4c4f9999feda9a9dda2cd",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "046638e3cb52dcd5c9b50fe122646b66e786742615e5e10161be0355cc26211b",
+    "recipe_pid": 59005,
+    "recipe_pgid": 59005,
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "finished": "2026-11-09T19:52:16.557029+00:00",
+    "changed_paths": 292,
+    "log_sha256": "1e46150e499d313e7f55afe6d5a523be16c05dd988c159cc18129898d3f524d9",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "27e021d0346e719ffacc38ccf935316a2d7092fc1ba4502732c20a6e5a29b0d3"
+  },
+  "timing": {
+    "step": "b02-nss-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.328,
+        "entries": 152046,
+        "regular_files": 135616,
+        "regular_bytes": 7166062710
+      },
+      {
+        "seconds": 13.755,
+        "entries": 152335,
+        "regular_files": 135901,
+        "regular_bytes": 7173863773
+      }
+    ],
+    "total_seconds": 34.481
+  },
+  "installed_consumer": {
+    "scope": "Installed SHA256/random/AES-GCM/tamper/refusal/recovery/SQL DB invalid-cert refusal/SDK/audit; TLS/trust-store/remote network/GNOME pending",
+    "consumer": {
+      "SHA256_known_answer": true,
+      "native_random_bytes": true,
+      "AES_GCM_roundtrip": true,
+      "tampered_tag_refused": true,
+      "post_refusal_recovery": true,
+      "init_shutdown_cycles": 2,
+      "real_credentials_used": false
+    },
+    "private_SQL_database_created": true,
+    "malformed_DER_certificate_refused": true,
+    "certificate_listing_preserved_after_refusal": true,
+    "temporary_SQL_data_removed": true,
+    "test_modules_not_shipped": true,
+    "root_provider": "Upstream bundled roots; qualified p11-kit/make-ca switch pending"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-nss-install-evidence.tar.gz",
+    "sha256": "634f4ac02dad7be5e934bfedfdb81d8354a7e13bf65869d54a1f823e4f3efbce",
+    "members": [
+      "build/b02-nss-install.failed.json",
+      "build/b02-nss-install.log",
+      "build/b02-nss-install.manifest.json",
+      "build/b02-nss-verify-2.log",
+      "build/b02-nss-verify-2.manifest.json",
+      "build/b02-nss-verify-2.success.json",
+      "phase2/b02-nss-install-controller.log",
+      "phase2/b02-nss-install-timing.json",
+      "phase2/nss-1-controller.log",
+      "phase2/nss-1.exit",
+      "phase2/nss-1.job.json",
+      "phase2/nss-1.log",
+      "phase2/nss-input-reconcile-1.json",
+      "phase2/nss-installed-consumer.json",
+      "phase2/nss-payload-verify-2.json",
+      "phase2/nss-production-selection.json",
+      "phase2/nss-stage.json",
+      "work/base_gtest.log",
+      "work/base_gtest.xml",
+      "work/cryptohi_gtest.log",
+      "work/cryptohi_gtest.xml",
+      "work/der_gtest.log",
+      "work/der_gtest.xml",
+      "work/freebl_gtest.log",
+      "work/freebl_gtest.xml",
+      "work/native-consumer.json",
+      "work/original-results.json",
+      "work/stage-results.json",
+      "work/util_gtest.log",
+      "work/util_gtest.xml"
+    ]
+  },
+  "verify_only_transaction": {
+    "step": "b02-nss-verify-2",
+    "started": "2026-11-09T19:53:44.941226+00:00",
+    "recipe_sha256": "58ae4240f0c42140c70de7094abfa49a5031c21517b8fa6a968f5f62137078da",
+    "postcheck_sha256": "2dae1b4bbddc28bab2af49f98d11e5b9cdd397ea55837b85c3d0a7fe29ee0e8e",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "046638e3cb52dcd5c9b50fe122646b66e786742615e5e10161be0355cc26211b",
+    "recipe_pid": 59418,
+    "recipe_pgid": 59418,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T19:54:00.158530+00:00",
+    "changed_paths": 0,
+    "log_sha256": "79a16aa05c67744c66ef8c1a4e9b117a0fc33a0d59ff0ffd8082020d056d6260",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "c16a3e1db6b0e860eacb00b860126e7d40dc54c0f34cbc774c0ca822aedb110b"
+  },
+  "payload_verification": {
+    "payload_entries_unchanged": 294,
+    "archive_unchanged": true,
+    "reinstalled": false,
+    "original_failed_postcondition": "Bare packaging chroot has no entropy device; source RNG requires /dev/urandom; private mount namespace supplies only four standard char devices"
+  },
+  "production_selection": {
+    "excluded_test_modules": {
+      "usr/lib/libpkcs11testmodule.so": "4ff17c9894055d1614a146df788bfa5808ed970d462e84c03116973a44bdfc3a",
+      "usr/lib/libnssckbi-testlib.so": "6114e62b8cdd0495b4dbd1f1fa9fd4f7d08e6110e652348efbd73abf28886e27"
+    },
+    "unchanged_qualification_stage": true,
+    "root_provider": "Upstream bundled roots; qualified p11-kit/make-ca integration pending"
+  },
+  "source_patch": {
+    "source_sha256": "7aa07c758be1453d82d739240b249ffb7aef0041be488067e1c0f348e1f9e337",
+    "official_patch_sha256": "87bb1af0b11fd41311b9899187f6e4b3fca9940651123c7bc836ec7497d2da84",
+    "patch_file": "scripts/build/phase2/patches/nss-3.126-standalone-1.patch",
+    "patch_sha256": "8e16990e91fb99433d821f9d0ef106d4355455f1f3fa6fb2e7f518aec065b74b",
+    "scope": "Same five build/install-only file changes as official frozen patch; update only last hunk context to adjacent upstream HAVE_ALL_TARGET, no new runtime change or fuzzy application",
+    "expected_changed_files": {
+      "nss/manifest.mn": "d1160cc0ab638d5dff6f64f20f53c1f66f99ad7f82dcf955a52dca3d37a94ae5",
+      "nss/Makefile": "0a5949167f58ce8960f420d773d3b169a8042984da1a57f320fae7639f5eaff8",
+      "nss/config/nss-config.in": "67cc0d3a34540015a47b34b4c9bb335ff2979272b78a450b2f61d2903143b923",
+      "nss/config/nss.pc.in": "7f798435a220e4ea506336c943e0298123ed7b5eedc3e2aa1722da42e0c78e22",
+      "nss/config/Makefile": "cc0bd17389cf9f73621564511487556e9ad58a12c49ea1baa124fa0be4290797"
+    },
+    "original_manifest_sha256": "46091f67fb9649874ca10aac6e4c4a17c90c1bb68608d958f64ab957639a5b52"
+  }
+}

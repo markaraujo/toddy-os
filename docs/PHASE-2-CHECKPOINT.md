@@ -211,11 +211,66 @@ Initial install0/post1 was own SDK string assertion: actual upstream.pc4.40.0,
 package4.40. Verify-only2 recipe/post0/0, payload/archive unchanged; sole generated
 APT cache root change. [Proof](evidence/B02-nspr-install.json). No NSS/TLS proof.
 
-Current writer: none. Exact next: implement isolated frozen NSS3.126 with book's
-standalone patch and owned NSPR; source and official patch cached/frozen but NO
-guest input/build yet. Inspect source preparation/job actual state before launch.
-Source7aa07c758be1453d82d739240b249ffb7aef0041be488067e1c0f348e1f9e337,
-patch87bb1af0b11fd41311b9899187f6e4b3fca9940651123c7bc836ec7497d2da84.
+NSS3.126 `nss-1` exited0: five selected original programs2271passes plus three
+upstream disabled cases,745ELFs retained,271stage regular files. Actual native
+SHA256/random/AES-GCM/tamper/refusal/recovery two cycles0. Production promotion
+excludes ONLY two test modules from a separately verified copy; immutable stage
+and test evidence retained. Bundled roots retained pending qualified provider.
+NSS3.126-1+toddy1 OWNED/294payload entries. Initial install0/post1 was bare
+packaging chroot missing entropy device; source-backed private mount namespace
+supplies only four standard character devices. Verify-only2 recipe/post0/0,
+payload/archive unchanged, ZERO root changes. Installed crypto/SQL database/
+invalid-certificate refusal/unchanged listing/cleanup/SDK/APT0. No test module
+shipped. [Proof](evidence/B02-nss-install.json), ADR0162. NEVER reinstall/rebuild/
+repeat approved originals/consumer/verification unchanged. TLS/default trust/
+remote network/native GNOME remain separate gates.
+
+libpsl0.23.3-1+toddy1 OWNED/install/post0/0 changed21paths. Eight originals passed
+(five suffix/cookie/domain plus three finite corpus programs, no fuzz campaign),
+32ELFs retained. Own expected-five count gate corrected metadata-only2; no build/
+test/stage/consumer replay. Installed actual ICU UTF8/builtin/private runtime list/
+wildcard/exception/cookie refusal/invalid-converter/recovery/SDK/APT0.
+[Proof](evidence/B02-libpsl-install.json). Reuse owned ICU78.3 backend, no new IDNA
+runtime or changed foundation. Actual HTTP/TLS/browser/GNOME still pending.
+
+Nettle4.0 first job compiled/staged successfully; original full make check
+122PASS/one optional upstream x86-ibt SKIP. Own C consumer compilation then failed
+because Nettle4 removed the digest-length argument. No original crypto failure,
+no package installed. Current writer `nettle-consumer-2`, guestPID66590 (verify
+actual boot/start/job), logs`/var/log/toddy/phase2/nettle-consumer-2.*`, same input
+`/mnt/lfs/sources/phase2/inputs/nettle-4.0`, work`.../work/nettle-1`.
+One source-backed correction changes only own SHA256 call to two-argument v4 API;
+new consumer/metadata, original binaries/stage/tests reused and hash-verified.
+Exact next: inspect actual job exit/stage-results, qualify/promote only after
+real success. NO compiler/library/test/stage replay. No GnuTLS/TLS proof.
+Frozen book sourceSHA3addbc00da01846b232fb3bc453538ea5468da43033f21bb345cb1e9073f5094.
+GnuTLS3.8.13 source frozen/cached only, NO guest preparation/build yet;
+SHAffed8ec1bf09c2426d4f14aae377de4753b53e537d685e604e99a8b16ca9c97e.
+Then GnuTLS/glib-networking/libsoup/EDS and native GNOME/login/apps acceptance.
+
+Original official standalone patch applied four files but rejected only final
+manifest context changed in3.126 by HAVE_ALL_TARGET/prepare_build. Source4845
+original regular files plus exactly four patched files and two known patch-tool
+sideeffects verified against archive before finishing only manifest DIRS append.
+Receipt `/var/log/toddy/phase2/nss-input-reconcile-1.json` COMPLETE. NEVER repeat
+preparation, original/derived whole patch or reconciliation on this input.
+Derived patch in nss-patches.lock.json changes ONLY final hunk context, same five
+build/install changes, no runtime code/new feature/fuzzy application. SourceSHA
+7aa07c758be1453d82d739240b249ffb7aef0041be488067e1c0f348e1f9e337,
+patch8e16990e91fb99433d821f9d0ef106d4355455f1f3fa6fb2e7f518aec065b74b.
+Book/source release notes record parameter/DER/overflow hardening; no blanket
+security audit or actual TLS/trust-store acceptance. Bundled roots remain until
+qualified p11-kit/make-ca integration; do not silently substitute providers.
+
+Frozen/cached EDS3.60.2 and libsoup3.6.6, NO guest preparation/build yet. Actual
+EDS CMake requires libsoup3 unconditionally; no calendar-disable shortcut. Owned
+nghttp2 is1.71.0 (accepted security overlay), preserve it instead of book1.70.0.
+Next prerequisites include libpsl/GnuTLS/networking/trust integration; selected
+versions/source graph remain authoritative, no broad replanning or foundation
+rebuild. Native Keyring/PAM/GNOME/login/apps and shared caches still pending.
+
+Last push0b9e45db628191d7ceaaf8a12ff25e0f596341e5, all3CI success:
+safety42686019088/planning42686019746/Pages42686019104; public HTTP200/exact
+indexSHA471ba6bbb531038d0012a73819ec0db6ddd5323832319195f8c2ff505df52bce.
 One writer, reserves and persistent cause/input retry ledger remain mandatory.
-Then EDS/NSS/rest of GNOME and actual native login/apps acceptance. Finish ALL
-B02 and stop before another story; B02/G2 still unaccepted, no Phase2 ISO.
+Finish ALL B02 and stop before another story; B02/G2 unaccepted, no Phase2 ISO.

@@ -1,0 +1,153 @@
+{
+  "scope": "Owned libpsl/ICU domain and cookie policy only; actual HTTP/TLS/browser/network acceptance pending",
+  "source": {
+    "name": "libpsl",
+    "version": "0.23.3",
+    "filename": "libpsl-0.23.3.tar.gz",
+    "url": "https://github.com/rockdaboot/libpsl/releases/download/0.23.3/libpsl-0.23.3.tar.gz",
+    "sha256": "93941f85a1e7bd593fa94f299233cb5dfc91cd144fd9a78a6ceb75001c5b03be",
+    "reference": "BLFS13.1-systemd basicnet/libpsl.html",
+    "book_page_sha256": "67337ff5cd45eaf51b9ad3c7886b80a4a9ccacf059f5fd15da3a54ee719267e7",
+    "book_md5": "596df43f3c2a8f1d4a677b032ccbc820",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Eight original programs (five suffix/cookie/Unicode plus three finite corpus drivers, not a fuzz campaign); actual ICU/private-runtime-list/refusal/recovery, no browser/network acceptance",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "metadata_only_reconciliation": true,
+    "original_tests": [
+      {
+        "name": "libpsl:test-is-public",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "libpsl:test-is-cookie-domain-acceptable",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "libpsl:test-is-public-builtin",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "libpsl:test-registrable-domain",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "libpsl:libpsl_icu_fuzzer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "libpsl:test-is-public-all",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "libpsl:libpsl_icu_load_dafsa_fuzzer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "libpsl:libpsl_icu_load_fuzzer",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "consumer": {
+      "builtin_public_suffix_and_registrable_domain": true,
+      "public_suffix_cookie_refused": true,
+      "ICU_UTF8_lowercase": true,
+      "invalid_converter_refused": true,
+      "private_runtime_wildcard_and_exception": true,
+      "recovery_cycles": 2
+    },
+    "artifacts_count": 32,
+    "artifacts_manifest_sha256": "fa33e4f052625e98d4dfb6dc078e4a0f0f85950869813d3f0f6d575456d6bb43",
+    "stage_sha256_count": 7,
+    "stage_sha256_manifest_sha256": "74346daf96679380d83c47ab6075fee77b78ecfee0f56c5f40819320253b54f6"
+  },
+  "transaction": {
+    "step": "b02-libpsl-install",
+    "started": "2026-11-09T19:58:10.005438+00:00",
+    "recipe_sha256": "1f03f56d5121206d05552d01afcbc4c19741b39b10a7f41917ea2328a7455df4",
+    "postcheck_sha256": "644e0db11d0d79be1f83419e0b2ee5850923e1a27fd9609789d3d159ae01cd70",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "ead6a39c9b3e8fcbe37aed06bf83a7a22d999b0c408a2a9df3b2ad8e74fed3e2",
+    "recipe_pid": 60750,
+    "recipe_pgid": 60750,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T19:58:25.922981+00:00",
+    "changed_paths": 21,
+    "log_sha256": "1e8fedee8974f85f2b3cec7bf2b586319d57f6e2af04cf154f8e058ca687c9dc",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "932b01bcc829292165ebdd04439cac1c15a2faef3c2b419f75b5476d25a53a35"
+  },
+  "timing": {
+    "step": "b02-libpsl-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.303,
+        "entries": 152335,
+        "regular_files": 135901,
+        "regular_bytes": 7173863773
+      },
+      {
+        "seconds": 13.862,
+        "entries": 152353,
+        "regular_files": 135915,
+        "regular_bytes": 7174025920
+      }
+    ],
+    "total_seconds": 31.251
+  },
+  "installed_consumer": {
+    "scope": "Installed builtin/runtime suffix/cookie refusal/Unicode/invalid converter/recovery/SDK/audit only; actual HTTP/browser/network pending",
+    "consumer": {
+      "builtin_public_suffix_and_registrable_domain": true,
+      "public_suffix_cookie_refused": true,
+      "ICU_UTF8_lowercase": true,
+      "invalid_converter_refused": true,
+      "private_runtime_wildcard_and_exception": true,
+      "recovery_cycles": 2
+    },
+    "IDNA_backend": "Owned ICU78.3, supported libicu option"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libpsl-install-evidence.tar.gz",
+    "sha256": "89089397f2b1b0653f44b5480d0bfda35464c995229882dd29a6b1863a864b19",
+    "members": [
+      "build/b02-libpsl-install.log",
+      "build/b02-libpsl-install.manifest.json",
+      "build/b02-libpsl-install.success.json",
+      "phase2/b02-libpsl-install-controller.log",
+      "phase2/b02-libpsl-install-timing.json",
+      "phase2/libpsl-1-controller.log",
+      "phase2/libpsl-1.exit",
+      "phase2/libpsl-1.job.json",
+      "phase2/libpsl-1.log",
+      "phase2/libpsl-installed-consumer.json",
+      "phase2/libpsl-metadata-2-controller.log",
+      "phase2/libpsl-metadata-2.exit",
+      "phase2/libpsl-metadata-2.job.json",
+      "phase2/libpsl-metadata-2.log",
+      "phase2/libpsl-stage.json",
+      "work/compile/meson-logs/testlog.json",
+      "work/native-consumer.json",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}

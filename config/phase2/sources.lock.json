@@ -2063,6 +2063,66 @@
       "book_page_sha256": "c3f1b41079594657a8486d4321910b26e620f0098d81a733dd5d1fe253a03401",
       "integrity": "Exact required versioned official BLFS HTTPS patch; SHA256 frozen before guest application",
       "status": "source_verified"
+    },
+    {
+      "name": "evolution-data-server",
+      "version": "3.60.2",
+      "filename": "evolution-data-server-3.60.2.tar.xz",
+      "url": "https://download.gnome.org/sources/evolution-data-server/3.60/evolution-data-server-3.60.2.tar.xz",
+      "sha256": "2084dbdac396371b365d504c1ff45866ba8dca2f1252e5da1d3d9c33abdc1286",
+      "reference": "BLFS13.1-systemd gnome/evolution-data-server.html",
+      "book_page_sha256": "566661b234515ac546e0f75ff070c340057710c925e0502a8ee91924be64d4ad",
+      "book_md5": "933c4804d9d2ba99f93fc26005282a3f",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libsoup",
+      "version": "3.6.6",
+      "filename": "libsoup-3.6.6.tar.xz",
+      "url": "https://download.gnome.org/sources/libsoup/3.6/libsoup-3.6.6.tar.xz",
+      "sha256": "51ed0ae06f9d5a40f401ff459e2e5f652f9a510b7730e1359ee66d14d4872740",
+      "reference": "BLFS13.1-systemd basicnet/libsoup3.html",
+      "book_page_sha256": "8193755686f387a451322e79228b745e3c4d49e2d1ebf49780bae094c8bea4eb",
+      "book_md5": "9e07742595800ecf301eafb52300dd89",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libpsl",
+      "version": "0.23.3",
+      "filename": "libpsl-0.23.3.tar.gz",
+      "url": "https://github.com/rockdaboot/libpsl/releases/download/0.23.3/libpsl-0.23.3.tar.gz",
+      "sha256": "93941f85a1e7bd593fa94f299233cb5dfc91cd144fd9a78a6ceb75001c5b03be",
+      "reference": "BLFS13.1-systemd basicnet/libpsl.html",
+      "book_page_sha256": "67337ff5cd45eaf51b9ad3c7886b80a4a9ccacf059f5fd15da3a54ee719267e7",
+      "book_md5": "596df43f3c2a8f1d4a677b032ccbc820",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "nettle",
+      "version": "4.0",
+      "filename": "nettle-4.0.tar.gz",
+      "url": "https://ftpmirror.gnu.org/nettle/nettle-4.0.tar.gz",
+      "sha256": "3addbc00da01846b232fb3bc453538ea5468da43033f21bb345cb1e9073f5094",
+      "reference": "BLFS13.1-systemd postlfs/nettle.html",
+      "book_page_sha256": "b8208389c45e200d0a4e1c373bfebc6d018e3adbcfbb7e7bbb981a561f70a5b0",
+      "book_md5": "144401453f9f35e53938bcacfc59800e",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "gnutls",
+      "version": "3.8.13",
+      "filename": "gnutls-3.8.13.tar.xz",
+      "url": "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.13.tar.xz",
+      "sha256": "ffed8ec1bf09c2426d4f14aae377de4753b53e537d685e604e99a8b16ca9c97e",
+      "reference": "BLFS13.1-systemd postlfs/gnutls.html",
+      "book_page_sha256": "87d25ea60a20204db11e86ec8c858e04de40243aeec38adf151b179f4dd919a7",
+      "book_md5": "a97671c1839340c6b43c23ccb3237180",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

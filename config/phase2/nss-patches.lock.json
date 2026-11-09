@@ -1,0 +1,15 @@
+{
+  "source_sha256": "7aa07c758be1453d82d739240b249ffb7aef0041be488067e1c0f348e1f9e337",
+  "official_patch_sha256": "87bb1af0b11fd41311b9899187f6e4b3fca9940651123c7bc836ec7497d2da84",
+  "patch_file": "scripts/build/phase2/patches/nss-3.126-standalone-1.patch",
+  "patch_sha256": "8e16990e91fb99433d821f9d0ef106d4355455f1f3fa6fb2e7f518aec065b74b",
+  "scope": "Same five build/install-only file changes as official frozen patch; update only last hunk context to adjacent upstream HAVE_ALL_TARGET, no new runtime change or fuzzy application",
+  "expected_changed_files": {
+    "nss/manifest.mn": "d1160cc0ab638d5dff6f64f20f53c1f66f99ad7f82dcf955a52dca3d37a94ae5",
+    "nss/Makefile": "0a5949167f58ce8960f420d773d3b169a8042984da1a57f320fae7639f5eaff8",
+    "nss/config/nss-config.in": "67cc0d3a34540015a47b34b4c9bb335ff2979272b78a450b2f61d2903143b923",
+    "nss/config/nss.pc.in": "7f798435a220e4ea506336c943e0298123ed7b5eedc3e2aa1722da42e0c78e22",
+    "nss/config/Makefile": "cc0bd17389cf9f73621564511487556e9ad58a12c49ea1baa124fa0be4290797"
+  },
+  "original_manifest_sha256": "46091f67fb9649874ca10aac6e4c4a17c90c1bb68608d958f64ab957639a5b52"
+}
