@@ -40,14 +40,26 @@ def main():
                 result['syntax_fixture_layout']={'scope':'Private exact source symlinks compensate original setup_search_paths using G_TEST_SRCDIR/data; no source/test/data changes','source':config['source'],'G_TEST_SRCDIR':str(fixture)}
             args=test['cmd'];assert args[0].startswith(config.get('test_binary_prefix','/build/compile/tests/'))
             assert sha(Path(args[0]))==test['sha256']
-            try:
-                r=subprocess.run(args,cwd=test.get('workdir') or '/build/compile',env=test_env,capture_output=True,text=True,timeout=max(1,min(test['timeout'],deadline-time.monotonic())))
-                text=r.stdout;lines=re.findall(r'^ok\s+[0-9]+(?:\s+.*)?$',text,re.M)
-                skipped=[s for s in lines if '# SKIP' in s]
-                row={'name':test['name'],'exit':r.returncode,'passed_case_executions':len(lines)-len(skipped),'skipped_case_executions':len(skipped),'skip_lines':skipped,'stdout':r.stdout,'stderr':r.stderr}
-            except subprocess.TimeoutExpired as error:
-                convert=lambda x:x.decode(errors='replace') if isinstance(x,bytes) else (x or '')
-                row={'name':test['name'],'exit':None,'timeout':test['timeout'],'stdout':convert(error.stdout),'stderr':convert(error.stderr)}
+            commands=[(case,args+['-p',case]) for case in config['syntax_cases']] if config.get('syntax_cases') else [(None,args)]
+            outcomes=[];stdout=[];stderr=[];selected_exit=0
+            for case,command in commands:
+                try:
+                    r=subprocess.run(command,cwd=test.get('workdir') or '/build/compile',env=test_env,capture_output=True,text=True,timeout=max(1,min(test['timeout'],deadline-time.monotonic())))
+                    text=r.stdout;lines=re.findall(r'^ok\s+[0-9]+(?:\s+.*)?$',text,re.M)
+                    skipped=[s for s in lines if '# SKIP' in s]
+                    item={'exit':r.returncode,'passed_case_executions':len(lines)-len(skipped),'skipped_case_executions':len(skipped),'skip_lines':skipped}
+                    if case is not None:
+                        item['case']=case
+                        assert len(lines)==1 and case in lines[0], 'Selected original case did not execute exactly once'
+                    stdout.append(r.stdout);stderr.append(r.stderr)
+                except subprocess.TimeoutExpired as error:
+                    convert=lambda x:x.decode(errors='replace') if isinstance(x,bytes) else (x or '')
+                    item={'exit':None,'timeout':test['timeout']};stdout.append(convert(error.stdout));stderr.append(convert(error.stderr))
+                outcomes.append(item)
+                if item['exit']!=0:
+                    selected_exit=item['exit'];break
+            row={'name':test['name'],'exit':selected_exit,'passed_case_executions':sum(x.get('passed_case_executions',0) for x in outcomes),'skipped_case_executions':sum(x.get('skipped_case_executions',0) for x in outcomes),'skip_lines':[s for x in outcomes for s in x.get('skip_lines',[])],'stdout':''.join(stdout),'stderr':''.join(stderr)}
+            if config.get('syntax_cases'):row['selected_original_subcases']=outcomes
             runs.append(row);save()
             print('TODDY_NATIVE_WIDGET_PROGRESS',test['name'],row['exit'],flush=True)
             if row['exit'] not in (0,77):

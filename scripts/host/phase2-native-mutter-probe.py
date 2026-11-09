@@ -37,7 +37,8 @@ def main():
     reference=ACCEPTED;assert isinstance(reference,dict)
     component=reference.get('component','libadwaita');assert component in ['libadwaita','gtksourceview']
     syntax_only=reference.get('syntax_only',False);assert not syntax_only or component=='gtksourceview'
-    fixture_name='gtksourceview-syntax-1' if syntax_only else 'mutter-1' if component=='libadwaita' else 'gtksourceview-1'
+    remaining_syntax=reference.get('remaining_syntax',False);assert not remaining_syntax or syntax_only
+    fixture_name='gtksourceview-syntax-valid-1' if remaining_syntax else 'gtksourceview-syntax-1' if syntax_only else 'mutter-1' if component=='libadwaita' else 'gtksourceview-1'
     manifest=Path(reference['manifest']);assert str(manifest)=='/sources/phase2/native-fixtures/'+fixture_name+'/accepted.json'
     assert manifest.is_file() and not manifest.is_symlink() and manifest.stat().st_uid==0 and not manifest.stat().st_mode&0o222
     data=manifest.read_bytes();assert len(data)<256*1024 and hashlib.sha256(data).hexdigest()==reference['manifest_sha256']
@@ -56,14 +57,14 @@ def main():
     assert not Path('/build').exists() and not Path('/src').exists()
     Path('/build').symlink_to(work,target_is_directory=True);Path('/src').symlink_to(source,target_is_directory=True)
     resource.setrlimit(resource.RLIMIT_CORE,(0,0))
-    report={'scope':'Native7.1.8 headless Mutter/Wayland original '+component+' tests only; not GDM/KMS/full GNOME/physical acceptance','component':component,'syntax_only':syntax_only,'reused_native_proof':accepted.get('reused_native_proof'),'kernel':os.uname().release,'pid1':'systemd','uid':101,'manifest_sha256':reference['manifest_sha256'],'accepted_input_sha256':hashlib.sha256(json.dumps(accepted,sort_keys=True).encode()).hexdigest(),'runs':[],'all_selected_exits_zero':False}
+    report={'scope':'Native7.1.8 headless Mutter/Wayland original '+component+' tests only; not GDM/KMS/full GNOME/physical acceptance','component':component,'syntax_only':syntax_only,'remaining_syntax':remaining_syntax,'reused_partial_syntax':accepted.get('reused_partial_syntax'),'reused_native_proof':accepted.get('reused_native_proof'),'kernel':os.uname().release,'pid1':'systemd','uid':101,'manifest_sha256':reference['manifest_sha256'],'accepted_input_sha256':hashlib.sha256(json.dumps(accepted,sort_keys=True).encode()).hexdigest(),'runs':[],'all_selected_exits_zero':False}
     def nnp():
         assert os.geteuid()==101 and os.getegid()==101
         assert ctypes.CDLL(None,use_errno=True).prctl(38,1,0,0,0)==0
         status=Path('/proc/self/status').read_text();assert 'NoNewPrivs:\t1' in status and 'CapEff:\t0000000000000000' in status
     with tempfile.TemporaryDirectory(prefix='toddy-native-mutter-') as directory:
         root=Path(directory);os.chown(root,101,101);runtime=root/'runtime';runtime.mkdir(mode=0o700);os.chown(runtime,101,101)
-        config={'root':str(root),'component':component,'syntax_only':syntax_only,'source':str(source),'fixture':accepted['fixture'],'tests':accepted['tests'],'test_env':accepted['test_env'],'test_binary_prefix':'/build/compile/'+('tests/' if component=='libadwaita' else 'testsuite/'),'test_library_path':'/build/compile/'+('src' if component=='libadwaita' else 'gtksourceview')+':/build/stage/usr/lib'}
+        config={'root':str(root),'component':component,'syntax_only':syntax_only,'syntax_cases':accepted.get('syntax_cases'),'source':str(source),'fixture':accepted['fixture'],'tests':accepted['tests'],'test_env':accepted['test_env'],'test_binary_prefix':'/build/compile/'+('tests/' if component=='libadwaita' else 'testsuite/'),'test_library_path':'/build/compile/'+('src' if component=='libadwaita' else 'gtksourceview')+':/build/stage/usr/lib'}
         script=root/'suite.py';assert SUITE_SOURCE.count('CONFIG = None')==1;script.write_text(SUITE_SOURCE.replace('CONFIG = None','CONFIG = '+repr(config)));script.chmod(0o644)
         env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C.UTF-8','HOME':str(root),'XDG_RUNTIME_DIR':str(runtime),'XDG_CACHE_HOME':str(root/'cache'),'XDG_CONFIG_HOME':str(root/'config'),'XDG_DATA_HOME':str(root/'data'),'XDG_SESSION_TYPE':'wayland','XDG_CURRENT_DESKTOP':'GNOME','LIBGL_ALWAYS_SOFTWARE':'1','GALLIUM_DRIVER':'llvmpipe','GDK_DISABLE':'vulkan','PYTHONDONTWRITEBYTECODE':'1'}
         args=['dbus-run-session','--','mutter','--wayland','--headless','--virtual-monitor=1280x720','--wayland-display=toddy-native-proof','--','python3','-B',str(script)]

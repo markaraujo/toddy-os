@@ -2908,3 +2908,13 @@ restart/same4scratch restore. Strict shutdown-sync serial split reassembled with
 full22chunk SHA256; original controller1 retained, no native/test replay.
 Changed decoder corruption/refusal checks pass; repository checks remain required
 for the native fixture/harness delivery. Full B02/owner stop boundary unchanged.
+
+### B02 malformed original syntax fixture, bounded exception
+
+The private syntax layout worked: native3 completed9original cases, then GTK
+correctly refused original file.cir invalid UTF8/driver-6/compositor1. Exactly1of98
+source fixtures fails UTF8 decoding; exactSHA/byte recorded in ADR0144. Preserve
+original failure/refusal and9completed cases; new context4 selects only88remaining
+valid originals, without editing fixtures, library or assertions. Same2artifacts/
+390source-data files unchanged; native stopped0 and parent unchanged before
+builder/same4scratch restore. No full original driver pass or package promotion.

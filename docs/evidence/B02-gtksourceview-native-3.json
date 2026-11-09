@@ -1,0 +1,22 @@
+{
+  "scope": "Native7.1.8 headless Mutter/Wayland original gtksourceview tests only; not GDM/KMS/full GNOME/physical acceptance",
+  "commit": "06a00f7bec47ae5db5432dd0339a00c38e05e0c8",
+  "kernel": "7.1.8-toddy",
+  "native_report_sha256": "d261eb42007e84d42552e1afcfc0ed982ea0043c9d0958525c66c580e6486943",
+  "compositor_exit": 1,
+  "original_driver_exit": -6,
+  "completed_syntax_cases": 9,
+  "skipped_cases": 0,
+  "failure": "Original file.cir invalid UTF8, gtk_text_buffer_emit_insert g_utf8_validate refusal; not a passed full driver",
+  "fixture_sha256": "723dc8e309adae5b278371ffa43585cf55be329d721a87f11861144ad11f8fc4",
+  "artifacts_unchanged": 2,
+  "source_test_files_unchanged": 390,
+  "source_parent_unchanged": true,
+  "decision": "docs/adr/0144-gtksource-invalid-utf8-test-fixture.md",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gtksourceview-native-3-evidence.tar.gz",
+    "members": 6,
+    "sha256": "a1692a103942432bf19d6a88f2f015b98a85a3115c5f9f554909680bbcbd30ee"
+  },
+  "recovery": "Original failure retained. Native stopped0/source parent unchanged before builder restart. Same4scratch mounts restored, no trim/format. Reuse9completed cases, select88remaining valid original UTF8 fixtures only in new context4."
+}

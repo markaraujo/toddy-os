@@ -22,14 +22,14 @@ ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
 
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--context',default='native-mutter-runtime-1');parser.add_argument('--component',choices=['libadwaita','gtksourceview'],default='libadwaita');parser.add_argument('--only-syntax',action='store_true');args=parser.parse_args();assert not args.only_syntax or args.component=='gtksourceview'
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--context',default='native-mutter-runtime-1');parser.add_argument('--component',choices=['libadwaita','gtksourceview'],default='libadwaita');parser.add_argument('--only-syntax',action='store_true');parser.add_argument('--remaining-syntax',action='store_true');args=parser.parse_args();assert not args.only_syntax or args.component=='gtksourceview';assert not args.remaining_syntax or args.only_syntax
     assert re.fullmatch(r'native-mutter-runtime-[1-9][0-9]?',args.context)
     context=ROOT/'.local/phase2'/args.context;assert not context.exists(),'Reconcile existing operation; never replay'
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
     lock=open(vm.VM/'native-boot-test.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB);boot.refuse_running_tests()
-    code='component='+repr(args.component)+'\nsyntax_only='+repr(args.only_syntax)+'\n'+r'''from pathlib import Path
-import fcntl,hashlib,json,subprocess
+    code='component='+repr(args.component)+'\nsyntax_only='+repr(args.only_syntax)+'\nremaining_syntax='+repr(args.remaining_syntax)+'\n'+r'''from pathlib import Path
+import fcntl,hashlib,json,re,subprocess
 subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
 lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
@@ -51,6 +51,23 @@ if syntax_only:
  for path,digest in old['artifacts'].items():assert sha(Path('/mnt/lfs')/path.lstrip('/'))==digest
  reused={'report_sha256':expected,'manifest_sha256':previous['manifest_sha256'],'drivers_reused':25,'passed_case_executions':273,'upstream_known_skips':18,'syntax_skips_pending':98,'all_previous_artifacts_unchanged':len(old['artifacts'])}
  registered=[t for t in registered if t['name']=='test-syntax'];assert len(registered)==1
+syntax_cases=None;partial=None
+if remaining_syntax:
+ raw=(l/'native-gtksource-3-report.json').read_bytes();expected='d261eb42007e84d42552e1afcfc0ed982ea0043c9d0958525c66c580e6486943';assert hashlib.sha256(raw).hexdigest()==expected
+ prior=json.loads(raw);assert prior['syntax_only'] is True and prior['suite']['passed_case_executions']==9 and prior['compositor_exit']==1
+ assert len(prior['runs'])==1 and prior['runs'][0]['exit']==-6 and "g_utf8_validate (text, len, NULL)" in prior['runs'][0]['stdout']
+ old=Path('/mnt/lfs/sources/phase2/native-fixtures/gtksourceview-syntax-1/accepted.json');assert sha(old)==prior['manifest_sha256']
+ for path,digest in json.loads(old.read_text())['artifacts'].items():assert sha(Path('/mnt/lfs')/path.lstrip('/'))==digest
+ completed=re.findall(r'^ok\s+[0-9]+ (/syntax-highlighting/file[.][^\s]+)$',prior['runs'][0]['stdout'],re.M);assert len(completed)==9
+ fixtures={p.name:p for p in (s/'tests/syntax-highlighting').glob('file.*')};assert len(fixtures)==98
+ invalid=fixtures['file.cir'];assert sha(invalid)=='723dc8e309adae5b278371ffa43585cf55be329d721a87f11861144ad11f8fc4'
+ try:invalid.read_bytes().decode('utf-8')
+ except UnicodeDecodeError:pass
+ else:raise AssertionError('Expected original invalid UTF8 fixture')
+ for name,p in fixtures.items():
+  if name!='file.cir':p.read_bytes().decode('utf-8')
+ syntax_cases=sorted('/syntax-highlighting/'+name for name in fixtures if name!='file.cir' and '/syntax-highlighting/'+name not in completed);assert len(syntax_cases)==88
+ partial={'report_sha256':expected,'passed_cases_reused':completed,'expected_refusal':{'case':'/syntax-highlighting/file.cir','fixture_sha256':sha(invalid),'reason':'Original fixture invalid UTF8; original GTK validation abort retained, not a passed full driver'}}
 binary_prefix='/build/compile/'+('tests/' if component=='libadwaita' else 'testsuite/')
 artifacts={};tests=[]
 for t in registered:
@@ -70,9 +87,9 @@ if component=='libadwaita':
 asset_dirs=['testsuite','tests','data'] if syntax_only else ['tests' if component=='libadwaita' else 'testsuite']
 assets={str(p.relative_to(s)):sha(p) for directory in asset_dirs for p in (s/directory).rglob('*') if p.is_file() and not p.is_symlink()}
 assert s.stat().st_uid==0 and not s.stat().st_mode&0o022
-record={'scope':'Frozen native '+component+' original display drivers only; no full GNOME/product acceptance','component':component,'syntax_only':syntax_only,'reused_native_proof':reused,'asset_dirs':asset_dirs,'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'fixture_source_sha256':fixture_source_sha,'fixture':fixture,'tests':tests,'test_env':registered[0]['env'],'artifacts':artifacts,'source_test_assets_sha256':hashlib.sha256(json.dumps(assets,sort_keys=True).encode()).hexdigest(),'source_test_files':len(assets),'schema_cache_sha256':sha(Path('/mnt/lfs/usr/share/glib-2.0/schemas/gschemas.compiled'))}
+record={'scope':'Frozen native '+component+' original display drivers only; no full GNOME/product acceptance','component':component,'syntax_only':syntax_only,'remaining_syntax':remaining_syntax,'syntax_cases':syntax_cases,'reused_partial_syntax':partial,'reused_native_proof':reused,'asset_dirs':asset_dirs,'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'fixture_source_sha256':fixture_source_sha,'fixture':fixture,'tests':tests,'test_env':registered[0]['env'],'artifacts':artifacts,'source_test_assets_sha256':hashlib.sha256(json.dumps(assets,sort_keys=True).encode()).hexdigest(),'source_test_files':len(assets),'schema_cache_sha256':sha(Path('/mnt/lfs/usr/share/glib-2.0/schemas/gschemas.compiled'))}
 data=json.dumps(record,sort_keys=True).encode()+bytes([10])
-folder=Path('/mnt/lfs/sources/phase2/native-fixtures')/('gtksourceview-syntax-1' if syntax_only else 'mutter-1' if component=='libadwaita' else 'gtksourceview-1');folder.mkdir(mode=0o755,exist_ok=True)
+folder=Path('/mnt/lfs/sources/phase2/native-fixtures')/('gtksourceview-syntax-valid-1' if remaining_syntax else 'gtksourceview-syntax-1' if syntax_only else 'mutter-1' if component=='libadwaita' else 'gtksourceview-1');folder.mkdir(mode=0o755,exist_ok=True)
 assert folder.stat().st_uid==0 and not folder.is_symlink()
 manifest=folder/'accepted.json'
 if manifest.exists():
@@ -81,7 +98,7 @@ if manifest.exists():
 else:
  with manifest.open('xb') as f:f.write(data);f.flush();__import__('os').fsync(f.fileno())
 manifest.chmod(0o444)
-print(json.dumps({'component':component,'syntax_only':syntax_only,'manifest':str(manifest).removeprefix('/mnt/lfs'),'manifest_sha256':hashlib.sha256(data).hexdigest(),'fixture_source_sha256':record['fixture_source_sha256'],'builder_boot_id':record['builder_boot_id'],'tests':len(record['tests']),'artifacts':len(record['artifacts']),'source_test_files':record['source_test_files']}))
+print(json.dumps({'component':component,'syntax_only':syntax_only,'remaining_syntax':remaining_syntax,'manifest':str(manifest).removeprefix('/mnt/lfs'),'manifest_sha256':hashlib.sha256(data).hexdigest(),'fixture_source_sha256':record['fixture_source_sha256'],'builder_boot_id':record['builder_boot_id'],'tests':len(record['tests']),'artifacts':len(record['artifacts']),'source_test_files':record['source_test_files']}))
 '''
     accepted=json.loads(subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True).stdout)
     if args.component=='libadwaita':assert hashlib.sha256((ROOT/'scripts/build/phase2/native-gtk-window.c').read_bytes()).hexdigest()==accepted['fixture_source_sha256']
