@@ -2629,3 +2629,24 @@ Target ~0.18GB above16GiB reserve; next bounded custody checks only two old
 extraction-validation duplicates against existing complete restored metadata and
 accepted Squashfs/helper hashes, retaining all historical proofs/archives/source
 roots/ISOs. No foundation reconstruction or unchanged test/compression replay.
+
+Verified extraction custody completed:82011+76384existing entries/metadata/
+hardlink groups/xattrs equal historical restored manifests, accepted Squashfs/
+helper hashes unchanged. Retired only those2redundant extraction trees; all
+archives/ACLs/manifests/logs/source roots/ISOs/backings retained.7,383,707,648B
+guest space reclaimed (24,747,044,864B free), reserves unchanged. Guarded verify-
+only postconditions0; direct background dispatch did not retain numeric exit,
+which is explicitly not invented. No state-changing replay or new G1 test.
+
+libevdev1.13.6 input prepared0 with fully compared copied Check0.15.2 private
+SDK/current qualified compile artifacts and reused9SDKcase evidence. No SDK
+rebuild/global install. One unprivileged writer libevdev-1 PID6474; native
+portable code/state APIs and original drivers pending, any root/uinput skips
+will remain untested. No GNOME/B02 completion; owner boundary remains full B02.
+
+libevdev-1 terminal0:45original portable Check cases (9internal/36event-code),
+static-symbol ABI driver and C name/capability/state/cleanup/invalid-FD0. Three
+root/uinput programs returned77/SKIP, explicitly not passed. Native LFS userspace
+on Ubuntu builder kernel, no physical or native7.1driver/GNOME acceptance. Private
+Check0.15.2 SDK reused/hashed against original compile artifacts and9oldSDKcases;
+no SDK rebuild/global install. Source stage eligible for guarded owned promotion.

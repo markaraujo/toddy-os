@@ -13,12 +13,12 @@ NAME=sys.argv[1]
 assert len(sys.argv) in (2,3)
 receipt_suffix='-'+sys.argv[2] if len(sys.argv)==3 else ''
 assert not receipt_suffix or re.fullmatch(r'-[a-z][a-z0-9-]{0,31}',receipt_suffix)
-assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa','libepoxy','gdk-pixbuf','tiff','iso-codes','gtk','doxygen','itstool','libxmlb','libfyaml','appstream','libadwaita','libsass','sassc','at-spi2-core','lcms2','libseccomp','bubblewrap','hwdata','libdisplay-info','mtdev')
+assert NAME in ('wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa','libepoxy','gdk-pixbuf','tiff','iso-codes','gtk','doxygen','itstool','libxmlb','libfyaml','appstream','libadwaita','libsass','sassc','at-spi2-core','lcms2','libseccomp','bubblewrap','hwdata','libdisplay-info','mtdev','libevdev')
 if __name__=='__main__':
     row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==NAME)
     archive=ROOT/'.local/sources'/row['filename'];data=archive.read_bytes()
     assert hashlib.sha256(data).hexdigest()==row['sha256']
-    probes={'mtdev':'mtdev-probe.c','libdisplay-info':'libdisplay-info-probe.c','bubblewrap':'bubblewrap-probe.py','libseccomp':'libseccomp-probe.c','lcms2':'lcms2-probe.c','at-spi2-core':'at-spi2-core-probe.c','sassc':'sassc-probe.py','libsass':'libsass-probe.c','libadwaita':'libadwaita-probe.c','appstream':'appstream-probe.c','libfyaml':'libfyaml-probe.c','libxmlb':'libxmlb-probe.c','itstool':'itstool-probe.py','doxygen':'doxygen-probe.py','iso-codes':'iso-codes-probe.py','gtk':'gtk-probe.c','tiff':'tiff-probe.c','gdk-pixbuf':'gdk-pixbuf-probe.c','libepoxy':'libepoxy-probe.c','mesa':'mesa-probe.c','pyyaml':'pyyaml-probe.py','libpciaccess':'libpciaccess-probe.c','libdrm':'libdrm-probe.c','freetype':'freetype-probe.c','psutil':'psutil-probe.py','mako':'mako-probe.py'}
+    probes={'libevdev':'libevdev-probe.c','mtdev':'mtdev-probe.c','libdisplay-info':'libdisplay-info-probe.c','bubblewrap':'bubblewrap-probe.py','libseccomp':'libseccomp-probe.c','lcms2':'lcms2-probe.c','at-spi2-core':'at-spi2-core-probe.c','sassc':'sassc-probe.py','libsass':'libsass-probe.c','libadwaita':'libadwaita-probe.c','appstream':'appstream-probe.c','libfyaml':'libfyaml-probe.c','libxmlb':'libxmlb-probe.c','itstool':'itstool-probe.py','doxygen':'doxygen-probe.py','iso-codes':'iso-codes-probe.py','gtk':'gtk-probe.c','tiff':'tiff-probe.c','gdk-pixbuf':'gdk-pixbuf-probe.c','libepoxy':'libepoxy-probe.c','mesa':'mesa-probe.c','pyyaml':'pyyaml-probe.py','libpciaccess':'libpciaccess-probe.c','libdrm':'libdrm-probe.c','freetype':'freetype-probe.c','psutil':'psutil-probe.py','mako':'mako-probe.py'}
     probe_filename='toddy-probe.py' if probes.get(NAME,'').endswith('.py') else 'toddy-probe.c'
     probe=(ROOT/'scripts/build/phase2'/probes[NAME]).read_text() if NAME in probes else None
     private_bus=(ROOT/'scripts/build/phase2/atspi_private_bus.py').read_text() if NAME=='at-spi2-core' else None
@@ -119,12 +119,33 @@ if row['name']=='freetype':
             assert text.count(old)==1;text=text.replace(old,'#define FT_CONFIG_OPTION_SUBPIXEL_RENDERING')
         path.write_text(text)
         patches.append({'path':relative,'before_sha256':hashlib.sha256(before).hexdigest(),'after_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'reference':'BLFS13.1 general/freetype2.html'})
+if row['name']=='libevdev':
+    import shutil,xml.etree.ElementTree as ET
+    sys.path.insert(0,'/opt/toddy-build/scripts/build/phase2')
+    from verify_stage import inspect_stage
+    prior=base/'phase2/work/libfyaml-1';sdk=prior/'test-sdk';output=source/'toddy-test-sdk'
+    assert sdk.is_dir() and not output.exists(),'Reuse qualified Check0.15.2 SDK; do not rebuild accepted libfyaml'
+    results=json.loads((prior/'test-results.json').read_text())
+    cases=ET.parse(prior/'check-ctest.xml').getroot().findall('.//testcase')
+    assert len(cases)==results['check_sdk_ctest_cases']==9
+    assert all(not any(x.find(tag) is not None for tag in ['failure','error','skipped']) for x in cases)
+    check=next(x for x in json.loads(Path('/opt/toddy-build/config/phase2/sources.lock.json').read_text())['components'] if x['name']=='check')
+    assert check['version']=='0.15.2'
+    with (base/check['filename']).open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==check['sha256']
+    for filename in ['libcheck.so.0.15.2','libcheck.a']:
+        assert hashlib.sha256((sdk/'lib'/filename).read_bytes()).hexdigest()==hashlib.sha256((prior/'check-compile/src'/filename).read_bytes()).hexdigest()
+    sdk_manifest=inspect_stage(sdk);shutil.copytree(sdk,output,symlinks=True)
+    assert inspect_stage(output)==sdk_manifest==inspect_stage(sdk)
+    private_sdk={'scope':'Reused qualified private native test SDK only; not installed or a runtime dependency',
+                 'source':check,'upstream_sdk_cases_reused':9,'manifest':sdk_manifest,
+                 'ctest_evidence_sha256':hashlib.sha256((prior/'check-ctest.xml').read_bytes()).hexdigest()}
 (source/'toddy-build.sh').write_text(recipe)
 if private_bus is not None:(source/'toddy-private-bus.py').write_text(private_bus)
 receipt={'source_sha256':row['sha256'],'reference':row['reference'],
          'book_page_sha256':row.get('book_page_sha256'),'source_patches':patches,
          'recipe_sha256':hashlib.sha256(recipe.encode()).hexdigest()}
 if extra is not None:receipt['extra_source']=extra
+if row['name']=='libevdev':receipt['private_test_sdk']=private_sdk
 if probe is not None:
     (source/probe_filename).write_text(probe)
     receipt['probe_sha256']=hashlib.sha256(probe.encode()).hexdigest()

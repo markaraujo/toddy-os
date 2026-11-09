@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libevdev': ('1.13.6', 'glibc (>= 2.44-1)',
+                  'libevdev-1.13.6.tar.xz', 'usr/lib/pkgconfig/libevdev.pc'),
     'mtdev': ('1.1.7', 'glibc (>= 2.44-1)',
                'mtdev-1.1.7.tar.bz2', 'usr/lib/pkgconfig/mtdev.pc'),
     'libdisplay-info': ('0.4.0', 'glibc (>= 2.44-1), hwdata (>= 0.410-1+toddy1)',
@@ -753,6 +755,28 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='libevdev':
+        import re
+        work=Path('/mnt/lfs/sources/phase2/work/libevdev-1');source=Path('/mnt/lfs/sources/phase2/inputs/libevdev-1.13.6')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libevdev-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libevdev-probe.c').read_bytes()
+        prepared=json.loads((source/'toddy-prepared.json').read_text())
+        assert inspect_stage(source/'toddy-test-sdk')==prepared['private_test_sdk']['manifest']
+        assert prepared['private_test_sdk']['upstream_sdk_cases_reused']==9
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==0
+        rows=[json.loads(s) for s in (work/'compile/meson-logs/testlog.json').read_text().splitlines() if s.strip()]
+        assert len(rows)==len(proof['upstream_drivers'])==6 and proof['native_check_cases']>0
+        count=0
+        for row in rows:
+            text=row.get('stdout','')+row.get('stderr','')
+            if row['result']=='SKIP':
+                assert row['returncode']==77 and 'needs to run as root' in text
+            else:
+                assert row['result']=='OK' and row['returncode']==0
+                summaries=re.findall(r'Checks:\s*(\d+), Failures:\s*(\d+), Errors:\s*(\d+)',text)
+                assert all(int(f)==int(e)==0 for _,f,e in summaries)
+                count+=sum(int(n) for n,_,_ in summaries)
+        assert count==proof['native_check_cases']
     if name=='mtdev':
         work=Path('/mnt/lfs/sources/phase2/work/mtdev-1');source=Path('/mnt/lfs/sources/phase2/inputs/mtdev-1.1.7')
         assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/mtdev-build.sh').read_bytes()

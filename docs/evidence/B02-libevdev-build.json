@@ -1,0 +1,88 @@
+{
+  "scope": "Native portable input-code/API qualification only; no uinput/physical/GNOME acceptance",
+  "upstream_drivers": [
+    {
+      "name": "test-internals",
+      "result": "OK",
+      "exit": 0,
+      "check_cases": 9
+    },
+    {
+      "name": "test-uinput",
+      "result": "SKIP",
+      "exit": 77,
+      "check_cases": 0
+    },
+    {
+      "name": "test-libevdev",
+      "result": "SKIP",
+      "exit": 77,
+      "check_cases": 0
+    },
+    {
+      "name": "test-kernel",
+      "result": "SKIP",
+      "exit": 77,
+      "check_cases": 0
+    },
+    {
+      "name": "static-symbols-leak",
+      "result": "OK",
+      "exit": 0,
+      "check_cases": 0
+    },
+    {
+      "name": "test-event-codes",
+      "result": "OK",
+      "exit": 0,
+      "check_cases": 36
+    }
+  ],
+  "native_check_cases": 45,
+  "staged_consumer_exit": 0,
+  "private_sdk": "Reused qualified Check0.15.2 bytes/9oldSDKcases, no rebuild or global install",
+  "kernel_device_suites": "Any root/uinput-dependent driver SKIP77 remains explicitly untested",
+  "job_exit": 0,
+  "builder_kernel": "6.8.0-147-generic",
+  "consumer_stdout": "libevdev native name/capability/event-state/code mapping/cleanup/invalid-FD refusal\n",
+  "private_test_sdk": {
+    "scope": "Reused qualified private native test SDK only; not installed or a runtime dependency",
+    "source": {
+      "name": "check",
+      "version": "0.15.2",
+      "filename": "check-0.15.2.tar.gz",
+      "url": "https://github.com/libcheck/check/archive/refs/tags/0.15.2.tar.gz",
+      "sha256": "998d355294bb94072f40584272cf4424571c396c631620ce463f6ea97aa67d2e",
+      "upstream_commit": "11970a7e112dfe243a2e68773f014687df2900e8",
+      "reference": "Frozen libfyaml0.9.6 CMakeLists FetchContent declaration pins Check0.15.2",
+      "integrity": "Primary HTTPS upstream tag archive; actual upstream Git tag identity recorded; full tar member checks before native extraction",
+      "scope": "Private native unit-test SDK only; not a runtime/catalog dependency",
+      "status": "source_verified"
+    },
+    "upstream_sdk_cases_reused": 9,
+    "ctest_evidence_sha256": "4c4820d001d8dcf4e9b371eaec8e08fd2d41618dd3b892569185441ecd160c45"
+  },
+  "private_sdk_manifest_sha256": "d65aa951227fbe995bf18c0a60d674729515d33fd73eb64ace18ea08b3826c6c",
+  "retained_logs": {
+    "stage.log": {
+      "bytes": 922,
+      "sha256": "33a0cb5d8aa950a8d99f49e20180d7a5d9dd8c27c3f003626c68c0a68ca5c4e8"
+    },
+    "consumer.log": {
+      "bytes": 84,
+      "sha256": "c6c12a91ddd62a8c2ac65bf0a5464c0fca8e31d0ab9df8c96d6776ae3de4d9d6"
+    },
+    "compile.log": {
+      "bytes": 3023,
+      "sha256": "c0309c41e88bde1f9b81a3c66c7ebc8a94bb3c0299231524d0c6a789e445729b"
+    },
+    "upstream-tests.log": {
+      "bytes": 633,
+      "sha256": "4c143aa06b31440c775ef23a7a81ab6af65e20d9f2a66bc71c17890bf9d5f6e9"
+    },
+    "configure.log": {
+      "bytes": 1295,
+      "sha256": "b14c8e929499e52ff0c0b8863f52b7234027f7dd8e28b7462951c463e6f74ee1"
+    }
+  }
+}

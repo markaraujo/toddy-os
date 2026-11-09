@@ -10345,6 +10345,12 @@
       "version": "1.1.7",
       "license": "MIT",
       "evidence": "Authenticated upstream COPYING with Henrik Rydberg/Canonical notices retained in owned native package. Selected virtual capability/event-frame/refusal and independent matching oracle; physical devices/GNOME acceptance pending."
+    },
+    {
+      "name": "libevdev",
+      "version": "1.13.6",
+      "license": "MIT",
+      "evidence": "Authenticated upstream COPYING with Red Hat/David Herrmann notices and Linux-header provenance statement retained. Native LFS userspace portable45Check cases plus original static-symbol ABI driver and C capability/event-state/refusal0; three root/uinput drivers SKIP77 are not tested or passes. Private qualified Check0.15.2 SDK reused byte-identical from accepted compiler artifacts/9oldSDKcases, no rebuild/global install/runtime dependency. Owned promotion pending."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

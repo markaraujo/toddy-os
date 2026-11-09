@@ -1,0 +1,36 @@
+{
+  "scope": "Only two redundant extracted validation trees in disposable target; compressed rootfs/ACL sidecars/manifests/logs/assembly sources/ISOs/immutable backings and historical G1 evidence retained",
+  "state": "complete",
+  "recipe_sha256": "c5a29ac150b100d27bdae044768dbaa7caa6be23c0b4750f248052891eab2498",
+  "before_free_bytes": 17363337216,
+  "copies": [
+    {
+      "tree": "/mnt/lfs/sources/stage/h10-live-compression/extracted",
+      "state": "retired-compressed-artifact-and-full-metadata-retained",
+      "inode": 8707588,
+      "entries": 82011,
+      "hardlink_groups": 1123,
+      "artifact": "/mnt/lfs/sources/stage/h10-live-compression/rootfs.squashfs",
+      "artifact_sha256": "cd94388bba986fa9594a094d078ad2f6ebcc32f081d5a91c33e33411c7b29293",
+      "restored_manifest_sha256": "8c94ecda48464a5e3a1587f3472c8611347a3f94441b6bd1934e72b853e3984e",
+      "helper_sha256": "527eacc074c38e41324737df924b6ccc95f586cd6469ae7873485509251cd578"
+    },
+    {
+      "tree": "/mnt/lfs/sources/stage/h11-release-compression/extracted",
+      "state": "retired-compressed-artifact-and-full-metadata-retained",
+      "inode": 2014092,
+      "entries": 76384,
+      "hardlink_groups": 1123,
+      "artifact": "/mnt/lfs/sources/stage/h11-release-compression/rootfs.squashfs",
+      "artifact_sha256": "7a5b454cc9080cc8fe3d28c677688f50acea818da0868e78faf0569323d78b71",
+      "restored_manifest_sha256": "d5d84478bfc4d9f9634a5eab8961090a53062078cf2c4955aaf34788b0f4ec7c",
+      "helper_sha256": "527eacc074c38e41324737df924b6ccc95f586cd6469ae7873485509251cd578"
+    }
+  ],
+  "after_free_bytes": 24747044864,
+  "reclaimed_bytes": 7383707648,
+  "recovery": "Verify retained rootfs SHA/helper/restored-manifest first. Extract with the accepted native unsquashfs into a NEW absent private stage, apply retained ACL helper/sidecar, and compare full snapshot/hardlink metadata to restored-manifest. Do not rerun custody/compression/old foundation milestones.",
+  "verification_scope": "Guarded verify-only postcondition reconciliation; state-changing operation not replayed",
+  "original_dispatch_numeric_exit": "Not retained by the original direct background dispatch; no numeric exit inferred",
+  "verify_only_exit": 0
+}
