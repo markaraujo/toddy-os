@@ -2567,3 +2567,10 @@ DDS alias to same configured decoder, without changing source/binaries/sandbox
 or golden assertions. Cold runtime2 will rerun only color and reuse bound actual
 passes; no promotion yet. Zero-case loader programs,1upstream ignore and1omitted
 AVIF creator are explicitly not passes. Native report/failure remains retained.
+
+Native followup2 stopped before VM creation/start: expanded public probe exceeded
+the existing16KiB base64 SMBIOS guard. No native test ran and no DDS correction
+failed. Preserved unused disposable overlay/controller receipt; backing unchanged.
+Controller now preflights a compressed public payload with bounded64KiB decode
+and exact SHA before context/storage creation; shared transport limit unchanged.
+New context3 only after original stopped-VM and no-context2-VM postconditions.

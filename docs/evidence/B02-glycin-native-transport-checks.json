@@ -1,0 +1,7 @@
+{
+  "scope": "Host-only actual public payload roundtrip/decode without executing native code; wrong-hash and oversize refusals",
+  "checks_passed": 3,
+  "raw_probe_bytes": 12832,
+  "transport_base64_bytes": 9172,
+  "raw_probe_sha256": "3ccc3e052a7421f99e3e2d787504f77d73361c72367edc8a3a1473b83faf792b"
+}

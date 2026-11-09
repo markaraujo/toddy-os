@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Cold native image/sandbox test using only disposable target overlays."""
 from datetime import datetime,timezone
+import base64
 import fcntl
 import hashlib
 import json
@@ -10,6 +11,7 @@ import shutil
 import subprocess
 import sys
 import uuid
+import zlib
 
 import boot_test as boot
 from phase2_native_report import decode
@@ -24,10 +26,24 @@ def run(args,**kwargs):
     return subprocess.run(args,check=True,text=True,**kwargs)
 
 
+def compressed_payload(probe):
+    assert isinstance(probe,bytes) and len(probe)<=65536
+    packed=base64.b64encode(zlib.compress(probe,9)).decode()
+    bootstrap=('import base64,zlib,hashlib\n'
+               'd=zlib.decompressobj()\n'
+               f'raw=d.decompress(base64.b64decode({packed!r},validate=True),65537)\n'
+               'assert len(raw)<=65536 and d.eof and not d.unused_data\n'
+               f'assert hashlib.sha256(raw).hexdigest()=={hashlib.sha256(probe).hexdigest()!r}\n'
+               'exec(compile(raw,"toddy-native-glycin","exec"))\n').encode()
+    assert len(base64.b64encode(bootstrap))<=16384
+    return bootstrap
+
+
 def main():
-    assert sys.argv[1:] in [[],['--dds-followup']]
+    assert sys.argv[1:] in [[],['--dds-followup'],['--dds-transport-followup']]
     followup=bool(sys.argv[1:]);previous=None;reused=None
-    context=ROOT/'.local/phase2'/('native-glycin-runtime-2' if followup else 'native-glycin-runtime-1')
+    transport_followup=sys.argv[1:]==['--dds-transport-followup']
+    context=ROOT/'.local/phase2'/('native-glycin-runtime-3' if transport_followup else 'native-glycin-runtime-2' if followup else 'native-glycin-runtime-1')
     if followup:
         old=context.parent/'native-glycin-runtime-1'
         previous=json.loads((old/'result.json').read_text());report=json.loads((old/'native-report.json').read_text())
@@ -46,6 +62,17 @@ def main():
                 'runs':[{k:r[k] for k in ['name','exit']} for r in report['runs'] if r['exit']==0],
                 'original_image_driver_passed_cases':10,'original_image_driver_failed_case':'color',
                 'original_driver_failure_retained':True}
+        if transport_followup:
+            partial=context.parent/'native-glycin-runtime-2'
+            partial_state=json.loads((partial/'result.json').read_text())
+            assert partial_state['phase']=='builder-stopped' and 'container_id' not in partial_state
+            assert not (partial/'serial.log').exists()
+            assert 'Unexpectedly large SMBIOS test payload' in (ROOT/'.local/phase2/glycin-native-runtime-2-controller.log').read_text()
+            # The previous attempt created only an unused disposable overlay.
+            # It never created or started a VM; retain it, create a new context.
+            ids=subprocess.check_output(['docker','ps','-aq','--filter','label=toddy.boot-test'],text=True).split()
+            containers=json.loads(subprocess.check_output(['docker','inspect',*ids],text=True)) if ids else []
+            assert all(all(m['Source']!=str(partial) for m in c['Mounts']) for c in containers)
     assert not context.exists(),'Reconcile existing native operation; never replay'
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
@@ -60,6 +87,7 @@ def main():
     body=body.replace('MIME_COMPAT_SOURCE = None','MIME_COMPAT_SOURCE = '+repr(compat))
     body=body.replace('REUSED_NATIVE_PROOF = None','REUSED_NATIVE_PROOF = '+repr(reused))
     probe=body.encode()
+    bootstrap=compressed_payload(probe)
     code='''from pathlib import Path
 import fcntl,hashlib,json,subprocess
 subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
@@ -86,7 +114,8 @@ print(json.dumps({'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read
            'started_utc':datetime.now(timezone.utc).isoformat(),'controller_pid':os.getpid(),
            'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
            'controller_start_ticks':Path('/proc/self/stat').read_text().split()[21],
-           'accepted':accepted_record,'probe_sha256':hashlib.sha256(probe).hexdigest(),'phase':'prepared'}
+           'accepted':accepted_record,'probe_sha256':hashlib.sha256(probe).hexdigest(),
+           'payload_sha256':hashlib.sha256(bootstrap).hexdigest(),'phase':'prepared'}
     if followup:state['cold_followup_of']='native-glycin-runtime-1'
     def save():
         part=context/'result.json.part';assert not part.exists()
@@ -112,7 +141,7 @@ print(json.dumps({'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read
     unit=(ROOT/'scripts/host/boot-probe.service').read_bytes().replace(b'TimeoutStartSec=180',b'TimeoutStartSec=540')
     payloads={'systemd.extra-unit.toddy-boot-probe.service':unit,
               'systemd.unit-dropin.multi-user.target':(ROOT/'scripts/host/boot-probe.target.conf').read_bytes(),
-              'toddy.boot-probe':probe}
+              'toddy.boot-probe':bootstrap}
     qemu=boot.qemu_arguments('bios',payloads)
     qemu[qemu.index('-cpu')+1]='host';qemu[qemu.index('-smp')+1]='4';qemu[qemu.index('-m')+1]='4096'
     name='toddy-b02-native-'+run_id[:12]
