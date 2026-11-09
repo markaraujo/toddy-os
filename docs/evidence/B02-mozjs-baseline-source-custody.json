@@ -1,0 +1,41 @@
+{
+  "scope": "Inactive Mozilla140.14 baseline expanded source only. Full archive and actual tmpfs restoration compare bytes/metadata/hardlinks before retirement. Current140.17 source/compiler/tests/stages/owned runtime, baseline build/tests, all compressed archives retained. No OS recovery or desktop claim.",
+  "state": "complete",
+  "pid": 1851,
+  "boot_id": "2ae2231f-1be1-4e67-a1b5-53c50c0562be",
+  "proc_start_ticks": "15802",
+  "producer_sha256": "22b34425f46c2944a42ee5b9be4c05c8ad7778c92975e24c8b107bbc2655d856",
+  "source": "/mnt/lfs/sources/phase2/inputs/mozjs-tool-140.14.0",
+  "source_inode": 8722425,
+  "source_uid": 0,
+  "source_gid": 0,
+  "source_mode": 16877,
+  "before_target_free": 17258811392,
+  "before_builder_free": 20799438848,
+  "tar": {
+    "version": "tar (GNU tar) 1.35",
+    "sha256": "3ee2c3c0b4dd9aacebfd2f0fbae44bad36348203acff78a44888dd58c05f811c"
+  },
+  "entries": 422093,
+  "hardlink_groups": 0,
+  "unique_regular_bytes": 3129644123,
+  "archive": "/var/lib/toddy/phase2-custody/mozjs-baseline-source-1/work.tar.gz",
+  "archive_create_exit": 0,
+  "archive_sha256": "0034632f70329e0bdf92f5d6fdd4cd9d08721f041f989abee65bfc5e5655dea6",
+  "archive_bytes": 952148485,
+  "memory": "/var/lib/toddy/phase2-custody/mozjs-baseline-source-1/restore-memory",
+  "archive_extract_exit": 0,
+  "source_unchanged": true,
+  "restored_exact": true,
+  "manifest_sha256": "f24f8d1f4f15d8e2363c5720b8b17938b4391cc880363e1b89d039db8fa5967b",
+  "installed_root_changed_paths": 0,
+  "after_target_free": 21627727872,
+  "after_builder_free": 19563155456,
+  "reclaimed_target_bytes": 4368916480,
+  "recovery": "Verify archive/source-manifest SHA. Restore to a NEW private directory using recorded GNU tar PAX ACL/xattr/owner/permission flags; compare full snapshot and hardlink groups with source-manifest. To restore original work, first reconcile sole .toddy-retired marker/receipt, never overwrite an existing/unknown work tree. Keep archive/manifests/logs; current source/build/installed Mozilla remain available without rebuilding.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-mozjs-baseline-source-custody-evidence.tar.gz",
+    "members": 5,
+    "sha256": "36ba693dc605fe51c60ef3edca477a8024fa361127a0fa96198aa1f195b122b8"
+  }
+}

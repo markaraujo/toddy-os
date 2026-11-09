@@ -1,0 +1,62 @@
+{
+  "scope": "Five original Polkit drivers on native Toddy kernel; backend uses mock private bus, not real authorization/helper/desktop acceptance",
+  "kernel": "7.1.8-toddy",
+  "fixture_manifest_sha256": "c6e923f09e4cb34a99ffcae35e145ba2672cb8ec930233a91cb71db3ee0ab65d",
+  "unchanged_fixture_files": 479,
+  "runs": [
+    {
+      "name": "polkitunixusertest",
+      "exit": 0,
+      "skip_diagnostics": [],
+      "tap_case_lines": 3,
+      "stdout_sha256": "fd978163a771da66a8c4c48fe3faa9a59c310fb03176074dc95690e8d884144a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "polkitunixgrouptest",
+      "exit": 0,
+      "skip_diagnostics": [],
+      "tap_case_lines": 3,
+      "stdout_sha256": "fd31901efea6537ed36fd88eb65152af3031a2aa90e872b4dd1a109505660a7a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "polkitunixnetgrouptest",
+      "exit": 0,
+      "skip_diagnostics": [],
+      "tap_case_lines": 2,
+      "stdout_sha256": "d16d1727b01f5f7e5491367d507ed85f4149c6714385b875252dd91dd2b2d15e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "polkitidentitytest",
+      "exit": 0,
+      "skip_diagnostics": [],
+      "tap_case_lines": 21,
+      "stdout_sha256": "035e44c0c80519c6b3ef1c40a9e77bd1fcdff4c4af3ea2af82c2e31851f6756a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "test-polkitbackendjsauthority",
+      "exit": 0,
+      "skip_diagnostics": [],
+      "tap_case_lines": 30,
+      "stdout_sha256": "2ba418b733afa7fdb1940063fab50b226a0e5f568798d419874562d5ae84e614",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "summary": {
+    "kernel": "7.1.8-toddy",
+    "all_selected_exits_zero": true,
+    "report_sha256": "778465e0a97a3850ddc97caec1c8bb46ac2523d87dd98d8d4e8b3d8936dcfa98",
+    "chunks": 2
+  },
+  "child_stopped": true,
+  "child_exit": 0,
+  "child_oom": false,
+  "parent_verified_before_builder_restart": true,
+  "raw_context": ".local/phase2/native-polkit-suite-runtime-2",
+  "report_file_sha256": "4617c54cd07926a2ad375a5247760d56a1b473562fc7a63ffcbefdbe2cc1d71b",
+  "retained_failure": "Context1 missing setpriv refused before original suite invocation; stopped0/OOMfalse/parent unchanged. New context2 used child-only Python identity drop. No original suite replay.",
+  "limitations": "No installed package, real system authorization, helper PAM challenge, cancellation/replay/recovery or graphical permission acceptance yet."
+}
