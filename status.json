@@ -652,14 +652,15 @@
       "Primary Rust cache custody complete:39151entries846hardlink groups restored exactly with archive/source metadata verified, source unchanged before retirement, installed-root changed_paths0.7.24GBtarget reclaimed; SDK remains usable, all archive/manifests/logs retained. Mozilla compile/stage and original API evidence follows; no GUI acceptance.",
       "Additional host margin from NEW h07cold backup only: byte/metadata/OFD/backing checks0, observed4.83GB recovered; no completed custody replay. Mozilla140.14 source643MB and exact Python3.14 patch5paths authenticated/prepared0; no foundation update. Compile/stage0, shell42; original901API tests0 with501ELFs unchanged, no promotion. GJS1.88.1 source authenticated only.",
       "Owned GJS1.88.1 native install/post0/0,158changed paths; original two C202cases plus native78programs/2741PASS/147original pending SKIPs,124artifacts361sources unchanged; actual installed C/CLI/GI/event/refusal/recovery0. Exact Meson RUNPATH removal/three mutation refusals; prewrite failure retained. No full GNOME acceptance.",
-      "Frozen PAM1.7.2 plus nine ADR0126 backports staged0;77original unit drivers and real permit/deny/missing-module/malformed/recovery0. New password client compiled0, original ELFs unchanged;157file native fixture prepared. No real passwords/helper/login acceptance yet."
+      "Frozen PAM1.7.2 plus nine ADR0126 backports staged0;77original unit drivers and real permit/deny/missing-module/malformed/recovery0. New password client compiled0, original ELFs unchanged;157file native fixture prepared. No real passwords/helper/login acceptance yet.",
+      "Owned Linux-PAM1.7.2-1+toddy2: original77unit drivers; real native7.1.8 yescrypt/setuid helper7correct/refusal/NNP/lock/recovery cases0,157fixture files unchanged/account removed/child stopped0. Metadata-only dependency recovery preserved457payload entries, recipe/post0/0,installed C/API/module/audit0; prior failures retained. Full login still pending."
     ],
-    "running": "PAM native credential qualification next on new disposable no-NIC overlay; GJS owned0/0. Full GNOME/apps/B02 pending; finish ALL B02 then stop.",
+    "running": "PAM owned and real native credential gate passed. Inspect frozen Systemd261.2 PAM/session integration: existing -PAM core ignores PAMName, so module alone cannot prove full integration. Full GNOME/apps/B02 pending; finish ALL B02 then stop.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-09T12:28:14.813018+00:00",
+    "verified_at": "2026-11-09T12:40:49.581988+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

@@ -1,0 +1,49 @@
+{
+  "scope": "Owned PAM and real installed API/module/helper/dependency verification; actual native shadow7cases retained separately, full login/GNOME pending",
+  "run": {
+    "step": "b02-linux-pam-metadata-3",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T12:37:40.639338+00:00",
+    "changed_paths": 5
+  },
+  "package": {
+    "name": "linux-pam",
+    "version": "1.7.2-1+toddy2",
+    "archive_sha256": "46816a1c875f21ed7c6ea00f0f3a227ce86790b0f9c8b7d1c08310fc81505273",
+    "installed": true
+  },
+  "payload_entries": 457,
+  "metadata_recovery": {
+    "state": "complete",
+    "previous_version": "1.7.2-1+toddy1",
+    "previous_archive_sha256": "3af8b82f40e8e26497227612a02db230581c474caafe48a4794a3f656c4040d6",
+    "previous_record_sha256": "ae3347d731f1fa6cd59598c4aebe7b5c857e346f4d53ca6e38c545c10ace2fcd",
+    "version": "1.7.2-1+toddy2",
+    "scope": "Exact dependency revision only; entire native unpacked payload must remain identical",
+    "new_archive_sha256": "46816a1c875f21ed7c6ea00f0f3a227ce86790b0f9c8b7d1c08310fc81505273",
+    "unchanged_payload_entries": 457
+  },
+  "consumer": {
+    "scope": "Installed owned PAM public API/module allow-deny/refusal/recovery and exact reviewed helper ownership; real native shadow/password7cases reused, no Shadow/systemd/GDM/login acceptance",
+    "version": "1.7.2",
+    "consumer_exit": 0,
+    "stdout": "PAM real allow/deny/missing-module/malformed-policy/recovery passed; no password claim",
+    "helper_mode": "4755",
+    "helper_uid": 0,
+    "helper_gid": 0,
+    "fallback_policy": "deny all four PAM management groups",
+    "unqualified": "Shadow PAM rebuild, pam_systemd/logind/session, recoverable authenticated boot and GNOME integration pending"
+  },
+  "native_password_evidence": "B02-pam-native-1.json",
+  "retained_failures": [
+    "First qualifier missing metadata lockfile; refused before mutation, changed_paths0. Verified sync list corrected after writer lock released.",
+    "Second transaction built/unpacked package but Dpkg refused wrong exact Libxcrypt metadata (4.5.2-1 vs actual4.5.2-1+toddy1). Entire nonconfiguration payload matched original archive; only other.dpkg-new remained pending.",
+    "Recovery created distinct revision2 from preserved archive, verified exact457entry payload equality before/after; configured fallback denial conffile, changed5root paths, source/compiler/native tests not replayed. Failed revision1 record remains installed=False."
+  ],
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-pam-install-evidence.tar.gz",
+    "members": 16,
+    "sha256": "487238e3717b5fcbb9a901f25ecafa184dd7c370f7605f7f799ba9263f6cb37c"
+  }
+}

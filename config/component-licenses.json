@@ -10677,6 +10677,27 @@
           ]
         }
       }
+    },
+    {
+      "name": "linux-pam",
+      "version": "1.7.2",
+      "license": "LicenseRef-Linux-PAM-per-file",
+      "evidence": "Primary BSD-3-Clause OR GPL-2.0-or-later and exact library/module per-file notices retained; nine ADR0126 security patches/authorship delivered in package. Native77unit drivers and7shadow/helper cases passed; full login pending.",
+      "extra_license_headers": {
+        "Linux-PAM-1.7.2.tar.xz": {
+          "prefixes": [
+            "libpam/",
+            "libpamc/",
+            "libpam_misc/",
+            "libpam_internal/",
+            "modules/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

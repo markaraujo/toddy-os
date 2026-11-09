@@ -3,7 +3,7 @@
   "component": "linux-pam",
   "version": "1.7.2",
   "source_sha256": "3d86b6383fb5fd9eb9578d2cd47d92801191f4bf3f9bc61419bfefc8aa1e531a",
-  "status": "source_applicability_and_host_table_fixture_verified_native_pending",
+  "status": "source_backports_native_units_and_password_helper_verified_session_integration_pending",
   "reviewed_release": "https://github.com/linux-pam/linux-pam/releases/tag/v1.7.3",
   "patches": [
     {
@@ -80,5 +80,5 @@
     }
   ],
   "not_selected": "Unrelated1.7.3 defaults/DES removal and malformed-rule ignore semantics are not imported. Production password stack still requires explicit yescrypt.",
-  "native_qualification": "Not run; no PAM/Shadow/systemd install or login acceptance"
+  "native_qualification": "77original unit drivers and staged/installed module API0; actual native7.1.8 yescrypt/helper wrong/empty/unknown/NNP/locked/unlock7cases0. Owned1.7.2-1+toddy2 configured; Shadow/pam_systemd/logind/GDM/authenticated boot pending."
 }

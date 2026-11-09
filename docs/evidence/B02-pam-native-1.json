@@ -1,0 +1,124 @@
+{
+  "ephemeral_account_removed": true,
+  "fixture_manifest_sha256": "8eab8f94f1a08b0b2836d2b94548f5a3d965c7b3e27c0f72ec795c00453674d3",
+  "helper": {
+    "gid": 0,
+    "mode": 2541,
+    "path": "/usr/sbin/unix_chkpwd",
+    "sha256": "2176a32b57f8c0ec676503cec517534695e96689f5d29c16e81ff264de600e29",
+    "uid": 0
+  },
+  "kernel": "7.1.8-toddy",
+  "pid1": "systemd",
+  "runs": [
+    {
+      "exit": 0,
+      "expected_authenticated": true,
+      "name": "correct-yescrypt-via-setuid-helper",
+      "no_new_privileges": false,
+      "pam_result": {
+        "account": 0,
+        "auth": 0,
+        "credential": 0,
+        "end": 0,
+        "start": 0
+      },
+      "uid": 12345
+    },
+    {
+      "exit": 0,
+      "expected_authenticated": false,
+      "name": "incorrect-password-refused",
+      "no_new_privileges": false,
+      "pam_result": {
+        "account": 0,
+        "auth": 7,
+        "credential": -1,
+        "end": 0,
+        "start": 0
+      },
+      "uid": 12345
+    },
+    {
+      "exit": 0,
+      "expected_authenticated": false,
+      "name": "empty-password-refused",
+      "no_new_privileges": false,
+      "pam_result": {
+        "account": 0,
+        "auth": 7,
+        "credential": -1,
+        "end": 0,
+        "start": 0
+      },
+      "uid": 12345
+    },
+    {
+      "exit": 0,
+      "expected_authenticated": false,
+      "name": "unknown-user-refused",
+      "no_new_privileges": false,
+      "pam_result": {
+        "account": 10,
+        "auth": 10,
+        "credential": -1,
+        "end": 0,
+        "start": 0
+      },
+      "uid": 12345
+    },
+    {
+      "exit": 0,
+      "expected_authenticated": false,
+      "name": "helper-no-new-privileges-refused",
+      "no_new_privileges": true,
+      "pam_result": {
+        "account": 9,
+        "auth": 9,
+        "credential": -1,
+        "end": 0,
+        "start": 0
+      },
+      "uid": 12345
+    },
+    {
+      "exit": 0,
+      "expected_authenticated": false,
+      "name": "locked-account-refused",
+      "no_new_privileges": false,
+      "pam_result": {
+        "account": 0,
+        "auth": 7,
+        "credential": -1,
+        "end": 0,
+        "start": 0
+      },
+      "uid": 12345
+    },
+    {
+      "exit": 0,
+      "expected_authenticated": true,
+      "name": "unlock-and-authentication-recovery",
+      "no_new_privileges": false,
+      "pam_result": {
+        "account": 0,
+        "auth": 0,
+        "credential": 0,
+        "end": 0,
+        "start": 0
+      },
+      "uid": 12345
+    }
+  ],
+  "scope": "Real native Linux-PAM1.7.2 shadow/yescrypt and setuid helper in disposable overlay only; no installed PAM/login/GDM/GNOME acceptance",
+  "secrets_retained": false,
+  "unchanged_fixture_files": 157,
+  "native_report_sha256": "28e4d9c1f7947a929c0d4d75c58677585c5de670c7c797b0d29f801850d5b5c6",
+  "native_container_stopped_exit": 0,
+  "source_parent_unchanged_before_restart": true,
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-pam-native-1-evidence.tar.gz",
+    "members": 9,
+    "sha256": "db4703bb65bae8880807d3005b7cad08e41718afba925bbb09472ce632d86426"
+  }
+}

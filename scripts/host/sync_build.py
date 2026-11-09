@@ -104,6 +104,8 @@ def main(metadata_only=False):
             raise SystemExit('Phase 2 sources are not frozen')
         rows += phase2_lock['components']
         metadata.append('config/phase2/sources.lock.json')
+    if (ROOT/'config/phase2/pam-patches.lock.json').exists():
+        metadata.append('config/phase2/pam-patches.lock.json')
     if (ROOT/'config/phase2/rust-bootstrap.toml').exists():
         metadata.append('config/phase2/rust-bootstrap.toml')
     if (ROOT/'config/phase2/python-test-tools.lock.json').exists():

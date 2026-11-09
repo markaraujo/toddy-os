@@ -146,6 +146,15 @@
       "mode": 1517,
       "source_version": "2.42.4-1",
       "evidence": "Accepted source-built native package permissions; preserve exact intended helper identity/mode"
+    },
+    {
+      "package": "linux-pam",
+      "path": "/usr/sbin/unix_chkpwd",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "1.7.2-1+toddy2",
+      "evidence": "ADR0148/BLFS13.1 exact helper, actual native7.1.8 unprivileged yescrypt/refusal/NNP/lock/recovery7cases0; no global security change"
     }
   ]
 }

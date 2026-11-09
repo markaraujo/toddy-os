@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'linux-pam': ('1.7.2', 'glibc (>= 2.44-1), libxcrypt (= 4.5.2-1+toddy1), systemd (>= 261.2-1+toddy2)', 'Linux-PAM-1.7.2.tar.xz', 'usr/lib/pkgconfig/pam.pc'),
     'gjs': ('1.88.1', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), glib (>= 2.88.3-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1), cairo (= 1.18.4-1+toddy1), libffi (>= 3.8.0-1), mozjs (= 140.17.0-1+toddy1), readline (>= 8.3-1)', 'gjs-1.88.1.tar.xz', 'usr/lib/pkgconfig/gjs-1.0.pc'),
     'mozjs': ('140.17.0', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), icu (= 78.3-1+toddy1), readline (>= 8.3-1), zlib (>= 1.3.2-1)', 'firefox-140.17.0esr.source.tar.xz', 'usr/lib/pkgconfig/mozjs-140.pc'),
     'gtksourceview': ('5.20.0', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), gtk (>= 4.22.4-1+toddy4), pcre2 (>= 10.49-1+toddy1), libxml2 (= 2.15.3-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)', 'gtksourceview-5.20.0.tar.xz', 'usr/lib/pkgconfig/gtksourceview-5.pc'),
@@ -201,6 +202,7 @@ if __name__ == '__main__':
     if name=='libadwaita':qualifier='libadwaita-build-2'
     if name=='gtksourceview':qualifier='gtksourceview-patched-verify-9'
     if name=='mozjs':qualifier='mozjs-signal-check-4'
+    if name=='linux-pam':qualifier='pam-1'
     if name=='libxml2-python':qualifier='libxml2-python-probe-5'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
@@ -1102,6 +1104,9 @@ if __name__ == '__main__':
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['staged_consumer_exit']==proof['upstream_diagnostic_exit']==0 and proof['matching_cases']==2
         assert len(proof['matching_oracle'])==2 and all(r['matching_cost']==r['independent_exhaustive_optimum'] for r in proof['matching_oracle'])
+    if name=='linux-pam':
+        from qualify_pam import qualify as qualify_pam
+        qualify_pam(ROOT,log)
     if name=='gjs':
         from qualify_gjs import qualify as qualify_gjs
         qualify_gjs(ROOT,log)
@@ -1114,6 +1119,7 @@ if __name__ == '__main__':
     assert name==sys.argv[1], 'Package identity changed during qualification'
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
     if name=='mozjs':source=Path('/mnt/lfs/sources/phase2/work/mozjs-security-1/stage')
+    if name=='linux-pam':source=Path('/mnt/lfs/sources/phase2/work/pam-1/stage')
     if name=='gtksourceview':source=Path('/mnt/lfs/sources/phase2/work/gtksourceview-patched-1/stage')
     if name=='libxml2-python':source=Path('/mnt/lfs/sources/phase2/work/libxml2-1/python-binding-1/stage')
     assert not (source/'.toddy-retired.json').exists(),'Stage retired under verified archive custody; reuse the native package, no promotion replay'
@@ -1157,6 +1163,22 @@ if __name__ == '__main__':
         (log/'libwacom-runtime-partition.json').write_text(json.dumps({
             'scope':'Omit only optional Python show-stylus CLI/man whose libevdev/pyudev bindings are unavailable. Original source/test stage retained; native C library/tools/database/udev inputs unchanged.',
             'omitted':omitted},indent=2)+'\n')
+    if name=='linux-pam':
+        # The compiler stage stays unprivileged. Only this authenticated helper
+        # in the copied root-owned promotion stage receives its exact policy.
+        helper=destination/'usr/sbin/unix_chkpwd'
+        assert hashlib.sha256(helper.read_bytes()).hexdigest()=='2176a32b57f8c0ec676503cec517534695e96689f5d29c16e81ff264de600e29'
+        assert helper.stat().st_mode & 0o7777 == 0o755
+        import os
+        os.chown(helper,0,0);helper.chmod(0o4755)
+        policy=destination/'etc/pam.d';assert not policy.exists();policy.mkdir(parents=True)
+        (policy/'other').write_text(''.join(f'{kind} required pam_deny.so\n' for kind in ['auth','account','password','session']))
+        doc=destination/'usr/share/doc/linux-pam';doc.mkdir(parents=True,exist_ok=True)
+        patches=json.loads((ROOT/'config/phase2/pam-patches.lock.json').read_text())
+        (doc/'patches').mkdir()
+        for patch in patches['patches']:shutil.copy2(ROOT/patch['file'],doc/'patches'/Path(patch['file']).name)
+        (doc/'security-backports.json').write_text(json.dumps(patches,indent=2)+'\n')
+        (doc/'README.Toddy').write_text('Frozen Linux-PAM1.7.2 with nine ordered ADR0126 upstream security backports. Original77unit drivers and native7.1.8 real yescrypt/helper/refusal/lock/recovery7cases passed. Generic other policy denies all four management groups. Optional userdb/NIS/SELinux/audit/libeconf disabled. Shadow, pam_systemd, authenticated session boot and GDM integration remain separate gates. No existing account or password is changed.\n')
     archives=[archive]
     if name=='mozjs':archives.append('spidermonkey-140.14.0-python_3.14_fixes-1.patch')
     if name=='gtksourceview':archives.append('gtksourceview-5.20.0-duplicate-capture-1.patch')
@@ -1196,10 +1218,11 @@ if __name__ == '__main__':
                         '--depends','glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
+    if name=='linux-pam':conffiles=['--conffile','/etc/pam.d/other']
     if name in ('fontconfig','llvm','rustc','at-spi2-core'):
         for relative,row in before['entries'].items():
             if relative.startswith('etc/') and 'sha256' in row: conffiles+=['--conffile','/'+relative]
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,
-                    version+'-1+toddy1', str(destination), *source_args,
+                    version+('-1+toddy2' if name=='linux-pam' else '-1+toddy1'), str(destination), *source_args,
                     '--recipe', 'scripts/build/phase2/'+name+'-install.sh',
                     '--depends', depends, '--install', *conffiles], cwd=ROOT, check=True)
