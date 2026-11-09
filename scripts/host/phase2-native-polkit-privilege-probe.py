@@ -40,7 +40,7 @@ def main():
     password=secrets.token_urlsafe(32)
     result=subprocess.run(['chpasswd','-c','YESCRYPT'],input=name+':'+password+'\n',text=True,capture_output=True,timeout=20)
     assert result.returncode==0,'Ephemeral password creation failed; no output retained'
-    Path('/etc/pam.d/polkit-auth').write_text('auth required pam_unix.so\naccount required pam_unix.so\npassword required pam_deny.so\nsession required pam_deny.so\n')
+    Path('/etc/pam.d/polkit-auth').write_text('auth required pam_unix.so\naccount required pam_unix.so\npassword required pam_deny.so\nsession required pam_unix.so\n')
     actiondir=Path('/usr/share/polkit-1/actions');actiondir.mkdir(exist_ok=True)
     (actiondir/'org.toddy.test.policy').write_text('<?xml version="1.0"?><!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd"><policyconfig>'+''.join('<action id="org.toddy.test.'+a+'"><description>Native test</description><message>Authenticate native test</message><defaults><allow_any>no</allow_any><allow_inactive>no</allow_inactive><allow_active>no</allow_active></defaults></action>' for a in ['allow','deny','challenge'])+'</policyconfig>')
     rules=Path('/etc/polkit-1/rules.d/00-toddy-native-test.rules')
@@ -91,6 +91,12 @@ def main():
                 os.kill(child,signal.SIGKILL);os.waitpid(child,0)
                 raise AssertionError('Authentication deadline, never success: '+label)
             diagnostic={'name':label,'exit':status,'pam_prompts':prompts,'root_uid_line':bool(re.search(rb'(?m)^0\r?$',transcript)),'known_errors':{phrase:phrase.encode() in transcript for phrase in ['Authentication failure','Error executing command','FAILED','not authorized','Invalid cookie','SHELL']},'raw_tty_retained':False}
+            if expect_success and status!=0:
+                journal=subprocess.run(['journalctl','-b','--no-pager','-o','cat'],capture_output=True,text=True,timeout=10)
+                # Fixed vocabulary only; no log lines, raw tty, passwords or hashes.
+                vocabulary=['pam_start failed','pam_authenticate failed','pam_acct_mgmt failed','pam_open_session() failed','PAM unable to dlopen','PAM adding faulty module','No such file or directory','cookie','No session','No such session','error sending D-Bus','successfully authenticated','AuthenticationAgentResponse','Authentication failure','User not known','User account has expired','No authentication agent found']
+                diagnostic['terminal_error_classes']=[v for v in vocabulary if v.encode() in transcript]
+                diagnostic['journal_error_classes']=[v for v in vocabulary if v in journal.stdout]
             print('TODDY_B02_POLKIT_CASE',json.dumps(diagnostic),flush=True)
             assert prompts>0,'No real PAM prompt observed: '+label
             if expect_success:assert status==0 and re.search(rb'(?m)^0\r?$',transcript),'Expected root execution: '+label

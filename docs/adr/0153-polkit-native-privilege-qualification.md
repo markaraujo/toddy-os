@@ -19,7 +19,7 @@ The daemon remains its own unprivileged sysusers account. Test-only rules choose
 an ephemeral administrator; passwords are generated at runtime, fed over a real
 controlling terminal, never retained in output/evidence. The temporary PAM include
 uses required pam_unix auth/account, preserves the normal authentication delay and denies
-password/session management groups. Neither this include nor test rules
+password changes; session management uses required pam_unix because pkexec explicitly calls pam_open_session. Neither this include nor test rules
 constitutes installed owner policy. Preserve the generic privilege guard; any
 later native package privilege exception must name these exact paths/hashes and
 require successful real qualification first.
