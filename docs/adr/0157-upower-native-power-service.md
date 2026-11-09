@@ -1,6 +1,6 @@
 # ADR0157: frozen UPower Linux service and bounded native gate
 
-Status: portable stage qualified; real service gate prepared, 2026-11-09.
+Status: portable/native service qualified and owned; shared hwdb integration pending, 2026-11-09.
 
 Use frozen BLFS13.1-systemd UPower1.91.3, sourceSHA
 12227b3dcd34c5097bbda25984b192ea0bd5e11dce479358d9ef70415a38e4b6,
@@ -32,3 +32,15 @@ reconnect. Preserve hardening, no mock environment, unchanged39file fixture.
 Never invoke suspend/hibernate/reboot/power-off for this slice; no physical power,
 battery, iDevice or graphical settings acceptance is inferred.
 [Stage](../evidence/B02-upower-stage.json).
+
+Native context1 passed6outcomes, including both omitted original cases without
+skips, exact CLI/daemon1.91.3, actual no-battery VM state, invalid-method refusal,
+Stop and new owner/reconnect;39fixtures unchanged. Kernel stack-depth printk
+split final report chunk; recovered unchanged fragments with full SHA256 and
+focused positive/corruption-negative tests, no native replay. Child stopped0/
+OOMfalse, backing verified before restart. Owned1.91.3-1+toddy1 install/post0/0,
+52changed paths, installed help/GI/SDK/audit0. New hwdb source files require
+controlled regeneration of the existing Systemd-owned shared cache before any
+complete desktop/device acceptance; do not overwrite an owned cache directly.
+[Native](../evidence/B02-upower-native.json),
+[installation](../evidence/B02-upower-install.json).

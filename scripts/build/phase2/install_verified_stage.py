@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gnome-session': ('50.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gnome-desktop (= 44.5-1+toddy1), json-glib (= 1.10.8-1+toddy1), upower (= 1.91.3-1+toddy1), systemd (>= 261.2-1+toddy3)', 'gnome-session-50.1.tar.xz', 'usr/bin/gnome-session'),
+    'upower': ('1.91.3', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libgudev (= 238-1+toddy1), polkit (= 127-1+toddy1), systemd (>= 261.2-1+toddy3)', 'upower-v1.91.3.tar.bz2', 'usr/lib/pkgconfig/upower-glib.pc'),
     'accountsservice': ('26.27.3', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), polkit (= 127-1+toddy1), json-c (= 0.19-1+toddy1), libxcrypt (= 4.5.2-1+toddy1), systemd (>= 261.2-1+toddy3), shadow (>= 4.20.2-1)', 'accountsservice-26.27.3.tar.bz2', 'usr/lib/pkgconfig/accountsservice.pc'),
     'json-c': ('0.19', 'glibc (>= 2.44-1+toddy1)', 'json-c-0.19.tar.gz', 'usr/lib/pkgconfig/json-c.pc'),
     'polkit': ('127', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), linux-pam (= 1.7.2-1+toddy2), duktape (= 2.7.0-1+toddy1), systemd (>= 261.2-1+toddy3), expat (>= 2.10.0-1+toddy1), dbus (>= 1.16.2-1), shadow (>= 4.20.2-1)', 'polkit-127.tar.gz', 'usr/lib/pkgconfig/polkit-gobject-1.pc'),
@@ -211,6 +213,7 @@ if __name__ == '__main__':
     if name=='mozjs':qualifier='mozjs-signal-check-4'
     if name=='json-c' and (log/'json-c-finish-3.exit').exists():qualifier='json-c-finish-3'
     if name=='polkit':qualifier='polkit-full-1'
+    if name=='upower':qualifier='upower-consumer-4'
     if name=='accountsservice':qualifier='accountsservice-locale-5'
     if name=='dconf':qualifier='dconf-gsettings-4'
     if name=='python-dbusmock':qualifier='python-dbusmock-2'
@@ -1126,6 +1129,15 @@ if __name__ == '__main__':
     if name=='polkit':
         from qualify_polkit import qualify as qualify_polkit
         qualify_polkit(ROOT)
+    if name=='gnome-session':
+        from qualify_gnome_session import qualify as qualify_gnome_session
+        qualify_gnome_session(ROOT)
+    if name=='upower':
+        from prepare_upower_native import qualify as qualify_upower
+        from accept_upower_native import validate as validate_upower_native
+        qualify_upower()
+        acceptance=json.loads((log/'upower-native-acceptance-1.json').read_text())
+        assert acceptance['state']=='native-linux-service-qualified' and validate_upower_native(acceptance['proof'])==acceptance['summary']
     if name=='accountsservice':
         from qualify_accountsservice_stage import qualify as qualify_accountsservice
         from accept_accountsservice_native import validate as validate_accountsservice_native

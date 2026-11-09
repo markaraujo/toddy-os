@@ -42,6 +42,19 @@ class NativeReportIntegrity(unittest.TestCase):
         with self.assertRaises((AssertionError, ValueError)):
             decode('\n'.join(lines))
 
+    def test_exact_stack_depth_split_of_short_final_chunk_preserves_integrity(self):
+        expected, lines = self.transcript()
+        original = lines[-2]
+        self.assertLess(len(original.split(' ', 2)[2]), 1024)
+        cut = len(original)//2
+        lines[-2] = original[:cut] + '[    4.661323] python3 (246) used greatest stack depth: 12464 bytes left\n' + original[cut:]
+        report, _, recovered = decode('\n'.join(lines))
+        self.assertEqual(report, expected)
+        self.assertEqual(recovered[0]['payload_bytes_changed'], 0)
+        lines[-2] = lines[-2][:-1] + ('A' if lines[-2][-1] != 'A' else 'B')
+        with self.assertRaises((AssertionError, ValueError, zlib.error)):
+            decode('\n'.join(lines))
+
     def test_intact_base64_with_modified_bytes_is_rejected(self):
         _, lines = self.transcript()
         lines[1] = lines[1][:-1] + ('A' if lines[1][-1] != 'A' else 'B')

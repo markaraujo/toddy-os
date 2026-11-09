@@ -1,0 +1,64 @@
+{
+  "scope": "Native Linux power service/system-bus originals; no physical battery/power transition/GUI acceptance",
+  "proof": {
+    "report": {
+      "fixture_manifest_sha256": "605c5587a2a90c0804a49080c07e9599f46dd784c257fcacbecd869f416e1f20",
+      "kernel": "7.1.8-toddy",
+      "runs": [
+        {
+          "exit": 0,
+          "name": "original-system-bus-polkit",
+          "stderr": "",
+          "stdout": "TAP version 14\n# random seed: R02Sf4055499b6d055c2b3ed51c738f0298e\n# Start of power tests\nok 1 /power/polkit\n# End of power tests\n1..1\n"
+        },
+        {
+          "exit": 0,
+          "name": "original-system-bus-daemon",
+          "stderr": "",
+          "stdout": "TAP version 14\n# random seed: R02S0237a97fe834ad516e2ccebfd2b882e0\n# Start of power tests\n# UPower-DEBUG: failed to find files in 'UPower.conf.d': Error opening directory \u201c/src/etc/UPower.conf.d\u201d: No such file or directory\nok 1 /power/daemon\n# End of power tests\n1..1\n"
+        },
+        {
+          "exit": 0,
+          "name": "real-linux-service-query-and-cli-version",
+          "observed_device_paths": [],
+          "on_battery": false
+        },
+        {
+          "exit": 0,
+          "name": "invalid-method-refused-state-preserved"
+        },
+        {
+          "exit": 0,
+          "name": "stop-removes-bus-owner"
+        },
+        {
+          "exit": 0,
+          "name": "restart-reconnect-distinct-owner"
+        }
+      ],
+      "scope": "Actual Linux UPower daemon/system-bus/CLI/Stop/reconnect and two original bus-dependent tests; no physical battery, suspend, power-off or graphical acceptance",
+      "service_has_no_mock_environment": true,
+      "unchanged_fixture_files": 39,
+      "upstream_service_hardening_used": true
+    },
+    "summary": {
+      "kernel": "7.1.8-toddy",
+      "all_selected_exits_zero": true,
+      "report_sha256": "8cd1e980d3445e105d2b237be132ea3e3c0d21c4937834276c5dda47ddbcb1e7",
+      "chunks": 1
+    },
+    "child_stopped": true,
+    "child_exit": 0,
+    "child_oom": false,
+    "parent_verified_before_builder_restart": true,
+    "commit": "d8795c97fbf7c203d9dedbc2f3e378dacfc4e36d",
+    "source_probe_sha256": "6234405760387daa86a42d2513c8cbf1a32e73fb0270e9cf165a5688b54de822",
+    "recovered_protocol_markers": [
+      {
+        "line": 835,
+        "payload_bytes_changed": 0,
+        "reason": "Exact kernel Python stack-depth printk split base64; concatenate unchanged fragments and require full report SHA256"
+      }
+    ]
+  }
+}

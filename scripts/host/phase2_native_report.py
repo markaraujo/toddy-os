@@ -18,6 +18,12 @@ def decode(serial):
             recovered.append({'line':i+1,'payload_bytes_changed':0,'reason':'Exact marker split by kernel stack-depth printk'})
         if fragment is not None:
             number,value=fragment.split(' ',1);index=int(number)
+            stack_split=re.fullmatch(r'([A-Za-z0-9+/=]+)\[\s*[0-9]+\.[0-9]+\] python3 \([0-9]+\) used greatest stack depth: [0-9]+ bytes left',value)
+            if stack_split:
+                assert i+1<len(lines) and re.fullmatch(r'[A-Za-z0-9+/=]+',lines[i+1])
+                value=stack_split[1]+lines[i+1]
+                assert 0<len(value)<=1024
+                recovered.append({'line':i+1,'payload_bytes_changed':0,'reason':'Exact kernel Python stack-depth printk split base64; concatenate unchanged fragments and require full report SHA256'})
             interrupted=re.fullmatch(r'([A-Za-z0-9+/=]+)\[\s*[0-9]+\.[0-9]+\] (clocksource: Watchdog remote CPU [0-9]+ read timed out|systemd-shutdown\[[0-9]+\]: Syncing filesystems and block devices\.)',value)
             if interrupted:
                 assert i+1<len(lines) and re.fullmatch(r'[A-Za-z0-9+/=]+',lines[i+1])

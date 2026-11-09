@@ -1,0 +1,93 @@
+{
+  "scope": "Owned Linux UPower API/daemon; five portable and two native original cases, real service/query/refusal/Stop/reconnect. No physical battery, suspend/power-off or GNOME settings acceptance; shared hwdb cache update pending",
+  "source": {
+    "name": "upower",
+    "version": "1.91.3",
+    "filename": "upower-v1.91.3.tar.bz2",
+    "url": "https://gitlab.freedesktop.org/upower/upower/-/archive/v1.91.3/upower-v1.91.3.tar.bz2",
+    "sha256": "12227b3dcd34c5097bbda25984b192ea0bd5e11dce479358d9ef70415a38e4b6",
+    "reference": "BLFS13.1-systemd general/upower.html",
+    "book_page_sha256": "89862aad0be36627e9dfaff40b317fa87f261b29b66b2c800836225dd140e18a",
+    "book_md5": "bf09da2eb695224e249e38077460414c",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "transaction": {
+    "step": "b02-upower-install",
+    "started": "2026-11-09T17:26:00.089649+00:00",
+    "recipe_sha256": "c0b2c7a648cb7ac88d81b3dd9418fe07a827f9becbe6ec64ac67d766d3467a65",
+    "postcheck_sha256": "0efaa56f4cf19ccc9caa92821eca3f845820bec228f87c7fa4a4540477516ba4",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "64e0d4c00178b3c089230754a647e1961f1e2c21d8bf3e665d9318fa72f4ef01",
+    "recipe_pid": 1505,
+    "recipe_pgid": 1505,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T17:26:15.713306+00:00",
+    "changed_paths": 52,
+    "log_sha256": "0f0b133fc58fe4567b1c0f0ec29d7e3e37b1737c626fbaf6691d2ad26f5d9999",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "82a1018a83975002ddd44e32cdac74936e0e568d5cad23b69fb4e7cd18ff933d"
+  },
+  "timing": {
+    "step": "b02-upower-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 24.117,
+        "entries": 150810,
+        "regular_files": 134475,
+        "regular_bytes": 7134172797
+      },
+      {
+        "seconds": 13.654,
+        "entries": 150859,
+        "regular_files": 134516,
+        "regular_bytes": 7134891325
+      }
+    ],
+    "total_seconds": 40.737
+  },
+  "installed_consumer": {
+    "scope": "Installed CLI-help/GI/SDK/package audit; real native service separately qualified. Shared systemd hwdb cache update required before desktop/device acceptance; no physical battery claim",
+    "consumer": {
+      "version": "1.91.3",
+      "cli_help_exit": 0,
+      "typed_history_roundtrip": true,
+      "unknown_kind_refused_to_unknown": true,
+      "native_gi_types": [
+        "UpDevice",
+        "UpClient"
+      ],
+      "scope": "CLI/types/history object only; no live power/device acceptance"
+    },
+    "shared_hwdb_update": "pending controlled same-version cache integration"
+  },
+  "native_evidence": "docs/evidence/B02-upower-native.json",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-upower-install-evidence.tar.gz",
+    "sha256": "48045e983a4aba273756b17a87806af1b97be167d670418ef2cf1613d2a5042e",
+    "members": [
+      "build/b02-upower-install.success.json",
+      "build/b02-upower-install.manifest.json",
+      "build/b02-upower-install.log",
+      "phase2/upower-native-acceptance-1.json",
+      "phase2/upower-installed-consumer.json",
+      "phase2/upower-stage.json",
+      "phase2/b02-upower-install-timing.json",
+      "phase2/upower-1.job.json",
+      "phase2/upower-1.log",
+      "phase2/upower-1.exit",
+      "phase2/upower-consumer-2.log",
+      "phase2/upower-consumer-2.exit",
+      "phase2/upower-consumer-4.job.json",
+      "phase2/upower-consumer-4.log",
+      "phase2/upower-consumer-4.exit"
+    ]
+  }
+}

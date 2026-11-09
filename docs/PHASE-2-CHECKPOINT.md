@@ -7,7 +7,7 @@ tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO acceptance.
 
 ## Current slice and exact next action
 
-Current writer: none. AccountsService26.27.3-1+toddy1 OWNED, controlled
+AccountsService26.27.3-1+toddy1 OWNED, controlled
 install/post0/0 changed111paths, installed CLI/GI/SDK/APT0.
 [Installation](evidence/B02-accountsservice-install.json).
 Fresh native context2 passed10real account/password/PAM/peer-permission/protected
@@ -21,18 +21,34 @@ OOMfalse; backing identity verified before each builder restart; existing SIX
 scratch volumes and authenticated Systemd source bind restored. NEVER replay
 native acceptance, package install or prior completed tests; no GDM/GUI acceptance.
 
-Current slice: UPower1.91.3 stage/portable tests and corrected CLI/GI/history0.
-Five original cases passed; two bus-dependent originals explicitly omitted, no
-fake pass. Initial CLI-version system-bus failure and wrong GI method placement
-retained; consumer4passed/all original ELFs unchanged, no compile/stage/test replay.
-[Stage](evidence/B02-upower-stage.json), ADR0157. Native fixture39files,
-manifestSHA605c5587a2a90c0804a49080c07e9599f46dd784c257fcacbecd869f416e1f20.
-Exact next: clean reviewed commit then `python3 scripts/host/phase2_native_upower.py`
-once with `.local/phase2/native-upower-1-controller.log`, NEW context1.
-Inspect child/report/backing identity before restart; never retry old overlays.
-Then controlled owned promotion, frozen GNOME session dependencies and real
-GNOME/GDM/apps/network/audio/offline/focus/resource acceptance; finish ALL B02
-then stop before another story.
+UPower1.91.3-1+toddy1 OWNED/install/post0/0 changed52paths, CLI/GI/SDK/APT0.
+Five original portable cases reused; native6outcomes including remaining two
+original bus cases without skips, real hardened Linux daemon/CLI/query/refusal/
+Stop/reconnect.39fixtures unchanged, no mocks. [Native](evidence/B02-upower-native.json),
+[installation](evidence/B02-upower-install.json). Native context1 stopped0/OOMfalse,
+backing verified BEFORE builder restart; six scratch volumes/source bind restored.
+Kernel-interleaved report recovered from unchanged serial/full SHA256
+8cd1e980d3445e105d2b237be132ea3e3c0d21c4937834276c5dda47ddbcb1e7.
+NEVER rerun native/package/acceptance; Systemd shared hwdb cache integration is
+still REQUIRED before desktop/device acceptance. Do not overwrite owned cache.
+
+GNOME session50.1-1+toddy1 OWNED/install/post0/0 changed161paths, native5CLI help/
+version/refusal/private schema/session target0. [Proof](evidence/B02-gnome-session-install.json).
+No registered original tests; manual D-Bus client and actual SessionManager/GDM/
+GUI remain pending. Shared schema union still REQUIRED before graphical acceptance.
+Positional init-worker removed from help probe BEFORE first compiler job; exact
+old/new probe hashes in source prepared receipt. NEVER repeat build/install.
+
+Current writer: none. Host free108766560256B (~1.3GiB over100GiBreserve).
+Review-copy directories are already small; no new host source retirement executed.
+Exact next: new guarded virtual free-block discard generation after completed
+Mozilla baseline source custody (4.36GBtarget freed, no host reclamation yet).
+Verify prior custody/archive/sole marker, target virtual serial/root/mount/discard,
+no writer and current full root/pending artifacts before trim; use a NEW receipt,
+never old virtual_discard_checkpoint.main/trim, no reformat or source retirement
+replay. Reconcile real postconditions after interruption, no uncertain trim replay.
+Then remaining GNOME/GDM/apps and final shared cache unions/native GUI checks.
+Complete ALL B02 then stop before another story.
 
 JSON-C0.19-1+toddy1 now OWNED/install/post0/0,64changed paths.28original programs
 covered by27reused passes plus repaired original build-only CLI case; original
@@ -80,8 +96,12 @@ Their UUID/inodes remain in original build-volume receipts; latest actual restor
 bind (sourceinode8930333/inputinode7547189,7193files/SHA2a683ffe0cdab7349a4b2b64b932fab647baaab4e7ab5b7c64520ff3443c5667).
 No old native overlay may boot after its backing changed.
 
-Latest verified public portal commit d71af82: safety42638555043/planning42638554955/
-Pages42638554874 allsuccess, HTTP200/exact indexSHA4e1a9feac9a85aee08c45bdaa25e972ac3b8b86b14056587620caaf809469332.
-Later native corrections still need regular push/portal verification. No release claim.
+Latest verified public portal commit5652d651a09d251d974759220998011db92e44eb:
+safety42663857576/planning42663857709/Pages42663857700 allsuccess, HTTP200/exact
+indexSHAb30c302cf55a053772e78065a4a70b118c7039ac7afa18c1c6e97f25a744fd8c.
+Prior safety42663415109 refused two historical JSON-C public object/header SHA256
+false positives; actual native bytes recomputed and exact historical fingerprints
+reviewed, full-history scanner0. No broad suppression or credential exception.
+Later native changes need regular push/portal verification. No release claim.
 No host installation/physical disks/global security weakening/paid services/new agents
 or model changes/workstation RAG. Finish B02 before honoring the requested stop.

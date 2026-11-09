@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-09T17:18:03.976750+00:00
+Updated: 2026-11-09T17:31:07.365352+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T17:18:03.976750+00:00
+Last verified: 2026-11-09T17:31:07.365352+00:00
 
 Verified:
 
@@ -92,8 +92,10 @@ Verified:
 - Owned Polkit127-1+toddy1/193paths: original native5programs/59TAP cases and11actual standard-helper expected outcomes passed,479fixture files unchanged. Root-only UID/EUID/GID0 proof, wrong password/unsolicited cookie/NNP/Stop-no-effect/helper cleanup/recovery/reconnect/revoked action replay. Exact root:root4755 helpers/root:27 0750 rules, locked UID27 service account. Initial install0/post1 missing-proc consumer reconciled verify-only0/0 changed0; installed parser13+9/CLI/APT0. Optional socket transport remains failed/unqualified, no GNOME permission UI acceptance.
 - Owned JSON-C0.19 install/post0/0 changed64paths: original27program passes reused, only missing upstream build-only CLI/security test built/run;28covered, original ELFs unchanged. Actual strict identity/UTF8/depth/refusal/recovery C consumer staged/installed/APT0. AccountsService26.27.3 compile/stage/CLI/GI0;14original programs plus four repaired original daemon cases,27ELFs unchanged. Synthetic input-only machine-id/private en_IE fixture, no global identity/locale changes. Real account/privilege/GDM gate pending.
 - AccountsService26.27.3-1+toddy1 owned/install/post0/0 changed111paths. Actual native10account/password/PAM/peer-permission/protected-file/Stop/reconnect/persistence outcomes passed;94fixture files unchanged, ephemeral users removed. Initial protected-icon message gate failure retained/source-backed correction only, no rebuild. GNOME/GDM GUI pending.
+- UPower1.91.3-1+toddy1 owned/install/post0/0 changed52paths. Five original portable plus two actual native system-bus original cases passed; real Linux service/query/CLI/refusal/Stop/reconnect,39files unchanged. Native report checksum recovered from exact kernel-console split, no rerun. Shared Systemd hwdb cache integration remains pending before complete desktop/device acceptance; optional battery/Umockdev/power transitions unqualified.
+- GNOME session50.1-1+toddy1 owned/install/post0/0 changed161paths, native5CLI help/version/invalid-option refusal/private two-key schema/session target0. No registered original automated tests; manual D-Bus client and real SessionManager/login/desktop gate pending. Shared schema cache union pending, no graphical acceptance.
 
-Running: AccountsService owned; next frozen UPower/session dependencies and native GNOME/apps integration. Complete ALL B02 then stop before another story.
+Running: No guest writer. Next bounded virtual-disk capacity recovery for verified retired Mozilla baseline source, then remaining GNOME/GDM/application dependencies and controlled shared cache unions. Complete ALL B02 then stop.
 
 Remaining:
 

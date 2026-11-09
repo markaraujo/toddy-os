@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-09T17:18:03.976750+00:00",
+  "updated_at": "2026-11-09T17:31:07.365352+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05\u2013B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -349,7 +349,11 @@
         "docs/evidence/B02-rust-input.json",
         "docs/evidence/B02-llvm-stage-retirement.json",
         "docs/evidence/B02-accountsservice-native.json",
-        "docs/evidence/B02-accountsservice-install.json"
+        "docs/evidence/B02-accountsservice-install.json",
+        "docs/evidence/B02-upower-stage.json",
+        "docs/evidence/B02-upower-native.json",
+        "docs/evidence/B02-upower-install.json",
+        "docs/evidence/B02-gnome-session-install.json"
       ]
     },
     {
@@ -666,14 +670,16 @@
       "Owned DConf0.49.0 install/post0/0 changed41paths:14original core/runtime/ABI+2GVDB programs0; exact15bundled GVDB files matched immutable upstream commit. Actual installed CLI/GSettings private user DB typed persistence/malformed refusal/new bus/reset and generated GIO cache/audits0. No GNOME graphical acceptance.",
       "Owned Polkit127-1+toddy1/193paths: original native5programs/59TAP cases and11actual standard-helper expected outcomes passed,479fixture files unchanged. Root-only UID/EUID/GID0 proof, wrong password/unsolicited cookie/NNP/Stop-no-effect/helper cleanup/recovery/reconnect/revoked action replay. Exact root:root4755 helpers/root:27 0750 rules, locked UID27 service account. Initial install0/post1 missing-proc consumer reconciled verify-only0/0 changed0; installed parser13+9/CLI/APT0. Optional socket transport remains failed/unqualified, no GNOME permission UI acceptance.",
       "Owned JSON-C0.19 install/post0/0 changed64paths: original27program passes reused, only missing upstream build-only CLI/security test built/run;28covered, original ELFs unchanged. Actual strict identity/UTF8/depth/refusal/recovery C consumer staged/installed/APT0. AccountsService26.27.3 compile/stage/CLI/GI0;14original programs plus four repaired original daemon cases,27ELFs unchanged. Synthetic input-only machine-id/private en_IE fixture, no global identity/locale changes. Real account/privilege/GDM gate pending.",
-      "AccountsService26.27.3-1+toddy1 owned/install/post0/0 changed111paths. Actual native10account/password/PAM/peer-permission/protected-file/Stop/reconnect/persistence outcomes passed;94fixture files unchanged, ephemeral users removed. Initial protected-icon message gate failure retained/source-backed correction only, no rebuild. GNOME/GDM GUI pending."
+      "AccountsService26.27.3-1+toddy1 owned/install/post0/0 changed111paths. Actual native10account/password/PAM/peer-permission/protected-file/Stop/reconnect/persistence outcomes passed;94fixture files unchanged, ephemeral users removed. Initial protected-icon message gate failure retained/source-backed correction only, no rebuild. GNOME/GDM GUI pending.",
+      "UPower1.91.3-1+toddy1 owned/install/post0/0 changed52paths. Five original portable plus two actual native system-bus original cases passed; real Linux service/query/CLI/refusal/Stop/reconnect,39files unchanged. Native report checksum recovered from exact kernel-console split, no rerun. Shared Systemd hwdb cache integration remains pending before complete desktop/device acceptance; optional battery/Umockdev/power transitions unqualified.",
+      "GNOME session50.1-1+toddy1 owned/install/post0/0 changed161paths, native5CLI help/version/invalid-option refusal/private two-key schema/session target0. No registered original automated tests; manual D-Bus client and real SessionManager/login/desktop gate pending. Shared schema cache union pending, no graphical acceptance."
     ],
-    "running": "AccountsService owned; next frozen UPower/session dependencies and native GNOME/apps integration. Complete ALL B02 then stop before another story.",
+    "running": "No guest writer. Next bounded virtual-disk capacity recovery for verified retired Mozilla baseline source, then remaining GNOME/GDM/application dependencies and controlled shared cache unions. Complete ALL B02 then stop.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-09T17:18:03.976750+00:00",
+    "verified_at": "2026-11-09T17:31:07.365352+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }
