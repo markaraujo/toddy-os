@@ -1566,6 +1566,101 @@
       "book_md5": "4dfad1e56bf8ad25dfab58add17e7146",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "gnome-desktop",
+      "version": "44.5",
+      "filename": "gnome-desktop-44.5.tar.xz",
+      "url": "https://download.gnome.org/sources/gnome-desktop/44/gnome-desktop-44.5.tar.xz",
+      "sha256": "20e0995a6e3a03e8c1026c5a27bc3f45e69ffcc392ad743dcab6107a541d232f",
+      "reference": "BLFS13.1-systemd gnome/gnome-desktop.html",
+      "book_page_sha256": "ce0a6600a4bf283e28c24838044085d31c145bd127e8b30edc9d6ce0bff22c9d",
+      "book_md5": "d99550c41db721f4a7f302bd95eef5c2",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "json-glib",
+      "version": "1.10.8",
+      "filename": "json-glib-1.10.8.tar.xz",
+      "url": "https://download.gnome.org/sources/json-glib/1.10/json-glib-1.10.8.tar.xz",
+      "sha256": "55c5c141a564245b8f8fbe7698663c87a45a7333c2a2c56f06f811ab73b212dd",
+      "reference": "BLFS13.1-systemd general/json-glib.html",
+      "book_page_sha256": "92884bd2a095e8315de0354827307a2a5ea0ff3b9ae7581e886c270546ffd3aa",
+      "book_md5": "95c3d5dd56d4ada808480739889b75bc",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libogg",
+      "version": "1.3.6",
+      "filename": "libogg-1.3.6.tar.xz",
+      "url": "https://downloads.xiph.org/releases/ogg/libogg-1.3.6.tar.xz",
+      "sha256": "5c8253428e181840cd20d41f3ca16557a9cc04bad4a3d04cce84808677fa1061",
+      "reference": "BLFS13.1-systemd multimedia/libogg.html",
+      "book_page_sha256": "89aaa275ecc7dc170f5ae209dc9c0fd3176984a631610dde6ecdeb37b566ba33",
+      "book_md5": "529275432dff072f63d4ed0f1f961384",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libvorbis",
+      "version": "1.3.7",
+      "filename": "libvorbis-1.3.7.tar.xz",
+      "url": "https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz",
+      "sha256": "b33cc4934322bcbf6efcbacf49e3ca01aadbea4114ec9589d1b1e9d20f72954b",
+      "reference": "BLFS13.1-systemd multimedia/libvorbis.html",
+      "book_page_sha256": "c1fb33b692e6449864720cc0a7ca4934725515120407ef05af8bde92e48f2b9a",
+      "book_md5": "50902641d358135f06a8392e61c9ac77",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libcanberra",
+      "version": "0.30",
+      "filename": "libcanberra-0.30.tar.xz",
+      "url": "https://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz",
+      "sha256": "c2b671e67e0c288a69fc33dc1b6f1b534d07882c2aceed37004bf48c601afa72",
+      "reference": "BLFS13.1-systemd multimedia/libcanberra.html",
+      "book_page_sha256": "d887c61522d79bdbf9f65e02009cbcee7438af28536a199078bc79690dcef6d2",
+      "integrity": "Official HTTPS source; SHA256 frozen before extraction/use; frozen book legacy MD5 matched",
+      "status": "source_verified",
+      "book_md5": "34cb7e4430afaf6f447c4ebdb9b42072"
+    },
+    {
+      "name": "libcanberra-wayland-patch",
+      "version": "0.30-wayland-1",
+      "filename": "libcanberra-0.30-wayland-1.patch",
+      "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/libcanberra-0.30-wayland-1.patch",
+      "sha256": "e48ce8f952c2b71e38866b95aa21e02437924ed6f9c4409b64e8e4cb392b9013",
+      "reference": "BLFS13.1-systemd multimedia/libcanberra.html",
+      "book_page_sha256": "d887c61522d79bdbf9f65e02009cbcee7438af28536a199078bc79690dcef6d2",
+      "integrity": "Official HTTPS source; SHA256 frozen before extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "pulseaudio",
+      "version": "17.0",
+      "filename": "pulseaudio-17.0.tar.xz",
+      "url": "https://www.freedesktop.org/software/pulseaudio/releases/pulseaudio-17.0.tar.xz",
+      "sha256": "053794d6671a3e397d849e478a80b82a63cb9d8ca296bd35b73317bb5ceb87b5",
+      "reference": "BLFS13.1-systemd multimedia/pulseaudio.html",
+      "book_page_sha256": "5d832a2ac415b466f807fb7b817d3f97fd7d84bbc1e51d6a407c9003dada1ea5",
+      "book_md5": "c4a3596a26ff4b9dcd0c394dd1d4f8ee",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libsndfile",
+      "version": "1.2.2",
+      "filename": "libsndfile-1.2.2.tar.xz",
+      "url": "https://github.com/libsndfile/libsndfile/releases/download/1.2.2/libsndfile-1.2.2.tar.xz",
+      "sha256": "3799ca9924d3125038880367bf1468e53a1b7e3686a934f098b7e1d286cdb80e",
+      "reference": "BLFS13.1-systemd multimedia/libsndfile.html",
+      "book_page_sha256": "9445ce39101de23eccb8d3ab9c081678463557f6ab0949af1d2d90ead8cd5513",
+      "book_md5": "04e2e6f726da7c5dc87f8cf72f250d04",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

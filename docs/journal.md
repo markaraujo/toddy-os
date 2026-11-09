@@ -2722,3 +2722,44 @@ show-stylus Python CLI/man excluded with exact source/generated hashes. Native
 GTK3.24.52 Wayland bootstrap source/stage0/4RGBA/C/GI/private schema0, no display
 claim. Capacity reserve preflight passed; next owned schema/immodules union
 without changing accepted GTK4 binaries or replaying its unchanged tests.
+
+2026-11-09: GTK3 native resources/private union0; initial fixed/relocatable
+count assertion corrected without cache/library replay. Owned GTK3 plus same-owner
+GTK4 schema/legal-only upgrade installed/post0/0,624otherGTK4regular files unchanged;
+56fixed+6relocatable schemas/461defaults/11IM metadata0, no display acceptance.
+GNOME Desktop44.5 modern source/background/language/Cdata0 and owned0/0. Direct
+original target needed complete upstream compile context; two bounded corrections
+retained and second succeeds, no accepted library/bg-test replay. JSON-GLib1.10.8
+full17original drivers/conformance/C/GI0; root promotion running, not yet accepted.
+Commitc85d4e0 publicHTTP200 equals committed status/static assets,
+SHA6bf3c5bc6c5809820b2f0214a7be6dcef04bd3907171bf192f64d57947517652.
+
+2026-11-09: JSON-GLib1.10.8 owned install/post0/0, full17original drivers/570TAP
+cases0/skips0 and C/GI/parser-refusal0. Started Ogg1.3.6 original bitpack/framing
+and packet/CRC APIs as native audio dependency; actual desktop output remains
+pending native GNOME. No other story started; owner boundary remains ALL B02 then stop.
+
+### B02 owned Ogg container and Vorbis preparation — 2026-11-09
+
+Ogg1.3.6 original bitpack/framing2PASS and packet/page/CRC refusal C0;
+controlled native install/post0/0, raw19 evidence retained. Frozen BLFS13.1
+multimedia/libvorbis.html selected1.3.7, official Xiph archive matched book MD5
+and frozen SHA256 before use. Exact original codec output inspected: no
+ALL TESTS PASSED banner. Before first job only, guarded recipe oracle corrected
+to actual528 roundtrips; prior recipe and before/after hashes retained.
+Single source job libvorbis-1, no audible/session acceptance inferred.
+Owner boundary remains complete all B02 then stop.
+
+### B02 codec integration and client audio prerequisites — 2026-11-09
+
+Vorbis1.3.7 original528codec roundtrips passed. Own strict consumer compile
+required the header's documented OV_EXCLUDE_STATIC_CALLBACKS; probe-only0
+preserves149stagefiles and original suite. Native install0/post1 retained: own
+consumer explicitly links the codec/Ogg symbols it calls. Complete installed
+payload/archive verify-only0/0, changed_paths0; no reinstall. Raw26 retained.
+Frozen BLFS13.1 multimedia/pulseaudio.html explicitly supports daemon=false
+client-only libraries with Pipewire/Wireplumber; selected this existing path,
+not a second sound daemon. Required libsndfile1.2.2 source authenticated and
+GCC15+ ALAC bool keyword correction applied before build as documented by
+the frozen book. PCM/internal codec/ALSA profile; optional external codecs
+omitted. Single libsndfile-1 source job, actual audio/session still pending.

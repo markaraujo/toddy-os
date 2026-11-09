@@ -2482,7 +2482,7 @@
       "name": "gtk",
       "version": "4.22.4",
       "license": "LicenseRef-gtk-per-file",
-      "evidence": "Frozen GTK4.22.4 primary/per-file terms and full named/header collection retained. Native Wayland bootstrap30selected headless source cases/C API/GI/schema0; no native window/GNOME/media acceptance. Owned install0/original post1 preserved; GTK4 namespace postcheck-only recovery0/0 with unchanged full installed payload/archive,2132 retained notices; ADR0136. Controlled desktop schema/legal metadata upgrade4.22.4-1+toddy2 installed/post0/0,2134 notices; other GTK runtime payload entries unchanged.",
+      "evidence": "Frozen GTK4.22.4 primary/per-file terms and full named/header collection retained. Native Wayland bootstrap30selected headless source cases/C API/GI/schema0; no native window/GNOME/media acceptance. Owned install0/original post1 preserved; GTK4 namespace postcheck-only recovery0/0 with unchanged full installed payload/archive,2132 retained notices; ADR0136. Controlled desktop schema/legal metadata upgrade4.22.4-1+toddy2 installed/post0/0,2134 notices; other GTK runtime payload entries unchanged. GTK3 union metadata-only upgrade4.22.4-1+toddy3 installed/post0/0,56fixed+6relocatable schemas/461typed defaults;624nonlegal regular files unchanged, no library rebuild.",
       "extra_license_headers": {
         "gtk-4.22.4.tar.xz": {
           "prefixes": [
@@ -10421,7 +10421,7 @@
       "name": "gtk3",
       "version": "3.24.52",
       "license": "LicenseRef-gtk3-per-file",
-      "evidence": "Frozen primary COPYING LGPL2.0 and per-file terms; retain exact named/header notices. Native Wayland bootstrap4RGBA/C/GI/private schemas0, no native window/GDM/GUI acceptance. Owned shared schema/immodules integration pending.",
+      "evidence": "Frozen primary COPYING LGPL2.0 and per-file terms; retain exact named/header notices. Native Wayland bootstrap4RGBA/C/GI/private schemas0, no native window/GDM/GUI acceptance. Owned schema/IM integration installed0/post0 with same-owner GTK4 metadata-only update;624oldGTK4regular files unchanged.",
       "extra_license_headers": {
         "gtk-3.24.52.tar.xz": {
           "prefixes": [
@@ -10436,7 +10436,44 @@
           ]
         }
       },
-      "runtime_inclusion": "B02 GTK3 Wayland/GI bootstrap for planned GDM; source/stage only until owned resource qualification"
+      "runtime_inclusion": "Owned B02 GTK3 Wayland/GI bootstrap; actual graphical window/GDM/IME input tests pending"
+    },
+    {
+      "name": "gnome-desktop",
+      "version": "44.5",
+      "license": "LicenseRef-gnome-desktop-per-file",
+      "evidence": "Exact frozen primary COPYING/named/per-file C/header conditions retained; native modern common APIs/background XML and original language test, no graphical acceptance",
+      "extra_license_headers": {
+        "gnome-desktop-44.5.tar.xz": {
+          "prefixes": [
+            ""
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      },
+      "runtime_inclusion": "B02 modern GTK4/base/BG/RR/GI/systemd+udev libraries; legacy GTK3 library/debug tools/docs omitted; actual desktop/thumbnail/clock integration pending"
+    },
+    {
+      "name": "json-glib",
+      "version": "1.10.8",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Frozen primary COPYING/per-file SPDX terms retained; full provided native unit/conformance corpus and C/GI APIs",
+      "runtime_inclusion": "B02 GNOME shared JSON/GObject parser/tools/GI; no standalone application or network service qualification"
+    },
+    {
+      "name": "libvorbis",
+      "version": "1.3.7",
+      "license": "BSD-3-Clause",
+      "evidence": "Exact primary source COPYING Xiph.org three-clause notice retained in native package; no patent-license claim inferred"
+    },
+    {
+      "name": "libsndfile",
+      "version": "1.2.2",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Primary COPYING and per-file source notices retained; optional external codecs disabled"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

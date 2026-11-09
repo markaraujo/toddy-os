@@ -1,0 +1,116 @@
+{
+  "scope": "Native JSON-GLib original unit/conformance and C/GI parser APIs only; no desktop/network/service acceptance",
+  "upstream_drivers": [
+    {
+      "name": "json-glib:array",
+      "exit": 0,
+      "passed_cases": 4,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:boxed",
+      "exit": 0,
+      "passed_cases": 2,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:builder",
+      "exit": 0,
+      "passed_cases": 3,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:generator",
+      "exit": 0,
+      "passed_cases": 17,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:gvariant",
+      "exit": 0,
+      "passed_cases": 89,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:invalid",
+      "exit": 0,
+      "passed_cases": 29,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:object",
+      "exit": 0,
+      "passed_cases": 9,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:parser",
+      "exit": 0,
+      "passed_cases": 18,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:path",
+      "exit": 0,
+      "passed_cases": 32,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:reader",
+      "exit": 0,
+      "passed_cases": 6,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:serialize-simple",
+      "exit": 0,
+      "passed_cases": 1,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:node",
+      "exit": 0,
+      "passed_cases": 28,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:serialize-complex",
+      "exit": 0,
+      "passed_cases": 1,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:serialize-full",
+      "exit": 0,
+      "passed_cases": 1,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:conformance-implementation",
+      "exit": 0,
+      "passed_cases": 35,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:conformance-valid",
+      "exit": 0,
+      "passed_cases": 95,
+      "skipped_cases": 0
+    },
+    {
+      "name": "json-glib:conformance-invalid",
+      "exit": 0,
+      "passed_cases": 200,
+      "skipped_cases": 0
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "gi_exit": 0,
+  "profile": "Shared library/tools/GI/translations, full provided conformance corpus; docs/manual/installed test executables omitted",
+  "counting": "Actual TAP case executions; intentional error-refusal fixtures are passes only after original assertions. Skips listed separately.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-json-glib-native-evidence.tar.gz",
+    "members": 14,
+    "sha256": "9e5158e7cde94e227de19c245291cded1030dcae6c7ca9543a8d4e398fc7aef3"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "scope": "Original Vorbis codec write/read suite and native C header/metadata/refusal APIs; no audible or desktop acceptance",
+  "upstream_exit": 0,
+  "upstream_codec_roundtrips": 528,
+  "staged_consumer_exit": 0,
+  "consumer_recovery": "Use documented OV_EXCLUDE_STATIC_CALLBACKS for unused header convenience definitions under strict own C consumer. No upstream/library/stage replay.",
+  "stage_files_unchanged": 149,
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libvorbis-native-evidence.tar.gz",
+    "members": 26,
+    "sha256": "8a32a93401ce5f37a5119139a3744199415f17f67f747db401b8883d21ce0ef3"
+  }
+}

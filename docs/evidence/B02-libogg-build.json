@@ -1,0 +1,22 @@
+{
+  "scope": "Native Ogg original bitpacking/framing and C packet/CRC APIs only; no decoded audio, device or desktop output acceptance",
+  "upstream_drivers": [
+    {
+      "name": "test_bitwise",
+      "result": "PASS",
+      "exit": 0
+    },
+    {
+      "name": "test_framing",
+      "result": "PASS",
+      "exit": 0
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "profile": "Shared Ogg container library/headers/data; no new audio service or user configuration",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libogg-native-evidence.tar.gz",
+    "members": 19,
+    "sha256": "daf37e696a529c71881bf98cc15e37331aec29c78631a902d80f350173363a51"
+  }
+}

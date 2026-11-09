@@ -19,6 +19,12 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libvorbis': ('1.3.7', 'glibc (>= 2.44-1), libogg (= 1.3.6-1+toddy1)', 'libvorbis-1.3.7.tar.xz', 'usr/lib/pkgconfig/vorbis.pc'),
+    'libogg': ('1.3.6', 'glibc (>= 2.44-1)', 'libogg-1.3.6.tar.xz', 'usr/lib/pkgconfig/ogg.pc'),
+    'json-glib': ('1.10.8', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1)',
+                  'json-glib-1.10.8.tar.xz', 'usr/lib/pkgconfig/json-glib-1.0.pc'),
+    'gnome-desktop': ('44.5', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), gtk (>= 4.22.4-1+toddy3), gdk-pixbuf (= 2.44.7-1+toddy2), fontconfig (>= 2.18.3-1+toddy1), xkeyboard-config (= 2.48-1+toddy1), iso-codes (= 4.20.1-1+toddy1), systemd (>= 261.2-1), libseccomp (= 2.6.1-1+toddy1), bubblewrap (= 0.11.2-1+toddy1)',
+                       'gnome-desktop-44.5.tar.xz', 'usr/lib/pkgconfig/gnome-desktop-4.pc'),
     'libwacom': ('2.19.1', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), libgudev (= 238-1+toddy1), libevdev (= 1.13.6-1+toddy1), python (>= 3.14)',
                  'libwacom-2.19.1.tar.xz', 'usr/lib/pkgconfig/libwacom.pc'),
     'libgudev': ('238', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), systemd (>= 261.2-1)',
@@ -167,11 +173,13 @@ if __name__ == '__main__':
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
     if name=='at-spi2-core' and (log/'atspi-finish-4.job.json').exists():qualifier='atspi-finish-4'
     if name=='bubblewrap':qualifier='bubblewrap-stage-6'
+    if name=='libvorbis':qualifier='libvorbis-probe-2'
     if name=='libei':qualifier='libei-dtd-2'
     if name=='libinput':qualifier='libinput-probe-2'
     if name=='alsa-lib':qualifier='alsa-lib-probe-2'
     if name=='lua':qualifier='lua-probe-3'
     if name=='wireplumber':qualifier='wireplumber-pot-3'
+    if name=='gnome-desktop':qualifier='gnome-desktop-finish-3'
     if name=='libxml2-python':qualifier='libxml2-python-probe-5'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
@@ -780,6 +788,43 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='libvorbis':
+        work=Path('/mnt/lfs/sources/phase2/work/libvorbis-1');source=Path('/mnt/lfs/sources/phase2/inputs/libvorbis-1.3.7')
+        recipe=(ROOT/'scripts/build/phase2/libvorbis-build.sh').read_text();probe=(ROOT/'scripts/build/phase2/libvorbis-probe.c').read_text()
+        assert (source/'toddy-build.sh').read_text()==recipe
+        assert (source/'toddy-probe.c').read_text()==probe.replace('#define OV_EXCLUDE_STATIC_CALLBACKS\n','')
+        code=(ROOT/'scripts/build/phase2/vorbis_probe_qualify.py').read_text()+'\nmain('+repr(probe)+','+repr(recipe)+')\n'
+        assert json.loads((log/'libvorbis-probe-2.job.json').read_text())['command'][-3:]==['python3','-c',code]
+        assert (work/'probe-2/consumer.exit').read_text().strip()=='0'
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==proof['upstream_exit']==0 and proof['upstream_codec_roundtrips']==528
+    if name=='libogg':
+        work=Path('/mnt/lfs/sources/phase2/work/libogg-1');source=Path('/mnt/lfs/sources/phase2/inputs/libogg-1.3.6')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libogg-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libogg-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==0
+        assert [r['name'] for r in proof['upstream_drivers']]==['test_bitwise','test_framing']
+        for row in proof['upstream_drivers']:
+            assert row['result']=='PASS' and row['exit']==0
+            assert ':test-result: PASS' in (work/('compile/src/'+row['name']+'.trs')).read_text()
+    if name=='json-glib':
+        work=Path('/mnt/lfs/sources/phase2/work/json-glib-1');source=Path('/mnt/lfs/sources/phase2/inputs/json-glib-1.10.8')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/json-glib-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/json-glib-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==proof['gi_exit']==0
+        rows=[json.loads(s) for s in (work/'compile/meson-logs/testlog.json').read_text().splitlines() if s.strip()]
+        assert len(rows)==17 and all(r['result']=='OK' and r['returncode']==0 for r in rows)
+    if name=='gnome-desktop':
+        work=Path('/mnt/lfs/sources/phase2/work/gnome-desktop-1');source=Path('/mnt/lfs/sources/phase2/inputs/gnome-desktop-44.5')
+        recipe=(ROOT/'scripts/build/phase2/gnome-desktop-build.sh').read_text()
+        original=recipe.replace("cc -DG_LOG_DOMAIN='\"GnomeDesktop\"' -I/build/compile/libgnome-desktop",'cc -DGNOME_DESKTOP_USE_UNSTABLE_API').replace('gnome-desktop-4 gio-2.0','gnome-desktop-4')
+        assert (source/'toddy-build.sh').read_text()==original
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/gnome-desktop-probe.c').read_bytes()
+        code=(ROOT/'scripts/build/phase2/gnome_desktop_finish.py').read_text()+'\nmain('+repr(recipe)+",'finish-3')\n"
+        assert json.loads((log/'gnome-desktop-finish-3.job.json').read_text())['command'][-3:]==['python3','-c',code]
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==0 and proof['original_languages_cases']==1
+        assert 'ok 1 /languages/using-null-locale' in (work/'original-languages.log').read_text()
+        rows=[json.loads(s) for s in (work/'compile/meson-logs/testlog.json').read_text().splitlines() if s.strip()]
+        assert len(rows)==1 and rows[0]['name'].endswith('bg-slide-show') and rows[0]['result']=='OK' and rows[0]['returncode']==0
     if name=='libwacom':
         work=Path('/mnt/lfs/sources/phase2/work/libwacom-1');source=Path('/mnt/lfs/sources/phase2/inputs/libwacom-2.19.1')
         assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libwacom-build.sh').read_bytes()

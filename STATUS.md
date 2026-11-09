@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T03:25:32.328726+00:00
+Last verified: 2026-11-09T04:55:03.935420+00:00
 
 Verified:
 
@@ -50,8 +50,12 @@ Verified:
 - Owned libnotify0.8.8 install/post0/0, native C/GI and empty private-bus ServiceUnknown refusal0; optional original mocks unavailable/not passes, no displayed notification.
 - Owned GUdev238 install/post0/0, unchanged original environment tags1case/C/GI0, no sysfs/device exposure. Three umockdev suites unavailable/not passes; no actual device/event acceptance.
 - Owned libwacom2.19.1 recipe/post0/0,8original data/CLI drivers and8725Ccases0; optional Python tool/suites omitted, Git SKIP77 not pass; no physical tablet/hwdb acceptance. GTK3.24.52 Wayland bootstrap source/stage4RGBA/C/GI/private schema0, not installed or display-qualified.
+- Owned GTK3.24.52 and GTK4 schema/legal-only toddy3 upgrade recipe/post0/0:56fixed+6relocatable schemas/461defaults/11IM metadata0,624oldGTK4regular files unchanged. Owned GNOME Desktop44.5 source/bg/languages/C/GIR and install/post0/0; no actual graphical/session acceptance.
+- Owned JSON-GLib1.10.8 install/post0/0,17original unit/conformance drivers/570TAPcases0/skips0 and C/GI/parser-refusal0; no UI/network/service acceptance.
+- Owned Ogg1.3.6 recipe/post0/0, original bitpack/framing2PASS and packet/page/CRC-refusal C0; no audible output acceptance.
+- Owned Vorbis1.3.7:528original codec roundtrips/C0,149stagefiles unchanged after documented callback macro correction; install0/post1 direct-link omission reconciled verify-only0/0 changed_paths0, no reinstall/audio claim.
 
-Running: No guest writer; GTK3 source job gtk3-1 terminal0. Next private schema/immodules union then controlled GTK3 install/GTK4 schema-only owner upgrade, preserving accepted GTK4 binaries. Complete ALL B02 then pause.
+Running: Single unprivileged libsndfile1.2.2 source job libsndfile-1 PID57847; next PulseAudio17 client-only libraries for Pipewire, then Canberra. Native GNOME/login/apps/network/audio/offline pending; complete ALL B02 then pause.
 
 Remaining:
 

@@ -1,0 +1,19 @@
+{
+  "step": "b02-json-glib-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T04:27:42.653827+00:00",
+  "package": {
+    "name": "json-glib",
+    "version": "1.10.8-1+toddy1",
+    "archive_sha256": "cb48fb71e78f46d12ea0760c7c438e1f06e80bb8f0087e4556b05fd6ca725043"
+  },
+  "payload_entries": 229,
+  "consumer": {
+    "scope": "Native installed JSON-GLib Unicode/typed object/parser refusal and GIR API; no desktop/network/service acceptance",
+    "name": "json-glib",
+    "version": "1.10.8",
+    "native_consumer_exit": 0,
+    "stdout": "native JSON-GLib Unicode/object/int/bool and malformed-input refusal; no network/service/UI acceptance"
+  }
+}

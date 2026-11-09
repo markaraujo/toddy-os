@@ -1,0 +1,19 @@
+{
+  "step": "b02-libogg-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T04:47:28.614790+00:00",
+  "package": {
+    "name": "libogg",
+    "version": "1.3.6-1+toddy1",
+    "archive_sha256": "69ea951e9dd5fe412f0d329a75203bdc1c91a01c726619484a3a3c7982afaf35"
+  },
+  "payload_entries": 107,
+  "consumer": {
+    "scope": "Native installed Ogg bitpacking/packet-page/CRC refusal; no decoded or audible audio acceptance",
+    "name": "libogg",
+    "version": "1.3.6",
+    "native_consumer_exit": 0,
+    "stdout": "native Ogg bitpack/end refusal/packet-page roundtrip and corrupted-CRC refusal; no audio output"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "step": "b02-gtk3-resources-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T03:46:15.098177+00:00",
+  "transaction": {
+    "scope": "GTK3 new owned runtime/IM cache and same-owner GTK4 schema/legal-only upgrade; no GTK4 library rebuild or user preferences",
+    "state": "complete",
+    "packages": [
+      {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy1",
+        "archive_sha256": "6be366b3ae5f61717c58f1ebc1b02a8ab8120ded8e4e6fbb5ce8447223ede6e3",
+        "installed": true
+      },
+      {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy3",
+        "archive_sha256": "9fa9c541646592421b060ada42934f4f6561ef3a9fc69ad65344f1a0395a429c",
+        "installed": true
+      }
+    ],
+    "old_gtk_archive_sha256": "e52dc6c25dabf6435509b701be1f1ee36b9bc683f1c8566b220ef3a08ad3baa3",
+    "old_cache_sha256": "b1729ccc91435d4f43f9c867e7afaa35b7add83b542771d801dc64bc11238849",
+    "new_cache_sha256": "310d5f4f97596655f5b75d917b4e208a6b05212aa842be90dcb3bce1e856f6aa",
+    "schema_inputs": {
+      "org.gnome.desktop.search-providers.gschema.xml": "00e6c4931d9a4005be80abae2d28bb7b716724cedc19c7be9e6d015a0ac0ea9c",
+      "org.gtk.gtk4.Settings.Debug.gschema.xml": "f3093b00e9184a19289f0755345e3414921aafe15433342b36b327ade2048998",
+      "org.gnome.desktop.app-folders.gschema.xml": "f6a6be999af5d5ed29079432182af7708adefc0a2c7beeb7418254487ee4b772",
+      "org.gnome.desktop.sound.gschema.xml": "ff7dcae2b2b3d6109bf4d75511f0ce1538e39b0593bfcd33f35f12653c62be92",
+      "org.gnome.desktop.interface.gschema.xml": "ff7b0f1f22c85ee8a134ca4ce78eb293f416409032efefdde9a5923f1bc2d478",
+      "org.gnome.desktop.break-reminders.gschema.xml": "de47dd4e0b171c1eb0b7e81761a78f23d043abe662895e37e39a314f96bb192b",
+      "org.gtk.Settings.FileChooser.gschema.xml": "c7089f41d22b3854c05fe4996ff271949b40148a40b9c6f0ae0349792dc94b77",
+      "org.gnome.desktop.default-applications.gschema.xml": "a7c99035d26c1065e9c06541515d06e5ed4d105313f18afad44e628ba32ff280",
+      "org.gnome.desktop.a11y.keyboard.gschema.xml": "429b25000a947e1b03724546e88b0f3dd6d3bac42addaec36d6cf81062c89cbb",
+      "org.gnome.desktop.wm.keybindings.gschema.xml": "23ab886d75e93a79b5829677d1d41f55d4ec27a823b239e9f1b80d5b7dd64efa",
+      "org.gnome.desktop.a11y.gschema.xml": "f471028deedc07708638c7ea056ed1c6eb6632b987905321085288e836f337a8",
+      "org.gtk.gtk4.Settings.ColorChooser.gschema.xml": "3c60a020ac823ad9c02394c8579296711a148fb6e15dac1c4dffa3470303af32",
+      "org.gtk.Demo4.gschema.xml": "e20a078510ee04476c87f9f8452371ba829ee7de2f2d862ea732793719e74846",
+      "gschema.dtd": "44a12f339042a3f5568a9cc86bb617fabaf4a25836b8c9510aa9de22431930c6",
+      "org.gtk.Settings.EmojiChooser.gschema.xml": "22aba28a5a78745d87eeded88f1b86f7ddea24b1b90771151ef494c660a1b591",
+      "org.gnome.desktop.input-sources.gschema.xml": "1255b1e6ba8fcccf43a87ff6ca2343fd55b99f2d89a936556ff1fa6a9b23069e",
+      "org.gtk.gtk4.Inspector.gschema.xml": "0a716456c56ff6a4f3ad1d72b2205b2e982a231a9586cba32bc7d1bcc93cf45a",
+      "org.gnome.desktop.datetime.gschema.xml": "db8f91d8966e24570844f4f0e52b6d5e4d0212cb398c71509f5f3cab6b39d292",
+      "org.gnome.desktop.a11y.mouse.gschema.xml": "2409903ede1c85e899ff6576bc9711b9016704ee0434c22287d34d7e8c888c36",
+      "org.gnome.desktop.calendar.gschema.xml": "9c2f2169d8cc6cc818179e340db60e3edf1f1d804b0e84415d1ad1c7315d01e0",
+      "org.gnome.desktop.privacy.gschema.xml": "304f26f2030d538f0e7ab1a8bae486e2b5e5879bc55c618e8931dc822284abd5",
+      "org.gnome.desktop.thumbnailers.gschema.xml": "899bfc15c310051674714addc541824556a1e6d65b32cb715cba18662dc6ea02",
+      "org.gnome.system.proxy.gschema.xml": "0f02db915e726017c17c1619ee9fd8f9ee7e6d4698f0fc160a0eb88b29f2bafd",
+      "org.gnome.desktop.peripherals.gschema.xml": "cc4e5467c6d171852d8ca898d876848e8b57f347902a432990ab91c7439efee1",
+      "org.gtk.gtk4.Settings.EmojiChooser.gschema.xml": "893b260569e832bb96bfa5ff95893f85d81543069799f22bf66dd419ad50a702",
+      "org.gnome.system.locale.gschema.xml": "5b1e65629a77dcd201f4d86932ad62c0c41ec61fb117f151966d13e69411e2dc",
+      "org.gnome.desktop.session.gschema.xml": "a18788e5bc793c92ed0763c57aa33560a07527e785029c6d7fb224c95796c858",
+      "org.gnome.desktop.wm.preferences.gschema.xml": "cccc86360fb6fbe451e8b27c97d756c711d85dc21bc191075dab2b8613b055a1",
+      "org.gnome.desktop.a11y.interface.gschema.xml": "a78954d4d3a60ca3b11790b0b9dec7a3f6f865d8fdb8106d08881756522c6624",
+      "org.gnome.desktop.background.gschema.xml": "5947187d029261164eb3e938b529aafff3b3625f2f0bdc6185bbf5776afd28c6",
+      "org.gtk.Settings.Debug.gschema.xml": "de0685fdc2f6e890e32445a79aa938e5566b8dd406dd71d6c6a66c69e3f941e3",
+      "org.gnome.desktop.notifications.gschema.xml": "b7e983b5fa4cedccba7e6494c89de0997274986cdc69377a51589d97ac07acb4",
+      "org.gtk.Settings.ColorChooser.gschema.xml": "e476913ef61e6719ff56c2e4c5b8b276af3020bfb0d007263c2a241835730882",
+      "org.gnome.desktop.thumbnail-cache.gschema.xml": "20246fc5002a989287eb7e5e351cfd79245df63d0978b879882ff3d534b8f9fb",
+      "org.gnome.desktop.enums.xml": "8f8b68a34689ad5ede33a1d1d1c7ab3a8691aea83cf15bd3dcce82d9ded94f41",
+      "org.gnome.desktop.media-handling.gschema.xml": "cdaa8e9740fb99852b237cfae8efcd0bb85d2de8b32ea483aad4919e3c87bb10",
+      "org.gnome.desktop.a11y.magnifier.gschema.xml": "0316beb1020bf0e1594c1578d4ee17044d8d4f04a58e788631b054503f07e0a0",
+      "org.gtk.gtk4.Settings.FileChooser.gschema.xml": "e7a7482f7937a0588961613df2b14e509b08c1281bdb0b12ab279856d7d8fcea",
+      "org.gnome.desktop.screen-time-limits.gschema.xml": "252058749b1c7c24fc497061f7c15623d7fffe988c3961b17ee05e7ae4fd9d51",
+      "org.gnome.system.location.gschema.xml": "3fe90ebe8c851340249a1febe741b777c65b49a823201ead02f341be861060ed",
+      "org.gnome.desktop.screensaver.gschema.xml": "82e61a216bfe8bdad9b98400389cb179f149071dba8ff89720a03cc83ca633a8",
+      "org.gnome.desktop.a11y.applications.gschema.xml": "6e67c6d900b0e698681454948dc6a11904edc1059af69d83ae8ff1c69abfe4ca",
+      "org.gnome.desktop.lockdown.gschema.xml": "3578e779ecee25ec24cb69e7170411c03f578ecda3f48455b86305b442fcad65"
+    },
+    "gtk4_other_runtime_unchanged": true,
+    "previous_gtk3_absent": true,
+    "rollback": "Inspect actual dpkg/receipt first. Full rollback restores retained verified GTK4 toddy2 archive (dropping the GTK3 dependency), then removes only the new owned GTK3 package and verifies original schema inputs/cache. Never replay an uncertain step.",
+    "immodules_cache_sha256": "d3a00a8eed77864086955dedbb542d5d7af823726b567eb1525697ac9594639b"
+  },
+  "consumer": {
+    "scope": "Native installed GTK3/GDK/GI/non-widget APIs, shared schemas and IM metadata; no actual window/display/IME input/GDM/GNOME acceptance",
+    "installed_c_exit": 0,
+    "installed_gi_exit": 0,
+    "native_schema_counts": {
+      "fixed": 56,
+      "relocatable": 6
+    },
+    "immodules_query_exit": 0,
+    "immodules": 11,
+    "gtk4_nonlegal_regular_files_unchanged": 624,
+    "gtk4_library_rebuild": false,
+    "stdout": "native GTK3.24.52/GDK color/CSS parse/non-widget Builder adjustment update; no window/display acceptance"
+  }
+}

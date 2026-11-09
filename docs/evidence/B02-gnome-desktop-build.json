@@ -1,0 +1,22 @@
+{
+  "scope": "Native GNOME Desktop modern common API/background XML and ISO/keyboard data only; no actual session/display/wall-clock UI/thumbnail sandbox/event acceptance",
+  "registered_drivers": [
+    {
+      "name": "gnome-desktop:bg-slide-show",
+      "result": "OK",
+      "exit": 0
+    }
+  ],
+  "original_languages_cases": 1,
+  "staged_consumer_exit": 0,
+  "profile": "Modern GTK4/base/background/RR/GI, systemd+udev; no legacy GTK3 desktop library, debug tools or API docs",
+  "not_selected": "Legacy wall-clock driver requires broader locale fixture and contains an upstream FIXME skip; deferred, not a pass. Actual time/settings/thumbnail/display integration remains pending.",
+  "consumer_recovery": "Only missing generated-config include corrected for direct original target; accepted library/stage/bg tests retained.",
+  "stage_files_unchanged": 150,
+  "introspection_warning": "Original GnomeBG load_async has no corresponding load_finish annotation; build succeeds, async GI/display behavior not qualified.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gnome-desktop-native-evidence.tar.gz",
+    "members": 22,
+    "sha256": "e1ac4d9e2c6bdef01b62a238449a7e98ae193de72193e5f5d57f49031482f9e5"
+  }
+}

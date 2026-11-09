@@ -37,3 +37,7 @@ fb35be223aa171d470c913959bf44ef0c17e0b59:docs/evidence/B02-libxml2-build.json:ge
 
 # Reviewed SHA256 of the public GNOME wm.keybindings schema; actual native bytes verified.
 a05bb3f37d502b2d2513f7e22ec2079b79b3f019:docs/evidence/B02-desktop-resources-install.json:generic-api-key:90
+
+# Reviewed public GNOME wm.keybindings schema SHA256 in GTK3 shared-cache proofs.
+docs/evidence/B02-gtk3-resources-install.json:generic-api-key:36
+docs/evidence/B02-gtk3-resources-build.json:generic-api-key:92
