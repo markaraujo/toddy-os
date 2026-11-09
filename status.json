@@ -374,7 +374,8 @@
         "docs/evidence/B02-gnutls-stage.json",
         "docs/evidence/B02-gnutls-install.json",
         "docs/evidence/B02-libproxy-install.json",
-        "docs/evidence/B02-glib-networking-install.json"
+        "docs/evidence/B02-glib-networking-install.json",
+        "docs/evidence/B02-libsoup-install.json"
       ]
     },
     {

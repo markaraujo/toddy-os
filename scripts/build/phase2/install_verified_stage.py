@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libsoup': ('3.6.6', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), glib-networking (= 2.80.1-1+toddy1), nghttp2 (= 1.71.0-1+toddy1), libpsl (= 0.23.3-1+toddy1), sqlite (= 3.53.4-1+toddy1), zlib (>= 1.3.2-1)', 'libsoup-3.6.6.tar.xz', 'usr/lib/pkgconfig/libsoup-3.0.pc'),
     'glib-networking': ('2.80.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gnutls (= 3.8.13-1+toddy1), libproxy (= 0.5.12-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1)', 'glib-networking-2.80.1.tar.xz', 'usr/lib/gio/modules/libgiognutls.so'),
     'libproxy': ('0.5.12', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), curl (>= 8.23.0-1), duktape (= 2.7.0-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1)', 'libproxy-0.5.12.tar.gz', 'usr/lib/pkgconfig/libproxy-1.0.pc'),
     'gnutls': ('3.8.13', 'glibc (>= 2.44-1+toddy1), nettle (= 4.0-1+toddy1), libunistring (= 1.4.2-1+toddy1), libidn2 (= 2.3.8-1+toddy1), libtasn1 (= 4.21.0-1+toddy1), p11-kit (>= 0.26.5-1+toddy1), p11-kit (<< 0.26.6), ca-certificates (>= 2026.11.09-1+toddy1)', 'gnutls-3.8.13.tar.xz', 'usr/lib/pkgconfig/gnutls.pc'),
@@ -1184,6 +1185,9 @@ if __name__ == '__main__':
     if name=='libproxy':
         from qualify_libproxy import qualify as qualify_libproxy
         qualify_libproxy(ROOT)
+    if name=='libsoup':
+        from qualify_libsoup import qualify as qualify_libsoup
+        qualify_libsoup(ROOT)
     if name=='glib-networking':
         from qualify_glib_networking import qualify as qualify_glib_networking
         qualify_glib_networking(ROOT)

@@ -7,8 +7,25 @@ foundation tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Current slice and exact next action
 
-Current verified slice: owned GLib-networking2.80.1/default TLS/shared GIO cache.
-No active writer. `b02-glib-networking-install.success.json` proves recipe/post0/0,
+Current verified slice: owned libsoup3.6.6. No active writer.
+`b02-libsoup-install.success.json` proves recipe/post0/0,133changed paths/281owned
+entries. All35original drivers OK with22nested skips preserved:13Apache,
+eight external NTLM helper, one upstream timing/ASAN conditional.246originalELFs
+retained. Actual installed loopback HTTP client/server, pre-cancelled request
+refusal/no server dispatch, two-session recovery and SDK0. No original suite
+replay. [Evidence](evidence/B02-libsoup-install.json), ADR0166. NEVER reinstall.
+
+Exact next: prepare EDS3.60.2 source/CMake recipe/probe using now-owned libsoup,
+libical4/NSPR/NSS/libsecret/GLib/GTK. Existing host review is
+`.local/probes/eds-3.60.2-review/evolution-data-server-3.60.2`; REUSE, do not
+re-extract/reprepare from a summary. Actual CMake supports libical4 explicitly.
+No guest EDS input/work/job prepared yet. Inspect source options/dependencies,
+choose minimal supported GNOME/calendar profile, preserve native source tests,
+record slice before one isolated build. Then GNOME Shell/GDM/apps. P11 local
+trust update/recovery/NSS unified-root alias and fresh combined recipe
+qualification remain pending. Foundation/physical tests and Phase2ISO unchanged.
+
+Prior verified slice: owned GLib-networking2.80.1/default TLS/shared GIO cache. `b02-glib-networking-install.success.json` proves recipe/post0/0,
 90changed paths/240owned entries. Shared cache now four modules; unchanged DConf
 archive/module retained, generated-resource metadata updated under controlled
 receipt`gio-network-resources-1.json`. Actual installed default GIO/GnuTLS/system
@@ -18,16 +35,6 @@ passed; three initial proxy/certificate drivers reused, only three TLS programs
 repeated after exposing actual public anchors read-only. Own auxiliary-PEM input
 corrected consumer-only3; original38ELFs/stage unchanged. No suite/stage replay.
 [Proof](evidence/B02-glib-networking-install.json), ADR0165. Never reinstall.
-
-Exact next: prepare frozen libsoup3.6.6 build/probe using owned GLib-networking/
-GnuTLS/libproxy/libpsl/nghttp2. Source cached and host review extracted at ignored
-`.local/probes/libsoup-3.6.6-review`. No guest input/job/stage exists yet. Keep
-actual TLS check enabled, introspection/original tests; optional GSSAPI/NTLM/
-Brotli/Vala/docs/profiling/external Autobahn unavailable unless qualified. Use
-private loopback/public read-only trust; no external compiler route. Then EDS3.60.2
-and GNOME Shell/GDM/apps. Libproxy install/post0/0 changed23paths/29owned entries.
-P11 local update/recovery/NSS unified-root alias and fresh combined recipe
-qualification remain explicit pending integration, not acceptance.
 
 Prior verified slices:
 `b02-ca-native-install.success.json` and `b02-gnutls-install-2.success.json`
@@ -44,7 +51,7 @@ failed only ordered enumeration comparison, ZEROroot changes/no promotion stage/
 archive. Install2 compares exact917name/result maps. NEVER replay successful
 CA preparation/generation/finish/acceptance/native install or GnuTLS stage/install.
 
-Then libsoup/EDS and remaining GNOME/GDM/apps/network/audio/offline/
+Then EDS and remaining GNOME/GDM/apps/network/audio/offline/
 focus/responsiveness/resources. Shared caches/trust integration below remain gates.
 
 ## Latest verified boundaries — reuse, never rebuild/reinstall/retest unchanged
@@ -138,8 +145,8 @@ full actual422093entry restore verified before retirement. Current140.17source/
 compiled/tests retained. [Custody/recovery](evidence/B02-runtime-custody-checkpoint.md).
 Restore into a NEW absent private path only after full archive/manifest check.
 
-Latest verified publicfce0fa619f709a48fe019673b03c1fca2d285d65: safety42705178783/
-planning42705178710/Pages42705178787 allsuccess; exact public HTTP200/indexSHA
+Latest verified public35526b03308def6bfb20fb08a41dea2db32b8914: safety42707408390/
+planning42707408829/Pages42707408503 allsuccess; exact public HTTP200/indexSHA
 bad4f5bca19631af7948f1c0283967255d2cf1045664e81062360c8614948963 verified.
 Historical GitHub internal zero-job failures/retry retained; no further unchanged
 retry. Select checks by changed impact, no unchanged long suites. Commit/push

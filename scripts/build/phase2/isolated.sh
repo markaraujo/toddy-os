@@ -70,7 +70,8 @@ readonly_bind "$TODDY_INPUT" "$root/src"
 # Expose only public anchors/certificates read-only, never SSL private/config
 # directories or the guest's general /etc. CA generation uses its separate
 # private-output profile below and cannot match this input identity.
-if [[ "$TODDY_INPUT" == /mnt/lfs/sources/phase2/inputs/glib-networking-2.80.1 ]]; then
+if [[ "$TODDY_INPUT" == /mnt/lfs/sources/phase2/inputs/glib-networking-2.80.1 ||
+      "$TODDY_INPUT" == /mnt/lfs/sources/phase2/inputs/libsoup-3.6.6 ]]; then
     python3 - <<'PY'
 import json
 from pathlib import Path
