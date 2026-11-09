@@ -184,3 +184,38 @@ ONE unchanged retry batch requested and recorded in persistent failure ledger;
 never rerun again unchanged. Inspect actual retry outcome; if backend failure
 persists, keep publication pending and continue eligible local B02 work. No
 billing/settings change or user action required for this transient diagnosis.
+
+## Current libical/EDS prerequisite slice
+
+Keyring slice committed/pusheda0bed6addd371dcf2a9d3928cc025f8a04faf332.
+All3new CI workflows passed: safety42683680241/planning42683680497/
+Pages42683680612. Exact public HTTP200/indexSHA
+ e61b771ed67864edd59af859eff6d5253bf61cc272835c4cf014ad228efc7cf2 verified.
+Historical zero-job GitHub failures remain retained; no extra retry used.
+
+libical4.0.5-1+toddy1 OWNED/187payload entries. Initial install0/post1 was
+own C consumer's incorrect borrowed-RRULE unref, NOT library failure. Corrected
+consumer-only job3 exit0;194original ELFs/stage unchanged. Verify-only2 recipe/post
+0/0, payload/archive unchanged, ZERO root changes. Actual installed UTF8/UTC daily
+recurrence/refusal/state-preservation/two recovery cycles/GI/SDK/APT0. Original
+CTest65passes reused; unchanged original recur passed with byte-identical private
+file required by its writable icalfileset API. First own C result superseded.
+[Proof](evidence/B02-libical-install.json). NEVER rebuild/reinstall/repeat accepted
+originals; canonical fresh recipe/probe corrected, historical input hash retained.
+
+NSPR4.40-1+toddy1 OWNED/91payload entries,87ELFs retained. Three selected original
+runtime programs atomic/prftest/vercheck and actual threads/locks/private file/
+missing-file/version refusal/two recovery cycles0. Frozen book explicitly does
+not recommend full combined release development suite; no such coverage claimed.
+Initial install0/post1 was own SDK string assertion: actual upstream.pc4.40.0,
+package4.40. Verify-only2 recipe/post0/0, payload/archive unchanged; sole generated
+APT cache root change. [Proof](evidence/B02-nspr-install.json). No NSS/TLS proof.
+
+Current writer: none. Exact next: implement isolated frozen NSS3.126 with book's
+standalone patch and owned NSPR; source and official patch cached/frozen but NO
+guest input/build yet. Inspect source preparation/job actual state before launch.
+Source7aa07c758be1453d82d739240b249ffb7aef0041be488067e1c0f348e1f9e337,
+patch87bb1af0b11fd41311b9899187f6e4b3fca9940651123c7bc836ec7497d2da84.
+One writer, reserves and persistent cause/input retry ledger remain mandatory.
+Then EDS/NSS/rest of GNOME and actual native login/apps acceptance. Finish ALL
+B02 and stop before another story; B02/G2 still unaccepted, no Phase2 ISO.

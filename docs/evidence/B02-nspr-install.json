@@ -1,0 +1,149 @@
+{
+  "scope": "Owned NSPR runtime with three selected originals; first own SDK version assertion reconciled verify-only, no full combined development suite/NSS/TLS/remote network acceptance",
+  "source": {
+    "name": "nspr",
+    "version": "4.40",
+    "filename": "nspr-4.40.tar.gz",
+    "url": "https://archive.mozilla.org/pub/nspr/releases/v4.40/src/nspr-4.40.tar.gz",
+    "sha256": "c0c1884c627f3db7a783f7c7314c695226b2043696791d15519e7e0578c19bdc",
+    "reference": "BLFS13.1-systemd general/nspr.html",
+    "book_page_sha256": "5cb915e8fccaedcf8a6681d645fb8ebe81b70aa073bc44a657e7bcbd92316bb9",
+    "book_md5": "0c3c871158cc9af694f1f7d2b799ffd8",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Three selected original runtime programs and actual threads/locks/private-file/version/refusal/recovery; not full combined NSPR/NSS development suite/network/TLS",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "atomic",
+        "exit": 0
+      },
+      {
+        "name": "prftest",
+        "exit": 0
+      },
+      {
+        "name": "vercheck",
+        "exit": 0
+      }
+    ],
+    "consumer": {
+      "version_compatibility_and_refusal": true,
+      "real_joinable_threads_locked_updates": 1000,
+      "private_file_roundtrip_and_missing_file_refusal": true,
+      "recovery_cycles": 2
+    },
+    "artifacts_count": 87,
+    "artifacts_manifest_sha256": "3dd30a7037e8b3c73982af2c5514ba6774c3451827a6c41ebe2b006701512663",
+    "stage_sha256_count": 73,
+    "stage_sha256_manifest_sha256": "7dbeb62d261578528e23ecc8588b067f3feb1c28bcef9a053119c98546544836"
+  },
+  "transaction": {
+    "step": "b02-nspr-install",
+    "started": "2026-11-09T19:38:59.632399+00:00",
+    "recipe_sha256": "82b731fa133a8b63e652f448c2da0d3497362c87bf027aa8c10f4928b0c44df9",
+    "postcheck_sha256": "6917fcb791cb5ffa7fee2d81a3b1649a514ea16e31020be98e0ce0a8b7c8d2a2",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "d3d51c86c53c7d7d7a1b92eaab101c0fb93afd5413b98e2484a43c504baadddc",
+    "recipe_pid": 49334,
+    "recipe_pgid": 49334,
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "finished": "2026-11-09T19:39:15.326429+00:00",
+    "changed_paths": 87,
+    "log_sha256": "1de9fca4aeda0c08de03667d090858d3d07dfa66d32ddc7c42670c79e47f0ce7",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "6c1d6fe89fa501c1e12560e29e09525729ec01f124fc575d05a65e5f70e96372"
+  },
+  "timing": {
+    "step": "b02-nspr-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 13.903,
+        "entries": 151961,
+        "regular_files": 135537,
+        "regular_bytes": 7165085656
+      },
+      {
+        "seconds": 13.729,
+        "entries": 152046,
+        "regular_files": 135616,
+        "regular_bytes": 7166062668
+      }
+    ],
+    "total_seconds": 30.592
+  },
+  "installed_consumer": {
+    "scope": "Installed actual threads/locks/file/refusal/recovery/SDK/audit; full combined NSPR/NSS development suite and TLS/network pending",
+    "consumer": {
+      "version_compatibility_and_refusal": true,
+      "real_joinable_threads_locked_updates": 1000,
+      "private_file_roundtrip_and_missing_file_refusal": true,
+      "recovery_cycles": 2
+    }
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-nspr-install-evidence.tar.gz",
+    "sha256": "d09eedaab368d4a0eb0d5fe8b6eb676e07907d8502ef477ce8b71ba9accb59bc",
+    "members": [
+      "build/b02-nspr-install.failed.json",
+      "build/b02-nspr-install.log",
+      "build/b02-nspr-install.manifest.json",
+      "build/b02-nspr-verify-2.log",
+      "build/b02-nspr-verify-2.manifest.json",
+      "build/b02-nspr-verify-2.success.json",
+      "phase2/b02-nspr-install-controller.log",
+      "phase2/b02-nspr-install-timing.json",
+      "phase2/nspr-1-controller.log",
+      "phase2/nspr-1.exit",
+      "phase2/nspr-1.job.json",
+      "phase2/nspr-1.log",
+      "phase2/nspr-installed-consumer.json",
+      "phase2/nspr-payload-verify-2.json",
+      "phase2/nspr-stage.json",
+      "work/native-consumer.json",
+      "work/original-atomic.log",
+      "work/original-prftest.log",
+      "work/original-results.json",
+      "work/original-vercheck.log",
+      "work/stage-results.json"
+    ]
+  },
+  "verify_only_transaction": {
+    "step": "b02-nspr-verify-2",
+    "started": "2026-11-09T19:40:13.745114+00:00",
+    "recipe_sha256": "c3e09bbb198cd69dcd9ed1102dc813b2cbd66f415eb4977907a3f965e9267532",
+    "postcheck_sha256": "1bc403a8b77732f86fbe67de2e34eb4bde4c326a98ee27c5cd74f245aac4c992",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "c4ce0a7d6c7ddc493a0c6c5759837bc4c6be19f0d2b82a09dd541f7491d62bea",
+    "recipe_pid": 49730,
+    "recipe_pgid": 49730,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T19:40:28.826139+00:00",
+    "changed_paths": 1,
+    "log_sha256": "79a16aa05c67744c66ef8c1a4e9b117a0fc33a0d59ff0ffd8082020d056d6260",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "d7d471f756bcce4af4ece4b3cb8098ba243a549051f8efa8030220ac21a2edaa"
+  },
+  "payload_verification": {
+    "payload_entries_unchanged": 91,
+    "archive_unchanged": true,
+    "reinstalled": false,
+    "original_failed_postcondition": "Own SDK version string assertion: upstream nspr.pc expands major.minor.patch as4.40.0; package version remains4.40"
+  }
+}

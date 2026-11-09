@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'nspr': ('4.40', 'glibc (>= 2.44-1+toddy1)', 'nspr-4.40.tar.gz', 'usr/lib/pkgconfig/nspr.pc'),
+    'libical': ('4.0.5', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1), glib (>= 2.88.3-1+toddy2), icu (= 78.3-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'libical-4.0.5.tar.gz', 'usr/lib/pkgconfig/libical-glib.pc'),
     'gnome-keyring': ('50.0', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gcr3 (= 3.41.2-1+toddy1), libgcrypt (>= 1.12.4-1), p11-kit (= 0.26.5-1+toddy1), linux-pam (= 1.7.2-1+toddy2), libsecret (= 0.21.7-1+toddy1)', 'gnome-keyring-50.0.tar.xz', 'usr/bin/gnome-keyring-daemon'),
     'gcr3': ('3.41.2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gtk3 (>= 3.24.52-1+toddy1), p11-kit (= 0.26.5-1+toddy1), libgcrypt (>= 1.12.4-1), gnupg (>= 2.5.24-1)', 'gcr-3.41.2.tar.xz', 'usr/lib/pkgconfig/gcr-base-3.pc'),
     'libsecret': ('0.21.7', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libgcrypt (>= 1.12.4-1)', 'libsecret-0.21.7.tar.xz', 'usr/lib/pkgconfig/libsecret-1.pc'),
@@ -221,6 +223,7 @@ if __name__ == '__main__':
     if name=='polkit':qualifier='polkit-full-1'
     if name=='gcr3':qualifier='gcr3-patched-2'
     if name=='gnome-keyring':qualifier='gnome-keyring-backend-4'
+    if name=='libical':qualifier='libical-finish-2'
     if name=='gcr':qualifier='gcr-finish-4'
     if name=='upower':qualifier='upower-consumer-4'
     if name=='accountsservice':qualifier='accountsservice-locale-5'
@@ -1141,6 +1144,12 @@ if __name__ == '__main__':
     if name=='gnome-keyring':
         from qualify_gnome_keyring import qualify as qualify_gnome_keyring
         qualify_gnome_keyring(ROOT)
+    if name=='libical':
+        from qualify_libical import qualify as qualify_libical
+        qualify_libical(ROOT)
+    if name=='nspr':
+        from qualify_nspr import qualify as qualify_nspr
+        qualify_nspr(ROOT)
     if name=='gcr3':
         from qualify_gcr3 import qualify as qualify_gcr3
         qualify_gcr3(ROOT)

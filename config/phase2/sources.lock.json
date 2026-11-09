@@ -2016,6 +2016,53 @@
       "book_md5": "40a754ba44d5e95e4d07656d6302900c",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "libical",
+      "version": "4.0.5",
+      "filename": "libical-4.0.5.tar.gz",
+      "url": "https://github.com/libical/libical/releases/download/v4.0.5/libical-4.0.5.tar.gz",
+      "sha256": "cc09a3ac41d60e6144e644bd3fcf97d47106d659c4a0b8965102581401e67c9c",
+      "reference": "BLFS13.1-systemd general/libical.html",
+      "book_page_sha256": "4db2bf83babc6ed29b10394b1025751bff2d45c988bf3cd81fe1fd2e5175726a",
+      "book_md5": "9896781cc82bad3b9a2c6c1ee8177347",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "nspr",
+      "version": "4.40",
+      "filename": "nspr-4.40.tar.gz",
+      "url": "https://archive.mozilla.org/pub/nspr/releases/v4.40/src/nspr-4.40.tar.gz",
+      "sha256": "c0c1884c627f3db7a783f7c7314c695226b2043696791d15519e7e0578c19bdc",
+      "reference": "BLFS13.1-systemd general/nspr.html",
+      "book_page_sha256": "5cb915e8fccaedcf8a6681d645fb8ebe81b70aa073bc44a657e7bcbd92316bb9",
+      "book_md5": "0c3c871158cc9af694f1f7d2b799ffd8",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "nss",
+      "version": "3.126",
+      "filename": "nss-3.126.tar.gz",
+      "url": "https://archive.mozilla.org/pub/security/nss/releases/NSS_3_126_RTM/src/nss-3.126.tar.gz",
+      "sha256": "7aa07c758be1453d82d739240b249ffb7aef0041be488067e1c0f348e1f9e337",
+      "reference": "BLFS13.1-systemd postlfs/nss.html",
+      "book_page_sha256": "c3f1b41079594657a8486d4321910b26e620f0098d81a733dd5d1fe253a03401",
+      "book_md5": "0ca322cec564a53ac5a59ce130d96f46",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "nss-standalone-patch",
+      "version": "1",
+      "filename": "nss-standalone-1.patch",
+      "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/nss-standalone-1.patch",
+      "sha256": "87bb1af0b11fd41311b9899187f6e4b3fca9940651123c7bc836ec7497d2da84",
+      "reference": "BLFS13.1-systemd postlfs/nss.html required standalone build/install patch",
+      "book_page_sha256": "c3f1b41079594657a8486d4321910b26e620f0098d81a733dd5d1fe253a03401",
+      "integrity": "Exact required versioned official BLFS HTTPS patch; SHA256 frozen before guest application",
+      "status": "source_verified"
     }
   ]
 }
