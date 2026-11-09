@@ -17,7 +17,8 @@ Initial nofallback/duplicate extraction and inaccessible /opt probe failures rem
 NEVER reinstall/rebuild/replay these jobs.
 
 Exact next: clean reviewed commit, then `python3 scripts/host/phase2_native_polkit_suid.py`
-once with `.local/phase2/native-polkit-suid-1-controller.log`; NEW native-polkit-suid-runtime-1.
+once with `.local/phase2/native-polkit-suid-2-controller.log`; NEW native-polkit-suid-runtime-2.
+First standard-profile context refused oversized SMBIOS source BEFORE native boot/container creation. Source transport now compressed with exact SHA check; no authentication/build replay. Reconcile builder/mounts then use new context2.
 ADR0155 selects the explicit upstream standard SUID-helper fallback with optional
 helper.socket unstarted. The old socket cookie/UID branch remains parked with two
 failed corrections; its budget is not reset. This is an authentication-session

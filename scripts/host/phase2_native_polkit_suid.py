@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Qualify real Polkit privileges/PAM/recovery on one cold disposable native overlay, no NIC."""
 from datetime import datetime,timezone
-import fcntl,hashlib,json,os,shutil,subprocess,sys,uuid
+import fcntl,hashlib,json,os,shutil,subprocess,sys,uuid,base64,zlib
 from pathlib import Path
 import boot_test as boot
 from phase2_native_report import decode
 import phase2_vm
 import vm
 ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
-CONTEXT=ROOT/'.local/phase2/native-polkit-suid-runtime-1'
+CONTEXT=ROOT/'.local/phase2/native-polkit-suid-runtime-2'
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def main():
     assert len(sys.argv)==1
@@ -16,7 +16,11 @@ def main():
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip(),'Commit reviewed inputs before native boot'
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
     lock=open(vm.VM/'native-boot-test.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB);boot.refuse_running_tests()
-    probe=(ROOT/'scripts/host/phase2-native-polkit-privilege-probe.py').read_bytes()
+    source_probe=(ROOT/'scripts/host/phase2-native-polkit-privilege-probe.py').read_bytes()
+    source_probe_sha256=hashlib.sha256(source_probe).hexdigest()
+    packed=base64.b64encode(zlib.compress(source_probe,9)).decode()
+    probe=('import base64,zlib,hashlib\nsource=zlib.decompress(base64.b64decode('+repr(packed)+'))\nassert hashlib.sha256(source).hexdigest()=='+repr(source_probe_sha256)+'\nexec(compile(source,"<verified-polkit-native-probe>","exec"))\n').encode()
+    assert len(probe)<16000 and zlib.decompress(base64.b64decode(packed))==source_probe
     code="""from pathlib import Path
 import fcntl,hashlib,json,subprocess
 subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
@@ -38,7 +42,7 @@ print(json.dumps({'fixture_manifest_sha256':r['manifest_sha256'],'fixture_files'
            'started_utc':datetime.now(timezone.utc).isoformat(),
            'controller_pid':os.getpid(),'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
            'controller_start_ticks':Path('/proc/self/stat').read_text().split()[21],
-           'accepted':accepted_record,'probe_sha256':hashlib.sha256(probe).hexdigest(),'phase':'prepared'}
+           'accepted':accepted_record,'source_probe_sha256':source_probe_sha256,'probe_sha256':hashlib.sha256(probe).hexdigest(),'phase':'prepared'}
     def save():
         part=CONTEXT/'result.json.part';assert not part.exists()
         part.write_text(json.dumps(state,indent=2)+'\n');part.replace(CONTEXT/'result.json')
