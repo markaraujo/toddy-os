@@ -1826,6 +1826,54 @@
       "reference": "ADR-0146; exact owner-repository committed derivative patch; original/corrected native regression and affected original/native driver evidence",
       "integrity": "Byte-identical to exact committed Git blob and independently native-tested source correction; original upstream archive unchanged",
       "status": "source_verified"
+    },
+    {
+      "name": "duktape",
+      "version": "2.7.0",
+      "filename": "duktape-2.7.0.tar.xz",
+      "url": "https://duktape.org/duktape-2.7.0.tar.xz",
+      "sha256": "90f8d2fa8b5567c6899830ddef2c03f3c27960b11aca222fa17aa7ac613c2890",
+      "reference": "BLFS13.1-systemd general/duktape.html",
+      "book_page_sha256": "a0d9eeb076b2d31ce0435c56b7b179ba1cdf27fb4adb0e0bbbfe69c82b3db1f4",
+      "book_md5": "b3200b02ab80125b694bae887d7c1ca6",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "polkit",
+      "version": "127",
+      "filename": "polkit-127.tar.gz",
+      "url": "https://github.com/polkit-org/polkit/archive/127/polkit-127.tar.gz",
+      "sha256": "9b7bc16f086479dcc626c575976568ba4a85d34297a750d8ab3d2e57f6d8b988",
+      "reference": "BLFS13.1-systemd postlfs/polkit.html",
+      "book_page_sha256": "b630bd24ae409c23d863891cf71114bb4d8b41175216c2ac5a76571e595c5ece",
+      "book_md5": "2cc95f1b02fc1de6c9e52db986642ec4",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "python-dbusmock",
+      "version": "0.38.1",
+      "filename": "python_dbusmock-0.38.1.tar.gz",
+      "url": "https://files.pythonhosted.org/packages/source/p/python-dbusmock/python_dbusmock-0.38.1.tar.gz",
+      "sha256": "221b65e1c2e48de9fd11bf7e8c165adaf91648f49a11f390d086a498386f2984",
+      "reference": "BLFS13.1-systemd general/python-modules.html#python-dbusmock",
+      "book_page_sha256": "eeca0df3449c611069e44d356162b7438e05151c39d225e72c601f049a66a72d",
+      "book_md5": "e90b10618f5a0c7f5dcc4d4a56c6ce07",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "dbus-python",
+      "version": "1.4.0",
+      "filename": "dbus-python-1.4.0.tar.xz",
+      "url": "https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.4.0.tar.xz",
+      "sha256": "c36b28f10ffcc8f1f798aca973bcc132f91f33eb9b6b8904381b4077766043d5",
+      "reference": "BLFS13.1-systemd general/python-modules.html#dbus-python",
+      "book_page_sha256": "eeca0df3449c611069e44d356162b7438e05151c39d225e72c601f049a66a72d",
+      "book_md5": "edca335d1c80f338e3255455eb876b72",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

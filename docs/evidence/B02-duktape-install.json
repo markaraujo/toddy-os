@@ -1,0 +1,99 @@
+{
+  "scope": "Owned normal/debug Duktape policy-engine profile only; Polkit/desktop qualification pending",
+  "source": {
+    "name": "duktape",
+    "version": "2.7.0",
+    "filename": "duktape-2.7.0.tar.xz",
+    "url": "https://duktape.org/duktape-2.7.0.tar.xz",
+    "sha256": "90f8d2fa8b5567c6899830ddef2c03f3c27960b11aca222fa17aa7ac613c2890",
+    "reference": "BLFS13.1-systemd general/duktape.html",
+    "book_page_sha256": "a0d9eeb076b2d31ce0435c56b7b179ba1cdf27fb4adb0e0bbbfe69c82b3db1f4",
+    "book_md5": "b3200b02ab80125b694bae887d7c1ca6",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Two native shared-library variants: original upstream hello and real C policy/JSON/Unicode/GC/refusal/recovery profile; no full ECMAScript conformance suite is supplied in frozen release; no Polkit authorization acceptance",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "records": [
+      {
+        "role": "consumer",
+        "library": "duktape",
+        "exit": 0,
+        "stdout": "{\"version\":20700,\"checks\":15,\"bytecode_load_dump\":\"unsupported\",\"recovery\":true}",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "role": "original-hello",
+        "library": "duktape",
+        "exit": 0,
+        "stdout": "Hello world!\n2+3=5",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "role": "consumer",
+        "library": "duktaped",
+        "exit": 0,
+        "stdout": "{\"version\":20700,\"checks\":15,\"bytecode_load_dump\":\"unsupported\",\"recovery\":true}",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "role": "original-hello",
+        "library": "duktaped",
+        "exit": 0,
+        "stdout": "Hello world!\n2+3=5",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "bytecode_load_dump": "Disabled through supported DUK_USE_BYTECODE_DUMP_SUPPORT option in both libraries and installed header; APIs fail unsupported, not silently accepted",
+    "stage_sha256": {
+      "usr/include/duktape.h": "6ba93aea92510096c43ddd7c7f9e36f698225c9cd2af788bf414adf7c777deb2",
+      "usr/include/duk_config.h": "9c07dac23353e739ad94e1e742345cf698ba8d66e3f892041217a4b24cff7df9",
+      "usr/lib/libduktaped.so.207.20700": "495c291acf667716a53c29dd9819f44f44bb6c12364bcd132966a14a3427b8ae",
+      "usr/lib/libduktape.so.207.20700": "89edb28823814db9cfe581f3607d039e67b7b952c3f862f9364fa4ab01c555b4",
+      "usr/lib/pkgconfig/duktape.pc": "4b13d4d4b0af4e08fb4084f509a997af24305300746f20d83250fac823427d38"
+    }
+  },
+  "run": {
+    "step": "b02-duktape-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T13:47:02.964924+00:00",
+    "changed_paths": 28
+  },
+  "package": {
+    "name": "duktape",
+    "version": "2.7.0-1+toddy1",
+    "archive_sha256": "659d3746433ca265e1c46e0b135c1ac19624ac7ad7152cf4d5977a2132fa14b1",
+    "installed": true
+  },
+  "payload_entries": 29,
+  "consumer": {
+    "scope": "Actual installed normal/debug C policy-engine profile15checks each; no Polkit daemon/authorization/GNOME acceptance",
+    "version": "2.7.0",
+    "records": [
+      {
+        "library": "duktape",
+        "exit": 0,
+        "version": 20700,
+        "checks": 15,
+        "bytecode_load_dump": "unsupported",
+        "recovery": true
+      },
+      {
+        "library": "duktaped",
+        "exit": 0,
+        "version": 20700,
+        "checks": 15,
+        "bytecode_load_dump": "unsupported",
+        "recovery": true
+      }
+    ]
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-duktape-systemd-custody-evidence.tar.gz",
+    "members": 12,
+    "sha256": "6b9f435f222f3768d3360cae5010460b7287a8d8c301e81a339dbad183218c76"
+  }
+}

@@ -10698,6 +10698,24 @@
           ]
         }
       }
+    },
+    {
+      "name": "duktape",
+      "version": "2.7.0",
+      "license": "MIT AND LicenseRef-Duktape-per-file-notices",
+      "evidence": "Authenticated LICENSE.txt/AUTHORS and exact generated/separate source leading notices retained; supported no-bytecode profile, native normal/debug actual consumers and original hello passed, no full conformance/Polkit claim.",
+      "extra_license_headers": {
+        "duktape-2.7.0.tar.xz": {
+          "prefixes": [
+            "src/",
+            "src-separate/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

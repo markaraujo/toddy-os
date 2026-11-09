@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'duktape': ('2.7.0', 'glibc (>= 2.44-1)', 'duktape-2.7.0.tar.xz', 'usr/lib/pkgconfig/duktape.pc'),
     'linux-pam': ('1.7.2', 'glibc (>= 2.44-1), libxcrypt (= 4.5.2-1+toddy1), systemd (>= 261.2-1+toddy2)', 'Linux-PAM-1.7.2.tar.xz', 'usr/lib/pkgconfig/pam.pc'),
     'gjs': ('1.88.1', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), glib (>= 2.88.3-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1), cairo (= 1.18.4-1+toddy1), libffi (>= 3.8.0-1), mozjs (= 140.17.0-1+toddy1), readline (>= 8.3-1)', 'gjs-1.88.1.tar.xz', 'usr/lib/pkgconfig/gjs-1.0.pc'),
     'mozjs': ('140.17.0', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), icu (= 78.3-1+toddy1), readline (>= 8.3-1), zlib (>= 1.3.2-1)', 'firefox-140.17.0esr.source.tar.xz', 'usr/lib/pkgconfig/mozjs-140.pc'),
@@ -1104,6 +1105,9 @@ if __name__ == '__main__':
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['staged_consumer_exit']==proof['upstream_diagnostic_exit']==0 and proof['matching_cases']==2
         assert len(proof['matching_oracle'])==2 and all(r['matching_cost']==r['independent_exhaustive_optimum'] for r in proof['matching_oracle'])
+    if name=='duktape':
+        from qualify_duktape import qualify as qualify_duktape
+        qualify_duktape(ROOT)
     if name=='linux-pam':
         from qualify_pam import qualify as qualify_pam
         qualify_pam(ROOT,log)
@@ -1206,6 +1210,8 @@ if __name__ == '__main__':
         (destination/'usr/share/doc/mozjs/README.Toddy').write_text('Explicit same-family security overlay140.17.0, ADR0147. Original API/JIT and real dynamic consumer qualified; detached SIGINT case reconciled by one unchanged foreground-disposition test, with original aggregate failure preserved. Main-suite retained baseline diagnostics are NOT passing tests or full Intl qualification. Baseline bundles ICU77.1; system ICU78.3 differs from Unicode16/generated locale/calendar/timezone fixtures, and four compound-unit tests report functional errors. Exact diagnostics/case counts retained in release evidence. Original source-archive VCS-dependent message checker remains unavailable; strict ASCII property verified separately. No browser/full GNOME/hardware acceptance. Full source legal notices retained.\n')
     if name=='gjs':
         (destination/'usr/share/doc/gjs/README.Toddy').write_text('Pinned GJS1.88.1: original two C drivers202cases passed; actual native7.1.8/Mutter remaining78original programs OK/2741passed cases/147upstream pending skips. Skips remain unqualified, not passes. Native C/CLI/GI/event/refusal/recovery qualified; full GNOME session and product interaction remain separate B02 gates. Profiler/installed test payload omitted for minimal runtime; full exact source legal notices retained.\n')
+    if name=='duktape':
+        (destination/'usr/share/doc/duktape/README.Toddy').write_text('Frozen2.7.0 normal/debug shared policy-engine profile. Both bytecode load/dump APIs disabled using supported DUK_USE_BYTECODE_DUMP_SUPPORT option; fail unsupported. Book O2 and explicit self-contained libm link. Original hello and15own native checks per library passed. Full generic ECMAScript conformance and Polkit authorization remain separate qualifications. See ADR0150.\n')
     source_args=[arg for item in archives for arg in ['--source',item]]
     if name=='llvm':
         runtime=destination.with_name('phase2-llvm-runtime')
