@@ -1,0 +1,47 @@
+{
+  "compile": {
+    "scope": "One additional DDS MIME spelling at existing decoder dispatch and canonical configuration; native retest pending",
+    "source_before_sha256": "a642373e7e2ca646d73ca242a7360473f9919678584c3ad0b4d69c05dd222a53",
+    "source_after_sha256": "923dd2def36ad9bf075f9805706745b6ff5aa2c5f0137b42c3a931533420e2ea",
+    "source_changed_files": [
+      "glycin-loaders/glycin-image-rs/src/main.rs"
+    ],
+    "cargo_lock_sha256": "5ff1ad293efde5c927f19df0f488dc80a04814367dbc480a3cc45847646bc669",
+    "native_compile_exit": 0,
+    "stage_before": {
+      "usr/lib/libglycin-2.so.0": "96525d2b826d63e008ed9b813fa620b37c137f070067ef6e701bdffdea3824af",
+      "usr/lib/pkgconfig/glycin-2.pc": "05d56432d76f8f7068b723192d4f4de961a03718fca12da6d8b8ff1ab6f39ba9",
+      "usr/lib/girepository-1.0/Gly-2.typelib": "a364bf9b760338304f2eeb409a62d126bc3445b7329e575ff3677e3a1010293e",
+      "usr/libexec/glycin-loaders/2+/glycin-image-rs": "24e3d33cb2066f5f3c58880c10549055fe5d19e7a8a44a7154654a5c7c8f79be",
+      "usr/libexec/glycin-loaders/2+/glycin-svg": "7e7e33592ae4bd340239419d411b6659c4c6c0c5b6feff2a797afceb7ce7ed64",
+      "usr/include/glycin-2/glycin.h": "2e70bb059944502d300c0c12aadf3efc1bb0538fe1077d5ab14c162e74014624",
+      "usr/share/thumbnailers/glycin-image-rs.thumbnailer": "6f27b1af64830c64e4bc6636debed7cb6dc74cbb03c553ab38608f9437f10bce",
+      "usr/share/thumbnailers/glycin-svg.thumbnailer": "be229f69b2da4d5560d1c3d5f7622976c8ff70431d2f51fc1272ba2e22479640",
+      "usr/share/gir-1.0/Gly-2.gir": "eff38c614480f936a626078435e0e1f3907c2d266f668627c686a6a99a270c79",
+      "usr/share/glycin-loaders/2+/conf.d/glycin-image-rs.conf": "d95ab1929417f54289651bde8fb1057888fe4a806fb8f85b9b76cfc43b20d389",
+      "usr/share/glycin-loaders/2+/conf.d/glycin-svg.conf": "a8e2ef1e3269bd9df28069587e6e05fcaca51d106c961b796f7abe0221849f6b"
+    },
+    "stage_after": {
+      "usr/lib/libglycin-2.so.0": "96525d2b826d63e008ed9b813fa620b37c137f070067ef6e701bdffdea3824af",
+      "usr/lib/pkgconfig/glycin-2.pc": "05d56432d76f8f7068b723192d4f4de961a03718fca12da6d8b8ff1ab6f39ba9",
+      "usr/lib/girepository-1.0/Gly-2.typelib": "a364bf9b760338304f2eeb409a62d126bc3445b7329e575ff3677e3a1010293e",
+      "usr/libexec/glycin-loaders/2+/glycin-image-rs": "b996fe3839a528586dda0f8ca6e7badc6822a54cb936c0b2b80af7f89c045fd9",
+      "usr/libexec/glycin-loaders/2+/glycin-svg": "7e7e33592ae4bd340239419d411b6659c4c6c0c5b6feff2a797afceb7ce7ed64",
+      "usr/include/glycin-2/glycin.h": "2e70bb059944502d300c0c12aadf3efc1bb0538fe1077d5ab14c162e74014624",
+      "usr/share/thumbnailers/glycin-image-rs.thumbnailer": "6f27b1af64830c64e4bc6636debed7cb6dc74cbb03c553ab38608f9437f10bce",
+      "usr/share/thumbnailers/glycin-svg.thumbnailer": "be229f69b2da4d5560d1c3d5f7622976c8ff70431d2f51fc1272ba2e22479640",
+      "usr/share/gir-1.0/Gly-2.gir": "eff38c614480f936a626078435e0e1f3907c2d266f668627c686a6a99a270c79",
+      "usr/share/glycin-loaders/2+/conf.d/glycin-image-rs.conf": "d1a2254af8b1937076b30eb2c4fba7aecb63b75e784f965925eaf56f206b2229",
+      "usr/share/glycin-loaders/2+/conf.d/glycin-svg.conf": "a8e2ef1e3269bd9df28069587e6e05fcaca51d106c961b796f7abe0221849f6b"
+    },
+    "changed_stage_files": [
+      "usr/share/glycin-loaders/2+/conf.d/glycin-image-rs.conf",
+      "usr/libexec/glycin-loaders/2+/glycin-image-rs"
+    ],
+    "preserved_original_loader": "/build/dds-compat/original-loader",
+    "package_promotable": false,
+    "compatibility_recipe_sha256": "75138b17d1b0bc0391a00a4be09b72bff6c5c92199544284cc57019cc9cf17c2"
+  },
+  "fixture_entries": 182,
+  "free_target_bytes": 17418350592
+}

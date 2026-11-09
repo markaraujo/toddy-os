@@ -2574,3 +2574,19 @@ failed. Preserved unused disposable overlay/controller receipt; backing unchange
 Controller now preflights a compressed public payload with bounded64KiB decode
 and exact SHA before context/storage creation; shared transport limit unchanged.
 New context3 only after original stopped-VM and no-context2-VM postconditions.
+
+Native3 compressed transport passed, original color reached the DDS loader but
+failed RemoteError UnsupportedImageFormat canonical DDS. First config-only
+correction failed; preserved report. Source inspection confirms exact legacy
+MIME match in image-rs main.rs, so second narrow correction adds canonical name
+to the SAME decoder match arm and rebuilds only that loader offline from a
+private source copy. Immutable sources, original loader, core/SVG/tests and all
+other stage files preserved. One guest writer glycin-dds-1 PID1380. Native
+updated-loader qualification still required; never claim source expectation
+or original old-loader passes as execution of the changed DDS dispatch.
+
+DDS loader-only second correction compiled0. Exact source comparison found only
+main.rs changed; stage comparison found only existing image-rs loader and config
+changed. Immutable source and original loader/config retained, Cargo.lock unchanged.
+New native candidate fixture complete; actual updated-loader color/GI tests are
+next, not accepted by compilation or prior old-loader evidence.

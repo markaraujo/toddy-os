@@ -15,6 +15,7 @@ import zlib
 CONSUMER_SOURCE = None
 MIME_COMPAT_SOURCE = None
 REUSED_NATIVE_PROOF = None
+FIXTURE_NAME = 'glycin-1'
 
 
 def output(args):
@@ -34,12 +35,17 @@ def main():
     assert output(['lsblk','-dnro','SERIAL','/dev/'+parent])=='TODDY-BOOT-TEST'
     assert output(['blkid','-s','LABEL','-o','value',device])=='TODDY_LFS'
     assert output(['findmnt','-n','-o','FSTYPE','/'])=='ext4'
-    fixture=Path('/sources/phase2/native-fixtures/glycin-1')
+    assert FIXTURE_NAME in ['glycin-1','glycin-2']
+    fixture=Path('/sources/phase2/native-fixtures')/FIXTURE_NAME
     assert fixture.stat().st_uid==0 and not fixture.is_symlink()
     tests=json.loads((fixture/'test-prepare-results.json').read_text())
     assert tests['test_compile_exit']==0 and not tests['package_promotable']
     for row in tests['executables']:assert digest(fixture/'executables'/row['name'])==row['sha256']
     before={str(p.relative_to(fixture)):digest(p) for p in fixture.rglob('*') if p.is_file() and not p.is_symlink()}
+    candidate=json.loads((fixture/'dds-candidate.json').read_text()) if (fixture/'dds-candidate.json').exists() else None
+    if candidate:
+        assert candidate['native_compile_exit']==0 and not candidate['package_promotable']
+        assert {k.removeprefix('stage/'):v for k,v in before.items() if k.startswith('stage/')}==candidate['stage_after']
     assert isinstance(CONSUMER_SOURCE,str) and CONSUMER_SOURCE
     runs=[];config_compat=[]
     assert isinstance(MIME_COMPAT_SOURCE,str) and MIME_COMPAT_SOURCE
@@ -58,8 +64,12 @@ def main():
         # Private writable data/config/outputs in this disposable runtime root.
         stage=tmp/'stage';shutil.copytree(fixture/'stage',stage,symlinks=True)
         config=stage/'usr/share/glycin-loaders/2+/conf.d/glycin-image-rs.conf'
-        original=config.read_bytes();updated=compat['add_dds_canonical_alias'](original)
-        config.write_bytes(updated)
+        original=config.read_bytes()
+        if candidate:
+            assert hashlib.sha256(original).hexdigest()==candidate['stage_after']['usr/share/glycin-loaders/2+/conf.d/glycin-image-rs.conf']
+            updated=original
+        else:
+            updated=compat['add_dds_canonical_alias'](original);config.write_bytes(updated)
         config_compat.append({'path':'usr/share/glycin-loaders/2+/conf.d/glycin-image-rs.conf',
                               'before_sha256':hashlib.sha256(original).hexdigest(),
                               'after_sha256':hashlib.sha256(updated).hexdigest(),
@@ -79,7 +89,7 @@ def main():
         env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C.UTF-8','HOME':str(tmp),'XDG_CACHE_HOME':str(tmp/'cache'),
              'GLYCIN_DATA_DIR':str(stage/'usr/share'),'GI_TYPELIB_PATH':str(stage/'usr/lib/girepository-1.0'),
              'LD_LIBRARY_PATH':str(stage/'usr/lib'),'RUST_LOG':'warn','PYTHONDONTWRITEBYTECODE':'1'}
-        commands=[] if REUSED_NATIVE_PROOF is not None else [('native-GI-bwrap-images',['python3','-B','-c',CONSUMER_SOURCE])]
+        commands=[] if REUSED_NATIVE_PROOF is not None and candidate is None else [('native-GI-bwrap-images',['python3','-B','-c',CONSUMER_SOURCE])]
         for row in tests['executables']:
             if REUSED_NATIVE_PROOF is not None and row['name']!='tests':continue
             args=[str(fixture/'executables'/row['name']),'--test-threads=1','--nocapture']
@@ -107,7 +117,8 @@ def main():
                     'kernel':os.uname().release,'pid1':'systemd','runs':runs,'test_artifacts':tests['executables'],
                     'fixture_files_unchanged':len(before),'unsupported_extensions':tests['unsupported_extensions'],
                     'runtime_exclusions':tests['runtime_exclusions'],'config_compatibility':config_compat,
-                    'reused_native_proof':REUSED_NATIVE_PROOF},sort_keys=True).encode()
+                    'reused_native_proof':REUSED_NATIVE_PROOF,'source_compatibility':candidate,
+                    'stage_file_hashes':{k.removeprefix('stage/'):v for k,v in before.items() if k.startswith('stage/')}},sort_keys=True).encode()
     assert len(raw)<=4*1024**2
     encoded=base64.b64encode(zlib.compress(raw,9)).decode();chunks=[encoded[i:i+1024] for i in range(0,len(encoded),1024)]
     for i,chunk in enumerate(chunks):print('TODDY_B02_RUNTIME_DATA',i,chunk,flush=True)

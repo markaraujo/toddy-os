@@ -28,16 +28,27 @@ Add exactly one canonical loader section for `image/vnd.ms-dds`, pointing at the
 same existing DDS loader. Preserve the legacy name and every original entry.
 `glycin_mime_compat.py` refuses a missing/different legacy entry, a preexisting
 canonical entry and unexpected executable shape, then compares every original
-parsed entry with the result. No source, executable, MIME database, security
-selector or golden image assertion changes.
+parsed entry with the result. The initial config-only native follow-up reached the decoder but failed with
+`RemoteError(UnsupportedImageFormat("image/vnd.ms-dds"))`. Its original failure
+is retained in native-glycin-runtime-3. Source inspection then confirmed
+`glycin-image-rs/src/main.rs` also matches only the legacy spelling.
+
+Extend exactly that existing DDS match arm with the canonical spelling using
+Rust pattern alternation. Both spellings execute the same decoder implementation.
+Rebuild only glycin-image-rs offline from a private writable source copy; preserve
+original immutable inputs/source/loader, compare every copied source file and
+require only this one line to differ. Every staged file except the loader and
+its configuration must remain byte-identical. No MIME database, security selector
+or golden image assertion changes; no version upgrade or core rebuild.
 
 Apply the same transformation to a private native runtime stage before upstream
 test-prefix configuration, retaining before/after hashes. Rerun only the original
-failed `color` case with the same executable, preserving prior23 passing Rust
+failed `color` case with the same original test executable and updated loader, preserving prior23 passing Rust
 cases and native GI results bound to the full report/artifact hashes. A new
 disposable cold overlay must verify the stopped earlier VM and unchanged backing.
 If accepted, the owned native package must contain the exact corresponding
-canonical configuration and unchanged binaries; constructor-only evidence still
+canonical configuration and exact natively tested updated loader; core, SVG loader
+and original test binaries remain unchanged; constructor-only evidence still
 does not authorize promotion. The original failed report remains visible.
 
 This affects configured DDS availability only. It does not qualify GNOME,

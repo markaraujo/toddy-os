@@ -40,10 +40,11 @@ def compressed_payload(probe):
 
 
 def main():
-    assert sys.argv[1:] in [[],['--dds-followup'],['--dds-transport-followup']]
+    assert sys.argv[1:] in [[],['--dds-followup'],['--dds-transport-followup'],['--dds-rebuild-followup']]
     followup=bool(sys.argv[1:]);previous=None;reused=None
     transport_followup=sys.argv[1:]==['--dds-transport-followup']
-    context=ROOT/'.local/phase2'/('native-glycin-runtime-3' if transport_followup else 'native-glycin-runtime-2' if followup else 'native-glycin-runtime-1')
+    rebuild_followup=sys.argv[1:]==['--dds-rebuild-followup']
+    context=ROOT/'.local/phase2'/('native-glycin-runtime-4' if rebuild_followup else 'native-glycin-runtime-3' if transport_followup else 'native-glycin-runtime-2' if followup else 'native-glycin-runtime-1')
     if followup:
         old=context.parent/'native-glycin-runtime-1'
         previous=json.loads((old/'result.json').read_text());report=json.loads((old/'native-report.json').read_text())
@@ -52,11 +53,11 @@ def main():
         container=json.loads(subprocess.check_output(['docker','inspect',previous['container_id']],text=True))[0]
         assert not container['State']['Running'] and container['State']['ExitCode']==0
         assert (container['Config'].get('Labels') or {}).get('toddy.boot-test')==previous['run_id']
-        assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==previous['source_identity']
+        if not rebuild_followup:assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==previous['source_identity']
         failed=[r for r in report['runs'] if r['exit']!=0];assert len(failed)==1 and failed[0]['name']=='tests'
         assert 'UnknownImageFormat("image/vnd.ms-dds"' in failed[0]['stderr']
         assert '10 passed; 1 failed;' in failed[0]['stdout']
-        assert not subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()
+        if not rebuild_followup:assert not subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()
         reused={'kernel':report['kernel'],'test_artifacts':report['test_artifacts'],
                 'report_sha256':previous['summary']['report_sha256'],
                 'runs':[{k:r[k] for k in ['name','exit']} for r in report['runs'] if r['exit']==0],
@@ -86,6 +87,9 @@ def main():
     assert body.count('MIME_COMPAT_SOURCE = None')==1 and body.count('REUSED_NATIVE_PROOF = None')==1
     body=body.replace('MIME_COMPAT_SOURCE = None','MIME_COMPAT_SOURCE = '+repr(compat))
     body=body.replace('REUSED_NATIVE_PROOF = None','REUSED_NATIVE_PROOF = '+repr(reused))
+    if rebuild_followup:
+        assert body.count("FIXTURE_NAME = 'glycin-1'")==1
+        body=body.replace("FIXTURE_NAME = 'glycin-1'","FIXTURE_NAME = 'glycin-2'")
     probe=body.encode()
     bootstrap=compressed_payload(probe)
     code='''from pathlib import Path
@@ -104,8 +108,11 @@ print(json.dumps({'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read
  'fixture_receipt_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),
  'fixture_payload_sha256':hashlib.sha256(json.dumps(r['payload'],sort_keys=True).encode()).hexdigest()}))
 '''
-    if followup:accepted_record=previous['accepted']
+    if followup and not rebuild_followup:accepted_record=previous['accepted']
     else:
+        if rebuild_followup:
+            code=code.replace('glycin-native-fixture.json','glycin-native-fixture-dds.json')
+            code+="\nassert Path('/var/log/toddy/phase2/glycin-dds-1.exit').read_text().strip()=='0'\n"
         accepted=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
         accepted_record=json.loads(accepted.stdout)
     context.mkdir()
@@ -122,7 +129,7 @@ print(json.dumps({'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read
         part.write_text(json.dumps(state,indent=2)+'\n');part.replace(context/'result.json')
         print(json.dumps({'phase':state['phase'],'context':str(context)}),flush=True)
     save()
-    if not followup:
+    if not followup or rebuild_followup:
         with (context/'builder-stop.log').open('x') as log:
             state['phase']='stopping-builder';save()
             run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)

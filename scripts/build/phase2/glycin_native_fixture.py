@@ -7,6 +7,7 @@ from pathlib import Path
 import shutil
 import stat
 import subprocess
+import sys
 
 
 def digest(path):
@@ -26,6 +27,8 @@ def manifest(root):
 
 def main():
     assert os.geteuid()==0
+    assert sys.argv[1:] in [[],['--dds-candidate']]
+    candidate=bool(sys.argv[1:])
     subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
     lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
@@ -33,13 +36,19 @@ def main():
         assert Path('/var/log/toddy/phase2',name+'.exit').read_text().strip()=='0'
     work=Path('/mnt/lfs/sources/phase2/work/glycin-1')
     source=Path('/mnt/lfs/sources/phase2/inputs/glycin-2.1.5/project')
-    out=Path('/mnt/lfs/sources/phase2/native-fixtures/glycin-1')
-    receipt=Path('/var/log/toddy/phase2/glycin-native-fixture.json')
+    out=Path('/mnt/lfs/sources/phase2/native-fixtures')/('glycin-2' if candidate else 'glycin-1')
+    receipt=Path('/var/log/toddy/phase2')/('glycin-native-fixture-dds.json' if candidate else 'glycin-native-fixture.json')
     assert not receipt.exists() and not out.exists(),'Reconcile prior fixture; never replay'
     tests=json.loads((work/'test-prepare-results.json').read_text())
     stage=json.loads((work/'stage-results.json').read_text())
     assert tests['test_compile_exit']==0 and stage['native_compile_exit']==0
     assert not tests['package_promotable'] and not stage['package_promotable']
+    if candidate:
+        assert Path('/var/log/toddy/phase2/glycin-dds-1.exit').read_text().strip()=='0'
+        changed=json.loads((work/'dds-compat/results.json').read_text())
+        assert changed['native_compile_exit']==0 and not changed['package_promotable']
+        assert changed['source_changed_files']==['glycin-loaders/glycin-image-rs/src/main.rs']
+        assert {k:v['sha256'] for k,v in manifest(work/'stage').items() if 'sha256' in v}==changed['stage_after']
     copies=[(work/'stage','stage'),(source/'tests','tests')]
     for row in tests['executables']:
         p=work/Path(row['path']).relative_to('/build')
@@ -64,6 +73,7 @@ def main():
             shutil.copy2(original,target);assert digest(target)==digest(original)
     for name in ['stage-results.json','test-prepare-results.json']:
         shutil.copy2(work/name,out/name)
+    if candidate:shutil.copy2(work/'dds-compat/results.json',out/'dds-candidate.json')
     state.update(state='complete',payload=manifest(out),free_target_bytes=shutil.disk_usage('/mnt/lfs').free)
     assert state['free_target_bytes']>=16*1024**3
     save();subprocess.run(['sync'],check=True)

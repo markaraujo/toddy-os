@@ -1,4 +1,4 @@
-"""Exact DDS canonical MIME alias compatibility (ADR0143), no decoder changes."""
+"""Exact DDS MIME spelling compatibility (ADR0143), same decoder implementation."""
 import configparser
 
 
@@ -16,3 +16,10 @@ def add_dds_canonical_alias(data):
     assert set(check)==set(config)|{canonical} and dict(check[canonical])==dict(config[legacy])
     assert all(dict(check[name])==dict(config[name]) for name in config)
     return updated.encode('utf-8')
+
+
+def add_dds_decoder_alias(data):
+    old=b'"image/x-dds" => Self::new(ImageRsDecoder::Dds('
+    new=b'"image/x-dds" | "image/vnd.ms-dds" => Self::new(ImageRsDecoder::Dds('
+    assert data.count(old)==1 and new not in data
+    return data.replace(old,new)
