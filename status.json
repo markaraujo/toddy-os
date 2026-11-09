@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-07",
+  "updated_at": "2026-11-09T14:46:42.616834+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05\u2013B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -655,14 +655,17 @@
       "Frozen PAM1.7.2 plus nine ADR0126 backports staged0;77original unit drivers and real permit/deny/missing-module/malformed/recovery0. New password client compiled0, original ELFs unchanged;157file native fixture prepared. No real passwords/helper/login acceptance yet.",
       "Owned Linux-PAM1.7.2-1+toddy2: original77unit drivers; real native7.1.8 yescrypt/setuid helper7correct/refusal/NNP/lock/recovery cases0,157fixture files unchanged/account removed/child stopped0. Metadata-only dependency recovery preserved457payload entries, recipe/post0/0,installed C/API/module/audit0; prior failures retained. Full login still pending.",
       "Same frozen Systemd261.2 PAM delta compiled/staged:7193authenticated source files reused read-only, sole prior udev rule correction; sole HAVE/ENABLE change HAVE_PAM0\u21921. Four original driversOK/two exact cgroup SKIP77 retained; stage-only recovery0/12artifacts unchanged, Meson install RPATH/CLI+PAM/module load0. Installed runtime unchanged -PAM; native two-driver/boot/session gates pending.",
-      "Systemd PAM original two cgroup drivers passed on native7.1.8 (65+1observed headers/no skip diagnostics),7193source12fixture files unchanged. Controlled261.2-1+toddy3 install/post0/0 replaced four runtime files, added PAM module/policy/two directories,2478existing entries unchanged; full2486payload reviewed before install. Private1112core6205shared exports preserved,+33PAM symbols. Actual CLI/module/APT0; new-runtime cold boot/session pending."
+      "Systemd PAM original two cgroup drivers passed on native7.1.8 (65+1observed headers/no skip diagnostics),7193source12fixture files unchanged. Controlled261.2-1+toddy3 install/post0/0 replaced four runtime files, added PAM module/policy/two directories,2478existing entries unchanged; full2486payload reviewed before install. Private1112core6205shared exports preserved,+33PAM symbols. Actual CLI/module/APT0; new-runtime cold boot/session pending.",
+      "Actual new Systemd PID1 native boot/session gate passed: four PAMName/deny224/Stop/recovery cases and two logind/user-manager/private-user-bus cycles; cleanup/new bus identity and eight installed artifacts unchanged. Only new promotion stage custody reclaimed82108416B/root unchanged; no GNOME login claim.",
+      "Owned Duktape2.7.0 normal/debug policy-engine15checks each and original hello0; supported bytecode load/dump disabled. Corrected uninstalled Polkit subject decoder13cases+9NULL-error controls0; full daemon/helper authorization still pending.",
+      "Owned D-Bus Python1.4.0 install/post0/0; seven original programs passed, exact upstream Python>=3.12 embedded-repeat SKIP retained. Verify-only reconciliation32ELFs unchanged and installed typed private bus/error/reconnect0. Owned DBusMock0.38.1 install/post0/0; core60PASS/1missing UPower client SKIP, actual mock typed RPC/error/restart0. Fixtures not real service authorization."
     ],
-    "running": "Systemd261.2-1+toddy3 installed/postchecked; NEW native-systemd-session-runtime-1 cold boot/PAMName allow-deny-Stop/recovery and two logind/user-manager/user-bus cycles next. B02/GNOME/login/apps pending; finish ALL B02 then stop.",
+    "running": "B02 test dependencies installed; next full corrected Polkit build/original native suite and actual privilege/PAM/recovery. GNOME/GDM/apps/network/audio/offline/focus/resources remain pending. Finish ALL B02 then stop before another story.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-09T13:19:42.902212+00:00",
+    "verified_at": "2026-11-09T14:46:42.616834+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

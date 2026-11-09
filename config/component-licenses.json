@@ -10716,6 +10716,31 @@
           ]
         }
       }
+    },
+    {
+      "name": "dbus-python",
+      "version": "1.4.0",
+      "license": "MIT AND LicenseRef-DBusPython-per-file-notices",
+      "evidence": "Official1.4.0 source COPYING/AUTHORS plus native binding and bundled dbus-gmain leading notices retained. Seven original private-bus drivers pass, exact upstream Python>=3.12 embedded-repeat skip retained; source/installed module profile only.",
+      "extra_license_headers": {
+        "dbus-python-1.4.0.tar.xz": {
+          "prefixes": [
+            "dbus_bindings/",
+            "dbus_glib_bindings/",
+            "subprojects/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
+    },
+    {
+      "name": "python-dbusmock",
+      "version": "0.38.1",
+      "license": "LGPL-3.0-or-later",
+      "evidence": "Frozen published COPYING and SPDX per-file notices retained. Qualified core API/CLI and private mock RPC profile; external service templates remain separate, never real authorization or device evidence."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

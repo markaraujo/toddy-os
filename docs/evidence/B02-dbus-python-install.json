@@ -1,0 +1,214 @@
+{
+  "scope": "Owned D-Bus Python test dependency, not Polkit/GNOME acceptance",
+  "source": {
+    "name": "dbus-python",
+    "version": "1.4.0",
+    "filename": "dbus-python-1.4.0.tar.xz",
+    "url": "https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.4.0.tar.xz",
+    "sha256": "c36b28f10ffcc8f1f798aca973bcc132f91f33eb9b6b8904381b4077766043d5",
+    "reference": "BLFS13.1-systemd general/python-modules.html#dbus-python",
+    "book_page_sha256": "eeca0df3449c611069e44d356162b7438e05151c39d225e72c601f049a66a72d",
+    "book_md5": "edca335d1c80f338e3255455eb876b72",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Native Python3.14 extension original eight private-bus driver programs and actual typed owner/error/name/reconnect; test dependency, not Polkit/GNOME acceptance",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "dbus-python:import-repeatedly",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "dbus-python:exception-py3",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dbus-python:p2p",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dbus-python:client",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dbus-python:standalone",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dbus-python:unusable-main-loop",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dbus-python:run-test.sh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "dbus-python:signals",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "upstream_passed_programs": 7,
+    "upstream_skipped_programs": 1,
+    "unqualified": "Repeated embedded-interpreter reinitialization is explicitly skipped by upstream for Python>=3.12; not a pass. Selected test-tool profile uses one initialization per process.",
+    "native_consumer_exit": 0,
+    "consumer": {
+      "scope": "Actual private native dbus-daemon/Python extension owner UID/typed errors/name ownership/reconnect; no Polkit or physical device claim",
+      "version": "1.4.0",
+      "cycles": [
+        {
+          "cycle": 1,
+          "uid": 101,
+          "typed_uid": true,
+          "missing_peer_refused": true,
+          "name_acquire_release": true,
+          "recovery_call": true
+        },
+        {
+          "cycle": 2,
+          "uid": 101,
+          "typed_uid": true,
+          "missing_peer_refused": true,
+          "name_acquire_release": true,
+          "recovery_call": true
+        }
+      ],
+      "distinct_connections": true
+    },
+    "stage_sha256": {
+      "usr/lib/pkgconfig/dbus-python.pc": "912fee6fbfade40283df19d185d4b3cecc39ba487c46c8856b66c6c546e55cb6",
+      "usr/lib/python3.14/site-packages/_dbus_bindings.cpython-314-x86_64-linux-gnu.so": "e11dc37ed903aaf99408887b5f6fc081e6ddd520f7a9763d45a9bea08e91626a",
+      "usr/lib/python3.14/site-packages/_dbus_glib_bindings.cpython-314-x86_64-linux-gnu.so": "69e3804b732d639380b0430c5f3fba2363b0dd5a319cd542c9b07c6ba789c4c1",
+      "usr/lib/python3.14/site-packages/dbus_python-1.4.0.egg-info/top_level.txt": "458f39ac4ff285631d6279bd5368ef3bf0adffc5fe0cc54eeca3be9e0b989000",
+      "usr/lib/python3.14/site-packages/dbus_python-1.4.0.egg-info/dependency_links.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "usr/lib/python3.14/site-packages/dbus_python-1.4.0.egg-info/PKG-INFO": "b17f5840b73b18dce34583b0c06dcf10c736ca34c2f416459d1b9852dac3d945",
+      "usr/lib/python3.14/site-packages/dbus_python-1.4.0.egg-info/SOURCES.txt": "779889a429a46effdd32b36a6b57756aa2f4258ad62dbd305a44b25a9dc59c72",
+      "usr/lib/python3.14/site-packages/dbus/types.py": "dcbcc99e9411f6c4145d1244b2f406f1ad54c524758b04b7df3be134500f8055",
+      "usr/lib/python3.14/site-packages/dbus/glib.py": "e763c9295ae8ce9afafd808c09800b2c9c3a90f6ba7c50261f9d97505e5b484e",
+      "usr/lib/python3.14/site-packages/dbus/lowlevel.py": "cce77a2acdd70f2637b4b14837aa347a407815841898bfee03ee7d39dd4d8217",
+      "usr/lib/python3.14/site-packages/dbus/_dbus.py": "382f5bf6e2f4ddea444099550073ad6e2ff77563c681cfcfbf73af0ad502344f",
+      "usr/lib/python3.14/site-packages/dbus/gi_service.py": "8c2a5de6033a6b627340f5973a44f9c29591819e5a4d9279d022a47ac6c8dea6",
+      "usr/lib/python3.14/site-packages/dbus/server.py": "f7a043e67863447b0b03fda01f2a078fc7f7c8c05aff6cf333eece794872610d",
+      "usr/lib/python3.14/site-packages/dbus/service.py": "901f5a3bea23b4dcc24ba72d15ff0e23b9cc7354666dda92be0301faacbb5055",
+      "usr/lib/python3.14/site-packages/dbus/bus.py": "06f235ac3d280defca7473851357bdb2b1a0b3e2d2936d989406ab43b9d4b3be",
+      "usr/lib/python3.14/site-packages/dbus/_expat_introspect_parser.py": "6099cf535c501975559a12463bbe6f9bbb9ba3ad6f087e7ac5e1b6e0856f59f2",
+      "usr/lib/python3.14/site-packages/dbus/decorators.py": "924fa5aa7da58d7096406c512cc0251364300833b548c255148dc0c1898a75b7",
+      "usr/lib/python3.14/site-packages/dbus/exceptions.py": "428c6a424b356734e7ae8e05add5ed639aedb70d62625458b89de516dded2288",
+      "usr/lib/python3.14/site-packages/dbus/__init__.py": "92f7b9c7cf168e0050db87bdcbabaa4c7ea8211de298d23640c551fe5d0cb132",
+      "usr/lib/python3.14/site-packages/dbus/proxies.py": "3e0d5de78fe2c7badf874c5af518b808f942bb2a472b96cc1e5a7943b4967ca7",
+      "usr/lib/python3.14/site-packages/dbus/connection.py": "d0f71b0691018d4b87779872d7572bb31bd005328be3c380ad0bb398d5a8aa36",
+      "usr/lib/python3.14/site-packages/dbus/_compat.py": "ca3d57c340397067614e0f3b869b7e33adb40f34f99a3387ac1cdbe74d86b67a",
+      "usr/lib/python3.14/site-packages/dbus/mainloop/glib.py": "98e37906c14d5f41b388fae2a7549e8b754a55963fc809df5d0b7f9f45eb72cc",
+      "usr/lib/python3.14/site-packages/dbus/mainloop/__init__.py": "b6fd5b7c1dc87d1daaa0f5b9b8ad6e4d01a52763bb693ded12b4bf9f602206b7",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/_compat.cpython-314.pyc": "9d1c22703ef87ed0b19724ce251ca4770288fa1d847bf89d4a197968b176db38",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/exceptions.cpython-314.pyc": "8e0445c6c434b7f870f881f39498fdb3e377bc47a29ce6a4bd8ef6799c9bd408",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/service.cpython-314.pyc": "3802811da797534eb3dd098e5e4600b7cf559d3887cf928d40eb7dbc47edabac",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/connection.cpython-314.pyc": "1311779e1d7c6e440f9cdf3d52bdfa9c6fe53df5fb76b6e1f085bebe83e347e3",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/decorators.cpython-314.pyc": "772076f0197b7f1ab504c06bbf5c125976d1835e1fe3e02da43d300edcddb463",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/__init__.cpython-314.pyc": "e9a4b8f329d9ad03e2d62622d91bc182812815c93895592d5c288e281d2e8e53",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/lowlevel.cpython-314.pyc": "c711b4f68d63790ced28478358f7a4d61a0e2b573e91cc4dd146b96d7165bb8e",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/types.cpython-314.pyc": "18b52c6c0008f7eed8609e92e83aa954514d15b24252098505401e1c254ab6de",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/gi_service.cpython-314.pyc": "e7700aadc91c69a4894d18d688989ec6c1d85f75cdaabd3d4f006655cff7ee9e",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/proxies.cpython-314.pyc": "13bf0d9903a443f9f5640947e8db29df36074e2fc903f054a59b5b57e2cde3cf",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/_dbus.cpython-314.pyc": "0c875c37083badee5e7227774988ec5405507b91560ca8100cfbc66d0f6dce90",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/bus.cpython-314.pyc": "da85f6b7876797ccfd8b6975404137fbc5f43801a207cb96092b7b1ddc4aeaf5",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/_expat_introspect_parser.cpython-314.pyc": "c92dba982f6ab8cb1ca51a124301b2caeb8fbde568480cd882fc6587ce478dc6",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/server.cpython-314.pyc": "d2cf99b36dd737d5a07c60609b6588b5f7ca55b3b21e8fb29758947668af2a04",
+      "usr/lib/python3.14/site-packages/dbus/__pycache__/glib.cpython-314.pyc": "6b013a1cfa1371af6ed14a5bfb815d376e2fe3f256472cfd432defe1477fc49c",
+      "usr/lib/python3.14/site-packages/dbus/mainloop/__pycache__/__init__.cpython-314.pyc": "a1f693103b7a2147d557c681f59231b3f01a53aee9750644cc00541844ed43b6",
+      "usr/lib/python3.14/site-packages/dbus/mainloop/__pycache__/glib.cpython-314.pyc": "9173988c36ebb0733383fd31cd577964cd9224ca5f6f6449bdd4f0ab9d83d5e2",
+      "usr/include/dbus-1.0/dbus/dbus-python.h": "56b5a13630dd50364968cd6f30e53d5c70db6e9e4c0eafee63f626222ec005d8"
+    },
+    "unchanged_compiled_elfs": {
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so": "e11dc37ed903aaf99408887b5f6fc081e6ddd520f7a9763d45a9bea08e91626a",
+      "compile/_dbus_glib_bindings.cpython-314-x86_64-linux-gnu.so": "69e3804b732d639380b0430c5f3fba2363b0dd5a319cd542c9b07c6ba789c4c1",
+      "compile/_dbus_glib_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_glib_bindings_module.c.o": "2cfc3269c7c34856ac01d4562b484848642f63cfcb0273a98f78d6711fd0b35c",
+      "compile/meson-private/sanity_check_for_c.exe": "191646a6501d425990f9a36894024258da104e5375904550c64ce420e318f3ba",
+      "compile/test/dbus_py_test.cpython-314-x86_64-linux-gnu.so": "0a3f0b665a2330fa994d591c126e124af46c794b50cd626ca6f6aee8d57e07c1",
+      "compile/test/test-import-repeatedly": "ab4ecc76ca1d1e49e90f5f29930f9fda0f13c5ae163f3985011c0d51923edcd5",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_debug.c.o": "26911dc2928d68e233c283fa5aee9af340b641012047ff5fb34eba456fa3734d",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_module.c.o": "9ef58a8c82d48d7eaad940e39be622121107f9eb7eaffd174512d60701027474",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_bytes.c.o": "6ef7fbf9c22aebaa706c561ffcdb5ad177298b3dc48c6fc206e765fd5f50ceff",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_abstract.c.o": "2548f87493730fb347853cda6c9862e4f288296c2b8d3e2ae98368cb2f5c44a8",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_message-append.c.o": "7c2805bf792fe4fbf88902e0659e6d94156e4f7b0fa0c5511bb3515619962265",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_conn.c.o": "90ee50c63744e5f44d473bddd3dcd8e4694cd45222009f8cc169b85b745da253",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_string.c.o": "322e6cad38c4f7493c574ece8933aa77cf3857b0dc00dd9cfc33ea48a2e83357",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_message.c.o": "8ed406acef2cb9cfe16db2e0fc5b259f2338e0ad233b1fd81c3f6d1c6cdfbb25",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_server.c.o": "8c8f79848affe53a4309359ab1513442b635708c9d14ccb57ed9fc42b49e9af6",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_signature.c.o": "70abd77e56dc49ffd411442023676695439ea7dc2954b2b25aea441da7c0551e",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_bus.c.o": "3c21d5a2f61faf118d969a9e37519af18988fa1f8a6665827b12888bf7482d70",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_mainloop.c.o": "f2b6d0147e77de2ffc84325ecde705016b35b855aca58003a8f6200ae58ee2f1",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_message-get-args.c.o": "0168e71eb781430286ef496e0cb368fb12f518e794875d25df45ad8686bff045",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_validation.c.o": "de6e331b1b791157113e1e07c1028cd9b7368edfd1b630c80218505ca060d024",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_conn-methods.c.o": "9644c5f35a8ccd384e0a816007d89f6dd84090490113defb8eaae594f59a0e65",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_containers.c.o": "2e8759ee75f1971c81942dfe8184e0ba50a6704389041c076d7575427bcbb3b0",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_pending-call.c.o": "b630dc592615b5ae5e4116a62324d9894b2dc1111736c4d6d694bf75522254a1",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_unixfd.c.o": "8bc0f3523f10560957aad032c0c814a7c47fd5eab48e6fb12b5d99cddf048e7e",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_exceptions.c.o": "0ed28b2ea607f6d2d68d84b8b8a91651dbabcee394759fbe3401c49e4687a2af",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_int.c.o": "63077c54b4272fd6a0f3cdcdb62f88a1391e74e90cd31f98b2395f8c6bd8e65a",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_libdbusconn.c.o": "eb5f0d69496725328f31399c6600f1ff6d035484e111afd793c056318b18dbcf",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_generic.c.o": "391ddaea55d13112621543b3b1ff2dfa7ea50b098d434007ec8db90c49cb8907",
+      "compile/_dbus_bindings.cpython-314-x86_64-linux-gnu.so.p/dbus_bindings_float.c.o": "9e65dbadd01fb2e69a6138a6f2cb25d7fe52c30e305a79ee8dd8a1db4c4e005d",
+      "compile/test/test-import-repeatedly.p/import-repeatedly.c.o": "fbc84582bd5404c0efc08c4df595b77bfc7c37a8091ec20dd54ac79656ebefcc",
+      "compile/test/dbus_py_test.cpython-314-x86_64-linux-gnu.so.p/dbus_py_test.c.o": "5014768643c0198536f8912d904a80cda0742e10ab502d72ea0664e225f05211",
+      "compile/subprojects/dbus-gmain/libdbus-gmain.a.p/dbus-gmain.c.o": "3783e4b1845b1d93cd9fdda0a3a90a98d31b8f46d3500fccf4aa7be3b6fc6d73"
+    },
+    "no_compiler_stage_or_test_replay": true
+  },
+  "run": {
+    "step": "b02-dbus-python-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T14:34:43.760970+00:00",
+    "changed_paths": 101
+  },
+  "package": {
+    "name": "dbus-python",
+    "version": "1.4.0-1+toddy1",
+    "archive_sha256": "d191201f70d685b62c7644b784098b01b197f907e4c55503b3fecdaded61e398",
+    "installed": true
+  },
+  "payload_entries": 106,
+  "consumer": {
+    "scope": "Actual installed native Python module/private dbus-daemon typed UID/error/name/reconnect; test-only dependency. Original repeated embedded interpreter initialization remains unsupported on Python>=3.12; not a passed case. No Polkit/GNOME acceptance.",
+    "version": "1.4.0",
+    "consumer": {
+      "scope": "Actual private native dbus-daemon/Python extension owner UID/typed errors/name ownership/reconnect; no Polkit or physical device claim",
+      "version": "1.4.0",
+      "cycles": [
+        {
+          "cycle": 1,
+          "uid": 0,
+          "typed_uid": true,
+          "missing_peer_refused": true,
+          "name_acquire_release": true,
+          "recovery_call": true
+        },
+        {
+          "cycle": 2,
+          "uid": 0,
+          "typed_uid": true,
+          "missing_peer_refused": true,
+          "name_acquire_release": true,
+          "recovery_call": true
+        }
+      ],
+      "distinct_connections": true
+    }
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-dbus-python-install-evidence.tar.gz",
+    "members": 13,
+    "sha256": "5b080c56c3a0abca8bd176b66c3d859e80db83a7a41e5442b5553dbbed3b4bab"
+  }
+}

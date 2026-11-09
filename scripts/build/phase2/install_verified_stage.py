@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'python-dbusmock': ('0.38.1', 'python (>= 3.14), python (<< 3.15), dbus-python (= 1.4.0-1+toddy1), pygobject (>= 3.56.3-1+toddy1)', 'python_dbusmock-0.38.1.tar.gz', 'usr/lib/python3.14/site-packages/dbusmock/__init__.py'),
+    'dbus-python': ('1.4.0', 'python (>= 3.14), python (<< 3.15), dbus (>= 1.16.2-1), glib (>= 2.88.3-1+toddy2)', 'dbus-python-1.4.0.tar.xz', 'usr/lib/pkgconfig/dbus-python.pc'),
     'duktape': ('2.7.0', 'glibc (>= 2.44-1)', 'duktape-2.7.0.tar.xz', 'usr/lib/pkgconfig/duktape.pc'),
     'linux-pam': ('1.7.2', 'glibc (>= 2.44-1), libxcrypt (= 4.5.2-1+toddy1), systemd (>= 261.2-1+toddy2)', 'Linux-PAM-1.7.2.tar.xz', 'usr/lib/pkgconfig/pam.pc'),
     'gjs': ('1.88.1', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), glib (>= 2.88.3-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1), cairo (= 1.18.4-1+toddy1), libffi (>= 3.8.0-1), mozjs (= 140.17.0-1+toddy1), readline (>= 8.3-1)', 'gjs-1.88.1.tar.xz', 'usr/lib/pkgconfig/gjs-1.0.pc'),
@@ -203,7 +205,9 @@ if __name__ == '__main__':
     if name=='libadwaita':qualifier='libadwaita-build-2'
     if name=='gtksourceview':qualifier='gtksourceview-patched-verify-9'
     if name=='mozjs':qualifier='mozjs-signal-check-4'
+    if name=='python-dbusmock':qualifier='python-dbusmock-2'
     if name=='linux-pam':qualifier='pam-1'
+    if name=='dbus-python' and (log/'dbus-python-verify-2.exit').exists():qualifier='dbus-python-verify-2'
     if name=='libxml2-python':qualifier='libxml2-python-probe-5'
     assert (log / (qualifier+'.exit')).read_text().strip() == '0', 'Reconcile actual compiler/test exit first'
     if name=='rustc':
@@ -1105,6 +1109,12 @@ if __name__ == '__main__':
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['staged_consumer_exit']==proof['upstream_diagnostic_exit']==0 and proof['matching_cases']==2
         assert len(proof['matching_oracle'])==2 and all(r['matching_cost']==r['independent_exhaustive_optimum'] for r in proof['matching_oracle'])
+    if name=='dbus-python':
+        from qualify_dbus_python import qualify as qualify_dbus_python
+        qualify_dbus_python(ROOT,log)
+    if name=='python-dbusmock':
+        from qualify_dbusmock import qualify as qualify_dbusmock
+        qualify_dbusmock(ROOT)
     if name=='duktape':
         from qualify_duktape import qualify as qualify_duktape
         qualify_duktape(ROOT)

@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-07
+Updated: 2026-11-09T14:46:42.616834+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T13:19:42.902212+00:00
+Last verified: 2026-11-09T14:46:42.616834+00:00
 
 Verified:
 
@@ -83,8 +83,11 @@ Verified:
 - Owned Linux-PAM1.7.2-1+toddy2: original77unit drivers; real native7.1.8 yescrypt/setuid helper7correct/refusal/NNP/lock/recovery cases0,157fixture files unchanged/account removed/child stopped0. Metadata-only dependency recovery preserved457payload entries, recipe/post0/0,installed C/API/module/audit0; prior failures retained. Full login still pending.
 - Same frozen Systemd261.2 PAM delta compiled/staged:7193authenticated source files reused read-only, sole prior udev rule correction; sole HAVE/ENABLE change HAVE_PAM0→1. Four original driversOK/two exact cgroup SKIP77 retained; stage-only recovery0/12artifacts unchanged, Meson install RPATH/CLI+PAM/module load0. Installed runtime unchanged -PAM; native two-driver/boot/session gates pending.
 - Systemd PAM original two cgroup drivers passed on native7.1.8 (65+1observed headers/no skip diagnostics),7193source12fixture files unchanged. Controlled261.2-1+toddy3 install/post0/0 replaced four runtime files, added PAM module/policy/two directories,2478existing entries unchanged; full2486payload reviewed before install. Private1112core6205shared exports preserved,+33PAM symbols. Actual CLI/module/APT0; new-runtime cold boot/session pending.
+- Actual new Systemd PID1 native boot/session gate passed: four PAMName/deny224/Stop/recovery cases and two logind/user-manager/private-user-bus cycles; cleanup/new bus identity and eight installed artifacts unchanged. Only new promotion stage custody reclaimed82108416B/root unchanged; no GNOME login claim.
+- Owned Duktape2.7.0 normal/debug policy-engine15checks each and original hello0; supported bytecode load/dump disabled. Corrected uninstalled Polkit subject decoder13cases+9NULL-error controls0; full daemon/helper authorization still pending.
+- Owned D-Bus Python1.4.0 install/post0/0; seven original programs passed, exact upstream Python>=3.12 embedded-repeat SKIP retained. Verify-only reconciliation32ELFs unchanged and installed typed private bus/error/reconnect0. Owned DBusMock0.38.1 install/post0/0; core60PASS/1missing UPower client SKIP, actual mock typed RPC/error/restart0. Fixtures not real service authorization.
 
-Running: Systemd261.2-1+toddy3 installed/postchecked; NEW native-systemd-session-runtime-1 cold boot/PAMName allow-deny-Stop/recovery and two logind/user-manager/user-bus cycles next. B02/GNOME/login/apps pending; finish ALL B02 then stop.
+Running: B02 test dependencies installed; next full corrected Polkit build/original native suite and actual privilege/PAM/recovery. GNOME/GDM/apps/network/audio/offline/focus/resources remain pending. Finish ALL B02 then stop before another story.
 
 Remaining:
 
