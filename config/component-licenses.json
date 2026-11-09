@@ -10766,6 +10766,24 @@
           ]
         }
       }
+    },
+    {
+      "name": "polkit",
+      "version": "127",
+      "license": "LGPL-2.0-or-later",
+      "evidence": "Frozen upstream COPYING GNU Library GPLv2 and per-file library/program/embedded-JS leading notices retained. Exact one-file downstream patch/manifest included; native original suite and standard privileged profile qualified, optional socket remains unqualified.",
+      "extra_license_headers": {
+        "polkit-127.tar.gz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".js"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

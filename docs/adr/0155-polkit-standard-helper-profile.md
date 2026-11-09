@@ -1,6 +1,6 @@
 # ADR0155: Qualify Polkit's standard helper profile separately
 
-Status: selected native candidate, installation pending, 2026-11-09.
+Status: native qualified and owned, 2026-11-09.
 
 The optional socket-activated Polkit helper profile remains unqualified. Actual
 correct-password tests failed127 with No session for cookie. Two corrective
@@ -28,3 +28,5 @@ Record generated credentials only in transient process/terminal memory. Preserve
 exact fixture files and old socket failures; never mark them passed because the
 separate default profile works. Owned installation still requires an exact
 path/hash privilege policy and its own full-root/postcondition transaction.
+
+[Real native proof](../evidence/B02-polkit-standard-native.json) passed11expected outcomes; [owned installation](../evidence/B02-polkit-install.json) passed verify-only0/0 after preserving initial missing-proc postcheck failure. No package/source/compiler/native-suite replay.

@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-09T15:26:54.685692+00:00
+Updated: 2026-11-09T15:51:44.562382+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T15:26:54.685692+00:00
+Last verified: 2026-11-09T15:51:44.562382+00:00
 
 Verified:
 
@@ -89,8 +89,9 @@ Verified:
 - Polkit full patched127 compile/stage0, five original native programs/59observed TAP cases0/no skips,479fixture files unchanged. Real authentication gate failed127/No session-cookie; two corrections failed, branch parked without package promotion. Independent DConf next.
 - Inactive baseline Mozilla140.14 source custody:422093entries actually restored/metadata matched in tmpfs,952148485Barchive retained, installed root changed0,4368916480Btarget reclaimed; current140.17source/build and baseline compiled/tests retained. No custody replay.
 - Owned DConf0.49.0 install/post0/0 changed41paths:14original core/runtime/ABI+2GVDB programs0; exact15bundled GVDB files matched immutable upstream commit. Actual installed CLI/GSettings private user DB typed persistence/malformed refusal/new bus/reset and generated GIO cache/audits0. No GNOME graphical acceptance.
+- Owned Polkit127-1+toddy1/193paths: original native5programs/59TAP cases and11actual standard-helper expected outcomes passed,479fixture files unchanged. Root-only UID/EUID/GID0 proof, wrong password/unsolicited cookie/NNP/Stop-no-effect/helper cleanup/recovery/reconnect/revoked action replay. Exact root:root4755 helpers/root:27 0750 rules, locked UID27 service account. Initial install0/post1 missing-proc consumer reconciled verify-only0/0 changed0; installed parser13+9/CLI/APT0. Optional socket transport remains failed/unqualified, no GNOME permission UI acceptance.
 
-Running: DConf core/runtime owned and verified. Polkit optional socket authentication profile parked after two failed corrections; source-backed standard SUID-helper profile is next qualification, no parent Polkit install yet. GNOME/GDM/apps/network/audio/offline/focus/resources pending. Complete ALL B02 then stop before another story.
+Running: B02 desktop prerequisites: DConf and Polkit owned/verified. Next AccountsService26.27.3 source/version/test dependency preparation, then GNOME/GDM/apps/network/audio/offline/native GUI/focus/resources. Optional Polkit socket profile remains parked; qualified standard helper used. Complete ALL B02 then stop before another story.
 
 Remaining:
 

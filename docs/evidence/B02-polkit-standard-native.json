@@ -1,0 +1,203 @@
+{
+  "scope": "Native original suite and actual standard helper qualification; parent package and GNOME UI pending",
+  "proofs": {
+    "suite": {
+      "report": {
+        "fixture_manifest_sha256": "c6e923f09e4cb34a99ffcae35e145ba2672cb8ec930233a91cb71db3ee0ab65d",
+        "kernel": "7.1.8-toddy",
+        "pid1": "systemd",
+        "runs": [
+          {
+            "exit": 0,
+            "name": "polkitunixusertest",
+            "skip_diagnostics": [],
+            "stderr": "",
+            "stdout": "Test data dir: /src/test/data\nExecuting '/build/compile/test/polkit/polkitunixusertest'\nTAP version 14\n# random seed: R02Sc2c691d3b91618e2be1c8ea4c7c652b1\n1..3\n# Start of PolkitUnixUser tests\nok 1 /PolkitUnixUser/new\nok 2 /PolkitUnixUser/new_for_name\nok 3 /PolkitUnixUser/set_uid\n# End of PolkitUnixUser tests\n"
+          },
+          {
+            "exit": 0,
+            "name": "polkitunixgrouptest",
+            "skip_diagnostics": [],
+            "stderr": "",
+            "stdout": "Test data dir: /src/test/data\nExecuting '/build/compile/test/polkit/polkitunixgrouptest'\nTAP version 14\n# random seed: R02S7fd506980957485daf061385bb467a3c\n1..3\n# Start of PolkitUnixGroup tests\nok 1 /PolkitUnixGroup/new\nok 2 /PolkitUnixGroup/new_for_name\nok 3 /PolkitUnixGroup/set_gid\n# End of PolkitUnixGroup tests\n"
+          },
+          {
+            "exit": 0,
+            "name": "polkitunixnetgrouptest",
+            "skip_diagnostics": [],
+            "stderr": "",
+            "stdout": "Test data dir: /src/test/data\nExecuting '/build/compile/test/polkit/polkitunixnetgrouptest'\nTAP version 14\n# random seed: R02Sf72b7344fb9529be0e1a989545987fa5\n1..2\n# Start of PolkitUnixNetgroup tests\nok 1 /PolkitUnixNetgroup/new\nok 2 /PolkitUnixNetgroup/set_name\n# End of PolkitUnixNetgroup tests\n"
+          },
+          {
+            "exit": 0,
+            "name": "polkitidentitytest",
+            "skip_diagnostics": [],
+            "stderr": "",
+            "stdout": "Test data dir: /src/test/data\nExecuting '/build/compile/test/polkit/polkitidentitytest'\nTAP version 14\n# random seed: R02Sd995afe00bdf8f43025f9619e58662fb\n1..21\n# Start of PolkitIdentity tests\nok 1 /PolkitIdentity/user_string_0\nok 2 /PolkitIdentity/user_string_1\nok 3 /PolkitIdentity/user_string_2\nok 4 /PolkitIdentity/group_string_0\nok 5 /PolkitIdentity/group_string_1\nok 6 /PolkitIdentity/group_string_2\nok 7 /PolkitIdentity/group_string_3\nok 8 /PolkitIdentity/netgroup_string\nok 9 /PolkitIdentity/netgroup_gvariant\nok 10 /PolkitIdentity/user_gvariant\nok 11 /PolkitIdentity/group_gvariant\nok 12 /PolkitIdentity/comparison_0\nok 13 /PolkitIdentity/comparison_1\nok 14 /PolkitIdentity/comparison_2\nok 15 /PolkitIdentity/comparison_3\nok 16 /PolkitIdentity/comparison_4\nok 17 /PolkitIdentity/comparison_5\nok 18 /PolkitIdentity/comparison_6\nok 19 /PolkitIdentity/comparison_7\nok 20 /PolkitIdentity/comparison_8\nok 21 /PolkitIdentity/comparison_9\n# End of PolkitIdentity tests\n"
+          },
+          {
+            "exit": 0,
+            "name": "test-polkitbackendjsauthority",
+            "skip_diagnostics": [],
+            "stderr": "",
+            "stdout": "Test data dir: /src/test/data\nExecuting '/build/compile/test/polkitbackend/test-polkitbackendjsauthority'\nTAP version 14\n# random seed: R02S99bce84873e80568dcf9aa863f527155\n1..30\n# Start of PolkitBackendJsAuthority tests\n# GLib-GIO-DEBUG: _g_io_module_get_default: Found default implementation local (GLocalVfs) for \u2018gio-vfs\u2019\nok 1 /PolkitBackendJsAuthority/get_admin_identities\nok 2 /PolkitBackendJsAuthority/rules_basic0\nok 3 /PolkitBackendJsAuthority/rules_basic1\nok 4 /PolkitBackendJsAuthority/rules_basic2\nok 5 /PolkitBackendJsAuthority/rules_order0\nok 6 /PolkitBackendJsAuthority/rules_order1\nok 7 /PolkitBackendJsAuthority/rules_order2\nok 8 /PolkitBackendJsAuthority/rules_variables1\nok 9 /PolkitBackendJsAuthority/rules_variables2\nok 10 /PolkitBackendJsAuthority/rules_variables3\nok 11 /PolkitBackendJsAuthority/rules_group_membership_with_member\nok 12 /PolkitBackendJsAuthority/rules_group_membership_with_non_member\nok 13 /PolkitBackendJsAuthority/rules_netgroup_membership_with_member\nok 14 /PolkitBackendJsAuthority/rules_netgroup_membership_with_non_member\nok 15 /PolkitBackendJsAuthority/rules_spawning_non_existing_helper\nok 16 /PolkitBackendJsAuthority/rules_spawning_successful_helper\nok 17 /PolkitBackendJsAuthority/rules_spawning_failing_helper\nok 18 /PolkitBackendJsAuthority/rules_spawning_helper_with_output\nok 19 /PolkitBackendJsAuthority/rules_spawning_helper_timeout\n# slow test /PolkitBackendJsAuthority/rules_spawning_helper_timeout executed in 9.91 secs\n# 14:51:44.227: Terminating runaway script after 15 seconds\nok 20 /PolkitBackendJsAuthority/rules_runaway_script\n# slow test /PolkitBackendJsAuthority/rules_runaway_script executed in 15.00 secs\nok 21 /PolkitBackendJsAuthority/rules_group_membership_with_non_member(highuid22)\nok 22 /PolkitBackendJsAuthority/rules_group_membership_with_non_member(highuid21)\nok 23 /PolkitBackendJsAuthority/rules_group_membership_with_non_member(highuid24)\nok 24 /PolkitBackendJsAuthority/rules_group_membership_with_non_member(highuid23)\nok 25 /PolkitBackendJsAuthority/rules_john_action\nok 26 /PolkitBackendJsAuthority/rules_jane_action\nok 27 /PolkitBackendJsAuthority/rules_highuid2_action\nok 28 /PolkitBackendJsAuthority/rules_highuid1_action\nok 29 /PolkitBackendJsAuthority/rules_john_uid_action\nok 30 /PolkitBackendJsAuthority/rules_jane_uid_action\n# End of PolkitBackendJsAuthority tests\n"
+          }
+        ],
+        "scope": "Five original Polkit drivers on native Toddy kernel; backend uses mock private bus, not real authorization/helper/desktop acceptance",
+        "unchanged_fixture_files": 479
+      },
+      "summary": {
+        "kernel": "7.1.8-toddy",
+        "all_selected_exits_zero": true,
+        "report_sha256": "778465e0a97a3850ddc97caec1c8bb46ac2523d87dd98d8d4e8b3d8936dcfa98",
+        "chunks": 2
+      },
+      "child_stopped": true,
+      "child_exit": 0,
+      "child_oom": false,
+      "parent_verified_before_builder_restart": true,
+      "commit": "918ebc01bbfe6adfdb082431c74186668a43b285",
+      "source_probe_sha256": "e72f2459e5a66c52dee0bb3f636f1de3fde3bd50072cfc0ad927a3598c03a0ea"
+    },
+    "privilege": {
+      "report": {
+        "distinct_daemon_bus_owners": true,
+        "ephemeral_account_removed": true,
+        "fixture_manifest_sha256": "c6e923f09e4cb34a99ffcae35e145ba2672cb8ec930233a91cb71db3ee0ab65d",
+        "helpers": [
+          {
+            "gid": 0,
+            "mode": "4755",
+            "path": "/usr/bin/pkexec",
+            "sha256": "303729b3ce4713fb0ea0554502ea7bb0c87eda38f4f09d501e6dc9f0f70a103a",
+            "uid": 0
+          },
+          {
+            "gid": 0,
+            "mode": "4755",
+            "path": "/usr/lib/polkit-1/polkit-agent-helper-1",
+            "sha256": "112083c1da8ff12ac29563f97556b7141a36f0981f8b0e450ef504dbc7e0f73b",
+            "uid": 0
+          }
+        ],
+        "kernel": "7.1.8-toddy",
+        "runs": [
+          {
+            "challenge_requires_interaction": false,
+            "exit": 0,
+            "expected": 0,
+            "name": "allow-kernel-peer"
+          },
+          {
+            "challenge_requires_interaction": false,
+            "exit": 1,
+            "expected": 1,
+            "name": "explicit-deny"
+          },
+          {
+            "challenge_requires_interaction": true,
+            "exit": 2,
+            "expected": 2,
+            "name": "challenge-without-agent-refused"
+          },
+          {
+            "active_helper_executables_after_completion": 0,
+            "cancelled_operation_no_effect": null,
+            "exit": 0,
+            "expected_authenticated": true,
+            "name": "correct-password-root-execution",
+            "pam_prompts": 1,
+            "raw_tty_retained": false,
+            "root_identity_proof": {
+              "artifact_mode": "0600",
+              "euid": 0,
+              "gid": 0,
+              "parent_mode": "0700",
+              "uid": 0
+            }
+          },
+          {
+            "cookie_retained": false,
+            "exit": 1,
+            "expected_authorized": false,
+            "name": "unsolicited-cookie-with-correct-password-refused"
+          },
+          {
+            "active_helper_executables_after_completion": 0,
+            "cancelled_operation_no_effect": null,
+            "exit": 127,
+            "expected_authenticated": false,
+            "name": "wrong-password-refused",
+            "pam_prompts": 1,
+            "raw_tty_retained": false,
+            "root_identity_proof": null
+          },
+          {
+            "active_helper_executables_after_completion": 0,
+            "cancelled_operation_no_effect": true,
+            "exit": -2,
+            "expected_authenticated": false,
+            "name": "stop-at-authentication",
+            "pam_prompts": 1,
+            "raw_tty_retained": false,
+            "root_identity_proof": null
+          },
+          {
+            "active_helper_executables_after_completion": 0,
+            "cancelled_operation_no_effect": null,
+            "exit": 0,
+            "expected_authenticated": true,
+            "name": "recovery-after-stop",
+            "pam_prompts": 1,
+            "raw_tty_retained": false,
+            "root_identity_proof": {
+              "artifact_mode": "0600",
+              "euid": 0,
+              "gid": 0,
+              "parent_mode": "0700",
+              "uid": 0
+            }
+          },
+          {
+            "exit": 127,
+            "name": "no-new-privileges-refuses-setuid-execution",
+            "no_new_privileges": true
+          },
+          {
+            "challenge_requires_interaction": false,
+            "exit": 0,
+            "expected": 0,
+            "name": "daemon-reconnect-recovery"
+          },
+          {
+            "challenge_requires_interaction": false,
+            "exit": 1,
+            "expected": 1,
+            "name": "revoked-policy-replay-refused"
+          }
+        ],
+        "scope": "Real Polkit system-bus, exact privileged helper/PAM password/challenge/refusal/Stop/restart/revocation in disposable native fixture only; package promotion and GNOME UI still pending",
+        "secrets_retained": false,
+        "transport_profile": "Upstream standard SUID helper fallback; optional systemd helper socket unstarted/unqualified",
+        "unchanged_fixture_files": 479
+      },
+      "summary": {
+        "kernel": "7.1.8-toddy",
+        "all_selected_exits_zero": true,
+        "report_sha256": "4effc0fb67224e3515391ad401aa3fdc71a74938ec5d72fd9d5a2d921623d58a",
+        "chunks": 2
+      },
+      "child_stopped": true,
+      "child_exit": 0,
+      "child_oom": false,
+      "parent_verified_before_builder_restart": true,
+      "commit": "0386a1f98365cf155150211c2a3699573d14d7be",
+      "source_probe_sha256": "6dac6449760ad2ed6d280e4b12250994db0eaa18f7a2d0181181d4e9e16d259d"
+    }
+  },
+  "optional_socket_profile": "Remains failed/unqualified; original separate budget2 preserved",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-polkit-standard-native-evidence.tar.gz",
+    "sha256": "12c4eb86e00a799cf702588ed8e1529236b24e7b0faddbdb14b3956d36766475"
+  }
+}

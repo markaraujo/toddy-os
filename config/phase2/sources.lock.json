@@ -1898,6 +1898,40 @@
       "parent_source_sha256": "16a47e49a58156dbb96578e1708325299e4c19eea9be128d5bd12fd0963d6c36",
       "scope": "DConf static source dependency, upstream native/core qualification pending",
       "status": "source_verified"
+    },
+    {
+      "name": "accountsservice",
+      "version": "26.27.3",
+      "filename": "accountsservice-26.27.3.tar.bz2",
+      "url": "https://gitlab.freedesktop.org/accountsservice/accountsservice/-/archive/26.27.3/accountsservice-26.27.3.tar.bz2",
+      "sha256": "77e26080fd644df3e339fef561bb77f901e43557dc73e620afb6c10789b9a9e8",
+      "reference": "BLFS13.1-systemd general/accountsservice.html",
+      "book_page_sha256": "ba8bad85ee584008c5cf6af2798b0ab9fc785f2251404c95903dc33876ebf152",
+      "book_md5": "61f56055b9d4564ad29bab799222e386",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "accountsservice-mocklibc",
+      "version": "1.0",
+      "filename": "mocklibc-1.0.tar.gz",
+      "url": "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mocklibc/mocklibc-1.0.tar.gz",
+      "sha256": "b2236a6af1028414783e9734a46ea051916ec226479d6a55a3bb823bff68f120",
+      "reference": "Exact SHA256 in frozen AccountsService26.27.3 subprojects/mocklibc.wrap; authenticated bundled packagecache reused, no download",
+      "parent_source_sha256": "77e26080fd644df3e339fef561bb77f901e43557dc73e620afb6c10789b9a9e8",
+      "scope": "Original tests only, not runtime/catalog; unprivileged local build qualification pending",
+      "status": "source_verified"
+    },
+    {
+      "name": "accountsservice-mocklibc-meson",
+      "version": "1.0-2",
+      "filename": "mocklibc-1.0-2-wrap.zip",
+      "url": "https://wrapdb.mesonbuild.com/v1/projects/mocklibc/1.0/2/get_zip",
+      "sha256": "0280f96a2eeb3c023e5acf4e00cef03d362868218d4a85347ea45137c0ef6c56",
+      "reference": "Exact SHA256 in frozen AccountsService26.27.3 subprojects/mocklibc.wrap; authenticated bundled packagecache reused, no download",
+      "parent_source_sha256": "77e26080fd644df3e339fef561bb77f901e43557dc73e620afb6c10789b9a9e8",
+      "scope": "Original tests only, not runtime/catalog; unprivileged local build qualification pending",
+      "status": "source_verified"
     }
   ]
 }

@@ -1,0 +1,561 @@
+{
+  "scope": "Owned127 with explicit typed-subject patch and qualified standard SUID helper; optional socket and GNOME UI remain unqualified",
+  "source": {
+    "name": "polkit",
+    "version": "127",
+    "filename": "polkit-127.tar.gz",
+    "url": "https://github.com/polkit-org/polkit/archive/127/polkit-127.tar.gz",
+    "sha256": "9b7bc16f086479dcc626c575976568ba4a85d34297a750d8ab3d2e57f6d8b988",
+    "reference": "BLFS13.1-systemd postlfs/polkit.html",
+    "book_page_sha256": "b630bd24ae409c23d863891cf71114bb4d8b41175216c2ac5a76571e595c5ece",
+    "book_md5": "2cc95f1b02fc1de6c9e52db986642ec4",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "patch": {
+    "schema_version": 1,
+    "component": "polkit",
+    "version": "127",
+    "source_sha256": "9b7bc16f086479dcc626c575976568ba4a85d34297a750d8ab3d2e57f6d8b988",
+    "source_file": "src/polkit/polkitsubject.c",
+    "before_sha256": "760e7f8230896e5e54bda8ab88eb85f9e984a7ec8d8671b3ba6ad2f711453bb3",
+    "after_sha256": "f314fad12594bbb42b0e665874c430217938e9e30f40481ca4c190c39985a0f9",
+    "patch_file": "scripts/build/phase2/patches/polkit-127-typed-subject-1.patch",
+    "patch_sha256": "2875d047f95af956f1da0c0e8f0b3f1f960e9ade2594a014944bdcd41628516c",
+    "upstream_issue": "https://github.com/polkit-org/polkit/issues/701",
+    "scope": "Reject malformed or duplicate known process identity fields before optional lookup; preserve absent-uid legacy parsing/unknown attributes. Avoid second GError on wrong type and balance invalid unique-name value reference. No authorization grant or public ABI change.",
+    "native_qualification": "Original native five programs/59observed TAP cases and actual standard SUID-helper11expected outcomes qualified with479fixture files unchanged. Optional socket profile remains failed/unqualified; no GNOME permission UI claim."
+  },
+  "native_acceptance": {
+    "state": "native-standard-helper-qualified",
+    "scope": "Verified native original suite plus actual standard SUID helper; optional socket remains unqualified, no parent installation or GNOME UI acceptance",
+    "summary": {
+      "fixture_manifest_sha256": "c6e923f09e4cb34a99ffcae35e145ba2672cb8ec930233a91cb71db3ee0ab65d",
+      "fixture_files": 479,
+      "original_programs": 5,
+      "observed_original_tap_cases": 59,
+      "standard_helper_expected_outcomes": 11,
+      "helpers": {
+        "/usr/bin/pkexec": "303729b3ce4713fb0ea0554502ea7bb0c87eda38f4f09d501e6dc9f0f70a103a",
+        "/usr/lib/polkit-1/polkit-agent-helper-1": "112083c1da8ff12ac29563f97556b7141a36f0981f8b0e450ef504dbc7e0f73b"
+      }
+    },
+    "proofs": {
+      "suite": {
+        "report": {
+          "fixture_manifest_sha256": "c6e923f09e4cb34a99ffcae35e145ba2672cb8ec930233a91cb71db3ee0ab65d",
+          "kernel": "7.1.8-toddy",
+          "pid1": "systemd",
+          "runs": [
+            {
+              "exit": 0,
+              "name": "polkitunixusertest",
+              "skip_diagnostics": [],
+              "stderr": "",
+              "stdout": "Test data dir: /src/test/data\nExecuting '/build/compile/test/polkit/polkitunixusertest'\nTAP version 14\n# random seed: R02Sc2c691d3b91618e2be1c8ea4c7c652b1\n1..3\n# Start of PolkitUnixUser tests\nok 1 /PolkitUnixUser/new\nok 2 /PolkitUnixUser/new_for_name\nok 3 /PolkitUnixUser/set_uid\n# End of PolkitUnixUser tests\n"
+            },
+            {
+              "exit": 0,
+              "name": "polkitunixgrouptest",
+              "skip_diagnostics": [],
+              "stderr": "",
+              "stdout": "Test data dir: /src/test/data\nExecuting '/build/compile/test/polkit/polkitunixgrouptest'\nTAP version 14\n# random seed: R02S7fd506980957485daf061385bb467a3c\n1..3\n# Start of PolkitUnixGroup tests\nok 1 /PolkitUnixGroup/new\nok 2 /PolkitUnixGroup/new_for_name\nok 3 /PolkitUnixGroup/set_gid\n# End of PolkitUnixGroup tests\n"
+            },
+            {
+              "exit": 0,
+              "name": "polkitunixnetgrouptest",
+              "skip_diagnostics": [],
+              "stderr": "",
+              "stdout": "Test data dir: /src/test/data\nExecuting '/build/compile/test/polkit/polkitunixnetgrouptest'\nTAP version 14\n# random seed: R02Sf72b7344fb9529be0e1a989545987fa5\n1..2\n# Start of PolkitUnixNetgroup tests\nok 1 /PolkitUnixNetgroup/new\nok 2 /PolkitUnixNetgroup/set_name\n# End of PolkitUnixNetgroup tests\n"
+            },
+            {
+              "exit": 0,
+              "name": "polkitidentitytest",
+              "skip_diagnostics": [],
+              "stderr": "",
+              "stdout": "Test data dir: /src/test/data\nExecuting '/build/compile/test/polkit/polkitidentitytest'\nTAP version 14\n# random seed: R02Sd995afe00bdf8f43025f9619e58662fb\n1..21\n# Start of PolkitIdentity tests\nok 1 /PolkitIdentity/user_string_0\nok 2 /PolkitIdentity/user_string_1\nok 3 /PolkitIdentity/user_string_2\nok 4 /PolkitIdentity/group_string_0\nok 5 /PolkitIdentity/group_string_1\nok 6 /PolkitIdentity/group_string_2\nok 7 /PolkitIdentity/group_string_3\nok 8 /PolkitIdentity/netgroup_string\nok 9 /PolkitIdentity/netgroup_gvariant\nok 10 /PolkitIdentity/user_gvariant\nok 11 /PolkitIdentity/group_gvariant\nok 12 /PolkitIdentity/comparison_0\nok 13 /PolkitIdentity/comparison_1\nok 14 /PolkitIdentity/comparison_2\nok 15 /PolkitIdentity/comparison_3\nok 16 /PolkitIdentity/comparison_4\nok 17 /PolkitIdentity/comparison_5\nok 18 /PolkitIdentity/comparison_6\nok 19 /PolkitIdentity/comparison_7\nok 20 /PolkitIdentity/comparison_8\nok 21 /PolkitIdentity/comparison_9\n# End of PolkitIdentity tests\n"
+            },
+            {
+              "exit": 0,
+              "name": "test-polkitbackendjsauthority",
+              "skip_diagnostics": [],
+              "stderr": "",
+              "stdout": "Test data dir: /src/test/data\nExecuting '/build/compile/test/polkitbackend/test-polkitbackendjsauthority'\nTAP version 14\n# random seed: R02S99bce84873e80568dcf9aa863f527155\n1..30\n# Start of PolkitBackendJsAuthority tests\n# GLib-GIO-DEBUG: _g_io_module_get_default: Found default implementation local (GLocalVfs) for \u2018gio-vfs\u2019\nok 1 /PolkitBackendJsAuthority/get_admin_identities\nok 2 /PolkitBackendJsAuthority/rules_basic0\nok 3 /PolkitBackendJsAuthority/rules_basic1\nok 4 /PolkitBackendJsAuthority/rules_basic2\nok 5 /PolkitBackendJsAuthority/rules_order0\nok 6 /PolkitBackendJsAuthority/rules_order1\nok 7 /PolkitBackendJsAuthority/rules_order2\nok 8 /PolkitBackendJsAuthority/rules_variables1\nok 9 /PolkitBackendJsAuthority/rules_variables2\nok 10 /PolkitBackendJsAuthority/rules_variables3\nok 11 /PolkitBackendJsAuthority/rules_group_membership_with_member\nok 12 /PolkitBackendJsAuthority/rules_group_membership_with_non_member\nok 13 /PolkitBackendJsAuthority/rules_netgroup_membership_with_member\nok 14 /PolkitBackendJsAuthority/rules_netgroup_membership_with_non_member\nok 15 /PolkitBackendJsAuthority/rules_spawning_non_existing_helper\nok 16 /PolkitBackendJsAuthority/rules_spawning_successful_helper\nok 17 /PolkitBackendJsAuthority/rules_spawning_failing_helper\nok 18 /PolkitBackendJsAuthority/rules_spawning_helper_with_output\nok 19 /PolkitBackendJsAuthority/rules_spawning_helper_timeout\n# slow test /PolkitBackendJsAuthority/rules_spawning_helper_timeout executed in 9.91 secs\n# 14:51:44.227: Terminating runaway script after 15 seconds\nok 20 /PolkitBackendJsAuthority/rules_runaway_script\n# slow test /PolkitBackendJsAuthority/rules_runaway_script executed in 15.00 secs\nok 21 /PolkitBackendJsAuthority/rules_group_membership_with_non_member(highuid22)\nok 22 /PolkitBackendJsAuthority/rules_group_membership_with_non_member(highuid21)\nok 23 /PolkitBackendJsAuthority/rules_group_membership_with_non_member(highuid24)\nok 24 /PolkitBackendJsAuthority/rules_group_membership_with_non_member(highuid23)\nok 25 /PolkitBackendJsAuthority/rules_john_action\nok 26 /PolkitBackendJsAuthority/rules_jane_action\nok 27 /PolkitBackendJsAuthority/rules_highuid2_action\nok 28 /PolkitBackendJsAuthority/rules_highuid1_action\nok 29 /PolkitBackendJsAuthority/rules_john_uid_action\nok 30 /PolkitBackendJsAuthority/rules_jane_uid_action\n# End of PolkitBackendJsAuthority tests\n"
+            }
+          ],
+          "scope": "Five original Polkit drivers on native Toddy kernel; backend uses mock private bus, not real authorization/helper/desktop acceptance",
+          "unchanged_fixture_files": 479
+        },
+        "summary": {
+          "kernel": "7.1.8-toddy",
+          "all_selected_exits_zero": true,
+          "report_sha256": "778465e0a97a3850ddc97caec1c8bb46ac2523d87dd98d8d4e8b3d8936dcfa98",
+          "chunks": 2
+        },
+        "child_stopped": true,
+        "child_exit": 0,
+        "child_oom": false,
+        "parent_verified_before_builder_restart": true,
+        "commit": "918ebc01bbfe6adfdb082431c74186668a43b285",
+        "source_probe_sha256": "e72f2459e5a66c52dee0bb3f636f1de3fde3bd50072cfc0ad927a3598c03a0ea"
+      },
+      "privilege": {
+        "report": {
+          "distinct_daemon_bus_owners": true,
+          "ephemeral_account_removed": true,
+          "fixture_manifest_sha256": "c6e923f09e4cb34a99ffcae35e145ba2672cb8ec930233a91cb71db3ee0ab65d",
+          "helpers": [
+            {
+              "gid": 0,
+              "mode": "4755",
+              "path": "/usr/bin/pkexec",
+              "sha256": "303729b3ce4713fb0ea0554502ea7bb0c87eda38f4f09d501e6dc9f0f70a103a",
+              "uid": 0
+            },
+            {
+              "gid": 0,
+              "mode": "4755",
+              "path": "/usr/lib/polkit-1/polkit-agent-helper-1",
+              "sha256": "112083c1da8ff12ac29563f97556b7141a36f0981f8b0e450ef504dbc7e0f73b",
+              "uid": 0
+            }
+          ],
+          "kernel": "7.1.8-toddy",
+          "runs": [
+            {
+              "challenge_requires_interaction": false,
+              "exit": 0,
+              "expected": 0,
+              "name": "allow-kernel-peer"
+            },
+            {
+              "challenge_requires_interaction": false,
+              "exit": 1,
+              "expected": 1,
+              "name": "explicit-deny"
+            },
+            {
+              "challenge_requires_interaction": true,
+              "exit": 2,
+              "expected": 2,
+              "name": "challenge-without-agent-refused"
+            },
+            {
+              "active_helper_executables_after_completion": 0,
+              "cancelled_operation_no_effect": null,
+              "exit": 0,
+              "expected_authenticated": true,
+              "name": "correct-password-root-execution",
+              "pam_prompts": 1,
+              "raw_tty_retained": false,
+              "root_identity_proof": {
+                "artifact_mode": "0600",
+                "euid": 0,
+                "gid": 0,
+                "parent_mode": "0700",
+                "uid": 0
+              }
+            },
+            {
+              "cookie_retained": false,
+              "exit": 1,
+              "expected_authorized": false,
+              "name": "unsolicited-cookie-with-correct-password-refused"
+            },
+            {
+              "active_helper_executables_after_completion": 0,
+              "cancelled_operation_no_effect": null,
+              "exit": 127,
+              "expected_authenticated": false,
+              "name": "wrong-password-refused",
+              "pam_prompts": 1,
+              "raw_tty_retained": false,
+              "root_identity_proof": null
+            },
+            {
+              "active_helper_executables_after_completion": 0,
+              "cancelled_operation_no_effect": true,
+              "exit": -2,
+              "expected_authenticated": false,
+              "name": "stop-at-authentication",
+              "pam_prompts": 1,
+              "raw_tty_retained": false,
+              "root_identity_proof": null
+            },
+            {
+              "active_helper_executables_after_completion": 0,
+              "cancelled_operation_no_effect": null,
+              "exit": 0,
+              "expected_authenticated": true,
+              "name": "recovery-after-stop",
+              "pam_prompts": 1,
+              "raw_tty_retained": false,
+              "root_identity_proof": {
+                "artifact_mode": "0600",
+                "euid": 0,
+                "gid": 0,
+                "parent_mode": "0700",
+                "uid": 0
+              }
+            },
+            {
+              "exit": 127,
+              "name": "no-new-privileges-refuses-setuid-execution",
+              "no_new_privileges": true
+            },
+            {
+              "challenge_requires_interaction": false,
+              "exit": 0,
+              "expected": 0,
+              "name": "daemon-reconnect-recovery"
+            },
+            {
+              "challenge_requires_interaction": false,
+              "exit": 1,
+              "expected": 1,
+              "name": "revoked-policy-replay-refused"
+            }
+          ],
+          "scope": "Real Polkit system-bus, exact privileged helper/PAM password/challenge/refusal/Stop/restart/revocation in disposable native fixture only; package promotion and GNOME UI still pending",
+          "secrets_retained": false,
+          "transport_profile": "Upstream standard SUID helper fallback; optional systemd helper socket unstarted/unqualified",
+          "unchanged_fixture_files": 479
+        },
+        "summary": {
+          "kernel": "7.1.8-toddy",
+          "all_selected_exits_zero": true,
+          "report_sha256": "4effc0fb67224e3515391ad401aa3fdc71a74938ec5d72fd9d5a2d921623d58a",
+          "chunks": 2
+        },
+        "child_stopped": true,
+        "child_exit": 0,
+        "child_oom": false,
+        "parent_verified_before_builder_restart": true,
+        "commit": "0386a1f98365cf155150211c2a3699573d14d7be",
+        "source_probe_sha256": "6dac6449760ad2ed6d280e4b12250994db0eaa18f7a2d0181181d4e9e16d259d"
+      }
+    }
+  },
+  "stage": {
+    "scope": "Full Polkit127 compiled and staged only, original five programs await native namespace gate; NO installed privilege acceptance",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "package_promotable": false,
+    "original_tests": [
+      {
+        "cmd": [
+          "/src/test/wrapper.py",
+          "--data-dir",
+          "/src/test/data",
+          "/build/compile/test/polkit/polkitunixusertest"
+        ],
+        "env": {},
+        "name": "polkitunixusertest",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "polkit"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/src/test/wrapper.py",
+          "--data-dir",
+          "/src/test/data",
+          "/build/compile/test/polkit/polkitunixgrouptest"
+        ],
+        "env": {},
+        "name": "polkitunixgrouptest",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "polkit"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/src/test/wrapper.py",
+          "--data-dir",
+          "/src/test/data",
+          "/build/compile/test/polkit/polkitunixnetgrouptest"
+        ],
+        "env": {},
+        "name": "polkitunixnetgrouptest",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "polkit"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/src/test/wrapper.py",
+          "--data-dir",
+          "/src/test/data",
+          "/build/compile/test/polkit/polkitidentitytest"
+        ],
+        "env": {},
+        "name": "polkitidentitytest",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "polkit"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/src/test/wrapper.py",
+          "--data-dir",
+          "/src/test/data",
+          "--mock-dbus",
+          "/build/compile/test/polkitbackend/test-polkitbackendjsauthority"
+        ],
+        "env": {},
+        "name": "test-polkitbackendjsauthority",
+        "workdir": null,
+        "timeout": 90,
+        "suite": [
+          "polkit"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [],
+        "extra_paths": []
+      }
+    ],
+    "artifacts": {
+      "meson-private/sanity_check_for_c.exe": "191646a6501d425990f9a36894024258da104e5375904550c64ce420e318f3ba",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0": "254383f104260316709cc3da39afc23d856e285cb52129752a85cd478586a1c2",
+      "src/polkitagent/polkit-agent-helper-1": "d36de7d9b7ffb49b657d627eac28e3a5e3a67edc6eb736acfda9244c7b4be0e0",
+      "src/polkitagent/libpolkit-agent-1.so.0.0.0": "32f49dde6a70759a8c34329414f30f4bd7f2e5a0eb3e2f56091629fe9ddfedd7",
+      "src/polkitbackend/polkitd": "edac8861e6193a59a56250796ce33fbcaf33ffffd3524839e3486f2c1b05fba8",
+      "src/programs/pkaction": "f39dd3a45f22ac6ebac8a3f4808319f50f2229b0dc882dc0c9d2670f28bd50c0",
+      "src/programs/pkttyagent": "b37c15e6acf2f26c1d59c7775be12003c072e0d2adb86cc0b607cb0f34117ee3",
+      "src/programs/pkexec": "84ef0111da4b4344eea27d0e9b4b61479ea2bbe3751255eae878f53fd10ed7d7",
+      "src/programs/pkcheck": "39c108b86a439a1111354d4fdf9fa2482bf70aea1184b23d5eb42df0bd019c49",
+      "src/programs/pkcheck.p/pkcheck.c.o": "bde16f37313fd1d1e0a0c2397e3241c32efea04763ad1dae320b67a52373cc66",
+      "src/programs/pkttyagent.p/pkttyagent.c.o": "e160ada67279caf4dc5123d613092d176379566c53fcdd2145e6a497797e1957",
+      "src/programs/pkexec.p/pkexec.c.o": "f22d616b2f20c9662eaca3ac7aa9bca4334a53093b6a4455c83604b6d7a09364",
+      "src/programs/pkaction.p/pkaction.c.o": "0eee78c09ac2292c5908beb0e29562c0e69d072b2ef2e931fcb1768005d4e4c7",
+      "src/polkitbackend/polkitd.p/polkitd.c.o": "3fea5adb6493e19d51a2db1cdd36c4817fe0871f5445583d1693236820c1669d",
+      "src/polkitbackend/libpolkit-backend-1.a.p/polkitbackendsessionmonitor-systemd.c.o": "4ec604e81e0d116f3e0daba9b1fbb3e5ee1eabd8dca04c49328646a457d71e97",
+      "src/polkitbackend/libpolkit-backend-1.a.p/polkitbackendinteractiveauthority.c.o": "bd547bb16a8ae68442e3d0b14d00032a578326f74face73b8f48411d82c9816c",
+      "src/polkitbackend/libpolkit-backend-1.a.p/polkitbackendactionpool.c.o": "a3aca70b3b06dfa27f5371a6eb7a9c70a6f902d863a2bba974c9032dd79770ae",
+      "src/polkitbackend/libpolkit-backend-1.a.p/polkitbackendactionlookup.c.o": "9caf15289c6485c9841fb128bb509b9d1cc68d31c6b1cd698acfe2d274403c07",
+      "src/polkitbackend/libpolkit-backend-1.a.p/polkitbackendcommon.c.o": "643c37bf09e4ef20da681fb45fecf6b0d4fd3a11e179528e00fe207bb1ae9b58",
+      "src/polkitbackend/libpolkit-backend-1.a.p/polkitbackendauthority.c.o": "318c02d3e2c2e47280eee75516c9a44a9f33892ed5e94e0551132e2f974d1139",
+      "src/polkitbackend/libpolkit-backend-1.a.p/polkitbackendduktapeauthority.c.o": "b4ea1ee2874e48e488a90e59ce281bf5175ff4bdfa10f1cca485bba9c5df5ba0",
+      "src/polkitagent/libpolkit-agent-1.so.0.0.0.p/polkitagentsession.c.o": "ea5be19656447ee1bafb796fb08682f30167ac3697d3fc80af20b7bdde05435e",
+      "src/polkitagent/libpolkit-agent-1.so.0.0.0.p/polkitagentlistener.c.o": "8724a86d1324982b4d8e1cd835e5e10819aa4b2723e7a346bbce459fb23b91dc",
+      "src/polkitagent/libpolkit-agent-1.so.0.0.0.p/meson-generated_.._polkitagentenumtypes.c.o": "d566052322cc80e67a238f1af6c7a447050cc70d907baa854e08486579e528d2",
+      "src/polkitagent/libpolkit-agent-1.so.0.0.0.p/meson-generated_.._polkitagentmarshal.c.o": "8505f93443cdc509dee6a9d5308235c21f9ae9956dd643ef92816d1024b95335",
+      "src/polkitagent/libpolkit-agent-1.so.0.0.0.p/polkitagenttextlistener.c.o": "c1831cfda3000ab88a907e21df74cd49444707a3a632eaccc601fff387be9272",
+      "src/polkitagent/polkit-agent-helper-1.p/polkitagenthelperprivate.c.o": "94fd33491bc5373c0585aa9f980850f80e3de02c5d8f56c79cfd615639bf4717",
+      "src/polkitagent/polkit-agent-helper-1.p/polkitagenthelper-pam.c.o": "ff12b864f2fc4b6dedde8968a5439c748533413aadefadeddccb2bc7b5467693",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitunixnetgroup.c.o": "61fd83dc43a1f9878f0366e967623d68a78b6d5e18bb48df8ef1d33d61257f71",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkittemporaryauthorization.c.o": "935b4a5b6511aaf76960ab46ffd5e33ba59844fcc837a8dc5491e1100d16e569",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitsystembusname.c.o": "3176a84b53b7545712e154d75275b4b0ddadd4e1e3ffa8cd76b58a14b1fb23dc",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitdetails.c.o": "d21bd2e80337ff3f83fc5ee1be1876fadc80bcfb175b75331e0c167c36a7458f",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitpermission.c.o": "1a173595df587ca5675a98043a64ad97962244772aafa516cad40947ff7bc0b4",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitauthorityfeatures.c.o": "66af5b0fecdd8da9be8c269198a72d8e314ceb7eb62084538b2e0b0d557afaad",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitactiondescription.c.o": "509f024e04ff7d9c162adc9c766402287b6fc408a1bc1d7e091de3c6379ce78b",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitunixuser.c.o": "355e82ef286bd54de1c3ef5997e3a828f540412991400e39478d644ce08c90ee",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitunixsession-systemd.c.o": "ea699a205a397bf0ba0d471411db200b706e50573c95892970728b02c2e42006",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitauthority.c.o": "e235e8655b100ffcc69971d30f4bc3558d59920a2caade219b9b98bc505aec21",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitauthorizationresult.c.o": "e729a0930738951c35e3efd48e485060b2d802a01f6d57338b1f01c975324c3e",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitcheckauthorizationflags.c.o": "204ccad63d778cd8dffd9fab818f31e7c5b6278c42d00659764a62f62fc631b0",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/meson-generated_.._polkitenumtypes.c.o": "e28d38f5329182e036f7480868dc4fbc78bd7c4a91efe29df62a351b060efc73",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitimplicitauthorization.c.o": "6b23fbefe47663c0d60d599c2217c8350ef8aa60379fe646147e7e58b74a4c44",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitidentity.c.o": "ebe5822d31192f626d12e12c58b0daf99480da5c9890bc7f6d311d4f4bcc2a56",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkiterror.c.o": "e7c060f232577604bb69ceb384d12f2317f57d43d616a42d541e5a4f823c1dce",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitunixgroup.c.o": "16fe7b3b93976f46be97c777fc2500d3f24f3c357319bb1233a192ba3d4c8c28",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitsubject.c.o": "76569af3be666fa50389fc8c7a6770c413d28910e4f930be12cc4f7efd372378",
+      "src/polkit/libpolkit-gobject-1.so.0.0.0.p/polkitunixprocess.c.o": "6d4507d3d8f190df756629f526f4d6c317f68cd8f16b574f190119068c7730de",
+      "test/libpolkit-test-helper.a.p/polkittesthelper.c.o": "44b7c9604f80e57dac38eaec11623de21af553d272def4d4ff4c1e50cfdcb33b",
+      "test/polkit/polkitunixgrouptest": "bd7a24fa1a230e5773b573a17d34fcf6451806f473b2defbda2b74e8eba202c1",
+      "test/polkit/polkitidentitytest": "572ae8a8dcf60dc240be3366a16b7cac02f34fe8061f03d21786a189da887973",
+      "test/polkit/polkitunixnetgrouptest": "529a60c617d4d4b2ce14d77b6dae5906e67c2ac7523e4b0c5ad2b48c81e42947",
+      "test/polkit/polkitunixusertest": "1e4f59d66d904a2e235b48dfb7783868e7d2fca821604b535500aec39a6c5a54",
+      "test/polkitbackend/test-polkitbackendjsauthority": "dea0ca4cc876264582fec53196a749108cea1c822ba23a4befe06f4d261aa90c",
+      "test/polkitbackend/test-polkitbackendjsauthority.p/test-polkitbackendjsauthority.c.o": "443b86fe249cfe7bfaecbdab6e5294ca7e20a707563384ac717772f50a9eb94c",
+      "test/polkit/polkitunixusertest.p/polkitunixusertest.c.o": "5ceedb1c371500037c9d5bffdb579669dea8dc80eee5c74e7af1bdf38b66eeae",
+      "test/polkit/polkitunixgrouptest.p/polkitunixgrouptest.c.o": "1286b1bc8d5e11c8803317727e3dc44979e288740e376e63cff5d4ee036843cc",
+      "test/polkit/polkitunixnetgrouptest.p/polkitunixnetgrouptest.c.o": "946be6341af5df3cbfbee6f5f43ce6c667a68a9dc39aa6c49cc8aaf56251ece4",
+      "test/polkit/polkitidentitytest.p/polkitidentitytest.c.o": "b2537997466016eb1c7c14e65325df5c015ad446c101f0699bdef6fa736f48fc"
+    },
+    "stage_sha256": {
+      "usr/bin/pkaction": "e0d158e46cd755e20808d1a5b4c1131417b49461874dc80245cffb69021e2390",
+      "usr/bin/pkttyagent": "18847da820dbaf9171878478d4a90fea4bfa4e8c9e20dea9820f99d4d7117aaa",
+      "usr/bin/pkexec": "303729b3ce4713fb0ea0554502ea7bb0c87eda38f4f09d501e6dc9f0f70a103a",
+      "usr/bin/pkcheck": "00df38cc238fea39ad88992b71015b02d31f37295f5f386ba5392dc564cbd672",
+      "usr/lib/libpolkit-gobject-1.so.0.0.0": "254383f104260316709cc3da39afc23d856e285cb52129752a85cd478586a1c2",
+      "usr/lib/libpolkit-agent-1.so.0.0.0": "b14dd9dca4f2be00ce8c552ded76519596e78b9d0b389bb703beef9b1ce7b2ae",
+      "usr/lib/pam.d/polkit-1": "883d476eab676a9544e2865593361a9f946d372a5fd55cd03f326756f7ea508a",
+      "usr/lib/sysusers.d/polkit.conf": "98957a871d9eb781cd17faafbc4c78d0d2df0511f05d00fea4e82b92b19b6d89",
+      "usr/lib/girepository-1.0/Polkit-1.0.typelib": "d49a686bb84504e198fa8d2bd89337d278dd96bd2e93cb1b253e1d78a6faeb2b",
+      "usr/lib/girepository-1.0/PolkitAgent-1.0.typelib": "516ca2f66fc5dfa9e699248e4eb379db866d5c1b0a5bca9ed1b76f297fc58eb2",
+      "usr/lib/pkgconfig/polkit-gobject-1.pc": "a0333bf984a6caa7f88831d0522305d8f607bae29d0b5c96b09f77dcdc737c0f",
+      "usr/lib/pkgconfig/polkit-agent-1.pc": "ae30e862ec472e91db53744d474502b47b077c622ad21516580255f958c7da3f",
+      "usr/lib/polkit-1/polkit-agent-helper-1": "112083c1da8ff12ac29563f97556b7141a36f0981f8b0e450ef504dbc7e0f73b",
+      "usr/lib/polkit-1/polkitd": "58cb26d28de6d6156739310fd3d2f987f61820fbb688c32895c914ebd47a2169",
+      "usr/lib/tmpfiles.d/polkit-tmpfiles.conf": "50f4e9c849bee5120546109b288ff7a631004dd2a7bfb27062181aa684b517c2",
+      "usr/lib/systemd/system/polkit.service": "6ff83a8e54b46f5765d50e274f6578625d63ea8ddb1c47f86f9b9da4ab311a6e",
+      "usr/lib/systemd/system/polkit-agent-helper@.service": "46200a267f7add7c8d4f399e7fb8a81602dc8ff16d77264c0e31ce0cfcb108f1",
+      "usr/lib/systemd/system/polkit-agent-helper.socket": "26bf0e77112dc5e890d3de0ad783a39e806d117c05eaecd40bbaf7cb062086a9",
+      "usr/include/polkit-1/polkit/polkiterror.h": "9f3075fd423b8e7c9d0fa45ee47605b68bde0876523bc8552631e0a111fe365b",
+      "usr/include/polkit-1/polkit/polkit.h": "c81e48d4187ff2040b45bd19ca6fbc4a9306074514c99d465aa278ae030a2a8b",
+      "usr/include/polkit-1/polkit/polkittemporaryauthorization.h": "09a41ef4996ab053c1e5b7db249c0a5af4495345b96ed70133be2703c05c9551",
+      "usr/include/polkit-1/polkit/polkitimplicitauthorization.h": "05a999ca4e78b0ddb11ee21f057f644670e51f92198d94c6b5eab45986706274",
+      "usr/include/polkit-1/polkit/polkitauthorityfeatures.h": "3dbe69cbb0d57301a3246c08093a4afb5aff463e97bad5d623280b9d9f735495",
+      "usr/include/polkit-1/polkit/polkitsubject.h": "19a7dc16d0a3d4ff18ea1601cfe45276427a20db2b1fc9cfa462cf4d1d2b22da",
+      "usr/include/polkit-1/polkit/polkitidentity.h": "93fdf6a7597be50da472f995b2b355c86c446fe0e7ab421b7d9a95d445e0aaa0",
+      "usr/include/polkit-1/polkit/polkitunixprocess.h": "20fbddf59f4dfc815b4591e9ba347d65c0384b0e340948aac63fd238c84a2208",
+      "usr/include/polkit-1/polkit/polkitunixgroup.h": "2620b018ccf057ed73f99ce3ee0b9201814d7d5ddd7ce9a08db36ea114fffcfd",
+      "usr/include/polkit-1/polkit/polkitactiondescription.h": "fc8e03ca5b571144df064d40ab45027b2072f6dbe4139ca028817d75067db0e7",
+      "usr/include/polkit-1/polkit/polkitauthorizationresult.h": "b74de93acb5fca3ba23ae3205c4dad62dc234431a509dedf063281264f52f9e8",
+      "usr/include/polkit-1/polkit/polkittypes.h": "ad355fcf496919a5995e7ad2727e77aa068602fee9bae0911d3a19494deef2d8",
+      "usr/include/polkit-1/polkit/polkitenumtypes.h": "52fdc7bb0ac04fcc8023f8e5dc1c249660bacf98be79dfbd40b1cd25d276eade",
+      "usr/include/polkit-1/polkit/polkitunixnetgroup.h": "97ccd69aeea2b9d39a4d421e120aeb0edebfb4bcb14f88cdc51954dd29f54292",
+      "usr/include/polkit-1/polkit/polkitcheckauthorizationflags.h": "4754c7ebee232ed79964287ef85ed74254db775546ad190dc0629a797a1d565a",
+      "usr/include/polkit-1/polkit/polkitprivate.h": "de383a5b89a41862842bd28a99a0a722b4eeeabc5696ef871f3505aa57d9e8ce",
+      "usr/include/polkit-1/polkit/polkitsystembusname.h": "4a94fa98e997c2c10a044eb2785e38a02d82a683e1c96ffc3f3846622fa8f39f",
+      "usr/include/polkit-1/polkit/polkitdetails.h": "6a0e2cf7672f017ca1823c6cfb15e69d61650a4c3229f2077ba86db88a326f86",
+      "usr/include/polkit-1/polkit/polkitunixuser.h": "b641d1ae24e7443bcac3c415c5ed255c51abdf5f384b737ee4046f64ac081fa2",
+      "usr/include/polkit-1/polkit/polkitauthority.h": "4be6bfd2f06872f85ddd338c4ccdbc69cacabb2fa11e11452296f5881173824b",
+      "usr/include/polkit-1/polkit/polkitpermission.h": "a0bbc2fc34aa1caee27cf37ae5e0c92a230219b4776f875ea8eec006b75137cc",
+      "usr/include/polkit-1/polkit/polkitunixsession.h": "7153e2c5b4e8f8d3c31c3576915eb303595ce1425a36068cbbaaa49b04b41b05",
+      "usr/include/polkit-1/polkitagent/polkitagentsession.h": "fe98eadab74b334f75362509c089bc2e71b5e8de0ef9ab8633249f79ce466832",
+      "usr/include/polkit-1/polkitagent/polkitagentenumtypes.h": "f3b39704d5fe452bd3f9a062b94e0bb42cc002228bccb98365b991e38ec4cba5",
+      "usr/include/polkit-1/polkitagent/polkitagentlistener.h": "9bc44cac78c51a1d2d2b68fd785516962711d1b13617f24d8267d4a57fe35dd7",
+      "usr/include/polkit-1/polkitagent/polkitagent.h": "fda6ae0bd688c7889644174f3a8e2c6bff3494d60258b60a7689a18a097d4b56",
+      "usr/include/polkit-1/polkitagent/polkitagenttextlistener.h": "31ad228d0bc8b165851a4aa0f6bfedea1b6e8ede32594c38cccb1362bcd6c3db",
+      "usr/include/polkit-1/polkitagent/polkitagenttypes.h": "62029be5fcfa132a0c0345f764ba4c8527989c4aa56a4e23eda23811b59c2f4b",
+      "usr/share/gir-1.0/PolkitAgent-1.0.gir": "e7c66287f26279e04ebf5db7643869e4b546a552654b4f87ea26c960b9fe5842",
+      "usr/share/gir-1.0/Polkit-1.0.gir": "78b714e800a6871c4f7f7206c9a6a81b5cb6847654252935d343c42da9ba7757",
+      "usr/share/polkit-1/polkitd.conf": "b07111046bb1ce7e369dca5d6b751f86a8caefd1dff94304d19a6daf988b80cb",
+      "usr/share/polkit-1/policyconfig-1.dtd": "b04b003079b9e755b980da1d5b8ba353acd27d2aa0784dc19f6293448c83bf57",
+      "usr/share/polkit-1/actions/org.freedesktop.policykit.policy": "01da8fdafd5c5c985b0ccbb1269a2ec932ecfc7b28c79791b86e0832e6653b97",
+      "usr/share/polkit-1/rules.d/50-default.rules": "4192b104907809623aa7ca4c58e1527da19710bae6278abe96f88d9f2d6430e9",
+      "usr/share/dbus-1/system-services/org.freedesktop.PolicyKit1.service": "baed12288339ed4b1df90f017beb8af07b56eba1b2edc4a60914880c13617af1",
+      "usr/share/dbus-1/system.d/org.freedesktop.PolicyKit1.conf": "28067ad27702251ba38d9794738cb81e18ce2151d26b3d103a33b4107c2f9877",
+      "usr/share/locale/pt_BR/LC_MESSAGES/polkit-1.mo": "ce1d96021aac71a29eca58919a135501efabb25bad685df29a5ddff4edffed3a",
+      "usr/share/locale/ro/LC_MESSAGES/polkit-1.mo": "666096455ac31a96c9f83b79f51e0037d71c7522cafcda2fda190701d3d26919",
+      "usr/share/locale/ka/LC_MESSAGES/polkit-1.mo": "13ecbd1558d570a207e254f4195ac99fe069e0575edb1e03b4b30a3ca099f64a",
+      "usr/share/locale/nl/LC_MESSAGES/polkit-1.mo": "6d5a67aafa774d7606a4861f25127bcb7224ce3061044aeda1850df387e4c15c",
+      "usr/share/locale/da/LC_MESSAGES/polkit-1.mo": "91adade49b697f9ff47653ca0de13f43033f75d349c12c6fd8187df397d197d8",
+      "usr/share/locale/sl/LC_MESSAGES/polkit-1.mo": "bcc51445c784bb7be621d4504e0f69f5801e5990b5b2cfaf4f33b93eb107fbe4",
+      "usr/share/locale/oc/LC_MESSAGES/polkit-1.mo": "5278d6f8db890df17b6907fd1df4d544532d84d8f1b7ad14fa46be63868e3034",
+      "usr/share/locale/de/LC_MESSAGES/polkit-1.mo": "df91c22f0e9fbc3468f20863b332dbc0d3dcb21119744442d4112eceee3c7aad",
+      "usr/share/locale/cs/LC_MESSAGES/polkit-1.mo": "7a3325034eaa9bcdd50804e0974c58a8ad0feec80e67ac21a8b1f5130b38110e",
+      "usr/share/locale/id/LC_MESSAGES/polkit-1.mo": "03a656312130965693abdc829381644cf7619cc98f57912c28ebf6fe9c5be9df",
+      "usr/share/locale/sk/LC_MESSAGES/polkit-1.mo": "8d645e8cf9a650df27a214e107c61df749e1c5ece83d18cce59cc38ac5d9f53d",
+      "usr/share/locale/pt/LC_MESSAGES/polkit-1.mo": "883518c377299aba9b21d0dcacddca744628f4d985ffe61aff56765f6c9196e6",
+      "usr/share/locale/zh_CN/LC_MESSAGES/polkit-1.mo": "d994b9589608b1a9b35b2c9f704df4e89123f6ba70e35fc82ee72c6c9df03ed4",
+      "usr/share/locale/pl/LC_MESSAGES/polkit-1.mo": "014c577bc843e376691b5bd92d4f70d0ecf59767b90123e1d96b4f5f74e662ae",
+      "usr/share/locale/uk/LC_MESSAGES/polkit-1.mo": "ad584c49292c521132ff2937733ce1256e9da9481f5ba8a209ce152d65e2dd08",
+      "usr/share/locale/ru/LC_MESSAGES/polkit-1.mo": "0e9af1daa8ed609c5685e45b03a650723b14cabe3f2f26d7a983556005fbeacc",
+      "usr/share/locale/bg/LC_MESSAGES/polkit-1.mo": "a350c1d5c12771bc7665ac7006a8130a301d075202a3809a290dc5b1a5e5ba07",
+      "usr/share/locale/hr/LC_MESSAGES/polkit-1.mo": "1c7a69f48d024c52195386143acf46e6caad13906596a4c9215fa4f96366cc37",
+      "usr/share/locale/tr/LC_MESSAGES/polkit-1.mo": "63e7669531b4e3d85ca65a8321dbb2c744645da83f5b9ebe2a63e587589b7ffb",
+      "usr/share/locale/nn/LC_MESSAGES/polkit-1.mo": "b9cd7f1934c41e05c30183a47c33e25df6245b1fcc571b66396bed281c1b65ac",
+      "usr/share/locale/sv/LC_MESSAGES/polkit-1.mo": "f2b4d68f505ce6e35e20cde6b960eaee342a04d012ce814c822a510132743929",
+      "usr/share/locale/it/LC_MESSAGES/polkit-1.mo": "db48034a029499dd17261c76e630128e51ed429c7e40d2b8de7704465fcaa37d",
+      "usr/share/locale/zh_TW/LC_MESSAGES/polkit-1.mo": "decb3a1999a825c7e9f387e18ebb9c2d7ff1f2ac6e2a5a78e9bfa8638b2d1e3b",
+      "usr/share/locale/hi/LC_MESSAGES/polkit-1.mo": "bef0611255e2f61e7d37fd9cf0ba6dcaadd9863dbe3dfda9f7c1047282b857d1",
+      "usr/share/locale/hu/LC_MESSAGES/polkit-1.mo": "4734772da691f68ae1ddd8086aaecb324ec83bed92ce183be1055ccef33cf76b",
+      "usr/share/gettext/its/polkit.loc": "baad1956b1c6296333e3ccaf94ed8e63b58bf53051cc69971cb0654f4d63dfc9",
+      "usr/share/gettext/its/polkit.its": "f4e2fea506378e16c572d02dc89516d8e9ad8edc5448f4dbdd003470606cce5b"
+    }
+  },
+  "initial_install": {
+    "step": "b02-polkit-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "finished": "2026-11-09T15:43:20.079663+00:00",
+    "changed_paths": 133
+  },
+  "verify_only": {
+    "step": "b02-polkit-verify-2",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T15:46:46.361852+00:00",
+    "changed_paths": 0
+  },
+  "package": {
+    "name": "polkit",
+    "version": "127-1+toddy1",
+    "archive_sha256": "cbc1fbfda81423c018321402c7f05ec36742ce250176e228a6de39a8f4df2a17",
+    "installed": true,
+    "runtime_profile": {
+      "service_account": {
+        "name": "polkitd",
+        "uid": 27,
+        "gid": 27,
+        "home": "/etc/polkit-1",
+        "shell": "/bin/false",
+        "password_assigned": false
+      },
+      "account_initialization": "Versioned root recipe after verified native archive installation; existing unrelated accounts are never replaced",
+      "helper_transport": "Qualified upstream standard SUID fallback; optional helper.socket not enabled/unqualified",
+      "native_qualification_receipt_sha256": "e59f83782e495a709df5c0e7189f8234368deeec7fdd0e7f67c338a6c12fa04d"
+    }
+  },
+  "payload_entries": 193,
+  "consumer": {
+    "scope": "Actual installed native parser13cases/9NULL-error controls using frozen private header and installed public SDK, exact helper modes/hashes, locked service account, deny-preserving PAM profile and APT audit; native real privilege evidence reused, GNOME permission UI pending",
+    "consumer": {
+      "scope": "Corrected pure subject decoding, not authorization",
+      "cases": 13,
+      "invalid_subject_cases_refused": 9,
+      "error_pointer_null_controls": 9,
+      "legacy_missing_uid_preserved": true,
+      "unknown_attribute_preserved_as_data": true
+    },
+    "service_account": {
+      "uid": 27,
+      "gid": 27,
+      "locked": true,
+      "login_shell": "/bin/false"
+    },
+    "rules_directory_mode": "root:27 0750",
+    "helper_transport": "Qualified standard SUID fallback; optional socket not enabled/unqualified",
+    "native_qualification": {
+      "fixture_manifest_sha256": "c6e923f09e4cb34a99ffcae35e145ba2672cb8ec930233a91cb71db3ee0ab65d",
+      "fixture_files": 479,
+      "original_programs": 5,
+      "observed_original_tap_cases": 59,
+      "standard_helper_expected_outcomes": 11,
+      "helpers": {
+        "/usr/bin/pkexec": "303729b3ce4713fb0ea0554502ea7bb0c87eda38f4f09d501e6dc9f0f70a103a",
+        "/usr/lib/polkit-1/polkit-agent-helper-1": "112083c1da8ff12ac29563f97556b7141a36f0981f8b0e450ef504dbc7e0f73b"
+      }
+    }
+  },
+  "retained_failure": "Initial postcheck plain chroot lacked procfs, private parser self-start guard returned11 before cases. Full193entry archive/payload verified unchanged, private PID/mount/proc consumer context passed13cases/9NULL-error controls; no package/source/compiler/original suite replay.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-polkit-install-evidence.tar.gz",
+    "members": 12,
+    "sha256": "c63c43f075b23c21c57782d029c488738a45e02ae5cc593559e87c9c10d9e8a0"
+  }
+}

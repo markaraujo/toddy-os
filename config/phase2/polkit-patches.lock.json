@@ -10,5 +10,5 @@
   "patch_sha256": "2875d047f95af956f1da0c0e8f0b3f1f960e9ade2594a014944bdcd41628516c",
   "upstream_issue": "https://github.com/polkit-org/polkit/issues/701",
   "scope": "Reject malformed or duplicate known process identity fields before optional lookup; preserve absent-uid legacy parsing/unknown attributes. Avoid second GError on wrong type and balance invalid unique-name value reference. No authorization grant or public ABI change.",
-  "native_qualification": "pending; original uninstalled library reproduced malformed unsigned uid and duplicate uid acceptance, no daemon/package installed"
+  "native_qualification": "Original native five programs/59observed TAP cases and actual standard SUID-helper11expected outcomes qualified with479fixture files unchanged. Optional socket profile remains failed/unqualified; no GNOME permission UI claim."
 }

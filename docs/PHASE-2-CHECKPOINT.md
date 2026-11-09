@@ -7,33 +7,35 @@ tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO acceptance.
 
 ## Current slice and exact next action
 
-Current writer: none. Builder boot `1e7ed85f-b694-49c4-beb3-742dfa145bac`.
-DConf0.49.0-1+toddy1 OWNED/install/post0/0,41changed paths. Original14DConf+2GVDB
-programs0; actual installed CLI/GSettings/private schema/user database typed
-persistence/refusal/new-bus/reset0, generated GIO cache/audits0. All15bundled GVDB
-files match exact frozen upstream commit. [Proof](evidence/B02-dconf-install.json).
-No source API change, original suite/compiler/stage replay or user-key change.
-Initial nofallback/duplicate extraction and inaccessible /opt probe failures remain.
-NEVER reinstall/rebuild/replay these jobs.
+Current writer: none. Builder boot `5b99526e-22c0-4f6c-a2b4-4fb0c1107673`.
+DConf0.49.0 owned/install/post0/0,16original programs and actual CLI/GSettings
+private database persistence/refusal/recovery0; no GUI claim. [Proof](evidence/B02-dconf-install.json).
 
-Exact next: clean reviewed commit, then `python3 scripts/host/phase2_native_polkit_suid.py`
-once with `.local/phase2/native-polkit-suid-3-controller.log`; NEW native-polkit-suid-runtime-3.
-First standard-profile context refused oversized SMBIOS source BEFORE native boot/container creation. Source transport now compressed with exact SHA check; no authentication/build replay. Reconcile builder/mounts then use new context2.
-Standard profile context2 child exited0 after PAM prompt but terminal UID matcher failed; root identity not proved. Context2 stopped0/OOMfalse/backing unchanged, builder remains stopped. New context3 replaces tty parsing with root-only0600 proof under root0700 directory and uses frozen BLFS service UID/GID27.
-ADR0155 selects the explicit upstream standard SUID-helper fallback with optional
-helper.socket unstarted. The old socket cookie/UID branch remains parked with two
-failed corrections; its budget is not reset. This is an authentication-session
-binding diagnosis, not an assumed missing logind session. New profile must prove
-actual correct/wrong password, unsolicited-cookie refusal, child NNP refusal,
-Stop/no effect/helper cleanup, recovery, new daemon bus identity and policy action
-replay refusal. Inspect real child/report/parent identity before restart/retry.
-No parent Polkit installation yet. Continue remaining B02 then STOP.
+Polkit127-1+toddy1 OWNED/193paths/archiveSHA cbc1fbfda81423c018321402c7f05ec36742ce250176e228a6de39a8f4df2a17.
+Five original native programs/59TAP cases and11actual standard-helper expected
+outcomes passed;479fixture files unchanged. Exact root:root4755 helpers, root:27
+0750 rules, locked UID/GID27 service account; no owner test rules shipped. Native
+root-only UID/EUID/GID0 proof, wrong password/unsolicited cookie/NNP/Stop/no effect/
+helper cleanup/recovery/reconnect/revoked action replay. [Native](evidence/B02-polkit-standard-native.json).
+Initial installation0/post1 missing-proc consumer retained; full193entry payload/
+archive reconciled, verify-only `b02-polkit-verify-2` recipe/post0/0 changed_paths0.
+Installed private parser13cases/9NULL-error controls, metadata/CLI/APT0. [Install](evidence/B02-polkit-install.json).
+NEVER reinstall/rebuild/replay these steps or completed native tests.
+
+Exact next: AccountsService26.27.3 required for GDM. Official source frozen/cache
+and `.local/phase2/accountsservice-source.json`; no guest input/build yet. Inspect
+bundled test dependency wrap (mocklibc1.0 plus exact SHA-locked Meson zip/diff) and
+source basename version generator. Build from private correctly named tarball copy
+inside isolated worker; no fake VCS, moving revision or compiler network. Qualify
+original tests and real account/privilege behavior before owned runtime claims.
+Then remaining B02 GNOME/GDM/apps/network/audio/offline/native GUI/focus/resources,
+then STOP before another story. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Parked branch: Polkit actual authentication
 
 Full patched Polkit127 build/stage0,58ELFs; original native5programs/59observed TAP
 cases0/no skips,479source/build/stage files unchanged. [Suite](evidence/B02-polkit-native-suite-2.json).
-**No Polkit daemon/helper/package installed in the parent.** Native privilege
+Historical optional socket profile failed; the separate standard helper profile is now owned above. Native privilege
 contexts1–5 all stopped0/OOMfalse. Context5 parent identity verified BEFORE builder
 restart. Current parent subsequently changed; NEVER reboot those overlays.
 
@@ -41,11 +43,9 @@ Actual correct-password gate failed127/one PAM prompt/no root output. Safe error
 classes cookie/No session. PTY drain and source-required PAM session corrections
 did not resolve: **two failed corrections; unchanged branch parked**. Persistent
 ledger `.local/phase2/failures.json` retains input/cause/attempt identity across
-compaction. [Failures](evidence/B02-polkit-native-privilege-block.json). No real
-password/privilege/PAM/Stop/replay/recovery or graphical permission acceptance.
-After independent progress diagnose exact authentication-session cookie/UID semantics
-and qualify a genuinely changed source-backed helper transport;
-do not replay unchanged no-session fixture. Preserve original/corrected decoder,
+compaction. [Failures](evidence/B02-polkit-native-privilege-block.json). No optional-socket password/privilege/Stop/recovery acceptance; standard-helper proof above is separate. No graphical permission acceptance.
+The separate standard helper is qualified and owned. Keep the optional socket
+transport unavailable; do not resume unchanged diagnostics or reset its budget. Preserve original/corrected decoder,
 full build and fixture. ADR0151/0153 define exact source and privileged candidate.
 
 ## Last verified and recovery
@@ -60,7 +60,7 @@ One guest writer, host100GiB/target16GiB reserves; remeasure before allocation.
 After restart inspect actual mounts/receipts, then `virtual_discard_checkpoint.restore_volumes()`
 ONLY for the same SIX existing scratch images: gtk/desktop-resources/doxygen/glycin/pam/systemd-pam.
 Their UUID/inodes remain in original build-volume receipts; latest actual restore
-`.local/phase2/native-polkit-privilege-builder-restored.json`. Separately run guarded
+`.local/phase2/native-polkit-suid-qualified-restored.json`. Separately run guarded
 `prepare_systemd_pam_input.py --restore` for same authenticated read-only source
 bind (sourceinode8930333/inputinode7547189,7193files/SHA2a683ffe0cdab7349a4b2b64b932fab647baaab4e7ab5b7c64520ff3443c5667).
 No old native overlay may boot after its backing changed.

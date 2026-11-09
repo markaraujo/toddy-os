@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'polkit': ('127', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), linux-pam (= 1.7.2-1+toddy2), duktape (= 2.7.0-1+toddy1), systemd (>= 261.2-1+toddy3), expat (>= 2.10.0-1+toddy1), dbus (>= 1.16.2-1), shadow (>= 4.20.2-1)', 'polkit-127.tar.gz', 'usr/lib/pkgconfig/polkit-gobject-1.pc'),
     'dconf': ('0.49.0', 'glib (>= 2.88.3-1+toddy2), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3)', 'dconf-0.49.0.tar.xz', 'usr/lib/pkgconfig/dconf.pc'),
     'python-dbusmock': ('0.38.1', 'python (>= 3.14), python (<< 3.15), dbus-python (= 1.4.0-1+toddy1), pygobject (>= 3.56.3-1+toddy1)', 'python_dbusmock-0.38.1.tar.gz', 'usr/lib/python3.14/site-packages/dbusmock/__init__.py'),
     'dbus-python': ('1.4.0', 'python (>= 3.14), python (<< 3.15), dbus (>= 1.16.2-1), glib (>= 2.88.3-1+toddy2)', 'dbus-python-1.4.0.tar.xz', 'usr/lib/pkgconfig/dbus-python.pc'),
@@ -206,6 +207,7 @@ if __name__ == '__main__':
     if name=='libadwaita':qualifier='libadwaita-build-2'
     if name=='gtksourceview':qualifier='gtksourceview-patched-verify-9'
     if name=='mozjs':qualifier='mozjs-signal-check-4'
+    if name=='polkit':qualifier='polkit-full-1'
     if name=='dconf':qualifier='dconf-gsettings-4'
     if name=='python-dbusmock':qualifier='python-dbusmock-2'
     if name=='linux-pam':qualifier='pam-1'
@@ -1114,6 +1116,9 @@ if __name__ == '__main__':
     if name=='dbus-python':
         from qualify_dbus_python import qualify as qualify_dbus_python
         qualify_dbus_python(ROOT,log)
+    if name=='polkit':
+        from qualify_polkit import qualify as qualify_polkit
+        qualify_polkit(ROOT)
     if name=='dconf':
         from qualify_dconf import qualify as qualify_dconf
         qualify_dconf(ROOT)
@@ -1137,6 +1142,7 @@ if __name__ == '__main__':
         qualify(ROOT,log)
     assert name==sys.argv[1], 'Package identity changed during qualification'
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
+    if name=='polkit':source=Path('/mnt/lfs/sources/phase2/work/polkit-full-1/stage')
     if name=='dconf':source=Path('/mnt/lfs/sources/phase2/work/dconf-vendored-1/stage')
     if name=='mozjs':source=Path('/mnt/lfs/sources/phase2/work/mozjs-security-1/stage')
     if name=='linux-pam':source=Path('/mnt/lfs/sources/phase2/work/pam-1/stage')
@@ -1167,6 +1173,19 @@ if __name__ == '__main__':
         shutil.copytree(source, destination, symlinks=True)
         assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
+    if name=='polkit':
+        acceptance=json.loads((log/'polkit-standard-native-acceptance-1.json').read_text())
+        import os
+        for virtual,sha in acceptance['summary']['helpers'].items():
+            helper=destination/virtual.lstrip('/');assert hashlib.sha256(helper.read_bytes()).hexdigest()==sha and helper.stat().st_mode&0o7777==0o755
+            os.chown(helper,0,0);helper.chmod(0o4755)
+        rules=destination/'etc/polkit-1/rules.d';assert rules.is_dir() and not list(rules.iterdir());os.chown(rules,0,27);rules.chmod(0o750)
+        policy=destination/'etc/pam.d';policy.mkdir(parents=True,exist_ok=True);assert not (policy/'polkit-auth').exists()
+        (policy/'polkit-auth').write_text('auth required pam_unix.so\naccount required pam_unix.so\npassword required pam_deny.so\nsession required pam_unix.so\n')
+        doc=destination/'usr/share/doc/polkit';(doc/'patches').mkdir(parents=True)
+        patch=json.loads((ROOT/'config/phase2/polkit-patches.lock.json').read_text());shutil.copy2(ROOT/patch['patch_file'],doc/'patches'/Path(patch['patch_file']).name)
+        (doc/'source-patch.json').write_text(json.dumps(patch,indent=2)+'\n')
+        (doc/'README.Toddy').write_text('Frozen127 plus exact ADR0151 typed-subject decoder correction. Five original native programs/59TAP cases and11actual standard-helper expected outcomes qualified. Two exact root:root4755 binaries only; service root:polkitd0750 rules, locked UID/GID27 account. Required pam_unix auth/account/session, password changes denied; no owner test rules are shipped. Optional helper.socket remains unqualified/unstarted because SUID embedded-agent cookie/UID behavior failed. GNOME permission UI is a separate gate. See ADR0153/0155 and source-patch.json.\n')
     if name=='libxml2':
         wrapper=destination/'usr/bin/xml2-config'
         wrapper.write_text(wrapper.read_text().replace('--static','--shared'))
@@ -1241,6 +1260,7 @@ if __name__ == '__main__':
                         '--depends','glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
+    if name=='polkit':conffiles=['--conffile','/etc/pam.d/polkit-auth']
     if name=='linux-pam':conffiles=['--conffile','/etc/pam.d/other']
     if name in ('fontconfig','llvm','rustc','at-spi2-core'):
         for relative,row in before['entries'].items():
