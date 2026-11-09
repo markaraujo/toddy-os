@@ -78,10 +78,20 @@ def main():
                         if cancel:os.kill(child,signal.SIGINT)
                         else:os.write(fd,secret.encode()+b'\n')
                 waited,raw_status=os.waitpid(child,os.WNOHANG)
-                if waited:status=os.waitstatus_to_exitcode(raw_status);break
+                if waited:
+                    status=os.waitstatus_to_exitcode(raw_status)
+                    # waitpid does not consume buffered terminal output.
+                    while select.select([fd],[],[],0.2)[0]:
+                        try:data=os.read(fd,65536)
+                        except OSError:break
+                        if not data:break
+                        transcript+=data
+                    break
             if status is None:
                 os.kill(child,signal.SIGKILL);os.waitpid(child,0)
                 raise AssertionError('Authentication deadline, never success: '+label)
+            diagnostic={'name':label,'exit':status,'pam_prompts':prompts,'root_uid_line':bool(re.search(rb'(?m)^0\r?$',transcript)),'known_errors':{phrase:phrase.encode() in transcript for phrase in ['Authentication failure','Error executing command','FAILED','not authorized','Invalid cookie','SHELL']},'raw_tty_retained':False}
+            print('TODDY_B02_POLKIT_CASE',json.dumps(diagnostic),flush=True)
             assert prompts>0,'No real PAM prompt observed: '+label
             if expect_success:assert status==0 and re.search(rb'(?m)^0\r?$',transcript),'Expected root execution: '+label
             else:assert status!=0,'Unexpected privileged execution: '+label
