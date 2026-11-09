@@ -18,12 +18,13 @@ def decode(serial):
             recovered.append({'line':i+1,'payload_bytes_changed':0,'reason':'Exact marker split by kernel stack-depth printk'})
         if fragment is not None:
             number,value=fragment.split(' ',1);index=int(number)
-            interrupted=re.fullmatch(r'([A-Za-z0-9+/=]+)\[\s*[0-9]+\.[0-9]+\] clocksource: Watchdog remote CPU [0-9]+ read timed out',value)
+            interrupted=re.fullmatch(r'([A-Za-z0-9+/=]+)\[\s*[0-9]+\.[0-9]+\] (clocksource: Watchdog remote CPU [0-9]+ read timed out|systemd-shutdown\[[0-9]+\]: Syncing filesystems and block devices\.)',value)
             if interrupted:
                 assert i+1<len(lines) and re.fullmatch(r'[A-Za-z0-9+/=]+',lines[i+1])
                 value=interrupted[1]+lines[i+1]
                 assert len(value)==1024, 'Only one complete protocol chunk may be rejoined'
-                recovered.append({'line':i+1,'payload_bytes_changed':0,'reason':'Exact watchdog printk split a complete base64 chunk; concatenate original fragments, verify full report SHA256'})
+                cause='watchdog' if interrupted[2].startswith('clocksource:') else 'shutdown-sync'
+                recovered.append({'line':i+1,'payload_bytes_changed':0,'reason':'Exact '+cause+' printk split a complete base64 chunk; concatenate original fragments, verify full report SHA256'})
             assert 0<=index<4096 and 0<len(value)<=1024 and re.fullmatch(r'[A-Za-z0-9+/=]+',value)
             assert index not in chunks or chunks[index]==value,'Conflicting evidence chunk'
             chunks[index]=value

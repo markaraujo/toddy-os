@@ -25,12 +25,16 @@ class NativeReportIntegrity(unittest.TestCase):
 
     def test_exact_watchdog_split_rejoins_without_changing_payload(self):
         expected, lines = self.transcript()
-        line = lines[0]
-        lines[0] = line[:700] + '[   11.766230] clocksource: Watchdog remote CPU 10 read timed out\n' + line[700:]
-        report, summary, recovered = decode('\n'.join(lines))
-        self.assertEqual(report, expected)
-        self.assertEqual(recovered[0]['payload_bytes_changed'], 0)
-        self.assertGreater(summary['chunks'], 1)
+        for noise in ['[   11.766230] clocksource: Watchdog remote CPU 10 read timed out',
+                      '[    6.673338] systemd-shutdown[1]: Syncing filesystems and block devices.']:
+            with self.subTest(noise=noise):
+                interrupted = lines.copy()
+                line = interrupted[0]
+                interrupted[0] = line[:700] + noise + '\n' + line[700:]
+                report, summary, recovered = decode('\n'.join(interrupted))
+                self.assertEqual(report, expected)
+                self.assertEqual(recovered[0]['payload_bytes_changed'], 0)
+                self.assertGreater(summary['chunks'], 1)
 
     def test_unknown_console_noise_is_rejected(self):
         _, lines = self.transcript()

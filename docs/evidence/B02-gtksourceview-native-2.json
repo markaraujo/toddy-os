@@ -1,0 +1,43 @@
+{
+  "scope": "Native7.1.8 headless Mutter/Wayland original gtksourceview tests only; not GDM/KMS/full GNOME/physical acceptance",
+  "kernel": "7.1.8-toddy",
+  "pid1": "systemd",
+  "uid": 101,
+  "commit": "18f89b9c87f2975cf733ff199da1feb34d2c8cad",
+  "compositor_exit": 0,
+  "drivers_exit_zero": 26,
+  "passed_cases": 273,
+  "skipped_cases": 116,
+  "upstream_known_language_skips": 18,
+  "syntax_fixture_skips_pending": 98,
+  "qualification": "Not yet qualified for promotion; syntax fixture must execute, original skips never count as passes",
+  "artifacts_unchanged": 27,
+  "source_test_files_unchanged": 39,
+  "manifest_sha256": "e5cbe4052565944d23efe5029336e820aa57ccf4fa111c10e933e907ff19dec0",
+  "native_report_sha256": "a865921bc8aaa2af2d4dff7f86068f1e4bcc3b6f49ddec56b27aac914c67475c",
+  "transcript_reconciliation": {
+    "scope": "Read-only exact shutdown-sync serial fragment reassembly; no VM/test replay",
+    "report_sha256": "a865921bc8aaa2af2d4dff7f86068f1e4bcc3b6f49ddec56b27aac914c67475c",
+    "serial_sha256": "7a1b1ded4af2b8596c72b6bee153e7e8eba18318535ea0342952124f558b8b84",
+    "recovered": [
+      {
+        "line": 836,
+        "payload_bytes_changed": 0,
+        "reason": "Exact shutdown-sync printk split a complete base64 chunk; concatenate original fragments, verify full report SHA256"
+      }
+    ],
+    "source_backing_unchanged": true,
+    "native_exit": 0,
+    "drivers_exit_zero": 26,
+    "passed_cases": 273,
+    "skipped_cases": 116,
+    "qualification": "Not yet qualified:98syntax cases skipped for wrong upstream relative fixture layout;18upstream known language skips remain explicit"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gtksourceview-native-2-evidence.tar.gz",
+    "members": 8,
+    "sha256": "94c19a1b4f9fa8b8a69ad9a1fb48d20d4bba77610ab1d2c4fd4152987f930f73"
+  },
+  "recovery": "Native container stopped0 and parent identity unchanged before builder restart. Same4scratch filesystems restored without trim/format. Never boot old disposable delta after parent changed.",
+  "next": "Fresh native-mutter-runtime-3 --component gtksourceview --only-syntax with exact private source symlinks; reuse25other driver results/273passes/18known upstream skips, unchanged original binaries."
+}

@@ -31,6 +31,13 @@ def main():
         deadline=time.monotonic()+300
         for index,test in enumerate(config['tests']):
             test_env={**env,**config['test_env'],'LD_LIBRARY_PATH':config.get('test_library_path','/build/compile/src:/build/stage/usr/lib')}
+            if config.get('syntax_only'):
+                assert len(config['tests'])==1 and test['name']=='test-syntax'
+                layout=root/'syntax-layout';fixture=layout/'testsuite';fixture.mkdir(parents=True)
+                (fixture/'data').symlink_to(Path(config['source'])/'data',target_is_directory=True)
+                (layout/'tests').symlink_to(Path(config['source'])/'tests',target_is_directory=True)
+                test_env['G_TEST_SRCDIR']=str(fixture)
+                result['syntax_fixture_layout']={'scope':'Private exact source symlinks compensate original setup_search_paths using G_TEST_SRCDIR/data; no source/test/data changes','source':config['source'],'G_TEST_SRCDIR':str(fixture)}
             args=test['cmd'];assert args[0].startswith(config.get('test_binary_prefix','/build/compile/tests/'))
             assert sha(Path(args[0]))==test['sha256']
             try:

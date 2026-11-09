@@ -2895,3 +2895,16 @@ Mutter harness to select exactly these drivers and omit the already-qualified
 Libadwaita/GTK fixture. Preserve immutable manifests, full checksums, root identity,
 one writer/noNIC/caps0 and original outcomes. Next fresh context2 then owned
 promotion only if actual native result passes. No B02 criterion marked complete.
+
+### B02 GtkSourceView native qualification gap
+
+Native context2 stopped0, all26drivers returned0 with273PASS/116SKIP. Preserve
+18upstream known-language skips;98syntax fixtures were not exercised because the
+original driver builds a data path beneath G_TEST_SRCDIR/testsuite. No promotion.
+Select only that driver for a fresh native context with exact private source
+symlinks, wider data/test asset hashing and reuse25unchanged driver results.
+27artifacts39test source files unchanged; source parent verified before builder
+restart/same4scratch restore. Strict shutdown-sync serial split reassembled with
+full22chunk SHA256; original controller1 retained, no native/test replay.
+Changed decoder corruption/refusal checks pass; repository checks remain required
+for the native fixture/harness delivery. Full B02/owner stop boundary unchanged.

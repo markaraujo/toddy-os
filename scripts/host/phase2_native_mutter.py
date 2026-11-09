@@ -22,13 +22,13 @@ ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
 
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--context',default='native-mutter-runtime-1');parser.add_argument('--component',choices=['libadwaita','gtksourceview'],default='libadwaita');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--context',default='native-mutter-runtime-1');parser.add_argument('--component',choices=['libadwaita','gtksourceview'],default='libadwaita');parser.add_argument('--only-syntax',action='store_true');args=parser.parse_args();assert not args.only_syntax or args.component=='gtksourceview'
     assert re.fullmatch(r'native-mutter-runtime-[1-9][0-9]?',args.context)
     context=ROOT/'.local/phase2'/args.context;assert not context.exists(),'Reconcile existing operation; never replay'
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
     lock=open(vm.VM/'native-boot-test.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB);boot.refuse_running_tests()
-    code='component='+repr(args.component)+'\n'+r'''from pathlib import Path
+    code='component='+repr(args.component)+'\nsyntax_only='+repr(args.only_syntax)+'\n'+r'''from pathlib import Path
 import fcntl,hashlib,json,subprocess
 subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
 lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -43,6 +43,14 @@ w=Path('/mnt/lfs/sources/phase2/work')/(component+'-1');s=Path('/mnt/lfs/sources
 assert stage['native_build_exit']==stage['stage_exit']==stage['gi_version_exit']==0
 assert stage['c_version_exit' if component=='libadwaita' else 'c_version_data_exit']==0
 registered=json.loads((w/'compile/meson-info/intro-tests.json').read_text());assert len(registered)==(67 if component=='libadwaita' else 26)
+reused=None
+if syntax_only:
+ raw=(l/'native-gtksource-2-report.json').read_bytes();expected='a865921bc8aaa2af2d4dff7f86068f1e4bcc3b6f49ddec56b27aac914c67475c';assert hashlib.sha256(raw).hexdigest()==expected
+ previous=json.loads(raw);assert previous['all_selected_exits_zero'] and previous['suite']['passed_case_executions']==273 and previous['suite']['skipped_case_executions']==116
+ old=json.loads(Path('/mnt/lfs/sources/phase2/native-fixtures/gtksourceview-1/accepted.json').read_text());assert previous['manifest_sha256']==sha(Path('/mnt/lfs/sources/phase2/native-fixtures/gtksourceview-1/accepted.json'))
+ for path,digest in old['artifacts'].items():assert sha(Path('/mnt/lfs')/path.lstrip('/'))==digest
+ reused={'report_sha256':expected,'manifest_sha256':previous['manifest_sha256'],'drivers_reused':25,'passed_case_executions':273,'upstream_known_skips':18,'syntax_skips_pending':98,'all_previous_artifacts_unchanged':len(old['artifacts'])}
+ registered=[t for t in registered if t['name']=='test-syntax'];assert len(registered)==1
 binary_prefix='/build/compile/'+('tests/' if component=='libadwaita' else 'testsuite/')
 artifacts={};tests=[]
 for t in registered:
@@ -59,12 +67,12 @@ fixture=None;fixture_source_sha=None
 if component=='libadwaita':
  f=Path('/mnt/lfs/sources/phase2/work/native-window-fixture-1');fixture=json.loads((f/'fixture.json').read_text());assert fixture['compile_exit']==0
  assert sha(f/'window-fixture')==fixture['binary_sha256'];artifacts[str(f/'window-fixture').removeprefix('/mnt/lfs')]=fixture['binary_sha256'];fixture_source_sha=fixture['source_sha256'];fixture=str(f/'window-fixture').removeprefix('/mnt/lfs')
-asset_dir=s/('tests' if component=='libadwaita' else 'testsuite')
-assets={str(p.relative_to(asset_dir)):sha(p) for p in asset_dir.rglob('*') if p.is_file() and not p.is_symlink()}
+asset_dirs=['testsuite','tests','data'] if syntax_only else ['tests' if component=='libadwaita' else 'testsuite']
+assets={str(p.relative_to(s)):sha(p) for directory in asset_dirs for p in (s/directory).rglob('*') if p.is_file() and not p.is_symlink()}
 assert s.stat().st_uid==0 and not s.stat().st_mode&0o022
-record={'scope':'Frozen native '+component+' original display drivers only; no full GNOME/product acceptance','component':component,'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'fixture_source_sha256':fixture_source_sha,'fixture':fixture,'tests':tests,'test_env':registered[0]['env'],'artifacts':artifacts,'source_test_assets_sha256':hashlib.sha256(json.dumps(assets,sort_keys=True).encode()).hexdigest(),'source_test_files':len(assets),'schema_cache_sha256':sha(Path('/mnt/lfs/usr/share/glib-2.0/schemas/gschemas.compiled'))}
+record={'scope':'Frozen native '+component+' original display drivers only; no full GNOME/product acceptance','component':component,'syntax_only':syntax_only,'reused_native_proof':reused,'asset_dirs':asset_dirs,'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'fixture_source_sha256':fixture_source_sha,'fixture':fixture,'tests':tests,'test_env':registered[0]['env'],'artifacts':artifacts,'source_test_assets_sha256':hashlib.sha256(json.dumps(assets,sort_keys=True).encode()).hexdigest(),'source_test_files':len(assets),'schema_cache_sha256':sha(Path('/mnt/lfs/usr/share/glib-2.0/schemas/gschemas.compiled'))}
 data=json.dumps(record,sort_keys=True).encode()+bytes([10])
-folder=Path('/mnt/lfs/sources/phase2/native-fixtures')/('mutter-1' if component=='libadwaita' else 'gtksourceview-1');folder.mkdir(mode=0o755,exist_ok=True)
+folder=Path('/mnt/lfs/sources/phase2/native-fixtures')/('gtksourceview-syntax-1' if syntax_only else 'mutter-1' if component=='libadwaita' else 'gtksourceview-1');folder.mkdir(mode=0o755,exist_ok=True)
 assert folder.stat().st_uid==0 and not folder.is_symlink()
 manifest=folder/'accepted.json'
 if manifest.exists():
@@ -73,7 +81,7 @@ if manifest.exists():
 else:
  with manifest.open('xb') as f:f.write(data);f.flush();__import__('os').fsync(f.fileno())
 manifest.chmod(0o444)
-print(json.dumps({'component':component,'manifest':str(manifest).removeprefix('/mnt/lfs'),'manifest_sha256':hashlib.sha256(data).hexdigest(),'fixture_source_sha256':record['fixture_source_sha256'],'builder_boot_id':record['builder_boot_id'],'tests':len(record['tests']),'artifacts':len(record['artifacts']),'source_test_files':record['source_test_files']}))
+print(json.dumps({'component':component,'syntax_only':syntax_only,'manifest':str(manifest).removeprefix('/mnt/lfs'),'manifest_sha256':hashlib.sha256(data).hexdigest(),'fixture_source_sha256':record['fixture_source_sha256'],'builder_boot_id':record['builder_boot_id'],'tests':len(record['tests']),'artifacts':len(record['artifacts']),'source_test_files':record['source_test_files']}))
 '''
     accepted=json.loads(subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True).stdout)
     if args.component=='libadwaita':assert hashlib.sha256((ROOT/'scripts/build/phase2/native-gtk-window.c').read_bytes()).hexdigest()==accepted['fixture_source_sha256']

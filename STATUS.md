@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T07:12:08.333147+00:00
+Last verified: 2026-11-09T07:19:12.566723+00:00
 
 Verified:
 
@@ -69,8 +69,9 @@ Verified:
 - Actual native7.1.8/Systemd headless Mutter50.4 Wayland GTK window/action/resize/render0;67original Libadwaita drivers408cases0/no skips,69artifacts89source files unchanged. Active compositor focus and full GNOME/login/basic apps remain pending.
 - Owned Libadwaita1.9.3-1+toddy1 install/post0/0; native C/GI ABI/APT0. Original prewrite qualification selector failure retained, no rebuild or suite replay.
 - GtkSourceView5.20 frozen source compiled/staged; own data-path probe-only recovery0 preserves230ELFs169stagefiles, C/GI encoding/language/refusal0.26original drivers pending native display; not installed.
+- Native GtkSourceView26drivers exit0/273PASS/116SKIP;18known upstream languages plus98syntax cases unexercised due original relative fixture path.27artifacts39test files unchanged; no package promotion. Exact shutdown-sync serial fragment/fullSHA reconciled read-only.
 
-Running: No writer. Commit/check then fresh native-mutter-runtime-2 with --component gtksourceview for exactly26pending display drivers; no unchanged Libadwaita/GTK fixture replay. Complete ALL B02 then pause.
+Running: No writer; fresh native-mutter-runtime-3 --component gtksourceview --only-syntax pending after commit: fix only private relative fixture layout and execute98skipped syntax cases; reuse25other drivers. Full B02 then pause.
 
 Remaining:
 
