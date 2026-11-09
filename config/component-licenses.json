@@ -10408,6 +10408,35 @@
       "license": "LGPL-2.1-or-later",
       "evidence": "Frozen primary COPYING and per-file notices retained; unchanged original environment-based tags test used, no umockdev bundled",
       "runtime_inclusion": "B02 native GUdev library/GI; actual udev events/device/session integration pending"
+    },
+    {
+      "name": "libwacom",
+      "version": "2.19.1",
+      "license": "HPND-sell-variant",
+      "evidence": "Frozen COPYING/header/tool notices include explicit sell permission; upstream Meson labels broader HPND. Exact source notices/data provenance retained; optional Python show-stylus omitted.",
+      "license_reference": "https://spdx.org/licenses/HPND-sell-variant.html",
+      "runtime_inclusion": "B02 native tablet/stylus database/library/C tools/udev source data; no physical tablet/hwdb activation qualification"
+    },
+    {
+      "name": "gtk3",
+      "version": "3.24.52",
+      "license": "LicenseRef-gtk3-per-file",
+      "evidence": "Frozen primary COPYING LGPL2.0 and per-file terms; retain exact named/header notices. Native Wayland bootstrap4RGBA/C/GI/private schemas0, no native window/GDM/GUI acceptance. Owned shared schema/immodules integration pending.",
+      "extra_license_headers": {
+        "gtk-3.24.52.tar.xz": {
+          "prefixes": [
+            ""
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".cc",
+            ".cpp",
+            ".glsl"
+          ]
+        }
+      },
+      "runtime_inclusion": "B02 GTK3 Wayland/GI bootstrap for planned GDM; source/stage only until owned resource qualification"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

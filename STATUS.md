@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T03:06:53.880689+00:00
+Last verified: 2026-11-09T03:25:32.328726+00:00
 
 Verified:
 
@@ -49,8 +49,9 @@ Verified:
 - Owned Wireplumber0.5.15 install/post0/0,53original drivers/C/CLI0; minimal native profile, POT output-only correction preserves135ELFs. No audible/native session routing acceptance.
 - Owned libnotify0.8.8 install/post0/0, native C/GI and empty private-bus ServiceUnknown refusal0; optional original mocks unavailable/not passes, no displayed notification.
 - Owned GUdev238 install/post0/0, unchanged original environment tags1case/C/GI0, no sysfs/device exposure. Three umockdev suites unavailable/not passes; no actual device/event acceptance.
+- Owned libwacom2.19.1 recipe/post0/0,8original data/CLI drivers and8725Ccases0; optional Python tool/suites omitted, Git SKIP77 not pass; no physical tablet/hwdb acceptance. GTK3.24.52 Wayland bootstrap source/stage4RGBA/C/GI/private schema0, not installed or display-qualified.
 
-Running: No guest writer. Next native libwacom2.19.1 C/database profile with owned GUdev/evdev/GLib; actual GNOME/apps/audio/offline pending. Complete ALL B02 then pause.
+Running: No guest writer; GTK3 source job gtk3-1 terminal0. Next private schema/immodules union then controlled GTK3 install/GTK4 schema-only owner upgrade, preserving accepted GTK4 binaries. Complete ALL B02 then pause.
 
 Remaining:
 

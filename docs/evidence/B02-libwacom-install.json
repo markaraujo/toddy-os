@@ -1,0 +1,26 @@
+{
+  "step": "b02-libwacom-install",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "finished": "2026-11-09T03:14:13.970215+00:00",
+  "package": {
+    "name": "libwacom",
+    "version": "2.19.1-1+toddy1",
+    "archive_sha256": "8ae07c8f480448c24ead3c04266b89b2ab1b0675d1eaea2977550696a8ffcd84"
+  },
+  "payload_entries": 862,
+  "consumer": {
+    "scope": "Native installed libwacom database lookup/IDs/cleanup/unknown-model refusal; no physical tablet, hwdb event or GNOME acceptance",
+    "name": "libwacom",
+    "version": "2.19.1",
+    "native_consumer_exit": 0,
+    "stdout": "native libwacom Cintiq database lookup/IDs/cleanup and unknown-model refusal; no physical tablet acceptance"
+  },
+  "runtime_partition": {
+    "scope": "Omit only optional Python show-stylus CLI/man whose libevdev/pyudev bindings are unavailable. Original source/test stage retained; native C library/tools/database/udev inputs unchanged.",
+    "omitted": {
+      "usr/bin/libwacom-show-stylus": "2d00730a23cd907ad1458b854d84e51e656a5e8addda1ec0456d5864967dfe94",
+      "usr/share/man/man1/libwacom-show-stylus.1": "3853027bba67a3d792174f7b2186bb627d257d72cf2a078e02280c8bd5620856"
+    }
+  }
+}

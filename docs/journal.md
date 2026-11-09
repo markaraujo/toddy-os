@@ -2715,3 +2715,10 @@ Active card shortened; immutable custody specifics preserved in linked historica
 owned install/post0/0. Three optional umockdev suites not available/not passes;
 no new sysfs/device exposure or physical event claim. Next required libwacom
 source authenticated; native GNOME and B02 acceptance remain pending.
+
+2026-11-09: libwacom2.19.1 owned0/0,8original data/CLI drivers plus8725Ccases0;
+archive Git check SKIP77 and optional Python matrices not passes. Unsupported
+show-stylus Python CLI/man excluded with exact source/generated hashes. Native
+GTK3.24.52 Wayland bootstrap source/stage0/4RGBA/C/GI/private schema0, no display
+claim. Capacity reserve preflight passed; next owned schema/immodules union
+without changing accepted GTK4 binaries or replaying its unchanged tests.

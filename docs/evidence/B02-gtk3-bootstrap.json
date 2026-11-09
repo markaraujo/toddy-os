@@ -1,0 +1,15 @@
+{
+  "scope": "Native GTK3 Wayland bootstrap/headless APIs only; no graphical window, GDM/GNOME/login/print/X11 or display-dependent test acceptance",
+  "original_rgba_cases": 4,
+  "staged_consumer_exit": 0,
+  "gi_exit": 0,
+  "private_schema_exit": 0,
+  "schema_cache_sha256": "1e621796723a48f5e78a16ccf078f3effb347df58eaf13d0686be121964fcb0f",
+  "profile": "GTK3 Wayland/GI/file-print bootstrap, alongside accepted GTK4; no demos/examples or optional X11/Broadway/cloud/tracker/profiler/CUPS",
+  "pending": "Actual native display/window/focus/actions/responsiveness, display-dependent original tests and owned schema/resource-cache union before promotion",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gtk3-bootstrap-evidence.tar.gz",
+    "members": 11,
+    "sha256": "bada7303019cbd5a077130f83a7e84ac51dd85e05e99e37ada782163f6e0ee0a"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "scope": "Native tablet/stylus database and original data/C/CLI tests only; no physical input, installed hwdb event or GNOME tablet settings acceptance",
+  "registered_drivers": [
+    {
+      "name": "all - libwacom:files-in-git",
+      "result": "SKIP",
+      "exit": 77
+    },
+    {
+      "name": "all - libwacom:debug-device-huion-dial-2",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libwacom:debug-device-huion-h640p",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libwacom:test-ltversion",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libwacom:debug-device-wacom-intuos4",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libwacom:debug-device-wacom-cintiq-pro-13",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libwacom:list-devices",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libwacom:debug-device-wacom-isdv4-0148",
+      "result": "OK",
+      "exit": 0
+    },
+    {
+      "name": "all - libwacom:list-compatible-styli",
+      "result": "OK",
+      "exit": 0
+    }
+  ],
+  "original_c_drivers": [
+    {
+      "name": "test-load",
+      "exit": 0,
+      "passed_cases": 12,
+      "skipped_cases": 0
+    },
+    {
+      "name": "test-dbverify",
+      "exit": 0,
+      "passed_cases": 626,
+      "skipped_cases": 0
+    },
+    {
+      "name": "test-tablet-validity",
+      "exit": 0,
+      "passed_cases": 7023,
+      "skipped_cases": 0
+    },
+    {
+      "name": "test-stylus-validity",
+      "exit": 0,
+      "passed_cases": 1064,
+      "skipped_cases": 0
+    }
+  ],
+  "staged_consumer_exit": 0,
+  "selection": "Four unchanged original C target sources/include/define declarations compiled directly; optional Python libevdev/pyudev/pytest SDK unavailable, four Python suites omitted/not passes",
+  "profile": "Native library/tools/tablet+stylus data/udev rule and hwdb source; no global hwdb activation before native integration check",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libwacom-native-evidence.tar.gz",
+    "members": 25,
+    "sha256": "23646d6b215beccae06f7651a2ce8f3184f71ff49bf66787f19e81ed06ee1f3b"
+  }
+}

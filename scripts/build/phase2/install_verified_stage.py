@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libwacom': ('2.19.1', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), libgudev (= 238-1+toddy1), libevdev (= 1.13.6-1+toddy1), python (>= 3.14)',
+                 'libwacom-2.19.1.tar.xz', 'usr/lib/pkgconfig/libwacom.pc'),
     'libgudev': ('238', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), systemd (>= 261.2-1)',
                  'libgudev-238.tar.xz', 'usr/lib/pkgconfig/gudev-1.0.pc'),
     'libnotify': ('0.8.8', 'glibc (>= 2.44-1), glib (>= 2.88.3-1+toddy1), gdk-pixbuf (= 2.44.7-1+toddy2), dbus (>= 1.16.2-1)',
@@ -778,6 +780,18 @@ if __name__ == '__main__':
         assert cases and all(c.find('failure') is None and c.find('error') is None and c.find('skipped') is None for c in cases)
         proof=json.loads((work/'test-results.json').read_text())
         assert proof['registered_tests']==len(cases) and proof['upstream_exit']==proof['staged_consumer_exit']==0
+    if name=='libwacom':
+        work=Path('/mnt/lfs/sources/phase2/work/libwacom-1');source=Path('/mnt/lfs/sources/phase2/inputs/libwacom-2.19.1')
+        assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libwacom-build.sh').read_bytes()
+        assert (source/'toddy-probe.c').read_bytes()==(ROOT/'scripts/build/phase2/libwacom-probe.c').read_bytes()
+        proof=json.loads((work/'test-results.json').read_text());assert proof['staged_consumer_exit']==0
+        rows=[json.loads(s) for s in (work/'compile/meson-logs/testlog.json').read_text().splitlines() if s.strip()]
+        assert len(rows)==9
+        for r in rows:
+            assert (r['result']=='OK' and r['returncode']==0) or (r['result']=='SKIP' and r['returncode']==77 and r['name'].endswith('files-in-git'))
+        assert len(proof['original_c_drivers'])==4 and sum(r['passed_cases'] for r in proof['original_c_drivers'])==8725
+        for r in proof['original_c_drivers']:
+            assert (work/(r['name']+'.exit')).read_text().strip()=='0' and r['skipped_cases']==0
     if name=='libgudev':
         work=Path('/mnt/lfs/sources/phase2/work/libgudev-1');source=Path('/mnt/lfs/sources/phase2/inputs/libgudev-238')
         assert (source/'toddy-build.sh').read_bytes()==(ROOT/'scripts/build/phase2/libgudev-build.sh').read_bytes()
@@ -943,6 +957,16 @@ if __name__ == '__main__':
     if name=='freetype':
         doc=destination/'usr/share/doc/freetype';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('This software is based in part on the work of the FreeType Team.\nPortions copyright 1996-2026 The FreeType Project (https://freetype.org). All rights reserved.\nFTL license option selected; exact upstream terms in copyright/source-notices.\nSource modifications: enabled gxvalid/otvalid modules and FT_CONFIG_OPTION_SUBPIXEL_RENDERING per BLFS13.1.\nDynamic HarfBuzz loading; optional reference manual not included.\n')
+    if name=='libwacom':
+        omitted={}
+        for relative in ['usr/bin/libwacom-show-stylus','usr/share/man/man1/libwacom-show-stylus.1']:
+            path=destination/relative
+            assert path.is_file() and not path.is_symlink()
+            assert path.read_bytes()==(work/'compile'/Path(relative).name).read_bytes()
+            omitted[relative]=hashlib.sha256(path.read_bytes()).hexdigest();path.unlink()
+        (log/'libwacom-runtime-partition.json').write_text(json.dumps({
+            'scope':'Omit only optional Python show-stylus CLI/man whose libevdev/pyudev bindings are unavailable. Original source/test stage retained; native C library/tools/database/udev inputs unchanged.',
+            'omitted':omitted},indent=2)+'\n')
     archives=[archive]
     if name in ('shared-mime-info','llvm'):
         extra_name='xdgmime-tests' if name=='shared-mime-info' else 'llvm-upstream-fix'

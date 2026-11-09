@@ -1554,6 +1554,18 @@
       "book_md5": "83baa1eb388d506b670d13a8a18ff224",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "gtk3",
+      "version": "3.24.52",
+      "filename": "gtk-3.24.52.tar.xz",
+      "url": "https://download.gnome.org/sources/gtk/3.24/gtk-3.24.52.tar.xz",
+      "sha256": "80931fa472a77b9a164f6740e3c0b444fac6770054632d35a7ff9d679e5e7b9f",
+      "reference": "BLFS13.1-systemd x/gtk3.html",
+      "book_page_sha256": "8be88e9ddf9623161ad0c9a5af668d0ce463e642ed0b670ef2d0577938ac5503",
+      "book_md5": "4dfad1e56bf8ad25dfab58add17e7146",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }
