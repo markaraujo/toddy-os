@@ -1,0 +1,17 @@
+--- a/meson.build
++++ b/meson.build
+@@ -52,8 +52,12 @@
+   error('Couldn\'t find location for pkcs11 module config')
+ endif
+ libsecret_dep = dependency('libsecret-1', version: '>= 0.20', required: get_option('ssh_agent'))
+-ssh_add_path = find_program('ssh-add', required: get_option('ssh_agent')).path()
+-ssh_agent_path = find_program('ssh-agent', required: get_option('ssh_agent')).path()
++ssh_add_path = ''
++ssh_agent_path = ''
++if get_option('ssh_agent')
++  ssh_add_path = find_program('ssh-add').path()
++  ssh_agent_path = find_program('ssh-agent').path()
++endif
+ 
+ with_systemd = false
+ libsystemd_deps = []

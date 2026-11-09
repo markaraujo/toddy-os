@@ -1,0 +1,535 @@
+{
+  "scope": "Owned production Keyring and actual isolated Secret Service backend; native PAM/GNOME/graphical and shared schema cache pending",
+  "source": {
+    "name": "gnome-keyring",
+    "version": "50.0",
+    "filename": "gnome-keyring-50.0.tar.xz",
+    "url": "https://download.gnome.org/sources/gnome-keyring/50/gnome-keyring-50.0.tar.xz",
+    "sha256": "cbd72062c53c9702bc2c4733991ad5f051ca682882b30905a2829bcf1a8ecc7c",
+    "upstream_sha256_url": "https://download.gnome.org/sources/gnome-keyring/50/gnome-keyring-50.0.sha256sum",
+    "upstream_sha256_file_sha256": "359b1c8c744757def56d59106080ada7b4999feaae6ff3652c548614be84a651",
+    "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "57original production programs plus5original PRIVATE fixture-only programs, not production fixture passes. Production CLI/PAM ABI only; actual production secret backend/native PAM/GUI gate pending",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "production_original_programs": 57,
+    "production_original_tests": [
+      {
+        "name": "egg - gnome-keyring:asn1x",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:asn1",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:dn",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:cleanup",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:hex",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:hkdf",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:oid",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:padding",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:symkey",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:armor",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:openssl",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:dh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:secmem",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm - gnome-keyring:attributes",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm - gnome-keyring:credential",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm - gnome-keyring:data-asn1",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm - gnome-keyring:data-der",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm - gnome-keyring:memory-store",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm - gnome-keyring:object",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm - gnome-keyring:certificate",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm - gnome-keyring:secret",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm - gnome-keyring:sexp",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm - gnome-keyring:store",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "egg - gnome-keyring:file-tracker",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm - gnome-keyring:transaction",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::rpc-layer - gnome-keyring:initialize",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::wrap-layer - gnome-keyring:create-credential",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::wrap-layer - gnome-keyring:init-pin",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::wrap-layer - gnome-keyring:login-auto",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::wrap-layer - gnome-keyring:login-hints",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::wrap-layer - gnome-keyring:login-keyring",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::wrap-layer - gnome-keyring:login-specific",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::wrap-layer - gnome-keyring:login-user",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::wrap-layer - gnome-keyring:set-pin",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::gnome2-store - gnome-keyring:gnome2-file",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::gnome2-store - gnome-keyring:gnome2-storage",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::gnome2-store - gnome-keyring:gnome2-private-key",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::gnome2-store - gnome-keyring:import",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::secret-store - gnome-keyring:secret-compat",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::secret-store - gnome-keyring:secret-fields",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::secret-store - gnome-keyring:secret-data",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::secret-store - gnome-keyring:secret-object",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::secret-store - gnome-keyring:secret-collection",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::secret-store - gnome-keyring:secret-item",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::secret-store - gnome-keyring:secret-schema",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::secret-store - gnome-keyring:secret-search",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::secret-store - gnome-keyring:secret-textual",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::secret-store - gnome-keyring:secret-binary",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::ssh-store - gnome-keyring:ssh-openssh",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::ssh-store - gnome-keyring:private-key",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::xdg-store - gnome-keyring:xdg-module",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm::xdg-store - gnome-keyring:xdg-trust",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkr-daemon-dbus - gnome-keyring:dbus-util",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkm - gnome-keyring:timer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkr-daemon - gnome-keyring:startup",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gkr-daemon - gnome-keyring:shutdown",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "pam - gnome-keyring:test-pam",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "fixture_original_programs": [
+      {
+        "name": "dbus-search",
+        "exit": 0,
+        "result": "OK",
+        "returncode": 0,
+        "log_sha256": "4e8e523940f07f4285204dcba84572aab05b06f2f6339f049ef8f6e6655ae390",
+        "record_sha256": "18c8f761e6d4888b03835e4a40fa42c010d51345d179f873dcb640c41a0ca4b5"
+      },
+      {
+        "name": "dbus-items",
+        "exit": 0,
+        "result": "OK",
+        "returncode": 0,
+        "log_sha256": "47f8aa3dcb7a85858a5cc60439f84f0c140e6c3a4c4859d3e530705cc1611490",
+        "record_sha256": "7c9833a2c9e00f0eddb5148268dbee9b75f6777f50749455679c6ac907a70938"
+      },
+      {
+        "name": "dbus-signals",
+        "exit": 0,
+        "result": "OK",
+        "returncode": 0,
+        "log_sha256": "1926dc0fad02d0ffaa50a8d15d5614c0a8a708421d32b91e7cafeab8a696d42a",
+        "record_sha256": "9c9bdca5e4121300e4f0ce932ed2bc2a56c0fd3968ea7a87d036dae9b6a031c5"
+      },
+      {
+        "name": "dbus-lock",
+        "exit": 0,
+        "result": "OK",
+        "returncode": 0,
+        "log_sha256": "4630ec131d7fb7597476394f9bfd864098143475ea3fce4c8ac2c3fba472c77d",
+        "record_sha256": "afc1074c6acd9dc0a1645c42dcb1390c5c5ab2e31f5fc54ef2d99ba2d6e0db72"
+      },
+      {
+        "name": "dbus-portal",
+        "exit": 0,
+        "result": "OK",
+        "returncode": 0,
+        "log_sha256": "214b15a64fdd5a91578175cd97098be9915e89de5c7d5c84a96c3553bf14309b",
+        "record_sha256": "4b635e54d35590b48750733aeaa1d8cc095429538899827d3f6e9c3bb837cea2"
+      }
+    ],
+    "private_fixture_daemon_sha256": "3b60bccf4702b25a55e04beda03374021804fcf2fc1bc910e815ba8190b50931",
+    "production_debug_mode": false,
+    "fixture_debug_only": true,
+    "consumer": {
+      "version": "50.0",
+      "daemon_version_exit": 0,
+      "production_test_hooks_disabled": true,
+      "PAM_loaded_exports": [
+        "pam_sm_authenticate",
+        "pam_sm_setcred",
+        "pam_sm_open_session",
+        "pam_sm_close_session",
+        "pam_sm_chauthtok"
+      ],
+      "scope": "CLI/PAM load only; actual backend/PAM login/graphical acceptance pending, no policy enabled or real credentials used"
+    },
+    "stage_sha256_count": 113,
+    "stage_sha256_manifest_sha256": "cfc56f408a7869cfcbf10354b9349f70270b56fdb900a6848e4d6528d923007d",
+    "unchanged_production_elfs_count": 332,
+    "unchanged_production_elfs_manifest_sha256": "d1df8be158f403fa86969a249dbb624a858589ecda0a211f08fbe6b781eceff7"
+  },
+  "transaction": {
+    "step": "b02-gnome-keyring-install",
+    "started": "2026-11-09T19:26:30.250098+00:00",
+    "recipe_sha256": "c13358e7885b5e7f377de4330953f1c3440701fa6f789b4dcfff6218aa77ac02",
+    "postcheck_sha256": "48773de6e48e911d15bd627f0df37d1d73ae66f2aa654489e3484d6563deb0d4",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "ef88ae77312c793c6998f09c2323ed12ff03565edb5a939792506b91cb2e1944",
+    "recipe_pid": 42418,
+    "recipe_pgid": 42418,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T19:26:46.921805+00:00",
+    "changed_paths": 129,
+    "log_sha256": "f387c6b4ff0041232c8430bc8ee902fc344ade4b9e6812df0f11c44299b8387e",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "ddc30d1255ef9965955923bddf05d33082707d57684c928bd1f97a64c1025354"
+  },
+  "timing": {
+    "step": "b02-gnome-keyring-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.674,
+        "entries": 151656,
+        "regular_files": 135258,
+        "regular_bytes": 7152330040
+      },
+      {
+        "seconds": 13.739,
+        "entries": 151782,
+        "regular_files": 135378,
+        "regular_bytes": 7157687799
+      }
+    ],
+    "total_seconds": 32.355
+  },
+  "installed_consumer": {
+    "scope": "Installed production CLI/PAM loader/package audit only; actual native PAM/GNOME/GUI and shared schema cache integration pending",
+    "consumer": {
+      "version": "50.0",
+      "daemon_version_exit": 0,
+      "production_test_hooks_disabled": true,
+      "PAM_loaded_exports": [
+        "pam_sm_authenticate",
+        "pam_sm_setcred",
+        "pam_sm_open_session",
+        "pam_sm_close_session",
+        "pam_sm_chauthtok"
+      ],
+      "scope": "CLI/PAM load only; actual backend/PAM login/graphical acceptance pending, no policy enabled or real credentials used"
+    },
+    "PAM_policy_changed": false
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gnome-keyring-install-evidence.tar.gz",
+    "sha256": "e3e6d262c74f8eddfc8933ba2f47521c667ff337843d9b60b7275fe569721922",
+    "members": [
+      "build/b02-gnome-keyring-install.log",
+      "build/b02-gnome-keyring-install.manifest.json",
+      "build/b02-gnome-keyring-install.success.json",
+      "phase2/b02-gnome-keyring-install-controller.log",
+      "phase2/b02-gnome-keyring-install-timing.json",
+      "phase2/gnome-keyring-1-controller.log",
+      "phase2/gnome-keyring-1.exit",
+      "phase2/gnome-keyring-1.job.json",
+      "phase2/gnome-keyring-1.log",
+      "phase2/gnome-keyring-backend-4-controller.log",
+      "phase2/gnome-keyring-backend-4.exit",
+      "phase2/gnome-keyring-backend-4.job.json",
+      "phase2/gnome-keyring-backend-4.log",
+      "phase2/gnome-keyring-fixtures-2-controller.log",
+      "phase2/gnome-keyring-fixtures-2.exit",
+      "phase2/gnome-keyring-fixtures-2.job.json",
+      "phase2/gnome-keyring-fixtures-2.log",
+      "phase2/gnome-keyring-installed-consumer.json",
+      "phase2/gnome-keyring-stage-3-controller.log",
+      "phase2/gnome-keyring-stage-3.exit",
+      "phase2/gnome-keyring-stage-3.job.json",
+      "phase2/gnome-keyring-stage-3.log",
+      "phase2/gnome-keyring-stage.json",
+      "work/compile/meson-logs/testlog.json",
+      "work/fixture-2-dbus-items.json",
+      "work/fixture-2-dbus-items.log",
+      "work/fixture-2-dbus-lock.json",
+      "work/fixture-2-dbus-lock.log",
+      "work/fixture-2-dbus-portal.json",
+      "work/fixture-2-dbus-portal.log",
+      "work/fixture-2-dbus-search.json",
+      "work/fixture-2-dbus-search.log",
+      "work/fixture-2-dbus-signals.json",
+      "work/fixture-2-dbus-signals.log",
+      "work/fixture-results-2.json",
+      "work/native-consumer-3.exit",
+      "work/native-consumer.json",
+      "work/original-tests.log",
+      "work/production-backend-4.json",
+      "work/production-elfs-before-fixtures-2.json",
+      "work/production-stage-3.exit",
+      "work/production-testlog-before-fixtures-2.json",
+      "work/stage-results.json"
+    ]
+  },
+  "production_backend": {
+    "scope": "Actual production Keyring/SecretTool/store/lock/wrong-master/Stop/persistence on isolated unprivileged builder kernel; synthetic private data only, NOT native GNOME/PAM/graphical acceptance",
+    "kernel": "6.8.0-147-generic",
+    "uid": 101,
+    "production_test_hooks_disabled": true,
+    "no_mock_environment_supplied": true,
+    "daemon_sha256": "786c74afae7602bd39a6fd58bd94472695cbbc0a000b280ea80f90445ca91c64",
+    "runs": [
+      {
+        "name": "production-create-store-and-real-client-lookup",
+        "passed": true
+      },
+      {
+        "name": "real-storage-nonplaintext-and-private-keyring-mode",
+        "passed": true,
+        "keyring_files": 1
+      },
+      {
+        "name": "lock-and-actual-secret-read-refused",
+        "passed": true
+      },
+      {
+        "name": "stop-removes-real-service-owner",
+        "passed": true
+      },
+      {
+        "name": "wrong-master-on-restart-remains-locked",
+        "passed": true
+      },
+      {
+        "name": "correct-master-restart-persistence-and-new-owner",
+        "passed": true
+      }
+    ],
+    "distinct_bus_owners": [
+      ":1.1",
+      ":1.4",
+      ":1.5"
+    ],
+    "daemon_output_digests_only": [
+      {
+        "stdout_sha256": "ac0c5309e0d5c0bfa0c9c8a5ed86403169f8aca2b284941394ec47f90994eb19",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exit": 0
+      },
+      {
+        "stdout_sha256": "ad3f054656f1a668c06143f2eb4cf8005e3bff6b8cb9a04e23279e4518f92408",
+        "stderr_sha256": "438d8a32b448832d8873908e30794b67da15d18695d0442a02a5b25a70704205",
+        "exit": 0
+      },
+      {
+        "stdout_sha256": "80f7784046c70e1f17354a1baae3a137f70346b26f2c128505400b5201eac4ac",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exit": 0
+      }
+    ],
+    "private_test_data_removed": true,
+    "credential_values_or_ciphertext_retained": false
+  }
+}

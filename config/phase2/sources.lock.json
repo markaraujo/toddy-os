@@ -2004,6 +2004,18 @@
       "book_md5": "a95119f402dfa0166c9dd1237239085c",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "gcr3",
+      "version": "3.41.2",
+      "filename": "gcr-3.41.2.tar.xz",
+      "url": "https://download.gnome.org/sources/gcr/3.41/gcr-3.41.2.tar.xz",
+      "sha256": "bad10f3c553a0e1854649ab59c5b2434da22ca1a54ae6138f1f53961567e1ab7",
+      "reference": "BLFS13.1-systemd gnome/gcr.html",
+      "book_page_sha256": "ed85dac3bfba37b74ccd4a0e3d71f19425db398b9058b10fd18a5b8c0c8191a4",
+      "book_md5": "40a754ba44d5e95e4d07656d6302900c",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

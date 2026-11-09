@@ -68,7 +68,7 @@ fi
 readonly_bind "$TODDY_INPUT" "$root/src"
 # One upstream Gcr test chmods this public encrypted sample before deriving its
 # public key. Map only a byte-identical private worker copy; source stays RO.
-if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/gcr-4.4.0.1 ]]; then
+if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/gcr-4.4.0.1 || $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/gcr-3.41.2 || $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/gcr-3.41.2-ssh-agent-1 ]]; then
     sample="$TODDY_INPUT/gcr/fixtures/pem-rsa-enc.key"
     expected=55b32dbd31618e5e949be919fb42ed7ca519f8e4ad5b352c9136ab7202e6ef4e
     [[ ! -L $sample && $(sha256sum "$sample" | cut -d' ' -f1) == "$expected" ]]

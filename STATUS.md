@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-09T18:07:06.927737+00:00
+Updated: 2026-11-09T19:27:50.732304+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T18:07:06.927737+00:00
+Last verified: 2026-11-09T18:38:05.745458+00:00
 
 Verified:
 
@@ -97,8 +97,9 @@ Verified:
 - libtasn1 4.21.0 owned/install/post0/0 changed67paths;40original programs/no skips,111ELFs retained. Installed strict DER typed roundtrip/truncation refusal/two recovery cycles and SDK/APT0. New guarded virtual free-block generation completed/root151017+pending1697entries unchanged, host observed+5.93GB, no old custody/trim replay.
 - p11-kit0.26.5 owned/install/post0/0;67original programs,1077observed TAP passes/two nested skips retained,334ELFs retained. Installed typed URI/refusal/two-cycle recovery/SDK/APT0; no real credentials/server/root-store acceptance. Gcr4.4.0.1 compiled,38original programs passed; askpass keygen fixture needs qualified same-book private ssh-keygen SDK.
 - Gcr4.4.0.1-1+toddy1 owned339paths.38original programs plus three repaired original askpass cases passed;203ELFs unchanged, private byte-identical RW sample only/source unchanged, qualified private OpenSSH10.5p1 SDK119cases. Actual installed transport/refusal/two-cycle recovery/GI/SDK/APT0. Install0/post1 own Gck pkg-config-version assertion corrected verify-only0/0, owned payload/archive unchanged, sole generated APT cache change. No graphical prompt/keyring/real credential acceptance.
+- libsecret0.21.7 owned/install/post0/0 changed100paths:22original programs/no nested skips,69ELFs retained, installed binary/schema/refusal/lifecycle/GI/SDK/APT0. Actual Keyring/PAM/provider/graphical gate pending. Keyring50requires frozen Gcr3 C ABI alongside owned Gcr4; exact optional-feature Meson correction/new input/work, original failed configure/source retained.
 
-Running: No guest writer. Next native libsecret0.21.7 build/original fixtures/API, then GNOME keyring/EDS/NSS and remaining Shell/GDM dependencies. Shared cache/root trust/browser/desktop acceptance pending. Complete ALL B02 then stop.
+Running: Gcr3.41.2 isolated variant jobgcr3-patched-2; core originals/API selected, legacy GTK3 UI pending actual native display. Preserve Gcr4 and all qualified inputs. Complete ALL B02 then stop.
 
 Remaining:
 

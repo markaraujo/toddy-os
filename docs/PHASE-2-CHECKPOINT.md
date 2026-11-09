@@ -79,12 +79,43 @@ unchanged, installed actual transport/GI/SDK/APT0. Sole changed root path is
 Private SDK handoff`gcr-askpass-prepare-1.json` COMPLETE; no replay.
 Exact-input private fixture mount changes no original source bytes/mode.
 
-Current writer: none. Exact next: read frozen libsecret0.21.7 source/options;
-prepare native libgcrypt/GI profile (optional Vala/docs/TPM/PAM omitted), run
-original private-bus fixtures and actual API/refusal/recovery. Then controlled
-owned promotion; actual GNOME keyring remains required runtime integration,
-not satisfied by library fixtures. Preserve one guest writer and source guards.
-No new B story; finish ALL B02 then stop.
+libsecret0.21.7-1+toddy1 OWNED/install/post0/0 changed100paths,22original
+programs/no nested skips,69ELFs retained, installed binary/schema/refusal/lifecycle/
+GI/SDK/APT0. [Proof](evidence/B02-libsecret-install.json). No real Keyring/provider/
+PAM/graphical acceptance, no optional TPM/PAM enabled. NEVER replay completed steps.
+
+Gcr3.41.2-1+toddy1 OWNED/install/post0/0 changed219paths,43original core
+programs passed/no nested skips,261ELFs retained. Installed C crypto transport/
+refusal/recovery/SDK/APT0; all339Gcr4payload entries/archive unchanged.
+[Proof](evidence/B02-gcr3-install.json). No original automated UI programs registered;
+native GTK3 prompt/viewer and shared PGP schema union remain pending. Frozen
+Keyring50requires Gcr3/Gck1 alongside Gcr4/Gck2, no downgrade. Original failed
+optional SSH-agent setup retained; sole build-only Meson guard correction in new
+679entry authenticated input, receipt`gcr3-patched-input-1.json` COMPLETE. NEVER
+repeat preparation/build/tests/install. ADR0159 and source patch manifest apply.
+
+GNOME Keyring50production staged with debug-mode=false/test hooks disabled.
+57original production programs passed; five original D-Bus fixture timeouts
+retained (they require WITH_DEBUG-only custom-name/login/prompter hooks).
+Separate private fixture-debug build passed ONLY those five originals, never
+staged. All332production ELFs unchanged; production stage3/CLI/PAM loader0.
+Actual production backend job`gnome-keyring-backend-4` exit0: six store/client-read/
+nonplaintext-private-storage/lock-read-refusal/Stop/wrong-master/restart-persistence
+outcomes, three distinct bus owners, ephemeral private data removed. Builder
+kernel6.8.0-147-generic, NOT native GNOME/PAM/GUI proof. No real credential retained.
+NEVER replay original programs, private fixtures, stage or backend test unchanged.
+
+GNOME Keyring50.0-1+toddy1 OWNED, controlled install/post0/0 changed129paths,
+installed production CLI/PAM module loader/package audit0. Parent PAM policy
+unchanged. [Proof](evidence/B02-gnome-keyring-install.json), ADR0160.
+Current writer: none. Last actual transaction
+`/var/log/toddy/build/b02-gnome-keyring-install.success.json` and controller
+`/var/log/toddy/phase2/b02-gnome-keyring-install-controller.log` finished0/0.
+NEVER replay successful build/private fixtures/backend/stage/install. Exact next:
+commit this credential-library slice after focused repository checks, then prepare
+native Keyring/PAM integration or eligible EDS/NSS/GNOME dependencies; measure
+capacity first. Shared schemas, Systemd hwdb and trust-store integration remain
+separate controlled gates before actual desktop acceptance.
 
 Then libsecret/EDS/rest of GNOME; make-ca/NSS/root-store and shared hwdb/
 schema unions still pending before real GNOME/GDM/apps/native GUI/focus/offline/
@@ -145,3 +176,11 @@ reviewed, full-history scanner0. No broad suppression or credential exception.
 Later native changes need regular push/portal verification. No release claim.
 No host installation/physical disks/global security weakening/paid services/new agents
 or model changes/workstation RAG. Finish B02 before honoring the requested stop.
+
+Latest pushd0e5d10 CI failed before jobs; Pages annotation explicitly GitHub
+Internal server error, correlation8e741ad9-f239-4c0e-ac2d-e760958513df. Original
+runs safety42671355103/planning42671355099/Pages42671355159 have zero jobs/logs.
+ONE unchanged retry batch requested and recorded in persistent failure ledger;
+never rerun again unchanged. Inspect actual retry outcome; if backend failure
+persists, keep publication pending and continue eligible local B02 work. No
+billing/settings change or user action required for this transient diagnosis.

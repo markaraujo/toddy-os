@@ -1,0 +1,11 @@
+{
+  "source_version": "3.41.2",
+  "source_sha256": "bad10f3c553a0e1854649ab59c5b2434da22ca1a54ae6138f1f53961567e1ab7",
+  "patch_file": "scripts/build/phase2/patches/gcr-3.41.2-optional-ssh-agent-1.patch",
+  "patch_sha256": "0ccfc04b78522c92f12eab1279803ea8a75a6122101e0b620e554615b94d48f8",
+  "path": "meson.build",
+  "before_sha256": "f6488b973b78463497b7cc110e7cd363702b08126537957e3b2a87594d1edb6a",
+  "after_sha256": "c835a28460317ff04641eec135b2da8bc91e4d47cb0c9f1effec96e4fa91582f",
+  "scope": "Only query SSH agent program paths when upstream ssh_agent feature is enabled; no C/API/crypto code, dependency versions or active-feature behavior change",
+  "source_reference": "Frozen Gcr3 meson.build53-56 unconditionally queries optional missing program path; frozen Gcr4 already guards program lookup by same upstream feature option"
+}

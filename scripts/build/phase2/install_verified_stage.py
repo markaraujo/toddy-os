@@ -19,6 +19,9 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gnome-keyring': ('50.0', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gcr3 (= 3.41.2-1+toddy1), libgcrypt (>= 1.12.4-1), p11-kit (= 0.26.5-1+toddy1), linux-pam (= 1.7.2-1+toddy2), libsecret (= 0.21.7-1+toddy1)', 'gnome-keyring-50.0.tar.xz', 'usr/bin/gnome-keyring-daemon'),
+    'gcr3': ('3.41.2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gtk3 (>= 3.24.52-1+toddy1), p11-kit (= 0.26.5-1+toddy1), libgcrypt (>= 1.12.4-1), gnupg (>= 2.5.24-1)', 'gcr-3.41.2.tar.xz', 'usr/lib/pkgconfig/gcr-base-3.pc'),
+    'libsecret': ('0.21.7', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libgcrypt (>= 1.12.4-1)', 'libsecret-0.21.7.tar.xz', 'usr/lib/pkgconfig/libsecret-1.pc'),
     'gcr': ('4.4.0.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy4), p11-kit (= 0.26.5-1+toddy1), libgcrypt (>= 1.12.4-1), gnupg (>= 2.5.24-1)', 'gcr-4.4.0.1.tar.xz', 'usr/lib/pkgconfig/gcr-4.pc'),
     'p11-kit': ('0.26.5', 'glibc (>= 2.44-1+toddy1), libffi (>= 3.8.0-1), libtasn1 (= 4.21.0-1+toddy1)', 'p11-kit-0.26.5.tar.xz', 'usr/lib/pkgconfig/p11-kit-1.pc'),
     'libtasn1': ('4.21.0', 'glibc (>= 2.44-1+toddy1)', 'libtasn1-4.21.0.tar.gz', 'usr/lib/pkgconfig/libtasn1.pc'),
@@ -216,6 +219,8 @@ if __name__ == '__main__':
     if name=='mozjs':qualifier='mozjs-signal-check-4'
     if name=='json-c' and (log/'json-c-finish-3.exit').exists():qualifier='json-c-finish-3'
     if name=='polkit':qualifier='polkit-full-1'
+    if name=='gcr3':qualifier='gcr3-patched-2'
+    if name=='gnome-keyring':qualifier='gnome-keyring-backend-4'
     if name=='gcr':qualifier='gcr-finish-4'
     if name=='upower':qualifier='upower-consumer-4'
     if name=='accountsservice':qualifier='accountsservice-locale-5'
@@ -1133,6 +1138,15 @@ if __name__ == '__main__':
     if name=='polkit':
         from qualify_polkit import qualify as qualify_polkit
         qualify_polkit(ROOT)
+    if name=='gnome-keyring':
+        from qualify_gnome_keyring import qualify as qualify_gnome_keyring
+        qualify_gnome_keyring(ROOT)
+    if name=='gcr3':
+        from qualify_gcr3 import qualify as qualify_gcr3
+        qualify_gcr3(ROOT)
+    if name=='libsecret':
+        from qualify_libsecret import qualify as qualify_libsecret
+        qualify_libsecret(ROOT)
     if name=='gcr':
         from qualify_gcr import qualify as qualify_gcr
         qualify_gcr(ROOT)
@@ -1181,6 +1195,7 @@ if __name__ == '__main__':
         qualify(ROOT,log)
     assert name==sys.argv[1], 'Package identity changed during qualification'
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
+    if name=='gcr3':source=Path('/mnt/lfs/sources/phase2/work/gcr3-patched-1/stage')
     if name=='polkit':source=Path('/mnt/lfs/sources/phase2/work/polkit-full-1/stage')
     if name=='dconf':source=Path('/mnt/lfs/sources/phase2/work/dconf-vendored-1/stage')
     if name=='mozjs':source=Path('/mnt/lfs/sources/phase2/work/mozjs-security-1/stage')
@@ -1257,6 +1272,14 @@ if __name__ == '__main__':
         for patch in patches['patches']:shutil.copy2(ROOT/patch['file'],doc/'patches'/Path(patch['file']).name)
         (doc/'security-backports.json').write_text(json.dumps(patches,indent=2)+'\n')
         (doc/'README.Toddy').write_text('Frozen Linux-PAM1.7.2 with nine ordered ADR0126 upstream security backports. Original77unit drivers and native7.1.8 real yescrypt/helper/refusal/lock/recovery7cases passed. Generic other policy denies all four management groups. Optional userdb/NIS/SELinux/audit/libeconf disabled. Shadow, pam_systemd, authenticated session boot and GDM integration remain separate gates. No existing account or password is changed.\n')
+    if name=='gcr3':
+        doc=destination/'usr/share/doc/gcr3';(doc/'patches').mkdir(parents=True)
+        patch=json.loads((ROOT/'config/phase2/gcr3-patches.lock.json').read_text());shutil.copy2(ROOT/patch['patch_file'],doc/'patches'/Path(patch['patch_file']).name)
+        (doc/'source-patch.json').write_text(json.dumps(patch,indent=2)+'\n')
+        (doc/'README.Toddy').write_text('Frozen3.41.2 C/GTK3 compatibility ABI for GNOME Keyring50, alongside unchanged Gcr4/Gck2. One build-only Meson guard honors disabled SSH agent; no C/crypto changes.43original core programs/native transport/refusal/recovery qualified. Legacy GIR/Vala/docs/SSH-agent omitted. GTK3 native graphical prompt/viewer and shared PGP schema union remain separate gates. Private keygen test SDK never shipped. See source-patch.json and ADR0159.\n')
+    if name=='gnome-keyring':
+        doc=destination/'usr/share/doc/gnome-keyring';doc.mkdir(parents=True,exist_ok=True)
+        (doc/'README.Toddy').write_text('Frozen50.0 production debug-mode=false: test-only service/login/prompter hooks disabled.57original production programs and five original private debug-only fixture programs qualified separately; fixture daemon never shipped. Actual production Secret Service store/read/lock/wrong-master/Stop/restart persistence qualified with ephemeral synthetic data. PAM module loads, but no PAM login policy is enabled by this package. Actual native PAM/GNOME/graphical and shared schema integration remain separate gates. Optional SSH agent/libcap-ng/SELinux omitted via supported options. Book schema path correction preserved in source preparation receipt.\n')
     archives=[archive]
     if name=='dconf':archives.append('gvdb-4758f6fb7f889e074e13df3f914328f3eecb1fd3.tar.gz')
     if name=='mozjs':archives.append('spidermonkey-140.14.0-python_3.14_fixes-1.patch')
