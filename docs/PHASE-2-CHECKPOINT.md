@@ -22,12 +22,29 @@ archive reconciled, verify-only `b02-polkit-verify-2` recipe/post0/0 changed_pat
 Installed private parser13cases/9NULL-error controls, metadata/CLI/APT0. [Install](evidence/B02-polkit-install.json).
 NEVER reinstall/rebuild/replay these steps or completed native tests.
 
-Exact next: AccountsService26.27.3 required for GDM. Official source frozen/cache
-and `.local/phase2/accountsservice-source.json`; no guest input/build yet. Inspect
-bundled test dependency wrap (mocklibc1.0 plus exact SHA-locked Meson zip/diff) and
-source basename version generator. Build from private correctly named tarball copy
-inside isolated worker; no fake VCS, moving revision or compiler network. Qualify
-original tests and real account/privilege behavior before owned runtime claims.
+Exact next: clean reviewed commit, then `python3 scripts/host/phase2_native_accountsservice.py`
+once with `.local/phase2/native-accountsservice-1-controller.log`; NEW native-accountsservice-runtime-1.
+AccountsService26.27.3 staged, CLI/GI0,14original runtime programs+four repaired
+original daemon cases pass,27compiled ELFs unchanged. Synthetic input-only
+machine-id and private en_IE LOCPATH fixtures fixed actual missing-data failures;
+no system identity/locale changes. No real account/privilege/GDM acceptance yet.
+[Fixture proof](evidence/B02-accountsservice-stage.json). Native fixture94files,
+manifestSHA5742f96b2c330bb154bce093dd7d4ea8ca2f52158b7b2edd953f75128247073f,
+uses exact stage and previously qualified PAM client. ADR0156 requires actual
+passwd/shadow/peer permissions/PAM/protected-file refusal/Stop/recovery with two
+ephemeral accounts, upstream service hardening, no mock environment and no
+retained credentials. Inspect actual child/report/backing identity before any
+restart/retry. After native acceptance, controlled owned promotion still required.
+
+JSON-C0.19-1+toddy1 now OWNED/install/post0/0,64changed paths.28original programs
+covered by27reused passes plus repaired original build-only CLI case; original
+ELFs unchanged, strict UTF8/depth/refusal/recovery installed C consumer/APT0.
+[Proof](evidence/B02-json-c-install.json). Source meson.build162 requires this
+same-book selected dependency despite the book paragraph omission. No foundation
+replacement, optional CLI not installed. Known CTest text/mutable bookkeeping
+gates retained; exact successful producer+immutable per-run logs reused, never
+rerun approved tests or package operations.
+
 Then remaining B02 GNOME/GDM/apps/network/audio/offline/native GUI/focus/resources,
 then STOP before another story. No complete GNOME/login/apps or Phase2 ISO.
 
