@@ -10587,6 +10587,25 @@
       "version": "1.86.0",
       "license": "LicenseRef-gobject-introspection-per-file",
       "evidence": "Exact primary GI1.86.0 notices and unchanged GL-1.0.gir retained; declarations/typelib only, no provider or core rebuild"
+    },
+    {
+      "name": "gtksourceview",
+      "version": "5.20.0",
+      "license": "LicenseRef-gtksourceview-per-file",
+      "evidence": "Primary COPYING LGPL2.1/AUTHORS and per-file library/language notices; frozen BLFS13.1 x/gtksourceview5.html, source SHAe38bcd23f52b86eadf0fe4d8bde698e3a8ca102322b8b4cf1a51ac294a448c1b. Native compilation/data/ABI qualified only; display tests and package promotion pending.",
+      "extra_license_headers": {
+        "gtksourceview-5.20.0.tar.xz": {
+          "prefixes": [
+            "gtksourceview/",
+            "data/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".lang"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

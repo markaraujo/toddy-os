@@ -1,0 +1,51 @@
+{
+  "scope": "Native compile/data/ABI only; original26display drivers pending, no promotion/editor UI acceptance",
+  "native_build_exit": 0,
+  "stage_exit": 0,
+  "c_version_data_exit": 0,
+  "gi_version_exit": 0,
+  "upstream_tests_state": "pending_native_display",
+  "registered_tests_pending": [
+    "test-buffer",
+    "test-buffer-input-stream",
+    "test-buffer-output-stream",
+    "test-completion-words",
+    "test-encoding",
+    "test-file-loader",
+    "test-file-saver",
+    "test-iter",
+    "test-language",
+    "test-languagemanager",
+    "test-language-specs",
+    "test-mark",
+    "test-printcompositor",
+    "test-regex",
+    "test-region",
+    "test-search-context",
+    "test-snippets",
+    "test-space-drawer",
+    "test-stylescheme",
+    "test-styleschememanager",
+    "test-syntax",
+    "test-utils",
+    "test-view",
+    "test-vim-input",
+    "test-vim-state",
+    "test-vim-text-object"
+  ],
+  "compiled_elf_files_unchanged": 230,
+  "stage_regular_files_unchanged": 169,
+  "probe_recovery": "Custom probe incorrectly replaced embedded resource language search path with schemas-only filesystem directory. Restore supported default resource path, no library/original test/data changes.",
+  "original_job_exit": 134,
+  "probe_recovery_exit": 0,
+  "source": {
+    "version": "5.20.0",
+    "sha256": "e38bcd23f52b86eadf0fe4d8bde698e3a8ca102322b8b4cf1a51ac294a448c1b",
+    "reference": "BLFS13.1-systemd x/gtksourceview5.html"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gtksourceview-stage-evidence.tar.gz",
+    "members": 15,
+    "sha256": "8bfecbfb711a17904dd03337bcd92885b5b3d513d56cb725c0bf5422d297ff8b"
+  }
+}

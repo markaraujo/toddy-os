@@ -22,39 +22,49 @@ ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
 
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--context',default='native-mutter-runtime-1');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--context',default='native-mutter-runtime-1');parser.add_argument('--component',choices=['libadwaita','gtksourceview'],default='libadwaita');args=parser.parse_args()
     assert re.fullmatch(r'native-mutter-runtime-[1-9][0-9]?',args.context)
     context=ROOT/'.local/phase2'/args.context;assert not context.exists(),'Reconcile existing operation; never replay'
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
     lock=open(vm.VM/'native-boot-test.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB);boot.refuse_running_tests()
-    code=r'''from pathlib import Path
+    code='component='+repr(args.component)+'\n'+r'''from pathlib import Path
 import fcntl,hashlib,json,subprocess
 subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
 lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
-l=Path('/var/log/toddy/phase2');assert (l/'native-window-fixture-1.exit').read_text().strip()=='0'
+l=Path('/var/log/toddy/phase2')
+if component=='libadwaita':assert (l/'native-window-fixture-1.exit').read_text().strip()=='0'
+else:assert (l/'gtksourceview-probe-2.exit').read_text().strip()=='0'
 r=json.loads(Path('/var/log/toddy/build/b02-mutter-resources-install.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
-w=Path('/mnt/lfs/sources/phase2/work/libadwaita-1');s=Path('/mnt/lfs/sources/phase2/inputs/libadwaita-1.9.3');stage=json.loads((w/'stage-results.json').read_text())
-assert stage['native_build_exit']==stage['stage_exit']==stage['c_version_exit']==stage['gi_version_exit']==0
-registered=json.loads((w/'compile/meson-info/intro-tests.json').read_text());assert len(registered)==67
+version='1.9.3' if component=='libadwaita' else '5.20.0'
+w=Path('/mnt/lfs/sources/phase2/work')/(component+'-1');s=Path('/mnt/lfs/sources/phase2/inputs')/(component+'-'+version);stage=json.loads((w/'stage-results.json').read_text())
+assert stage['native_build_exit']==stage['stage_exit']==stage['gi_version_exit']==0
+assert stage['c_version_exit' if component=='libadwaita' else 'c_version_data_exit']==0
+registered=json.loads((w/'compile/meson-info/intro-tests.json').read_text());assert len(registered)==(67 if component=='libadwaita' else 26)
+binary_prefix='/build/compile/'+('tests/' if component=='libadwaita' else 'testsuite/')
 artifacts={};tests=[]
 for t in registered:
- assert t['cmd'][0].startswith('/build/compile/tests/')
+ assert t['cmd'][0].startswith(binary_prefix)
  p=w/Path(t['cmd'][0]).relative_to('/build');assert p.is_file() and not p.is_symlink()
  digest=sha(p);artifacts[str(p).removeprefix('/mnt/lfs')]=digest
  assert t['env']==registered[0]['env']
  tests.append({**{k:t[k] for k in ['name','cmd','workdir','timeout'] if k in t},'sha256':digest})
-libs=[p for p in (w/'compile/src').glob('libadwaita-1.so.*') if p.is_file() and not p.is_symlink()];assert len(libs)==1
+libdir='src' if component=='libadwaita' else 'gtksourceview'
+libpattern='libadwaita-1.so.*' if component=='libadwaita' else 'libgtksourceview-5.so.*'
+libs=[p for p in (w/'compile'/libdir).glob(libpattern) if p.is_file() and not p.is_symlink()];assert len(libs)==1
 artifacts[str(libs[0]).removeprefix('/mnt/lfs')]=sha(libs[0])
-f=Path('/mnt/lfs/sources/phase2/work/native-window-fixture-1');fixture=json.loads((f/'fixture.json').read_text());assert fixture['compile_exit']==0
-assert sha(f/'window-fixture')==fixture['binary_sha256'];artifacts[str(f/'window-fixture').removeprefix('/mnt/lfs')]=fixture['binary_sha256']
-assets={str(p.relative_to(s/'tests')):sha(p) for p in (s/'tests').rglob('*') if p.is_file() and not p.is_symlink()}
+fixture=None;fixture_source_sha=None
+if component=='libadwaita':
+ f=Path('/mnt/lfs/sources/phase2/work/native-window-fixture-1');fixture=json.loads((f/'fixture.json').read_text());assert fixture['compile_exit']==0
+ assert sha(f/'window-fixture')==fixture['binary_sha256'];artifacts[str(f/'window-fixture').removeprefix('/mnt/lfs')]=fixture['binary_sha256'];fixture_source_sha=fixture['source_sha256'];fixture=str(f/'window-fixture').removeprefix('/mnt/lfs')
+asset_dir=s/('tests' if component=='libadwaita' else 'testsuite')
+assets={str(p.relative_to(asset_dir)):sha(p) for p in asset_dir.rglob('*') if p.is_file() and not p.is_symlink()}
 assert s.stat().st_uid==0 and not s.stat().st_mode&0o022
-record={'scope':'Frozen native compositor/GTK fixture and unchanged pending67Libadwaita artifacts, no graphical acceptance yet','builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'fixture_source_sha256':fixture['source_sha256'],'fixture':str(f/'window-fixture').removeprefix('/mnt/lfs'),'tests':tests,'test_env':registered[0]['env'],'artifacts':artifacts,'source_test_assets_sha256':hashlib.sha256(json.dumps(assets,sort_keys=True).encode()).hexdigest(),'source_test_files':len(assets),'schema_cache_sha256':sha(Path('/mnt/lfs/usr/share/glib-2.0/schemas/gschemas.compiled'))}
+record={'scope':'Frozen native '+component+' original display drivers only; no full GNOME/product acceptance','component':component,'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'fixture_source_sha256':fixture_source_sha,'fixture':fixture,'tests':tests,'test_env':registered[0]['env'],'artifacts':artifacts,'source_test_assets_sha256':hashlib.sha256(json.dumps(assets,sort_keys=True).encode()).hexdigest(),'source_test_files':len(assets),'schema_cache_sha256':sha(Path('/mnt/lfs/usr/share/glib-2.0/schemas/gschemas.compiled'))}
 data=json.dumps(record,sort_keys=True).encode()+bytes([10])
-folder=Path('/mnt/lfs/sources/phase2/native-fixtures/mutter-1');folder.mkdir(mode=0o755,exist_ok=True)
+folder=Path('/mnt/lfs/sources/phase2/native-fixtures')/('mutter-1' if component=='libadwaita' else 'gtksourceview-1');folder.mkdir(mode=0o755,exist_ok=True)
 assert folder.stat().st_uid==0 and not folder.is_symlink()
 manifest=folder/'accepted.json'
 if manifest.exists():
@@ -63,14 +73,14 @@ if manifest.exists():
 else:
  with manifest.open('xb') as f:f.write(data);f.flush();__import__('os').fsync(f.fileno())
 manifest.chmod(0o444)
-print(json.dumps({'manifest':str(manifest).removeprefix('/mnt/lfs'),'manifest_sha256':hashlib.sha256(data).hexdigest(),'fixture_source_sha256':record['fixture_source_sha256'],'builder_boot_id':record['builder_boot_id'],'tests':len(record['tests']),'artifacts':len(record['artifacts']),'source_test_files':record['source_test_files']}))
+print(json.dumps({'component':component,'manifest':str(manifest).removeprefix('/mnt/lfs'),'manifest_sha256':hashlib.sha256(data).hexdigest(),'fixture_source_sha256':record['fixture_source_sha256'],'builder_boot_id':record['builder_boot_id'],'tests':len(record['tests']),'artifacts':len(record['artifacts']),'source_test_files':record['source_test_files']}))
 '''
     accepted=json.loads(subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True).stdout)
-    assert hashlib.sha256((ROOT/'scripts/build/phase2/native-gtk-window.c').read_bytes()).hexdigest()==accepted['fixture_source_sha256']
+    if args.component=='libadwaita':assert hashlib.sha256((ROOT/'scripts/build/phase2/native-gtk-window.c').read_bytes()).hexdigest()==accepted['fixture_source_sha256']
     body=(ROOT/'scripts/host/phase2-native-mutter-probe.py').read_text();suite=(ROOT/'scripts/build/phase2/native_mutter_suite.py').read_text()
     assert body.count('ACCEPTED = None')==body.count('SUITE_SOURCE = None')==1
     probe=body.replace('ACCEPTED = None','ACCEPTED = '+repr(accepted)).replace('SUITE_SOURCE = None','SUITE_SOURCE = '+repr(suite)).encode();bootstrap=compressed_payload(probe);assert bootstrap.count(b'toddy-native-glycin')==1;bootstrap=bootstrap.replace(b'toddy-native-glycin',b'toddy-native-mutter')
-    context.mkdir();state={'scope':'Native7.1.8 headless Mutter/GTK/Libadwaita only, B02 integrated desktop/G2 pending','commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'started_utc':datetime.now(timezone.utc).isoformat(),'controller_pid':os.getpid(),'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'controller_start_ticks':Path('/proc/self/stat').read_text().split()[21],'probe_sha256':hashlib.sha256(probe).hexdigest(),'payload_sha256':hashlib.sha256(bootstrap).hexdigest(),'accepted':accepted,'phase':'prepared'}
+    context.mkdir();state={'scope':'Native7.1.8 headless Mutter/'+args.component+' only, B02 integrated desktop/G2 pending','commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'started_utc':datetime.now(timezone.utc).isoformat(),'controller_pid':os.getpid(),'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'controller_start_ticks':Path('/proc/self/stat').read_text().split()[21],'probe_sha256':hashlib.sha256(probe).hexdigest(),'payload_sha256':hashlib.sha256(bootstrap).hexdigest(),'accepted':accepted,'phase':'prepared'}
     def save():
         part=context/'result.json.part';assert not part.exists();part.write_text(json.dumps(state,indent=2)+'\n');part.replace(context/'result.json');print(json.dumps({'phase':state['phase'],'context':str(context)}),flush=True)
     save()

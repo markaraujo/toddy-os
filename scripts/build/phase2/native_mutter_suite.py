@@ -16,21 +16,22 @@ def main():
     assert 'CapEff:\t0000000000000000' in Path('/proc/self/status').read_text()
     assert os.environ.get('WAYLAND_DISPLAY') and os.environ.get('DBUS_SESSION_BUS_ADDRESS')
     config=CONFIG;assert isinstance(config,dict);root=Path(config['root']);runs=[]
-    result={'scope':'Native kernel headless Mutter/Wayland, actual mapped GTK client fixture and original Libadwaita widget programs; no GDM/KMS/full GNOME/product acceptance','display':os.environ['WAYLAND_DISPLAY'],'runs':runs}
+    result={'scope':'Native kernel headless Mutter/Wayland and original '+config.get('component','libadwaita')+' display drivers; no GDM/KMS/full GNOME/product acceptance','display':os.environ['WAYLAND_DISPLAY'],'runs':runs}
     destination=root/'suite-result.json'
     def save():destination.write_text(json.dumps(result,indent=2)+'\n')
     env={**os.environ,'GDK_BACKEND':'wayland','GDK_DISABLE':'vulkan','GSETTINGS_BACKEND':'memory','GTK_A11Y':'test','NO_AT_BRIDGE':'1'}
     try:
-        r=subprocess.run([config['fixture']],cwd=root,env=env,capture_output=True,text=True,timeout=25)
-        row={'name':'native-gtk-window','exit':r.returncode,'stdout':r.stdout,'stderr':r.stderr};runs.append(row)
-        if r.returncode==0:
-            data=json.loads(r.stdout);assert data['mapped'] and data['wayland'] and data['focus_selected'] and data['clicks']==1
-            result['gtk_window']=data
-        save()
+        if config['fixture']:
+            r=subprocess.run([config['fixture']],cwd=root,env=env,capture_output=True,text=True,timeout=25)
+            row={'name':'native-gtk-window','exit':r.returncode,'stdout':r.stdout,'stderr':r.stderr};runs.append(row)
+            if r.returncode==0:
+                data=json.loads(r.stdout);assert data['mapped'] and data['wayland'] and data['focus_selected'] and data['clicks']==1
+                result['gtk_window']=data
+            save()
         deadline=time.monotonic()+300
         for index,test in enumerate(config['tests']):
-            test_env={**env,**config['test_env'],'LD_LIBRARY_PATH':'/build/compile/src:/build/stage/usr/lib'}
-            args=test['cmd'];assert args[0].startswith('/build/compile/tests/')
+            test_env={**env,**config['test_env'],'LD_LIBRARY_PATH':config.get('test_library_path','/build/compile/src:/build/stage/usr/lib')}
+            args=test['cmd'];assert args[0].startswith(config.get('test_binary_prefix','/build/compile/tests/'))
             assert sha(Path(args[0]))==test['sha256']
             try:
                 r=subprocess.run(args,cwd=test.get('workdir') or '/build/compile',env=test_env,capture_output=True,text=True,timeout=max(1,min(test['timeout'],deadline-time.monotonic())))
@@ -48,7 +49,7 @@ def main():
         result['widget_drivers_exit_zero']=sum(1 for r in runs if r['name']!='native-gtk-window' and r['exit']==0)
         result['passed_case_executions']=sum(r.get('passed_case_executions',0) for r in runs)
         result['skipped_case_executions']=sum(r.get('skipped_case_executions',0) for r in runs)
-        result['all_selected_exits_zero']=len(runs)==68 and all(r['exit']==0 for r in runs)
+        result['all_selected_exits_zero']=len(runs)==len(config['tests'])+int(bool(config['fixture'])) and all(r['exit']==0 for r in runs)
     except Exception as error:
         result['suite_error']={'type':type(error).__name__,'message':str(error)};result['all_selected_exits_zero']=False
     finally:save()

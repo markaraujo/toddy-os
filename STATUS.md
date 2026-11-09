@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T06:59:41.325814+00:00
+Last verified: 2026-11-09T07:12:08.333147+00:00
 
 Verified:
 
@@ -68,8 +68,9 @@ Verified:
 - Owned Mutter50.4-1+toddy1 and existing GTK4 schema/legal-only4.22.4-1+toddy4 upgrade0/0:624oldGTK4regular files unchanged, actual global61fixed+6relocatable schemas/39new defaults0, including pending Colord ColorHelper. No user preferences/GTK4 rebuild/GUI acceptance.
 - Actual native7.1.8/Systemd headless Mutter50.4 Wayland GTK window/action/resize/render0;67original Libadwaita drivers408cases0/no skips,69artifacts89source files unchanged. Active compositor focus and full GNOME/login/basic apps remain pending.
 - Owned Libadwaita1.9.3-1+toddy1 install/post0/0; native C/GI ABI/APT0. Original prewrite qualification selector failure retained, no rebuild or suite replay.
+- GtkSourceView5.20 frozen source compiled/staged; own data-path probe-only recovery0 preserves230ELFs169stagefiles, C/GI encoding/language/refusal0.26original drivers pending native display; not installed.
 
-Running: No writer. Next GtkSourceView5.20 dependency for basic editor; full GNOME/login/apps/network/audio/offline/security/measurements pending. Complete ALL B02 then pause.
+Running: No writer. Commit/check then fresh native-mutter-runtime-2 with --component gtksourceview for exactly26pending display drivers; no unchanged Libadwaita/GTK fixture replay. Complete ALL B02 then pause.
 
 Remaining:
 

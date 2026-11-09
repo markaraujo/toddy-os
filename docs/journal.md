@@ -2882,3 +2882,16 @@ accepted foundation/library suites reused. Full GNOME/product UI/active focus,
 login/basic apps/network/audible audio/offline/security/measurements remain pending.
 Next eligible B02 slice is pinned GtkSourceView5.20 for the basic editor.
 Owner boundary remains complete ALL B02, then stop before another story.
+
+### B02 GtkSourceView stage and affected native-display harness
+
+Frozen BLFS13.1 GtkSourceView5.20 source integrity passed before extraction.
+Isolated native compilation/stage completed. Own data probe used a schema-only
+filesystem path instead of compiled language resources; original134 retained.
+One probe-only correction passed encoding/Python-language/unknown-value refusal
+and GI;230originalELFs/169stage regular files unchanged, no rebuild/test replay.
+26original display drivers remain pending. Extend the existing disposable native
+Mutter harness to select exactly these drivers and omit the already-qualified
+Libadwaita/GTK fixture. Preserve immutable manifests, full checksums, root identity,
+one writer/noNIC/caps0 and original outcomes. Next fresh context2 then owned
+promotion only if actual native result passes. No B02 criterion marked complete.
