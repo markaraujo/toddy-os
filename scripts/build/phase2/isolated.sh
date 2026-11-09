@@ -71,7 +71,8 @@ readonly_bind "$TODDY_INPUT" "$root/src"
 # directories or the guest's general /etc. CA generation uses its separate
 # private-output profile below and cannot match this input identity.
 if [[ "$TODDY_INPUT" == /mnt/lfs/sources/phase2/inputs/glib-networking-2.80.1 ||
-      "$TODDY_INPUT" == /mnt/lfs/sources/phase2/inputs/libsoup-3.6.6 ]]; then
+      "$TODDY_INPUT" == /mnt/lfs/sources/phase2/inputs/libsoup-3.6.6 ||
+      "$TODDY_INPUT" == /mnt/lfs/sources/phase2/inputs/evolution-data-server-3.60.2 ]]; then
     python3 - <<'PY'
 import json
 from pathlib import Path

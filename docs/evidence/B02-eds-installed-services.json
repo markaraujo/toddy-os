@@ -1,0 +1,97 @@
+{
+  "scope": "Actual installed user EDS source/calendar factories, default installed schemas/private data, disk persistence across two session buses, pre-cancelled read/refusal/recovery/removal. No build module/library/schema overrides, real accounts, external route or GNOME GUI/hardware acceptance.",
+  "actual_installed_services": {
+    "scope": "Actual installed user EDS source/calendar factories, default installed schemas/private data, disk persistence across two session buses, pre-cancelled read/refusal/recovery/removal. No build module/library/schema overrides, real accounts, external route or GNOME GUI/hardware acceptance.",
+    "records": [
+      {
+        "mode": "write",
+        "exit": 0,
+        "result": {
+          "created_and_read": true,
+          "actual_disk_file_observed": true,
+          "source_uid": "system-calendar",
+          "bus_guid": "509b70d86ea41bb4b209ab1b6af24b2b"
+        },
+        "private_services_terminated_after_bus_close": []
+      },
+      {
+        "mode": "read",
+        "exit": 0,
+        "result": {
+          "persisted_after_new_bus": true,
+          "precancelled_read_refused": true,
+          "post_cancel_recovery": true,
+          "removed_and_disk_state_verified": true,
+          "source_uid": "system-calendar",
+          "bus_guid": "e9b951623ea398f5004a0ee66af24b30"
+        },
+        "private_services_terminated_after_bus_close": []
+      }
+    ],
+    "uid": 101,
+    "network_interfaces": [
+      "lo"
+    ],
+    "external_routes": 0,
+    "private_process_cleanup_verified": true,
+    "private_profile_removed": true
+  },
+  "full_root_transaction": {
+    "step": "b02-eds-installed-services",
+    "started": "2026-11-09T22:37:30.940867+00:00",
+    "recipe_sha256": "a67a90ae7568357df3b16fec8a95b4f180adc137e03fd8889fdf853f1794bb55",
+    "postcheck_sha256": "ae1464d64cc139ae507cc2d3c3eb75f1791e90c92cb42d82565c9fa8b8bae2f8",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "879bc9967a599dc000b84017876317d93fda68e41400e44c476966a38df00071",
+    "recipe_pid": 369319,
+    "recipe_pgid": 369319,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T22:37:56.555040+00:00",
+    "changed_paths": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "supporting_build_scripts_sha256": "5fe34c62aa84e2fa4534cc27a7b9fed94f519366d36f4dbd72878921e59f3564"
+  },
+  "timing": {
+    "step": "b02-eds-installed-services",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.331,
+        "entries": 154252,
+        "regular_files": 137370,
+        "regular_bytes": 7236061013
+      },
+      {
+        "seconds": 14.026,
+        "entries": 154252,
+        "regular_files": 137370,
+        "regular_bytes": 7236061013
+      }
+    ],
+    "total_seconds": 40.984
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-eds-installed-services-evidence.tar.gz",
+    "sha256": "75dc42c878bafb52abed2022c0aaf63ca5793bd721a99c7a9f3ba054273a8450",
+    "members": [
+      "build/b02-eds-installed-services.log",
+      "build/b02-eds-installed-services.manifest.json",
+      "build/b02-eds-installed-services.success.json",
+      "phase2/b02-eds-installed-services-controller.log",
+      "phase2/b02-eds-installed-services-timing.json",
+      "phase2/eds-installed-services-1.json",
+      "phase2/eds-services-read.exit",
+      "phase2/eds-services-read.stderr",
+      "phase2/eds-services-read.stdout",
+      "phase2/eds-services-write.exit",
+      "phase2/eds-services-write.stderr",
+      "phase2/eds-services-write.stdout"
+    ]
+  }
+}

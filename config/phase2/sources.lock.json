@@ -2183,6 +2183,54 @@
       "book_md5": "db615bbae5c20eb209a2cdbfe62e0fa3",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "ibus",
+      "version": "1.5.34",
+      "filename": "ibus-1.5.34.tar.gz",
+      "url": "https://github.com/ibus/ibus/archive/1.5.34/ibus-1.5.34.tar.gz",
+      "sha256": "ff8f511770844203108119727dc8686c29afb286e9cb535e0870f18d40fddbbb",
+      "reference": "BLFS13.1-systemd general/ibus.html",
+      "book_page_sha256": "ad41f2c64f8d20e4e97c9968b67de7c733d0cf60bea66fc1e91c30d08c85b724",
+      "book_md5": "7504f9c694d12e3cfe1e9e358f84c21f",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "startup-notification",
+      "version": "0.12",
+      "filename": "startup-notification-0.12.tar.gz",
+      "url": "https://www.freedesktop.org/software/startup-notification/releases/startup-notification-0.12.tar.gz",
+      "sha256": "3c391f7e930c583095045cd2d10eb73a64f085c7fde9d260f2652c7cb3cfbe4a",
+      "reference": "BLFS13.1-systemd x/startup-notification.html",
+      "book_page_sha256": "27972d9a73ff80033113ac036266cb9016b35f30f003ef4049d07037c6ce0b21",
+      "book_md5": "2cd77326d4dcaed9a5a23a1232fb38e9",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libgweather",
+      "version": "4.6.0",
+      "filename": "libgweather-4.6.0.tar.xz",
+      "url": "https://download.gnome.org/sources/libgweather/4.6/libgweather-4.6.0.tar.xz",
+      "sha256": "7f5d0e8c9685ef2ff46c2f3a57cae48d7bf3540b2d83921f889ef28e6a876788",
+      "reference": "BLFS13.1-systemd gnome/libgweather.html",
+      "book_page_sha256": "73e831e427d1e9b7916a94c26dcaf35d144f0a1eb0704a8655d5f3e464432e69",
+      "book_md5": "c52f40f2e6d6708763f15eb17ce45b97",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libnma",
+      "version": "1.10.6",
+      "filename": "libnma-1.10.6.tar.xz",
+      "url": "https://download.gnome.org/sources/libnma/1.10/libnma-1.10.6.tar.xz",
+      "sha256": "53a6fb2b190ad37c5986caed3e98bede7c3c602399ee4f93c8fc054303d76dab",
+      "reference": "BLFS13.1-systemd basicnet/libnma.html",
+      "book_page_sha256": "6d2657b3f821052d6f686184cf8657fa291c2a3cacc99000734692575e1f330f",
+      "book_md5": "71c7ce674fea1fae8f1368a7fcb6ff43",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

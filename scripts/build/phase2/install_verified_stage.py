@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'evolution-data-server': ('3.60.2', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1), glib (>= 2.88.3-1+toddy2), libsoup (= 3.6.6-1+toddy1), libical (= 4.0.5-1+toddy1), libsecret (= 0.21.7-1+toddy1), libxml2 (= 2.15.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), nss (= 3.126-1+toddy1), nspr (= 4.40-1+toddy1), sqlite (= 3.53.4-1+toddy1), icu (= 78.3-1+toddy1), gtk (>= 4.22.4-1+toddy4), gtk3 (>= 3.24.52-1+toddy1), zlib (>= 1.3.2-1), util-linux (>= 2.42.4-1)', 'evolution-data-server-3.60.2.tar.xz', 'usr/lib/pkgconfig/libecal-2.0.pc'),
     'libsoup': ('3.6.6', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), glib-networking (= 2.80.1-1+toddy1), nghttp2 (= 1.71.0-1+toddy1), libpsl (= 0.23.3-1+toddy1), sqlite (= 3.53.4-1+toddy1), zlib (>= 1.3.2-1)', 'libsoup-3.6.6.tar.xz', 'usr/lib/pkgconfig/libsoup-3.0.pc'),
     'glib-networking': ('2.80.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gnutls (= 3.8.13-1+toddy1), libproxy (= 0.5.12-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1)', 'glib-networking-2.80.1.tar.xz', 'usr/lib/gio/modules/libgiognutls.so'),
     'libproxy': ('0.5.12', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), curl (>= 8.23.0-1), duktape (= 2.7.0-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1)', 'libproxy-0.5.12.tar.gz', 'usr/lib/pkgconfig/libproxy-1.0.pc'),
@@ -237,6 +238,7 @@ if __name__ == '__main__':
     if name=='nettle':qualifier='nettle-consumer-2'
     if name=='gnutls':qualifier='gnutls-stage-5'
     if name=='glib-networking':qualifier='glib-networking-consumer-3'
+    if name=='evolution-data-server':qualifier='evolution-data-server-private-4'
     if name=='libunistring':qualifier='libunistring-consumer-2'
     if name=='gcr':qualifier='gcr-finish-4'
     if name=='upower':qualifier='upower-consumer-4'
@@ -1188,6 +1190,9 @@ if __name__ == '__main__':
     if name=='libsoup':
         from qualify_libsoup import qualify as qualify_libsoup
         qualify_libsoup(ROOT)
+    if name=='evolution-data-server':
+        from qualify_eds import qualify as qualify_eds
+        qualify_eds(ROOT)
     if name=='glib-networking':
         from qualify_glib_networking import qualify as qualify_glib_networking
         qualify_glib_networking(ROOT)

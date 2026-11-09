@@ -7,23 +7,49 @@ foundation tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Current slice and exact next action
 
-Current verified slice: owned libsoup3.6.6. No active writer.
-`b02-libsoup-install.success.json` proves recipe/post0/0,133changed paths/281owned
-entries. All35original drivers OK with22nested skips preserved:13Apache,
-eight external NTLM helper, one upstream timing/ASAN conditional.246originalELFs
-retained. Actual installed loopback HTTP client/server, pre-cancelled request
-refusal/no server dispatch, two-session recovery and SDK0. No original suite
-replay. [Evidence](evidence/B02-libsoup-install.json), ADR0166. NEVER reinstall.
+Current verified slice: owned EDS/shared schema/native installed services.
+No active writer. EDS install/post0/0 changed659paths/853owned entries, original
+101programs/799ELFs retained. GTK4 same-version schema/legal-only update to
+4.22.4-1+toddy5 install/post0/0 changed24paths,906old nonlegal entries unchanged.
+Actual76schemas/571key contracts verified; prior67/500 unchanged.
+Native `b02-eds-installed-services.success.json` recipe/post0/0, ZERO installed
+root changes. Real installed UID101 SourceRegistry/calendar factories used default
+schemas/modules/libraries, no EDS_TESTING/build overrides, private HOME/XDG and
+loopback-only net namespace. Actual event create/read/ICS-file postcondition,
+distinct new bus GUID/reopened event/pre-cancelled read/refusal/recovery/remove/
+disk postcondition all passed. Services exited after bus close without forced
+termination; private profile removed. NEVER replay native writes/tests/installs.
+[Eds proof](evidence/B02-eds-installed-services.json),
+[shared cache](evidence/B02-shared-schema-union.json), ADR0167.
 
-Exact next: prepare EDS3.60.2 source/CMake recipe/probe using now-owned libsoup,
-libical4/NSPR/NSS/libsecret/GLib/GTK. Existing host review is
-`.local/probes/eds-3.60.2-review/evolution-data-server-3.60.2`; REUSE, do not
-re-extract/reprepare from a summary. Actual CMake supports libical4 explicitly.
-No guest EDS input/work/job prepared yet. Inspect source options/dependencies,
-choose minimal supported GNOME/calendar profile, preserve native source tests,
-record slice before one isolated build. Then GNOME Shell/GDM/apps. P11 local
-trust update/recovery/NSS unified-root alias and fresh combined recipe
-qualification remain pending. Foundation/physical tests and Phase2ISO unchanged.
+Exact next: prepare IBus1.5.34 source/autotools recipe/probe for GNOME Shell
+input integration. Source frozen/cached SHAff8f511770844203108119727dc8686c29afb286e9cb535e0870f18d40fddbbb,
+existing host review`.local/probes/ibus-1.5.34-review/ibus-1.5.34` (reuse).
+No guest IBus input/work/job yet. Inspect selected source flags/data/test contracts;
+choose supported Wayland/GTK3/4/GI profile, freeze required data/tool leaves,
+prepare once and run one isolated build with private bus/display scope as needed.
+No raw physical input/device/hardware test implied. Then GNOME Shell/GDM/NM/
+libnma/libgweather/GeoClue runtime requirements and actual apps/session.
+GNOME Shell50.4 actual imports require Gdm/GWeather/IBus/Geoclue typelibs;
+Bluetooth compile-time optional, do not turn optional catalog into a G2 matrix.
+Startup-notification0.12/libgweather4.6.0/libnma1.10.6 source verified only,
+no guest builds. Libgweather requires gweather-locations2026.2/geocode-glib3.26.4
+(not frozen/built yet). No new writer, native GNOME UI or Phase2 ISO claim.
+
+Completed EDS profile: GTK3/4/SMIME/GI/original tests and SQLite storage;
+optional WebKit OAuth/GOA/weather/Kerberos/LDAP/phone/Vala/docs/examples/legacy
+BDB migration/legacy Canberra-GTK alarm sound off through supported source flags.
+All build inputs/work/jobs and failure receipts remain immutable. Do NOT execute
+old EDS preparation/compile/consumer/native recipes again. Retained sources and
+[owned EDS evidence](evidence/B02-evolution-data-server-install.json) document
+exact recovery. P11 local trust update/NSS alias and fresh combined recipe
+qualification remain pending independently; core desktop audio still mandatory.
+
+Latest verified libsoup3.6.6: install/post0/0,133changed paths/281owned entries,
+35original driver passes/22nested skips/246ELFs, installed actual HTTP/pre-cancel/
+no-dispatch/recovery0. Never replay. Publication35393668006d4b7346d50b90a695bc04f1e4805c
+planning42708429656/safety42708429724/Pages42708429837 allsuccess; exact HTTP200
+public indexSHA bad4f5bca19631af7948f1c0283967255d2cf1045664e81062360c8614948963.
 
 Prior verified slice: owned GLib-networking2.80.1/default TLS/shared GIO cache. `b02-glib-networking-install.success.json` proves recipe/post0/0,
 90changed paths/240owned entries. Shared cache now four modules; unchanged DConf
@@ -51,7 +77,7 @@ failed only ordered enumeration comparison, ZEROroot changes/no promotion stage/
 archive. Install2 compares exact917name/result maps. NEVER replay successful
 CA preparation/generation/finish/acceptance/native install or GnuTLS stage/install.
 
-Then EDS and remaining GNOME/GDM/apps/network/audio/offline/
+Then remaining GNOME/GDM/apps/network/audio/offline/
 focus/responsiveness/resources. Shared caches/trust integration below remain gates.
 
 ## Latest verified boundaries — reuse, never rebuild/reinstall/retest unchanged
@@ -108,14 +134,16 @@ focus/responsiveness/resources. Shared caches/trust integration below remain gat
 
 ## Pending shared resources and runtime gates
 
-GTK-owned gschemas.compiled needs controlled same-version union for GNOME session,
-Gcr3/Keyring/future Shell schemas. Systemd-owned hwdb.bin needs controlled update
-for two UPower rules, preserving full owned payload except declared cache/legal.
-DConf GIO module cache is tracked generated resource; future glib-networking needs
-controlled regeneration/affected GSettings/TLS checks. NSS currently keeps upstream
-bundled roots; p11-kit/make-ca/unified-root switch is UNQUALIFIED. Do not overwrite
-owned caches/providers ad hoc. EDS3.60.2/libsoup3.6.6 frozen/cached, unbuilt; EDS
-requires libsoup unconditionally. Preserve owned nghttp2 1.71.0 security overlay.
+GTK-owned gschemas.compiled now4.22.4-1+toddy5, EDS/session/keyring union qualified
+and installed76schemas/571keys, old67/500 unchanged; NEVER replay this transaction.
+Systemd-owned hwdb.bin still needs controlled update for two UPower rules,
+preserving all current261.2-1+toddy3 runtime entries except declared cache/legal.
+DConf tracked shared GIO cache already updated for three owned GLib-networking
+modules; actual installed TLS and DConf persistence passed. NEVER replay old
+single-module preparation or native GIO update. NSS still uses bundled roots;
+P11 local trust callback/update/recovery and unified-root alias remain pending.
+EDS3.60.2/libsoup3.6.6 owned and native checks passed; fresh combined qualification
+portability remains Phase2 work. Preserve nghttp2 1.71.0 security overlay.
 
 Optional Polkit socket-helper profile is PARKED after two failed corrections;
 standard SUID helper separately qualified/owned. Do not reopen unchanged socket

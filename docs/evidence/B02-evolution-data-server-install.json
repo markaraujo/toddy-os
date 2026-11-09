@@ -1,0 +1,536 @@
+{
+  "scope": "Owned EDS C/SDK/GI/calendar/source/refusal/recovery;101original private-bus/client/storage programs and799ELFs retained. Installed service activation/shared schema union/native GNOME/remote providers pending",
+  "source": {
+    "name": "evolution-data-server",
+    "version": "3.60.2",
+    "filename": "evolution-data-server-3.60.2.tar.xz",
+    "url": "https://download.gnome.org/sources/evolution-data-server/3.60/evolution-data-server-3.60.2.tar.xz",
+    "sha256": "2084dbdac396371b365d504c1ff45866ba8dca2f1252e5da1d3d9c33abdc1286",
+    "reference": "BLFS13.1-systemd gnome/evolution-data-server.html",
+    "book_page_sha256": "566661b234515ac546e0f75ff070c340057710c925e0502a8ee91924be64d4ad",
+    "book_md5": "933c4804d9d2ba99f93fc26005282a3f",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "All101original EDS/private DBus/calendar/contact/storage programs passed. Own version-variable and staged private-library discovery corrected consumer-only4; original ELFs/stage unchanged. Actual native UTF8/ICS/ESource/refusal/prior-state/recovery; installed services/schema union/GNOME/remote providers pending.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "cameltest-misc-test-camel-db",
+        "result": "PASS"
+      },
+      {
+        "name": "cameltest-misc-test-folder-thread",
+        "result": "PASS"
+      },
+      {
+        "name": "cameltest-misc-test-store-search",
+        "result": "PASS"
+      },
+      {
+        "name": "cameltest-misc-test-vee-folder",
+        "result": "PASS"
+      },
+      {
+        "name": "test-migration",
+        "result": "PASS"
+      },
+      {
+        "name": "test-ebook-add-contact",
+        "result": "PASS"
+      },
+      {
+        "name": "test-ebook-get-contact",
+        "result": "PASS"
+      },
+      {
+        "name": "test-ebook-commit-contact",
+        "result": "PASS"
+      },
+      {
+        "name": "test-ebook-remove-contact",
+        "result": "PASS"
+      },
+      {
+        "name": "test-ebook-get-required-fields",
+        "result": "PASS"
+      },
+      {
+        "name": "test-ebook-get-static-capabilities",
+        "result": "PASS"
+      },
+      {
+        "name": "test-ebook-get-supported-fields",
+        "result": "PASS"
+      },
+      {
+        "name": "test-ebook-get-supported-auth-methods",
+        "result": "PASS"
+      },
+      {
+        "name": "test-ebook-remove-contact-by-id",
+        "result": "PASS"
+      },
+      {
+        "name": "test-ebook-remove-contacts",
+        "result": "PASS"
+      },
+      {
+        "name": "test-ebook-get-book-view",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-refresh",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-add-contact",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-get-contact",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-get-contact-uids",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-modify-contact",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-remove-contact",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-remove-contact-by-uid",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-remove-contacts",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-add-and-get-sync",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-add-and-get-async",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-self",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-preserve-uid",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-photo-is-uri",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-e164-param",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-custom-summary",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-get-revision",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-write-write",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-get-view",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-uid-only-view",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-revision-view",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-view-operations",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-suppress-notifications",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-client-cursor-create",
+        "result": "PASS"
+      },
+      {
+        "name": "test-name-western",
+        "result": "PASS"
+      },
+      {
+        "name": "test-contact",
+        "result": "PASS"
+      },
+      {
+        "name": "test-contact-types",
+        "result": "PASS"
+      },
+      {
+        "name": "test-indices-updater",
+        "result": "PASS"
+      },
+      {
+        "name": "test-vcard",
+        "result": "PASS"
+      },
+      {
+        "name": "test-untyped-phones",
+        "result": "PASS"
+      },
+      {
+        "name": "test-type-param",
+        "result": "PASS"
+      },
+      {
+        "name": "test-query",
+        "result": "PASS"
+      },
+      {
+        "name": "test-phone-number",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-refresh",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-add-timezone",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-create-object",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-remove-object",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-get-object-list",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-modify-object",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-send-objects",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-receive-objects",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-bulk-methods",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-get-attachment-uris",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-get-view",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-revision-view",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-get-revision",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-client-get-free-busy",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-component",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-component-bag",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-recur",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-reminders",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-utils",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-cache-get-contact",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-cache-create-cursor",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-cache-cursor-move-by-posix",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-cache-cursor-move-by-en-US",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-cache-cursor-move-by-fr-CA",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-cache-cursor-move-by-de-DE",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-cache-cursor-set-target",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-cache-cursor-calculate",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-cache-cursor-set-sexp",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-cache-cursor-change-locale",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-cache-offline",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-cache-query",
+        "result": "PASS"
+      },
+      {
+        "name": "test-book-meta-backend",
+        "result": "PASS"
+      },
+      {
+        "name": "test-sqlite-get-contact",
+        "result": "PASS"
+      },
+      {
+        "name": "test-sqlite-create-cursor",
+        "result": "PASS"
+      },
+      {
+        "name": "test-sqlite-cursor-move-by-posix",
+        "result": "PASS"
+      },
+      {
+        "name": "test-sqlite-cursor-move-by-en-US",
+        "result": "PASS"
+      },
+      {
+        "name": "test-sqlite-cursor-move-by-fr-CA",
+        "result": "PASS"
+      },
+      {
+        "name": "test-sqlite-cursor-move-by-de-DE",
+        "result": "PASS"
+      },
+      {
+        "name": "test-sqlite-cursor-set-target",
+        "result": "PASS"
+      },
+      {
+        "name": "test-sqlite-cursor-calculate",
+        "result": "PASS"
+      },
+      {
+        "name": "test-sqlite-cursor-set-sexp",
+        "result": "PASS"
+      },
+      {
+        "name": "test-sqlite-cursor-change-locale",
+        "result": "PASS"
+      },
+      {
+        "name": "test-sqlite-query",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-backend-sexp",
+        "result": "PASS"
+      },
+      {
+        "name": "test-intervaltree",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-cache-getters",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-cache-intervals",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-cache-offline",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-cache-search",
+        "result": "PASS"
+      },
+      {
+        "name": "test-cal-meta-backend",
+        "result": "PASS"
+      },
+      {
+        "name": "e-source-registry-test",
+        "result": "PASS"
+      },
+      {
+        "name": "libedataserver-test",
+        "result": "PASS"
+      },
+      {
+        "name": "test-fixture",
+        "result": "PASS"
+      }
+    ],
+    "consumer": {
+      "UTF8_calendar_roundtrip": true,
+      "malformed_calendar_refused": true,
+      "prior_event_preserved": true,
+      "local_source_identity": true,
+      "recovery_cycles": 2,
+      "real_accounts_used": false
+    },
+    "prior_ELFs_unchanged_by_consumer_correction": true,
+    "stage_unchanged_by_consumer_correction": true,
+    "artifacts_count": 799,
+    "artifacts_manifest_sha256": "55ba4c590dac3df774a853d2a873f071c6dfa67e4bb371b20ab6f3257d522eca",
+    "stage_sha256_count": 589,
+    "stage_sha256_manifest_sha256": "cfd6c24525422aef4d7db29246e5bd49f84938ae718e4bcc396992be8aa3ea36"
+  },
+  "transaction": {
+    "step": "b02-evolution-data-server-install",
+    "started": "2026-11-09T22:21:57.466253+00:00",
+    "recipe_sha256": "84f4a1ebde0f0b1974ecb72737db1c8513c7fcf81d3d45c9ec0f293cdada5eae",
+    "postcheck_sha256": "ddb13dd92f51e76920acd0bc20cc7ef90279f2aa3e4f10c20995042359c41015",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "879bc9967a599dc000b84017876317d93fda68e41400e44c476966a38df00071",
+    "recipe_pid": 367308,
+    "recipe_pgid": 367308,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T22:22:18.524918+00:00",
+    "changed_paths": 659,
+    "log_sha256": "4b2500edce3f66d740274d57717140ee2d18c3dd549898525144a48c82ea0fa7",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "94c7812becf1024429d0f6a66bbe79ee13211c77d4321d6268aa27a136ff9b43"
+  },
+  "timing": {
+    "step": "b02-evolution-data-server-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.452,
+        "entries": 153580,
+        "regular_files": 136759,
+        "regular_bytes": 7204547369
+      },
+      {
+        "seconds": 14.022,
+        "entries": 154236,
+        "regular_files": 137354,
+        "regular_bytes": 7235712990
+      }
+    ],
+    "total_seconds": 36.548
+  },
+  "installed_consumer": {
+    "scope": "Owned installed C/SDK/GI/calendar/source/refusal/prior-state/recovery only. Original101private-bus/client/storage passes reused; shared schema union/installed service activation/native GUI/remote accounts pending.",
+    "consumer": {
+      "UTF8_calendar_roundtrip": true,
+      "malformed_calendar_refused": true,
+      "prior_event_preserved": true,
+      "local_source_identity": true,
+      "recovery_cycles": 2,
+      "real_accounts_used": false
+    },
+    "GI": {
+      "EDataServer1_2": true,
+      "ECal2_0_with_ICalGLib4": true,
+      "actual_source_and_component": true
+    },
+    "loaded_owned_private_library": true,
+    "SDK_version": "3.60.2"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-evolution-data-server-install-evidence.tar.gz",
+    "sha256": "266e221d38d4cab011499b006a1191926316a866112996a24f55d3b29f4ddf12",
+    "members": [
+      "build/b02-evolution-data-server-install.log",
+      "build/b02-evolution-data-server-install.manifest.json",
+      "build/b02-evolution-data-server-install.success.json",
+      "phase2/b02-evolution-data-server-install-controller.log",
+      "phase2/b02-evolution-data-server-install-timing.json",
+      "phase2/evolution-data-server-1-controller.log",
+      "phase2/evolution-data-server-1.exit",
+      "phase2/evolution-data-server-1.job.json",
+      "phase2/evolution-data-server-1.log",
+      "phase2/evolution-data-server-canberra-2-controller.log",
+      "phase2/evolution-data-server-canberra-2.exit",
+      "phase2/evolution-data-server-canberra-2.job.json",
+      "phase2/evolution-data-server-canberra-2.log",
+      "phase2/evolution-data-server-consumer-3-controller.log",
+      "phase2/evolution-data-server-consumer-3.exit",
+      "phase2/evolution-data-server-consumer-3.job.json",
+      "phase2/evolution-data-server-consumer-3.log",
+      "phase2/evolution-data-server-installed-consumer.json",
+      "phase2/evolution-data-server-private-4-controller.log",
+      "phase2/evolution-data-server-private-4.exit",
+      "phase2/evolution-data-server-private-4.job.json",
+      "phase2/evolution-data-server-private-4.log",
+      "phase2/evolution-data-server-stage.json",
+      "work/ELFs-before-consumer-3.json",
+      "work/compile/Testing/Temporary/LastTest.log",
+      "work/native-consumer-4.json",
+      "work/native-consumer-4.stderr",
+      "work/original-tests.log",
+      "work/original-tests.xml",
+      "work/stage-before-consumer-3.json",
+      "work/stage-results.json"
+    ]
+  }
+}

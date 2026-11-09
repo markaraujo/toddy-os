@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-09T20:23:23.851027+00:00
+Updated: 2026-11-09T22:40:16.732789+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T18:38:05.745458+00:00
+Last verified: 2026-11-09T22:37:56.555040+00:00
 
 Verified:
 
@@ -98,8 +98,16 @@ Verified:
 - p11-kit0.26.5 owned/install/post0/0;67original programs,1077observed TAP passes/two nested skips retained,334ELFs retained. Installed typed URI/refusal/two-cycle recovery/SDK/APT0; no real credentials/server/root-store acceptance. Gcr4.4.0.1 compiled,38original programs passed; askpass keygen fixture needs qualified same-book private ssh-keygen SDK.
 - Gcr4.4.0.1-1+toddy1 owned339paths.38original programs plus three repaired original askpass cases passed;203ELFs unchanged, private byte-identical RW sample only/source unchanged, qualified private OpenSSH10.5p1 SDK119cases. Actual installed transport/refusal/two-cycle recovery/GI/SDK/APT0. Install0/post1 own Gck pkg-config-version assertion corrected verify-only0/0, owned payload/archive unchanged, sole generated APT cache change. No graphical prompt/keyring/real credential acceptance.
 - libsecret0.21.7 owned/install/post0/0 changed100paths:22original programs/no nested skips,69ELFs retained, installed binary/schema/refusal/lifecycle/GI/SDK/APT0. Actual Keyring/PAM/provider/graphical gate pending. Keyring50requires frozen Gcr3 C ABI alongside owned Gcr4; exact optional-feature Meson correction/new input/work, original failed configure/source retained.
+- Owned Gcr3/Keyring50/libsecret, libical4/NSPR4.40/NSS3.126/libpsl0.23.3/Nettle4/libunistring1.4.2/libidn2 qualified; exact source/native evidence retained. Native GNOME/login/apps remain pending.
+- Actual factory trust data172anchors/121server roots installed; all9803OpenSSL package entries unchanged. Owned GnuTLS3.8.13/native default trust/refusal/recovery passed; original public-DNS failure remains unqualified.
+- Owned libproxy0.5.12 and GLib-networking2.80.1/default TLS verified. Controlled four-module GIO cache preserves DConf module/archive; actual installed GSettings persistence/new-bus/reset passed.
+- Owned libsoup3.6.6:35original driver passes/22nested skips,246ELFs retained; installed actual loopback HTTP/client-server/pre-cancel/no-dispatch/recovery/SDK0. Install/post0/0 changed133paths. No remote network/native GNOME/browser claim.
+- EDS3.60.2 owned/install/post0/0 changed659paths/853entries. Original101private-bus/calendar/contact/storage programs passed,799ELFs retained; own version/private-stage discovery corrected consumer-only4. Actual installed C/SDK/GI/UTF8/ICS/refusal/prior-state/source/recovery0. Native installed service/shared schema integration pending.
+- Strict55-input/10-owner schema union preserves67old schemas/500keys with identical paths/types/defaults/ranges; adds9schemas/71keys. Private cache proof only until controlled native owner update passes, no user preferences changed.
+- GTK4.22.4-1+toddy5 cache/legal-only install/post0/0 changed24paths,906old nonlegal entries unchanged. Actual installed default76schemas/571key contracts verified; prior67/500 unchanged, no user values or library rebuild.
+- Actual installed EDS UID101 services/private profile/two distinct buses/no external route passed create/read/disk-file/persisted event/pre-cancelled read/refusal/recovery/remove. No EDS_TESTING/build overrides; services exited/private profile removed. Native recipe/post0/0 with ZERO installed root changes; no GNOME graphical/physical acceptance.
 
-Running: Gcr3.41.2 isolated variant jobgcr3-patched-2; core originals/API selected, legacy GTK3 UI pending actual native display. Preserve Gcr4 and all qualified inputs. Complete ALL B02 then stop.
+Running: B02: EDS3.60.2/shared stock schema cache/actual installed calendar services verified; IBus and remaining GNOME runtime prerequisites next. Complete ALL B02 then stop.
 
 Remaining:
 
