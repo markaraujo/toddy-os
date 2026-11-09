@@ -2985,3 +2985,13 @@ checkpoint candidates not referenced as backings. Qualify reversible byte-exact
 gzip custody/full SHA+metadata/recovery before any retirement; active/backing/master
 artifacts excluded,100/16GiB reserves retained, no trim or completed custody replay.
 No compression or new Mozilla build started yet. Full B02 then owner stop.
+
+### B02 capacity preflight for the Mozilla branch
+
+Read-only47image metadata entries identified six explicit cold backups with no
+backing consumers. ADR0145 selects reversible byte-exact gzip representation,
+not image conversion/deletion of evidence. Actual digest-corruption refusal and
+cross-process OFD lock-denial checks passed. Full actual-source SHA256/byte-count
+roundtrip, metadata/identity/exclusivity and reserve checks remain mandatory before
+retirement. No compression started; commit/check then one uniquely recorded job.
+Active/backing/master artifacts and all guest files preserved; no trim/replay.
