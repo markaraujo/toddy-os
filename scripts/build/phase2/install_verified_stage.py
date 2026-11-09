@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'unicode-ucd': ('17.0.0', '', 'UCD-17.0.0.zip', 'usr/share/unicode/ucd/UnicodeData.txt'),
+    'vala': ('0.56.19', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gcc (>= 16.2.0-1), pkgconf (>= 2.5.1-1)', 'vala-0.56.19.tar.xz', 'usr/lib/pkgconfig/libvala-0.56.pc'),
     'evolution-data-server': ('3.60.2', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1), glib (>= 2.88.3-1+toddy2), libsoup (= 3.6.6-1+toddy1), libical (= 4.0.5-1+toddy1), libsecret (= 0.21.7-1+toddy1), libxml2 (= 2.15.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), nss (= 3.126-1+toddy1), nspr (= 4.40-1+toddy1), sqlite (= 3.53.4-1+toddy1), icu (= 78.3-1+toddy1), gtk (>= 4.22.4-1+toddy4), gtk3 (>= 3.24.52-1+toddy1), zlib (>= 1.3.2-1), util-linux (>= 2.42.4-1)', 'evolution-data-server-3.60.2.tar.xz', 'usr/lib/pkgconfig/libecal-2.0.pc'),
     'libsoup': ('3.6.6', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), glib-networking (= 2.80.1-1+toddy1), nghttp2 (= 1.71.0-1+toddy1), libpsl (= 0.23.3-1+toddy1), sqlite (= 3.53.4-1+toddy1), zlib (>= 1.3.2-1)', 'libsoup-3.6.6.tar.xz', 'usr/lib/pkgconfig/libsoup-3.0.pc'),
     'glib-networking': ('2.80.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gnutls (= 3.8.13-1+toddy1), libproxy (= 0.5.12-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1)', 'glib-networking-2.80.1.tar.xz', 'usr/lib/gio/modules/libgiognutls.so'),
@@ -239,6 +241,7 @@ if __name__ == '__main__':
     if name=='gnutls':qualifier='gnutls-stage-5'
     if name=='glib-networking':qualifier='glib-networking-consumer-3'
     if name=='evolution-data-server':qualifier='evolution-data-server-private-4'
+    if name=='vala':qualifier='vala-consumer-2'
     if name=='libunistring':qualifier='libunistring-consumer-2'
     if name=='gcr':qualifier='gcr-finish-4'
     if name=='upower':qualifier='upower-consumer-4'
@@ -1193,6 +1196,12 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='vala':
+        from qualify_vala import qualify as qualify_vala
+        qualify_vala(ROOT)
+    if name=='unicode-ucd':
+        from qualify_unicode_ucd import qualify as qualify_unicode_ucd
+        qualify_unicode_ucd(ROOT)
     if name=='glib-networking':
         from qualify_glib_networking import qualify as qualify_glib_networking
         qualify_glib_networking(ROOT)
@@ -1356,6 +1365,7 @@ if __name__ == '__main__':
         doc=destination/'usr/share/doc/gnome-keyring';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('Frozen50.0 production debug-mode=false: test-only service/login/prompter hooks disabled.57original production programs and five original private debug-only fixture programs qualified separately; fixture daemon never shipped. Actual production Secret Service store/read/lock/wrong-master/Stop/restart persistence qualified with ephemeral synthetic data. PAM module loads, but no PAM login policy is enabled by this package. Actual native PAM/GNOME/graphical and shared schema integration remain separate gates. Optional SSH agent/libcap-ng/SELinux omitted via supported options. Book schema path correction preserved in source preparation receipt.\n')
     archives=[archive]
+    if name=='unicode-ucd':archives.append('Unicode-License-3.0.txt')
     if name=='nss':archives.append('nss-standalone-1.patch')
     if name=='dconf':archives.append('gvdb-4758f6fb7f889e074e13df3f914328f3eecb1fd3.tar.gz')
     if name=='mozjs':archives.append('spidermonkey-140.14.0-python_3.14_fixes-1.patch')
@@ -1406,7 +1416,8 @@ if __name__ == '__main__':
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,
                     version+('-1+toddy2' if name=='linux-pam' else '-1+toddy1'), str(destination), *source_args,
                     '--recipe', 'scripts/build/phase2/'+name+'-install.sh',
-                    '--depends', depends, '--install', *conffiles], cwd=ROOT, check=True)
+                    '--depends', depends, '--install', *conffiles,
+                    *(['--architecture','all'] if name=='unicode-ucd' else [])], cwd=ROOT, check=True)
     if name=='glib-networking':
         from gio_network_resources import finish as finish_gio_network
         finish_gio_network()

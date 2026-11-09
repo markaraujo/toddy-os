@@ -22,19 +22,39 @@ termination; private profile removed. NEVER replay native writes/tests/installs.
 [Eds proof](evidence/B02-eds-installed-services.json),
 [shared cache](evidence/B02-shared-schema-union.json), ADR0167.
 
-Exact next: prepare IBus1.5.34 source/autotools recipe/probe for GNOME Shell
-input integration. Source frozen/cached SHAff8f511770844203108119727dc8686c29afb286e9cb535e0870f18d40fddbbb,
-existing host review`.local/probes/ibus-1.5.34-review/ibus-1.5.34` (reuse).
-No guest IBus input/work/job yet. Inspect selected source flags/data/test contracts;
-choose supported Wayland/GTK3/4/GI profile, freeze required data/tool leaves,
-prepare once and run one isolated build with private bus/display scope as needed.
-No raw physical input/device/hardware test implied. Then GNOME Shell/GDM/NM/
-libnma/libgweather/GeoClue runtime requirements and actual apps/session.
-GNOME Shell50.4 actual imports require Gdm/GWeather/IBus/Geoclue typelibs;
-Bluetooth compile-time optional, do not turn optional catalog into a G2 matrix.
-Startup-notification0.12/libgweather4.6.0/libnma1.10.6 source verified only,
-no guest builds. Libgweather requires gweather-locations2026.2/geocode-glib3.26.4
-(not frozen/built yet). No new writer, native GNOME UI or Phase2 ISO claim.
+Current verified slice: Vala/UCD prerequisites owned. No active writer.
+Vala0.56.19 install/post0/0 changed366paths/373entries;1435original passes,
+282compiledELFs/340staged files retained. Private codegen lookup corrected
+consumer-only2; original artifacts/results/stage unchanged. Actual installed
+native GObject/UTF8/signal/typed-error generation/invalid-source refusal/no binary/
+two-cycle recovery/SDK0. [Proof](evidence/B02-vala-install.json). Never reinstall.
+UCD17 architecture-all install/post0/0 changed87paths/85entries; all71data files
+preserved,40575scalar records/346blocks/PT/emoji metadata and full pinned Unicode3
+license+ReadMe verified. Static data has no executable suite; no conformance/
+glyph/input claim. [Proof](evidence/B02-unicode-ucd-install.json), ADR0168.
+Source notice preservation12tests and UCD archive3safety cases passed; tar source
+extractor unchanged. ZIP publisher signature/digest NOT claimed, SHA frozen after
+official versioned HTTPS/CRC/version verification before guest use. No replay.
+
+Exact next: implement IBus1.5.34 private-working-copy autotools recipe/probe from
+existing `.local/probes/ibus-1.5.34-review/ibus-1.5.34`; source cached/frozen.
+No guest IBus input/work/job yet. Apply frozen book schema-path/GTK-doc/autogen/
+Python3 corrections only to declared private copy; SAVE_DIST_FILES=1 NOCONFIGURE=1.
+Select GTK3/4/Wayland/GI, disable book optional GTK2/Python2/appindicator/emoji dict;
+UCD Unicode dict enabled, Vala now available. Inspect actual optional flags/tool
+requirements and test runtest contract. Private bus/core originals; display/
+uinput/locale/known xkeyboard2.48 mapping cases explicitly unqualified until
+native verification, never fake skips as passes. One writer, exact-input guards.
+Prepare input once then isolated build. Stage before native promotion; future
+GTK3 IM cache update must preserve GTK3 payload and loosen only existing GTK4
+exact GTK3 revision control pin before controlled cache update. Global stock
+schema cache now GTK4 toddy5/76schemas, do not replay prior union.
+GNOME Shell50.4 host source already reviewed: Gdm/GWeather/IBus/GeoClue required
+typelibs, NM/NMA selected networking, Bluetooth compile-time optional. Weather
+needs gweather-locations2026.2/geocode-glib3.26.4 (not frozen/built yet).
+After input prerequisites: actual GNOME/GDM/apps/offline/network/audio/focus/
+responsiveness, pending trust callback/NSS alias/shared hwdb and fresh combined
+qualification. No native GNOME UI or Phase2 ISO acceptance yet.
 
 Completed EDS profile: GTK3/4/SMIME/GI/original tests and SQLite storage;
 optional WebKit OAuth/GOA/weather/Kerberos/LDAP/phone/Vala/docs/examples/legacy

@@ -10810,6 +10810,21 @@
           ]
         }
       }
+    },
+    {
+      "name": "unicode-ucd",
+      "version": "17.0.0",
+      "license": "Unicode-3.0",
+      "evidence": "Official UCD17.0.0 ReadMe copyright/version and complete pinned UNICODE LICENSE V3; preserve both exact notices with data",
+      "extra_license_files": {
+        "UCD-17.0.0.zip": [
+          "ReadMe.txt"
+        ]
+      },
+      "plain_license_sources": [
+        "Unicode-License-3.0.txt"
+      ],
+      "runtime_inclusion": "IBus build data; final base/runtime closure must be selected explicitly"
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

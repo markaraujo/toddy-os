@@ -1,0 +1,109 @@
+{
+  "scope": "Owned architecture-all UCD17 data and full pinned Unicode3 terms; exact71files/40575scalar records/346ranges/PT+emoji metadata. No Unicode conformance/rendering/native input acceptance",
+  "source": {
+    "name": "unicode-ucd",
+    "version": "17.0.0",
+    "filename": "UCD-17.0.0.zip",
+    "url": "https://www.unicode.org/Public/17.0.0/ucd/UCD.zip",
+    "sha256": "2066d1909b2ea93916ce092da1c0ee4808ea3ef8407c94b4f14f5b7eb263d28e",
+    "reference": "BLFS13.1-systemd general/ibus.html",
+    "book_page_sha256": "ad41f2c64f8d20e4e97c9968b67de7c733d0cf60bea66fc1e91c30d08c85b724",
+    "integrity": "Official versioned HTTPS archive; all ZIP CRCs and embedded Version17.0.0 ReadMe checked; SHA256 frozen before guest use. No separate publisher checksum/signature claimed.",
+    "status": "source_verified",
+    "download_role": "Additional Unicode Character Database download"
+  },
+  "stage": {
+    "scope": "Actual UCD17data/version/Unicode scalar/field/range/Portuguese/emoji metadata and exact staged bytes only; no glyph/input/native GNOME acceptance",
+    "stage_exit": 0,
+    "original_suite": "Upstream static data has no registered executable suite; explicit actual data invariants checked",
+    "consumer": {
+      "version": "17.0.0",
+      "scalar_records": 40575,
+      "sorted_valid_scalar_fields": true,
+      "block_ranges": 346,
+      "nonoverlapping_blocks": true,
+      "Latin_Portuguese_emoji_metadata": true,
+      "UTF8_names": true,
+      "rendering_or_input_claimed": false
+    },
+    "stage_sha256_count": 71,
+    "stage_sha256_manifest_sha256": "fe461c3b56256b87781a74b1967879518e8f830260a8705a8ed3b0ba4a6b9b3d",
+    "source_manifest_count": 71,
+    "source_manifest_manifest_sha256": "c8b3e376aefdd44e6ac6616ef7e0659fdbbffc2b62a4f9a5742a2469adcd537e"
+  },
+  "transaction": {
+    "step": "b02-unicode-ucd-install",
+    "started": "2026-11-09T23:05:41.227985+00:00",
+    "recipe_sha256": "89150ceac539397eac5a6e8432a22c6c7ed637e3ada6f56b019918cfa134093d",
+    "postcheck_sha256": "7375e8d52f2fc916cb5aaacfbcff19d4189f86c8f64637a8357cc9f8f240ee48",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "668b5dbc18070ca621f746959b4527e06949b336408d147d9987375e6c77cc66",
+    "recipe_pid": 467432,
+    "recipe_pgid": 467432,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T23:06:01.919515+00:00",
+    "changed_paths": 87,
+    "log_sha256": "7e1e70e9ba1aadd51f6e3cf3ca79769f78951745b344fb65138fe97839763b48",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "fb9a2a8bd312547d3396fc59d3f038dec7ca502dead4539703eb47ce1c5bd472"
+  },
+  "timing": {
+    "step": "b02-unicode-ucd-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.396,
+        "entries": 154615,
+        "regular_files": 137716,
+        "regular_bytes": 7249864545
+      },
+      {
+        "seconds": 13.971,
+        "entries": 154699,
+        "regular_files": 137793,
+        "regular_bytes": 7291382598
+      }
+    ],
+    "total_seconds": 36.144
+  },
+  "installed_consumer": {
+    "scope": "Owned architecture-independent UCD17 data/version/40575scalar records/346block ranges/PT/emoji metadata/exact retained copyright and full Unicode3 license only; not Unicode conformance/rendering/native input acceptance.",
+    "consumer": {
+      "version": "17.0.0",
+      "scalar_records": 40575,
+      "sorted_valid_scalar_fields": true,
+      "block_ranges": 346,
+      "nonoverlapping_blocks": true,
+      "Latin_Portuguese_emoji_metadata": true,
+      "UTF8_names": true,
+      "rendering_or_input_claimed": false
+    },
+    "architecture": "all",
+    "complete_pinned_notice_material_verified": true
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-unicode-ucd-install-evidence.tar.gz",
+    "sha256": "e92805a5dd72ad5e838ba799afcd5a461348d0a67c1efc825054e0dc992e53d7",
+    "members": [
+      "build/b02-unicode-ucd-install.log",
+      "build/b02-unicode-ucd-install.manifest.json",
+      "build/b02-unicode-ucd-install.success.json",
+      "phase2/b02-unicode-ucd-install-controller.log",
+      "phase2/b02-unicode-ucd-install-timing.json",
+      "phase2/unicode-ucd-1-controller.log",
+      "phase2/unicode-ucd-1.exit",
+      "phase2/unicode-ucd-1.job.json",
+      "phase2/unicode-ucd-1.log",
+      "phase2/unicode-ucd-installed-consumer.json",
+      "phase2/unicode-ucd-stage.json",
+      "work/native-consumer.json",
+      "work/stage-results.json"
+    ]
+  }
+}

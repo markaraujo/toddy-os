@@ -2231,6 +2231,40 @@
       "book_md5": "71c7ce674fea1fae8f1368a7fcb6ff43",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "vala",
+      "version": "0.56.19",
+      "filename": "vala-0.56.19.tar.xz",
+      "url": "https://download.gnome.org/sources/vala/0.56/vala-0.56.19.tar.xz",
+      "sha256": "5ad7cbbfcc0de61b403d6797c9ef60455bfbebd8e162aec33b5b0b097adfb9d5",
+      "reference": "BLFS13.1-systemd general/vala.html",
+      "book_page_sha256": "b4433bd038a06f6d132b84dadfea141d7d39447b77d02522fc387dffc2b1c2f2",
+      "book_md5": "a2dc825de503fad703584cfb0ed50302",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "unicode-ucd",
+      "version": "17.0.0",
+      "filename": "UCD-17.0.0.zip",
+      "url": "https://www.unicode.org/Public/17.0.0/ucd/UCD.zip",
+      "sha256": "2066d1909b2ea93916ce092da1c0ee4808ea3ef8407c94b4f14f5b7eb263d28e",
+      "reference": "BLFS13.1-systemd general/ibus.html",
+      "book_page_sha256": "ad41f2c64f8d20e4e97c9968b67de7c733d0cf60bea66fc1e91c30d08c85b724",
+      "integrity": "Official versioned HTTPS archive; all ZIP CRCs and embedded Version17.0.0 ReadMe checked; SHA256 frozen before guest use. No separate publisher checksum/signature claimed.",
+      "status": "source_verified",
+      "download_role": "Additional Unicode Character Database download"
+    },
+    {
+      "name": "unicode-data-license",
+      "version": "3.0",
+      "filename": "Unicode-License-3.0.txt",
+      "url": "https://www.unicode.org/license.txt",
+      "sha256": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+      "reference": "Unicode UCD17 ReadMe copyright/terms link; exact complete UNICODE LICENSE V3 retained",
+      "integrity": "Official HTTPS complete license bytes; version marker verified and SHA256 frozen before redistribution",
+      "status": "source_verified"
     }
   ]
 }

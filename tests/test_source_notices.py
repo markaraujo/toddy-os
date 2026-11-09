@@ -50,6 +50,40 @@ class NoticeTests(unittest.TestCase):
         with zipfile.ZipFile(stream,'w') as archive:archive.writestr('../LICENSE','terms')
         with self.assertRaises(ValueError):source_notices.embedded_zip_notices(stream.getvalue(),'pip.whl')
 
+    def test_top_level_zip_and_reviewed_plain_license_are_retained(self):
+        import hashlib,json
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);(root/'sources').mkdir();(root/'config').mkdir()
+            (root/'config/component-licenses.json').write_text(json.dumps({'components':[{'name':'probe','extra_license_files':{'data.zip':['ReadMe.txt']},'plain_license_sources':['License.txt']}]}))
+            with zipfile.ZipFile(root/'sources/data.zip','w') as z:
+                z.writestr('ReadMe.txt','Original data copyright and version')
+                z.writestr('not-a-notice.txt','Not legal material')
+            (root/'sources/License.txt').write_text('Complete upstream license terms')
+            def locked(_root,name):return {'sha256':hashlib.sha256((root/'sources'/name).read_bytes()).hexdigest(),'url':'https://example.invalid/'+name}
+            with patch.object(source_notices,'locked_source',side_effect=locked):
+                source_notices.retain_source_notices(root,root,root/'stage','probe',['data.zip','License.txt'])
+            directory=root/'stage/usr/share/doc/probe/source-notices';index=json.loads((directory/'index.json').read_text())
+            retained=[(directory/n['sha256']).read_text() for row in index['sources'] for n in row['notices']]
+            self.assertEqual(retained,['Original data copyright and version','Complete upstream license terms'])
+            self.assertFalse((root/'stage/ReadMe.txt').exists())
+
+    def test_explicit_zip_readme_cannot_escape_notice_scope(self):
+        stream=io.BytesIO()
+        with zipfile.ZipFile(stream,'w') as z:z.writestr('../ReadMe.txt','copyright')
+        with self.assertRaises(ValueError):
+            source_notices.embedded_zip_notices(stream.getvalue(),'data.zip',['../ReadMe.txt'])
+
+    def test_unreviewed_plain_source_is_not_treated_as_license(self):
+        import hashlib,json
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);(root/'sources').mkdir();(root/'config').mkdir()
+            (root/'config/component-licenses.json').write_text('{"components": []}')
+            data=b'executable code is not legal text';(root/'sources/source.txt').write_bytes(data)
+            with patch.object(source_notices,'locked_source',return_value={'sha256':hashlib.sha256(data).hexdigest(),'url':'https://example.invalid/source.txt'}):
+                source_notices.retain_source_notices(root,root,root/'stage','probe',['source.txt'])
+            index=json.loads((root/'stage/usr/share/doc/probe/source-notices/index.json').read_text())
+            self.assertEqual(index['sources'][0]['notices'],[])
+
     def test_original_vendor_comment_retained_without_code(self):
         data=b'/* Description */\n/* Copyright Example. Permission is granted. */\nint executable_code;'
         notice=source_notices.leading_c_notice(data)

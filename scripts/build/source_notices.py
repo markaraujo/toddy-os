@@ -19,12 +19,12 @@ def is_notice(name):
     return named or name.name in {'FTL.TXT','GPLv2.TXT'} or (collection and not code)
 
 
-def embedded_zip_notices(data,member_name):
+def embedded_zip_notices(data,member_name,extra_files=()):
     results=[]
     with zipfile.ZipFile(io.BytesIO(data)) as archive:
         for member in archive.infolist():
             name=PurePosixPath(member.filename)
-            if member.is_dir() or not is_notice(name):continue
+            if member.is_dir() or not (is_notice(name) or member.filename in extra_files):continue
             if name.is_absolute() or '..' in name.parts or any(c in member.filename for c in '\r\n\t'):
                 raise ValueError('Unsafe embedded legal notice path')
             if member.file_size>4*1024*1024:raise ValueError('Oversized embedded legal notice')
@@ -110,11 +110,12 @@ def retain_source_notices(root,target,stage,package,filenames):
     destination=prepare_notice_destination(stage,package)
     inventory=[]
     rows=json.loads((root/'config/component-licenses.json').read_text())['components']
-    policies={};explicit={}
+    policies={};explicit={};plain=set()
     for component in rows:
         if component['name']==package:
             policies.update(component.get('extra_license_headers',{}))
             explicit.update(component.get('extra_license_files',{}))
+            plain.update(component.get('plain_license_sources',[]))
     for filename in filenames:
         row=locked_source(root,filename)
         if not row:raise ValueError('Unknown notice source')
@@ -143,5 +144,14 @@ def retain_source_notices(root,target,stage,package,filenames):
                     digest=hashlib.sha256(data).hexdigest()
                     (destination/digest).write_bytes(data)
                     result['notices'].append({'path':member.name,'sha256':digest,'size':len(data)})
+        elif zipfile.is_zipfile(source):
+            for notice,data in embedded_zip_notices(source.read_bytes(),filename,explicit.get(filename,[])):
+                (destination/notice['sha256']).write_bytes(data)
+                result['notices'].append(notice)
+        elif filename in plain:
+            if source.stat().st_size>4*1024*1024:raise ValueError('Oversized plain legal notice')
+            data=source.read_bytes();digest=hashlib.sha256(data).hexdigest()
+            (destination/digest).write_bytes(data)
+            result['notices'].append({'path':filename,'sha256':digest,'size':len(data)})
         inventory.append(result)
     (destination/'index.json').write_text(json.dumps({'sources':inventory,'scope':NOTICE_SCOPE},indent=2)+'\n')
