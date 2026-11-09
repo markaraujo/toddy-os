@@ -2590,3 +2590,12 @@ main.rs changed; stage comparison found only existing image-rs loader and config
 changed. Immutable source and original loader/config retained, Cargo.lock unchanged.
 New native candidate fixture complete; actual updated-loader color/GI tests are
 next, not accepted by compilation or prior old-loader evidence.
+
+Native4 verified actual updated-loader PNG/SVG/malformed-refusal0. Original DDS
+image/exif comparison passed, deviation2.050890625; DDS cause resolved by second
+correction. Original color driver now fails only color-link.svg, which references
+relative color.png under our private symlinked test-images root. Preserve failure;
+restore real-directory topology with every original file byte verified unchanged
+for a new native5 affected-only color run. Candidate-stage hashes and native4GI0
+reused, all original assertions/images/sandbox unchanged. Linked-directory
+behavior remains visible; do not infer native5 success before actual report.

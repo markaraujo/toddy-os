@@ -54,6 +54,8 @@ def main():
         assert REUSED_NATIVE_PROOF['kernel']==os.uname().release
         assert REUSED_NATIVE_PROOF['test_artifacts']==tests['executables']
         assert all(r['exit']==0 for r in REUSED_NATIVE_PROOF['runs'])
+        if 'candidate_stage_file_hashes' in REUSED_NATIVE_PROOF:
+            assert {k.removeprefix('stage/'):v for k,v in before.items() if k.startswith('stage/')}==REUSED_NATIVE_PROOF['candidate_stage_file_hashes']
     def no_new_privileges():
         assert os.geteuid()==101 and os.getegid()==101
         assert ctypes.CDLL(None,use_errno=True).prctl(38,1,0,0,0)==0
@@ -81,7 +83,13 @@ def main():
             runs.append({'name':'setup-integration-test-'+config.stem,'exit':r.returncode,'stdout':r.stdout,'stderr':r.stderr})
             assert r.returncode==0
         cwd=tmp/'tests';cwd.mkdir();os.chown(cwd,101,101)
-        (cwd/'test-images').symlink_to(fixture/'tests/test-images',target_is_directory=True)
+        # Upstream SVG fixtures resolve relative image URLs inside the exposed
+        # directory. A symlinked test root is not the original fixture topology.
+        shutil.copytree(fixture/'tests/test-images',cwd/'test-images',symlinks=True)
+        copied={str(p.relative_to(cwd/'test-images')):digest(p)
+                for p in (cwd/'test-images').rglob('*') if p.is_file() and not p.is_symlink()}
+        expected={k.removeprefix('tests/test-images/'):v for k,v in before.items() if k.startswith('tests/test-images/')}
+        assert copied==expected
         (cwd/'failures').mkdir();os.chown(cwd/'failures',101,101)
         native_tmp=Path('/build/compile/cargo-target/tests/tmp')
         assert not Path('/build').exists(),'Disposable native test-only path must be absent'
@@ -89,7 +97,10 @@ def main():
         env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C.UTF-8','HOME':str(tmp),'XDG_CACHE_HOME':str(tmp/'cache'),
              'GLYCIN_DATA_DIR':str(stage/'usr/share'),'GI_TYPELIB_PATH':str(stage/'usr/lib/girepository-1.0'),
              'LD_LIBRARY_PATH':str(stage/'usr/lib'),'RUST_LOG':'warn','PYTHONDONTWRITEBYTECODE':'1'}
-        commands=[] if REUSED_NATIVE_PROOF is not None and candidate is None else [('native-GI-bwrap-images',['python3','-B','-c',CONSUMER_SOURCE])]
+        reuse_gi=REUSED_NATIVE_PROOF is not None and (candidate is None or 'candidate_gi_reused' in REUSED_NATIVE_PROOF)
+        if REUSED_NATIVE_PROOF is not None and 'candidate_gi_reused' in REUSED_NATIVE_PROOF:
+            assert REUSED_NATIVE_PROOF['candidate_gi_reused']=={'name':'native-GI-bwrap-images','exit':0}
+        commands=[] if reuse_gi else [('native-GI-bwrap-images',['python3','-B','-c',CONSUMER_SOURCE])]
         for row in tests['executables']:
             if REUSED_NATIVE_PROOF is not None and row['name']!='tests':continue
             args=[str(fixture/'executables'/row['name']),'--test-threads=1','--nocapture']
@@ -118,6 +129,8 @@ def main():
                     'fixture_files_unchanged':len(before),'unsupported_extensions':tests['unsupported_extensions'],
                     'runtime_exclusions':tests['runtime_exclusions'],'config_compatibility':config_compat,
                     'reused_native_proof':REUSED_NATIVE_PROOF,'source_compatibility':candidate,
+                    'private_image_fixture':{'topology':'Real directory copy for original SVG relative URLs, every source file byte unchanged',
+                                             'files':len(copied),'manifest_sha256':hashlib.sha256(json.dumps(copied,sort_keys=True).encode()).hexdigest()},
                     'stage_file_hashes':{k.removeprefix('stage/'):v for k,v in before.items() if k.startswith('stage/')}},sort_keys=True).encode()
     assert len(raw)<=4*1024**2
     encoded=base64.b64encode(zlib.compress(raw,9)).decode();chunks=[encoded[i:i+1024] for i in range(0,len(encoded),1024)]

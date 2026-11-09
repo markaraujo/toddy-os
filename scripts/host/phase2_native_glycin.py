@@ -40,11 +40,13 @@ def compressed_payload(probe):
 
 
 def main():
-    assert sys.argv[1:] in [[],['--dds-followup'],['--dds-transport-followup'],['--dds-rebuild-followup']]
+    assert sys.argv[1:] in [[],['--dds-followup'],['--dds-transport-followup'],['--dds-rebuild-followup'],['--svg-fixture-followup']]
     followup=bool(sys.argv[1:]);previous=None;reused=None
     transport_followup=sys.argv[1:]==['--dds-transport-followup']
     rebuild_followup=sys.argv[1:]==['--dds-rebuild-followup']
-    context=ROOT/'.local/phase2'/('native-glycin-runtime-4' if rebuild_followup else 'native-glycin-runtime-3' if transport_followup else 'native-glycin-runtime-2' if followup else 'native-glycin-runtime-1')
+    fixture_followup=sys.argv[1:]==['--svg-fixture-followup']
+    candidate_followup=rebuild_followup or fixture_followup
+    context=ROOT/'.local/phase2'/('native-glycin-runtime-5' if fixture_followup else 'native-glycin-runtime-4' if rebuild_followup else 'native-glycin-runtime-3' if transport_followup else 'native-glycin-runtime-2' if followup else 'native-glycin-runtime-1')
     if followup:
         old=context.parent/'native-glycin-runtime-1'
         previous=json.loads((old/'result.json').read_text());report=json.loads((old/'native-report.json').read_text())
@@ -53,7 +55,7 @@ def main():
         container=json.loads(subprocess.check_output(['docker','inspect',previous['container_id']],text=True))[0]
         assert not container['State']['Running'] and container['State']['ExitCode']==0
         assert (container['Config'].get('Labels') or {}).get('toddy.boot-test')==previous['run_id']
-        if not rebuild_followup:assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==previous['source_identity']
+        if not candidate_followup:assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==previous['source_identity']
         failed=[r for r in report['runs'] if r['exit']!=0];assert len(failed)==1 and failed[0]['name']=='tests'
         assert 'UnknownImageFormat("image/vnd.ms-dds"' in failed[0]['stderr']
         assert '10 passed; 1 failed;' in failed[0]['stdout']
@@ -63,6 +65,24 @@ def main():
                 'runs':[{k:r[k] for k in ['name','exit']} for r in report['runs'] if r['exit']==0],
                 'original_image_driver_passed_cases':10,'original_image_driver_failed_case':'color',
                 'original_driver_failure_retained':True}
+        if fixture_followup:
+            latest=context.parent/'native-glycin-runtime-4'
+            recent=json.loads((latest/'result.json').read_text());r=json.loads((latest/'native-report.json').read_text())
+            assert recent['phase']=='native-report-recorded' and recent['backing_unchanged'] and not recent['native_selected_passed']
+            assert hashlib.sha256(json.dumps(r,sort_keys=True).encode()).hexdigest()==recent['summary']['report_sha256']
+            assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==recent['source_identity']
+            c=json.loads(subprocess.check_output(['docker','inspect',recent['container_id']],text=True))[0]
+            assert not c['State']['Running'] and c['State']['ExitCode']==0
+            assert (c['Config'].get('Labels') or {}).get('toddy.boot-test')==recent['run_id']
+            assert r['test_artifacts']==report['test_artifacts']
+            current_runs={x['name']:x for x in r['runs']}
+            assert current_runs['native-GI-bwrap-images']['exit']==0 and current_runs['tests']['exit']==101
+            failure=current_runs['tests']['stderr']
+            assert 'color.dds' in failure and 'texture_eq: false' in failure and 'color-link.svg' in failure
+            reused.update(candidate_report_sha256=recent['summary']['report_sha256'],
+                          candidate_stage_file_hashes=r['stage_file_hashes'],
+                          candidate_gi_reused={'name':'native-GI-bwrap-images','exit':0})
+            previous=recent
         if transport_followup:
             partial=context.parent/'native-glycin-runtime-2'
             partial_state=json.loads((partial/'result.json').read_text())
@@ -87,7 +107,7 @@ def main():
     assert body.count('MIME_COMPAT_SOURCE = None')==1 and body.count('REUSED_NATIVE_PROOF = None')==1
     body=body.replace('MIME_COMPAT_SOURCE = None','MIME_COMPAT_SOURCE = '+repr(compat))
     body=body.replace('REUSED_NATIVE_PROOF = None','REUSED_NATIVE_PROOF = '+repr(reused))
-    if rebuild_followup:
+    if candidate_followup:
         assert body.count("FIXTURE_NAME = 'glycin-1'")==1
         body=body.replace("FIXTURE_NAME = 'glycin-1'","FIXTURE_NAME = 'glycin-2'")
     probe=body.encode()
@@ -123,7 +143,7 @@ print(json.dumps({'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read
            'controller_start_ticks':Path('/proc/self/stat').read_text().split()[21],
            'accepted':accepted_record,'probe_sha256':hashlib.sha256(probe).hexdigest(),
            'payload_sha256':hashlib.sha256(bootstrap).hexdigest(),'phase':'prepared'}
-    if followup:state['cold_followup_of']='native-glycin-runtime-1'
+    if followup:state['cold_followup_of']='native-glycin-runtime-4' if fixture_followup else 'native-glycin-runtime-1'
     def save():
         part=context/'result.json.part';assert not part.exists()
         part.write_text(json.dumps(state,indent=2)+'\n');part.replace(context/'result.json')
