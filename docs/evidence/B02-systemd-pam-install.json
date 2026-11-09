@@ -1,0 +1,153 @@
+{
+  "scope": "Owned same-version Systemd PAM delta only; native cold boot/session gate remains pending",
+  "run": {
+    "step": "b02-systemd-pam-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T13:09:40.083050+00:00",
+    "changed_paths": 12
+  },
+  "package": {
+    "name": "systemd",
+    "version": "261.2-1+toddy3",
+    "archive_sha256": "c059a1dd232a3655da4a67f662e01932bec81d9855cd33ef4b8ca6141de96b90",
+    "installed": true
+  },
+  "controlled_change": {
+    "state": "installed-pending-native-boot",
+    "previous_version": "261.2-1+toddy2",
+    "previous_archive_sha256": "8a476a9547ac42314a94a035a718e6478e72310fce4fd0977cc0e4995a1366a2",
+    "previous_record_sha256": "fc4f4699bf8d0795f1d86ac968e31a6837a681175540e5bbe0fb4385a5c268e2",
+    "version": "261.2-1+toddy3",
+    "private_export_surface": {
+      "scope": "Same-version private ELF exported symbol/type/binding/visibility/object-size comparison only; no claim of complete semantic ABI or boot/session validation",
+      "libraries": [
+        {
+          "path": "/usr/lib/systemd/libsystemd-core-261.so",
+          "installed_sha256": "cdd211e72fb7022ad6e5bb5c43fb80426a03a6f0d5614f25edb408f19bb653bf",
+          "staged_sha256": "b7f9a0ae4097b3fabad75ad645858f4722226c4a8514d86d99954dc5624cbd43",
+          "existing_dynamic_exports": 1112,
+          "candidate_dynamic_exports": 1112,
+          "missing": [],
+          "changed_type_binding_visibility_or_object_size": {},
+          "added": []
+        },
+        {
+          "path": "/usr/lib/systemd/libsystemd-shared-261.so",
+          "installed_sha256": "e9a41a53b74be152d00d03f885794ed8c60cda7b31f2ae965fc4dcb91a7b907d",
+          "staged_sha256": "ef71f5e3799f6f7f95394b93b9f3f556b032bccde4a4c6520fcae8f30440e05b",
+          "existing_dynamic_exports": 6205,
+          "candidate_dynamic_exports": 6238,
+          "missing": [],
+          "changed_type_binding_visibility_or_object_size": {},
+          "added": [
+            "errno_to_pam_error@@SD_SHARED",
+            "pam_acquire_bus_connection@@SD_SHARED",
+            "pam_bus_data_disconnectp@@SD_SHARED",
+            "pam_cleanup_close@@SD_SHARED",
+            "pam_cleanup_free@@SD_SHARED",
+            "pam_get_bus_data@@SD_SHARED",
+            "pam_get_data_many_internal@@SD_SHARED",
+            "pam_get_item_many_internal@@SD_SHARED",
+            "pam_log_setup@@SD_SHARED",
+            "pam_prompt_graceful@@SD_SHARED",
+            "pam_putenv_assign@@SD_SHARED",
+            "pam_syslog_errno@@SD_SHARED",
+            "pam_syslog_pam_error@@SD_SHARED",
+            "sym_pam_acct_mgmt@@SD_SHARED",
+            "sym_pam_close_session@@SD_SHARED",
+            "sym_pam_end@@SD_SHARED",
+            "sym_pam_get_authtok_noverify@@SD_SHARED",
+            "sym_pam_get_authtok_verify@@SD_SHARED",
+            "sym_pam_get_data@@SD_SHARED",
+            "sym_pam_get_item@@SD_SHARED",
+            "sym_pam_get_user@@SD_SHARED",
+            "sym_pam_getenv@@SD_SHARED",
+            "sym_pam_getenvlist@@SD_SHARED",
+            "sym_pam_open_session@@SD_SHARED",
+            "sym_pam_prompt@@SD_SHARED",
+            "sym_pam_putenv@@SD_SHARED",
+            "sym_pam_set_data@@SD_SHARED",
+            "sym_pam_set_item@@SD_SHARED",
+            "sym_pam_setcred@@SD_SHARED",
+            "sym_pam_start@@SD_SHARED",
+            "sym_pam_strerror@@SD_SHARED",
+            "sym_pam_syslog@@SD_SHARED",
+            "sym_pam_vsyslog@@SD_SHARED"
+          ]
+        }
+      ],
+      "accepted_existing_export_surface": true
+    },
+    "scope": "Same-version four runtime replacements and new PAM module/user policy only; native cold boot/session/recovery still mandatory",
+    "replaced_paths": [
+      "/usr/lib/systemd/libsystemd-core-261.so",
+      "/usr/lib/systemd/libsystemd-shared-261.so",
+      "/usr/lib/systemd/systemd",
+      "/usr/lib/systemd/systemd-executor"
+    ],
+    "added_paths": [
+      "/etc/pam.d",
+      "/etc/pam.d/systemd-user",
+      "/usr/lib/security",
+      "/usr/lib/security/pam_systemd.so"
+    ],
+    "unchanged_existing_payload_entries": 2478,
+    "archive_sha256": "c059a1dd232a3655da4a67f662e01932bec81d9855cd33ef4b8ca6141de96b90",
+    "payload_entries": 2486,
+    "all_unrelated_payload_unchanged": true
+  },
+  "consumer": {
+    "scope": "Owned same-version four runtime replacements and PAM files; complete payload/CLI/module/APT checks only, native cold boot/session gate still pending",
+    "version": "261.2-1+toddy3",
+    "installed_payload_entries": 2486,
+    "versions": [
+      {
+        "program": "/usr/lib/systemd/systemd",
+        "exit": 0,
+        "version_line": "systemd 261 (261.2)",
+        "features_line": "+PAM -AUDIT -SELINUX -APPARMOR +IMA +IPE +SMACK -SECCOMP -GCRYPT -GNUTLS +OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 +KMOD -LIBCRYPTSETUP -LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -BTF -XKBCOMMON +UTMP -LIBARCHIVE"
+      },
+      {
+        "program": "/usr/lib/systemd/systemd-executor",
+        "exit": 0,
+        "version_line": "systemd 261 (261.2)",
+        "features_line": "+PAM -AUDIT -SELINUX -APPARMOR +IMA +IPE +SMACK -SECCOMP -GCRYPT -GNUTLS +OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 +KMOD -LIBCRYPTSETUP -LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -BTF -XKBCOMMON +UTMP -LIBARCHIVE"
+      },
+      {
+        "program": "/usr/bin/systemctl",
+        "exit": 0,
+        "version_line": "systemd 261 (261.2)",
+        "features_line": "+PAM -AUDIT -SELINUX -APPARMOR +IMA +IPE +SMACK -SECCOMP -GCRYPT -GNUTLS +OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 +KMOD -LIBCRYPTSETUP -LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -BTF -XKBCOMMON +UTMP -LIBARCHIVE"
+      },
+      {
+        "program": "/usr/bin/loginctl",
+        "exit": 0,
+        "version_line": "systemd 261 (261.2)",
+        "features_line": "+PAM -AUDIT -SELINUX -APPARMOR +IMA +IPE +SMACK -SECCOMP -GCRYPT -GNUTLS +OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 +KMOD -LIBCRYPTSETUP -LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -BTF -XKBCOMMON +UTMP -LIBARCHIVE"
+      },
+      {
+        "program": "/usr/bin/busctl",
+        "exit": 0,
+        "version_line": "systemd 261 (261.2)",
+        "features_line": "+PAM -AUDIT -SELINUX -APPARMOR +IMA +IPE +SMACK -SECCOMP -GCRYPT -GNUTLS +OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 +KMOD -LIBCRYPTSETUP -LIBCRYPTSETUP_PLUGINS +LIBFDISK +PCRE2 -PWQUALITY -P11KIT -QRENCODE -TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -BTF -XKBCOMMON +UTMP -LIBARCHIVE"
+      }
+    ],
+    "module_load_exit": 0,
+    "unqualified": "Native new PID1 cold boot, PAMName allow/deny, logind/user-session and recovery not yet verified"
+  },
+  "native_original_two_drivers": "B02-systemd-pam-native-1.json",
+  "session_fixture": {
+    "state": "complete",
+    "fixture": "/mnt/lfs/sources/phase2/native-fixtures/systemd-session-1",
+    "artifact_files": 1,
+    "installed_artifacts": 8,
+    "boot_id": "d62c7ec0-db8f-4c95-89f8-d0ef8308008c",
+    "manifest_sha256": "2a84b3afd31480edf531be7cb30d775c326eb6d80bc3472b1076004f89e793f7"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-systemd-pam-install-evidence.tar.gz",
+    "members": 14,
+    "sha256": "e1f4480ec5ca975fb9ce60dc295c60f96a5e62ae80086d987f79cc6ec6724c8d"
+  }
+}

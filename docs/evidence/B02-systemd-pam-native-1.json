@@ -1,0 +1,36 @@
+{
+  "cgroup_filesystem": "cgroup2",
+  "fixture_manifest_sha256": "cf5f8c876f582dd43c8418d2e02a272b7d14cbe5d97aaffae1f3f9bbf2e6abfe",
+  "kernel": "7.1.8-toddy",
+  "pid1": "systemd",
+  "scope": "Two original cgroup-dependent Systemd PAM-build core drivers on native Toddy; no updated PID1/PAMName/session/GNOME acceptance",
+  "source_manifest_sha256": "2a683ffe0cdab7349a4b2b64b932fab647baaab4e7ab5b7c64520ff3443c5667",
+  "unchanged_fixture_files": 12,
+  "unchanged_source_files": 7193,
+  "runs": [
+    {
+      "exit": 0,
+      "name": "test-load-fragment",
+      "observed_test_headers": 65,
+      "skip_diagnostics": [],
+      "stdout_sha256": "dd268b8f75922c78d6b7bfcefaaadaba517e8fb19a83943a6432537fe8c4f4f5",
+      "stderr_sha256": "e71f0d136d1bf2dee598f800060142a03a99fad783c0fbff43413338dc13cdcc"
+    },
+    {
+      "exit": 0,
+      "name": "test-unit-serialize",
+      "observed_test_headers": 1,
+      "skip_diagnostics": [],
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1e41eb1fe4427d7e7ad71e60f7511d4565fb3a96f6eb5df48f3bb4b19a5728bb"
+    }
+  ],
+  "native_report_sha256": "df35f12211481740cc9721553e666ff3bb7cf35221bc4a3685b7d99b1002dd13",
+  "native_container_stopped_exit": 0,
+  "source_parent_unchanged_before_restart": true,
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-systemd-pam-native-1-evidence.tar.gz",
+    "members": 10,
+    "sha256": "5063aafef0af67125c00a2cb2527d0062cec986e36d99966b6536eef4d740d9b"
+  }
+}

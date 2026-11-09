@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T12:58:39.395625+00:00
+Last verified: 2026-11-09T13:19:42.902212+00:00
 
 Verified:
 
@@ -82,8 +82,9 @@ Verified:
 - Frozen PAM1.7.2 plus nine ADR0126 backports staged0;77original unit drivers and real permit/deny/missing-module/malformed/recovery0. New password client compiled0, original ELFs unchanged;157file native fixture prepared. No real passwords/helper/login acceptance yet.
 - Owned Linux-PAM1.7.2-1+toddy2: original77unit drivers; real native7.1.8 yescrypt/setuid helper7correct/refusal/NNP/lock/recovery cases0,157fixture files unchanged/account removed/child stopped0. Metadata-only dependency recovery preserved457payload entries, recipe/post0/0,installed C/API/module/audit0; prior failures retained. Full login still pending.
 - Same frozen Systemd261.2 PAM delta compiled/staged:7193authenticated source files reused read-only, sole prior udev rule correction; sole HAVE/ENABLE change HAVE_PAM0→1. Four original driversOK/two exact cgroup SKIP77 retained; stage-only recovery0/12artifacts unchanged, Meson install RPATH/CLI+PAM/module load0. Installed runtime unchanged -PAM; native two-driver/boot/session gates pending.
+- Systemd PAM original two cgroup drivers passed on native7.1.8 (65+1observed headers/no skip diagnostics),7193source12fixture files unchanged. Controlled261.2-1+toddy3 install/post0/0 replaced four runtime files, added PAM module/policy/two directories,2478existing entries unchanged; full2486payload reviewed before install. Private1112core6205shared exports preserved,+33PAM symbols. Actual CLI/module/APT0; new-runtime cold boot/session pending.
 
-Running: Systemd PAM staged; native two original cgroup-dependent core drivers next in NEW disposable native-systemd-pam-runtime-1. Full updated-runtime boot/PAMName/session/GNOME/apps/B02 pending; complete ALL B02 then stop.
+Running: Systemd261.2-1+toddy3 installed/postchecked; NEW native-systemd-session-runtime-1 cold boot/PAMName allow-deny-Stop/recovery and two logind/user-manager/user-bus cycles next. B02/GNOME/login/apps pending; finish ALL B02 then stop.
 
 Remaining:
 

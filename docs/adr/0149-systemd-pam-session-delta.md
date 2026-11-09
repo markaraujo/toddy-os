@@ -1,7 +1,7 @@
 # ADR-0149: Add PAM to the frozen Systemd session runtime
 
 - Date: 2026-11-09
-- Status: Source delta staged; native gates and installation pending
+- Status: Original native core gate and controlled installation passed; new-runtime boot/session gate pending
 
 The accepted261.2 runtime reports -PAM. Its original
 src/core/load-fragment-gperf.gperf.in174–178 explicitly maps PAMName to an
@@ -41,3 +41,20 @@ full-root transaction verification, retained predecessor archive and explicit
 recovery. Native cold boot, PAMName allow/deny, logind/user-session and recovery
 checks are mandatory before accepting the updated runtime. Do not count the
 source/loader gate as login, GNOME, physical hardware or B02 acceptance.
+
+The two original drivers subsequently passed on native7.1.8/cgroupv2, with
+65+1observed test headers and no skip diagnostics;7193source files and12fixture
+files unchanged. Report SHA256df35f12211481740cc9721553e666ff3bb7cf35221bc4a3685b7d99b1002dd13.
+Private ELF comparison preserved1112core and6205shared exports, including type,
+binding, visibility and object sizes; exactly33PAM-related shared exports were
+added. This is an exported-surface check, not complete semantic ABI proof.
+
+Controlled Systemd261.2-1+toddy3 installation passed recipe/post0/0,12root path
+changes. Exactly four runtime files replaced; module/policy plus two shared
+directories added;2478existing package entries unchanged. The full2486entry
+archive payload was compared BEFORE installation; full installed payload, five
+CLI consumers, module load and Dpkg/APT checks passed. The predecessor archive
+remains available. Native cold boot/PAMName/session/recovery remains pending,
+with a separate no-password ephemeral-user fixture prepared. See
+[installation](../evidence/B02-systemd-pam-install.json) and
+[original native drivers](../evidence/B02-systemd-pam-native-1.json).
