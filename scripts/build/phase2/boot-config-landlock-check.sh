@@ -1,0 +1,5 @@
+#!/bin/bash
+set -euo pipefail
+source /opt/toddy-build/scripts/build/target.sh
+guard_target
+python3 /opt/toddy-build/scripts/build/phase2/check_boot_config_recovery.py

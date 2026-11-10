@@ -1,0 +1,92 @@
+{
+  "modules": {
+    "tinysparql-3.0": {
+      "exit": 0,
+      "version": "3.11.1"
+    },
+    "gexiv2-0.16": {
+      "exit": 0,
+      "version": "0.16.2"
+    },
+    "glib-2.0": {
+      "exit": 0,
+      "version": "2.88.3"
+    },
+    "gio-unix-2.0": {
+      "exit": 0,
+      "version": "2.88.3"
+    },
+    "gmodule-2.0": {
+      "exit": 0,
+      "version": "2.88.3"
+    },
+    "dbus-1": {
+      "exit": 0,
+      "version": "1.16.2"
+    },
+    "gobject-introspection-1.0": {
+      "exit": 0,
+      "version": "1.86.0"
+    },
+    "gstreamer-1.0": {
+      "exit": 0,
+      "version": "1.28.6"
+    },
+    "gstreamer-audio-1.0": {
+      "exit": 0,
+      "version": "1.28.6"
+    },
+    "gstreamer-tag-1.0": {
+      "exit": 0,
+      "version": "1.28.6"
+    },
+    "libjpeg": {
+      "exit": 0,
+      "version": "3.2.0"
+    },
+    "libpng": {
+      "exit": 0,
+      "version": "1.6.58"
+    },
+    "libtiff-4": {
+      "exit": 0,
+      "version": "4.7.2"
+    },
+    "libxml-2.0": {
+      "exit": 0,
+      "version": "2.15.3"
+    },
+    "libseccomp": {
+      "exit": 0,
+      "version": "2.6.1"
+    },
+    "upower-glib": {
+      "exit": 0,
+      "version": "1.91.3"
+    },
+    "icu-i18n": {
+      "exit": 0,
+      "version": "78.3"
+    }
+  },
+  "kernel_package": "7.1.8-1+toddy1",
+  "actual_builder_kernel": "6.8.0-147-generic",
+  "target_config_Landlock_enabled": true,
+  "localsearch_input_exists": false,
+  "asciidoc_installed": false,
+  "scope": "Actual source/SDK preflight only, no LocalSearch compile/runtime/search/GUI acceptance; real installed kernel boots remain resource-parked.",
+  "source": {
+    "name": "localsearch",
+    "version": "3.11.1",
+    "filename": "localsearch-3.11.1.tar.xz",
+    "url": "https://download.gnome.org/sources/localsearch/3.11/localsearch-3.11.1.tar.xz",
+    "sha256": "7b39a6c28a8acf2b172f15b2fb5ee7c7a3764c447c2f4a14caa239b7ebe61942",
+    "reference": "BLFS13.1-systemd gnome/localsearch.html",
+    "book_page_sha256": "6183b9afef8f1efeb554e79f93958ac7affe921ab8d748d9ab874abe0f9e0b4e",
+    "book_md5": "1406955c072af72776fdcbb9b12dc103",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "archive_bytes": 4505604,
+  "observed_at": "2026-11-10T11:57:29.279032+00:00"
+}

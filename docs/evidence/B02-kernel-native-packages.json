@@ -1,0 +1,289 @@
+{
+  "scope": "Actual native archive QA0/0/OS changed0, kernel7.1.8-1+toddy1 install0/0/12changes, separately owned toddy-boot-config0.1-2+toddy1 update0/0/6changes with default0 plus foundation recovery entry. Complete payload/mode/ownership/APT and old archive/three recovery image artifacts verified. NO actual installed-Systemd/default/recovery-entry boot, full GNOME, Phase2 ISO or physical acceptance. Native diagnostic kernel boots are separate accepted evidence. Virtual target free-block reclamation changed no installed160864entry OS or original111558entry cache data; current measured host headroom remains below cold-runner100GiB+512MiB guard after later input sync, not accepted as unblocked.",
+  "steps": {
+    "b02-linux-kernel-landlock-package": {
+      "step": "b02-linux-kernel-landlock-package",
+      "started": "2026-11-10T11:11:11.545868+00:00",
+      "recipe_sha256": "de8898d9c8821ef1b1c4c89b70e5ddd9c732ad7ea8f993536b051566f99ab0cd",
+      "postcheck_sha256": "fb0c7e8e0edeb9cfa955831b9d676f6e9ad5ee3b4e50517015fe0ebab45e5094",
+      "user": "root",
+      "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+      "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+      "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+      "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+      "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+      "phase_2_source_lock_sha256": "f62c4c4d0c9b469820e99d79364a1b0307552f4b6ba1250ba557eb7d1a789213",
+      "recipe_pid": 23680,
+      "recipe_pgid": 23680,
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "finished": "2026-11-10T11:12:00.193871+00:00",
+      "changed_paths": 0,
+      "log_sha256": "666616a2722c87cb54f807a6611644be8b2f05a7ee8139a8d12fe4b6ab2d223f",
+      "supporting_build_scripts_count": 2,
+      "supporting_build_scripts_manifest_sha256": "d8b5a2a7236a2aea0e67dca812b35920bb5b4bed835dc26afe32f8b6911fb1df"
+    },
+    "b02-linux-kernel-landlock-install": {
+      "step": "b02-linux-kernel-landlock-install",
+      "started": "2026-11-10T11:14:57.012218+00:00",
+      "recipe_sha256": "a8b1e0708449613254a56fd5ff3d36de8eda2c7d90db790445cbcd1f902553bc",
+      "postcheck_sha256": "a595a3378644be5d1f554a104fcca47a2c7241b4646cafee5586d65e3897b2bc",
+      "user": "root",
+      "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+      "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+      "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+      "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+      "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+      "phase_2_source_lock_sha256": "f62c4c4d0c9b469820e99d79364a1b0307552f4b6ba1250ba557eb7d1a789213",
+      "recipe_pid": 24152,
+      "recipe_pgid": 24152,
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "finished": "2026-11-10T11:15:16.045054+00:00",
+      "changed_paths": 12,
+      "log_sha256": "53e39aaa674af0943694a11c44e678283faab9a8f334fea218e06ab3c06a3055",
+      "supporting_build_scripts_count": 2,
+      "supporting_build_scripts_manifest_sha256": "966f8911c623b979e43742bad43295aba3203b65408d8669175cac549d9ccc70"
+    },
+    "b02-boot-config-landlock-install": {
+      "step": "b02-boot-config-landlock-install",
+      "started": "2026-11-10T11:23:21.694959+00:00",
+      "recipe_sha256": "ca2e8036ce8587341ddb2239aafd4493c1e1a07584719e7cd38c8c009d1fbf26",
+      "postcheck_sha256": "622d06ab045b2aeed44ea6d19660d25896afaa57b630da7544dc638a87ff11c5",
+      "user": "root",
+      "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+      "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+      "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+      "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+      "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+      "phase_2_source_lock_sha256": "f62c4c4d0c9b469820e99d79364a1b0307552f4b6ba1250ba557eb7d1a789213",
+      "recipe_pid": 24588,
+      "recipe_pgid": 24588,
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "finished": "2026-11-10T11:23:38.093199+00:00",
+      "changed_paths": 6,
+      "log_sha256": "3690a550137a0f1922973cb09b6f52c83a82ea0a5ac3bffe3497c32a86db6b9c",
+      "supporting_build_scripts_count": 2,
+      "supporting_build_scripts_manifest_sha256": "797cc9b0b28bc254f0fb1516afb3ab28aa6cd88165e41e7aa0d39796b68cac5b"
+    }
+  },
+  "archive_qa": {
+    "scope": "Full actual archive payload/modes/root ownership verified, rollback artifacts retained; kernel not installed",
+    "archive_sha256": "75f0acd71dc1e8f3d66fcd0f6ce70f1f201bd1b7c9344296240175742c65714f",
+    "archive_bytes": 43964668,
+    "payload_entries": 12027,
+    "kernel_sha256": "18c4d9e6a64554296d8e9a037c2383e7426a0cf155b6d757d0693fce0d087ad1",
+    "target_free_bytes": 17328709632,
+    "scratch_free_bytes": 238698496
+  },
+  "kernel_installed": {
+    "scope": "Native package/payload/ownership/APT0 and retained foundation archive/rollback artifacts only. Boot entry and installed Systemd/rollback boots pending.",
+    "version": "7.1.8-1+toddy1",
+    "payload_entries": 12027,
+    "kernel_sha256": "18c4d9e6a64554296d8e9a037c2383e7426a0cf155b6d757d0693fce0d087ad1",
+    "rollback_artifacts": {
+      "boot/vmlinuz-7.1.8-toddy-foundation": "3ccb8a6c3f3e125542e3d6892e242af1d37e873833de27ee32e3951871a723a1",
+      "boot/System.map-7.1.8-toddy-foundation": "ae9fb5f1cc894eef4cdafef6db57daf0b3b31e589bb4c9d1d34bcec3f740bd16",
+      "boot/config-7.1.8-toddy-foundation": "3ad1bf1ce1e1a844ac35a5c0c9769536bff6e30d9ae75dd20ee2341a9f544e0e"
+    },
+    "target_free_bytes": 17302769664,
+    "scratch_free_bytes": 238698496
+  },
+  "boot_menu": {
+    "scope": "Two owned boot entries/default retained/source/syntax/native package/conffile ownership/APT0 only. Actual installed and foundation-recovery boots pending.",
+    "version": "0.1-2+toddy1",
+    "config_sha256": "8c96b806eb86146e4422e8e6c5358d334cc672812f00df5dc5d422b62fa3818f",
+    "native_conffile_backup": null,
+    "menu_entries": 2,
+    "default": 0
+  },
+  "kernel_package": {
+    "name": "linux-kernel",
+    "version": "7.1.8-1+toddy1",
+    "archive_sha256": "75f0acd71dc1e8f3d66fcd0f6ce70f1f201bd1b7c9344296240175742c65714f",
+    "recipe_sha256": "de8898d9c8821ef1b1c4c89b70e5ddd9c732ad7ea8f993536b051566f99ab0cd",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "filename": "linux-7.1.8.tar.xz",
+        "url": "https://www.kernel.org/pub/linux/kernel/v7.x/linux-7.1.8.tar.xz",
+        "upstream_md5": "807584f564568b40162e9e4a72bf191f",
+        "sha256": "ff01dcb449279d5b4cfccdb01fee639cf5ff1803f1749a77844dd33915422c49",
+        "download_url": "https://www.kernel.org/pub/linux/kernel/v7.x/linux-7.1.8.tar.xz"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "d8b5a2a7236a2aea0e67dca812b35920bb5b4bed835dc26afe32f8b6911fb1df",
+    "payload_count": 12027,
+    "payload_manifest_sha256": "b939598ceeaadcfad4a469b2543e8ff21c02b8ca99cc4ada931b9abda4eaea37",
+    "normalized_build_ownership_count": 11987,
+    "normalized_build_ownership_manifest_sha256": "779e0dc1f593001accf30d8caa508c69327bc9ae7e5962b90e3060f10548ced7"
+  },
+  "boot_package": {
+    "name": "toddy-boot-config",
+    "version": "0.1-2+toddy1",
+    "archive_sha256": "3e722231aa65f780775c74b1c47af66868dc34ff83f8d55525c68078e1d65cbf",
+    "recipe_sha256": "ca2e8036ce8587341ddb2239aafd4493c1e1a07584719e7cd38c8c009d1fbf26",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "source_kind": "book-derived-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "797cc9b0b28bc254f0fb1516afb3ab28aa6cd88165e41e7aa0d39796b68cac5b",
+    "payload_count": 15,
+    "payload_manifest_sha256": "d26954c35af1129a4293b00df6136ce9466ce974bb92aa331926473077e393a3",
+    "normalized_build_ownership_count": 0,
+    "normalized_build_ownership_manifest_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  "virtual_discard": {
+    "state": "complete",
+    "scope": "Only free-block discard on current designated virtual /dev/vdb4, no file deletion/format/physical operation",
+    "boot_id": "3a77a52a-5994-4f9c-9a57-d8582921275c",
+    "full_entries_before": 160864,
+    "before_full_gzip_sha256": "06d90e76a5355145e5dc179e8c60fc04b3648da2f8d82025952e7f5028ad352a",
+    "kernel_cache_baseline_sha256": "d0e66e8e3cc2260d35242a1dca634e72bfd6bcd3d63a5bd94bac591a173114bf",
+    "kernel_entries_before": 111558,
+    "trim_exit": 0,
+    "full_entries_after": 160864,
+    "changed_paths": [],
+    "kernel_entries_after": 111558,
+    "kernel_cache_bytes_unchanged": true,
+    "installed_os_bytes_and_metadata_unchanged": true
+  },
+  "host_resource_after_later_sync": {
+    "host_free_before": 107529289728,
+    "host_free_after": 107675385856,
+    "measured_delta_bytes": 146096128,
+    "native_headroom_requirement_bytes": 107911053312,
+    "native_headroom_gate_passed": false
+  },
+  "cache_mount_inspection": {
+    "scope": "Existing qualified raw scratch and private COW only; no format/resize/extraction/chown or stage/compile replay",
+    "uuid": "c6c4176d-faed-4ee3-9ae0-94914a0af666",
+    "lower_inode": 7523763,
+    "private_upper_inode": 14,
+    "private_work_inode": 15,
+    "boot_id": "3a77a52a-5994-4f9c-9a57-d8582921275c"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-kernel-native-packages-evidence.tar.gz",
+    "sha256": "c8faad0072630909602ca5f19fb3a3df306a7583dc65647d5aea64ad4d5e4e9b",
+    "members": [
+      "build/b02-boot-config-landlock-install.log",
+      "build/b02-boot-config-landlock-install.manifest.json",
+      "build/b02-boot-config-landlock-install.success.json",
+      "build/b02-linux-kernel-landlock-install.log",
+      "build/b02-linux-kernel-landlock-install.manifest.json",
+      "build/b02-linux-kernel-landlock-install.success.json",
+      "build/b02-linux-kernel-landlock-package.log",
+      "build/b02-linux-kernel-landlock-package.manifest.json",
+      "build/b02-linux-kernel-landlock-package.success.json",
+      "guest/b02-boot-config-landlock-install-controller.log",
+      "guest/b02-boot-config-landlock-install-timing.json",
+      "guest/b02-linux-kernel-landlock-install-controller.log",
+      "guest/b02-linux-kernel-landlock-install-timing.json",
+      "guest/b02-linux-kernel-landlock-package-controller.log",
+      "guest/b02-linux-kernel-landlock-package-timing.json",
+      "guest/boot-config-recovery-check-1.json",
+      "guest/boot-config-recovery-input-1.json",
+      "guest/kernel-landlock-archive-verified-1.json",
+      "guest/kernel-landlock-installed-check-1.json",
+      "guest/kernel-landlock-native-acceptance-1.json",
+      "guest/kernel-landlock-native-commit-1.json",
+      "guest/kernel-landlock-native-stage-bind-1.json",
+      "guest/kernel-transaction-discard-1.exit",
+      "guest/kernel-transaction-discard-1.json",
+      "guest/kernel-transaction-discard-1.log",
+      "package/linux-kernel_7.1.8-1+toddy1_amd64.json",
+      "package/toddy-boot-config_0.1-2+toddy1_all.json",
+      "host/kernel-discard-host-before-1.json",
+      "host/kernel-discard-host-after-1.json",
+      "host/kernel-work-pre-cold-inspect-1.json"
+    ]
+  }
+}
