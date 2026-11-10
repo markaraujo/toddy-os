@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T12:55:56.317632+00:00
+Updated: 2026-11-10T13:26:05.879710+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T12:55:56.317632+00:00
+Last verified: 2026-11-10T13:26:05.879710+00:00
 
 Verified:
 
@@ -156,7 +156,7 @@ Verified:
 - LocalSearch3.11.1 cached source4505604bytes/frozen SHA verified;17actual selected/required SDK modules found including Tinysparql/GExiv2/GLib/Gst/ICU/seccomp. No guest source/job or search/runtime/GUI acceptance.
 - LocalSearch3.11.1 UID101 isolated compile/stage verified:186ELFs/133stagefiles,13original non-slow common/indexer/extract utility programs0,Landlock/seccomp enabled; minimum compiler free17269211136B above16GiB. Initial job1 only own valueless-macro collector assertion; collection2 actual0 with all compiled/staged bytes unchanged. Derived exact suite/name inventory leaves72unexecuted programs. No native runtime/index/search/sandbox/Stop/recovery/install/GUI acceptance; ADR0205.
 
-Running: LocalSearch native functional branch parked after2failed corrections/3failed actual runs, no package promotion. Main7.1.8/Systemd booted, inputs/backing retained; all existing builder mounts restored. Current eligible B02 editor prerequisite preparation:7SDK modules found,Enchant/Libspelling/EditorConfig absent; selected sources verified. No live guest writer or native test. Full B02 then stop.
+Running: Aspell English API/CLI installed and verify-only0/0/root0 after dictionary-only and NNP-launcher corrections; immutable archive/source/92ELFs retained, generated Info metadata reconciled. Current eligible editor work Enchant2.8.19/UnitTest++ prerequisites. Target only23.7MiB above16GiB reserve: qualify duplicate promotion-stage custody before next compilation. LocalSearch native branch remains parked2failedcorrections; no fourth attempt. Complete ALL B02 then stop.
 
 Remaining:
 

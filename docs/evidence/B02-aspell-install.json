@@ -1,0 +1,353 @@
+{
+  "scope": "Owned frozen Aspell0.60.8.2 C/C++ API/CLI with official English SCOWL2020.12.07 dictionary, no original upstream suite. Main compilation0/stage0, original dictionary build failed own data-dir; dictionary2 resumed only,92ELFs unchanged/244stagefiles. Real installed UID101/NoNewPrivs/private-device/no-route UTF8 personal persistence/session clear/known+misspelling/suggestion/invalid language+dictionary+option refusal/input retention/two recoveries/API+CLI/APT0. First package recipe0/post1 because own setpriv launcher absent; verify-only corrected to native prctl,0/0/full-root changed0. Shared Info index updated by existing native backend (not owned payload); initial generated_paths inventory omitted this side effect, reconciled against full-root manifest and fixed for future packages. No reinstall, Portuguese lexicon, Enchant/editor/GUI/general parser-security claim.",
+  "sources": [
+    {
+      "name": "aspell",
+      "version": "0.60.8.2",
+      "filename": "aspell-0.60.8.2.tar.gz",
+      "url": "https://ftpmirror.gnu.org/aspell/aspell-0.60.8.2.tar.gz",
+      "sha256": "57fe4863eae6048f72245a8575b44b718fb85ca14b9f8c0afc41b254dfd76919",
+      "reference": "BLFS13.1-systemd general/aspell.html",
+      "book_page_sha256": "606262b90b5d4fa0ba1d417910748435d50c2ea9993e7c3a4f46fa30b2d3efe2",
+      "book_md5": "bc3f30321db5d44f112ab66084421225",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "aspell-dictionary-en",
+      "version": "2020.12.07-0",
+      "filename": "aspell6-en-2020.12.07-0.tar.bz2",
+      "url": "https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2",
+      "sha256": "4c8f734a28a088b88bb6481fcf972d0b2c3dc8da944f7673283ce487eac49fb3",
+      "reference": "BLFS13.1-systemd general/aspell.html",
+      "book_page_sha256": "606262b90b5d4fa0ba1d417910748435d50c2ea9993e7c3a4f46fa30b2d3efe2",
+      "integrity": "Exact English dictionary filename linked by frozen book; GNU HTTPS archive SHA256 observed and frozen before guest use; book publishes no dictionary checksum. Not a detached-signature authentication claim.",
+      "status": "source_verified"
+    }
+  ],
+  "prepared": {
+    "source_sha256": "57fe4863eae6048f72245a8575b44b718fb85ca14b9f8c0afc41b254dfd76919",
+    "reference": "BLFS13.1-systemd general/aspell.html",
+    "book_page_sha256": "606262b90b5d4fa0ba1d417910748435d50c2ea9993e7c3a4f46fa30b2d3efe2",
+    "source_patches": [],
+    "recipe_sha256": "cdfdf53b1490540a9291eecf697fd7489315eadfa781a5ecdaec02345db10d35",
+    "extra_source": {
+      "name": "aspell-dictionary-en",
+      "version": "2020.12.07-0",
+      "filename": "aspell6-en-2020.12.07-0.tar.bz2",
+      "url": "https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2",
+      "sha256": "4c8f734a28a088b88bb6481fcf972d0b2c3dc8da944f7673283ce487eac49fb3",
+      "reference": "BLFS13.1-systemd general/aspell.html",
+      "book_page_sha256": "606262b90b5d4fa0ba1d417910748435d50c2ea9993e7c3a4f46fa30b2d3efe2",
+      "integrity": "Exact English dictionary filename linked by frozen book; GNU HTTPS archive SHA256 observed and frozen before guest use; book publishes no dictionary checksum. Not a detached-signature authentication claim.",
+      "status": "source_verified"
+    },
+    "extra_sources": [
+      {
+        "name": "aspell-dictionary-en",
+        "version": "2020.12.07-0",
+        "filename": "aspell6-en-2020.12.07-0.tar.bz2",
+        "url": "https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2",
+        "sha256": "4c8f734a28a088b88bb6481fcf972d0b2c3dc8da944f7673283ce487eac49fb3",
+        "reference": "BLFS13.1-systemd general/aspell.html",
+        "book_page_sha256": "606262b90b5d4fa0ba1d417910748435d50c2ea9993e7c3a4f46fa30b2d3efe2",
+        "integrity": "Exact English dictionary filename linked by frozen book; GNU HTTPS archive SHA256 observed and frozen before guest use; book publishes no dictionary checksum. Not a detached-signature authentication claim.",
+        "status": "source_verified"
+      }
+    ],
+    "probe_sha256": "5fddfd9e2d6afeb209a6f71285a03ab7fe98c044fa810121f6539b5384a86c4d"
+  },
+  "stage": {
+    "scope": "Frozen Aspell0.60.8.2 optimized shared C/C++ API/CLI with real official English SCOWL2020.12.07 dictionary. Upstream package has no original test suite per frozen book. Own actual C API/CLI known/misspelling/suggestion/UTF8 personal persistence/session clear/malformed dictionary+invalid language/option refusal/input retention/recovery. No Portuguese lexicon, Enchant, Libspelling, editor, GUI or general parser-security acceptance. Readonly source and byte-identical private dictionary build copy, owned Which reused.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": "No upstream test suite; not reported as a passing original suite.",
+    "consumer": {
+      "dictionary": "en_US official SCOWL2020.12.07",
+      "API_known_words": 2,
+      "misspelling_and_hello_suggestion": true,
+      "UTF8_personal_word_persistence": true,
+      "session_add_clear_cycles": 2,
+      "invalid_language_dictionary_option_refusals": 3,
+      "malformed_dictionary_unchanged": true,
+      "personal_file_unchanged_on_refusal": true,
+      "recovery_cycles": 2,
+      "CLI_pipe_and_unknown_option": true,
+      "graphical_or_Portuguese_dictionary_tested": false
+    },
+    "resource": {
+      "exit": 0,
+      "initial_free": 17243467776,
+      "minimum_free": 17238982656,
+      "final_free": 17238982656,
+      "reserve": 17179869184,
+      "stop_margin": 16777216,
+      "interrupted": false
+    },
+    "artifacts_count": 92,
+    "artifacts_manifest_sha256": "2bb6879a98dd0489d979d23af2b7f30898b15c1bb0f294f8788d6958a72a981d",
+    "stage_sha256_count": 244,
+    "stage_sha256_manifest_sha256": "589e228ab55f9b1ccb39cd5f35fa7d11720fdab09941560d7174e9e2fa49e213"
+  },
+  "initial_transaction": {
+    "step": "b02-aspell-install",
+    "started": "2026-11-10T13:13:35.728684+00:00",
+    "recipe_sha256": "41d6c1db9311abfe6c18bd941a86e6e610950c5011982980befb9d182546f627",
+    "postcheck_sha256": "a60b8bd3a5b652ec2d1faf99445fa7b080b76a7b1af6a07a7bc6362b43d76f25",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "d3f2b98c0d5be35de844c2f95212d24b28a52561c165ff4e16027ee1eafb49a6",
+    "recipe_pid": 9555,
+    "recipe_pgid": 9555,
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "finished": "2026-11-10T13:13:54.167720+00:00",
+    "changed_paths": 267,
+    "log_sha256": "b5c8c800d563aae2f719d59806d2f1fe12f608a6c138943c21d169b1cc683c1e",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "47225f54e3f81ad75082d97dc316016eff71dc67c53ad0b01a60b55b56aa1626"
+  },
+  "verify_only": {
+    "step": "b02-aspell-verify-2",
+    "started": "2026-11-10T13:16:26.014588+00:00",
+    "recipe_sha256": "ab6f429818b83a93fe4a8377be6e1079212785cfaa2fab0433b768b52d2d77d5",
+    "postcheck_sha256": "2851000ce984842a25b2f67f14e16b863d00cca4bc9571cd2fce46de019cc293",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "d3f2b98c0d5be35de844c2f95212d24b28a52561c165ff4e16027ee1eafb49a6",
+    "recipe_pid": 9950,
+    "recipe_pgid": 9950,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T13:16:42.054503+00:00",
+    "changed_paths": 0,
+    "log_sha256": "3c1da068f7f3231a3e4bc9ac915071f417c06f152a03b48aba14256c776b6aa9",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "d6a3d1bbd940c490a0167cb2ea64363cd4b4c497c178b7f0f1c56c3bd20e6641"
+  },
+  "package": {
+    "name": "aspell",
+    "version": "0.60.8.2-1+toddy1",
+    "archive_sha256": "70368e76eaba8efe0c1195b7f23952eac5c5e49587ad1f9bc3df1df2e3735241",
+    "recipe_sha256": "41d6c1db9311abfe6c18bd941a86e6e610950c5011982980befb9d182546f627",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "aspell",
+        "version": "0.60.8.2",
+        "filename": "aspell-0.60.8.2.tar.gz",
+        "url": "https://ftpmirror.gnu.org/aspell/aspell-0.60.8.2.tar.gz",
+        "sha256": "57fe4863eae6048f72245a8575b44b718fb85ca14b9f8c0afc41b254dfd76919",
+        "reference": "BLFS13.1-systemd general/aspell.html",
+        "book_page_sha256": "606262b90b5d4fa0ba1d417910748435d50c2ea9993e7c3a4f46fa30b2d3efe2",
+        "book_md5": "bc3f30321db5d44f112ab66084421225",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      },
+      {
+        "name": "aspell-dictionary-en",
+        "version": "2020.12.07-0",
+        "filename": "aspell6-en-2020.12.07-0.tar.bz2",
+        "url": "https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2",
+        "sha256": "4c8f734a28a088b88bb6481fcf972d0b2c3dc8da944f7673283ce487eac49fb3",
+        "reference": "BLFS13.1-systemd general/aspell.html",
+        "book_page_sha256": "606262b90b5d4fa0ba1d417910748435d50c2ea9993e7c3a4f46fa30b2d3efe2",
+        "integrity": "Exact English dictionary filename linked by frozen book; GNU HTTPS archive SHA256 observed and frozen before guest use; book publishes no dictionary checksum. Not a detached-signature authentication claim.",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [
+      "/usr/share/info/dir"
+    ],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "metadata_reconciliation": {
+      "scope": "Record existing producer install-info side effect omitted from generated_paths when no prebuilt index staged. No payload/archive/installed index change or native transaction replay.",
+      "original_record_sha256": "18598eda84ae69f75763292f370de395fe723ebfd186df8c936bc817348f4de9",
+      "original_generated_paths": [],
+      "native_change_manifest_sha256": "eb114e026bddda367ed874c815903474e129e1ab70276d71a2de0be321801f17",
+      "index_before_after": {
+        "before": {
+          "mode": 33188,
+          "uid": 0,
+          "gid": 0,
+          "sha256": "18232c84eee1e30fc94d22dc3ad9926990fc83b0a2177c1c851486fe880c5d54"
+        },
+        "after": {
+          "mode": 33188,
+          "uid": 0,
+          "gid": 0,
+          "sha256": "539336031d13b9b382bdcbf22f2b5aff744427142f4a7885d8c3ed25af05974f"
+        }
+      },
+      "registered_documents": [
+        "/usr/share/info/aspell-dev.info",
+        "/usr/share/info/aspell.info"
+      ]
+    },
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "47225f54e3f81ad75082d97dc316016eff71dc67c53ad0b01a60b55b56aa1626",
+    "payload_count": 347,
+    "payload_manifest_sha256": "48477130abafc9e7d43012d917c9a9c2c6c29d0a5d5d03e2e6347d445da4fbfc"
+  },
+  "installed_consumer": {
+    "scope": "Actual owned installed C API/CLI and official English dictionary, UID101/NoNewPrivs/private devices/no external route, Unicode personal persistence/session clear/refusal/input retention/recovery, all staged bytes retained/APT0. Builder kernel; no Portuguese dictionary, Enchant/editor/GUI/general parser-security acceptance.",
+    "consumer": {
+      "dictionary": "en_US official SCOWL2020.12.07",
+      "API_known_words": 2,
+      "misspelling_and_hello_suggestion": true,
+      "UTF8_personal_word_persistence": true,
+      "session_add_clear_cycles": 2,
+      "invalid_language_dictionary_option_refusals": 3,
+      "malformed_dictionary_unchanged": true,
+      "personal_file_unchanged_on_refusal": true,
+      "recovery_cycles": 2,
+      "CLI_pipe_and_unknown_option": true,
+      "graphical_or_Portuguese_dictionary_tested": false
+    },
+    "installed_stage_files_identical": 244,
+    "shared_library_resolution": true
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-aspell-install-evidence.tar.gz",
+    "sha256": "1769dd1f71c75eb21d067c5cd8ac19cf654a55f53e5aaf4a8dd517719d199bcb",
+    "members": [
+      "build/b02-aspell-install.failed.json",
+      "build/b02-aspell-install.log",
+      "build/b02-aspell-install.manifest.json",
+      "build/b02-aspell-verify-2.log",
+      "build/b02-aspell-verify-2.manifest.json",
+      "build/b02-aspell-verify-2.success.json",
+      "package.json",
+      "phase2/aspell-1-controller.log",
+      "phase2/aspell-1.exit",
+      "phase2/aspell-1.job.json",
+      "phase2/aspell-1.log",
+      "phase2/aspell-dictionary-2-controller.log",
+      "phase2/aspell-dictionary-2.exit",
+      "phase2/aspell-dictionary-2.job.json",
+      "phase2/aspell-dictionary-2.log",
+      "phase2/aspell-installed-consumer.json",
+      "phase2/aspell-stage.json",
+      "phase2/b02-aspell-install-controller.log",
+      "phase2/b02-aspell-install-timing.json",
+      "phase2/b02-aspell-verify-2-controller.log",
+      "phase2/b02-aspell-verify-2-timing.json",
+      "prepared.json",
+      "work/aspell-generated-info-dir",
+      "work/aspell-resume-2-before.json",
+      "work/compile-resource.json",
+      "work/dictionary-source-before.json",
+      "work/native-consumer.json",
+      "work/stage-results.json"
+    ]
+  },
+  "shared_info_index": {
+    "path": "/usr/share/info/dir",
+    "full_root_change": {
+      "before": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "18232c84eee1e30fc94d22dc3ad9926990fc83b0a2177c1c851486fe880c5d54"
+      },
+      "after": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "539336031d13b9b382bdcbf22f2b5aff744427142f4a7885d8c3ed25af05974f"
+      }
+    },
+    "owned_by_aspell": false,
+    "initial_package_record_generated_paths": [],
+    "classification": "Existing stage_package install-info registration for aspell.info/aspell-dev.info; generated resource metadata omitted when no prebuilt dir staged. Full-root evidence retained; future metadata declares it without changing registration or reinstalling historical package.",
+    "metadata_reconciliation": {
+      "state": "complete",
+      "package": "/var/log/toddy/packages/aspell_0.60.8.2-1+toddy1_amd64.json",
+      "correction": {
+        "scope": "Record existing producer install-info side effect omitted from generated_paths when no prebuilt index staged. No payload/archive/installed index change or native transaction replay.",
+        "original_record_sha256": "18598eda84ae69f75763292f370de395fe723ebfd186df8c936bc817348f4de9",
+        "original_generated_paths": [],
+        "native_change_manifest_sha256": "eb114e026bddda367ed874c815903474e129e1ab70276d71a2de0be321801f17",
+        "index_before_after": {
+          "before": {
+            "mode": 33188,
+            "uid": 0,
+            "gid": 0,
+            "sha256": "18232c84eee1e30fc94d22dc3ad9926990fc83b0a2177c1c851486fe880c5d54"
+          },
+          "after": {
+            "mode": 33188,
+            "uid": 0,
+            "gid": 0,
+            "sha256": "539336031d13b9b382bdcbf22f2b5aff744427142f4a7885d8c3ed25af05974f"
+          }
+        },
+        "registered_documents": [
+          "/usr/share/info/aspell-dev.info",
+          "/usr/share/info/aspell.info"
+        ]
+      },
+      "corrected_record_sha256": "e845356375a7ad0d34ca7b68bc0b373db1d705ac7b947e84fc38b9fe3592600b",
+      "archive_sha256": "70368e76eaba8efe0c1195b7f23952eac5c5e49587ad1f9bc3df1df2e3735241",
+      "installed_payload_unchanged": true
+    },
+    "corrected_generated_paths": [
+      "/usr/share/info/dir"
+    ],
+    "raw_evidence": {
+      "path": ".local/phase2/exports/B02-aspell-info-metadata-evidence-1.tar.gz",
+      "sha256": "980c86efa9a570feff906319e474381d4241f4f0e053f59e2d4d42abb730447e"
+    }
+  },
+  "package_record_state": "After generated-resource-only metadata reconciliation; original record remains in first immutable raw bundle and backup."
+}

@@ -11213,6 +11213,18 @@
           ]
         }
       }
+    },
+    {
+      "name": "aspell",
+      "version": "0.60.8.2",
+      "license": "LicenseRef-Aspell-per-file",
+      "evidence": "Official source COPYING and per-file GPL/LGPL notices retained in native source-notices and consolidated copyright; unchanged API/CLI source."
+    },
+    {
+      "name": "aspell-dictionary-en",
+      "version": "2020.12.07-0",
+      "license": "LicenseRef-SCOWL-and-Ispell",
+      "evidence": "Official English dictionary Copyright includes complete SCOWL/Ispell/WordNet provenance and terms; retain original Copyright and source notices with compiled dictionary."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

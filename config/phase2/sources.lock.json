@@ -2529,6 +2529,29 @@
       "book_md5": "b06fe4ea79687202ec58ce58bd4f5867",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "aspell",
+      "version": "0.60.8.2",
+      "filename": "aspell-0.60.8.2.tar.gz",
+      "url": "https://ftpmirror.gnu.org/aspell/aspell-0.60.8.2.tar.gz",
+      "sha256": "57fe4863eae6048f72245a8575b44b718fb85ca14b9f8c0afc41b254dfd76919",
+      "reference": "BLFS13.1-systemd general/aspell.html",
+      "book_page_sha256": "606262b90b5d4fa0ba1d417910748435d50c2ea9993e7c3a4f46fa30b2d3efe2",
+      "book_md5": "bc3f30321db5d44f112ab66084421225",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "aspell-dictionary-en",
+      "version": "2020.12.07-0",
+      "filename": "aspell6-en-2020.12.07-0.tar.bz2",
+      "url": "https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2",
+      "sha256": "4c8f734a28a088b88bb6481fcf972d0b2c3dc8da944f7673283ce487eac49fb3",
+      "reference": "BLFS13.1-systemd general/aspell.html",
+      "book_page_sha256": "606262b90b5d4fa0ba1d417910748435d50c2ea9993e7c3a4f46fa30b2d3efe2",
+      "integrity": "Exact English dictionary filename linked by frozen book; GNU HTTPS archive SHA256 observed and frozen before guest use; book publishes no dictionary checksum. Not a detached-signature authentication claim.",
+      "status": "source_verified"
     }
   ]
 }
