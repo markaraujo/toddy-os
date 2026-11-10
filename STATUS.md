@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T06:43:02.540308+00:00
+Updated: 2026-11-10T07:38:56.532355+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T06:43:02.540308+00:00
+Last verified: 2026-11-10T07:38:56.532355+00:00
 
 Verified:
 
@@ -140,8 +140,9 @@ Verified:
 - Owned GNOME Terminal3.60.0toddy2:71ELFs/original regex unchanged; cache-only frozen-book correction preserves12schemas/146key contracts and fixes five proxy paths. Initial native install0/post1 missing test /dev/null retained; metadata2/post0/0,39changedpaths/376entries/339runtime entries identical, unbuilt Nautilus addon metadata removed/bundled notices retained. Actual installed UID101/no-route client/unknown-option/private DConf Unicode+navy preferences/invalid boolean refusal/persistence across buses/reset/system font/five paths/shared VTE+libhandy/APT0. Builder-target userspace, no actual GUI/window/focus/PTY/login/physical acceptance; shared stock schema cache pending, ADR0195.
 - Owned libportal0.9.1 base/GTK3+GTK4 helpers/GI:61original private mock-portal cases/no skips,33ELFs/42stagefiles; native install/post0/0,73changedpaths/76entries. Installed UID101/private-device/no-route private-bus C constructor/context/two releases/separate GTK3-4 GI/shared symbols/pkg-config/APT0. Qt/Vala/docs/demo omitted; no real GNOME portal service/dialog/consent/input/capture/widget/permission grant acceptance, ADR0196.
 - Owned gnome-autoar0.4.5 core/GTK3/GI/Vala:22original extraction/security cases/no skips,130byte-mode-link-identical private fixtures;19ELFs/21stagefiles unchanged across own C locale correction. Native install/post0/0,52changedpaths/57entries, installed UID101 ZIP Unicode/empty refusal/precancel no-destination/two recoveries/source retained/C-GI/shared ABI/APT0. Existing owned Libarchive3.8.11 reused/no downgrade. Exact source reference symlink exception plus whole-archive traversal guard/10focused tests/178member real preflight; initial prep/empty dispatch failure retained and actual pre-dispatch denial fixed. Manual programs compile-only/no GUI/all-format/mid-extraction Stop acceptance, ADR0197.
+- Owned Tinysparql3.11.1 ICU/GI/Vala/Soup3:156production/207debugELFs/105stagefiles unchanged;29original programs and487core cases passed, four exact SQLite17vs15digit lexical failures retained FAILED. Independent production four typed arithmetic/lossless-text cases passed;17functional graphical-session programs deferred. Native install/post0/0,130paths/280entries; installed UID101 private-device/no-route RDF UTF8/persistence/malformed refusal/state retained/two resets/Tracker+Tsparql GI/numeric/shared ABI/APT0. Foundation SQLite3.53.4/guard/source/goldens unchanged; no desktop/indexer/portal/grant/cancellation acceptance, ADR0198.
 
-Running: No active guest writer. gnome-autoar0.4.5 owned/verified with original archive-security cases; first source fixture/empty dispatch and C locale failures retained/corrected without library/suite replay. Next Tinysparql3.11.1 source/dependency/test preflight, then Glycin GTK4/Nautilus. Native app GUI and shared stock cache integration pending. Complete ALL B02 then stop.
+Running: No active guest writer. Tinysparql3.11.1 owned/verified:29original programs/487core cases passed, four exact numeric-text failures retained/reviewed; independent typed/roundtrip and installed consumer passed. Next Glycin GTK4 companion source/SDK/capacity preflight, then Nautilus. Native graphical interaction and shared stock app cache remain pending. Complete ALL B02 then stop.
 
 Remaining:
 

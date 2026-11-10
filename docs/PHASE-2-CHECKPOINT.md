@@ -38,7 +38,7 @@ root /var/log/toddy/build/b02-gnome-terminal-{install,metadata-2}.*;
 metadata receipt /var/log/toddy/phase2/terminal-metadata-recovery-2.json COMPLETE.
 NEVER rebuild/restage/reinstall/replay accepted work or metadata2.
 
-Current slice: gnome-autoar0.4.5 OWNED core/GTK3/GI/Vala; no active guest writer.
+Previous verified slice: gnome-autoar0.4.5 OWNED core/GTK3/GI/Vala.
 Initial prep1 safely refused frozen negative reference symlink, source/work ABSENT.
 My chained command wrongly dispatchedjob1PID34174 terminal1 realpath absent, no
 compiler/state mutation. Preserve both. Exact archive/reference->/tmp exception,
@@ -66,10 +66,36 @@ Separate host preparation bundle linked in proof. SourceSHA
 input/work /mnt/lfs/sources/phase2/{inputs/gnome-autoar-0.4.5,work/gnome-autoar-1};
 log/job/exit /var/log/toddy/phase2/gnome-autoar-{1,build-2,probe-3}.*;
 native /var/log/toddy/build/b02-gnome-autoar-install.success.json. NEVER replay.
-Exact next: commit/publish verified extraction-library slice/exact public bytes,
-then Tinysparql3.11.1 frozen book/actual source/dependency/original test preflight.
-Source not pinned yet, NO Tinysparql input/job. After it Glycin GTK4 and Nautilus;
-actual native app interaction and shared stock schema union remain separate.
+Current verified slice: Tinysparql3.11.1 OWNED, no active guest writer.
+SourceSHAcfd46021ee1514ad435e714f7aa1ec7a787c7f516a94f4c7438897ee3d6eca1e;
+input/work /mnt/lfs/sources/phase2/{inputs/tinysparql-3.11.1,work/tinysparql-1}.
+InitialjobPID36627 terminal1 AFTER production/debug compile/stage/own consumer0.
+29original programs passed; core sparql first of491aborted on numeric text.
+Census2PID39709 terminal1 optional metadata; census3PID40032 terminal1 TAP-comment
+list parser. No cases executed by either failed collector. Census4PID40419 actual0:
+491cases/487passes/four exact FAILED lexical goldens retained; all156production/
+207debug ELF/105stage hashes unchanged. Numeric5PID42211 actual0 verifies four
+production typed double arithmetic and lossless lexical roundtrip cases.
+Verified primary SQLite3.53.4 docs explain inherited17vs15digit default.
+No source/golden/library/SQLite change; unsafe SQLite guard retained.17functional
+programs compiled/deferred per book, not passes. Cause resolved within persistent
+budget at07:33:19UTC, ledger preserved; no repeated unchanged original suite.
+Nativeb02-tinysparql-install PID42759 actual recipe/post0/0,130paths/280entries:
+installed UID101/private-device/no-route RDF UTF8/persistence/malformed refusal/
+state retained/delete-reset2cycles/Tracker+Tsparql GI query/numeric/shared ABI/APT0.
+Archive00926d1ffc08af1d8f800512e436f1e9d93e25abcffa3d7773e09e8d9d549094;
+raw3b0226f02e3b0e252a4a6c465fcfed14bd31945f8484930b599ed0f1ad3c5dbc,
+[proof](evidence/B02-tinysparql-install.json), ADR0198. NEVER replay build/install.
+No desktop/indexer/portal/grant/cancellation acceptance. Exact next: Glycin GTK4
+companion preflight with existing frozen Glycin2.1.5 source/vendor and owned
+libglycin2.1.0; actual Meson supports libglycinfalse/libglycin-gtk4true linking
+installed core. Inspect Cargo/header/tests and free space, prepare NEW isolated
+companion build/stage; no rebuilding accepted core/loaders. No companion job yet.
+Then Nautilus required leaves complete; GUI/session gates separate.
+
+Gnome-autoar440768d all3CI success/exact publicHTTP200/indexSHA
+6e29b3be1eb405cb6e21e3de926ac2c5119c9ca7a1895c98e0c89882986e62a3.
+Current Tinysparql source/recipe/qualification/native/evidence changes uncommitted.
 
 Previous libportal0.9.1 fully owned/verified, original61mock cases/no skips,
 33ELFs/42stagefiles; native0/0,73paths/76entries; C/GI/GTK helpers/APT0. No real

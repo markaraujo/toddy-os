@@ -2433,6 +2433,18 @@
       "book_md5": "c8028c4df62c059418d4bdcde345cbe2",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "tinysparql",
+      "version": "3.11.1",
+      "filename": "tinysparql-3.11.1.tar.xz",
+      "url": "https://download.gnome.org/sources/tinysparql/3.11/tinysparql-3.11.1.tar.xz",
+      "sha256": "cfd46021ee1514ad435e714f7aa1ec7a787c7f516a94f4c7438897ee3d6eca1e",
+      "reference": "BLFS13.1-systemd gnome/tinysparql.html",
+      "book_page_sha256": "fa08a436cc06ef457c93c6857088e1433ec119f12d3e803d14e6bf51ef7e3585",
+      "book_md5": "aa793424c64c06b50248969f3e9d553d",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

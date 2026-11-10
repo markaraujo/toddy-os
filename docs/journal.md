@@ -3171,3 +3171,8 @@ Glycin GTK4/Nautilus. No Tinysparql input/job. Complete ALL B02 then stop.
 Gnome-autoar delivery checks:295repository tests passed (including ten source-filter
 checks), staged secret scan clean. Prior7f45adf all3CI success/exact
 publicHTTP200/indexSHAd45064613ec0804da4a4e0569a0b3c9b4b72a80ab50357ee1c7ee7799429b46f.
+
+### B02 — Owned Tinysparql and exact numeric-text exception — 2026-11-10
+
+Owned Tinysparql3.11.1 ICU/GI/Vala/Soup3:156production/207debugELFs/105stagefiles unchanged;29original programs and487core cases passed, four exact SQLite17vs15digit lexical failures retained FAILED. Independent production four typed arithmetic/lossless-text cases passed;17functional graphical-session programs deferred. Native install/post0/0,130paths/280entries; installed UID101 private-device/no-route RDF UTF8/persistence/malformed refusal/state retained/two resets/Tracker+Tsparql GI/numeric/shared ABI/APT0. Foundation SQLite3.53.4/guard/source/goldens unchanged; no desktop/indexer/portal/grant/cancellation acceptance, ADR0198.
+Original failures/collector corrections, primary SQLite release notes and all491case logs retained in immutable raw bundle SHA3b0226f02e3b0e252a4a6c465fcfed14bd31945f8484930b599ed0f1ad3c5dbc. No original/library/SQLite rewrite. Next Glycin GTK4 companion preflight using existing frozen source/vendor/core; no guest companion input/job yet. Complete ALL B02 then stop. Prior440768d all3CI success and exact publicHTTP200/indexSHA6e29b3be1eb405cb6e21e3de926ac2c5119c9ca7a1895c98e0c89882986e62a3 verified.
