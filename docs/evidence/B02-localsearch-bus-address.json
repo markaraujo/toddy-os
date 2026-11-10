@@ -1,0 +1,78 @@
+{
+  "scope": "Independent original helper/private D-Bus address qualification only; readonly source cwd and unmodified config/helper, actual owned daemon/GIO, two cycles. Not LocalSearch search/extractor/install/GUI acceptance and not a reopening of its native test budget.",
+  "prepared": {
+    "scope": "Independent D-Bus --address override only; original LocalSearch3.11.1 helper/config bytes copied unchanged, no parked native execution/retry. Original shutil.which selects declared wrapper through private PATH; global daemon/config/permissions unchanged.",
+    "source": "/mnt/lfs/sources/phase2/inputs/localsearch-bus-address-1",
+    "work": "/mnt/lfs/sources/phase2/work/localsearch-bus-address-1",
+    "inputs": {
+      "test-bus.conf": "cd795d925ba414ba22e384413414b1042e8525a551baf2116b92e9855c4c01a4",
+      "toddy-build.sh": "5dd348bd6da99c95b1492a70df91e86a3dcc83ae33e0b8b345384a2d1f3aa6a0",
+      "probe.py": "e79dc8eb4c2fbcc0c99e9c824d5c9accb227df1ee0ab7739b16b1163f3830b49",
+      "bin/dbus-daemon": "4e2a2d78dff341eb36ef0b6dd518e5d9cf5c244c49d24d5e4e55eb061a06de7b",
+      "utils/trackertestutils/dconf.py": "5e676920c641a83cccd33f48b0114ec738c1cd559353dd64ad1e079b8d932a17",
+      "utils/trackertestutils/dbusdaemon.py": "54a30b309be8ccb830443da40680579f8b77e22ac1cad4b726142cfd9dcac44c",
+      "utils/trackertestutils/README.md": "219174ae49826c589f29d92c19e2b52b9a54c39f8bad3d15ef39fe1f3b973496",
+      "utils/trackertestutils/psutil_mini.py": "13e148fb3f6f4efde21edea791c6ec0d0121fc0bd93b0dcc4ede690c8ad34685",
+      "utils/trackertestutils/mainloop.py": "a7a93ca1d9163455af59544e1056639742bdf90283568c36d09201fd05781b9a",
+      "utils/trackertestutils/meson.build": "c168473c6da5d8a9c734af43311667619458619569f7877e97c08d87cabd9cf2",
+      "utils/trackertestutils/sandbox.py": "2a3765c8202dd4940fb462ec86b51ac3708b27304ba7a9ca73a20988898d47a8",
+      "utils/trackertestutils/__main__.py": "b1f400e0bb4cecf55b55af0f6a6bfa1a5ef193f99f235e7fe75012e7f94b88f8",
+      "utils/trackertestutils/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "utils/trackertestutils/storehelper.py": "a75481dc98f26850ef33b0128e7fb35da6a202f3497be19ccfb86f322abd84bf",
+      "utils/trackertestutils/helpers.py": "7a4ea6c3eb3438c86cb9e2577abd04a925c5a4e09254269bf80e2bd8cbd80ee0"
+    },
+    "original_helper_files": 11,
+    "original_config_sha256": "cd795d925ba414ba22e384413414b1042e8525a551baf2116b92e9855c4c01a4",
+    "references": [
+      "LocalSearch3.11.1 utils/trackertestutils/dbusdaemon.py _dbus_daemon_path/start",
+      "D-Bus1.16.2 bus/main.c --address parser"
+    ]
+  },
+  "qualification": {
+    "scope": "Independent original helper/private D-Bus address qualification only; readonly source cwd and unmodified config/helper, actual owned daemon/GIO, two cycles. Not LocalSearch search/extractor/install/GUI acceptance and not a reopening of its native test budget.",
+    "UID": 101,
+    "NoNewPrivs": true,
+    "readonly_config_sha256": "cd795d925ba414ba22e384413414b1042e8525a551baf2116b92e9855c4c01a4",
+    "original_helper_unmodified": true,
+    "runs": [
+      {
+        "cycle": 1,
+        "real_GDBus_connection": true,
+        "ping_and_list_names": true,
+        "unknown_name_unowned": true,
+        "explicit_private_address": true,
+        "own_daemon_stopped": true
+      },
+      {
+        "cycle": 2,
+        "real_GDBus_connection": true,
+        "ping_and_list_names": true,
+        "unknown_name_unowned": true,
+        "explicit_private_address": true,
+        "own_daemon_stopped": true
+      }
+    ],
+    "source_and_config_unchanged": true
+  },
+  "job": {
+    "pid": 1832,
+    "boot_id": "7a1c0c23-aff2-4fb7-b5d7-7c0e417f4c35",
+    "proc_start_ticks": "58102",
+    "started_unix": 1794325016.8493423,
+    "command": [
+      "/bin/bash",
+      "/opt/toddy-build/scripts/build/phase2/isolated.sh",
+      "/mnt/lfs/sources/phase2/inputs/localsearch-bus-address-1",
+      "/mnt/lfs/sources/phase2/work/localsearch-bus-address-1",
+      "bash",
+      "/src/toddy-build.sh"
+    ],
+    "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c"
+  },
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-localsearch-bus-address-evidence.tar.gz",
+    "sha256": "ccab40c4b13112ebb2241187d25edcdc3ba43635a01ad0e613c8f7833b868f30",
+    "bytes": 1919
+  },
+  "execution_environment": "Qualified isolated build namespace in disposable builder VM using owned target D-Bus/GIO; not a cold target boot or LocalSearch functional run."
+}
