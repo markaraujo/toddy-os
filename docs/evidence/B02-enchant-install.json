@@ -1,0 +1,57 @@
+{
+  "scope": "Actual owned installed C API/CLI and official English dictionary, UID101/NoNewPrivs/private devices/no external route, Unicode personal persistence/session clear/refusal/input retention/recovery, all staged bytes retained/APT0. Builder kernel; no Portuguese dictionary/editor/GUI/general parser-security acceptance.",
+  "job": {
+    "pid": 24124,
+    "boot_id": "9d54ab78-a01a-428b-86e9-6055effef25b",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 31,
+    "log_sha256": "26c162e78cbeaa8800c4b7110a1fdbfa57c3c870f2f022fb32e5709bd21b410e"
+  },
+  "consumer": {
+    "scope": "Actual owned installed C API/CLI and official English dictionary, UID101/NoNewPrivs/private devices/no external route, Unicode personal persistence/session clear/refusal/input retention/recovery, all staged bytes retained/APT0. Builder kernel; no Portuguese dictionary/editor/GUI/general parser-security acceptance.",
+    "consumer": {
+      "provider": "aspell",
+      "dictionary": "en_US",
+      "known_words": 2,
+      "misspelling_and_hello_suggestion": true,
+      "UTF8_personal_persistence": true,
+      "session_add_remove_cycles": 2,
+      "unknown_dictionary_and_invalid_UTF8_refusals": 4,
+      "user_state_unchanged_on_refusal": true,
+      "recovery_cycles": 2,
+      "CLI_list_and_unknown_option": true,
+      "editor_or_GUI_tested": false
+    },
+    "installed_stage_files_identical": 15,
+    "shared_library_resolution": true
+  },
+  "timing": {
+    "step": "b02-enchant-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.716,
+        "entries": 161127,
+        "regular_files": 143784,
+        "regular_bytes": 7495058156
+      },
+      {
+        "seconds": 14.563,
+        "entries": 161155,
+        "regular_files": 143805,
+        "regular_bytes": 7495367896
+      }
+    ],
+    "total_seconds": 32.394
+  },
+  "package_archive_sha256": "b2e49f57d83eaaef1097d105dee89808abf3f5c8c7801050f225dfc4af06a6f5",
+  "target_free_bytes": 17195585536,
+  "installed_status": "install ok installed 2.8.19-1+toddy1",
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-enchant-install-evidence.tar.gz",
+    "sha256": "c5cd8dae70b2e41d157173e02103dde42d5c39abc040459c139933fbe574997e",
+    "bytes": 81949
+  },
+  "stage_proof": "docs/evidence/B02-enchant-stage.json"
+}

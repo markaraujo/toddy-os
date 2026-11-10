@@ -8,7 +8,12 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current eligible B02 slice: Enchant2.8.19 stage qualified, not installed.
+Current eligible B02 slice: Enchant2.8.19 OWNED and installed; next Libspelling.
+[Installed proof](evidence/B02-enchant-install.json). Native PID24124 recipe/post0/0,
+31 changed paths, actual installed UID101/NoNewPrivs/private-dev/no-route API+CLI
+consumer passed, all15staged regular files identical/APT0. ArchiveSHA
+b2e49f57d83eaaef1097d105dee89808abf3f5c8c7801050f225dfc4af06a6f5.
+NEVER reinstall; no Enchant compile/test/stage replay.
 [Proof](evidence/B02-enchant-stage.json). Job5PID23286 terminal0; original
 SDK267/main432/explicit real Aspell provider25cases passed, all current compiled
 and staged hashes independently matched. Default provider scan zero cases is NOT
@@ -31,14 +36,12 @@ archives, installed payload and raw evidence retained; full-root changed0.
 Aspell Info inventory metadata correction COMPLETE; original package/index unchanged,
 [installed proof](evidence/B02-aspell-install.json), ADR0206.
 
-Actual last target free17196384256B, reserve17179869184B (~15.8MiB headroom).
-EXACT NEXT: inspect stage size and native package transaction space needs, then
-prepare Enchant owned profile/qualifier/install/check using existing controlled
-stage backend. Do not dispatch unless target16GiB and host100GiB reserves hold.
-No Enchant native package installation has run. Main source and compiled/staged
-outputs remain at /mnt/lfs/sources/phase2/{inputs/enchant-2.8.19,work/enchant-1}.
-Builder boot9d54ab78-a01a-428b-86e9-6055effef25b; job5 terminal verified, no new
-writer launched. Full B02 then stop, not full Phase2 completion.
+Actual last target free17195585536B, reserve17179869184B. Enchant native preflight
+required17189013630B and passed; transaction complete. EXACT NEXT: prepare pinned
+Libspelling0.4.11 using owned Enchant, inspect archive expansion/build size before
+new extraction/build. Preserve target16GiB/host100GiB margins. EditorConfig remains
+required for selected editor. No live writer; builder boot9d54ab78-a01a-428b-86e9-6055effef25b.
+Full B02 then stop, not full Phase2 completion.
 
 Editor [SDK preflight](evidence/B02-editor-sdk-preflight.json) is historical before
 Aspell installation:7owned modules found; Enchant/Libspelling/EditorConfig absent.

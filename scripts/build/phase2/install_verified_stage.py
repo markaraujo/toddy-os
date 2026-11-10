@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'enchant': ('2.8.19', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), aspell (= 0.60.8.2-1+toddy1)', 'enchant-2.8.19.tar.gz', 'usr/lib/pkgconfig/enchant-2.pc'),
     'aspell': ('0.60.8.2', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), ncurses (= 6.6-1+toddy1)', 'aspell-0.60.8.2.tar.gz', 'usr/include/aspell.h'),
     'gexiv2': ('0.16.2', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), exiv2 (= 0.28.8-1+toddy1), pygobject (= 3.56.3-1+toddy1), python (>= 3.14), python (<< 3.15)', 'gexiv2-0.16.2.tar.xz', 'usr/lib/pkgconfig/gexiv2-0.16.pc'),
     'exiv2': ('0.28.8', 'glibc (= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), zlib (= 1.3.2-1+toddy1), expat (= 2.10.0-1+toddy1), brotli (= 1.2.0-1+toddy1), inih (= 62-1+toddy1)', 'exiv2-0.28.8.tar.gz', 'usr/lib/pkgconfig/exiv2.pc'),
@@ -280,6 +281,7 @@ if __name__ == '__main__':
     if name=='inih' and (log/'inih-collect-2.exit').exists():qualifier='inih-collect-2'
     if name=='blueprint-compiler':qualifier='blueprint-compiler-finish-2'
     if name=='aspell' and (log/'aspell-dictionary-2.exit').exists():qualifier='aspell-dictionary-2'
+    if name=='enchant':qualifier='enchant-provider-explicit-5'
     if name=='tinysparql':qualifier='tinysparql-numeric-5'
     if name=='gnome-autoar' and (log/'gnome-autoar-probe-3.exit').exists():qualifier='gnome-autoar-probe-3'
     if name=='gnome-terminal' and (log/'gnome-terminal-probe-3.exit').exists():qualifier='gnome-terminal-probe-3'
@@ -1240,6 +1242,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='enchant':
+        from qualify_enchant import qualify as qualify_enchant
+        qualify_enchant(ROOT)
     if name=='aspell':
         from qualify_aspell import qualify as qualify_aspell
         qualify_aspell(ROOT)
