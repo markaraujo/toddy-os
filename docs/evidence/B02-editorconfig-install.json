@@ -1,0 +1,153 @@
+{
+  "scope": "EditorConfig0.12.11 original exact test gitlink, shared C library/CLI with owned PCRE2; optional docs off. Layered UTF8 configuration/error/recovery C API+CLI, no graphical editor/security-wide claim.",
+  "prepared": {
+    "source_sha256": "0aa80e0c90158c8725c29aa978710e8b1071cc5f4e10184576e718349ea32819",
+    "reference": "GNOME Text Editor50.1 src/editorconfig/meson.build required default-enabled dependency; official EditorConfig C Core v0.12.11",
+    "book_page_sha256": null,
+    "source_patches": [],
+    "recipe_sha256": "a120fbe57ed47c322b53f8639a8fed6c9b3f40f18fb9260224427c9dc04b2944",
+    "extra_source": {
+      "name": "editorconfig-original-tests",
+      "version": "0.12.11",
+      "filename": "editorconfig-core-test-d91029bdf1e3e0307714afe0d2cde7ba6fd208ab.tar.gz",
+      "url": "https://codeload.github.com/editorconfig/editorconfig-core-test/tar.gz/d91029bdf1e3e0307714afe0d2cde7ba6fd208ab",
+      "commit": "d91029bdf1e3e0307714afe0d2cde7ba6fd208ab",
+      "sha256": "6ad790d221748e5d9c90a4c42318775ecf6e2876030f3f428fbdac97bcaca8dc",
+      "reference": "Exact tests gitlink from EditorConfig C Core v0.12.11 commit0ba157eff167c1b2d1bc0c3e13975b7a73fb9d25",
+      "integrity": "Publisher git-tree API gitlink, HTTPS immutable test-commit archive SHA256 frozen before guest use; no detached-signature claim",
+      "status": "source_verified"
+    },
+    "extra_sources": [
+      {
+        "name": "editorconfig-original-tests",
+        "version": "0.12.11",
+        "filename": "editorconfig-core-test-d91029bdf1e3e0307714afe0d2cde7ba6fd208ab.tar.gz",
+        "url": "https://codeload.github.com/editorconfig/editorconfig-core-test/tar.gz/d91029bdf1e3e0307714afe0d2cde7ba6fd208ab",
+        "commit": "d91029bdf1e3e0307714afe0d2cde7ba6fd208ab",
+        "sha256": "6ad790d221748e5d9c90a4c42318775ecf6e2876030f3f428fbdac97bcaca8dc",
+        "reference": "Exact tests gitlink from EditorConfig C Core v0.12.11 commit0ba157eff167c1b2d1bc0c3e13975b7a73fb9d25",
+        "integrity": "Publisher git-tree API gitlink, HTTPS immutable test-commit archive SHA256 frozen before guest use; no detached-signature claim",
+        "status": "source_verified"
+      }
+    ],
+    "probe_sha256": "50292adae707a9f0ce157c742a8f8afd0192f98f3e5a4f6b1181cb93e274e2c0"
+  },
+  "stage": {
+    "scope": "EditorConfig0.12.11 original exact test gitlink, shared C library/CLI with owned PCRE2; optional docs off. Layered UTF8 configuration/error/recovery C API+CLI, no graphical editor/security-wide claim.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_ctest_cases": 202,
+    "consumer": {
+      "C_API_and_CLI": true,
+      "UTF8_paths_and_layered_settings": true,
+      "properties": {
+        "indent_style": "space",
+        "indent_size": "2",
+        "tab_width": "2",
+        "charset": "utf-8",
+        "end_of_line": "lf",
+        "insert_final_newline": "true"
+      },
+      "relative_path_and_malformed_config_refusals": 2,
+      "input_state_unchanged": true,
+      "recovery_cycles": 2,
+      "graphical_editor_tested": false
+    },
+    "scratch_free_bytes": 1148174336,
+    "artifacts": {
+      "lib/libeditorconfig.so.0.12.11": "e48644416daf5d2671d819f7588e3c399728bd4412d3b96b60f8af9e49d461be",
+      "bin/editorconfig-0.12.11": "b1acf8c6a16d115cce35742c373471ad1d64cf2029f6d92d64c0ed4743415118",
+      "src/bin/CMakeFiles/editorconfig_bin.dir/main.c.o": "b63245a4c851c0617316ddd48e8c59ae185f561774f0fff270d34cfd43c3ca2d",
+      "src/lib/CMakeFiles/editorconfig_static.dir/editorconfig.c.o": "7de5a46a2151605e6032fdb2f03207465f253f644fbb4e205d3e286db1cf1e25",
+      "src/lib/CMakeFiles/editorconfig_static.dir/ec_glob.c.o": "ac4e904a7b11d9cd7d0bd142f01343a836fb0a72326449fa5a0008e4beb3af9c",
+      "src/lib/CMakeFiles/editorconfig_static.dir/editorconfig_handle.c.o": "10cd470863c9d4734dc8dfac0586cd8ef53a9aa25a2a9222dd38c14e1ef28e1c",
+      "src/lib/CMakeFiles/editorconfig_static.dir/misc.c.o": "4846f86269967fd28fe3e5907b074b5568cc71518e42af9a4063bce1514a5f27",
+      "src/lib/CMakeFiles/editorconfig_static.dir/ini.c.o": "db056ebb2407eac6091c70c002bad30a46c3fec25993e45e938f718551b93cdb",
+      "src/lib/CMakeFiles/editorconfig_shared.dir/editorconfig.c.o": "37c081350c1fa6c7e53deb0448930823766316671285556ea8b08e2a6ee65a1b",
+      "src/lib/CMakeFiles/editorconfig_shared.dir/ec_glob.c.o": "fb2bea0b1027d03b8729c6c1a67609890e46cb768a7a50c140cef70883b295fd",
+      "src/lib/CMakeFiles/editorconfig_shared.dir/editorconfig_handle.c.o": "10cd470863c9d4734dc8dfac0586cd8ef53a9aa25a2a9222dd38c14e1ef28e1c",
+      "src/lib/CMakeFiles/editorconfig_shared.dir/misc.c.o": "c1f33c9daa89130dbc58730d2baa7216c82f4ba4dd381ffe9cb30c2e8a105b1a",
+      "src/lib/CMakeFiles/editorconfig_shared.dir/ini.c.o": "13e0344ebcae5bcf5bcf1ceff047e143ec4461449b7cd4991a57ac5ead0bac0d",
+      "CMakeFiles/CheckTypeSize/HAVE_CONST.bin": "7c2b21ed64eec307bf585f81ef6f5f3a59472c1fa2160bf8d537238bc51dbf49",
+      "CMakeFiles/CheckTypeSize/HAVE__BOOL.bin": "11936e829fa86d07e8af8a1a75e83da9e4cbb6c550e6d77f1e23445c34a3ee46",
+      "CMakeFiles/4.4.2/CMakeDetermineCompilerABI_C.bin": "c1a8200f7395b46f817bf917a20546f4930e99ba65f4ba0bb5d14be5d7b4539c",
+      "CMakeFiles/4.4.2/CompilerIdC/a.out": "f4006dac5653d1e2fd506ddb58a7f8e8c0e2e0d7b13e980847ea142a2c2df739"
+    },
+    "stage_sha256": {
+      "usr/lib/libeditorconfig_static.a": "7f3d32f28c4a529b2902aa4e17990780a34cf5ff8109d453a780462a72a8da8d",
+      "usr/lib/libeditorconfig.so.0.12.11": "e48644416daf5d2671d819f7588e3c399728bd4412d3b96b60f8af9e49d461be",
+      "usr/bin/editorconfig-0.12.11": "641d2d1e7acf05420b7506d83aa46657b12077715301a9b6da803ef29e6bb0aa",
+      "usr/include/editorconfig/editorconfig.h": "bb4e73b861d9b4491de984e949356fd27f63dd30575a2033d761f0dd2807b314",
+      "usr/include/editorconfig/editorconfig_handle.h": "b753b2b64a50f8e4390722771ff76128372c5487f4e4bd74cf6db37ff7e98181",
+      "usr/lib/pkgconfig/editorconfig.pc": "4da5eac56ec34bcaf790f4ca49f7dad47cf2242e25c0a0fa58bcc62cda718599",
+      "usr/lib/cmake/EditorConfig/EditorConfigTargets.cmake": "b9cd7c15d62f2c01800d5a5430a7986bec6e347f524fe4f27a3cc6d988fbc89b",
+      "usr/lib/cmake/EditorConfig/EditorConfigTargets-release.cmake": "f6c6aa25aa72c7e4f68571071b0e0789ad4b7bad140a29d8daf9ea89eb64820c",
+      "usr/lib/cmake/EditorConfig/EditorConfigConfigVersion.cmake": "b0025757e764c023f3930720d20ec1c192f161d028ae2e093a2e9bd599f6fb0d",
+      "usr/lib/cmake/EditorConfig/EditorConfigConfig.cmake": "4a04dabe9c494c577938a0c577287d5335d028350966593da88bf438b841cec1"
+    }
+  },
+  "job": {
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 26,
+    "log_sha256": "313f4a901ce1a8a033b158aad0cc17cb9b099642491a05724c6070213e8a5af7"
+  },
+  "consumer": {
+    "scope": "Actual owned installed EditorConfig C API/CLI, layered UTF8 settings, UID101/NoNewPrivs/private devices/no external route, Relative path/malformed configuration refusal/input retention/recovery, all staged bytes retained/APT0. Builder kernel; no editor/GUI/general parser-security acceptance.",
+    "consumer": {
+      "C_API_and_CLI": true,
+      "UTF8_paths_and_layered_settings": true,
+      "properties": {
+        "indent_style": "space",
+        "indent_size": "2",
+        "tab_width": "2",
+        "charset": "utf-8",
+        "end_of_line": "lf",
+        "insert_final_newline": "true"
+      },
+      "relative_path_and_malformed_config_refusals": 2,
+      "input_state_unchanged": true,
+      "recovery_cycles": 2,
+      "graphical_editor_tested": false
+    },
+    "installed_stage_files_identical": 10,
+    "shared_library_resolution": true
+  },
+  "package_archive_sha256": "a0803a62f0d5e857c62b97fbbfb84423f3f0f7f6776c3e6d3479a3b351f600ed",
+  "timing": {
+    "step": "b02-editorconfig-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.751,
+        "entries": 161239,
+        "regular_files": 143884,
+        "regular_bytes": 7496258168
+      },
+      {
+        "seconds": 14.646,
+        "entries": 161262,
+        "regular_files": 143900,
+        "regular_bytes": 7496382859
+      }
+    ],
+    "total_seconds": 32.528
+  },
+  "scratch": {
+    "state": "mounted",
+    "scope": "New private compiler subtree only on existing preallocated Doxygen scratch; no allocation/format/resize/deletion of original cache. Only worker mounted in compiler sandbox.",
+    "filesystem_uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+    "source": "/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/editorconfig-1",
+    "source_inode": 1011,
+    "target": "/mnt/lfs/sources/phase2/work/editorconfig-1",
+    "original_doxygen_manifest_sha256": "a21d220a2550ce44311f47e1d4c3e0fe0fb87314f8205e0833051164eb34c412",
+    "original_doxygen_unchanged": true,
+    "recovery": "After cold restore verify existing Doxygen UUID and this worker inode, then bind same subtree onto existing empty editorconfig-1 mountpoint. Never recreate, format or replay this preparation."
+  },
+  "target_free_bytes": 17356251136,
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-editorconfig-evidence.tar.gz",
+    "sha256": "613d7d70c23682201d3a369b3dae780e9fd4b057900000f30fd1a61a2cb11fb5",
+    "bytes": 93130
+  }
+}

@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'editorconfig': ('0.12.11', 'glibc (>= 2.44-1+toddy1), pcre2 (= 10.49-1+toddy1)', 'editorconfig-0.12.11.tar.gz', 'usr/lib/pkgconfig/editorconfig.pc'),
     'libspelling': ('0.4.11', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy8), gtksourceview (= 5.20.0-1+toddy1), enchant (= 2.8.19-1+toddy1), icu (= 78.3-1+toddy1)', 'libspelling-0.4.11.tar.xz', 'usr/lib/pkgconfig/libspelling-1.pc'),
     'enchant': ('2.8.19', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), aspell (= 0.60.8.2-1+toddy1)', 'enchant-2.8.19.tar.gz', 'usr/lib/pkgconfig/enchant-2.pc'),
     'aspell': ('0.60.8.2', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), ncurses (= 6.6-1+toddy1)', 'aspell-0.60.8.2.tar.gz', 'usr/include/aspell.h'),
@@ -1244,6 +1245,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='editorconfig':
+        from qualify_editorconfig import qualify as qualify_editorconfig
+        qualify_editorconfig(ROOT)
     if name=='libspelling':
         from qualify_libspelling import qualify as qualify_libspelling
         qualify_libspelling(ROOT)
@@ -1581,6 +1585,7 @@ if __name__ == '__main__':
         (doc/'original-test-review.json').write_text(json.dumps(review(source.parent/'original-tests.log',Path('/mnt/lfs/sources/phase2/inputs/libxslt-1.1.45')),indent=2)+'\n')
         (doc/'README.Toddy').write_text('Build-only xsltproc SDK for authenticated source UI transformations; not a GNOME Terminal runtime dependency. Core driver reports748cases/noerrors; four original DocBook golden whitespace differences remain unaccepted. No complete original-suite/general CLI parser sandbox or DocBook rendering qualification. Use bounded explicit nonet/nowrite/nomkdir/maxdepth/maxvars for selected fixtures. See original-test-review.json.\n')
     archives=[archive]
+    if name=='editorconfig':archives.append('editorconfig-core-test-d91029bdf1e3e0307714afe0d2cde7ba6fd208ab.tar.gz')
     if name=='aspell':archives.append('aspell6-en-2020.12.07-0.tar.bz2')
     if name=='glycin-gtk4':archives+=['glycin-2.1.5-vendor.tar.gz','rustc-1.97.1-src.tar.xz']
     if name=='vte':archives+=['fmt-12.2.0.tar.gz','fast_float-8.2.10.tar.gz']
