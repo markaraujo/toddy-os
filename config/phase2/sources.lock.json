@@ -2552,6 +2552,18 @@
       "book_page_sha256": "606262b90b5d4fa0ba1d417910748435d50c2ea9993e7c3a4f46fa30b2d3efe2",
       "integrity": "Exact English dictionary filename linked by frozen book; GNU HTTPS archive SHA256 observed and frozen before guest use; book publishes no dictionary checksum. Not a detached-signature authentication claim.",
       "status": "source_verified"
+    },
+    {
+      "name": "unittest-cpp-test-sdk",
+      "version": "2.0.0",
+      "filename": "unittest-cpp-2.0.0.tar.gz",
+      "url": "https://codeload.github.com/unittest-cpp/unittest-cpp/tar.gz/d0980fe7e2be2b8febcd82bfba94b957a24f8eff",
+      "sha256": "328feff910901baa11b4b28b57da1bae273eb26539969c501d77d814c60247fa",
+      "commit": "d0980fe7e2be2b8febcd82bfba94b957a24f8eff",
+      "reference": "BLFS13.1-systemd general/enchant.html optional unittest-cpp required for original tests; official v2.0.0 release source",
+      "release_url": "https://github.com/unittest-cpp/unittest-cpp/releases/tag/v2.0.0",
+      "integrity": "Official GitHub release tag resolved to full commit via publisher API, immutable commit archive fetched by HTTPS, SHA256 frozen before guest use; no detached-signature claim",
+      "status": "source_verified"
     }
   ]
 }

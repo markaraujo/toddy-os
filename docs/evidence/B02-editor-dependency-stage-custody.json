@@ -1,0 +1,32 @@
+{
+  "scope": "Only two new verified promotion replicas; installed packages/original build stages/source/test evidence/native archives retained, no old custody replay or trim",
+  "state": "complete",
+  "producer_sha256": "96e86659086932f877c3987bc1de19f4541808f35cfccbb63ccaa0fd65ac2749",
+  "stages": [
+    {
+      "name": "tinysparql",
+      "stage": "/mnt/lfs/sources/stage/phase2-tinysparql",
+      "inode": 10032054,
+      "archive": "/var/cache/toddy/packages/tinysparql_3.11.1-1+toddy1_amd64.deb",
+      "archive_sha256": "00926d1ffc08af1d8f800512e436f1e9d93e25abcffa3d7773e09e8d9d549094",
+      "record_sha256": "a96b552e4b2e8f54641dab93c1324df2772f5db1f26026d7e707d11be0f13698",
+      "payload_entries": 280,
+      "state": "retired"
+    },
+    {
+      "name": "exiv2",
+      "stage": "/mnt/lfs/sources/stage/phase2-exiv2",
+      "inode": 10160561,
+      "archive": "/var/cache/toddy/packages/exiv2_0.28.8-1+toddy1_amd64.deb",
+      "archive_sha256": "2c5a7cb6c66a871623f30bbc36bc018b320ed452ff0cf68c874da45a57160cea",
+      "record_sha256": "0f1902ca6a5d5e140739678691f6783af1f26f3f12b387954ffd826893e4a880",
+      "payload_entries": 80,
+      "state": "retired"
+    }
+  ],
+  "before_free_bytes": 17200562176,
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 17214328832,
+  "recovery": "Verify native archive/record SHA and extract to a NEW stage if needed; never reinstall or replay retirement. Original compiler stages, sources and raw tests remain.",
+  "reclaimed_bytes": 13766656
+}

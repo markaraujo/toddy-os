@@ -8,48 +8,37 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current eligible B02 slice: Enchant2.8.19/UnitTest++ prerequisites for selected
-GNOME Text Editor50.1/Libspelling0.4.11. Aspell0.60.8.2 and official English
-SCOWL2020.12.07 are NOW OWNED and qualified via installed API/CLI, not GUI.
-[Proof](evidence/B02-aspell-install.json), ADR0206. Source mainSHA
-57fe4863eae6048f72245a8575b44b718fb85ca14b9f8c0afc41b254dfd76919;
-EnglishSHA4c8f734a28a088b88bb6481fcf972d0b2c3dc8da944f7673283ce487eac49fb3.
-Main input1/compilePID2087 terminal2 after successful compiler/staging but wrong
-own dictionary data-dir (missing charset); no .rws produced. Resume dictionary2
-PID8463 terminal0 only:22real dictionary files,92ELFs unchanged/244stagefiles.
-Original recipeSHAcdfdf53b1490540a9291eecf697fd7489315eadfa781a5ecdaec02345db10d35
-immutable. Source/main compiler/stage/dictionary/probe MUST NOT be replayed.
+Current eligible B02 slice: Enchant2.8.19 stage qualified, not installed.
+[Proof](evidence/B02-enchant-stage.json). Job5PID23286 terminal0; original
+SDK267/main432/explicit real Aspell provider25cases passed, all current compiled
+and staged hashes independently matched. Default provider scan zero cases is NOT
+a pass; four upstream CLI scripts unexecuted. Own staged API/CLI English dictionary,
+UTF8 personal persistence/session/refusal/recovery passed; no editor/GUI acceptance.
+SDK remains private build-only. Source SHA
+c8d70991d544ee39274b96bd01d2858a009fe732ff43f2aaf605fd61ecd06f60.
+Original recipeSHA c2c74aba728c71cffe61a1ce11a5e0facf827b75417dd88593fd7a9cbec4aeab.
+All five job results and exact correction payloads retained; no build/test/stage replay.
+Recovery4 accidentally overwrote failed header-compilation stdout3: preserve this
+limitation, actual exit/resource record and separately labelled observation; do not
+claim reconstructed raw output. Raw archive SHA
+eaf9d9679e8d79d024c4d6a67bce0c0bf882c51198b981eab2cbd52b9ccd579f.
 
-Native installPID9487 recipe0/post1,267changes/347entries, installed=true; postcheck
-expected absent setpriv before consumer start. Corrected only own native prctl
-launcher after UID/GID101; verify2PID9934 recipe/post0/0/full-root changed0.
-No reinstall. Native archiveSHA70368e76eaba8efe0c1195b7f23952eac5c5e49587ad1f9bc3df1df2e3735241.
-Raw .local/phase2/exports/B02-aspell-install-evidence.tar.gz SHA
-1769dd1f71c75eb21d067c5cd8ac19cf654a55f53e5aaf4a8dd517719d199bcb.
-Aspell has no original upstream suite; own real known/misspelling/suggestion,
-UTF8 personal persistence/session clear/malformed+language+option refusal/state
-retention/two recoveries and installed private-device/no-route/NoNewPrivs/APT0.
-No Portuguese dictionary, Enchant/editor/GUI/general parser-security claim.
+Aspell installed/qualified, no reinstall. Duplicate promotion stage custody1 and
+Tinysparql/Exiv2 custody1 COMPLETE, NEVER replay. Original source/compiler/workstage,
+archives, installed payload and raw evidence retained; full-root changed0.
+[Custody1](evidence/B02-aspell-stage-custody.json),
+[custody2](evidence/B02-editor-dependency-stage-custody.json).
+Aspell Info inventory metadata correction COMPLETE; original package/index unchanged,
+[installed proof](evidence/B02-aspell-install.json), ADR0206.
 
-Original native backend updated shared /usr/share/info/dir for two manuals;
-full-root change preserved, no ownership handoff. Its generated_paths inventory
-omitted this when no prebuilt index staged. Future packager projection fixed,
-registration unchanged. Existing package metadata reconciliation1 COMPLETE,
-original/corrected records retained, archive/index/payload unchanged by correction.
-Corrected recordSHAe845356375a7ad0d34ca7b68bc0b373db1d705ac7b947e84fc38b9fe3592600b.
-Receipt /var/log/toddy/phase2/aspell-info-metadata-1.json COMPLETE; NEVER replay.
-Supplement rawSHA980c86efa9a570feff906319e474381d4241f4f0e053f59e2d4d42abb730447e.
-
-Target free after verification17204727808B (~23.7MiB above16GiB reserve), so do NOT
-blindly extract/build more. EXACT NEXT: inspect qualified duplicate promotion
-stage /mnt/lfs/sources/stage/phase2-aspell against complete installed archive/
-payload/control/metadata; use a narrowly bounded byte-exact custody/retirement
-path to recover target headroom while retaining original compiler/source/work
-stage and every package/raw evidence byte. No retirement performed yet. Read
-existing stage retirement/custody contracts and actual directory before mutation.
-Then authenticate selected Enchant test-only UnitTest++ SDK, build with real owned
-Aspell provider and original tests enabled (--enable-relocatable per frozen book).
-Preserve16GiB target/100GiB host margins; no guard reduction or trim replay.
+Actual last target free17196384256B, reserve17179869184B (~15.8MiB headroom).
+EXACT NEXT: inspect stage size and native package transaction space needs, then
+prepare Enchant owned profile/qualifier/install/check using existing controlled
+stage backend. Do not dispatch unless target16GiB and host100GiB reserves hold.
+No Enchant native package installation has run. Main source and compiled/staged
+outputs remain at /mnt/lfs/sources/phase2/{inputs/enchant-2.8.19,work/enchant-1}.
+Builder boot9d54ab78-a01a-428b-86e9-6055effef25b; job5 terminal verified, no new
+writer launched. Full B02 then stop, not full Phase2 completion.
 
 Editor [SDK preflight](evidence/B02-editor-sdk-preflight.json) is historical before
 Aspell installation:7owned modules found; Enchant/Libspelling/EditorConfig absent.

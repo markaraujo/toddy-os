@@ -1,0 +1,19 @@
+{
+  "state": "complete",
+  "scope": "Only closed Aspell native-promotion usr replica; installed payload/original source/compiler/workstage/dictionary/raw evidence/native archive/DEBIAN retained. No install/trim/rebuild replay.",
+  "stage": "/mnt/lfs/sources/stage/phase2-aspell",
+  "stage_inode": 8074659,
+  "archive": "/var/cache/toddy/packages/aspell_0.60.8.2-1+toddy1_amd64.deb",
+  "archive_sha256": "70368e76eaba8efe0c1195b7f23952eac5c5e49587ad1f9bc3df1df2e3735241",
+  "record_sha256": "e845356375a7ad0d34ca7b68bc0b373db1d705ac7b947e84fc38b9fe3592600b",
+  "control": {
+    "DEBIAN/control": "1a5f4afa984fde7202e13616e91f6f2f76b810d8b6b09745e608c5ebfa8d73d3"
+  },
+  "qualified_compiler_ELFs": 92,
+  "qualified_workstage_files": 244,
+  "before_free_bytes": 17204727808,
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 17214349312,
+  "recovery": "Verify retained native archive/record hashes and extract to a NEW stage if needed. Never reinstall, replay custody, or retire the original compiler/workstage.",
+  "reclaimed_bytes": 9621504
+}
