@@ -1,0 +1,793 @@
+{
+  "scope": "Owned minimal Wayland Shell50.4 with NM/Systemd/PipeWire camera. Actual compile/stage128ELFs/149files; native package/CLI/UID101 GI/source-JS/private-schema consumer only. Initial own type/range assertion corrected by probe2, all compiled/staged hashes unchanged. Upstream display suite not selected and native login/real GUI/audio/network/accessibility/offline remain pending. Optional extensions management tools/apps omitted with dead launcher removed; captive portal uses upstream browser fallback. No preference/service changes by postcheck.",
+  "source": {
+    "name": "gnome-shell",
+    "version": "50.4",
+    "filename": "gnome-shell-50.4.tar.xz",
+    "url": "https://download.gnome.org/sources/gnome-shell/50/gnome-shell-50.4.tar.xz",
+    "sha256": "c531939539db316a41aef23670370abd1330d3254f84bcb0f9f4dae5d6e362cf",
+    "upstream_sha256_url": "https://download.gnome.org/sources/gnome-shell/50/gnome-shell-50.4.sha256sum",
+    "upstream_sha256_file_sha256": "97836574197071c8e68885c50107d7b3d36661a5ef50980ae4a0949166b61f2a",
+    "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Frozen minimal Wayland/Systemd/NM/PipeWire camera. Extensions management tools/apps and WebKit captive portal helper optional omitted. Actual CLI/GI/source JS and private schema checks only; upstream display suite/native graphical login/input/accessibility still pending. Own initial type/range API probe failure retained.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [],
+    "original_suite_pending": true,
+    "consumer": {
+      "scope": "Real Shell/St GI type and weekday, unchanged source Params through native GJS, private schema/memory roundtrip/refusal/reset only; stock cache/desktop/input/login untested",
+      "GI_type": "StWidget",
+      "params": {
+        "cycles": 2,
+        "defaults": true,
+        "override": true,
+        "unknown_refused": true,
+        "explicit_extra": true,
+        "recovery": true
+      },
+      "params_source_sha256": "74c02be9504e4b38dd3d100168e373db6056658a54005c5a704e7de0386d7664",
+      "schema_count": 94,
+      "schema_inputs": [
+        {
+          "path": "gschema.dtd",
+          "sha256": "44a12f339042a3f5568a9cc86bb617fabaf4a25836b8c9510aa9de22431930c6"
+        },
+        {
+          "path": "org.freedesktop.ColorHelper.gschema.xml",
+          "sha256": "096896a93ff7316edca288a2f7866f62417793b686b1a3e04427c548c191ae74"
+        },
+        {
+          "path": "org.freedesktop.ibus.gschema.xml",
+          "sha256": "80faacf042cd2d4692536f5b2b4e76b7ce2d4c82fcfc4c2cd8493b238bc38b7a"
+        },
+        {
+          "path": "org.gnome.Evolution.DefaultSources.gschema.xml",
+          "sha256": "3cf064656716c98dce393da025bc121a9f791a72d9325d6102604f070e859a7a"
+        },
+        {
+          "path": "org.gnome.GWeather4.enums.xml",
+          "sha256": "4850d7df2eea3c3c3e4cafb2aa70fd7c7e4eb72f191bbef9ffae048bfb7e3ef9"
+        },
+        {
+          "path": "org.gnome.GWeather4.gschema.xml",
+          "sha256": "9f9b03d82ba3b3fcd40504b183a724671040afb4c657e7f270906b58206f37af"
+        },
+        {
+          "path": "org.gnome.SessionManager.gschema.xml",
+          "sha256": "1fc1be5ac6b0a8a636dfbd69c2ff3a9824c094bbf164be9aa6dcbbdff9559733"
+        },
+        {
+          "path": "org.gnome.crypto.cache.gschema.xml",
+          "sha256": "471a7453f9c4b0d59282dcedf241461d51ba1d480135d07b3fc057799f6b5b80"
+        },
+        {
+          "path": "org.gnome.crypto.pgp.gschema.xml",
+          "sha256": "0f98183990eed20631ffd0195f921871b999e72d87a75303c7a9348fe3637f1f"
+        },
+        {
+          "path": "org.gnome.desktop.a11y.applications.gschema.xml",
+          "sha256": "6e67c6d900b0e698681454948dc6a11904edc1059af69d83ae8ff1c69abfe4ca"
+        },
+        {
+          "path": "org.gnome.desktop.a11y.gschema.xml",
+          "sha256": "f471028deedc07708638c7ea056ed1c6eb6632b987905321085288e836f337a8"
+        },
+        {
+          "path": "org.gnome.desktop.a11y.interface.gschema.xml",
+          "sha256": "a78954d4d3a60ca3b11790b0b9dec7a3f6f865d8fdb8106d08881756522c6624"
+        },
+        {
+          "path": "org.gnome.desktop.a11y.keyboard.gschema.xml",
+          "sha256": "429b25000a947e1b03724546e88b0f3dd6d3bac42addaec36d6cf81062c89cbb"
+        },
+        {
+          "path": "org.gnome.desktop.a11y.magnifier.gschema.xml",
+          "sha256": "0316beb1020bf0e1594c1578d4ee17044d8d4f04a58e788631b054503f07e0a0"
+        },
+        {
+          "path": "org.gnome.desktop.a11y.mouse.gschema.xml",
+          "sha256": "2409903ede1c85e899ff6576bc9711b9016704ee0434c22287d34d7e8c888c36"
+        },
+        {
+          "path": "org.gnome.desktop.app-folders.gschema.xml",
+          "sha256": "f6a6be999af5d5ed29079432182af7708adefc0a2c7beeb7418254487ee4b772"
+        },
+        {
+          "path": "org.gnome.desktop.background.gschema.xml",
+          "sha256": "5947187d029261164eb3e938b529aafff3b3625f2f0bdc6185bbf5776afd28c6"
+        },
+        {
+          "path": "org.gnome.desktop.break-reminders.gschema.xml",
+          "sha256": "de47dd4e0b171c1eb0b7e81761a78f23d043abe662895e37e39a314f96bb192b"
+        },
+        {
+          "path": "org.gnome.desktop.calendar.gschema.xml",
+          "sha256": "9c2f2169d8cc6cc818179e340db60e3edf1f1d804b0e84415d1ad1c7315d01e0"
+        },
+        {
+          "path": "org.gnome.desktop.datetime.gschema.xml",
+          "sha256": "db8f91d8966e24570844f4f0e52b6d5e4d0212cb398c71509f5f3cab6b39d292"
+        },
+        {
+          "path": "org.gnome.desktop.default-applications.gschema.xml",
+          "sha256": "a7c99035d26c1065e9c06541515d06e5ed4d105313f18afad44e628ba32ff280"
+        },
+        {
+          "path": "org.gnome.desktop.enums.xml",
+          "sha256": "8f8b68a34689ad5ede33a1d1d1c7ab3a8691aea83cf15bd3dcce82d9ded94f41"
+        },
+        {
+          "path": "org.gnome.desktop.input-sources.gschema.xml",
+          "sha256": "1255b1e6ba8fcccf43a87ff6ca2343fd55b99f2d89a936556ff1fa6a9b23069e"
+        },
+        {
+          "path": "org.gnome.desktop.interface.gschema.xml",
+          "sha256": "ff7b0f1f22c85ee8a134ca4ce78eb293f416409032efefdde9a5923f1bc2d478"
+        },
+        {
+          "path": "org.gnome.desktop.lockdown.gschema.xml",
+          "sha256": "3578e779ecee25ec24cb69e7170411c03f578ecda3f48455b86305b442fcad65"
+        },
+        {
+          "path": "org.gnome.desktop.media-handling.gschema.xml",
+          "sha256": "cdaa8e9740fb99852b237cfae8efcd0bb85d2de8b32ea483aad4919e3c87bb10"
+        },
+        {
+          "path": "org.gnome.desktop.notifications.gschema.xml",
+          "sha256": "b7e983b5fa4cedccba7e6494c89de0997274986cdc69377a51589d97ac07acb4"
+        },
+        {
+          "path": "org.gnome.desktop.peripherals.gschema.xml",
+          "sha256": "cc4e5467c6d171852d8ca898d876848e8b57f347902a432990ab91c7439efee1"
+        },
+        {
+          "path": "org.gnome.desktop.privacy.gschema.xml",
+          "sha256": "304f26f2030d538f0e7ab1a8bae486e2b5e5879bc55c618e8931dc822284abd5"
+        },
+        {
+          "path": "org.gnome.desktop.screen-time-limits.gschema.xml",
+          "sha256": "252058749b1c7c24fc497061f7c15623d7fffe988c3961b17ee05e7ae4fd9d51"
+        },
+        {
+          "path": "org.gnome.desktop.screensaver.gschema.xml",
+          "sha256": "82e61a216bfe8bdad9b98400389cb179f149071dba8ff89720a03cc83ca633a8"
+        },
+        {
+          "path": "org.gnome.desktop.search-providers.gschema.xml",
+          "sha256": "00e6c4931d9a4005be80abae2d28bb7b716724cedc19c7be9e6d015a0ac0ea9c"
+        },
+        {
+          "path": "org.gnome.desktop.session.gschema.xml",
+          "sha256": "a18788e5bc793c92ed0763c57aa33560a07527e785029c6d7fb224c95796c858"
+        },
+        {
+          "path": "org.gnome.desktop.sound.gschema.xml",
+          "sha256": "ff7dcae2b2b3d6109bf4d75511f0ce1538e39b0593bfcd33f35f12653c62be92"
+        },
+        {
+          "path": "org.gnome.desktop.thumbnail-cache.gschema.xml",
+          "sha256": "20246fc5002a989287eb7e5e351cfd79245df63d0978b879882ff3d534b8f9fb"
+        },
+        {
+          "path": "org.gnome.desktop.thumbnailers.gschema.xml",
+          "sha256": "899bfc15c310051674714addc541824556a1e6d65b32cb715cba18662dc6ea02"
+        },
+        {
+          "path": "org.gnome.desktop.wm.keybindings.gschema.xml",
+          "sha256": "23ab886d75e93a79b5829677d1d41f55d4ec27a823b239e9f1b80d5b7dd64efa"
+        },
+        {
+          "path": "org.gnome.desktop.wm.preferences.gschema.xml",
+          "sha256": "cccc86360fb6fbe451e8b27c97d756c711d85dc21bc191075dab2b8613b055a1"
+        },
+        {
+          "path": "org.gnome.evolution-data-server.addressbook.gschema.xml",
+          "sha256": "231ec9c542473d42f15dcd483891e82b0497a5623e30aa31374dbb0c3c620c83"
+        },
+        {
+          "path": "org.gnome.evolution-data-server.calendar.gschema.xml",
+          "sha256": "159dadd5f5c93636a25d0698da88d2a1a2869df37055b58ee4710b546e774304"
+        },
+        {
+          "path": "org.gnome.evolution-data-server.gschema.xml",
+          "sha256": "06b8388dec89e2f7e15d0176b4552f49c41ab2be7f1362b4133bc1bc4c6118d7"
+        },
+        {
+          "path": "org.gnome.evolution.eds-shell.gschema.xml",
+          "sha256": "3cef34c338212bd6552fd07070def888727fabf0f31484c0ec376aa4760b779f"
+        },
+        {
+          "path": "org.gnome.evolution.shell.network-config.gschema.xml",
+          "sha256": "1991fe03daf18bdf5b450fa6bb5b06a48f48a38b712fc8206addcaddd7a33822"
+        },
+        {
+          "path": "org.gnome.login-screen.gschema.xml",
+          "sha256": "e94da7e9bfbe8c6eff341549c5568065f6d91388e4df6362cf03461dc766a2a0"
+        },
+        {
+          "path": "org.gnome.mutter.gschema.xml",
+          "sha256": "acd1808a1b6c846943872d8d13a935c31ffc572e224828f68b103dd4c5fe21a3"
+        },
+        {
+          "path": "org.gnome.mutter.wayland.gschema.xml",
+          "sha256": "a9f5c8057f6fb4bf19459862f1a47e29a863800dce1db5fc1b6cf810010a2dad"
+        },
+        {
+          "path": "org.gnome.nm-applet.eap.gschema.xml",
+          "sha256": "86aa19fbdf31374c52377eee5ce2d2a8d08623a240e23d39fbe6a68b2ecc4d99"
+        },
+        {
+          "path": "org.gnome.nm-applet.gschema.xml",
+          "sha256": "0dab7bd88d9b1e701f59961176fe5213596d3500eaea0bc4627889e6255ee45b"
+        },
+        {
+          "path": "org.gnome.settings-daemon.enums.xml",
+          "sha256": "5fa52547883de70a819312004a4ba6d0cc3d4ab7f60d0445411e33eb96779b87"
+        },
+        {
+          "path": "org.gnome.settings-daemon.global-shortcuts.gschema.xml",
+          "sha256": "f9cbd16e6afe7abdbe79b107cd1cd09a3adde85874ef49b8cede00811a9b71ee"
+        },
+        {
+          "path": "org.gnome.settings-daemon.peripherals.gschema.xml",
+          "sha256": "c566d7adb153763b019af9fe052dadaf783270aab9cd413e6e3b15b48f992329"
+        },
+        {
+          "path": "org.gnome.settings-daemon.peripherals.wacom.gschema.xml",
+          "sha256": "280b1f79bfd8f6c2f212bc6a4e8630096e1bf13480c92dd999407fce8ef97aca"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.color.gschema.xml",
+          "sha256": "55d3f13c6482245188ee67f886970777d9b4a83633c1d444a6f09803a6ef575a"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.gschema.xml",
+          "sha256": "abaf06275be61c07275efe3d81532cee73174a60abef6cbae5c7885c0905be7f"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.housekeeping.gschema.xml",
+          "sha256": "67c91d8cb3c3e679eaba93fb7305d21b664133bfa0fce168b548569f691d8e1f"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.media-keys.gschema.xml",
+          "sha256": "70be5ddc570d82696744e552ef1bf3b0f07f61c1f3900ec32cae403a2a5dbe38"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.power.gschema.xml",
+          "sha256": "dbfd56ba767b9677928fa178d19504efd67c14aa2d5a6ce4dd60493dc31785cd"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.sharing.gschema.xml",
+          "sha256": "25b726557bcfea0a12422518ba7d27c36d14526fa505bbd92d59dc7a007fdfbd"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.xsettings.gschema.xml",
+          "sha256": "6e2dafedc47c2c6f3fcbc82eb88e34208ca73e35ca39ba4e40aa004ebbdaa3f6"
+        },
+        {
+          "path": "org.gnome.system.locale.gschema.xml",
+          "sha256": "5b1e65629a77dcd201f4d86932ad62c0c41ec61fb117f151966d13e69411e2dc"
+        },
+        {
+          "path": "org.gnome.system.location.gschema.xml",
+          "sha256": "3fe90ebe8c851340249a1febe741b777c65b49a823201ead02f341be861060ed"
+        },
+        {
+          "path": "org.gnome.system.proxy.gschema.xml",
+          "sha256": "0f02db915e726017c17c1619ee9fd8f9ee7e6d4698f0fc160a0eb88b29f2bafd"
+        },
+        {
+          "path": "org.gtk.Demo4.gschema.xml",
+          "sha256": "e20a078510ee04476c87f9f8452371ba829ee7de2f2d862ea732793719e74846"
+        },
+        {
+          "path": "org.gtk.Settings.ColorChooser.gschema.xml",
+          "sha256": "e476913ef61e6719ff56c2e4c5b8b276af3020bfb0d007263c2a241835730882"
+        },
+        {
+          "path": "org.gtk.Settings.Debug.gschema.xml",
+          "sha256": "de0685fdc2f6e890e32445a79aa938e5566b8dd406dd71d6c6a66c69e3f941e3"
+        },
+        {
+          "path": "org.gtk.Settings.EmojiChooser.gschema.xml",
+          "sha256": "22aba28a5a78745d87eeded88f1b86f7ddea24b1b90771151ef494c660a1b591"
+        },
+        {
+          "path": "org.gtk.Settings.FileChooser.gschema.xml",
+          "sha256": "c7089f41d22b3854c05fe4996ff271949b40148a40b9c6f0ae0349792dc94b77"
+        },
+        {
+          "path": "org.gtk.gtk4.Inspector.gschema.xml",
+          "sha256": "0a716456c56ff6a4f3ad1d72b2205b2e982a231a9586cba32bc7d1bcc93cf45a"
+        },
+        {
+          "path": "org.gtk.gtk4.Settings.ColorChooser.gschema.xml",
+          "sha256": "3c60a020ac823ad9c02394c8579296711a148fb6e15dac1c4dffa3470303af32"
+        },
+        {
+          "path": "org.gtk.gtk4.Settings.Debug.gschema.xml",
+          "sha256": "f3093b00e9184a19289f0755345e3414921aafe15433342b36b327ade2048998"
+        },
+        {
+          "path": "org.gtk.gtk4.Settings.EmojiChooser.gschema.xml",
+          "sha256": "893b260569e832bb96bfa5ff95893f85d81543069799f22bf66dd419ad50a702"
+        },
+        {
+          "path": "org.gtk.gtk4.Settings.FileChooser.gschema.xml",
+          "sha256": "e7a7482f7937a0588961613df2b14e509b08c1281bdb0b12ab279856d7d8fcea"
+        },
+        {
+          "path": "00_org.gnome.shell.gschema.override",
+          "sha256": "067c8a8d0a7eb0642b3969801e3c845436060e8cc6f39f4748c1d9772d410cf3"
+        },
+        {
+          "path": "org.gnome.shell.gschema.xml",
+          "sha256": "88a5b3d8d7cc42903e5756781c02a7000013e7dabeeb80855b1b36f7eda6f0d6"
+        }
+      ],
+      "favorite_apps_cycles": 2,
+      "wrong_type_refused": true,
+      "preferences_changed": false
+    },
+    "version": "GNOME Shell 50.4",
+    "probe_only_recovery": {
+      "compile_and_stage_unchanged": true,
+      "corrected_probe_sha256": "8dfb39e9ae4890f0036ad16a2d5dd20d828d1d08b2419a64fded59ee12f530a9",
+      "original_failure_retained": true
+    },
+    "artifacts_count": 128,
+    "artifacts_manifest_sha256": "03a2647e3cabe7f7c400191d287f16f399a388c48ce3774dd836caf7c2cc155e",
+    "stage_sha256_count": 149,
+    "stage_sha256_manifest_sha256": "6e6a372fb675065e13f5f22808c3d897b9b35c07baf09fb7d5d46ff855e71c0e"
+  },
+  "native_transaction": {
+    "step": "b02-gnome-shell-install",
+    "started": "2026-11-10T03:16:06.396699+00:00",
+    "recipe_sha256": "56c44392733cb0264f76e7daf45a2e83f4308362f05ed14e6001927c807f3fa5",
+    "postcheck_sha256": "ea1a7af201e9d224a2b702d1f846df8f54fdc500664c8c7399f5c3721349d84f",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "0bd1d15174cbcdd4b6be4e7468378818f003f78a152cf9cb596b9ec0c658627f",
+    "recipe_pid": 9163,
+    "recipe_pgid": 9163,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T03:16:25.993739+00:00",
+    "changed_paths": 343,
+    "log_sha256": "70e2d5c786e37accdc30cebdc6a80c258f98e5bb49be515bb3cbe65dfe7ad335",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "7949a1a260537084b5629336936b079a2d5b6902875e5aaac62f7af2727d3c75"
+  },
+  "package": {
+    "name": "gnome-shell",
+    "version": "50.4-1+toddy1",
+    "archive_sha256": "24ba0f62ee26176c866649ff36b0c1ff91fd090bb82ee8c39811763bfd316bd9",
+    "recipe_sha256": "56c44392733cb0264f76e7daf45a2e83f4308362f05ed14e6001927c807f3fa5",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "gnome-shell",
+        "version": "50.4",
+        "filename": "gnome-shell-50.4.tar.xz",
+        "url": "https://download.gnome.org/sources/gnome-shell/50/gnome-shell-50.4.tar.xz",
+        "sha256": "c531939539db316a41aef23670370abd1330d3254f84bcb0f9f4dae5d6e362cf",
+        "upstream_sha256_url": "https://download.gnome.org/sources/gnome-shell/50/gnome-shell-50.4.sha256sum",
+        "upstream_sha256_file_sha256": "97836574197071c8e68885c50107d7b3d36661a5ef50980ae4a0949166b61f2a",
+        "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "7949a1a260537084b5629336936b079a2d5b6902875e5aaac62f7af2727d3c75",
+    "payload_count": 547,
+    "payload_manifest_sha256": "bbbc350e36113b121441e7868a446fe8bb57a3a6bc86ec40063cd482edc24dfc"
+  },
+  "installed_consumer": {
+    "scope": "Actual UID101 installed Shell/St GI, source JS parameters, private schema memory roundtrip/type detection/reset, CLI/package audit only. Source Params fixture copied with accepted hash; no fake display/login. Stock cache and native graphical session/original display suite remain pending.",
+    "consumer": {
+      "scope": "Real Shell/St GI type and weekday, unchanged source Params through native GJS, private schema/memory roundtrip/refusal/reset only; stock cache/desktop/input/login untested",
+      "GI_type": "StWidget",
+      "params": {
+        "cycles": 2,
+        "defaults": true,
+        "override": true,
+        "unknown_refused": true,
+        "explicit_extra": true,
+        "recovery": true
+      },
+      "params_source_sha256": "74c02be9504e4b38dd3d100168e373db6056658a54005c5a704e7de0386d7664",
+      "schema_count": 94,
+      "schema_inputs": [
+        {
+          "path": "00_org.gnome.shell.gschema.override",
+          "sha256": "067c8a8d0a7eb0642b3969801e3c845436060e8cc6f39f4748c1d9772d410cf3"
+        },
+        {
+          "path": "gschema.dtd",
+          "sha256": "44a12f339042a3f5568a9cc86bb617fabaf4a25836b8c9510aa9de22431930c6"
+        },
+        {
+          "path": "org.freedesktop.ColorHelper.gschema.xml",
+          "sha256": "096896a93ff7316edca288a2f7866f62417793b686b1a3e04427c548c191ae74"
+        },
+        {
+          "path": "org.freedesktop.ibus.gschema.xml",
+          "sha256": "80faacf042cd2d4692536f5b2b4e76b7ce2d4c82fcfc4c2cd8493b238bc38b7a"
+        },
+        {
+          "path": "org.gnome.Evolution.DefaultSources.gschema.xml",
+          "sha256": "3cf064656716c98dce393da025bc121a9f791a72d9325d6102604f070e859a7a"
+        },
+        {
+          "path": "org.gnome.GWeather4.enums.xml",
+          "sha256": "4850d7df2eea3c3c3e4cafb2aa70fd7c7e4eb72f191bbef9ffae048bfb7e3ef9"
+        },
+        {
+          "path": "org.gnome.GWeather4.gschema.xml",
+          "sha256": "9f9b03d82ba3b3fcd40504b183a724671040afb4c657e7f270906b58206f37af"
+        },
+        {
+          "path": "org.gnome.SessionManager.gschema.xml",
+          "sha256": "1fc1be5ac6b0a8a636dfbd69c2ff3a9824c094bbf164be9aa6dcbbdff9559733"
+        },
+        {
+          "path": "org.gnome.crypto.cache.gschema.xml",
+          "sha256": "471a7453f9c4b0d59282dcedf241461d51ba1d480135d07b3fc057799f6b5b80"
+        },
+        {
+          "path": "org.gnome.crypto.pgp.gschema.xml",
+          "sha256": "0f98183990eed20631ffd0195f921871b999e72d87a75303c7a9348fe3637f1f"
+        },
+        {
+          "path": "org.gnome.desktop.a11y.applications.gschema.xml",
+          "sha256": "6e67c6d900b0e698681454948dc6a11904edc1059af69d83ae8ff1c69abfe4ca"
+        },
+        {
+          "path": "org.gnome.desktop.a11y.gschema.xml",
+          "sha256": "f471028deedc07708638c7ea056ed1c6eb6632b987905321085288e836f337a8"
+        },
+        {
+          "path": "org.gnome.desktop.a11y.interface.gschema.xml",
+          "sha256": "a78954d4d3a60ca3b11790b0b9dec7a3f6f865d8fdb8106d08881756522c6624"
+        },
+        {
+          "path": "org.gnome.desktop.a11y.keyboard.gschema.xml",
+          "sha256": "429b25000a947e1b03724546e88b0f3dd6d3bac42addaec36d6cf81062c89cbb"
+        },
+        {
+          "path": "org.gnome.desktop.a11y.magnifier.gschema.xml",
+          "sha256": "0316beb1020bf0e1594c1578d4ee17044d8d4f04a58e788631b054503f07e0a0"
+        },
+        {
+          "path": "org.gnome.desktop.a11y.mouse.gschema.xml",
+          "sha256": "2409903ede1c85e899ff6576bc9711b9016704ee0434c22287d34d7e8c888c36"
+        },
+        {
+          "path": "org.gnome.desktop.app-folders.gschema.xml",
+          "sha256": "f6a6be999af5d5ed29079432182af7708adefc0a2c7beeb7418254487ee4b772"
+        },
+        {
+          "path": "org.gnome.desktop.background.gschema.xml",
+          "sha256": "5947187d029261164eb3e938b529aafff3b3625f2f0bdc6185bbf5776afd28c6"
+        },
+        {
+          "path": "org.gnome.desktop.break-reminders.gschema.xml",
+          "sha256": "de47dd4e0b171c1eb0b7e81761a78f23d043abe662895e37e39a314f96bb192b"
+        },
+        {
+          "path": "org.gnome.desktop.calendar.gschema.xml",
+          "sha256": "9c2f2169d8cc6cc818179e340db60e3edf1f1d804b0e84415d1ad1c7315d01e0"
+        },
+        {
+          "path": "org.gnome.desktop.datetime.gschema.xml",
+          "sha256": "db8f91d8966e24570844f4f0e52b6d5e4d0212cb398c71509f5f3cab6b39d292"
+        },
+        {
+          "path": "org.gnome.desktop.default-applications.gschema.xml",
+          "sha256": "a7c99035d26c1065e9c06541515d06e5ed4d105313f18afad44e628ba32ff280"
+        },
+        {
+          "path": "org.gnome.desktop.enums.xml",
+          "sha256": "8f8b68a34689ad5ede33a1d1d1c7ab3a8691aea83cf15bd3dcce82d9ded94f41"
+        },
+        {
+          "path": "org.gnome.desktop.input-sources.gschema.xml",
+          "sha256": "1255b1e6ba8fcccf43a87ff6ca2343fd55b99f2d89a936556ff1fa6a9b23069e"
+        },
+        {
+          "path": "org.gnome.desktop.interface.gschema.xml",
+          "sha256": "ff7b0f1f22c85ee8a134ca4ce78eb293f416409032efefdde9a5923f1bc2d478"
+        },
+        {
+          "path": "org.gnome.desktop.lockdown.gschema.xml",
+          "sha256": "3578e779ecee25ec24cb69e7170411c03f578ecda3f48455b86305b442fcad65"
+        },
+        {
+          "path": "org.gnome.desktop.media-handling.gschema.xml",
+          "sha256": "cdaa8e9740fb99852b237cfae8efcd0bb85d2de8b32ea483aad4919e3c87bb10"
+        },
+        {
+          "path": "org.gnome.desktop.notifications.gschema.xml",
+          "sha256": "b7e983b5fa4cedccba7e6494c89de0997274986cdc69377a51589d97ac07acb4"
+        },
+        {
+          "path": "org.gnome.desktop.peripherals.gschema.xml",
+          "sha256": "cc4e5467c6d171852d8ca898d876848e8b57f347902a432990ab91c7439efee1"
+        },
+        {
+          "path": "org.gnome.desktop.privacy.gschema.xml",
+          "sha256": "304f26f2030d538f0e7ab1a8bae486e2b5e5879bc55c618e8931dc822284abd5"
+        },
+        {
+          "path": "org.gnome.desktop.screen-time-limits.gschema.xml",
+          "sha256": "252058749b1c7c24fc497061f7c15623d7fffe988c3961b17ee05e7ae4fd9d51"
+        },
+        {
+          "path": "org.gnome.desktop.screensaver.gschema.xml",
+          "sha256": "82e61a216bfe8bdad9b98400389cb179f149071dba8ff89720a03cc83ca633a8"
+        },
+        {
+          "path": "org.gnome.desktop.search-providers.gschema.xml",
+          "sha256": "00e6c4931d9a4005be80abae2d28bb7b716724cedc19c7be9e6d015a0ac0ea9c"
+        },
+        {
+          "path": "org.gnome.desktop.session.gschema.xml",
+          "sha256": "a18788e5bc793c92ed0763c57aa33560a07527e785029c6d7fb224c95796c858"
+        },
+        {
+          "path": "org.gnome.desktop.sound.gschema.xml",
+          "sha256": "ff7dcae2b2b3d6109bf4d75511f0ce1538e39b0593bfcd33f35f12653c62be92"
+        },
+        {
+          "path": "org.gnome.desktop.thumbnail-cache.gschema.xml",
+          "sha256": "20246fc5002a989287eb7e5e351cfd79245df63d0978b879882ff3d534b8f9fb"
+        },
+        {
+          "path": "org.gnome.desktop.thumbnailers.gschema.xml",
+          "sha256": "899bfc15c310051674714addc541824556a1e6d65b32cb715cba18662dc6ea02"
+        },
+        {
+          "path": "org.gnome.desktop.wm.keybindings.gschema.xml",
+          "sha256": "23ab886d75e93a79b5829677d1d41f55d4ec27a823b239e9f1b80d5b7dd64efa"
+        },
+        {
+          "path": "org.gnome.desktop.wm.preferences.gschema.xml",
+          "sha256": "cccc86360fb6fbe451e8b27c97d756c711d85dc21bc191075dab2b8613b055a1"
+        },
+        {
+          "path": "org.gnome.evolution-data-server.addressbook.gschema.xml",
+          "sha256": "231ec9c542473d42f15dcd483891e82b0497a5623e30aa31374dbb0c3c620c83"
+        },
+        {
+          "path": "org.gnome.evolution-data-server.calendar.gschema.xml",
+          "sha256": "159dadd5f5c93636a25d0698da88d2a1a2869df37055b58ee4710b546e774304"
+        },
+        {
+          "path": "org.gnome.evolution-data-server.gschema.xml",
+          "sha256": "06b8388dec89e2f7e15d0176b4552f49c41ab2be7f1362b4133bc1bc4c6118d7"
+        },
+        {
+          "path": "org.gnome.evolution.eds-shell.gschema.xml",
+          "sha256": "3cef34c338212bd6552fd07070def888727fabf0f31484c0ec376aa4760b779f"
+        },
+        {
+          "path": "org.gnome.evolution.shell.network-config.gschema.xml",
+          "sha256": "1991fe03daf18bdf5b450fa6bb5b06a48f48a38b712fc8206addcaddd7a33822"
+        },
+        {
+          "path": "org.gnome.login-screen.gschema.xml",
+          "sha256": "e94da7e9bfbe8c6eff341549c5568065f6d91388e4df6362cf03461dc766a2a0"
+        },
+        {
+          "path": "org.gnome.mutter.gschema.xml",
+          "sha256": "acd1808a1b6c846943872d8d13a935c31ffc572e224828f68b103dd4c5fe21a3"
+        },
+        {
+          "path": "org.gnome.mutter.wayland.gschema.xml",
+          "sha256": "a9f5c8057f6fb4bf19459862f1a47e29a863800dce1db5fc1b6cf810010a2dad"
+        },
+        {
+          "path": "org.gnome.nm-applet.eap.gschema.xml",
+          "sha256": "86aa19fbdf31374c52377eee5ce2d2a8d08623a240e23d39fbe6a68b2ecc4d99"
+        },
+        {
+          "path": "org.gnome.nm-applet.gschema.xml",
+          "sha256": "0dab7bd88d9b1e701f59961176fe5213596d3500eaea0bc4627889e6255ee45b"
+        },
+        {
+          "path": "org.gnome.settings-daemon.enums.xml",
+          "sha256": "5fa52547883de70a819312004a4ba6d0cc3d4ab7f60d0445411e33eb96779b87"
+        },
+        {
+          "path": "org.gnome.settings-daemon.global-shortcuts.gschema.xml",
+          "sha256": "f9cbd16e6afe7abdbe79b107cd1cd09a3adde85874ef49b8cede00811a9b71ee"
+        },
+        {
+          "path": "org.gnome.settings-daemon.peripherals.gschema.xml",
+          "sha256": "c566d7adb153763b019af9fe052dadaf783270aab9cd413e6e3b15b48f992329"
+        },
+        {
+          "path": "org.gnome.settings-daemon.peripherals.wacom.gschema.xml",
+          "sha256": "280b1f79bfd8f6c2f212bc6a4e8630096e1bf13480c92dd999407fce8ef97aca"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.color.gschema.xml",
+          "sha256": "55d3f13c6482245188ee67f886970777d9b4a83633c1d444a6f09803a6ef575a"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.gschema.xml",
+          "sha256": "abaf06275be61c07275efe3d81532cee73174a60abef6cbae5c7885c0905be7f"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.housekeeping.gschema.xml",
+          "sha256": "67c91d8cb3c3e679eaba93fb7305d21b664133bfa0fce168b548569f691d8e1f"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.media-keys.gschema.xml",
+          "sha256": "70be5ddc570d82696744e552ef1bf3b0f07f61c1f3900ec32cae403a2a5dbe38"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.power.gschema.xml",
+          "sha256": "dbfd56ba767b9677928fa178d19504efd67c14aa2d5a6ce4dd60493dc31785cd"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.sharing.gschema.xml",
+          "sha256": "25b726557bcfea0a12422518ba7d27c36d14526fa505bbd92d59dc7a007fdfbd"
+        },
+        {
+          "path": "org.gnome.settings-daemon.plugins.xsettings.gschema.xml",
+          "sha256": "6e2dafedc47c2c6f3fcbc82eb88e34208ca73e35ca39ba4e40aa004ebbdaa3f6"
+        },
+        {
+          "path": "org.gnome.shell.gschema.xml",
+          "sha256": "88a5b3d8d7cc42903e5756781c02a7000013e7dabeeb80855b1b36f7eda6f0d6"
+        },
+        {
+          "path": "org.gnome.system.locale.gschema.xml",
+          "sha256": "5b1e65629a77dcd201f4d86932ad62c0c41ec61fb117f151966d13e69411e2dc"
+        },
+        {
+          "path": "org.gnome.system.location.gschema.xml",
+          "sha256": "3fe90ebe8c851340249a1febe741b777c65b49a823201ead02f341be861060ed"
+        },
+        {
+          "path": "org.gnome.system.proxy.gschema.xml",
+          "sha256": "0f02db915e726017c17c1619ee9fd8f9ee7e6d4698f0fc160a0eb88b29f2bafd"
+        },
+        {
+          "path": "org.gtk.Demo4.gschema.xml",
+          "sha256": "e20a078510ee04476c87f9f8452371ba829ee7de2f2d862ea732793719e74846"
+        },
+        {
+          "path": "org.gtk.Settings.ColorChooser.gschema.xml",
+          "sha256": "e476913ef61e6719ff56c2e4c5b8b276af3020bfb0d007263c2a241835730882"
+        },
+        {
+          "path": "org.gtk.Settings.Debug.gschema.xml",
+          "sha256": "de0685fdc2f6e890e32445a79aa938e5566b8dd406dd71d6c6a66c69e3f941e3"
+        },
+        {
+          "path": "org.gtk.Settings.EmojiChooser.gschema.xml",
+          "sha256": "22aba28a5a78745d87eeded88f1b86f7ddea24b1b90771151ef494c660a1b591"
+        },
+        {
+          "path": "org.gtk.Settings.FileChooser.gschema.xml",
+          "sha256": "c7089f41d22b3854c05fe4996ff271949b40148a40b9c6f0ae0349792dc94b77"
+        },
+        {
+          "path": "org.gtk.gtk4.Inspector.gschema.xml",
+          "sha256": "0a716456c56ff6a4f3ad1d72b2205b2e982a231a9586cba32bc7d1bcc93cf45a"
+        },
+        {
+          "path": "org.gtk.gtk4.Settings.ColorChooser.gschema.xml",
+          "sha256": "3c60a020ac823ad9c02394c8579296711a148fb6e15dac1c4dffa3470303af32"
+        },
+        {
+          "path": "org.gtk.gtk4.Settings.Debug.gschema.xml",
+          "sha256": "f3093b00e9184a19289f0755345e3414921aafe15433342b36b327ade2048998"
+        },
+        {
+          "path": "org.gtk.gtk4.Settings.EmojiChooser.gschema.xml",
+          "sha256": "893b260569e832bb96bfa5ff95893f85d81543069799f22bf66dd419ad50a702"
+        },
+        {
+          "path": "org.gtk.gtk4.Settings.FileChooser.gschema.xml",
+          "sha256": "e7a7482f7937a0588961613df2b14e509b08c1281bdb0b12ab279856d7d8fcea"
+        }
+      ],
+      "favorite_apps_cycles": 2,
+      "wrong_type_refused": true,
+      "preferences_changed": false
+    },
+    "installed_CLI": "GNOME Shell 50.4",
+    "stock_schema_cache_pending": true,
+    "real_GNOME_login_UI_tested": false,
+    "disabled_app_launcher_absent": true
+  },
+  "production_selection": {
+    "scope": "Minimal Shell, no dead launcher for optional unbuilt Extensions app; no owner preferences changed. Network portal sign-in follows upstream browser fallback.",
+    "excluded_disabled_app_launcher_sha256": "1365bf8686b184cd0ea8694049b37dc9a49f95f0da28e4c25a56ea264b809b87"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gnome-shell-install-evidence.tar.gz",
+    "sha256": "3530d0c4e9369e73103ea4c38f5347d3c33eacfeb68664d2d3c20d3dd45a3761",
+    "members": [
+      "build/b02-gnome-shell-install.log",
+      "build/b02-gnome-shell-install.manifest.json",
+      "build/b02-gnome-shell-install.success.json",
+      "metadata/gnome-shell_50.4-1+toddy1_amd64.json",
+      "phase2/b02-gnome-shell-install-controller.log",
+      "phase2/b02-gnome-shell-install-timing.json",
+      "phase2/gnome-shell-1-controller.log",
+      "phase2/gnome-shell-1.exit",
+      "phase2/gnome-shell-1.job.json",
+      "phase2/gnome-shell-1.log",
+      "phase2/gnome-shell-installed-consumer.json",
+      "phase2/gnome-shell-probe-2-controller.log",
+      "phase2/gnome-shell-probe-2.exit",
+      "phase2/gnome-shell-probe-2.job.json",
+      "phase2/gnome-shell-probe-2.log",
+      "phase2/gnome-shell-production-selection.json",
+      "phase2/gnome-shell-stage.json",
+      "work/compile/meson-logs/install-log.txt",
+      "work/compile/meson-logs/meson-log.txt",
+      "work/original-registered-tests.json",
+      "work/probe-2/consumer.exit",
+      "work/probe-2/consumer.json",
+      "work/probe-2/params-consumer.js",
+      "work/shell-version.log",
+      "work/stage-results.json"
+    ]
+  }
+}

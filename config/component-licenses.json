@@ -2581,7 +2581,21 @@
       "name": "gnome-shell",
       "version": "50.4",
       "license": "LicenseRef-gnome-shell-per-file",
-      "evidence": "Primary authenticated root notices: GPL2. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+      "evidence": "Authenticated exact COPYING plus bundled libshew/GVC and leading C/header/JS source conditions retained. Minimal Wayland profile, GCC16 book callback correction; native GUI/upstream display suite pending. Per-file terms prevail.",
+      "extra_license_headers": {
+        "gnome-shell-50.4.tar.xz": {
+          "prefixes": [
+            "src/",
+            "js/",
+            "subprojects/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".js"
+          ]
+        }
+      }
     },
     {
       "name": "gnome-session",
