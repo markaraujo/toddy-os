@@ -8,21 +8,41 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current eligible B02 slice: integrate independently qualified private D-Bus address
-wrapper into the parked LocalSearch native fixture, preserving readonly BUILDROOT.
-EXACT NEXT: read scripts/build/phase2/localsearch-native-consumer.py and prepare
-per-test private PATH wrapper using original helper's shutil.which and a declared
-absolute XDG_RUNTIME_DIR. Independent proof below qualifies CLI override mechanics;
-qualify actual native path/inputs before one bounded reopening. Native LocalSearch
-attempts1–3 and two failed corrections remain retained, no budget reset/replay.
-No fourth functional LocalSearch run has been dispatched.
+Current eligible B02 slice: Tecla50.0 native display-dependent CLI qualification,
+prerequisite for selected GNOME Control Center50.4. Source frozen bookSHA
+2542acb24850082e0ccf6aa17af9651db71d22f0e233fdbf5ed0cffe2e45bc06;
+bookpageSHA28b4df777bc4fb134301b949fe2174a1e822b7ea738144ea553c9794b680fbfc.
+Original compiler/stage succeeded, initial job1PID3393 terminal1 only because
+--version initializes Adwaita and requires display. No original tests registered,
+not a test pass. Collection2PID3928 terminal0, current ELF/stage hashes matched.
+[Stage proof](evidence/B02-tecla-stage.json). Do not rebuild/retest/restage.
 
-[Independent D-Bus proof](evidence/B02-localsearch-bus-address.json): PID1832
-terminal0, actual original unchanged LocalSearch3.11.1 DBusDaemon helper/config,
-read-only source cwd, native owned D-Bus1.16.2 explicit --address, real GDBus
-Hello/Ping/ListNames/unknown-name check and own-daemon stop, two cycles UID101/NNP.
-Original config SHAcd795d925ba414ba22e384413414b1042e8525a551baf2116b92e9855c4c01a4.
-No LocalSearch functional/search/extractor/package/GUI acceptance. Do not rerun.
+EXACT NEXT: after clean committed reviewed inputs and actual cold host gate, run
+ONCE `python3 scripts/host/phase2_native_tecla.py --context native-tecla-runtime-1`.
+Descriptor /sources/phase2/native-fixtures/tecla-cli-1/accepted.json qualified,
+SHA33766657e34973c43737bca65ca546c7cae609f133f4920bdcd379d38f5a8467;
+source transport preflight below65536B. No test VM booted yet. This is actual staged
+--version/--help under native Mutter/Wayland only, NOT keyboard preview GUI/input
+acceptance. No Tecla native package installed yet. Inspect exact result/container/
+backing before restore or any next writer; prepare new unique recovery names tied
+to native-tecla-runtime-1, preserving all six volumes and existing editor binds.
+
+Exact-path LocalSearch bus qualification branch also PARKED after two corrective
+failures; no native functional LocalSearch4 dispatched. SDK2 own token substitution
+SyntaxError before daemon, SDK3 chroot cwd reset before daemon, SDK4 selected
+readonly cwd but /dev/null placeholder denied: root-owned regular0644 file in
+builder's unbooted target, not a private device binding. No global device chmod/
+creation or permission relaxation. [Failures](evidence/B02-localsearch-private-bus-failed.json).
+All original770source/403compiled/133stage files rechecked unchanged. Failed own
+producer sources/logs retained, replay guard now checks failed log before operation.
+No SDK5 until independent qualified private-device profile and bounded reopening
+retaining history. Original isolated bus-address proof1 remains valid in its own
+qualified profile only; no functional/search/extractor/package acceptance.
+
+Independent eligible Settings preflight source50.4 verified: Tecla/pwquality/GOA
+required and absent; GTK/Adwaita/NM/Accounts/UPower/desktop libraries owned. Use
+pinned Tecla50.0 instead of moving wrap HEAD, no online-account/provider credential
+or mandatory hosted backend. Do not silently disable core settings to pass builds.
 
 Editor graphical branch PARKED after two failed corrective native runs.
 Native4 overall FAILED: first real open/mapped/active/focus/UTF8 edit and exact save

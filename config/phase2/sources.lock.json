@@ -2587,6 +2587,18 @@
       "reference": "Exact tests gitlink from EditorConfig C Core v0.12.11 commit0ba157eff167c1b2d1bc0c3e13975b7a73fb9d25",
       "integrity": "Publisher git-tree API gitlink, HTTPS immutable test-commit archive SHA256 frozen before guest use; no detached-signature claim",
       "status": "source_verified"
+    },
+    {
+      "name": "tecla",
+      "version": "50.0",
+      "filename": "tecla-50.0.tar.xz",
+      "url": "https://download.gnome.org/sources/tecla/50/tecla-50.0.tar.xz",
+      "sha256": "2542acb24850082e0ccf6aa17af9651db71d22f0e233fdbf5ed0cffe2e45bc06",
+      "reference": "BLFS13.1-systemd gnome/tecla.html",
+      "book_page_sha256": "28b4df777bc4fb134301b949fe2174a1e822b7ea738144ea553c9794b680fbfc",
+      "book_md5": "cc5ae49bae10abcb02040a20e63ef26b",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }
