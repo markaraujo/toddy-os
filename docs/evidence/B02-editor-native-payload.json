@@ -1,0 +1,20 @@
+{
+  "scope": "Readonly descriptor and transport preflight only, no native GUI execution",
+  "reference": {
+    "manifest": "/sources/phase2/native-fixtures/editor-1/accepted.json",
+    "manifest_sha256": "96cf6bb6a44f870323a431561234a5d5738742b4016bf01d1b0abf4491e7e756",
+    "manifest_bytes": 465105
+  },
+  "probe_source_bytes": 5182,
+  "transport_limit": 65536,
+  "transport_preflight_passed": true,
+  "preboot_failure_context": ".local/phase2/native-editor-runtime-1",
+  "preboot_failed_without_native_guest": true,
+  "restoration": {
+    "state": "complete",
+    "native_context": ".local/phase2/native-editor-runtime-1",
+    "failure_preserved": true,
+    "guest_log": ".local/phase2/editor-preboot-builder-restored-1.log"
+  },
+  "evidence_limit": "Context1 source identity existed only in memory before payload failure; no before/after backing equality claimed for that attempt. Readonly producer operations/no native write path and unchanged observed identity before builder start verified."
+}

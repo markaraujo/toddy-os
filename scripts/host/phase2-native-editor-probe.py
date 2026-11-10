@@ -15,7 +15,10 @@ def emit(report):
 def main():
  assert os.getuid()==0 and os.uname().release.startswith('7.1.8') and Path('/proc/1/comm').read_text().strip()=='systemd'
  resource.setrlimit(resource.RLIMIT_CORE,(0,0));device=output(['findmnt','-n','-o','SOURCE','/']);parent=output(['lsblk','-ndo','PKNAME',device]);assert output(['lsblk','-dnro','SERIAL','/dev/'+parent])=='TODDY-BOOT-TEST'
- accepted=ACCEPTED;assert isinstance(accepted,dict)
+ reference=ACCEPTED;assert isinstance(reference,dict)
+ manifest=Path(reference['manifest']);assert str(manifest)=='/sources/phase2/native-fixtures/editor-1/accepted.json' and not manifest.is_symlink() and manifest.stat().st_uid==0 and not manifest.stat().st_mode&0o222
+ assert manifest.stat().st_size<512*1024 and sha(manifest)==reference['manifest_sha256']
+ accepted=json.loads(manifest.read_text())
  for path,digest in accepted['artifacts'].items():assert sha(Path(path))==digest
  library=Path(accepted['driver_library']);script=Path(accepted['session_script'])
  assert sha(library)==accepted['driver_sha256'] and sha(script)==accepted['session_script_sha256']
