@@ -1,0 +1,86 @@
+{
+  "scope": "Guarded dedicated virtual scratch attachment/blank768MiB verification/recorded UUID before mkfs/ext4 mount only. Existing six scratch filesystems and source/companion binds restored without recreation. Kernel/cache/config/package/boot remain unchanged; no Landlock/native desktop acceptance.",
+  "scratch": {
+    "state": "mounted",
+    "scope": "Only fixed dedicated virtual scratch, not target root/physical disk",
+    "device": "/dev/vdc",
+    "major_minor": [
+      253,
+      32
+    ],
+    "serial": "TODDY-B02-KERNEL",
+    "bytes": 805306368,
+    "blank_bytes_verified": 805306368,
+    "intended_uuid": "c6c4176d-faed-4ee3-9ae0-94914a0af666",
+    "work": "/mnt/lfs/sources/phase2/work/kernel-landlock-1",
+    "boot_id": "3a77a52a-5994-4f9c-9a57-d8582921275c",
+    "free_bytes": 758177792
+  },
+  "builder_recovery": {
+    "state": "complete",
+    "boot_id": "3a77a52a-5994-4f9c-9a57-d8582921275c",
+    "restored_volumes": [
+      {
+        "work": "/mnt/lfs/sources/phase2/work/gtk-1",
+        "uuid": "1593a243-4338-45fb-86f6-7b699b4b3235",
+        "image_inode": 786439,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/desktop-resources-1",
+        "uuid": "a1385a38-a9ed-481b-96d8-b0120b4f1e7c",
+        "image_inode": 786440,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/doxygen-1",
+        "uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+        "image_inode": 786441,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/glycin-1",
+        "uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+        "image_inode": 786463,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/pam-1",
+        "uuid": "cb42a655-39b6-4988-ad44-1c643059db63",
+        "image_inode": 786443,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/systemd-pam-1",
+        "uuid": "8163c489-7aab-4b0b-be6d-f36de1645e74",
+        "image_inode": 786446,
+        "restored_existing_filesystem": true
+      }
+    ],
+    "companion": {
+      "state": "complete",
+      "scope": "Only existing companion directory bind restored; no filesystem creation/format/trim or accepted compile replay",
+      "boot_id": "3a77a52a-5994-4f9c-9a57-d8582921275c",
+      "parent_uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+      "backing_inode": 5538,
+      "work": "/mnt/lfs/sources/phase2/work/glycin-gtk4-1"
+    },
+    "target_free_bytes": 17328738304
+  },
+  "guard_tests": "Four guest identity tests passed (exact valid serial/capacity, reject mounted/swap/signature/read-only/partitioned/wrong-root identities); eight host allocation guards previously accepted. Synthetic checks, not physical disk tests.",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-kernel-scratch-mounted-evidence.tar.gz",
+    "sha256": "04bc06c7398a265f7b006ae939ccbb0fd3d98666b7bd29ac2e7a4aa970718686",
+    "members": [
+      "guest/kernel-landlock-scratch-1.json",
+      "guest/kernel-landlock-scratch-1.mkfs.log",
+      "guest/kernel-scratch-builder-restore-1.json",
+      "guest/glycin-gtk4-work-restored-kernel-1.json",
+      "host/kernel-scratch-attach-1.json",
+      "host/kernel-scratch-attach-1.log",
+      "host/restore-kernel-scratch-builder-1.py",
+      "host/kernel-scratch-builder-restore-1.log",
+      "host/kernel-scratch-format-1.log"
+    ]
+  }
+}

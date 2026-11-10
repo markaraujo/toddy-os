@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T09:58:40.194814+00:00
+Last verified: 2026-11-10T10:03:25.737956+00:00
 
 Verified:
 
@@ -148,8 +148,9 @@ Verified:
 - Owned inih62 C+INIReader CPP:16original programs/55ELFs/six stagefiles; initial own15-count assertion corrected metadata-only collect2, no compiler/test replay. Native0/0,19paths/20entries; installed UID101/private-device/no-route C+CPP UTF8/typed defaults/malformed refusal/prior state retained/two recoveries/shared ABI/pkg-config/APT0. No owner config or GUI claim, ADR0202.
 - Owned Exiv20.28.8 with real Brotli/INI:four original test programs1169cases/1159non-skipped/10explicit upstream exclusions, zero-case version metadata driver not a test pass.92ELFs/55stage files unchanged across own reset-status/XMP-denial diagnostic corrections. Native install2/post0/0,75paths/80entries; installed UID101/private-device/no-route UTF8 PNG EXIF edit/read/reset/pixel retained/corrupt refusal/two recoveries/valid XMP/external entity201 rejection/canary retained/XMP recovery/shared ABI/pkg-config/APT0. First native preflight failed before package/root0, no replay. No global Expat/GExiv2/LocalSearch/GUI claim; exact skipped debug/unfixed1821/Mac cases retained, ADR0203.
 - Owned GExiv2 0.16.2 shared GObject/GI/Vala/Python/tools: all3 original C/Python programs0,22ELFs/16stagefiles. Own XMP title plain-text assertion corrected to actual language-tagged readback; probe2 only, compiler/original/stage unchanged. Native install/post0/0,32paths/42entries. Installed UID101/private-device/no-route PNG UTF8 metadata edit/read/reset/image retained/malformed JPEG refusal/two recoveries/shared ABI/pkg-config/APT0. No LocalSearch/Nautilus/GUI claim, ADR0204.
+- Fixed768MiB preallocated virtual kernel scratch attached after idle check/controlled restart. All bytes zero verified, intended UUID recorded before mkfs, ext4 mounted nosuid/nodev at kernel-landlock-1 UUIDc6c4176d-faed-4ee3-9ae0-94914a0af666/free758177792B. Six existing scratch/Systemd source/Glycin companion restored. Four guest identity guard tests0. Kernel/cache/config/package/boot unchanged; Landlock build/native proof pending, ADR0201.
 
-Running: No active guest writer. GExiv2 metadata prerequisite now owned; next required native Landlock kernel feature and LocalSearch3.11.1 before Nautilus. Synthetic COW/guarded768MiB scratch qualified but not attached/formatted; kernel unchanged. Desktop/login/apps/offline/resources acceptance pending. Complete ALL B02 then stop.
+Running: No active guest writer. GExiv2 owned/published, dedicated kernel scratch attached/blank-verified/formatted/mounted and builder scratch/source binds restored. Next real private immutable-cache kernel COW profile, Landlock-only same-version feature build and native boot/denial proof; then LocalSearch/Nautilus. Kernel unchanged. Complete ALL B02 then stop.
 
 Remaining:
 

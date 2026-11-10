@@ -61,3 +61,27 @@ A kernel build should retain full checkpoint/final-image integrity and controlle
 native transactions. Source/cache before-and-after identity, qualified isolated
 unprivileged build, exact configuration delta and native proof remain mandatory.
 The persistent diagnosis ledger is retained; do not restart its budget on resume.
+
+
+## Verified scratch attachment and filesystem — 2026-11-10
+
+The fixed preallocated virtual scratch was attached after verifying the only
+builder idle and the GExiv2 native transaction terminal0/0. Controlled restart
+produced boot3a77a52a-5994-4f9c-9a57-d8582921275c; the six existing scratch
+filesystems, Systemd read-only source and Glycin companion binds were restored
+with new receipts, never recreated. A host-side exact-command membership check
+initially used the serial substring as a whole argument and failed before
+restoration; actual QEMU args confirmed the full device argument, corrected once.
+
+The guarded preparer accepts only the dedicated virtual serial/768MiB whole disk,
+no children/mount/signature/UUID, and reads every byte to prove blankness. It
+records an intended UUID before invoking mkfs, refuses any existing receipt, uses
+no force-format flag, and mounts nosuid/nodev. Actual UUID
+`c6c4176d-faed-4ee3-9ae0-94914a0af666` is mounted at kernel-landlock-1 with
+758177792 initial free bytes. Four new identity guard tests passed. No physical
+disk or accepted root was formatted. [Evidence](../evidence/B02-kernel-scratch-mounted.json).
+
+Kernel source/cache/config/package/boot remain unchanged. This resource result
+does not qualify the real kernel COW profile, Landlock feature or desktop. Next
+prepare immutable baseline hashes and the exact isolated real-cache view; retain
+the128MiB scratch reserve and actual boot/security proof requirement.

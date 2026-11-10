@@ -3210,3 +3210,8 @@ All original/own collector and dispatch mistakes, changed dependency inputs and 
 ### 2026-11-10 — B02 owned GExiv2 prerequisite
 
 Owned GExiv2 0.16.2 shared GObject/GI/Vala/Python/tools: all3 original C/Python programs0,22ELFs/16stagefiles. Own XMP title plain-text assertion corrected to actual language-tagged readback; probe2 only, compiler/original/stage unchanged. Native install/post0/0,32paths/42entries. Installed UID101/private-device/no-route PNG UTF8 metadata edit/read/reset/image retained/malformed JPEG refusal/two recoveries/shared ABI/pkg-config/APT0. No LocalSearch/Nautilus/GUI claim, ADR0204. Source and scope: ADR0204. Raw archive SHA256 f1af7b9b425d30e05adeeeea8b591dac3137e4ce3206b506630c61427a72fca3; package f16e92b07c7a4c9ad29d1562c4af08c0426b0809b268124fa0348a2600151727. Next required Landlock kernel feature/LocalSearch, then Nautilus; all B02 before stop.
+
+
+### 2026-11-10 — B02 dedicated virtual kernel scratch
+
+Fixed768MiB preallocated virtual kernel scratch attached after idle check/controlled restart. All bytes zero verified, intended UUID recorded before mkfs, ext4 mounted nosuid/nodev at kernel-landlock-1 UUIDc6c4176d-faed-4ee3-9ae0-94914a0af666/free758177792B. Six existing scratch/Systemd source/Glycin companion restored. Four guest identity guard tests0. Kernel/cache/config/package/boot unchanged; Landlock build/native proof pending, ADR0201. RawSHA04bc06c7398a265f7b006ae939ccbb0fd3d98666b7bd29ac2e7a4aa970718686. One host-only restore guard string-membership assertion corrected before any restoration; actual full QEMU argument checked. Next private real kernel COW profile, no mkfs/restart replay.

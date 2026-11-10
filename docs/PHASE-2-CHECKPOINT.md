@@ -20,16 +20,31 @@ Packagef16e92b07c7a4c9ad29d1562c4af08c0426b0809b268124fa0348a2600151727;
 rawf1af7b9b425d30e05adeeeea8b591dac3137e4ce3206b506630c61427a72fca3.
 [Native proof](evidence/B02-gexiv2-install.json). NEVER replay accepted work.
 
-EXACT NEXT: deliver current GExiv2 slice, then attach already-prepared guarded
-768MiB kernel scratch via controlled idle builder restart. Verify native job
-terminal/single-writer lock and mounts, record new recovery receipt; restore ONLY
-existing six scratch/Systemd source/companion binds with new receipts. Before
-any mkfs, exact virtual serial/size/blank state and intendedUUID must be recorded,
-uncertain state reconciled. No physical disk. Prepare real kernel metadata-COW
-profile preserving immutable source/cache; Landlock-only same-version config
-revision/native boot/allow-deny-recovery REQUIRED. Then LocalSearch3.11.1; all
-metadata prerequisites now owned. Nautilus requires real LocalSearch executable
-for headless configuration and launch. Complete ALL B02 then stop.
+Kernel scratch attachment/format/mount1 COMPLETE (ADR0201).
+Current builder boot3a77a52a-5994-4f9c-9a57-d8582921275c. Existing six scratch,
+Systemd source and companion restored; guest receipt kernel-scratch-builder-restore-1.json
+and glycin-gtk4-work-restored-kernel-1.json COMPLETE. NEVER replay restart,
+restoration or formatter. Actual fixed virtual /dev/vdc serialTODDY-B02-KERNEL,
+768MiB all zero verified before intended UUID recorded and mkfs. Now ext4
+UUIDc6c4176d-faed-4ee3-9ae0-94914a0af666 mounted nosuid/nodev at
+/mnt/lfs/sources/phase2/work/kernel-landlock-1, initial free758177792B.
+Receipt /var/log/toddy/phase2/kernel-landlock-scratch-1.json state mounted;
+[Evidence](evidence/B02-kernel-scratch-mounted.json), rawSHA
+04bc06c7398a265f7b006ae939ccbb0fd3d98666b7bd29ac2e7a4aa970718686.
+Four focused guest identity guard tests passed. No active guest writer.
+EXACT NEXT: prepare real private kernel metadata-COW with immutable baseline
+source/cache hashes/UID101 isolation proof. Existing original
+/mnt/lfs/sources/linux-7.1.8 inode7523763/config/vmlinux/bzImage untouched.
+Native installed kernel package name MUST be read from original H09 recipe/
+actual dpkg owner before qualification: guessed package `kernel` was absent in
+readonly preflight (no mutation). Kernel .cmd uses relative source paths; inspect
+actual profile before preserving needed path aliases. Preserve16GiB target/100GiB
+host reserves and128MiB scratch. Landlock-only same-version config/build/native
+boot/allow-deny-recovery REQUIRED, no feature acceptance yet. Then LocalSearch
+before Nautilus. Complete ALL B02 then stop.
+
+Last delivery1ea9683ff8372928f972aece0787b71ccc1b55c2 all3CI success, exact
+publicHTTP200/indexSHAf936b20443dbc62ca22eb55d190643d22c1f28a9244e09dfedfcf48ee9aad52e.
 
 Last delivery6f26d5a701df641a8e47c279da0af6ede96cfe3d all3CI success and exact
 publicHTTP200/indexSHAc4935d3b5d7eabcd8c29554f0cd2b31ffdbb7a9ef92b7e332d283af7f9234775.
@@ -65,7 +80,7 @@ raw419585f25fe08099caff59562706fb95def4321b2624f1ed7ec7a3eb18b148d5.
 Exact10skip IDs/reasons remain unaccepted:8debug-only, suite-disabled1821 leak,
 Mac resource forks. No global Expat security/GUI/full suite acceptance claim.
 
-EXACT NEXT after committing current verified metadata slice: frozen GExiv20.16.2
+Historical next action, now superseded by owned GExiv2 above: frozen GExiv20.16.2
 source/SDK/meson/tests preflight against OWNED Exiv20.28.8. Host cached source
 SHAaad9e240fdffbe85e390f46ee0a567e251baea5c29c3d8690260388683dc8d0a;
 bookgnome/gexiv2.html inspected. No GExiv2 lock row/guest source/job yet.
@@ -158,7 +173,7 @@ No general replan or broad optional media matrix. Complete ALL B02 then stop.
 
 ## Actual builder, custody and recovery
 
-Current builder boot6af8df2c-a7d5-47e6-940d-4c78855e4e55; target
+Prior builder boot6af8df2c-a7d5-47e6-940d-4c78855e4e55 (current boot above); target
 /mnt/lfs=/dev/vdb4/TODDY-LFS-TARGET, builderrootvda1. One writer/build.lock only.
 Preserve target16GiB/host100GiB reserves; remeasure before allocating.
 Native child was terminal/backing checked BEFORE restarting parent. Existing six
