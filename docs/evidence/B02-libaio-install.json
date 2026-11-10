@@ -1,0 +1,70 @@
+{
+  "native": {
+    "step": "b02-libaio-install",
+    "started": "2026-11-10T23:08:28.885521+00:00",
+    "finished": "2026-11-10T23:08:45.088329+00:00",
+    "recipe_sha256": "aefddebfb5ecd34babd221755d1e41e18b90699e190cde4f5330874668370c13",
+    "postcheck_sha256": "78d26c5348f19ffaf310fdc22425a3b78c5f079ab8f91e5878afdf4fe9b2139b",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 14,
+    "log_sha256": "f90b5cf1695cfbf0167bbd6058183308e4a68057d6ff6e4ad5721dc9509472e5",
+    "receipt_sha256": "2e26f6a94c33682971d8680cb09abe05e1991b82ad565e4bc039acfed942e77e"
+  },
+  "consumer": {
+    "C_consumer": "Linux AIO invalid-depth refusal and two asynchronous file write/read recoveries passed\n",
+    "notices_verified": 1,
+    "scope": "Installed shared LibAIO under UID101, NNP, private device and network namespaces. Real anonymous regular file AIO and two invalid-depth refusals.",
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "libaio",
+    "version": "0.3.113-1+toddy1",
+    "archive_sha256": "000508dd7cf92c29ff1c7970c9cb7f7df04d59f23fe44da37a57f2f7acc84374",
+    "recipe_sha256": "aefddebfb5ecd34babd221755d1e41e18b90699e190cde4f5330874668370c13",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "libaio",
+        "version": "0.3.113",
+        "filename": "libaio-0.3.113.tar.gz",
+        "url": "https://releases.pagure.org/libaio/libaio-0.3.113.tar.gz",
+        "sha256": "2c44d1c5fd0d43752287c9ae1eb9c023f04ef848ea8d4aafa46e9aedb678200b",
+        "reference": "BLFS13.1-systemd general/libaio.html",
+        "book_page_sha256": "e6b2b20896554a17a4828df3af84bd4dca65d481e42c343210be4f1f172f9001",
+        "book_md5": "7d5be185f20eeaae15e267419950aaf7",
+        "verified_mirror": "https://ftp.osuosl.org/pub/blfs/conglomeration/libaio/libaio-0.3.113.tar.gz",
+        "integrity": "Official frozen URL returned HTTP 404. Trusted OSU BLFS mirror matched the exact frozen book legacy MD5 and archive header path check before SHA256 pinning.",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "installed": true,
+    "payload_count": 14,
+    "supporting_build_scripts_sha256": "f27f1d900171cd4a9a04d927cc6e993d82f6d30bbe2bef28f6d306c747f210e5",
+    "payload_sha256": "7a93e98cfd659af69ca35d2c95adc68332d3463757460ae350e24385c6203979"
+  },
+  "installed_notices": {
+    "sources": [
+      {
+        "filename": "libaio-0.3.113.tar.gz",
+        "source_sha256": "2c44d1c5fd0d43752287c9ae1eb9c023f04ef848ea8d4aafa46e9aedb678200b",
+        "url": "https://releases.pagure.org/libaio/libaio-0.3.113.tar.gz",
+        "notices": [
+          {
+            "path": "libaio-0.3.113/COPYING",
+            "sha256": "5bbcbb737e60fe9deba08ecbd00920cfcc3403ba2e534c64fdeea49d6bb87509",
+            "size": 26532
+          }
+        ]
+      }
+    ],
+    "scope": "Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply"
+  }
+}

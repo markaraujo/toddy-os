@@ -2903,6 +2903,30 @@
       "verified_mirror": "https://ftp.osuosl.org/pub/blfs/conglomeration/libaio/libaio-0.3.113.tar.gz",
       "integrity": "Official frozen URL returned HTTP 404. Trusted OSU BLFS mirror matched the exact frozen book legacy MD5 and archive header path check before SHA256 pinning.",
       "status": "source_verified"
+    },
+    {
+      "name": "cryptsetup",
+      "version": "2.8.7",
+      "filename": "cryptsetup-2.8.7.tar.xz",
+      "url": "https://www.kernel.org/pub/linux/utils/cryptsetup/v2.8/cryptsetup-2.8.7.tar.xz",
+      "sha256": "e776f0d381e86ca61042c457069491fe8e0ac286780c7c3b1e4f9921abc961da",
+      "reference": "BLFS13.1-systemd postlfs/cryptsetup.html",
+      "book_page_sha256": "029a9b0d3d8dfe922cc25fcadeb2f61b2b9b23273a780ed0cb2d6fe156380a42",
+      "book_md5": "a9a19068e4db32f77c0ab95c378ab290",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "popt",
+      "version": "1.19",
+      "filename": "popt-1.19.tar.gz",
+      "url": "https://ftp.osuosl.org/pub/rpm/popt/releases/popt-1.x/popt-1.19.tar.gz",
+      "sha256": "c25a4838fc8e4c1c8aacb8bd620edb3084a3d63bf8987fdad3ca2758c63240f9",
+      "reference": "BLFS13.1-systemd general/popt.html",
+      "book_page_sha256": "69be962acfc03503d49e7fd82626518acf946e286184170dfd877a77fa0377ba",
+      "book_md5": "eaa2135fddb6eb03f2c87ee1823e5a78",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

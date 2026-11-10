@@ -3420,3 +3420,5 @@ remains parked; next eligible CUPS source/build review.
 | 2026-11-10 | B02 owned libnvme | Reclaim verified closed EDS replica, build frozen libnvme, preserve original test and stage bytes during C probe correction | 36 ordinary and two expected refusal results. Native 0/0, 34 paths and 35 entries. LVM2 and libaio sources pinned. Libaio source verified via OSU after origin 404. |
 
 | 2026-11-10 | B02 LibAIO staged | Build frozen source and use private tmpfs for original partcheck. Run only case 21 on ext4 after its explicit RWF_NOWAIT skip | 18 tmpfs passes plus one ext4 pass. Shared consumer refusal and recovery passed. Native packaging next. |
+
+| 2026-11-10 | B02 owned LibAIO and staged LVM2 | Install checked LibAIO. Recover verified Node.js promotion space and build LVM2 under UID 101 | LibAIO native 0/0, 14 paths. Node.js reclaimed 200,933,376 B with installed root unchanged. LVM2 original unit suite 156/156, stage and local Device Mapper test passed. Native LVM2 and disposable devices pending. |

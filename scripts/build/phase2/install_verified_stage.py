@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libaio': ('0.3.113', 'glibc (>= 2.44-1+toddy1)', 'libaio-0.3.113.tar.gz', 'usr/lib/libaio.so.1.0.2'),
     'libnvme': ('1.16.2', 'glibc (>= 2.44-1+toddy1), json-c (= 0.19-1+toddy1), openssl (= 4.0.3-1+toddy1), keyutils (= 1.6.3-1+toddy1), dbus (= 1.16.2-1+toddy1)', 'libnvme-1.16.2.tar.gz', 'usr/lib/pkgconfig/libnvme.pc'),
     'keyutils': ('1.6.3', 'glibc (>= 2.44-1+toddy1)', 'keyutils-1.6.3.tar.gz', 'usr/lib/pkgconfig/libkeyutils.pc'),
     'libatasmart': ('0.19', 'glibc (>= 2.44-1+toddy1), systemd (>= 261.2-1+toddy3)', 'libatasmart-0.19.tar.xz', 'usr/lib/pkgconfig/libatasmart.pc'),
@@ -1279,6 +1280,9 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='libaio':
+        from qualify_libaio import qualify as qualify_libaio
+        qualify_libaio(ROOT)
     if name=='libnvme':
         from qualify_libnvme import qualify as qualify_libnvme
         qualify_libnvme(ROOT)

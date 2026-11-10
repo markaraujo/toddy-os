@@ -100,19 +100,46 @@ including case 14, with one explicit RWF_NOWAIT skip. Ran only original case
 Libaio-nowait-1 PID 115279 terminal 0, no other test replay. Shared-library
 C probe confirmed invalid-depth refusal and two async write/read recoveries.
 Original compiler and stage maps retained (26 ELF, two regular files, two
-links), no outstanding AIO request in the builder. Native package absent.
+links), no outstanding AIO request in the builder.
 [Stage evidence](evidence/B02-libaio-stage.json).
 The two root-only ext2/ENOSPC cases are outside frozen book partcheck.
 Never repeat preparation, compile, partcheck, case 21 or staging.
 
-EXACT NEXT: qualify original libaio-1 and libaio-nowait-1 receipts and current
-stage/ELF hashes read-only. Use the existing full-root native package backend
-with COPYING retained and rerun only the installed shared C probe in a private
-namespace. Check guest lock and host/target/scratch reserves. Last target free
-17,193,078,784 B, scratch 561,504,256 B. After local SDK acceptance,
-review LVM2 2.03.42's 40 MB build estimate and disposable-device test context
-before dispatch. Cryptsetup/UDisks/Samba and native GNOME pending. Stop after
-accepted B02.
+LibAIO native b02-libaio-install PID 115823 terminal recipe/postcheck 0/0.
+It installed 14 payload entries and changed 14 paths. Archive SHA256
+000508dd7cf92c29ff1c7970c9cb7f7df04d59f23fe44da37a57f2f7acc84374.
+[Native evidence](evidence/B02-libaio-install.json) verifies exact staged
+files and links, COPYING, ABI, APT and real installed shared C AIO with
+UID 101 and a private device/network namespace. No intended-kernel test.
+Do not repeat installation.
+
+[Node.js custody](evidence/B02-node-promotion-custody.json) terminal complete.
+Only the verified closed promotion usr replica was retired. Actual reclaimed
+200,933,376 B, installed root changed zero paths. Exact archive, historical
+receipts, original compiler/workstage and DEBIAN retained. Never replay.
+
+LVM2 2.03.42 lvm2-1 PID 116707 terminal 0. Frozen book configure flags, own
+LibAIO/Systemd SDK, 156/156 original unprivileged unit cases, stage including
+udev rules and three Systemd unit definitions, local Device Mapper name
+escaping/pool cycles all passed. 211 ELF files, 100 staged regular files,
+167 total entries. [Stage evidence](evidence/B02-lvm2-stage.json).
+No native package, service activation or device operations. Original device
+suite pending in a disposable VM. Configure warns that thin/cache tools,
+VDO format tool and XFS headers are absent. Retain compiler and stage.
+Last verified free 17,321,021,440 B on target. Check actual host and guest
+reserves and lock before mutation.
+
+EXACT NEXT: review staged LVM2 udev rules, unit triggers and /etc/lvm
+conffiles. Bind retained lvm2-1 job and manifest
+7d6cc86f984f9287c769d4e4ca9646cc3b1f527fc6c4936a16820de2a13e562f
+in a read-only preflight. Then use one full-root native transaction and a
+no-device installed SDK consumer. Verify a later disposable-device test
+with the intended kernel before feature acceptance. Intended kernel has
+BLK_DEV_DM, DM_MIRROR and LOOP but lacks DM_CRYPT, DM_SNAPSHOT, CRYPTO_XTS
+and CRYPTO_USER_API_SKCIPHER. Preserve this gap for encrypted-volume work,
+without silent foundation changes. Cryptsetup 2.8.7 and popt 1.19 sources
+are now pinned, no guest work on either. UDisks, Samba and graphical GNOME
+pending. Stop after accepted B02.
 
 ### Previous Settings prerequisites
 
