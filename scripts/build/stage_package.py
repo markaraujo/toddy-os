@@ -77,6 +77,13 @@ def canonicalize_usrmerge(stage):
             merge(source,stage/'usr'/name)
 
 
+def info_registration(paths):
+    """Declare the shared index even when no prebuilt index was staged."""
+    documents=[path for path in paths if path.startswith('/usr/share/info/')
+               and re.search(r'\.info(?:\.(?:gz|xz|bz2))?$',path)]
+    return documents, ['/usr/share/info/dir'] if documents else []
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('name')
@@ -124,6 +131,8 @@ def main():
         info_index.unlink()
         generated_paths.append('/usr/share/info/dir')
     entries = payload(stage)
+    info_documents,info_generated=info_registration(entries)
+    generated_paths=list(dict.fromkeys(generated_paths+info_generated))
     if not entries:
         raise SystemExit('Empty package')
     for path in entries:
@@ -200,10 +209,9 @@ def main():
         (database/'status').touch(exist_ok=True)
         # Packages contain no maintainer scripts. Target root is always explicit.
         backend.install(archive)
-        for path in entries:
-            if path.startswith('/usr/share/info/') and re.search(r'\.info(?:\.(?:gz|xz|bz2))?$',path):
-                subprocess.run(['/usr/sbin/chroot',str(TARGET),'/usr/bin/install-info',
-                    '--dir-file=/usr/share/info/dir',path],check=True)
+        for path in info_documents:
+            subprocess.run(['/usr/sbin/chroot',str(TARGET),'/usr/bin/install-info',
+                '--dir-file=/usr/share/info/dir',path],check=True)
         record['installed'] = True
         record_path.write_text(json.dumps(record, indent=2)+'\n')
     print(json.dumps({'package': args.name, 'sha256': record['archive_sha256'],
