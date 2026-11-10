@@ -401,7 +401,9 @@
         "docs/evidence/B02-enchant-stage.json",
         "docs/evidence/B02-enchant-install.json",
         "docs/evidence/B02-libspelling-stage.json",
-        "docs/evidence/B02-libspelling-install.json"
+        "docs/evidence/B02-libspelling-install.json",
+        "docs/evidence/B02-editorconfig-install.json",
+        "docs/evidence/B02-gnome-text-editor-stage.json"
       ]
     },
     {

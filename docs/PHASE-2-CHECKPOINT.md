@@ -8,19 +8,49 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current eligible B02 slice: Libspelling0.4.11 OWNED, native PID26455 recipe/post0/0,
-87changed paths, installed Spelling1 GI/known+misspelled/suggestion/language refusal/
-ignore/recovery/UID101/NoNewPrivs/private-dev/no-route/APT0 passed.
-[Installed proof](evidence/B02-libspelling-install.json). ArchiveSHA
- a889dd3c9442e2583d08bfcc6c2af5d71cac088c5a96a2629a69340bcc5b7ff5.
-EXACT NEXT: prepare required EditorConfig0.12.11 recipe/input for selected GNOME
-Text Editor50.1, then build editor using owned Libspelling/Enchant. Official source
-and exact original tests gitlink authenticated/frozen, host archives retained;
-[source proof](evidence/B02-editorconfig-source.json). No guest preparation yet.
-Do not repeat downloads. Source commit0ba157eff167c1b2d1bc0c3e13975b7a73fb9d25;
-test commitd91029bdf1e3e0307714afe0d2cde7ba6fd208ab. Check actual reserves
-before extraction; reuse existing scratch where useful. No live guest writer; after install target free17191866368B.
-Never replay Libspelling source/compiler/tests/stage/native transaction.
+Current eligible B02 slice: GNOME Text Editor50.1 stage qualified, not installed.
+[Proof](evidence/B02-gnome-text-editor-stage.json). Main1PID29209 compiler/stage/
+actual --version succeeded, collector1 failed own assumption of zero registered
+tests. Metadata2PID30174 terminal0 ran first actual offline AppStream validation
+(no rebuild), then collection0. All current ELF/stage hashes independently match.
+No graphical open/save/edit/navigation/focus/recovery acceptance. SourceSHA
+f68036b09d378faa883bfe936e479c6ff37027c2ffed101daf912df70c51d0e6;
+original recipeSHA164116bf1010e79148546afa81fac2317938e66d48088d8ae83912bbe98d17fb.
+EXACT NEXT: prepare native editor package profile/install/check, preserving schema/
+cache ownership, actual transaction-space gate and full-root checks. Do not replay
+source/compiler/stage/version/metadata test. No live writer; builder boot
+9d54ab78-a01a-428b-86e9-6055effef25b. Editor GUI is still pending.
+
+EditorConfig0.12.11 now OWNED: [proof](evidence/B02-editorconfig-install.json).
+Original202CTest cases + installed C API/CLI layered UTF8 settings, relative-path/
+malformed-config refusal/input retention/two recoveries passed. NativePID28171
+recipe/post0/0/26changes. ArchiveSHA
+ a0803a62f0d5e857c62b97fbbfb84423f3f0f7f6776c3e6d3479a3b351f600ed.
+Never replay original source/build/tests/stage/native install. Source and exact
+original tests gitlinks retained in source lock; frozen PCRE2 reused, no upgrade.
+
+Shared preallocated Doxygen scratch UUIDae4347fb-31fd-4193-a333-0a549e144231 now
+also holds independent editorconfig-1 inode1011 and gnome-text-editor-1 inode1157
+under toddy-editor-workers, bound to corresponding direct work mountpoints.
+Preparation receipts COMPLETE, no allocation/format/resize/original cache changes.
+After a cold builder restore verify same Doxygen UUID, each worker inode and empty
+unmounted target, then bind SAME subtree; never recreate/replay preparation.
+Libspelling worker inode489 is also retained. Isolated source/read-only installed
+dependencies remain unchanged; each sandbox exposes only its own private subtree.
+
+Cargo-c duplicate promotion custody1 COMPLETE: PID28623 reclaimed165642240B,
+installed full-root changed0 and original workstage unchanged. Installed payload,
+retained native archive and duplicate matched before removal. Only promotion usr
+retired, DEBIAN/original source/compiler/stage/raw/native archive retained.
+[Custody](evidence/B02-cargo-c-stage-custody.json). NEVER replay. After custody
+actual free17356251136B, before subsequent editor source extraction; check actual
+free before transaction. No reserve reduction or physical storage operation.
+
+Libspelling0.4.11 OWNED, native PID26455 recipe/post0/0/87changes,
+installed Spelling1 GI/refusal/ignore/recovery/UID101/NoNewPrivs/private-dev/no-route/
+APT0 passed. [Installed proof](evidence/B02-libspelling-install.json).
+ArchiveSHAa889dd3c9442e2583d08bfcc6c2af5d71cac088c5a96a2629a69340bcc5b7ff5.
+Never replay source/compiler/tests/stage/native transaction.
 [Stage proof](evidence/B02-libspelling-stage.json): first build compiled library/
 original tests/GIR, optional Vala failed because owned GtkSourceView has no VAPI.
 Supported vapi=false matches C/GI consumer; options2 terminal0, original ELFs
