@@ -8,16 +8,26 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current B02 slice: MIT Kerberos native aggregate producer PARKED, ADR0213.
-[Native input](evidence/B02-mitkrb-input.json)/[failed collector](evidence/B02-mitkrb-collector-failed.json).
-Source3required patches applied/readonly EROFS/cache unchanged; worker12699.
-Main1PID45040 exit2 after compiler+crypto success (GSS target unexpectedly invokes
-full Python realm suite). Finish2PID58431 exit1 after original GSS5C0/DB2default0/
-stage0, own transitive staged linker failure. Collector3PID61513 exit1: own real
-principal/MEMORY-cache/refusal/recovery C API PASSED, aggregate count assertion
-failed (24reportrows/20unique IDs, DB2case20stock-dictionary skip, book12excluded).
-ksu0755, no setuid. No aggregate result/native package/install/authentication/UI
-acceptance. All compiler/test/stage bytes and successful logs retained; no replay.
+Current B02 slice: MIT Kerberos local build/stage aggregate COMPLETE; native
+package/install pending. [Stage proof](evidence/B02-mitkrb-stage.json),
+[parser qualification](evidence/B02-mitkrb-parser-qualification.json).
+After advancing independent CUPS work, one logged bounded metadata-only extension
+qualified the actual24row/20unique-ID parser (missing/unexpected IDs refused).
+Metadata4PID67706 actual exit0; all897 ELF/132stage hashes and seven log/consumer
+hashes unchanged. No compiler/test/stage/API replay. Historical two corrective
+failures remain in ledger; never replay metadata4. DB2case20 remains skipped and
+book12excluded. No native package/install/realm authentication/Settings/GUI claim.
+
+CUPS2.4.19 full main compilation succeeded; producer PARKED after two failed
+corrections, [proof](evidence/B02-cups-producer-failed.json), ADR0214.
+Main1PID62765 exit2 at HTTP hostname resolution; finish2PID66679 exit1 at own
+footer-count precondition; finish3PID67051 exit1 at private hosts assertion.
+Generic initialization overwrote an early injected hosts fixture. No new tests,
+stage result/native package or printing acceptance. Compiler/logs/source retained.
+CUPS source alias/private worker16132 prepared, NEVER replay preparation.
+Exact CUPS profile now inserts after generic hosts initialization; three HOST
+fixture tests pass, not guest test acceptance. Do not dispatch correction4 without
+new bounded reopening preserving historical budgets and actual postconditions.
 
 Receipt repair1 COMPLETE, [proof](evidence/B02-mitkrb-worker-receipt-repair.json):
 preparer prerequisite-variable shadow misplaced MIT worker JSON over Libgtop
@@ -26,33 +36,21 @@ restored from retained controller output, exact pre-existing SHA2566c32a0e6bf67b
 All3 preparers fixed and worker namespace guarded. No package/source/compiler
 replay, no lost installed package; NEVER repeat repair1.
 
-TWO failed corrective executions: budget PARKED in persistent failure ledger.
-Fresh code checks unique IDs but was NOT rerun. Reopen only after independent
-actual24row/20-ID parsing qualification and ONE logged bounded metadata-only
-extension retaining historical budgets, after advancing another eligible slice.
-No compiler/source/crypto/GSS/DB2/stage/API replay; reuse exact successful logs.
+EXACT NEXT: prepare owned MIT Kerberos1.22.2 native packaging from the accepted
+stage, without source/compiler/test/stage/API replay. Review frozen book target
+configuration, source notices/all3 patches, native dependencies/ABI and ksu0755;
+qualifier must bind exact job recipe/source identities and retained maps. Inspect
+actual target/scratch/host free space and existing native output workspace before
+choosing promotion placement. Native installation needs full-root transaction
+and installed UID101/no-route local consumer/refusal/recovery/ABI/APT checks.
+No service activation or realm/credential configuration from SDK acceptance.
 
-EXACT NEXT: CUPS2.4.19 required Settings dependency. Official frozen source pinned
-(.local/phase2/cups-source.json), expanded26877563B. No guest CUPS input/work/job.
-Read frozen book and actual configure/cups/scheduler/install/test Makefiles;
-review lp account/permissions and inactive service/TLS/library requirements before
-recipe/preparation. CUPS filters is required for full printing, not yet qualified;
-never claim real printing or a printer driver from a client SDK check. Preserve
-core Settings panels and later driver/acquisition flows. Use a source alias/private
-worker if current root headroom cannot hold source plus fixed reserve. Do not
-re-fetch identical source or lower target16GiB/host100GiB/scratch512MiB gates.
-
-Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f; writer lock verified idle,
-MIT native package absent, no CUPS guest job. Last targetfree17218785280B,
-Doxygen scratch760049664B. Host cold100GiB+512MiB gate previously below reserve;
-recheck actual resources before operations/boot, no new cold boot dispatched.
-Same scratch/workers12699(MIT)/7269(GTop)/5725(MM)/4244(QMI)/workspace4671 retained.
-Source/worker restore support prepared, cold untested. All previous custody and
-same-boot recovery receipts complete; never replay them. Source originals/patches/
-compiler/evidence/archives retained. B02 acceptance/full GNOME/basic apps pending.
-
-Published5dd7fed: all3CI success and exact publicHTTP200/indexSHA
-1c18dec33afd3258eddc29d2dcfe52aac63a34c5ba057fc79bcb4983e8c0e400.
+Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f; metadata4 terminal0.
+CUPS last scratchfree650784768B; recheck real resources/lock before mutation.
+Host cold100GiB+512MiB gate previously below reserve; do not lower any gate.
+Same scratch MIT12699/GTop7269/MM5725/QMI4244/workspace4671/CUPS16132 retained.
+Source/worker restore support prepared, cold untested. All prior custody/repair
+receipts complete; never replay. Full B02 then stop, physical testing unperformed.
 
 Seven qualified Settings prerequisite archives/metadata copied and independently
 verified outside VM: [recovery cache proof](evidence/B02-settings-package-recovery.json),

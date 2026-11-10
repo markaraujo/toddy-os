@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T19:59:38.620918+00:00
+Updated: 2026-11-10T20:30:56.252194+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T19:59:38.620918+00:00
+Last verified: 2026-11-10T20:30:56.252194+00:00
 
 Verified:
 
@@ -176,8 +176,10 @@ Verified:
 - Owned libgtop2.41.3:99ELFs/139stagefiles; no original suite exists. Own direct local memory/uptime/process/missingPID/refusal/recovery passed. Actual stage helper4755 caught before installation; mode0755 correction and fresh hook fixture qualified with compiler/stage bytes retained. Native0/0/159changes, UID101/NNP/private-proc/private-dev/no-route C/GI metadata/ABI/Info/APT0, helpers root0755. No helper protocol/cross-user privilege/GUI/desktop measurements/physical claim. ADR0212.
 - MIT Kerberos1.22.2 source+3 required upstream/security/OpenSSL4 patches authenticated; disposable HOST patch application in book order/fuzz0 passed with original archive unchanged (40695769expanded bytes). Source-only preflight, no native compiler/tests/runtime/authentication claim. Native guest writer idle; next isolated recipe/crypto/API checks and shared readonly alias.
 - MIT1.22.2 native source+3patches/readonly EROFS/cache unchanged/private worker12699. Main compiler+crypto succeeded; resume passed5 original GSS C programs, original DB2 default (case20skip/book12excluded) and stage. Own C principal/MEMORY-cache/refusal/recovery passed; aggregate collector failed24row/20unique-ID count. Exits2/1/1 preserved; no aggregate/package/install acceptance. Producer parked after2failed corrections, ADR0213. CUPS2.4.19 source authenticated, no guest input/job.
+- CUPS2.4.19 full main compile succeeded; original HTTP hostname failure and two corrective precondition failures preserved, no stage/package/install. Producer parked, ADR0214. Exact private-profile initialization fixed and three HOST fixture tests passed, not guest acceptance.
+- MIT Kerberos metadata-only4 exit0 after independent actual-log parser qualification. All897 compiler ELF/132stage and7log/consumer hashes unchanged, no compiler/test/stage/API replay. Build/stage aggregate accepted; native package/install/authentication/UI pending, historical failures retained.
 
-Running: Guest writer idle. MIT aggregate collector parked after2failed corrective executions; preserve all bytes/tests/logs and require bounded metadata-only reopening. Advance CUPS2.4.19 required Settings dependency: source/install/test/service and scratch review before guest input/build. Complete all B02 then stop.
+Running: MIT Kerberos local build/stage aggregate complete. Next owned native package qualifier/dependencies/notices and controlled full-root installation with installed local consumer checks. CUPS producer parked after2failed corrections; no unchanged retry. Complete all B02 then stop.
 
 Remaining:
 
@@ -185,7 +187,7 @@ Remaining:
 - LocalSearch/Nautilus/browser/settings and first fully working interactive native GNOME session.
 - Foundation recovery-entry boot remains pending; actual installed main7.1.8/Systemd already observed in failed LocalSearch native tests, not desktop acceptance.
 - Minimal desktop branding/offline usability/security-ABI review and reference guest measurements.
-- MIT aggregate collector/package remains unaccepted; actual local work retained, two failed corrections parked. CUPS/UDisks/Samba prerequisites and full Settings UI remain.
+- MIT native package/install remains pending; aggregate recovered metadata-only without replay. CUPS/UDisks/Samba prerequisites and full Settings UI remain.
 
 [Acceptance evidence](docs/evidence/B02.md)
 

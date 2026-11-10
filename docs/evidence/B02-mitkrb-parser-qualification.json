@@ -1,0 +1,12 @@
+{
+  "scope": "Independent HOST parsing of retained actual guest log; no original tests rerun and no package acceptance",
+  "log_sha256": "a5fd4864f0377b923a782d05ac202a96c3b53e395a0f678495250696f2e5ec4d",
+  "collector_statement_sha256": "2b9a338399388e813d4e88c69343ff4173a42d409c39e32a1a82256563b0d041",
+  "actual_report_rows": 24,
+  "unique_case_ids": 20,
+  "missing_case_refused": true,
+  "unexpected_case_refused": true,
+  "skip": "20: skipped, dictionary too small",
+  "book_excluded_case": 12,
+  "verified_at": "2026-11-10T20:27:29.137159+00:00"
+}

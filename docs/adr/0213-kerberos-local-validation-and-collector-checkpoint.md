@@ -1,6 +1,6 @@
 # ADR-0213 — Kerberos local validation and aggregate collector checkpoint
 
-Status: implementation incomplete; aggregate collector parked, no native package.
+Status: build/stage aggregate recovered metadata-only; native package/install pending.
 
 ## Selected source and isolated work
 
@@ -76,3 +76,25 @@ variables. A fail-closed namespace guard checks every worker receipt write.
 Four focused tests refuse acceptance-record replacement, another worker's record,
 traversal and unknown ownership, and allow only the exact own receipt. This is
 metadata recovery and prevention; it does not accept the parked MIT collector.
+
+
+## Bounded metadata-only recovery after independent CUPS work
+
+CUPS source/build work advanced an independent eligible branch, retaining the
+historical MIT failure budget. [Independent parsing](../evidence/B02-mitkrb-parser-qualification.json)
+used the exact retained actual guest DB2 log, matched its pre-existing digest,
+qualified24rows/20unique IDs and refused missing/unexpected IDs. This was host
+parsing evidence, not another run of the original suite.
+
+One logged bounded metadata-only extension then ran only the final Python
+collector, never shell/compiler/test/stage/API commands. [Actual metadata4](../evidence/B02-mitkrb-stage.json)
+PID67706 exit0 compares all897 ELF/132stage entries with the original maps, plus
+seven original log/consumer digests unchanged. Canonical compact JSON digests
+match the published failed-collector maps. Its unique before/retained receipts
+must not be replayed. Fixed scratch reserve is checked before publishing results.
+
+The local build/stage aggregate is now qualified. Case20 remains skipped and book
+case12 excluded. No native package/install, realm/ticket/network authentication,
+service, Settings GUI or physical acceptance follows from this metadata result.
+Next is controlled native packaging with exact source/patch/recipe and dependency
+qualification, installed local refusal/recovery checks and full-root transaction.

@@ -3394,3 +3394,5 @@ actual mounted worker JSON relocated to its own path. Unique repair1 complete,
 replay or installed-root mutation. All3 preparers use distinct variables and
 fail-closed own receipt path guard, four regression cases passed. MIT producer
 remains parked; next eligible CUPS source/build review.
+
+| 2026-11-10 | B02 CUPS/MIT boundary | Preserve CUPS full compile and two failed corrective preconditions; qualify effective private resolver initialization in3host fixtures. Independently qualify actual MIT DB2 parser and run one metadata-only extension | CUPS parked, no stage/package. MIT metadata4 exit0,897ELF/132stage/7log-consumer hashes unchanged, no successful execution replay; native package/install pending. Full B02 then stop |

@@ -1,0 +1,82 @@
+{
+  "scope": "Frozen MIT Kerberos1.22.2 with all3 required frozen upstream/security/OpenSSL4 patches, original local crypto check-unix/five GSS C tests and bundled DB2 check (book test12 exclusion). Own real principal/MEMORY-cache/refusal/recovery API. Full network/realm/Python/provider/enterprise login suite not executed. No owner credentials/tickets/realm authentication/daemon/Settings GUI/physical acceptance. Aggregate metadata-only4 passed; no compiler, tests, stage or consumer replay. Native package/install still pending.",
+  "compile_exit": 0,
+  "stage_exit": 0,
+  "original_selected_tests": {
+    "crypto": {
+      "exit": 0,
+      "log": "original-crypto-tests.log",
+      "sha256": "606d0b7d99545a8bb4f2ce08a4c888654540f51980e59263cd7f31f7ab1a4345"
+    },
+    "gss": {
+      "exit": 0,
+      "log": "original-gss-c-tests.log",
+      "sha256": "3af037f4233be4d806b3d19219eeb0258e7f652928136a6b0814ac9070032bcc"
+    },
+    "db2": {
+      "exit": 0,
+      "log": "original-db2-tests.log",
+      "sha256": "a5fd4864f0377b923a782d05ac202a96c3b53e395a0f678495250696f2e5ec4d"
+    }
+  },
+  "DB2_report_rows": 24,
+  "DB2_unique_case_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    13,
+    20,
+    40,
+    41,
+    50,
+    60,
+    61,
+    62,
+    63
+  ],
+  "DB2_skipped": [
+    {
+      "case": 20,
+      "reason": "skipped, dictionary too small"
+    }
+  ],
+  "DB2_book_test12_excluded": true,
+  "consumer": "Kerberos local principal/MEMORY cache reopen/destroy/realm and absent-principal refusals/two recoveries; no tickets or network authentication\n",
+  "version": "1.22.2",
+  "maps": {
+    "artifacts": {
+      "entries": 897,
+      "canonical_json_sha256": "2aa9f46ae7b3aa49512444904767b55d72c7f0cde1673b8365430cdeeb845cc8"
+    },
+    "stage_sha256": {
+      "entries": 132,
+      "canonical_json_sha256": "8e68316dac1e141e351eb2d78a88ddfafeb1d1fda78f694801a9e0a048138bcd"
+    }
+  },
+  "metadata_job_exit": 0,
+  "metadata_job_pid": 67706,
+  "metadata_job_boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+  "retained": {
+    "compiler_ELFs_unchanged": 897,
+    "stage_files_unchanged": 132,
+    "logs_and_consumer_unchanged": {
+      "original-crypto-tests.log": "606d0b7d99545a8bb4f2ce08a4c888654540f51980e59263cd7f31f7ab1a4345",
+      "original-gss-c-tests.log": "3af037f4233be4d806b3d19219eeb0258e7f652928136a6b0814ac9070032bcc",
+      "original-db2-tests.log": "a5fd4864f0377b923a782d05ac202a96c3b53e395a0f678495250696f2e5ec4d",
+      "original-stage.log": "eb5d3db74a5f01535950ac667e205978cb5f86fb0b9fd26efc4683a25ccd1c7d",
+      "local-probe": "67fa44661386a03a11e776df80ec379ceda1f3e959bcd9393316e77146b435a8",
+      "local-probe.log": "119e9d7806845ee0cc27e8346bafa283d6c461ea1c11852bc7f815bd2f2cae7d",
+      "actual-version.log": "f6de366e1d5d1436bdca61d5c3711eed8942827f6803b88e7e1c7a64a365f314"
+    },
+    "no_compiler_test_stage_or_consumer_execution": true
+  },
+  "parser_qualification": "B02-mitkrb-parser-qualification.json"
+}

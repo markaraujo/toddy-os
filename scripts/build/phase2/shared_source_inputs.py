@@ -4,7 +4,8 @@ import errno,hashlib,json,os,subprocess,tarfile
 from prepare_editorconfig_shared_scratch import manifest as cache_manifest
 
 UUID='ae4347fb-31fd-4193-a333-0a549e144231'
-VERSIONS={'mitkrb':('1.22.2','krb5-1.22.2'),
+VERSIONS={'cups':('2.4.19','cups-2.4.19'),
+          'mitkrb':('1.22.2','krb5-1.22.2'),
           'libqmi':('1.38.0','libqmi-1.38.0'),
           'modemmanager':('1.24.2','ModemManager-1.24.2'),
           'gnome-control-center':('50.4','gnome-control-center-50.4')}
@@ -92,7 +93,7 @@ def restore_inputs(base,log,name):
         r=json.loads(p.read_text());assert r['state']=='complete' and r['filesystem_uuid']==UUID
         source,target=layout(base,r['name'],r['version'],r['source_name'])
         assert str(source)==r['source'] and str(target)==r['target'] and source.resolve()==source
-        assert r['archive_filename']==r['source_name']+('.tar.xz' if r['name']=='gnome-control-center' else '.tar.gz')
+        assert r['archive_filename']==('cups-2.4.19-source.tar.gz' if r['name']=='cups' else r['source_name']+('.tar.xz' if r['name']=='gnome-control-center' else '.tar.gz'))
         assert source.stat().st_ino==r['source_inode'] and fingerprint(source)==r['source_fingerprint']
         assert digest(Path('/mnt/lfs/sources')/r['archive_filename'])==r['archive_sha256']
         assert target.resolve()==target and not list(target.iterdir()) and subprocess.run(['mountpoint','-q',str(target)]).returncode==32

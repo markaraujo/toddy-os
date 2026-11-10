@@ -1,0 +1,47 @@
+{
+  "scope": "Failed producer, no CUPS stage/package/install acceptance",
+  "jobs": {
+    "cups-1": {
+      "pid": 62765,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "exit": 2,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cups-finish-2": {
+      "pid": 66679,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "exit": 1,
+      "log_sha256": "0f4c36ed529ae8bcc0b4e9909243b24f4ec51b644e8069a65b2ffe1f03ed916c"
+    },
+    "cups-finish-3": {
+      "pid": 67051,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "exit": 1,
+      "log_sha256": "c28cab4b5eb7d05bcbf69e8a42698529d94588faa00fc452a8c5870b8681bd1d"
+    }
+  },
+  "retained": {
+    "original-build.log": {
+      "bytes": 14090,
+      "sha256": "eb737efcc74c7f1d2a662eba8b5422a9f43f32da5897f9223f74ffeb011c155d"
+    },
+    "original-test-build.log": {
+      "bytes": 6815,
+      "sha256": "2c8564c2a6d02f0be9a66a57054167ad919e7dab19c8c40198e2f5f06c27895f"
+    },
+    "before-finish-3.json": {
+      "bytes": 24924,
+      "sha256": "a123970be9e1366f72898b6ce3c12ca8dd357fefbc430f45567a94891fdb99fb"
+    }
+  },
+  "stage_results_present": false,
+  "local_test_results_present": false,
+  "stage_entries": 0,
+  "scratch_free_bytes": 650784768,
+  "cause": "Initial original HTTP unit could not resolve sandbox hostname. Recovery2 incorrectly expected four identical success footers; actual two. Recovery3 private hosts assertion failed because generic profile initialization overwrote early fixture. Both corrective jobs failed before new tests or staging.",
+  "failed_corrections": 2,
+  "producer_state": "parked",
+  "source_sha256": "820984b12a67f98705785aae2dd1347fe0ac097828001d4583ff64574aed6389",
+  "profile_fixture_qualification": "Three host tests pass including actual shell execution of effective private hosts initialization. Fixture evidence only, not guest HTTP/test success.",
+  "polling_limitation": "Resource observer started after terminal job: null minimum polling measurement is not reserve proof. Final free space measured only."
+}
