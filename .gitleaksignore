@@ -181,3 +181,7 @@ docs/evidence/B02-libqmi-install.json:generic-api-key:1744
 7a3433085553de2b76e154619b09abad179ab19a:docs/evidence/B02-libqmi-install.json:generic-api-key:1582
 7a3433085553de2b76e154619b09abad179ab19a:docs/evidence/B02-libqmi-install.json:generic-api-key:1589
 7a3433085553de2b76e154619b09abad179ab19a:docs/evidence/B02-libqmi-install.json:generic-api-key:1744
+
+# Reviewed exact SHA256 entries of public ModemManager authentication-related objects.
+docs/evidence/B02-modemmanager-stage.json:generic-api-key:949
+docs/evidence/B02-modemmanager-stage.json:generic-api-key:982

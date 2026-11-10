@@ -1,0 +1,2248 @@
+{
+  "scope": "Owned ModemManager1.24.2 SDK/plugin/daemon/service/policy payload, local C/GI/CLI only. Initial own nullable-GIR and unknown-option assumptions failed. Final verify3 no reinstall/root changes. No running daemon/session authorization/modem/cellular/firmware operation/Settings GUI/physical acceptance.",
+  "attempts": [
+    {
+      "step": "b02-modemmanager-install",
+      "recipe_exit": 0,
+      "postcheck_exit": 1,
+      "changed_paths": 264,
+      "started": "2026-11-10T19:00:13.477530+00:00",
+      "finished": "2026-11-10T19:00:33.434473+00:00",
+      "recipe_sha256": "84c7e712667cb4471c331101fc90fb5e47c21360cbeb3e36cabd57552c5fe044",
+      "postcheck_sha256": "e42e619d413b79461ad8e7d0d8760ca3dc52228eae6b1cc2b3c5f2e2fcc86e34",
+      "log_sha256": "3ce2b275de7aed4c0dd290e997cbc3019e66a12f5d4175df15878b650f48a4ad",
+      "receipt_sha256": "76167d0bf8f19a00eddc8e524766283721857fea0a2aa69ede6712416f73b662",
+      "timing": {
+        "step": "b02-modemmanager-install",
+        "scope": "same full-root snapshot function, timing only",
+        "snapshots": [
+          {
+            "seconds": 14.841,
+            "entries": 162323,
+            "regular_files": 144799,
+            "regular_bytes": 7544119474
+          },
+          {
+            "seconds": 14.616,
+            "entries": 162584,
+            "regular_files": 145027,
+            "regular_bytes": 7558254326
+          }
+        ],
+        "total_seconds": 35.873
+      }
+    },
+    {
+      "step": "b02-modemmanager-verify-2",
+      "recipe_exit": 0,
+      "postcheck_exit": 1,
+      "changed_paths": 0,
+      "started": "2026-11-10T19:01:32.195051+00:00",
+      "finished": "2026-11-10T19:01:49.089999+00:00",
+      "recipe_sha256": "fd1becf1558dd9914952bce5bf7daee33188f8bde27c5bcb2c9f512697d9da94",
+      "postcheck_sha256": "47f59f7b1634c6ee13623d33377b0519ca6e9068a360c6126763d23ca5f0a9ed",
+      "log_sha256": "c51304bc2d47d45202c1a8cb4abf53f2de1656b72b8c17465a82bbf0982558b6",
+      "receipt_sha256": "21c98b6d5e6b3d5c13dd6b780b613842ca9fcdc19991a282c024b414836b54da",
+      "timing": {
+        "step": "b02-modemmanager-verify-2",
+        "scope": "same full-root snapshot function, timing only",
+        "snapshots": [
+          {
+            "seconds": 14.969,
+            "entries": 162584,
+            "regular_files": 145027,
+            "regular_bytes": 7558254326
+          },
+          {
+            "seconds": 14.692,
+            "entries": 162584,
+            "regular_files": 145027,
+            "regular_bytes": 7558254326
+          }
+        ],
+        "total_seconds": 32.942
+      }
+    },
+    {
+      "step": "b02-modemmanager-verify-3",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 0,
+      "started": "2026-11-10T19:02:58.212410+00:00",
+      "finished": "2026-11-10T19:03:15.207033+00:00",
+      "recipe_sha256": "5ba63d738135a7aa03068f69a2a23ce713b1bf65a740dc19701ee287005bb2c1",
+      "postcheck_sha256": "9302f5a058d9a35cb9dfb2f18ddd9819c8810496a873d29457c60fbf9b6640e6",
+      "log_sha256": "582c076d2d7f342244a999e2d276ecd2c1ef3537ddfbdf603e3501a7f11b94b1",
+      "receipt_sha256": "84da985f1b949eb25f28f18b25256b0597c435f273fd0b8ba86c9c30d8e34753",
+      "timing": {
+        "step": "b02-modemmanager-verify-3",
+        "scope": "same full-root snapshot function, timing only",
+        "snapshots": [
+          {
+            "seconds": 15.093,
+            "entries": 162584,
+            "regular_files": 145027,
+            "regular_bytes": 7558254326
+          },
+          {
+            "seconds": 14.712,
+            "entries": 162584,
+            "regular_files": 145027,
+            "regular_bytes": 7558254326
+          }
+        ],
+        "total_seconds": 33.19
+      }
+    }
+  ],
+  "consumer": {
+    "scope": "Owned ModemManager1.24.2 SDK/daemon/plugin/service/policy payload and UID101/NNP/private-device/no-route local C/GI Unicode properties/reset/two fresh cycles, CLI absent-system-bus refusal, daemon version, ABI/APT. Strict static policy checked, service not enabled. No running daemon/session authorization/modem/cellular/firmware/Settings GUI/physical acceptance.",
+    "C_consumer": "MM local C Unicode properties/reset/two fresh cycles; no credentials/device/service access\n",
+    "GI_consumer": "MM GI local properties/None refusal/two fresh recoveries\n",
+    "version": "mmcli 1.24.2\nCopyright (2011 - 2023) Aleksander Morgado\nLicense GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl-2.0.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\n",
+    "daemon_version": "ModemManager 1.24.2\nCopyright (C) 2008-2023 The ModemManager authors\nLicense GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl-2.0.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\n",
+    "installed_stage_files_identical": 220,
+    "strict_policy_defaults": [
+      [
+        "org.freedesktop.ModemManager1.CellBroadcast",
+        {
+          "allow_inactive": "no",
+          "allow_active": "auth_self_keep"
+        }
+      ],
+      [
+        "org.freedesktop.ModemManager1.Control",
+        {
+          "allow_inactive": "no",
+          "allow_active": "auth_admin"
+        }
+      ],
+      [
+        "org.freedesktop.ModemManager1.Device.Control",
+        {
+          "allow_inactive": "no",
+          "allow_active": "auth_self_keep"
+        }
+      ],
+      [
+        "org.freedesktop.ModemManager1.Contacts",
+        {
+          "allow_inactive": "no",
+          "allow_active": "auth_self_keep"
+        }
+      ],
+      [
+        "org.freedesktop.ModemManager1.Messaging",
+        {
+          "allow_inactive": "no",
+          "allow_active": "auth_self_keep"
+        }
+      ],
+      [
+        "org.freedesktop.ModemManager1.Voice",
+        {
+          "allow_inactive": "no",
+          "allow_active": "auth_self_keep"
+        }
+      ],
+      [
+        "org.freedesktop.ModemManager1.Time",
+        {
+          "allow_inactive": "no",
+          "allow_active": "auth_self_keep"
+        }
+      ],
+      [
+        "org.freedesktop.ModemManager1.Location",
+        {
+          "allow_inactive": "no",
+          "allow_active": "auth_self_keep"
+        }
+      ],
+      [
+        "org.freedesktop.ModemManager1.USSD",
+        {
+          "allow_inactive": "no",
+          "allow_active": "auth_self_keep"
+        }
+      ],
+      [
+        "org.freedesktop.ModemManager1.Firmware",
+        {
+          "allow_inactive": "no",
+          "allow_active": "auth_admin"
+        }
+      ]
+    ],
+    "shared_library_resolution": true,
+    "physical_modem_tested": false
+  },
+  "package": {
+    "name": "modemmanager",
+    "version": "1.24.2-1+toddy1",
+    "archive_sha256": "99f7fb0f17a67a7ec0829c696d50485e5a7adceae2dcef80133718283c9b5572",
+    "recipe_sha256": "84c7e712667cb4471c331101fc90fb5e47c21360cbeb3e36cabd57552c5fe044",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "modemmanager",
+        "version": "1.24.2",
+        "filename": "ModemManager-1.24.2.tar.gz",
+        "url": "https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/1.24.2/ModemManager-1.24.2.tar.gz",
+        "sha256": "fbc75adcc0d7b0565f256e7ff4e8872b0a37c4413ff576665f7470932d9c1b68",
+        "reference": "BLFS13.1-systemd general/ModemManager.html",
+        "book_page_sha256": "713568385f133d85ac01e6b6b802dbaac474bac6f791c0f3fadf559efad212bb",
+        "book_md5": "b72860c54670f362e947edba160fa98e",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "payload": {
+      "/usr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/etc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/bin": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/sbin": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/ModemManager": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/gir-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/man": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/dbus-1": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/polkit-1": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/22x22": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/22x22/apps": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/22x22/apps/ModemManager.png": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a3ab42be0427fb19ab10310e5c30674bbfaf4e90220eb8db3e8caf68c5577ee2"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/ModemManager/connection.available.d": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/ModemManager/modem-setup.available.d": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/ModemManager/mm-foxconn-t77w968-carrier-mapping.conf": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "648f31f08fd0df15245ad851169991f6195d16d0f4f91dd462f68722a1a19bfc"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/2c7c:0313": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "2c7c"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/2c7c": {
+        "mode": 33216,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9e08ad58a5e129505f1cd173df68d4ca5591a45ccab00c74087bb48fc6b5b850"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/105b": {
+        "mode": 33216,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d284c2c71ca23278a94d6c114f8f8892e311dcbf25c8e2700d69bdf1d93a8da5"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/14c3:4d75": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "14c3"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/105b:e0c3": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "105b"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/1eac:1004": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "2c7c"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/14c3": {
+        "mode": 33216,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9f71e15ee578caf5c2db0ecdf102fee3c7f75968448ecd41fdbf1569a0e00552"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/1eac:1007": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "2c7c"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/105b:e0ab": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "105b"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/1199": {
+        "mode": 33216,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5559be6bfed725bfaa3a38a5324334c4b669fce44b2b60e98b36322ad74f21e5"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/413c:81a8": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "1199"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/1eac:1001": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "2c7c"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/03f0:4e1d": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "1199"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/2c7c:0314": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "2c7c"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/2c7c:030a": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "2c7c"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/2c7c:0801": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "2c7c"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/1199:9079": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "1199"
+      },
+      "/usr/share/ModemManager/fcc-unlock.available.d/413c:81a3": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "1199"
+      },
+      "/usr/share/ModemManager/connection.available.d/99-log-event": {
+        "mode": 33216,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "eb2a67188d7bd7a69815ff699d94e2c63e241cb7a6e1c9446f3e3e073e63f777"
+      },
+      "/usr/share/ModemManager/modem-setup.available.d/0000:0000": {
+        "mode": 33216,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2d883b7ba8ab5b7e9afc842ba829e7ea0431fc2b50fb323b0bf79599d2f898ee"
+      },
+      "/usr/share/locale/cs": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lt": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ba8a481f0fb0fd1abab9aa07c20b29fa8a15b340f781055ff9cc39703f9bfdf9"
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3da8e578970d7b2c2b00b61e05616567e8c82f3d4020edaab8b2d14c213ae23a"
+      },
+      "/usr/share/locale/sv/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6c181342e1fc56853f1c06890faa9a1fb7e593c5a6dd79e5dd60cf04874215a2"
+      },
+      "/usr/share/locale/id/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3e6aa139cd67c134216ffb434629468bfe9b4910fd1162f86e14e58fa1ce8dac"
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e918b80fcdf0934d02fa720c82bb90430f696ea12b7f0acd85c590803d2b6211"
+      },
+      "/usr/share/locale/it/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c4532a8a1de1f50ef406eeb6e32ca157e98a2154d8ad6b76f95ad7f86cef431c"
+      },
+      "/usr/share/locale/fur/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e2bf3fc02969e6a7f2b9b28035f9f0b56e387496258b66510d08d6dabc0a68b5"
+      },
+      "/usr/share/locale/ru/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3d5ca59f88e3873d1df789077af88c03de3987801bb813918a71de03eafef932"
+      },
+      "/usr/share/locale/pl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "19c6024784c6fd78b898b8d9e48c9499a41d00d542ed04cf0d7d246a2dcb40c7"
+      },
+      "/usr/share/locale/ca/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0b9fed4cf91927447a7a4eb73da486f9f9a023793dcb71bebf41070230126ba1"
+      },
+      "/usr/share/locale/da/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5fdc3b2797d9a6ce0c301daca0b92c8f66bc3fb527cae03fa820e8521fe9c813"
+      },
+      "/usr/share/locale/hu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2f4a8bb9b6bc8fe80be61cd67c8df32c12ef75b557a00c61ff3ad3214325b473"
+      },
+      "/usr/share/locale/fr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b47acb1520ab4c6d1a275ea542bfbe848089b2ec51770a679724257e1673ce3b"
+      },
+      "/usr/share/locale/tr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1d0cdd090580e95db987a6aef053109991dbebe9052b8d9dff3dbb23b26973f7"
+      },
+      "/usr/share/locale/uk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "eef69f2d9fe5632efd26c79d38c463c79663492a0cf88833b9351ff3cffaac59"
+      },
+      "/usr/share/locale/lt/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lt/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b44d1d3124542abc003955e2086c0feb6874850bddb413d0a2afedb7844d3ce0"
+      },
+      "/usr/share/locale/he/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4d6cda5caa9d746c1ec74d44bce17419545e5991154312b408ebcc1109f57be9"
+      },
+      "/usr/share/locale/nl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "42ad63fbc2006bc6216ef97ffdeb67aecb9cc18ee1601fbca5e721aaab55e6f1"
+      },
+      "/usr/share/locale/gl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gl/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4241ae0ac5706a680db794c4ea1a3b96534077201c4204423b45df1f7362c159"
+      },
+      "/usr/share/locale/de/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1042460c8d06f288384ee89e133c32f2b152eb6b9587373122fc5ea200c35b89"
+      },
+      "/usr/share/locale/ka/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e0a49622622f628c446ca3d5ddc12a8b318052802deac2c76bd85080b7f37756"
+      },
+      "/usr/share/locale/fi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "edc089d68a176c532fb88b8709a2ec08e848e3b551d135ad6fe188380ad3381c"
+      },
+      "/usr/share/locale/sk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk/LC_MESSAGES/ModemManager.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "37f22960d99ec50e71287ae0ff41ea60ff6c51b0fa63c2c67d16d1d9c2c60478"
+      },
+      "/usr/share/gir-1.0/ModemManager-1.0.gir": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4df25313529f27b86569fde374924c8249070f3419ccff79031948061de9c272"
+      },
+      "/usr/share/man/man1": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/man/man8": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/man/man1/mmcli.1": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3e1e3b060b6a6c5d77ff32563202fec8e38b8ce4e3e60f81ad610d998107433f"
+      },
+      "/usr/share/man/man8/ModemManager.8": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8ff5bc263f805e3013fbb112a94e45ce17dd93ff3c77e6acc30e40c262c851b2"
+      },
+      "/usr/share/doc/modemmanager": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/modemmanager/source-notices": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/modemmanager/copyright": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b4b8bc0bad61e8ee73c965728cb29338d6632a7709415bba73795b7920ebdabe"
+      },
+      "/usr/share/doc/modemmanager/source-notices/dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "/usr/share/doc/modemmanager/source-notices/8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "/usr/share/doc/modemmanager/source-notices/f3a4c522c6d41b3d3cd5fe928f02edca6a70991d93395e8d2dd898ddd30ca441": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f3a4c522c6d41b3d3cd5fe928f02edca6a70991d93395e8d2dd898ddd30ca441"
+      },
+      "/usr/share/doc/modemmanager/source-notices/index.json": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c9c57eafb1205d00f3f1e495f39bd32013d1f82aa997b9f814182614fe410d68"
+      },
+      "/usr/share/dbus-1/system-services": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/dbus-1/interfaces": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/dbus-1/system-services/org.freedesktop.ModemManager1.service": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6f31e0d8a0ee5d95fc6f4d2efa54321ee7bddc034fda8d3128ed06c97ad5ead9"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Signal.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c6bfd5e94b254fb66ea3eec0d878a326eca0f776fcff89ab389712e32e102c46"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Messaging.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "928825737833bde2855fbdbd9ee318594de8a54198302b779548b911da40e0af"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Modem3gpp.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0d3fddb4c59212246052cfa594d57a6d399615d83d1d3f31dd86d1a6449014d4"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Firmware.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6d7aa782709cc0aea4fd1426ef59b232630d8da181fe5f21fd9f7b7e6fc225b1"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Time.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5605d3fd4be8f004d362acfcf5033209ca60e303d7daf462a5edeca59ad2694a"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "62428620fd96f808e420e925b2287392ef5027ad91a000212d24f47d32676f61"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.ModemCdma.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0919c44268e03221b4545ee79d418b1390389bf4d181dd82141a6268fe611bf6"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Location.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2c54a6827e05e74085d737a315ce01a069b9fa27c8f08d64cc319b21b0270f84"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Sar.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9b77f41d0f193de9f1e8d746f169cabbf3be59ca1c6a2952a8ec91fd97c51e91"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d06a39bd4834ff8244fdd2f6a3333203bd8a82549fd17ac4cfa4e2ec27fcf714"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Modem3gpp.ProfileManager.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c6d589ed778c59c40f143240a662bb640e4644f247357ea8a71935b53a32a400"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Sms.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "73454a5dd0fcf8c56cefba76e3cd1732dbcf5c6217c59e6e8b5fdbe8e194ee9b"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Bearer.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a8b52e546f0a1cf95bd9cc51799238f6e3a055705f6fbdb383f8bcd8c1a23967"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Oma.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fa8d434295669a5e7acb87dc419c3285ee1764fc4be53446a06a8dfa0e1747cb"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Modem3gpp.Ussd.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0a2943079ca144feb23746acdaf3f8c8fa66d7ee262790ce7540c8ad74011452"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Cbm.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "889c8f776a9fdb4ec60789fddbedfa66306092ddb5bad76363b1d8be8c11f3a2"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Sim.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1e176ee7a86040b7ba7617387e9473147865805a6bf104ea2544f84218c3372f"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Call.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "aa30e2d2fd20f03be668f6b40274c42acf75e38107df93aba914fb1986e1d1c9"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.CellBroadcast.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "18e82a639a2a356968729a13bec82eb9b9535c331b2d917d9fb6e185a55c8315"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Simple.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a05e504d870b9cbb89ada3f77bf4008620eebbb58c6fdf2ca7d51ab3895bf1df"
+      },
+      "/usr/share/dbus-1/interfaces/org.freedesktop.ModemManager1.Modem.Voice.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2089abf1e4fe3bde28391609a050503797be1e0b4d92cf1572240052820551e1"
+      },
+      "/usr/share/polkit-1/actions": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/polkit-1/actions/org.freedesktop.ModemManager1.policy": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6501dd5426eb63dc4167c5a38f55b10b45fc4988dc1a89ed2a484597e0dd2007"
+      },
+      "/usr/lib/ModemManager": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/systemd": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/girepository-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/udev": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/pkgconfig": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/libmm-glib.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libmm-glib.so.0"
+      },
+      "/usr/lib/libmm-glib.so.0": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libmm-glib.so.0.11.0"
+      },
+      "/usr/lib/libmm-glib.so.0.11.0": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "737531959411021d27de2e55f040062a83fe66c0869e345aa4705470e1193fa4"
+      },
+      "/usr/lib/ModemManager/modem-setup.d": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/ModemManager/fcc-unlock.d": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/ModemManager/connection.d": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/ModemManager/libmm-plugin-foxconn.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "314b5b4c92de3682096079a67aa11bcc9ee12518c86ea0940002b61a1a540716"
+      },
+      "/usr/lib/ModemManager/libmm-shared-novatel.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2b365d1e2540e1f78df94109ec333668ead0f86b69ee577e78d8714c8c3cf49d"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-netprisma.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4e2c95c1a2ae3877aebdabaa1c3447acf244f0fe2925e683d9b8e59e76c3cfde"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-zte.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f30050c83927edd555c523bb016e6c6ddf9a87fea3d78a11476c81dd5072dada"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-mtk.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "289c08db6ab71cefe4d52ee971881310583e9d0205b92175ad0b2cb8ea595651"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-option-hso.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "de3efcbe71ebe888c07016eee5ffc3ba27eda8854da78d60594acc1c9838b9fa"
+      },
+      "/usr/lib/ModemManager/libmm-shared-fibocom.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5bd671e592c905b2ffdddfbd89eb844481f5557f6b0094a2e021510a3d0edf49"
+      },
+      "/usr/lib/ModemManager/libmm-shared-xmm.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "76ca5a3321f3a03f0488dbd11e54a3658f0571e7a08b9392ff2a431053e8fa35"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-tplink.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b9d3a3e5db289f2377514eea3e6324bb46e0d72f05874d48ece20b6e3376ef02"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-simtech.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "92b35017956798e1144679209ee0621382993f2b32e981d863ebcd5ee2a5a636"
+      },
+      "/usr/lib/ModemManager/libmm-shared-sierra.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e33c0025830d44a57c17cb90b959a13bab795ab9f1ab550a435fb9e2f992fa62"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-ericsson-mbm.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "79200330cd2757aa095bc57c4a57b8bcfa629d97c4128133fc476e4053f8da0f"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-novatel-lte.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0cb36c6042e87f3de25348ad02a2a9526633897d8080756fe25b6c3c4855d18e"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-haier.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "08e035451080862c520827b56f2152c52a1b41c4cf152fbcd9ea51ccc1888020"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-nokia.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fbfe712439c5f44092ca2e6f95fc91ec14216f2d1dc58c9539a357f124b10b46"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-dlink.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6adbb5ad8d1f1bdcacf4273d982f1cfa7cc53466847b0b1ca139c5c5509b7121"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-fibocom.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3974b607d67c7f8711c55b57c1024d70cbd6843b9197f1524673b7ceb3b00f62"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-longcheer.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1f5b5ff602008697fe466d0e1629aa229f9cfc8129229e1ca66b91490ec2560c"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-quectel.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a05f9785fefa19f5768360e099f757e3ada6865a5861ec9a82e4ab40762dfc9f"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-rolling.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fe65487151c7179de7b5661b17afcde7fc8d47c387e333eeb647ac02b3a7ec9a"
+      },
+      "/usr/lib/ModemManager/libmm-shared-quectel.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "10c5602160a4135bc4732216dbb6178d2fb812edeadfe0c421cf79df6836a0ab"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-ublox.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6a58f5010fd71d98f18a675f0257e2e0c741dba8d015d748e194f165085d2b2e"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-mtk-legacy.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "acd0b5608e9f3feb116626b93841996007065c59c478dd092abf8be208a676d6"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-dell.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "cbe9868f8f2fd4c3f74c305ca40a37023634e1555f889054f7d8d3844368d423"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-iridium.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "369ea64f34e743cfa2f7a4a7b2932b41e49c7439a823ccc3c61646981f099a88"
+      },
+      "/usr/lib/ModemManager/libmm-shared-icera.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "54f488f6d62db532ec105d714e67b3935d63fd7ce18b2e2f0241f7efcd2e3d7b"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-novatel.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c7df8741270fb88e7572f5d0ff9c67b69e8e1c698d091794525b3ba587a2cc21"
+      },
+      "/usr/lib/ModemManager/libmm-shared-option.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "875fd60fa29495f943d944b837fe4ca5b7abd8eedd253e1e45196a8b8606e57f"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-motorola.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "83eace7936575ca1b77c446af5a9f777e073ea0d8fb25009689f597c3447f73c"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-generic.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ae220314274ee54ef2df83d4259f9fd3b9364a339039c588fa564db20fae3343"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-anydata.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8c2207bc894bf6cc31583e61eca34083c344878d5bc32dbfc6eda3fbbf1c940e"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-option.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "737409d9420d5e63bc2dca0bd4a3fdf0eb5a824952cb217bbf33464915e96b83"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-broadmobi.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "43b574a5137457026097c295927a2587cefd342f45e686f0707d1496cb833e99"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-via.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "19343044a73c89f11a78173448447c83e5accddec89e4c0d6a95292e91e5e392"
+      },
+      "/usr/lib/ModemManager/libmm-shared-telit.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "dd5943d7a47eff8fbe67b158cc36aa2a50c01db915474ee758d6ab4942ec9d1a"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-x22x.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2132042477b397ad8c28c6f0cf66948ae9c2e3ebde344977e2d6038158cb107b"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-wavecom.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f7436b53bc3c8d0f089bfb8493f97d9e32aedd363c38a60ecbd043aa5973d4bd"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-thuraya.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "28464032445529440ce41d4eab04a9e85a3df33c671118e8f5c761657abcaa23"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-cinterion.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ef64298b22fc1d65fae0297be02c7bcc62c64f1f280c6e2e57fae000869d07ec"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-cellient.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "59a604aed2c25ea7d7d282d9eaffeec2c1c4e1d31b8675893ae4538f4bf35589"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-sierra-legacy.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0958fe50bd445187a808b6b1e1162c8b4c3c37d9843bd4d08ffa588ec09eadab"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-huawei.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0ccb2eca3389d8cd1bedf23b43a0991c5cb8b72edaafb7ce21b50477d35918f9"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-nokia-icera.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e59f989d2d7c604f7aed0f9952d4ef54b2b83df3848e19e2ef09288a37703bc8"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-qcom-soc.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6903497417bd777afa6fc36ed826250864ef5a34bbbfbb26feb63532caffe7be"
+      },
+      "/usr/lib/ModemManager/libmm-shared-foxconn.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d425defa593f33fc81ae8c80c5e88ae00d147c5d8bcd81c281c67b2b5a95e9a0"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-sierra.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2d906938d0c459c1561773d4b3c0913b31265ebea18eadef649d9684fe9e1219"
+      },
+      "/usr/lib/ModemManager/libmm-shared-mtk.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c59a2bd2f5416e00dc01f8d5cdd1725ca435c0882604634c5bee67b58e93b7a4"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-linktop.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c597ddca9cd49d3bf1d764f5a7f5ec05d4879c31c060c89b5ae6b55ac2dcbbf1"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-altair-lte.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "95b1520d1043c03df29bb15b2a6d07225f68a148a9e6da6ba1b1dc0e4772f1a1"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-gosuncn.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6a35d8f109aca35cbe7ffcd92fac084121b8d37b852966051b0a1b9403ad2802"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-telit.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "77c7a6c5be542c5e5f65c89a30b87227255a3a4e7ca233776c3a891387847ff9"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-pantech.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a38d1d7be389e9120df27094263ae9dad572c62ec4ac7187b5fbf060ebeb38f8"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-intel.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "145386a522701d1fc0feffc8b066eb19267923f14c25a61e26b5908993414116"
+      },
+      "/usr/lib/ModemManager/libmm-plugin-samsung.so": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "70d07981d185e038d7b5d0ec69c1aed4424ee2130da95cd341a86e8f809d5be9"
+      },
+      "/usr/lib/systemd/system": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/systemd/system/ModemManager.service": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7440e1296cf610dd3847641c2bc93cadf210b4021964d07b7a59b6cf3d5aee06"
+      },
+      "/usr/lib/girepository-1.0/ModemManager-1.0.typelib": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6bcb3b6590165b28649bbf18b9c1aa0804550ba181a2a50272bdc345f22d8ddf"
+      },
+      "/usr/lib/udev/rules.d": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/udev/rules.d/80-mm-candidate.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "82456922f749da331225a6e0d06ba79fa5349648ccbb1e3a9424d6ba339321f9"
+      },
+      "/usr/lib/udev/rules.d/77-mm-cellient.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "844331fcb86e4b9b94e37539d5cf59a114e84fac3f87cb7fc0a0e16b71356b0f"
+      },
+      "/usr/lib/udev/rules.d/77-mm-mtk-legacy-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "045c76cc752af0f61a7400f759f973e80e072ea9d7e7c22aa8ab06625c803ffe"
+      },
+      "/usr/lib/udev/rules.d/77-mm-dlink-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a8fe55997e8e28a26258eb0ad2b062099b31cdf46e6160d5b28b74398b59de83"
+      },
+      "/usr/lib/udev/rules.d/77-mm-zte-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a194d370066decda810670c71c9b812ef1eb3fe33b8903b2585f689f8e96dbc0"
+      },
+      "/usr/lib/udev/rules.d/77-mm-x22x-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "999e94b8763690f86eb5530ab11b0906a26eea1446f7487162d2e759dfe65963"
+      },
+      "/usr/lib/udev/rules.d/77-mm-broadmobi-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "af16fbd4103e8ce3df48673e9340ecf8d2bd586e210c209b4b0d7e6f18f5c515"
+      },
+      "/usr/lib/udev/rules.d/77-mm-huawei-net-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "742c1795798acb572dab8a78716442e85866418af25ed9886bc4f7daf45c490a"
+      },
+      "/usr/lib/udev/rules.d/77-mm-nokia-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8792314d0cb6957b66b04941a3848135e0a8f2d0fa7596e419f50d2388e3f375"
+      },
+      "/usr/lib/udev/rules.d/77-mm-telit-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "834fddc3042b1c452ca2cef032d7d8071358908b5502ae303f71e8ec9e5a6e4f"
+      },
+      "/usr/lib/udev/rules.d/77-mm-ericsson-mbm.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4f7a1fd73c81c925f41efb92f20786e146ae7c61805a5be1570884b907d55aa3"
+      },
+      "/usr/lib/udev/rules.d/77-mm-longcheer-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e667d292eec05b801e16603c4c9ad98ddf8c8b90d22df25abfb93019433350bc"
+      },
+      "/usr/lib/udev/rules.d/77-mm-linktop-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "dbd91b00395638764d698005e119a0cf9ea54826ba3e413afbe5ae6ee82cf45f"
+      },
+      "/usr/lib/udev/rules.d/77-mm-netprisma-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3c97e65a22b38df9e5af6f6378cba01388d021c47cdcd119290fa1b2a1cfb5da"
+      },
+      "/usr/lib/udev/rules.d/77-mm-simtech-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1839edd527af15a3ce6ea3eae0fc1e5a5befe0fa7c0229ecf505a7892537820f"
+      },
+      "/usr/lib/udev/rules.d/77-mm-quectel-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3c04273cdf33a77fca99b51b381586f50181d951ae66d6b344b362e7a6621724"
+      },
+      "/usr/lib/udev/rules.d/77-mm-dell-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "289dc694d8e0e95f5df44ab305c27f33cbca11a03e833edce3b07ae7a3a65ca0"
+      },
+      "/usr/lib/udev/rules.d/77-mm-tplink-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "dab5fe9246c71b13c37c57060a7cee4c753666ad143a99fab8a7904b22bd1c97"
+      },
+      "/usr/lib/udev/rules.d/77-mm-fibocom-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e54601dd97694f280c090a3f5d20140d28fac9e4f30c1cf98799d31a4d621da0"
+      },
+      "/usr/lib/udev/rules.d/77-mm-qcom-soc.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "41b2d23efa570050b77fdb84f291e97dd7ea3c2177952e7e59fa7ed571a8d317"
+      },
+      "/usr/lib/udev/rules.d/77-mm-ublox-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "654d065bbbebcd246adec6e4687a49eceb42d0b8794201ef349fb0230cabe228"
+      },
+      "/usr/lib/udev/rules.d/77-mm-haier-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d30f36393fccc1a52d2e1aa2a9affa15c6dd123c594aed0b4c8113e146c4fba5"
+      },
+      "/usr/lib/udev/rules.d/77-mm-rolling-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4b417ece673d8c2e41a484384dd835421341fcaa7ff8f3fecc4cb37ea888c012"
+      },
+      "/usr/lib/udev/rules.d/77-mm-cinterion-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9619262e5be85a1a2c118902c406e1d7843ff9fb7fff8721b33a9ce42f94b2d2"
+      },
+      "/usr/lib/udev/rules.d/77-mm-gosuncn-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9f0b771661e5f48e01e319a99b7de9d84cc36430b4ded14060f4fe748893c34e"
+      },
+      "/usr/lib/udev/rules.d/77-mm-foxconn-port-types.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3d248fea3586dee4637fffe16334348e9ee604070e994e9b1ed81fca071a3beb"
+      },
+      "/usr/lib/udev/rules.d/77-mm-sierra.rules": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "008c272b392914ea14839709c408fcd6a8d350c4e3cf28630d5f5db0b01b2c71"
+      },
+      "/usr/lib/pkgconfig/mm-glib.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a7dc30042c05444cf98eeeaf099672b1a2f73e9bdda83cc321db398f68382793"
+      },
+      "/usr/lib/pkgconfig/ModemManager.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4ceaa1b4cbd169ade458bf818f9248d2d3d5dd6047de6f8347d982050a3dfb29"
+      },
+      "/usr/bin/mmcli": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "89e242430831d8399bc5e3fd516c13bbca984fbe21cde038b09042d340653d8b"
+      },
+      "/usr/include/ModemManager": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/libmm-glib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/ModemManager/ModemManager-version.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "49ca533002c2fc3326d8cf239c74efadff6c17d03e31defcff8b97cc43d1c20c"
+      },
+      "/usr/include/ModemManager/ModemManager-names.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1d293239ee51c7c0d026c9ecc4ea8b0584a204a53e6b0e3ed834acf66ef3ba02"
+      },
+      "/usr/include/ModemManager/ModemManager.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "042a558eb54a3fdd9805421a25da0c9d1d81a7ba74efaf03b92d15c3c09e8f54"
+      },
+      "/usr/include/ModemManager/ModemManager-compat.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "45767591bc02f3fa503f6c99f752680a735f0045025fc75970a90a0d980f9469"
+      },
+      "/usr/include/ModemManager/ModemManager-errors.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7db71daef567dca984a0f0ca7027c8623a981200842a35e7e9b841c78e891ed9"
+      },
+      "/usr/include/ModemManager/ModemManager-enums.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "568eaede6368ab5500b056f57dbc8270315bd9241bbfe620c83590888dbfd1d7"
+      },
+      "/usr/include/libmm-glib/mm-nr5g-registration-settings.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "90b6427c2496d3e2a08629d85931822dc9d8596e29fd5354f94946ad1deda147"
+      },
+      "/usr/include/libmm-glib/mm-modem-messaging.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fec144c8f61f489c2848a87f976c427febab4997c10a4367cb956827387ce655"
+      },
+      "/usr/include/libmm-glib/mm-kernel-event-properties.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b90ce80af655c4ea21244b471146e5bdda1a345e19971e03b2231329c5c454ef"
+      },
+      "/usr/include/libmm-glib/mm-firmware-properties.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3892a57a0121dbb0f1a55ea0ab804cfd4d0f6ddfca1e247719fb13056af7660f"
+      },
+      "/usr/include/libmm-glib/libmm-glib.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4f5ac0a61d7f4645ce38d9bb9f1f232dda2cf32f1d17f33590a12506c40a403e"
+      },
+      "/usr/include/libmm-glib/mm-network-timezone.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "125703a6e032e34e4f69424488a838dc72936f512a6ed08c6dd35df2fc89dcf8"
+      },
+      "/usr/include/libmm-glib/mm-call-properties.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ffa1406e2cb57d2dbef815b92bf60fec2fc157693446a447fc5fca803796a45a"
+      },
+      "/usr/include/libmm-glib/mm-signal.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "305a36e0d6b8b62bce536f06289a60cf29e8da297a186782c520b1b775b39416"
+      },
+      "/usr/include/libmm-glib/mm-modem-oma.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "363626114c90a70f27c24d764f626ada7c2021ca42a328bce7bbc6152aff081c"
+      },
+      "/usr/include/libmm-glib/mm-gdbus-manager.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bdbbf8b2d10a046238d5ee77731e05180f617d179e61b65b87a3a77758809e8c"
+      },
+      "/usr/include/libmm-glib/mm-bearer-properties.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a8fa988416708e64815e26bc39c29ff824a12859fcfb0261cb95c150104ef388"
+      },
+      "/usr/include/libmm-glib/mm-cell-info-cdma.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "48aba9f70b76a728ff5429894bf16d8ebfcabdf400e8b64701cf7416a8e82e5b"
+      },
+      "/usr/include/libmm-glib/mm-object.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "dda6985b472bc4a15142f17a9f45b473549f55cd8d22e68e198cb276ca16cb47"
+      },
+      "/usr/include/libmm-glib/mm-modem-3gpp-profile-manager.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3e1c08c12713e1aea0fe886490ce113337926ff0206ee6b27ccdd61d26b96900"
+      },
+      "/usr/include/libmm-glib/mm-modem-firmware.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f4c5cb9938ad5a2c92c1865ca43d20501ffa5fcdb935538e266d856da9567621"
+      },
+      "/usr/include/libmm-glib/mm-modem-3gpp.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c8f144a75098b64b1c4927a223c88c19bec669887f33cf2bd243e3f6d477cba8"
+      },
+      "/usr/include/libmm-glib/mm-compat.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d512314ca928f6bec7fd5c7dd5b6a43f57a43646c8a7bc0066eb0ad1cb97ceb1"
+      },
+      "/usr/include/libmm-glib/mm-pco.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d704d912a95bf3e3de322f321d861590e290451d9f24d7e76a8aa580a8314dfb"
+      },
+      "/usr/include/libmm-glib/mm-gdbus-modem.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ac47db58e7f8693d267302f54424b6bec8548eed3ae4d3eeaa6b31e05a44932b"
+      },
+      "/usr/include/libmm-glib/mm-simple-status.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "13d05a7394d000f8f0192d6dc35788f57e86e59fadd8a8009dbf69746a66276b"
+      },
+      "/usr/include/libmm-glib/mm-network-rejection.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d9dab5dc843ab971ad417eaa8604fe1b2d0a676eac09e4f080c2da6ecbb7a0ec"
+      },
+      "/usr/include/libmm-glib/mm-cell-info.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "11eeb6c0824654a3f15b5fc74ea184ab31e7bcfbdad3093e649a4cf2f5b6e723"
+      },
+      "/usr/include/libmm-glib/mm-gdbus-call.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "709e8060eab48ba976496400c57750a210b9551f75a11b97a5ac76075950047d"
+      },
+      "/usr/include/libmm-glib/mm-cell-info-umts.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3d215a61b49faff8f956bf9a41a620de3ea18bbd8e43890661360b350636dc45"
+      },
+      "/usr/include/libmm-glib/mm-sim-preferred-network.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b29ccbb15b4d93a134f9daa1ad4cd3cda34d9d371648051ec0497c423704cbab"
+      },
+      "/usr/include/libmm-glib/mm-manager.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "049d0c8c90d2ff08e04960fcd6db27d2d82a1b8696a5bda00f31a37dec6e3b9c"
+      },
+      "/usr/include/libmm-glib/mm-location-cdma-bs.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7458ee0abf3007e543e3fd3eff37cad0a375f16b2f3e7c9b3b93886b6112e5e3"
+      },
+      "/usr/include/libmm-glib/mm-modem-sar.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d4e77b0f6475aacfc36e1d8376f67045f37fc3f46ad90a429a80f8a4de61b25c"
+      },
+      "/usr/include/libmm-glib/mm-sms.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7fcfd9176e2998bdcfc3d9f6280646719f4b72d5353fd129f0fdd702eee7e699"
+      },
+      "/usr/include/libmm-glib/mm-signal-threshold-properties.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "58a8c24b335438fe84304caf204f1d6876ce96d8d61357a15a7349f046d3b15d"
+      },
+      "/usr/include/libmm-glib/mm-bearer-stats.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3d2f7964bee33e50ec4fe951dbc7dbdec24bda19ffb206f16ba66aee5788cac8"
+      },
+      "/usr/include/libmm-glib/mm-gdbus-bearer.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "03ba23ee507f1bbf4ef9306e16a735aa4e4759752c7c1f616e9dfb7abce0dae0"
+      },
+      "/usr/include/libmm-glib/mm-modem-simple.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0609de5635784ebf164e725a2afd44d6ab7eec17ef518608ccaf28aef6ea3b21"
+      },
+      "/usr/include/libmm-glib/mm-modem-cell-broadcast.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2b7d8eec0ef23528953656b438ec221514825d1638b10422192a61d2fa8972f1"
+      },
+      "/usr/include/libmm-glib/mm-cell-info-nr5g.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "62c4e87f6162b040039f50d8e0d0513de99c5af3bc495c285b3959c55cbe9a86"
+      },
+      "/usr/include/libmm-glib/mm-modem-voice.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "167233a869e28326cf92cd7921f6e2ba110756dd30414bb500c07113248ca05f"
+      },
+      "/usr/include/libmm-glib/mm-location-gps-nmea.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d4d57c51b7521abca862268601ffb7c08257ad9886f52fcfb3aff6f3e1f3023f"
+      },
+      "/usr/include/libmm-glib/mm-call-audio-format.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a888dfd77946001cbf6026d6306d756134959f7b92fea7d3bbf245fef1cd2928"
+      },
+      "/usr/include/libmm-glib/mm-modem-location.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a797f1a3a55e8d97e348adc89913e7835e7fa4fa375c6724f9e9c21d49c6f311"
+      },
+      "/usr/include/libmm-glib/mm-modem.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e2f433a994702c22cdde4d0c3b87afbed7b5bc40b67ca85c25a985f29680938e"
+      },
+      "/usr/include/libmm-glib/mm-cell-info-tdscdma.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "34d7a6b620ddae3ffe78b4bd978e59a7001cfc1cc9e5dab4de26e670ef8518be"
+      },
+      "/usr/include/libmm-glib/mm-3gpp-profile.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "03c574f68196e4824d593a21b607d78a30f9996340a0120942941edef227ad9d"
+      },
+      "/usr/include/libmm-glib/mm-cbm.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1d40195ff8502735269c7f193f8e70f18bf4f9ec76926d15e51c0a6fb8065b22"
+      },
+      "/usr/include/libmm-glib/mm-helper-types.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e734078bd3dc42087721e71189fd4114967de9c03f4485ad0fa164f57c9680b0"
+      },
+      "/usr/include/libmm-glib/mm-modem-3gpp-ussd.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "dde59b0214a0ae07864ee0df7dca47e71d9b9e351d60085eb55770a97b4a348b"
+      },
+      "/usr/include/libmm-glib/mm-errors-types.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "795f5d2a09b8c110dee629e4e7e38beab828a287453f106b1f1de420f0d46f67"
+      },
+      "/usr/include/libmm-glib/mm-sim.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d20ed741588ac9340d027f9844459e19fe6aa63e12ee5cb2fcdc2f4b7acb717d"
+      },
+      "/usr/include/libmm-glib/mm-gdbus-sms.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "29691b170af7b06d84ca07345d55023e3f819382ad5d990b9d79fe04d1489a16"
+      },
+      "/usr/include/libmm-glib/mm-location-common.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "627cc3f8b71b3491e970d0c56a380acb0859777e4c65467f9f37bb0d9aa41e9b"
+      },
+      "/usr/include/libmm-glib/mm-cdma-manual-activation-properties.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0c49ace361342a19c339aec808063780a8830a92423e49381f6e6ab8a7269055"
+      },
+      "/usr/include/libmm-glib/mm-modem-cdma.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "553fb35f1b552c44023840c5cd8d8688dc331606428f2a3e720a7254dd7b97b3"
+      },
+      "/usr/include/libmm-glib/mm-gdbus-sim.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b70d36aada03774c91f6225e70440c1acbb990099a86c9aa4ab4520df380e64c"
+      },
+      "/usr/include/libmm-glib/mm-cell-info-gsm.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "02870d18f565ce8bc768c5751d1ffc587460a27d8abf939ac1822a38e469fbbc"
+      },
+      "/usr/include/libmm-glib/mm-modem-signal.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "aee083c031e4a32764ade281f41b895f167748e6ed04126a33b5dffdbe4dd869"
+      },
+      "/usr/include/libmm-glib/mm-sms-properties.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "129ddafca8d43568a5572f8ba2cc80a45ae30b76f8418ea79197f1e003051b45"
+      },
+      "/usr/include/libmm-glib/mm-flags-types.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "957f1ca8df31c34455aa41787d431f6d6f2fcd37edfae08b0b95dc6d60601032"
+      },
+      "/usr/include/libmm-glib/mm-simple-connect-properties.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2ae0d166bf46b47f160ab03dbafa1ca13da64c9bf1117c680d2024430355ba64"
+      },
+      "/usr/include/libmm-glib/mm-firmware-update-settings.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c84218e1e41362847cef7ecd9b08de7a9c828299a7c9d344f8e8ff895855440d"
+      },
+      "/usr/include/libmm-glib/mm-enums-types.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c74d24e624d8e794de3e683b3c266ac394212d6353ccd87c476413878d97fa1d"
+      },
+      "/usr/include/libmm-glib/mm-location-gps-raw.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f4f36440b5e9f727a26acfd0a5dddeefe5bc4cb78ed4e7f036339b4729dcc2e2"
+      },
+      "/usr/include/libmm-glib/mm-call.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "342111cbd7aaa3acc998612e34032bae7928dd7bb9c0bdf6d8400b1f728fc212"
+      },
+      "/usr/include/libmm-glib/mm-gdbus-cbm.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ea80558836a31a954ade500cf97f2eb673634f16dfc9ebfc6a451b66d6ad7311"
+      },
+      "/usr/include/libmm-glib/mm-bearer-ip-config.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7d089671525420d6b3ab388ce0caf6e401e09c63224836148a611c3357d45a87"
+      },
+      "/usr/include/libmm-glib/mm-modem-time.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b6293b49741b5d6758371712f1298aae17350c8de120312d7864a1b8141503ac"
+      },
+      "/usr/include/libmm-glib/mm-bearer.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "22860b0ff295f4c774b2d706fcd59a58f101f45980c2f47b92ce5561c85d890c"
+      },
+      "/usr/include/libmm-glib/mm-cell-info-lte.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "40d17751dec8f7687cca95a7d4ff9c6ca7e859058f45fbc259dd3a41d9cc4544"
+      },
+      "/usr/include/libmm-glib/mm-unlock-retries.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3f84a8def73b90468f6c9006c8403d5fdcf2941bafd5c98ce7276bbb40412be7"
+      },
+      "/usr/include/libmm-glib/mm-location-3gpp.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "562a770ccc3579d7de67d6d47f02725c9deff9b38e39dfc261a99cea2ebf7061"
+      },
+      "/usr/sbin/ModemManager": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "26478982ffd1a8e9b3f1b97f0017e1152cd9ed2b214d63923277a2a3d02ae3e5"
+      },
+      "/etc/ModemManager": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/etc/dbus-1": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/etc/ModemManager/modem-setup.d": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/etc/ModemManager/fcc-unlock.d": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/etc/ModemManager/connection.d": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/etc/dbus-1/system.d": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/etc/dbus-1/system.d/org.freedesktop.ModemManager1.conf": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a32647f6e22cef3456a4df460d46ddc3b25e3b3cee1b58d0bb85f2b5506c397c"
+      }
+    },
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_sha256": "c2750618ed542da9c2505c351c05aa72ad2ec6d3316ca912f5ea990ad09093e4",
+    "supporting_build_script_count": 1797
+  },
+  "CLI_parser_limitation": "Upstream cli/mmcli.c calls g_option_context_parse(...,NULL) and ignores its return. An unknown option can continue to a bus error; no Unknown option guarantee is accepted. Negative probe uses explicit list request with absent system bus and two subsequent fresh version recoveries."
+}

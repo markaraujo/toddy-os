@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T18:49:56.476514+00:00
+Last verified: 2026-11-10T19:05:15.504117+00:00
 
 Verified:
 
@@ -171,8 +171,9 @@ Verified:
 - Owned GSound1.0.3 native revision2: original source/stage/help preserved, no upstream tests registered (not a suite pass). First wrong libcanberra revision declaration left unpacked1; corrected metadata-only package2 installed, own GObject linker flags fixed verify-only3/post0/0/root0. Actual installed UID101/NNP/private-dev/no-route null backend Unicode properties/disabled refusal/two recoveries/GI type/help-empty refusal/APT0; no audible/Bluetooth/Settings GUI acceptance.
 - Owned GNOME Bluetooth47.2 core/UI/GI/sendto:115ELFs/101stagefiles, original two non-display programs5cases0;15private-bus integration programs compiled/deferred. Native recipe/post0/0/119changes, actual UID101/NNP/private-dev/no-route installed C UI header/type query (no widget instantiated), core GI address validation/classification/shared ABI/APT0. No real adapter/pairing/transfer/Settings/physical acceptance. Same private Doxygen worker inode2215/cache unchanged/cold bind recovery qualified structurally, no replay.
 - Owned libmbim1.34.0 (9 original programs/131cases, native0/0/63changes) and full libqmi1.38.0 (7 programs/122cases, canonical install93changes, corrected GIR verify-only3/post0/0/root0). Actual local C/GI/CLI/refusal/recovery/ABI/APT passed; no modem/firmware operation/cellular/Settings GUI claim. Same-boot readonly source/native workspace recovery passed; cold untested. ADR0209.
+- Owned ModemManager1.24.2 SDK/service/plugin/policy payload:491ELFs/220stagefiles,29original local programs588cases0; 3session/PTY programs deferred. Native install264changes, final source-backed verify-only3/post0/0/root0. C/GI/CLI absent-bus/refusal/recovery/strict static policy/ABI/APT0. No running daemon/session authorization/modem/cellular/firmware/Settings GUI claim. ADR0210.
 
-Running: No guest writer. MBIM/QMI protocol SDKs qualified. Next frozen ModemManager1.24.2 source/worker/build with default MBIM/QMI and strict polkit; use existing qualified scratch and preserve reserves. Complete all B02 then stop.
+Running: No guest writer. ModemManager installed/qualified within local API scope. Control Center preflight finds required colord-gtk/libgtop/UDisks/MIT Kerberos/CUPS/Samba libraries absent; next frozen colord-gtk0.3.1 source acquisition. Preserve all core panels and reserves. Complete B02 then stop.
 
 Remaining:
 

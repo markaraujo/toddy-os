@@ -3294,3 +3294,23 @@ and [decoded duplicate custody](evidence/B02-cracklib-word-custody.json) preserv
 compressed source/workstage/archive/installed payload; no trim or data loss.
 
 Next: frozen ModemManager private scratch build. All B02 criteria remain pending.
+
+### B02 ModemManager boundary — 2026-11-10T19:05:15.504117+00:00
+
+### Owned ModemManager SDK and strict factory policy — 2026-11-10
+
+[Build/stage](evidence/B02-modemmanager-stage.json):491ELFs/220files,29original local
+programs588TAP cases passed; two serial PTY programs and session-bus stub deferred.
+MBIM/QMI/GI/Udev/Systemd/default plugins/strictpolkit retained. [Native installation](evidence/B02-modemmanager-install.json)
+installed264changed paths; own nullable-GIR and unknown-option assumptions failed,
+source-backed verify-only3 passed0/0/changed0, no reinstall. Actual UID101/NNP/
+private-device/no-route C Unicode properties/reset/two cycles, GI None refusal/
+retained state/fresh recovery, CLI absent-bus refusal/version recovery/daemon
+version, strict static policy/payload/ABI/APT passed. CLI ignores option-parse
+errors before bus connection; limitation retained. No running daemon/session
+privilege/modem/cellular/firmware operation/Settings GUI/physical acceptance.
+ADR0210. [GOA/MBIM custody](evidence/B02-protocol-promotion-custody.json) and
+[Shell custody](evidence/B02-shell-promotion-custody.json) retired only closed promotion
+usr duplicates, root0, original sources/compiler/workstage/archives retained.
+
+Next: qualify required Control Center leaf dependencies; no panel bypass.

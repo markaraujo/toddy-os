@@ -1,0 +1,19 @@
+{
+  "state": "complete",
+  "scope": "Only closed Shell native-promotion usr replica; installed payload/original source/compiler/workstage/raw evidence/native archive/DEBIAN retained. No install/trim/rebuild replay.",
+  "stage": "/mnt/lfs/sources/stage/phase2-gnome-shell",
+  "stage_inode": 9248696,
+  "archive": "/var/cache/toddy/packages/gnome-shell_50.4-1+toddy1_amd64.deb",
+  "archive_sha256": "24ba0f62ee26176c866649ff36b0c1ff91fd090bb82ee8c39811763bfd316bd9",
+  "record_sha256": "0c8a720c53ee08c506e86e0cf092ff194c36a6cf695ce64d05e168d1bba39a00",
+  "control": {
+    "DEBIAN/control": "a83642f89732ad66b06f332758aadf7d6971fc1a3f6edd209bbee5be1578ee14"
+  },
+  "qualified_compiler_ELFs": 128,
+  "qualified_workstage_files": 149,
+  "before_free_bytes": 17197031424,
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 17214328832,
+  "recovery": "Verify retained native archive/record hashes and extract to a NEW stage if needed. Never reinstall, replay custody, or retire the original compiler/workstage.",
+  "reclaimed_bytes": 17297408
+}

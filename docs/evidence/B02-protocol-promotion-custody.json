@@ -1,0 +1,44 @@
+{
+  "scope": "Only two closed native promotion usr duplicates; original source/workstage/compiler/archive/installed root retained. No trim.",
+  "custody": [
+    {
+      "state": "complete",
+      "scope": "Only closed MBIM native-promotion usr replica; installed payload/original source/compiler/workstage/raw evidence/native archive/DEBIAN retained. No install/trim/rebuild replay.",
+      "stage": "/mnt/lfs/sources/stage/phase2-libmbim",
+      "stage_inode": 10289184,
+      "archive": "/var/cache/toddy/packages/libmbim_1.34.0-1+toddy1_amd64.deb",
+      "archive_sha256": "6359dbe79a754224f8f501231dcb71568c871c346a6e63ad19cbaa4068989ad8",
+      "record_sha256": "efface99791d838f0cbbf1ef0f5a93106b86f4caa67c032e8b24d8431fb76e97",
+      "control": {
+        "DEBIAN/control": "1f68ed8e512c98569830af7e7e01e3fa3abc5d1a9a820a6dadd74ffd16bd5253"
+      },
+      "qualified_compiler_ELFs": 98,
+      "qualified_workstage_files": 48,
+      "before_free_bytes": 17190182912,
+      "installed_root_changed_paths": 0,
+      "after_free_bytes": 17194430464,
+      "recovery": "Verify retained native archive/record hashes and extract to a NEW stage if needed. Never reinstall, replay custody, or retire the original compiler/workstage.",
+      "reclaimed_bytes": 4247552
+    },
+    {
+      "state": "complete",
+      "scope": "Only closed GOA native-promotion usr replica; installed payload/original source/compiler/workstage/raw evidence/native archive/DEBIAN retained. No install/trim/rebuild replay.",
+      "stage": "/mnt/lfs/sources/stage/phase2-gnome-online-accounts",
+      "stage_inode": 8205776,
+      "archive": "/var/cache/toddy/packages/gnome-online-accounts_3.58.1-1+toddy1_amd64.deb",
+      "archive_sha256": "a57f1fd3ed8f05e09025fa0a63a41639125f3ccddd447cab2d986a08c3fa118a",
+      "record_sha256": "388417c9b6855d89e5870bc4d23d7222c8bcbde2164c17449b2b57a52443c511",
+      "control": {
+        "DEBIAN/control": "fc862d676bb02bd8c1eb9b9af32dacd33a7f674edc9353b1b63ecddb4cc06f56"
+      },
+      "qualified_compiler_ELFs": 45,
+      "qualified_workstage_files": 116,
+      "before_free_bytes": 17194430464,
+      "installed_root_changed_paths": 0,
+      "after_free_bytes": 17199161344,
+      "recovery": "Verify retained native archive/record hashes and extract to a NEW stage if needed. Never reinstall, replay custody, or retire the original compiler/workstage.",
+      "reclaimed_bytes": 4730880
+    }
+  ],
+  "target_free_bytes": 17199161344
+}

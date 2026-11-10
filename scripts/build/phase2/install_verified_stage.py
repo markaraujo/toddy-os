@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'modemmanager': ('1.24.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libmbim (= 1.34.0-1+toddy1), libqmi (= 1.38.0-1+toddy1), libgudev (= 238-1+toddy1), polkit (= 127-1+toddy1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3)', 'ModemManager-1.24.2.tar.gz', 'usr/lib/pkgconfig/mm-glib.pc'),
     'libqmi': ('1.38.0', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libmbim (= 1.34.0-1+toddy1), libgudev (= 238-1+toddy1)', 'libqmi-1.38.0.tar.gz', 'usr/lib/pkgconfig/qmi-glib.pc'),
     'libmbim': ('1.34.0', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2)', 'libmbim-1.34.0.tar.gz', 'usr/lib/pkgconfig/mbim-glib.pc'),
     'gnome-bluetooth': ('47.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy9), libadwaita (= 1.9.3-1+toddy1), gsound (= 1.0.3-1+toddy2), libnotify (= 0.8.8-1+toddy1), upower (= 1.91.3-1+toddy1), systemd (>= 261.2-1+toddy3)', 'gnome-bluetooth-47.2.tar.xz', 'usr/lib/pkgconfig/gnome-bluetooth-ui-3.0.pc'),
@@ -1261,6 +1262,9 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='modemmanager':
+        from qualify_modemmanager import qualify as qualify_modemmanager
+        qualify_modemmanager(ROOT)
     if name=='libqmi':
         from qualify_libqmi import qualify as qualify_libqmi
         qualify_libqmi(ROOT)
@@ -1460,7 +1464,7 @@ if __name__ == '__main__':
     before = inspect_stage(source)
     assert required in before['entries'], 'Missing declared payload'
     destination = Path('/mnt/lfs/sources/stage') / ('phase2-'+name)
-    if name=='libqmi':
+    if name in ('libqmi','modemmanager'):
         from native_scratch_staging import destination as scratch_destination
         destination=scratch_destination(name)
     if name=='libxslt' and destination.exists():
@@ -1491,11 +1495,11 @@ if __name__ == '__main__':
         notice=json.loads((destination/('usr/share/doc/'+name+'/source-notices/index.json')).read_text())
         assert all(not r['notices'] for r in notice['sources'])
     else:
-        if name=='libqmi':
+        if name in ('libqmi','modemmanager'):
             assert destination.is_dir() and not list(destination.iterdir())
         else:
             assert not destination.exists(), 'Reconcile existing stage; no replay'
-        shutil.copytree(source, destination, symlinks=True,dirs_exist_ok=name=='libqmi')
+        shutil.copytree(source, destination, symlinks=True,dirs_exist_ok=name in ('libqmi','modemmanager'))
         assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
     if name=='gnome-terminal':
@@ -1703,7 +1707,7 @@ if __name__ == '__main__':
     if name=='ibus':conffiles=['--conffile','/etc/dconf/profile/ibus','--conffile','/etc/dconf/db/ibus.d/00-upstream-settings']
     if name=='polkit':conffiles=['--conffile','/etc/pam.d/polkit-auth']
     if name=='linux-pam':conffiles=['--conffile','/etc/pam.d/other']
-    if name in ('fontconfig','llvm','rustc','at-spi2-core'):
+    if name in ('fontconfig','llvm','rustc','at-spi2-core','modemmanager'):
         for relative,row in before['entries'].items():
             if relative.startswith('etc/') and 'sha256' in row: conffiles+=['--conffile','/'+relative]
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,

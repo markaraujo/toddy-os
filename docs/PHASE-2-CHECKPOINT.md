@@ -8,32 +8,39 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current B02 slice: libmbim1.34.0 and full libqmi1.38.0 installed/qualified,
-[MBIM](evidence/B02-libmbim-install.json)/[QMI](evidence/B02-libqmi-install.json).
-Native QMI1 canonical-path refusal changed0; canonical2 installed93paths but own
-GI probe failed; actual GIR-backed verify3PID23800 complete0/0/changed0. Never
-replay source/compiler/tests/stage/install/verify. Root-only device defaults kept;
-no modem/firmware operation/cellular/Settings GUI acceptance. Nine Settings
-prerequisite packages qualified in total; seven-package external cache below
-predates MBIM/QMI and must not be described as including them.
+Current B02 slice: ModemManager1.24.2 native SDK/plugin/daemon/service/policy
+installed, [stage](evidence/B02-modemmanager-stage.json)/
+[install](evidence/B02-modemmanager-install.json), ADR0210.491ELFs/220files,
+29original programs588cases0, two PTY tests and session stub deferred. Actual
+strict factory policy/default plugins/MBIM/QMI/GI/Udev/Systemd retained.
+Native1 installed264paths; own nullable-GIR and unknown-option assumptions failed;
+verify3PID28841 terminal recipe/post0/0/changed0. No reinstall/source/build/test/
+stage/verify replay. No running daemon/session authorization/modem/cellular/
+firmware operation/Settings GUI/physical acceptance. MBIM/QMI owned too, ADR0209.
 
-Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f, writer lock idle.
-Source alias and native workspace same-boot recovery COMPLETE, not cold proof.
-Native workspace inode4671 on existing Doxygen UUID; readonly libqmi source and
-private worker inode4244 retained. See ADR0209 and native placement evidence.
-Cracklib decoded duplicate retired with exact compressed-source custody, installed
-root0; original raw file is absent, compressed byte-exact source remains.
-Last measured targetfree17190182912B, hostfree107820597248B: ordinary reserves
-met but host below107911053312B cold gate. Recheck before writes; never lower.
+Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f, writer idle.
+ModemManager private worker inode5725/source alias on existing Doxygen UUID.
+Previous libqmi source/native workspace same-boot recoveries COMPLETE, not cold.
+Native workspace inode4671 and all retained workers remain. Closed GOA/MBIM/Shell
+promotion usr custody COMPLETE/root0; never replay. Decoded Cracklib duplicate
+absent, exact compressed source/custody retained. Fixed target16GiB/host100GiB/
+cold100GiB+512MiB remain; recheck actual resources before any dispatch.
 
-EXACT NEXT: implement frozen ModemManager1.24.2 build/private worker preparation,
-keeping MBIM/QMI/GI/strictpolkit/default plugins, book QRTRfalse/completionfalse.
-Use phase2_meson_input.py modemmanager --scratch-source (uppercase sourceName
-ModemManager-1.24.2), once actual inputs/jobs remain absent and resource gates pass.
-Shared source allowlist already supports it; generic dispatch must use actual
-uppercase input path. No guest ModemManager source/job exists yet. Extend scoped
-native scratch install support only after actual compile/stage allocation measured.
-Control Center50.4 remains subsequent; preserve Linux panels and16GiB/100GiB.
+EXACT NEXT: implement frozen colord-gtk0.3.1 GTK3+GTK4/GI/Vala build and
+qualification. Source22132B authenticated/pinned after ONE transient curl35 retry;
+see local failure ledger and .local/phase2/colord-gtk-source.json. No guest input/
+work/job exists. Read frozen book switches and source Meson/tests first; source
+contains no mock acceptance. Use isolated build and preserve required GUI tests
+for real display; no implicit hardware/color-profile acceptance.
+Control Center source50.4 recursive Meson/native-PC preflight additionally finds
+libgtop, UDisks, MIT Kerberos, CUPS and Samba libraries REQUIRED and absent. Keep
+panels. libgxdp is embedded in authenticated CC source; gmobile/malcontent optional,
+GTK-X11 unselected Wayland profile. No guest Control Center source/job exists.
+Use selected frozen BLFS leaves and bounded owned builds, no general replanning.
+The existing scratch source helper supports Control Center's49MB expanded source.
+
+Published371d5ca: all3CI success and exact publicHTTP200/indexSHA
+1101daf7ee0f49eb2788e2675a9df276a3f890abf0a1f017ab895fe6576ad775.
 
 Seven qualified Settings prerequisite archives/metadata copied and independently
 verified outside VM: [recovery cache proof](evidence/B02-settings-package-recovery.json),
@@ -72,15 +79,14 @@ Control Center Linux conditional source confirms BOTH ModemManager mm-glib and
 GNOME Bluetooth UI mandatory. Versions1.24.2/47.2 frozen; GSound is the latter's
 required predecessor. Do not disable Linux panels or misreport complete Settings.
 Control Center expanded49149703B exceeds target headroom; use existing scratch
-source+worker for that later build, preserve16GiB/100GiB reserves. ModemManager
-and Control Center guest sources/jobs do not exist yet.
+source+worker for that later build, preserve16GiB/100GiB reserves. ModemManager is now installed as recorded above; Control Center guest source/job remains absent.
 
 Cracklib2.10.3 COMPLETE, [stage](evidence/B02-cracklib-stage.json)/
 [install](evidence/B02-cracklib-install.json): two original programs20ELFs/67files,
 full recommended1930240line dictionary source compressed/expanded hashes fixed;
 native recipe/post0/0/84changes. Actual installed default-dictionary C API weak/
 missing-dictionary refusal/two recoveries/no-echo CLI/APT0, all stage bytes retained.
-Raw wordlist remains in build source; packed indices installed, provenance and
+Exact raw wordlist remains compressed with verified custody; packed indices installed, provenance and
 original notices retained. No arbitrary external wordlists/owner password use.
 
 Libpwquality1.4.5 COMPLETE, [stage](evidence/B02-libpwquality-stage.json)/

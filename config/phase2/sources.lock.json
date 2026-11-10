@@ -2725,6 +2725,18 @@
       "book_md5": "4ed2c13150611007f56f84b896449d46",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "colord-gtk",
+      "version": "0.3.1",
+      "filename": "colord-gtk-0.3.1.tar.xz",
+      "url": "https://www.freedesktop.org/software/colord/releases/colord-gtk-0.3.1.tar.xz",
+      "sha256": "c176b889b75630a17f4e3d7ef24c09a3e12368e633496087459c8b53ac3a122d",
+      "reference": "BLFS13.1-systemd x/colord-gtk.html",
+      "book_page_sha256": "1a5d3f5448132254695ee63e1c360cd57227a2968e914f9d2257d49ae9d08e77",
+      "book_md5": "d436740c06e42af421384f16b2a9a0a7",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }
