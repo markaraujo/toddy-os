@@ -1,0 +1,36 @@
+{
+  "scope": "HOST source-only qualification of frozen required Settings storage dependencies; HTTPS/book MD5/SHA256 and tar header paths inspected. No guest extraction/compiler/tests/native package/service/disk operation/GUI/hardware acceptance. Required selected transitive dependency closure still pending.",
+  "sources": [
+    {
+      "name": "udisks2",
+      "version": "2.11.2",
+      "filename": "udisks-2.11.2.tar.bz2",
+      "url": "https://github.com/storaged-project/udisks/releases/download/udisks-2.11.2/udisks-2.11.2.tar.bz2",
+      "sha256": "18630a8aad806bea0bc626ce97e71e50ec82c742956ac1c834a4275f8f22207b",
+      "reference": "BLFS13.1-systemd general/udisks2.html",
+      "book_page_sha256": "02080335693b5cc54bc693016595fc40f2525e25ab06f4199c9171c221f9bf94",
+      "book_md5": "9e8e8c7f43257bc501b4896f43db9eb8",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified",
+      "archive_bytes": 1977535,
+      "regular_expanded_bytes": 23079022,
+      "members": 699
+    },
+    {
+      "name": "libblockdev",
+      "version": "3.5.0",
+      "filename": "libblockdev-3.5.0.tar.gz",
+      "url": "https://github.com/storaged-project/libblockdev/releases/download/3.5.0/libblockdev-3.5.0.tar.gz",
+      "sha256": "bccd30e6b5d11504de60d9889ff6a2a25b07a4ec8f04070f2387e168301b3e3a",
+      "reference": "BLFS13.1-systemd general/libblockdev.html",
+      "book_page_sha256": "bcd5ef3a8effc5f860d1c061915872c8a2d40dda0931b725b88fed32b3efb865",
+      "book_md5": "68448042ea0a2073098fc4ae37b01cbf",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified",
+      "archive_bytes": 1191802,
+      "regular_expanded_bytes": 6511917,
+      "members": 365
+    }
+  ],
+  "verified_at": "2026-11-10T21:58:54.828966+00:00"
+}
