@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-10T02:14:34.157401+00:00",
+  "updated_at": "2026-11-10T02:36:46.469617+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05\u2013B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -726,14 +726,15 @@
       "Owned libnma1.10.6 GTK3+4/Gcr4: one original test-utils0/101ELFs unchanged/114stagefiles; actual installed UID101 C and selected NMA/NMA4 GI/refusal/recovery/SDK0. Native install2/post0/0,174paths/346entries; initial guard failures preserved.16manual GUIs compile only; schema cache/other GI/widget/focus/network/GNOME pending, ADR0177.",
       "GDM50.2 compile/original m-common/stage0,79ELFs/218files; private qualified CheckSDK reused; actual client/extension ownership/precancel/refusal/recovery/CLI0. Target lacks four PAM includes required by staged LFS policies; native package/account/login not accepted, ADR0178.",
       "Owned additive toddy-login-policy0.1.0: four shared PAM conffiles installed2/post0/0,15paths/14entries; prior other/Polkit/systemd-user and modules unchanged. Three-client/14artifact native fixture prepared; actual auth/password/logind/session/recovery gate pending, no GDM/login claim. ADR0179.",
-      "Actual owned shared login policy native kernel7.1.8/Systemd PID1:15expected auth/account/password/permission/Stop/recovery outcomes and two PAM/logind/user-bus cycles0; all14bound policy/module hashes unchanged, synthetic user/wrappers removed. Child exit0/OOMfalse/backing unchanged; builder/six existing scratch/source bind restored. No GDM/greeter/keyring/GUI/physical acceptance; ADR0179."
+      "Actual owned shared login policy native kernel7.1.8/Systemd PID1:15expected auth/account/password/permission/Stop/recovery outcomes and two PAM/logind/user-bus cycles0; all14bound policy/module hashes unchanged, synthetic user/wrappers removed. Child exit0/OOMfalse/backing unchanged; builder/six existing scratch/source bind restored. No GDM/greeter/keyring/GUI/physical acceptance; ADR0179.",
+      "Owned GDM50.2 full Wayland/PAM/Systemd/libgdm/GI:588entries native install0 then missing optional sysusers wrapper127; group-only recovery2/post0/0,5paths/588payload+archive unchanged/passwd+shadow unchanged. Modern dynamic userdb/group21/no static UID, actual UID101 C/GI/SDK/CLI0. No daemon/greeter/keyring/login/GUI acceptance, ADR0180."
     ],
-    "running": "B02: shared login PAM native gate passed; GDM account/sysusers/conffiles/native package next, then SettingsDaemon/Shell/stock caches and actual GNOME/login/apps. Complete ALL B02 then stop.",
+    "running": "B02: shared PAM native gate and GDM package/group/SDK verified; selected SettingsDaemon/Shell/stock schema union and actual GNOME/login/apps next. Complete ALL B02 then stop.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-10T02:14:34.157401+00:00",
+    "verified_at": "2026-11-10T02:36:46.469617+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

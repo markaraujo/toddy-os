@@ -8,30 +8,36 @@ No complete native GNOME/login/basic apps or Phase2 ISO exists yet.
 
 ## Current slice and exact next action
 
-Current slice: owned shared login PAM policy NATIVE GATE PASSED; no writer.
-Install2/post0/0,15paths/14entries; four new conffiles, all prior policies/modules
-unchanged, archiveSHAf67aea344d5ded8e5aa988bf9f15d3effbc813211cd708b15b2b1344921a8e59.
-Fresh native kernel7.1.8/Systemd PID1 gate15expected outcomes and two actual
-PAM/logind/user-bus cycles0; root PAM token change/old refusal/new recovery,
-proper-argc unprivileged refusal64/no shadow change, locked/expired/missing/empty/
-wrong refusal/recovery, PAMName Stop/MainPID0. Expired auth0/account13 is a REFUSAL,
-never authorization. Stop before token is not in-flight PAM cancellation.
-All14bound artifacts unchanged, synthetic user/wrappers removed, new bus per
-cycle, explicit terminate-user cleanup. [Native proof](evidence/B02-login-policy-native.json),
-ADR0179. Context `.local/phase2/native-login-policy-runtime-1` is COMPLETE; child
-exited0/OOMfalse and backing unchanged before restart. NEVER rerun it or boot its
-old overlay after parent restart. No GDM/greeter/GUI/hardware acceptance.
-Builder restarted; six existing scratch FSs and same Systemd source bind restored;
-owned policy14entries verified/ephemeral user absent in parent. Recovery receipt
-`/var/log/toddy/phase2/login-policy-builder-restore-1.json` COMPLETE. Current boot
-e540bdef-376f-46ae-9527-58d9641af256. No current guest/native writer.
+Current slice: GDM50.2 OWNED; no active guest/native writer. Native package
+installed588entries/archiveSHA520670ee20a2f70cd4b66411e878c0190ca2d3522392e7f76a02aa22cc512adb;
+initial wrapper127 missing target sysusers executable. Actual group absent before
+group-init2 recipe/post0/0,5changedpaths;588payload/archive and passwd/shadow
+unchanged. Existing Shadow groupadd followed exact frozen book group21 only;
+modern HAVE_USERDB/NSS/Systemd greeters, NO obsolete static gdm user or UID21.
+Root0755/varlib, default no auto/timed/optional initial setup; no daemon activated.
+Actual installed UID101 C/extensions/precancel/refusal/recovery/GI1.0/SDK/CLI/APT0.
+ADR0180/[proof](evidence/B02-gdm-install.json), rawSHA
+b435765971445f33c5b10f00c11c75a217eb4752b93b63dfe741a27d775b0c55.
+NEVER reinstall/reinitialize group/recompile/repeat original or SDK tests. Real
+greeter/userdb/PAM/keyring/permission/login/Stop/GUI remain mandatory.
 
-Exact next: qualify accepted GDM50.2 source/CheckSDK/79ELFs/218stagefiles and
-review its account/sysusers/directories/conffiles/policy package prerequisites;
-create native GDM recipe/package, fixed lockedUID/GID21 only after absence checks.
-Preserve GTK-owned schema cache; GDM/NMA XMLs need controlled union before actual
-GUI. Do not rebuild GDM, policy, PAM/Systemd binaries or repeat accepted native
-gate. Then SettingsDaemon50.1/Shell50.4 and actual graphical gates.
+Shared login policy native gate accepted15outcomes/two real PAM/logind/user-bus
+cycles0, all14bound artifacts unchanged/user+wrappers removed. Child0/OOMfalse/
+backing verified before restart; parent six scratch FSs/same Systemd source bind
+restored; boot e540bdef-376f-46ae-9527-58d9641af256. Native context
+`.local/phase2/native-login-policy-runtime-1` COMPLETE; NEVER boot its stale overlay.
+[Native proof](evidence/B02-login-policy-native.json), ADR0179. Measured native
+acceptance transferred under idle lock to
+`/var/log/toddy/phase2/login-policy-native-accepted-1.json` (not runtime credentials).
+
+Exact next: selected SettingsDaemon50.1 source/options (host review saved
+`.local/phase2/gsd-{meson.build,meson_options.txt}`), required owned Pulse mainloop/
+GNOME Desktop4/NM/GWeather/GeoClue/Polkit/UPower/etc preflight, one isolated recipe/
+input/build. Keep mandatory Linux ALSA/gudev/NM/rfkill and supported selected
+features, omit only documented optional cellular/CUPS/XWayland paths if absent.
+Then Shell50.4 and one controlled stock GTK-owned union for NMA/GDM/GSD/Shell
+schemas preserving prior82schemas/623keys/preferences. Actual native GNOME/login/
+apps/offline/focus/metrics gates remain pending; B02 not near final acceptance.
 
 GDM50.2 build/original/stage passed; NO active guest writer. `gdm-1` controller
 PID523211 terminal0,79compiled ELFs/218staged regular files. Actual original
@@ -45,11 +51,9 @@ SourceSHA8a4679e47cddfe8b0a1bd9d3836042deb68fb3e1b0e7e62dfd0631dc5b6fc541.
 30946690e3467cfa4334ac1306bd7d799d6b10b7e6790645a6f32a7e285e3e77.
 NEVER replay accepted build/original/Check SDK/stage/client checks.
 
-The previously missing four includes now have exact owned policies. GDM account/
-name/UID21/GID21/varlib and native package remain absent; no GDM daemon enabled.
-Next after native policy qualification: GDM account/sysusers/directories/conffiles,
-actual keyring/PAM/greeter, SettingsDaemon50.1/Shell50.4 and native graphical gates.
-Preserve source GDM staging and accepted PAM binaries; no full suite replay.
+The four shared PAM includes and GDM group/package are now owned/qualified in
+their bounded scopes. Preserve current native modules and GTK stock cache; no
+service/login activation until compositor/session/schema prerequisites.
 
 ## Accepted boundaries — reuse unchanged evidence
 

@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gdm': ('50.2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libgudev (= 238-1+toddy1), accountsservice (= 26.27.3-1+toddy1), polkit (= 127-1+toddy1), systemd (>= 261.2-1+toddy3), linux-pam (= 1.7.2-1+toddy2), toddy-login-policy (= 0.1.0-1+toddy1), dconf (= 0.49.0-1+toddy1), json-glib (= 1.10.8-1+toddy1), dbus (>= 1.16.2-1)', 'gdm-50.2.tar.xz', 'usr/lib/pkgconfig/gdm.pc'),
     'libnma': ('1.10.6', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy7), gtk3 (>= 3.24.52-1+toddy2), networkmanager (= 1.58.1-1+toddy1), gcr (= 4.4.0.1-1+toddy1), iso-codes (= 4.20.1-1+toddy1)', 'libnma-1.10.6.tar.xz', 'usr/lib/pkgconfig/libnma-gtk4.pc'),
     'networkmanager': ('1.58.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libndp (= 1.9-1+toddy1), gnutls (= 3.8.13-1+toddy1), libpsl (= 0.23.3-1+toddy1), curl (>= 8.23.0-1), readline (>= 8.3-1), util-linux (>= 2.42.4-1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3), polkit (= 127-1+toddy1)', 'NetworkManager-1.58.1.tar.xz', 'usr/lib/pkgconfig/libnm.pc'),
     'libndp': ('1.9', 'glibc (>= 2.44-1+toddy1)', 'libndp-1.9.tar.gz', 'usr/lib/pkgconfig/libndp.pc'),
@@ -1207,6 +1208,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='gdm':
+        from qualify_gdm import qualify as qualify_gdm
+        qualify_gdm(ROOT)
     if name=='libnma':
         from qualify_libnma import qualify as qualify_libnma
         qualify_libnma(ROOT)
@@ -1328,6 +1332,16 @@ if __name__ == '__main__':
         shutil.copytree(source, destination, symlinks=True)
         assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
+    if name=='gdm':
+        import configparser
+        config=destination/'etc/gdm/custom.conf';before_config=hashlib.sha256(config.read_bytes()).hexdigest()
+        conf=configparser.ConfigParser();conf.optionxform=str;conf.read(config)
+        for key in ['AutomaticLoginEnable','TimedLoginEnable','InitialSetupEnable']:conf.set('daemon',key,'false')
+        with config.open('w') as f:conf.write(f)
+        group=destination/'usr/lib/sysusers.d/gdm.conf';group.parent.mkdir(parents=True,exist_ok=True);assert not group.exists();group.write_text('g gdm 21\n')
+        temp=destination/'usr/lib/tmpfiles.d/gdm.conf';temp.parent.mkdir(parents=True,exist_ok=True);assert not temp.exists();temp.write_text('d /var/lib/gdm 0755 root root -\n')
+        state=destination/'var/lib/gdm';state.mkdir(parents=True,exist_ok=True);state.chmod(0o755)
+        (log/'gdm-production-selection.json').write_text(json.dumps({'scope':'Current GDM50 dynamic userdb greeters; group21 only, no obsolete static UID/home. Root0755 persistent base, volatile per-greeter homes remain upstream managed. Factory automatic/timed/optional GNOME initial setup disabled; native installer creates owner. No daemon activation or global NSS/PAM edits.','custom_conf_before_sha256':before_config,'custom_conf_after_sha256':hashlib.sha256(config.read_bytes()).hexdigest()},indent=2)+'\n')
     if name=='geoclue':
         import re
         config=destination/'etc/geoclue/geoclue.conf';before_config=config.read_bytes()
@@ -1435,6 +1449,11 @@ if __name__ == '__main__':
     if name=='lua':
         archives += [r['filename'] for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name'] in ('lua-shared-library-patch','lua-test-suite')]
     write_copyright(destination, name, archives)
+    if name=='gdm':
+        doc=destination/'usr/share/doc/gdm';license_text=ROOT/'LICENSES/GFDL-1.3.txt'
+        assert hashlib.sha256(license_text.read_bytes()).hexdigest()=='110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4'
+        shutil.copyfile(license_text,doc/'GFDL-1.3.txt')
+        with (doc/'copyright').open('ab') as f:f.write(b'\nDocumentation permits GFDL1.1 or later without invariant/cover texts; full selected GFDL1.3 text:\n'+license_text.read_bytes())
     if name=='libgweather':
         doc=destination/'usr/share/doc/libgweather';common=ROOT/'LICENSES/third-party/LGPL-2.1.txt'
         shutil.copyfile(common,doc/'LGPL-2.1.txt')
@@ -1461,6 +1480,7 @@ if __name__ == '__main__':
                         '--depends','glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
+    if name=='gdm':conffiles=[v for n in ['custom.conf'] for v in ['--conffile','/etc/gdm/'+n]]+[v for n in ['gdm-autologin','gdm-launch-environment','gdm-fingerprint','gdm-smartcard','gdm-password'] for v in ['--conffile','/etc/pam.d/'+n]]
     if name=='geoclue':conffiles=['--conffile','/etc/geoclue/geoclue.conf']
     if name=='ibus':conffiles=['--conffile','/etc/dconf/profile/ibus','--conffile','/etc/dconf/db/ibus.d/00-upstream-settings']
     if name=='polkit':conffiles=['--conffile','/etc/pam.d/polkit-auth']

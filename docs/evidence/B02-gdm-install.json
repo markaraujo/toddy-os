@@ -1,0 +1,195 @@
+{
+  "scope": "Owned full GDM50.2 Wayland/PAM/Systemd daemon/libgdm/GI/pam_gdm, actual installed UID101 client/extensions/precancel/refusal/recovery/SDK/CLI. Group21 only with dynamic userdb, no obsolete static account; root0755 persistent base, no automatic/timed login or unavailable GNOME initial setup. Actual daemon/userdb/greeter/PAM-keyring/native GNOME/GUI/physical gates and stock schema cache pending; service not activated.",
+  "build_evidence": "docs/evidence/B02-gdm-build.json",
+  "native_shared_PAM_prerequisite": {
+    "evidence": "docs/evidence/B02-login-policy-native.json",
+    "report_sha256": "d69f5f0b66f7cb3d90a08767dce73dd84e66a47679f4da7e3a3386f4b86b27d4",
+    "bound_installed_artifacts_count": 14
+  },
+  "initial_partial_install": {
+    "step": "b02-gdm-install",
+    "started": "2026-11-10T02:24:39.485471+00:00",
+    "recipe_sha256": "7732ee295a90729115bb9e0cdab7004a183e3dd862ce93da94d4abf9c6596997",
+    "postcheck_sha256": "b31c71a81481f6530809489f8a91281338d05e563a51f9535650031955e07be0",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "0bd1d15174cbcdd4b6be4e7468378818f003f78a152cf9cb596b9ec0c658627f",
+    "recipe_pid": 1833,
+    "recipe_pgid": 1833,
+    "recipe_exit": 127,
+    "postcheck_exit": null,
+    "finished": "2026-11-10T02:24:57.254202+00:00",
+    "changed_paths": 334,
+    "log_sha256": "cfc0080e3fc3e283e2dba828bd30ad14a5c071ff9766a9644cbbf179f9b850bf",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "7fa951071f5e3a2d6dd36b837c6ef2574763c1943d6490f968e6241ee09b943d"
+  },
+  "group_init_and_postcheck_transaction": {
+    "step": "b02-gdm-group-init-2",
+    "started": "2026-11-10T02:29:24.098705+00:00",
+    "recipe_sha256": "66654f76d1a76e4e31fbf4647bd517d51d8c3bc2200f92a8ca29f542d8e48f07",
+    "postcheck_sha256": "b31c71a81481f6530809489f8a91281338d05e563a51f9535650031955e07be0",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "0bd1d15174cbcdd4b6be4e7468378818f003f78a152cf9cb596b9ec0c658627f",
+    "recipe_pid": 2289,
+    "recipe_pgid": 2289,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T02:29:39.751098+00:00",
+    "changed_paths": 5,
+    "log_sha256": "79a16aa05c67744c66ef8c1a4e9b117a0fc33a0d59ff0ffd8082020d056d6260",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "b664aae7c087ca7a98805ab57af065545dc5209586e722e825cdde954b47a165"
+  },
+  "package": {
+    "name": "gdm",
+    "version": "50.2-1+toddy1",
+    "archive_sha256": "520670ee20a2f70cd4b66411e878c0190ca2d3522392e7f76a02aa22cc512adb",
+    "recipe_sha256": "7732ee295a90729115bb9e0cdab7004a183e3dd862ce93da94d4abf9c6596997",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "gdm",
+        "version": "50.2",
+        "filename": "gdm-50.2.tar.xz",
+        "url": "https://download.gnome.org/sources/gdm/50/gdm-50.2.tar.xz",
+        "sha256": "8a4679e47cddfe8b0a1bd9d3836042deb68fb3e1b0e7e62dfd0631dc5b6fc541",
+        "upstream_sha256_url": "https://download.gnome.org/sources/gdm/50/gdm-50.2.sha256sum",
+        "upstream_sha256_file_sha256": "a0710a7bbe52c117bfa45ea724c4c9242ff66d373c5d98c29adca5d1414fd72f",
+        "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "runtime_profile": {
+      "greeter_identity": "GDM50 dynamic userdb users, existing native NSS/Systemd support",
+      "dedicated_group": {
+        "name": "gdm",
+        "gid": 21
+      },
+      "static_gdm_user_created": false,
+      "working_directory": {
+        "path": "/var/lib/gdm",
+        "uid": 0,
+        "gid": 0,
+        "mode": "0755"
+      },
+      "initialization": "Frozen BLFS groupadd only, exact packaged group21 declaration; target has no systemd-sysusers executable. No static user, passwd/shadow or NSS/PAM changes, no daemon activation.",
+      "factory_autologin": false,
+      "factory_timed_login": false,
+      "initial_setup_app": "disabled: installer creates owner; optional GNOME initial setup not installed",
+      "pending": "Actual dynamic userdb/PAM/keyring/greeter/session/permission/Stop/recovery/native GUI and stock GDM schema cache."
+    },
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "7fa951071f5e3a2d6dd36b837c6ef2574763c1943d6490f968e6241ee09b943d",
+    "payload_count": 588,
+    "payload_manifest_sha256": "faed30920b822a60a0a934c566362d367afcf795005021e06d5b1b34b1caf36a"
+  },
+  "production_selection": {
+    "scope": "Current GDM50 dynamic userdb greeters; group21 only, no obsolete static UID/home. Root0755 persistent base, volatile per-greeter homes remain upstream managed. Factory automatic/timed/optional GNOME initial setup disabled; native installer creates owner. No daemon activation or global NSS/PAM edits.",
+    "custom_conf_before_sha256": "04022d30d148bf53461bc0fc6f8c5df8fbfcf590c06b684ce975e1e057894541",
+    "custom_conf_after_sha256": "7d260552bc9f696f3977221b64e60833b570d49b046f2639ccda67c0af67cf8e"
+  },
+  "group_initialization": {
+    "scope": "Finish group-only initialization after verified native package; all payload/archive bytes unchanged, passwd/shadow unchanged, no daemon activation",
+    "gid": 21,
+    "archive_sha256": "520670ee20a2f70cd4b66411e878c0190ca2d3522392e7f76a02aa22cc512adb",
+    "unchanged_owned_entries": 588,
+    "passwd_shadow_unchanged": true
+  },
+  "installed_consumer": {
+    "scope": "Owned full Wayland/Systemd/PAM GDM daemon/libgdm/pam_gdm/GI, actual UID101 client/extensions/precancel/refusal/recovery/CLI/SDK0; dedicated group21/root0755state/dynamic userdb enabled. No greeter/login/keyring/permission/GNOME/physical acceptance or service activation. Stock schema cache pending.",
+    "consumer": {
+      "actual_client_and_owned_extension_copies": true,
+      "precancelled_connection_refused": true,
+      "recovery_cycles": 2,
+      "actual_login_PAM_or_desktop_tested": false
+    },
+    "GI": {
+      "namespace": "Gdm1.0",
+      "actual_client_extensions": true
+    },
+    "dedicated_gid": 21,
+    "obsolete_static_user_created": false,
+    "factory_autologin": false,
+    "daemon_enabled_or_started": false
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gdm-install-evidence.tar.gz",
+    "sha256": "b435765971445f33c5b10f00c11c75a217eb4752b93b63dfe741a27d775b0c55",
+    "members": [
+      "build/b02-gdm-group-init-2.log",
+      "build/b02-gdm-group-init-2.manifest.json",
+      "build/b02-gdm-group-init-2.success.json",
+      "build/b02-gdm-install.failed.json",
+      "build/b02-gdm-install.log",
+      "build/b02-gdm-install.manifest.json",
+      "metadata/gdm_50.2-1+toddy1_amd64.json",
+      "metadata/login-policy-native-accepted-1.json",
+      "phase2/b02-gdm-group-init-2-controller.log",
+      "phase2/b02-gdm-group-init-2-timing.json",
+      "phase2/b02-gdm-install-controller.log",
+      "phase2/b02-gdm-install-timing.json",
+      "phase2/gdm-1-controller.log",
+      "phase2/gdm-1.exit",
+      "phase2/gdm-1.job.json",
+      "phase2/gdm-1.log",
+      "phase2/gdm-group-initialization.json",
+      "phase2/gdm-installed-consumer.json",
+      "phase2/gdm-production-selection.json",
+      "phase2/gdm-stage.json"
+    ]
+  }
+}
