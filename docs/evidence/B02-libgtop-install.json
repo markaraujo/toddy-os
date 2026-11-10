@@ -1,0 +1,2143 @@
+{
+  "scope": "Owned libgtop2.41.3 local direct C API/GI metadata and0755 helper payload only. No remote/helper protocol/privileged cross-user process/Settings GUI/desktop-resource/physical acceptance. No original upstream suite exists.",
+  "native": {
+    "step": "b02-libgtop-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 159,
+    "started": "2026-11-10T19:31:21.623181+00:00",
+    "finished": "2026-11-10T19:31:38.894446+00:00",
+    "recipe_sha256": "c0f4ff4df6dd613549ccacc896aacee4b0bcd011ba927c4e0d5cbf677231e008",
+    "postcheck_sha256": "bbf4e30df5fdcbd1d9b7673cf5df11d7b1d0394db15db06f5d557606d8ef0c9b",
+    "log_sha256": "a448b9db7fad45d46fcd5759bdc0475463088af7f6b193372e2cac8c8e2c92de",
+    "receipt_sha256": "6c32a0e6bf67b13e27ae083f2d085a6ec0c03cb71a60138963db52f3699f6c45",
+    "timing": {
+      "step": "b02-libgtop-install",
+      "scope": "same full-root snapshot function, timing only",
+      "snapshots": [
+        {
+          "seconds": 14.855,
+          "entries": 162612,
+          "regular_files": 145048,
+          "regular_bytes": 7558430357
+        },
+        {
+          "seconds": 14.601,
+          "entries": 162767,
+          "regular_files": 145197,
+          "regular_bytes": 7559817671
+        }
+      ],
+      "total_seconds": 33.203
+    }
+  },
+  "consumer": {
+    "scope": "Owned libgtop2.41.3 shared/GI/0755 helper payload. Actual UID101/NNP/private-proc/private-device/no-route direct C memory/uptime/own-process/missingPID refusal/two recoveries, GI namespace/function availability only, ABI/PC/APT and Info registration. No original suite exists. Helpers not activated or granted setuid; no remote/helper protocol/other-user process/Settings GUI/desktop-resource/physical acceptance.",
+    "C_consumer": "Libgtop direct local memory/uptime/own-process/missing-PID refusal/two recoveries; no server or elevated identity\n",
+    "GI_metadata_consumer": "GTop2 GI namespace and memory function available; not a GI statistics call\n",
+    "installed_stage_regular_files": 139,
+    "shared_generated_info_index": "Own staged index excluded from byte comparison; native shared libgtop registration verified",
+    "shared_library_resolution": true,
+    "helper_modes": "root:root0755, no setuid/setgid",
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "libgtop",
+    "version": "2.41.3-1+toddy1",
+    "archive_sha256": "a37699c93831563f0421f75fb21eacb242e09bb5bd4d84bf1b4eb89ac1ecafab",
+    "recipe_sha256": "c0f4ff4df6dd613549ccacc896aacee4b0bcd011ba927c4e0d5cbf677231e008",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "libgtop",
+        "version": "2.41.3",
+        "filename": "libgtop-2.41.3.tar.xz",
+        "url": "https://download.gnome.org/sources/libgtop/2.41/libgtop-2.41.3.tar.xz",
+        "sha256": "775676df958e2ea2452f7568f28b2ea581063d312773dd5c0b7624c1b9b2da8c",
+        "reference": "BLFS13.1-systemd gnome/libgtop.html",
+        "book_page_sha256": "4de1e56d28645d17e17ba8d84ed8c82cfcc30517682fbd5551c2810a87402fcd",
+        "book_md5": "465db9f4f695c298d9c48dcf7f32a9c0",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "payload": {
+      "/usr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/libexec": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/libexec/libgtop_daemon2": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "60e56878c4ef018fc3c721442d34e0cff62619d607ccb0daebae00be7b631bc1"
+      },
+      "/usr/libexec/libgtop_server2": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "14e60d5969fb5386df7cd9f6c6274c0a3790270cb0c458a862cb7afee4bdb045"
+      },
+      "/usr/share/gir-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/info": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/gir-1.0/GTop-2.0.gir": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8bfba02ffa3ab06a851ee28ce1e6ca73f21b2f70da217a83516daf4d0b9b44db"
+      },
+      "/usr/share/info/libgtop2.info": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "79d2eda2e0d4c4b7c67a385e767942779d7f9a6ee86b747145d469bb5b40e26f"
+      },
+      "/usr/share/locale/ja": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ml": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ar": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/be": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ga": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ms": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca@valencia": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_TW": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tg": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ko": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/az": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/rw": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/am": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en_CA": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nn": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lv": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nb": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en@shaw": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cy": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bg": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/xh": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/or": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/te": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mn": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fa": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ab": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/dz": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sq": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/es": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ne": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eo": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/la": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_HK": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ta": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/et": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn_IN": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mg": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ug": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en_GB": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ky": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/as": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ku": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ast": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lt": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kn": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bs": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/oc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mai": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/vi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/th": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pa": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/el": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr@latin": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ro": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ja/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ja/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "96d6046010a2153375128b5895af4b11f4e48c6ab85513ba8ce356e0d61e733d"
+      },
+      "/usr/share/locale/ml/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ml/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "53444f88d25108e1b3975d73be5a1e4c895ee48118c787566849100939a2e36d"
+      },
+      "/usr/share/locale/mk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mk/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "de7ee5fc1d3bceab7c4e6d79ef2a4d22c7a9a0cda832f169c649115ca9888783"
+      },
+      "/usr/share/locale/ar/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ar/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "68c733abcbbee836bfeeb2f37e48ae0d32ffd9221f0c8edc31c9979aead3a143"
+      },
+      "/usr/share/locale/be/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/be/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "33ab48bc10e8f235ceab7f36252fa7030cad9e026a73e5c49b57faf7881eff67"
+      },
+      "/usr/share/locale/ga/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ga/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1bf0fa6b0a1ba7fc3c549f83dbc3e84426233b153b20eb06b9074d8129f0e73e"
+      },
+      "/usr/share/locale/ms/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ms/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2859f3ddb28f255b097236f53707f06bafb2ac23d5dbe03843b142e0ee4b68db"
+      },
+      "/usr/share/locale/hu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "25186c34ce0e9d0d989aaca0a3b8fb26c84928b20713e09c1b36ed60a4407fb8"
+      },
+      "/usr/share/locale/hi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hi/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "046ef4b11926afd50ef02d390553615b557a4be2db68a8f0984277614fb91133"
+      },
+      "/usr/share/locale/ca@valencia/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca@valencia/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "76e1526690d93e22031ca4be5c8f515dcf0c48637edf478819dc0fb631f9ba22"
+      },
+      "/usr/share/locale/gl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gl/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4636779aaa36d3655506d7878145740cef1938953f4277f764b2f864ffeb09d3"
+      },
+      "/usr/share/locale/zh_TW/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_TW/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "256625c3f53284e714d26df8961303b4b634f97b415b5b7d359f6e38b825f89b"
+      },
+      "/usr/share/locale/tg/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tg/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "be2f4d98fdf162f100a42b334b973b0aaa2de44356bd5f54276720e04ac82140"
+      },
+      "/usr/share/locale/ko/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ko/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2589e7bc4e957fe51387de6ec177610a15d3b18740fdab47772d19962b7ca429"
+      },
+      "/usr/share/locale/az/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/az/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9e55641f9b904a489239a0c87b774f571de7597411d0e08f5b836bc2f60f95b6"
+      },
+      "/usr/share/locale/rw/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/rw/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "091558c1d6aa959c0111fc82201b016245de9eaff2d07ad6fc9aa1f92a47fd40"
+      },
+      "/usr/share/locale/am/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/am/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b77ed315c6f4c13f9c0cea22d93b90befe606d02bc7f3890fcf20fdc1cab03bf"
+      },
+      "/usr/share/locale/it/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "326d2318a4d4ed9b71a708f8e4bc8b8279224555d8c89775e754183d06e5d9ed"
+      },
+      "/usr/share/locale/sv/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bbe5c343f3b30c0d839b3cbc0c00cc42c00dc3958fd1e1ac3b72838cc599bf8d"
+      },
+      "/usr/share/locale/en_CA/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en_CA/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f776e6ef95b77bcce30d40b34bdee8e0292dd5d80284029673760318efa659bf"
+      },
+      "/usr/share/locale/nn/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nn/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a7c7ccc68025f7d10f5c8472c1fca0d09d677573272f779d93ea50853ae31fda"
+      },
+      "/usr/share/locale/tr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bd4ace95e1103ae1e4cd2dc74fa6fc6c4b2279328ce8dc1d8d555ebd6afb4d3f"
+      },
+      "/usr/share/locale/lv/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lv/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ba13bedbed226d8e807ae4b2994b5223a3db9a0fe4d0f1717e79b81906113c4d"
+      },
+      "/usr/share/locale/hr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hr/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c863bf54e73f1770e1bd2f0ba42092a3ce02d8c23c9462429be6bb96ff0e1e41"
+      },
+      "/usr/share/locale/nb/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nb/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "88bce5cdda7b7f77a6588f8056367d2e44686f6a0352a2b41b8fe3c505bb0a2e"
+      },
+      "/usr/share/locale/eu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eu/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7831f6d152440a80281f373be326f92060f06e2720b20290187100cf7133e540"
+      },
+      "/usr/share/locale/en@shaw/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en@shaw/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b7525dae773891d9f22a1627ed52440450c59381c7c0ac7847c36b0ebab69b03"
+      },
+      "/usr/share/locale/cy/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cy/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7973e81cc9152e4fb68d245d1fb83d9a407b86a69ed9acc0c0c8b322986d60b0"
+      },
+      "/usr/share/locale/bg/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bg/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7a8e946f56b92b6d3d08e744f1eddfcb7cb8eb2d64c1c0dbd8ea93e99f523c94"
+      },
+      "/usr/share/locale/xh/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/xh/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a3b0fceb49ef119f5507da4011babddc387483a07edc4d3c2b864d7d43d89c9e"
+      },
+      "/usr/share/locale/or/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/or/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "34a125b71166d38c89a0b5dff808e6d0fbdf5e3cafc52550e56354f59a25e9b3"
+      },
+      "/usr/share/locale/te/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/te/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ef5ffacf3a154a66a33d9735a36203f21388c8dd8f61281501c090bfe69f67d1"
+      },
+      "/usr/share/locale/ru/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e8c30929b8911777977dfbb07381ffd956803c7d4660c39955c7167461aff5b3"
+      },
+      "/usr/share/locale/mn/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mn/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "caa33fe9b75a0aeecb09bcc84943499c290aa8a6e76177b4eb3ec23456d65d6c"
+      },
+      "/usr/share/locale/fa/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fa/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a74fefe9a69844c5274bdcba260d17b0b10695be23954a837fb67dff242e34f4"
+      },
+      "/usr/share/locale/uk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f716fb58615fce02a0677f7bb888802221c3aa569649012d11e65286a0ca4df5"
+      },
+      "/usr/share/locale/pl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "908ecdbd10958683d05694792c4e9679b137bfe6ff28ff0ff9db7c970f02f570"
+      },
+      "/usr/share/locale/bn/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bd0c1b5eed9482401304f059f1f121b5be8391c54142e8c2eb97217d0bb5e22e"
+      },
+      "/usr/share/locale/ab/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ab/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7de19a64110cbdfd5f517e7430adcde03cda4a5a630591d2704f25b43a760947"
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0d087780fd303367016057eb2fc3b6d6e110fbf1c41a69af1b87c4c371640f98"
+      },
+      "/usr/share/locale/dz/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/dz/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d619f36d582e1d146d876eb212f83364d9703d58c0cbad99b76675f2519ec111"
+      },
+      "/usr/share/locale/sq/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sq/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "212cd63a8504f307aab72bb5ce7d7f6c641397f3a15c49dfba6d080b6a92dfb3"
+      },
+      "/usr/share/locale/pt/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2b3faef28a818423633e1fd22bf9a8dbffceef40840051e51fc020b64647c2f1"
+      },
+      "/usr/share/locale/es/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/es/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "032a29aa087b18c8aff51be26b43c88df6497b6dc7d7eb64837850c6c9e0d0ee"
+      },
+      "/usr/share/locale/ne/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ne/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bc9a0d30367298cdc428720b5f3a028af296a184d09fed8301b5b784031ed612"
+      },
+      "/usr/share/locale/eo/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eo/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "334b62138b4d41cac4936e454cbb916ad4f8f5bdb7193b1a06b4e5556edf4c4d"
+      },
+      "/usr/share/locale/fur/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f7d0d967569717e89b211582558c370b9f2887753fd9119bfeff93045e0bdc4b"
+      },
+      "/usr/share/locale/la/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/la/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "07b17645e259f3e61e1aa80da23704fc6e620026a4757e969f3791e863d8a083"
+      },
+      "/usr/share/locale/zh_HK/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_HK/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ef54d149b6b46ba5e058788293301a5ce888c81200019b5c7fd5be3857369ba8"
+      },
+      "/usr/share/locale/ta/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ta/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e711545c5ed7c2b2f34641964aea19d18a7b2e2b49d613ce2287d25ce4c52e34"
+      },
+      "/usr/share/locale/et/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/et/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "da55317236a0f0857a97e66626ffe20d39bb1e528a820c438532d26e744ea025"
+      },
+      "/usr/share/locale/gu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gu/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f6e21e8536adfd944535fd194aa6488ce9484308bd7b91296b0e5ea501f50735"
+      },
+      "/usr/share/locale/bn_IN/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn_IN/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "df3b4b12c883076018c08cf6358708a49321fc59cc4cb4aa88f2a25e74a286bc"
+      },
+      "/usr/share/locale/mg/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mg/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a4b6653e131f0313d2984a06f9b0b50c23f3694396c7737f9a4104a2c79ad54f"
+      },
+      "/usr/share/locale/ug/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ug/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4f27719569dce8af72a8bdd8f4523bb40f23b3e8819edead746ef5615b6ecf94"
+      },
+      "/usr/share/locale/fi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "baf0b1447860d4188591b4fa9c585a362404c3e358237c6e9f506665326ddfb9"
+      },
+      "/usr/share/locale/sk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "665b31a8f11a9faa83f9d5cd6f0b2ef792541e13882a14ccb42ff27ba94fae9b"
+      },
+      "/usr/share/locale/id/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7918f3360cc3cebc31e7151db3892048cea0febfda1c2e97d5c57888eac63d68"
+      },
+      "/usr/share/locale/he/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b70004791bd020db82680f7196359e01e23bef7ff122cbb4764bc83ba2f8af76"
+      },
+      "/usr/share/locale/en_GB/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en_GB/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "560bde1befee70d42511d38f14c148fc811363d2df70fcebcacadee18ca6b319"
+      },
+      "/usr/share/locale/cs/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a79a988dd468e0490448fae36516e5ad61cc58351bf22c96290bf4e3759c0366"
+      },
+      "/usr/share/locale/ky/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ky/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2427cfa39685c10f03cb052c10829904fa1f837eb46380308ad42b2f143ef24a"
+      },
+      "/usr/share/locale/as/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/as/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "cf343ce45e9ad4363d127cd20e98b4ca75673929aa0a07b6eb351885643eb9f7"
+      },
+      "/usr/share/locale/ku/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ku/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d9fdaa4a6c5006f6d224e394844c4442eafd25dcc2c5384bedd1c0d2de57bdf6"
+      },
+      "/usr/share/locale/ast/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ast/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "dd7a5d084eac979b35e4b27cda744859aa035e726f9a197b232830e76170e3b5"
+      },
+      "/usr/share/locale/de/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8f5222c531c788dcb887834cd2ee4122eaa63fb8edb7b54e4c9b9eb69de8eb63"
+      },
+      "/usr/share/locale/lt/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lt/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2a30e06c8075e2e42e7e128035e129b7990edde847735d06e9c4c18cec5732ab"
+      },
+      "/usr/share/locale/kn/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kn/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "11b8b6f2abab812b8e6cdd566bb84cd6db69f0161db450728f3f811a5ef4fe84"
+      },
+      "/usr/share/locale/sr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "04879d58347fa3cbaa8ef4ea577df324e917962b64ad1ee65b225129dcf988c0"
+      },
+      "/usr/share/locale/bs/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bs/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "483213ede4c7982b85dd6b32fe8d757055efb7f82aa276e5222f3e32f61c5076"
+      },
+      "/usr/share/locale/oc/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/oc/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "076259239411c4572039d837c68d535e6a70625a99880adc543a3c2722cb9405"
+      },
+      "/usr/share/locale/fr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "39f695700d6d9241ac47f7a49daffd41cee7ebe2308a6d58f61095db5555b6e9"
+      },
+      "/usr/share/locale/mai/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mai/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "679c577674ec861f6535dcfcec9891a33b8581940f9a1bcd019754337ce6fa59"
+      },
+      "/usr/share/locale/vi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/vi/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "40955c87ffa4623faef28c98ee2269e8bebeb779d8699d72f775570a3ab5d50c"
+      },
+      "/usr/share/locale/mi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mi/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1625bdfbbecaf8bb50aa766d0824c583f7195c2d599a55312c88576dae53545e"
+      },
+      "/usr/share/locale/th/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/th/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b081a05b9ba4aadf348cea2c7acef853e68eabfb00df55c29245de6835dc2172"
+      },
+      "/usr/share/locale/pa/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pa/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f9a0adc8f6446dcb1d89afd037923703ecabf7b39b189be5c82876e09832a58d"
+      },
+      "/usr/share/locale/ca/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "aa35bffadcc845ebe0ffd87c937cd7a1178a2627b455934efb3b2c6ff5e66aa7"
+      },
+      "/usr/share/locale/sl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sl/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ccfd7ebda0fc0741c33af7808bd7c15a6d605ac8fb77d518d9ee2146f63c6473"
+      },
+      "/usr/share/locale/el/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/el/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a807633035936bcfd111f8cda278282b1e3bcf6c15bb9b1d786f0bdd30e42746"
+      },
+      "/usr/share/locale/da/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4ee8bef679ded0f61480522dacd07340697686c9de7493cf6819520d20fa377c"
+      },
+      "/usr/share/locale/mr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mr/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ec73de1868b10e1c4c407866520af610b0086998e6a3508a1cedd8ea74d8f011"
+      },
+      "/usr/share/locale/nl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "729535f3dc5369fb7fdad42a6bb7379ddb3afe5d56ce725f0587fe05c99caf30"
+      },
+      "/usr/share/locale/ka/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4a4a5f25f16f753a1704eb8fe1db33a5ea2ea593c93b82cea0598630ff252f6f"
+      },
+      "/usr/share/locale/sr@latin/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr@latin/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5d0538c5a25eaa2577cfec45a7a189c46aefaf1a8a24f250be86449ec13aa633"
+      },
+      "/usr/share/locale/ro/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ro/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b4d1db2a072fd126258d9f8dc33dd9c0df08b706b2c7e051d47c982096b05e8f"
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES/libgtop.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fab35259af7edffde4c862a46c9fd8c7221d96b5b692f6b2459be700c642a2c9"
+      },
+      "/usr/share/doc/libgtop": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/libgtop/source-notices": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/libgtop/copyright": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4cabd7943161fe4bbff0c1a4485e124144555a0ef83c1f6778f1eb780dfc5acf"
+      },
+      "/usr/share/doc/libgtop/source-notices/3617104acb9f7cdd53a4986f4d52db4bc16d539a44d5e903f8f28079d2353b9c": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3617104acb9f7cdd53a4986f4d52db4bc16d539a44d5e903f8f28079d2353b9c"
+      },
+      "/usr/share/doc/libgtop/source-notices/index.json": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2209d435e5d685824eaa9ee8c9cf32764256e95aeee351182067c4045d5c388d"
+      },
+      "/usr/share/doc/libgtop/source-notices/231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "231f7edcc7352d7734a96eef0b8030f77982678c516876fcb81e25b32d68564c"
+      },
+      "/usr/share/doc/libgtop/source-notices/726bd9de48bebf3b40b41dbd592874b6e694dda6d644db12db49ffc9d645ad0f": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "726bd9de48bebf3b40b41dbd592874b6e694dda6d644db12db49ffc9d645ad0f"
+      },
+      "/usr/share/doc/libgtop/source-notices/5e734ef0be05afce372d6ed363406fc0eff923ee359125002522cc106b2eb480": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5e734ef0be05afce372d6ed363406fc0eff923ee359125002522cc106b2eb480"
+      },
+      "/usr/share/doc/libgtop/source-notices/2a4181c80a1196377763b8a9feb378ae7f882ce2d1d1d95466972e01a116772a": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2a4181c80a1196377763b8a9feb378ae7f882ce2d1d1d95466972e01a116772a"
+      },
+      "/usr/share/doc/libgtop/source-notices/321c2ef95e89107782632ad737dcf2fd0fa7a28f339b96f82ee101fc03ff71d7": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "321c2ef95e89107782632ad737dcf2fd0fa7a28f339b96f82ee101fc03ff71d7"
+      },
+      "/usr/share/doc/libgtop/source-notices/5a8802e365179603d1421a1b753bb414066deb479833204362175d7a591b5138": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5a8802e365179603d1421a1b753bb414066deb479833204362175d7a591b5138"
+      },
+      "/usr/include/libgtop-2.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/libgtop-2.0/glibtop": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/libgtop-2.0/glibtop_machine.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "54c265818642132cb94f685b0d2860388ef690096000e74cb4a97db2ba060389"
+      },
+      "/usr/include/libgtop-2.0/glibtop_suid.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d72e799737bf560535f5aa1c13f1394ea6e02ed98a0f656def24f8c56dfcdf79"
+      },
+      "/usr/include/libgtop-2.0/glibtop.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fc7454b4b11799056b66ba4055d801cd6dda3a5e801a8f3472b1e504024d4872"
+      },
+      "/usr/include/libgtop-2.0/glibtop_server.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6b144b9f972c35be5fce70d4bd81e5ee8a3d46549c17fefeaddab07f3728b299"
+      },
+      "/usr/include/libgtop-2.0/libgtopconfig.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8cb0d93a46eb32f752e55d663258628c8f29858dfd361bcc530e610c469df858"
+      },
+      "/usr/include/libgtop-2.0/glibtop/procopenfiles.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "63f427a06ffa037a524df6e51c1fc4e537783bda685612eed0a07a95e4f35443"
+      },
+      "/usr/include/libgtop-2.0/glibtop/command.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3278650a1f472180d96242e384d1a930f04e712ca4ca9b3bc5da8b987acc116e"
+      },
+      "/usr/include/libgtop-2.0/glibtop/procaffinity.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fdfcd12dd196665209321e861dfab5cb7a46729f37d43ac6054b9e0b34091e66"
+      },
+      "/usr/include/libgtop-2.0/glibtop/mem.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6bc9104db025a8020ceb6e1c6306a825b1f9014ea0cc6cde53f994f5cd442d62"
+      },
+      "/usr/include/libgtop-2.0/glibtop/shm_limits.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e8c80127a88483afedc858670852b0ee4435823999398fff2a15062417d9344c"
+      },
+      "/usr/include/libgtop-2.0/glibtop/uptime.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b42b8a76dc9f7cfe2d13abc6e3fcd8d58006307339748bc84ebeaeae94fa7edd"
+      },
+      "/usr/include/libgtop-2.0/glibtop/prockernel.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7a490b8a430894c85beb6a69dd745e4ee986c81acdf1fd5368ed4e912e70df24"
+      },
+      "/usr/include/libgtop-2.0/glibtop/procmap.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a9a4071b8ca8404acab53415c8ef50c478f1cd9c3b76e7da59dc4d5ed55db88a"
+      },
+      "/usr/include/libgtop-2.0/glibtop/netlist.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ed059ce19b51955f068c5b1b0d4ed92911250bc51c2bd27b767e82c7a1db1702"
+      },
+      "/usr/include/libgtop-2.0/glibtop/procstate.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7ea5d9e224435ff608c5e6c587cecaaf1f04dc60fc694c1c763f5cd6fdd1b5d3"
+      },
+      "/usr/include/libgtop-2.0/glibtop/proctime.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "99c88683a644db2fe92dbb5dd5a585471b4b1fe5398fd0d545c30e091eee1c52"
+      },
+      "/usr/include/libgtop-2.0/glibtop/parameter.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c352402c5d09e2eb5a6202ea5495467a817e4962141d7eb43cd772cdafb0b708"
+      },
+      "/usr/include/libgtop-2.0/glibtop/union.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "81ee5ef06403705dbef82e551975913070149a1d6db27025ebace2b7ed7901a8"
+      },
+      "/usr/include/libgtop-2.0/glibtop/ppp.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b592502eadd102862252622478e945b56ea2980432361dd63ba14cccb438cd92"
+      },
+      "/usr/include/libgtop-2.0/glibtop/fsusage.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "797212001fed3230f679d46d723e8d5b0331d18e8759d8b937131810e2b473ff"
+      },
+      "/usr/include/libgtop-2.0/glibtop/cpu.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fe9b788900c47e73e1df0c48c2f5265009b1bdbcac4890a2d0dd173ff268cda5"
+      },
+      "/usr/include/libgtop-2.0/glibtop/netload.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b8f1ae540b36bb1d7858f7146a65a8ff322986bc45c575b558776db3bc04ae97"
+      },
+      "/usr/include/libgtop-2.0/glibtop/procmem.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5b0d8108024b2718938ddd81ff5013c05d0a05c69050e201f5dfd507b8730688"
+      },
+      "/usr/include/libgtop-2.0/glibtop/procio.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1a2fa7ca347c26f744fb9ddc8ebec9cc2fbe4e5fb5f41ace8d5ab99a265bdfad"
+      },
+      "/usr/include/libgtop-2.0/glibtop/procsegment.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d96411e1e275acaa5004f0109d11053a384af6e803a83727f6dd53389ef2b702"
+      },
+      "/usr/include/libgtop-2.0/glibtop/open.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "52b0b9e58a55c36e4728c465a9750220839ef3d518f72ffc637a8bf79f4d3b58"
+      },
+      "/usr/include/libgtop-2.0/glibtop/sysdeps.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b8088493f32a4ab7cb07883a2b17d4f02548a3756e9ab06d713a7fd125d1041a"
+      },
+      "/usr/include/libgtop-2.0/glibtop/global.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3a5a026142a189343be266e627aca4d9f7a41c519d4ff9e4215a0bbdd5d65e7a"
+      },
+      "/usr/include/libgtop-2.0/glibtop/msg_limits.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4806f4624a90e05ec270000b55e2c9410b83133b53e5d1228bfa270983a3e5d6"
+      },
+      "/usr/include/libgtop-2.0/glibtop/loadavg.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "545d898c6331c4775f1055dc42fa574debd77c40abad7c46cbca8b2edf3f7ea9"
+      },
+      "/usr/include/libgtop-2.0/glibtop/signal.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7f7f1893f5a401db74435c4eff2365fbd609437240899b2582c696feb89a54e5"
+      },
+      "/usr/include/libgtop-2.0/glibtop/mountlist.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bd9dadd30f4236a0059fb1195935460bf7ba06a1a0f446cc851f38e2e8db5d67"
+      },
+      "/usr/include/libgtop-2.0/glibtop/procsignal.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5391882bde1a5660e0bd62decc03638c4f85881c19b05cf511c1089efbb671a5"
+      },
+      "/usr/include/libgtop-2.0/glibtop/procwd.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8b240f7c3cd8df54b6bc95f690c86607c2e88815a0d072f1f2a30845c77f2f8e"
+      },
+      "/usr/include/libgtop-2.0/glibtop/sysinfo.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "843e57e812a0f03cf5e67eaf032e77974162d01301806836b8ccb5c55841bbc5"
+      },
+      "/usr/include/libgtop-2.0/glibtop/procuid.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f1d5bf9b55e31128a80a71a31bd47e9695e9a45a292d39a4c8fe7c655abd3bde"
+      },
+      "/usr/include/libgtop-2.0/glibtop/disk.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4f853bec92dca4c6a1b6dfca14bebd58cded43b661808c451586eec60aadff4c"
+      },
+      "/usr/include/libgtop-2.0/glibtop/swap.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "71d917a6f354ffa55cb080ce04adc7f737d4a0d2db80ac0d13af684db84fecb9"
+      },
+      "/usr/include/libgtop-2.0/glibtop/gnuserv.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e3ad608ea4fa545da0dc3319015616f6303c5d8e2684843e6f9839ae4ccc42bc"
+      },
+      "/usr/include/libgtop-2.0/glibtop/close.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bde32a03d588a439f3d7b65b40939bc9d4a3972d4d7b3c3cf88de872fe23afaa"
+      },
+      "/usr/include/libgtop-2.0/glibtop/sem_limits.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0ab5a1b9a731f0310a6f3f48a87e3c41748fbdb34078a27bc1c8bed0d6787af6"
+      },
+      "/usr/include/libgtop-2.0/glibtop/proclist.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c8b94d3a90fbe15367f6d032aa50fdebf601d80932422d3e8719e1d5ea87456d"
+      },
+      "/usr/include/libgtop-2.0/glibtop/procargs.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f254e8b698ac44bdb488c349c3ffe8e9f8a37bdc3cf3506ec22edcdc39a42741"
+      },
+      "/usr/lib/girepository-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/pkgconfig": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/libgtop-2.0.so.11": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libgtop-2.0.so.11.1.0"
+      },
+      "/usr/lib/libgtop-2.0.so.11.1.0": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d8af77ce23566c0e2853a1bdea70da3930b6cc3e49f91abd8532100964e0b489"
+      },
+      "/usr/lib/libgtop-2.0.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libgtop-2.0.so.11.1.0"
+      },
+      "/usr/lib/libgtop-2.0.la": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ba3e87b407a97a2c1f5001df86619694180355b7686e82ce3fe3559476f710fe"
+      },
+      "/usr/lib/girepository-1.0/GTop-2.0.typelib": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2cf7c5a1058383a97ca65bf796910c0b267ff071086809a027cd6b5ecbcd943a"
+      },
+      "/usr/lib/pkgconfig/libgtop-2.0.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "be195be561adc028c4549909d0f0a9a870aa56360c8226b233c29b94f7108520"
+      }
+    },
+    "generated_paths": [
+      "/usr/share/info/dir"
+    ],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_sha256": "c45cda8adc518c3abb4e09275277383b7d72b28733d27a2f1e158c73990b622c",
+    "supporting_build_script_count": 1817
+  }
+}

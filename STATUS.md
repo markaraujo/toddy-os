@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T19:17:55.040712+00:00
+Last verified: 2026-11-10T19:35:36.220646+00:00
 
 Verified:
 
@@ -173,8 +173,9 @@ Verified:
 - Owned libmbim1.34.0 (9 original programs/131cases, native0/0/63changes) and full libqmi1.38.0 (7 programs/122cases, canonical install93changes, corrected GIR verify-only3/post0/0/root0). Actual local C/GI/CLI/refusal/recovery/ABI/APT passed; no modem/firmware operation/cellular/Settings GUI claim. Same-boot readonly source/native workspace recovery passed; cold untested. ADR0209.
 - Owned ModemManager1.24.2 SDK/service/plugin/policy payload:491ELFs/220stagefiles,29original local programs588cases0; 3session/PTY programs deferred. Native install264changes, final source-backed verify-only3/post0/0/root0. C/GI/CLI absent-bus/refusal/recovery/strict static policy/ABI/APT0. No running daemon/session authorization/modem/cellular/firmware/Settings GUI claim. ADR0210.
 - Owned Colord GTK0.3.1 revision2:17ELFs/15files, GTK3+GTK4 C ABI and GTK3 GI local non-widget GObject/empty-profile/two cycles/ABI/PC/APT0. Original display tests unexecuted, optional Vala unavailable due parent SDK. Original failures retained; final native0/0/3changes. Actual pre-promotion dependency guard accepts owned GTK3/Colord, refuses stale GTK3 revision with dpkg status unchanged. ADR0211.
+- Owned libgtop2.41.3:99ELFs/139stagefiles; no original suite exists. Own direct local memory/uptime/process/missingPID/refusal/recovery passed. Actual stage helper4755 caught before installation; mode0755 correction and fresh hook fixture qualified with compiler/stage bytes retained. Native0/0/159changes, UID101/NNP/private-proc/private-dev/no-route C/GI metadata/ABI/Info/APT0, helpers root0755. No helper protocol/cross-user privilege/GUI/desktop measurements/physical claim. ADR0212.
 
-Running: No guest writer. Colord GTK revision2 installed/qualified within API scope. Next frozen libgtop2.41.3 local performance SDK; source authenticated, no guest input/job. Remaining Control Center required UDisks/MIT Kerberos/CUPS/Samba libraries and actual desktop GUI remain. Complete B02 then stop.
+Running: No guest writer. Libgtop local SDK installed/qualified. Next MIT Kerberos1.22.2 for Settings/Samba: authenticate all three required frozen book patches, inspect source/crypto/tests and exact scratch capacity before guest preparation. Remaining UDisks/CUPS/Samba and actual desktop GUI remain. Complete B02 then stop.
 
 Remaining:
 

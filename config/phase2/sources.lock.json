@@ -2749,6 +2749,51 @@
       "book_md5": "465db9f4f695c298d9c48dcf7f32a9c0",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "mitkrb",
+      "version": "1.22.2",
+      "filename": "krb5-1.22.2.tar.gz",
+      "url": "https://kerberos.org/dist/krb5/1.22/krb5-1.22.2.tar.gz",
+      "sha256": "3243ffbc8ea4d4ac22ddc7dd2a1dc54c57874c40648b60ff97009763554eaf13",
+      "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+      "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+      "book_md5": "42472b11771d074329e0cc776d2eb5fd",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "mitkrb-upstream-fix",
+      "version": "1.22.2",
+      "filename": "mitkrb-1.22.2-upstream_fix-1.patch",
+      "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-upstream_fix-1.patch",
+      "sha256": "91bed46e7c59b4bc27df659c13abd4514e456293717720e8545d7f8acad00a97",
+      "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+      "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+      "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+      "status": "source_verified"
+    },
+    {
+      "name": "mitkrb-security-fix",
+      "version": "1.22.2",
+      "filename": "mitkrb-1.22.2-security_fix-1.patch",
+      "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-security_fix-1.patch",
+      "sha256": "fcab4e4117667f4ffde3733b00c47ea3da12a9a5355e6aa6e2b124a9543e6181",
+      "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+      "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+      "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+      "status": "source_verified"
+    },
+    {
+      "name": "mitkrb-openssl4-fixes",
+      "version": "1.22.2",
+      "filename": "mitkrb-1.22.2-openssl_4_fixes-1.patch",
+      "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-openssl_4_fixes-1.patch",
+      "sha256": "703f634a0731a0355079211593491f3e175acfce237ed92b97cd04bd1e21bcc1",
+      "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+      "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+      "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+      "status": "source_verified"
     }
   ]
 }

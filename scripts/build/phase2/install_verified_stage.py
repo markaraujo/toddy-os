@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libgtop': ('2.41.3', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libxau (= 1.0.12-1+toddy1)', 'libgtop-2.41.3.tar.xz', 'usr/lib/pkgconfig/libgtop-2.0.pc'),
     'colord-gtk': ('0.3.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), colord (= 1.4.8-1+toddy1), gtk (>= 4.22.4-1+toddy9), gtk3 (= 3.24.52-1+toddy2)', 'colord-gtk-0.3.1.tar.xz', 'usr/lib/pkgconfig/colord-gtk4.pc'),
     'modemmanager': ('1.24.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libmbim (= 1.34.0-1+toddy1), libqmi (= 1.38.0-1+toddy1), libgudev (= 238-1+toddy1), polkit (= 127-1+toddy1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3)', 'ModemManager-1.24.2.tar.gz', 'usr/lib/pkgconfig/mm-glib.pc'),
     'libqmi': ('1.38.0', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libmbim (= 1.34.0-1+toddy1), libgudev (= 238-1+toddy1)', 'libqmi-1.38.0.tar.gz', 'usr/lib/pkgconfig/qmi-glib.pc'),
@@ -261,6 +262,7 @@ if __name__ == '__main__':
     if name=='appstream' and (log/'appstream-probe-4.job.json').exists():qualifier='appstream-probe-4'
     if name=='libfyaml' and (log/'libfyaml-finish-2.job.json').exists():qualifier='libfyaml-finish-2'
     if name=='colord-gtk' and (log/'colord-gtk-collect-3.job.json').exists():qualifier='colord-gtk-collect-3'
+    if name=='libgtop' and (log/'libgtop-mode-3.job.json').exists():qualifier='libgtop-mode-3'
     if name=='itstool' and (log/'itstool-recovery-2.job.json').exists():qualifier='itstool-recovery-2'
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
     if name=='at-spi2-core' and (log/'atspi-finish-4.job.json').exists():qualifier='atspi-finish-4'
@@ -1266,6 +1268,9 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='libgtop':
+        from qualify_libgtop import qualify as qualify_libgtop
+        qualify_libgtop(ROOT)
     if name=='colord-gtk':
         from qualify_colord_gtk import qualify as qualify_colord_gtk
         qualify_colord_gtk(ROOT)

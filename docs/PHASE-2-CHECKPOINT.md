@@ -8,41 +8,40 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current B02 slice: Colord GTK0.3.1 native revision2 installed/qualified,
-[stage](evidence/B02-colord-gtk-stage.json)/[install](evidence/B02-colord-gtk-install.json),
-ADR0211.17ELFs/15files, original two display/profile tests compiled/unexecuted.
-Both GTK3/GTK4 C local GObjects/empty-profile/two cycles and GTK3 GI/ABI/PC/APT0.
-Optional Vala unavailable due parent SDK. Header version-guard collision retained;
-probe-only correction, library/stage unchanged. No widget/profile/calibration/
-Settings GUI/physical acceptance. Native1 wrong GTK3 revision left unpacked;
-metadata-only revision2 PID31509 complete recipe/post0/0/3changes. No replay.
-
-ModemManager1.24.2 local SDK/plugin/service/strict policy qualified, ADR0210:
-29original programs588cases0; serial/session3programs deferred. Verify3PID28841
-complete0/0/root0. No daemon/session privilege/modem/cellular/firmware/Settings UI
-claim. MBIM/QMI owned too, ADR0209. Native dependency preflight now refuses stale
-versions BEFORE promotion/archive/unpack; actual positive/refusal proof passed.
+Current B02 slice: Libgtop2.41.3 native local SDK installed/qualified,
+[stage](evidence/B02-libgtop-stage.json)/[install](evidence/B02-libgtop-install.json),
+ADR0212.99ELFs/139files; no upstream suite (not a pass). Actual C direct memory/
+uptime/own-process/missingPID refusal/two recoveries, GI metadata only/ABI/PC/Info/
+APT0. NativePID43153 recipe/post0/0/159changes. Helpers root0755, not activated.
+Initial own header typo and staged helper4755 failure retained; mode-only3 and
+fresh hook fixture1 passed with compiler/stage bytes retained. Never replay.
+No remote/helper protocol/other-user privilege/Settings GUI/desktop measurements/
+physical acceptance. GIR raw EOT strict-XML1.0 limitation explicit. Cold untested.
 
 Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f, writer idle.
-ModemManager worker inode5725/source alias on existing Doxygen UUID. Libqmi
-readonly source/native workspace same-boot recoveries COMPLETE, not cold proof.
-Native workspace inode4671 and retained workers remain. Closed GOA/MBIM/Shell
-promotion usr custody COMPLETE/root0; never replay. Decoded Cracklib duplicate
-absent, exact compressed source/custody retained. Fixed target16GiB/host100GiB/
-cold100GiB+512MiB; recheck actual resources before writes or boot.
+Libgtop private worker inode7269/scratch recipe b31cbe79d93e1283d7bfbcc2f2e5dc842c729a12046d1c0d4af8a82170e7b186
+preserves original source/recipe. Same Doxygen UUID/cache fingerprint retained.
+ModemManager worker5725, QMI4244/native workspace4671 and earlier binds retained.
+Only QMI readonly source/native workspace same-boot recovery qualified, not new
+cold proof. Mesa promotion usr custody COMPLETE/root0/reclaimed44417024B; original
+workstage/source/compiler/archive retained, compiler not rehashed by custody.
+All previous GOA/MBIM/Shell/Cracklib custody complete; never replay. Fixed target
+16GiB/host100GiB/cold100GiB+512MiB: recheck actual budgets before new writes.
 
-EXACT NEXT: read frozen libgtop2.41.3 configure/sysdeps/test/API source; implement
-isolated configure/build/stage and actual local unprivileged memory/process API.
-Source authenticated/pinned (.local/phase2/libgtop-source.json). No guest input/
-work/job exists. No upstream suite in book; never call an empty check a pass.
-Use available Xau/GLib and inspect Linux helper privilege defaults before packaging.
-Control Center50.4 still needs owned libgtop/UDisks/MIT Kerberos/CUPS/Samba.
-Keep core panels. Embedded libgxdp is already in CC source; gmobile/malcontent
-optional, GTK-X11 unselected Wayland profile. No guest Control Center source/job.
-Existing scratch helper supports CC49MB source; no general replanning.
+EXACT NEXT: inspect MIT Kerberos1.22.2 source patch application/library/tests/
+options and actual expansion/scratch budgets before guest preparation. Main source
+and ALL THREE required upstream/security/OpenSSL4 patches authenticated/pinned
+(.local/phase2/mitkrb-source.json and mitkrb-patches.json). Initial own frozen-XHTML
+href-whitespace parser failure resolved, no guest mutation. Patch source lock and
+SHA256 persisted; never refetch unchanged inputs. No guest MIT source/work/job.
+Use a shared readonly source alias/private Doxygen worker if actual expansion
+exceeds root headroom; preserve reserves, crypto tests and required security fixes.
+Control Center50.4 still needs MIT/UDisks/CUPS/Samba. Keep core panels; embedded
+libgxdp is in source, optional gmobile/malcontent and GTK-X11 unselected.
+No guest Control Center source/job; existing alias supports its49MB expansion.
 
-Published742eaf0: all3CI success and exact publicHTTP200/indexSHA
-877937f17ad47fec8e51e69abc6ba6baf889445753495a1508b7332933e849c5.
+Published3e096f4: all3CI success and exact publicHTTP200/indexSHA
+0d2eb334761067e1833091d376d31a41c06d1a7ded4e90a1f0db00a619c30ef4.
 
 Seven qualified Settings prerequisite archives/metadata copied and independently
 verified outside VM: [recovery cache proof](evidence/B02-settings-package-recovery.json),

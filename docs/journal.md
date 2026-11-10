@@ -3333,3 +3333,23 @@ owned revisions before promotion/archive/unpack; actual positive/refusal and
 unchanged dpkg status passed. Four focused safety tests,335repository tests pass.
 
 Next: frozen libgtop2.41.3 source recipe/native local performance API; no guest input/job yet.
+
+### B02 Libgtop boundary — 2026-11-10T19:35:36.220646+00:00
+
+### Owned Libgtop local statistics SDK — 2026-11-10
+
+[Stage](evidence/B02-libgtop-stage.json):99ELFs/139files, no upstream suite exists (not a
+suite pass). Isolated local C direct memory/uptime/own-process/missing-PID refusal/
+two recoveries passed. Initial own header typo and actual staged helper4755
+failure retained; only helper mode corrected to0755 with all compiler/stage bytes
+unchanged, no successful test replay. Fresh generated-hook correction qualified
+separately with intercepted fixture commands; original Makefile unchanged.
+[Native install](evidence/B02-libgtop-install.json) recipe/post0/0/159changes: actual UID101/
+NNP/private-proc/private-device/no-route C consumer, GI metadata availability,
+ABI/PC/APT/Info registration0, helpers root0755 without activation. No remote/
+privileged cross-user/helper protocol/Settings GUI/desktop resource/physical claim.
+GIR raw EOT strict-XML1.0 limitation retained. ADR0212.
+[Mesa custody](evidence/B02-mesa-promotion-custody.json) reclaimed44417024B from only closed
+promotion usr, exact archive/record/installed root0/original workstage retained.
+
+Next: frozen MIT Kerberos1.22.2 and all three required book patches; source review/isolated scratch capacity before guest preparation.

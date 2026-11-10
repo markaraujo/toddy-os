@@ -1,0 +1,20 @@
+{
+  "state": "complete",
+  "scope": "Only closed Mesa native-promotion usr replica; installed payload/original source/compiler/workstage/raw evidence/native archive/DEBIAN retained. No install/trim/rebuild replay.",
+  "stage": "/mnt/lfs/sources/stage/phase2-mesa",
+  "stage_inode": 1850293,
+  "archive": "/var/cache/toddy/packages/mesa_26.1.7-1+toddy1_amd64.deb",
+  "archive_sha256": "169289ffb0a68159ec37fbcc8b9ef50db8f4d8c911a5bb2df65451bb0d48f121",
+  "record_sha256": "a1abf71e235f8300a3d606fcf4c462501858b80b8dd0a09fa0523875cd96dc5a",
+  "control": {
+    "DEBIAN/control": "661aa3cf3154d5e3162a7692347d60508d0d23a21187c251ddfa4791ffd8bc6d"
+  },
+  "compiler_rehashed": false,
+  "original_workstage_fingerprint": "dcf420468215e78f8d1fa4e7b91e75a3fb51c57690eb3c98e7566ae02e240974",
+  "qualified_workstage_files": 30,
+  "before_free_bytes": 17187258368,
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 17231675392,
+  "recovery": "Verify retained native archive/record hashes and extract to a NEW stage if needed. Never reinstall, replay custody, or retire the original compiler/workstage.",
+  "reclaimed_bytes": 44417024
+}
