@@ -65,3 +65,5 @@ d02de32dc8cc68ebb3f5ea9c02fc36eed930eb93:docs/evidence/B02-editor-schema-union.j
 # Reviewed SHA256 of public Tecla key/keymap object files, not credentials.
 docs/evidence/B02-tecla-stage.json:generic-api-key:29
 docs/evidence/B02-tecla-stage.json:generic-api-key:35
+946b9d23c77f08716fa2d462e9a51f21860e0600:docs/evidence/B02-tecla-stage.json:generic-api-key:29
+946b9d23c77f08716fa2d462e9a51f21860e0600:docs/evidence/B02-tecla-stage.json:generic-api-key:35
