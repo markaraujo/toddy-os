@@ -37,3 +37,13 @@ Complete Settings/online-account/desktop runtime acceptance remains pending.
 Provider availability must stay truthful; enabling Google/Microsoft365 later
 requires explicit application identity qualification and affected runtime checks.
 No owner credential is requested for the offline desktop prerequisite build.
+
+## Linux protocol prerequisite continuation
+
+Control Center50.4 requires mm-glib on Linux and GNOME Bluetooth UI on x86_64
+Linux. Frozen ModemManager1.24.2 defaults to MBIM/QMI; keep those protocol features
+and qualify the selected libmbim1.34.0/libqmi1.38.0 inputs instead of disabling
+required panels to pass a build. QRTR follows the book's explicit disabled
+option. Source/SDK qualification does not establish modem hardware support.
+Existing scratch input/worker bindings must preserve fixed reserves and original
+cache/source identities; no foundation reconstruction or physical-disk operation.

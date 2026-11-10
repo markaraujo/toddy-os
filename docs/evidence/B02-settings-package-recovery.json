@@ -1,0 +1,82 @@
+{
+  "state": "complete",
+  "scope": "Seven qualified native package recovery cache only; not a bootable system/image checkpoint or release",
+  "package_count": 7,
+  "inventory_sha256": "28ee88b6ce7d973fb13bbb0e8e0fe94fb0d3e6eefd14cb36ba63cb3c7087e35f",
+  "archive_sha256": "8b34b98b537d2bf8b902d19c66da034b80014b5e5f10d462ddc557756cba5026",
+  "archive_bytes": 6133760,
+  "all_archive_and_record_bytes_verified": true,
+  "cache_path": ".local/native-package-snapshots/settings-owned-1",
+  "components": [
+    {
+      "name": "tecla",
+      "version": "50.0-1+toddy1",
+      "archive": "var/cache/toddy/packages/tecla_50.0-1+toddy1_amd64.deb",
+      "record": "var/log/toddy/packages/tecla_50.0-1+toddy1_amd64.json",
+      "archive_sha256": "a6940f1e20e8d74ef28c16992984472d357b7aab248b137469e534aadc283c82",
+      "record_sha256": "4d5265339e5e734a9b6660f8bb6656e930b4169dd0e6265660f4aa6d839e4c84",
+      "archive_bytes": 41384,
+      "record_bytes": 207706
+    },
+    {
+      "name": "librest",
+      "version": "0.10.2-1+toddy1",
+      "archive": "var/cache/toddy/packages/librest_0.10.2-1+toddy1_amd64.deb",
+      "record": "var/log/toddy/packages/librest_0.10.2-1+toddy1_amd64.json",
+      "archive_sha256": "7ab19965a1b30f1b77da2ce9fbb723208e219a4e99fd07fe02a388338cff08db",
+      "record_sha256": "9e4931ec34ee426ce5107dd98c1bb53e958d8c755d9bbaf82817f12100ad9b5b",
+      "archive_bytes": 83356,
+      "record_bytes": 191434
+    },
+    {
+      "name": "gnome-online-accounts",
+      "version": "3.58.1-1+toddy1",
+      "archive": "var/cache/toddy/packages/gnome-online-accounts_3.58.1-1+toddy1_amd64.deb",
+      "record": "var/log/toddy/packages/gnome-online-accounts_3.58.1-1+toddy1_amd64.json",
+      "archive_sha256": "a57f1fd3ed8f05e09025fa0a63a41639125f3ccddd447cab2d986a08c3fa118a",
+      "record_sha256": "388417c9b6855d89e5870bc4d23d7222c8bcbde2164c17449b2b57a52443c511",
+      "archive_bytes": 465660,
+      "record_bytes": 230700
+    },
+    {
+      "name": "cracklib",
+      "version": "2.10.3-1+toddy1",
+      "archive": "var/cache/toddy/packages/cracklib_2.10.3-1+toddy1_amd64.deb",
+      "record": "var/log/toddy/packages/cracklib_2.10.3-1+toddy1_amd64.json",
+      "archive_sha256": "aed1f98dff197653bd94860bb84cd53345de16a957035d3f7954a3fb08028613",
+      "record_sha256": "5b9768845431309ddbb968ca2cb3ddca8d1cbb147e22740c04e1774131d449c2",
+      "archive_bytes": 3655244,
+      "record_bytes": 212093
+    },
+    {
+      "name": "libpwquality",
+      "version": "1.4.5-1+toddy1",
+      "archive": "var/cache/toddy/packages/libpwquality_1.4.5-1+toddy1_amd64.deb",
+      "record": "var/log/toddy/packages/libpwquality_1.4.5-1+toddy1_amd64.json",
+      "archive_sha256": "0b855634daf16f4453afedf78468f5b06d40c94fab030bcd1b6285b45a7fb216",
+      "record_sha256": "9f53275b558d54e9a5e36ceddc389f4f114d055dff61c065c277acd8c87b240c",
+      "archive_bytes": 102620,
+      "record_bytes": 212524
+    },
+    {
+      "name": "gsound",
+      "version": "1.0.3-1+toddy2",
+      "archive": "var/cache/toddy/packages/gsound_1.0.3-1+toddy2_amd64.deb",
+      "record": "var/log/toddy/packages/gsound_1.0.3-1+toddy2_amd64.json",
+      "archive_sha256": "0803a83e6a19ea9fe1ae04759339fccee2b5322113670f295e816eb6950e6e30",
+      "record_sha256": "081fb7446529d5f6db27b27bf884f2051e4dcafe9779228b3d2f00de51e30c1b",
+      "archive_bytes": 33620,
+      "record_bytes": 188781
+    },
+    {
+      "name": "gnome-bluetooth",
+      "version": "47.2-1+toddy1",
+      "archive": "var/cache/toddy/packages/gnome-bluetooth_47.2-1+toddy1_amd64.deb",
+      "record": "var/log/toddy/packages/gnome-bluetooth_47.2-1+toddy1_amd64.json",
+      "archive_sha256": "48387e21bd77986d02ca31e35417c4fb0b8ef3702adbcf08631d695bc4eafdc0",
+      "record_sha256": "a9f7636c8c7d53453e704fa4f4d704ab9d7e07d9efb9b6981b2d679e55f977dd",
+      "archive_bytes": 259376,
+      "record_bytes": 231578
+    }
+  ]
+}

@@ -8,15 +8,28 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current B02 slice: next Linux Settings prerequisite ModemManager1.24.2.
-Frozen source ModemManager-1.24.2.tar.gz SHA
-fbc75adcc0d7b0565f256e7ff4e8872b0a37c4413ff576665f7470932d9c1b68,
-expanded13547858B. No ModemManager guest source/job exists. EXACT NEXT: inspect
-frozen Meson options/required SDKs, actual root/scratch free and reserve budgets;
-prepare its source/private worker on existing preallocated scratch as appropriate.
-Do not disable required Control Center Linux panels or silently choose unsupported
-modem hardware. Preserve source identity, one writer and exact cold-bind recovery.
-Control Center itself expanded49149703B still needs scratch source+work, not root.
+Current B02 slice: libmbim1.34.0 prerequisite for default ModemManager1.24.2
+MBIM/QMI support. Actual native mbim-glib/qmi-glib/qrtr-glib absent; frozen book
+protocol sources verified, [preflight](evidence/B02-modemmanager-sdk-preflight.json).
+Keep MBIM/QMI; QRTR may follow explicit frozen-book disabled switch. No guest
+libmbim/libqmi/ModemManager source/job exists and actual writer lock is idle.
+EXACT NEXT: read frozen libmbim-1.34.0.tar.gz meson.build/meson_options.txt; add
+canonical libmbim-build recipe and preparation allowlist; allocate a private worker
+on the SAME existing Doxygen scratch with a unique receipt/unchanged-cache checks/
+exact optional cold-bind recovery. Sync reviewed metadata, then prepare+dispatch
+first isolated libmbim1 ONCE. Expanded libmbim2020138B fits measured root headroom,
+but check actual source/install budgets before writes. Libqmi expanded25852978B
+and Control Center49149703B exceed current root headroom19959808B: prepare those
+input aliases on existing scratch rather than extracting onto root. Never lower
+16GiB target/100GiB host reserve or bypass required Linux panels.
+
+Seven qualified Settings prerequisite archives/metadata copied and independently
+verified outside VM: [recovery cache proof](evidence/B02-settings-package-recovery.json),
+.local/native-package-snapshots/settings-owned-1/state.json COMPLETE7packages,
+6133760B tar SHA8b34b98b537d2bf8b902d19c66da034b80014b5e5f10d462ddc557756cba5026.
+Only a partial native-package recovery cache, NOT a bootable/full system checkpoint
+or release. Do not repeat export; verify inventory/archive hashes before recovery.
+Original VM source/compiler/stage/raw failures/archives and all scratch binds remain.
 
 GNOME Bluetooth47.2 source/compiler/stage/native install COMPLETE,
 [stage](evidence/B02-gnome-bluetooth-stage.json)/
