@@ -3410,3 +3410,5 @@ remains parked; next eligible CUPS source/build review.
 | 2026-11-10 | B02 owned libbytesize | Retain compiler, 76 upstream cases, three locale skips, exact stage and C probe. Correct Python exception expectation and archive preflight path. Install once and verify. | Native 0/0, 56 paths, 131 payload entries. Next libatasmart source pin. |
 
 | 2026-11-10 | B02 libatasmart staged | Pin frozen 0.19, build against owned libudev 261 and preserve compile and stage after missing size_t declaration in the probe | Probe-only job 0. Two upstream blob parses and refusal/reload passed. Eight ELF and eight staged file hashes unchanged. Embedded LGPL notice review and native install next. |
+
+| 2026-11-10 | B02 owned libatasmart | Verify the retained build and corrected probe, preserve exact notices and full LGPL text, install with full-root transaction | Native 0/0, 23 changed paths, 27 payload entries. Installed C/CLI blob refusal and recovery passed. Keyutils source pinned, isolated build next. |

@@ -10568,6 +10568,27 @@
       }
     },
     {
+      "name": "libatasmart",
+      "version": "0.19",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Preserve exact upstream library, tools and Vala notices, the guarded public header and full LGPL 2.1 text.",
+      "extra_license_files": {
+        "libatasmart-0.19.tar.xz": [
+          "atasmart.h"
+        ]
+      },
+      "extra_license_headers": {
+        "libatasmart-0.19.tar.xz": {
+          "paths": [
+            "atasmart.c",
+            "skdump.c",
+            "sktest.c",
+            "vala/atasmart.vapi"
+          ]
+        }
+      }
+    },
+    {
       "name": "libcanberra",
       "version": "0.30",
       "license": "LGPL-2.1-or-later",

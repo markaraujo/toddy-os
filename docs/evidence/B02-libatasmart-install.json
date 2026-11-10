@@ -1,0 +1,101 @@
+{
+  "native": {
+    "step": "b02-libatasmart-install",
+    "started": "2026-11-10T22:38:18.415025+00:00",
+    "finished": "2026-11-10T22:38:34.455127+00:00",
+    "recipe_sha256": "5e700bde65ce01fa0ab424abe91086d6211d159204a1c673478116223a90de83",
+    "postcheck_sha256": "0034447844eb6d28979d4d343b5aa87ed5a6ef804a02514411c2de46cedf3cab",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 23,
+    "log_sha256": "b046578ce87fce6c36e53368e8abc5eb049cad25a0f8dbe6d8c641b0c50b1695",
+    "receipt_sha256": "de7292990856466dd916cde1643260d89d9ab4997276c1b8a28da6575aeb440d"
+  },
+  "consumer": {
+    "C_consumer": "Two upstream SMART blobs parsed, truncation refused, ATA model retained and valid reload passed\n",
+    "CLI_refusal_exit": 1,
+    "CLI_recovery": "YES",
+    "stage_files": 8,
+    "library_aliases": 2,
+    "notices_verified": 5,
+    "full_LGPL_2_1_text": true,
+    "libudev_resolution": true,
+    "scope": "UID101 with no effective capabilities, NNP, private devices and private network. Bundled SMART blob parser only.",
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "libatasmart",
+    "version": "0.19-1+toddy1",
+    "archive_sha256": "83cd2a7cefb42fc965e15dfae85fd41c09ec44fefdf373ea47b747cf9c2aba6f",
+    "recipe_sha256": "5e700bde65ce01fa0ab424abe91086d6211d159204a1c673478116223a90de83",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "libatasmart",
+        "version": "0.19",
+        "filename": "libatasmart-0.19.tar.xz",
+        "url": "https://0pointer.de/public/libatasmart-0.19.tar.xz",
+        "sha256": "61f0ea345f63d28ab2ff0dc352c22271661b66bf09642db3a4049ac9dbdb0f8d",
+        "reference": "BLFS13.1-systemd general/libatasmart.html",
+        "book_page_sha256": "510dadb8605d8cb9642b3737b75662e38f7abe4302f1abf1b5b00de976908460",
+        "book_md5": "53afe2b155c36f658e121fe6def33e77",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "installed": true,
+    "payload_count": 27,
+    "supporting_build_scripts_sha256": "b6a730ccfbbce9f143f2ed7039c51e4972dee611ef5c250fb77c9ea5d0188fd0",
+    "payload_sha256": "43aac2e5e183ae09dea930e2d28c485ffcf8d442be79b4d203c3ba2c5bb169b6"
+  },
+  "installed_notices": {
+    "sources": [
+      {
+        "filename": "libatasmart-0.19.tar.xz",
+        "source_sha256": "61f0ea345f63d28ab2ff0dc352c22271661b66bf09642db3a4049ac9dbdb0f8d",
+        "url": "https://0pointer.de/public/libatasmart-0.19.tar.xz",
+        "notices": [
+          {
+            "path": "libatasmart-0.19/vala/atasmart.vapi [leading license comments]",
+            "source_file_sha256": "dde29d140bac5389a42fab73ee6c964a17d3d9c0928a579f350f2372b864d9ee",
+            "sha256": "a6f53f113bc71c49f3d69af93d06a59e4ac68a971b6e698b202d4647a3385c87",
+            "size": 808
+          },
+          {
+            "path": "libatasmart-0.19/skdump.c [leading license comments]",
+            "source_file_sha256": "5e79eb4b7e3e70b83b8d6824e001913a8136e032b9b9ea617434a2caf947228b",
+            "sha256": "a6f53f113bc71c49f3d69af93d06a59e4ac68a971b6e698b202d4647a3385c87",
+            "size": 808
+          },
+          {
+            "path": "libatasmart-0.19/sktest.c [leading license comments]",
+            "source_file_sha256": "50c09fbe52955737269811086931fc3eeb63d2e64025c3a4f18e2e85e7f1e8b1",
+            "sha256": "a6f53f113bc71c49f3d69af93d06a59e4ac68a971b6e698b202d4647a3385c87",
+            "size": 808
+          },
+          {
+            "path": "libatasmart-0.19/atasmart.c [leading license comments]",
+            "source_file_sha256": "9b703720cfd6b223a64129d85563d35486af7bc6c55bc3da847345c84c079fa6",
+            "sha256": "a6f53f113bc71c49f3d69af93d06a59e4ac68a971b6e698b202d4647a3385c87",
+            "size": 808
+          },
+          {
+            "path": "libatasmart-0.19/atasmart.h",
+            "sha256": "377f051b87347769eb9ceca1163e63c21cb7e59f17e3435caff8209c28f40acf",
+            "size": 9157
+          }
+        ]
+      }
+    ],
+    "scope": "Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply"
+  },
+  "target_free_bytes": 17205194752,
+  "scratch_free_bytes": 561504256
+}

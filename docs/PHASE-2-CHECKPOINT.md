@@ -36,17 +36,24 @@ size_t without including its definition. Corrective libatasmart-probe-2 PID
 SMART blobs were parsed, truncation was rejected without losing the prior ATA
 model, and valid reload passed. Eight ELF hashes, eight staged file hashes and
 four retained logs were identical. [Evidence](evidence/B02-libatasmart-stage.json).
-Guest terminal receipts are under /var/log/toddy/phase2/. The library archive
-and native installation are pending. Do not repeat source preparation, compile,
-stage or probe. Last target free 17,205,940,224 B.
+Guest terminal receipts are under /var/log/toddy/phase2/. Native job
+b02-libatasmart-install PID 109417 reached terminal recipe/postcheck 0/0.
+It changed 23 paths and installed 27 payload entries. Archive SHA256
+83cd2a7cefb42fc965e15dfae85fd41c09ec44fefdf373ea47b747cf9c2aba6f.
+[Install evidence](evidence/B02-libatasmart-install.json) records exact staged
+bytes and links, retained five notices and full LGPL text, owned libudev/ABI/APT,
+and UID 101 installed C/CLI truncated-input refusal and valid recovery.
+Do not repeat preparation, compile, stage, probe or install.
+Last target free 17,205,194,752 B, scratch free 561,504,256 B.
 
-EXACT NEXT: review libatasmart's embedded LGPL-2.1-or-later notices against
-`scripts/build/source_notices.py` and the existing `LICENSES/third-party/LGPL-2.1.txt`.
-The tarball has source header notices but no standalone license file. Then
-qualify the retained job pair and staged bytes read-only and prepare a single
-full-root native transaction with a no-device installed consumer. Check actual
-guest lock, target/scratch and host reserves before changing state. UDisks and
-Samba closure still pending. Stop after fully accepted B02.
+EXACT NEXT: keyutils 1.6.3 official archive pinned from the frozen libblockdev
+dependency edge, SHA256 a61d5706136ae4c05bd48f86186bcfdbd88dd8bd5107e3e195c924cfc1b39bb4.
+No guest preparation or build yet. Review the Makefile and request-key config,
+then prepare an isolated writable build copy and stage the book's shared
+payload. Check actual guest lock, target/scratch and host reserves first.
+BLFS requires installed native kernel context for the upstream suite. Inspect
+the intended kernel config and isolate synthetic test keys before runtime tests.
+UDisks and Samba closure still pending. Stop after fully accepted B02.
 
 ### Previous Settings prerequisites
 

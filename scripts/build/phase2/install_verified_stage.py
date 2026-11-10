@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libatasmart': ('0.19', 'glibc (>= 2.44-1+toddy1), systemd (>= 261.2-1+toddy3)', 'libatasmart-0.19.tar.xz', 'usr/lib/pkgconfig/libatasmart.pc'),
     'libbytesize': ('2.12', 'glibc (>= 2.44-1+toddy1), gmp (= 6.3.0-1+toddy1), mpfr (= 4.2.2-1+toddy1), pcre2 (= 10.49-1+toddy1), python (>= 3.14), python (<< 3.15), pygments (= 2.20.0-1+toddy1)', 'libbytesize-2.12.tar.gz', 'usr/lib/pkgconfig/bytesize.pc'),
     'cups': ('2.4.19', 'glibc (>= 2.44-1+toddy1), gcc (= 16.2.0-1+toddy2), acl (= 2.4.0-1+toddy1), gnutls (= 3.8.13-1+toddy1), linux-pam (= 1.7.2-1+toddy2), libusb (= 1.0.30-1+toddy1), libxcrypt (= 4.5.2-1+toddy1), zlib (>= 1.3.2-1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3), shadow (>= 4.20.2-1)', 'cups-2.4.19-source.tar.gz', 'usr/lib/pkgconfig/cups.pc'),
     'mitkrb': ('1.22.2', 'glibc (>= 2.44-1+toddy1), e2fsprogs (= 1.47.4-1+toddy1), openssl (= 4.0.3-1+toddy1)', 'krb5-1.22.2.tar.gz', 'usr/lib/pkgconfig/krb5.pc'),
@@ -268,6 +269,7 @@ if __name__ == '__main__':
     if name=='libgtop' and (log/'libgtop-mode-3.job.json').exists():qualifier='libgtop-mode-3'
     if name=='mitkrb':qualifier='mitkrb-metadata-4'
     if name=='cups':qualifier='cups-layout-finish-2'
+    if name=='libatasmart':qualifier='libatasmart-probe-2'
     if name=='libbytesize':qualifier='libbytesize-finish-2'
     if name=='itstool' and (log/'itstool-recovery-2.job.json').exists():qualifier='itstool-recovery-2'
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
@@ -1274,6 +1276,9 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='libatasmart':
+        from qualify_libatasmart import qualify as qualify_libatasmart
+        qualify_libatasmart(ROOT)
     if name=='libbytesize':
         from qualify_libbytesize import qualify as qualify_libbytesize
         qualify_libbytesize(ROOT)
@@ -1698,6 +1703,13 @@ if __name__ == '__main__':
     if name=='lua':
         archives += [r['filename'] for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name'] in ('lua-shared-library-patch','lua-test-suite')]
     write_copyright(destination, name, archives)
+    if name=='libatasmart':
+        doc=destination/'usr/share/doc/libatasmart'
+        common=ROOT/'LICENSES/third-party/LGPL-2.1.txt'
+        assert hashlib.sha256(common.read_bytes()).hexdigest()=='9e9e8608c4cdda51a78cc3a385f4ec9a2e4c96d5ecad74ac8bca5fca3e563b7d'
+        shutil.copyfile(common,doc/'LGPL-2.1.txt')
+        with (doc/'copyright').open('ab') as notice:
+            notice.write(b'\nFull GNU LGPL 2.1 license text from the repository:\n'+common.read_bytes())
     if name=='gnome-terminal':
         doc=destination/'usr/share/doc/gnome-terminal';common=ROOT/'LICENSES/third-party/LGPL-2.1.txt'
         shutil.copyfile(common,doc/'LGPL-2.1.txt')

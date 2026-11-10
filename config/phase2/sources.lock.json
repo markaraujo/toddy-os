@@ -2854,6 +2854,18 @@
       "book_md5": "53afe2b155c36f658e121fe6def33e77",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "keyutils",
+      "version": "1.6.3",
+      "filename": "keyutils-1.6.3.tar.gz",
+      "url": "https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/keyutils-1.6.3.tar.gz",
+      "sha256": "a61d5706136ae4c05bd48f86186bcfdbd88dd8bd5107e3e195c924cfc1b39bb4",
+      "reference": "BLFS13.1-systemd general/keyutils.html",
+      "book_page_sha256": "aa9afd3e8b15defa90a3dd82b0a3eac1f2802ae127fbb2435689e73ccbbd3598",
+      "book_md5": "6b70b2b381c1b6d9adfaf66d5d3e7c00",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }
