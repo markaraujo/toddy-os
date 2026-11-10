@@ -1,0 +1,60 @@
+{
+  "scope": "Isolated UID101 stage only, NO native package/boot config/installed Systemd/desktop acceptance. Qualified original archive authenticated and all12023payload entries verified before modification;20module bytes unchanged. First own modules.order .ko assumption failed before backups; frozen list uses .o, exact20 final-suffix mapping corrected. Stage2 reuses extraction, no compiler/original extraction/native boot replay. Three candidate boot files and three original rollback artifacts plus README.",
+  "stage": {
+    "scope": "UID101 isolated native kernel stage only; authenticated original payload reused, candidate images and three foundation rollback artifacts,20 identical modules. No native install/boot-entry/installed Systemd/desktop acceptance.",
+    "stage_exit": 0,
+    "foundation_archive_sha256": "27d73576eb43dcfccb214b95913a2df2ef46763d25e6d85ef2b10e7118c1ee74",
+    "foundation_payload_entries": 12023,
+    "modules": {
+      "sound/core/snd-pcm.ko": "70f2052e5ea9296e9392c1822e62107b4657009d7924e3f163dd193fc444fa21",
+      "sound/core/snd-hwdep.ko": "f7fd57e2d876d317800b8ffecf95ebf9f52c5852b8caf39edf26f058fe4a563c",
+      "sound/hda/core/snd-intel-dspcfg.ko": "f56fa200efe2d7fec1e92bf4b7d189271416fae89929d8424fbe471272b7f290",
+      "sound/hda/core/snd-hda-core.ko": "47d940c55b57412e62d5a7837bd6a73a856bff71db99f38babe578fe0947d3f0",
+      "sound/hda/core/snd-intel-sdw-acpi.ko": "5057db77ff2e31056ab31a0d88591a5046d5c93081d47fde0e7036aaba964b24",
+      "sound/hda/codecs/snd-hda-codec-generic.ko": "c30206e1e97606aef324bc94937eaf2856c7d691b15d7ad030f2cc34cde21c73",
+      "sound/hda/controllers/snd-hda-intel.ko": "a36a40726a8d612c21568a43640ce595edaf3b4b0356674fa3dee3e3e987649a",
+      "sound/hda/common/snd-hda-codec.ko": "5f99df3b07ffec17a2b0aa5ef8f639f150c949a2520c5df2e23fbf1590e1453b",
+      "net/ipv6/sit.ko": "1a172402cb15ec593214020c26d8fbdf5dadede4682ee3f96c2cddaa770410c4",
+      "net/ipv6/netfilter/nf_reject_ipv6.ko": "1886be64486788bc726a41b2bf1cdf1a5d879dd8a823e4770dc2e1e2c3a183fd",
+      "net/ipv4/tunnel4.ko": "21c594b3e6359d6da2fdbb49f71dbafdbbfc9c3da4c01a33c736121374adec28",
+      "net/ipv4/ip_tunnel.ko": "eec04155e1297b451796d29990401316a42734750d95e1fb40dbd08ea7097399",
+      "net/ipv4/netfilter/nf_reject_ipv4.ko": "bea303f91ff59312279b789acca168e75cd12eacbf751dcd96829d6cb85657a5",
+      "net/netfilter/xt_mark.ko": "0a2d6f081f8dd28ba7259a6bdc3e7da7cf679dc6c491a906140006e8f54c4fc5",
+      "net/netfilter/xt_LOG.ko": "79e729c61fc8f37b9b8b1cade6bd5eab950772664be0964ac40ed9b852bf6f96",
+      "net/netfilter/xt_addrtype.ko": "1996654aefb67b665e2926bae09ec7485b81c19c4920930e83cb85217e2285b7",
+      "net/netfilter/xt_MASQUERADE.ko": "bfee53be15b6b61496b3f32e29252dadd21571fdda7b578ce4496c17388b8093",
+      "net/netfilter/nf_log_syslog.ko": "a13f2c9402d9f6eaeac589edb6c202c4b0cb0a4245fc5c4b8c2ddaeec0a759c6",
+      "drivers/net/dummy.ko": "eadf6e162cd0fa3cb8ec6c1a4ffa16fce22a16015e6374fbc5cd92f64caa44ab",
+      "drivers/thermal/intel/x86_pkg_temp_thermal.ko": "14f08b19f7ebaf5d85af199469974389602f926ff771c1dbd0d771b8f8edfa2f"
+    },
+    "backups": {
+      "boot/vmlinuz-7.1.8-toddy-foundation": "3ccb8a6c3f3e125542e3d6892e242af1d37e873833de27ee32e3951871a723a1",
+      "boot/System.map-7.1.8-toddy-foundation": "ae9fb5f1cc894eef4cdafef6db57daf0b3b31e589bb4c9d1d34bcec3f740bd16",
+      "boot/config-7.1.8-toddy-foundation": "3ad1bf1ce1e1a844ac35a5c0c9769536bff6e30d9ae75dd20ee2341a9f544e0e"
+    },
+    "candidate_artifacts": {
+      "arch/x86/boot/bzImage": "18c4d9e6a64554296d8e9a037c2383e7426a0cf155b6d757d0693fce0d087ad1",
+      "vmlinux": "6c295a43095f66dc009c5a1e4ed94da5657f12b59362be24e4aeace1d82716ca",
+      "System.map": "6a7bea1c8dc9ea89ec22e7732134b3cb555bf3cde0e610405458dc194d00bc7c",
+      ".config": "5de998e9f70642f0061b147ba847e935a38ed45d4a30c77983fdabcb27f70656"
+    },
+    "free_bytes": 240488448,
+    "stage_regular_files": 11261,
+    "stage_manifest_sha256": "e7f296df317f86b083c5ed87d99228649738dd2e48feab0498212d0bd699444d"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-kernel-landlock-stage-evidence.tar.gz",
+    "sha256": "ea67c110d0afcadb36c7b2ac2c84df61f420611ce4680718409ca0cb9125352f",
+    "members": [
+      "stage.json",
+      "guest/kernel-landlock-stage-1.exit",
+      "guest/kernel-landlock-stage-2-controller.log",
+      "guest/kernel-landlock-stage-2.log",
+      "guest/kernel-landlock-stage-2.job.json",
+      "guest/kernel-landlock-stage-1.job.json",
+      "guest/kernel-landlock-stage-1-controller.log",
+      "guest/kernel-landlock-stage-2.exit",
+      "guest/kernel-landlock-stage-1.log"
+    ]
+  }
+}

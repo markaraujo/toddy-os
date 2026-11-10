@@ -3230,3 +3230,8 @@ Private Linux7.1.8 Landlock+selected SECURITY_PATH compiled0 via preserved cache
 ### 2026-11-10 — B02 native Landlock BIOS/UEFI
 
 Actual Landlock candidate diagnostic BIOS+UEFI boots0/OOMfalse; both ABI9/UID101 rulesets2/allowed roundtrips4/denied reads4/writes4/creates4/fresh-process recoveries2/seccomp denials2/namespace/module insert-remove0. Complete token-bound serials; no target/builder/physical disk or network attached. All20 owned original module payloads byte-identical to candidate. Installed kernel/package/boot-entry/Systemd/desktop/ISO/physical acceptance still pending. RawSHAfebffec05ffb7abdbe70cba304d02503db4db85edbcb427bf614f1c6c133b61b. Next controlled native kernel stage/recovery/boot-entry revision before LocalSearch; all B02 then stop.
+
+
+### 2026-11-10 — B02 isolated kernel staging
+
+Kernel stage2 actual0 via UID101 isolation; original qualified archive/all12023payload entries authenticated,20module bytes identical. Candidate image/config/System.map plus three -foundation rollback artifacts retained. Own .ko modules.order assumption failed before backups; actual20 .o list corrected with exact final-suffix mapping, extraction reused/no compiler or native diagnostic replay. 11261 regular stage files. Native installation/boot-entry/installed Systemd/desktop acceptance pending. RawSHAea67c110d0afcadb36c7b2ac2c84df61f420611ce4680718409ca0cb9125352f. Next controlled native package promotion using verified scratch stage bind to preserve target reserve; separate toddy-boot-config recovery entry.

@@ -162,6 +162,13 @@ if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/linux-landlock-7.1.8 &&
     [[ $(stat -c %u:%a "$TODDY_WORK/private-overlay") == 0:700 ]]
     mount --bind "$TODDY_WORK/merged" "$root/build/merged"
     readonly_bind /mnt/lfs/sources/linux-7.1.8 "$root/src/cache"
+    # Expose only the already-qualified original package and its provenance for
+    # stage reuse, never the package database, full cache or signing material.
+    if [[ -f "$TODDY_INPUT/toddy-foundation-kernel.deb" &&
+          -f "$TODDY_INPUT/toddy-foundation-kernel.json" ]]; then
+        readonly_bind /var/cache/toddy/packages/linux-kernel_7.1.8-1_amd64.deb "$root/src/toddy-foundation-kernel.deb"
+        readonly_bind /var/log/toddy/packages/linux-kernel_7.1.8-1_amd64.json "$root/src/toddy-foundation-kernel.json"
+    fi
 fi
 mkdir -p "$TODDY_WORK/stage" "$TODDY_WORK/home"
 chown "$TODDY_UID:$TODDY_GID" "$TODDY_WORK/stage" "$TODDY_WORK/home"

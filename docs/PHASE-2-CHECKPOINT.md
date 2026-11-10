@@ -36,6 +36,26 @@ this supports retaining original module bytes and kernelrelease for recovery,
 but no installed rollback/boot-entry acceptance is claimed yet.
 NEVER replay native-kernel-landlock-1 or its preparation. Actual host folder
 .local/phase2/native-kernel-landlock-1, complete result.json/driver.exit0/serials.
+Kernel stage2PID22487 actual0, [proof](evidence/B02-kernel-landlock-stage.json).
+Authenticated original archive27d735... reused/all12023payload entries verified;
+all20module bytes unchanged. Three candidate image/config/System.map files plus
+three original -foundation rollback copies and README. Stage regular files11261;
+free240488448B before manifest output. RawSHAea67c110d0afcadb36c7b2ac2c84df61f420611ce4680718409ca0cb9125352f.
+Stage1PID22058 own .ko modules.order assumption failed before backups/manifest;
+actual source lists20 .o objects. Stage2 maps ONLY final .o→.ko/exact20set and
+reuses extraction; no archive extraction/compiler/native diagnostic replay.
+NEVER replay stage1/2 or original extraction. Current stage
+/mnt/lfs/sources/phase2/work/kernel-landlock-1/stage and kernel-stage-1.json.
+No native package/boot config/installed Systemd change. Future native promotion
+must avoid an unnecessary duplicate full stage on target root: use controlled
+bind of verified scratch stage under /mnt/lfs/sources/stage with unchanged full
+root transaction checks, stage ownership normalization/provenance. Measure actual
+archive/cache/installed backup space before committing; preserve reserves.
+Boot config owner is toddy-boot-config, /etc/toddy/grub.cfg conffile with
+/boot/grub/grub.cfg→../../etc/toddy/grub.cfg; do not cross kernel package ownership.
+Next implement qualifier/native package revision and separate owned recovery
+entry, then actual installed-system and rollback boot checks.
+
 EXACT NEXT: read install_verified_stage.py/stage_package.py and current H09
 boot ownership/config contract; prepare verified stage of current candidate
 with owned original kernel image/config/System.map retained as rollback artifacts.
@@ -124,6 +144,6 @@ failures. Concrete unblock actual virtual seat/input or new source-backed cause
 with complete reliable evidence. No fake focus/events/unsafe-mode/weakened hashes.
 Persistent .local/phase2/failures.json budgets survive compaction.
 
-Last published412ec479b786f13c8ed26d08e5253d24a8683073: all3CI success,
+Last published19723d195ccbd4a7c5c89bdd0bca8cba10835e13: all3CI success,
 exact publicHTTP200/indexSHA
-6a6737d46ad57e7cdd967cc2e2c198c4492a71843421504113017250d7d26478.
+5749b37fd1ab270e2b29fcfb2dde1625ac5f1fa4467b854dacd72345cca519cf.
