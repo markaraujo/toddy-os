@@ -40,7 +40,10 @@ def main():
     sys.path.insert(0,'/opt/toddy-build/scripts/build/phase2')
     from qualify_colord_gtk import qualify
     qualify(Path('/opt/toddy-build'))
-    native=json.loads(Path('/var/log/toddy/build/b02-colord-gtk-dependency-install-2.success.json').read_text());assert native['recipe_exit']==native['postcheck_exit']==0
+    receipts=[Path('/var/log/toddy/build')/(step+'.success.json') for step in ['b02-colord-gtk-dependency-install-2', 'b02-colord-gtk-install'] ]
+    receipt=next((p for p in receipts if p.is_file()),None);assert receipt is not None
+    native=json.loads(receipt.read_text());assert native['recipe_exit']==native['postcheck_exit']==0
+    assert subprocess.check_output(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Status} ${Version}','colord-gtk'],text=True)=='install ok installed 0.3.1-1+toddy2'
     parent=base/'toddy-editor-workers';assert parent.is_dir() and not parent.is_symlink()
     assert parent.stat().st_uid==0 and parent.stat().st_mode & 0o777==0o700
     worker=parent/'libgtop-1';worker.mkdir(mode=0o755);os.chown(worker,101,101)

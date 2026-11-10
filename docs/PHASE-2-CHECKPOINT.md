@@ -28,14 +28,22 @@ workstage/source/compiler/archive retained, compiler not rehashed by custody.
 All previous GOA/MBIM/Shell/Cracklib custody complete; never replay. Fixed target
 16GiB/host100GiB/cold100GiB+512MiB: recheck actual budgets before new writes.
 
-EXACT NEXT: inspect MIT Kerberos1.22.2 source patch application/library/tests/
-options and actual expansion/scratch budgets before guest preparation. Main source
-and ALL THREE required upstream/security/OpenSSL4 patches authenticated/pinned
-(.local/phase2/mitkrb-source.json and mitkrb-patches.json). Initial own frozen-XHTML
-href-whitespace parser failure resolved, no guest mutation. Patch source lock and
-SHA256 persisted; never refetch unchanged inputs. No guest MIT source/work/job.
-Use a shared readonly source alias/private Doxygen worker if actual expansion
-exceeds root headroom; preserve reserves, crypto tests and required security fixes.
+EXACT NEXT: implement MIT Kerberos1.22.2 isolated recipe/private worker and a
+shared readonly source alias. Main archive plus required upstream/security/
+OpenSSL4 patches pinned; [host-only patch preflight](evidence/B02-mitkrb-patch-preflight.json)
+actually applied all3 in book order/fuzz0 on a disposable source copy, original
+archive unchanged. Source40695769expanded bytes. No native compile/tests/runtime
+acceptance. Do not repeat fetch/host patch probe; reuse exact-input result.
+Read src/configure/library/crypto/test Makefiles and public API before guest prep.
+Keep all required fixes and core crypto tests; no owner credentials or external
+realm required for local cache/principal/refusal/recovery consumers. Source/test
+book flags include --with-system-et/ss, --with-system-verto=no, --disable-rpath.
+Extend the explicit source-alias allowlist with exact mitkrb1.22.2/krb5-1.22.2;
+sourceName mapping/required patch inputs still need implementation. No guest MIT
+source/work/job exists. Preserve existing target/scratch identities and reserves.
+Last verified resource snapshot19:39:50UTC: targetfree17227579392B,
+Doxygen scratch879505408B, host107736969216B (below cold107911053312B gate).
+Ordinary reserves met; no cold boot dispatched. Recheck before each operation.
 Control Center50.4 still needs MIT/UDisks/CUPS/Samba. Keep core panels; embedded
 libgxdp is in source, optional gmobile/malcontent and GTK-X11 unselected.
 No guest Control Center source/job; existing alias supports its49MB expansion.

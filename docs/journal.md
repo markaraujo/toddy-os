@@ -3353,3 +3353,14 @@ GIR raw EOT strict-XML1.0 limitation retained. ADR0212.
 promotion usr, exact archive/record/installed root0/original workstage retained.
 
 Next: frozen MIT Kerberos1.22.2 and all three required book patches; source review/isolated scratch capacity before guest preparation.
+
+### B02 exact Kerberos patch preflight — 2026-11-10
+
+Main1.22.2 and three required frozen book patches authenticated. Disposable host
+source application/fuzz0 passed,8+1+3 changed-file records retained in
+[evidence](evidence/B02-mitkrb-patch-preflight.json). Host-only, no native test claim.
+Source expansion40695769B requires private alias relative to measured target
+headroom. No live guest writer/job; next implement isolated recipe/API/crypto
+checks and exact source alias. Ordinary reserves met, cold host gate not met.
+Prepared worker prerequisites accept normal fresh success or historical recovery
+success while still requiring exact native installed versions; no replay.

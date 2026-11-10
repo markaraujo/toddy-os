@@ -1,0 +1,135 @@
+{
+  "scope": "Disposable host source application only, all3 exact frozen required patches in book order/fuzz0. No guest preparation/compiler/tests/runtime/package/security acceptance.",
+  "source": {
+    "name": "mitkrb",
+    "version": "1.22.2",
+    "filename": "krb5-1.22.2.tar.gz",
+    "url": "https://kerberos.org/dist/krb5/1.22/krb5-1.22.2.tar.gz",
+    "sha256": "3243ffbc8ea4d4ac22ddc7dd2a1dc54c57874c40648b60ff97009763554eaf13",
+    "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+    "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+    "book_md5": "42472b11771d074329e0cc776d2eb5fd",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "expanded_regular_bytes": 40695769,
+  "initial_regular_files": 4595,
+  "final_regular_files": 4595,
+  "patches": [
+    {
+      "patch": {
+        "name": "mitkrb-upstream-fix",
+        "version": "1.22.2",
+        "filename": "mitkrb-1.22.2-upstream_fix-1.patch",
+        "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-upstream_fix-1.patch",
+        "sha256": "91bed46e7c59b4bc27df659c13abd4514e456293717720e8545d7f8acad00a97",
+        "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+        "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+        "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+        "status": "source_verified"
+      },
+      "exit": 0,
+      "stdout": "patching file src/lib/krb5/ccache/ccbase.c\npatching file src/lib/krb5/os/expand_path.c\npatching file src/lib/krb5/os/locate_kdc.c\npatching file src/plugins/preauth/pkinit/pkinit_crypto.h\npatching file src/plugins/preauth/pkinit/pkinit_crypto_openssl.c\npatching file src/plugins/preauth/pkinit/pkinit_identity.c\npatching file src/plugins/preauth/pkinit/pkinit_matching.c\npatching file src/tests/responder.c\n",
+      "stderr": "",
+      "changed_files": [
+        {
+          "path": "src/lib/krb5/ccache/ccbase.c",
+          "before_sha256": "74b6be0836b7286c5eb55e02814bc102e0c40c4a330ad55659f8570c91ebd1d2",
+          "after_sha256": "de102208bceda5459a7c8178b13352a127a3b3d6aafdffe112eea4f89d07b1e1"
+        },
+        {
+          "path": "src/lib/krb5/os/expand_path.c",
+          "before_sha256": "a6c2016d9d5406d696c49c2258c95231c8c9982ba1228c9a1f7dbc0b0263e0ce",
+          "after_sha256": "445e0f6e4adab3ded41c155e31ca15e61ef8a45749887507befd1999ac13615b"
+        },
+        {
+          "path": "src/lib/krb5/os/locate_kdc.c",
+          "before_sha256": "3109260228c63eccfb384f75dd0f1cf38a23f78802fd48eaab3a693e3b3cd83f",
+          "after_sha256": "73683576371a6eb5213d249fe568d791d328ed9776413cd6fab28c7f4b34afb2"
+        },
+        {
+          "path": "src/plugins/preauth/pkinit/pkinit_crypto.h",
+          "before_sha256": "01acfaaf406c4d41b7544b7a09a476a4b7c36241cd38a4b83641a0f3080ae6d1",
+          "after_sha256": "62b41b4677a542fc8a59be2278c2929c96ec04e7902a7c7e9094563b0a61f6be"
+        },
+        {
+          "path": "src/plugins/preauth/pkinit/pkinit_crypto_openssl.c",
+          "before_sha256": "2dcf0402aeb04ac92dd2c05d37b0d1f813bb98c28d159b7456873c4b711fc393",
+          "after_sha256": "56c90a098ebd46e839209b7403a93fb5149fc3839d89fe932b21ee57f0a9dd4f"
+        },
+        {
+          "path": "src/plugins/preauth/pkinit/pkinit_identity.c",
+          "before_sha256": "7dca9bf5033e9527f0bf2b9bb00981f1fd8167a5cecd1ffd4da9fc7afd3863bd",
+          "after_sha256": "0b70f2ac415ac0c47f35a0ba10441c254cd8160820c1cbc37bec3139a573bfb2"
+        },
+        {
+          "path": "src/plugins/preauth/pkinit/pkinit_matching.c",
+          "before_sha256": "d8d56e676706e46899bf7e4e37e0f98c9e04ac0b8fb99221cede28ef171f943f",
+          "after_sha256": "37837d823f96a196a297cfcd6c8dc33b113e69e627360d0491480fb591b428cc"
+        },
+        {
+          "path": "src/tests/responder.c",
+          "before_sha256": "fc81893a1a8a9b1d35c4b6eef54491f36eb2d3e05365c2a8174285615c0c262d",
+          "after_sha256": "423cbc6fb692f543fff57cab35aa0517c37cab585a0136fce7e7ae4db8bf3b94"
+        }
+      ]
+    },
+    {
+      "patch": {
+        "name": "mitkrb-security-fix",
+        "version": "1.22.2",
+        "filename": "mitkrb-1.22.2-security_fix-1.patch",
+        "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-security_fix-1.patch",
+        "sha256": "fcab4e4117667f4ffde3733b00c47ea3da12a9a5355e6aa6e2b124a9543e6181",
+        "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+        "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+        "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+        "status": "source_verified"
+      },
+      "exit": 0,
+      "stdout": "patching file src/lib/gssapi/spnego/negoex_util.c\n",
+      "stderr": "",
+      "changed_files": [
+        {
+          "path": "src/lib/gssapi/spnego/negoex_util.c",
+          "before_sha256": "77fd81a155e966be7cb805fd203df4592c6594cb49c30807af7d99e60b6d2dae",
+          "after_sha256": "93bd813018af8dfd56a7634c43aceb0902f3716cd2d1a8d242da4a6c05877e47"
+        }
+      ]
+    },
+    {
+      "patch": {
+        "name": "mitkrb-openssl4-fixes",
+        "version": "1.22.2",
+        "filename": "mitkrb-1.22.2-openssl_4_fixes-1.patch",
+        "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-openssl_4_fixes-1.patch",
+        "sha256": "703f634a0731a0355079211593491f3e175acfce237ed92b97cd04bd1e21bcc1",
+        "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+        "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+        "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+        "status": "source_verified"
+      },
+      "exit": 0,
+      "stdout": "patching file src/plugins/tls/k5tls/openssl.c\npatching file .github/workflows/build.yml\npatching file src/plugins/preauth/pkinit/pkinit_crypto_openssl.c\npatching file src/plugins/tls/k5tls/openssl.c\n",
+      "stderr": "",
+      "changed_files": [
+        {
+          "path": ".github/workflows/build.yml",
+          "before_sha256": "f16b5e02c912ab85f0b6f08b232b0a77a00f014efde1249ca55bb14bb776ccea",
+          "after_sha256": "426c8f3fb4b74a29853a88ad961601312d800bce89a5352b58726d7521b057eb"
+        },
+        {
+          "path": "src/plugins/preauth/pkinit/pkinit_crypto_openssl.c",
+          "before_sha256": "56c90a098ebd46e839209b7403a93fb5149fc3839d89fe932b21ee57f0a9dd4f",
+          "after_sha256": "21d8dd3212f5e18996c288939a9a34017d09e539b3f6675fe3b2b49a13f97f78"
+        },
+        {
+          "path": "src/plugins/tls/k5tls/openssl.c",
+          "before_sha256": "858b793b789313451efaf7a56177a979de5461f3e3b8e25314f0cc34987fbcf5",
+          "after_sha256": "6d78334cb6a3d69f59259ec10e9ee71deca9c308c5fe90e68b57749106d49def"
+        }
+      ]
+    }
+  ],
+  "original_archive_unchanged": true
+}
