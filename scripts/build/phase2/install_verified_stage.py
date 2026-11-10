@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gnome-settings-daemon': ('50.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gnome-desktop (= 44.5-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1), geocode-glib (= 3.26.4-1+toddy1), libgweather (= 4.6.0-1+toddy1), geoclue (= 2.8.2-1+toddy1), libcanberra (= 0.30-1+toddy2), libnotify (= 0.8.8-1+toddy1), pulseaudio (= 17.0-1+toddy2), polkit (= 127-1+toddy1), upower (= 1.91.3-1+toddy1), systemd (>= 261.2-1+toddy3), libgudev (= 238-1+toddy1), gcr (= 4.4.0.1-1+toddy1), colord (= 1.4.8-1+toddy1), networkmanager (= 1.58.1-1+toddy1), alsa-lib (= 1.2.16.1-1+toddy1)', 'gnome-settings-daemon-50.1.tar.xz', 'usr/lib/pkgconfig/gnome-settings-daemon.pc'),
     'gdm': ('50.2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libgudev (= 238-1+toddy1), accountsservice (= 26.27.3-1+toddy1), polkit (= 127-1+toddy1), systemd (>= 261.2-1+toddy3), linux-pam (= 1.7.2-1+toddy2), toddy-login-policy (= 0.1.0-1+toddy1), dconf (= 0.49.0-1+toddy1), json-glib (= 1.10.8-1+toddy1), dbus (>= 1.16.2-1)', 'gdm-50.2.tar.xz', 'usr/lib/pkgconfig/gdm.pc'),
     'libnma': ('1.10.6', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy7), gtk3 (>= 3.24.52-1+toddy2), networkmanager (= 1.58.1-1+toddy1), gcr (= 4.4.0.1-1+toddy1), iso-codes (= 4.20.1-1+toddy1)', 'libnma-1.10.6.tar.xz', 'usr/lib/pkgconfig/libnma-gtk4.pc'),
     'networkmanager': ('1.58.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libndp (= 1.9-1+toddy1), gnutls (= 3.8.13-1+toddy1), libpsl (= 0.23.3-1+toddy1), curl (>= 8.23.0-1), readline (>= 8.3-1), util-linux (>= 2.42.4-1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3), polkit (= 127-1+toddy1)', 'NetworkManager-1.58.1.tar.xz', 'usr/lib/pkgconfig/libnm.pc'),
@@ -1208,6 +1209,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='gnome-settings-daemon':
+        from qualify_gnome_settings_daemon import qualify as qualify_gnome_settings_daemon
+        qualify_gnome_settings_daemon(ROOT)
     if name=='gdm':
         from qualify_gdm import qualify as qualify_gdm
         qualify_gdm(ROOT)
@@ -1489,7 +1493,7 @@ if __name__ == '__main__':
         for relative,row in before['entries'].items():
             if relative.startswith('etc/') and 'sha256' in row: conffiles+=['--conffile','/'+relative]
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,
-                    version+('-1+toddy2' if name=='linux-pam' else '-1+toddy1'), str(destination), *source_args,
+                    version+('-1+toddy2' if name in ('linux-pam','gnome-settings-daemon') else '-1+toddy1'), str(destination), *source_args,
                     '--recipe', 'scripts/build/phase2/'+name+'-install.sh',
                     '--depends', depends, '--install', *conffiles,
                     *(['--architecture','all'] if name=='unicode-ucd' else [])], cwd=ROOT, check=True)

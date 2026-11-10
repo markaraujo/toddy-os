@@ -2599,7 +2599,20 @@
       "name": "gnome-settings-daemon",
       "version": "50.1",
       "license": "LicenseRef-gnome-settings-daemon-per-file",
-      "evidence": "Primary authenticated root notices: GPL2 and LGPL2.1. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+      "evidence": "Exact GPL2/LGPL2.1 named source notices and selected C/header notices retained, including bundled GVC. Actual selected Linux build/original11drivers/private26power cases passed; native packaging and real plugin/stock schema/GNOME/hardware scopes remain distinct.",
+      "extra_license_headers": {
+        "gnome-settings-daemon-50.1.tar.xz": {
+          "prefixes": [
+            "gnome-settings-daemon/",
+            "plugins/",
+            "subprojects/gvc/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     },
     {
       "name": "gnome-keyring",

@@ -1,0 +1,301 @@
+{
+  "scope": "Owned selected Linux SettingsDaemon50.1toddy2, actual11original drivers incl nine private DBus/mock power programs26cases and two core C drivers,134ELFs/156stagefiles; native installed three CLI/private lib and UID101 private24schema/enum refusal/memory reset/SDK0. Actual default stock cache/plugin/hardware/display/audio/power/GNOME acceptance pending. Optional CUPS/WWAN/XWayland omitted; no service manually activated by postcheck.",
+  "source": {
+    "name": "gnome-settings-daemon",
+    "version": "50.1",
+    "filename": "gnome-settings-daemon-50.1.tar.xz",
+    "url": "https://download.gnome.org/sources/gnome-settings-daemon/50/gnome-settings-daemon-50.1.tar.xz",
+    "sha256": "dd2c9730914f0ececa0229dd8a8c2940a57ddeb0802434558d4b164d79cfe05c",
+    "upstream_sha256_url": "https://download.gnome.org/sources/gnome-settings-daemon/50/gnome-settings-daemon-50.1.sha256sum",
+    "upstream_sha256_file_sha256": "2f12c736849cb23925c4984169f087cd27ec9311995c574e1b2dc987dc323a08",
+    "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Frozen full Linux Systemd/ALSA/gudev/NM/rfkill/Gcr4/smartcard/colord/USB-protection profile; optional CUPS/WWAN/XWayland omitted. Original programs retain exact results and fixture scopes; own private compiled-schema/memory reset/enum refusal and three CLI help checks only. No stock cache/native service/power/audio/display/hardware/GNOME acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "gnome-settings-daemon:test-tz-parsing",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gnome-settings-daemon:gcm-self-test",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gnome-settings-daemon:test-power ScreensaverNoblank",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gnome-settings-daemon:test-power Battery",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gnome-settings-daemon:test-power Screensaver",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gnome-settings-daemon:test-power Lid",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gnome-settings-daemon:test-power Dim",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gnome-settings-daemon:test-power BatteryLevels",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gnome-settings-daemon:test-power BrightnessStep",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gnome-settings-daemon:test-power Brightness",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gnome-settings-daemon:test-power Unidle",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "consumer": {
+      "private_schema_count": 24,
+      "typed_color_boolean_uint": true,
+      "invalid_power_enum_refused": true,
+      "memory_settings_reset_recovery_cycles": 2,
+      "stock_schema_cache_or_actual_services_display_audio_power_tested": false
+    },
+    "artifacts_count": 134,
+    "artifacts_manifest_sha256": "0c01901a9f807221e7aeaad148bc8422159eed80501d250f60e1c479d0258b68",
+    "stage_sha256_count": 156,
+    "stage_sha256_manifest_sha256": "9d2e96bdf08144089ce42210b314ec540236a07909de29d69df4b567d81fb972"
+  },
+  "original_power_case_counts": [
+    {
+      "name": "gnome-settings-daemon:test-power ScreensaverNoblank",
+      "cases": 3
+    },
+    {
+      "name": "gnome-settings-daemon:test-power Battery",
+      "cases": 2
+    },
+    {
+      "name": "gnome-settings-daemon:test-power Screensaver",
+      "cases": 2
+    },
+    {
+      "name": "gnome-settings-daemon:test-power Lid",
+      "cases": 3
+    },
+    {
+      "name": "gnome-settings-daemon:test-power Dim",
+      "cases": 2
+    },
+    {
+      "name": "gnome-settings-daemon:test-power BatteryLevels",
+      "cases": 7
+    },
+    {
+      "name": "gnome-settings-daemon:test-power BrightnessStep",
+      "cases": 1
+    },
+    {
+      "name": "gnome-settings-daemon:test-power Brightness",
+      "cases": 2
+    },
+    {
+      "name": "gnome-settings-daemon:test-power Unidle",
+      "cases": 4
+    }
+  ],
+  "initial_unpacked_dependency_failure": {
+    "step": "b02-gnome-settings-daemon-install",
+    "started": "2026-11-10T02:55:34.318695+00:00",
+    "recipe_sha256": "1a0b4f4d002ebd4af15519b7434006bd4afda70194a095c339a745cdb877cb0e",
+    "postcheck_sha256": "adbbd0ca85d9dfe629dd91f170b3c15d4de07669a0266563301985d7e8fc726f",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "0bd1d15174cbcdd4b6be4e7468378818f003f78a152cf9cb596b9ec0c658627f",
+    "recipe_pid": 5897,
+    "recipe_pgid": 5897,
+    "recipe_exit": 1,
+    "postcheck_exit": null,
+    "finished": "2026-11-10T02:55:52.031414+00:00",
+    "changed_paths": 246,
+    "log_sha256": "cdddd2c83cb0004141ddb53fca804bca3f4a8cd857f0f0e0655cb04174fe0f82",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "627e768e9bade5335675c01180e507d8f7750e193628f0f8d9f1705570de5dd3"
+  },
+  "metadata_only_transaction": {
+    "step": "b02-gnome-settings-daemon-metadata-2",
+    "started": "2026-11-10T03:00:38.215588+00:00",
+    "recipe_sha256": "dbf055828c1580e05580e586959905bd5abc3ccf4ab2cbd0c30a74306123a4a7",
+    "postcheck_sha256": "b6189ebc93d24de18279b011ab7457fb6fce57828531945a545fe2cd22661cca",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "0bd1d15174cbcdd4b6be4e7468378818f003f78a152cf9cb596b9ec0c658627f",
+    "recipe_pid": 6324,
+    "recipe_pgid": 6324,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T03:00:55.591601+00:00",
+    "changed_paths": 3,
+    "log_sha256": "e94d6beffd0ca28857266858873524064ed7c6b8d59ae51d0421627b3b045c6d",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "009819e6a14bb0f7fd8bada95aa69228c816109ace41d7390011432506c601bc"
+  },
+  "metadata_recovery": {
+    "state": "complete",
+    "scope": "Correct only two native dependency revisions, existing same upstream libraries retained. All458payload entries must remain identical; no compiler/original/stage replay.",
+    "old_version": "50.1-1+toddy1",
+    "new_version": "50.1-1+toddy2",
+    "old_archive_sha256": "e9ad0df678c592c2c738597b1c39faecd0c74b0de00cf65cf8b2c0638ee7c511",
+    "old_record_sha256": "5847d2f47ac364c62357e988b2135a4b5918cd3003b1c3bd5f32880ce068dc2a",
+    "new_depends": "glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gnome-desktop (= 44.5-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1), geocode-glib (= 3.26.4-1+toddy1), libgweather (= 4.6.0-1+toddy1), geoclue (= 2.8.2-1+toddy1), libcanberra (= 0.30-1+toddy2), libnotify (= 0.8.8-1+toddy1), pulseaudio (= 17.0-1+toddy2), polkit (= 127-1+toddy1), upower (= 1.91.3-1+toddy1), systemd (>= 261.2-1+toddy3), libgudev (= 238-1+toddy1), gcr (= 4.4.0.1-1+toddy1), colord (= 1.4.8-1+toddy1), networkmanager (= 1.58.1-1+toddy1), alsa-lib (= 1.2.16.1-1+toddy1)",
+    "new_archive_sha256": "6b88d2a38b729cb8dabe5b36146563e332b6bdd35a0f395d705a7c0a384a2088",
+    "unchanged_payload_entries": 458
+  },
+  "package": {
+    "name": "gnome-settings-daemon",
+    "version": "50.1-1+toddy2",
+    "archive_sha256": "6b88d2a38b729cb8dabe5b36146563e332b6bdd35a0f395d705a7c0a384a2088",
+    "recipe_sha256": "60a61ba267c93cc67f5a02d314ce62b5b4efe86896baf4946aea3c788f77ad55",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "gnome-settings-daemon",
+        "version": "50.1",
+        "filename": "gnome-settings-daemon-50.1.tar.xz",
+        "url": "https://download.gnome.org/sources/gnome-settings-daemon/50/gnome-settings-daemon-50.1.tar.xz",
+        "sha256": "dd2c9730914f0ececa0229dd8a8c2940a57ddeb0802434558d4b164d79cfe05c",
+        "upstream_sha256_url": "https://download.gnome.org/sources/gnome-settings-daemon/50/gnome-settings-daemon-50.1.sha256sum",
+        "upstream_sha256_file_sha256": "2f12c736849cb23925c4984169f087cd27ec9311995c574e1b2dc987dc323a08",
+        "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "009819e6a14bb0f7fd8bada95aa69228c816109ace41d7390011432506c601bc",
+    "payload_count": 458,
+    "payload_manifest_sha256": "4e5d76c2e6479758b9b8b335a22a89a50d7cdd51371cd52efe91347b990498d0"
+  },
+  "installed_consumer": {
+    "scope": "Owned selected Linux Systemd/ALSA/gudev/NM/rfkill/Gcr4/smartcard/colord/USB protection plugin executables/private library/SDK. Actual three installed CLI/private library resolution and UID101 private24schema/memory enum refusal/reset0; stock schema union and real plugin/hardware/audio/power/GNOME acceptance pending. No service manually started by this check.",
+    "consumer": {
+      "private_schema_count": 24,
+      "typed_color_boolean_uint": true,
+      "invalid_power_enum_refused": true,
+      "memory_settings_reset_recovery_cycles": 2,
+      "stock_schema_cache_or_actual_services_display_audio_power_tested": false
+    },
+    "installed_CLI_help": [
+      "color",
+      "power",
+      "media-keys"
+    ],
+    "private_libgsd_resolved": true,
+    "stock_schema_cache_pending": true,
+    "optional_omissions": [
+      "CUPS",
+      "WWAN",
+      "XWayland"
+    ]
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gnome-settings-daemon-install-evidence.tar.gz",
+    "sha256": "135f82efe6a9e8e3e9e3a015a3e09dc3342fd3ac09ea323dd60d5ab77f713c98",
+    "members": [
+      "build/b02-gnome-settings-daemon-install.failed.json",
+      "build/b02-gnome-settings-daemon-install.log",
+      "build/b02-gnome-settings-daemon-install.manifest.json",
+      "build/b02-gnome-settings-daemon-metadata-2.log",
+      "build/b02-gnome-settings-daemon-metadata-2.manifest.json",
+      "build/b02-gnome-settings-daemon-metadata-2.success.json",
+      "metadata/gnome-settings-daemon_50.1-1+toddy1_amd64.json",
+      "metadata/gnome-settings-daemon_50.1-1+toddy2_amd64.json",
+      "phase2/b02-gnome-settings-daemon-install-controller.log",
+      "phase2/b02-gnome-settings-daemon-install-timing.json",
+      "phase2/b02-gnome-settings-daemon-metadata-2-controller.log",
+      "phase2/b02-gnome-settings-daemon-metadata-2-timing.json",
+      "phase2/gnome-settings-daemon-1-controller.log",
+      "phase2/gnome-settings-daemon-1.exit",
+      "phase2/gnome-settings-daemon-1.job.json",
+      "phase2/gnome-settings-daemon-1.log",
+      "phase2/gnome-settings-daemon-installed-consumer.json",
+      "phase2/gnome-settings-daemon-stage.json",
+      "phase2/gsd-metadata-recovery-2.json",
+      "work/compile/meson-logs/testlog.json",
+      "work/native-consumer.json",
+      "work/original-registered-tests.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}

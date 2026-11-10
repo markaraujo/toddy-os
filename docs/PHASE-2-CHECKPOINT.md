@@ -8,7 +8,26 @@ No complete native GNOME/login/basic apps or Phase2 ISO exists yet.
 
 ## Current slice and exact next action
 
-Current slice: GDM50.2 OWNED; no active guest/native writer. Native package
+Current slice: SettingsDaemon50.1 OWNED native50.1-1+toddy2; no active writer.
+Original compile/stage jobgnome-settings-daemon-1 terminal0:134ELFs/156files, all11
+original drivers0 incl nine private DBus/mock power programs26cases/no skips;
+two C color/timezone programs0. Own24schema private memory enum refusal/reset/
+three CLI help0. Native first package unpacked458entries but dependencies incorrectly
+audio toddy1; exact actual already-qualified Canberra/Pulse revisions are toddy2.
+Metadata-only2 recipe/post0/0,3changedpaths/ALL458payload entries identical; no
+library downgrade/upgrade or force-depends, compiler/original/stage replay.
+ArchiveSHA6b88d2a38b729cb8dabe5b36146563e332b6bdd35a0f395d705a7c0a384a2088; old
+e9ad0df678c592c2c738597b1c39faecd0c74b0de00cf65cf8b2c0638ee7c511 retained.
+Actual installed private libgsd/three CLI/UID101 private24schema/SDK/APT0.
+[Proof](evidence/B02-gnome-settings-daemon-install.json), ADR0181/rawSHA
+135f82efe6a9e8e3e9e3a015a3e09dc3342fd3ac09ea323dd60d5ab77f713c98.
+Inputgnome-settings-daemon-50.1/workgnome-settings-daemon-1, sourceSHA
+dd2c9730914f0ececa0229dd8a8c2940a57ddeb0802434558d4b164d79cfe05c.
+Full selected Linux Systemd/ALSA/gudev/NM/rfkill/Gcr4/smartcard/colord/USB profile;
+only supported optional CUPS/WWAN/XWayland omitted. No stock cache or actual
+plugin/hardware/power/audio/display/desktop acceptance. NEVER repeat metadata2.
+
+GDM50.2 OWNED. Native package
 installed588entries/archiveSHA520670ee20a2f70cd4b66411e878c0190ca2d3522392e7f76a02aa22cc512adb;
 initial wrapper127 missing target sysusers executable. Actual group absent before
 group-init2 recipe/post0/0,5changedpaths;588payload/archive and passwd/shadow
@@ -30,14 +49,11 @@ restored; boot e540bdef-376f-46ae-9527-58d9641af256. Native context
 acceptance transferred under idle lock to
 `/var/log/toddy/phase2/login-policy-native-accepted-1.json` (not runtime credentials).
 
-Exact next: selected SettingsDaemon50.1 source/options (host review saved
-`.local/phase2/gsd-{meson.build,meson_options.txt}`), required owned Pulse mainloop/
-GNOME Desktop4/NM/GWeather/GeoClue/Polkit/UPower/etc preflight, one isolated recipe/
-input/build. Keep mandatory Linux ALSA/gudev/NM/rfkill and supported selected
-features, omit only documented optional cellular/CUPS/XWayland paths if absent.
-Then Shell50.4 and one controlled stock GTK-owned union for NMA/GDM/GSD/Shell
-schemas preserving prior82schemas/623keys/preferences. Actual native GNOME/login/
-apps/offline/focus/metrics gates remain pending; B02 not near final acceptance.
+Exact next: selected Shell50.4 actual source/options/dependency preflight, one
+isolated input/build; no general replan. Then controlled GTK stock schema union
+for NMA/GDM/GSD/Shell preserving82schemas/623keys/preferences, actual native GDM/
+userdb/PAM/keyring/permission/GNOME/login/basic apps/offline/focus/resource gates.
+Measure target/host free space before allocations; preserve16GiB/100GiB reserves.
 
 GDM50.2 build/original/stage passed; NO active guest writer. `gdm-1` controller
 PID523211 terminal0,79compiled ELFs/218staged regular files. Actual original
@@ -133,3 +149,14 @@ make check passed291tests; `.local/phase2/gdm-stage-final-check.log`; staged sec
 scan clean. No further test run for this publication-only checkpoint update.
 No host installation, physical disk/global security weakening/paid services/new
 agents/model switching/workstation RAG. Finish ALL B02, then requested stop.
+
+Publication1e8aa757c53f8c683a196ebec4fab6ea1851dc8f: safety42741471556/
+planning42741471240/Pages42741471251 allsuccess; exact HTTP200/publicSHA
+f4721a094a5f8fbfde21d982dce943d81138b4dadf6c452aeeb72ce42844db9f.
+Latest GDM commit8b31fe26fb3164996d0aeac43585dbbaed1841b3 pushed; planning
+42744132649/safety42744132646 success, Pages42744132780 previously in progress.
+Verify terminal and exact page once complete; no unchanged polling.
+
+GDM publication8b31fe26fb3164996d0aeac43585dbbaed1841b3: planning42744132649/
+safety42744132646/Pages42744132780 allsuccess; actual exact HTTP200/publicSHA
+e3b4fb8e0ebff32173966d3e6a4d6ddf5e0ef40ebc105230ddf31ea78373f03a.

@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T02:36:46.469617+00:00
+Updated: 2026-11-10T03:06:11.405290+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T02:36:46.469617+00:00
+Last verified: 2026-11-10T03:06:11.405290+00:00
 
 Verified:
 
@@ -122,8 +122,9 @@ Verified:
 - Owned additive toddy-login-policy0.1.0: four shared PAM conffiles installed2/post0/0,15paths/14entries; prior other/Polkit/systemd-user and modules unchanged. Three-client/14artifact native fixture prepared; actual auth/password/logind/session/recovery gate pending, no GDM/login claim. ADR0179.
 - Actual owned shared login policy native kernel7.1.8/Systemd PID1:15expected auth/account/password/permission/Stop/recovery outcomes and two PAM/logind/user-bus cycles0; all14bound policy/module hashes unchanged, synthetic user/wrappers removed. Child exit0/OOMfalse/backing unchanged; builder/six existing scratch/source bind restored. No GDM/greeter/keyring/GUI/physical acceptance; ADR0179.
 - Owned GDM50.2 full Wayland/PAM/Systemd/libgdm/GI:588entries native install0 then missing optional sysusers wrapper127; group-only recovery2/post0/0,5paths/588payload+archive unchanged/passwd+shadow unchanged. Modern dynamic userdb/group21/no static UID, actual UID101 C/GI/SDK/CLI0. No daemon/greeter/keyring/login/GUI acceptance, ADR0180.
+- Owned SettingsDaemon50.1toddy2:11original drivers/no skips incl9private power programs26cases,134ELFs/156files. First package dependency revision error recovered metadata-only0/0,3paths/458payload identical. Actual installed private lib/three CLI/UID101 private24schema enum refusal/reset/SDK0. Stock cache/real plugin/audio/power/hardware/GNOME pending, ADR0181.
 
-Running: B02: shared PAM native gate and GDM package/group/SDK verified; selected SettingsDaemon/Shell/stock schema union and actual GNOME/login/apps next. Complete ALL B02 then stop.
+Running: B02: owned GDM/SettingsDaemon and shared PAM native gate verified in bounded scopes; Shell50.4/controlled stock schema union then actual GNOME/login/apps/offline/focus/resource gates next. Complete ALL B02 then stop.
 
 Remaining:
 
