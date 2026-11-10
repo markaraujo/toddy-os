@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gexiv2': ('0.16.2', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), exiv2 (= 0.28.8-1+toddy1), pygobject (= 3.56.3-1+toddy1), python (>= 3.14), python (<< 3.15)', 'gexiv2-0.16.2.tar.xz', 'usr/lib/pkgconfig/gexiv2-0.16.pc'),
     'exiv2': ('0.28.8', 'glibc (= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), zlib (= 1.3.2-1+toddy1), expat (= 2.10.0-1+toddy1), brotli (= 1.2.0-1+toddy1), inih (= 62-1+toddy1)', 'exiv2-0.28.8.tar.gz', 'usr/lib/pkgconfig/exiv2.pc'),
     'brotli': ('1.2.0', 'glibc (>= 2.44-1+toddy1)', 'brotli-1.2.0.tar.gz', 'usr/lib/pkgconfig/libbrotlidec.pc'),
     'inih': ('62', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2)', 'inih-r62.tar.gz', 'usr/lib/pkgconfig/inih.pc'),
@@ -273,6 +274,7 @@ if __name__ == '__main__':
     if name=='libgweather':qualifier='libgweather-stage-2'
     if name=='libnma':qualifier='libnma-stage-2'
     if name=='gnome-shell' and (log/'gnome-shell-probe-2.exit').exists():qualifier='gnome-shell-probe-2'
+    if name=='gexiv2' and (log/'gexiv2-probe-2.exit').exists():qualifier='gexiv2-probe-2'
     if name=='exiv2':qualifier='exiv2-probe-7'
     if name=='inih' and (log/'inih-collect-2.exit').exists():qualifier='inih-collect-2'
     if name=='blueprint-compiler':qualifier='blueprint-compiler-finish-2'
@@ -1236,6 +1238,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='gexiv2':
+        from qualify_gexiv2 import qualify as qualify_gexiv2
+        qualify_gexiv2(ROOT)
     if name=='exiv2':
         from qualify_exiv2 import qualify as qualify_exiv2
         qualify_exiv2(ROOT)
@@ -1527,6 +1532,9 @@ if __name__ == '__main__':
     if name=='ibus':
         doc=destination/'usr/share/doc/ibus';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('Frozen official tag1.5.34 embeds1.5.34-rc2; native1.5.34~rc2-1+toddy1 preserves and discloses source version. Minimal GTK3/4+Wayland/GI/Unicode/setup/UI profile; XIM/X11 agent, GTK2, Python2, appindicator and optional emoji dict omitted. Seven portable original programs and UTF8/key parser refusal/recovery qualified; actual service, graphical keyboard and shared IM/schema caches remain separate pending gates. Full source/UCD/Unicode3 notices retained. ADR0169 records backend guard and original Xlib fixture link correction.\n')
+    if name=='gexiv2':
+        doc=destination/'usr/share/doc/gexiv2';doc.mkdir(parents=True,exist_ok=True)
+        (doc/'README.Toddy').write_text('Frozen GExiv2 0.16.2 shared GObject/GI/Vala/Python/tools with owned Exiv2 0.28.8. All3 original C/Python programs0 and own real PNG UTF8 metadata/edit/reset/pixel retention/malformed refusal/recovery. XMP title readback includes language marker. No LocalSearch/Nautilus/desktop acceptance.\n')
     if name=='exiv2':
         doc=destination/'usr/share/doc/exiv2';doc.mkdir(parents=True,exist_ok=True)
         from qualify_exiv2 import qualify as qualify_exiv2

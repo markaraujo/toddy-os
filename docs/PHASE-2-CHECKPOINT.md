@@ -8,6 +8,32 @@ No accepted complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current state and exact next action
 
+Current verified slice: GExiv2 0.16.2 OWNED (ADR0204).
+Build1PID17200 actual1 AFTER compile/stage/all3 original C/Python programs0;
+own XMP title expected plain text, readonly actual GI confirmed lang="x-default"
+plus intact UTF8 value. Probe2PID18042 actual0, new own consumer2 only; PNG UTF8
+metadata write/read/reset/image chunks retained/malformed JPEG refusal/two recoveries.
+All22ELFs/16stagefiles unchanged, no original/compiler/stage replay. Native install
+PID18349 recipe/post0/0,32paths/42entries; installed UID101/private-devices/no-route
+same consumer/stage bytes/pkg-config/shared ABI/APT0. No active guest writer.
+Packagef16e92b07c7a4c9ad29d1562c4af08c0426b0809b268124fa0348a2600151727;
+rawf1af7b9b425d30e05adeeeea8b591dac3137e4ce3206b506630c61427a72fca3.
+[Native proof](evidence/B02-gexiv2-install.json). NEVER replay accepted work.
+
+EXACT NEXT: deliver current GExiv2 slice, then attach already-prepared guarded
+768MiB kernel scratch via controlled idle builder restart. Verify native job
+terminal/single-writer lock and mounts, record new recovery receipt; restore ONLY
+existing six scratch/Systemd source/companion binds with new receipts. Before
+any mkfs, exact virtual serial/size/blank state and intendedUUID must be recorded,
+uncertain state reconciled. No physical disk. Prepare real kernel metadata-COW
+profile preserving immutable source/cache; Landlock-only same-version config
+revision/native boot/allow-deny-recovery REQUIRED. Then LocalSearch3.11.1; all
+metadata prerequisites now owned. Nautilus requires real LocalSearch executable
+for headless configuration and launch. Complete ALL B02 then stop.
+
+Last delivery6f26d5a701df641a8e47c279da0af6ede96cfe3d all3CI success and exact
+publicHTTP200/indexSHAc4935d3b5d7eabcd8c29554f0cd2b31ffdbb7a9ef92b7e332d283af7f9234775.
+
 Current verified slice: Brotli1.2.0/INIh62/Exiv20.28.8 OWNED; no active guest writer.
 Brotli build1PID8227 actual0/12original cases/42ELFs/17stagefiles; native8817 recipe/
 post0/0,35paths/40entries. INIh build1PID9480 all16originals/stage/consumer passed,

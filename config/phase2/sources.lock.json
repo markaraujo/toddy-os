@@ -2493,6 +2493,18 @@
       "book_md5": "c0c6982525958a0376a3cb5bfbee14a0",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "gexiv2",
+      "version": "0.16.2",
+      "filename": "gexiv2-0.16.2.tar.xz",
+      "url": "https://download.gnome.org/sources/gexiv2/0.16/gexiv2-0.16.2.tar.xz",
+      "sha256": "aad9e240fdffbe85e390f46ee0a567e251baea5c29c3d8690260388683dc8d0a",
+      "reference": "BLFS13.1-systemd gnome/gexiv2.html",
+      "book_page_sha256": "c5bd2daec9a2ae00bdfb03d8fe4bed5cfb4471c1c2426021e3358bf1c7267138",
+      "book_md5": "ed530cddf2f30e1903e983e5542262f9",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }
