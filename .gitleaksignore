@@ -81,3 +81,17 @@ docs/evidence/B02-librest-stage.json:generic-api-key:342
 docs/evidence/B02-librest-stage.json:generic-api-key:343
 docs/evidence/B02-librest-stage.json:generic-api-key:353
 docs/evidence/B02-librest-stage.json:generic-api-key:355
+
+# Exact committed Settings prerequisite hashes/prose reviewed above.
+15c34574b0875ce0efac08f6458eb527f1554a87:scripts/build/phase2/librest-check.sh:generic-api-key:31
+15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-install.json:generic-api-key:35
+15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:249
+15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:258
+15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:265
+15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:268
+15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:279
+15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:338
+15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:342
+15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:343
+15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:353
+15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:355
