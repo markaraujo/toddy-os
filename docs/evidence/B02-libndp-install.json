@@ -1,0 +1,106 @@
+{
+  "scope": "Owned libndp1.9 required by NetworkManager: no upstream test suite; actual installed UID101 five-message typed API/wildcard refusal/payload clamp/two-cycle recovery and SDK/CLI. No packet/raw-socket/device/NetworkManager acceptance.",
+  "source": {
+    "name": "libndp",
+    "version": "1.9",
+    "filename": "libndp-1.9.tar.gz",
+    "url": "https://ftp.osuosl.org/pub/blfs/conglomeration/libndp/libndp-1.9.tar.gz",
+    "upstream_url": "http://libndp.org/files/libndp-1.9.tar.gz",
+    "sha256": "a8ab214e01dc3a9b615276905395637f391298c84d77651f0cbf0b1082dd2dd4",
+    "reference": "BLFS13.1-systemd basicnet/libndp.html",
+    "book_page_sha256": "983fc9f487777dafdca66f2baad02a7f96223992c53cd9beff0dd6a2fb4fedd5",
+    "book_md5": "9d486750569e7025e5d0afdcc509b93c",
+    "integrity": "Trusted BLFS OSU mirror over validated HTTPS, frozen upstream HTTPS hostname certificate mismatch preserved; matched frozen book legacy MD5 and SHA256 pinned before guest extraction/use; no signature claim",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Frozen BLFS13.1 libndp1.9 for required NetworkManager dependency. Upstream has no test suite; make check exit0 is build plumbing only. Actual five NDP message types/wildcard refusal/payload clamp/lifecycle recovery C consumer, no packets, device/network/NetworkManager acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_test_suite": "absent in frozen source/book; no test pass claimed",
+    "make_check_exit": 0,
+    "consumer": {
+      "message_types": 5,
+      "cycles": 2,
+      "wildcard_creation_refused": true,
+      "payload_length_clamp_and_recovery": true,
+      "actual_NDP_packets_sent": false
+    },
+    "artifacts_count": 4,
+    "artifacts_manifest_sha256": "c8420c120ff6c7b4f9a4362602962e54769ea4f4b22b1db6629a32eb0ff265a5",
+    "stage_sha256_count": 6,
+    "stage_sha256_manifest_sha256": "cf0c1768583ac89e74626da806d84352d2865cc74d7fb30b35a3b9bc25fe2fb1"
+  },
+  "transaction": {
+    "step": "b02-libndp-install",
+    "started": "2026-11-10T01:12:10.144837+00:00",
+    "recipe_sha256": "c7b8fe6d8a8cc6b9f611f8a9968f00f9332bf7b25371ed7c3289d5ce4b329db9",
+    "postcheck_sha256": "9b46155d95ea99ef2308d2c2935b51dcb17c8e5e655f0cf65150803a7d89e69f",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "0bd1d15174cbcdd4b6be4e7468378818f003f78a152cf9cb596b9ec0c658627f",
+    "recipe_pid": 507644,
+    "recipe_pgid": 507644,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T01:12:26.229347+00:00",
+    "changed_paths": 18,
+    "log_sha256": "648f8cfd1b74ebbbc6008f5bf5ff5dd3d6dd8a9e930144a2537ebf4ae8d5e0a7",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "f2395beb225b4cd21c418193d27068e27595b99d9424c986aa11a22d33dfb886"
+  },
+  "timing": {
+    "step": "b02-libndp-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.335,
+        "entries": 155331,
+        "regular_files": 138345,
+        "regular_bytes": 7329543319
+      },
+      {
+        "seconds": 14.286,
+        "entries": 155346,
+        "regular_files": 138356,
+        "regular_bytes": 7329759958
+      }
+    ],
+    "total_seconds": 31.46
+  },
+  "installed_consumer": {
+    "scope": "Owned library/SDK and real UID101 typed five-message creation/wildcard refusal/payload clamp/two-cycle recovery; CLI help only. No NDP traffic, device, raw-socket privilege or actual NetworkManager acceptance.",
+    "consumer": {
+      "message_types": 5,
+      "cycles": 2,
+      "wildcard_creation_refused": true,
+      "payload_length_clamp_and_recovery": true,
+      "actual_NDP_packets_sent": false
+    },
+    "loaded_owned_library": true,
+    "CLI_help": true
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libndp-install-evidence.tar.gz",
+    "sha256": "16834ca7f382263e689b6e55fb2b246542d3ec6bb9e2735a16b3efae8f83f909",
+    "members": [
+      "build/b02-libndp-install.log",
+      "build/b02-libndp-install.manifest.json",
+      "build/b02-libndp-install.success.json",
+      "phase2/b02-libndp-install-controller.log",
+      "phase2/b02-libndp-install-timing.json",
+      "phase2/libndp-1-controller.log",
+      "phase2/libndp-1.exit",
+      "phase2/libndp-1.job.json",
+      "phase2/libndp-1.log",
+      "phase2/libndp-installed-consumer.json",
+      "phase2/libndp-stage.json",
+      "work/native-consumer.json",
+      "work/stage-results.json"
+    ]
+  }
+}

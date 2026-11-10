@@ -2301,6 +2301,19 @@
       "book_md5": "b40de9b467b79d0d4fad7b40dea21e04",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "libndp",
+      "version": "1.9",
+      "filename": "libndp-1.9.tar.gz",
+      "url": "https://ftp.osuosl.org/pub/blfs/conglomeration/libndp/libndp-1.9.tar.gz",
+      "upstream_url": "http://libndp.org/files/libndp-1.9.tar.gz",
+      "sha256": "a8ab214e01dc3a9b615276905395637f391298c84d77651f0cbf0b1082dd2dd4",
+      "reference": "BLFS13.1-systemd basicnet/libndp.html",
+      "book_page_sha256": "983fc9f487777dafdca66f2baad02a7f96223992c53cd9beff0dd6a2fb4fedd5",
+      "book_md5": "9d486750569e7025e5d0afdcc509b93c",
+      "integrity": "Trusted BLFS OSU mirror over validated HTTPS, frozen upstream HTTPS hostname certificate mismatch preserved; matched frozen book legacy MD5 and SHA256 pinned before guest extraction/use; no signature claim",
+      "status": "source_verified"
     }
   ]
 }

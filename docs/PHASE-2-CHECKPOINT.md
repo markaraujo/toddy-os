@@ -7,8 +7,21 @@ foundation tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Current slice and exact next action
 
-Current slice: GeoClue2.8.2 OWNED and bounded native service gate passed; no
-active guest writer. Build/stage0,44compiled ELFs/32staged files, upstream automated
+Current slice: libndp1.9 OWNED install/post0/0; no active guest writer.
+`b02-libndp-install` finished2026-11-10T01:12:26Z,18changedpaths/22owned entries;
+archiveSHA cbb329a38df4615b8896916696e15286f09bcd1f36fe6bb0afec1360d93bf841.
+Inputlibndp-1.9/worklibndp-1/jobPID505418 actual exit0,4ELFs/6stage regular files;
+no upstream test suite (make check plumbing0, not test pass). Own installed UID101
+five message types/wildcard refusal/payload clamp/two-cycle recovery/CLI/SDK/APT0,
+no packets/raw-socket/device/NetworkManager proof. Source1.9 required by actual
+NM Meson/frozen book: HTTPS upstream hostname mismatch; trusted BLFS OSU mirror
+exact frozenMD5/SHAa8ab214e01dc3a9b615276905395637f391298c84d77651f0cbf0b1082dd2dd4
+before extraction. No TLS bypass/version upgrade. Persistent ledger/ADR0175 and
+[proof](evidence/B02-libndp-install.json); rawSHA
+16834ca7f382263e689b6e55fb2b246542d3ec6bb9e2735a16b3efae8f83f909.
+NEVER replay accepted compiler/stage/native install/consumer.
+
+GeoClue2.8.2 OWNED and bounded native service gate passed. Build/stage0,44compiled ELFs/32staged files, upstream automated
 registry empty (not a passing suite). Initial native install recipe0/post1 own GI
 setter assumption corrected read-only verify2 recipe/post0/0,changed_paths0;
 70owned entries/account unchanged. ArchiveSHA
@@ -187,3 +200,7 @@ workstation RAG. Finish ALL B02, then honor requested stop.
 Vala/UCD publication commit eb2c669b13f1f2c4de50d8d15d7d97e72d586d36: planning
 42718870061/safety42718870345/Pages42718870357 allsuccess; actual public HTTP200
 exact indexSHA a5b42298990193f66fa5418935ac339ad959a45104e105d3ef7c281084d636c5.
+
+Latest GeoClue publication e50e4cb89030dd6048638be7ed023ab2d4c22def:
+planning42733553520/safety42733553507/Pages42733554766 allsuccess; exact public
+HTTP200/indexSHAccd0f2d54ba575a34d1b8b713290293cc5345b515e87aab4e3156c4374bd4b35.

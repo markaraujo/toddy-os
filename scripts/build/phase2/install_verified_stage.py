@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libndp': ('1.9', 'glibc (>= 2.44-1+toddy1)', 'libndp-1.9.tar.gz', 'usr/lib/pkgconfig/libndp.pc'),
     'geoclue': ('2.8.2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libsoup (= 3.6.6-1+toddy1), json-glib (= 1.10.8-1+toddy1), systemd (>= 261.2-1+toddy3), gobject-introspection (>= 1.86.0-1+toddy1)', 'geoclue-2.8.2.tar.bz2', 'usr/lib/pkgconfig/libgeoclue-2.0.pc'),
     'libgweather': ('4.6.0', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libsoup (= 3.6.6-1+toddy1), libxml2 (= 2.15.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), geocode-glib (= 3.26.4-1+toddy1), gweather-locations (= 2026.2-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)', 'libgweather-4.6.0.tar.xz', 'usr/lib/pkgconfig/gweather4.pc'),
     'gweather-locations': ('2026.2', 'glib (>= 2.88.3-1+toddy2)', 'gweather-locations-2026.2.tar.xz', 'usr/lib/gweather-locations/Locations.bin'),
@@ -1203,6 +1204,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='libndp':
+        from qualify_libndp import qualify as qualify_libndp
+        qualify_libndp(ROOT)
     if name=='geoclue':
         from qualify_geoclue import qualify as qualify_geoclue
         qualify_geoclue(ROOT)
