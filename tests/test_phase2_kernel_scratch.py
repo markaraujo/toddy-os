@@ -1,5 +1,5 @@
 """Storage identity guards must fail closed before any optional QEMU attachment."""
-import json,os,sys,tempfile,unittest
+import hashlib,json,os,sys,tempfile,unittest
 from pathlib import Path
 from unittest.mock import patch
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts/host'))
@@ -40,4 +40,30 @@ class ScratchGuard(unittest.TestCase):
   p,row=self.prepare();os.link(p,self.work/'other')
   with self.assertRaises(ValueError):phase2_vm.kernel_scratch_arguments()
   (self.work/'other').unlink();p.chmod(0o644)
+  with self.assertRaises(ValueError):phase2_vm.kernel_scratch_arguments()
+
+class GrownScratchGuard(unittest.TestCase):
+ prepare=ScratchGuard.prepare
+ write=ScratchGuard.write
+ def setUp(self):
+  ScratchGuard.setUp(self);p=patch.object(phase2_vm,'KERNEL_SCRATCH_GROWN_BYTES',16384);p.start();self.addCleanup(p.stop)
+ def grown(self):
+  p,row=self.prepare()
+  with p.open('ab') as f:f.write(bytes(8192));f.flush();os.fsync(f.fileno())
+  receipt=self.work/'kernel-landlock-growth.json'
+  grown=dict(state='filesystem-grown',allocation_reconciled=True,serial='TODDY-B02-KERNEL',old_bytes=8192,new_bytes=16384,growth_bytes=8192,device=p.stat().st_dev,inode=p.stat().st_ino,original_receipt_sha256=hashlib.sha256((self.work/'kernel-landlock-scratch.json').read_bytes()).hexdigest(),filesystem_uuid='c6c4176d-faed-4ee3-9ae0-94914a0af666')
+  receipt.write_text(json.dumps(grown));receipt.chmod(0o600);return p,receipt,grown
+ def test_completed_bounded_growth(self):
+  self.grown();self.assertIn('serial=TODDY-B02-KERNEL',phase2_vm.kernel_scratch_arguments()[-1])
+ def test_pending_or_foreign_growth(self):
+  p,r,g=self.grown()
+  for key,value in [('state','qmp-grown-filesystem-pending'),('allocation_reconciled',False),('inode',g['inode']+1),('new_bytes',32768),('original_receipt_sha256','0'*64)]:
+   with self.subTest(key=key):
+    r.write_text(json.dumps(dict(g,**{key:value})))
+    with self.assertRaises(ValueError):phase2_vm.kernel_scratch_arguments()
+ def test_unreceipted_grown_file(self):
+  p,r,g=self.grown();r.unlink()
+  with self.assertRaises(ValueError):phase2_vm.kernel_scratch_arguments()
+ def test_growth_symlink_rejected(self):
+  p,r,g=self.grown();r.unlink();r.symlink_to('/dev/null')
   with self.assertRaises(ValueError):phase2_vm.kernel_scratch_arguments()

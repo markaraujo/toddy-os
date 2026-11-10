@@ -151,6 +151,18 @@ if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/kernel-overlay-test-1 &&
     [[ $(stat -c %u "$TODDY_WORK/merged") == "$TODDY_UID" ]]
     mount --bind "$TODDY_WORK/merged" "$root/build/merged"
 fi
+# Exact real-kernel profile: only the private merged cache is writable. Hide
+# upper/work/lower internals behind their root-only parent, and expose the
+# immutable original independently at /src/cache for denial/source checks.
+if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/linux-landlock-7.1.8 &&
+      $TODDY_WORK == /mnt/lfs/sources/phase2/work/kernel-landlock-1 ]]; then
+    [[ $(findmnt -n -o UUID --mountpoint "$TODDY_WORK") == c6c4176d-faed-4ee3-9ae0-94914a0af666 ]]
+    [[ $(findmnt -n -o FSTYPE --mountpoint "$TODDY_WORK/merged") == overlay ]]
+    [[ $(stat -c %u "$TODDY_WORK/merged") == "$TODDY_UID" ]]
+    [[ $(stat -c %u:%a "$TODDY_WORK/private-overlay") == 0:700 ]]
+    mount --bind "$TODDY_WORK/merged" "$root/build/merged"
+    readonly_bind /mnt/lfs/sources/linux-7.1.8 "$root/src/cache"
+fi
 mkdir -p "$TODDY_WORK/stage" "$TODDY_WORK/home"
 chown "$TODDY_UID:$TODDY_GID" "$TODDY_WORK/stage" "$TODDY_WORK/home"
 mount --bind "$TODDY_WORK/stage" "$root/stage"

@@ -16,15 +16,17 @@ ROOT = vm.ROOT
 WORK = vm.VM / 'phase2'
 NAME = 'toddy-phase2'
 KERNEL_SCRATCH_BYTES = 768 * 1024**2
+KERNEL_SCRATCH_GROWN_BYTES = 1024**3
 
 
 def kernel_scratch_arguments():
     """Attach only the recorded preallocated project file, never another path."""
     receipt = WORK / 'kernel-landlock-scratch.json'
     disk = WORK / 'kernel-landlock-scratch.raw'
-    if receipt.is_symlink() or disk.is_symlink():
+    growth = WORK / 'kernel-landlock-growth.json'
+    if receipt.is_symlink() or disk.is_symlink() or growth.is_symlink():
         raise ValueError('Scratch symlink forbidden')
-    if not receipt.exists() and not disk.exists():
+    if not receipt.exists() and not disk.exists() and not growth.exists():
         return []
     if not receipt.is_file() or not disk.is_file():
         raise ValueError('Reconcile incomplete scratch preparation')
@@ -36,8 +38,26 @@ def kernel_scratch_arguments():
             or row.get('format') != 'raw' or row.get('bytes') != KERNEL_SCRATCH_BYTES
             or row.get('serial') != 'TODDY-B02-KERNEL'):
         raise ValueError('Unexpected scratch declaration')
+    expected_bytes = KERNEL_SCRATCH_BYTES
+    if growth.exists():
+        gs = growth.stat()
+        if (not stat.S_ISREG(gs.st_mode) or gs.st_uid != os.getuid()
+                or gs.st_nlink != 1 or gs.st_size > 65536 or gs.st_mode & 0o022):
+            raise ValueError('Unsafe scratch growth receipt')
+        grown = json.loads(growth.read_text())
+        if (grown.get('state') != 'filesystem-grown'
+                or grown.get('allocation_reconciled') is not True
+                or grown.get('serial') != 'TODDY-B02-KERNEL'
+                or grown.get('old_bytes') != KERNEL_SCRATCH_BYTES
+                or grown.get('new_bytes') != KERNEL_SCRATCH_GROWN_BYTES
+                or grown.get('growth_bytes') != KERNEL_SCRATCH_GROWN_BYTES - KERNEL_SCRATCH_BYTES
+                or grown.get('device') != ds.st_dev or grown.get('inode') != ds.st_ino
+                or grown.get('original_receipt_sha256') != hashlib.sha256(receipt.read_bytes()).hexdigest()
+                or grown.get('filesystem_uuid') != 'c6c4176d-faed-4ee3-9ae0-94914a0af666'):
+            raise ValueError('Incomplete or mismatched scratch growth')
+        expected_bytes = KERNEL_SCRATCH_GROWN_BYTES
     if (not stat.S_ISREG(ds.st_mode) or ds.st_uid != os.getuid() or ds.st_nlink != 1
-            or ds.st_mode & 0o077 or ds.st_size != KERNEL_SCRATCH_BYTES
+            or ds.st_mode & 0o077 or ds.st_size != expected_bytes
             or ds.st_blocks * 512 < ds.st_size
             or ds.st_dev != row.get('device') or ds.st_ino != row.get('inode')):
         raise ValueError('Scratch identity/allocation mismatch')

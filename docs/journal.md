@@ -3220,3 +3220,8 @@ Fixed768MiB preallocated virtual kernel scratch attached after idle check/contro
 ### 2026-11-10 — B02 preserved kernel cache inventory
 
 Read-only baseline2 actual0:111558entries/2599875499bytes,93715pristine source entries; owned linux-kernel7.1.8-1/config/image match and frozen archive SHA verified. Initial symlink raw-string assertion found single redundant /./ PowerPC link; exact source/actual literals and equal internal target recorded after read-only diagnosis. No kernel/source/cache mutation. BaselineSHAd0e66e8e3cc2260d35242a1dca634e72bfd6bcd3d63a5bd94bac591a173114bf, rawSHA55d8a4e587432bfa616f7b9901edf25f4b3801d85512b727f974de1330d3e6a4. Next private COW profile using saved inventory, do not rehash unchanged baseline or replay format/restart.
+
+
+### 2026-11-10 — B02 private Landlock compile
+
+Private Linux7.1.8 Landlock+selected SECURITY_PATH compiled0 via preserved cache, original111558entries/2599875499bytes fully retained,93715pristine source entries unchanged. Real UID101 COW isolation0. Two precompiler Rust metadata failures corrected with explicit make RUSTC=false; resource-stop partial3 retained, one bounded virtual scratch growth to1GiB then incremental4 compiler15.003s0. Late final allocation fell below reserve; five private linker temporaries retired with final hashes unchanged/free388354048B. Native static diagnostic prepare0, boot/native installation/desktop NOT accepted. ADR0201. Candidate imageSHA18c4d9e6a64554296d8e9a037c2383e7426a0cf155b6d757d0693fce0d087ad1; rawSHAa946b14b08bc3703aac69fc717a6a461f77690d635087d6555c049ca4ba915da. Next two no-disk diagnostic boots, then native staging/recovery qualification.

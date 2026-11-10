@@ -85,3 +85,35 @@ Kernel source/cache/config/package/boot remain unchanged. This resource result
 does not qualify the real kernel COW profile, Landlock feature or desktop. Next
 prepare immutable baseline hashes and the exact isolated real-cache view; retain
 the128MiB scratch reserve and actual boot/security proof requirement.
+
+
+## Actual private compile and bounded capacity recovery
+
+Real-cache COW preparation and UID101 denial checks passed. Only directory and
+generated-output ownership metadata was promoted; all original111558 cache
+entries/2599875499bytes remain byte/metadata identical after compilation,93715
+pristine source entries unchanged in both views. Exact config delta enables
+Landlock and its selected SECURITY_PATH. Preserve the no-Rust original kernel
+profile with explicit `make RUSTC=false`: init/Kconfig detects Rust unconditionally
+and Makefile overrides an environment-only setting. Both precompiler failures
+are retained; no extra metadata was accepted or original compiler replayed.
+
+The768MiB scratch guard interrupted final link, preserving partial outputs. A
+single256MiB virtual-file extension/QMP resize/online ext4 grow retained the same
+UUID and100GiB host reserve. Full preallocation was reconciled after geometry
+update released a small physical extent. Fixed-path/inode/size/original receipt
+checks refuse pending/mismatched growth; no physical disk or target root resize.
+
+Incremental build4 completed compiler0 in15.003s with no configuration replay.
+Its polling minimum152457216B missed a late allocation: actual final free was
+88567808B, below the scratch reserve. This is explicitly not final reserve proof.
+Canonical monitoring now records final free. After terminal/source/artifact
+proof, only five named private linker intermediates were retired, preserving
+all final artifact hashes and restoring388354048B free. Do not replay retirement.
+[Compile evidence](../evidence/B02-kernel-landlock-compile.json) retains all exits,
+partial failures, growth/cleanup manifests and source/artifact identities.
+
+Native static-libc UID101 diagnostic preparation passed. BIOS/UEFI Landlock,
+seccomp, namespace and module checks are prepared but NOT YET RUN. No kernel
+package/boot file has been installed/updated; no installed-Systemd/desktop/ISO/
+hardware/fresh full-source reproducibility acceptance is claimed.
