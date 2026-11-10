@@ -2397,6 +2397,18 @@
       "reference": "Fast_float8.2.10 tests/CMakeLists.txt selected lemire/doctest fork; private test-only source pinned from exact Git HEAD before guest use",
       "integrity": "Official upstream-selected GitHub HTTPS archive, exact Git commit resolved by git ls-remote and archive SHA256 frozen; publisher signature not claimed",
       "status": "source_verified"
+    },
+    {
+      "name": "libhandy",
+      "version": "1.8.3",
+      "filename": "libhandy-1.8.3.tar.xz",
+      "url": "https://download.gnome.org/sources/libhandy/1.8/libhandy-1.8.3.tar.xz",
+      "sha256": "05b497229073ff557f10b326e074c5066f8743a302d4820ab97bcb5cd2dab087",
+      "reference": "BLFS13.1-systemd x/libhandy1.html",
+      "book_page_sha256": "ada20fdf1b5083d19e6e7064017ab058cfde27b7a0017f51cafa5624effa08ce",
+      "book_md5": "af586a91ff6d4093a6e7e283dfab5f7f",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

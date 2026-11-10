@@ -11131,6 +11131,23 @@
           ]
         }
       }
+    },
+    {
+      "name": "libhandy",
+      "version": "1.8.3",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Exact authenticated source COPYING and leading runtime C/header notices retained. GTK3/GI/Vala library for GNOME Terminal; optional examples/Glade/docs omitted. Thirty original display programs compiled/deferred, no GUI acceptance.",
+      "extra_license_headers": {
+        "libhandy-1.8.3.tar.xz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

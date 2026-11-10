@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-10T05:16:18.650928+00:00",
+  "updated_at": "2026-11-10T05:25:15.567666+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05–B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -740,14 +740,15 @@
       "Owned Fast_float8.2.10 architectureall header/CMake SDK:14original core programs/47ELFs/12stagefiles, private immutable270file doctest source/no compiler network or framework install. Native0/0/27entries, actual UID101 CMake/header/invalid/overflow/two recovery cycles/APT0. Build prerequisite only/no terminal or GUI acceptance, ADR0189.",
       "Owned fmt12.2.0 shared library/SDK:21original core programs/no observed nested GTest skips/78ELFs/22stagefiles; native0/0/55paths/57entries, actual UID101 CMake/shared libfmt12/Unicode-decimal-hex/runtime format-error refusal/two recovery cycles/pkg-config/APT0. No terminal/GUI acceptance, ADR0190.",
       "Owned simdutf9.0.0 shared/SDK/scalar fallback:91original programs67.18s/193ELFs/49stagefiles,79unsupported icelake notes retained/unqualified. Native0/0/83paths/85entries, actual UID101 CMake/shared34/Unicode PT+emoji roundtrip/lengths/invalid refusal/two recovery cycles/pkg-config/APT0. All required VTE SDKs present; no terminal/GUI acceptance, ADR0191.",
-      "Owned VTE0.84.1:18original programs/134compiledELFs/125stagefiles retained; native install2/post0/0,254changedpaths/468owned entries. Actual installed UID101 regex/refusal/private PTY geometry/UTF8/managed-group Stop/fresh recovery/interactive owner prompt/GI/APT0, conffiles/inlined fmt+FastFloat notices verified. Missing sandbox device and own TIOCPKT reader failures corrected probe-only, source/compile/stage unchanged; first promotion selected wrong failed job and changed0paths. No widget/GNOME Terminal/display/focus/physical acceptance, ADR0192."
+      "Owned VTE0.84.1:18original programs/134compiledELFs/125stagefiles retained; native install2/post0/0,254changedpaths/468owned entries. Actual installed UID101 regex/refusal/private PTY geometry/UTF8/managed-group Stop/fresh recovery/interactive owner prompt/GI/APT0, conffiles/inlined fmt+FastFloat notices verified. Missing sandbox device and own TIOCPKT reader failures corrected probe-only, source/compile/stage unchanged; first promotion selected wrong failed job and changed0paths. No widget/GNOME Terminal/display/focus/physical acceptance, ADR0192.",
+      "Owned libhandy1.8.3 GTK3/GI/Vala:122ELFs/78stagefiles unchanged across own C type/GI constructor corrections; native install/post0/0,120changedpaths/184owned entries. Installed UID101 no-route C/GI Unicode value-copy/take-dup ownership/enum/two reset cycles/shared ABI/pkg-config/APT0. All30original graphical programs compiled/deferred, ZERO originals passed; no widget/Terminal/display acceptance, ADR0193."
     ],
-    "running": "No active guest writer. VTE0.84.1 owned/native2 0/0. Next libhandy1.8.3 qualification then GNOME Terminal3.60.0; neither input/job prepared. Headless focus branch parked pending actual seat/input/full evidence. Complete ALL B02 then stop.",
+    "running": "No active guest writer. VTE/libhandy owned; next GNOME Terminal3.60.0 preflight/isolated build/original regex/private schema persistence/CLI, then real native UI. Thirty libhandy graphical originals remain pending. Headless focus branch parked. Complete ALL B02 then stop.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-10T05:16:18.650928+00:00",
+    "verified_at": "2026-11-10T05:25:15.567666+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

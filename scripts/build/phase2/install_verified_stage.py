@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libhandy': ('1.8.3', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), fribidi (= 1.0.16-1+toddy1)', 'libhandy-1.8.3.tar.xz', 'usr/lib/pkgconfig/libhandy-1.pc'),
     'vte': ('0.84.1', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), pango (= 1.58.2-1+toddy1), cairo (= 1.18.4-1+toddy1), pcre2 (= 10.49-1+toddy1), lz4 (= 1.10.0-1+toddy1), simdutf (= 9.0.0-1+toddy1), fribidi (= 1.0.16-1+toddy1), gnutls (= 3.8.13-1+toddy1), icu (= 78.3-1+toddy1), systemd (>= 261.2-1+toddy3), at-spi2-core (= 2.60.6-1+toddy1)', 'vte-0.84.1.tar.gz', 'usr/lib/pkgconfig/vte-2.91.pc'),
     'simdutf': ('9.0.0', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2)', 'simdutf-9.0.0.tar.gz', 'usr/lib/pkgconfig/simdutf.pc'),
     'fmt': ('12.2.0', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2)', 'fmt-12.2.0.tar.gz', 'usr/lib/pkgconfig/fmt.pc'),
@@ -262,6 +263,7 @@ if __name__ == '__main__':
     if name=='libgweather':qualifier='libgweather-stage-2'
     if name=='libnma':qualifier='libnma-stage-2'
     if name=='gnome-shell' and (log/'gnome-shell-probe-2.exit').exists():qualifier='gnome-shell-probe-2'
+    if name=='libhandy' and (log/'libhandy-gi-3.exit').exists():qualifier='libhandy-gi-3'
     if name=='vte' and (log/'vte-probe-3.exit').exists():qualifier='vte-probe-3'
     if name=='vala':qualifier='vala-consumer-2'
     if name=='libunistring':qualifier='libunistring-consumer-2'
@@ -1218,6 +1220,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='libhandy':
+        from qualify_libhandy import qualify as qualify_libhandy
+        qualify_libhandy(ROOT)
     if name=='vte':
         from qualify_vte import qualify as qualify_vte
         qualify_vte(ROOT)

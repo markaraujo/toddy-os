@@ -8,43 +8,48 @@ No accepted complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current verified slice and exact next action
 
-VTE0.84.1 OWNED GTK3/API2.91, no active guest writer. Frozen source SHA
-9f73468982a339cd1eb942beb7d348a5564c9ed48473ad1690c791f8474916ec.
-Original build `vte-1` PID7145 terminal1 AFTER compile/18original tests/stage0;
-own consumer failed missing PTY. `vte-probe-2` PID8819 terminal1 after private
-devpts fixed creation/geometry/UTF8; own reader missed TIOCPKT control prefix.
-`vte-probe-3` PID9139 terminal0 with corrected own reader, all134compiledELF/
-125stagefile hashes unchanged. Original failures preserved. NEVER rebuild,
-restage or replay originals. No widget/GNOME Terminal/graphical acceptance.
-Native initial `b02-vte-install` PID9777 recipe1/postnull/changed0: generic
-qualifier selected original failed job. Verified stage/archive/package absent,
-corrected exact recovery selection, fresh `b02-vte-install-2` PID10158 actual
-recipe/post0/0,254changedpaths/468owned entries. Installed UID101 regex/refusal/
-private PTY/UTF8/group Stop/recovery/interactive user prompt/GI/APT0; private
-namespace removed, shell hooks conffiles, inlined fmt/FastFloat notices retained.
-[Proof](evidence/B02-vte-install.json), ADR0192; archiveSHA
-c9f8f81d46d0cf2c4945667ec6f00742ff9fa07548a61c105999944f1e92c907.
-Raw `.local/phase2/exports/B02-vte-install-evidence.tar.gz` SHA
-8d9ad01d2877e4b8e1342f6b4e755aa582f0484208cad22782ec79ae3e22a43c.
-Input/work /mnt/lfs/sources/phase2/{inputs/vte-0.84.1,work/vte-1}; jobs/logs/
-exits /var/log/toddy/phase2/vte-{1,probe-2,probe-3}.*; native receipts
-/var/log/toddy/build/b02-vte-install{,-2}.{failed,success}.json (actual only).
-NEVER replay any VTE install. Reconcile actual postconditions on resumption.
+Libhandy1.8.3 OWNED GTK3/GI/Vala; no active guest writer.
+SourceSHA05b497229073ff557f10b326e074c5066f8743a302d4820ab97bcb5cd2dab087,
+bookSHAada20fdf1b5083d19e6e7064017ab058cfde27b7a0017f51cafa5624effa08ce.
+Buildlibhandy-1 PID10675 terminal134 after compile/stage; own C copy destination
+was uninitialized. Probe2PID11683 terminal1 after C0: own GI convenience constructor
+not introspectable. GI-only3PID12168 terminal0 using actual typed GValue/new;
+all122compiledELF/78stagefile hashes unchanged. Both own failures retained.
+ALL30original graphical programs compiled/deferred, ZERO originals passed. Keep
+these exact identities/binaries for actual native display, never relabel as pass.
+Nativeb02-libhandy-install PID12523 actualrecipe/post0/0,120changedpaths/184entries.
+Installed UID101 no-route C/GI ownership/Unicode/enum/two reset cycles/shared ABI/
+pkg-config/APT0. No widget/Terminal/display acceptance.
+[Proof](evidence/B02-libhandy-install.json), ADR0193; archiveSHA
+768593bc0a8e3305668c081781f7f6c941bcc01975eb79071aff85c1b99c68a5;
+raw `.local/phase2/exports/B02-libhandy-install-evidence.tar.gz` SHA
+5d6334231569273cc6bf67aeba6b65e386b87360d90e330bcd1c1f978472dca9.
+Input/work /mnt/lfs/sources/phase2/{inputs/libhandy-1.8.3,work/libhandy-1};
+logs/jobs/exits /var/log/toddy/phase2/libhandy-{1,probe-2,gi-3}.*;
+native /var/log/toddy/build/b02-libhandy-install.success.json.
+NEVER rebuild/restage/reinstall/replay accepted work.
 
-Exact next: commit/publish verified VTE slice and exact deployed bytes. Then
-qualify libhandy1.8.3 required by frozen GNOME Terminal3.60.0. Terminal archive
-already frozen/cached (SHA6c006523d2c21282fd62c64fc44f63546aaa216e66eb439b8129af68db11df7c);
-Meson source reviewed in `.local/phase2/gnome-terminal-{meson.build,meson_options.txt}`.
-Libhandy source not yet frozen/cached; neither guest input/job exists. Use frozen
-BLFS13.1-systemd x/libhandy1.html, actual upstream source/options, measure reserves,
-then one isolated build. No routine confirmation/general replanning.
+Exact next: commit/publish verified libhandy slice/exact deployed version, then
+GNOME Terminal3.60.0 source SDK preflight and ONE isolated build/original regex
+suite/private schema persistence/CLI. Source already frozen/cached SHA
+6c006523d2c21282fd62c64fc44f63546aaa216e66eb439b8129af68db11df7c,
+bookSHA88e7839f2585a1258fb78aad1be2d64fb0871e10349e41d8d101de76c870c3f9.
+Actual source reviewed `.local/phase2/gnome-terminal-{meson.build,src-meson.build,meson_options.txt}`.
+NO Terminal input/job yet. All required SDKs now owned; verify actual pkg-config.
+Keep supported search-provider integration, optional Nautilus extension/docs omitted.
+Shared stock schema cache union and actual launch/window/focus/PTY/Stop/recovery
+remain required. No general replanning or unchanged native headless focus retry.
 
-Reuse owned FastFloat8.2.10/fmt12.2.0/simdutf9.0.0 and all earlier qualified
-libraries. Evidence indexed in [B02](evidence/B02.md)/story/status; do not repeat
-accepted original suites/native transactions. Remaining Settings/basic apps,
-real graphical seat/GDM/input/network/audio/offline/resource and final B02 gates.
-Latest prior pushed2db228ea7c17293f7edcb1d70f2a15e00bb8a333 all3CI success;
-exact publicHTTP200/indexSHA59cf4ba8c3311f8030b6b422aae39b4aafa347703f1ad8a2a8f7af2d4e11c019.
+Previous VTE0.84.1 OWNED:18original programs/134ELFs/125stagefiles; native2/post0/0,
+254changedpaths/468entries; installed private PTY/group Stop/Unicode/recovery/prompt/
+GI/APT/conffiles/inlined fmt+FastFloat notices0. [Proof](evidence/B02-vte-install.json),
+ADR0192. Missing private device/own TIOCPKT reader corrected probe-only; initial
+native promotion qualifier guard changed0 before newinstall2. NEVER replay.
+All earlier accepted libraries indexed [B02](evidence/B02.md)/story/status; reuse
+unchanged evidence. Settings/basic apps, real seat/GDM/input/network/audio/offline/
+resource and final B02 gates remain. Latest prior pushed d3e59cb892d02b3c1af6db795042259140a12244
+all3CI success/exactpublicHTTP200/indexSHA
+4f3043275c2be21e35d42d44bd89af61b833fbe56c86e03ee6da9c8f3e534742.
 
 ## Parked native graphical branch — preserve attempt budget
 

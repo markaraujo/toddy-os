@@ -3113,3 +3113,14 @@ Latest prior2db228e all3CI success and exact publicHTTP200/indexSHA
 59cf4ba8c3311f8030b6b422aae39b4aafa347703f1ad8a2a8f7af2d4e11c019.
 Next GNOME Terminal3.60.0 requires libhandy1.8.3 source/build qualification;
 no guest source/job for either prepared yet. Complete ALL B02 then stop.
+
+### B02 — Owned libhandy1.8.3 prerequisite — 2026-11-10
+
+Owned libhandy1.8.3 GTK3/GI/Vala:122ELFs/78stagefiles unchanged across own C type/GI constructor corrections; native install/post0/0,120changedpaths/184owned entries. Installed UID101 no-route C/GI Unicode value-copy/take-dup ownership/enum/two reset cycles/shared ABI/pkg-config/APT0. All30original graphical programs compiled/deferred, ZERO originals passed; no widget/Terminal/display acceptance, ADR0193.
+Source from frozen book/official HTTPS; original graphical test identities retained.
+No source/library/original suite replay, source untouched, both own API-assumption
+failures preserved. Native rawSHA5d6334231569273cc6bf67aeba6b65e386b87360d90e330bcd1c1f978472dca9.
+Prior d3e59cb all3CI success/exact publicHTTP200/indexSHA
+4f3043275c2be21e35d42d44bd89af61b833fbe56c86e03ee6da9c8f3e534742.
+Next GNOME Terminal3.60.0 required SDK preflight, original regex tests and private
+settings persistence before native GUI gate. Complete ALL B02 then stop.
