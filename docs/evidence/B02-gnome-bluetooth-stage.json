@@ -1,0 +1,780 @@
+{
+  "prepared": {
+    "source_sha256": "41f20e6d6176b72590af63552b232d83f2fffdd77ecfaa5eaf32c5a4a86fad64",
+    "reference": "BLFS13.1-systemd gnome/gnome-bluetooth.html",
+    "book_page_sha256": "8204c2aa5674b047decdff4888edc99072f1d2dca4ba9104b36ecd7d8b26a586",
+    "source_patches": [],
+    "recipe_sha256": "4f39aa9a1dd8935dda344d9052c72993303fd5b24af59f27fe969b2813b2eb24"
+  },
+  "stage": {
+    "scope": "Frozen GNOME Bluetooth47.2 core/UI/GI/sendto compiled; two original non-display C programs only. Original private mock-bus/session integration programs compiled/deferred, not passes. No real Bluetooth adapter/pairing/transfer/UI/Settings/GNOME/hardware acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_core_tests": [
+      {
+        "name": "gnome-bluetooth:test-bluetooth-device-test",
+        "stdout": "TAP version 14\n# random seed: R02S550fd06ffa01143f04f4949f638b0ab6\n1..1\n# Start of bluetooth tests\nok 1 /bluetooth/device\n# End of bluetooth tests\n",
+        "result": "OK",
+        "is_fail": false,
+        "starttime": 1794330484.279398,
+        "duration": 0.005409955978393555,
+        "returncode": 0,
+        "env": {
+          "NINJAJOBS": "8",
+          "PWD": "/",
+          "HOME": "/build/home",
+          "MAKEFLAGS": "-j8",
+          "SHLVL": "1",
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "LC_ALL": "C.UTF-8",
+          "CONFIG_SITE": "/dev/null",
+          "PATH": "/usr/bin:/usr/sbin",
+          "_": "/usr/bin/meson",
+          "LD_LIBRARY_PATH": "/build/compile/lib",
+          "MESON_TEST_ITERATION": "1",
+          "MALLOC_PERTURB_": "240",
+          "ASAN_OPTIONS": "halt_on_error=1:abort_on_error=1:print_summary=1",
+          "UBSAN_OPTIONS": "halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1",
+          "MSAN_OPTIONS": "halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1"
+        },
+        "command": [
+          "/build/compile/tests/test-bluetooth-device"
+        ]
+      },
+      {
+        "name": "gnome-bluetooth:test-bluetooth-device-utils",
+        "stdout": "TAP version 14\n# random seed: R02S6d35837415f6929e948ade0175370a62\n1..4\n# Start of bluetooth tests\nok 1 /bluetooth/appearance\nok 2 /bluetooth/class\nok 3 /bluetooth/verify\nok 4 /bluetooth/type_to_string\n# End of bluetooth tests\n",
+        "result": "OK",
+        "is_fail": false,
+        "starttime": 1794330484.281932,
+        "duration": 0.003426074981689453,
+        "returncode": 0,
+        "env": {
+          "NINJAJOBS": "8",
+          "PWD": "/",
+          "HOME": "/build/home",
+          "MAKEFLAGS": "-j8",
+          "SHLVL": "1",
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "LC_ALL": "C.UTF-8",
+          "CONFIG_SITE": "/dev/null",
+          "PATH": "/usr/bin:/usr/sbin",
+          "_": "/usr/bin/meson",
+          "LD_LIBRARY_PATH": "/build/compile/lib",
+          "MESON_TEST_ITERATION": "1",
+          "MALLOC_PERTURB_": "232",
+          "ASAN_OPTIONS": "halt_on_error=1:abort_on_error=1:print_summary=1",
+          "UBSAN_OPTIONS": "halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1",
+          "MSAN_OPTIONS": "halt_on_error=1:abort_on_error=1:print_summary=1:print_stacktrace=1"
+        },
+        "command": [
+          "/build/compile/tests/test-bluetooth-utils"
+        ]
+      }
+    ],
+    "original_registered_tests": [
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_adapter_removal"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_adapter_removal",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_agent"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_agent",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_battery"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_battery",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_connect"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_connect",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_connectable_devices"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_connectable_devices",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_connected_input_devices"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_connected_input_devices",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_default_adapter"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_default_adapter",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_default_adapter_powered"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_default_adapter_powered",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_device_notify"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_device_notify",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_device_removal"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_device_removal",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_no_adapters"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_no_adapters",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_one_adapter"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_one_adapter",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_one_device"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_one_device",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_pairing"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_pairing",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/usr/bin/python3",
+          "/build/compile/../../src/tests/integration-test.py",
+          "Tests.test_set_trusted"
+        ],
+        "env": {
+          "top_builddir": "/build/compile",
+          "top_srcdir": "/src",
+          "GI_TYPELIB_PATH": "/build/compile/lib",
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "Tests.test_set_trusted",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "76b5a35@@GnomeBluetoothPriv-3.0.gir@cus",
+          "59830eb@@test_battery@exe",
+          "76b5a35@@GnomeBluetoothPriv-3.0.typelib@cus"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/build/compile/tests/test-bluetooth-device"
+        ],
+        "env": {
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "test-bluetooth-device-test",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "59830eb@@test-bluetooth-device@exe"
+        ],
+        "extra_paths": []
+      },
+      {
+        "cmd": [
+          "/build/compile/tests/test-bluetooth-utils"
+        ],
+        "env": {
+          "LD_LIBRARY_PATH": "/build/compile/lib"
+        },
+        "name": "test-bluetooth-device-utils",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "gnome-bluetooth"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "59830eb@@test-bluetooth-utils@exe"
+        ],
+        "extra_paths": []
+      }
+    ],
+    "original_deferred_tests": [
+      "Tests.test_adapter_removal",
+      "Tests.test_agent",
+      "Tests.test_battery",
+      "Tests.test_connect",
+      "Tests.test_connectable_devices",
+      "Tests.test_connected_input_devices",
+      "Tests.test_default_adapter",
+      "Tests.test_default_adapter_powered",
+      "Tests.test_device_notify",
+      "Tests.test_device_removal",
+      "Tests.test_no_adapters",
+      "Tests.test_one_adapter",
+      "Tests.test_one_device",
+      "Tests.test_pairing",
+      "Tests.test_set_trusted"
+    ],
+    "artifacts": {
+      "tests/test_battery": "c10cd4bb7266416eb48adedfabf58c936e24e7f9bfe81f55b843ac7b9d8d0660",
+      "tests/test-bluetooth-utils": "7b96f08eec84b830d78f54969acfaf0ad98802645c74cd6282db34db0a11282b",
+      "tests/test-bluetooth-device": "4a39e0025cb0304769fba1e6e879538cf01b105442369eda79f293d4234d1228",
+      "sendto/bluetooth-sendto": "87f8bfd0871b4f69db69737c8a407893b57176a71679be3c5ff08787fd6c67cb",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0": "fad6eb18f521cbca9796d64a4b686c6398740ee7216961d1c68ee6ff2e247d46",
+      "lib/libgnome-bluetooth-3.0.so.13.2.0": "6a6a911f56dc86c8309edea2f7b62d011009806884d1b924808dc9de7df7503d",
+      "lib/test-pairing-dialog": "2345e2db6631aacb5ff82baf3d20b93ae5f7492119b67237ee8d86291fddd695",
+      "lib/test-liststore": "0fef06381519bd6efe155d6fc33bfb6447913006945418991ee68691050e1d33",
+      "lib/test-pin": "2fc6c3355bd2096acbe7e415d1390cdcdf046cf3a3654d3fe60f324ea49d3787",
+      "lib/test-settings": "0683f480b85a0708454a3e03f0e112f22ddf201afc8e543b075243d2c24ed645",
+      "lib/test-class": "c02e6ca70ccac0599dda7de8418d1d8b3666b80c3634dde9bcdfdbefb0492fd2",
+      "lib/test-agent": "97663529faa2f116010c295c0217e851a6d6c491f5d40a83ec12fc56370b5004",
+      "meson-private/sanity_check_for_c.exe": "191646a6501d425990f9a36894024258da104e5375904550c64ce420e318f3ba",
+      "lib/test-pairing-dialog.p/pin.c.o": "4ea63e029e51e8fecba46c63d6f730a7697a9303a8d67459d3a497ea87fb91d2",
+      "lib/test-pairing-dialog.p/test-pairing-dialog.c.o": "9f1be3e36af7139093b93cb3c05c05d25d281220eac118d41c210e4fd5904b8f",
+      "lib/test-pairing-dialog.p/bluetooth-settings-obexpush.c.o": "396e412389b57827909d6079391f2a48772e8b2ae95bf5ae6963ea5d1925cda0",
+      "lib/test-pairing-dialog.p/bluetooth-client.c.o": "4d3d59221a655825b83a46a03ceffa43f64213a80884c4fe498d6d9f0e64ed88",
+      "lib/test-pairing-dialog.p/bluetooth-device.c.o": "e110b236828f91779e7af9b2f59d92ef2902e45d70478d295068777e245dfc38",
+      "lib/test-pairing-dialog.p/meson-generated_.._gnome-bluetooth-enum-types.c.o": "d511d8e789dd71436476967ff66ef7288c77542bad2799ae7053544cfac7a076",
+      "lib/test-pairing-dialog.p/bluetooth-agent.c.o": "e477d5f34f532e6d9885b576c903c25f14270728b1898d435b2b91a7da0f5337",
+      "lib/test-pairing-dialog.p/bluetooth-settings-row.c.o": "49a1842dfe5bd735c9dec3eb6bca29c5c638299fc57c1cc032d4f2332ce1d6c9",
+      "lib/test-pairing-dialog.p/bluetooth-pairing-dialog.c.o": "b781e6300f0306b50e4e6638eebf9b3489c87af8119bed089e7dc21197b17214",
+      "lib/test-pairing-dialog.p/meson-generated_.._bluetooth-settings-resources.c.o": "23cd9db6d0752af3310b49342c6cd16b4bdf6295bacfd254ec42463117d4045a",
+      "lib/test-pairing-dialog.p/bluetooth-utils.c.o": "cb4e56b3dda46d7ef3c31e167b1b918f97dab305b78439863c9d726f012d6272",
+      "lib/test-pairing-dialog.p/bluetooth-settings-widget.c.o": "df3abbaf5debd77916f474cca3818798b715e8aee88fe1829919d53fc20cf682",
+      "lib/test-pairing-dialog.p/meson-generated_.._bluetooth-client-glue.c.o": "6011c8adbbdee6be88c8641bbe415e76f7c36cfb90eb68196a355e69ccf97568",
+      "lib/test-liststore.p/pin.c.o": "4ea63e029e51e8fecba46c63d6f730a7697a9303a8d67459d3a497ea87fb91d2",
+      "lib/test-liststore.p/bluetooth-settings-obexpush.c.o": "396e412389b57827909d6079391f2a48772e8b2ae95bf5ae6963ea5d1925cda0",
+      "lib/test-liststore.p/bluetooth-client.c.o": "4d3d59221a655825b83a46a03ceffa43f64213a80884c4fe498d6d9f0e64ed88",
+      "lib/test-liststore.p/bluetooth-device.c.o": "e110b236828f91779e7af9b2f59d92ef2902e45d70478d295068777e245dfc38",
+      "lib/test-liststore.p/meson-generated_.._gnome-bluetooth-enum-types.c.o": "d511d8e789dd71436476967ff66ef7288c77542bad2799ae7053544cfac7a076",
+      "lib/test-liststore.p/bluetooth-agent.c.o": "e477d5f34f532e6d9885b576c903c25f14270728b1898d435b2b91a7da0f5337",
+      "lib/test-liststore.p/bluetooth-settings-row.c.o": "49a1842dfe5bd735c9dec3eb6bca29c5c638299fc57c1cc032d4f2332ce1d6c9",
+      "lib/test-liststore.p/bluetooth-pairing-dialog.c.o": "b781e6300f0306b50e4e6638eebf9b3489c87af8119bed089e7dc21197b17214",
+      "lib/test-liststore.p/meson-generated_.._bluetooth-settings-resources.c.o": "23cd9db6d0752af3310b49342c6cd16b4bdf6295bacfd254ec42463117d4045a",
+      "lib/test-liststore.p/bluetooth-utils.c.o": "cb4e56b3dda46d7ef3c31e167b1b918f97dab305b78439863c9d726f012d6272",
+      "lib/test-liststore.p/bluetooth-settings-widget.c.o": "df3abbaf5debd77916f474cca3818798b715e8aee88fe1829919d53fc20cf682",
+      "lib/test-liststore.p/meson-generated_.._bluetooth-client-glue.c.o": "6011c8adbbdee6be88c8641bbe415e76f7c36cfb90eb68196a355e69ccf97568",
+      "lib/test-liststore.p/test-liststore.c.o": "1f520c65f40093289be4814acbb35988eb2690409b91e096e25093ecc090a4f2",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0.p/pin.c.o": "4ea63e029e51e8fecba46c63d6f730a7697a9303a8d67459d3a497ea87fb91d2",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0.p/bluetooth-settings-obexpush.c.o": "6870cd072136b51a551a3b5cc88047271ec0b5467d2d1f348d255915b8b82d83",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0.p/bluetooth-client.c.o": "2dc77f7ad4845e582dd7ce18a25036a565ab235713bc79c8ec9eca2809d2e856",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0.p/bluetooth-device.c.o": "e6186185eabf639a59a44d475c39d71ea5e48f6fd44fc894f01fb62fd70f14e7",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0.p/meson-generated_.._gnome-bluetooth-enum-types.c.o": "d511d8e789dd71436476967ff66ef7288c77542bad2799ae7053544cfac7a076",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0.p/bluetooth-agent.c.o": "e9cefb8040e372b351e7bf8558efc8795e64eeaf927075b5f3bc846bd6586976",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0.p/bluetooth-settings-row.c.o": "8ca791727e734e5b2c28c52e65ce1ebd9370121deb751a86ecee4013a7585ca6",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0.p/bluetooth-pairing-dialog.c.o": "1b97d28d9aeecbb8f2a4d20629ad964f7902541b567f4e5b01ab42bfcdbd25a3",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0.p/meson-generated_.._bluetooth-settings-resources.c.o": "23cd9db6d0752af3310b49342c6cd16b4bdf6295bacfd254ec42463117d4045a",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0.p/bluetooth-utils.c.o": "db5ebe2d76301c78496fe73f4cc259940c62b57008a137f83d46ad7cc2b07d41",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0.p/bluetooth-settings-widget.c.o": "b2ffed4718b9029673aa619f4cd29f62607121fdd7f9953e573cffbfe604dd83",
+      "lib/libgnome-bluetooth-ui-3.0.so.13.2.0.p/meson-generated_.._bluetooth-client-glue.c.o": "0f5802705ee02a7a3a250f2c5063fafad1a59592ecae980c54fe0650780c21f1",
+      "lib/test-settings.p/pin.c.o": "4ea63e029e51e8fecba46c63d6f730a7697a9303a8d67459d3a497ea87fb91d2",
+      "lib/test-settings.p/bluetooth-settings-obexpush.c.o": "396e412389b57827909d6079391f2a48772e8b2ae95bf5ae6963ea5d1925cda0",
+      "lib/test-settings.p/bluetooth-client.c.o": "4d3d59221a655825b83a46a03ceffa43f64213a80884c4fe498d6d9f0e64ed88",
+      "lib/test-settings.p/bluetooth-device.c.o": "e110b236828f91779e7af9b2f59d92ef2902e45d70478d295068777e245dfc38",
+      "lib/test-settings.p/meson-generated_.._gnome-bluetooth-enum-types.c.o": "d511d8e789dd71436476967ff66ef7288c77542bad2799ae7053544cfac7a076",
+      "lib/test-settings.p/bluetooth-agent.c.o": "e477d5f34f532e6d9885b576c903c25f14270728b1898d435b2b91a7da0f5337",
+      "lib/test-settings.p/bluetooth-settings-row.c.o": "49a1842dfe5bd735c9dec3eb6bca29c5c638299fc57c1cc032d4f2332ce1d6c9",
+      "lib/test-settings.p/bluetooth-pairing-dialog.c.o": "b781e6300f0306b50e4e6638eebf9b3489c87af8119bed089e7dc21197b17214",
+      "lib/test-settings.p/meson-generated_.._bluetooth-settings-resources.c.o": "23cd9db6d0752af3310b49342c6cd16b4bdf6295bacfd254ec42463117d4045a",
+      "lib/test-settings.p/bluetooth-utils.c.o": "cb4e56b3dda46d7ef3c31e167b1b918f97dab305b78439863c9d726f012d6272",
+      "lib/test-settings.p/bluetooth-settings-widget.c.o": "df3abbaf5debd77916f474cca3818798b715e8aee88fe1829919d53fc20cf682",
+      "lib/test-settings.p/meson-generated_.._bluetooth-client-glue.c.o": "6011c8adbbdee6be88c8641bbe415e76f7c36cfb90eb68196a355e69ccf97568",
+      "lib/test-settings.p/test-settings.c.o": "970756b9c69a01d22ec9130141c3178bd6cd243fe8d63a6936a323e93d7c3785",
+      "lib/test-agent.p/pin.c.o": "4ea63e029e51e8fecba46c63d6f730a7697a9303a8d67459d3a497ea87fb91d2",
+      "lib/test-agent.p/bluetooth-settings-obexpush.c.o": "396e412389b57827909d6079391f2a48772e8b2ae95bf5ae6963ea5d1925cda0",
+      "lib/test-agent.p/test-agent.c.o": "53605ea6b9f97f4925b63ddecdf23d9b12735d1092675d5b505e20bc1d8eac5b",
+      "lib/test-agent.p/bluetooth-client.c.o": "4d3d59221a655825b83a46a03ceffa43f64213a80884c4fe498d6d9f0e64ed88",
+      "lib/test-agent.p/bluetooth-device.c.o": "e110b236828f91779e7af9b2f59d92ef2902e45d70478d295068777e245dfc38",
+      "lib/test-agent.p/meson-generated_.._gnome-bluetooth-enum-types.c.o": "d511d8e789dd71436476967ff66ef7288c77542bad2799ae7053544cfac7a076",
+      "lib/test-agent.p/bluetooth-agent.c.o": "e477d5f34f532e6d9885b576c903c25f14270728b1898d435b2b91a7da0f5337",
+      "lib/test-agent.p/bluetooth-settings-row.c.o": "49a1842dfe5bd735c9dec3eb6bca29c5c638299fc57c1cc032d4f2332ce1d6c9",
+      "lib/test-agent.p/bluetooth-pairing-dialog.c.o": "b781e6300f0306b50e4e6638eebf9b3489c87af8119bed089e7dc21197b17214",
+      "lib/test-agent.p/meson-generated_.._bluetooth-settings-resources.c.o": "23cd9db6d0752af3310b49342c6cd16b4bdf6295bacfd254ec42463117d4045a",
+      "lib/test-agent.p/bluetooth-utils.c.o": "cb4e56b3dda46d7ef3c31e167b1b918f97dab305b78439863c9d726f012d6272",
+      "lib/test-agent.p/bluetooth-settings-widget.c.o": "df3abbaf5debd77916f474cca3818798b715e8aee88fe1829919d53fc20cf682",
+      "lib/test-agent.p/meson-generated_.._bluetooth-client-glue.c.o": "6011c8adbbdee6be88c8641bbe415e76f7c36cfb90eb68196a355e69ccf97568",
+      "lib/libgnome-bluetooth-3.0.so.13.2.0.p/pin.c.o": "4ea63e029e51e8fecba46c63d6f730a7697a9303a8d67459d3a497ea87fb91d2",
+      "lib/libgnome-bluetooth-3.0.so.13.2.0.p/bluetooth-client.c.o": "2dc77f7ad4845e582dd7ce18a25036a565ab235713bc79c8ec9eca2809d2e856",
+      "lib/libgnome-bluetooth-3.0.so.13.2.0.p/bluetooth-device.c.o": "e6186185eabf639a59a44d475c39d71ea5e48f6fd44fc894f01fb62fd70f14e7",
+      "lib/libgnome-bluetooth-3.0.so.13.2.0.p/meson-generated_.._gnome-bluetooth-enum-types.c.o": "d511d8e789dd71436476967ff66ef7288c77542bad2799ae7053544cfac7a076",
+      "lib/libgnome-bluetooth-3.0.so.13.2.0.p/bluetooth-agent.c.o": "e9cefb8040e372b351e7bf8558efc8795e64eeaf927075b5f3bc846bd6586976",
+      "lib/libgnome-bluetooth-3.0.so.13.2.0.p/bluetooth-utils.c.o": "db5ebe2d76301c78496fe73f4cc259940c62b57008a137f83d46ad7cc2b07d41",
+      "lib/libgnome-bluetooth-3.0.so.13.2.0.p/meson-generated_.._bluetooth-client-glue.c.o": "0f5802705ee02a7a3a250f2c5063fafad1a59592ecae980c54fe0650780c21f1",
+      "lib/test-pin.p/pin.c.o": "4ea63e029e51e8fecba46c63d6f730a7697a9303a8d67459d3a497ea87fb91d2",
+      "lib/test-pin.p/bluetooth-settings-obexpush.c.o": "396e412389b57827909d6079391f2a48772e8b2ae95bf5ae6963ea5d1925cda0",
+      "lib/test-pin.p/bluetooth-client.c.o": "4d3d59221a655825b83a46a03ceffa43f64213a80884c4fe498d6d9f0e64ed88",
+      "lib/test-pin.p/bluetooth-device.c.o": "e110b236828f91779e7af9b2f59d92ef2902e45d70478d295068777e245dfc38",
+      "lib/test-pin.p/meson-generated_.._gnome-bluetooth-enum-types.c.o": "d511d8e789dd71436476967ff66ef7288c77542bad2799ae7053544cfac7a076",
+      "lib/test-pin.p/bluetooth-agent.c.o": "e477d5f34f532e6d9885b576c903c25f14270728b1898d435b2b91a7da0f5337",
+      "lib/test-pin.p/bluetooth-settings-row.c.o": "49a1842dfe5bd735c9dec3eb6bca29c5c638299fc57c1cc032d4f2332ce1d6c9",
+      "lib/test-pin.p/bluetooth-pairing-dialog.c.o": "b781e6300f0306b50e4e6638eebf9b3489c87af8119bed089e7dc21197b17214",
+      "lib/test-pin.p/meson-generated_.._bluetooth-settings-resources.c.o": "23cd9db6d0752af3310b49342c6cd16b4bdf6295bacfd254ec42463117d4045a",
+      "lib/test-pin.p/test-pin.c.o": "1b7567eccc547ecca55738e3f34297b867efc3f06a8deaea4dbea955d4ec3b70",
+      "lib/test-pin.p/bluetooth-utils.c.o": "cb4e56b3dda46d7ef3c31e167b1b918f97dab305b78439863c9d726f012d6272",
+      "lib/test-pin.p/bluetooth-settings-widget.c.o": "df3abbaf5debd77916f474cca3818798b715e8aee88fe1829919d53fc20cf682",
+      "lib/test-pin.p/meson-generated_.._bluetooth-client-glue.c.o": "6011c8adbbdee6be88c8641bbe415e76f7c36cfb90eb68196a355e69ccf97568",
+      "lib/test-class.p/pin.c.o": "4ea63e029e51e8fecba46c63d6f730a7697a9303a8d67459d3a497ea87fb91d2",
+      "lib/test-class.p/bluetooth-settings-obexpush.c.o": "396e412389b57827909d6079391f2a48772e8b2ae95bf5ae6963ea5d1925cda0",
+      "lib/test-class.p/bluetooth-client.c.o": "4d3d59221a655825b83a46a03ceffa43f64213a80884c4fe498d6d9f0e64ed88",
+      "lib/test-class.p/bluetooth-device.c.o": "e110b236828f91779e7af9b2f59d92ef2902e45d70478d295068777e245dfc38",
+      "lib/test-class.p/meson-generated_.._gnome-bluetooth-enum-types.c.o": "d511d8e789dd71436476967ff66ef7288c77542bad2799ae7053544cfac7a076",
+      "lib/test-class.p/bluetooth-agent.c.o": "e477d5f34f532e6d9885b576c903c25f14270728b1898d435b2b91a7da0f5337",
+      "lib/test-class.p/bluetooth-settings-row.c.o": "49a1842dfe5bd735c9dec3eb6bca29c5c638299fc57c1cc032d4f2332ce1d6c9",
+      "lib/test-class.p/bluetooth-pairing-dialog.c.o": "b781e6300f0306b50e4e6638eebf9b3489c87af8119bed089e7dc21197b17214",
+      "lib/test-class.p/meson-generated_.._bluetooth-settings-resources.c.o": "23cd9db6d0752af3310b49342c6cd16b4bdf6295bacfd254ec42463117d4045a",
+      "lib/test-class.p/test-class.c.o": "b413fd0a51d32d0c53eb075af3907901a3ae3936379c54644f66772184dc7451",
+      "lib/test-class.p/bluetooth-utils.c.o": "cb4e56b3dda46d7ef3c31e167b1b918f97dab305b78439863c9d726f012d6272",
+      "lib/test-class.p/bluetooth-settings-widget.c.o": "df3abbaf5debd77916f474cca3818798b715e8aee88fe1829919d53fc20cf682",
+      "lib/test-class.p/meson-generated_.._bluetooth-client-glue.c.o": "6011c8adbbdee6be88c8641bbe415e76f7c36cfb90eb68196a355e69ccf97568",
+      "sendto/bluetooth-sendto.p/main.c.o": "64bc24339ad6eb80d31d3e220b8a696c1ec2c7fefa9664df477825c0e20bc666",
+      "tests/test-bluetooth-utils.p/test-bluetooth-utils.c.o": "545f42207edfec666c43bc34b2a57803886d1297f68a8f9bfb28b93caadf4e28",
+      "tests/test-bluetooth-utils.p/meson-generated_.._.._lib_gnome-bluetooth-enum-types.c.o": "d511d8e789dd71436476967ff66ef7288c77542bad2799ae7053544cfac7a076",
+      "tests/test-bluetooth-device.p/test-bluetooth-device.c.o": "e2e5263dfc56d16da0534ad393c8c069f636cecfb1c753283b308f3150a9edb4",
+      "tests/test_battery.p/test_battery.c.o": "66cacdd9d6ba330021170466cb0e1b56dad2cb6b4927fa5582ffa3189cc082ba"
+    },
+    "stage_sha256": {
+      "usr/lib/libgnome-bluetooth-ui-3.0.so.13.2.0": "fad6eb18f521cbca9796d64a4b686c6398740ee7216961d1c68ee6ff2e247d46",
+      "usr/lib/libgnome-bluetooth-3.0.so.13.2.0": "6a6a911f56dc86c8309edea2f7b62d011009806884d1b924808dc9de7df7503d",
+      "usr/bin/bluetooth-sendto": "2946a241307d716239ff54200c4687d5751415a5539e0b71e074e19e95f5d21c",
+      "usr/include/gnome-bluetooth-3.0/bluetooth-settings-widget.h": "213c61eb7581c7ecf6953c68e149b2858c918f650d5d7b6e7c2d0d4a8a2433a0",
+      "usr/lib/girepository-1.0/GnomeBluetooth-3.0.typelib": "3a56a6d8ae711568fbe9ec3a4a79f6adfb60526f41b1b27402f21ec5d8596e05",
+      "usr/lib/pkgconfig/gnome-bluetooth-ui-3.0.pc": "c6331275548f85100c34c101a70bacb9b725629d756571f7b8cc0d5438e5bbae",
+      "usr/lib/pkgconfig/gnome-bluetooth-3.0.pc": "505cb5514823cb8e159fe0acbbc1a51b0e5a30b023091ece1598cf4fcd643d44",
+      "usr/share/gnome-bluetooth-3.0/pin-code-database.xml": "f7285bc420b3fca06ee15666da7faa66d842041bc27345e81b2ab99e246483e8",
+      "usr/share/applications/bluetooth-sendto.desktop": "7005c06e52439327ffb357f2a29473151cd60bc9dcb8c4734e3bb88aae83bf73",
+      "usr/share/gir-1.0/GnomeBluetooth-3.0.gir": "7ce4caa58d6b5ae54c27472c719ecac014109f221ec5e1d5403b57d6385c0cf3",
+      "usr/share/man/man1/bluetooth-sendto.1": "126be00959525262f17bacc42393f0227a855643034a6bdd9aaf0b5874656a27",
+      "usr/share/locale/gd/LC_MESSAGES/gnome-bluetooth-3.0.mo": "1ccf3b090d09f1ddb97e50a25f928e5ce394c91f307dcfcf7a8e97b7e6002034",
+      "usr/share/locale/zh_HK/LC_MESSAGES/gnome-bluetooth-3.0.mo": "a2026e4d72c648b44664faf83559b2b79f8735c7758a0f5584b6c2f8ff4fd119",
+      "usr/share/locale/sk/LC_MESSAGES/gnome-bluetooth-3.0.mo": "9c94403b11fe8e8a7eaba829fcc1b39b319a6651b501f6e17881edc0b9e14890",
+      "usr/share/locale/fi/LC_MESSAGES/gnome-bluetooth-3.0.mo": "f51a19921b66e76736180f4b30b6a228deba20e8a563c7b49f6d0cec6ba51932",
+      "usr/share/locale/lv/LC_MESSAGES/gnome-bluetooth-3.0.mo": "45c940b736874d4a222baa1f75cc0165545e37c72a0d46d87e5f3fd005093021",
+      "usr/share/locale/sr@latin/LC_MESSAGES/gnome-bluetooth-3.0.mo": "5fbb7bb5bce3a75b1b13edfcfb83b087ecbe6acbbfb39298f8905df528d1e9ee",
+      "usr/share/locale/ka/LC_MESSAGES/gnome-bluetooth-3.0.mo": "356670b7e77adf1cefad2702e00df59a5e6774e744425ad189de2dafb633cb97",
+      "usr/share/locale/ab/LC_MESSAGES/gnome-bluetooth-3.0.mo": "ff3ac221dd4335c72bc3ca488e86cb3ae77cab2ad0fd8f264b9660f06c667a6f",
+      "usr/share/locale/hi/LC_MESSAGES/gnome-bluetooth-3.0.mo": "ec18f2e4a02b54d97df049fa6e102064477a034188738a84781473075b486f84",
+      "usr/share/locale/ta/LC_MESSAGES/gnome-bluetooth-3.0.mo": "938d35e9d308b349d2ba9174b56b35ab5537308965f706cc347d8dc767c1a19f",
+      "usr/share/locale/pt/LC_MESSAGES/gnome-bluetooth-3.0.mo": "7aff3ff27d30a210fdb637fcd5087a39c476cad0766021d9689f36f2b4bb6cb7",
+      "usr/share/locale/ko/LC_MESSAGES/gnome-bluetooth-3.0.mo": "de14cc13d512cfb0b2c88caf4d1e14fc2d934039ff7c0be5755ce02bcba0426a",
+      "usr/share/locale/et/LC_MESSAGES/gnome-bluetooth-3.0.mo": "370a280338fd54e18b4c2d948bf9d06afa6414d1bc9a78222f05ea44d5e1189c",
+      "usr/share/locale/de/LC_MESSAGES/gnome-bluetooth-3.0.mo": "d14bab41cdbf2ef41e98064f529c0166a171ece741bf4dfbe95bb72cfc62c39e",
+      "usr/share/locale/th/LC_MESSAGES/gnome-bluetooth-3.0.mo": "9bab52d3a9415fa72b5bd7a1b94c170c32d290cd9a3e0704eae6054e2f7a23f9",
+      "usr/share/locale/is/LC_MESSAGES/gnome-bluetooth-3.0.mo": "acd045f63383bc2b5643dd05e918959d983c2d04fbc826b9de1e0ffa5019b876",
+      "usr/share/locale/gl/LC_MESSAGES/gnome-bluetooth-3.0.mo": "e3835429159ed35bc1e99efd51d5a0c52adb13fdddc88c55841849ef04032202",
+      "usr/share/locale/ckb/LC_MESSAGES/gnome-bluetooth-3.0.mo": "01b87371af545db240f90529f2b65de8e8845202460f077980d6bd1fd75dbee6",
+      "usr/share/locale/nl/LC_MESSAGES/gnome-bluetooth-3.0.mo": "57484ef4e03e8800405215d42f606b3e98584ac012e398b0fe88709d0fef1b6b",
+      "usr/share/locale/te/LC_MESSAGES/gnome-bluetooth-3.0.mo": "2ae58c2c9e2714ce6f34580e67356761aebeba4355f43d5104f2498886f54868",
+      "usr/share/locale/zh_TW/LC_MESSAGES/gnome-bluetooth-3.0.mo": "ae55ae39ba0c822557ceb57157c665fa197ed15b6b3c14c10352463083b9ba41",
+      "usr/share/locale/ga/LC_MESSAGES/gnome-bluetooth-3.0.mo": "b9856649d5a429999ad746298e29e7867c9699e1eaf2a3dac8ede85ee90b8f8c",
+      "usr/share/locale/he/LC_MESSAGES/gnome-bluetooth-3.0.mo": "784d45f86eb2974797a528da35e64865dfb7a249578b372667c6e6875785e19c",
+      "usr/share/locale/lt/LC_MESSAGES/gnome-bluetooth-3.0.mo": "ec263016ff43b2fbc399624d858727801551b38e79c076925e7f8ca4d7ee3185",
+      "usr/share/locale/vi/LC_MESSAGES/gnome-bluetooth-3.0.mo": "05a79337b36fdcbbd297debc8afbd0e5d0d466983abb6af24c2417a0c9f1261b",
+      "usr/share/locale/tg/LC_MESSAGES/gnome-bluetooth-3.0.mo": "9bb35bf15e4dea261c5b4f06718e007797db74d41d377a9d51f5bf4d49ef44d7",
+      "usr/share/locale/bn_IN/LC_MESSAGES/gnome-bluetooth-3.0.mo": "fd2320796c29e09d605544b4def332dcbb92cfdb075ebd7457317c910719e666",
+      "usr/share/locale/af/LC_MESSAGES/gnome-bluetooth-3.0.mo": "9a4afc3c449fa2bd95935c5ecb7e63f90348e98a1681779542cd3590ea0f34da",
+      "usr/share/locale/uk/LC_MESSAGES/gnome-bluetooth-3.0.mo": "a9423fc91b1228bcf3453c08b7e443197ef8a4b135b8999b494e1bf45b9cdc59",
+      "usr/share/locale/xh/LC_MESSAGES/gnome-bluetooth-3.0.mo": "da9a6b07221fd3b2aac6bc1c9866dd606e0d7d3c7fe5e4d64e41cbf98e3fae61",
+      "usr/share/locale/an/LC_MESSAGES/gnome-bluetooth-3.0.mo": "be004377fcd915249d344c705b528fba55bfce63e7a3d9d7f22b73a47f4b3cc7",
+      "usr/share/locale/mk/LC_MESSAGES/gnome-bluetooth-3.0.mo": "751e8dc33e9183a5ddad7287c0fa49dcf67644f4f1421a14f088e4ad51e5cd0e",
+      "usr/share/locale/tr/LC_MESSAGES/gnome-bluetooth-3.0.mo": "c74cd4a5aaf9f7927b7b997a883241900ee91897ae2c24e6450c644b03644053",
+      "usr/share/locale/ro/LC_MESSAGES/gnome-bluetooth-3.0.mo": "4fcfd08a920345ab2fd756d1b308c8ed232e554234e8bd84ee767a0be2254cc6",
+      "usr/share/locale/ug/LC_MESSAGES/gnome-bluetooth-3.0.mo": "9ee320f1c13afb0cf54125979d976cd92baf89b9c92fec7ed120b7bbda9f8a69",
+      "usr/share/locale/mn/LC_MESSAGES/gnome-bluetooth-3.0.mo": "4849a7b5dcf7120b9ab03bff363574c7534335663b6c80442d1f8407c3716886",
+      "usr/share/locale/es/LC_MESSAGES/gnome-bluetooth-3.0.mo": "ce4f1b6a8a954d5b174e922f45f8379ce7fd36591f18e993fbc884dea464d1ec",
+      "usr/share/locale/fr/LC_MESSAGES/gnome-bluetooth-3.0.mo": "71fed19da18e72c4a525b43f19f9bed1c74cfbda47f8172078e017d01f890fb9",
+      "usr/share/locale/en_GB/LC_MESSAGES/gnome-bluetooth-3.0.mo": "9600de1181b092683ce6324318df23b0f8d0d1de4b8b094585f1b0db0edab21b",
+      "usr/share/locale/be/LC_MESSAGES/gnome-bluetooth-3.0.mo": "6399089e52f8b1d597e60708f9965a389ddc03d79d3a5db92544c46dd02772c8",
+      "usr/share/locale/crh/LC_MESSAGES/gnome-bluetooth-3.0.mo": "c582555f704fbf71044bff79d30e50e3f102c56c550fe3222d5c87387f00ce34",
+      "usr/share/locale/hu/LC_MESSAGES/gnome-bluetooth-3.0.mo": "a6c899f3992f751afe8a8450a3e2f56940fd6e38166baca4fa0c1a75830a65ce",
+      "usr/share/locale/da/LC_MESSAGES/gnome-bluetooth-3.0.mo": "0599e6cf27079167e5fbacd8173ac5d29dc8a182bff208040a1a579ea5449e0c",
+      "usr/share/locale/bg/LC_MESSAGES/gnome-bluetooth-3.0.mo": "086c6f646d61927d643907f9a97c7fdaf490f2d14287dd97d5574b059046e303",
+      "usr/share/locale/km/LC_MESSAGES/gnome-bluetooth-3.0.mo": "d1a508513670ed996b3a47438a551998db388381a1c761ba97065639da84d2d4",
+      "usr/share/locale/zu/LC_MESSAGES/gnome-bluetooth-3.0.mo": "43cae23cb380b737ee0d65adfdfc56ed5463438d9a1f263bea6db3c26bf85f75",
+      "usr/share/locale/as/LC_MESSAGES/gnome-bluetooth-3.0.mo": "8464086fe7a7c6d098947d72dd8fa289bbba2834034b82f4fc5c1142e00385c1",
+      "usr/share/locale/ca/LC_MESSAGES/gnome-bluetooth-3.0.mo": "0c107fed2ba98167c1bb20b65383d383ab119ac0f960930241936250d56daf18",
+      "usr/share/locale/ast/LC_MESSAGES/gnome-bluetooth-3.0.mo": "edf5595db5411ad047f5d1e60b1b51dcc3415b761cee3040a83675f7ac501b26",
+      "usr/share/locale/fy/LC_MESSAGES/gnome-bluetooth-3.0.mo": "ce1b3e49ab6373fe2db26197118bec3d1186a2af9b6cb6ca77bc53f4b5603a11",
+      "usr/share/locale/ne/LC_MESSAGES/gnome-bluetooth-3.0.mo": "6912a9d827dc8c6b18547dcd21005d61f8e772dd7944ae730ef160842abb58c6",
+      "usr/share/locale/or/LC_MESSAGES/gnome-bluetooth-3.0.mo": "fae9df7081890ad73c6229e5fdbc383f9f3e1986f108b3382dcdc463dce2103d",
+      "usr/share/locale/gu/LC_MESSAGES/gnome-bluetooth-3.0.mo": "4c42ea6517172d4b4a0bcc13f56d487b8394646ee604a29baa2abbbe9d9be7e0",
+      "usr/share/locale/pa/LC_MESSAGES/gnome-bluetooth-3.0.mo": "91350e974d8ebba864fe7101aea6f91b3a163d7e1e934d661bdaaa695226119c",
+      "usr/share/locale/pl/LC_MESSAGES/gnome-bluetooth-3.0.mo": "914c0671c9b0ea376df770e1a4cefee06384e0d5fb44a97a4a55e8929a4110da",
+      "usr/share/locale/eu/LC_MESSAGES/gnome-bluetooth-3.0.mo": "7c3c62b0bbdfdbdaff7d694bbe0b6ef082703ec8af0381c377ea70bd6172fa64",
+      "usr/share/locale/mjw/LC_MESSAGES/gnome-bluetooth-3.0.mo": "756ed8f267c0f80f40a4753c7da8754372ed140d5b90fa5bb320b18591638c66",
+      "usr/share/locale/ms/LC_MESSAGES/gnome-bluetooth-3.0.mo": "0c082a9196a23ccdc8f90c7f08eafef362cbdfa4edb2ac2aea9fc988bcc1c2c6",
+      "usr/share/locale/ru/LC_MESSAGES/gnome-bluetooth-3.0.mo": "b5520544f48d1bba80e73363bc1acca9c3a2d49b3605a9bd938c756425d0a74f",
+      "usr/share/locale/bn/LC_MESSAGES/gnome-bluetooth-3.0.mo": "74f468b2b347ba7f9a673c5ced3505c22a7301b818bf2093b71ad8dab6336ace",
+      "usr/share/locale/eo/LC_MESSAGES/gnome-bluetooth-3.0.mo": "18c95b4cee5b6b1c3adb7b0a362e3efa3185857aa390dc1552003709b8e53447",
+      "usr/share/locale/fa/LC_MESSAGES/gnome-bluetooth-3.0.mo": "6c19f6d288cc5a7173f25d9fed5fd1f0730a6961f3093f8a39e4833ec14d6184",
+      "usr/share/locale/ku/LC_MESSAGES/gnome-bluetooth-3.0.mo": "97ef55d8fba8eccad31888d6059ffae98d3222235786d46470c15fd679d10a9d",
+      "usr/share/locale/el/LC_MESSAGES/gnome-bluetooth-3.0.mo": "54894bd1c9ed454c328928653b55d89f5d3f2697e0b897f4e1970ddf6b578211",
+      "usr/share/locale/kab/LC_MESSAGES/gnome-bluetooth-3.0.mo": "15f7a0c1571cd3d67c2490e001d64f9757b8c5914a9c99a6234bde92499faa97",
+      "usr/share/locale/fur/LC_MESSAGES/gnome-bluetooth-3.0.mo": "916387565181780fc02a25378f9b9cf9e601141b9d621bd6f3bd8228b89e4dc5",
+      "usr/share/locale/sr/LC_MESSAGES/gnome-bluetooth-3.0.mo": "3b3a65735134074625ef10f6543b34fc9e39ccaa69ed3861debd3187f8927189",
+      "usr/share/locale/kk/LC_MESSAGES/gnome-bluetooth-3.0.mo": "fe066664ab31fbf4e3b1871e3ddeb5ec1d29141b683f655b9f39916d76b9ad76",
+      "usr/share/locale/it/LC_MESSAGES/gnome-bluetooth-3.0.mo": "57ba29507a53a807d94483b98e870afcd7dbc1c6ae57052a0e1bb7293df7f3df",
+      "usr/share/locale/kn/LC_MESSAGES/gnome-bluetooth-3.0.mo": "99c01365e2508594519842a3c7834cf9f8b9b4c6bd5b92287a73ed932a835485",
+      "usr/share/locale/ja/LC_MESSAGES/gnome-bluetooth-3.0.mo": "f3f1f532a311c72314ed313a81a89cc50ab971f1091f26a848d00b9bb038df08",
+      "usr/share/locale/oc/LC_MESSAGES/gnome-bluetooth-3.0.mo": "bc6e89efa17820f41740f9df9cdf0778f79426f0b0c66607686943fdd2fa7964",
+      "usr/share/locale/pt_BR/LC_MESSAGES/gnome-bluetooth-3.0.mo": "4708d0feb1381a2afb54eef1b7bf6acabf525201d6a21f9550656591ef05084b",
+      "usr/share/locale/id/LC_MESSAGES/gnome-bluetooth-3.0.mo": "3c3e6438ccca31bd36684aac4b103a96deb4c03334e443b55329d2b5ff7ac612",
+      "usr/share/locale/en@shaw/LC_MESSAGES/gnome-bluetooth-3.0.mo": "4bb2008109cb870aff335b30cd073bcf808676c3ba741f027261c057a8ff79e5",
+      "usr/share/locale/ie/LC_MESSAGES/gnome-bluetooth-3.0.mo": "031a6de225bb7eaaf33595d5733758b88b37d019542b5879d09dad23f0a6f718",
+      "usr/share/locale/nn/LC_MESSAGES/gnome-bluetooth-3.0.mo": "cf6e42cf1dfb47c020157fc04c56b1d67f1d8d9c7a24a7f14da8cdc29347de1e",
+      "usr/share/locale/hy/LC_MESSAGES/gnome-bluetooth-3.0.mo": "ecdc70ba0a6e4a2982e8306384c83c0ba55385924a8c90caa05f004dcbc05a25",
+      "usr/share/locale/sv/LC_MESSAGES/gnome-bluetooth-3.0.mo": "48e979a5534aae8f94934d87623080b5ab0ef3b34b07fd112de3d74d96a6b769",
+      "usr/share/locale/mr/LC_MESSAGES/gnome-bluetooth-3.0.mo": "1af3110812a1b3a039c56d5110514e29f65461c9e682dc6f1df007228e9bc173",
+      "usr/share/locale/ca@valencia/LC_MESSAGES/gnome-bluetooth-3.0.mo": "a5fb99f96e849c2d45ea7ae9cb25ad16bbc0bbff169bbba9eedbe8882bc61715",
+      "usr/share/locale/ar/LC_MESSAGES/gnome-bluetooth-3.0.mo": "ae56ce1e319657c5575e6b29cf93b1759f6f4c44aeb6698adc5b6a7285efcaf1",
+      "usr/share/locale/zh_CN/LC_MESSAGES/gnome-bluetooth-3.0.mo": "2907a5671805706012b277d04f13ae9178cac6e102a7a7f547f3e6a09843a3de",
+      "usr/share/locale/nb/LC_MESSAGES/gnome-bluetooth-3.0.mo": "d6756f7af4ab48608cda6b029256e58f42917c04c0d2a8c5331d4adfd88da333",
+      "usr/share/locale/bs/LC_MESSAGES/gnome-bluetooth-3.0.mo": "81d93a7c2354259e733cb8c8c0a1010262d58677b848d255cfbb9ed4bc4f003f",
+      "usr/share/locale/cs/LC_MESSAGES/gnome-bluetooth-3.0.mo": "f93c9a7c98c0095930c9ca9c0f007895de4a29f78631eca327f5062ffb8c254d",
+      "usr/share/locale/mai/LC_MESSAGES/gnome-bluetooth-3.0.mo": "36d5358bb50968b52ae2178a5710135755ca724112d70fc1f6de214e0cbdde5c",
+      "usr/share/locale/sl/LC_MESSAGES/gnome-bluetooth-3.0.mo": "49a7134dcf2e23373385b81a5736ce97b59fb5e41db2276e9ff2254e0edc772d",
+      "usr/share/locale/ml/LC_MESSAGES/gnome-bluetooth-3.0.mo": "f0ea2a827884fb691d47e29cf00f002d5847e05b7fa4510cb2825eb20f3ca693",
+      "usr/share/locale/hr/LC_MESSAGES/gnome-bluetooth-3.0.mo": "3960df35c15f1680432e2b128e1cf1c872e08fab42dbc4a8b81cb6a2da405353"
+    }
+  },
+  "stage_bytes": 1326627,
+  "target_free": 17203994624,
+  "scratch_free": 1123311616
+}

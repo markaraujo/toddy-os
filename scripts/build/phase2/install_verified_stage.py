@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gnome-bluetooth': ('47.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy9), libadwaita (= 1.9.3-1+toddy1), gsound (= 1.0.3-1+toddy2), libnotify (= 0.8.8-1+toddy1), upower (= 1.91.3-1+toddy1), systemd (>= 261.2-1+toddy3)', 'gnome-bluetooth-47.2.tar.xz', 'usr/lib/pkgconfig/gnome-bluetooth-ui-3.0.pc'),
+    'gsound': ('1.0.3', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libcanberra (= 0.30-1+toddy2)', 'gsound-1.0.3.tar.xz', 'usr/lib/pkgconfig/gsound.pc'),
     'libpwquality': ('1.4.5', 'glibc (>= 2.44-1+toddy1), cracklib (= 2.10.3-1+toddy1), linux-pam (= 1.7.2-1+toddy2)', 'libpwquality-1.4.5.tar.bz2', 'usr/lib/pkgconfig/pwquality.pc'),
     'cracklib': ('2.10.3', 'glibc (>= 2.44-1+toddy1), zlib (= 1.3.2-1+toddy1)', 'cracklib-2.10.3.tar.xz', 'usr/include/crack.h'),
     'gnome-online-accounts': ('3.58.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy9), libadwaita (= 1.9.3-1+toddy1), librest (= 0.10.2-1+toddy1), libsecret (= 0.21.7-1+toddy1), libsoup (= 3.6.6-1+toddy1), json-glib (= 1.10.8-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'gnome-online-accounts-3.58.1.tar.xz', 'usr/lib/pkgconfig/goa-backend-1.0.pc'),
@@ -1257,6 +1259,12 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='gnome-bluetooth':
+        from qualify_gnome_bluetooth import qualify as qualify_gnome_bluetooth
+        qualify_gnome_bluetooth(ROOT)
+    if name=='gsound':
+        from qualify_gsound import qualify as qualify_gsound
+        qualify_gsound(ROOT)
     if name=='libpwquality':
         from qualify_libpwquality import qualify as qualify_libpwquality
         qualify_libpwquality(ROOT)
@@ -1685,7 +1693,7 @@ if __name__ == '__main__':
         for relative,row in before['entries'].items():
             if relative.startswith('etc/') and 'sha256' in row: conffiles+=['--conffile','/'+relative]
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,
-                    version+('-1+toddy2' if name in ('linux-pam','gnome-settings-daemon','gnome-terminal') else '-1+toddy1'), str(destination), *source_args,
+                    version+('-1+toddy2' if name in ('linux-pam','gnome-settings-daemon','gnome-terminal','gsound') else '-1+toddy1'), str(destination), *source_args,
                     '--recipe', 'scripts/build/phase2/'+name+'-install.sh',
                     '--depends', depends, '--install', *conffiles,
                     *(['--architecture','all'] if name in ('unicode-ucd','fast-float','blueprint-compiler') else [])], cwd=ROOT, check=True)

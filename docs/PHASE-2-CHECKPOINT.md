@@ -8,16 +8,47 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current B02 slice: native GNOME Control Center50.4 prerequisite closure and
-source/work preparation. Tecla/librest/GOA/Cracklib/libpwquality now owned. EXACT
-NEXT: inspect frozen Control Center tar/required SDKs and existing Doxygen scratch
-UUID/free space; prepare a NEW private source+worker subtree/bind and unique
-receipt there, with original cache/source identity checks. Current target free
-17209040896B versus16GiB reserve leaves29171712B, less than49149703B expanded
-Control Center source; NEVER extract it onto root or lower reserve. No new
-filesystem/physical device needed for that bounded source/build subtree. Preserve
-one writer and source read-only compiler isolation; add exact existing-bind cold
-recovery before any later reboot. No Control Center guest source/job exists yet.
+Current B02 slice: next Linux Settings prerequisite ModemManager1.24.2.
+Frozen source ModemManager-1.24.2.tar.gz SHA
+fbc75adcc0d7b0565f256e7ff4e8872b0a37c4413ff576665f7470932d9c1b68,
+expanded13547858B. No ModemManager guest source/job exists. EXACT NEXT: inspect
+frozen Meson options/required SDKs, actual root/scratch free and reserve budgets;
+prepare its source/private worker on existing preallocated scratch as appropriate.
+Do not disable required Control Center Linux panels or silently choose unsupported
+modem hardware. Preserve source identity, one writer and exact cold-bind recovery.
+Control Center itself expanded49149703B still needs scratch source+work, not root.
+
+GNOME Bluetooth47.2 source/compiler/stage/native install COMPLETE,
+[stage](evidence/B02-gnome-bluetooth-stage.json)/
+[install](evidence/B02-gnome-bluetooth-install.json):115ELFs/101files,
+original2programs5cases passed,15private-bus integration programs compiled/deferred.
+Native recipe/post0/0/119changes; actual installed C UI header/type query only
+(no widget instantiated), core GI address/classification/shared ABI/APT0 under
+UID101/NNP/private-dev/no-route. No adapter/pairing/transfer/UI/physical acceptance.
+NEVER replay preparation/source/compiler/tests/stage/install. No live writer.
+
+Private scratch preparation COMPLETE, [receipt](evidence/B02-bluetooth-scratch.json):
+new worker inode2215 inside existing Doxygen scratch
+UUIDae4347fb-31fd-4193-a333-0a549e144231. Original cache manifest and GSound bytes
+unchanged. Future cold restore must first restore Doxygen, then updated existing-
+bind helper binds this SAME optional Bluetooth subtree with the original three
+editor workers. Never recreate/replay/format/resize or run old restore contexts.
+
+GSound1.0.3 revision2 COMPLETE, [stage](evidence/B02-gsound-stage.json)/
+[install](evidence/B02-gsound-install.json). Original native1 wrong libcanberra
+exact revision left unpacked; actual qualified library is0.30-1+toddy2. Controlled
+metadata-only package2 upgrade installed (source/compiler/stage bytes retained),
+own direct GObject/GIO linker flags corrected in verify-only3/post0/0/root0.
+Actual installed UID101/NNP/private-dev/no-route null backend properties/disabled
+refusal/two recoveries/GI type/CLI help-empty refusal/APT0. No original suite,
+not a pass; no audible/device/Bluetooth/Settings UI acceptance. NEVER replay.
+
+Control Center Linux conditional source confirms BOTH ModemManager mm-glib and
+GNOME Bluetooth UI mandatory. Versions1.24.2/47.2 frozen; GSound is the latter's
+required predecessor. Do not disable Linux panels or misreport complete Settings.
+Control Center expanded49149703B exceeds target headroom; use existing scratch
+source+worker for that later build, preserve16GiB/100GiB reserves. ModemManager
+and Control Center guest sources/jobs do not exist yet.
 
 Cracklib2.10.3 COMPLETE, [stage](evidence/B02-cracklib-stage.json)/
 [install](evidence/B02-cracklib-install.json): two original programs20ELFs/67files,

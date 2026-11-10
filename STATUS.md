@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T16:54:19.314184+00:00
+Updated: 2026-11-10T17:16:42.040191+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T16:54:19.314184+00:00
+Last verified: 2026-11-10T17:16:42.040191+00:00
 
 Verified:
 
@@ -168,8 +168,10 @@ Verified:
 - Owned GOA3.58.1 core/backend/GI/Vala: original native recipe0/post1/135changes retained, corrected verify-only2/post0/0/changed0. Actual UID101/NNP/private-dev/no-route CLI invalid-option refusal/local GI UTF8 skeleton/reset2/no account files/shared ABI/APT0. No session daemon/real accounts/providers/secret/Settings/GUI acceptance.
 - Owned Cracklib2.10.3: two original endian/dictionary tests/20ELFs/67stagefiles, exact full recommended1930240word source/packed indices, install/post0/0/84changes. Installed C API weak/missing-dictionary refusals/two recoveries/no-echo CLI/APT0; no owner password/PAM mutation.
 - Owned libpwquality1.4.5:12ELFs/66stagefiles, no original suite (not a pass); install/post0/0/80changes, actual UID101/NNP/private-dev/no-route C API/CLI weak-invalid-setting-empty refusals/two recoveries/ABI/APT/conffile0. All12active PAM files unchanged, module inactive/unqualified for authentication. Settings GUI pending.
+- Owned GSound1.0.3 native revision2: original source/stage/help preserved, no upstream tests registered (not a suite pass). First wrong libcanberra revision declaration left unpacked1; corrected metadata-only package2 installed, own GObject linker flags fixed verify-only3/post0/0/root0. Actual installed UID101/NNP/private-dev/no-route null backend Unicode properties/disabled refusal/two recoveries/GI type/help-empty refusal/APT0; no audible/Bluetooth/Settings GUI acceptance.
+- Owned GNOME Bluetooth47.2 core/UI/GI/sendto:115ELFs/101stagefiles, original two non-display programs5cases0;15private-bus integration programs compiled/deferred. Native recipe/post0/0/119changes, actual UID101/NNP/private-dev/no-route installed C UI header/type query (no widget instantiated), core GI address validation/classification/shared ABI/APT0. No real adapter/pairing/transfer/Settings/physical acceptance. Same private Doxygen worker inode2215/cache unchanged/cold bind recovery qualified structurally, no replay.
 
-Running: No guest writer. Tecla/librest/GOA/Cracklib/libpwquality packages installed and qualified within documented scope. Next GNOME Control Center50.4 source/work staging on existing preallocated scratch: expanded source exceeds current target reserve headroom; do not extract onto root or lower reserve. Complete ALL B02 then stop.
+Running: No guest writer. GNOME Bluetooth47.2 and GSound1.0.3 revision2 installed/qualified within documented scopes. Next Linux Settings prerequisite ModemManager1.24.2: inspect frozen source/options and actual root/scratch budgets before source/worker preparation. Preserve reserves and Linux panels; complete B02 then stop.
 
 Remaining:
 

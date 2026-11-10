@@ -2665,6 +2665,42 @@
       "book_md5": "6b70e355269aef0b9ddb2b9d17936f21",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "modemmanager",
+      "version": "1.24.2",
+      "filename": "ModemManager-1.24.2.tar.gz",
+      "url": "https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/1.24.2/ModemManager-1.24.2.tar.gz",
+      "sha256": "fbc75adcc0d7b0565f256e7ff4e8872b0a37c4413ff576665f7470932d9c1b68",
+      "reference": "BLFS13.1-systemd general/ModemManager.html",
+      "book_page_sha256": "713568385f133d85ac01e6b6b802dbaac474bac6f791c0f3fadf559efad212bb",
+      "book_md5": "b72860c54670f362e947edba160fa98e",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "gnome-bluetooth",
+      "version": "47.2",
+      "filename": "gnome-bluetooth-47.2.tar.xz",
+      "url": "https://download.gnome.org/sources/gnome-bluetooth/47/gnome-bluetooth-47.2.tar.xz",
+      "sha256": "41f20e6d6176b72590af63552b232d83f2fffdd77ecfaa5eaf32c5a4a86fad64",
+      "reference": "BLFS13.1-systemd gnome/gnome-bluetooth.html",
+      "book_page_sha256": "8204c2aa5674b047decdff4888edc99072f1d2dca4ba9104b36ecd7d8b26a586",
+      "book_md5": "8b4677d6693a6619f28d97a895f1b3be",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "gsound",
+      "version": "1.0.3",
+      "filename": "gsound-1.0.3.tar.xz",
+      "url": "https://download.gnome.org/sources/gsound/1.0/gsound-1.0.3.tar.xz",
+      "sha256": "ca2d039e1ebd148647017a7f548862350bc9af01986d39f10cfdc8e95f07881a",
+      "reference": "BLFS13.1-systemd gnome/gsound.html",
+      "book_page_sha256": "c7cf5e9f1ef3967dd52bb739d94d14a9903dbdd4d2c71145b3a31ec79cbae128",
+      "book_md5": "7338c295034432a6e782fd20b3d04b68",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

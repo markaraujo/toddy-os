@@ -1,0 +1,1955 @@
+{
+  "scope": "Owned GNOME Bluetooth47.2 core/UI/GI/sendto; two original non-display programs5cases,15private-bus integration programs deferred. Actual installed C header/type query and core GI address/classification only, no widget/adapter/pairing/transfer/Settings/physical acceptance.",
+  "native": {
+    "step": "b02-gnome-bluetooth-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 119,
+    "started": "2026-11-10T17:12:53.181265+00:00",
+    "finished": "2026-11-10T17:13:10.422317+00:00",
+    "recipe_sha256": "4c2bf0e04161b3bf18a4df913c53176e909e101a83276dce144c83811af072af",
+    "postcheck_sha256": "b3515623b2e089ad03b9935d335c3af0fbb0fff0e1b1025002117150d603e6ec",
+    "log_sha256": "727fa97d12b6c862a9e0dbb4863ee6092ba0f3bdd73248f556daa4accce1f3bd"
+  },
+  "native_success_receipt_sha256": "a9062311c07106eefa11ed9e630ff01c086e71976b4ec0c230a521f1a9085f98",
+  "timing": {
+    "step": "b02-gnome-bluetooth-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.572,
+        "entries": 162057,
+        "regular_files": 144551,
+        "regular_bytes": 7514881022
+      },
+      {
+        "seconds": 14.471,
+        "entries": 162173,
+        "regular_files": 144659,
+        "regular_bytes": 7516319908
+      }
+    ],
+    "total_seconds": 32.904
+  },
+  "consumer": {
+    "scope": "Owned GNOME Bluetooth47.2 core/UI/GI/sendto payload; UID101/NNP/private-dev/no-route C UI header/type query only (no widget instantiated), real installed core GI address validation/classification/ABI/APT0. Original2programs5cases reused;15private-bus integration programs compiled/deferred. No real adapter/pairing/transfer/Bluetooth GUI/Settings/physical acceptance.",
+    "C_consumer": "Installed BluetoothSettingsWidget C SDK/type ABI only; no widget instantiated\n",
+    "GI_consumer": "GnomeBluetooth3 GI address validation/classification only\n",
+    "installed_stage_files_identical": 101,
+    "shared_library_resolution": true,
+    "widget_instantiated": false,
+    "physical_Bluetooth_tested": false
+  },
+  "package": {
+    "name": "gnome-bluetooth",
+    "version": "47.2-1+toddy1",
+    "archive_sha256": "48387e21bd77986d02ca31e35417c4fb0b8ef3702adbcf08631d695bc4eafdc0",
+    "recipe_sha256": "4c2bf0e04161b3bf18a4df913c53176e909e101a83276dce144c83811af072af",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "gnome-bluetooth",
+        "version": "47.2",
+        "filename": "gnome-bluetooth-47.2.tar.xz",
+        "url": "https://download.gnome.org/sources/gnome-bluetooth/47/gnome-bluetooth-47.2.tar.xz",
+        "sha256": "41f20e6d6176b72590af63552b232d83f2fffdd77ecfaa5eaf32c5a4a86fad64",
+        "reference": "BLFS13.1-systemd gnome/gnome-bluetooth.html",
+        "book_page_sha256": "8204c2aa5674b047decdff4888edc99072f1d2dca4ba9104b36ecd7d8b26a586",
+        "book_md5": "8b4677d6693a6619f28d97a895f1b3be",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "payload": {
+      "/usr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/bin": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/gir-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/man": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/gnome-bluetooth-3.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/applications": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/gir-1.0/GnomeBluetooth-3.0.gir": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7ce4caa58d6b5ae54c27472c719ecac014109f221ec5e1d5403b57d6385c0cf3"
+      },
+      "/usr/share/man/man1": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/man/man1/bluetooth-sendto.1": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "126be00959525262f17bacc42393f0227a855643034a6bdd9aaf0b5874656a27"
+      },
+      "/usr/share/locale/ja": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ml": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ar": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/be": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ga": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ms": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hy": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca@valencia": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_TW": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tg": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/is": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fy": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kab": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ko": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ckb": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nn": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lv": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nb": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en@shaw": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/af": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bg": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/xh": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/or": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/te": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mn": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/crh": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fa": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ie": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ab": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/es": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ne": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eo": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_HK": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mjw": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ta": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/et": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gd": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn_IN": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ug": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/km": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en_GB": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/as": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ku": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ast": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lt": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kn": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bs": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/oc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mai": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/vi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/an": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/th": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pa": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/el": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr@latin": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ro": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ja/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ja/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f3f1f532a311c72314ed313a81a89cc50ab971f1091f26a848d00b9bb038df08"
+      },
+      "/usr/share/locale/ml/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ml/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f0ea2a827884fb691d47e29cf00f002d5847e05b7fa4510cb2825eb20f3ca693"
+      },
+      "/usr/share/locale/mk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mk/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "751e8dc33e9183a5ddad7287c0fa49dcf67644f4f1421a14f088e4ad51e5cd0e"
+      },
+      "/usr/share/locale/ar/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ar/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ae56ce1e319657c5575e6b29cf93b1759f6f4c44aeb6698adc5b6a7285efcaf1"
+      },
+      "/usr/share/locale/be/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/be/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6399089e52f8b1d597e60708f9965a389ddc03d79d3a5db92544c46dd02772c8"
+      },
+      "/usr/share/locale/ga/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ga/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b9856649d5a429999ad746298e29e7867c9699e1eaf2a3dac8ede85ee90b8f8c"
+      },
+      "/usr/share/locale/ms/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ms/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0c082a9196a23ccdc8f90c7f08eafef362cbdfa4edb2ac2aea9fc988bcc1c2c6"
+      },
+      "/usr/share/locale/hu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a6c899f3992f751afe8a8450a3e2f56940fd6e38166baca4fa0c1a75830a65ce"
+      },
+      "/usr/share/locale/hi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hi/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ec18f2e4a02b54d97df049fa6e102064477a034188738a84781473075b486f84"
+      },
+      "/usr/share/locale/hy/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hy/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ecdc70ba0a6e4a2982e8306384c83c0ba55385924a8c90caa05f004dcbc05a25"
+      },
+      "/usr/share/locale/ca@valencia/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca@valencia/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a5fb99f96e849c2d45ea7ae9cb25ad16bbc0bbff169bbba9eedbe8882bc61715"
+      },
+      "/usr/share/locale/gl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gl/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e3835429159ed35bc1e99efd51d5a0c52adb13fdddc88c55841849ef04032202"
+      },
+      "/usr/share/locale/zh_TW/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_TW/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ae55ae39ba0c822557ceb57157c665fa197ed15b6b3c14c10352463083b9ba41"
+      },
+      "/usr/share/locale/tg/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tg/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9bb35bf15e4dea261c5b4f06718e007797db74d41d377a9d51f5bf4d49ef44d7"
+      },
+      "/usr/share/locale/is/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/is/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "acd045f63383bc2b5643dd05e918959d983c2d04fbc826b9de1e0ffa5019b876"
+      },
+      "/usr/share/locale/fy/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fy/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ce1b3e49ab6373fe2db26197118bec3d1186a2af9b6cb6ca77bc53f4b5603a11"
+      },
+      "/usr/share/locale/kab/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kab/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "15f7a0c1571cd3d67c2490e001d64f9757b8c5914a9c99a6234bde92499faa97"
+      },
+      "/usr/share/locale/ko/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ko/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "de14cc13d512cfb0b2c88caf4d1e14fc2d934039ff7c0be5755ce02bcba0426a"
+      },
+      "/usr/share/locale/it/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "57ba29507a53a807d94483b98e870afcd7dbc1c6ae57052a0e1bb7293df7f3df"
+      },
+      "/usr/share/locale/ckb/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ckb/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "01b87371af545db240f90529f2b65de8e8845202460f077980d6bd1fd75dbee6"
+      },
+      "/usr/share/locale/sv/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "48e979a5534aae8f94934d87623080b5ab0ef3b34b07fd112de3d74d96a6b769"
+      },
+      "/usr/share/locale/nn/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nn/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "cf6e42cf1dfb47c020157fc04c56b1d67f1d8d9c7a24a7f14da8cdc29347de1e"
+      },
+      "/usr/share/locale/tr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c74cd4a5aaf9f7927b7b997a883241900ee91897ae2c24e6450c644b03644053"
+      },
+      "/usr/share/locale/lv/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lv/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "45c940b736874d4a222baa1f75cc0165545e37c72a0d46d87e5f3fd005093021"
+      },
+      "/usr/share/locale/hr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hr/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3960df35c15f1680432e2b128e1cf1c872e08fab42dbc4a8b81cb6a2da405353"
+      },
+      "/usr/share/locale/nb/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nb/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d6756f7af4ab48608cda6b029256e58f42917c04c0d2a8c5331d4adfd88da333"
+      },
+      "/usr/share/locale/eu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eu/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7c3c62b0bbdfdbdaff7d694bbe0b6ef082703ec8af0381c377ea70bd6172fa64"
+      },
+      "/usr/share/locale/en@shaw/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en@shaw/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4bb2008109cb870aff335b30cd073bcf808676c3ba741f027261c057a8ff79e5"
+      },
+      "/usr/share/locale/af/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/af/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9a4afc3c449fa2bd95935c5ecb7e63f90348e98a1681779542cd3590ea0f34da"
+      },
+      "/usr/share/locale/bg/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bg/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "086c6f646d61927d643907f9a97c7fdaf490f2d14287dd97d5574b059046e303"
+      },
+      "/usr/share/locale/xh/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/xh/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "da9a6b07221fd3b2aac6bc1c9866dd606e0d7d3c7fe5e4d64e41cbf98e3fae61"
+      },
+      "/usr/share/locale/or/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/or/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fae9df7081890ad73c6229e5fdbc383f9f3e1986f108b3382dcdc463dce2103d"
+      },
+      "/usr/share/locale/te/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/te/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2ae58c2c9e2714ce6f34580e67356761aebeba4355f43d5104f2498886f54868"
+      },
+      "/usr/share/locale/ru/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b5520544f48d1bba80e73363bc1acca9c3a2d49b3605a9bd938c756425d0a74f"
+      },
+      "/usr/share/locale/mn/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mn/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4849a7b5dcf7120b9ab03bff363574c7534335663b6c80442d1f8407c3716886"
+      },
+      "/usr/share/locale/crh/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/crh/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c582555f704fbf71044bff79d30e50e3f102c56c550fe3222d5c87387f00ce34"
+      },
+      "/usr/share/locale/fa/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fa/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6c19f6d288cc5a7173f25d9fed5fd1f0730a6961f3093f8a39e4833ec14d6184"
+      },
+      "/usr/share/locale/ie/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ie/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "031a6de225bb7eaaf33595d5733758b88b37d019542b5879d09dad23f0a6f718"
+      },
+      "/usr/share/locale/uk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a9423fc91b1228bcf3453c08b7e443197ef8a4b135b8999b494e1bf45b9cdc59"
+      },
+      "/usr/share/locale/pl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "914c0671c9b0ea376df770e1a4cefee06384e0d5fb44a97a4a55e8929a4110da"
+      },
+      "/usr/share/locale/bn/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "74f468b2b347ba7f9a673c5ced3505c22a7301b818bf2093b71ad8dab6336ace"
+      },
+      "/usr/share/locale/ab/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ab/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ff3ac221dd4335c72bc3ca488e86cb3ae77cab2ad0fd8f264b9660f06c667a6f"
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2907a5671805706012b277d04f13ae9178cac6e102a7a7f547f3e6a09843a3de"
+      },
+      "/usr/share/locale/pt/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7aff3ff27d30a210fdb637fcd5087a39c476cad0766021d9689f36f2b4bb6cb7"
+      },
+      "/usr/share/locale/es/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/es/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ce4f1b6a8a954d5b174e922f45f8379ce7fd36591f18e993fbc884dea464d1ec"
+      },
+      "/usr/share/locale/ne/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ne/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6912a9d827dc8c6b18547dcd21005d61f8e772dd7944ae730ef160842abb58c6"
+      },
+      "/usr/share/locale/eo/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eo/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "18c95b4cee5b6b1c3adb7b0a362e3efa3185857aa390dc1552003709b8e53447"
+      },
+      "/usr/share/locale/fur/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "916387565181780fc02a25378f9b9cf9e601141b9d621bd6f3bd8228b89e4dc5"
+      },
+      "/usr/share/locale/zh_HK/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_HK/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a2026e4d72c648b44664faf83559b2b79f8735c7758a0f5584b6c2f8ff4fd119"
+      },
+      "/usr/share/locale/mjw/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mjw/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "756ed8f267c0f80f40a4753c7da8754372ed140d5b90fa5bb320b18591638c66"
+      },
+      "/usr/share/locale/ta/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ta/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "938d35e9d308b349d2ba9174b56b35ab5537308965f706cc347d8dc767c1a19f"
+      },
+      "/usr/share/locale/et/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/et/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "370a280338fd54e18b4c2d948bf9d06afa6414d1bc9a78222f05ea44d5e1189c"
+      },
+      "/usr/share/locale/gu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gu/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4c42ea6517172d4b4a0bcc13f56d487b8394646ee604a29baa2abbbe9d9be7e0"
+      },
+      "/usr/share/locale/kk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kk/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fe066664ab31fbf4e3b1871e3ddeb5ec1d29141b683f655b9f39916d76b9ad76"
+      },
+      "/usr/share/locale/gd/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gd/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1ccf3b090d09f1ddb97e50a25f928e5ce394c91f307dcfcf7a8e97b7e6002034"
+      },
+      "/usr/share/locale/bn_IN/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn_IN/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fd2320796c29e09d605544b4def332dcbb92cfdb075ebd7457317c910719e666"
+      },
+      "/usr/share/locale/ug/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ug/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9ee320f1c13afb0cf54125979d976cd92baf89b9c92fec7ed120b7bbda9f8a69"
+      },
+      "/usr/share/locale/fi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f51a19921b66e76736180f4b30b6a228deba20e8a563c7b49f6d0cec6ba51932"
+      },
+      "/usr/share/locale/sk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9c94403b11fe8e8a7eaba829fcc1b39b319a6651b501f6e17881edc0b9e14890"
+      },
+      "/usr/share/locale/km/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/km/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d1a508513670ed996b3a47438a551998db388381a1c761ba97065639da84d2d4"
+      },
+      "/usr/share/locale/id/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3c3e6438ccca31bd36684aac4b103a96deb4c03334e443b55329d2b5ff7ac612"
+      },
+      "/usr/share/locale/he/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "784d45f86eb2974797a528da35e64865dfb7a249578b372667c6e6875785e19c"
+      },
+      "/usr/share/locale/en_GB/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en_GB/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9600de1181b092683ce6324318df23b0f8d0d1de4b8b094585f1b0db0edab21b"
+      },
+      "/usr/share/locale/cs/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f93c9a7c98c0095930c9ca9c0f007895de4a29f78631eca327f5062ffb8c254d"
+      },
+      "/usr/share/locale/as/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/as/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8464086fe7a7c6d098947d72dd8fa289bbba2834034b82f4fc5c1142e00385c1"
+      },
+      "/usr/share/locale/ku/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ku/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "97ef55d8fba8eccad31888d6059ffae98d3222235786d46470c15fd679d10a9d"
+      },
+      "/usr/share/locale/ast/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ast/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "edf5595db5411ad047f5d1e60b1b51dcc3415b761cee3040a83675f7ac501b26"
+      },
+      "/usr/share/locale/de/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d14bab41cdbf2ef41e98064f529c0166a171ece741bf4dfbe95bb72cfc62c39e"
+      },
+      "/usr/share/locale/lt/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lt/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ec263016ff43b2fbc399624d858727801551b38e79c076925e7f8ca4d7ee3185"
+      },
+      "/usr/share/locale/kn/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kn/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "99c01365e2508594519842a3c7834cf9f8b9b4c6bd5b92287a73ed932a835485"
+      },
+      "/usr/share/locale/sr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3b3a65735134074625ef10f6543b34fc9e39ccaa69ed3861debd3187f8927189"
+      },
+      "/usr/share/locale/bs/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bs/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "81d93a7c2354259e733cb8c8c0a1010262d58677b848d255cfbb9ed4bc4f003f"
+      },
+      "/usr/share/locale/oc/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/oc/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bc6e89efa17820f41740f9df9cdf0778f79426f0b0c66607686943fdd2fa7964"
+      },
+      "/usr/share/locale/fr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "71fed19da18e72c4a525b43f19f9bed1c74cfbda47f8172078e017d01f890fb9"
+      },
+      "/usr/share/locale/mai/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mai/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "36d5358bb50968b52ae2178a5710135755ca724112d70fc1f6de214e0cbdde5c"
+      },
+      "/usr/share/locale/vi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/vi/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "05a79337b36fdcbbd297debc8afbd0e5d0d466983abb6af24c2417a0c9f1261b"
+      },
+      "/usr/share/locale/an/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/an/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "be004377fcd915249d344c705b528fba55bfce63e7a3d9d7f22b73a47f4b3cc7"
+      },
+      "/usr/share/locale/th/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/th/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9bab52d3a9415fa72b5bd7a1b94c170c32d290cd9a3e0704eae6054e2f7a23f9"
+      },
+      "/usr/share/locale/pa/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pa/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "91350e974d8ebba864fe7101aea6f91b3a163d7e1e934d661bdaaa695226119c"
+      },
+      "/usr/share/locale/zu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zu/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "43cae23cb380b737ee0d65adfdfc56ed5463438d9a1f263bea6db3c26bf85f75"
+      },
+      "/usr/share/locale/ca/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0c107fed2ba98167c1bb20b65383d383ab119ac0f960930241936250d56daf18"
+      },
+      "/usr/share/locale/sl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sl/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "49a7134dcf2e23373385b81a5736ce97b59fb5e41db2276e9ff2254e0edc772d"
+      },
+      "/usr/share/locale/el/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/el/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "54894bd1c9ed454c328928653b55d89f5d3f2697e0b897f4e1970ddf6b578211"
+      },
+      "/usr/share/locale/da/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0599e6cf27079167e5fbacd8173ac5d29dc8a182bff208040a1a579ea5449e0c"
+      },
+      "/usr/share/locale/mr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mr/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1af3110812a1b3a039c56d5110514e29f65461c9e682dc6f1df007228e9bc173"
+      },
+      "/usr/share/locale/nl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "57484ef4e03e8800405215d42f606b3e98584ac012e398b0fe88709d0fef1b6b"
+      },
+      "/usr/share/locale/ka/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "356670b7e77adf1cefad2702e00df59a5e6774e744425ad189de2dafb633cb97"
+      },
+      "/usr/share/locale/sr@latin/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr@latin/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5fbb7bb5bce3a75b1b13edfcfb83b087ecbe6acbbfb39298f8905df528d1e9ee"
+      },
+      "/usr/share/locale/ro/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ro/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4fcfd08a920345ab2fd756d1b308c8ed232e554234e8bd84ee767a0be2254cc6"
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES/gnome-bluetooth-3.0.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4708d0feb1381a2afb54eef1b7bf6acabf525201d6a21f9550656591ef05084b"
+      },
+      "/usr/share/gnome-bluetooth-3.0/pin-code-database.xml": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f7285bc420b3fca06ee15666da7faa66d842041bc27345e81b2ab99e246483e8"
+      },
+      "/usr/share/applications/bluetooth-sendto.desktop": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7005c06e52439327ffb357f2a29473151cd60bc9dcb8c4734e3bb88aae83bf73"
+      },
+      "/usr/share/doc/gnome-bluetooth": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/gnome-bluetooth/source-notices": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/gnome-bluetooth/copyright": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0713680cb71f3869c595b31421064ca2cc1781fc785e5182020512cc0715fee9"
+      },
+      "/usr/share/doc/gnome-bluetooth/source-notices/e6d6a009505e345fe949e1310334fcb0747f28dae2856759de102ab66b722cb4": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e6d6a009505e345fe949e1310334fcb0747f28dae2856759de102ab66b722cb4"
+      },
+      "/usr/share/doc/gnome-bluetooth/source-notices/index.json": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3c04b0a2b2465be565cffc5767ccab48f816519ff86bdd3642b29dd80f7f28b0"
+      },
+      "/usr/share/doc/gnome-bluetooth/source-notices/74f5d19eea76477b5ab34ffbf1b04769625f57081ae7da40314732cb253550dd": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "74f5d19eea76477b5ab34ffbf1b04769625f57081ae7da40314732cb253550dd"
+      },
+      "/usr/share/doc/gnome-bluetooth/source-notices/6095e9ffa777dd22839f7801aa845b31c9ed07f3d6bf8a26dc5d2dec8ccc0ef3": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6095e9ffa777dd22839f7801aa845b31c9ed07f3d6bf8a26dc5d2dec8ccc0ef3"
+      },
+      "/usr/include/gnome-bluetooth-3.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/gnome-bluetooth-3.0/bluetooth-settings-widget.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "213c61eb7581c7ecf6953c68e149b2858c918f650d5d7b6e7c2d0d4a8a2433a0"
+      },
+      "/usr/bin/bluetooth-sendto": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2946a241307d716239ff54200c4687d5751415a5539e0b71e074e19e95f5d21c"
+      },
+      "/usr/lib/girepository-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/pkgconfig": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/libgnome-bluetooth-ui-3.0.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libgnome-bluetooth-ui-3.0.so.13"
+      },
+      "/usr/lib/libgnome-bluetooth-3.0.so.13.2.0": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6a6a911f56dc86c8309edea2f7b62d011009806884d1b924808dc9de7df7503d"
+      },
+      "/usr/lib/libgnome-bluetooth-ui-3.0.so.13": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libgnome-bluetooth-ui-3.0.so.13.2.0"
+      },
+      "/usr/lib/libgnome-bluetooth-3.0.so.13": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libgnome-bluetooth-3.0.so.13.2.0"
+      },
+      "/usr/lib/libgnome-bluetooth-ui-3.0.so.13.2.0": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fad6eb18f521cbca9796d64a4b686c6398740ee7216961d1c68ee6ff2e247d46"
+      },
+      "/usr/lib/libgnome-bluetooth-3.0.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libgnome-bluetooth-3.0.so.13"
+      },
+      "/usr/lib/girepository-1.0/GnomeBluetooth-3.0.typelib": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3a56a6d8ae711568fbe9ec3a4a79f6adfb60526f41b1b27402f21ec5d8596e05"
+      },
+      "/usr/lib/pkgconfig/gnome-bluetooth-ui-3.0.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c6331275548f85100c34c101a70bacb9b725629d756571f7b8cc0d5438e5bbae"
+      },
+      "/usr/lib/pkgconfig/gnome-bluetooth-3.0.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "505cb5514823cb8e159fe0acbbc1a51b0e5a30b023091ece1598cf4fcd643d44"
+      }
+    },
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_sha256": "e7eeb7b7b885cd2de200362766260c067686ca4ac6e7ce0f9647ae61ee07befd",
+    "supporting_build_script_count": 1770
+  },
+  "target_free": 17199828992
+}

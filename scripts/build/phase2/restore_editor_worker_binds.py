@@ -11,7 +11,9 @@ def main():
  base=Path('/mnt/lfs/sources/phase2/work/doxygen-1');identity='ae4347fb-31fd-4193-a333-0a549e144231'
  assert subprocess.check_output(['findmnt','-n','-o','UUID','--mountpoint',str(base)],text=True).strip()==identity
  rows=[]
- for component in ['libspelling','editorconfig','gnome-text-editor']:
+ components=['libspelling','editorconfig','gnome-text-editor']
+ if (log/'gnome-bluetooth-shared-scratch-1.json').exists():components.append('gnome-bluetooth')
+ for component in components:
   p=log/(component+'-shared-scratch-1.json');r=json.loads(p.read_text());assert r['state']=='mounted' and r['filesystem_uuid']==identity
   source=Path(r['source']);target=Path(r['target']);assert source==base/'toddy-editor-workers'/(component+'-1') and target==base.parent/(component+'-1')
   assert source.resolve()==source and source.stat().st_ino==r['source_inode'] and source.stat().st_uid==101

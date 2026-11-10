@@ -1,0 +1,39 @@
+{
+  "prepared": {
+    "source_sha256": "ca2d039e1ebd148647017a7f548862350bc9af01986d39f10cfdc8e95f07881a",
+    "reference": "BLFS13.1-systemd gnome/gsound.html",
+    "book_page_sha256": "c7cf5e9f1ef3967dd52bb739d94d14a9903dbdd4d2c71145b3a31ec79cbae128",
+    "source_patches": [],
+    "recipe_sha256": "bf52571192cb3ace82495424270b104fbe68b2d540dcf356edc09a4adfc32023"
+  },
+  "stage": {
+    "scope": "Frozen GSound1.0.3 libcanberra GObject/GI/Vala wrapper and command-line help only; no original tests registered, NOT a suite pass. No sound device/speaker/notification/Bluetooth/Settings/GUI acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests_registered": [],
+    "no_registered_tests_not_a_pass": true,
+    "consumer": {
+      "help": "Usage:\n  gsound-play [OPTION\u2026]\n\nHelp Options:\n  -h, --help                     Show help options\n\nApplication Options:\n  -i, --id=STRING                Event sound identifier\n  -f, --file=PATH                Play file\n  -d, --description=STRING       Event sound description\n  -c, --cache-control=STRING     Cache control (permanent, volatile, never\n  -l, --loop=INTEGER             Loop many times (default: 1)\n  -V, --volume=STRING            A floating point dB value for the sample volume (ex: 0.0)\n  -b, --backend=STRING           libcanberra backend to use\n\n"
+    },
+    "artifacts": {
+      "gsound/libgsound.so.0.0.2": "5823f0cc019256e175e13b5432b7dabbda52dc64f659a25643835260b9836dab",
+      "meson-private/sanity_check_for_vala.exe": "27976353f178c827d8468674bfb056956c77c72faf4e0527c6965b817ebace57",
+      "meson-private/sanity_check_for_c.exe": "191646a6501d425990f9a36894024258da104e5375904550c64ce420e318f3ba",
+      "tools/gsound-play": "6be5facc3ed74b5f45fe545e78e9f5c97bc989bb3267641fdf571f2f5ce5972e",
+      "tools/gsound-play.p/meson-generated_gsound-play.c.o": "ae6f956789582a28b4d94de0f2b78ce52bf37103b8e48e448cd6810127854ddc",
+      "gsound/libgsound.so.0.0.2.p/gsound-context.c.o": "3e87e7d7fed4de07e066687e62f5df6f39991b2582a5051d9f6e4d1f46d33dca"
+    },
+    "stage_sha256": {
+      "usr/include/gsound.h": "77d98617e9a206eaadf94d7ded3d7fdb07ac5f86f5ab3b75018faa95ecbd4933",
+      "usr/include/gsound-attr.h": "7c8f4c7159c6addc321a14a7e005ccdc150e2fbccbb77a9339d5c98161396a20",
+      "usr/include/gsound-context.h": "be17b3d3a5a9be898d8b5271b3116c26cfdcd5cbd2b6d6804353ee3c528ff19b",
+      "usr/bin/gsound-play": "d06cdf423d98bbe13401f95a494bce8a30394c1e0347c9a1357cb0d2cc1e3f1d",
+      "usr/lib/libgsound.so.0.0.2": "5823f0cc019256e175e13b5432b7dabbda52dc64f659a25643835260b9836dab",
+      "usr/lib/girepository-1.0/GSound-1.0.typelib": "0f6b5c367e1e937951a3399f54725e636b0e289b4ab409ee5dca7bfa19841491",
+      "usr/lib/pkgconfig/gsound.pc": "d0ffcccd182496aa74e077c0382a5b2167e8f32d0a71eee0b2fa87f75c4dd168",
+      "usr/share/gir-1.0/GSound-1.0.gir": "486bacb5e86a59e56bbad414c23733dcbddaa7adcd87b4496d5e3065468c2512",
+      "usr/share/vala/vapi/gsound.vapi": "a2693339d181c68f47fe10afd1b4a5d4a63956bdae9b903c6f3db02e021ae206",
+      "usr/share/vala/vapi/gsound.deps": "7672dde115fb1288f5911db837cc7dff83ad980895828ed88583189323402c05"
+    }
+  }
+}
