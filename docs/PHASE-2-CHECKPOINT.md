@@ -22,14 +22,38 @@ replay source extraction/compilation/accepted tests/staging/collection. Raw expo
  d7da4c20df75f7263d8294170e5e791df8e46aa408db5cc433695992b4692dfb.
 Compiler minimum free17269211136B above16GiB. Actual builder kernel6.8.0-147-generic;
 installed target7.1.8-1+toddy1. No installed/native functional/sandbox/GUI acceptance.
-EXACT NEXT: inspect original tests/functional-tests fixture configuration and
-private D-Bus miner/extractor startup, prepare focused native index/search,
-Landlock/seccomp denial, Stop/restart/state-recovery fixture against these same
-staged bytes. Reuse qualified native harness, preserve parked cold-boot resource
-budget and do not lower guards. If resources still block actual dispatch, retain
-prepared fixture and advance eligible B02 source/app preparation. Native package
-promotion must follow real functional qualification, never version/help alone.
-No guest job or native diagnostic VM active. Full B02, then stop.
+Native fixture1 prepared:770source/403compile/133stage files bound in a166741B
+root-owned descriptorSHA bcd521657ff4861f3ca9391c045d1d6bf03f2bf0f9e8e1907db5fae0e68a01fe.
+Receipt /var/log/toddy/phase2/localsearch-native-fixture-1.json complete; same bytes
+at /mnt/lfs/sources/phase2/native-fixtures/localsearch-1.json. NEVER replay prepare
+or descriptor publish. [Preflight](evidence/B02-localsearch-native-preparation.json)
+passed without boot:8255B probe/4983B credential;9programs/20expected original cases.
+Native consumer/controller PREPARED ONLY; source/build read-only private PID/mount/
+network namespace, independent UID101 positive controls, no zero-case/skip/timeout
+success, exact hashes before/after. No actual native runtime acceptance yet.
+
+New concrete custody evidence reopened the parked resource branch for ONE bounded
+batch, not a retry-budget reset. Thirty additional actual stopped/owned/exit0 test
+containers had483966976B allocated overlays. Generation2 byte-exact gzip completed:
+441909248B allocation reclaimed, raw hashes/decompression sizes match, original
+logs/results and VM backings untouched. Hostfree108069203968B immediately after,
+above107911053312B gate; recheck after committed metadata sync before dispatch.
+[Custody proof](evidence/B02-native-overlay-custody-2.json), ledger
+.local/phase2/native-test-overlay-custody-2.json COMPLETE. Never replay old/new
+custody or virtual trim. Recovery: verify gzip archive+decompressed source hashes
+from ledger before restoring exact absent raw paths; do not replay old test runs.
+
+EXACT NEXT: finish commit/checks, idle metadata sync, then actual
+`python3 scripts/host/phase2_native_localsearch.py --preflight-only` and inspect
+stable free>=100GiB+512MiB. If ready, dispatch controller ONCE without flag in a
+persistent host job; context .local/phase2/native-localsearch-runtime-1 must be
+absent. Save controller PID/start/boot/log; monitor that same actual handle. This
+stops builder and boots only a disposable overlay. On exit inspect result/serial/
+container/OOM/report, never infer pass from poweroff. Before builder work resume,
+restore existing six scratch/Systemd/Glycin and same kernel scratch/COW using
+actual UUID/receipts below; kernel cold restoration helper is prepared/unqualified
+until real execution, no format/resize/extract/rebuild. Native test result and
+controlled package promotion remain pending. Full B02, then stop.
 
 ## Completed native kernel and boot owner slice
 

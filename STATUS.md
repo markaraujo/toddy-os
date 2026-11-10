@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T12:22:49.336972+00:00
+Updated: 2026-11-10T12:35:58.186623+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T12:22:49.336972+00:00
+Last verified: 2026-11-10T12:35:58.186623+00:00
 
 Verified:
 
@@ -156,7 +156,7 @@ Verified:
 - LocalSearch3.11.1 cached source4505604bytes/frozen SHA verified;17actual selected/required SDK modules found including Tinysparql/GExiv2/GLib/Gst/ICU/seccomp. No guest source/job or search/runtime/GUI acceptance.
 - LocalSearch3.11.1 UID101 isolated compile/stage verified:186ELFs/133stagefiles,13original non-slow common/indexer/extract utility programs0,Landlock/seccomp enabled; minimum compiler free17269211136B above16GiB. Initial job1 only own valueless-macro collector assertion; collection2 actual0 with all compiled/staged bytes unchanged. Derived exact suite/name inventory leaves72unexecuted programs. No native runtime/index/search/sandbox/Stop/recovery/install/GUI acceptance; ADR0205.
 
-Running: No live guest writer. LocalSearch build1 terminal1 after successful compile/tests/staging, collection2 terminal0. Native functional fixture/preflight preparation next; installed boot resource branch remains parked. Complete ALL B02 then stop.
+Running: LocalSearch native fixture1/preflight prepared and verified, no native boot yet. Thirty stopped disposable overlays byte-exact compressed,441909248B reclaimed; recheck headroom after committed sync, then dispatch focused native9program/20case controller once. Full B02 then stop.
 
 Remaining:
 

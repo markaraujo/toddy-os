@@ -1,0 +1,25 @@
+{
+  "state": "preflight-only",
+  "fixture": {
+    "state": "complete",
+    "fixture_sha256": "bcd521657ff4861f3ca9391c045d1d6bf03f2bf0f9e8e1907db5fae0e68a01fe"
+  },
+  "probe_bytes": 8255,
+  "credential_bytes": 4983,
+  "host_free": 107627626496,
+  "required_free": 107911053312,
+  "boot_not_started": true,
+  "scope": "Actual fixture/source/build integrity and payload-size preflight only. Native boot/programs not run at this checkpoint. Nine original programs/20expected cases; independent UID101 positive controls and full input hashes must pass at runtime. Native descriptor reuses immutable original source/build resources; no binary copies or rebuilds.",
+  "descriptor": {
+    "sha256": "bcd521657ff4861f3ca9391c045d1d6bf03f2bf0f9e8e1907db5fae0e68a01fe",
+    "bytes": 166741,
+    "source_files": 770,
+    "compile_files": 403,
+    "stage_files": 133
+  },
+  "selector_regressions": {
+    "count": 3,
+    "exit": 0,
+    "scope": "Missing/duplicate denial module and wrong suite/launcher rejected; required9programs/20cases retained. Fixtures do not prove native behavior."
+  }
+}
