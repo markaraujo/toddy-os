@@ -13,9 +13,13 @@ Current eligible B02 slice: Libspelling0.4.11 OWNED, native PID26455 recipe/post
 ignore/recovery/UID101/NoNewPrivs/private-dev/no-route/APT0 passed.
 [Installed proof](evidence/B02-libspelling-install.json). ArchiveSHA
  a889dd3c9442e2583d08bfcc6c2af5d71cac088c5a96a2629a69340bcc5b7ff5.
-EXACT NEXT: authenticate and prepare required EditorConfig for selected GNOME Text
-Editor50.1, then build editor using owned Libspelling/Enchant. Check actual reserves
-before extraction; reuse existing scratch where useful. No live guest writer.
+EXACT NEXT: prepare required EditorConfig0.12.11 recipe/input for selected GNOME
+Text Editor50.1, then build editor using owned Libspelling/Enchant. Official source
+and exact original tests gitlink authenticated/frozen, host archives retained;
+[source proof](evidence/B02-editorconfig-source.json). No guest preparation yet.
+Do not repeat downloads. Source commit0ba157eff167c1b2d1bc0c3e13975b7a73fb9d25;
+test commitd91029bdf1e3e0307714afe0d2cde7ba6fd208ab. Check actual reserves
+before extraction; reuse existing scratch where useful. No live guest writer; after install target free17191866368B.
 Never replay Libspelling source/compiler/tests/stage/native transaction.
 [Stage proof](evidence/B02-libspelling-stage.json): first build compiled library/
 original tests/GIR, optional Vala failed because owned GtkSourceView has no VAPI.

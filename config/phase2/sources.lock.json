@@ -2564,6 +2564,29 @@
       "release_url": "https://github.com/unittest-cpp/unittest-cpp/releases/tag/v2.0.0",
       "integrity": "Official GitHub release tag resolved to full commit via publisher API, immutable commit archive fetched by HTTPS, SHA256 frozen before guest use; no detached-signature claim",
       "status": "source_verified"
+    },
+    {
+      "name": "editorconfig",
+      "version": "0.12.11",
+      "filename": "editorconfig-0.12.11.tar.gz",
+      "url": "https://codeload.github.com/editorconfig/editorconfig-core-c/tar.gz/0ba157eff167c1b2d1bc0c3e13975b7a73fb9d25",
+      "sha256": "0aa80e0c90158c8725c29aa978710e8b1071cc5f4e10184576e718349ea32819",
+      "commit": "0ba157eff167c1b2d1bc0c3e13975b7a73fb9d25",
+      "reference": "GNOME Text Editor50.1 src/editorconfig/meson.build required default-enabled dependency; official EditorConfig C Core v0.12.11",
+      "release_url": "https://github.com/editorconfig/editorconfig-core-c/releases/tag/v0.12.11",
+      "integrity": "Official publisher release tag resolved to full commit; HTTPS immutable commit archive SHA256 observed before guest use, no detached-signature claim",
+      "status": "source_verified"
+    },
+    {
+      "name": "editorconfig-original-tests",
+      "version": "0.12.11",
+      "filename": "editorconfig-core-test-d91029bdf1e3e0307714afe0d2cde7ba6fd208ab.tar.gz",
+      "url": "https://codeload.github.com/editorconfig/editorconfig-core-test/tar.gz/d91029bdf1e3e0307714afe0d2cde7ba6fd208ab",
+      "commit": "d91029bdf1e3e0307714afe0d2cde7ba6fd208ab",
+      "sha256": "6ad790d221748e5d9c90a4c42318775ecf6e2876030f3f428fbdac97bcaca8dc",
+      "reference": "Exact tests gitlink from EditorConfig C Core v0.12.11 commit0ba157eff167c1b2d1bc0c3e13975b7a73fb9d25",
+      "integrity": "Publisher git-tree API gitlink, HTTPS immutable test-commit archive SHA256 frozen before guest use; no detached-signature claim",
+      "status": "source_verified"
     }
   ]
 }
