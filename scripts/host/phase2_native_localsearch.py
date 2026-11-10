@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Cold test pinned LocalSearch original programs with immutable input bindings."""
 from datetime import datetime,timezone
+import argparse
 import fcntl,hashlib,json,os,shlex,shutil,subprocess,sys,uuid
 from pathlib import Path
 import boot_test as boot
@@ -10,13 +11,15 @@ from phase2_native_report import decode
 
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def main():
- root=phase2_vm.ROOT;work=phase2_vm.WORK;context=root/'.local/phase2/native-localsearch-runtime-1'
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--preflight-only',action='store_true');parser.add_argument('--attempt',type=int,choices=[1,2,3],default=1);args=parser.parse_args()
+ root=phase2_vm.ROOT;work=phase2_vm.WORK;context=root/'.local/phase2'/('native-localsearch-runtime-'+str(args.attempt))
  assert not context.exists(),'Reconcile actual operation; never replay'
- if '--preflight-only' not in sys.argv:
+ if not args.preflight_only:
   assert not subprocess.check_output(['git','status','--porcelain'],cwd=root,text=True).strip()
   assert shutil.disk_usage(root).free>=100*1024**3+512*1024**2
  lock=open(vm.VM/'native-boot-test.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB);boot.refuse_running_tests()
  code="""from pathlib import Path
+import argparse
 import fcntl,hashlib,json
 f=open('/var/log/toddy/build/build.lock','a');fcntl.flock(f,fcntl.LOCK_EX|fcntl.LOCK_NB)
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
@@ -36,7 +39,7 @@ print(json.dumps({'state':'complete','fixture_sha256':hashlib.sha256(p.read_byte
  for name,value in [('CONSUMER_SOURCE',(root/'scripts/build/phase2/localsearch-native-consumer.py').read_text()),('ACCEPTED_FIXTURE',accepted)]:
   assert body.count(name+' = None')==1;body=body.replace(name+' = None',name+' = '+repr(value))
  probe=body.encode();bootstrap=compressed_payload(probe)
- if '--preflight-only' in sys.argv:
+ if args.preflight_only:
   print(json.dumps({'state':'preflight-only','fixture':accepted,'probe_bytes':len(probe),'credential_bytes':len(bootstrap),'host_free':shutil.disk_usage(root).free,'required_free':100*1024**3+512*1024**2,'boot_not_started':True}));return
  context.mkdir()
  state={'scope':'Only native LocalSearch original search/inhibit/reset and six extractor-denial programs; no desktop/G2 acceptance','commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'started_utc':datetime.now(timezone.utc).isoformat(),'controller_pid':os.getpid(),'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'controller_start_ticks':Path('/proc/self/stat').read_text().split()[21],'accepted':accepted,'probe_sha256':hashlib.sha256(probe).hexdigest(),'payload_sha256':hashlib.sha256(bootstrap).hexdigest(),'phase':'prepared'}

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-10T12:35:58.186623+00:00",
+  "updated_at": "2026-11-10T12:41:08.303185+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05\u2013B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -392,7 +392,8 @@
         "docs/evidence/B02-input-sync-reuse.json",
         "docs/evidence/B02-localsearch-build.json",
         "docs/evidence/B02-localsearch-native-preparation.json",
-        "docs/evidence/B02-native-overlay-custody-2.json"
+        "docs/evidence/B02-native-overlay-custody-2.json",
+        "docs/evidence/B02-localsearch-native-failed-1.json"
       ]
     },
     {
@@ -774,13 +775,13 @@
       "LocalSearch3.11.1 cached source4505604bytes/frozen SHA verified;17actual selected/required SDK modules found including Tinysparql/GExiv2/GLib/Gst/ICU/seccomp. No guest source/job or search/runtime/GUI acceptance.",
       "LocalSearch3.11.1 UID101 isolated compile/stage verified:186ELFs/133stagefiles,13original non-slow common/indexer/extract utility programs0,Landlock/seccomp enabled; minimum compiler free17269211136B above16GiB. Initial job1 only own valueless-macro collector assertion; collection2 actual0 with all compiled/staged bytes unchanged. Derived exact suite/name inventory leaves72unexecuted programs. No native runtime/index/search/sandbox/Stop/recovery/install/GUI acceptance; ADR0205."
     ],
-    "running": "LocalSearch native fixture1/preflight prepared and verified, no native boot yet. Thirty stopped disposable overlays byte-exact compressed,441909248B reclaimed; recheck headroom after committed sync, then dispatch focused native9program/20case controller once. Full B02 then stop.",
+    "running": "Native LocalSearch attempt1 terminal FAILED at first search insert; own TMPDIR overlaps monitored root, source-confirmed exclusion. Main installed kernel actually booted7.1.8/Systemd; independent controls/input hashes0. Builder/six volumes/source/companion/kernel COW restored, first actual kernel cold restore qualified. Commit own TMPDIR correction then guarded explicit attempt2; no build/test/stage replay or GUI acceptance.",
     "remaining": [
       "LocalSearch/Nautilus/browser/editor/settings and first working interactive native GNOME session.",
       "Actual installed/default/recovery-entry boots after stable host headroom; no cold restore acceptance yet.",
       "Minimal desktop branding/offline usability/security-ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-10T12:35:58.186623+00:00",
+    "verified_at": "2026-11-10T12:41:08.303185+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

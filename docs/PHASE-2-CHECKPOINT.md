@@ -28,7 +28,7 @@ Receipt /var/log/toddy/phase2/localsearch-native-fixture-1.json complete; same b
 at /mnt/lfs/sources/phase2/native-fixtures/localsearch-1.json. NEVER replay prepare
 or descriptor publish. [Preflight](evidence/B02-localsearch-native-preparation.json)
 passed without boot:8255B probe/4983B credential;9programs/20expected original cases.
-Native consumer/controller PREPARED ONLY; source/build read-only private PID/mount/
+Preparation preflight (before actual attempt1 below): native consumer/controller were prepared only; source/build read-only private PID/mount/
 network namespace, independent UID101 positive controls, no zero-case/skip/timeout
 success, exact hashes before/after. No actual native runtime acceptance yet.
 
@@ -43,17 +43,37 @@ above107911053312B gate; recheck after committed metadata sync before dispatch.
 custody or virtual trim. Recovery: verify gzip archive+decompressed source hashes
 from ledger before restoring exact absent raw paths; do not replay old test runs.
 
-EXACT NEXT: finish commit/checks, idle metadata sync, then actual
-`python3 scripts/host/phase2_native_localsearch.py --preflight-only` and inspect
-stable free>=100GiB+512MiB. If ready, dispatch controller ONCE without flag in a
-persistent host job; context .local/phase2/native-localsearch-runtime-1 must be
-absent. Save controller PID/start/boot/log; monitor that same actual handle. This
-stops builder and boots only a disposable overlay. On exit inspect result/serial/
-container/OOM/report, never infer pass from poweroff. Before builder work resume,
-restore existing six scratch/Systemd/Glycin and same kernel scratch/COW using
-actual UUID/receipts below; kernel cold restoration helper is prepared/unqualified
-until real execution, no format/resize/extract/rebuild. Native test result and
-controlled package promotion remain pending. Full B02, then stop.
+Actual native attempt1 TERMINAL FAILED, not accepted: controllerPID276784,
+context .local/phase2/native-localsearch-runtime-1 phase native-report-recorded,
+container1a6fffcdadb0127840519a850f57ca272b741ea88d9e22515618674f301c1f49
+exit0/OOMfalse; real selected program exit1/search case1 insertion timeout10s.
+Complete reportSHA46bb121781bfb293de5f35d2c8a71d7066a2a85b93eff94c05d21d907774fa65,
+positive controls0 and full input manifests unchanged. Installed main kernel
+actually booted7.1.8/Systemd with verified image; recovery-entry boot still pending.
+[Failure/recovery proof](evidence/B02-localsearch-native-failed-1.json), rawSHA
+03c3bd5d0b93f6705f812731e99bf7961656a96822afaecd7c72954dbe8d6bb5.
+Cause source-confirmed: own TMPDIR was parent of monitored directory; upstream
+tracker-controller.c explicitly ignores g_get_tmp_dir() prefixes. Correction1
+only sets own TMPDIR=/tmp, leaves indexed ext4 data under /var/tmp and asserts
+separation. No original source/binary/test/timeout change. Ledger cause
+localsearch-native-monitored-tempdir persists,1correction/0failed corrections.
+
+Builder actually restored after attempt1: boot4896d864-3e21-4550-aa72-4d7510223f35.
+localsearch-builder-restored-1.json COMPLETE; six existing scratch volumes,
+Systemd same-source bind and glycin-gtk4-work-restored-localsearch-1 COMPLETE.
+First actual kernel cold restore kernel-work-restored-localsearch-1 COMPLETE:
+same UUIDc6c4176d-faed-4ee3-9ae0-94914a0af666/lower7523763/upper14/work15. No
+format/resize/rebuild/reprepare. Never replay completed restoration receipts.
+
+EXACT NEXT: commit/check own fixture correction, idle metadata sync and inspect
+`python3 scripts/host/phase2_native_localsearch.py --attempt 2 --preflight-only`.
+If actual headroom remains>=100GiB+512MiB, dispatch ONCE with --attempt 2 and no
+preflight flag, in new persistent controller2/log/receipt. Never replay attempt1
+or overwrite its context. Monitor actual PID/startticks/context/container. After
+terminal retain full result and restore same existing volumes/source/COW using
+NEW receipt names only after actual mount inspection. On a second failed
+correction or30min same cause, preserve it and switch eligible B02 branch. Native
+package promotion waits real successful functional proof. Full B02, then stop.
 
 ## Completed native kernel and boot owner slice
 
@@ -67,7 +87,8 @@ Separate toddy-boot-config0.1-2+toddy1 installPID24572 recipe/post0/0/full-root6
 default0 plus foundation recovery entry/source/syntax/ownership/APT0 verified.
 ArchiveSHA3e722231aa65f780775c74b1c47af66868dc34ff83f8d55525c68078e1d65cbf.
 NEVER replay archive build/kernel commit/boot config update/staging/diagnostic boots.
-Kernel/main and recovery installed-system boots NOT performed or accepted.
+Installed main kernel actually reached native7.1.8/Systemd in LocalSearch attempt1;
+functional test failed for own TMPDIR fixture. Recovery-entry boot still pending.
 Candidate imageSHA18c4d9e6a64554296d8e9a037c2383e7426a0cf155b6d757d0693fce0d087ad1;
 [earlier actual BIOS/UEFI diagnostic proof](evidence/B02-kernel-landlock-native.json)
 ABI9/UID101 allow-deny/recovery/seccomp/namespaces/module0,20modules byte-identical.
@@ -81,7 +102,7 @@ Boot conffile belongs only to toddy-boot-config, /etc/toddy/grub.cfg with
 before update; local edits were not overwritten. Next actual cold tests must
 verify default plus selected foundation recovery entry and source base unchanged.
 
-## Parked installed-kernel boot/resource branch
+## Historical resource branch and verified custody recovery
 
 Native cold runner requires100GiB+512MiB host free. New virtual /dev/vdb4 free-
 block reclamation1 actual0, installed160864entry OS snapshot unchanged and original
@@ -89,21 +110,22 @@ block reclamation1 actual0, installed160864entry OS snapshot unchanged and origi
 Receipt kernel-transaction-discard-1.json COMPLETE; compressed private pre-snapshot
 kernel-transaction-before-full-1.json.gz kept in builder log. NEVER replay trim.
 A later input sync was followed by renewed shortfall: recorded hostfree
-107675385856B <107911053312B gate. Do NOT call it unblocked or reduce guard.
+107675385856B <107911053312B gate. That attempt did not unblock it; guards remained unchanged.
 Input transport now reuses verified identical files and uses existing /run tmpfs
 for metadata-only staging. Actual idle sync0 reused1735/replaced1; hostfree
 107666182144B unchanged across this measurement. Nine focused integrity/path/cache
 tests0; [proof](evidence/B02-input-sync-reuse.json). This prevents unnecessary
-rewrites; it does not resolve the cold-boot headroom shortfall or establish exact
-attribution of earlier space changes.
+rewrites; that input-transfer change alone did not resolve the shortfall.
+The later generation2 custody above restored measured headroom and allowed
+actual native attempt1, without attributing earlier space changes to one cause.
 Failure ledger installed-kernel-boot-host-overlay-headroom persists, correction1
 failed to sustain headroom; diagnosis budget parked. Advance independent eligible
 LocalSearch build preparation. Reopen only with concrete new cache/input-transfer
 custody evidence and bounded logged extension, not a fresh budget after compaction.
 
-restore_kernel_landlock_work.py is PREPARED for later actual cold restoration;
+restore_kernel_landlock_work.py first actual cold restoration passed after LocalSearch attempt1;
 read-only --inspect passed current mounts (upper inode14/work15/lower7523763).
-Actual cold restore has NOT been executed/qualified. It mounts same1GiB UUID and
+Actual cold restore qualified in kernel-work-restored-localsearch-1.json after native attempt1. It mounts same1GiB UUID and
 existing private COW only, never formats/resizes/extracts/chowns or replays builds.
 Completed native-stage alias intentionally need not return after cold recovery;
 archive/payload already qualified and stage data retained at W/stage. No guest
@@ -136,7 +158,7 @@ No fresh whole-source rebuild/reproducibility acceptance is claimed.
 
 ## Actual builder, mounts and recovery
 
-Current boot3a77a52a-5994-4f9c-9a57-d8582921275c; target
+Current boot4896d864-3e21-4550-aa72-4d7510223f35; target
 /mnt/lfs=/dev/vdb4/TODDY-LFS-TARGET (filesystem labelTODDY_LFS). One writer via
 /var/log/toddy/build/build.lock. Target16GiB/host100GiB/scratch128MiB reserves.
 Current kernel scratch fixed /dev/disk/by-id/virtio-TODDY-B02-KERNEL→/dev/vdc,
@@ -157,8 +179,7 @@ kernel-scratch-builder-restore-1.json and glycin-gtk4-work-restored-kernel-1.jso
 COMPLETE; never replay. On a FUTURE cold restart first inspect actual disk/UUID/
 mounts and terminal jobs. Restore ONLY existing six via restore_volumes() (not
 virtual_discard_checkpoint.main/trim), same Systemd source via --restore, new
-receipt names, then same Glycin companion. Kernel scratch restoration helper above is prepared, actual cold restoration
-still unqualified; same UUID/no mkfs/resize/preparation/chown replay. Native diagnostic above does NOT stop parent or share its disks.
+receipt names, then same Glycin companion. Kernel scratch restoration helper above actually qualified after LocalSearch attempt1; same UUID/no mkfs/resize/preparation/chown replay. Native diagnostic above does NOT stop parent or share its disks.
 
 Systemd source inode8930333/input7547189,7193files/SHA
 2a683ffe0cdab7349a4b2b64b932fab647baaab4e7ab5b7c64520ff3443c5667.

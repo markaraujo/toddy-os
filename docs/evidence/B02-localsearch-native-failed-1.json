@@ -1,0 +1,55 @@
+{
+  "scope": "Actual installed candidate default BIOS boot into native7.1.8/Systemd on disposable overlay; LocalSearch selected functional run FAILED at first search insert. No LocalSearch/package/GUI/recovery-entry acceptance.",
+  "commit": "1fbea6be4a57fb08edbff1c049a07ec76a14a566",
+  "kernel": "7.1.8-toddy",
+  "pid1": "systemd",
+  "container_exit": 0,
+  "OOMKilled": false,
+  "backing_unchanged_during_native_test": true,
+  "input_manifests_unchanged": true,
+  "native_selected_passed": false,
+  "actual": {
+    "all_selected_passed": false,
+    "cases": 1,
+    "positive_control": {
+      "elapsed_seconds": 0.026,
+      "exit": 0,
+      "stderr": "",
+      "stdout": "{\"UID\": 101, \"capabilities\": false, \"NoNewPrivs\": true, \"read_controls\": 3, \"socket_controls\": 5, \"exec_control\": true, \"write_truncate_control\": true}\n",
+      "timed_out": false
+    },
+    "programs": 1,
+    "runs": [
+      {
+        "cases": 1,
+        "elapsed_seconds": 10.811,
+        "exit": 1,
+        "name": "test_cli_search",
+        "passed": false,
+        "stderr": "test_search (__main__.TestCli.test_search) ... /usr/lib/python3.14/site-packages/gi/events.py:803: DeprecationWarning: 'asyncio.AbstractEventLoopPolicy' is deprecated and slated for removal in Python 3.16\n  AbstractEventLoopPolicy = getattr(asyncio, \"AbstractEventLoopPolicy\", object)\n/usr/lib/python3.14/site-packages/gi/events.py:890: DeprecationWarning: 'asyncio.get_event_loop_policy' is deprecated and slated for removal in Python 3.16\n  if not isinstance(_get_event_loop_policy(), GLibEventLoopPolicy):\nTraceback (most recent call last):\n  File \"/src/utils/trackertestutils/storehelper.py\", line 139, in timeout_cb\n    raise AwaitTimeoutException(\n        f\"Timeout ({self.timeout}s) awaiting insert of resource matching: {self.predicates}\")\ntrackertestutils.storehelper.AwaitTimeoutException: Timeout (10s) awaiting insert of resource matching: a nfo:Document; nie:isStoredAs <file:///var/tmp/toddy-localsearch-f8j37vqv/test_cli_search/tracker-tests/tmp82d1n6fo/test-monitored/Document%201.txt>\nERROR\n/usr/lib/python3.14/site-packages/gi/events.py:890: DeprecationWarning: 'asyncio.get_event_loop_policy' is deprecated and slated for removal in Python 3.16\n  if not isinstance(_get_event_loop_policy(), GLibEventLoopPolicy):\n\n======================================================================\nERROR: test_search (__main__.TestCli.test_search)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/src/tests/functional-tests/test_cli_search.py\", line 42, in test_search\n    with self.await_document_inserted(target1):\n         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/src/utils/trackertestutils/storehelper.py\", line 152, in __exit__\n    self.loop.run_checked()\n    ~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/src/utils/trackertestutils/mainloop.py\", line 61, in run_checked\n    raise self._exception\n  File \"/src/utils/trackertestutils/storehelper.py\", line 139, in timeout_cb\n    raise AwaitTimeoutException(\n        f\"Timeout ({self.timeout}s) awaiting insert of resource matching: {self.predicates}\")\ntrackertestutils.storehelper.AwaitTimeoutException: Timeout (10s) awaiting insert of resource matching: a nfo:Document; nie:isStoredAs <file:///var/tmp/toddy-localsearch-f8j37vqv/test_cli_search/tracker-tests/tmp82d1n6fo/test-monitored/Document%201.txt>\n\n----------------------------------------------------------------------\nRan 1 test in 10.668s\n\nFAILED (errors=1)\n",
+        "stdout": "",
+        "timed_out": false
+      }
+    ]
+  },
+  "cause": "Own TMPDIR pointed at parent of every monitored directory. Frozen src/indexer/tracker-controller.c excludes g_str_has_prefix(path,g_get_tmp_dir()). Correct only own TMPDIR=/tmp; keep monitored data under /var/tmp. No upstream source/binary/test/golden/timeout change.",
+  "builder_recovery": {
+    "state": "complete",
+    "boot_id": "4896d864-3e21-4550-aa72-4d7510223f35",
+    "six_existing_volumes": true,
+    "same_systemd_source_and_companion": true,
+    "kernel_cold_restore_first_actual_qualification": true,
+    "kernel_uuid": "c6c4176d-faed-4ee3-9ae0-94914a0af666",
+    "private_upper_inode": 14,
+    "private_work_inode": 15,
+    "original_lower_inode": 7523763,
+    "format_resize_compile_replayed": false
+  },
+  "probe_sha256": "537aa73a07bcdd3177864baa25bba4a57c422363b09cb44cb1ba0e9a7b5b5cfe",
+  "payload_sha256": "a4616706818306fd86d8f2c0d7c92dfb80e6536eeb40f52a9acb33ff1ed8a434",
+  "report_sha256": "46bb121781bfb293de5f35d2c8a71d7066a2a85b93eff94c05d21d907774fa65",
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-localsearch-native-failed-1.tar.gz",
+    "sha256": "03c3bd5d0b93f6705f812731e99bf7961656a96822afaecd7c72954dbe8d6bb5"
+  }
+}

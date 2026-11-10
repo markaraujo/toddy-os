@@ -37,19 +37,20 @@ rows=[]
 with tempfile.TemporaryDirectory(prefix='toddy-localsearch-',dir='/var/tmp') as folder:
  base=Path(folder);os.chown(base,101,101)
  home=base/'home';home.mkdir();os.chown(home,101,101)
- env={'PATH':'/usr/bin:/usr/sbin:/bin','LC_ALL':'C.UTF-8','HOME':str(home),'REAL_HOME':str(home),'PYTHONDONTWRITEBYTECODE':'1','TMPDIR':str(base)}
- positive=r'''import json,os,socket,subprocess
+ env={'PATH':'/usr/bin:/usr/sbin:/bin','LC_ALL':'C.UTF-8','HOME':str(home),'REAL_HOME':str(home),'PYTHONDONTWRITEBYTECODE':'1','TMPDIR':'/tmp'}
+ positive=r'''import json,os,socket,subprocess,tempfile
 from pathlib import Path
 status=Path('/proc/self/status').read_text().splitlines()
 assert all(next(r for r in status if r.startswith(k)).split()[1]=='0000000000000000' for k in ['CapEff:','CapPrm:'])
 assert next(r for r in status if r.startswith('NoNewPrivs:')).split()[1]=='1'
+assert not str(Path.cwd()).startswith(tempfile.gettempdir()), 'Monitored root must be outside the miner temporary-path exclusion'
 assert Path('/proc/cmdline').read_bytes() and Path('/etc/motd').read_bytes()
 fd=os.open(str(Path.home().parent),os.O_RDONLY|os.O_DIRECTORY);os.close(fd)
 for family,kind in [(socket.AF_UNIX,socket.SOCK_STREAM),(socket.AF_INET,socket.SOCK_STREAM),(socket.AF_INET,socket.SOCK_DGRAM),(socket.AF_INET6,socket.SOCK_STREAM),(socket.AF_INET6,socket.SOCK_DGRAM)]:
  with socket.socket(family,kind):pass
 subprocess.run(['/bin/true'],check=True)
 p=Path.home()/'positive.txt';p.write_text('retained');fd=os.open(p,os.O_RDONLY|os.O_TRUNC);os.close(fd);assert not p.read_bytes();p.unlink()
-print(json.dumps({'UID':os.geteuid(),'capabilities':False,'NoNewPrivs':True,'read_controls':3,'socket_controls':5,'exec_control':True,'write_truncate_control':True}))
+print(json.dumps({'UID':os.geteuid(),'capabilities':False,'NoNewPrivs':True,'read_controls':3,'socket_controls':5,'exec_control':True,'write_truncate_control':True,'monitored_tree_outside_tmpdir':True}))
 '''
  baseline=run(['python3','-B','-c',positive],env,base,15)
  assert baseline['exit']==0 and not baseline['timed_out'],baseline
