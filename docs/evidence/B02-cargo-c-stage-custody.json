@@ -1,0 +1,22 @@
+{
+  "scope": "Only one new verified cargo-c promotion replica; installed packages/original build stages/source/test evidence/native archives retained, no old custody replay or trim",
+  "state": "complete",
+  "producer_sha256": "503a89abecd957b32a4bd5d2b3e61fd0808cd3753cafd0e56e8576cfb5a70cc5",
+  "stages": [
+    {
+      "name": "cargo-c",
+      "stage": "/mnt/lfs/sources/stage/phase2-cargo-c",
+      "inode": 1890867,
+      "archive": "/var/cache/toddy/packages/cargo-c_0.10.24-1+toddy1_amd64.deb",
+      "archive_sha256": "d32a863ce17d454ffd3ecc4987c6184fe473f2336edfb19a6da3c78b660c1da8",
+      "record_sha256": "2a3ad8ed3aad894a3b7eb3b07f43a39fc7440080abc02cb8c751d6eb1c4d499c",
+      "payload_entries": 2446,
+      "state": "retired"
+    }
+  ],
+  "before_free_bytes": 17190608896,
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 17356251136,
+  "recovery": "Verify native archive/record SHA and extract to a NEW stage if needed; never reinstall or replay retirement. Original compiler stages, sources and raw tests remain.",
+  "reclaimed_bytes": 165642240
+}
