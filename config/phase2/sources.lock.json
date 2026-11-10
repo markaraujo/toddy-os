@@ -2878,6 +2878,31 @@
       "book_md5": "a6554fb50022d762021fc1e949e01520",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "lvm2",
+      "version": "2.03.42",
+      "filename": "LVM2.2.03.42.tgz",
+      "url": "https://sourceware.org/ftp/lvm2/LVM2.2.03.42.tgz",
+      "sha256": "352703ef5b72ebb22d4f250284a29b89fe64d4049c6bf64c693f9af486c8081e",
+      "reference": "BLFS13.1-systemd postlfs/lvm2.html",
+      "book_page_sha256": "b9db91f94b7af6a01339b9b81ae9ea21d42a1693be6c5596ce7c0391715cc8bc",
+      "book_md5": "1cfc17fcbdc5103492b4504c5ddaa274",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "libaio",
+      "version": "0.3.113",
+      "filename": "libaio-0.3.113.tar.gz",
+      "url": "https://releases.pagure.org/libaio/libaio-0.3.113.tar.gz",
+      "sha256": "2c44d1c5fd0d43752287c9ae1eb9c023f04ef848ea8d4aafa46e9aedb678200b",
+      "reference": "BLFS13.1-systemd general/libaio.html",
+      "book_page_sha256": "e6b2b20896554a17a4828df3af84bd4dca65d481e42c343210be4f1f172f9001",
+      "book_md5": "7d5be185f20eeaae15e267419950aaf7",
+      "verified_mirror": "https://ftp.osuosl.org/pub/blfs/conglomeration/libaio/libaio-0.3.113.tar.gz",
+      "integrity": "Official frozen URL returned HTTP 404. Trusted OSU BLFS mirror matched the exact frozen book legacy MD5 and archive header path check before SHA256 pinning.",
+      "status": "source_verified"
     }
   ]
 }

@@ -1,0 +1,718 @@
+{
+  "stage": {
+    "version": "1.16.2",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "tests": [
+      {
+        "name": "cpp-dump",
+        "result": "OK"
+      },
+      {
+        "name": "cpp-misc",
+        "result": "OK"
+      },
+      {
+        "name": "mi",
+        "result": "OK"
+      },
+      {
+        "name": "uuid",
+        "result": "OK"
+      },
+      {
+        "name": "uriparser",
+        "result": "OK"
+      },
+      {
+        "name": "tree",
+        "result": "OK"
+      },
+      {
+        "name": "util",
+        "result": "OK"
+      },
+      {
+        "name": "mi-mctp",
+        "result": "OK"
+      },
+      {
+        "name": "psk",
+        "result": "OK"
+      },
+      {
+        "name": "ana",
+        "result": "OK"
+      },
+      {
+        "name": "discovery",
+        "result": "OK"
+      },
+      {
+        "name": "features",
+        "result": "OK"
+      },
+      {
+        "name": "identify",
+        "result": "OK"
+      },
+      {
+        "name": "logs",
+        "result": "OK"
+      },
+      {
+        "name": "zns",
+        "result": "OK"
+      },
+      {
+        "name": "misc",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-auto-ipv6",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-dhcp-ipv6",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-rhpoc",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-static-ipv4",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-static-ipv4-discovery",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-static-ipv6",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-Dell.PowerEdge.R760",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-Dell.PowerEdge.R660-fw1.5.5-single",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-Dell.PowerEdge.R660-fw1.5.5-mpath+discovery",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-mpath+disc-ipv4+6_half",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-ipv6-noip+disc",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-empty",
+        "result": "OK"
+      },
+      {
+        "name": "NBFT-bad-oldspec",
+        "result": "EXPECTEDFAIL"
+      },
+      {
+        "name": "NBFT-random-noise",
+        "result": "EXPECTEDFAIL"
+      },
+      {
+        "name": "tree-apple-nvme",
+        "result": "OK"
+      },
+      {
+        "name": "tree-pcie",
+        "result": "OK"
+      },
+      {
+        "name": "config-pcie-with-tcp-config",
+        "result": "OK"
+      },
+      {
+        "name": "config-pcie",
+        "result": "OK"
+      },
+      {
+        "name": "psk-json-tls_key-1",
+        "result": "OK"
+      },
+      {
+        "name": "psk-json-tls_key-2",
+        "result": "OK"
+      },
+      {
+        "name": "hostnqn-order",
+        "result": "OK"
+      },
+      {
+        "name": "kdoc",
+        "result": "OK"
+      }
+    ],
+    "original_hardware_programs_deferred": [
+      "main-test",
+      "test-register",
+      "test-zns"
+    ],
+    "consumer": "NVMe UUID refusal and roundtrip with two fresh local MI contexts passed\n",
+    "artifacts": [
+      {
+        "path": "ccan/libccan.a.p/ccan_list_list.c.o",
+        "sha256": "d6292d127852b9db87eb2fe76829125ffda98231a78e2758b1ef50486f135eb4"
+      },
+      {
+        "path": "ccan/libccan.a.p/ccan_str_debug.c.o",
+        "sha256": "37bd3342ec1283bfc8beab0560e39ccb63e78b3248b00fb4ef64e684095f9cea"
+      },
+      {
+        "path": "ccan/libccan.a.p/ccan_str_str.c.o",
+        "sha256": "d9cdfcea23c829c13840253c3f7d1d2d47ae85f0cfae9b9c2c5d2e1fe9eef19a"
+      },
+      {
+        "path": "examples/discover-loop",
+        "sha256": "c00628206fbadcb1c5dbd17a1033d0924c294f7382297c88ad12273e12253650"
+      },
+      {
+        "path": "examples/discover-loop.p/discover-loop.c.o",
+        "sha256": "88de6e3c81d392186a0ec31e47833ef5c5d69f4530849cec8cd00025869db3ff"
+      },
+      {
+        "path": "examples/display-columnar",
+        "sha256": "c6182a87fa988d290e542a8f15b9ab8f8602842e4d4c806c35acead9a8535346"
+      },
+      {
+        "path": "examples/display-columnar.p/display-columnar.c.o",
+        "sha256": "eaed885a509cb0cdb54393ff5b5a397538f6befd7242a63959f5aa85713cf949"
+      },
+      {
+        "path": "examples/display-tree",
+        "sha256": "ed3c5966a029a334e5e9dd67059002e4c61f2000b40792f016cdba9d5fe62828"
+      },
+      {
+        "path": "examples/display-tree.p/display-tree.c.o",
+        "sha256": "49df06ab9d988242b55c7d03f0332a6c4c9a762f786b8c71c014f253eb3188e0"
+      },
+      {
+        "path": "examples/mi-conf",
+        "sha256": "068582a666d44b8f2ac4da6d10c15c42249fbde82c2b5a564879a5be4ac46ddf"
+      },
+      {
+        "path": "examples/mi-conf.p/mi-conf.c.o",
+        "sha256": "ff85cf000eff0e14c58b2987272497de75ef497f8aa44ce148074a0ba209b667"
+      },
+      {
+        "path": "examples/mi-mctp",
+        "sha256": "47265a2e318e7118da893b4e8b76bfba4314f3f014546a758d4cddae99c150f9"
+      },
+      {
+        "path": "examples/mi-mctp-ae",
+        "sha256": "8d198c719fd81cc8194624c1ef8de495e19e64a0654e20b7c4e37d9efa7cb9c3"
+      },
+      {
+        "path": "examples/mi-mctp-ae.p/mi-mctp-ae.c.o",
+        "sha256": "0f1ef1f801c79f00d3b879f503dbdeb53fc56abdfb7d6ef6bec0721dfa9ddba7"
+      },
+      {
+        "path": "examples/mi-mctp-csi-test",
+        "sha256": "cb64ff547f10a988fe0f4357856dceb6865c6372ddd26191d3e3be48ea8f9dda"
+      },
+      {
+        "path": "examples/mi-mctp-csi-test.p/mi-mctp-csi-test.c.o",
+        "sha256": "957608ac5ac1322bb8a6c212dea50f35aa524f8096054679738ebfebd0653678"
+      },
+      {
+        "path": "examples/mi-mctp.p/mi-mctp.c.o",
+        "sha256": "df9101acca8399cbc843c3f36f7e8928052706d1211788a0a0705cd28d400cab"
+      },
+      {
+        "path": "examples/telemetry-listen",
+        "sha256": "2c5478666abb162fe376a6fb8adf66de8c6ab232b06b1dcf55e8dfb7f936880f"
+      },
+      {
+        "path": "examples/telemetry-listen.p/telemetry-listen.c.o",
+        "sha256": "5abb204aafa264d1e2732139d519f76e4cec095ed958fb95d5a5a4c980c215e7"
+      },
+      {
+        "path": "meson-private/sanity_check_for_c.exe",
+        "sha256": "191646a6501d425990f9a36894024258da104e5375904550c64ce420e318f3ba"
+      },
+      {
+        "path": "meson-private/sanity_check_for_cpp.exe",
+        "sha256": "79b5ff51cd414b0d82c706df4bac84ff4f681ca80a664e84184a205a6fd18406"
+      },
+      {
+        "path": "src/libnvme-mi-test.so",
+        "sha256": "dd3abba23b78ae6632a930275e6f5831df1919114cdea9865edefb93365de90c"
+      },
+      {
+        "path": "src/libnvme-mi-test.so.p/nvme_log.c.o",
+        "sha256": "618271fb3b5c7745c35b25324d336c45d260f9d494c84432dff1efcb1990dc83"
+      },
+      {
+        "path": "src/libnvme-mi-test.so.p/nvme_mi-mctp.c.o",
+        "sha256": "3ff5a054a5f22f907c74598daa19169a0825b2ac467e26196db543991c08ec07"
+      },
+      {
+        "path": "src/libnvme-mi-test.so.p/nvme_mi.c.o",
+        "sha256": "8dea4cdc5fa36dbb7ed6fbcef273aba7b76347d8b25eaad75e8cea6cf475f114"
+      },
+      {
+        "path": "src/libnvme-mi.so.1.16.2",
+        "sha256": "174c649c48c93d68234da533a7a06e472a72c964a27daa9e2dad8023020aa474"
+      },
+      {
+        "path": "src/libnvme-mi.so.1.16.2.p/nvme_log.c.o",
+        "sha256": "618271fb3b5c7745c35b25324d336c45d260f9d494c84432dff1efcb1990dc83"
+      },
+      {
+        "path": "src/libnvme-mi.so.1.16.2.p/nvme_mi-mctp.c.o",
+        "sha256": "3ff5a054a5f22f907c74598daa19169a0825b2ac467e26196db543991c08ec07"
+      },
+      {
+        "path": "src/libnvme-mi.so.1.16.2.p/nvme_mi.c.o",
+        "sha256": "8dea4cdc5fa36dbb7ed6fbcef273aba7b76347d8b25eaad75e8cea6cf475f114"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2",
+        "sha256": "275fc52f72c0953f63d852b884db35c26c2c22304eba2b3c1dc5a97575018819"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2.p/nvme_base64.c.o",
+        "sha256": "9e43e717ff73d2bb594b663852143dfaa5b355b06a571015d8203b81ff58f985"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2.p/nvme_crc32.c.o",
+        "sha256": "1faa056fabf1ea08836be2f0fd657db920820dd25d0fe0877f5ce21d61ab74ef"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2.p/nvme_fabrics.c.o",
+        "sha256": "7028ba0d1a4f6b1ada1202ca80e422fabf0a41d2ce992793d7a6c6f5c7bc4168"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2.p/nvme_filters.c.o",
+        "sha256": "7263ac8b2f3082abb98bd4f43080946bb4e5954bde83edd0674af6cd74162f2c"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2.p/nvme_ioctl.c.o",
+        "sha256": "fd121d29b247331466a8ba16216dc5f79214a960dcb740edeff59ccc5890dce3"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2.p/nvme_json.c.o",
+        "sha256": "3ad6b53b70a1011a2d41fa80ab14c5ad169eb9d9d2dad87a7ba9216a0dd03216"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2.p/nvme_linux.c.o",
+        "sha256": "bb9da67da9acc243133f23686fc28452826030cbc601edf33e5d395951818f91"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2.p/nvme_log.c.o",
+        "sha256": "618271fb3b5c7745c35b25324d336c45d260f9d494c84432dff1efcb1990dc83"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2.p/nvme_nbft.c.o",
+        "sha256": "5acaf7770765708b7c3c542166d4b00016a1ae87fd6d7ff38152afb148dd10eb"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2.p/nvme_sysfs.c.o",
+        "sha256": "1a374c9af45d8f99af8f9a52456b3f6791aad3f1313766067fd63ae5ddaee535"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2.p/nvme_tree.c.o",
+        "sha256": "34d890b8c6e531aa15ff82a8361c7c7d1b0d40d8274972d2e887b29f9592f421"
+      },
+      {
+        "path": "src/libnvme.so.1.16.2.p/nvme_util.c.o",
+        "sha256": "359eaaaf04c6b74874794313f9a67612a1e89c86558f24ac3759732cfc80ace5"
+      },
+      {
+        "path": "test/config/test-config-dump",
+        "sha256": "6bd09947c9066b434b33ba2f0d599fbb4e9cdeeadcd19cea4d5acbdcef485385"
+      },
+      {
+        "path": "test/config/test-config-dump.p/config-dump.c.o",
+        "sha256": "28f79c49cb6d1aab0bf9e5a9cd1aecef676592ab870f5d0a038a308d7a97e564"
+      },
+      {
+        "path": "test/config/test-hostnqn-order",
+        "sha256": "a86144b82a7e65b40dafe6dc06bf398a1e03353e88125ce5bc119ff7c602db2e"
+      },
+      {
+        "path": "test/config/test-hostnqn-order.p/hostnqn-order.c.o",
+        "sha256": "dee00b8bd4bd8ba33ef66f3e94c1e39d104c20770a077e40399da1a42b0ce177"
+      },
+      {
+        "path": "test/config/test-psk-json",
+        "sha256": "e1894aff83680d7166cbdf74cf254a38efab3d61973f8366f794f37ae012a0ea"
+      },
+      {
+        "path": "test/config/test-psk-json.p/psk-json.c.o",
+        "sha256": "b8745beee9b94ab2f06e3ec0f7549f4d755f1da2d7b74b3780ce72a6e839bf3e"
+      },
+      {
+        "path": "test/hkdf_add1",
+        "sha256": "4176c987627193a3e6f0ec7dd381795de5a803c11d92dfa367b105208f239241"
+      },
+      {
+        "path": "test/hkdf_add1.p/hkdf_add1.c.o",
+        "sha256": "5e0cf35be959efcd96f4f54447f8d0c445bf0334ebe8d9010bc0e48f19bf682b"
+      },
+      {
+        "path": "test/ioctl/libmock-ioctl.so",
+        "sha256": "d7f1e8ceaa7e3a61cec08aa79730ce550b2efa42187703cebdf8410075524b26"
+      },
+      {
+        "path": "test/ioctl/libmock-ioctl.so.p/mock.c.o",
+        "sha256": "917b698bd7a18131fd5ee94e0e448203de26e364b25d0156eef9393a9c07f841"
+      },
+      {
+        "path": "test/ioctl/libmock-ioctl.so.p/util.c.o",
+        "sha256": "4957ba637f2d84be5df3ef5a233a280294271d5b8744d8620ff767b01947c449"
+      },
+      {
+        "path": "test/ioctl/test-ana",
+        "sha256": "eed55739d2270aae3a5bd16275770eb02b9f7fb8e8c6bc3c99522eca48d66687"
+      },
+      {
+        "path": "test/ioctl/test-ana.p/ana.c.o",
+        "sha256": "430bb480ebce3d5027491b6224e7bb1673921c1492e2f08dbb23a47fd1bdf44e"
+      },
+      {
+        "path": "test/ioctl/test-discovery",
+        "sha256": "2d1ba9dbcd24c81e88accae633ec0d5195904982dec523fcda1aa779d4231c62"
+      },
+      {
+        "path": "test/ioctl/test-discovery.p/discovery.c.o",
+        "sha256": "9cdb9d31362f5ac007a27d597949e9a8c8f212254bbaac02a397c7e1075a56b3"
+      },
+      {
+        "path": "test/ioctl/test-features",
+        "sha256": "7d2e0efb578d509a1e162e653ec4c52acfd4524e6a6c4e5a58e23e731b17abfa"
+      },
+      {
+        "path": "test/ioctl/test-features.p/features.c.o",
+        "sha256": "3f0328c3b6b352fccfe3371d53914f487e049a8125420b599f84f534bed85eef"
+      },
+      {
+        "path": "test/ioctl/test-identify",
+        "sha256": "e95aada571a9cb7fcdf19f55b403be503071b99432898cfa0b76017d3f046b02"
+      },
+      {
+        "path": "test/ioctl/test-identify.p/identify.c.o",
+        "sha256": "1319b7907dbf1fb56d145beefe73816e645b21c7e6029b33e4b3881458aff0b8"
+      },
+      {
+        "path": "test/ioctl/test-logs",
+        "sha256": "98e48c925e3b539be6d8e4af617ddcb3ba1c47a460d58a6284b82d1482f16388"
+      },
+      {
+        "path": "test/ioctl/test-logs.p/logs.c.o",
+        "sha256": "0dfd6583017be64f8fea296e81815154f57c1f1dec0a4542c7cf5bd664aabc2d"
+      },
+      {
+        "path": "test/ioctl/test-misc",
+        "sha256": "306e90d4b398e016c726c6bb8731ea62a70cb702dc820354b1ef330b749c51ab"
+      },
+      {
+        "path": "test/ioctl/test-misc.p/misc.c.o",
+        "sha256": "045292a52a83a38c45fa3d16892477f2e564e821a034567e1eff6c25f54917ea"
+      },
+      {
+        "path": "test/ioctl/test-zns",
+        "sha256": "5e5775228d0670cb6fde476e7acdf60bb45770ca0a41fbb5695f9a048254979b"
+      },
+      {
+        "path": "test/ioctl/test-zns.p/zns.c.o",
+        "sha256": "a27f8e16ab9fb13c3b85e04188963c8d803ae9ecf154152207f985a82d03fbb8"
+      },
+      {
+        "path": "test/libmock-ifaddrs.so",
+        "sha256": "dd1ba9f10cd1365c7851fef3706f5fc6f232066582e4b521f285acde30f2ad06"
+      },
+      {
+        "path": "test/libmock-ifaddrs.so.p/mock-ifaddrs.c.o",
+        "sha256": "00da6ecc62151be2fd1dda9027beecf5bf926db25c43d485ec88d50b8e97a51b"
+      },
+      {
+        "path": "test/main-test",
+        "sha256": "c3c0b46d9c46354ea9f72209147c41c4a9f006005a015e98c662fd98b6a95d40"
+      },
+      {
+        "path": "test/main-test.p/test.c.o",
+        "sha256": "27233ce52434ed5908e1f53d9cd334bc5d79b4558dd6d8bace4122ba10d5fb1a"
+      },
+      {
+        "path": "test/nbft/nbft-dump",
+        "sha256": "5d8f9215461102a8dfe39041562995b66229e8df4fbb7150282d6cf65bbccd45"
+      },
+      {
+        "path": "test/nbft/nbft-dump.p/nbft-dump.c.o",
+        "sha256": "d48716676ee9e746fa6f947ede46051d3482e1de768abd7421ef9ab3b4cb01d1"
+      },
+      {
+        "path": "test/sysfs/test-tree-dump",
+        "sha256": "04da4693877f01a0133f49b590010f2d8f45ff7862e3129780d2a1f1af902533"
+      },
+      {
+        "path": "test/sysfs/test-tree-dump.p/tree-dump.c.o",
+        "sha256": "e5b8c957fbdbbe4d9cb51df974e985ecbbc50e04f871a5054ffc63bf65b45586"
+      },
+      {
+        "path": "test/test-cpp",
+        "sha256": "d746bd05bfa41cd6aa3e8bf588357f1338357ea7270dab543ae808b0e35e3492"
+      },
+      {
+        "path": "test/test-cpp.p/cpp.cc.o",
+        "sha256": "1e3b830890b04f9efece4d042be8efa23ae3b6acbe4f682794312b08506105e1"
+      },
+      {
+        "path": "test/test-mi",
+        "sha256": "6c329675dbcd7315700e7945780f2295d8783f24de6188343239ddb5f303ad3e"
+      },
+      {
+        "path": "test/test-mi-mctp",
+        "sha256": "e24c0545cfe179db2abd8348aa52799a7d526d8ab9b0834487338ef4c317585c"
+      },
+      {
+        "path": "test/test-mi-mctp.p/mi-mctp.c.o",
+        "sha256": "e087ef24077178c273490da55336c871d13b34d05f698ebbb9cd39ab46ea6e80"
+      },
+      {
+        "path": "test/test-mi-mctp.p/utils.c.o",
+        "sha256": "8f2c43c9370e6f0380eef41ad8f609250355be3959ce1e82d964f109ed82f271"
+      },
+      {
+        "path": "test/test-mi.p/mi.c.o",
+        "sha256": "01640fc431c9dbbee6400325a104f0bdeb595239cb73e39ae4aee919cf96c5a0"
+      },
+      {
+        "path": "test/test-mi.p/utils.c.o",
+        "sha256": "8f2c43c9370e6f0380eef41ad8f609250355be3959ce1e82d964f109ed82f271"
+      },
+      {
+        "path": "test/test-misc",
+        "sha256": "5d7023e913d0daeb6e9b66e018e50da738a59125c8d2e6d0812faff1d36ca997"
+      },
+      {
+        "path": "test/test-misc.p/misc.cc.o",
+        "sha256": "32a8293f190910fa503b38077ebb858d47c8c066b36431bba16a2d5ef3d2a3b1"
+      },
+      {
+        "path": "test/test-psk",
+        "sha256": "fc7669f3082b42fa207c945dcf369f585fe6ebed92b89bd5a897bb1629b798ca"
+      },
+      {
+        "path": "test/test-psk.p/psk.c.o",
+        "sha256": "2fc07217dd5528db74e10957389a571687251350ed608b01bc4db1a1f4645cdb"
+      },
+      {
+        "path": "test/test-register",
+        "sha256": "4353763223da150cad3aef8811ce9bf67a793d22ece71d789274e53056e8487b"
+      },
+      {
+        "path": "test/test-register.p/register.c.o",
+        "sha256": "407b1b9d4e6df1dd649c4cccfea135bf04b88ef0751f650ac80e4b1cdeeaca7c"
+      },
+      {
+        "path": "test/test-uriparser",
+        "sha256": "770bc6cf8765e7e0b1c8cbbd76c3fcdfbfe061673e6fb0e3993feaad6658f587"
+      },
+      {
+        "path": "test/test-uriparser.p/uriparser.c.o",
+        "sha256": "5c04de503447af6ddc1fc14f1ea223f380942cae440852d25bf5f452f62115a4"
+      },
+      {
+        "path": "test/test-util",
+        "sha256": "b170ff03c112394679355868a6421a70e34a16af16b81bfd5d35aa02951e1cae"
+      },
+      {
+        "path": "test/test-util.p/test-util.c.o",
+        "sha256": "643518b7926179b2819eddee86449f787276ce5cf5c0f7d60cd3ebfd2f81fd18"
+      },
+      {
+        "path": "test/test-uuid",
+        "sha256": "4fd2325752404c0edd1669870934fc68ee917da69048c805658901b34b3d36d2"
+      },
+      {
+        "path": "test/test-uuid.p/uuid.c.o",
+        "sha256": "76cab19d1b6e56170375c0e4233c46836d44d44ebfddd988dacce66979a7bccc"
+      },
+      {
+        "path": "test/test-zns",
+        "sha256": "d546782f3475f4ddb05ba6c22c50bb88f432750f78b676ae15938d88d434f2b8"
+      },
+      {
+        "path": "test/test-zns.p/zns.c.o",
+        "sha256": "317b153f7db277c364af2218d2d3fe816453bc3ff2b98e6d4f87e472b1a7c820"
+      },
+      {
+        "path": "test/tree",
+        "sha256": "d30e17687ed282d067527c3d41e4472a1cddf4821a66f0554abe838d9037d4b0"
+      },
+      {
+        "path": "test/tree.p/tree.c.o",
+        "sha256": "a340be667286b4e8338fc2dc3608fb2129a599beb0a10dcf12e3f4c7da1bbcac"
+      }
+    ],
+    "stage_sha256": [
+      {
+        "path": "usr/include/libnvme-mi.h",
+        "sha256": "0c009600c7ce3be0fbdca1812346efbd5b97fdc6b983f0eafad408291f8557f9"
+      },
+      {
+        "path": "usr/include/libnvme.h",
+        "sha256": "bc10cf2efa9e87136a8fba2062dc85a8d0192c9fad752d7b9abb858df6d8370d"
+      },
+      {
+        "path": "usr/include/nvme/api-types.h",
+        "sha256": "8495a755258ef9b2397ec0d122124e94865b869b1d0f1739bb3816287eac6561"
+      },
+      {
+        "path": "usr/include/nvme/fabrics.h",
+        "sha256": "bcfac0e2213f1f19f6af66d8d4f71a25cca928432fa446e30b37317e7beb0743"
+      },
+      {
+        "path": "usr/include/nvme/filters.h",
+        "sha256": "7af4da3a948921cf22c154325911f6e1cf82ef15644425091c94f688a3c32305"
+      },
+      {
+        "path": "usr/include/nvme/ioctl.h",
+        "sha256": "335f1e7e241bc59223adb75d06536bd91e636363625eb683dce311402bd23402"
+      },
+      {
+        "path": "usr/include/nvme/linux.h",
+        "sha256": "5a897d5dbe516bbb09e2e4dea00e8f81531ed387ee8c12a1ecb24c8e94ea2748"
+      },
+      {
+        "path": "usr/include/nvme/log.h",
+        "sha256": "b90c90f628d8427c25684dbf1b4ff5d3694938dec6f933a191e3d55e0f56376b"
+      },
+      {
+        "path": "usr/include/nvme/mi.h",
+        "sha256": "849a317ba3154467611f89137c67fa557d28f5be75a06311e9ff072d79156365"
+      },
+      {
+        "path": "usr/include/nvme/nbft.h",
+        "sha256": "06e53ea901dfd78bbde4b31463c70fc0f2519326bdd1bd30ad6127d85ae79f1b"
+      },
+      {
+        "path": "usr/include/nvme/tree.h",
+        "sha256": "d82e319533103d0ec741ae835404bd6768a4f7933dbd41d2a71a3c8ccbc798be"
+      },
+      {
+        "path": "usr/include/nvme/types.h",
+        "sha256": "e3006b0f66521516e45e85103901df395a61aec2af1ce786d103abd08338e916"
+      },
+      {
+        "path": "usr/include/nvme/util.h",
+        "sha256": "9e063039766679dc20ad5723ba68f89b09feaf3ca450c0e151005ea727331caa"
+      },
+      {
+        "path": "usr/lib/libnvme-mi.so.1.16.2",
+        "sha256": "174c649c48c93d68234da533a7a06e472a72c964a27daa9e2dad8023020aa474"
+      },
+      {
+        "path": "usr/lib/libnvme.so.1.16.2",
+        "sha256": "275fc52f72c0953f63d852b884db35c26c2c22304eba2b3c1dc5a97575018819"
+      },
+      {
+        "path": "usr/lib/pkgconfig/libnvme-mi.pc",
+        "sha256": "e00c58118d47a7dd6c7639014093a4af3b1f88b05a9e9b8b1dc7f9909bc99f89"
+      },
+      {
+        "path": "usr/lib/pkgconfig/libnvme.pc",
+        "sha256": "8eaaf61f0e98925b86bb97d912c4f0a55804020c971a29b98896d4e6c14c847f"
+      }
+    ],
+    "stage_links": [
+      {
+        "path": "usr/lib/libnvme-mi.so",
+        "target": "libnvme-mi.so.1"
+      },
+      {
+        "path": "usr/lib/libnvme-mi.so.1",
+        "target": "libnvme-mi.so.1.16.2"
+      },
+      {
+        "path": "usr/lib/libnvme.so",
+        "target": "libnvme.so.1"
+      },
+      {
+        "path": "usr/lib/libnvme.so.1",
+        "target": "libnvme.so.1.16.2"
+      }
+    ],
+    "artifacts_map_digest": "0d5b178f78eceeef791d4d134776fcf9bd75ce6f6e33136424176a187d123181",
+    "stage_sha256_map_digest": "bfd66647bda063d31bbe8b93db5230c0c05f47dfe2f8a9d751d86e1fd61fd2f0",
+    "stage_links_map_digest": "bfefdccac9bdbd9c2f05edb73cae05fde43e4e887d00c3c43aae145303475aea"
+  },
+  "jobs": [
+    {
+      "pid": 112455,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "2331507",
+      "started_unix": 1794351213.9140513,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": 1,
+      "command_sha256": "6063f9870890d7f64d550fee115773ee1482250726e6204797100966e8df2ef4"
+    },
+    {
+      "pid": 113368,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "2338352",
+      "started_unix": 1794351282.3675861,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": 0,
+      "command_sha256": "e04e3bb39ff9e262aa39a17ccb1257d9fd40408706fd63a6eb32ba95990872bb"
+    }
+  ],
+  "prepared": {
+    "source_sha256": "1d850d5a871559abf641d6e6b63bb86047e4cb26f3ad144597c2c64b3cff7231",
+    "reference": "BLFS13.1-systemd general/libnvme.html",
+    "book_page_sha256": "efab44a9dc48be87748c657834fe84db2c5cbbd1996e8b07ac37e54c6034d8f7",
+    "source_patches": [],
+    "recipe_sha256": "4728a1f86263309acc018fbf5ddd0142a3c067776be538c98f9057518e8d6157",
+    "probe_sha256": "3789d656f336fb75d0905cc8eb7d68bdb27c17047a8b4f6551bf8a6086ac5344"
+  },
+  "log_sha256": {
+    "/mnt/lfs/sources/phase2/work/libnvme-1/configure.log": "e8ae4334839412368a417679664dbd55d17efa50167ff3ebcc74a09ae9a4afab",
+    "/mnt/lfs/sources/phase2/work/libnvme-1/original-build.log": "053d06f44e0ab604e1f16b46818a548870ca7ed8f6eecb870028eb2a88171505",
+    "/mnt/lfs/sources/phase2/work/libnvme-1/original-registered-tests.json": "6b96fa14c70aea11d64fc754531368bbc11a3fe4743cd6fafb2dcc5d36524aa7",
+    "/mnt/lfs/sources/phase2/work/libnvme-1/original-tests.log": "9673d7e59caa8393a1e1aa4b49d586d148b5335ef6c8c2b42b2203455302b6a0",
+    "/mnt/lfs/sources/phase2/work/libnvme-1/compile/meson-logs/testlog.json": "dd0cc8304f282c69c64e332cc54a151db12a8d295ddd168520e42cd73e97ad12",
+    "/mnt/lfs/sources/phase2/work/libnvme-1/original-stage.log": "3af7d07a0712937c97980cb54e97f12816c449cc1c7593c4b62dc0e21b4a7670",
+    "/var/log/toddy/phase2/libnvme-1.log": "3ddb530192622b1dc9bb5eaad86db9d9dffd6edab7fe11112bf7d839c9e433ba"
+  },
+  "elf_dependencies": {
+    "libnvme": [
+      "libjson-c.so.5",
+      "libcrypto.so.4",
+      "libkeyutils.so.1",
+      "libc.so.6"
+    ],
+    "libnvme-mi": [
+      "libdbus-1.so.3",
+      "libc.so.6"
+    ]
+  },
+  "source": {
+    "name": "libnvme",
+    "version": "1.16.2",
+    "filename": "libnvme-1.16.2.tar.gz",
+    "url": "https://github.com/linux-nvme/libnvme/archive/v1.16.2/libnvme-1.16.2.tar.gz",
+    "sha256": "1d850d5a871559abf641d6e6b63bb86047e4cb26f3ad144597c2c64b3cff7231",
+    "reference": "BLFS13.1-systemd general/libnvme.html",
+    "book_page_sha256": "efab44a9dc48be87748c657834fe84db2c5cbbd1996e8b07ac37e54c6034d8f7",
+    "book_md5": "a6554fb50022d762021fc1e949e01520",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "compiler_tests_stage_and_logs_unchanged": true
+}

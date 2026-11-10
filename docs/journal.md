@@ -3416,3 +3416,5 @@ remains parked; next eligible CUPS source/build review.
 | 2026-11-10 | B02 Keyutils staged | Build frozen 1.6.3 privately and stage the shared payload with the book paths | Job 0. C++ header syntax and local C/CLI version passed. 12 ELF, 46 files, 13 links. Native configuration, packaging and synthetic keyring tests pending. |
 
 | 2026-11-10 | B02 owned Keyutils | Preserve staged bytes, normalize one linker alias, retain licenses and production request-key rules | Native 0/0, 75 paths and 84 payload entries. Shared SDK and CLI pass, kernel suite pending. Libnvme source pinned, reserve custody check next. |
+
+| 2026-11-10 | B02 owned libnvme | Reclaim verified closed EDS replica, build frozen libnvme, preserve original test and stage bytes during C probe correction | 36 ordinary and two expected refusal results. Native 0/0, 34 paths and 35 entries. LVM2 and libaio sources pinned. Libaio source verified via OSU after origin 404. |

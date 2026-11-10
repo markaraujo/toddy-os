@@ -1,0 +1,93 @@
+{
+  "native": {
+    "step": "b02-libnvme-install",
+    "started": "2026-11-10T22:57:34.339061+00:00",
+    "finished": "2026-11-10T22:57:50.741320+00:00",
+    "recipe_sha256": "d6a5d5b08a1c1c08d88cd12b7eb66444245f680a9f0ceef300a0fb304832ab9f",
+    "postcheck_sha256": "76c0d6925363529948dddb8de4742645ca698fddd7e810dde2ef36bb397f5ea7",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 34,
+    "log_sha256": "faa6cf4950a51520421aeb5eaa8fcd6acec748a0ff9562ceac5ce0397cf663d7",
+    "receipt_sha256": "b3690539fa8d20738842c757a657676ac36c3952898acf2bc8bcc66398037d73"
+  },
+  "consumer": {
+    "C_consumer": "NVMe UUID refusal and roundtrip with two fresh local MI contexts passed\n",
+    "stage_files": 17,
+    "stage_links": 4,
+    "notices_verified": 3,
+    "runtime_links": {
+      "libnvme": [
+        "libjson-c.so.5",
+        "libcrypto.so.4",
+        "libkeyutils.so.1"
+      ],
+      "libnvme-mi": [
+        "libdbus-1.so.3"
+      ]
+    },
+    "scope": "UID101 with NNP, no effective capabilities, private devices and private network. Local UUID and MI object lifecycle only.",
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "libnvme",
+    "version": "1.16.2-1+toddy1",
+    "archive_sha256": "95a240a157bf0ae0474d52b30f64afaef69d17336f130c720949489baa64b942",
+    "recipe_sha256": "d6a5d5b08a1c1c08d88cd12b7eb66444245f680a9f0ceef300a0fb304832ab9f",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "libnvme",
+        "version": "1.16.2",
+        "filename": "libnvme-1.16.2.tar.gz",
+        "url": "https://github.com/linux-nvme/libnvme/archive/v1.16.2/libnvme-1.16.2.tar.gz",
+        "sha256": "1d850d5a871559abf641d6e6b63bb86047e4cb26f3ad144597c2c64b3cff7231",
+        "reference": "BLFS13.1-systemd general/libnvme.html",
+        "book_page_sha256": "efab44a9dc48be87748c657834fe84db2c5cbbd1996e8b07ac37e54c6034d8f7",
+        "book_md5": "a6554fb50022d762021fc1e949e01520",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "installed": true,
+    "payload_count": 35,
+    "supporting_build_scripts_sha256": "b47780979cfa0f0b61261a9282cb5a4159574abd679702856faecc15d5101504",
+    "payload_sha256": "629a72eefe11ffb1fe239d6d6aa63086f5cac6a376f512fe67b8e7f21b858928"
+  },
+  "installed_notices": {
+    "sources": [
+      {
+        "filename": "libnvme-1.16.2.tar.gz",
+        "source_sha256": "1d850d5a871559abf641d6e6b63bb86047e4cb26f3ad144597c2c64b3cff7231",
+        "url": "https://github.com/linux-nvme/libnvme/archive/v1.16.2/libnvme-1.16.2.tar.gz",
+        "notices": [
+          {
+            "path": "libnvme-1.16.2/COPYING",
+            "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551",
+            "size": 26530
+          },
+          {
+            "path": "libnvme-1.16.2/ccan/licenses/BSD-MIT",
+            "sha256": "89807acf2309bd285f033404ee78581602f3cd9b819a16ac2f0e5f60ff4a473e",
+            "size": 1023
+          },
+          {
+            "path": "libnvme-1.16.2/ccan/licenses/CC0",
+            "sha256": "5c37e41135091a39821cfb306ad8516625b0bb49510ce56ad85c347bbc46df29",
+            "size": 6383
+          }
+        ]
+      }
+    ],
+    "scope": "Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply"
+  },
+  "target_free_bytes": 17195814912,
+  "scratch_free_bytes": 561504256
+}

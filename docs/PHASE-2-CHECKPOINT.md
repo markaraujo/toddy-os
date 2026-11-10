@@ -73,18 +73,37 @@ suite remains pending on the intended native kernel, with synthetic keys
 and disposable keyrings. The intended 7.1.8 config enables KEYS/RSA/asymmetric/
 X.509 and leaves BIG_KEYS and KEY_DH_OPERATIONS unset.
 
-EXACT NEXT: libnvme 1.16.2 official archive pinned from frozen libblockdev,
-SHA256 1d850d5a871559abf641d6e6b63bb86047e4cb26f3ad144597c2c64b3cff7231. No guest
-preparation or build. BLFS estimates 34 MB build space, and last target free
-17,198,915,584 B is only 19,046,400 B over the fixed reserve. First
-qualify the closed Evolution Data Server promotion replica read-only against
-its native success receipt, installed package record, archive, installed bytes
-and original workstage. Inventory measured 33,267,712 B allocated, with no
-nested mount observed. Candidate only. Apply existing custody safeguards and
-use a unique receipt only after all checks pass. Then review libnvme tests and
-selected Meson features against owned OpenSSL, JSON-C, D-Bus and Keyutils.
-Preserve all completed receipts and the single guest writer. UDisks/Samba
-closure and native GNOME still pending. Stop after accepted B02.
+Libnvme 1.16.2 is now owned and installed. Job libnvme-1 PID 112455
+compiled and staged, with 36 ordinary original Meson passes and two expected
+NBFT refusals. Its own C probe failed on an upstream unused-parameter warning
+treated as an error. Probe-only libnvme-probe-2 PID 113368 exited 0 after
+treating upstream headers as system headers and reconciling the 38 registered
+test names. The 99 ELF files, 17 staged files and seven logs were unchanged.
+[Stage evidence](evidence/B02-libnvme-stage.json).
+Native b02-libnvme-install PID 113874 recipe/postcheck 0/0, 34 changed paths,
+35 payload entries. Archive SHA256
+95a240a157bf0ae0474d52b30f64afaef69d17336f130c720949489baa64b942.
+[Native evidence](evidence/B02-libnvme-install.json) covers local UUID refusal,
+roundtrip and MI context lifecycle as UID 101, resolved pinned dependencies,
+exact payload, notices and APT. No NVMe device, fabric connection, keyring or
+GUI test. Never replay completed operations. No writer remains.
+
+[EDS custody](evidence/B02-eds-promotion-custody.json) complete. It reclaimed
+33,251,328 B from the closed usr replica, with the native archive, source,
+original workstage, control files and installed root preserved. Never replay.
+
+EXACT NEXT: pinned LVM2 2.03.42 and required libaio 0.3.113. Libaio official
+Pagure returned HTTP 404, so the verified OSU BLFS mirror supplied the exact
+frozen MD5 bytes. SHA256 2c44d1c5fd0d43752287c9ae1eb9c023f04ef848ea8d4aafa46e9aedb678200b.
+No guest source preparation or build. Review the frozen libaio recipe and
+prepare a writable private source copy. The original partcheck case 14 writes
+up to 768 MiB, above target headroom. Qualify a bounded private fixture location
+using the existing isolated 1 GiB tmpfs only if guest available memory and
+filesystem behavior fit the selected tests. Preserve the original input and
+record any exclusions or failed cases, including root-only ext2/ENOSPC tests
+outside book partcheck. Check actual lock, target, scratch and host. Last target
+free 17,195,814,912 B, scratch 561,504,256 B.
+LVM2/Cryptsetup/UDisks/Samba and native GNOME pending. Stop after accepted B02.
 
 ### Previous Settings prerequisites
 

@@ -188,7 +188,7 @@ Verified:
 - Owned libbytesize 2.12 local SDK: 76 selected upstream cases passed with three locale skips. Native install and postcheck 0/0 with 56 changed paths and 131 payload entries. C/Python/CLI arithmetic, refusal and recovery, exact stage bytes, ABI and APT passed. No storage device, UDisks service, Settings GUI or physical acceptance.
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 
-Running: Owned Keyutils 1.6.3 installed with reviewed request-key conffile, shared SDK and CLI verified. Native kernel keyring tests pending. Libnvme 1.16.2 source verified. Next qualify closed staging copy for reserve headroom and review libnvme Meson features and tests. UDisks and Settings GUI pending. Full B02 then stop.
+Running: Owned libnvme 1.16.2 installed and locally checked. LVM2 and libaio sources verified. Next isolate the libaio build and its large original fixture within verified resource limits. Storage closure and Settings GUI pending. Full B02 then stop.
 
 Remaining:
 
