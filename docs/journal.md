@@ -3147,3 +3147,14 @@ Prior4c0e88a all3CI success/exact publicHTTP200/indexSHA
 Next Nautilus50.2.2 actual source/dependency/test preflight; frozen archive cached,
 no Nautilus guest input/job. Preserve parked focus branch and libhandy30graphical
 originals. Complete ALL B02 then stop before any other story.
+
+### B02 — Owned libportal parent-window helper libraries — 2026-11-10
+
+Owned libportal0.9.1 base/GTK3+GTK4 helpers/GI:61original private mock-portal cases/no skips,33ELFs/42stagefiles; native install/post0/0,73changedpaths/76entries. Installed UID101/private-device/no-route private-bus C constructor/context/two releases/separate GTK3-4 GI/shared symbols/pkg-config/APT0. Qt/Vala/docs/demo omitted; no real GNOME portal service/dialog/consent/input/capture/widget/permission grant acceptance, ADR0196.
+Frozen source/read-only input/original source180s test budget preserved. No missing
+pytest silent skip; no source/compiler/original-suite replay, no grant/policy change.
+RawSHA7381ac4b9c3c403485e735cfe2a49415e4640ec37101444eae74ae20bc4328a3.
+Prior1a0fff9 all3CI success/exactpublicHTTP200/indexSHA
+bb8f7b5ba0a4eabce8840d5f5f4e7a824ffdb10359d6787c851b323cd7beba1f.
+Next gnome-autoar0.4.5 actual source/archive dependency preflight, then remaining
+Nautilus leaves. No gnome-autoar guest input/job. Complete ALL B02 then stop.

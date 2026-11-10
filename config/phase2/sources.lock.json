@@ -2409,6 +2409,18 @@
       "book_md5": "af586a91ff6d4093a6e7e283dfab5f7f",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "libportal",
+      "version": "0.9.1",
+      "filename": "libportal-0.9.1.tar.xz",
+      "url": "https://github.com/flatpak/libportal/releases/download/0.9.1/libportal-0.9.1.tar.xz",
+      "sha256": "de801ee349ed3c255a9af3c01b1a401fab5b3fc1c35eb2fd7dfb35d4b8194d7f",
+      "reference": "BLFS13.1-systemd general/libportal.html",
+      "book_page_sha256": "78c367c0833edab73cd00e40f1a733f0d555fb0235b21f3bb21db238ddd6c02c",
+      "book_md5": "0c63ee25d2e2986ce4df544fe8149046",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

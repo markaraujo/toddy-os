@@ -1,0 +1,571 @@
+{
+  "scope": "Owned libportal0.9.1 base/GTK3/GTK4/GI:61original private mock-portal cases/no skips,33compiledELFs/42stagefiles. Native install/post0/0,73changedpaths/76owned entries; actual installed UID101/private-device/no-route private session-bus C constructor/context/two release cycles/separate GTK3-4 GI/shared symbols/pkg-config/APT0. Qt/Vala/docs/demo omitted. Original mock data not actual desktop portal service/dialog/consent/input/capture/widget qualification; no permission grant/policy mutation.",
+  "source": {
+    "name": "libportal",
+    "version": "0.9.1",
+    "filename": "libportal-0.9.1.tar.xz",
+    "url": "https://github.com/flatpak/libportal/releases/download/0.9.1/libportal-0.9.1.tar.xz",
+    "sha256": "de801ee349ed3c255a9af3c01b1a401fab5b3fc1c35eb2fd7dfb35d4b8194d7f",
+    "reference": "BLFS13.1-systemd general/libportal.html",
+    "book_page_sha256": "78c367c0833edab73cd00e40f1a733f0d555fb0235b21f3bb21db238ddd6c02c",
+    "book_md5": "0c63ee25d2e2986ce4df544fe8149046",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "prepared": {
+    "source_sha256": "de801ee349ed3c255a9af3c01b1a401fab5b3fc1c35eb2fd7dfb35d4b8194d7f",
+    "reference": "BLFS13.1-systemd general/libportal.html",
+    "book_page_sha256": "78c367c0833edab73cd00e40f1a733f0d555fb0235b21f3bb21db238ddd6c02c",
+    "source_patches": [],
+    "recipe_sha256": "49ba5cfcd72652c28568415ab5b155cc75d516d8313b2b494fe94e3bf5f8c546",
+    "probe_sha256": "66e2b7a22b10dfffa409330ac9073326980d51f64f6f3268e551d09246807ae6"
+  },
+  "stage": {
+    "scope": "Frozen libportal0.9.1 base/GTK3/GTK4/GI; optional Qt backends (and Qt-only book patch), Vala/docs/demo omitted. All selected original pytest programs use private DBus/mock portal data, not actual desktop permissions/input/capture/screencast. Actual private-bus C construct/release/nonFlatpak-nonSnap and separate GTK3/GTK4 GI/shared-symbol checks only. No GNOME portal service/dialog/widget/permission grant acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "libportal:pytest",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "original_pytest_cases": [
+      {
+        "name": "test_activated",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_close_session",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_close_session_signal",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_connect_to_eis",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_disabled",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_enable_disable_release",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_pointer_barriers_failures",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_pointer_barriers_success",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_release_at",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_session_create",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_session_create_cancel_during_create",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_session_create_cancel_during_getzones",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_session_create_no_serial_on_getzones",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_session_create_no_zones_on_getzones",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_version",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_zones_changed",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_add_notification",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_add_notification_buttons",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_add_notification_buttons_v1",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_add_notification_bytes_icon",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_add_notification_bytes_icon_v1",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_add_notification_bytes_sound",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_add_notification_file_icon",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_add_notification_file_icon_v1",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_add_notification_file_sound",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_add_notification_themed_icon",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_add_notification_themed_icon_v1",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_add_notification_v1",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_version",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_close_session",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_close_session_signal",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_connect_to_eis",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_connect_to_eis_fail_connect_before_start",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_connect_to_eis_fail_reconnect",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_connect_to_eis_v1",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_create_session",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_create_session_no_outputs",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_create_session_restore",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_notify_axis",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_notify_axis_discrete",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_notify_button",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_notify_key",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_notify_motion",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_notify_motion_absolute",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_notify_touch",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_session_start",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_version",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_close_session",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_create_session",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_create_session_v3",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_session_restore_token_null_if_not_started",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_session_start",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_version",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_set_wallpaper_background",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_set_wallpaper_background_preview",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_set_wallpaper_both",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_set_wallpaper_both_preview",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_set_wallpaper_cancel",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_set_wallpaper_lockscreen",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_set_wallpaper_lockscreen_preview",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      },
+      {
+        "name": "test_version",
+        "failure": false,
+        "error": false,
+        "skipped": false
+      }
+    ],
+    "consumer": {
+      "private_session_bus": true,
+      "normal_nonFlatpak_nonSnap_context": true,
+      "construct_release_cycles": 2,
+      "desktop_backend_or_permission_UI_tested": false
+    },
+    "GI_consumers": [
+      {
+        "namespace": "XdpGtk31.0",
+        "base_GI_type": "XdpPortal",
+        "GTK_backend_symbol_loaded": true,
+        "widget_or_parent_export_tested": false
+      },
+      {
+        "namespace": "XdpGtk41.0",
+        "base_GI_type": "XdpPortal",
+        "GTK_backend_symbol_loaded": true,
+        "widget_or_parent_export_tested": false
+      }
+    ],
+    "artifacts_count": 33,
+    "artifacts_manifest_sha256": "ddb6faba4a40338f439039af1751eee0a78abd45f766ac7203cdb62bd7adacc3",
+    "stage_sha256_count": 42,
+    "stage_sha256_manifest_sha256": "aa0482a3479f9839b43b500e91928ebef07bf940f1a476976a11eb45fbc3b008"
+  },
+  "native_transaction": {
+    "step": "b02-libportal-install",
+    "started": "2026-11-10T06:07:46.319379+00:00",
+    "recipe_sha256": "407576f9fe1cda5f4372e67cee74a3474376f274aba3351a03ff36c18cf7c726",
+    "postcheck_sha256": "210637ba0cf2a2093104ea6ed4dfa5e96d9b5e42e6f7f4ec087740cb1a8b1b5a",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "0e704fce9a160d6612a0a8841cfc74b53411140515b1297cc3a2ca4019ef81e0",
+    "recipe_pid": 33209,
+    "recipe_pgid": 33209,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T06:08:03.031765+00:00",
+    "changed_paths": 73,
+    "log_sha256": "e2ca368fbb4293f18d6c752882272e1aff3479390a4e1efa275495faf4bc73fb",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "f547c46a0b1dcf007c96f3bb1f72ebca071acb3aba314663184c425e3cfe55af"
+  },
+  "package": {
+    "name": "libportal",
+    "version": "0.9.1-1+toddy1",
+    "archive_sha256": "bf6531b67001334177fcb9a18a115e5604d409d774bddab8d6eaf5adffad32cf",
+    "recipe_sha256": "407576f9fe1cda5f4372e67cee74a3474376f274aba3351a03ff36c18cf7c726",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "libportal",
+        "version": "0.9.1",
+        "filename": "libportal-0.9.1.tar.xz",
+        "url": "https://github.com/flatpak/libportal/releases/download/0.9.1/libportal-0.9.1.tar.xz",
+        "sha256": "de801ee349ed3c255a9af3c01b1a401fab5b3fc1c35eb2fd7dfb35d4b8194d7f",
+        "reference": "BLFS13.1-systemd general/libportal.html",
+        "book_page_sha256": "78c367c0833edab73cd00e40f1a733f0d555fb0235b21f3bb21db238ddd6c02c",
+        "book_md5": "0c63ee25d2e2986ce4df544fe8149046",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "f547c46a0b1dcf007c96f3bb1f72ebca071acb3aba314663184c425e3cfe55af",
+    "payload_count": 76,
+    "payload_manifest_sha256": "47e0fe090a48fd85af4169cdaf99eb0a4b2c546c792c4c289f0357ebf5d8c264"
+  },
+  "installed_consumer": {
+    "scope": "Actual installed UID101/private device/no-route/private session bus base libportal constructor/context/two release cycles and separate GTK3/4 GI/shared symbol/pkg-config/APT0. Original61private mock-portal pytest cases passed, not actual GNOME backend/service/permission/input/capture/widget acceptance. No grant or policy mutated.",
+    "consumer": {
+      "private_session_bus": true,
+      "normal_nonFlatpak_nonSnap_context": true,
+      "construct_release_cycles": 2,
+      "desktop_backend_or_permission_UI_tested": false
+    },
+    "GI_consumers": [
+      {
+        "namespace": "XdpGtk31.0",
+        "base_GI_type": "XdpPortal",
+        "GTK_backend_symbol_loaded": true,
+        "widget_or_parent_export_tested": false
+      },
+      {
+        "namespace": "XdpGtk41.0",
+        "base_GI_type": "XdpPortal",
+        "GTK_backend_symbol_loaded": true,
+        "widget_or_parent_export_tested": false
+      }
+    ],
+    "shared_library_resolution": true,
+    "original_mock_cases": 61,
+    "actual_desktop_portal_or_permission_tested": false
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libportal-install-evidence.tar.gz",
+    "sha256": "7381ac4b9c3c403485e735cfe2a49415e4640ec37101444eae74ae20bc4328a3",
+    "members": [
+      "build/b02-libportal-install.log",
+      "build/b02-libportal-install.manifest.json",
+      "build/b02-libportal-install.success.json",
+      "package.json",
+      "phase2/b02-libportal-install-controller.log",
+      "phase2/b02-libportal-install-timing.json",
+      "phase2/libportal-1-controller.log",
+      "phase2/libportal-1.exit",
+      "phase2/libportal-1.job.json",
+      "phase2/libportal-1.log",
+      "phase2/libportal-installed-consumer.json",
+      "phase2/libportal-stage.json",
+      "prepared.json",
+      "work/GI-gtk3.json",
+      "work/GI-gtk4.json",
+      "work/native-consumer.json",
+      "work/original-pytest.xml",
+      "work/original-registered-tests.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}

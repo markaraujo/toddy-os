@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libportal': ('0.9.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), gtk (>= 4.22.4-1+toddy8)', 'libportal-0.9.1.tar.xz', 'usr/lib/pkgconfig/libportal-gtk4.pc'),
     'gnome-terminal': ('3.60.0', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), vte (= 0.84.1-1+toddy1), libhandy (= 1.8.3-1+toddy1), pcre2 (= 10.49-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1), util-linux (>= 2.42.4-1), dconf (= 0.49.0-1+toddy1)', 'gnome-terminal-3.60.0.tar.gz', 'usr/bin/gnome-terminal'),
     'libxslt': ('1.1.45', 'glibc (>= 2.44-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'libxslt-1.1.45.tar.xz', 'usr/lib/pkgconfig/libxslt.pc'),
     'libhandy': ('1.8.3', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), fribidi (= 1.0.16-1+toddy1)', 'libhandy-1.8.3.tar.xz', 'usr/lib/pkgconfig/libhandy-1.pc'),
@@ -1223,6 +1224,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='libportal':
+        from qualify_libportal import qualify as qualify_libportal
+        qualify_libportal(ROOT)
     if name=='gnome-terminal':
         from qualify_gnome_terminal import qualify as qualify_gnome_terminal
         qualify_gnome_terminal(ROOT)

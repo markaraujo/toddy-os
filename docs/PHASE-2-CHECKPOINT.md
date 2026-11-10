@@ -38,15 +38,44 @@ root /var/log/toddy/build/b02-gnome-terminal-{install,metadata-2}.*;
 metadata receipt /var/log/toddy/phase2/terminal-metadata-recovery-2.json COMPLETE.
 NEVER rebuild/restage/reinstall/replay accepted work or metadata2.
 
-Exact next: commit/publish verified Terminal slice/exact deployed version. Then
-Nautilus50.2.2 actual source/dependency/test preflight, frozen archive cached SHA
+Current slice: libportal0.9.1 OWNED base/GTK3+4 helper/GI; no active guest writer.
+Buildlibportal-1 PID32340 terminal0,61original private mock-portal cases/no skips,
+33ELFs/42stagefiles. Nativeb02-libportal-install PID33193 recipe/post0/0,
+73changedpaths/76entries. Actual installed UID101 private-device/no-route/private
+bus C constructor/context/two release cycles and separate GTK3/4 GI/shared symbol/
+pkg-config/APT0. No real GNOME portal service/consent/input/capture/widget/grant
+acceptance. Qt/Vala/docs/demo omitted, Qt-only book patch unselected. No original
+suite/compiler/source replay or owner/policy change. [Proof](evidence/B02-libportal-install.json),
+ADR0196; archiveSHAbf6531b67001334177fcb9a18a115e5604d409d774bddab8d6eaf5adffad32cf;
+raw `.local/phase2/exports/B02-libportal-install-evidence.tar.gz` SHA
+7381ac4b9c3c403485e735cfe2a49415e4640ec37101444eae74ae20bc4328a3.
+SourceSHAde801ee349ed3c255a9af3c01b1a401fab5b3fc1c35eb2fd7dfb35d4b8194d7f;
+input/work /mnt/lfs/sources/phase2/{inputs/libportal-0.9.1,work/libportal-1};
+log/job/exit /var/log/toddy/phase2/libportal-1.*; native receipt
+/var/log/toddy/build/b02-libportal-install.success.json. NEVER replay.
+Exact next: commit/publish verified portal library slice/exact deployed version;
+then gnome-autoar0.4.5 source/required libarchive SDK preflight. Frozen book
+.local/books/blfs/gnome/gnome-autoar.html; source not pinned yet and NO guest
+input/job. Source archive tests/parser/path security needed, do not treat fixtures
+as file-manager GUI. Then remaining Nautilus leaves; no routine permission.
+
+Nautilus50.2.2 source/SDK preflight found required missing glycin-gtk4-2,
+gnome-autoar-0, libportal/libportal-gtk4 and tinysparql-3.0. Other required9SDKs found;
+raw `.local/phase2/nautilus-SDK-preflight.json`, free17880727552B before libportal.
+Frozen Nautilus archive cached SHA
 e1e285efddf42ed30dda5b29f7f8d242dab4bc1409a9054863b367bad4b34d5a;
-NO Nautilus guest input/job. Read frozen book nautilus page and actual Meson options/
-required SDK/test registrations, choose one required leaf if missing. No general
+NO Nautilus guest input/job. Actual Meson/options/test source read in
+.local/phase2/nautilus-{meson.build,meson_options.txt,test-meson.build}.
+Read frozen book complete installation section; fresh native install, no old
+Nautilus library to remove. After portal select next required leaf, no general
 replanning or repeat of parked native focus inputs. Shared stock schema union
 must include app schemas before real native use; update GTK cache only from NEW
-current-archive extraction, not retired promotion stages. Remaining Settings/
-files/editor/browser/network/audio/offline/resources and integrated native gates.
+current-archive extraction. Settings/files/editor/browser/network/audio/offline/
+resource/native integrated gates remain. Complete ALL B02 then stop.
+
+Terminal slice committed/pushed1a0fff98204a565382cb41fa7aeba4629d3d6096;
+all3CI success, exactpublicHTTP200/indexSHA
+bb8f7b5ba0a4eabce8840d5f5f4e7a824ffdb10359d6787c851b323cd7beba1f.
 
 Reuse prior accepted VTE/FastFloat/fmt/simdutf/libhandy/GStreamer/desktop libraries;
 [B02 evidence](evidence/B02.md)/story/status index actual scope. Libhandy30original

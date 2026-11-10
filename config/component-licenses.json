@@ -11179,6 +11179,23 @@
           ]
         }
       }
+    },
+    {
+      "name": "libportal",
+      "version": "0.9.1",
+      "license": "LGPL-3.0-only",
+      "evidence": "Exact authenticated root license texts and leading runtime/base/GTK helper source conditions retained. Base/GTK3/GTK4/GI profile; Qt backends/Qt-only book patch unselected. Original61private mock-portal cases are not actual desktop service/consent/input/screencast qualification.",
+      "extra_license_headers": {
+        "libportal-0.9.1.tar.xz": {
+          "prefixes": [
+            "libportal/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
