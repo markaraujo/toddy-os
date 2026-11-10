@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libbytesize': ('2.12', 'glibc (>= 2.44-1+toddy1), gmp (= 6.3.0-1+toddy1), mpfr (= 4.2.2-1+toddy1), pcre2 (= 10.49-1+toddy1), python (>= 3.14), python (<< 3.15), pygments (= 2.20.0-1+toddy1)', 'libbytesize-2.12.tar.gz', 'usr/lib/pkgconfig/bytesize.pc'),
     'cups': ('2.4.19', 'glibc (>= 2.44-1+toddy1), gcc (= 16.2.0-1+toddy2), acl (= 2.4.0-1+toddy1), gnutls (= 3.8.13-1+toddy1), linux-pam (= 1.7.2-1+toddy2), libusb (= 1.0.30-1+toddy1), libxcrypt (= 4.5.2-1+toddy1), zlib (>= 1.3.2-1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3), shadow (>= 4.20.2-1)', 'cups-2.4.19-source.tar.gz', 'usr/lib/pkgconfig/cups.pc'),
     'mitkrb': ('1.22.2', 'glibc (>= 2.44-1+toddy1), e2fsprogs (= 1.47.4-1+toddy1), openssl (= 4.0.3-1+toddy1)', 'krb5-1.22.2.tar.gz', 'usr/lib/pkgconfig/krb5.pc'),
     'libgtop': ('2.41.3', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libxau (= 1.0.12-1+toddy1)', 'libgtop-2.41.3.tar.xz', 'usr/lib/pkgconfig/libgtop-2.0.pc'),
@@ -267,6 +268,7 @@ if __name__ == '__main__':
     if name=='libgtop' and (log/'libgtop-mode-3.job.json').exists():qualifier='libgtop-mode-3'
     if name=='mitkrb':qualifier='mitkrb-metadata-4'
     if name=='cups':qualifier='cups-layout-finish-2'
+    if name=='libbytesize':qualifier='libbytesize-finish-2'
     if name=='itstool' and (log/'itstool-recovery-2.job.json').exists():qualifier='itstool-recovery-2'
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
     if name=='at-spi2-core' and (log/'atspi-finish-4.job.json').exists():qualifier='atspi-finish-4'
@@ -1272,6 +1274,9 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='libbytesize':
+        from qualify_libbytesize import qualify as qualify_libbytesize
+        qualify_libbytesize(ROOT)
     if name=='cups':
         from qualify_cups import qualify as qualify_cups
         qualify_cups(ROOT)

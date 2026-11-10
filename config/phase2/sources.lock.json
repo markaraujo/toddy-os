@@ -2830,6 +2830,18 @@
       "book_md5": "68448042ea0a2073098fc4ae37b01cbf",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "libbytesize",
+      "version": "2.12",
+      "filename": "libbytesize-2.12.tar.gz",
+      "url": "https://github.com/storaged-project/libbytesize/releases/download/2.12/libbytesize-2.12.tar.gz",
+      "sha256": "8356bac2cafd2f31f39bf1ad373cef8448cab08b817aeaee5c526d54e81c3c5a",
+      "reference": "BLFS13.1-systemd general/libbytesize.html",
+      "book_page_sha256": "327200b60321a1c9fdd71517723ab61f77881c9e141603125b7806d1c4fcd674",
+      "book_md5": "5314b773b20d1f3acdf3b2bf0c92549f",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

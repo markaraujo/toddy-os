@@ -8,7 +8,37 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current B02 slice: MIT Kerberos1.22.2 OWNED/local SDK accepted, ADR0215.
+Current B02 slice: libbytesize 2.12 is installed and qualified for local SDK use.
+[Native and staged evidence](evidence/B02-libbytesize-install.json) records recipe
+and postcheck 0/0, 56 changed paths, 131 payload entries, archive SHA256
+ada739b64538cf157830af8dd5421579b81eda0aeec1319526a05285970c1907.
+Exact retained build and stage maps cover two ELF and 42 regular files.
+Original selected tests passed 76 cases with three explicit locale skips. The
+first staged Python probe failed on its exception expectation. The suffix-only
+resume passed and preserved the compiler, original tests, stage and C probe.
+Native C/Python/CLI refusal and recovery, byte identity, ABI and APT checks passed.
+No device, UDisks service, Settings UI or physical acceptance.
+
+The first native preflight found an incorrect archive parent path and made no
+guest change. The corrected read-only preflight passed. Native PID 104803 reached
+terminal success. Keep /var/log/toddy/build/b02-libbytesize-install.success.json
+and its log. Never replay preparation, compilation, suffix or native installation.
+[H11 ISO custody](evidence/B02-h11-iso-copy-custody.json) recovered 1,095,000,064 B
+of host space by preserving both names for identical closed immutable ISO bytes.
+Never replay custody. Last target free 17,209,540,608 B, scratch free
+561,504,256 B. Recheck actual host, guest lock and storage before mutation.
+
+EXACT NEXT: review and pin libatasmart 0.19 using the already frozen libblockdev
+3.5.0 dependency edge. Run
+`python3 scripts/host/phase2_fetch_book_source.py general/libatasmart.html libatasmart 0.19 --dependency-of libblockdev`.
+Then review exact build and udev dependencies and qualify a no-device SMART
+parser probe before dispatch. The book supplies no upstream suite. Preserve
+existing reserves and single guest writer. Samba and other selected storage
+dependencies still pending. Stop after fully accepted B02.
+
+### Previous Settings prerequisites
+
+MIT Kerberos1.22.2 OWNED/local SDK accepted, ADR0215.
 [Install](evidence/B02-mitkrb-install.json): native recipe/post0/0,190changed
 paths,209payload entries, archiveSHA b34b8d324dd82680ea50c0ddfa6db4d649d7c807f9b73e6d39b2fe75983924c1.
 Actual UID101/no capabilities/NNP/private-device/no-route local principal/MEMORY
@@ -54,7 +84,7 @@ restored from retained controller output, exact pre-existing SHA2566c32a0e6bf67b
 All3 preparers fixed and worker namespace guarded. No package/source/compiler
 replay, no lost installed package; NEVER repeat repair1.
 
-EXACT NEXT: frozen UDisks2.11.2 Settings prerequisite, not another CUPS attempt.
+Previous handoff: frozen UDisks2.11.2 Settings prerequisite.
 Read .local/books/blfs/general/udisks2.html and general/libblockdev.html (3.5.0),
 then only their required selected closure/current owned package state. GNOME
 Control Center frozen page lists UDisks2.11.2/Samba4.24.6 as required.

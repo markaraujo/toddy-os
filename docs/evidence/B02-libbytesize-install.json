@@ -1,0 +1,1058 @@
+{
+  "native": {
+    "step": "b02-libbytesize-install",
+    "started": "2026-11-10T22:26:59.365605+00:00",
+    "finished": "2026-11-10T22:27:15.703862+00:00",
+    "recipe_sha256": "50c6d5ea4d8f2e376860549d901f519135070c3e7efd2c005b0a60eb73a7da74",
+    "postcheck_sha256": "d4b1f1eb01ae8a0ac03fe57324becf30b13880947c9ef6602cf00d89a55313e8",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 56,
+    "log_sha256": "e23c1a9fe4c74af06654e7cc708c4e0f46bb11a7ebb81a306e5615604faacc55",
+    "receipt_sha256": "3f6d506c2d1f63b14c1d4fb7c5c120771159f5efdc7033632f697bf0f9d542f5"
+  },
+  "consumer": {
+    "scope": "Owned frozen libbytesize2.12 installed shared C/Python/CLI size arithmetic, exact big integer/overflow/invalid/zero-divisor/two recoveries, expression parse refusal/recovery, UID101/NNP/caps0/private-device/no-route, exact stage bytes/ABI/PC/APT. Original selected76passing/3explicit locale skips; optional translation-canary pending. No device/disk/daemon/UDisks/Settings GUI/hardware acceptance.",
+    "C_consumer": "Libbytesize exact binary units/add/divide/big integer/invalid specification/zero division/overflow/two recoveries; no disk access\n",
+    "Python_consumer": "Python exact size arithmetic/malformed refusal/two recoveries\n",
+    "CLI": "1610612736 B\n",
+    "CLI_refusal_exit": 1,
+    "CLI_recovery": "1024 B\n",
+    "stage_files": 42,
+    "shared_library_resolution": true,
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "libbytesize",
+    "version": "2.12-1+toddy1",
+    "archive_sha256": "ada739b64538cf157830af8dd5421579b81eda0aeec1319526a05285970c1907",
+    "recipe_sha256": "50c6d5ea4d8f2e376860549d901f519135070c3e7efd2c005b0a60eb73a7da74",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "libbytesize",
+        "version": "2.12",
+        "filename": "libbytesize-2.12.tar.gz",
+        "url": "https://github.com/storaged-project/libbytesize/releases/download/2.12/libbytesize-2.12.tar.gz",
+        "sha256": "8356bac2cafd2f31f39bf1ad373cef8448cab08b817aeaee5c526d54e81c3c5a",
+        "reference": "BLFS13.1-systemd general/libbytesize.html",
+        "book_page_sha256": "327200b60321a1c9fdd71517723ab61f77881c9e141603125b7806d1c4fcd674",
+        "book_md5": "5314b773b20d1f3acdf3b2bf0c92549f",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "payload": {
+      "/usr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/bin": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/man": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/man/man1": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/man/man1/bscalc.1": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "22933264431d6deded1ec0a022d147b8bed64ddceee0845b33197c9ab88c2894"
+      },
+      "/usr/share/locale/ja": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/be": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_TW": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/si": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ko": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nn": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sq": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/es": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn_IN": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ast": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ja/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ja/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "09c9a513b3a9477d07caed8abd34901bd5d39988ec06b80494905573c04aa2fb"
+      },
+      "/usr/share/locale/be/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/be/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "467119e53d387b3e046e2dc48ee1826ebcae5d94c7cce62b72f0c3f7924d6319"
+      },
+      "/usr/share/locale/hu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f0bad92cdabd8af89708296b309a9efce61d4f77e4aa0e308b27b5558d6f8491"
+      },
+      "/usr/share/locale/zh_TW/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_TW/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1afc03d18edb5f53950dd3d36b4e83570ce8f01c34d174c1269dc28930f5a87d"
+      },
+      "/usr/share/locale/si/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/si/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3f0a2a21a2a68bf79cd5604800ccf886436ca540e86b73923ac7ef8bd5bdf814"
+      },
+      "/usr/share/locale/ko/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ko/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b0c18f215c998e3ec636648934c530fda7fbe318c87ff2f9fa1a42db7be0f0a3"
+      },
+      "/usr/share/locale/it/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "23d064d8c612df2cb2a5cfabaf199ba1645fe7d09312ca851ec734e8bbc52039"
+      },
+      "/usr/share/locale/sv/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "51cc0cbd4cda568387f16b00bb1e486ec27b9249baf61cc146711f7db5fe370d"
+      },
+      "/usr/share/locale/nn/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nn/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f5c3c852cef390f61be99cad0eccfd4a04c3da87e607834a6af028152ca054f1"
+      },
+      "/usr/share/locale/tr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "78eb57464861b0911cfc79c07dc7a4a22c5b1707014a2c3f6eb2cb1b86b6d141"
+      },
+      "/usr/share/locale/hr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hr/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "26073cb3c877741cde6ec8a890a4bf6ff0b769c25dea5cf08f9a69e1e119cdce"
+      },
+      "/usr/share/locale/ru/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0054fb88c090167c06f59d7e50a6727cb07db2d7edc9aa87ad9e7417aa9742eb"
+      },
+      "/usr/share/locale/uk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "598a1c43cebe47b48b69997b5bfdb93b860c972835cfa2f3facaf5a891bceb4f"
+      },
+      "/usr/share/locale/pl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ae96414d2cc8881e64607257c33fcb7863c2f18215f828da4ff16d9a44d20c68"
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d378c0853d2feb8999584df38bf5ff5453419ea623abf0d42e39244c151b580b"
+      },
+      "/usr/share/locale/sq/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sq/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "70df55b16ecd839c096fe335c43b4e0a66ac985108334348b433a7cc60784cc9"
+      },
+      "/usr/share/locale/pt/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3a14e9752c3ad45a8ca2baf52eb0e3fc194dc6b613d5968a357465b62e055571"
+      },
+      "/usr/share/locale/es/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/es/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "56accb86ac913ce8b8ae6f7a194bf41a81edfa6ab83228a7375b486578c44378"
+      },
+      "/usr/share/locale/fur/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ac39f5985d7ce74bd19d27644f52bd293e78f13bc9f1d536aa24724e9aea5e06"
+      },
+      "/usr/share/locale/kk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kk/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4b26e7100912408043488761d836ae65b1fff1c7795bae5e6738d7533ea6a057"
+      },
+      "/usr/share/locale/bn_IN/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn_IN/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "75030b7440e3c05f3ea6ee71526bcdb0c9af4c886fa76c91ca57891d4673f255"
+      },
+      "/usr/share/locale/fi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f375b8a856367dd43fabeaf110354e0b93dc4f3720f78ce57768f7f6eeacb282"
+      },
+      "/usr/share/locale/sk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d6bfc50e0ae318a1ef5eb7492b3ead32e33da6d7cb477d8c89200d177efa423c"
+      },
+      "/usr/share/locale/id/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "944488ef4db306d151ab52fe50a832d03c93ec8dda9d4ac3a72df2800262d903"
+      },
+      "/usr/share/locale/he/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a0c086081712c84e8972f66df32a14c9a514f917616c21cd0bed01346b1ebf76"
+      },
+      "/usr/share/locale/cs/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c4f5611200ba98c1ea6abce71c6599441fcd56caad17886ac0e07a1de71d7947"
+      },
+      "/usr/share/locale/ast/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ast/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0224707c4fb5dbe01eeb4d26aca759a44b85e1fddff4e1b0592d1c9966b438ea"
+      },
+      "/usr/share/locale/de/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3edae91cc35cfb0f6adcdfff15015d984cbf319236bdcd3c5d7e32b5410895c4"
+      },
+      "/usr/share/locale/fr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "50370539d8c7c8118a4ca6015dd3dff743de7d1d7f74f923591a34e4a46adbd8"
+      },
+      "/usr/share/locale/ca/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e9e2241bd68d32d926a5bb88917db1988b3fe12e63b2ca2ac0370a55a079eded"
+      },
+      "/usr/share/locale/da/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "842378125115472b4cf47eb9bb3feca71765070c722c51b0f2ece4227d2f88a8"
+      },
+      "/usr/share/locale/nl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "555ea8a55eb061beace7f0a48ecce034de203255a5cdad5d70ec0434114c850f"
+      },
+      "/usr/share/locale/ka/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4c3c6f1923a36270dfc8e040ea6b2f3272ade3d177193a6c1c67b91dea3dad8b"
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES/libbytesize.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fae208b01be1ffb626cb22398de48b3c04b6bc63ba63c8770aafbcc7070172b5"
+      },
+      "/usr/share/doc/libbytesize": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/libbytesize/source-notices": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/libbytesize/copyright": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6b16cfa4978912e5bac25dbac55faa8d7da9d35f28174942ab4186eb7714ac24"
+      },
+      "/usr/share/doc/libbytesize/source-notices/index.json": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3bbf2bdf5faaf0b4de1c28974d03c4e0acd06dc8dfddec5e0fbcff3d20f76b75"
+      },
+      "/usr/share/doc/libbytesize/source-notices/97bdc721d875501b6243a456333fdfdb1ab64d31c4da2554de845caf4674b946": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "97bdc721d875501b6243a456333fdfdb1ab64d31c4da2554de845caf4674b946"
+      },
+      "/usr/include/bytesize": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/bytesize/bs_size.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "165963cb0212a9e32cb8ecf1ad4fef1f3071f93b7314d350c5fbe5f0d3ce86d1"
+      },
+      "/usr/bin/bscalc": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a920c893b863fe0220c8cc9801a758ebd003cad1664f4158b15ad95097e73991"
+      },
+      "/usr/lib/python3.14": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/pkgconfig": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/libbytesize.so.1.0.0": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4593f11745ab7fd934f71f42258219d813a3702b4791b435ac5a9029bc5b047f"
+      },
+      "/usr/lib/libbytesize.la": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "09937fe92c72fe011aaa69ddd56375745c9bc84d30ecbfec1fb487bca8d99ba3"
+      },
+      "/usr/lib/libbytesize.so.1": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libbytesize.so.1.0.0"
+      },
+      "/usr/lib/libbytesize.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libbytesize.so.1.0.0"
+      },
+      "/usr/lib/python3.14/site-packages": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/python3.14/site-packages/bytesize": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/python3.14/site-packages/bytesize/__init__.py": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "494d529ea4c044d801fe498b458bc0b8826059e9d77a9ca9be9a757777d525e5"
+      },
+      "/usr/lib/python3.14/site-packages/bytesize/bytesize.py": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "51ecbabc72a08b6eb4fe2f1c55f1f70607523ac07e97da25ce815323a94b3d9a"
+      },
+      "/usr/lib/pkgconfig/bytesize.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ab377331d1c4f0f62c7ffdfcce2f8347afc63b98d5cf375b554e1a4d848130fb"
+      }
+    },
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_sha256": "572fce5aadb7f938785cd8b42f1d4a0bfe3bd9be3a8e0ccfd867faadc2e903a8"
+  },
+  "stage": {
+    "scope": "Frozen libbytesize2.12 shared C/Python/bscalc default profile, original selected core/override plus available default French run; actual case skips remain explicit. Optional translation-canary pending. Exact local unit arithmetic/errors/recovery only; no UDisks/blockdev/service/disk/Settings GUI/hardware acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "skipped_count": 1,
+        "name": "core",
+        "exit": 0,
+        "cases": 32,
+        "log": "original-core.log",
+        "skips": [
+          "OK (skipped=1)"
+        ]
+      },
+      {
+        "skipped_count": 1,
+        "name": "override",
+        "exit": 0,
+        "cases": 15,
+        "log": "original-override.log",
+        "skips": [
+          "testConvertTo (__main__.SizeTestCase.testConvertTo) ... skipped \"requires missing locales: {'ps_AF.utf8'}\"",
+          "OK (skipped=1)"
+        ]
+      },
+      {
+        "skipped_count": 1,
+        "name": "core-fr",
+        "exit": 0,
+        "cases": 32,
+        "log": "original-core-fr.log",
+        "skips": [
+          "OK (skipped=1)"
+        ]
+      }
+    ],
+    "test_selection": {
+      "original_selected_programs": [
+        {
+          "skipped_count": 1,
+          "name": "core",
+          "exit": 0,
+          "cases": 32,
+          "log": "original-core.log",
+          "skips": [
+            "OK (skipped=1)"
+          ]
+        },
+        {
+          "skipped_count": 1,
+          "name": "override",
+          "exit": 0,
+          "cases": 15,
+          "log": "original-override.log",
+          "skips": [
+            "testConvertTo (__main__.SizeTestCase.testConvertTo) ... skipped \"requires missing locales: {'ps_AF.utf8'}\"",
+            "OK (skipped=1)"
+          ]
+        },
+        {
+          "skipped_count": 1,
+          "name": "core-fr",
+          "exit": 0,
+          "cases": 32,
+          "log": "original-core-fr.log",
+          "skips": [
+            "OK (skipped=1)"
+          ]
+        }
+      ],
+      "locale_inventory": [
+        "C",
+        "C.utf8",
+        "POSIX",
+        "cs_CZ.utf8",
+        "de_DE",
+        "de_DE.iso88591",
+        "de_DE.iso885915@euro",
+        "de_DE.utf8",
+        "de_DE@euro",
+        "el_GR",
+        "el_GR.iso88597",
+        "en_GB",
+        "en_GB.iso88591",
+        "en_GB.utf8",
+        "en_HK",
+        "en_HK.iso88591",
+        "en_PH",
+        "en_PH.iso88591",
+        "en_US",
+        "en_US.iso88591",
+        "en_US.utf8",
+        "es_ES.iso885915@euro",
+        "es_ES@euro",
+        "es_MX",
+        "es_MX.iso88591",
+        "fa_IR",
+        "fa_IR.utf8",
+        "fr_FR",
+        "fr_FR.iso88591",
+        "fr_FR.iso885915@euro",
+        "fr_FR.utf8",
+        "fr_FR@euro",
+        "is_IS",
+        "is_IS.iso88591",
+        "is_IS.utf8",
+        "it_IT",
+        "it_IT.iso88591",
+        "it_IT.iso885915@euro",
+        "it_IT.utf8",
+        "it_IT@euro",
+        "ja_JP",
+        "ja_JP.eucjp",
+        "ja_JP.sjis",
+        "ja_JP.utf8",
+        "nl_NL.iso885915@euro",
+        "nl_NL@euro",
+        "pt_BR.utf8",
+        "ru_RU.koi8r",
+        "ru_RU.utf8",
+        "se_NO.utf8",
+        "ta_IN.utf8",
+        "tr_TR.utf8",
+        "zh_CN.gb18030",
+        "zh_HK.big5hkscs",
+        "zh_TW.big5",
+        "zh_TW.utf8"
+      ],
+      "fr_suite_available": true,
+      "translation_canary_pending": "Optional pocketlint/polib translation-only program not selected; not a full original-suite pass"
+    },
+    "consumer": "Libbytesize exact binary units/add/divide/big integer/invalid specification/zero division/overflow/two recoveries; no disk access\n",
+    "python_consumer": "Python exact size arithmetic/malformed refusal/two recoveries\n",
+    "CLI": "1610612736 B\n",
+    "version": "2.12",
+    "artifacts": {
+      "src/.libs/libbytesize.so.1.0.0": "4593f11745ab7fd934f71f42258219d813a3702b4791b435ac5a9029bc5b047f",
+      "src/.libs/libbytesize_la-bs_size.o": "8abcb588a95e5df59a21a804f44763c75d6768362ddd708eb6dfe56f2d4a606f"
+    },
+    "stage_sha256": {
+      "usr/bin/bscalc": "a920c893b863fe0220c8cc9801a758ebd003cad1664f4158b15ad95097e73991",
+      "usr/lib/libbytesize.so.1.0.0": "4593f11745ab7fd934f71f42258219d813a3702b4791b435ac5a9029bc5b047f",
+      "usr/lib/libbytesize.la": "09937fe92c72fe011aaa69ddd56375745c9bc84d30ecbfec1fb487bca8d99ba3",
+      "usr/lib/pkgconfig/bytesize.pc": "ab377331d1c4f0f62c7ffdfcce2f8347afc63b98d5cf375b554e1a4d848130fb",
+      "usr/lib/python3.14/site-packages/bytesize/__init__.py": "494d529ea4c044d801fe498b458bc0b8826059e9d77a9ca9be9a757777d525e5",
+      "usr/lib/python3.14/site-packages/bytesize/bytesize.py": "51ecbabc72a08b6eb4fe2f1c55f1f70607523ac07e97da25ce815323a94b3d9a",
+      "usr/include/bytesize/bs_size.h": "165963cb0212a9e32cb8ecf1ad4fef1f3071f93b7314d350c5fbe5f0d3ce86d1",
+      "usr/share/locale/pt_BR/LC_MESSAGES/libbytesize.mo": "fae208b01be1ffb626cb22398de48b3c04b6bc63ba63c8770aafbcc7070172b5",
+      "usr/share/locale/ka/LC_MESSAGES/libbytesize.mo": "4c3c6f1923a36270dfc8e040ea6b2f3272ade3d177193a6c1c67b91dea3dad8b",
+      "usr/share/locale/nl/LC_MESSAGES/libbytesize.mo": "555ea8a55eb061beace7f0a48ecce034de203255a5cdad5d70ec0434114c850f",
+      "usr/share/locale/da/LC_MESSAGES/libbytesize.mo": "842378125115472b4cf47eb9bb3feca71765070c722c51b0f2ece4227d2f88a8",
+      "usr/share/locale/ca/LC_MESSAGES/libbytesize.mo": "e9e2241bd68d32d926a5bb88917db1988b3fe12e63b2ca2ac0370a55a079eded",
+      "usr/share/locale/fr/LC_MESSAGES/libbytesize.mo": "50370539d8c7c8118a4ca6015dd3dff743de7d1d7f74f923591a34e4a46adbd8",
+      "usr/share/locale/de/LC_MESSAGES/libbytesize.mo": "3edae91cc35cfb0f6adcdfff15015d984cbf319236bdcd3c5d7e32b5410895c4",
+      "usr/share/locale/ast/LC_MESSAGES/libbytesize.mo": "0224707c4fb5dbe01eeb4d26aca759a44b85e1fddff4e1b0592d1c9966b438ea",
+      "usr/share/locale/cs/LC_MESSAGES/libbytesize.mo": "c4f5611200ba98c1ea6abce71c6599441fcd56caad17886ac0e07a1de71d7947",
+      "usr/share/locale/he/LC_MESSAGES/libbytesize.mo": "a0c086081712c84e8972f66df32a14c9a514f917616c21cd0bed01346b1ebf76",
+      "usr/share/locale/id/LC_MESSAGES/libbytesize.mo": "944488ef4db306d151ab52fe50a832d03c93ec8dda9d4ac3a72df2800262d903",
+      "usr/share/locale/sk/LC_MESSAGES/libbytesize.mo": "d6bfc50e0ae318a1ef5eb7492b3ead32e33da6d7cb477d8c89200d177efa423c",
+      "usr/share/locale/fi/LC_MESSAGES/libbytesize.mo": "f375b8a856367dd43fabeaf110354e0b93dc4f3720f78ce57768f7f6eeacb282",
+      "usr/share/locale/bn_IN/LC_MESSAGES/libbytesize.mo": "75030b7440e3c05f3ea6ee71526bcdb0c9af4c886fa76c91ca57891d4673f255",
+      "usr/share/locale/kk/LC_MESSAGES/libbytesize.mo": "4b26e7100912408043488761d836ae65b1fff1c7795bae5e6738d7533ea6a057",
+      "usr/share/locale/fur/LC_MESSAGES/libbytesize.mo": "ac39f5985d7ce74bd19d27644f52bd293e78f13bc9f1d536aa24724e9aea5e06",
+      "usr/share/locale/es/LC_MESSAGES/libbytesize.mo": "56accb86ac913ce8b8ae6f7a194bf41a81edfa6ab83228a7375b486578c44378",
+      "usr/share/locale/pt/LC_MESSAGES/libbytesize.mo": "3a14e9752c3ad45a8ca2baf52eb0e3fc194dc6b613d5968a357465b62e055571",
+      "usr/share/locale/sq/LC_MESSAGES/libbytesize.mo": "70df55b16ecd839c096fe335c43b4e0a66ac985108334348b433a7cc60784cc9",
+      "usr/share/locale/zh_CN/LC_MESSAGES/libbytesize.mo": "d378c0853d2feb8999584df38bf5ff5453419ea623abf0d42e39244c151b580b",
+      "usr/share/locale/pl/LC_MESSAGES/libbytesize.mo": "ae96414d2cc8881e64607257c33fcb7863c2f18215f828da4ff16d9a44d20c68",
+      "usr/share/locale/uk/LC_MESSAGES/libbytesize.mo": "598a1c43cebe47b48b69997b5bfdb93b860c972835cfa2f3facaf5a891bceb4f",
+      "usr/share/locale/ru/LC_MESSAGES/libbytesize.mo": "0054fb88c090167c06f59d7e50a6727cb07db2d7edc9aa87ad9e7417aa9742eb",
+      "usr/share/locale/hr/LC_MESSAGES/libbytesize.mo": "26073cb3c877741cde6ec8a890a4bf6ff0b769c25dea5cf08f9a69e1e119cdce",
+      "usr/share/locale/tr/LC_MESSAGES/libbytesize.mo": "78eb57464861b0911cfc79c07dc7a4a22c5b1707014a2c3f6eb2cb1b86b6d141",
+      "usr/share/locale/nn/LC_MESSAGES/libbytesize.mo": "f5c3c852cef390f61be99cad0eccfd4a04c3da87e607834a6af028152ca054f1",
+      "usr/share/locale/sv/LC_MESSAGES/libbytesize.mo": "51cc0cbd4cda568387f16b00bb1e486ec27b9249baf61cc146711f7db5fe370d",
+      "usr/share/locale/it/LC_MESSAGES/libbytesize.mo": "23d064d8c612df2cb2a5cfabaf199ba1645fe7d09312ca851ec734e8bbc52039",
+      "usr/share/locale/ko/LC_MESSAGES/libbytesize.mo": "b0c18f215c998e3ec636648934c530fda7fbe318c87ff2f9fa1a42db7be0f0a3",
+      "usr/share/locale/si/LC_MESSAGES/libbytesize.mo": "3f0a2a21a2a68bf79cd5604800ccf886436ca540e86b73923ac7ef8bd5bdf814",
+      "usr/share/locale/zh_TW/LC_MESSAGES/libbytesize.mo": "1afc03d18edb5f53950dd3d36b4e83570ce8f01c34d174c1269dc28930f5a87d",
+      "usr/share/locale/hu/LC_MESSAGES/libbytesize.mo": "f0bad92cdabd8af89708296b309a9efce61d4f77e4aa0e308b27b5558d6f8491",
+      "usr/share/locale/be/LC_MESSAGES/libbytesize.mo": "467119e53d387b3e046e2dc48ee1826ebcae5d94c7cce62b72f0c3f7924d6319",
+      "usr/share/locale/ja/LC_MESSAGES/libbytesize.mo": "09c9a513b3a9477d07caed8abd34901bd5d39988ec06b80494905573c04aa2fb",
+      "usr/share/man/man1/bscalc.1": "22933264431d6deded1ec0a022d147b8bed64ddceee0845b33197c9ab88c2894"
+    }
+  },
+  "retained": {
+    "compiler_ELFs_unchanged": 2,
+    "stage_files_unchanged": 42,
+    "retained_log_and_consumer_hashes": {
+      "configure.log": "368beb144e86ea6d4d07e6549ae15a0bd01a17c384bb18d908ad5bfa261793bd",
+      "original-build.log": "71b73d6613f3c0e48b6c55dca9bd1a0c0bd8fe9ae9b6be0b30a4caab54546ed0",
+      "original-tests.json": "f11b3afec9f149b10292a5454128a1564d645860076db15ab8534b79937cf3c1",
+      "test-selection.json": "cc0e585969c1a37317e2629fcf5220df30e8d1e7440c524d176f2fedb1bf009d",
+      "original-core.log": "d5bad9b744bef415781a9256319168b3629874fb98e43dee6b3c2e5e9122d2c1",
+      "original-override.log": "5ce5bc0d2357100cd60b77bd45ede174d97898e596e6b7a1b0488c3fbd7f2320",
+      "original-core-fr.log": "d5bad9b744bef415781a9256319168b3629874fb98e43dee6b3c2e5e9122d2c1",
+      "original-stage.log": "481e52111fff71434fc1acd1a8c28beca896be04da3a9d199f256b8297b3696c",
+      "local-probe": "7360c35869fb68d6d166df2f5209f4dee3840c5202bf75d9aed28da082523dda",
+      "local-probe.log": "fcd09518b23cb7709d1dde39d23ca1d0aef212ee9e1f153571b1d57a3cc72cfa"
+    },
+    "no_compiler_original_tests_stage_or_C_replay": true
+  },
+  "original_failure": {
+    "exit": 1,
+    "log_sha256": "b441a9d8ed9e096f79e226cac69517cd8444e2ba78e845c4ec4369188f2cc923",
+    "cause": "Public Size raises ValueError wrapping InvalidSpecError"
+  },
+  "resources": {
+    "/mnt/lfs": 17209540608,
+    "/mnt/lfs/sources/phase2/work/doxygen-1": 561504256
+  }
+}

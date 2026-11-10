@@ -3406,3 +3406,5 @@ remains parked; next eligible CUPS source/build review.
 | 2026-11-10 | B02 owned CUPS | Qualified source/jobs/maps, retired exact closed Librsvg promotion with root0, reviewed14service ownership exceptions and fixed locked factory IDs; preserved first group-only useradd failure and guarded unique resume | Native2 recipe/post0/0,927changed paths/964entries; installed IPP/CLI/private-config denial/recovery/ownership/conffiles/ABI/APT0, units inactive. No printing/Settings/physical claim; UDisks closure next. Full B02 then stop |
 
 | 2026-11-10 | B02 storage source preflight | Authenticate frozen UDisks2.11.2/libblockdev3.5.0 official archives against bookMD5, pinSHA256, inspect relative tar header paths | HOST source-only; no guest extraction/build/service/disk/Settings/hardware acceptance, required selected closure next |
+
+| 2026-11-10 | B02 owned libbytesize | Retain compiler, 76 upstream cases, three locale skips, exact stage and C probe. Correct Python exception expectation and archive preflight path. Install once and verify. | Native 0/0, 56 paths, 131 payload entries. Next libatasmart source pin. |
