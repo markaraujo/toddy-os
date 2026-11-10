@@ -2866,6 +2866,18 @@
       "book_md5": "6b70b2b381c1b6d9adfaf66d5d3e7c00",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "libnvme",
+      "version": "1.16.2",
+      "filename": "libnvme-1.16.2.tar.gz",
+      "url": "https://github.com/linux-nvme/libnvme/archive/v1.16.2/libnvme-1.16.2.tar.gz",
+      "sha256": "1d850d5a871559abf641d6e6b63bb86047e4cb26f3ad144597c2c64b3cff7231",
+      "reference": "BLFS13.1-systemd general/libnvme.html",
+      "book_page_sha256": "efab44a9dc48be87748c657834fe84db2c5cbbd1996e8b07ac37e54c6034d8f7",
+      "book_md5": "a6554fb50022d762021fc1e949e01520",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

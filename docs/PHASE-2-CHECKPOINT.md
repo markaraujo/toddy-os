@@ -54,22 +54,37 @@ worker. [Evidence](evidence/B02-keyutils-stage.json) records 12 ELF files,
 are /var/log/toddy/phase2/keyutils-1.exit and keyutils-1.log. Never repeat the
 source preparation or build. The canonical recipe formats the required-file set
 on separate lines to avoid a scanner false positive on public package paths.
-The exact prepared recipe hash remains in the job evidence. Last target free 17,200,873,472 B. Upstream make
-embeds the observed UTC build date. No native package installed and no
-keyring syscall, handler, DNS or graphical acceptance.
+The exact prepared recipe hash remains in the job evidence. Upstream make
+embeds the observed UTC build date. The isolated build tested no keyring
+syscall, handler, DNS or graphical behavior.
 
-EXACT NEXT: qualify the retained Keyutils job and staged bytes. Review the
-upstream /etc/request-key.conf debug rules before promotion. Retain the original
-in evidence and omit debug fixtures from the production conffile if review
-confirms they are test/demo handlers. Preserve the intended dns_resolver and
-negative handlers and verify their merged-/usr target paths. Package the
-reviewed conffile and licenses in a full-root transaction, then validate the
-installed SDK and plan native synthetic-key tests with independent disposable
-keyrings. The intended 7.1.8 config enables KEYS/RSA/asymmetric/X.509 and leaves
-BIG_KEYS and KEY_DH_OPERATIONS unset. BLFS upstream tests require the installed
-package outside chroot. Record unavailable features as untested and separate
-the builder kernel from the intended kernel. Check actual lock and reserve
-postconditions before every write. UDisks/Samba pending. Stop after accepted B02.
+Keyutils native transaction b02-keyutils-install PID 111355 completed recipe
+and postcheck 0/0 with 75 changed paths and 84 payload entries. Archive SHA256
+6d731deb44cbf3aa2cc9fef6374bdafe1e8f459b3797322d68c4acf66d40faf8.
+[Install evidence](evidence/B02-keyutils-install.json) confirms exact stage
+regular bytes except the reviewed conffile, 13 links with the one upstream
+absolute linker alias normalized in a separate stage, APT and full upstream
+license notices. Six debug rules omitted because the upstream helper echoes
+callout fields and can print key metadata. Both operational rules retained
+with merged-/usr path checks. Original config retained as documentation.
+Installed UID 101 shared SDK and CLI version checks passed. No keyring syscall
+or DNS performed. Never replay build, staging or install. Upstream kernel
+suite remains pending on the intended native kernel, with synthetic keys
+and disposable keyrings. The intended 7.1.8 config enables KEYS/RSA/asymmetric/
+X.509 and leaves BIG_KEYS and KEY_DH_OPERATIONS unset.
+
+EXACT NEXT: libnvme 1.16.2 official archive pinned from frozen libblockdev,
+SHA256 1d850d5a871559abf641d6e6b63bb86047e4cb26f3ad144597c2c64b3cff7231. No guest
+preparation or build. BLFS estimates 34 MB build space, and last target free
+17,198,915,584 B is only 19,046,400 B over the fixed reserve. First
+qualify the closed Evolution Data Server promotion replica read-only against
+its native success receipt, installed package record, archive, installed bytes
+and original workstage. Inventory measured 33,267,712 B allocated, with no
+nested mount observed. Candidate only. Apply existing custody safeguards and
+use a unique receipt only after all checks pass. Then review libnvme tests and
+selected Meson features against owned OpenSSL, JSON-C, D-Bus and Keyutils.
+Preserve all completed receipts and the single guest writer. UDisks/Samba
+closure and native GNOME still pending. Stop after accepted B02.
 
 ### Previous Settings prerequisites
 

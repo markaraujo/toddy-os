@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'keyutils': ('1.6.3', 'glibc (>= 2.44-1+toddy1)', 'keyutils-1.6.3.tar.gz', 'usr/lib/pkgconfig/libkeyutils.pc'),
     'libatasmart': ('0.19', 'glibc (>= 2.44-1+toddy1), systemd (>= 261.2-1+toddy3)', 'libatasmart-0.19.tar.xz', 'usr/lib/pkgconfig/libatasmart.pc'),
     'libbytesize': ('2.12', 'glibc (>= 2.44-1+toddy1), gmp (= 6.3.0-1+toddy1), mpfr (= 4.2.2-1+toddy1), pcre2 (= 10.49-1+toddy1), python (>= 3.14), python (<< 3.15), pygments (= 2.20.0-1+toddy1)', 'libbytesize-2.12.tar.gz', 'usr/lib/pkgconfig/bytesize.pc'),
     'cups': ('2.4.19', 'glibc (>= 2.44-1+toddy1), gcc (= 16.2.0-1+toddy2), acl (= 2.4.0-1+toddy1), gnutls (= 3.8.13-1+toddy1), linux-pam (= 1.7.2-1+toddy2), libusb (= 1.0.30-1+toddy1), libxcrypt (= 4.5.2-1+toddy1), zlib (>= 1.3.2-1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3), shadow (>= 4.20.2-1)', 'cups-2.4.19-source.tar.gz', 'usr/lib/pkgconfig/cups.pc'),
@@ -1276,6 +1277,9 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='keyutils':
+        from qualify_keyutils import qualify as qualify_keyutils
+        qualify_keyutils(ROOT)
     if name=='libatasmart':
         from qualify_libatasmart import qualify as qualify_libatasmart
         qualify_libatasmart(ROOT)
@@ -1485,6 +1489,9 @@ if __name__ == '__main__':
         qualify(ROOT,log)
     assert name==sys.argv[1], 'Package identity changed during qualification'
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
+    if name=='keyutils':
+        from qualify_keyutils import prepare_relative_stage
+        source=prepare_relative_stage()
     if name=='cups':source=Path('/mnt/lfs/sources/phase2/work/cups-layout-1/stage')
     if name=='gcr3':source=Path('/mnt/lfs/sources/phase2/work/gcr3-patched-1/stage')
     if name=='polkit':source=Path('/mnt/lfs/sources/phase2/work/polkit-full-1/stage')
@@ -1535,6 +1542,9 @@ if __name__ == '__main__':
         shutil.copytree(source, destination, symlinks=True,dirs_exist_ok=name in ('mitkrb','libqmi','modemmanager'))
         assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
+    if name=='keyutils':
+        from qualify_keyutils import promote_config
+        promote_config(destination)
     if name=='cups':
         from cups_native import promote
         promote(destination)
@@ -1746,6 +1756,7 @@ if __name__ == '__main__':
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
     if name=='cups':conffiles=[arg for file in sorted((destination/'etc/cups').iterdir()) if file.is_file() for arg in ['--conffile','/'+str(file.relative_to(destination))]]
+    if name=='keyutils':conffiles=['--conffile','/etc/request-key.conf']
     if name=='libpwquality':conffiles=['--conffile','/etc/security/pwquality.conf']
     if name=='vte':conffiles=['--conffile','/etc/profile.d/vte.sh','--conffile','/etc/profile.d/vte.csh']
     if name=='gdm':conffiles=[v for n in ['custom.conf'] for v in ['--conffile','/etc/gdm/'+n]]+[v for n in ['gdm-autologin','gdm-launch-environment','gdm-fingerprint','gdm-smartcard','gdm-password'] for v in ['--conffile','/etc/pam.d/'+n]]

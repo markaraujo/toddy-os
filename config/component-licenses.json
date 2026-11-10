@@ -10568,6 +10568,12 @@
       }
     },
     {
+      "name": "keyutils",
+      "version": "1.6.3",
+      "license": "GPL-2.0-or-later AND LicenseRef-Keyutils-LGPL-per-file",
+      "evidence": "Exact upstream GPL v2 and LGPL v2.1 texts retained. Utilities cite GPL v2 or later. Library sources use upstream Lesser GPL version 2 or later wording, with corresponding per-file notices in the pinned source."
+    },
+    {
       "name": "libatasmart",
       "version": "0.19",
       "license": "LGPL-2.1-or-later",

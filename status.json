@@ -307,6 +307,7 @@
         "docs/evidence/B02-libatasmart-stage.json",
         "docs/evidence/B02-libatasmart-install.json",
         "docs/evidence/B02-keyutils-stage.json",
+        "docs/evidence/B02-keyutils-install.json",
         "docs/evidence/B02-h11-iso-copy-custody.json",
         "docs/evidence/B02-libxml2-build.json",
         "docs/evidence/B02-libxml2-install.json",
@@ -826,7 +827,7 @@
       "Owned libbytesize 2.12 local SDK: 76 selected upstream cases passed with three locale skips. Native install and postcheck 0/0 with 56 changed paths and 131 payload entries. C/Python/CLI arithmetic, refusal and recovery, exact stage bytes, ABI and APT passed. No storage device, UDisks service, Settings GUI or physical acceptance.",
       "UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending."
     ],
-    "running": "Owned libatasmart and libbytesize installed. Keyutils 1.6.3 compiled and staged with local C/CLI and C++ header checks. Review request-key configuration, then qualify native package and synthetic keyring tests. UDisks and Settings GUI pending. Full B02 then stop.",
+    "running": "Owned Keyutils 1.6.3 installed with reviewed request-key conffile, shared SDK and CLI verified. Native kernel keyring tests pending. Libnvme 1.16.2 source verified. Next qualify closed staging copy for reserve headroom and review libnvme Meson features and tests. UDisks and Settings GUI pending. Full B02 then stop.",
     "remaining": [
       "Actual graphical editor open/edit/save/reopen/refusal/recovery/focus/responsiveness and affected desktop icon/MIME caches.",
       "LocalSearch/Nautilus/browser/settings and first fully working interactive native GNOME session.",

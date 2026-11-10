@@ -1,0 +1,85 @@
+{
+  "native": {
+    "step": "b02-keyutils-install",
+    "started": "2026-11-10T22:47:02.668108+00:00",
+    "finished": "2026-11-10T22:47:18.760403+00:00",
+    "recipe_sha256": "06be08a5ff6935cebc9ede25f1146630405bca5ec46a380e1c819b854e8c8d4c",
+    "postcheck_sha256": "eb05d67f302a0b522a63653fd46e8dc580f179f97d0a1525fd8afb1057ade036",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 75,
+    "log_sha256": "a72081b39afc14126ddadc4eee5dc8e5ce47d99ddb41f7100d9b3691433de478",
+    "receipt_sha256": "b56e9baa426e4a1196e302638884a15f222bfe82bfe61fff2b7762de41bbafae"
+  },
+  "consumer": {
+    "C_consumer": "Keyutils C shared version and build metadata verified\n",
+    "CLI": "keyctl from keyutils-1.6.3 (Built 2026-11-10)\n",
+    "stage_files": 46,
+    "stage_links": 13,
+    "reviewed_conffile": true,
+    "demo_rules_omitted": 6,
+    "original_configuration_retained": true,
+    "licenses_verified": true,
+    "scope": "UID101 with no effective capabilities, NNP, private devices and private network. Shared SDK and CLI version only.",
+    "native_kernel_suite_pending": true,
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "keyutils",
+    "version": "1.6.3-1+toddy1",
+    "archive_sha256": "6d731deb44cbf3aa2cc9fef6374bdafe1e8f459b3797322d68c4acf66d40faf8",
+    "recipe_sha256": "06be08a5ff6935cebc9ede25f1146630405bca5ec46a380e1c819b854e8c8d4c",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "keyutils",
+        "version": "1.6.3",
+        "filename": "keyutils-1.6.3.tar.gz",
+        "url": "https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/keyutils-1.6.3.tar.gz",
+        "sha256": "a61d5706136ae4c05bd48f86186bcfdbd88dd8bd5107e3e195c924cfc1b39bb4",
+        "reference": "BLFS13.1-systemd general/keyutils.html",
+        "book_page_sha256": "aa9afd3e8b15defa90a3dd82b0a3eac1f2802ae127fbb2435689e73ccbbd3598",
+        "book_md5": "6b70b2b381c1b6d9adfaf66d5d3e7c00",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "installed": true,
+    "payload_count": 84,
+    "supporting_build_scripts_sha256": "9733ac4e0d7ffa2f8f87a753511ad5b84e84ff69a521255fbd4399435863c9a1",
+    "payload_sha256": "2bc1e6ce02d08d5ee57f18be6c83cc74e7a98d2d3ab8cc08f146ed11a4017971"
+  },
+  "installed_config_sha256": "967a6b010a5dfac917147a6eb85c9933e23caa4abdb754715ff18feab56acfec",
+  "upstream_config_sha256": "87f286e86f12eb096e98663649116d375439ea0c689883ce9a3aa3a210b611cc",
+  "installed_notices": {
+    "sources": [
+      {
+        "filename": "keyutils-1.6.3.tar.gz",
+        "source_sha256": "a61d5706136ae4c05bd48f86186bcfdbd88dd8bd5107e3e195c924cfc1b39bb4",
+        "url": "https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/keyutils-1.6.3.tar.gz",
+        "notices": [
+          {
+            "path": "keyutils-1.6.3/LICENCE.GPL",
+            "sha256": "f46409d4822b2457b39bbd0e7881eecb396130eb8320b7748fa7e9488970aa6d",
+            "size": 17997
+          },
+          {
+            "path": "keyutils-1.6.3/LICENCE.LGPL",
+            "sha256": "0d15593e3a8ad90917f8509b5ac1e4b5e5d196434a68029aa9dc0858a4a4c521",
+            "size": 26450
+          }
+        ]
+      }
+    ],
+    "scope": "Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply"
+  },
+  "target_free_bytes": 17198915584,
+  "scratch_free_bytes": 561504256
+}
