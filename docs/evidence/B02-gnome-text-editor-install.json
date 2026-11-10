@@ -1,0 +1,43 @@
+{
+  "scope": "Owned installed GNOME Text Editor50.1 package, headless --version actual UID101/NoNewPrivs/private-dev/no-route/APT and library resolution only. No graphical editor acceptance; shared cache integration is a separate following slice.",
+  "job": {
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 376,
+    "log_sha256": "67f6a60c24ad051ed6e79d391b36d51140a123a85280e42a173c277f1f03dbac"
+  },
+  "consumer": {
+    "scope": "Owned native editor package/payload/APT/version execution UID101/NoNewPrivs/private-dev/no-route and real shared-library resolution only. Shared schema/icon/desktop cache integration and graphical open/edit/save/recovery/focus remain pending; unavailable default schema is recorded, never a GUI pass.",
+    "version": "Text Editor 50.1 (50.1)\n\n            GTK: 4.22.4 (Compiled against 4.22.4)\n  GtkSourceView: 5.20.0 (Compiled against 5.20.0)\n\nCopyright 2020-2025 Christian Hergert, et al.\nThis is free software; see the source for copying conditions. There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n",
+    "installed_stage_regular_files_identical": 260,
+    "shared_library_resolution": true,
+    "default_editor_schema_available": false,
+    "graphical_editor_tested": false
+  },
+  "package_archive_sha256": "77ce94f6eccd6403c99fa6d7c3293aa080e5d0cf3ecec7e8def687fc6f9c2dec",
+  "timing": {
+    "step": "b02-gnome-text-editor-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.77,
+        "entries": 161262,
+        "regular_files": 143900,
+        "regular_bytes": 7496382859
+      },
+      {
+        "seconds": 14.691,
+        "entries": 161635,
+        "regular_files": 144165,
+        "regular_bytes": 7499313218
+      }
+    ],
+    "total_seconds": 33.357
+  },
+  "target_free_bytes": 17326678016,
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-gnome-text-editor-install-evidence.tar.gz",
+    "sha256": "dddb630a61e2a815b854eef7074938899511548015d82e558d73439c034eb2ce",
+    "bytes": 81634
+  }
+}

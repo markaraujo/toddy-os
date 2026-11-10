@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gnome-text-editor': ('50.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy8), gtksourceview (= 5.20.0-1+toddy1), libadwaita (= 1.9.3-1+toddy1), libspelling (= 0.4.11-1+toddy1), editorconfig (= 0.12.11-1+toddy1)', 'gnome-text-editor-50.1.tar.xz', 'usr/bin/gnome-text-editor'),
     'editorconfig': ('0.12.11', 'glibc (>= 2.44-1+toddy1), pcre2 (= 10.49-1+toddy1)', 'editorconfig-0.12.11.tar.gz', 'usr/lib/pkgconfig/editorconfig.pc'),
     'libspelling': ('0.4.11', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy8), gtksourceview (= 5.20.0-1+toddy1), enchant (= 2.8.19-1+toddy1), icu (= 78.3-1+toddy1)', 'libspelling-0.4.11.tar.xz', 'usr/lib/pkgconfig/libspelling-1.pc'),
     'enchant': ('2.8.19', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), aspell (= 0.60.8.2-1+toddy1)', 'enchant-2.8.19.tar.gz', 'usr/lib/pkgconfig/enchant-2.pc'),
@@ -283,6 +284,7 @@ if __name__ == '__main__':
     if name=='inih' and (log/'inih-collect-2.exit').exists():qualifier='inih-collect-2'
     if name=='blueprint-compiler':qualifier='blueprint-compiler-finish-2'
     if name=='aspell' and (log/'aspell-dictionary-2.exit').exists():qualifier='aspell-dictionary-2'
+    if name=='gnome-text-editor':qualifier='gnome-text-editor-metadata-2'
     if name=='libspelling':qualifier='libspelling-options-2'
     if name=='enchant':qualifier='enchant-provider-explicit-5'
     if name=='tinysparql':qualifier='tinysparql-numeric-5'
@@ -1245,6 +1247,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='gnome-text-editor':
+        from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
+        qualify_gnome_text_editor(ROOT)
     if name=='editorconfig':
         from qualify_editorconfig import qualify as qualify_editorconfig
         qualify_editorconfig(ROOT)
