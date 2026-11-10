@@ -8,18 +8,43 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current eligible B02 slice: GNOME Text Editor50.1 stage qualified, not installed.
-[Proof](evidence/B02-gnome-text-editor-stage.json). Main1PID29209 compiler/stage/
-actual --version succeeded, collector1 failed own assumption of zero registered
-tests. Metadata2PID30174 terminal0 ran first actual offline AppStream validation
-(no rebuild), then collection0. All current ELF/stage hashes independently match.
-No graphical open/save/edit/navigation/focus/recovery acceptance. SourceSHA
-f68036b09d378faa883bfe936e479c6ff37027c2ffed101daf912df70c51d0e6;
-original recipeSHA164116bf1010e79148546afa81fac2317938e66d48088d8ae83912bbe98d17fb.
-EXACT NEXT: prepare native editor package profile/install/check, preserving schema/
-cache ownership, actual transaction-space gate and full-root checks. Do not replay
-source/compiler/stage/version/metadata test. No live writer; builder boot
-9d54ab78-a01a-428b-86e9-6055effef25b. Editor GUI is still pending.
+Current eligible B02 slice: native editor graphical validation preparation.
+GNOME Text Editor50.1 OWNED: nativePID30824 recipe/post0/0/376changes,
+actual UID101/NoNewPrivs/private-device/no-route --version, all staged regular
+bytes/dependencies/APT0 passed. [Installed proof](evidence/B02-gnome-text-editor-install.json).
+ArchiveSHA77ce94f6eccd6403c99fa6d7c3293aa080e5d0cf3ecec7e8def687fc6f9c2dec.
+No graphical open/edit/save/navigation/focus/responsiveness/recovery acceptance.
+
+Editor/terminal shared schema cache now OWNED in GTK4.22.4-1+toddy9:
+strict isolated unionPID31568 terminal0, all115baseline schemas/900key contracts
+preserved; six added schemas (editor + five terminal),121total/1057keys.
+NativePID31874 recipe/post0/0/10changes, actual installed default-source complete
+lookup matched; libraries and every noncache/nonlegal payload byte unchanged.
+[Proof](evidence/B02-editor-schema-union.json). ArchiveSHA
+9c99cbf271566b44efcdf369ccba0ed9e2f3549819e7bf736f189209dd0533b5.
+Old GTK8 archive/record retained for recovery; no rollback executed. NEVER replay
+editor installation, cache union/GTK transaction, or prior compiler/stage/tests.
+
+EXACT NEXT: prepare actual native editor GUI validation using existing Mutter/
+reference-guest harness. Inspect existing code and selected app's real actions,
+verify cold host headroom before dispatch, preserve parked shell/LocalSearch
+budgets. Last hostfree107721031680B passes100GiB ordinary reserve but is below
+107911053312B cold gate; do not lower either guard. Qualify new recoverable stopped
+test overlay custody only if actual new inputs exist; never replay old compression/
+trim. Targetfree17321431040B after GTK update. No live guest writer.
+Builder boot9d54ab78-a01a-428b-86e9-6055effef25b.
+
+ICU/Doxygen duplicate promotion custody1 COMPLETE PID31236,
+78950400B reclaimed, installed root0 and both original workstages unchanged.
+[Proof](evidence/B02-editor-cache-stage-custody.json). Only closed promotion usr/
+etc copies removed after archive/payload/installed bytes verified. Original cache,
+source/compiler/stage/raw/native archives retained; NEVER replay retirement.
+
+[Editor stage proof](evidence/B02-gnome-text-editor-stage.json): main1PID29209
+compiler/stage/version succeeded, own zero-test collector assumption failed.
+Metadata2PID30174 terminal0 ran first actual original offline AppStream metadata
+test and collection only; no compiler/stage/version replay. Stage/artifact hashes
+independently verified. Original source/recipe remain immutable in builder.
 
 EditorConfig0.12.11 now OWNED: [proof](evidence/B02-editorconfig-install.json).
 Original202CTest cases + installed C API/CLI layered UTF8 settings, relative-path/

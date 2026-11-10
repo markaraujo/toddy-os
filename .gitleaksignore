@@ -51,3 +51,9 @@ docs/evidence/B02-enchant-stage.json:generic-api-key:90
 docs/evidence/B02-enchant-stage.json:generic-api-key:146
 132516a1625ffec666b76cf1d90d87ca6d6a7f60:docs/evidence/B02-enchant-stage.json:generic-api-key:90
 132516a1625ffec666b76cf1d90d87ca6d6a7f60:docs/evidence/B02-enchant-stage.json:generic-api-key:146
+
+# Reviewed SHA256 of public GNOME keybinding/media-key schema inputs, not credentials.
+docs/evidence/B02-editor-schema-union.json:generic-api-key:49
+docs/evidence/B02-editor-schema-union.json:generic-api-key:99
+docs/evidence/B02-editor-schema-union.json:generic-api-key:458
+docs/evidence/B02-editor-schema-union.json:generic-api-key:508

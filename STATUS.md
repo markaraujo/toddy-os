@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T14:38:21.234856+00:00
+Updated: 2026-11-10T14:48:37.353058+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T14:38:21.234856+00:00
+Last verified: 2026-11-10T14:48:37.353058+00:00
 
 Verified:
 
@@ -160,12 +160,13 @@ Verified:
 - Owned EditorConfig0.12.11:202original tests, exact test gitlink and installed C API/CLI layered UTF8 settings/refusal/input retention/recovery/APT0; native recipe/post0/0/26changes.
 - GNOME Text Editor50.1 compiled/staged with default EditorConfig enabled; actual --version GTK4.22.4/GtkSourceView5.20.0, desktop/schema and original offline AppStream metadata validation passed. No installed editor or graphical open/save/navigation/focus/recovery acceptance.
 - Shared preallocated Doxygen scratch now hosts isolated private editor workers; original Doxygen and earlier worker bytes retained. Cargo-c duplicate promotion retirement reclaimed165642240B with installed-root0/original-stage unchanged, native archive/source/compiler/raw retained.
+- GNOME Text Editor50.1 now OWNED: native recipe/post0/0/376changes, actual UID101/NoNewPrivs/private-dev/no-route version/payload/APT0. Shared GTK4.22.4 same-version cache/legal update recipe/post0/0/10changes preserves115schemas/900keys and installs editor+five terminal schemas, actual default121schemas/1057keys matched, libraries/other payload unchanged. No graphical editor acceptance.
 
-Running: GNOME Text Editor50.1 stage qualified; next owned native package with schema/cache ownership, followed by actual GUI validation. No live guest writer. Enchant/Libspelling/EditorConfig already installed, no build/test/install replay. LocalSearch and shell branches remain parked pending bounded new evidence. Complete ALL B02 then stop.
+Running: Editor50.1 installed and default shared schema integration verified. Next real native GUI validation; desktop icon/MIME cache coverage remains to inspect. No live guest writer. Cold host gate needs renewed actual headroom; preserve all previous failure budgets. Complete ALL B02 then stop.
 
 Remaining:
 
-- Native editor package and actual graphical edit/save/reopen/refusal/recovery/focus/responsiveness tests.
+- Actual graphical editor open/edit/save/reopen/refusal/recovery/focus/responsiveness and affected desktop icon/MIME caches.
 - LocalSearch/Nautilus/browser/settings and first fully working interactive native GNOME session.
 - Foundation recovery-entry boot remains pending; actual installed main7.1.8/Systemd already observed in failed LocalSearch native tests, not desktop acceptance.
 - Minimal desktop branding/offline usability/security-ABI review and reference guest measurements.
