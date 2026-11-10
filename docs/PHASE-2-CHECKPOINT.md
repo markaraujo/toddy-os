@@ -65,15 +65,34 @@ First actual kernel cold restore kernel-work-restored-localsearch-1 COMPLETE:
 same UUIDc6c4176d-faed-4ee3-9ae0-94914a0af666/lower7523763/upper14/work15. No
 format/resize/rebuild/reprepare. Never replay completed restoration receipts.
 
-EXACT NEXT: commit/check own fixture correction, idle metadata sync and inspect
-`python3 scripts/host/phase2_native_localsearch.py --attempt 2 --preflight-only`.
-If actual headroom remains>=100GiB+512MiB, dispatch ONCE with --attempt 2 and no
-preflight flag, in new persistent controller2/log/receipt. Never replay attempt1
-or overwrite its context. Monitor actual PID/startticks/context/container. After
-terminal retain full result and restore same existing volumes/source/COW using
-NEW receipt names only after actual mount inspection. On a second failed
-correction or30min same cause, preserve it and switch eligible B02 branch. Native
-package promotion waits real successful functional proof. Full B02, then stop.
+Native attempt2 TERMINAL FAILED, complete reportSHA
+55854c647057821c534c6e86ddd8476113134758d1cf4a23b713f8a409bf7455,
+container7efecee58086a38f8c95dda07d2ebb67c5b00ffe25b8847401f8da1236ec30f3
+exit0/OOMfalse/backing+inputs unchanged, selected search case1 FAILED10s.
+TMPDIR separation positive control passed; correction1 insufficient. Do not reset
+budget: same startup cause2corrections prepared/1failed. [Proof](evidence/B02-localsearch-native-failed-2.json).
+Actual private GSettings diagnosis jobPID1447/terminal0: both original GIO_MODULE_DIR
+and extra-module variant persisted expected value across processes; DConf hypothesis
+disproven, NO module override added. No original compiler/test/stage replay.
+
+Source-confirmed next correction: tracker-extract-watchdog.c/tracker-application.c
+choose build helper only with cwd==BUILDROOT; tracker-landlock.c adds readonly
+in-tree paths under same condition. Own native worker used /var/tmp cwd. Restore
+original Meson cwd=/build/compile, preserve readonly source/compiled mounts;
+redirect ONLY generated supported TEST_ROOT to per-program private ext4 directory.
+No upstream source/binary/test/golden/timeout/security-policy change. Original
+failure evidence retained. Builder restored after2: boot6ae42d92-d824-49eb-9dd6-1db21064b7f1,
+localsearch-builder-restored-2.json/kernel-work-restored-localsearch-2.json and
+companion2 COMPLETE. Same six scratch/source/COW UUID+inodes, no format/resize.
+
+EXACT NEXT: commit/check own cwd/test-root correction and settings diagnosis,
+idle metadata sync, then `python3 scripts/host/phase2_native_localsearch.py
+--attempt 3 --preflight-only`. If gate passes, dispatch ONCE --attempt 3 in NEW
+controller3/log/receipt, never replay attempts1/2. Monitor actual handle. On
+second failed correction or30min same cause, preserve and switch eligible B02
+branch; no further unchanged native retry. After terminal restore same existing
+volumes/source/COW using NEW3receipts after actual state inspection. Package
+promotion waits successful real native proof. Full B02, then stop.
 
 ## Completed native kernel and boot owner slice
 
@@ -158,7 +177,7 @@ No fresh whole-source rebuild/reproducibility acceptance is claimed.
 
 ## Actual builder, mounts and recovery
 
-Current boot4896d864-3e21-4550-aa72-4d7510223f35; target
+Current boot6ae42d92-d824-49eb-9dd6-1db21064b7f1; target
 /mnt/lfs=/dev/vdb4/TODDY-LFS-TARGET (filesystem labelTODDY_LFS). One writer via
 /var/log/toddy/build/build.lock. Target16GiB/host100GiB/scratch128MiB reserves.
 Current kernel scratch fixed /dev/disk/by-id/virtio-TODDY-B02-KERNEL→/dev/vdc,

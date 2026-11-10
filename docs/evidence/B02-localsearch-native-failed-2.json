@@ -1,0 +1,85 @@
+{
+  "scope": "Native attempt2 FAILED; builder restored, no promotion/GUI acceptance. Independent private GSettings diagnosis disproves missing-backend hypothesis. Second bounded correction changes own runtime cwd and generated test-root parameter only; not executed yet.",
+  "commit": "833ee28c4e10776587710607e17f6591175be060",
+  "native_selected_passed": false,
+  "input_manifests_unchanged": true,
+  "container_exit": 0,
+  "OOMKilled": false,
+  "backing_unchanged_during_native": true,
+  "report_sha256": "55854c647057821c534c6e86ddd8476113134758d1cf4a23b713f8a409bf7455",
+  "actual": {
+    "all_selected_passed": false,
+    "cases": 1,
+    "positive_control": {
+      "elapsed_seconds": 0.03,
+      "exit": 0,
+      "stderr": "",
+      "stdout": "{\"UID\": 101, \"capabilities\": false, \"NoNewPrivs\": true, \"read_controls\": 3, \"socket_controls\": 5, \"exec_control\": true, \"write_truncate_control\": true, \"monitored_tree_outside_tmpdir\": true}\n",
+      "timed_out": false
+    },
+    "programs": 1,
+    "runs": [
+      {
+        "cases": 1,
+        "elapsed_seconds": 10.635,
+        "exit": 1,
+        "name": "test_cli_search",
+        "passed": false,
+        "stderr": "test_search (__main__.TestCli.test_search) ... /usr/lib/python3.14/site-packages/gi/events.py:803: DeprecationWarning: 'asyncio.AbstractEventLoopPolicy' is deprecated and slated for removal in Python 3.16\n  AbstractEventLoopPolicy = getattr(asyncio, \"AbstractEventLoopPolicy\", object)\n/usr/lib/python3.14/site-packages/gi/events.py:890: DeprecationWarning: 'asyncio.get_event_loop_policy' is deprecated and slated for removal in Python 3.16\n  if not isinstance(_get_event_loop_policy(), GLibEventLoopPolicy):\nTraceback (most recent call last):\n  File \"/src/utils/trackertestutils/storehelper.py\", line 139, in timeout_cb\n    raise AwaitTimeoutException(\n        f\"Timeout ({self.timeout}s) awaiting insert of resource matching: {self.predicates}\")\ntrackertestutils.storehelper.AwaitTimeoutException: Timeout (10s) awaiting insert of resource matching: a nfo:Document; nie:isStoredAs <file:///var/tmp/toddy-localsearch-zg9485z4/test_cli_search/tracker-tests/tmpjr1f003p/test-monitored/Document%201.txt>\nERROR\n/usr/lib/python3.14/site-packages/gi/events.py:890: DeprecationWarning: 'asyncio.get_event_loop_policy' is deprecated and slated for removal in Python 3.16\n  if not isinstance(_get_event_loop_policy(), GLibEventLoopPolicy):\n\n======================================================================\nERROR: test_search (__main__.TestCli.test_search)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/src/tests/functional-tests/test_cli_search.py\", line 42, in test_search\n    with self.await_document_inserted(target1):\n         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^\n  File \"/src/utils/trackertestutils/storehelper.py\", line 152, in __exit__\n    self.loop.run_checked()\n    ~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/src/utils/trackertestutils/mainloop.py\", line 61, in run_checked\n    raise self._exception\n  File \"/src/utils/trackertestutils/storehelper.py\", line 139, in timeout_cb\n    raise AwaitTimeoutException(\n        f\"Timeout ({self.timeout}s) awaiting insert of resource matching: {self.predicates}\")\ntrackertestutils.storehelper.AwaitTimeoutException: Timeout (10s) awaiting insert of resource matching: a nfo:Document; nie:isStoredAs <file:///var/tmp/toddy-localsearch-zg9485z4/test_cli_search/tracker-tests/tmpjr1f003p/test-monitored/Document%201.txt>\n\n----------------------------------------------------------------------\nRan 1 test in 10.514s\n\nFAILED (errors=1)\n",
+        "stdout": "",
+        "timed_out": false
+      }
+    ]
+  },
+  "settings_diagnosis": {
+    "scope": "Actual private GSettings/DConf write-read across processes in same built functional fixture GIO module environment. Builder kernel, no native index/search or package acceptance.",
+    "kernel": "6.8.0-147-generic",
+    "runs": [
+      {
+        "write_exit": 0,
+        "write_stderr": "",
+        "read_exit": 0,
+        "read_stderr": "",
+        "readback": "['/build/settings-diagnosis-1/original-module-override/monitored']",
+        "expected": [
+          "/build/settings-diagnosis-1/original-module-override/monitored"
+        ],
+        "name": "original-module-override",
+        "bus_stderr": "",
+        "persisted": true
+      },
+      {
+        "write_exit": 0,
+        "write_stderr": "",
+        "read_exit": 0,
+        "read_stderr": "",
+        "readback": "['/build/settings-diagnosis-1/owned-dconf-extra-module/monitored']",
+        "expected": [
+          "/build/settings-diagnosis-1/owned-dconf-extra-module/monitored"
+        ],
+        "name": "owned-dconf-extra-module",
+        "bus_stderr": "dbus-daemon[50]: [session uid=101 pid=50 pidfd=5] Activating service name='ca.desrt.dconf' requested by ':1.0' (uid=101 pid=52 comm=\"gsettings set org.freedesktop.Tracker3.Miner.Files\" label=\"unconfined\")\ndbus-daemon[50]: [session uid=101 pid=50 pidfd=5] Successfully activated service 'ca.desrt.dconf'\n",
+        "persisted": true
+      }
+    ],
+    "compiled_inputs_unchanged": true
+  },
+  "proposed_correction": "Frozen src/indexer/tracker-extract-watchdog.c and tracker-application.c select in-tree helper only when cwd==BUILDROOT; src/common/tracker-landlock.c grants read-only in-tree paths under same condition. Own executor incorrectly used /var/tmp per-test cwd. Restore /build/compile cwd, redirect ONLY generated TEST_ROOT to private ext4. Keep source/build readonly, TMPDIR=/tmp, all original cases/expectations/timeouts.",
+  "builder_recovery": {
+    "state": "complete",
+    "boot_id": "6ae42d92-d824-49eb-9dd6-1db21064b7f1",
+    "six_existing_volumes": true,
+    "same_source_companion_kernel_COW": true,
+    "kernel_restore_receipt": "kernel-work-restored-localsearch-2.json",
+    "format_resize_compile_replayed": false
+  },
+  "budget": {
+    "corrective_attempts_prepared": 2,
+    "failed_corrections": 1,
+    "next": "explicit native attempt3 only, park on second failed correction or30min same cause"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-localsearch-native-failed-2.tar.gz",
+    "sha256": "c4c910f30363430e714aea55ed29694675f2ea5bec0cb7274b4c2a30a623be67"
+  }
+}

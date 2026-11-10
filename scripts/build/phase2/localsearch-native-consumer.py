@@ -57,7 +57,17 @@ print(json.dumps({'UID':os.geteuid(),'capabilities':False,'NoNewPrivs':True,'rea
  for test in fixture['selected_tests']:
   current=base/test['name'];current.mkdir();os.chown(current,101,101)
   test_env=dict(env);test_env.update(test['env'])
-  r=run(test['cmd'],test_env,current,test['timeout'])
+  # Upstream watchdog/helper selection and Landlock in-tree rules require the
+  # same cwd as Meson (BUILDROOT). Keep compiled inputs read-only; redirect
+  # only the supported generated TEST_ROOT parameter to writable ext4 data.
+  original_config=Path(test_env['TRACKER_FUNCTIONAL_TEST_CONFIG'])
+  config=json.loads(original_config.read_text());original=dict(config)
+  config['TEST_ROOT']=str(current)
+  assert {k for k in config if config[k]!=original[k]}=={'TEST_ROOT'}
+  private_config=current/'configuration.json';private_config.write_text(json.dumps(config))
+  test_env['TRACKER_FUNCTIONAL_TEST_CONFIG']=str(private_config)
+  r=run(test['cmd'],test_env,Path('/build/compile'),test['timeout'])
+  r['cwd']='/build/compile';r['test_root']=str(current)
   r['name']=test['name'];matches=re.findall(r'^Ran (\d+) tests? in ',r['stderr'],re.M)
   r['cases']=int(matches[-1]) if matches else 0
   r['passed']=r['exit']==0 and not r['timed_out'] and r['cases']==fixture['expected_cases'][test['name']] and bool(re.search(r'^OK\s*$',r['stderr'],re.M))

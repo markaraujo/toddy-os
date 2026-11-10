@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T12:41:08.303185+00:00
+Updated: 2026-11-10T12:50:17.766751+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T12:41:08.303185+00:00
+Last verified: 2026-11-10T12:50:17.766751+00:00
 
 Verified:
 
@@ -156,7 +156,7 @@ Verified:
 - LocalSearch3.11.1 cached source4505604bytes/frozen SHA verified;17actual selected/required SDK modules found including Tinysparql/GExiv2/GLib/Gst/ICU/seccomp. No guest source/job or search/runtime/GUI acceptance.
 - LocalSearch3.11.1 UID101 isolated compile/stage verified:186ELFs/133stagefiles,13original non-slow common/indexer/extract utility programs0,Landlock/seccomp enabled; minimum compiler free17269211136B above16GiB. Initial job1 only own valueless-macro collector assertion; collection2 actual0 with all compiled/staged bytes unchanged. Derived exact suite/name inventory leaves72unexecuted programs. No native runtime/index/search/sandbox/Stop/recovery/install/GUI acceptance; ADR0205.
 
-Running: Native LocalSearch attempt1 terminal FAILED at first search insert; own TMPDIR overlaps monitored root, source-confirmed exclusion. Main installed kernel actually booted7.1.8/Systemd; independent controls/input hashes0. Builder/six volumes/source/companion/kernel COW restored, first actual kernel cold restore qualified. Commit own TMPDIR correction then guarded explicit attempt2; no build/test/stage replay or GUI acceptance.
+Running: Native LocalSearch attempt2 terminal FAILED at search insert; TMPDIR separation0. Private GSettings write/read0 in original/extra-module environments disproves DConf hypothesis. Source shows own cwd must equal BUILDROOT for in-tree extractor and Landlock rules. Final bounded fixture correction prepared, original binaries unchanged; builder/all volumes/source/COW restored. Explicit attempt3 next, park on second failed correction.
 
 Remaining:
 
