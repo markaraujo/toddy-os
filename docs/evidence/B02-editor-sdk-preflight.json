@@ -1,0 +1,66 @@
+{
+  "scope": "Read-only selected GNOME Text Editor50.1/libspelling0.4.11 SDK preflight; no app build/install/GUI acceptance.",
+  "boot": "9d54ab78-a01a-428b-86e9-6055effef25b",
+  "modules": {
+    "glib-2.0": {
+      "exit": 0,
+      "version": "2.88.3"
+    },
+    "gio-2.0": {
+      "exit": 0,
+      "version": "2.88.3"
+    },
+    "gtk4": {
+      "exit": 0,
+      "version": "4.22.4"
+    },
+    "libadwaita-1": {
+      "exit": 0,
+      "version": "1.9.3"
+    },
+    "gtksourceview-5": {
+      "exit": 0,
+      "version": "5.20.0"
+    },
+    "libspelling-1": {
+      "exit": 1,
+      "version": ""
+    },
+    "enchant-2": {
+      "exit": 1,
+      "version": ""
+    },
+    "icu-uc": {
+      "exit": 0,
+      "version": "78.3"
+    },
+    "icu-i18n": {
+      "exit": 0,
+      "version": "78.3"
+    },
+    "editorconfig": {
+      "exit": 1,
+      "version": ""
+    }
+  },
+  "target_free": 17264709632,
+  "sources": [
+    {
+      "name": "gnome-text-editor",
+      "version": "50.1",
+      "filename": "gnome-text-editor-50.1.tar.xz",
+      "url": "https://download.gnome.org/sources/gnome-text-editor/50/gnome-text-editor-50.1.tar.xz",
+      "sha256": "f68036b09d378faa883bfe936e479c6ff37027c2ffed101daf912df70c51d0e6",
+      "upstream_sha256_url": "https://download.gnome.org/sources/gnome-text-editor/50/gnome-text-editor-50.1.sha256sum",
+      "status": "verified_source_candidate_not_built"
+    },
+    {
+      "name": "libspelling",
+      "version": "0.4.11",
+      "filename": "libspelling-0.4.11.tar.xz",
+      "url": "https://download.gnome.org/sources/libspelling/0.4/libspelling-0.4.11.tar.xz",
+      "sha256": "52e53ec3fba0f604cfd0931e26af7f7241a0d4f0208dd5574f43b3589f6d28b2",
+      "checksum_reference": "Previously cached official GNOME 0.4.11.sha256sum, also frozen desktop-dependencies.json source_sha256"
+    }
+  ]
+}

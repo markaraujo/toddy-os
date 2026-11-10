@@ -3244,3 +3244,5 @@ Native kernel archive QA0/0/root changed0, kernel7.1.8-1+toddy1 install0/0/12cha
 | 2026-11-10 | B02 LocalSearch | Isolated core compile/stage,13original basic programs0;186ELFs/133stagefiles. Collection-only macro correction, unchanged binaries and original failure retained;72programs/native runtime/install/GUI pending. ADR0205. | Source/binary/raw evidence bound; no test/build replay or graphical acceptance. |
 
 | 2026-11-10 | B02 native preparation | LocalSearch9program/20case native fixture bound without binary copy; actual preflight0. Additional30stopped disposable overlays byte-exact compressed,441909248B reclaimed. | Native dispatch awaits committed-input headroom check; original failures/raw data retained, no broad suite replay. |
+
+| 2026-11-10 | B02 bounded native diagnosis | Three real LocalSearch native runs failed, two own-fixture corrective attempts; full failures retained and branch parked. Actual installed kernel/Systemd and three same-UUID builder/COW restorations verified. | No native search/GUI pass; current eligible editor dependency preparation verifies7SDKmodules and authenticates Enchant source. |

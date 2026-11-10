@@ -8,91 +8,75 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current slice: LocalSearch3.11.1 native functional fixture/preflight preparation.
-[Build proof](evidence/B02-localsearch-build.json): source frozen, input extraction1
-complete, build1 PID26113 terminal1 only own final collector macro assertion;
-compiler13original programs/stage all0. Collection2 PID27647 actual0/all compiled
-and staged bytes unchanged:186ELFs/133stagefiles. Exact derived suite/name matching
-leaves72unexecuted registered programs, raw first collector85-list retained.
-No source patches; Landlock/seccomp/core miner/extractor/writeback enabled.
-Original input recipeSHAf25eb13e03a5b1fde6763e0bea50e923bec82ebae12cbc596d0cbb2e060d2499
-must stay immutable; current host recipe fixes metadata expectations only. Do not
-replay source extraction/compilation/accepted tests/staging/collection. Raw export
-.local/phase2/exports/B02-localsearch-build-evidence-1.tar.gz SHA
- d7da4c20df75f7263d8294170e5e791df8e46aa408db5cc433695992b4692dfb.
-Compiler minimum free17269211136B above16GiB. Actual builder kernel6.8.0-147-generic;
-installed target7.1.8-1+toddy1. No installed/native functional/sandbox/GUI acceptance.
-Native fixture1 prepared:770source/403compile/133stage files bound in a166741B
-root-owned descriptorSHA bcd521657ff4861f3ca9391c045d1d6bf03f2bf0f9e8e1907db5fae0e68a01fe.
-Receipt /var/log/toddy/phase2/localsearch-native-fixture-1.json complete; same bytes
-at /mnt/lfs/sources/phase2/native-fixtures/localsearch-1.json. NEVER replay prepare
-or descriptor publish. [Preflight](evidence/B02-localsearch-native-preparation.json)
-passed without boot:8255B probe/4983B credential;9programs/20expected original cases.
-Preparation preflight (before actual attempt1 below): native consumer/controller were prepared only; source/build read-only private PID/mount/
-network namespace, independent UID101 positive controls, no zero-case/skip/timeout
-success, exact hashes before/after. No actual native runtime acceptance yet.
+Current eligible B02 slice: GNOME Text Editor50.1 prerequisites Enchant/Libspelling/
+EditorConfig source and build preparation. [Actual SDK preflight](evidence/B02-editor-sdk-preflight.json):
+GLib/GIO2.88.3,GTK4.22.4,Adwaita1.9.3,GtkSourceView5.20,ICU78.3 present;
+Enchant2,Libspelling1,EditorConfig absent. Already selected/cached GNOME Text Editor50.1
+SHAf68036b09d378faa883bfe936e479c6ff37027c2ffed101daf912df70c51d0e6 and
+Libspelling0.4.11 SHA52e53ec3fba0f604cfd0931e26af7f7241a0d4f0208dd5574f43b3589f6d28b2
+reverified. Enchant2.8.19 official cache/bookMD5/SHA verified and frozen in config/phase2/sources.lock.json via existing fetcher; SHA
+c8d70991d544ee39274b96bd01d2858a009fe732ff43f2aaf605fd61ecd06f60.
+Enchant source-lock row frozen; no editor-branch recipe, guest source or build job yet.
+EXACT NEXT: inspect frozen general/enchant.html provider prerequisites and actual
+Enchant configure/tests, select a real source-backed backend and verify/pin any
+required sources; preserve optional dictionary absence as explicit until qualified.
+Inspect selected EditorConfig dependency from actual editor src/editorconfig/meson.build;
+include its source rather than silently disabling default editor support. Prepare
+small isolated build with target16GiB/host100GiB reserve monitors. Do not weaken
+frozen foundation or claim editor/spelling/GUI acceptance from source preparation.
+One guest writer only. Complete ALL B02, then stop.
 
-New concrete custody evidence reopened the parked resource branch for ONE bounded
-batch, not a retry-budget reset. Thirty additional actual stopped/owned/exit0 test
-containers had483966976B allocated overlays. Generation2 byte-exact gzip completed:
-441909248B allocation reclaimed, raw hashes/decompression sizes match, original
-logs/results and VM backings untouched. Hostfree108069203968B immediately after,
-above107911053312B gate; recheck after committed metadata sync before dispatch.
-[Custody proof](evidence/B02-native-overlay-custody-2.json), ledger
-.local/phase2/native-test-overlay-custody-2.json COMPLETE. Never replay old/new
-custody or virtual trim. Recovery: verify gzip archive+decompressed source hashes
-from ledger before restoring exact absent raw paths; do not replay old test runs.
+## Parked LocalSearch functional branch — do not repeat
 
-Actual native attempt1 TERMINAL FAILED, not accepted: controllerPID276784,
-context .local/phase2/native-localsearch-runtime-1 phase native-report-recorded,
-container1a6fffcdadb0127840519a850f57ca272b741ea88d9e22515618674f301c1f49
-exit0/OOMfalse; real selected program exit1/search case1 insertion timeout10s.
-Complete reportSHA46bb121781bfb293de5f35d2c8a71d7066a2a85b93eff94c05d21d907774fa65,
-positive controls0 and full input manifests unchanged. Installed main kernel
-actually booted7.1.8/Systemd with verified image; recovery-entry boot still pending.
-[Failure/recovery proof](evidence/B02-localsearch-native-failed-1.json), rawSHA
-03c3bd5d0b93f6705f812731e99bf7961656a96822afaecd7c72954dbe8d6bb5.
-Cause source-confirmed: own TMPDIR was parent of monitored directory; upstream
-tracker-controller.c explicitly ignores g_get_tmp_dir() prefixes. Correction1
-only sets own TMPDIR=/tmp, leaves indexed ext4 data under /var/tmp and asserts
-separation. No original source/binary/test/timeout change. Ledger cause
-localsearch-native-monitored-tempdir persists,1correction/0failed corrections.
+[Build](evidence/B02-localsearch-build.json) remains accepted compile/stage only:
+186ELFs/133stagefiles,13original non-slow basic programs0,72registered not executed.
+Build1PID26113 terminal1 only own macro collection; collection2PID27647 terminal0.
+Original source recipeSHAf25eb13e03a5b1fde6763e0bea50e923bec82ebae12cbc596d0cbb2e060d2499
+immutable. No source/compiler/accepted-test/stage/prepare/collection replay.
+Fixture1 root-owned166741B descriptorSHA
+bcd521657ff4861f3ca9391c045d1d6bf03f2bf0f9e8e1907db5fae0e68a01fe binds
+770source/403compile/133stage files,9programs/20expected cases. Both receipts
+/var/log/toddy/phase2/localsearch-native-fixture-1.json and
+/mnt/lfs/sources/phase2/native-fixtures/localsearch-1.json complete; never republish.
 
-Builder actually restored after attempt1: boot4896d864-3e21-4550-aa72-4d7510223f35.
-localsearch-builder-restored-1.json COMPLETE; six existing scratch volumes,
-Systemd same-source bind and glycin-gtk4-work-restored-localsearch-1 COMPLETE.
-First actual kernel cold restore kernel-work-restored-localsearch-1 COMPLETE:
-same UUIDc6c4176d-faed-4ee3-9ae0-94914a0af666/lower7523763/upper14/work15. No
-format/resize/rebuild/reprepare. Never replay completed restoration receipts.
+Actual native attempts1/2/3 all TERMINAL FAILED, full reports/raw preserved:
+[1](evidence/B02-localsearch-native-failed-1.json),
+[2](evidence/B02-localsearch-native-failed-2.json),
+[3](evidence/B02-localsearch-native-failed-3.json).
+All installed7.1.8/Systemd, containers exit0/OOMfalse, backing+input hashes unchanged;
+these are NOT functional passes.1/2 first search insert timeout10s,3 private bus
+socket EROFS before miner startup. Corrective attempts2/failed2: PARKED. Do not
+run fourth attempt or reset budget. Cause1 own TMPDIR overlap corrected; insufficient.
+Private GSettings diagnosis1PID1447/exit0 disproved missing-DConf hypothesis; no
+module override added. Source showed BUILDROOT cwd needed for extractor/helper/
+Landlock in-tree rules. Correction2 restored original Meson cwd with compiled
+inputs readonly and ONLY generated TEST_ROOT redirected to private ext4. Original
+bus config unix:tmpdir=./ then tried socket in readonly BUILDROOT and failed.
+Unblock only after independent source-backed private writable bus-address
+qualification preserving isolation; record a bounded reopening with historical
+budgets intact. Current eligible independent editor branch above.
 
-Native attempt2 TERMINAL FAILED, complete reportSHA
-55854c647057821c534c6e86ddd8476113134758d1cf4a23b713f8a409bf7455,
-container7efecee58086a38f8c95dda07d2ebb67c5b00ffe25b8847401f8da1236ec30f3
-exit0/OOMfalse/backing+inputs unchanged, selected search case1 FAILED10s.
-TMPDIR separation positive control passed; correction1 insufficient. Do not reset
-budget: same startup cause2corrections prepared/1failed. [Proof](evidence/B02-localsearch-native-failed-2.json).
-Actual private GSettings diagnosis jobPID1447/terminal0: both original GIO_MODULE_DIR
-and extra-module variant persisted expected value across processes; DConf hypothesis
-disproven, NO module override added. No original compiler/test/stage replay.
+Last native3 controllerPID294671/context .local/phase2/native-localsearch-runtime-3,
+container40696bf6c6ad7487f78ba8293bb1d626846a84e8d993b59aadb52ae66dda8148
+exited0/OOMfalse, reportSHAf91bb7f44294b292cb6b12af1781173227d1f4dfa45298da7b1469796630fa4c.
+Builder restored after3: boot9d54ab78-a01a-428b-86e9-6055effef25b.
+localsearch-builder-restored-3.json, kernel-work-restored-localsearch-3.json and
+companion3 COMPLETE; same six scratch/Systemd source/kernel UUID+inodes. No
+format/resize/rebuild. NEVER replay any restoration1/2/3 receipts. No live writer
+or native child. Source/build/report/raw hashes and explicit failures remain in
+linked proofs. Recovery-entry boot, installed package promotion and GUI pending.
 
-Source-confirmed next correction: tracker-extract-watchdog.c/tracker-application.c
-choose build helper only with cwd==BUILDROOT; tracker-landlock.c adds readonly
-in-tree paths under same condition. Own native worker used /var/tmp cwd. Restore
-original Meson cwd=/build/compile, preserve readonly source/compiled mounts;
-redirect ONLY generated supported TEST_ROOT to per-program private ext4 directory.
-No upstream source/binary/test/golden/timeout/security-policy change. Original
-failure evidence retained. Builder restored after2: boot6ae42d92-d824-49eb-9dd6-1db21064b7f1,
-localsearch-builder-restored-2.json/kernel-work-restored-localsearch-2.json and
-companion2 COMPLETE. Same six scratch/source/COW UUID+inodes, no format/resize.
+## Recovered host headroom
 
-EXACT NEXT: commit/check own cwd/test-root correction and settings diagnosis,
-idle metadata sync, then `python3 scripts/host/phase2_native_localsearch.py
---attempt 3 --preflight-only`. If gate passes, dispatch ONCE --attempt 3 in NEW
-controller3/log/receipt, never replay attempts1/2. Monitor actual handle. On
-second failed correction or30min same cause, preserve and switch eligible B02
-branch; no further unchanged native retry. After terminal restore same existing
-volumes/source/COW using NEW3receipts after actual state inspection. Package
-promotion waits successful real native proof. Full B02, then stop.
+New byte-exact custody generation2 compressed30 actual stopped/owned test overlay
+files,441909248B allocation reclaimed, all raw bytes recoverable. Post-commit
+metadata sync+preflight1/2/3 actual free stayed>=100GiB+512MiB; no guard reduction,
+trim replay or uncertain write. [Custody](evidence/B02-native-overlay-custody-2.json)
+ledger .local/phase2/native-test-overlay-custody-2.json COMPLETE; never replay.
+Old headroom failure budget retained; new native failures are functional fixture
+failures. Recheck actual resources before any future native dispatch, not repeated
+cleanup. Gzip restoration requires archive and decompressed-source hashes from
+ledger; old test deltas must not be booted against a changed mutable backing.
 
 ## Completed native kernel and boot owner slice
 
@@ -177,7 +161,7 @@ No fresh whole-source rebuild/reproducibility acceptance is claimed.
 
 ## Actual builder, mounts and recovery
 
-Current boot6ae42d92-d824-49eb-9dd6-1db21064b7f1; target
+Current boot9d54ab78-a01a-428b-86e9-6055effef25b; target
 /mnt/lfs=/dev/vdb4/TODDY-LFS-TARGET (filesystem labelTODDY_LFS). One writer via
 /var/log/toddy/build/build.lock. Target16GiB/host100GiB/scratch128MiB reserves.
 Current kernel scratch fixed /dev/disk/by-id/virtio-TODDY-B02-KERNEL→/dev/vdc,

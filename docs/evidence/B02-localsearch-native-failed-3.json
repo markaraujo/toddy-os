@@ -1,0 +1,55 @@
+{
+  "scope": "Native attempt3 FAILED; second failed corrective attempt, native functional branch parked. No LocalSearch promotion or GUI acceptance.",
+  "commit": "d897177c59af0dcf8f0350c89021d1ea8f391850",
+  "native_selected_passed": false,
+  "input_manifests_unchanged": true,
+  "container_exit": 0,
+  "OOMKilled": false,
+  "backing_unchanged_during_native": true,
+  "report_sha256": "f91bb7f44294b292cb6b12af1781173227d1f4dfa45298da7b1469796630fa4c",
+  "actual": {
+    "all_selected_passed": false,
+    "cases": 1,
+    "positive_control": {
+      "elapsed_seconds": 0.029,
+      "exit": 0,
+      "stderr": "",
+      "stdout": "{\"UID\": 101, \"capabilities\": false, \"NoNewPrivs\": true, \"read_controls\": 3, \"socket_controls\": 5, \"exec_control\": true, \"write_truncate_control\": true, \"monitored_tree_outside_tmpdir\": true}\n",
+      "timed_out": false
+    },
+    "programs": 1,
+    "runs": [
+      {
+        "cases": 1,
+        "cwd": "/build/compile",
+        "elapsed_seconds": 0.133,
+        "exit": 1,
+        "name": "test_cli_search",
+        "passed": false,
+        "stderr": "test_search (__main__.TestCli.test_search) ... ERROR\n\n======================================================================\nERROR: test_search (__main__.TestCli.test_search)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/src/utils/trackertestutils/dbusdaemon.py\", line 134, in start\n    self.pid = int(self.process.stdout.readline().strip().decode('ascii'))\n               ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: invalid literal for int() with base 10: ''\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/src/tests/functional-tests/fixtures.py\", line 130, in setUp\n    self.sandbox.start()\n    ~~~~~~~~~~~~~~~~~~^^\n  File \"/src/utils/trackertestutils/sandbox.py\", line 111, in start\n    self.session_bus.start(env=self.get_environment(), new_session=new_session)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/src/utils/trackertestutils/dbusdaemon.py\", line 137, in start\n    raise RuntimeError(f\"Failed to start D-Bus daemon.\\n{error}\")\nRuntimeError: Failed to start D-Bus daemon.\ndbus-daemon[11]: Failed to start message bus: Failed to bind socket \"./dbus-6kTTJpqGLa\": Read-only file system\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nFAILED (errors=1)\n",
+        "stdout": "",
+        "test_root": "/var/tmp/toddy-localsearch-zxofx7g9/test_cli_search",
+        "timed_out": false
+      }
+    ]
+  },
+  "cause": "With original required cwd restored, original private D-Bus configuration unix:tmpdir=./ attempts a socket in readonly /build/compile and fails EROFS. Need independently qualified private writable bus-address adaptation while preserving compiled-resource readonly isolation before considering a later bounded reopening. Do not change binaries, security policy or original expected tests.",
+  "builder_recovery": {
+    "state": "complete",
+    "boot_id": "9d54ab78-a01a-428b-86e9-6055effef25b",
+    "six_existing_volumes": true,
+    "same_source_companion_kernel_COW": true,
+    "kernel_restore_receipt": "kernel-work-restored-localsearch-3.json",
+    "format_resize_compile_replayed": false
+  },
+  "budget": {
+    "corrective_attempts": 2,
+    "failed_corrections": 2,
+    "state": "parked",
+    "next": "Independent eligible B02 editor prerequisites; no fourth unchanged native run or budget reset."
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-localsearch-native-failed-3.tar.gz",
+    "sha256": "2fb61d91899d7579af6c05232dc06116c1a28be2f0f894bec7390521284b29d7"
+  }
+}

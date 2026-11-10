@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-10T12:50:17.766751+00:00",
+  "updated_at": "2026-11-10T12:55:56.317632+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05\u2013B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -394,7 +394,9 @@
         "docs/evidence/B02-localsearch-native-preparation.json",
         "docs/evidence/B02-native-overlay-custody-2.json",
         "docs/evidence/B02-localsearch-native-failed-1.json",
-        "docs/evidence/B02-localsearch-native-failed-2.json"
+        "docs/evidence/B02-localsearch-native-failed-2.json",
+        "docs/evidence/B02-localsearch-native-failed-3.json",
+        "docs/evidence/B02-editor-sdk-preflight.json"
       ]
     },
     {
@@ -776,13 +778,13 @@
       "LocalSearch3.11.1 cached source4505604bytes/frozen SHA verified;17actual selected/required SDK modules found including Tinysparql/GExiv2/GLib/Gst/ICU/seccomp. No guest source/job or search/runtime/GUI acceptance.",
       "LocalSearch3.11.1 UID101 isolated compile/stage verified:186ELFs/133stagefiles,13original non-slow common/indexer/extract utility programs0,Landlock/seccomp enabled; minimum compiler free17269211136B above16GiB. Initial job1 only own valueless-macro collector assertion; collection2 actual0 with all compiled/staged bytes unchanged. Derived exact suite/name inventory leaves72unexecuted programs. No native runtime/index/search/sandbox/Stop/recovery/install/GUI acceptance; ADR0205."
     ],
-    "running": "Native LocalSearch attempt2 terminal FAILED at search insert; TMPDIR separation0. Private GSettings write/read0 in original/extra-module environments disproves DConf hypothesis. Source shows own cwd must equal BUILDROOT for in-tree extractor and Landlock rules. Final bounded fixture correction prepared, original binaries unchanged; builder/all volumes/source/COW restored. Explicit attempt3 next, park on second failed correction.",
+    "running": "LocalSearch native functional branch parked after2failed corrections/3failed actual runs, no package promotion. Main7.1.8/Systemd booted, inputs/backing retained; all existing builder mounts restored. Current eligible B02 editor prerequisite preparation:7SDK modules found,Enchant/Libspelling/EditorConfig absent; selected sources verified. No live guest writer or native test. Full B02 then stop.",
     "remaining": [
       "LocalSearch/Nautilus/browser/editor/settings and first working interactive native GNOME session.",
       "Actual installed/default/recovery-entry boots after stable host headroom; no cold restore acceptance yet.",
       "Minimal desktop branding/offline usability/security-ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-10T12:50:17.766751+00:00",
+    "verified_at": "2026-11-10T12:55:56.317632+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }
