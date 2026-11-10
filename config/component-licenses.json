@@ -11037,6 +11037,28 @@
           ]
         }
       }
+    },
+    {
+      "name": "fast-float",
+      "version": "8.2.10",
+      "license": "Apache-2.0 OR MIT OR BSL-1.0",
+      "evidence": "Authenticated exact root LICENSE-APACHE/LICENSE-MIT/LICENSE-BOOST and leading installed header conditions retained. Header/CMake build SDK only; native package/terminal qualification pending.",
+      "extra_license_headers": {
+        "fast_float-8.2.10.tar.gz": {
+          "prefixes": [
+            "include/"
+          ],
+          "suffixes": [
+            ".h"
+          ]
+        }
+      }
+    },
+    {
+      "name": "fast-float-doctest-tests",
+      "version": "0+git.dfb11445b941",
+      "license": "MIT",
+      "evidence": "Private upstream-selected lemire/doctest source pinned to exact dfb11445b941a75813c26aa9184f08c6ce774615, root LICENSE.txt retained. Test-only source, no native installation or packaged runtime dependency; qualification of selected FastFloat tests pending."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

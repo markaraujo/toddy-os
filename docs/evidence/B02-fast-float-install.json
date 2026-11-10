@@ -1,0 +1,273 @@
+{
+  "scope": "Owned Fast_float8.2.10 header/CMake SDK, architectureall,14original core programs/47ELFs/12stagefiles; actual installed UID101 CMake exact discovery/float/double/trailing-pointer/invalid/overflow/two reset-recovery cycles/APT0. Separate private immutable doctest source never installed by this package. Optional network supplemental data/default-off exhaustive sweeps/benchmarks not selected, not passes. Build prerequisite only, no VTE/terminal/GUI acceptance.",
+  "source": {
+    "name": "fast-float",
+    "version": "8.2.10",
+    "filename": "fast_float-8.2.10.tar.gz",
+    "url": "https://github.com/fastfloat/fast_float/archive/v8.2.10/fast_float-8.2.10.tar.gz",
+    "sha256": "76f958dd97b1cf4d8862d1f0986a47d4bdfa8845252bae15ef0f40de3b95961f",
+    "reference": "BLFS13.1-systemd general/fast_float.html",
+    "book_page_sha256": "b763f170b0f44e0a9422c1475aa9e55b9c81d91f0d51380f3a23c6fd413f20b6",
+    "book_md5": "ddcf64ffe15f1e1ed964a355db7a04f3",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "prepared": {
+    "source_sha256": "76f958dd97b1cf4d8862d1f0986a47d4bdfa8845252bae15ef0f40de3b95961f",
+    "reference": "BLFS13.1-systemd general/fast_float.html",
+    "book_page_sha256": "b763f170b0f44e0a9422c1475aa9e55b9c81d91f0d51380f3a23c6fd413f20b6",
+    "source_patches": [],
+    "recipe_sha256": "ce875d8818399f48226b7071d080b3781918c72e1c592dbe761fe50ecdcb8771",
+    "extra_source": {
+      "name": "fast-float-doctest-tests",
+      "version": "0+git.dfb11445b941",
+      "filename": "doctest-fast-float-tests-dfb11445b941a75813c26aa9184f08c6ce774615.tar.gz",
+      "url": "https://github.com/lemire/doctest/archive/dfb11445b941a75813c26aa9184f08c6ce774615.tar.gz",
+      "commit": "dfb11445b941a75813c26aa9184f08c6ce774615",
+      "sha256": "a31178827d624e0e7c31419f61a3b526cadf2f744c82bc532be9773fd673e090",
+      "reference": "Fast_float8.2.10 tests/CMakeLists.txt selected lemire/doctest fork; private test-only source pinned from exact Git HEAD before guest use",
+      "integrity": "Official upstream-selected GitHub HTTPS archive, exact Git commit resolved by git ls-remote and archive SHA256 frozen; publisher signature not claimed",
+      "status": "source_verified"
+    },
+    "extra_sources": [
+      {
+        "name": "fast-float-doctest-tests",
+        "version": "0+git.dfb11445b941",
+        "filename": "doctest-fast-float-tests-dfb11445b941a75813c26aa9184f08c6ce774615.tar.gz",
+        "url": "https://github.com/lemire/doctest/archive/dfb11445b941a75813c26aa9184f08c6ce774615.tar.gz",
+        "commit": "dfb11445b941a75813c26aa9184f08c6ce774615",
+        "sha256": "a31178827d624e0e7c31419f61a3b526cadf2f744c82bc532be9773fd673e090",
+        "reference": "Fast_float8.2.10 tests/CMakeLists.txt selected lemire/doctest fork; private test-only source pinned from exact Git HEAD before guest use",
+        "integrity": "Official upstream-selected GitHub HTTPS archive, exact Git commit resolved by git ls-remote and archive SHA256 frozen; publisher signature not claimed",
+        "status": "source_verified"
+      }
+    ],
+    "private_test_sdk": {
+      "scope": "Immutable upstream-selected doctest test-source only; not installed or previously qualified binary SDK",
+      "source": {
+        "name": "fast-float-doctest-tests",
+        "version": "0+git.dfb11445b941",
+        "filename": "doctest-fast-float-tests-dfb11445b941a75813c26aa9184f08c6ce774615.tar.gz",
+        "url": "https://github.com/lemire/doctest/archive/dfb11445b941a75813c26aa9184f08c6ce774615.tar.gz",
+        "commit": "dfb11445b941a75813c26aa9184f08c6ce774615",
+        "sha256": "a31178827d624e0e7c31419f61a3b526cadf2f744c82bc532be9773fd673e090",
+        "reference": "Fast_float8.2.10 tests/CMakeLists.txt selected lemire/doctest fork; private test-only source pinned from exact Git HEAD before guest use",
+        "integrity": "Official upstream-selected GitHub HTTPS archive, exact Git commit resolved by git ls-remote and archive SHA256 frozen; publisher signature not claimed",
+        "status": "source_verified"
+      },
+      "files_count": 270,
+      "files_manifest_sha256": "3fff54c300d45c8e5826a5bf4d9fce1fff22a8ec96f9c979706db76b279bc018"
+    },
+    "probe_sha256": "b2958e908417233e2a7a027805c8e91a9811e1407083e9ef9e35cb8c5518d268"
+  },
+  "stage": {
+    "scope": "Frozen Fast_float8.2.10 header/CMake SDK only. Stage before separate original tests with immutable private doctest source/no network/no SDK installation. Optional network supplemental datasets and default-off exhaustive sweeps/benchmarks omitted; not passes. Actual staged CMake consumer float/double/integer-prefix/invalid/overflow/reset cases only; no VTE/terminal/UI acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "rcppfastfloat_test",
+        "status": "run"
+      },
+      {
+        "name": "wide_char_test",
+        "status": "run"
+      },
+      {
+        "name": "supported_chars_test",
+        "status": "run"
+      },
+      {
+        "name": "example_test",
+        "status": "run"
+      },
+      {
+        "name": "example_comma_test",
+        "status": "run"
+      },
+      {
+        "name": "example_integer_times_pow10",
+        "status": "run"
+      },
+      {
+        "name": "basictest",
+        "status": "run"
+      },
+      {
+        "name": "p2497",
+        "status": "run"
+      },
+      {
+        "name": "long_test",
+        "status": "run"
+      },
+      {
+        "name": "powersoffive_hardround",
+        "status": "run"
+      },
+      {
+        "name": "string_test",
+        "status": "run"
+      },
+      {
+        "name": "fast_int",
+        "status": "run"
+      },
+      {
+        "name": "json_fmt",
+        "status": "run"
+      },
+      {
+        "name": "fortran",
+        "status": "run"
+      }
+    ],
+    "consumer": {
+      "typed_float_double": true,
+      "trailing_input_pointer": true,
+      "invalid_input_refused": true,
+      "overflow_refused": true,
+      "reset_recovery_cycles": 2,
+      "CMake_discovered_version": "8.2.10",
+      "header_only_SDK": true,
+      "terminal_or_GUI_tested": false
+    },
+    "artifacts_count": 47,
+    "artifacts_manifest_sha256": "6747f85afb77a200762979ba251e37250a3a9428dde7f5531692f10ef16e2666",
+    "stage_sha256_count": 12,
+    "stage_sha256_manifest_sha256": "906c479ebbee5483403541b3d5fee84a317c391e4678dd79426e368f40a6045a"
+  },
+  "native_transaction": {
+    "step": "b02-fast-float-install",
+    "started": "2026-11-10T04:33:10.122469+00:00",
+    "recipe_sha256": "999ca05ea2e2d90080cc524f95f9eeca475395d0c65d81adf939c1fbcce1a2ab",
+    "postcheck_sha256": "ff24b975adca0d86c42bf8167620838669f94335ac8b37498ac9b71c0d930fcd",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "2af1fb315e100b131e522bcca43c4d6240b67d986f6da5352c76695efe7b9979",
+    "recipe_pid": 3062,
+    "recipe_pgid": 3062,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T04:33:28.513924+00:00",
+    "changed_paths": 27,
+    "log_sha256": "7bfbe6f201d4f172e9289765263d11b08f3da0eb1f82dc08f5fcd2e13a0ad3b4",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "1385ed7b0ec39129daa4f333081183942a183d327da2d51f9d76874de95c601d"
+  },
+  "package": {
+    "name": "fast-float",
+    "version": "8.2.10-1+toddy1",
+    "archive_sha256": "b26c10cf6009e8fd7dd988ecca6712db6af6f7fbf8cf65de2328ab5393c5d6c1",
+    "recipe_sha256": "999ca05ea2e2d90080cc524f95f9eeca475395d0c65d81adf939c1fbcce1a2ab",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "fast-float",
+        "version": "8.2.10",
+        "filename": "fast_float-8.2.10.tar.gz",
+        "url": "https://github.com/fastfloat/fast_float/archive/v8.2.10/fast_float-8.2.10.tar.gz",
+        "sha256": "76f958dd97b1cf4d8862d1f0986a47d4bdfa8845252bae15ef0f40de3b95961f",
+        "reference": "BLFS13.1-systemd general/fast_float.html",
+        "book_page_sha256": "b763f170b0f44e0a9422c1475aa9e55b9c81d91f0d51380f3a23c6fd413f20b6",
+        "book_md5": "ddcf64ffe15f1e1ed964a355db7a04f3",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "1385ed7b0ec39129daa4f333081183942a183d327da2d51f9d76874de95c601d",
+    "payload_count": 27,
+    "payload_manifest_sha256": "a1cd137a4fd442add3a89c37b58a5ac73f99e851cca3174db39bcf0c430c07a8"
+  },
+  "installed_consumer": {
+    "scope": "Actual installed UID101 exact CMake FastFloat8.2.10 discovery/header API consumer, float/double/trailing pointer/invalid/overflow/two reset-recovery cycles in private no-route namespace; architectureall/header-only SDK, no doctest/framework installed. Build prerequisite only, no VTE/terminal/GUI acceptance.",
+    "consumer": {
+      "typed_float_double": true,
+      "trailing_input_pointer": true,
+      "invalid_input_refused": true,
+      "overflow_refused": true,
+      "reset_recovery_cycles": 2,
+      "CMake_discovered_version": "8.2.10",
+      "header_only_SDK": true,
+      "terminal_or_GUI_tested": false
+    },
+    "architecture": "all",
+    "test_framework_not_installed": true
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-fast-float-install-evidence.tar.gz",
+    "sha256": "2cf983cf2da3f0d2f876b682e7970e3da65e7041f6d5e4e5dad3a62f307fe2bd",
+    "members": [
+      "build/b02-fast-float-install.log",
+      "build/b02-fast-float-install.manifest.json",
+      "build/b02-fast-float-install.success.json",
+      "package.json",
+      "phase2/b02-fast-float-install-controller.log",
+      "phase2/b02-fast-float-install-timing.json",
+      "phase2/fast-float-1-controller.log",
+      "phase2/fast-float-1.exit",
+      "phase2/fast-float-1.job.json",
+      "phase2/fast-float-1.log",
+      "phase2/fast-float-installed-consumer.json",
+      "phase2/fast-float-stage.json",
+      "prepared.json",
+      "work/consumer/build.log",
+      "work/consumer/configure.log",
+      "work/native-consumer.json",
+      "work/original-registered-tests.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/original-tests.xml",
+      "work/stage-results.json"
+    ]
+  }
+}

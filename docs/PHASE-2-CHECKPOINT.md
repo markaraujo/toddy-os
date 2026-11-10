@@ -8,32 +8,55 @@ No accepted complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current slice: native Shell2 COMPLETE/FAILED; Shell3 fixture correction prepared.
-No active writer. New parent builderbootbc427e89-6fc4-40c5-8113-6581e54c8111,
-same six scratch filesystems/source bind restored under NEW receipt
-/var/log/toddy/phase2/shell-builder-restore-2.json complete. NEVER repeat restore2.
-Actual native2 childexit0/OOMfalse/backing unchanged BEFORE restart; synthetic
-PAM/logind/user manager/bus user12401 closed0/0/runtime+account removed.
-Actual unedited1280x720GNOME panel/search/overview PNG captured and visually read,
-but actions never began by150s. No GDM/login/basic-app/focus acceptance.
-[Failed proof](evidence/B02-shell-second-native-failed.json), ADR0186/rawSHA
-3dbcebb84884be03ec6c0d114ac768a24ccd9c6b7f8565e7d975d1c18140e684.
-Context`.local/phase2/native-shell-runtime-2` COMPLETE/FAILED; NEVER replay/boot it.
-Source-backed missed startup-complete automation handler hypothesis: native
-startingUpfalse/one monitor/panel1280x32/actions0, original late-await listener.
-Correct only supported automation init hook: if startup already past, schedule
-same upstream runner once; otherwise ordinary handler. No Shell patch/fake event/
-unsafe-mode. Preserve initial+5s+45s observational history; compressed/hash-verified
-SMBIOS transport reused. Ledger second corrective attempt pending; after second
-failed correction/30min same cause park and select required apps, no budget reset.
-Exact next command after committed harness:
-`python3 scripts/host/phase2_native_shell.py --registered-session`.
-This now creates ONLY NEW contextnative-shell-runtime-3; must be absent before
-first launch. Inspect actual state/child before any action. On actual final report,
-check actions/images/source state; only real successful postconditions count.
-Before builder restart verify actual childterminal/backing identity, restore same
-six filesystems/source with NEW receipt, never repeat restore1/2. Current target
-free17386262528B; preserve16GiB/host100GiB and qualify custody before large builds.
+Current slice: Fast_float8.2.10 OWNED architectureall header/CMake SDK.
+Compile/testsfast-float-1 PID2340 terminal0:14original core programs/47ELFs/12stagefiles;
+private immutable doctest270source files/no compiler network/no framework install.
+Nativeb02-fast-float-install PID3046 terminal0/0,27paths/27entries. Actual installed
+UID101 exact CMake8.2.10 discovery/float/double/trailing pointer/invalid/overflow/
+two reset-recovery cycles/APT0. No terminal/UI acceptance. No active guest writer.
+[Proof](evidence/B02-fast-float-install.json), ADR0189/rawSHA
+2cf983cf2da3f0d2f876b682e7970e3da65e7041f6d5e4e5dad3a62f307fe2bd.
+ArchiveSHAb26c10cf6009e8fd7dd988ecca6712db6af6f7fbf8cf65de2328ab5393c5d6c1.
+Input/work /mnt/lfs/sources/phase2/{inputs/fast-float-8.2.10,work/fast-float-1},
+job/log/exit /var/log/toddy/phase2/fast-float-1.{job.json,log,exit}.
+NEVER rebuild/restage/reinstall/repeat originals. Extra network supplemental data/
+default-off exhaustive sweeps/benchmarks unselected, not passes.
+Exact next: read fmt12.2.0 actual CMake/test source, preflight owned compiler/CMake/
+reserves, prepare ONE isolated fmt build. Source frozen/cached, no fmt input/job yet.
+Then simdutf9.0.0/VTE0.84.1/GNOME Terminal3.60.0 with PTY/Stop/user settings/actual
+native graphical checks. Required other apps/Settings/audio/GDM/offline/resource
+and final B02 gates remain; no new headless focus retry.
+
+Previous slice: native headless focus branch PARKED; minimal terminal dependencies next.
+No active guest writer. Parent builderbootbbd88a3c-bb6b-48ae-9d31-6beb22453b4c.
+Native3 context`.local/phase2/native-shell-runtime-3` COMPLETE-WITH-INCOMPLETE-EVIDENCE;
+actual childexit0/OOMfalse, console summaryfalse/missing chunk50of76. Full report SHA
+cannot verify. Contiguous prefix diagnostically shows runner through GTK mapped,
+then focusfalse; NO accepted positive tests/GUI gate from partial evidence.
+[Proof](evidence/B02-shell-third-native-incomplete.json), ADR0187/rawSHA
+81c637b039be01d2fdb6589c7bcd1bd66b6c035e6a86f0b5df2c8b8cdc6ef988.
+Two corrective gate attempts failed; do not retry same headless inputs. Unblock
+requires actual virtual graphical seat/input or new source-backed focus cause,
+and complete evidence. Second raw UART transport prepared, NOT runtime validated.
+No forced focus/fake event/unsafe-mode/weaker verifier or foundation rebuild.
+
+Backing identity verified BEFORE restart; same six volumes/source bind restored,
+new receipt `/var/log/toddy/phase2/shell-builder-restore-3.json` COMPLETE. NEVER
+replay restore1/2/3, boot old overlays or recreate existing volumes.
+New custody `gtk-schema-promotion-custody-1` controllerPID1604 actualterminal0/
+COMPLETE, eight GTK4 promotion archives ACTUALLY restored/data/control verified
+before replica retirement. Reclaimed783540224B/rootchanged0, current free18169802752B.
+[Proof](evidence/B02-gtk-schema-promotion-custody.json), ADR0188/rawSHA
+b3acfc62e32a394df4b2b85110d828704a7ccbe4554fc944720de6c54f9ddf9d.
+NEVER replay custody1 or reuse retired promotion stages. Current GTK/native archives/
+original compile stages/source/tests retained; next cache uses NEW archive extraction.
+
+Exact next: read frozen VTE0.84.1 actual Meson options/dependencies and selected
+Fast_float8.2.10/fmt12.2.0/simdutf9.0.0 source build/test contracts. Sources now
+frozen/cached, NO leaf inputs/jobs yet. Choose first required leaf (Fast_float),
+preflight target/reserve and one isolated build. Then owned native leaf packages/
+VTE/GNOME Terminal/basic applications; real KMS/GDM/input/audio/offline/resource
+and final B02 gates remain. No unchanged original-suite or native headless replay.
 
 Previous slice: GST Base1.28.6 OWNED; no active guest writer.
 Buildgst-plugins-base-1 PID7533 terminal0,660ELFs/331stagefiles;

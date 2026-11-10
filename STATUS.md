@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T04:04:17.761824+00:00
+Updated: 2026-11-10T04:36:01.354500+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T04:04:17.761824+00:00
+Last verified: 2026-11-10T04:36:01.354500+00:00
 
 Verified:
 
@@ -129,8 +129,11 @@ Verified:
 - Owned GStreamer1.28.6 core:107original OK/one optional validate SKIP,406ELFs/213stagefiles. Native install/post0/0,565paths/670entries, actual UID101 GI/caps/buffer/refusal/two synthetic EOS→NULL cycles/SDK/APT0; no devices/codecs/audio/GNOME screencast acceptance.
 - Owned GStreamer Base1.28.6:80original OK/37validate SKIP/17real GL-context originals compiled/deferred,660ELFs/331stagefiles. Native0/0,910paths/1004entries, actual installed UID101 App/Audio/Video GI/exact red RGB/silent stereo samples/two A/V EOS→NULL cycles/four SDKs/APT0. No GL/devices/audio/playback/screencast acceptance, ADR0185.
 - Native Shell2 actual1280x720GNOME overview/panel/search diagnostic PNG captured and visually inspected; real ephemeral PAM/logind/user manager/bus registered/closed0/0/account+runtime removed. Interaction runner never began by150s, so gate FAILED/no GDM/app/focus acceptance. Source-backed late startup-handler hypothesis, builder/six mounts/source restored, ADR0186.
+- Native Shell3 gate FAILED/INCOMPLETE: actual child0/OOMfalse/summaryfalse; missing console chunk50of76 prevents full report hash. Partial actions diagnostic reaches GTK mapping then focusfalse, no accepted positive tests. Parked headless branch after two corrections; second raw UART verifier input prepared/unvalidated, ADR0187.
+- Eight GTK4 promotion replicas: actual archive restores/all data+control verified before retirement, terminal0/reclaimed783540224B/installedrootchanges0; installed GTK/source/compiler stages/tests/native archives retained. Current available18169802752B, ADR0188.
+- Owned Fast_float8.2.10 architectureall header/CMake SDK:14original core programs/47ELFs/12stagefiles, private immutable270file doctest source/no compiler network or framework install. Native0/0/27entries, actual UID101 CMake/header/invalid/overflow/two recovery cycles/APT0. Build prerequisite only/no terminal or GUI acceptance, ADR0189.
 
-Running: No active guest writer. Prepare fresh Shell3 to correct only source-supported automation startup-hook race; required Settings/audio/basic apps/GDM remain. Preserve failed gates and attempt budget; complete ALL B02 then stop.
+Running: No active guest writer. Next fmt12.2.0 actual source/tests and one isolated build, then simdutf/VTE/GNOME Terminal with PTY/Stop/user settings/native GUI; headless focus parked pending real seat/input/full evidence. Complete ALL B02 then stop.
 
 Remaining:
 

@@ -2338,6 +2338,65 @@
       "book_md5": "cd0b2bd13e8196d5bfb20459c12a5d9b",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "vte",
+      "version": "0.84.1",
+      "filename": "vte-0.84.1.tar.gz",
+      "url": "https://gitlab.gnome.org/GNOME/vte/-/archive/0.84.1/vte-0.84.1.tar.gz",
+      "sha256": "9f73468982a339cd1eb942beb7d348a5564c9ed48473ad1690c791f8474916ec",
+      "reference": "BLFS13.1-systemd gnome/vte.html",
+      "book_page_sha256": "700b8d471a5f2d72c6cb623a0e823e04c8abc8074222cd71ad40c46daf4fc63d",
+      "book_md5": "9733f0218f72051999e42725fe5fbaa8",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "fast-float",
+      "version": "8.2.10",
+      "filename": "fast_float-8.2.10.tar.gz",
+      "url": "https://github.com/fastfloat/fast_float/archive/v8.2.10/fast_float-8.2.10.tar.gz",
+      "sha256": "76f958dd97b1cf4d8862d1f0986a47d4bdfa8845252bae15ef0f40de3b95961f",
+      "reference": "BLFS13.1-systemd general/fast_float.html",
+      "book_page_sha256": "b763f170b0f44e0a9422c1475aa9e55b9c81d91f0d51380f3a23c6fd413f20b6",
+      "book_md5": "ddcf64ffe15f1e1ed964a355db7a04f3",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "fmt",
+      "version": "12.2.0",
+      "filename": "fmt-12.2.0.tar.gz",
+      "url": "https://github.com/fmtlib/fmt/archive/12.2.0/fmt-12.2.0.tar.gz",
+      "sha256": "8b852bb5aa6e7d8564f9e81394055395dd1d1936d38dfd3a17792a02bebd7af0",
+      "reference": "BLFS13.1-systemd general/fmt.html",
+      "book_page_sha256": "5a9f30e2688542344cdd65a2f9d45d289c45c498c1d582a8e688cdea2fea96ef",
+      "book_md5": "7be257d8bfad55bc9eabb1288ad895be",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "simdutf",
+      "version": "9.0.0",
+      "filename": "simdutf-9.0.0.tar.gz",
+      "url": "https://github.com/simdutf/simdutf/archive/v9.0.0/simdutf-9.0.0.tar.gz",
+      "sha256": "fd2ce975f29809a975a8da8843cfb3a7265af3f71be548f199d23cf65e101764",
+      "reference": "BLFS13.1-systemd general/simdutf.html",
+      "book_page_sha256": "7d15b0de5189fd8491d0e0bc4ed87b03b433e47e2b6ecc9b703862c5ce5c9507",
+      "book_md5": "a20af35e2a7c9737d97b7beae96e7146",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "fast-float-doctest-tests",
+      "version": "0+git.dfb11445b941",
+      "filename": "doctest-fast-float-tests-dfb11445b941a75813c26aa9184f08c6ce774615.tar.gz",
+      "url": "https://github.com/lemire/doctest/archive/dfb11445b941a75813c26aa9184f08c6ce774615.tar.gz",
+      "commit": "dfb11445b941a75813c26aa9184f08c6ce774615",
+      "sha256": "a31178827d624e0e7c31419f61a3b526cadf2f744c82bc532be9773fd673e090",
+      "reference": "Fast_float8.2.10 tests/CMakeLists.txt selected lemire/doctest fork; private test-only source pinned from exact Git HEAD before guest use",
+      "integrity": "Official upstream-selected GitHub HTTPS archive, exact Git commit resolved by git ls-remote and archive SHA256 frozen; publisher signature not claimed",
+      "status": "source_verified"
     }
   ]
 }

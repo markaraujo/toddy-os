@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'fast-float': ('8.2.10', '', 'fast_float-8.2.10.tar.gz', 'usr/share/cmake/FastFloat/FastFloatConfig.cmake'),
     'gst-plugins-base': ('1.28.6', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gstreamer (= 1.28.6-1+toddy1), alsa-lib (= 1.2.16.1-1+toddy1), libogg (= 1.3.6-1+toddy1), libvorbis (= 1.3.7-1+toddy1), pango (= 1.58.2-1+toddy1), iso-codes (= 4.20.1-1+toddy1), libgudev (= 238-1+toddy1), mesa (= 26.1.7-1+toddy1), graphene (= 1.10.8-1+toddy1), libjpeg-turbo (= 3.2.0-1+toddy1), libpng (= 1.6.58-1+toddy1), wayland (= 1.26.0-1+toddy1), libdrm (= 2.4.134-1+toddy1)', 'gst-plugins-base-1.28.6.tar.xz', 'usr/lib/pkgconfig/gstreamer-video-1.0.pc'),
     'gstreamer': ('1.28.6', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2)', 'gstreamer-1.28.6.tar.xz', 'usr/lib/pkgconfig/gstreamer-1.0.pc'),
     'gnome-shell': ('50.4', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), mutter (= 50.4-1+toddy1), gjs (= 1.88.1-1+toddy1), gtk (>= 4.22.4-1+toddy7), evolution-data-server (= 3.60.2-1+toddy1), gcr (= 4.4.0.1-1+toddy1), gnome-desktop (= 44.5-1+toddy1), libnma (= 1.10.6-1+toddy1), networkmanager (= 1.58.1-1+toddy1), gdm (= 50.2-1+toddy1), libgweather (= 4.6.0-1+toddy1), ibus (= 1.5.34~rc2-1+toddy1), libsecret (= 0.21.7-1+toddy1), pipewire (= 1.6.8-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1), at-spi2-core (= 2.60.6-1+toddy1), libxml2 (= 2.15.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), libcanberra (= 0.30-1+toddy2), polkit (= 127-1+toddy1), systemd (>= 261.2-1+toddy3)', 'gnome-shell-50.4.tar.xz', 'usr/bin/gnome-shell'),
@@ -1213,6 +1214,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='fast-float':
+        from qualify_fast_float import qualify as qualify_fast_float
+        qualify_fast_float(ROOT)
     if name=='gst-plugins-base':
         from qualify_gst_plugins_base import qualify as qualify_gst_plugins_base
         qualify_gst_plugins_base(ROOT)
@@ -1514,7 +1518,7 @@ if __name__ == '__main__':
                     version+('-1+toddy2' if name in ('linux-pam','gnome-settings-daemon') else '-1+toddy1'), str(destination), *source_args,
                     '--recipe', 'scripts/build/phase2/'+name+'-install.sh',
                     '--depends', depends, '--install', *conffiles,
-                    *(['--architecture','all'] if name=='unicode-ucd' else [])], cwd=ROOT, check=True)
+                    *(['--architecture','all'] if name in ('unicode-ucd','fast-float') else [])], cwd=ROOT, check=True)
     if name=='glib-networking':
         from gio_network_resources import finish as finish_gio_network
         finish_gio_network()
