@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-09T23:09:51.566007+00:00
+Updated: 2026-11-10T01:07:39.548684+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T00:31:24.326864+00:00
+Last verified: 2026-11-10T01:07:39.548706+00:00
 
 Verified:
 
@@ -114,8 +114,9 @@ Verified:
 - GTK3same-upstream3.24.52toddy2 IM-cache/legal-only install0/post1 reconciled verify-only0/0,zero root changes. All1882owned entries/archive unchanged; actual UID101 query12modules/11prior registrations/969old nonlegal entries preserved. Own IBus locale/GTK argv0 metadata errors retained, no install/cache/suite replay. Native GTK/GNOME graphical input pending.
 - Geocode-glib3.26.4 Soup3/API2.0 owned/install/post0/0,43changedpaths/50entries; two portable original drivers/three original API paths/23ELFs retained. Actual installed UTF8/geoURI/refusal/two-cycle recovery/GI2.0/SDK/APT0. Required gweather-locations2026.2 source cached/pinned only, no runtime data or remote/owner location/GNOME acceptance.
 - Owned gweather-locations2026.2 native0/0,110paths/299entries;8862typed records/245country entries/332timezones/source-index invariants0. GWeather4.6.0 core3programs12cases/42ELFs retained and native C/GI4.0/variant/refusal/recovery0,200paths/398entries. External METAR original DNS/SIGABRT remains failed/unqualified. GTK4same-upstream toddy7 stock82schema/623key cache preserves81/618 and906nonlegal entries; UID101/no-route/provider-disabled Info update/abort/recovery0. No GNOME GUI/owner location/forecast claim.
+- Owned GeoClue2.8.2 full backend native install0/own GI post1 reconciled verify-only0/0,70owned entries/account unchanged. Actual installed UID30 service/config deny/peer isolation/global agent revoke+restore/Stop/two private buses0,rootchanges0. Synthetic static source/agent; per-app sandbox consent/GNOME UI/provider/owner-position unqualified. ADR0174.
 
-Running: B02: weather data/GWeather core and stock schema/Info verified; required GeoClue, NetworkManager/NMA, GDM and GNOME Shell chain toward first native desktop next. Complete ALL B02 then stop.
+Running: B02: GeoClue backend/native policy verified; selected NetworkManager/NMA/GDM/GNOME Shell chain next toward first actual graphical session. Complete ALL B02 then stop.
 
 Remaining:
 

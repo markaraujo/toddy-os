@@ -10888,6 +10888,12 @@
         "path": "LICENSES/third-party/LGPL-2.1.txt",
         "sha256": "9e9e8608c4cdda51a78cc3a385f4ec9a2e4c96d5ecad74ac8bca5fca3e563b7d"
       }
+    },
+    {
+      "name": "geoclue",
+      "version": "2.8.2",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later",
+      "evidence": "Exact source COPYING/COPYING.LIB and per-file source conditions retained; full backend with locked nonroot account. Optional hardware/demo/docs scope explicit; no owner location/permission or remote-provider acceptance inferred."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

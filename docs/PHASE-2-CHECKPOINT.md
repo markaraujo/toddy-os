@@ -7,7 +7,38 @@ foundation tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Current slice and exact next action
 
-Current verified slice: weather dependency chain OWNED; no active guest writer.
+Current slice: GeoClue2.8.2 OWNED and bounded native service gate passed; no
+active guest writer. Build/stage0,44compiled ELFs/32staged files, upstream automated
+registry empty (not a passing suite). Initial native install recipe0/post1 own GI
+setter assumption corrected read-only verify2 recipe/post0/0,changed_paths0;
+70owned entries/account unchanged. ArchiveSHA
+7be463fcebf553d7a7bad9f7a68400ad3cf3adcc99509535f3affb4f4ac6c418.
+Full backend retained, lockedUID/GID30; optional MM/NMEA/demo agent omitted,
+submission disabled, no book Google-key override or owner consent grant.
+
+Actual `b02-geoclue-installed-services-3` recipe/post0/0/full-root changes0,
+finished2026-11-10T01:06:29Z. Installed UID30/no-new-privileges daemon/UID101 peer,
+actual owned bus policy/config deny/missing DesktopId/cross-peer/name ownership
+refusal/global agent revoke+restore/explicit Stop/two bus GUID cycles passed.
+Synthetic static source and agent/private mount+network namespaces/zero external
+routes. Native non-sandboxed peer uses upstream system-app branch; no per-app
+AuthorizeApp invoked or qualified. NOT GNOME consent UI/Flatpak consent/actual
+owner position/sensors/provider acceptance. Successful profile3 removed/all child
+handles terminal; failed profiles1/2 retained/no live private processes. Failure1
+launcher path and failure2 own authorization assumption preserved in ledger and
+[proof](evidence/B02-geoclue-install.json), ADR0174. NEVER replay install/account/
+compiler/accepted native service gate. RawSHA
+a25ab5ef972b8bd5cc8713f277631d0ef4ea9b5aa8441f33208e66c269328092.
+
+Exact next: selected NM1.58.1/NMA1.10.6/GDM50.2/Shell50.4 source-cached chain;
+inspect NM source dependency/options and prepare one isolated recipe/input. Then
+first actual native GNOME session/GTK keyboard/focus, basic apps/offline/metrics.
+One writer; current target reserve16GiB/host100GiB: measure before allocation.
+Changes this slice affect package profile and privileged native fixture: reuse
+accepted compiler/consumer/service receipts. make check passed291tests;
+` .local/phase2/geoclue-final-check.log` retains exact output.
+
+Previously verified weather chain OWNED; reuse unchanged evidence:
 Data2026.2 install2/post0/0,110changedpaths/299entries. Typed native-endian
 8862records/245country entries/332timezones/source indices/BR/PT/airports0.
 Initial read-only suite-name guard failed/root0; corrected exact metadata, no
@@ -35,11 +66,8 @@ input/work gweather-schema-union-1 and native transaction receipt COMPLETE.
 ADR0173/raw bundle links preserve exact recovery. NEVER replay these accepted
 builds/originals/stages/native installs/shared caches/Info tests.
 
-Exact next: required GeoClue2 typelib and selected NetworkManager/NMA/GDM/GNOME
-Shell chain, then first actual native GNOME session/GTK input/focus. No GeoClue
-source or guest input frozen yet; actual Shell50.4 JS imports Geoclue2.0. Inspect
-matching frozen BLFS dependency page and source before pin/build, no framework
-survey. NM1.58.1/libnma1.10.6/GDM50.2/Shell50.4 already source-cached/frozen, no guest
+GeoClue source pin d4d65933b704d4c8d4ca9747dc511b883e35099abe534c8560f2aab3017e4cd4.
+NM1.58.1/libnma1.10.6/GDM50.2/Shell50.4 already frozen/source-cached; no guest
 build yet. Preserve one writer and persistent failure ledger. No mockup acceptance.
 
 Current versions: GTK4toddy7; GTK3same-upstream3.24.52toddy2 with twelve owned IM

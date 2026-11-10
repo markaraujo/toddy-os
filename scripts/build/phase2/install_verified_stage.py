@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'geoclue': ('2.8.2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libsoup (= 3.6.6-1+toddy1), json-glib (= 1.10.8-1+toddy1), systemd (>= 261.2-1+toddy3), gobject-introspection (>= 1.86.0-1+toddy1)', 'geoclue-2.8.2.tar.bz2', 'usr/lib/pkgconfig/libgeoclue-2.0.pc'),
     'libgweather': ('4.6.0', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libsoup (= 3.6.6-1+toddy1), libxml2 (= 2.15.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), geocode-glib (= 3.26.4-1+toddy1), gweather-locations (= 2026.2-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)', 'libgweather-4.6.0.tar.xz', 'usr/lib/pkgconfig/gweather4.pc'),
     'gweather-locations': ('2026.2', 'glib (>= 2.88.3-1+toddy2)', 'gweather-locations-2026.2.tar.xz', 'usr/lib/gweather-locations/Locations.bin'),
     'geocode-glib': ('3.26.4', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), json-glib (= 1.10.8-1+toddy1), libsoup (= 3.6.6-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)', 'geocode-glib-3.26.4.tar.xz', 'usr/lib/pkgconfig/geocode-glib-2.0.pc'),
@@ -1202,6 +1203,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='geoclue':
+        from qualify_geoclue import qualify as qualify_geoclue
+        qualify_geoclue(ROOT)
     if name=='libgweather':
         from qualify_libgweather import qualify as qualify_libgweather
         qualify_libgweather(ROOT)
@@ -1311,6 +1315,16 @@ if __name__ == '__main__':
         shutil.copytree(source, destination, symlinks=True)
         assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
+    if name=='geoclue':
+        import re
+        config=destination/'etc/geoclue/geoclue.conf';before_config=config.read_bytes()
+        after_config=re.sub(rb'(?m)^(#url=[^\n]*[?&]key=)[^\s]+$',lambda m:m[1]+b'YOUR_KEY',before_config);config.write_bytes(after_config)
+        sysusers=destination/'usr/lib/sysusers.d/geoclue-sysusers.conf';assert sysusers.read_text()=='u geoclue - - /var/lib/geoclue\n'
+        sysusers.write_text('u geoclue 30 - /var/lib/geoclue /bin/false\n')
+        excluded={}
+        for rel in ['usr/share/applications/geoclue-where-am-i.desktop','usr/libexec/geoclue-2.0/demos/where-am-i']:
+            path=destination/rel;excluded[rel]=hashlib.sha256(path.read_bytes()).hexdigest();path.unlink()
+        (log/'geoclue-production-selection.json').write_text(json.dumps({'scope':'Keep full service/library; omit upstream demonstration application, fixed locked service ID30 and remove bundled public provider-key examples from comments only. No actual owner config or provider endpoint edited.','excluded_demo':excluded,'config_before_sha256':hashlib.sha256(before_config).hexdigest(),'config_after_sha256':hashlib.sha256(after_config).hexdigest()},indent=2)+'\n')
     if name=='glib-networking':
         # Compiler-local discovery contains only network modules, while the
         # installed resource also serves DConf. Never package/overwrite it.
@@ -1434,6 +1448,7 @@ if __name__ == '__main__':
                         '--depends','glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
+    if name=='geoclue':conffiles=['--conffile','/etc/geoclue/geoclue.conf']
     if name=='ibus':conffiles=['--conffile','/etc/dconf/profile/ibus','--conffile','/etc/dconf/db/ibus.d/00-upstream-settings']
     if name=='polkit':conffiles=['--conffile','/etc/pam.d/polkit-auth']
     if name=='linux-pam':conffiles=['--conffile','/etc/pam.d/other']

@@ -2289,6 +2289,18 @@
       "book_md5": "6d600c6af383b611a17e5828adca81a9",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "geoclue",
+      "version": "2.8.2",
+      "filename": "geoclue-2.8.2.tar.bz2",
+      "url": "https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/2.8.2/geoclue-2.8.2.tar.bz2",
+      "sha256": "d4d65933b704d4c8d4ca9747dc511b883e35099abe534c8560f2aab3017e4cd4",
+      "reference": "BLFS13.1-systemd basicnet/geoclue2.html",
+      "book_page_sha256": "8499ad4094225e88922ac5902b2217c082e0b30bc67856f32a99989b306be34c",
+      "book_md5": "b40de9b467b79d0d4fad7b40dea21e04",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

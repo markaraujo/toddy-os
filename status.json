@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-09T23:09:51.566007+00:00",
+  "updated_at": "2026-11-10T01:07:39.548684+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05\u2013B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -719,14 +719,15 @@
       "Actual installed IBus UID101/default Compose engine commits\u00e3 in two distinct private buses; pre-cancelled read/refusal/recovery and requested Stop0; native recipe/post0/0,installed root changes0,successful profile removed. Three failed own fixture profiles/logs retained. GTK3 IM-cache/native GNOME keyboard pending.",
       "GTK3same-upstream3.24.52toddy2 IM-cache/legal-only install0/post1 reconciled verify-only0/0,zero root changes. All1882owned entries/archive unchanged; actual UID101 query12modules/11prior registrations/969old nonlegal entries preserved. Own IBus locale/GTK argv0 metadata errors retained, no install/cache/suite replay. Native GTK/GNOME graphical input pending.",
       "Geocode-glib3.26.4 Soup3/API2.0 owned/install/post0/0,43changedpaths/50entries; two portable original drivers/three original API paths/23ELFs retained. Actual installed UTF8/geoURI/refusal/two-cycle recovery/GI2.0/SDK/APT0. Required gweather-locations2026.2 source cached/pinned only, no runtime data or remote/owner location/GNOME acceptance.",
-      "Owned gweather-locations2026.2 native0/0,110paths/299entries;8862typed records/245country entries/332timezones/source-index invariants0. GWeather4.6.0 core3programs12cases/42ELFs retained and native C/GI4.0/variant/refusal/recovery0,200paths/398entries. External METAR original DNS/SIGABRT remains failed/unqualified. GTK4same-upstream toddy7 stock82schema/623key cache preserves81/618 and906nonlegal entries; UID101/no-route/provider-disabled Info update/abort/recovery0. No GNOME GUI/owner location/forecast claim."
+      "Owned gweather-locations2026.2 native0/0,110paths/299entries;8862typed records/245country entries/332timezones/source-index invariants0. GWeather4.6.0 core3programs12cases/42ELFs retained and native C/GI4.0/variant/refusal/recovery0,200paths/398entries. External METAR original DNS/SIGABRT remains failed/unqualified. GTK4same-upstream toddy7 stock82schema/623key cache preserves81/618 and906nonlegal entries; UID101/no-route/provider-disabled Info update/abort/recovery0. No GNOME GUI/owner location/forecast claim.",
+      "Owned GeoClue2.8.2 full backend native install0/own GI post1 reconciled verify-only0/0,70owned entries/account unchanged. Actual installed UID30 service/config deny/peer isolation/global agent revoke+restore/Stop/two private buses0,rootchanges0. Synthetic static source/agent; per-app sandbox consent/GNOME UI/provider/owner-position unqualified. ADR0174."
     ],
-    "running": "B02: weather data/GWeather core and stock schema/Info verified; required GeoClue, NetworkManager/NMA, GDM and GNOME Shell chain toward first native desktop next. Complete ALL B02 then stop.",
+    "running": "B02: GeoClue backend/native policy verified; selected NetworkManager/NMA/GDM/GNOME Shell chain next toward first actual graphical session. Complete ALL B02 then stop.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-10T00:31:24.326864+00:00",
+    "verified_at": "2026-11-10T01:07:39.548706+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }
