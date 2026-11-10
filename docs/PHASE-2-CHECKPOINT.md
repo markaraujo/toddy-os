@@ -24,29 +24,28 @@ Actual command-vector3host tests qualified missing correction; ONE logged bounde
 qualifier extension passed before first native installation. Historical budgets
 retained. No compiler/source/test/stage/API replay of accepted build evidence.
 
-CUPS2.4.19 CORRECTED-layout local build/stage accepted, native package pending,
-ADR0217. [Corrected proof](evidence/B02-cups-correct-layout-stage.json): fresh
-worker cups-layout-1 inode4675,250ELFs/846stage regular files,9local programs0
-and actual local IPP Unicode/add/find/delete/absent attribute/two recoveries0.
-Generated prefix/,execprefix/usr,etc/var/run paths checked before compiler; actual
-stage roots etc/run/usr/var, no usr/etc or usr/var. Legacy273ELF/stage5/logs remain
-intact. No native CUPS package/install/printing/server/TLS/Settings/physical claim.
+CUPS2.4.19 OWNED native local SDK/payload accepted, ADR0218.
+[Install](evidence/B02-cups-install.json): native2 recipe/post0/0,927changed paths,
+964payload entries, archiveSHA01aa732dba3a9f3afa2c65b221d940808ec965a41b171a8cdcd6f1b6b5cf5e52.
+Actual installed UID101/NNP/caps0/private-device/no-route IPP/refusal/two recoveries,
+CLI version/paths/private-config refusal/recovery,250ELF/846stage bytes/14specific
+ownership paths/locked lp9:9/empty lpadmin19/conffiles/ABI/PC/APT0. Units installed,
+not enabled/activated. No printing/server/TLS/network/device/Settings/physical claim.
 
-Actual first corrected job1PID82795 failed at testfile transient peak after main
-compile/array0. Minimum504696832B breached512MiB before0.1s/4MiB observer reacted,
-recipe-15/interruptedtrue/jobexit1. Make deleted interrupted testfile executable;
-space later recovered without fixture deletion. NEVER claim first reserve pass.
-Resume2PID86686 exit0 moved only testfile cwd/exact fixture to existing private
-1GiB tmpfs (same source/arguments/linker/cases);2host fixture tests qualify Makefile
-restoration. Main compiler and successful array not replayed; previous ELF/logs
-retained. Corrected observer0.02s/8MiB minimum561508352B, interruptionfalse.
+Factory identities use owned Shadow tools; systemd-sysusers binary absent. First
+native1 failed unsupported -K CREATE_MAIL_SPOOL option after creating only group19:
+exact4group/gshadow paths changed, lp9/stage/archive absent. Defaults already=no.
+Unique account2/native2 source-backed resume verified exact old state/diff, omitted
+-K, did NOT rerun groupadd; both historical receipts/failure retained. Accounts2
+complete; NEVER repeat accounts/native install. Archives have no maintainer scripts;
+audited base factory account setup is required before arbitrary-root acquisition.
 
-[Promotion custody1](evidence/B02-cups-prerequisite-custody.json) COMPLETE,
-rootchanged0: exact QMI/MIT/GWeather-location promotion usr replicas only retired,
-reclaimed39673856B scratch/24076288B target. All installed payload/source/compiler/
-workstage/archives/DEBIAN and MIT run/var retained; NEVER replay/reinstall. COW
-adapter from prior card was unnecessary and NOT implemented. Existing standard
-isolation reused, generic harness digest unchanged; new worker cold untested.
+[Librsvg custody1](evidence/B02-librsvg-promotion-custody.json) COMPLETE/root0,
+reclaimed30089216B from only closed promotion usr; all source/compiler/workstage/
+archive/DEBIAN retained. Prior QMI/MIT/GWeather custody complete; never replay any.
+Corrected source jobs/legacy wrong-prefix and first reserve failure remain in
+[stage proof](evidence/B02-cups-correct-layout-stage.json). No compiler/test/stage
+replay in native acceptance. Generic harness unchanged, cold worker restore untested.
 
 Receipt repair1 COMPLETE, [proof](evidence/B02-mitkrb-worker-receipt-repair.json):
 preparer prerequisite-variable shadow misplaced MIT worker JSON over Libgtop
@@ -55,29 +54,26 @@ restored from retained controller output, exact pre-existing SHA2566c32a0e6bf67b
 All3 preparers fixed and worker namespace guarded. No package/source/compiler
 replay, no lost installed package; NEVER repeat repair1.
 
-EXACT NEXT: qualify and package CUPS2.4.19 from corrected cups-layout-1 stage,
-NOT legacy cups-1. Read frozen scheduler install rules and actual staged etc/var/
-run ownership, then implement qualify_cups.py binding exact source/worker/job1/
-resume2/ELF/stage/log/Makefile identities, including the original reserve failure.
-Bind job1 embedded recipe main configure/compile prefix to current canonical body
-before PYTEST; its old test loop differs only in the corrected fixture runner.
-Bind resume2 exact current helper/canonical recipe. Use installed UID101/no-route
-IPP/CLI/refusal/recovery/config/ABI/APT checks and existing full-root transaction.
+EXACT NEXT: frozen UDisks2.11.2 Settings prerequisite, not another CUPS attempt.
+Read .local/books/blfs/general/udisks2.html and general/libblockdev.html (3.5.0),
+then only their required selected closure/current owned package state. GNOME
+Control Center frozen page lists UDisks2.11.2/Samba4.24.6 as required.
+UDisks/libblockdev exact official archives are cached/SHA-pinned after frozen
+MD5/header-path validation, [source proof](evidence/B02-udisks-source-preflight.json).
+No guest extraction/job/native acceptance. Samba has no pinned archive row yet.
+Inspect the required selected transitive closure and existing owned libraries;
+then prepare one missing eligible leaf. Preserve core Settings panels, no silent
+dependency/feature disable or foundation upgrade. CUPS filters/printing is not a
+blanket new mandatory hardware matrix for this local SDK slice.
 
-Stage currently uses UID/GID101 only; native promotion must review exact lp/group/
-spool/config ownership under package-ownership policy. Target lp group9 exists,
-lp user9 and lpadmin19 absent; no user gets admin membership, no service activation
-from SDK acceptance. Book client.conf points to /run/cups/cups.sock. Preserve full
-component payload/printing suite limitations. No native package or recipe yet.
-
-Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f; resume2 terminal0.
-Last targetfree17219141632B (39,272,448B above16GiB), scratch561504256B;
-correct stage allocation17,084,416B. Scratch triple-promotion gate does NOT fit.
-Recheck gates and qualify another closed target-native promotion replica if normal
-root staging needs more headroom (read-only candidates inventory is local).
-Never lower reserves or retire original compiler/workstage. MIT/QMI/GWeather
-custody1 and cups-layout preparation complete, NEVER replay; all source aliases/
-legacy/new worker identities remain. Full B02 then stop, physical tests unperformed.
+First inspect actual Git/lock/jobs/mounts/resources. Last targetfree17215127552B
+(35,258,368B above16GiB), scratch561504256B (24,633,344B above512MiB). A fresh
+UDisks build will need further verified closed-promotion headroom; source/compile/
+workstage/archives remain retained. Read-only candidate inventory is local; Node
+bootstrap/Qt/GTK/hwdb promotions are candidates only, not prequalified deletion.
+Never lower reserves, replay custody/native install, or overwrite uncertain state.
+Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f; native2 terminal0/0.
+Complete ALL B02 then stop before another story; full G2/ISO and physical tests pending.
 
 Seven qualified Settings prerequisite archives/metadata copied and independently
 verified outside VM: [recovery cache proof](evidence/B02-settings-package-recovery.json),

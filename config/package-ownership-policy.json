@@ -182,6 +182,132 @@
       "mode": 488,
       "source_version": "127-1+toddy1",
       "evidence": "ADR0153/0155 exact native standard profile:11expected outcomes incl real root proof/wrong password/unsolicited cookie/NNP/Stop/recovery/revocation,479fixture files unchanged; optional socket unqualified. Exact helper SHA enforced before promotion and after installation."
+    },
+    {
+      "package": "cups",
+      "path": "/etc/cups",
+      "uid": 0,
+      "gid": 9,
+      "mode": 493,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/etc/cups/ppd",
+      "uid": 0,
+      "gid": 9,
+      "mode": 493,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/etc/cups/ssl",
+      "uid": 0,
+      "gid": 9,
+      "mode": 448,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/var/cache/cups",
+      "uid": 0,
+      "gid": 9,
+      "mode": 504,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/var/cache/cups/rss",
+      "uid": 0,
+      "gid": 9,
+      "mode": 509,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/var/spool/cups",
+      "uid": 0,
+      "gid": 9,
+      "mode": 456,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/var/spool/cups/tmp",
+      "uid": 0,
+      "gid": 9,
+      "mode": 1016,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/run/cups/certs",
+      "uid": 9,
+      "gid": 19,
+      "mode": 329,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/etc/cups/cups-files.conf",
+      "uid": 0,
+      "gid": 9,
+      "mode": 416,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/etc/cups/cups-files.conf.default",
+      "uid": 0,
+      "gid": 9,
+      "mode": 416,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/etc/cups/cupsd.conf",
+      "uid": 0,
+      "gid": 9,
+      "mode": 416,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/etc/cups/cupsd.conf.default",
+      "uid": 0,
+      "gid": 9,
+      "mode": 416,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/etc/cups/snmp.conf",
+      "uid": 0,
+      "gid": 9,
+      "mode": 416,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "cups",
+      "path": "/etc/cups/snmp.conf.default",
+      "uid": 0,
+      "gid": 9,
+      "mode": 416,
+      "source_version": "2.4.19-1+toddy1",
+      "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
     }
   ]
 }

@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'cups': ('2.4.19', 'glibc (>= 2.44-1+toddy1), gcc (= 16.2.0-1+toddy2), acl (= 2.4.0-1+toddy1), gnutls (= 3.8.13-1+toddy1), linux-pam (= 1.7.2-1+toddy2), libusb (= 1.0.30-1+toddy1), libxcrypt (= 4.5.2-1+toddy1), zlib (>= 1.3.2-1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3), shadow (>= 4.20.2-1)', 'cups-2.4.19-source.tar.gz', 'usr/lib/pkgconfig/cups.pc'),
     'mitkrb': ('1.22.2', 'glibc (>= 2.44-1+toddy1), e2fsprogs (= 1.47.4-1+toddy1), openssl (= 4.0.3-1+toddy1)', 'krb5-1.22.2.tar.gz', 'usr/lib/pkgconfig/krb5.pc'),
     'libgtop': ('2.41.3', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libxau (= 1.0.12-1+toddy1)', 'libgtop-2.41.3.tar.xz', 'usr/lib/pkgconfig/libgtop-2.0.pc'),
     'colord-gtk': ('0.3.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), colord (= 1.4.8-1+toddy1), gtk (>= 4.22.4-1+toddy9), gtk3 (= 3.24.52-1+toddy2)', 'colord-gtk-0.3.1.tar.xz', 'usr/lib/pkgconfig/colord-gtk4.pc'),
@@ -265,6 +266,7 @@ if __name__ == '__main__':
     if name=='colord-gtk' and (log/'colord-gtk-collect-3.job.json').exists():qualifier='colord-gtk-collect-3'
     if name=='libgtop' and (log/'libgtop-mode-3.job.json').exists():qualifier='libgtop-mode-3'
     if name=='mitkrb':qualifier='mitkrb-metadata-4'
+    if name=='cups':qualifier='cups-layout-finish-2'
     if name=='itstool' and (log/'itstool-recovery-2.job.json').exists():qualifier='itstool-recovery-2'
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
     if name=='at-spi2-core' and (log/'atspi-finish-4.job.json').exists():qualifier='atspi-finish-4'
@@ -1270,6 +1272,9 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='cups':
+        from qualify_cups import qualify as qualify_cups
+        qualify_cups(ROOT)
     if name=='mitkrb':
         from qualify_mitkrb import qualify as qualify_mitkrb
         qualify_mitkrb(ROOT)
@@ -1470,6 +1475,7 @@ if __name__ == '__main__':
         qualify(ROOT,log)
     assert name==sys.argv[1], 'Package identity changed during qualification'
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
+    if name=='cups':source=Path('/mnt/lfs/sources/phase2/work/cups-layout-1/stage')
     if name=='gcr3':source=Path('/mnt/lfs/sources/phase2/work/gcr3-patched-1/stage')
     if name=='polkit':source=Path('/mnt/lfs/sources/phase2/work/polkit-full-1/stage')
     if name=='dconf':source=Path('/mnt/lfs/sources/phase2/work/dconf-vendored-1/stage')
@@ -1519,6 +1525,9 @@ if __name__ == '__main__':
         shutil.copytree(source, destination, symlinks=True,dirs_exist_ok=name in ('mitkrb','libqmi','modemmanager'))
         assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
+    if name=='cups':
+        from cups_native import promote
+        promote(destination)
     if name=='gnome-terminal':
         addon=destination/'usr/share/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml'
         assert addon.is_file();addon.unlink()
@@ -1719,6 +1728,7 @@ if __name__ == '__main__':
                         '--depends','glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
+    if name=='cups':conffiles=[arg for file in sorted((destination/'etc/cups').iterdir()) if file.is_file() for arg in ['--conffile','/'+str(file.relative_to(destination))]]
     if name=='libpwquality':conffiles=['--conffile','/etc/security/pwquality.conf']
     if name=='vte':conffiles=['--conffile','/etc/profile.d/vte.sh','--conffile','/etc/profile.d/vte.csh']
     if name=='gdm':conffiles=[v for n in ['custom.conf'] for v in ['--conffile','/etc/gdm/'+n]]+[v for n in ['gdm-autologin','gdm-launch-environment','gdm-fingerprint','gdm-smartcard','gdm-password'] for v in ['--conffile','/etc/pam.d/'+n]]

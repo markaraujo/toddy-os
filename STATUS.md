@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T21:24:28.948540+00:00
+Updated: 2026-11-10T21:58:54.829422+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T21:24:28.948540+00:00
+Last verified: 2026-11-10T21:58:54.829422+00:00
 
 Verified:
 
@@ -183,8 +183,11 @@ Verified:
 - CUPS legacy-layout stage5 exit0:273ELFs/846regular stage files; actual local IPP/refusal/two recoveries0,273ELF/11result-log hashes unchanged. Raw10rows retain SNMPusage1, exact9local results0 selected after source/log qualification and4collector guards. No compiler/successful-original-test replay, ADR0216. Native promotion blocked by own prefix=/usr embedding /usr/etc and /usr/var. Future prefix=/ recipe corrected, unbuilt; no CUPS package/install/printing/GUI claim.
 - CUPS corrected prefix/ main compile+9local programs/stage+IPP0:250ELFs/846files, exact etc/var/run/usr layout. First testfile transient burst breached512MiB reserve (min504696832B, interrupted recipe-15/job1); failed evidence retained. Resume2 tmpfs cwd/exact fixture0, min561508352B/NNP/no-route, main compiler+array not replayed, original ELF/log/Makefile preserved. Native package/ownership/printing/Settings pending, ADR0217.
 - Closed QMI/MIT/GWeather-locations promotion usr replicas independently match exact archive/record/stage/installed payload and original source/compiler/workstage. Custody1 root0, reclaimed39,673,856B scratch/24,076,288B target; archives/DEBIAN/MIT run-var retained, never replay. Reused ordinary qualified isolation; COW adapter unnecessary/unimplemented. New cups-layout-1 worker4675/cache unchanged; cold untested.
+- Owned CUPS2.4.19 native2 recipe/post0/0,927changed paths/964payload entries, corrected prefix and full component payload. Installed UID101/NNP/caps0/private-device/no-route IPP/refusal/two recoveries, CLI paths/private-config denial/recovery/14exact service ownership paths/locked lp9/empty lpadmin19/conffiles/ABI/APT0. No units enabled or service/printing/Settings/physical acceptance. First group-only useradd -K failure retained; verified unique accounts2 resumed without groupadd replay. No maintainer scripts, factory account prerequisite explicit. ADR0218.
+- Librsvg closed promotion usr custody1 complete: exact archive/record/installed payload/workstage and full-root0, reclaimed30,089,216B; originals/archive/DEBIAN retained. No compiler/test/stage/install replay;354repository tests including3new exact CUPS ownership/security guards passed after the account recovery correction.
+- UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 
-Running: CUPS corrected local build/stage accepted; next native qualifier/exact service identities+ownership/controlled full-root package and installed IPP/CLI/refusal/recovery/ABI/APT. Preserve first reserve breach and all legacy failures. Target margin39,272,448B; scratch triple-promotion gate does not fit. Full B02 then stop.
+Running: CUPS owned native SDK/payload complete with locked factory identities and explicit original failure. Next frozen UDisks2.11.2/libblockdev3.5.0 source/required-closure qualification; root archives cached/SHA-pinned and headers checked, required closure/guest preparation still pending; no job dispatched. Preserve core Settings panels, fixed reserves and all completed receipts. Full B02 then stop.
 
 Remaining:
 
@@ -192,7 +195,7 @@ Remaining:
 - LocalSearch/Nautilus/browser/settings and first fully working interactive native GNOME session.
 - Foundation recovery-entry boot remains pending; actual installed main7.1.8/Systemd already observed in failed LocalSearch native tests, not desktop acceptance.
 - Minimal desktop branding/offline usability/security-ABI review and reference guest measurements.
-- CUPS native package/owned service permissions plus UDisks/Samba prerequisites and full Settings UI remain. MIT local SDK installed; enterprise authentication is unqualified.
+- UDisks/Samba prerequisites and full Settings UI remain; CUPS local native SDK accepted, printing/driver/service integration unqualified. MIT local SDK installed; enterprise authentication is unqualified.
 
 [Acceptance evidence](docs/evidence/B02.md)
 
