@@ -1,0 +1,14 @@
+{
+  "state": "complete",
+  "stage": "/mnt/lfs/sources/stage/phase2-librsvg",
+  "stage_inode": 2147142,
+  "archive_sha256": "8ea71609cd4cd23b56e43b9a90695640ad134e10af68575e592178098961ca15",
+  "record_sha256": "a6214854c21846cae981b1a5def86cf89971b1e3c3fd0aa40eb6c8b01ce50554",
+  "workstage_files_retained": 12,
+  "before_free_bytes": 17219141632,
+  "scope": "Only closed Librsvg promotion usr replica; original compiler/source/workstage/archives/DEBIAN and installed payload retained",
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 17249230848,
+  "recovery": "Verify retained archive/record then extract into a NEW stage. Never replay retirement or reinstall accepted Librsvg.",
+  "reclaimed_bytes": 30089216
+}
