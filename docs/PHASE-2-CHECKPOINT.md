@@ -8,7 +8,38 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current eligible B02 slice: Enchant2.8.19 OWNED and installed; next Libspelling.
+Current eligible B02 slice: Libspelling0.4.11 OWNED, native PID26455 recipe/post0/0,
+87changed paths, installed Spelling1 GI/known+misspelled/suggestion/language refusal/
+ignore/recovery/UID101/NoNewPrivs/private-dev/no-route/APT0 passed.
+[Installed proof](evidence/B02-libspelling-install.json). ArchiveSHA
+ a889dd3c9442e2583d08bfcc6c2af5d71cac088c5a96a2629a69340bcc5b7ff5.
+EXACT NEXT: authenticate and prepare required EditorConfig for selected GNOME Text
+Editor50.1, then build editor using owned Libspelling/Enchant. Check actual reserves
+before extraction; reuse existing scratch where useful. No live guest writer.
+Never replay Libspelling source/compiler/tests/stage/native transaction.
+[Stage proof](evidence/B02-libspelling-stage.json): first build compiled library/
+original tests/GIR, optional Vala failed because owned GtkSourceView has no VAPI.
+Supported vapi=false matches C/GI consumer; options2 terminal0, original ELFs
+unchanged, four original programs21cases and staged real Spelling1 GI consumer
+passed. No original test/compiler/stage replay. Source SHA
+52e53ec3fba0f604cfd0931e26af7f7241a0d4f0208dd5574f43b3589f6d28b2.
+Original recipeSHAdac22957acb37eed94860df8a2d6b5d4ed2ad19639ac9bef2b0ca975de833ffc.
+Raw collector prose incorrectly retained Vala-enabled wording; qualifier explicitly
+annotates actual Meson vapi=false without rewriting raw evidence. No GUI claim.
+
+Shared compiler scratch1 COMPLETE: existing Doxygen UUID
+ ae4347fb-31fd-4193-a333-0a549e144231, new private subtree
+/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/libspelling-1 inode489
+binds onto /mnt/lfs/sources/phase2/work/libspelling-1. No new allocation/format/
+resize or deletion. Original Doxygen manifest unchanged. Scratch ~1.1GiB free,
+independent256MiB compiler reserve; target16GiB/host100GiB reserves unchanged.
+NEVER replay prepare_libspelling_shared_scratch.py. After a cold builder restore,
+first restore existing Doxygen mount/UUID, verify worker inode489 and empty target
+mountpoint, then bind SAME subtree; no recreate. Receipt
+/var/log/toddy/phase2/libspelling-shared-scratch-1.json contains identity/recovery.
+Native space preflight stage822141B/free17194676224B/required17190724215B passed.
+
+Completed prerequisite: Enchant2.8.19 OWNED and installed.
 [Installed proof](evidence/B02-enchant-install.json). Native PID24124 recipe/post0/0,
 31 changed paths, actual installed UID101/NoNewPrivs/private-dev/no-route API+CLI
 consumer passed, all15staged regular files identical/APT0. ArchiveSHA
@@ -37,9 +68,7 @@ Aspell Info inventory metadata correction COMPLETE; original package/index uncha
 [installed proof](evidence/B02-aspell-install.json), ADR0206.
 
 Actual last target free17195585536B, reserve17179869184B. Enchant native preflight
-required17189013630B and passed; transaction complete. EXACT NEXT: prepare pinned
-Libspelling0.4.11 using owned Enchant, inspect archive expansion/build size before
-new extraction/build. Preserve target16GiB/host100GiB margins. EditorConfig remains
+required17189013630B and passed; transaction complete. Libspelling was subsequently built/installed above. Preserve target16GiB/host100GiB margins. EditorConfig remains
 required for selected editor. No live writer; builder boot9d54ab78-a01a-428b-86e9-6055effef25b.
 Full B02 then stop, not full Phase2 completion.
 

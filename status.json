@@ -399,7 +399,9 @@
         "docs/evidence/B02-editor-sdk-preflight.json",
         "docs/evidence/B02-aspell-install.json",
         "docs/evidence/B02-enchant-stage.json",
-        "docs/evidence/B02-enchant-install.json"
+        "docs/evidence/B02-enchant-install.json",
+        "docs/evidence/B02-libspelling-stage.json",
+        "docs/evidence/B02-libspelling-install.json"
       ]
     },
     {

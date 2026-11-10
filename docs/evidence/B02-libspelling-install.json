@@ -1,0 +1,54 @@
+{
+  "scope": "Owned Libspelling0.4.11 actual installed Spelling1 GI consumer, English Enchant/Aspell provider, known/misspelling/suggestion/unsupported language/ignore/recovery; UID101/NoNewPrivs/private devices/no external route/APT0. No graphical adapter/editor acceptance.",
+  "job": {
+    "pid": 26455,
+    "boot_id": "9d54ab78-a01a-428b-86e9-6055effef25b",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 87,
+    "log_sha256": "2b7eac24a674dfca77b36bd95687fff40ba5ed7ad4374b1e2e5e9cb5ac7056a9"
+  },
+  "consumer": {
+    "scope": "Actual owned installed Spelling1 GI API and official English dictionary, UID101/NoNewPrivs/private devices/no external route, Known/misspelling/suggestion/unsupported language/ignore/recovery, all staged bytes retained/APT0. Builder kernel; no Portuguese dictionary/editor/GUI/general parser-security acceptance.",
+    "consumer": {
+      "namespace": "Spelling1",
+      "language": "en_US",
+      "known_and_misspelled_words": true,
+      "hello_suggestion": true,
+      "unsupported_language_refusals": 2,
+      "ignore_word": true,
+      "checker_recovery_cycles": 2,
+      "graphical_widget_tested": false
+    },
+    "installed_stage_files_identical": 74,
+    "shared_library_resolution": true
+  },
+  "timing": {
+    "step": "b02-libspelling-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.647,
+        "entries": 161155,
+        "regular_files": 143805,
+        "regular_bytes": 7495367896
+      },
+      {
+        "seconds": 14.607,
+        "entries": 161239,
+        "regular_files": 143884,
+        "regular_bytes": 7496258168
+      }
+    ],
+    "total_seconds": 32.66
+  },
+  "package_archive_sha256": "a889dd3c9442e2583d08bfcc6c2af5d71cac088c5a96a2629a69340bcc5b7ff5",
+  "target_free_bytes": 17191866368,
+  "installed_status": "install ok installed 0.4.11-1+toddy1",
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-libspelling-install-evidence.tar.gz",
+    "sha256": "80e05ef8522c5f42ec57c3ea4473815d5b00bb7d389bb4d0a7bd1cdf303f8940",
+    "bytes": 85173
+  },
+  "stage_proof": "docs/evidence/B02-libspelling-stage.json"
+}

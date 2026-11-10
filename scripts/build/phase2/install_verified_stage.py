@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libspelling': ('0.4.11', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy8), gtksourceview (= 5.20.0-1+toddy1), enchant (= 2.8.19-1+toddy1), icu (= 78.3-1+toddy1)', 'libspelling-0.4.11.tar.xz', 'usr/lib/pkgconfig/libspelling-1.pc'),
     'enchant': ('2.8.19', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), aspell (= 0.60.8.2-1+toddy1)', 'enchant-2.8.19.tar.gz', 'usr/lib/pkgconfig/enchant-2.pc'),
     'aspell': ('0.60.8.2', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), ncurses (= 6.6-1+toddy1)', 'aspell-0.60.8.2.tar.gz', 'usr/include/aspell.h'),
     'gexiv2': ('0.16.2', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), exiv2 (= 0.28.8-1+toddy1), pygobject (= 3.56.3-1+toddy1), python (>= 3.14), python (<< 3.15)', 'gexiv2-0.16.2.tar.xz', 'usr/lib/pkgconfig/gexiv2-0.16.pc'),
@@ -281,6 +282,7 @@ if __name__ == '__main__':
     if name=='inih' and (log/'inih-collect-2.exit').exists():qualifier='inih-collect-2'
     if name=='blueprint-compiler':qualifier='blueprint-compiler-finish-2'
     if name=='aspell' and (log/'aspell-dictionary-2.exit').exists():qualifier='aspell-dictionary-2'
+    if name=='libspelling':qualifier='libspelling-options-2'
     if name=='enchant':qualifier='enchant-provider-explicit-5'
     if name=='tinysparql':qualifier='tinysparql-numeric-5'
     if name=='gnome-autoar' and (log/'gnome-autoar-probe-3.exit').exists():qualifier='gnome-autoar-probe-3'
@@ -1242,6 +1244,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='libspelling':
+        from qualify_libspelling import qualify as qualify_libspelling
+        qualify_libspelling(ROOT)
     if name=='enchant':
         from qualify_enchant import qualify as qualify_enchant
         qualify_enchant(ROOT)
