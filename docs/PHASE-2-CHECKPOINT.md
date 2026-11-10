@@ -20,7 +20,9 @@ NEVER rebuild/restage/reinstall/replay portable originals. Actual GL-context ori
 devices/audio/playback/screencast remain unqualified. Input/work
 /mnt/lfs/sources/phase2/{inputs/gst-plugins-base-1.28.6,work/gst-plugins-base-1};
 logs/exit/job /var/log/toddy/phase2/gst-plugins-base-1.{job.json,log,exit}.
-Exact next: prepare fresh native Shell2 using actual registered ephemeral PAM/
+Exact next command after committed harness:
+`python3 scripts/host/phase2_native_shell.py --registered-session`.
+Prepared fresh native Shell2 using actual registered ephemeral PAM/
 logind/user-bus session and new owned Gst inputs, with source-supported UI
 instrumentation/captures. Reuse qualified session client; no credential-suite
 replay, owner credential, unsafe-mode, GDM/login/basic-app acceptance. Settings/
@@ -138,3 +140,10 @@ pushed, planning42749986496/safety42749986505/Pages42749986498 allsuccess. Exact
 c295 exactHTTP200/publicSHAd13d372e24b1ffad644bb55631ded4f990d24e2eab4cc4a29d17b8acf986aa9f
 verified. Failure/GStreamer updates currently pending commit. No host installation/physical disk/global
 security weakening/paid resources/new agents/model switching/workstation RAG.
+
+Shell2 harness (not executed yet) binds new Gst packages and registered synthetic
+PAM/logind user12401 with actual user manager/bus. Reuses accepted session-consumer
+client, no password/auth suite. Source-supported init hook records startup state
+and a diagnostic capture; four required action captures remain distinct. Source
+payload11931bytes/base64 fits SMBIOS bound. Contextnative-shell-runtime-2 must be
+absent for first launch; inspect actual operation before any retry.
