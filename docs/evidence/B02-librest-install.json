@@ -1,0 +1,438 @@
+{
+  "scope": "Owned librest0.10.2 Soup3/GI/Vala native installation/local API/refusal/recovery only, no online account/provider/GUI acceptance.",
+  "native": {
+    "step": "b02-librest-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 49,
+    "started": "2026-11-10T16:31:26.168203+00:00",
+    "finished": "2026-11-10T16:31:42.979476+00:00",
+    "recipe_sha256": "b8a2a066fb8004ef97b4a5cd48edb490375fd51bed1bc77f9bfa8fdbd050e4d2",
+    "postcheck_sha256": "dc089ad7737f4658254f99bd571df2f5c01c0b49e819d66fb28894466999b10e",
+    "log_sha256": "1ada432208b05bf543afff83f46b1370318c69151ac3a0d6de78691a48329c03"
+  },
+  "native_success_receipt_sha256": "0c3e7667999e69e9b31f6743164bed37e8cd1e93ef8302aa7c77093a3ae43dd6",
+  "timing": {
+    "step": "b02-librest-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.571,
+        "entries": 161701,
+        "regular_files": 144229,
+        "regular_bytes": 7499649053
+      },
+      {
+        "seconds": 14.426,
+        "entries": 161747,
+        "regular_files": 144266,
+        "regular_bytes": 7500204919
+      }
+    ],
+    "total_seconds": 32.464
+  },
+  "consumer": {
+    "scope": "Owned installed librest C/GI UTF8 XML/nonXML refusal/two fresh recoveries/local proxy API only, UID101/NoNewPrivs/private devices/no route. Original local Soup3 tests reused. No actual online-account/provider/login/GUI or blanket XML security acceptance.",
+    "C_consumer": "UTF8 XML/two malformed refusals/two fresh proxy+parser recoveries; no request sent\n",
+    "GI_consumer": "Rest1 GI constructor/local call, no request sent\n",
+    "installed_stage_files_identical": 31,
+    "shared_library_resolution": true,
+    "external_service_cases_unexecuted": [
+      "/flickr/flickr",
+      "/lastm/lastfm"
+    ]
+  },
+  "package": {
+    "name": "librest",
+    "version": "0.10.2-1+toddy1",
+    "archive_sha256": "7ab19965a1b30f1b77da2ce9fbb723208e219a4e99fd07fe02a388338cff08db",
+    "recipe_sha256": "b8a2a066fb8004ef97b4a5cd48edb490375fd51bed1bc77f9bfa8fdbd050e4d2",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "librest",
+        "version": "0.10.2",
+        "filename": "librest-0.10.2.tar.xz",
+        "url": "https://download.gnome.org/sources/librest/0.10/librest-0.10.2.tar.xz",
+        "sha256": "7b6cb912bb3a22cfa7dcf005925dcb62883024db0c09099486e7d6851185c9b8",
+        "reference": "BLFS13.1-systemd gnome/librest.html",
+        "book_page_sha256": "8988c0a42ffe2e88387ffddf13568f5c926f68d0005e362ab4cf740773dc60f6",
+        "book_md5": "32b0ecf86932cd45b4e7078690c8306f",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "payload": {
+      "/usr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/gir-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/vala": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/gir-1.0/Rest-1.0.gir": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c61f48471098d950c89fbaf9f3d6212aa945a0e2f2be4879de56f4b6d218e86e"
+      },
+      "/usr/share/gir-1.0/RestExtras-1.0.gir": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c9faa044cebe8c251363d7fcbc7d4fff05cba848f9623bb21dacf69144bc6b60"
+      },
+      "/usr/share/doc/librest": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/librest/source-notices": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/librest/copyright": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9f32a43edf6f2de3a95aaf35f9078cb3572712b3a23a2e607081f9ba00ae3d96"
+      },
+      "/usr/share/doc/librest/source-notices/index.json": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bc8ce653c911272c88094d7d14313df11754b25d46efce674cb56a54c3f2d412"
+      },
+      "/usr/share/doc/librest/source-notices/09547145b5e9dd8ab213781cee2d48eb86ac5edd2c49723756276ab68c508a97": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "09547145b5e9dd8ab213781cee2d48eb86ac5edd2c49723756276ab68c508a97"
+      },
+      "/usr/share/doc/librest/source-notices/a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a9bdde5616ecdd1e980b44f360600ee8783b1f99b8cc83a2beb163a0a390e861"
+      },
+      "/usr/share/vala/vapi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/vala/vapi/rest-extras-1.0.vapi": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8c0a6e9ffdb171306fa85f1e9ed4c2293fd261a1cc7f6645acd69a94fe304e19"
+      },
+      "/usr/share/vala/vapi/rest-extras-1.0.deps": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7a4b938b0516ccf1e4d3f974404a9ef3914176ec543e81db9498b391348f1383"
+      },
+      "/usr/share/vala/vapi/rest-1.0.vapi": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "52d26fbcb3c941247943d56b4a71049ed1fbd6d67116f88327baa21a02ceddb4"
+      },
+      "/usr/share/vala/vapi/rest-1.0.deps": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "19eeabc9c6ce9661dabee57a4065deb17a9b92dd4f9bab7a874a63c3097aada5"
+      },
+      "/usr/include/rest-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/rest-1.0/rest-extras": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/rest-1.0/rest": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/rest-1.0/rest-extras/rest-extras.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "cb4437b227f355092b8121e76a201adafac3d63c9b5d3a4c09bf80e5445a234a"
+      },
+      "/usr/include/rest-1.0/rest-extras/lastfm-proxy.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ee086f00738da36f259ff0e5eb5dc16e04f0351c48bf8c4ab3ef91dda0149ef4"
+      },
+      "/usr/include/rest-1.0/rest-extras/flickr-proxy.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "05cc1ab7814bd5e3976e31dc3fa66e338410a80ea7577d3c22095bf9391bdcd9"
+      },
+      "/usr/include/rest-1.0/rest-extras/lastfm-proxy-call.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8b5946d9255c94931e4e7368c24e8f8bc7211420daa5aa69b64710f4ff6f8fa4"
+      },
+      "/usr/include/rest-1.0/rest-extras/flickr-proxy-call.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e5e20110d9ba0ea4304ccbfa38f57e1b9cd6a4fff10aaa5adfc80b743de68a64"
+      },
+      "/usr/include/rest-1.0/rest-extras/youtube-proxy.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2e1ea61b9a791aa8f31d6ddac60637af6cc4fa79d87b8fdb796ac7cedf651463"
+      },
+      "/usr/include/rest-1.0/rest/rest-oauth2-proxy.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4e21afb4823e87dfcffb5fc9553695f70a0d4d695ddf68790702e5681c953822"
+      },
+      "/usr/include/rest-1.0/rest/rest-proxy-call.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "295bf2a91467c3dc483ef9a2f8d26a690ec94d1cbdc1789b982838955551f217"
+      },
+      "/usr/include/rest-1.0/rest/rest.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ac8e172189062630740e8b282712e7a2ef8d5f8ca4ce2298ad21864e4bb642d4"
+      },
+      "/usr/include/rest-1.0/rest/rest-enum-types.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ed38b48e03e0cce2a8d24e5ef9b8785194fe2892637a54cdec7448ca531e0c5a"
+      },
+      "/usr/include/rest-1.0/rest/rest-proxy-auth.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bc41a30fcbae701f8d9450fe6e8bb4ade15ef1e0e3746dbb0019a2edc9b623e2"
+      },
+      "/usr/include/rest-1.0/rest/rest-oauth2-proxy-call.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "64053d241c7506c73b3b01dc93bce6971873375e1658978c06f5627506052f1a"
+      },
+      "/usr/include/rest-1.0/rest/rest-utils.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b0934bf2a18435352a1ac058464acb4291e61d8c9b0d97bc74ab6770d851eac5"
+      },
+      "/usr/include/rest-1.0/rest/rest-xml-node.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a303faf9966685602deb78015ad0a3ac400bc18cafb223d9b73b80378ee7de45"
+      },
+      "/usr/include/rest-1.0/rest/rest-param.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0cda3e7307d700b942222dca013f627e1944a9ecafd0e47aa8aa1ac95fd2a48c"
+      },
+      "/usr/include/rest-1.0/rest/rest-proxy.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5706dc6ea076e254bf9c563237f3ccfa416dd0ce9d53c3bdac1f146b28e01ebb"
+      },
+      "/usr/include/rest-1.0/rest/rest-pkce-code-challenge.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "514230343a2e38f520cd9d566028037d70633b438bad869d4bd89fc9c65fea43"
+      },
+      "/usr/include/rest-1.0/rest/rest-params.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f0e9f4237f21dec3276d1c12ac86806fd1896f94e6f951be00f9b4d04eae48a2"
+      },
+      "/usr/include/rest-1.0/rest/rest-xml-parser.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3d01825e3dfab3ce9c35ef4392f9cebe41ba4e32582973c5d61a3930a16d7238"
+      },
+      "/usr/lib/girepository-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/pkgconfig": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/librest-extras-1.0.so.0": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "librest-extras-1.0.so.0.0.0"
+      },
+      "/usr/lib/librest-1.0.so.0": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "librest-1.0.so.0.0.0"
+      },
+      "/usr/lib/librest-extras-1.0.so.0.0.0": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1c98fb79bc541cb088ac791769174c448d16e4e5ee0e2c7f35c55c962f607c43"
+      },
+      "/usr/lib/librest-1.0.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "librest-1.0.so.0"
+      },
+      "/usr/lib/librest-extras-1.0.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "librest-extras-1.0.so.0"
+      },
+      "/usr/lib/librest-1.0.so.0.0.0": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a426aadb10a27416dee7519ed5b24f82f3f8de4625780735df53c5884ae058cf"
+      },
+      "/usr/lib/girepository-1.0/Rest-1.0.typelib": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "45dcb9c2c616d88466ee9e4252b1a02953188d4b4e4ac17045c45c1c312fca58"
+      },
+      "/usr/lib/girepository-1.0/RestExtras-1.0.typelib": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ef682b243075d8dc59645e7ca6c882f8d5e153c2b8f9ea685129fb800642e8ef"
+      },
+      "/usr/lib/pkgconfig/rest-extras-1.0.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e49c461c3dd48c9849ebd839da9e892e3c2214ce261fa1b83c6a2dda029ea9da"
+      },
+      "/usr/lib/pkgconfig/rest-1.0.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "dabaff442214bd2f3bff716294fc055c7851094e1eddb749cc8a3b21b00a4037"
+      }
+    },
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_sha256": "57e803da8e4c44ae2802775ce3efd2c52b2ef8cbc17f0deab49e5550f8a6ace5",
+    "supporting_build_script_count": 1743
+  }
+}

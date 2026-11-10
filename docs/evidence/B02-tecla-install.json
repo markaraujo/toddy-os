@@ -1,0 +1,1184 @@
+{
+  "scope": "Owned Tecla50.0 native install/APT/payload/ABI; actual native Wayland CLI on identical executable, no graphical keyboard preview acceptance.",
+  "native": {
+    "step": "b02-tecla-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 67,
+    "started": "2026-11-10T16:27:39.326452+00:00",
+    "finished": "2026-11-10T16:27:56.164661+00:00",
+    "recipe_sha256": "d4344599035cba7d70ad074b85f1cce8f517b1cc80805cbbaab693ade95cb328",
+    "postcheck_sha256": "722365fd3703d25f1dcd2b46ba789e602d69d88b8ea54122fd673010907a84a4",
+    "log_sha256": "b4dde358ad18c67e012b9410ea399e5a0dd193862fd15f01b1061e3900dfab21"
+  },
+  "native_success_receipt_sha256": "eaf7f6909cd265d1dca7a960551b83ea36a506f1e7798afa945e4bf8b638d132",
+  "timing": {
+    "step": "b02-tecla-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 35.461,
+        "entries": 161637,
+        "regular_files": 144167,
+        "regular_bytes": 7499443451
+      },
+      {
+        "seconds": 14.603,
+        "entries": 161701,
+        "regular_files": 144229,
+        "regular_bytes": 7499649053
+      }
+    ],
+    "total_seconds": 53.369
+  },
+  "consumer": {
+    "scope": "Owned pinned Tecla50.0 installed payload/pkg-config application path/shared ABI/APT. Reuses actual native7.1.8/Systemd/Mutter staged CLI evidence for the identical installed executable. CLI requires display, no headless replay. No keyboard preview GUI/input/focus/complete GNOME/hardware acceptance.",
+    "installed_stage_files_identical": 57,
+    "native_cli_report_sha256": "a96faca2b92f049d5897d9d3064ef551ccac0777e7df1572a1fb355f2cfeb7c9",
+    "shared_library_resolution": true,
+    "graphical_preview_tested": false
+  },
+  "package": {
+    "name": "tecla",
+    "version": "50.0-1+toddy1",
+    "archive_sha256": "a6940f1e20e8d74ef28c16992984472d357b7aab248b137469e534aadc283c82",
+    "recipe_sha256": "d4344599035cba7d70ad074b85f1cce8f517b1cc80805cbbaab693ade95cb328",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "tecla",
+        "version": "50.0",
+        "filename": "tecla-50.0.tar.xz",
+        "url": "https://download.gnome.org/sources/tecla/50/tecla-50.0.tar.xz",
+        "sha256": "2542acb24850082e0ccf6aa17af9651db71d22f0e233fdbf5ed0cffe2e45bc06",
+        "reference": "BLFS13.1-systemd gnome/tecla.html",
+        "book_page_sha256": "28b4df777bc4fb134301b949fe2174a1e822b7ea738144ea553c9794b680fbfc",
+        "book_md5": "cc5ae49bae10abcb02040a20e63ef26b",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "payload": {
+      "/usr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/bin": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/pkgconfig": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/applications": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/symbolic": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/scalable": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/symbolic/apps": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/symbolic/apps/org.gnome.Tecla-symbolic.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b914c607fd50288b8afeb8dfafaf6d54b20d41d0bcfc03a543baa4e6ff7ac890"
+      },
+      "/usr/share/icons/hicolor/scalable/apps": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/scalable/apps/org.gnome.Tecla.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bc28f61062e205016eaed537f587762b504050249eb00aba85ad7978635af459"
+      },
+      "/usr/share/locale/ar": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/be": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_TW": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ia": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uz": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kab": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ko": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kw": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lv": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nb": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bg": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fa": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ie": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/es": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ne": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eo": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ug": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en_GB": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lt": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/oc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pa": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/el": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr@latin": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ro": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ar/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ar/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "88f44567c70356bae676d9b47a63df05f29ff181a87d17984a5b5040db48b950"
+      },
+      "/usr/share/locale/be/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/be/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4f5a589d0b53274913adb00c5987424d26441255f1cb8b0906114a7515e45620"
+      },
+      "/usr/share/locale/hu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d2a4c59b9ca7bcf98aa8e4c444546ff7ed54ffc38fb56f66963e767fc6e3541b"
+      },
+      "/usr/share/locale/hi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hi/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3aab71fb141c744155fbf2f6b715137f5f023c6355d788f5e22eb153565d97b1"
+      },
+      "/usr/share/locale/gl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gl/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ab9410da6fefd81e9af5ce009ef4ed8a88fbb474bb2027c09f78c745d0e89c3e"
+      },
+      "/usr/share/locale/zh_TW/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_TW/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c1c6746fe2d5f553afbcb17ab75344acaa829159d7ea18940a115de96faa901d"
+      },
+      "/usr/share/locale/ia/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ia/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "537b98f3193b9c7dbc45a38bb406b3f422f164980d354068e65f3d06c92f945b"
+      },
+      "/usr/share/locale/uz/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uz/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "46ee69713372e19e62f8e95cddba4b49c097b57f2b8a1dccd196994bfb6c7bef"
+      },
+      "/usr/share/locale/kab/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kab/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9d45580ab6f7b90793bd6dd826e93644b4d03d1f01404d57a451e76e73b3e0d3"
+      },
+      "/usr/share/locale/ko/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ko/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5c598d4776fb03fdc0593f0ec8b3abd9ed1e16c23f8dbe398866e1bc7e3f357c"
+      },
+      "/usr/share/locale/kw/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kw/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a713a07cdfc3ea2af8a9c131eda9fe31e37f663b53435cb4ab6cea6124ccc35b"
+      },
+      "/usr/share/locale/it/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "84b0e484e3f733f9b897af165621adb4089efbeb799852de45fefcb52a6e5784"
+      },
+      "/usr/share/locale/sv/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b08330dc17c3664cd7aaa54d0d9e2fde6967ebb9d62f736936074b185e810248"
+      },
+      "/usr/share/locale/tr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "91a85421ae103079e61f446019fa77defb03322132adbd28faaa2e6777b443e5"
+      },
+      "/usr/share/locale/lv/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lv/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fe9006eebaa363ba6080779f5ff4950fd7dea5b9fc86d5c7976ed44a791420ee"
+      },
+      "/usr/share/locale/nb/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nb/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3b71507ff4a1fe9405abfba57fcda2127431d727e73a08cbfe194e7e8c256451"
+      },
+      "/usr/share/locale/eu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eu/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7f99e6a1bb8bcf87ecef3cfa2b82725476762d95e6a1abbeefef1046441e1c66"
+      },
+      "/usr/share/locale/bg/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bg/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a8032fd52b14d8b1df463a0b2e765d500edae161948c5205242fb86e829da198"
+      },
+      "/usr/share/locale/ru/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "84608e40a293e8b05d6efc1b3903fc5fd39281c777b10171f0d9d28eba931294"
+      },
+      "/usr/share/locale/fa/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fa/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f8224c6036af837dfed4ff8f18ea38f2310758b664aaa0536e5022152ef55f6e"
+      },
+      "/usr/share/locale/ie/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ie/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "25ec4795d96a091ed91bef8a32a128c71680c65b4ddff5dc846f8440262a63f7"
+      },
+      "/usr/share/locale/uk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "91e381132687fa4740715689267c9a79ccdedba3d0132deb32eca2f46ae76f0a"
+      },
+      "/usr/share/locale/pl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c841cc98dfe28c41487516ba3a01200d0e207fd09e47560d77abf07c8655b4aa"
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e45bf82288c0e149a96222ece8704938910c67817c0655f33689f61119ec3386"
+      },
+      "/usr/share/locale/pt/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f8b5388e63d55b690917580789a85247049fd17bd0fec194dc1b817c84641b45"
+      },
+      "/usr/share/locale/es/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/es/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9a3960f36c2252c6e314fcfe1386276b07b585f41104eb6021948f3f7281459f"
+      },
+      "/usr/share/locale/ne/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ne/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "384bdfa2b44f51aed19affbcc73c444ce34a30066dd436993ef467ada16651f4"
+      },
+      "/usr/share/locale/eo/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eo/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4323264bd2d114bf84789ec0b65bc554e985c6aad0013cf5c6d672c5f90db8b4"
+      },
+      "/usr/share/locale/fur/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "463e63b08e9e5dfbbbc37db9d14b181019ab89cb252866b258aa1548d828fda2"
+      },
+      "/usr/share/locale/kk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kk/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "03fcc61ddb969e20d060d83ba363ed2b2f96fb7c0ec1dd98448ed073e313cecf"
+      },
+      "/usr/share/locale/ug/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ug/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "92f09fcb440ffa2c0d14bf2f0e7b7d6e9265ee4eeaeed11a2506f53f94d95367"
+      },
+      "/usr/share/locale/fi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a93e78bb79f2c959e2c110eec16b23306d750eec0d3de523175fb227929388c2"
+      },
+      "/usr/share/locale/sk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7d34c7816dd2f80dd665076608e58b2c93ae1357d5db9db89ea928f392a7c390"
+      },
+      "/usr/share/locale/id/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c3d455cc7eb1cc11f042ca1b5ad17cb2a09c70b2c8c033be6877c25cafded276"
+      },
+      "/usr/share/locale/he/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9a32926d41beecfad6a035ebebb23b8714b45c49e840ca4b168dff70e6ff120e"
+      },
+      "/usr/share/locale/en_GB/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en_GB/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "cf6462fd7bca3ea02abea145dd47cb6ff8335a9576dfd492fcb77326321fe080"
+      },
+      "/usr/share/locale/cs/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "02f913e22d733604ac7c9f1bc9f596d618deaf549a06c0e7b7f012fb31226d15"
+      },
+      "/usr/share/locale/de/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "927ff6f1f13786d86c0c169699c9132372c95451343d19f0ed13498eacc20528"
+      },
+      "/usr/share/locale/lt/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lt/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "256fe0a60db2623d87d2fbf237195c7a7630899f7240b576a7e07b287c39e4f2"
+      },
+      "/usr/share/locale/sr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bfaf4e685b9ad94edfd28ea49bbbc82d7a20fc2eebe6cb3e6a5299621cbdb1d6"
+      },
+      "/usr/share/locale/oc/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/oc/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2a5ca0632c45c017390b131806f4a354353eff3afa7bc4d5ed4b0b6c32022ee9"
+      },
+      "/usr/share/locale/fr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d7304b1f737de3a3ab758f5649b718654d74a9907643b9a6dae1a00411003d8d"
+      },
+      "/usr/share/locale/pa/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pa/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "080ed5324664b8ebb701f8fe1684b8d5ebd777a94effd383ce4b4823ad2bc2b3"
+      },
+      "/usr/share/locale/ca/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b62ddb8913ec58465be570358ce1643c928cc0923e9fa448be3c4e926f337ecf"
+      },
+      "/usr/share/locale/sl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sl/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e02a4eb74828ff1153d0b531ac45804c61372373e1feec7d6552cde8ea08052f"
+      },
+      "/usr/share/locale/el/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/el/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f1a311793e7a033329da8bd02f5fc01792e80480f83c66a6fbcd7d13c458b84d"
+      },
+      "/usr/share/locale/da/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d246077b85443605260951312f2bd1f4b5f6821d6402f28ff46733d54fe68382"
+      },
+      "/usr/share/locale/nl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "aa2e1cfe84fb4135b9208d14d0738f207a4c38dd97b865235fd304cdbf2397cd"
+      },
+      "/usr/share/locale/ka/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "110f32fd0543f2c04d17b9fb84d1cadba4ea3bde88a0e4192a4a85665cde48ca"
+      },
+      "/usr/share/locale/sr@latin/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr@latin/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d11bcb541d81f73c91969d00ed6ace5b75a4b279afa76f4684dbd1245bb88787"
+      },
+      "/usr/share/locale/ro/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ro/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2cd26d446d34a8a76ca9caa7ef0c93ae475f5365263e2c766d6ec27665397910"
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES/tecla.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "69e55735ea62adef76aaa478951efb89132ae145bc341e02b4421c7e16fe10d1"
+      },
+      "/usr/share/pkgconfig/tecla.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "167c95eaef84ea78e7dd5df98eefae029b1b18c7906fe04dceb04db18212bb5c"
+      },
+      "/usr/share/applications/org.gnome.Tecla.desktop": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c62e5a7323cd94dd95266f5b3bd1d4aa3712d0bf888ab05b9b49bad565bf7930"
+      },
+      "/usr/share/doc/tecla": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/tecla/source-notices": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/tecla/copyright": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8fee7751f6508f5aa9918eac7c4dd8d05de92db7b272046f6dc037eb86a29113"
+      },
+      "/usr/share/doc/tecla/source-notices/index.json": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b847535c23b76ed02eef7fe2910c7126c4b24cd13833f20a9ba1ab40b3c60a37"
+      },
+      "/usr/share/doc/tecla/source-notices/640d90f6ee401241ff62834d0d1b33f83049e99b8bfdfa04ed1b0a1635dde3e7": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "640d90f6ee401241ff62834d0d1b33f83049e99b8bfdfa04ed1b0a1635dde3e7"
+      },
+      "/usr/bin/tecla": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ac9cff2e077c545c3a51afac32992da8a4956da59aeff01a2f2b38d82cb304e9"
+      }
+    },
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_sha256": "d0af569d0562cb9509780b10c4a79585869079a71e5b417e05d2cffa1e5719df",
+    "supporting_build_script_count": 1738
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "scope": "Native7.1.8/Systemd/Mutter Wayland staged Tecla50.0 --version/--help only, UID101/NoNewPrivs/no external network. Adwaita requires display even for CLI. No graphical keyboard preview/input/GUI/complete GNOME/hardware acceptance.",
+  "source_commit": "69aef6b202f912d2b102ab37c334ded1d39603e0",
+  "protocol_report_sha256": "7a0e45a402f7735e384ce8bfa85cbf848cc0b5d01536634dd5510acc29aa6aad",
+  "formatted_report_sha256": "a96faca2b92f049d5897d9d3064ef551ccac0777e7df1572a1fb355f2cfeb7c9",
+  "dedicated_evidence_sha256": "5677c4fc531ea3c7287662c4cbb26aea07db4b0cf0f247a0dfbc38281fb37257",
+  "probe_sha256": "15684dd2b8ac90b1c32b389ae1523ed6999c904db0ad4b40213ec0dedab75825",
+  "accepted_descriptor": {
+    "manifest": "/sources/phase2/native-fixtures/tecla-cli-1/accepted.json",
+    "manifest_sha256": "33766657e34973c43737bca65ca546c7cae609f133f4920bdcd379d38f5a8467",
+    "manifest_bytes": 459511
+  },
+  "container_final_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-11-10T16:21:46.980492357Z",
+    "FinishedAt": "2026-11-10T16:21:57.688939568Z"
+  },
+  "backing_unchanged": true,
+  "builder_restoration": {
+    "state": "complete",
+    "native_context": ".local/phase2/native-tecla-runtime-1",
+    "failure_preserved": true,
+    "guest_log": ".local/phase2/tecla-builder-restored-1.log"
+  },
+  "native_report": {
+    "all_selected_exits_zero": true,
+    "artifacts_unchanged": 2975,
+    "compositor_exit": 0,
+    "compositor_log": "libmutter-Message: 16:21:56.713: Running Mutter (using mutter 50.4) as a Wayland display server\nlibmutter-Message: 16:21:56.781: Created surfaceless renderer without GPU\nlibmutter-Message: 16:21:56.801: Added virtual monitor Meta-0\nlibmutter-Message: 16:21:56.803: Using Wayland display name 'toddy-tecla-proof'\n\n(mutter:266): libmutter-WARNING **: 16:21:56.838: Failed to connect to colord daemon: Error calling StartServiceByName for org.freedesktop.ColorManager: Unit colord.service not found.\nlibmutter-Message: 16:21:56.974: Removed virtual monitor Meta-0\n",
+    "details": {
+      "Wayland_display": "toddy-tecla-proof",
+      "all_selected_exits_zero": true,
+      "graphical_preview_tested": false,
+      "runs": [
+        {
+          "exit": 0,
+          "name": "tecla --version",
+          "stderr": "",
+          "stdout": "tecla 50.0\n"
+        },
+        {
+          "exit": 0,
+          "name": "tecla --help",
+          "stderr": "",
+          "stdout": "Usage:\n  tecla [OPTION\u2026]\n\nHelp Options:\n  -h, --help                        Show help options\n  --help-all                        Show all help options\n  --help-gapplication               Show GApplication options\n\nApplication Options:\n  --parent-handle=Window handle     Attach to a parent window\n  --version                         Display version number\n\n"
+        }
+      ]
+    },
+    "kernel": "7.1.8-toddy",
+    "pid1": "systemd",
+    "runs": [
+      {
+        "exit": 0,
+        "name": "tecla --version",
+        "stderr": "",
+        "stdout": "tecla 50.0\n"
+      },
+      {
+        "exit": 0,
+        "name": "tecla --help",
+        "stderr": "",
+        "stdout": "Usage:\n  tecla [OPTION\u2026]\n\nHelp Options:\n  -h, --help                        Show help options\n  --help-all                        Show all help options\n  --help-gapplication               Show GApplication options\n\nApplication Options:\n  --parent-handle=Window handle     Attach to a parent window\n  --version                         Display version number\n\n"
+      }
+    ],
+    "scope": "Native7.1.8/Systemd/Mutter Wayland staged Tecla50.0 --version/--help only, UID101/NoNewPrivs/no external network. Adwaita requires display even for CLI. No graphical keyboard preview/input/GUI/complete GNOME/hardware acceptance."
+  },
+  "limitations": [
+    "No registered upstream tests; not a full-suite pass.",
+    "Actual staged CLI evidence only, no keyboard preview GUI/input/complete GNOME/login/hardware acceptance.",
+    "Nonfatal compositor warning: colord.service unavailable in isolated headless profile."
+  ]
+}

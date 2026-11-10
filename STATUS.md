@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T15:41:21.556663+00:00
+Updated: 2026-11-10T16:32:55.180589+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T15:41:21.556663+00:00
+Last verified: 2026-11-10T16:32:55.180589+00:00
 
 Verified:
 
@@ -162,8 +162,10 @@ Verified:
 - Shared preallocated Doxygen scratch now hosts isolated private editor workers; original Doxygen and earlier worker bytes retained. Cargo-c duplicate promotion retirement reclaimed165642240B with installed-root0/original-stage unchanged, native archive/source/compiler/raw retained.
 - GNOME Text Editor50.1 now OWNED: native recipe/post0/0/376changes, actual UID101/NoNewPrivs/private-dev/no-route version/payload/APT0. Shared GTK4.22.4 same-version cache/legal update recipe/post0/0/10changes preserves115schemas/900keys and installs editor+five terminal schemas, actual default121schemas/1057keys matched, libraries/other payload unchanged. No graphical editor acceptance.
 - Native editor4 partial GUI: actual installed EditorWindow mapped/active/focus, UTF8 edit and exact-save predicate reached; two real wide client PNGs visually reviewed. Overall FAILED at saved-state snapshot no render node, no close/reopen/resize pass. Two failed corrections retained; GUI branch PARKED. Independent LocalSearch original-helper/config D-Bus --address override passed two actual UID101/NNP/readonly-cwd GIO+daemon cleanup cycles; no LocalSearch functional/GUI acceptance.
+- Owned Tecla50.0: actual native7.1.8/Systemd/Mutter CLI version/help0,2975artifacts unchanged; install/post0/0/67changes, identical payload/pkg-config app path/GTK-Adwaita-XKB ABI/APT0. No keyboard-preview GUI. Librest0.10.2 original7local programs+one URLcase0, Soup3/GI/Vala stage qualified; external-service cases unexecuted.
+- Owned librest0.10.2 Soup3/GI/Vala native install/post0/0/49changes, installed C/GI Unicode XML/nonXML refusal/two recoveries/local proxy construction/shared ABI/APT0. Seven original local programs and one Flickr URLcase reused; external providers untested.
 
-Running: Editor native GUI branch parked after two failed corrections; real partial screenshots/evidence retained. Current eligible work: integrate independently qualified per-test private D-Bus address wrapper for LocalSearch while preserving readonly compiled assets/history; no new functional native retry dispatched. No live guest writer. Complete ALL B02 then stop.
+Running: No guest writer. Tecla/librest native installations COMPLETE. Next eligible slice: frozen GOA3.58.1 backend prerequisite for Settings; review provider application identity before configuring, preserve independent failure budgets. Complete B02 then stop.
 
 Remaining:
 

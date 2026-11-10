@@ -8,24 +8,30 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current eligible B02 slice: Tecla50.0 native display-dependent CLI qualification,
-prerequisite for selected GNOME Control Center50.4. Source frozen bookSHA
-2542acb24850082e0ccf6aa17af9651db71d22f0e233fdbf5ed0cffe2e45bc06;
-bookpageSHA28b4df777bc4fb134301b949fe2174a1e822b7ea738144ea553c9794b680fbfc.
-Original compiler/stage succeeded, initial job1PID3393 terminal1 only because
---version initializes Adwaita and requires display. No original tests registered,
-not a test pass. Collection2PID3928 terminal0, current ELF/stage hashes matched.
-[Stage proof](evidence/B02-tecla-stage.json). Do not rebuild/retest/restage.
+Current B02 slice: next Settings prerequisite GNOME Online Accounts3.58.1.
+Source frozen/verified locally, no guest source/build dispatched yet. Review
+provider application IDs before configuring: frozen book explicitly requires own
+Google credentials for another distribution; never ship LFS shared IDs as Toddy.
+Optional provider availability must remain truthful, without blocking offline
+Settings or requiring owner credentials. No live guest writer.
 
-EXACT NEXT: after clean committed reviewed inputs and actual cold host gate, run
-ONCE `python3 scripts/host/phase2_native_tecla.py --context native-tecla-runtime-1`.
-Descriptor /sources/phase2/native-fixtures/tecla-cli-1/accepted.json qualified,
-SHA33766657e34973c43737bca65ca546c7cae609f133f4920bdcd379d38f5a8467;
-source transport preflight below65536B. No test VM booted yet. This is actual staged
---version/--help under native Mutter/Wayland only, NOT keyboard preview GUI/input
-acceptance. No Tecla native package installed yet. Inspect exact result/container/
-backing before restore or any next writer; prepare new unique recovery names tied
-to native-tecla-runtime-1, preserving all six volumes and existing editor binds.
+Librest0.10.2 install PID3105 TERMINAL COMPLETE, native recipe/post0/0/49changes,
+[proof](evidence/B02-librest-install.json). Installed C/GI Unicode XML/nonXML
+refusal/two recoveries/local proxy construction/shared ABI/APT0; stage unchanged.
+Seven original local programs plus original Flickr URL-only case passed;
+[stage](evidence/B02-librest-stage.json). External-service cases unexecuted.
+DO NOT repeat source/build/test/stage/install. ArchiveSHA
+7ab19965a1b30f1b77da2ce9fbb723208e219a4e99fd07fe02a388338cff08db.
+
+Tecla50.0 native CLI1 COMPLETE/PASSED, [proof](evidence/B02-tecla-native-cli.json):
+actual7.1.8/Systemd/Mutter --version/help0,2975artifacts unchanged, container0/
+OOMfalse/backing unchanged. Native package install/post0/0/67changes,
+[proof](evidence/B02-tecla-install.json), exact installed stage/PCapp/ABI/APT0.
+No keyboard preview GUI/input acceptance and no registered upstream test passes.
+Host context .local/phase2/native-tecla-runtime-1 and builder recovery1 COMPLETE;
+six original volumes/Systemd/Glycin/kernel/editor binds restored once. DO NOT
+replay CLI/source/compiler/stage/install/recovery1. CLI report bound by canonical
+protocol digest (formatted JSON digest is separately recorded).
 
 Exact-path LocalSearch bus qualification branch also PARKED after two corrective
 failures; no native functional LocalSearch4 dispatched. SDK2 own token substitution
@@ -70,7 +76,7 @@ capture synchronization failed. All raw reports/failed attempts retained.
 Native4 container terminal0/OOMfalse/backing unchanged, NOT a full GUI pass.
 Restoration4 COMPLETE (.local/phase2/editor-builder-recovery-4.json and guest
 editor-builder-restored-4.json), same six volumes/Systemd/Glycin/kernel/three editor
-binds restored; no replay. No live guest writer. All native editor/GTK9/cache/
+binds restored; no replay. Editor restoration was complete before the later Tecla/librest jobs. All native editor/GTK9/cache/
 discard/custody/install/source/driver compile operations are complete, never rerun.
 
 GNOME Text Editor50.1 OWNED nativePID30824 recipe/post0/0/376changes,

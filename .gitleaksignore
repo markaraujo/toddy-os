@@ -67,3 +67,17 @@ docs/evidence/B02-tecla-stage.json:generic-api-key:29
 docs/evidence/B02-tecla-stage.json:generic-api-key:35
 946b9d23c77f08716fa2d462e9a51f21860e0600:docs/evidence/B02-tecla-stage.json:generic-api-key:29
 946b9d23c77f08716fa2d462e9a51f21860e0600:docs/evidence/B02-tecla-stage.json:generic-api-key:35
+
+# Reviewed public librest object/header/Vala SHA256 and descriptive XML security prose; no credentials.
+scripts/build/phase2/librest-check.sh:generic-api-key:31
+docs/evidence/B02-librest-install.json:generic-api-key:35
+docs/evidence/B02-librest-stage.json:generic-api-key:249
+docs/evidence/B02-librest-stage.json:generic-api-key:258
+docs/evidence/B02-librest-stage.json:generic-api-key:265
+docs/evidence/B02-librest-stage.json:generic-api-key:268
+docs/evidence/B02-librest-stage.json:generic-api-key:279
+docs/evidence/B02-librest-stage.json:generic-api-key:338
+docs/evidence/B02-librest-stage.json:generic-api-key:342
+docs/evidence/B02-librest-stage.json:generic-api-key:343
+docs/evidence/B02-librest-stage.json:generic-api-key:353
+docs/evidence/B02-librest-stage.json:generic-api-key:355

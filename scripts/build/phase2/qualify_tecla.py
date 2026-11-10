@@ -19,7 +19,9 @@ def qualify_stage(root):
  return r
 
 def qualify(root):
- r=qualify_stage(root);proof=json.loads(Path('/var/log/toddy/phase2/native-tecla-cli-report-1.json').read_text())
+ r=qualify_stage(root);report=Path('/var/log/toddy/phase2/native-tecla-cli-report-1.json')
+ proof=json.loads(report.read_text())
+ assert hashlib.sha256(json.dumps(proof,sort_keys=True).encode()).hexdigest()=='7a0e45a402f7735e384ce8bfa85cbf848cc0b5d01536634dd5510acc29aa6aad'
  assert proof['kernel']=='7.1.8-toddy' and proof['compositor_exit']==0 and proof['all_selected_exits_zero'] is True
  rows=proof['runs'];assert len(rows)==2 and all(x['exit']==0 for x in rows)
  assert rows[0]['name']=='tecla --version' and rows[0]['stdout'].strip()=='tecla 50.0'

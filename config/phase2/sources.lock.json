@@ -2599,6 +2599,30 @@
       "book_md5": "cc5ae49bae10abcb02040a20e63ef26b",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "librest",
+      "version": "0.10.2",
+      "filename": "librest-0.10.2.tar.xz",
+      "url": "https://download.gnome.org/sources/librest/0.10/librest-0.10.2.tar.xz",
+      "sha256": "7b6cb912bb3a22cfa7dcf005925dcb62883024db0c09099486e7d6851185c9b8",
+      "reference": "BLFS13.1-systemd gnome/librest.html",
+      "book_page_sha256": "8988c0a42ffe2e88387ffddf13568f5c926f68d0005e362ab4cf740773dc60f6",
+      "book_md5": "32b0ecf86932cd45b4e7078690c8306f",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "gnome-online-accounts",
+      "version": "3.58.1",
+      "filename": "gnome-online-accounts-3.58.1.tar.xz",
+      "url": "https://download.gnome.org/sources/gnome-online-accounts/3.58/gnome-online-accounts-3.58.1.tar.xz",
+      "sha256": "9ec1900cc51409c2067c07c828c10be06fe3bf68d2999bb72d7d5ed325ed9bbc",
+      "reference": "BLFS13.1-systemd gnome/gnome-online-accounts.html",
+      "book_page_sha256": "1b82315689923a7afe2ee50359a6448a5262eb1307cc0102abcb1214e4e0468d",
+      "book_md5": "9942aa191d657f7c39d3b5ec28b74f61",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }
