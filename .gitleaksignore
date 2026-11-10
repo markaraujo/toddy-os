@@ -122,3 +122,6 @@ d00a85f8b07fc06be97aeff8a10279b00d0464b9:docs/evidence/B02-goa-stage.json:generi
 
 # Reviewed SHA256 of public GSound Vala interface, not a credential.
 docs/evidence/B02-gsound-stage.json:generic-api-key:35
+
+# Exact historical public GSound Vala interface hash reviewed above.
+510460b4b61ab736c1edf53b2ed01c420074e749:docs/evidence/B02-gsound-stage.json:generic-api-key:35
