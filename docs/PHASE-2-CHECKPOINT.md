@@ -92,18 +92,27 @@ GUI test. Never replay completed operations. No writer remains.
 33,251,328 B from the closed usr replica, with the native archive, source,
 original workstage, control files and installed root preserved. Never replay.
 
-EXACT NEXT: pinned LVM2 2.03.42 and required libaio 0.3.113. Libaio official
-Pagure returned HTTP 404, so the verified OSU BLFS mirror supplied the exact
-frozen MD5 bytes. SHA256 2c44d1c5fd0d43752287c9ae1eb9c023f04ef848ea8d4aafa46e9aedb678200b.
-No guest source preparation or build. Review the frozen libaio recipe and
-prepare a writable private source copy. The original partcheck case 14 writes
-up to 768 MiB, above target headroom. Qualify a bounded private fixture location
-using the existing isolated 1 GiB tmpfs only if guest available memory and
-filesystem behavior fit the selected tests. Preserve the original input and
-record any exclusions or failed cases, including root-only ext2/ENOSPC tests
-outside book partcheck. Check actual lock, target, scratch and host. Last target
-free 17,195,814,912 B, scratch 561,504,256 B.
-LVM2/Cryptsetup/UDisks/Samba and native GNOME pending. Stop after accepted B02.
+Libaio 0.3.113 is staged. Frozen Pagure returned HTTP 404 and the verified OSU
+BLFS mirror supplied bytes matching the frozen MD5. Main libaio-1 PID 114564
+terminal 0. The original partcheck in the private 1 GiB tmpfs passed 18 cases,
+including case 14, with one explicit RWF_NOWAIT skip. Ran only original case
+21 again with its tiny unlinked fixture on builder ext4, retaining its exit 0.
+Libaio-nowait-1 PID 115279 terminal 0, no other test replay. Shared-library
+C probe confirmed invalid-depth refusal and two async write/read recoveries.
+Original compiler and stage maps retained (26 ELF, two regular files, two
+links), no outstanding AIO request in the builder. Native package absent.
+[Stage evidence](evidence/B02-libaio-stage.json).
+The two root-only ext2/ENOSPC cases are outside frozen book partcheck.
+Never repeat preparation, compile, partcheck, case 21 or staging.
+
+EXACT NEXT: qualify original libaio-1 and libaio-nowait-1 receipts and current
+stage/ELF hashes read-only. Use the existing full-root native package backend
+with COPYING retained and rerun only the installed shared C probe in a private
+namespace. Check guest lock and host/target/scratch reserves. Last target free
+17,193,078,784 B, scratch 561,504,256 B. After local SDK acceptance,
+review LVM2 2.03.42's 40 MB build estimate and disposable-device test context
+before dispatch. Cryptsetup/UDisks/Samba and native GNOME pending. Stop after
+accepted B02.
 
 ### Previous Settings prerequisites
 

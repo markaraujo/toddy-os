@@ -1,0 +1,298 @@
+{
+  "stage": {
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "version": "0.3.113",
+    "original_partcheck": {
+      "passed": 18,
+      "failed": 0,
+      "skipped": 1,
+      "case_exit_status": [
+        [
+          "2",
+          "0"
+        ],
+        [
+          "3",
+          "0"
+        ],
+        [
+          "4",
+          "0"
+        ],
+        [
+          "5",
+          "0"
+        ],
+        [
+          "6",
+          "0"
+        ],
+        [
+          "7",
+          "0"
+        ],
+        [
+          "11",
+          "0"
+        ],
+        [
+          "12",
+          "0"
+        ],
+        [
+          "13",
+          "0"
+        ],
+        [
+          "14",
+          "0"
+        ],
+        [
+          "15",
+          "0"
+        ],
+        [
+          "16",
+          "0"
+        ],
+        [
+          "17",
+          "0"
+        ],
+        [
+          "18",
+          "0"
+        ],
+        [
+          "19",
+          "0"
+        ],
+        [
+          "20",
+          "0"
+        ],
+        [
+          "21",
+          "3"
+        ],
+        [
+          "22",
+          "0"
+        ],
+        [
+          "23",
+          "0"
+        ]
+      ],
+      "internal_skip_messages": []
+    },
+    "root_only_ext2_enospc_excluded_by_partcheck": [
+      "8",
+      "10"
+    ],
+    "test_fixtures": "Existing isolated 1 GiB tmpfs, including original case 14",
+    "consumer": "Linux AIO invalid-depth refusal and two asynchronous file write/read recoveries passed\n",
+    "artifacts": [
+      {
+        "path": "src/compat-0_1.ol",
+        "sha256": "abc04608bfe988d091f19842a58efeca77375072b73a8b4e70b2b582c1d53342"
+      },
+      {
+        "path": "src/compat-0_1.os",
+        "sha256": "abc04608bfe988d091f19842a58efeca77375072b73a8b4e70b2b582c1d53342"
+      },
+      {
+        "path": "src/io_cancel.ol",
+        "sha256": "8a9ce1bd9a3b97ba92b36c89b1ed4c62586bbad229761225079df28df68b0975"
+      },
+      {
+        "path": "src/io_cancel.os",
+        "sha256": "8a9ce1bd9a3b97ba92b36c89b1ed4c62586bbad229761225079df28df68b0975"
+      },
+      {
+        "path": "src/io_destroy.ol",
+        "sha256": "eeaa2e99b94bab0584480910e7eae4959360e558af221be0410f5a3737181fb4"
+      },
+      {
+        "path": "src/io_destroy.os",
+        "sha256": "eeaa2e99b94bab0584480910e7eae4959360e558af221be0410f5a3737181fb4"
+      },
+      {
+        "path": "src/io_getevents.ol",
+        "sha256": "714faf56fbd679bc1132b67f0feebdd64f6b83efbe48c3c0497cf6cd4a12f65a"
+      },
+      {
+        "path": "src/io_getevents.os",
+        "sha256": "714faf56fbd679bc1132b67f0feebdd64f6b83efbe48c3c0497cf6cd4a12f65a"
+      },
+      {
+        "path": "src/io_pgetevents.ol",
+        "sha256": "5860bebace74bd673d43433db1293e91e05f1f4c6ecfef5569541eb903eaff0b"
+      },
+      {
+        "path": "src/io_pgetevents.os",
+        "sha256": "5860bebace74bd673d43433db1293e91e05f1f4c6ecfef5569541eb903eaff0b"
+      },
+      {
+        "path": "src/io_queue_init.ol",
+        "sha256": "62eeada7f516fabb084c43b8e1e64e16bb671a825cf0c151deea920fc5560dc5"
+      },
+      {
+        "path": "src/io_queue_init.os",
+        "sha256": "62eeada7f516fabb084c43b8e1e64e16bb671a825cf0c151deea920fc5560dc5"
+      },
+      {
+        "path": "src/io_queue_release.ol",
+        "sha256": "1d859be43fd10aa287ffe518fabcdbb3d631a2424daaa6775d68024bb7e61cd8"
+      },
+      {
+        "path": "src/io_queue_release.os",
+        "sha256": "1d859be43fd10aa287ffe518fabcdbb3d631a2424daaa6775d68024bb7e61cd8"
+      },
+      {
+        "path": "src/io_queue_run.ol",
+        "sha256": "d797e0a1a7c2995e826353411f02a53b8ba7f5a669d122bb0788ae632d10f9a0"
+      },
+      {
+        "path": "src/io_queue_run.os",
+        "sha256": "d797e0a1a7c2995e826353411f02a53b8ba7f5a669d122bb0788ae632d10f9a0"
+      },
+      {
+        "path": "src/io_queue_wait.ol",
+        "sha256": "55f1e40c696954583381726b6c79696196c82193abcbfb81ad37b6841164b1e1"
+      },
+      {
+        "path": "src/io_queue_wait.os",
+        "sha256": "55f1e40c696954583381726b6c79696196c82193abcbfb81ad37b6841164b1e1"
+      },
+      {
+        "path": "src/io_setup.ol",
+        "sha256": "2f49a7469031b68511054aa352d151fc5ed8ad9fb0d840300f38c6f35359aef5"
+      },
+      {
+        "path": "src/io_setup.os",
+        "sha256": "2f49a7469031b68511054aa352d151fc5ed8ad9fb0d840300f38c6f35359aef5"
+      },
+      {
+        "path": "src/io_submit.ol",
+        "sha256": "c3e37010c949023b8e31fb262c705a831363249810ea1d70f8e433f81eb75a98"
+      },
+      {
+        "path": "src/io_submit.os",
+        "sha256": "c3e37010c949023b8e31fb262c705a831363249810ea1d70f8e433f81eb75a98"
+      },
+      {
+        "path": "src/libaio.so.1.0.2",
+        "sha256": "ad3bb6a47233ac56e15d5c1292f4710bf15cf2ca653345c937fa5f5d58997b46"
+      },
+      {
+        "path": "src/raw_syscall.ol",
+        "sha256": "90381e0b80c7b279d7b5946d7d38a2c6e0b359e28ea8d71de0e4b37b3fc451c3"
+      },
+      {
+        "path": "src/raw_syscall.os",
+        "sha256": "90381e0b80c7b279d7b5946d7d38a2c6e0b359e28ea8d71de0e4b37b3fc451c3"
+      },
+      {
+        "path": "src/struct_offsets.o",
+        "sha256": "a56d778b4a83177b84625cda31f79c1f38ede978df35854d3bda24da8d652c1a"
+      }
+    ],
+    "stage_sha256": [
+      {
+        "path": "usr/include/libaio.h",
+        "sha256": "442dabe8ff9c7441e57e8776a75bf16d946539d656e06c99a5b772929de19c23"
+      },
+      {
+        "path": "usr/lib/libaio.so.1.0.2",
+        "sha256": "ad3bb6a47233ac56e15d5c1292f4710bf15cf2ca653345c937fa5f5d58997b46"
+      }
+    ],
+    "stage_links": [
+      {
+        "path": "usr/lib/libaio.so",
+        "target": "libaio.so.1.0.2"
+      },
+      {
+        "path": "usr/lib/libaio.so.1",
+        "target": "libaio.so.1.0.2"
+      }
+    ],
+    "logs": [
+      {
+        "path": "original-build.log",
+        "sha256": "33cff8673b8125c7573477d0e96bdc281b483b0a2199d3c39b0675aa6d01d71d"
+      },
+      {
+        "path": "original-partcheck.log",
+        "sha256": "5002cb043b2d211c05fdaf7f49dfca60381f2068c5dea6bf95aea825f7a6dd74"
+      },
+      {
+        "path": "original-stage.log",
+        "sha256": "7a82fd36bc13c3f3934854fa08261d08290559fe4eec47963d4acd28cb55b062"
+      },
+      {
+        "path": "local-probe.log",
+        "sha256": "53a1a0b4f48c5f103ce74627998de313f403e539661bba96cb543674a425798b"
+      },
+      {
+        "path": "nowait-21-compile.log",
+        "sha256": "8db6215f83f18ffad68befd9b9825de3a2ff6a9df455f52f7e3ee1fa0eb60e0b"
+      },
+      {
+        "path": "nowait-21-run.log",
+        "sha256": "c1bef97f6faa2a45dc4abd0acc603945bde2e84ab427484907b4974fe2f4a643"
+      }
+    ]
+  },
+  "jobs": [
+    {
+      "pid": 114564,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "2386640",
+      "started_unix": 1794351765.245906,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": 0,
+      "command_sha256": "4ae8d181966da377d874baf3e6db66e5c2ae6bf55295dd4306a4ff849f7d9ac7"
+    },
+    {
+      "pid": 115279,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "2393859",
+      "started_unix": 1794351837.4350712,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": 0,
+      "command_sha256": "8c551800ea963d1f4f19c471fbc9ff1f24cb8f964926b89a22645718d980b2fa"
+    }
+  ],
+  "prepared": {
+    "source_sha256": "2c44d1c5fd0d43752287c9ae1eb9c023f04ef848ea8d4aafa46e9aedb678200b",
+    "reference": "BLFS13.1-systemd general/libaio.html",
+    "book_page_sha256": "e6b2b20896554a17a4828df3af84bd4dca65d481e42c343210be4f1f172f9001",
+    "source_patches": [],
+    "recipe_sha256": "9fd53f12f58dbf3465fdf2993d35f06574c24630801ef03da14cef7ab77ee6a1",
+    "probe_sha256": "991724db5133c8adcb0949e3b215b1c830e60ebdbaff6a67cb27b7ce42645bb1"
+  },
+  "target_free_bytes": 17193078784,
+  "aio_requests_remaining": 0,
+  "physical_machine_tested": false,
+  "source": {
+    "name": "libaio",
+    "version": "0.3.113",
+    "filename": "libaio-0.3.113.tar.gz",
+    "url": "https://releases.pagure.org/libaio/libaio-0.3.113.tar.gz",
+    "sha256": "2c44d1c5fd0d43752287c9ae1eb9c023f04ef848ea8d4aafa46e9aedb678200b",
+    "reference": "BLFS13.1-systemd general/libaio.html",
+    "book_page_sha256": "e6b2b20896554a17a4828df3af84bd4dca65d481e42c343210be4f1f172f9001",
+    "book_md5": "7d5be185f20eeaae15e267419950aaf7",
+    "verified_mirror": "https://ftp.osuosl.org/pub/blfs/conglomeration/libaio/libaio-0.3.113.tar.gz",
+    "integrity": "Official frozen URL returned HTTP 404. Trusted OSU BLFS mirror matched the exact frozen book legacy MD5 and archive header path check before SHA256 pinning.",
+    "status": "source_verified"
+  },
+  "case_21_recovery": {
+    "tmpfs": "upstream exit 3, filesystem does not support RWF_NOWAIT",
+    "ext4": "upstream case passed with original private static archive",
+    "other_cases_replayed": false
+  }
+}
