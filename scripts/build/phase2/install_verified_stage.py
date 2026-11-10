@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libtirpc': ('1.3.7', 'glibc (>= 2.44-1+toddy1), mitkrb (= 1.22.2-1+toddy1)', 'libtirpc-1.3.7.tar.bz2', 'usr/lib/pkgconfig/libtirpc.pc'),
+    'udisks2': ('2.11.2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), systemd (>= 261.2-1+toddy3), kmod (= 34.2-1+toddy1), util-linux (>= 2.42.4-1+toddy1), acl (>= 2.3.2-1), libblockdev (= 3.5.0-1+toddy1), libgudev (= 238-1+toddy1), polkit (= 127-1+toddy1)', 'udisks-2.11.2.tar.bz2', 'usr/lib/pkgconfig/udisks2.pc'),
     'libblockdev': ('3.5.0', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), systemd (>= 261.2-1+toddy3), kmod (= 34.2-1+toddy1), util-linux (>= 2.42.4-1+toddy1), e2fsprogs (= 1.47.4-1+toddy1), cryptsetup (= 2.8.7-1+toddy1), lvm2 (= 2.03.42-1+toddy1), openssl (= 4.0.3-1+toddy1), json-c (= 0.19-1+toddy1), keyutils (= 1.6.3-1+toddy1), libbytesize (= 2.12-1+toddy1), gmp (= 6.3.0-1+toddy1), mpfr (= 4.2.2-1+toddy1), pcre2 (= 10.49-1+toddy1), libnvme (= 1.16.2-1+toddy1), libatasmart (= 0.19-1+toddy1), python (>= 3.14), python (<< 3.15), pygobject (= 3.56.3-1+toddy1)', 'libblockdev-3.5.0.tar.gz', 'usr/lib/pkgconfig/blockdev.pc'),
     'cryptsetup': ('2.8.7', 'glibc (>= 2.44-1+toddy1), util-linux (>= 2.42.4-1+toddy1), lvm2 (= 2.03.42-1+toddy1), openssl (= 4.0.3-1+toddy1), json-c (= 0.19-1+toddy1), popt (= 1.19-1+toddy1)', 'cryptsetup-2.8.7.tar.xz', 'usr/lib/pkgconfig/libcryptsetup.pc'),
     'popt': ('1.19', 'glibc (>= 2.44-1+toddy1)', 'popt-1.19.tar.gz', 'usr/lib/pkgconfig/popt.pc'),
@@ -276,6 +278,7 @@ if __name__ == '__main__':
     if name=='libgtop' and (log/'libgtop-mode-3.job.json').exists():qualifier='libgtop-mode-3'
     if name=='mitkrb':qualifier='mitkrb-metadata-4'
     if name=='cups':qualifier='cups-layout-finish-2'
+    if name=='udisks2':qualifier='udisks2-gi-3'
     if name=='libblockdev':qualifier='libblockdev-collect-3'
     if name=='libnvme':qualifier='libnvme-probe-2'
     if name=='libatasmart':qualifier='libatasmart-probe-2'
@@ -1285,6 +1288,12 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='libtirpc':
+        from qualify_libtirpc import qualify as qualify_libtirpc
+        qualify_libtirpc(ROOT)
+    if name=='udisks2':
+        from qualify_udisks2 import qualify as qualify_udisks2
+        qualify_udisks2(ROOT)
     if name=='libblockdev':
         from qualify_libblockdev import qualify as qualify_libblockdev
         qualify_libblockdev(ROOT)
@@ -1782,6 +1791,8 @@ if __name__ == '__main__':
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
     if name=='cups':conffiles=[arg for file in sorted((destination/'etc/cups').iterdir()) if file.is_file() for arg in ['--conffile','/'+str(file.relative_to(destination))]]
+    if name=='libtirpc':conffiles=['--conffile','/etc/bindresvport.blacklist','--conffile','/etc/netconfig']
+    if name=='udisks2':conffiles=['--conffile','/etc/udisks2/udisks2.conf']
     if name=='libblockdev':conffiles=['--conffile','/etc/libblockdev/3/conf.d/00-default.cfg']
     if name=='lvm2':
         conffiles=[value for path,row in sorted(before['entries'].items())

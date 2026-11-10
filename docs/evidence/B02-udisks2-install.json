@@ -1,0 +1,159 @@
+{
+  "native": {
+    "step": "b02-udisks2-install",
+    "started": "2026-11-10T23:47:28.929276+00:00",
+    "finished": "2026-11-10T23:47:47.156867+00:00",
+    "recipe_sha256": "781b2dd95dfb83b96121d38c45dc98c7a73d08ffef73e476cf0ec87fbcc76c4b",
+    "postcheck_sha256": "508b087f178d1adda981eb5cf3a4197200e47ad43addc56e23abeb5cfb26bfe9",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 122,
+    "log_sha256": "c0ffbab8bedcfaaaefec4e294c8359916bb97420daa63cea12318bf46d1ab6a0",
+    "receipt_sha256": "ebee07ea6358ca32a82f352e0403d77821535a9558334e8888cf36950cd9a59e"
+  },
+  "consumer": {
+    "C_consumer": "UDisks local D-Bus skeleton properties and two object lifecycles passed\n",
+    "GI_consumer": "UDisks 2 GI metadata and two local manager objects passed\n",
+    "conffile": "/etc/udisks2/udisks2.conf",
+    "notices_verified": 2,
+    "unit_enable_links_added": false,
+    "scope": "Installed local C/GI under UID101 and NNP with private runtime, devices and network. Daemon was not invoked.",
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "udisks2",
+    "version": "2.11.2-1+toddy1",
+    "archive_sha256": "d42b688f1b51a49d8881c5a0123031ed229dd402a0f107c4af164c46c8494f5e",
+    "recipe_sha256": "781b2dd95dfb83b96121d38c45dc98c7a73d08ffef73e476cf0ec87fbcc76c4b",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "udisks2",
+        "version": "2.11.2",
+        "filename": "udisks-2.11.2.tar.bz2",
+        "url": "https://github.com/storaged-project/udisks/releases/download/udisks-2.11.2/udisks-2.11.2.tar.bz2",
+        "sha256": "18630a8aad806bea0bc626ce97e71e50ec82c742956ac1c834a4275f8f22207b",
+        "reference": "BLFS13.1-systemd general/udisks2.html",
+        "book_page_sha256": "02080335693b5cc54bc693016595fc40f2525e25ab06f4199c9171c221f9bf94",
+        "book_md5": "9e8e8c7f43257bc501b4896f43db9eb8",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "installed": true,
+    "payload_count": 285,
+    "supporting_build_scripts_sha256": "634eb44a2bf32bdf2a091b598d615f4c8bd5c70b807bc71cccaefc3fcdf8f68b",
+    "payload_sha256": "76f1331c9f064b63d7f0f2a97a2ced7d4e709230a8bf43dbfc5c4420b0d03c19"
+  },
+  "installed_notices": {
+    "sources": [
+      {
+        "filename": "udisks-2.11.2.tar.bz2",
+        "source_sha256": "18630a8aad806bea0bc626ce97e71e50ec82c742956ac1c834a4275f8f22207b",
+        "url": "https://github.com/storaged-project/udisks/releases/download/udisks-2.11.2/udisks-2.11.2.tar.bz2",
+        "notices": [
+          {
+            "path": "udisks-2.11.2/COPYING",
+            "sha256": "98046e932dc6c739001e79d7079a3bd958fc55475dcd917d27f884c0c93525cc",
+            "size": 44201
+          },
+          {
+            "path": "udisks-2.11.2/AUTHORS",
+            "sha256": "5364a75c2ed9fb617474f0d8dd887e1eb98d852e89405400650f5e85ffe62c32",
+            "size": 5815
+          }
+        ]
+      }
+    ],
+    "scope": "Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply"
+  },
+  "policy_review": {
+    "manifest": "eba2f9ff24bdcac0c60d69a85a7e7b21ce33484b9cdfbb52bc799dd1f86d3053",
+    "policy_paths": [
+      {
+        "path": "etc/udisks2/mount_options.conf.example",
+        "sha256": "fff7472e0ba4a7e093ae4c1f64ee53a9fa472924b66706ecae2aba9a0401cf7f"
+      },
+      {
+        "path": "etc/udisks2/udisks2.conf",
+        "sha256": "b9c2c8bb0c4e84f419bbc4d0d18d934f3cdfb627d61f8c00080b5e6847852fed"
+      },
+      {
+        "path": "usr/share/dbus-1/system-services/org.freedesktop.UDisks2.service",
+        "sha256": "dec4c90801858db84388b1a0290d83af306a7ba822f614bb3a10fa9fe9709408"
+      },
+      {
+        "path": "usr/share/dbus-1/system.d/org.freedesktop.UDisks2.conf",
+        "sha256": "fd5571a72c642612275951ed6b6e0cf7861f00aa22ce1ac8e9961e6b0d9d9577"
+      },
+      {
+        "path": "usr/share/polkit-1/actions/org.freedesktop.UDisks2.btrfs.policy",
+        "sha256": "3ebc136498a842dcdd9f4c44c97b5cb2c185f292a20b26bdb1eec4ae6cf3eb4b"
+      },
+      {
+        "path": "usr/share/polkit-1/actions/org.freedesktop.UDisks2.policy",
+        "sha256": "18e40c61e863ecd138880da4352d3be51c40979835490aaea8938a725fc923e7"
+      },
+      {
+        "path": "usr/lib/systemd/system/udisks2.service",
+        "sha256": "edbe6a50b0f8bdbd29f01fba10e96333c3523c2c1cbb6d91c1326da99b2ff3c2"
+      },
+      {
+        "path": "usr/lib/tmpfiles.d/udisks2.conf",
+        "sha256": "27a7496ddf7e465995059a0410d47387b9e82ccd7aac9c3763f2ac6659ca9c21"
+      },
+      {
+        "path": "usr/lib/udev/rules.d/80-udisks2.rules",
+        "sha256": "a43a6b6d712f70049a135fd447eaaa0ea30c3e026ff98226b12417688dd19a97"
+      }
+    ],
+    "systemd": [
+      "Type=dbus",
+      "BusName=org.freedesktop.UDisks2",
+      "ExecStart=/usr/libexec/udisks2/udisksd",
+      "WantedBy=graphical.target"
+    ],
+    "dbus": [
+      "Name=org.freedesktop.UDisks2",
+      "Exec=/usr/libexec/udisks2/udisksd",
+      "User=root",
+      "SystemdService=udisks2.service"
+    ],
+    "polkit_action_count": 53,
+    "polkit_examples": {
+      "org.freedesktop.udisks2.filesystem-mount": {
+        "allow_any": "auth_admin",
+        "allow_inactive": "auth_admin",
+        "allow_active": "yes"
+      },
+      "org.freedesktop.udisks2.filesystem-mount-system": {
+        "allow_any": "auth_admin",
+        "allow_inactive": "auth_admin",
+        "allow_active": "auth_admin_keep"
+      },
+      "org.freedesktop.udisks2.encrypted-unlock": {
+        "allow_any": "auth_admin",
+        "allow_inactive": "auth_admin",
+        "allow_active": "yes"
+      },
+      "org.freedesktop.udisks2.loop-setup": {
+        "allow_any": "auth_admin",
+        "allow_inactive": "auth_admin",
+        "allow_active": "yes"
+      },
+      "org.freedesktop.udisks2.modify-device": {
+        "allow_any": "auth_admin",
+        "allow_inactive": "auth_admin",
+        "allow_active": "yes"
+      }
+    },
+    "modes_no_setuid_or_setgid": true
+  }
+}

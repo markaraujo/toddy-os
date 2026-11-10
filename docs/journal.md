@@ -3428,3 +3428,5 @@ remains parked; next eligible CUPS source/build review.
 | 2026-11-10 | B02 owned Popt/Cryptsetup, staged Libblockdev | Promote and check local installed SDKs, then build Libblockdev with required GI and Python. Reconcile probe/collector errors only | Popt and Cryptsetup native 0/0. Cryptsetup four original programs, 155 symbols and local metadata refusal/reload. Libblockdev three core cases, two crypto plugin lifecycles. Native Libblockdev then UDisks next. |
 
 | 2026-11-10 | B02 owned Libblockdev and staged UDisks | Verify installed GI/crypto SDK. Reclaim exact Qtbase copy, resume UDisks after offline docs and GI property corrections | Libblockdev native 0/0, 106 paths. UDisks 23 original cases and local C/GI passed. Privileged daemon and native package review next. |
+
+| 2026-11-10 | B02 owned UDisks and TI-RPC | Install UDisks without service activation. Pin Samba and core prerequisites. Correct exact upstream TI-RPC documentation link omission and validate XDR | UDisks and TI-RPC native 0/0. UDisks daemon authorization/device testing pending. Rpcsvc-proto build next. |

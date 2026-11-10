@@ -1,0 +1,76 @@
+{
+  "stage": {
+    "version": "1.3.7",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_suite_supplied": false,
+    "consumer": "TI-RPC XDR byte order, truncation refusal and two local recoveries passed\n",
+    "gssapi_linkage": true,
+    "artifacts_map_digest": "e78c5e36820afefe29e3e0d7aa0a16b1cdefc697861bd8171b2307c728455381",
+    "artifacts_count": 64,
+    "stage_sha256_map_digest": "c1fd8ecc7b4bc5235b779284d8bc09310333019ee9d6f863face87049b808ca2",
+    "stage_sha256_count": 75
+  },
+  "manifest_sha256": "cad8af60ed7d1bf24db3badb11e132513bcf28f43dcb63e5f8d81b82fbf123da",
+  "manifest_entries": 89,
+  "job": {
+    "pid": 166785,
+    "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+    "proc_start_ticks": "2682229",
+    "started_unix": 1794354721.1302717,
+    "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+    "exit": 0,
+    "command_sha256": "12f3918e525b4a920782d5832e01742c4df24859c04bbefd58f72c5286b77906"
+  },
+  "prepared": {
+    "source_sha256": "b47d3ac19d3549e54a05d0019a6c400674da716123858cfdb6d3bdd70a66c702",
+    "reference": "BLFS13.1-systemd basicnet/libtirpc.html",
+    "book_page_sha256": "40c841424c9532a0bc12332557d3aae8339dc710273db032b784d87aa716d330",
+    "source_patches": [],
+    "recipe_sha256": "a42583357dbaff4f6f27e86188f522de1704ae83ed9b105353d09dcf101e9d88",
+    "source_omissions": [
+      "INSTALL -> /usr/share/automake-1.17/INSTALL"
+    ],
+    "probe_sha256": "662a73f8973d178f8545e54e7353c1b2a62dbc9ae8c72e0d5e6cf0831cc3551e"
+  },
+  "logs": [
+    {
+      "path": "configure.log",
+      "sha256": "57cb713314ced7cac3ec9b03e4dacfd7f3ae902afe888ea926297c37d3052f51"
+    },
+    {
+      "path": "original-build.log",
+      "sha256": "0db90d05df173fe47bbc12705aa129d9c2b589ff49cb55cfe55446d0c5d7076c"
+    },
+    {
+      "path": "original-stage.log",
+      "sha256": "4e0d833d6abc1e294c9c797f396b58d51ab6aa0997e2fa4c9ff1d22c5523aa5e"
+    },
+    {
+      "path": "local-probe.log",
+      "sha256": "ef8f03b4b34b46985e1bd07ab14ed804a808ff0d06cfe2c3e6b37160abeb0ec8"
+    },
+    {
+      "path": "stage-shared-links.log",
+      "sha256": "8e6be509ea52e890f7edba4d297615c7c69fe7004431419dfc19d13357af945e"
+    }
+  ],
+  "conffiles": [
+    "etc/bindresvport.blacklist",
+    "etc/netconfig"
+  ],
+  "target_free_bytes": 17207963648,
+  "source": {
+    "name": "libtirpc",
+    "version": "1.3.7",
+    "filename": "libtirpc-1.3.7.tar.bz2",
+    "url": "https://downloads.sourceforge.net/libtirpc/libtirpc-1.3.7.tar.bz2",
+    "sha256": "b47d3ac19d3549e54a05d0019a6c400674da716123858cfdb6d3bdd70a66c702",
+    "reference": "BLFS13.1-systemd basicnet/libtirpc.html",
+    "book_page_sha256": "40c841424c9532a0bc12332557d3aae8339dc710273db032b784d87aa716d330",
+    "book_md5": "74f97df306b8d6149d3d9898a1d44c6e",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "scope": "Frozen shared library staged with MIT GSS linkage. Local in-memory XDR only, no RPC network or GSS credentials exercised."
+}

@@ -6,9 +6,23 @@ import tarfile
 
 AUTOAR_ARCHIVE = 'gnome-autoar-0.4.5.tar.xz'
 AUTOAR_REFERENCE = 'gnome-autoar-0.4.5/tests/files/extract/test-symlink-parent/reference/arextract'
+TIRPC_ARCHIVE = 'libtirpc-1.3.7.tar.bz2'
+TIRPC_INSTALL = 'libtirpc-1.3.7/INSTALL'
+TIRPC_INSTALL_TARGET = '/usr/share/automake-1.17/INSTALL'
 
 
 def validate_source_members(filename, members):
+    if filename == TIRPC_ARCHIVE:
+        path = PurePosixPath(TIRPC_INSTALL).parts
+        matches = [m for m in members if PurePosixPath(m.name).parts == path]
+        if (len(matches) != 1 or matches[0].name != TIRPC_INSTALL
+                or not matches[0].issym() or matches[0].linkname != TIRPC_INSTALL_TARGET
+                or matches[0].size != 0):
+            raise tarfile.FilterError('Frozen libtirpc documentation link identity changed')
+        if any(PurePosixPath(m.name).parts[:len(path)] == path
+               and len(PurePosixPath(m.name).parts) > len(path) for m in members):
+            raise tarfile.FilterError('Member traverses the omitted libtirpc documentation link')
+        return
     if filename != AUTOAR_ARCHIVE:
         return
     reference = PurePosixPath(AUTOAR_REFERENCE).parts
@@ -33,6 +47,12 @@ DPKG_FIFOS = frozenset({
 
 def source_filter(filename):
     def filtered(member, destination):
+        if (filename == TIRPC_ARCHIVE and member.name == TIRPC_INSTALL
+                and member.issym() and member.linkname == TIRPC_INSTALL_TARGET
+                and member.size == 0):
+            # Discard this reference to the upstream packager's Automake docs.
+            # Never resolve or materialize the external path.
+            return None
         if (filename == AUTOAR_ARCHIVE and member.name == AUTOAR_REFERENCE
                 and member.issym() and member.linkname == '/tmp'
                 and member.size == 0):

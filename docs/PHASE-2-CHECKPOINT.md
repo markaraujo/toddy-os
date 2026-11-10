@@ -197,18 +197,46 @@ passed. Job 2 then exited 1 because the generated GI accessors are explicitly
 not introspectable. udisks2-gi-3 PID 165234 terminal 0 after using the local
 GObject property. 71 ELF, 101 staged files and nine logs unchanged across
 that correction. [Stage evidence](evidence/B02-udisks2-stage.json).
-No native package, real daemon or device activation. No writer remains.
-Last target free 17,236,418,560 B. Do not replay source, build, tests or probes.
+The staged checks did not activate the real daemon or devices.
+Do not replay source, build, tests or probes.
 
-EXACT NEXT: qualify three UDisks receipts and stage manifest
-eba2f9ff24bdcac0c60d69a85a7e7b21ce33484b9cdfbb52bc799dd1f86d3053.
-Review exact staged D-Bus activation files, Systemd unit, udev rules,
-Polkit policy and config paths. Keep default authorization and use a single
-full-root native transaction with an installed no-device C/GI probe.
-Prepare real daemon authorization/refusal and device tests only in a
-disposable VM. Do not activate the service on the builder. Check actual
-host/guest reserves and lock. Then continue Settings closure, including
-Samba, and the pending GNOME session work. Stop after accepted B02.
+UDisks native b02-udisks2-install PID 165905 terminal 0/0, 122 changed
+paths, 285 payload entries, archive SHA256
+d42b688f1b51a49d8881c5a0123031ed229dd402a0f107c4af164c46c8494f5e.
+[Native evidence](evidence/B02-udisks2-install.json) includes exact staged
+policy, installed ABI/APT, conffile and C/GI under UID 101 with private
+runtime/devices/network. Retained 53 upstream Polkit actions, D-Bus root
+activation and Systemd service declarations. No enable links added and
+daemon not invoked. A disposable native VM still needs actual mount,
+authorization refusal, system-device policy and service tests. No replay.
+
+Samba 4.24.6 official archive is frozen. Exact GNOME Settings source shows
+printers links pkg-config smbclient and the About panel calls UDisks at
+runtime. Samba source and its libtirpc, rpcsvc-proto and Parse::Yapp frozen
+references are pinned. Do not conflate the Samba client SDK with server
+activation. Full book build estimates 757 MB with tests. Verify resource
+capacity and upstream build targets before transferring the larger tree.
+
+TI-RPC 1.3.7 source preparation 1 refused the upstream absolute INSTALL
+link before extraction. Preparation 2 reused the same verified archive
+and omitted only that exact Automake documentation pointer under a
+whole-archive identity and traversal guard. Actual libtirpc-1 PID 166785
+terminal 0. [Stage](evidence/B02-libtirpc-stage.json) confirms real XDR
+endian/refusal/recovery, owned MIT GSS linkage, no upstream suite supplied.
+Native b02-libtirpc-install PID 171943 terminal 0/0, 92 changed paths,
+96 payload entries, archive SHA256
+9c4731c0cd3b777dd3559bd0d2cf279282f9b395bdaf544b56751c35b6f43c61.
+[Native evidence](evidence/B02-libtirpc-install.json) confirms installed
+C/XDR, ABI, exact conffiles and APT. No RPC network or GSS authentication.
+No writer remains. Last target free 17,205,121,024 B. Never replay.
+
+EXACT NEXT: build frozen rpcsvc-proto 1.4.4. Verify actual host/guest reserves
+and lock. The book has no upstream suite. Run a local rpcgen fixture that
+generates XDR C, compiles against the installed TI-RPC and validates a
+roundtrip and invalid-input refusal without network activity. Then qualify
+Parse::Yapp 1.21 and inspect the remaining Samba closure. Cold native tests
+require measured host headroom and their own isolated VM. UDisks policy,
+Settings/Samba and GNOME session remain pending. Stop after accepted B02.
 
 ### Previous Settings prerequisites
 
@@ -264,7 +292,7 @@ then only their required selected closure/current owned package state. GNOME
 Control Center frozen page lists UDisks2.11.2/Samba4.24.6 as required.
 UDisks/libblockdev exact official archives are cached/SHA-pinned after frozen
 MD5/header-path validation, [source proof](evidence/B02-udisks-source-preflight.json).
-No guest extraction/job/native acceptance. Samba has no pinned archive row yet.
+Historical source-only handoff. Current storage and Samba state is recorded above.
 Inspect the required selected transitive closure and existing owned libraries;
 then prepare one missing eligible leaf. Preserve core Settings panels, no silent
 dependency/feature disable or foundation upgrade. CUPS filters/printing is not a

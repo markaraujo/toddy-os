@@ -95,6 +95,26 @@ class SourceFilterTests(unittest.TestCase):
             with self.assertRaises(tarfile.OutsideDestinationError):
                 module.source_filter('AppStream-1.1.6.tar.xz')(member, directory)
 
+    def test_libtirpc_drops_only_the_reviewed_external_documentation_link(self):
+        with tempfile.TemporaryDirectory() as directory:
+            member = tarfile.TarInfo(module.TIRPC_INSTALL)
+            member.type = tarfile.SYMTYPE
+            member.linkname = module.TIRPC_INSTALL_TARGET
+            module.validate_source_members(module.TIRPC_ARCHIVE, [member])
+            self.assertIsNone(module.source_filter(module.TIRPC_ARCHIVE)(member, directory))
+            with self.assertRaises(tarfile.AbsoluteLinkError):
+                module.source_filter('other.tar.bz2')(member, directory)
+            child = tarfile.TarInfo('./' + member.name + '/child')
+            for extra in (member, child):
+                with self.assertRaises(tarfile.FilterError):
+                    module.validate_source_members(module.TIRPC_ARCHIVE, [member, extra])
+            member.linkname = '/etc/passwd'
+            with self.assertRaises(tarfile.FilterError):
+                module.validate_source_members(module.TIRPC_ARCHIVE, [member])
+            with self.assertRaises(tarfile.AbsoluteLinkError):
+                module.source_filter(module.TIRPC_ARCHIVE)(member, directory)
+            self.assertEqual(list(Path(directory).iterdir()), [])
+
     def test_only_frozen_dpkg_fifos(self):
         with tempfile.TemporaryDirectory() as directory:
             for name in module.DPKG_FIFOS:
