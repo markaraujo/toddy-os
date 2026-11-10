@@ -1,0 +1,733 @@
+{
+  "scope": "Owned frozen GStreamer1.28.6 core/Check/GI/CLI;107original programs OK/one optional validate.simplest SKIP,406ELFs/213stagefiles. Actual installed UID101 raw caps/buffer/missing-element refusal/two synthetic EOS\u2192NULL cycles/SDK/APT0; no external route/privileged PTP helper. Hardware/codecs/audio/video/PipeWire/GNOME screencast acceptance pending.",
+  "source": {
+    "name": "gstreamer",
+    "version": "1.28.6",
+    "filename": "gstreamer-1.28.6.tar.xz",
+    "url": "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.28.6.tar.xz",
+    "sha256": "62b6b9f0ad3147a6dd6420ac64a91180b14e990695bddd353b96041611d052ca",
+    "reference": "BLFS13.1-systemd multimedia/gstreamer10.html",
+    "book_page_sha256": "324de34364b05f5e20b5160fdb90d4f696273fcd1f3c2434bd6a8c271db1a4c3",
+    "book_md5": "3d16d7912727ea85ab90b9e5f3bc6e8a",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Frozen GStreamer core/Check/CLI/GI with original core suites in private loopback-only namespace; PTP privileged clock helper/backtrace extras/docs/examples omitted. Own raw caps/buffer/two synthetic fakesrc-EOS-stop cycles/missing-element refusal only; no hardware codecs/audio/GNOME screencast acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "gstreamer:validate.simplest",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstabi",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gst",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstatomicqueue",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstbuffer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstbufferlist",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstbufferpool",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstchildproxy",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstclock",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstcontext",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstcontroller",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstcapsfeatures",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstcaps",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstdatetime",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstdeinit",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstdevice",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstelementfactory",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstghostpad",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstidstr",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstidstr_noinline",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstinfo",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstiterator",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstmessage",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstmemory",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstmeta",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstminiobject",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstobject",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstpad",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstparamspecs",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstpipeline",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstelement",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstplugin",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstpreset",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstprotection",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstquery",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstregistry",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstpromise",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstsegment",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gststream",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gststructure",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstsystemclock",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gsttag",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstpoll",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gsttagsetter",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gsttoc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gsttask",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gsturi",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstutils",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstvalue",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstvecdeque",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:generic_states",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_adapter",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gsttocsetter",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_baseparse",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_basesrc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_basesink",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_bitreader",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_bitwriter",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_bytereader",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_bytewriter",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_bitreader_noinline",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_bytereader_noinline",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_bytewriter_noinline",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_collectpads",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_controller",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_flowcombiner",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_aggregator",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_gstharness",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_gstnettimeprovider",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_gstnetclientclock",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_libsabi",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_sparsefile",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_transform1",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_transform2",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_typefindhelper",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_queuearray",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_capsfilter",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_clocksync",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_concat",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_dataurisrc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_fakesrc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_fdsrc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_filesink",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_filesrc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_gsttestclock",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_identity",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_funnel",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_multiqueue",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_streamiddemux",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_tee",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_selector",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_queue",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_valve",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_queue2",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:pipelines_queue_error",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:pipelines_simple_launch_lines",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:pipelines_parse_launch",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:pipelines_cleanup",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:tools_gstinspect",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:pipelines_seek",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:elements_fakesink",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstbin",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstevent",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstbus",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:pipelines_stress",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:gst_gstcpp",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:libs_gstlibscpp",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gstreamer:generic_sinks",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "consumer": {
+      "version": "1.28.6",
+      "typed_caps_and_buffer": true,
+      "missing_element_refused": true,
+      "synthetic_pipeline_cycles": [
+        {
+          "cycle": 0,
+          "EOS_received": true,
+          "stop_NULL_verified": true
+        },
+        {
+          "cycle": 1,
+          "EOS_received": true,
+          "stop_NULL_verified": true
+        }
+      ],
+      "hardware_audio_video_screencast_tested": false
+    },
+    "artifacts_count": 406,
+    "artifacts_manifest_sha256": "f0b2897e547ee7ce1398294f482774c983bb4f8e43e63e93667b6dde260da526",
+    "stage_sha256_count": 213,
+    "stage_sha256_manifest_sha256": "00634a1b318d7a0a18d3e50df88ab4c38e4b5e4ea963fed55a41ecd2c8947905"
+  },
+  "original_unqualified_drivers": [
+    {
+      "name": "gstreamer:validate.simplest",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    }
+  ],
+  "native_transaction": {
+    "step": "b02-gstreamer-install",
+    "started": "2026-11-10T03:41:43.319698+00:00",
+    "recipe_sha256": "c51c1f2df76f16b397d21cae42ed149878daa976d8fb39cee41daad4db04c4df",
+    "postcheck_sha256": "1eab4be154a0744b934377273bdd4342d71905c4b33d1494537deacc3b7ad039",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "4ab7b22e301dea35b6f1199adadbddbe09ed4390c99a7722d4062bf6d115777d",
+    "recipe_pid": 6926,
+    "recipe_pgid": 6926,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T03:42:02.428340+00:00",
+    "changed_paths": 565,
+    "log_sha256": "da876ec69a6febd59621b4f6add165a5b4b7c3874f09801aeadc58c486a47bdc",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "4367e12d0bef3da42551f766c160537665bd71b5f4e710f82dec6ecd4233698c"
+  },
+  "package": {
+    "name": "gstreamer",
+    "version": "1.28.6-1+toddy1",
+    "archive_sha256": "e51ed504763515f4f607255d2f77d588bcf8820e8608f1590153418d4fcef9e0",
+    "recipe_sha256": "c51c1f2df76f16b397d21cae42ed149878daa976d8fb39cee41daad4db04c4df",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "gstreamer",
+        "version": "1.28.6",
+        "filename": "gstreamer-1.28.6.tar.xz",
+        "url": "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.28.6.tar.xz",
+        "sha256": "62b6b9f0ad3147a6dd6420ac64a91180b14e990695bddd353b96041611d052ca",
+        "reference": "BLFS13.1-systemd multimedia/gstreamer10.html",
+        "book_page_sha256": "324de34364b05f5e20b5160fdb90d4f696273fcd1f3c2434bd6a8c271db1a4c3",
+        "book_md5": "3d16d7912727ea85ab90b9e5f3bc6e8a",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "4367e12d0bef3da42551f766c160537665bd71b5f4e710f82dec6ecd4233698c",
+    "payload_count": 670,
+    "payload_manifest_sha256": "40031e783ffc0f3e5459ac1dff6eb793b768d7ab16f16a99e68041ce00919f9d"
+  },
+  "installed_consumer": {
+    "scope": "Actual installed UID101 Gst GI/typed raw caps/buffer, missing-element refusal and two synthetic fakesrc/fakesink EOS\u2192NULL cycles in private no-route namespace. SDK/APT0, optional privileged PTP helper absent; no codecs/devices/audio/video/GNOME screencast acceptance. Private user registry removed.",
+    "consumer": {
+      "version": "1.28.6",
+      "typed_caps_and_buffer": true,
+      "missing_element_refused": true,
+      "synthetic_pipeline_cycles": [
+        {
+          "cycle": 0,
+          "EOS_received": true,
+          "stop_NULL_verified": true
+        },
+        {
+          "cycle": 1,
+          "EOS_received": true,
+          "stop_NULL_verified": true
+        }
+      ],
+      "hardware_audio_video_screencast_tested": false
+    },
+    "SDK": "1.28.6",
+    "private_registry_removed": true,
+    "privileged_PTP_helper_absent": true
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gstreamer-install-evidence.tar.gz",
+    "sha256": "a35c2d22ee5de6eca4c28bfc8610825d411ac1543c469cc850dfea2deb1d5f39",
+    "members": [
+      "build/b02-gstreamer-install.log",
+      "build/b02-gstreamer-install.manifest.json",
+      "build/b02-gstreamer-install.success.json",
+      "package.json",
+      "phase2/b02-gstreamer-install-controller.log",
+      "phase2/b02-gstreamer-install-timing.json",
+      "phase2/gstreamer-1-controller.log",
+      "phase2/gstreamer-1.exit",
+      "phase2/gstreamer-1.job.json",
+      "phase2/gstreamer-1.log",
+      "phase2/gstreamer-installed-consumer.json",
+      "phase2/gstreamer-stage.json",
+      "work/CLI-version.log",
+      "work/compile/meson-logs/testlog.json",
+      "work/native-consumer.json",
+      "work/original-registered-tests.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}

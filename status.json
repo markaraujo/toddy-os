@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-10T03:28:09.122298+00:00",
+  "updated_at": "2026-11-10T03:43:39.516191+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05\u2013B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -730,14 +730,16 @@
       "Owned GDM50.2 full Wayland/PAM/Systemd/libgdm/GI:588entries native install0 then missing optional sysusers wrapper127; group-only recovery2/post0/0,5paths/588payload+archive unchanged/passwd+shadow unchanged. Modern dynamic userdb/group21/no static UID, actual UID101 C/GI/SDK/CLI0. No daemon/greeter/keyring/login/GUI acceptance, ADR0180.",
       "Owned SettingsDaemon50.1toddy2:11original drivers/no skips incl9private power programs26cases,134ELFs/156files. First package dependency revision error recovered metadata-only0/0,3paths/458payload identical. Actual installed private lib/three CLI/UID101 private24schema enum refusal/reset/SDK0. Stock cache/real plugin/audio/power/hardware/GNOME pending, ADR0181.",
       "Shell50.4 owned:128ELFs/149stagefiles; own probe2 recovery0/all hashes unchanged; native install/post0/0,547entries; actual CLI/UID101 GI/JS/private schemas0. No actual GNOME desktop/login/basic-app acceptance.",
-      "GTK4same-upstreamtoddy8 stock schema union:74files/16owners,115schemas/900keys/prior82schemas/623key contracts preserved. Native install/post0/0,16paths/906prior nonlegal entries unchanged; actual default-source full lookup0. No user preferences/GTK rebuild/GUI acceptance, ADR0183."
+      "GTK4same-upstreamtoddy8 stock schema union:74files/16owners,115schemas/900keys/prior82schemas/623key contracts preserved. Native install/post0/0,16paths/906prior nonlegal entries unchanged; actual default-source full lookup0. No user preferences/GTK rebuild/GUI acceptance, ADR0183.",
+      "First native Shell1 FAILED: actual7.1.8/Systemd/Wayland renderer/virtual monitor initialized, no automation/PNG by150s. Missing Gst/unregistered logind user/Settings observed, exact startup wait cause unisolated. Actual child0/OOMfalse/backing unchanged; builder/six mounts/source restored. No GUI/login acceptance, ADR0184.",
+      "Owned GStreamer1.28.6 core:107original OK/one optional validate SKIP,406ELFs/213stagefiles. Native install/post0/0,565paths/670entries, actual UID101 GI/caps/buffer/refusal/two synthetic EOS\u2192NULL cycles/SDK/APT0; no devices/codecs/audio/GNOME screencast acceptance."
     ],
-    "running": "No active guest writer. Next first actual native Shell session on fresh disposable overlay; GDM/login/apps/offline/focus/resource gates remain. Complete ALL B02 then stop.",
+    "running": "No active guest writer. Next GST base1.28.6 source/options/dependency preflight and one isolated build; required Settings/basic apps and registered PAM/logind session before new native Shell attempt. Complete ALL B02 then stop.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-10T03:28:09.122298+00:00",
+    "verified_at": "2026-11-10T03:43:39.516191+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

@@ -1,0 +1,108 @@
+{
+  "scope": "FAILED first native installed Shell/private-user-bus attempt. Renderer/virtual monitor initialized, no automation/PNG by150s. No graphical/GDM/login acceptance. Exact startup wait cause unisolated; missing Gst typelib, unregistered logind user and absent Settings app observed. Do not repeat unchanged.",
+  "input_commit": "c295dc5e0a2d85598d510248f298275e0c0ce582",
+  "probe_sha256": "5bb9073e959dceb739535fc581471c5d27934a8609e2f0dd899a0159fd638ade",
+  "accepted_inputs": {
+    "versions": {
+      "gnome-shell": "50.4-1+toddy1",
+      "gtk": "4.22.4-1+toddy8",
+      "mutter": "50.4-1+toddy1"
+    },
+    "verified_native_files": 3016,
+    "builder_boot_id": "e540bdef-376f-46ae-9527-58d9641af256",
+    "target_serial": "TODDY-LFS-TARGET",
+    "native_kernel_expected": "7.1.8-toddy"
+  },
+  "report": {
+    "actions": null,
+    "all_selected_exits_zero": false,
+    "command": [
+      "dbus-run-session",
+      "--",
+      "gnome-shell",
+      "--wayland",
+      "--headless",
+      "--virtual-monitor=1280x720",
+      "--wayland-display=toddy-shell-proof",
+      "--automation-script=/tmp/toddy-native-shell-s8a_uz8b/automation.js"
+    ],
+    "elapsed_seconds": 150.003,
+    "kernel": "7.1.8-toddy",
+    "native_client_images": [],
+    "observation_timeout_seconds": 150,
+    "pid1": "systemd",
+    "scope": "First actual native Shell headless Wayland/software rendering with supported automation, private user bus and real GTK perf-helper window. No GDM/authenticated GNOME session/basic apps/physical acceptance. No unsafe-mode or installed preference change.",
+    "shell_exit": null,
+    "shell_log": "libmutter-Message: 03:31:45.184: Running GNOME Shell (using mutter 50.4) as a Wayland display server\nlibmutter-Message: 03:31:45.281: Created surfaceless renderer without GPU\nlibmutter-Message: 03:31:45.304: Added virtual monitor Meta-0\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Activating service name='org.a11y.Bus' requested by ':1.1' (uid=101 pid=274 comm=\"gnome-shell --wayland --headless --virtual-monitor\" label=\"kernel\")\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Successfully activated service 'org.a11y.Bus'\nlibmutter-Message: 03:31:45.314: Using Wayland display name 'toddy-shell-proof'\ndbus-daemon[303]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=101 pid=274 comm=\"gnome-shell --wayland --headless --virtual-monitor\" label=\"kernel\")\n\n(gnome-shell:274): libmutter-WARNING **: 03:31:45.358: Failed to connect to colord daemon: Error calling StartServiceByName for org.freedesktop.ColorManager: Unit colord.service not found.\ndbus-daemon[303]: Successfully activated service 'org.a11y.atspi.Registry'\nSpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Activating service name='org.gnome.Shell.Screencast' requested by ':1.0' (uid=101 pid=274 comm=\"gnome-shell --wayland --headless --virtual-monitor\" label=\"kernel\")\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Activating service name='org.gnome.Shell.CalendarServer' requested by ':1.0' (uid=101 pid=274 comm=\"gnome-shell --wayland --headless --virtual-monitor\" label=\"kernel\")\n\n(org.gnome.Shell.Screencast:312): Gjs-CRITICAL **: 03:31:45.782: JS ERROR: Error: Requiring Gst, version 1.0: Typelib file for namespace 'Gst', version '1.0' not found\nrequire@resource:///org/gnome/gjs/modules/esm/gi.js:16:28\n@gi://Gst:3:25\n\n(org.gnome.Shell.Screencast:312): Gjs-CRITICAL **: 03:31:45.782: Module file:///usr/share/gnome-shell/org.gnome.Shell.Screencast threw an exception\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Activated service 'org.gnome.Shell.Screencast' failed: Process org.gnome.Shell.Screencast exited with status 1\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Activating service name='org.gnome.evolution.dataserver.Sources5' requested by ':1.5' (uid=101 pid=323 comm=\"/usr/libexec/gnome-shell-calendar-server\" label=\"kernel\")\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Successfully activated service 'org.gnome.evolution.dataserver.Sources5'\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Activating service name='org.gnome.evolution.dataserver.Calendar8' requested by ':1.5' (uid=101 pid=323 comm=\"/usr/libexec/gnome-shell-calendar-server\" label=\"kernel\")\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Successfully activated service 'org.gnome.Shell.CalendarServer'\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Successfully activated service 'org.gnome.evolution.dataserver.Calendar8'\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Activating service name='org.gnome.evolution.dataserver.AddressBook10' requested by ':1.7' (uid=101 pid=344 comm=\"/usr/libexec/evolution-calendar-factory\" label=\"kernel\")\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Successfully activated service 'org.gnome.evolution.dataserver.AddressBook10'\nGNOME Shell-Message: 03:31:45.870: Registering session with GDM\nGNOME Shell-Message: 03:31:45.875: Error registering session with GDM: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.DisplayManager was not provided by any .service files\nGNOME Shell-Message: 03:31:45.879: Error connecting to the screencast service\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Activating service name='org.freedesktop.portal.IBus' requested by ':1.9' (uid=101 pid=384 comm=\"ibus-daemon --panel disable\" label=\"kernel\")\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Successfully activated service 'org.freedesktop.portal.IBus'\n\n(gnome-shell:274): GNOME Shell-CRITICAL **: 03:31:45.968: Could not get a proxy for user 101: Gio.IOErrorEnum: GDBus.Error:org.freedesktop.login1.NoSuchUser: User ID 101 is not logged in or lingering\n\nStack trace:\n  asyncCallback@resource:///org/gnome/gjs/modules/core/overrides/Gio.js:115:23\n  @resource:///org/gnome/shell/ui/init.js:20:20\n  \n\n(gnome-shell:274): GNOME Shell-WARNING **: 03:31:45.971: Failed to start state machine: can't access property \"connectObject\", this._loginUser is null\nGNOME Shell-Message: 03:31:45.977: Failed to register AuthenticationAgent\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Activating service name='org.gnome.Shell.Notifications' requested by ':1.0' (uid=101 pid=274 comm=\"gnome-shell --wayland --headless --virtual-monitor\" label=\"kernel\")\n\n(gnome-shell:274): GNOME Shell-WARNING **: 03:31:46.144: Missing required core component Settings, expect trouble\u2026\n** Message: 03:31:46.153: Failed to start camera monitor\ndbus-daemon[273]: [session uid=101 pid=273 pidfd=5] Successfully activated service 'org.gnome.Shell.Notifications'\n\n(gnome-shell:274): Gvc-WARNING **: 03:31:46.160: Failed to connect context: Connection refused\nGNOME Shell-Message: 03:31:46.178: Failed to get PolKit permission: Polkit.Error: GDBus.Error:org.freedesktop.PolicyKit1.Error.Failed: Action org.freedesktop.bolt.enroll is not registered\n\n(gnome-shell:274): Gvc-WARNING **: 03:31:51.172: Failed to connect context: Connection refused\n** Message: 03:34:15.148: Shutting down GNOME Shell\n",
+    "stock_schema_cache_sha256": "824567b089fb951595e4d961162d8f59406a7f70d7b86b9b01de93515bb42a2f",
+    "uid": 101
+  },
+  "actual_child_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-11-10T03:31:35.549709397Z",
+    "FinishedAt": "2026-11-10T03:34:16.219564227Z"
+  },
+  "summary": {
+    "kernel": "7.1.8-toddy",
+    "all_selected_exits_zero": false,
+    "report_sha256": "71d9c11c82ad568277593678e89484e969d7577049f844b7cac7baaec3fa6647",
+    "chunks": 3
+  },
+  "backing_unchanged_before_restart": true,
+  "builder_restore": {
+    "state": "complete",
+    "scope": "Restore existing six scratch filesystems and same authenticated Systemd read-only bind after actual native child exit/backing reconciliation; no trim/format/recreation",
+    "boot_id": "b4a89c17-0d00-43c2-ad3a-a90982468c85",
+    "restored_volumes": [
+      {
+        "work": "/mnt/lfs/sources/phase2/work/gtk-1",
+        "uuid": "1593a243-4338-45fb-86f6-7b699b4b3235",
+        "image_inode": 786439,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/desktop-resources-1",
+        "uuid": "a1385a38-a9ed-481b-96d8-b0120b4f1e7c",
+        "image_inode": 786440,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/doxygen-1",
+        "uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+        "image_inode": 786441,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/glycin-1",
+        "uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+        "image_inode": 786463,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/pam-1",
+        "uuid": "cb42a655-39b6-4988-ad44-1c643059db63",
+        "image_inode": 786443,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/systemd-pam-1",
+        "uuid": "8163c489-7aab-4b0b-be6d-f36de1645e74",
+        "image_inode": 786446,
+        "restored_existing_filesystem": true
+      }
+    ],
+    "target_free_bytes": 17624244224
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-shell-first-native-failed-evidence.tar.gz",
+    "sha256": "bfd8bca18e5b5862b5bf6e52dea993f44a7ddf6310328d925931d6abcc9e7ec1"
+  }
+}

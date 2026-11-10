@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T03:28:09.122298+00:00
+Updated: 2026-11-10T03:43:39.516191+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T03:28:09.122298+00:00
+Last verified: 2026-11-10T03:43:39.516191+00:00
 
 Verified:
 
@@ -125,8 +125,10 @@ Verified:
 - Owned SettingsDaemon50.1toddy2:11original drivers/no skips incl9private power programs26cases,134ELFs/156files. First package dependency revision error recovered metadata-only0/0,3paths/458payload identical. Actual installed private lib/three CLI/UID101 private24schema enum refusal/reset/SDK0. Stock cache/real plugin/audio/power/hardware/GNOME pending, ADR0181.
 - Shell50.4 owned:128ELFs/149stagefiles; own probe2 recovery0/all hashes unchanged; native install/post0/0,547entries; actual CLI/UID101 GI/JS/private schemas0. No actual GNOME desktop/login/basic-app acceptance.
 - GTK4same-upstreamtoddy8 stock schema union:74files/16owners,115schemas/900keys/prior82schemas/623key contracts preserved. Native install/post0/0,16paths/906prior nonlegal entries unchanged; actual default-source full lookup0. No user preferences/GTK rebuild/GUI acceptance, ADR0183.
+- First native Shell1 FAILED: actual7.1.8/Systemd/Wayland renderer/virtual monitor initialized, no automation/PNG by150s. Missing Gst/unregistered logind user/Settings observed, exact startup wait cause unisolated. Actual child0/OOMfalse/backing unchanged; builder/six mounts/source restored. No GUI/login acceptance, ADR0184.
+- Owned GStreamer1.28.6 core:107original OK/one optional validate SKIP,406ELFs/213stagefiles. Native install/post0/0,565paths/670entries, actual UID101 GI/caps/buffer/refusal/two synthetic EOS→NULL cycles/SDK/APT0; no devices/codecs/audio/GNOME screencast acceptance.
 
-Running: No active guest writer. Next first actual native Shell session on fresh disposable overlay; GDM/login/apps/offline/focus/resource gates remain. Complete ALL B02 then stop.
+Running: No active guest writer. Next GST base1.28.6 source/options/dependency preflight and one isolated build; required Settings/basic apps and registered PAM/logind session before new native Shell attempt. Complete ALL B02 then stop.
 
 Remaining:
 

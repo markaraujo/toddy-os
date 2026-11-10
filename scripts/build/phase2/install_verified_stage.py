@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gstreamer': ('1.28.6', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2)', 'gstreamer-1.28.6.tar.xz', 'usr/lib/pkgconfig/gstreamer-1.0.pc'),
     'gnome-shell': ('50.4', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), mutter (= 50.4-1+toddy1), gjs (= 1.88.1-1+toddy1), gtk (>= 4.22.4-1+toddy7), evolution-data-server (= 3.60.2-1+toddy1), gcr (= 4.4.0.1-1+toddy1), gnome-desktop (= 44.5-1+toddy1), libnma (= 1.10.6-1+toddy1), networkmanager (= 1.58.1-1+toddy1), gdm (= 50.2-1+toddy1), libgweather (= 4.6.0-1+toddy1), ibus (= 1.5.34~rc2-1+toddy1), libsecret (= 0.21.7-1+toddy1), pipewire (= 1.6.8-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1), at-spi2-core (= 2.60.6-1+toddy1), libxml2 (= 2.15.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), libcanberra (= 0.30-1+toddy2), polkit (= 127-1+toddy1), systemd (>= 261.2-1+toddy3)', 'gnome-shell-50.4.tar.xz', 'usr/bin/gnome-shell'),
     'gnome-settings-daemon': ('50.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gnome-desktop (= 44.5-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1), geocode-glib (= 3.26.4-1+toddy1), libgweather (= 4.6.0-1+toddy1), geoclue (= 2.8.2-1+toddy1), libcanberra (= 0.30-1+toddy2), libnotify (= 0.8.8-1+toddy1), pulseaudio (= 17.0-1+toddy2), polkit (= 127-1+toddy1), upower (= 1.91.3-1+toddy1), systemd (>= 261.2-1+toddy3), libgudev (= 238-1+toddy1), gcr (= 4.4.0.1-1+toddy1), colord (= 1.4.8-1+toddy1), networkmanager (= 1.58.1-1+toddy1), alsa-lib (= 1.2.16.1-1+toddy1)', 'gnome-settings-daemon-50.1.tar.xz', 'usr/lib/pkgconfig/gnome-settings-daemon.pc'),
     'gdm': ('50.2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libgudev (= 238-1+toddy1), accountsservice (= 26.27.3-1+toddy1), polkit (= 127-1+toddy1), systemd (>= 261.2-1+toddy3), linux-pam (= 1.7.2-1+toddy2), toddy-login-policy (= 0.1.0-1+toddy1), dconf (= 0.49.0-1+toddy1), json-glib (= 1.10.8-1+toddy1), dbus (>= 1.16.2-1)', 'gdm-50.2.tar.xz', 'usr/lib/pkgconfig/gdm.pc'),
@@ -1211,6 +1212,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='gstreamer':
+        from qualify_gstreamer import qualify as qualify_gstreamer
+        qualify_gstreamer(ROOT)
     if name=='gnome-shell':
         from qualify_gnome_shell import qualify as qualify_gnome_shell
         qualify_gnome_shell(ROOT)

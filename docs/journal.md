@@ -3081,3 +3081,7 @@ remain required before promotion. No desktop/GUI/ISO acceptance. Full B02 then s
 2026-11-10: B02 Shell50.4 native install/post0/0,547owned entries; actual CLI/UID101 GI/source JS/private schema0. Initial own type/range assertion recovered without128ELF/149stage mutation. Original display suite/native graphical session remain pending. ADR0182/evidence saved; next controlled stock schema union.
 
 2026-11-10: B02 complete NMA/GDM/GSD/Shell stock schema union installed through GTKtoddy8:115schemas/900keys/prior82schemas/623contracts preserved, native0/0/16paths/906prior nonlegal entries unchanged. Default-source lookup0; no preference/library change or graphical acceptance. ADR0183; next first native Shell session on fresh isolated overlay.
+
+2026-11-10: First native Shell interaction attempt failed: renderer/virtual monitor initialized but no automation/PNG by150s. Missing Gst/Screencast failure/unregistered logind user/Settings observed; exact wait cause unisolated. Real child0/OOMfalse/backing unchanged, builder/six scratch/source restored. GStreamer1.28.6 frozen source/core build started, no replay or GUI acceptance. ADR0184/failure evidence retained.
+
+2026-11-10: B02 GStreamer1.28.6 core owned/native0/0/670entries after107original OK/one optional validate SKIP; UID101 GI/two synthetic pipeline EOS→NULL cycles0. Supplies missing Gst typelib, not real codecs/audio/GNOME screencast. Native Shell failure preserved; next GST base actual options/dependency preflight and one isolated build.

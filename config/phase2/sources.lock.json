@@ -2314,6 +2314,30 @@
       "book_md5": "9d486750569e7025e5d0afdcc509b93c",
       "integrity": "Trusted BLFS OSU mirror over validated HTTPS, frozen upstream HTTPS hostname certificate mismatch preserved; matched frozen book legacy MD5 and SHA256 pinned before guest extraction/use; no signature claim",
       "status": "source_verified"
+    },
+    {
+      "name": "gstreamer",
+      "version": "1.28.6",
+      "filename": "gstreamer-1.28.6.tar.xz",
+      "url": "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.28.6.tar.xz",
+      "sha256": "62b6b9f0ad3147a6dd6420ac64a91180b14e990695bddd353b96041611d052ca",
+      "reference": "BLFS13.1-systemd multimedia/gstreamer10.html",
+      "book_page_sha256": "324de34364b05f5e20b5160fdb90d4f696273fcd1f3c2434bd6a8c271db1a4c3",
+      "book_md5": "3d16d7912727ea85ab90b9e5f3bc6e8a",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "gst-plugins-base",
+      "version": "1.28.6",
+      "filename": "gst-plugins-base-1.28.6.tar.xz",
+      "url": "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.28.6.tar.xz",
+      "sha256": "0ba699c7c6c66f4ba640be78cb38a24715add9683f3e3a199f5369dc5a4f04ac",
+      "reference": "BLFS13.1-systemd multimedia/gst10-plugins-base.html",
+      "book_page_sha256": "ea452fd86a4f4b818bf6f5c39bbf1b8b006613dcf98e3894dfbf5e6c7f97ff30",
+      "book_md5": "cd0b2bd13e8196d5bfb20459c12a5d9b",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

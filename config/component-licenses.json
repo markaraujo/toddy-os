@@ -10998,6 +10998,26 @@
         "sha256": "110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4",
         "selection": "GFDL1.1-or-later no-invariant/cover notices select1.3; full text included in native doc directory/copyright"
       }
+    },
+    {
+      "name": "gstreamer",
+      "version": "1.28.6",
+      "license": "LicenseRef-gstreamer-per-file",
+      "evidence": "Frozen authenticated source named notices and leading C/header conditions retained, including embedded Check; per-file conditions prevail. Core/GI/synthetic pipeline only, plugins/device/audio/GNOME screencast acceptance pending.",
+      "extra_license_headers": {
+        "gstreamer-1.28.6.tar.xz": {
+          "prefixes": [
+            "gst/",
+            "libs/",
+            "plugins/",
+            "tools/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
