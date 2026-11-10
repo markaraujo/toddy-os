@@ -3314,3 +3314,22 @@ ADR0210. [GOA/MBIM custody](evidence/B02-protocol-promotion-custody.json) and
 usr duplicates, root0, original sources/compiler/workstage/archives retained.
 
 Next: qualify required Control Center leaf dependencies; no panel bypass.
+
+### B02 Colord GTK boundary — 2026-11-10T19:17:55.040712+00:00
+
+### Owned Colord GTK3/GTK4 integration libraries — 2026-11-10
+
+[Stage](evidence/B02-colord-gtk-stage.json):17ELFs/15files, both original display/profile
+tests compiled but unexecuted. Optional Vala omitted because owned Colord lacks
+VAPI; GTK3 GI and both GTK libraries retained. Initial vapigen failure and own
+public version-header collision preserved; incremental/consumer-only recovery
+retained all compiler/stage bytes. [Native revision2](evidence/B02-colord-gtk-install.json)
+corrected initial wrong GTK3 revision declaration, recipe/post0/0/3changes, no
+source/compiler replay. Actual UID101/NNP/private-device/no-route separate GTK3/
+GTK4 C local non-widget GObject/empty-profile/two cycles, GTK3 GI/ABI/PC/APT0.
+No widget/profile mapping/calibration/Settings GUI/physical display acceptance.
+ADR0211. [Dependency preflight](evidence/B02-dependency-preflight.json) now rejects stale
+owned revisions before promotion/archive/unpack; actual positive/refusal and
+unchanged dpkg status passed. Four focused safety tests,335repository tests pass.
+
+Next: frozen libgtop2.41.3 source recipe/native local performance API; no guest input/job yet.

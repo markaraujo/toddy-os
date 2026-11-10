@@ -1,0 +1,91 @@
+{
+  "scope": "Frozen colord-gtk0.3.1 GTK3+GTK4 libraries, GTK3 GI; optional Vala omitted because owned Colord has no VAPI. Both original display/profile tests compiled but unexecuted, not passes. Actual separate C consumers create only local non-widget GObjects; no profile lookup/widget/color/display/service/Settings GUI/hardware acceptance.",
+  "compile_exit": 0,
+  "stage_exit": 0,
+  "original_tests_registered": [
+    {
+      "cmd": [
+        "/build/compile/libcolord-gtk/colord-gtk-test"
+      ],
+      "env": {
+        "LD_LIBRARY_PATH": "/build/compile/libcolord-gtk"
+      },
+      "name": "colord-test-private",
+      "workdir": null,
+      "timeout": 30,
+      "suite": [
+        "colord-gtk"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "6749fef@@colord-gtk-test@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/libcolord-gtk/colord-gtk4-test"
+      ],
+      "env": {
+        "LD_LIBRARY_PATH": "/build/compile/libcolord-gtk"
+      },
+      "name": "colord-gtk4-test-private",
+      "workdir": null,
+      "timeout": 30,
+      "suite": [
+        "colord-gtk"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "6749fef@@colord-gtk4-test@exe"
+      ],
+      "extra_paths": []
+    }
+  ],
+  "original_tests_executed": [],
+  "original_display_suite_pending": true,
+  "consumer": {
+    "colord-gtk": "Colord GTK local GObject/profile-empty state/two fresh cycles; no widget/display/service access\n",
+    "colord-gtk4": "Colord GTK local GObject/profile-empty state/two fresh cycles; no widget/display/service access\n"
+  },
+  "artifacts": {
+    "meson-private/sanity_check_for_c.exe": "191646a6501d425990f9a36894024258da104e5375904550c64ce420e318f3ba",
+    "client/cd-convert": "84a54870cb8a15ed0b3b6edfb9f47037018e4583edca3f65f35022a606d37c79",
+    "libcolord-gtk/libcolord-gtk4.so.1.0.3": "111bdc32c200a5d76ed9b3c32e879d41035221dc962fd3375ca74e13c5290c53",
+    "libcolord-gtk/colord-gtk-test": "3a4f59d24656c9895d0d0834b28911376838c268cc27803acbfa52ff0dc58d87",
+    "libcolord-gtk/colord-gtk4-test": "c5ec2d053ca2935b0a24723b77dfa3ea0c7298da6ee777d2ea923b58ca656c5c",
+    "libcolord-gtk/libcolord-gtk.so.1.0.3": "876f41f6b7a5a01f03db991ae8ce635736b9370ccfb390d55eefccb505132196",
+    "libcolord-gtk/libcolord-gtk4.so.1.0.3.p/cd-sample-widget-gtk4.c.o": "58fd00561bb2344f9839de64538c36f0af10cd2d61210c8b8c617be15a077902",
+    "libcolord-gtk/libcolord-gtk4.so.1.0.3.p/cd-sample-window-gtk4.c.o": "6c6ec9cd6cc941230649d08a89985e711692c731349762f3c666b5bd23eb54da",
+    "libcolord-gtk/libcolord-gtk4.so.1.0.3.p/cd-window-sync.c.o": "b34ecd9b5173a15ae2f217b4b05ebc5f5497e4da05f3a0ec14ea42b5a5e94673",
+    "libcolord-gtk/libcolord-gtk4.so.1.0.3.p/cd-window.c.o": "32fdbb35f991da0071bf30092ad69b08df95609a900b970d141aa3cc221c0939",
+    "libcolord-gtk/colord-gtk-test.p/cd-self-test.c.o": "cff25560835b8a1758d5005435e5cdfe83459b286d5b0f220c57246b1c975a02",
+    "libcolord-gtk/libcolord-gtk.so.1.0.3.p/cd-window-sync.c.o": "b34ecd9b5173a15ae2f217b4b05ebc5f5497e4da05f3a0ec14ea42b5a5e94673",
+    "libcolord-gtk/libcolord-gtk.so.1.0.3.p/cd-window.c.o": "d45fed05e07b6aebaf6d45988dc46db3d587301cb7efe0319f3e766f3c171f9d",
+    "libcolord-gtk/libcolord-gtk.so.1.0.3.p/cd-sample-window.c.o": "1d63207a9b57f72d727eb5c3c63be5ce488d8b26cb485ffc21a7af9705fcead9",
+    "libcolord-gtk/libcolord-gtk.so.1.0.3.p/cd-sample-widget.c.o": "b5486fe2e250353b2090c43210d109b62d1cf719e664d2f38d7956761fa2e499",
+    "libcolord-gtk/colord-gtk4-test.p/cd-self-test-gtk4.c.o": "b8ee6d134a6cf9562f9fe1e73f25b4626e54c7ccd539e35a5d1580797ec48bb8",
+    "client/cd-convert.p/cd-convert.c.o": "0fe5beee5663e32bc3505819f3dae5adc486adffff3e1364584199d862c0011e"
+  },
+  "stage_sha256": {
+    "usr/bin/cd-convert": "59af62efd38d5b48cf76b3767fb803f6b15e10ca96a950ac74094bd0a1f60349",
+    "usr/lib/libcolord-gtk4.so.1.0.3": "111bdc32c200a5d76ed9b3c32e879d41035221dc962fd3375ca74e13c5290c53",
+    "usr/lib/libcolord-gtk.so.1.0.3": "876f41f6b7a5a01f03db991ae8ce635736b9370ccfb390d55eefccb505132196",
+    "usr/lib/girepository-1.0/ColordGtk-1.0.typelib": "c42c6b5ce76e593e82b5eb27978802e9135d3374e0be69acd5a0f5f623b137ff",
+    "usr/lib/pkgconfig/colord-gtk4.pc": "b13c02c97ee8d8f9828d2fc470d3321ff77d2edede4fe8679dc66ba3fa5c7fa5",
+    "usr/lib/pkgconfig/colord-gtk.pc": "407ce55d4f1815970aeb583fb5e91637ffcf069c14cdaa1e7bae21dc369dbd9b",
+    "usr/include/colord-1/colord-gtk.h": "c7c90ceb5d596d78adf481fc03f0efa22f47253bb3437fa9b81e819ca8628780",
+    "usr/include/colord-1/colord-gtk/cd-version.h": "c6ccd51a90d1d9a9ffbb709860dd8949be9a0907cb4fc43d2a2f7738f5dd7eab",
+    "usr/include/colord-1/colord-gtk/cd-window-sync.h": "3dcdd6251e80cbc7335bd2bfe8164e9ad10c3b11a2c797f535773e481a23f7ed",
+    "usr/include/colord-1/colord-gtk/cd-window.h": "de5abcebac3de8b7162e2489735f2729d7986ac5ef1a91b3f690d038b0e71d8d",
+    "usr/include/colord-1/colord-gtk/cd-sample-widget.h": "24ceb8d4784708d2df70ebdbd2638d50f189d476b5189266ab59eae591024c50",
+    "usr/include/colord-1/colord-gtk/cd-sample-window.h": "b49f2793bcd8ce7ef61c5ac9501b0a6387ea7283b05f7edfd4cab0fa42e07113",
+    "usr/share/gir-1.0/ColordGtk-1.0.gir": "e94435ff87378136f85bb7de5a5e849cde57ede4bac8ad1c1bf96f5c46a9cc78",
+    "usr/share/locale/ka/LC_MESSAGES/colord-gtk.mo": "67cfe3c76585d6f18f035adedb8c0d29f516c3a6feaaacccf0db6c0701cf1b42",
+    "usr/share/locale/en_GB/LC_MESSAGES/colord-gtk.mo": "dcb6d2daa4888216802d0e7ae3df77bea81cc41caab3c570dc8aac4f97abee9a"
+  }
+}

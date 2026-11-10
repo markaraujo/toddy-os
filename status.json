@@ -804,16 +804,17 @@
       "Owned GSound1.0.3 native revision2: original source/stage/help preserved, no upstream tests registered (not a suite pass). First wrong libcanberra revision declaration left unpacked1; corrected metadata-only package2 installed, own GObject linker flags fixed verify-only3/post0/0/root0. Actual installed UID101/NNP/private-dev/no-route null backend Unicode properties/disabled refusal/two recoveries/GI type/help-empty refusal/APT0; no audible/Bluetooth/Settings GUI acceptance.",
       "Owned GNOME Bluetooth47.2 core/UI/GI/sendto:115ELFs/101stagefiles, original two non-display programs5cases0;15private-bus integration programs compiled/deferred. Native recipe/post0/0/119changes, actual UID101/NNP/private-dev/no-route installed C UI header/type query (no widget instantiated), core GI address validation/classification/shared ABI/APT0. No real adapter/pairing/transfer/Settings/physical acceptance. Same private Doxygen worker inode2215/cache unchanged/cold bind recovery qualified structurally, no replay.",
       "Owned libmbim1.34.0 (9 original programs/131cases, native0/0/63changes) and full libqmi1.38.0 (7 programs/122cases, canonical install93changes, corrected GIR verify-only3/post0/0/root0). Actual local C/GI/CLI/refusal/recovery/ABI/APT passed; no modem/firmware operation/cellular/Settings GUI claim. Same-boot readonly source/native workspace recovery passed; cold untested. ADR0209.",
-      "Owned ModemManager1.24.2 SDK/service/plugin/policy payload:491ELFs/220stagefiles,29original local programs588cases0; 3session/PTY programs deferred. Native install264changes, final source-backed verify-only3/post0/0/root0. C/GI/CLI absent-bus/refusal/recovery/strict static policy/ABI/APT0. No running daemon/session authorization/modem/cellular/firmware/Settings GUI claim. ADR0210."
+      "Owned ModemManager1.24.2 SDK/service/plugin/policy payload:491ELFs/220stagefiles,29original local programs588cases0; 3session/PTY programs deferred. Native install264changes, final source-backed verify-only3/post0/0/root0. C/GI/CLI absent-bus/refusal/recovery/strict static policy/ABI/APT0. No running daemon/session authorization/modem/cellular/firmware/Settings GUI claim. ADR0210.",
+      "Owned Colord GTK0.3.1 revision2:17ELFs/15files, GTK3+GTK4 C ABI and GTK3 GI local non-widget GObject/empty-profile/two cycles/ABI/PC/APT0. Original display tests unexecuted, optional Vala unavailable due parent SDK. Original failures retained; final native0/0/3changes. Actual pre-promotion dependency guard accepts owned GTK3/Colord, refuses stale GTK3 revision with dpkg status unchanged. ADR0211."
     ],
-    "running": "No guest writer. ModemManager installed/qualified within local API scope. Control Center preflight finds required colord-gtk/libgtop/UDisks/MIT Kerberos/CUPS/Samba libraries absent; next frozen colord-gtk0.3.1 source acquisition. Preserve all core panels and reserves. Complete B02 then stop.",
+    "running": "No guest writer. Colord GTK revision2 installed/qualified within API scope. Next frozen libgtop2.41.3 local performance SDK; source authenticated, no guest input/job. Remaining Control Center required UDisks/MIT Kerberos/CUPS/Samba libraries and actual desktop GUI remain. Complete B02 then stop.",
     "remaining": [
       "Actual graphical editor open/edit/save/reopen/refusal/recovery/focus/responsiveness and affected desktop icon/MIME caches.",
       "LocalSearch/Nautilus/browser/settings and first fully working interactive native GNOME session.",
       "Foundation recovery-entry boot remains pending; actual installed main7.1.8/Systemd already observed in failed LocalSearch native tests, not desktop acceptance.",
       "Minimal desktop branding/offline usability/security-ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-10T19:05:15.504117+00:00",
+    "verified_at": "2026-11-10T19:17:55.040712+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

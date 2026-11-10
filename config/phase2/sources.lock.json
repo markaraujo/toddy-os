@@ -2737,6 +2737,18 @@
       "book_md5": "d436740c06e42af421384f16b2a9a0a7",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "libgtop",
+      "version": "2.41.3",
+      "filename": "libgtop-2.41.3.tar.xz",
+      "url": "https://download.gnome.org/sources/libgtop/2.41/libgtop-2.41.3.tar.xz",
+      "sha256": "775676df958e2ea2452f7568f28b2ea581063d312773dd5c0b7624c1b9b2da8c",
+      "reference": "BLFS13.1-systemd gnome/libgtop.html",
+      "book_page_sha256": "4de1e56d28645d17e17ba8d84ed8c82cfcc30517682fbd5551c2810a87402fcd",
+      "book_md5": "465db9f4f695c298d9c48dcf7f32a9c0",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

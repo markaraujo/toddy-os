@@ -8,39 +8,41 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current B02 slice: ModemManager1.24.2 native SDK/plugin/daemon/service/policy
-installed, [stage](evidence/B02-modemmanager-stage.json)/
-[install](evidence/B02-modemmanager-install.json), ADR0210.491ELFs/220files,
-29original programs588cases0, two PTY tests and session stub deferred. Actual
-strict factory policy/default plugins/MBIM/QMI/GI/Udev/Systemd retained.
-Native1 installed264paths; own nullable-GIR and unknown-option assumptions failed;
-verify3PID28841 terminal recipe/post0/0/changed0. No reinstall/source/build/test/
-stage/verify replay. No running daemon/session authorization/modem/cellular/
-firmware operation/Settings GUI/physical acceptance. MBIM/QMI owned too, ADR0209.
+Current B02 slice: Colord GTK0.3.1 native revision2 installed/qualified,
+[stage](evidence/B02-colord-gtk-stage.json)/[install](evidence/B02-colord-gtk-install.json),
+ADR0211.17ELFs/15files, original two display/profile tests compiled/unexecuted.
+Both GTK3/GTK4 C local GObjects/empty-profile/two cycles and GTK3 GI/ABI/PC/APT0.
+Optional Vala unavailable due parent SDK. Header version-guard collision retained;
+probe-only correction, library/stage unchanged. No widget/profile/calibration/
+Settings GUI/physical acceptance. Native1 wrong GTK3 revision left unpacked;
+metadata-only revision2 PID31509 complete recipe/post0/0/3changes. No replay.
+
+ModemManager1.24.2 local SDK/plugin/service/strict policy qualified, ADR0210:
+29original programs588cases0; serial/session3programs deferred. Verify3PID28841
+complete0/0/root0. No daemon/session privilege/modem/cellular/firmware/Settings UI
+claim. MBIM/QMI owned too, ADR0209. Native dependency preflight now refuses stale
+versions BEFORE promotion/archive/unpack; actual positive/refusal proof passed.
 
 Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f, writer idle.
-ModemManager private worker inode5725/source alias on existing Doxygen UUID.
-Previous libqmi source/native workspace same-boot recoveries COMPLETE, not cold.
-Native workspace inode4671 and all retained workers remain. Closed GOA/MBIM/Shell
+ModemManager worker inode5725/source alias on existing Doxygen UUID. Libqmi
+readonly source/native workspace same-boot recoveries COMPLETE, not cold proof.
+Native workspace inode4671 and retained workers remain. Closed GOA/MBIM/Shell
 promotion usr custody COMPLETE/root0; never replay. Decoded Cracklib duplicate
 absent, exact compressed source/custody retained. Fixed target16GiB/host100GiB/
-cold100GiB+512MiB remain; recheck actual resources before any dispatch.
+cold100GiB+512MiB; recheck actual resources before writes or boot.
 
-EXACT NEXT: implement frozen colord-gtk0.3.1 GTK3+GTK4/GI/Vala build and
-qualification. Source22132B authenticated/pinned after ONE transient curl35 retry;
-see local failure ledger and .local/phase2/colord-gtk-source.json. No guest input/
-work/job exists. Read frozen book switches and source Meson/tests first; source
-contains no mock acceptance. Use isolated build and preserve required GUI tests
-for real display; no implicit hardware/color-profile acceptance.
-Control Center source50.4 recursive Meson/native-PC preflight additionally finds
-libgtop, UDisks, MIT Kerberos, CUPS and Samba libraries REQUIRED and absent. Keep
-panels. libgxdp is embedded in authenticated CC source; gmobile/malcontent optional,
-GTK-X11 unselected Wayland profile. No guest Control Center source/job exists.
-Use selected frozen BLFS leaves and bounded owned builds, no general replanning.
-The existing scratch source helper supports Control Center's49MB expanded source.
+EXACT NEXT: read frozen libgtop2.41.3 configure/sysdeps/test/API source; implement
+isolated configure/build/stage and actual local unprivileged memory/process API.
+Source authenticated/pinned (.local/phase2/libgtop-source.json). No guest input/
+work/job exists. No upstream suite in book; never call an empty check a pass.
+Use available Xau/GLib and inspect Linux helper privilege defaults before packaging.
+Control Center50.4 still needs owned libgtop/UDisks/MIT Kerberos/CUPS/Samba.
+Keep core panels. Embedded libgxdp is already in CC source; gmobile/malcontent
+optional, GTK-X11 unselected Wayland profile. No guest Control Center source/job.
+Existing scratch helper supports CC49MB source; no general replanning.
 
-Published371d5ca: all3CI success and exact publicHTTP200/indexSHA
-1101daf7ee0f49eb2788e2675a9df276a3f890abf0a1f017ab895fe6576ad775.
+Published742eaf0: all3CI success and exact publicHTTP200/indexSHA
+877937f17ad47fec8e51e69abc6ba6baf889445753495a1508b7332933e849c5.
 
 Seven qualified Settings prerequisite archives/metadata copied and independently
 verified outside VM: [recovery cache proof](evidence/B02-settings-package-recovery.json),

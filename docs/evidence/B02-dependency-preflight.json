@@ -1,0 +1,8 @@
+{
+  "scope": "Actual installed native GTK3/Colord dependency preflight only; positive exact-owned revisions and stale GTK3 revision refusal before package writes. Not a transaction or graphical acceptance.",
+  "positive_owned_versions": true,
+  "stale_revision_refused": true,
+  "refusal": "Unsatisfied owned dependency before package writes: gtk3 (= 3.24.52-1+toddy1); observed [('gtk3', 'install ok installed', '3.24.52-1+toddy2', '=', '3.24.52-1+toddy1')]",
+  "dpkg_status_sha256_before_and_after": "ff46865902669771512197de35de9e1439bd7fcb1a0b1157fd197fc45382fae6",
+  "guard_sha256": "805bcd1a47808da83f77e31a6286e5e8dc3fa233dc5b03891b14ebb698405ba8"
+}

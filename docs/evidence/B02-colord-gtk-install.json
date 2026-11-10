@@ -1,0 +1,394 @@
+{
+  "scope": "Owned Colord GTK0.3.1 GTK3+GTK4 libraries and GTK3 GI only. Original display tests unexecuted, optional Vala omitted due parent SDK, public version-header guard collision retained. Native1 wrong GTK3 revision left unpacked; revision2 metadata-only correction installed, payload retained. No window/profile/calibration/Settings GUI/physical acceptance.",
+  "attempts": [
+    {
+      "step": "b02-colord-gtk-install",
+      "recipe_exit": 1,
+      "postcheck_exit": null,
+      "changed_paths": 30,
+      "started": "2026-11-10T19:13:40.175470+00:00",
+      "finished": "2026-11-10T19:13:56.983413+00:00",
+      "recipe_sha256": "187a7825a7f8e42a620b8f4b650f50e0d89b84284c555bd68af18294eee50cd4",
+      "postcheck_sha256": "40aa024a9488665c09cd3370608296f08fad7dcc537afe2cd5309667bf9e364d",
+      "log_sha256": "c7da85c98e59db17dfbfbcc43a60598515908bc2ff081b7e26527e0560e67b07",
+      "receipt_sha256": "46c35d99fc30007eeee10eb11a1cf2edcdfcdb20e46662360da6fe19845fe3e9",
+      "timing": {
+        "step": "b02-colord-gtk-install",
+        "scope": "same full-root snapshot function, timing only",
+        "snapshots": [
+          {
+            "seconds": 16.639,
+            "entries": 162584,
+            "regular_files": 145027,
+            "regular_bytes": 7558254326
+          },
+          {
+            "seconds": 14.813,
+            "entries": 162612,
+            "regular_files": 145048,
+            "regular_bytes": 7558429996
+          }
+        ],
+        "total_seconds": 34.511
+      }
+    },
+    {
+      "step": "b02-colord-gtk-dependency-install-2",
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 3,
+      "started": "2026-11-10T19:15:52.428570+00:00",
+      "finished": "2026-11-10T19:16:09.983813+00:00",
+      "recipe_sha256": "ba84334bd3c1f2efb23db6df014018d6f0f7df01f2bdd157fb1aa896b5ebc4f2",
+      "postcheck_sha256": "dbc3899a9bdfb24d6b242d0584c8292404cae39be6610ea1f5636ecea07d98cc",
+      "log_sha256": "f0bb4897d2834ded9e61e7369ed0db673d37e2b10505b15146715ef410430b4a",
+      "receipt_sha256": "193a97efad4785e39caa2c9d4045aee6b7d78128caa972c3bb70b845da8ec1ed",
+      "timing": {
+        "step": "b02-colord-gtk-dependency-install-2",
+        "scope": "same full-root snapshot function, timing only",
+        "snapshots": [
+          {
+            "seconds": 14.877,
+            "entries": 162612,
+            "regular_files": 145048,
+            "regular_bytes": 7558429996
+          },
+          {
+            "seconds": 14.877,
+            "entries": 162612,
+            "regular_files": 145048,
+            "regular_bytes": 7558430357
+          }
+        ],
+        "total_seconds": 33.536
+      }
+    }
+  ],
+  "consumer": {
+    "scope": "Owned colord-gtk0.3.1 GTK3+GTK4 ABI and GTK3 GI only; optional Vala unavailable; actual UID101/NNP/private-device/no-route separate C local non-widget GObjects/empty-profile/two cycles, GTK3 GI and shared ABI/APT. Original display tests unexecuted. No widget/profile mapping/color calibration/daemon/Settings GUI/physical acceptance.",
+    "C_consumers": {
+      "colord-gtk": "Colord GTK local GObject/profile-empty state/two fresh cycles; no widget/display/service access\n",
+      "colord-gtk4": "Colord GTK local GObject/profile-empty state/two fresh cycles; no widget/display/service access\n"
+    },
+    "GTK3_GI_consumer": "ColordGtk GTK3 GI local empty-profile/two fresh cycles\n",
+    "installed_stage_files_identical": 15,
+    "shared_library_resolution": true,
+    "original_display_suite_pending": true,
+    "physical_monitor_tested": false
+  },
+  "package": {
+    "name": "colord-gtk",
+    "version": "0.3.1-1+toddy2",
+    "archive_sha256": "e063f6c726c783086a8dfe799e7f40b004f0579d32853922e1c4f6f17c04787c",
+    "recipe_sha256": "ba84334bd3c1f2efb23db6df014018d6f0f7df01f2bdd157fb1aa896b5ebc4f2",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "colord-gtk",
+        "version": "0.3.1",
+        "filename": "colord-gtk-0.3.1.tar.xz",
+        "url": "https://www.freedesktop.org/software/colord/releases/colord-gtk-0.3.1.tar.xz",
+        "sha256": "c176b889b75630a17f4e3d7ef24c09a3e12368e633496087459c8b53ac3a122d",
+        "reference": "BLFS13.1-systemd x/colord-gtk.html",
+        "book_page_sha256": "1a5d3f5448132254695ee63e1c360cd57227a2968e914f9d2257d49ae9d08e77",
+        "book_md5": "d436740c06e42af421384f16b2a9a0a7",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "payload": {
+      "/usr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/bin": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/gir-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/gir-1.0/ColordGtk-1.0.gir": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e94435ff87378136f85bb7de5a5e849cde57ede4bac8ad1c1bf96f5c46a9cc78"
+      },
+      "/usr/share/locale/en_GB": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en_GB/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en_GB/LC_MESSAGES/colord-gtk.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "dcb6d2daa4888216802d0e7ae3df77bea81cc41caab3c570dc8aac4f97abee9a"
+      },
+      "/usr/share/locale/ka/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka/LC_MESSAGES/colord-gtk.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "67cfe3c76585d6f18f035adedb8c0d29f516c3a6feaaacccf0db6c0701cf1b42"
+      },
+      "/usr/share/doc/colord-gtk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/colord-gtk/source-notices": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/colord-gtk/copyright": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a949b8e135541623e4d79989bc5df924f3282615213d40b168c6f6ba4f81cd08"
+      },
+      "/usr/share/doc/colord-gtk/source-notices/da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768"
+      },
+      "/usr/share/doc/colord-gtk/source-notices/index.json": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e636610e1f017f9005c3a321189519e0124f111202fc05325144a09f7f2cce67"
+      },
+      "/usr/share/doc/colord-gtk/source-notices/0f72ff47e0867c1d10712ef29bf0c782a4ffa814589ce6d65a8e7807ecaf0c2a": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0f72ff47e0867c1d10712ef29bf0c782a4ffa814589ce6d65a8e7807ecaf0c2a"
+      },
+      "/usr/include/colord-1": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/colord-1/colord-gtk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/colord-1/colord-gtk.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c7c90ceb5d596d78adf481fc03f0efa22f47253bb3437fa9b81e819ca8628780"
+      },
+      "/usr/include/colord-1/colord-gtk/cd-version.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c6ccd51a90d1d9a9ffbb709860dd8949be9a0907cb4fc43d2a2f7738f5dd7eab"
+      },
+      "/usr/include/colord-1/colord-gtk/cd-window-sync.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3dcdd6251e80cbc7335bd2bfe8164e9ad10c3b11a2c797f535773e481a23f7ed"
+      },
+      "/usr/include/colord-1/colord-gtk/cd-window.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "de5abcebac3de8b7162e2489735f2729d7986ac5ef1a91b3f690d038b0e71d8d"
+      },
+      "/usr/include/colord-1/colord-gtk/cd-sample-widget.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "24ceb8d4784708d2df70ebdbd2638d50f189d476b5189266ab59eae591024c50"
+      },
+      "/usr/include/colord-1/colord-gtk/cd-sample-window.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b49f2793bcd8ce7ef61c5ac9501b0a6387ea7283b05f7edfd4cab0fa42e07113"
+      },
+      "/usr/bin/cd-convert": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "59af62efd38d5b48cf76b3767fb803f6b15e10ca96a950ac74094bd0a1f60349"
+      },
+      "/usr/lib/girepository-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/pkgconfig": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/libcolord-gtk4.so.1.0.3": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "111bdc32c200a5d76ed9b3c32e879d41035221dc962fd3375ca74e13c5290c53"
+      },
+      "/usr/lib/libcolord-gtk4.so.1": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libcolord-gtk4.so.1.0.3"
+      },
+      "/usr/lib/libcolord-gtk.so.1": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libcolord-gtk.so.1.0.3"
+      },
+      "/usr/lib/libcolord-gtk.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libcolord-gtk.so.1"
+      },
+      "/usr/lib/libcolord-gtk.so.1.0.3": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "876f41f6b7a5a01f03db991ae8ce635736b9370ccfb390d55eefccb505132196"
+      },
+      "/usr/lib/libcolord-gtk4.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libcolord-gtk4.so.1"
+      },
+      "/usr/lib/girepository-1.0/ColordGtk-1.0.typelib": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c42c6b5ce76e593e82b5eb27978802e9135d3374e0be69acd5a0f5f623b137ff"
+      },
+      "/usr/lib/pkgconfig/colord-gtk4.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b13c02c97ee8d8f9828d2fc470d3321ff77d2edede4fe8679dc66ba3fa5c7fa5"
+      },
+      "/usr/lib/pkgconfig/colord-gtk.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "407ce55d4f1815970aeb583fb5e91637ffcf069c14cdaa1e7bae21dc369dbd9b"
+      }
+    },
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_sha256": "75fe9ea1a900ee626d59ee194187cc57997811ea45ee928a7e0654784c41b3f3",
+    "supporting_build_script_count": 1806
+  }
+}
