@@ -103,6 +103,8 @@ import * as Scripting from 'resource:///org/gnome/shell/ui/scripting.js';
 export const METRICS = {};
 const root = GLib.getenv('TODDY_NATIVE_OUTPUT');
 const actions = [];
+const startupSamples = [];
+let automationStartPath = 'startup-complete-handler';
 function check(value, name) {
     actions.push({name, passed: Boolean(value)});
     if (!value) throw new Error(name);
@@ -125,7 +127,17 @@ export function init() {
             panelWidth: Main.panel.width, panelHeight: Main.panel.height,
             stageWidth: global.stage.width, stageHeight: global.stage.height,
             overviewVisible: Main.overview.visible, actions: actions.length};
-        GLib.file_set_contents(`${root}/startup-state.json`, JSON.stringify(state));
+        startupSamples.push({...state, monotonicUs: GLib.get_monotonic_time()});
+        GLib.file_set_contents(`${root}/startup-state.json`, JSON.stringify({state, startupSamples, automationStartPath}));
+    }
+    if (!Main.layoutManager._startingUp) {
+        // Main awaits importing the automation module before connecting its
+        // startup-complete handler. Fast no-animation startup may finish first.
+        // Use the same upstream runner once only when that signal is already past.
+        automationStartPath = 'late-automation-hook-after-startup';
+        GLib.idle_add_once(GLib.PRIORITY_DEFAULT, () => {
+            Scripting.runPerfScript({run, METRICS}, null);
+        });
     }
     record();
     GLib.timeout_add_once(GLib.PRIORITY_DEFAULT, 5000, () => {

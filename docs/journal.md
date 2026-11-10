@@ -3087,3 +3087,5 @@ remain required before promotion. No desktop/GUI/ISO acceptance. Full B02 then s
 2026-11-10: B02 GStreamer1.28.6 core owned/native0/0/670entries after107original OK/one optional validate SKIP; UID101 GI/two synthetic pipeline EOS→NULL cycles0. Supplies missing Gst typelib, not real codecs/audio/GNOME screencast. Native Shell failure preserved; next GST base actual options/dependency preflight and one isolated build.
 
 2026-11-10: B02 GStreamer Base1.28.6 native0/0/1004entries;80originalOK/37validateSKIP/17GL-context originals deferred, actual exact synthetic red RGB/silent stereo GI/samples/two EOS→NULL cycles0. Required real devices/audio/GL/GNOME unqualified. ADR0185; next native Shell2 with real ephemeral PAM/logind/user-bus session/new Gst inputs, no credential-suite replay.
+
+2026-11-10: B02 native Shell2 actual diagnostic PNG/panel/search/overview and real ephemeral PAM/logind/user bus lifecycle recorded; interaction runner never began,150s FAILED. Source-backed late startup-handler hypothesis; fixture-only correction pending for fresh native3. Actual child0/OOMfalse/backing unchanged/parent restored. ADR0186; no GDM/basic-app/focus completion.

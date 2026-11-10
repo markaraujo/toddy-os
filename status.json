@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-10T03:54:15.778638+00:00",
+  "updated_at": "2026-11-10T04:04:17.761824+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05\u2013B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -733,14 +733,15 @@
       "GTK4same-upstreamtoddy8 stock schema union:74files/16owners,115schemas/900keys/prior82schemas/623key contracts preserved. Native install/post0/0,16paths/906prior nonlegal entries unchanged; actual default-source full lookup0. No user preferences/GTK rebuild/GUI acceptance, ADR0183.",
       "First native Shell1 FAILED: actual7.1.8/Systemd/Wayland renderer/virtual monitor initialized, no automation/PNG by150s. Missing Gst/unregistered logind user/Settings observed, exact startup wait cause unisolated. Actual child0/OOMfalse/backing unchanged; builder/six mounts/source restored. No GUI/login acceptance, ADR0184.",
       "Owned GStreamer1.28.6 core:107original OK/one optional validate SKIP,406ELFs/213stagefiles. Native install/post0/0,565paths/670entries, actual UID101 GI/caps/buffer/refusal/two synthetic EOS\u2192NULL cycles/SDK/APT0; no devices/codecs/audio/GNOME screencast acceptance.",
-      "Owned GStreamer Base1.28.6:80original OK/37validate SKIP/17real GL-context originals compiled/deferred,660ELFs/331stagefiles. Native0/0,910paths/1004entries, actual installed UID101 App/Audio/Video GI/exact red RGB/silent stereo samples/two A/V EOS\u2192NULL cycles/four SDKs/APT0. No GL/devices/audio/playback/screencast acceptance, ADR0185."
+      "Owned GStreamer Base1.28.6:80original OK/37validate SKIP/17real GL-context originals compiled/deferred,660ELFs/331stagefiles. Native0/0,910paths/1004entries, actual installed UID101 App/Audio/Video GI/exact red RGB/silent stereo samples/two A/V EOS\u2192NULL cycles/four SDKs/APT0. No GL/devices/audio/playback/screencast acceptance, ADR0185.",
+      "Native Shell2 actual1280x720GNOME overview/panel/search diagnostic PNG captured and visually inspected; real ephemeral PAM/logind/user manager/bus registered/closed0/0/account+runtime removed. Interaction runner never began by150s, so gate FAILED/no GDM/app/focus acceptance. Source-backed late startup-handler hypothesis, builder/six mounts/source restored, ADR0186."
     ],
-    "running": "No active guest writer. Next fresh native Shell2 with real ephemeral PAM/logind/user-bus session/new Gst dependencies; no owner credentials or GDM/basic-app acceptance. Required Settings/audio/basic apps remain; complete ALL B02 then stop.",
+    "running": "No active guest writer. Prepare fresh Shell3 to correct only source-supported automation startup-hook race; required Settings/audio/basic apps/GDM remain. Preserve failed gates and attempt budget; complete ALL B02 then stop.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-10T03:54:15.778638+00:00",
+    "verified_at": "2026-11-10T04:04:17.761824+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

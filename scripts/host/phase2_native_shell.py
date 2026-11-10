@@ -5,11 +5,12 @@ import fcntl,hashlib,json,os,shutil,subprocess,sys,uuid
 from pathlib import Path
 import boot_test as boot
 from phase2_native_report import decode
+from phase2_native_glycin import compressed_payload
 import phase2_vm
 import vm
 ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
 REGISTERED = sys.argv[1:]==['--registered-session']
-CONTEXT=ROOT/'.local/phase2'/('native-shell-runtime-2' if REGISTERED else 'native-shell-runtime-1')
+CONTEXT=ROOT/'.local/phase2'/('native-shell-runtime-3' if REGISTERED else 'native-shell-runtime-1')
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def main():
     assert len(sys.argv)==1 or REGISTERED
@@ -52,7 +53,7 @@ def main():
     unit=(ROOT/'scripts/host/boot-probe.service').read_bytes().replace(b'TimeoutStartSec=180',b'TimeoutStartSec=360')
     payloads={'systemd.extra-unit.toddy-boot-probe.service':unit,
               'systemd.unit-dropin.multi-user.target':(ROOT/'scripts/host/boot-probe.target.conf').read_bytes(),
-              'toddy.boot-probe':probe}
+              'toddy.boot-probe':compressed_payload(probe)}
     qemu=boot.qemu_arguments('bios',payloads)
     qemu[qemu.index('-cpu')+1]='host';qemu[qemu.index('-smp')+1]='4';qemu[qemu.index('-m')+1]='4096'
     name='toddy-b02-native-'+run_id[:12]

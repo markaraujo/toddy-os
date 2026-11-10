@@ -1,0 +1,148 @@
+{
+  "scope": "FAILED native Shell2 interaction sequence: actual registered ephemeral PAM/logind/user manager/bus lifecycle and native1280x720overview diagnostic PNG recorded; actions never began by150s. No GDM/authenticated login/basic-app/focus acceptance. Startup startingUpfalse/monitors1/panel1280x32/actions0 supports source-backed missed startup-complete handler hypothesis, not yet verified correction.",
+  "input_commit": "42736b773815d0672c9f27a31462939d6315687f",
+  "probe_sha256": "408a5c43cf412c49ed741a59de4bc625ea282d1a5329c4b1307610279ed71f1c",
+  "accepted_inputs": {
+    "versions": {
+      "gnome-shell": "50.4-1+toddy1",
+      "gtk": "4.22.4-1+toddy8",
+      "mutter": "50.4-1+toddy1",
+      "gstreamer": "1.28.6-1+toddy1",
+      "gst-plugins-base": "1.28.6-1+toddy1"
+    },
+    "verified_native_files": 4412,
+    "builder_boot_id": "b4a89c17-0d00-43c2-ad3a-a90982468c85",
+    "target_serial": "TODDY-LFS-TARGET",
+    "native_kernel_expected": "7.1.8-toddy"
+  },
+  "report": {
+    "actions": null,
+    "all_selected_exits_zero": false,
+    "command": [
+      "gnome-shell",
+      "--wayland",
+      "--headless",
+      "--virtual-monitor=1280x720",
+      "--wayland-display=toddy-shell-proof",
+      "--automation-script=/tmp/toddy-native-shell-k48jwoox/automation.js"
+    ],
+    "elapsed_seconds": 150.065,
+    "ephemeral_PAM_user_and_runtime_removed": true,
+    "kernel": "7.1.8-toddy",
+    "native_client_images": [
+      {
+        "bytes": 18473,
+        "height": 720,
+        "name": "00-diagnostic.png",
+        "sha256": "ce5e4ccfd0664514513ee84ee3decd740900b097165ea94e9cd1f0c8ae372407",
+        "width": 1280,
+        "public_path": "docs/evidence/screenshots/B02-shell2-overview-diagnostic.png"
+      }
+    ],
+    "observation_timeout_seconds": 150,
+    "pid1": "systemd",
+    "registered_ephemeral_session": {
+      "actual_logind": {
+        "Name": "toddy-shell-probe",
+        "Service": "toddy-session",
+        "State": "active",
+        "Type": "tty",
+        "User": "12401"
+      },
+      "closed": {
+        "close": 0,
+        "end": 0,
+        "phase": "closed"
+      },
+      "phase": "ready",
+      "runtime_dir": "/run/user/12401",
+      "seat": "seat0",
+      "session_id": "1",
+      "session_type": "tty"
+    },
+    "scope": "First actual native Shell headless Wayland/software rendering with supported automation, private user bus and real GTK perf-helper window. No GDM/authenticated GNOME session/basic apps/physical acceptance. No unsafe-mode or installed preference change.",
+    "shell_exit": null,
+    "shell_log": "libmutter-Message: 03:57:55.576: Running GNOME Shell (using mutter 50.4) as a Wayland display server\nlibmutter-Message: 03:57:55.666: Created surfaceless renderer without GPU\nlibmutter-Message: 03:57:55.690: Added virtual monitor Meta-0\nlibmutter-Message: 03:57:55.711: Using Wayland display name 'toddy-shell-proof'\n\n(gnome-shell:295): libmutter-WARNING **: 03:57:55.756: Failed to connect to colord daemon: Error calling StartServiceByName for org.freedesktop.ColorManager: Unit colord.service not found.\nGNOME Shell-Message: 03:57:56.117: Registering session with GDM\nGNOME Shell-Message: 03:57:56.123: Error registering session with GDM: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.DisplayManager was not provided by any .service files\nportal is not running: GDBus.Error:org.freedesktop.DBus.Error.Spawn.ChildExited: Process org.freedesktop.portal.IBus exited with status 1\nGNOME Shell-Message: 03:57:56.249: Failed to register AuthenticationAgent\n\n(gnome-shell:295): GNOME Shell-WARNING **: 03:57:56.417: Missing required core component Settings, expect trouble\u2026\n** Message: 03:57:56.429: Failed to start camera monitor\n\n(gnome-shell:295): Gvc-WARNING **: 03:57:56.436: Failed to connect context: Connection refused\nGNOME Shell-Message: 03:57:56.455: Failed to get PolKit permission: Polkit.Error: GDBus.Error:org.freedesktop.PolicyKit1.Error.Failed: Action org.freedesktop.bolt.enroll is not registered\n\n(gnome-shell:295): Gvc-WARNING **: 03:58:01.502: Failed to connect context: Connection refused\nGNOME Shell-Message: 03:58:20.985: Error connecting to the screencast service\n** Message: 04:00:25.542: Shutting down GNOME Shell\nlibmutter-Message: 04:00:25.583: Removed virtual monitor Meta-0\n",
+    "startup_state": {
+      "actions": 0,
+      "monitors": 1,
+      "overviewVisible": true,
+      "panelHeight": 32,
+      "panelWidth": 1280,
+      "primaryIndex": 0,
+      "stageHeight": 720,
+      "stageWidth": 1280,
+      "startingUp": false
+    },
+    "stock_schema_cache_sha256": "824567b089fb951595e4d961162d8f59406a7f70d7b86b9b01de93515bb42a2f",
+    "uid": 12401
+  },
+  "actual_child_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-11-10T03:57:45.575162364Z",
+    "FinishedAt": "2026-11-10T04:00:27.341633245Z"
+  },
+  "summary": {
+    "kernel": "7.1.8-toddy",
+    "all_selected_exits_zero": false,
+    "report_sha256": "ff500c545a758e16ab09eeefe32282c797eed08564791b9a4fe3a9ea7235f750",
+    "chunks": 22
+  },
+  "backing_unchanged_before_restart": true,
+  "builder_restore": {
+    "state": "complete",
+    "scope": "Restore existing six scratch filesystems and same authenticated Systemd read-only bind after actual native child exit/backing reconciliation; no trim/format/recreation",
+    "boot_id": "bc427e89-6fc4-40c5-8113-6581e54c8111",
+    "restored_volumes": [
+      {
+        "work": "/mnt/lfs/sources/phase2/work/gtk-1",
+        "uuid": "1593a243-4338-45fb-86f6-7b699b4b3235",
+        "image_inode": 786439,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/desktop-resources-1",
+        "uuid": "a1385a38-a9ed-481b-96d8-b0120b4f1e7c",
+        "image_inode": 786440,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/doxygen-1",
+        "uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+        "image_inode": 786441,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/glycin-1",
+        "uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+        "image_inode": 786463,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/pam-1",
+        "uuid": "cb42a655-39b6-4988-ad44-1c643059db63",
+        "image_inode": 786443,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/systemd-pam-1",
+        "uuid": "8163c489-7aab-4b0b-be6d-f36de1645e74",
+        "image_inode": 786446,
+        "restored_existing_filesystem": true
+      }
+    ],
+    "target_free_bytes": 17386262528
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-shell-second-native-failed-evidence.tar.gz",
+    "sha256": "3dbcebb84884be03ec6c0d114ac768a24ccd9c6b7f8565e7d975d1c18140e684"
+  }
+}

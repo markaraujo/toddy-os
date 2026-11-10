@@ -8,7 +8,34 @@ No accepted complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current slice: GST Base1.28.6 OWNED; no active guest writer.
+Current slice: native Shell2 COMPLETE/FAILED; Shell3 fixture correction prepared.
+No active writer. New parent builderbootbc427e89-6fc4-40c5-8113-6581e54c8111,
+same six scratch filesystems/source bind restored under NEW receipt
+/var/log/toddy/phase2/shell-builder-restore-2.json complete. NEVER repeat restore2.
+Actual native2 childexit0/OOMfalse/backing unchanged BEFORE restart; synthetic
+PAM/logind/user manager/bus user12401 closed0/0/runtime+account removed.
+Actual unedited1280x720GNOME panel/search/overview PNG captured and visually read,
+but actions never began by150s. No GDM/login/basic-app/focus acceptance.
+[Failed proof](evidence/B02-shell-second-native-failed.json), ADR0186/rawSHA
+3dbcebb84884be03ec6c0d114ac768a24ccd9c6b7f8565e7d975d1c18140e684.
+Context`.local/phase2/native-shell-runtime-2` COMPLETE/FAILED; NEVER replay/boot it.
+Source-backed missed startup-complete automation handler hypothesis: native
+startingUpfalse/one monitor/panel1280x32/actions0, original late-await listener.
+Correct only supported automation init hook: if startup already past, schedule
+same upstream runner once; otherwise ordinary handler. No Shell patch/fake event/
+unsafe-mode. Preserve initial+5s+45s observational history; compressed/hash-verified
+SMBIOS transport reused. Ledger second corrective attempt pending; after second
+failed correction/30min same cause park and select required apps, no budget reset.
+Exact next command after committed harness:
+`python3 scripts/host/phase2_native_shell.py --registered-session`.
+This now creates ONLY NEW contextnative-shell-runtime-3; must be absent before
+first launch. Inspect actual state/child before any action. On actual final report,
+check actions/images/source state; only real successful postconditions count.
+Before builder restart verify actual childterminal/backing identity, restore same
+six filesystems/source with NEW receipt, never repeat restore1/2. Current target
+free17386262528B; preserve16GiB/host100GiB and qualify custody before large builds.
+
+Previous slice: GST Base1.28.6 OWNED; no active guest writer.
 Buildgst-plugins-base-1 PID7533 terminal0,660ELFs/331stagefiles;
 80originalsOK/37optional validator SKIP,17real GL-context originals compiled/deferred.
 Actual App/Audio/Video GI and exact red-video/silent-stereo samples/two EOS→NULL
@@ -141,7 +168,7 @@ c295 exactHTTP200/publicSHAd13d372e24b1ffad644bb55631ded4f990d24e2eab4cc4a29d17b
 verified. Failure/GStreamer updates currently pending commit. No host installation/physical disk/global
 security weakening/paid resources/new agents/model switching/workstation RAG.
 
-Shell2 harness (not executed yet) binds new Gst packages and registered synthetic
+Historical Shell2 harness (now COMPLETE/FAILED) binds new Gst packages and registered synthetic
 PAM/logind user12401 with actual user manager/bus. Reuses accepted session-consumer
 client, no password/auth suite. Source-supported init hook records startup state
 and a diagnostic capture; four required action captures remain distinct. Source
