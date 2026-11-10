@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libpwquality': ('1.4.5', 'glibc (>= 2.44-1+toddy1), cracklib (= 2.10.3-1+toddy1), linux-pam (= 1.7.2-1+toddy2)', 'libpwquality-1.4.5.tar.bz2', 'usr/lib/pkgconfig/pwquality.pc'),
+    'cracklib': ('2.10.3', 'glibc (>= 2.44-1+toddy1), zlib (= 1.3.2-1+toddy1)', 'cracklib-2.10.3.tar.xz', 'usr/include/crack.h'),
     'gnome-online-accounts': ('3.58.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy9), libadwaita (= 1.9.3-1+toddy1), librest (= 0.10.2-1+toddy1), libsecret (= 0.21.7-1+toddy1), libsoup (= 3.6.6-1+toddy1), json-glib (= 1.10.8-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'gnome-online-accounts-3.58.1.tar.xz', 'usr/lib/pkgconfig/goa-backend-1.0.pc'),
     'librest': ('0.10.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libsoup (= 3.6.6-1+toddy1), json-glib (= 1.10.8-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'librest-0.10.2.tar.xz', 'usr/lib/pkgconfig/rest-1.0.pc'),
     'tecla': ('50.0', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy9), libadwaita (= 1.9.3-1+toddy1), libxkbcommon (= 1.13.2-1+toddy1)', 'tecla-50.0.tar.xz', 'usr/bin/tecla'),
@@ -1255,6 +1257,12 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='libpwquality':
+        from qualify_libpwquality import qualify as qualify_libpwquality
+        qualify_libpwquality(ROOT)
+    if name=='cracklib':
+        from qualify_cracklib import qualify as qualify_cracklib
+        qualify_cracklib(ROOT)
     if name=='gnome-online-accounts':
         from qualify_goa import qualify as qualify_goa
         qualify_goa(ROOT)
@@ -1604,6 +1612,7 @@ if __name__ == '__main__':
         (doc/'original-test-review.json').write_text(json.dumps(review(source.parent/'original-tests.log',Path('/mnt/lfs/sources/phase2/inputs/libxslt-1.1.45')),indent=2)+'\n')
         (doc/'README.Toddy').write_text('Build-only xsltproc SDK for authenticated source UI transformations; not a GNOME Terminal runtime dependency. Core driver reports748cases/noerrors; four original DocBook golden whitespace differences remain unaccepted. No complete original-suite/general CLI parser sandbox or DocBook rendering qualification. Use bounded explicit nonet/nowrite/nomkdir/maxdepth/maxvars for selected fixtures. See original-test-review.json.\n')
     archives=[archive]
+    if name=='cracklib':archives.append('cracklib-words-2.10.3.xz')
     if name=='editorconfig':archives.append('editorconfig-core-test-d91029bdf1e3e0307714afe0d2cde7ba6fd208ab.tar.gz')
     if name=='aspell':archives.append('aspell6-en-2020.12.07-0.tar.bz2')
     if name=='glycin-gtk4':archives+=['glycin-2.1.5-vendor.tar.gz','rustc-1.97.1-src.tar.xz']
@@ -1665,6 +1674,7 @@ if __name__ == '__main__':
                         '--depends','glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
+    if name=='libpwquality':conffiles=['--conffile','/etc/security/pwquality.conf']
     if name=='vte':conffiles=['--conffile','/etc/profile.d/vte.sh','--conffile','/etc/profile.d/vte.csh']
     if name=='gdm':conffiles=[v for n in ['custom.conf'] for v in ['--conffile','/etc/gdm/'+n]]+[v for n in ['gdm-autologin','gdm-launch-environment','gdm-fingerprint','gdm-smartcard','gdm-password'] for v in ['--conffile','/etc/pam.d/'+n]]
     if name=='geoclue':conffiles=['--conffile','/etc/geoclue/geoclue.conf']

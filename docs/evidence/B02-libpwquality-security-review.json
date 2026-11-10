@@ -1,0 +1,10 @@
+{
+  "observed_utc": "2026-11-10T16:52:40.453249+00:00",
+  "source_version": "1.4.5",
+  "source_sha256": "6fcf18b75d305d99d04d2e42982ed5b787a081af2842220ed63287a2d6a10988",
+  "public_advisory_api": "https://api.github.com/repos/libpwquality/libpwquality/security-advisories",
+  "response": [],
+  "response_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "review_scope": "Owned C SDK and inactive PAM module ABI/configuration exposure only; active policy unchanged must be proved by native postcheck. Public empty advisory list is not proof of absence of vulnerabilities. No blanket all-security-fixed claim. Refresh final-image review.",
+  "decision": "docs/adr/0208-settings-password-quality-without-pam-policy-change.md"
+}

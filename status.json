@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-10T16:42:00.636864+00:00",
+  "updated_at": "2026-11-10T16:54:19.314184+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05–B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -798,16 +798,18 @@
       "Owned Tecla50.0: actual native7.1.8/Systemd/Mutter CLI version/help0,2975artifacts unchanged; install/post0/0/67changes, identical payload/pkg-config app path/GTK-Adwaita-XKB ABI/APT0. No keyboard-preview GUI. Librest0.10.2 original7local programs+one URLcase0, Soup3/GI/Vala stage qualified; external-service cases unexecuted.",
       "Owned librest0.10.2 Soup3/GI/Vala native install/post0/0/49changes, installed C/GI Unicode XML/nonXML refusal/two recoveries/local proxy construction/shared ABI/APT0. Seven original local programs and one Flickr URLcase reused; external providers untested.",
       "GOA3.58.1 core/backend/GI/Vala compiled45ELFs/116stagefiles, actual daemon version0. Initial own bare-Meson-define collector assumption corrected collection-only2, full compiler/stage unchanged. No original tests registered, not a suite pass. Google/Microsoft365 unavailable/empty shared identities per ADR0207. Native install recipe0/post1/135changes from own GI method assertion; verify-only correction running, no reinstall.",
-      "Owned GOA3.58.1 core/backend/GI/Vala: original native recipe0/post1/135changes retained, corrected verify-only2/post0/0/changed0. Actual UID101/NNP/private-dev/no-route CLI invalid-option refusal/local GI UTF8 skeleton/reset2/no account files/shared ABI/APT0. No session daemon/real accounts/providers/secret/Settings/GUI acceptance."
+      "Owned GOA3.58.1 core/backend/GI/Vala: original native recipe0/post1/135changes retained, corrected verify-only2/post0/0/changed0. Actual UID101/NNP/private-dev/no-route CLI invalid-option refusal/local GI UTF8 skeleton/reset2/no account files/shared ABI/APT0. No session daemon/real accounts/providers/secret/Settings/GUI acceptance.",
+      "Owned Cracklib2.10.3: two original endian/dictionary tests/20ELFs/67stagefiles, exact full recommended1930240word source/packed indices, install/post0/0/84changes. Installed C API weak/missing-dictionary refusals/two recoveries/no-echo CLI/APT0; no owner password/PAM mutation.",
+      "Owned libpwquality1.4.5:12ELFs/66stagefiles, no original suite (not a pass); install/post0/0/80changes, actual UID101/NNP/private-dev/no-route C API/CLI weak-invalid-setting-empty refusals/two recoveries/ABI/APT/conffile0. All12active PAM files unchanged, module inactive/unqualified for authentication. Settings GUI pending."
     ],
-    "running": "No guest writer. GOA source/compiler/stage/native install and verify-only correction COMPLETE; never replay. Current eligible Settings prerequisite: Cracklib2.10.3 frozen source, qualify dictionary source/license/staging before build; target16GiB reserve unchanged. Complete B02 then stop.",
+    "running": "No guest writer. Tecla/librest/GOA/Cracklib/libpwquality packages installed and qualified within documented scope. Next GNOME Control Center50.4 source/work staging on existing preallocated scratch: expanded source exceeds current target reserve headroom; do not extract onto root or lower reserve. Complete ALL B02 then stop.",
     "remaining": [
       "Actual graphical editor open/edit/save/reopen/refusal/recovery/focus/responsiveness and affected desktop icon/MIME caches.",
       "LocalSearch/Nautilus/browser/settings and first fully working interactive native GNOME session.",
       "Foundation recovery-entry boot remains pending; actual installed main7.1.8/Systemd already observed in failed LocalSearch native tests, not desktop acceptance.",
       "Minimal desktop branding/offline usability/security-ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-10T16:42:00.636864+00:00",
+    "verified_at": "2026-11-10T16:54:19.314184+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

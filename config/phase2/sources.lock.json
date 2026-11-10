@@ -2635,6 +2635,36 @@
       "book_md5": "e8ea2b86de774fc09fdd0f2829680b19",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "cracklib-words",
+      "version": "2.10.3",
+      "filename": "cracklib-words-2.10.3.xz",
+      "url": "https://github.com/cracklib/cracklib/releases/download/v2.10.3/cracklib-words-2.10.3.xz",
+      "sha256": "b3d1e0e0ae9bc7ffed65c0042d7c68bdb903368aa6b918f94572453c6ea874dc",
+      "reference": "BLFS13.1-systemd postlfs/cracklib.html recommended dictionary",
+      "book_page_sha256": "8fb50f6aa8421fffdaaf1ed995430144766feb73565d8625667688a8c93a91d9",
+      "book_md5": "f27804022dbf2682a7f7c353317f9a53",
+      "source_kind": "xz-compressed word-list data, not a tar archive",
+      "expanded_bytes": 19163351,
+      "expanded_sha256": "72850d6a542578ccedc74088bbe31ce2a872bf447ea61d05661879b8430c5f6f",
+      "lines": 1930240,
+      "license_provenance": "Cracklib2.10.3 README-WORDS: upstream distribution built solely from prior cracklib/crack lists and/or public-domain lists; retain exact README-WORDS with source notices, no license claim for other word lists.",
+      "license_provenance_sha256": "376968c8ef5c89df12816c5c491401dca51ec599f4b91eff377fb67f4b18c54b",
+      "integrity": "Official HTTPS release matched exact frozen book MD5; compressed/expanded SHA256 frozen before guest use, no detached-signature claim",
+      "status": "source_verified"
+    },
+    {
+      "name": "libpwquality",
+      "version": "1.4.5",
+      "filename": "libpwquality-1.4.5.tar.bz2",
+      "url": "https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.5/libpwquality-1.4.5.tar.bz2",
+      "sha256": "6fcf18b75d305d99d04d2e42982ed5b787a081af2842220ed63287a2d6a10988",
+      "reference": "BLFS13.1-systemd postlfs/libpwquality.html",
+      "book_page_sha256": "337cef8d63971fe270cbd73cc3f47cd04331d1133854da893c4fbbb1af17348a",
+      "book_md5": "6b70e355269aef0b9ddb2b9d17936f21",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

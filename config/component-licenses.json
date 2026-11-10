@@ -11225,6 +11225,23 @@
       "version": "2020.12.07-0",
       "license": "LicenseRef-SCOWL-and-Ispell",
       "evidence": "Official English dictionary Copyright includes complete SCOWL/Ispell/WordNet provenance and terms; retain original Copyright and source notices with compiled dictionary."
+    },
+    {
+      "name": "cracklib",
+      "version": "2.10.3",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Official source COPYING.LIB and README-LICENSE retained; README-WORDS records provenance of the exact recommended cracklib-words distribution. Preserve per-file conditions.",
+      "extra_license_files": {
+        "cracklib-2.10.3.tar.xz": [
+          "README-WORDS"
+        ]
+      }
+    },
+    {
+      "name": "cracklib-words",
+      "version": "2.10.3",
+      "license": "LicenseRef-Cracklib-wordlists",
+      "evidence": "Exact recommended upstream distribution: Cracklib2.10.3 README-WORDS states prior cracklib/crack and/or public-domain source lists. Compressed/expanded SHA256 and exact README-WORDS retained; no claim for other downloadable word lists."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

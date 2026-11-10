@@ -8,12 +8,33 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current B02 slice: Settings password-quality prerequisites. Cracklib2.10.3 source
-frozen/verified, no guest preparation/job yet. EXACT NEXT: qualify frozen-book
-recommended cracklib-words2.10.3 source and its README-WORDS license provenance;
-measure expanded/index/stage sizes and choose existing qualified scratch if needed
-without lowering target16GiB/host100GiB reserve. Preserve library/PAM separation:
-this prerequisite must never change host PAM/account policy.
+Current B02 slice: native GNOME Control Center50.4 prerequisite closure and
+source/work preparation. Tecla/librest/GOA/Cracklib/libpwquality now owned. EXACT
+NEXT: inspect frozen Control Center tar/required SDKs and existing Doxygen scratch
+UUID/free space; prepare a NEW private source+worker subtree/bind and unique
+receipt there, with original cache/source identity checks. Current target free
+17209040896B versus16GiB reserve leaves29171712B, less than49149703B expanded
+Control Center source; NEVER extract it onto root or lower reserve. No new
+filesystem/physical device needed for that bounded source/build subtree. Preserve
+one writer and source read-only compiler isolation; add exact existing-bind cold
+recovery before any later reboot. No Control Center guest source/job exists yet.
+
+Cracklib2.10.3 COMPLETE, [stage](evidence/B02-cracklib-stage.json)/
+[install](evidence/B02-cracklib-install.json): two original programs20ELFs/67files,
+full recommended1930240line dictionary source compressed/expanded hashes fixed;
+native recipe/post0/0/84changes. Actual installed default-dictionary C API weak/
+missing-dictionary refusal/two recoveries/no-echo CLI/APT0, all stage bytes retained.
+Raw wordlist remains in build source; packed indices installed, provenance and
+original notices retained. No arbitrary external wordlists/owner password use.
+
+Libpwquality1.4.5 COMPLETE, [stage](evidence/B02-libpwquality-stage.json)/
+[install](evidence/B02-libpwquality-install.json):12ELFs/66files; no original suite
+(NOT a suite pass), native recipe/post0/0/80changes. Installed C API/CLI synthetic
+weak/invalid-setting/empty-input refusal/two recoveries/ABI/APT/conffile0.
+All12active PAM files unchanged; module packaged but inactive, authentication
+unqualified. ADR0208 and [bounded review](evidence/B02-libpwquality-security-review.json)
+retain empty public advisory observation without a no-vulnerabilities claim.
+Never repeat either source/compiler/tests/stage/install transaction. No live writer.
 
 GOA3.58.1 native install+verify COMPLETE, [proof](evidence/B02-goa-install.json).
 Initial recipe0/post1/135changes retained (own GI method assumption); installed
@@ -29,9 +50,7 @@ all compiler/stage entries unchanged, [proof](evidence/B02-goa-stage.json).
 Never repeat source/compiler/stage/version.45ELFs/116stagefiles, no original tests
 registered (NOT a suite pass). Core/backend/GI/Vala enabled. Google/Microsoft365
 unavailable and shared app IDs empty, ADR0207; Kerberos/Fedora unselected.
-Cracklib2.10.3 official frozen source verified only, no guest source/job dispatched.
-Next password-quality dependency requires its dictionary source/license/inventory
-and staging review before build; never change global host PAM or account policy.
+Cracklib/libpwquality later completion is recorded above; never change host PAM/account policy.
 
 Librest0.10.2 install PID3105 TERMINAL COMPLETE, native recipe/post0/0/49changes,
 [proof](evidence/B02-librest-install.json). Installed C/GI Unicode XML/nonXML

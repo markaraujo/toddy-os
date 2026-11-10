@@ -1,0 +1,1233 @@
+{
+  "scope": "Owned Cracklib2.10.3 shared tools/default recommended packed wordlist/local C API/refusal/recovery. No host/guest PAM stack/account/password mutation or blanket multilingual security acceptance.",
+  "native": {
+    "step": "b02-cracklib-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 84,
+    "started": "2026-11-10T16:47:10.619078+00:00",
+    "finished": "2026-11-10T16:47:30.573768+00:00",
+    "recipe_sha256": "cecda2912c74dc167a08665f5723a7ea737fbde20377eb343752c42340dc9292",
+    "postcheck_sha256": "acba31225e028f20056900fba78ad1c8d39584a54fc35cabac0612c03bf7931f",
+    "log_sha256": "833c744319fa608be063125a71405b99f80f0d7670e2bf0692f7931d5c633b93"
+  },
+  "native_success_receipt_sha256": "f674ea609133f5a1a4417ea570a3645e47f184728c270e3062f9dd2fb22560cd",
+  "timing": {
+    "step": "b02-cracklib-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.539,
+        "entries": 161879,
+        "regular_files": 144387,
+        "regular_bytes": 7503939456
+      },
+      {
+        "seconds": 14.501,
+        "entries": 161960,
+        "regular_files": 144462,
+        "regular_bytes": 7514104503
+      }
+    ],
+    "total_seconds": 35.542
+  },
+  "consumer": {
+    "scope": "Owned installed Cracklib2.10.3 shared C API/tools/default packed exact recommended dictionary; UID101/NoNewPrivs/private-dev/no-route, synthetic weak/missing-dict refusals/two recoveries/no-echo CLI, all stage bytes unchanged. No owner password/PAM/account mutation or blanket multilingual/security acceptance.",
+    "consumer": {
+      "C_API": true,
+      "dictionary_default": true,
+      "weak_fixture_refused": true,
+      "missing_dictionary_refused": true,
+      "fresh_recovery_cycles": 2,
+      "CLI_no_echo": true,
+      "owner_password_or_PAM_mutated": false
+    },
+    "installed_stage_files_identical": 67,
+    "shared_library_resolution": true
+  },
+  "package": {
+    "name": "cracklib",
+    "version": "2.10.3-1+toddy1",
+    "archive_sha256": "aed1f98dff197653bd94860bb84cd53345de16a957035d3f7954a3fb08028613",
+    "recipe_sha256": "cecda2912c74dc167a08665f5723a7ea737fbde20377eb343752c42340dc9292",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "cracklib",
+        "version": "2.10.3",
+        "filename": "cracklib-2.10.3.tar.xz",
+        "url": "https://github.com/cracklib/cracklib/releases/download/v2.10.3/cracklib-2.10.3.tar.xz",
+        "sha256": "1d1b83676b5673051b9373e1ca0db81c1fa88faf9a195a3c1af984fd9c250d66",
+        "reference": "BLFS13.1-systemd postlfs/cracklib.html",
+        "book_page_sha256": "8fb50f6aa8421fffdaaf1ed995430144766feb73565d8625667688a8c93a91d9",
+        "book_md5": "e8ea2b86de774fc09fdd0f2829680b19",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      },
+      {
+        "name": "cracklib-words",
+        "version": "2.10.3",
+        "filename": "cracklib-words-2.10.3.xz",
+        "url": "https://github.com/cracklib/cracklib/releases/download/v2.10.3/cracklib-words-2.10.3.xz",
+        "sha256": "b3d1e0e0ae9bc7ffed65c0042d7c68bdb903368aa6b918f94572453c6ea874dc",
+        "reference": "BLFS13.1-systemd postlfs/cracklib.html recommended dictionary",
+        "book_page_sha256": "8fb50f6aa8421fffdaaf1ed995430144766feb73565d8625667688a8c93a91d9",
+        "book_md5": "f27804022dbf2682a7f7c353317f9a53",
+        "source_kind": "xz-compressed word-list data, not a tar archive",
+        "expanded_bytes": 19163351,
+        "expanded_sha256": "72850d6a542578ccedc74088bbe31ce2a872bf447ea61d05661879b8430c5f6f",
+        "lines": 1930240,
+        "license_provenance": "Cracklib2.10.3 README-WORDS: upstream distribution built solely from prior cracklib/crack lists and/or public-domain lists; retain exact README-WORDS with source notices, no license claim for other word lists.",
+        "license_provenance_sha256": "376968c8ef5c89df12816c5c491401dca51ec599f4b91eff377fb67f4b18c54b",
+        "integrity": "Official HTTPS release matched exact frozen book MD5; compressed/expanded SHA256 frozen before guest use, no detached-signature claim",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "payload": {
+      "/usr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/sbin": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/man": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/cracklib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/man/man3": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/man/man8": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/man/man3/FascistCheck.3": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b317c5cda0e04f8edfd3fe3ca494596e4acdfbb419c864edddb609b9f90d6ce3"
+      },
+      "/usr/share/man/man8/create-cracklib-dict.8": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "84589f250957ab07c6ba0d6a311cd059c0bfb333c23c1137cc435e6f91c47f6d"
+      },
+      "/usr/share/man/man8/cracklib-check.8": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a54b7df15500539a5e2a3ff710ec72e9540950bda413ec8f186691290df9476a"
+      },
+      "/usr/share/man/man8/cracklib-update.8": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ffadfcfc5f0edf3625cf96ea751729e7e7318cb70c511e8f9a424887718c29da"
+      },
+      "/usr/share/man/man8/cracklib-format.8": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "af5b8a93e754b671780cd7bb2bac170d2b201b3b6d55a6d6ecaf201ad373f28a"
+      },
+      "/usr/share/locale/ja": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ml": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/be": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_TW": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/si": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ko": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nb": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/or": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/te": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sq": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/es": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ta": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn_IN": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/as": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lt": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kn": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pa": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/el": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ro": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ja/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ja/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "50f1febffad923c16afb3bcdf991c816f00b88c779d63351649b30abec1a896f"
+      },
+      "/usr/share/locale/ml/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ml/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d6ae6c2fec2c86ab5b283410b882aa196c560f436d8c7dcbb7fb43ac24cc6f41"
+      },
+      "/usr/share/locale/be/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/be/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1ea5c5e4e3890f5d788fd8f7c5929af7f52e77df493ef3d751ccd1c3ea9d3a1c"
+      },
+      "/usr/share/locale/hu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "52baf17247d5e87e91415190db133b2d270522ce1d0faafbc2bf5363b776a150"
+      },
+      "/usr/share/locale/hi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hi/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8453a99982ec2804b6f154b78477db022085326b3c619048b99d8210610f3b05"
+      },
+      "/usr/share/locale/zh_TW/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_TW/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5ba6114e79afbfa911268d87e5bd07a1e4158a575c655aec4256bbeff36f6ead"
+      },
+      "/usr/share/locale/si/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/si/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "74649d038c405bd1354f5924a137911b9b8061e15e1d89c4cfa7f650dd636c52"
+      },
+      "/usr/share/locale/ko/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ko/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1626e7a93cb831f6b29a3c65812f82a653736f6c3e7557af1f7e24e032eef2da"
+      },
+      "/usr/share/locale/it/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d0742eff1adc797eb7c567f9e6327e3dc51dc9ae930f3165aa4216a9597cf018"
+      },
+      "/usr/share/locale/sv/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "58e421ef4b4fcf21588ffcad2fd450d01107e55c191dd3455d1d3ba961eca718"
+      },
+      "/usr/share/locale/tr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0d1374c63a9123c7384aa1c6d42d290962429d040daead6cddf47d674ca677ab"
+      },
+      "/usr/share/locale/nb/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nb/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ebd0c3a4b8719895be7a6bdf977328b2435f4701374582ce797912971ab454bd"
+      },
+      "/usr/share/locale/eu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eu/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ca66a2dad6dbbfb1559d49f59e48c714c898df2a44bd7936867425acfc26213d"
+      },
+      "/usr/share/locale/or/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/or/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "74cc8c10160bfb8005a7e29a509aefcdccd52e9331f483ffb0a7f88b1fac5f1b"
+      },
+      "/usr/share/locale/te/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/te/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e8943c76127663ada0f64f182404414ba401c810b2bd1144d5ceb9b8075e7046"
+      },
+      "/usr/share/locale/ru/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "30ba7633c7eefc1234897db9668f7fd36fd4cb11e4686c90d220dbc8f16ce60e"
+      },
+      "/usr/share/locale/uk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c62868a5fe11ff7219c00cd2c54542bfe3bbfd3f54117441dbf02a7176e5867b"
+      },
+      "/usr/share/locale/pl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f8cb34e750cf99bc32bab9d7d743dac6abb5cbccbafdcf26093b607f8551220e"
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1aec48385ff4d0e13bcb46701de8a062360dd24ea446a9ce95024b9edc5962ce"
+      },
+      "/usr/share/locale/sq/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sq/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "488ed63feaf915a41ce4a35b03256ec8e7cff63e5d71edc6995e326c1da33b2f"
+      },
+      "/usr/share/locale/pt/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7f53f934838316c7bb49fbb0bd9c98028a5317b604533b24a0befda21764343e"
+      },
+      "/usr/share/locale/es/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/es/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e139c02aec5a9346a7fdc22b458a9b4cb67ac86e7a67587d04aae27179072196"
+      },
+      "/usr/share/locale/fur/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7f4539c994fc579b7312e1ad26ad6ad654b4de2c9b855247c89d185dc7b26bc4"
+      },
+      "/usr/share/locale/ta/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ta/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "033605146c5d93ec03fabd718ad324a1661a8196c0481f67cfed36cdd62f2684"
+      },
+      "/usr/share/locale/gu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gu/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "06dab5762328249477f38a086b20e0742bf4214fbb3c9081a1423d508de35c34"
+      },
+      "/usr/share/locale/kk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kk/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8b548eb1d7a75321f40a0828590c9ee5a86f5f821c7a3e04d7fb427443f737ad"
+      },
+      "/usr/share/locale/bn_IN/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn_IN/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5715cceaba995c720e2e46790ede78589caf4206c1478156205d6fb511781b2c"
+      },
+      "/usr/share/locale/fi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a974993663fb7cc9f40ec2165b3111daddfbaf67211de082c3988d4908febcc1"
+      },
+      "/usr/share/locale/sk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "11f0e34f643afcaa03b0a1dfc46e2195b0d213d774a893b3bb70eb5bfd332dfe"
+      },
+      "/usr/share/locale/id/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "dae162b54b51bdc8c960259926ec04ba1d1a9f13f8c54e0b8469c17a306463d0"
+      },
+      "/usr/share/locale/he/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8aa446a1d7398d3b8d99b120fb55b76b011725333cb27ffa17054c7364c1e949"
+      },
+      "/usr/share/locale/cs/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "17292d9ae01f4527e488fa55b899125bb1f562fb35848554797818382f2cb0d0"
+      },
+      "/usr/share/locale/as/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/as/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ece3d68a7ab9c0410ef4013361cb1b2e295f76f4b665b4600392f88f92454460"
+      },
+      "/usr/share/locale/de/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9319468fb393bde19fe081a1b171405eaf9de24dd41f1166de07901d6bf85840"
+      },
+      "/usr/share/locale/lt/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lt/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "27809fb7e8da3a1816062950916d6340412ef91a5e07be9f75a219ac4182023c"
+      },
+      "/usr/share/locale/kn/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kn/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0de371d8723b9a3a85c850180865b3d8098041e5e6f386d8944ba9c905001c45"
+      },
+      "/usr/share/locale/fr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "13b17b3525ca13f8143c7bb27747956daec882e33a17a866bb80890d4393499e"
+      },
+      "/usr/share/locale/pa/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pa/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d4d6536541cab38db23af60950c04f5e2db7385fb309237a337fc5552515958f"
+      },
+      "/usr/share/locale/ca/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4b9fba024ced32e60cb9743002dc577d303a78316354cee5078d8fbfb506e2c7"
+      },
+      "/usr/share/locale/sl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sl/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "02f0b8a2c831eabca5e71ecc292368ebe4c524b5a920e118a7a8644074040a18"
+      },
+      "/usr/share/locale/el/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/el/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b4ba30c63ca06e47d49ee7cc5fdb0d87efb6326276e9dc71df57110526f7d145"
+      },
+      "/usr/share/locale/da/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "bd88271b6d50a26cf58448064b4b5accee6da0c830118fdf1b53aca67f23d94d"
+      },
+      "/usr/share/locale/mr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mr/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "28c82761a92b485e199ffbc09c5ba33bda92abc222a860ee1385e701c5717fa1"
+      },
+      "/usr/share/locale/nl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "847dfec9491a25f9ab95eb72d92d451c7825f66e61bf458eb0cce9409843608c"
+      },
+      "/usr/share/locale/ka/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "068d14d2b2e54acd2664e26dcb8d912d4169027c0e6af5f165c0eaebac228dbe"
+      },
+      "/usr/share/locale/ro/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ro/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d99f45b944d6ba856f4c302fefffb4bd65d1aacc320b6bdd1dd9838d5c8b205b"
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES/cracklib.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "482e048d69b1db94ab0874b390ac18347974ca5cf45cb607acb4ddae4414618a"
+      },
+      "/usr/share/cracklib/cracklib.magic": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ce9de85e27f60a8905bcdfd3554df17ec49c9cd2d23342c6f45af9fb0e266965"
+      },
+      "/usr/share/cracklib/cracklib-small": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a209692299ff87431db030aa9996c1e51e286f32ce567d78f600d5ae7068ec7f"
+      },
+      "/usr/share/doc/cracklib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/cracklib/source-notices": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/cracklib/copyright": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7b92d18b23b4c54cb462c7ee499229ff169d4af6bcd5df5f63829bfa1cbbb8fb"
+      },
+      "/usr/share/doc/cracklib/source-notices/index.json": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d5ffd4e643a1fe3daa8e8cced4c2d1dbba448d533ceffa912132fbc71c6cfadc"
+      },
+      "/usr/share/doc/cracklib/source-notices/7a8313f064a3a4f40438bc2f18786c9fa27e873432b32a06c0717699bd0b1976": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7a8313f064a3a4f40438bc2f18786c9fa27e873432b32a06c0717699bd0b1976"
+      },
+      "/usr/share/doc/cracklib/source-notices/8acc677eb634a32aef59469a8bf0db278b93f8036ad5338bf12bce685c7c425a": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8acc677eb634a32aef59469a8bf0db278b93f8036ad5338bf12bce685c7c425a"
+      },
+      "/usr/share/doc/cracklib/source-notices/376968c8ef5c89df12816c5c491401dca51ec599f4b91eff377fb67f4b18c54b": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "376968c8ef5c89df12816c5c491401dca51ec599f4b91eff377fb67f4b18c54b"
+      },
+      "/usr/share/doc/cracklib/source-notices/f18a0811fa0e220ccbc42f661545e77f0388631e209585ed582a1c693029c6aa": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f18a0811fa0e220ccbc42f661545e77f0388631e209585ed582a1c693029c6aa"
+      },
+      "/usr/include/crack.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a605fe646d7ca3020794787fdf215310cc6a8a3fe21b9e4cf5508c67ca5275f6"
+      },
+      "/usr/include/packer.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c5a3ec7fe4244b5b44cfb2623b024284d9b81046656a43b6bb0dc96ec514788a"
+      },
+      "/usr/sbin/cracklib-check": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "aa355bb6cc68535ac69885efc40cb9269e20e8c3f68b872d440875a73f132a8b"
+      },
+      "/usr/sbin/create-cracklib-dict": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7f0691c00d8cea3ac2f69c7a5e7b2f97eaddab2d792ef4e969f6bab544314dcc"
+      },
+      "/usr/sbin/cracklib-update": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d27b77e4169d05540c2a4fbfd409f7123fdc771f34eba79ba4fb4258ec5f96ed"
+      },
+      "/usr/sbin/cracklib-packer": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5fb0018eb8b820c87fdff04f1cdf2c12e2b63d620e3aae6bb42b229036ee68f0"
+      },
+      "/usr/sbin/cracklib-unpacker": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6756f08f6d2c72db6004f65af443b54fbcbcb08227e3bd10ef057b1ab40e3adb"
+      },
+      "/usr/sbin/cracklib-format": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e9efbc6a7b82b4393f926c7db12029de495cd9f7f8977b078d2143300e4858b6"
+      },
+      "/usr/lib/cracklib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/libcrack.so.2": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libcrack.so.2.9.0"
+      },
+      "/usr/lib/libcrack.so.2.9.0": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "19ddeb208041232b06155d2477f4158a1e08801383cbf6a5344af9b48d9c0fde"
+      },
+      "/usr/lib/libcrack.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libcrack.so.2.9.0"
+      },
+      "/usr/lib/libcrack.la": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "115f5b87d28f7144d8fcc857a41b17f0b8fe6e062006d6f09e53664b3daae79f"
+      },
+      "/usr/lib/cracklib/pw_dict.pwd": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3c5ab5256eb645d50c890e136393aa9f730345b6eebf4490c46853f3843f367a"
+      },
+      "/usr/lib/cracklib/pw_dict.pwi": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7f00696457dc817d73d4fc1dfae8913ec3217f0719d7f435ccd6cb528e3ffe22"
+      },
+      "/usr/lib/cracklib/pw_dict.hwm": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "99d129cc29fe6eb6267317f672133958b973dab10301a143e910532db4aaa5fa"
+      }
+    },
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_sha256": "525885909a91ef7bb3500e2e9f17a2ae978da3ecac8a12bc07713fc30c0088d1",
+    "supporting_build_script_count": 1753
+  }
+}
