@@ -8,7 +8,8 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Private Linux7.1.8 Landlock candidate COMPILED, NOT INSTALLED OR BOOT-ACCEPTED.
+Private Linux7.1.8 Landlock candidate COMPILED and diagnostic BIOS/UEFI BOOTED;
+NOT INSTALLED or accepted as installed Systemd/desktop.
 [Compile evidence](evidence/B02-kernel-landlock-compile.json), ADR0201.
 Actual build4PID19120 terminal0, incremental compiler15.003s; complete worker
 21.871s includes source verification. Config delta exactly SECURITY_LANDLOCK n→y
@@ -24,15 +25,25 @@ kernel-landlock-1/boot-probe-1/prepared.json. Original input C source immutable 
 inputs/linux-landlock-7.1.8/toddy-landlock-init.c; token and source hash recorded
 in /var/log/toddy/phase2/kernel-landlock-boot-input-1.json. InitramfsSHA
 388c307ed47f5e5d47ca16c4de0f95458232ead63a51fc19d20e50a699856b19.
-EXACT NEXT: after committing reviewed inputs, run
-`python3 scripts/host/phase2_kernel_landlock_boot.py` ONCE. It refuses any existing
-.local/phase2/native-kernel-landlock-1; inspect actual intent/container/serial/
-result before any retry. BIOS+UEFI diagnostic initramfs boots ONLY, no target/
-builder/physical disks or network. Actual UID101 Landlock allow/deny/process-exit
-recovery, seccomp denial, module insert/remove and namespace checks required.
-These do not prove installed Systemd/desktop/installer behavior. If boot succeeds,
-qualify actual kernel staging/native revision with old-kernel recovery retained;
-then LocalSearch3.11.1/Nautilus. Complete ALL B02 then stop.
+Native diagnostic1 COMPLETE, actual BIOS+UEFI exits0/OOMfalse, no disks/network.
+Both ABI9/UID101:2rulesets/4allowed roundtrips/4denied reads/4denied writes/
+4denied creates/2fresh-process recoveries/2seccomp denials, namespace0 and actual
+native dummy module insert/remove0. Both containers terminal/removed, parent
+builder unchanged, no restoration needed. [Native proof](evidence/B02-kernel-landlock-native.json).
+RawSHAfebffec05ffb7abdbe70cba304d02503db4db85edbcb427bf614f1c6c133b61b.
+All20 original owned .ko payload files are byte-identical to candidate modules;
+this supports retaining original module bytes and kernelrelease for recovery,
+but no installed rollback/boot-entry acceptance is claimed yet.
+NEVER replay native-kernel-landlock-1 or its preparation. Actual host folder
+.local/phase2/native-kernel-landlock-1, complete result.json/driver.exit0/serials.
+EXACT NEXT: read install_verified_stage.py/stage_package.py and current H09
+boot ownership/config contract; prepare verified stage of current candidate
+with owned original kernel image/config/System.map retained as rollback artifacts.
+Use native package revision (same source/release, unchanged20modules), preserve
+old archive, qualify generated boot-entry ownership and actual rollback path;
+no foundation rebuild or source/config/compiler/native diagnostic replay.
+Installed linux-kernel7.1.8-1 remains untouched. After kernel native delivery,
+LocalSearch3.11.1 then Nautilus. Complete ALL B02 then stop.
 
 ## Preserved failures and resource postconditions
 

@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T10:40:05.002054+00:00
+Last verified: 2026-11-10T10:44:20.185303+00:00
 
 Verified:
 
@@ -150,8 +150,9 @@ Verified:
 - Owned GExiv2 0.16.2 shared GObject/GI/Vala/Python/tools: all3 original C/Python programs0,22ELFs/16stagefiles. Own XMP title plain-text assertion corrected to actual language-tagged readback; probe2 only, compiler/original/stage unchanged. Native install/post0/0,32paths/42entries. Installed UID101/private-device/no-route PNG UTF8 metadata edit/read/reset/image retained/malformed JPEG refusal/two recoveries/shared ABI/pkg-config/APT0. No LocalSearch/Nautilus/GUI claim, ADR0204.
 - Fixed768MiB preallocated virtual kernel scratch attached after idle check/controlled restart. All bytes zero verified, intended UUID recorded before mkfs, ext4 mounted nosuid/nodev at kernel-landlock-1 UUIDc6c4176d-faed-4ee3-9ae0-94914a0af666/free758177792B. Six existing scratch/Systemd source/Glycin companion restored. Four guest identity guard tests0. Kernel/cache/config/package/boot unchanged; Landlock build/native proof pending, ADR0201.
 - Private Linux7.1.8 Landlock+selected SECURITY_PATH compiled0 via preserved cache, original111558entries/2599875499bytes fully retained,93715pristine source entries unchanged. Real UID101 COW isolation0. Two precompiler Rust metadata failures corrected with explicit make RUSTC=false; resource-stop partial3 retained, one bounded virtual scratch growth to1GiB then incremental4 compiler15.003s0. Late final allocation fell below reserve; five private linker temporaries retired with final hashes unchanged/free388354048B. Native static diagnostic prepare0, boot/native installation/desktop NOT accepted. ADR0201.
+- Actual Landlock candidate diagnostic BIOS+UEFI boots0/OOMfalse; both ABI9/UID101 rulesets2/allowed roundtrips4/denied reads4/writes4/creates4/fresh-process recoveries2/seccomp denials2/namespace/module insert-remove0. Complete token-bound serials; no target/builder/physical disk or network attached. All20 owned original module payloads byte-identical to candidate. Installed kernel/package/boot-entry/Systemd/desktop/ISO/physical acceptance still pending.
 
-Running: No guest writer. Private same-version Landlock candidate compiled/source+original-cache retained, resource reserve restored, native static diagnostic prepared. Next BIOS/UEFI no-disk real kernel allow/deny/recovery/namespace/module tests, then native package/old-kernel recovery; LocalSearch/Nautilus/desktop still pending. Installed kernel unchanged. Complete ALL B02 then stop.
+Running: No guest writer or diagnostic VM active. Candidate kernel real BIOS/UEFI Landlock ABI9/UID101 allow-deny/recovery/seccomp/module/namespaces passed,20 original module payloads identical. Next verified native kernel package/rollback artifacts and boot-entry ownership/runtime qualification, then LocalSearch/Nautilus. Installed kernel/desktop acceptance pending. Complete ALL B02 then stop.
 
 Remaining:
 

@@ -1,0 +1,144 @@
+{
+  "scope": "Actual candidate Linux7.1.8-toddy diagnostic initramfs BIOS/UEFI boots, UID101 Landlock ABI9 positive/negative controls/process-exit recovery, seccomp denial, namespace creation and native dummy module insert/remove. Both actual guest exits0/OOMfalse, complete token-bound serials, no target/builder/physical disk attached. Native package/boot-entry/installed Systemd/desktop/ISO/physical-hardware acceptance remains pending.",
+  "source_commit": "ef1f40a246a005934ce40c2fc6717485a37f6aef",
+  "diagnostic_preparation": {
+    "scope": "Native static-libc diagnostic initramfs only, not installed OS or Systemd/desktop acceptance",
+    "token": "b826e990e6c5496896331c3cdc66d665",
+    "kernel_sha256": "18c4d9e6a64554296d8e9a037c2383e7426a0cf155b6d757d0693fce0d087ad1",
+    "source_sha256": "c743e53d183999f2098fc91b35bbf3b1a5ba77eb9d9535d73913bb552361c5c7",
+    "init_sha256": "80df26868dc35e3f8359b546947552d4fe75ecfbd126b3a37479130c14828b4e",
+    "module_sha256": "eadf6e162cd0fa3cb8ec6c1a4ffa16fce22a16015e6374fbc5cd92f64caa44ab",
+    "initramfs_sha256": "388c307ed47f5e5d47ca16c4de0f95458232ead63a51fc19d20e50a699856b19",
+    "compile_exit": 0,
+    "static_linked": true,
+    "uid": 101
+  },
+  "native_result": {
+    "complete": true,
+    "scope": "Native kernel diagnostic initramfs only; no installed-system/Systemd/desktop/physical hardware acceptance",
+    "runs": [
+      {
+        "firmware": "bios",
+        "exit": 0,
+        "summary": "Landlock ABI=9 uid=101 rulesets=2 allowed_roundtrips=4 denied_reads=4 denied_writes=4 denied_creates=4 fresh_process_recoveries=2 seccomp_denials=2 namespace=pass module=insert-remove firmware=bios",
+        "serial_sha256": "7b622622aab5c351f9476934322fa55b2d00f4f1850a16825f35f7641164cf4b",
+        "kernel_boot_verified": true,
+        "target_disks_attached": false
+      },
+      {
+        "firmware": "uefi",
+        "exit": 0,
+        "summary": "Landlock ABI=9 uid=101 rulesets=2 allowed_roundtrips=4 denied_reads=4 denied_writes=4 denied_creates=4 fresh_process_recoveries=2 seccomp_denials=2 namespace=pass module=insert-remove firmware=uefi",
+        "serial_sha256": "3afc9a09bf6b4310b0922578c7a21ec739bea0f4dd413a5a43cbe4692c36e5c1",
+        "kernel_boot_verified": true,
+        "target_disks_attached": false
+      }
+    ],
+    "container_image": "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf"
+  },
+  "original_module_payload_comparison": {
+    "scope": "Twenty owned original module payload files byte-identical to candidate; not a complete installed-system rollback/boot-entry test",
+    "modules": {
+      "sound/core/snd-pcm.ko": {
+        "foundation_sha256": "70f2052e5ea9296e9392c1822e62107b4657009d7924e3f163dd193fc444fa21",
+        "candidate_sha256": "70f2052e5ea9296e9392c1822e62107b4657009d7924e3f163dd193fc444fa21"
+      },
+      "sound/core/snd-hwdep.ko": {
+        "foundation_sha256": "f7fd57e2d876d317800b8ffecf95ebf9f52c5852b8caf39edf26f058fe4a563c",
+        "candidate_sha256": "f7fd57e2d876d317800b8ffecf95ebf9f52c5852b8caf39edf26f058fe4a563c"
+      },
+      "sound/hda/core/snd-intel-dspcfg.ko": {
+        "foundation_sha256": "f56fa200efe2d7fec1e92bf4b7d189271416fae89929d8424fbe471272b7f290",
+        "candidate_sha256": "f56fa200efe2d7fec1e92bf4b7d189271416fae89929d8424fbe471272b7f290"
+      },
+      "sound/hda/core/snd-hda-core.ko": {
+        "foundation_sha256": "47d940c55b57412e62d5a7837bd6a73a856bff71db99f38babe578fe0947d3f0",
+        "candidate_sha256": "47d940c55b57412e62d5a7837bd6a73a856bff71db99f38babe578fe0947d3f0"
+      },
+      "sound/hda/core/snd-intel-sdw-acpi.ko": {
+        "foundation_sha256": "5057db77ff2e31056ab31a0d88591a5046d5c93081d47fde0e7036aaba964b24",
+        "candidate_sha256": "5057db77ff2e31056ab31a0d88591a5046d5c93081d47fde0e7036aaba964b24"
+      },
+      "sound/hda/codecs/snd-hda-codec-generic.ko": {
+        "foundation_sha256": "c30206e1e97606aef324bc94937eaf2856c7d691b15d7ad030f2cc34cde21c73",
+        "candidate_sha256": "c30206e1e97606aef324bc94937eaf2856c7d691b15d7ad030f2cc34cde21c73"
+      },
+      "sound/hda/controllers/snd-hda-intel.ko": {
+        "foundation_sha256": "a36a40726a8d612c21568a43640ce595edaf3b4b0356674fa3dee3e3e987649a",
+        "candidate_sha256": "a36a40726a8d612c21568a43640ce595edaf3b4b0356674fa3dee3e3e987649a"
+      },
+      "sound/hda/common/snd-hda-codec.ko": {
+        "foundation_sha256": "5f99df3b07ffec17a2b0aa5ef8f639f150c949a2520c5df2e23fbf1590e1453b",
+        "candidate_sha256": "5f99df3b07ffec17a2b0aa5ef8f639f150c949a2520c5df2e23fbf1590e1453b"
+      },
+      "net/ipv6/sit.ko": {
+        "foundation_sha256": "1a172402cb15ec593214020c26d8fbdf5dadede4682ee3f96c2cddaa770410c4",
+        "candidate_sha256": "1a172402cb15ec593214020c26d8fbdf5dadede4682ee3f96c2cddaa770410c4"
+      },
+      "net/ipv6/netfilter/nf_reject_ipv6.ko": {
+        "foundation_sha256": "1886be64486788bc726a41b2bf1cdf1a5d879dd8a823e4770dc2e1e2c3a183fd",
+        "candidate_sha256": "1886be64486788bc726a41b2bf1cdf1a5d879dd8a823e4770dc2e1e2c3a183fd"
+      },
+      "net/ipv4/tunnel4.ko": {
+        "foundation_sha256": "21c594b3e6359d6da2fdbb49f71dbafdbbfc9c3da4c01a33c736121374adec28",
+        "candidate_sha256": "21c594b3e6359d6da2fdbb49f71dbafdbbfc9c3da4c01a33c736121374adec28"
+      },
+      "net/ipv4/ip_tunnel.ko": {
+        "foundation_sha256": "eec04155e1297b451796d29990401316a42734750d95e1fb40dbd08ea7097399",
+        "candidate_sha256": "eec04155e1297b451796d29990401316a42734750d95e1fb40dbd08ea7097399"
+      },
+      "net/ipv4/netfilter/nf_reject_ipv4.ko": {
+        "foundation_sha256": "bea303f91ff59312279b789acca168e75cd12eacbf751dcd96829d6cb85657a5",
+        "candidate_sha256": "bea303f91ff59312279b789acca168e75cd12eacbf751dcd96829d6cb85657a5"
+      },
+      "net/netfilter/xt_mark.ko": {
+        "foundation_sha256": "0a2d6f081f8dd28ba7259a6bdc3e7da7cf679dc6c491a906140006e8f54c4fc5",
+        "candidate_sha256": "0a2d6f081f8dd28ba7259a6bdc3e7da7cf679dc6c491a906140006e8f54c4fc5"
+      },
+      "net/netfilter/xt_LOG.ko": {
+        "foundation_sha256": "79e729c61fc8f37b9b8b1cade6bd5eab950772664be0964ac40ed9b852bf6f96",
+        "candidate_sha256": "79e729c61fc8f37b9b8b1cade6bd5eab950772664be0964ac40ed9b852bf6f96"
+      },
+      "net/netfilter/xt_addrtype.ko": {
+        "foundation_sha256": "1996654aefb67b665e2926bae09ec7485b81c19c4920930e83cb85217e2285b7",
+        "candidate_sha256": "1996654aefb67b665e2926bae09ec7485b81c19c4920930e83cb85217e2285b7"
+      },
+      "net/netfilter/xt_MASQUERADE.ko": {
+        "foundation_sha256": "bfee53be15b6b61496b3f32e29252dadd21571fdda7b578ce4496c17388b8093",
+        "candidate_sha256": "bfee53be15b6b61496b3f32e29252dadd21571fdda7b578ce4496c17388b8093"
+      },
+      "net/netfilter/nf_log_syslog.ko": {
+        "foundation_sha256": "a13f2c9402d9f6eaeac589edb6c202c4b0cb0a4245fc5c4b8c2ddaeec0a759c6",
+        "candidate_sha256": "a13f2c9402d9f6eaeac589edb6c202c4b0cb0a4245fc5c4b8c2ddaeec0a759c6"
+      },
+      "drivers/net/dummy.ko": {
+        "foundation_sha256": "eadf6e162cd0fa3cb8ec6c1a4ffa16fce22a16015e6374fbc5cd92f64caa44ab",
+        "candidate_sha256": "eadf6e162cd0fa3cb8ec6c1a4ffa16fce22a16015e6374fbc5cd92f64caa44ab"
+      },
+      "drivers/thermal/intel/x86_pkg_temp_thermal.ko": {
+        "foundation_sha256": "14f08b19f7ebaf5d85af199469974389602f926ff771c1dbd0d771b8f8edfa2f",
+        "candidate_sha256": "14f08b19f7ebaf5d85af199469974389602f926ff771c1dbd0d771b8f8edfa2f"
+      }
+    }
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-kernel-landlock-native-evidence.tar.gz",
+    "sha256": "febffec05ffb7abdbe70cba304d02503db4db85edbcb427bf614f1c6c133b61b",
+    "members": [
+      "intent.json",
+      "result.json",
+      "module-payload-comparison.json",
+      "driver.exit.json",
+      "uefi/intent.json",
+      "uefi/exit.json",
+      "uefi/serial.log",
+      "uefi/terminal.json",
+      "uefi/container.json",
+      "bios/intent.json",
+      "bios/exit.json",
+      "bios/serial.log",
+      "bios/terminal.json",
+      "bios/container.json"
+    ]
+  }
+}

@@ -117,3 +117,8 @@ Native static-libc UID101 diagnostic preparation passed. BIOS/UEFI Landlock,
 seccomp, namespace and module checks are prepared but NOT YET RUN. No kernel
 package/boot file has been installed/updated; no installed-Systemd/desktop/ISO/
 hardware/fresh full-source reproducibility acceptance is claimed.
+
+
+## Verified native diagnostic boots
+
+Actual Landlock candidate diagnostic BIOS+UEFI boots0/OOMfalse; both ABI9/UID101 rulesets2/allowed roundtrips4/denied reads4/writes4/creates4/fresh-process recoveries2/seccomp denials2/namespace/module insert-remove0. Complete token-bound serials; no target/builder/physical disk or network attached. All20 owned original module payloads byte-identical to candidate. Installed kernel/package/boot-entry/Systemd/desktop/ISO/physical acceptance still pending. [Native evidence](../evidence/B02-kernel-landlock-native.json). The diagnostic source and candidate hashes are bound to commit ef1f40a; no installed-system or stable-release gate is awarded by this focused proof.

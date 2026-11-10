@@ -3225,3 +3225,8 @@ Read-only baseline2 actual0:111558entries/2599875499bytes,93715pristine source e
 ### 2026-11-10 — B02 private Landlock compile
 
 Private Linux7.1.8 Landlock+selected SECURITY_PATH compiled0 via preserved cache, original111558entries/2599875499bytes fully retained,93715pristine source entries unchanged. Real UID101 COW isolation0. Two precompiler Rust metadata failures corrected with explicit make RUSTC=false; resource-stop partial3 retained, one bounded virtual scratch growth to1GiB then incremental4 compiler15.003s0. Late final allocation fell below reserve; five private linker temporaries retired with final hashes unchanged/free388354048B. Native static diagnostic prepare0, boot/native installation/desktop NOT accepted. ADR0201. Candidate imageSHA18c4d9e6a64554296d8e9a037c2383e7426a0cf155b6d757d0693fce0d087ad1; rawSHAa946b14b08bc3703aac69fc717a6a461f77690d635087d6555c049ca4ba915da. Next two no-disk diagnostic boots, then native staging/recovery qualification.
+
+
+### 2026-11-10 — B02 native Landlock BIOS/UEFI
+
+Actual Landlock candidate diagnostic BIOS+UEFI boots0/OOMfalse; both ABI9/UID101 rulesets2/allowed roundtrips4/denied reads4/writes4/creates4/fresh-process recoveries2/seccomp denials2/namespace/module insert-remove0. Complete token-bound serials; no target/builder/physical disk or network attached. All20 owned original module payloads byte-identical to candidate. Installed kernel/package/boot-entry/Systemd/desktop/ISO/physical acceptance still pending. RawSHAfebffec05ffb7abdbe70cba304d02503db4db85edbcb427bf614f1c6c133b61b. Next controlled native kernel stage/recovery/boot-entry revision before LocalSearch; all B02 then stop.
