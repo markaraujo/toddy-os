@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libxslt': ('1.1.45', 'glibc (>= 2.44-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'libxslt-1.1.45.tar.xz', 'usr/lib/pkgconfig/libxslt.pc'),
     'libhandy': ('1.8.3', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), fribidi (= 1.0.16-1+toddy1)', 'libhandy-1.8.3.tar.xz', 'usr/lib/pkgconfig/libhandy-1.pc'),
     'vte': ('0.84.1', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), pango (= 1.58.2-1+toddy1), cairo (= 1.18.4-1+toddy1), pcre2 (= 10.49-1+toddy1), lz4 (= 1.10.0-1+toddy1), simdutf (= 9.0.0-1+toddy1), fribidi (= 1.0.16-1+toddy1), gnutls (= 3.8.13-1+toddy1), icu (= 78.3-1+toddy1), systemd (>= 261.2-1+toddy3), at-spi2-core (= 2.60.6-1+toddy1)', 'vte-0.84.1.tar.gz', 'usr/lib/pkgconfig/vte-2.91.pc'),
     'simdutf': ('9.0.0', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2)', 'simdutf-9.0.0.tar.gz', 'usr/lib/pkgconfig/simdutf.pc'),
@@ -1220,6 +1221,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='libxslt':
+        from qualify_libxslt import qualify as qualify_libxslt
+        qualify_libxslt(ROOT)
     if name=='libhandy':
         from qualify_libhandy import qualify as qualify_libhandy
         qualify_libhandy(ROOT)
@@ -1350,7 +1354,18 @@ if __name__ == '__main__':
     before = inspect_stage(source)
     assert required in before['entries'], 'Missing declared payload'
     destination = Path('/mnt/lfs/sources/stage') / ('phase2-'+name)
-    if name in ('lua','libcanberra') and destination.exists():
+    if name=='libxslt' and destination.exists():
+        prior=json.loads((log.parent/'build/b02-libxslt-install.failed.json').read_text())
+        assert prior['recipe_exit']==1 and prior['postcheck_exit'] is None and prior['changed_paths']==0
+        assert "NameError: name 'work' is not defined" in (log.parent/'build/b02-libxslt-install.log').read_text()
+        assert not Path('/var/cache/toddy/packages/libxslt_1.1.45-1+toddy1_amd64.deb').exists()
+        absent=subprocess.run(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Status}','libxslt'],capture_output=True,text=True)
+        assert absent.returncode==1
+        current=inspect_stage(destination)['entries']
+        assert all(current[k]==v for k,v in before['entries'].items())
+        assert set(current)-set(before['entries'])=={'usr/share/doc/libxslt'}
+        assert (destination/'usr/share/doc/libxslt').is_dir() and not list((destination/'usr/share/doc/libxslt').iterdir())
+    elif name in ('lua','libcanberra') and destination.exists():
         # The first transaction stopped while collecting embedded legal notices,
         # before archive creation/dpkg. Resume that proven staging state only.
         prior=json.loads((log.parent/('build/b02-'+name+'-install.failed.json')).read_text())
@@ -1470,6 +1485,11 @@ if __name__ == '__main__':
     if name=='ibus':
         doc=destination/'usr/share/doc/ibus';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('Frozen official tag1.5.34 embeds1.5.34-rc2; native1.5.34~rc2-1+toddy1 preserves and discloses source version. Minimal GTK3/4+Wayland/GI/Unicode/setup/UI profile; XIM/X11 agent, GTK2, Python2, appindicator and optional emoji dict omitted. Seven portable original programs and UTF8/key parser refusal/recovery qualified; actual service, graphical keyboard and shared IM/schema caches remain separate pending gates. Full source/UCD/Unicode3 notices retained. ADR0169 records backend guard and original Xlib fixture link correction.\n')
+    if name=='libxslt':
+        doc=destination/'usr/share/doc/libxslt';doc.mkdir(parents=True,exist_ok=True)
+        from qualify_libxslt import review
+        (doc/'original-test-review.json').write_text(json.dumps(review(source.parent/'original-tests.log',Path('/mnt/lfs/sources/phase2/inputs/libxslt-1.1.45')),indent=2)+'\n')
+        (doc/'README.Toddy').write_text('Build-only xsltproc SDK for authenticated source UI transformations; not a GNOME Terminal runtime dependency. Core driver reports748cases/noerrors; four original DocBook golden whitespace differences remain unaccepted. No complete original-suite/general CLI parser sandbox or DocBook rendering qualification. Use bounded explicit nonet/nowrite/nomkdir/maxdepth/maxvars for selected fixtures. See original-test-review.json.\n')
     archives=[archive]
     if name=='vte':archives+=['fmt-12.2.0.tar.gz','fast_float-8.2.10.tar.gz']
     if name=='ibus':archives+=['UCD-17.0.0.zip','Unicode-License-3.0.txt']

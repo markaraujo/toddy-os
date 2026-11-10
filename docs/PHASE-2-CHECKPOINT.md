@@ -29,16 +29,49 @@ logs/jobs/exits /var/log/toddy/phase2/libhandy-{1,probe-2,gi-3}.*;
 native /var/log/toddy/build/b02-libhandy-install.success.json.
 NEVER rebuild/restage/reinstall/replay accepted work.
 
-Exact next: commit/publish verified libhandy slice/exact deployed version, then
-GNOME Terminal3.60.0 source SDK preflight and ONE isolated build/original regex
-suite/private schema persistence/CLI. Source already frozen/cached SHA
-6c006523d2c21282fd62c64fc44f63546aaa216e66eb439b8129af68db11df7c,
+Current slice: libxslt1.1.45 build-only xsltproc SDK OWNED; no active guest writer.
+Buildlibxslt-1 PID13885 terminal0,41ELFs/92stagefiles. Core reports748cases/noerrors,
+but four swallowed DocBook golden URL-whitespace differences remain UNACCEPTED;
+German-locale branch not independently asserted. No full-suite/DocBook/blanket
+CLI parser sandbox claim. Original source/goldens unchanged, exact review bound.
+First native PID28710 recipe1/postnull/rootchanged0 due own metadata path variable;
+exact partial stage/sole empty doc dir and archive/package absence verified.
+Nativeinstall2PID28991 recipe/post0/0,175changedpaths/181owned entries. Installed
+UID101 no-route bounded UTF8 transform/malformed/refused EXSLT write-no-effect/
+two recovery cycles/shared ABI/pkg-config/APT0. Never rebuild/restage/reinstall.
+[Proof](evidence/B02-libxslt-install.json), ADR0194;
+archiveSHA9110f98d8f1fbb03f0753abce5f334b9d897cb43e08988e4e2e601516f6e5147;
+rawSHA5e51a0eea1ce6084e72c1ee9a73873f2fc76ed2b59260a84018733cbe9cccd3e.
+Input/work /mnt/lfs/sources/phase2/{inputs/libxslt-1.1.45,work/libxslt-1};
+job/log/exit /var/log/toddy/phase2/libxslt-1.*; native receipt
+/var/log/toddy/build/b02-libxslt-install-2.success.json.
+Exact next: commit/publish SDK slice, then guarded Terminal setup resume. Verified
+Terminal /compile/build.ninja and /compile/meson-private/coredata.dat ABSENT,
+original-tests.exit/stage-results absent, stage empty. No uncertain work replay.
+Use same immutable input/work; replace only initial fresh-directory guard in
+exact recipe command, verify all other bytes, new job gnome-terminal-build-2.
+
+GNOME Terminal3.60.0 job `gnome-terminal-1` PID13099 TERMINAL1 at Meson setup:
+all nine runtime SDK pkg-config versions found, but required xsltproc absent.
+Actual src/meson.build uses --nonet XSLT for GTK menus despite docsfalse. No
+Terminal compilation/original tests/stage/native transaction yet. Preserve same
+/source and failed /build/compile. After qualified xsltproc, resume its setup in
+same tree with fresh guarded job, not blind freshbuild/re-extract.
+SourceSHA6c006523d2c21282fd62c64fc44f63546aaa216e66eb439b8129af68db11df7c,
 bookSHA88e7839f2585a1258fb78aad1be2d64fb0871e10349e41d8d101de76c870c3f9.
-Actual source reviewed `.local/phase2/gnome-terminal-{meson.build,src-meson.build,meson_options.txt}`.
-NO Terminal input/job yet. All required SDKs now owned; verify actual pkg-config.
-Keep supported search-provider integration, optional Nautilus extension/docs omitted.
-Shared stock schema cache union and actual launch/window/focus/PTY/Stop/recovery
-remain required. No general replanning or unchanged native headless focus retry.
+RecipeSHA7d2ee1b3beaca6e242ac9f5d6c2a951cbc9246cc8bc2fb473cc6c3a316f91d6a;
+probeSHA9444390b087e7031089a1e600f039f3a833d3fd5e157531bfb7fe34f8b66b986.
+Input/work /mnt/lfs/sources/phase2/{inputs/gnome-terminal-3.60.0,work/gnome-terminal-1};
+log/job/exit /var/log/toddy/phase2/gnome-terminal-1.*. Failure ledger persists.
+Selected regex/client version+invalid-option/private DConf Unicode/navy settings/
+invalid boolean refusal/persistence across two buses/reset/system font preservation.
+Search provider selected, optional Nautilus extension/docs/debug omitted.
+Stock schema union/native launch/window/focus/PTY/Stop/recovery remain separate.
+
+Libhandy slice committed/pushed0b9fa00b2bbeb8756a584de2ad6e07d85779fa6a;
+all3CI success, exactpublicHTTP200/indexSHA
+bd413028dc782ec5a1cc0de299d8ae38c09febfae1446efe094746e0687a309a.
+Preserve30libhandy original graphical obligations before B02 closure.
 
 Previous VTE0.84.1 OWNED:18original programs/134ELFs/125stagefiles; native2/post0/0,
 254changedpaths/468entries; installed private PTY/group Stop/Unicode/recovery/prompt/

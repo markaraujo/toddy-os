@@ -1,0 +1,204 @@
+{
+  "scope": "Owned libxslt1.1.45 xsltproc build SDK:41compiledELFs/92stagefiles; native install2/post0/0,175changedpaths/181owned entries. Actual installed UID101/no-route bounded Unicode transformation/malformed XML refusal/EXSLT write refusal-no-effect/two recovery cycles/shared ABI/pkg-config/APT0. Original core driver reports748cases/noerrors but four swallowed DocBook golden whitespace differences remain explicitly UNACCEPTED; conditional German-locale branch not independently asserted. No full-suite/DocBook/blanket CLI sandbox/GUI qualification. Build-only, not GNOME Terminal runtime dependency. Own promotion metadata path failure retained/zero root changes, exact partial stage verified before guarded resume; no source/library/original-test replay.",
+  "source": {
+    "name": "libxslt",
+    "version": "1.1.45",
+    "filename": "libxslt-1.1.45.tar.xz",
+    "url": "https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.45.tar.xz",
+    "sha256": "9acfe68419c4d06a45c550321b3212762d92f41465062ca4ea19e632ee5d216e",
+    "reference": "BLFS13.1-systemd general/libxslt.html",
+    "book_page_sha256": "011a30cdc3794f2047578347ab1a20adc1b67cbcea95cadd42e09e567f7ca8ae",
+    "book_md5": "84bb3f6ba7f5ee98af5dcd72e828c73e",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "prepared": {
+    "source_sha256": "9acfe68419c4d06a45c550321b3212762d92f41465062ca4ea19e632ee5d216e",
+    "reference": "BLFS13.1-systemd general/libxslt.html",
+    "book_page_sha256": "011a30cdc3794f2047578347ab1a20adc1b67cbcea95cadd42e09e567f7ca8ae",
+    "source_patches": [],
+    "recipe_sha256": "6663a9a186e5a25b318c16a5239b9f834a370f07d3b92b571fe73e01f280a2ed",
+    "probe_sha256": "092b4a716e99210e940429a79604549485d67c8ef81490d3b9a864da9fdfd6ea"
+  },
+  "stage": {
+    "scope": "Frozen libxslt1.1.45 xsltproc build SDK for owned GNOME Terminal UI XSLT generation, linked existing libxml2. Original make check retained. Optional deprecated Python/crypto/plugins disabled. Actual bounded CLI Unicode transform/malformed refusal/EXSLT write refusal-no-effect/two reset recovery cycles; selected flags are explicit, no blanket CLI parser sandbox or GUI/security closure claim. Native live image root must not acquire this build-only tool through Terminal runtime dependencies.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_check_exit": 0,
+    "consumer": {
+      "xsltproc_version": "1.1.45",
+      "UTF8_transform": true,
+      "malformed_XML_refused": true,
+      "EXSLT_write_refused_no_effect": true,
+      "reset_recovery_cycles": 2,
+      "selected_flags": [
+        "nonet",
+        "nowrite",
+        "nomkdir",
+        "maxdepth128",
+        "maxvars4096"
+      ],
+      "GUI_or_general_CLI_default_sandbox_claim": false
+    },
+    "artifacts_count": 41,
+    "artifacts_manifest_sha256": "281d812d6c2cc63299d184938832d6083a3cb5845a91e4da3dd08c6fcf8d9da4",
+    "stage_sha256_count": 92,
+    "stage_sha256_manifest_sha256": "c3bbf3d4110f2f483b5e23069f7a4831edf87836ad2fc131e4f50da268243f70"
+  },
+  "native_transaction": {
+    "step": "b02-libxslt-install-2",
+    "started": "2026-11-10T05:35:38.030680+00:00",
+    "recipe_sha256": "0c8390e28e79c9acef392d83c0d05eda4d76bbe46c46b687a97e5055ac20975e",
+    "postcheck_sha256": "bd3d450e4c274932232b03be2ada8c1b0186278075aac37f013a972fa9bcba50",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "44f20b92f7373366bad411ac439dcf7e2126515b8e970732fa34555255e01a06",
+    "recipe_pid": 29008,
+    "recipe_pgid": 29008,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T05:35:55.047723+00:00",
+    "changed_paths": 175,
+    "log_sha256": "a49e3a6ae94732d97dd2da68a9000b7e904d59099ae2935a317d0d0f6b628c06",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "49acb80980d6977cda317dc26282ec08e6f5d083ec82f41618aec05afccea759"
+  },
+  "package": {
+    "name": "libxslt",
+    "version": "1.1.45-1+toddy1",
+    "archive_sha256": "9110f98d8f1fbb03f0753abce5f334b9d897cb43e08988e4e2e601516f6e5147",
+    "recipe_sha256": "0c8390e28e79c9acef392d83c0d05eda4d76bbe46c46b687a97e5055ac20975e",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "libxslt",
+        "version": "1.1.45",
+        "filename": "libxslt-1.1.45.tar.xz",
+        "url": "https://download.gnome.org/sources/libxslt/1.1/libxslt-1.1.45.tar.xz",
+        "sha256": "9acfe68419c4d06a45c550321b3212762d92f41465062ca4ea19e632ee5d216e",
+        "reference": "BLFS13.1-systemd general/libxslt.html",
+        "book_page_sha256": "011a30cdc3794f2047578347ab1a20adc1b67cbcea95cadd42e09e567f7ca8ae",
+        "book_md5": "84bb3f6ba7f5ee98af5dcd72e828c73e",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "49acb80980d6977cda317dc26282ec08e6f5d083ec82f41618aec05afccea759",
+    "payload_count": 181,
+    "payload_manifest_sha256": "5333217ee32fa8ab1fea2608547eb468daca6c8d2ee29520a271765ff81a239e"
+  },
+  "installed_consumer": {
+    "scope": "Actual installed UID101/no-route xsltproc build SDK bounded UTF8 transform/malformed refusal/EXSLT write refusal-no-effect/two recovery cycles/pkg-config/APT0. Original core driver reports748noerrors; four swallowed DocBook golden differences remain unaccepted, no full suite or general CLI default sandbox claim. Not Terminal runtime dependency.",
+    "consumer": {
+      "xsltproc_version": "1.1.45",
+      "UTF8_transform": true,
+      "malformed_XML_refused": true,
+      "EXSLT_write_refused_no_effect": true,
+      "reset_recovery_cycles": 2,
+      "selected_flags": [
+        "nonet",
+        "nowrite",
+        "nomkdir",
+        "maxdepth128",
+        "maxvars4096"
+      ],
+      "GUI_or_general_CLI_default_sandbox_claim": false
+    },
+    "shared_library_resolution": true,
+    "original_review": {
+      "make_check_exit": 0,
+      "core_driver_reported_cases": 748,
+      "core_driver_reported_errors": 0,
+      "DocBook_golden_differences": 4,
+      "DocBook_differences_accepted": false,
+      "all_original_cases_passed_claim": false,
+      "difference_scope": "Source fixture multiline URL indentation retained in four HTML/XHTML/FO/chunk golden comparisons; no goldens/source changed. Build SDK only; not a general DocBook renderer qualification.",
+      "source_conditional_German_locale_branch": "Not independently asserted; no separate locale pass claim",
+      "original_log_sha256": "e7cb91d000392de7377d294142fd49fb29b6e641a0b423b331667a4d344e50a9",
+      "fixture_sha256": "aee5b07e501fb6c76424dd2c8b004d13c93dbd7e1b534e5f586e18007a2929cb"
+    },
+    "image_role": "build-only SDK, exclude from default Terminal runtime closure"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libxslt-install-evidence.tar.gz",
+    "sha256": "5e51a0eea1ce6084e72c1ee9a73873f2fc76ed2b59260a84018733cbe9cccd3e",
+    "members": [
+      "build/b02-libxslt-install-2.log",
+      "build/b02-libxslt-install-2.manifest.json",
+      "build/b02-libxslt-install-2.success.json",
+      "build/b02-libxslt-install.failed.json",
+      "build/b02-libxslt-install.log",
+      "build/b02-libxslt-install.manifest.json",
+      "package.json",
+      "phase2/b02-libxslt-install-2-controller.log",
+      "phase2/b02-libxslt-install-2-timing.json",
+      "phase2/b02-libxslt-install-controller.log",
+      "phase2/b02-libxslt-install-timing.json",
+      "phase2/libxslt-1-controller.log",
+      "phase2/libxslt-1.exit",
+      "phase2/libxslt-1.job.json",
+      "phase2/libxslt-1.log",
+      "phase2/libxslt-installed-consumer.json",
+      "phase2/libxslt-stage.json",
+      "prepared.json",
+      "work/configure.log",
+      "work/consumer/input.xml",
+      "work/consumer/style.xsl",
+      "work/consumer/write.xsl",
+      "work/native-consumer.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/stage-results.json",
+      "work/stage.log"
+    ]
+  }
+}

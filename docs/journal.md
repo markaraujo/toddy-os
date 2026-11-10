@@ -3124,3 +3124,13 @@ Prior d3e59cb all3CI success/exact publicHTTP200/indexSHA
 4f3043275c2be21e35d42d44bd89af61b833fbe56c86e03ee6da9c8f3e534742.
 Next GNOME Terminal3.60.0 required SDK preflight, original regex tests and private
 settings persistence before native GUI gate. Complete ALL B02 then stop.
+
+### B02 — xsltproc build SDK and bounded original-test review — 2026-11-10
+
+Owned libxslt1.1.45 build-only xsltproc SDK:41ELFs/92stagefiles, core driver reports748cases/noerrors; four swallowed DocBook golden URL-whitespace differences remain UNACCEPTED, no full-suite/German-locale/DocBook/blanket parser-sandbox claim. Native install2/post0/0,175changedpaths/181entries; installed UID101 bounded UTF8 transform/malformed XML and EXSLT write refusal-no-effect/two recovery cycles/shared ABI/pkg-config/APT0. Initial metadata path error rootchanged0, exact stage verified before guarded resume; no compile/test replay. Unblocks Terminal menus, no Terminal runtime dependency/GUI acceptance, ADR0194.
+GNOME Terminal initial setup failed at missing xsltproc after runtime SDK preflight;
+actual source uses it for menus even with docs omitted. Same setup tree retained.
+Prior0b9fa00 all3CI success/exact publicHTTP200/indexSHA
+bd413028dc782ec5a1cc0de299d8ae38c09febfae1446efe094746e0687a309a.
+Next resume failed Terminal Meson setup in same directory with fresh guarded job;
+no Terminal compilation/original tests/stage/native install exists yet.

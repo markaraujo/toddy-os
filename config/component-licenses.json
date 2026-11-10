@@ -11148,6 +11148,25 @@
           ]
         }
       }
+    },
+    {
+      "name": "libxslt",
+      "version": "1.1.45",
+      "license": "MIT",
+      "evidence": "Authenticated source Copyright and leading runtime C/header legal conditions retained. Build-only xsltproc for Terminal UI generation, optional Python/crypto/plugins disabled. Core reported748cases/noerrors but four DocBook golden whitespace differences remain explicitly unaccepted.",
+      "extra_license_headers": {
+        "libxslt-1.1.45.tar.xz": {
+          "prefixes": [
+            "libxslt/",
+            "libexslt/",
+            "xsltproc/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
