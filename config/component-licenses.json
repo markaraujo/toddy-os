@@ -11077,6 +11077,24 @@
           ]
         }
       }
+    },
+    {
+      "name": "simdutf",
+      "version": "9.0.0",
+      "license": "Apache-2.0 OR MIT",
+      "evidence": "Authenticated exact root LICENSE-APACHE/LICENSE-MIT and leading runtime C++/header conditions retained. Explicit portable scalar fallback; actual VM supported dispatch only, icelake unavailable. Optional CLI tools omitted, VTE/terminal/UI qualification pending.",
+      "extra_license_headers": {
+        "simdutf-9.0.0.tar.gz": {
+          "prefixes": [
+            "include/",
+            "src/"
+          ],
+          "suffixes": [
+            ".h",
+            ".cpp"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

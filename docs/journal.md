@@ -3095,3 +3095,5 @@ remain required before promotion. No desktop/GUI/ISO acceptance. Full B02 then s
 2026-11-10: B02 Fast_float8.2.10 architectureall header SDK owned/native0/0/27entries after14original core programs and actual staged/installed UID101 CMake/parse/refusal/recovery consumer0. Private270file doctest source pinned/no compiler network/framework install. ADR0189; next fmt/simdutf/VTE/GNOME Terminal, no GUI acceptance.
 
 2026-11-10: B02 fmt12.2.0 native0/0/57entries after21original core programs and actual staged/installed UID101 CMake/shared ABI/Unicode-format/refusal/recovery consumer0. No terminal/GUI acceptance; ADR0190. Next simdutf scalar fallback/default originals, VTE/GNOME Terminal.
+
+2026-11-10: B02 simdutf9.0.0 native0/0/85entries after91original programs67.18s;79icelake unsupported notes retained, scalar fallback included. Actual staged/installed UID101 Unicode roundtrip/invalid refusal/recovery/ABI0. ADR0191; VTE prerequisites actually present, next GTK3 VTE/PTYShell/Stop/user-hook preservation, no GUI acceptance.

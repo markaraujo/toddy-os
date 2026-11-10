@@ -8,7 +8,27 @@ No accepted complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current slice: fmt12.2.0 OWNED shared library/SDK; no active guest writer.
+Current slice: simdutf9.0.0 OWNED shared/SDK with scalar fallback; no active writer.
+Buildsimdutf-1 PID5077 terminal0,91original programs67.18s/193ELFs/49stagefiles.
+79icelake-unsupported CPU notes retained, not hardware passes. Native
+b02-simdutf-install PID6417 terminal0/0,83paths/85entries; actual UID101 CMake/
+libsimdutf34/Portuguese-emoji UTF8↔UTF16/lengths/overlong+surrogate refusal/two
+recovery cycles/pkg-config/APT0. No terminal/UI acceptance.
+[Proof](evidence/B02-simdutf-install.json), ADR0191/rawSHA
+d3e3de22884602fb30a2b7229a0a9715b3a43b3ef5020a9abd66edf1080f9231.
+ArchiveSHA4f68407ccf6c7b4f26514b58a16d27ab211045a5ef9f0b0f2e3cb13cfa61f0d2.
+Input/work /mnt/lfs/sources/phase2/{inputs/simdutf-9.0.0,work/simdutf-1};
+logs/job/exit /var/log/toddy/phase2/simdutf-1.{job.json,log,exit}.
+NEVER rebuild/restage/reinstall/replay originals. All required VTE0.84.1 SDKs
+actually found: GTK3/PCRE2/LZ4/simdutf/fmt/FriBidi/GnuTLS/ICU/Pango/GLib/Systemd.
+Exact next: prepare ONE VTE0.84.1 GTK3/API2.91 build (GNOME Terminal3.60.0 consumer),
+preserve a11y/FriBidi/ICU/GnuTLS/GI/Systemd. Source cached/frozen, NO VTE input/job yet.
+Actual upstream vte.sh overwrites non-array PROMPT_COMMAND: implement narrow
+user-hook preservation before build, record hashes and test real interactive Bash
+preservation. Original parser/UTF/regex/unit tests plus actual PTY/Stop/recovery
+consumer selected; no GUI/focus claim before real native window tests.
+
+Previous slice: fmt12.2.0 OWNED shared library/SDK; no active guest writer.
 Buildfmt-1 PID3595 terminal0,21original programs/no observed nested skips/78ELFs/
 22stagefiles. Nativeb02-fmt-install PID4515 terminal0/0,55paths/57owned entries;
 actual installed UID101 CMake/shared libfmt12/Unicode-decimal-hex/runtime format
@@ -217,3 +237,7 @@ absent for first launch; inspect actual operation before any retry.
 FastFloat publication6495299c113b319a882250dc0251e1e4a5c4045f: safety42757068371/
 planning42757068286/Pages42757068351 allsuccess; exactHTTP200/publicSHA
 422fce395dc0a0da6d5d09ac80530f5195e1baa507bf8b2bdad04a6569461d24.
+
+Fmt publication73f2828171a653eb29245cb4030e874f1487d0df: planning42757978231/
+safety42757978044/Pages42757978014 allsuccess; exactHTTP200/publicSHA
+8f7bbaac168ecd71fe07c78f4d59dbeaa91fc1c05680d7801fb2a8fd5f8270e3.
