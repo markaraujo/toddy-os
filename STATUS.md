@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T01:36:23.427858+00:00
+Updated: 2026-11-10T01:47:10.222957+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T01:36:23.427858+00:00
+Last verified: 2026-11-10T01:47:10.222957+00:00
 
 Verified:
 
@@ -118,8 +118,9 @@ Verified:
 - Owned libndp1.9 required NM dependency native install/post0/0,18paths/22entries; actual UID101 five-message API/refusal/clamp/recovery/CLI/SDK0. No original test suite, packet/device/network acceptance; ADR0175.
 - Owned NetworkManager1.58.1:67original drivers/20nested skips,613ELFs/285stagefiles; native install0/post CLI-label assumption1 reconciled verify-only2 0/0,rootchanges0/831entries unchanged. Actual UID101 connection/variant/refusal/recovery/GI1.0/SDK0. No daemon/network/policy/persistence/Stop/GNOME acceptance; ADR0176.
 - Owned libnma1.10.6 GTK3+4/Gcr4: one original test-utils0/101ELFs unchanged/114stagefiles; actual installed UID101 C and selected NMA/NMA4 GI/refusal/recovery/SDK0. Native install2/post0/0,174paths/346entries; initial guard failures preserved.16manual GUIs compile only; schema cache/other GI/widget/focus/network/GNOME pending, ADR0177.
+- GDM50.2 compile/original m-common/stage0,79ELFs/218files; private qualified CheckSDK reused; actual client/extension ownership/precancel/refusal/recovery/CLI0. Target lacks four PAM includes required by staged LFS policies; native package/account/login not accepted, ADR0178.
 
-Running: B02: NetworkManager/libnma packages owned; GDM/SettingsDaemon/GNOME Shell chain and actual service/network/policy/cache/graphical gates next. Complete ALL B02 then stop.
+Running: B02: GDM staging verified; implement owned missing shared login PAM policies and actual auth/session/refusal/recovery, then GDM account/native package and SettingsDaemon/Shell/native graphical desktop. Complete ALL B02 then stop.
 
 Remaining:
 

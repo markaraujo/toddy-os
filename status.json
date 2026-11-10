@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-10T01:36:23.427858+00:00",
+  "updated_at": "2026-11-10T01:47:10.222957+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05\u2013B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -723,14 +723,15 @@
       "Owned GeoClue2.8.2 full backend native install0/own GI post1 reconciled verify-only0/0,70owned entries/account unchanged. Actual installed UID30 service/config deny/peer isolation/global agent revoke+restore/Stop/two private buses0,rootchanges0. Synthetic static source/agent; per-app sandbox consent/GNOME UI/provider/owner-position unqualified. ADR0174.",
       "Owned libndp1.9 required NM dependency native install/post0/0,18paths/22entries; actual UID101 five-message API/refusal/clamp/recovery/CLI/SDK0. No original test suite, packet/device/network acceptance; ADR0175.",
       "Owned NetworkManager1.58.1:67original drivers/20nested skips,613ELFs/285stagefiles; native install0/post CLI-label assumption1 reconciled verify-only2 0/0,rootchanges0/831entries unchanged. Actual UID101 connection/variant/refusal/recovery/GI1.0/SDK0. No daemon/network/policy/persistence/Stop/GNOME acceptance; ADR0176.",
-      "Owned libnma1.10.6 GTK3+4/Gcr4: one original test-utils0/101ELFs unchanged/114stagefiles; actual installed UID101 C and selected NMA/NMA4 GI/refusal/recovery/SDK0. Native install2/post0/0,174paths/346entries; initial guard failures preserved.16manual GUIs compile only; schema cache/other GI/widget/focus/network/GNOME pending, ADR0177."
+      "Owned libnma1.10.6 GTK3+4/Gcr4: one original test-utils0/101ELFs unchanged/114stagefiles; actual installed UID101 C and selected NMA/NMA4 GI/refusal/recovery/SDK0. Native install2/post0/0,174paths/346entries; initial guard failures preserved.16manual GUIs compile only; schema cache/other GI/widget/focus/network/GNOME pending, ADR0177.",
+      "GDM50.2 compile/original m-common/stage0,79ELFs/218files; private qualified CheckSDK reused; actual client/extension ownership/precancel/refusal/recovery/CLI0. Target lacks four PAM includes required by staged LFS policies; native package/account/login not accepted, ADR0178."
     ],
-    "running": "B02: NetworkManager/libnma packages owned; GDM/SettingsDaemon/GNOME Shell chain and actual service/network/policy/cache/graphical gates next. Complete ALL B02 then stop.",
+    "running": "B02: GDM staging verified; implement owned missing shared login PAM policies and actual auth/session/refusal/recovery, then GDM account/native package and SettingsDaemon/Shell/native graphical desktop. Complete ALL B02 then stop.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-10T01:36:23.427858+00:00",
+    "verified_at": "2026-11-10T01:47:10.222957+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

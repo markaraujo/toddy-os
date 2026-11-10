@@ -1,0 +1,95 @@
+{
+  "scope": "GDM50.2 isolated full local Wayland/PAM/Systemd daemon/libgdm/GI/pam_gdm compile/original/stage/C API pre-cancel/refusal/recovery/CLI only. Qualified private Check SDK reused. No native package/account/PAM/login/greeter/permission/keyring/desktop/ISO acceptance.",
+  "source": {
+    "name": "gdm",
+    "version": "50.2",
+    "filename": "gdm-50.2.tar.xz",
+    "url": "https://download.gnome.org/sources/gdm/50/gdm-50.2.tar.xz",
+    "sha256": "8a4679e47cddfe8b0a1bd9d3836042deb68fb3e1b0e7e62dfd0631dc5b6fc541",
+    "upstream_sha256_url": "https://download.gnome.org/sources/gdm/50/gdm-50.2.sha256sum",
+    "upstream_sha256_file_sha256": "a0710a7bbe52c117bfa45ea724c4c9242ff66d373c5d98c29adca5d1414fd72f",
+    "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+    "status": "source_verified"
+  },
+  "prepared": {
+    "source_sha256": "8a4679e47cddfe8b0a1bd9d3836042deb68fb3e1b0e7e62dfd0631dc5b6fc541",
+    "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+    "book_page_sha256": null,
+    "source_patches": [],
+    "recipe_sha256": "3a4992eace90d5b30b8b9ee87f5dad68edab476d1aa662c7c149da3addde76d3",
+    "private_test_sdk": {
+      "scope": "Reused qualified private native test SDK only; not installed or a runtime dependency",
+      "source": {
+        "name": "check",
+        "version": "0.15.2",
+        "filename": "check-0.15.2.tar.gz",
+        "url": "https://github.com/libcheck/check/archive/refs/tags/0.15.2.tar.gz",
+        "sha256": "998d355294bb94072f40584272cf4424571c396c631620ce463f6ea97aa67d2e",
+        "upstream_commit": "11970a7e112dfe243a2e68773f014687df2900e8",
+        "reference": "Frozen libfyaml0.9.6 CMakeLists FetchContent declaration pins Check0.15.2",
+        "integrity": "Primary HTTPS upstream tag archive; actual upstream Git tag identity recorded; full tar member checks before native extraction",
+        "scope": "Private native unit-test SDK only; not a runtime/catalog dependency",
+        "status": "source_verified"
+      },
+      "upstream_sdk_cases_reused": 9,
+      "ctest_evidence_sha256": "4c4820d001d8dcf4e9b371eaec8e08fd2d41618dd3b892569185441ecd160c45",
+      "manifest_count": 2,
+      "manifest_sha256": "a8d192b0d3714c36e75b98c26a2e4e94edaac7412008536e581e5153cc7a5186"
+    },
+    "probe_sha256": "fc2718a65c6f86754ce0158bb4fb34446e83d21f0b8d654a90ecfccfdff5bfee"
+  },
+  "stage": {
+    "scope": "Frozen GDM50.2 with actual Wayland local login daemon/full PAM/Systemd/journal/libgdm/GI/pam_gdm; supported X11 path and optional SELinux/audit/Plymouth omitted. Reused qualified private CheckSDK only for one original m-common driver. Own client/extension ownership/precancel/refusal/recovery/CLI only; actual account/greeter/PAM/keyring/privilege/login/desktop/cache gates pending.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "gdm:m-common",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "consumer": {
+      "actual_client_and_owned_extension_copies": true,
+      "precancelled_connection_refused": true,
+      "recovery_cycles": 2,
+      "actual_login_PAM_or_desktop_tested": false
+    },
+    "daemon_version": "GDM 50.2",
+    "artifacts_count": 79,
+    "artifacts_manifest_sha256": "b147e511f3c991468db2d8517ff1e3f2abe9280a385561eac337e2d4a4471a8f",
+    "stage_sha256_count": 218,
+    "stage_sha256_manifest_sha256": "6d59541be4a994675e9b71118c315e46cda94a36d5b87002e5b8c4b651b4cabd"
+  },
+  "job": {
+    "pid": 523211,
+    "boot_id": "568b17f7-1b0d-4b6c-bcd4-8fba4913a526",
+    "proc_start_ticks": "2978557",
+    "started_unix": 1794274826.4328036,
+    "command": [
+      "/bin/bash",
+      "/opt/toddy-build/scripts/build/phase2/isolated.sh",
+      "/mnt/lfs/sources/phase2/inputs/gdm-50.2",
+      "/mnt/lfs/sources/phase2/work/gdm-1",
+      "bash",
+      "/src/toddy-build.sh"
+    ],
+    "harness_sha256": "01c612ffbf44c4f56be94a6530d88a5e0db5283409feab3a11946f8873e1f9d1"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gdm-build-evidence.tar.gz",
+    "sha256": "30946690e3467cfa4334ac1306bd7d799d6b10b7e6790645a6f32a7e285e3e77",
+    "members": [
+      "input/toddy-prepared.json",
+      "phase2/gdm-1.exit",
+      "phase2/gdm-1.job.json",
+      "phase2/gdm-1.log",
+      "work/compile/meson-logs/testlog.json",
+      "work/daemon-version.log",
+      "work/native-consumer.json",
+      "work/original-registered-tests.json",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}
