@@ -125,3 +125,31 @@ docs/evidence/B02-gsound-stage.json:generic-api-key:35
 
 # Exact historical public GSound Vala interface hash reviewed above.
 510460b4b61ab736c1edf53b2ed01c420074e749:docs/evidence/B02-gsound-stage.json:generic-api-key:35
+
+# Reviewed exact SHA256 fingerprints of public MBIM/QMI API object/header payloads.
+docs/evidence/B02-libmbim-stage.json:generic-api-key:330
+docs/evidence/B02-libmbim-stage.json:generic-api-key:341
+docs/evidence/B02-libmbim-stage.json:generic-api-key:398
+docs/evidence/B02-libmbim-stage.json:generic-api-key:407
+docs/evidence/B02-libmbim-stage.json:generic-api-key:413
+docs/evidence/B02-libmbim-stage.json:generic-api-key:424
+docs/evidence/B02-libmbim-stage.json:generic-api-key:442
+docs/evidence/B02-libmbim-stage.json:generic-api-key:456
+docs/evidence/B02-libqmi-install.json:generic-api-key:487
+docs/evidence/B02-libqmi-install.json:generic-api-key:488
+docs/evidence/B02-libqmi-install.json:generic-api-key:771
+docs/evidence/B02-libqmi-install.json:generic-api-key:794
+docs/evidence/B02-libqmi-install.json:generic-api-key:1376
+docs/evidence/B02-libqmi-install.json:generic-api-key:1377
+docs/evidence/B02-libqmi-install.json:generic-api-key:1378
+docs/evidence/B02-libqmi-install.json:generic-api-key:1379
+docs/evidence/B02-libqmi-install.json:generic-api-key:1380
+docs/evidence/B02-libqmi-install.json:generic-api-key:1428
+docs/evidence/B02-libqmi-install.json:generic-api-key:1429
+docs/evidence/B02-libqmi-install.json:generic-api-key:1430
+docs/evidence/B02-libqmi-install.json:generic-api-key:1431
+docs/evidence/B02-libqmi-install.json:generic-api-key:1507
+docs/evidence/B02-libqmi-install.json:generic-api-key:1534
+docs/evidence/B02-libqmi-install.json:generic-api-key:1582
+docs/evidence/B02-libqmi-install.json:generic-api-key:1589
+docs/evidence/B02-libqmi-install.json:generic-api-key:1744

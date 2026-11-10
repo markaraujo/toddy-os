@@ -9,11 +9,16 @@ import subprocess
 import sys
 import phase2_vm
 ROOT=phase2_vm.ROOT
-NAME=sys.argv[1]
-assert len(sys.argv) in (2,3)
-receipt_suffix='-'+sys.argv[2] if len(sys.argv)==3 else ''
+argv=sys.argv[1:]
+assert argv.count('--scratch-source')<=1
+scratch_source='--scratch-source' in argv
+if scratch_source:argv.remove('--scratch-source')
+assert len(argv) in (1,2)
+NAME=argv[0]
+assert not scratch_source or NAME in ('libqmi','modemmanager','gnome-control-center')
+receipt_suffix='-'+argv[1] if len(argv)==2 else ''
 assert not receipt_suffix or re.fullmatch(r'-[a-z][a-z0-9-]{0,31}',receipt_suffix)
-assert NAME in ('gnome-bluetooth','gsound','libpwquality','cracklib','gnome-online-accounts','librest','tecla','gnome-text-editor','editorconfig','libspelling','enchant','aspell','localsearch','gexiv2','brotli','inih','exiv2','blueprint-compiler','tinysparql','gnome-autoar','libportal','libxslt','gnome-terminal','libhandy','vte','simdutf','fmt','fast-float','gst-plugins-base','gstreamer','gnome-shell','gnome-settings-daemon','gdm','libnma','networkmanager','libndp','geoclue','libgweather','gweather-locations','geocode-glib','ibus','unicode-ucd','vala','evolution-data-server','libsoup','glib-networking','libproxy','make-ca','gnutls','libidn2','libunistring','nettle','libpsl','nss','nspr','libical','gnome-keyring','gcr3','libsecret','openssh','gcr','p11-kit','libtasn1','gnome-session','upower','json-c','accountsservice','dconf','python-dbusmock','dbus-python','polkit','duktape','wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa','libepoxy','gdk-pixbuf','tiff','iso-codes','gtk','doxygen','itstool','libxmlb','libfyaml','appstream','libadwaita','libsass','sassc','at-spi2-core','lcms2','libseccomp','bubblewrap','hwdata','libdisplay-info','mtdev','libevdev','libxcvt','libei','libinput','alsa-lib','pipewire','lua','wireplumber','libnotify','libgudev','libwacom','gtk3','gnome-desktop','json-glib','libogg','libvorbis','libsndfile','pulseaudio','libcanberra','libusb','libgusb','colord','docutils','mutter','gtksourceview','icu')
+assert NAME in ('libqmi','modemmanager','gnome-control-center','libmbim','gnome-bluetooth','gsound','libpwquality','cracklib','gnome-online-accounts','librest','tecla','gnome-text-editor','editorconfig','libspelling','enchant','aspell','localsearch','gexiv2','brotli','inih','exiv2','blueprint-compiler','tinysparql','gnome-autoar','libportal','libxslt','gnome-terminal','libhandy','vte','simdutf','fmt','fast-float','gst-plugins-base','gstreamer','gnome-shell','gnome-settings-daemon','gdm','libnma','networkmanager','libndp','geoclue','libgweather','gweather-locations','geocode-glib','ibus','unicode-ucd','vala','evolution-data-server','libsoup','glib-networking','libproxy','make-ca','gnutls','libidn2','libunistring','nettle','libpsl','nss','nspr','libical','gnome-keyring','gcr3','libsecret','openssh','gcr','p11-kit','libtasn1','gnome-session','upower','json-c','accountsservice','dconf','python-dbusmock','dbus-python','polkit','duktape','wayland','wayland-protocols','pixman','libpng','freetype','fontconfig','fribidi','harfbuzz','cairo','pango','graphene','shared-mime-info','llvm','adwaita-fonts','dejavu-fonts','libjpeg-turbo','psutil','mako','libpciaccess','libdrm','pyyaml','mesa','libepoxy','gdk-pixbuf','tiff','iso-codes','gtk','doxygen','itstool','libxmlb','libfyaml','appstream','libadwaita','libsass','sassc','at-spi2-core','lcms2','libseccomp','bubblewrap','hwdata','libdisplay-info','mtdev','libevdev','libxcvt','libei','libinput','alsa-lib','pipewire','lua','wireplumber','libnotify','libgudev','libwacom','gtk3','gnome-desktop','json-glib','libogg','libvorbis','libsndfile','pulseaudio','libcanberra','libusb','libgusb','colord','docutils','mutter','gtksourceview','icu')
 if __name__=='__main__':
     row=next(r for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name']==NAME)
     archive=ROOT/'.local/sources'/row['filename'];data=archive.read_bytes()
@@ -50,14 +55,16 @@ import fcntl,hashlib,json,os,subprocess,sys
 subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
 lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
-'''+f'row={row!r}\nrecipe={recipe!r}\nprobe={probe!r}\nprobe_filename={probe_filename!r}\nprivate_bus={private_bus!r}\nextra={extra!r}\nextras={extras!r}\n'+'''
+'''+f'scratch_source={scratch_source!r}\nsource_archive_bytes={len(data)!r}\nrow={row!r}\nrecipe={recipe!r}\nprobe={probe!r}\nprobe_filename={probe_filename!r}\nprivate_bus={private_bus!r}\nextra={extra!r}\nextras={extras!r}\n'+'''
 base=Path('/mnt/lfs/sources');archive=base/row['filename'];part=base/(row['filename']+'.part')
-source_name='editorconfig-core-c-'+row['commit'] if row['name']=='editorconfig' else 'NetworkManager-'+row['version'] if row['name']=='networkmanager' else 'gcr-'+row['version'] if row['name']=='gcr3' else 'upower-v'+row['version'] if row['name']=='upower' else 'python_dbusmock-'+row['version'] if row['name']=='python-dbusmock' else 'icu' if row['name']=='icu' else 'gtk-'+row['version'] if row['name']=='gtk3' else 'AppStream-'+row['version'] if row['name']=='appstream' else 'iso-codes-v'+row['version'] if row['name']=='iso-codes' else 'llvm-project-'+row['version']+'.src' if row['name']=='llvm' else 'dejavu-fonts-ttf-'+row['version'] if row['name']=='dejavu-fonts' else row['name']+'-'+row['version']
+source_name='ModemManager-'+row['version'] if row['name']=='modemmanager' else 'editorconfig-core-c-'+row['commit'] if row['name']=='editorconfig' else 'NetworkManager-'+row['version'] if row['name']=='networkmanager' else 'gcr-'+row['version'] if row['name']=='gcr3' else 'upower-v'+row['version'] if row['name']=='upower' else 'python_dbusmock-'+row['version'] if row['name']=='python-dbusmock' else 'icu' if row['name']=='icu' else 'gtk-'+row['version'] if row['name']=='gtk3' else 'AppStream-'+row['version'] if row['name']=='appstream' else 'iso-codes-v'+row['version'] if row['name']=='iso-codes' else 'llvm-project-'+row['version']+'.src' if row['name']=='llvm' else 'dejavu-fonts-ttf-'+row['version'] if row['name']=='dejavu-fonts' else row['name']+'-'+row['version']
 source=base/'phase2/inputs'/source_name;work=base/'phase2/work'/(row['name']+'-1')
 assert not source.exists() and not work.exists() and not part.exists(),'Reconcile existing source/job; no replay'
 installed=subprocess.run(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Status}',row['name']],capture_output=True,text=True)
 assert installed.returncode in (0,1),'Cannot establish native package state'
 assert installed.stdout.strip()!='install ok installed','Reuse installed owned package; generic preparation must not rebuild accepted foundation/runtime'
+if scratch_source and not archive.exists():
+    capacity=os.statvfs(base);assert capacity.f_bavail*capacity.f_frsize>=16*1024**3+source_archive_bytes+8*1024**2
 if archive.exists():
     assert hashlib.sha256(archive.read_bytes()).hexdigest()==row['sha256']
     assert hashlib.sha256(sys.stdin.buffer.read()).hexdigest()==row['sha256']
@@ -68,6 +75,11 @@ else:
         output.flush();os.fsync(output.fileno())
     assert digest.hexdigest()==row['sha256'];part.rename(archive)
 assert os.statvfs(base).f_bavail*os.statvfs(base).f_frsize>=16*1024**3
+source_parent=base/'phase2/inputs'
+if scratch_source:
+    from_path='/opt/toddy-build/scripts/build/phase2';sys.path.insert(0,from_path)
+    from shared_source_inputs import begin as begin_scratch_input
+    source=begin_scratch_input(row,source_name);source_parent=source.parent
 if row['name']=='unicode-ucd':
     import shutil
     subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',row['filename'],'--verify-only'],check=True)
@@ -79,7 +91,7 @@ if row['name']=='unicode-ucd':
     assert license_path.read_text().startswith('UNICODE LICENSE V3')
     shutil.copyfile(license_path,source/'Unicode-License-3.0.txt')
 else:
-    subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',row['filename']],cwd=base/'phase2/inputs',check=True)
+    subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',row['filename']],cwd=source_parent,check=True)
 patches=[]
 if row['name']=='editorconfig':
     source.rename(base/'phase2/inputs'/('editorconfig-'+row['version']))
@@ -297,6 +309,9 @@ if probe is not None:
     (source/probe_filename).write_text(probe)
     receipt['probe_sha256']=hashlib.sha256(probe.encode()).hexdigest()
 (source/'toddy-prepared.json').write_text(json.dumps(receipt,indent=2)+'\\n')
+if scratch_source:
+    from shared_source_inputs import complete as complete_scratch_input
+    complete_scratch_input(row,source)
 work.mkdir();os.chown(work,101,101)
 print(json.dumps(receipt))
 '''

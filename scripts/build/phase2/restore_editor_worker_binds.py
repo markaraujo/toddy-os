@@ -10,9 +10,15 @@ def main():
  log=Path('/var/log/toddy/phase2');receipt=log/(name+'.json');assert not receipt.exists() and not receipt.with_suffix('.part').exists(),'Inspect actual mounts/receipt; never replay'
  base=Path('/mnt/lfs/sources/phase2/work/doxygen-1');identity='ae4347fb-31fd-4193-a333-0a549e144231'
  assert subprocess.check_output(['findmnt','-n','-o','UUID','--mountpoint',str(base)],text=True).strip()==identity
+ from native_scratch_staging import restore_workspace
+ native_output=restore_workspace(base,log,name)
+ from shared_source_inputs import restore_inputs
+ input_aliases=restore_inputs(base,log,name)
  rows=[]
  components=['libspelling','editorconfig','gnome-text-editor']
  if (log/'gnome-bluetooth-shared-scratch-1.json').exists():components.append('gnome-bluetooth')
+ if (log/'libmbim-shared-scratch-1.json').exists():components.append('libmbim')
+ if (log/'libqmi-shared-scratch-1.json').exists():components.append('libqmi')
  for component in components:
   p=log/(component+'-shared-scratch-1.json');r=json.loads(p.read_text());assert r['state']=='mounted' and r['filesystem_uuid']==identity
   source=Path(r['source']);target=Path(r['target']);assert source==base/'toddy-editor-workers'/(component+'-1') and target==base.parent/(component+'-1')
@@ -20,7 +26,7 @@ def main():
   assert target.resolve()==target and not list(target.iterdir()) and target.stat().st_uid==101
   assert subprocess.run(['mountpoint','-q',str(target)]).returncode==32
   rows.append({'source':str(source),'target':str(target),'inode':r['source_inode'],'preparation_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'state':'verified'})
- state={'state':'verified','scope':'Existing private subtree binds only; no image creation/format/resize/source or accepted build replay','boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'filesystem_uuid':identity,'rows':rows}
+ state={'state':'verified','scope':'Existing private subtree binds only; no image creation/format/resize/source or accepted build replay','boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'filesystem_uuid':identity,'rows':rows,'source_input_aliases':input_aliases,'native_output':native_output}
  def save():
   part=receipt.with_suffix('.part');assert not part.exists()
   with part.open('x') as f:json.dump(state,f,indent=2);f.write('\n');f.flush();os.fsync(f.fileno())

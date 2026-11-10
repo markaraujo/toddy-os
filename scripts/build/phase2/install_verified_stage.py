@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libqmi': ('1.38.0', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libmbim (= 1.34.0-1+toddy1), libgudev (= 238-1+toddy1)', 'libqmi-1.38.0.tar.gz', 'usr/lib/pkgconfig/qmi-glib.pc'),
+    'libmbim': ('1.34.0', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2)', 'libmbim-1.34.0.tar.gz', 'usr/lib/pkgconfig/mbim-glib.pc'),
     'gnome-bluetooth': ('47.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy9), libadwaita (= 1.9.3-1+toddy1), gsound (= 1.0.3-1+toddy2), libnotify (= 0.8.8-1+toddy1), upower (= 1.91.3-1+toddy1), systemd (>= 261.2-1+toddy3)', 'gnome-bluetooth-47.2.tar.xz', 'usr/lib/pkgconfig/gnome-bluetooth-ui-3.0.pc'),
     'gsound': ('1.0.3', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libcanberra (= 0.30-1+toddy2)', 'gsound-1.0.3.tar.xz', 'usr/lib/pkgconfig/gsound.pc'),
     'libpwquality': ('1.4.5', 'glibc (>= 2.44-1+toddy1), cracklib (= 2.10.3-1+toddy1), linux-pam (= 1.7.2-1+toddy2)', 'libpwquality-1.4.5.tar.bz2', 'usr/lib/pkgconfig/pwquality.pc'),
@@ -1259,6 +1261,12 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='libqmi':
+        from qualify_libqmi import qualify as qualify_libqmi
+        qualify_libqmi(ROOT)
+    if name=='libmbim':
+        from qualify_libmbim import qualify as qualify_libmbim
+        qualify_libmbim(ROOT)
     if name=='gnome-bluetooth':
         from qualify_gnome_bluetooth import qualify as qualify_gnome_bluetooth
         qualify_gnome_bluetooth(ROOT)
@@ -1452,6 +1460,9 @@ if __name__ == '__main__':
     before = inspect_stage(source)
     assert required in before['entries'], 'Missing declared payload'
     destination = Path('/mnt/lfs/sources/stage') / ('phase2-'+name)
+    if name=='libqmi':
+        from native_scratch_staging import destination as scratch_destination
+        destination=scratch_destination(name)
     if name=='libxslt' and destination.exists():
         prior=json.loads((log.parent/'build/b02-libxslt-install.failed.json').read_text())
         assert prior['recipe_exit']==1 and prior['postcheck_exit'] is None and prior['changed_paths']==0
@@ -1480,8 +1491,11 @@ if __name__ == '__main__':
         notice=json.loads((destination/('usr/share/doc/'+name+'/source-notices/index.json')).read_text())
         assert all(not r['notices'] for r in notice['sources'])
     else:
-        assert not destination.exists(), 'Reconcile existing stage; no replay'
-        shutil.copytree(source, destination, symlinks=True)
+        if name=='libqmi':
+            assert destination.is_dir() and not list(destination.iterdir())
+        else:
+            assert not destination.exists(), 'Reconcile existing stage; no replay'
+        shutil.copytree(source, destination, symlinks=True,dirs_exist_ok=name=='libqmi')
         assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
     if name=='gnome-terminal':

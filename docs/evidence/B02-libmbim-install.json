@@ -1,0 +1,521 @@
+{
+  "scope": "Owned libmbim1.34.0 local protocol C/GI/CLI APIs only, root-only device defaults retained; no device/proxy service/Settings/cellular/hardware acceptance.",
+  "native": {
+    "step": "b02-libmbim-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 63,
+    "started": "2026-11-10T17:48:40.776462+00:00",
+    "finished": "2026-11-10T17:48:58.039197+00:00",
+    "recipe_sha256": "15a21d06fd94b8bb2cdea732bf4198efc49d0ec95441758fbbec994a7b6a3e3d",
+    "postcheck_sha256": "5896b8a1d544c22ceb916c4a9f5cd6d60ef3ba5096febf9bb23f336714cdd79a",
+    "log_sha256": "182ff7c0183ac31b0459c84ec53e357c5fc613170405b806602f461cecb4c310"
+  },
+  "native_success_receipt_sha256": "86c98836cc0bac029f8e61d74ed51d5707606ffa866c93a8607f6953c201937e",
+  "timing": {
+    "step": "b02-libmbim-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.557,
+        "entries": 162173,
+        "regular_files": 144659,
+        "regular_bytes": 7516319908
+      },
+      {
+        "seconds": 14.419,
+        "entries": 162233,
+        "regular_files": 144714,
+        "regular_bytes": 7520417786
+      }
+    ],
+    "total_seconds": 32.896
+  },
+  "consumer": {
+    "scope": "Owned libmbim1.34.0 shared/GI/CLI/proxy payload, UID101/NNP/private-dev/no-route C UUID/message/truncation and invalid UUID refusal/two recoveries/GI type/CLI version-invalid option/APT0. Root-only device defaults preserved. No device/proxy-service/cellular network/Settings GUI/physical acceptance.",
+    "C_consumer": "MBIM UUID/message C API/invalid UUID and truncated message refusal/two recoveries; no device access\n",
+    "GI_consumer": "Mbim1 GI boxed message type available\n",
+    "version": "mbimcli 1.34.0\nCopyright (C) 2013-2023 Aleksander Morgado\nLicense GPLv2+: GNU GPL version 2 or later <http://gnu.org/licenses/gpl-2.0.html>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\n",
+    "installed_stage_files_identical": 48,
+    "shared_library_resolution": true,
+    "root_only_device_authorization": true,
+    "physical_modem_tested": false
+  },
+  "package": {
+    "name": "libmbim",
+    "version": "1.34.0-1+toddy1",
+    "archive_sha256": "6359dbe79a754224f8f501231dcb71568c871c346a6e63ad19cbaa4068989ad8",
+    "recipe_sha256": "15a21d06fd94b8bb2cdea732bf4198efc49d0ec95441758fbbec994a7b6a3e3d",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "libmbim",
+        "version": "1.34.0",
+        "filename": "libmbim-1.34.0.tar.gz",
+        "url": "https://gitlab.freedesktop.org/mobile-broadband/libmbim/-/archive/1.34.0/libmbim-1.34.0.tar.gz",
+        "sha256": "55bb88df358f8a36b6e01e63877500d7c6420f5907d2d3101812b4912eabe08f",
+        "reference": "BLFS13.1-systemd general/libmbim.html",
+        "book_page_sha256": "1bd521b70ba88917f3db6ae60a6c3ec32feace1ac5866a23d0d3895328e2dce5",
+        "book_md5": "e5c2b38c6a79a047b93cb0c9510bd91f",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "payload": {
+      "/usr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/libexec": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/bin": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/libexec/mbim-proxy": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "66f5f9408de8a4c8ca648a6ae4ee6db432f3d03252eab905dee85f0813f974be"
+      },
+      "/usr/share/gir-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/gir-1.0/Mbim-1.0.gir": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "021eb4fe3bc4870506e5e82cc587cb29cdaef24b9fee484fe92ffb2fbd7be1c5"
+      },
+      "/usr/share/doc/libmbim": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/libmbim/source-notices": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/libmbim/copyright": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5802f8a6d48b87e77d6857177e838b3430858dbcb4464b855d3897ff8818d522"
+      },
+      "/usr/share/doc/libmbim/source-notices/5df032eed1eca842ab2a80bcc18cc4a72cfe44e842831fba7906efec18927440": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5df032eed1eca842ab2a80bcc18cc4a72cfe44e842831fba7906efec18927440"
+      },
+      "/usr/share/doc/libmbim/source-notices/index.json": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d979a18208b8755c6e90ebccdc4c8ccd8101e8ee8a52b7707afd13b3c7393b26"
+      },
+      "/usr/share/doc/libmbim/source-notices/8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+      },
+      "/usr/share/doc/libmbim/source-notices/dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "dc626520dcd53a22f727af3ee42c770e56c97a64fe3adb063799d8ab032fe551"
+      },
+      "/usr/include/libmbim-glib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/libmbim-glib/libmbim-glib.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "638f553c7eeca68614ac050721652f19ba8d22ecbf107e39482b46213049081e"
+      },
+      "/usr/include/libmbim-glib/mbim-enum-types.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b560466e7324920ff6894d632851b0b071aac746ec275872eab0b6c141d549da"
+      },
+      "/usr/include/libmbim-glib/mbim-basic-connect.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "70693f525120f24ec541321b943f98f8465946d42f87652832dd84f90580f0b5"
+      },
+      "/usr/include/libmbim-glib/mbim-stk.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c8f657b4d026f50794191f7f1116d7ae7c7d103301ca1efc11790d1cf6c205f0"
+      },
+      "/usr/include/libmbim-glib/mbim-sms.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c11ec4411021b6e2bf06c917414aa2c4e915fcadfbd0ddc7076670037b419a4a"
+      },
+      "/usr/include/libmbim-glib/mbim-ms-firmware-id.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "df6e679fdb5781d183ab4ef5f158f208fda04984fde4615972d3958ecfce4829"
+      },
+      "/usr/include/libmbim-glib/mbim-ms-sar.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a906d805c6547642bf1bca81cab2b73c92c583ccfd65ff75070558f998ee8c98"
+      },
+      "/usr/include/libmbim-glib/mbim-uuid.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3af1e22a84a6e03fe82079a7af9febec2e286ab0f0ed724dfb666093e7abe85f"
+      },
+      "/usr/include/libmbim-glib/mbim-cid.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "cec2e0615fd12a53b1a0ed3cf4dfaaa9981ca5650bb488748bc68a050f8b4bf2"
+      },
+      "/usr/include/libmbim-glib/mbim-ussd.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "13d006677a8f6bd998d8958d085dff369e3f278f0c8c91f80699e735730f105f"
+      },
+      "/usr/include/libmbim-glib/mbim-phonebook.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3431e25bcc01837fa0d48437562aa028d586fc3c4d3ca26479141833dd967cd8"
+      },
+      "/usr/include/libmbim-glib/mbim-intel-at-tunnel.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "403a2c1be1130615022f8d8b6f6ae99f81d4c0fd2c1475e4d41a7be82bef1f5d"
+      },
+      "/usr/include/libmbim-glib/mbim-fibocom.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a3e8752cfdd45363523ef924d56801e2512a4b0908dedd3b572a33776b6f15f5"
+      },
+      "/usr/include/libmbim-glib/mbim-proxy-control.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "501b37b3d1e595f38b8842bbdd3e8ecc5c159237c1fa622802bbd7e3f0de02da"
+      },
+      "/usr/include/libmbim-glib/mbim-intel-mutual-authentication.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "11c260b36e6fec851dd93e71ca6970e915370a7a44e20d4ae0865c955952f98e"
+      },
+      "/usr/include/libmbim-glib/mbim-qmi.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3e7a4813f98583e3fff8432cc2c6ff6f1484032cf3686cff4237934bfea895fe"
+      },
+      "/usr/include/libmbim-glib/mbim-qdu.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "009ce8d5a1b336a5037f0e21685bb9f593cebe2e63b214a002a666c03dc932c9"
+      },
+      "/usr/include/libmbim-glib/mbim-atds.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "82e08e3d0f5f317da2a330e13dba814e32351e6e84445202a3da662b3ba74318"
+      },
+      "/usr/include/libmbim-glib/mbim-ms-voice-extensions.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a3cb72ada2df3b99f4c58155ac3b38982aa05b397d5ad52c005bd1f87fabac94"
+      },
+      "/usr/include/libmbim-glib/mbim-quectel.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d8f3735fab79831129359aacd060b7dc006fc3f734081aa896b95aa9b3aa49b8"
+      },
+      "/usr/include/libmbim-glib/mbim-proxy.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4161a61df57ebbc6591a8e0f555729a77f3b67cb232c9e2567b0c96609440cb1"
+      },
+      "/usr/include/libmbim-glib/mbim-ms-uicc-low-level-access.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "85f331ade086dbb2ae6241b2bbeee8f57458ac25d1e502736455b254f2853b98"
+      },
+      "/usr/include/libmbim-glib/mbim-ms-basic-connect-extensions.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d22d4a85209c0883db3067818c702404a850aa474f4506e6983aa0d4412c702e"
+      },
+      "/usr/include/libmbim-glib/mbim-flag-types.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "60755ca2fc68dfe21bbb722e0a3ecbc505e5d75efdc952aa42ec6f6cb4ee986d"
+      },
+      "/usr/include/libmbim-glib/mbim-intel-tools.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a67196cbb1e3675d045a486ed09b3119d647d3b4c2604dcb283cb636637014c4"
+      },
+      "/usr/include/libmbim-glib/mbim-dss.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "df14ae486bf4d55a36081a519d86f13ac3237093d15f8f9ead53555f110e17d1"
+      },
+      "/usr/include/libmbim-glib/mbim-tlv.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "26d685c28a74fdffabf59adfb61ccb553528b133c0ce8e8275b5fd6849c641cf"
+      },
+      "/usr/include/libmbim-glib/mbim-enums.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "11ed4e69a3008bca1577baf18abd23c840364877b4797d627a56c57b37309afa"
+      },
+      "/usr/include/libmbim-glib/mbim-auth.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9c0c490d0866fb1f3b0bb07fc52f5672744cc3d318da4ddd65d42ad5b98d32fd"
+      },
+      "/usr/include/libmbim-glib/mbim-ms-host-shutdown.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d9045a4915e3321d900956f8b43f1a29267a377a66a54f9bfd8d86b57cd941f2"
+      },
+      "/usr/include/libmbim-glib/mbim-utils.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "971dcc30d63d80904d3ae1065905696758cc71acb42557246796f4b29c3ebc2e"
+      },
+      "/usr/include/libmbim-glib/mbim-message.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c798d7d32ee55aacb6531c14b6f81d55a260cb2b6a7afc03688a71cb3a58e140"
+      },
+      "/usr/include/libmbim-glib/mbim-intel-thermal-rf.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4e48e95bbd1d21723776b5ad62110885906bf73fe25994d5f101b4bd0ab02a58"
+      },
+      "/usr/include/libmbim-glib/mbim-errors.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "65ac807d55a49e8dd6e0b496f001d98cb71836ab89dba29b36e2c6e04253e6fe"
+      },
+      "/usr/include/libmbim-glib/mbim-compat.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "59be5dcb0418d932adc380ff84f63452d6160195e163a0bd063159e723893a53"
+      },
+      "/usr/include/libmbim-glib/mbim-compal.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "120a4bc1acd9957933bae8a296a21ea44fa6731bca32bd4eada29803cd0216f9"
+      },
+      "/usr/include/libmbim-glib/mbim-device.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3335a543ee25ac90997350a7e50f9abdf92443d278ea0d4e4f9cbe9c7edb12d5"
+      },
+      "/usr/include/libmbim-glib/mbim-error-types.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a05199a68515d2b1c396e6e937a1bf1efc4781b23db4b402572fce1dd53ad566"
+      },
+      "/usr/include/libmbim-glib/mbim-google.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2967c483ae1fb34ef7056638d258eca9650242e01ed8a1da1dcd1bfd98ed2ca6"
+      },
+      "/usr/include/libmbim-glib/mbim-intel-firmware-update.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8038530264eff2d5bfedfecee820e303f6d3267d4838a26085e286ffc4982efe"
+      },
+      "/usr/include/libmbim-glib/mbim-version.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "519dcb137fce247bc6bbf1d5f6bdc2fab700501584b701355e41dd7f5031f643"
+      },
+      "/usr/bin/mbim-network": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b1cc0281e976357c3190df33d543833e9c126c49c1a4cbe9f6acc4171c1e1353"
+      },
+      "/usr/bin/mbimcli": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7f327cc4365ea960593d85c4a28e08af665464621cfa3296c55b928159c41c15"
+      },
+      "/usr/lib/girepository-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/pkgconfig": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/libmbim-glib.so.4.10.0": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "cd53e4f91d500fdc4cb8d1fa9ea5bee971ce08e7cc7647361a0321072951e49a"
+      },
+      "/usr/lib/libmbim-glib.so.4": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libmbim-glib.so.4.10.0"
+      },
+      "/usr/lib/libmbim-glib.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libmbim-glib.so.4"
+      },
+      "/usr/lib/girepository-1.0/Mbim-1.0.typelib": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6bb30dd8000441bd8ae7795c828f5074e000b6882fcba9e8f51839945bd27870"
+      },
+      "/usr/lib/pkgconfig/mbim-glib.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "157d8c24eac18deb436b929b43094591b8217d9ddb502a2241c63e58e0cde26a"
+      }
+    },
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_sha256": "1ce528ff5fcc89322404471f9b723f313f1ba6f8a974f2db9aea51f4ce6ef3c3",
+    "supporting_build_script_count": 1777
+  }
+}

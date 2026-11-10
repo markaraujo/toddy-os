@@ -48,3 +48,16 @@ PAM module authentication integration remains unqualified while inactive. Actual
 Settings password dialogs, localization, session privilege and complete desktop
 acceptance remain separate runtime work. Essential existing PAM/login evidence
 is reused only while its inputs/policy are unchanged.
+
+## Verified duplicate custody — 2026-11-10
+
+The closed native promotion usr duplicate was retired only after archive,
+installed payload and original workstage verification; installed root changed0.
+[Promotion custody](../evidence/B02-cracklib-promotion-custody.json) reclaimed
+10752000B. A separate [decoded dictionary custody](../evidence/B02-cracklib-word-custody.json)
+retired only original-words after streaming the retained authenticated xz and
+matching the exact19163351expanded bytes/SHA256. Installed root changed0 and
+19165184B reclaimed. Source notices, compressed source, compiler, tests, workstage
+and native archive remain. Qualification now independently streams that retained
+xz when the decoded duplicate is absent. Recover to a fresh bounded location and
+verify expanded length/hash; never replay an install or prior custody operation.

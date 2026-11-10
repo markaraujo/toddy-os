@@ -1,0 +1,44 @@
+{
+  "libqmi-input-scratch-1.json": {
+    "state": "complete",
+    "name": "libqmi",
+    "version": "1.38.0",
+    "source_name": "libqmi-1.38.0",
+    "source": "/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/libqmi-source-1/libqmi-1.38.0",
+    "target": "/mnt/lfs/sources/phase2/inputs/libqmi-1.38.0",
+    "filesystem_uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+    "original_cache_manifest": "a21d220a2550ce44311f47e1d4c3e0fe0fb87314f8205e0833051164eb34c412",
+    "archive_filename": "libqmi-1.38.0.tar.gz",
+    "archive_sha256": "8ee3b3a9002f2b45c825deade85710db006e01674f5f9359d351c192cc926015",
+    "source_inode": 3347,
+    "source_fingerprint": "20fadf013ae2eea450b9d040e645806b0b6a364db483650926ab5a5da28e0251",
+    "original_cache_unchanged": true,
+    "root_write_denied_EROFS": true,
+    "recovery": "Restore the same source inode/read-only alias after Doxygen, before any compiler; no extraction/preparation replay"
+  },
+  "libqmi-input-recovery-1.json": {
+    "state": "complete",
+    "scope": "Actual same-boot source unmount/remount/read-only recovery only, not a complete cold boot or installed-system recovery",
+    "rows": [
+      {
+        "source": "/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/libqmi-source-1/libqmi-1.38.0",
+        "target": "/mnt/lfs/sources/phase2/inputs/libqmi-1.38.0",
+        "source_inode": 3347,
+        "state": "restored"
+      }
+    ],
+    "source_fingerprint_unchanged": true,
+    "root_write_denied_EROFS": true
+  },
+  "libqmi-shared-scratch-1.json": {
+    "state": "mounted",
+    "scope": "New private compiler subtree only on existing preallocated Doxygen scratch; no allocation/format/resize/deletion of original cache. Only worker mounted in compiler sandbox.",
+    "filesystem_uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+    "source": "/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/libqmi-1",
+    "source_inode": 4244,
+    "target": "/mnt/lfs/sources/phase2/work/libqmi-1",
+    "original_doxygen_manifest_sha256": "a21d220a2550ce44311f47e1d4c3e0fe0fb87314f8205e0833051164eb34c412",
+    "original_doxygen_unchanged": true,
+    "recovery": "After cold restore verify existing Doxygen UUID and this worker inode, then bind same subtree onto existing empty libqmi-1 mountpoint. Never recreate, format or replay this preparation."
+  }
+}

@@ -8,20 +8,32 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current B02 slice: libmbim1.34.0 prerequisite for default ModemManager1.24.2
-MBIM/QMI support. Actual native mbim-glib/qmi-glib/qrtr-glib absent; frozen book
-protocol sources verified, [preflight](evidence/B02-modemmanager-sdk-preflight.json).
-Keep MBIM/QMI; QRTR may follow explicit frozen-book disabled switch. No guest
-libmbim/libqmi/ModemManager source/job exists and actual writer lock is idle.
-EXACT NEXT: read frozen libmbim-1.34.0.tar.gz meson.build/meson_options.txt; add
-canonical libmbim-build recipe and preparation allowlist; allocate a private worker
-on the SAME existing Doxygen scratch with a unique receipt/unchanged-cache checks/
-exact optional cold-bind recovery. Sync reviewed metadata, then prepare+dispatch
-first isolated libmbim1 ONCE. Expanded libmbim2020138B fits measured root headroom,
-but check actual source/install budgets before writes. Libqmi expanded25852978B
-and Control Center49149703B exceed current root headroom19959808B: prepare those
-input aliases on existing scratch rather than extracting onto root. Never lower
-16GiB target/100GiB host reserve or bypass required Linux panels.
+Current B02 slice: libmbim1.34.0 and full libqmi1.38.0 installed/qualified,
+[MBIM](evidence/B02-libmbim-install.json)/[QMI](evidence/B02-libqmi-install.json).
+Native QMI1 canonical-path refusal changed0; canonical2 installed93paths but own
+GI probe failed; actual GIR-backed verify3PID23800 complete0/0/changed0. Never
+replay source/compiler/tests/stage/install/verify. Root-only device defaults kept;
+no modem/firmware operation/cellular/Settings GUI acceptance. Nine Settings
+prerequisite packages qualified in total; seven-package external cache below
+predates MBIM/QMI and must not be described as including them.
+
+Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f, writer lock idle.
+Source alias and native workspace same-boot recovery COMPLETE, not cold proof.
+Native workspace inode4671 on existing Doxygen UUID; readonly libqmi source and
+private worker inode4244 retained. See ADR0209 and native placement evidence.
+Cracklib decoded duplicate retired with exact compressed-source custody, installed
+root0; original raw file is absent, compressed byte-exact source remains.
+Last measured targetfree17190182912B, hostfree107820597248B: ordinary reserves
+met but host below107911053312B cold gate. Recheck before writes; never lower.
+
+EXACT NEXT: implement frozen ModemManager1.24.2 build/private worker preparation,
+keeping MBIM/QMI/GI/strictpolkit/default plugins, book QRTRfalse/completionfalse.
+Use phase2_meson_input.py modemmanager --scratch-source (uppercase sourceName
+ModemManager-1.24.2), once actual inputs/jobs remain absent and resource gates pass.
+Shared source allowlist already supports it; generic dispatch must use actual
+uppercase input path. No guest ModemManager source/job exists yet. Extend scoped
+native scratch install support only after actual compile/stage allocation measured.
+Control Center50.4 remains subsequent; preserve Linux panels and16GiB/100GiB.
 
 Seven qualified Settings prerequisite archives/metadata copied and independently
 verified outside VM: [recovery cache proof](evidence/B02-settings-package-recovery.json),

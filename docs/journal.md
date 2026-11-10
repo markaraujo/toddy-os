@@ -3270,3 +3270,27 @@ Native kernel archive QA0/0/root changed0, kernel7.1.8-1+toddy1 install0/0/12cha
 | 2026-11-10 | B02 GNOME Bluetooth SDK | Original2programs5cases0,115ELFs/101stagefiles; native0/0/119changes and installed C UI header/type query/core GI address-classification/ABI/APT0. Existing Doxygen worker inode2215 preserves original cache; exact future bind restoration prepared. |15private-bus integration programs deferred, no widget/adapter/pairing/Settings/physical acceptance. Next frozen ModemManager1.24.2 source/options/resource preflight, no root reserve reduction. |
 
 | 2026-11-10 | B02 recovery/protocol inputs | Seven qualified Settings dependency archives/metadata independently copied outside VM,6.13MB tar/full hashes verified; partial package cache only. ModemManager default MBIM/QMI actual SDK absence checked; frozen libmbim1.34.0/libqmi1.38.0 inputs verified. | No source/build/runtime/hardware pass for new protocol libraries. Next libmbim recipe/private scratch worker; QMI/Control Center expanded sources need scratch input bindings, no reserve reduction. |
+
+### B02 protocol SDK boundary — 2026-11-10T18:49:56.476514+00:00
+
+
+### Owned MBIM/QMI protocol SDKs — 2026-11-10
+
+[Libmbim stage](evidence/B02-libmbim-stage.json)/[install](evidence/B02-libmbim-install.json):
+nine original programs131cases,98ELFs/48stagefiles; native0/0/63changes.
+[Libqmi stage](evidence/B02-libqmi-stage.json)/[install](evidence/B02-libqmi-install.json):
+seven original programs122cases,125ELFs/76stagefiles; full collection/MBIM-QMUX/
+GI/firmware utility compiled, root-only device defaults retained. Canonical native
+installation changed93paths; corrected actual-GIR verify-only3 passed0/0/root0.
+Both installed local UID101/NNP/private-device/no-route C/GI/CLI/refusal/two-cycle
+recovery/ABI/APT checks passed. No modem/proxy-service/firmware operation/cellular/
+Settings GUI/physical acceptance. Original failures retained, no install replay.
+
+[Shared readonly source recovery](evidence/B02-libqmi-scratch-input.json) and
+[native scratch placement](evidence/B02-native-scratch-placement.json) qualified actual
+same-boot alias/workspace restoration, not cold recovery. Full-root checks and
+fixed reserves retained; ADR0209. [Cracklib promotion custody](evidence/B02-cracklib-promotion-custody.json)
+and [decoded duplicate custody](evidence/B02-cracklib-word-custody.json) preserve exact
+compressed source/workstage/archive/installed payload; no trim or data loss.
+
+Next: frozen ModemManager private scratch build. All B02 criteria remain pending.

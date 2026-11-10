@@ -1,0 +1,15 @@
+{
+  "state": "complete",
+  "scope": "Only decoded dictionary duplicate; exact compressed source, source notices, compiler/stage/tests/native archive/installed root retained; no install or trim",
+  "raw": "/mnt/lfs/sources/phase2/work/cracklib-1/original-words",
+  "raw_inode": 9380376,
+  "expanded_sha256": "72850d6a542578ccedc74088bbe31ce2a872bf447ea61d05661879b8430c5f6f",
+  "expanded_bytes": 19163351,
+  "compressed": "/mnt/lfs/sources/phase2/inputs/cracklib-2.10.3/toddy-words.xz",
+  "compressed_sha256": "b3d1e0e0ae9bc7ffed65c0042d7c68bdb903368aa6b918f94572453c6ea874dc",
+  "before_free": 17194872832,
+  "installed_root_changed_paths": 0,
+  "after_free": 17214038016,
+  "recovery": "Decode retained authenticated xz to a NEW bounded location, verify exact expanded length/hash before restoring any absent cache path; no compiler/test/install replay",
+  "reclaimed_bytes": 19165184
+}

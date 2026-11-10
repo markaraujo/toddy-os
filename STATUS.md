@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T17:16:42.040191+00:00
+Last verified: 2026-11-10T18:49:56.476514+00:00
 
 Verified:
 
@@ -170,8 +170,9 @@ Verified:
 - Owned libpwquality1.4.5:12ELFs/66stagefiles, no original suite (not a pass); install/post0/0/80changes, actual UID101/NNP/private-dev/no-route C API/CLI weak-invalid-setting-empty refusals/two recoveries/ABI/APT/conffile0. All12active PAM files unchanged, module inactive/unqualified for authentication. Settings GUI pending.
 - Owned GSound1.0.3 native revision2: original source/stage/help preserved, no upstream tests registered (not a suite pass). First wrong libcanberra revision declaration left unpacked1; corrected metadata-only package2 installed, own GObject linker flags fixed verify-only3/post0/0/root0. Actual installed UID101/NNP/private-dev/no-route null backend Unicode properties/disabled refusal/two recoveries/GI type/help-empty refusal/APT0; no audible/Bluetooth/Settings GUI acceptance.
 - Owned GNOME Bluetooth47.2 core/UI/GI/sendto:115ELFs/101stagefiles, original two non-display programs5cases0;15private-bus integration programs compiled/deferred. Native recipe/post0/0/119changes, actual UID101/NNP/private-dev/no-route installed C UI header/type query (no widget instantiated), core GI address validation/classification/shared ABI/APT0. No real adapter/pairing/transfer/Settings/physical acceptance. Same private Doxygen worker inode2215/cache unchanged/cold bind recovery qualified structurally, no replay.
+- Owned libmbim1.34.0 (9 original programs/131cases, native0/0/63changes) and full libqmi1.38.0 (7 programs/122cases, canonical install93changes, corrected GIR verify-only3/post0/0/root0). Actual local C/GI/CLI/refusal/recovery/ABI/APT passed; no modem/firmware operation/cellular/Settings GUI claim. Same-boot readonly source/native workspace recovery passed; cold untested. ADR0209.
 
-Running: No guest writer. GNOME Bluetooth47.2 and GSound1.0.3 revision2 installed/qualified within documented scopes. Next Linux Settings prerequisite ModemManager1.24.2: inspect frozen source/options and actual root/scratch budgets before source/worker preparation. Preserve reserves and Linux panels; complete B02 then stop.
+Running: No guest writer. MBIM/QMI protocol SDKs qualified. Next frozen ModemManager1.24.2 source/worker/build with default MBIM/QMI and strict polkit; use existing qualified scratch and preserve reserves. Complete all B02 then stop.
 
 Remaining:
 

@@ -1,0 +1,19 @@
+{
+  "state": "complete",
+  "scope": "Only closed Cracklib native-promotion usr replica; installed payload/original source/compiler/workstage/dictionary/raw evidence/native archive/DEBIAN retained. No install/trim/rebuild replay.",
+  "stage": "/mnt/lfs/sources/stage/phase2-cracklib",
+  "stage_inode": 9249083,
+  "archive": "/var/cache/toddy/packages/cracklib_2.10.3-1+toddy1_amd64.deb",
+  "archive_sha256": "aed1f98dff197653bd94860bb84cd53345de16a957035d3f7954a3fb08028613",
+  "record_sha256": "5b9768845431309ddbb968ca2cb3ddca8d1cbb147e22740c04e1774131d449c2",
+  "control": {
+    "DEBIAN/control": "2c673a58f64a7fc7a20091c38206aa435c2263bd7b4ac211f81a6eace251aa85"
+  },
+  "qualified_compiler_ELFs": 20,
+  "qualified_workstage_files": 67,
+  "before_free_bytes": 17197010944,
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 17207762944,
+  "recovery": "Verify retained native archive/record hashes and extract to a NEW stage if needed. Never reinstall, replay custody, or retire the original compiler/workstage.",
+  "reclaimed_bytes": 10752000
+}

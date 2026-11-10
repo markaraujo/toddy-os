@@ -1,0 +1,39 @@
+{
+  "scope": "Actual libqmi transaction placement and same-boot workspace recovery; cold recovery untested. Full-root transaction checks retained.",
+  "workspace": {
+    "state": "complete",
+    "source": "/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/native-transactions-1/output",
+    "target": "/mnt/lfs/sources/native-package-output",
+    "filesystem_uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+    "inode": 4671
+  },
+  "recovery": {
+    "state": "complete",
+    "scope": "Actual same-boot native archive workspace unmount/remount/private read-write roundtrip only; not cold-boot or installed-system recovery",
+    "restored": {
+      "state": "complete",
+      "source": "/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/native-transactions-1/output",
+      "target": "/mnt/lfs/sources/native-package-output",
+      "inode": 4671
+    },
+    "private_workspace_write_and_cleanup": true,
+    "source_and_target_same_inode": true
+  },
+  "libqmi_placement": {
+    "state": "prepared",
+    "name": "libqmi",
+    "version": "1.38.0",
+    "destination": "/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/native-transactions-1/libqmi-promotion-1",
+    "filesystem_uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+    "target_required_bytes": 17212022784,
+    "payload_allocation_bound": 23764992,
+    "scope": "Source stage/promotion/native archive workspace on qualified scratch; installed files remain on target, full-root verification retained"
+  },
+  "libqmi_alias": {
+    "state": "complete",
+    "physical": "/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/native-transactions-1/libqmi-promotion-1",
+    "target": "/mnt/lfs/sources/stage/phase2-libqmi",
+    "inode": 4672,
+    "filesystem_uuid": "ae4347fb-31fd-4193-a333-0a549e144231"
+  }
+}
