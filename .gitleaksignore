@@ -107,3 +107,15 @@ docs/evidence/B02-goa-stage.json:generic-api-key:60
 docs/evidence/B02-goa-stage.json:generic-api-key:74
 docs/evidence/B02-goa-stage.json:generic-api-key:94
 docs/evidence/B02-goa-stage.json:generic-api-key:96
+
+# Exact committed GOA object hashes reviewed above.
+d00a85f8b07fc06be97aeff8a10279b00d0464b9:docs/evidence/B02-goa-stage.json:generic-api-key:33
+d00a85f8b07fc06be97aeff8a10279b00d0464b9:docs/evidence/B02-goa-stage.json:generic-api-key:37
+d00a85f8b07fc06be97aeff8a10279b00d0464b9:docs/evidence/B02-goa-stage.json:generic-api-key:39
+d00a85f8b07fc06be97aeff8a10279b00d0464b9:docs/evidence/B02-goa-stage.json:generic-api-key:48
+d00a85f8b07fc06be97aeff8a10279b00d0464b9:docs/evidence/B02-goa-stage.json:generic-api-key:52
+d00a85f8b07fc06be97aeff8a10279b00d0464b9:docs/evidence/B02-goa-stage.json:generic-api-key:58
+d00a85f8b07fc06be97aeff8a10279b00d0464b9:docs/evidence/B02-goa-stage.json:generic-api-key:60
+d00a85f8b07fc06be97aeff8a10279b00d0464b9:docs/evidence/B02-goa-stage.json:generic-api-key:74
+d00a85f8b07fc06be97aeff8a10279b00d0464b9:docs/evidence/B02-goa-stage.json:generic-api-key:94
+d00a85f8b07fc06be97aeff8a10279b00d0464b9:docs/evidence/B02-goa-stage.json:generic-api-key:96
