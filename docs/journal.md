@@ -3424,3 +3424,5 @@ remains parked; next eligible CUPS source/build review.
 | 2026-11-10 | B02 owned LibAIO and staged LVM2 | Install checked LibAIO. Recover verified Node.js promotion space and build LVM2 under UID 101 | LibAIO native 0/0, 14 paths. Node.js reclaimed 200,933,376 B with installed root unchanged. LVM2 original unit suite 156/156, stage and local Device Mapper test passed. Native LVM2 and disposable devices pending. |
 
 | 2026-11-10 | B02 owned LVM2 and staged Popt | Install verified LVM2 stage with upstream storage rules and registered conffiles. Build and test Popt with exact nested result checks | LVM2 native 0/0, 165 paths and 176 entries. No device activation. Popt 65 original cases plus C refusal and recovery passed. Native Popt next. |
+
+| 2026-11-10 | B02 owned Popt/Cryptsetup, staged Libblockdev | Promote and check local installed SDKs, then build Libblockdev with required GI and Python. Reconcile probe/collector errors only | Popt and Cryptsetup native 0/0. Cryptsetup four original programs, 155 symbols and local metadata refusal/reload. Libblockdev three core cases, two crypto plugin lifecycles. Native Libblockdev then UDisks next. |

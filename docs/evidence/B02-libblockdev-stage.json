@@ -1,0 +1,64 @@
+{
+  "stage": {
+    "version": "3.5.0",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "selected_original_core_cases": 3,
+    "consumer": "<stdin>:7: DeprecationWarning: Passing arguments to gi.types.Boxed.__init__() is deprecated. All arguments passed will be ignored.\nBlockDev 3 GI and two local crypto plugin load/query/unload cycles passed\n",
+    "device_tests_pending": true,
+    "artifacts_count": 72,
+    "artifacts_map_digest": "9ff7b20e40d97dad7622a247cea138631f0170ee6306b7a3765f9dfafd4b221c",
+    "stage_sha256_count": 64,
+    "stage_sha256_map_digest": "e2251d904c3d9cba895c24d0b175a40c4054e53bbf7b06a0999d3693c8eb0eb5"
+  },
+  "manifest_sha256": "823c77026558533040aa1977e9cdaaa11b2830b4cb895e5d66345eb0c3fbb8d1",
+  "manifest_entries": 107,
+  "jobs": [
+    {
+      "pid": 140451,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "2550353",
+      "started_unix": 1794353402.3705027,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": 1,
+      "command_sha256": "b6fe1eedf55e073f8efbf2c370409ffc922d65416c78f5c6b6a4e808bcde742e"
+    },
+    {
+      "pid": 148834,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "2555023",
+      "started_unix": 1794353449.0739224,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": 1,
+      "command_sha256": "1c025138f1c566e8751c8c98bc7fabf8639d7578c3d9440d730818a7d56d8980"
+    },
+    {
+      "pid": 149046,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "2557774",
+      "started_unix": 1794353476.585152,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": 0,
+      "command_sha256": "8bc0448da5ae79fe5efa38a5ebec39284c1074b85f6380298dcbf01d9348f3b4"
+    }
+  ],
+  "prepared": {
+    "source_sha256": "bccd30e6b5d11504de60d9889ff6a2a25b07a4ec8f04070f2387e168301b3e3a",
+    "reference": "BLFS13.1-systemd general/libblockdev.html",
+    "book_page_sha256": "bcd5ef3a8effc5f860d1c061915872c8a2d40dda0931b725b88fed32b3efb865",
+    "source_patches": [],
+    "recipe_sha256": "c2aa9f8da06efc3e57ee1f55927c09c340cac08f2093f559d2732d2736857655"
+  },
+  "log_sha256": {
+    "/mnt/lfs/sources/phase2/work/libblockdev-1/configure.log": "e065551a94e7ded830f58f884d64702eb4ae86a2aa100ae2797ad5e90d06b33f",
+    "/mnt/lfs/sources/phase2/work/libblockdev-1/original-build.log": "dc7dfb1040ef42c36b0ab31dbd17539cae28eb48cdb9c956639fcce24d6b2a0e",
+    "/mnt/lfs/sources/phase2/work/libblockdev-1/original-core-tests.log": "69ab95d2501e23853ac1519300722ce43fa70d35c372f9790cdb016743ec7d3e",
+    "/mnt/lfs/sources/phase2/work/libblockdev-1/original-stage.log": "537a64ba42abea6228087c864175a84fdfaa73f6862118e56335cf0ddd6b6f00",
+    "/mnt/lfs/sources/phase2/work/libblockdev-1/local-probe.log": "f346ec45611b0433604b4c63025dc50f8d9b31b3ec3ce6dffe034ba915167e04",
+    "/var/log/toddy/phase2/libblockdev-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "probe_log_sha256": "7ba20aefaef09ca9e470998feacd6a8559db877b5dd2c4f9f8b244da5d620a5b",
+  "target_free_bytes": 17207218176,
+  "retained_original_bytes_and_logs": true,
+  "scope": "Libblockdev 3.5.0 compiled and staged with GObject introspection and Python override. Three original no-storage unit cases and two local crypto plugin lifecycle cycles passed. No device/daemon/admin/GUI qualification."
+}

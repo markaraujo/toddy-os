@@ -317,6 +317,10 @@
         "docs/evidence/B02-lvm2-stage.json",
         "docs/evidence/B02-lvm2-install.json",
         "docs/evidence/B02-popt-stage.json",
+        "docs/evidence/B02-popt-install.json",
+        "docs/evidence/B02-cryptsetup-stage.json",
+        "docs/evidence/B02-cryptsetup-install.json",
+        "docs/evidence/B02-libblockdev-stage.json",
         "docs/evidence/B02-h11-iso-copy-custody.json",
         "docs/evidence/B02-libxml2-build.json",
         "docs/evidence/B02-libxml2-install.json",
@@ -836,7 +840,7 @@
       "Owned libbytesize 2.12 local SDK: 76 selected upstream cases passed with three locale skips. Native install and postcheck 0/0 with 56 changed paths and 131 payload entries. C/Python/CLI arithmetic, refusal and recovery, exact stage bytes, ABI and APT passed. No storage device, UDisks service, Settings GUI or physical acceptance.",
       "UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending."
     ],
-    "running": "Owned LVM2 installed with local Device Mapper SDK verification and reviewed configuration. Disposable-device suite and kernel storage options pending. Popt staged with 65 upstream cases passed. Native Popt packaging next, then pinned Cryptsetup. Full B02 then stop.",
+    "running": "Owned Popt and Cryptsetup installed and checked. Cryptsetup local LUKS2 metadata and ABI verified. Libblockdev staged with three original core passes and actual local GI crypto plugin lifecycle verified. Native libblockdev package next, then UDisks. Native devices, kernel storage gaps and GNOME pending. Full B02 then stop.",
     "remaining": [
       "Actual graphical editor open/edit/save/reopen/refusal/recovery/focus/responsiveness and affected desktop icon/MIME caches.",
       "LocalSearch/Nautilus/browser/settings and first fully working interactive native GNOME session.",

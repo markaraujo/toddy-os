@@ -1,0 +1,69 @@
+{
+  "native": {
+    "step": "b02-popt-install",
+    "started": "2026-11-10T23:23:07.224867+00:00",
+    "finished": "2026-11-10T23:23:23.237340+00:00",
+    "recipe_sha256": "ee5daba287dac5342fc3f1942b64af51f7fff81cf7f04513e32b3ebde8cf3c79",
+    "postcheck_sha256": "b9a68fcee667f0e5a925f472f6441e046db64e12ef78eac8794b769e008b6dcd",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 53,
+    "log_sha256": "fe176289d501be1803eca4290739aca04eeeeef08ec4a856e212bae0f18d8a6d",
+    "receipt_sha256": "4be674b78dd788c17ef4d350bd3c124083dacdafc52102a796a0ff5e757cccaf"
+  },
+  "consumer": {
+    "C_consumer": "Popt unknown option refusal and two typed argument recoveries passed\n",
+    "notices_verified": 1,
+    "scope": "Installed shared Popt under UID101, NNP, private device and network namespaces. Typed arguments and unknown-option refusal/recovery.",
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "popt",
+    "version": "1.19-1+toddy1",
+    "archive_sha256": "d44e82514b207f7d954b632ee71cedca7a9f4d9c9cd92a44dd5e1a679d8f7ec3",
+    "recipe_sha256": "ee5daba287dac5342fc3f1942b64af51f7fff81cf7f04513e32b3ebde8cf3c79",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "popt",
+        "version": "1.19",
+        "filename": "popt-1.19.tar.gz",
+        "url": "https://ftp.osuosl.org/pub/rpm/popt/releases/popt-1.x/popt-1.19.tar.gz",
+        "sha256": "c25a4838fc8e4c1c8aacb8bd620edb3084a3d63bf8987fdad3ca2758c63240f9",
+        "reference": "BLFS13.1-systemd general/popt.html",
+        "book_page_sha256": "69be962acfc03503d49e7fd82626518acf946e286184170dfd877a77fa0377ba",
+        "book_md5": "eaa2135fddb6eb03f2c87ee1823e5a78",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "installed": true,
+    "payload_count": 129,
+    "supporting_build_scripts_sha256": "594e76a64e7793564602efc333ecf021bceb65bbc5a6efc5f71c317faab28e4f",
+    "payload_sha256": "13ff4db4fed4e127355239fc6a23dd5170d6805698c44cc4d06c09ac2794676f"
+  },
+  "installed_notices": {
+    "sources": [
+      {
+        "filename": "popt-1.19.tar.gz",
+        "source_sha256": "c25a4838fc8e4c1c8aacb8bd620edb3084a3d63bf8987fdad3ca2758c63240f9",
+        "url": "https://ftp.osuosl.org/pub/rpm/popt/releases/popt-1.x/popt-1.19.tar.gz",
+        "notices": [
+          {
+            "path": "popt-1.19/COPYING",
+            "sha256": "2b488b239927935f34769a39309c0680be16e3725a1f55dbb06ed20d53852801",
+            "size": 1061
+          }
+        ]
+      }
+    ],
+    "scope": "Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply"
+  }
+}

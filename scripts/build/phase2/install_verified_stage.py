@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'cryptsetup': ('2.8.7', 'glibc (>= 2.44-1+toddy1), util-linux (>= 2.42.4-1+toddy1), lvm2 (= 2.03.42-1+toddy1), openssl (= 4.0.3-1+toddy1), json-c (= 0.19-1+toddy1), popt (= 1.19-1+toddy1)', 'cryptsetup-2.8.7.tar.xz', 'usr/lib/pkgconfig/libcryptsetup.pc'),
+    'popt': ('1.19', 'glibc (>= 2.44-1+toddy1)', 'popt-1.19.tar.gz', 'usr/lib/pkgconfig/popt.pc'),
     'lvm2': ('2.03.42', 'glibc (>= 2.44-1+toddy1), readline (= 8.3-1+toddy1), systemd (>= 261.2-1+toddy3), util-linux (>= 2.42.4-1+toddy1), libnvme (= 1.16.2-1+toddy1), libaio (= 0.3.113-1+toddy1)', 'LVM2.2.03.42.tgz', 'usr/lib/pkgconfig/devmapper.pc'),
     'libaio': ('0.3.113', 'glibc (>= 2.44-1+toddy1)', 'libaio-0.3.113.tar.gz', 'usr/lib/libaio.so.1.0.2'),
     'libnvme': ('1.16.2', 'glibc (>= 2.44-1+toddy1), json-c (= 0.19-1+toddy1), openssl (= 4.0.3-1+toddy1), keyutils (= 1.6.3-1+toddy1), dbus (= 1.16.2-1+toddy1)', 'libnvme-1.16.2.tar.gz', 'usr/lib/pkgconfig/libnvme.pc'),
@@ -1281,6 +1283,12 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='cryptsetup':
+        from qualify_cryptsetup import qualify as qualify_cryptsetup
+        qualify_cryptsetup(ROOT)
+    if name=='popt':
+        from qualify_popt import qualify as qualify_popt
+        qualify_popt(ROOT)
     if name=='lvm2':
         from qualify_lvm2 import qualify as qualify_lvm2
         qualify_lvm2(ROOT)

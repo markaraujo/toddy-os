@@ -147,17 +147,44 @@ passed. The assertion checks actual nested outputs because the upstream
 wrapper can return 0 after printing a failure. Local staged C unknown
 option refusal and two typed argument recoveries passed. 14 ELF files,
 41 staged regular files, 123 entries. [Stage evidence](evidence/B02-popt-stage.json).
-No native transaction or Cryptsetup integration. No active writer. Last
-verified free 17,297,494,016 B on target. Do not replay source/build/tests.
+The staged tests exercised only the local argument parser. Do not replay.
 
-EXACT NEXT: qualify popt-1's receipt and stage manifest
-127a8d77da11c36be5f1f7a41db7fdc736dee5539b62786683c637381bcb5bc0
-read-only, retain the upstream licenses, then install once through the
-full-root backend and verify the installed shared C consumer. Check actual
-host/guest reserves and writer lock. Then prepare pinned Cryptsetup 2.8.7
-against owned LVM2 and Popt with the book's production flags. Keep virtual
-device testing separate and address the measured intended-kernel gaps.
-UDisks, Samba and native GNOME pending. Stop after accepted B02.
+Popt native b02-popt-install PID 128726 terminal recipe/postcheck 0/0.
+Installed local typed argument handling, unknown-option refusal/recovery,
+exact staged bytes/links, upstream COPYING and APT verified.
+[Native evidence](evidence/B02-popt-install.json). Never replay.
+
+Cryptsetup 2.8.7 cryptsetup-1 PID 129236 terminal 0. Four original selected
+programs passed: crypto vectors, crypto utility unit tests, argument parser,
+and 155 versioned symbols. Individual vector N/A results retained.
+[Stage](evidence/B02-cryptsetup-stage.json). Native b02-cryptsetup-install PID
+139843 terminal 0/0, 87 changed paths, 137 payload entries, archive SHA256
+09bf21b3e50781c649a5a3e7f42fe60a8b14c795129d2374fd7e1ee55cf2e83a.
+[Native](evidence/B02-cryptsetup-install.json) records exact installed C and
+CLI LUKS2 metadata refusal/reload with both fixture hashes preserved. No
+unlock, mapping, physical device or intended-kernel acceptance. No replay.
+
+Libblockdev 3.5.0 prepared with the pinned BLFS feature selection. Main
+libblockdev-1 PID 140451 compiled/staged and passed three original no-storage
+tests, then own GI probe used __file__ on a proxy object. Corrective job
+libblockdev-probe-2 PID 148834 passed both actual crypto plugin lifecycle
+cycles after querying the GI repository path and real Python override module.
+Its collector still read the original failed probe log. Collector-only
+libblockdev-collect-3 PID 149046 terminal 0 on the exact corrected log.
+All 72 ELF files, 64 regular staged files and six original logs retained.
+[Stage evidence](evidence/B02-libblockdev-stage.json). Native package absent,
+no daemon or storage actions. No active writer. Last target free 17,207,218,176 B.
+Do not repeat source preparation, main build, tests, probe or collector.
+
+EXACT NEXT: qualify the three libblockdev job receipts and staged manifest
+823c77026558533040aa1977e9cdaaa11b2830b4cb895e5d66345eb0c3fbb8d1
+read-only. Review the versioned /etc/libblockdev/3/conf.d policy and exact
+plugin/SDK runtime closure, then promote once through the full-root backend
+and verify installed GI and crypto plugin lifecycle. Check actual host
+and guest reserve headroom. Before the UDisks build, recover verified closed
+stage space if needed (the frozen book estimates 68 MB with tests). Keep
+device actions in disposable VM tests and track intended kernel storage
+options. UDisks, Samba and native GNOME pending. Stop after accepted B02.
 
 ### Previous Settings prerequisites
 

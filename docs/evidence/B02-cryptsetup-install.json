@@ -1,0 +1,101 @@
+{
+  "native": {
+    "step": "b02-cryptsetup-install",
+    "started": "2026-11-10T23:27:47.600247+00:00",
+    "finished": "2026-11-10T23:28:05.191225+00:00",
+    "recipe_sha256": "f75b76d5afd61dbdf6aed5a006f11e0f0f926173a1f6c386f143b3f4f328bbc4",
+    "postcheck_sha256": "7a3a06e0acddd5d94109dd163402c51328cbba611ea59e6846402ea5e6876912",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 87,
+    "log_sha256": "79c0211f7f6ad9e7bf0de3d281e8d32ccb7c4b4253e122f7ce5858733f2fdaab",
+    "receipt_sha256": "e6bede4ede990eff8b6ed95a25979ac9e8b1ea7fec9aefc5dbba13efc9309907"
+  },
+  "consumer": {
+    "C_consumer": "Cryptsetup LUKS2 metadata refusal and two header reloads passed\n",
+    "CLI_invalid_header_exit": 1,
+    "fixture_bytes_unchanged": true,
+    "notices_verified": 7,
+    "scope": "Installed shared Cryptsetup under UID101 and NNP. Read-only regular-file LUKS2 metadata with private devices and network. No unlocking, mapping or device writes.",
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "cryptsetup",
+    "version": "2.8.7-1+toddy1",
+    "archive_sha256": "09bf21b3e50781c649a5a3e7f42fe60a8b14c795129d2374fd7e1ee55cf2e83a",
+    "recipe_sha256": "f75b76d5afd61dbdf6aed5a006f11e0f0f926173a1f6c386f143b3f4f328bbc4",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "cryptsetup",
+        "version": "2.8.7",
+        "filename": "cryptsetup-2.8.7.tar.xz",
+        "url": "https://www.kernel.org/pub/linux/utils/cryptsetup/v2.8/cryptsetup-2.8.7.tar.xz",
+        "sha256": "e776f0d381e86ca61042c457069491fe8e0ac286780c7c3b1e4f9921abc961da",
+        "reference": "BLFS13.1-systemd postlfs/cryptsetup.html",
+        "book_page_sha256": "029a9b0d3d8dfe922cc25fcadeb2f61b2b9b23273a780ed0cb2d6fe156380a42",
+        "book_md5": "a9a19068e4db32f77c0ab95c378ab290",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "installed": true,
+    "payload_count": 137,
+    "supporting_build_scripts_sha256": "329897afd5034c76eff518efd0009e514e516a4b91304e61385bb45b63da6949",
+    "payload_sha256": "68431d9052951d4f1ba54947644f72835737b7c2a06a7ce274645c0d3915f208"
+  },
+  "installed_notices": {
+    "sources": [
+      {
+        "filename": "cryptsetup-2.8.7.tar.xz",
+        "source_sha256": "e776f0d381e86ca61042c457069491fe8e0ac286780c7c3b1e4f9921abc961da",
+        "url": "https://www.kernel.org/pub/linux/utils/cryptsetup/v2.8/cryptsetup-2.8.7.tar.xz",
+        "notices": [
+          {
+            "path": "cryptsetup-2.8.7/README.licensing",
+            "sha256": "0218e8eb807b5cd2c809e2f88e7a01edbaca0e8f0452a66b828cff9369175d9c",
+            "size": 752
+          },
+          {
+            "path": "cryptsetup-2.8.7/docs/licenses/COPYING.CC-BY-SA-4.0",
+            "sha256": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5",
+            "size": 20138
+          },
+          {
+            "path": "cryptsetup-2.8.7/docs/licenses/COPYING.GPL-2.0-or-later-WITH-cryptsetup-OpenSSL-exception",
+            "sha256": "45670cce8b6a0ddd66c8016cd8ccef6cd71f35717cbacc7f1e895b3855207b33",
+            "size": 18802
+          },
+          {
+            "path": "cryptsetup-2.8.7/docs/licenses/COPYING.Apache-2.0",
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+            "size": 11358
+          },
+          {
+            "path": "cryptsetup-2.8.7/docs/licenses/COPYING.LGPL-2.1-or-later-WITH-cryptsetup-OpenSSL-exception",
+            "sha256": "8c33cc37871654ec7ed87e6fbb896c8cf33ef5ef05b1611a5aed857596ffafa5",
+            "size": 27247
+          },
+          {
+            "path": "cryptsetup-2.8.7/COPYING",
+            "sha256": "45670cce8b6a0ddd66c8016cd8ccef6cd71f35717cbacc7f1e895b3855207b33",
+            "size": 18802
+          },
+          {
+            "path": "cryptsetup-2.8.7/AUTHORS",
+            "sha256": "012a99c581df2f922c8996d25fb19b13eba7776bb7ceb6b79f97c31208845820",
+            "size": 137
+          }
+        ]
+      }
+    ],
+    "scope": "Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply"
+  }
+}
