@@ -122,3 +122,27 @@ hardware/fresh full-source reproducibility acceptance is claimed.
 ## Verified native diagnostic boots
 
 Actual Landlock candidate diagnostic BIOS+UEFI boots0/OOMfalse; both ABI9/UID101 rulesets2/allowed roundtrips4/denied reads4/writes4/creates4/fresh-process recoveries2/seccomp denials2/namespace/module insert-remove0. Complete token-bound serials; no target/builder/physical disk or network attached. All20 owned original module payloads byte-identical to candidate. Installed kernel/package/boot-entry/Systemd/desktop/ISO/physical acceptance still pending. [Native evidence](../evidence/B02-kernel-landlock-native.json). The diagnostic source and candidate hashes are bound to commit ef1f40a; no installed-system or stable-release gate is awarded by this focused proof.
+
+
+## Native package commit and separately owned recovery menu
+
+Actual archive generation was split from installation to measure space and
+validate every tar payload entry/mode/root owner first. Authenticated qualified
+foundation content was reused; a scratch-stage bind avoided duplicating the
+complete stage on the target. The native archive39+MiB was verified before commit.
+The existing full-root runner remained: archive0/0/changed0; kernel install0/0/
+12changes. Original archive and image/config/System.map recovery copies retained.
+The separate toddy-boot-config package owns the conffile/menu and added only a
+recovery entry while retaining default0. Existing config had to match measured
+H09 source before update, preserving unexpected local edits. Its native update
+passed0/0/6changes/source/syntax/ownership/APT. Two renderer boundary tests passed.
+[Actual evidence](../evidence/B02-kernel-native-packages.json).
+
+Cold installed-Systemd/default/recovery-entry tests remain unaccepted: the runner
+requires100GiB+512MiB free. Verified virtual free-block discard left the installed
+OS and original kernel cache identical, but after a later input sync the measured
+headroom again failed. Do not lower the guard or repeat trim blindly. The resource
+branch is parked with its persistent diagnosis budget; independent LocalSearch
+source/build work is eligible. The kernel cache cold-restorer is prepared and
+only its current read-only inspection tested, not its actual restore path.
+No complete desktop/Phase2 ISO/physical acceptance follows from these packages.

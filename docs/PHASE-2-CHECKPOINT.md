@@ -8,62 +8,70 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Private Linux7.1.8 Landlock candidate COMPILED and diagnostic BIOS/UEFI BOOTED;
-NOT INSTALLED or accepted as installed Systemd/desktop.
-[Compile evidence](evidence/B02-kernel-landlock-compile.json), ADR0201.
-Actual build4PID19120 terminal0, incremental compiler15.003s; complete worker
-21.871s includes source verification. Config delta exactly SECURITY_LANDLOCK n→y
-and its selected SECURITY_PATH n→y; release7.1.8-toddy/source/toolchain unchanged.
-Original cache111558entries/2599875499bytes fully byte/metadata identical after
-compile,93715pristine source entries unchanged in original and private view.
-Candidate bzImageSHA18c4d9e6a64554296d8e9a037c2383e7426a0cf155b6d757d0693fce0d087ad1;
-rawSHAa946b14b08bc3703aac69fc717a6a461f77690d635087d6555c049ca4ba915da.
-No active guest writer. Installed linux-kernel7.1.8-1/boot files unchanged.
+Current eligible slice: LocalSearch3.11.1 source/SDK/build preparation (B02).
+[SDK preflight](evidence/B02-localsearch-sdk-preflight.json):17 actual required/
+selected SDK modules available (Tinysparql3.11.1/GExiv20.16.2/GLib2.88.3/Gst1.28.6/
+JPEG/PNG/TIFF/XML/seccomp/upower/ICU). Host cached archive4505604bytes SHA
+7b39a6c28a8acf2b172f15b2fb5ee7c7a3764c447c2f4a14caa239b7ebe61942,
+frozen BLFS13.1-systemd gnome/localsearch.html MD5 matched. No source lock row,
+guest input/work/job yet. Asciidoc absent. Actual builder kernel6.8.0-147-generic,
+installed target Linux7.1.8-1+toddy1/Landlock=y. Do not conflate build-host unit
+results with target-native runtime. Explicit landlock=enabled is supported for
+isolated distribution build, not permission to disable sandbox/native acceptance.
+EXACT NEXT: inspect actual cached LocalSearch tests/meson/doc requirements and
+selected upstream options; prepare pinned source/recipe with core miner/extractor/
+seccomp/Landlock retained. Read only contracts needed for this slice, no replanning.
+Real index/search/sandbox/Stop/recovery/native GUI acceptance still required.
 
-Native diagnostic prepare1PID21249 actual0, static native libc/UID101; fixture
-kernel-landlock-1/boot-probe-1/prepared.json. Original input C source immutable at
-inputs/linux-landlock-7.1.8/toddy-landlock-init.c; token and source hash recorded
-in /var/log/toddy/phase2/kernel-landlock-boot-input-1.json. InitramfsSHA
-388c307ed47f5e5d47ca16c4de0f95458232ead63a51fc19d20e50a699856b19.
-Native diagnostic1 COMPLETE, actual BIOS+UEFI exits0/OOMfalse, no disks/network.
-Both ABI9/UID101:2rulesets/4allowed roundtrips/4denied reads/4denied writes/
-4denied creates/2fresh-process recoveries/2seccomp denials, namespace0 and actual
-native dummy module insert/remove0. Both containers terminal/removed, parent
-builder unchanged, no restoration needed. [Native proof](evidence/B02-kernel-landlock-native.json).
-RawSHAfebffec05ffb7abdbe70cba304d02503db4db85edbcb427bf614f1c6c133b61b.
-All20 original owned .ko payload files are byte-identical to candidate modules;
-this supports retaining original module bytes and kernelrelease for recovery,
-but no installed rollback/boot-entry acceptance is claimed yet.
-NEVER replay native-kernel-landlock-1 or its preparation. Actual host folder
-.local/phase2/native-kernel-landlock-1, complete result.json/driver.exit0/serials.
-Kernel stage2PID22487 actual0, [proof](evidence/B02-kernel-landlock-stage.json).
-Authenticated original archive27d735... reused/all12023payload entries verified;
-all20module bytes unchanged. Three candidate image/config/System.map files plus
-three original -foundation rollback copies and README. Stage regular files11261;
-free240488448B before manifest output. RawSHAea67c110d0afcadb36c7b2ac2c84df61f420611ce4680718409ca0cb9125352f.
-Stage1PID22058 own .ko modules.order assumption failed before backups/manifest;
-actual source lists20 .o objects. Stage2 maps ONLY final .o→.ko/exact20set and
-reuses extraction; no archive extraction/compiler/native diagnostic replay.
-NEVER replay stage1/2 or original extraction. Current stage
-/mnt/lfs/sources/phase2/work/kernel-landlock-1/stage and kernel-stage-1.json.
-No native package/boot config/installed Systemd change. Future native promotion
-must avoid an unnecessary duplicate full stage on target root: use controlled
-bind of verified scratch stage under /mnt/lfs/sources/stage with unchanged full
-root transaction checks, stage ownership normalization/provenance. Measure actual
-archive/cache/installed backup space before committing; preserve reserves.
-Boot config owner is toddy-boot-config, /etc/toddy/grub.cfg conffile with
-/boot/grub/grub.cfg→../../etc/toddy/grub.cfg; do not cross kernel package ownership.
-Next implement qualifier/native package revision and separate owned recovery
-entry, then actual installed-system and rollback boot checks.
+## Completed native kernel and boot owner slice
 
-EXACT NEXT: read install_verified_stage.py/stage_package.py and current H09
-boot ownership/config contract; prepare verified stage of current candidate
-with owned original kernel image/config/System.map retained as rollback artifacts.
-Use native package revision (same source/release, unchanged20modules), preserve
-old archive, qualify generated boot-entry ownership and actual rollback path;
-no foundation rebuild or source/config/compiler/native diagnostic replay.
-Installed linux-kernel7.1.8-1 remains untouched. After kernel native delivery,
-LocalSearch3.11.1 then Nautilus. Complete ALL B02 then stop.
+[Native package evidence](evidence/B02-kernel-native-packages.json): archive build
+PID23664 recipe/post0/0/full-root changed0, complete actual tar12027entries/modes/
+ownership/rollback QA. Kernel installPID24136 recipe/post0/0/full-root12changes,
+linux-kernel7.1.8-1+toddy1 installed, full payload/ownership/APT0 and original
+archive/three rollback image artifacts retained. ArchiveSHA
+75f0acd71dc1e8f3d66fcd0f6ce70f1f201bd1b7c9344296240175742c65714f.
+Separate toddy-boot-config0.1-2+toddy1 installPID24572 recipe/post0/0/full-root6changes,
+default0 plus foundation recovery entry/source/syntax/ownership/APT0 verified.
+ArchiveSHA3e722231aa65f780775c74b1c47af66868dc34ff83f8d55525c68078e1d65cbf.
+NEVER replay archive build/kernel commit/boot config update/staging/diagnostic boots.
+Kernel/main and recovery installed-system boots NOT performed or accepted.
+Candidate imageSHA18c4d9e6a64554296d8e9a037c2383e7426a0cf155b6d757d0693fce0d087ad1;
+[earlier actual BIOS/UEFI diagnostic proof](evidence/B02-kernel-landlock-native.json)
+ABI9/UID101 allow-deny/recovery/seccomp/namespaces/module0,20modules byte-identical.
+This proves diagnostic kernel behavior, not installed Systemd/GNOME/recovery entry.
+
+Kernel stage source W/stage normalized root, DEBIAN control exists; completed
+bind alias /mnt/lfs/sources/stage/phase2-linux-kernel-landlock. Do not repeat the
+pre-pack qualifier on this now-promoted stage. Native old and new archives retained.
+Boot conffile belongs only to toddy-boot-config, /etc/toddy/grub.cfg with
+/boot/grub/grub.cfg→../../etc/toddy/grub.cfg. Original owner config matched H09
+before update; local edits were not overwritten. Next actual cold tests must
+verify default plus selected foundation recovery entry and source base unchanged.
+
+## Parked installed-kernel boot/resource branch
+
+Native cold runner requires100GiB+512MiB host free. New virtual /dev/vdb4 free-
+block reclamation1 actual0, installed160864entry OS snapshot unchanged and original
+111558entry/2599875499byte kernel cache unchanged. No files deleted/physical trim.
+Receipt kernel-transaction-discard-1.json COMPLETE; compressed private pre-snapshot
+kernel-transaction-before-full-1.json.gz kept in builder log. NEVER replay trim.
+A later input sync was followed by renewed shortfall: recorded hostfree
+107675385856B <107911053312B gate. Do NOT call it unblocked or reduce guard.
+The current sync_build.py unconditionally recopies unchanged files using disk
+staging; exact attribution of all observed space change is not established.
+Failure ledger installed-kernel-boot-host-overlay-headroom persists, correction1
+failed to sustain headroom; diagnosis budget parked. Advance independent eligible
+LocalSearch build preparation. Reopen only with concrete new cache/input-transfer
+custody evidence and bounded logged extension, not a fresh budget after compaction.
+
+restore_kernel_landlock_work.py is PREPARED for later actual cold restoration;
+read-only --inspect passed current mounts (upper inode14/work15/lower7523763).
+Actual cold restore has NOT been executed/qualified. It mounts same1GiB UUID and
+existing private COW only, never formats/resizes/extracts/chowns or replays builds.
+Completed native-stage alias intentionally need not return after cold recovery;
+archive/payload already qualified and stage data retained at W/stage. No guest
+writer or native diagnostic VM currently active. Full B02, then stop.
 
 ## Preserved failures and resource postconditions
 
@@ -113,10 +121,8 @@ kernel-scratch-builder-restore-1.json and glycin-gtk4-work-restored-kernel-1.jso
 COMPLETE; never replay. On a FUTURE cold restart first inspect actual disk/UUID/
 mounts and terminal jobs. Restore ONLY existing six via restore_volumes() (not
 virtual_discard_checkpoint.main/trim), same Systemd source via --restore, new
-receipt names, then same Glycin companion. Kernel scratch requires mounting SAME
-UUID (no mkfs) and restoring its existing private readonly lower/overlay (no
-preparation/chown replay); no cold restoration for this new COW profile has been
-performed yet. Native diagnostic above does NOT stop parent or share its disks.
+receipt names, then same Glycin companion. Kernel scratch restoration helper above is prepared, actual cold restoration
+still unqualified; same UUID/no mkfs/resize/preparation/chown replay. Native diagnostic above does NOT stop parent or share its disks.
 
 Systemd source inode8930333/input7547189,7193files/SHA
 2a683ffe0cdab7349a4b2b64b932fab647baaab4e7ab5b7c64520ff3443c5667.
@@ -144,6 +150,6 @@ failures. Concrete unblock actual virtual seat/input or new source-backed cause
 with complete reliable evidence. No fake focus/events/unsafe-mode/weakened hashes.
 Persistent .local/phase2/failures.json budgets survive compaction.
 
-Last published19723d195ccbd4a7c5c89bdd0bca8cba10835e13: all3CI success,
+Last published0f7a9b8b37abde74fe30b19b8e9ec29351914d7c: all3CI success,
 exact publicHTTP200/indexSHA
-5749b37fd1ab270e2b29fcfb2dde1625ac5f1fa4467b854dacd72345cca519cf.
+45429c1058a5a2277b66a7267ba52d4cfad3ddb9f36fd07c4cf7fb88365dcaa1.

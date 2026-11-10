@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T10:54:54.959709+00:00
+Last verified: 2026-11-10T12:01:56.175495+00:00
 
 Verified:
 
@@ -152,13 +152,16 @@ Verified:
 - Private Linux7.1.8 Landlock+selected SECURITY_PATH compiled0 via preserved cache, original111558entries/2599875499bytes fully retained,93715pristine source entries unchanged. Real UID101 COW isolation0. Two precompiler Rust metadata failures corrected with explicit make RUSTC=false; resource-stop partial3 retained, one bounded virtual scratch growth to1GiB then incremental4 compiler15.003s0. Late final allocation fell below reserve; five private linker temporaries retired with final hashes unchanged/free388354048B. Native static diagnostic prepare0, boot/native installation/desktop NOT accepted. ADR0201.
 - Actual Landlock candidate diagnostic BIOS+UEFI boots0/OOMfalse; both ABI9/UID101 rulesets2/allowed roundtrips4/denied reads4/writes4/creates4/fresh-process recoveries2/seccomp denials2/namespace/module insert-remove0. Complete token-bound serials; no target/builder/physical disk or network attached. All20 owned original module payloads byte-identical to candidate. Installed kernel/package/boot-entry/Systemd/desktop/ISO/physical acceptance still pending.
 - Kernel stage2 actual0 via UID101 isolation; original qualified archive/all12023payload entries authenticated,20module bytes identical. Candidate image/config/System.map plus three -foundation rollback artifacts retained. Own .ko modules.order assumption failed before backups; actual20 .o list corrected with exact final-suffix mapping, extraction reused/no compiler or native diagnostic replay. 11261 regular stage files. Native installation/boot-entry/installed Systemd/desktop acceptance pending.
+- Native kernel archive QA0/0/root changed0, kernel7.1.8-1+toddy1 install0/0/12changes and separate toddy-boot-config0.1-2+toddy1 install0/0/6changes. Complete12027payload/root ownership/modes/APT and three old recovery artifacts verified; menu default0 plus recovery/source/syntax/ownership0. Actual installed/default/recovery-entry boots not run; resource branch parked below100GiB+512MiB guard. Virtual free-block reclamation0 preserved160864installed OS entries and111558original kernel cache entries; later headroom shortfall remains unresolved. No GNOME/ISO/physical acceptance.
+- LocalSearch3.11.1 cached source4505604bytes/frozen SHA verified;17actual selected/required SDK modules found including Tinysparql/GExiv2/GLib/Gst/ICU/seccomp. No guest source/job or search/runtime/GUI acceptance.
 
-Running: No guest writer. Candidate Landlock native BIOS/UEFI tests passed; isolated stage with original rollback image/config/System.map and20 identical modules complete. Next native kernel revision and separately owned toddy-boot-config recovery entry, installed-system/rollback boot checks; then LocalSearch/Nautilus. Installed kernel unchanged. Complete ALL B02 then stop.
+Running: No guest writer/native test VM. Kernel and separately owned recovery-menu packages installed/verified0/0; actual installed/default/recovery boot branch parked by unstable host100GiB+512MiB headroom, no guard reduction or trim replay. Current eligible work LocalSearch3.11.1 source/SDK/build preparation; target-native search and GNOME remain pending. Complete ALL B02 then stop.
 
 Remaining:
 
-- Pinned incremental desktop dependencies and first working native GNOME session.
-- Minimal apps/branding/offline usability, security/ABI review and reference guest measurements.
+- LocalSearch/Nautilus/browser/editor/settings and first working interactive native GNOME session.
+- Actual installed/default/recovery-entry boots after stable host headroom; no cold restore acceptance yet.
+- Minimal desktop branding/offline usability/security-ABI review and reference guest measurements.
 
 [Acceptance evidence](docs/evidence/B02.md)
 
