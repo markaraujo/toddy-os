@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T03:17:54.811780+00:00
+Updated: 2026-11-10T03:28:09.122298+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T03:17:54.811780+00:00
+Last verified: 2026-11-10T03:28:09.122298+00:00
 
 Verified:
 
@@ -124,8 +124,9 @@ Verified:
 - Owned GDM50.2 full Wayland/PAM/Systemd/libgdm/GI:588entries native install0 then missing optional sysusers wrapper127; group-only recovery2/post0/0,5paths/588payload+archive unchanged/passwd+shadow unchanged. Modern dynamic userdb/group21/no static UID, actual UID101 C/GI/SDK/CLI0. No daemon/greeter/keyring/login/GUI acceptance, ADR0180.
 - Owned SettingsDaemon50.1toddy2:11original drivers/no skips incl9private power programs26cases,134ELFs/156files. First package dependency revision error recovered metadata-only0/0,3paths/458payload identical. Actual installed private lib/three CLI/UID101 private24schema enum refusal/reset/SDK0. Stock cache/real plugin/audio/power/hardware/GNOME pending, ADR0181.
 - Shell50.4 owned:128ELFs/149stagefiles; own probe2 recovery0/all hashes unchanged; native install/post0/0,547entries; actual CLI/UID101 GI/JS/private schemas0. No actual GNOME desktop/login/basic-app acceptance.
+- GTK4same-upstreamtoddy8 stock schema union:74files/16owners,115schemas/900keys/prior82schemas/623key contracts preserved. Native install/post0/0,16paths/906prior nonlegal entries unchanged; actual default-source full lookup0. No user preferences/GTK rebuild/GUI acceptance, ADR0183.
 
-Running: No active guest writer; next controlled GTK-owned stock schema union then native GNOME/GDM/login/basic apps.
+Running: No active guest writer. Next first actual native Shell session on fresh disposable overlay; GDM/login/apps/offline/focus/resource gates remain. Complete ALL B02 then stop.
 
 Remaining:
 

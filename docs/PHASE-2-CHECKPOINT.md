@@ -8,7 +8,19 @@ No complete native GNOME/login/basic apps or Phase2 ISO exists yet.
 
 ## Current slice and exact next action
 
-Current slice: Shell50.4 OWNED native50.4-1+toddy1; no active writer.
+Current slice: desktop stock schema union OWNED GTK4toddy8; no active writer.
+Strict isolated desktop-schema-union-1 PID9776 terminal0:74files/16source owners,
+115schemas/900keys, all82old schemas/623key contracts unchanged. Native
+b02-desktop-schema-union-install PID10017 terminal0/0,16paths/1973package entries;
+906prior nonlegal GTK entries preserved, no preferences/libraries changed.
+CacheSHA824567b089fb951595e4d961162d8f59406a7f70d7b86b9b01de93515bb42a2f,
+archiveSHA2a60562df0937034bfdd514fe09fc25300ac4d62daa8ea797d5b2ecc368cc04d.
+[Proof](evidence/B02-desktop-shared-schema-union.json), ADR0183/rawSHA
+5911cbd35d1959d9b201bedd1cad02a1916bcd0d1747f67d5471dd64d6898d87.
+Actual installed default-source lookup matches ALL contracts; NOT native GUI.
+NEVER replay prepare/compile/install. Retained GTKtoddy7 archive is recovery only.
+
+Previous slice: Shell50.4 OWNED native50.4-1+toddy1; no active writer.
 Initial compile/stage128ELFs/149files completed; own type/range assertion failed.
 Probe2 terminal0 with ALL artifacts/stage hashes unchanged; CLI50.4, actual Shell/St
 GI/source Params/refusal/recovery/private schema memory reset passed. Original
@@ -52,9 +64,12 @@ restored; boot e540bdef-376f-46ae-9527-58d9641af256. Native context
 acceptance transferred under idle lock to
 `/var/log/toddy/phase2/login-policy-native-accepted-1.json` (not runtime credentials).
 
-Exact next: controlled GTK stock schema union
-for NMA/GDM/GSD/Shell preserving82schemas/623keys/preferences, actual native GDM/
-userdb/PAM/keyring/permission/GNOME/login/basic apps/offline/focus/resource gates.
+Exact next: first actual native Shell session on a NEW disposable overlay,
+with source-supported automation/navigation and actual screenshots. Preserve
+one guest writer; commit/preflight before cold boot, verify actual child exit/
+backing identity before restarting builder/restoring existing scratch mounts.
+Then GDM/userdb/PAM/keyring/permission/login/basic apps/offline/focus/resource gates.
+Do not boot any older overlay or repeat accepted PAM/GJS/Mutter suites.
 Measure target/host free space before allocations; preserve16GiB/100GiB reserves.
 
 GDM50.2 build/original/stage passed; NO active guest writer. `gdm-1` controller
@@ -166,3 +181,7 @@ e3b4fb8e0ebff32173966d3e6a4d6ddf5e0ef40ebc105230ddf31ea78373f03a.
 SettingsDaemon publicationf73fadcf1c4029314c8ceaa22973303e67e45eb0: planning42747620292/
 safety42747620314/Pages42747620285 allsuccess; exactHTTP200/publicSHA
 fdb946b8e6a5d2535f92fcecc673804225f6373a3ed800dcae9a077c7ef69d9b.
+
+Shell publicationb1c55f12606f0d59ab52110342e68357327d246e: safety42748644665/
+planning42748644593/Pages42748644561 allsuccess; exactHTTP200/publicSHA
+28f2a18cf85b16426c989335f00d494e9f8d436f365f9e71c874eb10c14357a6.
