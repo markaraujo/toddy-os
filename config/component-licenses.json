@@ -10900,6 +10900,23 @@
       "version": "1.9",
       "license": "LGPL-2.1-or-later",
       "evidence": "Exact pinned source COPYING LGPL2.1 and per-file terms retained. Required IPv6 Neighbor Discovery library for selected NetworkManager; no packet/hardware/runtime-network acceptance inferred from own typed API checks."
+    },
+    {
+      "name": "networkmanager",
+      "version": "1.58.1",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-2.0-only AND LGPL-2.0-or-later AND MIT AND CC0-1.0 AND (GPL-2.0-only WITH Linux-syscall-note) AND (GPL-2.0-or-later WITH Linux-syscall-note)",
+      "evidence": "Exact source COPYING/COPYING.LGPL plus bundled source legal notices and C/header first-comment blocks retained. SPDX inventory includes core GPL2+/LGPL2.1+, bundled GPL2-only/LGPL2+/MIT/CC0 and Linux syscall exception headers; exact per-file conditions prevail. Full native service/authorization/network and GNOME acceptance separate.",
+      "extra_license_headers": {
+        "NetworkManager-1.58.1.tar.xz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

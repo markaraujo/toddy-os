@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'networkmanager': ('1.58.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libndp (= 1.9-1+toddy1), gnutls (= 3.8.13-1+toddy1), libpsl (= 0.23.3-1+toddy1), curl (>= 8.23.0-1), readline (>= 8.3-1), util-linux (>= 2.42.4-1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3), polkit (= 127-1+toddy1)', 'NetworkManager-1.58.1.tar.xz', 'usr/lib/pkgconfig/libnm.pc'),
     'libndp': ('1.9', 'glibc (>= 2.44-1+toddy1)', 'libndp-1.9.tar.gz', 'usr/lib/pkgconfig/libndp.pc'),
     'geoclue': ('2.8.2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libsoup (= 3.6.6-1+toddy1), json-glib (= 1.10.8-1+toddy1), systemd (>= 261.2-1+toddy3), gobject-introspection (>= 1.86.0-1+toddy1)', 'geoclue-2.8.2.tar.bz2', 'usr/lib/pkgconfig/libgeoclue-2.0.pc'),
     'libgweather': ('4.6.0', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libsoup (= 3.6.6-1+toddy1), libxml2 (= 2.15.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), geocode-glib (= 3.26.4-1+toddy1), gweather-locations (= 2026.2-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)', 'libgweather-4.6.0.tar.xz', 'usr/lib/pkgconfig/gweather4.pc'),
@@ -1204,6 +1205,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='networkmanager':
+        from qualify_networkmanager import qualify as qualify_networkmanager
+        qualify_networkmanager(ROOT)
     if name=='libndp':
         from qualify_libndp import qualify as qualify_libndp
         qualify_libndp(ROOT)

@@ -7,7 +7,25 @@ foundation tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Current slice and exact next action
 
-Current slice: libndp1.9 OWNED install/post0/0; no active guest writer.
+Current slice: NetworkManager1.58.1 OWNED; no active guest writer. Original
+`networkmanager-1` compile/stage/consumer exit0,613ELFs/285stagefiles. All67original
+programs OK;20nested skips remain unqualified (one CA-path fixture and optional
+JSON/team tests), not root/network/GUI acceptance. Input
+`/mnt/lfs/sources/phase2/inputs/NetworkManager-1.58.1`, work
+`/mnt/lfs/sources/phase2/work/networkmanager-1`; source/recipe/artifacts unchanged.
+Native `b02-networkmanager-install` recipe0/post1,672changedpaths/831owned entries;
+own CLI upstream-version assertion corrected to chosen dist_version=ToddyOS,
+recorded separately from exact upstream package/SDK1.58.1. NEVER reinstall.
+`b02-networkmanager-verify-2` recipe/post0/0,changed_paths0,finished01:22:57Z;
+actual UID101 typed connection/refusal/recovery/GI1.0/SDK/CLI/APT0. ArchiveSHA
+07119693e9057d7b9a2a18c17361b5064d08d4a067624b4aead843e9031a02e4.
+Actual daemon authorization/network/persistence/Stop/recovery/GUI remain mandatory
+separate gates; no NM daemon enabled/started. Preserve upstream Polkit/DBus/unit
+policy. [Proof](evidence/B02-networkmanager-install.json), ADR0176/rawSHA
+11b91eb244b9dc3204d76ab23908a1c7c23ffaca8116dc70001648f3f029852d.
+Do not replay accepted build/originals/stage/install/verify checks.
+
+libndp1.9 OWNED install/post0/0.
 `b02-libndp-install` finished2026-11-10T01:12:26Z,18changedpaths/22owned entries;
 archiveSHA cbb329a38df4615b8896916696e15286f09bcd1f36fe6bb0afec1360d93bf841.
 Inputlibndp-1.9/worklibndp-1/jobPID505418 actual exit0,4ELFs/6stage regular files;
@@ -43,9 +61,12 @@ launcher path and failure2 own authorization assumption preserved in ledger and
 compiler/accepted native service gate. RawSHA
 a25ab5ef972b8bd5cc8713f277631d0ef4ea9b5aa8441f33208e66c269328092.
 
-Exact next: selected NM1.58.1/NMA1.10.6/GDM50.2/Shell50.4 source-cached chain;
-inspect NM source dependency/options and prepare one isolated recipe/input. Then
-first actual native GNOME session/GTK keyboard/focus, basic apps/offline/metrics.
+Exact next: installed NM native service/network policy gate or selected
+libnma1.10.6 source/options/owned Gtk3+4/Gcr review and isolated input, followed by
+GDM50.2/Shell50.4. Preserve actual permission/Stop/reconnect/replay/persist gates,
+then first actual native desktop/basic apps/offline/focus/responsiveness/metrics.
+No current guest writer. Target lastfree18045796352B before native package; measure
+again before next allocation, preserve target16GiB/host100GiB reserves.
 One writer; current target reserve16GiB/host100GiB: measure before allocation.
 Changes this slice affect package profile and privileged native fixture: reuse
 accepted compiler/consumer/service receipts. make check passed291tests;
@@ -204,3 +225,7 @@ exact indexSHA a5b42298990193f66fa5418935ac339ad959a45104e105d3ef7c281084d636c5.
 Latest GeoClue publication e50e4cb89030dd6048638be7ed023ab2d4c22def:
 planning42733553520/safety42733553507/Pages42733554766 allsuccess; exact public
 HTTP200/indexSHAccd0f2d54ba575a34d1b8b713290293cc5345b515e87aab4e3156c4374bd4b35.
+
+Latest libndp publication49130ffb598230828ab76bebbca1ceb7b15da763: planning
+42734287525/safety42734287134/Pages42734287122 allsuccess; exact public HTTP200/
+indexSHAd327b388aa366d343a2c8f6ae42955cb4f41b4b2c591ffebcb137089068e57e3.
