@@ -6,7 +6,20 @@ assert os.geteuid()==os.getegid()==101 and str(root).startswith('/tmp/toddy-edit
 assert hashlib.sha256(library.read_bytes()).hexdigest()==expected_sha
 file=root/'documento-ação.txt';file.write_text('Olá Toddy\n')
 runs=[];report={'scope':'Actual unmodified installed GNOME Text Editor, native Wayland mapped/active windows, direct GTK widget editing and page.save action, normal close/reopen and client renderer screenshots. Test-only LD_PRELOAD driver, not physical input, complete GNOME/login or crash recovery.','runs':runs,'all_selected_exits_zero':False}
+remote=None;remote_started=False
 try:
+ from gi.repository import Gio,GLib
+ bus=Gio.bus_get_sync(Gio.BusType.SESSION,None)
+ manager=Gio.DBusProxy.new_sync(bus,Gio.DBusProxyFlags.DO_NOT_AUTO_START,None,'org.gnome.Mutter.RemoteDesktop','/org/gnome/Mutter/RemoteDesktop','org.gnome.Mutter.RemoteDesktop',None)
+ assert manager.get_cached_property('SupportedDeviceTypes').unpack()&3==3
+ path=manager.call_sync('CreateSession',None,Gio.DBusCallFlags.NONE,10000,None).unpack()[0]
+ remote=Gio.DBusProxy.new_sync(bus,Gio.DBusProxyFlags.DO_NOT_AUTO_START,None,'org.gnome.Mutter.RemoteDesktop',path,'org.gnome.Mutter.RemoteDesktop.Session',None)
+ remote.call_sync('Start',None,Gio.DBusCallFlags.NONE,10000,None);remote_started=True
+ # Pinned Mutter50.4 creates an actual virtual keyboard only on a pressed event.
+ # Shift down/up before app launch creates the seat without editing the document.
+ for pressed in [True,False]:remote.call_sync('NotifyKeyboardKeycode',GLib.Variant('(ub)',(42,pressed)),Gio.DBusCallFlags.NONE,10000,None)
+ remote.call_sync('NotifyPointerMotionRelative',GLib.Variant('(dd)',(0.0,0.0)),Gio.DBusCallFlags.NONE,10000,None)
+ report['virtual_input']='Pinned Mutter50.4 private D-Bus RemoteDesktop session; actual compositor virtual keyboard Shift down/up and relative pointer event. No physical input or fabricated GTK active flag.'
  for phase in ['write','reopen']:
   env={**os.environ,'LD_PRELOAD':str(library),'TODDY_EDITOR_TEST_ROOT':str(root),'TODDY_EDITOR_TEST_FILE':str(file),'TODDY_EDITOR_TEST_PHASE':phase,'GDK_BACKEND':'wayland','GDK_DISABLE':'vulkan','GSETTINGS_BACKEND':'memory','GTK_A11Y':'test','NO_AT_BRIDGE':'1'}
   with (root/('editor-'+phase+'.log')).open('xb') as out:
@@ -21,5 +34,8 @@ try:
 except Exception as error:
  report['failure']={'type':type(error).__name__,'message':str(error)}
 finally:
+ if remote_started:
+  try:remote.call_sync('Stop',None,Gio.DBusCallFlags.NONE,10000,None);report['virtual_input_session_stopped']=True
+  except Exception as error:report['all_selected_exits_zero']=False;report['virtual_input_stop_error']=str(error)
  (root/'suite-result.json').write_text(json.dumps(report,indent=2)+'\n')
 raise SystemExit(0 if report['all_selected_exits_zero'] else 1)

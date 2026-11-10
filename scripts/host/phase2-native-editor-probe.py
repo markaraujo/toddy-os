@@ -1,5 +1,5 @@
 """Real installed editor under native-kernel Mutter, test-only GTK instrumentation."""
-import base64,ctypes,hashlib,json,os,resource,subprocess,tempfile,time,zlib
+import base64,ctypes,hashlib,json,os,re,resource,subprocess,tempfile,termios,time,zlib
 from pathlib import Path
 ACCEPTED = None
 
@@ -9,14 +9,17 @@ def output(args):return subprocess.check_output(args,text=True,timeout=15).strip
 def emit(report):
  raw=json.dumps(report,sort_keys=True).encode();assert len(raw)<=4*1024**2
  encoded=base64.b64encode(zlib.compress(raw,9)).decode();chunks=[encoded[i:i+1024] for i in range(0,len(encoded),1024)]
- for i,chunk in enumerate(chunks):print('TODDY_B02_RUNTIME_DATA',i,chunk,flush=True)
- ok=bool(report.get('all_selected_exits_zero'));print('TODDY_B02_RUNTIME_RESULT',json.dumps({'kernel':os.uname().release,'all_selected_exits_zero':ok,'report_sha256':hashlib.sha256(raw).hexdigest(),'chunks':len(chunks)}),flush=True)
+ ok=bool(report.get('all_selected_exits_zero'));fd=os.open('/dev/ttyS1',os.O_WRONLY|os.O_NOCTTY)
+ attrs=termios.tcgetattr(fd);attrs[0]=attrs[1]=attrs[3]=0;attrs[2]|=termios.CLOCAL|termios.CREAD;attrs[4]=attrs[5]=termios.B115200;termios.tcsetattr(fd,termios.TCSANOW,attrs)
+ with os.fdopen(fd,'w',buffering=1) as evidence:
+  for i,chunk in enumerate(chunks):print('TODDY_B02_RUNTIME_DATA',i,chunk,file=evidence,flush=True)
+  print('TODDY_B02_RUNTIME_RESULT',json.dumps({'kernel':os.uname().release,'all_selected_exits_zero':ok,'report_sha256':hashlib.sha256(raw).hexdigest(),'chunks':len(chunks)}),file=evidence,flush=True);termios.tcdrain(evidence.fileno())
  assert ok,'Actual editor graphical failure retained'
 def main():
  assert os.getuid()==0 and os.uname().release.startswith('7.1.8') and Path('/proc/1/comm').read_text().strip()=='systemd'
  resource.setrlimit(resource.RLIMIT_CORE,(0,0));device=output(['findmnt','-n','-o','SOURCE','/']);parent=output(['lsblk','-ndo','PKNAME',device]);assert output(['lsblk','-dnro','SERIAL','/dev/'+parent])=='TODDY-BOOT-TEST'
  reference=ACCEPTED;assert isinstance(reference,dict)
- manifest=Path(reference['manifest']);assert str(manifest)=='/sources/phase2/native-fixtures/editor-1/accepted.json' and not manifest.is_symlink() and manifest.stat().st_uid==0 and not manifest.stat().st_mode&0o222
+ manifest=Path(reference['manifest']);assert re.fullmatch(r'/sources/phase2/native-fixtures/editor-[12]/accepted[.]json',str(manifest)) and not manifest.is_symlink() and manifest.stat().st_uid==0 and not manifest.stat().st_mode&0o222
  assert manifest.stat().st_size<512*1024 and sha(manifest)==reference['manifest_sha256']
  accepted=json.loads(manifest.read_text())
  for path,digest in accepted['artifacts'].items():assert sha(Path(path))==digest

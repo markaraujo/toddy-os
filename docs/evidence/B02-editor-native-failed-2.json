@@ -1,0 +1,158 @@
+{
+  "scope": "Actual native editor attempt2 FAILED; transport attempt1 preboot failure is separate. Kernel7.1.8/Systemd/Mutter ran, GUI driver deadline exit97; no successful GUI state/screenshot.",
+  "report": {
+    "all_selected_exits_zero": false,
+    "artifacts_unchanged": 3044,
+    "compositor_exit": 1,
+    "compositor_log": "libmutter-Message: 15:08:43.257: Running Mutter (using mutter 50.4) as a Wayland display server\nlibmutter-Message: 15:08:43.372: Created surfaceless renderer without GPU\nlibmutter-Message: 15:08:43.396: Added virtual monitor Meta-0\nlibmutter-Message: 15:08:43.398: Using Wayland display name 'toddy-editor-proof'\n\n(mutter:264): libmutter-WARNING **: 15:08:43.492: Failed to connect to colord daemon: Error calling StartServiceByName for org.freedesktop.ColorManager: Unit colord.service not found.\nMutter terminated with a failure: The command exited with a nonzero status: 256\n\nlibmutter-Message: 15:09:34.697: Removed virtual monitor Meta-0\n",
+    "elapsed_seconds": 51.589,
+    "kernel": "7.1.8-toddy",
+    "native_client_images": [],
+    "pid1": "systemd",
+    "runs": [
+      {
+        "exit": 97,
+        "log": "TODDY_EDITOR_DRIVER_FAIL bounded graphical state deadline exceeded\n",
+        "name": "editor-write"
+      }
+    ],
+    "scope": "Actual installed unmodified GNOME Text Editor50.1 in native kernel/Systemd, headless Mutter/Wayland. Test-only GTK instrumentation, real mapped active window/text editing/save/normal reopen/resize and client renderer PNGs. Not physical input, full GNOME/login, crash recovery or hardware acceptance.",
+    "suite": {
+      "all_selected_exits_zero": false,
+      "failure": {
+        "message": "",
+        "type": "AssertionError"
+      },
+      "runs": [
+        {
+          "exit": 97,
+          "log": "TODDY_EDITOR_DRIVER_FAIL bounded graphical state deadline exceeded\n",
+          "name": "editor-write"
+        }
+      ],
+      "scope": "Actual unmodified installed GNOME Text Editor, native Wayland mapped/active windows, direct GTK widget editing and page.save action, normal close/reopen and client renderer screenshots. Test-only LD_PRELOAD driver, not physical input, complete GNOME/login or crash recovery."
+    },
+    "uid": 101
+  },
+  "report_sha256": "2e5cc96fa61724ac60457edbfc7a5e60886ad663e20c0681e5f9422dd7598e1d",
+  "context_result": {
+    "scope": "Actual installed editor/private Wayland GTK action/screenshot validation only; no complete GNOME/login/G2/physical acceptance",
+    "commit": "d3210d639e0850b0d0e583d805daefa59dc8fc8a",
+    "started_utc": "2026-11-10T15:08:31.101485+00:00",
+    "controller_pid": 448911,
+    "controller_boot_id": "53b945dc-d0b6-4649-bdc1-674f69a2bf62",
+    "controller_start_ticks": "23907242",
+    "accepted": {
+      "manifest": "/sources/phase2/native-fixtures/editor-1/accepted.json",
+      "manifest_sha256": "96cf6bb6a44f870323a431561234a5d5738742b4016bf01d1b0abf4491e7e756",
+      "manifest_bytes": 465105
+    },
+    "probe_sha256": "3d26d2235aecdb2c99c415ad6e701874595738c295a974e29499235d2f729914",
+    "phase": "native-report-recorded",
+    "source_identity": {
+      "bytes": 52446887936,
+      "mtime_ns": 1794323312053031541,
+      "device": 66306,
+      "inode": 11929205
+    },
+    "container_id": "09b9440f9877e23358ea34fe5fe4ea196d5ad9476d67a0ff8389dc7ad18b019f",
+    "container_name": "toddy-b02-native-4dcb77d1b958",
+    "run_id": "4dcb77d1b9584f69b9ebecf4046f3121",
+    "command": [
+      "docker",
+      "create",
+      "--name",
+      "toddy-b02-native-4dcb77d1b958",
+      "--label",
+      "toddy.boot-test=4dcb77d1b9584f69b9ebecf4046f3121",
+      "--user",
+      "1000:1000",
+      "--cap-drop=ALL",
+      "--security-opt=no-new-privileges",
+      "--network=none",
+      "--read-only",
+      "-v",
+      "/home/marcos-araujo/Repositories/toddy-os/.local/vm:/vm:ro",
+      "-v",
+      "/home/marcos-araujo/Repositories/toddy-os/.local/phase2/native-editor-runtime-2:/work",
+      "--device",
+      "/dev/kvm",
+      "--group-add",
+      "991",
+      "--memory",
+      "5g",
+      "--cpus",
+      "4",
+      "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf",
+      "qemu-system-x86_64",
+      "-enable-kvm",
+      "-machine",
+      "q35",
+      "-cpu",
+      "host",
+      "-smp",
+      "4",
+      "-m",
+      "4096",
+      "-display",
+      "none",
+      "-serial",
+      "file:/work/serial.log",
+      "-monitor",
+      "none",
+      "-nic",
+      "none",
+      "-no-reboot",
+      "-boot",
+      "strict=on",
+      "-object",
+      "rng-random,id=rng0,filename=/dev/urandom",
+      "-device",
+      "virtio-rng-pci,rng=rng0",
+      "-drive",
+      "file=/work/target.qcow2,if=none,id=root,format=qcow2",
+      "-device",
+      "virtio-blk-pci,drive=root,serial=TODDY-BOOT-TEST",
+      "-smbios",
+      "type=11,value=io.systemd.credential.binary:systemd.extra-unit.toddy-boot-probe.service=W1VuaXRdCkRlc2NyaXB0aW9uPVRvZGR5IGRpc3Bvc2FibGUgbmF0aXZlIGJvb3QgYWNjZXB0YW5jZSBwcm9iZQpDb25kaXRpb25QYXRoRXhpc3RzPSEvZXRjL2luaXRyZC1yZWxlYXNlCkFmdGVyPWxvY2FsLWZzLnRhcmdldApPblN1Y2Nlc3M9cG93ZXJvZmYudGFyZ2V0Ck9uRmFpbHVyZT1wb3dlcm9mZi50YXJnZXQKCltTZXJ2aWNlXQpUeXBlPW9uZXNob3QKRW52aXJvbm1lbnQ9UEFUSD0vdXNyL2JpbjovdXNyL3NiaW4gTENfQUxMPUMuVVRGLTggUFlUSE9ORE9OVFdSSVRFQllURUNPREU9MQpMb2FkQ3JlZGVudGlhbD10b2RkeS5ib290LXByb2JlCkV4ZWNTdGFydD0vdXNyL2Jpbi9weXRob24zICVkL3RvZGR5LmJvb3QtcHJvYmUKVGltZW91dFN0YXJ0U2VjPTM2MApTdGFuZGFyZE91dHB1dD1qb3VybmFsK2NvbnNvbGUKU3RhbmRhcmRFcnJvcj1qb3VybmFsK2NvbnNvbGUK",
+      "-smbios",
+      "type=11,value=io.systemd.credential.binary:systemd.unit-dropin.multi-user.target=W1VuaXRdCldhbnRzPXRvZGR5LWJvb3QtcHJvYmUuc2VydmljZQo=",
+      "-smbios",
+      "type=11,value=io.systemd.credential.binary:toddy.boot-probe=aW1wb3J0IGJhc2U2NCx6bGliLGhhc2hsaWIKZD16bGliLmRlY29tcHJlc3NvYmooKQpyYXc9ZC5kZWNvbXByZXNzKGJhc2U2NC5iNjRkZWNvZGUoJ2VOcTlXTnRTMjBBU2ZmZFhxSGpZa1JKWnZtQXVNZEdEd1E1eEJXektGcHROQWFXU3BSR2VSWlpVR2dsd1V2ejdudFpJdGdraEQxdGJteFMyTk5QVDAzMjYrMHlQOS9iMlp0eUxOQkhMM0lzaUhtZzhFSG1TYVVVYzhFeUx2Vnc4OHVZRHoySWVhWmRGbnZQTTFISXU4MllTUjJ2dDNQbFdMczJLRlk5ekNDZXh0YmUzMXhDck5NbHliZUZKZnRnei9YeWRjbWt1UGJtTXhNTDh0MHhpTTVGbXhtVlNaRDQzWmJGSXM4VG5VcG81WDZXaGlMaVppeFUzZjBLOEVXYkpTa3U5bk5acWxlSXJ2RFlHWjJlaksyYzAxR3p0RjF0NXNRaGhGK3RycktYMHlsYUtMWG0zVlhrUml1ZTh3S1l0NVdLejAvSjhuNmM1RHl3eWlabmFSb3NybDE3MzRKQ1VmVHIwdzhQRjR0RHI5Y0xqby9aK2Q5L3I3WGNPRGp2ZC9aNTNFQndjN1I4ZjlicUxYcnR6dUFqYm5hQ3phSHVMc05mNzFPRkgvQWc2ZHRVdTFzQU9XbnVIQjUzMndVdWpFZkJRdzE1NmF2UWIycFBJbDFwcUpTbVBkWll0bUtGNVVndjdHWWZac1ZiQlp4RThiaUR1b1U4UFRWWlphbGhML2x5TkdxWGFwTWpUSXRlOTdGNGF0WTR0MHBhLzVQNkR1eU1FN0o5ejI4a0tCVDVtN002QllTRzRJcTFVOHBYSTlZeFRDTWplekh1eUNUa3JLRmFwckNaTWlRLzNnYTlscWN1d2VPd25BZGVORTA5S2p0aEY4QTRyamM5MjcwT24zZTE5K05CdGFFb29zRlhHV0l2RFhyV01Vc0R5azFXS3dFbGFaMzR5REN2Z2xVNS9XY1FQMHI2cDF0K0l2dmhJU3UrMEVFa3NrSnl3TXI3bmV0dWtmU3N4d3lRWjQ2NmhwTXhTQzhueUdJbWNlVG5YbFdLam4yWWl6blhtVElmREgrNXB1K3ZPcmlmTytITGtEZ2ZPZ0puVldqT01DcmxVRGplMDVNRmVKRWxVQVdMZGN5aEFjYm1TUjl4SHVybjhXZVRTL2NtemhCbkd5YnRiekViejZ3dUhtVHNZLzJLcUZsay9rVllSZXl1QVlHWFFDOXpNZHpmcEp3OG1VOVpzTXJ0T0ovVmVSbVEzaFV5bUVHQjl3cTFDNDhWNDdXZ1ZVZEkrOFBNQ1BGS3h4MzNtcFV2aFl5RDBSSVNpMDVDQW5vaDV3TXBFV3VGWnB4U3FOVWhDcVJDQmJ0aDJXL1BpUUh2ckgxTFJ5M0pKVmFLekk2dGpIVk9GUUpUWVFHY3R5dXhXcDRWa1dURmE1QVV1cGJTK3lXSGJabkl0UVRHd1Fxdlp4NUk4enlLaE1yc2FtbDJNTDhlT2V6YWRqVXhrVGh0QkN2aWo4TGxkMWNzTkMwVWNyT0tjbWF3WjAwZUNqL24wZW5ZMndrT0wzU0dzWGdaTzNLNkk1Q0o2S09VREVyNzZOaGxjUWxncHZ0dVV4MXY1SU01SzdhUFplSEJCMnJHa3hUNHEvWGZrVlprNnpkUHAxR2s2bzdsVGVoZHlUTVBpbWlWci9VS1dYSThwZlNOa0JzTFBFYythcCt3UzBjMzB6WlpkdDNZQ1U3MGVKaHYrUzlJdEF4Z24rV1p2UzBoWHJsZVJpQjkwRmQ3TkRNeFcwWFNSS1hXZXZGcTdsVmloenYvUlRycmQ3aWJKL2lBbHhVLysrYURUTFltb1ZFZGt2T1BXSHpDb0t3anNVYnVpV0RCS3ZFQnVGdThtb0tHSWhnNHhVeFVZa1UyOStvWWhyVVhvK2Jsa2Q1WkFma3JVUmcwejdDbWpRWXNOV0tUV056VFVidVpsYXhXcXJhb2dBK3FaVzgxU3ZLU1A1TTkvbDVPZ1U1eldycHFGM0FZbTJyRmFqdTNlYUs2OTM2Q2xOTHdTZmExOEJ6REZRZll2Sm4yY2NxeGYwOGEyL1NoaVJFNkVBby9uaytubFNIT0FvRFlxaytlZ2JYVUlPSlZhbW1MQzFseVZ0S2t0QVhpRW5hcytwZlhkVzBjdzBvS0t2L1FySm95Q0JTc3ZUYkVuZ2tDcW4xRGR5Vk9Mb2xkU21vanZXOUo3NUswNHlWYVF6amdkMGkza05SS29STUtQQkRSaWd2b21kRTVYazNOcGFSTWtaN3BjeTVJS1JZekNOcld3aUNMbFd5dEs3Z1VNOEROd01aYjZDUUJlYThpVXBaY0ZUNmp2S2tlb1dpMVUvdCs0UHhWQkI0RFdCR2N5MUFqcmQ5b2RNSDhSZzhkdjd2NXlRSHp4SXNsZkdocVJjeHluSlRmWENhSGFOK3RzZUhHaFQ1S1ltNFhrTHMreU9LbE8rRFR6ODBqZlB6WTdacHYrRTRkak9aVlpJZTFkZHNiZVlVdU52NmJvbWxYWUpKbndweXVrbXV6ZjVoMUc0VmJ5SmNyc3pFdEhZWWlwOW0vL2RpU3JScXB1SlMySFU5T0lkQjRLWUl3OFd1dm9Ka0JNTnN1VElGZzNLMnFxR0F1VUxETHdXYjVLVlFjVzFNc0lreXhKcWxyYURCc25DYlZUeVJQNkdzeWFoRG4rakJQZ1RwMlVUYU10VnIyeGV0aGFQVUNGVGtSbHQ1T2pkbnRYanhMWnFNTEdQSDVFM1Z3Tm5LK0ljcXVRV1dzaDRuNzVJUEdFZ0YrY3VZT0xDOHllV2RmT2wrWXhocjRpeTFpZnFKcHN3S0grcitINXRvTVp6Nm81dFZzMWZUWTQrenB5WDY5c01kOUR3OGhxa2Vua3kvajhyVXdTaCtLK0ZxSUc2WTFJNE9WZUxUQWZ6ZWZqNmNSMWZseEJoajJwY21YVkZ0ZXoyV2ppdU1QUi9Kc3p2Y0o4V1RMazV2ajAvQUtlZmgvOG1Mdno2UmZuKzJCRzZ6dVlPd2NBNCt0TGR6Z2IvM01FNzFnVVBhNVNBYXJCM1BBYlhKNFBUaTlJK3JHSUhqeEM3ZXFIODNVNkdVNG56dmZaMkJtZC9uQkdaOU9oVXZoQ1JZRFcyQWI3TFFyWkJGRE5pdHZvWUVhcXNGWEpOZVhiMW9GbXMrYWk4dVZSWk1SeXpWVVNVNkxabmU1eCsvbW8yOTVkMVF5RVRDTnZiYjlLU1JSTkV0WmJwZXQ4bWNUNzlIcktUTUswb2w1ekcyQjZxc25iZkplNzcxUjFablIwcVZSTWNJekNPbCtuVk10VnFxc3kyc1FXUlNUSktKeHppSEYxUzNtdWJpbm9XdnFadlhPOUFGVHFWa0Y1aXovVGZ3cktRaUQyQUFSSTdQc3NLZEx5Q1JTUWVXNzVEcXp2VEpRbmYrYStHOFkyeUFoT0JYUWJ3Ujg5Z25sMk41bzd3K20xczcyeUhMWEpoZXFrdWRteHUrUTdkbWRubHJvTTBVMkE2dXFaUU5xOUdUbEsxZWc1UllVSC9mYzFFUm1lMU5PVkFhQlhsRUdBazV4TWFXd040WkdYU3JEdWRoN3V4b0grTy83TktqRG12bkh5aDYwSi9Edjd2YUJzR1JVb0pabTBxZXVQUEIrVlc1b2lpeWl2NkVnVzZEU2Fha2kxWXBBUVlTVmt3VVdaUzNVT2FLWHNicE5UQ2UyMk9CdGpTMkhZV0g1dlJzc3pxQnFzM3phVDd4MUx3T2hkOEt2MnIxTDRyZ2IwdXhxZFVoUnBISEg5Myt5NStjWG9JRVcxVit4ZkZaNXl3bVRsWnUrbkFPcGZnQTdpZTdkYzRDcGNXSjkyZktFcUV5c1A3UnB5R3M5bEMxZ2VVd2tGdUl5aGRSOGxDNTNkNXcvMXpoK3NORVlvRmZCRWwzYXFjQzUvTzlpZWxEUzFleU5hc052bjQwOW9PMjZ6Mi9qMnVlUGR4dFgxaUM1d0pHMTg3bTR2M0xWcEZ2VTlTTU1haDlTaTc4M1BDcjlmRTBzOXIrK0oxVzhhbTExQVZNQkRYZVJaLzgyRlhtbW9ML0F2eGs2SnFCQzRxcFZ5bFgySWtYcW9BZnhmOXREL2o1WjM0OTNHUUxlSS9TWDlLQkhBT1lMdGowNFlIeWxLdTcrNE5GQ2Rya3ZoY1YxY3VGeVhidEd1eTVBcHhOanFUdDJvQ1cxVWZzRWtvdWVTRGQ3L0xlUExZSXlMSmJWNWlqY01xOTZuUEZEVTJPN1YveVR6aE9TTi93QTZWL0g1Jyx2YWxpZGF0ZT1UcnVlKSw2NTUzNykKYXNzZXJ0IGxlbihyYXcpPD02NTUzNiBhbmQgZC5lb2YgYW5kIG5vdCBkLnVudXNlZF9kYXRhCmFzc2VydCBoYXNobGliLnNoYTI1NihyYXcpLmhleGRpZ2VzdCgpPT0nM2QyNmQyMjM1YWVjZGIyYzk5YzQxNWFkNmU3MDE4NzQ1OTU3MzhjMjk1YTk3NGUyOTQ5OTIzNWQyZjcyOTkxNCcKZXhlYyhjb21waWxlKHJhdywidG9kZHktbmF0aXZlLWdseWNpbiIsImV4ZWMiKSkK",
+      "-serial",
+      "file:/work/native-evidence.log"
+    ],
+    "container_final_state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-10T15:08:33.353496088Z",
+      "FinishedAt": "2026-11-10T15:09:35.889647788Z"
+    },
+    "summary": {
+      "kernel": "7.1.8-toddy",
+      "all_selected_exits_zero": false,
+      "report_sha256": "2e5cc96fa61724ac60457edbfc7a5e60886ad663e20c0681e5f9422dd7598e1d",
+      "chunks": 2
+    },
+    "native_selected_passed": false,
+    "backing_unchanged": true,
+    "recovered_protocol_markers": [],
+    "evidence_transport": "Dedicated ttyS1 empty because new probe omitted dedicated emit routing; decoded original serial.log with complete chunks and exact report SHA, no byte reconstruction",
+    "serial_sha256": "2e57ea9d70e857e76dd7e3d7ac98887a8f63671dfd480f3e1e5cde8dfb87ab1f"
+  },
+  "serial_sha256": "2e57ea9d70e857e76dd7e3d7ac98887a8f63671dfd480f3e1e5cde8dfb87ab1f",
+  "recovery": {
+    "state": "complete",
+    "native_context": ".local/phase2/native-editor-runtime-2",
+    "failure_preserved": true,
+    "guest_log": ".local/phase2/editor-builder-restored-2.log"
+  },
+  "diagnosis": "Prior accepted B02-native-mutter.json explicitly records bare headless seat active_observed=false/no real keyboard. Current driver waits active window before first snapshot and lacks phase trace, so exact current phase is unproved. Source-backed virtual keyboard creation plus diagnostic traces are next; active/focus assertions must remain."
+}

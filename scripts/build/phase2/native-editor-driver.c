@@ -9,9 +9,12 @@ static GtkWindow *window;
 static GtkWidget *view;
 static const char *root, *file, *mode;
 static int phase, ticks, wide_width, wide_height;
+static gboolean mapped_snapshot_taken;
+static gboolean content_is(const char *expected);
 static const char initial[]="Olá Toddy\n";
 static const char saved[]="Olá Toddy\nLinha salva offline.\n";
-static void fail(const char *reason) { fprintf(stderr,"TODDY_EDITOR_DRIVER_FAIL %s\n",reason);fflush(stderr);_exit(97); }
+static void fail(const char *reason) { fprintf(stderr,"TODDY_EDITOR_DRIVER_FAIL %s phase=%d ticks=%d window=%s\n",reason,phase,ticks,window?G_OBJECT_TYPE_NAME(window):"none");
+ if(window&&view)fprintf(stderr,"TODDY_EDITOR_OBSERVED mapped=%d active=%d width=%d height=%d chars=%d initial_match=%d saved_match=%d\n",gtk_widget_get_mapped(GTK_WIDGET(window)),gtk_window_is_active(window),gtk_widget_get_width(GTK_WIDGET(window)),gtk_widget_get_height(GTK_WIDGET(window)),gtk_text_buffer_get_char_count(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view))),content_is(initial),content_is(saved));fflush(stderr);_exit(97); }
 static GtkWidget *find_view(GtkWidget *w) {
  if(GTK_IS_TEXT_VIEW(w))return w;
  for(GtkWidget *child=gtk_widget_get_first_child(w);child;child=gtk_widget_get_next_sibling(child)) { GtkWidget *found=find_view(child);if(found)return found; }
@@ -51,6 +54,7 @@ static gboolean tick(gpointer unused) {
   gtk_window_set_default_size(window,920,640);phase=1;return G_SOURCE_CONTINUE;
  }
  if(phase==1) {
+  if(gtk_widget_get_width(GTK_WIDGET(window))>=800&&!mapped_snapshot_taken) { capture("mapped");mapped_snapshot_taken=TRUE;fprintf(stderr,"TODDY_EDITOR_MAPPED active=%d\n",gtk_window_is_active(window)); }
   if(gtk_widget_get_width(GTK_WIDGET(window))<800||!gtk_window_is_active(window))return G_SOURCE_CONTINUE;
   if(!focus_is_view())fail("actual GTK focus is not editor text view");
   wide_width=gtk_widget_get_width(GTK_WIDGET(window));wide_height=gtk_widget_get_height(GTK_WIDGET(window));capture("opened");

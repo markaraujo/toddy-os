@@ -25,35 +25,42 @@ lookup matched; libraries and every noncache/nonlegal payload byte unchanged.
 Old GTK8 archive/record retained for recovery; no rollback executed. NEVER replay
 editor installation, cache union/GTK transaction, or prior compiler/stage/tests.
 
-EXACT NEXT: after committing clean reviewed inputs, run ONCE
-`python3 scripts/host/phase2_native_editor.py --context native-editor-runtime-2`.
-Context1 FAILED BEFORE native guest/container launch: full embedded owned manifest
-exceeded existing65536B probe transport input guard after readonly image check and
-new unused delta creation. Preserve .local/phase2/native-editor-runtime-1 and
-controller log, never replay. In-memory backing identity was not persisted before
-failure: no before/after identity equality claim for context1. Producer used only
-readonly source mounts and no native write path was opened. Observed identity
-was verified unchanged before recovery start.
+EXACT NEXT: after clean committed reviewed inputs, run ONCE
+`python3 scripts/host/phase2_native_editor.py --context native-editor-runtime-3 --driver-generation 2`.
+No context3 native execution yet. Driver2 compiled0, immutable source/work2 and
+readonly descriptor2 qualified; final boot probe5551B under unchanged65536B guard.
+Production editor/GTK packages unchanged, no source/compiler/stage/install replay.
 
-Preboot recovery1 COMPLETE, builder boot4c5a2743-3280-4d4c-b68c-a1873021b01d:
-editor-preboot-builder-restored-1.json plus same six scratch UUIDs/Systemd source/
-Glycin companion/kernel COW and all three existing editor worker binds restored.
-NEVER replay .local/phase2/restore-editor-preboot-builder-1.py or its receipts.
+Native editor context2 actually booted7.1.8/Systemd/Mutter, but graphical driver
+FAILED exit97 after bounded50s wait, no successful UI state or screenshots.
+[Failure proof](evidence/B02-editor-native-failed-2.json). Dedicated evidence UART
+was empty because new producer omitted explicit routing; full original report was
+recovered from serial.log with exact chunks/report SHA
+2e5cc96fa61724ac60457edbfc7a5e60886ad663e20c0681e5f9422dd7598e1d.
+No result reconstruction or native execution replay. New producer uses existing
+explicit ttyS1 routing. Container terminal0/OOMfalse, backing unchanged; these are
+not a graphical pass. Recovery2 COMPLETE, builder boot
+249d0cfa-3fc9-4713-b46c-9fc885dfb66d; same six volumes/Systemd source/Glycin/kernel/
+three editor binds restored. Never replay restore-editor-builder-2.py/receipts.
 
-Correction qualified BEFORE stopping builder: readonly fixture
-/sources/phase2/native-fixtures/editor-1/accepted.json bound by SHA, and boot source
-contains only exact descriptor path/SHA. Transport source now below65536B,
-[proof](evidence/B02-editor-native-payload.json). Runtime guard unchanged. Host
-runner now persists backing identity before image operations; final payload check
-precedes builder stop. Test-only driver compiled, not a passed GUI test yet.
+Diagnosis1/correction1 for active-seat cause: accepted earlier Mutter proof already
+records no keyboard/active_observed=false on bare headless seat. Exact current
+waiting phase unproved (old driver lacked trace). Driver2 retains strict actual
+active/focus assertions, adds mapped/phase diagnostics and real compositor virtual
+keyboard Shift down/up + pointer creation before editor launch using pinned
+Mutter50.4 RemoteDesktop API. No fabricated GTK state/global permission change.
+Source: frozen mutter-50.4 src/backends/meta-remote-desktop-session.c
+ensure_virtual_device/NotifyKeyboardKeycode and matching D-Bus XML. This is test
+instrumentation only, not an installed remote service/product API. Budget retained
+in failures.json; context3 is first corrective runtime attempt for this cause.
 
-New bounded editor-promotion-discard-1 operation already COMPLETE, full installed
-161637entry root/original111558entry kernel cache/editor prerequisite stages
-unchanged. Post-input-sync host cold gate passed; old budget retained. NEVER replay
-any discard/custody; recheck actual headroom before context2. No live guest writer.
-After an ACTUAL native context2 report/container terminal, adapt existing recovery
-helper to new context and unique receipt names after inspecting postconditions;
-never run a helper tied to context1's nonexistent native container.
+Context1 remains failed preboot transport, separate cause now resolved with exact
+readonly descriptor/path+SHA and payload preflight before stop. Preserve its raw
+log and missing pre-failure backing-identity evidence limitation; preboot recovery1
+COMPLETE, do not replay. Discard/custody operations COMPLETE, never rerun.
+After context3 terminal report/container, inspect backing and prepare distinct
+recovery receipt names; no source/compiler/test-driver generation2 build replay.
+No live guest writer currently.
 
 ICU/Doxygen duplicate promotion custody1 COMPLETE PID31236,
 78950400B reclaimed, installed root0 and both original workstages unchanged.
