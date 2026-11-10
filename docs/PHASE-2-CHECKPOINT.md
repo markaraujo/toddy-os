@@ -64,7 +64,8 @@ restored; boot e540bdef-376f-46ae-9527-58d9641af256. Native context
 acceptance transferred under idle lock to
 `/var/log/toddy/phase2/login-policy-native-accepted-1.json` (not runtime credentials).
 
-Exact next: first actual native Shell session on a NEW disposable overlay,
+Exact next command after committed harness: `python3 scripts/host/phase2_native_shell.py`.
+First actual native Shell session on a NEW disposable overlay,
 with source-supported automation/navigation and actual screenshots. Preserve
 one guest writer; commit/preflight before cold boot, verify actual child exit/
 backing identity before restarting builder/restoring existing scratch mounts.
@@ -185,3 +186,10 @@ fdb946b8e6a5d2535f92fcecc673804225f6373a3ed800dcae9a077c7ef69d9b.
 Shell publicationb1c55f12606f0d59ab52110342e68357327d246e: safety42748644665/
 planning42748644593/Pages42748644561 allsuccess; exactHTTP200/publicSHA
 28f2a18cf85b16426c989335f00d494e9f8d436f365f9e71c874eb10c14357a6.
+
+Native Shell harness prepared (not executed): source-supported automation script,
+actual installed Shell headless Wayland1280x720/software renderer/private bus/UID101.
+Checks panel/overview/quick-settings/focus/actual GTK perf-helper window/close with
+four PNG captures. No unsafe-mode/GDM/session-manager/login claim; no existing
+PAM/GJS/Mutter suite replay. Context `.local/phase2/native-shell-runtime-1` MUST be
+absent before first launch; inspect it/actual child on resume before any action.
