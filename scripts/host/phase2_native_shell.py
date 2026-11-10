@@ -55,6 +55,7 @@ def main():
               'systemd.unit-dropin.multi-user.target':(ROOT/'scripts/host/boot-probe.target.conf').read_bytes(),
               'toddy.boot-probe':compressed_payload(probe)}
     qemu=boot.qemu_arguments('bios',payloads)
+    qemu+=['-serial','file:/work/native-evidence.log']
     qemu[qemu.index('-cpu')+1]='host';qemu[qemu.index('-smp')+1]='4';qemu[qemu.index('-m')+1]='4096'
     name='toddy-b02-native-'+run_id[:12]
     command=['docker','create','--name',name,'--label','toddy.boot-test='+run_id,*common,
@@ -71,7 +72,9 @@ def main():
         state['phase']='native-stopped';save()
     assert phase2_vm.backing_identity(source)==identity,'Read-only backing identity changed; do not restart builder'
     serial=(CONTEXT/'serial.log').read_text(errors='replace')
-    report,summary,recovered=decode(serial)
+    evidence=(CONTEXT/'native-evidence.log').read_text(errors='strict')
+    report,summary,recovered=decode(evidence)
+    state['dedicated_evidence_sha256']=hashlib.sha256(evidence.encode()).hexdigest()
     (CONTEXT/'native-report.json').write_text(json.dumps(report,indent=2)+'\n')
     state['recovered_protocol_markers']=recovered
     state.update(phase='native-report-recorded',summary=summary,backing_unchanged=True,

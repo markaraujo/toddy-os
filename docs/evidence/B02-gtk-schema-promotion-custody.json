@@ -1,0 +1,190 @@
+{
+  "scope": "Eight exact GTK4 promotion replicas only; actual per-archive restore/data/control verification before retirement. Installed GTK/source/original compiler stages/tests/native archives/records retained. No old custody replay, trim or physical operation.",
+  "state": "complete",
+  "stages": [
+    {
+      "stage": "/mnt/lfs/sources/stage/phase2-gtk",
+      "inode": 2164775,
+      "version": "4.22.4-1+toddy1",
+      "record": "/var/log/toddy/packages/gtk_4.22.4-1+toddy1_amd64.json",
+      "record_sha256": "8860863baca94c7509e5192cc625b23134dd2152be0ab71d6c214d116f1ff991",
+      "archive": "/var/cache/toddy/packages/gtk_4.22.4-1+toddy1_amd64.deb",
+      "archive_sha256": "71926defa7412777f080e97a4ad41ed49b328b272008caa5ddb3d9c8592c3b00",
+      "payload_entries": 1938,
+      "control": {
+        "control": {
+          "mode": 33188,
+          "uid": 0,
+          "gid": 0,
+          "sha256": "367638d94392d82e5150fc5541b6888c88eaee932d0ffb40bb69b20b616766a2"
+        }
+      },
+      "state": "retired",
+      "actual_restored_payload_entries": 1938,
+      "actual_restored_control_verified": true
+    },
+    {
+      "stage": "/mnt/lfs/sources/stage/phase2-gtk-desktop-schemas",
+      "inode": 2170579,
+      "version": "4.22.4-1+toddy2",
+      "record": "/var/log/toddy/packages/gtk_4.22.4-1+toddy2_amd64.json",
+      "record_sha256": "0830e84082115403d4c700c79c934e47951bd1010b48bbb2628fda284b72b8ab",
+      "archive": "/var/cache/toddy/packages/gtk_4.22.4-1+toddy2_amd64.deb",
+      "archive_sha256": "e52dc6c25dabf6435509b701be1f1ee36b9bc683f1c8566b220ef3a08ad3baa3",
+      "payload_entries": 1939,
+      "control": {
+        "control": {
+          "mode": 33188,
+          "uid": 0,
+          "gid": 0,
+          "sha256": "f779b22d4b5a85dc2586caa884c4bc615784eea7a382f0813690448fa8398a19"
+        }
+      },
+      "state": "retired",
+      "actual_restored_payload_entries": 1939,
+      "actual_restored_control_verified": true
+    },
+    {
+      "stage": "/mnt/lfs/sources/stage/phase2-gtk-gtk3-schemas",
+      "inode": 8196347,
+      "version": "4.22.4-1+toddy3",
+      "record": "/var/log/toddy/packages/gtk_4.22.4-1+toddy3_amd64.json",
+      "record_sha256": "3586e06786791f5e8e070812d0032fd6f6e22413a820c38ad5002043eea186fe",
+      "archive": "/var/cache/toddy/packages/gtk_4.22.4-1+toddy3_amd64.deb",
+      "archive_sha256": "9fa9c541646592421b060ada42934f4f6561ef3a9fc69ad65344f1a0395a429c",
+      "payload_entries": 1939,
+      "control": {
+        "control": {
+          "mode": 33188,
+          "uid": 0,
+          "gid": 0,
+          "sha256": "531e3dd5c29b7b7ccbaa74070fb31911ea78e4585f41365bec59993425eb577b"
+        }
+      },
+      "state": "retired",
+      "actual_restored_payload_entries": 1939,
+      "actual_restored_control_verified": true
+    },
+    {
+      "stage": "/mnt/lfs/sources/stage/phase2-gtk-mutter-schemas",
+      "inode": 8568133,
+      "version": "4.22.4-1+toddy4",
+      "record": "/var/log/toddy/packages/gtk_4.22.4-1+toddy4_amd64.json",
+      "record_sha256": "219f7f9e003ca53cfd106d48a9d6182e325dde8a1c15882ef7344d44cb3b29a0",
+      "archive": "/var/cache/toddy/packages/gtk_4.22.4-1+toddy4_amd64.deb",
+      "archive_sha256": "afd2eaeb4d3d50c14c1c7ccdf5523895c09e0c079218f24290a71d6da9d87fbd",
+      "payload_entries": 1944,
+      "control": {
+        "control": {
+          "mode": 33188,
+          "uid": 0,
+          "gid": 0,
+          "sha256": "3ed70b3e6976c80afb39e7eb87b07d43ecc4f1a00794c364b971aa09f2408508"
+        }
+      },
+      "state": "retired",
+      "actual_restored_payload_entries": 1944,
+      "actual_restored_control_verified": true
+    },
+    {
+      "stage": "/mnt/lfs/sources/stage/phase2-gtk-session-schema-union",
+      "inode": 8204938,
+      "version": "4.22.4-1+toddy5",
+      "record": "/var/log/toddy/packages/gtk_4.22.4-1+toddy5_amd64.json",
+      "record_sha256": "e0d87a88f502acc2cce09016f33c4131bb71b2657e1b50c82f83553939cfbcb9",
+      "archive": "/var/cache/toddy/packages/gtk_4.22.4-1+toddy5_amd64.deb",
+      "archive_sha256": "0435783abb195d092aeb44bda3430bac5c9b5b709a34d5a98a825778e2891b06",
+      "payload_entries": 1960,
+      "control": {
+        "control": {
+          "mode": 33188,
+          "uid": 0,
+          "gid": 0,
+          "sha256": "696d34a3e8568244f9f931dc100fae976e950442b3bb0c5c81f5b5dfe1896fa0"
+        }
+      },
+      "state": "retired",
+      "actual_restored_payload_entries": 1960,
+      "actual_restored_control_verified": true
+    },
+    {
+      "stage": "/mnt/lfs/sources/stage/phase2-gtk-ibus-schema-union",
+      "inode": 8336187,
+      "version": "4.22.4-1+toddy6",
+      "record": "/var/log/toddy/packages/gtk_4.22.4-1+toddy6_amd64.json",
+      "record_sha256": "7b319e62711f06cacc720da398bd4da0a7beed93de64cf8dda081c4b1c3e4a2f",
+      "archive": "/var/cache/toddy/packages/gtk_4.22.4-1+toddy6_amd64.deb",
+      "archive_sha256": "9fc10b109552a83f9b22403a7cc52ecb73d91f00ca3ccd904f14e227b62c9d5b",
+      "payload_entries": 1965,
+      "control": {
+        "control": {
+          "mode": 33188,
+          "uid": 0,
+          "gid": 0,
+          "sha256": "8e685293d1756f7295bf09579fb109f19c02ddbc50167d4d609a95a6e33de525"
+        }
+      },
+      "state": "retired",
+      "actual_restored_payload_entries": 1965,
+      "actual_restored_control_verified": true
+    },
+    {
+      "stage": "/mnt/lfs/sources/stage/phase2-gtk-gweather-schema-union",
+      "inode": 8467324,
+      "version": "4.22.4-1+toddy7",
+      "record": "/var/log/toddy/packages/gtk_4.22.4-1+toddy7_amd64.json",
+      "record_sha256": "27087d6d60d45ef10b1745dba3f6781efd2fa785081a3f2f5ce1778210223c6c",
+      "archive": "/var/cache/toddy/packages/gtk_4.22.4-1+toddy7_amd64.deb",
+      "archive_sha256": "8c1280a7fa4b373f3cdde50ca2133bf5117f5bbb295f8dd78d92814b3378e2e1",
+      "payload_entries": 1965,
+      "control": {
+        "control": {
+          "mode": 33188,
+          "uid": 0,
+          "gid": 0,
+          "sha256": "57d1f9a891c92c84e33358b2e155eaa8ea2a52204cc074e62aff181c97bc8981"
+        }
+      },
+      "state": "retired",
+      "actual_restored_payload_entries": 1965,
+      "actual_restored_control_verified": true
+    },
+    {
+      "stage": "/mnt/lfs/sources/stage/phase2-gtk-desktop-schema-union",
+      "inode": 9248704,
+      "version": "4.22.4-1+toddy8",
+      "record": "/var/log/toddy/packages/gtk_4.22.4-1+toddy8_amd64.json",
+      "record_sha256": "1c57e62b25dfbd81f6f9bb8fa6f65472d470bb2cae8e62317d5ca722b60b1d26",
+      "archive": "/var/cache/toddy/packages/gtk_4.22.4-1+toddy8_amd64.deb",
+      "archive_sha256": "2a60562df0937034bfdd514fe09fc25300ac4d62daa8ea797d5b2ecc368cc04d",
+      "payload_entries": 1973,
+      "control": {
+        "control": {
+          "mode": 33188,
+          "uid": 0,
+          "gid": 0,
+          "sha256": "1d415837859907aa588c9d9cfc751327f68b394230886a68d198eb5a7168ad41"
+        }
+      },
+      "state": "retired",
+      "actual_restored_payload_entries": 1973,
+      "actual_restored_control_verified": true
+    }
+  ],
+  "before_free_bytes": 17386262528,
+  "producer_sha256": "ab640a0898df1403f79b585c523a992ed72fc187a502da1fc5b97e62209e5294",
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 18169802752,
+  "recovery": "Verify retained archive/record SHA, extract to NEW stage as actually qualified here. Do not reinstall GTK or replay any retirement. Original compile stages/source/test evidence retained.",
+  "reclaimed_bytes": 783540224,
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gtk-schema-promotion-custody-evidence.tar.gz",
+    "sha256": "b3acfc62e32a394df4b2b85110d828704a7ccbe4554fc944720de6c54f9ddf9d",
+    "members": [
+      "gtk-schema-promotion-custody-1.json",
+      "gtk-schema-promotion-custody-1.controller.json",
+      "gtk-schema-promotion-custody-1.log",
+      "gtk-schema-promotion-custody-1.exit"
+    ]
+  }
+}
