@@ -1,0 +1,90 @@
+{
+  "native": {
+    "step": "b02-lvm2-install",
+    "started": "2026-11-10T23:17:40.408620+00:00",
+    "finished": "2026-11-10T23:17:58.519995+00:00",
+    "recipe_sha256": "32e7ac1629d8b0181f04c7cbf9e7cb0a7e4ba87012227152170aaf718a5f0df3",
+    "postcheck_sha256": "fb60c7d4384b540f1f15d37bfe2816739a162630619a2e0a61754d18138fb3db",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 165,
+    "log_sha256": "698046906c80ba1740a0e8fc7397444332fd236958edb98c11236f3d9b71057e",
+    "receipt_sha256": "9ec7c8d0b612adb296e6b4cdb6d59df77a6b07433652c7b8335ae3fa31a3153a"
+  },
+  "consumer": {
+    "C_consumer": "Two Device Mapper name escape and pool lifecycles passed",
+    "notices_verified": 4,
+    "conffiles": 10,
+    "units_present_and_disabled": [
+      "blk-availability.service",
+      "lvm-devices-import.path",
+      "lvm-devices-import.service"
+    ],
+    "scope": "Installed Device Mapper SDK in private device and network namespaces under UID101 and NNP. No mapper device, volume or activation test.",
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "lvm2",
+    "version": "2.03.42-1+toddy1",
+    "archive_sha256": "c336dedb0dc8ad0adfe3572dfdfd39d773d0bf2bd747ab512a64a9bb3ff63264",
+    "recipe_sha256": "32e7ac1629d8b0181f04c7cbf9e7cb0a7e4ba87012227152170aaf718a5f0df3",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "lvm2",
+        "version": "2.03.42",
+        "filename": "LVM2.2.03.42.tgz",
+        "url": "https://sourceware.org/ftp/lvm2/LVM2.2.03.42.tgz",
+        "sha256": "352703ef5b72ebb22d4f250284a29b89fe64d4049c6bf64c693f9af486c8081e",
+        "reference": "BLFS13.1-systemd postlfs/lvm2.html",
+        "book_page_sha256": "b9db91f94b7af6a01339b9b81ae9ea21d42a1693be6c5596ce7c0391715cc8bc",
+        "book_md5": "1cfc17fcbdc5103492b4504c5ddaa274",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "installed": true,
+    "payload_count": 176,
+    "supporting_build_scripts_sha256": "4e2c9ce52654214c4191f2f8ac69dc205441d30405b12f32bc55db080167e7da",
+    "payload_sha256": "06e0189923d7997b9e106d7c93ecf201cd992a47cecf2f8202afd65f3b02e49d"
+  },
+  "installed_notices": {
+    "sources": [
+      {
+        "filename": "LVM2.2.03.42.tgz",
+        "source_sha256": "352703ef5b72ebb22d4f250284a29b89fe64d4049c6bf64c693f9af486c8081e",
+        "url": "https://sourceware.org/ftp/lvm2/LVM2.2.03.42.tgz",
+        "notices": [
+          {
+            "path": "LVM2.2.03.42/COPYING",
+            "sha256": "e76fbcd2fb97cf202da330301327754d2db5c58b5b4bebd3a8a749393e7603d1",
+            "size": 17995
+          },
+          {
+            "path": "LVM2.2.03.42/COPYING.BSD",
+            "sha256": "eea9f9e35fbabc4c425a47fcd70f48b41c546f4da1ecb3f8dd710bf5f6ac6208",
+            "size": 1323
+          },
+          {
+            "path": "LVM2.2.03.42/COPYING.LIB",
+            "sha256": "5df07007198989c622f5d41de8d703e7bef3d0e79d62e24332ee739a452af62a",
+            "size": 26436
+          },
+          {
+            "path": "LVM2.2.03.42/tools/license.inc",
+            "sha256": "3648a86b20d49aa9929aca9767fbe03f044df5b615102a4daeb52a13daa80c3a",
+            "size": 594
+          }
+        ]
+      }
+    ],
+    "scope": "Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply"
+  }
+}

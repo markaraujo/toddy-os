@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'lvm2': ('2.03.42', 'glibc (>= 2.44-1+toddy1), readline (= 8.3-1+toddy1), systemd (>= 261.2-1+toddy3), util-linux (>= 2.42.4-1+toddy1), libnvme (= 1.16.2-1+toddy1), libaio (= 0.3.113-1+toddy1)', 'LVM2.2.03.42.tgz', 'usr/lib/pkgconfig/devmapper.pc'),
     'libaio': ('0.3.113', 'glibc (>= 2.44-1+toddy1)', 'libaio-0.3.113.tar.gz', 'usr/lib/libaio.so.1.0.2'),
     'libnvme': ('1.16.2', 'glibc (>= 2.44-1+toddy1), json-c (= 0.19-1+toddy1), openssl (= 4.0.3-1+toddy1), keyutils (= 1.6.3-1+toddy1), dbus (= 1.16.2-1+toddy1)', 'libnvme-1.16.2.tar.gz', 'usr/lib/pkgconfig/libnvme.pc'),
     'keyutils': ('1.6.3', 'glibc (>= 2.44-1+toddy1)', 'keyutils-1.6.3.tar.gz', 'usr/lib/pkgconfig/libkeyutils.pc'),
@@ -1280,6 +1281,9 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='lvm2':
+        from qualify_lvm2 import qualify as qualify_lvm2
+        qualify_lvm2(ROOT)
     if name=='libaio':
         from qualify_libaio import qualify as qualify_libaio
         qualify_libaio(ROOT)
@@ -1765,6 +1769,11 @@ if __name__ == '__main__':
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
     if name=='cups':conffiles=[arg for file in sorted((destination/'etc/cups').iterdir()) if file.is_file() for arg in ['--conffile','/'+str(file.relative_to(destination))]]
+    if name=='lvm2':
+        conffiles=[value for path,row in sorted(before['entries'].items())
+                   if path.startswith('etc/lvm/') and 'sha256' in row
+                   for value in ('--conffile','/'+path)]
+        assert len(conffiles)==20
     if name=='keyutils':conffiles=['--conffile','/etc/request-key.conf']
     if name=='libpwquality':conffiles=['--conffile','/etc/security/pwquality.conf']
     if name=='vte':conffiles=['--conffile','/etc/profile.d/vte.sh','--conffile','/etc/profile.d/vte.csh']

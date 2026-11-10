@@ -188,7 +188,7 @@ Verified:
 - Owned libbytesize 2.12 local SDK: 76 selected upstream cases passed with three locale skips. Native install and postcheck 0/0 with 56 changed paths and 131 payload entries. C/Python/CLI arithmetic, refusal and recovery, exact stage bytes, ABI and APT passed. No storage device, UDisks service, Settings GUI or physical acceptance.
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 
-Running: LibAIO installed and checked. LVM2 staged with 156 original unprivileged unit passes and local Device Mapper SDK test. Native package, disposable-device suite and intended kernel storage options pending. Cryptsetup and popt source verified. Full B02 then stop.
+Running: Owned LVM2 installed with local Device Mapper SDK verification and reviewed configuration. Disposable-device suite and kernel storage options pending. Popt staged with 65 upstream cases passed. Native Popt packaging next, then pinned Cryptsetup. Full B02 then stop.
 
 Remaining:
 

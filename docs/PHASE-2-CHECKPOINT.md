@@ -123,23 +123,41 @@ LibAIO/Systemd SDK, 156/156 original unprivileged unit cases, stage including
 udev rules and three Systemd unit definitions, local Device Mapper name
 escaping/pool cycles all passed. 211 ELF files, 100 staged regular files,
 167 total entries. [Stage evidence](evidence/B02-lvm2-stage.json).
-No native package, service activation or device operations. Original device
+The build performed no service activation or device operations. Original device
 suite pending in a disposable VM. Configure warns that thin/cache tools,
 VDO format tool and XFS headers are absent. Retain compiler and stage.
 Last verified free 17,321,021,440 B on target. Check actual host and guest
 reserves and lock before mutation.
 
-EXACT NEXT: review staged LVM2 udev rules, unit triggers and /etc/lvm
-conffiles. Bind retained lvm2-1 job and manifest
-7d6cc86f984f9287c769d4e4ca9646cc3b1f527fc6c4936a16820de2a13e562f
-in a read-only preflight. Then use one full-root native transaction and a
-no-device installed SDK consumer. Verify a later disposable-device test
-with the intended kernel before feature acceptance. Intended kernel has
-BLK_DEV_DM, DM_MIRROR and LOOP but lacks DM_CRYPT, DM_SNAPSHOT, CRYPTO_XTS
-and CRYPTO_USER_API_SKCIPHER. Preserve this gap for encrypted-volume work,
-without silent foundation changes. Cryptsetup 2.8.7 and popt 1.19 sources
-are now pinned, no guest work on either. UDisks, Samba and graphical GNOME
-pending. Stop after accepted B02.
+LVM2 native b02-lvm2-install PID 123784 terminal recipe/postcheck 0/0,
+165 changed paths, 176 payload entries, archive SHA256
+c336dedb0dc8ad0adfe3572dfdfd39d773d0bf2bd747ab512a64a9bb3ff63264.
+[Native evidence](evidence/B02-lvm2-install.json) covers all exact staged
+bytes/links, installed Device Mapper C probe, libaio/libnvme/libudev ABI,
+APT, three upstream notices and ten conffiles. Staged udev rules invoke
+pvscan and can schedule vgchange for eligible devices. Retained upstream
+rules and three unit definitions. The transaction did not activate rules or
+enable units. Do not replay. Native disposable-device tests remain pending.
+The intended kernel has BLK_DEV_DM, DM_MIRROR and LOOP but lacks DM_CRYPT,
+DM_SNAPSHOT, CRYPTO_XTS and CRYPTO_USER_API_SKCIPHER. Preserve this gap for
+encrypted-volume work without silent foundation changes.
+
+Popt 1.19 popt-1 PID 124290 terminal 0. All 65 original nested checks
+passed. The assertion checks actual nested outputs because the upstream
+wrapper can return 0 after printing a failure. Local staged C unknown
+option refusal and two typed argument recoveries passed. 14 ELF files,
+41 staged regular files, 123 entries. [Stage evidence](evidence/B02-popt-stage.json).
+No native transaction or Cryptsetup integration. No active writer. Last
+verified free 17,297,494,016 B on target. Do not replay source/build/tests.
+
+EXACT NEXT: qualify popt-1's receipt and stage manifest
+127a8d77da11c36be5f1f7a41db7fdc736dee5539b62786683c637381bcb5bc0
+read-only, retain the upstream licenses, then install once through the
+full-root backend and verify the installed shared C consumer. Check actual
+host/guest reserves and writer lock. Then prepare pinned Cryptsetup 2.8.7
+against owned LVM2 and Popt with the book's production flags. Keep virtual
+device testing separate and address the measured intended-kernel gaps.
+UDisks, Samba and native GNOME pending. Stop after accepted B02.
 
 ### Previous Settings prerequisites
 

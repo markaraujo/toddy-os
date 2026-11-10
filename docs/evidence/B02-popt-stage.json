@@ -1,0 +1,72 @@
+{
+  "stage": {
+    "version": "1.19",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "upstream_nested_cases_passed": 65,
+    "consumer": "Popt unknown option refusal and two typed argument recoveries passed\n",
+    "artifacts_map_digest": "edd90bed54a2c8aae461216834de07f19971e22f18528add39e01ac765ac179d",
+    "artifacts_count": 14,
+    "stage_sha256_map_digest": "fd00d1cad1dc0fed1d5e7b89f85242a18d37cf7d985a7b6d66db926cc56c97e2",
+    "stage_sha256_count": 41
+  },
+  "manifest_sha256": "127a8d77da11c36be5f1f7a41db7fdc736dee5539b62786683c637381bcb5bc0",
+  "stage_entry_count": 123,
+  "job": {
+    "pid": 124290,
+    "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+    "proc_start_ticks": "2486211",
+    "started_unix": 1794352760.959736,
+    "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+    "exit": 0,
+    "command_sha256": "8d9dc89919453276965e267bf4abe6532e57165958ed73e7d47d1f78e960691f"
+  },
+  "prepared": {
+    "source_sha256": "c25a4838fc8e4c1c8aacb8bd620edb3084a3d63bf8987fdad3ca2758c63240f9",
+    "reference": "BLFS13.1-systemd general/popt.html",
+    "book_page_sha256": "69be962acfc03503d49e7fd82626518acf946e286184170dfd877a77fa0377ba",
+    "source_patches": [],
+    "recipe_sha256": "53d27a389fde6efe95c6a855821b67486d33711f10455dec1089d1d605d0678a",
+    "probe_sha256": "e8641b6502dba8318113b365838b0a7b5c281db153269334d420499b48fe68a5"
+  },
+  "logs": [
+    {
+      "path": "configure.log",
+      "sha256": "fb347b019826f61fa8f0a59b419b961af6b5011f363e308bcd66d1025e346877"
+    },
+    {
+      "path": "original-build.log",
+      "sha256": "c2df0e79661daac754c66d91b60c870db6f0876090795258a069d4872b8c6eeb"
+    },
+    {
+      "path": "original-check.log",
+      "sha256": "116a67c385a76aa5586bca68ec0d2536b448e30a8b2584ec730c0174d2e01675"
+    },
+    {
+      "path": "compile/tests/testit.sh.log",
+      "sha256": "71c39aeb4cb7555666fa33bc81eb8f300d47f72bc7e92c31b4e290536a6c8339"
+    },
+    {
+      "path": "original-stage.log",
+      "sha256": "80636f544d963dd3fe2d4434502aa1e60c1064c75e012dee88f2cd02b734420f"
+    },
+    {
+      "path": "local-probe.log",
+      "sha256": "635d0993d372223e63a9963d6374460504bd8d6d91abce18b7f33c062cef6cf6"
+    }
+  ],
+  "target_free_bytes": 17297494016,
+  "source": {
+    "name": "popt",
+    "version": "1.19",
+    "filename": "popt-1.19.tar.gz",
+    "url": "https://ftp.osuosl.org/pub/rpm/popt/releases/popt-1.x/popt-1.19.tar.gz",
+    "sha256": "c25a4838fc8e4c1c8aacb8bd620edb3084a3d63bf8987fdad3ca2758c63240f9",
+    "reference": "BLFS13.1-systemd general/popt.html",
+    "book_page_sha256": "69be962acfc03503d49e7fd82626518acf946e286184170dfd877a77fa0377ba",
+    "book_md5": "eaa2135fddb6eb03f2c87ee1823e5a78",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "scope": "Original 65 nested parser checks plus staged local shared C option refusal and recovery. No privileged execution or Cryptsetup integration."
+}
