@@ -1,0 +1,215 @@
+{
+  "scope": "Frozen LocalSearch3.11.1 core miner/extractor/writeback with ICU/UPower/owned media metadata dependencies. Landlock explicitly enabled using upstream isolated distribution-build option; seccomp retained. Production release and original functional/sandbox programs compiled. Only13 non-slow common/indexer/extract utility programs executed on builder kernel; native functional/index/search/sandbox/cancellation/recovery and GUI acceptance remain pending. Optional absent format libraries remain auto-unavailable; man generation omitted because a2x is absent. No installed runtime or general parser-security claim.",
+  "source": {
+    "name": "localsearch",
+    "version": "3.11.1",
+    "filename": "localsearch-3.11.1.tar.xz",
+    "url": "https://download.gnome.org/sources/localsearch/3.11/localsearch-3.11.1.tar.xz",
+    "sha256": "7b39a6c28a8acf2b172f15b2fb5ee7c7a3764c447c2f4a14caa239b7ebe61942",
+    "reference": "BLFS13.1-systemd gnome/localsearch.html",
+    "book_page_sha256": "6183b9afef8f1efeb554e79f93958ac7affe921ab8d748d9ab874abe0f9e0b4e",
+    "book_md5": "1406955c072af72776fdcbb9b12dc103",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "prepared": {
+    "source_sha256": "7b39a6c28a8acf2b172f15b2fb5ee7c7a3764c447c2f4a14caa239b7ebe61942",
+    "reference": "BLFS13.1-systemd gnome/localsearch.html",
+    "book_page_sha256": "6183b9afef8f1efeb554e79f93958ac7affe921ab8d748d9ab874abe0f9e0b4e",
+    "source_patches": [],
+    "recipe_sha256": "f25eb13e03a5b1fde6763e0bea50e923bec82ebae12cbc596d0cbb2e060d2499"
+  },
+  "stage": {
+    "scope": "Frozen LocalSearch3.11.1 core miner/extractor/writeback with ICU/UPower/owned media metadata dependencies. Landlock explicitly enabled using upstream isolated distribution-build option; seccomp retained. Production release and original functional/sandbox programs compiled. Only13 non-slow common/indexer/extract utility programs executed on builder kernel; native functional/index/search/sandbox/cancellation/recovery and GUI acceptance remain pending. Optional absent format libraries remain auto-unavailable; man generation omitted because a2x is absent. No installed runtime or general parser-security claim.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "kernel": "6.8.0-147-generic",
+    "original_tests": [
+      {
+        "name": "miners-common - localsearch:extract-info",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "miners-common - localsearch:dbus",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "miners-common - localsearch:file-utils",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "miners-common - localsearch:module-manager",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "miners-common - localsearch:sched",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "miners-common - localsearch:type-utils",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "miners-common - localsearch:utils",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "miner-fs - localsearch:miner-indexing-tree",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "miner-fs - localsearch:miner-priority-queue",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "miner-fs - localsearch:miner-task-pool",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "extract - localsearch:guarantee",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "extract - localsearch:encoding",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "extract - localsearch:utils",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "registered_not_executed": [
+      "miner-file-notifier",
+      "miner-monitor",
+      "miner-monitor-glib",
+      "mp3-id3v2.2-1",
+      "mp3-id3v2.3-empty-artist-album",
+      "mp3-id3v2.3-vbr-1",
+      "mp3-id3v2.4-1",
+      "mp3-id3v2.4-2",
+      "mp3-id3v2.4-vbr-1",
+      "application",
+      "application-broken-1",
+      "application-broken-2",
+      "application-broken-3",
+      "application-broken-4",
+      "application-hidden",
+      "link-broken-1",
+      "link-wikipedia-tracker",
+      "bmp-basic-1",
+      "bmp-corrupt-1",
+      "bmp-corrupt-2",
+      "bmp-corrupt-3",
+      "bmp-corrupt-4",
+      "ico-basic-1",
+      "text-non-utf8-1",
+      "abw-1",
+      "abw-2",
+      "abw-3",
+      "png-basic",
+      "png-photo-1",
+      "png-screenshot-1",
+      "png-exif-old-1",
+      "raw-cr2",
+      "tiff-basic",
+      "tiff-photo-1",
+      "tiff-xmp-sidecar-1",
+      "psgz-doc",
+      "html-1",
+      "test_cli",
+      "test_cli_extract",
+      "test_cli_index",
+      "test_cli_info",
+      "test_cli_inhibit",
+      "test_cli_reset",
+      "test_cli_search",
+      "test_cli_status",
+      "test_cli_tag",
+      "test_config_changes",
+      "test_offline_config_changes",
+      "test_extractor_decorator",
+      "test_fts_basic",
+      "test_fts_file_operations",
+      "test_fts_stopwords",
+      "test_memory_pressure",
+      "test_miner_basic",
+      "test_miner_removable_media",
+      "test_miner_resource_removal",
+      "test_power",
+      "test_systemd",
+      "test_writeback_audio",
+      "exit",
+      "no-data",
+      "no-error",
+      "stall",
+      "wrong-sparql",
+      "dbus-access",
+      "exec",
+      "fs-read",
+      "fs-read-trunc",
+      "fs-write",
+      "net-access",
+      "query-async",
+      "query-sync"
+    ],
+    "resource": {
+      "exit": 0,
+      "initial_free": 17277284352,
+      "minimum_free": 17269211136,
+      "final_free": 17269211136,
+      "reserve": 17179869184,
+      "stop_margin": 16777216,
+      "interrupted": false
+    },
+    "artifacts_count": 186,
+    "artifacts_manifest_sha256": "eae1aae60245a7fbf8d1b527b512dea94ba1c6c7d4aecf0494007659f83ce284",
+    "stage_sha256_count": 133,
+    "stage_sha256_manifest_sha256": "c94b7ee0f59a22464df9fc7150bb09c9e5c7d20226b739311625bd9eeffe3404"
+  },
+  "recovery": {
+    "initial_job_exit": 1,
+    "collection_job_exit": 0,
+    "cause": "Own collector expected HAVE_LANDLOCK/HAVE_LIBSECCOMP with value1; actual upstream boolean defines have no value. Corrected exact positive lines only, compiled/staged complete hashes unchanged across collection. Original source recipe remains unchanged.",
+    "build_tests_stage_replayed": false,
+    "pending_inventory_normalization": "Raw first collector compared unqualified Meson introspection names with suite-qualified log names and listed all85 registered. This derived report reconciles exact suite+name against13 actual executed programs, leaving72 unexecuted. Raw preserved; no tests replayed."
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-localsearch-build-evidence-1.tar.gz",
+    "sha256": "d7da4c20df75f7263d8294170e5e791df8e46aa408db5cc433695992b4692dfb",
+    "members": [
+      "original-recipe.sh",
+      "phase2/localsearch-1-controller.log",
+      "phase2/localsearch-1.exit",
+      "phase2/localsearch-1.job.json",
+      "phase2/localsearch-1.log",
+      "phase2/localsearch-collect-2-controller.log",
+      "phase2/localsearch-collect-2.exit",
+      "phase2/localsearch-collect-2.job.json",
+      "phase2/localsearch-collect-2.log",
+      "prepared.json",
+      "work/cli-version.txt",
+      "work/compile-resource.json",
+      "work/compile/config-miners.h",
+      "work/compile/meson-info/intro-buildoptions.json",
+      "work/compile/meson-logs/testlog.json",
+      "work/compile/meson-logs/testlog.txt",
+      "work/original-registered-tests.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}

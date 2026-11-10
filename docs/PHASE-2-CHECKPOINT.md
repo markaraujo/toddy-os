@@ -8,20 +8,28 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current eligible slice: LocalSearch3.11.1 source/SDK/build preparation (B02).
-[SDK preflight](evidence/B02-localsearch-sdk-preflight.json):17 actual required/
-selected SDK modules available (Tinysparql3.11.1/GExiv20.16.2/GLib2.88.3/Gst1.28.6/
-JPEG/PNG/TIFF/XML/seccomp/upower/ICU). Host cached archive4505604bytes SHA
-7b39a6c28a8acf2b172f15b2fb5ee7c7a3764c447c2f4a14caa239b7ebe61942,
-frozen BLFS13.1-systemd gnome/localsearch.html MD5 matched. No source lock row,
-guest input/work/job yet. Asciidoc absent. Actual builder kernel6.8.0-147-generic,
-installed target Linux7.1.8-1+toddy1/Landlock=y. Do not conflate build-host unit
-results with target-native runtime. Explicit landlock=enabled is supported for
-isolated distribution build, not permission to disable sandbox/native acceptance.
-EXACT NEXT: inspect actual cached LocalSearch tests/meson/doc requirements and
-selected upstream options; prepare pinned source/recipe with core miner/extractor/
-seccomp/Landlock retained. Read only contracts needed for this slice, no replanning.
-Real index/search/sandbox/Stop/recovery/native GUI acceptance still required.
+Current slice: LocalSearch3.11.1 native functional fixture/preflight preparation.
+[Build proof](evidence/B02-localsearch-build.json): source frozen, input extraction1
+complete, build1 PID26113 terminal1 only own final collector macro assertion;
+compiler13original programs/stage all0. Collection2 PID27647 actual0/all compiled
+and staged bytes unchanged:186ELFs/133stagefiles. Exact derived suite/name matching
+leaves72unexecuted registered programs, raw first collector85-list retained.
+No source patches; Landlock/seccomp/core miner/extractor/writeback enabled.
+Original input recipeSHAf25eb13e03a5b1fde6763e0bea50e923bec82ebae12cbc596d0cbb2e060d2499
+must stay immutable; current host recipe fixes metadata expectations only. Do not
+replay source extraction/compilation/accepted tests/staging/collection. Raw export
+.local/phase2/exports/B02-localsearch-build-evidence-1.tar.gz SHA
+ d7da4c20df75f7263d8294170e5e791df8e46aa408db5cc433695992b4692dfb.
+Compiler minimum free17269211136B above16GiB. Actual builder kernel6.8.0-147-generic;
+installed target7.1.8-1+toddy1. No installed/native functional/sandbox/GUI acceptance.
+EXACT NEXT: inspect original tests/functional-tests fixture configuration and
+private D-Bus miner/extractor startup, prepare focused native index/search,
+Landlock/seccomp denial, Stop/restart/state-recovery fixture against these same
+staged bytes. Reuse qualified native harness, preserve parked cold-boot resource
+budget and do not lower guards. If resources still block actual dispatch, retain
+prepared fixture and advance eligible B02 source/app preparation. Native package
+promotion must follow real functional qualification, never version/help alone.
+No guest job or native diagnostic VM active. Full B02, then stop.
 
 ## Completed native kernel and boot owner slice
 

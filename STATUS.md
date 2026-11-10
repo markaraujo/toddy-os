@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T09:45:09.206854+00:00
+Updated: 2026-11-10T12:22:49.336972+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T12:01:56.175495+00:00
+Last verified: 2026-11-10T12:22:49.336972+00:00
 
 Verified:
 
@@ -154,8 +154,9 @@ Verified:
 - Kernel stage2 actual0 via UID101 isolation; original qualified archive/all12023payload entries authenticated,20module bytes identical. Candidate image/config/System.map plus three -foundation rollback artifacts retained. Own .ko modules.order assumption failed before backups; actual20 .o list corrected with exact final-suffix mapping, extraction reused/no compiler or native diagnostic replay. 11261 regular stage files. Native installation/boot-entry/installed Systemd/desktop acceptance pending.
 - Native kernel archive QA0/0/root changed0, kernel7.1.8-1+toddy1 install0/0/12changes and separate toddy-boot-config0.1-2+toddy1 install0/0/6changes. Complete12027payload/root ownership/modes/APT and three old recovery artifacts verified; menu default0 plus recovery/source/syntax/ownership0. Actual installed/default/recovery-entry boots not run; resource branch parked below100GiB+512MiB guard. Virtual free-block reclamation0 preserved160864installed OS entries and111558original kernel cache entries; later headroom shortfall remains unresolved. No GNOME/ISO/physical acceptance.
 - LocalSearch3.11.1 cached source4505604bytes/frozen SHA verified;17actual selected/required SDK modules found including Tinysparql/GExiv2/GLib/Gst/ICU/seccomp. No guest source/job or search/runtime/GUI acceptance.
+- LocalSearch3.11.1 UID101 isolated compile/stage verified:186ELFs/133stagefiles,13original non-slow common/indexer/extract utility programs0,Landlock/seccomp enabled; minimum compiler free17269211136B above16GiB. Initial job1 only own valueless-macro collector assertion; collection2 actual0 with all compiled/staged bytes unchanged. Derived exact suite/name inventory leaves72unexecuted programs. No native runtime/index/search/sandbox/Stop/recovery/install/GUI acceptance; ADR0205.
 
-Running: No guest writer/native test VM. Kernel and separately owned recovery-menu packages installed/verified0/0; actual installed/default/recovery boot branch parked by unstable host100GiB+512MiB headroom, no guard reduction or trim replay. Current eligible work LocalSearch3.11.1 source/SDK/build preparation; target-native search and GNOME remain pending. Complete ALL B02 then stop.
+Running: No live guest writer. LocalSearch build1 terminal1 after successful compile/tests/staging, collection2 terminal0. Native functional fixture/preflight preparation next; installed boot resource branch remains parked. Complete ALL B02 then stop.
 
 Remaining:
 
