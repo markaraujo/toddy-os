@@ -1,0 +1,344 @@
+{
+  "scope": "Four additive owned shared login PAM conffiles installed; pre-existing deny-only other/Polkit/systemd-user and PAM modules unchanged. Native auth/account/password/session qualification prepared, NOT executed or accepted. No GDM/login/desktop acceptance.",
+  "transaction": {
+    "step": "b02-login-policy-install-2",
+    "started": "2026-11-10T01:56:42.346362+00:00",
+    "recipe_sha256": "c73f7e17df6e2cf6552e8de9f8675eba184f50a7216a1476689ed5ae9977b1ee",
+    "postcheck_sha256": "8c49d6d6e93d36a86ebe6211ddbebe2afda10d5a0ae8cfdd2a19ca1660f39275",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "0bd1d15174cbcdd4b6be4e7468378818f003f78a152cf9cb596b9ec0c658627f",
+    "recipe_pid": 525150,
+    "recipe_pgid": 525150,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T01:56:58.460023+00:00",
+    "changed_paths": 15,
+    "log_sha256": "94acd2d73d1fdf263ffc0da1ba5b79aff834448491f8573c795b15fd4c76c3a2",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "77f424784d8978fe35d7c0a1f6a2f5b4b2ff129b9d0e51795d1b6ff87133feb0"
+  },
+  "initial_prewrite_failure": {
+    "step": "b02-login-policy-install",
+    "started": "2026-11-10T01:53:32.023476+00:00",
+    "recipe_sha256": "c73f7e17df6e2cf6552e8de9f8675eba184f50a7216a1476689ed5ae9977b1ee",
+    "postcheck_sha256": "8c49d6d6e93d36a86ebe6211ddbebe2afda10d5a0ae8cfdd2a19ca1660f39275",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "0bd1d15174cbcdd4b6be4e7468378818f003f78a152cf9cb596b9ec0c658627f",
+    "recipe_pid": 524839,
+    "recipe_pgid": 524839,
+    "recipe_exit": 1,
+    "postcheck_exit": null,
+    "finished": "2026-11-10T01:53:47.574565+00:00",
+    "changed_paths": 0,
+    "log_sha256": "8db662b70a77230375c321aa263b1a390c432d6fea28be8e578dcfc37c8dcf1d",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "77f424784d8978fe35d7c0a1f6a2f5b4b2ff129b9d0e51795d1b6ff87133feb0"
+  },
+  "install_receipt": {
+    "state": "complete",
+    "scope": "Four additive shared login PAM conffiles only. No existing other/Polkit/systemd-user changes, no nullok/permit, no module/runtime rebuild. Native auth/session tests pending.",
+    "existing_PAM_policies": {
+      "etc/pam.d/polkit-auth": {
+        "sha256": "26e0a6202afe43531ef41492241c55396debe6f11f122b7087409c762dd1d999",
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0
+      },
+      "etc/pam.d/other": {
+        "sha256": "ea9be9253f1bc20e72f3aafaf0e36f4d23218de88b270cf787ecb719fadc9e1a",
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0
+      },
+      "etc/pam.d/systemd-user": {
+        "sha256": "902ea0260ad54b79e780ad9ab53a0a7c44d38712e791ed08028a330cc4708ee4",
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "module_sha256": [
+      {
+        "path": "pam_unix.so",
+        "sha256": "60214b780b7f08b43a9feffb526f24521bb924929f3626cab4779ebfc8b27897"
+      },
+      {
+        "path": "pam_loginuid.so",
+        "sha256": "2cb95cab5db042d446e9a1c3d80eda273bdc84545bef8e345401a117a2675e73"
+      },
+      {
+        "path": "pam_systemd.so",
+        "sha256": "a30e60bcca2f8f4a5929b9b1133b1df3e14d26d0ed8b676c41d64fb891d59118"
+      }
+    ],
+    "input_sha256": [
+      {
+        "path": "system-auth",
+        "sha256": "5671daaf182ae80cbcfa819ca7341d96fc3ff3565119500662032aed228e2939"
+      },
+      {
+        "path": "system-account",
+        "sha256": "d728cbb44e656f7b83f9032dcc31bcd7d028fe0131c751bd735e070db7c872b6"
+      },
+      {
+        "path": "system-password",
+        "sha256": "aecbc0227b0b754992b8ecd3aa97b1f80a53ebaf1c39fe5fbcf7326dedf175a2"
+      },
+      {
+        "path": "system-session",
+        "sha256": "4af4404dced20474d01f9f79f5456df7e12823a905b8bbd786d44fdd5ff27f19"
+      }
+    ],
+    "policy_version": "0.1.0-1+toddy1",
+    "staged_payload": {
+      "/etc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/etc/pam.d": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/etc/pam.d/system-password": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "aecbc0227b0b754992b8ecd3aa97b1f80a53ebaf1c39fe5fbcf7326dedf175a2"
+      },
+      "/etc/pam.d/system-account": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d728cbb44e656f7b83f9032dcc31bcd7d028fe0131c751bd735e070db7c872b6"
+      },
+      "/etc/pam.d/system-auth": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5671daaf182ae80cbcfa819ca7341d96fc3ff3565119500662032aed228e2939"
+      },
+      "/etc/pam.d/system-session": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "4af4404dced20474d01f9f79f5456df7e12823a905b8bbd786d44fdd5ff27f19"
+      },
+      "/usr/share": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/toddy-login-policy": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/toddy-login-policy/copyright": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f2160298f6fb81b18cfa5dbbf7460ab4774a268b5b519088b5b6fc8eb08ae3a4"
+      },
+      "/usr/share/doc/toddy-login-policy/README.Toddy": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "40d810c948d66e88ab26f917a6a971ebf97f1c89cd88a3850111eaa795428f54"
+      }
+    },
+    "archive_sha256": "f67aea344d5ded8e5aa988bf9f15d3effbc813211cd708b15b2b1344921a8e59",
+    "owned_entries": 14,
+    "existing_PAM_and_modules_unchanged": true
+  },
+  "compiled_test_client": {
+    "scope": "Root-only native test client compile and unprivileged/missing-argument refusal only; no password operation performed in compiler sandbox.",
+    "source_sha256": "e1b2854d2ae1c2c3ddf2244d5a276968e4ab048d480cef0e6d29211bf6cca971",
+    "client_sha256": "a092bf7cf53d93b538507420e406cd30d4588ac00f7a833c661bf94dcf39f399",
+    "compile_exit": 0,
+    "unprivileged_guard_exit": 64
+  },
+  "native_preparation": {
+    "state": "complete",
+    "fixture": "/mnt/lfs/sources/phase2/native-fixtures/login-policy-1",
+    "manifest_sha256": "e465ac100db9eb3a8d47371b4425a087a365d586eb205e988acad17976689166",
+    "artifact_files": 3,
+    "installed_artifacts": 14
+  },
+  "native_fixture": {
+    "scope": "Installed four owned PAM includes/native auth/account/password/session qualification; synthetic credentials only in disposable new boot. No GDM/GUI acceptance.",
+    "policy_sha256": [
+      {
+        "path": "system-auth",
+        "sha256": "5671daaf182ae80cbcfa819ca7341d96fc3ff3565119500662032aed228e2939"
+      },
+      {
+        "path": "system-account",
+        "sha256": "d728cbb44e656f7b83f9032dcc31bcd7d028fe0131c751bd735e070db7c872b6"
+      },
+      {
+        "path": "system-password",
+        "sha256": "aecbc0227b0b754992b8ecd3aa97b1f80a53ebaf1c39fe5fbcf7326dedf175a2"
+      },
+      {
+        "path": "system-session",
+        "sha256": "4af4404dced20474d01f9f79f5456df7e12823a905b8bbd786d44fdd5ff27f19"
+      }
+    ],
+    "existing_PAM_policies": {
+      "etc/pam.d/polkit-auth": {
+        "sha256": "26e0a6202afe43531ef41492241c55396debe6f11f122b7087409c762dd1d999",
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0
+      },
+      "etc/pam.d/other": {
+        "sha256": "ea9be9253f1bc20e72f3aafaf0e36f4d23218de88b270cf787ecb719fadc9e1a",
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0
+      },
+      "etc/pam.d/systemd-user": {
+        "sha256": "902ea0260ad54b79e780ad9ab53a0a7c44d38712e791ed08028a330cc4708ee4",
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0
+      }
+    },
+    "installed_artifacts": [
+      {
+        "path": "/usr/lib/libpam.so.0",
+        "sha256": "f2231762e7e3c66770778f47b1c0b472ac47f68aec29921a1a19f0160106e3b8"
+      },
+      {
+        "path": "/usr/lib/security/pam_unix.so",
+        "sha256": "60214b780b7f08b43a9feffb526f24521bb924929f3626cab4779ebfc8b27897"
+      },
+      {
+        "path": "/usr/lib/security/pam_loginuid.so",
+        "sha256": "2cb95cab5db042d446e9a1c3d80eda273bdc84545bef8e345401a117a2675e73"
+      },
+      {
+        "path": "/usr/lib/security/pam_systemd.so",
+        "sha256": "a30e60bcca2f8f4a5929b9b1133b1df3e14d26d0ed8b676c41d64fb891d59118"
+      },
+      {
+        "path": "/usr/sbin/unix_chkpwd",
+        "sha256": "2176a32b57f8c0ec676503cec517534695e96689f5d29c16e81ff264de600e29"
+      },
+      {
+        "path": "/usr/lib/systemd/systemd",
+        "sha256": "9151bbaffe4d6857aa461c3633e289b1d0a772037b6749c6c0d3690cbc027eb0"
+      },
+      {
+        "path": "/usr/lib/systemd/systemd-logind",
+        "sha256": "6eeaf27c915c6b9c9ab5e1599481594960a8f6626f388205976b45d7b17682ee"
+      },
+      {
+        "path": "/etc/pam.d/system-auth",
+        "sha256": "5671daaf182ae80cbcfa819ca7341d96fc3ff3565119500662032aed228e2939"
+      },
+      {
+        "path": "/etc/pam.d/system-account",
+        "sha256": "d728cbb44e656f7b83f9032dcc31bcd7d028fe0131c751bd735e070db7c872b6"
+      },
+      {
+        "path": "/etc/pam.d/system-password",
+        "sha256": "aecbc0227b0b754992b8ecd3aa97b1f80a53ebaf1c39fe5fbcf7326dedf175a2"
+      },
+      {
+        "path": "/etc/pam.d/system-session",
+        "sha256": "4af4404dced20474d01f9f79f5456df7e12823a905b8bbd786d44fdd5ff27f19"
+      },
+      {
+        "path": "/etc/pam.d/polkit-auth",
+        "sha256": "26e0a6202afe43531ef41492241c55396debe6f11f122b7087409c762dd1d999"
+      },
+      {
+        "path": "/etc/pam.d/other",
+        "sha256": "ea9be9253f1bc20e72f3aafaf0e36f4d23218de88b270cf787ecb719fadc9e1a"
+      },
+      {
+        "path": "/etc/pam.d/systemd-user",
+        "sha256": "902ea0260ad54b79e780ad9ab53a0a7c44d38712e791ed08028a330cc4708ee4"
+      }
+    ],
+    "artifacts": [
+      {
+        "path": "password-consumer",
+        "sha256": "6ce5b293e760bf90d36df5522e0e2b3b5631ae77fa7b9cdcc34f09a94cba1b69"
+      },
+      {
+        "path": "session-consumer",
+        "sha256": "f0c7eaa8890e5574684aba270da591bc9c43590a2dcfc1acbb33de0946691605"
+      },
+      {
+        "path": "password-change",
+        "sha256": "a092bf7cf53d93b538507420e406cd30d4588ac00f7a833c661bf94dcf39f399"
+      }
+    ],
+    "reused_password_and_session_clients": true,
+    "new_root_client": {
+      "scope": "Root-only native test client compile and unprivileged/missing-argument refusal only; no password operation performed in compiler sandbox.",
+      "source_sha256": "e1b2854d2ae1c2c3ddf2244d5a276968e4ab048d480cef0e6d29211bf6cca971",
+      "client_sha256": "a092bf7cf53d93b538507420e406cd30d4588ac00f7a833c661bf94dcf39f399",
+      "compile_exit": 0,
+      "unprivileged_guard_exit": 64
+    },
+    "policy_package_archive_sha256": "f67aea344d5ded8e5aa988bf9f15d3effbc813211cd708b15b2b1344921a8e59"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-login-policy-install-evidence.tar.gz",
+    "sha256": "2715bf7da011688e0311be494f072c355c388f4b92352f1542ed06569bdafc61",
+    "members": [
+      "build/b02-login-policy-install-2.log",
+      "build/b02-login-policy-install-2.manifest.json",
+      "build/b02-login-policy-install-2.success.json",
+      "build/b02-login-policy-install.failed.json",
+      "build/b02-login-policy-install.log",
+      "build/b02-login-policy-install.manifest.json",
+      "fixture/accepted.json",
+      "phase2/b02-login-policy-install-2-controller.log",
+      "phase2/b02-login-policy-install-2-timing.json",
+      "phase2/b02-login-policy-install-controller.log",
+      "phase2/b02-login-policy-install-timing.json",
+      "phase2/login-policy-install-1.json",
+      "phase2/login-policy-native-prepare-1.json",
+      "phase2/login-policy-probe-1-controller.log",
+      "phase2/login-policy-probe-1.exit",
+      "phase2/login-policy-probe-1.job.json",
+      "phase2/login-policy-probe-1.log",
+      "work/compile-results.json",
+      "work/unprivileged-guard.stderr",
+      "work/unprivileged-guard.stdout"
+    ]
+  },
+  "public_hash_map_format": "Path/SHA256 rows; original keyed maps retained byte-for-byte in raw evidence. No credential/hash values from shadow recorded."
+}

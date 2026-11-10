@@ -95,8 +95,10 @@ def main(metadata_only=False):
     if lock['status'] != 'verified':
         raise SystemExit('Source lock not verified')
     rows = list(lock['packages'])
-    metadata = ['scripts/build','LICENSES','status.json','config/component-licenses.json',
+    metadata = ['scripts/build','LICENSES','LICENSE','status.json','config/component-licenses.json',
                 'config/books.lock.json','config/sources.lock.json']
+    if (ROOT/'config/phase2/pam').is_dir():
+        metadata.append('config/phase2/pam')
     phase2 = ROOT/'config/phase2/sources.lock.json'
     if phase2.exists():
         phase2_lock = json.loads(phase2.read_text())

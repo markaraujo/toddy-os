@@ -8,6 +8,32 @@ No complete native GNOME/login/basic apps or Phase2 ISO exists yet.
 
 ## Current slice and exact next action
 
+Current slice: four shared login PAM policies INSTALLED; native gate prepared,
+not executed. Native install2/post0/0,15changedpaths/14owned entries, package
+`toddy-login-policy0.1.0-1+toddy1_all`, archiveSHA
+f67aea344d5ded8e5aa988bf9f15d3effbc813211cd708b15b2b1344921a8e59.
+Existing other/Polkit/systemd-user bytes/modes and PAM modules unchanged. Initial
+metadata-input failure/root0 retained; exact sync allowlist fixed. ADR0179/
+[proof](evidence/B02-login-policy-install.json); rawSHA
+2715bf7da011688e0311be494f072c355c388f4b92352f1542ed06569bdafc61.
+New root-only native token client compiled0; two old qualified password/session
+clients reused unchanged. Fixture `/mnt/lfs/sources/phase2/native-fixtures/login-policy-1`,
+manifestSHAe465ac100db9eb3a8d47371b4425a087a365d586eb205e988acad17976689166,
+three clients/14installed artifact hashes. Preparation receipt
+`/var/log/toddy/phase2/login-policy-native-prepare-1.json` COMPLETE. No guest writer.
+
+Exact next: after committing reviewed native test inputs and clean Git, run
+`python3 scripts/host/phase2_native_login_policy.py` under a detached tracked local
+controller/log. Context `.local/phase2/native-login-policy-runtime-1` must not exist
+before first dispatch. It stops builder, makes NEW overlay/read-only current
+backing, native kernel/PID1/no NIC, actual synthetic auth/account/password/session/
+Stop/refusal/recovery. Inspect its real result/container before action; do not
+repeat an uncertain native operation. Native acceptance/GDM login not yet proved.
+After terminal, require actual report, all selected exits, child cleanup/OOMfalse,
+backing identity unchanged; then recover builder/scratch binds as below, never
+boot stale overlay or repeat old custody. If failure record cause/inputs/budget and
+correct only bounded affected fixture/native state, no install/compiler replay.
+
 GDM50.2 build/original/stage passed; NO active guest writer. `gdm-1` controller
 PID523211 terminal0,79compiled ELFs/218staged regular files. Actual original
 m-common0, qualified private Check0.15.2 SDK/nine cases reused unchanged. Own
@@ -20,22 +46,11 @@ SourceSHA8a4679e47cddfe8b0a1bd9d3836042deb68fb3e1b0e7e62dfd0631dc5b6fc541.
 30946690e3467cfa4334ac1306bd7d799d6b10b7e6790645a6f32a7e285e3e77.
 NEVER replay accepted build/original/Check SDK/stage/client checks.
 
-**Concrete next prerequisite:** staged GDM LFS PAM policies include system-auth,
-system-account, system-password, system-session; actual target has NONE. Required
-PAM modules including unix/systemd/keyring exist. Other is deny-only; Polkit-auth
-and systemd-user have their own policies. GDM account/name/UID21/GID21/varlib and
-native package absent; no GDM daemon enabled/started. Native policy snapshot:
-`.local/phase2/gdm-native-prereqs-1.json`; read-only inspector
-`python3 .local/phase2/inspect-gdm-native-prereqs.py`.
-
-Exact next: implement/qualify small owned Toddy login-policy package for the four
-missing includes using frozen BLFS13.1 PAM policy and required logind session
-integration (ADR0178). Preserve existing other/Polkit/systemd-user bytes, no nullok
-or blanket permit. Reuse owned PAM1.7.2/Systemd261.2/Keyring50; no baseline rebuild.
-Bind policies/module identities and actual native synthetic credential positive/
-wrong/locked/expired/missing-user/session/Stop/recovery outcomes before GDM login
-acceptance. Then reviewed GDM account/sysusers/directories/conffiles/native package,
-SettingsDaemon50.1/Shell50.4. Do not replay uncertain state-changing operations.
+The previously missing four includes now have exact owned policies. GDM account/
+name/UID21/GID21/varlib and native package remain absent; no GDM daemon enabled.
+Next after native policy qualification: GDM account/sysusers/directories/conffiles,
+actual keyring/PAM/greeter, SettingsDaemon50.1/Shell50.4 and native graphical gates.
+Preserve source GDM staging and accepted PAM binaries; no full suite replay.
 
 ## Accepted boundaries — reuse unchanged evidence
 
@@ -107,11 +122,11 @@ retirement; current140.17source/build/tests retained. Full archive/manifests and
 recovery are in [custody index](evidence/B02-runtime-custody-checkpoint.md). Future
 Firefox may require NEW qualified custody of inactive compiled work, not done.
 
-Latest verified public c686143fc81ee30f805da54e56fd18ee37de7789: planning42737062132/
-safety42737062085/Pages42737061869 allsuccess; actual exact HTTP200/indexSHA
-159c06948f38637efc18f6bfc0583e94a708291cb1c85bfa58799e8046a5905d.
-`.local/phase2/c686143-public-verified.json`. GDM staging slice publication next.
-Previous checks291passed; run make check for changed source-preparation/SDK branch
-and repository delivery only, no unchanged long suites. No host installation,
-physical disk/global security weakening/paid services/new agents/model switching/
-workstation RAG. Finish ALL B02, then honor requested stop.
+Latest verified public5651ad35f91f0ecbd47248de9003c8ede3762fe6: planning42738341653/
+safety42738341401/Pages42738341472 allsuccess; actual exact HTTP200/indexSHA
+585a6e8b2a13b4f160126c8b15817b815a2a4f98003939e1f47e2e12bbfac1c4.
+`.local/phase2/5651ad3-public-verified.json`. GDM staging slice committed/pushed.
+make check passed291tests; `.local/phase2/gdm-stage-final-check.log`; staged secret
+scan clean. No further test run for this publication-only checkpoint update.
+No host installation, physical disk/global security weakening/paid services/new
+agents/model switching/workstation RAG. Finish ALL B02, then requested stop.

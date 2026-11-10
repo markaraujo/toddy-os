@@ -10935,6 +10935,12 @@
           ]
         }
       }
+    },
+    {
+      "name": "toddy-login-policy",
+      "version": "0.1.0",
+      "license": "MIT",
+      "evidence": "Original versioned configuration under config/phase2/pam, project MIT LICENSE packaged; frozen BLFS13.1 policy references documented in ADR0179. PAM/Systemd module licenses/ownership remain independent; no binaries rebuilt."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
