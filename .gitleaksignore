@@ -185,3 +185,7 @@ docs/evidence/B02-libqmi-install.json:generic-api-key:1744
 # Reviewed exact SHA256 entries of public ModemManager authentication-related objects.
 docs/evidence/B02-modemmanager-stage.json:generic-api-key:949
 docs/evidence/B02-modemmanager-stage.json:generic-api-key:982
+
+# Committed counterparts of reviewed ModemManager public object digests.
+20b348c64411be4f20f8f904b0d0f6879e1572fc:docs/evidence/B02-modemmanager-stage.json:generic-api-key:949
+20b348c64411be4f20f8f904b0d0f6879e1572fc:docs/evidence/B02-modemmanager-stage.json:generic-api-key:982
