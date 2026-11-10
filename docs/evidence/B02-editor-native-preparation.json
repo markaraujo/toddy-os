@@ -1,0 +1,41 @@
+{
+  "reclamation": {
+    "state": "complete",
+    "scope": "One new bounded free-block discard after new verified cargo-c/ICU/Doxygen promotion custody inputs; old discard receipt is not rerun. Only designated virtual /dev/vdb4, no file deletion/format/physical operation",
+    "boot_id": "9d54ab78-a01a-428b-86e9-6055effef25b",
+    "full_entries_before": 161637,
+    "before_full_gzip_sha256": "64d376ed9b73cc3e880617564b14cced87a7c6910e6b3406aa874008bc568ee9",
+    "kernel_cache_baseline_sha256": "d0e66e8e3cc2260d35242a1dca634e72bfd6bcd3d63a5bd94bac591a173114bf",
+    "kernel_entries_before": 111558,
+    "new_custody_input_sha256": {
+      "cargo-c-promotion-stage-custody-1.json": "1ffa702356237be9fb9f80c3fcf4dd4fc00f14990bf71fa9c52c6878d2d8cf69",
+      "editor-cache-promotion-stage-custody-1.json": "d671f61cd435b70094be30434722ed600ca905c5a7d82f48d88ceac9345e04ff"
+    },
+    "trim_exit": 0,
+    "full_entries_after": 161637,
+    "changed_paths": [],
+    "editor_prerequisite_stages_unchanged": true,
+    "kernel_entries_after": 111558,
+    "kernel_cache_bytes_unchanged": true,
+    "installed_os_bytes_and_metadata_unchanged": true
+  },
+  "driver_prepared": {
+    "scope": "Own test instrumentation and driver only; actual product source/binary unchanged. No fixture success or GUI acceptance from compilation.",
+    "source": "/mnt/lfs/sources/phase2/inputs/editor-native-driver-1",
+    "work": "/mnt/lfs/sources/phase2/work/editor-native-driver-1",
+    "inputs": {
+      "toddy-build.sh": "eb1a6d9b1f58d0442c9caf8a01073976889b73ec4c7a66d4c7d6058402806994",
+      "native_editor_session.py": "1bbee0ff9bb332ab884fb5dab9677c14dde29214a0e17f2df0f7dad1b0558368",
+      "native-editor-driver.c": "643322f27c88f84e2b1a6800a84bf11d431324111a7e04bd404d9842a33ab1e1"
+    }
+  },
+  "driver_compile": {
+    "compile_exit": 0,
+    "test_only": true,
+    "installed_to_system": false,
+    "sha256": "8c042bc6c41cb8552e7123bf7efe80c4e6a0b1173f37ae9cda66517ec5dae0a3"
+  },
+  "scope": "Preparation only: new verified promotion inputs allowed one bounded virtual discard, full installed root/kernel cache/editor prerequisite stages unchanged; test-only native editor driver compiled, not installed or executed as GUI yet.",
+  "host_free_after_preboot_sync": 108043329536,
+  "cold_gate_bytes": 107911053312
+}

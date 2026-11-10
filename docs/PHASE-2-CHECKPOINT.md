@@ -25,14 +25,30 @@ lookup matched; libraries and every noncache/nonlegal payload byte unchanged.
 Old GTK8 archive/record retained for recovery; no rollback executed. NEVER replay
 editor installation, cache union/GTK transaction, or prior compiler/stage/tests.
 
-EXACT NEXT: prepare actual native editor GUI validation using existing Mutter/
-reference-guest harness. Inspect existing code and selected app's real actions,
-verify cold host headroom before dispatch, preserve parked shell/LocalSearch
-budgets. Last hostfree107721031680B passes100GiB ordinary reserve but is below
-107911053312B cold gate; do not lower either guard. Qualify new recoverable stopped
-test overlay custody only if actual new inputs exist; never replay old compression/
-trim. Targetfree17321431040B after GTK update. No live guest writer.
-Builder boot9d54ab78-a01a-428b-86e9-6055effef25b.
+EXACT NEXT: after committed clean inputs, run
+`python3 scripts/host/phase2_native_editor.py` ONCE, new context
+.local/phase2/native-editor-runtime-1. No native editor run dispatched yet.
+Test-only GTK driver compiled0 (native librarySHA
+8c042bc6c41cb8552e7123bf7efe80c4e6a0b1173f37ae9cda66517ec5dae0a3),
+not installed. It will instrument the actual unchanged installed editor to check
+mapped/active Wayland window, text view focus, UTF8 edit/page.save, normal close/
+reopen/resize, and client-rendered snapshots. Programmatic GTK actions, not physical
+input, complete GNOME/login, or crash recovery. Do not claim GUI results yet.
+[Preparation](evidence/B02-editor-native-preparation.json).
+
+One new bounded resource operation after newly verified cargo/ICU/Doxygen promotion
+custody completed: PID32541/editor-promotion-discard-1.json COMPLETE, virtual
+/dev/vdb4 only; full161637entry OS root unchanged, original111558entry kernel cache
+and editor prerequisites unchanged. Old resource budget/history retained, not reset.
+Post-input-sync hostfree >=107911053312B measured in proof; do not replay this or
+any old discard/custody. New inputs/operation are distinct, no repeat cleanup loop.
+
+After native run, inspect exact controller/container/report/backing before any
+restart. Host recovery helper .local/phase2/restore-editor-builder-1.py is prepared
+but NOT run: requires terminal native context and unchanged backing, restores same
+six scratch UUIDs/Systemd source/Glycin companion/kernel COW plus all three editor
+worker binds. Each restoration uses new receipt names and refuses replay.
+No live guest writer. Builder boot9d54ab78-a01a-428b-86e9-6055effef25b.
 
 ICU/Doxygen duplicate promotion custody1 COMPLETE PID31236,
 78950400B reclaimed, installed root0 and both original workstages unchanged.
