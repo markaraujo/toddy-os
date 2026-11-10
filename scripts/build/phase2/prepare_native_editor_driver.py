@@ -7,7 +7,7 @@ lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
 for step in ['b02-gnome-text-editor-install','b02-editor-schema-union-install']:
  r=json.loads(Path('/var/log/toddy/build',step+'.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0
-generation=sys.argv[1] if len(sys.argv)==2 else '1';assert generation in ['1','2']
+generation=sys.argv[1] if len(sys.argv)==2 else '1';assert generation in ['1','2','3']
 source=base/'inputs'/('editor-native-driver-'+generation);work=base/'work'/('editor-native-driver-'+generation);receipt=log/('editor-native-driver-prepared-'+generation+'.json')
 assert not any(p.exists() for p in [source,work,receipt]);s=os.statvfs('/mnt/lfs');assert s.f_bavail*s.f_frsize>=16*1024**3+4*1024**2
 source.mkdir();work.mkdir();os.chown(work,101,101)

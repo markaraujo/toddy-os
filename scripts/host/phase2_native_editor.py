@@ -13,7 +13,7 @@ CONTEXT=ROOT/'.local/phase2/native-editor-runtime-1'
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def main():
     global CONTEXT
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--context',default='native-editor-runtime-1');parser.add_argument('--driver-generation',choices=['1','2'],default='1');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--context',default='native-editor-runtime-1');parser.add_argument('--driver-generation',choices=['1','2','3'],default='1');args=parser.parse_args()
     assert re.fullmatch(r'native-editor-runtime-[1-9][0-9]?',args.context)
     CONTEXT=ROOT/'.local/phase2'/args.context
     assert not CONTEXT.exists(),'Reconcile native operation before any repeat'

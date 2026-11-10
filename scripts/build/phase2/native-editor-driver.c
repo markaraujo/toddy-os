@@ -20,9 +20,16 @@ static GtkWidget *find_view(GtkWidget *w) {
  for(GtkWidget *child=gtk_widget_get_first_child(w);child;child=gtk_widget_get_next_sibling(child)) { GtkWidget *found=find_view(child);if(found)return found; }
  return NULL;
 }
+static gboolean implicit_newline(void) {
+ GtkTextBuffer *buffer=gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));
+ if(!g_object_class_find_property(G_OBJECT_GET_CLASS(buffer),"implicit-trailing-newline"))fail("missing declared GtkSourceBuffer newline contract");
+ gboolean value=FALSE;g_object_get(buffer,"implicit-trailing-newline",&value,NULL);return value;
+}
 static gboolean content_is(const char *expected) {
  GtkTextBuffer *b=gtk_text_view_get_buffer(GTK_TEXT_VIEW(view));GtkTextIter a,z;gtk_text_buffer_get_bounds(b,&a,&z);
- char *text=gtk_text_buffer_get_text(b,&a,&z,FALSE);gboolean ok=strcmp(text,expected)==0;g_free(text);return ok;
+ char *text=gtk_text_buffer_get_text(b,&a,&z,FALSE);gsize length=strlen(expected);
+ if(implicit_newline()&&length&&expected[length-1]=='\n')length--;
+ char *buffer_expected=g_strndup(expected,length);gboolean ok=strcmp(text,buffer_expected)==0;g_free(text);g_free(buffer_expected);return ok;
 }
 static gboolean file_is_saved(void) { char *text=NULL;gsize size=0;gboolean ok=g_file_get_contents(file,&text,&size,NULL)&&size==strlen(saved)&&memcmp(text,saved,size)==0;g_free(text);return ok; }
 static gboolean focus_is_view(void) { GtkWidget *f=gtk_window_get_focus(window);return f&&(f==view||gtk_widget_is_ancestor(f,view)); }
@@ -50,6 +57,7 @@ static gboolean tick(gpointer unused) {
   view=find_view(GTK_WIDGET(window));if(!view)return G_SOURCE_CONTINUE;
   if(!content_is(strcmp(mode,"write")==0?initial:saved))return G_SOURCE_CONTINUE;
   if(strcmp(G_OBJECT_TYPE_NAME(gdk_display_get_default()),"GdkWaylandDisplay")!=0)fail("not actual Wayland display");
+  fprintf(stderr,"TODDY_EDITOR_BUFFER implicit_trailing_newline=%d chars=%d\n",implicit_newline(),gtk_text_buffer_get_char_count(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view))));
   gtk_window_present(window);if(!gtk_widget_grab_focus(view))fail("text view refused focus");
   gtk_window_set_default_size(window,920,640);phase=1;return G_SOURCE_CONTINUE;
  }
@@ -58,7 +66,7 @@ static gboolean tick(gpointer unused) {
   if(gtk_widget_get_width(GTK_WIDGET(window))<800||!gtk_window_is_active(window))return G_SOURCE_CONTINUE;
   if(!focus_is_view())fail("actual GTK focus is not editor text view");
   wide_width=gtk_widget_get_width(GTK_WIDGET(window));wide_height=gtk_widget_get_height(GTK_WIDGET(window));capture("opened");
-  if(strcmp(mode,"write")==0) { gtk_text_buffer_set_text(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)),saved,-1);phase=2; }
+  if(strcmp(mode,"write")==0) { gtk_text_buffer_set_text(gtk_text_view_get_buffer(GTK_TEXT_VIEW(view)),saved,(int)strlen(saved)-(implicit_newline()?1:0));phase=2; }
   else { if(!file_is_saved())fail("reopened bytes differ");gtk_window_set_default_size(window,640,480);phase=4; }
   return G_SOURCE_CONTINUE;
  }

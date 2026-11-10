@@ -19,7 +19,7 @@ def main():
  assert os.getuid()==0 and os.uname().release.startswith('7.1.8') and Path('/proc/1/comm').read_text().strip()=='systemd'
  resource.setrlimit(resource.RLIMIT_CORE,(0,0));device=output(['findmnt','-n','-o','SOURCE','/']);parent=output(['lsblk','-ndo','PKNAME',device]);assert output(['lsblk','-dnro','SERIAL','/dev/'+parent])=='TODDY-BOOT-TEST'
  reference=ACCEPTED;assert isinstance(reference,dict)
- manifest=Path(reference['manifest']);assert re.fullmatch(r'/sources/phase2/native-fixtures/editor-[12]/accepted[.]json',str(manifest)) and not manifest.is_symlink() and manifest.stat().st_uid==0 and not manifest.stat().st_mode&0o222
+ manifest=Path(reference['manifest']);assert re.fullmatch(r'/sources/phase2/native-fixtures/editor-[123]/accepted[.]json',str(manifest)) and not manifest.is_symlink() and manifest.stat().st_uid==0 and not manifest.stat().st_mode&0o222
  assert manifest.stat().st_size<512*1024 and sha(manifest)==reference['manifest_sha256']
  accepted=json.loads(manifest.read_text())
  for path,digest in accepted['artifacts'].items():assert sha(Path(path))==digest

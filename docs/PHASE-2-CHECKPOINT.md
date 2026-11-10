@@ -26,41 +26,36 @@ Old GTK8 archive/record retained for recovery; no rollback executed. NEVER repla
 editor installation, cache union/GTK transaction, or prior compiler/stage/tests.
 
 EXACT NEXT: after clean committed reviewed inputs, run ONCE
-`python3 scripts/host/phase2_native_editor.py --context native-editor-runtime-3 --driver-generation 2`.
-No context3 native execution yet. Driver2 compiled0, immutable source/work2 and
-readonly descriptor2 qualified; final boot probe5551B under unchanged65536B guard.
-Production editor/GTK packages unchanged, no source/compiler/stage/install replay.
+`python3 scripts/host/phase2_native_editor.py --context native-editor-runtime-4 --driver-generation 3`.
+Driver3 compile0 and descriptor/payload preflight qualified (5552B, unchanged65536B
+guard). No context4 execution yet. Production packages unchanged. This is the
+second/final corrective runtime attempt for the current editor-GUI branch; if it
+fails, retain all evidence and park it after two failed corrections, no reset.
 
-Native editor context2 actually booted7.1.8/Systemd/Mutter, but graphical driver
-FAILED exit97 after bounded50s wait, no successful UI state or screenshots.
-[Failure proof](evidence/B02-editor-native-failed-2.json). Dedicated evidence UART
-was empty because new producer omitted explicit routing; full original report was
-recovered from serial.log with exact chunks/report SHA
-2e5cc96fa61724ac60457edbfc7a5e60886ad663e20c0681e5f9422dd7598e1d.
-No result reconstruction or native execution replay. New producer uses existing
-explicit ttyS1 routing. Container terminal0/OOMfalse, backing unchanged; these are
-not a graphical pass. Recovery2 COMPLETE, builder boot
-249d0cfa-3fc9-4713-b46c-9fc885dfb66d; same six volumes/Systemd source/Glycin/kernel/
-three editor binds restored. Never replay restore-editor-builder-2.py/receipts.
+Native3 FAILED deadline at phase0, but diagnostics prove mapped=1, active=1,
+actual EditorWindow700x520 and9buffer characters. Real virtual keyboard/pointer
+creation worked; active/focus assertions were not bypassed. No edit/save/reopen/
+resize/screenshots proved. [Failure](evidence/B02-editor-native-failed-3.json).
+Source-backed correction: frozen GtkSourceView5.20.0
+`gtk_source_buffer_set_implicit_trailing_newline` documents default TRUE removing
+one terminal newline in loaded buffer and adding it on save. Test driver3 reads
+that existing property, uses exact corresponding buffer text and still requires
+exact saved-file bytes. No product/default setting changed. Old fixture inputs,
+libraries and native reports remain immutable. Source2 used virtual keyboard,
+source3 changes only test buffer contract; no production recompilation.
 
-Diagnosis1/correction1 for active-seat cause: accepted earlier Mutter proof already
-records no keyboard/active_observed=false on bare headless seat. Exact current
-waiting phase unproved (old driver lacked trace). Driver2 retains strict actual
-active/focus assertions, adds mapped/phase diagnostics and real compositor virtual
-keyboard Shift down/up + pointer creation before editor launch using pinned
-Mutter50.4 RemoteDesktop API. No fabricated GTK state/global permission change.
-Source: frozen mutter-50.4 src/backends/meta-remote-desktop-session.c
-ensure_virtual_device/NotifyKeyboardKeycode and matching D-Bus XML. This is test
-instrumentation only, not an installed remote service/product API. Budget retained
-in failures.json; context3 is first corrective runtime attempt for this cause.
+Native3 container terminal0/OOMfalse/backing unchanged (not a GUI pass).
+Restore-editor-builder-3 COMPLETE, same six scratch/Systemd/Glycin/kernel and
+all three existing editor worker binds restored. Do not replay any recovery,
+old source/compiler/stage/native package, discard or custody operation.
+Native2 FAILED old bare-seat/text-contract wait; report recovered with exact
+checksum from original serial (producer omitted dedicated UART). Source now
+routes exact evidence to ttyS1. Native1 preboot transport failure remains distinct,
+with its missing pre-failure backing-identity evidence limitation preserved.
 
-Context1 remains failed preboot transport, separate cause now resolved with exact
-readonly descriptor/path+SHA and payload preflight before stop. Preserve its raw
-log and missing pre-failure backing-identity evidence limitation; preboot recovery1
-COMPLETE, do not replay. Discard/custody operations COMPLETE, never rerun.
-After context3 terminal report/container, inspect backing and prepare distinct
-recovery receipt names; no source/compiler/test-driver generation2 build replay.
-No live guest writer currently.
+After native4 actual terminal report/container, inspect backing and prepare a
+new recovery helper/receipt names tied specifically to context4. No live guest
+writer currently; native4 cold gate must pass actual host measurement unchanged.
 
 ICU/Doxygen duplicate promotion custody1 COMPLETE PID31236,
 78950400B reclaimed, installed root0 and both original workstages unchanged.
