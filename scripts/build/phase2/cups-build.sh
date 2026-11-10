@@ -21,13 +21,24 @@ cd /build/tree
 make -j4 > /build/original-build.log 2>&1
 python3 - <<'PYTEST'
 from pathlib import Path
-import json,os,subprocess,time
+import json,os,subprocess,time,tempfile,shutil,shlex
 w=Path('/build');results=[]
 env=dict(os.environ,LC_ALL='C',LD_LIBRARY_PATH='/build/tree/cups')
+def run_local_unit(name,env,log):
+ if name!='testfile':return subprocess.run(['make','-C','/build/tree/cups',name],env=env,stdout=log,stderr=subprocess.STDOUT,timeout=120)
+ # Keep original arguments, cases, fixture and linker; move only its large
+ # transient files off persistent scratch into the existing private tmpfs.
+ makefile=w/'tree/cups/Makefile';original=makefile.read_text();marker='\t./testfile\n';assert original.count(marker)==1
+ with tempfile.TemporaryDirectory(prefix='cups-testfile-',dir='/tmp') as directory:
+  fixture=Path(directory)/'testfile.txt';source=Path('/src/cups/testfile.txt');shutil.copyfile(source,fixture)
+  assert fixture.read_bytes()==source.read_bytes()
+  makefile.write_text(original.replace(marker,'\tcd '+shlex.quote(directory)+' && /build/tree/cups/testfile\n'))
+  try:return subprocess.run(['make','-C','/build/tree/cups',name],env=env,stdout=log,stderr=subprocess.STDOUT,timeout=120)
+  finally:makefile.write_text(original)
 for name in ['testarray','testfile','testi18n','testipp','testhttp','testoptions','testpwg','testraster','testppd']:
  start=time.monotonic()
  with (w/(name+'.log')).open('xb') as log:
-  result=subprocess.run(['make','-C','/build/tree/cups',name],env=env,stdout=log,stderr=subprocess.STDOUT,timeout=120)
+  result=run_local_unit(name,env,log)
  results.append({'name':name,'exit':result.returncode,'seconds':round(time.monotonic()-start,3)})
  (w/'original-local-tests.json').write_text(json.dumps(results,indent=2)+'\n')
  assert result.returncode==0,name

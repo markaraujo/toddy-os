@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T21:00:44.976004+00:00
+Updated: 2026-11-10T21:24:28.948540+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T21:00:44.976004+00:00
+Last verified: 2026-11-10T21:24:28.948540+00:00
 
 Verified:
 
@@ -181,8 +181,10 @@ Verified:
 - MIT Kerberos1.22.2 owned native install/post0/0,190changed paths/209payload entries; exact3source patches/book edit and metadata4 maps qualified. Actual installed UID101/NNP/caps0/private-device/no-route local C cache/principal/refusal/two recoveries, CLI absent-cache refusal/recovery/ksu0755/ABI/PC/APT0. Source/compiler/tests/stage retained, no realm/tickets/network auth/service/login/Settings/physical acceptance. ADR0215.
 - CUPS actual private resolver qualification0, global hosts unchanged. Bounded finish4 retains9local results0 then remote testsnmp no-host usage1; no stage/install/SNMP acceptance. Source-backed classification retained; producer parked, no successful compiler/test replay.
 - CUPS legacy-layout stage5 exit0:273ELFs/846regular stage files; actual local IPP/refusal/two recoveries0,273ELF/11result-log hashes unchanged. Raw10rows retain SNMPusage1, exact9local results0 selected after source/log qualification and4collector guards. No compiler/successful-original-test replay, ADR0216. Native promotion blocked by own prefix=/usr embedding /usr/etc and /usr/var. Future prefix=/ recipe corrected, unbuilt; no CUPS package/install/printing/GUI claim.
+- CUPS corrected prefix/ main compile+9local programs/stage+IPP0:250ELFs/846files, exact etc/var/run/usr layout. First testfile transient burst breached512MiB reserve (min504696832B, interrupted recipe-15/job1); failed evidence retained. Resume2 tmpfs cwd/exact fixture0, min561508352B/NNP/no-route, main compiler+array not replayed, original ELF/log/Makefile preserved. Native package/ownership/printing/Settings pending, ADR0217.
+- Closed QMI/MIT/GWeather-locations promotion usr replicas independently match exact archive/record/stage/installed payload and original source/compiler/workstage. Custody1 root0, reclaimed39,673,856B scratch/24,076,288B target; archives/DEBIAN/MIT run-var retained, never replay. Reused ordinary qualified isolation; COW adapter unnecessary/unimplemented. New cups-layout-1 worker4675/cache unchanged; cold untested.
 
-Running: CUPS legacy local stage complete but native installation blocked by compiled /usr/etc,/usr/var paths. Next qualify exact CUPS metadata-COW worker/profile from existing kernel mechanism, preserve old273ELFs/stage5, then rebuild affected corrected prefix/ inputs. Scratch cannot fit another full source copy. Full B02 then stop.
+Running: CUPS corrected local build/stage accepted; next native qualifier/exact service identities+ownership/controlled full-root package and installed IPP/CLI/refusal/recovery/ABI/APT. Preserve first reserve breach and all legacy failures. Target margin39,272,448B; scratch triple-promotion gate does not fit. Full B02 then stop.
 
 Remaining:
 
@@ -190,7 +192,7 @@ Remaining:
 - LocalSearch/Nautilus/browser/settings and first fully working interactive native GNOME session.
 - Foundation recovery-entry boot remains pending; actual installed main7.1.8/Systemd already observed in failed LocalSearch native tests, not desktop acceptance.
 - Minimal desktop branding/offline usability/security-ABI review and reference guest measurements.
-- CUPS corrected-layout build/native package plus UDisks/Samba prerequisites and full Settings UI remain. MIT local SDK installed; enterprise authentication is unqualified.
+- CUPS native package/owned service permissions plus UDisks/Samba prerequisites and full Settings UI remain. MIT local SDK installed; enterprise authentication is unqualified.
 
 [Acceptance evidence](docs/evidence/B02.md)
 

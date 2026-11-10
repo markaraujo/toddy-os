@@ -68,3 +68,9 @@ and deterministic resource monitoring. Native installation will also need lp
 UID9/GID9 and lpadmin GID19 ownership review; actual names/IDs were inspected:
 lp group9 exists, lp user9 and lpadmin group19 are absent. Do not grant any user
 administrative group membership or activate a print service from SDK acceptance.
+
+
+Follow-up: [ADR0217](0217-cups-correct-layout-and-transient-storage.md) records
+verified closed-promotion custody that made ordinary isolation fit without a new
+COW adapter, the actual first resource breach and accepted corrected tmpfs-fixture
+resume. COW was not implemented; native CUPS packaging is the next slice.

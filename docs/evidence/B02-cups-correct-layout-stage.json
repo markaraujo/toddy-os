@@ -1,0 +1,178 @@
+{
+  "scope": "Frozen CUPS2.4.19 default full component build with GnuTLS/PAM/USB; nine original local unit programs and actual local IPP C consumer. Full graphical-bus/server/network/driver printing suite unexecuted, not passing. Staging uses tester ownership only; native service ownership/accounts still require controlled promotion. No scheduler/service activation, printer/job/TLS connection/Settings GUI/physical acceptance. Corrected frozen prefix/ and actual etc/var/run/usr payload, no usr/etc or usr/var. First testfile persistent-cwd run breached scratch reserve before interruption; that failure remains explicit. Corrected tmpfs-fixture resume passed with reserve maintained. Native package/accounts/permissions/service ownership not implemented yet.",
+  "compile_exit": 0,
+  "stage_exit": 0,
+  "original_tests": [
+    {
+      "name": "testarray",
+      "exit": 0,
+      "seconds": 0.314,
+      "reused_original_result": true
+    },
+    {
+      "name": "testfile",
+      "exit": 0
+    },
+    {
+      "name": "testi18n",
+      "exit": 0
+    },
+    {
+      "name": "testipp",
+      "exit": 0
+    },
+    {
+      "name": "testhttp",
+      "exit": 0
+    },
+    {
+      "name": "testoptions",
+      "exit": 0
+    },
+    {
+      "name": "testpwg",
+      "exit": 0
+    },
+    {
+      "name": "testraster",
+      "exit": 0
+    },
+    {
+      "name": "testppd",
+      "exit": 0
+    }
+  ],
+  "raw_original_results": [
+    {
+      "name": "testarray",
+      "exit": 0,
+      "seconds": 0.314,
+      "reused_original_result": true
+    },
+    {
+      "name": "testfile",
+      "exit": 0
+    },
+    {
+      "name": "testi18n",
+      "exit": 0
+    },
+    {
+      "name": "testipp",
+      "exit": 0
+    },
+    {
+      "name": "testhttp",
+      "exit": 0
+    },
+    {
+      "name": "testoptions",
+      "exit": 0
+    },
+    {
+      "name": "testpwg",
+      "exit": 0
+    },
+    {
+      "name": "testraster",
+      "exit": 0
+    },
+    {
+      "name": "testppd",
+      "exit": 0
+    }
+  ],
+  "SNMP_remote_diagnostic": {
+    "qualified": false,
+    "requires_remote_host": true,
+    "executed": false
+  },
+  "full_original_printing_suite_pending": true,
+  "consumer": "CUPS local IPP Unicode/add/find/delete/absent attribute/two recoveries; no server, jobs or printer access\n",
+  "version": "2.4.19",
+  "layout": {
+    "prefix": "/",
+    "exec_prefix": "/usr",
+    "sysconfdir": "/etc",
+    "localstatedir": "/var",
+    "SERVERROOT": "$(BUILDROOT)/etc/cups",
+    "REQUESTS": "$(BUILDROOT)/var/spool/cups",
+    "STATEDIR": "$(BUILDROOT)/run/cups"
+  },
+  "retained": {
+    "original_ELFs_unchanged": 235,
+    "original_logs_unchanged": {
+      "original-build.log": "dbe99972391169c5b0592342408fb95a2d5c666d5cc4d434e111510aa371a54b",
+      "testarray.log": "f2066d003edf36642465dafd07fcd5ce48ca9e886b8b9e8049cda5cb6aca3079",
+      "testfile.log": "4ed22971450b34af5f909f2280e0670a0fff3f49c3f4a122e9430d18c2a07a49",
+      "original-local-tests.json": "67574191e495b6d6fe049b6f5ba80f6e06623f060241d5ecec4f6f86c01a0237",
+      "configure.log": "940277cddbb1e8c8437391e826bd3bf0d6f88c7f1801cdfc82183095c9d304ca"
+    },
+    "original_Makefile_restored": true,
+    "main_compiler_and_array_not_replayed": true,
+    "testfile_transients": "existing private tmpfs; same code/arguments/static fixture/linker"
+  },
+  "first_resource_observation": {
+    "minimum_polled_free_bytes": 504696832,
+    "resource_interrupted": true,
+    "recipe_exit": -15,
+    "reserve_bytes": 536870912,
+    "interrupt_margin_bytes": 4194304,
+    "poll_interval_seconds": 0.1
+  },
+  "corrected_resource_observation": {
+    "minimum_polled_free_bytes": 561508352,
+    "resource_interrupted": false,
+    "recipe_exit": 0,
+    "reserve_bytes": 536870912,
+    "interrupt_margin_bytes": 8388608,
+    "poll_interval_seconds": 0.02
+  },
+  "worker": {
+    "state": "mounted",
+    "scope": "New private compiler subtree only on existing preallocated Doxygen scratch; no allocation/format/resize/deletion of original cache. Only worker mounted in compiler sandbox.",
+    "filesystem_uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+    "source": "/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/cups-layout-1",
+    "source_inode": 4675,
+    "target": "/mnt/lfs/sources/phase2/work/cups-layout-1",
+    "original_doxygen_manifest_sha256": "a21d220a2550ce44311f47e1d4c3e0fe0fb87314f8205e0833051164eb34c412",
+    "original_doxygen_unchanged": true,
+    "recovery": "After cold restore verify existing Doxygen UUID and this worker inode, then bind same subtree onto existing empty cups-layout-1 mountpoint. Never recreate, format or replay this preparation."
+  },
+  "free_bytes": {
+    "target": 17219141632,
+    "scratch": 561504256
+  },
+  "stage_roots": [
+    "etc",
+    "run",
+    "usr",
+    "var"
+  ],
+  "jobs": {
+    "cups-layout-1": {
+      "pid": 82795,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "command_canonical_sha256": "819d5976e36fe966b8450e1c8daa2c56b19bd600cb57dd659dd3504bf1f80bbe"
+    },
+    "cups-layout-finish-2": {
+      "pid": 86686,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "command_canonical_sha256": "9e3eada3c222812b2ceed781cf00acd3966f702aa7330c75a2931de0e7c4e50d"
+    }
+  },
+  "job_exits": {
+    "cups-layout-1": 1,
+    "cups-layout-finish-2": 0
+  },
+  "maps": {
+    "artifacts": {
+      "entries": 250,
+      "canonical_compact_sha256": "2988b1fdae334db5177b353d54ddd80302a11d50f26003b6a0ddcff43b2c3e9f"
+    },
+    "stage_sha256": {
+      "entries": 846,
+      "canonical_compact_sha256": "d382cad87b3fd2380980275aeed2fc845a3b41f5d0d7edf9ebf96fdcbc2aeba7"
+    }
+  }
+}

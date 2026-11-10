@@ -24,22 +24,29 @@ Actual command-vector3host tests qualified missing correction; ONE logged bounde
 qualifier extension passed before first native installation. Historical budgets
 retained. No compiler/source/test/stage/API replay of accepted build evidence.
 
-CUPS2.4.19 legacy-layout local build/stage COMPLETE, native promotion BLOCKED,
-ADR0216. [Stage5](evidence/B02-cups-legacy-layout-stage.json) PID71476 actual0,
-273ELFs/846stage regular files/14,178,342B. All273ELF/11log hashes unchanged,
-first actual local IPP Unicode/add/find/delete/refusal/two recoveries passed.
-Raw10result rows preserve SNMP no-host usage1; exactly9local programs0 selected.
-[Source/log classification](evidence/B02-cups-SNMP-classification.json) and4host
-collector guards independently qualified before one logged staging-only extension.
-Historical main1/finish2/finish3/finish4 failures and budgets remain retained.
-No main compiler or successful original tests replayed; NEVER replay stage5.
+CUPS2.4.19 CORRECTED-layout local build/stage accepted, native package pending,
+ADR0217. [Corrected proof](evidence/B02-cups-correct-layout-stage.json): fresh
+worker cups-layout-1 inode4675,250ELFs/846stage regular files,9local programs0
+and actual local IPP Unicode/add/find/delete/absent attribute/two recoveries0.
+Generated prefix/,execprefix/usr,etc/var/run paths checked before compiler; actual
+stage roots etc/run/usr/var, no usr/etc or usr/var. Legacy273ELF/stage5/logs remain
+intact. No native CUPS package/install/printing/server/TLS/Settings/physical claim.
 
-Concrete BLOCKER: own --prefix=/usr embedded /usr/etc and /usr/var. Actual
-Makedefs prove SERVERROOT/usr/etc/cups and spool/usr/var/spool/cups; stage roots
-usr/run. Frozen source defaultprefix/ yields /etc,/var with execprefix/usr.
-Canonical future recipe corrected to --prefix=/, NOT BUILT. No native CUPS
-package/install/activation/printing/Settings GUI acceptance; do not relocate this
-legacy stage to hide compiled defaults. Original source/273ELFs/stage/logs retained.
+Actual first corrected job1PID82795 failed at testfile transient peak after main
+compile/array0. Minimum504696832B breached512MiB before0.1s/4MiB observer reacted,
+recipe-15/interruptedtrue/jobexit1. Make deleted interrupted testfile executable;
+space later recovered without fixture deletion. NEVER claim first reserve pass.
+Resume2PID86686 exit0 moved only testfile cwd/exact fixture to existing private
+1GiB tmpfs (same source/arguments/linker/cases);2host fixture tests qualify Makefile
+restoration. Main compiler and successful array not replayed; previous ELF/logs
+retained. Corrected observer0.02s/8MiB minimum561508352B, interruptionfalse.
+
+[Promotion custody1](evidence/B02-cups-prerequisite-custody.json) COMPLETE,
+rootchanged0: exact QMI/MIT/GWeather-location promotion usr replicas only retired,
+reclaimed39673856B scratch/24076288B target. All installed payload/source/compiler/
+workstage/archives/DEBIAN and MIT run/var retained; NEVER replay/reinstall. COW
+adapter from prior card was unnecessary and NOT implemented. Existing standard
+isolation reused, generic harness digest unchanged; new worker cold untested.
 
 Receipt repair1 COMPLETE, [proof](evidence/B02-mitkrb-worker-receipt-repair.json):
 preparer prerequisite-variable shadow misplaced MIT worker JSON over Libgtop
@@ -48,30 +55,29 @@ restored from retained controller output, exact pre-existing SHA2566c32a0e6bf67b
 All3 preparers fixed and worker namespace guarded. No package/source/compiler
 replay, no lost installed package; NEVER repeat repair1.
 
-EXACT NEXT: implement an exact CUPS corrected-layout metadata-COW worker/profile,
-reusing scripts/build/phase2/prepare_kernel_landlock_cow.py and the qualified
-kernel COW isolation branch as references, without changing generic isolated.sh
-bytes. Use the same authenticated readonly CUPS source lower layer, new private
-upper/work/merged and only merged exposed writable to UID101; keep legacy worker
-16132/stage5 intact. Qualify actual source EROFS/private copy-up/source bytes and
-metadata unchanged/NNP/caps0 and explicit existing-mount recovery BEFORE a fresh
-corrected prefix/ build. No CUPS COW support or corrected build exists yet.
-Then run affected9local programs against changed binaries, first corrected stage/
-IPP consumer; keep legacy SNMP diagnostic unqualified. Native lp/spool/config/
-service ownership and essential installed consumer checks follow only after valid
-corrected layout and sufficient target reserve.
+EXACT NEXT: qualify and package CUPS2.4.19 from corrected cups-layout-1 stage,
+NOT legacy cups-1. Read frozen scheduler install rules and actual staged etc/var/
+run ownership, then implement qualify_cups.py binding exact source/worker/job1/
+resume2/ELF/stage/log/Makefile identities, including the original reserve failure.
+Bind job1 embedded recipe main configure/compile prefix to current canonical body
+before PYTEST; its old test loop differs only in the corrected fixture runner.
+Bind resume2 exact current helper/canonical recipe. Use installed UID101/no-route
+IPP/CLI/refusal/recovery/config/ABI/APT checks and existing full-root transaction.
 
-Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f; stage5 terminal0.
-Last targetfree17195069440B (15,200,256B above16GiB), scratch611934208B
-(75,063,296B above512MiB). Legacy tree84,209,664B plus stage16,998,400B cannot
-fit again. Use private COW/generated outputs, not another full source copy.
-Recheck actual resources/lock and use deterministic reserve monitoring. Never
-lower target16GiB/scratch512MiB/host gates or retire original compiler/workstage.
-Host cold100GiB+512MiB gate previously below reserve; no cold boot dispatched.
-MIT native install/promotion/output complete; NEVER reprepare/reinstall. Actual
-lp group9 exists; lp user9 and lpadmin19 absent. No admin membership granted.
-All prior custody/repair receipts complete. Full B02 then stop, no complete
-GNOME/login/basic-app/Phase2 ISO or physical acceptance.
+Stage currently uses UID/GID101 only; native promotion must review exact lp/group/
+spool/config ownership under package-ownership policy. Target lp group9 exists,
+lp user9 and lpadmin19 absent; no user gets admin membership, no service activation
+from SDK acceptance. Book client.conf points to /run/cups/cups.sock. Preserve full
+component payload/printing suite limitations. No native package or recipe yet.
+
+Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f; resume2 terminal0.
+Last targetfree17219141632B (39,272,448B above16GiB), scratch561504256B;
+correct stage allocation17,084,416B. Scratch triple-promotion gate does NOT fit.
+Recheck gates and qualify another closed target-native promotion replica if normal
+root staging needs more headroom (read-only candidates inventory is local).
+Never lower reserves or retire original compiler/workstage. MIT/QMI/GWeather
+custody1 and cups-layout preparation complete, NEVER replay; all source aliases/
+legacy/new worker identities remain. Full B02 then stop, physical tests unperformed.
 
 Seven qualified Settings prerequisite archives/metadata copied and independently
 verified outside VM: [recovery cache proof](evidence/B02-settings-package-recovery.json),

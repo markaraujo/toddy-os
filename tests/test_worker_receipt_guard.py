@@ -15,5 +15,5 @@ class WorkerReceiptGuardTests(unittest.TestCase):
   with self.assertRaises(ValueError):guard.validate(Path('/var/log/toddy/phase2/../build/mitkrb-shared-scratch-1.json'),'mitkrb')
   with self.assertRaises(ValueError):guard.validate(Path('/var/log/toddy/phase2/unknown-shared-scratch-1.json'),'unknown')
  def test_only_own_receipt_is_allowed(self):
-  for component in ['mitkrb','libgtop','modemmanager']:
+  for component in ['cups-layout','cups','mitkrb','libgtop','modemmanager']:
    guard.validate(Path('/var/log/toddy/phase2')/(component+'-shared-scratch-1.json'),component)
