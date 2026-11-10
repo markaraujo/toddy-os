@@ -1,0 +1,260 @@
+{
+  "scope": "Owned gnome-autoar0.4.5 core/GTK3/GI/Vala:22original archive extraction/security cases/no skips and130byte-mode-link-identical private fixture entries,19compiledELFs/21stagefiles unchanged across own C locale correction. Actual installed UID101/no-route/private-device ZIP Unicode filename/content extraction/empty archive refusal/precancelled no-destination/two recovery cycles/source retention/C-GI/shared ABI/pkg-config/APT0. Native install/post0/0,52changedpaths/57owned entries. Existing owned Libarchive3.8.11 reused, no downgrade/rebuild. Frozen source reference symlink exact safe exception/whole-archive traversal guard, failed prep and empty failed dispatch preserved, dispatch missing-directory guard verified. Manual create/extract/UI programs compile-only; no file-manager GUI/all-format/mid-extraction Stop acceptance.",
+  "source": {
+    "name": "gnome-autoar",
+    "version": "0.4.5",
+    "filename": "gnome-autoar-0.4.5.tar.xz",
+    "url": "https://download.gnome.org/sources/gnome-autoar/0.4/gnome-autoar-0.4.5.tar.xz",
+    "sha256": "838c5306fc38bfaa2f23abe24262f4bf15771e3303fb5dcb74f5b9c7a615dabe",
+    "reference": "BLFS13.1-systemd gnome/gnome-autoar.html",
+    "book_page_sha256": "0f05481f579db98cc5d5a80f8fdd57bd344749ba707f99c573218980f043bdbb",
+    "book_md5": "c8028c4df62c059418d4bdcde345cbe2",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "preparation_archive_safety": {
+    "source_sha256": "838c5306fc38bfaa2f23abe24262f4bf15771e3303fb5dcb74f5b9c7a615dabe",
+    "members": 178,
+    "preflight_only_no_extraction": true,
+    "absolute_symlink_fixtures": [
+      {
+        "path": "gnome-autoar-0.4.5/tests/files/extract/test-symlink-parent/reference/arextract",
+        "target": "/tmp"
+      }
+    ]
+  },
+  "actual_unprepared_dispatch_denial": {
+    "actual_dispatch_without_prepared_directories_refused": true,
+    "job_log_receipt_created": false,
+    "compiler_started": false
+  },
+  "prepared": {
+    "source_sha256": "838c5306fc38bfaa2f23abe24262f4bf15771e3303fb5dcb74f5b9c7a615dabe",
+    "reference": "BLFS13.1-systemd gnome/gnome-autoar.html",
+    "book_page_sha256": "0f05481f579db98cc5d5a80f8fdd57bd344749ba707f99c573218980f043bdbb",
+    "source_patches": [],
+    "recipe_sha256": "76619b8c56c9ec92dd40752cb1c3cfedcb6cc239bea7d248be7c3da7d13c0031",
+    "probe_sha256": "2f381e13b7722f3e44d50c30bcbb0ed906f4320c3af128631b231dd1da8adb80"
+  },
+  "stage": {
+    "scope": "Frozen gnome-autoar0.4.5 core/GTK3/GI/Vala using unchanged owned libarchive3.8.11. Original extraction unit/private identical fixture source-input-reference checks retained; manual programs compile only. Own C locale omission corrected consumer-only, actual ZIP UTF8/empty refusal/precancel no-effect/recovery/source retention/GI only, no GUI or mid-extraction Stop acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_registered_programs": 1,
+    "original_unit_cases": [
+      "ok 1 /autoar-extract/test-one-file-same-name",
+      "ok 2 /autoar-extract/test-one-file-different-name",
+      "ok 3 /autoar-extract/test-one-file-different-name-output-is-dest",
+      "ok 4 /autoar-extract/test-multiple-files-same-name",
+      "ok 5 /autoar-extract/test-multiple-files-different-name",
+      "ok 6 /autoar-extract/test-raw-named",
+      "ok 7 /autoar-extract/test-raw-unnamed",
+      "ok 8 /autoar-extract/test-conflict-overwrite",
+      "ok 9 /autoar-extract/test-conflict-overwrite-nonempty-directory",
+      "ok 10 /autoar-extract/test-conflict-overwrite-symlink",
+      "ok 11 /autoar-extract/test-conflict-overwrite-hardlink",
+      "ok 12 /autoar-extract/test-conflict-new-destination",
+      "ok 13 /autoar-extract/test-conflict-skip-file",
+      "ok 14 /autoar-extract/test-conflict-skip-file-default",
+      "ok 15 /autoar-extract/test-change-extract-destination",
+      "ok 16 /autoar-extract/test-symlink-parent",
+      "ok 17 /autoar-extract/test-sanitize-dotdot-parent",
+      "ok 18 /autoar-extract/test-sanitize-absolute-path",
+      "ok 19 /autoar-extract/test-readonly-directory",
+      "ok 20 /autoar-extract/test-encrypted",
+      "ok 21 /autoar-extract/test-encrypted-request-passphrase",
+      "ok 22 /autoar-extract/test-encrypted-wrong-passphrase"
+    ],
+    "original_fixture_verification": {
+      "source_unchanged": true,
+      "private_input_reference_unchanged": true,
+      "original_binary_unmodified": true,
+      "tmp_symlink_escape_not_created": true,
+      "fixture_entries": 130,
+      "manifest_sha256": "1f28e2f1af36c49fbde5aa93d4e8530c4b3daf86ad05c42918de6278ef49b764"
+    },
+    "reused_libarchive_version": "3.8.11",
+    "consumer": {
+      "UTF8_ZIP_extractions": 4,
+      "empty_archive_refusals": 2,
+      "precancelled_no_destination": 2,
+      "recovery_cycles": 2,
+      "source_archive_retained": true,
+      "GUI_or_mid_extraction_Stop_tested": false
+    },
+    "GI_consumer": {
+      "namespace": "GnomeAutoar0.1/GnomeAutoarGtk0.1",
+      "GI_type": "AutoarExtractor",
+      "widget_tested": false
+    },
+    "probe_only_recovery": {
+      "compile_and_stage_unchanged": true,
+      "original_failure_retained": true,
+      "corrected_probe_sha256": "d984fe0b5f51aaf9d6a0a731a72e23fc385bf7910836a88ed31687ea02326834"
+    },
+    "artifacts_count": 19,
+    "artifacts_manifest_sha256": "4da6a9b0b82ea32b7fa753879d5ce2cd450cd0aa53649cb1abc9a2fd0b345c65",
+    "stage_sha256_count": 21,
+    "stage_sha256_manifest_sha256": "eb1a85dd005e4e8f26c0b40e2d34f48f3fef7e796a071a2def466d2a89eafd2c"
+  },
+  "native_transaction": {
+    "step": "b02-gnome-autoar-install",
+    "started": "2026-11-10T06:37:35.532391+00:00",
+    "recipe_sha256": "e7a377d42cf48e13dbcc5aecabca60c5e841ca11e2cbcc61947c98c9e8534c9a",
+    "postcheck_sha256": "5bd5135a825e78659b918668f19766df85f14fc58a137ac68d9d582ec9a4a13c",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "f8eff50f69e4a0457d055200de9559888f10ee2ef751f252ce5207f14b2212c1",
+    "recipe_pid": 35696,
+    "recipe_pgid": 35696,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T06:37:52.043778+00:00",
+    "changed_paths": 52,
+    "log_sha256": "4a52f08a7b12a6e66e7c762ace373906df55a7cace97fb0210dc8baa5d15bae0",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "c997ef94e15a13f5febe7cb8d0c2093de5bb7b4b1a55076b792120d7cc72a984"
+  },
+  "package": {
+    "name": "gnome-autoar",
+    "version": "0.4.5-1+toddy1",
+    "archive_sha256": "756ca997fdaab96b098564b17977b772cc91bdd0260a5466c504c87343e71bf7",
+    "recipe_sha256": "e7a377d42cf48e13dbcc5aecabca60c5e841ca11e2cbcc61947c98c9e8534c9a",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "gnome-autoar",
+        "version": "0.4.5",
+        "filename": "gnome-autoar-0.4.5.tar.xz",
+        "url": "https://download.gnome.org/sources/gnome-autoar/0.4/gnome-autoar-0.4.5.tar.xz",
+        "sha256": "838c5306fc38bfaa2f23abe24262f4bf15771e3303fb5dcb74f5b9c7a615dabe",
+        "reference": "BLFS13.1-systemd gnome/gnome-autoar.html",
+        "book_page_sha256": "0f05481f579db98cc5d5a80f8fdd57bd344749ba707f99c573218980f043bdbb",
+        "book_md5": "c8028c4df62c059418d4bdcde345cbe2",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "c997ef94e15a13f5febe7cb8d0c2093de5bb7b4b1a55076b792120d7cc72a984",
+    "payload_count": 57,
+    "payload_manifest_sha256": "30a95a290bc585ba9fb4aabdab29b551b2fc08dfa14d04446bc680594b530b54"
+  },
+  "installed_consumer": {
+    "scope": "Actual installed UID101/private-device/no-route ZIP Unicode filename/content extraction/empty refusal/precancelled no-destination/two recovery cycles/source retained/C-GI/shared ABI/pkg-config/APT0. Existing owned libarchive3.8.11 reused, no downgrade/rebuild. Original22automated archive/security cases retained/private identical130entry fixtures; manual create/extract/UI programs compile-only, no GUI or mid-extraction Stop acceptance.",
+    "consumer": {
+      "UTF8_ZIP_extractions": 4,
+      "empty_archive_refusals": 2,
+      "precancelled_no_destination": 2,
+      "recovery_cycles": 2,
+      "source_archive_retained": true,
+      "GUI_or_mid_extraction_Stop_tested": false
+    },
+    "GI_consumer": {
+      "namespace": "GnomeAutoar0.1/GnomeAutoarGtk0.1",
+      "GI_type": "AutoarExtractor",
+      "widget_tested": false
+    },
+    "shared_library_resolution": true,
+    "reused_libarchive": "3.8.11-1+toddy1"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gnome-autoar-install-evidence.tar.gz",
+    "sha256": "a5e43471ab29fcf7eb318a9e6f2957c06bf8a8704638a8eb709b0849dd277198",
+    "members": [
+      "build/b02-gnome-autoar-install.log",
+      "build/b02-gnome-autoar-install.manifest.json",
+      "build/b02-gnome-autoar-install.success.json",
+      "package.json",
+      "phase2/b02-gnome-autoar-install-controller.log",
+      "phase2/b02-gnome-autoar-install-timing.json",
+      "phase2/gnome-autoar-1-controller.log",
+      "phase2/gnome-autoar-1.exit",
+      "phase2/gnome-autoar-1.job.json",
+      "phase2/gnome-autoar-1.log",
+      "phase2/gnome-autoar-build-2-controller.log",
+      "phase2/gnome-autoar-build-2.exit",
+      "phase2/gnome-autoar-build-2.job.json",
+      "phase2/gnome-autoar-build-2.log",
+      "phase2/gnome-autoar-installed-consumer.json",
+      "phase2/gnome-autoar-probe-3-controller.log",
+      "phase2/gnome-autoar-probe-3.exit",
+      "phase2/gnome-autoar-probe-3.job.json",
+      "phase2/gnome-autoar-probe-3.log",
+      "phase2/gnome-autoar-stage.json",
+      "prepared.json",
+      "work/original-fixtures-manifest.json",
+      "work/original-fixtures-verified.json",
+      "work/original-registered-tests.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/probe-3/before.json",
+      "work/probe-3/consumer.exit",
+      "work/probe-3/consumer.json",
+      "work/probe-3/probe.c",
+      "work/stage-results.json"
+    ]
+  },
+  "preparation_raw_evidence": {
+    "path": ".local/phase2/exports/B02-gnome-autoar-preparation-evidence.tar.gz",
+    "sha256": "bd6855689c22f55f9f321186c0c4f78e645950ab47e6d5ed81b74e84593d14be",
+    "members": [
+      "gnome-autoar-input.log",
+      "gnome-autoar-input.exit",
+      "gnome-autoar-input-source-filter-2.log",
+      "gnome-autoar-input-source-filter-2.exit",
+      "gnome-autoar-source-filter-tests.log",
+      "gnome-autoar-source-filter-final-tests.log",
+      "gnome-autoar-real-archive-filter.json",
+      "gnome-autoar-dispatch-guard-negative.json"
+    ]
+  }
+}

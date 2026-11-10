@@ -11196,6 +11196,23 @@
           ]
         }
       }
+    },
+    {
+      "name": "gnome-autoar",
+      "version": "0.4.5",
+      "license": "LGPL-2.1-or-later",
+      "evidence": "Exact authenticated root license texts and leading runtime C/header conditions retained. Core/GTK3/GI/Vala; original22extraction/security cases run with byte/mode/link identical private source fixtures. Manual programs compile-only; no file-manager GUI acceptance.",
+      "extra_license_headers": {
+        "gnome-autoar-0.4.5.tar.xz": {
+          "prefixes": [
+            "gnome-autoar/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

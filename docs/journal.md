@@ -3158,3 +3158,16 @@ Prior1a0fff9 all3CI success/exactpublicHTTP200/indexSHA
 bb8f7b5ba0a4eabce8840d5f5f4e7a824ffdb10359d6787c851b323cd7beba1f.
 Next gnome-autoar0.4.5 actual source/archive dependency preflight, then remaining
 Nautilus leaves. No gnome-autoar guest input/job. Complete ALL B02 then stop.
+
+### B02 — Owned gnome-autoar extraction and safe original fixtures — 2026-11-10
+
+Owned gnome-autoar0.4.5 core/GTK3/GI/Vala:22original extraction/security cases/no skips,130byte-mode-link-identical private fixtures;19ELFs/21stagefiles unchanged across own C locale correction. Native install/post0/0,52changedpaths/57entries, installed UID101 ZIP Unicode/empty refusal/precancel no-destination/two recoveries/source retained/C-GI/shared ABI/APT0. Existing owned Libarchive3.8.11 reused/no downgrade. Exact source reference symlink exception plus whole-archive traversal guard/10focused tests/178member real preflight; initial prep/empty dispatch failure retained and actual pre-dispatch denial fixed. Manual programs compile-only/no GUI/all-format/mid-extraction Stop acceptance, ADR0197.
+Library source/original22cases retained; no foundation Libarchive rebuild. Native
+rawSHAa5e43471ab29fcf7eb318a9e6f2957c06bf8a8704638a8eb709b0849dd277198;
+host prep failures/negative guards in separate immutable bundle linked by proof.
+Next Tinysparql3.11.1 actual source/dependency/original test preflight, then
+Glycin GTK4/Nautilus. No Tinysparql input/job. Complete ALL B02 then stop.
+
+Gnome-autoar delivery checks:295repository tests passed (including ten source-filter
+checks), staged secret scan clean. Prior7f45adf all3CI success/exact
+publicHTTP200/indexSHAd45064613ec0804da4a4e0569a0b3c9b4b72a80ab50357ee1c7ee7799429b46f.

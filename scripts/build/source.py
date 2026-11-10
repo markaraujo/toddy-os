@@ -8,7 +8,7 @@ import socket
 import subprocess
 import tarfile
 from locked_inputs import locked_source
-from source_filter import source_filter
+from source_filter import source_filter, validate_source_members
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('filename')
@@ -35,6 +35,7 @@ if not args.verify_only:
     if not destination.is_relative_to(Path('/mnt/lfs/sources')):
         raise SystemExit('Extraction outside target sources rejected')
     with tarfile.open(archive) as source:
+        validate_source_members(args.filename, source.getmembers())
         roots = {Path(member.name).parts[0] for member in source.getmembers() if Path(member.name).parts}
         if any((destination / name).exists() for name in roots):
             raise SystemExit('Existing source tree: inspect/clean before rebuilding')

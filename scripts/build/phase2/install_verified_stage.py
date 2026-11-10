@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gnome-autoar': ('0.4.5', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), libarchive (= 3.8.11-1+toddy1)', 'gnome-autoar-0.4.5.tar.xz', 'usr/lib/pkgconfig/gnome-autoar-0.pc'),
     'libportal': ('0.9.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), gtk (>= 4.22.4-1+toddy8)', 'libportal-0.9.1.tar.xz', 'usr/lib/pkgconfig/libportal-gtk4.pc'),
     'gnome-terminal': ('3.60.0', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), vte (= 0.84.1-1+toddy1), libhandy (= 1.8.3-1+toddy1), pcre2 (= 10.49-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1), util-linux (>= 2.42.4-1), dconf (= 0.49.0-1+toddy1)', 'gnome-terminal-3.60.0.tar.gz', 'usr/bin/gnome-terminal'),
     'libxslt': ('1.1.45', 'glibc (>= 2.44-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'libxslt-1.1.45.tar.xz', 'usr/lib/pkgconfig/libxslt.pc'),
@@ -266,6 +267,7 @@ if __name__ == '__main__':
     if name=='libgweather':qualifier='libgweather-stage-2'
     if name=='libnma':qualifier='libnma-stage-2'
     if name=='gnome-shell' and (log/'gnome-shell-probe-2.exit').exists():qualifier='gnome-shell-probe-2'
+    if name=='gnome-autoar' and (log/'gnome-autoar-probe-3.exit').exists():qualifier='gnome-autoar-probe-3'
     if name=='gnome-terminal' and (log/'gnome-terminal-probe-3.exit').exists():qualifier='gnome-terminal-probe-3'
     if name=='libhandy' and (log/'libhandy-gi-3.exit').exists():qualifier='libhandy-gi-3'
     if name=='vte' and (log/'vte-probe-3.exit').exists():qualifier='vte-probe-3'
@@ -1224,6 +1226,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='gnome-autoar':
+        from qualify_gnome_autoar import qualify as qualify_gnome_autoar
+        qualify_gnome_autoar(ROOT)
     if name=='libportal':
         from qualify_libportal import qualify as qualify_libportal
         qualify_libportal(ROOT)

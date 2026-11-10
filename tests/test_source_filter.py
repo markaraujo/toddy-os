@@ -10,6 +10,52 @@ module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 
 class SourceFilterTests(unittest.TestCase):
+    def autoar_member(self):
+        member = tarfile.TarInfo(module.AUTOAR_REFERENCE)
+        member.type = tarfile.SYMTYPE
+        member.linkname = '/tmp'
+        return member
+
+    def test_autoar_reference_is_exact_and_never_followed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            member = self.autoar_member()
+            module.validate_source_members(module.AUTOAR_ARCHIVE, [member])
+            safe = module.source_filter(module.AUTOAR_ARCHIVE)(member, directory)
+            self.assertTrue(safe.issym())
+            self.assertEqual(safe.linkname, '/tmp')
+            self.assertEqual(safe.name, module.AUTOAR_REFERENCE)
+
+    def test_autoar_other_archive_path_target_kind_and_size_refused(self):
+        with tempfile.TemporaryDirectory() as directory:
+            for archive, path, target, kind, size in [
+                ('other.tar.xz', module.AUTOAR_REFERENCE, '/tmp', tarfile.SYMTYPE, 0),
+                (module.AUTOAR_ARCHIVE, module.AUTOAR_REFERENCE+'-other', '/tmp', tarfile.SYMTYPE, 0),
+                (module.AUTOAR_ARCHIVE, module.AUTOAR_REFERENCE, '/etc', tarfile.SYMTYPE, 0),
+                (module.AUTOAR_ARCHIVE, module.AUTOAR_REFERENCE, '/tmp', tarfile.LNKTYPE, 0),
+                (module.AUTOAR_ARCHIVE, module.AUTOAR_REFERENCE, '/tmp', tarfile.SYMTYPE, 1),
+            ]:
+                with self.subTest(archive=archive, path=path, target=target, kind=kind, size=size):
+                    member = self.autoar_member()
+                    member.name, member.linkname, member.type, member.size = path, target, kind, size
+                    with self.assertRaises(tarfile.FilterError):
+                        module.source_filter(archive)(member, directory)
+
+    def test_autoar_descendant_refused_before_any_source_is_created(self):
+        for name in [module.AUTOAR_REFERENCE+'/child',
+                     './'+module.AUTOAR_REFERENCE+'/child',
+                     '/'+module.AUTOAR_REFERENCE+'/child',
+                     module.AUTOAR_REFERENCE.replace('/reference/', '/other/../reference/')+'/child']:
+            with tempfile.TemporaryDirectory() as directory:
+                descendant = tarfile.TarInfo(name)
+                with self.assertRaises(tarfile.FilterError):
+                    module.validate_source_members(module.AUTOAR_ARCHIVE, [self.autoar_member(), descendant])
+                self.assertEqual(list(Path(directory).iterdir()), [])
+
+    def test_autoar_missing_or_duplicate_reference_refused(self):
+        for members in [[], [self.autoar_member(), self.autoar_member()]]:
+            with self.assertRaises(tarfile.FilterError):
+                module.validate_source_members(module.AUTOAR_ARCHIVE, members)
+
     def appstream_member(self):
         member = tarfile.TarInfo('./AppStream-1.1.6/tests/samples/compose/usr/share/metainfo/org.example.nonexistent-badlink.metainfo.xml')
         member.type = tarfile.SYMTYPE

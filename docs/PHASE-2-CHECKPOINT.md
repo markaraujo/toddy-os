@@ -38,26 +38,45 @@ root /var/log/toddy/build/b02-gnome-terminal-{install,metadata-2}.*;
 metadata receipt /var/log/toddy/phase2/terminal-metadata-recovery-2.json COMPLETE.
 NEVER rebuild/restage/reinstall/replay accepted work or metadata2.
 
-Current slice: libportal0.9.1 OWNED base/GTK3+4 helper/GI; no active guest writer.
-Buildlibportal-1 PID32340 terminal0,61original private mock-portal cases/no skips,
-33ELFs/42stagefiles. Nativeb02-libportal-install PID33193 recipe/post0/0,
-73changedpaths/76entries. Actual installed UID101 private-device/no-route/private
-bus C constructor/context/two release cycles and separate GTK3/4 GI/shared symbol/
-pkg-config/APT0. No real GNOME portal service/consent/input/capture/widget/grant
-acceptance. Qt/Vala/docs/demo omitted, Qt-only book patch unselected. No original
-suite/compiler/source replay or owner/policy change. [Proof](evidence/B02-libportal-install.json),
-ADR0196; archiveSHAbf6531b67001334177fcb9a18a115e5604d409d774bddab8d6eaf5adffad32cf;
-raw `.local/phase2/exports/B02-libportal-install-evidence.tar.gz` SHA
-7381ac4b9c3c403485e735cfe2a49415e4640ec37101444eae74ae20bc4328a3.
-SourceSHAde801ee349ed3c255a9af3c01b1a401fab5b3fc1c35eb2fd7dfb35d4b8194d7f;
-input/work /mnt/lfs/sources/phase2/{inputs/libportal-0.9.1,work/libportal-1};
-log/job/exit /var/log/toddy/phase2/libportal-1.*; native receipt
-/var/log/toddy/build/b02-libportal-install.success.json. NEVER replay.
-Exact next: commit/publish verified portal library slice/exact deployed version;
-then gnome-autoar0.4.5 source/required libarchive SDK preflight. Frozen book
-.local/books/blfs/gnome/gnome-autoar.html; source not pinned yet and NO guest
-input/job. Source archive tests/parser/path security needed, do not treat fixtures
-as file-manager GUI. Then remaining Nautilus leaves; no routine permission.
+Current slice: gnome-autoar0.4.5 OWNED core/GTK3/GI/Vala; no active guest writer.
+Initial prep1 safely refused frozen negative reference symlink, source/work ABSENT.
+My chained command wrongly dispatchedjob1PID34174 terminal1 realpath absent, no
+compiler/state mutation. Preserve both. Exact archive/reference->/tmp exception,
+whole archive duplicate/descendant/absolute-member/parent-component guard, normal
+data_filter checks retained;10focused tests plus actual178member preflight passed.
+Source-filter2 preparation0 once; job controller now refuses missing directories
+BEFORE dispatch state, actual negative guard no log/receipt/compiler proved.
+Do not replay preparation/job1. Source/work now exist with original recipe76619b8c56c9ec92dd40752cb1c3cfedcb6cc239bea7d248be7c3da7d13c0031.
+
+Build2PID34552 compiled/original22extraction-security cases/private130fixture
+byte-mode-link verification/stage0, own C134 omitted setlocale. Probe3PID35110
+actual0 uses inherited UTF8 locale/actual GnomeAutoar namespaces, all19compiledELF/
+21stagefiles unchanged; originals never repeated. Manual programs compile-only.
+Nativeb02-gnome-autoar-install PID35680 recipe/post0/0,52changedpaths/57entries.
+Installed UID101/private-device/no-route four Unicode ZIP extracts/two empty
+refusals/two precancel-no-destination/two recovery cycles/source retained/C-GI/
+shared ABI/pkg-config/APT0. Existing owned Libarchive3.8.11-1+toddy1 reused per
+ADR0017/supplemental lock, not rebuilt/downgraded. No file-manager GUI/all-format/
+mid-extraction Stop or physical claim. [Proof](evidence/B02-gnome-autoar-install.json), ADR0197;
+archiveSHA756ca997fdaab96b098564b17977b772cc91bdd0260a5466c504c87343e71bf7;
+raw `.local/phase2/exports/B02-gnome-autoar-install-evidence.tar.gz` SHA
+a5e43471ab29fcf7eb318a9e6f2957c06bf8a8704638a8eb709b0849dd277198.
+Separate host preparation bundle linked in proof. SourceSHA
+838c5306fc38bfaa2f23abe24262f4bf15771e3303fb5dcb74f5b9c7a615dabe;
+input/work /mnt/lfs/sources/phase2/{inputs/gnome-autoar-0.4.5,work/gnome-autoar-1};
+log/job/exit /var/log/toddy/phase2/gnome-autoar-{1,build-2,probe-3}.*;
+native /var/log/toddy/build/b02-gnome-autoar-install.success.json. NEVER replay.
+Exact next: commit/publish verified extraction-library slice/exact public bytes,
+then Tinysparql3.11.1 frozen book/actual source/dependency/original test preflight.
+Source not pinned yet, NO Tinysparql input/job. After it Glycin GTK4 and Nautilus;
+actual native app interaction and shared stock schema union remain separate.
+
+Previous libportal0.9.1 fully owned/verified, original61mock cases/no skips,
+33ELFs/42stagefiles; native0/0,73paths/76entries; C/GI/GTK helpers/APT0. No real
+GNOME portal service/consent/widget/input/capture/grant. [Proof](evidence/B02-libportal-install.json),
+ADR0196. Latest pushed7f45adf8634c53acf87206953231e1526b658014 all3CI success,
+exactpublicHTTP200/indexSHAd45064613ec0804da4a4e0569a0b3c9b4b72a80ab50357ee1c7ee7799429b46f. No routine
+permission, no source/compiler/original-suite repeat for unchanged evidence.
 
 Nautilus50.2.2 source/SDK preflight found required missing glycin-gtk4-2,
 gnome-autoar-0, libportal/libportal-gtk4 and tinysparql-3.0. Other required9SDKs found;

@@ -21,6 +21,7 @@ parser.add_argument('command', nargs=argparse.REMAINDER)
 args = parser.parse_args()
 assert socket.gethostname() == 'toddy-builder' and os.getuid() == 0
 assert re.fullmatch(r'[a-z][a-z0-9-]{1,63}', args.name) and args.command
+assert Path(args.input).is_dir() and Path(args.work).is_dir(), 'Prepared input/work required before dispatch'
 root = Path('/var/log/toddy/phase2')
 root.mkdir(exist_ok=True)
 prefix = root / args.name

@@ -2421,6 +2421,18 @@
       "book_md5": "0c63ee25d2e2986ce4df544fe8149046",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "gnome-autoar",
+      "version": "0.4.5",
+      "filename": "gnome-autoar-0.4.5.tar.xz",
+      "url": "https://download.gnome.org/sources/gnome-autoar/0.4/gnome-autoar-0.4.5.tar.xz",
+      "sha256": "838c5306fc38bfaa2f23abe24262f4bf15771e3303fb5dcb74f5b9c7a615dabe",
+      "reference": "BLFS13.1-systemd gnome/gnome-autoar.html",
+      "book_page_sha256": "0f05481f579db98cc5d5a80f8fdd57bd344749ba707f99c573218980f043bdbb",
+      "book_md5": "c8028c4df62c059418d4bdcde345cbe2",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }
