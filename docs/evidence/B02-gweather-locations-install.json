@@ -1,0 +1,167 @@
+{
+  "scope": "Owned native-endian gweather-locations2026.2 static data: original XML validity and actual GVariant normal-form/index/parent/BR/PT/airport/timezone lookup. Initial own suite-name guard failure changed0; install2/post0/0. No remote forecasts/owner position or GNOME acceptance.",
+  "source": {
+    "name": "gweather-locations",
+    "version": "2026.2",
+    "filename": "gweather-locations-2026.2.tar.xz",
+    "url": "https://download.gnome.org/sources/gweather-locations/2026/gweather-locations-2026.2.tar.xz",
+    "sha256": "e7570a3661e0a752a06387b2032585cf588fc56770b1f9f39f1a55d17b2835fe",
+    "reference": "BLFS13.1-systemd gnome/gweather-locations.html",
+    "book_page_sha256": "847131169d5d825c4358452a6a2c8e4b3206e117a4d000b0d0b9d9204e87c75f",
+    "book_md5": "6d600c6af383b611a17e5828adca81a9",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Generated native-endian typed GVariant location database, registered original data/lint checks and actual source lookup/index invariants. Static pinned data, not owner location, remote forecasts or graphical GNOME acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "lint - gweather-locations:Valid Locations file",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "consumer": {
+      "normal_form": true,
+      "native_byteorder": "little",
+      "locations": 8862,
+      "countries": 245,
+      "timezones": 332,
+      "source_counts": {
+        "region": 9,
+        "country": 245,
+        "state": 254,
+        "city": 4349,
+        "location": 4002,
+        "named-timezone": 2,
+        "timezone": 332
+      },
+      "all_index_bounds_and_parent_links": true,
+      "country_BR_PT_lookup": true,
+      "timezone_Sao_Paulo_lookup": true,
+      "representative_airports": {
+        "SBGR": {
+          "name": "Guarulhos Airport",
+          "coordinates_match_source": true
+        },
+        "LPPT": {
+          "name": "Lisbon / Portela",
+          "coordinates_match_source": true
+        }
+      },
+      "data_sha256": "a54f7b4fa45123cb78c7355a420d7d5e82ddac36a48fd917b1747961f4489739",
+      "source_XML_sha256": "ab024b823523c3016977e5ffefcd5aa8b48574f49d9010d50617531a6720b49c",
+      "real_owner_location_or_forecast_tested": false
+    },
+    "source_XML_sha256": "ab024b823523c3016977e5ffefcd5aa8b48574f49d9010d50617531a6720b49c",
+    "stage_sha256_count": 98,
+    "stage_sha256_manifest_sha256": "04fa29e85f5f30f077a201b8135415b762dfb2a66a353d9712de4f62c1be40a1"
+  },
+  "transaction": {
+    "step": "b02-gweather-locations-install-2",
+    "started": "2026-11-10T00:11:19.291250+00:00",
+    "recipe_sha256": "64b2541e50347e5da517075032949d662aef27ed1a50e5807ec80f4fde35d556",
+    "postcheck_sha256": "446fa505d026ae394ee3d23894d0e2d5bb2b656046476eac3482c2b7a399459d",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "ceaf057429228455e672db0ee4407403b0440d5faeafefd97f41af9ba89ebf9b",
+    "recipe_pid": 499621,
+    "recipe_pgid": 499621,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T00:11:40.165304+00:00",
+    "changed_paths": 110,
+    "log_sha256": "31892f86f96485fa85cc0ab61047ed3aaa2dcfc55d28506b78742e386829f7a5",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "3db2eaa8572f9a8676a24e1eadf1f0f2ea3c440fb675d727ca87cc6284bef1f7"
+  },
+  "timing": {
+    "step": "b02-gweather-locations-install-2",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.257,
+        "entries": 154981,
+        "regular_files": 138048,
+        "regular_bytes": 7303188384
+      },
+      {
+        "seconds": 14.17,
+        "entries": 155088,
+        "regular_files": 138151,
+        "regular_bytes": 7326238362
+      }
+    ],
+    "total_seconds": 36.174
+  },
+  "installed_consumer": {
+    "scope": "Owned native-endian static location database/normal-form/schema/index/BR/PT/airport/timezone invariants and SDK/APT only. No actual owner position, permission, forecasts, full GWeather or GNOME GUI acceptance.",
+    "consumer": {
+      "normal_form": true,
+      "native_byteorder": "little",
+      "locations": 8862,
+      "countries": 245,
+      "timezones": 332,
+      "source_counts": {
+        "region": 9,
+        "country": 245,
+        "state": 254,
+        "city": 4349,
+        "location": 4002,
+        "named-timezone": 2,
+        "timezone": 332
+      },
+      "all_index_bounds_and_parent_links": true,
+      "country_BR_PT_lookup": true,
+      "timezone_Sao_Paulo_lookup": true,
+      "representative_airports": {
+        "SBGR": {
+          "name": "Guarulhos Airport",
+          "coordinates_match_source": true
+        },
+        "LPPT": {
+          "name": "Lisbon / Portela",
+          "coordinates_match_source": true
+        }
+      },
+      "data_sha256": "a54f7b4fa45123cb78c7355a420d7d5e82ddac36a48fd917b1747961f4489739",
+      "source_XML_sha256": "ab024b823523c3016977e5ffefcd5aa8b48574f49d9010d50617531a6720b49c",
+      "real_owner_location_or_forecast_tested": false
+    },
+    "architecture": "amd64",
+    "not_architecture_all": true,
+    "source_and_generated_data_unchanged": true
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gweather-locations-install-evidence.tar.gz",
+    "sha256": "fe7fc071d5f42e2dc797b15e74576259390ff2fcac322d4215420d288aa74096",
+    "members": [
+      "build/b02-gweather-locations-install-2.log",
+      "build/b02-gweather-locations-install-2.manifest.json",
+      "build/b02-gweather-locations-install-2.success.json",
+      "build/b02-gweather-locations-install.failed.json",
+      "build/b02-gweather-locations-install.log",
+      "build/b02-gweather-locations-install.manifest.json",
+      "phase2/b02-gweather-locations-install-2-controller.log",
+      "phase2/b02-gweather-locations-install-2-timing.json",
+      "phase2/b02-gweather-locations-install-controller.log",
+      "phase2/b02-gweather-locations-install-timing.json",
+      "phase2/gweather-locations-1-controller.log",
+      "phase2/gweather-locations-1.exit",
+      "phase2/gweather-locations-1.job.json",
+      "phase2/gweather-locations-1.log",
+      "phase2/gweather-locations-installed-consumer.json",
+      "phase2/gweather-locations-stage.json",
+      "work/compile/meson-logs/testlog.json",
+      "work/native-consumer.json",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}

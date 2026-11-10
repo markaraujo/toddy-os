@@ -10861,6 +10861,33 @@
       "version": "3.26.4",
       "license": "LGPL-2.0-or-later AND BSD-3-Clause",
       "evidence": "Exact source COPYING.LIB (GNU Library GPL2) and icons/maki/LICENSE.txt (three-clause BSD) retained; per-file conditions apply. OSM JSON fixtures remain test-source data, not installed test/runtime payload. Soup3 API2.0 profile; no live geocoding/owner-location permission claim."
+    },
+    {
+      "name": "gweather-locations",
+      "version": "2026.2",
+      "license": "GPL-2.0-or-later",
+      "evidence": "Frozen source meson project/COPYING and exact database source notices retained; native-endian GVariant generated from pinned Locations.xml, not architecture-all. Static data does not grant location permission or qualify remote forecasts."
+    },
+    {
+      "name": "libgweather",
+      "version": "4.6.0",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause",
+      "evidence": "Exact GPL2 COPYING, per-file SPDX/header notices including kdtree3clauseBSD retained. Common LGPL2.1 full text also packaged from repository LICENSES/third-party/LGPL-2.1.txt. Source test helpers include older LGPL notices; per-file conditions apply. External METAR station validation failed DNS in isolated compiler and is not a pass.",
+      "extra_license_headers": {
+        "libgweather-4.6.0.tar.xz": {
+          "prefixes": [
+            "libgweather/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      },
+      "common_LGPL_2_1_text": {
+        "path": "LICENSES/third-party/LGPL-2.1.txt",
+        "sha256": "9e9e8608c4cdda51a78cc3a385f4ec9a2e4c96d5ecad74ac8bca5fca3e563b7d"
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

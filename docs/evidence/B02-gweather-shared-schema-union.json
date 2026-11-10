@@ -1,0 +1,384 @@
+{
+  "scope": "Owned GTK4 same-upstream cache/legal-only toddy7, default82schemas/623keys with prior81/618 unchanged; actual provider-disabled stock GWeather Info update/abort/recovery under UID101/private no-route namespace. No forecasts/owner location/GNOME graphical acceptance.",
+  "qualification": {
+    "scope": "Strict complete installed stock schema union and actual Gio schema/key/default/range lookup only; no user preferences written or native GUI acceptance",
+    "compile_exit": 0,
+    "native_consumer_exit": 0,
+    "cache_sha256": "b94bf510e10446e11ee29c2d978055160c28cdd1c0cf46894be0f7bc6a7064b6",
+    "baseline_cache_sha256": "0c7e20ac3b7c625e72bb4769e5fc4c4d5d056cf4c3026dc27d31f9ae1c718488",
+    "baseline_schemas_preserved": 81,
+    "baseline_keys_preserved": 618,
+    "total_schemas": 82,
+    "total_keys": 623,
+    "added_schemas": [
+      "org.gnome.GWeather4"
+    ],
+    "required_schema_lookup": [
+      "org.gnome.SessionManager",
+      "org.gnome.crypto.pgp",
+      "org.gnome.evolution-data-server",
+      "org.gnome.evolution-data-server.calendar",
+      "org.gnome.evolution-data-server.addressbook",
+      "org.gnome.Evolution.DefaultSources"
+    ],
+    "inputs": {
+      "entries": 58,
+      "manifest_sha256": "51d4129f8e30998b7bbc4aa009f3be4c86c09d7d1d83a5731a6906d69904bc9d"
+    },
+    "descriptions": {
+      "entries": 82,
+      "manifest_sha256": "0ff046dcb99592ef2ccf05000aadc1153a036ad57dfb892e5138f0c7cdd9fc63"
+    }
+  },
+  "native_transaction": {
+    "state": "complete",
+    "scope": "Same-version GTK4 schema/legal-only update; all libraries/configurations/preferences unchanged. Actual GWeather stock schema inputs, no graphical acceptance.",
+    "old_version": "4.22.4-1+toddy6",
+    "new_version": "4.22.4-1+toddy7",
+    "old_archive_sha256": "9fc10b109552a83f9b22403a7cc52ecb73d91f00ca3ccd904f14e227b62c9d5b",
+    "old_cache_sha256": "0c7e20ac3b7c625e72bb4769e5fc4c4d5d056cf4c3026dc27d31f9ae1c718488",
+    "new_cache_sha256": "b94bf510e10446e11ee29c2d978055160c28cdd1c0cf46894be0f7bc6a7064b6",
+    "added_schemas": [
+      "org.gnome.GWeather4"
+    ],
+    "source_owners": {
+      "org.gnome.desktop.search-providers.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.evolution-data-server.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gnome.mutter.wayland.gschema.xml": {
+        "name": "mutter",
+        "version": "50.4-1+toddy1"
+      },
+      "org.gnome.evolution.shell.network-config.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gtk.gtk4.Settings.Debug.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy6"
+      },
+      "org.freedesktop.ColorHelper.gschema.xml": {
+        "name": "colord",
+        "version": "1.4.8-1+toddy1"
+      },
+      "org.gnome.SessionManager.gschema.xml": {
+        "name": "gnome-session",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.evolution-data-server.calendar.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gnome.desktop.app-folders.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.sound.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.interface.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.break-reminders.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.crypto.pgp.gschema.xml": {
+        "name": "gcr3",
+        "version": "3.41.2-1+toddy1"
+      },
+      "org.gtk.Settings.FileChooser.gschema.xml": {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy2"
+      },
+      "org.gnome.desktop.default-applications.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.keyboard.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.wm.keybindings.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.gtk4.Settings.ColorChooser.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy6"
+      },
+      "org.gtk.Demo4.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy6"
+      },
+      "org.gnome.crypto.cache.gschema.xml": {
+        "name": "gnome-keyring",
+        "version": "50.0-1+toddy1"
+      },
+      "gschema.dtd": {
+        "name": "glib",
+        "version": "2.88.3-1+toddy2"
+      },
+      "org.gtk.Settings.EmojiChooser.gschema.xml": {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy2"
+      },
+      "org.gnome.desktop.input-sources.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.gtk4.Inspector.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy6"
+      },
+      "org.gnome.mutter.gschema.xml": {
+        "name": "mutter",
+        "version": "50.4-1+toddy1"
+      },
+      "org.gnome.GWeather4.gschema.xml": {
+        "name": "libgweather",
+        "version": "4.6.0-1+toddy1"
+      },
+      "org.gnome.desktop.datetime.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.mouse.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.calendar.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.privacy.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.freedesktop.ibus.gschema.xml": {
+        "name": "ibus",
+        "version": "1.5.34~rc2-1+toddy1"
+      },
+      "org.gnome.desktop.thumbnailers.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.system.proxy.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.peripherals.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.gtk4.Settings.EmojiChooser.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy6"
+      },
+      "org.gnome.system.locale.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.session.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.wm.preferences.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.interface.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.background.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.Settings.Debug.gschema.xml": {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy2"
+      },
+      "org.gnome.desktop.notifications.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.Settings.ColorChooser.gschema.xml": {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy2"
+      },
+      "org.gnome.desktop.thumbnail-cache.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.enums.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.media-handling.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.magnifier.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.evolution-data-server.addressbook.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gtk.gtk4.Settings.FileChooser.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy6"
+      },
+      "org.gnome.desktop.screen-time-limits.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.system.location.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.Evolution.DefaultSources.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gnome.GWeather4.enums.xml": {
+        "name": "libgweather",
+        "version": "4.6.0-1+toddy1"
+      },
+      "org.gnome.desktop.screensaver.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.applications.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.lockdown.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.evolution.eds-shell.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      }
+    },
+    "recovery": "Inspect package/receipt/postconditions before action. Retained GTK toddy6 archive/record restores previous owned cache and metadata; installed source XML remains intact. Verify old payload. No rollback executed and no uncertain replay.",
+    "archive_sha256": "8c1280a7fa4b373f3cdde50ca2133bf5117f5bbb295f8dd78d92814b3378e2e1",
+    "old_nonlegal_entries_unchanged": 906,
+    "schema_inputs": {
+      "entries": 58,
+      "manifest_sha256": "51d4129f8e30998b7bbc4aa009f3be4c86c09d7d1d83a5731a6906d69904bc9d"
+    }
+  },
+  "full_root_transaction": {
+    "step": "b02-gweather-schema-union-install",
+    "started": "2026-11-10T00:26:29.613346+00:00",
+    "recipe_sha256": "fdcd3b592704eb889cc9f0fa4a61d789d649b7fbd53f46a7f126db118fad9aef",
+    "postcheck_sha256": "a9fecbdcba2d1501f946c3417cc51c2450746b2f02a743225d66f142ab696908",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "ceaf057429228455e672db0ee4407403b0440d5faeafefd97f41af9ba89ebf9b",
+    "recipe_pid": 501990,
+    "recipe_pgid": 501990,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T00:27:02.241213+00:00",
+    "changed_paths": 6,
+    "log_sha256": "81dede1307a94121bc60fe58af6c6f798799c978d9160f0f7fb1f2563ba5d94a",
+    "supporting_build_scripts_sha256": "d36e70ba288aa2077f0c224b60455e55efa22de2bb7c60ef8385deef9af4b1dd"
+  },
+  "timing": {
+    "step": "b02-gweather-schema-union-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.365,
+        "entries": 155285,
+        "regular_files": 138308,
+        "regular_bytes": 7328408744
+      },
+      {
+        "seconds": 14.283,
+        "entries": 155285,
+        "regular_files": 138308,
+        "regular_bytes": 7328410607
+      }
+    ],
+    "total_seconds": 48.03
+  },
+  "installed_consumer": {
+    "scope": "Owned GTK same-version shared schema cache: actual installed default-source lookup and all623key/type/default/range contracts; no user values changed. Native GWeather Info separately verified below; forecasts/owner position/GNOME graphical acceptance pending.",
+    "schemas": 82,
+    "keys": 623,
+    "baseline_schemas_preserved": 81,
+    "baseline_keys_preserved": 618,
+    "new_schemas": [
+      "org.gnome.GWeather4"
+    ],
+    "module_or_schema_override_used": false,
+    "GTK_runtime_entries_unchanged": 906
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gweather-shared-schema-union-evidence.tar.gz",
+    "sha256": "0b6c37c2bd481fe3824399aad5973832cafa489a7f44b0fdf13fbcd403ee4ca9",
+    "members": [
+      "build/b02-gweather-schema-union-install.log",
+      "build/b02-gweather-schema-union-install.manifest.json",
+      "build/b02-gweather-schema-union-install.success.json",
+      "package.json",
+      "phase2/b02-gweather-schema-union-install-controller.log",
+      "phase2/b02-gweather-schema-union-install-timing.json",
+      "phase2/gweather-schema-union-1-controller.log",
+      "phase2/gweather-schema-union-1.dispatch.lock",
+      "phase2/gweather-schema-union-1.exit",
+      "phase2/gweather-schema-union-1.job.json",
+      "phase2/gweather-schema-union-1.log",
+      "phase2/gweather-schema-union-installed-consumer.json",
+      "phase2/gweather-schema-union-prepared-1.json",
+      "phase2/gweather-schema-union-transaction-1.json",
+      "phase2/gweather-stock-info-consumer.json",
+      "work/compile-schemas.exit",
+      "work/compile-schemas.log",
+      "work/test-results.json"
+    ]
+  },
+  "stock_GWeather_Info_consumer": {
+    "scope": "Actual installed default stock schema and GWeather Info update/abort/recovery asUID101 in private no-route network namespace, providers disabled/memory settings only. No schema/module override, owner preferences, real provider/position or GNOME graphical acceptance.",
+    "consumer": {
+      "stock_schema_lookup": true,
+      "schema_keys": 5,
+      "GI": "GWeather4.0",
+      "providers_disabled_for_test": true,
+      "cycles": [
+        {
+          "cycle": 0,
+          "Info_created_updated_aborted": true,
+          "location_preserved": true
+        },
+        {
+          "cycle": 1,
+          "Info_created_updated_aborted": true,
+          "location_preserved": true
+        }
+      ],
+      "forecasts_or_owner_location_qualified": false
+    }
+  }
+}

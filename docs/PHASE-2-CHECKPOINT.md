@@ -7,83 +7,52 @@ foundation tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Current slice and exact next action
 
-Current verified slice: GTK3 owned IBus IM cache integrated. Native GTK3
-same-upstream3.24.52 toddy1→toddy2 install0/initial post1; verify-only2 recipe/post0/0,
-ZERO installed-root changes. Original post failure was only documented argv0
-header, confirmed by exact byte comparison. All1882owned payload/archive entries
-verified. Native UID101 actual query loads12owned modules, prior11registrations
-unchanged;969old nonlegal entries unchanged, SDK/APT/notices0. No active writer.
-[Proof](evidence/B02-gtk3-ibus-cache.json), ADR0171. NEVER replay native install,
-cache generation, verification or already accepted original suites.
-New archiveSHA658601ca770907cd84b191465782f814600c5dc772c51c51918a58d087fbd71e;
-cacheSHAca7ca0c62312109e0cf29107c4f9be5d28e6a404c93d50fe0ff86d9e21355828.
-Input/work gtk3-ibus-cache-1; isolated jobs gtk3-ibus-cache-1 terminal1 (own wrong
-locale metadata expectation), gtk3-ibus-cache-metadata-2 terminal0 (same cache).
-Native transaction receipt gtk3-ibus-cache-transaction-1.json COMPLETE.
-Raw evidenceSHAc148daa3238eef0e2d28ee7b64c41d61db4dd1e43af96c0f0a279ae44b48234f.
-Actual module metadata loading is not graphical GTK/GNOME focus/keyboard proof.
+Current verified slice: weather dependency chain OWNED; no active guest writer.
+Data2026.2 install2/post0/0,110changedpaths/299entries. Typed native-endian
+8862records/245country entries/332timezones/source indices/BR/PT/airports0.
+Initial read-only suite-name guard failed/root0; corrected exact metadata, no
+accepted original/generator/stage replay. [Proof](evidence/B02-gweather-locations-install.json).
+Archive8c87cef2a7e26e0341937a03c3fe79d3e9216e39cefcbaf48035e425664e20dd.
 
-Geocode-glib3.26.4 now OWNED/install/post0/0,43changedpaths/50entries,
-archiveSHA3beda47a449ffb88c0dbefa946da335730fc5bbd757a56189943f0d7b3a01fa7.
-No active writer. SourceSHA2d9a6826d158470449a173871221596da0f83ebdcff98b90c7049089056a37aa;
-input geocode-glib-3.26.4/work geocode-glib-1. Compiler job geocode-glib-1 terminal0;
-two original Meson drivers plus three original portable API paths0,23ELFs/
-27staged regular files. Actual installed C/UTF8/geoURI/malformed refusal/two-cycle
-recovery/GI2.0/SDK/APT0; no stage override. Foreign-locale/remote-geocoding/owner
-location permission and GNOME remain unqualified, ADR0172.
-[Proof](evidence/B02-geocode-glib-install.json), raw
-SHAd5c6cf91a41c528146167f31061ec49a5ba83568f64d4af519170eb88b27e34d.
-Never reprepare/build/stage/install/repeat original Geocode tests.
+Libgweather4.6.0 native install/post0/0,200changedpaths/398entries. Three original
+core programs12cases passed; actual external metar program failed DNS/SIGABRT on
+aviationweather.gov in no-route compiler, remains FAILED/UNQUALIFIED. Never count
+it as pass or replace with fixture. Stage-only2 kept42ELFs unchanged/125staged
+files; actual installed C/GI4.0/owned DB/variant/wrong-type refusal/recovery/SDK0.
+Initialrecipe71f55fd5ab35c1b8dc07edb1b554bb8c76a0af40f0ac8d008b54086e6241bee1;
+input libgweather-4.6.0/work libgweather-1; jobs libgweather-1 exit1,
+libgweather-stage-2 exit0. No compiler/core-original replay. [Proof](evidence/B02-libgweather-install.json).
+Archive6598b7ded36f0e00302f821a188e9d150d7f1869b8b4f16f8dbb2a0679e5d7ea.
 
-The two required libgweather source rows are now frozen/cached:
-geocode-glib3.26.4 above, gweather-locations2026.2
-SHAe7570a3661e0a752a06387b2032585cf588fc56770b1f9f39f1a55d17b2835fe.
-Both exact frozen required edges were checked; no general graph replan. Location
-source meson/build reviewed read-only: PythonGI creates endian-specific GVariant
-Locations.bin; XML/DTD/pkg-config/translations, optional xmllint/pylint originals.
-No guest gweather-locations input/work/job or recipe yet.
+Stock schema GTK4same-upstream4.22.4-1+toddy7 install/post0/0,6changedpaths/
+906old nonlegal entries unchanged. Actual default82schemas/623keys preserves
+prior81/618.58owned public inputs/12current owners, adds only GWeather1schema/
+5keys. Actual UID101/private no-route/provider-disabled/memory-settings GI Info
+create/update/abort/recovery two cycles0, no schema/module path override. This is
+not an in-flight real provider/forecast/owner-position or GUI test. [Proof](evidence/B02-gweather-shared-schema-union.json).
+Archive8c1280a7fa4b373f3cdde50ca2133bf5117f5bbb295f8dd78d92814b3378e2e1;
+input/work gweather-schema-union-1 and native transaction receipt COMPLETE.
+ADR0173/raw bundle links preserve exact recovery. NEVER replay these accepted
+builds/originals/stages/native installs/shared caches/Info tests.
 
-Exact next: implement gweather-locations2026.2 isolated build/data probe/native package,
-followed by already-frozen libgweather4.6.0 and remaining Shell/GDM/network deps.
-Geocode profile Soup3/API2.0/GIR on, docs/installed-test payload off; no foundation
-upgrade. Actual installed C/SDK/GI/no-stage override check already passed.
-Actual GTK IM discovery/input must be tested in a native display path, not inferred
-from query metadata or another mockup. No weather provider key selected/required.
+Exact next: required GeoClue2 typelib and selected NetworkManager/NMA/GDM/GNOME
+Shell chain, then first actual native GNOME session/GTK input/focus. No GeoClue
+source or guest input frozen yet; actual Shell50.4 JS imports Geoclue2.0. Inspect
+matching frozen BLFS dependency page and source before pin/build, no framework
+survey. NM1.58.1/libnma1.10.6/GDM50.2/Shell50.4 already source-cached/frozen, no guest
+build yet. Preserve one writer and persistent failure ledger. No mockup acceptance.
 
-GTK4toddy6 shared81schema/618key cache complete. IBus1.5.34~rc2 native install/post0/0
-and actual installed service4 default Composeã/cancel/refusal/recovery/Stop/two
-buses0, ZERO root changes; never replay. Failed service profiles1/2/3 retained,
-no live old services; successful profile4 removed. ADR0170 and evidence index.
+Current versions: GTK4toddy7; GTK3same-upstream3.24.52toddy2 with twelve owned IM
+modules/eleven old registrations preserved; IBus1.5.34~rc2toddy1 actual default
+Compose/cancel/refusal/recovery/Stop/two native buses0, root changes0. Failed
+private service profiles1/2/3 retained/no live processes; successful profile4
+removed. Geocode3.26.4toddy1 C/GI2.0/URI/refusal/recovery0, no owner-position claim.
+Reuse the [evidence index](evidence/B02.md), ADR0169–0173. Stock/cache/GUI scopes
+remain distinct. Physical foundation testing unperformed; no native GNOME or ISO2.
 
-Retained private build: source `/mnt/lfs/sources/phase2/inputs/ibus-1.5.34`,
-work `/mnt/lfs/sources/phase2/work/ibus-1`, successful job ibus-machine-5 exit0,
-seven portable originals/UTF8/refusal/recovery. Original177ELFs retained unchanged,
-staging added two linker outputs/179final,200staged files. [Proof](evidence/B02-ibus-build.json).
-NEVER repeat preparation/autogen/build/stage/seven successful originals. Raw archive
-SHA2c5d6700e2a961dfe3976047811f4c3961090fdc89ac9f6e720a5e27e956e572.
-Keep GTK3/4/Wayland/GI/Unicode/setup/UI/DConf; optional XIM/X11/GTK2/Python2/
-appindicator/emoji dictionary omitted. Bus/display/uinput/locale-sensitive originals
-remain unexecuted unless separately recorded; native GNOME keyboard pending.
-
-GTK4toddy6 allows only GTK3 same-upstream3.24.52 revisions; GTK3toddy2 cache
-transaction and verify-only recovery complete. Preserve all runtime payloads.
-Schema union81/618 complete; never replay either completed schema transaction.
-
-Prior Vala0.56.19 and UCD17 native install/post0/0;1435compiler original passes,
-71exactdata files/full Unicode3 notices retained. Never reinstall/retest.
-EDS native real SourceRegistry/calendar persistence/new-bus/cancel/recovery0,
-GTK4same-version cache/legal-only toddy5 preserves prior67schemas/500keys; actual
-76/571 verified. Reuse [index](evidence/B02.md), ADR0167–0168.
-
-Publication61b0b968f447fda266a9ac77a2f49eeb47b681d3: planning42722455120/
-safety42722454934/Pages42722454788 allsuccess; actual HTTP200 exact indexSHA
-3f218537edb1ef31bf185dd5f93e6cf1e104d3610a4cf669c4a42d3e724c7a56.
-
-GNOME Shell50.4 source reviewed: Gdm/GWeather/IBus/GeoClue required typelibs,
-NM/NMA selected networking, Bluetooth compile-time optional. Weather still needs
-locations2026.2/geocode-glib3.26.4. Then actual GNOME/GDM/apps/offline/network/audio/
-focus/responsiveness, pending trust callback/NSS alias/shared hwdb and fresh combined
-qualification. No native GNOME UI, Phase2 ISO or physical-machine acceptance.
+Latest prior publication41a7e78fa270bdbcbd5cd2f690ff560636dc9f17:
+planning42724980185/safety42724980195/Pages42724979892 allsuccess, actual HTTP200
+exact public indexSHAaa1d0a9b4185f2bbb719ba27ca4f8d2c67eb995c46710479ac00a3fc86fbe5c9.
 
 ## Latest verified boundaries — reuse, never rebuild/reinstall/retest unchanged
 
@@ -139,8 +108,8 @@ qualification. No native GNOME UI, Phase2 ISO or physical-machine acceptance.
 
 ## Pending shared resources and runtime gates
 
-GTK-owned gschemas.compiled now4.22.4-1+toddy5, EDS/session/keyring union qualified
-and installed76schemas/571keys, old67/500 unchanged; NEVER replay this transaction.
+GTK-owned gschemas.compiled now4.22.4-1+toddy7,82schemas/623keys; prior EDS/session/
+keyring/IBus unions retained. NEVER replay completed schema owner transactions.
 Systemd-owned hwdb.bin still needs controlled update for two UPower rules,
 preserving all current261.2-1+toddy3 runtime entries except declared cache/legal.
 DConf tracked shared GIO cache already updated for three owned GLib-networking
