@@ -2623,6 +2623,18 @@
       "book_md5": "9942aa191d657f7c39d3b5ec28b74f61",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "cracklib",
+      "version": "2.10.3",
+      "filename": "cracklib-2.10.3.tar.xz",
+      "url": "https://github.com/cracklib/cracklib/releases/download/v2.10.3/cracklib-2.10.3.tar.xz",
+      "sha256": "1d1b83676b5673051b9373e1ca0db81c1fa88faf9a195a3c1af984fd9c250d66",
+      "reference": "BLFS13.1-systemd postlfs/cracklib.html",
+      "book_page_sha256": "8fb50f6aa8421fffdaaf1ed995430144766feb73565d8625667688a8c93a91d9",
+      "book_md5": "e8ea2b86de774fc09fdd0f2829680b19",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

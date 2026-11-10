@@ -8,12 +8,30 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current B02 slice: next Settings prerequisite GNOME Online Accounts3.58.1.
-Source frozen/verified locally, no guest source/build dispatched yet. Review
-provider application IDs before configuring: frozen book explicitly requires own
-Google credentials for another distribution; never ship LFS shared IDs as Toddy.
-Optional provider availability must remain truthful, without blocking offline
-Settings or requiring owner credentials. No live guest writer.
+Current B02 slice: Settings password-quality prerequisites. Cracklib2.10.3 source
+frozen/verified, no guest preparation/job yet. EXACT NEXT: qualify frozen-book
+recommended cracklib-words2.10.3 source and its README-WORDS license provenance;
+measure expanded/index/stage sizes and choose existing qualified scratch if needed
+without lowering target16GiB/host100GiB reserve. Preserve library/PAM separation:
+this prerequisite must never change host PAM/account policy.
+
+GOA3.58.1 native install+verify COMPLETE, [proof](evidence/B02-goa-install.json).
+Initial recipe0/post1/135changes retained (own GI method assumption); installed
+GIR-backed writable-property correction verified recipe/post0/0/changed0. Actual
+UID101/NoNewPrivs/private-dev/no-route version/invalid-option refusal/local GI
+Unicode skeleton+two resets/no account files/shared ABI/APT0. No real session daemon/
+account/provider/secret/Settings/GUI acceptance. NEVER reinstall or repeat verify2.
+No live guest writer. Host runtime/failure ledger records resolved corrections.
+
+GOA compiler/stage/version succeeded; initial own collector expected Meson define1
+instead of actual bare define. Metadata-only collection2 PID4460 terminal0 verified
+all compiler/stage entries unchanged, [proof](evidence/B02-goa-stage.json).
+Never repeat source/compiler/stage/version.45ELFs/116stagefiles, no original tests
+registered (NOT a suite pass). Core/backend/GI/Vala enabled. Google/Microsoft365
+unavailable and shared app IDs empty, ADR0207; Kerberos/Fedora unselected.
+Cracklib2.10.3 official frozen source verified only, no guest source/job dispatched.
+Next password-quality dependency requires its dictionary source/license/inventory
+and staging review before build; never change global host PAM or account policy.
 
 Librest0.10.2 install PID3105 TERMINAL COMPLETE, native recipe/post0/0/49changes,
 [proof](evidence/B02-librest-install.json). Installed C/GI Unicode XML/nonXML

@@ -1,0 +1,2025 @@
+{
+  "scope": "Owned GOA3.58.1 core/backend/GI/Vala package and local CLI/GI skeleton only; no session daemon/account/provider/secret/Settings/GUI acceptance. Original failed postcheck retained; corrected verify-only0/0/root0 without reinstall.",
+  "original_native": {
+    "step": "b02-gnome-online-accounts-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "changed_paths": 135,
+    "started": "2026-11-10T16:38:35.650866+00:00",
+    "finished": "2026-11-10T16:38:52.968407+00:00",
+    "recipe_sha256": "99b78c0d49af9fbc95d179a07b07b0026c09a523c522f744d25a54ed2829b560",
+    "postcheck_sha256": "c7ec826ae00cd10ff8e5849a2a520b38b58a3a513fcac7a8b01abaa44589590e",
+    "log_sha256": "14c1684a2d57b7ffa9fe7997c212ba5b665fe8452cfaac1e8a56d727edd27829"
+  },
+  "verified_native": {
+    "step": "b02-gnome-online-accounts-verify-2",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 0,
+    "started": "2026-11-10T16:40:20.084225+00:00",
+    "finished": "2026-11-10T16:40:36.251969+00:00",
+    "recipe_sha256": "bf898828e9326fb4dc895cfd9a6583b1f5407d36f2714ed5747e9658fc0ce1e2",
+    "postcheck_sha256": "4777479a5849bc73e31f9d350948da336d2792b853a35853a4057e9be10ef185",
+    "log_sha256": "94a0d50ec133da21faee7d5d1202e60edb12b18ff65a4a0855f7f205193aa26f"
+  },
+  "receipts_sha256": {
+    "b02-gnome-online-accounts-install.failed.json": "21bfff4589d24ffd1cbf342e79f34625396e16b7b6553289fc675e99b485c6ed",
+    "b02-gnome-online-accounts-verify-2.success.json": "493161e0a427b1deecd918662d40583a6b9cb275020a3ae00ee97f1dfe8e82de"
+  },
+  "timing": {
+    "b02-gnome-online-accounts-install": {
+      "step": "b02-gnome-online-accounts-install",
+      "scope": "same full-root snapshot function, timing only",
+      "snapshots": [
+        {
+          "seconds": 14.631,
+          "entries": 161747,
+          "regular_files": 144266,
+          "regular_bytes": 7500204919
+        },
+        {
+          "seconds": 14.445,
+          "entries": 161879,
+          "regular_files": 144387,
+          "regular_bytes": 7503939456
+        }
+      ],
+      "total_seconds": 33.007
+    },
+    "b02-gnome-online-accounts-verify-2": {
+      "step": "b02-gnome-online-accounts-verify-2",
+      "scope": "same full-root snapshot function, timing only",
+      "snapshots": [
+        {
+          "seconds": 14.577,
+          "entries": 161879,
+          "regular_files": 144387,
+          "regular_bytes": 7503939456
+        },
+        {
+          "seconds": 14.5,
+          "entries": 161879,
+          "regular_files": 144387,
+          "regular_bytes": 7503939456
+        }
+      ],
+      "total_seconds": 31.802
+    }
+  },
+  "consumer": {
+    "scope": "Owned GOA3.58.1 core/backend/GI/Vala package, UID101/NoNewPrivs/private-device/no-route daemon CLI/local GI account skeleton/reset only, no account files/credentials created. Session daemon lifecycle, real accounts, provider callbacks/secret integration and Settings/GUI unqualified.",
+    "version": "goa-daemon 3.58.1\n",
+    "invalid_option_refused": true,
+    "GI_consumer": {
+      "namespace": "Goa1",
+      "UTF8_account_skeleton": true,
+      "reset_cycles": 2,
+      "session_service_tested": false,
+      "real_account_or_secret_created": false
+    },
+    "installed_stage_files_identical": 116,
+    "shared_library_resolution": true,
+    "providers_unavailable": [
+      "google",
+      "ms_graph",
+      "kerberos",
+      "fedora"
+    ],
+    "own_OAuth_app_identity_required_before_enablement": true
+  },
+  "package": {
+    "name": "gnome-online-accounts",
+    "version": "3.58.1-1+toddy1",
+    "archive_sha256": "a57f1fd3ed8f05e09025fa0a63a41639125f3ccddd447cab2d986a08c3fa118a",
+    "recipe_sha256": "99b78c0d49af9fbc95d179a07b07b0026c09a523c522f744d25a54ed2829b560",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "gnome-online-accounts",
+        "version": "3.58.1",
+        "filename": "gnome-online-accounts-3.58.1.tar.xz",
+        "url": "https://download.gnome.org/sources/gnome-online-accounts/3.58/gnome-online-accounts-3.58.1.tar.xz",
+        "sha256": "9ec1900cc51409c2067c07c828c10be06fe3bf68d2999bb72d7d5ed325ed9bbc",
+        "reference": "BLFS13.1-systemd gnome/gnome-online-accounts.html",
+        "book_page_sha256": "1b82315689923a7afe2ee50359a6448a5262eb1307cc0102abcb1214e4e0468d",
+        "book_md5": "9942aa191d657f7c39d3b5ec28b74f61",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "payload": {
+      "/usr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/libexec": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/libexec/goa-daemon": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "34f1072cf3a1bfa4b7b58b6f12bba887b484453860ef56291c2883aa378ccd06"
+      },
+      "/usr/libexec/goa-oauth2-handler": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "735ef6ef2cf6f0d2f701dab694da38dea050b71d766b656ce3603cc51957d6ea"
+      },
+      "/usr/share/gir-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/dbus-1": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/applications": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/vala": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/gir-1.0/Goa-1.0.gir": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9423fd55fd47b93b1cf2a1000238d132874ea816a331e75da96baf71f52f2cec"
+      },
+      "/usr/share/icons/hicolor": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/symbolic": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/scalable": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/symbolic/apps": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/symbolic/apps/goa-account-exchange-symbolic.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "28165dd7d081fc878239b5dc4c0310bc33fb64a2b55626dfca1a1622f771b6f4"
+      },
+      "/usr/share/icons/hicolor/symbolic/apps/goa-account-symbolic.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "579fd0d37ec61f51468d24c420a5cc9df245aa00854f2ad74c2b065d4861e36e"
+      },
+      "/usr/share/icons/hicolor/symbolic/apps/goa-account-owncloud-symbolic.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b8d84f46cfb961e1429c8267703978572e4201bc9c0c8c375ccd5c12aaea9d68"
+      },
+      "/usr/share/icons/hicolor/symbolic/apps/goa-account-google-symbolic.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "09ee8e2715256f74099d1564769805b89414096aa5d3e87097cab9735d5dcab7"
+      },
+      "/usr/share/icons/hicolor/symbolic/apps/org.gnome.goa-daemon-symbolic.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "557cfcbed3de012923f07f2f5946c8d1a8d6a722aee2a0c545717e2ec732f616"
+      },
+      "/usr/share/icons/hicolor/scalable/apps": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/icons/hicolor/scalable/apps/goa-account-ms365.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "293375e605ca5c2d916ead68e44ce6b0298880f523fe59784fd9aad02ba2bd68"
+      },
+      "/usr/share/icons/hicolor/scalable/apps/goa-account-google.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "8f16ed1e08c823c5d5419b7edd511d30310d035c2c3826d5f7bfe30c86e4b714"
+      },
+      "/usr/share/icons/hicolor/scalable/apps/goa-account-owncloud.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "818a7c08a5966290b96c9694f743cba72d2177fa22c0fa1d4eccc2af88ff7edd"
+      },
+      "/usr/share/icons/hicolor/scalable/apps/goa-account-fedora.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "640af187a4246f73a7685c770e1ed462555a3f35cebd4515beef7ed33d389274"
+      },
+      "/usr/share/icons/hicolor/scalable/apps/goa-account.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e05a54e8b9980329d0e5a8f688c9d9a18324746e19795a30925bf490f81162a2"
+      },
+      "/usr/share/icons/hicolor/scalable/apps/goa-account-exchange.svg": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "34877bbcdb2f838e1228fd5fcdea9b261c60e335ed7e763db1d8c48a6ae64216"
+      },
+      "/usr/share/locale/ja": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ml": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ar": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/be": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ga": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ms": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca@valencia": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_TW": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tg": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/is": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uz": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kab": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ko": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ckb": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lv": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nb": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/af": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bg": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/or": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/te": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fa": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ie": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ab": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/es": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ne": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eo": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_HK": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mjw": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ta": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/et": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gu": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gd": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn_IN": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ug": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/km": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en_GB": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/as": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ast": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lt": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kn": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bs": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/oc": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/vi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/an": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/th": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pa": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/el": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mr": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr@latin": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ro": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ja/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ja/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "66b490bde78cf04c9f3148dc230adddc420368001402f03751b27b265bd224f6"
+      },
+      "/usr/share/locale/ml/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ml/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0ddbe175485a8b92ce9555db81e6d6447f8ff9ddc1caf1d075150bbd9b84d1aa"
+      },
+      "/usr/share/locale/mk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mk/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9ebf42dd5da82aef6a9f8c0abad5e9d31c8f48d0541aa2d695a3ec710b47d777"
+      },
+      "/usr/share/locale/ar/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ar/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "31523a5e7eced30fde418e9f93e930124479eb43be38b958b99fd153e4dd20cd"
+      },
+      "/usr/share/locale/be/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/be/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9f3401839386d99078f2a9df7dea8099f4fa5e82850d42be5c7545cf2f592ff3"
+      },
+      "/usr/share/locale/ga/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ga/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fa6b9b259e1c70cb244c7e60d4284294084cf7aa99713e5c5b49028a0a97b957"
+      },
+      "/usr/share/locale/ms/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ms/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9f8a2c20c98fac67ff7dffd133cc9f06fb39819a43a1f95050e84eb4e39a5a70"
+      },
+      "/usr/share/locale/hu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hu/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "96a35d6a78fc76dedd58068c3c1db6c416171156952c6edfa2d286d0ab9fee9c"
+      },
+      "/usr/share/locale/hi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hi/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c4defd568094664451736fd0fcef919d6104d58c8f9d6aa13fdf31c266777ade"
+      },
+      "/usr/share/locale/ca@valencia/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca@valencia/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "fb2a9e0abb212d39a0ef74736ed1e67359ddc853efeed2e3a80358340721b881"
+      },
+      "/usr/share/locale/gl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gl/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e30706acfd1a74bc819b24cbdf31dccc11a806bcb27e89555fbdaaf6faec6167"
+      },
+      "/usr/share/locale/zh_TW/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_TW/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "e2e0cbb4e2ed6e430138457f9048301eb629dadde29444947d0e0b8177f01add"
+      },
+      "/usr/share/locale/tg/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tg/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "cf7c684c8e1b4b0a7c4ca383372ae9e8ead2422cc555c2b8bdbc9de67abb6b3c"
+      },
+      "/usr/share/locale/is/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/is/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3e900ef4f3eda04d29df944ca7dd89864d5a4b270a7509165a343edf1c4018a9"
+      },
+      "/usr/share/locale/uz/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uz/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1615c5f5fb4a294ed0598082c4951ca258bcac8d622399cb8b04aaa0112fefc1"
+      },
+      "/usr/share/locale/kab/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kab/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "3b4e9e7e74c7d2b16fac0b9eb115de69bf0e2451b6d455e7ddbf2db8d3a037bc"
+      },
+      "/usr/share/locale/ko/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ko/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a38d63ab06a0c8e28e7ceab3c10f35c950158b822872e4d440dc8e114e5661ee"
+      },
+      "/usr/share/locale/it/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/it/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "cf419838ec15b29ab704b9f23b71f258c2d73131e09d57c794e0ca5379ce1f63"
+      },
+      "/usr/share/locale/ckb/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ckb/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "54c8d1ff6c56fe8e7c562bc176eb06b7f1ae61161a9e10d9d391dab9fe410d3f"
+      },
+      "/usr/share/locale/sv/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sv/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "965e14cf6c514fe164db50c3d72f443a69e141e6c84d08b54dec0f075c67e2a1"
+      },
+      "/usr/share/locale/tr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/tr/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1303c4a8783017597e20ce5985a3868cb2cd559e81d644eb74f243c0b19e3a06"
+      },
+      "/usr/share/locale/lv/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lv/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5983949fa35adad7c93a84823340c4cb9d5ce35fdc1614ba5bf5ee00e3fb3c4a"
+      },
+      "/usr/share/locale/hr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/hr/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5f9a876b22be2cca78fdae5f4950b8f62d327b340297cf78b4c73673bd248aa8"
+      },
+      "/usr/share/locale/nb/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nb/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c946d46122e9a7155de6366f2f28265ea8be94053ec9c36308e7b8444e31eb6d"
+      },
+      "/usr/share/locale/eu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eu/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "af6ce33a84a6a726f4f9f342f5c9c8e38e241154ac0dbe61fa9fe84675533f3b"
+      },
+      "/usr/share/locale/af/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/af/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "70abfa6732fac218b2b09f276ca2e846426e1b2978b9922f8a3d806f5994117a"
+      },
+      "/usr/share/locale/bg/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bg/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0b1df4a53222b8c7a2a6cbfc5e090ea1a19168be4555d52cb801e8029a1a5b34"
+      },
+      "/usr/share/locale/or/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/or/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "95ae18a5e55e6810ba0430656673769502803fbe013c6ea40dfadde35d2c491b"
+      },
+      "/usr/share/locale/te/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/te/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "00202a9f1b49a7b0aea49b8afed0636638b22f29054622de5adb55c91f9b8b85"
+      },
+      "/usr/share/locale/ru/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ru/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5b071f865af99ec6dd481484e6d21be4ab5bb62faa0a7ba5071018df99aa7f9a"
+      },
+      "/usr/share/locale/fa/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fa/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "53b01e5c3b0701323dda94036ffce02a0081b4cdba31b91d64d861c250f4fe74"
+      },
+      "/usr/share/locale/ie/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ie/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "704ab5fb6c9fd9664a14bf7a6506b334ddb64c0d19b7c0dce0145ac150b64fd5"
+      },
+      "/usr/share/locale/uk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/uk/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f3dd3a52b106c0d746994feec6e749e137cb2d2c83e5f52e667de90d5a3b7775"
+      },
+      "/usr/share/locale/pl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pl/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7ed4da45b2634646654f57573e6e8ac73b61ebc93203ed5d247102b4980e8362"
+      },
+      "/usr/share/locale/ab/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ab/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b8093ad2bb72cf4d4b574c6fbcc22ef7e7f7f87911a9376fb7457095d7495900"
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_CN/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f386ab78649a45d879d3f634ebbb0693fe4196602e942ad255748f6efa4bda30"
+      },
+      "/usr/share/locale/pt/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5fa8ca6447425e15a1f5b63734c96155508ef6fe2b29b1375da7e05f98c04722"
+      },
+      "/usr/share/locale/es/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/es/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5f625e18636480100526e53011dc2f0d875af374ba9b0dc24e5325d89d6c781a"
+      },
+      "/usr/share/locale/ne/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ne/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "defcc49e8bb52d04213ea5016c96fc66827369319932b44f97df9a6220686fdb"
+      },
+      "/usr/share/locale/eo/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/eo/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0b15b5881fba0ef403fcd8aa47bb3747d33a01f173216dce148d12c104c387fc"
+      },
+      "/usr/share/locale/fur/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fur/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1fca164780cefe0ca19ebb7bd17707ad41d21239bbc50411a4511528c323a37d"
+      },
+      "/usr/share/locale/zh_HK/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/zh_HK/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6f6854c8bfd76cac0c0c99c9e44f985e9199789181799fc639c67b6b23b1b16f"
+      },
+      "/usr/share/locale/mjw/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mjw/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2719faeb6e296a45fe684c3c668b3f290d050e3b037f4b1d8a087796dc31e11f"
+      },
+      "/usr/share/locale/ta/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ta/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1f76a731c60d440ad2dd719bea41b7b348afdc3c4ab987810399946c4d862002"
+      },
+      "/usr/share/locale/et/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/et/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "910be9adbacf0414a4916340da4542b9fcf30e0262a60ee632f2c9c54cf0c5c9"
+      },
+      "/usr/share/locale/gu/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gu/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "797fac24f622473902eac5e00b998ca7887ae37be5c59769609c5c49d8966fee"
+      },
+      "/usr/share/locale/kk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kk/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a56656021642c5808cd4003e5607948aeec4aa8366e60e1a32da3f9a99449810"
+      },
+      "/usr/share/locale/gd/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/gd/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "df68a94f96279d902434a7614fe96d5fa9f4d6f5f25cce76dd0bdd0e278d7f18"
+      },
+      "/usr/share/locale/bn_IN/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bn_IN/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d3bc4aad31c80d0fecba8773d05353f92537abcb6346d544dbeae3e72f5d7129"
+      },
+      "/usr/share/locale/ug/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ug/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "618f806b74c6a4b3ac073e3f938f8133d7cda88715ad4b14feb4944447c0baef"
+      },
+      "/usr/share/locale/fi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fi/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "28f13c2920dee2eba3e07719f4b45cd1ad3e236f1cfca0e63ba762a7ed29fbf8"
+      },
+      "/usr/share/locale/sk/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sk/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "41ae51e6c8f8d8bb5298adfd08c46703ed1142799b1c8377fa8876cd4c3b6ac8"
+      },
+      "/usr/share/locale/km/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/km/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ecc39d5961ab39757af880df94edc74d39fb7296e12224f12f7a5d3d543643ed"
+      },
+      "/usr/share/locale/id/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/id/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0c6c1090e519043173eefe1fa9f080b05356cccb8549c7cc02b212e38bdeab30"
+      },
+      "/usr/share/locale/he/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/he/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "da8ae252a976e52afbe7aee7c8119fca628c5b0981931d4231e7f65b9ae699e5"
+      },
+      "/usr/share/locale/en_GB/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/en_GB/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b1f19449831a0061c34987f0b26b4458648b593ebee783b5aaed24254573c2b6"
+      },
+      "/usr/share/locale/cs/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/cs/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "dfdd3b079212549bc5af9acc0f502d3f90064fcb82d8a26290978d9cb3f466a9"
+      },
+      "/usr/share/locale/as/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/as/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "d1710578aa647b6055506ad4f8cd698c1f24c9c59d55fd7c514ce1fd6d344c75"
+      },
+      "/usr/share/locale/ast/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ast/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a38e1538a878d5aa6c332580a89f99b58fcdd277ca23ec7199a6ec6eea2e2b73"
+      },
+      "/usr/share/locale/de/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/de/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9511dd4770ae5d82f2b0d7df38de4361c25d25fa2280ff428e4fb81f9faf530a"
+      },
+      "/usr/share/locale/lt/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/lt/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "056968bbf62793bb28ca5719a5868155107dea737607c2e078252ea9274b5c24"
+      },
+      "/usr/share/locale/kn/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/kn/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "95badf283d47e0883c6e94cd0c02a56bb3ddf07848c4f3da189e633b1f836066"
+      },
+      "/usr/share/locale/sr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6b443e395302f3615b37518e360951dec62449adbaa86b54307a28ccb6c18dca"
+      },
+      "/usr/share/locale/bs/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/bs/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "331d148d2cce8ef0e6a6f5b89a5631388fab5cdd2b97ee9be041cd40c25004fe"
+      },
+      "/usr/share/locale/oc/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/oc/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ddb6b5e6c52dda9035ca0c99374882ba8082de1546fcfe736475582f552bef1c"
+      },
+      "/usr/share/locale/fr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/fr/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "342fe0acd8675f191f82f0a9d10d87a505098a3532f0d97c7c1ef0acd05d5d26"
+      },
+      "/usr/share/locale/vi/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/vi/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "82cf903dd14c752347424541ae7c5b793139d9f50500a7f731b59a373fbfb18a"
+      },
+      "/usr/share/locale/an/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/an/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "aa2b14c698f3feaf4bf72e2322081e7d3a75bfe995f204afd4b8b73183de2396"
+      },
+      "/usr/share/locale/th/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/th/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "c8307c4cb5accefb22d80e63f6e05b1ac288cd2026a0ae840353dd201b1aebdc"
+      },
+      "/usr/share/locale/pa/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pa/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "add9fe0a42d58fbb4774eb3ed7c1cd389086a41ccce39961b270a6ae289bc4ef"
+      },
+      "/usr/share/locale/ca/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ca/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "01cfb3f2362a0f9cb1acd9c1c1bbb46f82757e940514a8b985d289764f7aa0ff"
+      },
+      "/usr/share/locale/sl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sl/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "28e5f565c9d9dd41779fdfc728de31e4e0d80681e85ed4799f3eb7c34da56a9a"
+      },
+      "/usr/share/locale/el/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/el/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "577c672741290a4e649fb6ad7587c4d9baab013485cfba40c5bfe978ae49f140"
+      },
+      "/usr/share/locale/da/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/da/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9d8872642735b478342dab9da9e29a1f8154e1469ee6ad7b01ba545768a9bc3f"
+      },
+      "/usr/share/locale/mr/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/mr/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "353f6366fca1ed5a58c98021d2ef091b2c7be0d8e9e073b901d42a0019707bf5"
+      },
+      "/usr/share/locale/nl/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/nl/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2d10227a0e45f92bb3c43117d5fd2823b4dd1a7192c135f07f0bfb569a82c01e"
+      },
+      "/usr/share/locale/ka/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ka/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2e909b3a0ff50a33ded317c65bbd0e9fed48e882499041ae898c3a6e69f1c379"
+      },
+      "/usr/share/locale/sr@latin/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/sr@latin/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b4879caa87054df17e07919042d2fbfb2f0b876daca9ae5b7c822a50babc1db0"
+      },
+      "/usr/share/locale/ro/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/ro/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "37f2cf1070cc468f9f85d328dbe9980b078ced0a5614080c6e2855c90a6b7372"
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/locale/pt_BR/LC_MESSAGES/gnome-online-accounts.mo": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a2f9dc9d29742a96b5f59bf31848bc8110c2f49f19b3d0106117b62b958bdb70"
+      },
+      "/usr/share/dbus-1/services": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/dbus-1/services/org.gnome.OnlineAccounts.service": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ec4815c39b1ba86f13f69575853cc207c445be9e090d5087309c4214809935c7"
+      },
+      "/usr/share/applications/org.gnome.goa-daemon.desktop": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "1780b8f28678f12b6a519c0ffdf565464cd502e414d8a606493f7a8562821b7b"
+      },
+      "/usr/share/applications/org.gnome.OnlineAccounts.OAuth2.desktop": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "2e7395c3b702f950d865ef793f225da41609d9fab3d998b9d6398c3d09da1bfc"
+      },
+      "/usr/share/doc/gnome-online-accounts": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/gnome-online-accounts/source-notices": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/doc/gnome-online-accounts/copyright": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "0bfa506f9c4fc19e9333784483b5cae0cb250b6059669a548361e101a0208ff0"
+      },
+      "/usr/share/doc/gnome-online-accounts/source-notices/index.json": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "5ae85e5e63e138017a97b6e0faf42ee579224fcef560ed936b1673d84a1a26b0"
+      },
+      "/usr/share/doc/gnome-online-accounts/source-notices/f060cf037c2b0ec61c87dd83a72e8b721d50c445864262d1bc7b56c1962c1dae": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "f060cf037c2b0ec61c87dd83a72e8b721d50c445864262d1bc7b56c1962c1dae"
+      },
+      "/usr/share/vala/vapi": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/share/vala/vapi/goa-1.0.deps": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "01887c0839ca68498a12c20f91817feb1dee5355a185271afd0a0abd18887203"
+      },
+      "/usr/share/vala/vapi/goa-1.0.vapi": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b6a3601c306224cbc00b0468ea9138e246d000d8e21a0bea421fc55ad5aa7d60"
+      },
+      "/usr/include/goa-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/goa-1.0/goa": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/goa-1.0/goabackend": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/include/goa-1.0/goa/goaversion.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6e6b52387512f98d879c9f406e871171552e27df86957fa56bc765b11219fe35"
+      },
+      "/usr/include/goa-1.0/goa/goaenums.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "96f29ba6acbd2de195cefb2cae3325fde0759baa35aaae918fd7bd51eecbdf51"
+      },
+      "/usr/include/goa-1.0/goa/goaclient.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "babbb95e6f931378fbb3bb5bee96852a1ba7226c5ced489652ac65081b21815b"
+      },
+      "/usr/include/goa-1.0/goa/goa-generated.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "00ef32f8e5a193635f0aef94a7d3d7594cce9c4dc89b50441347db5e4fab4d05"
+      },
+      "/usr/include/goa-1.0/goa/goa.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "9a7c70d85f0524e6980f35edc500388b0d6541b3a77a27a2ba5fd13d1d1e2fb7"
+      },
+      "/usr/include/goa-1.0/goa/goaerror.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "cb19000184583e71e5f1e8bce918355b120dfb1a61b4399ee64a5372eb1debcb"
+      },
+      "/usr/include/goa-1.0/goa/goaenumtypes.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "b499fd149968e2a649df226ed27e9f47eb0edd1d34bd7c066eb1134811c706d5"
+      },
+      "/usr/include/goa-1.0/goabackend/goabackendenums.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "49ac8c92e898bdb32c1247d4cfca4dd57e1658b3362e1556cd930ffbbc659110"
+      },
+      "/usr/include/goa-1.0/goabackend/goaprovider.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6a201319f2f5a22a6ea1dc6095df93a93a7005b716c6ca4047f09a5291eb6bb6"
+      },
+      "/usr/include/goa-1.0/goabackend/goabackend.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "50f2415c0a171d4de656d5ffd0240cd6c4849fef893a9810de371620f9a01d16"
+      },
+      "/usr/include/goa-1.0/goabackend/goabackendenumtypes.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "34200d5975d80817cc5c98eae31123c1f7e425b3d0a48d260315775c952e6432"
+      },
+      "/usr/lib/girepository-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/pkgconfig": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/goa-1.0": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/libgoa-1.0.so.0.0.0": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "a1f3d2e9d2e025215deb9ef77b237e16fe268564002098df2029fa1a674da1cc"
+      },
+      "/usr/lib/libgoa-backend-1.0.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libgoa-backend-1.0.so.2"
+      },
+      "/usr/lib/libgoa-backend-1.0.so.2.0.0": {
+        "mode": 33261,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "083fbcdfe78d743a344111a1b6706052e751e776bf1963b3cbb032b5d36ec0c3"
+      },
+      "/usr/lib/libgoa-1.0.so.0": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libgoa-1.0.so.0.0.0"
+      },
+      "/usr/lib/libgoa-backend-1.0.so.2": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libgoa-backend-1.0.so.2.0.0"
+      },
+      "/usr/lib/libgoa-1.0.so": {
+        "mode": 41471,
+        "uid": 0,
+        "gid": 0,
+        "symlink": "libgoa-1.0.so.0"
+      },
+      "/usr/lib/girepository-1.0/Goa-1.0.typelib": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "6ce1a4af28b143d7da909882d584f75123c3ab06a6ab28944dec939e4b3fb004"
+      },
+      "/usr/lib/pkgconfig/goa-1.0.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "ad61b8f3ee8fa8dcbc4ce9a033c854fa15c4975f8e738892ca1f4517a691f0ab"
+      },
+      "/usr/lib/pkgconfig/goa-backend-1.0.pc": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "7637d3f7c223da62d6b2f23213a79c836cd0bd7ae31127d28e55758562f11c74"
+      },
+      "/usr/lib/goa-1.0/include": {
+        "mode": 16877,
+        "uid": 0,
+        "gid": 0,
+        "directory": true
+      },
+      "/usr/lib/goa-1.0/include/goaconfig.h": {
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "sha256": "70fa801ae0fc9beebd80ccd1cc0c12dd82a73dd88185102643890d37d4cbd19d"
+      }
+    },
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_sha256": "8f53e9e4c8a9b9d8a3ae5727b7a2db133c634daf844b3482a19475e77d6fea3b",
+    "supporting_build_script_count": 1748
+  }
+}

@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gnome-online-accounts': ('3.58.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy9), libadwaita (= 1.9.3-1+toddy1), librest (= 0.10.2-1+toddy1), libsecret (= 0.21.7-1+toddy1), libsoup (= 3.6.6-1+toddy1), json-glib (= 1.10.8-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'gnome-online-accounts-3.58.1.tar.xz', 'usr/lib/pkgconfig/goa-backend-1.0.pc'),
     'librest': ('0.10.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libsoup (= 3.6.6-1+toddy1), json-glib (= 1.10.8-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'librest-0.10.2.tar.xz', 'usr/lib/pkgconfig/rest-1.0.pc'),
     'tecla': ('50.0', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy9), libadwaita (= 1.9.3-1+toddy1), libxkbcommon (= 1.13.2-1+toddy1)', 'tecla-50.0.tar.xz', 'usr/bin/tecla'),
     'gnome-text-editor': ('50.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy8), gtksourceview (= 5.20.0-1+toddy1), libadwaita (= 1.9.3-1+toddy1), libspelling (= 0.4.11-1+toddy1), editorconfig (= 0.12.11-1+toddy1)', 'gnome-text-editor-50.1.tar.xz', 'usr/bin/gnome-text-editor'),
@@ -288,6 +289,7 @@ if __name__ == '__main__':
     if name=='aspell' and (log/'aspell-dictionary-2.exit').exists():qualifier='aspell-dictionary-2'
     if name=='gnome-text-editor':qualifier='gnome-text-editor-metadata-2'
     if name=='libspelling':qualifier='libspelling-options-2'
+    if name=='gnome-online-accounts':qualifier='gnome-online-accounts-collect-2'
     if name=='tecla':qualifier='tecla-collect-2'
     if name=='enchant':qualifier='enchant-provider-explicit-5'
     if name=='tinysparql':qualifier='tinysparql-numeric-5'
@@ -1253,6 +1255,9 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='gnome-online-accounts':
+        from qualify_goa import qualify as qualify_goa
+        qualify_goa(ROOT)
     if name=='librest':
         from qualify_librest import qualify as qualify_librest
         qualify_librest(ROOT)

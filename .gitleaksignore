@@ -95,3 +95,15 @@ docs/evidence/B02-librest-stage.json:generic-api-key:355
 15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:343
 15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:353
 15c34574b0875ce0efac08f6458eb527f1554a87:docs/evidence/B02-librest-stage.json:generic-api-key:355
+
+# Reviewed SHA256 of public GOA OAuth/auth object/header artifacts, not credentials.
+docs/evidence/B02-goa-stage.json:generic-api-key:33
+docs/evidence/B02-goa-stage.json:generic-api-key:37
+docs/evidence/B02-goa-stage.json:generic-api-key:39
+docs/evidence/B02-goa-stage.json:generic-api-key:48
+docs/evidence/B02-goa-stage.json:generic-api-key:52
+docs/evidence/B02-goa-stage.json:generic-api-key:58
+docs/evidence/B02-goa-stage.json:generic-api-key:60
+docs/evidence/B02-goa-stage.json:generic-api-key:74
+docs/evidence/B02-goa-stage.json:generic-api-key:94
+docs/evidence/B02-goa-stage.json:generic-api-key:96
