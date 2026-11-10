@@ -1,0 +1,12 @@
+{
+  "state": "complete",
+  "scope": "Log receipts only, no source/compiler/test/package/install replay. Exact original native receipt restored from actual retained controller JSON matching pre-existing published SHA256; actual mounted worker receipt relocated.",
+  "native_receipt": "/var/log/toddy/build/b02-libgtop-install.success.json",
+  "native_original_sha256": "6c32a0e6bf67b13e27ae083f2d085a6ec0c03cb71a60138963db52f3699f6c45",
+  "worker_receipt": "/var/log/toddy/phase2/mitkrb-shared-scratch-1.json",
+  "worker_receipt_sha256": "2bccd7295e2de4bd3bcc76237824e0cdf575e3009da0ac28f0ae77e1f74fcaff",
+  "worker_inode": 12699,
+  "controller_sha256": "8b52d1119c1cb1b66ce6e6d51cd67cc2d896f910e987e323f8b8512f2f5fb7de",
+  "native_receipt_byte_exact_to_published_digest": true,
+  "worker_receipt_preserved": true
+}
