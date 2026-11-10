@@ -8,31 +8,30 @@ No complete native GNOME/login/basic apps or Phase2 ISO exists yet.
 
 ## Current slice and exact next action
 
-Current slice: four shared login PAM policies INSTALLED; native gate prepared,
-not executed. Native install2/post0/0,15changedpaths/14owned entries, package
-`toddy-login-policy0.1.0-1+toddy1_all`, archiveSHA
-f67aea344d5ded8e5aa988bf9f15d3effbc813211cd708b15b2b1344921a8e59.
-Existing other/Polkit/systemd-user bytes/modes and PAM modules unchanged. Initial
-metadata-input failure/root0 retained; exact sync allowlist fixed. ADR0179/
-[proof](evidence/B02-login-policy-install.json); rawSHA
-2715bf7da011688e0311be494f072c355c388f4b92352f1542ed06569bdafc61.
-New root-only native token client compiled0; two old qualified password/session
-clients reused unchanged. Fixture `/mnt/lfs/sources/phase2/native-fixtures/login-policy-1`,
-manifestSHAe465ac100db9eb3a8d47371b4425a087a365d586eb205e988acad17976689166,
-three clients/14installed artifact hashes. Preparation receipt
-`/var/log/toddy/phase2/login-policy-native-prepare-1.json` COMPLETE. No guest writer.
+Current slice: owned shared login PAM policy NATIVE GATE PASSED; no writer.
+Install2/post0/0,15paths/14entries; four new conffiles, all prior policies/modules
+unchanged, archiveSHAf67aea344d5ded8e5aa988bf9f15d3effbc813211cd708b15b2b1344921a8e59.
+Fresh native kernel7.1.8/Systemd PID1 gate15expected outcomes and two actual
+PAM/logind/user-bus cycles0; root PAM token change/old refusal/new recovery,
+proper-argc unprivileged refusal64/no shadow change, locked/expired/missing/empty/
+wrong refusal/recovery, PAMName Stop/MainPID0. Expired auth0/account13 is a REFUSAL,
+never authorization. Stop before token is not in-flight PAM cancellation.
+All14bound artifacts unchanged, synthetic user/wrappers removed, new bus per
+cycle, explicit terminate-user cleanup. [Native proof](evidence/B02-login-policy-native.json),
+ADR0179. Context `.local/phase2/native-login-policy-runtime-1` is COMPLETE; child
+exited0/OOMfalse and backing unchanged before restart. NEVER rerun it or boot its
+old overlay after parent restart. No GDM/greeter/GUI/hardware acceptance.
+Builder restarted; six existing scratch FSs and same Systemd source bind restored;
+owned policy14entries verified/ephemeral user absent in parent. Recovery receipt
+`/var/log/toddy/phase2/login-policy-builder-restore-1.json` COMPLETE. Current boot
+e540bdef-376f-46ae-9527-58d9641af256. No current guest/native writer.
 
-Exact next: after committing reviewed native test inputs and clean Git, run
-`python3 scripts/host/phase2_native_login_policy.py` under a detached tracked local
-controller/log. Context `.local/phase2/native-login-policy-runtime-1` must not exist
-before first dispatch. It stops builder, makes NEW overlay/read-only current
-backing, native kernel/PID1/no NIC, actual synthetic auth/account/password/session/
-Stop/refusal/recovery. Inspect its real result/container before action; do not
-repeat an uncertain native operation. Native acceptance/GDM login not yet proved.
-After terminal, require actual report, all selected exits, child cleanup/OOMfalse,
-backing identity unchanged; then recover builder/scratch binds as below, never
-boot stale overlay or repeat old custody. If failure record cause/inputs/budget and
-correct only bounded affected fixture/native state, no install/compiler replay.
+Exact next: qualify accepted GDM50.2 source/CheckSDK/79ELFs/218stagefiles and
+review its account/sysusers/directories/conffiles/policy package prerequisites;
+create native GDM recipe/package, fixed lockedUID/GID21 only after absence checks.
+Preserve GTK-owned schema cache; GDM/NMA XMLs need controlled union before actual
+GUI. Do not rebuild GDM, policy, PAM/Systemd binaries or repeat accepted native
+gate. Then SettingsDaemon50.1/Shell50.4 and actual graphical gates.
 
 GDM50.2 build/original/stage passed; NO active guest writer. `gdm-1` controller
 PID523211 terminal0,79compiled ELFs/218staged regular files. Actual original
@@ -105,7 +104,7 @@ park that cause and select eligible work. Healthy progressing builds are monitor
 
 ## Environment, recovery and publication
 
-Builder boot568b17f7-1b0d-4b6c-bcd4-8fba4913a526. Target
+Builder boote540bdef-376f-46ae-9527-58d9641af256. Target
 `/mnt/lfs=/dev/vdb4/TODDY-LFS-TARGET`; builderroot`/dev/vda1/TODDY-BUILDER`.
 Last targetfree17961508864B before small GDM input; measure target/host before
 allocation, preserve target16GiB/host100GiB reserves. Six existing scratch volumes:

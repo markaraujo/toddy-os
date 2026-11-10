@@ -1,6 +1,6 @@
 # ADR-0179: Additive owned shared login PAM policy
 
-Status: policy package installed; actual native qualification pending.
+Status: policy package and scoped actual native auth/password/session gate accepted.
 
 Provide the four missing shared GDM includes in architecture-all
 `toddy-login-policy0.1.0-1+toddy1`. Original Toddy configuration is MIT licensed;
@@ -50,3 +50,25 @@ is a pass. No GUI/GDM/keyring/physical acceptance is inferred from this gate.
 Next integrate reviewed GDM account/sysusers/directories/conffiles/native package
 and its actual PAM/keyring/greeter/login flow; preserve the independent owner policy
 and native GNOME graphical requirements. No general plan or foundation rebuild.
+
+## Actual native result
+
+Fresh native gate passed15expected outcomes and two real PAM/logind/user-bus
+cycles on kernel7.1.8/Systemd PID1. Correct yescrypt succeeds; wrong/empty/missing/
+locked accounts refuse; expired account returns PAM_ACCT_EXPIRED13 even though
+its authentication succeeds. The application must respect account management;
+auth success alone is not authorization. Root PAM token change succeeds, old token
+refuses/new token recovers; proper-argc unprivileged root client returns64 without
+shadow change. Stop before token submission has no effect; actual PAMName unit
+Stop leaves MainPID0. Both session cycles close0/end0 and receive different real
+user bus identities, with explicit terminate-user cleanup documented. All14bound
+policy/module artifacts stayed unchanged; synthetic account and wrappers removed.
+
+The actual native container exited0/OOMfalse and cold backing identity matched
+before builder restart. Six existing scratch filesystems and the same7193-file
+Systemd source bind were restored, parent-owned policy payload verified unchanged
+and synthetic account absent. Builder boot is now
+`e540bdef-376f-46ae-9527-58d9641af256`. Never boot that old child overlay again.
+[Actual native result and recovery](../evidence/B02-login-policy-native.json).
+No GDM/greeter/keyring/GUI/physical acceptance or in-flight PAM cancellation is
+inferred. Continue GDM native account/package integration without policy replay.

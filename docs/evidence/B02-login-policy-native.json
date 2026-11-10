@@ -1,0 +1,292 @@
+{
+  "scope": "Actual installed four shared PAM policy gate in NEW disposable QEMU/KVM native7.1.8/Systemd PID1/no NIC. Synthetic credentials only, not GDM/greeter/graphical/physical acceptance.",
+  "report": {
+    "ephemeral_user_removed": true,
+    "existing_PAM_and_module_artifacts_unchanged": 14,
+    "fixture_manifest_sha256": "e465ac100db9eb3a8d47371b4425a087a365d586eb205e988acad17976689166",
+    "kernel": "7.1.8-toddy",
+    "no_credentials_or_hashes_recorded": true,
+    "pid1": "systemd",
+    "runs": [
+      {
+        "actor_uid": 12346,
+        "exit": 0,
+        "expected_authenticated_and_account_accepted": true,
+        "name": "owned-policy-correct-yescrypt",
+        "pam_result": {
+          "account": 0,
+          "auth": 0,
+          "credential": 0,
+          "end": 0,
+          "start": 0
+        }
+      },
+      {
+        "actor_uid": 12346,
+        "exit": 0,
+        "expected_authenticated_and_account_accepted": false,
+        "name": "wrong-password-refused",
+        "pam_result": {
+          "account": 0,
+          "auth": 7,
+          "credential": -1,
+          "end": 0,
+          "start": 0
+        }
+      },
+      {
+        "actor_uid": 12346,
+        "exit": 0,
+        "expected_authenticated_and_account_accepted": false,
+        "name": "empty-password-refused",
+        "pam_result": {
+          "account": 0,
+          "auth": 7,
+          "credential": -1,
+          "end": 0,
+          "start": 0
+        }
+      },
+      {
+        "actor_uid": 12346,
+        "exit": 0,
+        "expected_authenticated_and_account_accepted": false,
+        "name": "missing-account-refused",
+        "pam_result": {
+          "account": 10,
+          "auth": 10,
+          "credential": -1,
+          "end": 0,
+          "start": 0
+        }
+      },
+      {
+        "actor_uid": 12346,
+        "exit": 0,
+        "expected_authenticated_and_account_accepted": false,
+        "name": "locked-account-refused",
+        "pam_result": {
+          "account": 0,
+          "auth": 7,
+          "credential": -1,
+          "end": 0,
+          "start": 0
+        }
+      },
+      {
+        "actor_uid": 12346,
+        "exit": 0,
+        "expected_authenticated_and_account_accepted": true,
+        "name": "unlock-recovery",
+        "pam_result": {
+          "account": 0,
+          "auth": 0,
+          "credential": 0,
+          "end": 0,
+          "start": 0
+        }
+      },
+      {
+        "actor_uid": 12346,
+        "exit": 0,
+        "expected_authenticated_and_account_accepted": false,
+        "name": "expired-account-refused",
+        "pam_result": {
+          "account": 13,
+          "auth": 0,
+          "credential": 0,
+          "end": 0,
+          "start": 0
+        }
+      },
+      {
+        "actor_uid": 12346,
+        "exit": 0,
+        "expected_authenticated_and_account_accepted": true,
+        "name": "expiry-reset-recovery",
+        "pam_result": {
+          "account": 0,
+          "auth": 0,
+          "credential": 0,
+          "end": 0,
+          "start": 0
+        }
+      },
+      {
+        "actual_signal_exit": -15,
+        "exit": 0,
+        "in_flight_PAM_cancellation_claimed": false,
+        "name": "Stop-before-token-no-write",
+        "shadow_unchanged": true
+      },
+      {
+        "actor_uid": 12346,
+        "exit": 0,
+        "expected_authenticated_and_account_accepted": true,
+        "name": "fresh-auth-after-stopped-client",
+        "pam_result": {
+          "account": 0,
+          "auth": 0,
+          "credential": 0,
+          "end": 0,
+          "start": 0
+        }
+      },
+      {
+        "actual_client_exit": 64,
+        "exit": 0,
+        "name": "unprivileged-root-token-client-refused",
+        "shadow_unchanged": true
+      },
+      {
+        "actor_euid": 0,
+        "exit": 0,
+        "name": "system-password-root-owned-PAM-token-change",
+        "pam_result": {
+          "change": 0,
+          "end": 0,
+          "start": 0
+        },
+        "yescrypt_backend": true
+      },
+      {
+        "actor_uid": 12346,
+        "exit": 0,
+        "expected_authenticated_and_account_accepted": false,
+        "name": "old-token-refused-after-PAM-change",
+        "pam_result": {
+          "account": 0,
+          "auth": 7,
+          "credential": -1,
+          "end": 0,
+          "start": 0
+        }
+      },
+      {
+        "actor_uid": 12346,
+        "exit": 0,
+        "expected_authenticated_and_account_accepted": true,
+        "name": "new-token-authentication-recovery",
+        "pam_result": {
+          "account": 0,
+          "auth": 0,
+          "credential": 0,
+          "end": 0,
+          "start": 0
+        }
+      },
+      {
+        "exit": 0,
+        "main_pid_after_Stop": 0,
+        "name": "actual-PAMName-shared-session-and-Stop"
+      }
+    ],
+    "scope": "Actual installed four owned login PAM includes on native kernel: unprivileged yescrypt/auth/refusal/recovery, root-owned password change, PAMName Stop and two PAM/logind/user-bus sessions. Synthetic credentials only; no GDM/greeter/native GNOME/physical acceptance.",
+    "session_cycles": [
+      {
+        "actual_session": {
+          "Class": "user",
+          "Name": "toddy-login-policy-probe",
+          "Service": "toddy-session",
+          "State": "active",
+          "Type": "tty",
+          "User": "12346"
+        },
+        "bus_id_sha256": "553a0c1c7c2a9cc8a64e9660b04eba11681b5b3d6c7f98eb0b876f38378eff6c",
+        "cleanup_and_explicit_terminate_user_verified": true,
+        "close": {
+          "close": 0,
+          "end": 0,
+          "phase": "closed"
+        },
+        "cycle": 1,
+        "runtime_mode": "0700",
+        "runtime_uid": 12346,
+        "user_bus_get_id_exit": 0,
+        "user_manager_active": true
+      },
+      {
+        "actual_session": {
+          "Class": "user",
+          "Name": "toddy-login-policy-probe",
+          "Service": "toddy-session",
+          "State": "active",
+          "Type": "tty",
+          "User": "12346"
+        },
+        "bus_id_sha256": "47a0ec70c9a50216022c7e1514e85e6ef5574535fa2f957f37d036dc6f643f56",
+        "cleanup_and_explicit_terminate_user_verified": true,
+        "close": {
+          "close": 0,
+          "end": 0,
+          "phase": "closed"
+        },
+        "cycle": 2,
+        "runtime_mode": "0700",
+        "runtime_uid": 12346,
+        "user_bus_get_id_exit": 0,
+        "user_manager_active": true
+      }
+    ]
+  },
+  "summary": {
+    "kernel": "7.1.8-toddy",
+    "all_selected_exits_zero": true,
+    "report_sha256": "d69f5f0b66f7cb3d90a08767dce73dd84e66a47679f4da7e3a3386f4b86b27d4",
+    "chunks": 2
+  },
+  "native_container_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-11-10T02:07:59.928814658Z",
+    "FinishedAt": "2026-11-10T02:08:20.932589094Z"
+  },
+  "docker_wait": {
+    "exit": 0,
+    "stdout": "0\n",
+    "stderr": ""
+  },
+  "backing_unchanged_before_builder_restart": true,
+  "builder_recovery": {
+    "policy_owned_entries": 14,
+    "ephemeral_native_user_absent_in_parent": true,
+    "builder_boot_id": "e540bdef-376f-46ae-9527-58d9641af256",
+    "restored_volumes": 6
+  },
+  "input_commit": "ba2a7bb8e94725939394f8ae4e8b9806c884b1fb",
+  "native_probe_sha256": "8597382b2ffaa972caa5fbbf7eec50b9a16ab213e8ff6e1c50afb7119807ea67",
+  "context": ".local/phase2/native-login-policy-runtime-1",
+  "raw_evidence": {
+    "serial.log": {
+      "bytes": 55108,
+      "sha256": "3a83cff25c791e6867418d9de9d4c381d3821334b3e7cfd561e228a73f155ea5"
+    },
+    "native-report.json": {
+      "bytes": 5728,
+      "sha256": "2679a9abb0cfd8ea4286210d11be921cfc846f274d996d36098084f26cd512c8"
+    },
+    "docker-wait.json": {
+      "bytes": 51,
+      "sha256": "85d1d9974c31c7d63207e762ad532df76aa85492e40fdfe00267cf0e77f7ee9f"
+    },
+    "result.json": {
+      "bytes": 18760,
+      "sha256": "7cfaefef5fdc87856c98a0b5a220168603f0a74298d0bf7cdb5247cd0c28c4ce"
+    },
+    "prepare.log": {
+      "bytes": 357,
+      "sha256": "42c014a721a9cc5f9884bc7e121666415fa7d08c68b0a181123f9d07dda26a22"
+    },
+    "builder-stop.log": {
+      "bytes": 15,
+      "sha256": "e838527237e9ba36918bdbf7defa413df108cf084110f7b9ea163b5ad84ce89a"
+    }
+  }
+}
