@@ -28,13 +28,25 @@ of host space by preserving both names for identical closed immutable ISO bytes.
 Never replay custody. Last target free 17,209,540,608 B, scratch free
 561,504,256 B. Recheck actual host, guest lock and storage before mutation.
 
-EXACT NEXT: review and pin libatasmart 0.19 using the already frozen libblockdev
-3.5.0 dependency edge. Run
-`python3 scripts/host/phase2_fetch_book_source.py general/libatasmart.html libatasmart 0.19 --dependency-of libblockdev`.
-Then review exact build and udev dependencies and qualify a no-device SMART
-parser probe before dispatch. The book supplies no upstream suite. Preserve
-existing reserves and single guest writer. Samba and other selected storage
-dependencies still pending. Stop after fully accepted B02.
+The next dependency, libatasmart 0.19, was prepared from the frozen archive
+and built with owned Systemd libudev 261. Main job libatasmart-1 PID 105525
+compiled and staged, then the local C probe failed because atasmart.h uses
+size_t without including its definition. Corrective libatasmart-probe-2 PID
+108844 exited 0 after supplying stddef.h only for the probe. Two upstream
+SMART blobs were parsed, truncation was rejected without losing the prior ATA
+model, and valid reload passed. Eight ELF hashes, eight staged file hashes and
+four retained logs were identical. [Evidence](evidence/B02-libatasmart-stage.json).
+Guest terminal receipts are under /var/log/toddy/phase2/. The library archive
+and native installation are pending. Do not repeat source preparation, compile,
+stage or probe. Last target free 17,205,940,224 B.
+
+EXACT NEXT: review libatasmart's embedded LGPL-2.1-or-later notices against
+`scripts/build/source_notices.py` and the existing `LICENSES/third-party/LGPL-2.1.txt`.
+The tarball has source header notices but no standalone license file. Then
+qualify the retained job pair and staged bytes read-only and prepare a single
+full-root native transaction with a no-device installed consumer. Check actual
+guest lock, target/scratch and host reserves before changing state. UDisks and
+Samba closure still pending. Stop after fully accepted B02.
 
 ### Previous Settings prerequisites
 

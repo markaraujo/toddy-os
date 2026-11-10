@@ -2842,6 +2842,18 @@
       "book_md5": "5314b773b20d1f3acdf3b2bf0c92549f",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "libatasmart",
+      "version": "0.19",
+      "filename": "libatasmart-0.19.tar.xz",
+      "url": "https://0pointer.de/public/libatasmart-0.19.tar.xz",
+      "sha256": "61f0ea345f63d28ab2ff0dc352c22271661b66bf09642db3a4049ac9dbdb0f8d",
+      "reference": "BLFS13.1-systemd general/libatasmart.html",
+      "book_page_sha256": "510dadb8605d8cb9642b3737b75662e38f7abe4302f1abf1b5b00de976908460",
+      "book_md5": "53afe2b155c36f658e121fe6def33e77",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

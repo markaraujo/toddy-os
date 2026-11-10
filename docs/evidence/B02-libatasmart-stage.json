@@ -1,0 +1,101 @@
+{
+  "result": {
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "version": "0.19",
+    "original_suite_supplied": false,
+    "consumer": "Two upstream SMART blobs parsed, truncation refused, ATA model retained and valid reload passed\n",
+    "fixture_scope": "Upstream bundled blobs only. No block devices or SMART commands.",
+    "libudev_version": "261",
+    "artifacts": {
+      "skdump.o": "7181162c24b43a441e3c8edcfbfd7a25bc70a87dfe6ec27498e50c6b38001b7f",
+      "sktest.o": "dcc7b4750d872e86edae6163b02d650b11059824172b5f9e28ff5c12496bdd17",
+      "strpool/strpool": "4517f0bbe4eea6d3e44e2ece2324d5eeb32ff8d4dd00549323ac49e46f3ca05c",
+      "strpool/strpool.o": "21654a1b05a1cfdd097fd91f6a0959a7fa01e46e242db41e3b524785cd483aea",
+      ".libs/libatasmart.so.4.0.5": "7d5680441338718b86ec6217b5a9e54bebc8a44b47432710be89650e60669750",
+      ".libs/libatasmart_la-atasmart.strpool.o": "1085e0950c9efd6665da266e4b89065df16e38abe03513bb0f064beda9a13072",
+      ".libs/sktest": "a953c73b18319f7d25cbcd5e5aece6fd1cf7cc3094d138e87c2803517c644843",
+      ".libs/skdump": "3386088a7c0204be1d220184fedcf973644864138128ccbbf87540f7883a9f01"
+    },
+    "stage_files": [
+      {
+        "path": "usr/include/atasmart.h",
+        "sha256": "377f051b87347769eb9ceca1163e63c21cb7e59f17e3435caff8209c28f40acf"
+      },
+      {
+        "path": "usr/sbin/sktest",
+        "sha256": "a953c73b18319f7d25cbcd5e5aece6fd1cf7cc3094d138e87c2803517c644843"
+      },
+      {
+        "path": "usr/sbin/skdump",
+        "sha256": "3386088a7c0204be1d220184fedcf973644864138128ccbbf87540f7883a9f01"
+      },
+      {
+        "path": "usr/lib/libatasmart.so.4.0.5",
+        "sha256": "7d5680441338718b86ec6217b5a9e54bebc8a44b47432710be89650e60669750"
+      },
+      {
+        "path": "usr/lib/libatasmart.la",
+        "sha256": "47773a507416b60d15a818a6c61096f24dbf53726748a2c13098ccfae63b58ba"
+      },
+      {
+        "path": "usr/lib/pkgconfig/libatasmart.pc",
+        "sha256": "9ead97baf02749b4a32561d0ffd9831bfc56b310420278e59c6de8768a448c81"
+      },
+      {
+        "path": "usr/share/vala/vapi/atasmart.vapi",
+        "sha256": "dde29d140bac5389a42fab73ee6c964a17d3d9c0928a579f350f2372b864d9ee"
+      },
+      {
+        "path": "usr/share/doc/libatasmart-0.19/README",
+        "sha256": "0b8c797e697bc964fde3376b321f087ef4253fb40f6709015461e3f9c825d9a8"
+      }
+    ]
+  },
+  "prepared": {
+    "source_sha256": "61f0ea345f63d28ab2ff0dc352c22271661b66bf09642db3a4049ac9dbdb0f8d",
+    "reference": "BLFS13.1-systemd general/libatasmart.html",
+    "book_page_sha256": "510dadb8605d8cb9642b3737b75662e38f7abe4302f1abf1b5b00de976908460",
+    "source_patches": [],
+    "recipe_sha256": "8a8f36d23bb8f44da097619920f7210fc0536ddd0313311835eed3d216eb9ae0",
+    "probe_sha256": "9ab8eef197e823357421f490a86aefe36cb47ade06d03f5fb0b967a9ede34fc2"
+  },
+  "first_job": {
+    "pid": 105525,
+    "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+    "proc_start_ticks": "2198547",
+    "started_unix": 1794349884.3138638,
+    "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+    "command_sha256": "747f2c325c50a92ee5737f0b6c539f1ee6fc62f52fe771cb514c79cd75996a97"
+  },
+  "probe_job": {
+    "pid": 108844,
+    "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+    "proc_start_ticks": "2202293",
+    "started_unix": 1794349921.7786808,
+    "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+    "command_sha256": "bc56e6fd75f82ec6abb777a20787804848b9e29d86b36a29c7bf94643010b80b"
+  },
+  "log_sha256": {
+    "/mnt/lfs/sources/phase2/work/libatasmart-1/configure.log": "afaa3c39da801c4d0f2dff0ac1c0ecd4cb4fcb4e47e32e65a9c96fea83ee5c91",
+    "/mnt/lfs/sources/phase2/work/libatasmart-1/original-build.log": "def5432f56600dd414f27138b2fed3ea05c613af67824ee0bda9d0eebe5b8fdf",
+    "/mnt/lfs/sources/phase2/work/libatasmart-1/original-stage.log": "a336ce137d1024488c89a89af1c073574027702fd49d6493081980fab5d76d86",
+    "/var/log/toddy/phase2/libatasmart-1.log": "d5ae5bf2fa2707dc03021b7665d3825cc5f3b467ea4350b945743f69a56ff8eb"
+  },
+  "target_free_bytes": 17205940224,
+  "original_job_exit": 1,
+  "probe_job_exit": 0,
+  "compiler_and_stage_unchanged": true,
+  "source": {
+    "name": "libatasmart",
+    "version": "0.19",
+    "filename": "libatasmart-0.19.tar.xz",
+    "url": "https://0pointer.de/public/libatasmart-0.19.tar.xz",
+    "sha256": "61f0ea345f63d28ab2ff0dc352c22271661b66bf09642db3a4049ac9dbdb0f8d",
+    "reference": "BLFS13.1-systemd general/libatasmart.html",
+    "book_page_sha256": "510dadb8605d8cb9642b3737b75662e38f7abe4302f1abf1b5b00de976908460",
+    "book_md5": "53afe2b155c36f658e121fe6def33e77",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  }
+}
