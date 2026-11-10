@@ -2794,6 +2794,18 @@
       "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
       "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
       "status": "source_verified"
+    },
+    {
+      "name": "cups",
+      "version": "2.4.19",
+      "filename": "cups-2.4.19-source.tar.gz",
+      "url": "https://github.com/OpenPrinting/cups/releases/download/v2.4.19/cups-2.4.19-source.tar.gz",
+      "sha256": "820984b12a67f98705785aae2dd1347fe0ac097828001d4583ff64574aed6389",
+      "reference": "BLFS13.1-systemd pst/cups.html",
+      "book_page_sha256": "03d9a9f3fb4283cc3be5b7ba558c9c7b6d15c97090edb9ca5a057afcd541de43",
+      "book_md5": "06b7a3921812988cdb3198ff74ae381d",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

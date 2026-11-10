@@ -8,48 +8,51 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current B02 slice: Libgtop2.41.3 native local SDK installed/qualified,
-[stage](evidence/B02-libgtop-stage.json)/[install](evidence/B02-libgtop-install.json),
-ADR0212.99ELFs/139files; no upstream suite (not a pass). Actual C direct memory/
-uptime/own-process/missingPID refusal/two recoveries, GI metadata only/ABI/PC/Info/
-APT0. NativePID43153 recipe/post0/0/159changes. Helpers root0755, not activated.
-Initial own header typo and staged helper4755 failure retained; mode-only3 and
-fresh hook fixture1 passed with compiler/stage bytes retained. Never replay.
-No remote/helper protocol/other-user privilege/Settings GUI/desktop measurements/
-physical acceptance. GIR raw EOT strict-XML1.0 limitation explicit. Cold untested.
+Current B02 slice: MIT Kerberos native aggregate producer PARKED, ADR0213.
+[Native input](evidence/B02-mitkrb-input.json)/[failed collector](evidence/B02-mitkrb-collector-failed.json).
+Source3required patches applied/readonly EROFS/cache unchanged; worker12699.
+Main1PID45040 exit2 after compiler+crypto success (GSS target unexpectedly invokes
+full Python realm suite). Finish2PID58431 exit1 after original GSS5C0/DB2default0/
+stage0, own transitive staged linker failure. Collector3PID61513 exit1: own real
+principal/MEMORY-cache/refusal/recovery C API PASSED, aggregate count assertion
+failed (24reportrows/20unique IDs, DB2case20stock-dictionary skip, book12excluded).
+ksu0755, no setuid. No aggregate result/native package/install/authentication/UI
+acceptance. All compiler/test/stage bytes and successful logs retained; no replay.
 
-Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f, writer idle.
-Libgtop private worker inode7269/scratch recipe b31cbe79d93e1283d7bfbcc2f2e5dc842c729a12046d1c0d4af8a82170e7b186
-preserves original source/recipe. Same Doxygen UUID/cache fingerprint retained.
-ModemManager worker5725, QMI4244/native workspace4671 and earlier binds retained.
-Only QMI readonly source/native workspace same-boot recovery qualified, not new
-cold proof. Mesa promotion usr custody COMPLETE/root0/reclaimed44417024B; original
-workstage/source/compiler/archive retained, compiler not rehashed by custody.
-All previous GOA/MBIM/Shell/Cracklib custody complete; never replay. Fixed target
-16GiB/host100GiB/cold100GiB+512MiB: recheck actual budgets before new writes.
+Receipt repair1 COMPLETE, [proof](evidence/B02-mitkrb-worker-receipt-repair.json):
+preparer prerequisite-variable shadow misplaced MIT worker JSON over Libgtop
+success receipt. Actual worker record relocated; original Libgtop success bytes
+restored from retained controller output, exact pre-existing SHA2566c32a0e6bf67b13e27ae083f2d085a6ec0c03cb71a60138963db52f3699f6c45.
+All3 preparers fixed and worker namespace guarded. No package/source/compiler
+replay, no lost installed package; NEVER repeat repair1.
 
-EXACT NEXT: implement MIT Kerberos1.22.2 isolated recipe/private worker and a
-shared readonly source alias. Main archive plus required upstream/security/
-OpenSSL4 patches pinned; [host-only patch preflight](evidence/B02-mitkrb-patch-preflight.json)
-actually applied all3 in book order/fuzz0 on a disposable source copy, original
-archive unchanged. Source40695769expanded bytes. No native compile/tests/runtime
-acceptance. Do not repeat fetch/host patch probe; reuse exact-input result.
-Read src/configure/library/crypto/test Makefiles and public API before guest prep.
-Keep all required fixes and core crypto tests; no owner credentials or external
-realm required for local cache/principal/refusal/recovery consumers. Source/test
-book flags include --with-system-et/ss, --with-system-verto=no, --disable-rpath.
-Extend the explicit source-alias allowlist with exact mitkrb1.22.2/krb5-1.22.2;
-sourceName mapping/required patch inputs still need implementation. No guest MIT
-source/work/job exists. Preserve existing target/scratch identities and reserves.
-Last verified resource snapshot19:39:50UTC: targetfree17227579392B,
-Doxygen scratch879505408B, host107736969216B (below cold107911053312B gate).
-Ordinary reserves met; no cold boot dispatched. Recheck before each operation.
-Control Center50.4 still needs MIT/UDisks/CUPS/Samba. Keep core panels; embedded
-libgxdp is in source, optional gmobile/malcontent and GTK-X11 unselected.
-No guest Control Center source/job; existing alias supports its49MB expansion.
+TWO failed corrective executions: budget PARKED in persistent failure ledger.
+Fresh code checks unique IDs but was NOT rerun. Reopen only after independent
+actual24row/20-ID parsing qualification and ONE logged bounded metadata-only
+extension retaining historical budgets, after advancing another eligible slice.
+No compiler/source/crypto/GSS/DB2/stage/API replay; reuse exact successful logs.
 
-Published3e096f4: all3CI success and exact publicHTTP200/indexSHA
-0d2eb334761067e1833091d376d31a41c06d1a7ded4e90a1f0db00a619c30ef4.
+EXACT NEXT: CUPS2.4.19 required Settings dependency. Official frozen source pinned
+(.local/phase2/cups-source.json), expanded26877563B. No guest CUPS input/work/job.
+Read frozen book and actual configure/cups/scheduler/install/test Makefiles;
+review lp account/permissions and inactive service/TLS/library requirements before
+recipe/preparation. CUPS filters is required for full printing, not yet qualified;
+never claim real printing or a printer driver from a client SDK check. Preserve
+core Settings panels and later driver/acquisition flows. Use a source alias/private
+worker if current root headroom cannot hold source plus fixed reserve. Do not
+re-fetch identical source or lower target16GiB/host100GiB/scratch512MiB gates.
+
+Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f; writer lock verified idle,
+MIT native package absent, no CUPS guest job. Last targetfree17218785280B,
+Doxygen scratch760049664B. Host cold100GiB+512MiB gate previously below reserve;
+recheck actual resources before operations/boot, no new cold boot dispatched.
+Same scratch/workers12699(MIT)/7269(GTop)/5725(MM)/4244(QMI)/workspace4671 retained.
+Source/worker restore support prepared, cold untested. All previous custody and
+same-boot recovery receipts complete; never replay them. Source originals/patches/
+compiler/evidence/archives retained. B02 acceptance/full GNOME/basic apps pending.
+
+Published5dd7fed: all3CI success and exact publicHTTP200/indexSHA
+1c18dec33afd3258eddc29d2dcfe52aac63a34c5ba057fc79bcb4983e8c0e400.
 
 Seven qualified Settings prerequisite archives/metadata copied and independently
 verified outside VM: [recovery cache proof](evidence/B02-settings-package-recovery.json),

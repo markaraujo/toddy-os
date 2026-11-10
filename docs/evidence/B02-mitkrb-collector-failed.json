@@ -1,0 +1,161 @@
+{
+  "scope": "Failed aggregate collector, not package acceptance. Actual C consumer and test logs retained; no native package/install. Read-only diagnosis only.",
+  "source_recipe_sha256": "5f4daaf8fcfbbb52e19bc28b0bfa73f35e9cff38a8514a6471098aba869290ff",
+  "job_exits": {
+    "mitkrb-1": "2",
+    "mitkrb-finish-2": "1",
+    "mitkrb-collect-3": "1"
+  },
+  "db2_collector_cases": [
+    [
+      "1",
+      "btree, hash: small key, small data pairs"
+    ],
+    [
+      "1",
+      "recno: small key, small data pairs"
+    ],
+    [
+      "2",
+      "btree, hash: small key, medium data pairs"
+    ],
+    [
+      "2",
+      "recno: small key, medium data pairs"
+    ],
+    [
+      "3",
+      "hash: small key, big data pairs"
+    ],
+    [
+      "3",
+      "btree: small key, big data pairs"
+    ],
+    [
+      "3",
+      "recno: big data pairs"
+    ],
+    [
+      "4",
+      "recno: random entries"
+    ],
+    [
+      "5",
+      "recno: reverse order entries"
+    ],
+    [
+      "6",
+      "recno: alternating order entries"
+    ],
+    [
+      "7",
+      "btree, recno: delete cursor record"
+    ],
+    [
+      "8",
+      "btree: repeated small key, big data pairs"
+    ],
+    [
+      "9",
+      "btree: duplicate keys"
+    ],
+    [
+      "10",
+      "btree, recno: test cursor flag use"
+    ],
+    [
+      "11",
+      "recno: reverse order insert"
+    ],
+    [
+      "13",
+      "btree, hash: differing byte orders"
+    ],
+    [
+      "20",
+      "skipped, dictionary too small"
+    ],
+    [
+      "40",
+      "btree: page split on index 0"
+    ],
+    [
+      "41",
+      "btree: no unsearchables due to page split on index 0"
+    ],
+    [
+      "50",
+      "btree: recursive traversal"
+    ],
+    [
+      "60",
+      "btree: big key, small data, byteswap unaligned access"
+    ],
+    [
+      "61",
+      "btree: small key, big data, byteswap unaligned access"
+    ],
+    [
+      "62",
+      "btree: small key, big data, known byte order files"
+    ],
+    [
+      "63",
+      "btree: big key, medium data, bt_split unaligned access"
+    ]
+  ],
+  "db2_collector_count": 24,
+  "db2_headers": [
+    "Test 1: btree, hash: small key, small data pairs",
+    "Test 1: recno: small key, small data pairs",
+    "Test 2: btree, hash: small key, medium data pairs",
+    "Test 2: recno: small key, medium data pairs",
+    "Test 3: hash: small key, big data pairs",
+    "Test 3: btree: small key, big data pairs",
+    "Test 3: recno: big data pairs",
+    "Test 4: recno: random entries",
+    "Test 5: recno: reverse order entries",
+    "Test 6: recno: alternating order entries",
+    "Test 7: btree, recno: delete cursor record",
+    "Test 8: btree: repeated small key, big data pairs",
+    "Test 9: btree: duplicate keys",
+    "Test 10: btree, recno: test cursor flag use",
+    "Test 11: recno: reverse order insert",
+    "Test 13: btree, hash: differing byte orders",
+    "Test 20: skipped, dictionary too small",
+    "Test 40: btree: page split on index 0",
+    "Test 41: btree: no unsearchables due to page split on index 0",
+    "Test 50: btree: recursive traversal",
+    "Test 60: btree: big key, small data, byteswap unaligned access",
+    "Test 61: btree: small key, big data, byteswap unaligned access",
+    "Test 62: btree: small key, big data, known byte order files",
+    "Test 63: btree: big key, medium data, bt_split unaligned access"
+  ],
+  "own_C_consumer": "Kerberos local principal/MEMORY cache reopen/destroy/realm and absent-principal refusals/two recoveries; no tickets or network authentication\n",
+  "ksu_mode": "0o755",
+  "stage_collector_result_present": false,
+  "before_collection_summary": {
+    "scope": "Full maps retained in actual guest before-collect-3.json and local raw evidence copy; public digest/count summary only. Not an accepted aggregate result.",
+    "guest_path": "/mnt/lfs/sources/phase2/work/mitkrb-1/before-collect-3.json",
+    "maps": {
+      "artifacts": {
+        "entries": 897,
+        "canonical_json_sha256": "2aa9f46ae7b3aa49512444904767b55d72c7f0cde1673b8365430cdeeb845cc8"
+      },
+      "stage_sha256": {
+        "entries": 132,
+        "canonical_json_sha256": "8e68316dac1e141e351eb2d78a88ddfafeb1d1fda78f694801a9e0a048138bcd"
+      },
+      "reused_logs": {
+        "entries": 4,
+        "canonical_json_sha256": "8e15669803712075c37350c9e7391d8ad414c3e2831bc087d8f4d63a28506047"
+      }
+    },
+    "reused_logs": {
+      "original-crypto-tests.log": "606d0b7d99545a8bb4f2ce08a4c888654540f51980e59263cd7f31f7ab1a4345",
+      "original-gss-c-tests.log": "3af037f4233be4d806b3d19219eeb0258e7f652928136a6b0814ac9070032bcc",
+      "original-db2-tests.log": "a5fd4864f0377b923a782d05ac202a96c3b53e395a0f678495250696f2e5ec4d",
+      "original-stage.log": "eb5d3db74a5f01535950ac667e205978cb5f86fb0b9fd26efc4683a25ccd1c7d"
+    }
+  }
+}

@@ -3364,3 +3364,33 @@ headroom. No live guest writer/job; next implement isolated recipe/API/crypto
 checks and exact source alias. Ordinary reserves met, cold host gate not met.
 Prepared worker prerequisites accept normal fresh success or historical recovery
 success while still requiring exact native installed versions; no replay.
+
+### B02 Kerberos native checkpoint — 2026-11-10T19:59:38.620918+00:00
+
+### Kerberos native local work; aggregate producer incomplete — 2026-11-10
+
+[Native inputs](evidence/B02-mitkrb-input.json) applied all3 required frozen patches,
+readonly alias/EROFS and private worker12699/cache unchanged. Main compile and
+original selected crypto target passed; shared GSS make target unexpectedly
+started the full Python suite and failed before local C tests. Finish2 retained
+compiler/crypto and passed5original GSS C programs, DB2 default tests and stage;
+own transitive-stage linker failed. Collector3 C principal/MEMORY-cache/refusal/
+recovery passed with corrected search, then aggregate count assertion failed.
+[Failed collector](evidence/B02-mitkrb-collector-failed.json) retains exits2/1/1,24DB2 rows/
+20unique IDs, case20skip and book case12 exclusion, ksu0755 and C output. Aggregate
+result absent; NO native package/install/realm authentication/Settings/GUI claim.
+ADR0213: parked after two failed corrections, advance CUPS; no budget reset or
+successful test/source/compiler replay. Fresh count code corrected but unexecuted.
+
+Eligible CUPS2.4.19 official source authenticated. Source expansion26877563B; no guest input/job. Next source/SDK/service/install/test review and exact scratch budget before preparation.
+
+### Private-worker receipt namespace repair — 2026-11-10
+
+Prerequisite-selection variable shadow wrote MIT worker receipt over predecessor
+Libgtop native success. Exact retained controller output reproduced original
+receipt SHA2566c32a0e6bf67b13e27ae083f2d085a6ec0c03cb71a60138963db52f3699f6c45;
+actual mounted worker JSON relocated to its own path. Unique repair1 complete,
+[evidence](evidence/B02-mitkrb-worker-receipt-repair.json). No package/source/build
+replay or installed-root mutation. All3 preparers use distinct variables and
+fail-closed own receipt path guard, four regression cases passed. MIT producer
+remains parked; next eligible CUPS source/build review.

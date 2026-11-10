@@ -4,7 +4,8 @@ import errno,hashlib,json,os,subprocess,tarfile
 from prepare_editorconfig_shared_scratch import manifest as cache_manifest
 
 UUID='ae4347fb-31fd-4193-a333-0a549e144231'
-VERSIONS={'libqmi':('1.38.0','libqmi-1.38.0'),
+VERSIONS={'mitkrb':('1.22.2','krb5-1.22.2'),
+          'libqmi':('1.38.0','libqmi-1.38.0'),
           'modemmanager':('1.24.2','ModemManager-1.24.2'),
           'gnome-control-center':('50.4','gnome-control-center-50.4')}
 

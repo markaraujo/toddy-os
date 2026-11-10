@@ -21,6 +21,7 @@ def main():
  if (log/'libqmi-shared-scratch-1.json').exists():components.append('libqmi')
  if (log/'modemmanager-shared-scratch-1.json').exists():components.append('modemmanager')
  if (log/'libgtop-shared-scratch-1.json').exists():components.append('libgtop')
+ if (log/'mitkrb-shared-scratch-1.json').exists():components.append('mitkrb')
  for component in components:
   p=log/(component+'-shared-scratch-1.json');r=json.loads(p.read_text());assert r['state']=='mounted' and r['filesystem_uuid']==identity
   source=Path(r['source']);target=Path(r['target']);assert source==base/'toddy-editor-workers'/(component+'-1') and target==base.parent/(component+'-1')

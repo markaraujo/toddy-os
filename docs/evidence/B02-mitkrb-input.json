@@ -1,0 +1,193 @@
+{
+  "scope": "Actual native source preparation/private scratch only; no package or aggregate build acceptance. Worker receipt namespace repair is separately evidenced.",
+  "source": {
+    "state": "complete",
+    "name": "mitkrb",
+    "version": "1.22.2",
+    "source_name": "krb5-1.22.2",
+    "source": "/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/mitkrb-source-1/krb5-1.22.2",
+    "target": "/mnt/lfs/sources/phase2/inputs/krb5-1.22.2",
+    "filesystem_uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+    "original_cache_manifest": "a21d220a2550ce44311f47e1d4c3e0fe0fb87314f8205e0833051164eb34c412",
+    "archive_filename": "krb5-1.22.2.tar.gz",
+    "archive_sha256": "3243ffbc8ea4d4ac22ddc7dd2a1dc54c57874c40648b60ff97009763554eaf13",
+    "source_inode": 8297,
+    "source_fingerprint": "b54ee0666c75a41b978c4a1f56909e6a154c7dc6db5f2233b3a89588e39a974c",
+    "original_cache_unchanged": true,
+    "root_write_denied_EROFS": true,
+    "recovery": "Restore the same source inode/read-only alias after Doxygen, before any compiler; no extraction/preparation replay"
+  },
+  "worker": {
+    "state": "mounted",
+    "scope": "New private compiler subtree only on existing preallocated Doxygen scratch; no allocation/format/resize/deletion of original cache. Only worker mounted in compiler sandbox.",
+    "filesystem_uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+    "source": "/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/mitkrb-1",
+    "source_inode": 12699,
+    "target": "/mnt/lfs/sources/phase2/work/mitkrb-1",
+    "original_doxygen_manifest_sha256": "a21d220a2550ce44311f47e1d4c3e0fe0fb87314f8205e0833051164eb34c412",
+    "original_doxygen_unchanged": true,
+    "recovery": "After cold restore verify existing Doxygen UUID and this worker inode, then bind same subtree onto existing empty mitkrb-1 mountpoint. Never recreate, format or replay this preparation."
+  },
+  "prepared_input": {
+    "source_sha256": "3243ffbc8ea4d4ac22ddc7dd2a1dc54c57874c40648b60ff97009763554eaf13",
+    "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+    "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+    "source_patches": [
+      {
+        "path": "src/lib/krb5/ccache/ccbase.c",
+        "before_sha256": "74b6be0836b7286c5eb55e02814bc102e0c40c4a330ad55659f8570c91ebd1d2",
+        "after_sha256": "de102208bceda5459a7c8178b13352a127a3b3d6aafdffe112eea4f89d07b1e1",
+        "patch_sha256": "91bed46e7c59b4bc27df659c13abd4514e456293717720e8545d7f8acad00a97"
+      },
+      {
+        "path": "src/lib/krb5/os/expand_path.c",
+        "before_sha256": "a6c2016d9d5406d696c49c2258c95231c8c9982ba1228c9a1f7dbc0b0263e0ce",
+        "after_sha256": "445e0f6e4adab3ded41c155e31ca15e61ef8a45749887507befd1999ac13615b",
+        "patch_sha256": "91bed46e7c59b4bc27df659c13abd4514e456293717720e8545d7f8acad00a97"
+      },
+      {
+        "path": "src/lib/krb5/os/locate_kdc.c",
+        "before_sha256": "3109260228c63eccfb384f75dd0f1cf38a23f78802fd48eaab3a693e3b3cd83f",
+        "after_sha256": "73683576371a6eb5213d249fe568d791d328ed9776413cd6fab28c7f4b34afb2",
+        "patch_sha256": "91bed46e7c59b4bc27df659c13abd4514e456293717720e8545d7f8acad00a97"
+      },
+      {
+        "path": "src/plugins/preauth/pkinit/pkinit_crypto.h",
+        "before_sha256": "01acfaaf406c4d41b7544b7a09a476a4b7c36241cd38a4b83641a0f3080ae6d1",
+        "after_sha256": "62b41b4677a542fc8a59be2278c2929c96ec04e7902a7c7e9094563b0a61f6be",
+        "patch_sha256": "91bed46e7c59b4bc27df659c13abd4514e456293717720e8545d7f8acad00a97"
+      },
+      {
+        "path": "src/plugins/preauth/pkinit/pkinit_crypto_openssl.c",
+        "before_sha256": "2dcf0402aeb04ac92dd2c05d37b0d1f813bb98c28d159b7456873c4b711fc393",
+        "after_sha256": "56c90a098ebd46e839209b7403a93fb5149fc3839d89fe932b21ee57f0a9dd4f",
+        "patch_sha256": "91bed46e7c59b4bc27df659c13abd4514e456293717720e8545d7f8acad00a97"
+      },
+      {
+        "path": "src/plugins/preauth/pkinit/pkinit_identity.c",
+        "before_sha256": "7dca9bf5033e9527f0bf2b9bb00981f1fd8167a5cecd1ffd4da9fc7afd3863bd",
+        "after_sha256": "0b70f2ac415ac0c47f35a0ba10441c254cd8160820c1cbc37bec3139a573bfb2",
+        "patch_sha256": "91bed46e7c59b4bc27df659c13abd4514e456293717720e8545d7f8acad00a97"
+      },
+      {
+        "path": "src/plugins/preauth/pkinit/pkinit_matching.c",
+        "before_sha256": "d8d56e676706e46899bf7e4e37e0f98c9e04ac0b8fb99221cede28ef171f943f",
+        "after_sha256": "37837d823f96a196a297cfcd6c8dc33b113e69e627360d0491480fb591b428cc",
+        "patch_sha256": "91bed46e7c59b4bc27df659c13abd4514e456293717720e8545d7f8acad00a97"
+      },
+      {
+        "path": "src/tests/responder.c",
+        "before_sha256": "fc81893a1a8a9b1d35c4b6eef54491f36eb2d3e05365c2a8174285615c0c262d",
+        "after_sha256": "423cbc6fb692f543fff57cab35aa0517c37cab585a0136fce7e7ae4db8bf3b94",
+        "patch_sha256": "91bed46e7c59b4bc27df659c13abd4514e456293717720e8545d7f8acad00a97"
+      },
+      {
+        "path": "src/lib/gssapi/spnego/negoex_util.c",
+        "before_sha256": "77fd81a155e966be7cb805fd203df4592c6594cb49c30807af7d99e60b6d2dae",
+        "after_sha256": "93bd813018af8dfd56a7634c43aceb0902f3716cd2d1a8d242da4a6c05877e47",
+        "patch_sha256": "fcab4e4117667f4ffde3733b00c47ea3da12a9a5355e6aa6e2b124a9543e6181"
+      },
+      {
+        "path": ".github/workflows/build.yml",
+        "before_sha256": "f16b5e02c912ab85f0b6f08b232b0a77a00f014efde1249ca55bb14bb776ccea",
+        "after_sha256": "426c8f3fb4b74a29853a88ad961601312d800bce89a5352b58726d7521b057eb",
+        "patch_sha256": "703f634a0731a0355079211593491f3e175acfce237ed92b97cd04bd1e21bcc1"
+      },
+      {
+        "path": "src/plugins/preauth/pkinit/pkinit_crypto_openssl.c",
+        "before_sha256": "56c90a098ebd46e839209b7403a93fb5149fc3839d89fe932b21ee57f0a9dd4f",
+        "after_sha256": "21d8dd3212f5e18996c288939a9a34017d09e539b3f6675fe3b2b49a13f97f78",
+        "patch_sha256": "703f634a0731a0355079211593491f3e175acfce237ed92b97cd04bd1e21bcc1"
+      },
+      {
+        "path": "src/plugins/tls/k5tls/openssl.c",
+        "before_sha256": "858b793b789313451efaf7a56177a979de5461f3e3b8e25314f0cc34987fbcf5",
+        "after_sha256": "6d78334cb6a3d69f59259ec10e9ee71deca9c308c5fe90e68b57749106d49def",
+        "patch_sha256": "703f634a0731a0355079211593491f3e175acfce237ed92b97cd04bd1e21bcc1"
+      },
+      {
+        "path": "src/plugins/kdb/db2/libdb2/test/run.test",
+        "before_sha256": "d226c40cc34df7e8eb2207b81a857f798d5908ac2a743adf15216aa641e79ce6",
+        "after_sha256": "425d51d79f40da1b18773bc4a1c96ff005e38b1495db61844cd1104cfcb8166b",
+        "reason": "Exact frozen BLFS default test12 exclusion; remaining default DB2 cases retained, not a full-suite claim"
+      }
+    ],
+    "recipe_sha256": "5f4daaf8fcfbbb52e19bc28b0bfa73f35e9cff38a8514a6471098aba869290ff",
+    "extra_source": {
+      "name": "mitkrb-openssl4-fixes",
+      "version": "1.22.2",
+      "filename": "mitkrb-1.22.2-openssl_4_fixes-1.patch",
+      "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-openssl_4_fixes-1.patch",
+      "sha256": "703f634a0731a0355079211593491f3e175acfce237ed92b97cd04bd1e21bcc1",
+      "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+      "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+      "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+      "status": "source_verified"
+    },
+    "extra_sources": [
+      {
+        "name": "mitkrb-upstream-fix",
+        "version": "1.22.2",
+        "filename": "mitkrb-1.22.2-upstream_fix-1.patch",
+        "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-upstream_fix-1.patch",
+        "sha256": "91bed46e7c59b4bc27df659c13abd4514e456293717720e8545d7f8acad00a97",
+        "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+        "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+        "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+        "status": "source_verified"
+      },
+      {
+        "name": "mitkrb-security-fix",
+        "version": "1.22.2",
+        "filename": "mitkrb-1.22.2-security_fix-1.patch",
+        "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-security_fix-1.patch",
+        "sha256": "fcab4e4117667f4ffde3733b00c47ea3da12a9a5355e6aa6e2b124a9543e6181",
+        "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+        "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+        "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+        "status": "source_verified"
+      },
+      {
+        "name": "mitkrb-openssl4-fixes",
+        "version": "1.22.2",
+        "filename": "mitkrb-1.22.2-openssl_4_fixes-1.patch",
+        "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-openssl_4_fixes-1.patch",
+        "sha256": "703f634a0731a0355079211593491f3e175acfce237ed92b97cd04bd1e21bcc1",
+        "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+        "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+        "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+        "status": "source_verified"
+      }
+    ],
+    "probe_sha256": "436ced32ae5af14e8852c5f1a91f77a5173ea5171667c25df8cf8f312628cf48"
+  },
+  "jobs": {
+    "mitkrb-1": {
+      "pid": 45040,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "1216687",
+      "started_unix": 1794340065.709019,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": "2",
+      "command_sha256": "70944dff81fa55981974735e46de13bd2021bd8d0bb4e73985169a6e20d6e600"
+    },
+    "mitkrb-finish-2": {
+      "pid": 58431,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "1238251",
+      "started_unix": 1794340281.3570907,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": "1",
+      "command_sha256": "304451e8fb8c06c095daf38e80636415b8a054a777486ec389dc2ea829ab670a"
+    },
+    "mitkrb-collect-3": {
+      "pid": 61513,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "1250728",
+      "started_unix": 1794340406.1233866,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": "1",
+      "command_sha256": "8ebea03f4980f6bbdb7a64b4613aa6f1c150f56e6b9b28ae8a67a0f66b10a07d"
+    }
+  }
+}
