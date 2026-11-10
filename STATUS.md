@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T13:26:05.879710+00:00
+Updated: 2026-11-10T14:38:21.234856+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T13:26:05.879710+00:00
+Last verified: 2026-11-10T14:38:21.234856+00:00
 
 Verified:
 
@@ -155,13 +155,19 @@ Verified:
 - Native kernel archive QA0/0/root changed0, kernel7.1.8-1+toddy1 install0/0/12changes and separate toddy-boot-config0.1-2+toddy1 install0/0/6changes. Complete12027payload/root ownership/modes/APT and three old recovery artifacts verified; menu default0 plus recovery/source/syntax/ownership0. Actual installed/default/recovery-entry boots not run; resource branch parked below100GiB+512MiB guard. Virtual free-block reclamation0 preserved160864installed OS entries and111558original kernel cache entries; later headroom shortfall remains unresolved. No GNOME/ISO/physical acceptance.
 - LocalSearch3.11.1 cached source4505604bytes/frozen SHA verified;17actual selected/required SDK modules found including Tinysparql/GExiv2/GLib/Gst/ICU/seccomp. No guest source/job or search/runtime/GUI acceptance.
 - LocalSearch3.11.1 UID101 isolated compile/stage verified:186ELFs/133stagefiles,13original non-slow common/indexer/extract utility programs0,Landlock/seccomp enabled; minimum compiler free17269211136B above16GiB. Initial job1 only own valueless-macro collector assertion; collection2 actual0 with all compiled/staged bytes unchanged. Derived exact suite/name inventory leaves72unexecuted programs. No native runtime/index/search/sandbox/Stop/recovery/install/GUI acceptance; ADR0205.
+- Owned Enchant2.8.19: original private SDK267/API432/explicit real Aspell provider25cases; installed API/CLI persistence/session/refusal/recovery/APT0, native recipe/post0/0. Default zero-case provider scan and four unexecuted CLI scripts are not passes.
+- Owned Libspelling0.4.11: original four programs21cases, real installed Spelling1 GI English correction/refusal/ignore/recovery/APT0, native recipe/post0/0. Optional Vala disabled to match owned GtkSourceView C/GI SDK; no GUI claim.
+- Owned EditorConfig0.12.11:202original tests, exact test gitlink and installed C API/CLI layered UTF8 settings/refusal/input retention/recovery/APT0; native recipe/post0/0/26changes.
+- GNOME Text Editor50.1 compiled/staged with default EditorConfig enabled; actual --version GTK4.22.4/GtkSourceView5.20.0, desktop/schema and original offline AppStream metadata validation passed. No installed editor or graphical open/save/navigation/focus/recovery acceptance.
+- Shared preallocated Doxygen scratch now hosts isolated private editor workers; original Doxygen and earlier worker bytes retained. Cargo-c duplicate promotion retirement reclaimed165642240B with installed-root0/original-stage unchanged, native archive/source/compiler/raw retained.
 
-Running: Aspell English API/CLI installed and verify-only0/0/root0 after dictionary-only and NNP-launcher corrections; immutable archive/source/92ELFs retained, generated Info metadata reconciled. Current eligible editor work Enchant2.8.19/UnitTest++ prerequisites. Target only23.7MiB above16GiB reserve: qualify duplicate promotion-stage custody before next compilation. LocalSearch native branch remains parked2failedcorrections; no fourth attempt. Complete ALL B02 then stop.
+Running: GNOME Text Editor50.1 stage qualified; next owned native package with schema/cache ownership, followed by actual GUI validation. No live guest writer. Enchant/Libspelling/EditorConfig already installed, no build/test/install replay. LocalSearch and shell branches remain parked pending bounded new evidence. Complete ALL B02 then stop.
 
 Remaining:
 
-- LocalSearch/Nautilus/browser/editor/settings and first working interactive native GNOME session.
-- Actual installed/default/recovery-entry boots after stable host headroom; no cold restore acceptance yet.
+- Native editor package and actual graphical edit/save/reopen/refusal/recovery/focus/responsiveness tests.
+- LocalSearch/Nautilus/browser/settings and first fully working interactive native GNOME session.
+- Foundation recovery-entry boot remains pending; actual installed main7.1.8/Systemd already observed in failed LocalSearch native tests, not desktop acceptance.
 - Minimal desktop branding/offline usability/security-ABI review and reference guest measurements.
 
 [Acceptance evidence](docs/evidence/B02.md)
