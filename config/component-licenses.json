@@ -10917,6 +10917,24 @@
           ]
         }
       }
+    },
+    {
+      "name": "libnma",
+      "version": "1.10.6",
+      "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT",
+      "evidence": "Exact source named notices plus leading C/header source conditions, including QR generator MIT, retained. GTK3/GTK4 with owned Gcr4 and same libnm API. Actual widgets/credentials/network and shared schema cache pending; no full GI namespace claim.",
+      "extra_license_headers": {
+        "libnma-1.10.6.tar.xz": {
+          "prefixes": [
+            "src/",
+            "shared/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

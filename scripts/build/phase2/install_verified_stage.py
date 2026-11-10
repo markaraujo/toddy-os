@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libnma': ('1.10.6', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy7), gtk3 (>= 3.24.52-1+toddy2), networkmanager (= 1.58.1-1+toddy1), gcr (= 4.4.0.1-1+toddy1), iso-codes (= 4.20.1-1+toddy1)', 'libnma-1.10.6.tar.xz', 'usr/lib/pkgconfig/libnma-gtk4.pc'),
     'networkmanager': ('1.58.1', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libndp (= 1.9-1+toddy1), gnutls (= 3.8.13-1+toddy1), libpsl (= 0.23.3-1+toddy1), curl (>= 8.23.0-1), readline (>= 8.3-1), util-linux (>= 2.42.4-1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3), polkit (= 127-1+toddy1)', 'NetworkManager-1.58.1.tar.xz', 'usr/lib/pkgconfig/libnm.pc'),
     'libndp': ('1.9', 'glibc (>= 2.44-1+toddy1)', 'libndp-1.9.tar.gz', 'usr/lib/pkgconfig/libndp.pc'),
     'geoclue': ('2.8.2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), libsoup (= 3.6.6-1+toddy1), json-glib (= 1.10.8-1+toddy1), systemd (>= 261.2-1+toddy3), gobject-introspection (>= 1.86.0-1+toddy1)', 'geoclue-2.8.2.tar.bz2', 'usr/lib/pkgconfig/libgeoclue-2.0.pc'),
@@ -250,6 +251,7 @@ if __name__ == '__main__':
     if name=='evolution-data-server':qualifier='evolution-data-server-private-4'
     if name=='ibus':qualifier='ibus-machine-5'
     if name=='libgweather':qualifier='libgweather-stage-2'
+    if name=='libnma':qualifier='libnma-stage-2'
     if name=='vala':qualifier='vala-consumer-2'
     if name=='libunistring':qualifier='libunistring-consumer-2'
     if name=='gcr':qualifier='gcr-finish-4'
@@ -1205,6 +1207,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='libnma':
+        from qualify_libnma import qualify as qualify_libnma
+        qualify_libnma(ROOT)
     if name=='networkmanager':
         from qualify_networkmanager import qualify as qualify_networkmanager
         qualify_networkmanager(ROOT)

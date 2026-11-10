@@ -1,0 +1,216 @@
+{
+  "scope": "Owned GTK3/GTK4/Gcr4 libnma1.10.6: one original test-utils and stage-only recovery preserving101ELFs;16manual programs compile only. Actual installed C/public selected NMA+NMA4 type imports/refusal/recovery/SDK0. GIR warnings/full namespace coverage and schemas/actual widgets/focus/credentials/network/GNOME remain unqualified.",
+  "source": {
+    "name": "libnma",
+    "version": "1.10.6",
+    "filename": "libnma-1.10.6.tar.xz",
+    "url": "https://download.gnome.org/sources/libnma/1.10/libnma-1.10.6.tar.xz",
+    "sha256": "53a6fb2b190ad37c5986caed3e98bede7c3c602399ee4f93c8fc054303d76dab",
+    "reference": "BLFS13.1-systemd basicnet/libnma.html",
+    "book_page_sha256": "6d2657b3f821052d6f686184cf8657fa291c2a3cacc99000734692575e1f330f",
+    "book_md5": "71c7ce674fea1fae8f1368a7fcb6ff43",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Actual GTK3 and GTK4 libnma1.10.6/GI/Vala with owned Gcr4 certificate support and ISO codes. One original test-utils driver; sixteen manual GTK executables compile only. Own widget type/GTK ABI and libnm refusal/recovery consumers, NOT actual widget open/focus, credentials/WiFi/network/GNOME acceptance. Optional cellular provider DB omitted.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_registered_tests": [
+      {
+        "cmd": [
+          "/build/compile/src/utils/test-utils"
+        ],
+        "env": {},
+        "name": "test-utils",
+        "workdir": null,
+        "timeout": 30,
+        "suite": [
+          "libnma"
+        ],
+        "is_parallel": true,
+        "priority": 0,
+        "protocol": "exitcode",
+        "depends": [
+          "0f13bc3@@test-utils@exe"
+        ],
+        "extra_paths": []
+      }
+    ],
+    "original_tests": [
+      {
+        "name": "libnma:test-utils",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "consumers": {
+      "3": {
+        "GTK_major": 3,
+        "libnma_version": "1.10.6",
+        "actual_widget_types": true,
+        "libnm_refusal_recovery": true,
+        "widget_open_or_focus_tested": false
+      },
+      "4": {
+        "GTK_major": 4,
+        "libnma_version": "1.10.6",
+        "actual_widget_types": true,
+        "libnm_refusal_recovery": true,
+        "widget_open_or_focus_tested": false
+      }
+    },
+    "artifacts_count": 101,
+    "artifacts_manifest_sha256": "82b61ade14c99139d9c8186aa695cc75547e7d415aad4084d8a80535f2910e81",
+    "stage_sha256_count": 114,
+    "stage_sha256_manifest_sha256": "f78fa8ba4d870aa206da7bfa0ca55a5b63fd05eb541c75aba52e5e596bc03d60",
+    "unchanged_original_elfs_count": 101,
+    "unchanged_original_elfs_manifest_sha256": "82b61ade14c99139d9c8186aa695cc75547e7d415aad4084d8a80535f2910e81"
+  },
+  "transaction": {
+    "step": "b02-libnma-install-2",
+    "started": "2026-11-10T01:33:51.972162+00:00",
+    "recipe_sha256": "04d67163f6f34ca4fa80e503dbd33d0c55005d0950970e926e3c4476c40c4fb0",
+    "postcheck_sha256": "2e5f7400c00b3f0170b24935d4e83121216d46278e39b9e0b7f1926908ad5eda",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "0bd1d15174cbcdd4b6be4e7468378818f003f78a152cf9cb596b9ec0c658627f",
+    "recipe_pid": 522520,
+    "recipe_pgid": 522520,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T01:34:08.818599+00:00",
+    "changed_paths": 174,
+    "log_sha256": "21f78781ebaf69cb71237234ec6c2fccc5cb5345283022db3cf1178937444c8c",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "ca6b3a1527e0c5842f44bb8503aba603c1a95fe76dd1b0b29578650f8a5c5fcd"
+  },
+  "timing": {
+    "step": "b02-libnma-install-2",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.361,
+        "entries": 156015,
+        "regular_files": 138997,
+        "regular_bytes": 7356680136
+      },
+      {
+        "seconds": 14.303,
+        "entries": 156186,
+        "regular_files": 139161,
+        "regular_bytes": 7358835796
+      }
+    ],
+    "total_seconds": 32.24
+  },
+  "installed_consumer": {
+    "scope": "Owned GTK3+4/Gcr4 library/public selected GI type imports/C ABI/libnm refusal/recovery/SDK only. Source GIR warnings and untested bindings retained; no full namespace conformance. Shared schema cache/actual widget open/focus/credentials/WiFi/network/GNOME pending.",
+    "records": [
+      {
+        "C": {
+          "GTK_major": 3,
+          "libnma_version": "1.10.6",
+          "actual_widget_types": true,
+          "libnm_refusal_recovery": true,
+          "widget_open_or_focus_tested": false
+        },
+        "GI": {
+          "namespace": "NMA1.0",
+          "GTK_major": 3,
+          "public_widget_and_mobile_types": true,
+          "actual_widget_open_tested": false
+        }
+      },
+      {
+        "C": {
+          "GTK_major": 4,
+          "libnma_version": "1.10.6",
+          "actual_widget_types": true,
+          "libnm_refusal_recovery": true,
+          "widget_open_or_focus_tested": false
+        },
+        "GI": {
+          "namespace": "NMA41.0",
+          "GTK_major": 4,
+          "public_widget_and_mobile_types": true,
+          "actual_widget_open_tested": false
+        }
+      }
+    ],
+    "loaded_owned_libraries": true
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-libnma-install-evidence.tar.gz",
+    "sha256": "01bd34fedb47af25b30e39af56f4d52ea52fbf69d92e6faeb929fc88d208259b",
+    "members": [
+      "build/b02-libnma-install-2.log",
+      "build/b02-libnma-install-2.manifest.json",
+      "build/b02-libnma-install-2.success.json",
+      "build/b02-libnma-install.failed.json",
+      "build/b02-libnma-install.log",
+      "build/b02-libnma-install.manifest.json",
+      "phase2/b02-libnma-install-2-controller.log",
+      "phase2/b02-libnma-install-2-timing.json",
+      "phase2/libnma-1-controller.log",
+      "phase2/libnma-1.exit",
+      "phase2/libnma-1.job.json",
+      "phase2/libnma-1.log",
+      "phase2/libnma-installed-consumer.json",
+      "phase2/libnma-stage-2-controller.log",
+      "phase2/libnma-stage-2.exit",
+      "phase2/libnma-stage-2.job.json",
+      "phase2/libnma-stage-2.log",
+      "phase2/libnma-stage.json",
+      "work/ELFs-before-stage-2.json",
+      "work/compile/meson-logs/testlog.json",
+      "work/native-GI-3.json",
+      "work/native-GI-4.json",
+      "work/native-consumer-3.json",
+      "work/native-consumer-4.json",
+      "work/original-registered-tests.json",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  },
+  "initial_prewrite_failure": {
+    "step": "b02-libnma-install",
+    "started": "2026-11-10T01:31:39.722658+00:00",
+    "recipe_sha256": "04d67163f6f34ca4fa80e503dbd33d0c55005d0950970e926e3c4476c40c4fb0",
+    "postcheck_sha256": "2e5f7400c00b3f0170b24935d4e83121216d46278e39b9e0b7f1926908ad5eda",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "0bd1d15174cbcdd4b6be4e7468378818f003f78a152cf9cb596b9ec0c658627f",
+    "recipe_pid": 522210,
+    "recipe_pgid": 522210,
+    "recipe_exit": 1,
+    "postcheck_exit": null,
+    "finished": "2026-11-10T01:31:55.193341+00:00",
+    "changed_paths": 0,
+    "log_sha256": "041989b379d76fc303199a136dedc81189b85bc7ae716b79a67cae3a89aee3d1",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "867b85a4e32249f51561f53d64528aa0c8f064c50371b46659dbaa41efa7d606"
+  },
+  "stage_GI": [
+    {
+      "namespace": "NMA1.0",
+      "GTK_major": 3,
+      "public_widget_and_mobile_types": true,
+      "actual_widget_open_tested": false
+    },
+    {
+      "namespace": "NMA41.0",
+      "GTK_major": 4,
+      "public_widget_and_mobile_types": true,
+      "actual_widget_open_tested": false
+    }
+  ]
+}

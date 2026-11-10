@@ -7,7 +7,25 @@ foundation tests remain unperformed. No complete GNOME/login/apps or Phase2 ISO.
 
 ## Current slice and exact next action
 
-Current slice: NetworkManager1.58.1 OWNED; no active guest writer. Original
+Current slice: libnma1.10.6 OWNED; no active guest writer. Initial compile1 ninja0/
+194tasks/101ELFs, own assumed-empty original registry guard failed. Actual stage2
+ran original test-utils0 without rebuild;101old ELFs unchanged/114staged files,
+GTK3/4 C ancestry/refusal/recovery and selected NMA/NMA4 GI imports0. Source
+SHA53a6fb2b190ad37c5986caed3e98bede7c3c602399ee4f93c8fc054303d76dab;
+inputlibnma-1.10.6/worklibnma-1. Preserve original1failed/stage2passed job logs and
+scanner nma-ws C-header diagnostics: complete GI binding coverage unqualified.
+Sixteen manual GTK binaries compiled, NOT actual GUI/credential/network passes.
+Initial native guard1/rootchanges0 lacked resume map; absence checked before new
+`b02-libnma-install-2` recipe/post0/0,174changedpaths/346owned entries. Installed
+UID101 C and selected default GI/GTK3+4/Gcr4/Gck2/SDK/APT0; archiveSHA
+2d70832c46983368c371475477a216d118144fc2c797daca560189eccdc05adb.
+[Proof](evidence/B02-libnma-install.json), ADR0177/rawSHA
+01bd34fedb47af25b30e39af56f4d52ea52fbf69d92e6faeb929fc88d208259b.
+NEVER replay accepted compiler/original/stage/native package. Two nm-applet schema
+XMLs installed, stock GTK-owned cache union still required before actual GUI.
+No widget opened/focused; actual GNOME acceptance remains mandatory.
+
+NetworkManager1.58.1 OWNED; no native daemon enabled/started. Original
 `networkmanager-1` compile/stage/consumer exit0,613ELFs/285stagefiles. All67original
 programs OK;20nested skips remain unqualified (one CA-path fixture and optional
 JSON/team tests), not root/network/GUI acceptance. Input
@@ -61,12 +79,14 @@ launcher path and failure2 own authorization assumption preserved in ledger and
 compiler/accepted native service gate. RawSHA
 a25ab5ef972b8bd5cc8713f277631d0ef4ea9b5aa8441f33208e66c269328092.
 
-Exact next: installed NM native service/network policy gate or selected
-libnma1.10.6 source/options/owned Gtk3+4/Gcr review and isolated input, followed by
-GDM50.2/Shell50.4. Preserve actual permission/Stop/reconnect/replay/persist gates,
-then first actual native desktop/basic apps/offline/focus/responsiveness/metrics.
-No current guest writer. Target lastfree18045796352B before native package; measure
-again before next allocation, preserve target16GiB/host100GiB reserves.
+Exact next: GDM50.2 actual source/options/PAM/library review and one isolated
+input/build; keep Wayland/local login/full PAM, omit only supported X11 path.
+Source/options already reviewed in `.local/phase2/gdm-{meson.build,meson_options.txt}`.
+Owned NM actual service/network/permission/Stop/persist and GTK cache union still
+mandatory; selected SettingsDaemon50.1/Shell50.4 already frozen/cached. First actual
+native desktop/basic apps/offline/focus/responsiveness/metrics remain incomplete.
+No active guest writer. Measure target/host before allocation; last target free
+18045796352B before NM/libnma packages, target16GiB/host100GiB reserves.
 One writer; current target reserve16GiB/host100GiB: measure before allocation.
 Changes this slice affect package profile and privileged native fixture: reuse
 accepted compiler/consumer/service receipts. make check passed291tests;
@@ -229,3 +249,9 @@ HTTP200/indexSHAccd0f2d54ba575a34d1b8b713290293cc5345b515e87aab4e3156c4374bd4b35
 Latest libndp publication49130ffb598230828ab76bebbca1ceb7b15da763: planning
 42734287525/safety42734287134/Pages42734287122 allsuccess; exact public HTTP200/
 indexSHAd327b388aa366d343a2c8f6ae42955cb4f41b4b2c591ffebcb137089068e57e3.
+
+NetworkManager publication c15c9209803de31f126fe6919855a66e010ba479:
+planning42735652410/safety42735652231/Pages42735652456 allsuccess. Actual final
+HTTP200/exact public indexSHAf697762ae14a53e84b400c797d30e363c70d2b8e65138825d7e42437087b996d;
+`.local/phase2/c15c920-public-verified.json`. Initial before-terminal page check
+failed while prior49130ff was still public; no success inferred from waiting.
