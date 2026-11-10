@@ -1,0 +1,17 @@
+{
+  "state": "complete",
+  "scope": "One closed byte-identical H11 ISO replica; preserve both original paths, checksums, test evidence, remote release and all VM images",
+  "original_path": ".local/vm/live-media/h11-6gt6n78r/toddy.iso",
+  "retained_path": ".local/releases/toddy-foundation-2026-11-07/toddy-foundation-x86_64.iso",
+  "sha256": "4dd9de7a38c4f0d745c2fb74bfdb63e552c372211e5274961814fd9b3d7d22b9",
+  "original_inode": 11928657,
+  "retained_inode": 17171338,
+  "original_allocated_bytes": 1095004160,
+  "original_mode": 436,
+  "original_mtime_ns": 1794058022663550103,
+  "bytes": 1095000064,
+  "host_available_before": 107087634432,
+  "host_available_after": 108182634496,
+  "recovery": "If independent file metadata is needed, copy verified retained bytes into a new temporary file, apply original mode/timestamp, atomically replace only the H11 alias. Never edit shared immutable ISO bytes or replay custody.",
+  "reclaimed_bytes": 1095000064
+}
