@@ -8,7 +8,27 @@ No accepted complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current slice: GStreamer1.28.6 core OWNED; compile/originals/stage accepted:
+Current slice: GST Base1.28.6 OWNED; no active guest writer.
+Buildgst-plugins-base-1 PID7533 terminal0,660ELFs/331stagefiles;
+80originalsOK/37optional validator SKIP,17real GL-context originals compiled/deferred.
+Actual App/Audio/Video GI and exact red-video/silent-stereo samples/two EOS→NULL
+cycles each0. Nativeb02-gst-plugins-base-install PID14020 terminal0/0,910changedpaths/
+1004owned entries/archiveSHA690fa299efae5e634dc3f48b650fe4391486035ee368f11900661f60a1450168.
+[Proof](evidence/B02-gst-plugins-base-install.json), ADR0185/rawSHA
+5c580f5b5fb3da7b4c3ed7381b4ceee18542a873b6c82f8fae0c84a39fa024c8.
+NEVER rebuild/restage/reinstall/replay portable originals. Actual GL-context originals,
+devices/audio/playback/screencast remain unqualified. Input/work
+/mnt/lfs/sources/phase2/{inputs/gst-plugins-base-1.28.6,work/gst-plugins-base-1};
+logs/exit/job /var/log/toddy/phase2/gst-plugins-base-1.{job.json,log,exit}.
+Exact next: prepare fresh native Shell2 using actual registered ephemeral PAM/
+logind/user-bus session and new owned Gst inputs, with source-supported UI
+instrumentation/captures. Reuse qualified session client; no credential-suite
+replay, owner credential, unsafe-mode, GDM/login/basic-app acceptance. Settings/
+real audio/basic apps remain final gates. Native1 stays failed; exact startup wait
+cause unisolated. Commit/preflight before boot, verify terminal/backing then restore
+existing builder/scratch. NEVER boot stale overlay or repeat prior restore receipts.
+
+Previous slice: GStreamer1.28.6 core OWNED; compile/originals/stage accepted:
 `gstreamer-1` PID1645 terminal0,406ELFs/213stagefiles,107original programs OK,
 one original validate.simplest SKIP (optional gst-validate absent, not a pass).
 Actual GI/raw caps/buffer/refusal/two synthetic EOS→NULL cycles0; no hardware,
@@ -27,10 +47,8 @@ e51ed504763515f4f607255d2f77d588bcf8820e8608f1590153418d4fcef9e0.
 a35c2d22ee5de6eca4c28bfc8610825d411ac1543c469cc850dfea2deb1d5f39.
 Actual installed UID101 GI/synthetic pipelines/private no-route/SDK/APT0;
 registry removed, no privileged PTP helper. NEVER rebuild/retest/reinstall core.
-Exact next: read actual GST base1.28.6 options/test dependencies, preflight owned
-SDKs/reserves, prepare ONE isolated base build. Source already frozen/cached; no
-prepared input/job yet. Then required Settings/basic apps and actual PAM/logind
-session integration before a new native Shell attempt. No unchanged native1 retry.
+GST Base is now the active writer above. Required Settings/basic apps and actual
+PAM/logind session integration remain before a new native Shell attempt.
 
 ## First native Shell failure and recovery
 

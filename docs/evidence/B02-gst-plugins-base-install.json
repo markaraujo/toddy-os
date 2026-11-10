@@ -1,0 +1,1572 @@
+{
+  "scope": "Owned frozen GStreamer Base1.28.6 A/V/app/playback/ALSA/Ogg/Vorbis/Pango and compiled EGL/GLES2 Wayland/surfaceless/GBM.80originals OK/37validate SKIP/17real GL-context originals compiled/deferred;660ELFs/331stagefiles. Actual installed UID101 App/Audio/Video GI/exact synthetic RGB/silent samples/two A/V EOS\u2192NULL cycles/four SDKs/APT0. No devices/real playback/GL/screencast acceptance.",
+  "source": {
+    "name": "gst-plugins-base",
+    "version": "1.28.6",
+    "filename": "gst-plugins-base-1.28.6.tar.xz",
+    "url": "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.28.6.tar.xz",
+    "sha256": "0ba699c7c6c66f4ba640be78cb38a24715add9683f3e3a199f5369dc5a4f04ac",
+    "reference": "BLFS13.1-systemd multimedia/gst10-plugins-base.html",
+    "book_page_sha256": "ea452fd86a4f4b818bf6f5c39bbf1b8b006613dcf98e3894dfbf5e6c7f97ff30",
+    "book_md5": "cd0b2bd13e8196d5bfb20459c12a5d9b",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Frozen GStreamer Base1.28.6 core raw audio/video/app/playback/ALSA/Ogg/Vorbis/Pango and EGL/GLES2 Wayland/surfaceless/GBM build; ORC JIT/optional extra codecs/X11/examples omitted. Original17real GL-context programs compiled/deferred to native session, no passing claim. Actual own synthetic video red pixels/audio silence through appsink+typed Audio/Video GI/Stop/recovery only, no devices/real audio/playback/GL/GNOME screencast acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "gst-plugins-base:gst_typefindfunctions",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_audio",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_audiocdsrc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_audiodecoder",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_audioencoder",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_audiosink",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_baseaudiovisualizer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_dsd",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_discoverer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_fft",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_libsabi",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_mikey",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_navigation",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_profile",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_pbutils",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_rtp",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_rtpbasedepayload",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_rtpbasepayload",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_rtphdrext",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_rtpmeta",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_rtsp",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_sdp",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_tag",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_videoanc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_videoencoder",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_videodecoder",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_videotimecode",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_xmpwriter",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_adder",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_appsink",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_appsrc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_audioconvert",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_audiointerleave",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_video",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_audiorate",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_audiotestsrc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_audioresample",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_audiomixer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_decodebin",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_overlaycomposition",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_playbin",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_playsink",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_streamsynchronizer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_subparse",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_urisourcebin",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_videoconvert",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_videorate",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_videoscale",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_videotestsrc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_volume",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:generic_clock_selection",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:generic_states",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_compositor",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:pipelines_simple_launch_lines",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:pipelines_capsfilter_renegotiation",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:pipelines_gio",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:pipelines_streamsynchronizer",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:pipelines_basetime",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_allocators",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_rtspconnection",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_multifdsink",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_multisocketsink",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_playbin_complex",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_textoverlay",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_vorbisdec",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_vorbistag",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:pipelines_oggmux",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:pipelines_tcp",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:pipelines_vorbisenc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:pipelines_vorbisdec",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_gstglapi",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_gstglmatrix",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:libs_gstlibscpp",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements-videoscale-1",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements-videoscale-2",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements-videoscale-3",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements-videoscale-4",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements-videoscale-5",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements-videoscale-6",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.audiotestsrc.reverse",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.10_to_1fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse.10_to_1fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse_fast.10_to_1fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse_slow.10_to_1fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse.10_to_30fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse_fast.10_to_30fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse_slow.10_to_30fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse.1_to_10fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse_fast.1_to_10fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse_slow.1_to_10fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse.30fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse_fast.30fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse_slow.30fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse.variable_to_10fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse_fast.variable_to_10fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.reverse_slow.variable_to_10fps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.caps_change",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.caps_change_new_pref_0_0",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.caps_change_new_pref_1_0",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.change_rate_while_playing",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.change_rate_reverse_playback",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.rate_0_5",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.rate_0_5_with_decoder",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.rate_2_0",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.rate_2_0_with_decoder",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.duplicate_on_eos",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.duplicate_on_eos_disbaled",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.duplicate_on_eos_half_sec",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.fill_segment_after_caps_changed_before_eos",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.videorate.drop_out_of_segment",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.compositor.renogotiate_failing_unsupported_src_format",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.giosrc.read-growing-file",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.encodebin.set-encoder-properties",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.uridecodebin.expose_raw_pad_caps",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.fakevideodec.encoded",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:validate.fakevideodec.simple",
+        "result": "SKIP",
+        "returncode": 0
+      },
+      {
+        "name": "gst-plugins-base:elements_inputselector",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "deferred_originals": {
+      "reason": "Original real GL context programs deferred to native session; not skipped passes or unchanged suite replay",
+      "tests": [
+        {
+          "cmd": [
+            "/build/compile/tests/check/libs_gstglcolorconvert"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/libs_gstglcolorconvert.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "libs_gstglcolorconvert",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@libs_gstglcolorconvert@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/libs_gstglcontext"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/libs_gstglcontext.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "libs_gstglcontext",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@libs_gstglcontext@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/libs_gstglfeature"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/libs_gstglfeature.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "libs_gstglfeature",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@libs_gstglfeature@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/libs_gstglformat"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/libs_gstglformat.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "libs_gstglformat",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@libs_gstglformat@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/libs_gstglheaders"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/libs_gstglheaders.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "libs_gstglheaders",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@libs_gstglheaders@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/libs_gstglmemory"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/libs_gstglmemory.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "libs_gstglmemory",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@libs_gstglmemory@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/libs_gstglquery"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/libs_gstglquery.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "libs_gstglquery",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@libs_gstglquery@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/libs_gstglshader"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/libs_gstglshader.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "libs_gstglshader",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@libs_gstglshader@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/libs_gstglsl"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/libs_gstglsl.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "libs_gstglsl",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@libs_gstglsl@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/libs_gstglslstage"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/libs_gstglslstage.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "libs_gstglslstage",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@libs_gstglslstage@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/libs_gstglupload"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/libs_gstglupload.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "libs_gstglupload",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@libs_gstglupload@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/elements_glimagesink"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/elements_glimagesink.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "elements_glimagesink",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@elements_glimagesink@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/elements_glbin"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/elements_glbin.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "elements_glbin",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@elements_glbin@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/pipelines_gl_launch_lines"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/pipelines_gl_launch_lines.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "pipelines_gl_launch_lines",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@pipelines_gl_launch_lines@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/elements_glfilter"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/elements_glfilter.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "elements_glfilter",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@elements_glfilter@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/elements_glstereo"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/elements_glstereo.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "elements_glstereo",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@elements_glstereo@exe"
+          ],
+          "extra_paths": []
+        },
+        {
+          "cmd": [
+            "/build/compile/tests/check/elements_glmixer"
+          ],
+          "env": {
+            "GST_PLUGIN_PATH_1_0": "/build/compile:/usr/lib/gstreamer-1.0",
+            "GST_PLUGIN_SYSTEM_PATH_1_0": "",
+            "GST_STATE_IGNORE_ELEMENTS": "cdio cdparanoiasrc libvisual_ alsasrc alsasink",
+            "CK_DEFAULT_TIMEOUT": "30",
+            "GST_TAG_LICENSE_TRANSLATIONS_DICT": "/src/gst-libs/gst/tag/license-translations.dict",
+            "GST_PLUGIN_LOADING_WHITELIST": "gstreamer:gst-plugins-base@/build/compile",
+            "GST_REGISTRY": "/build/compile/tests/check/elements_glmixer.registry",
+            "GST_PLUGIN_SCANNER_1_0": "/usr/libexec/gstreamer-1.0/gst-plugin-scanner",
+            "LD_LIBRARY_PATH": "/build/compile/gst-libs/gst/sdp:/build/compile/gst-libs/gst/riff:/build/compile/gst-libs/gst/rtsp:/build/compile/gst-libs/gst/gl:/build/compile/gst-libs/gst/rtp:/build/compile/gst-libs/gst/app:/build/compile/gst-libs/gst/fft:/build/compile/gst-libs/gst/pbutils:/build/compile/gst-libs/gst/video:/build/compile/gst-libs/gst/audio:/build/compile/gst-libs/gst/allocators:/build/compile/gst-libs/gst/tag"
+          },
+          "name": "elements_glmixer",
+          "workdir": null,
+          "timeout": 180,
+          "suite": [
+            "gst-plugins-base"
+          ],
+          "is_parallel": true,
+          "priority": 0,
+          "protocol": "exitcode",
+          "depends": [
+            "7d01337@@elements_glmixer@exe"
+          ],
+          "extra_paths": []
+        }
+      ]
+    },
+    "consumer": {
+      "version": "1.28.6",
+      "GstApp_Audio_Video_GI": true,
+      "typed_video_8x8_RGB": true,
+      "typed_audio_48k_stereo": true,
+      "synthetic_samples": [
+        {
+          "cycle": 0,
+          "kind": "video",
+          "exact_sample_bytes": 192,
+          "EOS_received": true,
+          "stop_NULL_verified": true
+        },
+        {
+          "cycle": 0,
+          "kind": "audio",
+          "exact_sample_bytes": 64,
+          "EOS_received": true,
+          "stop_NULL_verified": true
+        },
+        {
+          "cycle": 1,
+          "kind": "video",
+          "exact_sample_bytes": 192,
+          "EOS_received": true,
+          "stop_NULL_verified": true
+        },
+        {
+          "cycle": 1,
+          "kind": "audio",
+          "exact_sample_bytes": 64,
+          "EOS_received": true,
+          "stop_NULL_verified": true
+        }
+      ],
+      "devices_GL_audio_playback_screencast_tested": false
+    },
+    "artifacts_count": 660,
+    "artifacts_manifest_sha256": "f279ce45e1f62d985912fae04c0ce453c8cb296ee3fd0cd84de7f5eca7e41836",
+    "stage_sha256_count": 331,
+    "stage_sha256_manifest_sha256": "d9621e9f8e7b268c762cbec4c65892c203d3410b90db56dd1b08aec47dcbf4ef"
+  },
+  "original_unqualified_drivers": [
+    {
+      "name": "gst-plugins-base:validate.audiotestsrc.reverse",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.10_to_1fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse.10_to_1fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse_fast.10_to_1fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse_slow.10_to_1fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse.10_to_30fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse_fast.10_to_30fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse_slow.10_to_30fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse.1_to_10fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse_fast.1_to_10fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse_slow.1_to_10fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse.30fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse_fast.30fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse_slow.30fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse.variable_to_10fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse_fast.variable_to_10fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.reverse_slow.variable_to_10fps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.caps_change",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.caps_change_new_pref_0_0",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.caps_change_new_pref_1_0",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.change_rate_while_playing",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.change_rate_reverse_playback",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.rate_0_5",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.rate_0_5_with_decoder",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.rate_2_0",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.rate_2_0_with_decoder",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.duplicate_on_eos",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.duplicate_on_eos_disbaled",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.duplicate_on_eos_half_sec",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.fill_segment_after_caps_changed_before_eos",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.videorate.drop_out_of_segment",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.compositor.renogotiate_failing_unsupported_src_format",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.giosrc.read-growing-file",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.encodebin.set-encoder-properties",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.uridecodebin.expose_raw_pad_caps",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.fakevideodec.encoded",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    },
+    {
+      "name": "gst-plugins-base:validate.fakevideodec.simple",
+      "result": "SKIP",
+      "returncode": 0,
+      "stdout": "1..0 # Skipped: `gst-validate-1.0` not available\n",
+      "stderr": "gst-validate-1.0 Failed to execute child process \u201cgst-validate-1.0\u201d (No such file or directory)\n"
+    }
+  ],
+  "native_transaction": {
+    "step": "b02-gst-plugins-base-install",
+    "started": "2026-11-10T03:50:21.605873+00:00",
+    "recipe_sha256": "63b17d68b4848c4297d875b1c43a2d789057233f25cdcd1e5831ccd1b5c87c2c",
+    "postcheck_sha256": "a668a28c9abccf9d7fa602cfcf9ea3a8162099eb58205470c16e5c2cbccf9be2",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "e9e62f3897d6faf53da8b8f069930400be179fd47cbb34c934c4d20ceed77691",
+    "recipe_pid": 14036,
+    "recipe_pgid": 14036,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T03:50:41.705232+00:00",
+    "changed_paths": 910,
+    "log_sha256": "819c257da1d1aab734c8923cf04ef7981afba458a63565242380b172a2649eab",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "4ede3376e3f47faec27ccc3aeb36c0197ccec4d2b7ac29a3f0d216ee47129eec"
+  },
+  "package": {
+    "name": "gst-plugins-base",
+    "version": "1.28.6-1+toddy1",
+    "archive_sha256": "690fa299efae5e634dc3f48b650fe4391486035ee368f11900661f60a1450168",
+    "recipe_sha256": "63b17d68b4848c4297d875b1c43a2d789057233f25cdcd1e5831ccd1b5c87c2c",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "gst-plugins-base",
+        "version": "1.28.6",
+        "filename": "gst-plugins-base-1.28.6.tar.xz",
+        "url": "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.28.6.tar.xz",
+        "sha256": "0ba699c7c6c66f4ba640be78cb38a24715add9683f3e3a199f5369dc5a4f04ac",
+        "reference": "BLFS13.1-systemd multimedia/gst10-plugins-base.html",
+        "book_page_sha256": "ea452fd86a4f4b818bf6f5c39bbf1b8b006613dcf98e3894dfbf5e6c7f97ff30",
+        "book_md5": "cd0b2bd13e8196d5bfb20459c12a5d9b",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "4ede3376e3f47faec27ccc3aeb36c0197ccec4d2b7ac29a3f0d216ee47129eec",
+    "payload_count": 1004,
+    "payload_manifest_sha256": "af1d42648ce362d363f4f3bc16d064027aab7ca8ee3255cd11489e74ba6e90ce"
+  },
+  "installed_consumer": {
+    "scope": "Actual installed UID101 GstApp/Audio/Video GI/typed raw caps and exact synthetic red RGB/silent stereo samples, two video+audio EOS\u2192NULL cycles in private no-route namespace; no devices/real playback/GL/screencast acceptance. Original37validate skips/17GL-context deferrals remain unqualified. Four SDK versions/APT0.",
+    "consumer": {
+      "version": "1.28.6",
+      "GstApp_Audio_Video_GI": true,
+      "typed_video_8x8_RGB": true,
+      "typed_audio_48k_stereo": true,
+      "synthetic_samples": [
+        {
+          "cycle": 0,
+          "kind": "video",
+          "exact_sample_bytes": 192,
+          "EOS_received": true,
+          "stop_NULL_verified": true
+        },
+        {
+          "cycle": 0,
+          "kind": "audio",
+          "exact_sample_bytes": 64,
+          "EOS_received": true,
+          "stop_NULL_verified": true
+        },
+        {
+          "cycle": 1,
+          "kind": "video",
+          "exact_sample_bytes": 192,
+          "EOS_received": true,
+          "stop_NULL_verified": true
+        },
+        {
+          "cycle": 1,
+          "kind": "audio",
+          "exact_sample_bytes": 64,
+          "EOS_received": true,
+          "stop_NULL_verified": true
+        }
+      ],
+      "devices_GL_audio_playback_screencast_tested": false
+    },
+    "SDKs": [
+      "audio",
+      "video",
+      "app",
+      "gl"
+    ],
+    "SDK_version": "1.28.6",
+    "private_registry_removed": true,
+    "actual_GL_or_devices_tested": false
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gst-plugins-base-install-evidence.tar.gz",
+    "sha256": "5c580f5b5fb3da7b4c3ed7381b4ceee18542a873b6c82f8fae0c84a39fa024c8",
+    "members": [
+      "build/b02-gst-plugins-base-install.log",
+      "build/b02-gst-plugins-base-install.manifest.json",
+      "build/b02-gst-plugins-base-install.success.json",
+      "package.json",
+      "phase2/b02-gst-plugins-base-install-controller.log",
+      "phase2/b02-gst-plugins-base-install-timing.json",
+      "phase2/gst-plugins-base-1-controller.log",
+      "phase2/gst-plugins-base-1.exit",
+      "phase2/gst-plugins-base-1.job.json",
+      "phase2/gst-plugins-base-1.log",
+      "phase2/gst-plugins-base-installed-consumer.json",
+      "phase2/gst-plugins-base-stage.json",
+      "work/compile/meson-logs/testlog.json",
+      "work/deferred-original-tests.json",
+      "work/native-consumer.json",
+      "work/original-registered-tests.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}

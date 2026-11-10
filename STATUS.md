@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T03:43:39.516191+00:00
+Updated: 2026-11-10T03:54:15.778638+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T03:43:39.516191+00:00
+Last verified: 2026-11-10T03:54:15.778638+00:00
 
 Verified:
 
@@ -127,8 +127,9 @@ Verified:
 - GTK4same-upstreamtoddy8 stock schema union:74files/16owners,115schemas/900keys/prior82schemas/623key contracts preserved. Native install/post0/0,16paths/906prior nonlegal entries unchanged; actual default-source full lookup0. No user preferences/GTK rebuild/GUI acceptance, ADR0183.
 - First native Shell1 FAILED: actual7.1.8/Systemd/Wayland renderer/virtual monitor initialized, no automation/PNG by150s. Missing Gst/unregistered logind user/Settings observed, exact startup wait cause unisolated. Actual child0/OOMfalse/backing unchanged; builder/six mounts/source restored. No GUI/login acceptance, ADR0184.
 - Owned GStreamer1.28.6 core:107original OK/one optional validate SKIP,406ELFs/213stagefiles. Native install/post0/0,565paths/670entries, actual UID101 GI/caps/buffer/refusal/two synthetic EOS→NULL cycles/SDK/APT0; no devices/codecs/audio/GNOME screencast acceptance.
+- Owned GStreamer Base1.28.6:80original OK/37validate SKIP/17real GL-context originals compiled/deferred,660ELFs/331stagefiles. Native0/0,910paths/1004entries, actual installed UID101 App/Audio/Video GI/exact red RGB/silent stereo samples/two A/V EOS→NULL cycles/four SDKs/APT0. No GL/devices/audio/playback/screencast acceptance, ADR0185.
 
-Running: No active guest writer. Next GST base1.28.6 source/options/dependency preflight and one isolated build; required Settings/basic apps and registered PAM/logind session before new native Shell attempt. Complete ALL B02 then stop.
+Running: No active guest writer. Next fresh native Shell2 with real ephemeral PAM/logind/user-bus session/new Gst dependencies; no owner credentials or GDM/basic-app acceptance. Required Settings/audio/basic apps remain; complete ALL B02 then stop.
 
 Remaining:
 

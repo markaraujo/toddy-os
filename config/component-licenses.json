@@ -11018,6 +11018,25 @@
           ]
         }
       }
+    },
+    {
+      "name": "gst-plugins-base",
+      "version": "1.28.6",
+      "license": "LicenseRef-gst-plugins-base-per-file",
+      "evidence": "Authenticated exact named source notices and leading C/header conditions retained including bundled FFT code. Actual GL contexts/devices/audio/playback/screencast acceptance pending; per-file conditions prevail.",
+      "extra_license_headers": {
+        "gst-plugins-base-1.28.6.tar.xz": {
+          "prefixes": [
+            "gst-libs/",
+            "gst/",
+            "ext/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
