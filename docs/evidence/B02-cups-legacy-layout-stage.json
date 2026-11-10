@@ -1,0 +1,180 @@
+{
+  "scope": "Frozen CUPS2.4.19 default full component build with GnuTLS/PAM/USB; nine original local unit programs and actual local IPP C consumer. Full graphical-bus/server/network/driver printing suite unexecuted, not passing. Staging uses tester ownership only; native service ownership/accounts still require controlled promotion. No scheduler/service activation, printer/job/TLS connection/Settings GUI/physical acceptance. Legacy prefix=/usr embeds /usr/etc and /usr/var; this blocks native promotion. Local API/test/stage evidence only. Fresh recipe now uses frozen default root prefix, but corrected layout has not been built.",
+  "compile_exit": 0,
+  "stage_exit": 0,
+  "original_tests": [
+    {
+      "name": "testarray",
+      "exit": 0,
+      "reused_original_make_log": true
+    },
+    {
+      "name": "testfile",
+      "exit": 0,
+      "reused_original_make_log": true
+    },
+    {
+      "name": "testi18n",
+      "exit": 0,
+      "seconds": 0.008
+    },
+    {
+      "name": "testipp",
+      "exit": 0,
+      "seconds": 0.003
+    },
+    {
+      "name": "testhttp",
+      "exit": 0,
+      "seconds": 0.003
+    },
+    {
+      "name": "testoptions",
+      "exit": 0,
+      "seconds": 0.064
+    },
+    {
+      "name": "testpwg",
+      "exit": 0,
+      "seconds": 0.064
+    },
+    {
+      "name": "testraster",
+      "exit": 0,
+      "seconds": 0.064
+    },
+    {
+      "name": "testppd",
+      "exit": 0,
+      "seconds": 0.064
+    }
+  ],
+  "raw_original_results": [
+    {
+      "name": "testarray",
+      "exit": 0,
+      "reused_original_make_log": true
+    },
+    {
+      "name": "testfile",
+      "exit": 0,
+      "reused_original_make_log": true
+    },
+    {
+      "name": "testi18n",
+      "exit": 0,
+      "seconds": 0.008
+    },
+    {
+      "name": "testipp",
+      "exit": 0,
+      "seconds": 0.003
+    },
+    {
+      "name": "testhttp",
+      "exit": 0,
+      "seconds": 0.003
+    },
+    {
+      "name": "testoptions",
+      "exit": 0,
+      "seconds": 0.064
+    },
+    {
+      "name": "testpwg",
+      "exit": 0,
+      "seconds": 0.064
+    },
+    {
+      "name": "testraster",
+      "exit": 0,
+      "seconds": 0.064
+    },
+    {
+      "name": "testppd",
+      "exit": 0,
+      "seconds": 0.064
+    },
+    {
+      "name": "testsnmp",
+      "exit": 1,
+      "seconds": 0.067
+    }
+  ],
+  "SNMP_remote_diagnostic": {
+    "qualified": false,
+    "requires_remote_host": true,
+    "executed": true,
+    "exit": 1,
+    "classification": "No-host usage refusal; not a remote SNMP pass"
+  },
+  "full_original_printing_suite_pending": true,
+  "consumer": "CUPS local IPP Unicode/add/find/delete/absent attribute/two recoveries; no server, jobs or printer access\n",
+  "version": "2.4.19",
+  "native_installation_blocked_by_layout": true,
+  "observed_layout": {
+    "prefix": "/usr",
+    "sysconfdir": "/usr/etc",
+    "localstatedir": "/usr/var",
+    "SERVERROOT": "/usr/etc/cups",
+    "REQUESTS": "/usr/var/spool/cups"
+  },
+  "frozen_expected_layout": {
+    "prefix": "/",
+    "sysconfdir": "/etc",
+    "localstatedir": "/var"
+  },
+  "stage_job_exit": 0,
+  "stage_job_pid": 71476,
+  "stage_regular_bytes": 14178342,
+  "free_bytes_after": {
+    "target": 17195069440,
+    "scratch": 611934208
+  },
+  "maps": {
+    "artifacts": {
+      "entries": 273,
+      "canonical_compact_sha256": "e76fa7a0a641e8577c1589d619fe15950c3aa5349faaca3ffeb84921f6795937"
+    },
+    "stage_sha256": {
+      "entries": 846,
+      "canonical_compact_sha256": "9870961dcae89dfcd1f3d084649dc60297ccdeec66872d72331118dd9b7e87ee"
+    }
+  },
+  "retained": {
+    "compiler_ELFs_unchanged": 273,
+    "all_test_logs_unchanged": {
+      "original-build.log": "eb737efcc74c7f1d2a662eba8b5422a9f43f32da5897f9223f74ffeb011c155d",
+      "original-test-build.log": "2c8564c2a6d02f0be9a66a57054167ad919e7dab19c8c40198e2f5f06c27895f",
+      "original-local-tests.json": "e8f65db1622b4feddad9812d637b32d9a8f10894b2173e5e61ea6665887915f6",
+      "testsnmp.log": "168f0d7e474ea3ebfa8479f0a28d07610f6da99c87953e6c5b569cfb3d9892a1",
+      "testi18n.log": "78a67b96641c5a558e500fd247ce853ec0fe5bd5d384d8128937857e0debc688",
+      "testipp.log": "c724c06305de18ab50299c97db4b56866c53927ade3e880857e67efbd2ec2507",
+      "testhttp.log": "03f441914c3f0db094e96c64ae36dcda538efff086c0fa206eea4538bb2435ba",
+      "testoptions.log": "910c858fb96f36294d44e37c3e73394c378938dcdf41b5510133cc13915ded2d",
+      "testpwg.log": "9908138c7d138d465cdc384947084e59565e4646b7ed133fd7c6a7dfe0bc777b",
+      "testraster.log": "c513e246aeccfb6173d837ffb3681d179c234292dd8ba2d7543ebc9bc37dba3b",
+      "testppd.log": "b298c6f321c30b20ac5d25e4a2f542fce36555e7b4db669123b760782b49e0a4"
+    },
+    "raw_ten_result_rows_retained": true,
+    "no_original_test_or_main_compiler_execution": true
+  },
+  "prepared_input": {
+    "source_sha256": "820984b12a67f98705785aae2dd1347fe0ac097828001d4583ff64574aed6389",
+    "reference": "BLFS13.1-systemd pst/cups.html",
+    "book_page_sha256": "03d9a9f3fb4283cc3be5b7ba558c9c7b6d15c97090edb9ca5a057afcd541de43",
+    "source_patches": [],
+    "recipe_sha256": "42f3c9e2ca40f7415215a621ac1161d4847670aa4793a0fcb07d7584e6e1d728",
+    "probe_sha256": "4a835ddbb4634b417d4daacc95160ac9d14997a91c10eaba26b5e66050869aa5"
+  },
+  "original_command": [
+    "/bin/bash",
+    "/opt/toddy-build/scripts/build/phase2/isolated.sh",
+    "/mnt/lfs/sources/phase2/inputs/cups-2.4.19",
+    "/mnt/lfs/sources/phase2/work/cups-1",
+    "bash",
+    "/src/toddy-build.sh"
+  ],
+  "stage_job_command_sha256": "316ffe90962fd53815e09f3e3e4ec8dbd7aa3e9eeeaf1257bce0b614d0d0ccda",
+  "raw_ten_results_preserved": true
+}

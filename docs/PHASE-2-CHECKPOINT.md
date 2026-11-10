@@ -24,15 +24,22 @@ Actual command-vector3host tests qualified missing correction; ONE logged bounde
 qualifier extension passed before first native installation. Historical budgets
 retained. No compiler/source/test/stage/API replay of accepted build evidence.
 
-CUPS2.4.19 main compile complete; producer PARKED. Historical main1PID62765 exit2,
-finish2PID66679 exit1, finish3PID67051 exit1 retained in [original failures](evidence/B02-cups-producer-failed.json).
-[Actual resolver qualification](evidence/B02-cups-resolver-qualified.json) exit0
-proved private hosts/UID101/NNP/caps0/getaddrinfo, global hosts unchanged. One
-bounded finish4PID70018 exit1: [nine local results0](evidence/B02-cups-local-tests-checkpoint.json),
-then testsnmp no-host usage exit1. Actual source requires remote host/IP; this is
-not an automatic no-argument unit test, no remote SNMP acceptance. No staging/
-package/install. Preserve nine successful programs/logs and original failed SNMP
-result; no compiler/test replay. Source alias/private worker16132 prepared once.
+CUPS2.4.19 legacy-layout local build/stage COMPLETE, native promotion BLOCKED,
+ADR0216. [Stage5](evidence/B02-cups-legacy-layout-stage.json) PID71476 actual0,
+273ELFs/846stage regular files/14,178,342B. All273ELF/11log hashes unchanged,
+first actual local IPP Unicode/add/find/delete/refusal/two recoveries passed.
+Raw10result rows preserve SNMP no-host usage1; exactly9local programs0 selected.
+[Source/log classification](evidence/B02-cups-SNMP-classification.json) and4host
+collector guards independently qualified before one logged staging-only extension.
+Historical main1/finish2/finish3/finish4 failures and budgets remain retained.
+No main compiler or successful original tests replayed; NEVER replay stage5.
+
+Concrete BLOCKER: own --prefix=/usr embedded /usr/etc and /usr/var. Actual
+Makedefs prove SERVERROOT/usr/etc/cups and spool/usr/var/spool/cups; stage roots
+usr/run. Frozen source defaultprefix/ yields /etc,/var with execprefix/usr.
+Canonical future recipe corrected to --prefix=/, NOT BUILT. No native CUPS
+package/install/activation/printing/Settings GUI acceptance; do not relocate this
+legacy stage to hide compiled defaults. Original source/273ELFs/stage/logs retained.
 
 Receipt repair1 COMPLETE, [proof](evidence/B02-mitkrb-worker-receipt-repair.json):
 preparer prerequisite-variable shadow misplaced MIT worker JSON over Libgtop
@@ -41,24 +48,30 @@ restored from retained controller output, exact pre-existing SHA2566c32a0e6bf67b
 All3 preparers fixed and worker namespace guarded. No package/source/compiler
 replay, no lost installed package; NEVER repeat repair1.
 
-EXACT NEXT: independently qualify the actual CUPS testsnmp CLI/source classification
-(no-host usage exit1, no remote query) and exact nine local success results, then
-log ONE bounded staging-only extension preserving historical failures. Implement
-cups_stage_only.py: verify before-finish4 original ELF/log hashes and current local
-results; retain all10 raw rows including SNMP exit1; select only the exact9 local
-programs in the new aggregate. Execute first stage/own IPP consumer/collector only,
-never compiler or any successful original test. Update fresh canonical recipe to
-nine local programs with explicit remote SNMP diagnostic unqualified. No blind
-finish5 or rewriting original failed10-row results into a false pass.
+EXACT NEXT: implement an exact CUPS corrected-layout metadata-COW worker/profile,
+reusing scripts/build/phase2/prepare_kernel_landlock_cow.py and the qualified
+kernel COW isolation branch as references, without changing generic isolated.sh
+bytes. Use the same authenticated readonly CUPS source lower layer, new private
+upper/work/merged and only merged exposed writable to UID101; keep legacy worker
+16132/stage5 intact. Qualify actual source EROFS/private copy-up/source bytes and
+metadata unchanged/NNP/caps0 and explicit existing-mount recovery BEFORE a fresh
+corrected prefix/ build. No CUPS COW support or corrected build exists yet.
+Then run affected9local programs against changed binaries, first corrected stage/
+IPP consumer; keep legacy SNMP diagnostic unqualified. Native lp/spool/config/
+service ownership and essential installed consumer checks follow only after valid
+corrected layout and sufficient target reserve.
 
-Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f; MIT install terminal0/0.
-Last targetfree17195069440B (only15,200,256B above16GiB), scratch629149696B;
-recheck actual resources/lock before mutation. CUPS native promotion may need
-verified closed-duplicate custody; never lower target16GiB/scratch512MiB/host gates.
+Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f; stage5 terminal0.
+Last targetfree17195069440B (15,200,256B above16GiB), scratch611934208B
+(75,063,296B above512MiB). Legacy tree84,209,664B plus stage16,998,400B cannot
+fit again. Use private COW/generated outputs, not another full source copy.
+Recheck actual resources/lock and use deterministic reserve monitoring. Never
+lower target16GiB/scratch512MiB/host gates or retire original compiler/workstage.
 Host cold100GiB+512MiB gate previously below reserve; no cold boot dispatched.
-MIT native scratch promotion1/output complete; NEVER reprepare. Existing source/
-worker restoration support is cold untested. All custody/repair receipts complete.
-Full B02 then stop, no complete desktop/login/basic-app/Phase2 ISO or physical test.
+MIT native install/promotion/output complete; NEVER reprepare/reinstall. Actual
+lp group9 exists; lp user9 and lpadmin19 absent. No admin membership granted.
+All prior custody/repair receipts complete. Full B02 then stop, no complete
+GNOME/login/basic-app/Phase2 ISO or physical acceptance.
 
 Seven qualified Settings prerequisite archives/metadata copied and independently
 verified outside VM: [recovery cache proof](evidence/B02-settings-package-recovery.json),

@@ -1,0 +1,21 @@
+{
+  "scope": "Independent source/log classification only; no SNMP network test pass or new native execution",
+  "source_sha256": "72cea705af27270d3969899334fc7a20b5280dc133d65026a35a7c3999d93d3e",
+  "raw_results_canonical_sha256": "2e28fd9a2b7231fb7b5f6c301986469c4b4d1f0b574082e09acff139bd821da2",
+  "selected_local_success_programs": [
+    "testarray",
+    "testfile",
+    "testi18n",
+    "testipp",
+    "testhttp",
+    "testoptions",
+    "testpwg",
+    "testraster",
+    "testppd"
+  ],
+  "raw_result_rows_retained": 10,
+  "SNMP_usage_exit": 1,
+  "reason": "No arguments: argc1 skips argument loop where host/socket are created; null host calls usage, which exits1. Original default-community positive line retained. No remote SNMP query from this invocation.",
+  "qualified_at": "2026-11-10T20:48:31.681573+00:00",
+  "collector_guard_tests": 4
+}

@@ -17,18 +17,17 @@ p=Path('/build/tree/desktop/cups.desktop.in');s=p.read_text();assert s.count('@C
 p.write_text(s.replace('@CUPS_HTMLVIEW@','firefox'))
 PY
 cd /build/tree
-./configure --prefix=/usr --libdir=/usr/lib --with-rundir=/run/cups --with-system-groups=lpadmin --with-cups-user=lp --with-cups-group=lp --with-docdir=/usr/share/cups/doc-2.4.19 --with-pkgconfpath=/usr/lib/pkgconfig --with-tls=gnutls > /build/configure.log 2>&1
+./configure --prefix=/ --libdir=/usr/lib --with-rundir=/run/cups --with-system-groups=lpadmin --with-cups-user=lp --with-cups-group=lp --with-docdir=/usr/share/cups/doc-2.4.19 --with-pkgconfpath=/usr/lib/pkgconfig --with-tls=gnutls > /build/configure.log 2>&1
 make -j4 > /build/original-build.log 2>&1
 python3 - <<'PYTEST'
 from pathlib import Path
 import json,os,subprocess,time
 w=Path('/build');results=[]
 env=dict(os.environ,LC_ALL='C',LD_LIBRARY_PATH='/build/tree/cups')
-for name in ['testarray','testfile','testi18n','testipp','testhttp','testoptions','testpwg','testraster','testppd','testsnmp']:
+for name in ['testarray','testfile','testi18n','testipp','testhttp','testoptions','testpwg','testraster','testppd']:
  start=time.monotonic()
  with (w/(name+'.log')).open('xb') as log:
   result=subprocess.run(['make','-C','/build/tree/cups',name],env=env,stdout=log,stderr=subprocess.STDOUT,timeout=120)
-  if result.returncode==0 and name=='testsnmp':result=subprocess.run(['./testsnmp'],cwd=w/'tree/cups',env=env,stdout=log,stderr=subprocess.STDOUT,timeout=15)
  results.append({'name':name,'exit':result.returncode,'seconds':round(time.monotonic()-start,3)})
  (w/'original-local-tests.json').write_text(json.dumps(results,indent=2)+'\n')
  assert result.returncode==0,name
@@ -43,10 +42,22 @@ PKG_CONFIG_PATH=/stage/usr/lib/pkgconfig pkg-config --modversion cups > /build/a
 python3 - <<'PY'
 from pathlib import Path
 import hashlib,json,os,stat
-w=Path('/build');tests=json.loads((w/'original-local-tests.json').read_text());assert len(tests)==10 and all(t['exit']==0 for t in tests)
+def select_local_results(raw, snmp_log):
+ required=['testarray','testfile','testi18n','testipp','testhttp','testoptions','testpwg','testraster','testppd']
+ assert [t['name'] for t in raw] in (required,required+['testsnmp'])
+ tests=raw[:9];assert all(t['exit']==0 for t in tests)
+ diagnostic={'qualified':False,'requires_remote_host':True,'executed':len(raw)==10}
+ if diagnostic['executed']:
+  assert raw[9]['exit']==1
+  assert '_cupsSNMPDefaultCommunity: PASS (public)' in snmp_log and 'Usage: testsnmp [options] host-or-ip [oid ...]' in snmp_log
+  diagnostic.update(exit=1,classification='No-host usage refusal; not a remote SNMP pass')
+ return tests,diagnostic
+w=Path('/build');raw_tests=json.loads((w/'original-local-tests.json').read_text())
+tests,diagnostic=select_local_results(raw_tests,(w/'testsnmp.log').read_text() if len(raw_tests)==10 else '')
 assert (w/'actual-version.log').read_text().strip()=='2.4.19'
 consumer=(w/'local-probe.log').read_text();assert consumer=='CUPS local IPP Unicode/add/find/delete/absent attribute/two recoveries; no server, jobs or printer access\n'
 for p in Path('/stage').rglob('*'):assert not p.lstat().st_mode&(stat.S_ISUID|stat.S_ISGID)
-r={'scope':'Frozen CUPS2.4.19 default full component build with GnuTLS/PAM/USB; ten original local unit programs and actual local IPP C consumer. Full graphical-bus/server/network/driver printing suite unexecuted, not passing. Staging uses tester ownership only; native service ownership/accounts still require controlled promotion. No scheduler/service activation, printer/job/TLS connection/Settings GUI/physical acceptance.','compile_exit':0,'stage_exit':0,'original_tests':tests,'full_original_printing_suite_pending':True,'consumer':consumer,'version':'2.4.19','artifacts':{str(p.relative_to(w/'tree')):hashlib.sha256(p.read_bytes()).hexdigest() for p in (w/'tree').rglob('*') if p.is_file() and not p.is_symlink() and p.open('rb').read(4)==b'\x7fELF'},'stage_sha256':{str(p.relative_to('/stage')):hashlib.sha256(p.read_bytes()).hexdigest() for p in Path('/stage').rglob('*') if p.is_file() and not p.is_symlink()}}
-(w/'stage-results.json').write_text(json.dumps(r,indent=2)+'\n');s=os.statvfs('/build');assert s.f_bavail*s.f_frsize>=512*1024**2
+r={'scope':'Frozen CUPS2.4.19 default full component build with GnuTLS/PAM/USB; nine original local unit programs and actual local IPP C consumer. Full graphical-bus/server/network/driver printing suite unexecuted, not passing. Staging uses tester ownership only; native service ownership/accounts still require controlled promotion. No scheduler/service activation, printer/job/TLS connection/Settings GUI/physical acceptance.','compile_exit':0,'stage_exit':0,'original_tests':tests,'raw_original_results':raw_tests,'SNMP_remote_diagnostic':diagnostic,'full_original_printing_suite_pending':True,'consumer':consumer,'version':'2.4.19','artifacts':{str(p.relative_to(w/'tree')):hashlib.sha256(p.read_bytes()).hexdigest() for p in (w/'tree').rglob('*') if p.is_file() and not p.is_symlink() and p.open('rb').read(4)==b'\x7fELF'},'stage_sha256':{str(p.relative_to('/stage')):hashlib.sha256(p.read_bytes()).hexdigest() for p in Path('/stage').rglob('*') if p.is_file() and not p.is_symlink()}}
+s=os.statvfs('/build');assert s.f_bavail*s.f_frsize>=512*1024**2
+(w/'stage-results.json').write_text(json.dumps(r,indent=2)+'\n')
 PY
