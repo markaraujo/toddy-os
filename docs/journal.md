@@ -3215,3 +3215,8 @@ Owned GExiv2 0.16.2 shared GObject/GI/Vala/Python/tools: all3 original C/Python 
 ### 2026-11-10 — B02 dedicated virtual kernel scratch
 
 Fixed768MiB preallocated virtual kernel scratch attached after idle check/controlled restart. All bytes zero verified, intended UUID recorded before mkfs, ext4 mounted nosuid/nodev at kernel-landlock-1 UUIDc6c4176d-faed-4ee3-9ae0-94914a0af666/free758177792B. Six existing scratch/Systemd source/Glycin companion restored. Four guest identity guard tests0. Kernel/cache/config/package/boot unchanged; Landlock build/native proof pending, ADR0201. RawSHA04bc06c7398a265f7b006ae939ccbb0fd3d98666b7bd29ac2e7a4aa970718686. One host-only restore guard string-membership assertion corrected before any restoration; actual full QEMU argument checked. Next private real kernel COW profile, no mkfs/restart replay.
+
+
+### 2026-11-10 — B02 preserved kernel cache inventory
+
+Read-only baseline2 actual0:111558entries/2599875499bytes,93715pristine source entries; owned linux-kernel7.1.8-1/config/image match and frozen archive SHA verified. Initial symlink raw-string assertion found single redundant /./ PowerPC link; exact source/actual literals and equal internal target recorded after read-only diagnosis. No kernel/source/cache mutation. BaselineSHAd0e66e8e3cc2260d35242a1dca634e72bfd6bcd3d63a5bd94bac591a173114bf, rawSHA55d8a4e587432bfa616f7b9901edf25f4b3801d85512b727f974de1330d3e6a4. Next private COW profile using saved inventory, do not rehash unchanged baseline or replay format/restart.

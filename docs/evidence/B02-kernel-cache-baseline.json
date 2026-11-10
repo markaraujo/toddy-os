@@ -1,0 +1,36 @@
+{
+  "scope": "Full immutable original Linux7.1.8 cache bytes/metadata and pristine frozen source inventory, no lower writes or config change. Only baseline output on dedicated scratch.",
+  "source": {
+    "filename": "linux-7.1.8.tar.xz",
+    "url": "https://www.kernel.org/pub/linux/kernel/v7.x/linux-7.1.8.tar.xz",
+    "upstream_md5": "807584f564568b40162e9e4a72bf191f",
+    "sha256": "ff01dcb449279d5b4cfccdb01fee639cf5ff1803f1749a77844dd33915422c49",
+    "download_url": "https://www.kernel.org/pub/linux/kernel/v7.x/linux-7.1.8.tar.xz"
+  },
+  "lower_inode": 7523763,
+  "owned_package": "linux-kernel 7.1.8-1",
+  "installed_config_and_image_identical": true,
+  "cache_entries": 111558,
+  "regular_bytes": 2599875499,
+  "elapsed_seconds": 19.475,
+  "boot_id": "3a77a52a-5994-4f9c-9a57-d8582921275c",
+  "pristine_source_entries": 93715,
+  "generated_or_extra_regular_files": 11688,
+  "baseline_sha256": "d0e66e8e3cc2260d35242a1dca634e72bfd6bcd3d63a5bd94bac591a173114bf",
+  "scope_limit": "Source/cache inventory only; no real COW profile, kernel config/build/installation/native Landlock or GUI acceptance.",
+  "symlink_equivalence": {
+    "path": "tools/testing/selftests/powerpc/primitives/asm/asm-compat.h",
+    "link": "../../../../../../arch/powerpc/include/asm/asm-compat.h",
+    "archive_link": "../.././../../../../arch/powerpc/include/asm/asm-compat.h"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-kernel-cache-baseline-evidence.tar.gz",
+    "sha256": "55d8a4e587432bfa616f7b9901edf25f4b3801d85512b727f974de1330d3e6a4",
+    "members": [
+      "baseline.json",
+      "kernel-cache-baseline-1.log",
+      "kernel-cache-baseline-2.log",
+      "kernel_cache_baseline.py"
+    ]
+  }
+}

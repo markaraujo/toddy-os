@@ -32,12 +32,22 @@ Receipt /var/log/toddy/phase2/kernel-landlock-scratch-1.json state mounted;
 [Evidence](evidence/B02-kernel-scratch-mounted.json), rawSHA
 04bc06c7398a265f7b006ae939ccbb0fd3d98666b7bd29ac2e7a4aa970718686.
 Four focused guest identity guard tests passed. No active guest writer.
-EXACT NEXT: prepare real private kernel metadata-COW with immutable baseline
+Kernel cache baseline2 COMPLETE actual0:111558entries/2599875499regular bytes,
+93715pristine source entries and11688generated/extra regular files. Actual owned
+linux-kernel7.1.8-1/config/image match, frozen archive SHA verified. No original
+source/cache/config writes. Single PowerPC symlink raw-string difference from
+redundant /./ diagnosed read-only, exact semantic equivalence preserved; first
+failure before baseline output retained. Manifest on scratch baseline.json SHA
+ d0e66e8e3cc2260d35242a1dca634e72bfd6bcd3d63a5bd94bac591a173114bf,
+[proof](evidence/B02-kernel-cache-baseline.json), rawSHA
+55d8a4e587432bfa616f7b9901edf25f4b3801d85512b727f974de1330d3e6a4.
+Never recompute baseline with unchanged inputs or overwrite it. No active guest
+writer or running job. Actual last log .local/phase2/kernel-cache-baseline-2.log.
+EXACT NEXT: use saved baseline/receipt to prepare real private kernel metadata-COW with immutable baseline
 source/cache hashes/UID101 isolation proof. Existing original
 /mnt/lfs/sources/linux-7.1.8 inode7523763/config/vmlinux/bzImage untouched.
-Native installed kernel package name MUST be read from original H09 recipe/
-actual dpkg owner before qualification: guessed package `kernel` was absent in
-readonly preflight (no mutation). Kernel .cmd uses relative source paths; inspect
+Native installed package linux-kernel7.1.8-1 verified against actual dpkg/H09
+recipe; earlier guessed package `kernel` absence was read-only/no mutation. Kernel .cmd uses relative source paths; inspect
 actual profile before preserving needed path aliases. Preserve16GiB target/100GiB
 host reserves and128MiB scratch. Landlock-only same-version config/build/native
 boot/allow-deny-recovery REQUIRED, no feature acceptance yet. Then LocalSearch
