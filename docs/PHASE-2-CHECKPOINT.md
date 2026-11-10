@@ -8,26 +8,31 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current B02 slice: MIT Kerberos local build/stage aggregate COMPLETE; native
-package/install pending. [Stage proof](evidence/B02-mitkrb-stage.json),
-[parser qualification](evidence/B02-mitkrb-parser-qualification.json).
-After advancing independent CUPS work, one logged bounded metadata-only extension
-qualified the actual24row/20unique-ID parser (missing/unexpected IDs refused).
-Metadata4PID67706 actual exit0; all897 ELF/132stage hashes and seven log/consumer
-hashes unchanged. No compiler/test/stage/API replay. Historical two corrective
-failures remain in ledger; never replay metadata4. DB2case20 remains skipped and
-book12excluded. No native package/install/realm authentication/Settings/GUI claim.
+Current B02 slice: MIT Kerberos1.22.2 OWNED/local SDK accepted, ADR0215.
+[Install](evidence/B02-mitkrb-install.json): native recipe/post0/0,190changed
+paths,209payload entries, archiveSHA b34b8d324dd82680ea50c0ddfa6db4d649d7c807f9b73e6d39b2fe75983924c1.
+Actual UID101/no capabilities/NNP/private-device/no-route local principal/MEMORY
+cache/reopen/destroy/realm+absent-principal refusals/two recoveries, CLI versions/
+absent-cache refusal/recovery, exact payload/ksu0755/ABI/PC/APT passed. No realm/
+network authentication/tickets/daemon/login/Settings GUI/physical acceptance.
+[Aggregate](evidence/B02-mitkrb-stage.json) retained897ELF/132stage maps and7logs;
+metadata4 and native installation complete, NEVER replay. Scratch promotion/output
+prepared once; all original source/compiler/test/stage/archives remain retained.
 
-CUPS2.4.19 full main compilation succeeded; producer PARKED after two failed
-corrections, [proof](evidence/B02-cups-producer-failed.json), ADR0214.
-Main1PID62765 exit2 at HTTP hostname resolution; finish2PID66679 exit1 at own
-footer-count precondition; finish3PID67051 exit1 at private hosts assertion.
-Generic initialization overwrote an early injected hosts fixture. No new tests,
-stage result/native package or printing acceptance. Compiler/logs/source retained.
-CUPS source alias/private worker16132 prepared, NEVER replay preparation.
-Exact CUPS profile now inserts after generic hosts initialization; three HOST
-fixture tests pass, not guest test acceptance. Do not dispatch correction4 without
-new bounded reopening preserving historical budgets and actual postconditions.
+Native qualifier read-only assumption failures were parked after2failed corrections.
+Actual command-vector3host tests qualified missing correction; ONE logged bounded
+qualifier extension passed before first native installation. Historical budgets
+retained. No compiler/source/test/stage/API replay of accepted build evidence.
+
+CUPS2.4.19 main compile complete; producer PARKED. Historical main1PID62765 exit2,
+finish2PID66679 exit1, finish3PID67051 exit1 retained in [original failures](evidence/B02-cups-producer-failed.json).
+[Actual resolver qualification](evidence/B02-cups-resolver-qualified.json) exit0
+proved private hosts/UID101/NNP/caps0/getaddrinfo, global hosts unchanged. One
+bounded finish4PID70018 exit1: [nine local results0](evidence/B02-cups-local-tests-checkpoint.json),
+then testsnmp no-host usage exit1. Actual source requires remote host/IP; this is
+not an automatic no-argument unit test, no remote SNMP acceptance. No staging/
+package/install. Preserve nine successful programs/logs and original failed SNMP
+result; no compiler/test replay. Source alias/private worker16132 prepared once.
 
 Receipt repair1 COMPLETE, [proof](evidence/B02-mitkrb-worker-receipt-repair.json):
 preparer prerequisite-variable shadow misplaced MIT worker JSON over Libgtop
@@ -36,21 +41,24 @@ restored from retained controller output, exact pre-existing SHA2566c32a0e6bf67b
 All3 preparers fixed and worker namespace guarded. No package/source/compiler
 replay, no lost installed package; NEVER repeat repair1.
 
-EXACT NEXT: prepare owned MIT Kerberos1.22.2 native packaging from the accepted
-stage, without source/compiler/test/stage/API replay. Review frozen book target
-configuration, source notices/all3 patches, native dependencies/ABI and ksu0755;
-qualifier must bind exact job recipe/source identities and retained maps. Inspect
-actual target/scratch/host free space and existing native output workspace before
-choosing promotion placement. Native installation needs full-root transaction
-and installed UID101/no-route local consumer/refusal/recovery/ABI/APT checks.
-No service activation or realm/credential configuration from SDK acceptance.
+EXACT NEXT: independently qualify the actual CUPS testsnmp CLI/source classification
+(no-host usage exit1, no remote query) and exact nine local success results, then
+log ONE bounded staging-only extension preserving historical failures. Implement
+cups_stage_only.py: verify before-finish4 original ELF/log hashes and current local
+results; retain all10 raw rows including SNMP exit1; select only the exact9 local
+programs in the new aggregate. Execute first stage/own IPP consumer/collector only,
+never compiler or any successful original test. Update fresh canonical recipe to
+nine local programs with explicit remote SNMP diagnostic unqualified. No blind
+finish5 or rewriting original failed10-row results into a false pass.
 
-Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f; metadata4 terminal0.
-CUPS last scratchfree650784768B; recheck real resources/lock before mutation.
-Host cold100GiB+512MiB gate previously below reserve; do not lower any gate.
-Same scratch MIT12699/GTop7269/MM5725/QMI4244/workspace4671/CUPS16132 retained.
-Source/worker restore support prepared, cold untested. All prior custody/repair
-receipts complete; never replay. Full B02 then stop, physical testing unperformed.
+Actual builder boot0933ee87-f0bc-4074-9491-8b4e6892121f; MIT install terminal0/0.
+Last targetfree17195069440B (only15,200,256B above16GiB), scratch629149696B;
+recheck actual resources/lock before mutation. CUPS native promotion may need
+verified closed-duplicate custody; never lower target16GiB/scratch512MiB/host gates.
+Host cold100GiB+512MiB gate previously below reserve; no cold boot dispatched.
+MIT native scratch promotion1/output complete; NEVER reprepare. Existing source/
+worker restoration support is cold untested. All custody/repair receipts complete.
+Full B02 then stop, no complete desktop/login/basic-app/Phase2 ISO or physical test.
 
 Seven qualified Settings prerequisite archives/metadata copied and independently
 verified outside VM: [recovery cache proof](evidence/B02-settings-package-recovery.json),

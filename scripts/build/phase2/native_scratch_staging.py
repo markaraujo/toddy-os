@@ -9,7 +9,7 @@ from shared_source_inputs import UUID,volume,save
 BASE=Path('/mnt/lfs/sources/phase2/work/doxygen-1')
 LOG=Path('/var/log/toddy/phase2')
 TARGET=Path('/mnt/lfs')
-ALLOWED={'libqmi':'1.38.0','modemmanager':'1.24.2','gnome-control-center':'50.4'}
+ALLOWED={'mitkrb':'1.22.2','libqmi':'1.38.0','modemmanager':'1.24.2','gnome-control-center':'50.4'}
 
 def allocation(stage):
     # Count every entry as a newly allocated target block, even existing parents.

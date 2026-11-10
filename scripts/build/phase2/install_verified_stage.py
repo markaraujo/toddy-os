@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'mitkrb': ('1.22.2', 'glibc (>= 2.44-1+toddy1), e2fsprogs (= 1.47.4-1+toddy1), openssl (= 4.0.3-1+toddy1)', 'krb5-1.22.2.tar.gz', 'usr/lib/pkgconfig/krb5.pc'),
     'libgtop': ('2.41.3', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libxau (= 1.0.12-1+toddy1)', 'libgtop-2.41.3.tar.xz', 'usr/lib/pkgconfig/libgtop-2.0.pc'),
     'colord-gtk': ('0.3.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), colord (= 1.4.8-1+toddy1), gtk (>= 4.22.4-1+toddy9), gtk3 (= 3.24.52-1+toddy2)', 'colord-gtk-0.3.1.tar.xz', 'usr/lib/pkgconfig/colord-gtk4.pc'),
     'modemmanager': ('1.24.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libmbim (= 1.34.0-1+toddy1), libqmi (= 1.38.0-1+toddy1), libgudev (= 238-1+toddy1), polkit (= 127-1+toddy1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3)', 'ModemManager-1.24.2.tar.gz', 'usr/lib/pkgconfig/mm-glib.pc'),
@@ -263,6 +264,7 @@ if __name__ == '__main__':
     if name=='libfyaml' and (log/'libfyaml-finish-2.job.json').exists():qualifier='libfyaml-finish-2'
     if name=='colord-gtk' and (log/'colord-gtk-collect-3.job.json').exists():qualifier='colord-gtk-collect-3'
     if name=='libgtop' and (log/'libgtop-mode-3.job.json').exists():qualifier='libgtop-mode-3'
+    if name=='mitkrb':qualifier='mitkrb-metadata-4'
     if name=='itstool' and (log/'itstool-recovery-2.job.json').exists():qualifier='itstool-recovery-2'
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
     if name=='at-spi2-core' and (log/'atspi-finish-4.job.json').exists():qualifier='atspi-finish-4'
@@ -1268,6 +1270,9 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='mitkrb':
+        from qualify_mitkrb import qualify as qualify_mitkrb
+        qualify_mitkrb(ROOT)
     if name=='libgtop':
         from qualify_libgtop import qualify as qualify_libgtop
         qualify_libgtop(ROOT)
@@ -1476,7 +1481,7 @@ if __name__ == '__main__':
     before = inspect_stage(source)
     assert required in before['entries'], 'Missing declared payload'
     destination = Path('/mnt/lfs/sources/stage') / ('phase2-'+name)
-    if name in ('libqmi','modemmanager'):
+    if name in ('mitkrb','libqmi','modemmanager'):
         from native_scratch_staging import destination as scratch_destination
         destination=scratch_destination(name)
     if name=='libxslt' and destination.exists():
@@ -1507,11 +1512,11 @@ if __name__ == '__main__':
         notice=json.loads((destination/('usr/share/doc/'+name+'/source-notices/index.json')).read_text())
         assert all(not r['notices'] for r in notice['sources'])
     else:
-        if name in ('libqmi','modemmanager'):
+        if name in ('mitkrb','libqmi','modemmanager'):
             assert destination.is_dir() and not list(destination.iterdir())
         else:
             assert not destination.exists(), 'Reconcile existing stage; no replay'
-        shutil.copytree(source, destination, symlinks=True,dirs_exist_ok=name in ('libqmi','modemmanager'))
+        shutil.copytree(source, destination, symlinks=True,dirs_exist_ok=name in ('mitkrb','libqmi','modemmanager'))
         assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
     if name=='gnome-terminal':
@@ -1650,6 +1655,8 @@ if __name__ == '__main__':
         (doc/'original-test-review.json').write_text(json.dumps(review(source.parent/'original-tests.log',Path('/mnt/lfs/sources/phase2/inputs/libxslt-1.1.45')),indent=2)+'\n')
         (doc/'README.Toddy').write_text('Build-only xsltproc SDK for authenticated source UI transformations; not a GNOME Terminal runtime dependency. Core driver reports748cases/noerrors; four original DocBook golden whitespace differences remain unaccepted. No complete original-suite/general CLI parser sandbox or DocBook rendering qualification. Use bounded explicit nonet/nowrite/nomkdir/maxdepth/maxvars for selected fixtures. See original-test-review.json.\n')
     archives=[archive]
+    if name=='mitkrb':
+        archives += [row['filename'] for row in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if row['name'] in ('mitkrb-upstream-fix','mitkrb-security-fix','mitkrb-openssl4-fixes')]
     if name=='cracklib':archives.append('cracklib-words-2.10.3.xz')
     if name=='editorconfig':archives.append('editorconfig-core-test-d91029bdf1e3e0307714afe0d2cde7ba6fd208ab.tar.gz')
     if name=='aspell':archives.append('aspell6-en-2020.12.07-0.tar.bz2')

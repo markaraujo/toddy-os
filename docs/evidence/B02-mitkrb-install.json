@@ -1,0 +1,147 @@
+{
+  "scope": "Owned frozen MIT Kerberos1.22.2 with3required source patches. Actual installed UID101/no capabilities/NNP/private-device/no-route local C principal/MEMORY-cache reopen/destroy/realm and absent-principal refusals/two recoveries; CLI version/absent-cache refusal/recovery, exact payload/ksu0755/ABI/PC/APT. No owner credentials, real tickets, realm/network authentication, daemon activation, login integration, Settings GUI or physical acceptance.",
+  "native": {
+    "step": "b02-mitkrb-install",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 190,
+    "started": "2026-11-10T20:43:58.445430+00:00",
+    "finished": "2026-11-10T20:44:18.929818+00:00",
+    "recipe_sha256": "908e275b47ec28a634dcebb3732bbb120398a90c5011f9ecfe7bd02073f17411",
+    "postcheck_sha256": "005452bf6f629f60501884e2e97b7721b6e24ef10374653b5f8e3acceb325d06",
+    "log_sha256": "4850c1ca939e0a5ab9afbc5504f07b702fa5ee693ec7e6e01047d56a06ce0564",
+    "receipt_sha256": "7008f2ea5e4fd538a861bd0da82721513af0657d0e7488434742115ca2092de0"
+  },
+  "consumer": {
+    "scope": "Owned frozen MIT Kerberos1.22.2 with3required source patches. Actual installed UID101/no capabilities/NNP/private-device/no-route local C principal/MEMORY-cache reopen/destroy/realm and absent-principal refusals/two recoveries; CLI version/absent-cache refusal/recovery, exact payload/ksu0755/ABI/PC/APT. No owner credentials, real tickets, realm/network authentication, daemon activation, login integration, Settings GUI or physical acceptance.",
+    "C_consumer": "Kerberos local principal/MEMORY cache reopen/destroy/realm and absent-principal refusals/two recoveries; no tickets or network authentication\n",
+    "CLI_versions": {
+      "krb5-config": "Kerberos 5 release 1.22.2",
+      "klist": "Kerberos 5 version 1.22.2"
+    },
+    "CLI_absent_cache_exit": 1,
+    "CLI_recovery": "Kerberos 5 release 1.22.2",
+    "installed_stage_regular_files": 132,
+    "shared_library_resolution": true,
+    "ksu_mode": "root:root0755, no setuid/setgid",
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "mitkrb",
+    "version": "1.22.2-1+toddy1",
+    "archive_sha256": "b34b8d324dd82680ea50c0ddfa6db4d649d7c807f9b73e6d39b2fe75983924c1",
+    "recipe_sha256": "908e275b47ec28a634dcebb3732bbb120398a90c5011f9ecfe7bd02073f17411",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "mitkrb",
+        "version": "1.22.2",
+        "filename": "krb5-1.22.2.tar.gz",
+        "url": "https://kerberos.org/dist/krb5/1.22/krb5-1.22.2.tar.gz",
+        "sha256": "3243ffbc8ea4d4ac22ddc7dd2a1dc54c57874c40648b60ff97009763554eaf13",
+        "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+        "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+        "book_md5": "42472b11771d074329e0cc776d2eb5fd",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      },
+      {
+        "name": "mitkrb-upstream-fix",
+        "version": "1.22.2",
+        "filename": "mitkrb-1.22.2-upstream_fix-1.patch",
+        "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-upstream_fix-1.patch",
+        "sha256": "91bed46e7c59b4bc27df659c13abd4514e456293717720e8545d7f8acad00a97",
+        "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+        "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+        "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+        "status": "source_verified"
+      },
+      {
+        "name": "mitkrb-security-fix",
+        "version": "1.22.2",
+        "filename": "mitkrb-1.22.2-security_fix-1.patch",
+        "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-security_fix-1.patch",
+        "sha256": "fcab4e4117667f4ffde3733b00c47ea3da12a9a5355e6aa6e2b124a9543e6181",
+        "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+        "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+        "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+        "status": "source_verified"
+      },
+      {
+        "name": "mitkrb-openssl4-fixes",
+        "version": "1.22.2",
+        "filename": "mitkrb-1.22.2-openssl_4_fixes-1.patch",
+        "url": "https://www.linuxfromscratch.org/patches/blfs/13.1/mitkrb-1.22.2-openssl_4_fixes-1.patch",
+        "sha256": "703f634a0731a0355079211593491f3e175acfce237ed92b97cd04bd1e21bcc1",
+        "reference": "BLFS13.1-systemd postlfs/mitkrb.html",
+        "book_page_sha256": "3fe801ffb77e4a4d4d06e8b67897fce031cf20378fc1e02fa580a5d756766198",
+        "integrity": "Exact required patch URL from frozen book, authenticated official HTTPS bytes; SHA256 pinned before guest use. The book provides no separate patch MD5.",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true
+  },
+  "payload_summary": {
+    "entries": 209,
+    "canonical_compact_sha256": "2f2924877c8368c84da6dc6df5e697304802e708962b58c047f04e8e7c85081b"
+  },
+  "scratch": {
+    "state": "prepared",
+    "name": "mitkrb",
+    "version": "1.22.2",
+    "destination": "/mnt/lfs/sources/stage/phase2-mitkrb",
+    "filesystem_uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+    "target_required_bytes": 17203830784,
+    "payload_allocation_bound": 15572992,
+    "scope": "Source stage/promotion/native archive workspace on qualified scratch; installed files remain on target, full-root verification retained",
+    "physical_destination": "/mnt/lfs/sources/phase2/work/doxygen-1/toddy-editor-workers/native-transactions-1/mitkrb-promotion-1"
+  },
+  "free_bytes_after": {
+    "target": 17195069440,
+    "scratch": 629149696
+  },
+  "stage_evidence": "B02-mitkrb-stage.json"
+}

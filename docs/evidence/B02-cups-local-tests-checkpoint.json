@@ -1,0 +1,66 @@
+{
+  "scope": "Nine local program results0, standalone SNMP remote diagnostic no-host usage exit1; no CUPS staging/install/printing acceptance",
+  "exit": 1,
+  "original_results": [
+    {
+      "name": "testarray",
+      "exit": 0,
+      "reused_original_make_log": true
+    },
+    {
+      "name": "testfile",
+      "exit": 0,
+      "reused_original_make_log": true
+    },
+    {
+      "name": "testi18n",
+      "exit": 0,
+      "seconds": 0.008
+    },
+    {
+      "name": "testipp",
+      "exit": 0,
+      "seconds": 0.003
+    },
+    {
+      "name": "testhttp",
+      "exit": 0,
+      "seconds": 0.003
+    },
+    {
+      "name": "testoptions",
+      "exit": 0,
+      "seconds": 0.064
+    },
+    {
+      "name": "testpwg",
+      "exit": 0,
+      "seconds": 0.064
+    },
+    {
+      "name": "testraster",
+      "exit": 0,
+      "seconds": 0.064
+    },
+    {
+      "name": "testppd",
+      "exit": 0,
+      "seconds": 0.064
+    },
+    {
+      "name": "testsnmp",
+      "exit": 1,
+      "seconds": 0.067
+    }
+  ],
+  "SNMP_log": "make: Entering directory '/build/tree/cups'\nLinking testsnmp...\nmake: Leaving directory '/build/tree/cups'\n_cupsSNMPDefaultCommunity: PASS (public)\nUsage: testsnmp [options] host-or-ip [oid ...]\n\nOptions:\n\n  -c community    Set community name\n  -d              Enable debugging\n  -w              Walk all OIDs under the specified one\n",
+  "stage_result_present": false,
+  "stage_entries": 0,
+  "log_sha256": "cb93c89d722c2dd24d75b5f8b8b19d110a752a81c80b299a29ee61070b57ac66",
+  "SNMP_source_sha256": "72cea705af27270d3969899334fc7a20b5280dc133d65026a35a7c3999d93d3e",
+  "job_pid": 70018,
+  "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+  "historical_failed_corrections": 2,
+  "bounded_extension_failures": 1,
+  "producer_state": "parked"
+}

@@ -3396,3 +3396,5 @@ fail-closed own receipt path guard, four regression cases passed. MIT producer
 remains parked; next eligible CUPS source/build review.
 
 | 2026-11-10 | B02 CUPS/MIT boundary | Preserve CUPS full compile and two failed corrective preconditions; qualify effective private resolver initialization in3host fixtures. Independently qualify actual MIT DB2 parser and run one metadata-only extension | CUPS parked, no stage/package. MIT metadata4 exit0,897ELF/132stage/7log-consumer hashes unchanged, no successful execution replay; native package/install pending. Full B02 then stop |
+
+| 2026-11-10 | B02 owned Kerberos/CUPS local results | Qualified exact source/patch/job/maps and installed MIT1.22.2 using existing scratch promotion/full-root backend; independently qualified actual CUPS private resolver, bounded finish4 | MIT recipe/post0/0,190changed paths; installed local C/CLI/refusal/recovery/ksu0755/ABI/APT0. CUPS9local results0 then remote testsnmp usage1, no stage/install. All historical failures retained; next source-backed CUPS staging-only recovery. Full B02 then stop |

@@ -1,0 +1,25 @@
+{
+  "hosts": {
+    "/etc/hosts": "61a0d11e33a62aea0b56f932839589a02073dfaac869ce28cbd33e1862d74345",
+    "/mnt/lfs/etc/hosts": "6c8a928cdbb1e2e7d8d01480823f9a4d7e681f53c4fab3ed512660d464770c87"
+  },
+  "result": {
+    "private_hosts_exact": true,
+    "private_hostname_addresses": [
+      "127.0.0.1"
+    ],
+    "UID": 101,
+    "NoNewPrivs": true,
+    "capabilities": 0,
+    "scope": "Actual compiler isolation profile resolver qualification only; no CUPS unit/stage/compiler execution"
+  },
+  "exit": 0,
+  "scratch_free_bytes": 650661888,
+  "global_hosts_unchanged": true,
+  "job_pid": 69648,
+  "profile_digests": {
+    "harness_sha256": "e87d9f414c4ad725ac15cce1e96e8872c5b3bfc21578c6d5ed84ca49791dd367",
+    "profile_implementation_sha256": "64fbb93e4d0be6b434dfd256d462175d6a2b4c76feb243d7617944dee0432012",
+    "base_harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c"
+  }
+}
