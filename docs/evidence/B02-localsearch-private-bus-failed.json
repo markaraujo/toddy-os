@@ -1,0 +1,28 @@
+{
+  "scope": "Exact-path independent bus qualification FAILED; no native functional retry or qualification acceptance. Original isolated address proof remains valid only for its qualified profile.",
+  "postconditions": {
+    "all_original_LocalSearch_inputs_unchanged": true,
+    "source_files": 770,
+    "compile_files": 403,
+    "stage_files": 133
+  },
+  "failed_attempts": [
+    {
+      "attempt": 2,
+      "cause": "HOME token replacement corrupted embedded Python, SyntaxError before daemon start",
+      "producer_backup": ".local/phase2/qualify-localsearch-private-bus-failed-2.py"
+    },
+    {
+      "attempt": 3,
+      "cause": "Structured argv fixed source transport; chroot resets cwd, explicit compiled cwd assertion failed before daemon start",
+      "producer_backup": ".local/phase2/qualify-localsearch-private-bus-failed-3.py"
+    },
+    {
+      "attempt": 4,
+      "cause": "Compiled readonly cwd selected, but D-Bus cannot open /dev/null: permission denied. Builder target placeholder observed as root-owned regular0644 file; selected private devices were not bound in new probe profile. No GIO connection was started.",
+      "producer_backup": ".local/phase2/qualify-localsearch-private-bus-failed-4.py"
+    }
+  ],
+  "budget": "Two failed corrective attempts, PARKED. No exact-path qualification5 or native LocalSearch4 until independent qualified private-device profile and bounded reopening preserving full history.",
+  "global_devices_unchanged": true
+}
