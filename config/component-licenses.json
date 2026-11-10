@@ -11059,6 +11059,24 @@
       "version": "0+git.dfb11445b941",
       "license": "MIT",
       "evidence": "Private upstream-selected lemire/doctest source pinned to exact dfb11445b941a75813c26aa9184f08c6ce774615, root LICENSE.txt retained. Test-only source, no native installation or packaged runtime dependency; qualification of selected FastFloat tests pending."
+    },
+    {
+      "name": "fmt",
+      "version": "12.2.0",
+      "license": "MIT",
+      "evidence": "Authenticated exact root LICENSE and runtime leading C++/header source conditions retained. Bundled private GTest from same archive not installed by this package; terminal/UI qualification separate.",
+      "extra_license_headers": {
+        "fmt-12.2.0.tar.gz": {
+          "prefixes": [
+            "include/",
+            "src/"
+          ],
+          "suffixes": [
+            ".h",
+            ".cc"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

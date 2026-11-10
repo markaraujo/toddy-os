@@ -1,0 +1,257 @@
+{
+  "scope": "Owned fmt12.2.0 shared/CMake/pkg-config library:21original core programs/no nested GTest skips observed/78ELFs/22stagefiles; native UID101 exact CMake/shared libfmt12 resolution/Unicode decimal+hex/runtime-format-error refusal/two recovery cycles/pkg-config/APT0. Private bundled GTest not installed by this package. Optional CUDA/fuzz/modules/docs/default-off pedantic matrices unselected, not passes. No VTE/terminal/GUI acceptance.",
+  "source": {
+    "name": "fmt",
+    "version": "12.2.0",
+    "filename": "fmt-12.2.0.tar.gz",
+    "url": "https://github.com/fmtlib/fmt/archive/12.2.0/fmt-12.2.0.tar.gz",
+    "sha256": "8b852bb5aa6e7d8564f9e81394055395dd1d1936d38dfd3a17792a02bebd7af0",
+    "reference": "BLFS13.1-systemd general/fmt.html",
+    "book_page_sha256": "5a9f30e2688542344cdd65a2f9d45d289c45c498c1d582a8e688cdea2fea96ef",
+    "book_md5": "7be257d8bfad55bc9eabb1288ad895be",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "prepared": {
+    "source_sha256": "8b852bb5aa6e7d8564f9e81394055395dd1d1936d38dfd3a17792a02bebd7af0",
+    "reference": "BLFS13.1-systemd general/fmt.html",
+    "book_page_sha256": "5a9f30e2688542344cdd65a2f9d45d289c45c498c1d582a8e688cdea2fea96ef",
+    "source_patches": [],
+    "recipe_sha256": "b8f41937a3e83b26fcc45b8327ba73c658dde65fb1dec3ce4f633ca74ab5ffba",
+    "probe_sha256": "00a1f687bfbcfad694d9c46c9862a8eb6efd8f3d49071e7a90daf54fb4d3e8c7"
+  },
+  "stage": {
+    "scope": "Frozen fmt12.2.0 shared library/headers/CMake/pkg-config, bundled private GTest from same archive, original default core CTest programs. Optional CUDA/fuzz/C++ module/docs/default-off pedantic matrices omitted, not passes. Actual staged native linked CMake Unicode/decimal/hex/runtime format-error refusal/two recovery cycles only; no VTE/terminal/UI acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "args-test",
+        "status": "run"
+      },
+      {
+        "name": "base-test",
+        "status": "run"
+      },
+      {
+        "name": "assert-test",
+        "status": "run"
+      },
+      {
+        "name": "chrono-test",
+        "status": "run"
+      },
+      {
+        "name": "color-test",
+        "status": "run"
+      },
+      {
+        "name": "gtest-extra-test",
+        "status": "run"
+      },
+      {
+        "name": "format-test",
+        "status": "run"
+      },
+      {
+        "name": "format-impl-test",
+        "status": "run"
+      },
+      {
+        "name": "ostream-test",
+        "status": "run"
+      },
+      {
+        "name": "compile-test",
+        "status": "run"
+      },
+      {
+        "name": "printf-test",
+        "status": "run"
+      },
+      {
+        "name": "ranges-test",
+        "status": "run"
+      },
+      {
+        "name": "no-builtin-types-test",
+        "status": "run"
+      },
+      {
+        "name": "scan-test",
+        "status": "run"
+      },
+      {
+        "name": "std-test",
+        "status": "run"
+      },
+      {
+        "name": "unicode-test",
+        "status": "run"
+      },
+      {
+        "name": "xchar-test",
+        "status": "run"
+      },
+      {
+        "name": "enforce-checks-test",
+        "status": "run"
+      },
+      {
+        "name": "posix-mock-test",
+        "status": "run"
+      },
+      {
+        "name": "os-test",
+        "status": "run"
+      },
+      {
+        "name": "c-test",
+        "status": "run"
+      }
+    ],
+    "consumer": {
+      "Unicode_decimal_hex": true,
+      "runtime_format_error_refused": true,
+      "reset_recovery_cycles": 2,
+      "CMake_discovered_version": "12.2.0",
+      "shared_library_consumer": true,
+      "terminal_or_GUI_tested": false
+    },
+    "artifacts_count": 78,
+    "artifacts_manifest_sha256": "26985a4353729e04ed1bacec9622d4e61affaa23ba85a0b616cd4c0d4cc7fadf",
+    "stage_sha256_count": 22,
+    "stage_sha256_manifest_sha256": "19a493a64ef0d5df6c317ff5ec1a58a6496ff24b142b1f1e0c4a82cde522678a"
+  },
+  "native_transaction": {
+    "step": "b02-fmt-install",
+    "started": "2026-11-10T04:42:45.835332+00:00",
+    "recipe_sha256": "ad3448cf020c95285c6d10f30fdd60713c3f578bf364baf4bb5b37c31b3f4800",
+    "postcheck_sha256": "119a106f6f59666a07b6a9e3d75ef26822551023dbf21114ed32fe815dc76bae",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "2af1fb315e100b131e522bcca43c4d6240b67d986f6da5352c76695efe7b9979",
+    "recipe_pid": 4531,
+    "recipe_pgid": 4531,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T04:43:02.868943+00:00",
+    "changed_paths": 55,
+    "log_sha256": "4c804a76de0ea6fb2c245e008a435b00dbba02b35edc6069ab10955f544bd4ca",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "613ed22e34aae5706a43cfc149450dfb899e4c7765a35fe7878c366770da0b52"
+  },
+  "package": {
+    "name": "fmt",
+    "version": "12.2.0-1+toddy1",
+    "archive_sha256": "09e15ff8805f15f6ba1b46feeb3c8d0998a27e1db16b546cc6f3f56ecedbc591",
+    "recipe_sha256": "ad3448cf020c95285c6d10f30fdd60713c3f578bf364baf4bb5b37c31b3f4800",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "fmt",
+        "version": "12.2.0",
+        "filename": "fmt-12.2.0.tar.gz",
+        "url": "https://github.com/fmtlib/fmt/archive/12.2.0/fmt-12.2.0.tar.gz",
+        "sha256": "8b852bb5aa6e7d8564f9e81394055395dd1d1936d38dfd3a17792a02bebd7af0",
+        "reference": "BLFS13.1-systemd general/fmt.html",
+        "book_page_sha256": "5a9f30e2688542344cdd65a2f9d45d289c45c498c1d582a8e688cdea2fea96ef",
+        "book_md5": "7be257d8bfad55bc9eabb1288ad895be",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "613ed22e34aae5706a43cfc149450dfb899e4c7765a35fe7878c366770da0b52",
+    "payload_count": 57,
+    "payload_manifest_sha256": "ff77d7b3fab14a8e5565a0f66243e4f429b45f5dcc5b30dbaa32704b6f2b7d8b"
+  },
+  "installed_consumer": {
+    "scope": "Actual installed UID101 exact CMake/shared fmt12.2 discovery/Unicode decimal+hex/runtime-format-error refusal/two recovery cycles in private no-route namespace, actual libfmt.so.12 resolution/pkg-config/APT0. No VTE/terminal/GUI acceptance; bundled original GTest is not shipped by this package.",
+    "consumer": {
+      "Unicode_decimal_hex": true,
+      "runtime_format_error_refused": true,
+      "reset_recovery_cycles": 2,
+      "CMake_discovered_version": "12.2.0",
+      "shared_library_consumer": true,
+      "terminal_or_GUI_tested": false
+    },
+    "shared_libfmt_resolution": true,
+    "pkg_config_version": "12.2.0"
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-fmt-install-evidence.tar.gz",
+    "sha256": "1f58f14ce145e63f53022e4a234e60cba4292a6b0add2b00029a52e4e67e7b1a",
+    "members": [
+      "build/b02-fmt-install.log",
+      "build/b02-fmt-install.manifest.json",
+      "build/b02-fmt-install.success.json",
+      "package.json",
+      "phase2/b02-fmt-install-controller.log",
+      "phase2/b02-fmt-install-timing.json",
+      "phase2/fmt-1-controller.log",
+      "phase2/fmt-1.exit",
+      "phase2/fmt-1.job.json",
+      "phase2/fmt-1.log",
+      "phase2/fmt-installed-consumer.json",
+      "phase2/fmt-stage.json",
+      "prepared.json",
+      "work/consumer/build.log",
+      "work/consumer/configure.log",
+      "work/native-consumer.json",
+      "work/original-registered-tests.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/original-tests.xml",
+      "work/stage-results.json"
+    ]
+  }
+}

@@ -8,7 +8,23 @@ No accepted complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current slice: Fast_float8.2.10 OWNED architectureall header/CMake SDK.
+Current slice: fmt12.2.0 OWNED shared library/SDK; no active guest writer.
+Buildfmt-1 PID3595 terminal0,21original programs/no observed nested skips/78ELFs/
+22stagefiles. Nativeb02-fmt-install PID4515 terminal0/0,55paths/57owned entries;
+actual installed UID101 CMake/shared libfmt12/Unicode-decimal-hex/runtime format
+error refusal/two recovery cycles/pkg-config/APT0. No terminal/UI acceptance.
+[Proof](evidence/B02-fmt-install.json), ADR0190/rawSHA
+1f58f14ce145e63f53022e4a234e60cba4292a6b0add2b00029a52e4e67e7b1a.
+ArchiveSHA09e15ff8805f15f6ba1b46feeb3c8d0998a27e1db16b546cc6f3f56ecedbc591.
+Input/work /mnt/lfs/sources/phase2/{inputs/fmt-12.2.0,work/fmt-1}; actual
+job/log/exit /var/log/toddy/phase2/fmt-1.{job.json,log,exit}. NEVER rebuild/restage/
+reinstall/replay originals. Last targetfree18101432320B after native install.
+Exact next: simdutf9.0.0 source/test/reserve preflight and one isolated build;
+source frozen/cached, NO simdutf input/job yet. Full default originals selected,
+include portable scalar fallback for baseline x86_64; optional broad developer
+matrices unselected. Then VTE/GNOME Terminal with real PTY/Stop/user settings/UI.
+
+Previous slice: Fast_float8.2.10 OWNED architectureall header/CMake SDK.
 Compile/testsfast-float-1 PID2340 terminal0:14original core programs/47ELFs/12stagefiles;
 private immutable doctest270source files/no compiler network/no framework install.
 Nativeb02-fast-float-install PID3046 terminal0/0,27paths/27entries. Actual installed
@@ -197,3 +213,7 @@ client, no password/auth suite. Source-supported init hook records startup state
 and a diagnostic capture; four required action captures remain distinct. Source
 payload11931bytes/base64 fits SMBIOS bound. Contextnative-shell-runtime-2 must be
 absent for first launch; inspect actual operation before any retry.
+
+FastFloat publication6495299c113b319a882250dc0251e1e4a5c4045f: safety42757068371/
+planning42757068286/Pages42757068351 allsuccess; exactHTTP200/publicSHA
+422fce395dc0a0da6d5d09ac80530f5195e1baa507bf8b2bdad04a6569461d24.

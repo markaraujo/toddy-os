@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T04:36:01.354500+00:00
+Updated: 2026-11-10T04:45:04.512781+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T04:36:01.354500+00:00
+Last verified: 2026-11-10T04:45:04.512781+00:00
 
 Verified:
 
@@ -132,8 +132,9 @@ Verified:
 - Native Shell3 gate FAILED/INCOMPLETE: actual child0/OOMfalse/summaryfalse; missing console chunk50of76 prevents full report hash. Partial actions diagnostic reaches GTK mapping then focusfalse, no accepted positive tests. Parked headless branch after two corrections; second raw UART verifier input prepared/unvalidated, ADR0187.
 - Eight GTK4 promotion replicas: actual archive restores/all data+control verified before retirement, terminal0/reclaimed783540224B/installedrootchanges0; installed GTK/source/compiler stages/tests/native archives retained. Current available18169802752B, ADR0188.
 - Owned Fast_float8.2.10 architectureall header/CMake SDK:14original core programs/47ELFs/12stagefiles, private immutable270file doctest source/no compiler network or framework install. Native0/0/27entries, actual UID101 CMake/header/invalid/overflow/two recovery cycles/APT0. Build prerequisite only/no terminal or GUI acceptance, ADR0189.
+- Owned fmt12.2.0 shared library/SDK:21original core programs/no observed nested GTest skips/78ELFs/22stagefiles; native0/0/55paths/57entries, actual UID101 CMake/shared libfmt12/Unicode-decimal-hex/runtime format-error refusal/two recovery cycles/pkg-config/APT0. No terminal/GUI acceptance, ADR0190.
 
-Running: No active guest writer. Next fmt12.2.0 actual source/tests and one isolated build, then simdutf/VTE/GNOME Terminal with PTY/Stop/user settings/native GUI; headless focus parked pending real seat/input/full evidence. Complete ALL B02 then stop.
+Running: No active guest writer. Next simdutf9.0.0 actual source/default tests/scalar fallback and one isolated build, then VTE/GNOME Terminal with PTY/Stop/user settings/native GUI. Headless focus parked pending actual seat/input/full reliable evidence; complete ALL B02 then stop.
 
 Remaining:
 

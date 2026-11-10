@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'fmt': ('12.2.0', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2)', 'fmt-12.2.0.tar.gz', 'usr/lib/pkgconfig/fmt.pc'),
     'fast-float': ('8.2.10', '', 'fast_float-8.2.10.tar.gz', 'usr/share/cmake/FastFloat/FastFloatConfig.cmake'),
     'gst-plugins-base': ('1.28.6', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gstreamer (= 1.28.6-1+toddy1), alsa-lib (= 1.2.16.1-1+toddy1), libogg (= 1.3.6-1+toddy1), libvorbis (= 1.3.7-1+toddy1), pango (= 1.58.2-1+toddy1), iso-codes (= 4.20.1-1+toddy1), libgudev (= 238-1+toddy1), mesa (= 26.1.7-1+toddy1), graphene (= 1.10.8-1+toddy1), libjpeg-turbo (= 3.2.0-1+toddy1), libpng (= 1.6.58-1+toddy1), wayland (= 1.26.0-1+toddy1), libdrm (= 2.4.134-1+toddy1)', 'gst-plugins-base-1.28.6.tar.xz', 'usr/lib/pkgconfig/gstreamer-video-1.0.pc'),
     'gstreamer': ('1.28.6', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2)', 'gstreamer-1.28.6.tar.xz', 'usr/lib/pkgconfig/gstreamer-1.0.pc'),
@@ -1214,6 +1215,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='fmt':
+        from qualify_fmt import qualify as qualify_fmt
+        qualify_fmt(ROOT)
     if name=='fast-float':
         from qualify_fast_float import qualify as qualify_fast_float
         qualify_fast_float(ROOT)

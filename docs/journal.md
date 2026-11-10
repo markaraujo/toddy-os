@@ -3093,3 +3093,5 @@ remain required before promotion. No desktop/GUI/ISO acceptance. Full B02 then s
 2026-11-10: Native Shell3 failed/incomplete evidence (missing chunk50/76), partial diagnostic GTK focusfalse; headless branch parked after two corrections, raw second UART prepared only. Actual child/backing verified, existing builder restored. Eight GTK promotion archives actually restored/verified before replica retirement, freed783540224B/rootchanges0. ADR0187/0188; next actual minimal terminal dependency builds, no native retry.
 
 2026-11-10: B02 Fast_float8.2.10 architectureall header SDK owned/native0/0/27entries after14original core programs and actual staged/installed UID101 CMake/parse/refusal/recovery consumer0. Private270file doctest source pinned/no compiler network/framework install. ADR0189; next fmt/simdutf/VTE/GNOME Terminal, no GUI acceptance.
+
+2026-11-10: B02 fmt12.2.0 native0/0/57entries after21original core programs and actual staged/installed UID101 CMake/shared ABI/Unicode-format/refusal/recovery consumer0. No terminal/GUI acceptance; ADR0190. Next simdutf scalar fallback/default originals, VTE/GNOME Terminal.
