@@ -1,0 +1,32 @@
+{
+  "scope": "Only two new verified promotion replicas; installed packages/original build stages/source/test evidence/native archives retained, no old custody replay or trim",
+  "state": "complete",
+  "producer_sha256": "8118af1d5593c04b32974e085dab8f12cb242831cb7f48315f8670ca21f4d74f",
+  "stages": [
+    {
+      "name": "icu",
+      "stage": "/mnt/lfs/sources/stage/phase2-icu",
+      "inode": 8708217,
+      "archive": "/var/cache/toddy/packages/icu_78.3-1+toddy1_amd64.deb",
+      "archive_sha256": "89058389ee0b1e5cb22e6c871fbb2dca79698f02ead5869e54084ea8ee26a56c",
+      "record_sha256": "51c95e413dca4253233883fbbadcacc4896e6c53839b32d8a9f15240821621cf",
+      "payload_entries": 291,
+      "state": "retired"
+    },
+    {
+      "name": "doxygen",
+      "stage": "/mnt/lfs/sources/stage/phase2-doxygen",
+      "inode": 2230153,
+      "archive": "/var/cache/toddy/packages/doxygen_1.18.0-1+toddy1_amd64.deb",
+      "archive_sha256": "5738659077073c305c48d2130040c2e1ed671838ad90ee33730b193e96ccd07b",
+      "record_sha256": "0e46798e2b9f620ec7489a26e6c2ec87d9ee642da69afa5808832cee33b654cb",
+      "payload_entries": 167,
+      "state": "retired"
+    }
+  ],
+  "before_free_bytes": 17342824448,
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 17421774848,
+  "recovery": "Verify native archive/record SHA and extract to a NEW stage if needed; never reinstall or replay retirement. Original compiler stages, sources and raw tests remain.",
+  "reclaimed_bytes": 78950400
+}
