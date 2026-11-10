@@ -1,0 +1,333 @@
+{
+  "scope": "Owned VTE0.84.1 GTK3/API2.91:18original programs/134compiledELFs/125stagefiles unchanged across two distinct consumer recoveries. Native installed UID101 actual shared VTE regex/refusal/real private PTY geometry/UTF8/managed-group Stop/fresh recovery/interactive owner prompt/GI/APT0; shell conffiles and inlined fmt/FastFloat notices verified. Original missing-device and packet-reader failures and promotion zero-write guard failure retained. No widget/GNOME Terminal/display/focus/physical acceptance.",
+  "source": {
+    "name": "vte",
+    "version": "0.84.1",
+    "filename": "vte-0.84.1.tar.gz",
+    "url": "https://gitlab.gnome.org/GNOME/vte/-/archive/0.84.1/vte-0.84.1.tar.gz",
+    "sha256": "9f73468982a339cd1eb942beb7d348a5564c9ed48473ad1690c791f8474916ec",
+    "reference": "BLFS13.1-systemd gnome/vte.html",
+    "book_page_sha256": "700b8d471a5f2d72c6cb623a0e823e04c8abc8074222cd71ad40c46daf4fc63d",
+    "book_md5": "9733f0218f72051999e42725fe5fbaa8",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "prepared": {
+    "source_sha256": "9f73468982a339cd1eb942beb7d348a5564c9ed48473ad1690c791f8474916ec",
+    "reference": "BLFS13.1-systemd gnome/vte.html",
+    "book_page_sha256": "700b8d471a5f2d72c6cb623a0e823e04c8abc8074222cd71ad40c46daf4fc63d",
+    "source_patches": [],
+    "recipe_sha256": "ffc32d8a525b4b9a6acfcbc277f39a320c428851636f987af6046dbaef1ec27f",
+    "probe_sha256": "0a3113eaca83adc1fb6d566515d56217adbac9ba94f6604681b647373baf2ee1"
+  },
+  "stage": {
+    "scope": "VTE0.84.1 GTK3/API2.91. Original compile/tests/stage retained. Actual regex/PTY/geometry/UTF8/managed-group Stop/fresh recovery/interactive owner prompt/GI. No widget/GNOME Terminal/graphical focus acceptance. Private devpts replaces missing test device only.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "vte:test-base16",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-colors",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-color-lightness",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-minifont-gtk3",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-modes",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-pastify",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-parser",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-refptr",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-stream",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-tabstops",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-properties",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-unicode-width",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-utf8",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-uuid",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-vtetypes",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:doc syntax",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:vte-urlencode-cwd",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "vte:test-reaper",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "consumer": {
+      "version": "0.84.1",
+      "regex_compile_replace": true,
+      "invalid_regex_refused": true,
+      "PTY_resize_UTF8": true,
+      "normal_shell_cycles": 3,
+      "managed_process_group_Stop": true,
+      "fresh_PTY_after_Stop": true,
+      "interactive_owner_prompt_hook_preserved": true,
+      "GTK_GNOME_Terminal_or_display_tested": false
+    },
+    "GI_consumer": {
+      "namespace": "Vte2.91",
+      "runtime_version": "0.84.1",
+      "widget_or_display_tested": false
+    },
+    "shell_integration": {
+      "scope": "Preserve existing non-array Bash PROMPT_COMMAND as exact first array entry, append native VTE callbacks; visible owner prompt preserved. Stock empty prompt behavior/source parser tests unchanged. No user files/fonts/shell framework overwritten.",
+      "before_sha256": "db00c1d4ff19054073db3ae19d099857d90b79da20038d65fdb28c1533fee0ba",
+      "after_sha256": "7af0ff1b1e461767eb5a492c29b7e88b48f753ecf07ee8433e9d6fcc45e65df7",
+      "patch_sha256": "5a86299e950689638d61ab769a6a5bcf81a6f7c302594dc94c3a0a4c30c1fd42"
+    },
+    "probe_only_recovery": {
+      "compile_and_stage_unchanged": true,
+      "original_failure_retained": true,
+      "private_devpts": true,
+      "corrected_probe_sha256": "dfe1bf48e99475208557dcb017731b117084f274adc4d9d426d351b1da864332",
+      "TIOCPKT_control_bytes_decoded": true
+    },
+    "artifacts_count": 134,
+    "artifacts_manifest_sha256": "cc8ce16ba3661b325ffe6469da11b9e3111f6e7fbaf8f0a3bd8f2f63637ddc15",
+    "stage_sha256_count": 125,
+    "stage_sha256_manifest_sha256": "1a7801e7309e4231f6ce01f9c218f9a4addf17e4914520fe362226a9e02334bf"
+  },
+  "native_transaction": {
+    "step": "b02-vte-install-2",
+    "started": "2026-11-10T05:15:04.982987+00:00",
+    "recipe_sha256": "22c113490ea06967ab10fdae1a1fadcfa541d64f6d548b051297d814307a26ec",
+    "postcheck_sha256": "02b420da4abf44f4ca61b97eab3de9f631a5743f879ec083b71827ef54a66201",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "2af1fb315e100b131e522bcca43c4d6240b67d986f6da5352c76695efe7b9979",
+    "recipe_pid": 10176,
+    "recipe_pgid": 10176,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T05:15:22.146075+00:00",
+    "changed_paths": 254,
+    "log_sha256": "f6e994bb2efe9751df568ff7df3035cd329cd5524eb4dbf029d5235a5eec45cc",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "cac70cf8cc9196dd18a3bfefe95f26808420beaab39bf4ad67155c6388154e3e"
+  },
+  "package": {
+    "name": "vte",
+    "version": "0.84.1-1+toddy1",
+    "archive_sha256": "c9f8f81d46d0cf2c4945667ec6f00742ff9fa07548a61c105999944f1e92c907",
+    "recipe_sha256": "22c113490ea06967ab10fdae1a1fadcfa541d64f6d548b051297d814307a26ec",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "vte",
+        "version": "0.84.1",
+        "filename": "vte-0.84.1.tar.gz",
+        "url": "https://gitlab.gnome.org/GNOME/vte/-/archive/0.84.1/vte-0.84.1.tar.gz",
+        "sha256": "9f73468982a339cd1eb942beb7d348a5564c9ed48473ad1690c791f8474916ec",
+        "reference": "BLFS13.1-systemd gnome/vte.html",
+        "book_page_sha256": "700b8d471a5f2d72c6cb623a0e823e04c8abc8074222cd71ad40c46daf4fc63d",
+        "book_md5": "9733f0218f72051999e42725fe5fbaa8",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      },
+      {
+        "name": "fmt",
+        "version": "12.2.0",
+        "filename": "fmt-12.2.0.tar.gz",
+        "url": "https://github.com/fmtlib/fmt/archive/12.2.0/fmt-12.2.0.tar.gz",
+        "sha256": "8b852bb5aa6e7d8564f9e81394055395dd1d1936d38dfd3a17792a02bebd7af0",
+        "reference": "BLFS13.1-systemd general/fmt.html",
+        "book_page_sha256": "5a9f30e2688542344cdd65a2f9d45d289c45c498c1d582a8e688cdea2fea96ef",
+        "book_md5": "7be257d8bfad55bc9eabb1288ad895be",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      },
+      {
+        "name": "fast-float",
+        "version": "8.2.10",
+        "filename": "fast_float-8.2.10.tar.gz",
+        "url": "https://github.com/fastfloat/fast_float/archive/v8.2.10/fast_float-8.2.10.tar.gz",
+        "sha256": "76f958dd97b1cf4d8862d1f0986a47d4bdfa8845252bae15ef0f40de3b95961f",
+        "reference": "BLFS13.1-systemd general/fast_float.html",
+        "book_page_sha256": "b763f170b0f44e0a9422c1475aa9e55b9c81d91f0d51380f3a23c6fd413f20b6",
+        "book_md5": "ddcf64ffe15f1e1ed964a355db7a04f3",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "cac70cf8cc9196dd18a3bfefe95f26808420beaab39bf4ad67155c6388154e3e",
+    "payload_count": 468,
+    "payload_manifest_sha256": "63b918165462b1656575c2d087fd48802f2fedad8de51215d2f56523246d3ff1"
+  },
+  "installed_consumer": {
+    "scope": "Actual installed UID101 shared VTE/regex/refusal/PTY/UTF8/managed-group Stop/recovery/interactive owner prompt/GI, private no-route/devpts namespace removed. All18originals retained, both shell conffiles and inlined dependency notices verified. No widget/GNOME Terminal/display/focus acceptance.",
+    "consumer": {
+      "version": "0.84.1",
+      "regex_compile_replace": true,
+      "invalid_regex_refused": true,
+      "PTY_resize_UTF8": true,
+      "normal_shell_cycles": 3,
+      "managed_process_group_Stop": true,
+      "fresh_PTY_after_Stop": true,
+      "interactive_owner_prompt_hook_preserved": true,
+      "GTK_GNOME_Terminal_or_display_tested": false
+    },
+    "GI_consumer": {
+      "namespace": "Vte2.91",
+      "runtime_version": "0.84.1",
+      "widget_or_display_tested": false
+    },
+    "shared_library_resolution": true,
+    "shell_conffiles": true,
+    "inlined_dependency_notices": true
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-vte-install-evidence.tar.gz",
+    "sha256": "8d9ad01d2877e4b8e1342f6b4e755aa582f0484208cad22782ec79ae3e22a43c",
+    "members": [
+      "build/b02-vte-install-2.log",
+      "build/b02-vte-install-2.manifest.json",
+      "build/b02-vte-install-2.success.json",
+      "build/b02-vte-install.failed.json",
+      "build/b02-vte-install.log",
+      "build/b02-vte-install.manifest.json",
+      "package.json",
+      "phase2/b02-vte-install-2-controller.log",
+      "phase2/b02-vte-install-2-timing.json",
+      "phase2/b02-vte-install-controller.log",
+      "phase2/b02-vte-install-timing.json",
+      "phase2/vte-1-controller.log",
+      "phase2/vte-1.exit",
+      "phase2/vte-1.job.json",
+      "phase2/vte-1.log",
+      "phase2/vte-installed-consumer.json",
+      "phase2/vte-probe-2-controller.log",
+      "phase2/vte-probe-2.exit",
+      "phase2/vte-probe-2.job.json",
+      "phase2/vte-probe-2.log",
+      "phase2/vte-probe-3-controller.log",
+      "phase2/vte-probe-3.exit",
+      "phase2/vte-probe-3.job.json",
+      "phase2/vte-probe-3.log",
+      "phase2/vte-stage.json",
+      "prepared.json",
+      "work/original-registered-tests.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/probe-2/before.json",
+      "work/probe-2/consumer.exit",
+      "work/probe-3/before.json",
+      "work/probe-3/consumer.exit",
+      "work/probe-3/consumer.json",
+      "work/probe-3/probe.c",
+      "work/shell-integration-selection.json",
+      "work/stage-results.json"
+    ]
+  }
+}

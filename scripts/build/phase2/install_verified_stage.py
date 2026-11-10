@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'vte': ('0.84.1', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), pango (= 1.58.2-1+toddy1), cairo (= 1.18.4-1+toddy1), pcre2 (= 10.49-1+toddy1), lz4 (= 1.10.0-1+toddy1), simdutf (= 9.0.0-1+toddy1), fribidi (= 1.0.16-1+toddy1), gnutls (= 3.8.13-1+toddy1), icu (= 78.3-1+toddy1), systemd (>= 261.2-1+toddy3), at-spi2-core (= 2.60.6-1+toddy1)', 'vte-0.84.1.tar.gz', 'usr/lib/pkgconfig/vte-2.91.pc'),
     'simdutf': ('9.0.0', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2)', 'simdutf-9.0.0.tar.gz', 'usr/lib/pkgconfig/simdutf.pc'),
     'fmt': ('12.2.0', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2)', 'fmt-12.2.0.tar.gz', 'usr/lib/pkgconfig/fmt.pc'),
     'fast-float': ('8.2.10', '', 'fast_float-8.2.10.tar.gz', 'usr/share/cmake/FastFloat/FastFloatConfig.cmake'),
@@ -261,6 +262,7 @@ if __name__ == '__main__':
     if name=='libgweather':qualifier='libgweather-stage-2'
     if name=='libnma':qualifier='libnma-stage-2'
     if name=='gnome-shell' and (log/'gnome-shell-probe-2.exit').exists():qualifier='gnome-shell-probe-2'
+    if name=='vte' and (log/'vte-probe-3.exit').exists():qualifier='vte-probe-3'
     if name=='vala':qualifier='vala-consumer-2'
     if name=='libunistring':qualifier='libunistring-consumer-2'
     if name=='gcr':qualifier='gcr-finish-4'
@@ -1216,6 +1218,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='vte':
+        from qualify_vte import qualify as qualify_vte
+        qualify_vte(ROOT)
     if name=='simdutf':
         from qualify_simdutf import qualify as qualify_simdutf
         qualify_simdutf(ROOT)
@@ -1461,6 +1466,7 @@ if __name__ == '__main__':
         doc=destination/'usr/share/doc/ibus';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('Frozen official tag1.5.34 embeds1.5.34-rc2; native1.5.34~rc2-1+toddy1 preserves and discloses source version. Minimal GTK3/4+Wayland/GI/Unicode/setup/UI profile; XIM/X11 agent, GTK2, Python2, appindicator and optional emoji dict omitted. Seven portable original programs and UTF8/key parser refusal/recovery qualified; actual service, graphical keyboard and shared IM/schema caches remain separate pending gates. Full source/UCD/Unicode3 notices retained. ADR0169 records backend guard and original Xlib fixture link correction.\n')
     archives=[archive]
+    if name=='vte':archives+=['fmt-12.2.0.tar.gz','fast_float-8.2.10.tar.gz']
     if name=='ibus':archives+=['UCD-17.0.0.zip','Unicode-License-3.0.txt']
     if name=='unicode-ucd':archives.append('Unicode-License-3.0.txt')
     if name=='nss':archives.append('nss-standalone-1.patch')
@@ -1514,6 +1520,7 @@ if __name__ == '__main__':
                         '--depends','glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
+    if name=='vte':conffiles=['--conffile','/etc/profile.d/vte.sh','--conffile','/etc/profile.d/vte.csh']
     if name=='gdm':conffiles=[v for n in ['custom.conf'] for v in ['--conffile','/etc/gdm/'+n]]+[v for n in ['gdm-autologin','gdm-launch-environment','gdm-fingerprint','gdm-smartcard','gdm-password'] for v in ['--conffile','/etc/pam.d/'+n]]
     if name=='geoclue':conffiles=['--conffile','/etc/geoclue/geoclue.conf']
     if name=='ibus':conffiles=['--conffile','/etc/dconf/profile/ibus','--conffile','/etc/dconf/db/ibus.d/00-upstream-settings']

@@ -151,6 +151,14 @@ for name in null zero random urandom; do
     touch "$root/dev/$name"
     mount --bind "/dev/$name" "$root/dev/$name"
 done
+# VTE's real PTY consumer needs a private terminal allocator. Never bind the
+# builder's /dev/pts or expose its existing terminals. Only this selected input
+# receives a new devpts instance, allocated in this private mount namespace.
+if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/vte-0.84.1 ]]; then
+    mkdir "$root/dev/pts"
+    mount -t devpts -o newinstance,nosuid,noexec,mode=0620,ptmxmode=0666,gid="$TODDY_GID" devpts "$root/dev/pts"
+    ln -s pts/ptmx "$root/dev/ptmx"
+fi
 # Standard alias to this process's already exposed private proc descriptors.
 ln -s /proc/self/fd "$root/dev/fd"
 ln -s /proc/self/fd/0 "$root/dev/stdin"

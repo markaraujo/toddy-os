@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T05:00:58.560977+00:00
+Updated: 2026-11-10T05:16:18.650928+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T05:00:58.560977+00:00
+Last verified: 2026-11-10T05:16:18.650928+00:00
 
 Verified:
 
@@ -134,8 +134,9 @@ Verified:
 - Owned Fast_float8.2.10 architectureall header/CMake SDK:14original core programs/47ELFs/12stagefiles, private immutable270file doctest source/no compiler network or framework install. Native0/0/27entries, actual UID101 CMake/header/invalid/overflow/two recovery cycles/APT0. Build prerequisite only/no terminal or GUI acceptance, ADR0189.
 - Owned fmt12.2.0 shared library/SDK:21original core programs/no observed nested GTest skips/78ELFs/22stagefiles; native0/0/55paths/57entries, actual UID101 CMake/shared libfmt12/Unicode-decimal-hex/runtime format-error refusal/two recovery cycles/pkg-config/APT0. No terminal/GUI acceptance, ADR0190.
 - Owned simdutf9.0.0 shared/SDK/scalar fallback:91original programs67.18s/193ELFs/49stagefiles,79unsupported icelake notes retained/unqualified. Native0/0/83paths/85entries, actual UID101 CMake/shared34/Unicode PT+emoji roundtrip/lengths/invalid refusal/two recovery cycles/pkg-config/APT0. All required VTE SDKs present; no terminal/GUI acceptance, ADR0191.
+- Owned VTE0.84.1:18original programs/134compiledELFs/125stagefiles retained; native install2/post0/0,254changedpaths/468owned entries. Actual installed UID101 regex/refusal/private PTY geometry/UTF8/managed-group Stop/fresh recovery/interactive owner prompt/GI/APT0, conffiles/inlined fmt+FastFloat notices verified. Missing sandbox device and own TIOCPKT reader failures corrected probe-only, source/compile/stage unchanged; first promotion selected wrong failed job and changed0paths. No widget/GNOME Terminal/display/focus/physical acceptance, ADR0192.
 
-Running: No active guest writer. Next VTE0.84.1 GTK3/API2.91 isolated build/originals/real PTY/Stop/recovery and user-prompt preservation, then GNOME Terminal; headless focus parked pending actual seat/input/full reliable evidence. Complete ALL B02 then stop.
+Running: No active guest writer. VTE0.84.1 owned/native2 0/0. Next libhandy1.8.3 qualification then GNOME Terminal3.60.0; neither input/job prepared. Headless focus branch parked pending actual seat/input/full evidence. Complete ALL B02 then stop.
 
 Remaining:
 

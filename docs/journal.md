@@ -3097,3 +3097,19 @@ remain required before promotion. No desktop/GUI/ISO acceptance. Full B02 then s
 2026-11-10: B02 fmt12.2.0 native0/0/57entries after21original core programs and actual staged/installed UID101 CMake/shared ABI/Unicode-format/refusal/recovery consumer0. No terminal/GUI acceptance; ADR0190. Next simdutf scalar fallback/default originals, VTE/GNOME Terminal.
 
 2026-11-10: B02 simdutf9.0.0 native0/0/85entries after91original programs67.18s;79icelake unsupported notes retained, scalar fallback included. Actual staged/installed UID101 Unicode roundtrip/invalid refusal/recovery/ABI0. ADR0191; VTE prerequisites actually present, next GTK3 VTE/PTYShell/Stop/user-hook preservation, no GUI acceptance.
+
+### B02 — Owned VTE0.84.1 and real PTY validation — 2026-11-10
+
+Frozen VTE built with all18original programs passing. Two distinct own consumer
+failures corrected without library/source/original-suite replay: missing private
+sandbox devpts, then TIOCPKT control-prefix decoding. Probe3 actual0 with134ELFs/
+125stagefiles unchanged. Initial native promotion refused before writes because
+its generic qualifier still selected failed initial job; corrected exact recovery
+selection and verified absence before new install2. Native recipe/post0/0,
+254changedpaths/468entries, actual installed UID101 regex/PTY/UTF8/group Stop/
+recovery/prompt preservation/GI/APT0. Both hooks conffiles; inlined fmt/FastFloat
+notices retained. ADR0192/evidence/B02-vte-install.json. No GUI acceptance.
+Latest prior2db228e all3CI success and exact publicHTTP200/indexSHA
+59cf4ba8c3311f8030b6b422aae39b4aafa347703f1ad8a2a8f7af2d4e11c019.
+Next GNOME Terminal3.60.0 requires libhandy1.8.3 source/build qualification;
+no guest source/job for either prepared yet. Complete ALL B02 then stop.

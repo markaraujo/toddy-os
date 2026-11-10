@@ -11095,6 +11095,42 @@
           ]
         }
       }
+    },
+    {
+      "name": "vte",
+      "version": "0.84.1",
+      "license": "LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-4.0 AND (Apache-2.0 OR MIT OR BSL-1.0)",
+      "evidence": "Exact source COPYING.README/GPL3/LGPL3/XTERM/CC-BY-4-0 and runtime leading notices retained. Shell hook modification distributed with patch. Inlined fmt and FastFloat retain their full authenticated source notices; no native GUI claim.",
+      "extra_license_headers": {
+        "vte-0.84.1.tar.gz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".h",
+            ".hh",
+            ".cc"
+          ]
+        },
+        "fmt-12.2.0.tar.gz": {
+          "prefixes": [
+            "include/",
+            "src/"
+          ],
+          "suffixes": [
+            ".h",
+            ".cc"
+          ]
+        },
+        "fast_float-8.2.10.tar.gz": {
+          "prefixes": [
+            "include/"
+          ],
+          "suffixes": [
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
