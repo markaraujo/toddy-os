@@ -1,0 +1,306 @@
+{
+  "scope": "Owned GNOME Terminal3.60.0toddy2:71compiledELFs and original regex retained,116stagefiles after frozen-book reference-cache/source-patch correction. Native first install0/post1 missing test /dev/null retained; verified archive/payload, new controlled metadata2/post0/0,39changedpaths/376owned entries/339runtime entries unchanged, remove only unbuilt Nautilus addon metadata and retain bundled notices. Actual installed UID101/no-route client/exact unknown option/private DConf Unicode/navy preferences/malformed boolean refusal/persistence across buses/reset to declared defaults/system font preservation/five corrected proxy paths/shared VTE+libhandy/APT0. No native GUI/window/focus/PTY/login/physical acceptance. Stock schema cache integration still pending.",
+  "source": {
+    "name": "gnome-terminal",
+    "version": "3.60.0",
+    "filename": "gnome-terminal-3.60.0.tar.gz",
+    "url": "https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/3.60.0/gnome-terminal-3.60.0.tar.gz",
+    "upstream_md5": "fed6d01626aa09f320e806d4347d4fe6",
+    "reference": "BLFS13.1-systemd gnome/gnome-terminal.html",
+    "book_page_sha256": "88e7839f2585a1258fb78aad1be2d64fb0871e10349e41d8d101de76c870c3f9",
+    "status": "source_verified",
+    "sha256": "6c006523d2c21282fd62c64fc44f63546aaa216e66eb439b8129af68db11df7c"
+  },
+  "prepared": {
+    "source_sha256": "6c006523d2c21282fd62c64fc44f63546aaa216e66eb439b8129af68db11df7c",
+    "reference": "BLFS13.1-systemd gnome/gnome-terminal.html",
+    "book_page_sha256": "88e7839f2585a1258fb78aad1be2d64fb0871e10349e41d8d101de76c870c3f9",
+    "source_patches": [],
+    "recipe_sha256": "7d2ee1b3beaca6e242ac9f5d6c2a951cbc9246cc8bc2fb473cc6c3a316f91d6a",
+    "probe_sha256": "9444390b087e7031089a1e600f039f3a833d3fd5e157531bfb7fe34f8b66b986"
+  },
+  "stage": {
+    "scope": "Frozen GNOME Terminal3.60.0 with same-book five external proxy path correction in separate reference cache, all compiled ELFs/original regex unchanged. Actual staged client/unknown option and private DConf Unicode/navy preferences/malformed boolean refusal/persistence across buses/reset to declared defaults/system font preservation. Own initial reset assertion failure retained. No native installed package/widget/window/focus/PTY/login acceptance; stock schema cache integration pending.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "gnome-terminal:regex",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "consumer": {
+      "client_version": "3.60.0",
+      "invalid_CLI_option_refused": true,
+      "profile_cycles": [
+        {
+          "typed_profile_written": true,
+          "invalid_boolean_refused_state_preserved": true,
+          "system_font_preserved": true
+        },
+        {
+          "persisted_after_bus_restart": true,
+          "reset_recovered_defaults": true,
+          "system_font_preserved": true
+        }
+      ],
+      "private_DConf_file": true,
+      "widget_or_display_tested": false
+    },
+    "actual_unknown_option_error_verified": true,
+    "schema_correction": {
+      "reference": "BLFS13.1-systemd gnome/gnome-terminal.html",
+      "source_before_sha256": "81bd8854bb8ee03345d15ffdecb6c3aecb499c5a1a7b622f2ea077189e1f7959",
+      "source_after_sha256": "215c2d7e3f9071fd81d27b4e501e7099ec6cb6059068b441d1aa51154fa548ac",
+      "source_immutable": true,
+      "compiled_ELFs_unchanged": true,
+      "changed_schema_paths": {
+        "org.gnome.system.proxy": {
+          "before": "/system/proxy/",
+          "after": "/org/gnome/system/proxy/"
+        },
+        "org.gnome.system.proxy.ftp": {
+          "before": "/system/proxy/ftp/",
+          "after": "/org/gnome/system/proxy/ftp/"
+        },
+        "org.gnome.system.proxy.http": {
+          "before": "/system/proxy/http/",
+          "after": "/org/gnome/system/proxy/http/"
+        },
+        "org.gnome.system.proxy.https": {
+          "before": "/system/proxy/https/",
+          "after": "/org/gnome/system/proxy/https/"
+        },
+        "org.gnome.system.proxy.socks": {
+          "before": "/system/proxy/socks/",
+          "after": "/org/gnome/system/proxy/socks/"
+        }
+      },
+      "preserved_schemas": 12,
+      "preserved_key_type_default_range_contracts": 146,
+      "stage_cache_before_sha256": "334b76fbda059a96c7ce1eef77fb7137bbb04b7a960388864efe7dc5fbbfa806",
+      "stage_cache_after_sha256": "4dcfd88b0cb247d76075060923020b286fe22075992377c9fad51f55fe4debb5",
+      "patch_sha256": "17b85a79d115ffd26745077ff41dbd3681fb380cccb1d1fe0ae38d72b31ece6e"
+    },
+    "probe_only_recovery": {
+      "compiled_ELFs_unchanged": true,
+      "unrelated_stage_files_unchanged": true,
+      "original_failures_retained": true,
+      "corrected_probe_sha256": "e5252c5e2315e197aaf91707f34dd449ce846ba8fdf07b60f99bcc60cf72234d"
+    },
+    "artifacts_count": 71,
+    "artifacts_manifest_sha256": "8f8de16d4030804c166b18c8ba6c6c51c31f69cbfcf3e47cd1430cfd73cf285f",
+    "stage_sha256_count": 116,
+    "stage_sha256_manifest_sha256": "5f74de42d40f73e435c64736cbaa20017afe2cf466120cc5e7db3f9781595d7e"
+  },
+  "native_transaction": {
+    "step": "b02-gnome-terminal-metadata-2",
+    "started": "2026-11-10T05:53:15.368851+00:00",
+    "recipe_sha256": "cf96c4c5255a2961813834c9a90df804fee7e92aa6d35ffbce3035f9f9fa93c6",
+    "postcheck_sha256": "cd388d9612317aae34743648f4c14ca4f3af9b497253a6db65c3101a54bbae23",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "44f20b92f7373366bad411ac439dcf7e2126515b8e970732fa34555255e01a06",
+    "recipe_pid": 31555,
+    "recipe_pgid": 31555,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T05:53:33.427200+00:00",
+    "changed_paths": 39,
+    "log_sha256": "4b5719d9a00af716553d714f6d3def8e6e934390313625114ea7d3dd94b59a6b",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "04d8204130d8646ce968445b982d0e4fdb2c4845edfcf721b2e7aea07f4b5761"
+  },
+  "package": {
+    "name": "gnome-terminal",
+    "version": "3.60.0-1+toddy2",
+    "archive_sha256": "7431df2b9fcea4f345b558fe6ea85ffc8d1295d966f8ba5f47aa9581c3a89800",
+    "recipe_sha256": "d2bfb7b0153cd93c5feb6a76e8779ab92bfd0d9ec61945979cfc417357668853",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "gnome-terminal",
+        "version": "3.60.0",
+        "filename": "gnome-terminal-3.60.0.tar.gz",
+        "url": "https://gitlab.gnome.org/GNOME/gnome-terminal/-/archive/3.60.0/gnome-terminal-3.60.0.tar.gz",
+        "upstream_md5": "fed6d01626aa09f320e806d4347d4fe6",
+        "reference": "BLFS13.1-systemd gnome/gnome-terminal.html",
+        "book_page_sha256": "88e7839f2585a1258fb78aad1be2d64fb0871e10349e41d8d101de76c870c3f9",
+        "status": "source_verified",
+        "sha256": "6c006523d2c21282fd62c64fc44f63546aaa216e66eb439b8129af68db11df7c"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "04d8204130d8646ce968445b982d0e4fdb2c4845edfcf721b2e7aea07f4b5761",
+    "payload_count": 376,
+    "payload_manifest_sha256": "ac6a86867709e249af5c53a3167ae82d571a250bae1fb240c8afb81859f0d1b6"
+  },
+  "installed_consumer": {
+    "scope": "Actual installed UID101/no-route client3.60.0/exact unknown-option error/private DConf Unicode/navy typed profile/malformed boolean refusal/persistence across two buses/reset declared defaults/system font preservation; five corrected reference schema paths/shared VTE+libhandy/APT0. No GUI/window/focus/PTY/desktop/login acceptance. Stock schema cache integration remains pending.",
+    "consumer": {
+      "client_version": "3.60.0",
+      "invalid_CLI_option_refused": true,
+      "profile_cycles": [
+        {
+          "typed_profile_written": true,
+          "invalid_boolean_refused_state_preserved": true,
+          "system_font_preserved": true
+        },
+        {
+          "persisted_after_bus_restart": true,
+          "reset_recovered_defaults": true,
+          "system_font_preserved": true
+        }
+      ],
+      "private_DConf_file": true,
+      "widget_or_display_tested": false
+    },
+    "shared_library_resolution": true,
+    "five_reference_schema_paths_corrected": true,
+    "runtime_does_not_force_build_SDKs": true,
+    "unbuilt_Nautilus_addon_not_advertised": true
+  },
+  "metadata_recovery": {
+    "state": "complete",
+    "scope": "Existing Terminal code/runtime/schema/user configuration preserved; remove only metadata advertising unbuilt Nautilus extension and retain full bundled notices. No source/compiler/original suite/first install replay. Original missing /dev/null post failure retained; new consumer private device namespace.",
+    "old_version": "3.60.0-1+toddy1",
+    "new_version": "3.60.0-1+toddy2",
+    "old_archive_sha256": "fc0d7765aa21dacf2ab5a66b77de8462138e680ee68e1d5d9704c89d1d568607",
+    "old_record_sha256": "5020522e80fc674d2440a063d7de9fb9000fbc6c55df4d23115ea36f16443d38",
+    "excluded_addon_metadata": "/usr/share/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml",
+    "excluded_sha256": "c670e92793f086678b301c354f94824526826bfc13a4821d258850b832da98df",
+    "unchanged_runtime_entries": 339,
+    "legal_payload_changes": [
+      "/usr/share/doc/gnome-terminal/LGPL-2.1.txt",
+      "/usr/share/doc/gnome-terminal/copyright",
+      "/usr/share/doc/gnome-terminal/source-notices/012e66cb908391d2dab9384a2b9aef2a4bc43938e755ac193e2988fbdb2ecba6",
+      "/usr/share/doc/gnome-terminal/source-notices/0f2f36e70881209d99e9af6376010d9c26c84ddfc49f51be1669d3054b31d9fe",
+      "/usr/share/doc/gnome-terminal/source-notices/129d33aa51b4f7ede664b3d29361905265e6f7e7f55e736fd88e6ae9d5c61f0c",
+      "/usr/share/doc/gnome-terminal/source-notices/18ce59202f604ef8b87765e0605ee05cfc36cd5e5cda19b9fc581f513e9bcb90",
+      "/usr/share/doc/gnome-terminal/source-notices/200ba0abf3035acdaaa2daf3cdbd8df82b3b4348b72004bf42fa61f4e85215c5",
+      "/usr/share/doc/gnome-terminal/source-notices/34c93641d51792bde76fef53efdbaa5885c3f7ecd9d8e2255a3b376dfe51ff97",
+      "/usr/share/doc/gnome-terminal/source-notices/49ecacfc25e2a9aed378cf5b5537764a6f8fbdfed684eb2617a4fd156f2b1100",
+      "/usr/share/doc/gnome-terminal/source-notices/4d2c9377433d331d0b6c6bac14b43e64b0fedf4e06827ac6aab1fb1101553277",
+      "/usr/share/doc/gnome-terminal/source-notices/59adb6006a73a03924f3e7d0110232cc80ce5c596654c2654977cfd2a932876f",
+      "/usr/share/doc/gnome-terminal/source-notices/5f7aa7939aca5b9d9af92736ff73c0513de7d93d984e5df4b5e7983f678e48fd",
+      "/usr/share/doc/gnome-terminal/source-notices/6548f13e66dbf9376bbcb994d618fafbae2309024aa7cb0a199bf595bd84606a",
+      "/usr/share/doc/gnome-terminal/source-notices/6ada9d81031196aed12a9063fdc858ecca1d9850328494188c845afec97b6d4f",
+      "/usr/share/doc/gnome-terminal/source-notices/85bde0097aee1c8e6034465889ba2c380dbb80387e5504d5b44a494e38892aad",
+      "/usr/share/doc/gnome-terminal/source-notices/8f83093b2d1166c42cd31b49cc7a146206f33e289f6b77eacad7ab23aa120bbb",
+      "/usr/share/doc/gnome-terminal/source-notices/978e2170c12052a1f38b2142adf1f446f89d2eddc9011dd13550d4706e6364d4",
+      "/usr/share/doc/gnome-terminal/source-notices/a44f809e2531671beac1a851a959f2e9c0a72e75613937dcee0a10dfcb42a2db",
+      "/usr/share/doc/gnome-terminal/source-notices/a78bcfb3762aca62df8b81fd786938d636749df49f6ff53e91f22928bb1ed8ac",
+      "/usr/share/doc/gnome-terminal/source-notices/a9eb53229c6e53c12f47761471fcb81ee84319a6d8d04ce2650ac740a01f85b8",
+      "/usr/share/doc/gnome-terminal/source-notices/ad585a80d36860d34680f20db94ad9734d79db87dec9ee5d0fb4d7ddf0cf42e7",
+      "/usr/share/doc/gnome-terminal/source-notices/b1e82fc58fa730a0686c3892621c3056fe8d3bc1c601b109df6408c255e0d2f8",
+      "/usr/share/doc/gnome-terminal/source-notices/b44fd71f68ddb487f3a50736529f77a0738add7974dcb3a3a1e0865ad4bdb4bc",
+      "/usr/share/doc/gnome-terminal/source-notices/b82bc091d7cb153bcf2fd331523a3b10fce5539ddc5c11489f860fee7a8683d6",
+      "/usr/share/doc/gnome-terminal/source-notices/bd761812a68467dbeb9dcaa43e48b642f9ecff9f6574da55972d8c9eec92d0a6",
+      "/usr/share/doc/gnome-terminal/source-notices/cbc15b881beef577aa3cb98dc126661114c1e5aff7f087e09f911bf2e7624a7e",
+      "/usr/share/doc/gnome-terminal/source-notices/cedb52ee292acd6b235a5b07c8492c530b0e3665fafd1fd813abaed7b4b33508",
+      "/usr/share/doc/gnome-terminal/source-notices/d238b9cc03a32ce20e5bee16e0c4706552ef177a55ba6a523cfa6e769e3fd283",
+      "/usr/share/doc/gnome-terminal/source-notices/d7932cddb75c9601d30ab1f2e8e11f695a82a74a0ac053110325f2f67c8ca1ea",
+      "/usr/share/doc/gnome-terminal/source-notices/db267847c3bd1979f50d6610240f9ad4c3d9e96f6a7043907522001b4c81726b",
+      "/usr/share/doc/gnome-terminal/source-notices/db85f77c9b69af0b5f64a0c1007ce9282c94c8f368e1ad4acd253d8021bb921e",
+      "/usr/share/doc/gnome-terminal/source-notices/dbd43c99095abd38762a9cb84110492ab6e75b3e60f659636fa6cf88c0cb9676",
+      "/usr/share/doc/gnome-terminal/source-notices/index.json"
+    ],
+    "new_archive_sha256": "7431df2b9fcea4f345b558fe6ea85ffc8d1295d966f8ba5f47aa9581c3a89800",
+    "new_owned_entries": 376
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-gnome-terminal-install-evidence.tar.gz",
+    "sha256": "5b4662111a90090fcbcfd11c0cc35b101a4dd3c032ec83e725f37dc4d4e3a258",
+    "members": [
+      "build/b02-gnome-terminal-install.failed.json",
+      "build/b02-gnome-terminal-install.log",
+      "build/b02-gnome-terminal-install.manifest.json",
+      "build/b02-gnome-terminal-metadata-2.log",
+      "build/b02-gnome-terminal-metadata-2.manifest.json",
+      "build/b02-gnome-terminal-metadata-2.success.json",
+      "package-toddy1.json",
+      "package.json",
+      "phase2/b02-gnome-terminal-install-controller.log",
+      "phase2/b02-gnome-terminal-install-timing.json",
+      "phase2/b02-gnome-terminal-metadata-2-controller.log",
+      "phase2/b02-gnome-terminal-metadata-2-timing.json",
+      "phase2/gnome-terminal-1-controller.log",
+      "phase2/gnome-terminal-1.exit",
+      "phase2/gnome-terminal-1.job.json",
+      "phase2/gnome-terminal-1.log",
+      "phase2/gnome-terminal-build-2-controller.log",
+      "phase2/gnome-terminal-build-2.exit",
+      "phase2/gnome-terminal-build-2.job.json",
+      "phase2/gnome-terminal-build-2.log",
+      "phase2/gnome-terminal-installed-consumer.json",
+      "phase2/gnome-terminal-probe-3-controller.log",
+      "phase2/gnome-terminal-probe-3.exit",
+      "phase2/gnome-terminal-probe-3.job.json",
+      "phase2/gnome-terminal-probe-3.log",
+      "phase2/gnome-terminal-stage.json",
+      "phase2/terminal-metadata-recovery-2.json",
+      "prepared.json",
+      "work/book-schema-3/result.json",
+      "work/configuration-1-failed.log",
+      "work/configuration-resume.json",
+      "work/original-registered-tests.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/probe-3/before.json",
+      "work/probe-3/consumer.exit",
+      "work/probe-3/consumer.json",
+      "work/probe-3/probe.py",
+      "work/probe-3/schema.py",
+      "work/stage-results.json"
+    ]
+  }
+}

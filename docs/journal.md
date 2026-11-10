@@ -3134,3 +3134,16 @@ Prior0b9fa00 all3CI success/exact publicHTTP200/indexSHA
 bd413028dc782ec5a1cc0de299d8ae38c09febfae1446efe094746e0687a309a.
 Next resume failed Terminal Meson setup in same directory with fresh guarded job;
 no Terminal compilation/original tests/stage/native install exists yet.
+
+### B02 — Owned GNOME Terminal userspace and truthful app metadata — 2026-11-10
+
+Owned GNOME Terminal3.60.0toddy2:71ELFs/original regex unchanged; cache-only frozen-book correction preserves12schemas/146key contracts and fixes five proxy paths. Initial native install0/post1 missing test /dev/null retained; metadata2/post0/0,39changedpaths/376entries/339runtime entries identical, unbuilt Nautilus addon metadata removed/bundled notices retained. Actual installed UID101/no-route client/unknown-option/private DConf Unicode+navy preferences/invalid boolean refusal/persistence across buses/reset/system font/five paths/shared VTE+libhandy/APT0. Builder-target userspace, no actual GUI/window/focus/PTY/login/physical acceptance; shared stock schema cache pending, ADR0195.
+Both setup/reset failures preserved. No compile/regex replay after successful build;
+book correction affected only separate staged reference cache/source patch. Native
+revision2 verified full installed/archive before controlled metadata correction,
+no initial installation replay. RawSHA5b4662111a90090fcbcfd11c0cc35b101a4dd3c032ec83e725f37dc4d4e3a258.
+Prior4c0e88a all3CI success/exact publicHTTP200/indexSHA
+3e1a93af90648a065ace21ee593893b292e93094410295a3ef96f79472850f87.
+Next Nautilus50.2.2 actual source/dependency/test preflight; frozen archive cached,
+no Nautilus guest input/job. Preserve parked focus branch and libhandy30graphical
+originals. Complete ALL B02 then stop before any other story.

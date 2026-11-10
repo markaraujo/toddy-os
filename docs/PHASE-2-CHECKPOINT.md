@@ -8,81 +8,55 @@ No accepted complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current verified slice and exact next action
 
-Libhandy1.8.3 OWNED GTK3/GI/Vala; no active guest writer.
-SourceSHA05b497229073ff557f10b326e074c5066f8743a302d4820ab97bcb5cd2dab087,
-bookSHAada20fdf1b5083d19e6e7064017ab058cfde27b7a0017f51cafa5624effa08ce.
-Buildlibhandy-1 PID10675 terminal134 after compile/stage; own C copy destination
-was uninitialized. Probe2PID11683 terminal1 after C0: own GI convenience constructor
-not introspectable. GI-only3PID12168 terminal0 using actual typed GValue/new;
-all122compiledELF/78stagefile hashes unchanged. Both own failures retained.
-ALL30original graphical programs compiled/deferred, ZERO originals passed. Keep
-these exact identities/binaries for actual native display, never relabel as pass.
-Nativeb02-libhandy-install PID12523 actualrecipe/post0/0,120changedpaths/184entries.
-Installed UID101 no-route C/GI ownership/Unicode/enum/two reset cycles/shared ABI/
-pkg-config/APT0. No widget/Terminal/display acceptance.
-[Proof](evidence/B02-libhandy-install.json), ADR0193; archiveSHA
-768593bc0a8e3305668c081781f7f6c941bcc01975eb79071aff85c1b99c68a5;
-raw `.local/phase2/exports/B02-libhandy-install-evidence.tar.gz` SHA
-5d6334231569273cc6bf67aeba6b65e386b87360d90e330bcd1c1f978472dca9.
-Input/work /mnt/lfs/sources/phase2/{inputs/libhandy-1.8.3,work/libhandy-1};
-logs/jobs/exits /var/log/toddy/phase2/libhandy-{1,probe-2,gi-3}.*;
-native /var/log/toddy/build/b02-libhandy-install.success.json.
-NEVER rebuild/restage/reinstall/replay accepted work.
+GNOME Terminal3.60.0toddy2 OWNED userspace; no active guest writer.
+Initial setup1PID13099 failed missing xsltproc before app compilation. SDK qualified,
+build2PID29419 reused same config tree: compile/original regex/stage0, then own
+reset assertion failed (ProfilesList has stock UUID override). Probe3PID30694 actual0
+with corrected default check plus separate cache-only book correction of five proxy
+paths. All71compiledELFs/original regex unchanged,12schemas/146key contracts preserved,
+only staged reference cache/source patch changed;116regularfiles. Immutable source
+retained; future preparer now records/applies exact five frozen-book path changes.
+CacheSHA4dcfd88b0cb247d76075060923020b286fe22075992377c9fad51f55fe4debb5.
 
-Current slice: libxslt1.1.45 build-only xsltproc SDK OWNED; no active guest writer.
-Buildlibxslt-1 PID13885 terminal0,41ELFs/92stagefiles. Core reports748cases/noerrors,
-but four swallowed DocBook golden URL-whitespace differences remain UNACCEPTED;
-German-locale branch not independently asserted. No full-suite/DocBook/blanket
-CLI parser sandbox claim. Original source/goldens unchanged, exact review bound.
-First native PID28710 recipe1/postnull/rootchanged0 due own metadata path variable;
-exact partial stage/sole empty doc dir and archive/package absence verified.
-Nativeinstall2PID28991 recipe/post0/0,175changedpaths/181owned entries. Installed
-UID101 no-route bounded UTF8 transform/malformed/refused EXSLT write-no-effect/
-two recovery cycles/shared ABI/pkg-config/APT0. Never rebuild/restage/reinstall.
-[Proof](evidence/B02-libxslt-install.json), ADR0194;
-archiveSHA9110f98d8f1fbb03f0753abce5f334b9d897cb43e08988e4e2e601516f6e5147;
-rawSHA5e51a0eea1ce6084e72c1ee9a73873f2fc76ed2b59260a84018733cbe9cccd3e.
-Input/work /mnt/lfs/sources/phase2/{inputs/libxslt-1.1.45,work/libxslt-1};
-job/log/exit /var/log/toddy/phase2/libxslt-1.*; native receipt
-/var/log/toddy/build/b02-libxslt-install-2.success.json.
-Exact next: commit/publish SDK slice, then guarded Terminal setup resume. Verified
-Terminal /compile/build.ninja and /compile/meson-private/coredata.dat ABSENT,
-original-tests.exit/stage-results absent, stage empty. No uncertain work replay.
-Use same immutable input/work; replace only initial fresh-directory guard in
-exact recipe command, verify all other bytes, new job gnome-terminal-build-2.
-
-GNOME Terminal3.60.0 job `gnome-terminal-1` PID13099 TERMINAL1 at Meson setup:
-all nine runtime SDK pkg-config versions found, but required xsltproc absent.
-Actual src/meson.build uses --nonet XSLT for GTK menus despite docsfalse. No
-Terminal compilation/original tests/stage/native transaction yet. Preserve same
-/source and failed /build/compile. After qualified xsltproc, resume its setup in
-same tree with fresh guarded job, not blind freshbuild/re-extract.
-SourceSHA6c006523d2c21282fd62c64fc44f63546aaa216e66eb439b8129af68db11df7c,
-bookSHA88e7839f2585a1258fb78aad1be2d64fb0871e10349e41d8d101de76c870c3f9.
-RecipeSHA7d2ee1b3beaca6e242ac9f5d6c2a951cbc9246cc8bc2fb473cc6c3a316f91d6a;
-probeSHA9444390b087e7031089a1e600f039f3a833d3fd5e157531bfb7fe34f8b66b986.
+Initial nativeb02-gnome-terminal-install PID31093 recipe0/post1 missing test /dev/null,
+package3.60.0-1+toddy1 actually installed346entries. NEVER replay. ArchiveSHA
+fc0d7765aa21dacf2ab5a66b77de8462138e680ee68e1d5d9704c89d1d568607.
+Metadata2PID31539 recipe/post0/0,39changedpaths/376entries/339runtime entries identical:
+only unbuilt Nautilus addon metadata removed and bundled legal notices retained.
+Installed UID101/no-route/private-device namespace client/unknown-option/DConf
+Unicode+navy preferences/invalid boolean refusal/persistence across two buses/
+reset/system font/five proxy paths/shared VTE+libhandy/APT0. Namespace discarded,
+no global device/permission/policy or user preference change. Builder-target
+userspace check, NOT actual GNOME window/focus/PTY/login or physical acceptance.
+[Proof](evidence/B02-gnome-terminal-install.json), ADR0195;
+current archiveSHA7431df2b9fcea4f345b558fe6ea85ffc8d1295d966f8ba5f47aa9581c3a89800;
+raw `.local/phase2/exports/B02-gnome-terminal-install-evidence.tar.gz` SHA
+5b4662111a90090fcbcfd11c0cc35b101a4dd3c032ec83e725f37dc4d4e3a258.
 Input/work /mnt/lfs/sources/phase2/{inputs/gnome-terminal-3.60.0,work/gnome-terminal-1};
-log/job/exit /var/log/toddy/phase2/gnome-terminal-1.*. Failure ledger persists.
-Selected regex/client version+invalid-option/private DConf Unicode/navy settings/
-invalid boolean refusal/persistence across two buses/reset/system font preservation.
-Search provider selected, optional Nautilus extension/docs/debug omitted.
-Stock schema union/native launch/window/focus/PTY/Stop/recovery remain separate.
+logs/jobs/exits /var/log/toddy/phase2/gnome-terminal-{1,build-2,probe-3}.*;
+root /var/log/toddy/build/b02-gnome-terminal-{install,metadata-2}.*;
+metadata receipt /var/log/toddy/phase2/terminal-metadata-recovery-2.json COMPLETE.
+NEVER rebuild/restage/reinstall/replay accepted work or metadata2.
 
-Libhandy slice committed/pushed0b9fa00b2bbeb8756a584de2ad6e07d85779fa6a;
-all3CI success, exactpublicHTTP200/indexSHA
-bd413028dc782ec5a1cc0de299d8ae38c09febfae1446efe094746e0687a309a.
-Preserve30libhandy original graphical obligations before B02 closure.
+Exact next: commit/publish verified Terminal slice/exact deployed version. Then
+Nautilus50.2.2 actual source/dependency/test preflight, frozen archive cached SHA
+e1e285efddf42ed30dda5b29f7f8d242dab4bc1409a9054863b367bad4b34d5a;
+NO Nautilus guest input/job. Read frozen book nautilus page and actual Meson options/
+required SDK/test registrations, choose one required leaf if missing. No general
+replanning or repeat of parked native focus inputs. Shared stock schema union
+must include app schemas before real native use; update GTK cache only from NEW
+current-archive extraction, not retired promotion stages. Remaining Settings/
+files/editor/browser/network/audio/offline/resources and integrated native gates.
 
-Previous VTE0.84.1 OWNED:18original programs/134ELFs/125stagefiles; native2/post0/0,
-254changedpaths/468entries; installed private PTY/group Stop/Unicode/recovery/prompt/
-GI/APT/conffiles/inlined fmt+FastFloat notices0. [Proof](evidence/B02-vte-install.json),
-ADR0192. Missing private device/own TIOCPKT reader corrected probe-only; initial
-native promotion qualifier guard changed0 before newinstall2. NEVER replay.
-All earlier accepted libraries indexed [B02](evidence/B02.md)/story/status; reuse
-unchanged evidence. Settings/basic apps, real seat/GDM/input/network/audio/offline/
-resource and final B02 gates remain. Latest prior pushed d3e59cb892d02b3c1af6db795042259140a12244
-all3CI success/exactpublicHTTP200/indexSHA
-4f3043275c2be21e35d42d44bd89af61b833fbe56c86e03ee6da9c8f3e534742.
+Reuse prior accepted VTE/FastFloat/fmt/simdutf/libhandy/GStreamer/desktop libraries;
+[B02 evidence](evidence/B02.md)/story/status index actual scope. Libhandy30original
+graphical programs compiled/deferred, ZERO original passes. Libxslt SDK original
+core reports748cases/noerrors but four DocBook golden URL whitespace differences
+remain UNACCEPTED, German-locale branch not independently asserted; SDK not a
+Terminal runtime dependency. Preserve exact diagnostic source/log and no broad
+suite/DocBook/general parser sandbox claim. No whole desktop criterion inferred.
+Latest prior pushed4c0e88aa1562dc1b5dcd8cce19893e218aa51fd3 all3CI success,
+exactpublicHTTP200/indexSHA3e1a93af90648a065ace21ee593893b292e93094410295a3ef96f79472850f87.
 
 ## Parked native graphical branch — preserve attempt budget
 

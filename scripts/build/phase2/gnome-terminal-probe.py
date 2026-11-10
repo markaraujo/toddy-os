@@ -32,7 +32,7 @@ else:
  assert not profile.get_boolean('use-theme-colors') and profile.get_boolean('use-system-font')
  for key in ['visible-name','background-color','foreground-color','use-theme-colors']:profile.reset(key)
  profiles.reset('list');profiles.reset('default');Gio.Settings.sync()
- assert profile.get_string('visible-name')=='Unnamed' and profile.get_boolean('use-theme-colors') and profiles.get_strv('list')==[]
+ assert profile.get_string('visible-name')=='Unnamed' and profile.get_boolean('use-theme-colors') and profiles.get_strv('list')==profiles.get_default_value('list').unpack()
  print(json.dumps({'persisted_after_bus_restart':True,'reset_recovered_defaults':True,'system_font_preserved':True}))
 '''
 records=[]

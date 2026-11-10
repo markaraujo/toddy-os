@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-10T05:37:59.649493+00:00",
+  "updated_at": "2026-11-10T05:57:04.414984+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05–B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -742,14 +742,15 @@
       "Owned simdutf9.0.0 shared/SDK/scalar fallback:91original programs67.18s/193ELFs/49stagefiles,79unsupported icelake notes retained/unqualified. Native0/0/83paths/85entries, actual UID101 CMake/shared34/Unicode PT+emoji roundtrip/lengths/invalid refusal/two recovery cycles/pkg-config/APT0. All required VTE SDKs present; no terminal/GUI acceptance, ADR0191.",
       "Owned VTE0.84.1:18original programs/134compiledELFs/125stagefiles retained; native install2/post0/0,254changedpaths/468owned entries. Actual installed UID101 regex/refusal/private PTY geometry/UTF8/managed-group Stop/fresh recovery/interactive owner prompt/GI/APT0, conffiles/inlined fmt+FastFloat notices verified. Missing sandbox device and own TIOCPKT reader failures corrected probe-only, source/compile/stage unchanged; first promotion selected wrong failed job and changed0paths. No widget/GNOME Terminal/display/focus/physical acceptance, ADR0192.",
       "Owned libhandy1.8.3 GTK3/GI/Vala:122ELFs/78stagefiles unchanged across own C type/GI constructor corrections; native install/post0/0,120changedpaths/184owned entries. Installed UID101 no-route C/GI Unicode value-copy/take-dup ownership/enum/two reset cycles/shared ABI/pkg-config/APT0. All30original graphical programs compiled/deferred, ZERO originals passed; no widget/Terminal/display acceptance, ADR0193.",
-      "Owned libxslt1.1.45 build-only xsltproc SDK:41ELFs/92stagefiles, core driver reports748cases/noerrors; four swallowed DocBook golden URL-whitespace differences remain UNACCEPTED, no full-suite/German-locale/DocBook/blanket parser-sandbox claim. Native install2/post0/0,175changedpaths/181entries; installed UID101 bounded UTF8 transform/malformed XML and EXSLT write refusal-no-effect/two recovery cycles/shared ABI/pkg-config/APT0. Initial metadata path error rootchanged0, exact stage verified before guarded resume; no compile/test replay. Unblocks Terminal menus, no Terminal runtime dependency/GUI acceptance, ADR0194."
+      "Owned libxslt1.1.45 build-only xsltproc SDK:41ELFs/92stagefiles, core driver reports748cases/noerrors; four swallowed DocBook golden URL-whitespace differences remain UNACCEPTED, no full-suite/German-locale/DocBook/blanket parser-sandbox claim. Native install2/post0/0,175changedpaths/181entries; installed UID101 bounded UTF8 transform/malformed XML and EXSLT write refusal-no-effect/two recovery cycles/shared ABI/pkg-config/APT0. Initial metadata path error rootchanged0, exact stage verified before guarded resume; no compile/test replay. Unblocks Terminal menus, no Terminal runtime dependency/GUI acceptance, ADR0194.",
+      "Owned GNOME Terminal3.60.0toddy2:71ELFs/original regex unchanged; cache-only frozen-book correction preserves12schemas/146key contracts and fixes five proxy paths. Initial native install0/post1 missing test /dev/null retained; metadata2/post0/0,39changedpaths/376entries/339runtime entries identical, unbuilt Nautilus addon metadata removed/bundled notices retained. Actual installed UID101/no-route client/unknown-option/private DConf Unicode+navy preferences/invalid boolean refusal/persistence across buses/reset/system font/five paths/shared VTE+libhandy/APT0. Builder-target userspace, no actual GUI/window/focus/PTY/login/physical acceptance; shared stock schema cache pending, ADR0195."
     ],
-    "running": "No active guest writer. GNOME Terminal first setup failed missing xsltproc; frozen owned build SDK now verified with four original DocBook golden differences explicitly unaccepted. Resume same Terminal configuration tree, then original regex/private DConf/CLI and native widget gates. Complete ALL B02 then stop.",
+    "running": "No active guest writer. GNOME Terminal3.60.0toddy2 userspace installed/verified; actual graphical launch/focus/PTY/login still pending, shared stock schema cache union due. Next Nautilus50.2.2 actual source/dependency/test preflight, no guest input/job. Preserve30libhandy graphical originals/headless focus attempt budget. Complete ALL B02 then stop.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-10T05:37:59.649493+00:00",
+    "verified_at": "2026-11-10T05:57:04.414984+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

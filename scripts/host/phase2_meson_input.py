@@ -88,6 +88,14 @@ if row['name']=='fast-float':
     subprocess.run(['python3','/opt/toddy-build/scripts/build/source.py',extra['filename']],cwd=source,check=True)
     sdk=source/('doctest-'+extra['commit']);assert sdk.is_dir();sdk.rename(source/'toddy-test-sdk')
     private_sdk={'scope':'Immutable upstream-selected doctest test-source only; not installed or previously qualified binary SDK','source':extra,'files':{str(p.relative_to(source/'toddy-test-sdk')):hashlib.sha256(p.read_bytes()).hexdigest() for p in (source/'toddy-test-sdk').rglob('*') if p.is_file() and not p.is_symlink()}}
+if row['name']=='gnome-terminal':
+    import difflib
+    path=source/'src/external.gschema.xml';before=path.read_bytes();old=before.decode()
+    assert old.count('"/system')==5
+    new=old.replace('"/system','"/org/gnome/system');path.write_text(new)
+    patch=''.join(difflib.unified_diff(old.splitlines(True),new.splitlines(True),fromfile='a/src/external.gschema.xml',tofile='b/src/external.gschema.xml'))
+    (source/'toddy-schema-paths.patch').write_text(patch)
+    patches.append({'path':str(path.relative_to(source)),'before_sha256':hashlib.sha256(before).hexdigest(),'after_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'changed_paths':5,'patch_sha256':hashlib.sha256(patch.encode()).hexdigest(),'reference':'Frozen BLFS13.1-systemd gnome/gnome-terminal.html external schema path correction'})
 if row['name']=='gnome-shell':
     path=source/'src/calendar-server/gnome-shell-calendar-server.c';before=path.read_bytes();text=before.decode()
     lines=text.splitlines(keepends=True);changed=0

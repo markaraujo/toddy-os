@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gnome-terminal': ('3.60.0', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), vte (= 0.84.1-1+toddy1), libhandy (= 1.8.3-1+toddy1), pcre2 (= 10.49-1+toddy1), gsettings-desktop-schemas (= 50.1-1+toddy1), util-linux (>= 2.42.4-1), dconf (= 0.49.0-1+toddy1)', 'gnome-terminal-3.60.0.tar.gz', 'usr/bin/gnome-terminal'),
     'libxslt': ('1.1.45', 'glibc (>= 2.44-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'libxslt-1.1.45.tar.xz', 'usr/lib/pkgconfig/libxslt.pc'),
     'libhandy': ('1.8.3', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), fribidi (= 1.0.16-1+toddy1)', 'libhandy-1.8.3.tar.xz', 'usr/lib/pkgconfig/libhandy-1.pc'),
     'vte': ('0.84.1', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), pango (= 1.58.2-1+toddy1), cairo (= 1.18.4-1+toddy1), pcre2 (= 10.49-1+toddy1), lz4 (= 1.10.0-1+toddy1), simdutf (= 9.0.0-1+toddy1), fribidi (= 1.0.16-1+toddy1), gnutls (= 3.8.13-1+toddy1), icu (= 78.3-1+toddy1), systemd (>= 261.2-1+toddy3), at-spi2-core (= 2.60.6-1+toddy1)', 'vte-0.84.1.tar.gz', 'usr/lib/pkgconfig/vte-2.91.pc'),
@@ -264,6 +265,7 @@ if __name__ == '__main__':
     if name=='libgweather':qualifier='libgweather-stage-2'
     if name=='libnma':qualifier='libnma-stage-2'
     if name=='gnome-shell' and (log/'gnome-shell-probe-2.exit').exists():qualifier='gnome-shell-probe-2'
+    if name=='gnome-terminal' and (log/'gnome-terminal-probe-3.exit').exists():qualifier='gnome-terminal-probe-3'
     if name=='libhandy' and (log/'libhandy-gi-3.exit').exists():qualifier='libhandy-gi-3'
     if name=='vte' and (log/'vte-probe-3.exit').exists():qualifier='vte-probe-3'
     if name=='vala':qualifier='vala-consumer-2'
@@ -1221,6 +1223,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='gnome-terminal':
+        from qualify_gnome_terminal import qualify as qualify_gnome_terminal
+        qualify_gnome_terminal(ROOT)
     if name=='libxslt':
         from qualify_libxslt import qualify as qualify_libxslt
         qualify_libxslt(ROOT)
@@ -1386,6 +1391,9 @@ if __name__ == '__main__':
         shutil.copytree(source, destination, symlinks=True)
         assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
+    if name=='gnome-terminal':
+        addon=destination/'usr/share/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml'
+        assert addon.is_file();addon.unlink()
     if name=='gnome-shell':
         # Upstream installs this launcher even with extensions_app=false.
         launcher=destination/'usr/share/applications/org.gnome.Shell.Extensions.desktop'
@@ -1514,6 +1522,10 @@ if __name__ == '__main__':
     if name=='lua':
         archives += [r['filename'] for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name'] in ('lua-shared-library-patch','lua-test-suite')]
     write_copyright(destination, name, archives)
+    if name=='gnome-terminal':
+        doc=destination/'usr/share/doc/gnome-terminal';common=ROOT/'LICENSES/third-party/LGPL-2.1.txt'
+        shutil.copyfile(common,doc/'LGPL-2.1.txt')
+        with (doc/'copyright').open('ab') as f:f.write(b'\nBundled per-file LGPL2.1 terms; complete text:\n'+common.read_bytes())
     if name=='gdm':
         doc=destination/'usr/share/doc/gdm';license_text=ROOT/'LICENSES/GFDL-1.3.txt'
         assert hashlib.sha256(license_text.read_bytes()).hexdigest()=='110535522396708cea37c72a802c5e7e81391139f5f7985631c93ef242b206a4'
@@ -1555,7 +1567,7 @@ if __name__ == '__main__':
         for relative,row in before['entries'].items():
             if relative.startswith('etc/') and 'sha256' in row: conffiles+=['--conffile','/'+relative]
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), name,
-                    version+('-1+toddy2' if name in ('linux-pam','gnome-settings-daemon') else '-1+toddy1'), str(destination), *source_args,
+                    version+('-1+toddy2' if name in ('linux-pam','gnome-settings-daemon','gnome-terminal') else '-1+toddy1'), str(destination), *source_args,
                     '--recipe', 'scripts/build/phase2/'+name+'-install.sh',
                     '--depends', depends, '--install', *conffiles,
                     *(['--architecture','all'] if name in ('unicode-ucd','fast-float') else [])], cwd=ROOT, check=True)

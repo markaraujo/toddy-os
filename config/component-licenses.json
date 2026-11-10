@@ -2662,7 +2662,19 @@
       "name": "gnome-terminal",
       "version": "3.60.0",
       "license": "LicenseRef-gnome-terminal-per-file",
-      "evidence": "Primary authenticated root notices: GPL3 and GFDL1.3 documentation. See docs/evidence/B01-desktop-root-notices.json. Per-file/bundled conditions apply; native package must retain full source notice collection. Source review only, native build/runtime qualification pending."
+      "evidence": "Authenticated GPL3/GFDL1.3 root legal texts and runtime/bundled leading C/C++/header conditions retained. Existing per-file license identity preserved; LGPL2.1 text included for bundled conditions. Same-book five proxy paths corrected and exact patch shipped. Optional Nautilus extension omitted, dead addon metadata removed; native graphical runtime remains unqualified.",
+      "extra_license_headers": {
+        "gnome-terminal-3.60.0.tar.gz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".c",
+            ".cc",
+            ".h"
+          ]
+        }
+      }
     },
     {
       "name": "pipewire",

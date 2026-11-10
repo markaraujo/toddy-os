@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T05:37:59.649493+00:00
+Updated: 2026-11-10T05:57:04.414984+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T05:37:59.649493+00:00
+Last verified: 2026-11-10T05:57:04.414984+00:00
 
 Verified:
 
@@ -137,8 +137,9 @@ Verified:
 - Owned VTE0.84.1:18original programs/134compiledELFs/125stagefiles retained; native install2/post0/0,254changedpaths/468owned entries. Actual installed UID101 regex/refusal/private PTY geometry/UTF8/managed-group Stop/fresh recovery/interactive owner prompt/GI/APT0, conffiles/inlined fmt+FastFloat notices verified. Missing sandbox device and own TIOCPKT reader failures corrected probe-only, source/compile/stage unchanged; first promotion selected wrong failed job and changed0paths. No widget/GNOME Terminal/display/focus/physical acceptance, ADR0192.
 - Owned libhandy1.8.3 GTK3/GI/Vala:122ELFs/78stagefiles unchanged across own C type/GI constructor corrections; native install/post0/0,120changedpaths/184owned entries. Installed UID101 no-route C/GI Unicode value-copy/take-dup ownership/enum/two reset cycles/shared ABI/pkg-config/APT0. All30original graphical programs compiled/deferred, ZERO originals passed; no widget/Terminal/display acceptance, ADR0193.
 - Owned libxslt1.1.45 build-only xsltproc SDK:41ELFs/92stagefiles, core driver reports748cases/noerrors; four swallowed DocBook golden URL-whitespace differences remain UNACCEPTED, no full-suite/German-locale/DocBook/blanket parser-sandbox claim. Native install2/post0/0,175changedpaths/181entries; installed UID101 bounded UTF8 transform/malformed XML and EXSLT write refusal-no-effect/two recovery cycles/shared ABI/pkg-config/APT0. Initial metadata path error rootchanged0, exact stage verified before guarded resume; no compile/test replay. Unblocks Terminal menus, no Terminal runtime dependency/GUI acceptance, ADR0194.
+- Owned GNOME Terminal3.60.0toddy2:71ELFs/original regex unchanged; cache-only frozen-book correction preserves12schemas/146key contracts and fixes five proxy paths. Initial native install0/post1 missing test /dev/null retained; metadata2/post0/0,39changedpaths/376entries/339runtime entries identical, unbuilt Nautilus addon metadata removed/bundled notices retained. Actual installed UID101/no-route client/unknown-option/private DConf Unicode+navy preferences/invalid boolean refusal/persistence across buses/reset/system font/five paths/shared VTE+libhandy/APT0. Builder-target userspace, no actual GUI/window/focus/PTY/login/physical acceptance; shared stock schema cache pending, ADR0195.
 
-Running: No active guest writer. GNOME Terminal first setup failed missing xsltproc; frozen owned build SDK now verified with four original DocBook golden differences explicitly unaccepted. Resume same Terminal configuration tree, then original regex/private DConf/CLI and native widget gates. Complete ALL B02 then stop.
+Running: No active guest writer. GNOME Terminal3.60.0toddy2 userspace installed/verified; actual graphical launch/focus/PTY/login still pending, shared stock schema cache union due. Next Nautilus50.2.2 actual source/dependency/test preflight, no guest input/job. Preserve30libhandy graphical originals/headless focus attempt budget. Complete ALL B02 then stop.
 
 Remaining:
 
