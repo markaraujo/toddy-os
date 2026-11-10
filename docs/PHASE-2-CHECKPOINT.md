@@ -172,19 +172,43 @@ cycles after querying the GI repository path and real Python override module.
 Its collector still read the original failed probe log. Collector-only
 libblockdev-collect-3 PID 149046 terminal 0 on the exact corrected log.
 All 72 ELF files, 64 regular staged files and six original logs retained.
-[Stage evidence](evidence/B02-libblockdev-stage.json). Native package absent,
-no daemon or storage actions. No active writer. Last target free 17,207,218,176 B.
+[Stage evidence](evidence/B02-libblockdev-stage.json). No daemon or storage
+actions in the staged tests.
 Do not repeat source preparation, main build, tests, probe or collector.
 
-EXACT NEXT: qualify the three libblockdev job receipts and staged manifest
-823c77026558533040aa1977e9cdaaa11b2830b4cb895e5d66345eb0c3fbb8d1
-read-only. Review the versioned /etc/libblockdev/3/conf.d policy and exact
-plugin/SDK runtime closure, then promote once through the full-root backend
-and verify installed GI and crypto plugin lifecycle. Check actual host
-and guest reserve headroom. Before the UDisks build, recover verified closed
-stage space if needed (the frozen book estimates 68 MB with tests). Keep
-device actions in disposable VM tests and track intended kernel storage
-options. UDisks, Samba and native GNOME pending. Stop after accepted B02.
+Libblockdev native b02-libblockdev-install PID 149698 terminal recipe/postcheck
+0/0, 106 changed paths, 113 payload entries, archive SHA256
+8a467c51fc985011edf78a9a5328904f82d72aa407f115e5546ed13ca0be5a36.
+[Native evidence](evidence/B02-libblockdev-install.json) verifies exact
+stage bytes, versioned conffile, installed Python/GI load/query/unload,
+Cryptsetup linkage, notices and APT. No device action. Do not replay.
+
+[Qtbase custody](evidence/B02-qtbase-promotion-custody.json) complete:
+92,434,432 B reclaimed from the exact closed promotion usr copy, no
+installed root changes. Native archive, original workstage and controls
+retained. Do not replay custody.
+
+UDisks 2.11.2 udisks2-1 PID 150449 terminal 2 at the optional man target:
+the frozen auto configuration found xsltproc but its offline DocBook XSL
+mapping was absent. udisks2-no-man-2 PID 158476 continued the retained
+build with the supported --disable-man option. Daemon, ATA SMART, available
+modules and GI retained. The build, all 23 original cases, stage and C probe
+passed. Job 2 then exited 1 because the generated GI accessors are explicitly
+not introspectable. udisks2-gi-3 PID 165234 terminal 0 after using the local
+GObject property. 71 ELF, 101 staged files and nine logs unchanged across
+that correction. [Stage evidence](evidence/B02-udisks2-stage.json).
+No native package, real daemon or device activation. No writer remains.
+Last target free 17,236,418,560 B. Do not replay source, build, tests or probes.
+
+EXACT NEXT: qualify three UDisks receipts and stage manifest
+eba2f9ff24bdcac0c60d69a85a7e7b21ce33484b9cdfbb52bc799dd1f86d3053.
+Review exact staged D-Bus activation files, Systemd unit, udev rules,
+Polkit policy and config paths. Keep default authorization and use a single
+full-root native transaction with an installed no-device C/GI probe.
+Prepare real daemon authorization/refusal and device tests only in a
+disposable VM. Do not activate the service on the builder. Check actual
+host/guest reserves and lock. Then continue Settings closure, including
+Samba, and the pending GNOME session work. Stop after accepted B02.
 
 ### Previous Settings prerequisites
 

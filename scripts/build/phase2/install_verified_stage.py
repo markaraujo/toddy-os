@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'libblockdev': ('3.5.0', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), systemd (>= 261.2-1+toddy3), kmod (= 34.2-1+toddy1), util-linux (>= 2.42.4-1+toddy1), e2fsprogs (= 1.47.4-1+toddy1), cryptsetup (= 2.8.7-1+toddy1), lvm2 (= 2.03.42-1+toddy1), openssl (= 4.0.3-1+toddy1), json-c (= 0.19-1+toddy1), keyutils (= 1.6.3-1+toddy1), libbytesize (= 2.12-1+toddy1), gmp (= 6.3.0-1+toddy1), mpfr (= 4.2.2-1+toddy1), pcre2 (= 10.49-1+toddy1), libnvme (= 1.16.2-1+toddy1), libatasmart (= 0.19-1+toddy1), python (>= 3.14), python (<< 3.15), pygobject (= 3.56.3-1+toddy1)', 'libblockdev-3.5.0.tar.gz', 'usr/lib/pkgconfig/blockdev.pc'),
     'cryptsetup': ('2.8.7', 'glibc (>= 2.44-1+toddy1), util-linux (>= 2.42.4-1+toddy1), lvm2 (= 2.03.42-1+toddy1), openssl (= 4.0.3-1+toddy1), json-c (= 0.19-1+toddy1), popt (= 1.19-1+toddy1)', 'cryptsetup-2.8.7.tar.xz', 'usr/lib/pkgconfig/libcryptsetup.pc'),
     'popt': ('1.19', 'glibc (>= 2.44-1+toddy1)', 'popt-1.19.tar.gz', 'usr/lib/pkgconfig/popt.pc'),
     'lvm2': ('2.03.42', 'glibc (>= 2.44-1+toddy1), readline (= 8.3-1+toddy1), systemd (>= 261.2-1+toddy3), util-linux (>= 2.42.4-1+toddy1), libnvme (= 1.16.2-1+toddy1), libaio (= 0.3.113-1+toddy1)', 'LVM2.2.03.42.tgz', 'usr/lib/pkgconfig/devmapper.pc'),
@@ -275,6 +276,7 @@ if __name__ == '__main__':
     if name=='libgtop' and (log/'libgtop-mode-3.job.json').exists():qualifier='libgtop-mode-3'
     if name=='mitkrb':qualifier='mitkrb-metadata-4'
     if name=='cups':qualifier='cups-layout-finish-2'
+    if name=='libblockdev':qualifier='libblockdev-collect-3'
     if name=='libnvme':qualifier='libnvme-probe-2'
     if name=='libatasmart':qualifier='libatasmart-probe-2'
     if name=='libbytesize':qualifier='libbytesize-finish-2'
@@ -1283,6 +1285,9 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name=='libblockdev':
+        from qualify_libblockdev import qualify as qualify_libblockdev
+        qualify_libblockdev(ROOT)
     if name=='cryptsetup':
         from qualify_cryptsetup import qualify as qualify_cryptsetup
         qualify_cryptsetup(ROOT)
@@ -1777,6 +1782,7 @@ if __name__ == '__main__':
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
     if name=='cups':conffiles=[arg for file in sorted((destination/'etc/cups').iterdir()) if file.is_file() for arg in ['--conffile','/'+str(file.relative_to(destination))]]
+    if name=='libblockdev':conffiles=['--conffile','/etc/libblockdev/3/conf.d/00-default.cfg']
     if name=='lvm2':
         conffiles=[value for path,row in sorted(before['entries'].items())
                    if path.startswith('etc/lvm/') and 'sha256' in row

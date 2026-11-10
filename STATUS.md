@@ -188,7 +188,7 @@ Verified:
 - Owned libbytesize 2.12 local SDK: 76 selected upstream cases passed with three locale skips. Native install and postcheck 0/0 with 56 changed paths and 131 payload entries. C/Python/CLI arithmetic, refusal and recovery, exact stage bytes, ABI and APT passed. No storage device, UDisks service, Settings GUI or physical acceptance.
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 
-Running: Owned Popt and Cryptsetup installed and checked. Cryptsetup local LUKS2 metadata and ABI verified. Libblockdev staged with three original core passes and actual local GI crypto plugin lifecycle verified. Native libblockdev package next, then UDisks. Native devices, kernel storage gaps and GNOME pending. Full B02 then stop.
+Running: Libblockdev installed with actual local GI crypto plugin lifecycle. UDisks staged with all 23 original job tests and local C/GI passing. Native UDisks packaging and disposable daemon/policy/device tests pending, plus Samba and GNOME. Full B02 then stop.
 
 Remaining:
 

@@ -1,0 +1,70 @@
+{
+  "native": {
+    "step": "b02-libblockdev-install",
+    "started": "2026-11-10T23:36:19.091325+00:00",
+    "finished": "2026-11-10T23:36:35.668168+00:00",
+    "recipe_sha256": "4c23b01722d49f1497098810801d3811733ed640698363c20856516ec4ca29aa",
+    "postcheck_sha256": "c450d06fb94f7f052921d4e1bf32f519f259628db08026a4cdcfa28d3e263c79",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 106,
+    "log_sha256": "cc8f34e2b0c7e0d73e572313b76dbe106187ed3010a5f10597e6e37c61d19379",
+    "receipt_sha256": "308f7a045b69f718fa2097d2948d4c8fd0c7cd92fcbeb11db6cf7ce83ee8efa9"
+  },
+  "consumer": {
+    "consumer": "BlockDev 3 GI and two local crypto plugin load/query/unload cycles passed\n",
+    "conffile": "/etc/libblockdev/3/conf.d/00-default.cfg",
+    "notices_verified": 1,
+    "scope": "Installed Libblockdev GI and crypto plugin lifecycle under UID101 and NNP, with private devices and network. No storage action or daemon.",
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "libblockdev",
+    "version": "3.5.0-1+toddy1",
+    "archive_sha256": "8a467c51fc985011edf78a9a5328904f82d72aa407f115e5546ed13ca0be5a36",
+    "recipe_sha256": "4c23b01722d49f1497098810801d3811733ed640698363c20856516ec4ca29aa",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "libblockdev",
+        "version": "3.5.0",
+        "filename": "libblockdev-3.5.0.tar.gz",
+        "url": "https://github.com/storaged-project/libblockdev/releases/download/3.5.0/libblockdev-3.5.0.tar.gz",
+        "sha256": "bccd30e6b5d11504de60d9889ff6a2a25b07a4ec8f04070f2387e168301b3e3a",
+        "reference": "BLFS13.1-systemd general/libblockdev.html",
+        "book_page_sha256": "bcd5ef3a8effc5f860d1c061915872c8a2d40dda0931b725b88fed32b3efb865",
+        "book_md5": "68448042ea0a2073098fc4ae37b01cbf",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "installed": true,
+    "payload_count": 113,
+    "supporting_build_scripts_sha256": "f66badac83e7efcdf7048958bed943d9928124dca3d738609f012c0ef4107976",
+    "payload_sha256": "c22370cca3e334a223f20059f6b42e6c4dafa1b645fd46e6717f36f8ee83faa4"
+  },
+  "installed_notices": {
+    "sources": [
+      {
+        "filename": "libblockdev-3.5.0.tar.gz",
+        "source_sha256": "bccd30e6b5d11504de60d9889ff6a2a25b07a4ec8f04070f2387e168301b3e3a",
+        "url": "https://github.com/storaged-project/libblockdev/releases/download/3.5.0/libblockdev-3.5.0.tar.gz",
+        "notices": [
+          {
+            "path": "libblockdev-3.5.0/LICENSE",
+            "sha256": "97bdc721d875501b6243a456333fdfdb1ab64d31c4da2554de845caf4674b946",
+            "size": 26448
+          }
+        ]
+      }
+    ],
+    "scope": "Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply"
+  }
+}

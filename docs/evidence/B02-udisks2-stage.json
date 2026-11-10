@@ -1,0 +1,93 @@
+{
+  "stage": {
+    "version": "2.11.2",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_cases": [
+      "/udisks/daemon/spawned_job/successful",
+      "/udisks/daemon/spawned_job/failure",
+      "/udisks/daemon/spawned_job/missing_program",
+      "/udisks/daemon/spawned_job/cancelled_at_start",
+      "/udisks/daemon/spawned_job/cancelled_midway",
+      "/udisks/daemon/spawned_job/override_signal_handler",
+      "/udisks/daemon/spawned_job/premature_termination",
+      "/udisks/daemon/spawned_job/read_stdout",
+      "/udisks/daemon/spawned_job/read_stderr",
+      "/udisks/daemon/spawned_job/exit_status",
+      "/udisks/daemon/spawned_job/abnormal_termination",
+      "/udisks/daemon/spawned_job/binary_output",
+      "/udisks/daemon/spawned_job/input_string",
+      "/udisks/daemon/spawned_job/binary_input_string",
+      "/udisks/daemon/threaded_job/successful",
+      "/udisks/daemon/threaded_job/failure",
+      "/udisks/daemon/threaded_job/cancelled_at_start",
+      "/udisks/daemon/threaded_job/cancelled_midway",
+      "/udisks/daemon/threaded_job/override_signal_handler",
+      "/udisks/daemon/threaded_job_sync/successful",
+      "/udisks/daemon/threaded_job_sync/failure",
+      "/udisks/daemon/threaded_job_sync/cancelled_at_start",
+      "/udisks/daemon/threaded_job_sync/cancelled_midway"
+    ],
+    "consumer": "UDisks local D-Bus skeleton properties and two object lifecycles passed\n",
+    "gi_consumer": "UDisks 2 GI metadata and two local manager objects passed\n",
+    "daemon_activation_and_device_tests_pending": true,
+    "artifacts_count": 71,
+    "artifacts_map_digest": "2fb96b49859a9ec90a12d61a4b9ca381c4b05aa36f5b69d2004d33293a3474f8",
+    "stage_sha256_count": 101,
+    "stage_sha256_map_digest": "fbd9d4cc803bab4a8ec0b6f71dfb93d216e16d0576114e132e693bf19824fe9b"
+  },
+  "manifest_sha256": "eba2f9ff24bdcac0c60d69a85a7e7b21ce33484b9cdfbb52bc799dd1f86d3053",
+  "manifest_entries": 278,
+  "jobs": [
+    {
+      "pid": 150449,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "2609845",
+      "started_unix": 1794353997.2913578,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": 2,
+      "command_sha256": "d844c129dbdd43f1ffb3ee211861a62a34eb4523da08825bf78e9c8afd37e64d"
+    },
+    {
+      "pid": 158476,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "2616484",
+      "started_unix": 1794354063.689596,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": 1,
+      "command_sha256": "24d78572280d4c6b6ad68c6e02a31fb23fb0c92aa5aed6469875c1a6af76334f"
+    },
+    {
+      "pid": 165234,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "proc_start_ticks": "2621596",
+      "started_unix": 1794354114.8077977,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "exit": 0,
+      "command_sha256": "c7c92780a0ea6d82c69ae253c25645663073e027df00733b2f4bed6c23df816d"
+    }
+  ],
+  "prepared": {
+    "source_sha256": "18630a8aad806bea0bc626ce97e71e50ec82c742956ac1c834a4275f8f22207b",
+    "reference": "BLFS13.1-systemd general/udisks2.html",
+    "book_page_sha256": "02080335693b5cc54bc693016595fc40f2525e25ab06f4199c9171c221f9bf94",
+    "source_patches": [],
+    "recipe_sha256": "2e06441a1064614a7ade46cd24ae56b1c2d6e4d391aedf5ae7070a063f48f4c2",
+    "probe_sha256": "0a37d4390f462086e44355687438c243333a205c3082e63af2d63a0f3aa00fc9"
+  },
+  "log_sha256": {
+    "/mnt/lfs/sources/phase2/work/udisks2-1/configure.log": "6cb76a4aa37c94ef5f98fba477dc5b6ad3d589428ba6e77be7992e2a0303cb14",
+    "/mnt/lfs/sources/phase2/work/udisks2-1/original-build.log": "08a87f8362e700037baacd9cb6831a5cca963dba50130ae351eb80cf5dfeb076",
+    "/mnt/lfs/sources/phase2/work/udisks2-1/configure-no-man-2.log": "c475ef7dd13ba5e591dec404fee070fd985c51e25d3f1bbbfaee6b1bbf3abb03",
+    "/mnt/lfs/sources/phase2/work/udisks2-1/incremental-build-2.log": "61f42c9df08e90316fff33b8a2c87065bdd3083b35d0ae18323c2a575ba38322",
+    "/mnt/lfs/sources/phase2/work/udisks2-1/original-check.log": "585cdfd035a5aee4ce432ee14982932fee7e1a1653f945e3f3a811425bc2adf4",
+    "/mnt/lfs/sources/phase2/work/udisks2-1/compile/src/tests/udisks-test.log": "92b6c8de2e958c0de4afec0b81c073bd4f6efafa2cfc3c36e46b3c265dd2df8e",
+    "/mnt/lfs/sources/phase2/work/udisks2-1/original-stage.log": "ff563c435f54d39a43ad990966b35777c69fe76f04feb9bd2e33cdec1e0a6796",
+    "/mnt/lfs/sources/phase2/work/udisks2-1/local-probe.log": "7a3a96babecf577c6fca8e949a23a6ef98c5592c688ddaff32d1da2775817200",
+    "/mnt/lfs/sources/phase2/work/udisks2-1/local-gi.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "corrected_gi_sha256": "561e8e5fd51ae78d7800bf53875cfd690cedf0028768e230c60722779624feb3",
+  "target_free_bytes": 17236418560,
+  "retained_compiler_stage_and_logs_after_gi_correction": true,
+  "scope": "Original 23 UDisks jobs, including early/mid cancellation, and local C/GI D-Bus skeletons. No real daemon activation, Polkit authorization, device or Settings graphical acceptance."
+}
