@@ -142,6 +142,15 @@ if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/accountsservice-26.27.3 ||
     chmod 0444 "$root/etc/machine-id"
 fi
 mount --bind "$TODDY_WORK" "$root/build"
+# Exact disposable qualification fixture for metadata-only COW cache inputs.
+# A plain parent bind intentionally omits child mounts; expose only this declared
+# private overlay, never a general recursive bind or the builder's other mounts.
+if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/kernel-overlay-test-1 &&
+      $TODDY_WORK == /mnt/lfs/sources/phase2/work/kernel-overlay-test-1 ]]; then
+    [[ $(findmnt -n -o FSTYPE --mountpoint "$TODDY_WORK/merged") == overlay ]]
+    [[ $(stat -c %u "$TODDY_WORK/merged") == "$TODDY_UID" ]]
+    mount --bind "$TODDY_WORK/merged" "$root/build/merged"
+fi
 mkdir -p "$TODDY_WORK/stage" "$TODDY_WORK/home"
 chown "$TODDY_UID:$TODDY_GID" "$TODDY_WORK/stage" "$TODDY_WORK/home"
 mount --bind "$TODDY_WORK/stage" "$root/stage"

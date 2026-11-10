@@ -8,7 +8,47 @@ No accepted complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current state and exact next action
 
-No active guest writer. Latest implemented slice committed/pushedc372ee6:
+Current new slice: Exiv2/metadata prerequisites. Exiv2 sourceSHA
+ ea51b0609f58a9afa063b60daa1539948b62247721e154f4fff0ad3aec9f9756.
+Initial exiv2-1PID4279 terminal1 AFTER89step successful library/CLI build, own
+collector expected absolute runner; actual CTest relative runner+cwd validated.
+Finish2PID5097 terminal1: tiff/version/regression drivers0, bugfix310cases one
+failure10skips (Brotli-disabled profile), lens two failures (missing private
+source-reference path and INI-disabled profile). Preserve all originals; no stage/
+package yet. Correct profile with pinned Brotli/INI support and private readonly
+canon source alias, then reconfigure/rebuild only affected inputs, new private
+fixtures and all five original drivers because library feature inputs change.
+Do NOT repeat the unchanged failed profile or accepted test inputs.
+
+Brotli1.2.0 now OWNED: build1PID8227 actual0/12original tarball cases/42ELFs/
+17stagefiles; native b02-brotli-install PID8817 recipe/post0/0,35paths/40entries.
+Actual installed UID101/private-device/no-route binary+UTF8 compression/integrity/
+malformed refusal/input retained/two recovery cycles/shared ABI/pkgconfig/APT0.
+Archivec693b15ad467bc5cc6d0b77c9c83356073224ea3fad8597424a24666d220cee2.
+INIh62 last dispatched inih-1PID9480. EXACT NEXT: inspect its job/startticks/exit/log
+and stage-results before any operation; do not redispatch. If passed qualify and
+promote once; then export both dependency proofs/update ADR0202 before Exiv profile
+resume. Input/work /mnt/lfs/sources/phase2/{inputs/inih-62,work/inih-1}; logs/exits
+/var/log/toddy/phase2/inih-1.*. Future Exiv/INI/Brotli source/recipes/qualifiers
+currently uncommitted; no new app/desktop acceptance follows these SDK steps.
+
+Kernel resource path now concrete (ADR0201): synthetic COW probe2 QUALIFIED actual
+unprivileged101/NNP/cap0/input+/usr denial/upper-only write/lower unchanged. Probe1
+own metadata st_blocks assumption failed; actual unmount and lower unchanged
+verified before probe2, both retained. [Proof](evidence/B02-kernel-COW-preflight.json).
+New host .local/vm/phase2/kernel-landlock-scratch.raw768MiB FULLY PREALLOCATED,
+receipt kernel-landlock-scratch.json PREPARED/inode11958020/dev66306/serial
+TODDY-B02-KERNEL; hostfree108053454848B after allocation >100GiB. Not attached or
+formatted yet. phase2_vm.start now attaches only this exact guarded virtual file;
+eight guard tests passed. No kernel change/acceptance. After all guest writers
+are terminal, a controlled builder restart can attach it; restore existing six
+scratch/Systemd/companion with NEW receipts. Before mkfs verify exact virtual
+serial/size/blank state and intended UUID, no physical disk. Prepare private COW
+kernel cache profile with real baseline hashes/UID101 isolation; do not mutate
+accepted2.7GiB kernel cache. Persistent cause budget retained, no new blank retry.
+
+
+Prior delivered slice (never replay), committed/pushedc372ee6:
 Blueprint compiler0.22.2 build-only architectureall OWNED. Build1PID2507 terminal1
 AFTER configure/Ninja/four original tokenizer+formatter passes; original linter
 opens15source examples r+ and failed on read-only input. Finish2PID2835 actual0:

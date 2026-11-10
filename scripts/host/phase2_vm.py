@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import subprocess
 import shutil
+import stat
 import time
 
 import vm
@@ -14,6 +15,34 @@ import vm
 ROOT = vm.ROOT
 WORK = vm.VM / 'phase2'
 NAME = 'toddy-phase2'
+KERNEL_SCRATCH_BYTES = 768 * 1024**2
+
+
+def kernel_scratch_arguments():
+    """Attach only the recorded preallocated project file, never another path."""
+    receipt = WORK / 'kernel-landlock-scratch.json'
+    disk = WORK / 'kernel-landlock-scratch.raw'
+    if receipt.is_symlink() or disk.is_symlink():
+        raise ValueError('Scratch symlink forbidden')
+    if not receipt.exists() and not disk.exists():
+        return []
+    if not receipt.is_file() or not disk.is_file():
+        raise ValueError('Reconcile incomplete scratch preparation')
+    rs, ds = receipt.stat(), disk.stat()
+    if rs.st_uid != os.getuid() or rs.st_nlink != 1 or rs.st_size > 65536:
+        raise ValueError('Unsafe scratch receipt')
+    row = json.loads(receipt.read_text())
+    if (row.get('state') != 'prepared' or row.get('filename') != disk.name
+            or row.get('format') != 'raw' or row.get('bytes') != KERNEL_SCRATCH_BYTES
+            or row.get('serial') != 'TODDY-B02-KERNEL'):
+        raise ValueError('Unexpected scratch declaration')
+    if (not stat.S_ISREG(ds.st_mode) or ds.st_uid != os.getuid() or ds.st_nlink != 1
+            or ds.st_mode & 0o077 or ds.st_size != KERNEL_SCRATCH_BYTES
+            or ds.st_blocks * 512 < ds.st_size
+            or ds.st_dev != row.get('device') or ds.st_ino != row.get('inode')):
+        raise ValueError('Scratch identity/allocation mismatch')
+    return ['-drive', 'file=/vm/phase2/kernel-landlock-scratch.raw,if=none,id=b02kernel,format=raw,discard=ignore',
+            '-device', 'virtio-blk-pci,drive=b02kernel,serial=TODDY-B02-KERNEL']
 
 
 def run(*args, **kwargs):
@@ -127,7 +156,7 @@ def main():
             '-device', 'virtio-blk-pci,drive=lfs,serial=TODDY-LFS-TARGET',
             '-drive', 'file=/vm/seed.img,if=virtio,format=raw,readonly=on',
             '-netdev', 'user,id=net0,hostfwd=tcp:0.0.0.0:2223-:22',
-            '-device', 'virtio-net-pci,netdev=net0')
+            '-device', 'virtio-net-pci,netdev=net0', *kernel_scratch_arguments())
     elif args.action == 'ssh':
         run(*ssh_args(), *args.command)
     elif args.action == 'stop':

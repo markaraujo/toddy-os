@@ -1,0 +1,50 @@
+{
+  "scope": "Only native Landlock missing-config/resource/isolation preflight, no kernel build/config/install/boot acceptance. Synthetic4MiB metacopy COW qualified actual UID101 namespace/no caps/no-new-privs/input+/usr write denials/private upper write/lower bytes-owner-mode unchanged. Eight host scratch identity guard tests passed. One bounded768MiB fully preallocated virtual project file prepared within100GiB host reserve; not attached or formatted.",
+  "current_kernel": "7.1.8-toddy",
+  "missing": "CONFIG_SECURITY_LANDLOCK",
+  "original_kernel_untouched": true,
+  "synthetic_overlay": {
+    "state": "qualified",
+    "scope": "Disposable synthetic4MiB overlay/metacopy/UID101/readonly-input denial qualification only; no real kernel or guest package change",
+    "lower_sha256": "74a18e3f48369ee8c8e7cd03bd8b786591b0c19e2ee4df6ec97e74bef0c849d8",
+    "lower_uid": 0,
+    "prior_failed_probe": "kernel-overlay-test-1",
+    "correction": "Metadata xattr may occupy8stat blocks and marker value empty; verify metacopy presence and SEEK_DATA ENXIO, not zero st_blocks or value y.",
+    "metadata_only_blocks_before_write": 8,
+    "actual_unprivileged_namespace_exit": 0,
+    "lower_content_owner_mode_unchanged": true,
+    "metadata_only_before_write": true
+  },
+  "host_scratch": {
+    "state": "prepared",
+    "scope": "Dedicated bounded virtual kernel cache COW scratch only. No physical disk or target installation; not attached/formatted here.",
+    "filename": "kernel-landlock-scratch.raw",
+    "format": "raw",
+    "bytes": 805306368,
+    "serial": "TODDY-B02-KERNEL",
+    "host_free_before": 108858769408,
+    "host_minimum_reserve_bytes": 107374182400,
+    "discard": "ignore; retain preallocated host allocation",
+    "device": 66306,
+    "inode": 11958020,
+    "allocated_bytes": 805310464,
+    "host_free_after": 108053454848
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-kernel-COW-preflight-evidence.tar.gz",
+    "sha256": "8aa1fee13bcee5ffa73b0b0df4dd867bd4889aa12a4c8e7c8d7580e85bced8ff",
+    "members": [
+      "guest/kernel-overlay-test-1.json",
+      "guest/kernel-overlay-test-2.json",
+      "guest/kernel-overlay-test-2.log",
+      "host/kernel-overlay-test-1-controller.log",
+      "host/kernel-overlay-test-1-controller.exit",
+      "host/kernel-overlay-test-2-controller.log",
+      "host/kernel-overlay-test-2-remote.py",
+      "host/kernel-scratch-guard-tests.log",
+      "host/localsearch-kernel-cache-preflight.log",
+      "host/localsearch-landlock-config.log",
+      "host/kernel-landlock-scratch.json"
+    ]
+  }
+}
