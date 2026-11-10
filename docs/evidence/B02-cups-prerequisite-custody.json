@@ -1,0 +1,45 @@
+{
+  "state": "complete",
+  "scope": "Only three archive-identical closed promotion usr replicas. Installed root, original source/compiler/workstage/raw evidence/native archives/DEBIAN and MIT run/var directories retained.",
+  "before_free_bytes": {
+    "target": 17195069440,
+    "scratch": 611934208
+  },
+  "completed": [
+    {
+      "name": "libqmi",
+      "stage": "/mnt/lfs/sources/stage/phase2-libqmi",
+      "stage_inode": 4672,
+      "record_sha256": "321c69ecbc8cc74b60683b3fd32e6f87832e389f675f648aeb6591b7cf1f9ef7",
+      "archive_sha256": "364fed7bd84d3d9f9acee17ac431dcb01bbd8a90a4c729a2daf6eb81665a65fa",
+      "workstage_files_retained": 76
+    },
+    {
+      "name": "mitkrb",
+      "stage": "/mnt/lfs/sources/stage/phase2-mitkrb",
+      "stage_inode": 17832,
+      "record_sha256": "15af322020ca2122b9f572b31553be5246f2c7409a0d77d3e528555bd929fd14",
+      "archive_sha256": "b34b8d324dd82680ea50c0ddfa6db4d649d7c807f9b73e6d39b2fe75983924c1",
+      "workstage_files_retained": 132
+    },
+    {
+      "name": "gweather-locations",
+      "stage": "/mnt/lfs/sources/stage/phase2-gweather-locations",
+      "stage_inode": 8336241,
+      "record_sha256": "beed18af2744f8a92356af2b4b7c26fb4fd8d8cdb62445cebd0dd072f70a8a9b",
+      "archive_sha256": "8c87cef2a7e26e0341937a03c3fe79d3e9216e39cefcbaf48035e425664e20dd",
+      "workstage_files_retained": 98
+    }
+  ],
+  "current": "gweather-locations",
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": {
+    "target": 17219145728,
+    "scratch": 651608064
+  },
+  "recovery": "Verify retained native archive/record and extract into a NEW stage when needed. Never replay retirement or reinstall accepted packages.",
+  "reclaimed_bytes": {
+    "target": 24076288,
+    "scratch": 39673856
+  }
+}
