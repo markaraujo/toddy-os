@@ -1,0 +1,107 @@
+{
+  "scope": "Only frozen Glycin GTK4 companion compiled/staged, GI/shared symbols resolved; real image/texture conversion and native packaging pending. No core/loaders rebuild/reinstall or desktop acceptance. Native test fixture prepared; next cold native test uses new context, not an old operation replay.",
+  "source": {
+    "name": "glycin",
+    "version": "2.1.5",
+    "filename": "glycin-2.1.5.tar.xz",
+    "url": "https://download.gnome.org/sources/glycin/2.1/glycin-2.1.5.tar.xz",
+    "sha256": "6c09757ee906330a60b6705753aa56bca007ad219b95e6e3537510d41bc341c8",
+    "reference": "BLFS13.1-systemd general/glycin.html",
+    "book_page_sha256": "5eee5d41eef30cadd756b8b75e9af1a4fd4aa3953dee9f4e857f344c446751fa",
+    "book_md5": "d9224a846ad1ed964d07e1ebb48d4458",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "build_input": {
+    "scope": "Fresh companion only; existing core/loaders/source/vendor unchanged; separate work on existing qualified scratch. No native transaction.",
+    "source_sha256": "6c09757ee906330a60b6705753aa56bca007ad219b95e6e3537510d41bc341c8",
+    "verified_source_regular_files": 436,
+    "verified_vendor_packages": 307,
+    "source_prepared_sha256": "cc1c786e18e9809e5edb3c37ddebe3ce2f148faa6308fe7834ab8c75105cf2d3",
+    "work_volume_initial_recipe_sha256": "49f9aaeae34033d42aba82689b636d6a4684d5b9ab207b79ba7cf281821a4b0a",
+    "actual_recipe_sha256": "8ff4721b747f0d57ef2bda73cd45d628ea395eab9670c4508df1ebc3ac9b56df",
+    "recipe_addition_since_volume_preflight": "Deterministic128MiB scratch reserve monitor of own compiler group; no source/version/profile change. Volume receipt retained.",
+    "work_backing_inode": 5538
+  },
+  "work_volume": {
+    "state": "mounted",
+    "source": "/mnt/lfs/sources/phase2/inputs/glycin-2.1.5",
+    "source_prepared_sha256": "cc1c786e18e9809e5edb3c37ddebe3ce2f148faa6308fe7834ab8c75105cf2d3",
+    "backing": "/mnt/lfs/sources/phase2/work/glycin-1/gtk4-companion-work-1",
+    "work": "/mnt/lfs/sources/phase2/work/glycin-gtk4-1",
+    "parent_mount": "/mnt/lfs/sources/phase2/work/glycin-1",
+    "filesystem_uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+    "free_scratch_bytes": 954634240,
+    "target_free_bytes": 17757585408,
+    "minimum_scratch_reserve_bytes": 134217728,
+    "recipe_sha256": "49f9aaeae34033d42aba82689b636d6a4684d5b9ab207b79ba7cf281821a4b0a",
+    "recovery": "Verify backing inode/UUID and absence of active writer before restoring only this bind; never recreate directories or replay prep. Existing Glycin production/test outputs are separate siblings, never build into them.",
+    "backing_inode": 5538,
+    "mountpoint_inode": 9503173
+  },
+  "stage": {
+    "scope": "Only GTK4 companion compiled/staged and GI/shared symbols resolved against installed core. No image/frame/texture conversion or upstream Python test execution yet. Core/loaders NOT rebuilt or restaged; no native transaction.",
+    "bundle_version": "2.1.5",
+    "API_version": "2.1.0",
+    "cargo_lock_sha256": "5ff1ad293efde5c927f19df0f488dc80a04814367dbc480a3cc45847646bc669",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "GI_symbol_exit": 0,
+    "image_conversion_tested": false,
+    "upstream_tests_passed": 0,
+    "package_promotable": false,
+    "stage_sha256": {
+      "usr/lib/libglycin-gtk4-2.so.0": "daf16209e9023ea48a85758115a10456ad254230c1da9098aec2b4c244a0ea0a",
+      "usr/lib/pkgconfig/glycin-gtk4-2.pc": "b455d4e752d1ec9775a82281b3c3ad7e9951c099f61916c688fd71b70c3fb114",
+      "usr/lib/girepository-1.0/GlyGtk4-2.typelib": "a891f41ec0f690e37accb38b3c81076d628c66b9b6d133d1b875f4e6f47bc77a",
+      "usr/include/glycin-gtk4-2/glycin-gtk4.h": "31e09738407d04ee7a02be57f6179d5bbcd24e72a73330ad2a689aa0055bb1bf",
+      "usr/share/gir-1.0/GlyGtk4-2.gir": "af6558a662ef1f43faac6e0462f263d4ab299a13e41d2aea3b2032cea85cbb8c"
+    },
+    "compiled_ELFs": 78
+  },
+  "native_fixture": {
+    "state": "complete",
+    "fixture": "/mnt/lfs/sources/phase2/native-fixtures/glycin-gtk4-1",
+    "stage_sha256": {
+      "usr/lib/libglycin-gtk4-2.so.0": "daf16209e9023ea48a85758115a10456ad254230c1da9098aec2b4c244a0ea0a",
+      "usr/lib/pkgconfig/glycin-gtk4-2.pc": "b455d4e752d1ec9775a82281b3c3ad7e9951c099f61916c688fd71b70c3fb114",
+      "usr/lib/girepository-1.0/GlyGtk4-2.typelib": "a891f41ec0f690e37accb38b3c81076d628c66b9b6d133d1b875f4e6f47bc77a",
+      "usr/include/glycin-gtk4-2/glycin-gtk4.h": "31e09738407d04ee7a02be57f6179d5bbcd24e72a73330ad2a689aa0055bb1bf",
+      "usr/share/gir-1.0/GlyGtk4-2.gir": "af6558a662ef1f43faac6e0462f263d4ab299a13e41d2aea3b2032cea85cbb8c"
+    },
+    "installed_core_sha256": {
+      "/usr/libexec/glycin-loaders/2+/glycin-image-rs": "b996fe3839a528586dda0f8ca6e7badc6822a54cb936c0b2b80af7f89c045fd9",
+      "/usr/libexec/glycin-loaders/2+/glycin-svg": "7e7e33592ae4bd340239419d411b6659c4c6c0c5b6feff2a797afceb7ce7ed64",
+      "/usr/share/glycin-loaders/2+/conf.d/glycin-image-rs.conf": "d1a2254af8b1937076b30eb2c4fba7aecb63b75e784f965925eaf56f206b2229",
+      "/usr/share/glycin-loaders/2+/conf.d/glycin-svg.conf": "a8e2ef1e3269bd9df28069587e6e05fcaca51d106c961b796f7abe0221849f6b",
+      "/usr/lib/libglycin-2.so.0": "96525d2b826d63e008ed9b813fa620b37c137f070067ef6e701bdffdea3824af",
+      "/usr/lib/girepository-1.0/Gly-2.typelib": "a364bf9b760338304f2eeb409a62d126bc3445b7329e575ff3677e3a1010293e",
+      "/usr/lib/pkgconfig/glycin-2.pc": "05d56432d76f8f7068b723192d4f4de961a03718fca12da6d8b8ff1ab6f39ba9"
+    },
+    "installed_core_archive_sha256": "b23e696853191f9123354b6144645a515ef24079fb86db8155e2b60d33ef9372",
+    "recipe_sha256": "8ff4721b747f0d57ef2bda73cd45d628ea395eab9670c4508df1ebc3ac9b56df",
+    "scope": "Native-test input only; companion is not installed/qualified; original core/loaders remain unchanged."
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-glycin-gtk4-build-evidence.tar.gz",
+    "sha256": "e78fb61396916fb06bbabbecd81d3631f4671d07bb5b90fa44a1c2579896a2ea",
+    "members": [
+      "phase2/glycin-gtk4-1-build-input.json",
+      "phase2/glycin-gtk4-1-controller.log",
+      "phase2/glycin-gtk4-1.exit",
+      "phase2/glycin-gtk4-1.job.json",
+      "phase2/glycin-gtk4-1.log",
+      "phase2/glycin-gtk4-native-fixture.json",
+      "phase2/glycin-gtk4-work-volume.json",
+      "work/GI-symbols.exit",
+      "work/GI-symbols.log",
+      "work/compile.exit",
+      "work/compile.log",
+      "work/configure.exit",
+      "work/configure.log",
+      "work/stage-results.json",
+      "work/stage.exit",
+      "work/stage.log"
+    ]
+  }
+}

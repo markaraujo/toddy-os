@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-10T07:38:56.532355+00:00",
+  "updated_at": "2026-11-10T07:50:52.326708+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05–B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
@@ -381,7 +381,8 @@
         "docs/evidence/B02-eds-installed-services.json",
         "docs/evidence/B02-vala-install.json",
         "docs/evidence/B02-unicode-ucd-install.json",
-        "docs/evidence/B02-tinysparql-install.json"
+        "docs/evidence/B02-tinysparql-install.json",
+        "docs/evidence/B02-glycin-gtk4-build.json"
       ]
     },
     {
@@ -747,14 +748,15 @@
       "Owned GNOME Terminal3.60.0toddy2:71ELFs/original regex unchanged; cache-only frozen-book correction preserves12schemas/146key contracts and fixes five proxy paths. Initial native install0/post1 missing test /dev/null retained; metadata2/post0/0,39changedpaths/376entries/339runtime entries identical, unbuilt Nautilus addon metadata removed/bundled notices retained. Actual installed UID101/no-route client/unknown-option/private DConf Unicode+navy preferences/invalid boolean refusal/persistence across buses/reset/system font/five paths/shared VTE+libhandy/APT0. Builder-target userspace, no actual GUI/window/focus/PTY/login/physical acceptance; shared stock schema cache pending, ADR0195.",
       "Owned libportal0.9.1 base/GTK3+GTK4 helpers/GI:61original private mock-portal cases/no skips,33ELFs/42stagefiles; native install/post0/0,73changedpaths/76entries. Installed UID101/private-device/no-route private-bus C constructor/context/two releases/separate GTK3-4 GI/shared symbols/pkg-config/APT0. Qt/Vala/docs/demo omitted; no real GNOME portal service/dialog/consent/input/capture/widget/permission grant acceptance, ADR0196.",
       "Owned gnome-autoar0.4.5 core/GTK3/GI/Vala:22original extraction/security cases/no skips,130byte-mode-link-identical private fixtures;19ELFs/21stagefiles unchanged across own C locale correction. Native install/post0/0,52changedpaths/57entries, installed UID101 ZIP Unicode/empty refusal/precancel no-destination/two recoveries/source retained/C-GI/shared ABI/APT0. Existing owned Libarchive3.8.11 reused/no downgrade. Exact source reference symlink exception plus whole-archive traversal guard/10focused tests/178member real preflight; initial prep/empty dispatch failure retained and actual pre-dispatch denial fixed. Manual programs compile-only/no GUI/all-format/mid-extraction Stop acceptance, ADR0197.",
-      "Owned Tinysparql3.11.1 ICU/GI/Vala/Soup3:156production/207debugELFs/105stagefiles unchanged;29original programs and487core cases passed, four exact SQLite17vs15digit lexical failures retained FAILED. Independent production four typed arithmetic/lossless-text cases passed;17functional graphical-session programs deferred. Native install/post0/0,130paths/280entries; installed UID101 private-device/no-route RDF UTF8/persistence/malformed refusal/state retained/two resets/Tracker+Tsparql GI/numeric/shared ABI/APT0. Foundation SQLite3.53.4/guard/source/goldens unchanged; no desktop/indexer/portal/grant/cancellation acceptance, ADR0198."
+      "Owned Tinysparql3.11.1 ICU/GI/Vala/Soup3:156production/207debugELFs/105stagefiles unchanged;29original programs and487core cases passed, four exact SQLite17vs15digit lexical failures retained FAILED. Independent production four typed arithmetic/lossless-text cases passed;17functional graphical-session programs deferred. Native install/post0/0,130paths/280entries; installed UID101 private-device/no-route RDF UTF8/persistence/malformed refusal/state retained/two resets/Tracker+Tsparql GI/numeric/shared ABI/APT0. Foundation SQLite3.53.4/guard/source/goldens unchanged; no desktop/indexer/portal/grant/cancellation acceptance, ADR0198.",
+      "Glycin GTK4 companion API2.1.0 from existing frozen bundle2.1.5 compiled only:78ELFs/five stagefiles, GI/shared symbols0, offline307vendor/436source files verified. Existing owned core/loaders unchanged; separate child on existing scratch/128MiB reserve, no new filesystem. Native fixture prepared, real sandboxed image→GDK texture/default loader/pixel/refusal/recovery test and package promotion PENDING, ADR0199."
     ],
-    "running": "No active guest writer. Tinysparql3.11.1 owned/verified:29original programs/487core cases passed, four exact numeric-text failures retained/reviewed; independent typed/roundtrip and installed consumer passed. Next Glycin GTK4 companion source/SDK/capacity preflight, then Nautilus. Native graphical interaction and shared stock app cache remain pending. Complete ALL B02 then stop.",
+    "running": "No active guest writer. Glycin GTK4 companion compilation/stage/GI symbols passed, native fixture ready, package unpromotable pending actual native image→texture/default loader/refusal/recovery test. NEW native-glycin-gtk4-runtime-1 prepared in source, not executed. Commit inputs then run cold test. B02 native graphical interaction/apps/offline/resources remain pending. Complete ALL B02 then stop.",
     "remaining": [
       "Pinned incremental desktop dependencies and first working native GNOME session.",
       "Minimal apps/branding/offline usability, security/ABI review and reference guest measurements."
     ],
-    "verified_at": "2026-11-10T07:38:56.532355+00:00",
+    "verified_at": "2026-11-10T07:50:52.326708+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

@@ -8,6 +8,43 @@ No accepted complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current verified slice and exact next action
 
+Current slice: Glycin GTK4 companion API2.1.0/bundle2.1.5 build1PID43598 actual0.
+78ELFs/five stagefiles/GI-symbol0, no native package/promotability. All436source
+files/307vendor packages authenticated before dispatch; current recipeSHA
+8ff4721b747f0d57ef2bda73cd45d628ea395eab9670c4508df1ebc3ac9b56df.
+Input existing /mnt/lfs/sources/phase2/inputs/glycin-2.1.5; work
+/mnt/lfs/sources/phase2/work/glycin-gtk4-1, bind from existing glycin-1/
+gtk4-companion-work-1 inode5538, parentUUID1ae14c30-65f3-4e02-be0a-b257719455f2.
+Work mountpoint underlying inode9503173. Source/core/loaders unchanged. Scratch
+free401514496B after build, preserve128MiB; target16GiB/host100GiB. Receipt
+/var/log/toddy/phase2/glycin-gtk4-work-volume.json plus actual build-input.json.
+Own first read-only preflight missingtomllib failed before any dispatch; corrected
+once, ledger retained. No rebuild/replay. Native fixture prepared COMPLETE:
+/sources/phase2/native-fixtures/glycin-gtk4-1, exact five companion files/core hashes;
+/var/log/toddy/phase2/glycin-gtk4-native-fixture.json. Fixture's copied metadata
+retains preflight label; final external receipt is COMPLETE and authoritative.
+[Build proof](evidence/B02-glycin-gtk4-build.json), ADR0199;
+raw e78fb61396916fb06bbabbecd81d3631f4671d07bb5b90fa44a1c2579896a2ea.
+
+EXACT NEXT: commit current build/native-test input sources, checks, push; then run
+python3 scripts/host/phase2_native_glycin_gtk4.py with NEW context
+.local/phase2/native-glycin-gtk4-runtime-1 (currently ABSENT). It stops the builder
+and tests cold disposable target overlay only, with actual7.1.8/Systemd/UID101/
+BWRAP/default owned loader paths: PNG/SVG→GDKtexture→PNG pixel roundtrip/refusal/
+recovery. Source only; native test UNEXECUTED. No positive GUI/display claim.
+Never repeat existing old Glycin/Shell profiles. Native controller tracks its
+PID/startticks/actual child/dockerwait/reportSHA; reconcile on interrupted read.
+After actual child terminal/backing unchanged: restart builder, restore only six
+existing volumes via restore_volumes() and Systemd source --restore with NEW
+receipt; then restore ONLY companion child bind using
+restore_glycin_gtk4_work.py NEW-RECEIPT after parent UUID/inodes verified.
+No trim/format/recreation/replay. Promote companion only after actual native proof;
+Nautilus then remaining apps/real native session gates. Complete ALL B02 then stop.
+Tinysparqlcae6bcd pushed/all3CI success/exact publicHTTP200/indexSHA
+2b87d3b8df33d5212a27e7eab052accf9233673f0e58a91f8946ecca3b2eef28.
+
+Previous verified slices (never replay):
+
 GNOME Terminal3.60.0toddy2 OWNED userspace; no active guest writer.
 Initial setup1PID13099 failed missing xsltproc before app compilation. SDK qualified,
 build2PID29419 reused same config tree: compile/original regex/stage0, then own
@@ -95,7 +132,7 @@ Then Nautilus required leaves complete; GUI/session gates separate.
 
 Gnome-autoar440768d all3CI success/exact publicHTTP200/indexSHA
 6e29b3be1eb405cb6e21e3de926ac2c5119c9ca7a1895c98e0c89882986e62a3.
-Current Tinysparql source/recipe/qualification/native/evidence changes uncommitted.
+Tinysparql committed/pushedcae6bcd,295repository tests/secret scan clean.
 
 Previous libportal0.9.1 fully owned/verified, original61mock cases/no skips,
 33ELFs/42stagefiles; native0/0,73paths/76entries; C/GI/GTK helpers/APT0. No real
