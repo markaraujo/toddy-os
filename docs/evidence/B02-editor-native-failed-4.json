@@ -1,0 +1,105 @@
+{
+  "scope": "Actual native4 overall FAILED, second failed corrective GUI run. Partial real editor open/mapped/active/focus/edit and save postconditions reached; no reopen/resize/normal-close qualification. Real client screenshots visually reviewed. Not physical input, GNOME/GDM complete session or hardware acceptance.",
+  "original_protocol_report_sha256": "5704dbbedb281bf611521440aa2e674fbbeb019f9449289886e5e2098f36e5e2",
+  "report_without_embedded_PNG_bytes": {
+    "all_selected_exits_zero": false,
+    "artifacts_unchanged": 3044,
+    "compositor_exit": 1,
+    "compositor_log": "libmutter-Message: 15:26:11.062: Running Mutter (using mutter 50.4) as a Wayland display server\nlibmutter-Message: 15:26:11.133: Created surfaceless renderer without GPU\nlibmutter-Message: 15:26:11.155: Added virtual monitor Meta-0\nlibmutter-Message: 15:26:11.157: Using Wayland display name 'toddy-editor-proof'\n\n(mutter:268): libmutter-WARNING **: 15:26:11.194: Failed to connect to colord daemon: Error calling StartServiceByName for org.freedesktop.ColorManager: Unit colord.service not found.\nMutter terminated with a failure: The command exited with a nonzero status: 256\n\nlibmutter-Message: 15:26:14.405: Removed virtual monitor Meta-0\n",
+    "elapsed_seconds": 3.424,
+    "kernel": "7.1.8-toddy",
+    "native_client_images": [
+      {
+        "bytes": 14676,
+        "name": "gtk-editor-write-edited.png",
+        "sha256": "56b4d1cac8cc0b123bd3a6b6b6f4cef326ba7bb27a7160f854c2bd48ab377543",
+        "repository_image": "docs/evidence/screenshots/B02-editor-native-edited.png"
+      },
+      {
+        "bytes": 12007,
+        "name": "gtk-editor-write-mapped.png",
+        "sha256": "bd01dc89d9e88bc80b7fe5ca31465d6d9cf7c3e0c00af5e130e0bc3b1917f94b"
+      },
+      {
+        "bytes": 12007,
+        "name": "gtk-editor-write-opened.png",
+        "sha256": "bd01dc89d9e88bc80b7fe5ca31465d6d9cf7c3e0c00af5e130e0bc3b1917f94b",
+        "repository_image": "docs/evidence/screenshots/B02-editor-native-opened.png"
+      }
+    ],
+    "pid1": "systemd",
+    "runs": [
+      {
+        "exit": 97,
+        "log": "TODDY_EDITOR_BUFFER implicit_trailing_newline=1 chars=9\nTODDY_EDITOR_MAPPED active=1\n\n(gnome-text-editor:290): editor-document-WARNING **: 15:26:13.888: Failed to save cursor position: Setting attribute metadata::gte-cursor not supported\nTODDY_EDITOR_DRIVER_FAIL no actual rendered window node phase=3 ticks=5 window=EditorWindow\nTODDY_EDITOR_OBSERVED mapped=1 active=1 width=920 height=640 chars=30 initial_match=0 saved_match=1\n",
+        "name": "editor-write"
+      }
+    ],
+    "scope": "Actual installed unmodified GNOME Text Editor50.1 in native kernel/Systemd, headless Mutter/Wayland. Test-only GTK instrumentation, real mapped active window/text editing/save/normal reopen/resize and client renderer PNGs. Not physical input, full GNOME/login, crash recovery or hardware acceptance.",
+    "suite": {
+      "all_selected_exits_zero": false,
+      "failure": {
+        "message": "",
+        "type": "AssertionError"
+      },
+      "runs": [
+        {
+          "exit": 97,
+          "log": "TODDY_EDITOR_BUFFER implicit_trailing_newline=1 chars=9\nTODDY_EDITOR_MAPPED active=1\n\n(gnome-text-editor:290): editor-document-WARNING **: 15:26:13.888: Failed to save cursor position: Setting attribute metadata::gte-cursor not supported\nTODDY_EDITOR_DRIVER_FAIL no actual rendered window node phase=3 ticks=5 window=EditorWindow\nTODDY_EDITOR_OBSERVED mapped=1 active=1 width=920 height=640 chars=30 initial_match=0 saved_match=1\n",
+          "name": "editor-write"
+        }
+      ],
+      "scope": "Actual unmodified installed GNOME Text Editor, native Wayland mapped/active windows, direct GTK widget editing and page.save action, normal close/reopen and client renderer screenshots. Test-only LD_PRELOAD driver, not physical input, complete GNOME/login or crash recovery.",
+      "virtual_input": "Pinned Mutter50.4 private D-Bus RemoteDesktop session; actual compositor virtual keyboard Shift down/up and relative pointer event. No physical input or fabricated GTK active flag.",
+      "virtual_input_session_stopped": true
+    },
+    "uid": 101
+  },
+  "partial_save_evidence": {
+    "kind": "Derived from executed immutable driver3 control flow, not a fabricated standalone save result",
+    "condition": "phase3 reached capture(saved) only after file_is_saved exact-byte comparison true and buffer modified=false; snapshot then failed with no render node. Original log proves phase3 and saved buffer match. Temporary test document was removed by fixture cleanup; no raw saved-document artifact/reopen proof claimed."
+  },
+  "visual_review": {
+    "images": [
+      "screenshots/B02-editor-native-opened.png",
+      "screenshots/B02-editor-native-edited.png"
+    ],
+    "observed": "Real GNOME editor title/header/body text readable, UTF8 filename/text and caret visible, modified-dot changes after edit; wide920x640 state without visible clipping. No saved/narrow/reopened state screenshot. English dictionary underlines Portuguese word; Portuguese lexicon not claimed."
+  },
+  "warnings": [
+    "GIO metadata::gte-cursor unsupported in current minimal stack; cursor-position metadata persistence not qualified.",
+    "Optional colord service unavailable in this headless native context."
+  ],
+  "branch_status": "PARKED after two failed corrective runs; no fifth native editor run without independent source-backed snapshot qualification and bounded explicit reopening retaining history.",
+  "context": {
+    "commit": "dfc404ed7ba265d940b328ecf37fb1c76f87778f",
+    "phase": "native-report-recorded",
+    "container_id": "144cdd3ee9711296019f4efde6475ac8411f4f1db992ca80bbac8b1fac06e9c8",
+    "run_id": "2c9524119f40423c9d9202106dff430c",
+    "container_final_state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-11-10T15:26:00.486710815Z",
+      "FinishedAt": "2026-11-10T15:26:16.094776444Z"
+    },
+    "backing_unchanged": true,
+    "summary": {
+      "kernel": "7.1.8-toddy",
+      "all_selected_exits_zero": false,
+      "report_sha256": "5704dbbedb281bf611521440aa2e674fbbeb019f9449289886e5e2098f36e5e2",
+      "chunks": 29
+    }
+  },
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-editor-native-failed-4-evidence.tar.gz",
+    "sha256": "bae55e74c9728e9cd6bbe5f8b35b3672a6a62c91a5bceb3de4cee64d10226dc5",
+    "bytes": 67022
+  }
+}

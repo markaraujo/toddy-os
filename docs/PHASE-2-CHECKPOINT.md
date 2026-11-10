@@ -8,54 +8,57 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
-Current eligible B02 slice: native editor graphical validation preparation.
-GNOME Text Editor50.1 OWNED: nativePID30824 recipe/post0/0/376changes,
-actual UID101/NoNewPrivs/private-device/no-route --version, all staged regular
-bytes/dependencies/APT0 passed. [Installed proof](evidence/B02-gnome-text-editor-install.json).
-ArchiveSHA77ce94f6eccd6403c99fa6d7c3293aa080e5d0cf3ecec7e8def687fc6f9c2dec.
-No graphical open/edit/save/navigation/focus/responsiveness/recovery acceptance.
+Current eligible B02 slice: integrate independently qualified private D-Bus address
+wrapper into the parked LocalSearch native fixture, preserving readonly BUILDROOT.
+EXACT NEXT: read scripts/build/phase2/localsearch-native-consumer.py and prepare
+per-test private PATH wrapper using original helper's shutil.which and a declared
+absolute XDG_RUNTIME_DIR. Independent proof below qualifies CLI override mechanics;
+qualify actual native path/inputs before one bounded reopening. Native LocalSearch
+attempts1–3 and two failed corrections remain retained, no budget reset/replay.
+No fourth functional LocalSearch run has been dispatched.
 
-Editor/terminal shared schema cache now OWNED in GTK4.22.4-1+toddy9:
-strict isolated unionPID31568 terminal0, all115baseline schemas/900key contracts
-preserved; six added schemas (editor + five terminal),121total/1057keys.
-NativePID31874 recipe/post0/0/10changes, actual installed default-source complete
-lookup matched; libraries and every noncache/nonlegal payload byte unchanged.
-[Proof](evidence/B02-editor-schema-union.json). ArchiveSHA
-9c99cbf271566b44efcdf369ccba0ed9e2f3549819e7bf736f189209dd0533b5.
-Old GTK8 archive/record retained for recovery; no rollback executed. NEVER replay
-editor installation, cache union/GTK transaction, or prior compiler/stage/tests.
+[Independent D-Bus proof](evidence/B02-localsearch-bus-address.json): PID1832
+terminal0, actual original unchanged LocalSearch3.11.1 DBusDaemon helper/config,
+read-only source cwd, native owned D-Bus1.16.2 explicit --address, real GDBus
+Hello/Ping/ListNames/unknown-name check and own-daemon stop, two cycles UID101/NNP.
+Original config SHAcd795d925ba414ba22e384413414b1042e8525a551baf2116b92e9855c4c01a4.
+No LocalSearch functional/search/extractor/package/GUI acceptance. Do not rerun.
 
-EXACT NEXT: after clean committed reviewed inputs, run ONCE
-`python3 scripts/host/phase2_native_editor.py --context native-editor-runtime-4 --driver-generation 3`.
-Driver3 compile0 and descriptor/payload preflight qualified (5552B, unchanged65536B
-guard). No context4 execution yet. Production packages unchanged. This is the
-second/final corrective runtime attempt for the current editor-GUI branch; if it
-fails, retain all evidence and park it after two failed corrections, no reset.
+Editor graphical branch PARKED after two failed corrective native runs.
+Native4 overall FAILED: first real open/mapped/active/focus/UTF8 edit and exact save
+predicate were reached, then test capture(saved) returned no render node. No normal
+close/reopen/resize pass. [Failure/partial proof](evidence/B02-editor-native-failed-4.json).
+Two actual920x640 client PNGs decoded/visually reviewed: readable controls, UTF8
+filename/text/caret and changed modified-dot; no visible clipping in wide state.
+[Opened](evidence/screenshots/B02-editor-native-opened.png),
+[edited](evidence/screenshots/B02-editor-native-edited.png). These are the unmodified
+installed editor, not fixture UI/mockups. Programmatic GTK actions/real compositor
+virtual input, not physical keyboard/full GNOME/GDM or hardware acceptance.
+Actual saved document artifact removed by fixture cleanup: save postconditions are
+explicitly derived from executed immutable driver3 branch guards, not a fabricated
+standalone report. GIO cursor metadata unsupported; persistence unqualified.
 
-Native3 FAILED deadline at phase0, but diagnostics prove mapped=1, active=1,
-actual EditorWindow700x520 and9buffer characters. Real virtual keyboard/pointer
-creation worked; active/focus assertions were not bypassed. No edit/save/reopen/
-resize/screenshots proved. [Failure](evidence/B02-editor-native-failed-3.json).
-Source-backed correction: frozen GtkSourceView5.20.0
-`gtk_source_buffer_set_implicit_trailing_newline` documents default TRUE removing
-one terminal newline in loaded buffer and adding it on save. Test driver3 reads
-that existing property, uses exact corresponding buffer text and still requires
-exact saved-file bytes. No product/default setting changed. Old fixture inputs,
-libraries and native reports remain immutable. Source2 used virtual keyboard,
-source3 changes only test buffer contract; no production recompilation.
+DO NOT launch native editor5 or reset budgets. Unblock only after independent
+source-backed GTK snapshot/frame readiness qualification with real runtime evidence
+and an explicit bounded reopening retaining both failed corrections/history.
+Source GtkSourceView5.20.0 implicit-newline contract now confirmed at runtime;
+property/defaults untouched. Product binaries/packages never rebuilt for fixtures.
+Native1 was preboot transport failure; native2 old bare-seat/text expectation wait;
+native3 mapped/active but wrong terminal-newline expectation; native4 saved then
+capture synchronization failed. All raw reports/failed attempts retained.
 
-Native3 container terminal0/OOMfalse/backing unchanged (not a GUI pass).
-Restore-editor-builder-3 COMPLETE, same six scratch/Systemd/Glycin/kernel and
-all three existing editor worker binds restored. Do not replay any recovery,
-old source/compiler/stage/native package, discard or custody operation.
-Native2 FAILED old bare-seat/text-contract wait; report recovered with exact
-checksum from original serial (producer omitted dedicated UART). Source now
-routes exact evidence to ttyS1. Native1 preboot transport failure remains distinct,
-with its missing pre-failure backing-identity evidence limitation preserved.
+Native4 container terminal0/OOMfalse/backing unchanged, NOT a full GUI pass.
+Restoration4 COMPLETE (.local/phase2/editor-builder-recovery-4.json and guest
+editor-builder-restored-4.json), same six volumes/Systemd/Glycin/kernel/three editor
+binds restored; no replay. No live guest writer. All native editor/GTK9/cache/
+discard/custody/install/source/driver compile operations are complete, never rerun.
 
-After native4 actual terminal report/container, inspect backing and prepare a
-new recovery helper/receipt names tied specifically to context4. No live guest
-writer currently; native4 cold gate must pass actual host measurement unchanged.
+GNOME Text Editor50.1 OWNED nativePID30824 recipe/post0/0/376changes,
+archiveSHA77ce94f6eccd6403c99fa6d7c3293aa080e5d0cf3ecec7e8def687fc6f9c2dec.
+[Install](evidence/B02-gnome-text-editor-install.json). Shared GTK4.22.4-1+toddy9
+strict union preserves115schemas/900keys, installs editor+five terminal schemas,
+actual121schemas/1057keys matched; noncache/nonlegal payload unchanged.
+[Cache](evidence/B02-editor-schema-union.json). NEVER replay either transaction.
 
 ICU/Doxygen duplicate promotion custody1 COMPLETE PID31236,
 78950400B reclaimed, installed root0 and both original workstages unchanged.
