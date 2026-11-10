@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T07:59:21.002120+00:00
+Updated: 2026-11-10T08:10:23.655304+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T07:59:21.002120+00:00
+Last verified: 2026-11-10T08:10:23.655304+00:00
 
 Verified:
 
@@ -143,8 +143,9 @@ Verified:
 - Owned Tinysparql3.11.1 ICU/GI/Vala/Soup3:156production/207debugELFs/105stagefiles unchanged;29original programs and487core cases passed, four exact SQLite17vs15digit lexical failures retained FAILED. Independent production four typed arithmetic/lossless-text cases passed;17functional graphical-session programs deferred. Native install/post0/0,130paths/280entries; installed UID101 private-device/no-route RDF UTF8/persistence/malformed refusal/state retained/two resets/Tracker+Tsparql GI/numeric/shared ABI/APT0. Foundation SQLite3.53.4/guard/source/goldens unchanged; no desktop/indexer/portal/grant/cancellation acceptance, ADR0198.
 - Glycin GTK4 companion API2.1.0 from existing frozen bundle2.1.5 compiled only:78ELFs/five stagefiles, GI/shared symbols0, offline307vendor/436source files verified. Existing owned core/loaders unchanged; separate child on existing scratch/128MiB reserve, no new filesystem. Native fixture prepared, real sandboxed image→GDK texture/default loader/pixel/refusal/recovery test and package promotion PENDING, ADR0199.
 - Owned Glycin GTK4 companion2.1.0: actual native7.1.8/Systemd/UID101/BWRAP/default owned loader paths passed four PNG-SVG→GDKtexture→PNG pixel roundtrips/two malformed refusals/two recoveries. Complete reportSHA40f5106816858bfe7e38dc690a59fb44c8dfa42f672686cac2b171c909deeeeb, child0/OOMfalse/backing unchanged; existing builder/six scratch/Systemd source/exact companion bind restored. Native install/post0/0,817paths/820entries, all five installed stage files identical and installed GI/shared ABI/pkg-config/APT0. Core/loaders unchanged, no display/widget/GNOME/full-suite acceptance, ADR0199.
+- Owned build-only architectureall blueprint-compiler0.22.2: four original tokenizer/formatter cases retained plus original linter one method/15subcases passed on byte-identical411file private fixture; first r+ read-only failure preserved, source/private bytes/four generated outputs unchanged. Stage75files; native install/post0/0,93paths/96entries. Installed UID101 CLI UTF8 GTK XML/invalid property refusal/two recoveries/pkg-config/APT0. Full Gtk.Builder/deprecation display modules deferred, no widget/GNOME/full-suite acceptance; final runtime excludes unused SDK, ADR0200.
 
-Running: No active guest writer. Glycin GTK4 companion owned after real native BWRAP/default-loader PNG-SVG/GDKtexture pixel/refusal/recovery proof, all installed runtime bytes identical; parent/six scratch/Systemd/companion bind restored. Nautilus preflight2 all16SDKs found, missing blueprint-compiler>=0.19.0; next pinned build-tool qualification then minimal file manager. Native GNOME GUI/apps/offline/resources pending. Complete ALL B02 then stop.
+Running: No active guest writer. Blueprint0.22.2 UI compiler SDK owned/CLI/original selected cases qualified; all16Nautilus SDKs and compiler now available. Next minimal Nautilus50.2.2 source/build/headless selected checks, required LocalSearch runtime then real file-manager/native GNOME GUI. No Nautilus guest source/job. Complete ALL B02 then stop.
 
 Remaining:
 

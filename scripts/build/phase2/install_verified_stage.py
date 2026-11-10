@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'blueprint-compiler': ('0.22.2', 'python (>= 3.14), python (<< 3.15), pygobject (= 3.56.3-1+toddy1), gtk (>= 4.22.4-1+toddy8), gobject-introspection (>= 1.86.0-1+toddy1)', 'blueprint-compiler-0.22.2.tar.xz', 'usr/bin/blueprint-compiler'),
     'glycin-gtk4': ('2.1.0', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), glycin (= 2.1.5-1+toddy1), gtk (>= 4.22.4-1+toddy8), glib (= 2.88.3-1+toddy2), lcms2 (= 2.19.1-1+toddy1), libseccomp (= 2.6.1-1+toddy1)', 'glycin-2.1.5.tar.xz', 'usr/lib/pkgconfig/glycin-gtk4-2.pc'),
     'tinysparql': ('3.11.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), icu (= 78.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), libxml2 (= 2.15.3-1+toddy1), sqlite (= 3.53.4-1+toddy1), libsoup (= 3.6.6-1+toddy1)', 'tinysparql-3.11.1.tar.xz', 'usr/lib/pkgconfig/tinysparql-3.0.pc'),
     'gnome-autoar': ('0.4.5', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), libarchive (= 3.8.11-1+toddy1)', 'gnome-autoar-0.4.5.tar.xz', 'usr/lib/pkgconfig/gnome-autoar-0.pc'),
@@ -269,6 +270,7 @@ if __name__ == '__main__':
     if name=='libgweather':qualifier='libgweather-stage-2'
     if name=='libnma':qualifier='libnma-stage-2'
     if name=='gnome-shell' and (log/'gnome-shell-probe-2.exit').exists():qualifier='gnome-shell-probe-2'
+    if name=='blueprint-compiler':qualifier='blueprint-compiler-finish-2'
     if name=='tinysparql':qualifier='tinysparql-numeric-5'
     if name=='gnome-autoar' and (log/'gnome-autoar-probe-3.exit').exists():qualifier='gnome-autoar-probe-3'
     if name=='gnome-terminal' and (log/'gnome-terminal-probe-3.exit').exists():qualifier='gnome-terminal-probe-3'
@@ -1229,6 +1231,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='blueprint-compiler':
+        from qualify_blueprint_compiler import qualify as qualify_blueprint_compiler
+        qualify_blueprint_compiler(ROOT)
     if name=='glycin-gtk4':
         from qualify_glycin_gtk4 import qualify as qualify_glycin_gtk4
         qualify_glycin_gtk4(ROOT)
@@ -1511,6 +1516,12 @@ if __name__ == '__main__':
     if name=='ibus':
         doc=destination/'usr/share/doc/ibus';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('Frozen official tag1.5.34 embeds1.5.34-rc2; native1.5.34~rc2-1+toddy1 preserves and discloses source version. Minimal GTK3/4+Wayland/GI/Unicode/setup/UI profile; XIM/X11 agent, GTK2, Python2, appindicator and optional emoji dict omitted. Seven portable original programs and UTF8/key parser refusal/recovery qualified; actual service, graphical keyboard and shared IM/schema caches remain separate pending gates. Full source/UCD/Unicode3 notices retained. ADR0169 records backend guard and original Xlib fixture link correction.\n')
+    if name=='blueprint-compiler':
+        doc=destination/'usr/share/doc/blueprint-compiler';doc.mkdir(parents=True,exist_ok=True)
+        from qualify_blueprint_compiler import qualify as qualify_blueprint_compiler
+        review=qualify_blueprint_compiler(ROOT);review.pop('stage_sha256')
+        (doc/'original-test-review.json').write_text(json.dumps(review,indent=2)+'\n')
+        (doc/'README.Toddy').write_text('Frozen0.22.2 build-only GTK UI compiler SDK, Python bytecompilation/docs omitted. Four original tokenizer/formatter cases and original linter method/15fixtures passed; first linter r+ source PermissionError preserved, identical private test copy used with source/private bytes unchanged. Generated build outputs retained, no Ninja/approved-test replay. Actual CLI UTF8 GTK XML/invalid property refusal/two recovery cycles passed. Full Gtk.Builder/deprecation display suite deferred; no widget/native GNOME acceptance. Build SDK excluded from final runtime image unless a separately selected consumer needs it. ADR0200.\n')
     if name=='glycin-gtk4':
         doc=destination/'usr/share/doc/glycin-gtk4';doc.mkdir(parents=True,exist_ok=True)
         from qualify_glycin_gtk4 import qualify as qualify_glycin_gtk4
@@ -1599,7 +1610,7 @@ if __name__ == '__main__':
                     version+('-1+toddy2' if name in ('linux-pam','gnome-settings-daemon','gnome-terminal') else '-1+toddy1'), str(destination), *source_args,
                     '--recipe', 'scripts/build/phase2/'+name+'-install.sh',
                     '--depends', depends, '--install', *conffiles,
-                    *(['--architecture','all'] if name in ('unicode-ucd','fast-float') else [])], cwd=ROOT, check=True)
+                    *(['--architecture','all'] if name in ('unicode-ucd','fast-float','blueprint-compiler') else [])], cwd=ROOT, check=True)
     if name=='glib-networking':
         from gio_network_resources import finish as finish_gio_network
         finish_gio_network()

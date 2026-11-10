@@ -2445,6 +2445,18 @@
       "book_md5": "aa793424c64c06b50248969f3e9d553d",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "blueprint-compiler",
+      "version": "0.22.2",
+      "filename": "blueprint-compiler-0.22.2.tar.xz",
+      "url": "https://download.gnome.org/sources/blueprint-compiler/0.22/blueprint-compiler-0.22.2.tar.xz",
+      "sha256": "231d72efbac931c235ac3e022fe94982095c20d88721d9a8dcf60152f2017e07",
+      "reference": "BLFS13.1-systemd general/python-modules.html#blueprint-compiler",
+      "book_page_sha256": "eeca0df3449c611069e44d356162b7438e05151c39d225e72c601f049a66a72d",
+      "book_md5": "96b2ac7e1300c02a8e62f56048e27033",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

@@ -8,6 +8,45 @@ No accepted complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current verified slice and exact next action
 
+Current verified slice: blueprint-compiler0.22.2 build-only architectureall OWNED;
+no active guest writer. Builder boot6af8df2c-a7d5-47e6-940d-4c78855e4e55.
+SourceSHA231d72efbac931c235ac3e022fe94982095c20d88721d9a8dcf60152f2017e07;
+input /mnt/lfs/sources/phase2/inputs/blueprint-compiler-0.22.2, work
+/mnt/lfs/sources/phase2/work/blueprint-compiler-1. Host initial log collision before
+any guest prep; source/work absence verified, prepared-2 actual0 once. Build1PID2507
+terminal1 AFTER configure/Ninja/four original tokenizer+formatter passes; linter
+15PermissionErrors r+ source examples. Finish2PID2835 actual0: one original linter
+method/15subcases on byte-identical411file private tests/source bytes unchanged;
+four approved cases/generated config/wrapper/pc/reference JSON unchanged/reused.
+No Ninja/approved suite replay. Stage75files; own CLI UTF8 GTK XML/two invalid
+property refusals/two recoveries0. Full Gtk.Builder/deprecation modules deferred.
+Future recipe exact private-fixture correction vs prepared old recipe checked by
+qualifier; immutable prepared input retained, not rewritten.
+Nativeb02-blueprint-compiler-install controllerPID3229 recipe/post0/0,
+93paths/96entries, all installed stage bytes identical; actual installed UID101
+CLI/XML/refusal/recovery/pkg-config/APT0. No widget/GNOME/full-suite acceptance.
+Archivebb43b77a74b284e2bc7a3159f22c27460c6e70b7a9a379574bfa8bf3e297a696;
+[proof](evidence/B02-blueprint-compiler-install.json), ADR0200;
+raw304a779c7bbd5c765acd5875cc2135ce76d4d7f8eaa9d680b61f0132839ff8b0.
+NEVER replay prep/build/finish2/install1. Exclude unused build SDK from final runtime.
+
+EXACT NEXT: commit current source/qualification/native/evidence/card with checks,
+push, then prepare pinned Nautilus50.2.2 minimal build. All16requiredSDK modules and
+compiler now available. Actual source Meson/options/headless test definitions read;
+source archive cachedSHAe1e285efddf42ed30dda5b29f7f8d242dab4bc1409a9054863b367bad4b34d5a.
+No Nautilus source lock row/guest input/job. Frozen BLFSgnome/nautilus.html inspected:
+supported optional extensionsfalse/cloudprovidersdisabled/selinuxdisabled profile;
+headless test scope must be checked individually, not full graphical-suite claim.
+LocalSearch3.11.1 runtime REQUIRED for launch, Gvfs needed for device flows. Preserve
+actual session/focus/app/offline/network/audio/resource gates; no general replan.
+Complete ALL B02 then stop. Current Blueprint changes uncommitted.
+0a2de20 pushed/all3CI success/exact publicHTTP200/indexSHA
+362b328f26d8294cb6056f04bc66a0766d31209cc1718de87f8954de098850e4.
+Prior premature verifier mismatch while Pages stillrunning retained/not accepted;
+after actual deployment success the exact committed bytes passed.
+
+Prior verified companion slice:
+
 Current verified slice: Glycin GTK4 companion2.1.0 OWNED; no active guest writer.
 Build1PID43598 actual0/78ELFs/five stagefiles; source/core/loaders unchanged.
 Native NEW .local/phase2/native-glycin-gtk4-runtime-1 COMPLETE/PASS:
@@ -38,14 +77,16 @@ Future cold recovery: actual child terminal/backing unchanged first, existing si
 parents restore_volumes() ONLY (not main/trim), Systemd --restore, then
 restore_glycin_gtk4_work.py NEW-RECEIPT after parent/inodes verified. No recreation.
 
-EXACT NEXT: commit current native proof/promotion/evidence, checks/push; then qualify
-frozen blueprint-compiler>=0.19.0 build tool. Nautilus SDKpreflight2 actual all16
+EXACT NEXT: qualify frozen blueprint-compiler0.22.2 build-only tool. Source
+SHA231d72efbac931c235ac3e022fe94982095c20d88721d9a8dcf60152f2017e07
+verified against frozen book MD5; lock/recipe/probe/preparer changes uncommitted.
+Prepare NEW source/work only after actual absence check; never replay a job. Nautilus SDKpreflight2 actual all16
 required modules found (including companion/autoar/portal/Tinysparql); compiler
 executable absent. Host .local/phase2/nautilus-SDK-preflight-2.json. No Nautilus input/
 job/source lock row; existing authenticated archive50.2.2 cached. Read frozen
 BLFSgnome/nautilus.html installation section, supported minimal extension-off
 profile, headless original checks plus separate real GUI gate. No general replan.
-Complete ALL B02 then stop. Current native evidence/installer changes uncommitted.
+Complete ALL B02 then stop. Native evidence/installer committed/pushed0a2de20,295repository tests/secret scan clean.
 a66a22e pushed/all3CI success/exact publicHTTP200/indexSHA
 518e57a8605192537042683fd3851e11e1938470c110d784979507b3f2857821.
 
