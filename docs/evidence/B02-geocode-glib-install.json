@@ -1,0 +1,127 @@
+{
+  "scope": "Owned geocode-glib3.26.4 Soup3/API2.0; two original portable drivers/three original API paths and installed UTF8/geoURI/refusal/recovery/GI/SDK. Original JSON mocks remain fixtures; foreign locales, remote geocoding/owner location permissions and GNOME/GWeather pending.",
+  "source": {
+    "name": "geocode-glib",
+    "version": "3.26.4",
+    "filename": "geocode-glib-3.26.4.tar.xz",
+    "url": "https://download.gnome.org/sources/geocode-glib/3.26/geocode-glib-3.26.4.tar.xz",
+    "sha256": "2d9a6826d158470449a173871221596da0f83ebdcff98b90c7049089056a37aa",
+    "reference": "BLFS13.1-systemd gnome/geocode-glib.html",
+    "book_page_sha256": "a2cb829d61ee0b6dc476e66a4cf29169484abc93c728f310476a3ccbb3c6b448",
+    "book_md5": "4c0dcdb7ee1222435b20acd3d7b68cd1",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "stage": {
+    "scope": "Original Geo URI and mock-backend drivers plus three portable original API paths; UTF8/geo-URI/refusal/recovery C ABI. Foreign-locale JSON fixtures and remote geocoding/GNOME not qualified; no key/account/network required.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "geocode-glib:Geo URI",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "geocode-glib:Test mock backend",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "original_API_paths": [
+      "/geocode/distance",
+      "/geocode/zero_distance",
+      "/geocode/osm_type"
+    ],
+    "original_API_passes": 3,
+    "consumer": {
+      "UTF8_location_description": true,
+      "geo_URI_roundtrip": true,
+      "malformed_URI_refused": true,
+      "post_refusal_recovery_cycles": 2,
+      "remote_geocoding_tested": false
+    },
+    "artifacts_count": 23,
+    "artifacts_manifest_sha256": "49a6725ca7da271defe75137618fd06ca532e5a1d1116067f9943649fd823908",
+    "stage_sha256_count": 27,
+    "stage_sha256_manifest_sha256": "978859a91c4d872821196c993ea8c55c8aec7c6f59142820fd852064a0fae07a"
+  },
+  "transaction": {
+    "step": "b02-geocode-glib-install",
+    "started": "2026-11-09T23:57:18.251559+00:00",
+    "recipe_sha256": "ea4afdc1f95b1942b2319ce6e455cabd7c53b42cef5ec382e312bc9f5be85b29",
+    "postcheck_sha256": "bd83fa6294ef101ae007cd33b9086a7a84373d211591be438bf99e488902b631",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "ceaf057429228455e672db0ee4407403b0440d5faeafefd97f41af9ba89ebf9b",
+    "recipe_pid": 498230,
+    "recipe_pgid": 498230,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-09T23:57:34.257808+00:00",
+    "changed_paths": 43,
+    "log_sha256": "97b33787ed5ab6d4f5aa9fb9c52107698fc43adc1f23aabd95d01c4412072b59",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_sha256": "f9567d5a5bb884860d711fbc0faa2c55366db6930328c2706db58a99935db8c4"
+  },
+  "timing": {
+    "step": "b02-geocode-glib-install",
+    "scope": "same full-root snapshot function, timing only",
+    "snapshots": [
+      {
+        "seconds": 14.219,
+        "entries": 154941,
+        "regular_files": 138014,
+        "regular_bytes": 7302628458
+      },
+      {
+        "seconds": 14.045,
+        "entries": 154981,
+        "regular_files": 138048,
+        "regular_bytes": 7303188384
+      }
+    ],
+    "total_seconds": 31.259
+  },
+  "installed_consumer": {
+    "scope": "Owned libsoup3 ABI/geo-URI/UTF8/refusal/two-cycle recovery and installed GIR/SDK only. Original JSON mocks remain fixtures; foreign-locale/remote geocoding/owner location permissions and GNOME/GWeather not accepted.",
+    "consumer": {
+      "UTF8_location_description": true,
+      "geo_URI_roundtrip": true,
+      "malformed_URI_refused": true,
+      "post_refusal_recovery_cycles": 2,
+      "remote_geocoding_tested": false
+    },
+    "GI": {
+      "namespace": "GeocodeGlib2.0",
+      "UTF8_and_coordinates": true
+    },
+    "loaded_owned_library": true
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-geocode-glib-install-evidence.tar.gz",
+    "sha256": "d5c6cf91a41c528146167f31061ec49a5ba83568f64d4af519170eb88b27e34d",
+    "members": [
+      "build/b02-geocode-glib-install.log",
+      "build/b02-geocode-glib-install.manifest.json",
+      "build/b02-geocode-glib-install.success.json",
+      "phase2/b02-geocode-glib-install-controller.log",
+      "phase2/b02-geocode-glib-install-timing.json",
+      "phase2/geocode-glib-1-controller.log",
+      "phase2/geocode-glib-1.exit",
+      "phase2/geocode-glib-1.job.json",
+      "phase2/geocode-glib-1.log",
+      "phase2/geocode-glib-installed-consumer.json",
+      "phase2/geocode-glib-stage.json",
+      "work/compile/meson-logs/testlog.json",
+      "work/native-consumer.json",
+      "work/original-portable-API.log",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}

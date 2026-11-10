@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'geocode-glib': ('3.26.4', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), json-glib (= 1.10.8-1+toddy1), libsoup (= 3.6.6-1+toddy1), gobject-introspection (>= 1.86.0-1+toddy1)', 'geocode-glib-3.26.4.tar.xz', 'usr/lib/pkgconfig/geocode-glib-2.0.pc'),
     'ibus': ('1.5.34~rc2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy5), gtk3 (>= 3.24.52-1+toddy1), dconf (= 0.49.0-1+toddy1), dbus (>= 1.16.2-1), wayland (>= 1.26.0-1+toddy1), libxkbcommon (= 1.13.2-1+toddy1), libnotify (= 0.8.8-1+toddy1), libevdev (= 1.13.6-1+toddy1), libx11 (= 1.8.13-1+toddy1), python (>= 3.14), python (<< 3.15), pygobject (= 3.56.3-1+toddy1), gnome-desktop (= 44.5-1+toddy1), iso-codes (= 4.20.1-1+toddy1), xkeyboard-config (= 2.48-1+toddy1), systemd (>= 261.2-1+toddy3)', 'ibus-1.5.34.tar.gz', 'usr/lib/pkgconfig/ibus-1.0.pc'),
     'unicode-ucd': ('17.0.0', '', 'UCD-17.0.0.zip', 'usr/share/unicode/ucd/UnicodeData.txt'),
     'vala': ('0.56.19', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), gcc (>= 16.2.0-1), pkgconf (>= 2.5.1-1)', 'vala-0.56.19.tar.xz', 'usr/lib/pkgconfig/libvala-0.56.pc'),
@@ -1198,6 +1199,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='geocode-glib':
+        from qualify_geocode_glib import qualify as qualify_geocode_glib
+        qualify_geocode_glib(ROOT)
     if name=='ibus':
         from qualify_ibus import qualify as qualify_ibus
         qualify_ibus(ROOT)

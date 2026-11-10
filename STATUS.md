@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-09T23:52:01.550092+00:00
+Last verified: 2026-11-09T23:59:42.971177+00:00
 
 Verified:
 
@@ -112,8 +112,9 @@ Verified:
 - Owned IBus1.5.34~rc2-1+toddy1 install/post0/0,235changedpaths/397entries; installed UTF8/key parser/refusal/recovery/SDK0. GTK4same-version toddy6 schema/control/legal-only update0/0 changes13paths, preserves906old nonlegal entries and76schemas/571keys; actual default81/618 verified. Service IPC and GTK3 IM cache/GNOME keyboard gates remain separate.
 - Actual installed IBus UID101/default Compose engine commitsã in two distinct private buses; pre-cancelled read/refusal/recovery and requested Stop0; native recipe/post0/0,installed root changes0,successful profile removed. Three failed own fixture profiles/logs retained. GTK3 IM-cache/native GNOME keyboard pending.
 - GTK3same-upstream3.24.52toddy2 IM-cache/legal-only install0/post1 reconciled verify-only0/0,zero root changes. All1882owned entries/archive unchanged; actual UID101 query12modules/11prior registrations/969old nonlegal entries preserved. Own IBus locale/GTK argv0 metadata errors retained, no install/cache/suite replay. Native GTK/GNOME graphical input pending.
+- Geocode-glib3.26.4 Soup3/API2.0 owned/install/post0/0,43changedpaths/50entries; two portable original drivers/three original API paths/23ELFs retained. Actual installed UTF8/geoURI/refusal/two-cycle recovery/GI2.0/SDK/APT0. Required gweather-locations2026.2 source cached/pinned only, no runtime data or remote/owner location/GNOME acceptance.
 
-Running: B02: IBus runtime and owned GTK3 input cache verified; required libgweather/GeoClue/network/login/Shell dependencies and first working native GNOME session next. Complete ALL B02 then stop.
+Running: B02: owned GTK3 IBus cache and Geocode API2.0 verified; gweather-locations data/libgweather and remaining Shell/login/network prerequisites next. Complete ALL B02 then stop.
 
 Remaining:
 

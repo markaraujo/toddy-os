@@ -23,16 +23,32 @@ Native transaction receipt gtk3-ibus-cache-transaction-1.json COMPLETE.
 Raw evidenceSHAc148daa3238eef0e2d28ee7b64c41d61db4dd1e43af96c0f0a279ae44b48234f.
 Actual module metadata loading is not graphical GTK/GNOME focus/keyboard proof.
 
-Exact next: continue actual required GNOME Shell dependency chain from already
-reviewed libgweather4.6.0. Freeze/fetch its required geocode-glib3.26.4 and
- gweather-locations2026.2 with phase2_fetch_book_source.py references
-`gnome/geocode-glib.html` and `gnome/gweather-locations.html`, --dependency-of
-libgweather. Current frozen parent bookSHA73e831e427d1e9b7916a94c26dcaf35d144f0a1eb0704a8655d5f3e464432e69.
-No guest input/work/job exists for these dependencies. Read exact source/options,
-build isolated/qualify/native package, then libgweather, required GeoClue/NM/GDM/
-Shell and first native GNOME session. Native GTK IM discovery/input must be tested
-in that display path; do not add another mockup or award graphical acceptance for
-this metadata cache. No provider/paid weather key is required or selected.
+Geocode-glib3.26.4 now OWNED/install/post0/0,43changedpaths/50entries,
+archiveSHA3beda47a449ffb88c0dbefa946da335730fc5bbd757a56189943f0d7b3a01fa7.
+No active writer. SourceSHA2d9a6826d158470449a173871221596da0f83ebdcff98b90c7049089056a37aa;
+input geocode-glib-3.26.4/work geocode-glib-1. Compiler job geocode-glib-1 terminal0;
+two original Meson drivers plus three original portable API paths0,23ELFs/
+27staged regular files. Actual installed C/UTF8/geoURI/malformed refusal/two-cycle
+recovery/GI2.0/SDK/APT0; no stage override. Foreign-locale/remote-geocoding/owner
+location permission and GNOME remain unqualified, ADR0172.
+[Proof](evidence/B02-geocode-glib-install.json), raw
+SHAd5c6cf91a41c528146167f31061ec49a5ba83568f64d4af519170eb88b27e34d.
+Never reprepare/build/stage/install/repeat original Geocode tests.
+
+The two required libgweather source rows are now frozen/cached:
+geocode-glib3.26.4 above, gweather-locations2026.2
+SHAe7570a3661e0a752a06387b2032585cf588fc56770b1f9f39f1a55d17b2835fe.
+Both exact frozen required edges were checked; no general graph replan. Location
+source meson/build reviewed read-only: PythonGI creates endian-specific GVariant
+Locations.bin; XML/DTD/pkg-config/translations, optional xmllint/pylint originals.
+No guest gweather-locations input/work/job or recipe yet.
+
+Exact next: implement gweather-locations2026.2 isolated build/data probe/native package,
+followed by already-frozen libgweather4.6.0 and remaining Shell/GDM/network deps.
+Geocode profile Soup3/API2.0/GIR on, docs/installed-test payload off; no foundation
+upgrade. Actual installed C/SDK/GI/no-stage override check already passed.
+Actual GTK IM discovery/input must be tested in a native display path, not inferred
+from query metadata or another mockup. No weather provider key selected/required.
 
 GTK4toddy6 shared81schema/618key cache complete. IBus1.5.34~rc2 native install/post0/0
 and actual installed service4 default Composeã/cancel/refusal/recovery/Stop/two

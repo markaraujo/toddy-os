@@ -10855,6 +10855,12 @@
       "plain_license_sources": [
         "Unicode-License-3.0.txt"
       ]
+    },
+    {
+      "name": "geocode-glib",
+      "version": "3.26.4",
+      "license": "LGPL-2.0-or-later AND BSD-3-Clause",
+      "evidence": "Exact source COPYING.LIB (GNU Library GPL2) and icons/maki/LICENSE.txt (three-clause BSD) retained; per-file conditions apply. OSM JSON fixtures remain test-source data, not installed test/runtime payload. Soup3 API2.0 profile; no live geocoding/owner-location permission claim."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
