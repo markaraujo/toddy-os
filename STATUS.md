@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T08:10:23.655304+00:00
+Updated: 2026-11-10T09:45:09.206854+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T08:10:23.655304+00:00
+Last verified: 2026-11-10T09:45:09.206854+00:00
 
 Verified:
 
@@ -144,8 +144,11 @@ Verified:
 - Glycin GTK4 companion API2.1.0 from existing frozen bundle2.1.5 compiled only:78ELFs/five stagefiles, GI/shared symbols0, offline307vendor/436source files verified. Existing owned core/loaders unchanged; separate child on existing scratch/128MiB reserve, no new filesystem. Native fixture prepared, real sandboxed image→GDK texture/default loader/pixel/refusal/recovery test and package promotion PENDING, ADR0199.
 - Owned Glycin GTK4 companion2.1.0: actual native7.1.8/Systemd/UID101/BWRAP/default owned loader paths passed four PNG-SVG→GDKtexture→PNG pixel roundtrips/two malformed refusals/two recoveries. Complete reportSHA40f5106816858bfe7e38dc690a59fb44c8dfa42f672686cac2b171c909deeeeb, child0/OOMfalse/backing unchanged; existing builder/six scratch/Systemd source/exact companion bind restored. Native install/post0/0,817paths/820entries, all five installed stage files identical and installed GI/shared ABI/pkg-config/APT0. Core/loaders unchanged, no display/widget/GNOME/full-suite acceptance, ADR0199.
 - Owned build-only architectureall blueprint-compiler0.22.2: four original tokenizer/formatter cases retained plus original linter one method/15subcases passed on byte-identical411file private fixture; first r+ read-only failure preserved, source/private bytes/four generated outputs unchanged. Stage75files; native install/post0/0,93paths/96entries. Installed UID101 CLI UTF8 GTK XML/invalid property refusal/two recoveries/pkg-config/APT0. Full Gtk.Builder/deprecation display modules deferred, no widget/GNOME/full-suite acceptance; final runtime excludes unused SDK, ADR0200.
+- Owned Brotli1.2.0 common/encoder/decoder+CLI:12original tarball cases/42ELFs/17stagefiles; native0/0,35paths/40entries. Installed UID101/private-device/no-route UTF8+binary roundtrip/integrity/malformed refusal/input retained/two recoveries/shared ABI/pkg-config/APT0. Optional downloaded corpus/Python bindings unselected, no Exiv2/browser/GUI claim, ADR0202.
+- Owned inih62 C+INIReader CPP:16original programs/55ELFs/six stagefiles; initial own15-count assertion corrected metadata-only collect2, no compiler/test replay. Native0/0,19paths/20entries; installed UID101/private-device/no-route C+CPP UTF8/typed defaults/malformed refusal/prior state retained/two recoveries/shared ABI/pkg-config/APT0. No owner config or GUI claim, ADR0202.
+- Owned Exiv20.28.8 with real Brotli/INI:four original test programs1169cases/1159non-skipped/10explicit upstream exclusions, zero-case version metadata driver not a test pass.92ELFs/55stage files unchanged across own reset-status/XMP-denial diagnostic corrections. Native install2/post0/0,75paths/80entries; installed UID101/private-device/no-route UTF8 PNG EXIF edit/read/reset/pixel retained/corrupt refusal/two recoveries/valid XMP/external entity201 rejection/canary retained/XMP recovery/shared ABI/pkg-config/APT0. First native preflight failed before package/root0, no replay. No global Expat/GExiv2/LocalSearch/GUI claim; exact skipped debug/unfixed1821/Mac cases retained, ADR0203.
 
-Running: No active guest writer. Blueprint0.22.2 UI compiler SDK owned/CLI/original selected cases qualified; all16Nautilus SDKs and compiler now available. Next minimal Nautilus50.2.2 source/build/headless selected checks, required LocalSearch runtime then real file-manager/native GNOME GUI. No Nautilus guest source/job. Complete ALL B02 then stop.
+Running: No active guest writer. Brotli1.2/INIh62/Exiv20.28.8 owned with real original/local API/parser-refusal/recovery/native package proofs. Next GExiv20.16.2 source/SDK/build against installed Exiv2, then real LocalSearch service and required Landlock kernel feature. Synthetic COW/guarded768MiB virtual scratch preflight qualified; disk not attached/formatted, kernel unchanged. Native desktop/login/apps/offline/resources still pending. Complete ALL B02 then stop.
 
 Remaining:
 

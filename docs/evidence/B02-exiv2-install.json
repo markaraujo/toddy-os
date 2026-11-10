@@ -1,0 +1,400 @@
+{
+  "scope": "Owned Exiv20.28.8 local PNG/JPEG/TIFF/BMFF/video/XMP metadata with real Brotli1.2/INIh62. Four original test programs1169cases:1159non-skipped/10upstream exclusions; fifth registered version driver zero methods/metadata dump only. Initial missing-feature/private-source failures retained; new feature inputs recompiled69steps and passed.92compiledELFs/55stagefiles unchanged during corrected own probes. Actual installed UID101/private-device/no-route UTF8 EXIF edit/read/delete-reset/pixel retention/corrupt-file refusal/two recoveries/valid XMP parser/external-entity201 rejection/canary retained/recovery/shared ABI/pkg-config/APT0. Native install2/post0/0,75paths/80entries; first native own count preflight failed before archive/dpkg/root0, never replayed. No global Expat security, GExiv2/LocalSearch/GUI/remote-transport acceptance.",
+  "source": {
+    "name": "exiv2",
+    "version": "0.28.8",
+    "filename": "exiv2-0.28.8.tar.gz",
+    "url": "https://github.com/Exiv2/exiv2/archive/v0.28.8/exiv2-0.28.8.tar.gz",
+    "sha256": "ea51b0609f58a9afa063b60daa1539948b62247721e154f4fff0ad3aec9f9756",
+    "reference": "BLFS13.1-systemd general/exiv2.html",
+    "book_page_sha256": "04ca336dd53e55c2f4a963316cd19852b989561f5b6c7f7aa350c669cc31f357",
+    "book_md5": "3f3b2d9c3e73880ea8e6bd78c67ea56a",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "prepared": {
+    "source_sha256": "ea51b0609f58a9afa063b60daa1539948b62247721e154f4fff0ad3aec9f9756",
+    "reference": "BLFS13.1-systemd general/exiv2.html",
+    "book_page_sha256": "04ca336dd53e55c2f4a963316cd19852b989561f5b6c7f7aa350c669cc31f357",
+    "source_patches": [],
+    "recipe_sha256": "d08d292ffebae87306af27aed825e5afeca2557b2e9278ac453116cfadb2819a",
+    "probe_sha256": "4ba32e4b2abd003cdb48e996858249eb0483687329254eac67a24c79e2855a55"
+  },
+  "stage": {
+    "scope": "Frozen Exiv20.28.8 with real Brotli/INI dependencies, original five private drivers on new feature inputs; failed profile retained with original ELF copies. Network transports/samples/Python bindings omitted. Own PNG EXIF UTF8 edit/read/reset/pixel retention/corrupt refusal and XMP positive/external-entity denial/recovery only; no global XML vulnerability fix or GExiv2/LocalSearch/GUI acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "bugfixTests",
+        "exit": 0,
+        "seconds": 4.171,
+        "log_sha256": "34306d8e404194dd864c7ca0e7e20363813208fe171c83816a65cc80b9e77c36"
+      },
+      {
+        "name": "lensTests",
+        "exit": 0,
+        "seconds": 4.371,
+        "log_sha256": "f6370099a68f3f9750e482b48e7f32aef8f8a7b92d49bc02eb94295544dbbf99"
+      },
+      {
+        "name": "tiffTests",
+        "exit": 0,
+        "seconds": 0.114,
+        "log_sha256": "8e18b2741eba507fc8ce12913c9fa6ac21a08f4bca56346723abe65a01fa002e"
+      },
+      {
+        "name": "versionTests",
+        "exit": 0,
+        "seconds": 0.114,
+        "log_sha256": "63e3f0936c78d09cdade300c13b5733b22b67f58a2e9293c42095939743004e6"
+      },
+      {
+        "name": "regressionTests",
+        "exit": 0,
+        "seconds": 1.717,
+        "log_sha256": "e7fae3f64ce1709e492795ced596612dd904b633dc889a1004a9d0614da96b42"
+      }
+    ],
+    "legacy_profile": "features-3/legacy-profile.json",
+    "private_source_fixture_sha256": "4e961a13a74b217a9633e858db9b3be37db4d12871351fbe53f0f28660ceb7b6",
+    "readonly_canon_source_sha256": "bd686c42ef8680a152a49e245ccc29780beb54737826f4085c358b2669f9db22",
+    "consumer_exit": 1,
+    "consumer": null,
+    "artifacts_count": 92,
+    "artifacts_manifest_sha256": "5e4a401ec105552eb8e1b265c4ae8afdb3fac73fc0f25b230425ee5f9f8e7904",
+    "stage_sha256_count": 55,
+    "stage_sha256_manifest_sha256": "ece6affdd5bd2e9c3e58454e7e7885a2f386d938d9b423fe7f1f77390b16b3ef"
+  },
+  "legacy_profile": {
+    "profile": "Brotli/INI disabled, no original pass claim for bugfix/lens; exact failed outputs retained",
+    "original_results": [
+      {
+        "name": "bugfixTests",
+        "exit": 1,
+        "seconds": 4.021,
+        "log_sha256": "d2b98a3da52dc6d28f05e7e860708e82eccd75cbb4ce5a314dc59a5ca1275072"
+      },
+      {
+        "name": "lensTests",
+        "exit": 1,
+        "seconds": 0.114,
+        "log_sha256": "22571c0a89cb2bef85bd5a32bc30b4a7c52beb3bb4c84a694af76d2467eb54f7"
+      },
+      {
+        "name": "tiffTests",
+        "exit": 0,
+        "seconds": 0.114,
+        "log_sha256": "8e18b2741eba507fc8ce12913c9fa6ac21a08f4bca56346723abe65a01fa002e"
+      },
+      {
+        "name": "versionTests",
+        "exit": 0,
+        "seconds": 0.114,
+        "log_sha256": "db77f58fdc13a4c8b2fbd564af8a85508873fdfb7189b3ae105b59a6065e192a"
+      },
+      {
+        "name": "regressionTests",
+        "exit": 0,
+        "seconds": 1.667,
+        "log_sha256": "470a844ded6c7d091d9a00d7104c85eb778c5bc3db44dfce280936c3eb55a88f"
+      }
+    ],
+    "CMakeCache_sha256": "9ab094a3112349f015aa089d515651af1590dc9d901b390abc2e9353bb62592a",
+    "ELF_count": 92,
+    "ELF_manifest_sha256": "87d75eeef1e24fb63f70b3aa96642e7cb69d58ea2bc37dd6c16df41b323d4868"
+  },
+  "successful_own_probe": {
+    "scope": "Own metadata/reset/XMP parser consumer only; all previously passed changed-profile original programs/compiled/stage inputs retained, no replay.",
+    "consumer_exit": 0,
+    "consumer": {
+      "local_PNG_EXIF_UTF8_edit_read_reset_cycles": 2,
+      "IDAT_IHDR_IEND_unchanged": true,
+      "corrupt_JPEG_refusals": 2,
+      "failed_input_unchanged": true,
+      "recovery_cycles": 2,
+      "valid_XMP_parser_control": true,
+      "external_entity_refused_canary_not_read": true,
+      "XMP_recovery": true,
+      "remote_transport_or_GUI_tested": false
+    },
+    "all_compiled_and_stage_hashes_unchanged": true
+  },
+  "XMP_diagnostic": {
+    "results": [
+      {
+        "file": "valid.xmp",
+        "exit": 0,
+        "stdout": "TODDY-VALID-XMP\n",
+        "stderr": ""
+      },
+      {
+        "file": "external-entity.xmp",
+        "exit": 1,
+        "stdout": "",
+        "stderr": "Error: XMP Toolkit error 201: Error in XMLValidator\nWarning: Failed to decode XMP metadata.\n"
+      }
+    ],
+    "input_hashes_unchanged": true
+  },
+  "failed_native_preflight": {
+    "step": "b02-exiv2-install",
+    "started": "2026-11-10T09:23:32.516093+00:00",
+    "recipe_sha256": "0b0003f4e4ef08202f33c5d41d465ab97bd9150855812a2383f59d80409cac37",
+    "postcheck_sha256": "0b73f9b7e96266720621d9bb93141e2f3d548504748db3771a858d6bc1001d21",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "aca5a32a2766e583f64df051e91ad29c8641d6324e21a88f7f22356f85e11124",
+    "recipe_pid": 15674,
+    "recipe_pgid": 15674,
+    "recipe_exit": 1,
+    "postcheck_exit": null,
+    "finished": "2026-11-10T09:23:48.519473+00:00",
+    "changed_paths": 0,
+    "log_sha256": "0a832fce6052037e81bc2e961170e7af60107b2ed3c65847b86885013c021ecb",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "aceebb6d1285d4c22ba925caba5cce9e3064dca48e5574129ea16b0e1f62e281"
+  },
+  "native_transaction": {
+    "step": "b02-exiv2-install-2",
+    "started": "2026-11-10T09:27:11.243355+00:00",
+    "recipe_sha256": "0b0003f4e4ef08202f33c5d41d465ab97bd9150855812a2383f59d80409cac37",
+    "postcheck_sha256": "0b73f9b7e96266720621d9bb93141e2f3d548504748db3771a858d6bc1001d21",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "aca5a32a2766e583f64df051e91ad29c8641d6324e21a88f7f22356f85e11124",
+    "recipe_pid": 16014,
+    "recipe_pgid": 16014,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T09:27:29.508914+00:00",
+    "changed_paths": 75,
+    "log_sha256": "711ca5bccf53c2f983ed158871bc8cd802010b3396bad93deb75dfb43a0b6172",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "e2e26837699789e7c36708f838fd7d19756e633de375e1ae45f79733281f49f9"
+  },
+  "package": {
+    "name": "exiv2",
+    "version": "0.28.8-1+toddy1",
+    "archive_sha256": "2c5a7cb6c66a871623f30bbc36bc018b320ed452ff0cf68c874da45a57160cea",
+    "recipe_sha256": "0b0003f4e4ef08202f33c5d41d465ab97bd9150855812a2383f59d80409cac37",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "exiv2",
+        "version": "0.28.8",
+        "filename": "exiv2-0.28.8.tar.gz",
+        "url": "https://github.com/Exiv2/exiv2/archive/v0.28.8/exiv2-0.28.8.tar.gz",
+        "sha256": "ea51b0609f58a9afa063b60daa1539948b62247721e154f4fff0ad3aec9f9756",
+        "reference": "BLFS13.1-systemd general/exiv2.html",
+        "book_page_sha256": "04ca336dd53e55c2f4a963316cd19852b989561f5b6c7f7aa350c669cc31f357",
+        "book_md5": "3f3b2d9c3e73880ea8e6bd78c67ea56a",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "e2e26837699789e7c36708f838fd7d19756e633de375e1ae45f79733281f49f9",
+    "payload_count": 80,
+    "payload_manifest_sha256": "a910ac5399c95dd4916d1938069d459ea469f7010867c80bb0a91662137c44ef"
+  },
+  "installed_consumer": {
+    "scope": "Actual installed UID101/private-device/no-route PNG EXIF UTF8 edit/read/reset/pixel retention/corrupt-file refusal/two recovery cycles, valid XMP parser positive/external-entity201 rejection/canary retained/XMP recovery, all installed stage bytes unchanged/pkg-config/shared ABI/APT0. No GExiv2/LocalSearch/desktop/global Expat security or remote-transport acceptance.",
+    "consumer": {
+      "local_PNG_EXIF_UTF8_edit_read_reset_cycles": 2,
+      "IDAT_IHDR_IEND_unchanged": true,
+      "corrupt_JPEG_refusals": 2,
+      "failed_input_unchanged": true,
+      "recovery_cycles": 2,
+      "valid_XMP_parser_control": true,
+      "external_entity_refused_canary_not_read": true,
+      "XMP_recovery": true,
+      "remote_transport_or_GUI_tested": false
+    },
+    "installed_stage_files_identical": 55,
+    "shared_library_resolution": true,
+    "original_driver_counts": {
+      "bugfixTests": 310,
+      "lensTests": 532,
+      "tiffTests": 1,
+      "versionTests": 0,
+      "regressionTests": 326
+    },
+    "original_skips": [
+      {
+        "driver": "bugfixTests",
+        "detail": "test_run (github.test_CVE_2018_9145.SubBoxLengthDataBufAbort.test_run) ... skipped 'Skipping test using option -pR (only for Debug mode)'"
+      },
+      {
+        "driver": "bugfixTests",
+        "detail": "test_run (github.test_issue_1805.exiv2pRHeaderTest.test_run) ... skipped 'Skipping test using option -pR (only for Debug mode)'"
+      },
+      {
+        "driver": "bugfixTests",
+        "detail": "test_run (github.test_issue_1821.MemoryLeakAddBinding.test_run) ... skipped 'Skipping test until #1821 is fixed'"
+      },
+      {
+        "driver": "bugfixTests",
+        "detail": "test_run (github.test_issue_216.UncontrolledRecursion.test_run) ... skipped 'Skipping test using option -pR (only for Debug mode)'"
+      },
+      {
+        "driver": "bugfixTests",
+        "detail": "test_run (github.test_issue_511.ThrowsWhenIFDsAreMalformed.test_run) ... skipped 'Skipping test using option -pR (only for Debug mode)'"
+      },
+      {
+        "driver": "bugfixTests",
+        "detail": "test_run (github.test_issue_547.test_issue_547.test_run) ... skipped 'Skipping test using option -pR (only for Debug mode)'"
+      },
+      {
+        "driver": "bugfixTests",
+        "detail": "test_run (github.test_issue_828.SegmentationFaultPngImage.test_run) ... skipped 'Skipping test using option -pR (only for Debug mode)'"
+      },
+      {
+        "driver": "bugfixTests",
+        "detail": "test_run (github.test_issue_g44w_q3vm_gwjq.ImagePrintIFDStructureZeroCountAssert.test_run) ... skipped 'Skipping test using option -pR (only for Debug mode)'"
+      },
+      {
+        "driver": "bugfixTests",
+        "detail": "test_run (redmine.test_issue_1108.CheckDumpSubFiles.test_run) ... skipped 'Skipping test using option -pR (only for Debug mode)'"
+      },
+      {
+        "driver": "bugfixTests",
+        "detail": "test_run (redmine.test_issue_836.WriteMetadataDestroysResourceForkOnMacOSXForBigFiles.test_run) ... skipped 'File system does not support resource forks'"
+      }
+    ]
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-exiv2-install-evidence.tar.gz",
+    "sha256": "419585f25fe08099caff59562706fb95def4321b2624f1ed7ec7a3eb18b148d5",
+    "members": [
+      "build/b02-exiv2-install-2.log",
+      "build/b02-exiv2-install-2.manifest.json",
+      "build/b02-exiv2-install-2.success.json",
+      "build/b02-exiv2-install.failed.json",
+      "build/b02-exiv2-install.log",
+      "build/b02-exiv2-install.manifest.json",
+      "package.json",
+      "phase2/b02-exiv2-install-2-controller.log",
+      "phase2/b02-exiv2-install-2-timing.json",
+      "phase2/b02-exiv2-install-controller.log",
+      "phase2/b02-exiv2-install-timing.json",
+      "phase2/exiv2-1-controller.log",
+      "phase2/exiv2-1.exit",
+      "phase2/exiv2-1.job.json",
+      "phase2/exiv2-1.log",
+      "phase2/exiv2-features-3-controller.log",
+      "phase2/exiv2-features-3.exit",
+      "phase2/exiv2-features-3.job.json",
+      "phase2/exiv2-features-3.log",
+      "phase2/exiv2-features-4-controller.log",
+      "phase2/exiv2-features-4.exit",
+      "phase2/exiv2-features-4.job.json",
+      "phase2/exiv2-features-4.log",
+      "phase2/exiv2-finish-2-controller.log",
+      "phase2/exiv2-finish-2.exit",
+      "phase2/exiv2-finish-2.job.json",
+      "phase2/exiv2-finish-2.log",
+      "phase2/exiv2-installed-consumer.json",
+      "phase2/exiv2-probe-5-controller.log",
+      "phase2/exiv2-probe-5.exit",
+      "phase2/exiv2-probe-5.job.json",
+      "phase2/exiv2-probe-5.log",
+      "phase2/exiv2-probe-7-controller.log",
+      "phase2/exiv2-probe-7.exit",
+      "phase2/exiv2-probe-7.job.json",
+      "phase2/exiv2-probe-7.log",
+      "phase2/exiv2-stage.json",
+      "phase2/exiv2-xmp-diagnostic-6-controller.log",
+      "phase2/exiv2-xmp-diagnostic-6.exit",
+      "phase2/exiv2-xmp-diagnostic-6.job.json",
+      "phase2/exiv2-xmp-diagnostic-6.log",
+      "prepared.json",
+      "work/bugfixTests.log",
+      "work/features-3/bugfixTests.log",
+      "work/features-3/compile.exit",
+      "work/features-3/compile.log",
+      "work/features-3/consumer.json",
+      "work/features-3/consumer.stderr",
+      "work/features-3/legacy-profile.json",
+      "work/features-3/lensTests.log",
+      "work/features-3/original-results.json",
+      "work/features-3/probe.py",
+      "work/features-3/reconfigure.exit",
+      "work/features-3/reconfigure.log",
+      "work/features-3/regressionTests.log",
+      "work/features-3/stage.exit",
+      "work/features-3/stage.log",
+      "work/features-3/tiffTests.log",
+      "work/features-3/versionTests.log",
+      "work/lensTests.log",
+      "work/original-private-fixtures.json",
+      "work/original-registered-tests.json",
+      "work/original-results.json",
+      "work/probe-5/consumer.json",
+      "work/probe-5/consumer.stderr",
+      "work/probe-5/probe.py",
+      "work/probe-5/result.json",
+      "work/probe-7/consumer.json",
+      "work/probe-7/consumer.stderr",
+      "work/probe-7/probe.py",
+      "work/probe-7/result.json",
+      "work/regressionTests.log",
+      "work/stage-results.json",
+      "work/tiffTests.log",
+      "work/versionTests.log",
+      "work/xmp-diagnostic-6.json"
+    ]
+  }
+}

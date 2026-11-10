@@ -2457,6 +2457,42 @@
       "book_md5": "96b2ac7e1300c02a8e62f56048e27033",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "exiv2",
+      "version": "0.28.8",
+      "filename": "exiv2-0.28.8.tar.gz",
+      "url": "https://github.com/Exiv2/exiv2/archive/v0.28.8/exiv2-0.28.8.tar.gz",
+      "sha256": "ea51b0609f58a9afa063b60daa1539948b62247721e154f4fff0ad3aec9f9756",
+      "reference": "BLFS13.1-systemd general/exiv2.html",
+      "book_page_sha256": "04ca336dd53e55c2f4a963316cd19852b989561f5b6c7f7aa350c669cc31f357",
+      "book_md5": "3f3b2d9c3e73880ea8e6bd78c67ea56a",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "brotli",
+      "version": "1.2.0",
+      "filename": "brotli-1.2.0.tar.gz",
+      "url": "https://github.com/google/brotli/archive/v1.2.0/brotli-1.2.0.tar.gz",
+      "sha256": "816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec",
+      "reference": "BLFS13.1-systemd general/brotli.html",
+      "book_page_sha256": "1740e823a7e5ea7988e874d177421d49f8842ffb1a3c9154b08d1a895d1b2d8a",
+      "book_md5": "8fbfae9a5ecbc278ae7f761ecb6d1285",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "inih",
+      "version": "62",
+      "filename": "inih-r62.tar.gz",
+      "url": "https://github.com/benhoyt/inih/archive/r62/inih-r62.tar.gz",
+      "sha256": "9c15fa751bb8093d042dae1b9f125eb45198c32c6704cd5481ccde460d4f8151",
+      "reference": "BLFS13.1-systemd general/inih.html",
+      "book_page_sha256": "2abf35a7dd227beab34f47c7732d6166c9897388a94da0a34bf67cad6a734e5f",
+      "book_md5": "c0c6982525958a0376a3cb5bfbee14a0",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

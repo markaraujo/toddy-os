@@ -19,6 +19,9 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'exiv2': ('0.28.8', 'glibc (= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), zlib (= 1.3.2-1+toddy1), expat (= 2.10.0-1+toddy1), brotli (= 1.2.0-1+toddy1), inih (= 62-1+toddy1)', 'exiv2-0.28.8.tar.gz', 'usr/lib/pkgconfig/exiv2.pc'),
+    'brotli': ('1.2.0', 'glibc (>= 2.44-1+toddy1)', 'brotli-1.2.0.tar.gz', 'usr/lib/pkgconfig/libbrotlidec.pc'),
+    'inih': ('62', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2)', 'inih-r62.tar.gz', 'usr/lib/pkgconfig/inih.pc'),
     'blueprint-compiler': ('0.22.2', 'python (>= 3.14), python (<< 3.15), pygobject (= 3.56.3-1+toddy1), gtk (>= 4.22.4-1+toddy8), gobject-introspection (>= 1.86.0-1+toddy1)', 'blueprint-compiler-0.22.2.tar.xz', 'usr/bin/blueprint-compiler'),
     'glycin-gtk4': ('2.1.0', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), glycin (= 2.1.5-1+toddy1), gtk (>= 4.22.4-1+toddy8), glib (= 2.88.3-1+toddy2), lcms2 (= 2.19.1-1+toddy1), libseccomp (= 2.6.1-1+toddy1)', 'glycin-2.1.5.tar.xz', 'usr/lib/pkgconfig/glycin-gtk4-2.pc'),
     'tinysparql': ('3.11.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), icu (= 78.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), libxml2 (= 2.15.3-1+toddy1), sqlite (= 3.53.4-1+toddy1), libsoup (= 3.6.6-1+toddy1)', 'tinysparql-3.11.1.tar.xz', 'usr/lib/pkgconfig/tinysparql-3.0.pc'),
@@ -270,6 +273,8 @@ if __name__ == '__main__':
     if name=='libgweather':qualifier='libgweather-stage-2'
     if name=='libnma':qualifier='libnma-stage-2'
     if name=='gnome-shell' and (log/'gnome-shell-probe-2.exit').exists():qualifier='gnome-shell-probe-2'
+    if name=='exiv2':qualifier='exiv2-probe-7'
+    if name=='inih' and (log/'inih-collect-2.exit').exists():qualifier='inih-collect-2'
     if name=='blueprint-compiler':qualifier='blueprint-compiler-finish-2'
     if name=='tinysparql':qualifier='tinysparql-numeric-5'
     if name=='gnome-autoar' and (log/'gnome-autoar-probe-3.exit').exists():qualifier='gnome-autoar-probe-3'
@@ -1231,6 +1236,12 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='exiv2':
+        from qualify_exiv2 import qualify as qualify_exiv2
+        qualify_exiv2(ROOT)
+    if name in ('brotli','inih'):
+        from qualify_metadata_prerequisites import qualify as qualify_metadata
+        qualify_metadata(ROOT,name)
     if name=='blueprint-compiler':
         from qualify_blueprint_compiler import qualify as qualify_blueprint_compiler
         qualify_blueprint_compiler(ROOT)
@@ -1516,6 +1527,15 @@ if __name__ == '__main__':
     if name=='ibus':
         doc=destination/'usr/share/doc/ibus';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('Frozen official tag1.5.34 embeds1.5.34-rc2; native1.5.34~rc2-1+toddy1 preserves and discloses source version. Minimal GTK3/4+Wayland/GI/Unicode/setup/UI profile; XIM/X11 agent, GTK2, Python2, appindicator and optional emoji dict omitted. Seven portable original programs and UTF8/key parser refusal/recovery qualified; actual service, graphical keyboard and shared IM/schema caches remain separate pending gates. Full source/UCD/Unicode3 notices retained. ADR0169 records backend guard and original Xlib fixture link correction.\n')
+    if name=='exiv2':
+        doc=destination/'usr/share/doc/exiv2';doc.mkdir(parents=True,exist_ok=True)
+        from qualify_exiv2 import qualify as qualify_exiv2
+        review=qualify_exiv2(ROOT);review.pop('stage')
+        (doc/'original-test-review.json').write_text(json.dumps(review,indent=2)+'\n')
+        (doc/'README.Toddy').write_text('Frozen0.28.8 local metadata profile with owned Brotli/INI, PNG/JPEG/TIFF/BMFF/video/XMP; network transports/samples/Python bindings unselected. Four original test programs1169nested cases,1159non-skipped/10explicit skips; fifth registered version driver dumps metadata with zero cases; initial disabled-feature/private-fixture failures retained. Own UTF8 PNG EXIF edit/read/reset/pixel retention/corrupt refusal and valid XMP/external entity201 rejection/canary not read/recovery passed, all92ELFs/55stage files unchanged after probe correction. Current src/xmp.cpp XMLValidator rejects DOCTYPE before Adobe SDK; no global Expat-vulnerability fix, GExiv2/LocalSearch/GUI or remote-transport acceptance. Source/XMP SDK full notices retained. ADR0203.\n')
+    if name in ('brotli','inih'):
+        doc=destination/'usr/share/doc'/name;doc.mkdir(parents=True,exist_ok=True)
+        (doc/'README.Toddy').write_text('Frozen BLFS13.1 prerequisite, isolated source build and all selected tarball original cases; actual installed local UTF8/refusal/recovery tests. No Exiv2/full desktop acceptance. Brotli external downloaded corpus/Python bindings omitted; inih C+INIReader default bounded stack parser selected. ADR0202.\n')
     if name=='blueprint-compiler':
         doc=destination/'usr/share/doc/blueprint-compiler';doc.mkdir(parents=True,exist_ok=True)
         from qualify_blueprint_compiler import qualify as qualify_blueprint_compiler

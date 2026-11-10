@@ -1,0 +1,253 @@
+{
+  "scope": "Owned inih62 C+INIReader C++:16original programs/55ELFs/six stagefiles. Initial own collector expected15 after all original/stage/consumer passed, metadata-only collect2 corrected count/no test or compile replay; prepared recipe exact cardinality delta retained. Native0/0,19paths/20entries; installed UID101/private-device/no-route C+CPP UTF8 parse/typed defaults/malformed refusal/prior state retained/two recoveries/shared ABI/pkg-config/APT0. No owner config/Exiv2/GUI acceptance.",
+  "source": {
+    "name": "inih",
+    "version": "62",
+    "filename": "inih-r62.tar.gz",
+    "url": "https://github.com/benhoyt/inih/archive/r62/inih-r62.tar.gz",
+    "sha256": "9c15fa751bb8093d042dae1b9f125eb45198c32c6704cd5481ccde460d4f8151",
+    "reference": "BLFS13.1-systemd general/inih.html",
+    "book_page_sha256": "2abf35a7dd227beab34f47c7732d6166c9897388a94da0a34bf67cad6a734e5f",
+    "book_md5": "c0c6982525958a0376a3cb5bfbee14a0",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "prepared": {
+    "source_sha256": "9c15fa751bb8093d042dae1b9f125eb45198c32c6704cd5481ccde460d4f8151",
+    "reference": "BLFS13.1-systemd general/inih.html",
+    "book_page_sha256": "2abf35a7dd227beab34f47c7732d6166c9897388a94da0a34bf67cad6a734e5f",
+    "source_patches": [],
+    "recipe_sha256": "53963ca35cccef5b84035780ba4d0c5c5260a8e3f5fcdd3c133af3e22b034821",
+    "probe_sha256": "c1cf0f2d0e6399e82883e34e526150beb1ac2069d0850860ece8a1815524d3f1"
+  },
+  "stage": {
+    "scope": "Frozen inih62 C+INIReader C++ shared libraries/default bounded stack parser; all16original Meson programs and own C/C++ UTF8/typed-default/refusal/state-retention/recovery. No Exiv2/user-owned config or GUI acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_tests": [
+      {
+        "name": "inih:test_multi",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_multi_max_line",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_single",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_disallow_inline_comments",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_stop_on_first_error",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_handler_lineno",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_string",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_heap",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_heap_max_line",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_heap_realloc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_heap_realloc_max_line",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_heap_string",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_call_handler_on_new_section",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_allow_no_value",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_alloc",
+        "result": "OK",
+        "returncode": 0
+      },
+      {
+        "name": "inih:test_INIReaderExample",
+        "result": "OK",
+        "returncode": 0
+      }
+    ],
+    "consumer": {
+      "C_and_Cpp_UTF8_parse_cycles": 2,
+      "typed_and_missing_defaults": true,
+      "malformed_refusals": 2,
+      "prior_state_retained": true,
+      "recovery_cycles": 2
+    },
+    "artifacts_count": 55,
+    "artifacts_manifest_sha256": "31dc28af0587d0ba0fc778a5ba7300b07bbc1d16d465a2a21b1bba920d3a7d8a",
+    "stage_sha256_count": 6,
+    "stage_sha256_manifest_sha256": "df4399a5f390c6f5c1716821e5892a3d69579f962f15b4f9f8656bf6fc7ab643"
+  },
+  "native_transaction": {
+    "step": "b02-inih-install",
+    "started": "2026-11-10T09:01:43.258962+00:00",
+    "recipe_sha256": "c75e966ec0989000de1dbcf949eae6595bdf79cb6e81961700ad926a75760167",
+    "postcheck_sha256": "510f5211c3e9b983c2abaca800ca2f073b78ba3a6aec229fbe2b18aea196977e",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "aca5a32a2766e583f64df051e91ad29c8641d6324e21a88f7f22356f85e11124",
+    "recipe_pid": 10400,
+    "recipe_pgid": 10400,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T09:01:59.461741+00:00",
+    "changed_paths": 19,
+    "log_sha256": "5db4e9eada9f349b7ef0954bdd6dddab07d08dd02ca364e3dc180c05d4058640",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "3e1cee4eab6dd3ada2aab67d7d5ba44ca1bf0df28ebb109fc2b023688d45b1b6"
+  },
+  "package": {
+    "name": "inih",
+    "version": "62-1+toddy1",
+    "archive_sha256": "32861b494bc443079e69c3846760bcb1f42b5a966831df8c22c93004ff3b3734",
+    "recipe_sha256": "c75e966ec0989000de1dbcf949eae6595bdf79cb6e81961700ad926a75760167",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "inih",
+        "version": "62",
+        "filename": "inih-r62.tar.gz",
+        "url": "https://github.com/benhoyt/inih/archive/r62/inih-r62.tar.gz",
+        "sha256": "9c15fa751bb8093d042dae1b9f125eb45198c32c6704cd5481ccde460d4f8151",
+        "reference": "BLFS13.1-systemd general/inih.html",
+        "book_page_sha256": "2abf35a7dd227beab34f47c7732d6166c9897388a94da0a34bf67cad6a734e5f",
+        "book_md5": "c0c6982525958a0376a3cb5bfbee14a0",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "3e1cee4eab6dd3ada2aab67d7d5ba44ca1bf0df28ebb109fc2b023688d45b1b6",
+    "payload_count": 20,
+    "payload_manifest_sha256": "957c2622892ae5d2a5bb5ffe075689d7d6f8b7b8444d700c99737765ff968805"
+  },
+  "installed_consumer": {
+    "scope": "Owned installed UID101/private device/no-route actual local API/CLI UTF8/refusal/recovery/unchanged stage/pkg-config/shared ABI/APT0. New Exiv2 profile and desktop integration remain unqualified.",
+    "consumer": {
+      "C_and_Cpp_UTF8_parse_cycles": 2,
+      "typed_and_missing_defaults": true,
+      "malformed_refusals": 2,
+      "prior_state_retained": true,
+      "recovery_cycles": 2
+    },
+    "installed_stage_files_identical": 6,
+    "shared_library_resolution": true
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-inih-install-evidence.tar.gz",
+    "sha256": "1d9c3ae4f8ce4c545cf031180c48e37438ef2e449fdebd42179798a308dd0968",
+    "members": [
+      "build/b02-inih-install.log",
+      "build/b02-inih-install.manifest.json",
+      "build/b02-inih-install.success.json",
+      "package.json",
+      "phase2/b02-inih-install-controller.log",
+      "phase2/b02-inih-install-timing.json",
+      "phase2/inih-1-controller.log",
+      "phase2/inih-1.exit",
+      "phase2/inih-1.job.json",
+      "phase2/inih-1.log",
+      "phase2/inih-collect-2-controller.log",
+      "phase2/inih-collect-2.exit",
+      "phase2/inih-collect-2.job.json",
+      "phase2/inih-collect-2.log",
+      "phase2/inih-installed-consumer.json",
+      "phase2/inih-stage.json",
+      "prepared.json",
+      "work/compile/meson-logs/testlog.json",
+      "work/native-consumer.json",
+      "work/original-registered-tests.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/stage-results.json"
+    ]
+  }
+}

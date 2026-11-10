@@ -1,0 +1,181 @@
+{
+  "scope": "Owned Brotli1.2.0 shared common/decoder/encoder and CLI:12original tarball-available C cases/42ELFs/17stagefiles; native0/0,35paths/40entries. Installed UID101/private-device/no-route UTF8+binary compression/decompression/integrity/malformed refusal/input retained/two recoveries/shared ABI/pkg-config/APT0. External corpus/Python bindings unselected, no Exiv2/browser/GUI claim.",
+  "source": {
+    "name": "brotli",
+    "version": "1.2.0",
+    "filename": "brotli-1.2.0.tar.gz",
+    "url": "https://github.com/google/brotli/archive/v1.2.0/brotli-1.2.0.tar.gz",
+    "sha256": "816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec",
+    "reference": "BLFS13.1-systemd general/brotli.html",
+    "book_page_sha256": "1740e823a7e5ea7988e874d177421d49f8842ffb1a3c9154b08d1a895d1b2d8a",
+    "book_md5": "8fbfae9a5ecbc278ae7f761ecb6d1285",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "prepared": {
+    "source_sha256": "816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec",
+    "reference": "BLFS13.1-systemd general/brotli.html",
+    "book_page_sha256": "1740e823a7e5ea7988e874d177421d49f8842ffb1a3c9154b08d1a895d1b2d8a",
+    "source_patches": [],
+    "recipe_sha256": "6c708dcb0711cae0eecfd09bc1e6f2aada499510d1feb544cb9fb7051c5590f0",
+    "probe_sha256": "3c14202ae5c6a9ea31f82ac979940a9b1b95c2f9ee7a0e6359175fdaf8730944"
+  },
+  "stage": {
+    "scope": "Frozen Brotli1.2.0 shared encoder/decoder/common and CLI; original registered tarball-available C tests only. Optional external downloaded corpus and Python binding unselected, not passes. Own binary/UTF8/integrity/malformed/refusal/recovery only, no Exiv2/browser/GUI acceptance.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_cases": [
+      "roundtrip/c/enc/encode.c/1",
+      "roundtrip/c/enc/encode.c/6",
+      "roundtrip/c/enc/encode.c/9",
+      "roundtrip/c/enc/encode.c/11",
+      "roundtrip/c/common/dictionary.h/1",
+      "roundtrip/c/common/dictionary.h/6",
+      "roundtrip/c/common/dictionary.h/9",
+      "roundtrip/c/common/dictionary.h/11",
+      "roundtrip/c/dec/decode.c/1",
+      "roundtrip/c/dec/decode.c/6",
+      "roundtrip/c/dec/decode.c/9",
+      "roundtrip/c/dec/decode.c/11"
+    ],
+    "consumer": {
+      "UTF8_and_binary_roundtrip_cycles": 2,
+      "compressed_integrity_checks": 2,
+      "malformed_refusals": 2,
+      "malformed_input_unchanged": true,
+      "recovery_cycles": 2
+    },
+    "artifacts_count": 42,
+    "artifacts_manifest_sha256": "3e39ed1999e0db95efc64f916562cd1e7a8f7794db5e8eadcf7775076055746f",
+    "stage_sha256_count": 17,
+    "stage_sha256_manifest_sha256": "d12905f0035fb2cc8410f99e76e3db186224b59a2cb7cbdf4e84658c98ca58ca"
+  },
+  "native_transaction": {
+    "step": "b02-brotli-install",
+    "started": "2026-11-10T08:52:14.446877+00:00",
+    "recipe_sha256": "80726ccdfaa6944ab15f30af80df412fec2460901308a7b593b97c18a08231aa",
+    "postcheck_sha256": "9522148b1dc35b54191c53cd27994cce69da7c7c00880bfb3905263bcaca5e13",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "aca5a32a2766e583f64df051e91ad29c8641d6324e21a88f7f22356f85e11124",
+    "recipe_pid": 8834,
+    "recipe_pgid": 8834,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T08:52:31.109852+00:00",
+    "changed_paths": 35,
+    "log_sha256": "552e4b8a2737fddaeecc1e1b75f798658e2de43d6fbdae45c11a0ba7185b8643",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "255c98597cd4d457edf9c70a14172350acad43276da003f25bc5cbd5921d2e53"
+  },
+  "package": {
+    "name": "brotli",
+    "version": "1.2.0-1+toddy1",
+    "archive_sha256": "c693b15ad467bc5cc6d0b77c9c83356073224ea3fad8597424a24666d220cee2",
+    "recipe_sha256": "80726ccdfaa6944ab15f30af80df412fec2460901308a7b593b97c18a08231aa",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "brotli",
+        "version": "1.2.0",
+        "filename": "brotli-1.2.0.tar.gz",
+        "url": "https://github.com/google/brotli/archive/v1.2.0/brotli-1.2.0.tar.gz",
+        "sha256": "816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec",
+        "reference": "BLFS13.1-systemd general/brotli.html",
+        "book_page_sha256": "1740e823a7e5ea7988e874d177421d49f8842ffb1a3c9154b08d1a895d1b2d8a",
+        "book_md5": "8fbfae9a5ecbc278ae7f761ecb6d1285",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "255c98597cd4d457edf9c70a14172350acad43276da003f25bc5cbd5921d2e53",
+    "payload_count": 40,
+    "payload_manifest_sha256": "f6080c425ff63cb2c607785b0b90e032e0ecab5a4d1a95e37c4369d7cdb28bce"
+  },
+  "installed_consumer": {
+    "scope": "Owned installed UID101/private device/no-route actual local API/CLI UTF8/refusal/recovery/unchanged stage/pkg-config/shared ABI/APT0. New Exiv2 profile and desktop integration remain unqualified.",
+    "consumer": {
+      "UTF8_and_binary_roundtrip_cycles": 2,
+      "compressed_integrity_checks": 2,
+      "malformed_refusals": 2,
+      "malformed_input_unchanged": true,
+      "recovery_cycles": 2
+    },
+    "installed_stage_files_identical": 17,
+    "shared_library_resolution": true
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-brotli-install-evidence.tar.gz",
+    "sha256": "12bdea69eaaa8cc0db009e7e75233f7ebf33f4274b790328bba87e0975554236",
+    "members": [
+      "build/b02-brotli-install.log",
+      "build/b02-brotli-install.manifest.json",
+      "build/b02-brotli-install.success.json",
+      "package.json",
+      "phase2/b02-brotli-install-controller.log",
+      "phase2/b02-brotli-install-timing.json",
+      "phase2/brotli-1-controller.log",
+      "phase2/brotli-1.exit",
+      "phase2/brotli-1.job.json",
+      "phase2/brotli-1.log",
+      "phase2/brotli-installed-consumer.json",
+      "phase2/brotli-stage.json",
+      "prepared.json",
+      "work/native-consumer.json",
+      "work/original-registered-tests.json",
+      "work/original-tests.exit",
+      "work/original-tests.log",
+      "work/original-tests.xml",
+      "work/stage-results.json"
+    ]
+  }
+}
