@@ -4,6 +4,9 @@ import hashlib
 import inspect
 import io
 import json
+import os
+import shutil
+import stat
 from pathlib import Path
 import shlex
 import subprocess
@@ -58,6 +61,43 @@ def verify_bundle(stage):
     if expected != {'schema_version':1,'files':actual}:
         raise ValueError('Input transfer incomplete or corrupted')
     return files
+
+
+
+def commit_verified_files(stage,files,root=Path('/')):
+    """Reuse identical verified inputs; retain partial-file and namespace guards."""
+    reused=replaced=0
+    for source in files:
+        relative=source.relative_to(stage);text=relative.as_posix()
+        if not (text.startswith('opt/toddy-build/') or text.startswith('mnt/lfs/sources/')):
+            raise ValueError('Unexpected input namespace')
+        destination=root/relative
+        allowed=root/('opt/toddy-build' if text.startswith('opt/') else 'mnt/lfs/sources')
+        if not destination.resolve().is_relative_to(allowed):
+            raise ValueError('Input destination escapes its guarded namespace')
+        # Namespace roots themselves must not redirect writes elsewhere.
+        if allowed.resolve() != allowed:
+            raise ValueError('Input namespace root is redirected')
+        destination.parent.mkdir(parents=True,exist_ok=True)
+        temporary=destination.with_name(destination.name+'.input-sync-part')
+        if temporary.exists() or temporary.is_symlink():
+            raise ValueError('Previous partial input exists; inspect before resuming')
+        src=source.stat()
+        if destination.is_file() and not destination.is_symlink():
+            dst=destination.stat()
+            same=(dst.st_uid,dst.st_gid,stat.S_IMODE(dst.st_mode),dst.st_size)==(src.st_uid,src.st_gid,stat.S_IMODE(src.st_mode),src.st_size)
+            same=same and sorted(os.listxattr(source))==sorted(os.listxattr(destination))
+            if same:
+                same=all(os.getxattr(source,n)==os.getxattr(destination,n) for n in os.listxattr(source))
+            if same:
+                with source.open('rb') as f:expected=hashlib.file_digest(f,'sha256').hexdigest()
+                with destination.open('rb') as f:actual=hashlib.file_digest(f,'sha256').hexdigest()
+                if expected==actual:
+                    reused+=1
+                    continue
+        shutil.copy2(source,temporary,follow_symlinks=False)
+        os.replace(temporary,destination);replaced+=1
+    return {'reused':reused,'replaced':replaced}
 
 
 def stream_inputs(stream, root, metadata, sources, references):
@@ -182,39 +222,33 @@ def main(metadata_only=False):
 if compgen -G '/var/log/toddy/build/*.running.json' > /dev/null; then
  echo 'Refusing input sync during an unfinished recipe' >&2; exit 1
 fi
-work=$(mktemp -d /opt/toddy-input-sync.XXXXXX)
+if [[ __SYNC_WORK_PARENT__ == /run ]]; then
+ [[ $(findmnt -n -o FSTYPE --target /run) == tmpfs ]] || { echo 'Metadata staging requires existing guest tmpfs' >&2; exit 1; }
+ python3 -c 'import os; s=os.statvfs("/run"); assert s.f_bavail*s.f_frsize >= 64*1024**2, "Insufficient metadata tmpfs capacity"'
+fi
+work=$(mktemp -d __SYNC_WORK_PARENT__/toddy-input-sync.XXXXXX)
 trap 'rm -rf -- "$work"' EXIT
 tar --no-same-owner --no-overwrite-dir -xf - -C "$work"
 # Finish the short local commit if the SSH client disconnects after upload.
 trap '' HUP
 python3 - "$work" <<'APPLY'
 from pathlib import Path
-import hashlib,json,os,shutil,sys
+import hashlib,json,os,shutil,stat,sys
 __VERIFY_BUNDLE_SOURCE__
+__COMMIT_VERIFIED_SOURCE__
 stage=Path(sys.argv[1])
 files=verify_bundle(stage)
 Path('/var/log/toddy/build/input-sync.running').write_text('Verified input commit unfinished; rerun sync before dispatch.\n')
 dispatcher='opt/toddy-build/scripts/build/run_step.py'
 files.sort(key=lambda p:(str(p.relative_to(stage))!=dispatcher,str(p)))
-for source in files:
- relative=source.relative_to(stage)
- text=relative.as_posix()
- if not (text.startswith('opt/toddy-build/') or text.startswith('mnt/lfs/sources/')):
-  raise SystemExit('Unexpected input namespace')
- destination=Path('/')/relative
- allowed=Path('/opt/toddy-build') if text.startswith('opt/') else Path('/mnt/lfs/sources')
- if not destination.resolve().is_relative_to(allowed):
-  raise SystemExit('Input destination escapes its guarded namespace')
- destination.parent.mkdir(parents=True,exist_ok=True)
- temporary=destination.with_name(destination.name+'.input-sync-part')
- if temporary.exists() or temporary.is_symlink():
-  raise SystemExit('Previous partial input exists; inspect before resuming')
- shutil.copy2(source,temporary,follow_symlinks=False)
- os.replace(temporary,destination)
+result=commit_verified_files(stage,files)
+print(json.dumps({'verified_input_commit':result,'staging_parent':str(stage.parent)}))
 APPLY
 rm /var/log/toddy/build/input-sync.running
 '''
     receive = receive.replace('__VERIFY_BUNDLE_SOURCE__',inspect.getsource(verify_bundle))
+    receive = receive.replace('__COMMIT_VERIFIED_SOURCE__',inspect.getsource(commit_verified_files))
+    receive = receive.replace('__SYNC_WORK_PARENT__','/run' if metadata_only else '/opt')
     command = ('source /opt/toddy-build/scripts/build/target.sh; guard_target; '
                'mkdir -p /var/log/toddy/build; '
                'flock -n -E 75 /var/log/toddy/build/build.lock bash --noprofile --norc -c '+shlex.quote(receive))

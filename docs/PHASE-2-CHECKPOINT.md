@@ -58,8 +58,12 @@ Receipt kernel-transaction-discard-1.json COMPLETE; compressed private pre-snaps
 kernel-transaction-before-full-1.json.gz kept in builder log. NEVER replay trim.
 A later input sync was followed by renewed shortfall: recorded hostfree
 107675385856B <107911053312B gate. Do NOT call it unblocked or reduce guard.
-The current sync_build.py unconditionally recopies unchanged files using disk
-staging; exact attribution of all observed space change is not established.
+Input transport now reuses verified identical files and uses existing /run tmpfs
+for metadata-only staging. Actual idle sync0 reused1735/replaced1; hostfree
+107666182144B unchanged across this measurement. Nine focused integrity/path/cache
+tests0; [proof](evidence/B02-input-sync-reuse.json). This prevents unnecessary
+rewrites; it does not resolve the cold-boot headroom shortfall or establish exact
+attribution of earlier space changes.
 Failure ledger installed-kernel-boot-host-overlay-headroom persists, correction1
 failed to sustain headroom; diagnosis budget parked. Advance independent eligible
 LocalSearch build preparation. Reopen only with concrete new cache/input-transfer

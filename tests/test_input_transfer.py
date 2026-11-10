@@ -62,3 +62,49 @@ class InputTransfer(unittest.TestCase):
             self.assertEqual(sync.verify_bundle(root),[data])
             data.write_text('changed after manifest creation')
             with self.assertRaises(ValueError):sync.verify_bundle(root)
+
+class VerifiedReuse(unittest.TestCase):
+    def setUp(self):
+        self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
+        self.base=Path(self.tmp.name);self.stage=self.base/'stage';self.root=self.base/'receiver'
+        self.relative=Path('opt/toddy-build/scripts/build/test.sh');self.source=self.stage/self.relative;self.dest=self.root/self.relative
+        self.source.parent.mkdir(parents=True);self.dest.parent.mkdir(parents=True)
+        self.source.write_text('verified content');self.dest.write_text('verified content')
+        self.source.chmod(0o755);self.dest.chmod(0o755)
+    def test_unchanged_input_retains_inode_and_does_not_copy(self):
+        import os
+        from unittest.mock import patch
+        before=self.dest.stat().st_ino;os.utime(self.dest,ns=(1,1))
+        with patch.object(sync.shutil,'copy2',side_effect=AssertionError('Unchanged input copied')):
+            self.assertEqual(sync.commit_verified_files(self.stage,[self.source],self.root),{'reused':1,'replaced':0})
+        self.assertEqual(self.dest.stat().st_ino,before);self.assertEqual(self.dest.stat().st_mtime_ns,1)
+    def test_changed_bytes_and_mode_are_replaced(self):
+        self.dest.write_text('corrupt content')
+        self.assertEqual(sync.commit_verified_files(self.stage,[self.source],self.root)['replaced'],1)
+        self.assertEqual(self.dest.read_bytes(),self.source.read_bytes())
+        self.dest.chmod(0o644)
+        self.assertEqual(sync.commit_verified_files(self.stage,[self.source],self.root)['replaced'],1)
+        self.assertEqual(self.dest.stat().st_mode&0o777,0o755)
+    def test_partial_input_is_not_ignored_when_destination_matches(self):
+        part=self.dest.with_name(self.dest.name+'.input-sync-part');part.write_text('uncertain prior write')
+        with self.assertRaises(ValueError):sync.commit_verified_files(self.stage,[self.source],self.root)
+        self.assertEqual(part.read_text(),'uncertain prior write')
+    def test_destination_escape_is_refused(self):
+        outside=self.base/'outside';outside.write_text('preserved')
+        self.dest.unlink();self.dest.symlink_to(outside)
+        with self.assertRaises(ValueError):sync.commit_verified_files(self.stage,[self.source],self.root)
+        self.assertEqual(outside.read_text(),'preserved')
+
+    def test_namespace_root_cannot_redirect_within_receiver(self):
+        import shutil
+        namespace=self.root/'opt/toddy-build'
+        shutil.rmtree(namespace)
+        elsewhere=self.root/'other';elsewhere.mkdir()
+        namespace.symlink_to(elsewhere,target_is_directory=True)
+        with self.assertRaises(ValueError):sync.commit_verified_files(self.stage,[self.source],self.root)
+        self.assertEqual(list(elsewhere.iterdir()),[])
+    def test_changed_xattr_is_not_reused(self):
+        import os
+        os.setxattr(self.dest,'user.toddy-test',b'old metadata')
+        self.assertEqual(sync.commit_verified_files(self.stage,[self.source],self.root)['replaced'],1)
+        self.assertEqual(os.listxattr(self.dest),os.listxattr(self.source))
