@@ -1,0 +1,358 @@
+{
+  "stage": {
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "version": "1.6.3",
+    "CXX_header_syntax": true,
+    "consumer": "Keyutils C shared version and build metadata verified\n",
+    "CLI": "keyctl from keyutils-1.6.3 (Built 2026-11-10)\n",
+    "original_suite_pending": "Frozen BLFS requires installed package and a native non-chroot kernel context.",
+    "scope": "Local shared-library and CLI version checks. No keyring mutation, key handler or DNS invocation.",
+    "artifacts": [
+      {
+        "path": "dns.afsdb.o",
+        "sha256": "672cb637e42986f3d0f6c86996be3d3e0eb17ab33ceb908074c183d0b9536cd6"
+      },
+      {
+        "path": "key.dns_resolver",
+        "sha256": "d128da087aeaef1bf2572cf3b3a47af62886721163cfcc87ae363235d622567e"
+      },
+      {
+        "path": "key.dns_resolver.o",
+        "sha256": "f9ea1c235d5375974775b600e956f7f3d2121184e688732ff5b7736e3925f428"
+      },
+      {
+        "path": "keyctl",
+        "sha256": "adf530dcfa9928a472ee0692b90d8474896adc44553e26a921cc5fbafa79e5b0"
+      },
+      {
+        "path": "keyctl.o",
+        "sha256": "3d9e26b4c9bf74785b636a9576a4196c81ebb61a48dfdeb14df3a09da14839a0"
+      },
+      {
+        "path": "keyctl_testing.o",
+        "sha256": "c17d2330a6658d18e5c90fa8600bdb2a179bdce5f41f4e94392d060fb38aec13"
+      },
+      {
+        "path": "keyctl_watch.o",
+        "sha256": "92d0407add64af28f4ecc0a86d9013089ccca1d62202797ebc4e63a7e33c6d0f"
+      },
+      {
+        "path": "keyutils.o",
+        "sha256": "d8a413f39898bccfe8af33e015402262d47900cf9b7ed5c7eedf9a32a3ab13d3"
+      },
+      {
+        "path": "keyutils.os",
+        "sha256": "dd1ae5906a8b0c906f5f5b05847cf2607b6c07535a7643edf61901619460d2f9"
+      },
+      {
+        "path": "libkeyutils.so.1.10",
+        "sha256": "3515964692f7ae6b9187d4549b035e0d384d0b7869edd3226b1169c640c5677c"
+      },
+      {
+        "path": "request-key",
+        "sha256": "0886f9081d81217aaa7a0f3f16b7f78ffcd8e0df250747069582879d9d68cd3b"
+      },
+      {
+        "path": "request-key.o",
+        "sha256": "6d55781df8dabeb4a6e80ce437961a3a666b3c10025536180bb1fb7c5085f1c9"
+      }
+    ],
+    "stage_sha256": [
+      {
+        "path": "etc/request-key.conf",
+        "sha256": "87f286e86f12eb096e98663649116d375439ea0c689883ce9a3aa3a210b611cc"
+      },
+      {
+        "path": "usr/bin/keyctl",
+        "sha256": "adf530dcfa9928a472ee0692b90d8474896adc44553e26a921cc5fbafa79e5b0"
+      },
+      {
+        "path": "usr/include/keyutils.h",
+        "sha256": "aa66f40c97fb9db315850e68e002706695571c1ee6ec553569de723e0571fef1"
+      },
+      {
+        "path": "usr/lib/libkeyutils.so.1.10",
+        "sha256": "3515964692f7ae6b9187d4549b035e0d384d0b7869edd3226b1169c640c5677c"
+      },
+      {
+        "path": "usr/lib/pkgconfig/libkeyutils.pc",
+        "sha256": "efba234db2c2525f7145032833a194ba86aa01a078911442b6a0d37f3ba9bd2c"
+      },
+      {
+        "path": "usr/sbin/key.dns_resolver",
+        "sha256": "d128da087aeaef1bf2572cf3b3a47af62886721163cfcc87ae363235d622567e"
+      },
+      {
+        "path": "usr/sbin/request-key",
+        "sha256": "0886f9081d81217aaa7a0f3f16b7f78ffcd8e0df250747069582879d9d68cd3b"
+      },
+      {
+        "path": "usr/share/keyutils/request-key-debug.sh",
+        "sha256": "a38d3de7932c6ba13193bd985e0bc9918f8a514fc201fd23de018a172fd5c44c"
+      },
+      {
+        "path": "usr/share/man/man1/keyctl.1",
+        "sha256": "40e7fc0e23ac6dff43e8d35b5de054c719434ee3f93708804a08bbe3aaceb31a"
+      },
+      {
+        "path": "usr/share/man/man3/find_key_by_type_and_name.3",
+        "sha256": "c13180ff75287699634549edc7999a849f8e62ab01b4caceb13e6668d53b550e"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl.3",
+        "sha256": "433ea670043b0667eb8a677b3e59d3977c69df6f2a3592e57aa02396a80a6061"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_capabilities.3",
+        "sha256": "8f2871aa599be66a2c4fa36524c2d231ad9c497ed1db9e2a2d37ee0d3b1d687d"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_chown.3",
+        "sha256": "de43a1a37980037d430341cc35e29cbb498a80b9f868052ad78e7c0c447717b2"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_clear.3",
+        "sha256": "61147f610969bef745eebe8c3051cd0dfd0e9685667f62218730077b3339dd14"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_describe.3",
+        "sha256": "450e0231920ce4d66618df3d3a1906b2e020b6acb4e4d6c6bf6570e45f5e6149"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_dh_compute.3",
+        "sha256": "aff7c0ef5630df6f643a85067a3698366be78cfbc479b8395dc87a8862d50c0a"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_get_keyring_ID.3",
+        "sha256": "f2b3e1afc8d5016a39d50288d70c1dab34169fd37136fdf266dec523da7ecaa8"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_get_persistent.3",
+        "sha256": "c6085e3a3c28867b536e3976df1a829aca8f181088a64cb599b11871ec5ba9e4"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_get_security.3",
+        "sha256": "06d963538d09cb5b28c960fa8e0319e8b3eac2ae9fd25bb2d2904d6bc912ebf2"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_instantiate.3",
+        "sha256": "a963d1f233e09f05574155039b9824d67e35f4765682b09b2aba69b290081fe1"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_invalidate.3",
+        "sha256": "523dc1e9ae45b27b1509258e0e3f2bdbab5bc53a14ecdba8990a86044c17d07f"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_join_session_keyring.3",
+        "sha256": "7dc4b2238e1aebdcb778d24e39e0e08f2fd242feb64657bc1233fe4b520f51fc"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_link.3",
+        "sha256": "82ecf1ebbdaa80322cf5b2c7701b7421e0bf619d6bdb37fc0149586b11f75426"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_move.3",
+        "sha256": "d073d31e38c394217f93944874b33e88dbfc91e4d589b554fd2bea0caeff3efc"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_pkey_decrypt.3",
+        "sha256": "09e44e0a320551f94bed43b3accefb6b66e3c325296402a566a3d73b24cda1b7"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_pkey_encrypt.3",
+        "sha256": "4c23f8a9464e3c7203853a08f956de6e857e43d4493707e35f89c6bb4e5bef0a"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_pkey_query.3",
+        "sha256": "826bda1a97b4ae000d0a49a7607f0df261826faa5a7035831bb7fa22de7fc986"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_pkey_sign.3",
+        "sha256": "f6d6197d60b4a21c48fbc57cfc40f2d0158d399933a30d1a5f9ff44d5e1e8cc3"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_pkey_verify.3",
+        "sha256": "b47706c08c85bb1e93933cb0298b6e51449f89066246eb325f40c6f9a48d4dc2"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_read.3",
+        "sha256": "2c33397f50acdde4f82700e83e3a943895eaab4730f14db159ad7f46f0112216"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_restrict_keyring.3",
+        "sha256": "7788219c746c1375da69e046e1f56a067a9ed2a28cbb00b5516a62e630331dd7"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_revoke.3",
+        "sha256": "99305b5adf605fdf2c302ee5eeba6703608c0debe44d2064931c6c6c4778b22a"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_search.3",
+        "sha256": "3be7299467615fa69dac707b0300cdbc87b9ea47616568ccf95e77185a84c18c"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_session_to_parent.3",
+        "sha256": "3544e059023ae1e6f40bf3d33d16258ff41c4334d234793430eb6ed2fd993334"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_set_reqkey_keyring.3",
+        "sha256": "d884ee1d8845108b38bdee6d2263b114e4723e4417d0d4ea4cac54e415e36f2e"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_set_timeout.3",
+        "sha256": "9d09a8010733ff1c669808a17a5a6120488fe973ed804251eb908fa916ec2127"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_setperm.3",
+        "sha256": "641da5e43ea80051b8c288d892b33ea151e407bbb28943f5948f1cf6bae97386"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_update.3",
+        "sha256": "5b787f40e8b194ec80676eaf64764780814ba84b492d27bb101857d1a3193f36"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_watch_key.3",
+        "sha256": "080223feb2898f9b22f1fdd6468755cf873d2fe5b5e3503fb1b2f035812b43a1"
+      },
+      {
+        "path": "usr/share/man/man3/recursive_key_scan.3",
+        "sha256": "c30fdb91ff1dfa3127cc563c02035eee71f19f2621afbe4e89df68971b73bebd"
+      },
+      {
+        "path": "usr/share/man/man5/key.dns_resolver.conf.5",
+        "sha256": "d7f4bb4d3ad30e6d4541aba4b03ebe8da35db87874aa2e76dbd60f5241ece37c"
+      },
+      {
+        "path": "usr/share/man/man5/request-key.conf.5",
+        "sha256": "ee27f10ff5cda084d1d49b449fc90abfacf4700fed0d73c89cd889967d872290"
+      },
+      {
+        "path": "usr/share/man/man7/asymmetric-key.7",
+        "sha256": "042584d8f38ba55bc9dd7b8cc55e51a3e564e8fc75f8d330cc0c4687139d63ae"
+      },
+      {
+        "path": "usr/share/man/man7/keyutils.7",
+        "sha256": "2462db85e0a5869d833a9ea2fa1704f33e0b7888403e3ccccab00c4371882fb5"
+      },
+      {
+        "path": "usr/share/man/man8/key.dns_resolver.8",
+        "sha256": "b69d2baf3973996dab323e68a38b63c8386308b287e1c90b00731debcb7d3b0f"
+      },
+      {
+        "path": "usr/share/man/man8/request-key.8",
+        "sha256": "71b40485863e97a8515f00dce573f343b769a389f337bd43318bd026bf4ffa44"
+      }
+    ],
+    "stage_links": [
+      {
+        "path": "usr/lib/libkeyutils.so",
+        "target": "/usr/lib/libkeyutils.so.1"
+      },
+      {
+        "path": "usr/lib/libkeyutils.so.1",
+        "target": "libkeyutils.so.1.10"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_assume_authority.3",
+        "target": "keyctl_instantiate.3"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_describe_alloc.3",
+        "target": "keyctl_describe.3"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_dh_compute_alloc.3",
+        "target": "keyctl_dh_compute.3"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_dh_compute_kdf.3",
+        "target": "keyctl_dh_compute.3"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_get_security_alloc.3",
+        "target": "keyctl_get_security.3"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_instantiate_iov.3",
+        "target": "keyctl_instantiate.3"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_negate.3",
+        "target": "keyctl_instantiate.3"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_read_alloc.3",
+        "target": "keyctl_read.3"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_reject.3",
+        "target": "keyctl_instantiate.3"
+      },
+      {
+        "path": "usr/share/man/man3/keyctl_unlink.3",
+        "target": "keyctl_link.3"
+      },
+      {
+        "path": "usr/share/man/man3/recursive_session_key_scan.3",
+        "target": "recursive_key_scan.3"
+      }
+    ],
+    "logs": [
+      {
+        "path": "original-build.log",
+        "sha256": "e776c82b35a598ab86c7a1fe5af6ce61883b101a42603ed8a2fefbbfc4a8b33d"
+      },
+      {
+        "path": "original-stage.log",
+        "sha256": "ad8e849e821f04135ea21b4d21069be4f8a3de067852b1265fcb06993a19fa05"
+      },
+      {
+        "path": "local-probe.log",
+        "sha256": "2b645add9eb3981c6e29e854934c6e4d1948d93afafee6582c6e15bff2c268fa"
+      },
+      {
+        "path": "keyctl-version.log",
+        "sha256": "58b2a4f7789c9385b0b2faeed17fb6e4a8c052aac9dff74d82c6ec9c54eba7d3"
+      }
+    ]
+  },
+  "job": {
+    "pid": 110728,
+    "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+    "proc_start_ticks": "2262664",
+    "started_unix": 1794350525.4802678,
+    "command": [
+      "/bin/bash",
+      "/opt/toddy-build/scripts/build/phase2/isolated.sh",
+      "/mnt/lfs/sources/phase2/inputs/keyutils-1.6.3",
+      "/mnt/lfs/sources/phase2/work/keyutils-1",
+      "bash",
+      "/src/toddy-build.sh"
+    ],
+    "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+    "exit": 0
+  },
+  "prepared": {
+    "source_sha256": "a61d5706136ae4c05bd48f86186bcfdbd88dd8bd5107e3e195c924cfc1b39bb4",
+    "reference": "BLFS13.1-systemd general/keyutils.html",
+    "book_page_sha256": "aa9afd3e8b15defa90a3dd82b0a3eac1f2802ae127fbb2435689e73ccbbd3598",
+    "source_patches": [],
+    "recipe_sha256": "43238fd448149412ce34ea32702952edf78dae5b94e4555f498aaaa9f1ed6c94",
+    "probe_sha256": "075dd1d2d4c4eaea73ff3b8dbfb763ca63b7ec83e4b3aebf4025ea5a52ee78eb"
+  },
+  "target_free_bytes": 17200873472,
+  "physical_machine_tested": false,
+  "source": {
+    "name": "keyutils",
+    "version": "1.6.3",
+    "filename": "keyutils-1.6.3.tar.gz",
+    "url": "https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/keyutils-1.6.3.tar.gz",
+    "sha256": "a61d5706136ae4c05bd48f86186bcfdbd88dd8bd5107e3e195c924cfc1b39bb4",
+    "reference": "BLFS13.1-systemd general/keyutils.html",
+    "book_page_sha256": "aa9afd3e8b15defa90a3dd82b0a3eac1f2802ae127fbb2435689e73ccbbd3598",
+    "book_md5": "6b70b2b381c1b6d9adfaf66d5d3e7c00",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  }
+}

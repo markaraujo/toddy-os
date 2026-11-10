@@ -3412,3 +3412,5 @@ remains parked; next eligible CUPS source/build review.
 | 2026-11-10 | B02 libatasmart staged | Pin frozen 0.19, build against owned libudev 261 and preserve compile and stage after missing size_t declaration in the probe | Probe-only job 0. Two upstream blob parses and refusal/reload passed. Eight ELF and eight staged file hashes unchanged. Embedded LGPL notice review and native install next. |
 
 | 2026-11-10 | B02 owned libatasmart | Verify the retained build and corrected probe, preserve exact notices and full LGPL text, install with full-root transaction | Native 0/0, 23 changed paths, 27 payload entries. Installed C/CLI blob refusal and recovery passed. Keyutils source pinned, isolated build next. |
+
+| 2026-11-10 | B02 Keyutils staged | Build frozen 1.6.3 privately and stage the shared payload with the book paths | Job 0. C++ header syntax and local C/CLI version passed. 12 ELF, 46 files, 13 links. Native configuration, packaging and synthetic keyring tests pending. |

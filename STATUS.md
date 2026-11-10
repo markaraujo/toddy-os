@@ -188,7 +188,7 @@ Verified:
 - Owned libbytesize 2.12 local SDK: 76 selected upstream cases passed with three locale skips. Native install and postcheck 0/0 with 56 changed paths and 131 payload entries. C/Python/CLI arithmetic, refusal and recovery, exact stage bytes, ABI and APT passed. No storage device, UDisks service, Settings GUI or physical acceptance.
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 
-Running: Owned libatasmart 0.19 and libbytesize 2.12 installed and checked. Keyutils 1.6.3 source verified, isolated build and native kernel tests pending. UDisks and Settings graphical integration pending. Full B02 then stop.
+Running: Owned libatasmart and libbytesize installed. Keyutils 1.6.3 compiled and staged with local C/CLI and C++ header checks. Review request-key configuration, then qualify native package and synthetic keyring tests. UDisks and Settings GUI pending. Full B02 then stop.
 
 Remaining:
 

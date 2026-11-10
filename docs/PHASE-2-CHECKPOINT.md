@@ -46,14 +46,30 @@ and UID 101 installed C/CLI truncated-input refusal and valid recovery.
 Do not repeat preparation, compile, stage, probe or install.
 Last target free 17,205,194,752 B, scratch free 561,504,256 B.
 
-EXACT NEXT: keyutils 1.6.3 official archive pinned from the frozen libblockdev
-dependency edge, SHA256 a61d5706136ae4c05bd48f86186bcfdbd88dd8bd5107e3e195c924cfc1b39bb4.
-No guest preparation or build yet. Review the Makefile and request-key config,
-then prepare an isolated writable build copy and stage the book's shared
-payload. Check actual guest lock, target/scratch and host reserves first.
-BLFS requires installed native kernel context for the upstream suite. Inspect
-the intended kernel config and isolate synthetic test keys before runtime tests.
-UDisks and Samba closure still pending. Stop after fully accepted B02.
+Keyutils 1.6.3 staged from the frozen libblockdev dependency. Actual compiler
+job keyutils-1 PID 110728 exited 0. Stock C++ header syntax check, C shared
+library metadata and installed-layout CLI version passed in the isolated
+worker. [Evidence](evidence/B02-keyutils-stage.json) records 12 ELF files,
+46 staged regular files and 13 staged links. Guest terminal receipt and log
+are /var/log/toddy/phase2/keyutils-1.exit and keyutils-1.log. Never repeat the
+source preparation or build. The canonical recipe formats the required-file set
+on separate lines to avoid a scanner false positive on public package paths.
+The exact prepared recipe hash remains in the job evidence. Last target free 17,200,873,472 B. Upstream make
+embeds the observed UTC build date. No native package installed and no
+keyring syscall, handler, DNS or graphical acceptance.
+
+EXACT NEXT: qualify the retained Keyutils job and staged bytes. Review the
+upstream /etc/request-key.conf debug rules before promotion. Retain the original
+in evidence and omit debug fixtures from the production conffile if review
+confirms they are test/demo handlers. Preserve the intended dns_resolver and
+negative handlers and verify their merged-/usr target paths. Package the
+reviewed conffile and licenses in a full-root transaction, then validate the
+installed SDK and plan native synthetic-key tests with independent disposable
+keyrings. The intended 7.1.8 config enables KEYS/RSA/asymmetric/X.509 and leaves
+BIG_KEYS and KEY_DH_OPERATIONS unset. BLFS upstream tests require the installed
+package outside chroot. Record unavailable features as untested and separate
+the builder kernel from the intended kernel. Check actual lock and reserve
+postconditions before every write. UDisks/Samba pending. Stop after accepted B02.
 
 ### Previous Settings prerequisites
 
