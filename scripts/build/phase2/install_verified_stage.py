@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'glycin-gtk4': ('2.1.0', 'glibc (>= 2.44-1), gcc (>= 16.2.0-1), glycin (= 2.1.5-1+toddy1), gtk (>= 4.22.4-1+toddy8), glib (= 2.88.3-1+toddy2), lcms2 (= 2.19.1-1+toddy1), libseccomp (= 2.6.1-1+toddy1)', 'glycin-2.1.5.tar.xz', 'usr/lib/pkgconfig/glycin-gtk4-2.pc'),
     'tinysparql': ('3.11.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), icu (= 78.3-1+toddy1), json-glib (= 1.10.8-1+toddy1), libxml2 (= 2.15.3-1+toddy1), sqlite (= 3.53.4-1+toddy1), libsoup (= 3.6.6-1+toddy1)', 'tinysparql-3.11.1.tar.xz', 'usr/lib/pkgconfig/tinysparql-3.0.pc'),
     'gnome-autoar': ('0.4.5', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), libarchive (= 3.8.11-1+toddy1)', 'gnome-autoar-0.4.5.tar.xz', 'usr/lib/pkgconfig/gnome-autoar-0.pc'),
     'libportal': ('0.9.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk3 (= 3.24.52-1+toddy2), gtk (>= 4.22.4-1+toddy8)', 'libportal-0.9.1.tar.xz', 'usr/lib/pkgconfig/libportal-gtk4.pc'),
@@ -1228,6 +1229,9 @@ if __name__ == '__main__':
     if name=='evolution-data-server':
         from qualify_eds import qualify as qualify_eds
         qualify_eds(ROOT)
+    if name=='glycin-gtk4':
+        from qualify_glycin_gtk4 import qualify as qualify_glycin_gtk4
+        qualify_glycin_gtk4(ROOT)
     if name=='tinysparql':
         from qualify_tinysparql import qualify as qualify_tinysparql
         qualify_tinysparql(ROOT)
@@ -1507,6 +1511,11 @@ if __name__ == '__main__':
     if name=='ibus':
         doc=destination/'usr/share/doc/ibus';doc.mkdir(parents=True,exist_ok=True)
         (doc/'README.Toddy').write_text('Frozen official tag1.5.34 embeds1.5.34-rc2; native1.5.34~rc2-1+toddy1 preserves and discloses source version. Minimal GTK3/4+Wayland/GI/Unicode/setup/UI profile; XIM/X11 agent, GTK2, Python2, appindicator and optional emoji dict omitted. Seven portable original programs and UTF8/key parser refusal/recovery qualified; actual service, graphical keyboard and shared IM/schema caches remain separate pending gates. Full source/UCD/Unicode3 notices retained. ADR0169 records backend guard and original Xlib fixture link correction.\n')
+    if name=='glycin-gtk4':
+        doc=destination/'usr/share/doc/glycin-gtk4';doc.mkdir(parents=True,exist_ok=True)
+        from qualify_glycin_gtk4 import qualify as qualify_glycin_gtk4
+        (doc/'native-conversion-proof.json').write_text(json.dumps(qualify_glycin_gtk4(ROOT),indent=2)+'\n')
+        (doc/'README.Toddy').write_text('GTK4 companion API2.1.0 from frozen Glycin2.1.5 bundle, linked against existing owned core/loaders. Separate offline locked release/ltofalse build, no core/loaders rebuild. Native7.1.8/Systemd/UID101/BWRAP/default installed loader paths: four PNG-SVG-to-GDK-texture pixel-preserving PNG roundtrips, two malformed refusals/two recoveries passed. All five stage files/core hashes unchanged. Original broad Python suite unexecuted, no display/widget/GNOME/full desktop acceptance. Full frozen source/vendor/toolchain notices retained. ADR0199.\n')
     if name=='tinysparql':
         doc=destination/'usr/share/doc/tinysparql';doc.mkdir(parents=True,exist_ok=True)
         from qualify_tinysparql import qualify as qualify_tinysparql
@@ -1518,6 +1527,7 @@ if __name__ == '__main__':
         (doc/'original-test-review.json').write_text(json.dumps(review(source.parent/'original-tests.log',Path('/mnt/lfs/sources/phase2/inputs/libxslt-1.1.45')),indent=2)+'\n')
         (doc/'README.Toddy').write_text('Build-only xsltproc SDK for authenticated source UI transformations; not a GNOME Terminal runtime dependency. Core driver reports748cases/noerrors; four original DocBook golden whitespace differences remain unaccepted. No complete original-suite/general CLI parser sandbox or DocBook rendering qualification. Use bounded explicit nonet/nowrite/nomkdir/maxdepth/maxvars for selected fixtures. See original-test-review.json.\n')
     archives=[archive]
+    if name=='glycin-gtk4':archives+=['glycin-2.1.5-vendor.tar.gz','rustc-1.97.1-src.tar.xz']
     if name=='vte':archives+=['fmt-12.2.0.tar.gz','fast_float-8.2.10.tar.gz']
     if name=='ibus':archives+=['UCD-17.0.0.zip','Unicode-License-3.0.txt']
     if name=='unicode-ucd':archives.append('Unicode-License-3.0.txt')

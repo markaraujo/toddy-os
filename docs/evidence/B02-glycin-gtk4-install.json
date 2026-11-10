@@ -1,0 +1,309 @@
+{
+  "scope": "Owned Glycin GTK4 companion API2.1.0 from frozen bundle2.1.5, existing core/loaders reused. Native7.1.8/Systemd/UID101/BWRAP/default owned loader paths: PNG/SVG\u2192GDK texture\u2192PNG pixel roundtrip four cases/two malformed refusals/two recovery cycles passed, all stage/core inputs unchanged. Native child actual0/OOMfalse/backing unchanged; builder/six existing scratch filesystems/Systemd source/exact companion bind restored. Native package install/post0/0,817changedpaths/820entries; all five installed files identical to native-tested stage, UID101 GI/shared symbols/pkg-config/APT0. No original broad Python suite/display/widget/GNOME/physical acceptance.",
+  "source": {
+    "name": "glycin",
+    "version": "2.1.5",
+    "filename": "glycin-2.1.5.tar.xz",
+    "url": "https://download.gnome.org/sources/glycin/2.1/glycin-2.1.5.tar.xz",
+    "sha256": "6c09757ee906330a60b6705753aa56bca007ad219b95e6e3537510d41bc341c8",
+    "reference": "BLFS13.1-systemd general/glycin.html",
+    "book_page_sha256": "5eee5d41eef30cadd756b8b75e9af1a4fd4aa3953dee9f4e857f344c446751fa",
+    "book_md5": "d9224a846ad1ed964d07e1ebb48d4458",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  },
+  "book_companion": {
+    "reference": "BLFS13.1-systemd general/glycin-gtk4.html",
+    "page_sha256": "15d5b724426561c86a667d3b25d924f5a7823f038760be2f26f443ed3f2d570c",
+    "profile": "Book separate companion switches; offline locked vendor replaces network fetch, docs/Vala off; supported ltofalse for bounded scratch. Book says no companion test suite; focused real conversion is own consumer."
+  },
+  "compile_evidence": "docs/evidence/B02-glycin-gtk4-build.json",
+  "native_qualification": {
+    "OOMKilled": false,
+    "backing_unchanged": true,
+    "commit": "a66a22e7141727dfd67a507a0cb2f836a16ed35a",
+    "consumer": {
+      "GDK_texture_PNG_pixel_roundtrips": 4,
+      "display_or_widgets_tested": false,
+      "installed_default_loader_paths": true,
+      "malformed_refusals": 2,
+      "recovery_cycles": 2,
+      "sandbox": "BWRAP",
+      "source_image_pixel_cases": 4
+    },
+    "container_exit": 0,
+    "installed_core_sha256": {
+      "/usr/lib/girepository-1.0/Gly-2.typelib": "a364bf9b760338304f2eeb409a62d126bc3445b7329e575ff3677e3a1010293e",
+      "/usr/lib/libglycin-2.so.0": "96525d2b826d63e008ed9b813fa620b37c137f070067ef6e701bdffdea3824af",
+      "/usr/lib/pkgconfig/glycin-2.pc": "05d56432d76f8f7068b723192d4f4de961a03718fca12da6d8b8ff1ab6f39ba9",
+      "/usr/libexec/glycin-loaders/2+/glycin-image-rs": "b996fe3839a528586dda0f8ca6e7badc6822a54cb936c0b2b80af7f89c045fd9",
+      "/usr/libexec/glycin-loaders/2+/glycin-svg": "7e7e33592ae4bd340239419d411b6659c4c6c0c5b6feff2a797afceb7ce7ed64",
+      "/usr/share/glycin-loaders/2+/conf.d/glycin-image-rs.conf": "d1a2254af8b1937076b30eb2c4fba7aecb63b75e784f965925eaf56f206b2229",
+      "/usr/share/glycin-loaders/2+/conf.d/glycin-svg.conf": "a8e2ef1e3269bd9df28069587e6e05fcaca51d106c961b796f7abe0221849f6b"
+    },
+    "payload_sha256": "1ac502635bdd39ed538c45883a0f4dfce3956e9f1bc1a2571f6c0fdbafd678af",
+    "probe_sha256": "1b577d10b5d65c46e48a1acbf474404a6c08b6a8ab41dee1aee5b1fb9a59d12a",
+    "report_sha256": "40f5106816858bfe7e38dc690a59fb44c8dfa42f672686cac2b171c909deeeeb",
+    "scope": "Native7.1.8 BWRAP image/GdkTexture pixel roundtrip using staged GTK4 companion and owned installed default-path core/loaders. No actual display/widgets/GNOME/physical acceptance.",
+    "stage_sha256": {
+      "usr/include/glycin-gtk4-2/glycin-gtk4.h": "31e09738407d04ee7a02be57f6179d5bbcd24e72a73330ad2a689aa0055bb1bf",
+      "usr/lib/girepository-1.0/GlyGtk4-2.typelib": "a891f41ec0f690e37accb38b3c81076d628c66b9b6d133d1b875f4e6f47bc77a",
+      "usr/lib/libglycin-gtk4-2.so.0": "daf16209e9023ea48a85758115a10456ad254230c1da9098aec2b4c244a0ea0a",
+      "usr/lib/pkgconfig/glycin-gtk4-2.pc": "b455d4e752d1ec9775a82281b3c3ad7e9951c099f61916c688fd71b70c3fb114",
+      "usr/share/gir-1.0/GlyGtk4-2.gir": "af6558a662ef1f43faac6e0462f263d4ab299a13e41d2aea3b2032cea85cbb8c"
+    },
+    "state": "native-companion-conversion-qualified"
+  },
+  "native_report": {
+    "installed_core_files_unchanged": {
+      "/usr/lib/girepository-1.0/Gly-2.typelib": "a364bf9b760338304f2eeb409a62d126bc3445b7329e575ff3677e3a1010293e",
+      "/usr/lib/libglycin-2.so.0": "96525d2b826d63e008ed9b813fa620b37c137f070067ef6e701bdffdea3824af",
+      "/usr/lib/pkgconfig/glycin-2.pc": "05d56432d76f8f7068b723192d4f4de961a03718fca12da6d8b8ff1ab6f39ba9",
+      "/usr/libexec/glycin-loaders/2+/glycin-image-rs": "b996fe3839a528586dda0f8ca6e7badc6822a54cb936c0b2b80af7f89c045fd9",
+      "/usr/libexec/glycin-loaders/2+/glycin-svg": "7e7e33592ae4bd340239419d411b6659c4c6c0c5b6feff2a797afceb7ce7ed64",
+      "/usr/share/glycin-loaders/2+/conf.d/glycin-image-rs.conf": "d1a2254af8b1937076b30eb2c4fba7aecb63b75e784f965925eaf56f206b2229",
+      "/usr/share/glycin-loaders/2+/conf.d/glycin-svg.conf": "a8e2ef1e3269bd9df28069587e6e05fcaca51d106c961b796f7abe0221849f6b"
+    },
+    "kernel": "7.1.8-toddy",
+    "pid1": "systemd",
+    "runs": [
+      {
+        "exit": 0,
+        "name": "native-GlyGtk4-bwrap-texture-roundtrip",
+        "stderr": "",
+        "stdout": "{\"sandbox\": \"BWRAP\", \"installed_default_loader_paths\": true, \"source_image_pixel_cases\": 4, \"GDK_texture_PNG_pixel_roundtrips\": 4, \"malformed_refusals\": 2, \"recovery_cycles\": 2, \"display_or_widgets_tested\": false}\n"
+      }
+    ],
+    "scope": "Native7.1.8 BWRAP image/GdkTexture pixel roundtrip using staged GTK4 companion and owned installed default-path core/loaders. No actual display/widgets/GNOME/physical acceptance.",
+    "stage_file_hashes": {
+      "usr/include/glycin-gtk4-2/glycin-gtk4.h": "31e09738407d04ee7a02be57f6179d5bbcd24e72a73330ad2a689aa0055bb1bf",
+      "usr/lib/girepository-1.0/GlyGtk4-2.typelib": "a891f41ec0f690e37accb38b3c81076d628c66b9b6d133d1b875f4e6f47bc77a",
+      "usr/lib/libglycin-gtk4-2.so.0": "daf16209e9023ea48a85758115a10456ad254230c1da9098aec2b4c244a0ea0a",
+      "usr/lib/pkgconfig/glycin-gtk4-2.pc": "b455d4e752d1ec9775a82281b3c3ad7e9951c099f61916c688fd71b70c3fb114",
+      "usr/share/gir-1.0/GlyGtk4-2.gir": "af6558a662ef1f43faac6e0462f263d4ab299a13e41d2aea3b2032cea85cbb8c"
+    }
+  },
+  "builder_recovery": {
+    "state": "complete",
+    "scope": "After verified native child exited0/OOMfalse/backing unchanged: restore existing six parent scratch filesystems, same read-only Systemd source, and exact existing companion bind only; no trim/format/recreation",
+    "boot_id": "6af8df2c-a7d5-47e6-940d-4c78855e4e55",
+    "restored_volumes": [
+      {
+        "work": "/mnt/lfs/sources/phase2/work/gtk-1",
+        "uuid": "1593a243-4338-45fb-86f6-7b699b4b3235",
+        "image_inode": 786439,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/desktop-resources-1",
+        "uuid": "a1385a38-a9ed-481b-96d8-b0120b4f1e7c",
+        "image_inode": 786440,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/doxygen-1",
+        "uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+        "image_inode": 786441,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/glycin-1",
+        "uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+        "image_inode": 786463,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/pam-1",
+        "uuid": "cb42a655-39b6-4988-ad44-1c643059db63",
+        "image_inode": 786443,
+        "restored_existing_filesystem": true
+      },
+      {
+        "work": "/mnt/lfs/sources/phase2/work/systemd-pam-1",
+        "uuid": "8163c489-7aab-4b0b-be6d-f36de1645e74",
+        "image_inode": 786446,
+        "restored_existing_filesystem": true
+      }
+    ],
+    "companion": {
+      "state": "complete",
+      "scope": "Only existing companion directory bind restored; no filesystem creation/format/trim or accepted compile replay",
+      "boot_id": "6af8df2c-a7d5-47e6-940d-4c78855e4e55",
+      "parent_uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+      "backing_inode": 5538,
+      "work": "/mnt/lfs/sources/phase2/work/glycin-gtk4-1"
+    },
+    "target_free_bytes": 17757110272
+  },
+  "native_transaction": {
+    "step": "b02-glycin-gtk4-install",
+    "started": "2026-11-10T07:55:48.482037+00:00",
+    "recipe_sha256": "a266619abdbfb96855588c71be88969ba05912b5b8eb19497f32194fedd12f5f",
+    "postcheck_sha256": "ea188d5ad4762f40247c9dcc8085785c16b2cb3b3a3cfae9575ecadc4955dc50",
+    "user": "root",
+    "runner_sha256": "0be1ea995cc0ac193613eb74eef21bd5631a9498b954a2be4abf04c7bf677315",
+    "source_lock_sha256": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+    "book_lock_sha256": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+    "security_overlay_sha256": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+    "supplemental_source_lock_sha256": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6",
+    "phase_2_source_lock_sha256": "059db802467d2772d5bd4ca7ff51d665709ec7877457cde14d0f3c95b70eaf23",
+    "recipe_pid": 1740,
+    "recipe_pgid": 1740,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "finished": "2026-11-10T07:56:46.860105+00:00",
+    "changed_paths": 817,
+    "log_sha256": "006cf39a1472b6f2465b742b2eb54d611b1cd4afa3f51ee69fd6ed8d4925e0b7",
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "3ef2f112981a2e0a2ee4ade7513bc5b9685579d641e3aee04363550633e33ead"
+  },
+  "package": {
+    "name": "glycin-gtk4",
+    "version": "2.1.0-1+toddy1",
+    "archive_sha256": "05de174923dce5293bac23772550189d5f3f718f83df7ff0f6f056b05f33cbe5",
+    "recipe_sha256": "a266619abdbfb96855588c71be88969ba05912b5b8eb19497f32194fedd12f5f",
+    "packager_sha256": "985a4d5a03f888df13e4ee470248a9f129a34458fd6e6386d8a0e7985a216f29",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "glycin",
+        "version": "2.1.5",
+        "filename": "glycin-2.1.5.tar.xz",
+        "url": "https://download.gnome.org/sources/glycin/2.1/glycin-2.1.5.tar.xz",
+        "sha256": "6c09757ee906330a60b6705753aa56bca007ad219b95e6e3537510d41bc341c8",
+        "reference": "BLFS13.1-systemd general/glycin.html",
+        "book_page_sha256": "5eee5d41eef30cadd756b8b75e9af1a4fd4aa3953dee9f4e857f344c446751fa",
+        "book_md5": "d9224a846ad1ed964d07e1ebb48d4458",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      },
+      {
+        "name": "glycin-vendor",
+        "version": "2.1.5",
+        "filename": "glycin-2.1.5-vendor.tar.gz",
+        "sha256": "deb6c120a053b5d9e1403033386b87b604e2ddf0a5265dde199703334ba79984",
+        "bytes": 32824367,
+        "url": "generated:phase2_glycin_vendor/glycin-vendor",
+        "reference": "Derived Cargo vendor from authenticated primary/published lock; all registry package/file checksums verified",
+        "parent_source_sha256": "6c09757ee906330a60b6705753aa56bca007ad219b95e6e3537510d41bc341c8",
+        "cargo_lock_sha256": "5ff1ad293efde5c927f19df0f488dc80a04814367dbc480a3cc45847646bc669",
+        "producer_sha256": "cd0e1960125b3d38396b0362d326648424717d92aff80fa01d0321a9b349e054",
+        "registry_crates": 307,
+        "integrity": "Official Cargo vendor plus independent exact package/file-manifest verification before archive freezing",
+        "status": "source_verified"
+      },
+      {
+        "name": "rustc",
+        "version": "1.97.1",
+        "filename": "rustc-1.97.1-src.tar.xz",
+        "url": "https://static.rust-lang.org/dist/rustc-1.97.1-src.tar.xz",
+        "sha256": "0ed06fdaffd4722a7702e0b4eebfafc897ab8f513e8e1b247cdd7e5c6df6ded2",
+        "reference": "BLFS13.1-systemd general/rust.html",
+        "book_page_sha256": "155c228b1fd5a88ce7eb1e746a92a89eee97f06fb2f4ad70a7f18e144d30cd46",
+        "book_md5": "c6fc3febcd3b1235cf4f00c3e05559b3",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "book_sources": {
+      "schema_version": 1,
+      "status": "verified",
+      "lfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/lfs/view/13.1-systemd/",
+        "archive_sha256": "090b2b127ac35634269d610e2649dab031fd8a5aa9acfaf10a3c971deda5ed89",
+        "archive_url": "https://www.linuxfromscratch.org/lfs/downloads/13.1-systemd/LFS-BOOK-13.1.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/lfs/errata/13.1-systemd/",
+        "errata_sha256": "e733d78a59d9d5bd44eb20a2757ab3a0b87803a33fa5186089e63f70965c7980",
+        "advisories_url": "https://www.linuxfromscratch.org/lfs/advisories/",
+        "advisories_sha256": "b0a3e48217ad64f8c191c817e1f8ddbd9cf445aedc2a2d54942567e61385f13c"
+      },
+      "blfs": {
+        "version": "13.1-systemd",
+        "url": "https://www.linuxfromscratch.org/blfs/view/13.1-systemd/",
+        "archive_sha256": "7d4ad7b67133c2c1c18f41ba2d89a1803dc554ffb18c6833a0068104bd445dab",
+        "archive_url": "https://www.linuxfromscratch.org/blfs/downloads/13.1-systemd/blfs-book-13.1-systemd-html.tar.xz",
+        "errata_url": "https://www.linuxfromscratch.org/blfs/errata/13.1-systemd/",
+        "errata_sha256": "1ba546da312da0cf0ce366dfb793ffacc1cf0e2f9092993406bbd1b7836c59db",
+        "advisories_url": "https://www.linuxfromscratch.org/blfs/advisories/",
+        "advisories_sha256": "71e9f91524cb67594106a657acd875f228071d7f2ad294989bc224b02af57e48"
+      },
+      "freeze_story": "H02",
+      "note": "LFS/BLFS 13.1-systemd archives, errata and current advisories reviewed. All 94 LFS systemd sources/patches match the book MD5 and have observed SHA-256 in config/sources.lock.json. Baseline freeze does not imply absence of vulnerabilities; release security remediation is tracked in ADR-0007.",
+      "security_snapshot": {
+        "url": "https://www.linuxfromscratch.org/advisories/index.php",
+        "query": "stype=Book&release=13.1&desc=true&submit=Search",
+        "sha256": "aa562da21adbfa442f88404b029242eea2d24ac04fa4b4eefff4eb819a304de1",
+        "reviewed_at": "2026-11-05"
+      }
+    },
+    "ownership_policy_sha256": "4ec8372c65e3fa585311942c58d5c504ab79c2e878600362691a8b5f1e2da9b5",
+    "normalized_build_ownership": [],
+    "source_kind": "upstream-archives-and-versioned-recipe",
+    "generated_paths": [],
+    "runtime_dependency_closure": "pending final base audit",
+    "installed": true,
+    "supporting_build_scripts_count": 2,
+    "supporting_build_scripts_manifest_sha256": "3ef2f112981a2e0a2ee4ade7513bc5b9685579d641e3aee04363550633e33ead",
+    "payload_count": 820,
+    "payload_manifest_sha256": "37e80356518963c8ba41a5f91e683fa644b797e322eaa0b2d877b1b79d8aa941"
+  },
+  "installed_consumer": {
+    "scope": "Installed owned companion all five runtime/SDK stage files byte-identical to actual native conversion proof, unchanged owned default-path core/loaders, installed UID101 GI/shared symbols/pkg-config/APT0. Real native sandboxed image/texture/pixel/refusal/recovery evidence reused for identical inputs; no decoder retry under Ubuntu builder kernel, no display/widget/GNOME acceptance.",
+    "qualified_stage_files_identical": 5,
+    "GI_shared_symbol_exit": 0,
+    "shared_library_resolution": true,
+    "reused_native_report_sha256": "40f5106816858bfe7e38dc690a59fb44c8dfa42f672686cac2b171c909deeeeb",
+    "native_consumer": {
+      "GDK_texture_PNG_pixel_roundtrips": 4,
+      "display_or_widgets_tested": false,
+      "installed_default_loader_paths": true,
+      "malformed_refusals": 2,
+      "recovery_cycles": 2,
+      "sandbox": "BWRAP",
+      "source_image_pixel_cases": 4
+    }
+  },
+  "raw_evidence": {
+    "path": ".local/phase2/exports/B02-glycin-gtk4-install-evidence.tar.gz",
+    "sha256": "0abe95a4bb39bd7b20f274eabe1d668e87d4ea363b9465ddeb4d2e66cbd2395d",
+    "members": [
+      "build/b02-glycin-gtk4-install.log",
+      "build/b02-glycin-gtk4-install.manifest.json",
+      "build/b02-glycin-gtk4-install.success.json",
+      "package.json",
+      "phase2/b02-glycin-gtk4-install-controller.log",
+      "phase2/b02-glycin-gtk4-install-timing.json",
+      "phase2/glycin-gtk4-1-build-input.json",
+      "phase2/glycin-gtk4-1-controller.log",
+      "phase2/glycin-gtk4-1.exit",
+      "phase2/glycin-gtk4-1.job.json",
+      "phase2/glycin-gtk4-1.log",
+      "phase2/glycin-gtk4-builder-restore-1.json",
+      "phase2/glycin-gtk4-installed-consumer.json",
+      "phase2/glycin-gtk4-native-fixture.json",
+      "phase2/glycin-gtk4-native-qualification.json",
+      "phase2/glycin-gtk4-native-runtime-1.json",
+      "phase2/glycin-gtk4-stage.json",
+      "phase2/glycin-gtk4-work-restored-native-1.json",
+      "phase2/glycin-gtk4-work-volume.json",
+      "work/stage-results.json",
+      "native/builder-stop.log",
+      "native/docker-wait.json",
+      "native/native-report.json",
+      "native/prepare.log",
+      "native/qemu.log",
+      "native/result.json",
+      "native/serial.log",
+      "host/glycin-gtk4-native-evidence-import.log",
+      "host/glycin-gtk4-builder-restored-1.log",
+      "host/glycin-gtk4-native-preparation.log",
+      "host/glycin-gtk4-dispatch-2.log"
+    ]
+  }
+}
