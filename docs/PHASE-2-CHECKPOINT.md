@@ -6,7 +6,20 @@ B05–B13/G2 pending. Weighted accepted Phase2 progress13%, no partial B02 perce
 ADR0113 records authorization. Physical foundation tests unperformed. No accepted
 complete GNOME/login/basic apps or Phase2 ISO exists.
 
-## Current verified handoff — Nautilus packaging
+## Current verified handoff — Nautilus installed
+
+Native b02-nautilus-install is COMPLETE, recipe2371 recipe/post0/0,176changes/
+441owned entries. [Proof](evidence/B02-nautilus-install.json). Native archiveSHA
+35a0448ad606814cc318c3032b07e052f858a4af04396a675ec665bba1d9dee1.
+154stage files/links/5ELF ABI/APT/source notices/two user D-Bus activation files
+and upstream root refusal passed; no service started. No guest writer remains.
+Target17,310,220,288B free. Never replay native install or completed recovery.
+Next prepare immutable Nautilus schema union against GTKtoddy11 and125schemas/
+1081keys, strict isolated compile/contract comparison, native same-version cache
+update only after proof. New schema scripts prepared locally but not dispatched.
+Installed GUI/nonroot CLI/icon/MIME remain pending.
+
+### Verified recovery and packaging provenance
 
 Native focused Nautilus gate published608eafd: all3workflows passed; exact
 publicHTTP200/indexSHA29e45ace915c5358b9c0872bf44e32af236f19a51f41e2ff2ff52e798c4efff8.

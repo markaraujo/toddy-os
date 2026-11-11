@@ -1,0 +1,48 @@
+{
+  "native": {
+    "step": "b02-nautilus-install",
+    "started": "2026-11-11T04:24:22.818011+00:00",
+    "finished": "2026-11-11T04:24:42.748649+00:00",
+    "recipe_pid": 2371,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 176,
+    "recipe_sha256": "40ed1e1b929aefbba42494e507be84b0a756c79596daedc9990fed725ecfcd5e",
+    "postcheck_sha256": "f81a9ed814638784ddb8391192062cc1448fe733bc09b2af804f6b494b3cb39c",
+    "log_sha256": "3db7521b065c943d233d6f3b08f302dff2834da30cc465d567cab398d0f32d4f"
+  },
+  "archive_sha256": "35a0448ad606814cc318c3032b07e052f858a4af04396a675ec665bba1d9dee1",
+  "payload_entries": 441,
+  "source_inventory": [
+    {
+      "name": "nautilus",
+      "version": "50.2.2",
+      "filename": "nautilus-50.2.2.tar.xz",
+      "url": "https://download.gnome.org/sources/nautilus/50/nautilus-50.2.2.tar.xz",
+      "sha256": "e1e285efddf42ed30dda5b29f7f8d242dab4bc1409a9054863b367bad4b34d5a",
+      "upstream_sha256_url": "https://download.gnome.org/sources/nautilus/50/nautilus-50.2.2.sha256sum",
+      "upstream_sha256_file_sha256": "9ac95195ec06c471a47398fbb21897f8eb899e45a716fb53f76b91727f9ffa23",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    }
+  ],
+  "installed": {
+    "scope": "Owned Nautilus50.2.2 exact installed stage,5ELF ABI/APT,source notices,user D-Bus activation and upstream root refusal only. Reuses focused native12program/73GLib-case evidence for the identical stage. Installed GUI/nonroot CLI,shared schema cache,icons/MIME integration remain pending. No service started or enabled.",
+    "native_functional_report_sha256": "6532603e8188fbd48afbb2268db128c0219e5a8fbe3feb24a8d3520d04edfd24",
+    "installed_identical_regular_files": 154,
+    "installed_ELF_count": 5,
+    "no_setuid_sgid": true,
+    "user_activation_definitions_only": true,
+    "root_refusal": {
+      "exit": 95,
+      "stderr": "\n** (org.gnome.Nautilus:2522): WARNING **: 04:24:27.689: Running as root is not supported. Consider running `nautilus admin:///` instead.\n"
+    }
+  },
+  "receipt_sha256": "39d985f5087d668f6eb3da4adf076da952dc867652723258fccfb70a70bd365a",
+  "target_available": 17310220288,
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-nautilus-install-evidence.tar.gz",
+    "bytes": 194472,
+    "sha256": "1cc0af1e7c3ec86ae4a50631f1c7b8d219de531b5f3e33acb15f18a7aa891bc6"
+  }
+}

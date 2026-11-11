@@ -16,10 +16,11 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T03:13:48.245693+00:00
+Last verified: 2026-11-11T04:25:56.810171+00:00
 
 Verified:
 
+- Owned Nautilus50.2.2 installed recipe/post0/0,176changed paths/441payload entries;154stage regular files/links identical,5ELF ABI/APT,source notices,user-only D-Bus activation and upstream root refusal passed. Native12program/73case evidence reused. Installed GUI/nonroot CLI/shared schemas/icons/MIME remain pending.
 - Native Nautilus focused gate passed12original selected programs/73GLib cases/no skips plus actual metadata/search/async driver checks, normal GDM/PAM user/Wayland, readonly exact input image/restoration/source/compiler/stage unchanged, container0/base unchanged. Native3 ran only final Files-view9cases and reused11successful programs/64cases. Both prior harness failures retained/resolved. No installed Files/full24suite/B02 acceptance.
 - Pinned Nautilus50.2.2 source/compiler/stage1 passed,277ELFs/154stage regular files,24original programs registered (none executed), source readonly/dependency fallbacks disabled/all tests+extensions/GIR retained.17.009s compile/0.251s stage, min624615424B scratch; executable code/constant sections preserved across normal Meson staging. No native tests/package/GUI acceptance yet.
 - LocalSearch stock schemas globally integrated: GTK4.22.4-1+toddy11 recipe/post0/0,12changes,125schemas/1081keys;122baseline/1060keys and all contracts preserved,906runtime entries unchanged, no preferences/overrides.81inputs/20owners retained. Native installed search/Nautilus GUI pending.
@@ -197,7 +198,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: Nautilus focused native12program/73case gate passed. Builder stopped; next recover current generation2 cache/volumes, package unchanged Nautilus stage, integrate shared schemas and verify actual installed Files UI. Network/audio/browser/Gvfs/permissions/global theme/terminal defaults/full B02 pending. Complete all B02, then stop.
+Running: Builder recovered on boot cbde87fc-f1a3-4d33-806f-25f8e25d8ede; generation2 cache exact80,561entries/37,820regular inode classes/15aliases restored. Nautilus owned installation passed0/0; no writer remains. Next integrate stock Nautilus schemas and verify installed Files UI. Browser/network/audio/theme/terminal defaults/full B02 pending; complete all B02 then stop.
 
 Remaining:
 

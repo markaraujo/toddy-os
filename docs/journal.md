@@ -3490,3 +3490,12 @@ SONAMEs mapped to owned packages; two user D-Bus activation files, no SUID/SGID
 service added. Native package dispatch is next; installed GUI, shared schemas
 and desktop integration remain unqualified. Frozen BLFS13.1-systemd Nautilus
 source50.2.2 and original source/recipe identities retained.
+
+### B02 — Owned Nautilus installation passed
+
+Native b02-nautilus-install recipe2371 recipe/post0/0,176changes/441payload entries;
+archive35a0448ad606814cc318c3032b07e052f858a4af04396a675ec665bba1d9dee1.
+All154stage files/links,5ELF dependencies, APT and root refusal passed.
+Source notices and two user D-Bus activation definitions retained; no service
+started. Focused native12program/73case evidence reused. No writer remains;
+target17,310,220,288B free. Stock schema integration then installed Files UI next.
