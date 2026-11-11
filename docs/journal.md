@@ -3895,3 +3895,16 @@ source/work pair in existing tool profile, CUPS4/Samba3 unaffected checks passed
 two actual Bash routing fixtures reject cross-pairs. New candidate configure and
 compiler scripts retain qualified options/tools and assert153.7version.379checks
 passed; no configuration/compiler dispatch while extraction writer active.
+
+
+### B02 fresh security source reconciled and mount recovery qualified — 2026-11-11
+
+Independent archive scan identified510288total versus510287non-dot entries.
+Preserved both failed wrappers and complete source, no retransfer/extraction.
+Correction2 verifies all469024regular files (3,515,456,965bytes), exact modes/root
+owners and complete path set against authenticated archive; prepared0. Four
+readonly-source/archive and fresh-work aliases qualified through actual private
+namespace unmount/restore; hashes/inodes/flags identical, completed replay refused,
+global mounted state afterward intact. Browser free5,092,446,208bytes. Next fresh
+isolated candidate configure, then generated flags verification before compiler.
+No old objects, source security/ABI/runtime/install acceptance still pending.

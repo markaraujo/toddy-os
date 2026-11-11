@@ -1,0 +1,150 @@
+{
+  "prepared": {
+    "state": "prepared",
+    "source": {
+      "name": "firefox-security-1537",
+      "version": "153.7.0esr",
+      "filename": "firefox-153.7.0esr.source.tar.xz",
+      "url": "https://archive.mozilla.org/pub/firefox/releases/153.7.0esr/source/firefox-153.7.0esr.source.tar.xz",
+      "sha256": "7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0",
+      "publisher_sha512": "40eaa7892b910d1b50f6eb534a58e2c191067af160b33691c7c6925b81217f376d39da8ef5137720cf16a6d88b8de951ac986cfb71cfaddc9dd067ee72dca0d3",
+      "reference": "ADR-0225; Mozilla MFSA2026-93/100/127 same Firefox153 ESR security overlay",
+      "integrity": "Official HTTPS source matches exact publisher SHA512SUMS; observed SHA256 frozen before extraction. No OpenPGP signature claim. Original153.2 baseline retained.",
+      "status": "source_verified"
+    },
+    "expected_bytes": 800080060,
+    "boot_id": "e146fad4-b1e4-4199-9935-3223e693a00b",
+    "pid": 4201,
+    "start_ticks": "157481",
+    "source_directory": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.7.0",
+    "work_directory": "/mnt/lfs/sources/phase2/work/firefox-1/build/browser-security-1537-1",
+    "archive_path": "/mnt/lfs/sources/phase2/work/firefox-1/security-source-archives/firefox-153.7.0esr.source.tar.xz",
+    "aliases": [
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/security-source-archives/firefox-153.7.0esr.source.tar.xz",
+        "target": "/mnt/lfs/sources/firefox-153.7.0esr.source.tar.xz",
+        "readonly": true,
+        "inode": 13
+      },
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.7.0",
+        "target": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.7.0",
+        "readonly": true,
+        "inode": 358938
+      },
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.7.0",
+        "target": "/mnt/lfs/sources/phase2/inputs/firefox-153.7.0",
+        "readonly": true,
+        "inode": 358938
+      },
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/build/browser-security-1537-1",
+        "target": "/mnt/lfs/sources/phase2/work/firefox-security-1537-1",
+        "readonly": false,
+        "inode": 1028957
+      }
+    ],
+    "scope": "Fresh security source/work only; no old objects, OS installation or runtime acceptance",
+    "reused_verified_archive_receipt_sha256": "522e8a8ea1ecad80d53f9e037f69f5408d65ecb76285370b5252b0a7695e1b1a",
+    "archive_sha256": "7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0",
+    "archive_bytes": 800080060,
+    "members": 510288,
+    "expanded_regular_bytes": 3515456965,
+    "non_dot_members": 510287,
+    "verified_regular_files": 469024,
+    "existing_tree_fully_verified": true,
+    "critical_sha256": {
+      "mach": "9606b3431527f313727cf0236ff8769ab7688099ee55c8697c44ad9aa3a4207d",
+      "moz.configure": "2a7a739add9e30d0e6d93d6419f8546bf0722578adc4f1d38f2907e0030fc055",
+      "toolkit/moz.configure": "365cbd982a6f67d4a9849ec0524612918703090d134fc9cb15d9c12ab428edb6",
+      "build/moz.configure/rust.configure": "320e6f850f190a7b276ab78722385c129591e37ae64ab146c807fa576eec4a99",
+      "python/mozboot/mozboot/util.py": "eb8c11ece1a78b5010332d709b8a1843d37577352e6cb98881973f0545cdc0e8",
+      "LICENSE": "a799adf18bfb1911f16086dc0e2a6d1cd0e31272f47e7ee6841b465b74d249de"
+    },
+    "available_browser_bytes": 5092446208
+  },
+  "global_after_private_restore": {
+    "state": "inspected",
+    "aliases": [
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/security-source-archives/firefox-153.7.0esr.source.tar.xz",
+        "target": "/mnt/lfs/sources/firefox-153.7.0esr.source.tar.xz",
+        "readonly": true,
+        "inode": 13
+      },
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.7.0",
+        "target": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.7.0",
+        "readonly": true,
+        "inode": 358938
+      },
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.7.0",
+        "target": "/mnt/lfs/sources/phase2/inputs/firefox-153.7.0",
+        "readonly": true,
+        "inode": 358938
+      },
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/build/browser-security-1537-1",
+        "target": "/mnt/lfs/sources/phase2/work/firefox-security-1537-1",
+        "readonly": false,
+        "inode": 1028957
+      }
+    ],
+    "critical_sha256": {
+      "mach": "9606b3431527f313727cf0236ff8769ab7688099ee55c8697c44ad9aa3a4207d",
+      "moz.configure": "2a7a739add9e30d0e6d93d6419f8546bf0722578adc4f1d38f2907e0030fc055",
+      "toolkit/moz.configure": "365cbd982a6f67d4a9849ec0524612918703090d134fc9cb15d9c12ab428edb6",
+      "build/moz.configure/rust.configure": "320e6f850f190a7b276ab78722385c129591e37ae64ab146c807fa576eec4a99",
+      "python/mozboot/mozboot/util.py": "eb8c11ece1a78b5010332d709b8a1843d37577352e6cb98881973f0545cdc0e8",
+      "LICENSE": "a799adf18bfb1911f16086dc0e2a6d1cd0e31272f47e7ee6841b465b74d249de"
+    },
+    "archive_sha256": "7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0"
+  },
+  "private_restore": {
+    "state": "qualified",
+    "scope": "Same-kernel private mount namespace only; no global mount changes or cold reboot claim",
+    "four_mounts_restored": true,
+    "same_inodes_hashes_flags": true,
+    "completed_replay_refused": true,
+    "inspection": {
+      "state": "inspected",
+      "aliases": [
+        {
+          "source": "/mnt/lfs/sources/phase2/work/firefox-1/security-source-archives/firefox-153.7.0esr.source.tar.xz",
+          "target": "/mnt/lfs/sources/firefox-153.7.0esr.source.tar.xz",
+          "readonly": true,
+          "inode": 13
+        },
+        {
+          "source": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.7.0",
+          "target": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.7.0",
+          "readonly": true,
+          "inode": 358938
+        },
+        {
+          "source": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.7.0",
+          "target": "/mnt/lfs/sources/phase2/inputs/firefox-153.7.0",
+          "readonly": true,
+          "inode": 358938
+        },
+        {
+          "source": "/mnt/lfs/sources/phase2/work/firefox-1/build/browser-security-1537-1",
+          "target": "/mnt/lfs/sources/phase2/work/firefox-security-1537-1",
+          "readonly": false,
+          "inode": 1028957
+        }
+      ],
+      "critical_sha256": {
+        "mach": "9606b3431527f313727cf0236ff8769ab7688099ee55c8697c44ad9aa3a4207d",
+        "moz.configure": "2a7a739add9e30d0e6d93d6419f8546bf0722578adc4f1d38f2907e0030fc055",
+        "toolkit/moz.configure": "365cbd982a6f67d4a9849ec0524612918703090d134fc9cb15d9c12ab428edb6",
+        "build/moz.configure/rust.configure": "320e6f850f190a7b276ab78722385c129591e37ae64ab146c807fa576eec4a99",
+        "python/mozboot/mozboot/util.py": "eb8c11ece1a78b5010332d709b8a1843d37577352e6cb98881973f0545cdc0e8",
+        "LICENSE": "a799adf18bfb1911f16086dc0e2a6d1cd0e31272f47e7ee6841b465b74d249de"
+      },
+      "archive_sha256": "7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0"
+    }
+  }
+}

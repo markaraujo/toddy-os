@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-11T09:26:02.805314+00:00",
+  "updated_at": "2026-11-11T09:41:14.378307+00:00",
   "bootstrap": "ready_for_development",
   "current_scope": "B01/B03 accepted (13% weighted Phase2). B02 native GNOME owner login, scoped Files/Editor and real network GUI/DHCP/DNS/HTTPS/polkit/recovery passed within recorded VM scope. Restored NM reboot persistence, corrected browser/audio/theme/offline/resources remain pending. Stop after fully validated B02; no Phase2 ISO or physical acceptance.",
   "next_story": "B02",
@@ -463,7 +463,8 @@
         "docs/evidence/B02-network-native-prefix.json",
         "docs/evidence/B02-network-native-recovery.json",
         "docs/evidence/B02-network-recovery-instructions-update.json",
-        "docs/evidence/B02-firefox-baseline-object-custody.json"
+        "docs/evidence/B02-firefox-baseline-object-custody.json",
+        "docs/evidence/B02-firefox-security-source-prepared.json"
       ]
     },
     {

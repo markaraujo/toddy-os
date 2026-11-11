@@ -51,48 +51,35 @@ artifacts retained non-executable at BASE/build/browser-1/retained-baseline, cur
 browser.inspect accepts only completed custody/original hashes; all6aliases intact.
 Sources/tools/logs/results retained. No live guest writer or native test.
 
-Exact next action: commit/check/sync prepared candidate extraction and existing-mount
-restore helpers, then transfer verified archive once via stdin to guest
-`python3 /opt/toddy-build/scripts/build/phase2/prepare_firefox_security_source.py`.
-Log .local/phase2/firefox-security-source-controller-1.log; new receipt
-/var/log/toddy/phase2/firefox-security-source-1537-1.json must not exist.
-Archive800,080,060B/SHA7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0
-lands at BASE/security-source-archives; target-root readonly file alias consumes
-no archive-sized target allocation. Filtered extraction must match510,287members/
-3,515,456,965regular bytes and source versions153.7.0/153.7.0esr. New readonly
-source BASE/source/firefox-153.7.0; fresh UID101work BASE/build/browser-security-1537-1,
-new inputs/firefox-153.7.0 and work/firefox-security-1537-1 aliases. Original source,
-compiler evidence and tools untouched. One build.lock; no package/boot mutation.
-Archive hashes verified before extraction; new state refuses replay. If interrupted,
-inspect source receipt/bytes/mounts before any continuation. A partial extraction
-is never silently reused. Source/runtime security/ABI acceptance remains pending.
+Fresh security source COMPLETE0: extraction-controller3/session98841 terminal0,
+inputc8e9b89. [Real preparation](evidence/B02-firefox-security-source-prepared.json):
+510288total/510287non-dot entries,469024regular files/3515456965bytes compared
+against archive with exact file bytes/modes/root owner/complete path set. Original
+transfer/dot and count failures retained, no source/transfer replay. New source
+readonly, fresh UID101work,4aliases prepared;5,092,446,208browser bytes available.
+Receipt /var/log/toddy/phase2/firefox-security-source-1537-3.json COMPLETE prepared.
+Private namespace restore qualification COMPLETE0 (receipt
+firefox-security-private-restore-qualified-1),4mounts/same flags/inodes/hashes,
+completed replay refused; global mounted state afterward inspected unchanged.
+Future cold restore: existing base browser restore first, then
+restore_firefox_security_source.py NEW-name (no archive transfer/extraction).
+Do not use receipt1/2 as success or replay any preparation/restore controller.
 
-Affected checks: syntax/full repository checks; actual transfer/extraction counts,
-version/critical hashes, readonly alias options/inodes/UID and native isolation
-configure next. Helpers restore_firefox_security_source.py --inspect or NEW-name
-restore only existing4aliases after base browser recovery; qualify actual private
-mount-namespace restore before any future cold transition. First source preparation TERMINAL1/session50596: archive fully verified800080060B,
-then rejected initial dot directory before any source extraction. Source/work/all
-aliases inspected absent; retained archive and receipt1 state extracting/members0.
-Correction counts/omits only exact dot directory, new receipt2, --extract-verified
-mode revalidates retained archive and absent postconditions before extraction.
-Original failure retained. Never transfer again or replay original controller.
-Next: commit/check/sync corrected helper, run extraction-only once with new log
-.local/phase2/firefox-security-source-controller-2.log. Corrected extraction-only controller DISPATCHED once (session69127), guestpid3841/
-start126477/boote146fad4. Inputea0dbef; archive1 retained/read-only, originalfailed
-receipt1 preserved. TERMINAL1 at post-extraction count assertion; not live. Independent host scan
-proves510288total including1dot,510287non-dot/3515456965bytes. Existing tree retained;
-work/aliases remain uncreated. Count mismatch is wrapper accounting, not acceptance.
-DO NOT replay; inspect receipt2/process and real aliases after terminal. Next correction2 uses --verify-extracted and new receipt3. It verifies every file's
-bytes/mode/root ownership plus complete path set against retained authenticated
-archive, without transfer/extraction replay; finalizes mounts/work only on match.
-Original receipts1/2/logs retained. No live guest writer. Host profile/configure/
-build prep check379passed; sync only after reviewed commit. Native configuration
-and compiler not dispatched. Budget remains2prepared/1failed correction.
-After source preparation, extend exact browser isolated profile pair, retaining
-CUPS/Samba hash qualifications, reuse SDK/NASM/bundledPNG/main/all6WASM sandbox
-options and fresh configure/build version assertions. Target-root capacity must
-be reviewed separately before browser installation; preserve16GiBreserve.
+Exact next action: run prepared .local/phase2/firefox-security-configure-controller-1.py
+ONCE after reviewed commit. New guest receipt/log /var/log/toddy/phase2/
+firefox-security-configure-1.json/.log; new work alias
+/mnt/lfs/sources/phase2/work/firefox-security-1537-1 (BASE/build/browser-security-1537-1).
+It requires empty fresh work and qualified restore; copies exact committed configure
+script and runs qualified isolated.sh with paired inputs/firefox-153.7.0 identity.
+No old objects. Private SDK/NASM only for exact original/candidate pairs; CUPS4/
+Samba3 and two Bash pair-routing fixtures passed, full379checks passed. Configure
+retains Wayland/main/all6WASM/bundledPNG/systemNSS/NSPR/ICU, no downloads/global
+install/owner credentials. On terminal read actual log/generated configuration;
+failed configure is not replayed without actual postcondition diagnosis. If0,
+verify generated sandbox/toolkit/dependency flags, then fresh security build once.
+Build will be long (~original41min measurement, not deadline); retain real process/
+log/checkpoint and deterministic monitoring. No configuration/compiler dispatched
+yet. Runtime ABI/security/native UI and installed-target capacity remain pending.
 
 ## Browser compiler, security and persistent build volume
 
