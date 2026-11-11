@@ -3544,3 +3544,14 @@ systemd gnome/gvfs.html selects Gvfs1.60.2; official archive integrity pinned.
 Prepared isolated36MB-estimate release recipe and original outputstream local
 driver; no source patches/fallbacks or privileged policy relaxation. Backend
 activation, privilege refusals and actual Trash GUI remain pending qualification.
+
+### B02 — Gvfs stage and bounded baseline-only test diagnosis
+
+Gvfs1.60.2 compiler/stage0,189ELFs/133regular files. Original local outputstream
+passed11cases then failed append-tell (expected26/actual0); frozen GLib source
+explains local O_APPEND initial position. Single followup passed remaining6cases
+and independent GLib-only append integrity consumer.17original passes, original
+position failure retained, no full-suite/backend acceptance. ADR0222 records
+source-backed qualification, unavailable SFTP runtime partition until owned SSH
+client and unchanged authenticated admin policy/shared GIO cache. Native packaging
+code prepared; actual Trash/privilege integration remains pending.

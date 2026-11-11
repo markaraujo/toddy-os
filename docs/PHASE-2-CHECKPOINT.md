@@ -72,13 +72,32 @@ admin policy retains no/inactive=no/active=auth_admin_keep; no policy bypass.
 Original outputstream local18case driver is planned, not run; all backend/security/
 Trash GUI qualification remains separate. Reserve monitor128MiB retained.
 
-EXACT NEXT ACTION: commit reviewed source/recipes, sync metadata only; stream
-exact archive into prepare_gvfs_input.py ONCE, then job.py gvfs-1 with isolated
-bash recipe. Check actual source/prepare/job receipts before dispatch; no replay.
-Record compiler/stage/actual original driver exits and required owned dependency
-closure before native packaging. Native Trash browse/restore/refusal/recovery
-must pass before closing this integration gap. Other B02 gates remain; finish
-ALL B02 then STOP before another story.
+Gvfs source preparation and compiler/stage1 COMPLETE:9.755s compiler/0.251s
+stage,189ELFs/133stage regular files, min490,573,824B scratch. Original job1
+terminal1 ONLY for outputstream local append-tell expected26/observed0, after11
+original passes. [Proof](evidence/B02-gvfs-stage.json), ADR0222. One bounded
+followup gvfs-local-qualify-2 terminal0 reused11 and ran only6remaining cases;
+GLib-only consumer confirms initialtell0 but correct byte append. Original
+append-tell remains failed, no source/compiler rebuild or successful-case replay.
+All original compiler/stage hashes unchanged DURING followup; no claim of hashes
+captured before the first failed driver. Native Gvfs/Trash/backend unqualified.
+
+Owned packaging code prepared locally, not dispatched.22original stageELFs
+map17SONAMEs to owned dependencies. Full SSH client absent: preserve source/stage
+but omit ONLY gvfsd-sftp and sftp.mount from runtime with exact recorded hashes.
+21runtime ELFs/131original regular files remain. Original source backend/policy
+unchanged; no blanket admin authorization. Existing shared GIO discovery cache
+must remain byte-identical; source-backed uncached module loading supports this.
+No installed Gvfs package/native transaction yet. Scratch490,483,712B free.
+
+EXACT NEXT ACTION: review/commit packaging/ADR0222, sync metadata only; run strict
+qualify_gvfs plus native dependency/free-space/collision checks, then dispatch
+b02-gvfs-install once through run_step with gvfs-install.sh/gvfs-check.sh. Inspect
+real recipe/post exits before followup, never reinstall on uncertain status.
+After package success integrate SMB stock schema through owned cache as needed;
+qualify actual native Trash browsing/restoration/refusal/recovery before closing
+Files gap. Before any cold stop preserve NEW cache generation (generation3 does
+NOT include Gvfs input/work). Other B02 gates remain; ALL B02 then STOP.
 
 ### Verified recovery and packaging provenance
 

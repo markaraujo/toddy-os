@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'gvfs': ('1.60.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libarchive (= 3.8.11-1+toddy1), gcr (= 4.4.0.1-1+toddy1), libgcrypt (= 1.12.4-1+toddy1), libgudev (= 238-1+toddy1), polkit (= 127-1+toddy1), libsecret (= 0.21.7-1+toddy1), samba-client (= 4.24.6-1+toddy1), libsoup (= 3.6.6-1+toddy1), systemd (>= 261.2-1+toddy3), udisks2 (= 2.11.2-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'gvfs-1.60.2.tar.xz', 'usr/libexec/gvfsd'),
     'nautilus': ('50.2.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy11), libadwaita (= 1.9.3-1+toddy1), cairo (= 1.18.4-1+toddy1), gdk-pixbuf (= 2.44.7-1+toddy2), gexiv2 (= 0.16.2-1+toddy1), glycin (= 2.1.5-1+toddy1), glycin-gtk4 (= 2.1.0-1+toddy1), gnome-autoar (= 0.4.5-1+toddy1), gnome-desktop (= 44.5-1+toddy1), graphene (= 1.10.8-1+toddy1), gst-plugins-base (= 1.28.6-1+toddy1), gstreamer (= 1.28.6-1+toddy1), icu (= 78.3-1+toddy1), pango (= 1.58.2-1+toddy1), libportal (= 0.9.1-1+toddy1), tinysparql (= 3.11.1-1+toddy1), wayland (= 1.26.0-1+toddy1), localsearch (= 3.11.1-1+toddy1)', 'nautilus-50.2.2.tar.xz', 'usr/bin/nautilus'),
     'localsearch': ('3.11.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gexiv2 (= 0.16.2-1+toddy1), gstreamer (= 1.28.6-1+toddy1), gst-plugins-base (= 1.28.6-1+toddy1), icu (= 78.3-1+toddy1), libjpeg-turbo (= 3.2.0-1+toddy1), libpng (= 1.6.58-1+toddy1), libseccomp (= 2.6.1-1+toddy1), libxml2 (= 2.15.3-1+toddy1), tiff (= 4.7.2-1+toddy1), tinysparql (= 3.11.1-1+toddy1), upower (= 1.91.3-1+toddy1), python (>= 3.14), python (<< 3.15), pygobject (= 3.56.3-1+toddy1), dbus (= 1.16.2-1+toddy1)', 'localsearch-3.11.1.tar.xz', 'usr/bin/localsearch'),
     'rpcsvc-proto': ('1.4.4', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), libtirpc (= 1.3.7-1+toddy1)', 'rpcsvc-proto-1.4.4.tar.xz', 'usr/bin/rpcgen'),
@@ -327,6 +328,7 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':qualifier='gnome-text-editor-metadata-2'
     if name=='libspelling':qualifier='libspelling-options-2'
     if name=='gnome-online-accounts':qualifier='gnome-online-accounts-collect-2'
+    if name=='gvfs':qualifier='gvfs-local-qualify-2'
     if name=='localsearch':qualifier='localsearch-collect-2'
     if name=='tecla':qualifier='tecla-collect-2'
     if name=='enchant':qualifier='enchant-provider-explicit-5'
@@ -1368,6 +1370,9 @@ if __name__ == '__main__':
     if name=='librest':
         from qualify_librest import qualify as qualify_librest
         qualify_librest(ROOT)
+    if name=='gvfs':
+        from qualify_gvfs import qualify as qualify_gvfs
+        qualify_gvfs(ROOT)
     if name=='nautilus':
         from qualify_nautilus import qualify as qualify_nautilus
         qualify_nautilus(ROOT)
@@ -1625,6 +1630,17 @@ if __name__ == '__main__':
         for rel in ['usr/share/applications/geoclue-where-am-i.desktop','usr/libexec/geoclue-2.0/demos/where-am-i']:
             path=destination/rel;excluded[rel]=hashlib.sha256(path.read_bytes()).hexdigest();path.unlink()
         (log/'geoclue-production-selection.json').write_text(json.dumps({'scope':'Keep full service/library; omit upstream demonstration application, fixed locked service ID30 and remove bundled public provider-key examples from comments only. No actual owner config or provider endpoint edited.','excluded_demo':excluded,'config_before_sha256':hashlib.sha256(before_config).hexdigest(),'config_after_sha256':hashlib.sha256(after_config).hexdigest()},indent=2)+'\n')
+    if name=='gvfs':
+        from qualify_gvfs import EXCLUDED
+        # SFTP needs the full SSH client, absent from this minimal root. Retain
+        # every original compiled/staged byte, but publish neither its backend
+        # nor its mount advertisement until that separate dependency qualifies.
+        assert not Path('/mnt/lfs/usr/bin/ssh').exists()
+        excluded={}
+        for relative in EXCLUDED:
+            p=destination/relative;excluded[relative]=hashlib.sha256(p.read_bytes()).hexdigest();p.unlink()
+        cache=Path('/mnt/lfs/usr/lib/gio/modules/giomodule.cache')
+        (log/'gvfs-runtime-selection.json').write_text(json.dumps({'excluded_sftp':excluded,'GIO_cache_sha256':hashlib.sha256(cache.read_bytes()).hexdigest(),'reason':'Owned SSH client absent. All original build/stage outputs retained; SFTP candidate unavailable. GLib2.88.3 scans uncached modules directly, no shared-cache mutation required.'},indent=2)+'\n')
     if name=='glib-networking':
         # Compiler-local discovery contains only network modules, while the
         # installed resource also serves DConf. Never package/overwrite it.

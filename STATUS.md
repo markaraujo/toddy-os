@@ -16,10 +16,11 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T04:40:46.817994+00:00
+Last verified: 2026-11-11T04:53:43.890349+00:00
 
 Verified:
 
+- Gvfs1.60.2 isolated compiler/stage0:189ELFs/133stage files,17original local outputstream cases passed (11reused+6remaining). Original append-tell failure retained: baseline GLib local initial0 versus expected26, independent GLib-only append-byte integrity passed. No source/compiler replay or native Gvfs/Trash acceptance. ADR0222 records limited qualification and SFTP unavailable until owned SSH client.
 - Actual installed Files native GUI1: normal GDM/PAM Wayland, real create/rename/copy/move-to-trash actions and5exact file postconditions passed;640pixel tiled layout legible/sidebar collapsed, error recovery to local browsing/window reopen. Container0/base unchanged. Trash sidebar URI browsing FAILED, Gvfs integration unresolved; no full Files/B02 acceptance.
 - Nautilus stock schemas integrated: GTK4.22.4-1+toddy12 recipe/post0/0,10changes; installed default source131schemas/1111keys, all125baseline schemas/1081keys/contracts preserved,906GTK runtime entries unchanged.82stock inputs/21owners; no user preferences/overrides/compiler replay.
 - Owned Nautilus50.2.2 installed recipe/post0/0,176changed paths/441payload entries;154stage regular files/links identical,5ELF ABI/APT,source notices,user-only D-Bus activation and upstream root refusal passed. Native12program/73case evidence reused. Installed GUI/nonroot CLI/shared schemas/icons/MIME remain pending.
@@ -200,7 +201,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: Native installed Files GUI1 terminal0/base unchanged; builder stopped. Passing local actions retained; Trash sidebar unsupported URI needs qualified Gvfs runtime and affected followup. Next restore same builder volumes/cache using NEW files-gui1-* receipts and qualified generation3. No native/compiler replay. Other B02 browser/network/audio/theme/offline/persistence/recovery pending; complete all B02 then stop.
+Running: Builder restored after FilesGUI1 on boot2099f4e9-db42-413d-9ade-41e29ae24160, exact generation3 cache restored; no guest writer. Gvfs stage/local qualification complete with original append-tell failure explicit. Owned packaging prepared, not installed; next strict qualifier/dependencies/space checks and single controlled native install. Actual Trash browsing/restoration/privilege followup remains. Cache generation3 lacks new Gvfs data: preserve new custody before cold stop. Complete all B02 then stop.
 
 Remaining:
 
