@@ -38,18 +38,32 @@ New archiveSHA60b2fc8bc00b24f57ea0881b8ca268637ea30536c0a906b117c47bfe93805369.
 No replay of update/restore receipts. Original first failure zero root changes
 retained; corrected fresh stage2 is installed. No live guest writer.
 
-Next browser slice: prepare qualified custody/retirement of obsolete private
-browser obj ONLY (measured3,870,035,968allocated bytes), preserving both qualified
-ELF artifacts separately with exact hashes, compiler result/log/source/tools.
-Measure manifests/hardlinks/bytes and host reserve before archive; verify complete
-archive recovery before any retirement. Existing source5,009,072,128allocated,
-private tools377,966,592, browser available7,260,672,000. Fresh153.7 source+obj
-cannot safely coexist without capacity recovery. No custody/retirement dispatched.
-Update browser inspect/baseline contract explicitly before removing original obj,
-otherwise helper correctly refuses changed artifact paths. Never format/resize or
-reuse old objects for changed source. New Rust minimum source review verified1.90.0
-(existing1.97.1); native configure/ABI security gates remain pending. Save a precise
-custody slice card and implement guarded archive/verify/recovery before dispatch.
+Next browser slice: guarded custody of obsolete private153.2 objects, script
+scripts/build/phase2/archive_firefox_baseline_objects.py PREPARED, not dispatched.
+Goal: recover private browser space for changed153.7 source without losing old
+compiler evidence. Inputs: exact previous compile artifacts and browser baseline;
+source obj3,870,035,968allocated bytes, builder17.32GBfree, MemAvailable9.84GB;
+host113.28GBfree,100GiBreserve. One guest build.lock, exact target/serial/volume
+inspection. Create PAX ACL/xattr/metadata/hardlink snapshot/archive<=2GiB on builder,
+actually extract to bounded noswap/noexec6GiBtmpfs only if memory admits4GiBmargin,
+compare complete restored/source snapshots and archive SHA. Only after exact
+restore proof, copy both ELF evidence files non-executable with original hashes,
+retire obj children and retain marker/manifest/archive. Source/tools/logs untouched.
+Full installed-root before/after check, same6aliases/browser hashes after new
+explicit retired-artifact inspect contract. Never use old objects for changedsource.
+No format/resize, root install, package or source change. Healthy archive/restore
+may take >10min; monitor real receipt/process, never replay or kill for timer.
+
+Exact dispatch after commit/check/metadata sync: guest
+`python3 /opt/toddy-build/scripts/build/phase2/archive_firefox_baseline_objects.py`
+log .local/phase2/firefox-object-custody-controller-1.log; guest receipt
+/var/log/toddy/phase2/firefox-baseline-objects-custody-1.json and artifacts
+/var/lib/toddy/phase2-custody/firefox-baseline-objects-1. Refuse existing contexts.
+Recovery: inspect actual receipt/marker/source first; retained full archive and
+manifest support NEW-directory extraction and full comparison, never overwrite
+unknown trees. Failure before verified retirement preserves original objects.
+After success prepare new immutable153.7 input/work with fresh job identity.
+Rust source minimum1.90.0 verified (installed1.97.1); native ABI/security pending.
 
 ## Browser compiler, security and persistent build volume
 

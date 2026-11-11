@@ -3848,3 +3848,14 @@ native compatibility still pending. Measured browser space7.26GB/oldobj3.87GB/
 oldsource5.01GB: next guarded custody slice must preserve exact old artifacts and
 qualify recoverable archive before retiring only obsolete private objects. No
 custody/newsource/compiler job launched; B02 remains in progress.
+
+
+### B02 obsolete browser objects custody prepared — 2026-11-11
+
+Adapt existing fully restored Mozilla-source custody procedure for only obsolete
+private Firefox153.2 objects. Full PAX archive/actual tmpfs restore comparison
+before retirement, both exact ELF artifacts retained as non-executable evidence,
+all source/tool/log/result inputs preserved. Browser inspection explicitly checks
+completed custody receipt and original hashes after retirement; arbitrary absent
+objects remain an error. Builder17.32GBfree/MemAvailable9.84GB, archive bounded
+2GiB and host100GiBreserve retained. One guest writer; no job launched yet.

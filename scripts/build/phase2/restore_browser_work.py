@@ -57,8 +57,18 @@ def inspect(expected=None):
     assert compiler['state']=='compiled' and compiler['exit']==0
     artifacts={}
     for name in ['firefox','libxul.so']:
-        p=BASE/'build/browser-1/obj/dist/bin'/name
-        assert p.resolve().is_relative_to(BASE/'build/browser-1/obj')
+        work=BASE/'build/browser-1';obj=work/'obj'
+        if (obj/'.toddy-retired.json').exists():
+            receipt=json.loads(Path('/var/log/toddy/phase2/firefox-baseline-objects-custody-1.json').read_text())
+            assert receipt['state']=='complete' and receipt['restored_exact'] and receipt['source_unchanged']
+            marker=json.loads((obj/'.toddy-retired.json').read_text())
+            assert marker['archive_sha256']==receipt['archive_sha256'] and marker['source_manifest_sha256']==receipt['manifest_sha256']
+            p=work/'retained-baseline'/name
+            assert not p.is_symlink() and p.is_file() and not p.stat().st_mode&0o222
+            assert receipt['retained_artifacts'][name]=={'path':str(p),'sha256':compiler['artifacts'][name]}
+        else:
+            p=obj/'dist/bin'/name
+            assert p.resolve().is_relative_to(obj)
         artifacts[name]=digest(p);assert artifacts[name]==compiler['artifacts'][name]
     assert json.loads((BASE/'build/nasm-1/result.json').read_text())['state']=='stage-qualified'
     result={'state':'inspected','uuid':UUID,'serial':SERIAL,'device':str(d),'aliases':rows,
