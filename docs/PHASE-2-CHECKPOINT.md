@@ -80,9 +80,15 @@ Original failure retained. Never transfer again or replay original controller.
 Next: commit/check/sync corrected helper, run extraction-only once with new log
 .local/phase2/firefox-security-source-controller-2.log. Corrected extraction-only controller DISPATCHED once (session69127), guestpid3841/
 start126477/boote146fad4. Inputea0dbef; archive1 retained/read-only, originalfailed
-receipt1 preserved. Last observed262144members/1.4GB and actual live proc identity.
-DO NOT replay; inspect receipt2/process and real aliases after terminal. Host
-profile/configure/build preparation independent, not yet synced to live writer.
+receipt1 preserved. TERMINAL1 at post-extraction count assertion; not live. Independent host scan
+proves510288total including1dot,510287non-dot/3515456965bytes. Existing tree retained;
+work/aliases remain uncreated. Count mismatch is wrapper accounting, not acceptance.
+DO NOT replay; inspect receipt2/process and real aliases after terminal. Next correction2 uses --verify-extracted and new receipt3. It verifies every file's
+bytes/mode/root ownership plus complete path set against retained authenticated
+archive, without transfer/extraction replay; finalizes mounts/work only on match.
+Original receipts1/2/logs retained. No live guest writer. Host profile/configure/
+build prep check379passed; sync only after reviewed commit. Native configuration
+and compiler not dispatched. Budget remains2prepared/1failed correction.
 After source preparation, extend exact browser isolated profile pair, retaining
 CUPS/Samba hash qualifications, reuse SDK/NASM/bundledPNG/main/all6WASM sandbox
 options and fresh configure/build version assertions. Target-root capacity must

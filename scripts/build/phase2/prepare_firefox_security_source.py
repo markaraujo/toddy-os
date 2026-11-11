@@ -11,7 +11,7 @@ import tarfile
 
 BASE=Path('/mnt/lfs/sources/phase2/work/firefox-1')
 LOG=Path('/var/log/toddy/phase2')
-RECEIPT=LOG/'firefox-security-source-1537-2.json'
+RECEIPT=LOG/'firefox-security-source-1537-3.json'
 SHA='7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0'
 SIZE=800080060
 SOURCE=BASE/'source/firefox-153.7.0'
@@ -31,8 +31,9 @@ def save(row):
 
 
 def main():
-    assert os.geteuid()==0 and sys.argv[1:] in ([],['--extract-verified'])
-    reuse=sys.argv[1:]==['--extract-verified']
+    assert os.geteuid()==0 and sys.argv[1:] in ([],['--extract-verified'],['--verify-extracted'])
+    verify_existing=sys.argv[1:]==['--verify-extracted']
+    reuse=verify_existing or sys.argv[1:]==['--extract-verified']
     subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
     lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
@@ -42,14 +43,16 @@ def main():
     assert json.loads((LOG/'firefox-baseline-objects-custody-1.json').read_text())['state']=='complete'
     row=next(r for r in json.loads(Path('/opt/toddy-build/config/phase2/sources.lock.json').read_text())['components'] if r['name']=='firefox-security-1537')
     assert row['version']=='153.7.0esr' and row['sha256']==SHA and row['filename']==ARCHIVE.name
-    assert shutil.disk_usage(BASE).free>=9*1024**3
+    assert shutil.disk_usage(BASE).free>=(4 if verify_existing else 9)*1024**3
     assert shutil.disk_usage('/mnt/lfs').free>=16*1024**3
     destinations={ARCHIVE.parent,SOURCE,WORK,*(dst for _,dst,_ in ALIASES if dst!=SOURCE)}
     if reuse:
-        previous=LOG/'firefox-security-source-1537-1.json'
+        previous=LOG/('firefox-security-source-1537-2.json' if verify_existing else 'firefox-security-source-1537-1.json')
         prior=json.loads(previous.read_text())
-        assert prior['state']=='extracting' and prior['members']==0 and prior['archive_bytes']==SIZE and prior['archive_sha256']==SHA
-        assert all(not os.path.lexists(p) for p in destinations if p!=ARCHIVE.parent)
+        assert prior['state']=='extracting' and prior['archive_bytes']==SIZE and prior['archive_sha256']==SHA and not prior['aliases']
+        if verify_existing:assert SOURCE.is_dir() and not SOURCE.is_symlink()
+        else:assert prior['members']==0
+        assert all(not os.path.lexists(p) for p in destinations if p!=ARCHIVE.parent and not (verify_existing and p==SOURCE))
         assert ARCHIVE.parent.resolve()==ARCHIVE.parent and {p.name for p in ARCHIVE.parent.iterdir()}=={ARCHIVE.name}
         assert ARCHIVE.is_file() and not ARCHIVE.is_symlink() and ARCHIVE.stat().st_size==SIZE
         with ARCHIVE.open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==SHA
@@ -72,21 +75,27 @@ def main():
         assert total==SIZE and digest.hexdigest()==SHA,'Preserve original and incomplete candidate; no extraction'
         ARCHIVE.chmod(0o444)
     state.update(state='extracting',archive_sha256=SHA,archive_bytes=total,members=0,expanded_regular_bytes=0);save(state)
-    with tarfile.open(ARCHIVE,mode='r|xz') as bundle:
-        for member in bundle:
-            parts=PurePosixPath(member.name).parts
-            state['members']+=1
-            if not parts:
-                assert member.name=='.' and member.isdir()
-                state['archive_dot_directory_omitted']=True
-                continue
-            assert parts and parts[0]==SOURCE.name and not member.name.startswith('/') and '..' not in parts
-            if member.isfile():state['expanded_regular_bytes']+=member.size
-            assert state['expanded_regular_bytes']<=4*1024**3 and state['members']<=520000
-            bundle.extract(member,SOURCE.parent,filter='data')
-            if state['members']%4096==0:
-                assert shutil.disk_usage(BASE).free>=256*1024**2;save(state)
-    assert state['members']==510287 and state['expanded_regular_bytes']==3515456965
+    if verify_existing:
+        from verify_firefox_security_tree import verify
+        state['state']='verifying-existing-extraction';save(state)
+        def progress(counts):state.update(counts);save(state)
+        state.update(verify(ARCHIVE,SOURCE,progress));state['existing_tree_fully_verified']=True
+    else:
+        with tarfile.open(ARCHIVE,mode='r|xz') as bundle:
+            for member in bundle:
+                parts=PurePosixPath(member.name).parts
+                state['members']+=1
+                if not parts:
+                    assert member.name=='.' and member.isdir()
+                    state['archive_dot_directory_omitted']=True
+                    continue
+                assert parts and parts[0]==SOURCE.name and not member.name.startswith('/') and '..' not in parts
+                if member.isfile():state['expanded_regular_bytes']+=member.size
+                assert state['expanded_regular_bytes']<=4*1024**3 and state['members']<=520000
+                bundle.extract(member,SOURCE.parent,filter='data')
+                if state['members']%4096==0:
+                    assert shutil.disk_usage(BASE).free>=256*1024**2;save(state)
+        assert state['members']==510288 and state['expanded_regular_bytes']==3515456965
     assert (SOURCE/'browser/config/version.txt').read_text().strip()=='153.7.0'
     assert (SOURCE/'browser/config/version_display.txt').read_text().strip()=='153.7.0esr'
     critical={}
