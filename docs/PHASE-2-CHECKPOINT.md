@@ -172,23 +172,42 @@ nautilus-input-1/nautilus-work-1 and their readonly source/rw worker aliases;
 archive also bound readonly at /mnt/lfs/sources/nautilus-50.2.2.tar.xz.
 No compiler/test/stage/preparation replay. Current writer absent.
 
-EXACT NEXT: prepare fresh durable custody generation2 of the CURRENT tmpfs,
-including Nautilus compiler/source/stage and GTK11 promotion, without replacing
-qualified generation1 or its evidence. Parameterize the existing custody helper
-with strict generation identity/current actual boot and generic exact prefix
-mount topology; verify old caches unchanged and exact archive reconstruction.
-Qualify actual isolated restoration before any cold stop. Current generation1
-archive alone lacks Nautilus and GTK11 promotion and cannot recover this boot.
-For native Nautilus tests, stage a separate compact read-only cache attachment
-containing only its exact source/compiler/stage, with full source/stage manifests
-and original24test inventory. Do not rely on lost boot-scoped aliases being
-present in a native cold overlay. Attach a padded, hashed read-only data image
-or other qualified native-input transport and verify actual device identity/
-archive bytes before private restoration. Use the already proven normal GDM/PAM
-user seat; no headless fallback or automatic login. Choose focused original
-file-operation/search/GUI tests under explicit budgets and retain raw outcomes;
-no native package/GUI acceptance until actual checks. Runtime Gvfs/device mounting
-remains due alongside network/audio/browser/UDisks/global theme/terminal defaults.
+Cache custody generation2 is COMPLETE and actually restoration-qualified.
+[Proof](evidence/B02-nautilus-native-input-custody.json), ADR0221.
+Host .local/phase2/settings-scratch-custody-2/scratch.tar.gz
+405,110,654B/SHA89add46aea68181669f8aa88ad5bb3ef32985cdb87661ec37b92bfc76e48cfaa.
+80,561entries/35,017hardlinks; actual isolated restoration0 with37,820distinct
+regular inodes and all bytes/modes/owners/nanosecond times/symlinks/link classes.
+All previous generation files/metadata/hardlink classes unchanged; no stale
+sockets in this generation. Original generation1 retained. New strict generation
+option added to recovery helper; never replay completed custody1/2 operations.
+
+Compact native Nautilus input is also COMPLETE,1904entries verified unchanged.
+.local/phase2/native-nautilus-inputs-1/cache.raw is38,946,304B, readonly data image,
+SHA8841d6ca920e6706d6f258216f34ff49274bc911cd0d44fe82ae13e7b4e5d4b8;
+original gzip38,945,901B/SHA
+61c977e1d2c6d58d0817e47ab92f5c592b0e8989d693a4c820bdba9198d8f6d7.
+Root descriptor /sources/phase2/native-fixtures/nautilus-1.json SHA
+ac5c890e5cceaee2b196400e343ce4490e2a2b6fb32ad7b5f8324aa78506e492.
+No source/build/stage/test replay or target-disk copy. Not a boot ISO.
+
+EXACT NEXT: after committing/publishing reviewed inputs and focused checks,
+run `python3 -u scripts/host/phase2_native_nautilus.py` with
+.local/phase2/native-nautilus-runtime-1-controller.log.
+Preflight-only passed current source/compile/stage, GTK11/GDM/Shell/LocalSearch,
+cache2/actual restoration/raw image and payload; no native VM started yet.
+Fresh context native-nautilus-runtime-1/readonly data device serial
+TODDY-NAUTILUS-INPUT, real normal GDM/PAM user12402/Wayland seat0.
+Use private control Unix socket with capture/key/password/done actions as before;
+inspect actual masked password field before password action. After visible real
+owner desktop, done requests the12original tests (not immediate teardown).
+Control remains for snapshots while tests run. Root input proof must pass before
+GDM starts. Per-program60s/whole-selected300s, first failure stops the set.
+Assert TAP plan/cases/no skips, except source-backed async done-loading callback
+and actual AppStream exit0. No all24/full-suite or installed Nautilus claim.
+Inspect actual terminal container/report/base identity before recovery/retry.
+After cold testing restore CURRENT generation2 archive/16aliases with a fresh
+receipt, not generation1; no source/compiler/install/test replay.
 
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated

@@ -21,7 +21,7 @@ lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
 receipt=Path('/var/log/toddy/phase2')/(restore_name+'.json')
 assert not receipt.exists(),'Inspect real restore receipt/mounts; never replay'
-original=Path('/var/log/toddy/phase2/settings-scratch-custody-1.json')
+original=Path('/var/log/toddy/phase2')/('settings-scratch-custody-'+str(generation)+'.json')
 assert hashlib.sha256(original.read_bytes()).hexdigest()==receipt_sha
 saved=json.loads(original.read_text());assert saved['state']=='archive-stream-complete-source-unchanged'
 root=Path('/run/toddy-samba-client-1');transport=Path('/run/toddy-settings-scratch-restore-1')
@@ -76,9 +76,12 @@ save();print(json.dumps(state))
 
 
 def main():
+    global CONTEXT
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--receipt',default='native-owner-scratch-restored-1')
+    parser.add_argument('--generation',type=int,choices=[1,2],default=1)
     args=parser.parse_args()
+    CONTEXT=ROOT/'.local/phase2'/('settings-scratch-custody-'+str(args.generation))
     assert re.fullmatch(r'[a-z][a-z0-9-]{1,63}',args.receipt)
     receipt=json.loads((CONTEXT/'result.json').read_text())
     assert receipt['state']=='complete' and (CONTEXT/'restore-validation.exit').read_text().strip()=='0'
@@ -87,7 +90,7 @@ def main():
     assert shutil.disk_usage(ROOT).free>=100*1024**3
     log=ROOT/'.local/phase2'/(args.receipt+'.log')
     assert not log.exists(),'Inspect actual guest receipt/aliases before any replay'
-    code='restore_name='+repr(args.receipt)+'\narchive_sha='+repr(receipt['archive_sha256'])+'\narchive_bytes='+repr(receipt['archive_bytes'])+'\nreceipt_sha='+repr(receipt['guest_receipt_sha256'])+'\n'+GUEST
+    code='generation='+repr(args.generation)+'\nrestore_name='+repr(args.receipt)+'\narchive_sha='+repr(receipt['archive_sha256'])+'\narchive_bytes='+repr(receipt['archive_bytes'])+'\nreceipt_sha='+repr(receipt['guest_receipt_sha256'])+'\n'+GUEST
     with archive.open('rb') as source,log.open('xb') as output:
         result=subprocess.run(phase2_vm.ssh_args()+['python3 -c '+shlex.quote(code)],stdin=source,stdout=output,stderr=subprocess.STDOUT)
     (log.with_suffix('.exit')).write_text(str(result.returncode)+'\n')

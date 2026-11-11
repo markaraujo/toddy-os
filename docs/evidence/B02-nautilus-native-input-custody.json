@@ -1,0 +1,72 @@
+{
+  "scope": "Generation2 exact cache custody/actual isolated restoration and compact readonly native input preparation only; native original tests not dispatched yet. Not boot/installer/ISO/GUI acceptance.",
+  "custody": {
+    "state": "complete",
+    "generation": 2,
+    "prior_generation_files_metadata_and_hardlinks_unchanged": true,
+    "archive_sha256": "89add46aea68181669f8aa88ad5bb3ef32985cdb87661ec37b92bfc76e48cfaa",
+    "archive_bytes": 405110654,
+    "verified_entries": 80561,
+    "verified_hardlinks": 35017,
+    "stale_sockets_omitted": 0,
+    "guest_receipt_sha256": "8caab97d867c0a8acbec245be6861b502e7e22330d72f2eb5a3d1d492100dda8",
+    "host_available_after": 111531450368,
+    "recovery": "Verify archive SHA, restore into the same fresh 2 GiB tmpfs with numeric ownership/ACL/xattrs/sparse/hardlinks, compare all file hashes and symlink targets to guest-receipt.json before remounting the recorded exact bind aliases. Do not replay source preparation, compiler jobs, fixtures or package transactions."
+  },
+  "actual_isolated_restoration": {
+    "state": "complete",
+    "verified_entries": 80561,
+    "verified_distinct_regular_inodes": 37820,
+    "exact_bytes_modes_owners_timestamps_symlinks_hardlinks": true
+  },
+  "compact_native_inputs": {
+    "state": "complete",
+    "scope": "Verified compact read-only native input image, not a boot disk or test pass",
+    "fixture_sha256": "ac5c890e5cceaee2b196400e343ce4490e2a2b6fb32ad7b5f8324aa78506e492",
+    "verified_archive_entries": 1904,
+    "transport": {
+      "archive_bytes": 38945901,
+      "archive_sha256": "61c977e1d2c6d58d0817e47ab92f5c592b0e8989d693a4c820bdba9198d8f6d7",
+      "raw_bytes": 38946304,
+      "raw_sha256": "8841d6ca920e6706d6f258216f34ff49274bc911cd0d44fe82ae13e7b4e5d4b8",
+      "device_serial": "TODDY-NAUTILUS-INPUT",
+      "readonly_required": true
+    },
+    "selected_tests": [
+      "validate-appdata",
+      "test-bookmarks",
+      "test-file",
+      "test-file-metadata",
+      "test-file-operations-copy-files",
+      "test-file-operations-rename",
+      "test-file-operations-trash-or-delete",
+      "test-filename-utilities",
+      "test-nautilus-search-engine-simple",
+      "test-nautilus-directory-async",
+      "test-file-operations-create",
+      "test-files-view"
+    ],
+    "all_registered_tests": 24,
+    "custody_generation": 2
+  },
+  "read_only_preflight": {
+    "state": "preflight-only-passed",
+    "accepted": {
+      "fixture_sha256": "ac5c890e5cceaee2b196400e343ce4490e2a2b6fb32ad7b5f8324aa78506e492",
+      "versions": {
+        "gnome-shell": "50.4-1+toddy1",
+        "gtk": "4.22.4-1+toddy11",
+        "mutter": "50.4-1+toddy1",
+        "gdm": "50.2-1+toddy1",
+        "localsearch": "3.11.1-1+toddy1"
+      },
+      "source_compiler_stage_unchanged": true,
+      "builder_boot_id": "71632310-0bdd-4d1e-9deb-921d95eddc97",
+      "selected_programs": 12
+    },
+    "probe_bytes": 14778,
+    "credential_bytes": 7579,
+    "native_input_raw_bytes": 38946304,
+    "no_VM_started": true
+  }
+}
