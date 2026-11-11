@@ -90,14 +90,42 @@ unchanged; no blanket admin authorization. Existing shared GIO discovery cache
 must remain byte-identical; source-backed uncached module loading supports this.
 No installed Gvfs package/native transaction yet. Scratch490,483,712B free.
 
-EXACT NEXT ACTION: review/commit packaging/ADR0222, sync metadata only; run strict
-qualify_gvfs plus native dependency/free-space/collision checks, then dispatch
-b02-gvfs-install once through run_step with gvfs-install.sh/gvfs-check.sh. Inspect
-real recipe/post exits before followup, never reinstall on uncertain status.
-After package success integrate SMB stock schema through owned cache as needed;
-qualify actual native Trash browsing/restoration/refusal/recovery before closing
-Files gap. Before any cold stop preserve NEW cache generation (generation3 does
-NOT include Gvfs input/work). Other B02 gates remain; ALL B02 then STOP.
+Native Gvfs installation and SMB schema union are COMPLETE, no writer remains.
+[Install](evidence/B02-gvfs-install.json): b02-gvfs-install recipe4022 recipe/post0/0,
+146changed paths/324payload entries, archiveSHA
+ab37674288a5648d11c6f32248434f763c9b97578bf236006ffffa7c837a4af3.
+131original regular files/links/21runtime ELF ABI/APT passed; UID101/NNP daemon
+version/invalid-option/help/recovery and unauthenticated admin-helper refusal0/1
+as expected. Upstream authenticated action policy unchanged, shared GIO cache
+hash unchanged. SFTP two-file partition recorded; full original stage retained.
+No service started by installation; native activation/Trash/admin mediation
+remain unqualified. Original local append-tell failure stays explicit.
+
+[Schema proof](evidence/B02-gvfs-schema-union.json): b02-gvfs-schema-union-install
+recipe4906 recipe/post0/0,9changes, GTK4.22.4-1+toddy13 archiveSHA
+2425d6c41ef051afb9838d7e2d3723d7a00f6c1b14faaa9bdea858575ef000a6.
+84stock inputs/22owners; installed default source132schemas/1113keys preserves
+all131baseline schemas/1111keys/contracts and906GTK runtime entries. Only new
+org.gnome.system.smb schema/2keys, no preferences/overrides. CacheSHA
+a352c74e50964dca946948f2e80e9345a175615c938c65295f1bb44623133e1b.
+Closed Nautilus promotion custody1 retired ONLY its duplicate usr copy, recovering
+16,662,528B; installed root zero changes/source/compiler/original workstage/native
+archive/control retained. Native/qualifier/source recipes never replayed.
+
+Current builder boot2099f4e9-db42-413d-9ade-41e29ae24160, no guest writer/native
+probe. Target17,308,438,528B/scratch392,814,592B available. Existing generation3
+archive remains valid for its prior inputs but does NOT include new Gvfs input/
+work or gtk-gvfs-schema-promotion-1. Never stop before NEW qualified custody.
+
+EXACT NEXT ACTION: extend strict custody/recovery to generation4, using completed
+files-gui1-scratch-restored-1 (generation3 archiveSHA9d6938b426ef0ef3f781bda5b6ccf890aeac657504302fe03c4153288066a64c)
+and successful Gvfs native/schema receipts, current GTK13. Compare all generation3
+bytes/metadata/hardlink classes, retain archive and actually validate isolated
+restoration. Then prepare a NEW normal-GDM native Files followup with exact GTK13/
+Gvfs1.60.2 and only affected Trash browse/restore/refusal/recovery tests. The prior
+unsupported Trash URI remains UNRESOLVED until actual observed followup. Do not
+repeat unchanged original local/compile suites. Other B02 gates remain; ALL B02
+then STOP before another story. Never replay completed custody/native/retirement.
 
 ### Verified recovery and packaging provenance
 

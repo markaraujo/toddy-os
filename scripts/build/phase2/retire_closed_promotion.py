@@ -14,6 +14,14 @@ from run_step import snapshot
 from verify_stage import inspect_stage
 
 PROFILES = {
+    'nautilus': {'name': 'nautilus',
+     'version': '50.2.2-1+toddy1',
+     'native_step': 'b02-nautilus-install',
+     'native_receipt': 'f02be21243bdc750d83681a529c20ea21e17b503aa8f7c877aa9561c5fe6f9a0',
+     'record': '6a5da8d0123375d66a7d6bf54de3ac4f0101f36c0f31ec3411738ab2d37c3522',
+     'archive': '35a0448ad606814cc318c3032b07e052f858a4af04396a675ec665bba1d9dee1',
+     'work_manifest': 'bb0b585827219c3c96d2fc43f5191d4d0efbf1069023e9a32535347a91d45d07',
+     'stage_inode': 8335969},
     'networkmanager': {
         'name': 'networkmanager',
         'version': '1.58.1-1+toddy1',

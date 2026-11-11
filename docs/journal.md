@@ -3555,3 +3555,17 @@ position failure retained, no full-suite/backend acceptance. ADR0222 records
 source-backed qualification, unavailable SFTP runtime partition until owned SSH
 client and unchanged authenticated admin policy/shared GIO cache. Native packaging
 code prepared; actual Trash/privilege integration remains pending.
+
+### B02 — Owned Gvfs and shared SMB schemas installed
+
+Gvfs native recipe4022 recipe/post0/0,146changes/324entries;131original files and
+21ELFs/ABI/APT, UID101/NNP CLI/refusal/recovery and unauthenticated admin refusal
+passed. Upstream policy/shared GIO cache unchanged; two SFTP entries omitted until
+owned SSH client. Actual native activation/Trash GUI/privilege mediation pending.
+Closed Nautilus promotion custody recovered16,662,528B with zero installed-root
+changes and all original source/compiler/stage/archive/control retained.
+Gvfs SMB schema union recipe4906 recipe/post0/0 changed9paths; GTKtoddy13 installed
+default-source lookup132schemas/1113keys preserves131baseline/1111keys/contracts
+and906runtime entries.84inputs/22owners, no user preferences/overrides.
+Before native Trash followup preserve NEW generation4: generation3 lacks Gvfs
+work/source and new GTK13 promotion. No unchanged compiler/local tests replayed.

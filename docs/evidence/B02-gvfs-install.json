@@ -1,0 +1,99 @@
+{
+  "native": {
+    "step": "b02-gvfs-install",
+    "started": "2026-11-11T04:55:18.196753+00:00",
+    "finished": "2026-11-11T04:55:36.174936+00:00",
+    "recipe_pid": 4022,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 146,
+    "recipe_sha256": "3a4cb5bea12ef220caf525a03b4666d6aad82699b1e160f5cd43463f8345ae9e",
+    "postcheck_sha256": "d92399206a02c7ef979a617dfa1562f5b99c69cf6143411f2f8e546fed1baada",
+    "log_sha256": "04cd14d73f74e4233a9539a561a67946c3cc421fc5d16884ddd89918d98224b3"
+  },
+  "archive_sha256": "ab37674288a5648d11c6f32248434f763c9b97578bf236006ffffa7c837a4af3",
+  "payload_entries": 324,
+  "sources": [
+    {
+      "name": "gvfs",
+      "version": "1.60.2",
+      "filename": "gvfs-1.60.2.tar.xz",
+      "url": "https://download.gnome.org/sources/gvfs/1.60/gvfs-1.60.2.tar.xz",
+      "sha256": "a8d7744615a488a559302fe0cc8f418d5b44aba3c2ba2163e5a9e6f607c1be9a",
+      "reference": "BLFS13.1-systemd gnome/gvfs.html",
+      "book_page_sha256": "ecff8579f8b9e31680b4de9b49e049ae020a64a3c7fbc409b4e3f4c4026e445c",
+      "book_md5": "467f7d017234e5aab24d8e0a4e09deff",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    }
+  ],
+  "installed": {
+    "scope": "Owned Gvfs exact payload/ABI/APT/CLI refusal-recovery,unauthenticated admin refusal and original upstream authenticated action policy. Reuses17local cases; original baseline append-tell remains failed. Native backend activation/Trash GUI/privilege mediation remain unqualified. SFTP omitted until owned SSH client exists; no backend started or policy relaxed.",
+    "identical_regular_files": 131,
+    "installed_ELFs": 21,
+    "no_suid_sgid": true,
+    "cli": [
+      {
+        "args": [
+          "/usr/libexec/gvfsd",
+          "--version"
+        ],
+        "exit": 0,
+        "stdout": "gvfs 1.60.2\n",
+        "stderr": ""
+      },
+      {
+        "args": [
+          "/usr/libexec/gvfsd",
+          "--toddy-no-such-option"
+        ],
+        "exit": 1,
+        "stdout": "",
+        "stderr": "GVFS Daemon: Unknown option --toddy-no-such-option\nTry \u201cgvfsd --help\u201d for more information.\n"
+      },
+      {
+        "args": [
+          "/usr/libexec/gvfsd",
+          "--help"
+        ],
+        "exit": 0,
+        "stdout": "Usage:\n  gvfsd [OPTION\u2026]\n\nMain daemon for GVFS\n\nHelp Options:\n  -h, --help        Show help options\n\nApplication Options:\n  -r, --replace     Replace old daemon.\n  --no-fuse         Don\u2019t start fuse.\n  -d, --debug       Enable debug output.\n  --version         Show program version.\n\n",
+        "stderr": ""
+      },
+      {
+        "args": [
+          "/usr/libexec/gvfsd",
+          "--version"
+        ],
+        "exit": 0,
+        "stdout": "gvfs 1.60.2\n",
+        "stderr": ""
+      },
+      {
+        "args": [
+          "/usr/libexec/gvfsd-admin"
+        ],
+        "exit": 1,
+        "stdout": "",
+        "stderr": "gvfsd-admin must be executed under pkexec\n"
+      }
+    ],
+    "shared_GIO_cache_changed": false,
+    "sftp_unavailable": true
+  },
+  "selection": {
+    "excluded_sftp": {
+      "usr/libexec/gvfsd-sftp": "98a7283eed09a11efa583a2acad4614e237e7b8f3f88c97b62df1178e691ada6",
+      "usr/share/gvfs/mounts/sftp.mount": "0cb91e347011a23296d0f7fb3f79897122ba455c36283f6f95b5b20547f9789c"
+    },
+    "GIO_cache_sha256": "2fe7ad576c5bec7552846c4a3fd662ebc0c9c398eb8e9e4b416e51862cb9e74d",
+    "reason": "Owned SSH client absent. All original build/stage outputs retained; SFTP candidate unavailable. GLib2.88.3 scans uncached modules directly, no shared-cache mutation required."
+  },
+  "target_available": 17293590528,
+  "scratch_available": 490483712,
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-gvfs-install-evidence.tar.gz",
+    "bytes": 195832,
+    "sha256": "cac6d5e223f7a0b6cb398a685025f89c9e6b97ed5377554abb70302825be38b3"
+  }
+}

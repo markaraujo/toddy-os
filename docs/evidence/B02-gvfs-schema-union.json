@@ -1,0 +1,738 @@
+{
+  "native": {
+    "step": "b02-gvfs-schema-union-install",
+    "started": "2026-11-11T04:59:30.414031+00:00",
+    "finished": "2026-11-11T05:00:04.753465+00:00",
+    "recipe_pid": 4906,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 9,
+    "recipe_sha256": "8f1bc515e821871320ae98deac804340f83ddebf6bbc9c3069e4da9238febb5c",
+    "postcheck_sha256": "b8cb9890868f41eed4d9756c0a37b6093804f982c53dc3b06dba176c088c6a37",
+    "log_sha256": "43db11c1522bd5d2b2179896d71bb49079573a539febe4b76515f423e3d4bcb5"
+  },
+  "transaction": {
+    "state": "complete",
+    "scope": "Same-version GTK4 schema/legal-only update; all libraries/configurations/preferences unchanged. Actual Gvfs SMB schema plus all installed stock schema inputs, no graphical acceptance.",
+    "old_version": "4.22.4-1+toddy12",
+    "new_version": "4.22.4-1+toddy13",
+    "old_archive_sha256": "fad63626a484c7a51f4f9c64aa382d83694dbe52cc04c830ff4a6e5244c18a63",
+    "old_cache_sha256": "814e70d2632e7f9f3b0835a5dd4f67b84e838d77d892f620d8ae020ff7b3addd",
+    "new_cache_sha256": "a352c74e50964dca946948f2e80e9345a175615c938c65295f1bb44623133e1b",
+    "added_schemas": [
+      "org.gnome.system.smb"
+    ],
+    "schema_inputs": [
+      {
+        "path": "org.gnome.desktop.search-providers.gschema.xml",
+        "sha256": "00e6c4931d9a4005be80abae2d28bb7b716724cedc19c7be9e6d015a0ac0ea9c"
+      },
+      {
+        "path": "org.gnome.settings-daemon.plugins.color.gschema.xml",
+        "sha256": "55d3f13c6482245188ee67f886970777d9b4a83633c1d444a6f09803a6ef575a"
+      },
+      {
+        "path": "org.gnome.evolution-data-server.gschema.xml",
+        "sha256": "06b8388dec89e2f7e15d0176b4552f49c41ab2be7f1362b4133bc1bc4c6118d7"
+      },
+      {
+        "path": "org.gnome.mutter.wayland.gschema.xml",
+        "sha256": "a9f5c8057f6fb4bf19459862f1a47e29a863800dce1db5fc1b6cf810010a2dad"
+      },
+      {
+        "path": "org.gnome.evolution.shell.network-config.gschema.xml",
+        "sha256": "1991fe03daf18bdf5b450fa6bb5b06a48f48a38b712fc8206addcaddd7a33822"
+      },
+      {
+        "path": "org.gtk.gtk4.Settings.Debug.gschema.xml",
+        "sha256": "f3093b00e9184a19289f0755345e3414921aafe15433342b36b327ade2048998"
+      },
+      {
+        "path": "org.freedesktop.ColorHelper.gschema.xml",
+        "sha256": "096896a93ff7316edca288a2f7866f62417793b686b1a3e04427c548c191ae74"
+      },
+      {
+        "path": "org.gnome.system.smb.gschema.xml",
+        "sha256": "ef5c6f9e0476a8725cd4e4ec1c898ba26b8fdd2680038e06700d4655ea3d8d19"
+      },
+      {
+        "path": "org.gnome.SessionManager.gschema.xml",
+        "sha256": "1fc1be5ac6b0a8a636dfbd69c2ff3a9824c094bbf164be9aa6dcbbdff9559733"
+      },
+      {
+        "path": "org.gnome.settings-daemon.global-shortcuts.gschema.xml",
+        "sha256": "f9cbd16e6afe7abdbe79b107cd1cd09a3adde85874ef49b8cede00811a9b71ee"
+      },
+      {
+        "path": "org.gnome.Terminal.gschema.xml",
+        "sha256": "3bbf4cb6340a47e8a5d438b800dc489864158e07bca09fffcc5831c0f1f8023b"
+      },
+      {
+        "path": "org.gnome.settings-daemon.plugins.gschema.xml",
+        "sha256": "abaf06275be61c07275efe3d81532cee73174a60abef6cbae5c7885c0905be7f"
+      },
+      {
+        "path": "org.gnome.evolution-data-server.calendar.gschema.xml",
+        "sha256": "159dadd5f5c93636a25d0698da88d2a1a2869df37055b58ee4710b546e774304"
+      },
+      {
+        "path": "org.gnome.desktop.app-folders.gschema.xml",
+        "sha256": "f6a6be999af5d5ed29079432182af7708adefc0a2c7beeb7418254487ee4b772"
+      },
+      {
+        "path": "org.gnome.desktop.sound.gschema.xml",
+        "sha256": "ff7dcae2b2b3d6109bf4d75511f0ce1538e39b0593bfcd33f35f12653c62be92"
+      },
+      {
+        "path": "org.gnome.desktop.interface.gschema.xml",
+        "sha256": "ff7b0f1f22c85ee8a134ca4ce78eb293f416409032efefdde9a5923f1bc2d478"
+      },
+      {
+        "path": "org.gnome.desktop.break-reminders.gschema.xml",
+        "sha256": "de47dd4e0b171c1eb0b7e81761a78f23d043abe662895e37e39a314f96bb192b"
+      },
+      {
+        "path": "org.gnome.settings-daemon.plugins.housekeeping.gschema.xml",
+        "sha256": "67c91d8cb3c3e679eaba93fb7305d21b664133bfa0fce168b548569f691d8e1f"
+      },
+      {
+        "path": "org.gnome.crypto.pgp.gschema.xml",
+        "sha256": "0f98183990eed20631ffd0195f921871b999e72d87a75303c7a9348fe3637f1f"
+      },
+      {
+        "path": "org.gnome.settings-daemon.peripherals.wacom.gschema.xml",
+        "sha256": "280b1f79bfd8f6c2f212bc6a4e8630096e1bf13480c92dd999407fce8ef97aca"
+      },
+      {
+        "path": "org.gtk.Settings.FileChooser.gschema.xml",
+        "sha256": "c7089f41d22b3854c05fe4996ff271949b40148a40b9c6f0ae0349792dc94b77"
+      },
+      {
+        "path": "org.freedesktop.Tracker3.Miner.Files.gschema.xml",
+        "sha256": "2f1af5abafaa5c683a5fff03427c13213300d1e9ec235e2fb3e56af08efc3080"
+      },
+      {
+        "path": "org.gnome.desktop.default-applications.gschema.xml",
+        "sha256": "a7c99035d26c1065e9c06541515d06e5ed4d105313f18afad44e628ba32ff280"
+      },
+      {
+        "path": "org.gnome.desktop.a11y.keyboard.gschema.xml",
+        "sha256": "429b25000a947e1b03724546e88b0f3dd6d3bac42addaec36d6cf81062c89cbb"
+      },
+      {
+        "path": "00_org.gnome.shell.gschema.override",
+        "sha256": "067c8a8d0a7eb0642b3969801e3c845436060e8cc6f39f4748c1d9772d410cf3"
+      },
+      {
+        "path": "org.gnome.desktop.wm.keybindings.gschema.xml",
+        "sha256": "23ab886d75e93a79b5829677d1d41f55d4ec27a823b239e9f1b80d5b7dd64efa"
+      },
+      {
+        "path": "org.gnome.desktop.a11y.gschema.xml",
+        "sha256": "f471028deedc07708638c7ea056ed1c6eb6632b987905321085288e836f337a8"
+      },
+      {
+        "path": "org.gtk.gtk4.Settings.ColorChooser.gschema.xml",
+        "sha256": "3c60a020ac823ad9c02394c8579296711a148fb6e15dac1c4dffa3470303af32"
+      },
+      {
+        "path": "org.gtk.Demo4.gschema.xml",
+        "sha256": "e20a078510ee04476c87f9f8452371ba829ee7de2f2d862ea732793719e74846"
+      },
+      {
+        "path": "org.gnome.crypto.cache.gschema.xml",
+        "sha256": "471a7453f9c4b0d59282dcedf241461d51ba1d480135d07b3fc057799f6b5b80"
+      },
+      {
+        "path": "org.gnome.Settings.gschema.xml",
+        "sha256": "5a802d297b53ed4aaa33a8156a944d36e68643634c56789eead84917a000318a"
+      },
+      {
+        "path": "gschema.dtd",
+        "sha256": "44a12f339042a3f5568a9cc86bb617fabaf4a25836b8c9510aa9de22431930c6"
+      },
+      {
+        "path": "org.gtk.Settings.EmojiChooser.gschema.xml",
+        "sha256": "22aba28a5a78745d87eeded88f1b86f7ddea24b1b90771151ef494c660a1b591"
+      },
+      {
+        "path": "org.gnome.nautilus.gschema.xml",
+        "sha256": "fe4e7fe8413a4d89262809e01524a9350ed83c707d0ea0d4a29ec7423d69d963"
+      },
+      {
+        "path": "org.gnome.desktop.input-sources.gschema.xml",
+        "sha256": "1255b1e6ba8fcccf43a87ff6ca2343fd55b99f2d89a936556ff1fa6a9b23069e"
+      },
+      {
+        "path": "org.gtk.gtk4.Inspector.gschema.xml",
+        "sha256": "0a716456c56ff6a4f3ad1d72b2205b2e982a231a9586cba32bc7d1bcc93cf45a"
+      },
+      {
+        "path": "org.gnome.mutter.gschema.xml",
+        "sha256": "acd1808a1b6c846943872d8d13a935c31ffc572e224828f68b103dd4c5fe21a3"
+      },
+      {
+        "path": "org.gnome.GWeather4.gschema.xml",
+        "sha256": "9f9b03d82ba3b3fcd40504b183a724671040afb4c657e7f270906b58206f37af"
+      },
+      {
+        "path": "org.gnome.shell.gschema.xml",
+        "sha256": "88a5b3d8d7cc42903e5756781c02a7000013e7dabeeb80855b1b36f7eda6f0d6"
+      },
+      {
+        "path": "org.gnome.desktop.datetime.gschema.xml",
+        "sha256": "db8f91d8966e24570844f4f0e52b6d5e4d0212cb398c71509f5f3cab6b39d292"
+      },
+      {
+        "path": "org.gnome.desktop.a11y.mouse.gschema.xml",
+        "sha256": "2409903ede1c85e899ff6576bc9711b9016704ee0434c22287d34d7e8c888c36"
+      },
+      {
+        "path": "org.gnome.login-screen.gschema.xml",
+        "sha256": "e94da7e9bfbe8c6eff341549c5568065f6d91388e4df6362cf03461dc766a2a0"
+      },
+      {
+        "path": "org.gnome.desktop.calendar.gschema.xml",
+        "sha256": "9c2f2169d8cc6cc818179e340db60e3edf1f1d804b0e84415d1ad1c7315d01e0"
+      },
+      {
+        "path": "org.gnome.settings-daemon.peripherals.gschema.xml",
+        "sha256": "c566d7adb153763b019af9fe052dadaf783270aab9cd413e6e3b15b48f992329"
+      },
+      {
+        "path": "org.gnome.desktop.privacy.gschema.xml",
+        "sha256": "304f26f2030d538f0e7ab1a8bae486e2b5e5879bc55c618e8931dc822284abd5"
+      },
+      {
+        "path": "org.gnome.TextEditor.gschema.xml",
+        "sha256": "800fa66f03266200723044a90cbf4bb5f9d6a98edf212e8f652a084f4375d22b"
+      },
+      {
+        "path": "org.freedesktop.ibus.gschema.xml",
+        "sha256": "80faacf042cd2d4692536f5b2b4e76b7ce2d4c82fcfc4c2cd8493b238bc38b7a"
+      },
+      {
+        "path": "org.gnome.desktop.thumbnailers.gschema.xml",
+        "sha256": "899bfc15c310051674714addc541824556a1e6d65b32cb715cba18662dc6ea02"
+      },
+      {
+        "path": "org.gnome.system.proxy.gschema.xml",
+        "sha256": "0f02db915e726017c17c1619ee9fd8f9ee7e6d4698f0fc160a0eb88b29f2bafd"
+      },
+      {
+        "path": "org.gnome.settings-daemon.plugins.sharing.gschema.xml",
+        "sha256": "25b726557bcfea0a12422518ba7d27c36d14526fa505bbd92d59dc7a007fdfbd"
+      },
+      {
+        "path": "org.gnome.desktop.peripherals.gschema.xml",
+        "sha256": "cc4e5467c6d171852d8ca898d876848e8b57f347902a432990ab91c7439efee1"
+      },
+      {
+        "path": "org.gtk.gtk4.Settings.EmojiChooser.gschema.xml",
+        "sha256": "893b260569e832bb96bfa5ff95893f85d81543069799f22bf66dd419ad50a702"
+      },
+      {
+        "path": "org.gnome.system.locale.gschema.xml",
+        "sha256": "5b1e65629a77dcd201f4d86932ad62c0c41ec61fb117f151966d13e69411e2dc"
+      },
+      {
+        "path": "org.gnome.desktop.session.gschema.xml",
+        "sha256": "a18788e5bc793c92ed0763c57aa33560a07527e785029c6d7fb224c95796c858"
+      },
+      {
+        "path": "org.gnome.nm-applet.eap.gschema.xml",
+        "sha256": "86aa19fbdf31374c52377eee5ce2d2a8d08623a240e23d39fbe6a68b2ecc4d99"
+      },
+      {
+        "path": "org.gnome.settings-daemon.plugins.xsettings.gschema.xml",
+        "sha256": "6e2dafedc47c2c6f3fcbc82eb88e34208ca73e35ca39ba4e40aa004ebbdaa3f6"
+      },
+      {
+        "path": "org.gnome.desktop.wm.preferences.gschema.xml",
+        "sha256": "cccc86360fb6fbe451e8b27c97d756c711d85dc21bc191075dab2b8613b055a1"
+      },
+      {
+        "path": "org.gnome.desktop.a11y.interface.gschema.xml",
+        "sha256": "a78954d4d3a60ca3b11790b0b9dec7a3f6f865d8fdb8106d08881756522c6624"
+      },
+      {
+        "path": "org.gnome.desktop.background.gschema.xml",
+        "sha256": "5947187d029261164eb3e938b529aafff3b3625f2f0bdc6185bbf5776afd28c6"
+      },
+      {
+        "path": "org.gtk.Settings.Debug.gschema.xml",
+        "sha256": "de0685fdc2f6e890e32445a79aa938e5566b8dd406dd71d6c6a66c69e3f941e3"
+      },
+      {
+        "path": "org.gnome.desktop.notifications.gschema.xml",
+        "sha256": "b7e983b5fa4cedccba7e6494c89de0997274986cdc69377a51589d97ac07acb4"
+      },
+      {
+        "path": "org.gtk.Settings.ColorChooser.gschema.xml",
+        "sha256": "e476913ef61e6719ff56c2e4c5b8b276af3020bfb0d007263c2a241835730882"
+      },
+      {
+        "path": "org.gnome.desktop.thumbnail-cache.gschema.xml",
+        "sha256": "20246fc5002a989287eb7e5e351cfd79245df63d0978b879882ff3d534b8f9fb"
+      },
+      {
+        "path": "org.gnome.system.gvfs.enums.xml",
+        "sha256": "6948557d3472caf38a6ef80966c1e880a3f64f556508afe70ca0f0b37a3c8b8c"
+      },
+      {
+        "path": "org.gnome.desktop.enums.xml",
+        "sha256": "8f8b68a34689ad5ede33a1d1d1c7ab3a8691aea83cf15bd3dcce82d9ded94f41"
+      },
+      {
+        "path": "org.gnome.desktop.media-handling.gschema.xml",
+        "sha256": "cdaa8e9740fb99852b237cfae8efcd0bb85d2de8b32ea483aad4919e3c87bb10"
+      },
+      {
+        "path": "org.freedesktop.TrackerMiners3.enums.xml",
+        "sha256": "cfa52fabfae4f21986ac15d8106f6f91f92d035e1fcab866656776b813fc069a"
+      },
+      {
+        "path": "org.gnome.desktop.a11y.magnifier.gschema.xml",
+        "sha256": "0316beb1020bf0e1594c1578d4ee17044d8d4f04a58e788631b054503f07e0a0"
+      },
+      {
+        "path": "org.gnome.evolution-data-server.addressbook.gschema.xml",
+        "sha256": "231ec9c542473d42f15dcd483891e82b0497a5623e30aa31374dbb0c3c620c83"
+      },
+      {
+        "path": "org.gtk.gtk4.Settings.FileChooser.gschema.xml",
+        "sha256": "e7a7482f7937a0588961613df2b14e509b08c1281bdb0b12ab279856d7d8fcea"
+      },
+      {
+        "path": "org.gnome.desktop.screen-time-limits.gschema.xml",
+        "sha256": "252058749b1c7c24fc497061f7c15623d7fffe988c3961b17ee05e7ae4fd9d51"
+      },
+      {
+        "path": "org.gnome.system.location.gschema.xml",
+        "sha256": "3fe90ebe8c851340249a1febe741b777c65b49a823201ead02f341be861060ed"
+      },
+      {
+        "path": "org.freedesktop.Tracker3.FTS.gschema.xml",
+        "sha256": "d4a96a14de9aa830818a0928e4ab987d3fb3114abd99683f04afff3283b7ee5d"
+      },
+      {
+        "path": "org.gnome.Evolution.DefaultSources.gschema.xml",
+        "sha256": "3cf064656716c98dce393da025bc121a9f791a72d9325d6102604f070e859a7a"
+      },
+      {
+        "path": "org.gnome.GWeather4.enums.xml",
+        "sha256": "4850d7df2eea3c3c3e4cafb2aa70fd7c7e4eb72f191bbef9ffae048bfb7e3ef9"
+      },
+      {
+        "path": "org.gnome.desktop.screensaver.gschema.xml",
+        "sha256": "82e61a216bfe8bdad9b98400389cb179f149071dba8ff89720a03cc83ca633a8"
+      },
+      {
+        "path": "org.gnome.desktop.a11y.applications.gschema.xml",
+        "sha256": "6e67c6d900b0e698681454948dc6a11904edc1059af69d83ae8ff1c69abfe4ca"
+      },
+      {
+        "path": "org.gnome.settings-daemon.plugins.power.gschema.xml",
+        "sha256": "dbfd56ba767b9677928fa178d19504efd67c14aa2d5a6ce4dd60493dc31785cd"
+      },
+      {
+        "path": "org.gnome.nm-applet.gschema.xml",
+        "sha256": "0dab7bd88d9b1e701f59961176fe5213596d3500eaea0bc4627889e6255ee45b"
+      },
+      {
+        "path": "org.gnome.desktop.lockdown.gschema.xml",
+        "sha256": "3578e779ecee25ec24cb69e7170411c03f578ecda3f48455b86305b442fcad65"
+      },
+      {
+        "path": "org.gnome.settings-daemon.plugins.media-keys.gschema.xml",
+        "sha256": "70be5ddc570d82696744e552ef1bf3b0f07f61c1f3900ec32cae403a2a5dbe38"
+      },
+      {
+        "path": "org.gnome.evolution.eds-shell.gschema.xml",
+        "sha256": "3cef34c338212bd6552fd07070def888727fabf0f31484c0ec376aa4760b779f"
+      },
+      {
+        "path": "org.freedesktop.Tracker3.Extract.gschema.xml",
+        "sha256": "17f0a20f7e95efa2a420e4ab4b4f2e43b2e58ee1bb03d1f19aad7a9c7f59d13c"
+      },
+      {
+        "path": "org.gnome.settings-daemon.enums.xml",
+        "sha256": "5fa52547883de70a819312004a4ba6d0cc3d4ab7f60d0445411e33eb96779b87"
+      }
+    ],
+    "source_owners": {
+      "org.gnome.desktop.search-providers.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.settings-daemon.plugins.color.gschema.xml": {
+        "name": "gnome-settings-daemon",
+        "version": "50.1-1+toddy2"
+      },
+      "org.gnome.evolution-data-server.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gnome.mutter.wayland.gschema.xml": {
+        "name": "mutter",
+        "version": "50.4-1+toddy1"
+      },
+      "org.gnome.evolution.shell.network-config.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gtk.gtk4.Settings.Debug.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy12"
+      },
+      "org.freedesktop.ColorHelper.gschema.xml": {
+        "name": "colord",
+        "version": "1.4.8-1+toddy1"
+      },
+      "org.gnome.system.smb.gschema.xml": {
+        "name": "gvfs",
+        "version": "1.60.2-1+toddy1"
+      },
+      "org.gnome.SessionManager.gschema.xml": {
+        "name": "gnome-session",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.settings-daemon.global-shortcuts.gschema.xml": {
+        "name": "gnome-settings-daemon",
+        "version": "50.1-1+toddy2"
+      },
+      "org.gnome.Terminal.gschema.xml": {
+        "name": "gnome-terminal",
+        "version": "3.60.0-1+toddy2"
+      },
+      "org.gnome.settings-daemon.plugins.gschema.xml": {
+        "name": "gnome-settings-daemon",
+        "version": "50.1-1+toddy2"
+      },
+      "org.gnome.evolution-data-server.calendar.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gnome.desktop.app-folders.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.sound.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.interface.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.break-reminders.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.settings-daemon.plugins.housekeeping.gschema.xml": {
+        "name": "gnome-settings-daemon",
+        "version": "50.1-1+toddy2"
+      },
+      "org.gnome.crypto.pgp.gschema.xml": {
+        "name": "gcr3",
+        "version": "3.41.2-1+toddy1"
+      },
+      "org.gnome.settings-daemon.peripherals.wacom.gschema.xml": {
+        "name": "gnome-settings-daemon",
+        "version": "50.1-1+toddy2"
+      },
+      "org.gtk.Settings.FileChooser.gschema.xml": {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy2"
+      },
+      "org.freedesktop.Tracker3.Miner.Files.gschema.xml": {
+        "name": "localsearch",
+        "version": "3.11.1-1+toddy1"
+      },
+      "org.gnome.desktop.default-applications.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.keyboard.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "00_org.gnome.shell.gschema.override": {
+        "name": "gnome-shell",
+        "version": "50.4-1+toddy1"
+      },
+      "org.gnome.desktop.wm.keybindings.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.gtk4.Settings.ColorChooser.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy12"
+      },
+      "org.gtk.Demo4.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy12"
+      },
+      "org.gnome.crypto.cache.gschema.xml": {
+        "name": "gnome-keyring",
+        "version": "50.0-1+toddy1"
+      },
+      "org.gnome.Settings.gschema.xml": {
+        "name": "gnome-control-center",
+        "version": "50.4-1+toddy1"
+      },
+      "gschema.dtd": {
+        "name": "glib",
+        "version": "2.88.3-1+toddy2"
+      },
+      "org.gtk.Settings.EmojiChooser.gschema.xml": {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy2"
+      },
+      "org.gnome.nautilus.gschema.xml": {
+        "name": "nautilus",
+        "version": "50.2.2-1+toddy1"
+      },
+      "org.gnome.desktop.input-sources.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.gtk4.Inspector.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy12"
+      },
+      "org.gnome.mutter.gschema.xml": {
+        "name": "mutter",
+        "version": "50.4-1+toddy1"
+      },
+      "org.gnome.GWeather4.gschema.xml": {
+        "name": "libgweather",
+        "version": "4.6.0-1+toddy1"
+      },
+      "org.gnome.shell.gschema.xml": {
+        "name": "gnome-shell",
+        "version": "50.4-1+toddy1"
+      },
+      "org.gnome.desktop.datetime.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.mouse.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.login-screen.gschema.xml": {
+        "name": "gdm",
+        "version": "50.2-1+toddy1"
+      },
+      "org.gnome.desktop.calendar.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.settings-daemon.peripherals.gschema.xml": {
+        "name": "gnome-settings-daemon",
+        "version": "50.1-1+toddy2"
+      },
+      "org.gnome.desktop.privacy.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.TextEditor.gschema.xml": {
+        "name": "gnome-text-editor",
+        "version": "50.1-1+toddy1"
+      },
+      "org.freedesktop.ibus.gschema.xml": {
+        "name": "ibus",
+        "version": "1.5.34~rc2-1+toddy1"
+      },
+      "org.gnome.desktop.thumbnailers.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.system.proxy.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.settings-daemon.plugins.sharing.gschema.xml": {
+        "name": "gnome-settings-daemon",
+        "version": "50.1-1+toddy2"
+      },
+      "org.gnome.desktop.peripherals.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.gtk4.Settings.EmojiChooser.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy12"
+      },
+      "org.gnome.system.locale.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.session.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.nm-applet.eap.gschema.xml": {
+        "name": "libnma",
+        "version": "1.10.6-1+toddy1"
+      },
+      "org.gnome.settings-daemon.plugins.xsettings.gschema.xml": {
+        "name": "gnome-settings-daemon",
+        "version": "50.1-1+toddy2"
+      },
+      "org.gnome.desktop.wm.preferences.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.interface.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.background.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.Settings.Debug.gschema.xml": {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy2"
+      },
+      "org.gnome.desktop.notifications.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gtk.Settings.ColorChooser.gschema.xml": {
+        "name": "gtk3",
+        "version": "3.24.52-1+toddy2"
+      },
+      "org.gnome.desktop.thumbnail-cache.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.system.gvfs.enums.xml": {
+        "name": "gvfs",
+        "version": "1.60.2-1+toddy1"
+      },
+      "org.gnome.desktop.enums.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.media-handling.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.freedesktop.TrackerMiners3.enums.xml": {
+        "name": "localsearch",
+        "version": "3.11.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.magnifier.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.evolution-data-server.addressbook.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gtk.gtk4.Settings.FileChooser.gschema.xml": {
+        "name": "gtk",
+        "version": "4.22.4-1+toddy12"
+      },
+      "org.gnome.desktop.screen-time-limits.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.system.location.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.freedesktop.Tracker3.FTS.gschema.xml": {
+        "name": "localsearch",
+        "version": "3.11.1-1+toddy1"
+      },
+      "org.gnome.Evolution.DefaultSources.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.gnome.GWeather4.enums.xml": {
+        "name": "libgweather",
+        "version": "4.6.0-1+toddy1"
+      },
+      "org.gnome.desktop.screensaver.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.desktop.a11y.applications.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.settings-daemon.plugins.power.gschema.xml": {
+        "name": "gnome-settings-daemon",
+        "version": "50.1-1+toddy2"
+      },
+      "org.gnome.nm-applet.gschema.xml": {
+        "name": "libnma",
+        "version": "1.10.6-1+toddy1"
+      },
+      "org.gnome.desktop.lockdown.gschema.xml": {
+        "name": "gsettings-desktop-schemas",
+        "version": "50.1-1+toddy1"
+      },
+      "org.gnome.settings-daemon.plugins.media-keys.gschema.xml": {
+        "name": "gnome-settings-daemon",
+        "version": "50.1-1+toddy2"
+      },
+      "org.gnome.evolution.eds-shell.gschema.xml": {
+        "name": "evolution-data-server",
+        "version": "3.60.2-1+toddy1"
+      },
+      "org.freedesktop.Tracker3.Extract.gschema.xml": {
+        "name": "localsearch",
+        "version": "3.11.1-1+toddy1"
+      },
+      "org.gnome.settings-daemon.enums.xml": {
+        "name": "gnome-settings-daemon",
+        "version": "50.1-1+toddy2"
+      }
+    },
+    "recovery": "Inspect package/receipt/postconditions before action. Retained GTK toddy12 archive/record restores previous owned cache and metadata; installed source XML remains intact. Verify old payload. No rollback executed and no uncertain replay.",
+    "archive_sha256": "2425d6c41ef051afb9838d7e2d3723d7a00f6c1b14faaa9bdea858575ef000a6",
+    "old_nonlegal_entries_unchanged": 906
+  },
+  "installed": {
+    "scope": "Owned GTK same-version shared schema cache: actual installed default-source lookup and all current key/type/default/range contracts; no user values changed. Installed Gvfs backends/Files GUI and complete desktop remain pending.",
+    "schemas": 132,
+    "keys": 1113,
+    "baseline_schemas_preserved": 131,
+    "baseline_keys_preserved": 1111,
+    "new_schemas": [
+      "org.gnome.system.smb"
+    ],
+    "module_or_schema_override_used": false,
+    "GTK_runtime_entries_unchanged": 906
+  },
+  "nautilus_promotion_custody": {
+    "state": "complete",
+    "stage": "/mnt/lfs/sources/stage/phase2-nautilus",
+    "stage_inode": 8335969,
+    "archive_sha256": "35a0448ad606814cc318c3032b07e052f858a4af04396a675ec665bba1d9dee1",
+    "record_sha256": "6a5da8d0123375d66a7d6bf54de3ac4f0101f36c0f31ec3411738ab2d37c3522",
+    "workstage_manifest_sha256": "bb0b585827219c3c96d2fc43f5191d4d0efbf1069023e9a32535347a91d45d07",
+    "before_free_bytes": 17293590528,
+    "scope": "Closed promotion usr copy only. Installed root, source, compiler, original workstage, archive and control retained.",
+    "installed_root_changed_paths": 0,
+    "after_free_bytes": 17310253056,
+    "recovery": "Verify the retained native archive and record, then extract into a new stage. Never replay custody.",
+    "reclaimed_bytes": 16662528
+  },
+  "target_available": 17308438528,
+  "scratch_available": 392814592,
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-gvfs-schema-union-evidence.tar.gz",
+    "bytes": 278461,
+    "sha256": "d8994ff9cb9cd1bab22873d41510aa857e093f013f2cddcd60bd2413ac979ad6"
+  }
+}
