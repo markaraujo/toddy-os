@@ -120,17 +120,22 @@ firefox_archive_storage.py --restore NEW-name; original empty placeholder is not
 an archive until this existing-file alias is restored. Existing candidate4aliases
 still restore separately via restore_firefox_security_source.py NEW-name.
 
-Exact next action: commit/check/sync prepared firefox_install.py/firefox-install.sh/
-firefox-check.sh, then read-only dependency preflight before one full-root run_step
-b02-firefox-install (recipe phase2/firefox-install.sh, post phase2/firefox-check.sh,
---user root). Root receipt /var/log/toddy/phase2/firefox-package-install-1.json and
-b02-firefox-install.* must not exist. Package153.7.0esr-1+toddy1, actual owned/pinned
-ELF providers plus audio/trust/fonts; no invented missing library support. Promote
-stage by controlled bind (no target-root stage duplicate), exact source notices,
-preflight16GiB+actualpayload+64MiB, normal native backend. Post actual payload/APT,
-UID101/NNP version/native desktop-entry consumer; GUI/TLS/content-sandbox/offline/
-restart gates remain separate. On interruption inspect real package/DB/receipt;
-never replay uncertain install. Full root before/after via run_step required.
+Native backend INSTALL COMPLETE: Firefox153.7.0esr-1+toddy1/amd64 actual815owned
+payload entries, archiveSHAba566c57d612640cc0342f374f64f7853bacdab6d0af6c1e38b37bdd085233b0.
+Recipe b02-firefox-install TERMINAL1,
+post not run,801rootchanges: final own stage comparison accidentally included
+/DEBIAN and /DEBIAN/control, which native payload correctly excludes. Read-only
+inspection proves these are the ONLY differences; root and binary owners0.
+Original root receipt stateinstalling/failed step preserved. NEVER rerun install,
+compiler or stage. Actual installed package is authoritative, not wrapper failure.
+
+Exact next action: commit/sync correction and firefox-verify.sh, then read-only
+run_step b02-firefox-verify-2 (recipe phase2/firefox-verify.sh, original post
+phase2/firefox-check.sh --user root). Verify retained archive and all stage/owned
+payload first; run actual unexecuted UID101/NNP version/native desktop consumer.
+New verification receipt /var/log/toddy/phase2/firefox-package-verify-2.json;
+original failed receipt stays unchanged, no package/source/compiler replay.
+No live guest writer. GUI/TLS/content sandbox/offline/restart still pending.
 
 Prepared but NOT dispatched: desktop-graphical-boot.sh/check.sh to enable owned
 GDM and replace exact unowned foundation multi-user default only; preserves user

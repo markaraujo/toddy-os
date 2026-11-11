@@ -76,7 +76,7 @@ def main():
     subprocess.run([sys.executable,str(R/'scripts/build/stage_package.py'),'firefox',VERSION,str(stage),'--source','firefox-153.7.0esr.source.tar.xz',
         '--recipe','scripts/build/phase2/firefox-install.sh','--depends',depends,'--install'],cwd=R,check=True)
     record=json.loads(Path('/var/log/toddy/packages','firefox_'+VERSION+'_amd64.json').read_text());assert record['installed']
-    assert payload(stage)==record['payload']
+    assert {n:r for n,r in payload(stage).items() if n!='/DEBIAN' and not n.startswith('/DEBIAN/')}==record['payload']
     data.update(state='complete',archive_sha256=record['archive_sha256'],payload_entries=len(record['payload']),stage_bytes=size);save();print(json.dumps(data))
 
 
