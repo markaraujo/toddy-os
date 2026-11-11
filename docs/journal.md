@@ -3731,3 +3731,15 @@ versions alone do not clear dependency ABI/security gates. Host108,326,338,560B
 free retains100GiB reserve with952MB margin; no additional large host allocation.
 Full make check374passed; source/provenance/source-only status not browser acceptance.
 [Source review](evidence/B02-firefox-security-source.json).
+
+## B02 desktop network recipe prepared alongside healthy compiler — 2026-11-11
+
+Read-only installed units/ownership confirmed NM disabled, networkd/resolved
+enabled with retained foundation DHCP/resolver. ADR0226 stages explicit inverse
+marker conditions, daemon-only startup, keyfile/resolved defaults and a documented
+stop-before-switch recovery. Original configuration package install/postcheck
+recipes prepared; no guest metadata sync, package/service/network write while
+Firefox compiler owns lock. Three actual host systemd259 temporary-path tests
+and full make check377passed. Native261/PID1/normal-user polkit/DHCP/DNS/GUI/
+offline/reboot/recovery remain required.
+[Prepared evidence](evidence/B02-desktop-network-prepared.json).

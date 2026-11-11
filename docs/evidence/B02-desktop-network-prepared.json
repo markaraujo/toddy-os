@@ -1,0 +1,27 @@
+{
+  "scope": "Prepared configuration package and host temporary-path tests only",
+  "guest_installed": false,
+  "guest_writer": "Existing Firefox compiler retained; no metadata sync, package transaction, daemon activation or network write dispatched",
+  "inputs": {
+    "networkmanager": "1.58.1-1+toddy1",
+    "systemd": "261.2-1+toddy3",
+    "toddy-base-config": "0.1-1",
+    "networkmanager_enabled": false,
+    "networkd_enabled": true,
+    "resolved_enabled": true,
+    "resolver_symlink": "/run/systemd/resolve/stub-resolv.conf"
+  },
+  "recipes_sha256": {
+    "scripts/build/phase2/desktop_network.py": "2cde670966344276e7410f8ed50e2b266f37a4efeb0519100184c2e53e9f03dc",
+    "scripts/build/phase2/desktop-network-install.sh": "e39f24f0862db8d829766377e928f9fc41afc45b98856a53b2c7cc9f2fe93005",
+    "scripts/build/phase2/desktop-network-check.sh": "bd705820da94ad49cb3131d7c7d8034c684bdbd6c389d82040ced75d7d8f8071",
+    "tests/test_desktop_network.py": "0ccf213d818c3537410408a8c98163345f64249049e4b8a8cd9cdb7aaca0f95a"
+  },
+  "host_fixture": {
+    "systemd_version": "systemd 259 (259.5-0ubuntu3.4)",
+    "tests": "Three actual host tests passed, no skips: inverse conditions on marker present/absent, only daemon enabled/stage preserved, redirected stage refused",
+    "full_check": "377tests passed",
+    "full_log_sha256": "ae7ce9452c8795a540f2978025e13dc153f3fb65b9e4643d77f50450cef56815"
+  },
+  "native_acceptance": "Pending install/target postcheck/PID1/DHCP+DNS/normal-user polkit/GUI/offline/reboot/recovery; host fixtures do not satisfy these gates"
+}

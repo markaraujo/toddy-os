@@ -705,6 +705,7 @@
   "active_work": {
     "story": "B02",
     "verified": [
+      "Desktop network ownership recipe prepared on host: actual installed NM disabled versus foundation networkd enabled; staged inverse marker conditions, daemon-only enablement, keyfile/resolved defaults and retained recovery configuration. Three real host condition/stage tests and377repository tests passed. No guest install/sync/service/network write; target/native GUI/DHCP/DNS/polkit/offline/recovery remain pending.",
       "Browser security gate: official MFSA2026-93/100/127 include high-impact later ESR corrections; baseline153.2 not release-eligible. Separate153.7.0esr candidate archive verified against publisher SHA512 and pinned SHA256, original lock retained. Host source metadata scan0 (510287members/21critical files), toolkit/root configure unchanged; full compatibility/license/security gates pending while original healthy compiler continues privately; no corrected browser installed/accepted.",
       "Firefox configure2 passed with Wayland, system NSS/NSPR/ICU, main sandbox and all6upstream WASM library protection flags. Original system-PNG/APNG configure failure retained, one bundled-PNG1.6.58 selection preserving foundation. Private SDK25 C/C++ WASM compile/link and no-egress/caps0/NNP/read-only tool/source/system mutation denial passed. Actual compiler running; not browser install/UI/security acceptance.",
       "Private NASM3.02 isolated source compile/stage qualified: actual assembly/link/exit42/exact machine bytes/disassembly passed. Original2 failure retained (three official600 files unreadable to UID101); one metadata-only readability correction, original contents unchanged. WASI SDK25 bootstrap asset/source commits/notices pinned, execution/isolation/WASM C/C++ qualification pending.",
@@ -903,7 +904,7 @@
       "Minimal desktop branding/offline usability/security-ABI review and reference guest measurements.",
       "UDisks/Samba prerequisites and full Settings UI remain; CUPS local native SDK accepted, printing/driver/service integration unqualified. MIT local SDK installed; enterprise authentication is unqualified."
     ],
-    "verified_at": "2026-11-11T07:26:21.765200+00:00",
+    "verified_at": "2026-11-11T07:38:07.346433+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

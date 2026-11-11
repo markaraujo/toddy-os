@@ -6,6 +6,24 @@ blocked, B05-B13/G2 pending. Physical foundation tests unperformed. No Phase2 IS
 
 ## Current slice: compiler feasibility and browser security overlay
 
+### Independent host network recipe prepared — no guest write
+
+ADR0226 / [prepared evidence](evidence/B02-desktop-network-prepared.json).
+Actual readonly target: NM1.58.1 installed/disabled; networkd/resolved enabled,
+owned foundation DHCP file and resolver stub retained. Prepared original package
+scripts/build/phase2/desktop-network-install.sh and desktop-network-check.sh,
+generator desktop_network.py: marker/inverse service conditions choose one manager,
+only NMdaemon wanted, no wait-online enablement, keyfile/resolved integration.
+All4/etc files conffiles; recovery stops current manager before switch. Stock
+service security/user profiles/credentials untouched. Nothing installed/synced/
+activated while compiler runs. Three host tests with real systemd259 condition
+evaluator passed; full make check377passed. NOT target261/native networking proof.
+After original compiler TERMINAL and exact result verification, this prepared
+small package is eligible B02 work while browser overlay capacity is resolved.
+Use standard single-writer/full-root recipe transaction and affected target
+postcheck/native network GUI/polkit/DHCP+DNS/offline/reboot/recovery gates. Do not
+run install before inspecting actual package/stage/operation receipts.
+
 ### Security acceptance boundary — ADR0225
 
 Current upstream review found high-impact same-ESR corrections after153.2,
