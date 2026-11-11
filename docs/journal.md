@@ -3478,3 +3478,15 @@ remains parked; next eligible CUPS source/build review.
 2026-11-11: Native Nautilus2 reused9qualified results and passed async-directory/5creation cases. Final Files-view wrapper failed1 before executable launch because original LocalSearch helper makes its indexed tempdir in readonly cwd. Raw report/base/input identity retained, container0. Prefix2 qualifies11programs/64GLib cases without replay. Prepared one focused correction: private writable cwd plus readonly test-subtree alias preserving original argv/executable inode+hash. Native3 preflight passed; not dispatched yet, builder stopped. ADR0221 updated, persistent per-cause budget retained. No installed Nautilus/full B02 acceptance.
 
 2026-11-11: Native Nautilus3 terminal0, final Files-view original wrapper/9cases passed from private writable fixture cwd with readonly test alias. Reused11successful results/64GLib cases: combined12program/73case focused gate plus actual metadata/3-hit search/async callbacks qualified, no skips, normal GDM/PAM seat, exact readonly source/cache/image, all input maps/base unchanged, container0. Raw failed aggregates1/2 retained; collector and cwd causes resolved without original program replay or global changes. No full24suite/installed Files/B02 acceptance. Next generation2 builder recovery and controlled native packaging.
+
+### B02 — Restore qualified Nautilus cache and prepare owned packaging
+
+Actual builder boot cbde87fc-f1a3-4d33-806f-25f8e25d8ede restored existing six
+volumes, Systemd source, Glycin companion, kernel COW and generation2 cache once.
+80,561entries/37,820regular inode classes/15aliases verified unchanged; no compile
+or native test replay. Strict Nautilus qualifier binds154stage files/277compiler
+ELFs and native12program/73GLib-case evidence. Five staged ELFs have26direct
+SONAMEs mapped to owned packages; two user D-Bus activation files, no SUID/SGID
+service added. Native package dispatch is next; installed GUI, shared schemas
+and desktop integration remain unqualified. Frozen BLFS13.1-systemd Nautilus
+source50.2.2 and original source/recipe identities retained.

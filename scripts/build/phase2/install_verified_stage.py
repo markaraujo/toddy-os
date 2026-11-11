@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'nautilus': ('50.2.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy11), libadwaita (= 1.9.3-1+toddy1), cairo (= 1.18.4-1+toddy1), gdk-pixbuf (= 2.44.7-1+toddy2), gexiv2 (= 0.16.2-1+toddy1), glycin (= 2.1.5-1+toddy1), glycin-gtk4 (= 2.1.0-1+toddy1), gnome-autoar (= 0.4.5-1+toddy1), gnome-desktop (= 44.5-1+toddy1), graphene (= 1.10.8-1+toddy1), gst-plugins-base (= 1.28.6-1+toddy1), gstreamer (= 1.28.6-1+toddy1), icu (= 78.3-1+toddy1), pango (= 1.58.2-1+toddy1), libportal (= 0.9.1-1+toddy1), tinysparql (= 3.11.1-1+toddy1), wayland (= 1.26.0-1+toddy1), localsearch (= 3.11.1-1+toddy1)', 'nautilus-50.2.2.tar.xz', 'usr/bin/nautilus'),
     'localsearch': ('3.11.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gexiv2 (= 0.16.2-1+toddy1), gstreamer (= 1.28.6-1+toddy1), gst-plugins-base (= 1.28.6-1+toddy1), icu (= 78.3-1+toddy1), libjpeg-turbo (= 3.2.0-1+toddy1), libpng (= 1.6.58-1+toddy1), libseccomp (= 2.6.1-1+toddy1), libxml2 (= 2.15.3-1+toddy1), tiff (= 4.7.2-1+toddy1), tinysparql (= 3.11.1-1+toddy1), upower (= 1.91.3-1+toddy1), python (>= 3.14), python (<< 3.15), pygobject (= 3.56.3-1+toddy1), dbus (= 1.16.2-1+toddy1)', 'localsearch-3.11.1.tar.xz', 'usr/bin/localsearch'),
     'rpcsvc-proto': ('1.4.4', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), libtirpc (= 1.3.7-1+toddy1)', 'rpcsvc-proto-1.4.4.tar.xz', 'usr/bin/rpcgen'),
     'perl-parse-yapp': ('1.21', 'perl (>= 5.44), perl (<< 5.45)', 'Parse-Yapp-1.21.tar.gz', 'usr/bin/yapp'),
@@ -1367,6 +1368,9 @@ if __name__ == '__main__':
     if name=='librest':
         from qualify_librest import qualify as qualify_librest
         qualify_librest(ROOT)
+    if name=='nautilus':
+        from qualify_nautilus import qualify as qualify_nautilus
+        qualify_nautilus(ROOT)
     if name=='localsearch':
         from qualify_localsearch import qualify as qualify_localsearch
         qualify_localsearch(ROOT)

@@ -6,7 +6,33 @@ B05–B13/G2 pending. Weighted accepted Phase2 progress13%, no partial B02 perce
 ADR0113 records authorization. Physical foundation tests unperformed. No accepted
 complete GNOME/login/basic apps or Phase2 ISO exists.
 
-## Current slice and exact next action
+## Current verified handoff — Nautilus packaging
+
+Native focused Nautilus gate published608eafd: all3workflows passed; exact
+publicHTTP200/indexSHA29e45ace915c5358b9c0872bf44e32af236f19a51f41e2ff2ff52e798c4efff8.
+Native3 container exited0; no test remains. Builder restarted once, actual boot
+cbde87fc-f1a3-4d33-806f-25f8e25d8ede. nautilus3-builder-volumes-restored-1,
+glycin-work-restored-nautilus3-1 and kernel-work-restored-nautilus3-1 complete;
+same6volumeUUIDs/Systemd7193files/Glycin5538/kernelCOW retained.
+nautilus-native3-scratch-restored-1 completed with generation2,80,561entries,
+37,820distinct regular inode classes,15bind aliases plus tmpfs root; exact
+bytes/modes/owners/timestamps/symlinks/hardlinks verified. Scratch624,537,600B,
+target17,342,492,672B available. Never replay completed restoration receipts.
+
+Nautilus packaging implementation and read-only preflight passed:154stage files,
+15,000,184B,5ELFs/26direct SONAMEs mapped to owned dependencies; no collisions,
+no existing package/transaction/promotion. Full native3 report imported root0600;
+strict qualifier passed exact fixture/source/compiler/stage/12program/73case proof.
+Only two upstream user D-Bus activation definitions, no privileged service.
+Upstream main rejects root before application creation; nonroot GUI/version,
+system schema union and icons/MIME remain separate integration gates.
+Tests selected: shell syntax, Python compilation, actual unchanged-stage qualifier,
+owned dependency/space/collision preflight and repository make check. No original
+native/compiler tests repeated. Next: dispatch exactly once b02-nautilus-install
+through run_step using nautilus-install.sh/nautilus-check.sh, then inspect recipe/
+post exits and installed bytes before any followup. Preserve uncertain state.
+
+## Earlier slice history (superseded where noted)
 
 Latest verified slice: Settings schema integration published at a7a7c97;
 all three workflows passed and exact public index HTTP200/SHA256
