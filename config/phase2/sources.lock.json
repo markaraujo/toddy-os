@@ -2975,6 +2975,18 @@
       "book_md5": "69584d5b0f0304bb2a23cffcd982c5de",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "gvfs",
+      "version": "1.60.2",
+      "filename": "gvfs-1.60.2.tar.xz",
+      "url": "https://download.gnome.org/sources/gvfs/1.60/gvfs-1.60.2.tar.xz",
+      "sha256": "a8d7744615a488a559302fe0cc8f418d5b44aba3c2ba2163e5a9e6f607c1be9a",
+      "reference": "BLFS13.1-systemd gnome/gvfs.html",
+      "book_page_sha256": "ecff8579f8b9e31680b4de9b49e049ae020a64a3c7fbc409b4e3f4c4026e445c",
+      "book_md5": "467f7d017234e5aab24d8e0a4e09deff",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

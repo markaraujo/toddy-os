@@ -3534,3 +3534,13 @@ Trash sidebar browsing FAILED with unsupported URI; screenshot preserved and
 ledger opened, zero corrections. Local-operation pass is not complete Files/B02
 acceptance. Qualify required Gvfs runtime and affected Trash recovery next, after
 verified generation3 builder restoration. No successful native tests repeated.
+
+### B02 — Verified builder recovery and frozen Gvfs correction input
+
+Actual boot2099f4e9-db42-413d-9ade-41e29ae24160 restored same accepted volumes/
+source/COW and generation3 cache with82,547entries/39,521regular inode classes.
+Gvfs daemon absent, matching the observed unsupported trash URI. Frozen BLFS13.1
+systemd gnome/gvfs.html selects Gvfs1.60.2; official archive integrity pinned.
+Prepared isolated36MB-estimate release recipe and original outputstream local
+driver; no source patches/fallbacks or privileged policy relaxation. Backend
+activation, privilege refusals and actual Trash GUI remain pending qualification.

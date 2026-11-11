@@ -55,16 +55,30 @@ file postconditions, NOT the failed Trash browser. Gvfs runtime is the next
 unqualified dependency to inspect/implement, then recheck affected trash browse/
 restore/refusal/recovery; do not replay passing compiler/native/local actions.
 
-EXACT NEXT ACTION: inspect native container0/base unchanged and absent builder,
-start designated builder once; restore same6volumes/Systemd/Glycin/kernelCOW using
-NEW files-gui1-* receipt identities, then generation3 via
-phase2_restore_settings_scratch.py --generation 3 --receipt files-gui1-scratch-restored-1.
-Never replay completed native1/custody1-3/restoration/installation. Inspect frozen
-.local/books/gnome/gvfs.html and exact installed runtime before pinning/building
-required minimal Gvfs backends. Preserve existing credentials/privilege policy.
-Builder currently STOPPED after native test, durable generation3 retained and
-restoration-qualified. Other B02 browser/network/audio/offline/theme/persistence/
-recovery gates remain; complete all B02 then STOP before another story.
+Builder recovery after FilesGUI1 is COMPLETE, actual boot
+2099f4e9-db42-413d-9ade-41e29ae24160. New files-gui1-builder-volumes-restored-1,
+glycin-work-restored-files-gui1-1,kernel-work-restored-files-gui1-1 and
+files-gui1-scratch-restored-1 completed; same6UUIDs/Systemd7193files/Glycin5538/
+kernelCOW and exact generation3 restored82,547entries/39,521inode classes/16aliases.
+No compile/test/install replay. Scratch526,921,728B/target17,308,356,608B free.
+Actual Gvfs daemon absent. Never replay any completed recovery/native1 operation.
+
+Frozen BLFS13.1-systemd gnome/gvfs.html selects1.60.2,36MB estimate. Official
+archive MD5 matched; SHA256a8d7744615a488a559302fe0cc8f418d5b44aba3c2ba2163e5a9e6f607c1be9a
+pinned before use. Preparation/build recipes ready, not executed. Existing owned
+SMB/archive/HTTP/SFTP/UDisks/admin backends retained; optional absent camera/
+mobile/optical/discovery/cloud disabled with documented Meson options. Upstream
+admin policy retains no/inactive=no/active=auth_admin_keep; no policy bypass.
+Original outputstream local18case driver is planned, not run; all backend/security/
+Trash GUI qualification remains separate. Reserve monitor128MiB retained.
+
+EXACT NEXT ACTION: commit reviewed source/recipes, sync metadata only; stream
+exact archive into prepare_gvfs_input.py ONCE, then job.py gvfs-1 with isolated
+bash recipe. Check actual source/prepare/job receipts before dispatch; no replay.
+Record compiler/stage/actual original driver exits and required owned dependency
+closure before native packaging. Native Trash browse/restore/refusal/recovery
+must pass before closing this integration gap. Other B02 gates remain; finish
+ALL B02 then STOP before another story.
 
 ### Verified recovery and packaging provenance
 
