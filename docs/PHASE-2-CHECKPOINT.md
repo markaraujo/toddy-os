@@ -123,6 +123,23 @@ inspect same root receipt/process/log before any action. Host build controller l
 .local/phase2/firefox-security-build-controller-2.log appears only when wrapper
 returns; missing host log is not failure. Root and compiler receipts/logs authoritative.
 
+Host-only preparation while compiler runs (NOT synced/dispatched):
+- firefox-security-stage.sh uses pinned upstream mach install/DESTDIR=/stage,
+  validates compiled result2,153.7AppVersion, native GLib desktop parsing, exact
+  upstream icons and relative launcher; full root stage/link/ELF qualification due.
+- firefox_archive_storage.py prepares guarded same-byte original archive relocation
+  to browser volume/read-only alias, freeing807MBtarget space before installation.
+  Both full hashes verified before old duplicate deletion; fixed paths/receipt and
+  existing-file restore mode, no format/source-byte change. Native qualification due.
+Pinned BLFS pageSHAe3fcd198bbfa3b8ecae24abce029c2a04809bc300c9dc295de92a9446889d0a8
+and actual153.7 mach_commands.py/installer packager.mk confirm DESTDIR support.
+Do not execute either script while compiler owns guest lock. On terminal finish
+compiler evidence, then source archive storage/native restore checks, isolated
+staging and directly affected package/ABI checks. Consolidate evidence/publication.
+Read-only lookahead also found default.target still multi-user, no display-manager
+alias; default native graphical boot remains an explicit B02 integration task.
+Actual kernel CONFIG_SND_HDA_INTEL=m exists; audio runtime unproven.
+
 Exact next action: inspect observer's actual identity/latest/terminal and root
 controller/worker postconditions. If healthy keep monitoring without restart or
 second guest writer; independent host source prep/read-only review only. On terminal
