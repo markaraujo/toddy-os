@@ -93,7 +93,11 @@ flags; all archives, old compiler/ELF evidence, new source/work and SDK/NASM/log
 retained. No format/resize/global security change; one writer/build.lock. A partial
 retirement must be reconciled from actual receipt/mount/tree, never blindly replayed.
 Original source receipt509835non-dot/3514842428regular bytes; original archive
-must be measured independently. Prepared script scripts/build/phase2/retire_firefox_baseline_source.py, NOT dispatched.
+must be measured independently. Script scripts/build/phase2/retire_firefox_baseline_source.py DISPATCHED once,
+input616fde8/tool session54502, actual guestpid6486/start246354/boote146fad4,
+producerSHAe568a7f12dda15de30f6ee5c4a2848fee9fb745f80457b64061eb3e3031cb6cc.
+Last observed verifying-old-source221184entries/208879regular files, actual live.
+NEVER dispatch again or run another guest writer while it remains active.
 It reuses generic archive verifier with explicit old counts, actual filtered6GiB
 noswap/noexec tmpfs restore then complete bytes/file modes/owners/path comparison.
 Only then source self-bind temporarilyRW, old children retired, marker/rootinode/
@@ -101,7 +105,7 @@ read-only roles retained; full installed root before/after and new candidate/bas
 mount inspections. Actual MemAvailable10.74GB supports3.515GBlogical+4GiBmargin;
 no extra compressed copy or host reserve consumption. Original archive807705672B
 exists as regular file. Existing builder context/receipt must be absent.
-Commit/check/sync then dispatch once, guest script above. Controller log
+Dispatched guest script above; do not repeat. Controller log
 .local/phase2/firefox-old-source-custody-controller-1.log, guest receipt
 /var/log/toddy/phase2/firefox-baseline-source-custody-1.json and context
 /var/lib/toddy/phase2-custody/firefox-baseline-source-1. Operation may exceed10min
@@ -111,10 +115,14 @@ replay. Recovery uses retained authenticated archive into NEW directory and full
 verifier; directory timestamp/ACL/xattr identity explicitly unclaimed.
 
 Prepared compiler supervision now checks inode2048reserve+1024margin as well as
-byte128MiB+64MiB before/through build. Not yet synced or retried. Add explicit
-corrected resume (new receipts/logs, original failure preserved) only after actual
-inode recovery; reuse unchanged successful configure, diagnose partial make outputs
-without silently overwriting uncertain writes. Failure ledger inode cause0corrections,
+byte128MiB+64MiB before/through build. New script firefox-security-resume-build.sh PREPARED, not synced/dispatched.
+It requires unchanged exact config/mozconfig, prior terminal ENOSPC and intact
+original result/log, writes only new compile-2.log/result-2.json, checks inode/byte
+reserves and retains prior hashes. Native source file_generate.py93-152 inspection:
+exceptions return1, dependency generation only on success, normal make incremental
+recovery after diagnosed capacity correction; do not delete unknown partial outputs.
+Root controller must require custody COMPLETE/inode recovery before launch. Reuse
+unchanged configure; do not repeat installation or source extraction. Failure ledger inode cause0corrections,
 source/root-dot cause resolved via full existing-tree verification. Target installed
 capacity and browser stage/ABI/sandbox/native UI still pending. Full B02 incomplete.
 

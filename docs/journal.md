@@ -3944,3 +3944,15 @@ removing only old children; retain root inode/readonly roles/explicit marker and
 all archive/compiler/ELF/newsource/tool evidence. Full installed-root comparison.
 Directory timestamp/ACL/xattr identity is not claimed. General verifier adds
 explicit counts with unchanged defaults for new source. No operation dispatched.
+
+
+### B02 source custody live and checked compiler resume prepared — 2026-11-11
+
+Old source custody dispatched once under build.lock; actual guest6486/start246354/
+boote146fad4, same producer hash recorded. Full source comparison advancing beyond
+208879regular files; no second guest writer. Prepared separate resume worker
+requires exact unchanged config/mozconfig and prior terminal ENOSPC, preserves
+first result/log hashes, new result2/log2 and inode+byte supervision. Actual native
+file_generate.py93-152 confirms dependency output on success and failure return1;
+use normal make recovery after capacity correction, no speculative partial-output
+deletion. Resume requires completed custody/inode recovery; not dispatched/synced.
