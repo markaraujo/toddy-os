@@ -41,11 +41,15 @@ actual power-on GNOME is still unproven. Do not replay successful migration.
 
 ## Exact next action
 
-Implement scripts/host/phase2_native_browser.py and phase2-native-browser-probe.py
-using existing phase2_native_network.py, phase2_gdm_owner_control.py and network
-probe's normal GDM/PAM account/private memory-only password channel. New context
-.local/phase2/native-browser-runtime-1 must not exist. Browser controller NOT yet
-implemented/dispatched. Do not run a nonexistent command from an older summary.
+Native browser controller/probe and URL/text QMP input are implemented locally.
+Next: finish focused repository checks, commit reviewed inputs, then dispatch ONCE
+`python3 scripts/host/phase2_native_browser.py` with log
+`.local/phase2/native-browser-controller-1.log`. Context
+`.local/phase2/native-browser-runtime-1` must be absent before first dispatch.
+No native browser job has been dispatched yet. Readonly preflight log is
+`.local/phase2/browser-preflight-1.log`; verify its terminal exit before use.
+Test selection: input encoding two cases, Python syntax, repository make check;
+actual new graphical boot/browser scope next, unchanged foundation suites reused.
 
 Preflight actual installed browser/GDM/GTK/kernel inputs and current cache/mount
 state, retain accepted exact descriptors. Stop builder once only after preflight,

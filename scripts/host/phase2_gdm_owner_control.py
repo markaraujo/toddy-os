@@ -20,6 +20,16 @@ def connect(path, stop, deadline):
     return s
 
 
+def text_keys(char):
+    if char in string.ascii_lowercase+string.digits:return [char]
+    if char in string.ascii_uppercase:return ['shift',char.lower()]
+    plain={'-':'minus',' ':'spc','.':'dot','/':'slash','=':'equal'}
+    shifted={':':'semicolon','_':'minus','?':'slash','&':'7','+':'equal'}
+    if char in plain:return [plain[char]]
+    if char in shifted:return ['shift',shifted[char]]
+    raise ValueError('Unsupported native input character')
+
+
 def run(context, stop):
     resource.setrlimit(resource.RLIMIT_CORE,(0,0))
     events = []
@@ -53,8 +63,8 @@ def run(context, stop):
             time.sleep(.10)
         def text(value):
             for char in value:
-                assert char in string.ascii_lowercase+string.digits+'-'
-                key('minus' if char=='-' else char)
+                call('send-key',{'keys':[{'type':'qcode','data':c} for c in text_keys(char)],'hold-time':60})
+                time.sleep(.10)
         listener = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
         listener.bind(str(context/'control'))
         os.chmod(context/'control', 0o600)
@@ -85,12 +95,13 @@ def run(context, stop):
                     reply = {'private_password_sent':True}
                 elif action == 'text':
                     value = request['text']
-                    assert len(value)<=80 and all(c in string.ascii_lowercase+string.digits+'-' for c in value)
+                    assert len(value)<=160
+                    for char in value:text_keys(char)
                     text(value)
                     reply = {'text_sent':True}
                 elif action == 'key':
                     codes = request['codes']
-                    assert 1<=len(codes)<=3 and all(c in ['ret','esc','tab','spc','backspace','up','down','left','right','home','end','ctrl','alt','shift','meta_l','f4','a','s','o','q','n','v','t','c','x','l','r','f2','delete','f10','f9','minus','equal'] for c in codes)
+                    assert 1<=len(codes)<=3 and all(c in ['ret','esc','tab','spc','backspace','up','down','left','right','home','end','ctrl','alt','shift','meta_l','f4','a','s','o','q','n','v','t','c','x','l','r','f2','delete','f10','f9','f5','f11','minus','equal','dot','slash','semicolon','w','p','i','e','b'] for c in codes)
                     call('send-key', {'keys':[{'type':'qcode','data':c} for c in codes], 'hold-time':80})
                     reply = {'key_sent':True}
                 elif action == 'pointer':
@@ -101,6 +112,11 @@ def run(context, stop):
                         call('input-send-event', {'events':[{'type':'btn','data':{'button':'left','down':True}}]})
                         call('input-send-event', {'events':[{'type':'btn','data':{'button':'left','down':False}}]})
                     reply = {'pointer_sent':True}
+                elif action == 'mark':
+                    phase=request['phase']
+                    assert phase in ['browser-open','input-verified','navigation-verified','restart-verified','tls-verified','offline-verified','stop-verified','responsive-verified']
+                    transport.write(('PHASE '+phase+'\n').encode())
+                    reply={'phase_recorded':phase}
                 elif action == 'done':
                     transport.write(b'DONE\n')
                     reply = {'guest_observation_finish_requested':True}
