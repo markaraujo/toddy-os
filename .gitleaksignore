@@ -189,3 +189,7 @@ docs/evidence/B02-modemmanager-stage.json:generic-api-key:982
 # Committed counterparts of reviewed ModemManager public object digests.
 20b348c64411be4f20f8f904b0d0f6879e1572fc:docs/evidence/B02-modemmanager-stage.json:generic-api-key:949
 20b348c64411be4f20f8f904b0d0f6879e1572fc:docs/evidence/B02-modemmanager-stage.json:generic-api-key:982
+
+# Reviewed UUID4 diagnostic invocation nonce, no authentication/service capability.
+# Exact historical finding only; public report now retains its SHA256.
+24ba4a19a410cc9813054759bb823c594b0cd86e:docs/evidence/B02-kernel-fuse-native.json:generic-api-key:6

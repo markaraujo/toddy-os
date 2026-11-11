@@ -3,7 +3,6 @@
   "source_commit": "38ea18bdd5674d30ada0ea863eec68be5d202922",
   "prepared": {
     "scope": "Native static-libc diagnostic initramfs only, not installed OS or Systemd/desktop acceptance",
-    "token": "e089e6854b0a4fb0a388ccefe33b442d",
     "kernel_sha256": "0482366cc51727f76af11611275b7124bcd9aadbd76d231ca6fd44d22cb0dc77",
     "source_sha256": "c56c1dfc3e4ae53c86f82011e46745552d05db562c9071ff5ba4b83ee147f630",
     "init_sha256": "2a4ad6705f85eb36b18bbd0083f9895d663fa658e189dcc325c2cf2aaec4cefa",
@@ -12,7 +11,8 @@
     "initramfs_sha256": "c93df43f9f3504b2310555b12917a04ae44ad99db02c6461f3c0536f9689d176",
     "compile_exit": 0,
     "static_linked": true,
-    "uid": 101
+    "uid": 101,
+    "invocation_nonce_sha256": "138f0d4fb7c6265251cce7120061769f0fd0e79500b73368de4748688d3521ce"
   },
   "result": {
     "complete": true,
@@ -46,5 +46,6 @@
   },
   "first_failed_context": ".local/phase2/native-kernel-fuse-1",
   "first_failure": "Static init without udev left device mode denying UID101. Original module load/kernel boot succeeded; original aggregate false retained.",
-  "corrected_without_kernel_recompile": true
+  "corrected_without_kernel_recompile": true,
+  "public_nonce_handling": "Raw synthetic invocation nonce omitted; original private intent/serial hash binding retained. It is not a provider/service credential."
 }
