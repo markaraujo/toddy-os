@@ -1,0 +1,64 @@
+{
+  "scope": "Native owned FUSE kernel/archive, exact rollback and original20module payload, actual Kmod alias/vermagic/dependency/APT and unchanged boot menu with revised exact dependency. Installed-system boot/user FUSE filesystem acceptance remains pending.",
+  "steps": {
+    "b02-linux-kernel-fuse-package.success": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 0,
+      "recipe_sha256": "50c636be60642261bad6cc7d57e2ed3bdd0d16e60671553e14c54aaa629aafc4",
+      "postcheck_sha256": "d963f372d77eba1c973802e56a8f9bf33abc08490294d60f646fd22f95ef3df9",
+      "log_sha256": "d606c7c54c5176a8bd7925504fab3590a648c690bda9e68c00e3815ec1ca5fb5"
+    },
+    "b02-linux-kernel-fuse-install.failed": {
+      "recipe_exit": 0,
+      "postcheck_exit": 1,
+      "changed_paths": 23,
+      "recipe_sha256": "a47b941d8fd581fb47359bb6e67852706c9701b0a222a2e44c0d25c7759e6928",
+      "postcheck_sha256": "92cf10a5cf22efa351e9eb93d80e6d47a10401c27a2143cc98336daf27d2e9b4",
+      "log_sha256": "3ca91b8817679637f7f7b3570ed7ad4bd91740fe829ecfabb66aee6e7c18525f"
+    },
+    "b02-boot-config-fuse-update.success": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 3,
+      "recipe_sha256": "d95513ad56370a23aa482727bfa96f9611c64a448995ea9307f43437442abed9",
+      "postcheck_sha256": "92cf10a5cf22efa351e9eb93d80e6d47a10401c27a2143cc98336daf27d2e9b4",
+      "log_sha256": "612c3719f263a2a5a709df810ed72d3d77db9725ff1075597e5b7820e7d2ae31"
+    }
+  },
+  "archive_qa": {
+    "scope": "Full native archive payload/owner/mode/hash and rollback/old modules verified; no install",
+    "archive_sha256": "3bad227392f01030a568c555022c549b8dd55c572a216619aac7a78866cc43ed",
+    "payload_entries": 12034,
+    "old_modules_unchanged": 20,
+    "backups": {
+      "/boot/vmlinuz-7.1.8-toddy-pre-fuse": "18c4d9e6a64554296d8e9a037c2383e7426a0cf155b6d757d0693fce0d087ad1",
+      "/boot/config-7.1.8-toddy-pre-fuse": "5de998e9f70642f0061b147ba847e935a38ed45d4a30c77983fdabcb27f70656",
+      "/boot/System.map-7.1.8-toddy-pre-fuse": "6a7bea1c8dc9ea89ec22e7732134b3cb555bf3cde0e610405458dc194d00bc7c"
+    }
+  },
+  "installed": {
+    "scope": "Owned installed native kernel payload/recovery/module hashes, actual Kmod vermagic/udev alias/dependency lookup and APT; actual installed-system boot/user mount acceptance remains pending.",
+    "version": "7.1.8-1+toddy2",
+    "archive_sha256": "3bad227392f01030a568c555022c549b8dd55c572a216619aac7a78866cc43ed",
+    "kernel_sha256": "0482366cc51727f76af11611275b7124bcd9aadbd76d231ca6fd44d22cb0dc77",
+    "payload_entries": 12034,
+    "module_vermagic": "7.1.8-toddy SMP preempt mod_unload",
+    "udev_alias": "fuse",
+    "module_lookup": "insmod /lib/modules/7.1.8-toddy/kernel/fs/fuse/fuse.ko \n",
+    "old_modules_unchanged": 20,
+    "target_free": 17742127104
+  },
+  "boot_config": {
+    "state": "complete",
+    "old_version": "0.1-2+toddy1",
+    "new_version": "0.1-2+toddy2",
+    "archive_sha256": "bf9c0b4eb6988c8cb79f54b4a397071997c8bf2741eca29988b3404a04eb71bd",
+    "owned_payload_unchanged": true,
+    "payload_entries": 15,
+    "exact_kernel_dependency": "7.1.8-1+toddy2",
+    "scope": "Owned boot metadata dependency only; existing menu/config/recovery bytes unchanged. No installed-system/recovery boot acceptance."
+  },
+  "original_failure_preserved": true,
+  "kernel_install_not_replayed": true
+}
