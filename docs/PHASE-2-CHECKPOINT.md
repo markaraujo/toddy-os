@@ -44,13 +44,15 @@ actual power-on GNOME is still unproven. Do not replay successful migration.
 
 ## Exact next action
 
-Implement owned user-overridable provisional navy desktop/launcher/Terminal
-defaults using existing GNOME/dconf interfaces, preserve user edits and approved
-artwork. Inspect actual installed profiles/schema IDs/desktop entries before
-staging. Then native terminal/audio/defaults and remaining persistence/recovery.
-Do not repeat browser/compiler/install/native UI pass. Keep original failed raw
-aggregate and exact unchanged scanouts; reconciliation corrects classification
-only, historical child start_ticks deliberately omitted.
+Provisional navy defaults generator/install/check are implemented in
+scripts/build/phase2/desktop_defaults.py and desktop-defaults-*.sh. They stage a
+new dconf system database/profile only after proving those paths absent; existing
+IBus profile, user databases, schema cache and brand masters remain intact. Fonts,
+custom Terminal profiles and every explicit user value take priority. No locks.
+Next: syntax/repository checks, metadata-only sync, guarded native runner
+b02-desktop-defaults-install, then actual native graphical/Terminal/audio pass.
+No native defaults transaction dispatched yet. No browser test replay required.
+
 Test selection: changed input/syntax plus make check381, readonly native report
 reconciliation and real QMP scanouts. No foundation suite repeated.
 
