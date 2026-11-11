@@ -37,18 +37,34 @@ read-only archive, exact owner/mode/nanosecond timestamps/link topology/bytes.
 Host free110,790,275,072B after archive. Builder boot
 cbde87fc-f1a3-4d33-806f-25f8e25d8ede still running, no guest writer.
 
-EXACT NEXT ACTION: commit reviewed new controller/probe, then dispatch ONCE
-python3 -u scripts/host/phase2_native_files_gui.py to a new controller log.
-It verifies exact current package payloads and complete unchanged live cache,
-stops builder once and boots disposable native-files-gui-runtime-1 (no NIC).
-Normal GDM/PAM authentication uses existing private-memory fixture channel.
-Use control socket/QMP real input; capture/review each affected native UI state.
-Synthetic source/deletion seed files are explicitly fixture data. GUI must create
-and rename folder to Documents/toddy-renamed, copy/rename seed to toddy-copy,
-trash toddy-delete. Only actual files/postconditions plus observed input/scanout
-qualify these actions. Do not send DONE until observed operations are complete;
-failed postconditions remain failures. No actual GUI test started yet. Other
-B02 browser/network/audio/offline/theme/persistence/recovery gates remain.
+Native installed Files GUI1 is COMPLETE/terminal0, not running.
+Controller1382343/session33828, native-files-gui-runtime-1, container exited0/
+base unchanged; reportSHA4c9843e592abeddee531f53708cb320b8998ee92dbdba34adfa09aee9c3bfc3f.
+[Local GUI proof](evidence/B02-files-native-local.json) includes normal GDM/PAM
+Wayland owner session and real keyboard/pointer/screenshots. Native root checked
+all5exact local file postconditions: GUI folder create/rename, copied/renamed
+19byte seed, original deletion and recoverable user trash; original seed intact.
+Fixture seeds are explicit, never counted as GUI creation. 640pixel tiled window
+collapsed sidebar/readable content; local navigation recovered after error and
+window reopened. No full Files/desktop/hardware/reboot persistence acceptance.
+
+IMPORTANT failure: actual Trash sidebar click displayed unsupported trash URI.
+Screenshot/raw report retained, persistent ledger nautilus-installed-trash-uri,
+zero corrective attempts. Native all_selected_exits_zero covers the five local
+file postconditions, NOT the failed Trash browser. Gvfs runtime is the next
+unqualified dependency to inspect/implement, then recheck affected trash browse/
+restore/refusal/recovery; do not replay passing compiler/native/local actions.
+
+EXACT NEXT ACTION: inspect native container0/base unchanged and absent builder,
+start designated builder once; restore same6volumes/Systemd/Glycin/kernelCOW using
+NEW files-gui1-* receipt identities, then generation3 via
+phase2_restore_settings_scratch.py --generation 3 --receipt files-gui1-scratch-restored-1.
+Never replay completed native1/custody1-3/restoration/installation. Inspect frozen
+.local/books/gnome/gvfs.html and exact installed runtime before pinning/building
+required minimal Gvfs backends. Preserve existing credentials/privilege policy.
+Builder currently STOPPED after native test, durable generation3 retained and
+restoration-qualified. Other B02 browser/network/audio/offline/theme/persistence/
+recovery gates remain; complete all B02 then STOP before another story.
 
 ### Verified recovery and packaging provenance
 

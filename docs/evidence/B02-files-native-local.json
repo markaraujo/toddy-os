@@ -1,0 +1,90 @@
+{
+  "scope": "Actual installed Nautilus normal GDM/PAM Wayland local file actions only. File creation/rename/copy/trash postconditions passed; Trash URI browsing FAILED and prevents complete Files/B02 acceptance. Seeds were explicitly created by fixture, not GUI. No reboot persistence or physical validation.",
+  "controller_pid": 1382343,
+  "controller_exit": 0,
+  "container_exit": 0,
+  "backing_unchanged": true,
+  "commit": "710690c8ad946a04808c8160b4c32b13d975c54f",
+  "native_report_sha256": "4c9843e592abeddee531f53708cb320b8998ee92dbdba34adfa09aee9c3bfc3f",
+  "owner_session": {
+    "properties": {
+      "Class": "user",
+      "Name": "toddy-preview",
+      "Seat": "seat0",
+      "State": "active",
+      "Type": "wayland"
+    },
+    "session_id": "2"
+  },
+  "file_postconditions": {
+    "copied_renamed_file": true,
+    "created_renamed_folder": true,
+    "deleted_original_absent": true,
+    "recoverable_trash": true,
+    "seed_unchanged": true
+  },
+  "schema_unchanged": true,
+  "schema_sha256": "814e70d2632e7f9f3b0835a5dd4f67b84e838d77d892f620d8ae020ff7b3addd",
+  "gdm_stop_exit": 0,
+  "observed_UI": [
+    "GNOME search launched installed Files; Home/Documents navigation",
+    "Focused folder creation and rename dialogs",
+    "Copy and rename via native Ctrl+C/Ctrl+V/F2",
+    "Move to trash toast, original absent and exact contents retained in user trash",
+    "Acknowledged unsupported trash URI error and returned to local folder",
+    "640pixel tiled width: sidebar collapsed, filename/breadcrumb/controls legible",
+    "Closed and reopened window; Documents entries remained"
+  ],
+  "failure": {
+    "action": "Browse Trash from sidebar",
+    "observed": "Oops! Something went wrong. \u201ctrash\u201d locations are not supported.",
+    "state": "unresolved; qualify/install Gvfs runtime then recheck affected browse/restore/recovery only"
+  },
+  "screenshots": [
+    {
+      "path": "docs/evidence/B02-files-native-opened.png",
+      "sha256": "b376633cd5ad8329e4ba5babb5f5785c50ed7bf288f48bb3d63b0dc5c7073590"
+    },
+    {
+      "path": "docs/evidence/B02-files-native-create-dialog.png",
+      "sha256": "a789b76e51153d160a10b5208e35b3de6f631b34fa1c8403b324c79fcb537fc0"
+    },
+    {
+      "path": "docs/evidence/B02-files-native-renamed-folder.png",
+      "sha256": "60cb5a117da110727a5900952fe9e741ab3ad3c8f23bd422bde542f41bbf8dc0"
+    },
+    {
+      "path": "docs/evidence/B02-files-native-copied-file.png",
+      "sha256": "3fe5bc9b5100a85c4f9bd659c85d98f5958fadcf4a7db522b0df790e1fbf927d"
+    },
+    {
+      "path": "docs/evidence/B02-files-native-rename-dialog.png",
+      "sha256": "3b70e371914d47fc2099f4cf5b60de3210d372f64dc8c7ad63abe149a19e900a"
+    },
+    {
+      "path": "docs/evidence/B02-files-native-moved-to-trash.png",
+      "sha256": "6a7db7f96cfca21bd7d46c6c988f297d96d5bad5ffd21318f89c9d4545900523"
+    },
+    {
+      "path": "docs/evidence/B02-files-native-trash-unsupported.png",
+      "sha256": "43ef4692d9bdbb4bbce6286bd530071fe0b8b6d9a73406244ae3e880f0869307"
+    },
+    {
+      "path": "docs/evidence/B02-files-native-narrow-recovery.png",
+      "sha256": "8a1c1d3f99ed60c0e7d86cf5f63ff27d1ebef82b08c799c33aa277407169fcb1"
+    },
+    {
+      "path": "docs/evidence/B02-files-native-reopened.png",
+      "sha256": "e5b1c1c61c34b626086cc7abcdae28007b2783deae3a1bbc9a7e04aa155bd743"
+    },
+    {
+      "path": "docs/evidence/B02-files-native-documents-after-reopen.png",
+      "sha256": "e1580bd6851075d0a1d668f314a8112b577d4c17df947c64d534a6e438c9fb6a"
+    }
+  ],
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-files-native-local-evidence.tar.gz",
+    "bytes": 42714,
+    "sha256": "73ba3eb868053117a3b5b42ac5acecfbf5ab5d7795ed948d4d3dd93de6a332a8"
+  }
+}

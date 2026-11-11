@@ -3521,3 +3521,16 @@ normal GDM/PAM installed-Files controller uses the existing private-memory
 credential transport, read-only base/disposable overlay and actual QMP input.
 Root postconditions distinguish fixture seeds from GUI creation/rename/copy/trash.
 Native execution remains next; no screenshots or GUI acceptance fabricated.
+
+### B02 — Native installed Files local actions and actual Trash gap
+
+Actual normal GDM/PAM Wayland session opened installed Nautilus, navigated local
+folders and used focused create/rename dialogs, clipboard copy, rename and move
+to trash. Independent native root checks passed5exact local postconditions;
+fixture seeds explicitly identified.640pixel tiled view collapsed sidebar and
+kept content legible; local navigation recovered and window reopened. Container0/
+base unchanged/reportSHA4c9843e592abeddee531f53708cb320b8998ee92dbdba34adfa09aee9c3bfc3f.
+Trash sidebar browsing FAILED with unsupported URI; screenshot preserved and
+ledger opened, zero corrections. Local-operation pass is not complete Files/B02
+acceptance. Qualify required Gvfs runtime and affected Trash recovery next, after
+verified generation3 builder restoration. No successful native tests repeated.
