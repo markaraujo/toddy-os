@@ -22,11 +22,15 @@ inputs={'config_status':hashlib.sha256(status.read_bytes()).hexdigest(),
 floor=128*1024**2;margin=64*1024**2
 def available():
     s=os.statvfs(work);return s.f_bavail*s.f_frsize
-initial=available();assert initial>floor+margin
+def available_inodes():return os.statvfs(work).f_favail
+inode_floor=2048;inode_margin=1024
+initial=available();initial_inodes=available_inodes()
+assert initial>floor+margin and initial_inodes>inode_floor+inode_margin, 'Insufficient byte/inode reserve'
+minimum_inodes=initial_inodes
 started=time.monotonic();minimum=initial;stopped=False
 command=['/src/mach','build','-j6']
 row={'state':'running','command':command,'inputs':inputs,'initial_free':initial,
-     'reserve':floor,'stop_margin':margin,'pid':os.getpid(),
+     'reserve':floor,'stop_margin':margin,'initial_inodes':initial_inodes,'inode_reserve':inode_floor,'inode_stop_margin':inode_margin,'pid':os.getpid(),
      'start_ticks':Path('/proc/self/stat').read_text().split()[21]}
 receipt=work/'firefox-compile-result.json'
 receipt.write_text(json.dumps(row,indent=2)+'\n')
@@ -34,7 +38,9 @@ with log.open('xb') as output:
     process=subprocess.Popen(command,stdout=output,stderr=subprocess.STDOUT,start_new_session=True)
     while process.poll() is None:
         minimum=min(minimum,available())
-        if minimum<floor+margin:
+        minimum_inodes=min(minimum_inodes,available_inodes())
+        if minimum<floor+margin or minimum_inodes<inode_floor+inode_margin:
+            row['stop_reason']='inode-reserve' if minimum_inodes<inode_floor+inode_margin else 'byte-reserve'
             stopped=True;os.killpg(process.pid,signal.SIGINT)
             try:process.wait(timeout=10)
             except subprocess.TimeoutExpired:
@@ -45,9 +51,9 @@ with log.open('xb') as output:
         time.sleep(1)
     result=process.wait()
 row.update(state='compiler-returned',exit=result,elapsed_seconds=round(time.monotonic()-started,3),
-           minimum_free=minimum,final_free=available(),interrupted_for_reserve=stopped)
+           minimum_free=minimum,final_free=available(),minimum_inodes=minimum_inodes,final_inodes=available_inodes(),interrupted_for_reserve=stopped)
 receipt.write_text(json.dumps(row,indent=2)+'\n')
-assert result==0 and not stopped and row['final_free']>=floor,row
+assert result==0 and not stopped and row['final_free']>=floor and row['final_inodes']>=inode_floor,row
 artifacts={}
 for name in ['firefox','libxul.so']:
     p=work/'obj/dist/bin'/name

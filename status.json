@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-11T09:43:04.087014+00:00",
+  "updated_at": "2026-11-11T09:46:58.229316+00:00",
   "bootstrap": "ready_for_development",
-  "current_scope": "B01/B03 accepted (13% weighted Phase2). B02 native GNOME owner login, scoped Files/Editor and real network GUI/DHCP/DNS/HTTPS/polkit/recovery passed within recorded VM scope. Restored NM reboot persistence, corrected browser/audio/theme/offline/resources remain pending. Stop after fully validated B02; no Phase2 ISO or physical acceptance.",
+  "current_scope": "B01/B03 accepted (13% weighted Phase2). B02 native GNOME owner/Files/Editor and scoped network recovery verified. Corrected Firefox source/full-tree recovery/configure qualified; first build stopped on measured inode exhaustion before main compilation, capacity correction pending. Audio/theme/offline/reboot/resources remain pending. Stop after fully validated B02; no Phase2 ISO or physical acceptance.",
   "next_story": "B02",
   "gates": {
     "G1": "passed",
@@ -465,7 +465,8 @@
         "docs/evidence/B02-network-recovery-instructions-update.json",
         "docs/evidence/B02-firefox-baseline-object-custody.json",
         "docs/evidence/B02-firefox-security-source-prepared.json",
-        "docs/evidence/B02-firefox-security-configuration.json"
+        "docs/evidence/B02-firefox-security-configuration.json",
+        "docs/evidence/B02-firefox-security-build-inode-failure.json"
       ]
     },
     {

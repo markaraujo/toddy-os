@@ -72,22 +72,36 @@ WASMClang19.1.5 actual flags. ConfigSHAa06186586b3a93e850c0264c7ff0eda2b51836c13
 mozconfigSHA697afa833966cf37ffdb017d92f851fa7f6a3e6b98347520d2be6cfc627b5553.
 No compiler/native browser acceptance yet. Never repeat successful configure.
 
-Exact next action: after reviewed commit run once
-`python3 .local/phase2/firefox-security-build-controller-1.py`.
-New controller log same stem.log; guest receipt /var/log/toddy/phase2/
-firefox-security-build-controller-1.json, wrapper firefox-security-build-1.log/.exit;
-work /mnt/lfs/sources/phase2/work/firefox-security-1537-1 (BASE/build/browser-security-1537-1).
-One guest writer: isolated.sh exact source/work pair, UID101/caps0/no-egress/toolsRO,
-no installation or source mutation. Existing compiler outputs were retired with
-qualified recovery; this new obj is fresh. Native build uses -j6/12GiB VM; reserve
-128MiB+64MiB stopping margin supervised inside compiler, preserves logs/results.
-Original comparable compiler41m25s is a measurement, not success/deadline. Healthy
-build progresses without restart; observe actual receipt PID/start/boot, log byte
-changes/process CPU deterministically, no repeated model polls of unchanged logs.
-Expected completion requires compiler exit0, ELF hashes/exact153.7.0 AppVersion,
-no reserve stop; then directly affected ABI/security/sandbox/native UI gates.
-If failure inspect real receipts/processes/disk/partial outputs before any action.
-Installed-target capacity separately pending; no package promotion until resolved.
+Candidate build TERMINAL1 (session8809; controllerpid5624/start196286/input43df7a2).
+[Actual failure](evidence/B02-firefox-security-build-inode-failure.json): mach export
+generation failed ENOSPC in3.001s, before main compilation. Byte reserve intact:
+4,996,263,936B available, but0/1048576inodes free on browser ext4 volume. No reserve
+cancellation or successful compiler claim. Guest logs /var/log/toddy/phase2/
+firefox-security-build-1.log/.exit and firefox-security-build-controller-1.json;
+work firefox-security-1537-1/firefox-compile-1.log/result retained. No live writer.
+NEVER replay original controller or recreate its result/log names.
+
+Exact next action: qualified custody of ONLY obsolete expanded153.2 source to
+recover its inodes. First verify actual retained original archive at
+/mnt/lfs/sources/firefox-153.2.0esr.source.tar.xz against frozenSHAc443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c,
+then compare exact old tree with authenticated archive and qualify actual filtered
+restore in a bounded private tmpfs, preserving memory/reserve budgets. Record
+scope: source cache reproduction, not invented exact timestamp metadata or OS
+recovery. After proof retire only old expanded children under source/firefox-153.2.0,
+retain explicit marker/original root inode and readonly bind roles, restore readonly
+flags; all archives, old compiler/ELF evidence, new source/work and SDK/NASM/logs
+retained. No format/resize/global security change; one writer/build.lock. A partial
+retirement must be reconciled from actual receipt/mount/tree, never blindly replayed.
+Original source receipt509835non-dot/3514842428regular bytes; original archive
+must be measured independently. No custody implementation or dispatch yet.
+
+Prepared compiler supervision now checks inode2048reserve+1024margin as well as
+byte128MiB+64MiB before/through build. Not yet synced or retried. Add explicit
+corrected resume (new receipts/logs, original failure preserved) only after actual
+inode recovery; reuse unchanged successful configure, diagnose partial make outputs
+without silently overwriting uncertain writes. Failure ledger inode cause0corrections,
+source/root-dot cause resolved via full existing-tree verification. Target installed
+capacity and browser stage/ABI/sandbox/native UI still pending. Full B02 incomplete.
 
 ## Browser compiler, security and persistent build volume
 
@@ -107,8 +121,8 @@ Separate firefox-security-1537 lock, original source retained; no signature clai
 [source metadata](evidence/B02-firefox-security-source.json): host scan complete,
 510,287members/3,515,456,965regular bytes/21critical files. Root/toolkit configure
 unchanged; Rust configure vendor-target changes. Header versions alone do not
-clear NSS/NSPR security/ABI or actual minimum Rust constant. Overlay source/work/
-configure/compiler/stage/install/native security/UI all pending. Old objects are
+clear NSS/NSPR security/ABI or runtime compatibility. Fresh source/work/configure passed above;
+compiler/stage/install/native security/UI remain pending. Old objects are
 now verified-custodied and cannot be used for changed source. Fresh candidate work
 is pending with measured browser capacity above; do not lower reserves.
 

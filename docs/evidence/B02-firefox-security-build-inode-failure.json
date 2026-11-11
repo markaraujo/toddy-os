@@ -1,0 +1,42 @@
+{
+  "scope": "Failed candidate build, not compiler/runtime acceptance",
+  "controller": {
+    "state": "terminal",
+    "boot_id": "e146fad4-b1e4-4199-9935-3223e693a00b",
+    "pid": 5624,
+    "start_ticks": "196286",
+    "recipe_sha256": "c4b3fe6ad2bb34d9dd5022801b9e45c2508396d17fc2d3b9a473802a396204bc",
+    "work": "/mnt/lfs/sources/phase2/work/firefox-security-1537-1",
+    "exit": 1
+  },
+  "compiler_result": {
+    "state": "compiler-returned",
+    "command": [
+      "/src/mach",
+      "build",
+      "-j6"
+    ],
+    "inputs": {
+      "config_status": "a06186586b3a93e850c0264c7ff0eda2b51836c133b2559d043f6e74fcf217c0",
+      "mozconfig": "697afa833966cf37ffdb017d92f851fa7f6a3e6b98347520d2be6cfc627b5553"
+    },
+    "initial_free": 5015670784,
+    "reserve": 134217728,
+    "stop_margin": 67108864,
+    "pid": 52,
+    "start_ticks": "196383",
+    "exit": 1,
+    "elapsed_seconds": 3.001,
+    "minimum_free": 4996268032,
+    "final_free": 4996263936,
+    "interrupted_for_reserve": false
+  },
+  "compile_log_sha256": "15c3b0560452660ff63730d349249f80141fee00b9ac4a82371f2b34e3ce8d78",
+  "diagnosis": {
+    "browser_bytes_available": 4996263936,
+    "browser_inodes_available": 0,
+    "browser_inodes_total": 1048576,
+    "cause": "ext4 inode exhaustion with original and security source trees retained; byte reserve was intact"
+  },
+  "new_attempt_dispatched": false
+}

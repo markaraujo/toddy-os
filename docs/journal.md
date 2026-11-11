@@ -3918,3 +3918,17 @@ NSS/NSPR/ICU, noX11 and WASMClang19.1.5. Original source/object evidence preserv
 no candidate compile/runtime/install claim. Next fresh isolated -j6 compiler is
 expected long;128MiBreserve plus64MiBstopping margin, one writer, native receipt/
 log/PID/start/boot before monitoring. ConfigSHAa06186586b3a93e850c0264c7ff0eda2b51836c133b2559d043f6e74fcf217c0.
+
+
+### B02 candidate build inode failure diagnosed — 2026-11-11
+
+New candidate mach build returned1 after3.001seconds in export generation.
+ENOSPC is measured inode exhaustion:0/1048576free,4,996,263,936bytes available.
+Original/new source trees exhaust private ext4 inodes; byte reserve intact.
+Original logs/controller/result preserved; no native browser acceptance or installed
+root change. Prepared inode-aware supervision2048reserve+1024margin, not retried.
+Next prove recoverability of only obsolete expanded153.2source using authenticated
+original archive/full content comparison and actual bounded temporary restore,
+then controlled child retirement preserving root/binds/archive/evidence. No format
+or unknown deletion. Failed compiler's partial outputs require explicit checked
+resume/new logs after real inode recovery; source/configuration remain qualified.
