@@ -3430,3 +3430,5 @@ remains parked; next eligible CUPS source/build review.
 | 2026-11-10 | B02 owned Libblockdev and staged UDisks | Verify installed GI/crypto SDK. Reclaim exact Qtbase copy, resume UDisks after offline docs and GI property corrections | Libblockdev native 0/0, 106 paths. UDisks 23 original cases and local C/GI passed. Privileged daemon and native package review next. |
 
 | 2026-11-10 | B02 owned UDisks and TI-RPC | Install UDisks without service activation. Pin Samba and core prerequisites. Correct exact upstream TI-RPC documentation link omission and validate XDR | UDisks and TI-RPC native 0/0. UDisks daemon authorization/device testing pending. Rpcsvc-proto build next. |
+
+| 2026-11-11 | B02 owned Samba build tools | Qualify frozen rpcsvc-proto and Parse::Yapp under build isolation, then promote and verify each native package | Both installs 0/0. Generated XDR and Perl parser positive, refusal and recovery cases passed. Samba client build closure and capacity next. |

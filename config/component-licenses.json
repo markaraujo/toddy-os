@@ -10568,6 +10568,18 @@
       }
     },
     {
+      "name": "perl-parse-yapp",
+      "version": "1.21",
+      "license": "LicenseRef-Perl-distribution-terms",
+      "evidence": "Upstream Parse::Yapp copyright section references the GPL or Artistic terms as specified by Perl. Preserve the module's exact statement and README.",
+      "extra_license_files": {
+        "Parse-Yapp-1.21.tar.gz": [
+          "README",
+          "lib/Parse/Yapp.pm"
+        ]
+      }
+    },
+    {
       "name": "keyutils",
       "version": "1.6.3",
       "license": "GPL-2.0-or-later AND LicenseRef-Keyutils-LGPL-per-file",

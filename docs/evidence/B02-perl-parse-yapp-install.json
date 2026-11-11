@@ -1,0 +1,78 @@
+{
+  "native": {
+    "step": "b02-perl-parse-yapp-install",
+    "started": "2026-11-11T00:14:28.255924+00:00",
+    "finished": "2026-11-11T00:14:44.105409+00:00",
+    "recipe_sha256": "0820774c9af98cd02bf129e9cd3e3d54bdc59f5f7b24ae5fd9f8f1e4d477e352",
+    "postcheck_sha256": "671e2708bb52ec4e584529311987ed21520f07410075e44cb0a5593ebb2bad12",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 23,
+    "log_sha256": "09e25daad6ad93897df55f9b02127b0b3f661c5ef4cc3d787eaa3ec6f4ce96e5",
+    "recipe_pid": 175367,
+    "controller_pid": 175333,
+    "receipt_sha256": "0a53e4ac02c74a16be7fb2023c6ca53d37c477331e09d1ca6e82ebc95d330691"
+  },
+  "consumer": {
+    "consumer": "Parse::Yapp generated parser refused invalid input and recovered twice",
+    "notices_verified": 2,
+    "scope": "Installed build tool under UID101 and NNP, private devices and network. Local generated parser only.",
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "perl-parse-yapp",
+    "version": "1.21-1+toddy1",
+    "archive_sha256": "612d619504dc2119d5924dbe19e333375d7060e7a6bcdb82c4a6dc96313278b9",
+    "recipe_sha256": "0820774c9af98cd02bf129e9cd3e3d54bdc59f5f7b24ae5fd9f8f1e4d477e352",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "perl-parse-yapp",
+        "version": "1.21",
+        "filename": "Parse-Yapp-1.21.tar.gz",
+        "url": "https://www.cpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz",
+        "sha256": "3810e998308fba2e0f4f26043035032b027ce51ce5c8a52a8b8e340ca65f13e5",
+        "reference": "BLFS13.1-systemd general/perl-modules.html#perl-parse-yapp",
+        "book_page_sha256": "392958d0dd2274f3625e93860c6ae2a0ed781fe9ba0744bceecedf852489ebac",
+        "book_md5": "69584d5b0f0304bb2a23cffcd982c5de",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "installed": true,
+    "architecture": "all",
+    "payload_count": 29,
+    "supporting_build_scripts_sha256": "e7e608b7ebc37c8e67b00fa84a60851bcb4cb76660bd65d3f3fd2d7e9398f38f",
+    "payload_sha256": "408987930138c1ae7e1cad2da4b5ec92c4a0b6b98f8e76b01981caec14aacc89"
+  },
+  "installed_notices": {
+    "sources": [
+      {
+        "filename": "Parse-Yapp-1.21.tar.gz",
+        "source_sha256": "3810e998308fba2e0f4f26043035032b027ce51ce5c8a52a8b8e340ca65f13e5",
+        "url": "https://www.cpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz",
+        "notices": [
+          {
+            "path": "Parse-Yapp-1.21/README",
+            "sha256": "4bc7862569ca29bbb9a06b88563fb9e821730546839c16654a9597ba8779b35d",
+            "size": 1520
+          },
+          {
+            "path": "Parse-Yapp-1.21/lib/Parse/Yapp.pm",
+            "sha256": "a5d97e3ee50ba12b7897841a117790f723795e4a61e5ad1668dc064956c84e96",
+            "size": 16512
+          }
+        ]
+      }
+    ],
+    "scope": "Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply"
+  },
+  "target_free_bytes": 17199259648
+}

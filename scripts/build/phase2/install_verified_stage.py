@@ -19,6 +19,8 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'rpcsvc-proto': ('1.4.4', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), libtirpc (= 1.3.7-1+toddy1)', 'rpcsvc-proto-1.4.4.tar.xz', 'usr/bin/rpcgen'),
+    'perl-parse-yapp': ('1.21', 'perl (>= 5.44), perl (<< 5.45)', 'Parse-Yapp-1.21.tar.gz', 'usr/bin/yapp'),
     'libtirpc': ('1.3.7', 'glibc (>= 2.44-1+toddy1), mitkrb (= 1.22.2-1+toddy1)', 'libtirpc-1.3.7.tar.bz2', 'usr/lib/pkgconfig/libtirpc.pc'),
     'udisks2': ('2.11.2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), systemd (>= 261.2-1+toddy3), kmod (= 34.2-1+toddy1), util-linux (>= 2.42.4-1+toddy1), acl (>= 2.3.2-1), libblockdev (= 3.5.0-1+toddy1), libgudev (= 238-1+toddy1), polkit (= 127-1+toddy1)', 'udisks-2.11.2.tar.bz2', 'usr/lib/pkgconfig/udisks2.pc'),
     'libblockdev': ('3.5.0', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), systemd (>= 261.2-1+toddy3), kmod (= 34.2-1+toddy1), util-linux (>= 2.42.4-1+toddy1), e2fsprogs (= 1.47.4-1+toddy1), cryptsetup (= 2.8.7-1+toddy1), lvm2 (= 2.03.42-1+toddy1), openssl (= 4.0.3-1+toddy1), json-c (= 0.19-1+toddy1), keyutils (= 1.6.3-1+toddy1), libbytesize (= 2.12-1+toddy1), gmp (= 6.3.0-1+toddy1), mpfr (= 4.2.2-1+toddy1), pcre2 (= 10.49-1+toddy1), libnvme (= 1.16.2-1+toddy1), libatasmart (= 0.19-1+toddy1), python (>= 3.14), python (<< 3.15), pygobject (= 3.56.3-1+toddy1)', 'libblockdev-3.5.0.tar.gz', 'usr/lib/pkgconfig/blockdev.pc'),
@@ -1288,6 +1290,9 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
+    if name in ('rpcsvc-proto','perl-parse-yapp'):
+        from qualify_samba_build_tools import qualify as qualify_samba_build_tool
+        qualify_samba_build_tool(ROOT,name)
     if name=='libtirpc':
         from qualify_libtirpc import qualify as qualify_libtirpc
         qualify_libtirpc(ROOT)
@@ -1814,7 +1819,7 @@ if __name__ == '__main__':
                     version+('-1+toddy2' if name in ('linux-pam','gnome-settings-daemon','gnome-terminal','gsound','colord-gtk') else '-1+toddy1'), str(destination), *source_args,
                     '--recipe', 'scripts/build/phase2/'+name+'-install.sh',
                     '--depends', depends, '--install', *conffiles,
-                    *(['--architecture','all'] if name in ('unicode-ucd','fast-float','blueprint-compiler') else [])], cwd=ROOT, check=True)
+                    *(['--architecture','all'] if name in ('unicode-ucd','fast-float','blueprint-compiler','perl-parse-yapp') else [])], cwd=ROOT, check=True)
     if name=='glib-networking':
         from gio_network_resources import finish as finish_gio_network
         finish_gio_network()

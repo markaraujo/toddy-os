@@ -230,12 +230,30 @@ Native b02-libtirpc-install PID 171943 terminal 0/0, 92 changed paths,
 C/XDR, ABI, exact conffiles and APT. No RPC network or GSS authentication.
 No writer remains. Last target free 17,205,121,024 B. Never replay.
 
-EXACT NEXT: build frozen rpcsvc-proto 1.4.4. Verify actual host/guest reserves
-and lock. The book has no upstream suite. Run a local rpcgen fixture that
-generates XDR C, compiles against the installed TI-RPC and validates a
-roundtrip and invalid-input refusal without network activity. Then qualify
-Parse::Yapp 1.21 and inspect the remaining Samba closure. Cold native tests
-require measured host headroom and their own isolated VM. UDisks policy,
+Frozen rpcsvc-proto 1.4.4 and Parse::Yapp 1.21 both completed isolated builds.
+[rpcgen stage](evidence/B02-rpcsvc-proto-stage.json) verifies generated XDR C
+against owned TI-RPC, two record roundtrips, invalid input refusal and
+identical regeneration. [Parse::Yapp stage](evidence/B02-perl-parse-yapp-stage.json)
+verifies all 33 upstream tests and generated parser refusal and recovery.
+The first rpcgen read-only preflight failed at shell quoting, before any write.
+Corrected preflight verified 33 stage entries. Native rpcgen controller PID
+175011 then finished with recipe/postcheck 0/0 and 38 changed paths.
+Retain /var/log/toddy/build/b02-rpcsvc-proto-install.success.json and its
+step log, SHA256 d023804e9254f4a69bb52e16842af40f76872006dddd3433292098938e9698ae.
+Native Parse::Yapp controller PID 175333 finished with recipe/postcheck 0/0
+and 23 changed paths. Retain /var/log/toddy/build/b02-perl-parse-yapp-install.success.json
+and its step log, SHA256 09e25daad6ad93897df55f9b02127b0b3f661c5ef4cc3d787eaa3ec6f4ce96e5.
+[rpcgen native](evidence/B02-rpcsvc-proto-install.json) and
+[Parse::Yapp native](evidence/B02-perl-parse-yapp-install.json) verify both
+owned archives, installed bytes, notices and local refusal/recovery.
+No guest writer remains. Never replay builds, metadata sync or installation.
+
+EXACT NEXT: inspect the Samba Waf client target and confirm its required
+configuration and installed SDK closure. Qualify source/work storage before
+extraction. The exact archive has 11,719 members and 180,563,122 regular-file
+bytes. Last target free was 17,199,259,648 B, 19,390,464 B over reserve;
+do not transfer or unpack onto the target without verified capacity.
+Cold native tests require measured headroom and an isolated VM. UDisks policy,
 Settings/Samba and GNOME session remain pending. Stop after accepted B02.
 
 ### Previous Settings prerequisites

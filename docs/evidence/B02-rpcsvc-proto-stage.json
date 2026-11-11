@@ -1,0 +1,53 @@
+{
+  "stage": {
+    "version": "1.4.4",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "original_suite_supplied": false,
+    "consumer": "Generated rpcgen XDR C round-tripped two records\n",
+    "invalid_source_exit": 1,
+    "generated_header_recovery_identical": true,
+    "artifacts_count": 11,
+    "artifacts_map_digest": "802cdbcf35d17bdc6a588f514adc9275ad6bb029742234625bc96cbbb5ae67a8",
+    "stage_sha256_count": 26,
+    "stage_sha256_map_digest": "23e65f9a600ca8374fc98b7034bf6dcb2e2654415533b9c0fb33019703cb1441"
+  },
+  "manifest_sha256": "80a53671aa2291348425660ccdbe7a8a5d48f9c420c04be85fa52206ea04a1a8",
+  "manifest_entries": 33,
+  "prepared": {
+    "source_sha256": "81c3aa27edb5d8a18ef027081ebb984234d5b5860c65bd99d4ac8f03145a558b",
+    "reference": "BLFS13.1-systemd basicnet/rpcsvc-proto.html",
+    "book_page_sha256": "c4df660fc3e456d063027523724b272104e75cdbd7544e861e23b9cc58ad20c2",
+    "source_patches": [],
+    "recipe_sha256": "3bff61e8fb7fbaef0cd09f2ddde9fb5ebf448fa4b69ebb9a747111c8afc86029",
+    "probe_sha256": "3fd8ecc48379bec90cfd5820566b2ea5a4134a67ea9ddf6a8c47031d5ec3de10"
+  },
+  "job": {
+    "pid": 172578,
+    "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+    "proc_start_ticks": "2757615",
+    "started_unix": 1794355474.9944625,
+    "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+    "exit": 0,
+    "command_sha256": "93493f27791a1fe03632e3431261b077b7e84626902a4fd18988062f4ed9505f"
+  },
+  "logs": {
+    "configure.log": "64c2e7a800393a75e0e4ab1acd17fa0d657afd86db9016d8920fe943d74a5573",
+    "invalid-rpcgen.log": "719d0e4efbcbed0a240c22f58a1039efdbe3bb93db72870f032dd59d7487522c",
+    "local-probe.log": "919f1aa37063621cefe80046cb8adcd2553970fe37a1042fa4fe45e90a62efb5",
+    "original-build.log": "da1015b711a57144781d08411a71f8217149d8300d32dcfff25f4589a44888c8",
+    "original-stage.log": "2e6a5f5559c6d959854f02b9365d6c18391fffc3087f128003eb8a78a1496323"
+  },
+  "source": {
+    "name": "rpcsvc-proto",
+    "version": "1.4.4",
+    "filename": "rpcsvc-proto-1.4.4.tar.xz",
+    "url": "https://github.com/thkukuk/rpcsvc-proto/releases/download/v1.4.4/rpcsvc-proto-1.4.4.tar.xz",
+    "sha256": "81c3aa27edb5d8a18ef027081ebb984234d5b5860c65bd99d4ac8f03145a558b",
+    "reference": "BLFS13.1-systemd basicnet/rpcsvc-proto.html",
+    "book_page_sha256": "c4df660fc3e456d063027523724b272104e75cdbd7544e861e23b9cc58ad20c2",
+    "book_md5": "bf908de360308d909e9cc469402ff2ef",
+    "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+    "status": "source_verified"
+  }
+}

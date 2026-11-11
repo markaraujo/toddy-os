@@ -188,7 +188,7 @@ Verified:
 - Owned libbytesize 2.12 local SDK: 76 selected upstream cases passed with three locale skips. Native install and postcheck 0/0 with 56 changed paths and 131 payload entries. C/Python/CLI arithmetic, refusal and recovery, exact stage bytes, ABI and APT passed. No storage device, UDisks service, Settings GUI or physical acceptance.
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 
-Running: UDisks and TI-RPC installed with local C/GI or XDR acceptance. UDisks daemon/device policy pending in disposable VM. Samba source and core prerequisites pinned; rpcsvc-proto next, then Parse::Yapp. GNOME graphical acceptance pending. Full B02 then stop.
+Running: Samba build prerequisites TI-RPC, rpcgen and Parse::Yapp installed and verified. Samba client build configuration and storage qualification pending. UDisks daemon/device policy and interactive GNOME acceptance pending in a disposable VM. Full B02 then stop.
 
 Remaining:
 

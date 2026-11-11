@@ -1,0 +1,78 @@
+{
+  "native": {
+    "step": "b02-rpcsvc-proto-install",
+    "started": "2026-11-11T00:12:52.321018+00:00",
+    "finished": "2026-11-11T00:13:08.506453+00:00",
+    "recipe_sha256": "17aac5b1fb8f50c5a43e99d18dc8d9cb2245b1bcaee42e94065e95d70994dd13",
+    "postcheck_sha256": "fc1bdd38593ba4946606505be3e4a6e58c7c67bc3760efc9287e602f9d22c414",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 38,
+    "log_sha256": "d023804e9254f4a69bb52e16842af40f76872006dddd3433292098938e9698ae",
+    "recipe_pid": 175044,
+    "controller_pid": 175011,
+    "receipt_sha256": "22d434eee35a61beb519e3b577ddb2c31ccfff74ee5e549eb4381101039af534"
+  },
+  "consumer": {
+    "consumer": "Generated rpcgen XDR C round-tripped two records",
+    "notices_verified": 2,
+    "scope": "Installed build tool under UID101 and NNP, private devices and network. Local generated parser only.",
+    "physical_machine_tested": false
+  },
+  "package": {
+    "name": "rpcsvc-proto",
+    "version": "1.4.4-1+toddy1",
+    "archive_sha256": "81100ce03f5cf627e35301526b503128bac47c827876c58145e2759356025c64",
+    "recipe_sha256": "17aac5b1fb8f50c5a43e99d18dc8d9cb2245b1bcaee42e94065e95d70994dd13",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "rpcsvc-proto",
+        "version": "1.4.4",
+        "filename": "rpcsvc-proto-1.4.4.tar.xz",
+        "url": "https://github.com/thkukuk/rpcsvc-proto/releases/download/v1.4.4/rpcsvc-proto-1.4.4.tar.xz",
+        "sha256": "81c3aa27edb5d8a18ef027081ebb984234d5b5860c65bd99d4ac8f03145a558b",
+        "reference": "BLFS13.1-systemd basicnet/rpcsvc-proto.html",
+        "book_page_sha256": "c4df660fc3e456d063027523724b272104e75cdbd7544e861e23b9cc58ad20c2",
+        "book_md5": "bf908de360308d909e9cc469402ff2ef",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "installed": true,
+    "architecture": "amd64",
+    "payload_count": 40,
+    "supporting_build_scripts_sha256": "e7e608b7ebc37c8e67b00fa84a60851bcb4cb76660bd65d3f3fd2d7e9398f38f",
+    "payload_sha256": "d12735efb1cfa063ac7206c664f358edecc14afb01a67563b140abcfbe5a7f4a"
+  },
+  "installed_notices": {
+    "sources": [
+      {
+        "filename": "rpcsvc-proto-1.4.4.tar.xz",
+        "source_sha256": "81c3aa27edb5d8a18ef027081ebb984234d5b5860c65bd99d4ac8f03145a558b",
+        "url": "https://github.com/thkukuk/rpcsvc-proto/releases/download/v1.4.4/rpcsvc-proto-1.4.4.tar.xz",
+        "notices": [
+          {
+            "path": "rpcsvc-proto-1.4.4/AUTHORS",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "size": 0
+          },
+          {
+            "path": "rpcsvc-proto-1.4.4/COPYING",
+            "sha256": "d30d1a93ce3c45225f3a99a1741caae419ec08530112f2ed7f26c5c05edcb6d0",
+            "size": 1545
+          }
+        ]
+      }
+    ],
+    "scope": "Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply"
+  },
+  "target_free_bytes": 17199259648
+}
