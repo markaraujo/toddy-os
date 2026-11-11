@@ -4,7 +4,7 @@ Owner boundary: **complete ALL B02, then stop before another story**. Full Phase
 Goal active/incomplete. B01/B03 accepted13%; B02 in_progress; B04 integration
 blocked, B05-B13/G2 pending. Physical foundation tests unperformed. No Phase2 ISO.
 
-## Current slice: publish corrected installed network recovery instructions
+## Current slice: fresh Firefox security source/work preparation
 
 Native remaining recovery2 COMPLETE0, context.local/phase2/native-network-recovery-runtime-2,
 raw reportSHA87b160c67f2ff0a5b50884630c6be0017a0c254643f5a8d197cbe775a25169ef,
@@ -51,20 +51,31 @@ artifacts retained non-executable at BASE/build/browser-1/retained-baseline, cur
 browser.inspect accepts only completed custody/original hashes; all6aliases intact.
 Sources/tools/logs/results retained. No live guest writer or native test.
 
-Exact next action: implement fresh security candidate source/work preparation.
-Archive must transfer to dedicated browser volume (800,080,060B), not target root:
-target17.3GBfree cannot absorb it above16GiBreserve. Use new source-archive file
-and guarded readonly alias at /mnt/lfs/sources/<candidate filename>; verify exact
-source lock/hash/bytes before streaming filtered extraction under BASE/source/
-firefox-153.7.0. Preserve original153.2source. Fresh UID101work BASE/build/
-browser-security-1537-1 and new input/work aliases, no old objects. Extend isolated
-browser tools profile only for exact new source/work pair and preserve CUPS/Samba
-base-hash qualification. Reuse qualified SDK/NASM, corrected bundled PNG and
-Wayland/main/all6WASM sandbox options; candidate build must assert153.7version.
-Implement restore/checkpoint for new mounts before another VM transition. No new
-candidate transfer/extract/configure/build dispatched. Rust source minimum1.90.0
-verified(existing1.97.1); native configure/ABI/security remain pending. Separate
-installed-target capacity review required before future browser package promotion.
+Exact next action: commit/check/sync prepared candidate extraction and existing-mount
+restore helpers, then transfer verified archive once via stdin to guest
+`python3 /opt/toddy-build/scripts/build/phase2/prepare_firefox_security_source.py`.
+Log .local/phase2/firefox-security-source-controller-1.log; new receipt
+/var/log/toddy/phase2/firefox-security-source-1537-1.json must not exist.
+Archive800,080,060B/SHA7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0
+lands at BASE/security-source-archives; target-root readonly file alias consumes
+no archive-sized target allocation. Filtered extraction must match510,287members/
+3,515,456,965regular bytes and source versions153.7.0/153.7.0esr. New readonly
+source BASE/source/firefox-153.7.0; fresh UID101work BASE/build/browser-security-1537-1,
+new inputs/firefox-153.7.0 and work/firefox-security-1537-1 aliases. Original source,
+compiler evidence and tools untouched. One build.lock; no package/boot mutation.
+Archive hashes verified before extraction; new state refuses replay. If interrupted,
+inspect source receipt/bytes/mounts before any continuation. A partial extraction
+is never silently reused. Source/runtime security/ABI acceptance remains pending.
+
+Affected checks: syntax/full repository checks; actual transfer/extraction counts,
+version/critical hashes, readonly alias options/inodes/UID and native isolation
+configure next. Helpers restore_firefox_security_source.py --inspect or NEW-name
+restore only existing4aliases after base browser recovery; qualify actual private
+mount-namespace restore before any future cold transition. No source transfer yet.
+After source preparation, extend exact browser isolated profile pair, retaining
+CUPS/Samba hash qualifications, reuse SDK/NASM/bundledPNG/main/all6WASM sandbox
+options and fresh configure/build version assertions. Target-root capacity must
+be reviewed separately before browser installation; preserve16GiBreserve.
 
 ## Browser compiler, security and persistent build volume
 

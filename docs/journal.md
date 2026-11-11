@@ -3872,3 +3872,13 @@ compiler logs/results intact. Installed root changed0;3,642,654,720browser bytes
 reclaimed,10,903,326,720available. Final browser mount/artifact inspection passed.
 Next fresh153.7source/work preparation must place800MBarchive on browser volume
 and use readonly source alias, preserving target16GiBreserve; no new job started.
+
+
+### B02 fresh Firefox security source/work preparation — 2026-11-11
+
+Prepared guarded stdin transfer to existing browser raw volume, exact authenticated
+archive SHA/bytes before filtered extraction, exact source count/size/versions and
+critical hashes, new readonly source/archive aliases and fresh UID101work. No old
+object reuse. Separate existing-mount restore helper preserves all four new aliases
+without extraction/rebuild. Target-root reserve retained by readonly archive alias.
+Actual source transfer and restore qualification pending; no new guest writer yet.
