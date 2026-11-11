@@ -14,9 +14,27 @@ Native b02-nautilus-install is COMPLETE, recipe2371 recipe/post0/0,176changes/
 154stage files/links/5ELF ABI/APT/source notices/two user D-Bus activation files
 and upstream root refusal passed; no service started. No guest writer remains.
 Target17,310,220,288B free. Never replay native install or completed recovery.
-Next prepare immutable Nautilus schema union against GTKtoddy11 and125schemas/
-1081keys, strict isolated compile/contract comparison, native same-version cache
-update only after proof. New schema scripts prepared locally but not dispatched.
+Nautilus schema union is COMPLETE, native b02-nautilus-schema-union-install
+recipe3111 recipe/post0/0,10changes. [Proof](evidence/B02-nautilus-schema-union.json).
+GTK4.22.4-1+toddy12 native archiveSHA
+fad63626a484c7a51f4f9c64aa382d83694dbe52cc04c830ff4a6e5244c18a63.
+82owned XML inputs/21owners; all125baseline schemas/1081keys preserved; installed
+default source exposes131schemas/1111keys, six Nautilus IDs added. CacheSHA
+814e70d2632e7f9f3b0835a5dd4f67b84e838d77d892f620d8ae020ff7b3addd;
+906nonlegal/cache GTK entries unchanged. No preferences/overrides or compiler
+replay. Host controller/session10990 terminal0, no guest writer remains.
+Do not replay union preparation, job or native transaction.
+
+EXACT NEXT ACTION: prepare the installed Files GUI probe from the existing normal
+GDM/PAM owner controller and exact current package versions; first retain/qualify
+the changed scratch cache before any cold stop. Existing generation2 excludes
+new gtk-nautilus-schema-promotion-1. Extend custody/recovery with a strict NEW
+generation3 and current nautilus-native3-scratch-restored-1 boot receipt (existing
+generation2 producer currently requires the old LocalSearch4 boot). Compare all
+prior generation bytes/metadata/hardlink classes and verify actual isolated
+restoration; never overwrite/replay generations1/2 or stop before new custody.
+Builder boot cbde87fc-f1a3-4d33-806f-25f8e25d8ede remains running, current
+GTK12/cache above. Source/compiler/Nautilus fixture unchanged.
 Installed GUI/nonroot CLI/icon/MIME remain pending.
 
 ### Verified recovery and packaging provenance

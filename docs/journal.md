@@ -3499,3 +3499,14 @@ All154stage files/links,5ELF dependencies, APT and root refusal passed.
 Source notices and two user D-Bus activation definitions retained; no service
 started. Focused native12program/73case evidence reused. No writer remains;
 target17,310,220,288B free. Stock schema integration then installed Files UI next.
+
+### B02 — Installed Nautilus schema integration
+
+82stock schema inputs/21owners passed strict isolated compilation and lookup.
+Native b02-nautilus-schema-union-install recipe3111 recipe/post0/0 changed10paths,
+GTK4.22.4-1+toddy12 owns the new shared cache. Installed default-source query
+confirms131schemas/1111keys, preserving125baseline schemas/1081keys and all
+type/default/range contracts.906GTK runtime entries unchanged; no user values
+written. Raw transaction/job/package records retained. Installed Files GUI,
+nonroot CLI/icons/MIME pending. Preserve a new changed-cache custody generation
+before another cold native test; generation2 lacks the new promotion replica.
