@@ -1,0 +1,1466 @@
+{
+  "scope": "B02 development resource custody and isolated cache restoration only; no graphical/boot/login/basic-app acceptance. Active builder/target, accepted foundation and source/compiler/package bytes preserved.",
+  "cold_backup": {
+    "state": "complete",
+    "source": ".local/vm/checkpoints/h07-native-math-builder.qcow2",
+    "bytes": 5940445184,
+    "source_sha256": "d459b8b371927cfc7dfbe47d101014f8880466f41d8498978f30fe1a88cd1b0f",
+    "allocated_before": 5904478208,
+    "qemu_check_exit": 0,
+    "host_available_before": 107611918336,
+    "host_available_after": 112115978240,
+    "recovery": "Restore chunks in offset order through gzip into the absent original path only with sufficient capacity; verify source_sha256 and bytes before qemu-img check/using the restored backup. Retain chunks until verified. source.custody contains only holes, not a usable image."
+  },
+  "cold_chunks": [
+    {
+      "offset": 0,
+      "bytes": 33554432,
+      "sha256": "58575b60f31314bffebb98e0dffc5da2a6929043d0b02eed479981a3eb769a36",
+      "archive": "chunk-000000.gz",
+      "archive_sha256": "0816541edcd7df9067e2b4a3f378deb518254e33b4b4823d1f2714f1d6df6cb7",
+      "state": "retired"
+    },
+    {
+      "offset": 33554432,
+      "bytes": 33554432,
+      "sha256": "c374c37bff9d9f1223629b6f08e71f7726e4a1ed81115c8ec997cf4352f64967",
+      "archive": "chunk-000001.gz",
+      "archive_sha256": "997621b57c4058e1bdac0ddbfe6376312088b786c1d9413d712ff44b4d4b753a",
+      "state": "retired"
+    },
+    {
+      "offset": 67108864,
+      "bytes": 33554432,
+      "sha256": "f24298041afb371c184c49896595b22f0bae52997c221b57b5a421c57838c2c7",
+      "archive": "chunk-000002.gz",
+      "archive_sha256": "98b90238fa77b30c8bd21d54e54bf8abd3964741465c829c8c2384d79e15405a",
+      "state": "retired"
+    },
+    {
+      "offset": 100663296,
+      "bytes": 33554432,
+      "sha256": "197a1ffbc89c1a8d81f0d7ad9a667a257e0bc751456bd98face56fcfc125bb33",
+      "archive": "chunk-000003.gz",
+      "archive_sha256": "b94a4c9d757eaf00c2c2e340e0400969426256d131f18c120c4487c988f257bd",
+      "state": "retired"
+    },
+    {
+      "offset": 134217728,
+      "bytes": 33554432,
+      "sha256": "fc5131f349093be3cd34cd2d39ca8f40853d03bf7faa2df83dc39effe7e0b6ee",
+      "archive": "chunk-000004.gz",
+      "archive_sha256": "62bad8594da080ab536ce35a0e1b5f8f9855cbca3f052f6435e427eee2ddc89c",
+      "state": "retired"
+    },
+    {
+      "offset": 167772160,
+      "bytes": 33554432,
+      "sha256": "afc01377aab23b34b79d5383925497298310650733d805b3a4d8fcdce87318d1",
+      "archive": "chunk-000005.gz",
+      "archive_sha256": "dadb8ff23bfa8fec63d10c011d8d2c94e65b8be6d83175289566a5dc558f1306",
+      "state": "retired"
+    },
+    {
+      "offset": 201326592,
+      "bytes": 33554432,
+      "sha256": "9296709491cc5019ae5eac59b039e428fc4beda7f091018573b15682644deaab",
+      "archive": "chunk-000006.gz",
+      "archive_sha256": "34c7ad4d221c4610e9d88f081508b1e556173cb26b4a2a7e803e24f740abc3a4",
+      "state": "retired"
+    },
+    {
+      "offset": 234881024,
+      "bytes": 33554432,
+      "sha256": "c0a60a895a0ecd11e56d01ce69755511a7ce92c7f187f14c03d9879af4109eed",
+      "archive": "chunk-000007.gz",
+      "archive_sha256": "bd85ca5d3c8f16a27e1f47d3ce47d09d11dc20daa45a3d1988c94f82251a5559",
+      "state": "retired"
+    },
+    {
+      "offset": 268435456,
+      "bytes": 33554432,
+      "sha256": "ee3a6d31d13354a21d67e6f3a94638d1779314046ccae0d457ad83ed521c18d3",
+      "archive": "chunk-000008.gz",
+      "archive_sha256": "2faf2050a1f2038292c7039324842f92f1ab2d602fd3b5dece4e55137ecad3a1",
+      "state": "retired"
+    },
+    {
+      "offset": 301989888,
+      "bytes": 33554432,
+      "sha256": "deb807c0d9bbec987bd0438cb92ee804489d7f50a2e1c600a8d8b71d49d1a9e0",
+      "archive": "chunk-000009.gz",
+      "archive_sha256": "660b6590df28eae8e5983f05d31782f436a410bb578efcbf1761626a1e9c3280",
+      "state": "retired"
+    },
+    {
+      "offset": 335544320,
+      "bytes": 33554432,
+      "sha256": "33cdc7fb6783903fcad414265904f0460c955d5ca7708cf0a1aaabf5835a2327",
+      "archive": "chunk-000010.gz",
+      "archive_sha256": "a131d92a7a5d47fee6d36477f2b68323e0c1820cb6c3e48f11322104f757123d",
+      "state": "retired"
+    },
+    {
+      "offset": 369098752,
+      "bytes": 33554432,
+      "sha256": "23bdd55755c6e6e5bffc6c7103c173d5a58cf073dbc50e6f64321a0bc1aae5a7",
+      "archive": "chunk-000011.gz",
+      "archive_sha256": "968b576bc74fcdb7d558224b38557c7ddacd5e966185e954267546ccf2e3f523",
+      "state": "retired"
+    },
+    {
+      "offset": 402653184,
+      "bytes": 33554432,
+      "sha256": "c3cd8b1935a7ec474a3d2c3a153cf6b4b5927f96adfdaa0f86dea94be1783689",
+      "archive": "chunk-000012.gz",
+      "archive_sha256": "036fa21b8f5b81cafd26650b9eddf5fc3a0e5a9095a1f401c06f14a4e5be7eb0",
+      "state": "retired"
+    },
+    {
+      "offset": 436207616,
+      "bytes": 33554432,
+      "sha256": "cfe894484133c1ec2ec601a9735d27d47b768ef3cb26af08da02e15c565c946f",
+      "archive": "chunk-000013.gz",
+      "archive_sha256": "7605013b511c24bec259817dfbbd88d7fd789c607a0ee4f227a4dd3e23f3e7f1",
+      "state": "retired"
+    },
+    {
+      "offset": 469762048,
+      "bytes": 33554432,
+      "sha256": "1af8d452a26a6ebebe171ac132dca6699c31030b08d0c0f06eba8d49b9ce40d4",
+      "archive": "chunk-000014.gz",
+      "archive_sha256": "2303bc78133a37420afd04cd5ee5e86e9afa5ede1c73ddbe989d69dcb7055832",
+      "state": "retired"
+    },
+    {
+      "offset": 503316480,
+      "bytes": 33554432,
+      "sha256": "712b67127a405f68276bab8ed75d5996988b4ef4ed4f4f4cd36fa5bfb7644e8d",
+      "archive": "chunk-000015.gz",
+      "archive_sha256": "d7035c49a9f8cd23b6065354e94fe4e2769fc9db6a0fd3cc67ede4c4531c48d7",
+      "state": "retired"
+    },
+    {
+      "offset": 536870912,
+      "bytes": 33554432,
+      "sha256": "1f6c1c0d741d55e4b708709a96f17b569f8a026ec7cb08d05fe7aa808d06836b",
+      "archive": "chunk-000016.gz",
+      "archive_sha256": "0a3717f40d25bb07de045bcb0c090e752aaac9beb599a6f9f22bc810d051fb76",
+      "state": "retired"
+    },
+    {
+      "offset": 570425344,
+      "bytes": 33554432,
+      "sha256": "be8c275fcdf9053d13dfe30299c1ec6185f3bed29a3dd4f9f9bf7a376ed3d00f",
+      "archive": "chunk-000017.gz",
+      "archive_sha256": "bd19b20096bd1d5a6451fa44e80a924d42c7bf33d7040b1a50f580940bc72c4e",
+      "state": "retired"
+    },
+    {
+      "offset": 603979776,
+      "bytes": 33554432,
+      "sha256": "cc1a7ecc7ca9c04dc8fd13be60992f0420c003a43a80ff19658970fac851220b",
+      "archive": "chunk-000018.gz",
+      "archive_sha256": "6f97479a6e60c664e08f142d78686cddd7436dd1d312367b728d8ed215d5c26e",
+      "state": "retired"
+    },
+    {
+      "offset": 637534208,
+      "bytes": 33554432,
+      "sha256": "c0af1b1a237d22d2128d2cb1122891a7e2b733673ee077c2d0ed8ba5865e9d8f",
+      "archive": "chunk-000019.gz",
+      "archive_sha256": "f38568b41d6b163ca098df86a76b28b5797727f6f147addff5888d35020390b5",
+      "state": "retired"
+    },
+    {
+      "offset": 671088640,
+      "bytes": 33554432,
+      "sha256": "9493b4aa9e8249ecd51a4bca7534dc33225ca7c4d32b62518e8a6791d9a4ac5c",
+      "archive": "chunk-000020.gz",
+      "archive_sha256": "59b301a9da3b0b64c05c271d5e597899a40c88b938d7758b970a13025f105fce",
+      "state": "retired"
+    },
+    {
+      "offset": 704643072,
+      "bytes": 33554432,
+      "sha256": "4cb38e39414c4d6418e1fe3ef41ac13fef2f8cc7883766aa9fe49ac5c07dccc6",
+      "archive": "chunk-000021.gz",
+      "archive_sha256": "b3cf36a437cfd0f0ceef600ad70743d40f5d67ee4476184f8ead3b84a9f334c8",
+      "state": "retired"
+    },
+    {
+      "offset": 738197504,
+      "bytes": 33554432,
+      "sha256": "a7e57cccd23624e8df7d6fb664deb12558dbd17b62a0a94858467e66a31f5fdf",
+      "archive": "chunk-000022.gz",
+      "archive_sha256": "fee2dee2deb922c1b1aee402e785388ede95968bc323fd8a6d098049d33bc1f4",
+      "state": "retired"
+    },
+    {
+      "offset": 771751936,
+      "bytes": 33554432,
+      "sha256": "06e945c2a22b2267d0b0a3b85f7422195aa307ba966e9387ac98a96261748d10",
+      "archive": "chunk-000023.gz",
+      "archive_sha256": "68b60dd9ca32d3079d494ffc9fd8a502150a0145f027946d421164413354a066",
+      "state": "retired"
+    },
+    {
+      "offset": 805306368,
+      "bytes": 33554432,
+      "sha256": "064414411f642a8cea8d67f164a7629672f2557d9c2d263b6994a85d8db583a0",
+      "archive": "chunk-000024.gz",
+      "archive_sha256": "012ed488ea5433751473209edc9244fe78329bba579885f454993c5be848e114",
+      "state": "retired"
+    },
+    {
+      "offset": 838860800,
+      "bytes": 33554432,
+      "sha256": "1b98d53d9db4e0c79740125813712826480b03ca06c806459d7f940bce31f967",
+      "archive": "chunk-000025.gz",
+      "archive_sha256": "980f0ab8dcac75484aa41887676a6d2f29cb39ca1249778485c89d8059a3a2bd",
+      "state": "retired"
+    },
+    {
+      "offset": 872415232,
+      "bytes": 33554432,
+      "sha256": "05755d644a8410951466e1c252584b4098e37b44f9f4b741367fb68a4b7c47dd",
+      "archive": "chunk-000026.gz",
+      "archive_sha256": "13991b7f04a496b542b78112b513e5aab6808cb194ae347121cc8b9235abaa9f",
+      "state": "retired"
+    },
+    {
+      "offset": 905969664,
+      "bytes": 33554432,
+      "sha256": "3d90892f96bf8c3db21802525e3d237e5e81ad787b6e59d1753ed9c72c4bc1ec",
+      "archive": "chunk-000027.gz",
+      "archive_sha256": "48beac71d58fb692a6b948a60183619f1a0f97a5e6f806bc3aaa9473e6b05c9f",
+      "state": "retired"
+    },
+    {
+      "offset": 939524096,
+      "bytes": 33554432,
+      "sha256": "7388267a5197caff718e9ad54ad5fa74c6194dc1dda4628e3c3a2b75d9df6067",
+      "archive": "chunk-000028.gz",
+      "archive_sha256": "92e797a601e437dd6b1757f1dc8ba2e39a149b9006801147405f6d3f774a1187",
+      "state": "retired"
+    },
+    {
+      "offset": 973078528,
+      "bytes": 33554432,
+      "sha256": "9f2afd2a105c44263663ca0397ccd10a2d08f0a49c4a39ccad174ab8977af7b3",
+      "archive": "chunk-000029.gz",
+      "archive_sha256": "c69fc03687c7c8100703e3ea6b6b7316d5708184b06c54d094a06cfe3620f529",
+      "state": "retired"
+    },
+    {
+      "offset": 1006632960,
+      "bytes": 33554432,
+      "sha256": "ec0e85125a20bc505497ad47e673d7081cad5bfd674732dc1fdf904881688db5",
+      "archive": "chunk-000030.gz",
+      "archive_sha256": "abbf38c8f08fa57d39b38600a73677c5498dd68be1ebe461b5dd61c1e26b30a9",
+      "state": "retired"
+    },
+    {
+      "offset": 1040187392,
+      "bytes": 33554432,
+      "sha256": "b1edf9008b1e03eef5924ffd92cedefbaeba6fa61a87b56e8710d652e7da40cd",
+      "archive": "chunk-000031.gz",
+      "archive_sha256": "56175e1f39bfb8ab66533ed3862028f1ac464fda57f81121eac3cc627505f0d3",
+      "state": "retired"
+    },
+    {
+      "offset": 1073741824,
+      "bytes": 33554432,
+      "sha256": "e67501a87c1914dfa0415ca97c2c84279131ef5cb5eb624e23683291a5c0313a",
+      "archive": "chunk-000032.gz",
+      "archive_sha256": "dea3b0abd9bc5409958f3b72dda357745ebcedc824877f8866f3b1c670f12050",
+      "state": "retired"
+    },
+    {
+      "offset": 1107296256,
+      "bytes": 33554432,
+      "sha256": "26757ca0a386ccfaf556eefe66c2edac89f6407c7384cc9b8c909b301fd05a83",
+      "archive": "chunk-000033.gz",
+      "archive_sha256": "2e01307521fb4938545a30abb243a9ba60a518939791f66994749829ea0e8b81",
+      "state": "retired"
+    },
+    {
+      "offset": 1140850688,
+      "bytes": 33554432,
+      "sha256": "19476eb9b346d1a09f51b4bb5bbb8431c34e885a22db9247bd49763a77d102f7",
+      "archive": "chunk-000034.gz",
+      "archive_sha256": "6df41fb8faab1a70629c930d26709d5c3bf5336b8be58bc9f99d02fd527ead88",
+      "state": "retired"
+    },
+    {
+      "offset": 1174405120,
+      "bytes": 33554432,
+      "sha256": "1b2f206ff186982c6c757a7c3ef1efac183316c5c121a0db55c0c10c709c00eb",
+      "archive": "chunk-000035.gz",
+      "archive_sha256": "1786c255ac98305b11d31b0f0f26ebc299c9aa26bcff66e58d3c6c1ae8635967",
+      "state": "retired"
+    },
+    {
+      "offset": 1207959552,
+      "bytes": 33554432,
+      "sha256": "0b4437c116a5ae0457866be16dad06f8ef3d1f81b4d4e52a9c40a82a04bc815c",
+      "archive": "chunk-000036.gz",
+      "archive_sha256": "84ed3405095df1722134b3e80e44ed178493f5763c3b32c14875aad9163a3f81",
+      "state": "retired"
+    },
+    {
+      "offset": 1241513984,
+      "bytes": 33554432,
+      "sha256": "360d77ddec739e3340c703cd7e7459414d30cb675d185d7940d7865e7daeb40e",
+      "archive": "chunk-000037.gz",
+      "archive_sha256": "204c9b90e95c64aea30a3749ffed5332b095d042a3491229f27e2470109e06ee",
+      "state": "retired"
+    },
+    {
+      "offset": 1275068416,
+      "bytes": 33554432,
+      "sha256": "4b86f06e18c4fb209822c1039510a664d86d6c3d94565fe6151aa4ec0d4d1a79",
+      "archive": "chunk-000038.gz",
+      "archive_sha256": "5ed89b2187425f9d157f762a3981735c1e2e6d4a305d4a9d36fd0e7491dc6580",
+      "state": "retired"
+    },
+    {
+      "offset": 1308622848,
+      "bytes": 33554432,
+      "sha256": "477eea36fa4bbba8d1727ccac0c3513a3c8a71faeb35ee032e49a1650fd6e82c",
+      "archive": "chunk-000039.gz",
+      "archive_sha256": "7f35829b354f3ec6616a74548bd25528ea2ce547640dca72708fedcd6f431336",
+      "state": "retired"
+    },
+    {
+      "offset": 1342177280,
+      "bytes": 33554432,
+      "sha256": "244bb6ccf046874a89056e91e165a1a180ed5fd1257e9fb10f5eadc260ab7c52",
+      "archive": "chunk-000040.gz",
+      "archive_sha256": "4ac04fd3488cd71b1bbec7352d810dd8f41a4147e55ea2a89d91eaf1c68bb24c",
+      "state": "retired"
+    },
+    {
+      "offset": 1375731712,
+      "bytes": 33554432,
+      "sha256": "25608734f8fc3a93c79d0c93c285a496cfd71e82acae507af3d0710322f8f08d",
+      "archive": "chunk-000041.gz",
+      "archive_sha256": "84c6fd68c22b29da00b1101955fdf82db7cb1e1d758be8b9f5016b8ac32e0651",
+      "state": "retired"
+    },
+    {
+      "offset": 1409286144,
+      "bytes": 33554432,
+      "sha256": "1c852155a208bad91b3f09b676d611d8ac404483ba6ef70569aa3ae4a88953c4",
+      "archive": "chunk-000042.gz",
+      "archive_sha256": "62ff6f9b18fca743a189015536685613d2c9f3558b23ed9b5d591d6569531b9b",
+      "state": "retired"
+    },
+    {
+      "offset": 1442840576,
+      "bytes": 33554432,
+      "sha256": "3d882617a6f5e8cf232bfb33b743f153fd5d9aeb08ae5622f594772a948f95bd",
+      "archive": "chunk-000043.gz",
+      "archive_sha256": "7565e11aab055ed560ea09be0c492cc7a3911b92bdb4016d96f0c1d23968f664",
+      "state": "retired"
+    },
+    {
+      "offset": 1476395008,
+      "bytes": 33554432,
+      "sha256": "814ed6590cc9cbb2964de2cbb187d25e12d75048a49b2dbafcd88c6517dced7b",
+      "archive": "chunk-000044.gz",
+      "archive_sha256": "546a22227050a3402259b7c1bd55823f7ef7364e1e819f8e539dcedc7ce8b615",
+      "state": "retired"
+    },
+    {
+      "offset": 1509949440,
+      "bytes": 33554432,
+      "sha256": "e90077285bf131d60137a8a45780ca25d0c5a1c804b44bfe0a20cb4caddf350e",
+      "archive": "chunk-000045.gz",
+      "archive_sha256": "9536dd85cfba37e515f851b40d8582131fc7e39cada96d8a658dca128231f172",
+      "state": "retired"
+    },
+    {
+      "offset": 1543503872,
+      "bytes": 33554432,
+      "sha256": "0c3cb5b6ccf363c3a0508cd6139083607640bfff83ec31cf44e57928e41502b9",
+      "archive": "chunk-000046.gz",
+      "archive_sha256": "c3d6a7e30868fc8bc8840f3cf3d1fdc8c62897eb81d98fa2ec6c6833786410ed",
+      "state": "retired"
+    },
+    {
+      "offset": 1577058304,
+      "bytes": 33554432,
+      "sha256": "b080d322ca0bd2b9a165e4d434aea616cbd52067bf71828633598a8f99ce7866",
+      "archive": "chunk-000047.gz",
+      "archive_sha256": "ed817f4014e9db2b2795a0a802d843e0916c276ac0cf79b48235ae95bad25eed",
+      "state": "retired"
+    },
+    {
+      "offset": 1610612736,
+      "bytes": 33554432,
+      "sha256": "75d61f70d3cff465ad93cd1f6cf26b6515bafb53d88b62540946aa75e057a3f4",
+      "archive": "chunk-000048.gz",
+      "archive_sha256": "03534fb43ae5dcee41f2a77050bd1db955456a54e6039793f60848f4c99e17e7",
+      "state": "retired"
+    },
+    {
+      "offset": 1644167168,
+      "bytes": 33554432,
+      "sha256": "0eaf89253783d85dc924903e048810c5dd9934b1ad6b7bbbd8d0fc0fca1dbcda",
+      "archive": "chunk-000049.gz",
+      "archive_sha256": "4541c7dd362e050e2774671aa8900e4ba86303a081275e2d64d6f92b02e08bc4",
+      "state": "retired"
+    },
+    {
+      "offset": 1677721600,
+      "bytes": 33554432,
+      "sha256": "367984871275b4ad4da2d0d99a6b357c0e9cbdac7b980748036518cceb311ab1",
+      "archive": "chunk-000050.gz",
+      "archive_sha256": "2335b56ca6c80783e4025cfbd941ad53b03b1e21e854df2767e924b1e0520e9e",
+      "state": "retired"
+    },
+    {
+      "offset": 1711276032,
+      "bytes": 33554432,
+      "sha256": "c8f52ae41ae228d979db76156906cb70534df13ca6a8a8cc2cdd4e3e96769deb",
+      "archive": "chunk-000051.gz",
+      "archive_sha256": "7e82bcd7264ef055a3eab2b04aede321426d32aec33880e8aecbad4c2fdb756b",
+      "state": "retired"
+    },
+    {
+      "offset": 1744830464,
+      "bytes": 33554432,
+      "sha256": "83b150f63c5622a6b80a6937a1f92d66e954d9ebaf3938ddfa2f0f19932e2104",
+      "archive": "chunk-000052.gz",
+      "archive_sha256": "2b4343cbd3ed321408aa17d23f0e5620573a9adcbd7debc93620739be478f6ca",
+      "state": "retired"
+    },
+    {
+      "offset": 1778384896,
+      "bytes": 33554432,
+      "sha256": "50d6137174002ebf2d24a59485626af8149315c51090106fe20c42770b0099e7",
+      "archive": "chunk-000053.gz",
+      "archive_sha256": "3c10b7535e1ba7dc7c08123f002e3fa9c7d2d4329a263b581672a8d04cec0307",
+      "state": "retired"
+    },
+    {
+      "offset": 1811939328,
+      "bytes": 33554432,
+      "sha256": "4894d72506e2efc18728b8f963d95f2647acf939d3e361be08c55b8190a52f76",
+      "archive": "chunk-000054.gz",
+      "archive_sha256": "30ba23509bcebbb8dd508c35e118964b945ec37dbc0b7291ea1ca1d35f1f30bf",
+      "state": "retired"
+    },
+    {
+      "offset": 1845493760,
+      "bytes": 33554432,
+      "sha256": "fdc86f1b5ced73bce88d57d7dddee71e6b4cf5aade650566cd732042cbc7e7e2",
+      "archive": "chunk-000055.gz",
+      "archive_sha256": "6c5dea223d7ee621763ac0897bf3a8bf3d6c748e99779ff0e197dff45b96ddb8",
+      "state": "retired"
+    },
+    {
+      "offset": 1879048192,
+      "bytes": 33554432,
+      "sha256": "ee56a50786fed56821a2b1a50720fae7769f59e87ae4b3494bad63087a6b47bd",
+      "archive": "chunk-000056.gz",
+      "archive_sha256": "506d074da03da01ecafb33918dc4765f6e40c3c5924d46a24d0471e39fac2888",
+      "state": "retired"
+    },
+    {
+      "offset": 1912602624,
+      "bytes": 33554432,
+      "sha256": "ace03c86c416a94f8bbbaf83faac70fefca58bbc71e690093fd6df6c9779adbb",
+      "archive": "chunk-000057.gz",
+      "archive_sha256": "a05705c2f26ad31cb40302bc88e58caa316189d64cfed0282cd4cb11745e6f70",
+      "state": "retired"
+    },
+    {
+      "offset": 1946157056,
+      "bytes": 33554432,
+      "sha256": "3c1f2e16da81d2639c0307abf7196c319a5e1a3c5d0cf465cd3dc13b8f979c1b",
+      "archive": "chunk-000058.gz",
+      "archive_sha256": "d7967114e3fe5035ce13d28474cf24f94cea53f4e9718d2e77fc31c3e3f0812d",
+      "state": "retired"
+    },
+    {
+      "offset": 1979711488,
+      "bytes": 33554432,
+      "sha256": "17c3a28db0c083c0feaeef75e6d06cc8f44de2c663fe34ff9e13b47306b9f4bb",
+      "archive": "chunk-000059.gz",
+      "archive_sha256": "5bcd3a1083a059a3a8d076f6d7721f693df654ececb0bd233b7a9343410862f5",
+      "state": "retired"
+    },
+    {
+      "offset": 2013265920,
+      "bytes": 33554432,
+      "sha256": "65910470861435d22cf02ec3f5483b20f44b83ef48e3e141a9de1a6f3e933c81",
+      "archive": "chunk-000060.gz",
+      "archive_sha256": "dd1853d5ea30d77799896adebc799dc430efa7d6e0b688fdadef9e423fa5199b",
+      "state": "retired"
+    },
+    {
+      "offset": 2046820352,
+      "bytes": 33554432,
+      "sha256": "1157f11e65e4bfb64adbece527c457f618b786adcd7f9326f41d8d55847171b2",
+      "archive": "chunk-000061.gz",
+      "archive_sha256": "3a05f4f793152718738da88b0eb96c1b944f26d30033d459217f6fd1eab5dee2",
+      "state": "retired"
+    },
+    {
+      "offset": 2080374784,
+      "bytes": 33554432,
+      "sha256": "dc664d64c960d16544047d0bcbcf30c4d51ba26cd2f6d98abd8b60fab00fc60e",
+      "archive": "chunk-000062.gz",
+      "archive_sha256": "255d0c70740a199a1af4a7b4df6ca387fdaaba355012da77b1a6ff1eaa93e671",
+      "state": "retired"
+    },
+    {
+      "offset": 2113929216,
+      "bytes": 33554432,
+      "sha256": "86a7e9f2b55e9f49d294571405963dfc35ae2383bd4fbeec2cfc2bab6a7f7780",
+      "archive": "chunk-000063.gz",
+      "archive_sha256": "46a255c5825e8918432145032b3ce735e88ffe275b27f4872ca25c51571d45a0",
+      "state": "retired"
+    },
+    {
+      "offset": 2147483648,
+      "bytes": 33554432,
+      "sha256": "d94f4312944ee2a89139fd17212a40c53c9707be21c25a699f1a0190cb551adf",
+      "archive": "chunk-000064.gz",
+      "archive_sha256": "98267378e3725d0bd09c6fc442ffc33225f612d2e085592f0727e44f7579040f",
+      "state": "retired"
+    },
+    {
+      "offset": 2181038080,
+      "bytes": 33554432,
+      "sha256": "92a03498105930aebb283ab3cceb532353b06f6b9e07a22ed74c66e5272728e5",
+      "archive": "chunk-000065.gz",
+      "archive_sha256": "683e1b627072c840fee124065fef42f1cd1158383374beafa888d610c81d5f68",
+      "state": "retired"
+    },
+    {
+      "offset": 2214592512,
+      "bytes": 33554432,
+      "sha256": "f42fca87d415b0be8757fe8a7df02326d08b107f734dbf14045516a3b18ee835",
+      "archive": "chunk-000066.gz",
+      "archive_sha256": "308c2684fb05f88df805abc64d59d94b024d95cfe84d3d0175803b38f6145675",
+      "state": "retired"
+    },
+    {
+      "offset": 2248146944,
+      "bytes": 33554432,
+      "sha256": "926b4e8d2131639ca5caac096ab6cc97c77fa002b2e0130c4d7c149ea03618e4",
+      "archive": "chunk-000067.gz",
+      "archive_sha256": "a51cbf87064795f809f63ba77f6bc3653e466d8e2325e50f01366c1adfc21c1c",
+      "state": "retired"
+    },
+    {
+      "offset": 2281701376,
+      "bytes": 33554432,
+      "sha256": "ea72defbfbf29da2c334aa9bfbd6cccaea22bb06beba3716b3afc93feb91ffe1",
+      "archive": "chunk-000068.gz",
+      "archive_sha256": "310003b61b8e924fcf6860fdf8fe4c88dc78a87f6e4ad731703751715bfea976",
+      "state": "retired"
+    },
+    {
+      "offset": 2315255808,
+      "bytes": 33554432,
+      "sha256": "bc5b0aa65adabf89a4f70e9a2f8543bcd73c2f800a16297192e2fe237b5afd4b",
+      "archive": "chunk-000069.gz",
+      "archive_sha256": "e51ba738e2a294f2e3589ca8888a2aef77e23ce94fe6bf8787f0346a79bec1f6",
+      "state": "retired"
+    },
+    {
+      "offset": 2348810240,
+      "bytes": 33554432,
+      "sha256": "98f11d635829d5f353907a3b470410730c1a0fbe10f86a51c3b4d7b511dfad67",
+      "archive": "chunk-000070.gz",
+      "archive_sha256": "74cca28bd85be2e2532f01e70d7e7b1970a078afafe2de5294a28598871f17d5",
+      "state": "retired"
+    },
+    {
+      "offset": 2382364672,
+      "bytes": 33554432,
+      "sha256": "3bc2593897bc68d1a3c4fb4136e4060dc238f380f7cf5b1b5edeef9e6bc916bd",
+      "archive": "chunk-000071.gz",
+      "archive_sha256": "ecc69d71397c58dfffc78a02014c1c283e457de5a4bdfe9b28775c02014b5933",
+      "state": "retired"
+    },
+    {
+      "offset": 2415919104,
+      "bytes": 33554432,
+      "sha256": "3d10816fbc7a6c12bf7792acf10d248ed92d6d6362be27e1f00dd65b9bcc5a77",
+      "archive": "chunk-000072.gz",
+      "archive_sha256": "8d135e4ba7aaf417431d1d8cf4e0cb7c8ccc500c003f59057b59e6e1a1c48b3e",
+      "state": "retired"
+    },
+    {
+      "offset": 2449473536,
+      "bytes": 33554432,
+      "sha256": "3dd4213b6b3cb5d7afa795525aef2c9e8984b457388566f76a588ece5e28408c",
+      "archive": "chunk-000073.gz",
+      "archive_sha256": "82c81e38b8d9bd5d81ce61444b2c4fc09fd84da7b962c9d9a096855476775af3",
+      "state": "retired"
+    },
+    {
+      "offset": 2483027968,
+      "bytes": 33554432,
+      "sha256": "e8049d794bec97d349cef075cc4682d6dca1806e77a29f1e2dfee9756baf2eb1",
+      "archive": "chunk-000074.gz",
+      "archive_sha256": "0c5a1012084d183949609e38d822e5c4e35e21dbcb5e7e2330d1dad821af8777",
+      "state": "retired"
+    },
+    {
+      "offset": 2516582400,
+      "bytes": 33554432,
+      "sha256": "e356525d140934c848cdc088a08af367e84f9f6052759ac8b4cb1fef8a1755fb",
+      "archive": "chunk-000075.gz",
+      "archive_sha256": "f72074d6a74de73645ee2376647cf9465157849cc9a76a5f8fba6ace81ae8f67",
+      "state": "retired"
+    },
+    {
+      "offset": 2550136832,
+      "bytes": 33554432,
+      "sha256": "d6c886eea9a8160d26bac9892a7fb716e06a723d829bb9995389fc5a22b8b6b7",
+      "archive": "chunk-000076.gz",
+      "archive_sha256": "4964fd13e7a5ed20149f4fe3b2d3fca29b4c1e2408278fe2ab12e1bf2aefdd96",
+      "state": "retired"
+    },
+    {
+      "offset": 2583691264,
+      "bytes": 33554432,
+      "sha256": "bed88c226e09a3186a26d82f9ac2ac0ef3d1fb07558a852a316e71ea7f391f5c",
+      "archive": "chunk-000077.gz",
+      "archive_sha256": "259a34f9494c0a3df2517c3cc8dabb1f72e218eb782a270161e7869fa73b17ee",
+      "state": "retired"
+    },
+    {
+      "offset": 2617245696,
+      "bytes": 33554432,
+      "sha256": "1e1bf9309f92d212bb6eb662c7341e6302c88c2d82c4410a3e080bbe83fc2182",
+      "archive": "chunk-000078.gz",
+      "archive_sha256": "e00ab2d238690bff7b0924566885d3df47cd5321913c80f9747531a08643d007",
+      "state": "retired"
+    },
+    {
+      "offset": 2650800128,
+      "bytes": 33554432,
+      "sha256": "a3898d9174413ee53aafddf0fb48efac6ef791414367d7aa8eb4dc14e20b1f76",
+      "archive": "chunk-000079.gz",
+      "archive_sha256": "41151ea394a18b3b320238218d29ba18efae6fa2d24a290d5cc2bf1eebd04f45",
+      "state": "retired"
+    },
+    {
+      "offset": 2684354560,
+      "bytes": 33554432,
+      "sha256": "1a0c222f27b328ed0072e81a8508c624e53a8847f627b33add1006170b66ba4a",
+      "archive": "chunk-000080.gz",
+      "archive_sha256": "eb332e519f2a3f31c705f13df9980b56789a7cf5c4fd2f4a16a2105df3ae35a9",
+      "state": "retired"
+    },
+    {
+      "offset": 2717908992,
+      "bytes": 33554432,
+      "sha256": "a1c27020c33a97644de50881141d1bb251cec6abdc4d8776b057b2b17e3b7c1c",
+      "archive": "chunk-000081.gz",
+      "archive_sha256": "224e7e330c6fef7a5361df73675b3b640573754bfb59ca51f25b20a64dc143bc",
+      "state": "retired"
+    },
+    {
+      "offset": 2751463424,
+      "bytes": 33554432,
+      "sha256": "6f9395c7e2d69c9c174b2682c10f3af66766668ac473680c978ea0243e252e2f",
+      "archive": "chunk-000082.gz",
+      "archive_sha256": "5807929ea7131c5cfe9ad80a2ebb6ca12ac83b5021117bea2314bde9368cb2da",
+      "state": "retired"
+    },
+    {
+      "offset": 2785017856,
+      "bytes": 33554432,
+      "sha256": "cb0cd76711cef1227201bc35c067fe7899de09af5fa4d62006d9c626b95d20a2",
+      "archive": "chunk-000083.gz",
+      "archive_sha256": "ebdd27313ad8e8e16a477f7274f37fc7a3d53f42b3705eb57491d08ba463fdd0",
+      "state": "retired"
+    },
+    {
+      "offset": 2818572288,
+      "bytes": 33554432,
+      "sha256": "c71e5661e9596d3aef31b38c98762d8a3dab3893e7e8fd380a82666e9bac9cf0",
+      "archive": "chunk-000084.gz",
+      "archive_sha256": "0e8ad2f469b6b6fdad610c38729b317622956d2d9846bfd7fc43d068066d450d",
+      "state": "retired"
+    },
+    {
+      "offset": 2852126720,
+      "bytes": 33554432,
+      "sha256": "16795e864f82c065a4d8575a265333b10fd30c2737f504b487d7484c89af8418",
+      "archive": "chunk-000085.gz",
+      "archive_sha256": "f660a27e717b6becd5174e809b01c1373f77b362c5104623c3144bcaa39b3c35",
+      "state": "retired"
+    },
+    {
+      "offset": 2885681152,
+      "bytes": 33554432,
+      "sha256": "a1f9f151afa22adf9084866edc181c01fc418920b927c2138a9f021d2126adee",
+      "archive": "chunk-000086.gz",
+      "archive_sha256": "7b1ff5fd4d13a68a28fbe5f91284f7c6e1fba2751f34dc9ff2bb09881ff05f61",
+      "state": "retired"
+    },
+    {
+      "offset": 2919235584,
+      "bytes": 33554432,
+      "sha256": "ee42a430a142f928c5c19aa160410665d4213375ac91685702ce6488296c8f69",
+      "archive": "chunk-000087.gz",
+      "archive_sha256": "12bb276a9f96a288488d135deea78b2d4763fe96d30f09474dce6bd79bdc38d0",
+      "state": "retired"
+    },
+    {
+      "offset": 2952790016,
+      "bytes": 33554432,
+      "sha256": "eab4d3cd81bb2150bbb5d201c398f2447d9c130a91df1e753314f428bcd6f963",
+      "archive": "chunk-000088.gz",
+      "archive_sha256": "1309b4bdd4536ee24ea50b631b52216a07ab67b8e7d02779d7ec48caec318f56",
+      "state": "retired"
+    },
+    {
+      "offset": 2986344448,
+      "bytes": 33554432,
+      "sha256": "ed096ff80216ebec348b876ca435a68cdf9199699f9985c18cd169c950994106",
+      "archive": "chunk-000089.gz",
+      "archive_sha256": "948674f9760f890ad8accadcea2c58599a9f842a900adb88f9d59eee62e5265d",
+      "state": "retired"
+    },
+    {
+      "offset": 3019898880,
+      "bytes": 33554432,
+      "sha256": "729a333c1866ee539409cf50aef7bb227c2f505eaaed317b435bba3022013731",
+      "archive": "chunk-000090.gz",
+      "archive_sha256": "a224e1b134fcaad28e862289670b157d24833ba391eff5f0d191f2db400656d5",
+      "state": "retired"
+    },
+    {
+      "offset": 3053453312,
+      "bytes": 33554432,
+      "sha256": "5d56036e8a847dba304738b80adfbdfdc2de87262be8f4db6a630f3cafadfc43",
+      "archive": "chunk-000091.gz",
+      "archive_sha256": "bde5b8c5de565680bd0181dac54a4a56cf4aa5c53563d2ff10352b0ab177f5f8",
+      "state": "retired"
+    },
+    {
+      "offset": 3087007744,
+      "bytes": 33554432,
+      "sha256": "1acf00ec8d9cd757c9eeb5d4e079faf3e86b39338d7eb84565c10da9682200a2",
+      "archive": "chunk-000092.gz",
+      "archive_sha256": "b8db9629fb02960bb069e6bb96fa393ee2c7f89ed3dfe31a0f66ea7cdb4da008",
+      "state": "retired"
+    },
+    {
+      "offset": 3120562176,
+      "bytes": 33554432,
+      "sha256": "99f6ec35b9fa2c36e77516d2d656343971f877aa77064285f4bf36a2d3b1ccae",
+      "archive": "chunk-000093.gz",
+      "archive_sha256": "b6f6dd8886f6471f93f7326bdefb7edcf0a7cd686d1245c3dfe2dba16849b3a6",
+      "state": "retired"
+    },
+    {
+      "offset": 3154116608,
+      "bytes": 33554432,
+      "sha256": "fe074cb909816fe6255b0c89f6cfd542cc72db4d2f1d036adbbda83f7401ecc8",
+      "archive": "chunk-000094.gz",
+      "archive_sha256": "0df092573aec7fbeaed743d62b1cd82d6f424033c9f22e8443ca380846fb7737",
+      "state": "retired"
+    },
+    {
+      "offset": 3187671040,
+      "bytes": 33554432,
+      "sha256": "5b9f2b30dd54f1e9cfea6b183cac21e4d0dc6f8576fc72dc46c0b72c2d925de3",
+      "archive": "chunk-000095.gz",
+      "archive_sha256": "f5cc04b36a239d4b4e443dbf47187fa0e976b3a4fb6ff3ec99fbc8ae6d770edc",
+      "state": "retired"
+    },
+    {
+      "offset": 3221225472,
+      "bytes": 33554432,
+      "sha256": "a71979e83927e3710f876563658edec95772f082b3022867f8f3a496413e558e",
+      "archive": "chunk-000096.gz",
+      "archive_sha256": "91474b7c1d5fe6803a3b7886db91e8a68147f4e6e8950b0c19228f1c78bccbcb",
+      "state": "retired"
+    },
+    {
+      "offset": 3254779904,
+      "bytes": 33554432,
+      "sha256": "ce3e5a66aaf85ed02faea6af59bd4cdfbd8ed7689cd62f46dfa0e6c823d04842",
+      "archive": "chunk-000097.gz",
+      "archive_sha256": "e16bba202c17ad377996cd121d6a4c23b85d3274d54380310784f133661e3e79",
+      "state": "retired"
+    },
+    {
+      "offset": 3288334336,
+      "bytes": 33554432,
+      "sha256": "32d17fd9187165fc888fbb2428b6e2f0b940eb72befe964bb28e8cebd829ecdb",
+      "archive": "chunk-000098.gz",
+      "archive_sha256": "4b5f3b0d16a7612308f8d65476e293163276ce5ba5d56100a2b42eb477fef2a4",
+      "state": "retired"
+    },
+    {
+      "offset": 3321888768,
+      "bytes": 33554432,
+      "sha256": "7c06632a8a22cc26ac07c3297880b26a277e5dba54d102407e230eebf487b378",
+      "archive": "chunk-000099.gz",
+      "archive_sha256": "07196e5758a7bfa067510d9375397f31be86a315c71b24d713ee1c36c4a2f95b",
+      "state": "retired"
+    },
+    {
+      "offset": 3355443200,
+      "bytes": 33554432,
+      "sha256": "348de60971ebb87a9e0621622a3ebe0ca242f937b322de82979859da140e8046",
+      "archive": "chunk-000100.gz",
+      "archive_sha256": "1be3ac021fb6818fb8109c00fb2939ea203ec6f6b5c072e4d0d12e9523af2142",
+      "state": "retired"
+    },
+    {
+      "offset": 3388997632,
+      "bytes": 33554432,
+      "sha256": "792382ef51027ade942825a408f0eaa3da8e2a0c4acd7997183461aee778ce6f",
+      "archive": "chunk-000101.gz",
+      "archive_sha256": "d5412b960caf4bb67f9abb22b9285ea9f738485efc29fddd31d86ca2a0aff8a3",
+      "state": "retired"
+    },
+    {
+      "offset": 3422552064,
+      "bytes": 33554432,
+      "sha256": "15ba8656aa840c8b827fcfa35f8eafc5014b19705ea0844a4036b7e18230847c",
+      "archive": "chunk-000102.gz",
+      "archive_sha256": "c6758f0e0d9f6a914475269cf6a36fe69c1689147008d10be156cc3e6dd81fed",
+      "state": "retired"
+    },
+    {
+      "offset": 3456106496,
+      "bytes": 33554432,
+      "sha256": "8d3d1203b054d15609e646f132f9f990ae2c735000e6135588e09240e958f345",
+      "archive": "chunk-000103.gz",
+      "archive_sha256": "79a52e074160373f1b2dc9469051a7d5921ce7004ea18ab6f4c73272c502a420",
+      "state": "retired"
+    },
+    {
+      "offset": 3489660928,
+      "bytes": 33554432,
+      "sha256": "11a779f49de23be60f924fe60e94a22e710cb8043f5cc9bec7b739d3339f6924",
+      "archive": "chunk-000104.gz",
+      "archive_sha256": "08eb720bfcd55d42a05375e7d7c4acea2ba92b53bd665e120f7db8fb3cff5d17",
+      "state": "retired"
+    },
+    {
+      "offset": 3523215360,
+      "bytes": 33554432,
+      "sha256": "5cffa0f88b644c1d7541793cf564e0716bdf325b521e2d7754dd0c9255a1a4f9",
+      "archive": "chunk-000105.gz",
+      "archive_sha256": "69630a197da0c1a1eb5b2867f7dafac95cd8410910134cc0c6d30ad2b647e620",
+      "state": "retired"
+    },
+    {
+      "offset": 3556769792,
+      "bytes": 33554432,
+      "sha256": "8688b5654a113b9c3b7be305c8dd393eb9962d8b456adddb269320fc41d5b547",
+      "archive": "chunk-000106.gz",
+      "archive_sha256": "96b563392b00716bd259bdba432b34cc413e173010c6b06725725dbaebd8d1d4",
+      "state": "retired"
+    },
+    {
+      "offset": 3590324224,
+      "bytes": 33554432,
+      "sha256": "ad7ef089aa215e1f29c86885f129ed51de2f7939932569123161543855679b52",
+      "archive": "chunk-000107.gz",
+      "archive_sha256": "9e3ce38d3111fcf84b5a19f9bafe00c1d8df30d24c8c282f0d4f259b37123f13",
+      "state": "retired"
+    },
+    {
+      "offset": 3623878656,
+      "bytes": 33554432,
+      "sha256": "fec33b179aaf81c3eabb88e36431787c344cfd3bf92965bd17585080d02d66bb",
+      "archive": "chunk-000108.gz",
+      "archive_sha256": "bd98e73fe5b65079ee0ebb8f7935d286f0fffb5c83d6e88003767fb7c049d942",
+      "state": "retired"
+    },
+    {
+      "offset": 3657433088,
+      "bytes": 33554432,
+      "sha256": "9e5f2e213e52fa606af76d0ce1150b96a70110d77d09ceaa4e51952255aca5f2",
+      "archive": "chunk-000109.gz",
+      "archive_sha256": "dfe2f8b05277679d002acb1ea2081e3d8bd90d1c57c9c109662cba4727a1be35",
+      "state": "retired"
+    },
+    {
+      "offset": 3690987520,
+      "bytes": 33554432,
+      "sha256": "4035396cc1ce8e485e5277729b4cab5c784f075f2fca2408cc6ee6e10866a202",
+      "archive": "chunk-000110.gz",
+      "archive_sha256": "3f01ed90eef3b95186bbb7e98545fdc6ab327007b87a03dea2c74657a40a53e6",
+      "state": "retired"
+    },
+    {
+      "offset": 3724541952,
+      "bytes": 33554432,
+      "sha256": "f88a4ad594179be0ef837d8f3ceeb4aeaf569831e76d47b31bdc6e36abfaa957",
+      "archive": "chunk-000111.gz",
+      "archive_sha256": "98e485c020dc735b492848b23ce5206bc472172990f159fdeb515e78a9e5130d",
+      "state": "retired"
+    },
+    {
+      "offset": 3758096384,
+      "bytes": 33554432,
+      "sha256": "cea5ea0513bd93830b99a75a0c5e1f46d683325b971f419a189ac74fd7ec09d4",
+      "archive": "chunk-000112.gz",
+      "archive_sha256": "c0d7dcda148fbf4799e566c66b4d0b5ead0f306730aa6ab521d72f71d583446c",
+      "state": "retired"
+    },
+    {
+      "offset": 3791650816,
+      "bytes": 33554432,
+      "sha256": "281deed7927775c6ee3831aa085bdd9cadb9454df342392c90e556eac712c157",
+      "archive": "chunk-000113.gz",
+      "archive_sha256": "192e3647fbabf150a0f970bc9aaecc7dd4651dfbcd7bb6c64573cd6648256731",
+      "state": "retired"
+    },
+    {
+      "offset": 3825205248,
+      "bytes": 33554432,
+      "sha256": "393bf6a948fb0ebe13af18c9a6c6cfcab3a1a7636ff50f276889d3e8e65bb018",
+      "archive": "chunk-000114.gz",
+      "archive_sha256": "a67498d7a8f6b9e1500e5954f4109c19b026eed43f11ac2d2360ae36072c9293",
+      "state": "retired"
+    },
+    {
+      "offset": 3858759680,
+      "bytes": 33554432,
+      "sha256": "ec4fa29bd10e71d91eff1e588724ec8df91806d7ec1709de15b419f6db22e658",
+      "archive": "chunk-000115.gz",
+      "archive_sha256": "5039bfac4bc7b3edc2f42b89b95bdcbc68697d275e76ca0b2e514e6e66205db2",
+      "state": "retired"
+    },
+    {
+      "offset": 3892314112,
+      "bytes": 33554432,
+      "sha256": "1f3cc2aa083e87fdd7ff9b8745d0fdc720083e4abbfb59ce529c7b4c41c2a9fa",
+      "archive": "chunk-000116.gz",
+      "archive_sha256": "4e4b035b2d65af7d7b309acb51ae6861412c8546c845a97733b920b22f51926a",
+      "state": "retired"
+    },
+    {
+      "offset": 3925868544,
+      "bytes": 33554432,
+      "sha256": "4daf78c5fac79828ab8455784174af0561f0c9fea813c6972b1c530335fcd73d",
+      "archive": "chunk-000117.gz",
+      "archive_sha256": "a9c55c1d486387573f1e593d0cb2b55574865b9297b0372949a3d3cae47e40d5",
+      "state": "retired"
+    },
+    {
+      "offset": 3959422976,
+      "bytes": 33554432,
+      "sha256": "42c6100abed3447691fa236a4e21bc8bfa060f06702857eb8be487e716cae3ec",
+      "archive": "chunk-000118.gz",
+      "archive_sha256": "5e91a180b956d5a314644a2e74cdf2d9ebbf139ff3df77e15202bf90d9bfd4b2",
+      "state": "retired"
+    },
+    {
+      "offset": 3992977408,
+      "bytes": 33554432,
+      "sha256": "aa19d19cee80c34b725ffa79389c2c871c4a83b6fb678976450b93ed87757e82",
+      "archive": "chunk-000119.gz",
+      "archive_sha256": "2194321f915466e33cfb75c493ea2fbb0dde75053e3f758a60fb2c7fb43f8715",
+      "state": "retired"
+    },
+    {
+      "offset": 4026531840,
+      "bytes": 33554432,
+      "sha256": "67d41346033cc914167457bd9ed0b2dbb7c227f298b3a958968a1274246f77ba",
+      "archive": "chunk-000120.gz",
+      "archive_sha256": "5228d306ddfaf941c9776f087624ab1ca51177d750aa0005ba6339f895b69e89",
+      "state": "retired"
+    },
+    {
+      "offset": 4060086272,
+      "bytes": 33554432,
+      "sha256": "25e2efba66f3c9bbc82400d859ce78afbf2a7281dbc2d8f5d848689d7f341708",
+      "archive": "chunk-000121.gz",
+      "archive_sha256": "6060f5ef291538576221a4d143ee5a52f488111efab968de20821c7984c149ae",
+      "state": "retired"
+    },
+    {
+      "offset": 4093640704,
+      "bytes": 33554432,
+      "sha256": "fa0d97f013d8d4c9b1125b4256dd6cd82dfc80e8fa2eca5fb9ae16a326ca1564",
+      "archive": "chunk-000122.gz",
+      "archive_sha256": "309e687cf86acf38714fdae829d8ce7bef382f7d6592e2349b8525d1182fc6dd",
+      "state": "retired"
+    },
+    {
+      "offset": 4127195136,
+      "bytes": 33554432,
+      "sha256": "27772cc42d510fc8f203ee50a52e64557ee1d11fc55f287afb8fe4a7f7d80e91",
+      "archive": "chunk-000123.gz",
+      "archive_sha256": "1b89b70ef12dff22c387c36f2095971dcaf2997615dbe62ad08f4ddf234ca5a3",
+      "state": "retired"
+    },
+    {
+      "offset": 4160749568,
+      "bytes": 33554432,
+      "sha256": "2df89e87b6c2d319e16528bbf2f60ba73701a1dd89dea19a589bc584334997d4",
+      "archive": "chunk-000124.gz",
+      "archive_sha256": "068c7f9ec6085deac6c197b997f10b90215860ddf9caf438d66278f1e426972d",
+      "state": "retired"
+    },
+    {
+      "offset": 4194304000,
+      "bytes": 33554432,
+      "sha256": "5cec24dc2535bd98abed3c1057f57a26d1511fad256f98c8ebb97f848a6eee6e",
+      "archive": "chunk-000125.gz",
+      "archive_sha256": "8ab570dc48d009aa7fbfd08405e23e5d92b261106027c77ca0a28b486e7aaf67",
+      "state": "retired"
+    },
+    {
+      "offset": 4227858432,
+      "bytes": 33554432,
+      "sha256": "7287bddaa9ac980156179841c254c6c19bc6a21e2233555054ce1a09b563cae7",
+      "archive": "chunk-000126.gz",
+      "archive_sha256": "ffa411b00bdd97addc7d403542e556a3a9da8a5f1e005f0fb4d4ddeab17957f5",
+      "state": "retired"
+    },
+    {
+      "offset": 4261412864,
+      "bytes": 33554432,
+      "sha256": "b4223e8d63849be2b546e40d40ae68f26370f25f4d457560fc44ec0985c7cf3f",
+      "archive": "chunk-000127.gz",
+      "archive_sha256": "d6e9c9f0498b1028a568c351fdfc8476b1fd15975af3d452857d4a332d941a0b",
+      "state": "retired"
+    },
+    {
+      "offset": 4294967296,
+      "bytes": 33554432,
+      "sha256": "dcf7315c9fedfd691c92318a19e77e4ef83344904270e5747c17a04bd9513df1",
+      "archive": "chunk-000128.gz",
+      "archive_sha256": "41fbba1034a4140e44f143b92c26b4b236bab36d10fd815a74c84f2bc931fc82",
+      "state": "retired"
+    },
+    {
+      "offset": 4328521728,
+      "bytes": 33554432,
+      "sha256": "340a7559b6fd1364bd2d965007d64a8aa3f5174c600c6ab7af90881c75c5a2f1",
+      "archive": "chunk-000129.gz",
+      "archive_sha256": "725f11a8f390bab3ac82a6520941227ba29ca85597ce46653562306f2aad90be",
+      "state": "retired"
+    },
+    {
+      "offset": 4362076160,
+      "bytes": 33554432,
+      "sha256": "246d49bd08b85046fd53500fe6e67d248030209f7095f6a45649053e91a932c0",
+      "archive": "chunk-000130.gz",
+      "archive_sha256": "d902d24b022562f1eed2f15c7b2c56163ceeb81422e98435c8c1817df8779458",
+      "state": "retired"
+    },
+    {
+      "offset": 4395630592,
+      "bytes": 33554432,
+      "sha256": "33d2ca7eb74e9f0c154c9fbf302a81b04cc3984446127706570e15094bb03b7d",
+      "archive": "chunk-000131.gz",
+      "archive_sha256": "01d8371a01748bd077735677e01f905f0ebb9e88240211647b571e00c283150c",
+      "state": "retired"
+    },
+    {
+      "offset": 4429185024,
+      "bytes": 33554432,
+      "sha256": "10fc0883e8915adf58f85b09db8ca8367f3781ea6d68c0ad0fc2c1c94fb4c7e8",
+      "archive": "chunk-000132.gz",
+      "archive_sha256": "777f74181a6e22a91c58f6c170a023609472530c3cfa5a35b376eae0357d543d",
+      "state": "retired"
+    },
+    {
+      "offset": 4462739456,
+      "bytes": 33554432,
+      "sha256": "31c2debb73f219826cc55b58b96a503698b2bfa7548f457fe8b2cfe124afe549",
+      "archive": "chunk-000133.gz",
+      "archive_sha256": "5bd9b048c5e2838089b18c91d848b36cf4f8797207dc8fbf140a36186641500d",
+      "state": "retired"
+    },
+    {
+      "offset": 4496293888,
+      "bytes": 33554432,
+      "sha256": "e9187e77a171cf26444584d37415b4865ded0033478d326a7cdb1b6064f0ae42",
+      "archive": "chunk-000134.gz",
+      "archive_sha256": "7f391d5f15b18a6875d19ee043fc560c68ae1f87209281bf976dd06a8324f6b6",
+      "state": "retired"
+    },
+    {
+      "offset": 4529848320,
+      "bytes": 33554432,
+      "sha256": "df89e3dc0500e3cfe8f39da0943c56098e52afe836d45289a01bb64979e6f7ba",
+      "archive": "chunk-000135.gz",
+      "archive_sha256": "4b511c841580feb5df10beb3425e6df6880da0214d3133862c4840f9fb68d92b",
+      "state": "retired"
+    },
+    {
+      "offset": 4563402752,
+      "bytes": 33554432,
+      "sha256": "bdb56233fa051826152220425faed371cbdc1bebaee89b938b1617476561e57e",
+      "archive": "chunk-000136.gz",
+      "archive_sha256": "fc283927a077b273ebb04928cefb5cb5e4473e291ab3fe936d51fbec8e9a150d",
+      "state": "retired"
+    },
+    {
+      "offset": 4596957184,
+      "bytes": 33554432,
+      "sha256": "e7dbd9ef84f5d6fe2857190d1fb7cb9a9dc6f9824d7a3ebeab8739e33f7f2c7c",
+      "archive": "chunk-000137.gz",
+      "archive_sha256": "92d310a5249b0c79660c69c82e08d2f26fb3db4fd1e24397dfec278810a2f789",
+      "state": "retired"
+    },
+    {
+      "offset": 4630511616,
+      "bytes": 33554432,
+      "sha256": "d5e524a99d24695548f392c76d7c136898f6452924ebd77a356ad23b495b5583",
+      "archive": "chunk-000138.gz",
+      "archive_sha256": "7809b4ea2a0de666f1870d7c16177ce846fdba8c05dee16abae157ba98d30c71",
+      "state": "retired"
+    },
+    {
+      "offset": 4664066048,
+      "bytes": 33554432,
+      "sha256": "4ecca3ed9d6f4330ecd07a9bb64450a745b635fa2c20550b0cad9f81f9ef3730",
+      "archive": "chunk-000139.gz",
+      "archive_sha256": "97565642a48355b6d83fd8ce7b92c3c36fa4692ca3b971e305cda050249329f2",
+      "state": "retired"
+    },
+    {
+      "offset": 4697620480,
+      "bytes": 33554432,
+      "sha256": "dfc669edb5645bb1a33003f77ace821edb47cd88a07a92db7a513aab5d4fca44",
+      "archive": "chunk-000140.gz",
+      "archive_sha256": "2cbdc3993d73e06d2669704b3ad4af24452508053a9eecbf58dada816597889b",
+      "state": "retired"
+    },
+    {
+      "offset": 4731174912,
+      "bytes": 33554432,
+      "sha256": "9ecedf922cfb4de101821bffa1f76494c9a23020a23970279d014e3bfaa8343a",
+      "archive": "chunk-000141.gz",
+      "archive_sha256": "0898f44b9f59dcc76883021a933eef70c214a47009b31defd9d4f95b4db81c9c",
+      "state": "retired"
+    },
+    {
+      "offset": 4764729344,
+      "bytes": 33554432,
+      "sha256": "99cee0acb08b73ba665981be4aebfe2789487469de2887b680a4f685c716495c",
+      "archive": "chunk-000142.gz",
+      "archive_sha256": "3c3c364cbbd41a75dd8b773f6915ad94d5ef9e8497907e2fdd27d19149eb2c0f",
+      "state": "retired"
+    },
+    {
+      "offset": 4798283776,
+      "bytes": 33554432,
+      "sha256": "e3b368cfcc6d78bb09c3802405793324fbeeadbf71c64e1953f98368ffce3215",
+      "archive": "chunk-000143.gz",
+      "archive_sha256": "fc10d924e3e12d1dfc50b2290b2cb8ed5502648ca13985e1b0ecf00ffd55d955",
+      "state": "retired"
+    },
+    {
+      "offset": 4831838208,
+      "bytes": 33554432,
+      "sha256": "c1427c2d79c19558143ec7fd142c48ff1144a783792e1c1259e6e8de2b539cc8",
+      "archive": "chunk-000144.gz",
+      "archive_sha256": "5cd0a3d7131ba8d43c409a49f17c49cc34d93d233f18da51ea0abeced7523cdd",
+      "state": "retired"
+    },
+    {
+      "offset": 4865392640,
+      "bytes": 33554432,
+      "sha256": "12aefe02fc0fc62523ebcff6c9169fb01c922bcc71f0859fc1b86d28cf1960c1",
+      "archive": "chunk-000145.gz",
+      "archive_sha256": "921d923070a930dd7a5067e15f35c3a482cf569909e87c6a3d6b2c9db9d90b8d",
+      "state": "retired"
+    },
+    {
+      "offset": 4898947072,
+      "bytes": 33554432,
+      "sha256": "fd8fe8da27c107e7a6271f912f3161554973aa24845a6e9f18eddb8e0b4e2fbd",
+      "archive": "chunk-000146.gz",
+      "archive_sha256": "089dd413fcafdcfcf9946c7ddc42f9836b02ba82e79ec4c2aa096ecdc10c87f9",
+      "state": "retired"
+    },
+    {
+      "offset": 4932501504,
+      "bytes": 33554432,
+      "sha256": "e6f6af4c4984e743ff04a90cc63eaf5ea3fd7db5d5bfabc4cdec982050f44e81",
+      "archive": "chunk-000147.gz",
+      "archive_sha256": "f3657014287cb7e437849563c84382dd478493da20c3e3e77e0b9e3b42227531",
+      "state": "retired"
+    },
+    {
+      "offset": 4966055936,
+      "bytes": 33554432,
+      "sha256": "58fa87d147f902606e87871aef93e5aeee11a867caf07e30c2f086197cc84c26",
+      "archive": "chunk-000148.gz",
+      "archive_sha256": "9a6d6ff1f37ec2cbb47b992ec9ab529017e3e88da4e6e70fc71324882e9945d0",
+      "state": "retired"
+    },
+    {
+      "offset": 4999610368,
+      "bytes": 33554432,
+      "sha256": "01705e052dd7a8a1bcf9c866b53a17890eaff7330f65dff3ac51cb64ae83c428",
+      "archive": "chunk-000149.gz",
+      "archive_sha256": "631929a2eb4e35e6cdcfdc08c2f69f4aa58f9fbf818418b1b66c84f8ba3d2e11",
+      "state": "retired"
+    },
+    {
+      "offset": 5033164800,
+      "bytes": 33554432,
+      "sha256": "333a30797ba8e313573edf0a0b2301aa81d437fbf8a45f33e845965b4235fe47",
+      "archive": "chunk-000150.gz",
+      "archive_sha256": "11b44ad57c026c1433eb494d03d73b3dac3db8c73aea49b99f031894e6e08ea1",
+      "state": "retired"
+    },
+    {
+      "offset": 5066719232,
+      "bytes": 33554432,
+      "sha256": "076f52432da666dcba94142e2b3e1c4673674f2301cc1341aa4b591a666f1240",
+      "archive": "chunk-000151.gz",
+      "archive_sha256": "334b8773c9b062950e606f9df3ef368099599bb6bb974afff333d5e4f567cd36",
+      "state": "retired"
+    },
+    {
+      "offset": 5100273664,
+      "bytes": 33554432,
+      "sha256": "7967e1fee963b471ab3b8002a3c598e685ca568f40b7a9cff6c7a0bf34d9eedb",
+      "archive": "chunk-000152.gz",
+      "archive_sha256": "66ca89bac560837a9a61d8508f7059550519a400516ba25d4fcadacd85c1fbd7",
+      "state": "retired"
+    },
+    {
+      "offset": 5133828096,
+      "bytes": 33554432,
+      "sha256": "b85999ce69b96c619f808eaf51aa3be371afbd05be61f1e3586d677bfa1206fb",
+      "archive": "chunk-000153.gz",
+      "archive_sha256": "1b9cac30bc198e25eef175a4d481dbce34c9067888998809914525343c8908e5",
+      "state": "retired"
+    },
+    {
+      "offset": 5167382528,
+      "bytes": 33554432,
+      "sha256": "8519fc7d00708c0cd36b9898e148b2a3179101613190ce95b3e7097771b8f647",
+      "archive": "chunk-000154.gz",
+      "archive_sha256": "28038d71fb9c79916985dca582ca9c5b878c40097f52ae85251eb87ad2f474dd",
+      "state": "retired"
+    },
+    {
+      "offset": 5200936960,
+      "bytes": 33554432,
+      "sha256": "e6ddae4ebcd4fa6b8974133d541152348aa3a5412343ff0d3d62ac17fc9d8a54",
+      "archive": "chunk-000155.gz",
+      "archive_sha256": "5c1c388af3dcbbfd9e78029d88eb16c80205c07c5d6cafe18cecab9b8345d371",
+      "state": "retired"
+    },
+    {
+      "offset": 5234491392,
+      "bytes": 33554432,
+      "sha256": "cedb6ce263265d5a2649d9096c8e1c413cdbe97b5bebefd961f95a213c0ea750",
+      "archive": "chunk-000156.gz",
+      "archive_sha256": "aeb8c1f032e86d71d8afbaa38e38754844a6cd1592d33b21cc1436093177e31c",
+      "state": "retired"
+    },
+    {
+      "offset": 5268045824,
+      "bytes": 33554432,
+      "sha256": "0183937df1ecf14c6da7d4a06400eb02531108eebd390a93f3fff087147c4c6a",
+      "archive": "chunk-000157.gz",
+      "archive_sha256": "b91bc2ddb58dc33cc20dc92e70565a5cb2cd90a0c7e6e25e00e2503529f8d935",
+      "state": "retired"
+    },
+    {
+      "offset": 5301600256,
+      "bytes": 33554432,
+      "sha256": "a3c51b99deec839774440a0115a74c015f6a9d7c4e587874f8f68a5258997f9c",
+      "archive": "chunk-000158.gz",
+      "archive_sha256": "fb8dd2054f639c6dd8c91c438342e5c3f46d83801d926c34357e6286e5b18652",
+      "state": "retired"
+    },
+    {
+      "offset": 5335154688,
+      "bytes": 33554432,
+      "sha256": "1e2f52b1c34acc063d96ce79f24e135c4e53dcd4d2e68ac854b241efd4579f94",
+      "archive": "chunk-000159.gz",
+      "archive_sha256": "1030c6c14f0d178bf7fdcf8479a0bb2ee56551f80b269fda69ef54a5537c8cc6",
+      "state": "retired"
+    },
+    {
+      "offset": 5368709120,
+      "bytes": 33554432,
+      "sha256": "8f15f8587ecbca419a8d27e05de0e76ede7b1f2bd5d1f20d9867f94b7d69f780",
+      "archive": "chunk-000160.gz",
+      "archive_sha256": "4a5a946b7a6872e60a15f7c25533f16b9887148271aa57378f93d253d191595b",
+      "state": "retired"
+    },
+    {
+      "offset": 5402263552,
+      "bytes": 33554432,
+      "sha256": "bb33935251d7d5c4db7ea4e1393afb883293d8d2ac6d415d10628e19da47a7d8",
+      "archive": "chunk-000161.gz",
+      "archive_sha256": "197a2bc70c475cbcf4aacd3e02c40b98ca303f31b97aa9093f6a8670c2271913",
+      "state": "retired"
+    },
+    {
+      "offset": 5435817984,
+      "bytes": 33554432,
+      "sha256": "d068e4428adcc77deb27f9d4bb65aefdd9db2f5dd15c44c498308a1385ba3a36",
+      "archive": "chunk-000162.gz",
+      "archive_sha256": "5ed494ba6567cf9f9cb8e9c07f1238a7fafde960bcfe71eb0c57b58ade11d316",
+      "state": "retired"
+    },
+    {
+      "offset": 5469372416,
+      "bytes": 33554432,
+      "sha256": "b8791f8c6d54f5fd3ddf0a3565f0f9611bc75c46dad92558e0bdc9e580345214",
+      "archive": "chunk-000163.gz",
+      "archive_sha256": "b86d32a92751505e39ef50fe986499948a3a241a147ba84c5ba5135861c60411",
+      "state": "retired"
+    },
+    {
+      "offset": 5502926848,
+      "bytes": 33554432,
+      "sha256": "3dfc48ae3f1d8bc64c55861fb1cad0be1b5c15846213f0eb9125f1a736576f82",
+      "archive": "chunk-000164.gz",
+      "archive_sha256": "6b74d84ff5c2039b0ec6bb237ee5b53d23be1f65a5fd382dd96fee7fa371045f",
+      "state": "retired"
+    },
+    {
+      "offset": 5536481280,
+      "bytes": 33554432,
+      "sha256": "168b56735b640ea629946ef460471306676d75d3a70ef2bfa5abd1154ab1f237",
+      "archive": "chunk-000165.gz",
+      "archive_sha256": "31870c58bc76033494451634cdaff161b6403449dea113e1a325bcb7dea8a0a5",
+      "state": "retired"
+    },
+    {
+      "offset": 5570035712,
+      "bytes": 33554432,
+      "sha256": "4862e9b4ef2d3f7fb1f7e79ab2cd450d86f1fe869c2947e5ee277d651a4de260",
+      "archive": "chunk-000166.gz",
+      "archive_sha256": "486a9a5f0d9f78c171f701ccf3192ea5ae93127382925cdcf17bb7a14328ab4b",
+      "state": "retired"
+    },
+    {
+      "offset": 5603590144,
+      "bytes": 33554432,
+      "sha256": "1d78a979acb0ee18a5029b9b918a2bdbe7c4fe54dc2e845256a8779731f05b57",
+      "archive": "chunk-000167.gz",
+      "archive_sha256": "affbef35c45c4413b2c0f5aaa7bde0a48655bb04d4b73c319d3fd518f8781f60",
+      "state": "retired"
+    },
+    {
+      "offset": 5637144576,
+      "bytes": 33554432,
+      "sha256": "88f54f60af07f3d91e878b110c1202dd94469d6872ba8c702107061db5a0ae5c",
+      "archive": "chunk-000168.gz",
+      "archive_sha256": "7370a07901afba89a711b7ef957331e71a4794b45f82ff7540e4c3dbcec4075e",
+      "state": "retired"
+    },
+    {
+      "offset": 5670699008,
+      "bytes": 33554432,
+      "sha256": "5027599f701558435a6d4aa55c50cce14f6633038f5d0027570e45b198245243",
+      "archive": "chunk-000169.gz",
+      "archive_sha256": "14085ce05445e4c8b88a8fee6f734076a2f079f919960599a42b5aa39715c532",
+      "state": "retired"
+    },
+    {
+      "offset": 5704253440,
+      "bytes": 33554432,
+      "sha256": "5fd96d67d1db0394003abb1b4380f8bc72f68f5c20ae13fc31968a8280216a9b",
+      "archive": "chunk-000170.gz",
+      "archive_sha256": "652040eab0c7218466ee545f2d2931ca96b3a80e4199aa8b4c49737609546495",
+      "state": "retired"
+    },
+    {
+      "offset": 5737807872,
+      "bytes": 33554432,
+      "sha256": "a6c47d8d0171c23e7d740b1a721452f0fa562df2c1d2d40c139c7064f48d4878",
+      "archive": "chunk-000171.gz",
+      "archive_sha256": "b1212d299c95c6a6a8185755b49096d11ab19bca52da142f7493228eb6e1526d",
+      "state": "retired"
+    },
+    {
+      "offset": 5771362304,
+      "bytes": 33554432,
+      "sha256": "5a8a358989351414be899c7b39c448e5e8c4b8ba939c9715c556f9f629c7ae3d",
+      "archive": "chunk-000172.gz",
+      "archive_sha256": "2acbbd5154cec0fafd4d5eaa43c307b2456e5111b65221ba9217305dd8a14a8a",
+      "state": "retired"
+    },
+    {
+      "offset": 5804916736,
+      "bytes": 33554432,
+      "sha256": "144b33745261c24099ee7d5da3a39a0a50ac2ac4313636acbb633bb6de51715d",
+      "archive": "chunk-000173.gz",
+      "archive_sha256": "c11954419df49096d97262e1e9259d9b133407a97e32fef8ac555f862c397770",
+      "state": "retired"
+    },
+    {
+      "offset": 5838471168,
+      "bytes": 33554432,
+      "sha256": "d9476cb3f5cdb1841412488d4a18f92e1dafc8c86fc7b93792dfe6daf86c8627",
+      "archive": "chunk-000174.gz",
+      "archive_sha256": "bb382c6c51889a18108a04bb08eb36226f984dc86fe90f5180018e94ce6ae082",
+      "state": "retired"
+    },
+    {
+      "offset": 5872025600,
+      "bytes": 33554432,
+      "sha256": "632798a8dcd11a354d372da09ad0792ca80724ee758c9e5d9162fc709c557fe2",
+      "archive": "chunk-000175.gz",
+      "archive_sha256": "c48479a7fcf60b0bff09abc5aa3c23455dc61c189dfa777ae6f98d6249a80160",
+      "state": "retired"
+    },
+    {
+      "offset": 5905580032,
+      "bytes": 33554432,
+      "sha256": "a2de4e191de0434617fd9f9814f067aa0049bb6c30991f4fa5016c2913313777",
+      "archive": "chunk-000176.gz",
+      "archive_sha256": "d5a111158d36b98ce31936df9d7b00ef6ce11f109a5e8a45fe9d6f224b9e43aa",
+      "state": "retired"
+    },
+    {
+      "offset": 5939134464,
+      "bytes": 1310720,
+      "sha256": "abf3e563773b197372d23ab9d728297f2fc5eede2a07aebe282f52dc9b303149",
+      "archive": "chunk-000177.gz",
+      "archive_sha256": "f1a2d03af0d14f8035e2d96ebe66964d15d13e5b7317ab35c5146f1c80b6ffb7",
+      "state": "retired"
+    }
+  ],
+  "scratch_archive": {
+    "state": "complete",
+    "archive_sha256": "c5900481389a29732d3477b1de44f4bf2e86670499643c3d94aaffd416a194fe",
+    "archive_bytes": 330974738,
+    "verified_entries": 76673,
+    "verified_hardlinks": 35017,
+    "stale_sockets_omitted": 13,
+    "guest_receipt_sha256": "0a06d20db9568853cea82c5cbb6d5deb2af1adb190c7890c7e4913172e881f9b",
+    "host_available_after": 109253853184,
+    "recovery": "Verify archive SHA, restore into the same fresh 2 GiB tmpfs with numeric ownership/ACL/xattrs/sparse/hardlinks, compare all file hashes and symlink targets to guest-receipt.json before remounting the recorded exact bind aliases. Do not replay source preparation, compiler jobs, fixtures or package transactions."
+  },
+  "scratch_actual_isolated_restoration": {
+    "state": "complete",
+    "verified_entries": 76673,
+    "verified_distinct_regular_inodes": 34850,
+    "exact_bytes_modes_owners_timestamps_symlinks_hardlinks": true
+  },
+  "stopped_native_test_overlays": {
+    "state": "complete",
+    "reclaimed_bytes": 86839296,
+    "count": 7
+  },
+  "custody_controller_exit": 0,
+  "scratch_controller_exit": 0,
+  "scratch_isolated_restore_exit": 0,
+  "native_GDM_seat_probe": "Prepared, not yet dispatched; no runtime acceptance claimed."
+}

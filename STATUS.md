@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-10T21:58:54.829422+00:00
+Updated: 2026-11-11T02:22:44.000288+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-10T21:58:54.829422+00:00
+Last verified: 2026-11-11T02:22:44.000288+00:00
 
 Verified:
 
@@ -187,8 +187,9 @@ Verified:
 - Librsvg closed promotion usr custody1 complete: exact archive/record/installed payload/workstage and full-root0, reclaimed30,089,216B; originals/archive/DEBIAN retained. No compiler/test/stage/install replay;354repository tests including3new exact CUPS ownership/security guards passed after the account recovery correction.
 - Owned libbytesize 2.12 local SDK: 76 selected upstream cases passed with three locale skips. Native install and postcheck 0/0 with 56 changed paths and 131 payload entries. C/Python/CLI arithmetic, refusal and recovery, exact stage bytes, ABI and APT passed. No storage device, UDisks service, Settings GUI or physical acceptance.
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
+- B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: Installed GNOME Settings now has its owned system schema integration verified: 122 schemas and 1060 keys, with prior contracts preserved. Native graphical validation requires resource custody and actual virtual seat/input. UDisks policy, browser/files and interactive GNOME acceptance remain pending. Full B02 then stop.
+Running: Resource custody and actual scratch restoration verified. Next: fresh normal GDM virtual DRM/input seat diagnostic with QMP scanout; no headless retry or authentication bypass. Native graphical GNOME/basic-app acceptance remains pending. Complete all B02, then stop.
 
 Remaining:
 

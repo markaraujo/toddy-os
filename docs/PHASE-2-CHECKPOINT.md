@@ -8,6 +8,43 @@ complete GNOME/login/basic apps or Phase2 ISO exists.
 
 ## Current slice and exact next action
 
+Latest verified slice: Settings schema integration published at a7a7c97;
+all three workflows passed and exact public index HTTP200/SHA256
+57890ca7099427ec6eaee9f34cc9fd94dee0a2df4186e8bfe78938190e192b93.
+The resource prerequisite for a real virtual-seat diagnostic is now complete.
+[Custody and actual isolated restoration](evidence/B02-native-seat-resource-custody.json):
+seven stopped native overlays recovered86,839,296B. Cold math backup custody
+controller1220616/session50067 terminal0,178verified gzip chunks retain all
+5,940,445,184original bytes/SHA256
+d459b8b371927cfc7dfbe47d101014f8880466f41d8498978f30fe1a88cd1b0f.
+Original image path absent; source.custody is holes, never a bootable image.
+Full reconstructed digest passed. Host free112,115,978,240B at completion.
+Never replay either custody operation. No active/backing/master image changed.
+
+Current builder remains on boot0933ee87-f0bc-4074-9491-8b4e6892121f.
+The existing scratch tmpfs and all aliases remain mounted, unchanged.
+.local/phase2/settings-scratch-custody-1/scratch.tar.gz is durable and verified,
+330,974,738B/SHA256c5900481389a29732d3477b1de44f4bf2e86670499643c3d94aaffd416a194fe.
+Actual isolated restoration exit0 verified76,673entries/34,850distinct regular
+inodes, exact bytes/modes/owners/nanosecond timestamps/symlinks/hardlink classes.
+13closed fixture sockets omitted; they contain no restorable payload.
+Receipt includes exact bind aliases. No source/compiler/fixture/install replay.
+
+EXACT NEXT: after publishing reviewed inputs, run
+`python3 -u scripts/host/phase2_native_gdm_seat.py`, with a new controller log
+.local/phase2/native-gdm-seat-runtime-1-controller.log.
+It must verify custody/current package bytes/guest lock and actual resources
+before stopping the builder. Uses a fresh disposable target overlay, Virtio VGA,
+USB keyboard/tablet and QMP scanout. Observes actual installed GDM/greeter on
+seat0, no password/autologin/PAM bypass, no headless Shell retry.
+Inspect actual native container/result/report/scanout before any continuation.
+The script leaves builder stopped after cold testing: inspect real states first,
+then recover existing volumes, sources and this exact scratch archive/aliases
+without replaying preparation or transactions. Stop only after ALL B02 accepted.
+
+Earlier slice records below are historical; this latest card takes precedence.
+
+
 Current B02 slice: libbytesize 2.12 is installed and qualified for local SDK use.
 [Native and staged evidence](evidence/B02-libbytesize-install.json) records recipe
 and postcheck 0/0, 56 changed paths, 131 payload entries, archive SHA256
