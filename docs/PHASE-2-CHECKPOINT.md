@@ -58,21 +58,24 @@ included real-mount signal driver; preserve failed log. Stage2 COMPLETE0 reuses
 compiler outputs,2non-mount upstream drivers and helper version/refusal pass.
 Native mount/signals/root helper/denial/recovery tests remain pending, not skipped.
 No native FUSE/kernel package installed. Host/guest source caches persist.
-First native-kernel-fuse-1 BIOS diagnostic is TERMINAL failure: actual kernel/
-FUSE module load passed; UID101 open failed because static diagnostic lacks udev.
-Actual installed Systemd261.2-1+toddy3 50-udev-default.rules owns FUSE MODE0666;
-bytes independently match package record. No installed permission/security change.
-Correction1 new C diagnostic applies only that rule in its own volatile devtmpfs,
-adds child status on failure. New boot-prepare2/controller10707 COMPLETE0, canonical
-C SHAc56c1dfc3e4ae53c86f82011e46745552d05db562c9071ff5ba4b83ee147f630,
-initramfs SHA c93df43f9f3504b2310555b12917a04ae44ad99db02c6461f3c0536f9689d176.
-Kernel/source/module bytes unchanged; no compiler/kernel replay.
-Next commit reviewed correction then run ONCE
-`python3 scripts/host/phase2_kernel_fuse_boot_retry.py` using fresh
-.local/phase2/native-kernel-fuse-2 (must be absent before first dispatch).
-Native FUSE device/UID/denial/unload and Landlock/seccomp/namespaces BIOS+UEFI gate,
-then native package/mount/signals/helper policy and actual portal/appearance.
-Original failed context1/report/log retained; budget in failure ledger survives.
+Corrected native-kernel-fuse-2 BIOS+UEFI diagnostic COMPLETE0; both actual
+FUSE load/device UID101 open/direct mount denial/unload cycles passed, Landlock9/
+seccomp/namespaces/dummy-module checks retained. Source/kernel/module hashes bound;
+no target disks attached. First no-udev fixture permission failure retained at
+context1. Correction uses exact owned Systemd rule0666 only inside volatile fixture.
+[Native evidence](evidence/B02-kernel-fuse-native.json), imported guest receipt
+/var/log/toddy/phase2/kernel-fuse-native-acceptance-2.json. No job running.
+NEXT: prepare candidate linux-kernel7.1.8-1+toddy2 from authenticated current kernel
+archive into empty existing W/stage, replace only3candidate boot artifacts and add
+fs/fuse/fuse.ko; preserve all20original modules/foundation rollback/current archive.
+Verified candidate results W/kernel-fuse-build-2/artifacts.json and native proof
+above are prerequisites. Controlled stage/native package transaction needs complete
+archive/root-owned payload checks; do not reuse old successful kernel transaction.
+Then actual installed native FUSE filesystem/helper/signals/denial/unmount recovery,
+followed by missing portal builds (base1.22.1/GNOME50.0/GTK1.15.3) and GUI appearance.
+Canonical fuse-build.sh now selects only two genuinely non-mount C drivers on a
+fresh build; prepared source still contains original a918260c recipe, kept immutable.
+Its stage2 recovery already passed. Do not reprepare/recompile current Fuse source.
 
 Test selection: changed input/syntax plus make check381, readonly native report
 reconciliation and real QMP scanouts. No foundation suite repeated.

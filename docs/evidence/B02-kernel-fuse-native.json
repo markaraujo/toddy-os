@@ -1,0 +1,50 @@
+{
+  "scope": "Actual token/hash-bound no-disk BIOS+UEFI candidate kernel boots, module FUSE cycles/UID101 device open/direct mount denial/unload and retained Landlock/seccomp/namespace controls. Not an installed-system/FUSE filesystem mount/helper/GNOME/physical test.",
+  "source_commit": "38ea18bdd5674d30ada0ea863eec68be5d202922",
+  "prepared": {
+    "scope": "Native static-libc diagnostic initramfs only, not installed OS or Systemd/desktop acceptance",
+    "token": "e089e6854b0a4fb0a388ccefe33b442d",
+    "kernel_sha256": "0482366cc51727f76af11611275b7124bcd9aadbd76d231ca6fd44d22cb0dc77",
+    "source_sha256": "c56c1dfc3e4ae53c86f82011e46745552d05db562c9071ff5ba4b83ee147f630",
+    "init_sha256": "2a4ad6705f85eb36b18bbd0083f9895d663fa658e189dcc325c2cf2aaec4cefa",
+    "module_sha256": "eadf6e162cd0fa3cb8ec6c1a4ffa16fce22a16015e6374fbc5cd92f64caa44ab",
+    "fuse_module_sha256": "ce3b8f53643839d98fec304561376bf3c6ae873c519468a57b15f3e723111ae2",
+    "initramfs_sha256": "c93df43f9f3504b2310555b12917a04ae44ad99db02c6461f3c0536f9689d176",
+    "compile_exit": 0,
+    "static_linked": true,
+    "uid": 101
+  },
+  "result": {
+    "complete": true,
+    "scope": "Native kernel diagnostic initramfs only; no installed-system/Systemd/desktop/physical hardware acceptance",
+    "runs": [
+      {
+        "firmware": "bios",
+        "exit": 0,
+        "summary": "Landlock ABI=9 uid=101 rulesets=2 allowed_roundtrips=4 denied_reads=4 denied_writes=4 denied_creates=4 fresh_process_recoveries=2 seccomp_denials=2 namespace=pass module=insert-remove fuse=2-owner-opens-direct-mount-denials-unloads firmware=bios",
+        "serial_sha256": "336a508bc20946a07b794b78d2d2c7e1d6e5cd3579e4ffad21ef03edc79ca574",
+        "kernel_boot_verified": true,
+        "target_disks_attached": false
+      },
+      {
+        "firmware": "uefi",
+        "exit": 0,
+        "summary": "Landlock ABI=9 uid=101 rulesets=2 allowed_roundtrips=4 denied_reads=4 denied_writes=4 denied_creates=4 fresh_process_recoveries=2 seccomp_denials=2 namespace=pass module=insert-remove fuse=2-owner-opens-direct-mount-denials-unloads firmware=uefi",
+        "serial_sha256": "7753968097b4d6bd681831e6f0bd824767417049052ac62a7e309e7339bc28cc",
+        "kernel_boot_verified": true,
+        "target_disks_attached": false
+      }
+    ],
+    "container_image": "sha256:8ef60fce7caa9a0b562cba67aac067b92d4a0c40547411184120f20071a633cf"
+  },
+  "udev_fixture_rule": {
+    "provider": "systemd261.2-1+toddy3",
+    "path": "/usr/lib/udev/rules.d/50-udev-default.rules",
+    "sha256": "8e2cb9552b17313deb19f1b676da7c62c82cb9491a6c3d3b9503580e6230ebf1",
+    "line": "KERNEL==\"fuse\", MODE=\"0666\", OPTIONS+=\"static_node=fuse\"",
+    "scope": "Existing owned rule replayed only in no-udev volatile diagnostic devtmpfs; no installed rule/mode changes"
+  },
+  "first_failed_context": ".local/phase2/native-kernel-fuse-1",
+  "first_failure": "Static init without udev left device mode denying UID101. Original module load/kernel boot succeeded; original aggregate false retained.",
+  "corrected_without_kernel_recompile": true
+}
