@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-11T11:27:48.350438+00:00",
+  "updated_at": "2026-11-11T14:05:43.866810+00:00",
   "bootstrap": "ready_for_development",
-  "current_scope": "B01/B03 accepted (13% weighted Phase2). B02 corrected Firefox153.7 built/staged/installed; owned payload/APT/UID101 version/desktop entry verified. GDM/default graphical boot configured with native links; actual default-boot/browser GUI/sandbox/TLS and integrated audio/theme/offline/reboot/resource gates remain pending. Stop after fully validated B02. No Phase2 ISO or physical acceptance.",
+  "current_scope": "B01/B03 accepted (13% weighted Phase2). B02 native browser/files/editor/network/navy/Terminal/audio evidence retained. FUSE-enabled kernel/Fuse helper and portal base/GNOME/GTK packages plus owned schema cache installed. Actual installed-kernel FUSE/portal session and remaining persistence/recovery/resource gates pending. Complete all B02 then stop; no Phase2 ISO/G2 or physical acceptance.",
   "next_story": "B02",
   "gates": {
     "G1": "passed",
@@ -484,7 +484,9 @@
         "docs/evidence/B02-kernel-fuse-install.json",
         "docs/evidence/B02-fuse-install.json",
         "docs/evidence/B02-fuse-native-probes-prepared.json",
-        "docs/evidence/B02-portal-base-build.json"
+        "docs/evidence/B02-portal-base-build.json",
+        "docs/evidence/B02-portal-native-packages.json",
+        "docs/evidence/B02-portal-schema-union.json"
       ]
     },
     {
@@ -737,17 +739,18 @@
       "Actual candidate BIOS+UEFI no-disk boots passed FUSE module/UID101 device open/direct mount denial/unload plus Landlock9/seccomp/namespaces. First no-udev fixture permission failure preserved; correction uses exact owned Systemd FUSE0666 rule only in volatile diagnostic.",
       "Native linux-kernel7.1.8-1+toddy2 installed and full payload/Kmod lookup/APT checked. Coupled boot-config0.1-2+toddy2 retains exact menu/recovery bytes; original kernel0/post1 reverse-pin failure retained and resolved without kernel reinstall. Actual installed boot pending.",
       "Fuse3.18.2-1+toddy1 native install2 recipe/post0/0,40owned paths, exact reviewed root SUID helper/default owner-only policy and UID101/NNP CLI/library API pass. First unreviewed-privilege rejection0rootchanges retained; only declared helper added to central policy. Real mount/signals/denial/unmount recovery pending.",
-      "Unmodified upstream hello/signals consumers compiled against installed libfuse3.so.4, no RPATH/SUID. Portal base1.22.1 compiled/staged/version0 with image+sound Bubblewrap validation enabled; native portal package/session acceptance pending."
+      "Unmodified upstream hello/signals consumers compiled against installed libfuse3.so.4, no RPATH/SUID. Portal base1.22.1 and GNOME50.0/GTK1.15.3 backends now compiled/staged and owned-installed with recipe/post0/0. Base image/sound Bubblewrap validation enabled; GTK Settings/AppChooser/Lockdown enabled. Native desktop integration pending.",
+      "GTK4.22.4-1+toddy14 owned schema/legal-only update recipe/post0/0; all runtime bytes preserved,132schemas/1113keys preserved and2portal schemas/1key added. Actual installed Gio default-source134schemas/1114keys checked; no user values changed."
     ],
-    "running": "No guest writer remains. Portal base build1 is terminal0. Next install its verified stage, build/install GNOME50.0 and GTK1.15.3 backends, update only owned shared schema cache, then combine real FUSE mount/helper/signals and portal appearance/consent checks in one native VM session. Complete all B02, then stop.",
+    "running": "No guest writer remains. Portal base/backends and owned shared schema cache are installed and checked. Next implement and execute one combined native installed-kernel/FUSE helper/signals/denial/recovery and portal appearance/consent/cancel/denial pass. Complete all B02, then stop.",
     "remaining": [
       "Boot the installed FUSE-enabled kernel in the reference guest; execute prepared real filesystem/signals/other-user/allow_other denial/unmount/recovery tests.",
-      "Own the compiled portal base, build/own GNOME/GTK backends and shared schema cache, then verify actual dark/light and affected portal consent/cancel/denial.",
+      "Verify actual installed portal services, dark/light appearance and affected consent/cancel/denial in the native GNOME session.",
       "Finish restored NetworkManager and file/editor persistence across reboot, affected refusal/recovery and recovery-entry boot.",
       "Publish exact minimal runtime manifest/optional catalog availability and reference desktop idle/resource measurements; separate build target from deliverable roots.",
       "Complete applicable S01-B/S02/S03 desktop scope, including absent-agent/offline operation. Physical hardware, Phase2 ISO and G2 remain unaccepted."
     ],
-    "verified_at": "2026-11-11T13:50:36.822472+00:00",
-    "evidence": "docs/evidence/B02-portal-base-build.json"
+    "verified_at": "2026-11-11T14:05:43.866810+00:00",
+    "evidence": "docs/evidence/B02-portal-native-packages.json"
   }
 }

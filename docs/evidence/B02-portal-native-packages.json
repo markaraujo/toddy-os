@@ -1,0 +1,99 @@
+{
+  "scope": "Pinned isolated compilers and owned installed native portal base/GNOME/GTK packages only. Actual native desktop portal service/appearance/consent/cancel/denial still pending. No whole B02, physical or G2 acceptance.",
+  "components": {
+    "xdg-desktop-portal": {
+      "installed": {
+        "scope": "Owned installed payload, dependency resolution and APT. Native desktop session/consent/cancel/denial/appearance still pending.",
+        "name": "xdg-desktop-portal",
+        "version": "1.22.1-1+toddy1",
+        "archive_sha256": "398c0e556aaa1fd536e8881ddc99edd287521e720608a15a785050728fbdf0e9",
+        "payload_entries": 212,
+        "ldd": "\tlinux-vdso.so.1 (0x00007fff05ad6000)\n\tlibglib-2.0.so.0 => /usr/lib/libglib-2.0.so.0 (0x00007a5c77ffc000)\n\tlibgio-2.0.so.0 => /usr/lib/libgio-2.0.so.0 (0x00007a5c77c00000)\n\tlibgobject-2.0.so.0 => /usr/lib/libgobject-2.0.so.0 (0x00007a5c77f89000)\n\tlibjson-glib-1.0.so.0 => /usr/lib/libjson-glib-1.0.so.0 (0x00007a5c77f5c000)\n\tlibpipewire-0.3.so.0 => /usr/lib/libpipewire-0.3.so.0 (0x00007a5c77e28000)\n\tlibsystemd.so.0 => /usr/lib/libsystemd.so.0 (0x00007a5c77800000)\n\tlibc.so.6 => /usr/lib/libc.so.6 (0x00007a5c77609000)\n\tlibpcre2-8.so.0 => /usr/lib/libpcre2-8.so.0 (0x00007a5c77b4d000)\n\tlibgmodule-2.0.so.0 => /usr/lib/libgmodule-2.0.so.0 (0x00007a5c77e1f000)\n\tlibz.so.1 => /usr/lib/libz.so.1 (0x00007a5c77b2d000)\n\tlibmount.so.1 => /usr/lib/libmount.so.1 (0x00007a5c77aaa000)\n\tlibffi.so.8 => /usr/lib/libffi.so.8 (0x00007a5c77a94000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007a5c78307000)\n\tlibblkid.so.1 => /usr/lib/libblkid.so.1 (0x00007a5c775a3000)\n",
+        "version_cli": "xdg-desktop-portal 1.22.1"
+      },
+      "compiler": {
+        "exit": 0,
+        "stage_files": 110,
+        "manifest_sha256": "c74798cad943090d0a182a758fab9ec339af4b298c0ce1fc0c6b724b44045760",
+        "recipe_sha256": "b9fb8cb0305a918825e4b2cc88ba7320dcd543b42fb2f58363c743746eafb095",
+        "selected_options": {
+          "wrap_mode": "nofallback",
+          "systemd": "enabled",
+          "sandboxed-image-validation": "enabled",
+          "sandboxed-sound-validation": "enabled"
+        },
+        "optional_upstream_tests": "Not run; frozen-book build profile"
+      },
+      "transaction": {
+        "recipe_exit": 0,
+        "postcheck_exit": 0,
+        "changed_paths": 127,
+        "finished": "2026-11-11T14:00:10.678465+00:00",
+        "log_sha256": "5a2f063403b7a42e438b943fdb2dd69e002ccfa98df711e41252c8b9febeca7f"
+      }
+    },
+    "xdg-desktop-portal-gnome": {
+      "installed": {
+        "scope": "Owned installed payload, dependency resolution and APT. Native desktop session/consent/cancel/denial/appearance still pending.",
+        "name": "xdg-desktop-portal-gnome",
+        "version": "50.0-1+toddy1",
+        "archive_sha256": "2045726821d3330457ab9e17a244d0ac0e6ba23aa293eba953ccb301a9446e2d",
+        "payload_entries": 201,
+        "ldd": "\tlinux-vdso.so.1 (0x00007fffbd3dd000)\n\tlibm.so.6 => /usr/lib/libm.so.6 (0x00007c211c01e000)\n\tlibfontconfig.so.1 => /usr/lib/libfontconfig.so.1 (0x00007c211bf98000)\n\tlibglib-2.0.so.0 => /usr/lib/libglib-2.0.so.0 (0x00007c211be21000)\n\tlibgio-2.0.so.0 => /usr/lib/libgio-2.0.so.0 (0x00007c211bc00000)\n\tlibgobject-2.0.so.0 => /usr/lib/libgobject-2.0.so.0 (0x00007c211bb8d000)\n\tlibgtk-4.so.1 => /usr/lib/libgtk-4.so.1 (0x00007c211b000000)\n\tlibgdk_pixbuf-2.0.so.0 => /usr/lib/libgdk_pixbuf-2.0.so.0 (0x00007c211afc4000)\n\tlibcairo.so.2 => /usr/lib/libcairo.so.2 (0x00007c211ae66000)\n\tlibgraphene-1.0.so.0 => /usr/lib/libgraphene-1.0.so.0 (0x00007c211bb70000)\n\tlibgnome-desktop-4.so.2 => /usr/lib/libgnome-desktop-4.so.2 (0x00007c211ae43000)\n\tlibgnome-bg-4.so.2 => /usr/lib/libgnome-bg-4.so.2 (0x00007c211bb5e000)\n\tlibwayland-client.so.0 => /usr/lib/libwayland-client.so.0 (0x00007c211ae2e000)\n\tlibadwaita-1.so.0 => /usr/lib/libadwaita-1.so.0 (0x00007c211ac00000)\n\tlibc.so.6 => /usr/lib/libc.so.6 (0x00007c211aa09000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007c211c24c000)\n\tlibfreetype.so.6 => /usr/lib/libfreetype.so.6 (0x00007c211a930000)\n\tlibxml2.so.16 => /usr/lib/libxml2.so.16 (0x00007c211a7b7000)\n\tlibpcre2-8.so.0 => /usr/lib/libpcre2-8.so.0 (0x00007c211a704000)\n\tlibgmodule-2.0.so.0 => /usr/lib/libgmodule-2.0.so.0 (0x00007c211ae27000)\n\tlibz.so.1 => /usr/lib/libz.so.1 (0x00007c211a6e4000)\n\tlibmount.so.1 => /usr/lib/libmount.so.1 (0x00007c211a661000)\n\tlibffi.so.8 => /usr/lib/libffi.so.8 (0x00007c211ae0f000)\n\tlibpangocairo-1.0.so.0 => /usr/lib/libpangocairo-1.0.so.0 (0x00007c211a64d000)\n\tlibpango-1.0.so.0 => /usr/lib/libpango-1.0.so.0 (0x00007c211a5ca000)\n\tlibharfbuzz.so.0 => /usr/lib/libharfbuzz.so.0 (0x00007c211a40c000)\n\tlibharfbuzz-subset.so.0 => /usr/lib/libharfbuzz-subset.so.0 (0x00007c211a000000)\n\tlibfribidi.so.0 => /usr/lib/libfribidi.so.0 (0x00007c211a3e8000)\n\tlibcairo-gobject.so.2 => /usr/lib/libcairo-gobject.so.2 (0x00007c211a3dd000)\n\tlibepoxy.so.0 => /usr/lib/libepoxy.so.0 (0x00007c211a2ca000)\n\tlibpangoft2-1.0.so.0 => /usr/lib/libpangoft2-1.0.so.0 (0x00007c211a2ad000)\n\tlibpng16.so.16 => /usr/lib/libpng16.so.16 (0x00007c211a271000)\n\tlibtiff.so.6 => /usr/lib/libtiff.so.6 (0x00007c2119f59000)\n\tlibjpeg.so.62 => /usr/lib/libjpeg.so.62 (0x00007c2119eaa000)\n\tlibxkbcommon.so.0 => /usr/lib/libxkbcommon.so.0 (0x00007c2119e44000)\n\tlibwayland-egl.so.1 => /usr/lib/libwayland-egl.so.1 (0x00007c211a26a000)\n\tlibcairo-script-interpreter.so.2 => /usr/lib/libcairo-script-interpreter.so.2 (0x00007c211a239000)\n\tlibpixman-1.so.0 => /usr/lib/libpixman-1.so.0 (0x00007c2119d24000)\n\tlibsystemd.so.0 => /usr/lib/libsystemd.so.0 (0x00007c2119a00000)\n\tlibxkbregistry.so.0 => /usr/lib/libxkbregistry.so.0 (0x00007c211a22a000)\n\tlibudev.so.1 => /usr/lib/libudev.so.1 (0x00007c211985e000)\n\tlibseccomp.so.2 => /usr/lib/libseccomp.so.2 (0x00007c2119cf7000)\n\tlibappstream.so.5 => /usr/lib/libappstream.so.5 (0x00007c2119791000)\n\tlibbz2.so.1.0 => /usr/lib/libbz2.so.1.0 (0x00007c211a214000)\n\tlibblkid.so.1 => /usr/lib/libblkid.so.1 (0x00007c2119c91000)\n\tliblzma.so.5 => /usr/lib/liblzma.so.5 (0x00007c2119c5e000)\n\tlibzstd.so.1 => /usr/lib/libzstd.so.1 (0x00007c211968e000)\n\tlibcurl.so.4 => /usr/lib/libcurl.so.4 (0x00007c211959d000)\n\tlibxmlb.so.2 => /usr/lib/libxmlb.so.2 (0x00007c211956d000)\n\tlibfyaml.so.0 => /usr/lib/libfyaml.so.0 (0x00007c21194b9000)\n\tlibnghttp2.so.14 => /usr/lib/libnghttp2.so.14 (0x00007c2119488000)\n\tlibssl.so.4 => /usr/lib/libssl.so.4 (0x00007c2119356000)\n\tlibcrypto.so.4 => /usr/lib/libcrypto.so.4 (0x00007c2118c00000)\n",
+        "version_cli": null
+      },
+      "compiler": {
+        "exit": 0,
+        "stage_files": 64,
+        "manifest_sha256": "663acd5764ef6c2ce2080098cf4df0d07230cb618d6c97f8385024ec171a1031",
+        "recipe_sha256": "c27fa87b5e490fb7b6294fd2212731d32907e5000196eca3c84af9d92a0472d7",
+        "selected_options": {
+          "wrap_mode": "nofallback",
+          "systemd": "enabled"
+        },
+        "optional_upstream_tests": "Not run; frozen-book build profile"
+      },
+      "transaction": {
+        "recipe_exit": 0,
+        "postcheck_exit": 0,
+        "changed_paths": 75,
+        "finished": "2026-11-11T14:01:32.134415+00:00",
+        "log_sha256": "c243b8b36c01a6585e62af22430ddef5b520146505b835f6da843650231b2d5d"
+      }
+    },
+    "xdg-desktop-portal-gtk": {
+      "installed": {
+        "scope": "Owned installed payload, dependency resolution and APT. Native desktop session/consent/cancel/denial/appearance still pending.",
+        "name": "xdg-desktop-portal-gtk",
+        "version": "1.15.3-1+toddy1",
+        "archive_sha256": "a7f22b51accb987868785eaf2f92484214df751d19dd958df6053a64baea26f5",
+        "payload_entries": 126,
+        "ldd": "\tlinux-vdso.so.1 (0x00007ffefdb75000)\n\tlibglib-2.0.so.0 => /usr/lib/libglib-2.0.so.0 (0x000077d130afb000)\n\tlibgio-2.0.so.0 => /usr/lib/libgio-2.0.so.0 (0x000077d130800000)\n\tlibgobject-2.0.so.0 => /usr/lib/libgobject-2.0.so.0 (0x000077d130a88000)\n\tlibgtk-3.so.0 => /usr/lib/libgtk-3.so.0 (0x000077d130000000)\n\tlibgdk-3.so.0 => /usr/lib/libgdk-3.so.0 (0x000077d12ff3c000)\n\tlibgdk_pixbuf-2.0.so.0 => /usr/lib/libgdk_pixbuf-2.0.so.0 (0x000077d130a4a000)\n\tlibfontconfig.so.1 => /usr/lib/libfontconfig.so.1 (0x000077d12feb6000)\n\tlibc.so.6 => /usr/lib/libc.so.6 (0x000077d12fcbf000)\n\tlibpcre2-8.so.0 => /usr/lib/libpcre2-8.so.0 (0x000077d12fc0c000)\n\tlibgmodule-2.0.so.0 => /usr/lib/libgmodule-2.0.so.0 (0x000077d130a43000)\n\tlibz.so.1 => /usr/lib/libz.so.1 (0x000077d130a23000)\n\tlibmount.so.1 => /usr/lib/libmount.so.1 (0x000077d12fb89000)\n\tlibffi.so.8 => /usr/lib/libffi.so.8 (0x000077d1307ea000)\n\tlibpangocairo-1.0.so.0 => /usr/lib/libpangocairo-1.0.so.0 (0x000077d12fb75000)\n\tlibpango-1.0.so.0 => /usr/lib/libpango-1.0.so.0 (0x000077d12faf2000)\n\tlibcairo.so.2 => /usr/lib/libcairo.so.2 (0x000077d12f994000)\n\tlibharfbuzz.so.0 => /usr/lib/libharfbuzz.so.0 (0x000077d12f7d6000)\n\tlibpangoft2-1.0.so.0 => /usr/lib/libpangoft2-1.0.so.0 (0x000077d12f7b9000)\n\tlibfribidi.so.0 => /usr/lib/libfribidi.so.0 (0x000077d12f797000)\n\tlibcairo-gobject.so.2 => /usr/lib/libcairo-gobject.so.2 (0x000077d12f78c000)\n\tlibatk-1.0.so.0 => /usr/lib/libatk-1.0.so.0 (0x000077d12f761000)\n\tlibepoxy.so.0 => /usr/lib/libepoxy.so.0 (0x000077d12f64e000)\n\tlibm.so.6 => /usr/lib/libm.so.6 (0x000077d12f532000)\n\tlibxkbcommon.so.0 => /usr/lib/libxkbcommon.so.0 (0x000077d12f4cc000)\n\tlibwayland-client.so.0 => /usr/lib/libwayland-client.so.0 (0x000077d12f4b7000)\n\tlibwayland-cursor.so.0 => /usr/lib/libwayland-cursor.so.0 (0x000077d12f4ad000)\n\tlibwayland-egl.so.1 => /usr/lib/libwayland-egl.so.1 (0x000077d12f4a8000)\n\tlibpng16.so.16 => /usr/lib/libpng16.so.16 (0x000077d12f46c000)\n\tlibjpeg.so.62 => /usr/lib/libjpeg.so.62 (0x000077d12f3bd000)\n\tlibfreetype.so.6 => /usr/lib/libfreetype.so.6 (0x000077d12f2e4000)\n\tlibxml2.so.16 => /usr/lib/libxml2.so.16 (0x000077d12f16b000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000077d130cfd000)\n\tlibblkid.so.1 => /usr/lib/libblkid.so.1 (0x000077d12f105000)\n\tlibsystemd.so.0 => /usr/lib/libsystemd.so.0 (0x000077d12ee00000)\n\tlibpixman-1.so.0 => /usr/lib/libpixman-1.so.0 (0x000077d12ece0000)\n\tlibbz2.so.1.0 => /usr/lib/libbz2.so.1.0 (0x000077d12f0ef000)\n",
+        "version_cli": null
+      },
+      "compiler": {
+        "exit": 0,
+        "stage_files": 39,
+        "manifest_sha256": "ecb3f827870d72f6e380e03b2e3d6abc3aa51b7eb4d2fa9c7b9242e693ba3a84",
+        "recipe_sha256": "e632107d41978aeb75a121a6c0ca0d4b1f8a8cf2aeb4aa1f0bb4486b600da46a",
+        "selected_options": {
+          "wrap_mode": "nofallback",
+          "wallpaper": "disabled",
+          "settings": "enabled",
+          "appchooser": "enabled",
+          "lockdown": "enabled"
+        },
+        "optional_upstream_tests": "Not run; frozen-book build profile"
+      },
+      "transaction": {
+        "recipe_exit": 0,
+        "postcheck_exit": 0,
+        "changed_paths": 50,
+        "finished": "2026-11-11T14:02:54.585997+00:00",
+        "log_sha256": "a0d8cd1cc1171056d30a253634af7b5ae154de7b2ddf394b02d815f087c891e4"
+      }
+    }
+  },
+  "gtk_wallpaper": "Disabled because selected GNOME backend implements wallpaper with GNOME4; avoids an unselected legacy GNOME3 desktop library. GTK Settings/AppChooser/Lockdown enabled.",
+  "base_security": "Image and sound Bubblewrap sandbox validation enabled; no host/device/security bypass."
+}

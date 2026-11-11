@@ -4129,3 +4129,17 @@ real session/consent/cancel/denial remains required. Base package installation,
 GNOME50.0/GTK1.15.3 backends and native schema/appearance integration remain next.
 Reuse qualified consumers in the combined next native FUSE/portal session; no
 unchanged foundation or prior browser/Terminal/audio suite replay.
+
+### Portal base/backends and owned settings cache — 2026-11-11
+
+Reused the completed base stage without recompilation. Pinned base1.22.1,
+GNOME50.0 and GTK1.15.3 isolated builds and owned native installs all passed.
+Image/sound Bubblewrap validation remains enabled; GTK Settings/AppChooser/Lockdown
+are enabled, GNOME4 backend supplies wallpaper instead of adding GNOME3. Existing
+owned GNOME portal selection retained. GTK14 updates only cache/legal metadata: all
+132schemas/1113keys preserved, two schemas/one key added; installed Gio lookup
+134schemas/1114keys matches qualified union. No library/user-preference changes.
+See [native packages](evidence/B02-portal-native-packages.json) and
+[schema cache](evidence/B02-portal-schema-union.json). Native installed-kernel
+FUSE mounts/privilege and GNOME portal appearance/consent/cancel/denial remain pending.
+B02 stays in progress; no whole desktop, physical or G2 acceptance.

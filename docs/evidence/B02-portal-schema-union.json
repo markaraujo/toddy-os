@@ -1,0 +1,38 @@
+{
+  "transaction": {
+    "state": "complete",
+    "scope": "Same-version GTK4 schema/legal-only update; all libraries/configurations/preferences unchanged. Actual GNOME desktop portal schema plus all installed stock schema inputs, no graphical acceptance.",
+    "old_version": "4.22.4-1+toddy13",
+    "new_version": "4.22.4-1+toddy14",
+    "old_archive_sha256": "2425d6c41ef051afb9838d7e2d3723d7a00f6c1b14faaa9bdea858575ef000a6",
+    "old_cache_sha256": "a352c74e50964dca946948f2e80e9345a175615c938c65295f1bb44623133e1b",
+    "new_cache_sha256": "5bc2947ffc5874cc735c33c2611bd6aa960061d7e6c992519efe984ea52d89e1",
+    "added_schemas": [
+      "org.gnome.portal",
+      "org.gnome.portal.filechooser"
+    ],
+    "recovery": "Inspect package/receipt/postconditions before action. Retained GTK toddy13 archive/record restores previous owned cache and metadata; installed source XML remains intact. Verify old payload. No rollback executed and no uncertain replay.",
+    "archive_sha256": "cb4566ad4c6518d9e0c56a71a2b1b8ddd58a1415e4b601e30adf74f894bf9d01",
+    "old_nonlegal_entries_unchanged": 906
+  },
+  "installed_consumer": {
+    "scope": "Owned GTK same-version shared schema cache: actual installed default-source lookup and all current key/type/default/range contracts; no user values changed. Native portal appearance/consent/cancel/denial remain pending.",
+    "schemas": 134,
+    "keys": 1114,
+    "baseline_schemas_preserved": 132,
+    "baseline_keys_preserved": 1113,
+    "new_schemas": [
+      "org.gnome.portal",
+      "org.gnome.portal.filechooser"
+    ],
+    "module_or_schema_override_used": false,
+    "GTK_runtime_entries_unchanged": 906
+  },
+  "transaction_result": {
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 6,
+    "finished": "2026-11-11T14:04:16.666061+00:00",
+    "log_sha256": "bdfd5445258e61868e6f92f6dad056350872e6c174fa0d1ee1cb746984d06333"
+  }
+}

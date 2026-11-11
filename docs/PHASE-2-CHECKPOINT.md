@@ -32,38 +32,43 @@ linked installed library, hashes in [drivers](evidence/B02-fuse-native-probes-pr
 Do not recompile/reprepare the current Fuse input (original a918260c recipe kept
 immutable, stage-only recovery2 already passed).
 
-**Portal base compiler COMPLETE0:** job/controller15048,
-/var/log/toddy/phase2/xdg-desktop-portal-build-1.{job.json,log,exit}.
-Source /sources/phase2/inputs/xdg-desktop-portal-1.22.1 readonly;
-work /sources/phase2/work/xdg-desktop-portal-1/stage and stage-results.json.
-VersionCLI0, image/sound Bubblewrap sandbox flags enabled; optional upstream
-integration suite NOT run. [Build](evidence/B02-portal-base-build.json).
-No base portal package installed yet; do not reconfigure/recompile.
+**Portal native packages now installed/check0:** base1.22.1, GNOME50.0,
+GTK1.15.3, all compiler/build-1.exit0 and native recipe/post0/0. No compiler replay.
+Base Bubblewrap image/sound validation enabled; GNOME uses bundled libgxdp;
+GTK Settings/AppChooser/Lockdown enabled, wallpaper delegated to GNOME4 backend.
+Existing owned gnome-portals.conf selects gnome;gtk. Optional upstream integration
+suite NOT run. [Packages](evidence/B02-portal-native-packages.json).
+
+**Owned shared schema cache complete:** GTK4.22.4-1+toddy14, native recipe/post0/0,
+6root changes. Qualified metadata/cache-only flow retained all runtime library
+bytes and132schemas/1113keys, added org.gnome.portal + filechooser and1key.
+Actual installed Gio default-source134schemas/1114keys equal qualified union.
+No user preferences changed. [Cache](evidence/B02-portal-schema-union.json).
+Redundant GTK14 RAM promotion retired only after archive hash and all1984payload
+entries matched; receipt portal-schema-promotion-retired-1.json complete.
+Generation4cache archive remains the recovery source; never replay retirement.
+Repository make check387passed (.local/phase2/portal-native-check-1.log).
+All current jobs terminal; controllers16235/16683/17259/17647/18111/18372/18517 done.
+Never replay these installs or sources. Builder still boot0c29ac3a.
 
 ## Exact next action
 
-Implement guarded portal stage promotion/native package/check for base1.22.1,
-using its actual stage-results/manifest and source notices. Then build/install
-GNOME50.0 and GTK1.15.3 backends with prepared-source helper/job.py; source archives
-already pinned/cached. GNOME50.0 archive bundles libgxdp; use existing vendored
-source with no network fallback. GNOME implements wallpaper/settings; GTK optional
-wallpaper needs legacy GNOME3 and may be disabled with that reason, preserving
-GTK Settings/AppChooser/Lockdown fallback. Do not build another GNOME desktop.
-GNOME installs a new gschema.xml: update GTK13->14 owned shared cache through
-qualified schema-union metadata flow, preserve all libraries/user preferences.
-
-Prepare one combined native VM pass after these packages: actual running kernel
-config hash from /proc/config.gz, real unprivileged hello mounts/read/other-user
-read+unmount denial/allow_other refusal/SIGTERM+unmount recovery and original
-upstream signals driver; normal GDM owner portal/appearance/consent/cancel/denial.
-Fixtures are tests, not GUI acceptance; retain real scanouts. No manual module
-preload before initial normal-helper test. Root disk must be a fresh disposable
+Implement one combined native VM pass: adapt qualified native desktop controller
+with NEW context/probe names and current GTK14/kernel2/Fuse/portal package guards.
+Verify actual running kernel config hash from /proc/config.gz, normal installed
+Systemd device creation and unprivileged helper initial mount without preloading.
+Run prepared real hello mount/read/other-user read+unmount denial/allow_other
+refusal/SIGTERM+unmount recovery and original upstream signals driver. Fixtures
+are tests, not normal-login acceptance. Use normal GDM/PAM owner to verify actual
+portal services/Settings dark-light and affected consent/cancel/denial; retain real
+scanouts. Existing host phase2_native_desktop_integration.py and owner-control
+protocol are references, do not replay old hardcoded GTK13/hash controller.
+No combined native controller implemented/dispatched yet. Fresh disposable
 readonly-base overlay, never physical disks or host target. Preserve one writer.
-No combined native controller has been implemented/dispatched yet.
 
-Test selection: full changed native archive/payload/Kmod/APT and CLI/API checks;
-exact privilege-policy unit regression; make check387passed. No unchanged long
-foundation or previous GUI suites repeated. Mounted-filesystem/session gates pending.
+Test selection: actual complete native payload/library/APT checks for all3portal
+packages and strict schema-union/default-source contract checks. No unchanged
+foundation/GUI long suites repeated. Native mounted-filesystem/session gates pending.
 
 ## Recovery and unchanged evidence
 
