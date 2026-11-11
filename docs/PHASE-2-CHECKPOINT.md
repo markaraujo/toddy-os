@@ -31,17 +31,25 @@ before full-payload comparison and uses fresh stage2; no root write replay.
 
 ### Exact next action
 
-Prepared README-only package correction0.2.0-1+toddy2 (old installedtoddy1 remains).
-Commit reviewed scripts, sync metadata only, then one root run_step:
-`b02-network-recovery-doc-update-2 phase2/desktop-network-recovery-update.sh phase2/desktop-network-recovery-check.sh --user root`
-from /opt/toddy-build/scripts/build; log .local/phase2/network-recovery-doc-update-controller-2.log.
-Verify existing payload/archive first; new owned stage must differ only README.
-No maintainer scripts/service/profile/config/binary changes. Full-root verification
-required; new paths/stage/receipts must not exist before dispatch. Retained old
-archive restores exact earlier payload if necessary; no rollback performed.
-On failure inspect actual package/receipt/root before any repeat. This small update
-makes installed recovery instructions match the qualified socket-safe procedure.
-After verification, browser security overlay source/toolchain/capacity work next.
+README-only correction COMPLETE0: b02-network-recovery-doc-update-2 recipe/post0/0,
+16.06s/5rootmetadata paths changed; owned0.2.0-1+toddy2/all. 23other payload
+entries and all configurations/binaries unchanged; [proof](evidence/B02-network-recovery-instructions-update.json).
+New archiveSHA60b2fc8bc00b24f57ea0881b8ca268637ea30536c0a906b117c47bfe93805369.
+No replay of update/restore receipts. Original first failure zero root changes
+retained; corrected fresh stage2 is installed. No live guest writer.
+
+Next browser slice: prepare qualified custody/retirement of obsolete private
+browser obj ONLY (measured3,870,035,968allocated bytes), preserving both qualified
+ELF artifacts separately with exact hashes, compiler result/log/source/tools.
+Measure manifests/hardlinks/bytes and host reserve before archive; verify complete
+archive recovery before any retirement. Existing source5,009,072,128allocated,
+private tools377,966,592, browser available7,260,672,000. Fresh153.7 source+obj
+cannot safely coexist without capacity recovery. No custody/retirement dispatched.
+Update browser inspect/baseline contract explicitly before removing original obj,
+otherwise helper correctly refuses changed artifact paths. Never format/resize or
+reuse old objects for changed source. New Rust minimum source review verified1.90.0
+(existing1.97.1); native configure/ABI security gates remain pending. Save a precise
+custody slice card and implement guarded archive/verify/recovery before dispatch.
 
 ## Browser compiler, security and persistent build volume
 

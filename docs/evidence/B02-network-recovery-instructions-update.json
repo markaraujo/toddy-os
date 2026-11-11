@@ -1,0 +1,28 @@
+{
+  "runner": {
+    "step": "b02-network-recovery-doc-update-2",
+    "started": "2026-11-11T09:17:17.724943+00:00",
+    "finished": "2026-11-11T09:17:33.782307+00:00",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 5,
+    "log_sha256": "e4d21b1ffb460c3798187e5d62a09308c165a2483a7fad6507ec8a4a85264477"
+  },
+  "transaction": {
+    "state": "complete",
+    "scope": "README-only owned correction for actual native networkd socket reactivation; no service/configuration/binary/profile mutation",
+    "old_archive_sha256": "4af9211df6e6141fd29d3112f06a482102ba0425ef7724bd75d537ccf1bfe553",
+    "unchanged_payload_entries": 23,
+    "changed_path": "/usr/share/doc/toddy-desktop-network/README",
+    "old_readme_sha256": "1aa5abfb3012f0b8ca9fa8238a567d51ae8a059f6087107a976fe61eabb115c6",
+    "new_readme_sha256": "295502629084fc4683bf5d2be0c8fc889757de0fd7b89551cc6822b4b27fe9ea",
+    "archive_sha256": "60b2fc8bc00b24f57ea0881b8ca268637ea30536c0a906b117c47bfe93805369"
+  },
+  "postcheck": {
+    "scope": "README-only native package ownership/integrity/dependency verification; runtime proof retained separately",
+    "verified_entries": 24,
+    "archive_sha256": "60b2fc8bc00b24f57ea0881b8ca268637ea30536c0a906b117c47bfe93805369",
+    "unchanged_configuration": true
+  },
+  "scope": "Installed README-only owned update to tested manager-switch instructions. Runtime proofs remain scoped to pre-update identical configuration/binaries; no whole B02 claim."
+}

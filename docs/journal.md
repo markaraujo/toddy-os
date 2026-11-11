@@ -3833,3 +3833,18 @@ Builder boot e146fad4 restored original6volumes/Systemd/Glycin/kernel/generation
 and browser raw6aliases, same inodes/flags/both compiler ELF hashes, all0. No
 format/rebuild/source replay. Prepared README-only owned update to toddy2 makes
 installed recovery instructions match qualified procedure; transaction pending.
+
+
+### B02 installed recovery instructions completed — 2026-11-11
+
+Owned toddy-desktop-network0.2.0-1+toddy2 README-only update recipe/post0/0,
+16.06seconds,23other payload entries unchanged. Initial pre-packaging comparison
+failed before target writes because generated notices were missing; correction
+uses normal notice generator/fresh stage2, old failure preserved. Real native
+network evidence remains reusable for identical configuration/binaries.
+Actual cold browser mount recovery now recorded, same6aliases/inodes/ELF hashes.
+Authenticated Firefox153.7 util.py declares Rust minimum1.90.0, installed1.97.1;
+native compatibility still pending. Measured browser space7.26GB/oldobj3.87GB/
+oldsource5.01GB: next guarded custody slice must preserve exact old artifacts and
+qualify recoverable archive before retiring only obsolete private objects. No
+custody/newsource/compiler job launched; B02 remains in progress.

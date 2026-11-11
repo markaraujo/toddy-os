@@ -145,11 +145,27 @@
     "private_wasm_clang": "19.1.5",
     "rust": "1.97.1"
   },
-  "remaining": "Review actual minimum version constants at fresh guest source preparation; native dependency configuration/ABI/security checks still required. Header declarations alone do not prove compatibility.",
+  "remaining": "Native candidate configure/build/stage/owned installation/security/ABI/runtime checks pending; Rust1.97.1 installed exceeds source declared minimum1.90.0, which alone does not prove compiler compatibility.",
   "capacity": "Measured host108326338560B versus107374182400B reserve; no new large host allocation. Fresh guest source/work requires terminal original compiler and explicit measured custody/retirement decision.",
   "configure_delta_review": {
     "moz.configure": "Byte-identical to current baseline",
     "toolkit/moz.configure": "Byte-identical, including Wayland/main/WASM toolkit choices",
-    "build/moz.configure/rust.configure": "Changes normalize vendor aliases/narrow target candidates. Actual minimum Rust version constant still requires inspection at fresh source preparation."
+    "build/moz.configure/rust.configure": "Vendor aliases/target normalization changed; imported minimum traced to authenticated python/mozboot/mozboot/util.py MINIMUM_RUST_VERSION1.90.0. Native configure remains pending."
+  },
+  "declared_minimum_rust": {
+    "source_sha256": "7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0",
+    "path": "firefox-153.7.0/python/mozboot/mozboot/util.py",
+    "file_sha256": "eb8c11ece1a78b5010332d709b8a1843d37577352e6cb98881973f0545cdc0e8",
+    "declared_minimum": [
+      "MINIMUM_RUST_VERSION = \"1.90.0\""
+    ],
+    "scope": "Source constant only; native configure/toolchain/runtime compatibility remains unqualified"
+  },
+  "measured_capacity_after_network_recovery": {
+    "browser_available_bytes": 7260672000,
+    "old_obj_allocated_bytes": 3870035968,
+    "old_source_allocated_bytes": 5009072128,
+    "private_tools_allocated_bytes": 377966592,
+    "scope": "Actual du/statvfs after cache restoration; capacity planning only, no data retired or new source extracted."
   }
 }
