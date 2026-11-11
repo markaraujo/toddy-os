@@ -4,7 +4,7 @@ Owner boundary: **complete ALL B02, then stop before another story**. Full Phase
 Goal active/incomplete; B01/B03 accepted13%, B02 in_progress, B04-B13/G2 pending.
 Physical foundation tests unperformed. No Phase2 ISO. Preserve G1 master/evidence.
 
-## Current slice: native default-boot/browser interaction validation
+## Current slice: missing FUSE/desktop portal integration
 
 Native desktop integration runtime1 TERMINAL, QEMU0/report true/WAV capture
 verified, source backing unchanged. Normal GDM owner/navy/Terminal UTF8+echo/tiled
@@ -29,7 +29,7 @@ Verify2 archive/stage recipe0 reused; its post1 lacked chroot procfs. Verify3 us
 private procfs, global mounts unchanged. **Do not reinstall** because original
 firefox-package-install-1.json still says installing; current package/verify3
 success are authoritative. Builder userns EPERM warning remains in CLI evidence;
-actual LFS content sandbox and GUI are NOT yet accepted.
+actual native browser GUI/content sandbox were later accepted at B02-browser-native.json.
 
 **Compiler/stage passed:** [Compile](evidence/B02-firefox-security-compile.json)
 2508.366s/0,153.7.0/ELF64x86_64/no reserve stop; independent hashes retained.
@@ -43,31 +43,26 @@ recipe/post0/0,2generated native Systemd links changed, offline wait mask preser
 Default graphical.target and display-manager.service->owned gdm.service enabled.
 No unit/PAM/security/user-profile change; original exact foundation default checked.
 CLI emitted missing chroot proc/sys warnings but actual links/postconditions passed;
-actual power-on GNOME is still unproven. Do not replay successful migration.
+actual power-on GNOME later passed in B02-browser-native.json. Do not replay successful migration.
 
 ## Exact next action
 
-Next slice: qualify missing selected portal integration against frozen BLFS13.1:
-xdg-desktop-portal1.22.1, Fuse3.18.2, GNOME backend50.0 and its runtime GTK backend
-1.15.3. Existing GNOME backend50.0 archive is already authenticated in source lock;
-reuse it. Other three official source archives now acquired/pinned with frozen MD5+SHA256; see
-[evidence/B02-portal-source-inputs.json](evidence/B02-portal-source-inputs.json). Their frozen references are
-`.local/books/x/xdg-desktop-portal.html`, `postlfs/fuse.html` and
-`x/xdg-desktop-portal-gtk.html`. No extraction/native source preparation yet.
-Parser corrected: backend choice now preserves mandatory base dependencies;
-focused actual parser regression passes. Source/license lock additions retain
-exact versions, no base upgrade. Next guarded isolated FUSE preparation/build and
-cached desktop-kernel FUSE capability update, then portal builds/native checks.
-Actual both /boot/config-7.1.8-toddy{,-foundation} show CONFIG_FUSE_FS unset. A
-narrow versioned desktop kernel capability update is therefore required before
-actual document-portal/FUSE acceptance; preserve accepted foundation/old boot
-recovery, reuse restored kernel COW/source/compiler cache, do not rebuild foundation.
-Do not disable Bubblewrap/document confinement or force GTK_THEME to hide missing
-portal behavior. Keep FUSE owner/allow_other/privilege checks; CUSE is optional test
-coverage, not an automatic kernel expansion. No new guest source/build/kernel write
-dispatched yet. Source inspection and exact native denial/boot checks next.
-Native browser and desktop integration tests are terminal/accepted at their
-scoped evidence; do not replay them wholesale. B02 still in_progress.
+FUSE/portal source versions and SHA256 are pinned; no extraction/native install
+yet. Actual qualified kernel duplicate stage restored from native archive and
+compared12027owned entries, installed bytes unchanged; retired only duplicate
+stage children, scratch free377257984B (was238026752B). Receipt
+/var/log/toddy/phase2/kernel-stage-custody-for-fuse-1.json COMPLETE0. Never replay.
+`kernel_fuse_build.py` is implemented/synced: UID101/NNP private COW incremental
+Linux7.1.8 build, FUSE=m plus mandatory FS_IOMAP only, passthrough/io_uring/CUSE/
+virtiofs disabled, Landlock preserved; verifies original20modules and all pristine
+source entries. Existing accepted kernel package/archive and foundation retained.
+Next dispatch ONCE through existing job.py under name kernel-fuse-build-1,
+input /mnt/lfs/sources/phase2/inputs/linux-landlock-7.1.8,
+work /mnt/lfs/sources/phase2/work/kernel-landlock-1, command python3 -c loaded exact
+kernel_fuse_build.py. Inspect /var/log/toddy/phase2/kernel-fuse-build-1.{job.json,log,exit}
+and work/kernel-fuse-build-1/{progress,compile-result,verified-result}.json before
+any replay. No new kernel job dispatched at this checkpoint. Actual module/kernel
+boot and native FUSE/portal/permission/appearance checks remain required.
 
 Test selection: changed input/syntax plus make check381, readonly native report
 reconciliation and real QMP scanouts. No foundation suite repeated.

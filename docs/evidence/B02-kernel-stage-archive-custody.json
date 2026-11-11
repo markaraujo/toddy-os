@@ -1,0 +1,13 @@
+{
+  "state": "complete",
+  "archive_sha256": "75f0acd71dc1e8f3d66fcd0f6ce70f1f201bd1b7c9344296240175742c65714f",
+  "archive_bytes": 43964668,
+  "payload_entries": 12027,
+  "free_before": 238026752,
+  "scope": "Only completed duplicate native kernel stage; original source/COW compiler cache/installed payload and qualified package archive preserved.",
+  "actual_archive_restore_verified": true,
+  "stage_exact_owned_payload": true,
+  "installed_payload_unchanged": true,
+  "free_after": 377257984,
+  "stage_retired": true
+}
