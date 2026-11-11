@@ -1,0 +1,53 @@
+{
+  "runner": {
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 2,
+    "log_sha256": "979efe0c57ea0fe5c4ea74eeacb941c67ccc8ee8a06f92c756ab82e0f696066a"
+  },
+  "policy": {
+    "state": "complete",
+    "scope": "Generated native Systemd boot configuration only; no unit/PAM/security/user-profile mutation. One-time exact foundation multi-user default migration; future user-selected targets are not reset.",
+    "before_default": "/usr/lib/systemd/system/multi-user.target",
+    "providers": {
+      "gdm": {
+        "version": "50.2-1+toddy1",
+        "archive_sha256": "520670ee20a2f70cd4b66411e878c0190ca2d3522392e7f76a02aa22cc512adb",
+        "unit_sha256": "bb13cd3c8ec87a8251c62d49c4b4f6a1d49f9b0285e25c15155ee4febe533e98"
+      },
+      "systemd": {
+        "version": "261.2-1+toddy3",
+        "archive_sha256": "c059a1dd232a3655da4a67f662e01932bec81d9855cd33ef4b8ca6141de96b90",
+        "unit_sha256": "07df05786d62d57c98c66d3cf808e245ed274c19a7bfdd9c0c8f310d1a0c324d"
+      }
+    },
+    "operations": [
+      {
+        "args": [
+          "enable",
+          "gdm.service"
+        ],
+        "stdout": "",
+        "stderr": "/proc/ is not mounted. This is not a supported mode of operation. Please fix\nyour invocation environment to mount /proc/ and /sys/ properly. Proceeding anyway.\nYour mileage may vary.\nCreated symlink '/etc/systemd/system/display-manager.service' -> '/usr/lib/systemd/system/gdm.service'.\n"
+      },
+      {
+        "args": [
+          "set-default",
+          "graphical.target"
+        ],
+        "stdout": "",
+        "stderr": "/proc/ is not mounted. This is not a supported mode of operation. Please fix\nyour invocation environment to mount /proc/ and /sys/ properly. Proceeding anyway.\nYour mileage may vary.\nRemoved '/etc/systemd/system/default.target'.\nCreated symlink '/etc/systemd/system/default.target' -> '/usr/lib/systemd/system/graphical.target'.\n"
+      }
+    ],
+    "after_default": "/usr/lib/systemd/system/graphical.target",
+    "display_manager": "/usr/lib/systemd/system/gdm.service",
+    "recovery": "Inspect actual receipt/links first. Before reverting only these generated links, verify they still equal recorded after values; use native systemctl --root to disable gdm and restore recorded multi-user default. Preserve any later owner change. No rollback executed.",
+    "native_boot_verified": false
+  },
+  "postcheck": {
+    "scope": "Native generated boot links/default/offline-wait preservation only; actual power-on GNOME acceptance pending",
+    "default_target": "graphical.target",
+    "display_manager": "gdm.service",
+    "native_boot_verified": false
+  }
+}

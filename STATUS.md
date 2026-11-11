@@ -1,10 +1,10 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-11T10:04:37.802946+00:00
+Updated: 2026-11-11T11:27:48.350438+00:00
 
 Bootstrap: ready_for_development
 
-B01/B03 accepted (13% weighted Phase2). B02 native owner/Files/Editor/scoped network recovery verified. Corrected browser source/configuration and old-source actual recovery qualified; inode capacity restored and checked compiler resume2 live with deterministic monitoring. Browser stage/runtime/audio/theme/offline/reboot/resources and fullB02 pending; stop after B02. No Phase2 ISO or physical acceptance.
+B01/B03 accepted (13% weighted Phase2). B02 corrected Firefox153.7 built/staged/installed; owned payload/APT/UID101 version/desktop entry verified. GDM/default graphical boot configured with native links; actual default-boot/browser GUI/sandbox/TLS and integrated audio/theme/offline/reboot/resource gates remain pending. Stop after fully validated B02. No Phase2 ISO or physical acceptance.
 
 Foundation: **100%** · Agentic desktop: **13%**
 

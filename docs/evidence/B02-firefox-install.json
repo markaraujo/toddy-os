@@ -1,0 +1,40 @@
+{
+  "verification": {
+    "step": "b02-firefox-runtime-verify-3",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 0,
+    "log_sha256": "59ed1ef55fe9ea68aab92e368d62691e514fe4de9890fb1f14a364f7a4982db9"
+  },
+  "installed": {
+    "scope": "Owned installed payload/dependency integrity, actual UID101/NNP version and native desktop-entry consumer only; normal-owner GUI/content sandbox/TLS/offline/restart still pending",
+    "private_procfs_for_chroot": true,
+    "payload_entries": 815,
+    "archive_sha256": "ba566c57d612640cc0342f374f64f7853bacdab6d0af6c1e38b37bdd085233b0",
+    "unprivileged_version": {
+      "exit": 0,
+      "stdout": "Mozilla Firefox 153.7.0esr\n",
+      "stderr": "[46724] Sandbox: CanCreateUserNamespace() clone() failure: EPERM\n"
+    },
+    "desktop": {
+      "name": "Web Browser",
+      "executable": "firefox",
+      "supports_uris": true
+    }
+  },
+  "package_verification": {
+    "scope": "Read-only verification of completed native install after own packaging-control comparison error; original recipe failure retained, no package reinstall",
+    "state": "verified-existing-package",
+    "archive_sha256": "ba566c57d612640cc0342f374f64f7853bacdab6d0af6c1e38b37bdd085233b0",
+    "payload_entries": 815,
+    "excluded_native_control_paths": [
+      "/DEBIAN",
+      "/DEBIAN/control"
+    ]
+  },
+  "original_failure": {
+    "recipe_exit": 1,
+    "postcheck_exit": null,
+    "changed_paths": 801
+  }
+}

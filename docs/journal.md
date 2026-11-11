@@ -3981,3 +3981,30 @@ no package install or source mutation. Deterministic host observer samples60then
 300seconds and records terminal receipt; no repeated model polling. Compiler
 still live, no completion/runtime/browser/B02 acceptance. Checkpoint records exact
 root/private PID distinction, logs and resumption guards; never restart healthy job.
+
+
+### B02 corrected browser installed and native graphical default configured — 2026-11-11
+
+Corrected compiler2 completed0 in2508.366s without reserve interruption; exact
+153.7.0/ELF64x86_64/hash verification passed. Upstream isolated DESTDIR stage0
+4.561s/294038937B/65entries, native GLib desktop parse/five original icons/relative
+launcher/conservative links passed; original compiled binaries unchanged.
+Original source archive safely relocated same-byte to browser volume/read-only
+alias,807MBtarget capacity recovered; actual private alias restore/root-write
+denial/replay refusal passed.
+
+Native source-built Firefox153.7.0esr-1+toddy1 installed815owned payload entries,
+17ELFs/37direct providers plus audio/trust/fonts pinned, exact legal notices.
+Original install backend succeeded; own final comparator included two DEBIAN
+controls, so original recipe1/post-not-run remains retained. Readonly verify2
+recipe0 reused correct archive/stage; post lacked chroot procfs. Private procfs
+fixed only test context: verify3 recipe/post0/0,zero root changes, UID101/NNP actual
+version and native desktop consumer passed. Builder userns EPERM warning retained;
+this does not accept actual LFS content sandbox or GUI. No package/compiler replay.
+
+Native Systemd graphical-default/GDM enable migration recipe/post0/0 changed only
+two generated links, preserved offline wait mask and user profiles/security/unit
+bytes. Actual power-on GNOME/browser still pending. Dedicated Typeexec test unit
+avoids oneshot target-order deadlock. Local browser consumer pages prepared for
+real native interaction/persistence, not HTML OS mockup acceptance. Next implement
+and run fresh default-boot/browser native flow; complete ALL B02 before stop.
