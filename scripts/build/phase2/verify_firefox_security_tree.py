@@ -6,7 +6,7 @@ import stat
 import tarfile
 
 
-def verify(archive, source, progress):
+def verify(archive, source, progress, expected_non_dot=510287, expected_bytes=3515456965):
     seen=set();counts={'members':0,'non_dot_members':0,'expanded_regular_bytes':0,'verified_regular_files':0}
     with tarfile.open(archive,mode='r|xz') as bundle:
         for member in bundle:
@@ -40,5 +40,5 @@ def verify(archive, source, progress):
         for name in dirs+files:actual.add(PurePosixPath(str((Path(parent)/name).relative_to(source))))
     seen.discard(PurePosixPath('.'))
     assert actual==seen,'Missing/extra extracted paths'
-    assert counts['members']==510288 and counts['non_dot_members']==510287 and counts['expanded_regular_bytes']==3515456965
+    assert counts['members']==expected_non_dot+1 and counts['non_dot_members']==expected_non_dot and counts['expanded_regular_bytes']==expected_bytes
     progress(counts);return counts

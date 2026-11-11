@@ -3932,3 +3932,15 @@ original archive/full content comparison and actual bounded temporary restore,
 then controlled child retirement preserving root/binds/archive/evidence. No format
 or unknown deletion. Failed compiler's partial outputs require explicit checked
 resume/new logs after real inode recovery; source/configuration remain qualified.
+
+
+### B02 old source inode recovery prepared — 2026-11-11
+
+Read-only reconciliation confirms original807705672B archive regular file,0browser
+inodes and4.996GBavailable, MemAvailable10.74GB. Prepared guarded old expanded
+source retirement: exact original archive SHA/tree comparison, actual filtered
+6GiBtmpfs restoration and full bytes/file modes/owners/path verification before
+removing only old children; retain root inode/readonly roles/explicit marker and
+all archive/compiler/ELF/newsource/tool evidence. Full installed-root comparison.
+Directory timestamp/ACL/xattr identity is not claimed. General verifier adds
+explicit counts with unchanged defaults for new source. No operation dispatched.

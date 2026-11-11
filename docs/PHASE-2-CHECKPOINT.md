@@ -93,7 +93,22 @@ flags; all archives, old compiler/ELF evidence, new source/work and SDK/NASM/log
 retained. No format/resize/global security change; one writer/build.lock. A partial
 retirement must be reconciled from actual receipt/mount/tree, never blindly replayed.
 Original source receipt509835non-dot/3514842428regular bytes; original archive
-must be measured independently. No custody implementation or dispatch yet.
+must be measured independently. Prepared script scripts/build/phase2/retire_firefox_baseline_source.py, NOT dispatched.
+It reuses generic archive verifier with explicit old counts, actual filtered6GiB
+noswap/noexec tmpfs restore then complete bytes/file modes/owners/path comparison.
+Only then source self-bind temporarilyRW, old children retired, marker/rootinode/
+read-only roles retained; full installed root before/after and new candidate/base
+mount inspections. Actual MemAvailable10.74GB supports3.515GBlogical+4GiBmargin;
+no extra compressed copy or host reserve consumption. Original archive807705672B
+exists as regular file. Existing builder context/receipt must be absent.
+Commit/check/sync then dispatch once, guest script above. Controller log
+.local/phase2/firefox-old-source-custody-controller-1.log, guest receipt
+/var/log/toddy/phase2/firefox-baseline-source-custody-1.json and context
+/var/lib/toddy/phase2-custody/firefox-baseline-source-1. Operation may exceed10min
+because500k source files are read/restored/compared; healthy progress is monitored.
+On interruption inspect exact state/process/mount/root/remaining children; never
+replay. Recovery uses retained authenticated archive into NEW directory and full
+verifier; directory timestamp/ACL/xattr identity explicitly unclaimed.
 
 Prepared compiler supervision now checks inode2048reserve+1024margin as well as
 byte128MiB+64MiB before/through build. Not yet synced or retried. Add explicit
