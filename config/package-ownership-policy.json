@@ -308,6 +308,15 @@
       "mode": 416,
       "source_version": "2.4.19-1+toddy1",
       "evidence": "Frozen BLFS13.1 pst/cups.html and CUPS scheduler/conf/notifier Makefiles; exact non-setuid factory service ownership, ADR0218"
+    },
+    {
+      "package": "fuse",
+      "path": "/usr/bin/fusermount3",
+      "uid": 0,
+      "gid": 0,
+      "mode": 2541,
+      "source_version": "3.18.2-1+toddy1",
+      "evidence": "Frozen BLFS13.1 postlfs/fuse.html and pinned Fuse3.18.2 util/fusermount.c owner checks/default nosuid,nodev and allow_other guard; exact one native helper only, ADR0228. Runtime mount/signals/denial/recovery remain required."
     }
   ]
 }

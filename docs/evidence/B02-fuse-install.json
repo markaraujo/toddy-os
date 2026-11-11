@@ -1,0 +1,36 @@
+{
+  "scope": "Owned native Fuse3.18.2/root-only declared SUID helper/default owner-only policy and actual UID101/NNP CLI/library ABI checks. Real mount/signals/helper owner denial/unmount/recovery remain pending in native guest.",
+  "steps": {
+    "b02-fuse-install.failed": {
+      "recipe_exit": 1,
+      "postcheck_exit": null,
+      "changed_paths": 0,
+      "recipe_sha256": "94cd6d1432bd294934edba95b6a0c46e5ad5d79ef1bd4e4db2af799b9bcb6fe4",
+      "postcheck_sha256": "21466af5ff2b6a234b06e83a7077f23787d14e9d70ca7eb6c6b19effd701f469",
+      "log_sha256": "16448861f7b7897c8a4f448b089a78ae242d33316a2464b3fe4dc217981903d2"
+    },
+    "b02-fuse-install-2.success": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 36,
+      "recipe_sha256": "2fb05e20283b3330f7b6073e211472eec6fb9043ebd90e5780c68dded1cbb3e8",
+      "postcheck_sha256": "21466af5ff2b6a234b06e83a7077f23787d14e9d70ca7eb6c6b19effd701f469",
+      "log_sha256": "3fc66f64532f834cb8af665789594770c0de74f36cb2fb4115d082b047c4ab25"
+    }
+  },
+  "installed": {
+    "scope": "Owned native package/payload, sole declared root SUID helper, default owner-only policy, actual UID101/NNP helper version/refusal and libfuse API. No real FUSE mount/signals/root-helper/recovery acceptance yet.",
+    "version": "3.18.2-1+toddy1",
+    "archive_sha256": "73d2f7c8ece6b8999b9c50c2db5ee59f154bfee5352895cc8047d9c8337f4ca6",
+    "payload_entries": 40,
+    "privileged_paths": [
+      "/usr/bin/fusermount3"
+    ],
+    "helper_version": "fusermount3 version: 3.18.2",
+    "invalid_option_exit": 1,
+    "native_library_api": "FUSE318 3.18.2",
+    "target_free": 17740333056
+  },
+  "first_rejected_before_archive_or_install": true,
+  "reused_verified_promotion": true
+}

@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T12:55:55.900592+00:00
+Last verified: 2026-11-11T13:50:36.822472+00:00
 
 Verified:
 
@@ -24,21 +24,22 @@ Verified:
 - Native NetworkManager Settings wired on/off/reconnect, DHCP/DNS/HTTPS and active-client polkit checks passed; manager recovery passed in disposable guest. Restored-manager reboot persistence remains pending.
 - Installed Firefox153.7.0esr native open/input/navigation/process exit-reopen/profile persistence/Stop/TLS/offline/640px readability and five content-process NNP/seccomp/caps checks passed; original collector failure retained and reconciled read-only.
 - Owned navy desktop/launchers/Terminal defaults preserve user overrides across new D-Bus/reset. Actual native navy overview/Terminal commands/Portuguese text/tiled view and PipeWire/Pulse/WirePlumber HDA playback/mute/unmute passed with non-silent QEMU WAV capture.
-- Corrected same-source Linux7.1.8 FUSE candidate compiled0/15.003s, only FUSE_FS n->m, twenty old module hashes and93715source entries unchanged. Fixed virtual scratch2GiB online growth/identity/parent-chain/full allocation verified; no candidate kernel install yet.
 - Actual candidate BIOS+UEFI no-disk boots passed FUSE module/UID101 device open/direct mount denial/unload plus Landlock9/seccomp/namespaces. First no-udev fixture permission failure preserved; correction uses exact owned Systemd FUSE0666 rule only in volatile diagnostic.
-- Fuse3.18.2 compiler/stage recovered without compiler replay; ABI/want conversion and helper version/refusal pass. Real native mounted-filesystem/signals/SUID helper tests still pending. Portal sources pinned from frozen BLFS13.1.
+- Native linux-kernel7.1.8-1+toddy2 installed and full payload/Kmod lookup/APT checked. Coupled boot-config0.1-2+toddy2 retains exact menu/recovery bytes; original kernel0/post1 reverse-pin failure retained and resolved without kernel reinstall. Actual installed boot pending.
+- Fuse3.18.2-1+toddy1 native install2 recipe/post0/0,40owned paths, exact reviewed root SUID helper/default owner-only policy and UID101/NNP CLI/library API pass. First unreviewed-privilege rejection0rootchanges retained; only declared helper added to central policy. Real mount/signals/denial/unmount recovery pending.
+- Unmodified upstream hello/signals consumers compiled against installed libfuse3.so.4, no RPATH/SUID. Portal base1.22.1 compiled/staged/version0 with image+sound Bubblewrap validation enabled; native portal package/session acceptance pending.
 
-Running: No guest writer remains. Next controlled native FUSE-enabled kernel/package transaction and FUSE mount/signals/helper policy tests, then selected GNOME/GTK portal integration and actual appearance checks. Complete all B02, then stop before another story.
+Running: No guest writer remains. Portal base build1 is terminal0. Next install its verified stage, build/install GNOME50.0 and GTK1.15.3 backends, update only owned shared schema cache, then combine real FUSE mount/helper/signals and portal appearance/consent checks in one native VM session. Complete all B02, then stop.
 
 Remaining:
 
-- Install and boot the verified FUSE kernel candidate; qualify native Fuse helper privileges, real user mount/signals, denial/unmount/recovery.
-- Build/own xdg-desktop-portal and GNOME/GTK backends; verify actual dark/light behavior and affected portal consent/cancel/denial paths.
+- Boot the installed FUSE-enabled kernel in the reference guest; execute prepared real filesystem/signals/other-user/allow_other denial/unmount/recovery tests.
+- Own the compiled portal base, build/own GNOME/GTK backends and shared schema cache, then verify actual dark/light and affected portal consent/cancel/denial.
 - Finish restored NetworkManager and file/editor persistence across reboot, affected refusal/recovery and recovery-entry boot.
 - Publish exact minimal runtime manifest/optional catalog availability and reference desktop idle/resource measurements; separate build target from deliverable roots.
 - Complete applicable S01-B/S02/S03 desktop scope, including absent-agent/offline operation. Physical hardware, Phase2 ISO and G2 remain unaccepted.
 
-[Acceptance evidence](docs/evidence/B02-kernel-fuse-native.json)
+[Acceptance evidence](docs/evidence/B02-portal-base-build.json)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |

@@ -11322,14 +11322,14 @@
       "version": "3.18.2",
       "license": "LicenseRef-fuse-per-file",
       "evidence": "Exact LICENSE separates include/lib/meson.build LGPL2.1 from other files GPL2; retain LICENSE, LGPL2.txt, GPL2.txt and per-file notices.",
-      "runtime_inclusion": "Selected native desktop portal closure; source-pinned only, not built/installed or advertised as qualified."
+      "runtime_inclusion": "Native source-built library/helper installed with exact reviewed privilege policy; mounted-filesystem/signals/helper denial/recovery gate pending."
     },
     {
       "name": "xdg-desktop-portal",
       "version": "1.22.1",
       "license": "LicenseRef-xdg-desktop-portal-per-file",
       "evidence": "Source meson.build declares LGPL-2.0-or-later while COPYING carries LGPL2.1; retain both metadata and exact per-file notices, not a blanket relicensing claim.",
-      "runtime_inclusion": "Selected native desktop portal closure; source-pinned only, not built/installed or advertised as qualified."
+      "runtime_inclusion": "Selected native portal core compiled/staged; native package/session/consent/cancellation gates pending."
     },
     {
       "name": "xdg-desktop-portal-gtk",

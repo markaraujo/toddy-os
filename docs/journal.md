@@ -4103,3 +4103,29 @@ Native acceptance proof imported under build lock. Kernel/Fuse package install,
 actual userspace filesystem mount/signals/helper policy and portals remain next.
 Current dashboard active_work was stale; replaced old pending snapshots with
 verified native outcomes and exact remaining work. Full B02 remains incomplete.
+
+### Native FUSE kernel/package integration and portal base compiler — 2026-11-11
+
+[Owned kernel revision2](evidence/B02-kernel-fuse-install.json) archive
+and full payload checks passed. Original native kernel install0/post1 exposed
+boot-config's exact prior-kernel pin. Metadata-only boot-config revision2 retained
+all menu/config/recovery bytes and completed original kernel checks/APT0 without
+kernel reinstall. Twenty old modules, foundation and pre-FUSE rollback artifacts
+remain exact. Actual installed-system boot remains pending.
+
+[Owned Fuse3.18.2](evidence/B02-fuse-install.json) first promotion was
+blocked by the central privilege gate before archive/install, zero root changes.
+[ADR0228](adr/0228-fuse-native-helper-policy.md) registers only the standard
+root:root4755 fusermount3 helper; security tests preserve other denial cases.
+Verified promoted-stage resume2 recipe/post0/0 installed40paths, CLI/library318/
+3.18.2 and default owner-only policy passed. [Upstream native test drivers](evidence/B02-fuse-native-probes-prepared.json)
+compiled against the actual installed library without RPATH or privilege; they
+are prepared, not executed mount/signals acceptance.
+
+[Portal base1.22.1](evidence/B02-portal-base-build.json) isolated compiler/
+stage/version0, image+sound Bubblewrap validation enabled, optional location/USB/
+Flatpak-specific interfaces omitted. Optional upstream integration suite not run;
+real session/consent/cancel/denial remains required. Base package installation,
+GNOME50.0/GTK1.15.3 backends and native schema/appearance integration remain next.
+Reuse qualified consumers in the combined next native FUSE/portal session; no
+unchanged foundation or prior browser/Terminal/audio suite replay.

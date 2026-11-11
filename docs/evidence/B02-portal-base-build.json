@@ -1,0 +1,49 @@
+{
+  "scope": "Isolated native compiler/stage and exact selected features only. Optional upstream integration suite not run per frozen-book build profile. Actual portal session/consent/cancel/denial/appearance tests remain required.",
+  "name": "xdg-desktop-portal",
+  "version": "1.22.1",
+  "compile_exit": 0,
+  "stage_exit": 0,
+  "version_cli": {
+    "exit": 0,
+    "stdout": "xdg-desktop-portal 1.22.1\n",
+    "stderr": ""
+  },
+  "selected_security_features": {
+    "sandboxed-image-validation": "enabled",
+    "sandboxed-sound-validation": "enabled",
+    "systemd": "enabled",
+    "geoclue": "disabled",
+    "gudev": "disabled",
+    "flatpak-interfaces": "disabled",
+    "tests": "disabled"
+  },
+  "stage_regular_files": 110,
+  "compiled_ELFs": 116,
+  "private_full_manifest_sha256": "c74798cad943090d0a182a758fab9ec339af4b298c0ce1fc0c6b724b44045760",
+  "private_full_manifest_path": "/mnt/lfs/sources/phase2/work/xdg-desktop-portal-1/stage-results.json",
+  "upstream_test_status": "Not run; selected frozen-book build profile",
+  "upstream_tests_passed": 0,
+  "source_preparation": {
+    "state": "prepared",
+    "source": {
+      "name": "xdg-desktop-portal",
+      "version": "1.22.1",
+      "filename": "xdg-desktop-portal-1.22.1.tar.xz",
+      "url": "https://github.com/flatpak/xdg-desktop-portal/releases/download/1.22.1/xdg-desktop-portal-1.22.1.tar.xz",
+      "sha256": "d4879ddb3d65ff1a8f19187497e6f13dc5d267bcac404a5d501218be355753d3",
+      "book_page_sha256": "587ae54648774267ff456fb6731c5d66d8444f8d97742406ec2fdb2bdfc6127f",
+      "book_md5": "edfbfffe55a35920a303404b6c5d49a0",
+      "reference": "BLFS13.1-systemd x/xdg-desktop-portal.html",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    "source_path": "/mnt/lfs/sources/phase2/inputs/xdg-desktop-portal-1.22.1",
+    "work_path": "/mnt/lfs/sources/phase2/work/xdg-desktop-portal-1",
+    "boot_id": "0c29ac3a-aa02-49fb-af6c-0df420c43012",
+    "expanded_bytes": 4289254,
+    "recipe_sha256": "b9fb8cb0305a918825e4b2cc88ba7320dcd543b42fb2f58363c743746eafb095",
+    "source_readonly": true,
+    "work_uid": 101
+  }
+}

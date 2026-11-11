@@ -1,0 +1,21 @@
+{
+  "scope": "Unmodified upstream example/hello.c and test/test_signals.c compiled as ordinary UID101/NNP test drivers against actual installed libfuse3.so.4, no RPATH or privilege. Not an executed mount/signals test.",
+  "consumers": {
+    "native-hello": {
+      "sha256": "56e5870d5edec057dbc4652efacf801182f89dff4e185b5f9189db4a0e275aab",
+      "bytes": 20040,
+      "no_rpath": true
+    },
+    "native-test-signals": {
+      "sha256": "c516abc4d2ce3049537b18f1d13e2acfbc7fce04e6395449078ebae406cc7b6b",
+      "bytes": 20936,
+      "no_rpath": true
+    }
+  },
+  "library": "/usr/lib/libfuse3.so.3.18.2",
+  "library_sha256": "a2163f6fc10ae6fb1cd30b89bb252ed88fcf37b5ed1de1c906db0cae8ce88c29",
+  "source_sha256": {
+    "example/hello.c": "30c36c4c57547bc4253d438b63f0ac89602e508870b73918646f3d840532a188",
+    "test/test_signals.c": "365adcda46da940726ff7b11f41ed389afd8d489cb1e448831ce6057b3baae56"
+  }
+}

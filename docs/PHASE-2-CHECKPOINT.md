@@ -4,115 +4,99 @@ Owner boundary: **complete ALL B02, then stop before another story**. Full Phase
 Goal active/incomplete; B01/B03 accepted13%, B02 in_progress, B04-B13/G2 pending.
 Physical foundation tests unperformed. No Phase2 ISO. Preserve G1 master/evidence.
 
-## Current slice: missing FUSE/desktop portal integration
+## Current slice: native FUSE and desktop portal integration
 
-Native desktop integration runtime1 TERMINAL, QEMU0/report true/WAV capture
-verified, source backing unchanged. Normal GDM owner/navy/Terminal UTF8+echo/tiled
-view/automatic PipeWire+Pulse+WirePlumber/HDA/paplay/mute pass. Evidence
-[evidence/B02-desktop-native-integration.json](evidence/B02-desktop-native-integration.json).
-No physical audio claim. Settings light despite prefer-dark; actual dpkg confirms
-xdg-desktop-portal and GNOME backend absent. Missing selected dependency is next.
-Builder RUNNING boot0c29ac3a-aa02-49fb-af6c-0df420c43012. All desktop1 cache
-restores COMPLETE0: six volumes/Glycin/kernel, generation4RAMcache, original browser
-6aliases/archive and security4aliases. Last host restore session4747 exit0;
-`.local/phase2/desktop1-browser-cache-restore.log`. No guest writer remains.
-Never replay any desktop1-* receipt or reinstall accepted packages.
+Builder RUNNING boot0c29ac3a-aa02-49fb-af6c-0df420c43012, target /mnt/lfs,
+serialTODDY-LFS-TARGET. No guest writer remains. Never replay successful or
+uncertain kernel/Fuse operations. Actual package/receipt/postconditions win.
 
-**Browser installed:** Firefox153.7.0esr-1+toddy1/amd64,815owned payload entries,
-archiveSHAba566c57d612640cc0342f374f64f7853bacdab6d0af6c1e38b37bdd085233b0.
-[Installed verification](evidence/B02-firefox-install.json): readonly recipe/post0/0,
-zero installed-root changes; actual UID101/NNP version153.7.0esr and native desktop
-entry passed. Actual17ELFs/37native library providers pinned, all source notices
-retained. Original install backend completed but own comparison included two
-DEBIAN control entries: original recipe1/post-not-run/801rootchanges preserved.
-Verify2 archive/stage recipe0 reused; its post1 lacked chroot procfs. Verify3 uses
-private procfs, global mounts unchanged. **Do not reinstall** because original
-firefox-package-install-1.json still says installing; current package/verify3
-success are authoritative. Builder userns EPERM warning remains in CLI evidence;
-actual native browser GUI/content sandbox were later accepted at B02-browser-native.json.
+**Installed/checks passed:** linux-kernel7.1.8-1+toddy2 and
+boot-config0.1-2+toddy2, exact old menu/recovery bytes retained. Full candidate
+archive/payload/Kmod aliases/vermagic/APT0; old20modules and foundation/pre-FUSE
+backup images unchanged. Original kernel install0/post1 pin failure retained;
+boot metadata repair0/0 completed original checks without kernel reinstall.
+[Evidence](evidence/B02-kernel-fuse-install.json).
+Candidate SHA0482366cc51727f76af11611275b7124bcd9aadbd76d231ca6fd44d22cb0dc77;
+config SHA952e7d9d6e5c8e523ebf128c220481bc29280424e0686e4b0903b518234bf77b.
+Real token/hash-bound BIOS+UEFI no-disk FUSE/UID101/denial/unload/Landlock9/seccomp/
+namespace diagnostics passed, but installed-system boot still pending.
 
-**Compiler/stage passed:** [Compile](evidence/B02-firefox-security-compile.json)
-2508.366s/0,153.7.0/ELF64x86_64/no reserve stop; independent hashes retained.
-[Stage/storage](evidence/B02-firefox-security-stage.json)4.561s/0,65entries,
-294038937bytes, desktop/nativeGLib/exact5icons/relative launcher, conservative
-stage inspection. Original compiled ELF artifacts unchanged by upstream stripping;
-staged runtime hashes separate. Never repeat configure/compiler/mach install.
+**Fuse installed:**3.18.2-1+toddy1, archive
+73d2f7c8ece6b8999b9c50c2db5ee59f154bfee5352895cc8047d9c8337f4ca6.
+First privilege gate rejection0rootchanges/noarchive retained. Exact reviewed
+root:root4755 fusermount3 exception (ADR0228) and verified promotion resume2
+recipe/post0/0;40owned paths/UID101-NNP CLI/library318/3.18.2/default owner-only
+policy0. No actual filesystem mount/signals/helper-policy acceptance yet.
+Prepared /sources/phase2/work/fuse-1/native-{hello,test-signals}, no RPATH/privilege,
+linked installed library, hashes in [drivers](evidence/B02-fuse-native-probes-prepared.json).
+Do not recompile/reprepare the current Fuse input (original a918260c recipe kept
+immutable, stage-only recovery2 already passed).
 
-**Graphical startup configured:** [Policy](evidence/B02-desktop-graphical-boot-policy.json)
-recipe/post0/0,2generated native Systemd links changed, offline wait mask preserved.
-Default graphical.target and display-manager.service->owned gdm.service enabled.
-No unit/PAM/security/user-profile change; original exact foundation default checked.
-CLI emitted missing chroot proc/sys warnings but actual links/postconditions passed;
-actual power-on GNOME later passed in B02-browser-native.json. Do not replay successful migration.
+**Portal base compiler COMPLETE0:** job/controller15048,
+/var/log/toddy/phase2/xdg-desktop-portal-build-1.{job.json,log,exit}.
+Source /sources/phase2/inputs/xdg-desktop-portal-1.22.1 readonly;
+work /sources/phase2/work/xdg-desktop-portal-1/stage and stage-results.json.
+VersionCLI0, image/sound Bubblewrap sandbox flags enabled; optional upstream
+integration suite NOT run. [Build](evidence/B02-portal-base-build.json).
+No base portal package installed yet; do not reconfigure/recompile.
 
 ## Exact next action
 
-FUSE kernel corrected build2 COMPLETE0/15.003s, minimum1091739648Bfree,
-config ONLY FUSE_FS n->m,20old module hashes/93715source entries unchanged. Original
-build1 reserve-stop retained. Online same-file1->2GiB growth COMPLETE/allocation
-reconciled/parent chain/guest UUID/config retained. Do not replay growth/build.
-Kernel candidate SHA0482366cc51727f76af11611275b7124bcd9aadbd76d231ca6fd44d22cb0dc77,
-fuse.ko SHAce3b8f53643839d98fec304561376bf3c6ae873c519468a57b15f3e723111ae2.
-Fuse3.18.2 source prepared/85targets built. First own test selection wrongly
-included real-mount signal driver; preserve failed log. Stage2 COMPLETE0 reuses
-compiler outputs,2non-mount upstream drivers and helper version/refusal pass.
-Native mount/signals/root helper/denial/recovery tests remain pending, not skipped.
-No native FUSE/kernel package installed. Host/guest source caches persist.
-Corrected native-kernel-fuse-2 BIOS+UEFI diagnostic COMPLETE0; both actual
-FUSE load/device UID101 open/direct mount denial/unload cycles passed, Landlock9/
-seccomp/namespaces/dummy-module checks retained. Source/kernel/module hashes bound;
-no target disks attached. First no-udev fixture permission failure retained at
-context1. Correction uses exact owned Systemd rule0666 only inside volatile fixture.
-[Native evidence](evidence/B02-kernel-fuse-native.json), imported guest receipt
-/var/log/toddy/phase2/kernel-fuse-native-acceptance-2.json. No job running.
-NEXT: prepare candidate linux-kernel7.1.8-1+toddy2 from authenticated current kernel
-archive into empty existing W/stage, replace only3candidate boot artifacts and add
-fs/fuse/fuse.ko; preserve all20original modules/foundation rollback/current archive.
-Verified candidate results W/kernel-fuse-build-2/artifacts.json and native proof
-above are prerequisites. Controlled stage/native package transaction needs complete
-archive/root-owned payload checks; do not reuse old successful kernel transaction.
-Then actual installed native FUSE filesystem/helper/signals/denial/unmount recovery,
-followed by missing portal builds (base1.22.1/GNOME50.0/GTK1.15.3) and GUI appearance.
-Canonical fuse-build.sh now selects only two genuinely non-mount C drivers on a
-fresh build; prepared source still contains original a918260c recipe, kept immutable.
-Its stage2 recovery already passed. Do not reprepare/recompile current Fuse source.
+Implement guarded portal stage promotion/native package/check for base1.22.1,
+using its actual stage-results/manifest and source notices. Then build/install
+GNOME50.0 and GTK1.15.3 backends with prepared-source helper/job.py; source archives
+already pinned/cached. GNOME50.0 archive bundles libgxdp; use existing vendored
+source with no network fallback. GNOME implements wallpaper/settings; GTK optional
+wallpaper needs legacy GNOME3 and may be disabled with that reason, preserving
+GTK Settings/AppChooser/Lockdown fallback. Do not build another GNOME desktop.
+GNOME installs a new gschema.xml: update GTK13->14 owned shared cache through
+qualified schema-union metadata flow, preserve all libraries/user preferences.
 
-Test selection: changed input/syntax plus make check381, readonly native report
-reconciliation and real QMP scanouts. No foundation suite repeated.
+Prepare one combined native VM pass after these packages: actual running kernel
+config hash from /proc/config.gz, real unprivileged hello mounts/read/other-user
+read+unmount denial/allow_other refusal/SIGTERM+unmount recovery and original
+upstream signals driver; normal GDM owner portal/appearance/consent/cancel/denial.
+Fixtures are tests, not GUI acceptance; retain real scanouts. No manual module
+preload before initial normal-helper test. Root disk must be a fresh disposable
+readonly-base overlay, never physical disks or host target. Preserve one writer.
+No combined native controller has been implemented/dispatched yet.
 
-## Existing caches/recovery (never prepare/format/recompile again)
+Test selection: full changed native archive/payload/Kmod/APT and CLI/API checks;
+exact privilege-policy unit regression; make check387passed. No unchanged long
+foundation or previous GUI suites repeated. Mounted-filesystem/session gates pending.
 
-Base browser volume16GiB serialTODDY-B02-FIREFOX/UUID082a2d97-fa79-4ee5-86e5-a179f768daec.
-BASE=/mnt/lfs/sources/phase2/work/firefox-1. restore_browser_work.py NEW-name after
-base volumes restores original6aliases/retained ELFs. Old153.2source and obj are
-retired markers, not usable inputs. [Source recovery](evidence/B02-firefox-baseline-source-custody.json)
-actually restored/verified468620files before retiring children;509834inodes freed.
-Original archive807705672B/SHA c443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c
-now at BASE/security-source-archives with readonly original /mnt/lfs/sources alias.
-After cold base restore ALSO firefox_archive_storage.py --restore NEW-name;
-underlying empty placeholder is not an archive. Private restore/replay refusal0.
+## Recovery and unchanged evidence
 
-New source/work and4aliases: restore_firefox_security_source.py NEW-name after
-base restore. Source153.7 archiveSHA7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0;
-source immutable, work alias firefox-security-1537-1. Source complete verified
-469024files/3515456965bytes. Raw work/stage data persists. Finished promotion alias
-/sources/stage/phase2-firefox-security-1 is not needed for installed runtime;
-rebind only if explicitly needed with actual source/record inspection.
+Previous native browser/default-GDM/security/TLS/offline/Stop/restart, Files/Trash,
+Editor ordinary save/relaunch, NetworkManager GUI/DHCP/DNS/HTTPS/polkit/manager
+recovery, navy/Terminal/virtual HDA sound/mute proofs are retained. Reuse unchanged
+component evidence; new kernel/FUSE/portal scope still needs affected real boot.
 
-Other existing6volumes via virtual_discard_checkpoint.restore_volumes() FUNCTION
-ONLY (never trim/main), Systemd source prepare_systemd_pam_input.py --restore,
-Glycin/kernel COW helpers with NEW receipts. Generation4 archive
-.local/phase2/settings-scratch-custody-4/scratch.tar.gz485113684B/SHA
-194480fde5b0e4fefd3cb947b9894150820824428a8e3245aae7ee12a5150ba9,
-restore with phase2_restore_settings_scratch.py --generation4 --receipt NEW-name.
-Existing network2 recovery receipts COMPLETE, never reuse names. Preserve100GiB
-host/16GiBtarget/128MiB scratch and inode reserves. Full failure ledger remains
-.local/phase2/failures.json; attempt budgets survive compaction.
+All desktop1 cache restores COMPLETE: six persistent volumes/Glycin/kernel,
+generation4RAMcache85958entries, original browser6aliases/archive/security4aliases.
+After a future cold boot use NEW receipt names; never replay desktop1-* or network2-*.
+Kernel raw scratch2GiB exact serialTODDY-B02-KERNEL,
+UUIDc6c4176d-faed-4ee3-9ae0-94914a0af666; host kernel-fuse-growth.json full allocation/
+parent chain and guest kernel-fuse-resize-1.json COMPLETE. Never resize/reformat again.
+W=/mnt/lfs/sources/phase2/work/kernel-landlock-1; preserved COW/source/baseline and
+qualified candidate kernel archive, old redundant stage retired only after actual
+full archive restore proof. New candidate native stage currently retained there.
+
+Browser raw16GiB serialTODDY-B02-FIREFOX/UUID082a2d97-fa79-4ee5-86e5-a179f768daec,
+BASE=/mnt/lfs/sources/phase2/work/firefox-1. Original153.2 source/objects retired
+markers; archives/retained ELF proofs intact. After cold recovery restore existing
+volumes then restore_browser_work.py NEW, firefox_archive_storage.py --restore NEW,
+restore_firefox_security_source.py NEW; no extraction/compiler replay.
+Generation4 scratch archive .local/phase2/settings-scratch-custody-4/scratch.tar.gz,
+SHA194480fde5b0e4fefd3cb947b9894150820824428a8e3245aae7ee12a5150ba9;
+phase2_restore_settings_scratch.py --generation4 --receipt NEW. Source/work for
+Fuse and portal base are persistent target files; restore readonly self-bind only
+when cold postconditions show it absent, never reprepare existing directories.
+Host100GiB/target16GiB/scratch128MiB reserves and failure ledger persist.
 
 ## Still due before B02 stop
 
-RestoredNM reboot
-persistence; portal dark/light integration;
-Editor refusal/recovery/reboot; affected device/refusal checks; absent-agent use,
-minimal manifest/optional-catalog status, boot/idle measurements and recovery boot.
-B02 is NOT complete. No further B story before requested stop after all B02.
+Installed FUSE/kernel/portal runtime and dark/light integration; restoredNM reboot
+persistence; Editor refusal/recovery/reboot; affected device/refusal and absent-agent
+checks; exact minimal runtime manifest/catalog status, actual idle/resource and
+recovery-entry boot. B02 is not complete. No later B story before requested stop.

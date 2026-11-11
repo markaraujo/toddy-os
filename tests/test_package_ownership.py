@@ -40,3 +40,15 @@ class CupsOwnershipTests(unittest.TestCase):
     def test_service_user_cannot_own_an_unreviewed_executable(self):
         with self.assertRaises(ValueError):
             ownership_action('cups','/usr/bin/unreviewed',9,19,stat.S_IFREG|0o755,101,101,self.policy)
+
+
+class FuseOwnershipTests(unittest.TestCase):
+    def test_only_exact_reviewed_native_helper_is_allowed(self):
+        rows=json.loads((Path(__file__).resolve().parents[1]/'config/package-ownership-policy.json').read_text())['privileged_exceptions']
+        policy={(r['package'],r['path']):r for r in rows}
+        selected=[r for r in rows if r['package']=='fuse']
+        self.assertEqual([(r['path'],r['uid'],r['gid'],r['mode']) for r in selected],[('/usr/bin/fusermount3',0,0,0o4755)])
+        self.assertEqual(ownership_action('fuse','/usr/bin/fusermount3',0,0,stat.S_IFREG|0o4755,101,101,policy),(0,0,False))
+        for name,uid,gid,mode in [('/usr/bin/fusermount3',101,101,0o4755),('/usr/bin/fusermount3',0,1,0o4755),('/usr/bin/fusermount3',0,0,0o6755),('/usr/sbin/mount.fuse3',0,0,0o4755)]:
+            with self.subTest(name=name,uid=uid,gid=gid,mode=mode):
+                with self.assertRaises(ValueError):ownership_action('fuse',name,uid,gid,stat.S_IFREG|mode,101,101,policy)

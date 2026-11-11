@@ -44,8 +44,10 @@ def main():
   start=next(i for i,l in enumerate(lines) if l.startswith('udevrulesdir ='))
   p.write_text(''.join(lines[:start]+['#'+line for line in lines[start:]]))
   patches.append({'file':'util/meson.build','before_sha256':before,'after_sha256':sha(p),'reference':'Frozen BLFS13.1 postlfs/fuse.html: comment from /^udev/ to EOF, omitting unneeded init/udev/setuid install helper; explicit native privilege qualification separate.'})
+ if name!='fuse':(source/'toddy-build-result.py').write_bytes((R/'scripts/build/phase2/portal_build_result.py').read_bytes())
  (source/'toddy-build.sh').write_bytes(recipe.read_bytes())
  prepared={'source_sha256':row['sha256'],'recipe_sha256':sha(recipe),'source_patches':patches,'scope':'Pinned source input only; isolated compile and native runtime/privilege tests remain required.'}
+ if name!='fuse':prepared['result_recorder_sha256']=sha(source/'toddy-build-result.py')
  (source/'toddy-prepared.json').write_text(json.dumps(prepared,indent=2)+'\n')
  work.mkdir(mode=0o755);os.chown(work,101,101)
  subprocess.run(['mount','--bind',str(source),str(source)],check=True)
