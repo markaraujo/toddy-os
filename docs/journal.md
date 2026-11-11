@@ -3432,3 +3432,5 @@ remains parked; next eligible CUPS source/build review.
 | 2026-11-10 | B02 owned UDisks and TI-RPC | Install UDisks without service activation. Pin Samba and core prerequisites. Correct exact upstream TI-RPC documentation link omission and validate XDR | UDisks and TI-RPC native 0/0. UDisks daemon authorization/device testing pending. Rpcsvc-proto build next. |
 
 | 2026-11-11 | B02 owned Samba build tools | Qualify frozen rpcsvc-proto and Parse::Yapp under build isolation, then promote and verify each native package | Both installs 0/0. Generated XDR and Perl parser positive, refusal and recovery cases passed. Samba client build closure and capacity next. |
+
+| 2026-11-11 | B02 isolated Samba client configuration | Preserve target reserve using a bounded guest tmpfs. Move Waf executable configure tests to their private build directory | Configure 6 exit 0 with actual mmap, locking and safety summary. Client build 3 stopped at a generated public SAMR header path. Existing configuration and objects retained. |

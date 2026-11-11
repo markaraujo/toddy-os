@@ -248,11 +248,69 @@ and its step log, SHA256 09e25daad6ad93897df55f9b02127b0b3f661c5ef4cc3d787eaa3ec
 owned archives, installed bytes, notices and local refusal/recovery.
 No guest writer remains. Never replay builds, metadata sync or installation.
 
-EXACT NEXT: inspect the Samba Waf client target and confirm its required
-configuration and installed SDK closure. Qualify source/work storage before
-extraction. The exact archive has 11,719 members and 180,563,122 regular-file
-bytes. Last target free was 17,199,259,648 B, 19,390,464 B over reserve;
-do not transfer or unpack onto the target without verified capacity.
+Samba client scratch preparation 1 is complete. Guest boot
+0933ee87-f0bc-4074-9491-8b4e6892121f, tmpfs /run/toddy-samba-client-1
+mount ID 580, size cap 2 GiB. The authenticated archive has 11,719 members
+and 180,563,122 regular-file bytes. Target free fell by 8,192 B and remained
+17,199,251,456 B. Read-only source and writable worker aliases are
+/mnt/lfs/sources/phase2/inputs/samba-4.24.6 and
+/mnt/lfs/sources/phase2/work/samba-1. Durable preparation receipt is
+/var/log/toddy/phase2/samba-client-tmpfs-1.json. Never replay preparation on
+this boot. A cold boot loses the tmpfs; inspect actual mount and receipt
+state first and use a new preparation identity if recovery is required.
+
+Configure job 1 exited 1 before Waf due to a route-header assertion.
+Isolation diagnostic passed with UID101, no capabilities, NNP, read-only
+source and SDK, and no route rows. Configure 2 reached the default LDB
+LMDB dependency; configure 3 reached the default ADS LDAP transport
+dependency. Configure 4 passed those checks, then the upstream Python
+provisioning module hit EROFS trying to generate a file in the source.
+Configure 5 used the supported C-only client profile, reached the upstream
+safety summary and exited 1. Actual fcntl lock probe received errno 30
+creating conftest.fcntl. The mmap probe also reported EROFS. Waf runs these
+executables in its read-only source cwd. No writer remains. Exact jobs and
+logs are under /var/log/toddy/phase2; configure 5 PID 189229, log SHA256
+c0bbbe3b22bbe0ac4243ec597a412751413961d6ac1f5c2e5048d94df299ff8f.
+The persistent failure ledger and both exact compressed log bundles are
+under .local/phase2. Never replay preparation or configure attempts 1–5.
+
+Read-only patched source preparation completed with an exact one-file diff
+across 12,530 entries, original source unchanged. The Waf executable-probe
+cwd correction is .local/phase2/samba-waf-configure-probe-cwd.patch, SHA256
+16a878f86250475c1dc8b3eb2005f0111468269a49e812f7a0438f1a9c47f60c.
+Guest preparation receipt samba-client-probe-cwd-1.json is complete.
+Configure 6 PID 194911 exited 0. Runtime probes set HAVE_FCNTL_LOCK,
+HAVE_OFD_LOCKS and SUMMARY_PASSES, and MIT Kerberos 1.22.2 was detected.
+Original mmap EROFS diagnostic disappeared after the scoped cwd change.
+Configure log SHA256 6080aaf42418f90828b10e959c5454edaf546ed95fed1ad352ff7cc6ea994214.
+Do not replay configuration.
+
+Build client 1 PID 200097 exited 1 at PIDL_ADS: source3/librpc/idl/wscript_build
+hardcodes the source-relative config.h include path. Exact first build log
+SHA256 7aac1ef294802d5450d8cb8b7c62f0d16c37c35d612cc118f17684dacb0d4f48.
+A separate read-only alias was prepared with the second one-file patch,
+SHA256 436ed956a3953cfc4e434e172a58cc8a38df4fcaa80420d68253ec0ce963f3cf.
+Guest receipt samba-client-pidl-cwd-1.json is complete. Current alias
+/mnt/lfs/sources/phase2/inputs/samba-4.24.6-pidl-cwd and same work alias
+/mnt/lfs/sources/phase2/work/samba-1.
+
+Build client 2 PID 203119 exited 1 after passing the affected PIDL tasks.
+The generated version.h existed under output/default, one level below
+Waf's launch directory. Build client 3 PID 203848 launched from that exact
+directory and generated the public version header, then exited 1 at the
+public SAMR header. Its generator emits an absolute build-tree include;
+the public header mapper recognizes only the relative bin/default prefix.
+Exact build 3 log SHA256
+03fb31487ca7dff4aac1707fa503c1ccfd5e32bf8751c3487a4cfa07d14447fb.
+Configure and build receipts/logs are under /var/log/toddy/phase2 and in
+.local/phase2/samba-configure-and-build-logs-3.tar.gz. No writer remains.
+
+EXACT NEXT: verify an exact build-root normalization for generated public
+header includes, preserving existing lookup and refusal for all other
+absolute includes. Qualify the change on the actual generated SAMR header
+before dispatch. Reuse the same Waf configuration and incremental objects.
+Check the persistent ledger and retain all three terminal failures.
+No package, SMB runtime or Settings acceptance yet.
 Cold native tests require measured headroom and an isolated VM. UDisks policy,
 Settings/Samba and GNOME session remain pending. Stop after accepted B02.
 

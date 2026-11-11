@@ -1,0 +1,76 @@
+{
+  "name": "samba-configure-6",
+  "pid": 194911,
+  "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+  "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+  "invocation_recipe_sha256": "429b2c9fa1222e6e9f73b41f7f0103abbde571faa82066b610582055163612fd",
+  "exit": 0,
+  "log_sha256": "6080aaf42418f90828b10e959c5454edaf546ed95fed1ad352ff7cc6ea994214",
+  "generated_header_sha256": "460f2d962ba04fb7983e4b6c7a3e786186b330d8a377a1e3517f9e19316c1d06",
+  "waf_config_log_sha256": "efe62f9e6d5ed0c5f9c94be611d121fa5978520ac566c91ed4e2a733345323bd",
+  "waf_cache_sha256": "242d02eeb590b3305e317a5fc9dd0c47982dc4b544324371eb92fefabc67df40",
+  "verified_macros": {
+    "HAVE_SHARED_MMAP": 1,
+    "HAVE_FCNTL_LOCK": 1,
+    "HAVE_OFD_LOCKS": 1,
+    "SUMMARY_PASSES": 1
+  },
+  "mit_kerberos": "1.22.2",
+  "scope": "Native executable configure probes only in the isolated builder. No Samba installation, network exchange, server activation, desktop or physical test.",
+  "prior_failures": {
+    "samba-configure-1": {
+      "exit": 1,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "samba-configure-2": {
+      "exit": 1,
+      "log_sha256": "17d13831307ec6cb450a61c6b7df4085119f1333bd79400cf88600b7b6b361a5"
+    },
+    "samba-configure-3": {
+      "exit": 1,
+      "log_sha256": "57e73c9b0b7f0aed3c60fae6f9168fa533fc9acb0eed1ed7d1511747467f2271"
+    },
+    "samba-configure-4": {
+      "exit": 1,
+      "log_sha256": "ba430661e867ce59ced043a88d9a5f715d81fa77d87a0886867d4147017059b5"
+    },
+    "samba-configure-5": {
+      "exit": 1,
+      "log_sha256": "c0bbbe3b22bbe0ac4243ec597a412751413961d6ac1f5c2e5048d94df299ff8f"
+    }
+  },
+  "scratch": {
+    "state": "prepared",
+    "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+    "source_sha256": "810cc955acb367e9bde556dccfb50db177a02b7c553aa1629a0b905fa7616267",
+    "target_free_before_bytes": 17199259648,
+    "memory_available_before_bytes": 11823017984,
+    "size_limit_bytes": 2147483648,
+    "volume": "/run/toddy-samba-client-1",
+    "source_alias": "/mnt/lfs/sources/phase2/inputs/samba-4.24.6",
+    "work_alias": "/mnt/lfs/sources/phase2/work/samba-1",
+    "mount_id": "580",
+    "target_free_after_bytes": 17199251456,
+    "scratch_free_bytes": 1896181760,
+    "source_inode": 3,
+    "work_inode": 12534,
+    "recovery": "Boot-scoped tmpfs. Inspect live mount IDs, aliases and job first. Retain durable receipts/logs. A cold boot discards source/work, and requires a new preparation identity."
+  },
+  "source_patch": {
+    "state": "prepared",
+    "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+    "mount_id": "580",
+    "source_archive_sha256": "810cc955acb367e9bde556dccfb50db177a02b7c553aa1629a0b905fa7616267",
+    "patch_sha256": "16a878f86250475c1dc8b3eb2005f0111468269a49e812f7a0438f1a9c47f60c",
+    "original_file_sha256": "8b6d5a0a2962ec1ff6f666f5274dd2520e5bb7089c4fe581ef07aa55480908c9",
+    "patched_file_sha256": "751ad48475621d5f2faec0ffcd9b85c212fa370fe7b921d83f8ed29d4baae96d",
+    "changed_source_path": "third_party/waf/waflib/Tools/c_config.py",
+    "alias": "/mnt/lfs/sources/phase2/inputs/samba-4.24.6-probe-cwd",
+    "original_tree_sha256": "9155cb477bc8f80c6a72b1e11befee411e3cc1cd0b0d320ce9a00898af4472d2",
+    "original_entries": 12530,
+    "changed_count": 1,
+    "source_inode": 39811,
+    "scratch_free_bytes": 1640050688,
+    "target_free_bytes": 17199247360
+  }
+}
