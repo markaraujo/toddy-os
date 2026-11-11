@@ -1,0 +1,99 @@
+{
+  "custody": {
+    "scope": "Obsolete uninstalled Firefox153.2 private objects only. Full PAX archive and actual tmpfs restoration compare bytes/metadata/hardlinks before retirement. Exact two ELF artifacts retained separately as non-executable evidence. Source/tools/compiler logs/results and installed system preserved. No browser runtime or whole B02 claim.",
+    "state": "complete",
+    "pid": 2857,
+    "boot_id": "e146fad4-b1e4-4199-9935-3223e693a00b",
+    "proc_start_ticks": "62902",
+    "producer_sha256": "16c240c90d771ad9bded632343c4c4c775cd280d1044ab7bb1b7137334bcbc40",
+    "source": "/mnt/lfs/sources/phase2/work/firefox-1/build/browser-1/obj",
+    "source_inode": 358936,
+    "source_uid": 101,
+    "source_gid": 101,
+    "source_mode": 16877,
+    "before_target_free": 17307803648,
+    "before_browser_free": 7260672000,
+    "before_builder_free": 17324523520,
+    "tar": {
+      "version": "tar (GNU tar) 1.35",
+      "sha256": "3ee2c3c0b4dd9aacebfd2f0fbae44bad36348203acff78a44888dd58c05f811c"
+    },
+    "entries": 51152,
+    "hardlink_groups": 88,
+    "unique_regular_bytes": 3742849109,
+    "archive": "/var/lib/toddy/phase2-custody/firefox-baseline-objects-1/work.tar.gz",
+    "archive_create_exit": 0,
+    "archive_sha256": "57af4107c560d4e00bbc8ed321a03850f69464c4402189437fe9c60fd0be0ca3",
+    "archive_bytes": 1039868263,
+    "memory": "/var/lib/toddy/phase2-custody/firefox-baseline-objects-1/restore-memory",
+    "archive_extract_exit": 0,
+    "source_unchanged": true,
+    "restored_exact": true,
+    "manifest_sha256": "d06eab6fc601bc0fb1528b63c0e34dd40a8a2aa9f59f45ef546540bf90cec8c7",
+    "retained_artifacts": {
+      "firefox": {
+        "path": "/mnt/lfs/sources/phase2/work/firefox-1/build/browser-1/retained-baseline/firefox",
+        "sha256": "7ade82cb70f1ac513a36e5cfd9b4f6aaa386a0e6bd2808558daf07e10b8ff769"
+      },
+      "libxul.so": {
+        "path": "/mnt/lfs/sources/phase2/work/firefox-1/build/browser-1/retained-baseline/libxul.so",
+        "sha256": "882296756112c1323ea5d91d6f2f9c21f6b154a6a20456259241a277ccdece20"
+      }
+    },
+    "installed_root_changed_paths": 0,
+    "after_target_free": 17307803648,
+    "after_builder_free": 16224231424,
+    "reclaimed_browser_bytes": 3642654720,
+    "recovery": "Verify archive/source-manifest SHA. Restore to a NEW private directory using recorded GNU tar PAX ACL/xattr/owner/permission flags; compare full snapshot and hardlink groups with source-manifest. To restore original work, first reconcile sole .toddy-retired marker/receipt, never overwrite an existing/unknown work tree. Keep archive/manifests/logs; original source/tools/logs and separately retained baseline ELF evidence remain available. Retired objects are never a qualified cache for changed Firefox153.7 sources."
+  },
+  "post_inspection": {
+    "state": "inspected",
+    "uuid": "082a2d97-fa79-4ee5-86e5-a179f768daec",
+    "serial": "TODDY-B02-FIREFOX",
+    "device": "/dev/vdd",
+    "aliases": [
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.2.0",
+        "target": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.2.0",
+        "readonly": true,
+        "inode": 131074
+      },
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/tools/wasi-sdk-25.0-x86_64-linux",
+        "target": "/mnt/lfs/sources/phase2/work/firefox-1/tools/wasi-sdk-25.0-x86_64-linux",
+        "readonly": true,
+        "inode": 917506
+      },
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.2.0",
+        "target": "/mnt/lfs/sources/phase2/inputs/firefox-153.2.0",
+        "readonly": true,
+        "inode": 131074
+      },
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/build/browser-1",
+        "target": "/mnt/lfs/sources/phase2/work/firefox-build-1",
+        "readonly": false,
+        "inode": 358898
+      },
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/source/nasm-3.02",
+        "target": "/mnt/lfs/sources/phase2/inputs/nasm-3.02",
+        "readonly": true,
+        "inode": 358620
+      },
+      {
+        "source": "/mnt/lfs/sources/phase2/work/firefox-1/build/nasm-1",
+        "target": "/mnt/lfs/sources/phase2/work/nasm-1",
+        "readonly": false,
+        "inode": 358753
+      }
+    ],
+    "compiler_artifacts": {
+      "firefox": "7ade82cb70f1ac513a36e5cfd9b4f6aaa386a0e6bd2808558daf07e10b8ff769",
+      "libxul.so": "882296756112c1323ea5d91d6f2f9c21f6b154a6a20456259241a277ccdece20"
+    },
+    "scope": "Existing filesystem/mounts and retained private compiler artifacts only; no rebuild or browser/native UI acceptance"
+  },
+  "browser_free": 10903326720
+}

@@ -38,37 +38,33 @@ New archiveSHA60b2fc8bc00b24f57ea0881b8ca268637ea30536c0a906b117c47bfe93805369.
 No replay of update/restore receipts. Original first failure zero root changes
 retained; corrected fresh stage2 is installed. No live guest writer.
 
-Next browser slice: guarded custody of obsolete private153.2 objects, script
-scripts/build/phase2/archive_firefox_baseline_objects.py DISPATCHED once, input
-56df8bd/tool session47174. Actual guest pid2857/start62902, boot
-e146fad4-b1e4-4199-9935-3223e693a00b, producerSHA
-16c240c90d771ad9bded632343c4c4c775cd280d1044ab7bb1b7137334bcbc40.
-Last observed snapshotting. Never dispatch again: inspect actual receipt/process,
-archive/restoration/marker postconditions first; no second guest writer.
-Goal: recover private browser space for changed153.7 source without losing old
-compiler evidence. Inputs: exact previous compile artifacts and browser baseline;
-source obj3,870,035,968allocated bytes, builder17.32GBfree, MemAvailable9.84GB;
-host113.28GBfree,100GiBreserve. One guest build.lock, exact target/serial/volume
-inspection. Create PAX ACL/xattr/metadata/hardlink snapshot/archive<=2GiB on builder,
-actually extract to bounded noswap/noexec6GiBtmpfs only if memory admits4GiBmargin,
-compare complete restored/source snapshots and archive SHA. Only after exact
-restore proof, copy both ELF evidence files non-executable with original hashes,
-retire obj children and retain marker/manifest/archive. Source/tools/logs untouched.
-Full installed-root before/after check, same6aliases/browser hashes after new
-explicit retired-artifact inspect contract. Never use old objects for changedsource.
-No format/resize, root install, package or source change. Healthy archive/restore
-may take >10min; monitor real receipt/process, never replay or kill for timer.
+Browser object custody COMPLETE0 (input56df8bd; controller session47174 terminal0,
+guestpid2857 no longer producer). [Exact proof](evidence/B02-firefox-baseline-object-custody.json):
+51,152entries/88hardlink groups,3,742,849,109unique regular bytes restored with
+complete content/metadata comparison before retirement; archive1,039,868,263B SHA
+57af4107c560d4e00bbc8ed321a03850f69464c4402189437fe9c60fd0be0ca3.
+Archive/manifest/logs at /var/lib/toddy/phase2-custody/firefox-baseline-objects-1,
+receipt /var/log/toddy/phase2/firefox-baseline-objects-custody-1.json COMPLETE.
+Never replay. Installed root changed0; browser3,642,654,720B reclaimed, available
+10,903,326,720B. Old obj now marker only, NOT a usable cache. Both exact ELF
+artifacts retained non-executable at BASE/build/browser-1/retained-baseline, current
+browser.inspect accepts only completed custody/original hashes; all6aliases intact.
+Sources/tools/logs/results retained. No live guest writer or native test.
 
-Dispatched command (DO NOT REPEAT): guest
-`python3 /opt/toddy-build/scripts/build/phase2/archive_firefox_baseline_objects.py`
-log .local/phase2/firefox-object-custody-controller-1.log; guest receipt
-/var/log/toddy/phase2/firefox-baseline-objects-custody-1.json and artifacts
-/var/lib/toddy/phase2-custody/firefox-baseline-objects-1. Refuse existing contexts.
-Recovery: inspect actual receipt/marker/source first; retained full archive and
-manifest support NEW-directory extraction and full comparison, never overwrite
-unknown trees. Failure before verified retirement preserves original objects.
-After success prepare new immutable153.7 input/work with fresh job identity.
-Rust source minimum1.90.0 verified (installed1.97.1); native ABI/security pending.
+Exact next action: implement fresh security candidate source/work preparation.
+Archive must transfer to dedicated browser volume (800,080,060B), not target root:
+target17.3GBfree cannot absorb it above16GiBreserve. Use new source-archive file
+and guarded readonly alias at /mnt/lfs/sources/<candidate filename>; verify exact
+source lock/hash/bytes before streaming filtered extraction under BASE/source/
+firefox-153.7.0. Preserve original153.2source. Fresh UID101work BASE/build/
+browser-security-1537-1 and new input/work aliases, no old objects. Extend isolated
+browser tools profile only for exact new source/work pair and preserve CUPS/Samba
+base-hash qualification. Reuse qualified SDK/NASM, corrected bundled PNG and
+Wayland/main/all6WASM sandbox options; candidate build must assert153.7version.
+Implement restore/checkpoint for new mounts before another VM transition. No new
+candidate transfer/extract/configure/build dispatched. Rust source minimum1.90.0
+verified(existing1.97.1); native configure/ABI/security remain pending. Separate
+installed-target capacity review required before future browser package promotion.
 
 ## Browser compiler, security and persistent build volume
 
@@ -76,10 +72,10 @@ Rust source minimum1.90.0 verified (installed1.97.1); native ABI/security pendin
 2485.345s; independent ELF SHA/x86_64 and exact AppVersion153.2.0 verified.
 No reserve cancellation, final7,260,672,000B available. Private feasibility ONLY;
 ADR0225 blocks its browser delivery due later high-impact upstream corrections.
-No old browser package/install/runtime acceptance. Original work/logs retained.
+No old browser package/install/runtime acceptance. Original work/logs retained; obj cache is now verified-custodied/retired as above.
 Guest controller receipt /var/log/toddy/phase2/firefox-build-controller-1.json;
 wrapper /var/log/toddy/phase2/firefox-build-1.log/.exit; work
-/mnt/lfs/sources/phase2/work/firefox-build-1 with compile result/log. Never replay.
+/mnt/lfs/sources/phase2/work/firefox-build-1 with compile result/log and retained-baseline ELF evidence. Original obj marker points to verified full archive. Never replay.
 
 Corrected153.7.0esr800,080,060B archive cached.local/sources, publisherSHA512
 matched, SHA2567f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0.
@@ -90,8 +86,8 @@ Separate firefox-security-1537 lock, original source retained; no signature clai
 unchanged; Rust configure vendor-target changes. Header versions alone do not
 clear NSS/NSPR security/ABI or actual minimum Rust constant. Overlay source/work/
 configure/compiler/stage/install/native security/UI all pending. Old objects are
-not a qualified cache for changed source. Measure capacity and choose qualified
-custody/retirement before fresh overlay work; do not lower reserves.
+now verified-custodied and cannot be used for changed source. Fresh candidate work
+is pending with measured browser capacity above; do not lower reserves.
 
 Browser raw file.local/vm/phase2/firefox-scratch.raw,16GiB/full allocation,
 receipt firefox-scratch.json; inode11956378/device66306. SerialTODDY-B02-FIREFOX,
@@ -101,7 +97,7 @@ never assume device name or format/reprepare. Current persistent aliases:
 
 - BASE/source/firefox-153.2.0 self-bindRO and inputs/firefox-153.2.0 RO.
 - BASE/tools/wasi-sdk-25.0-x86_64-linux self-bindRO.
-- BASE/build/browser-1 -> work/firefox-build-1 RW (compiler/cache/logs/stage).
+- BASE/build/browser-1 -> work/firefox-build-1 RW (logs/results/retained-baseline; obj retired marker).
 - BASE/source/nasm-3.02 -> inputs/nasm-3.02 RO.
 - BASE/build/nasm-1 -> work/nasm-1 RW (private qualified NASM stage).
 

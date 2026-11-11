@@ -3859,3 +3859,16 @@ all source/tool/log/result inputs preserved. Browser inspection explicitly check
 completed custody receipt and original hashes after retirement; arbitrary absent
 objects remain an error. Builder17.32GBfree/MemAvailable9.84GB, archive bounded
 2GiB and host100GiBreserve retained. One guest writer; no job launched yet.
+
+
+### B02 obsolete browser object custody complete — 2026-11-11
+
+Actual PAX archive and tmpfs restoration passed0:51,152entries/88hardlink groups,
+3,742,849,109unique regular bytes fully compared including metadata before
+retirement. Archive1,039,868,263bytes/SHA57af4107c560d4e00bbc8ed321a03850f69464c4402189437fe9c60fd0be0ca3
+retained with manifests/logs. Original objects retired only after recovery proof;
+two ELF evidence files preserved read-only with original hashes, source/tools/
+compiler logs/results intact. Installed root changed0;3,642,654,720browser bytes
+reclaimed,10,903,326,720available. Final browser mount/artifact inspection passed.
+Next fresh153.7source/work preparation must place800MBarchive on browser volume
+and use readonly source alias, preserving target16GiBreserve; no new job started.
