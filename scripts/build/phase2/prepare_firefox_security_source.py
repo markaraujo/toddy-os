@@ -11,7 +11,7 @@ import tarfile
 
 BASE=Path('/mnt/lfs/sources/phase2/work/firefox-1')
 LOG=Path('/var/log/toddy/phase2')
-RECEIPT=LOG/'firefox-security-source-1537-1.json'
+RECEIPT=LOG/'firefox-security-source-1537-2.json'
 SHA='7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0'
 SIZE=800080060
 SOURCE=BASE/'source/firefox-153.7.0'
@@ -31,7 +31,8 @@ def save(row):
 
 
 def main():
-    assert os.geteuid()==0
+    assert os.geteuid()==0 and sys.argv[1:] in ([],['--extract-verified'])
+    reuse=sys.argv[1:]==['--extract-verified']
     subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
     lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
@@ -44,25 +45,42 @@ def main():
     assert shutil.disk_usage(BASE).free>=9*1024**3
     assert shutil.disk_usage('/mnt/lfs').free>=16*1024**3
     destinations={ARCHIVE.parent,SOURCE,WORK,*(dst for _,dst,_ in ALIASES if dst!=SOURCE)}
-    assert all(not os.path.lexists(p) for p in destinations),'Unknown existing candidate path'
+    if reuse:
+        previous=LOG/'firefox-security-source-1537-1.json'
+        prior=json.loads(previous.read_text())
+        assert prior['state']=='extracting' and prior['members']==0 and prior['archive_bytes']==SIZE and prior['archive_sha256']==SHA
+        assert all(not os.path.lexists(p) for p in destinations if p!=ARCHIVE.parent)
+        assert ARCHIVE.parent.resolve()==ARCHIVE.parent and {p.name for p in ARCHIVE.parent.iterdir()}=={ARCHIVE.name}
+        assert ARCHIVE.is_file() and not ARCHIVE.is_symlink() and ARCHIVE.stat().st_size==SIZE
+        with ARCHIVE.open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==SHA
+    else:
+        assert all(not os.path.lexists(p) for p in destinations),'Unknown existing candidate path'
     state={'state':'transfer-intended','source':row,'expected_bytes':SIZE,'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
            'pid':os.getpid(),'start_ticks':Path('/proc/self/stat').read_text().split()[21],
            'source_directory':str(SOURCE),'work_directory':str(WORK),'archive_path':str(ARCHIVE),'aliases':[],
            'scope':'Fresh security source/work only; no old objects, OS installation or runtime acceptance'}
-    save(state);ARCHIVE.parent.mkdir(mode=0o755)
-    digest=hashlib.sha256();total=0
-    with ARCHIVE.open('xb') as f:
-        while chunk:=sys.stdin.buffer.read(1024**2):
-            total+=len(chunk);assert total<=SIZE;digest.update(chunk);f.write(chunk)
-        f.flush();os.fsync(f.fileno())
-    assert total==SIZE and digest.hexdigest()==SHA,'Preserve original and incomplete candidate; no extraction'
-    ARCHIVE.chmod(0o444)
+    if reuse:
+        state['reused_verified_archive_receipt_sha256']=hashlib.sha256(previous.read_bytes()).hexdigest()
+        total=SIZE;save(state)
+    else:
+        save(state);ARCHIVE.parent.mkdir(mode=0o755)
+        digest=hashlib.sha256();total=0
+        with ARCHIVE.open('xb') as f:
+            while chunk:=sys.stdin.buffer.read(1024**2):
+                total+=len(chunk);assert total<=SIZE;digest.update(chunk);f.write(chunk)
+            f.flush();os.fsync(f.fileno())
+        assert total==SIZE and digest.hexdigest()==SHA,'Preserve original and incomplete candidate; no extraction'
+        ARCHIVE.chmod(0o444)
     state.update(state='extracting',archive_sha256=SHA,archive_bytes=total,members=0,expanded_regular_bytes=0);save(state)
     with tarfile.open(ARCHIVE,mode='r|xz') as bundle:
         for member in bundle:
             parts=PurePosixPath(member.name).parts
-            assert parts and parts[0]==SOURCE.name and not member.name.startswith('/') and '..' not in parts
             state['members']+=1
+            if not parts:
+                assert member.name=='.' and member.isdir()
+                state['archive_dot_directory_omitted']=True
+                continue
+            assert parts and parts[0]==SOURCE.name and not member.name.startswith('/') and '..' not in parts
             if member.isfile():state['expanded_regular_bytes']+=member.size
             assert state['expanded_regular_bytes']<=4*1024**3 and state['members']<=520000
             bundle.extract(member,SOURCE.parent,filter='data')

@@ -71,7 +71,14 @@ Affected checks: syntax/full repository checks; actual transfer/extraction count
 version/critical hashes, readonly alias options/inodes/UID and native isolation
 configure next. Helpers restore_firefox_security_source.py --inspect or NEW-name
 restore only existing4aliases after base browser recovery; qualify actual private
-mount-namespace restore before any future cold transition. No source transfer yet.
+mount-namespace restore before any future cold transition. First source preparation TERMINAL1/session50596: archive fully verified800080060B,
+then rejected initial dot directory before any source extraction. Source/work/all
+aliases inspected absent; retained archive and receipt1 state extracting/members0.
+Correction counts/omits only exact dot directory, new receipt2, --extract-verified
+mode revalidates retained archive and absent postconditions before extraction.
+Original failure retained. Never transfer again or replay original controller.
+Next: commit/check/sync corrected helper, run extraction-only once with new log
+.local/phase2/firefox-security-source-controller-2.log. No corrected job yet.
 After source preparation, extend exact browser isolated profile pair, retaining
 CUPS/Samba hash qualifications, reuse SDK/NASM/bundledPNG/main/all6WASM sandbox
 options and fresh configure/build version assertions. Target-root capacity must
