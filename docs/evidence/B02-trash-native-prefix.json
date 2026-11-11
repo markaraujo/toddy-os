@@ -1,0 +1,61 @@
+{
+  "state": "qualified-gui-prefix-only",
+  "scope": "Observed installed Files/Gvfs Trash browsing/restoration and independently watched content transitions passed using real GDM login/input. Original aggregate FAILED for absent runuser before CLI/auth execution; owner_session record was not emitted because the exception preceded that assignment. No full native-gate/B02/admin/hardware claim.",
+  "commit": "2760ef2cba3cd12df5ddecaef8a193085611255c",
+  "controller_pid": 1421565,
+  "controller_exit": 1,
+  "container_exit": 0,
+  "backing_unchanged": true,
+  "source_identity": {
+    "bytes": 52446887936,
+    "mtime_ns": 1794373717214861615,
+    "device": 66306,
+    "inode": 11929205
+  },
+  "native_report_sha256": "c3a0a6a9e0c10955d16e7de710f1eb23918aacabfb109f7e92ee7a2005e2f870",
+  "file_postconditions": {
+    "observed_restored_after_trash": true,
+    "observed_trashed": true,
+    "restored_seed_exact": true,
+    "trash_entry_absent_after_restore": true
+  },
+  "original_error_retained": {
+    "message": "[Errno 2] No such file or directory: 'runuser'",
+    "type": "FileNotFoundError"
+  },
+  "owner_session_record": null,
+  "schema_unchanged": true,
+  "gdm_stop_exit": 0,
+  "remaining": [
+    "installed gio info trash:///",
+    "noninteractive authorization challenge for actual active Files PID",
+    "serialized actual owner-session properties in followup report"
+  ],
+  "screenshots": [
+    {
+      "path": "docs/evidence/B02-trash-native-trashed.png",
+      "sha256": "380e33dda9fe36f163f1a6cdba1022048056a9b8734fa1cb79c0640fde18d0c0"
+    },
+    {
+      "path": "docs/evidence/B02-trash-native-browsing.png",
+      "sha256": "c6cbf30472760cb668e004d854d99c2286fdd76e63374fb369292d92be9733f4"
+    },
+    {
+      "path": "docs/evidence/B02-trash-native-restore-menu.png",
+      "sha256": "8b524e8c28fabe15787a701e734d16481103bad9faa825b2c2a33d7d2b029cb2"
+    },
+    {
+      "path": "docs/evidence/B02-trash-native-restored-empty.png",
+      "sha256": "b1eb33e4e1ebb4df04d5b9d717878000e7b4f9a83618b4b964d2defddc2ab91d"
+    },
+    {
+      "path": "docs/evidence/B02-trash-native-restored-documents.png",
+      "sha256": "fc252717d972300e40af6609f0f8a11d676b6656e54f8b215757092670f8ad70"
+    }
+  ],
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-trash-native-prefix-evidence.tar.gz",
+    "bytes": 27096,
+    "sha256": "ae612799e9f022e92b5dddf54860e1fbe4c79da24b59380ab109f2962479b8a9"
+  }
+}

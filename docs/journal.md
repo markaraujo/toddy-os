@@ -3578,3 +3578,15 @@ entries/42,228regular inode classes. Strict generation4 recovery added. Focused
 normal GDM/PAM native followup prepared: actual trash-and-restore transition
 watcher, GUI review, installed trash URI and noninteractive active-client admin
 challenge. No native followup executed yet; prior Trash failure stays unresolved.
+
+### B02 — Actual Trash GUI recovered; native owner wrapper failure retained
+
+New Gvfs native Files Trash browse/Restore/empty-state/Documents UI and four
+independently watched transition/content postconditions passed. Original aggregate
+failed1 because runuser is absent before gio/pkcheck and owner-session assignment;
+container0/base unchanged. Exact failure/raw report retained; GUI-only prefix
+qualified, no full native gate or security acceptance. Next use Python native UID/
+GID drop for only remaining checks on a new normal owner seat, reusing prior GUI
+proof. Failure ledger records zero corrective attempts for this new wrapper cause.
+Checkpoint condensed to current authoritative state and exact next action; older
+identities/evidence remain in this journal, story and immutable Git history.

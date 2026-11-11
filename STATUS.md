@@ -16,10 +16,11 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T05:01:47.467411+00:00
+Last verified: 2026-11-11T05:16:39.517444+00:00
 
 Verified:
 
+- Native installed Files/Gvfs Trash GUI: actual browse/Restore/empty state and independently watched trash/restore transitions/content passed. Original aggregate FAILED only for absent runuser before gio/pkcheck and owner-session property emission. Container0/base unchanged; GUI prefix only, full remaining native owner/security gate unqualified.
 - Owned Gvfs1.60.2 native recipe/post0/0,146changes/324entries;131original files/21ELFs/ABI/APT, UID101/NNP CLI refusal/recovery and unauthenticated admin refusal, unchanged upstream policy/shared GIO cache. SMB schemas integrated via GTKtoddy13 recipe/post0/0:132schemas/1113keys, all131baseline/1111keys/contracts and906runtime entries preserved. Native Trash GUI/privilege mediation still unqualified.
 - Gvfs1.60.2 isolated compiler/stage0:189ELFs/133stage files,17original local outputstream cases passed (11reused+6remaining). Original append-tell failure retained: baseline GLib local initial0 versus expected26, independent GLib-only append-byte integrity passed. No source/compiler replay or native Gvfs/Trash acceptance. ADR0222 records limited qualification and SFTP unavailable until owned SSH client.
 - Actual installed Files native GUI1: normal GDM/PAM Wayland, real create/rename/copy/move-to-trash actions and5exact file postconditions passed;640pixel tiled layout legible/sidebar collapsed, error recovery to local browsing/window reopen. Container0/base unchanged. Trash sidebar URI browsing FAILED, Gvfs integration unresolved; no full Files/B02 acceptance.
@@ -202,7 +203,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: Gvfs native package and owned stock schema union passed0/0; builder boot2099f4e9-db42-413d-9ade-41e29ae24160, no writer. Next NEW generation4 custody/real isolated restore before cold normal-GDM Trash browse/restore/refusal/recovery followup. Generation3 lacks Gvfs work/source and GTK13 promotion; never stop/replay before new custody. Original unsupported Trash URI still unresolved. Complete all B02 then stop.
+Running: Native-files-trash-runtime-1 terminal1 due absent runuser wrapper, container0/base unchanged; builder stopped. GUI Trash/restore prefix qualified; gio/pkcheck/owner properties not executed/emitted. Next bounded Python UID/GID-drop correction in NEW remaining-checks native context; reuse GUI proof without writes or package/compiler replay. Generation4 recovery archive qualified. Complete all B02 then stop.
 
 Remaining:
 
