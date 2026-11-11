@@ -8,9 +8,11 @@ from phase2_native_report import decode
 from phase2_native_glycin import compressed_payload
 import phase2_vm
 import vm
+import phase2_gdm_owner_control
 ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
 FOLLOWUP=sys.argv[1:]==['--probe-path-followup']
-CONTEXT=ROOT/'.local/phase2'/('native-gdm-seat-runtime-2' if FOLLOWUP else 'native-gdm-seat-runtime-1')
+OWNER=sys.argv[1:]==['--authenticated-session']
+CONTEXT=ROOT/'.local/phase2'/('native-gdm-owner-runtime-1' if OWNER else 'native-gdm-seat-runtime-2' if FOLLOWUP else 'native-gdm-seat-runtime-1')
 CAPTURE_STOP=threading.Event()
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def capture_scanout():
@@ -49,7 +51,7 @@ def capture_scanout():
         (CONTEXT/'scanout-observation.json').write_text(json.dumps(records,indent=2)+'\n')
 
 def main():
-    assert len(sys.argv)==1 or FOLLOWUP
+    assert len(sys.argv)==1 or FOLLOWUP or OWNER
     custody=ROOT/'.local/phase2/settings-scratch-custody-1'
     retained=json.loads((custody/'result.json').read_text());assert retained['state']=='complete'
     assert (custody/'restore-validation.exit').read_text().strip()=='0'
@@ -59,9 +61,17 @@ def main():
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip(),'Commit reviewed inputs before native boot'
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
     lock=open(vm.VM/'native-boot-test.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB);boot.refuse_running_tests()
-    probe=(ROOT/'scripts/host/phase2-native-gdm-seat-probe.py').read_bytes()
+    probe=(ROOT/'scripts/host'/('phase2-native-gdm-owner-probe.py' if OWNER else 'phase2-native-gdm-seat-probe.py')).read_bytes()
     code="from pathlib import Path\nimport fcntl,hashlib,json,subprocess\nsubprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)\nlock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)\nassert not list(Path('/var/log/toddy/build').glob('*.running.json'))\nversions={'gnome-shell':'50.4-1+toddy1','gtk':'4.22.4-1+toddy10','gdm':'50.2-1+toddy1','mutter':'50.4-1+toddy1','gstreamer':'1.28.6-1+toddy1','gst-plugins-base':'1.28.6-1+toddy1'}\nfiles=0\nfor name,version in versions.items():\n assert subprocess.check_output(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Version}',name],text=True)==version\n r=json.loads(Path('/var/log/toddy/packages',name+'_'+version+'_amd64.json').read_text());assert r['installed']\n for n,row in r['payload'].items():\n  if 'sha256' in row:\n   p=Path('/mnt/lfs')/n.lstrip('/');assert hashlib.sha256(p.read_bytes()).hexdigest()==row['sha256'];files+=1\nfor step in ['b02-gnome-shell-install','b02-settings-schema-union-install','b02-gstreamer-install','b02-gst-plugins-base-install']:\n r=json.loads(Path('/var/log/toddy/build',step+'.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0\nprint(json.dumps({'versions':versions,'verified_native_files':files,'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'target_serial':'TODDY-LFS-TARGET','native_kernel_expected':'7.1.8-toddy'}))\n"
-    if FOLLOWUP:
+    if OWNER:
+        previous=json.loads((ROOT/'.local/phase2/native-gdm-seat-runtime-2/result.json').read_text())
+        assert previous['phase']=='native-report-recorded' and previous['native_selected_passed'] and previous['backing_unchanged']
+        container=json.loads(subprocess.check_output(['docker','inspect',previous['container_id']],text=True))[0]
+        assert not container['State']['Running'] and container['State']['ExitCode']==0
+        assert container['Config']['Labels']['toddy.boot-test']==previous['run_id']
+        assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==previous['source_identity']
+        accepted_record=previous['accepted']
+    elif FOLLOWUP:
         previous=json.loads((ROOT/'.local/phase2/native-gdm-seat-runtime-1/result.json').read_text())
         assert previous['phase']=='native-stopped'
         container=json.loads(subprocess.check_output(['docker','inspect',previous['container_id']],text=True))[0]
@@ -76,7 +86,8 @@ def main():
         accepted=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
         accepted_record=json.loads(accepted.stdout)
     CONTEXT.mkdir()
-    state={'scope':'Normal installed GDM on actual virtual DRM/input seat with QEMU scanout; greeter observation only, no authenticated login/basic-app/B02/G2/physical acceptance',
+    state={'scope':('Actual disposable-user authenticated GDM/GNOME session and observed virtual input, no B02/G2/physical completion' if OWNER else 'Normal installed GDM on actual virtual DRM/input seat with QEMU scanout; greeter observation only, no authenticated login/basic-app/B02/G2/physical acceptance'),
+           'authenticated_session_fixture':OWNER,
            'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
            'started_utc':datetime.now(timezone.utc).isoformat(),
            'controller_pid':os.getpid(),'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
@@ -87,7 +98,7 @@ def main():
         part.write_text(json.dumps(state,indent=2)+'\n');part.replace(CONTEXT/'result.json')
         print(json.dumps({'phase':state['phase'],'context':str(CONTEXT)}),flush=True)
     save()
-    if not FOLLOWUP:
+    if not (FOLLOWUP or OWNER):
         with (CONTEXT/'builder-stop.log').open('x') as log:
             state['phase']='stopping-builder';save()
             run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
@@ -102,12 +113,13 @@ def main():
     with (CONTEXT/'prepare.log').open('x') as log:
         run(['docker','run','--rm',*common,image,'qemu-img','check','/vm/phase2/lfs-target.qcow2'],stdout=log,stderr=subprocess.STDOUT)
         run(['docker','run','--rm',*common,image,'qemu-img','create','-f','qcow2','-F','qcow2','-b','/vm/phase2/lfs-target.qcow2','/work/target.qcow2'],stdout=log,stderr=subprocess.STDOUT)
-    unit=(ROOT/'scripts/host/boot-probe.service').read_bytes().replace(b'TimeoutStartSec=180',b'TimeoutStartSec=360')
+    unit=(ROOT/'scripts/host/boot-probe.service').read_bytes().replace(b'TimeoutStartSec=180',b'TimeoutStartSec=600' if OWNER else b'TimeoutStartSec=360')
     payloads={'systemd.extra-unit.toddy-boot-probe.service':unit,
               'systemd.unit-dropin.multi-user.target':(ROOT/'scripts/host/boot-probe.target.conf').read_bytes(),
               'toddy.boot-probe':compressed_payload(probe)}
     qemu=boot.qemu_arguments('bios',payloads)
     qemu+=['-serial','file:/work/native-evidence.log','-vga','virtio','-device','qemu-xhci,id=usb','-device','usb-tablet,bus=usb.0','-device','usb-kbd,bus=usb.0','-qmp','unix:/work/q,server=on,wait=off']
+    if OWNER:qemu+=['-chardev','socket,id=fixture,path=/work/auth,server=on,wait=off','-device','isa-serial,chardev=fixture,index=2']
     qemu[qemu.index('-cpu')+1]='host';qemu[qemu.index('-smp')+1]='4';qemu[qemu.index('-m')+1]='4096'
     name='toddy-b02-native-'+run_id[:12]
     command=['docker','create','--name',name,'--label','toddy.boot-test='+run_id,*common,
@@ -115,9 +127,10 @@ def main():
     cid=subprocess.check_output(command,text=True).strip()
     state.update(phase='native-running',container_id=cid,container_name=name,run_id=run_id,command=command);save()
     with (CONTEXT/'qemu.log').open('x') as log:run(['docker','start',cid],stdout=log,stderr=subprocess.STDOUT)
-    capture=threading.Thread(target=capture_scanout,daemon=True);capture.start()
+    capture=threading.Thread(target=phase2_gdm_owner_control.run,args=(CONTEXT,CAPTURE_STOP),daemon=True) if OWNER else threading.Thread(target=capture_scanout,daemon=True)
+    capture.start()
     try:
-        waited=subprocess.run(['docker','wait',cid],capture_output=True,text=True,timeout=600)
+        waited=subprocess.run(['docker','wait',cid],capture_output=True,text=True,timeout=900 if OWNER else 600)
         (CONTEXT/'docker-wait.json').write_text(json.dumps({'exit':waited.returncode,'stdout':waited.stdout,'stderr':waited.stderr},indent=2)+'\n')
         waited.check_returncode();assert waited.stdout.strip()=='0','QEMU runtime exit nonzero'
     finally:

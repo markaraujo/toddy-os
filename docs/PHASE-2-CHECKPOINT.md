@@ -46,9 +46,21 @@ its obsolete GTK assertion before any compositor/GDM. Preserve raw serial and
 first scanout; no dedicated report. Context1 container stopped0/base unchanged.
 Followup2 verified these actual postconditions; no builder-stop replay.
 
-EXACT NEXT: use this proven actual-seat path for a fresh disposable-overlay
-normal authenticated user session and real input/application actions, keeping
-all test passwords only in memory/private transient transport, never logs/Git.
+EXACT NEXT: after publishing reviewed inputs, run
+`python3 -u scripts/host/phase2_native_gdm_seat.py --authenticated-session`
+with .local/phase2/native-gdm-owner-runtime-1-controller.log.
+Fresh context native-gdm-owner-runtime-1 reuses only unchanged stopped base and
+verified prior normal-seat inputs. A private third virtual UART configures a
+synthetic disposable owner account using an in-memory random password; host and
+guest core dumps disabled, no password in QEMU arguments/files/logs.
+Inspect control-ready.json, then use the private context/control Unix socket
+JSON actions capture/username/password/key/pointer/text/done. Password action
+must only be sent after visually verifying the actual masked password field.
+Screenshots are owner-scanout-NN.ppm; view converted PNGs. Real input events are
+retained symbolically without password values or keyboard-code transcripts.
+Guest holds up to360s for real owner-session observation and host done request;
+service timeout600s/controller900s. Explicitly request done after the chosen
+real UI actions. Observe terminal result and backing identity before recovery.
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated
 restoration proof above remain durable. If builder work is needed first,
