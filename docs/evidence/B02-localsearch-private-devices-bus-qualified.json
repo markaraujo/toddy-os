@@ -1,0 +1,131 @@
+{
+  "private-target-device-profile-1.json": {
+    "state": "qualified",
+    "scope": "Independent private device namespace only; no LocalSearch helper/functional/native retry, no global device mutation or permission relaxation",
+    "boot_id": "a329253d-d443-49d9-9445-9ecd99b90e92",
+    "target_devices_before": {
+      "null": {
+        "inode": 8840738,
+        "device": 64788,
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "bytes": 0,
+        "mtime_ns": 1794362380228918663,
+        "rdev": 0
+      },
+      "zero": {
+        "exists": false
+      },
+      "random": {
+        "exists": false
+      },
+      "urandom": {
+        "exists": false
+      }
+    },
+    "producer_sha256": "a40c7e1ab587e3d3448c25b8ae29d0b165e9c21d63a5a0643e198a3fff02b19c",
+    "exit": 0,
+    "target_devices_after": {
+      "null": {
+        "inode": 8840738,
+        "device": 64788,
+        "mode": 33188,
+        "uid": 0,
+        "gid": 0,
+        "bytes": 0,
+        "mtime_ns": 1794362380228918663,
+        "rdev": 0
+      },
+      "zero": {
+        "exists": false
+      },
+      "random": {
+        "exists": false
+      },
+      "urandom": {
+        "exists": false
+      }
+    },
+    "target_devices_unchanged": true,
+    "actual": {
+      "UID": 101,
+      "NoNewPrivs": true,
+      "effective_permitted_capabilities_zero": true,
+      "devices": [
+        {
+          "path": "/dev/null",
+          "character_device": true,
+          "major": 1,
+          "minor": 3
+        },
+        {
+          "path": "/dev/zero",
+          "character_device": true,
+          "major": 1,
+          "minor": 5
+        },
+        {
+          "path": "/dev/random",
+          "character_device": true,
+          "major": 1,
+          "minor": 8
+        },
+        {
+          "path": "/dev/urandom",
+          "character_device": true,
+          "major": 1,
+          "minor": 9
+        }
+      ],
+      "null_write_read": true,
+      "zero_and_rng_read": true,
+      "target_root_write_denied": true,
+      "external_network_unreachable": true
+    }
+  },
+  "localsearch-private-bus-qualified-5.json": {
+    "state": "qualified",
+    "scope": "Independent exact private PATH wrapper/per-test-style /var/tmp XDG_RUNTIME_DIR; unchanged original helper/config and read-only original compiled cwd, UID101/NNP/no external network/two GIO cycles/own cleanup. Builder kernel/target userspace, NOT cold native LocalSearch functional acceptance.",
+    "wrapper_sha256": "f2cbb33c16752a89c69cf43d8325fd176b3717bdfa4d6066dced4904992389a4",
+    "actual": {
+      "cycles": [
+        {
+          "cycle": 1,
+          "original_helper_private_address_GIO_and_cleanup": true
+        },
+        {
+          "cycle": 2,
+          "original_helper_private_address_GIO_and_cleanup": true
+        }
+      ],
+      "UID": 101,
+      "NoNewPrivs": true,
+      "compiled_cwd": "/sources/phase2/work/localsearch-1/compile",
+      "original_config_sha256": "cd795d925ba414ba22e384413414b1042e8525a551baf2116b92e9855c4c01a4",
+      "readonly_compiled_cwd": true,
+      "functional_LocalSearch_tested": false
+    },
+    "original_source_compile_stage_unchanged": true,
+    "target_devices_unchanged": true,
+    "qualified_private_device_profile": "private-target-device-profile-1.json",
+    "bounded_reopening": "One new exact-path qualification after independent private-device proof. Preserve all SDK2-4 and native1-3 failures/budgets. No native LocalSearch4 dispatched here."
+  },
+  "scope": "Independent private device profile and exact-path private D-Bus proof only. Native LocalSearch4 remains unrun; all prior native/SDK failures/budgets retained.",
+  "native_preflight": {
+    "state": "preflight-only",
+    "fixture": {
+      "state": "complete",
+      "fixture_sha256": "bcd521657ff4861f3ca9391c045d1d6bf03f2bf0f9e8e1907db5fae0e68a01fe",
+      "independent_bus_device_proofs": {
+        "private-target-device-profile-1.json": "8c8e992d211b5e2c0a3254e1fa6660333c7a1441fb42a03145e834c8d3fd2f66",
+        "localsearch-private-bus-qualified-5.json": "3891bbe061f5f75ca25023191288f30bc48ed869d558b6a7f9e1f515704ad36e"
+      }
+    },
+    "probe_bytes": 10780,
+    "credential_bytes": 6527,
+    "host_free": 112057667584,
+    "required_free": 107911053312,
+    "boot_not_started": true
+  }
+}

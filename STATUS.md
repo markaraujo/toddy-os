@@ -20,6 +20,7 @@ Last verified: 2026-11-11T02:45:14.078777+00:00
 
 Verified:
 
+- Independent private target device profile1 passed UID101/NNP/caps0, device I/O and root/network refusal with global placeholders unchanged. Exact readonly-BUILDROOT original LocalSearch helper/private-bus SDK5 passed2real GIO cycles;770source/403compile/133stage files unchanged. Native4 preflight-only passed; no functional LocalSearch acceptance. ADR0220 preserves all parked budgets.
 - Native normal GDM/PAM owner login/session2 seat0 Wayland verified, actual keyboard/pointer GNOME search and Editor open/type/save/quit/relaunch/maximize observed. Native Terminal whoami/cat/sha256sum matched saved toddy-native-editor+LF bytes. Settings Network/Appearance navigation and Dark tile selection observed; NetworkManager inactive and global theme propagation unqualified. Container0/base unchanged; no full B02 acceptance.
 - Actual native GDM virtual DRM/input seat: service start/status/stop0, active seat0 Wayland greeter, unchanged stock schema/base image and terminal container0. Actual1280x800login screenshot reviewed: readable controls and focused username field. No authenticated session, actual input/application/audio/B02/physical acceptance. Greeter warnings retained.
 - B01 accepted graph and native GLib/GIO/introspection/PyGObject/Qt/Node packages reused; B03 accepted.
@@ -191,7 +192,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: Native authenticated GNOME/selected Editor-Terminal-Settings GUI verified; builder and exact compiler/source cache now fully recovered. Next independent private-device qualification for parked LocalSearch bus probe; retain budgets before any native retry. Network/audio/browser/files/global theme/terminal defaults and full B02 pending. Complete all B02, then stop.
+Running: Native authenticated GNOME GUI slice verified. Builder/cache recovered; independent private-device and exact LocalSearch bus proofs passed. Next one bounded native LocalSearch4 extension under ADR0220; previous failures retained. Network/audio/browser/files/global theme/terminal defaults/full B02 pending. Complete all B02, then stop.
 
 Remaining:
 

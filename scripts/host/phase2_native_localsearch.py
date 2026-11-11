@@ -11,7 +11,7 @@ from phase2_native_report import decode
 
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def main():
- parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--preflight-only',action='store_true');parser.add_argument('--attempt',type=int,choices=[1,2,3],default=1);args=parser.parse_args()
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--preflight-only',action='store_true');parser.add_argument('--attempt',type=int,choices=[1,2,3,4],default=1);args=parser.parse_args()
  root=phase2_vm.ROOT;work=phase2_vm.WORK;context=root/'.local/phase2'/('native-localsearch-runtime-'+str(args.attempt))
  assert not context.exists(),'Reconcile actual operation; never replay'
  if not args.preflight_only:
@@ -35,8 +35,22 @@ for base,key in [(Path('/mnt/lfs')/r['source_path'].lstrip('/'),'source_files'),
 print(json.dumps({'state':'complete','fixture_sha256':hashlib.sha256(p.read_bytes()).hexdigest()}))
 """
  accepted=json.loads(subprocess.check_output(phase2_vm.ssh_args()+['python3 -c '+shlex.quote(code)],text=True))
+ if args.attempt==4:
+  proof_code="""from pathlib import Path
+import hashlib,json
+l=Path('/var/log/toddy/phase2')
+result={}
+for name in ['private-target-device-profile-1.json','localsearch-private-bus-qualified-5.json']:
+ p=l/name;r=json.loads(p.read_text());assert r['state']=='qualified';result[name]=hashlib.sha256(p.read_bytes()).hexdigest()
+r=json.loads((l/'native-owner-scratch-restored-1.json').read_text());assert r['state']=='complete' and r['boot_id']==Path('/proc/sys/kernel/random/boot_id').read_text().strip()
+print(json.dumps(result))
+"""
+  accepted['independent_bus_device_proofs']=json.loads(subprocess.check_output(phase2_vm.ssh_args()+['python3 -c '+shlex.quote(proof_code)],text=True))
+  custody=json.loads((root/'.local/phase2/settings-scratch-custody-1/result.json').read_text());assert custody['state']=='complete'
+  archive=root/'.local/phase2/settings-scratch-custody-1/scratch.tar.gz'
+  with archive.open('rb') as stream:assert hashlib.file_digest(stream,'sha256').hexdigest()==custody['archive_sha256']
  body=(root/'scripts/host/phase2-native-localsearch-probe.py').read_text()
- for name,value in [('CONSUMER_SOURCE',(root/'scripts/build/phase2/localsearch-native-consumer.py').read_text()),('ACCEPTED_FIXTURE',accepted)]:
+ for name,value in [('CONSUMER_SOURCE','PRIVATE_BUS_WRAPPER = '+repr((root/'scripts/build/phase2/localsearch-private-dbus.sh').read_text())+'\n'+(root/'scripts/build/phase2/localsearch-native-consumer.py').read_text()),('ACCEPTED_FIXTURE',accepted)]:
   assert body.count(name+' = None')==1;body=body.replace(name+' = None',name+' = '+repr(value))
  probe=body.encode();bootstrap=compressed_payload(probe)
  if args.preflight_only:
@@ -57,7 +71,7 @@ print(json.dumps({'state':'complete','fixture_sha256':hashlib.sha256(p.read_byte
   run(['docker','run','--rm',*common,image,'qemu-img','create','-f','qcow2','-F','qcow2','-b','/vm/phase2/lfs-target.qcow2','/work/target.qcow2'],stdout=log,stderr=subprocess.STDOUT)
  service=(root/'scripts/host/boot-probe.service').read_bytes();assert service.count(b'TimeoutStartSec=180')==1;service=service.replace(b'TimeoutStartSec=180',b'TimeoutStartSec=630')
  payloads={'systemd.extra-unit.toddy-boot-probe.service':service,'systemd.unit-dropin.multi-user.target':(root/'scripts/host/boot-probe.target.conf').read_bytes(),'toddy.boot-probe':bootstrap}
- qemu=boot.qemu_arguments('bios',payloads);qemu[qemu.index('-cpu')+1]='host';qemu[qemu.index('-smp')+1]='4';qemu[qemu.index('-m')+1]='4096'
+ qemu=boot.qemu_arguments('bios',payloads);qemu+=['-serial','file:/work/native-evidence.log'];qemu[qemu.index('-cpu')+1]='host';qemu[qemu.index('-smp')+1]='4';qemu[qemu.index('-m')+1]='4096'
  name='toddy-b02-native-'+run_id[:12];command=['docker','create','--name',name,'--label','toddy.boot-test='+run_id,*common,'--device','/dev/kvm','--group-add',str(Path('/dev/kvm').stat().st_gid),'--memory','5g','--cpus','4',image,*qemu]
  cid=subprocess.check_output(command,text=True).strip();state.update(phase='native-running',container_id=cid,container_name=name,run_id=run_id,command=command);save()
  with (context/'qemu.log').open('x') as log:run(['docker','start',cid],stdout=log,stderr=subprocess.STDOUT)
@@ -65,6 +79,6 @@ print(json.dumps({'state':'complete','fixture_sha256':hashlib.sha256(p.read_byte
   waited=subprocess.run(['docker','wait',cid],capture_output=True,text=True,timeout=660);(context/'docker-wait.json').write_text(json.dumps({'exit':waited.returncode,'stdout':waited.stdout,'stderr':waited.stderr},indent=2)+'\n');waited.check_returncode();assert waited.stdout.strip()=='0'
  finally:state['container_final_state']=boot.stop_owned_container(cid,run_id);state['phase']='native-stopped';save()
  assert phase2_vm.backing_identity(source)==identity;state['backing_unchanged']=True;save()
- report,summary,recovered=decode((context/'serial.log').read_text(errors='replace'));(context/'native-report.json').write_text(json.dumps(report,indent=2)+'\n')
+ report,summary,recovered=decode((context/'native-evidence.log').read_text(errors='strict'));(context/'native-report.json').write_text(json.dumps(report,indent=2)+'\n')
  state.update(phase='native-report-recorded',summary=summary,recovered_protocol_markers=recovered,native_selected_passed=summary['all_selected_exits_zero']);save();assert summary['all_selected_exits_zero'],'Native failure retained, not qualified'
 if __name__=='__main__':main()

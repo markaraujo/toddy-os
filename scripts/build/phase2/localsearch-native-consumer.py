@@ -1,6 +1,6 @@
 """Run registered upstream programs in an isolated native PID/mount/net view."""
 from pathlib import Path
-import ctypes,json,os,re,signal,socket,subprocess,sys,tempfile,time
+import ctypes,hashlib,json,os,re,signal,socket,subprocess,sys,tempfile,time
 
 fixture=json.load(sys.stdin)
 assert os.geteuid()==0 and os.getpid()==1 and os.uname().release=='7.1.8-toddy'
@@ -57,6 +57,11 @@ print(json.dumps({'UID':os.geteuid(),'capabilities':False,'NoNewPrivs':True,'rea
  for test in fixture['selected_tests']:
   current=base/test['name'];current.mkdir();os.chown(current,101,101)
   test_env=dict(env);test_env.update(test['env'])
+  runtime=current/'run';runtime.mkdir(mode=0o700);os.chown(runtime,101,101)
+  binary=current/'bin';binary.mkdir(mode=0o755);os.chown(binary,101,101)
+  wrapper=binary/'dbus-daemon';wrapper.write_text(PRIVATE_BUS_WRAPPER);wrapper.chmod(0o555)
+  assert hashlib.sha256(wrapper.read_bytes()).hexdigest()=='f2cbb33c16752a89c69cf43d8325fd176b3717bdfa4d6066dced4904992389a4'
+  test_env.update(PATH=str(binary)+':/usr/bin:/usr/sbin:/bin',XDG_RUNTIME_DIR=str(runtime))
   # Upstream watchdog/helper selection and Landlock in-tree rules require the
   # same cwd as Meson (BUILDROOT). Keep compiled inputs read-only; redirect
   # only the supported generated TEST_ROOT parameter to writable ext4 data.

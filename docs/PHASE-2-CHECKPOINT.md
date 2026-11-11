@@ -81,18 +81,29 @@ New host helper scripts/host/phase2_restore_settings_scratch.py preserves this
 actual operation; original alias inode numbers changed across tmpfs restoration,
 so compare restored topology/content proof, not obsolete boot-scoped inodes.
 
-EXACT NEXT: independently qualify a private target-userspace device view before
-reopening the exact-path LocalSearch D-Bus probe. Its SDK4 failed only because
-unbooted target /dev/null is a root0644 regular placeholder, not a bound private
-character device. Use a private mount/PID/network namespace with the actual
-/dev/null/zero/random/urandom bindings, UID101/NNP/zero effective+permitted caps,
-read-only source/compiled views and no global device changes. Qualify the device
-profile alone first, then record one bounded source-backed reopening of SDK5;
-retain all old correction budgets. Do not dispatch native LocalSearch4 until
-exact original helper/config/readonly BUILDROOT/GIO private-address proof passes.
-Other incomplete B02 branches remain network/audio/LocalSearch/Nautilus/browser,
-editor refusal/recovery/global theme/terminal defaults. Native real-seat GUI
-path is now available; no headless retry needed.
+Independent device profile1 is QUALIFIED/exit0 on this actual builder boot.
+Null/zero/random/urandom major/minor/read/write, UID101/NNP/caps0, read-only-root
+refusal/external-network refusal passed; global placeholder/absence unchanged.
+First missing-path preflight made no namespace or device change; corrected once.
+Exact-path SDK5 is also QUALIFIED:2real original-helper GIO/private-address/
+cleanup cycles, readonly original BUILDROOT,770source/403compile/133stage unchanged,
+original global devices unchanged. [Evidence](evidence/B02-localsearch-private-devices-bus-qualified.json).
+ADR0220 records one bounded reopening after the independent device qualification;
+all original native1-3/SDK2-4 failure budgets remain, never reset.
+Native4 preflight-only passed: original fixture maps plus both proof receipts,
+current scratch recovery and credential payload accepted, no VM started.
+
+EXACT NEXT: after publishing reviewed inputs, run
+`python3 -u scripts/host/phase2_native_localsearch.py --attempt 4`
+with .local/phase2/localsearch-native-runtime-4-controller.log.
+This new context uses the exact qualified private per-test bus wrapper/runtime
+address, keeps compiled/source readonly and unchanged TEST_ROOT-only config
+adjustment, and writes the original report protocol to dedicated ttyS1.
+Run only9selected original programs/20expected cases, not13accepted portable
+programs. One bounded native extension only; if it fails preserve actual terminal
+report and choose eligible independent work rather than resetting old budgets.
+Original source/compiler/stage and cache custody remain retained. A cold run
+stops the builder; inspect actual state/backing/receipt before any recovery.
 
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated

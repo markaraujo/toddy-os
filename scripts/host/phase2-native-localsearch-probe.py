@@ -1,5 +1,5 @@
 """Native-only LocalSearch original functional and extractor-denial programs."""
-import base64,hashlib,json,os,re,subprocess,zlib
+import base64,hashlib,json,os,re,subprocess,termios,zlib
 from pathlib import Path
 ACCEPTED_FIXTURE = None
 CONSUMER_SOURCE = None
@@ -40,9 +40,15 @@ def main():
   details=json.loads(result.stdout);assert details['all_selected_passed'] and details['programs']==9 and details['cases']==20
   report['details']=details
  raw=json.dumps(report,sort_keys=True).encode();encoded=base64.b64encode(zlib.compress(raw,9)).decode();chunks=[encoded[i:i+1024] for i in range(0,len(encoded),1024)]
- for i,chunk in enumerate(chunks):print('TODDY_B02_RUNTIME_DATA',i,chunk,flush=True)
  success=result.returncode==0
- print('TODDY_B02_RUNTIME_RESULT',json.dumps({'kernel':os.uname().release,'all_selected_exits_zero':success,'report_sha256':hashlib.sha256(raw).hexdigest(),'chunks':len(chunks)}),flush=True)
+ fd=os.open('/dev/ttyS1',os.O_WRONLY|os.O_NOCTTY)
+ attrs=termios.tcgetattr(fd);attrs[0]=attrs[1]=attrs[3]=0
+ attrs[2]|=termios.CLOCAL|termios.CREAD;attrs[4]=attrs[5]=termios.B115200
+ termios.tcsetattr(fd,termios.TCSANOW,attrs)
+ with os.fdopen(fd,'w',buffering=1) as evidence:
+  for i,chunk in enumerate(chunks):print('TODDY_B02_RUNTIME_DATA',i,chunk,file=evidence,flush=True)
+  print('TODDY_B02_RUNTIME_RESULT',json.dumps({'kernel':os.uname().release,'all_selected_exits_zero':success,'report_sha256':hashlib.sha256(raw).hexdigest(),'chunks':len(chunks)}),file=evidence,flush=True)
+  termios.tcdrain(evidence.fileno())
  assert success,'Actual native failure retained'
 if __name__=='__main__':
  try:main()
