@@ -80,8 +80,10 @@ restored NetworkManager persistence after actual reboot, absent-agent/offline us
 actual idle/resource measurements and recovery-menu entry remain due. Use explicit
 before/after boot IDs and durable postconditions; no timeout-as-pass. Do not restart
 builder/cache restore merely for another native runtime pass. Native3 source must
-be quiescent and hash/identity-bound before child overlay. No new controller for
-remaining pass has been implemented/dispatched yet. Then exact minimal runtime
+be quiescent and hash/identity-bound before child overlay. New controller/probe prepared: phase2_native_editor_persist.py, NEW context
+native-desktop-persist-runtime-1. Offline Editor refusal/crash/recovery/save and
+15second idle sample, then durable saved-file/preference/NM marker for later boot.
+Not dispatched yet; next commit harness and run controller. Then exact minimal runtime
 manifest/catalog status and B02 criteria audit. Finish B02 then stop, no later story.
 
 Test selection: native FUSE and portal affected scope passed; old GUI/foundation
