@@ -14,6 +14,16 @@ from run_step import snapshot
 from verify_stage import inspect_stage
 
 PROFILES = {
+    'gstreamer': {
+        'name': 'gstreamer',
+        'version': '1.28.6-1+toddy1',
+        'native_step': 'b02-gstreamer-install',
+        'native_receipt': '547e3080ab4128f7ebae1c3d48cabb9e7bb102e99ca31d59983c751d66de9c29',
+        'record': '76f7bcf0ec9c85faed87fae20cf8a1d12ec726b586599f184da7cba121904c0d',
+        'archive': 'e51ed504763515f4f607255d2f77d588bcf8820e8608f1590153418d4fcef9e0',
+        'work_manifest': '6bf1e1f6a861cd2d320c73caf9e30c9b2d0856c4dee91628008e0b7fb5f6b9b7',
+        'stage_inode': 7418960,
+    },
     'qtbase-probe': {
         'name': 'qtbase',
         'version': '6.11.2-1+toddy1',

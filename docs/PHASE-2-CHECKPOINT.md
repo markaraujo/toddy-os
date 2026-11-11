@@ -359,6 +359,60 @@ UDisks usr copy 9,707,520 B and LVM2 usr copy 7,548,928 B. These are
 candidates only; verify archive/record/retained workstage and installed
 payload before any custody operation. Keep new staging on the worker.
 Then validate real SMB exchange, refusal/recovery and Settings integration.
+
+Read-only custody preflight is saved in
+.local/phase2/samba-custody-preflight-1.json. GStreamer passed archive,
+native receipt, package record, installed payload, retained original
+workstage and mount checks. UDisks did not pass that generic preflight;
+do not dispatch its retirement. No custody operation ran. Extend the
+existing retire_closed_promotion profile with the pinned GStreamer
+identities before any mutation. Published 5d9fc69: all three workflows
+passed and the exact landing page matched SHA256
+2b93434114fc187e2ffe933b3ad39cfcb778a92b427188d25bd2c07049eea6ee.
+
+GStreamer closed promotion custody 1 PID 219685 is COMPLETE. Actual
+15,007,744 B reclaimed; installed root changed zero paths. Original
+workstage/source/compiler/archive/control retained. Guest receipt
+/var/log/toddy/phase2/gstreamer-promotion-custody-1.json. Never replay.
+Target free after custody 17,214,242,816 B.
+
+Client-only stage selection 1 copied 78 ELF files, 20 links and the two
+SDK files into /build/stage-client-1. No native install. CLI version0.
+The C context probe exited1, and diagnostic1 captured the real message
+that automatic interface determination was unavailable. Native config6
+log shows all HAVE_IFACE probes failed at replace.h requiring
+-D__STDC_WANT_LIB_EXT1__=1. Macro probe1 found Waf's temporary source
+already removed and ran no compiler. Macro probe2 reconstructed the
+exact original fragment from config.log, added only the required define,
+compiled and exited0, reporting the private lo interface.
+Failure ledger samba-configure-interface-missing-lib-ext1 retains these
+inputs and results. No manual interface bypass or network acceptance.
+
+Configure 7 PID 220773 exited0 with required CFLAGS macro and actual
+HAVE_IFACE_GETIFADDRS, locking and safety macros. Config6 files retained
+in /build/configure6-retained. Affected Waf stage-network-1 PID 225923
+exited0; new private /build/stage-network-1 retained. The current linker
+closure is .local/phase2/samba-client-closure-inspect-2.json (78ELFs/20links,
+same 26,680,744 B). Client selection2 with private loopback exited0:
+80 copied regular files, version4.24.6, null-context EBADF refusal and
+two actual C context init/free cycles. Output /build/stage-client-2 and
+/build/samba-client-selected-stage-2.json are current.
+Retain earlier stages as historical inputs, not a package candidate.
+
+SMB namespace feasibility probe1 failed EPERM for a nested unprivileged
+user namespace. No Samba server or user mapping was created. Do not
+change global namespace policy or retry unchanged. Private loopback itself
+is already qualified by the source-identity-scoped build profile.
+
+EXACT NEXT: prepare a dedicated root test-server fixture in the isolated
+builder VM using private mount/PID/network namespaces and a synthetic
+read-only chroot. Bind only owned SDK/stage libraries read-only and a
+fresh private fixture writable, with no credentials or guest system data.
+Drop unnecessary capabilities after mounting, preserving only Samba's
+required user/group switching. Use staged smbd/smbpasswd and private
+passdb/config/share for actual SMB exchange with the candidate client.
+No external network route or global service. Preserve all exits and
+cleanup before native client promotion. No guest writer remains.
 Cold native tests require measured headroom and an isolated VM. UDisks policy,
 Settings/Samba and GNOME session remain pending. Stop after accepted B02.
 

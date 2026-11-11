@@ -33,7 +33,9 @@ fi
 
 
 if __name__ == "__main__":
-    assert sys.argv[1:3] == [SOURCE, WORK]
+    arguments = sys.argv[1:]
+    identities = arguments[1:3] if arguments[:1] == ["--loopback"] else arguments[:2]
+    assert identities == [SOURCE, WORK]
     base = Path(__file__).with_name("isolated.sh")
-    result = subprocess.run(["bash", "-s", "--", *sys.argv[1:]], input=profile(base.read_bytes()))
+    result = subprocess.run(["bash", "-s", "--", *arguments], input=profile(base.read_bytes()))
     raise SystemExit(result.returncode)

@@ -1,0 +1,438 @@
+{
+  "jobs": [
+    {
+      "name": "samba-client-select-stage-1",
+      "pid": 219905,
+      "exit": 1,
+      "harness_sha256": "7777d0e865d2c93ed1e2bbc77fc08882dfaf6d2fa2a3ac88b834c4f08aab2c7f",
+      "job_sha256": "2099a3236a05fa46ff80af45e32b368799173d7343fecee316e73105bd98f164",
+      "log_sha256": "9aa18222a43391da6f16d728b2143be61d8cfcb93059622b6ac866f1f43f695f"
+    },
+    {
+      "name": "samba-client-local-diagnostic-1",
+      "pid": 220151,
+      "exit": 0,
+      "harness_sha256": "7777d0e865d2c93ed1e2bbc77fc08882dfaf6d2fa2a3ac88b834c4f08aab2c7f",
+      "job_sha256": "f2109745d88868dd93619b27bbbc25b7b44cfe6e9620584b4ebd46bab4d2b69b",
+      "log_sha256": "7b2e87d91b4689149c9a927eb69b8b004b7d8eb140654d552daaf837c8ed2db7"
+    },
+    {
+      "name": "samba-getifaddrs-macro-probe-1",
+      "pid": 220465,
+      "exit": 1,
+      "harness_sha256": "7777d0e865d2c93ed1e2bbc77fc08882dfaf6d2fa2a3ac88b834c4f08aab2c7f",
+      "job_sha256": "cc7bac46a5f46ccb592fded07c9337530e3ac3bb9d28a6e80aa433a0936470fc",
+      "log_sha256": "277b39ea2f2ff76b519afa8e14185aa313824828f39aa3dae36516f7c554fe18"
+    },
+    {
+      "name": "samba-getifaddrs-macro-probe-2",
+      "pid": 220614,
+      "exit": 0,
+      "harness_sha256": "7777d0e865d2c93ed1e2bbc77fc08882dfaf6d2fa2a3ac88b834c4f08aab2c7f",
+      "job_sha256": "0e453e8e9d6293632ce3000ada470bf1362d61da9f2598211a5c05f6b71682e2",
+      "log_sha256": "7218883c870ea3aadf6dfbc2cd80f55c2845b6c37bc1e248182878adc421cd65"
+    },
+    {
+      "name": "samba-configure-7",
+      "pid": 220773,
+      "exit": 0,
+      "harness_sha256": "7777d0e865d2c93ed1e2bbc77fc08882dfaf6d2fa2a3ac88b834c4f08aab2c7f",
+      "job_sha256": "94224f7bc69a0de457f04797865c5e591feafda83f50dd0144247aa0b2445cb5",
+      "log_sha256": "6d91f63af8b1cf001798dd356f0cb001b4c421b1dba82e5bde8ae4983ea0513c"
+    },
+    {
+      "name": "samba-stage-network-1",
+      "pid": 225923,
+      "exit": 0,
+      "harness_sha256": "7777d0e865d2c93ed1e2bbc77fc08882dfaf6d2fa2a3ac88b834c4f08aab2c7f",
+      "job_sha256": "d9a566144aa7e6d2ebd980fc79fb78d718fe8b3cda2be035d9ee6c5f4e150005",
+      "log_sha256": "296864401b5cae4a5216339016d9989bba2c6b26a09c822fdf67b696daf01d81"
+    },
+    {
+      "name": "samba-client-select-stage-2",
+      "pid": 234606,
+      "exit": 0,
+      "harness_sha256": "7777d0e865d2c93ed1e2bbc77fc08882dfaf6d2fa2a3ac88b834c4f08aab2c7f",
+      "job_sha256": "206f77867bcd45e19e08367de2ed959ee68764895df377d9507b730c536762e4",
+      "log_sha256": "b3f718eacf50355ba3c263caa4fc98ad3dc28c6f25e391ccff11775d5c79666a"
+    },
+    {
+      "name": "samba-smb-namespace-1",
+      "pid": 234841,
+      "exit": 1,
+      "harness_sha256": "7777d0e865d2c93ed1e2bbc77fc08882dfaf6d2fa2a3ac88b834c4f08aab2c7f",
+      "job_sha256": "f8e144379ffa50bf666b41522b13187fd5021c1cbad5bd5f1b9bfc3523680852",
+      "log_sha256": "b392d14f1d34237d9798b126d63d8b9a676d48a29247cde37a51c4015cfa2be4"
+    }
+  ],
+  "selected_stage": {
+    "files": [
+      {
+        "path": "usr/bin/smbclient",
+        "sha256": "3d354ed1659eec3f1a796068dee0f5f54c9bb27b721483493c84fadb12635703"
+      },
+      {
+        "path": "usr/include/samba-4.0/libsmbclient.h",
+        "sha256": "8e30ac1a623dc67678af73546d7a10dca73bf490c35a9f94dd4b2c4967971b3e"
+      },
+      {
+        "path": "usr/lib/libdcerpc-binding.so.0.0.1",
+        "sha256": "7cccbcac5ae84538b8ab447c261248ccf4124d0fb753c8f995160ca92a95b39f"
+      },
+      {
+        "path": "usr/lib/libndr-krb5pac.so.0.0.1",
+        "sha256": "babce8e780f67cb3086ee71780b86fe32803a7eb41f7b66eb8f08d685bbf71be"
+      },
+      {
+        "path": "usr/lib/libndr-nbt.so.0.0.1",
+        "sha256": "c22b319efc7e777ca07349d4a195c6076151986329cb18248914c56301a18784"
+      },
+      {
+        "path": "usr/lib/libndr-standard.so.0.0.1",
+        "sha256": "0f8506f1abb318746cbd9c84adb6d461a7a88d0fc85356fd378108d8212960c5"
+      },
+      {
+        "path": "usr/lib/libndr.so.6.1.0",
+        "sha256": "1c7a6f12b4dfe1d59240b49ed2a309d253d50622065a29bd4deebc657795493a"
+      },
+      {
+        "path": "usr/lib/libsamba-errors.so.1.0.0",
+        "sha256": "f1162b2a08b1a45b9698427ea3132b58b6246a37fce42142b7d54d6c0d6f61ce"
+      },
+      {
+        "path": "usr/lib/libsamba-util.so.0.0.1",
+        "sha256": "097dae02d421fb4826c7ba33cf23f94d14e0a9c5c13d9e889a2c4bfbdc4fa2f3"
+      },
+      {
+        "path": "usr/lib/libsmbclient.so.0.8.1",
+        "sha256": "e98f0a5e029c42a05f9d658c8439c89a2a65a9d1933cadf0789187b303b1ae7b"
+      },
+      {
+        "path": "usr/lib/libsmbconf.so.0.0.1",
+        "sha256": "82a3b0af953a616cdbe2d6be5a44d82fed7454c4bcc71fd05900def254caa5f3"
+      },
+      {
+        "path": "usr/lib/libwbclient.so.0.16",
+        "sha256": "da0cb5018ffa08e82cd8b7c50888ec030ffb9c1b7b5ead1034e035d9e405acea"
+      },
+      {
+        "path": "usr/lib/pkgconfig/smbclient.pc",
+        "sha256": "e7689fa72fb5de7324c9df55977fb313fd7c33c9b7e467718d78c926ca79530f"
+      },
+      {
+        "path": "usr/lib/samba/libCHARSET3-private-samba.so",
+        "sha256": "528ed48d0d7d9a52f7d83296582d57287c76c2b6680dc5f6ee249d1366b09870"
+      },
+      {
+        "path": "usr/lib/samba/libaddns-private-samba.so",
+        "sha256": "5e642442763b5315424727d998d623646cd98e12b4070e0daa882beb81c5803d"
+      },
+      {
+        "path": "usr/lib/samba/libasn1util-private-samba.so",
+        "sha256": "fb286ff5bf9d4e240e1c463181f14e20a6c5e3f0e57609c974872327c7ba09a6"
+      },
+      {
+        "path": "usr/lib/samba/libauthkrb5-private-samba.so",
+        "sha256": "4d8baf25b7ab7423fb4a12cd7fd36c10a2a06dbf24378a77604cb13edf214c48"
+      },
+      {
+        "path": "usr/lib/samba/libcli-cldap-private-samba.so",
+        "sha256": "50b778d229319aa7fb34131b80aec5cd5689a24bea3f22ff51acf16b77f50179"
+      },
+      {
+        "path": "usr/lib/samba/libcli-ldap-common-private-samba.so",
+        "sha256": "7691593a6cdb4f05836d7af2e63fa0f79929c1d2dbbda8b1e7683904afcf1fcd"
+      },
+      {
+        "path": "usr/lib/samba/libcli-ldap-private-samba.so",
+        "sha256": "05fe15ea92ac02f35c2ceac5aaf0cc77e15e4808e233e4fa78e6854ccfd96ba5"
+      },
+      {
+        "path": "usr/lib/samba/libcli-nbt-private-samba.so",
+        "sha256": "a94a2df100aa9cd033c446bdf377052b7f3f7b6954274abdfa7df06ee1ab3651"
+      },
+      {
+        "path": "usr/lib/samba/libcli-smb-common-private-samba.so",
+        "sha256": "e8e45567a82735425cadbc1c9aea6f1addc8263e62d4ebe27243fc8a5e3a4bf7"
+      },
+      {
+        "path": "usr/lib/samba/libcliauth-private-samba.so",
+        "sha256": "cc49c7d15e568127a1ad582adf84050200e90c2fc5d61f85795ee177720ba393"
+      },
+      {
+        "path": "usr/lib/samba/libclidns-private-samba.so",
+        "sha256": "013fb27363ac5b2b626d89a9486d6b215d3a82315fde9da611efe032c899fa87"
+      },
+      {
+        "path": "usr/lib/samba/libcluster-private-samba.so",
+        "sha256": "a583b1697ab2be0008c22cf56c00b3c45f3d4d3bc8aab43b4311ab66c92995ab"
+      },
+      {
+        "path": "usr/lib/samba/libcmdline-private-samba.so",
+        "sha256": "3b4ac22edfa718285279137c224940c3a4d67bbe994f7b4ce056403c34a055fb"
+      },
+      {
+        "path": "usr/lib/samba/libcommon-auth-private-samba.so",
+        "sha256": "15f4c622deccbe04daab5a8b67425a56529a68e6dd406a870faa42d68a1ec34d"
+      },
+      {
+        "path": "usr/lib/samba/libdbwrap-private-samba.so",
+        "sha256": "811af6651262f392f9a381aefc81e36b32c373a9c6b2e1abef7a51e9c2ffe8b7"
+      },
+      {
+        "path": "usr/lib/samba/libdcerpc-samba-private-samba.so",
+        "sha256": "5944b1decbecf1f5d1727aa28a036dcb7e10436bf388f233a6ba44e7f17b9aca"
+      },
+      {
+        "path": "usr/lib/samba/libflag-mapping-private-samba.so",
+        "sha256": "2b39ad4ab623e52c2cc46ec4f880473626bae54dcc78e42808b1ce3a90448335"
+      },
+      {
+        "path": "usr/lib/samba/libgenrand-private-samba.so",
+        "sha256": "ad3dda6e5081c63b08598e0efc91bdca5d11aa93ef4c012bda849f655f76ffd7"
+      },
+      {
+        "path": "usr/lib/samba/libgensec-private-samba.so",
+        "sha256": "cae68ab21337a10d803ec9a53cb81c687b892ed8fd7f3cbcc61deb03909c91d2"
+      },
+      {
+        "path": "usr/lib/samba/libgse-private-samba.so",
+        "sha256": "9aa9bbc90c82c6d017fcce9c46103b2bde244653cd7b2a652e2e781c3db20262"
+      },
+      {
+        "path": "usr/lib/samba/libinterfaces-private-samba.so",
+        "sha256": "0987ea7704096e289df61e771f2b77d0d07cf95b9f7f4a39091dc602542710d7"
+      },
+      {
+        "path": "usr/lib/samba/libiov-buf-private-samba.so",
+        "sha256": "99628dda0753c89c85d58add12e13cf549acd8c478a6886c2feaec754835fa9d"
+      },
+      {
+        "path": "usr/lib/samba/libkrb5samba-private-samba.so",
+        "sha256": "8c4dd6da8a11326d000ba66d23bcf9c3fc9263b426fbdfdedbd832bff3b288f7"
+      },
+      {
+        "path": "usr/lib/samba/libldb-private-samba.so",
+        "sha256": "1f9b385d037b712939d73dab4e9aa1852ca45414ecd10fbb5487c0ea1da2440f"
+      },
+      {
+        "path": "usr/lib/samba/libldbsamba-private-samba.so",
+        "sha256": "d73f62a586a00f263641c6244175764a06ad2150177887971ec7b136c36fd920"
+      },
+      {
+        "path": "usr/lib/samba/liblibcli-lsa3-private-samba.so",
+        "sha256": "502098af6345906665acbedd93506081c23c5ec51418b2f9ddc03f2b55daa834"
+      },
+      {
+        "path": "usr/lib/samba/liblibsmb-private-samba.so",
+        "sha256": "429b663bd1b1a1bdd4bf730342e6c670b75526d1686e5b9654d27f51ec21e171"
+      },
+      {
+        "path": "usr/lib/samba/libmessages-dgm-private-samba.so",
+        "sha256": "cdf2a837c693926ba31c5c605955bafc6c1410a5dda0b15d1c51629bf4b2e46e"
+      },
+      {
+        "path": "usr/lib/samba/libmessages-util-private-samba.so",
+        "sha256": "d1cc942495a572414189790d3a124e5fd5a5bcc3d3bf63cfc70f6f05a32a22e3"
+      },
+      {
+        "path": "usr/lib/samba/libmsghdr-private-samba.so",
+        "sha256": "6c8e3aeadb5b9aa28f92440574afb1f0f02a51e06ebc05d4f7bd760217683c43"
+      },
+      {
+        "path": "usr/lib/samba/libmsrpc3-private-samba.so",
+        "sha256": "f44f1cb2ddf85bae60c1a80c0184352d6bb5447ff18b8b37f8f88bc70b8917ae"
+      },
+      {
+        "path": "usr/lib/samba/libndr-samba-private-samba.so",
+        "sha256": "563909a81b2efd3e67d67d9f8fab28dcad489f310ee7b954a153309579251e1a"
+      },
+      {
+        "path": "usr/lib/samba/libndr-samba4-private-samba.so",
+        "sha256": "3c84812a0d27c2722eff9c6e16472ad6019ae7c7327678eb9eaf9987317a2dda"
+      },
+      {
+        "path": "usr/lib/samba/libnetif-private-samba.so",
+        "sha256": "5a417b1dc342b84723ee2103973defea2ac048019114fa3b7486f6d686c0d134"
+      },
+      {
+        "path": "usr/lib/samba/libngtcp2-crypto-gnutls-private-samba.so",
+        "sha256": "d23173db1497b95bf9f832e9d78db7f5ff75ab15911d8c9d31df19dcadd895a0"
+      },
+      {
+        "path": "usr/lib/samba/libngtcp2-private-samba.so",
+        "sha256": "6e4f88345f102788ed7261fd6e614ec3d551383d11e12251f5c916b1b8c11d6c"
+      },
+      {
+        "path": "usr/lib/samba/libnpa-tstream-private-samba.so",
+        "sha256": "36bc11909b6d9f0b46b809d53219234e3f76cccdef8a739f9779c9225c00bed5"
+      },
+      {
+        "path": "usr/lib/samba/libquic-private-samba.so",
+        "sha256": "a8fe9c153dd2baddcbd895e73ab3f92d3578fbc14a10c384607e7c9a80a68e49"
+      },
+      {
+        "path": "usr/lib/samba/libreplace-private-samba.so",
+        "sha256": "cc6b16030550f093003f32e7e4cce9fb3f58d9117b9d58f7dc86e4e9d24ee7f1"
+      },
+      {
+        "path": "usr/lib/samba/libsamba-cluster-support-private-samba.so",
+        "sha256": "2083e39cbe9dca1f83736569ded1e1b0ca8406b48373a82f85e075c0d0568723"
+      },
+      {
+        "path": "usr/lib/samba/libsamba-credentials-private-samba.so",
+        "sha256": "4d7215a73434ac7d3080c22efda094f40d32d07802061f4245f7caaff1154440"
+      },
+      {
+        "path": "usr/lib/samba/libsamba-debug-private-samba.so",
+        "sha256": "e6101c663ebab8aba1e1f8ddd2b9672f325ac9c667a4902e474c2894cfbc4e01"
+      },
+      {
+        "path": "usr/lib/samba/libsamba-hostconfig-private-samba.so",
+        "sha256": "afee3a9e0b04122c99dfd982718fb6b96aba6752d5642069ecbbc909c71ad853"
+      },
+      {
+        "path": "usr/lib/samba/libsamba-modules-private-samba.so",
+        "sha256": "cd341de5a79a9018164c0c9febad7a3e0559ec8b08cb3abb6b84a599c79ad947"
+      },
+      {
+        "path": "usr/lib/samba/libsamba-security-private-samba.so",
+        "sha256": "7e9e8cd1ae8dfd00bc2b6424a441b55eb5926ab34fb39df14bbf2f9a1c337436"
+      },
+      {
+        "path": "usr/lib/samba/libsamba-security-trusts-private-samba.so",
+        "sha256": "420c18871a90462c0c426aea7f5c0de8967c77902ac2119ce30e99f5a49565ee"
+      },
+      {
+        "path": "usr/lib/samba/libsamba-sockets-private-samba.so",
+        "sha256": "267797e795426d39aaf63f5a0502ab829bc5d991ebae4868fa257302dad41a70"
+      },
+      {
+        "path": "usr/lib/samba/libsamba3-util-private-samba.so",
+        "sha256": "214bad238131fd896ae720cb1c62ad865a5aa33c970236cb0087e284b92eb20f"
+      },
+      {
+        "path": "usr/lib/samba/libsamdb-common-private-samba.so",
+        "sha256": "4781837422877526cc5a9d2cba2fa2d3e08f71da7a5ee6d290b4bf1ed1c062ac"
+      },
+      {
+        "path": "usr/lib/samba/libsamdb-private-samba.so",
+        "sha256": "7c8fa317ae9539d63606379e829474042ce58fdc581c1844aefce7e3a00bc953"
+      },
+      {
+        "path": "usr/lib/samba/libsecrets3-private-samba.so",
+        "sha256": "4bb06dcc0cd068d21f5e59119ba55ff36b739b96e4e1f819e26b362bc48aab84"
+      },
+      {
+        "path": "usr/lib/samba/libserver-id-db-private-samba.so",
+        "sha256": "0a0deeb39680fc28cf4713e86ba51c4ca7249903d5dc32b83671232964c3fc7d"
+      },
+      {
+        "path": "usr/lib/samba/libserver-role-private-samba.so",
+        "sha256": "6fa6934a67aed8f885d075b0abb14a249c2dec2ea43f875ce571e9d7805639a1"
+      },
+      {
+        "path": "usr/lib/samba/libsmbd-shim-private-samba.so",
+        "sha256": "adce18bdc86d37cc48018a283c0c7f0eb22786e480f6312a9d671c8b34ab419f"
+      },
+      {
+        "path": "usr/lib/samba/libsocket-blocking-private-samba.so",
+        "sha256": "6498b8334918887972d450c7b6d80d94fc33109f2477a2dc3c22a58b90f1572d"
+      },
+      {
+        "path": "usr/lib/samba/libstable-sort-private-samba.so",
+        "sha256": "a3ac44912c0a2f5b4d77f3a46b6689b502af10b911c3b4584d2a5b93b521ca6f"
+      },
+      {
+        "path": "usr/lib/samba/libsys-rw-private-samba.so",
+        "sha256": "47b110a12a9d21c7641a10f3e6cdbc43d4376f31846fce01845831fe36ac65fd"
+      },
+      {
+        "path": "usr/lib/samba/libtalloc-private-samba.so",
+        "sha256": "13c30ef07f0eb64aae60c4e9c271f87910c9394fe0431e28704066197b5b8546"
+      },
+      {
+        "path": "usr/lib/samba/libtalloc-report-printf-private-samba.so",
+        "sha256": "cba3d4f26a3aadfe33f75ce2873a6f2e6df809379eb57d7a4d0b8b2f57a49bb9"
+      },
+      {
+        "path": "usr/lib/samba/libtdb-private-samba.so",
+        "sha256": "720eede2fd3a56460066ab400f35715ee60e7beab1ff931af92ba8a863696cb5"
+      },
+      {
+        "path": "usr/lib/samba/libtdb-wrap-private-samba.so",
+        "sha256": "2f8713dce087dda428c868dd70d3341119be2a6f189c20a782ac3c2d7b48efef"
+      },
+      {
+        "path": "usr/lib/samba/libtevent-private-samba.so",
+        "sha256": "8955e6e79e404cb91558102bf59d67a9d086e68660a7a08e454bd936de0f9647"
+      },
+      {
+        "path": "usr/lib/samba/libtevent-util-private-samba.so",
+        "sha256": "b5bd09dd75dffb3f007a0f6fcf1d4686a170f119e3770bfa955084ab36b27f53"
+      },
+      {
+        "path": "usr/lib/samba/libtime-basic-private-samba.so",
+        "sha256": "946b24647ed229b6963aa36b3f84c443e64565309900ebe6a034e7c94b6d6e47"
+      },
+      {
+        "path": "usr/lib/samba/libutil-reg-private-samba.so",
+        "sha256": "3f536764bbbdba4e080841f2adb3b3ecbf08fbc048a316e19fa1750aa6c41260"
+      },
+      {
+        "path": "usr/lib/samba/libutil-setid-private-samba.so",
+        "sha256": "81a9b8eba4da074aa753b892854bbb5b1a312d32b759c31cf33c4276473a581c"
+      },
+      {
+        "path": "usr/lib/samba/libutil-tdb-private-samba.so",
+        "sha256": "710eb76d8daf2ec4204abb8326bcc50727d329f212d3c0652e4e0397331cbc52"
+      }
+    ],
+    "links": [
+      "usr/lib/libdcerpc-binding.so",
+      "usr/lib/libdcerpc-binding.so.0",
+      "usr/lib/libndr-krb5pac.so",
+      "usr/lib/libndr-krb5pac.so.0",
+      "usr/lib/libndr-nbt.so",
+      "usr/lib/libndr-nbt.so.0",
+      "usr/lib/libndr-standard.so",
+      "usr/lib/libndr-standard.so.0",
+      "usr/lib/libndr.so",
+      "usr/lib/libndr.so.6",
+      "usr/lib/libsamba-errors.so",
+      "usr/lib/libsamba-errors.so.1",
+      "usr/lib/libsamba-util.so",
+      "usr/lib/libsamba-util.so.0",
+      "usr/lib/libsmbclient.so",
+      "usr/lib/libsmbclient.so.0",
+      "usr/lib/libsmbconf.so",
+      "usr/lib/libsmbconf.so.0",
+      "usr/lib/libwbclient.so",
+      "usr/lib/libwbclient.so.0"
+    ],
+    "regular_file_count": 80,
+    "cli_version": "Version 4.24.6",
+    "consumer": "Samba shared SDK version, null-context refusal and two context lifecycles passed\n",
+    "consumer_stderr": "",
+    "scope": "Unprivileged private client-only staging and local API lifecycle. No SMB exchange, native installation, GUI or physical acceptance."
+  },
+  "generated_config_header_sha256": "9ad2630ec577b7e6e2d2a64e355bf46a53f831dc7b8924e41e253903bfde444c",
+  "config_log_sha256": "1079ca4dbc37b14fc0306c6127107e3b755a6a710e083b300d30261a7be37cb8",
+  "exact_corrected_interface_probe": {
+    "fragment_sha256": "d76e819e6350fce41cf55bfe51ce75277aef3d5fcc9151d95084cf5985e2dac5",
+    "returncode": 0,
+    "stdout": "lo         AF=17 \n",
+    "stderr": ""
+  },
+  "failed_local_probe": {
+    "returncode": 1,
+    "stdout": "ERROR: Could not determine network interfaces, you must use a interfaces config line\n",
+    "stderr": ""
+  },
+  "failed_namespace_feasibility": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "unshare: unshare failed: Operation not permitted\n"
+  },
+  "scope": "Native isolated SDK and local lifecycle only. Actual SMB exchange and client installation remain pending. Physical machine untested."
+}

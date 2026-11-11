@@ -1,0 +1,15 @@
+{
+  "state": "complete",
+  "stage": "/mnt/lfs/sources/stage/phase2-gstreamer",
+  "stage_inode": 7418960,
+  "archive_sha256": "e51ed504763515f4f607255d2f77d588bcf8820e8608f1590153418d4fcef9e0",
+  "record_sha256": "76f7bcf0ec9c85faed87fae20cf8a1d12ec726b586599f184da7cba121904c0d",
+  "workstage_manifest_sha256": "6bf1e1f6a861cd2d320c73caf9e30c9b2d0856c4dee91628008e0b7fb5f6b9b7",
+  "before_free_bytes": 17199235072,
+  "scope": "Closed promotion usr copy only. Installed root, source, compiler, original workstage, archive and control retained.",
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 17214242816,
+  "recovery": "Verify the retained native archive and record, then extract into a new stage. Never replay custody.",
+  "reclaimed_bytes": 15007744,
+  "receipt_sha256": "13cc90ea9370e0f17435e1c43086605fee2c28152807c0f1ad8bcb48af94dc76"
+}

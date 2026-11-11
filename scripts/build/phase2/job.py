@@ -35,7 +35,7 @@ with prefix.with_suffix('.dispatch.lock').open('a') as lock:
         command[1]='/opt/toddy-build/scripts/build/phase2/cups-isolated.sh'
     if args.profile=='samba-build-alias':
         from samba_isolation import SOURCE, WORK
-        assert (args.input, args.work) == (SOURCE, WORK) and not args.loopback
+        assert (args.input, args.work) == (SOURCE, WORK)
         command[1]='/opt/toddy-build/scripts/build/phase2/samba-isolated.sh'
     if args.loopback:
         command.append('--loopback')
