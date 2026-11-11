@@ -1,0 +1,62 @@
+{
+  "scope": "Installed provisional navy dconf defaults and actual unprivileged writable preferences/persistence/reset, no native visual or whole B02 acceptance.",
+  "original_failure_preserved": true,
+  "steps": {
+    "b02-desktop-defaults-install.failed": {
+      "recipe_exit": 0,
+      "postcheck_exit": 1,
+      "changed_paths": 15,
+      "recipe_sha256": "8d43ea3c5df26cbd876bed24d5acd69997c946f2a93769ee53017abc4d64b814",
+      "postcheck_sha256": "a08acc57961e2d0121660563446a59cfd8390099d4553c7d08fb91f683180daa",
+      "log_sha256": "52a6f7fe87600bf8a79fca4741db6c45cc5ee2066ed1eb8c10720b5d23f9e078"
+    },
+    "b02-desktop-defaults-verify-2.success": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 1,
+      "recipe_sha256": "aea49165a5e0a0041b015cc32fc2815d44ccc5b524ab761921653731d37a13f2",
+      "postcheck_sha256": "570f5778a5426c709d2309a7d667af9259c6f65bb39665d5f6e839d7ce8a17cc",
+      "log_sha256": "79a16aa05c67744c66ef8c1a4e9b117a0fc33a0d59ff0ffd8082020d056d6260"
+    }
+  },
+  "package": {
+    "version": "0.2.0-1+toddy1",
+    "archive_sha256": "24b35fcc03fe9ad338109181552e55b07fb250a99942157f8945facecf125907",
+    "payload_entries": 17
+  },
+  "installed": {
+    "scope": "Owned provisional dconf desktop/Terminal defaults. Existing user database, artwork and schema cache unchanged; native behavior/visual verification separate.",
+    "database_sha256": "b84d54c6f63dc72e0ab8b470bb88de4510e6bde90a7f6af5f628385c12902634",
+    "conffiles": [
+      "/etc/dconf/profile/user",
+      "/etc/dconf/db/toddy-desktop.d/00-toddy-desktop"
+    ],
+    "favorites": [
+      "org.gnome.Nautilus.desktop",
+      "firefox.desktop",
+      "org.gnome.Terminal.desktop",
+      "org.gnome.TextEditor.desktop",
+      "org.gnome.Settings.desktop"
+    ]
+  },
+  "consumer": {
+    "scope": "Actual installed dconf UID101/NNP typed settings/default values, writable preference override across two buses/reset. Native graphical rendering still pending.",
+    "cycles": [
+      {
+        "cycle": "write",
+        "defaults_or_persisted_user_override_verified": true,
+        "writable_without_locks": true,
+        "system_font_preserved": true
+      },
+      {
+        "cycle": "read",
+        "defaults_or_persisted_user_override_verified": true,
+        "writable_without_locks": true,
+        "system_font_preserved": true
+      }
+    ]
+  },
+  "schema_cache_sha256": "a352c74e50964dca946948f2e80e9345a175615c938c65295f1bb44623133e1b",
+  "no_install_replay": true,
+  "verify_side_effect": "Only /var/cache/apt/pkgcache.bin changed during apt-get check; installed package payload unchanged."
+}

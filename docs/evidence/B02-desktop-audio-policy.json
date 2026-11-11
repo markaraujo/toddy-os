@@ -1,0 +1,59 @@
+{
+  "scope": "Owned PipeWire/Pulse compatibility/WirePlumber session enablement, no live or physical audio acceptance.",
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "changed_paths": 20,
+  "archive_sha256": "fda4379b180bfc555817e74d1a4087a0e7a600f2bd96da0ea0218f4e0c952065",
+  "payload_entries": 21,
+  "policy": {
+    "scope": "Standard owned session-unit enablement only; runtime audio/UI and physical hardware unproven.",
+    "providers": {
+      "pipewire": {
+        "version": "1.6.8-1+toddy1",
+        "archive_sha256": "6fcccccb584101ebf0899dcabbc64ff8551f8cc4e58356bc8878febc6a17c56a"
+      },
+      "wireplumber": {
+        "version": "0.5.15-1+toddy1",
+        "archive_sha256": "da61061fd3dde030810d4d5962f6c533f2e73cd16c9e3685997dedf964dc40d8"
+      }
+    },
+    "links": {
+      "default.target.wants/pipewire.service": "pipewire.service",
+      "default.target.wants/pipewire-pulse.service": "pipewire-pulse.service",
+      "sockets.target.wants/pipewire.socket": "pipewire.socket",
+      "sockets.target.wants/pipewire-pulse.socket": "pipewire-pulse.socket",
+      "pipewire.service.wants/wireplumber.service": "wireplumber.service",
+      "pipewire-session-manager.service": "wireplumber.service"
+    }
+  },
+  "consumer": {
+    "scope": "Native systemd global-user enabled state, exact unit bytes and owned links. No live audio/physical hardware acceptance.",
+    "units": [
+      {
+        "unit": "pipewire.service",
+        "exit": 0,
+        "state": "enabled"
+      },
+      {
+        "unit": "pipewire.socket",
+        "exit": 0,
+        "state": "enabled"
+      },
+      {
+        "unit": "pipewire-pulse.service",
+        "exit": 0,
+        "state": "enabled"
+      },
+      {
+        "unit": "pipewire-pulse.socket",
+        "exit": 0,
+        "state": "enabled"
+      },
+      {
+        "unit": "wireplumber.service",
+        "exit": 0,
+        "state": "enabled"
+      }
+    ]
+  }
+}

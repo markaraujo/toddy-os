@@ -472,7 +472,9 @@
         "docs/evidence/B02-firefox-security-stage.json",
         "docs/evidence/B02-firefox-install.json",
         "docs/evidence/B02-desktop-graphical-boot-policy.json",
-        "docs/evidence/B02-browser-native.json"
+        "docs/evidence/B02-browser-native.json",
+        "docs/evidence/B02-desktop-defaults-install.json",
+        "docs/evidence/B02-desktop-audio-policy.json"
       ]
     },
     {

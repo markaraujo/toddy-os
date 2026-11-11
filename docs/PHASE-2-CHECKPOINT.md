@@ -44,14 +44,18 @@ actual power-on GNOME is still unproven. Do not replay successful migration.
 
 ## Exact next action
 
-Provisional navy defaults generator/install/check are implemented in
-scripts/build/phase2/desktop_defaults.py and desktop-defaults-*.sh. They stage a
-new dconf system database/profile only after proving those paths absent; existing
-IBus profile, user databases, schema cache and brand masters remain intact. Fonts,
-custom Terminal profiles and every explicit user value take priority. No locks.
-Next: syntax/repository checks, metadata-only sync, guarded native runner
-b02-desktop-defaults-install, then actual native graphical/Terminal/audio pass.
-No native defaults transaction dispatched yet. No browser test replay required.
+Defaults verify2 recipe/post0/0 passed; original install0/post1 retained, no
+reinstall. Only generated APT cache changed in verification; owned bytes unchanged.
+Actual UID101/NNP navy/defaults, writable custom override persisted new bus/reset0.
+Audio policy install/post0/0,6owned standard user enablement links, exact upstream
+unit/hardening bytes unchanged. Native visual/virtual sound still pending.
+Next commit reviewed native desktop integration controller/probe and run ONCE
+`python3 scripts/host/phase2_native_desktop_integration.py` with log
+`.local/phase2/native-desktop-integration-controller-1.log`; context
+`.local/phase2/native-desktop-integration-runtime-1` MUST be absent before first
+dispatch. Fresh disposable overlay, ordinary GDM/PAM owner; virtual HDA/WAV output,
+actual user services/sink/playback/mute/unmute and native Terminal command/text/
+colors/narrow window. No browser replay. Keep one guest writer.
 
 Test selection: changed input/syntax plus make check381, readonly native report
 reconciliation and real QMP scanouts. No foundation suite repeated.

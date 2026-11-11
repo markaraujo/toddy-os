@@ -24,7 +24,7 @@ def text_keys(char):
     if char in string.ascii_lowercase+string.digits:return [char]
     if char in string.ascii_uppercase:return ['shift',char.lower()]
     plain={'-':'minus',' ':'spc','.':'dot','/':'slash','=':'equal'}
-    shifted={':':'semicolon','_':'minus','?':'slash','&':'7','+':'equal'}
+    shifted={':':'semicolon','_':'minus','?':'slash','&':'7','+':'equal','>':'dot'}
     if char in plain:return [plain[char]]
     if char in shifted:return ['shift',shifted[char]]
     raise ValueError('Unsupported native input character')
@@ -114,7 +114,7 @@ def run(context, stop):
                     reply = {'pointer_sent':True}
                 elif action == 'mark':
                     phase=request['phase']
-                    assert phase in ['browser-open','input-verified','navigation-verified','restart-verified','tls-verified','offline-verified','stop-verified','responsive-verified']
+                    assert phase in ['browser-open','input-verified','navigation-verified','restart-verified','tls-verified','offline-verified','stop-verified','responsive-verified','terminal-verified','audio-verified','navy-verified']
                     transport.write(('PHASE '+phase+'\n').encode())
                     reply={'phase_recorded':phase}
                 elif action == 'done':
