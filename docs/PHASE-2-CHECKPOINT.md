@@ -47,22 +47,24 @@ actual power-on GNOME later passed in B02-browser-native.json. Do not replay suc
 
 ## Exact next action
 
-FUSE/portal source versions and SHA256 are pinned; no extraction/native install
-yet. Actual qualified kernel duplicate stage restored from native archive and
-compared12027owned entries, installed bytes unchanged; retired only duplicate
-stage children, scratch free377257984B (was238026752B). Receipt
-/var/log/toddy/phase2/kernel-stage-custody-for-fuse-1.json COMPLETE0. Never replay.
-`kernel_fuse_build.py` is implemented/synced: UID101/NNP private COW incremental
-Linux7.1.8 build, FUSE=m plus mandatory FS_IOMAP only, passthrough/io_uring/CUSE/
-virtiofs disabled, Landlock preserved; verifies original20modules and all pristine
-source entries. Existing accepted kernel package/archive and foundation retained.
-Next dispatch ONCE through existing job.py under name kernel-fuse-build-1,
-input /mnt/lfs/sources/phase2/inputs/linux-landlock-7.1.8,
-work /mnt/lfs/sources/phase2/work/kernel-landlock-1, command python3 -c loaded exact
-kernel_fuse_build.py. Inspect /var/log/toddy/phase2/kernel-fuse-build-1.{job.json,log,exit}
-and work/kernel-fuse-build-1/{progress,compile-result,verified-result}.json before
-any replay. No new kernel job dispatched at this checkpoint. Actual module/kernel
-boot and native FUSE/portal/permission/appearance checks remain required.
+FUSE kernel corrected build2 COMPLETE0/15.003s, minimum1091739648Bfree,
+config ONLY FUSE_FS n->m,20old module hashes/93715source entries unchanged. Original
+build1 reserve-stop retained. Online same-file1->2GiB growth COMPLETE/allocation
+reconciled/parent chain/guest UUID/config retained. Do not replay growth/build.
+Kernel candidate SHA0482366cc51727f76af11611275b7124bcd9aadbd76d231ca6fd44d22cb0dc77,
+fuse.ko SHAce3b8f53643839d98fec304561376bf3c6ae873c519468a57b15f3e723111ae2.
+Fuse3.18.2 source prepared/85targets built. First own test selection wrongly
+included real-mount signal driver; preserve failed log. Stage2 COMPLETE0 reuses
+compiler outputs,2non-mount upstream drivers and helper version/refusal pass.
+Native mount/signals/root helper/denial/recovery tests remain pending, not skipped.
+No native FUSE/kernel package installed. Host/guest source caches persist.
+Next: inspect terminal kernel-fuse-boot-prepare-1 job/controller10002/result and
+then commit reviewed inputs and run ONCE `python3 scripts/host/phase2_kernel_fuse_boot.py`.
+Context .local/phase2/native-kernel-fuse-1 MUST be absent before first dispatch.
+No-disk BIOS/UEFI diagnostic preserves Landlock/seccomp/namespaces and checks two
+FUSE module cycles/UID101 device access/direct mount denial/unload. No GUI/installer
+or mounted-filesystem acceptance from that diagnostic. Next actual native package,
+FUSE mount/signals/helper policy, then frozen portal builds/native appearance.
 
 Test selection: changed input/syntax plus make check381, readonly native report
 reconciliation and real QMP scanouts. No foundation suite repeated.

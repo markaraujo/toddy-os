@@ -67,3 +67,32 @@ class GrownScratchGuard(unittest.TestCase):
  def test_growth_symlink_rejected(self):
   p,r,g=self.grown();r.unlink();r.symlink_to('/dev/null')
   with self.assertRaises(ValueError):phase2_vm.kernel_scratch_arguments()
+
+
+class FuseGrowthGuard(unittest.TestCase):
+ prepare=ScratchGuard.prepare
+ write=ScratchGuard.write
+ grown=GrownScratchGuard.grown
+ def setUp(self):
+  GrownScratchGuard.setUp(self)
+  p=patch.object(phase2_vm,'KERNEL_FUSE_SCRATCH_BYTES',32768);p.start();self.addCleanup(p.stop)
+ def fuse_grown(self):
+  p,parent,_=self.grown()
+  with p.open('ab') as f:f.write(bytes(16384));f.flush();os.fsync(f.fileno())
+  r=self.work/'kernel-fuse-growth.json'
+  g=dict(state='filesystem-grown',allocation_reconciled=True,serial='TODDY-B02-KERNEL',old_bytes=16384,new_bytes=32768,growth_bytes=16384,device=p.stat().st_dev,inode=p.stat().st_ino,original_receipt_sha256=hashlib.sha256((self.work/'kernel-landlock-scratch.json').read_bytes()).hexdigest(),previous_growth_sha256=hashlib.sha256(parent.read_bytes()).hexdigest(),filesystem_uuid='c6c4176d-faed-4ee3-9ae0-94914a0af666')
+  r.write_text(json.dumps(g));r.chmod(0o600);return p,r,g
+ def test_completed_identity_and_parent_chain(self):
+  self.fuse_grown();self.assertIn('serial=TODDY-B02-KERNEL',phase2_vm.kernel_scratch_arguments()[-1])
+ def test_partial_or_foreign_growth_rejected(self):
+  p,r,g=self.fuse_grown()
+  for key,v in [('state','qmp-grown-filesystem-pending'),('allocation_reconciled',False),('previous_growth_sha256','0'*64),('inode',g['inode']+1),('serial','physical-disk'),('new_bytes',65536)]:
+   with self.subTest(key=key):
+    r.write_text(json.dumps(dict(g,**{key:v})))
+    with self.assertRaises(ValueError):phase2_vm.kernel_scratch_arguments()
+ def test_valid_receipt_symlink_rejected(self):
+  p,r,g=self.fuse_grown();r.rename(self.work/'retained.json');r.symlink_to('retained.json')
+  with self.assertRaises(ValueError):phase2_vm.kernel_scratch_arguments()
+ def test_pending_intent_rejected_before_disk_change(self):
+  self.grown();(self.work/'kernel-fuse-growth.part').write_text('{}')
+  with self.assertRaises(ValueError):phase2_vm.kernel_scratch_arguments()

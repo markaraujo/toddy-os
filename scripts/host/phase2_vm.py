@@ -17,6 +17,7 @@ WORK = vm.VM / 'phase2'
 NAME = 'toddy-phase2'
 KERNEL_SCRATCH_BYTES = 768 * 1024**2
 KERNEL_SCRATCH_GROWN_BYTES = 1024**3
+KERNEL_FUSE_SCRATCH_BYTES = 2 * 1024**3
 FIREFOX_SCRATCH_BYTES = 16 * 1024**3
 
 
@@ -85,6 +86,28 @@ def kernel_scratch_arguments():
                 or grown.get('filesystem_uuid') != 'c6c4176d-faed-4ee3-9ae0-94914a0af666'):
             raise ValueError('Incomplete or mismatched scratch growth')
         expected_bytes = KERNEL_SCRATCH_GROWN_BYTES
+    fuse_growth = WORK / 'kernel-fuse-growth.json'
+    if fuse_growth.is_symlink() or fuse_growth.with_suffix('.part').exists():
+        raise ValueError('Unsafe or pending FUSE scratch growth receipt')
+    if fuse_growth.exists():
+        fs = fuse_growth.stat()
+        if (not stat.S_ISREG(fs.st_mode) or fs.st_uid != os.getuid()
+                or fs.st_nlink != 1 or fs.st_size > 65536 or fs.st_mode & 0o077):
+            raise ValueError('Unsafe FUSE scratch growth receipt')
+        grown = json.loads(fuse_growth.read_text())
+        if (not growth.exists() or expected_bytes != KERNEL_SCRATCH_GROWN_BYTES
+                or grown.get('state') != 'filesystem-grown'
+                or grown.get('allocation_reconciled') is not True
+                or grown.get('serial') != 'TODDY-B02-KERNEL'
+                or grown.get('old_bytes') != KERNEL_SCRATCH_GROWN_BYTES
+                or grown.get('new_bytes') != KERNEL_FUSE_SCRATCH_BYTES
+                or grown.get('growth_bytes') != KERNEL_FUSE_SCRATCH_BYTES - KERNEL_SCRATCH_GROWN_BYTES
+                or grown.get('device') != ds.st_dev or grown.get('inode') != ds.st_ino
+                or grown.get('previous_growth_sha256') != hashlib.sha256(growth.read_bytes()).hexdigest()
+                or grown.get('original_receipt_sha256') != hashlib.sha256(receipt.read_bytes()).hexdigest()
+                or grown.get('filesystem_uuid') != 'c6c4176d-faed-4ee3-9ae0-94914a0af666'):
+            raise ValueError('Incomplete or mismatched FUSE scratch growth')
+        expected_bytes = KERNEL_FUSE_SCRATCH_BYTES
     if (not stat.S_ISREG(ds.st_mode) or ds.st_uid != os.getuid() or ds.st_nlink != 1
             or ds.st_mode & 0o077 or ds.st_size != expected_bytes
             or ds.st_blocks * 512 < ds.st_size

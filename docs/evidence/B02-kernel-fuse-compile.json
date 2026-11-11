@@ -1,0 +1,70 @@
+{
+  "scope": "Same-source private incremental Linux7.1.8 FUSE candidate compile only; not staged/installed/booted or privileged FUSE runtime acceptance.",
+  "first_compile": {
+    "exit": -2,
+    "elapsed_seconds": 19.004,
+    "minimum_free_bytes": 89001984,
+    "stop_reason": "128MiB scratch reserve reached",
+    "final_free_bytes": 185614336
+  },
+  "corrected_compile": {
+    "exit": 0,
+    "elapsed_seconds": 15.003,
+    "minimum_free_bytes": 1091739648,
+    "stop_reason": null,
+    "final_free_bytes": 1131270144
+  },
+  "verified": {
+    "compile_exit": 0,
+    "config_delta": {
+      "CONFIG_FUSE_FS": [
+        "n",
+        "m"
+      ]
+    },
+    "original_modules_unchanged": 20,
+    "new_modules": [
+      "fs/fuse/fuse.ko"
+    ],
+    "source_entries_verified": 93715,
+    "artifacts": {
+      "arch/x86/boot/bzImage": "0482366cc51727f76af11611275b7124bcd9aadbd76d231ca6fd44d22cb0dc77",
+      "vmlinux": "92638f6c4c19cab619c244f608883dd4ffa5835c1e26ccad7386d6ffb47d2e3c",
+      "System.map": "de033607b8f2d72cef671118862fc5cce1e1a3717fa6648ec1e5020b5194c442",
+      ".config": "952e7d9d6e5c8e523ebf128c220481bc29280424e0686e4b0903b518234bf77b",
+      "fs/fuse/fuse.ko": "ce3b8f53643839d98fec304561376bf3c6ae873c519468a57b15f3e723111ae2"
+    },
+    "scope": "Private cached compiler output only; candidate module/kernel native boot and privileged FUSE tests still required"
+  },
+  "guest_growth": {
+    "state": "filesystem-grown",
+    "uuid": "c6c4176d-faed-4ee3-9ae0-94914a0af666",
+    "device": "/dev/vdc",
+    "old_bytes": 1073741824,
+    "new_bytes": 2147483648,
+    "old_block_count": 262144,
+    "block_size": 4096,
+    "private_config_sha256": "952e7d9d6e5c8e523ebf128c220481bc29280424e0686e4b0903b518234bf77b",
+    "new_block_count": 524288,
+    "free_bytes": 1242112000,
+    "baseline_and_config_unchanged": true
+  },
+  "first_log": {
+    "path": "/mnt/lfs/sources/phase2/work/kernel-landlock-1/kernel-fuse-build-1/make.log",
+    "sha256": "80f1cff8496eb43a30f9eef6d0af251aca77614ecf040edd4d0d47c1fae2b318"
+  },
+  "corrected_log": {
+    "path": "/mnt/lfs/sources/phase2/work/kernel-landlock-1/kernel-fuse-build-2/make.log",
+    "sha256": "aa016a86df7948e5c1fb55a419f2bcd3ed1b6b22797237626534bdcc171110f2"
+  },
+  "host_growth": {
+    "state": "filesystem-grown",
+    "old_bytes": 1073741824,
+    "new_bytes": 2147483648,
+    "allocation_reconciled": true,
+    "previous_growth_sha256": "988a21e233f78e45e18f77c95a3bb8392e1206e2653a29ad7d45b5a759f8d254",
+    "filesystem_uuid": "c6c4176d-faed-4ee3-9ae0-94914a0af666",
+    "host_reserve_bytes": 107374182400,
+    "host_free_after": 111384748032
+  }
+}

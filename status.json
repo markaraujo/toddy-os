@@ -476,7 +476,10 @@
         "docs/evidence/B02-desktop-defaults-install.json",
         "docs/evidence/B02-desktop-audio-policy.json",
         "docs/evidence/B02-desktop-native-integration.json",
-        "docs/evidence/B02-portal-source-inputs.json"
+        "docs/evidence/B02-portal-source-inputs.json",
+        "docs/evidence/B02-kernel-stage-archive-custody.json",
+        "docs/evidence/B02-kernel-fuse-compile.json",
+        "docs/evidence/B02-fuse-build-stage.json"
       ]
     },
     {

@@ -24,7 +24,10 @@ def main():
  assert not mounted(W) and W.is_dir() and not W.is_symlink() and not list(W.iterdir())
  device=Path('/dev/disk/by-id/virtio-TODDY-B02-KERNEL').resolve(strict=True)
  assert device.name=='vdc' and Path('/sys/class/block/vdc/serial').read_text().strip()=='TODDY-B02-KERNEL'
- assert int(subprocess.check_output(['blockdev','--getsize64',str(device)],text=True))==1024**3
+ size=int(subprocess.check_output(['blockdev','--getsize64',str(device)],text=True))
+ assert size in [1024**3,2*1024**3]
+ if size==2*1024**3:
+  growth=json.loads((L/'kernel-fuse-resize-1.json').read_text());assert growth['state']=='filesystem-grown' and growth['new_bytes']==size and growth['uuid']==UUID
  assert subprocess.check_output(['blkid','-s','UUID','-o','value',str(device)],text=True).strip()==UUID
  row={'state':'restore-intended','device':str(device),'uuid':UUID,'work':str(W)}
  def save():
