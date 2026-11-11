@@ -4,50 +4,38 @@ Owner boundary: **complete ALL B02, then stop before another story**. Full Phase
 Goal active/incomplete. B01/B03 accepted13%; B02 in_progress; B04 integration
 blocked, B05-B13/G2 pending. Physical foundation tests unperformed. No Phase2 ISO.
 
-## Current slice: native network remaining recovery
+## Current slice: publish corrected installed network recovery instructions
 
-Original native network controller TERMINAL1 (aggregate test failed), context
-.local/phase2/native-network-runtime-1, input commit df30c6f. Container actually
-exited0/no OOM; backing unchanged. Builder stopped/removed. Never replay original
-GUI actions or package install. [Native prefix](evidence/B02-network-native-prefix.json)
-retains normal GDM/PAM/Wayland owner, real Settings connected/OFF/ON transitions,
-DHCP/routes/DNS/HTTPS200 and two active-client polkit passes, plus seven real PNGs.
-Original failure: recovery networkd actually acquired DHCP, but the probe expected
-an unavailable private lease file. Aggregate remains failed, B02 incomplete.
+Native remaining recovery2 COMPLETE0, context.local/phase2/native-network-recovery-runtime-2,
+raw reportSHA87b160c67f2ff0a5b50884630c6be0017a0c254643f5a8d197cbe775a25169ef,
+input19d843c. [Real recovery](evidence/B02-network-native-recovery.json): actual
+reboot preserved networkd selection, public DHCP/routes/DNS passed; stop four
+activation sockets and networkd together, verify inactive, restore marker/startNM,
+explicit managed DHCP plus DNS passed. Both input backing identities unchanged.
+No controller replay. [GUI prefix](evidence/B02-network-native-prefix.json) reused;
+original and [first correction failure](evidence/B02-network-native-recovery-failure.json)
+retained. Restored NM selection reboot persistence remains pending, no wholeB02.
+
+Builder RUNNING boot e146fad4-b1e4-4199-9935-3223e693a00b. Actual cold restoration
+COMPLETE0: same6volumes/Systemd/Glycin/kernel with new receipts
+network2-builder-existing-recovery-1/glycin-work-restored-network2/
+kernel-work-restored-network2; generation4 network2-scratch-restored-1;
+browser-work-restored-network2-1 all6aliases/inodes/flags/bothELF hashes unchanged.
+No format/source/compiler replay. Receipt names COMPLETE, never repeat.
 
 ### Exact next action
 
-Commit reviewed remaining-only controller/probe and prefix evidence, then run once:
-`python3 scripts/host/phase2_native_network.py --remaining-recovery`
-with log .local/phase2/native-network-recovery-controller-1.log. New context
-.local/phase2/native-network-recovery-runtime-1 must not already exist. Controller
-verifies prior report, stopped container and unchanged base, layers a new writable
-overlay over the retained first overlay read-only, leaving both inputs unchanged.
-No login, package install or GUI state writes replayed. Probe verifies retained
-networkd selection before writes, public `networkctl --json=short dhcp-lease`
-(Systemd261.2 source), address/routes/DNS, then continues stop-networkd,
-restore-marker/start-NM/DHCP/DNS. First remaining correction TERMINAL1: public DHCP lease, networkd-selected boot,
-address/routes/DNS passed. NM start succeeded, but still-active sockets restarted
-networkd BEFORE marker restoration; both managers active. Original and first
-correction failures retained. Both backing identities unchanged. No live guest.
-Correction2 prepared: stop all4activation sockets with service and verify inactive
-before marker restore; start NM and explicitly acquire a managed connection.
-Run --remaining-recovery-2 in new native-network-recovery-runtime-2 only. It uses
-a fresh overlay of original known networkd-selected overlay; deliberately tests
-changed recovery procedure, never replays uncertain state. Package README generator
-corrected; installed0.2.0 README remains old until owned update after qualification.
-Timeouts are failures.
-One writer, ordinary bridge/user NAT, original target guard and unchanged schemas.
-Focused preparation check: make check377passed. Failure ledger retains two prepared
-corrections/one failed correction; do not reset its budget on resumption.
-
-On terminal inspect report/container and both backing identities. Only then restore
-builder once and existing6volumes/Systemd/Glycin/kernel/generation4/browser mounts
-with NEW receipts. Browser helper qualified private namespace only; actual cold
-restore still pending. [Proof](evidence/B02-browser-mount-recovery.json).
-No format/resize/source/compiler replay. Original network package install0/0
-remains complete; [installation](evidence/B02-desktop-network-install.json).
-NetworkManager D-Bus VERSION1.58.1; CLI ToddyOS banner intentional.
+Prepared README-only package correction0.2.0-1+toddy2 (old installedtoddy1 remains).
+Commit reviewed scripts, sync metadata only, then one root run_step:
+`b02-network-recovery-doc-update phase2/desktop-network-recovery-update.sh phase2/desktop-network-recovery-check.sh --user root`
+from /opt/toddy-build/scripts/build; log .local/phase2/network-recovery-doc-update-controller-1.log.
+Verify existing payload/archive first; new owned stage must differ only README.
+No maintainer scripts/service/profile/config/binary changes. Full-root verification
+required; new paths/stage/receipts must not exist before dispatch. Retained old
+archive restores exact earlier payload if necessary; no rollback performed.
+On failure inspect actual package/receipt/root before any repeat. This small update
+makes installed recovery instructions match the qualified socket-safe procedure.
+After verification, browser security overlay source/toolchain/capacity work next.
 
 ## Browser compiler, security and persistent build volume
 

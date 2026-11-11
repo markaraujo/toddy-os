@@ -1,0 +1,181 @@
+{
+  "actual_networkd_lease": {
+    "args": [
+      "networkctl",
+      "--json=short",
+      "dhcp-lease",
+      "enp0s4"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "{\"op\":2,\"htype\":1,\"hops\":0,\"xid\":1756973761,\"secs\":0,\"flags\":0,\"ciaddr\":\"00000000\",\"yiaddr\":\"0a00020f\",\"siaddr\":\"0a000202\",\"giaddr\":\"00000000\",\"chaddr\":\"525400123456\",\"options\":[{\"tag\":1,\"data\":\"ffffff00\"},{\"tag\":3,\"data\":\"0a000202\"},{\"tag\":6,\"data\":\"0a000203\"},{\"tag\":51,\"data\":\"00015180\"},{\"tag\":53,\"data\":\"05\"},{\"tag\":54,\"data\":\"0a000202\"}]}\n"
+  },
+  "all_selected_exits_zero": true,
+  "kernel": "7.1.8-toddy",
+  "networkd_active": {
+    "args": [
+      "systemctl",
+      "is-active",
+      "systemd-networkd.service"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "active\n"
+  },
+  "networkd_address": {
+    "args": [
+      "ip",
+      "-j",
+      "address",
+      "show",
+      "dev",
+      "enp0s4"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "[{\"ifindex\":2,\"ifname\":\"enp0s4\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"pfifo_fast\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"52:54:00:12:34:56\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"altnames\":[\"enx525400123456\"],\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.0.2.15\",\"prefixlen\":24,\"metric\":1024,\"broadcast\":\"10.0.2.255\",\"scope\":\"global\",\"dynamic\":true,\"label\":\"enp0s4\",\"valid_life_time\":86400,\"preferred_life_time\":86400},{\"family\":\"inet6\",\"local\":\"fe80::5054:ff:fe12:3456\",\"prefixlen\":64,\"scope\":\"link\",\"tentative\":true,\"protocol\":\"kernel_ll\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+  },
+  "networkd_and_triggers_stopped": true,
+  "networkd_public_dns": {
+    "args": [
+      "getent",
+      "ahostsv4",
+      "example.com"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "172.66.147.243  STREAM example.com\n172.66.147.243  DGRAM  \n172.66.147.243  RAW    \n104.20.23.154   STREAM \n104.20.23.154   DGRAM  \n104.20.23.154   RAW    \n"
+  },
+  "networkd_routes": {
+    "args": [
+      "ip",
+      "-j",
+      "route",
+      "show",
+      "default"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "[{\"dst\":\"default\",\"gateway\":\"10.0.2.2\",\"dev\":\"enp0s4\",\"protocol\":\"dhcp\",\"prefsrc\":\"10.0.2.15\",\"metric\":1024,\"flags\":[]}]\n"
+  },
+  "nm_inactive": {
+    "args": [
+      "systemctl",
+      "is-active",
+      "NetworkManager.service"
+    ],
+    "exit": 3,
+    "stderr": "",
+    "stdout": "inactive\n"
+  },
+  "persisted_recovery_selection_after_reboot": true,
+  "restored_nm_dhcp": {
+    "args": [
+      "nmcli",
+      "-g",
+      "DHCP4.OPTION",
+      "device",
+      "show",
+      "enp0s4"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "dhcp_client_identifier = 01\\:52\\:54\\:00\\:12\\:34\\:56 | dhcp_lease_time = 86400 | dhcp_server_identifier = 10.0.2.2 | domain_name_servers = 10.0.2.3 | expiry = 1794474634 | ip_address = 10.0.2.15 | next_server = 10.0.2.2 | requested_broadcast_address = 1 | requested_domain_name = 1 | requested_domain_name_servers = 1 | requested_domain_search = 1 | requested_host_name = 1 | requested_interface_mtu = 1 | requested_ms_classless_static_routes = 1 | requested_nis_domain = 1 | requested_nis_servers = 1 | requested_ntp_servers = 1 | requested_rfc3442_classless_static_routes = 1 | requested_root_path = 1 | requested_routers = 1 | requested_static_routes = 1 | requested_subnet_mask = 1 | requested_time_offset = 1 | requested_wpad = 1 | routers = 10.0.2.2 | subnet_mask = 255.255.255.0\n"
+  },
+  "restored_nm_public_dns": {
+    "args": [
+      "getent",
+      "ahostsv4",
+      "example.com"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "172.66.147.243  STREAM example.com\n172.66.147.243  DGRAM  \n172.66.147.243  RAW    \n104.20.23.154   STREAM \n104.20.23.154   DGRAM  \n104.20.23.154   RAW    \n"
+  },
+  "restored_nm_state": {
+    "args": [
+      "nmcli",
+      "-g",
+      "GENERAL.STATE",
+      "device",
+      "show",
+      "enp0s4"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "100 (connected)\n"
+  },
+  "reused_prefix": {
+    "report_sha256": "9aed09ef52d96c6f36f0d6be2057ae99c4f041203a0ee5f4cda7ea7f5ffc0070",
+    "scope": "Unchanged source-base normal owner/UI/on-off-reconnect/DNS/HTTPS/polkit proof retained, original aggregate failure preserved"
+  },
+  "runs": [
+    {
+      "args": [
+        "resolvectl",
+        "flush-caches"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "systemctl",
+        "stop",
+        "systemd-networkd-resolve-hook.socket",
+        "systemd-networkd-varlink.socket",
+        "systemd-networkd.socket",
+        "systemd-networkd-varlink-metrics.socket",
+        "systemd-networkd.service"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "systemctl",
+        "start",
+        "NetworkManager.service"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "nmcli",
+        "--wait",
+        "30",
+        "device",
+        "connect",
+        "enp0s4"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "\u001b[2K\nDevice 'enp0s4' successfully activated with '75401892-99da-3c1a-9304-accf6d1ed48a'.\n"
+    },
+    {
+      "args": [
+        "resolvectl",
+        "flush-caches"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "schema_sha256": "a352c74e50964dca946948f2e80e9345a175615c938c65295f1bb44623133e1b",
+  "schema_unchanged": true,
+  "scope": "Remaining native manager recovery after actual reboot of retained first disposable overlay. Earlier normal GDM/GUI/DNS/HTTPS/polkit proof reused explicitly; no GUI/state writes replayed.",
+  "raw_report_sha256": "87b160c67f2ff0a5b50884630c6be0017a0c254643f5a8d197cbe775a25169ef",
+  "backing_unchanged": true,
+  "container_exit": 0,
+  "input_commit": "19d843c10b2be3d20dd1662e481a2765b0e014ea",
+  "limitations": [
+    "Actual reference VM only, no physical network/hardware claim.",
+    "NM restored and DHCP/DNS verified in same boot; restored NM selection reboot persistence still pending.",
+    "GUI/HTTPS/polkit prefix reused unchanged; two original aggregate failures retained separately."
+  ]
+}

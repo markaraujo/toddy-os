@@ -3821,3 +3821,15 @@ inactive before marker restore, then starts NM and requests managed DHCP. Fresh
 overlay of known original networkd selection, no uncertain operation replay.
 README generator corrected; installed README update pending qualification.
 Make check377passed. Second runtime pending, bounded failure budget unchanged.
+
+
+### B02 real manager recovery and actual cold cache restoration — 2026-11-11
+
+Second remaining native correction passed0: real retained networkd boot/public
+lease/routes/DNS, sockets+service stopped before marker restore, NM active with
+managed DHCP/public DNS and networkd inactive. Both backing identities unchanged.
+Two prior failures remain preserved. NM restored-selection reboot pending.
+Builder boot e146fad4 restored original6volumes/Systemd/Glycin/kernel/generation4
+and browser raw6aliases, same inodes/flags/both compiler ELF hashes, all0. No
+format/rebuild/source replay. Prepared README-only owned update to toddy2 makes
+installed recovery instructions match qualified procedure; transaction pending.

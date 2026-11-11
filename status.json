@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "project": "Toddy OS",
-  "updated_at": "2026-11-11T09:07:54.403329+00:00",
+  "updated_at": "2026-11-11T09:13:24.534315+00:00",
   "bootstrap": "ready_for_development",
-  "current_scope": "B01/B03 accepted (13% weighted Phase2). B02 native GNOME owner login and scoped Files/Editor verified; real Network Settings off/on, DHCP/DNS/HTTPS and active-client polkit passed. Original network aggregate failed on private lease-file assumption; remaining-only recovery prepared. Corrected browser/audio/integrated offline/recovery/resources pending. Stop after fully validated B02; no Phase2 ISO or physical acceptance.",
+  "current_scope": "B01/B03 accepted (13% weighted Phase2). B02 native GNOME owner login, scoped Files/Editor and real network GUI/DHCP/DNS/HTTPS/polkit/recovery passed within recorded VM scope. Restored NM reboot persistence, corrected browser/audio/theme/offline/resources remain pending. Stop after fully validated B02; no Phase2 ISO or physical acceptance.",
   "next_story": "B02",
   "gates": {
     "G1": "passed",
@@ -460,7 +460,8 @@
         "docs/evidence/B02-trash-native-prefix.json",
         "docs/evidence/B02-files-native-combined.json",
         "docs/evidence/B02-terminal-defaults-install.json",
-        "docs/evidence/B02-network-native-prefix.json"
+        "docs/evidence/B02-network-native-prefix.json",
+        "docs/evidence/B02-network-native-recovery.json"
       ]
     },
     {
