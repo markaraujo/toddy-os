@@ -1,0 +1,40 @@
+{
+  "state": "complete",
+  "before_free_bytes": 17190621184,
+  "packages": [
+    {
+      "name": "gtk",
+      "version": "4.22.4-1+toddy9",
+      "stage": "/mnt/lfs/sources/stage/phase2-gtk-editor-schema-union",
+      "inode": 9503390,
+      "archive": "/var/cache/toddy/packages/gtk_4.22.4-1+toddy9_amd64.deb",
+      "archive_sha256": "9c99cbf271566b44efcdf369ccba0ed9e2f3549819e7bf736f189209dd0533b5",
+      "record": "/var/log/toddy/packages/gtk_4.22.4-1+toddy9_amd64.json",
+      "record_sha256": "fef35462b599b404b0df5e68ad290f37f8c6a59879b9f2065bf2bd93607968c9",
+      "control_files": {
+        "control": "c145097302516666a75c119f2cdd0524e147afdb50f58ec4dd181cf17bf48e9d"
+      },
+      "state": "retired"
+    },
+    {
+      "name": "gtk3",
+      "version": "3.24.52-1+toddy2",
+      "stage": "/mnt/lfs/sources/stage/phase2-gtk3-ibus-cache",
+      "inode": 8336206,
+      "archive": "/var/cache/toddy/packages/gtk3_3.24.52-1+toddy2_amd64.deb",
+      "archive_sha256": "658601ca770907cd84b191465782f814600c5dc772c51c51918a58d087fbd71e",
+      "record": "/var/log/toddy/packages/gtk3_3.24.52-1+toddy2_amd64.json",
+      "record_sha256": "953928c07f531bf190fbb27bb97c332c4d400c8f4f6a5ea2a549f0c0e99f824d",
+      "control_files": {
+        "control": "6df169ba55946eb302fd1f5670d4736edb62e72ebb6b29a452bb03063f4da681"
+      },
+      "state": "retired"
+    }
+  ],
+  "scope": "Only two verified closed usr promotion replicas. Reuse qualified native archives, retain package records/control and original sources/compiler/workstages. No installed payload or source mutation.",
+  "installed_root_changed_paths": 0,
+  "after_free_bytes": 17354555392,
+  "recovery": "Verify retained archive and record, then extract into a new stage. Never replay custody or reinstall accepted GTK runtime.",
+  "reclaimed_bytes": 163934208,
+  "receipt_sha256": "ce37db6ad61a8e66666ac920c555e046f8e2d3d480bbd506d2f2bd805c9fd29b"
+}

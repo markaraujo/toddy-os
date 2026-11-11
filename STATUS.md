@@ -188,7 +188,7 @@ Verified:
 - Owned libbytesize 2.12 local SDK: 76 selected upstream cases passed with three locale skips. Native install and postcheck 0/0 with 56 changed paths and 131 payload entries. C/Python/CLI arithmetic, refusal and recovery, exact stage bytes, ABI and APT passed. No storage device, UDisks service, Settings GUI or physical acceptance.
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 
-Running: GNOME Control Center installed with exact payload, native CLI/refusal/recovery, four executable linkages and private schema defaults verified. Shared-system-schema integration is next. UDisks policy and interactive GNOME acceptance remain pending. Full B02 then stop.
+Running: Installed GNOME Settings now has its owned system schema integration verified: 122 schemas and 1060 keys, with prior contracts preserved. Native graphical validation requires resource custody and actual virtual seat/input. UDisks policy, browser/files and interactive GNOME acceptance remain pending. Full B02 then stop.
 
 Remaining:
 

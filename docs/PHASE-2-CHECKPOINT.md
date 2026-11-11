@@ -502,7 +502,7 @@ and three temporary compiled schema defaults passed. No source/compiler/
 portable-test replay. Shared system schema integration and GUI pending.
 No writer remains; last target free17,190,621,184B.
 
-EXACT NEXT: extend the existing owned shared-schema union before GUI tests.
+Completed Settings shared-schema integration before GUI tests.
 Current gschemas.compiled belongs to GTK4.22.4-1+toddy9. Its record SHA256
 fef35462b599b404b0df5e68ad290f37f8c6a59879b9f2065bf2bd93607968c9,
 archiveSHA2569c99cbf271566b44efcdf369ccba0ed9e2f3549819e7bf736f189209dd0533b5.
@@ -511,7 +511,7 @@ and the GTK same-version cache integration, preserving all baseline
 schema/key/type/default/range contracts and installed GTK runtime bytes.
 Prepare source/work and GTK promotion on the existing tmpfs.
 
-First recover sufficient target headroom from closed GTK metadata promotion
+Recovered target headroom from closed GTK metadata promotion
 replicas. Current stage phase2-gtk-editor-schema-union inode9503390 owns
 the exact installed toddy9 payload and allocates98,611,200B. Archive and
 installed payload must be fully verified before retiring its usr copy.
@@ -522,13 +522,56 @@ retire_gtk_schema_promotion_stages.py provides the custody model.
 If more transient unpack headroom is required, inspect current
 phase2-gtk3-ibus-cache (65,331,200B) with its own actual record/archive;
 never retire either from this note alone. No custody for these has run.
+Read-only preflight passed for both exact current GTK4/GTK3 stages,
+their installed payloads, archive digests and package records. Pinned
+identities and stage inodes are in
+.local/phase2/settings-schema-custody-preflight-1.json. This file contains
+no retirement claim. Reuse this bounded proof and the native backend's
+qualified archive evidence when implementing custody; perform any further
+verification only if needed to prove a material missing condition.
+
+Subsequent custody1 PID244367 is COMPLETE: retired only the two exact
+closed usr replicas, reclaimed163,934,208B, installed root changed0.
+Archives/records/control and original sources/compiler/workstages retained.
+[Custody](evidence/B02-settings-schema-custody.json). Never replay it.
+Settings union1 compiled77stock source files and preserved all121baseline
+schemas/1057keys; added only org.gnome.Settings/3keys. Native transaction
+PID244997 recipe/post0/0,10changed paths, GTK4.22.4-1+toddy10 owned archive
+SHA256eab375df067f840865f5774d4a9870833b6efc19078b5124a75cc2e9f099b007.
+Installed default-source lookup matches all122schemas/1060keys and every
+type/default/range contract.906old nonlegal/cache entries unchanged.
+No user values written, override or graphical acceptance.
+[Evidence](evidence/B02-settings-schema-union.json).
+No writer remains. Target free17,352,880,128B, scratch852,983,808B.
+
+EXACT NEXT: prepare real native graphical validation using an actual
+virtual seat/input path; inspect parked Shell/editor failure budgets first.
+Avoid another unchanged headless focus retry. A cold test stops the builder,
+so first preserve all current boot-scoped source/compiler/stage data and
+its read-only alias topology. Do not lose the current tmpfs on shutdown.
+Host reserve is the immediate resource constraint: last107,527,188,480B,
+below100GiB+512MiB cold gate. No cold test was dispatched.
+
+Read-only storage discovery found seven stopped, ownership-verified
+uncompressed native test overlays (92,004,352allocated bytes) suitable
+for the existing overlay custody tool, using a new ledger generation.
+They alone cannot supply the whole cold gate plus compiler-cache retention.
+Exact context list is in the tool history and should be revalidated.
+The cold math builder zero scan is in
+.local/phase2/cold-math-zero-preflight-1.json. Nearly all its zero bytes
+are already sparse; no useful hole-punch gain or mutation was claimed.
+If needed, use bounded reversible chunk compression of an explicit
+unreferenced cold backup to avoid the full-output temporary-space problem.
+Require per-chunk/full reconstructed SHA256 and durable checkpoints before
+retiring any source range; preserve active/backing/master images.
+This is storage custody for the existing goal, not foundation rebuilding.
 Read-only native runtime audit is retained in
 .local/phase2/control-center-runtime-dependencies-1.json. All4staged ELF
 executables resolve without private build paths to89owned linked packages.
 The audit reuses target_resolve from audit_native_elf.py and the actual
 native package lists; these are linked dependencies, not catalogue options.
-Last published0a42943: all3workflows success, publicHTTP200/indexSHA256
-674cda14e328a6a7d080ae1ae66d440733d4599bfe6b0b33673d3f5811a2cd9b.
+Last publishedd0988df: all3workflows success, publicHTTP200/indexSHA256
+dac615c0475c75c0bfc0caa7c4aa2868dd71372795da9ab10c810e40423ce143.
 Cold native tests require measured headroom and an isolated VM. UDisks policy,
 Settings/Samba and GNOME session remain pending. Stop after accepted B02.
 
