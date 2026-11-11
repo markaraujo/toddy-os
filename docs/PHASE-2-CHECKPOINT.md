@@ -106,17 +106,34 @@ successful native4 or13earlier accepted portable programs. All historical
 failed attempts and budgets retained, resolved by ADR0220 qualified profile.
 No installed LocalSearch package, Nautilus/GUI, general parser or B02 acceptance.
 
-EXACT NEXT: restore the stopped builder after native4 using fresh receipt names
-and actual state inspection. Existing six volume filesystems/Systemd source/
-Glycin/kernel COW and exact Samba/Settings scratch archive remain intact.
-Do not replay native-owner recovery1: add an explicit new strict receipt-name
-option to phase2_restore_settings_scratch.py, preserving the completed default
-receipt; restore the same qualified archive and aliases under the new identity.
-Then prepare controlled native LocalSearch packaging from the unchanged retained
-stage (133regular files/186ELFs). Reuse the new native20case proof and accepted
-portable evidence; audit actual legal/source closure/owned deps/shared resources
-and installed CLI/GI/ABI/refusal/recovery under the normal package transaction.
-Nautilus may proceed only after the real LocalSearch prerequisite is installed.
+Builder recovery after native4 is COMPLETE on actual boot
+71632310-0bdd-4d1e-9deb-921d95eddc97. Fresh receipts
+localsearch4-builder-volumes-restored-1, glycin-work-restored-localsearch4-1,
+kernel-work-restored-localsearch4-1 and localsearch4-scratch-restored-1 complete;
+same6UUIDs/Systemd source/Glycin/kernel COW restored, exact76,673entry cache and
+12aliases verified again.852,983,808B scratch/17,352,880,128B target free.
+New strict --receipt option preserves completed old restoration identities.
+Never replay recovery1 or these native4 recovery receipts.
+
+LocalSearch native packaging implementation is prepared, NOT installed yet.
+Actual unchanged stage audit:133regular files/3,105,194B/21ELFs, no SUID/SGID,
+no installed path collisions.21ELF direct runtime requirements mapped to owned
+packages; CLI external test-sandbox utility needs owned Python/PyGObject/D-Bus.
+Only user-session D-Bus/Systemd activation definitions; autostart conffile declared.
+Original CLI source3.11.1 confirms --version/help0 and unknown-command1.
+Exact native4 full report imported root0600 as
+/var/log/toddy/phase2/native-localsearch-functional-report-4.json; qualifier requires
+its canonical SHA plus original source/compile/stage maps. No tests repeated.
+
+EXACT NEXT: commit/publish the prepared packaging slice after focused repository
+checks, run phase2_sync.py --metadata-only, then read-only qualify_localsearch
+and dependency/stage/source/archive/preexisting-job/resource preflight. If clear,
+dispatch ONE native full-root run_step b02-localsearch-install using
+localsearch-install.sh/localsearch-check.sh. Inspect actual terminal recipe/post
+codes and installed payload before any repeat. Keep current schema cache unchanged;
+installed CLI checks do not prove the new miner schemas are globally registered.
+After actual package0/0, integrate its4new stock schema files via same-version
+owned GTK union, preserving current122schema/1060key contracts; then Nautilus.
 
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated

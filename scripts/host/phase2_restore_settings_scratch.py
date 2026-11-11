@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Restore the exact qualified boot-scoped cache and its recorded bind aliases."""
+import argparse
+import re
 import hashlib
 import json
 from pathlib import Path
@@ -17,7 +19,7 @@ from pathlib import Path
 subprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
 lock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
 assert not list(Path('/var/log/toddy/build').glob('*.running.json'))
-receipt=Path('/var/log/toddy/phase2/native-owner-scratch-restored-1.json')
+receipt=Path('/var/log/toddy/phase2')/(restore_name+'.json')
 assert not receipt.exists(),'Inspect real restore receipt/mounts; never replay'
 original=Path('/var/log/toddy/phase2/settings-scratch-custody-1.json')
 assert hashlib.sha256(original.read_bytes()).hexdigest()==receipt_sha
@@ -74,14 +76,18 @@ save();print(json.dumps(state))
 
 
 def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--receipt',default='native-owner-scratch-restored-1')
+    args=parser.parse_args()
+    assert re.fullmatch(r'[a-z][a-z0-9-]{1,63}',args.receipt)
     receipt=json.loads((CONTEXT/'result.json').read_text())
     assert receipt['state']=='complete' and (CONTEXT/'restore-validation.exit').read_text().strip()=='0'
     archive=CONTEXT/'scratch.tar.gz'
     with archive.open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==receipt['archive_sha256']
     assert shutil.disk_usage(ROOT).free>=100*1024**3
-    log=ROOT/'.local/phase2/native-owner-scratch-restored-1.log'
+    log=ROOT/'.local/phase2'/(args.receipt+'.log')
     assert not log.exists(),'Inspect actual guest receipt/aliases before any replay'
-    code='archive_sha='+repr(receipt['archive_sha256'])+'\narchive_bytes='+repr(receipt['archive_bytes'])+'\nreceipt_sha='+repr(receipt['guest_receipt_sha256'])+'\n'+GUEST
+    code='restore_name='+repr(args.receipt)+'\narchive_sha='+repr(receipt['archive_sha256'])+'\narchive_bytes='+repr(receipt['archive_bytes'])+'\nreceipt_sha='+repr(receipt['guest_receipt_sha256'])+'\n'+GUEST
     with archive.open('rb') as source,log.open('xb') as output:
         result=subprocess.run(phase2_vm.ssh_args()+['python3 -c '+shlex.quote(code)],stdin=source,stdout=output,stderr=subprocess.STDOUT)
     (log.with_suffix('.exit')).write_text(str(result.returncode)+'\n')

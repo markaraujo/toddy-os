@@ -193,7 +193,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: Native authenticated GNOME GUI slice and LocalSearch native9program/20case gate verified. Builder stopped after native4; next restore existing cache/volumes with fresh receipts and package the unchanged LocalSearch stage, then Nautilus. Network/audio/browser/global theme/terminal defaults and full B02 pending. Complete all B02, then stop.
+Running: Native GNOME owner/selected GUI and LocalSearch9program/20case gates verified. Builder/cache recovered on boot71632310. Native LocalSearch packaging profile/qualifier/CLI-ABI checks prepared; transaction and shared-schema integration pending before Nautilus. Network/audio/browser/global theme/terminal defaults/full B02 pending. Complete all B02, then stop.
 
 Remaining:
 

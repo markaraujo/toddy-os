@@ -19,6 +19,7 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
+    'localsearch': ('3.11.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gexiv2 (= 0.16.2-1+toddy1), gstreamer (= 1.28.6-1+toddy1), gst-plugins-base (= 1.28.6-1+toddy1), icu (= 78.3-1+toddy1), libjpeg-turbo (= 3.2.0-1+toddy1), libpng (= 1.6.58-1+toddy1), libseccomp (= 2.6.1-1+toddy1), libxml2 (= 2.15.3-1+toddy1), tiff (= 4.7.2-1+toddy1), tinysparql (= 3.11.1-1+toddy1), upower (= 1.91.3-1+toddy1), python (>= 3.14), python (<< 3.15), pygobject (= 3.56.3-1+toddy1), dbus (= 1.16.2-1+toddy1)', 'localsearch-3.11.1.tar.xz', 'usr/bin/localsearch'),
     'rpcsvc-proto': ('1.4.4', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), libtirpc (= 1.3.7-1+toddy1)', 'rpcsvc-proto-1.4.4.tar.xz', 'usr/bin/rpcgen'),
     'perl-parse-yapp': ('1.21', 'perl (>= 5.44), perl (<< 5.45)', 'Parse-Yapp-1.21.tar.gz', 'usr/bin/yapp'),
     'libtirpc': ('1.3.7', 'glibc (>= 2.44-1+toddy1), mitkrb (= 1.22.2-1+toddy1)', 'libtirpc-1.3.7.tar.bz2', 'usr/lib/pkgconfig/libtirpc.pc'),
@@ -325,6 +326,7 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':qualifier='gnome-text-editor-metadata-2'
     if name=='libspelling':qualifier='libspelling-options-2'
     if name=='gnome-online-accounts':qualifier='gnome-online-accounts-collect-2'
+    if name=='localsearch':qualifier='localsearch-collect-2'
     if name=='tecla':qualifier='tecla-collect-2'
     if name=='enchant':qualifier='enchant-provider-explicit-5'
     if name=='tinysparql':qualifier='tinysparql-numeric-5'
@@ -1365,6 +1367,9 @@ if __name__ == '__main__':
     if name=='librest':
         from qualify_librest import qualify as qualify_librest
         qualify_librest(ROOT)
+    if name=='localsearch':
+        from qualify_localsearch import qualify as qualify_localsearch
+        qualify_localsearch(ROOT)
     if name=='tecla':
         from qualify_tecla import qualify as qualify_tecla
         qualify_tecla(ROOT)
@@ -1804,6 +1809,7 @@ if __name__ == '__main__':
                    if path.startswith('etc/lvm/') and 'sha256' in row
                    for value in ('--conffile','/'+path)]
         assert len(conffiles)==20
+    if name=='localsearch':conffiles=['--conffile','/etc/xdg/autostart/localsearch-3.desktop']
     if name=='keyutils':conffiles=['--conffile','/etc/request-key.conf']
     if name=='libpwquality':conffiles=['--conffile','/etc/security/pwquality.conf']
     if name=='vte':conffiles=['--conffile','/etc/profile.d/vte.sh','--conffile','/etc/profile.d/vte.csh']
