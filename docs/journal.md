@@ -3647,3 +3647,20 @@ Change-based selection: storage attachment guards and required make check; no
 unchanged compiler/native GUI suite repeated. Next: exact virtual-device
 attachment/blank identity checks and controlled one-time filesystem preparation.
 See [capacity evidence](evidence/B02-firefox-build-capacity.json).
+
+## B02 dedicated browser volume and retained builder recovery — 2026-11-11
+
+Controlled builder restart attached the guarded browser file. Verified all85,958
+cache entries/42,228regular inode classes before shutdown, restored the same six
+volumes/Systemd/Glycin/kernelCOW and generation4 archive with new receipts.
+Confirmed unique browser serial/16GiB/blank signatures/no partitions or holders;
+mkfs0 without force/discard, mountednosuid,nodev with16,713,080,832B available.
+Host allocation identity guard still passes. The frozen source extraction is a
+separate running job; do not infer compiler or browser acceptance. Required
+make check370passed; reused unchanged tests rather than repeating GUI/compiler
+gates. [Recovery evidence](evidence/B02-firefox-work-recovery.json).
+
+Frozen Firefox extraction then completed0:509,835members/3,514,842,428bytes,
+archive SHA verified before extraction and source now mountedread-only;
+11,704,008,704B available on dedicated disk. No configure/compiler yet.
+[Source evidence](evidence/B02-firefox-source-preparation.json).

@@ -1,0 +1,22 @@
+{
+  "state": "prepared",
+  "source": {
+    "name": "firefox",
+    "version": "153.2.0esr",
+    "filename": "firefox-153.2.0esr.source.tar.xz",
+    "url": "https://archive.mozilla.org/pub/firefox/releases/153.2.0esr/source/firefox-153.2.0esr.source.tar.xz",
+    "upstream_md5": "127f9c7fe72cf8cc9a47f35a051303f0",
+    "reference": "BLFS13.1-systemd xsoft/firefox.html",
+    "book_page_sha256": "e3fcd198bbfa3b8ecae24abce029c2a04809bc300c9dc295de92a9446889d0a8",
+    "status": "source_verified",
+    "sha256": "c443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c"
+  },
+  "expanded_bytes": 3514842428,
+  "members": 509835,
+  "boot_id": "474caba2-3085-4d07-bba0-e2548b5728d4",
+  "volume_uuid": "082a2d97-fa79-4ee5-86e5-a179f768daec",
+  "source_directory": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.2.0",
+  "source_readonly": true,
+  "available_bytes": 11704008704,
+  "scope": "Unmodified frozen source only; configure/compiler/security/ABI/native browser gates pending"
+}

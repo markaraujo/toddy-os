@@ -1,100 +1,81 @@
 # Phase 2 continuation card
 
 Owner boundary: **complete ALL B02, then stop before another story**. Full Phase2
-Goal remains active/incomplete. B01/B03 accepted; B02 in_progress; B04 integration
-blocked, B05-B13/G2 pending. Weighted accepted Phase2 progress13%, no partial B02
-percentage. Physical foundation tests unperformed. No accepted Phase2 ISO.
+Goal active/incomplete; B01/B03 accepted13%, B02 in_progress, B04 integration
+blocked, B05-B13/G2 pending. Physical foundation tests unperformed. No Phase2 ISO.
 
-## Current slice: Files gate passed; browser build capacity
+## Current slice: frozen Firefox source preparation
 
-Native-files-trash-runtime-2 controller1436873/session31302 TERMINAL0, container0,
-base unchanged, reportSHAbce2bd2938a8a4119d7131e73f7dc5f2b68ef17c2a7e7c68584e5b73139d29de.
-[Combined scoped native Files proof](evidence/B02-files-native-combined.json):
-actual normal GDM/PAM user/session2/seat0/Wayland active; installed gio info
-trash:///0; noninteractive active Files PID1299 authorization challenge2, no
-credentials/privileged write. Prior observed local GUI/Trash restoration evidence
-reused, no writes replayed. Both original URI symptom and absent-runuser wrapper
-resolved within this scoped gate; raw failed native1/prefix retained. Full B02,
-network shares, privileged writes, reboot persistence and hardware unqualified.
-Ledger retains one successful correction for each cause, no budget resets.
+Builder RUNNING boot474caba2-3085-4d07-bba0-e2548b5728d4. Controlled restart
+controller firefox-builder-attach-restart-1 TERMINAL0. Existing recovery
+firefox-builder-existing-recovery-1 COMPLETE0 (same6volumes/Systemd/Glycin/kernel).
+firefox1-scratch-restored-1 generation4 COMPLETE0:85,958entries/42,228regular inode
+classes/20aliases. [Recovery evidence](evidence/B02-firefox-work-recovery.json).
+No compiler/package/native GUI replay. Prior boot8688d2de stopped cleanly.
 
-Builder recovery COMPLETE on boot8688d2de-c1de-4579-8935-173fda4df4ea:
-trash2-builder-volumes-restored-1, glycin-work-restored-trash2-1,
-kernel-work-restored-trash2-1 and trash2-scratch-restored-1. Same6volumes/Systemd/
-Glycin/kernelCOW and exact generation4 cache restored85,958entries/42,228regular
-inode classes/20aliases. Target17,308,438,528B/scratch392,814,592B free. Builder
-running, no guest writer. Never replay any recovery, compiler/native/package job.
+Dedicated16GiB file prepared/attached once, host receipt
+.local/vm/phase2/firefox-scratch.json, inode11956378/device66306,
+serialTODDY-B02-FIREFOX. Blank-signature/partition/holder/mount checks passed;
+mkfs0 without force/discard, UUID082a2d97-fa79-4ee5-86e5-a179f768daec,
+actual/dev/vdd (DO NOT assume name later), mountednosuid,nodev at
+/mnt/lfs/sources/phase2/work/firefox-1; initial16,713,080,832B available.
+Guest receipt /var/log/toddy/phase2/firefox-work-volume-1.json state=mounted.
+Host full allocation guard passes;100GiB host/16GiB target/128MiB scratch reserves
+unchanged. NEVER repeat preparation/format/recovery. Required make check370passed.
 
-### Real running host storage job — do not restart
+### Actual running source job / exact next action
 
-ADR0223 selects only unreferenced cold h07-gcc-tested-target.qcow2 (43-image graph,
-QEMU check0). Firefox153.2.0esr frozen book estimates8.9GB build space; host reserve
-100GiB must remain. Active/backing/foundation-master images untouched. Original
-source moved into private custody; original path is NOT usable during operation.
-All original bytes retained by verified gzip chunks plus untouched source ranges.
-Controller1450932/session80972 TERMINAL0; process absent, state=complete.
-All1023chunks retired; producer whole reconstructed34,298,068,992byte SHA verified.
-[Storage evidence](evidence/B02-firefox-build-capacity.json) binds original receipt
-and producer. Host127,991,275,520B free at completion. Never replay custody.
-Original34,298,068,992bytes/SHA256
-6b8f1ad2736c8f7a4f02f361272c1e27ca151ff76b59bcee70fed8f7a7c3c8e1;
-allocated25,530,310,656B. Strict identity/producer/reserve/source reconstruction
-and chunk-before-punch guards remain. Source placeholder source.custody has holes
-as ranges retire; NEVER boot it. Completed math custody remains untouched.
+Source extraction session92782 TERMINAL0; guest receipt firefox-source-1.json
+stateprepared/read-only source.509,835members/3,514,842,428expanded bytes,
+11,704,008,704B available. Original archive SHA verified before extraction.
+No configure/compiler yet. No running guest writer. NEVER replay extraction.
+Local log.local/phase2/firefox-source-prepare-1.log/exit retained.
 
-### Independent terminal defaults slice — installed and CLI qualified
+Next inspect actual GTK/Wayland conditional dependencies and set up qualified isolated
+configure. Frozen source supports cairo-gtk3-wayland-only; installed GTK3 is
+Wayland-only. Don't add unnecessary X11 dependencies or rebuild foundation.
+Need source/compiler/security/ABI review, native install/UI/sandbox acceptance.
+No official branding, example Google API key or sandbox relaxation. Book estimate
+8.9GB/15SBU is not actual runtime acceptance. Source lock153.2.0esr SHA
+c443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c;
+bookBLFS13.1-systemd xsoft/firefox.html SHA
+ e3fcd198bbfa3b8ecae24abce029c2a04809bc300c9dc295de92a9446889d0a8.
+Clang22.1.8/Rust1.97.1/cbindgen0.29.4/Node24.19/ICU78.3/NSS3.126/NSPR4.40
+available. Optional system codecs/startup-notification absent; inspect conditions.
 
-[Terminal defaults](evidence/B02-terminal-defaults-install.json) are installed as
-toddy-terminal0.2.0-1+toddy1/all, archiveSHA
-2cdbca318a0b1f623eeb3ce5da84d0b95cda5ec900e425caf14a6ad94247841f.
-Original recipe2025 recipe0/post1 changed17paths: prompt-test expected literal
-quoting was wrong. Actual opt-out before/after prompt identical. Original failure
-retained. Verify-only recipe2536 recipe/post0/0 changedZEROroot paths, exact
-archive/payload unchanged; seven actual UID101/NNP cases passed: new user/custom/
-opt-out/plain/readonly/login-template/silent noninteractive, plus idempotence and
-hook/shell-setting preservation. No reinstall/source/native-compiler replay.
-New-user skeleton RC/profile and Bash-only runtime hook; MIT/CC BY notices retained,
-existing user homes/fonts/hooks untouched. Graphical Terminal rendering PENDING.
-Failure ledger terminal-defaults-prompt-test-quoting resolved after one correction.
+## Other retained verified slices
 
-Firefox dependency inspection: owned GTK3.24.52 is Wayland-only; Clang22.1.8,
-Rust1.97.1/cbindgen0.29.4/Node24.19.0, ICU78.3/NSS3.126/NSPR4.40 available.
-Several optional system codec pkg-config modules and startup-notification absent.
-Actual frozen toolkit/moz.configure supports cairo-gtk3-wayland-only; inspect
-conditional dependency requirements before adding unnecessary X11 dependencies.
-Selected original configure-source text cached in
-.local/phase2/firefox-153-configure-source-review-1.json (3files, no source edits).
-No browser build/configuration/ABI/security acceptance yet.
+[Files native gate](evidence/B02-files-native-combined.json) passed actual normal
+GDM/PAM owner/Wayland/session2, local Files actions/Trash restore/watched content,
+installed gio trash URI0, activeFilesPID authorization challenge2/no credentials.
+Original URI/runuser failures retained/resolved, no fullB02/network/admin write/
+reboot/hardware claim. Native2controller/container0/base unchanged.
 
-### Exact next action
+[Terminal defaults](evidence/B02-terminal-defaults-install.json) installed
+0.2.0-1+toddy1, archiveSHA2cdbca318a0b1f623eeb3ce5da84d0b95cda5ec900e425caf14a6ad94247841f.
+Original test-quoting failure retained; verify-only0/0 ZEROroot changes, samepayload,
+seven realUID101/NNP startup/custom/opt-out/plain/readonly/login/noninteractive cases
+plus idempotence/hook/flags preservation. Existing homes untouched. Actual GUI
+rendering pending. Do not reinstall/replay unchanged tests.
 
-Cold custody is COMPLETE; native boot lock released. Dedicated browser scratch
-file prepared once:16GiB/full allocation, serialTODDY-B02-FIREFOX,
-receipt.local/vm/phase2/firefox-scratch.json; inode11956378/device66306,
-host110,809,731,072B free after allocation,100GiB reserve retained.
-No guest attachment/format/mount yet. Do NOT rerun preparation. Inspect actual
-QMP/guest device/receipts before any attach or format. Next: attach only this
-recorded virtual file (guarded live QMP or controlled builder restart with existing
-cache recovery), verify unique serial/size/blank signatures under the single guest
-writer lock, and record pending intent before a one-time filesystem creation.
-Keep kernel scratch/target/backing/master unchanged. Preserve100GiB host/16GiB
-target/128MiB scratch reserves. Eight focused attachment-guard tests passed.
-Browser recipe/source/security review is independently eligible. Terminal defaults
-CLI qualified; actual GUI rendering remains pending.
+## Completed cold backup custody — never replay
 
-Frozen Firefox153.2.0esr archive already cached807,705,672B. Read pinned book
-xsoft/firefox.html/current code before recipe. Need owned dependency/security/ABI
-review, reproducible source build, actual install/UI. No official branding/API
-key example or sandbox relaxation by default. Do not assume book's no-test disk
-estimate is runtime acceptance. Preserve final B02 stopping boundary.
+[Capacity evidence](evidence/B02-firefox-build-capacity.json): controller1450932
+TERMINAL0/process absent, statecomplete,1023durable chunks/originalwhole SHA
+6b8f1ad2736c8f7a4f02f361272c1e27ca151ff76b59bcee70fed8f7a7c3c8e1
+for34,298,068,992bytes. Oldh07-gcc-tested-target.qcow2 path absent; retained
+source.custody is hole skeleton, NOT BOOTABLE. Restore from verified chunk archives
+in order only with sufficient space, then whole SHA/length/QEMUcheck. Active/
+backing/foundation-master untouched. Native boot lock released. Existing math
+custody also complete/untouched. Host110,809,731,072B after16GiB allocation.
 
 ## Current packages, cache and recovery
 
-Current builder boot8688d2de-c1de-4579-8935-173fda4df4ea; target /mnt/lfs on designated
+Current builder boot474caba2-3085-4d07-bba0-e2548b5728d4; target /mnt/lfs on designated
 virtual TODDY-LFS-TARGET (/dev/vdb4), one writer build.lock. Native7.1.8-toddy.
 GNOME Shell/Mutter50.4, GDM50.2, Nautilus50.2.2-1+toddy1,
 LocalSearch3.11.1-1+toddy1, Gvfs1.60.2-1+toddy1, GTK4.22.4-1+toddy13.
-Parent lfs-target.qcow2 identity before native1:52,446,887,936B,
+Parent lfs-target.qcow2 identity historically before native1:52,446,887,936B,
 mtime_ns1794373717214861615/device66306/inode11929205; compare actual, never trust
 chat PID/state alone. Reserves target16GiB/host100GiB/scratch128MiB.
 
