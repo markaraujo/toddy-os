@@ -3679,3 +3679,33 @@ revisions/notices to preserve upstream WASM decoding isolation. Asset downloaded
 only; safe extraction/ABI/isolation/C/C++ WASM qualification and browser configure
 remain pending. Change selection: actual NASM consumer plus required make check;
 unchanged foundation/native GUI suites reused.
+
+## B02 private WASM tools qualified and Firefox compiler started — 2026-11-11
+
+SDK preparation1 failed before any receipt/extraction/alias writes: new metadata
+lock was missing from transfer allowlist. One narrow allowlist correction; actual
+empty postconditions checked, preparation2 passed. Source payload/read-only tool
+profile qualified with actual UID101/caps0/NNP, no external route or credential
+paths, denied source/system/tool mutation and C/C++ WASM compile/link/v1format.
+[Tool evidence](evidence/B02-browser-wasm-tools.json).
+
+Firefox configure1 failed system PNG APNG symbol probe. Retained original
+recipe/log/mozconfig, selected this source archive bundled PNG1.6.58 without
+upgrading native PNG; configure2 passed. Generated Wayland/system NSS+NSPR+ICU,
+main sandbox and all6WASM library protection flags verified; updater/crashreporter/
+official branding absent. [Configuration evidence](evidence/B02-firefox-configuration.json).
+
+Actual isolated compiler started6jobs; live controller identity and C++/Rust/wasm2c
+output verified. Reserve supervisor and deterministic observer retain exact job/
+inputs/result, no repeated unchanged-log model polling. No compile/stage/install/
+native browser acceptance yet. Existing GUI/foundation evidence not repeated.
+
+Affected shared-profile checks initially failed two CUPS base-hash assertions.
+Byte comparison proved the sole generic delta is the exact Firefox-only branch;
+updated CUPS and adjacent Samba adapter pins without changing their extensions.
+Actual Bash checks prove private browser tool mounts are inactive for both inputs;
+unknown bases still fail closed. No unchanged native package suite replay.
+[Adapter proof](evidence/B02-browser-isolation-profile.json).
+
+Final affected checks: full make check374passed. Compiler still live with growing
+output and9,356,087,296B free at observation; no stage/install/browser acceptance.

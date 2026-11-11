@@ -24,15 +24,56 @@ wasi-sdk-25.0-x86_64-linux.tar.gz, SHA
 52640dde13599bf127a95499e61d6d640256119456d1af8897ab6725bcf3d89c.
 Official tag/source/LLVM/libc/config revisions and15exact license/notice URLs/hashes
 in config/phase2/browser-build-tools.lock.json. Local notices retained under
-.local/phase2/wasi-sdk-25-notices. SDK NOT EXTRACTED/EXECUTED/QUALIFIED yet.
+.local/phase2/wasi-sdk-25-notices. SDK extraction/execution qualification now passed as recorded below.
 
-Exact next action: verify existing SDK cached hash; safely extract only onto the
-browser virtual volume with pending receipt before writes. Then expose SDK/NASM
-private tools read-only through an exact browser profile in existing isolated.sh,
-qualify unprivileged no-egress/no-secret/outside-write/tool-mutation denial and
-actual C/C++ WASM compile/link/format. No SDK root/native compiler install, no
-sandbox disabling, no source/compile replay. Configure Firefox only after these
-prerequisites. Preserve reserves and final B02 stopping boundary.
+SDK preparation2 TERMINAL0, receipt browser-tools-input-1.json stateprepared;
+original prepare1 failed BEFORE ANY receipt/archive/tools/alias writes from missing
+metadata allowlist entry. That transfer cause resolved after one correction;
+no extraction replay. Actual SDK root tools/wasi-sdk-25.0-x86_64-linux readonly,
+all original files/modes/links inventoried. Browser tools probe1 TERMINAL0,
+[actual proof](evidence/B02-browser-wasm-tools.json): UID101/caps0/NNP, no external
+route, no credential/system paths, source/system/tool mutation denied; C/C++ WASM
+compile/link0/expectedv1magic, NASM3.02 version positive. Existing compiler root
+unchanged. Exact Firefox-only profile added to isolated.sh; tools readonly.
+Affected CUPS/Samba exact base/result pins updated after sole-delta byte proof;
+actual Bash tests confirm branch inactive for each. Full make check374passed.
+No unchanged native CUPS/Samba/compiler/GUI suite replay.
+
+[Configuration proof](evidence/B02-firefox-configuration.json): configure1 FAILED1
+from absent system PNG/APNG symbol png_get_acTL; original log/recipe/mozconfig
+retained. One correction selects source-bundled PNG1.6.58, preserves nativePNG;
+configure2 TERMINAL0. Generated Wayland/systemNSS+NSPR+ICU/main sandbox and all6
+WASM decoding library flags verified. No official branding/updater/crashreporter.
+No source patches, foundation upgrade, sandbox disabling or package installation.
+
+### Actual running compiler / exact next action
+
+Tool session10663, localcontroller.local/phase2/firefox-build-controller-1.py,
+log same stem.log. Guest controller11310/startticks in
+/var/log/toddy/phase2/firefox-build-controller-1.json; boot474caba2. Last actual
+/proc start match LIVE, compiler receipt state=running, C++/Rust/wasm2c output
+progress observed. Guest wrapper log/exit /var/log/toddy/phase2/firefox-build-1.log/
+.exit; build output /mnt/lfs/sources/phase2/work/firefox-build-1/firefox-compile-1.log,
+compiler receipt firefox-compile-result.json in same work directory.
+Command /src/mach build -j6; initial11,054,034,944B,128MiB floor+64MiB stop margin.
+Configstatus SHA473c3553e5db79572726d1f068cfb6c75ee050355222a864eb23f008d44ac493;
+mozconfig SHA899baac32c274db3e66781f19f7ff6d9e29866d92527a1198acd19ae4c2a31de.
+One guest writer held by isolated.sh; DO NOT sync metadata, mutate guest, reboot,
+start another writer or replay a compiler from a chat PID. Healthy long build
+excluded from diagnosis budget. Source/private SDK/tools read-only, no egress.
+
+Deterministic observer tool session51171,
+.local/phase2/observe-firefox-build-1.py/.local/phase2/firefox-build-observer-1.log;
+latest actual observation.local/phase2/firefox-build-latest-observation-1.json.
+Observer checks controller boot/PID/start, log bytes and real terminal exit every
+30s, reports only1MiB growth/5min/terminal. No repeated model calls for unchanged
+logs. If observer deadline/error inspect SAME controller/job, never restart build.
+Next: inspect actual live/terminal state and compiler receipt; on0 require both
+ELF artifacts and exact application version postconditions, then stage/owned
+security-ABI/license inventory/native qualification. Never treat timeout/log
+absence as success. Browser itself not accepted until actual runtime/UI evidence.
+Host-only source/security/inventory review eligible while compiler owns guest.
+Preserve100GiB host/16GiB target/128MiB scratch and final B02 stopping boundary.
 
 Builder RUNNING boot474caba2-3085-4d07-bba0-e2548b5728d4. Controlled restart
 controller firefox-builder-attach-restart-1 TERMINAL0. Existing recovery
