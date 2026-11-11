@@ -16,10 +16,11 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T08:06:17.607403+00:00
+Last verified: 2026-11-11T08:39:30.144164+00:00
 
 Verified:
 
+- Browser persistent mount recovery qualified with actual private namespace unmount/restore of existing raw filesystem+6aliases, exact inodes/flags/ELF checksums and completed replay refusal; global mounts afterward unchanged. Native network preflight0 verified4343installed files/cache/artifacts; GUI/real network controller prepared but not dispatched. make check377passed.
 - Host cold GCC builder custody COMPLETE0:178verified chunks/5949423616bytes and original whole SHA reconstruction, source skeleton inspected, native/cold locks released. Host113188540416B free at terminal; active target/master unchanged. Never replay completed custody.
 - Owned toddy-desktop-network0.2.0 installed recipe/post0/0,20full-root changes/64.83s; exact payload/conffiles, target NM0/networkd1 conditions and UID101/NNP policy write denial passed. Original DHCP/resolver retained. Native PID1/GNOME/polkit/DHCP/DNS/offline/reboot/recovery pending.
 - Original Firefox153.2 private compiler finished0 in2485.345s, independent ELF64/x86_64/SHA and exact application153.2.0 verified, reserve intact. No install/runtime acceptance; ADR0225 security153.7 required for delivery.
@@ -215,7 +216,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: B02 network config installed/chroot-qualified and obsolete baseline compiler complete; guest idle, host custody complete. Exact next: qualify existing browser raw-volume/alias recovery before any builder shutdown, then actual native NetworkManager/Settings/network/offline/recovery validation. Corrected153.7 browser still required. Complete all B02 then stop.
+Running: B02 native NetworkManager/Settings test prepared, preflight/cache/mount recovery qualified; controller not dispatched yet, builder running/no guest writer. Next one normal GDM owner/network UI on-off-reconnect plus actual packet/polkit/manager recovery. Corrected153.7 browser remains pending. Complete all B02 then stop.
 
 Remaining:
 

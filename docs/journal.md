@@ -3778,3 +3778,17 @@ absent, hole skeleton inspected, native/cold locks released. Terminal host
 113,188,540,416B free, reserves retained. Before any next native cold boot,
 qualify recovery of the new persistent browser raw volume/source/SDK/NASM/work
 aliases; existing generation4 RAM cache remains retained. No guest writer.
+
+## B02 browser mount recovery qualified; native network flow prepared — 2026-11-11
+
+Recorded actual existing raw volume/6aliases/inodes/options and compiler hashes.
+A real private mount namespace unmounted only its own bindings/base, restored
+them without format/source/build replay, verified same metadata/artifacts and
+refused completed replay. Global namespace inspection afterward unchanged.
+Prepared native normal GDM/Settings network UI plus actual DHCP/DNS/HTTPS, active
+Settings PID polkit and stop-before-switch networkd/fresh-lease recovery flow.
+Only this declared test uses bridge/QEMU user NAT; no host networking/TAP/inbound
+forward or privilege expansion. Preflight-only0 verified4,343installed files and
+unchanged RAM/browser caches. Controller not dispatched, no native network/UI
+acceptance. make check377passed.
+[Recovery/preflight evidence](evidence/B02-browser-mount-recovery.json).

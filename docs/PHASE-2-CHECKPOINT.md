@@ -22,15 +22,29 @@ NM_DIST_VERSION=ToddyOS is only its CLI banner. Source inspection verified this.
 
 ### Exact next action
 
-Before any builder shutdown/native boot implement and qualify an inspect/restore
-helper for the NEW persistent browser raw volume and its aliases below. It must
-restore existing mounts only, validate unique serial/UUID/size/receipts and refuse
-partial replay; no format/resize/compiler/source extraction. Then prepare one
-actual native GDM/Settings Network flow using the existing owner-control/boot
-harness. Preserve the qualified generation4 RAM cache before cold transition;
-reuse its archive only for unchanged bytes/metadata/link classes. Do not stop the
-builder until recovery covers all new browser aliases. Native boot lock is now
-released. Do not start another B story.
+Existing-browser recovery helper scripts/build/phase2/restore_browser_work.py is
+prepared and actually qualified in a PRIVATE mount namespace: all6aliases/base
+unmounted privately, existing raw fs/aliases restored, same inodes/flags/ELF hashes,
+completed-replay refused. Global mounts afterward inspected unchanged. Baseline
+receipt /var/log/toddy/phase2/browser-mount-baseline-1.json; private fixture receipt
+browser-private-restore-qualified-1.json. [Recovery proof](evidence/B02-browser-mount-recovery.json).
+No real VM reboot yet. --record is COMPLETE, never repeat. Future cold restore
+uses a NEW receipt argument after same6volumes/Systemd/Glycin/kernel and generation4
+recovery; no format/resize/source/compiler replay.
+
+Prepared actual native controller scripts/host/phase2_native_network.py, probe
+phase2-native-network-probe.py, context.local/phase2/native-network-runtime-1.
+Preflight-only COMPLETE0:4,343installed package files verified, exact RAM cache and
+browser artifacts/mounts intact. Controller NOT DISPATCHED yet; builder still
+running/no writer. Commit reviewed inputs/make check377passed before dispatch.
+Exact next: run controller once, inspect real context/PID/phase, operate its private
+GDM control socket to log in normally/open Settings Network/capture and toggle
+wired OFF then ON, retain images and actual NM states, then request DONE only
+when connected/off/reconnected GUI observations complete. Probe additionally
+requires actual DHCP/routes/DNS/public HTTPS/active Settings PID polkit and
+stop-before-switch networkd/newlease recovery/back-to-NM. Normal bridge/user NAT,
+no host networking/TAP/inbound forward/security weakening. Native result pending.
+Never replay a dispatched context; inspect real operation/container/report first.
 
 Network policy uses marker /etc/toddy/network/use-networkmanager with inverse
 service conditions, NM daemon-only wants link, keyfile/resolved defaults. Recovery
@@ -122,8 +136,8 @@ UUIDs/inodes via virtual_discard_checkpoint.restore_volumes() FUNCTION ONLY,
 never trim/main; same Systemd source (--restore), Glycin companion and kernel COW
 with NEW receipts. Kernel scratch remains1GiB/UUIDc6c4176d-faed-4ee3-9ae0-94914a0af666;
 never format/resize/rebuild. Then phase2_restore_settings_scratch.py --generation4
---receipt <NEW-name>. Also restore browser volume/aliases above with qualified
-helper BEFORE another compiler/native transition. Reconcile actual mounts/receipts
+--receipt <NEW-name>. Also restore browser volume/aliases above using restore_browser_work.py
+<NEW-receipt> (existing mounts only) before another compiler/native transition. Reconcile actual mounts/receipts
 on interruption, never replay completed recovery.
 
 ## Still due before B02 stop
