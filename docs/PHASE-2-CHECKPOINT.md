@@ -4,7 +4,35 @@ Owner boundary: **complete ALL B02, then stop before another story**. Full Phase
 Goal active/incomplete; B01/B03 accepted13%, B02 in_progress, B04 integration
 blocked, B05-B13/G2 pending. Physical foundation tests unperformed. No Phase2 ISO.
 
-## Current slice: frozen Firefox source preparation
+## Current slice: private browser compiler prerequisites
+
+[NASM proof](evidence/B02-nasm-build-tools.json): frozen3.02 source SHA
+87336eba53b4acfe917424ab5d500d2b0054d9f5148d35c2273ccf2cfb712f0d.
+Guest nasm-build-1.exit2 (original600 Makefile.in unreadable toUID101);
+nasm-build-2.exit0 after one metadata-only0644 correction of exactly3files,
+original contents/failed logs retained, fresh configure directory.
+Actual assembly/link/executable42/exact machine bytes/ndisasm positive control
+passed. Private stage /mnt/lfs/sources/phase2/work/nasm-1/stage, sourcealias
+/mnt/lfs/sources/phase2/inputs/nasm-3.02. No native OS install. Ledger resolved
+one correction; NEVER replay compiler/extraction/correction. No running writer.
+
+Actual source inspection: Firefox requires Clang>=19 for WASM; installed22.1.8
+has X86/AMDGPU only, no WASM/wasm-ld/ld.lld. ADR0224 chooses private official
+WASI SDK25 bootstrap to retain upstream WASM decoding isolation. Native compiler/
+foundation unchanged. Asset114,450,290B already cached.local/sources/
+wasi-sdk-25.0-x86_64-linux.tar.gz, SHA
+52640dde13599bf127a95499e61d6d640256119456d1af8897ab6725bcf3d89c.
+Official tag/source/LLVM/libc/config revisions and15exact license/notice URLs/hashes
+in config/phase2/browser-build-tools.lock.json. Local notices retained under
+.local/phase2/wasi-sdk-25-notices. SDK NOT EXTRACTED/EXECUTED/QUALIFIED yet.
+
+Exact next action: verify existing SDK cached hash; safely extract only onto the
+browser virtual volume with pending receipt before writes. Then expose SDK/NASM
+private tools read-only through an exact browser profile in existing isolated.sh,
+qualify unprivileged no-egress/no-secret/outside-write/tool-mutation denial and
+actual C/C++ WASM compile/link/format. No SDK root/native compiler install, no
+sandbox disabling, no source/compile replay. Configure Firefox only after these
+prerequisites. Preserve reserves and final B02 stopping boundary.
 
 Builder RUNNING boot474caba2-3085-4d07-bba0-e2548b5728d4. Controlled restart
 controller firefox-builder-attach-restart-1 TERMINAL0. Existing recovery
@@ -23,7 +51,7 @@ Guest receipt /var/log/toddy/phase2/firefox-work-volume-1.json state=mounted.
 Host full allocation guard passes;100GiB host/16GiB target/128MiB scratch reserves
 unchanged. NEVER repeat preparation/format/recovery. Required make check370passed.
 
-### Actual running source job / exact next action
+### Retained source preparation
 
 Source extraction session92782 TERMINAL0; guest receipt firefox-source-1.json
 stateprepared/read-only source.509,835members/3,514,842,428expanded bytes,
@@ -31,9 +59,9 @@ stateprepared/read-only source.509,835members/3,514,842,428expanded bytes,
 No configure/compiler yet. No running guest writer. NEVER replay extraction.
 Local log.local/phase2/firefox-source-prepare-1.log/exit retained.
 
-Next inspect actual GTK/Wayland conditional dependencies and set up qualified isolated
-configure. Frozen source supports cairo-gtk3-wayland-only; installed GTK3 is
-Wayland-only. Don't add unnecessary X11 dependencies or rebuild foundation.
+Source configured toolkit choices support cairo-gtk3-wayland-only; installed GTK3
+is Wayland-only. No startup-notification reference found in actual configure files;
+do not add unnecessary X11 dependencies or rebuild foundation.
 Need source/compiler/security/ABI review, native install/UI/sandbox acceptance.
 No official branding, example Google API key or sandbox relaxation. Book estimate
 8.9GB/15SBU is not actual runtime acceptance. Source lock153.2.0esr SHA

@@ -3664,3 +3664,18 @@ Frozen Firefox extraction then completed0:509,835members/3,514,842,428bytes,
 archive SHA verified before extraction and source now mountedread-only;
 11,704,008,704B available on dedicated disk. No configure/compiler yet.
 [Source evidence](evidence/B02-firefox-source-preparation.json).
+
+## B02 private browser compiler prerequisites — 2026-11-11
+
+Frozen NASM3.02 source fetched/integrity pinned; isolated first build2 failed
+from official0600 Makefile.in unreadable byUID101. Original receipt/log retained.
+One metadata-only three-file0644 correction preserved all contents; fresh configure
+directory, compiler/stage0, exact assembly bytes/link/execute42/ndisassembly passed.
+No native OS install or upstream-suite claim. See [NASM evidence](evidence/B02-nasm-build-tools.json).
+
+Source review identified missing WASM tools versus FirefoxClang>=19 requirement.
+ADR0224 freezes private official WASI SDK25 bootstrap and exact source/submodule
+revisions/notices to preserve upstream WASM decoding isolation. Asset downloaded
+only; safe extraction/ABI/isolation/C/C++ WASM qualification and browser configure
+remain pending. Change selection: actual NASM consumer plus required make check;
+unchanged foundation/native GUI suites reused.

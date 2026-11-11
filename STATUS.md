@@ -16,10 +16,11 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T06:34:37.082872+00:00
+Last verified: 2026-11-11T06:48:19.886402+00:00
 
 Verified:
 
+- Private NASM3.02 isolated source compile/stage qualified: actual assembly/link/exit42/exact machine bytes/disassembly passed. Original2 failure retained (three official600 files unreadable to UID101); one metadata-only readability correction, original contents unchanged. WASI SDK25 bootstrap asset/source commits/notices pinned, execution/isolation/WASM C/C++ qualification pending.
 - Browser virtual build disk attached after controlled builder restart; existing6volumes/Systemd/Glycin/kernel and generation4cache restored/verified. Unique blank16GiB browser device formatted once/mountednosuid,nodev; host allocation/reserve intact. Frozen-source extraction0/SHA verified/readonly source,509835members/3514842428bytes; no browser configure/build/install/UI acceptance.
 - Browser build capacity prepared: cold backup custody complete with1023verified chunks and original whole SHA; separate fully allocated16GiB virtual browser file prepared,100GiB host reserve retained. Eight attachment guard tests passed. Guest attachment/format and Firefox build/install/UI remain pending.
 - Owned toddy-terminal0.2.0 defaults installed: original recipe0/post1 test-expectation quoting error retained; verify-only0/0 zero root changes with unchanged archive/payload. Seven actual UID101/NNP startup/custom/opt-out/plain/readonly/login/noninteractive scenarios plus idempotence/hook/flags preservation passed. Existing homes/fonts unchanged; native Terminal rendering pending.
@@ -207,7 +208,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: B02 Firefox source prepared/SHA verified/read-only on dedicated build volume. Next actual conditional dependency review and isolated configure; no compiler/browser acceptance. Builder boot474caba2 existing cache fully recovered; terminal GUI/network/audio/final desktop gates pending. Complete all B02 then stop.
+Running: B02 Firefox build-tool prerequisites: NASM private stage qualified; WASI SDK25 downloaded/pinned, next safe extraction and isolated WASM qualification before Firefox configure. No browser build/install/UI acceptance. Complete all B02 then stop.
 
 Remaining:
 

@@ -2987,6 +2987,18 @@
       "book_md5": "467f7d017234e5aab24d8e0a4e09deff",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "nasm",
+      "version": "3.02",
+      "filename": "nasm-3.02.tar.xz",
+      "url": "https://www.nasm.us/pub/nasm/releasebuilds/3.02/nasm-3.02.tar.xz",
+      "sha256": "87336eba53b4acfe917424ab5d500d2b0054d9f5148d35c2273ccf2cfb712f0d",
+      "reference": "BLFS13.1-systemd general/nasm.html",
+      "book_page_sha256": "ec9981eea8ebe5c0405a62a1ce8d185c4143412454de790e57cb20b5a1b08ad5",
+      "book_md5": "31ba022fff8de3065b5bc5ad5559188c",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

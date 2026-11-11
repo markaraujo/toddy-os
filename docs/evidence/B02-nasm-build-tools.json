@@ -1,0 +1,45 @@
+{
+  "build1_exit": "2",
+  "build2_exit": "0",
+  "correction": {
+    "state": "complete",
+    "original_recipe_sha256": "25de967072a2433d4183f5284e5649002e33ea47c8132eb9fd9719a58082b269",
+    "files": [
+      {
+        "path": "Makefile.in",
+        "old_mode": "0600",
+        "new_mode": "0644",
+        "sha256": "7791f995160c9952e504d5130422a59a375022c4a4c4893a56ffe98f33f473e1"
+      },
+      {
+        "path": "Mkfiles/msvc.mak",
+        "old_mode": "0600",
+        "new_mode": "0644",
+        "sha256": "ae7ad76d9e3b98c7fb9edba6027b838b0d686066e8475674dda39271baec5ff5"
+      },
+      {
+        "path": "Mkfiles/openwcom.mak",
+        "old_mode": "0600",
+        "new_mode": "0644",
+        "sha256": "58b85e20caf83ef62118a52ed29b885b87ecc59e482b33f629f19afcec25ec55"
+      }
+    ],
+    "corrected_recipe_sha256": "ef5bab7b92fddc879cb759bee27cb346a88d21f96f6f58c0499647ac07f623b3"
+  },
+  "result": {
+    "state": "stage-qualified",
+    "source_version": "3.02",
+    "configure_compile_stage_exit": 0,
+    "assembler_link_execute_exit": 42,
+    "machine_bytes_exact": true,
+    "disassembler_positive_control": true,
+    "stage_files": {
+      "usr/bin/nasm": "77836c472385e3d193b630824a95db223088e560aea283f31e0d135ea80351fd",
+      "usr/bin/ndisasm": "541c31828d86e099929043efa20ea2fbec3a926fd239febaa751af8d9d6c229c",
+      "usr/share/man/man1/ndisasm.1": "6dcc277f697a89750ab6701df0cbd8b7ee6e7b75e50dd4fc6dc854128ccf1603",
+      "usr/share/man/man1/nasm.1": "80bc379c622a9294baa4ee5703037cd37d423e7996efebfde32070491dd5401f"
+    },
+    "scope": "Private compiler tool only; not installed in OS or native package acceptance. Frozen book describes no upstream test suite."
+  },
+  "scope": "Private isolated NASM tool qualification; not a browser or whole B02 acceptance"
+}

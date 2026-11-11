@@ -11295,6 +11295,13 @@
       "version": "2.10.3",
       "license": "LicenseRef-Cracklib-wordlists",
       "evidence": "Exact recommended upstream distribution: Cracklib2.10.3 README-WORDS states prior cracklib/crack and/or public-domain source lists. Compressed/expanded SHA256 and exact README-WORDS retained; no claim for other downloadable word lists."
+    },
+    {
+      "name": "nasm",
+      "version": "3.02",
+      "license": "BSD-2-Clause",
+      "evidence": "Exact LICENSE and per-file notices retained from the pinned official source; source LICENSE SPDX identifier reviewed.",
+      "runtime_inclusion": "Private isolated browser compiler tool; not installed into the desktop or advertised as base software."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
