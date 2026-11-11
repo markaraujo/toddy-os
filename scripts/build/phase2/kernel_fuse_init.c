@@ -78,7 +78,10 @@ int main(void) {
  for(int cycle=0;cycle<2;cycle++) {
   f=open("/fuse.ko",O_RDONLY);need(f>=0&&!syscall(SYS_finit_module,f,"",0),"FUSE module insertion");close(f);
   struct stat device;need(!stat("/dev/fuse",&device)&&S_ISCHR(device.st_mode)&&!access("/sys/module/fuse",F_OK),"FUSE device and module present");
-  p=fork();need(p>=0,"FUSE owner fork");if(!p)_exit(fuse_owner());need(waitpid(p,&status,0)==p&&WIFEXITED(status)&&!WEXITSTATUS(status),"UID101 FUSE open/direct mount denial");
+  /* No udev daemon in this diagnostic: replay only the exact installed
+     Systemd261.2 50-udev-default.rules FUSE MODE=0666 rule. */
+  need(!chmod("/dev/fuse",0666),"installed udev FUSE device mode");
+  p=fork();need(p>=0,"FUSE owner fork");if(!p)_exit(fuse_owner());need(waitpid(p,&status,0)==p,"FUSE owner wait");if(!WIFEXITED(status)||WEXITSTATUS(status)){printf("fuse_owner_status=%d device_mode=%o\n",status,(unsigned)device.st_mode);finish(0,"UID101 FUSE open/direct mount denial");}
   need(!syscall(SYS_delete_module,"fuse",O_NONBLOCK)&&access("/sys/module/fuse",F_OK)<0&&errno==ENOENT,"FUSE unload recovery");
  }
  printf("Landlock ABI=%d uid=101 rulesets=2 allowed_roundtrips=4 denied_reads=4 denied_writes=4 denied_creates=4 fresh_process_recoveries=2 seccomp_denials=2 namespace=pass module=insert-remove fuse=2-owner-opens-direct-mount-denials-unloads firmware=%s\n",abi,efi?"uefi":"bios");

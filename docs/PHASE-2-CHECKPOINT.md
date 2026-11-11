@@ -58,13 +58,21 @@ included real-mount signal driver; preserve failed log. Stage2 COMPLETE0 reuses
 compiler outputs,2non-mount upstream drivers and helper version/refusal pass.
 Native mount/signals/root helper/denial/recovery tests remain pending, not skipped.
 No native FUSE/kernel package installed. Host/guest source caches persist.
-Next: inspect terminal kernel-fuse-boot-prepare-1 job/controller10002/result and
-then commit reviewed inputs and run ONCE `python3 scripts/host/phase2_kernel_fuse_boot.py`.
-Context .local/phase2/native-kernel-fuse-1 MUST be absent before first dispatch.
-No-disk BIOS/UEFI diagnostic preserves Landlock/seccomp/namespaces and checks two
-FUSE module cycles/UID101 device access/direct mount denial/unload. No GUI/installer
-or mounted-filesystem acceptance from that diagnostic. Next actual native package,
-FUSE mount/signals/helper policy, then frozen portal builds/native appearance.
+First native-kernel-fuse-1 BIOS diagnostic is TERMINAL failure: actual kernel/
+FUSE module load passed; UID101 open failed because static diagnostic lacks udev.
+Actual installed Systemd261.2-1+toddy3 50-udev-default.rules owns FUSE MODE0666;
+bytes independently match package record. No installed permission/security change.
+Correction1 new C diagnostic applies only that rule in its own volatile devtmpfs,
+adds child status on failure. New boot-prepare2/controller10707 COMPLETE0, canonical
+C SHAc56c1dfc3e4ae53c86f82011e46745552d05db562c9071ff5ba4b83ee147f630,
+initramfs SHA c93df43f9f3504b2310555b12917a04ae44ad99db02c6461f3c0536f9689d176.
+Kernel/source/module bytes unchanged; no compiler/kernel replay.
+Next commit reviewed correction then run ONCE
+`python3 scripts/host/phase2_kernel_fuse_boot_retry.py` using fresh
+.local/phase2/native-kernel-fuse-2 (must be absent before first dispatch).
+Native FUSE device/UID/denial/unload and Landlock/seccomp/namespaces BIOS+UEFI gate,
+then native package/mount/signals/helper policy and actual portal/appearance.
+Original failed context1/report/log retained; budget in failure ledger survives.
 
 Test selection: changed input/syntax plus make check381, readonly native report
 reconciliation and real QMP scanouts. No foundation suite repeated.
