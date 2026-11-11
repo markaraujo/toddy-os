@@ -3442,3 +3442,5 @@ remains parked; next eligible CUPS source/build review.
 | 2026-11-11 | B02 owned Samba client and authenticated exchange | Qualify private root fixture with restricted capabilities and isolated sessions. Promote exact client-only closure through native backend | Real file roundtrip, wrong-auth refusal, Stop/reconnect passed in fixture5. Native install/post0/0,129owned entries. Settings build next. |
 
 | 2026-11-11 | B02 staged GNOME Settings | Reuse bundled GVC/libgxdp and exact frozen Tecla source in private tmpfs, compile, run portable originals and stage | 391ELFs,4programs/4TAP cases,304stage files,23panel identifiers and CLI refusal/recovery verified. Recover29,581,312B from qualified closed NetworkManager promotion, root0. Native Settings packaging/schema union next. |
+
+| 2026-11-11 | B02 installed GNOME Settings | Qualify original stage and actual native runtime owners, promote on private tmpfs, install through native backend | Recipe/post0/0,325paths/576entries. Native CLI/refusal/recovery,4linkages,source notices and3private schema defaults passed. Shared owned schema-cache integration next. |

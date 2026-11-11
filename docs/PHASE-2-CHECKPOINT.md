@@ -492,22 +492,43 @@ payload, retained source and archive. Never replay custody.
 [Custody](evidence/B02-networkmanager-promotion-custody.json).
 Actual target free17,216,565,248B. No guest writer remains.
 
-EXACT NEXT: qualify and promote the Settings stage with its bundled GVC/
-libgxdp and frozen Tecla legal material. Keep archives and new promotion
-on the existing tmpfs, using guarded read-only source-file aliases.
-Compute runtime package dependencies from all4staged executables in the
-native target. Verify version/list/refusal/recovery on the installed bytes.
-Then extend the existing owned shared-schema union for the new
-org.gnome.Settings schema before GUI testing. Preserve current schema-cache
-ownership and reuse the existing schema integration machinery. Full native
-GNOME/session and B02 acceptance remain pending.
+Native Settings install PID243745 recipe/postcheck0/0,325changed paths and
+576owned payload entries. ArchiveSHA256
+33f0945a66579fa30a1d07f08fdede377670cc58900e367b921c70f3a7fa659e.
+[Install evidence](evidence/B02-gnome-control-center-install.json) verifies
+all304original files, links and both source notice inventories. Installed
+UID101/NNP version50.4/list23panels/refusal/recovery, all4executable linkages
+and three temporary compiled schema defaults passed. No source/compiler/
+portable-test replay. Shared system schema integration and GUI pending.
+No writer remains; last target free17,190,621,184B.
+
+EXACT NEXT: extend the existing owned shared-schema union before GUI tests.
+Current gschemas.compiled belongs to GTK4.22.4-1+toddy9. Its record SHA256
+fef35462b599b404b0df5e68ad290f37f8c6a59879b9f2065bf2bd93607968c9,
+archiveSHA2569c99cbf271566b44efcdf369ccba0ed9e2f3549819e7bf736f189209dd0533b5.
+Current raw schema directory has78entries. Reuse schema_union_build.py
+and the GTK same-version cache integration, preserving all baseline
+schema/key/type/default/range contracts and installed GTK runtime bytes.
+Prepare source/work and GTK promotion on the existing tmpfs.
+
+First recover sufficient target headroom from closed GTK metadata promotion
+replicas. Current stage phase2-gtk-editor-schema-union inode9503390 owns
+the exact installed toddy9 payload and allocates98,611,200B. Archive and
+installed payload must be fully verified before retiring its usr copy.
+Use streaming dpkg archive member verification if restoring a second
+98MBcopy cannot preserve the target reserve. This is a verification
+implementation choice; do not lower integrity or any reserve. Existing
+retire_gtk_schema_promotion_stages.py provides the custody model.
+If more transient unpack headroom is required, inspect current
+phase2-gtk3-ibus-cache (65,331,200B) with its own actual record/archive;
+never retire either from this note alone. No custody for these has run.
 Read-only native runtime audit is retained in
 .local/phase2/control-center-runtime-dependencies-1.json. All4staged ELF
 executables resolve without private build paths to89owned linked packages.
 The audit reuses target_resolve from audit_native_elf.py and the actual
 native package lists; these are linked dependencies, not catalogue options.
-Last published7aebc39: all3workflows success, publicHTTP200/indexSHA256
-8840fa2daeeb1cfa895d9d4bb16b20be62a261b5fcd2defe7b49202f1ded481e.
+Last published0a42943: all3workflows success, publicHTTP200/indexSHA256
+674cda14e328a6a7d080ae1ae66d440733d4599bfe6b0b33673d3f5811a2cd9b.
 Cold native tests require measured headroom and an isolated VM. UDisks policy,
 Settings/Samba and GNOME session remain pending. Stop after accepted B02.
 

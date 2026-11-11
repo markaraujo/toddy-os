@@ -2,6 +2,13 @@
   "schema_version": 1,
   "components": [
     {
+      "name": "gnome-control-center",
+      "version": "50.4",
+      "license": "LicenseRef-GNOME-Control-Center-per-file",
+      "evidence": "Exact named notices from the GNOME Control Center archive including bundled GVC/libgxdp, and the separately pinned Tecla50.0 archive; retain per-file copyright and licensing conditions.",
+      "runtime_inclusion": "Settings application, providers, printer renderer, compiled local subproject code, schemas and desktop resources."
+    },
+    {
       "name": "samba-client",
       "version": "4.24.6",
       "license": "LicenseRef-Samba-source-per-file",
