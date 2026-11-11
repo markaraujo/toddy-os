@@ -1,0 +1,64 @@
+{
+  "stage_controller": {
+    "state": "terminal",
+    "pid": 44121,
+    "start_ticks": "596763",
+    "boot_id": "e146fad4-b1e4-4199-9935-3223e693a00b",
+    "recipe_sha256": "c6b9bd8312b68a6141773076baf150ef9cc219a7064acc4dce462658eccf2183",
+    "exit": 0,
+    "stage_manifest_sha256": "bf706aec3028e5d1ac4eba7c3aaa05914cf6e36d0b06f8c6e3fed908e473adb0",
+    "stage_entries": 65
+  },
+  "stage": {
+    "state": "staged",
+    "source_version": "153.7.0esr",
+    "compiled_artifacts": {
+      "firefox": "9b88fe1184812d20d9a27dadee5be99e3960a2316b308394ca7a7abde6f4a2b4",
+      "libxul.so": "6842891cdfcef7f3e3ef23fdd2f1e33f5da62abfabade43ca2fde1d632bb24be"
+    },
+    "compiler_result_sha256": "181298462257995ba754477c0dbfbdda12c554affdc2efbf358516e2f204fb5a",
+    "scope": "Upstream install to private DESTDIR only; no native package install or browser runtime acceptance",
+    "stage_exit": 0,
+    "elapsed_seconds": 4.561,
+    "runtime_artifacts": {
+      "firefox": "152c92a6ece67607b4ece42eff063ee12b84ad5ac6d8e0252128e04fed184e87",
+      "libxul.so": "face72639ae2a99d9247ddd61d6b3cdabdaae18d2d9617ff032e3e35890dfc38"
+    },
+    "post_stage_compiler_artifacts": {
+      "firefox": "9b88fe1184812d20d9a27dadee5be99e3960a2316b308394ca7a7abde6f4a2b4",
+      "libxul.so": "6842891cdfcef7f3e3ef23fdd2f1e33f5da62abfabade43ca2fde1d632bb24be"
+    },
+    "desktop_sha256": "e7252dc108394e061c7013ec5b46ecd32dc684a500c98a9303c5dcc31b6fd9df",
+    "icon_sha256": {
+      "16": "1e8aea59ad881e31e351f7f38143293a45a8e7b916571f3eccce5e89844c1969",
+      "32": "6b7170dd4e0ad2a095f11bb2d84c35bb7495e30e38218045eb85f81882f46a29",
+      "48": "9ffbdd36b545394fca032ff753d5422c8092de97acd22ede27ea0b3b0dcb2359",
+      "64": "060fd5cd86fda946ff84225f3035675e8031e25af55ef49c3bc16c779058fea9",
+      "128": "be2fdb8622b028a2248510793980e8b9294cee66d55ca2cb0a103610bd409ba4"
+    },
+    "regular_files": 37,
+    "stage_bytes": 294038937
+  },
+  "archive_storage": {
+    "state": "complete",
+    "archive_sha256": "c443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c",
+    "archive_bytes": 807705672,
+    "original_inode": 7340063,
+    "before_target_free": 17307795456,
+    "scope": "Source-cache storage only; no installed package or source-byte change",
+    "after_target_free": 18115506176
+  },
+  "archive_private_restore": {
+    "state": "qualified",
+    "scope": "Actual same-kernel private-namespace file-alias restore, no global mount change or cold boot claim",
+    "readonly_root_write_denied": true,
+    "same_bytes_inode_flags": true,
+    "completed_replay_refused": true,
+    "inspection": {
+      "state": "inspected",
+      "archive_sha256": "c443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c",
+      "same_inode": true,
+      "readonly_alias": true
+    }
+  }
+}

@@ -4,11 +4,10 @@ Owner boundary: **complete ALL B02, then stop before another story**. Full Phase
 Goal active/incomplete. B01/B03 accepted13%; B02 in_progress; B04 integration
 blocked, B05-B13/G2 pending. Physical foundation tests unperformed. No Phase2 ISO.
 
-ACTIVE NOW: corrected compiler2 rootpid7160/start312325/boote146fad4,
-tool session94430. Deterministic observer session93581 is live. See LIVE section.
-DO NOT stop builder, dispatch another guest writer or replay any completed operation.
+ACTIVE: no compiler or stage writer remains. Corrected compile2 and isolated
+staging completed0; see current slice. Never replay them. First build failure kept.
 
-## Current slice: corrected Firefox compiler running
+## Current slice: install qualified corrected Firefox package
 
 Native remaining recovery2 COMPLETE0, context.local/phase2/native-network-recovery-runtime-2,
 raw reportSHA87b160c67f2ff0a5b50884630c6be0017a0c254643f5a8d197cbe775a25169ef,
@@ -96,70 +95,52 @@ bytes. Context/receipt COMPLETE, NEVER replay or re-extract original source ther
 Source153.2 input alias now contains retired marker, not an available source tree.
 Root source/alias inspections afterward passed. Custody writer terminated; compiler2 is now live below.
 
-## LIVE compiler — inspect before any guest mutation
+Corrected compiler2 COMPLETE0 (input76825d6, controller94430 terminal0),
+2508.366seconds/no reserve stop. [Independent compiler proof](evidence/B02-firefox-security-compile.json):
+153.7.0/ELF64x86_64, Firefox9b88fe1184812d20d9a27dadee5be99e3960a2316b308394ca7a7abde6f4a2b4,
+libxul6842891cdfcef7f3e3ef23fdd2f1e33f5da62abfabade43ca2fde1d632bb24be.
+Original failure/configure unchanged. Never repeat compiler/configure/custodies.
+Observer2 only reads old terminal job; a stale observer row is not a live compiler.
 
-Corrected build2 DISPATCHED once, input76825d6/tool session94430. Actual root
-controllerpid7160/start312325/boote146fad4-b1e4-4199-9935-3223e693a00b,
-recipeSHA66019183411d860bd4626d2343e3c7d0543cda0db2a0006bb97028b1e14105d7.
-Root receipt /var/log/toddy/phase2/firefox-security-build-controller-2.json,
-wrapper firefox-security-build-2.log/.exit. Work alias
-/mnt/lfs/sources/phase2/work/firefox-security-1537-1 -> BASE/build/browser-security-1537-1;
-compiler firefox-compile-2.log/result-2.json. Inner pid52/start312574 is PRIVATE
-PID namespace, not global process identity. Original failure/configure untouched.
+[Isolated staging](evidence/B02-firefox-security-stage.json) COMPLETE0 (controller49676),
+4.561s/37regular files/294038937B,65entries, manifest
+bf706aec3028e5d1ac4eba7c3aaa05914cf6e36d0b06f8c6e3fed908e473adb0.
+Real staged153.7.0, native GLib desktop parse,5exact upstream icons and relative
+launcher passed; no absolute/escaping link/privileged stage entries. Compiled
+original ELF hashes preserved; upstream staged stripping yields separate runtime
+hashes in proof. Work/stage at firefox-security-1537-1/stage. No install/UI pass yet.
 
-Verified live controller and busy generated-code processes; log grew6255->13557B,
-499412inodes remain at10:03:50UTC. Byte/inode reserves healthy; not a completed
-compiler. DO NOT replay controller/configure/source/custody or stop builder/native
-boot while this writer is active. One isolated writer -j6/UID101/caps0/no-egress/
-ROsource+tools. Exact source/work pair; original result/log hashes retained.
-Root requires completed custody, unchanged failed inputs and successful configure.
-Supervisor byte128MiB+64MiB/inode2048+1024 margins through actual compiler exit.
+Original archive storage relocation COMPLETE0 (controller54653), targetfree now
+18115506176B. Original807705672B bytes retained at BASE/security-source-archives/
+firefox-153.2.0esr.source.tar.xz with readonly alias at original /mnt/lfs/sources
+path; SHA unchanged. Same-kernel private restore/replay refusal/root-write-denied
+qualified0. Original data/old source recovery proof preserved; no format/delete
+without same-byte proof. After future cold builder/base recovery also run
+firefox_archive_storage.py --restore NEW-name; original empty placeholder is not
+an archive until this existing-file alias is restored. Existing candidate4aliases
+still restore separately via restore_firefox_security_source.py NEW-name.
 
-Deterministic host observer .local/phase2/firefox-security-build-monitor-2.py
-RUNNING tool session93581; actual identity file same stem.identity.json, observations
-same stem.jsonl/latest.json, terminal record same stem.terminal.json. Samples60s
-then300s, no model invocation. Observer failure/timeout is not native termination;
-inspect same root receipt/process/log before any action. Host build controller log
-.local/phase2/firefox-security-build-controller-2.log appears only when wrapper
-returns; missing host log is not failure. Root and compiler receipts/logs authoritative.
+Exact next action: commit/check/sync prepared firefox_install.py/firefox-install.sh/
+firefox-check.sh, then read-only dependency preflight before one full-root run_step
+b02-firefox-install (recipe phase2/firefox-install.sh, post phase2/firefox-check.sh,
+--user root). Root receipt /var/log/toddy/phase2/firefox-package-install-1.json and
+b02-firefox-install.* must not exist. Package153.7.0esr-1+toddy1, actual owned/pinned
+ELF providers plus audio/trust/fonts; no invented missing library support. Promote
+stage by controlled bind (no target-root stage duplicate), exact source notices,
+preflight16GiB+actualpayload+64MiB, normal native backend. Post actual payload/APT,
+UID101/NNP version/native desktop-entry consumer; GUI/TLS/content-sandbox/offline/
+restart gates remain separate. On interruption inspect real package/DB/receipt;
+never replay uncertain install. Full root before/after via run_step required.
 
-Host-only preparation while compiler runs (NOT synced/dispatched):
-- firefox-security-stage.sh uses pinned upstream mach install/DESTDIR=/stage,
-  validates compiled result2,153.7AppVersion, native GLib desktop parsing, exact
-  upstream icons and relative launcher; full root stage/link/ELF qualification due.
-- firefox_archive_storage.py prepares guarded same-byte original archive relocation
-  to browser volume/read-only alias, freeing807MBtarget space before installation.
-  Both full hashes verified before old duplicate deletion; fixed paths/receipt and
-  existing-file restore mode, no format/source-byte change. Native qualification due.
-Pinned BLFS pageSHAe3fcd198bbfa3b8ecae24abce029c2a04809bc300c9dc295de92a9446889d0a8
-and actual153.7 mach_commands.py/installer packager.mk confirm DESTDIR support.
-Do not execute either script while compiler owns guest lock. On terminal finish
-compiler evidence, then source archive storage/native restore checks, isolated
-staging and directly affected package/ABI checks. Consolidate evidence/publication.
-Read-only lookahead found default.target still multi-user, no display-manager
-alias. Prepared desktop-graphical-boot.sh/check.sh uses owned native Systemd
---root enable GDM/set-default graphical only for exact unowned foundation link
-and absent manager; full run_step transaction/native boot still due. Existing
-ownership audit explicitly accepts native generated links to owned units. No
-PAM/unit/security/user-profile change, no autologin or host installation. Native
-default graphical power-on remains unproven until actual guest boot. Dedicated
-desktop-boot-probe.service uses Type=exec/RuntimeMaxSec900: Systemd261.2
-systemd.target.xml documents automatic After for target Wants/Requires; existing
-oneshot probe wanted by multi-user delays that target and would block normal
-GDM startup during observation. Keep original foundation probe unchanged.
-Local browser consumer pages at tests/fixtures/browser-smoke (loopback HTTP,
-normal owner, focus/input/navigation/stored-value test). They are test data, not
-native UI proof. Close/reopen process identity is separately required for restart
-persistence. No external assets/accounts or sandbox disabling.
-Actual kernel CONFIG_SND_HDA_INTEL=m exists; audio runtime unproven.
-
-Exact next action: inspect observer's actual identity/latest/terminal and root
-controller/worker postconditions. If healthy keep monitoring without restart or
-second guest writer; independent host source prep/read-only review only. On terminal
-require wrapper exit0, compiler compiled result2/exact153.7.0/ELF hashes, no reserve
-stop; then qualify stage/ABI/runtime security/native UI. Do not infer installable
-browser or B02 acceptance from configure/compiler alone. Target-root capacity
-review remains due before install. Complete ALL B02 then stop before next story.
+Prepared but NOT dispatched: desktop-graphical-boot.sh/check.sh to enable owned
+GDM and replace exact unowned foundation multi-user default only; preserves user
+changes. Native Typeexec desktop-boot-probe.service lets default targets finish
+while observing GDM, unlike old oneshot wanted by multi-user. Dedicated browser
+consumer fixture at tests/fixtures/browser-smoke is data for actual normal-owner
+GUI tests, not mockup/native acceptance. Finish browser install and boot policy,
+then actual default graphical boot/browser and remaining B02 combined checks.
+No second guest writer; no native boot while builder writer active. ALL B02 then
+stop before another story. No Phase2 ISO/G2 or physical acceptance.
 
 Custody recovery record: /var/log/toddy/phase2/firefox-baseline-source-custody-1.json,
 context /var/lib/toddy/phase2-custody/firefox-baseline-source-1, producerSHA

@@ -1,0 +1,65 @@
+{
+  "scope": "Actual native compiler and independent ELF/hash/version qualification only; stage/installed runtime/UI/security gates pending",
+  "controller": {
+    "state": "terminal",
+    "pid": 7160,
+    "start_ticks": "312325",
+    "boot_id": "e146fad4-b1e4-4199-9935-3223e693a00b",
+    "recipe_sha256": "66019183411d860bd4626d2343e3c7d0543cda0db2a0006bb97028b1e14105d7",
+    "custody_receipt_sha256": "651f846fcc0f76e08461ce5353b1bd4971b8ed2a36d47b2d8ae7681067908900",
+    "prior_failure_log_sha256": "15c3b0560452660ff63730d349249f80141fee00b9ac4a82371f2b34e3ce8d78",
+    "work": "/mnt/lfs/sources/phase2/work/firefox-security-1537-1",
+    "exit": 0
+  },
+  "compiler_result": {
+    "state": "compiled",
+    "command": [
+      "/src/mach",
+      "build",
+      "-j6"
+    ],
+    "inputs": {
+      "config_status": "a06186586b3a93e850c0264c7ff0eda2b51836c133b2559d043f6e74fcf217c0",
+      "mozconfig": "697afa833966cf37ffdb017d92f851fa7f6a3e6b98347520d2be6cfc627b5553"
+    },
+    "initial_free": 10005319680,
+    "reserve": 134217728,
+    "stop_margin": 67108864,
+    "initial_inodes": 509833,
+    "inode_reserve": 2048,
+    "inode_stop_margin": 1024,
+    "pid": 52,
+    "start_ticks": "312574",
+    "reused_configure": true,
+    "prior_failed_result_sha256": "f6d973ca628d4c2ef99856a78d4cbf5b5627549662d61ca1cb2dd0c2e091549f",
+    "prior_failed_log_sha256": "15c3b0560452660ff63730d349249f80141fee00b9ac4a82371f2b34e3ce8d78",
+    "exit": 0,
+    "elapsed_seconds": 2508.366,
+    "minimum_free": 6212067328,
+    "final_free": 6220013568,
+    "minimum_inodes": 478313,
+    "final_inodes": 478313,
+    "interrupted_for_reserve": false,
+    "artifacts": {
+      "firefox": "9b88fe1184812d20d9a27dadee5be99e3960a2316b308394ca7a7abde6f4a2b4",
+      "libxul.so": "6842891cdfcef7f3e3ef23fdd2f1e33f5da62abfabade43ca2fde1d632bb24be"
+    },
+    "scope": "Source compiler outputs only; no stage/install/native browser/runtime sandbox acceptance"
+  },
+  "independent_artifacts": {
+    "firefox": {
+      "sha256": "9b88fe1184812d20d9a27dadee5be99e3960a2316b308394ca7a7abde6f4a2b4",
+      "ELF_class": "ELF64",
+      "machine": "x86_64",
+      "bytes": 735912
+    },
+    "libxul.so": {
+      "sha256": "6842891cdfcef7f3e3ef23fdd2f1e33f5da62abfabade43ca2fde1d632bb24be",
+      "ELF_class": "ELF64",
+      "machine": "x86_64",
+      "bytes": 226904120
+    }
+  },
+  "compile_log_sha256": "1e34d548dd7a80138fbbcc781d601807f499934fdb7e0d50f048f50d1c063eea",
+  "source_sha256": "7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0"
+}
