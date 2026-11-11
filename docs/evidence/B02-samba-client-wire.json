@@ -1,0 +1,73 @@
+{
+  "receipt": {
+    "state": "complete",
+    "pid": 236351,
+    "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+    "inner_sha256": "414aa6791fb910a378338fe5877161c86fe8858545f13b34af29dac3c3cceffa",
+    "fixture": "/mnt/lfs/sources/phase2/work/samba-1/smb-wire-5",
+    "scope": "Dedicated synthetic read-only chroot with only private fixture writable, private mount/PID/network and loopback. Staged source-built Samba; no native install or global service.",
+    "exit": 0,
+    "log_sha256": "4410f9a6480d88e8d8771b81661148f91140513940a5682ee0445f2f2315d089"
+  },
+  "receipt_sha256": "6c3d4aac9100b3b97cf7e006a6e2a0ce869836eb135df6a7779c5918090aa591",
+  "result": {
+    "wrong_auth_refused_without_effect": true,
+    "upload_download_delete_sha256": "12d09fb76c822901607aca8312d0c57d9aaed3b1e3adc78f93e2bc29826991e7",
+    "stopped_server_refused": true,
+    "reconnected_after_restart": true,
+    "scope": "Actual loopback SMB2/3 fixture inside isolated VM with staged client and server; no desktop or installed-package acceptance",
+    "capabilities": 16777419
+  },
+  "cleanup": {
+    "server_processes_absent": true,
+    "fixture_mounts_absent": true,
+    "authentication_files_removed": true
+  },
+  "prior_failures": [
+    {
+      "state": "failed",
+      "pid": 235189,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "inner_sha256": "5cd64eb21bb21185c04066d403960a47d2247687763c8f8f33ff1e77d6ed2f07",
+      "fixture": "/mnt/lfs/sources/phase2/work/samba-1/smb-wire-1",
+      "scope": "Dedicated synthetic read-only chroot with only private fixture writable, private mount/PID/network and loopback. Staged source-built Samba; no native install or global service.",
+      "exit": 1,
+      "log_sha256": "cdde08f969b42d7bed8cc2302effe322b678aefb95464eca57fad6d305a9b886"
+    },
+    {
+      "state": "failed",
+      "pid": 235437,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "inner_sha256": "5cd64eb21bb21185c04066d403960a47d2247687763c8f8f33ff1e77d6ed2f07",
+      "fixture": "/mnt/lfs/sources/phase2/work/samba-1/smb-wire-2",
+      "scope": "Dedicated synthetic read-only chroot with only private fixture writable, private mount/PID/network and loopback. Staged source-built Samba; no native install or global service.",
+      "exit": 1,
+      "log_sha256": "cdde08f969b42d7bed8cc2302effe322b678aefb95464eca57fad6d305a9b886"
+    },
+    {
+      "state": "failed",
+      "pid": 235634,
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "inner_sha256": "5cd64eb21bb21185c04066d403960a47d2247687763c8f8f33ff1e77d6ed2f07",
+      "fixture": "/mnt/lfs/sources/phase2/work/samba-1/smb-wire-3",
+      "scope": "Dedicated synthetic read-only chroot with only private fixture writable, private mount/PID/network and loopback. Staged source-built Samba; no native install or global service.",
+      "exit": 1,
+      "log_sha256": "cdde08f969b42d7bed8cc2302effe322b678aefb95464eca57fad6d305a9b886"
+    }
+  ],
+  "interrupted_attempt": {
+    "state": "reconciled-terminal",
+    "controller_missing": true,
+    "server_processes_absent": true,
+    "fixture_mounts_absent": true,
+    "roundtrip_sha256": "12d09fb76c822901607aca8312d0c57d9aaed3b1e3adc78f93e2bc29826991e7",
+    "wrong_auth_rejected": true,
+    "share_empty": true,
+    "sensitive_fixture_paths_removed": [
+      "auth",
+      "wrong-auth",
+      "private"
+    ],
+    "cause": "Server shutdown terminated inherited process group before controller final receipt. No terminal exit code available. Original receipt retained. First cleanup removed auth files then stopped at private message-socket directory. Final cleanup retired that exact private subtree after verifying processes and mounts absent."
+  }
+}

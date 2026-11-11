@@ -404,15 +404,43 @@ user namespace. No Samba server or user mapping was created. Do not
 change global namespace policy or retry unchanged. Private loopback itself
 is already qualified by the source-identity-scoped build profile.
 
-EXACT NEXT: prepare a dedicated root test-server fixture in the isolated
-builder VM using private mount/PID/network namespaces and a synthetic
-read-only chroot. Bind only owned SDK/stage libraries read-only and a
-fresh private fixture writable, with no credentials or guest system data.
-Drop unnecessary capabilities after mounting, preserving only Samba's
-required user/group switching. Use staged smbd/smbpasswd and private
-passdb/config/share for actual SMB exchange with the candidate client.
-No external network route or global service. Preserve all exits and
-cleanup before native client promotion. No guest writer remains.
+Samba private wire fixture5 PID236351 terminal0. Actual authenticated
+upload/download/delete preserved SHA256
+12d09fb76c822901607aca8312d0c57d9aaed3b1e3adc78f93e2bc29826991e7.
+Wrong auth refused without share changes, stopped server refused, and
+restarted server accepted reconnect. Root test process had only six
+capabilities, and source/SDK mounts were read-only. All server processes,
+fixture mounts and authentication files were absent afterward.
+[Wire evidence](evidence/B02-samba-client-wire.json).
+Fixtures1–3 retain synthetic account/runtime-path failures. Fixture4
+performed the roundtrip but shutdown terminated its inherited process
+group. Controller absence, actual files and clean mounts/processes were
+reconciled before credential retirement. Fixture5 used separate sessions.
+Never replay any fixture, credential setup or reconciliation.
+
+Native samba-client 4.24.6-1+toddy1 install PID236790 recipe/postcheck0/0,
+127changed paths,129payload entries. ArchiveSHA256
+82eeb3cfaf91f32c35372c39d0bb96ca8b29f8e9e40424e42c0fd260ce100843.
+[Installed evidence](evidence/B02-samba-client-install.json) verifies exact
+80 client files/20links, registered minimal SMB2 conffile, all17upstream
+notices and APT. Installed UID101/NNP/private-loopback CLI, shared SDK
+null-context refusal and two context cycles passed with resolved native
+linkage. Server binaries stay private. GNOME acceptance pending.
+No writer remains. Last target free17,186,992,128B above16GiB reserve.
+
+Source archive is a read-only file bind from the current boot tmpfs at
+/mnt/lfs/sources/samba-4.24.6.tar.gz. Native promotion also remains a
+tmpfs bind at /mnt/lfs/sources/stage/phase2-samba-client. Installed files,
+native archive/record, original host source and durable receipts survive.
+Never replay install or repackage this archive. Cold recovery must inspect
+these mounts before reconstructing inputs under a new preparation identity.
+
+EXACT NEXT: inspect frozen GNOME Control Center50.4 source and required
+panel dependencies. Reuse owned Samba/CUPS/UDisks and all qualified SDKs.
+Qualify source/work capacity before transferring or extracting its source:
+target margin is about7MiB, while current Samba tmpfs retains over1GiB
+free. Keep sources read-only and package staging separate. Then build
+the planned Settings UI and perform its real native validation.
 Cold native tests require measured headroom and an isolated VM. UDisks policy,
 Settings/Samba and GNOME session remain pending. Stop after accepted B02.
 

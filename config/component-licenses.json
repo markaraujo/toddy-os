@@ -2,6 +2,13 @@
   "schema_version": 1,
   "components": [
     {
+      "name": "samba-client",
+      "version": "4.24.6",
+      "license": "LicenseRef-Samba-source-per-file",
+      "evidence": "Retain Samba GPLv3 COPYING, embedded Talloc/TDB/Tevent/LDB LGPL texts, Heimdal and bundled component notices, IDL notices and per-file copyright conditions from the authenticated source archive.",
+      "runtime_inclusion": "Client CLI, libsmbclient public ABI and recursively linked native runtime. Server binaries remain private test fixtures."
+    },
+    {
       "name": "man-pages",
       "version": "6.18",
       "license": "LicenseRef-man-pages-per-file",

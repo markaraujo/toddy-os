@@ -1,0 +1,155 @@
+{
+  "native": {
+    "step": "b02-samba-client-install",
+    "recipe_pid": 236790,
+    "started": "2026-11-11T01:22:46.999471+00:00",
+    "finished": "2026-11-11T01:23:10.702724+00:00",
+    "recipe_sha256": "5297843e6418cc2a90ee33f3cb8bda1ec2220ef37fcc0771be8c4697757d1059",
+    "postcheck_sha256": "f1a6a052841ae5416d10e4fa906c20a2c029556e6ecef28503eb4c5159165ae9",
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 127,
+    "log_sha256": "43424acf28afeaf34598361214cedb4d4c9ae938b314f958b16f6d24bc3f596c",
+    "receipt_sha256": "8021082aa23132b70c8878c4899e0a0e13ec87fa80d5e2fa7403e861ebe49d67"
+  },
+  "consumer": {
+    "version": "4.24.6",
+    "uid": 101,
+    "null_context_refused": true,
+    "context_lifecycles": 2,
+    "installed_linkage_resolved": true,
+    "notices_verified": 17,
+    "scope": "Installed owned SDK and CLI under UID101, NNP and private loopback. Same payload as completed staged SMB exchange. GNOME and physical acceptance pending."
+  },
+  "package": {
+    "name": "samba-client",
+    "version": "4.24.6-1+toddy1",
+    "archive_sha256": "82eeb3cfaf91f32c35372c39d0bb96ca8b29f8e9e40424e42c0fd260ce100843",
+    "recipe_sha256": "5297843e6418cc2a90ee33f3cb8bda1ec2220ef37fcc0771be8c4697757d1059",
+    "packager_sha256": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+    "packaging_backend": {
+      "kind": "source-built-native-dpkg",
+      "version": "Debian 'dpkg' package management program version 1.22.22 (amd64).",
+      "executable_sha256": "a1b1038d2308312afa4cf5c845005ca6f10971cb813dec02713707659c607f50",
+      "acceptance_sha256": "1713f00d535ba187f29247cdf74f932a66df0fc1f48bb007eb0f554ba0877776"
+    },
+    "sources": [
+      {
+        "name": "samba",
+        "version": "4.24.6",
+        "filename": "samba-4.24.6.tar.gz",
+        "url": "https://download.samba.org/pub/samba/stable/samba-4.24.6.tar.gz",
+        "sha256": "810cc955acb367e9bde556dccfb50db177a02b7c553aa1629a0b905fa7616267",
+        "reference": "BLFS13.1-systemd basicnet/samba.html",
+        "book_page_sha256": "95b336a16de565d547ae85ea647c771f38d125fad2323229a099942cb28bd9de",
+        "book_md5": "7b5ede4bc9fe86378e7fb6975f1f1469",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "ownership_policy_sha256": "661cad7868a48446417468dcc43c11dfe1eac5533143da128aaf840aa7c479d1",
+    "installed": true,
+    "payload_count": 129,
+    "supporting_build_scripts_sha256": "0e1d61bd1e1e6010120d47595f837a921a26cfb2f59760f216abe482f2a1fba6",
+    "payload_sha256": "954bb925a3d6794cc62a54d80680d39397b0d5f78fbe520864f113af6e1ba64b"
+  },
+  "installed_notices": {
+    "sources": [
+      {
+        "filename": "samba-4.24.6.tar.gz",
+        "source_sha256": "810cc955acb367e9bde556dccfb50db177a02b7c553aa1629a0b905fa7616267",
+        "url": "https://download.samba.org/pub/samba/stable/samba-4.24.6.tar.gz",
+        "notices": [
+          {
+            "path": "samba-4.24.6/COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+            "size": 35147
+          },
+          {
+            "path": "samba-4.24.6/ctdb/COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+            "size": 35147
+          },
+          {
+            "path": "samba-4.24.6/examples/pcap2nbench/COPYING",
+            "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+            "size": 35147
+          },
+          {
+            "path": "samba-4.24.6/lib/ldb/LICENSE",
+            "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+            "size": 7651
+          },
+          {
+            "path": "samba-4.24.6/lib/talloc/LICENSE",
+            "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+            "size": 7651
+          },
+          {
+            "path": "samba-4.24.6/lib/tdb/LICENSE",
+            "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+            "size": 7651
+          },
+          {
+            "path": "samba-4.24.6/lib/tevent/LICENSE",
+            "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768",
+            "size": 7651
+          },
+          {
+            "path": "samba-4.24.6/source4/setup/ad-schema/licence.txt",
+            "sha256": "df0baf0416ac0b6897070be2eef3572e6318454eef62a9b935492ef3f2480cae",
+            "size": 234
+          },
+          {
+            "path": "samba-4.24.6/source4/setup/adprep/WindowsServerDocs/LICENSE",
+            "sha256": "9bbc1ea9fe5c96df01b311a2ac864d5b18fc87b9948bfd14770e4b44db755ee9",
+            "size": 18653
+          },
+          {
+            "path": "samba-4.24.6/source4/setup/adprep/WindowsServerDocs/LICENSE-CODE",
+            "sha256": "91f7258203fd43ba6d6f7f72b644eaedee9e3430f035c053beb6f34052f045e2",
+            "size": 1090
+          },
+          {
+            "path": "samba-4.24.6/third_party/heimdal/LICENSE",
+            "sha256": "0c4b07bf5b98f7a1d01f8e60722d6c6747ef052c2aa6d2043daf690d4e1b0a7f",
+            "size": 1644
+          },
+          {
+            "path": "samba-4.24.6/third_party/heimdal/doc/copyright.texi",
+            "sha256": "9361ac8797680144812b3fb44836ec364e84924aac1cadef09b4c72b71d0fc2d",
+            "size": 21123
+          },
+          {
+            "path": "samba-4.24.6/third_party/heimdal/lib/hcrypto/libtommath/LICENSE",
+            "sha256": "2fa64b163659f41965c9815882a8296d3d03ff546b76153e11445f9bdecf955a",
+            "size": 1257
+          },
+          {
+            "path": "samba-4.24.6/third_party/heimdal/lib/libedit/COPYING",
+            "sha256": "9da6c9c74987a36c84302982799d17d2f748ba1c1c0c471425716173c1d07649",
+            "size": 1615
+          },
+          {
+            "path": "samba-4.24.6/third_party/heimdal/packages/windows/installer/lang/license-en-us.rtf",
+            "sha256": "feace80382f120f5e6e622765f446833c121531a61b5ab222044181b2778fe68",
+            "size": 2007
+          },
+          {
+            "path": "samba-4.24.6/third_party/popt/COPYING",
+            "sha256": "518d4f2a05064cb9a8ec0ea02e86408af4feed6916f78ef42171465db8b383c5",
+            "size": 1277
+          },
+          {
+            "path": "samba-4.24.6/third_party/quic/COPYING",
+            "sha256": "d03792ebd80e87e5fecaab3212465aa256bed070c286d403c445bb6aebce584d",
+            "size": 1037
+          }
+        ]
+      }
+    ],
+    "scope": "Exact named legal notices and LICENSES directories; corresponding source per-file conditions also apply"
+  },
+  "target_free_bytes": 17186992128,
+  "scope": "Installed client CLI and SDK, exact payload identity with staged authenticated wire fixture. GNOME UI and physical testing pending."
+}
