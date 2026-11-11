@@ -3969,3 +3969,15 @@ changes.509834inodes released/free and10,005,327,872browser bytes available.
 Custody complete0, never replay. Prepared checked compiler resume2 preserves
 first failure and config hashes, separate logs/results, same qualified isolation
 and inode/byte reserves. Metadata sync complete; native resume not dispatched yet.
+
+
+### B02 corrected browser compiler live — 2026-11-11
+
+Checked resume2 dispatched once after capacity proof, input76825d6. Actual root
+7160/start312325/boote146fad4, recipe66019183411d860bd4626d2343e3c7d0543cda0db2a0006bb97028b1e14105d7.
+Original failure/configure hashes retained. Real generated-code CPU/log growth
+6255to13557bytes,499412inodes remaining at10:03:50UTC; one isolated -j6writer,
+no package install or source mutation. Deterministic host observer samples60then
+300seconds and records terminal receipt; no repeated model polling. Compiler
+still live, no completion/runtime/browser/B02 acceptance. Checkpoint records exact
+root/private PID distinction, logs and resumption guards; never restart healthy job.

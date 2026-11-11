@@ -4,7 +4,11 @@ Owner boundary: **complete ALL B02, then stop before another story**. Full Phase
 Goal active/incomplete. B01/B03 accepted13%; B02 in_progress; B04 integration
 blocked, B05-B13/G2 pending. Physical foundation tests unperformed. No Phase2 ISO.
 
-## Current slice: fresh Firefox security source/work preparation
+ACTIVE NOW: corrected compiler2 rootpid7160/start312325/boote146fad4,
+tool session94430. Deterministic observer session93581 is live. See LIVE section.
+DO NOT stop builder, dispatch another guest writer or replay any completed operation.
+
+## Current slice: corrected Firefox compiler running
 
 Native remaining recovery2 COMPLETE0, context.local/phase2/native-network-recovery-runtime-2,
 raw reportSHA87b160c67f2ff0a5b50884630c6be0017a0c254643f5a8d197cbe775a25169ef,
@@ -78,7 +82,7 @@ generation failed ENOSPC in3.001s, before main compilation. Byte reserve intact:
 4,996,263,936B available, but0/1048576inodes free on browser ext4 volume. No reserve
 cancellation or successful compiler claim. Guest logs /var/log/toddy/phase2/
 firefox-security-build-1.log/.exit and firefox-security-build-controller-1.json;
-work firefox-security-1537-1/firefox-compile-1.log/result retained. No live writer.
+work firefox-security-1537-1/firefox-compile-1.log/result retained. First writer terminated.
 NEVER replay original controller or recreate its result/log names.
 
 Old source custody COMPLETE0 (controller54502 terminal0; input616fde8):
@@ -90,26 +94,42 @@ marker retained. Archive/old ELF+compiler logs/results/newsource/tools preserved
 Installed root changed0. Released509834inodes, free509834 and10,005,327,872browser
 bytes. Context/receipt COMPLETE, NEVER replay or re-extract original source there.
 Source153.2 input alias now contains retired marker, not an available source tree.
-Root source/alias inspections afterward passed. No live guest writer.
+Root source/alias inspections afterward passed. Custody writer terminated; compiler2 is now live below.
 
-Exact next action: after reviewed commit run once
-`python3 .local/phase2/firefox-security-build-controller-2.py`.
-It requires completed custody, >400000free inodes/>8GiBfree, unchanged old failed
-controller/result/recipe/log and exact successful configure. Fresh root receipt
-/var/log/toddy/phase2/firefox-security-build-controller-2.json; wrapper
-firefox-security-build-2.log/.exit. Worker firefox-security-resume-build.sh uses
-NEW work/firefox-security-1537-1/firefox-compile-2.log and
-firefox-compile-result-2.json, preserves original failure with recorded hashes.
-One isolated writer (-j6, UID101/caps0/no-egress, ROsource/tools). Same source/work
-pair, no upgrade/installation/source extraction or unknown partial-output deletion.
-Healthy comparable compiler originally41m25s; monitor actual process/CPU/log deltas
-deterministically, never declare success by timeout or restart a healthy build.
-Native supervisor checks byte128MiB+64MiB and inode2048+1024 margins through exit.
-Input configSHAa06186586b3a93e850c0264c7ff0eda2b51836c133b2559d043f6e74fcf217c0,
-mozconfigSHA697afa833966cf37ffdb017d92f851fa7f6a3e6b98347520d2be6cfc627b5553.
-On interruption reconcile real receipts/PID/start/boot/output before action.
-Corrected compiler not yet dispatched. Future stage/security/ABI/native UI and
-installed-target capacity remain pending. Complete allB02 then stop, no B04advance.
+## LIVE compiler — inspect before any guest mutation
+
+Corrected build2 DISPATCHED once, input76825d6/tool session94430. Actual root
+controllerpid7160/start312325/boote146fad4-b1e4-4199-9935-3223e693a00b,
+recipeSHA66019183411d860bd4626d2343e3c7d0543cda0db2a0006bb97028b1e14105d7.
+Root receipt /var/log/toddy/phase2/firefox-security-build-controller-2.json,
+wrapper firefox-security-build-2.log/.exit. Work alias
+/mnt/lfs/sources/phase2/work/firefox-security-1537-1 -> BASE/build/browser-security-1537-1;
+compiler firefox-compile-2.log/result-2.json. Inner pid52/start312574 is PRIVATE
+PID namespace, not global process identity. Original failure/configure untouched.
+
+Verified live controller and busy generated-code processes; log grew6255->13557B,
+499412inodes remain at10:03:50UTC. Byte/inode reserves healthy; not a completed
+compiler. DO NOT replay controller/configure/source/custody or stop builder/native
+boot while this writer is active. One isolated writer -j6/UID101/caps0/no-egress/
+ROsource+tools. Exact source/work pair; original result/log hashes retained.
+Root requires completed custody, unchanged failed inputs and successful configure.
+Supervisor byte128MiB+64MiB/inode2048+1024 margins through actual compiler exit.
+
+Deterministic host observer .local/phase2/firefox-security-build-monitor-2.py
+RUNNING tool session93581; actual identity file same stem.identity.json, observations
+same stem.jsonl/latest.json, terminal record same stem.terminal.json. Samples60s
+then300s, no model invocation. Observer failure/timeout is not native termination;
+inspect same root receipt/process/log before any action. Host build controller log
+.local/phase2/firefox-security-build-controller-2.log appears only when wrapper
+returns; missing host log is not failure. Root and compiler receipts/logs authoritative.
+
+Exact next action: inspect observer's actual identity/latest/terminal and root
+controller/worker postconditions. If healthy keep monitoring without restart or
+second guest writer; independent host source prep/read-only review only. On terminal
+require wrapper exit0, compiler compiled result2/exact153.7.0/ELF hashes, no reserve
+stop; then qualify stage/ABI/runtime security/native UI. Do not infer installable
+browser or B02 acceptance from configure/compiler alone. Target-root capacity
+review remains due before install. Complete ALL B02 then stop before next story.
 
 Custody recovery record: /var/log/toddy/phase2/firefox-baseline-source-custody-1.json,
 context /var/lib/toddy/phase2-custody/firefox-baseline-source-1, producerSHA
