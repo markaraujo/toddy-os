@@ -3598,3 +3598,17 @@ owner environment. Strict new-context followup checks prior raw failure/report
 SHA/GUI prefix/cold base/container identity and reuses accepted file transitions.
 Only native URI, active-client policy challenge and owner record remain; no
 package recovery or GUI write replay. One bounded correction prepared.
+
+### B02 — Remaining Files native gate passed and builder recovered
+
+Native2 controller1436873 terminal0/container0/base unchanged. Actual GDM/PAM
+active seat0/Wayland owner/session2, installed trash URI0, actual Files PID1299
+noninteractive Polkit challenge2/no credentials. Prior GUI transitions reused;
+no file writes, compiler or package replay. Original failed aggregate retained.
+Builder boot8688d2de-c1de-4579-8935-173fda4df4ea restored same volumes/source/COW
+and exact generation4 cache once with85,958entries/42,228inode classes/20aliases.
+Browser source frozen153.2.0esr needs8.9GB estimated build space. ADR0223 extends
+qualified chunk custody to one explicitly unreferenced old GCC checkpoint, with
+fixed identity, QEMU check and original whole digest. Capacity job started under
+controller1450932; monitor real state, never replay uncertain ranges or lower
+reserves. Browser build/native acceptance remains pending.

@@ -1,0 +1,70 @@
+{
+  "scope": "Combined scoped installed Files/Gvfs gate: prior observed local GUI and Trash restore proof reused for identical base; fresh normal GDM/PAM Wayland owner/session, installed Trash URI and noninteractive active-client authorization challenge passed. No privileged write/admin authentication, network shares, reboot persistence, full B02 or physical acceptance.",
+  "controller_pid": 1436873,
+  "controller_exit": 0,
+  "container_exit": 0,
+  "backing_unchanged": true,
+  "commit": "5b250960f69ff85f02f5f727bdbb6fcd03bdf32f",
+  "native_report_sha256": "bce2bd2938a8a4119d7131e73f7dc5f2b68ef17c2a7e7c68584e5b73139d29de",
+  "owner_session": {
+    "properties": {
+      "Class": "user",
+      "Name": "toddy-preview",
+      "Seat": "seat0",
+      "State": "active",
+      "Type": "wayland"
+    },
+    "session_id": "2"
+  },
+  "active_client": {
+    "exe": "/usr/bin/nautilus",
+    "pid": 1299,
+    "start_ticks": "7303",
+    "uid": 12402
+  },
+  "installed_trash_info": {
+    "args": [
+      "/usr/bin/gio",
+      "info",
+      "trash:///"
+    ],
+    "exit": 0,
+    "groups": [],
+    "stderr": "",
+    "stdout": "display name: Trash\nname: /\ntype: directory\nuri: trash:///\nattributes:\n  standard::type: 2\n  standard::name: /\n  standard::display-name: Trash\n  standard::icon: user-trash, user-trash-symbolic\n  standard::content-type: inode/directory\n  standard::symbolic-icon: user-trash-symbolic, user-trash\n  id::filesystem: trash:\n  trash::item-count: 0\n",
+    "uid": 12402
+  },
+  "unprivileged_client_authorization": {
+    "args": [
+      "/usr/bin/pkcheck",
+      "--action-id",
+      "org.gtk.vfs.file-operations",
+      "--process",
+      "1299,7303,12402"
+    ],
+    "exit": 2,
+    "groups": [],
+    "stderr": "Authorization requires authentication and -u wasn't passed.\n",
+    "stdout": "polkit\\56result=auth_admin_keep\npolkit\\56retains_authorization_after_challenge=1\n",
+    "uid": 12402
+  },
+  "reused_GUI_proof": {
+    "file_postconditions": {
+      "observed_restored_after_trash": true,
+      "observed_trashed": true,
+      "restored_seed_exact": true,
+      "trash_entry_absent_after_restore": true
+    },
+    "report_sha256": "c3a0a6a9e0c10955d16e7de710f1eb23918aacabfb109f7e92ee7a2005e2f870",
+    "scope": "Prior actual GUI observations only; no writes replayed"
+  },
+  "schema_unchanged": true,
+  "gdm_stop_exit": 0,
+  "previous_aggregate_failure_retained": "docs/evidence/B02-trash-native-prefix.json",
+  "prior_local_GUI": "docs/evidence/B02-files-native-local.json",
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-files-native-combined-evidence.tar.gz",
+    "bytes": 43773,
+    "sha256": "9f736f0134c34daf0cb6008e8c1940e55fac3c5d96661c722600b5ebcecd06e6"
+  }
+}

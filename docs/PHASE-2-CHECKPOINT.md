@@ -5,52 +5,66 @@ Goal remains active/incomplete. B01/B03 accepted; B02 in_progress; B04 integrati
 blocked, B05-B13/G2 pending. Weighted accepted Phase2 progress13%, no partial B02
 percentage. Physical foundation tests unperformed. No accepted Phase2 ISO.
 
-## Current slice: preserve native Trash GUI prefix; finish remaining owner checks
+## Current slice: Files gate passed; browser build capacity
 
-Native-files-trash-runtime-1 controller1421565/session25293 is TERMINAL1.
-Container8c8a4ad3f23c41fdb10df4f7671a3af10782a5ca194d83edefafe95b311817f0
-exited0; backing unchanged. Builder is STOPPED, no guest writer/native test live.
-Actual log .local/phase2/native-files-trash-runtime-1-controller.log; full reportSHA
-c3a0a6a9e0c10955d16e7de710f1eb23918aacabfb109f7e92ee7a2005e2f870.
-[Qualified GUI prefix only](evidence/B02-trash-native-prefix.json) retains original
-aggregate failure: the test wrapper called absent runuser AFTER actual native
-Trash browse/Restore/empty state and independently watched trash/restore transitions
-passed with exact19byte contents. Narrow640pixel Documents view showed restored
-file. No gio/pkcheck command executed. owner_session assignment also not reached;
-properties must be emitted by followup. Never relabel the failed raw aggregate.
+Native-files-trash-runtime-2 controller1436873/session31302 TERMINAL0, container0,
+base unchanged, reportSHAbce2bd2938a8a4119d7131e73f7dc5f2b68ef17c2a7e7c68584e5b73139d29de.
+[Combined scoped native Files proof](evidence/B02-files-native-combined.json):
+actual normal GDM/PAM user/session2/seat0/Wayland active; installed gio info
+trash:///0; noninteractive active Files PID1299 authorization challenge2, no
+credentials/privileged write. Prior observed local GUI/Trash restoration evidence
+reused, no writes replayed. Both original URI symptom and absent-runuser wrapper
+resolved within this scoped gate; raw failed native1/prefix retained. Full B02,
+network shares, privileged writes, reboot persistence and hardware unqualified.
+Ledger retains one successful correction for each cause, no budget resets.
 
-Persistent ledger .local/phase2/failures.json:
-- nautilus-installed-trash-uri: one correction; GUI symptom resolved by Gvfs;
-  complete native security/owner followup still pending.
-- trash-native-owner-command-wrapper: runuser absent, zero corrective attempts/
-  failed corrections. New bounded correction: native Python subprocess user/group/
-  extra_groups and explicit owner environment, not another runtime package.
-- gvfs-local-outputstream-append-tell: one bounded qualification succeeded;
-  original baseline GLib local position failure remains explicit, not18passes.
-Do not reset any older cause/input budgets after compaction.
+Builder recovery COMPLETE on boot8688d2de-c1de-4579-8935-173fda4df4ea:
+trash2-builder-volumes-restored-1, glycin-work-restored-trash2-1,
+kernel-work-restored-trash2-1 and trash2-scratch-restored-1. Same6volumes/Systemd/
+Glycin/kernelCOW and exact generation4 cache restored85,958entries/42,228regular
+inode classes/20aliases. Target17,308,438,528B/scratch392,814,592B free. Builder
+running, no guest writer. Never replay any recovery, compiler/native/package job.
 
-## Exact next action
+### Real running host storage job — do not restart
 
-One bounded correction is PREPARED, not executed. New native owner-check probe
-uses direct Python subprocess UID12402/GID12402/empty extra groups and explicit
-owner environment; asserts owned gio/pkcheck executable paths. No runuser package
-added. Followup --remaining-owner-checks strictly verifies prior report/error/
-GUI prefix, terminal container0/label and unchanged cold base, then reuses5110
-accepted payload hashes and four prior GUI postconditions; no trash/restore writes.
+ADR0223 selects only unreferenced cold h07-gcc-tested-target.qcow2 (43-image graph,
+QEMU check0). Firefox153.2.0esr frozen book estimates8.9GB build space; host reserve
+100GiB must remain. Active/backing/foundation-master images untouched. Original
+source moved into private custody; original path is NOT usable during operation.
+All original bytes retained by verified gzip chunks plus untouched source ranges.
+Controller1450932/session80972, actual process identity in
+.local/phase2/cold-firefox-chunk-custody-1/result.json. Log
+.local/phase2/cold-firefox-chunk-custody-1-controller.log. At checkpoint observation
+state=compressing, 81durable32MiB chunks; inspect real process/start ticks
+and result before action. Healthy compression is monitored, never restarted to
+meet a diagnosis budget. No model polling of unchanged logs.
+Original34,298,068,992bytes/SHA256
+6b8f1ad2736c8f7a4f02f361272c1e27ca151ff76b59bcee70fed8f7a7c3c8e1;
+allocated25,530,310,656B. Strict identity/producer/reserve/source reconstruction
+and chunk-before-punch guards remain. Source placeholder source.custody has holes
+as ranges retire; NEVER boot it. Completed math custody remains untouched.
 
-EXACT NEXT ACTION: commit reviewed controller/new probe, then dispatch ONCE
-python3 -u scripts/host/phase2_native_files_trash.py --remaining-owner-checks
-into a NEW controller log/context native-files-trash-runtime-2. No builder
-recovery needed; parent remains cold/unchanged. Normal GDM/PAM login, open Files
-and keep window open, then DONE. Only gio info trash:/// and noninteractive
-pkcheck for active Files PID (expected2/no credentials) plus actual owner-session
-properties remain. Preserve terminal report/base, qualify combined gate only on
-verified expected outcomes. Do not rerun accepted GUI writes or compiler suites.
-New wrapper cause has one prepared correction, zero failed corrections.
+### Exact next action
+
+Monitor actual host custody process deterministically to terminal result, preserving
+partial state if interrupted. Inspect producer/start ticks, recorded chunks and
+unrecorded current archive before any --resume; never replay completed operation.
+After terminal success verify reconstructed whole original SHA/length and actual
+free space. Choose browser scratch from measured capacity, preserving100GiB host/
+16GiB target/128MiB scratch reserves. Do not allocate an oversized image or alter
+physical disks/backing/master images. Native boot lock remains held by custody;
+do not start another native test while it runs. Independent B02 host recipe or
+guest terminal/defaults work is eligible with one guest writer.
+
+Frozen Firefox153.2.0esr archive already cached807,705,672B. Read pinned book
+xsoft/firefox.html/current code before recipe. Need owned dependency/security/ABI
+review, reproducible source build, actual install/UI. No official branding/API
+key example or sandbox relaxation by default. Do not assume book's no-test disk
+estimate is runtime acceptance. Preserve final B02 stopping boundary.
 
 ## Current packages, cache and recovery
 
-Last builder boot2099f4e9-db42-413d-9ade-41e29ae24160; target /mnt/lfs on designated
+Current builder boot8688d2de-c1de-4579-8935-173fda4df4ea; target /mnt/lfs on designated
 virtual TODDY-LFS-TARGET (/dev/vdb4), one writer build.lock. Native7.1.8-toddy.
 GNOME Shell/Mutter50.4, GDM50.2, Nautilus50.2.2-1+toddy1,
 LocalSearch3.11.1-1+toddy1, Gvfs1.60.2-1+toddy1, GTK4.22.4-1+toddy13.
@@ -79,7 +93,7 @@ guest receiptSHA98d30271729661273b2824ab3d7585c944b53a59830b1cd4a5e06537c7426b4b
 Generations1-3 retained; do not replay any custody. Host110,156,697,600B free
 immediately after archive, before latest native overlay. Measure current free.
 
-After completing remaining cold native checks, inspect actual stopped state,
+For a future cold restart inspect actual stopped state,
 start builder once, restore SAME6existing volume UUIDs/inodes with restore_volumes()
 from virtual_discard_checkpoint.py (FUNCTION ONLY, never trim/main), same Systemd
 source via prepare_systemd_pam_input.py --restore, same Glycin companion and kernel

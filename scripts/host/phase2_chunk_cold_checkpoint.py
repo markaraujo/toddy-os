@@ -127,11 +127,14 @@ def process(directory, state, fd, reserve=RESERVE, fail_after_verify=False):
 
 
 def main():
+    global NAME
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--resume', action='store_true')
+    parser.add_argument('--profile',choices=['math','firefox-capacity'],default='math')
     args = parser.parse_args()
     root = cold.ROOT
-    directory = root / '.local/phase2/cold-math-chunk-custody-1'
+    if args.profile=='firefox-capacity':NAME='h07-gcc-tested-target.qcow2'
+    directory = root / '.local/phase2' / ('cold-math-chunk-custody-1' if args.profile=='math' else 'cold-firefox-chunk-custody-1')
     source = root / '.local/vm/checkpoints' / NAME
     assert os.geteuid() != 0
     locks = []
@@ -146,6 +149,7 @@ def main():
     if args.resume:
         state = json.loads((directory / 'result.json').read_text())
         assert state['state'] != 'complete', 'Already complete; never replay'
+        assert state.get('profile','math')==args.profile and state['source']==str(source.relative_to(root))
         assert state['producer_sha256'] == cold.sha(Path(__file__))
         if source.exists():
             assert not private.exists() and state['state'] == 'prepared'
@@ -162,8 +166,9 @@ def main():
         fd = os.open(source, os.O_RDWR | os.O_NOFOLLOW)
         original = os.fstat(fd)
         assert original.st_uid == os.geteuid() and original.st_nlink == 1
-        assert original.st_ino == 11832185 and original.st_size == 5940445184
-        assert original.st_mtime_ns == 1793935345557250551
+        expected=(11832185,5940445184,1793935345557250551) if args.profile=='math' else (11832380,34298068992,1793940369084300644)
+        assert (original.st_ino,original.st_size,original.st_mtime_ns)==expected
+        assert not os.listxattr(source),'Unrecorded extended metadata must remain untouched'
         checked = subprocess.run(['docker', 'run', '--rm', '--user', f'{os.getuid()}:{os.getgid()}',
             '--cap-drop=ALL', '--security-opt=no-new-privileges', '--network=none', '--read-only',
             '-v', str(root / '.local/vm') + ':/vm:ro', 'toddy-qemu:h01',
@@ -172,7 +177,7 @@ def main():
         cold.exclusive(fd)
         assert cold.identity(os.fstat(fd)) == cold.identity(original)
         directory.mkdir(mode=0o700)
-        state = {'state': 'prepared', 'source': str(source.relative_to(root)),
+        state = {'state': 'prepared', 'profile':args.profile,'controller_pid':os.getpid(),'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'controller_start_ticks':Path('/proc/self/stat').read_text().split()[21], 'source': str(source.relative_to(root)),
                  'bytes': original.st_size, 'identity': cold.identity(original),
                  'source_sha256': cold.sha(source), 'producer_sha256': cold.sha(Path(__file__)),
                  'allocated_before': original.st_blocks * 512, 'chunks': [],

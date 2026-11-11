@@ -16,10 +16,11 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T05:16:39.517444+00:00
+Last verified: 2026-11-11T05:39:03.086019+00:00
 
 Verified:
 
+- Scoped Files native gate passed: normal GDM/PAM active seat0/Wayland/session2, installed gio Trash URI0 and actual active Files PID1299 noninteractive authorization challenge2/no credentials. Native2/controller0/container0/base unchanged; prior GUI/restore evidence reused, no writes/compiler/package replay. Original failures retained, wrapper/URI causes resolved. No full B02/admin-write/share/reboot/hardware claim.
 - Native installed Files/Gvfs Trash GUI: actual browse/Restore/empty state and independently watched trash/restore transitions/content passed. Original aggregate FAILED only for absent runuser before gio/pkcheck and owner-session property emission. Container0/base unchanged; GUI prefix only, full remaining native owner/security gate unqualified.
 - Owned Gvfs1.60.2 native recipe/post0/0,146changes/324entries;131original files/21ELFs/ABI/APT, UID101/NNP CLI refusal/recovery and unauthenticated admin refusal, unchanged upstream policy/shared GIO cache. SMB schemas integrated via GTKtoddy13 recipe/post0/0:132schemas/1113keys, all131baseline/1111keys/contracts and906runtime entries preserved. Native Trash GUI/privilege mediation still unqualified.
 - Gvfs1.60.2 isolated compiler/stage0:189ELFs/133stage files,17original local outputstream cases passed (11reused+6remaining). Original append-tell failure retained: baseline GLib local initial0 versus expected26, independent GLib-only append-byte integrity passed. No source/compiler replay or native Gvfs/Trash acceptance. ADR0222 records limited qualification and SFTP unavailable until owned SSH client.
@@ -203,7 +204,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: Native-files-trash-runtime-1 terminal1 due absent runuser wrapper, container0/base unchanged; builder stopped. GUI Trash/restore prefix qualified; gio/pkcheck/owner properties not executed/emitted. Next bounded Python UID/GID-drop correction in NEW remaining-checks native context; reuse GUI proof without writes or package/compiler replay. Generation4 recovery archive qualified. Complete all B02 then stop.
+Running: Files native scoped gate passed; builder recovered on boot8688d2de-c1de-4579-8935-173fda4df4ea with exact generation4 cache, no guest writer. Host cold-firefox-chunk-custody-1/controller1450932 running verified compression of one unreferenced old GCC checkpoint for Firefox build capacity; inspect real PID/start ticks/result, never restart healthy job or replay uncertain state. Actual browser build/install/UI pending. Complete all B02 then stop.
 
 Remaining:
 
