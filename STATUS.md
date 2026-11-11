@@ -1,10 +1,10 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-11T14:47:01.279729+00:00
+Updated: 2026-11-11T15:26:49.443671+00:00
 
 Bootstrap: ready_for_development
 
-B01/B03 accepted13%; B02 actual native desktop/FUSE/portal/offline Editor refusal/crash recovery/idle/coldboot persistence/NM/recovery-entry evidence passed. Required Git2.55.0 missing from actual inventory; implement before final runtime manifest/catalog/B02 acceptance. Finish B02 then stop; no Phase2 ISO/G2 or physical acceptance.
+B01/B03 accepted13%; B02 native desktop/offline recovery/persistence/resource gates and Git install passed;360package inventory/308runtime projection and optional unavailable packaging status captured. Final selected Tecla GUI/Git Terminal and criteria/publication audit pending. Finish B02 then stop; no Phase2 ISO/G2/physical acceptance.
 
 Foundation: **100%** · Agentic desktop: **13%**
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T14:47:01.279729+00:00
+Last verified: 2026-11-11T15:26:49.443671+00:00
 
 Verified:
 
@@ -31,16 +31,17 @@ Verified:
 - GTK4.22.4-1+toddy14 owned schema/legal-only update recipe/post0/0; all runtime bytes preserved,132schemas/1113keys preserved and2portal schemas/1key added. Actual installed Gio default-source134schemas/1114keys checked; no user values changed.
 - Combined native context3 passed: actual installed kernel config, normal GDM/PAM owner, real FUSE owner/helper mounts/other-UID denial/default allow_other refusal/unmount/SIGTERM8 cleanup/upstream signals0; portal dark-light-dark1/0/1 and real chooser allow0/cancel1/Close0+object removal. Context1/2 fixture failures preserved, passed helper results reused. Real scanouts retained.
 - Native offline Editor refused protected save after polkit cancellation; original unchanged. Actual29B autosaved draft before sole-process SIGKILL, Document Restored/SaveAs exact29B SHA verified; idle15second sample without agent/inference. Later distinct coldboot preserves file/user teal+dark and restored NM DHCP+DNS. Owned GRUB recovery selected by actual keyboard; running original foundation config/data/network verified. Earlier fixture/collector failures retained and corrected without OS rebuild/replay.
+- Pinned Git2.55.0 compile/test/stage0 and native install/post0/0. Full original shell aggregate31993success/0failed/388knownbroken/454skipped in1046groups; upstream count cleanup collector failure retained and corrected without rerun. Actual installed UID101/NNP repo/merge/clone/fsck, dirty-checkout preservation and missing-credential refusal passed. Qualified full6824entry RAM archive restore retained.
+- Observed360native packages and308package desktop/foundation projection with exact versions/native source hashes/owned legal documents;52additional integration packages explicitly require B12 composition review, no removal approval. Required icons/fonts/GVFS/portals explicit. Optional OpenCode/VS Code package paths/origin/terms/update/remove preparation linked to shared catalog; both unavailable, no unqualified install promise.
 
-Running: All native jobs stopped; builder remains stopped. Next install required pinned Git2.55.0 (missing in actual359package inventory), then minimal runtime manifest/optional app status and final B02 audit. No new Git job dispatched yet. Finish all B02 then stop.
+Running: Builder running boot0110a6f4-8bfe-4b31-9375-1a3026021711; all compiler/install/cache jobs terminal. Final native Tecla/Git Terminal controller prepared, not dispatched yet. Git RAM cache archive/full restore qualified before next cold stop.
 
 Remaining:
 
-- Build/own/qualify pinned Git2.55.0 in the offline base; actual native inventory currently lacks Git despite selected plan root.
-- Publish exact minimal runtime manifest and optional catalog availability, bind real idle/resource measurements to reference guest.
-- Audit all B02 desktop S01-B/S02/S03 criteria and evidence. Physical hardware, Phase2 ISO and G2 remain unaccepted.
+- Final selected native Tecla keyboard viewer open/focus/narrow-window/close and Git in ordinary Terminal; existing Tecla evidence covers CLI only.
+- Consolidate B02 criteria/evidence/usage/limits and publish verified final status. No Phase2 ISO/G2 or physical acceptance. Stop after B02.
 
-[Acceptance evidence](docs/evidence/B02-editor-persistence-native.json)
+[Acceptance evidence](docs/evidence/B02-git-native.json)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |

@@ -46,7 +46,7 @@
       "id": "media",
       "name": {
         "en": "Creation and media",
-        "pt-BR": "Criação e mídia"
+        "pt-BR": "Cria\u00e7\u00e3o e m\u00eddia"
       }
     }
   ],
@@ -70,7 +70,7 @@
       "project_url": "https://git-scm.com/",
       "description": {
         "en": "Version control.",
-        "pt-BR": "Controle de versão."
+        "pt-BR": "Controle de vers\u00e3o."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -90,7 +90,7 @@
       "project_url": "https://docs.docker.com/compose/",
       "description": {
         "en": "Run development containers and multi-service projects.",
-        "pt-BR": "Execute containers e projetos com vários serviços."
+        "pt-BR": "Execute containers e projetos com v\u00e1rios servi\u00e7os."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -110,7 +110,7 @@
       "project_url": "https://opencode.ai/docs/",
       "description": {
         "en": "Optional coding assistant, separate from Toddy.",
-        "pt-BR": "Assistente de programação opcional, separado do Toddy."
+        "pt-BR": "Assistente de programa\u00e7\u00e3o opcional, separado do Toddy."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -118,7 +118,8 @@
       "artifact": null,
       "license_review": null,
       "permission_review": null,
-      "evidence": []
+      "evidence": [],
+      "packaging_definition": "config/phase2/optional-app-packaging.json#opencode"
     },
     {
       "id": "vscode",
@@ -130,7 +131,7 @@
       "project_url": "https://code.visualstudio.com/",
       "description": {
         "en": "Graphical code editor.",
-        "pt-BR": "Editor gráfico de código."
+        "pt-BR": "Editor gr\u00e1fico de c\u00f3digo."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -138,7 +139,8 @@
       "artifact": null,
       "license_review": null,
       "permission_review": null,
-      "evidence": []
+      "evidence": [],
+      "packaging_definition": "config/phase2/optional-app-packaging.json#vscode"
     },
     {
       "id": "localsend",
@@ -170,7 +172,7 @@
       "project_url": "https://starship.rs/",
       "description": {
         "en": "Customizable shell prompt.",
-        "pt-BR": "Prompt de shell personalizável."
+        "pt-BR": "Prompt de shell personaliz\u00e1vel."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -190,7 +192,7 @@
       "project_url": "https://github.com/junegunn/fzf",
       "description": {
         "en": "Interactive fuzzy selection.",
-        "pt-BR": "Seleção interativa com busca aproximada."
+        "pt-BR": "Sele\u00e7\u00e3o interativa com busca aproximada."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -250,7 +252,7 @@
       "project_url": "https://github.com/ajeetdsouza/zoxide",
       "description": {
         "en": "Navigate frequently used directories.",
-        "pt-BR": "Navegue por diretórios usados com frequência."
+        "pt-BR": "Navegue por diret\u00f3rios usados com frequ\u00eancia."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -270,7 +272,7 @@
       "project_url": "https://github.com/tmux/tmux/wiki",
       "description": {
         "en": "Organize terminal sessions and panes.",
-        "pt-BR": "Organize sessões e painéis de terminal."
+        "pt-BR": "Organize sess\u00f5es e pain\u00e9is de terminal."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -310,7 +312,7 @@
       "project_url": "https://cli.github.com/",
       "description": {
         "en": "Work with GitHub repositories, issues and pull requests.",
-        "pt-BR": "Trabalhe com repositórios, issues e pull requests do GitHub."
+        "pt-BR": "Trabalhe com reposit\u00f3rios, issues e pull requests do GitHub."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -370,7 +372,7 @@
       "project_url": "https://pnpm.io/",
       "description": {
         "en": "Optional JavaScript dependency manager.",
-        "pt-BR": "Gerenciador opcional de dependências JavaScript."
+        "pt-BR": "Gerenciador opcional de depend\u00eancias JavaScript."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -410,7 +412,7 @@
       "project_url": "https://neovim.io/",
       "description": {
         "en": "Extensible terminal editor.",
-        "pt-BR": "Editor de terminal extensível."
+        "pt-BR": "Editor de terminal extens\u00edvel."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -430,7 +432,7 @@
       "project_url": "https://www.usebruno.com/",
       "description": {
         "en": "Test APIs with locally versioned collections.",
-        "pt-BR": "Teste APIs com coleções versionadas localmente."
+        "pt-BR": "Teste APIs com cole\u00e7\u00f5es versionadas localmente."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -510,7 +512,7 @@
       "project_url": "https://www.libreoffice.org/",
       "description": {
         "en": "Documents, spreadsheets and presentations.",
-        "pt-BR": "Documentos, planilhas e apresentações."
+        "pt-BR": "Documentos, planilhas e apresenta\u00e7\u00f5es."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -530,7 +532,7 @@
       "project_url": "https://www.videolan.org/vlc/",
       "description": {
         "en": "Play audio and video.",
-        "pt-BR": "Reproduza áudio e vídeo."
+        "pt-BR": "Reproduza \u00e1udio e v\u00eddeo."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -550,7 +552,7 @@
       "project_url": "https://www.thunderbird.net/",
       "description": {
         "en": "Email, calendars and contacts.",
-        "pt-BR": "E-mail, calendários e contatos."
+        "pt-BR": "E-mail, calend\u00e1rios e contatos."
       },
       "channel": "stable",
       "qualification": "pending",
@@ -590,7 +592,7 @@
       "project_url": "https://obsproject.com/",
       "description": {
         "en": "Record and stream video.",
-        "pt-BR": "Grave e transmita vídeo."
+        "pt-BR": "Grave e transmita v\u00eddeo."
       },
       "channel": "stable",
       "qualification": "pending",

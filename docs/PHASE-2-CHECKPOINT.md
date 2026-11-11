@@ -4,9 +4,9 @@ Owner boundary: **complete ALL B02, then stop before another story**. Full Phase
 Goal active/incomplete; B01/B03 accepted13%, B02 in_progress, B04-B13/G2 pending.
 Physical foundation tests unperformed. No Phase2 ISO. Preserve G1 master/evidence.
 
-## Current slice: native FUSE and desktop portal integration
+## Current slice: final selected native keyboard/Git Terminal checks
 
-Builder STOPPED after native context1; last boot0c29ac3a-aa02-49fb-af6c-0df420c43012, target /mnt/lfs,
+Builder RUNNING boot0110a6f4-8bfe-4b31-9375-1a3026021711, target /mnt/lfs,
 serialTODDY-LFS-TARGET. No guest writer remains. Never replay successful or
 uncertain kernel/Fuse operations. Actual package/receipt/postconditions win.
 
@@ -87,21 +87,44 @@ was wrong; read-only reconcile verified actual serial highlight/config/report,
 no boot replay. All original backing chains unchanged; all native jobs stopped.
 [Evidence](evidence/B02-editor-persistence-native.json), real scanouts included.
 
+## Git/runtime handoff — complete
+
+Git2.55.0 native install/post0/0, archive47fd49e0...,351owned paths, target root0:0.
+Actual UID101/NNP local commit/branch/ffmerge/clone/fsck, dirty checkout refusal and
+missing credentials/no prompt pass. Original compile/test/stage0; job1 exit1 was
+own collector after upstream cleaned counts. Qualification2 reused outputs,0;
+1046shellgroups/31993success/0failed/388knownbroken/454skip. Original3535b2c4recipe
+input remains immutable; do not reprepare/rebuild/retest/reinstall. Logs/receipts
+/var/log/toddy/phase2/git-{build-1,qualify-2}.* and build/b02-git-install.success.json.
+Git work /sources/phase2/work/git-1 is1536MiB RAM mount, will vanish on cold stop.
+Qualified custody /var/cache/toddy/build/git-2.55.0-qualified-1.tar.gz237578723B,
+SHAe1cca99c2c21213f9a5d90834abe1ba6085b794dba4f41b61ef156c7b723b7c2,
+receipt /var/log/toddy/phase2/git-cache-custody-1.json complete, actual6824entry
+restore bytes/modes/owners/mtime/symlinks/hardlink classes exact. Sole restore root
+mode umask correction preserved; no extraction/compiler/test/install replay.
+[Git](evidence/B02-git-native.json). All Git/cache controllers terminal.
+
+[Runtime manifest](evidence/B02-desktop-runtime-manifest.json): actual360packages,
+308foundation/desktop projection,52unselected integration packages for B12 review,
+not a removal approval or composed release. Native versions, source/recipe/archive
+hashes and owned legal documents captured. No optional agent/model root. Explicit
+icons/fonts/GVFS/portals. Optional OpenCode/VS Code definitions linked from shared
+catalog, unavailable until exact artifact/terms/launch/update/remove qualification.
+
 ## Exact next action
 
-Actual359package inventory lacks Git despite pinned plan root/base requirement.
-Implement Git2.55.0 with cached source SHA457fdb04... and exact frozen BLFS13.1
-page .local/books/general/git.html SHA76af90f0...; no version change. Start builder
-only after observing no native job active. New isolated unprivileged read-only-input
-Git build may use installed toolchain without restoring unrelated compile caches;
-verify actual dependencies and target guards first. Private loopback-only namespace
-for original local-server tests, no external compiler network. Standard supported
-C-only NO_RUST and no optional Tcl/Tk GUI, preserve user Git configuration. Full
-original tests for this unqualified recipe, verified stage and controlled native
-package + actual installed offline repo/credential/refusal checks required. No Git
-recipe/preparation/build dispatched yet. Then publish minimal runtime dependency
-projection/optional software status and B02 criteria audit; complete B02 then stop.
-Current goal remains incomplete. No later B story, ISO/G2 or physical claim.
+Final audit found Tecla evidence is CLI-only, so run selected native UI rather
+than claim it tested. New reviewed controller scripts/host/phase2_native_desktop_final.py
+uses NEW .local/phase2/native-desktop-final-runtime-1. Next commit clean inputs,
+then run controller. It verifies current Git/Tecla/GTK14/kernel2 and qualified
+Git cache, stops builder, creates disposable overlay over unchanged current target.
+Normal GDM/PAM fixture user; inspect actual Tecla US keyboard preview, focus,
+narrow layout/close and actual Git --version/repo initialization in native Terminal.
+Do not repeat passed browser/files/editor/network/audio/portal or foundation suites.
+After this selected pass, consolidate all B02 criteria/evidence/usage/limits,
+make check/dashboard, commit/push/verify public status, then STOP before later story.
+No need to restart builder or restore compile caches just for runtime validation.
+Full Phase2 goal remains incomplete; physical foundation test/ISO/G2 pending.
 
 ## Recovery and unchanged evidence
 

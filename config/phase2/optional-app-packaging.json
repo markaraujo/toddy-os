@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "scope": "B02 optional package preparation only, shared catalog IDs. No executable installer, pinned optional binary, qualified release or available install option. Core/base Git is separate.",
+  "reviewed_at": "2026-11-11",
+  "records": [
+    {
+      "catalog_id": "opencode",
+      "backend": "native",
+      "available": false,
+      "default_selected": false,
+      "version": null,
+      "artifact": null,
+      "origin_review": {
+        "documentation": "https://opencode.ai/docs/",
+        "observed_x86_64_glibc_binary_endpoint": "https://opencode.ai/update/api/latest/cli/opencode/opencode-linux-x64.tar.gz",
+        "selection": "A mutable latest endpoint cannot become a qualified artifact. Pin a concrete version/architecture/CPU variant and authenticated digest first. No remote shell installer, global npm postinstall or mise."
+      },
+      "license_review": {
+        "source_reference": "https://raw.githubusercontent.com/anomalyco/opencode/dev/LICENSE",
+        "observed_source_license": "MIT on unpinned dev branch; does not qualify any binary or bundled notices",
+        "artifact_terms_review": "pending exact artifact/source/runtime closure"
+      },
+      "paths": {
+        "candidate_owned_version_root": "/opt/toddy/optional/opencode/<version>",
+        "candidate_launcher": "/usr/bin/opencode",
+        "user_state": "Retain user-owned OpenCode configuration/data/credentials on package removal unless separately requested."
+      },
+      "update_remove": "Only reviewed versioned native transactions after installed-user acquisition review; qualify upstream self-update behavior and preserve user configuration before enabling. Never inherit Toddy administration policy or provider credentials.",
+      "unavailable_reason": "No pinned binary/dependency/license/permission/size/native launch/update/remove proof; upstream mutable v2 endpoint is not qualification of an earlier major version."
+    },
+    {
+      "catalog_id": "vscode",
+      "backend": "native",
+      "available": false,
+      "default_selected": false,
+      "version": null,
+      "artifact": null,
+      "origin_review": {
+        "documentation": "https://code.visualstudio.com/docs/setup/linux",
+        "download_identity": "Microsoft Visual Studio Code stable Linux x86_64, exact version/archive/digest unresolved. Foreign distribution package scripts are not a Toddy native recipe.",
+        "selection": "Do not substitute Code - OSS or VSCodium under this ID."
+      },
+      "license_review": {
+        "product_terms": "https://code.visualstudio.com/license",
+        "source_terms": "https://github.com/microsoft/vscode/blob/main/LICENSE.txt",
+        "marketplace_terms": "https://aka.ms/vsmarketplace-ToU",
+        "finding": "Microsoft product terms, MIT source terms and extension marketplace terms are distinct. A source license is not blanket branded-binary redistribution permission. Exact artifact/third-party notices, acquisition and redistribution path remain pending; no legal acceptance performed."
+      },
+      "paths": {
+        "candidate_owned_version_root": "/opt/toddy/optional/vscode/<version>",
+        "candidate_launcher": "/usr/bin/code",
+        "user_state": "Retain ~/.config/Code and user extension data on package removal unless separately requested."
+      },
+      "update_remove": "Qualify project-owned native update/remove transactions and upstream update interaction; preserve workspace/user settings and extensions. No Microsoft repository/key or auto-update service added by preparation.",
+      "unavailable_reason": "No pinned distribution/terms-approved artifact or native sandbox/desktop/launch/update/remove qualification. Not offered as working installation."
+    }
+  ]
+}

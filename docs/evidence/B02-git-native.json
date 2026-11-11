@@ -1,0 +1,262 @@
+{
+  "build": {
+    "scope": "Actual pinned isolated Git compiler0/full original top-level make test0/stage0; original aggregate totals retain known broken/missing prerequisites. t/Makefile aggregate-results-and-cleanup deliberately deletes individual count files; immutable full transcript/exit proof retained. No compiler/test/staging replay in qualification recovery. Native installed repo/refusal checks pending.",
+    "compile_exit": 0,
+    "test_exit": 0,
+    "stage_exit": 0,
+    "qualification_exit": 0,
+    "version": "git version 2.55.0",
+    "original_shell_groups": 1046,
+    "original_totals": {
+      "fixed": 0,
+      "success": 31993,
+      "failed": 0,
+      "broken": 388,
+      "total": 32835
+    },
+    "skipped_or_missing_prerequisite_cases": 454,
+    "individual_counts_status": "Automatically removed by upstream aggregate-results-and-cleanup after actual test exit0; not fabricated or rerun",
+    "source_profile": {
+      "NO_RUST": "YesPlease",
+      "NO_TCLTK": "YesPlease",
+      "GIT_UNZIP": "nonexist",
+      "private_network": "loopback only, no external route"
+    },
+    "logs": {
+      "original-build.log": "8037f9edb00ba2c9d09dc2896ebe0c91de385c6acedcf987113f0e8e43d37edf",
+      "original-tests.log": "9a3a3beede671e5151a90ab88609f7da77c39a0a2720167250e9f9ade8baa852",
+      "original-stage.log": "617589a35dd6522106e0785b3d849521f2286311b1163134934b6fd1ea15b75e"
+    }
+  },
+  "native": {
+    "scope": "Owned actual installed native UID101/NNP Git offline repository/clone/merge/dirty-checkout refusal/fsck and credential prompt refusal. Original full isolated upstream suite is separate. No external remote/credential/helper/provider service tested.",
+    "archive_sha256": "47fd49e06be6c538ee9d0749365a89e7e7cccb95c455f356c105f141717a708e",
+    "payload_entries": 351,
+    "consumer": {
+      "version": "2.55.0",
+      "uid": 101,
+      "NoNewPrivs": 1,
+      "effective_capabilities": 0,
+      "local_commit_branch_fastforward_clone_fsck": true,
+      "dirty_checkout_refused_and_content_preserved": true,
+      "credential_missing_prompt_refused": true,
+      "runs": [
+        {
+          "args": [
+            "--version"
+          ],
+          "exit": 0,
+          "stdout": "git version 2.55.0\n",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "init",
+            "--initial-branch=main",
+            "repository"
+          ],
+          "exit": 0,
+          "stdout": "Initialized empty Git repository in /tmp/toddy-git-check-u8mpayg5/repository/.git/\n",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "config",
+            "user.name",
+            "Toddy native fixture"
+          ],
+          "exit": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "config",
+            "user.email",
+            "fixture@example.invalid"
+          ],
+          "exit": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "add",
+            "proof.txt"
+          ],
+          "exit": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "commit",
+            "-m",
+            "Local fixture base"
+          ],
+          "exit": 0,
+          "stdout": "[main (root-commit) 6c517ef] Local fixture base\n 1 file changed, 1 insertion(+)\n create mode 100644 proof.txt\n",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "rev-parse",
+            "HEAD"
+          ],
+          "exit": 0,
+          "stdout": "6c517ef0e735aee64fd26f3caff4428b6e46a73e\n",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "switch",
+            "-c",
+            "feature"
+          ],
+          "exit": 0,
+          "stdout": "",
+          "stderr": "Switched to a new branch 'feature'\n"
+        },
+        {
+          "args": [
+            "commit",
+            "-am",
+            "Local fixture feature"
+          ],
+          "exit": 0,
+          "stdout": "[feature 14cc1e7] Local fixture feature\n 1 file changed, 1 insertion(+), 1 deletion(-)\n",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "rev-parse",
+            "HEAD"
+          ],
+          "exit": 0,
+          "stdout": "14cc1e777438a7575aec28345337aafc7680cb11\n",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "switch",
+            "main"
+          ],
+          "exit": 0,
+          "stdout": "",
+          "stderr": "Switched to branch 'main'\n"
+        },
+        {
+          "args": [
+            "merge",
+            "--ff-only",
+            "feature"
+          ],
+          "exit": 0,
+          "stdout": "Updating 6c517ef..14cc1e7\nFast-forward\n proof.txt | 2 +-\n 1 file changed, 1 insertion(+), 1 deletion(-)\n",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "rev-parse",
+            "HEAD"
+          ],
+          "exit": 0,
+          "stdout": "14cc1e777438a7575aec28345337aafc7680cb11\n",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "checkout",
+            "6c517ef0e735aee64fd26f3caff4428b6e46a73e"
+          ],
+          "exit": 1,
+          "stdout": "",
+          "stderr": "error: Your local changes to the following files would be overwritten by checkout:\n\tproof.txt\nPlease commit your changes or stash them before you switch branches.\nAborting\n"
+        },
+        {
+          "args": [
+            "rev-parse",
+            "HEAD"
+          ],
+          "exit": 0,
+          "stdout": "14cc1e777438a7575aec28345337aafc7680cb11\n",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "restore",
+            "proof.txt"
+          ],
+          "exit": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "fsck",
+            "--full",
+            "--strict"
+          ],
+          "exit": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "clone",
+            "--no-hardlinks",
+            "/tmp/toddy-git-check-u8mpayg5/repository",
+            "clone"
+          ],
+          "exit": 0,
+          "stdout": "",
+          "stderr": "Cloning into 'clone'...\ndone.\n"
+        },
+        {
+          "args": [
+            "rev-parse",
+            "HEAD"
+          ],
+          "exit": 0,
+          "stdout": "14cc1e777438a7575aec28345337aafc7680cb11\n",
+          "stderr": ""
+        },
+        {
+          "args": [
+            "credential",
+            "fill"
+          ],
+          "exit": 128,
+          "stdout": "",
+          "stderr": "error: unable to read askpass response from 'false'\nfatal: could not read Username for 'https://example.invalid': terminal prompts disabled\n"
+        }
+      ]
+    }
+  },
+  "cache": {
+    "state": "complete",
+    "scope": "Qualified Git RAM outputs only; no install/runtime mutation. Actual full restore must pass before any builder cold stop.",
+    "source": "/mnt/lfs/sources/phase2/work/git-1",
+    "archive": "/var/cache/toddy/build/git-2.55.0-qualified-1.tar.gz",
+    "entries": 6824,
+    "unique_regular_bytes": 541637617,
+    "boot_id": "0110a6f4-8bfe-4b31-9375-1a3026021711",
+    "archive_sha256": "e1cca99c2c21213f9a5d90834abe1ba6085b794dba4f41b61ef156c7b723b7c2",
+    "archive_bytes": 237578723,
+    "actual_restore_entries": 6824,
+    "actual_restore_bytes_modes_owners_timestamps_symlinks_hardlinks_equal": true,
+    "restore_correction": "Only restored top-level directory mode was masked by unprivileged tar umask022; all6824paths/bytes/metadata/hardlinks otherwise matched. Restore owner101 repaired only its root mode; full equality then passed. Future tar uses --same-permissions; new workspace preparation sets0755. No archive extraction/compiler/test/install replay."
+  },
+  "transaction": {
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 306,
+    "finished": "2026-11-11T15:04:02.892396+00:00",
+    "log_sha256": "6ecb0bd8e1a07c07937ac8cbd79cc97d4e7679abee1b3a550b68409cfc53aad4"
+  },
+  "installed_target_root_uid_gid": [
+    0,
+    0
+  ],
+  "limits": "Git CLI source build/native offline behaviors only, not a hosted remote/SSH/provider/credential account test. Optional Tk GUI omitted; plain offline Git reference/tutorial installed, generated man/HTML documentation not built. Original job1 collector failed after compile/test/stage0 because upstream cleans count files; separate isolated qualification2 reused outputs. No full suite/build/install replay."
+}
