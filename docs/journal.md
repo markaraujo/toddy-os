@@ -4143,3 +4143,19 @@ See [native packages](evidence/B02-portal-native-packages.json) and
 [schema cache](evidence/B02-portal-schema-union.json). Native installed-kernel
 FUSE mounts/privilege and GNOME portal appearance/consent/cancel/denial remain pending.
 B02 stays in progress; no whole desktop, physical or G2 acceptance.
+
+### Native installed FUSE and portal session — 2026-11-11
+
+Combined native context3 passed on the actual installed FUSE kernel/config and
+normal GDM/PAM owner. Actual helper mount/read, other-UID read+unmount refusal,
+parent-access control, allow_other denial and owner unmount from context2 reused
+against unchanged backing. Context3 proved SIGTERM8+automatic unmount and original
+upstream signals0 (library error15/session exited1/clean shutdown). Preserve earlier
+fixture readiness and incorrect highlevel signal-exit0 failures; no package rebuild.
+Native Settings dark/light/dark and portal Read1/0/1 agree. Actual GNOME/Nautilus
+chooser selection returned exact allowed URI0, Escape1/noURI, Request.Close0
+removed request/dialog without response. Five real losslessly converted scanouts
+retained. [Evidence](evidence/B02-fuse-portal-native.json). No broad portal/physical/
+whole B02 acceptance; remaining persistence/recovery/resources/manifest gates due.
+Builder/native stopped; next use a fresh readonly-base overlay over native3 persisted
+fixture state, never replay native3 or restart compilers.

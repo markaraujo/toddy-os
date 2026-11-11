@@ -19,14 +19,15 @@ boot metadata repair0/0 completed original checks without kernel reinstall.
 Candidate SHA0482366cc51727f76af11611275b7124bcd9aadbd76d231ca6fd44d22cb0dc77;
 config SHA952e7d9d6e5c8e523ebf128c220481bc29280424e0686e4b0903b518234bf77b.
 Real token/hash-bound BIOS+UEFI no-disk FUSE/UID101/denial/unload/Landlock9/seccomp/
-namespace diagnostics passed, but installed-system boot still pending.
+namespace diagnostics passed, and actual installed BIOS/config boot now passed in combined acceptance.
 
 **Fuse installed:**3.18.2-1+toddy1, archive
 73d2f7c8ece6b8999b9c50c2db5ee59f154bfee5352895cc8047d9c8337f4ca6.
 First privilege gate rejection0rootchanges/noarchive retained. Exact reviewed
 root:root4755 fusermount3 exception (ADR0228) and verified promotion resume2
 recipe/post0/0;40owned paths/UID101-NNP CLI/library318/3.18.2/default owner-only
-policy0. No actual filesystem mount/signals/helper-policy acceptance yet.
+policy0. Actual native filesystem/helper/signals/denial/recovery now passed; see combined
+acceptance below.
 Prepared /sources/phase2/work/fuse-1/native-{hello,test-signals}, no RPATH/privilege,
 linked installed library, hashes in [drivers](evidence/B02-fuse-native-probes-prepared.json).
 Do not recompile/reprepare the current Fuse input (original a918260c recipe kept
@@ -49,34 +50,43 @@ entries matched; receipt portal-schema-promotion-retired-1.json complete.
 Generation4cache archive remains the recovery source; never replay retirement.
 Repository make check387passed (.local/phase2/portal-native-check-1.log).
 All current jobs terminal; controllers16235/16683/17259/17647/18111/18372/18517 done.
-Never replay these installs or sources. Builder still boot0c29ac3a.
+Never replay these installs or sources. Builder remains STOPPED, last boot0c29ac3a; no cache restoration needed now.
+
+## Actual native combined acceptance — complete
+
+Context .local/phase2/native-fuse-portal-runtime-3 phase native-fuse-portal-verified;
+controller exited0, QEMU exited0, original builder backing unchanged. Real normal
+GDM/PAM owner UID12402; installed kernel config952e7d9d... verified. Existing owned
+Systemd service loaded FUSE (normal boot, no manual module preload). Actual helper
+mount/read, otherUID65534 read+unmount denial/parent positive control, allow_other
+refusal and owner unmount passed in context2, reused against exact unchanged backing.
+Context3 second mount/read/SIGTERM actual exit8/no mount and original upstream
+signals0 (library error15/session exited1/clean shutdown) passed. Earlier incorrect
+exit0 fixture failed and preserved. Readiness failure context1 preserved separately.
+Native Settings dark/light/dark visually verified and portal Read1/0/1. Real
+GNOME/Nautilus chooser selected exact file URI response0; Escape response1/no URI;
+Request.Close0 removed object and dialog/no response. Five real native PNGs.
+[Evidence](evidence/B02-fuse-portal-native.json). No whole B02/physical/G2 acceptance.
 
 ## Exact next action
 
-Implement one combined native VM pass: adapt qualified native desktop controller
-with NEW context/probe names and current GTK14/kernel2/Fuse/portal package guards.
-Verify actual running kernel config hash from /proc/config.gz, normal installed
-Systemd device creation and unprivileged helper initial mount without preloading.
-Run prepared real hello mount/read/other-user read+unmount denial/allow_other
-refusal/SIGTERM+unmount recovery and original upstream signals driver. Fixtures
-are tests, not normal-login acceptance. Use normal GDM/PAM owner to verify actual
-portal services/Settings dark-light and affected consent/cancel/denial; retain real
-scanouts. Existing host phase2_native_desktop_integration.py and owner-control
-protocol are references, do not replay old hardcoded GTK13/hash controller.
-Combined native controller/probes now implemented: scripts/host/phase2_native_fuse_portal.py
-uses NEW native-fuse-portal-runtime-1 context. Not dispatched yet. Actual default
-dark/light portal Read and file chooser allow/cancel/Request.Close are selected;
-no broad portal capability claim. Context1 terminal failure retained: logind owner session observed before Wayland socket
-was ready; no FUSE/portal tests executed. Backing unchanged/container exited0.
-Corrected bounded compositor readiness and added traceback. Next run
-phase2_native_fuse_portal_retry.py with NEW context2, reusing accepted package
-preflight only after exact backing identity/predecessor terminal guards.
-No builder restart or package/source replay. Ledger cause budget correction1. Fresh disposable
-readonly-base overlay, never physical disks or host target. Preserve one writer.
+Prepare remaining persistence/recovery/idle pass on NEW disposable overlay over
+retained native-fuse-portal-runtime-3/target.qcow2 with entire backing chain readonly.
+Do not mutate/replay completed context3. It preserves synthetic owner home/dconf,
+portal-allowed.txt (28B) and normal login state. New probe may reset only that
+synthetic disposable account password through existing private transport, then use
+normal GDM/PAM; never expose its credential. Real Editor write refusal/save/recovery,
+restored NetworkManager persistence after actual reboot, absent-agent/offline use,
+actual idle/resource measurements and recovery-menu entry remain due. Use explicit
+before/after boot IDs and durable postconditions; no timeout-as-pass. Do not restart
+builder/cache restore merely for another native runtime pass. Native3 source must
+be quiescent and hash/identity-bound before child overlay. No new controller for
+remaining pass has been implemented/dispatched yet. Then exact minimal runtime
+manifest/catalog status and B02 criteria audit. Finish B02 then stop, no later story.
 
-Test selection: actual complete native payload/library/APT checks for all3portal
-packages and strict schema-union/default-source contract checks. No unchanged
-foundation/GUI long suites repeated. Native mounted-filesystem/session gates pending.
+Test selection: native FUSE and portal affected scope passed; old GUI/foundation
+proofs reused. Repository387checks passed before harness updates; run make check
+for delivery. Broader hardware/provider/soak/portal capability matrices not claimed.
 
 ## Recovery and unchanged evidence
 
@@ -113,11 +123,3 @@ Installed FUSE/kernel/portal runtime and dark/light integration; restoredNM rebo
 persistence; Editor refusal/recovery/reboot; affected device/refusal and absent-agent
 checks; exact minimal runtime manifest/catalog status, actual idle/resource and
 recovery-entry boot. B02 is not complete. No later B story before requested stop.
-
-Native context2 terminal failure preserved: readiness corrected; actual running
-FUSE config/owned helper mount/read/UID65534 access+unmount denial/allow_other
-refusal/owner unmount passed. Wrong highlevel hello SIGTERM exit0 assertion failed.
-Source3.18.2 signals->loop_mt->helper mapsSIGTERM15 to8 before unmount; followup
-requires actual8+no mount and original signals driver0, reuses passed partial proof.
-Next phase2_native_fuse_portal_signal.py context3; context2 stopped/backing unchanged.
-No kernel/package/source rebuild. Ledger new-cause correction1.

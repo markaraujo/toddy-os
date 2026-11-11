@@ -1,0 +1,224 @@
+{
+  "scope": "Actual installed-kernel FUSE helper and native GNOME portal settings/file chooser/Close in disposable VM. Virtual seat only; no physical/whole B02 acceptance.",
+  "context": ".local/phase2/native-fuse-portal-runtime-3",
+  "actual_native_report_sha256": "c31f8b221b9a7fca7b1598fb524647572bc45033905fec09dcffabf1cd3c17ef",
+  "dedicated_evidence_sha256": "b327d9986129bfdc71f34de348220fae4b78abfa75ce5b162dabc2e4fce45f82",
+  "backing_unchanged": true,
+  "all_selected_exits_zero": true,
+  "native_running_config_sha256": "952e7d9d6e5c8e523ebf128c220481bc29280424e0686e4b0903b518234bf77b",
+  "normal_owner_session": {
+    "properties": {
+      "Class": "user",
+      "Name": "toddy-preview",
+      "Seat": "seat0",
+      "State": "active",
+      "Type": "wayland"
+    },
+    "session_id": "2"
+  },
+  "fuse": {
+    "all_selected_exits_zero": true,
+    "allow_other_refused": {
+      "args": [
+        "/run/toddy-fuse-drivers/native-hello",
+        "-f",
+        "-o",
+        "allow_other",
+        "/tmp/toddy-native-fuse-proof/refused"
+      ],
+      "exit": 4,
+      "stderr": "fusermount3: option allow_other only allowed if 'user_allow_other' is set in /etc/fuse.conf\n",
+      "stdout": ""
+    },
+    "configuration_unchanged": true,
+    "device_mode": "0o666",
+    "first_owner_mount": "fuse.native-hello rw,nosuid,nodev,relatime,user_id=12402,group_id=12402",
+    "module_preloaded_by_probe": false,
+    "module_present_before_initial_mount": true,
+    "ordinary_caller": {
+      "CapEff": "0000000000000000",
+      "NoNewPrivs": "0"
+    },
+    "original_upstream_signals": {
+      "args": [
+        "/run/toddy-fuse-drivers/native-test-signals"
+      ],
+      "exit": 0,
+      "stderr": "FUSE library version: 3.18.2\ndev unique: 2, opcode: INIT (26), nodeid: 0, insize: 104, pid: 0\nINIT: 7.45\nflags=0x73fffffb\nmax_readahead=0x00020000\n   INIT: 7.45\n   flags=0x00400000\n   max_readahead=0x00020000\n   max_write=0x00100000\n   max_background=0\n   congestion_threshold=0\n   time_gran=1\n   unique: 2, success, outsize: 80\nexit_handler called with sig 15\nfuse: session exited, terminating workers\n",
+      "stdout": "Testing SIGTERM handling in libfuse\nDebug: fuse_session_loop_mt_312 returned 15\nDebug: session exited state: 1\nDebug: session status: 15\nDebug: Clean shutdown via SIGTERM\nTesting SIGTERM handling in libfuse\n"
+    },
+    "other_uid_parent_control": {
+      "args": [
+        "cat",
+        "/tmp/toddy-native-fuse-proof/plain-readable"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "positive parent access\n"
+    },
+    "other_uid_read_denied": {
+      "args": [
+        "cat",
+        "/tmp/toddy-native-fuse-proof/owner/hello"
+      ],
+      "exit": 1,
+      "stderr": "cat: /tmp/toddy-native-fuse-proof/owner/hello: Permission denied\n",
+      "stdout": ""
+    },
+    "other_uid_unmount_denied": {
+      "args": [
+        "fusermount3",
+        "-u",
+        "/tmp/toddy-native-fuse-proof/owner"
+      ],
+      "exit": 1,
+      "stderr": "fusermount3: entry for /tmp/toddy-native-fuse-proof/owner not found in /etc/mtab\n",
+      "stdout": ""
+    },
+    "owner_read": {
+      "args": [
+        "cat",
+        "/tmp/toddy-native-fuse-proof/owner/hello"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "Hello World!\n"
+    },
+    "owner_unmount": {
+      "args": [
+        "fusermount3",
+        "-u",
+        "/tmp/toddy-native-fuse-proof/owner"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    "reused_evidence": "native-fuse-portal-runtime-2 authenticated partial native report; same unchanged backing/package/kernel inputs",
+    "running_config_sha256": "952e7d9d6e5c8e523ebf128c220481bc29280424e0686e4b0903b518234bf77b",
+    "scope": "Actual installed FUSE module/device, ordinary UID12402 SUID-helper mount, owner read/unmount, different-UID denial, default allow_other refusal, SIGTERM cleanup and original signals driver in disposable native VM. No physical test.",
+    "server_logs": {
+      "server-0.log": ""
+    },
+    "sigterm_cleanup_exit": 8,
+    "sigterm_mount_absent": true,
+    "uid": 12402
+  },
+  "portal_settings": [
+    {
+      "portal_color_scheme": 1,
+      "state": "default-dark"
+    },
+    {
+      "portal_color_scheme": 0,
+      "state": "portal-light"
+    },
+    {
+      "portal_color_scheme": 1,
+      "state": "portal-dark"
+    }
+  ],
+  "filechooser": {
+    "allow": {
+      "mode": "allow",
+      "response": 0,
+      "state": "complete",
+      "values": {
+        "choices": [],
+        "uris": [
+          "file:///home/toddy-preview/portal-allowed.txt"
+        ]
+      }
+    },
+    "cancel": {
+      "mode": "cancel",
+      "response": 1,
+      "state": "complete",
+      "values": {
+        "uris": []
+      }
+    },
+    "close": {
+      "close_exit": 0,
+      "closed_object_removed": true,
+      "mode": "close",
+      "responses": [],
+      "state": "complete"
+    }
+  },
+  "portal_services": {
+    "args": [
+      "systemctl",
+      "--user",
+      "is-active",
+      "xdg-desktop-portal.service",
+      "xdg-desktop-portal-gnome.service"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "active\nactive\n"
+  },
+  "agent_package_absent": {
+    "args": [
+      "dpkg-query",
+      "-W",
+      "toddy-agent"
+    ],
+    "exit": 1,
+    "stderr": "dpkg-query: no packages found matching toddy-agent\n",
+    "stdout": ""
+  },
+  "boot_timing": {
+    "args": [
+      "systemd-analyze",
+      "time"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "Startup finished in 1.077s (kernel) + 3.391s (userspace) = 4.469s \ngraphical.target reached after 3.388s in userspace.\n"
+  },
+  "schema_unchanged": true,
+  "scanouts": {
+    "dark": {
+      "image": "B02-portal-dark.png",
+      "original_native_scanout_sha256": "abafb71006d0a8658232a4e27fb1b1dd21e931b333ec49fab79d45d8b97b3bc8",
+      "png_sha256": "b45499cf0fbd83869fa149a06413ebc0cdcda69fc376e594dd5a55aacb7490ed",
+      "scope": "Actual QMP framebuffer; lossless format conversion only, no mockup or artwork compositing."
+    },
+    "light": {
+      "image": "B02-portal-light.png",
+      "original_native_scanout_sha256": "81e650b7bad79b4342f1461ba9ee5d13bb6dc4ce15f29420a3c12b8b8a321ab7",
+      "png_sha256": "b775fb11d095a5c3d75a38742b40522b941afeeb7c6f022495895bbbe1492077",
+      "scope": "Actual QMP framebuffer; lossless format conversion only, no mockup or artwork compositing."
+    },
+    "selected": {
+      "image": "B02-portal-selected.png",
+      "original_native_scanout_sha256": "ca6f8e16acb500a3d5a3e52731269efeb7e038fb637251bda6144660d3840a7f",
+      "png_sha256": "f8adef2bcee740081259a22fe20c1e8340472a7db9a3c6c4de22b262a3e8138b",
+      "scope": "Actual QMP framebuffer; lossless format conversion only, no mockup or artwork compositing."
+    },
+    "cancelled": {
+      "image": "B02-portal-cancelled.png",
+      "original_native_scanout_sha256": "b5aafcdab70cf4e81376f15f25b771bf5276a842ec8d1d3aa56ee786a75c971a",
+      "png_sha256": "bfe2bb77026c9608140edea51e2ffcce16ec1aa84af11e6e91730875f8ebb15e",
+      "scope": "Actual QMP framebuffer; lossless format conversion only, no mockup or artwork compositing."
+    },
+    "request-closed": {
+      "image": "B02-portal-request-closed.png",
+      "original_native_scanout_sha256": "b5aafcdab70cf4e81376f15f25b771bf5276a842ec8d1d3aa56ee786a75c971a",
+      "png_sha256": "bfe2bb77026c9608140edea51e2ffcce16ec1aa84af11e6e91730875f8ebb15e",
+      "scope": "Actual QMP framebuffer; lossless format conversion only, no mockup or artwork compositing."
+    }
+  },
+  "prior_failures_retained": [
+    {
+      "context": "native-fuse-portal-runtime-1",
+      "cause": "Fixture assumed compositor socket ready immediately after logind marked active; no functional tests ran."
+    },
+    {
+      "context": "native-fuse-portal-runtime-2",
+      "cause": "Actual FUSE helper/owner/refusal passed; fixture wrongly expected SIGTERM exit0. Source-defined highlevel signal exit8 and unmount plus upstream lowlevel semantic test0 verified in context3."
+    }
+  ],
+  "limits": "Real virtual reference guest only. GUI file selection consent/cancel/Request.Close tested; no blanket acceptance of screen capture, camera, microphone, privileged administration or every portal. BIOS installed-system boot plus earlier BIOS/UEFI no-disk diagnostics; no physical acceptance. Remaining B02 persistence/recovery/resource/manifest gates pending."
+}
