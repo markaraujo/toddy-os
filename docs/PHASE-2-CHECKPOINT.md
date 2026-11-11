@@ -113,3 +113,11 @@ Installed FUSE/kernel/portal runtime and dark/light integration; restoredNM rebo
 persistence; Editor refusal/recovery/reboot; affected device/refusal and absent-agent
 checks; exact minimal runtime manifest/catalog status, actual idle/resource and
 recovery-entry boot. B02 is not complete. No later B story before requested stop.
+
+Native context2 terminal failure preserved: readiness corrected; actual running
+FUSE config/owned helper mount/read/UID65534 access+unmount denial/allow_other
+refusal/owner unmount passed. Wrong highlevel hello SIGTERM exit0 assertion failed.
+Source3.18.2 signals->loop_mt->helper mapsSIGTERM15 to8 before unmount; followup
+requires actual8+no mount and original signals driver0, reuses passed partial proof.
+Next phase2_native_fuse_portal_signal.py context3; context2 stopped/backing unchanged.
+No kernel/package/source rebuild. Ledger new-cause correction1.

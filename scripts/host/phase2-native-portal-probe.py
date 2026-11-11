@@ -85,7 +85,7 @@ def main():
                         if (Path('/run/user/12402')/'wayland-0').exists():break
                         time.sleep(.2)
                     assert (Path('/run/user/12402')/'wayland-0').exists(),'Compositor Wayland socket did not become ready after normal login'
-                    report['fuse']=verify_native_fuse();assert report['fuse']['all_selected_exits_zero'],report['fuse']
+                    report['fuse']=verify_native_fuse(previous=FUSE_PREVIOUS);assert report['fuse']['all_selected_exits_zero'],report['fuse']
                     source=home/'portal-client.py';source.write_text(PORTAL_CLIENT_SOURCE);os.chown(source,12402,12402);source.chmod(0o644)
                     allowed=home/'portal-allowed.txt';allowed.write_text('Toddy native portal consent\n');os.chown(allowed,12402,12402)
                     value=portal_value();assert value==1,value;settings.append({'state':'default-dark','portal_color_scheme':value})

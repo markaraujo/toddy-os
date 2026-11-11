@@ -2,7 +2,7 @@
 from pathlib import Path
 import gzip,hashlib,json,os,re,shutil,signal,stat,subprocess,time
 
-def verify_native_fuse(uid=12402):
+def verify_native_fuse(uid=12402,previous=None):
  assert os.getuid()==0 and os.uname().release=='7.1.8-toddy'
  assert hashlib.sha256(gzip.decompress(Path('/proc/config.gz').read_bytes())).hexdigest()=='952e7d9d6e5c8e523ebf128c220481bc29280424e0686e4b0903b518234bf77b'
  device=subprocess.check_output(['findmnt','-n','-o','SOURCE','/'],text=True).strip();assert re.fullmatch('/dev/[a-z0-9]+',device)
@@ -45,22 +45,34 @@ def verify_native_fuse(uid=12402):
   assert p.poll() is None
   return p,row
  try:
-  initial=mounted();assert initial is None
-  p,row=start();result['first_owner_mount']=row
-  assert Path('/sys/module/fuse').is_dir() and stat.S_ISCHR(Path('/dev/fuse').stat().st_mode)
-  result['device_mode']=oct(stat.S_IMODE(Path('/dev/fuse').stat().st_mode));assert result['device_mode']=='0o666'
-  read=run(['cat',str(mount/'hello')]);assert read['exit']==0 and read['stdout']=='Hello World!\n';result['owner_read']=read
-  denied=run(['cat',str(mount/'hello')],65534);assert denied['exit']!=0 and 'Permission denied' in denied['stderr'];result['other_uid_read_denied']=denied
-  denied=run(['fusermount3','-u',str(mount)],65534);assert denied['exit']!=0 and mounted();result['other_uid_unmount_denied']=denied
-  assert run(['cat',str(mount/'hello')])['stdout']=='Hello World!\n'
-  refused=run([str(root/'native-hello'),'-f','-o','allow_other',str(fixture/'refused')]);assert refused['exit']!=0 and 'user_allow_other' in refused['stderr'];result['allow_other_refused']=refused
-  assert subprocess.run(['findmnt','--mountpoint',str(fixture/'refused')],capture_output=True).returncode!=0
-  unmount=run(['fusermount3','-u',str(mount)]);assert unmount['exit']==0 and p.wait(timeout=15)==0 and not mounted();result['owner_unmount']=unmount
-  p,row=start();p.send_signal(signal.SIGTERM);assert p.wait(timeout=15)==0 and not mounted();result['sigterm_cleanup_exit']=0
+  if previous is None:
+   initial=mounted();assert initial is None
+   p,row=start();result['first_owner_mount']=row
+   assert Path('/sys/module/fuse').is_dir() and stat.S_ISCHR(Path('/dev/fuse').stat().st_mode)
+   result['device_mode']=oct(stat.S_IMODE(Path('/dev/fuse').stat().st_mode));assert result['device_mode']=='0o666'
+   read=run(['cat',str(mount/'hello')]);assert read['exit']==0 and read['stdout']=='Hello World!\n';result['owner_read']=read
+   denied=run(['cat',str(mount/'hello')],65534);assert denied['exit']!=0 and 'Permission denied' in denied['stderr'];result['other_uid_read_denied']=denied
+   denied=run(['fusermount3','-u',str(mount)],65534);assert denied['exit']!=0 and mounted();result['other_uid_unmount_denied']=denied
+   assert run(['cat',str(mount/'hello')])['stdout']=='Hello World!\n'
+   refused=run([str(root/'native-hello'),'-f','-o','allow_other',str(fixture/'refused')]);assert refused['exit']!=0 and 'user_allow_other' in refused['stderr'];result['allow_other_refused']=refused
+   assert subprocess.run(['findmnt','--mountpoint',str(fixture/'refused')],capture_output=True).returncode!=0
+   unmount=run(['fusermount3','-u',str(mount)]);assert unmount['exit']==0 and p.wait(timeout=15)==0 and not mounted();result['owner_unmount']=unmount
+  else:
+   assert previous['running_config_sha256']==result['running_config_sha256'] and previous['uid']==uid
+   for key in ['first_owner_mount','device_mode','owner_read','other_uid_read_denied','other_uid_unmount_denied','allow_other_refused','owner_unmount']:
+    result[key]=previous[key]
+   result['reused_evidence']='native-fuse-portal-runtime-2 authenticated partial native report; same unchanged backing/package/kernel inputs'
+  p,row=start();ready=run(['cat',str(mount/'hello')]);assert ready['exit']==0 and ready['stdout']=='Hello World!\n'
+  p.send_signal(signal.SIGTERM);code=p.wait(timeout=15);result['sigterm_cleanup_exit']=code;result['sigterm_mount_absent']=not mounted()
+  # Fuse3.18.2 exit_handler records SIGTERM15; loop_mt returns it and helper.c
+  # maps nonzero to8 before fuse_unmount. This is a signal exit, not success0.
+  assert code==8 and result['sigterm_mount_absent'],('SIGTERM native status/cleanup',code,mounted())
   signals=run([str(root/'native-test-signals')],timeout=20);assert signals['exit']==0;result['original_upstream_signals']=signals
   assert not mounted() and not any(' /tmp/fuse_test_' in l or ' /tmp/toddy-native-fuse-proof/' in l for l in Path('/proc/self/mountinfo').read_text().splitlines())
   assert hashlib.sha256(conf.read_bytes()).hexdigest()==confsha;result['configuration_unchanged']=True;result['all_selected_exits_zero']=True
  except Exception as error:
+  import traceback
+  result['traceback']=traceback.format_exc()
   result.update(all_selected_exits_zero=False,error={'type':type(error).__name__,'message':str(error)})
  finally:
   for p,log in processes:
