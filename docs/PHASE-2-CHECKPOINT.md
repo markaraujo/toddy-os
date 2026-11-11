@@ -4,7 +4,36 @@ Owner boundary: **complete ALL B02, then stop before another story**. Full Phase
 Goal active/incomplete; B01/B03 accepted13%, B02 in_progress, B04 integration
 blocked, B05-B13/G2 pending. Physical foundation tests unperformed. No Phase2 ISO.
 
-## Current slice: private browser compiler prerequisites
+## Current slice: compiler feasibility and browser security overlay
+
+### Security acceptance boundary — ADR0225
+
+Current upstream review found high-impact same-ESR corrections after153.2,
+including MFSA2026-127 released2026-11-10. Baseline153.2 is NOT browser-release
+eligible. Finish the healthy current compiler once as private feasibility only;
+never install/promote its output as the delivered browser or use owner credentials.
+No mutation/restart/second guest writer. [Review](evidence/B02-firefox-security-review.json).
+
+Separate firefox-security-1537 source appended to phase2 lock, original retained.
+Official153.7.0esr archive800,080,060B matches publisherSHA512; SHA256
+7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0,
+already cached.local/sources/firefox-153.7.0esr.source.tar.xz. No signature claim.
+Host source scan session35200 TERMINAL0:510,287members/3,515,456,965regular
+expanded bytes;21critical metadata files retained/hashed. [Source review](evidence/B02-firefox-security-source.json).
+Root moz.configure/toolkit/moz.configure unchanged; Rust configure changes vendor
+alias selection. Candidate headers NSS3.125.1/NSPR4.39; installed3.126/4.40.
+These observations are NOT compatibility/security acceptance. Exact minimum Rust
+constant and NSS security/ABI coverage still need fresh source review/configure.
+Private complete scan.local/phase2/firefox-security-source-review-1/result.json,
+selected source texts retained there. Never rerun completed unchanged scan/fetch.
+Host free108,326,338,560B versus107,374,182,400B reserve, only952MB headroom:
+no new large host allocations. Guest raw compiler scratch remains preallocated.
+No guest mutations/new extraction/install while original compiler holds writer.
+Next host action: prepare affected overlay storage/recipe and notice plan without
+changing active producer/inputs or allocating unchecked space.
+Next guest action only after baseline compiler TERMINAL: measure capacity and
+choose qualified custody/retirement/fresh overlay source/work/build. Old objects
+not a qualified cache for different source. No guest153.7 extraction/install yet.
 
 [NASM proof](evidence/B02-nasm-build-tools.json): frozen3.02 source SHA
 87336eba53b4acfe917424ab5d500d2b0054d9f5148d35c2273ccf2cfb712f0d.
@@ -14,7 +43,8 @@ original contents/failed logs retained, fresh configure directory.
 Actual assembly/link/executable42/exact machine bytes/ndisasm positive control
 passed. Private stage /mnt/lfs/sources/phase2/work/nasm-1/stage, sourcealias
 /mnt/lfs/sources/phase2/inputs/nasm-3.02. No native OS install. Ledger resolved
-one correction; NEVER replay compiler/extraction/correction. No running writer.
+one correction; NEVER replay NASM compiler/extraction/correction.
+Firefox compiler now owns the single guest writer as recorded below.
 
 Actual source inspection: Firefox requires Clang>=19 for WASM; installed22.1.8
 has X86/AMDGPU only, no WASM/wasm-ld/ld.lld. ADR0224 chooses private official
@@ -69,8 +99,9 @@ Observer checks controller boot/PID/start, log bytes and real terminal exit ever
 30s, reports only1MiB growth/5min/terminal. No repeated model calls for unchanged
 logs. If observer deadline/error inspect SAME controller/job, never restart build.
 Next: inspect actual live/terminal state and compiler receipt; on0 require both
-ELF artifacts and exact application version postconditions, then stage/owned
-security-ABI/license inventory/native qualification. Never treat timeout/log
+ELF artifacts and exact application version for private feasibility evidence,
+then follow ADR0225 security overlay/capacity gate. Do not stage/install baseline
+for release. Never treat timeout/log
 absence as success. Browser itself not accepted until actual runtime/UI evidence.
 Host-only source/security/inventory review eligible while compiler owns guest.
 Preserve100GiB host/16GiB target/128MiB scratch and final B02 stopping boundary.

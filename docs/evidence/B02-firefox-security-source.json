@@ -1,0 +1,155 @@
+{
+  "scope": "Read-only corrected source compatibility/license metadata review only; actual overlay compiler/ABI/runtime acceptance pending",
+  "source": {
+    "name": "firefox-security-1537",
+    "version": "153.7.0esr",
+    "filename": "firefox-153.7.0esr.source.tar.xz",
+    "url": "https://archive.mozilla.org/pub/firefox/releases/153.7.0esr/source/firefox-153.7.0esr.source.tar.xz",
+    "sha256": "7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0",
+    "publisher_sha512": "40eaa7892b910d1b50f6eb534a58e2c191067af160b33691c7c6925b81217f376d39da8ef5137720cf16a6d88b8de951ac986cfb71cfaddc9dd067ee72dca0d3",
+    "reference": "ADR-0225; Mozilla MFSA2026-93/100/127 same Firefox153 ESR security overlay",
+    "integrity": "Official HTTPS source matches exact publisher SHA512SUMS; observed SHA256 frozen before extraction. No OpenPGP signature claim. Original153.2 baseline retained.",
+    "status": "source_verified"
+  },
+  "archive_members": 510287,
+  "expanded_regular_bytes": 3515456965,
+  "selected_files": {
+    "moz.configure": {
+      "bytes": 30109,
+      "sha256": "2a7a739add9e30d0e6d93d6419f8546bf0722578adc4f1d38f2907e0030fc055"
+    },
+    "media/libaom/moz.yaml": {
+      "bytes": 1551,
+      "sha256": "951f9571bc75750ef40d947c93fa27114b4eb698d8d33d41e988a922b565ea58"
+    },
+    "media/libdav1d/moz.yaml": {
+      "bytes": 1825,
+      "sha256": "6fd68f4637e46a255871ec802fac34f9d573d31efe77c957695eacc8689e253c"
+    },
+    "media/libvpx/moz.yaml": {
+      "bytes": 2466,
+      "sha256": "15eaa6ac66f62c14f8c6e10ed1d2d2c6e5d8aa16600aa341d19f872a432ada49"
+    },
+    "media/libwebp/moz.yaml": {
+      "bytes": 1303,
+      "sha256": "b0f21e48a1b1274491c7bc6b5e58126840d5172b4dcfb98b1152cc52c844e419"
+    },
+    "media/libpng/moz.yaml": {
+      "bytes": 1376,
+      "sha256": "479ed725331b5bc13b4666669f86e6d838caf0af3f95bd84f7e5d5584a529868"
+    },
+    "media/libpng/png.h": {
+      "bytes": 152118,
+      "sha256": "da03659aac24677eb1781d9dd4eafdddffc48fef9e7920adb2e0192689802705"
+    },
+    "media/libpng/LICENSE": {
+      "bytes": 5345,
+      "sha256": "bdb0a645ea18c60507d0368379b1ac5474b92255fcc2d115e07486a7672ba526"
+    },
+    "security/nss/lib/nss/nss.h": {
+      "bytes": 15494,
+      "sha256": "90a59d06c8e12b1bb81422c3299e2ec1b09ddecc7b2fa933aab587dd1c7a7232"
+    },
+    "parser/expat/moz.yaml": {
+      "bytes": 1486,
+      "sha256": "0a944b669ae036962f2a51802d5535b45ab539487cfe8959b227eb81b336d5c2"
+    },
+    "config/milestone.txt": {
+      "bytes": 334,
+      "sha256": "a7334755402edc0bacf04918de86731a42e87b86affc4f128d53129334d3ca0a"
+    },
+    "nsprpub/pr/include/prinit.h": {
+      "bytes": 6497,
+      "sha256": "7ef26ea7d92095e294bf417f65fa30636b50a21fa18d14d3a1b535cf0cdc0d42"
+    },
+    "browser/config/version_display.txt": {
+      "bytes": 11,
+      "sha256": "384ed56b1edb5786454b2a666cc87e7235ee4f8c3f1b914eb320dc9910de3f16"
+    },
+    "browser/config/version.txt": {
+      "bytes": 8,
+      "sha256": "713eeb629094cb1eb9424ff20bcea6d05415cc4b2e4b9787771c931e13a5bbb3"
+    },
+    "LICENSE": {
+      "bytes": 389,
+      "sha256": "a799adf18bfb1911f16086dc0e2a6d1cd0e31272f47e7ee6841b465b74d249de"
+    },
+    "build/moz.configure/nss.configure": {
+      "bytes": 1799,
+      "sha256": "cd095887708bd6cfafca00af4672cf99403557769d502af106e0553e42618fb7"
+    },
+    "build/moz.configure/toolchain.configure": {
+      "bytes": 124275,
+      "sha256": "645cc264450204d135d29fa9195c0a737f669740771d2c2a969e585af4ece0cc"
+    },
+    "build/moz.configure/nspr.configure": {
+      "bytes": 3685,
+      "sha256": "c1cfc4bcc5a4b371d2a2a3ad2ad129a65c2f9521c90a614a903385bba1fda6e4"
+    },
+    "build/moz.configure/rust.configure": {
+      "bytes": 27073,
+      "sha256": "320e6f850f190a7b276ab78722385c129591e37ae64ab146c807fa576eec4a99"
+    },
+    "toolkit/moz.configure": {
+      "bytes": 137208,
+      "sha256": "365cbd982a6f67d4a9849ec0524612918703090d134fc9cb15d9c12ab428edb6"
+    },
+    "toolkit/content/license.html": {
+      "bytes": 341861,
+      "sha256": "c236062699b8ef1a19aa5149da0d3a33ed26fd05fb10e40afb4d692571edd64e"
+    }
+  },
+  "baseline_selected_sha256": {
+    "moz.configure": "2a7a739add9e30d0e6d93d6419f8546bf0722578adc4f1d38f2907e0030fc055",
+    "media/libaom/moz.yaml": "951f9571bc75750ef40d947c93fa27114b4eb698d8d33d41e988a922b565ea58",
+    "media/libdav1d/moz.yaml": "6fd68f4637e46a255871ec802fac34f9d573d31efe77c957695eacc8689e253c",
+    "media/libvpx/moz.yaml": "4830c8a2de9b93c633af3e4aea4b42822d36f177aec7b232a863cfaad07fb295",
+    "media/libwebp/moz.yaml": "b0f21e48a1b1274491c7bc6b5e58126840d5172b4dcfb98b1152cc52c844e419",
+    "media/libpng/moz.yaml": "fe204ec39e5c9ef3cebdc67b3e750fa514a04dc269b05470bd210c9d21d208f2",
+    "media/libpng/png.h": "4dd2b593d38e5c093840d0a4381bf6ee030a3f1f15ed158f5afa4b9bfb1cf93c",
+    "media/libpng/LICENSE": "bdb0a645ea18c60507d0368379b1ac5474b92255fcc2d115e07486a7672ba526",
+    "security/nss/lib/nss/nss.h": "d75d0da5e19ec7104bb38f36287098f1f18a6ffee1952cad2fcc1db9fbf872a5",
+    "parser/expat/moz.yaml": "8e975b5a0f7873936118281af62bc28381e64afb9fecc1fb876ca2c2a1c16c6b",
+    "config/milestone.txt": "265cb2fd8c43650ba4e7c9b0763a64de3efc61b152be13367d45daaaa9214baa",
+    "nsprpub/pr/include/prinit.h": "7ef26ea7d92095e294bf417f65fa30636b50a21fa18d14d3a1b535cf0cdc0d42",
+    "browser/config/version_display.txt": "c9b42eb5b8abd35b411b02f3133a95c20bfa11c764399f0ebd512ab48307435c",
+    "browser/config/version.txt": "18d27c7678a60e0af4b4b636cfea70a8e120e0cfd1fe5142178a4a17a1103e8c",
+    "LICENSE": "a799adf18bfb1911f16086dc0e2a6d1cd0e31272f47e7ee6841b465b74d249de",
+    "build/moz.configure/nss.configure": "cd095887708bd6cfafca00af4672cf99403557769d502af106e0553e42618fb7",
+    "build/moz.configure/toolchain.configure": "645cc264450204d135d29fa9195c0a737f669740771d2c2a969e585af4ece0cc",
+    "build/moz.configure/nspr.configure": "c1cfc4bcc5a4b371d2a2a3ad2ad129a65c2f9521c90a614a903385bba1fda6e4",
+    "build/moz.configure/rust.configure": "492941827df3be810fd16b17cfba65d4dcb7c35076f468d676077f5707512a49",
+    "toolkit/moz.configure": "365cbd982a6f67d4a9849ec0524612918703090d134fc9cb15d9c12ab428edb6",
+    "toolkit/content/license.html": "d06106956e51196b2780a19df5d40294529b3fa08d8cea0b87172cf825c50cce"
+  },
+  "changed_selected_paths": [
+    "media/libvpx/moz.yaml",
+    "media/libpng/moz.yaml",
+    "media/libpng/png.h",
+    "security/nss/lib/nss/nss.h",
+    "parser/expat/moz.yaml",
+    "config/milestone.txt",
+    "browser/config/version_display.txt",
+    "browser/config/version.txt",
+    "build/moz.configure/rust.configure",
+    "toolkit/content/license.html"
+  ],
+  "runtime_header_declarations": {
+    "bundled_nss": "3.125.1",
+    "bundled_nspr": "4.39"
+  },
+  "qualified_installed_dependencies": {
+    "nss": "3.126.0",
+    "nspr": "4.40",
+    "clang": "22.1.8",
+    "private_wasm_clang": "19.1.5",
+    "rust": "1.97.1"
+  },
+  "remaining": "Review actual minimum version constants at fresh guest source preparation; native dependency configuration/ABI/security checks still required. Header declarations alone do not prove compatibility.",
+  "capacity": "Measured host108326338560B versus107374182400B reserve; no new large host allocation. Fresh guest source/work requires terminal original compiler and explicit measured custody/retirement decision.",
+  "configure_delta_review": {
+    "moz.configure": "Byte-identical to current baseline",
+    "toolkit/moz.configure": "Byte-identical, including Wayland/main/WASM toolkit choices",
+    "build/moz.configure/rust.configure": "Changes normalize vendor aliases/narrow target candidates. Actual minimum Rust version constant still requires inspection at fresh source preparation."
+  }
+}

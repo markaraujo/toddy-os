@@ -3709,3 +3709,25 @@ unknown bases still fail closed. No unchanged native package suite replay.
 
 Final affected checks: full make check374passed. Compiler still live with growing
 output and9,356,087,296B free at observation; no stage/install/browser acceptance.
+
+## B02 browser security gate and corrected ESR source — 2026-11-11
+
+Original compiler actual PID/start identity live, growing C++/Rust output and
+reserve intact. Read-only source notice/codec inventory located MPL collection,
+PNG1.6.58 and vendored media/XML metadata. Official upstream review then found
+post153.2 high-impact corrections (MFSA2026-93/100/127; latest observed November10).
+ADR0225 blocks baseline browser delivery and selects separate153.7.0esr candidate.
+800,080,060byte official archive matched publisher SHA512; SHA256 pinned, original
+source lock retained. Host read-only metadata scan running; no guest mutation,
+compiler replay or corrected browser qualification. Healthy original build finishes
+once privately; next guest action requires terminal result and measured fresh
+source/work capacity, preserving all reserves.
+[Security review](evidence/B02-firefox-security-review.json).
+
+Read-only corrected-source scan completed0:510,287members/3,515,456,965regular
+bytes,21selected metadata files hashed and version153.7 confirmed. Root/toolkit
+configure byte-identical; Rust configure changes vendor target narrowing. Header
+versions alone do not clear dependency ABI/security gates. Host108,326,338,560B
+free retains100GiB reserve with952MB margin; no additional large host allocation.
+Full make check374passed; source/provenance/source-only status not browser acceptance.
+[Source review](evidence/B02-firefox-security-source.json).

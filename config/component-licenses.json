@@ -11309,6 +11309,13 @@
       "license": "LicenseRef-WASI-SDK-source-per-file",
       "evidence": "Exact SDK/LLVM/Clang/libc++/libc++abi/compiler-rt/wasi-libc and transitive allocator/cloudlibc/musl/fts notices pinned by URL and SHA in config/phase2/browser-build-tools.lock.json; retained privately because upstream binary archive has no notices.",
       "runtime_inclusion": "Private compiler bootstrap only; generated WASM/native decoding code needs the associated notices in the eventual browser package. SDK is not included automatically in the base."
+    },
+    {
+      "name": "firefox-security-1537",
+      "version": "153.7.0esr",
+      "license": "LicenseRef-firefox-per-file",
+      "evidence": "Full source LICENSE/toolkit/content/license.html and exact vendored source notices must be retained; source/codec inventory and native package/license closure pending.",
+      "runtime_inclusion": "Security candidate only, not built/installed/advertised as working. Supersedes baseline153.2 for browser release eligibility after actual qualification."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
