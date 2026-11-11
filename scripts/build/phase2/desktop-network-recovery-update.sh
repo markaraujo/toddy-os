@@ -8,6 +8,7 @@ import hashlib,json,os,shutil,subprocess,sys
 R=Path('/opt/toddy-build');T=Path('/mnt/lfs');L=Path('/var/log/toddy/phase2')
 sys.path.insert(0,str(R/'scripts/build/phase2'));from desktop_network import stage
 sys.path.insert(0,str(R/'scripts/build'));from stage_package import payload
+from source_notices import retain_source_notices
 name='toddy-desktop-network';oldversion='0.2.0-1+toddy1';newversion='0.2.0-1+toddy2'
 old=json.loads(Path('/var/log/toddy/packages',name+'_'+oldversion+'_all.json').read_text())
 assert old['installed']
@@ -20,12 +21,14 @@ for n,row in old['payload'].items():
  elif 'symlink' in row:assert os.readlink(p)==row['symlink'],n
 oldarchive=Path('/var/cache/toddy/packages',name+'_'+oldversion+'_all.deb')
 assert digest(oldarchive)==old['archive_sha256']
-receipt=L/'desktop-network-recovery-update-1.json';destination=T/'sources/stage/phase2-toddy-network-recovery-1'
+receipt=L/'desktop-network-recovery-update-1.json';destination=T/'sources/stage/phase2-toddy-network-recovery-2'
 assert not receipt.exists() and not destination.exists(),'Inspect actual receipt/package; never replay'
 for base,suffix in [('/var/log/toddy/packages','.json'),('/var/cache/toddy/packages','.deb')]:
  assert not Path(base,name+'_'+newversion+'_all'+suffix).exists()
 assert shutil.disk_usage(T).free>=16*1024**3+2*1024**2
-conffiles=stage(destination,R);updated=payload(destination);readme='/usr/share/doc/toddy-desktop-network/README'
+conffiles=stage(destination,R)
+retain_source_notices(R,T,destination,name,[])
+updated=payload(destination);readme='/usr/share/doc/toddy-desktop-network/README'
 assert set(updated)==set(old['payload'])
 assert updated[readme]!=old['payload'][readme]
 for n in updated:
