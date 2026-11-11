@@ -125,3 +125,11 @@ Installed FUSE/kernel/portal runtime and dark/light integration; restoredNM rebo
 persistence; Editor refusal/recovery/reboot; affected device/refusal and absent-agent
 checks; exact minimal runtime manifest/catalog status, actual idle/resource and
 recovery-entry boot. B02 is not complete. No later B story before requested stop.
+
+Persistence context1 stopped/backing unchanged with real offline session/protected
+file/polkit refusal verified. No intentional crash dispatched: fixture one-LF draft
+expectation found no match. Source50.1 implicit trailing newline enabled.
+Correction1 records actual retained draft bytes before login, permits only exact
+typed body+one/twoLF, reuses refusal proof; next phase2_native_editor_persist_resume.py
+NEW native-desktop-persist-runtime-2 over quiescent context1, all ancestors readonly.
+No package/compiler/previous operations replay.
