@@ -3807,3 +3807,17 @@ disposable overlay, verifies retained selection before writes and continues only
 stop-networkd/restore-marker/start-NM. Native correction not yet run. Both source
 images must remain unchanged. Preparation make check377passed; cold builder/cache
 recovery uses new receipts afterward. B02 and physical validation remain incomplete.
+
+
+### B02 recovery socket lifecycle correction — 2026-11-11
+
+First remaining-only native attempt passed public DHCP lease, persisted recovery
+selection, addresses/routes and public DNS. Restore NM commands exited0, but a
+still-active networkd socket reactivated networkd before marker restoration.
+Both managers actually active: gate failed, original evidence retained separately.
+Both backing identities unchanged; VM terminal0 is not test success. Second
+correction stops all four observed activation sockets with networkd and verifies
+inactive before marker restore, then starts NM and requests managed DHCP. Fresh
+overlay of known original networkd selection, no uncertain operation replay.
+README generator corrected; installed README update pending qualification.
+Make check377passed. Second runtime pending, bounded failure budget unchanged.

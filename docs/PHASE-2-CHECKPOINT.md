@@ -26,10 +26,20 @@ overlay over the retained first overlay read-only, leaving both inputs unchanged
 No login, package install or GUI state writes replayed. Probe verifies retained
 networkd selection before writes, public `networkctl --json=short dhcp-lease`
 (Systemd261.2 source), address/routes/DNS, then continues stop-networkd,
-restore-marker/start-NM/DHCP/DNS. Actual outcome pending; timeouts are failures.
+restore-marker/start-NM/DHCP/DNS. First remaining correction TERMINAL1: public DHCP lease, networkd-selected boot,
+address/routes/DNS passed. NM start succeeded, but still-active sockets restarted
+networkd BEFORE marker restoration; both managers active. Original and first
+correction failures retained. Both backing identities unchanged. No live guest.
+Correction2 prepared: stop all4activation sockets with service and verify inactive
+before marker restore; start NM and explicitly acquire a managed connection.
+Run --remaining-recovery-2 in new native-network-recovery-runtime-2 only. It uses
+a fresh overlay of original known networkd-selected overlay; deliberately tests
+changed recovery procedure, never replays uncertain state. Package README generator
+corrected; installed0.2.0 README remains old until owned update after qualification.
+Timeouts are failures.
 One writer, ordinary bridge/user NAT, original target guard and unchanged schemas.
-Focused preparation check: make check377passed. Failure ledger retains one prepared
-correction/no failed corrections; do not reset its budget on resumption.
+Focused preparation check: make check377passed. Failure ledger retains two prepared
+corrections/one failed correction; do not reset its budget on resumption.
 
 On terminal inspect report/container and both backing identities. Only then restore
 builder once and existing6volumes/Systemd/Glycin/kernel/generation4/browser mounts

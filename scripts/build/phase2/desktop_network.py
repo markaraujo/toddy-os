@@ -44,7 +44,17 @@ Owner configuration under /etc is a conffile. Higher-priority NetworkManager
 configuration remains available. To select the retained networkd recovery path,
 as administrator stop NetworkManager, move /etc/toddy/network/use-networkmanager
 to a retained backup path, then start systemd-networkd (or reboot). To return,
-stop networkd, restore the marker, then start NetworkManager (or reboot).
+stop all networkd activation sockets together with its service before restoring
+the marker. Stopping only the service allows a pending socket request to restart
+it before the marker changes. For the pinned Systemd261.2 units use:
+
+systemctl stop systemd-networkd-resolve-hook.socket systemd-networkd-varlink.socket systemd-networkd.socket systemd-networkd-varlink-metrics.socket systemd-networkd.service
+
+Verify those five units are inactive, restore the marker, start NetworkManager,
+and use nmcli device connect INTERFACE to acquire a managed DHCP connection.
+Verify NetworkManager active, networkd inactive, fresh DHCP options and public DNS.
+A reboot with the restored marker also selects NetworkManager. Never change
+owner profiles or use a guessed interface name.
 After changing manager ownership, check actual service/address/route/DNS state;
 never start both managers on the interface or interpret a timeout as recovery.
 NetworkManager's ordinary networking-off setting leaves networkd unselected.

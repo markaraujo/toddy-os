@@ -1,0 +1,116 @@
+{
+  "scope": "Remaining native manager recovery after actual reboot of retained first disposable overlay. Earlier normal GDM/GUI/DNS/HTTPS/polkit proof reused explicitly; no GUI/state writes replayed.",
+  "kernel": "7.1.8-toddy",
+  "actual_networkd_lease": {
+    "args": [
+      "networkctl",
+      "--json=short",
+      "dhcp-lease",
+      "enp0s4"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "{\"op\":2,\"htype\":1,\"hops\":0,\"xid\":3347124098,\"secs\":0,\"flags\":0,\"ciaddr\":\"00000000\",\"yiaddr\":\"0a00020f\",\"siaddr\":\"0a000202\",\"giaddr\":\"00000000\",\"chaddr\":\"525400123456\",\"options\":[{\"tag\":1,\"data\":\"ffffff00\"},{\"tag\":3,\"data\":\"0a000202\"},{\"tag\":6,\"data\":\"0a000203\"},{\"tag\":51,\"data\":\"00015180\"},{\"tag\":53,\"data\":\"05\"},{\"tag\":54,\"data\":\"0a000202\"}]}\n"
+  },
+  "persisted_recovery_selection_after_reboot": true,
+  "networkd_active": {
+    "args": [
+      "systemctl",
+      "is-active",
+      "systemd-networkd.service"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "active\n"
+  },
+  "nm_inactive": {
+    "args": [
+      "systemctl",
+      "is-active",
+      "NetworkManager.service"
+    ],
+    "exit": 3,
+    "stderr": "",
+    "stdout": "inactive\n"
+  },
+  "networkd_address": {
+    "args": [
+      "ip",
+      "-j",
+      "address",
+      "show",
+      "dev",
+      "enp0s4"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "[{\"ifindex\":2,\"ifname\":\"enp0s4\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"pfifo_fast\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"52:54:00:12:34:56\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"altnames\":[\"enx525400123456\"],\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.0.2.15\",\"prefixlen\":24,\"metric\":1024,\"broadcast\":\"10.0.2.255\",\"scope\":\"global\",\"dynamic\":true,\"label\":\"enp0s4\",\"valid_life_time\":86400,\"preferred_life_time\":86400},{\"family\":\"inet6\",\"local\":\"fe80::5054:ff:fe12:3456\",\"prefixlen\":64,\"scope\":\"link\",\"tentative\":true,\"protocol\":\"kernel_ll\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+  },
+  "networkd_routes": {
+    "args": [
+      "ip",
+      "-j",
+      "route",
+      "show",
+      "default"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "[{\"dst\":\"default\",\"gateway\":\"10.0.2.2\",\"dev\":\"enp0s4\",\"protocol\":\"dhcp\",\"prefsrc\":\"10.0.2.15\",\"metric\":1024,\"flags\":[]}]\n"
+  },
+  "networkd_public_dns": {
+    "args": [
+      "getent",
+      "ahostsv4",
+      "example.com"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "172.66.147.243  STREAM example.com\n172.66.147.243  DGRAM  \n172.66.147.243  RAW    \n104.20.23.154   STREAM \n104.20.23.154   DGRAM  \n104.20.23.154   RAW    \n"
+  },
+  "runs": [
+    {
+      "args": [
+        "resolvectl",
+        "flush-caches"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "systemctl",
+        "stop",
+        "systemd-networkd.service"
+      ],
+      "exit": 0,
+      "stderr": "Stopping 'systemd-networkd.service', but its triggering units are still active:\nsystemd-networkd-resolve-hook.socket, systemd-networkd-varlink.socket, systemd-networkd.socket, systemd-networkd-varlink-metrics.socket\n",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "systemctl",
+        "start",
+        "NetworkManager.service"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "error": {
+    "message": "",
+    "type": "AssertionError"
+  },
+  "schema_unchanged": true,
+  "all_selected_exits_zero": false,
+  "reused_prefix": {
+    "report_sha256": "9aed09ef52d96c6f36f0d6be2057ae99c4f041203a0ee5f4cda7ea7f5ffc0070",
+    "scope": "Unchanged source-base normal owner/UI/on-off-reconnect/DNS/HTTPS/polkit proof retained, original aggregate failure preserved"
+  },
+  "raw_report_sha256": "9e5cf75dcc7c338278ac8ee76ac0828b8cf01453d1422769ba6da62e028c1cf2",
+  "backing_unchanged": true,
+  "container_exit": 0,
+  "diagnosis": "Networkd restarted through still-active activation sockets between stop and marker restore; NM and networkd both actually active. Stop sockets with service before marker restore. No accepted aggregate or product recovery claim."
+}

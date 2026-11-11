@@ -63,8 +63,16 @@ def main():
         assert any(row.get('dev')==interface and row.get('gateway') for row in json.loads(route['stdout']))
         report['networkd_address']=address;report['networkd_routes']=route;report['networkd_public_dns']=dns()
         # Continue the known retained state, never repeat the already completed NM stop/networkd start.
-        service(['systemctl','stop','systemd-networkd.service']);backup.rename(marker)
+        sockets=['systemd-networkd-resolve-hook.socket','systemd-networkd-varlink.socket',
+                 'systemd-networkd.socket','systemd-networkd-varlink-metrics.socket']
+        service(['systemctl','stop',*sockets,'systemd-networkd.service'])
+        for unit in [*sockets,'systemd-networkd.service']:
+            inactive=command(['systemctl','is-active',unit])
+            assert inactive['stdout'].strip()=='inactive',inactive
+        report['networkd_and_triggers_stopped']=True
+        backup.rename(marker)
         service(['systemctl','start','NetworkManager.service'])
+        service(['nmcli','--wait','30','device','connect',interface])
         limit=time.monotonic()+45;state=None
         while time.monotonic()<limit:
             state=command(['nmcli','-g','GENERAL.STATE','device','show',interface])

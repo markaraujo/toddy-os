@@ -11,8 +11,9 @@ import phase2_gdm_owner_control
 import vm
 
 ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
-REMAINING=sys.argv[1:]==['--remaining-recovery']
-CONTEXT=ROOT/'.local/phase2'/('native-network-recovery-runtime-1' if REMAINING else 'native-network-runtime-1')
+REMAINING=sys.argv[1:] in (['--remaining-recovery'],['--remaining-recovery-2'])
+SECOND=sys.argv[1:]==['--remaining-recovery-2']
+CONTEXT=ROOT/'.local/phase2'/('native-network-recovery-runtime-2' if SECOND else 'native-network-recovery-runtime-1' if REMAINING else 'native-network-runtime-1')
 STOP=threading.Event()
 
 
