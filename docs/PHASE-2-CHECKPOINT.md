@@ -137,16 +137,34 @@ refusal/help/recovery. Native9program/20case evidence reused, no replay.
 No indexer service started/enabled by this transaction. No guest writer remains.
 Target free17,345,110,016B. Never replay compiler/stage/native tests/installation.
 
-EXACT NEXT: integrate the4installed stock LocalSearch schema source files into
-the existing GTK-owned shared cache before installed service/Nautilus validation.
-Current GTK4.22.4-1+toddy10/cache122schemas/1060keys remains unchanged. Prepare
-fresh localsearch-schema-union-1 input/work and strict baseline-preserving build
-using existing schema_union_build.py. Require current GTK archive/payload/cache
-and all installed source owners/versions/hashes; retain old contracts exactly.
-After actual union0, promote only cache/legal metadata as GTK4.22.4-1+toddy11
-using tmpfs staging and a full controlled native transaction. Preserve runtime
-GTK bytes and all user preferences. No guessed schema/key counts or success.
-Then proceed to pinned Nautilus prerequisites/build and real installed search/UI.
+LocalSearch shared-schema union1 is now COMPLETE, native step
+b02-localsearch-schema-union-install recipe3758 recipe/post0/0,12changed paths.
+GTK4.22.4-1+toddy11 owns the shared cache, SHA256
+5ae3337c3e495d50e464e2f8acbc0f6a1652034dabe4eb24f9c79b6d38883acf.
+All122baseline schemas/1060keys/type/default/range contracts preserved; actual
+installed default source exposes125schemas/1081keys, adding only3LocalSearch IDs.
+906nonlegal/cache GTK entries unchanged; user preferences untouched, no override.
+[Proof](evidence/B02-localsearch-schema-union.json). New GTK archiveSHA
+6ef608c65b7338a4c6a5b2356227d6065e9288149325e1d335f7fe5c7e495c3e.
+Build input81stock files/20owners, archive/source closure retained. No compiler/
+accepted-test replay. New promotion lives on the existing tmpfs at
+gtk-localsearch-schema-promotion-1 bound to phase2-gtk-localsearch-schema-union.
+Current boot71632310-0bdd-4d1e-9deb-921d95eddc97, no writer remains;
+target17,343,307,776B/scratch755,494,912B free. Never replay union/prep/install.
+The old scratch.tar.gz does NOT yet include this new promotion; before another
+cold stop preserve the changed tmpfs in a NEW custody generation, with actual
+restoration proof and all old original archives retained.
+
+EXACT NEXT: implement pinned Nautilus50.2.2 with existing owned prerequisites,
+now including real installed LocalSearch and global schemas. Frozen BLFS13.1
+nautilus.html hash a68a45f372ce35ddc351ea1769e2c84ce2709719502ea4aa1121b0e1563da5f8
+read: release Meson/selinux=disabled; cloudproviders=false is supported for absent
+optional SDK; do not disable tests or bypass LocalSearch. Book estimates96MB
+including tests; native graphical tests require the proven normal GDM/user seat.
+Use measured scratch capacity rather than violating target reserve. Pin actual
+source/archive/recipe/dependency identities and retain compiler/stage/original
+test inventory; no graphical claim from a compiler-only stage. Runtime Gvfs/device
+mounting remains due alongside UDisks/permissions. Then real Nautilus native UI.
 
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated

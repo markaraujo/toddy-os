@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-11T03:06:14.778155+00:00
+Updated: 2026-11-11T03:13:48.245693+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,10 +16,11 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T03:06:14.778155+00:00
+Last verified: 2026-11-11T03:13:48.245693+00:00
 
 Verified:
 
+- LocalSearch stock schemas globally integrated: GTK4.22.4-1+toddy11 recipe/post0/0,12changes,125schemas/1081keys;122baseline/1060keys and all contracts preserved,906runtime entries unchanged, no preferences/overrides.81inputs/20owners retained. Native installed search/Nautilus GUI pending.
 - Owned native LocalSearch3.11.1 installed recipe/post0/0,153changed paths/300payload entries. All133original stage files and links,21ELF ABI/APT, no SUID/SGID, user-only activation/legal/autostart conffile and UID101/NNP CLI refusal/help/recovery passed. Native9program/20case proof reused. No service activation or global schema-cache integration yet.
 - Actual native LocalSearch4 passed all9selected original programs/20expected search/inhibit/reset and malicious-extractor denial cases, positive controls UID101/NNP/caps0, source/compile/stage unchanged, container0/base unchanged. ADR0220 bounded extension succeeded;13accepted portable programs not replayed. Native package/Nautilus/GUI still pending.
 - Independent private target device profile1 passed UID101/NNP/caps0, device I/O and root/network refusal with global placeholders unchanged. Exact readonly-BUILDROOT original LocalSearch helper/private-bus SDK5 passed2real GIO cycles;770source/403compile/133stage files unchanged. Native4 preflight-only passed; no functional LocalSearch acceptance. ADR0220 preserves all parked budgets.
@@ -194,7 +195,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: LocalSearch native package installed and CLI/ABI verified. Next same-version GTK shared-schema union before installed search and Nautilus. Native GNOME owner/selected GUI proof retained; network/audio/browser/global theme/terminal defaults/full B02 pending. Complete all B02, then stop.
+Running: LocalSearch native package, functional20case gate and shared-schema integration verified. Next pinned Nautilus50.2.2 compile/stage/native GUI, preserving normal-seat proof and target/scratch reserves. Network/audio/browser/Gvfs/storage/global theme/terminal defaults/full B02 pending. Complete all B02, then stop.
 
 Remaining:
 
