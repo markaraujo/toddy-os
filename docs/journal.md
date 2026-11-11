@@ -3743,3 +3743,15 @@ Firefox compiler owns lock. Three actual host systemd259 temporary-path tests
 and full make check377passed. Native261/PID1/normal-user polkit/DHCP/DNS/GUI/
 offline/reboot/recovery remain required.
 [Prepared evidence](evidence/B02-desktop-network-prepared.json).
+
+## B02 native-test storage margin custody — 2026-11-11
+
+Measured host108,321,005,568B free near100GiB reserve. Actual42image graph shows
+old h07-gcc-tested-builder.qcow2 unreferenced; fixed identity/ownership/xattrs and
+QEMUcheck0. ADR0227 adds only this exact profile to qualified32MiB chunk custody,
+old profiles/receipts retained. Actual controller1595927/start29884400 live,
+compression/verified chunk retirement underway. Whole original SHA/length terminal
+verification pending; hole placeholder not bootable. Guest compiler remains
+independent sole writer, native boots blocked by custody lock. Three focused
+protocol tests and make check377passed; no unchanged native/compiler replay.
+[Operation evidence](evidence/B02-native-capacity-custody.json).

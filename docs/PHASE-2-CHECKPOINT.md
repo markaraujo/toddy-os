@@ -6,6 +6,30 @@ blocked, B05-B13/G2 pending. Physical foundation tests unperformed. No Phase2 IS
 
 ## Current slice: compiler feasibility and browser security overlay
 
+### Actual live host storage custody — preserve producer
+
+ADR0227 / [operation evidence](evidence/B02-native-capacity-custody.json).
+Only unused h07-gcc-tested-builder.qcow2 selected:42image graph/no backing
+consumer, originalinode11832378/5,949,423,616bytes/mtime1793940344780548431,
+5,913,346,048B allocated; QEMU structuralcheck0, uid1000/nlink1/xattrs[].
+Originalwhole SHA7f4af9ce2e3002dff261b64035f1ab9b6f4ce1d28112fae00a270704fd686dab.
+Controller1595927/start29884400 actual hostboot53b945dc, tool session24371,
+statecompressing; real identity/chunks confirmed live at checkpoint. Log
+.local/phase2/cold-native-chunk-custody-1-controller.log; receipt
+.local/phase2/cold-native-chunk-custody-1/result.json. ProducerSHA
+bd0108e9268d0d139276b319fa27c5133e9e3c5fc1e09142412b1c4a8f6ed428.
+DO NOT MODIFY producer or replay/resume while live. Existing math/firefox
+custodies COMPLETE/untouched. Original backup path absent; source.custody hole
+skeleton NOT BOOTABLE. Original bytes retained by durable verified chunks plus
+untouched ranges, whole SHA reconstruction required before terminal success.
+Observer session77021/.local/phase2/observe-cold-native-1.py,
+log.local/phase2/cold-native-progress-observer-1.log reports64chunks/terminal only.
+No repeated model calls for unchanged logs. Holds native-boot-test and cold
+compression locks; native boots wait, guest compiler continues independently.
+Before any --resume inspect real process/boot/start/producer, actual chunks and
+unrecorded current archive; never replay completed custody. After terminal verify
+whole length/SHA and measure host free; never infer success from missing PID/log.
+
 ### Independent host network recipe prepared — no guest write
 
 ADR0226 / [prepared evidence](evidence/B02-desktop-network-prepared.json).

@@ -17,6 +17,14 @@ import phase2_compress_cold_checkpoints as cold
 CHUNK = 32 * 1024**2
 RESERVE = 100 * 1024**3
 NAME = 'h07-native-math-builder.qcow2'
+PROFILES = {
+    'math': ('h07-native-math-builder.qcow2', 'cold-math-chunk-custody-1',
+             (11832185, 5940445184, 1793935345557250551)),
+    'firefox-capacity': ('h07-gcc-tested-target.qcow2', 'cold-firefox-chunk-custody-1',
+                         (11832380, 34298068992, 1793940369084300644)),
+    'native-capacity': ('h07-gcc-tested-builder.qcow2', 'cold-native-chunk-custody-1',
+                        (11832378, 5949423616, 1793940344780548431)),
+}
 
 
 def save(directory, state):
@@ -130,11 +138,11 @@ def main():
     global NAME
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--resume', action='store_true')
-    parser.add_argument('--profile',choices=['math','firefox-capacity'],default='math')
+    parser.add_argument('--profile',choices=PROFILES,default='math')
     args = parser.parse_args()
     root = cold.ROOT
-    if args.profile=='firefox-capacity':NAME='h07-gcc-tested-target.qcow2'
-    directory = root / '.local/phase2' / ('cold-math-chunk-custody-1' if args.profile=='math' else 'cold-firefox-chunk-custody-1')
+    NAME, context_name, expected = PROFILES[args.profile]
+    directory = root / '.local/phase2' / context_name
     source = root / '.local/vm/checkpoints' / NAME
     assert os.geteuid() != 0
     locks = []
@@ -166,7 +174,6 @@ def main():
         fd = os.open(source, os.O_RDWR | os.O_NOFOLLOW)
         original = os.fstat(fd)
         assert original.st_uid == os.geteuid() and original.st_nlink == 1
-        expected=(11832185,5940445184,1793935345557250551) if args.profile=='math' else (11832380,34298068992,1793940369084300644)
         assert (original.st_ino,original.st_size,original.st_mtime_ns)==expected
         assert not os.listxattr(source),'Unrecorded extended metadata must remain untouched'
         checked = subprocess.run(['docker', 'run', '--rm', '--user', f'{os.getuid()}:{os.getgid()}',

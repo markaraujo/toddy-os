@@ -16,10 +16,11 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T07:38:07.346433+00:00
+Last verified: 2026-11-11T07:48:03.215057+00:00
 
 Verified:
 
+- Host storage margin work: actual42image graph excludes old h07 GCC builder backup from all backing references; identity/exclusive check/structural QEMU0. Qualified exact-byte chunk custody running with deterministic observer, original ranges retire only after durable verified archives. Active target/master and guest compiler unchanged; terminal whole reconstruction/free-space result pending.
 - Desktop network ownership recipe prepared on host: actual installed NM disabled versus foundation networkd enabled; staged inverse marker conditions, daemon-only enablement, keyfile/resolved defaults and retained recovery configuration. Three real host condition/stage tests and377repository tests passed. No guest install/sync/service/network write; target/native GUI/DHCP/DNS/polkit/offline/recovery remain pending.
 - Browser security gate: official MFSA2026-93/100/127 include high-impact later ESR corrections; baseline153.2 not release-eligible. Separate153.7.0esr candidate archive verified against publisher SHA512 and pinned SHA256, original lock retained. Host source metadata scan0 (510287members/21critical files), toolkit/root configure unchanged; full compatibility/license/security gates pending while original healthy compiler continues privately; no corrected browser installed/accepted.
 - Firefox configure2 passed with Wayland, system NSS/NSPR/ICU, main sandbox and all6upstream WASM library protection flags. Original system-PNG/APNG configure failure retained, one bundled-PNG1.6.58 selection preserving foundation. Private SDK25 C/C++ WASM compile/link and no-egress/caps0/NNP/read-only tool/source/system mutation denial passed. Actual compiler running; not browser install/UI/security acceptance.
@@ -211,7 +212,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: B02 original Firefox153.2 compiler healthy/private feasibility only; delivery requires ADR0225 security overlay153.7. Candidate source integrity/metadata reviewed, ABI/compiler/runtime gates pending. Wait for actual terminal compiler result before any guest/storage/source transition; single writer retained. Complete all B02 then stop.
+Running: B02 original Firefox compiler remains sole guest writer/private feasibility; corrected153.7 required for delivery. Independent host cold-backup custody running to restore native-test storage margin; native boots wait for its lock. Network policy recipes prepared/host-tested only. Inspect exact job receipts before continuation; complete all B02 then stop.
 
 Remaining:
 
