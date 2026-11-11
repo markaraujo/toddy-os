@@ -4008,3 +4008,23 @@ bytes. Actual power-on GNOME/browser still pending. Dedicated Typeexec test unit
 avoids oneshot target-order deadlock. Local browser consumer pages prepared for
 real native interaction/persistence, not HTML OS mockup acceptance. Next implement
 and run fresh default-boot/browser native flow; complete ALL B02 before stop.
+
+### Native default graphical boot and browser — 2026-11-11
+
+[Actual native browser evidence](evidence/B02-browser-native.json) records
+normal power-on graphical.target/GDM without manual activation, ordinary PAM owner
+Wayland login and launcher opening of installed153.7.0esr. Native unchanged
+scanouts show Portuguese input/focus, page navigation, profile persistence after
+actual process exit/reopen, pending-request Stop, secure public HTTPS, explicit
+NS_ERROR_OFFLINE after real Settings wired-off and readable640px tiled windows.
+Loopback request logs independently confirm cancellation before the90s deadline.
+Five actual Web Content processes have UID12402/NNP1/seccomp2/caps0.
+
+Original aggregate remains false: collector relied on child argv that Firefox
+rewrites and misclassified all children as main. Readonly reconciliation selects
+captured exact comm names after original executable/UID guards; it omits malformed
+historical child start_ticks (comm spaces), preserves the raw failed report and
+reuses actual status/UI observations without a runtime/build/install replay.
+Virtual EN/PT scope only; external CJK/Arabic glyphs missing, official browser
+branding not enabled. Audio/style/remaining integrated checks and B02 acceptance
+remain pending. Repository381 tests passed before native dispatch.

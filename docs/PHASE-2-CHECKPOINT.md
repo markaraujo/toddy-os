@@ -6,11 +6,14 @@ Physical foundation tests unperformed. No Phase2 ISO. Preserve G1 master/evidenc
 
 ## Current slice: native default-boot/browser interaction validation
 
-Builder RUNNING boot e146fad4-b1e4-4199-9935-3223e693a00b. No live writer remains:
-compiler2/controller94430, stage1/controller49676, archive storage1/controller54653,
-package install1/controller46573, readonly verification3/controller64497 and
-boot policy1/controller48206 are terminal. Never replay these operations.
-Git/actual receipts/processes/mounts, not this card, are authoritative on resume.
+Builder RUNNING boot58b0ca2e-3010-4b74-a7a9-87b1acaa5802. Native browser
+runtime1 TERMINAL QEMU0, backing unchanged. Controller82463 exit1 retained because
+collector classified rewritten child argv incorrectly. [Readonly reconciliation](evidence/B02-browser-native.json)
+passes actual default graphical boot/normal GDM owner, all8UI phases, restart,
+HTTP Stop/offline and5Web Content UID12402/NNP1/seccomp2/caps0. No native replay.
+Builder/caches actually restored with browser1-* receipts, all exit0; six volumes,
+Glycin/kernel, generation4RAMcache, original browser6aliases/archive and security
+source4aliases. No guest writer remains. Source/cache data retained unchanged.
 
 **Browser installed:** Firefox153.7.0esr-1+toddy1/amd64,815owned payload entries,
 archiveSHAba566c57d612640cc0342f374f64f7853bacdab6d0af6c1e38b37bdd085233b0.
@@ -41,38 +44,15 @@ actual power-on GNOME is still unproven. Do not replay successful migration.
 
 ## Exact next action
 
-Native browser controller/probe and URL/text QMP input are implemented locally.
-Next: finish focused repository checks, commit reviewed inputs, then dispatch ONCE
-`python3 scripts/host/phase2_native_browser.py` with log
-`.local/phase2/native-browser-controller-1.log`. Context
-`.local/phase2/native-browser-runtime-1` must be absent before first dispatch.
-No native browser job has been dispatched yet. Readonly preflight log is
-`.local/phase2/browser-preflight-1.log`; verify its terminal exit before use.
-Test selection: input encoding two cases, Python syntax, repository make check;
-actual new graphical boot/browser scope next, unchanged foundation suites reused.
-
-Preflight actual installed browser/GDM/GTK/kernel inputs and current cache/mount
-state, retain accepted exact descriptors. Stop builder once only after preflight,
-then fresh disposable overlay with readonly base, guard serialTODDY-BOOT-TEST,
-actual kernel7.1.8-toddy/PID1 and unchanged backing check. One guest writer.
-Use desktop-boot-probe.service (Type=exec/RuntimeMaxSec900), not old oneshot wanted
-by multi-user: target implicit After would otherwise delay normal graphical boot.
-Never manually start GDM for this default-boot acceptance. Wait actual graphical
-and GDM active, normal owner login via private control/QMP (no autologin/PAM bypass).
-Keep existing foundation probes and source master unchanged.
-
-Serve tests/fixtures/browser-smoke on guest loopback as disposable normal owner;
-these HTML files are test data, never GUI acceptance. Actual GNOME launcher open,
-Firefox view/navigation/input/focus/readable narrow/maximized windows, close/reopen
-with independently observed PID/start identity and same profile/stored value.
-Capture native scanouts. Verify actual Web Content UID/NoNewPrivs/seccomp and
-public TLS/offline-failure/Stop behavior at affected scope; never disable sandbox
-or treat builder CLI warning as native sandbox evidence. Do not dump credentials,
-process environments or browser personal data. Test account has no real secrets.
-Retain failed scopes, reuse unchanged network/Files proofs, no broad matrices.
-
-After terminal native job reconcile container/image/report and restore existing
-builder/caches with NEW receipts; never restart/replay based on PID or timeout.
+Implement owned user-overridable provisional navy desktop/launcher/Terminal
+defaults using existing GNOME/dconf interfaces, preserve user edits and approved
+artwork. Inspect actual installed profiles/schema IDs/desktop entries before
+staging. Then native terminal/audio/defaults and remaining persistence/recovery.
+Do not repeat browser/compiler/install/native UI pass. Keep original failed raw
+aggregate and exact unchanged scanouts; reconciliation corrects classification
+only, historical child start_ticks deliberately omitted.
+Test selection: changed input/syntax plus make check381, readonly native report
+reconciliation and real QMP scanouts. No foundation suite repeated.
 
 ## Existing caches/recovery (never prepare/format/recompile again)
 
@@ -105,7 +85,7 @@ host/16GiBtarget/128MiB scratch and inode reserves. Full failure ledger remains
 
 ## Still due before B02 stop
 
-Native browser/default boot/security/TLS/offline/restart; restoredNM reboot
+RestoredNM reboot
 persistence; audio playback/controls; navy/default style and Terminal rendering;
 Editor refusal/recovery/reboot; affected device/refusal checks; absent-agent use,
 minimal manifest/optional-catalog status, boot/idle measurements and recovery boot.

@@ -99,10 +99,10 @@ http.server.ThreadingHTTPServer(('127.0.0.1',8765),Handler).serve_forever()
                 if exe not in [Path('/usr/lib/firefox/firefox'),Path('/usr/lib/firefox/firefox-bin')]:continue
                 args=(p/'cmdline').read_bytes().split(b'\0');name=(p/'comm').read_text().strip()
                 status=dict(line.split(':',1) for line in (p/'status').read_text().splitlines() if ':' in line)
-                row={'pid':int(p.name),'start_ticks':(p/'stat').read_text().split()[21],'name':name,'uid':12402,
+                row={'pid':int(p.name),'start_ticks':(p/'stat').read_text().rsplit(')',1)[1].split()[19],'name':name,'uid':12402,
                      'NoNewPrivs':status.get('NoNewPrivs','').strip(),'Seccomp':status.get('Seccomp','').strip(),'CapEff':status.get('CapEff','').strip()}
-                if b'-contentproc' not in args:main.append(row)
-                elif 'Web' in name or (args and args[-2:-1]==[b'tab']):content.append(row)
+                if name in ['firefox','firefox-bin']:main.append(row)
+                elif name in ['Web Content','Isolated Web Co']:content.append(row)
             except (FileNotFoundError,PermissionError,ProcessLookupError):pass
         return main,content
     try:

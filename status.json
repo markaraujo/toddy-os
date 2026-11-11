@@ -471,7 +471,8 @@
         "docs/evidence/B02-firefox-security-compile.json",
         "docs/evidence/B02-firefox-security-stage.json",
         "docs/evidence/B02-firefox-install.json",
-        "docs/evidence/B02-desktop-graphical-boot-policy.json"
+        "docs/evidence/B02-desktop-graphical-boot-policy.json",
+        "docs/evidence/B02-browser-native.json"
       ]
     },
     {

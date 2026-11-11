@@ -1,0 +1,196 @@
+{
+  "scope": "Captured native default graphical boot, normal GDM owner, browser interaction and process sandbox, reconciled without runtime replay. UI observations require linked unchanged scanouts. No whole B02, physical hardware or ISO acceptance.",
+  "input_commit": "5d03ba8f4fa08143daf2a0a3b5197a0dbd62da13",
+  "probe_sha256": "0a6ad3d1b3c59bd6661ac67c7d0ac114d4dd8fb7cd3e249b60860fe9705246a8",
+  "original_report_sha256": "4852a504995ed7c9fb946b35f8690dfc74d61f4670f0d12ed8e7766c0c22c5d2",
+  "original_aggregate_passed": false,
+  "reconciled_selected_passed": true,
+  "collector_correction": "Firefox rewrites child argv. Select exact observed comm names after original executable/UID guards. Historical child start_ticks omitted because comm spaces invalidated naive stat field indexing.",
+  "default_graphical_boot": true,
+  "normal_wayland_owner": {
+    "properties": {
+      "Class": "user",
+      "Name": "toddy-preview",
+      "Seat": "seat0",
+      "State": "active",
+      "Type": "wayland"
+    },
+    "session_id": "2"
+  },
+  "main_process": {
+    "CapEff": "0000000000000000",
+    "NoNewPrivs": "0",
+    "Seccomp": "0",
+    "name": "firefox",
+    "pid": 3140,
+    "start_ticks": "17987",
+    "uid": 12402
+  },
+  "previous_process_exit_observed": true,
+  "profile_value_after_reopen": "Observed in scanout11; normal process exit/reopen separately observed by root probe.",
+  "content_processes": [
+    {
+      "CapEff": "0000000000000000",
+      "NoNewPrivs": "1",
+      "Seccomp": "2",
+      "name": "Isolated Web Co",
+      "pid": 3397,
+      "uid": 12402
+    },
+    {
+      "CapEff": "0000000000000000",
+      "NoNewPrivs": "1",
+      "Seccomp": "2",
+      "name": "Isolated Web Co",
+      "pid": 3400,
+      "uid": 12402
+    },
+    {
+      "CapEff": "0000000000000000",
+      "NoNewPrivs": "1",
+      "Seccomp": "2",
+      "name": "Web Content",
+      "pid": 3407,
+      "uid": 12402
+    },
+    {
+      "CapEff": "0000000000000000",
+      "NoNewPrivs": "1",
+      "Seccomp": "2",
+      "name": "Web Content",
+      "pid": 3764,
+      "uid": 12402
+    },
+    {
+      "CapEff": "0000000000000000",
+      "NoNewPrivs": "1",
+      "Seccomp": "2",
+      "name": "Web Content",
+      "pid": 4198,
+      "uid": 12402
+    }
+  ],
+  "http_events": [
+    {
+      "event": "get",
+      "path": "/"
+    },
+    {
+      "event": "get",
+      "path": "/favicon.ico"
+    },
+    {
+      "event": "get",
+      "path": "/second.html"
+    },
+    {
+      "event": "get",
+      "path": "/second.html"
+    },
+    {
+      "event": "get",
+      "path": "/slow"
+    },
+    {
+      "event": "slow-started"
+    },
+    {
+      "event": "slow-cancelled"
+    },
+    {
+      "event": "get",
+      "path": "/second.html"
+    },
+    {
+      "event": "get",
+      "path": "/"
+    }
+  ],
+  "ui_phases": [
+    "browser-open",
+    "input-verified",
+    "navigation-verified",
+    "restart-verified",
+    "stop-verified",
+    "tls-verified",
+    "offline-verified",
+    "responsive-verified"
+  ],
+  "network_off_observed": true,
+  "gdm_stop_exit": 0,
+  "schema_unchanged": true,
+  "backing_unchanged": true,
+  "limitations": [
+    "Virtual software rendering, no physical GPU/network/audio proof.",
+    "Unqualified official branding is not enabled; upstream calls this build Nightly.",
+    "EN/PT text observed. Missing CJK/Arabic glyphs on external example page remain outside this EN/PT check.",
+    "Sandbox proof covers actual Web Content NNP/seccomp/capabilities, not all attack surfaces."
+  ],
+  "scanouts": [
+    {
+      "path": "B02-browser-native-default-gdm.png",
+      "sha256": "0e14e816ec539f9485308dd45a4e1c5bac5a274e1d0290ff423effda583f72d8",
+      "original": "owner-scanout-00.png"
+    },
+    {
+      "path": "B02-browser-native-opened.png",
+      "sha256": "585feda767de39cb611bedea9887b9161383b6d7f112f9c67ef597585e83e256",
+      "original": "owner-scanout-03.png"
+    },
+    {
+      "path": "B02-browser-native-input.png",
+      "sha256": "8bd21215749d4232ed2587e5bb186682e63b55d1e7c4937a86cce9f8c22b437a",
+      "original": "owner-scanout-06.png"
+    },
+    {
+      "path": "B02-browser-native-navigation.png",
+      "sha256": "513cc63f3a785854215c8a5ab39262ee31426a0b66a644bdafd5573e02d082ed",
+      "original": "owner-scanout-07.png"
+    },
+    {
+      "path": "B02-browser-native-closed.png",
+      "sha256": "bd3a4add1562e442118d55ffd4c9d26046113858cc63e02cc718f51460aaba8d",
+      "original": "owner-scanout-09.png"
+    },
+    {
+      "path": "B02-browser-native-reopened.png",
+      "sha256": "f742c29c7d57fdd224d5f0e8173977b8fa1432eb02f03f00f64b6d63f7b6b3fa",
+      "original": "owner-scanout-11.png"
+    },
+    {
+      "path": "B02-browser-native-loading.png",
+      "sha256": "54c532280df9bd233b1a634f2596b71a072eecfd783b9a1fda892c1ea5127225",
+      "original": "owner-scanout-12.png"
+    },
+    {
+      "path": "B02-browser-native-stopped.png",
+      "sha256": "96a0d15acaf8e5701974ae8acadd1584f6a46d1ee796574a443dd838d0772c45",
+      "original": "owner-scanout-13.png"
+    },
+    {
+      "path": "B02-browser-native-secure.png",
+      "sha256": "4960115c8b280a3fd5aafeac66e467f492040e67b5bd27c4a1601e0ad7de0536",
+      "original": "owner-scanout-15.png"
+    },
+    {
+      "path": "B02-browser-native-network-off.png",
+      "sha256": "fd57af44ea61276592bb4b0fadc91e00fe85a2f89644f8cab6bb7e38dd0e1ffa",
+      "original": "owner-scanout-17.png"
+    },
+    {
+      "path": "B02-browser-native-offline.png",
+      "sha256": "22fcc5ffb1c8958e20cea67e4f365e6bd62ac953ac20b97d1894e5ee518be370",
+      "original": "owner-scanout-18.png"
+    },
+    {
+      "path": "B02-browser-native-narrow.png",
+      "sha256": "6a8736aade9d16e6f24f534a15f4afaba25765f3509e4f7e625fcf100173f3a2",
+      "original": "owner-scanout-19.png"
+    },
+    {
+      "path": "B02-browser-native-keyboard-focus.png",
+      "sha256": "cefeffb3842e60c241e7bca6a8ed5c1e0753f4f51f35dda9e980891973ff1fbd",
+      "original": "owner-scanout-21.png"
+    }
+  ]
+}
