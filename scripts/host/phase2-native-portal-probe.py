@@ -80,7 +80,11 @@ def main():
                     props=dict(x.split('=',1) for x in values['stdout'].splitlines() if '=' in x)
                     if props=={'Class':'user','Name':username,'Type':'wayland','State':'active','Seat':'seat0'}:owner={'session_id':sid,'properties':props}
                 if owner:
-                    assert (Path('/run/user/12402')/'wayland-0').exists()
+                    ready_deadline=time.monotonic()+30
+                    while time.monotonic()<ready_deadline:
+                        if (Path('/run/user/12402')/'wayland-0').exists():break
+                        time.sleep(.2)
+                    assert (Path('/run/user/12402')/'wayland-0').exists(),'Compositor Wayland socket did not become ready after normal login'
                     report['fuse']=verify_native_fuse();assert report['fuse']['all_selected_exits_zero'],report['fuse']
                     source=home/'portal-client.py';source.write_text(PORTAL_CLIENT_SOURCE);os.chown(source,12402,12402);source.chmod(0o644)
                     allowed=home/'portal-allowed.txt';allowed.write_text('Toddy native portal consent\n');os.chown(allowed,12402,12402)
@@ -115,6 +119,8 @@ def main():
         report['boot_timing']=command(['systemd-analyze','time'])
         report['all_selected_exits_zero']=True
     except Exception as error:
+        import traceback
+        report['traceback']=traceback.format_exc()
         report.update(owner_session=owner,host_requested_finish=finished,ui_phase_annotations=phases,portal_settings=settings,error={'type':type(error).__name__,'message':str(error)})
         report['diagnostics']=[command(a) for a in [['systemctl','status','gdm.service','graphical.target','--no-pager','-l'],['journalctl','-b','--no-pager','-n','100']]]
         if owner:report['user_diagnostics']=user_command(['journalctl','--user','-b','--no-pager','-n','150'])

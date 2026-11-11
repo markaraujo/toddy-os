@@ -6,7 +6,7 @@ Physical foundation tests unperformed. No Phase2 ISO. Preserve G1 master/evidenc
 
 ## Current slice: native FUSE and desktop portal integration
 
-Builder RUNNING boot0c29ac3a-aa02-49fb-af6c-0df420c43012, target /mnt/lfs,
+Builder STOPPED after native context1; last boot0c29ac3a-aa02-49fb-af6c-0df420c43012, target /mnt/lfs,
 serialTODDY-LFS-TARGET. No guest writer remains. Never replay successful or
 uncertain kernel/Fuse operations. Actual package/receipt/postconditions win.
 
@@ -66,7 +66,12 @@ protocol are references, do not replay old hardcoded GTK13/hash controller.
 Combined native controller/probes now implemented: scripts/host/phase2_native_fuse_portal.py
 uses NEW native-fuse-portal-runtime-1 context. Not dispatched yet. Actual default
 dark/light portal Read and file chooser allow/cancel/Request.Close are selected;
-no broad portal capability claim. Next commit reviewed harness then run controller. Fresh disposable
+no broad portal capability claim. Context1 terminal failure retained: logind owner session observed before Wayland socket
+was ready; no FUSE/portal tests executed. Backing unchanged/container exited0.
+Corrected bounded compositor readiness and added traceback. Next run
+phase2_native_fuse_portal_retry.py with NEW context2, reusing accepted package
+preflight only after exact backing identity/predecessor terminal guards.
+No builder restart or package/source replay. Ledger cause budget correction1. Fresh disposable
 readonly-base overlay, never physical disks or host target. Preserve one writer.
 
 Test selection: actual complete native payload/library/APT checks for all3portal
