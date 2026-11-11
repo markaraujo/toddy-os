@@ -1,0 +1,621 @@
+{
+  "scope": "Actual disposable native GDM/PAM-authenticated GNOME user session, real virtual keyboard/tablet input and observed selected GUI actions. No HTML mockup, Shell automation, autologin or PAM bypass. This is partial B02 evidence, not complete desktop/release/physical acceptance.",
+  "commit": "236ce6d6c28642c05e77752210957f5d15596e55",
+  "controller_exit": 0,
+  "native_context": "native-gdm-owner-runtime-1",
+  "controller_pid": 1241816,
+  "container_exit": 0,
+  "backing_unchanged": true,
+  "probe_sha256": "139eb4bc5284ae4cd2966a5120947c353b23b933f1fb9652f63d68fe97b75b7f",
+  "summary": {
+    "kernel": "7.1.8-toddy",
+    "all_selected_exits_zero": true,
+    "report_sha256": "537ca0578d35addc565790b99e5c7578c27653b3c23cedd1654f457151b188e6",
+    "chunks": 11
+  },
+  "report": {
+    "all_selected_exits_zero": true,
+    "devices": {
+      "drm": [
+        "card0",
+        "card0-Virtual-1",
+        "renderD128",
+        "version"
+      ],
+      "input": "I: Bus=0019 Vendor=0000 Product=0001 Version=0000\nN: Name=\"Power Button\"\nP: Phys=LNXPWRBN/button/input0\nS: Sysfs=/devices/platform/LNXPWRBN:00/input/input0\nU: Uniq=\nH: Handlers=kbd event0 \nB: PROP=0\nB: EV=3\nB: KEY=8000 10000000000000 0\n\nI: Bus=0011 Vendor=0001 Product=0001 Version=ab41\nN: Name=\"AT Translated Set 2 keyboard\"\nP: Phys=isa0060/serio0/input0\nS: Sysfs=/devices/platform/i8042/serio0/input/input1\nU: Uniq=\nH: Handlers=sysrq kbd leds event1 \nB: PROP=0\nB: EV=120013\nB: KEY=402000007 ff803078f800d001 feffffdfffcfffff fffffffffffffffe\nB: MSC=10\nB: LED=7\n\nI: Bus=0003 Vendor=0627 Product=0001 Version=0001\nN: Name=\"QEMU QEMU USB Tablet\"\nP: Phys=usb-0000:00:04.0-1/input0\nS: Sysfs=/devices/pci0000:00/0000:00:04.0/usb1/1-1/1-1:1.0/0003:0627:0001.0001/input/input4\nU: Uniq=28754-0000:00:04.0-1\nH: Handlers=event2 \nB: PROP=0\nB: EV=1f\nB: KEY=70000 0 0 0 0\nB: REL=900\nB: ABS=3\nB: MSC=10\n\nI: Bus=0011 Vendor=0002 Product=0006 Version=0000\nN: Name=\"ImExPS/2 Generic Explorer Mouse\"\nP: Phys=isa0060/serio1/input0\nS: Sysfs=/devices/platform/i8042/serio1/input/input3\nU: Uniq=\nH: Handlers=event3 \nB: PROP=1\nB: EV=7\nB: KEY=1f0000 0 0 0 0\nB: REL=143\n\nI: Bus=0003 Vendor=0627 Product=0001 Version=0111\nN: Name=\"QEMU QEMU USB Keyboard\"\nP: Phys=usb-0000:00:04.0-2/input0\nS: Sysfs=/devices/pci0000:00/0000:00:04.0/usb1/1-2/1-2:1.0/0003:0627:0001.0002/input/input5\nU: Uniq=68284-0000:00:04.0-2\nH: Handlers=sysrq kbd leds event4 \nB: PROP=0\nB: EV=120013\nB: KEY=1000000000007 ff9f207ac14057ff febeffdfffefffff fffffffffffffffe\nB: MSC=10\nB: LED=1f\n\n"
+    },
+    "gdm_stop": {
+      "args": [
+        "systemctl",
+        "stop",
+        "gdm.service"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    "host_requested_finish": true,
+    "kernel": "7.1.8-toddy",
+    "owner_session": {
+      "properties": {
+        "Class": "user",
+        "Name": "toddy-preview",
+        "Seat": "seat0",
+        "State": "active",
+        "Type": "wayland"
+      },
+      "session_id": "2"
+    },
+    "runs": [
+      {
+        "args": [
+          "systemctl",
+          "start",
+          "dbus.service",
+          "systemd-logind.service",
+          "systemd-userdbd.service"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      {
+        "args": [
+          "udevadm",
+          "settle",
+          "--timeout=20"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      {
+        "args": [
+          "systemctl",
+          "start",
+          "gdm.service"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      {
+        "args": [
+          "systemctl",
+          "status",
+          "gdm.service",
+          "--no-pager",
+          "-l"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": "\u25cf gdm.service - GNOME Display Manager\n     Loaded: loaded (/usr/lib/systemd/system/gdm.service; disabled; preset: enabled)\n     Active: active (running) since Wed 2026-11-11 02:31:35 UTC; 5min ago\n Invocation: bd418d7ff23b4c1b8c601bd93d166911\n   Main PID: 282 (gdm)\n      Tasks: 5 (limit: 4699)\n     Memory: 14.4M (peak: 16.4M)\n        CPU: 49ms\n     CGroup: /system.slice/gdm.service\n             \u2514\u2500282 /usr/sbin/gdm\n\nNov 11 02:31:35 toddy systemd[1]: Starting GNOME Display Manager...\nNov 11 02:31:35 toddy systemd[1]: Started GNOME Display Manager.\nNov 11 02:32:28 toddy gdm-password][607]: gkr-pam: unable to locate daemon control file\nNov 11 02:32:28 toddy gdm-password][607]: gkr-pam: stashed password to try later in open session\nNov 11 02:32:28 toddy gdm-password][607]: pam_unix(gdm-password:session): session opened for user toddy-preview(uid=12402) by (uid=0)\nNov 11 02:32:28 toddy gdm-password][607]: gkr-pam: gnome-keyring-daemon started properly and unlocked keyring\nNov 11 02:32:31 toddy gdm[282]: Gdm: Child process -326 was already dead.\n"
+      },
+      {
+        "args": [
+          "loginctl",
+          "seat-status",
+          "seat0",
+          "--no-pager"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": "seat0\nSessions: *2\n Devices: n/a\n         \u251c\u2500/sys/devices/pci0000:00/0000:00:01.0/drm/card0\n         \u2502 [MASTER] drm:card0\n         \u2502 \u2514\u2500/sys/devices/pci0000:00/0000:00:01.0/drm/card0/card0-Virtual-1\n         \u2502   [MASTER] drm:card0-Virtual-1\n         \u251c\u2500/sys/devices/pci0000:00/0000:00:04.0/usb1\n         \u2502 usb:usb1\n         \u2502 \u251c\u2500/sys/devices/pci0000:00/0000:00:04.0/usb1/1-1\n         \u2502 \u2502 usb:1-1\n         \u2502 \u2502 \u251c\u2500/sys/devices/pci0000:00/0000:00:04.0/usb1/1-1/1-1:1.0/0003:0627:0001.0001/hidraw/hidraw0\n         \u2502 \u2502 \u2502 hidraw:hidraw0\n         \u2502 \u2502 \u2514\u2500/sys/devices/pci0000:00/0000:00:04.0/usb1/1-1/1-1:1.0/0003:0627:0001.0001/input/input4\n         \u2502 \u2502   input:input4 \"QEMU QEMU USB Tablet\"\n         \u2502 \u2514\u2500/sys/devices/pci0000:00/0000:00:04.0/usb1/1-2\n         \u2502   usb:1-2\n         \u2502   \u251c\u2500/sys/devices/pci0000:00/0000:00:04.0/usb1/1-2/1-2:1.0/0003:0627:0001.0002/hidraw/hidraw1\n         \u2502   \u2502 hidraw:hidraw1\n         \u2502   \u2514\u2500/sys/devices/pci0000:00/0000:00:04.0/usb1/1-2/1-2:1.0/0003:0627:0001.0002/input/input5\n         \u2502     input:input5 \"QEMU QEMU USB Keyboard\"\n         \u2502     \u251c\u2500/sys/devices/pci0000:00/0000:00:04.0/usb1/1-2/1-2:1.0/0003:0627:0001.0002/input/input5/input5::capslock\n         \u2502     \u2502 leds:input5::capslock\n         \u2502     \u251c\u2500/sys/devices/pci0000:00/0000:00:04.0/usb1/1-2/1-2:1.0/0003:0627:0001.0002/input/input5/input5::compose\n         \u2502     \u2502 leds:input5::compose\n         \u2502     \u251c\u2500/sys/devices/pci0000:00/0000:00:04.0/usb1/1-2/1-2:1.0/0003:0627:0001.0002/input/input5/input5::kana\n         \u2502     \u2502 leds:input5::kana\n         \u2502     \u251c\u2500/sys/devices/pci0000:00/0000:00:04.0/usb1/1-2/1-2:1.0/0003:0627:0001.0002/input/input5/input5::numlock\n         \u2502     \u2502 leds:input5::numlock\n         \u2502     \u2514\u2500/sys/devices/pci0000:00/0000:00:04.0/usb1/1-2/1-2:1.0/0003:0627:0001.0002/input/input5/input5::scrolllock\n         \u2502       leds:input5::scrolllock\n         \u251c\u2500/sys/devices/pci0000:00/0000:00:04.0/usb2\n         \u2502 usb:usb2\n         \u251c\u2500/sys/devices/pci0000:00/0000:00:1f.2/ata3/host2/target2:0:0/2:0:0:0/block/sr0\n         \u2502 block:sr0\n         \u251c\u2500/sys/devices/pci0000:00/0000:00:1f.2/ata3/host2/target2:0:0/2:0:0:0/scsi_generic/sg0\n         \u2502 scsi_generic:sg0\n         \u251c\u2500/sys/devices/platform/LNXPWRBN:00/input/input0\n         \u2502 input:input0 \"Power Button\"\n         \u251c\u2500/sys/devices/platform/i8042/serio0/input/input1\n         \u2502 input:input1 \"AT Translated Set 2 keyboard\"\n         \u2502 \u251c\u2500/sys/devices/platform/i8042/serio0/input/input1/input1::capslock\n         \u2502 \u2502 leds:input1::capslock\n         \u2502 \u251c\u2500/sys/devices/platform/i8042/serio0/input/input1/input1::numlock\n         \u2502 \u2502 leds:input1::numlock\n         \u2502 \u2514\u2500/sys/devices/platform/i8042/serio0/input/input1/input1::scrolllock\n         \u2502   leds:input1::scrolllock\n         \u251c\u2500/sys/devices/platform/i8042/serio1/input/input3\n         \u2502 input:input3 \"ImExPS/2 Generic Explorer Mouse\"\n         \u2514\u2500/sys/devices/virtual/misc/rfkill\n           misc:rfkill\n"
+      },
+      {
+        "args": [
+          "loginctl",
+          "list-sessions",
+          "--no-pager"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": "SESSION   UID USER          SEAT  LEADER CLASS   TTY  IDLE SINCE\n      2 12402 toddy-preview seat0 607    user    tty2 no   -\n      3 12402 toddy-preview -     775    manager -    no   -\n\n2 sessions listed.\n"
+      },
+      {
+        "args": [
+          "ps",
+          "-eo",
+          "pid,uid,tty,args"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": "    PID   UID TT       COMMAND\n      1     0 ?        /sbin/init\n      2     0 ?        [kthreadd]\n      3     0 ?        [pool_workqueue_release]\n      4     0 ?        [kworker/R-rcu_gp]\n      5     0 ?        [kworker/R-sync_wq]\n      6     0 ?        [kworker/R-kvfree_rcu_reclaim]\n      7     0 ?        [kworker/R-slub_flushwq]\n      8     0 ?        [kworker/R-netns]\n      9     0 ?        [kworker/0:0-events]\n     10     0 ?        [kworker/0:0H-kblockd]\n     11     0 ?        [kworker/0:1-events]\n     12     0 ?        [kworker/u16:0-async]\n     13     0 ?        [kworker/R-mm_percpu_wq]\n     14     0 ?        [ksoftirqd/0]\n     15     0 ?        [rcu_preempt]\n     16     0 ?        [rcu_exp_par_gp_kthread_worker/0]\n     17     0 ?        [rcu_exp_gp_kthread_worker]\n     18     0 ?        [migration/0]\n     19     0 ?        [kprobe-optimizer]\n     20     0 ?        [cpuhp/0]\n     21     0 ?        [cpuhp/1]\n     22     0 ?        [migration/1]\n     23     0 ?        [ksoftirqd/1]\n     24     0 ?        [kworker/1:0-cgroup_offline]\n     25     0 ?        [kworker/1:0H-kblockd]\n     26     0 ?        [cpuhp/2]\n     27     0 ?        [migration/2]\n     28     0 ?        [ksoftirqd/2]\n     29     0 ?        [kworker/2:0-cgroup_free]\n     30     0 ?        [kworker/2:0H-kblockd]\n     31     0 ?        [cpuhp/3]\n     32     0 ?        [migration/3]\n     33     0 ?        [ksoftirqd/3]\n     34     0 ?        [kworker/3:0-mm_percpu_wq]\n     35     0 ?        [kworker/3:0H-kblockd]\n     36     0 ?        [kdevtmpfs]\n     37     0 ?        [kworker/R-inet_frag_wq]\n     38     0 ?        [rcu_tasks_kthread]\n     39     0 ?        [kauditd]\n     40     0 ?        [oom_reaper]\n     41     0 ?        [kworker/u16:1-flush-253:0]\n     42     0 ?        [kworker/R-writeback]\n     43     0 ?        [kcompactd0]\n     44     0 ?        [kworker/R-kblockd]\n     45     0 ?        [irq/9-acpi]\n     46     0 ?        [kworker/2:1-events]\n     47     0 ?        [kworker/1:1-mm_percpu_wq]\n     48     0 ?        [kworker/R-ata_sff]\n     49     0 ?        [kworker/R-md_bitmap]\n     50     0 ?        [kworker/R-quota_events_unbound]\n     51     0 ?        [kworker/R-rpciod]\n     52     0 ?        [kworker/R-xprtiod]\n     53     0 ?        [kworker/R-cfg80211]\n     54     0 ?        [kswapd0]\n     55     0 ?        [kworker/R-nfsiod]\n     56     0 ?        [kworker/R-acpi_thermal_pm]\n     57     0 ?        [hwrng]\n     58     0 ?        [card0-crtc0]\n     59     0 ?        [kworker/0:2-mm_percpu_wq]\n     60     0 ?        [kworker/R-nvme-wq]\n     61     0 ?        [kworker/R-nvme-reset-wq]\n     62     0 ?        [kworker/R-nvme-delete-wq]\n     63     0 ?        [scsi_eh_0]\n     64     0 ?        [kworker/R-scsi_tmf_0]\n     65     0 ?        [scsi_eh_1]\n     66     0 ?        [kworker/R-scsi_tmf_1]\n     67     0 ?        [scsi_eh_2]\n     68     0 ?        [kworker/R-scsi_tmf_2]\n     69     0 ?        [scsi_eh_3]\n     70     0 ?        [kworker/R-scsi_tmf_3]\n     71     0 ?        [scsi_eh_4]\n     72     0 ?        [kworker/R-scsi_tmf_4]\n     73     0 ?        [scsi_eh_5]\n     74     0 ?        [kworker/R-scsi_tmf_5]\n     75     0 ?        [kworker/u16:2-writeback]\n     76     0 ?        [kworker/u16:3-flush-253:0]\n     77     0 ?        [kworker/u16:4-ttyS-serial_8250]\n     78     0 ?        [kworker/u16:5-flush-253:0]\n     79     0 ?        [kworker/u16:6-scsi_tmf_0]\n     80     0 ?        [kworker/u16:7-pm]\n     81     0 ?        [kworker/u16:8-pm]\n     82     0 ?        [kworker/u16:9-scsi_tmf_3]\n     83     0 ?        [kworker/u16:10-scsi_tmf_4]\n     84     0 ?        [kworker/u16:11-scsi_tmf_5]\n     85     0 ?        [kworker/u16:12]\n     86     0 ?        [kworker/0:3-events]\n     87     0 ?        [kworker/R-mld]\n     88     0 ?        [kworker/3:1-events]\n     89     0 ?        [kworker/R-ipv6_addrconf]\n     93     0 ?        [kworker/2:2-events_freezable_pwr_efficient]\n     94     0 ?        [kworker/0:1H]\n     95     0 ?        [kworker/3:1H-kblockd]\n     96     0 ?        [kworker/2:3-events]\n     97     0 ?        [kworker/0:4-events]\n     98     0 ?        [jbd2/vda4-8]\n     99     0 ?        [kworker/R-ext4-rsv-conversion]\n    101     0 ?        [kworker/3:2-events]\n    114     0 ?        [kworker/1:1H-kblockd]\n    130     0 ?        [kworker/2:1H-kblockd]\n    131     0 ?        /usr/lib/systemd/systemd-journald\n    152    77 ?        /usr/lib/systemd/systemd-resolved\n    156     0 ?        /usr/lib/systemd/systemd-userdbd\n    159     0 ?        /usr/lib/systemd/systemd-nsresourced\n    162     0 ?        [kworker/1:2-events]\n    166    78 ?        /usr/lib/systemd/systemd-timesyncd\n    167     0 ?        /usr/lib/systemd/systemd-udevd\n    168     0 ?        [kworker/1:3-cgroup_free]\n    177     0 ?        [psimon]\n    184     0 ?        [psimon]\n    190     0 ?        [psimon]\n    191    76 ?        /usr/lib/systemd/systemd-networkd\n    238    81 ?        /usr/lib/systemd/systemd-oomd\n    255    18 ?        /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    257     0 ttyS0    /usr/sbin/agetty --noreset --noclear --keep-baud 115200,57600,38400,9600 - vt220\n    258     0 ?        /usr/lib/systemd/systemd-logind\n    259     0 ?        /usr/bin/python3 /run/credentials/toddy-boot-probe.service/toddy.boot-probe\n    282     0 ?        /usr/sbin/gdm\n    288     0 ?        /usr/libexec/accounts-daemon\n    294    27 ?        /usr/lib/polkit-1/polkitd --no-debug --log-level=notice\n    316     0 ?        [psimon]\n    401     0 ?        /usr/libexec/upowerd\n    607     0 ?        gdm-session-worker [pam/gdm-password]\n    775 12402 ?        /usr/lib/systemd/systemd --user\n    777 12402 ?        (sd-pam)\n    795 12402 tty2     /usr/libexec/gdm-wayland-session /usr/bin/gnome-session\n    804 12402 ?        /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    808 12402 tty2     /usr/libexec/gnome-session-init-worker gnome\n    816 12402 ?        /usr/libexec/gnome-session-ctl --monitor\n    818 12402 ?        /usr/libexec/gnome-session-service --session=gnome\n    825 12402 ?        /usr/bin/gnome-shell --mode=user\n    847 12402 ?        /usr/libexec/at-spi-bus-launcher\n    853 12402 ?        /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 11 --address=unix:path=/run/user/12402/at-spi/bus\n    855 12402 ?        /usr/libexec/at-spi2-registryd --use-gnome-session\n    871 12402 ?        /usr/libexec/gnome-shell-calendar-server\n    880 12402 ?        /usr/libexec/evolution-source-registry\n    885 12402 ?        /usr/libexec/dconf-service\n    887 12402 ?        /usr/bin/gjs -m /usr/share/gnome-shell/org.gnome.Shell.Notifications\n    895 12402 ?        /usr/bin/ibus-daemon --panel disable\n    900 12402 ?        /usr/libexec/gsd-a11y-settings\n    901 12402 ?        /usr/libexec/gsd-color\n    904 12402 ?        /usr/libexec/gsd-datetime\n    907 12402 ?        /usr/libexec/gsd-housekeeping\n    909 12402 ?        /usr/libexec/gsd-keyboard\n    916 12402 ?        /usr/libexec/gsd-media-keys\n    919 12402 ?        /usr/libexec/gsd-power\n    921 12402 ?        /usr/libexec/gsd-rfkill\n    923 12402 ?        /usr/libexec/gsd-screensaver-proxy\n    924 12402 ?        /usr/libexec/gsd-sharing\n    939 12402 ?        /usr/libexec/gsd-smartcard\n    946 12402 ?        /usr/libexec/gsd-sound\n    947 12402 ?        /usr/libexec/gsd-usb-protection\n    959 12402 ?        /usr/libexec/ibus-dconf\n    981 12402 ?        /usr/libexec/ibus-portal\n   1012 12402 ?        /usr/libexec/evolution-calendar-factory\n   1019 12402 ?        /usr/bin/gjs -m /usr/share/gnome-shell/org.gnome.ScreenSaver\n   1020 12402 ?        /usr/libexec/evolution-data-server/evolution-alarm-notify\n   1034 12402 ?        /usr/libexec/ibus-engine-simple\n   1057 12402 ?        /usr/libexec/evolution-addressbook-factory\n   1854 12402 ?        /usr/bin/gnome-text-editor --gapplication-service\n   1963 12402 ?        /usr/bin/gnome-control-center --gapplication-service\n   2225 12402 ?        /usr/libexec/gnome-terminal-server\n   2236 12402 pts/0    bash\n   2346     0 ?        systemd-nsresourcework: waiting...\n   2347     0 ?        systemd-nsresourcework: waiting...\n   2348     0 ?        systemd-nsresourcework: waiting...\n   2349     0 ?        systemd-userwork: waiting...\n   2350     0 ?        systemd-nsresourcework: waiting...\n   2351     0 ?        systemd-userwork: waiting...\n   2357     0 ?        systemd-userwork: waiting...\n   2398     0 ?        systemd-nsresourcework: waiting...\n   2430     0 ?        ps -eo pid,uid,tty,args\n"
+      },
+      {
+        "args": [
+          "journalctl",
+          "-b",
+          "-u",
+          "gdm.service",
+          "--no-pager",
+          "-n",
+          "150"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": "Nov 11 02:31:35 toddy systemd[1]: Starting GNOME Display Manager...\nNov 11 02:31:35 toddy systemd[1]: Started GNOME Display Manager.\nNov 11 02:32:28 toddy gdm-password][607]: gkr-pam: unable to locate daemon control file\nNov 11 02:32:28 toddy gdm-password][607]: gkr-pam: stashed password to try later in open session\nNov 11 02:32:28 toddy gdm-password][607]: pam_unix(gdm-password:session): session opened for user toddy-preview(uid=12402) by (uid=0)\nNov 11 02:32:28 toddy gdm-password][607]: gkr-pam: gnome-keyring-daemon started properly and unlocked keyring\nNov 11 02:32:31 toddy gdm[282]: Gdm: Child process -326 was already dead.\n"
+      },
+      {
+        "args": [
+          "journalctl",
+          "-b",
+          "--no-pager",
+          "-n",
+          "250"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": "Nov 11 02:32:29 toddy systemd[775]: Reached target GNOME Session is initialized.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME basic session services.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME session services.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME Session (session: gnome).\nNov 11 02:32:29 toddy systemd[775]: Starting Signal initialization done to GNOME Session Manager...\nNov 11 02:32:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'ca.desrt.dconf'\nNov 11 02:32:29 toddy systemd[775]: Starting IBus Daemon for GNOME...\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME accessibility service...\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME color management service...\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME date & time service...\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME maintenance of expirable data service...\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME keyboard configuration service...\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME keyboard shortcuts service...\nNov 11 02:32:29 toddy gnome-session-service[818]: Entering running state\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME power management service...\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME RFKill support service...\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME FreeDesktop screensaver service...\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME file sharing service...\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME smartcard service...\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME sound sample caching service...\nNov 11 02:32:29 toddy systemd[775]: Starting GNOME USB protection service...\nNov 11 02:32:29 toddy systemd[775]: Finished Signal initialization done to GNOME Session Manager.\nNov 11 02:32:29 toddy systemd[775]: Started User preferences database.\nNov 11 02:32:29 toddy systemd[775]: Started GNOME color management service.\nNov 11 02:32:29 toddy systemd[775]: Started GNOME accessibility service.\nNov 11 02:32:29 toddy systemd[775]: Started GNOME date & time service.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME accessibility target.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME color management target.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME date & time target.\nNov 11 02:32:29 toddy gsd-a11y-settings[900]: Failed to stop orca.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit orca.service not loaded.\nNov 11 02:32:29 toddy gsd-a11y-settings[900]: Failed to disable orca.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit orca.service does not exist\nNov 11 02:32:29 toddy systemd[775]: Started GNOME maintenance of expirable data service.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME maintenance of expirable data target.\nNov 11 02:32:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.gnome.evolution.dataserver.Sources5'\nNov 11 02:32:29 toddy systemd[775]: Started Evolution source registry.\nNov 11 02:32:29 toddy systemd[775]: Started GNOME file sharing service.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME file sharing target.\nNov 11 02:32:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Activating service name='org.freedesktop.portal.IBus' requested by ':1.22' (uid=12402 pid=895 comm=\"/usr/bin/ibus-daemon --panel disable\" label=\"kernel\")\nNov 11 02:32:29 toddy systemd[775]: Started IBus Daemon for GNOME.\nNov 11 02:32:29 toddy systemd[775]: Started GNOME RFKill support service.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME RFKill support target.\nNov 11 02:32:29 toddy gsd-sharing[924]: Failed to stop gnome-user-share-webdav.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit gnome-user-share-webdav.service not loaded.\nNov 11 02:32:29 toddy systemd[775]: Started GNOME keyboard configuration service.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME keyboard configuration target.\nNov 11 02:32:29 toddy gsd-sharing[924]: Failed to stop rygel.service: GDBus.Error:org.freedesktop.systemd1.NoSuchUnit: Unit rygel.service not loaded.\nNov 11 02:32:29 toddy gnome-shell[825]: Will monitor session 2\nNov 11 02:32:29 toddy systemd[775]: Started GNOME FreeDesktop screensaver service.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME FreeDesktop screensaver target.\nNov 11 02:32:29 toddy systemd[775]: Started GNOME keyboard shortcuts service.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME keyboard shortcuts target.\nNov 11 02:32:29 toddy dbus-daemon[255]: [system] Activating via systemd: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.202' (uid=12402 pid=921 comm=\"/usr/libexec/gsd-rfkill\" label=\"kernel\")\nNov 11 02:32:29 toddy systemd[1]: Starting Hostname Service...\nNov 11 02:32:29 toddy gsd-media-keys[916]: Failed to connect context: Connection refused\nNov 11 02:32:29 toddy systemd[775]: Started GNOME sound sample caching service.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME sound sample caching target.\nNov 11 02:32:29 toddy systemd[775]: Started GNOME USB protection service.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME USB protection target.\nNov 11 02:32:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Activating via systemd: service name='org.gnome.evolution.dataserver.Calendar8' unit='evolution-calendar-factory.service' requested by ':1.11' (uid=12402 pid=871 comm=\"/usr/libexec/gnome-shell-calendar-server\" label=\"kernel\")\nNov 11 02:32:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.gnome.Shell.CalendarServer'\nNov 11 02:32:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.freedesktop.portal.IBus'\nNov 11 02:32:29 toddy systemd[775]: Starting Evolution calendar service...\nNov 11 02:32:29 toddy dbus-daemon[255]: [system] Activating via systemd: service name='org.freedesktop.locale1' unit='dbus-org.freedesktop.locale1.service' requested by ':1.204' (uid=12402 pid=909 comm=\"/usr/libexec/gsd-keyboard\" label=\"kernel\")\nNov 11 02:32:29 toddy systemd[1]: Starting Locale Service...\nNov 11 02:32:29 toddy systemd[775]: Started GNOME smartcard service.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME smartcard target.\nNov 11 02:32:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.gnome.Shell.Notifications'\nNov 11 02:32:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Activating service name='org.gnome.ScreenSaver' requested by ':1.28' (uid=12402 pid=947 comm=\"/usr/libexec/gsd-usb-protection\" label=\"kernel\")\nNov 11 02:32:29 toddy systemd[775]: Started GNOME power management service.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME power management target.\nNov 11 02:32:29 toddy systemd[775]: Reached target GNOME Session.\nNov 11 02:32:29 toddy systemd[775]: Reached target Current graphical user session.\nNov 11 02:32:29 toddy systemd[775]: Starting Event and Task Reminders...\nNov 11 02:32:29 toddy systemd[1]: Started Locale Service.\nNov 11 02:32:29 toddy dbus-daemon[255]: [system] Successfully activated service 'org.freedesktop.locale1'\nNov 11 02:32:29 toddy systemd[1]: Started Hostname Service.\nNov 11 02:32:29 toddy dbus-daemon[255]: [system] Successfully activated service 'org.freedesktop.hostname1'\nNov 11 02:32:29 toddy gsd-keyboard[909]: g_variant_unref: assertion 'value != NULL' failed\nNov 11 02:32:29 toddy kernel: rfkill: input handler disabled\nNov 11 02:32:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.gnome.evolution.dataserver.Calendar8'\nNov 11 02:32:29 toddy systemd[775]: Started Evolution calendar service.\nNov 11 02:32:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Activating via systemd: service name='org.gnome.evolution.dataserver.AddressBook10' unit='evolution-addressbook-factory.service' requested by ':1.33' (uid=12402 pid=1012 comm=\"/usr/libexec/evolution-calendar-factory\" label=\"kernel\")\nNov 11 02:32:29 toddy systemd[775]: Starting Evolution address book service...\nNov 11 02:32:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.gnome.ScreenSaver'\nNov 11 02:32:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.gnome.evolution.dataserver.AddressBook10'\nNov 11 02:32:29 toddy systemd[775]: Started Evolution address book service.\nNov 11 02:32:29 toddy gnome-shell[825]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Name \"org.freedesktop.RealtimeKit1\" does not exist\nNov 11 02:32:29 toddy gnome-shell[825]: GNOME Shell started at Wed Nov 11 2026 02:32:29 GMT+0000 (Coordinated Universal Time)\nNov 11 02:32:29 toddy gnome-shell[825]: Registering display with GDM\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME Session (session: gnome-login).\nNov 11 02:32:29 toddy systemd[314]: Stopped target Current graphical user session.\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME Session.\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME basic session services.\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME accessibility target.\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME keyboard configuration target.\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME keyboard shortcuts target.\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME power management target.\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME RFKill support target.\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME file sharing target.\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME smartcard target.\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME USB protection target.\nNov 11 02:32:29 toddy systemd[314]: Stopping Accessibility services bus...\nNov 11 02:32:29 toddy systemd[314]: Stopping IBus Daemon for GNOME...\nNov 11 02:32:29 toddy systemd[314]: Stopping GNOME accessibility service...\nNov 11 02:32:29 toddy systemd[314]: Stopping GNOME keyboard configuration service...\nNov 11 02:32:29 toddy systemd[314]: Stopping GNOME keyboard shortcuts service...\nNov 11 02:32:29 toddy systemd[314]: Stopping GNOME power management service...\nNov 11 02:32:29 toddy systemd[314]: Stopping GNOME RFKill support service...\nNov 11 02:32:29 toddy systemd[314]: Stopping GNOME file sharing service...\nNov 11 02:32:29 toddy systemd[314]: Stopping GNOME smartcard service...\nNov 11 02:32:29 toddy systemd[314]: Stopping GNOME USB protection service...\nNov 11 02:32:29 toddy systemd[314]: Stopped Accessibility services bus.\nNov 11 02:32:29 toddy systemd[314]: Stopped IBus Daemon for GNOME.\nNov 11 02:32:29 toddy systemd[314]: Stopped Monitor Session leader for GNOME Session.\nNov 11 02:32:29 toddy gsd-usb-protection[947]: Failed to fetch USBGuard parameters: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.usbguard1 was not provided by any .service files\nNov 11 02:32:29 toddy systemd[314]: Stopped GNOME USB protection service.\nNov 11 02:32:29 toddy systemd[314]: Stopped GNOME keyboard configuration service.\nNov 11 02:32:29 toddy systemd[314]: Stopped GNOME accessibility service.\nNov 11 02:32:29 toddy systemd[314]: Stopped GNOME RFKill support service.\nNov 11 02:32:29 toddy gsd-media-keys[916]: Failed to grab accelerator for keybinding settings:playback-repeat\nNov 11 02:32:29 toddy gsd-media-keys[916]: Failed to grab accelerator for keybinding settings:hibernate\nNov 11 02:32:29 toddy systemd[314]: Stopped GNOME keyboard shortcuts service.\nNov 11 02:32:29 toddy systemd[314]: Stopped GNOME power management service.\nNov 11 02:32:29 toddy systemd[314]: Stopped GNOME smartcard service.\nNov 11 02:32:29 toddy systemd[314]: Stopped GNOME file sharing service.\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME Session is initialized.\nNov 11 02:32:29 toddy systemd[314]: Stopping GNOME Shell...\nNov 11 02:32:29 toddy gnome-shell[349]: Shutting down GNOME Shell\nNov 11 02:32:29 toddy systemd[775]: Started Event and Task Reminders.\nNov 11 02:32:29 toddy systemd[314]: Stopped GNOME Shell.\nNov 11 02:32:29 toddy systemd[314]: org.gnome.Shell@gdm.service: Consumed 1.321s CPU time over 53.336s wall clock time, 456.7M memory peak.\nNov 11 02:32:29 toddy systemd[314]: Stopped target GNOME Session Manager is ready.\nNov 11 02:32:29 toddy systemd[314]: Stopping GNOME Session Manager (session: gnome-login)...\nNov 11 02:32:29 toddy gnome-shell[825]: Failed to start camera monitor\nNov 11 02:32:29 toddy gnome-shell[825]: Failed to connect context: Connection refused\nNov 11 02:32:29 toddy gnome-shell[825]: Failed to get PolKit permission: Polkit.Error: GDBus.Error:org.freedesktop.PolicyKit1.Error.Failed: Action org.freedesktop.bolt.enroll is not registered\nNov 11 02:32:31 toddy systemd[314]: Stopped GNOME Session Manager (session: gnome-login).\nNov 11 02:32:31 toddy systemd[314]: Stopped target Tasks to be run before GNOME Session starts.\nNov 11 02:32:31 toddy systemd[314]: Stopped target Session services which should run early before the graphical session is brought up.\nNov 11 02:32:31 toddy systemd[314]: Reached target Shutdown running GNOME Session.\nNov 11 02:32:31 toddy systemd[314]: Starting Restart DBus after GNOME Session shutdown...\nNov 11 02:32:31 toddy systemd[314]: Stopped target Shutdown running GNOME Session.\nNov 11 02:32:31 toddy systemd[314]: Started Restart DBus after GNOME Session shutdown.\nNov 11 02:32:31 toddy systemd[314]: Stopping D-Bus User Message Bus...\nNov 11 02:32:31 toddy systemd[314]: Stopped D-Bus User Message Bus.\nNov 11 02:32:31 toddy systemd[1]: session-c1.scope: Deactivated successfully.\nNov 11 02:32:31 toddy systemd-logind[258]: Removed session c1.\nNov 11 02:32:31 toddy gdm[282]: Gdm: Child process -326 was already dead.\nNov 11 02:32:34 toddy gsd-media-keys[916]: Failed to connect context: Connection refused\nNov 11 02:32:35 toddy gnome-shell[825]: Failed to connect context: Connection refused\nNov 11 02:32:38 toddy geoclue[534]: Service not used for 60 seconds. Shutting down..\nNov 11 02:32:38 toddy systemd[1]: geoclue.service: Deactivated successfully.\nNov 11 02:32:40 toddy accounts-daemon[288]: Unable to open /etc/tcb: No such file or directory\nNov 11 02:32:40 toddy accounts-daemon[288]: couldn't list homed users: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.home1 was not provided by any .service files\nNov 11 02:32:41 toddy systemd[1]: Stopping User Manager for UID 60578...\nNov 11 02:32:41 toddy systemd[314]: Activating special unit Exit the Session...\nNov 11 02:32:41 toddy systemd[314]: Removed slice Slice /app/gnome-session-manager.\nNov 11 02:32:41 toddy systemd[314]: Removed slice User Core Session Slice.\nNov 11 02:32:41 toddy systemd[314]: session.slice: Consumed 1.734s CPU time over 1min 4.970s wall clock time, 514.8M memory peak.\nNov 11 02:32:41 toddy systemd[314]: Stopped target Main User Target.\nNov 11 02:32:41 toddy systemd[314]: Stopped target Basic System.\nNov 11 02:32:41 toddy systemd[314]: Stopped target Paths.\nNov 11 02:32:41 toddy systemd[314]: Stopped target Sockets.\nNov 11 02:32:41 toddy systemd[314]: Stopped target Timers.\nNov 11 02:32:41 toddy systemd[314]: Closed D-Bus User Message Bus Socket.\nNov 11 02:32:41 toddy systemd[314]: Closed Query the User Interactively for a Password.\nNov 11 02:32:41 toddy systemd[314]: Closed Journal Log Access Socket.\nNov 11 02:32:41 toddy systemd[314]: Closed Virtual Machine and Container Registration Service Socket.\nNov 11 02:32:41 toddy systemd[314]: Closed Simple File System Backed Storage Provider.\nNov 11 02:32:41 toddy systemd[314]: Removed slice User Application Slice.\nNov 11 02:32:41 toddy systemd[314]: Reached target Shutdown.\nNov 11 02:32:41 toddy systemd[314]: Finished Exit the Session.\nNov 11 02:32:41 toddy systemd[314]: Reached target Exit the Session.\nNov 11 02:32:41 toddy systemd-logind[258]: Removed session 1.\nNov 11 02:32:41 toddy systemd[1]: user@60578.service: Deactivated successfully.\nNov 11 02:32:41 toddy systemd[1]: Stopped User Manager for UID 60578.\nNov 11 02:32:41 toddy systemd[1]: user@60578.service: Consumed 1.880s CPU time over 1min 5.115s wall clock time, 522.1M memory peak.\nNov 11 02:32:41 toddy systemd[1]: Stopping User Runtime Directory /run/user/60578...\nNov 11 02:32:41 toddy systemd[1]: run-user-60578.mount: Deactivated successfully.\nNov 11 02:32:41 toddy systemd[1]: user-runtime-dir@60578.service: Deactivated successfully.\nNov 11 02:32:41 toddy systemd[1]: Stopped User Runtime Directory /run/user/60578.\nNov 11 02:32:41 toddy systemd[1]: Removed slice User Slice of UID 60578.\nNov 11 02:32:41 toddy systemd[1]: user-60578.slice: Consumed 1.904s CPU time over 1min 5.146s wall clock time, 529.3M memory peak.\nNov 11 02:32:50 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Activating service name='org.gnome.Settings.SearchProvider' requested by ':1.6' (uid=12402 pid=825 comm=\"/usr/bin/gnome-shell --mode=user\" label=\"kernel\")\nNov 11 02:32:50 toddy gnome-shell[825]: Received error from D-Bus search provider org.gnome.Terminal.desktop: Gio.IOErrorEnum: Cannot invoke method; proxy is for the well-known name org.gnome.Terminal without an owner, and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag\nNov 11 02:32:50 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.gnome.Settings.SearchProvider'\nNov 11 02:32:50 toddy gnome-shell[825]: Received error from D-Bus search provider org.gnome.Terminal.desktop: Gio.IOErrorEnum: Cannot invoke method; proxy is for the well-known name org.gnome.Terminal without an owner, and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag\nNov 11 02:32:54 toddy gnome-shell[825]: Error connecting to the screencast service\nNov 11 02:32:58 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Activating service name='org.gnome.TextEditor' requested by ':1.6' (uid=12402 pid=825 comm=\"/usr/bin/gnome-shell --mode=user\" label=\"kernel\")\nNov 11 02:32:58 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.gnome.TextEditor'\nNov 11 02:32:58 toddy org.gnome.TextEditor[1305]: libEGL warning: failed to get driver name for fd -1\nNov 11 02:32:58 toddy org.gnome.TextEditor[1305]: libEGL warning: MESA-LOADER: failed to retrieve device information\nNov 11 02:32:58 toddy org.gnome.TextEditor[1305]: libEGL warning: failed to get driver name for fd -1\nNov 11 02:32:58 toddy org.gnome.TextEditor[1305]: libEGL warning: egl: failed to create dri2 screen\nNov 11 02:32:59 toddy systemd[1]: systemd-hostnamed.service: Deactivated successfully.\nNov 11 02:32:59 toddy systemd[1]: systemd-localed.service: Deactivated successfully.\nNov 11 02:33:29 toddy dbus-daemon[255]: [system] Activating via systemd: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.403' (uid=12402 pid=1305 comm=\"/usr/bin/gnome-text-editor --gapplication-service\" label=\"kernel\")\nNov 11 02:33:29 toddy systemd[1]: Starting Hostname Service...\nNov 11 02:33:29 toddy systemd[1]: Started Hostname Service.\nNov 11 02:33:29 toddy dbus-daemon[255]: [system] Successfully activated service 'org.freedesktop.hostname1'\nNov 11 02:33:30 toddy gnome-shell[825]: Type GITypeInfo of property Clutter.BrightnessContrastEffect::brightness does not match type GITypeInfo of first argument of setter set_brightness. Falling back to slow path\nNov 11 02:33:48 toddy gnome-text-editor[1305]: Failed to save cursor position: Setting attribute metadata::gte-cursor not supported\nNov 11 02:34:00 toddy systemd[1]: systemd-hostnamed.service: Deactivated successfully.\nNov 11 02:34:29 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Failed to activate service 'org.gnome.Shell.Screencast': timed out (service_start_timeout=120000ms)\nNov 11 02:34:40 toddy gnome-text-editor[1305]: Failed to save cursor position: Setting attribute metadata::gte-cursor not supported\nNov 11 02:34:57 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Activating service name='org.gnome.Settings.SearchProvider' requested by ':1.6' (uid=12402 pid=825 comm=\"/usr/bin/gnome-shell --mode=user\" label=\"kernel\")\nNov 11 02:34:57 toddy gnome-shell[825]: Received error from D-Bus search provider org.gnome.Terminal.desktop: Gio.IOErrorEnum: Cannot invoke method; proxy is for the well-known name org.gnome.Terminal without an owner, and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag\nNov 11 02:34:57 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.gnome.Settings.SearchProvider'\nNov 11 02:34:57 toddy gnome-shell[825]: Received error from D-Bus search provider org.gnome.Terminal.desktop: Gio.IOErrorEnum: Cannot invoke method; proxy is for the well-known name org.gnome.Terminal without an owner, and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag\nNov 11 02:34:58 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Activating service name='org.gnome.TextEditor' requested by ':1.6' (uid=12402 pid=825 comm=\"/usr/bin/gnome-shell --mode=user\" label=\"kernel\")\nNov 11 02:34:58 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.gnome.TextEditor'\nNov 11 02:34:58 toddy org.gnome.TextEditor[1854]: libEGL warning: failed to get driver name for fd -1\nNov 11 02:34:58 toddy org.gnome.TextEditor[1854]: libEGL warning: MESA-LOADER: failed to retrieve device information\nNov 11 02:34:58 toddy org.gnome.TextEditor[1854]: libEGL warning: failed to get driver name for fd -1\nNov 11 02:34:58 toddy org.gnome.TextEditor[1854]: libEGL warning: egl: failed to create dri2 screen\nNov 11 02:35:16 toddy gnome-shell[825]: Received error from D-Bus search provider org.gnome.Terminal.desktop: Gio.IOErrorEnum: Cannot invoke method; proxy is for the well-known name org.gnome.Terminal without an owner, and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag\nNov 11 02:35:17 toddy gnome-shell[825]: Received error from D-Bus search provider org.gnome.Terminal.desktop: Gio.IOErrorEnum: Cannot invoke method; proxy is for the well-known name org.gnome.Terminal without an owner, and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag\nNov 11 02:35:17 toddy gnome-shell[825]: Received error from D-Bus search provider org.gnome.Terminal.desktop: Gio.IOErrorEnum: Cannot invoke method; proxy is for the well-known name org.gnome.Terminal without an owner, and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag\nNov 11 02:35:17 toddy gnome-shell[825]: Received error from D-Bus search provider org.gnome.Terminal.desktop: Gio.IOErrorEnum: Cannot invoke method; proxy is for the well-known name org.gnome.Terminal without an owner, and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag\nNov 11 02:35:18 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Activating service name='org.gnome.Settings' requested by ':1.6' (uid=12402 pid=825 comm=\"/usr/bin/gnome-shell --mode=user\" label=\"kernel\")\nNov 11 02:35:18 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.gnome.Settings'\nNov 11 02:35:18 toddy gnome-control-center[1963]: The resource style-dark.css is deprecated and shouldn't be used anymore. Use style.css with media queries instead.\nNov 11 02:35:18 toddy gnome-control-center[1963]: The resource style-hc.css is deprecated and shouldn't be used anymore. Use style.css with media queries instead.\nNov 11 02:35:18 toddy dbus-daemon[255]: [system] Activating via systemd: service name='org.freedesktop.ModemManager1' unit='dbus-org.freedesktop.ModemManager1.service' requested by ':1.729' (uid=12402 pid=1963 comm=\"/usr/bin/gnome-control-center --gapplication-servi\" label=\"kernel\")\nNov 11 02:35:18 toddy dbus-daemon[255]: [system] Activation via systemd failed for unit 'dbus-org.freedesktop.ModemManager1.service': Unit dbus-org.freedesktop.ModemManager1.service not found.\nNov 11 02:35:18 toddy gnome-control-center[1963]: Error connecting to ModemManager: Error calling StartServiceByName for org.freedesktop.ModemManager1: Unit dbus-org.freedesktop.ModemManager1.service not found.\nNov 11 02:35:18 toddy org.gnome.Settings[1963]: libEGL warning: failed to get driver name for fd -1\nNov 11 02:35:18 toddy org.gnome.Settings[1963]: libEGL warning: MESA-LOADER: failed to retrieve device information\nNov 11 02:35:18 toddy org.gnome.Settings[1963]: libEGL warning: failed to get driver name for fd -1\nNov 11 02:35:18 toddy org.gnome.Settings[1963]: libEGL warning: egl: failed to create dri2 screen\nNov 11 02:35:18 toddy dbus-daemon[255]: [system] Activating via systemd: service name='org.freedesktop.ModemManager1' unit='dbus-org.freedesktop.ModemManager1.service' requested by ':1.729' (uid=12402 pid=1963 comm=\"/usr/bin/gnome-control-center --gapplication-servi\" label=\"kernel\")\nNov 11 02:35:18 toddy dbus-daemon[255]: [system] Activation via systemd failed for unit 'dbus-org.freedesktop.ModemManager1.service': Unit dbus-org.freedesktop.ModemManager1.service not found.\nNov 11 02:35:18 toddy gnome-control-center[1963]: Error connecting to ModemManager: Error calling StartServiceByName for org.freedesktop.ModemManager1: Unit dbus-org.freedesktop.ModemManager1.service not found.\nNov 11 02:35:37 toddy systemd[1]: Unmounting EFI System Partition Automount...\nNov 11 02:35:37 toddy systemd[1]: efi.mount: Deactivated successfully.\nNov 11 02:35:37 toddy systemd[1]: Unmounted EFI System Partition Automount.\nNov 11 02:35:52 toddy gnome-shell[825]: Received error from D-Bus search provider org.gnome.Terminal.desktop: Gio.IOErrorEnum: Cannot invoke method; proxy is for the well-known name org.gnome.Terminal without an owner, and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag\nNov 11 02:35:52 toddy gnome-shell[825]: Received error from D-Bus search provider org.gnome.Terminal.desktop: Gio.IOErrorEnum: Cannot invoke method; proxy is for the well-known name org.gnome.Terminal without an owner, and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag\nNov 11 02:35:52 toddy gnome-shell[825]: Received error from D-Bus search provider org.gnome.Terminal.desktop: Gio.IOErrorEnum: Cannot invoke method; proxy is for the well-known name org.gnome.Terminal without an owner, and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag\nNov 11 02:35:52 toddy gnome-shell[825]: Received error from D-Bus search provider org.gnome.Terminal.desktop: Gio.IOErrorEnum: Cannot invoke method; proxy is for the well-known name org.gnome.Terminal without an owner, and proxy was constructed with the G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START flag\nNov 11 02:36:13 toddy systemd[775]: Started Application launched by gnome-shell.\nNov 11 02:36:13 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Activating via systemd: service name='org.gnome.Terminal' unit='gnome-terminal-server.service' requested by ':1.42' (uid=12402 pid=2215 comm=\"/usr/bin/gnome-terminal\" label=\"kernel\")\nNov 11 02:36:13 toddy systemd[775]: Created slice Slice /app/org.gnome.Terminal.\nNov 11 02:36:13 toddy systemd[775]: Starting GNOME Terminal Server...\nNov 11 02:36:13 toddy gnome-terminal-server[2225]: Installed schemas failed verification: Schema \"org.gnome.system.proxy.https\" has path \"/system/proxy/https/\" but reference path is \"/org/gnome/system/proxy/https/\"\nNov 11 02:36:13 toddy gnome-terminal-server[2225]: Falling back to built-in reference schemas.\nNov 11 02:36:13 toddy dbus-daemon[804]: [session uid=12402 pid=804 pidfd=5] Successfully activated service 'org.gnome.Terminal'\nNov 11 02:36:13 toddy systemd[775]: Started GNOME Terminal Server.\nNov 11 02:36:13 toddy org.gnome.Terminal.desktop[2215]: Installed schemas failed verification: Schema \"org.gnome.system.proxy.https\" has path \"/system/proxy/https/\" but reference path is \"/org/gnome/system/proxy/https/\"\nNov 11 02:36:13 toddy org.gnome.Terminal.desktop[2215]: Falling back to built-in reference schemas.\nNov 11 02:36:13 toddy systemd[775]: Started VTE child process 2236 launched by org.gnome.Terminal process 2225.\n"
+      }
+    ],
+    "schema_sha256": "61c1e5150f467a49b12db8ea33436db402be7ae1b18d7280775c1384065317d2",
+    "schema_unchanged": true,
+    "scope": "Actual disposable-owner GDM/PAM login and normal GNOME virtual DRM/input session observation. Synthetic credential only in memory/private transient channel. No autologin or session-policy bypass; selected application actions need their own evidence; no B02/physical completion."
+  },
+  "symbolic_input_events": [
+    {
+      "phase": "private-account-configured-control-ready"
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-00.ppm"
+      },
+      "monotonic": 280061.853386212
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280073.626952231
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-01.ppm"
+      },
+      "monotonic": 280073.653547384
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-02.ppm"
+      },
+      "monotonic": 280091.042509886
+    },
+    {
+      "action": "password",
+      "result": {
+        "private_password_sent": true
+      },
+      "monotonic": 280110.470946593
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280110.491856161
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-03.ppm"
+      },
+      "monotonic": 280115.531717728
+    },
+    {
+      "action": "text",
+      "result": {
+        "text_sent": true
+      },
+      "monotonic": 280132.814876881
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-04.ppm"
+      },
+      "monotonic": 280133.553571473
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280140.671866935
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-05.ppm"
+      },
+      "monotonic": 280141.71349358
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-06.ppm"
+      },
+      "monotonic": 280156.322451496
+    },
+    {
+      "action": "text",
+      "result": {
+        "text_sent": true
+      },
+      "monotonic": 280171.679635063
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280171.701246414
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-07.ppm"
+      },
+      "monotonic": 280172.741542154
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280189.305056065
+    },
+    {
+      "action": "text",
+      "result": {
+        "text_sent": true
+      },
+      "monotonic": 280190.434336438
+    },
+    {
+      "action": "pointer",
+      "result": {
+        "pointer_sent": true
+      },
+      "monotonic": 280190.458765476
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-08.ppm"
+      },
+      "monotonic": 280191.500093034
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280239.976643882
+    },
+    {
+      "action": "text",
+      "result": {
+        "text_sent": true
+      },
+      "monotonic": 280242.263859957
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280242.635698225
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-09.ppm"
+      },
+      "monotonic": 280243.013202266
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280258.79866869
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280259.319913582
+    },
+    {
+      "action": "text",
+      "result": {
+        "text_sent": true
+      },
+      "monotonic": 280260.244483708
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280260.866522797
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-10.ppm"
+      },
+      "monotonic": 280262.894311557
+    },
+    {
+      "action": "pointer",
+      "result": {
+        "pointer_sent": true
+      },
+      "monotonic": 280277.613249563
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-11.ppm"
+      },
+      "monotonic": 280278.440426714
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280278.614246397
+    },
+    {
+      "action": "text",
+      "result": {
+        "text_sent": true
+      },
+      "monotonic": 280279.943040997
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280280.465516145
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-12.ppm"
+      },
+      "monotonic": 280282.491676084
+    },
+    {
+      "action": "pointer",
+      "result": {
+        "pointer_sent": true
+      },
+      "monotonic": 280300.81835796
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-13.ppm"
+      },
+      "monotonic": 280301.645728808
+    },
+    {
+      "action": "pointer",
+      "result": {
+        "pointer_sent": true
+      },
+      "monotonic": 280312.637388084
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-14.ppm"
+      },
+      "monotonic": 280313.464531545
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280313.642347162
+    },
+    {
+      "action": "text",
+      "result": {
+        "text_sent": true
+      },
+      "monotonic": 280314.970146593
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-15.ppm"
+      },
+      "monotonic": 280315.497829541
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280335.483271057
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-16.ppm"
+      },
+      "monotonic": 280337.511604321
+    },
+    {
+      "action": "text",
+      "result": {
+        "text_sent": true
+      },
+      "monotonic": 280356.722303282
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280357.104561939
+    },
+    {
+      "action": "text",
+      "result": {
+        "text_sent": true
+      },
+      "monotonic": 280357.778513018
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280358.150558003
+    },
+    {
+      "action": "text",
+      "result": {
+        "text_sent": true
+      },
+      "monotonic": 280359.32883628
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280359.700635848
+    },
+    {
+      "action": "text",
+      "result": {
+        "text_sent": true
+      },
+      "monotonic": 280360.9807429
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280361.35319704
+    },
+    {
+      "action": "text",
+      "result": {
+        "text_sent": true
+      },
+      "monotonic": 280362.532053801
+    },
+    {
+      "action": "key",
+      "result": {
+        "key_sent": true
+      },
+      "monotonic": 280362.903409703
+    },
+    {
+      "action": "capture",
+      "result": {
+        "frame": "owner-scanout-17.ppm"
+      },
+      "monotonic": 280363.280299142
+    },
+    {
+      "action": "done",
+      "result": {
+        "guest_observation_finish_requested": true
+      },
+      "monotonic": 280381.016499585
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "docs/evidence/B02-native-owner-desktop.png",
+      "sha256": "9fabe0fede487bdea1e47e9adbee144927722fda4cc48bc3033214cb9a20d57d",
+      "frame": 3
+    },
+    {
+      "path": "docs/evidence/B02-native-owner-editor-open.png",
+      "sha256": "caf71116c7dd27a66dcfc59cbe30fe73f6a9a9c7bbf3f1a574e710bcd432cdcf",
+      "frame": 6
+    },
+    {
+      "path": "docs/evidence/B02-native-owner-editor-saved.png",
+      "sha256": "1de9e5de1f56e925700e0b7a6a93506a7ced5b9a70be21a727565ecb925ba226",
+      "frame": 9
+    },
+    {
+      "path": "docs/evidence/B02-native-owner-editor-reopened.png",
+      "sha256": "962c8ed180970b3a3c0d5cb2c90744fd17cfee381d952e6776a9c50ea94dda81",
+      "frame": 10
+    },
+    {
+      "path": "docs/evidence/B02-native-owner-editor-maximized.png",
+      "sha256": "846247345e377c002dae545917af8fc6cc7f92930aa87d52496447f4d47bd163",
+      "frame": 11
+    },
+    {
+      "path": "docs/evidence/B02-native-owner-settings-network-unavailable.png",
+      "sha256": "1c592aebaaf27c0287df1c3b33de6c1462e0af172d1516cdad4f0d5dff9d6e7f",
+      "frame": 12
+    },
+    {
+      "path": "docs/evidence/B02-native-owner-settings-appearance.png",
+      "sha256": "0fcf8c24d7ee6a8458ccfd37c666f330b7de35e5dd0bbd6b84f1f10f697470f0",
+      "frame": 13
+    },
+    {
+      "path": "docs/evidence/B02-native-owner-settings-dark-selected.png",
+      "sha256": "4257a5801d836679323d6fac7fca7d2a2d6a6ec585bdbcd134ea5717d3f0eab4",
+      "frame": 14
+    },
+    {
+      "path": "docs/evidence/B02-native-owner-terminal.png",
+      "sha256": "b0d524f05b0c602742e2981d37248c0033ed198299803491b4d7aa06532308e1",
+      "frame": 16
+    },
+    {
+      "path": "docs/evidence/B02-native-owner-terminal-file-checksum.png",
+      "sha256": "793f00a80db49850e42a03b849d1e28d0cc1c26d80ebd6561759a13cdce22dde",
+      "frame": 17
+    }
+  ],
+  "verified_selected_actions": [
+    "Selected actual GDM test-user card; typed a random private password only after visually checking the masked password field; normal PAM login yielded active seat0/user/Wayland session2.",
+    "GNOME overview search text and Return launched the installed unmodified Text Editor. Real typing and save dialog worked. A too-fast chord/typing sequence produced an unintended short filename and trailing text; corrected by ordinary select-all/edit/save with explicit post-chord delays.",
+    "Saved home file toddy-pr, quit/relaunched the editor, observed the restored correct text without unsaved indicator; actual maximize-button pointer click preserved readable content.",
+    "Overview search launched Settings; Network panel accurately showed NetworkManager not running. Pointer navigation opened Appearance and selected the Dark tile. Global theme propagation was not verified.",
+    "Overview search launched Terminal; actual PTY/Bash accepted whoami, cat toddy-pr and sha256sum toddy-pr. Screenshot shows user toddy-preview, file contents and the independently matched SHA256."
+  ],
+  "saved_file_observation": {
+    "relative_path": "toddy-pr",
+    "observed_content": "toddy-native-editor with final LF",
+    "expected_utf8_sha256": "a749f55ab2b0cb0d5e32044f71983392c8c603dc0fa4c0e2ed99f2cdd3f41cac",
+    "observation_source": "Actual native Terminal screenshot, matched independently on the host; no direct filesystem export in this slice."
+  },
+  "limitations": [
+    "Editor refusal/crash recovery and post-reboot persistence not tested here.",
+    "Settings selected Dark tile but both GTK4 windows still appeared light; global theme propagation unqualified.",
+    "NetworkManager was inactive; actual network/audio/privileged storage functions remain pending.",
+    "Browser and file manager integration remain pending.",
+    "Terminal still uses stock bash-5.3 prompt; lightweight user-preserving navy defaults remain pending.",
+    "Known runtime warnings retained in the full report.",
+    "Synthetic account and its files existed only in the now-stopped disposable overlay; no installed production user was created."
+  ],
+  "recovery": "Native container stopped0, exact base unchanged, builder remains stopped. Existing sources/compiler/stage cache preserved and actual restoration qualified. Restore existing guest volumes/aliases from custody, never replay preparation/build/package transactions."
+}

@@ -46,21 +46,38 @@ its obsolete GTK assertion before any compositor/GDM. Preserve raw serial and
 first scanout; no dedicated report. Context1 container stopped0/base unchanged.
 Followup2 verified these actual postconditions; no builder-stop replay.
 
-EXACT NEXT: after publishing reviewed inputs, run
-`python3 -u scripts/host/phase2_native_gdm_seat.py --authenticated-session`
-with .local/phase2/native-gdm-owner-runtime-1-controller.log.
-Fresh context native-gdm-owner-runtime-1 reuses only unchanged stopped base and
-verified prior normal-seat inputs. A private third virtual UART configures a
-synthetic disposable owner account using an in-memory random password; host and
-guest core dumps disabled, no password in QEMU arguments/files/logs.
-Inspect control-ready.json, then use the private context/control Unix socket
-JSON actions capture/username/password/key/pointer/text/done. Password action
-must only be sent after visually verifying the actual masked password field.
-Screenshots are owner-scanout-NN.ppm; view converted PNGs. Real input events are
-retained symbolically without password values or keyboard-code transcripts.
-Guest holds up to360s for real owner-session observation and host done request;
-service timeout600s/controller900s. Explicitly request done after the chosen
-real UI actions. Observe terminal result and backing identity before recovery.
+Latest native owner diagnostic is COMPLETE, not running.
+Controller1241816/session62621, native-gdm-owner-runtime-1, terminal0;
+container stopped0/base unchanged, dedicated reportSHA
+537ca0578d35addc565790b99e5c7578c27653b3c23cedd1654f457151b188e6.
+Actual normal PAM-authenticated user toddy-preview/session2/seat0/Wayland active.
+[Native owner/GUI evidence](evidence/B02-native-owner-session.json) includes
+real desktop/editor/settings/terminal scanout and symbolic real input events.
+Editor actual typing/save/quit/relaunch/maximize observed, file toddy-pr content
+verified in actual native Terminal by cat/SHA256
+a749f55ab2b0cb0d5e32044f71983392c8c603dc0fa4c0e2ed99f2cdd3f41cac.
+Settings navigation and Dark selection worked, global theme stayed unqualified;
+Network panel truthfully reported inactive NetworkManager. Stock Bash prompt
+still needs owner-preserving navy defaults. No browser/files/audio/privileged
+storage/editor refusal/recovery/reboot persistence or full B02 acceptance.
+Credentials remained only in memory/private transient transport; no secret
+command arguments, event transcript or logs. Disposable overlay alone has the
+synthetic test account. Original input timing failure retained: immediate chord
+followed by typing caused truncated filename/trailing text. Explicit350ms delays
+and ordinary edit/save correction passed; do not call that first operation exact.
+Never replay either native owner/greeter context.
+
+EXACT NEXT: restore the stopped builder and its existing volumes/source aliases
+plus the verified retained Samba/Settings tmpfs cache. Inspect actual disk/UUID/
+mount/postconditions before each recovery; do not rerun preparation/build/install.
+Use scripts/build/phase2/virtual_discard_checkpoint.py restore_volumes(), existing
+Systemd source --restore and Glycin/kernel helpers described below; restore exact
+scratch.tar.gz to the same2GiB tmpfs and run verify_settings_scratch_restore.py
+with --restore-times against guest-receipt.json before exposing recorded aliases.
+Use fresh recovery receipt names. Then integrate actual native network/audio/user
+services and close LocalSearch/Nautilus/browser requirements using the now proven
+normal virtual-seat path, with targeted tests. Preserve parked failure budgets.
+
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated
 restoration proof above remain durable. If builder work is needed first,
