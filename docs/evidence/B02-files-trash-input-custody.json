@@ -1,0 +1,24 @@
+{
+  "scope": "Exact generation4 Gvfs/compiler/source/stage/GTK13 promotion custody and actual isolated restore only. Prior generation3 unchanged; no native Trash/admin acceptance.",
+  "custody": {
+    "state": "complete",
+    "generation": 4,
+    "prior_generation_files_metadata_and_hardlinks_unchanged": true,
+    "archive_sha256": "194480fde5b0e4fefd3cb947b9894150820824428a8e3245aae7ee12a5150ba9",
+    "archive_bytes": 485113684,
+    "verified_entries": 85958,
+    "verified_hardlinks": 35017,
+    "stale_sockets_omitted": 0,
+    "guest_receipt_sha256": "98d30271729661273b2824ab3d7585c944b53a59830b1cd4a5e06537c7426b4b",
+    "host_available_after": 110156697600,
+    "recovery": "Verify archive SHA, restore into the same fresh 2 GiB tmpfs with numeric ownership/ACL/xattrs/sparse/hardlinks, compare all file hashes and symlink targets to guest-receipt.json before remounting the recorded exact bind aliases. Do not replay source preparation, compiler jobs, fixtures or package transactions."
+  },
+  "actual_restore": {
+    "state": "complete",
+    "verified_entries": 85958,
+    "verified_distinct_regular_inodes": 42228,
+    "exact_bytes_modes_owners_timestamps_symlinks_hardlinks": true
+  },
+  "guest_boot_id": "2099f4e9-db42-413d-9ade-41e29ae24160",
+  "recorded_mounts": 21
+}

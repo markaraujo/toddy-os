@@ -31,13 +31,20 @@ elif generation==2:
  assert Path('/var/log/toddy/phase2/nautilus-1.exit').read_text().strip()=='0'
  for name in ['b02-localsearch-install','b02-localsearch-schema-union-install']:
   r=json.loads(Path('/var/log/toddy/build',name+'.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0
-else:
- assert generation==3
+elif generation==3:
  recovery=json.loads(Path('/var/log/toddy/phase2/nautilus-native3-scratch-restored-1.json').read_text());assert recovery['state']=='complete' and recovery['boot_id']==expected_boot
  assert recovery['archive_sha256']=='89add46aea68181669f8aa88ad5bb3ef32985cdb87661ec37b92bfc76e48cfaa'
  for name in ['b02-nautilus-install','b02-nautilus-schema-union-install']:
   r=json.loads(Path('/var/log/toddy/build',name+'.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0
  assert subprocess.check_output(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Version}','gtk'],text=True)=='4.22.4-1+toddy12'
+else:
+ assert generation==4
+ recovery=json.loads(Path('/var/log/toddy/phase2/files-gui1-scratch-restored-1.json').read_text());assert recovery['state']=='complete' and recovery['boot_id']==expected_boot
+ assert recovery['archive_sha256']=='9d6938b426ef0ef3f781bda5b6ccf890aeac657504302fe03c4153288066a64c'
+ for name in ['b02-gvfs-install','b02-gvfs-schema-union-install']:
+  r=json.loads(Path('/var/log/toddy/build',name+'.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0
+ assert Path('/var/log/toddy/phase2/gvfs-local-qualify-2.exit').read_text().strip()=='0'
+ assert subprocess.check_output(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Version}','gtk'],text=True)=='4.22.4-1+toddy13'
 # No live fixture process is allowed. Old sockets have no restorable contents.
 processes=subprocess.check_output(['ps','-eo','pid,args'],text=True)
 assert not any('smbd --foreground' in s or 'smbd -F' in s for s in processes.splitlines())
@@ -84,7 +91,7 @@ receipt.write_text(json.dumps(state,indent=2)+'\n')
 def main():
     global CONTEXT
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--generation',type=int,choices=[1,2,3],default=1)
+    parser.add_argument('--generation',type=int,choices=[1,2,3,4],default=1)
     args=parser.parse_args()
     CONTEXT=ROOT/'.local/phase2'/('settings-scratch-custody-'+str(args.generation))
     assert not CONTEXT.exists(), 'Inspect existing archive/guest receipt before any replay'

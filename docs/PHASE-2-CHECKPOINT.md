@@ -117,15 +117,29 @@ probe. Target17,308,438,528B/scratch392,814,592B available. Existing generation3
 archive remains valid for its prior inputs but does NOT include new Gvfs input/
 work or gtk-gvfs-schema-promotion-1. Never stop before NEW qualified custody.
 
-EXACT NEXT ACTION: extend strict custody/recovery to generation4, using completed
-files-gui1-scratch-restored-1 (generation3 archiveSHA9d6938b426ef0ef3f781bda5b6ccf890aeac657504302fe03c4153288066a64c)
-and successful Gvfs native/schema receipts, current GTK13. Compare all generation3
-bytes/metadata/hardlink classes, retain archive and actually validate isolated
-restoration. Then prepare a NEW normal-GDM native Files followup with exact GTK13/
-Gvfs1.60.2 and only affected Trash browse/restore/refusal/recovery tests. The prior
-unsupported Trash URI remains UNRESOLVED until actual observed followup. Do not
-repeat unchanged original local/compile suites. Other B02 gates remain; ALL B02
-then STOP before another story. Never replay completed custody/native/retirement.
+Generation4 cache custody and actual isolated restoration are COMPLETE.
+[Proof](evidence/B02-files-trash-input-custody.json):85,958entries/42,228distinct
+regular inode classes/35,017hardlinks. Archive485,113,684B/SHA256
+194480fde5b0e4fefd3cb947b9894150820824428a8e3245aae7ee12a5150ba9.
+All generation3 bytes/modes/owners/nanosecond timestamps/symlinks/hardlink classes
+unchanged. Guest receiptSHA98d30271729661273b2824ab3d7585c944b53a59830b1cd4a5e06537c7426b4b.
+Original generations1-3 retained. Host free110,156,697,600B after custody.
+New strict --generation4 recovery accepts only its qualified archive/receipt.
+Never replay any completed custody/retirement/installation/restore.
+
+EXACT NEXT ACTION: commit reviewed phase2_native_files_trash.py and native probe,
+then dispatch ONCE to NEW native-files-trash-runtime-1. It verifies GTK13/Gvfs1/
+other installed payloads and exact live generation4 cache, stops builder once and
+boots a disposable no-NIC normal GDM/PAM seat. Log into the masked password field
+with private existing control; open Files/Documents; move fixture toddy-restore
+to Trash and wait for actual watcher to observe absence/trash bytes. Open Trash,
+select item, Restore; verify return to Documents/readable window and captured UI.
+Keep Files running when sending DONE: native root checks both actual transitions,
+exact restored bytes/empty trash, installed gio info trash:/// and noninteractive
+org.gtk.vfs.file-operations authorization for the real active Files PID must
+challenge (pkcheck2), no interaction/credentials/privileged write. Preserve failure
+if any condition fails; original unsupported Trash URI not yet resolved. No
+unchanged local/compile-suite replay. Other B02 gates remain; ALL B02 then STOP.
 
 ### Verified recovery and packaging provenance
 

@@ -3569,3 +3569,12 @@ default-source lookup132schemas/1113keys preserves131baseline/1111keys/contracts
 and906runtime entries.84inputs/22owners, no user preferences/overrides.
 Before native Trash followup preserve NEW generation4: generation3 lacks Gvfs
 work/source and new GTK13 promotion. No unchanged compiler/local tests replayed.
+
+### B02 — Qualified generation4 and focused Trash native followup preparation
+
+485,113,684B cache archive retained all generation3 content/metadata/hardlink
+classes and new Gvfs/GTK13 inputs. Actual isolated restoration0 verified85,958
+entries/42,228regular inode classes. Strict generation4 recovery added. Focused
+normal GDM/PAM native followup prepared: actual trash-and-restore transition
+watcher, GUI review, installed trash URI and noninteractive active-client admin
+challenge. No native followup executed yet; prior Trash failure stays unresolved.
