@@ -216,20 +216,31 @@ successful programs/64GLib cases, no original program replay or invented counts.
 Collector correction resolved; this separate concrete fixture-cwd cause has
 first correction prepared, failed_corrections0. No source/compiler/global chmod.
 
-EXACT NEXT: after publishing reviewed inputs, run
-`python3 -u scripts/host/phase2_native_nautilus.py --files-view-followup`
-with .local/phase2/native-nautilus-runtime-3-controller.log.
-Preflight3 passed actual native2 terminal/base/prefix/image state, builder still
-STOPPED. Fresh context native-nautilus-runtime-3 reuses11qualified results and
-runs ONLY original test-files-view. Give that wrapper its own writable per-case
-cwd with readonly test subtree alias; original relative argv/inode/hash preserved.
-Normal GDM/PAM user seat and actual absolute Wayland endpoint as before. Use
-control socket capture/key/password/done; inspect password field before sending.
-Done starts the remaining test.60s/program, no unchanged test/build replay.
-On failure inspect real report/cause under the persistent bounded budget and
-choose independent work as required; never mark this last test completed.
-Recover CURRENT generation2 cache/16aliases with fresh receipts after testing.
-Full B02 incomplete; stop only after ALL B02 accepted.
+Native Nautilus3 is COMPLETE/terminal0, controller1352887/session8568,
+container stopped0/base unchanged, full dedicated reportSHA
+6532603e8188fbd48afbb2268db128c0219e5a8fbe3feb24a8d3520d04edfd24.
+[Focused gate proof](evidence/B02-nautilus-native-focused.json):12original
+selected programs qualified,73GLib cases/no skips plus AppStream metadata,
+3-hit search callback/assertion and async-directory done callback. Native3
+executed ONLY final Files-view wrapper/9cases, reused11programs/64GLib cases.
+Private writable fixture cwd + readonly alias resolved original helper's EROFS
+without source/global permissions/test changes. Exact input maps unchanged.
+Both earlier raw failures retained, collector/private-cwd corrections resolved.
+No full24suite, installed Nautilus app/GUI, B02 or hardware acceptance.
+
+EXACT NEXT: recover builder after native3, with real state inspection and fresh
+receipts. Same6UUID volumes/Systemd source/Glycin/kernel COW. Restore CURRENT
+custody generation2 and16aliases using
+`phase2_restore_settings_scratch.py --generation 2 --receipt nautilus-native3-scratch-restored-1`.
+Never replay generation1/current old recovery receipts or compiler/tests.
+Then implement controlled native Nautilus50.2.2 packaging from unchanged154file
+stage, requiring this12program/73case native proof and original .text/.rodata
+invariants. Audit actual runtime/ABI/source legal/user activation/shared resources,
+no SUID/SGID or path collisions; essential installed CLI/SDK/refusal/recovery
+checks need real postconditions. Follow with shared-schema GTK-owned union and
+actual installed Files launch/navigation/create/copy/rename/delete/focus/resize/
+recovery, reusing the proven normal GDM/PAM/QMP path. Gvfs/hotplug/permissions,
+network/audio/browser/global theme/terminal defaults and full B02 remain due.
 
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated

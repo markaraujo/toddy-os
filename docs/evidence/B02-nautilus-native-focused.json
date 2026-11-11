@@ -1,0 +1,381 @@
+{
+  "scope": "Focused original Nautilus50.2.2 native test gate: actual normal GDM/PAM user seat, readonly verified source/compiler/stage/data device,12selected programs/73GLib cases plus non-TAP metadata/search/async driver checks. Reuses11already successful programs; no full24program suite, installed Nautilus/Files UI, full B02 or hardware acceptance.",
+  "commit": "54b830fa1af8e13c5cc09b44baf191f1f7be66d2",
+  "controller_pid": 1352887,
+  "controller_exit": 0,
+  "container_exit": 0,
+  "backing_unchanged": true,
+  "summary": {
+    "kernel": "7.1.8-toddy",
+    "all_selected_exits_zero": true,
+    "report_sha256": "6532603e8188fbd48afbb2268db128c0219e5a8fbe3feb24a8d3520d04edfd24",
+    "chunks": 6
+  },
+  "probe_sha256": "4da0976cf53f6c9d203b74bffa4e90812cc3b8c2c5cd701b9d8e4171d60072ff",
+  "accepted_fixture": {
+    "fixture_sha256": "ac5c890e5cceaee2b196400e343ce4490e2a2b6fb32ad7b5f8324aa78506e492",
+    "versions": {
+      "gnome-shell": "50.4-1+toddy1",
+      "gtk": "4.22.4-1+toddy11",
+      "mutter": "50.4-1+toddy1",
+      "gdm": "50.2-1+toddy1",
+      "localsearch": "3.11.1-1+toddy1"
+    },
+    "source_compiler_stage_unchanged": true,
+    "builder_boot_id": "71632310-0bdd-4d1e-9deb-921d95eddc97",
+    "selected_programs": 12
+  },
+  "native_report": {
+    "all_selected_exits_zero": true,
+    "gdm_stop": {
+      "args": [
+        "systemctl",
+        "stop",
+        "gdm.service"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    "host_requested_tests": true,
+    "input_transport": {
+      "archive_sha256": "61c977e1d2c6d58d0817e47ab92f5c592b0e8989d693a4c820bdba9198d8f6d7",
+      "exact_source_compile_stage_restored": true,
+      "readonly_device": true,
+      "source_work_bindings_readonly": true,
+      "state": "complete",
+      "verified_entries": 1904
+    },
+    "kernel": "7.1.8-toddy",
+    "original_tests": {
+      "all_selected_passed": true,
+      "expected_programs": 12,
+      "new_passed_GLib_cases": 9,
+      "not_selected": [
+        "test-directory",
+        "test-file-operations-archive",
+        "test-file-operations-link",
+        "test-file-operations-move-files",
+        "test-file-utilities",
+        "test-filename-common-prefix",
+        "test-nautilus-search-engine",
+        "test-nautilus-search-engine-model",
+        "test-ui-utilities",
+        "test-thumbnails",
+        "test-sidebar",
+        "test-portal-file-chooser"
+      ],
+      "positive_control": {
+        "exit": 0,
+        "stderr": "",
+        "stdout": "{\"UID\": 12402, \"NoNewPrivs\": true, \"effective_permitted_caps_zero\": true, \"private_home_rw\": true, \"source_compile_writes_denied\": true}\n"
+      },
+      "programs_executed": 1,
+      "programs_reused": 11,
+      "programs_total": 12,
+      "qualified_prefix": {
+        "all_original_inputs_unchanged": true,
+        "earlier_source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+        "input_fixture_sha256": "ac5c890e5cceaee2b196400e343ce4490e2a2b6fb32ad7b5f8324aa78506e492",
+        "remaining_failure": {
+          "command": [
+            "/usr/bin/localsearch",
+            "test-sandbox",
+            "--store-tmpdir",
+            "--index-recursive-tmpdir",
+            "test/automated/display/test-files-view"
+          ],
+          "elapsed_seconds": 0.108,
+          "exit": 1,
+          "name": "test-files-view",
+          "observed_cases": 0,
+          "passed": false,
+          "passed_cases": 0,
+          "planned_cases": 0,
+          "skipped_cases": 0,
+          "stderr": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 203, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/usr/lib/localsearch-3.0/trackertestutils/__main__.py\", line 449, in <module>\n    main()\n    ~~~~^^\n  File \"/usr/lib/localsearch-3.0/trackertestutils/__main__.py\", line 381, in main\n    index_recursive_tmpdir = tempfile.mkdtemp(prefix='tracker-indexed-tmpdir', dir=os.getcwd())\n  File \"/usr/lib/python3.14/tempfile.py\", line 435, in mkdtemp\n    _os.mkdir(file, 0o700)\n    ~~~~~~~~~^^^^^^^^^^^^^\nOSError: [Errno 30] Read-only file system: '/build/compile/tracker-indexed-tmpdir98p3ixrk'\n",
+          "stdout": "",
+          "timed_out": false
+        },
+        "reused_GLib_cases": 64,
+        "reused_programs": 11,
+        "reused_runs": [
+          {
+            "command": [
+              "/usr/bin/appstreamcli",
+              "validate",
+              "--no-net",
+              "/build/compile/data/org.gnome.Nautilus.metainfo.xml"
+            ],
+            "elapsed_seconds": 0.006,
+            "exit": 0,
+            "metadata_validation_only": true,
+            "name": "validate-appdata",
+            "passed": true,
+            "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_sha256": "7099b095bdeec92dfe1965d682e954454d442990f548d790149f268eb8abe95d",
+            "timed_out": false
+          },
+          {
+            "command": [
+              "/build/compile/test/automated/displayless/test-bookmarks"
+            ],
+            "elapsed_seconds": 0.02,
+            "exit": 0,
+            "name": "test-bookmarks",
+            "observed_cases": 2,
+            "passed": true,
+            "passed_cases": 2,
+            "planned_cases": 2,
+            "skipped_cases": 0,
+            "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_sha256": "8a3c82bf8da0fc1be7b3c19fca2f0b065cd6cfa68863a5901fff18046a2015c9",
+            "timed_out": false
+          },
+          {
+            "command": [
+              "/build/compile/test/automated/displayless/test-file"
+            ],
+            "elapsed_seconds": 0.028,
+            "exit": 0,
+            "name": "test-file",
+            "observed_cases": 14,
+            "passed": true,
+            "passed_cases": 14,
+            "planned_cases": 14,
+            "skipped_cases": 0,
+            "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_sha256": "e3c850a2b6a140391d632ef42f3c214f17dfdb0659c7ade3c5bfeec621372190",
+            "timed_out": false
+          },
+          {
+            "command": [
+              "/build/compile/test/automated/displayless/test-file-metadata"
+            ],
+            "elapsed_seconds": 0.009,
+            "exit": 0,
+            "name": "test-file-metadata",
+            "observed_cases": 3,
+            "passed": true,
+            "passed_cases": 3,
+            "planned_cases": 3,
+            "skipped_cases": 0,
+            "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_sha256": "4a4ddf027c7da6eab6cdaf43333aeb5b4c658441ee9bdf2459f5a40899d04a33",
+            "timed_out": false
+          },
+          {
+            "command": [
+              "/build/compile/test/automated/displayless/test-file-operations-copy-files"
+            ],
+            "elapsed_seconds": 1.355,
+            "exit": 0,
+            "name": "test-file-operations-copy-files",
+            "observed_cases": 15,
+            "passed": true,
+            "passed_cases": 15,
+            "planned_cases": 15,
+            "skipped_cases": 0,
+            "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_sha256": "2ab99060808a7a3d101a052f9982846e98e775a35bc1655975bc76b97982068a",
+            "timed_out": false
+          },
+          {
+            "command": [
+              "/build/compile/test/automated/displayless/test-file-operations-rename"
+            ],
+            "elapsed_seconds": 0.011,
+            "exit": 0,
+            "name": "test-file-operations-rename",
+            "observed_cases": 3,
+            "passed": true,
+            "passed_cases": 3,
+            "planned_cases": 3,
+            "skipped_cases": 0,
+            "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_sha256": "25f22eb9992192d95a7bdf74c24d031ea30704ad956ed1b92d77c61123deb627",
+            "timed_out": false
+          },
+          {
+            "command": [
+              "/build/compile/test/automated/displayless/test-file-operations-trash-or-delete"
+            ],
+            "elapsed_seconds": 0.024,
+            "exit": 0,
+            "name": "test-file-operations-trash-or-delete",
+            "observed_cases": 14,
+            "passed": true,
+            "passed_cases": 14,
+            "planned_cases": 14,
+            "skipped_cases": 0,
+            "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_sha256": "7c4d35c1f4c43b342b6b35c473f7f72e5485f9a7a0ed3d0f47fe38e186b64dea",
+            "timed_out": false
+          },
+          {
+            "command": [
+              "/build/compile/test/automated/displayless/test-filename-utilities"
+            ],
+            "elapsed_seconds": 0.002,
+            "exit": 0,
+            "name": "test-filename-utilities",
+            "observed_cases": 8,
+            "passed": true,
+            "passed_cases": 8,
+            "planned_cases": 8,
+            "skipped_cases": 0,
+            "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_sha256": "bdbcc1f94866cf5c79b5de5daddcc094c40416b8862371f4c68d5ec7d72b2d42",
+            "timed_out": false
+          },
+          {
+            "command": [
+              "/build/compile/test/automated/displayless/test-nautilus-search-engine-simple"
+            ],
+            "elapsed_seconds": 0.511,
+            "exit": 0,
+            "name": "test-nautilus-search-engine-simple",
+            "passed": true,
+            "search_finished_callback_observed": true,
+            "search_hits": [
+              "file:///tmp/nautilus.0YOSY3/engine_simple",
+              "file:///tmp/nautilus.0YOSY3/engine_simple_directory",
+              "file:///tmp/nautilus.0YOSY3/engine_simple_second_directory"
+            ],
+            "source_asserted_total_hits": 3,
+            "source_backed_non_TAP_driver": true,
+            "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_sha256": "6b61dfb589556cb46b59e84e78ee354a38bd65fb256f43adb84ac850b9339a20",
+            "timed_out": false
+          },
+          {
+            "async_completion_observed": true,
+            "command": [
+              "/build/compile/test/automated/display/test-nautilus-directory-async"
+            ],
+            "elapsed_seconds": 0.017,
+            "exit": 0,
+            "name": "test-nautilus-directory-async",
+            "passed": true,
+            "source_backed_non_TAP_driver": true,
+            "source_report_sha256": "a2b24e0ddaca8976a299041f7b61c2c163b27ef9b6406d8a539d8441b9e8d566",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_sha256": "c7c840b6c465bcaa21b904e00f3510747c47c4b9f9c34d960205eb47a1643425",
+            "timed_out": false
+          },
+          {
+            "command": [
+              "/build/compile/test/automated/display/test-file-operations-create"
+            ],
+            "elapsed_seconds": 0.03,
+            "exit": 0,
+            "name": "test-file-operations-create",
+            "observed_cases": 5,
+            "passed": true,
+            "passed_cases": 5,
+            "planned_cases": 5,
+            "skipped_cases": 0,
+            "source_report_sha256": "a2b24e0ddaca8976a299041f7b61c2c163b27ef9b6406d8a539d8441b9e8d566",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "stdout_sha256": "45be9c38f37286228c43464293d4305bd590bbdfecb1a3eb201ef16a6a40f91d",
+            "timed_out": false
+          }
+        ],
+        "scope": "Existing successful native prefix only; final Files-view wrapper failed before test execution. No successful original program replay, no complete Nautilus gate claim.",
+        "source_report_sha256": "a2b24e0ddaca8976a299041f7b61c2c163b27ef9b6406d8a539d8441b9e8d566",
+        "state": "qualified"
+      },
+      "readonly_inputs_unchanged": true,
+      "reused_passed_GLib_cases": 64,
+      "runs": [
+        {
+          "command": [
+            "/usr/bin/localsearch",
+            "test-sandbox",
+            "--store-tmpdir",
+            "--index-recursive-tmpdir",
+            "test/automated/display/test-files-view"
+          ],
+          "elapsed_seconds": 0.722,
+          "exit": 0,
+          "name": "test-files-view",
+          "observed_cases": 9,
+          "passed": true,
+          "passed_cases": 9,
+          "planned_cases": 9,
+          "readonly_compiled_test_alias": true,
+          "skipped_cases": 0,
+          "stderr": "",
+          "stdout": "TAP version 14\n# random seed: R02Scf9a7a91a6f08d7864fb53f7d8971b39\n# GLib-GIO-DEBUG: _g_io_module_get_default: Found default implementation memory (GMemorySettingsBackend) for \u2018gsettings-backend\u2019\n# GLib-GIO-DEBUG: _g_io_module_get_default: Found default implementation local (GLocalVfs) for \u2018gio-vfs\u2019\n# DEBUG: Initialized config folder /tmp/tracker-sandbox-storeys2adxpq/config/\n# MESSAGE: Connecting to org.freedesktop.Tracker3.Miner.Files\n1..9\n# Start of view tests\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640b11500\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640b11500\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640b55130\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640b55130\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640b55130\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640b55130\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640b55130\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640b11500\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640b55130\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640b55130\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640b55130\n# nautilus-view-DEBUG: Unable to open '/tmp/tracker-sandbox-storeys2adxpq/config/nautilus/scripts-accels', error message: Failed to open file \u201c/tmp/tracker-sandbox-storeys2adxpq/config/nautilus/scripts-accels\u201d: No such file or directory\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.PHNYY3\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640b52430\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640b52430\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.PHNYY3\n# nautilus-async-jobs-DEBUG: starting directory count in 0x563640b52430\n# nautilus-async-jobs-DEBUG: load_directory called to get shallow file count for file:///tmp/nautilus.PHNYY3/view_test_dir\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640b52430\nok 1 /view/load_dir\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640b433e0\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640b433e0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a92330\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640a92330\n# nautilus-async-jobs-DEBUG: stopping directory count in 0x563640b52430\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640a92330\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a92330\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640a92330\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640b433e0\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640a92330\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640a92330\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640a92330\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.TWGYY3\n# nautilus-async-jobs-DEBUG: starting file list in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x5636409ad840\n# nautilus-async-jobs-DEBUG: stopping file list in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: starting file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: stopping file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: starting file info in 0x5636409ad840\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.TWGYY3\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.TWGYY3\n# nautilus-async-jobs-DEBUG: stopping file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: starting file info in 0x5636409ad840\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.TWGYY3\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.TWGYY3\n# nautilus-async-jobs-DEBUG: stopping file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: starting file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: stopping file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: starting file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: stopping file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: starting file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: stopping file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: starting file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: stopping file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: starting file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: stopping file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: starting file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: stopping file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: starting file info in 0x5636409ad840\n# nautilus-async-jobs-DEBUG: stopping file info in 0x5636409ad840\nok 2 /view/add_files\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640b62210\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640b62210\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640b55690\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640b55690\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640b55690\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640b55690\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640b55690\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640b62210\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640b55690\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640b55690\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640b55690\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640b556c0\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.89WJY3\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640b556c0\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640b556c0\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.89WJY3\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640b556c0\nok 3 /view/remove_files\n# Start of change_files tests\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640afda50\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640afda50\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade470\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640ade470\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640ade470\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640afda50\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade470\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640ade470\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640ade470\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640ade470\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640ade470\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640ade4a0\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.OSNHY3\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640ade4a0\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.OSNHY3\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640ade4a0\n# nautilus-tag-manager-MESSAGE: No Localsearch connection\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade4a0\n# nautilus-undo-DEBUG: Setting undo information 0x563640afec50\n# nautilus-undo-DEBUG: Setting undo information 0x563640aef750\n# nautilus-undo-DEBUG: Setting undo information 0x563640aefcc0\n# nautilus-undo-DEBUG: Setting undo information 0x563640aef9c0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ade4a0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ade4a0\n# nautilus-undo-DEBUG: Setting undo information 0x563640b5f380\nok 4 /view/change_files/rename\n# Bug Reference: https://gitlab.gnome.org/GNOME/nautilus/-/issues/3959\n# nautilus-async-jobs-DEBUG: starting file list in 0x5636409afd00\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x5636409afd00\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a95780\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640a95780\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640a95780\n# nautilus-async-jobs-DEBUG: stopping file list in 0x5636409afd00\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a95780\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640a95780\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640a95780\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640a95780\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640a95780\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640a957e0\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.2WOQY3\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640a957e0\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.2WOQY3\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640a957e0\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.2WOQY3\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a957e0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a957e0\nok 5 /view/change_files/replace\n# End of change_files tests\n# Start of hidden_files tests\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640afa2e0\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640afa2e0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640adcca0\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640adcca0\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640adcca0\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640afa2e0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640adcca0\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640adcca0\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640adcca0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640adcca0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640adcca0\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.A4COY3\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640a98f00\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640a98f00\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.A4COY3\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640a98f00\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.A4COY3\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640a98f00\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640a98f00\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.A4COY3\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640a98f00\nok 6 /view/hidden_files/change\n# nautilus-async-jobs-DEBUG: starting file list in 0x5636409fd090\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x5636409fd090\n# nautilus-async-jobs-DEBUG: starting file info in 0x5636409c6a10\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x5636409c6a10\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x5636409c6a10\n# nautilus-async-jobs-DEBUG: stopping file info in 0x5636409c6a10\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x5636409c6a10\n# nautilus-async-jobs-DEBUG: stopping file list in 0x5636409fd090\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x5636409c6a10\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x5636409c6a10\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x5636409c6a10\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.EQ8NY3\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640a916c0\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640a916c0\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.EQ8NY3\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640a916c0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a916c0\n# nautilus-undo-DEBUG: Setting undo information 0x7f54ac00edd0\n# nautilus-undo-DEBUG: Setting undo information 0x563640b128f0\n# nautilus-undo-DEBUG: Setting undo information 0x563640a91830\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a916c0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640a916c0\n# nautilus-undo-DEBUG: Setting undo information 0x563640b12660\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640a916c0\nok 7 /view/hidden_files/rename_files\n# End of hidden_files tests\n# Start of selection tests\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640aaa1d0\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640aaa1d0\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640adca30\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640adca30\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640adca30\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640adca30\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640adca30\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640aaa1d0\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640adca30\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640adca30\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640adca30\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.AX1WY3\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640aefcb0\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640aefcb0\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.AX1WY3\n# nautilus-async-jobs-DEBUG: starting directory count in 0x563640aefcb0\n# nautilus-async-jobs-DEBUG: load_directory called to get shallow file count for file:///tmp/nautilus.AX1WY3/select_test_dir\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640aefcb0\n# nautilus-view-DEBUG: Selection changed in window (nil)\n# nautilus-view-DEBUG: Selection changed in window (nil)\n# nautilus-view-DEBUG: Selection changed in window (nil)\n# nautilus-view-DEBUG: Selection changed in window (nil)\n# nautilus-view-DEBUG: Selection changed in window (nil)\nok 8 /view/selection/actions\n# End of selection tests\n# Start of actions tests\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640a92630\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640a92630\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640ae0ba0\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640ae0ba0\n# nautilus-async-jobs-DEBUG: stopping directory count in 0x563640aefcb0\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640ae0ba0\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640ae0ba0\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640ae0ba0\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640a92630\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640ae0ba0\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640ae0ba0\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640ae0ba0\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.FW5WY3\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640b79910\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640b79910\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.FW5WY3\n# nautilus-async-jobs-DEBUG: starting directory count in 0x563640b79910\n# nautilus-async-jobs-DEBUG: load_directory called to get shallow file count for file:///tmp/nautilus.FW5WY3/zoom_test_dir\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640b79910\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640af1130\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640af1130\n# nautilus-async-jobs-DEBUG: starting file info in 0x563640af0e00\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640af0e00\n# nautilus-async-jobs-DEBUG: stopping directory count in 0x563640b79910\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640af0e00\n# nautilus-async-jobs-DEBUG: stopping file info in 0x563640af0e00\n# nautilus-async-jobs-DEBUG: starting thumbnail info in 0x563640af0e00\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640af1130\n# nautilus-async-jobs-DEBUG: stopping thumbnail info in 0x563640af0e00\n# nautilus-async-jobs-DEBUG: starting filesystem info in 0x563640af0e00\n# nautilus-async-jobs-DEBUG: stopping filesystem info in 0x563640af0e00\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.SE0WY3\n# nautilus-async-jobs-DEBUG: starting file list in 0x563640979d50\n# nautilus-async-jobs-DEBUG: load_directory called to monitor file list of 0x563640979d50\n# nautilus-view-DEBUG: Files added in window (nil): file:///tmp/nautilus.SE0WY3\n# nautilus-async-jobs-DEBUG: starting directory count in 0x563640979d50\n# nautilus-async-jobs-DEBUG: load_directory called to get shallow file count for file:///tmp/nautilus.SE0WY3/zoom_test_dir\n# nautilus-async-jobs-DEBUG: stopping file list in 0x563640979d50\nok 9 /view/actions/zoom\n# End of actions tests\n# End of view tests\n",
+          "timed_out": false,
+          "working_directory": "/var/tmp/toddy-nautilus-native-_e7euww1/case-11"
+        }
+      ],
+      "skipped_cases": 0
+    },
+    "owner_session": {
+      "properties": {
+        "Class": "user",
+        "Name": "toddy-preview",
+        "Seat": "seat0",
+        "State": "active",
+        "Type": "wayland"
+      },
+      "session_id": "2"
+    },
+    "pid1": "systemd",
+    "runs": [
+      {
+        "args": [
+          "systemctl",
+          "start",
+          "dbus.service",
+          "systemd-logind.service",
+          "systemd-userdbd.service"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      {
+        "args": [
+          "udevadm",
+          "settle",
+          "--timeout=20"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": ""
+      },
+      {
+        "args": [
+          "systemctl",
+          "start",
+          "gdm.service"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": ""
+      }
+    ],
+    "schema_unchanged": true,
+    "scope": "Native Nautilus original focused test programs on a normal GDM/PAM authenticated Wayland user seat, exact readonly source/compiler/stage restored from readonly data device. Not an installed Nautilus application/GUI, full-suite, physical or B02 pass."
+  },
+  "qualified_total_GLib_cases": 73,
+  "earlier_raw_reports_retained": [
+    "native-nautilus-runtime-1",
+    "native-nautilus-runtime-2"
+  ],
+  "source_and_compiler_replayed": false,
+  "original_successful_programs_replayed": false,
+  "recovery": "Builder stopped. Recover existing6volumes/Systemd source/Glycin/kernel COW and current custody generation2 under fresh receipts, never generation1 or compiler/test/installation replay. Then native package promotion and actual installed Files UI."
+}
