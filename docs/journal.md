@@ -3792,3 +3792,18 @@ forward or privilege expansion. Preflight-only0 verified4,343installed files and
 unchanged RAM/browser caches. Controller not dispatched, no native network/UI
 acceptance. make check377passed.
 [Recovery/preflight evidence](evidence/B02-browser-mount-recovery.json).
+
+
+### B02 native network prefix and remaining-only recovery — 2026-11-11
+
+Real normal-owner GNOME Network Settings connected/OFF/ON transitions, actual
+DHCP/routes/DNS/HTTPS200 and active Settings process polkit checks passed. Seven
+native screenshots and exact raw-report digest retained in B02-network-native-prefix.
+Original aggregate remains failed: networkd journal acquired DHCP, while the
+wrapper incorrectly expected a private lease file. No package/UI-write replay.
+Authenticated Systemd261.2 networkctl-dhcp-lease source supplies the public JSON
+API for a remaining-only recovery probe. It reboots a new overlay of the retained
+disposable overlay, verifies retained selection before writes and continues only
+stop-networkd/restore-marker/start-NM. Native correction not yet run. Both source
+images must remain unchanged. Preparation make check377passed; cold builder/cache
+recovery uses new receipts afterward. B02 and physical validation remain incomplete.

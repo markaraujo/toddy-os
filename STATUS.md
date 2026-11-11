@@ -1,10 +1,10 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-11T03:13:48.245693+00:00
+Updated: 2026-11-11T09:07:54.403329+00:00
 
 Bootstrap: ready_for_development
 
-B01/B03 accepted (13% weighted Phase2). B02 native GNOME owner login and scoped Files/Editor flows verified; desktop network configuration installed. Corrected browser, native network/audio, integrated recovery/offline/resource gates remain pending. B04 runtime integration blocked; B05-B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.
+B01/B03 accepted (13% weighted Phase2). B02 native GNOME owner login and scoped Files/Editor verified; real Network Settings off/on, DHCP/DNS/HTTPS and active-client polkit passed. Original network aggregate failed on private lease-file assumption; remaining-only recovery prepared. Corrected browser/audio/integrated offline/recovery/resources pending. Stop after fully validated B02; no Phase2 ISO or physical acceptance.
 
 Foundation: **100%** · Agentic desktop: **13%**
 

@@ -11,7 +11,8 @@ import phase2_gdm_owner_control
 import vm
 
 ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
-CONTEXT=ROOT/'.local/phase2/native-network-runtime-1'
+REMAINING=sys.argv[1:]==['--remaining-recovery']
+CONTEXT=ROOT/'.local/phase2'/('native-network-recovery-runtime-1' if REMAINING else 'native-network-runtime-1')
 STOP=threading.Event()
 
 
@@ -19,7 +20,7 @@ def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 
 
 def main():
-    assert len(sys.argv)==1
+    assert len(sys.argv)==1 or REMAINING
     assert not CONTEXT.exists(),'Inspect actual native job/image/report; never replay'
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip(),'Commit reviewed native inputs first'
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
@@ -54,9 +55,27 @@ assert json.loads(Path('/var/log/toddy/phase2/browser-private-restore-qualified-
 r=json.loads(Path('/var/log/toddy/build/b02-desktop-network-install.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0
 print(json.dumps({'versions':versions,'verified_native_files':files,'browser_recovery':inspected,'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'native_kernel_expected':'7.1.8-toddy'}))
 '''
-    checked=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
-    accepted=json.loads(checked.stdout)
-    probe=(ROOT/'scripts/host/phase2-native-network-probe.py').read_bytes()
+    previous=ROOT/'.local/phase2/native-network-runtime-1'
+    if REMAINING:
+        prior=json.loads((previous/'result.json').read_text())
+        raw=json.loads((previous/'native-report.json').read_text())
+        assert prior['phase']=='native-report-recorded' and prior['backing_unchanged'] and not prior['native_selected_passed']
+        report_sha=hashlib.sha256(json.dumps(raw,sort_keys=True).encode()).hexdigest()
+        assert report_sha==prior['summary']['report_sha256']
+        assert all(raw['transitions'].values()) and raw['owner_session'] and raw['host_requested_finish']
+        assert raw['public_https']['exit']==0 and raw['public_https']['stdout']=='200'
+        assert all(r['exit']==0 for r in raw['actual_client_policy'])
+        assert raw['gdm_stop']['exit']==0 and raw['schema_unchanged'] and 'actual_networkd_lease' not in raw
+        old=json.loads(subprocess.check_output(['docker','inspect',prior['container_id']],text=True))[0]
+        assert not old['State']['Running'] and old['State']['ExitCode']==0 and old['Config']['Labels']['toddy.boot-test']==prior['run_id']
+        assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==prior['source_identity']
+        accepted=prior['accepted']
+        prefix={'report_sha256':report_sha,'scope':'Unchanged source-base normal owner/UI/on-off-reconnect/DNS/HTTPS/polkit proof retained, original aggregate failure preserved'}
+        probe=(ROOT/'scripts/host/phase2-native-network-recovery-probe.py').read_bytes().replace(b'REUSED_NETWORK_PREFIX = None',('REUSED_NETWORK_PREFIX = '+repr(prefix)).encode())
+    else:
+        checked=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
+        accepted=json.loads(checked.stdout)
+        probe=(ROOT/'scripts/host/phase2-native-network-probe.py').read_bytes()
     CONTEXT.mkdir(mode=0o700)
     state={'scope':'Native owner GNOME Network UI/DHCP/DNS/HTTPS/polkit and scoped manager recovery; no physical/whole B02 acceptance',
            'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
@@ -69,20 +88,24 @@ print(json.dumps({'versions':versions,'verified_native_files':files,'browser_rec
         part.write_text(json.dumps(state,indent=2)+'\n');part.replace(CONTEXT/'result.json')
         print(json.dumps({'phase':state['phase'],'context':str(CONTEXT)}),flush=True)
     save()
-    with (CONTEXT/'builder-stop.log').open('x') as log:
-        state['phase']='stopping-builder';save()
-        run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
+    if not REMAINING:
+        with (CONTEXT/'builder-stop.log').open('x') as log:
+            state['phase']='stopping-builder';save()
+            run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
     assert not subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()
     state['phase']='builder-stopped';save()
-    source=WORK/'lfs-target.qcow2';assert source.is_file() and not source.is_symlink()
+    source=(previous/'target.qcow2') if REMAINING else WORK/'lfs-target.qcow2'
+    assert source.is_file() and not source.is_symlink()
     identity=phase2_vm.backing_identity(source);state['source_identity']=identity
     image=subprocess.check_output(['docker','image','inspect','--format','{{.Id}}',vm.IMAGE],text=True).strip()
     run_id=uuid.uuid4().hex
     common=['--user',f'{os.getuid()}:{os.getgid()}','--cap-drop=ALL','--security-opt=no-new-privileges','--network=none','--read-only',
             '-v',f'{vm.VM}:/vm:ro','-v',f'{CONTEXT}:/work']
+    if REMAINING:common+=['-v',f'{previous}:/previous:ro']
+    backing='/previous/target.qcow2' if REMAINING else '/vm/phase2/lfs-target.qcow2'
     with (CONTEXT/'prepare.log').open('x') as log:
-        run(['docker','run','--rm',*common,image,'qemu-img','check','/vm/phase2/lfs-target.qcow2'],stdout=log,stderr=subprocess.STDOUT)
-        run(['docker','run','--rm',*common,image,'qemu-img','create','-f','qcow2','-F','qcow2','-b','/vm/phase2/lfs-target.qcow2','/work/target.qcow2'],stdout=log,stderr=subprocess.STDOUT)
+        run(['docker','run','--rm',*common,image,'qemu-img','check',backing],stdout=log,stderr=subprocess.STDOUT)
+        run(['docker','run','--rm',*common,image,'qemu-img','create','-f','qcow2','-F','qcow2','-b',backing,'/work/target.qcow2'],stdout=log,stderr=subprocess.STDOUT)
     unit=(ROOT/'scripts/host/boot-probe.service').read_bytes().replace(b'TimeoutStartSec=180',b'TimeoutStartSec=900')
     payloads={'systemd.extra-unit.toddy-boot-probe.service':unit,
               'systemd.unit-dropin.multi-user.target':(ROOT/'scripts/host/boot-probe.target.conf').read_bytes(),
@@ -102,16 +125,20 @@ print(json.dumps({'versions':versions,'verified_native_files':files,'browser_rec
     cid=subprocess.check_output(command,text=True).strip()
     state.update(phase='native-running',container_id=cid,container_name=name,run_id=run_id,command=command);save()
     with (CONTEXT/'qemu.log').open('x') as log:run(['docker','start',cid],stdout=log,stderr=subprocess.STDOUT)
-    capture=threading.Thread(target=phase2_gdm_owner_control.run,args=(CONTEXT,STOP),daemon=True);capture.start()
+    capture=None
+    if not REMAINING:
+        capture=threading.Thread(target=phase2_gdm_owner_control.run,args=(CONTEXT,STOP),daemon=True);capture.start()
     try:
         waited=subprocess.run(['docker','wait',cid],capture_output=True,text=True,timeout=1080)
         (CONTEXT/'docker-wait.json').write_text(json.dumps({'exit':waited.returncode,'stdout':waited.stdout,'stderr':waited.stderr},indent=2)+'\n')
         waited.check_returncode();assert waited.stdout.strip()=='0','Actual QEMU exit nonzero'
     finally:
-        STOP.set();capture.join(timeout=20)
+        STOP.set()
+        if capture:capture.join(timeout=20)
         state['container_final_state']=boot.stop_owned_container(cid,run_id)
         state['phase']='native-stopped';save()
     assert phase2_vm.backing_identity(source)==identity,'Backing changed; preserve overlay and stop'
+    if REMAINING:assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==prior['source_identity']
     evidence=(CONTEXT/'native-evidence.log').read_text(errors='strict')
     report,summary,recovered=decode(evidence)
     state['dedicated_evidence_sha256']=hashlib.sha256(evidence.encode()).hexdigest()

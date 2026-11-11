@@ -1,0 +1,190 @@
+{
+  "scope": "Qualified native network GUI/normal owner/connection/packet/policy prefix only; original aggregate recovery failure retained",
+  "native_report_sha256": "9aed09ef52d96c6f36f0d6be2057ae99c4f041203a0ee5f4cda7ea7f5ffc0070",
+  "original_aggregate_passed": false,
+  "backing_unchanged": true,
+  "container_exit": 0,
+  "kernel": "7.1.8-toddy",
+  "owner_session": {
+    "properties": {
+      "Class": "user",
+      "Name": "toddy-preview",
+      "Seat": "seat0",
+      "State": "active",
+      "Type": "wayland"
+    },
+    "session_id": "2"
+  },
+  "transitions": {
+    "connected": true,
+    "off_after_connected": true,
+    "reconnected": true
+  },
+  "active_settings_client": {
+    "pid": 2538,
+    "start_ticks": "10520",
+    "uid": 12402
+  },
+  "actual_client_policy": [
+    {
+      "args": [
+        "pkcheck",
+        "--action-id",
+        "org.freedesktop.NetworkManager.network-control",
+        "--process",
+        "2538,10520,12402"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "args": [
+        "pkcheck",
+        "--action-id",
+        "org.freedesktop.NetworkManager.enable-disable-network",
+        "--process",
+        "2538,10520,12402"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "nm_connectivity": {
+    "address": {
+      "args": [
+        "ip",
+        "-j",
+        "address",
+        "show",
+        "dev",
+        "enp0s4"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "[{\"ifindex\":2,\"ifname\":\"enp0s4\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"pfifo_fast\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"52:54:00:12:34:56\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"altnames\":[\"enx525400123456\"],\"addr_info\":[{\"family\":\"inet\",\"local\":\"10.0.2.15\",\"prefixlen\":24,\"broadcast\":\"10.0.2.255\",\"scope\":\"global\",\"dynamic\":true,\"noprefixroute\":true,\"label\":\"enp0s4\",\"valid_life_time\":86203,\"preferred_life_time\":86203},{\"family\":\"inet6\",\"local\":\"fec0::953d:4a7f:4856:1b16\",\"prefixlen\":64,\"scope\":\"site\",\"dynamic\":true,\"noprefixroute\":true,\"valid_life_time\":86388,\"preferred_life_time\":14388},{\"family\":\"inet6\",\"local\":\"fe80::55f2:dd1d:14f7:f84c\",\"prefixlen\":64,\"scope\":\"link\",\"noprefixroute\":true,\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+    },
+    "default_routes": {
+      "args": [
+        "ip",
+        "-j",
+        "route",
+        "show",
+        "default"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "[{\"dst\":\"default\",\"gateway\":\"10.0.2.2\",\"dev\":\"enp0s4\",\"protocol\":\"dhcp\",\"prefsrc\":\"10.0.2.15\",\"metric\":100,\"flags\":[]}]\n"
+    },
+    "dhcp": {
+      "args": [
+        "nmcli",
+        "-g",
+        "DHCP4.OPTION",
+        "device",
+        "show",
+        "enp0s4"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "dhcp_client_identifier = 01\\:52\\:54\\:00\\:12\\:34\\:56 | dhcp_lease_time = 86400 | dhcp_server_identifier = 10.0.2.2 | domain_name_servers = 10.0.2.3 | expiry = 1794473065 | ip_address = 10.0.2.15 | next_server = 10.0.2.2 | requested_broadcast_address = 1 | requested_domain_name = 1 | requested_domain_name_servers = 1 | requested_domain_search = 1 | requested_host_name = 1 | requested_interface_mtu = 1 | requested_ms_classless_static_routes = 1 | requested_nis_domain = 1 | requested_nis_servers = 1 | requested_ntp_servers = 1 | requested_rfc3442_classless_static_routes = 1 | requested_root_path = 1 | requested_routers = 1 | requested_static_routes = 1 | requested_subnet_mask = 1 | requested_time_offset = 1 | requested_wpad = 1 | routers = 10.0.2.2 | subnet_mask = 255.255.255.0\n"
+    },
+    "dns": {
+      "args": [
+        "nmcli",
+        "-g",
+        "IP4.DNS",
+        "device",
+        "show",
+        "enp0s4"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "10.0.2.3\n"
+    },
+    "resolved_public_name": {
+      "args": [
+        "getent",
+        "ahostsv4",
+        "example.com"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "172.66.147.243  STREAM example.com\n172.66.147.243  DGRAM  \n172.66.147.243  RAW    \n104.20.23.154   STREAM \n104.20.23.154   DGRAM  \n104.20.23.154   RAW    \n"
+    }
+  },
+  "public_https": {
+    "args": [
+      "curl",
+      "--fail",
+      "--silent",
+      "--show-error",
+      "--proto",
+      "=https",
+      "--connect-timeout",
+      "10",
+      "--max-time",
+      "20",
+      "--output",
+      "/dev/null",
+      "--write-out",
+      "%{http_code}",
+      "https://example.com/"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "200"
+  },
+  "schema_unchanged": true,
+  "original_error": {
+    "message": "",
+    "type": "AssertionError"
+  },
+  "recovery_remaining": "Current Systemd261 does not provide the assumed private lease file; use actual public networkctl dhcp-lease JSON. Existing failed disposable overlay retained with networkd selected; inspect/continue that state, no GUI or prior successful manager writes replay.",
+  "images": [
+    {
+      "path": "docs/evidence/B02-network-native-connected.png",
+      "sha256": "3d0b227e218cc083a3f20df65dbda93cdedf868cb1d0585b61a071ebc072feab",
+      "source_ppm_sha256": "884e5bfcc51d469b6abef22faa591c6f55f66446a6290366078573fe98609fc4",
+      "pixels_identical_to_original": true
+    },
+    {
+      "path": "docs/evidence/B02-network-native-details.png",
+      "sha256": "90ce80ba82fea6178bb7b7bde7a2fc86a1c72175074188929f6336f5902d55d0",
+      "source_ppm_sha256": "7677507334e0f68de202a73f593830dcb3eaa2717a393aef8e15bf079157bdd3",
+      "pixels_identical_to_original": true
+    },
+    {
+      "path": "docs/evidence/B02-network-native-disabled.png",
+      "sha256": "58a9859025d7e482b7ad9c40e4d33a77fd1827c342b8eadf2d0f8f1f42ca064c",
+      "source_ppm_sha256": "8a77f68ffeed02fdcd320ccc97ea3ce3431a2bb8aa8262ae79c47a7141414855",
+      "pixels_identical_to_original": true
+    },
+    {
+      "path": "docs/evidence/B02-network-native-reconnected.png",
+      "sha256": "0a14eaf6292407e81ec9b0b895792cc61d1859994f2cf7affc31caa790663bee",
+      "source_ppm_sha256": "841304ec0770fb00df23286941af04f4e3058e158d15542931c6dea9dc238366",
+      "pixels_identical_to_original": true
+    },
+    {
+      "path": "docs/evidence/B02-network-native-narrow-focus.png",
+      "sha256": "00a92133b01c7fce0b67820fa4c961453d30dc37ee21cf8abe1e142fad7cde69",
+      "source_ppm_sha256": "bf37469f45299564435fd6592abb3b6c4b6b0a6dc56b94926464e3fd86e5276d",
+      "pixels_identical_to_original": true
+    },
+    {
+      "path": "docs/evidence/B02-network-native-narrow-parent-details.png",
+      "sha256": "674883709c0eb434f45eaf9c84a688f7bb4edf64d16d427ffcf455375f67beba",
+      "source_ppm_sha256": "d35d81a3991496e2919bb2a5cc383432f96ef784acc3f7934fc4a4c4deefcbe6",
+      "pixels_identical_to_original": true
+    },
+    {
+      "path": "docs/evidence/B02-network-native-maximized.png",
+      "sha256": "d45d99e78747ecdcbf7a962bfb38d32e1f494315af606ad736abafd80c76c2cc",
+      "source_ppm_sha256": "87faa56611ebf2e1f158b3705ee074d052296010163dfbeced44bcbbe62e3cfd",
+      "pixels_identical_to_original": true
+    }
+  ],
+  "visual_review": "Observed normal GDM/PAM login, Settings Network connected/details/disabled/reconnected, keyboard focus,640px main pane and maximized layout. Details modal retains754px minimum but all controls visible within1280x800 viewport; no full640px viewport claim. No physical/Wi-Fi/full B02/reboot persistence claim."
+}

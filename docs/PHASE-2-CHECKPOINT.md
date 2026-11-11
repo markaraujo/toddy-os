@@ -4,54 +4,40 @@ Owner boundary: **complete ALL B02, then stop before another story**. Full Phase
 Goal active/incomplete. B01/B03 accepted13%; B02 in_progress; B04 integration
 blocked, B05-B13/G2 pending. Physical foundation tests unperformed. No Phase2 ISO.
 
-## Current slice: prepare native network validation / preserve browser mounts
+## Current slice: native network remaining recovery
 
-Builder RUNNING boot474caba2-3085-4d07-bba0-e2548b5728d4. No guest writer or live
-cold-custody operation remains. Inspect actual state/locks before mutation.
-
-[Network policy install](evidence/B02-desktop-network-install.json) COMPLETE0:
-b02-desktop-network-install recipe/post0/0,20full-root changes/64.83s. Owned
-package toddy-desktop-network0.2.0-1+toddy1/all; exact payload/conffiles/UID101/NNP
-policy write refusal and target condition evaluation NM0/networkd1 passed. Original
-DHCP/resolver retained. No daemon started in chroot. Actual native PID1/GNOME/
-normal-user polkit/DHCP/routes/DNS/offline/reboot/recovery remain unqualified.
-Guest logs/receipts /var/log/toddy/build/b02-desktop-network-install.*;
-local.desktop-network-install-controller-1.log/.exit under.local/phase2.
-NEVER replay completed install. NetworkManager D-Bus VERSION is1.58.1;
-NM_DIST_VERSION=ToddyOS is only its CLI banner. Source inspection verified this.
+Original native network controller TERMINAL1 (aggregate test failed), context
+.local/phase2/native-network-runtime-1, input commit df30c6f. Container actually
+exited0/no OOM; backing unchanged. Builder stopped/removed. Never replay original
+GUI actions or package install. [Native prefix](evidence/B02-network-native-prefix.json)
+retains normal GDM/PAM/Wayland owner, real Settings connected/OFF/ON transitions,
+DHCP/routes/DNS/HTTPS200 and two active-client polkit passes, plus seven real PNGs.
+Original failure: recovery networkd actually acquired DHCP, but the probe expected
+an unavailable private lease file. Aggregate remains failed, B02 incomplete.
 
 ### Exact next action
 
-Existing-browser recovery helper scripts/build/phase2/restore_browser_work.py is
-prepared and actually qualified in a PRIVATE mount namespace: all6aliases/base
-unmounted privately, existing raw fs/aliases restored, same inodes/flags/ELF hashes,
-completed-replay refused. Global mounts afterward inspected unchanged. Baseline
-receipt /var/log/toddy/phase2/browser-mount-baseline-1.json; private fixture receipt
-browser-private-restore-qualified-1.json. [Recovery proof](evidence/B02-browser-mount-recovery.json).
-No real VM reboot yet. --record is COMPLETE, never repeat. Future cold restore
-uses a NEW receipt argument after same6volumes/Systemd/Glycin/kernel and generation4
-recovery; no format/resize/source/compiler replay.
+Commit reviewed remaining-only controller/probe and prefix evidence, then run once:
+`python3 scripts/host/phase2_native_network.py --remaining-recovery`
+with log .local/phase2/native-network-recovery-controller-1.log. New context
+.local/phase2/native-network-recovery-runtime-1 must not already exist. Controller
+verifies prior report, stopped container and unchanged base, layers a new writable
+overlay over the retained first overlay read-only, leaving both inputs unchanged.
+No login, package install or GUI state writes replayed. Probe verifies retained
+networkd selection before writes, public `networkctl --json=short dhcp-lease`
+(Systemd261.2 source), address/routes/DNS, then continues stop-networkd,
+restore-marker/start-NM/DHCP/DNS. Actual outcome pending; timeouts are failures.
+One writer, ordinary bridge/user NAT, original target guard and unchanged schemas.
+Focused preparation check: make check377passed. Failure ledger retains one prepared
+correction/no failed corrections; do not reset its budget on resumption.
 
-Prepared actual native controller scripts/host/phase2_native_network.py, probe
-phase2-native-network-probe.py, context.local/phase2/native-network-runtime-1.
-Preflight-only COMPLETE0:4,343installed package files verified, exact RAM cache and
-browser artifacts/mounts intact. Controller NOT DISPATCHED yet; builder still
-running/no writer. Commit reviewed inputs/make check377passed before dispatch.
-Exact next: run controller once, inspect real context/PID/phase, operate its private
-GDM control socket to log in normally/open Settings Network/capture and toggle
-wired OFF then ON, retain images and actual NM states, then request DONE only
-when connected/off/reconnected GUI observations complete. Probe additionally
-requires actual DHCP/routes/DNS/public HTTPS/active Settings PID polkit and
-stop-before-switch networkd/newlease recovery/back-to-NM. Normal bridge/user NAT,
-no host networking/TAP/inbound forward/security weakening. Native result pending.
-Never replay a dispatched context; inspect real operation/container/report first.
-
-Network policy uses marker /etc/toddy/network/use-networkmanager with inverse
-service conditions, NM daemon-only wants link, keyfile/resolved defaults. Recovery
-stops current manager BEFORE moving/restoring marker and starting the other.
-Do not enable wait-online, alter owner profiles or weaken stock service policy.
-Host condition fixtures passed3cases; full make check377passed. Native gate still
-requires actual service/user/UI/address/route/DNS/offline/persistence/recovery.
+On terminal inspect report/container and both backing identities. Only then restore
+builder once and existing6volumes/Systemd/Glycin/kernel/generation4/browser mounts
+with NEW receipts. Browser helper qualified private namespace only; actual cold
+restore still pending. [Proof](evidence/B02-browser-mount-recovery.json).
+No format/resize/source/compiler replay. Original network package install0/0
+remains complete; [installation](evidence/B02-desktop-network-install.json).
+NetworkManager D-Bus VERSION1.58.1; CLI ToddyOS banner intentional.
 
 ## Browser compiler, security and persistent build volume
 
