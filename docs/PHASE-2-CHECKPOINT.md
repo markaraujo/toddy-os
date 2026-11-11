@@ -81,50 +81,46 @@ firefox-security-build-1.log/.exit and firefox-security-build-controller-1.json;
 work firefox-security-1537-1/firefox-compile-1.log/result retained. No live writer.
 NEVER replay original controller or recreate its result/log names.
 
-Exact next action: qualified custody of ONLY obsolete expanded153.2 source to
-recover its inodes. First verify actual retained original archive at
-/mnt/lfs/sources/firefox-153.2.0esr.source.tar.xz against frozenSHAc443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c,
-then compare exact old tree with authenticated archive and qualify actual filtered
-restore in a bounded private tmpfs, preserving memory/reserve budgets. Record
-scope: source cache reproduction, not invented exact timestamp metadata or OS
-recovery. After proof retire only old expanded children under source/firefox-153.2.0,
-retain explicit marker/original root inode and readonly bind roles, restore readonly
-flags; all archives, old compiler/ELF evidence, new source/work and SDK/NASM/logs
-retained. No format/resize/global security change; one writer/build.lock. A partial
-retirement must be reconciled from actual receipt/mount/tree, never blindly replayed.
-Original source receipt509835non-dot/3514842428regular bytes; original archive
-must be measured independently. Script scripts/build/phase2/retire_firefox_baseline_source.py DISPATCHED once,
-input616fde8/tool session54502, actual guestpid6486/start246354/boote146fad4,
-producerSHAe568a7f12dda15de30f6ee5c4a2848fee9fb745f80457b64061eb3e3031cb6cc.
-Last observed verifying-old-source221184entries/208879regular files, actual live.
-NEVER dispatch again or run another guest writer while it remains active.
-It reuses generic archive verifier with explicit old counts, actual filtered6GiB
-noswap/noexec tmpfs restore then complete bytes/file modes/owners/path comparison.
-Only then source self-bind temporarilyRW, old children retired, marker/rootinode/
-read-only roles retained; full installed root before/after and new candidate/base
-mount inspections. Actual MemAvailable10.74GB supports3.515GBlogical+4GiBmargin;
-no extra compressed copy or host reserve consumption. Original archive807705672B
-exists as regular file. Existing builder context/receipt must be absent.
-Dispatched guest script above; do not repeat. Controller log
-.local/phase2/firefox-old-source-custody-controller-1.log, guest receipt
-/var/log/toddy/phase2/firefox-baseline-source-custody-1.json and context
-/var/lib/toddy/phase2-custody/firefox-baseline-source-1. Operation may exceed10min
-because500k source files are read/restored/compared; healthy progress is monitored.
-On interruption inspect exact state/process/mount/root/remaining children; never
-replay. Recovery uses retained authenticated archive into NEW directory and full
-verifier; directory timestamp/ACL/xattr identity explicitly unclaimed.
+Old source custody COMPLETE0 (controller54502 terminal0; input616fde8):
+[Recovery evidence](evidence/B02-firefox-baseline-source-custody.json). Original
+and actual temporary restore each468620regular files/3514842428bytes verified
+against retained authenticated archive; no timestamp/ACL/xattr identity claim.
+Only obsolete153.2expanded children retired, rootinode/readonly roles/explicit
+marker retained. Archive/old ELF+compiler logs/results/newsource/tools preserved.
+Installed root changed0. Released509834inodes, free509834 and10,005,327,872browser
+bytes. Context/receipt COMPLETE, NEVER replay or re-extract original source there.
+Source153.2 input alias now contains retired marker, not an available source tree.
+Root source/alias inspections afterward passed. No live guest writer.
 
-Prepared compiler supervision now checks inode2048reserve+1024margin as well as
-byte128MiB+64MiB before/through build. New script firefox-security-resume-build.sh PREPARED, not synced/dispatched.
-It requires unchanged exact config/mozconfig, prior terminal ENOSPC and intact
-original result/log, writes only new compile-2.log/result-2.json, checks inode/byte
-reserves and retains prior hashes. Native source file_generate.py93-152 inspection:
-exceptions return1, dependency generation only on success, normal make incremental
-recovery after diagnosed capacity correction; do not delete unknown partial outputs.
-Root controller must require custody COMPLETE/inode recovery before launch. Reuse
-unchanged configure; do not repeat installation or source extraction. Failure ledger inode cause0corrections,
-source/root-dot cause resolved via full existing-tree verification. Target installed
-capacity and browser stage/ABI/sandbox/native UI still pending. Full B02 incomplete.
+Exact next action: after reviewed commit run once
+`python3 .local/phase2/firefox-security-build-controller-2.py`.
+It requires completed custody, >400000free inodes/>8GiBfree, unchanged old failed
+controller/result/recipe/log and exact successful configure. Fresh root receipt
+/var/log/toddy/phase2/firefox-security-build-controller-2.json; wrapper
+firefox-security-build-2.log/.exit. Worker firefox-security-resume-build.sh uses
+NEW work/firefox-security-1537-1/firefox-compile-2.log and
+firefox-compile-result-2.json, preserves original failure with recorded hashes.
+One isolated writer (-j6, UID101/caps0/no-egress, ROsource/tools). Same source/work
+pair, no upgrade/installation/source extraction or unknown partial-output deletion.
+Healthy comparable compiler originally41m25s; monitor actual process/CPU/log deltas
+deterministically, never declare success by timeout or restart a healthy build.
+Native supervisor checks byte128MiB+64MiB and inode2048+1024 margins through exit.
+Input configSHAa06186586b3a93e850c0264c7ff0eda2b51836c133b2559d043f6e74fcf217c0,
+mozconfigSHA697afa833966cf37ffdb017d92f851fa7f6a3e6b98347520d2be6cfc627b5553.
+On interruption reconcile real receipts/PID/start/boot/output before action.
+Corrected compiler not yet dispatched. Future stage/security/ABI/native UI and
+installed-target capacity remain pending. Complete allB02 then stop, no B04advance.
+
+Custody recovery record: /var/log/toddy/phase2/firefox-baseline-source-custody-1.json,
+context /var/lib/toddy/phase2-custody/firefox-baseline-source-1, producerSHA
+e568a7f12dda15de30f6ee5c4a2848fee9fb745f80457b64061eb3e3031cb6cc.
+Original archive807705672B remains /mnt/lfs/sources/firefox-153.2.0esr.source.tar.xz,
+SHA c443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c.
+Recovery is authenticated filtered extraction to NEW directory/full verifier;
+never overwrite retired-marker source. Directory timestamp/ACL/xattr identity
+unclaimed. Source file_generate.py93-152 proves dependency writes only on success,
+error return1; checked make resume after capacity correction, no unknown deletion.
+Failure ledger inode correction1 capacity qualified, native retry still pending.
 
 ## Browser compiler, security and persistent build volume
 

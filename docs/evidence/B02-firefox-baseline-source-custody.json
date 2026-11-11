@@ -1,0 +1,38 @@
+{
+  "state": "complete",
+  "scope": "Obsolete unmodified expanded153.2 public source cache only. Exact bytes/file modes/owners/path set checked against original authenticated archive, then actual filtered restore checked before retirement. Directory timestamps/ACL/xattr byte identity and OS recovery are not claimed. Original archive, old ELF/compiler logs/results, new source/work/tools and installed system retained.",
+  "pid": 6486,
+  "start_ticks": "246354",
+  "boot_id": "e146fad4-b1e4-4199-9935-3223e693a00b",
+  "producer_sha256": "e568a7f12dda15de30f6ee5c4a2848fee9fb745f80457b64061eb3e3031cb6cc",
+  "archive": "/mnt/lfs/sources/firefox-153.2.0esr.source.tar.xz",
+  "archive_sha256": "c443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c",
+  "source": "/mnt/lfs/sources/phase2/work/firefox-1/source/firefox-153.2.0",
+  "source_inode": 131074,
+  "before_free_inodes": 0,
+  "before_browser_free": 4996263936,
+  "progress": {
+    "members": 509836,
+    "non_dot_members": 509835,
+    "expanded_regular_bytes": 3514842428,
+    "verified_regular_files": 468620
+  },
+  "original": {
+    "members": 509836,
+    "non_dot_members": 509835,
+    "expanded_regular_bytes": 3514842428,
+    "verified_regular_files": 468620
+  },
+  "restore_members": 507904,
+  "restore_exact_in_recorded_scope": true,
+  "restored": {
+    "members": 509836,
+    "non_dot_members": 509835,
+    "expanded_regular_bytes": 3514842428,
+    "verified_regular_files": 468620
+  },
+  "installed_root_changed_paths": 0,
+  "after_free_inodes": 509834,
+  "released_inodes": 509834,
+  "after_browser_free": 10005327872
+}

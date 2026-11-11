@@ -3956,3 +3956,16 @@ first result/log hashes, new result2/log2 and inode+byte supervision. Actual nat
 file_generate.py93-152 confirms dependency output on success and failure return1;
 use normal make recovery after capacity correction, no speculative partial-output
 deletion. Resume requires completed custody/inode recovery; not dispatched/synced.
+
+
+### B02 inode capacity recovered with actual source restoration — 2026-11-11
+
+Original old source and actual filtered temporary restore each468620regular files/
+3,514,842,428bytes verified against retained authenticated original archive.
+After proof only obsolete153.2expanded children retired, source root inode/RO
+roles/marker retained. No directory timestamp/ACL/xattr identity claim. Archive,
+old ELF/compiler logs/results, newsource/work/tools preserved; installed root0
+changes.509834inodes released/free and10,005,327,872browser bytes available.
+Custody complete0, never replay. Prepared checked compiler resume2 preserves
+first failure and config hashes, separate logs/results, same qualified isolation
+and inode/byte reserves. Metadata sync complete; native resume not dispatched yet.

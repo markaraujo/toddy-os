@@ -1,10 +1,10 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-11T09:46:58.229316+00:00
+Updated: 2026-11-11T10:02:10.256861+00:00
 
 Bootstrap: ready_for_development
 
-B01/B03 accepted (13% weighted Phase2). B02 native GNOME owner/Files/Editor and scoped network recovery verified. Corrected Firefox source/full-tree recovery/configure qualified; first build stopped on measured inode exhaustion before main compilation, capacity correction pending. Audio/theme/offline/reboot/resources remain pending. Stop after fully validated B02; no Phase2 ISO or physical acceptance.
+B01/B03 accepted (13% weighted Phase2). B02 native owner/Files/Editor/scoped network recovery verified. Corrected browser source/configuration qualified; measured inode exhaustion corrected through actual old-source recovery proof, 509834inodes released. Checked compiler resume prepared. Audio/theme/offline/reboot/resources and fullB02 pending; stop after B02. No Phase2 ISO or physical acceptance.
 
 Foundation: **100%** · Agentic desktop: **13%**
 
