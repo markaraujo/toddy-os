@@ -441,6 +441,73 @@ Qualify source/work capacity before transferring or extracting its source:
 target margin is about7MiB, while current Samba tmpfs retains over1GiB
 free. Keep sources read-only and package staging separate. Then build
 the planned Settings UI and perform its real native validation.
+Read-only source inspection is complete. Host archive
+.local/sources/gnome-control-center-50.4.tar.xz matches frozen SHA256
+5856c73999bedf45e74f73bac3d61e2b5ec1689f8bcf1943737baeee8204fb11;
+7,106,016 compressed bytes,1,543members,49,149,703regular bytes.
+Its Meson source requires libgxdp as a subproject, with wrap pinned to
+1fe6de799f39b3126e8d0db66fa4f16c10fd9bd6. Qualify that exact upstream
+archive before guest use. The Tecla subproject is also needed because
+the native Tecla package provides no dependency metadata. Reuse frozen
+tecla50.0 archive already cached; never follow either HEAD wrap.
+Optional gmobile is required:false. Use the installed pinned dependencies
+and local subprojects with network fallbacks disabled.
+Correction after complete archive inventory: libgxdp is already bundled.
+All25bundled files match the official archive for that exact commit.
+The independent commit archive is verification-only; no extra dependency
+or source lock is needed. Bundled GVC is present too.
+
+Settings input preparation1 COMPLETE on the existing2GiB tmpfs. Exact main
+archive plus frozen Tecla50.0 were source-verified and extracted once.
+Tecla is supplied as a local subproject, preserving installed packages.
+Source and worker aliases are /mnt/lfs/sources/phase2/inputs/gnome-control-center-50.4
+and /mnt/lfs/sources/phase2/work/gnome-control-center-1. Guest receipt
+/var/log/toddy/phase2/gnome-control-center-input-tmpfs-1.json is complete,
+source inode80806/work82451. Actual target delta8192B, scratch free
+1,066,418,176B. Never replay preparation.
+
+GNOME Control Center compile1 PID237449 terminal0,391ELFs. All4original
+registered portable programs returned0/OK: AppStream validation plus4TAP
+cases across hostname/SSID, printer text and WiFi QR escaping. Original
+test wrapper1 exited1 after those successes because its collector expected
+the wrong suite-name separator. Collector2 exited0, reused every original
+result and verified all391ELFs unchanged. No original test was rerun.
+
+Settings stage1 PID240844 terminal0:304regular files,567entries,
+25,083,479regular bytes. CLI version50.4,23compiled panel identifiers,
+unknown-option refusal and identical panel-list recovery all passed.
+Native linker resolution has no private build paths. Original artifacts
+unchanged. [Stage evidence](evidence/B02-gnome-control-center-stage.json).
+No graphical window or panel action, native package or physical acceptance.
+Snap integration disabled under the selected native/Flatpak contract.
+
+NetworkManager closed promotion custody1 PID243076 COMPLETE,29,581,312B
+reclaimed and installed root changed0. Original source/compiler/workstage/
+archive/control and var/etc retained. Generic exact-payload verification
+now supports an explicit per-profile root set; old profiles retain their
+original set. First read-only preflight selected a nonexistent original
+receipt. Second found the real verify2 receipt but encountered the old
+usr/etc-only shape restriction. Third verified the entire owned usr/etc/var
+payload, retained source and archive. Never replay custody.
+[Custody](evidence/B02-networkmanager-promotion-custody.json).
+Actual target free17,216,565,248B. No guest writer remains.
+
+EXACT NEXT: qualify and promote the Settings stage with its bundled GVC/
+libgxdp and frozen Tecla legal material. Keep archives and new promotion
+on the existing tmpfs, using guarded read-only source-file aliases.
+Compute runtime package dependencies from all4staged executables in the
+native target. Verify version/list/refusal/recovery on the installed bytes.
+Then extend the existing owned shared-schema union for the new
+org.gnome.Settings schema before GUI testing. Preserve current schema-cache
+ownership and reuse the existing schema integration machinery. Full native
+GNOME/session and B02 acceptance remain pending.
+Read-only native runtime audit is retained in
+.local/phase2/control-center-runtime-dependencies-1.json. All4staged ELF
+executables resolve without private build paths to89owned linked packages.
+The audit reuses target_resolve from audit_native_elf.py and the actual
+native package lists; these are linked dependencies, not catalogue options.
+Last published7aebc39: all3workflows success, publicHTTP200/indexSHA256
+8840fa2daeeb1cfa895d9d4bb16b20be62a261b5fcd2defe7b49202f1ded481e.
 Cold native tests require measured headroom and an isolated VM. UDisks policy,
 Settings/Samba and GNOME session remain pending. Stop after accepted B02.
 

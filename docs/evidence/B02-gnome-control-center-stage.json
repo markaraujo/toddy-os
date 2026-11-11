@@ -1,0 +1,149 @@
+{
+  "jobs": [
+    {
+      "name": "gnome-control-center-1",
+      "pid": 237449,
+      "exit": 0,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "command_recipe_sha256": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "gnome-control-center-tests-1",
+      "pid": 240326,
+      "exit": 1,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "command_recipe_sha256": "60a7260b33912ff9a8d08cf727a18be53e122a0cfb19ff40a0a8e11869ef0462",
+      "log_sha256": "e0d9d3195371114369f8765b5def811d8f14635e9ccee87f725914291e6d6b51"
+    },
+    {
+      "name": "gnome-control-center-tests-collect-2",
+      "pid": 240659,
+      "exit": 0,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "command_recipe_sha256": "f122ad6c3c77a827a30767cb024b474648568c341ea557d49e740e70e8f81531",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "gnome-control-center-stage-1",
+      "pid": 240844,
+      "exit": 0,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "command_recipe_sha256": "1ba70189555b0a129ec4c628c5ef9235aca2858a346f4e315a379933de670781",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "input": {
+    "state": "prepared",
+    "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+    "mount_id": "580",
+    "source_alias": "/mnt/lfs/sources/phase2/inputs/gnome-control-center-50.4",
+    "work_alias": "/mnt/lfs/sources/phase2/work/gnome-control-center-1",
+    "sources": [
+      {
+        "name": "gnome-control-center",
+        "version": "50.4",
+        "filename": "gnome-control-center-50.4.tar.xz",
+        "url": "https://download.gnome.org/sources/gnome-control-center/50/gnome-control-center-50.4.tar.xz",
+        "sha256": "5856c73999bedf45e74f73bac3d61e2b5ec1689f8bcf1943737baeee8204fb11",
+        "upstream_sha256_url": "https://download.gnome.org/sources/gnome-control-center/50/gnome-control-center-50.4.sha256sum",
+        "upstream_sha256_file_sha256": "ab856cab36da5e798d6facc96354ed921a4b9a352eda46b21304eb2c2679908a",
+        "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+        "status": "source_verified"
+      },
+      {
+        "name": "tecla",
+        "version": "50.0",
+        "filename": "tecla-50.0.tar.xz",
+        "url": "https://download.gnome.org/sources/tecla/50/tecla-50.0.tar.xz",
+        "sha256": "2542acb24850082e0ccf6aa17af9651db71d22f0e233fdbf5ed0cffe2e45bc06",
+        "reference": "BLFS13.1-systemd gnome/tecla.html",
+        "book_page_sha256": "28b4df777bc4fb134301b949fe2174a1e822b7ea738144ea553c9794b680fbfc",
+        "book_md5": "cc5ae49bae10abcb02040a20e63ef26b",
+        "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+        "status": "source_verified"
+      }
+    ],
+    "target_free_before_bytes": 17186992128,
+    "source_inode": 80806,
+    "work_inode": 82451,
+    "target_free_bytes": 17186983936,
+    "scratch_free_bytes": 1066418176,
+    "prepared_sha256": "575432a98b6a16e36e7b77f8f10e2808dc152d4d89012ef2776848c05a9ca570"
+  },
+  "original_programs": [
+    {
+      "name": "gnome-control-center:validate-metainfo",
+      "exit": 0,
+      "result": "OK",
+      "tap_cases": 0,
+      "stdout_sha256": "2bae780dfba0d9c70dd7fd00a56ffcfe1590e59e7df5a6462c72382f39c30a78"
+    },
+    {
+      "name": "gnome-control-center:test-hostname",
+      "exit": 0,
+      "result": "OK",
+      "tap_cases": 2,
+      "stdout_sha256": "f56dac75d030e1e1b9cd9c0dfb25ce886d4898014f4273050c159570c0a104c1"
+    },
+    {
+      "name": "gnome-control-center:test-shift",
+      "exit": 0,
+      "result": "OK",
+      "tap_cases": 1,
+      "stdout_sha256": "5f814c02598f28fd3c616726879c0cb72de3e2c3b2e4c386ed8b9a704a84680c"
+    },
+    {
+      "name": "gnome-control-center:test-wif-panel-text",
+      "exit": 0,
+      "result": "OK",
+      "tap_cases": 1,
+      "stdout_sha256": "e72be024267c76885cf73759d4bbb7b6995fe522c442ffda3580691d04e394e2"
+    }
+  ],
+  "tap_cases": 4,
+  "elf_count": 391,
+  "elf_manifest_sha256": "3f9f60c6953479f7842113709b5849c3c8f62a588f379f6d8480d1a2d19be92f",
+  "stage_manifest_sha256": "47e546ea880ffa5beb3d2bdeb8e6a3f4cad85adad0192b03e052752df965c275",
+  "stage_entries": 567,
+  "stage_regular_files": 304,
+  "stage_regular_bytes": 25083479,
+  "compiled_panels": [
+    "applications",
+    "background",
+    "bluetooth",
+    "color",
+    "display",
+    "keyboard",
+    "mouse",
+    "multitasking",
+    "network",
+    "wifi",
+    "notifications",
+    "online-accounts",
+    "power",
+    "printers",
+    "privacy",
+    "search",
+    "sharing",
+    "sound",
+    "system",
+    "universal-access",
+    "wacom",
+    "wellbeing",
+    "wwan"
+  ],
+  "version_cli": "Local options gnome-control-center 50.4",
+  "invalid_option_exit": 1,
+  "recovery_identical": true,
+  "logs": {
+    "configure.log": "4ceb725a76575f314528b772d4ef4bb0ea77a8aece24a59379c458e13a6e8bc3",
+    "original-build.log": "2e9c28da816acaa6e921e6afbc183c93e5869b60c4d89974e528236def7e33b1",
+    "original-tests.log": "89036b3cc77ee2c9dccb25587bdb7bfe1883ea30f24bec217cf8bf5db8da84d1",
+    "original-stage.log": "ca3bcd23234667a09b5b82912254cee0e6c1a1e75d6213e6fc923b1ecb9b8164",
+    "compile/meson-logs/testlog.json": "c3a1d446df832edad0b4b3870eb804c7d5125128a5448b9b13a7c0e1ec14653b",
+    "local-linkage.log": "fed7e4f7c4d24ef6a24e4a5d5d3e481918747d6de6765eed5fb5a3c59c63cd35"
+  },
+  "scratch_free_bytes": 976211968,
+  "scope": "Isolated native compile, four original portable programs, private staging and CLI metadata/refusal/recovery. Xvfb network test unregistered. No window, panel action, native package or physical acceptance."
+}

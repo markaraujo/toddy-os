@@ -14,6 +14,17 @@ from run_step import snapshot
 from verify_stage import inspect_stage
 
 PROFILES = {
+    'networkmanager': {
+        'name': 'networkmanager',
+        'version': '1.58.1-1+toddy1',
+        'native_step': 'b02-networkmanager-verify-2',
+        'native_receipt': '5365c3b422b15b95d28e036a1d94e816700423d82fd04fe1a72d411a9ac88c62',
+        'record': '41853e98b708741b051867fc532dedeaceea0d8d735f61a99f99d7e85d79ed51',
+        'archive': '07119693e9057d7b9a2a18c17361b5064d08d4a067624b4aead843e9031a02e4',
+        'work_manifest': 'e05b474adc7924751c1656f2c02d1da5236d1c0093675adfbdcd46f65d755e68',
+        'stage_inode': 8467376,
+        'stage_roots': frozenset({'usr','etc','var','DEBIAN'}),
+    },
     'gstreamer': {
         'name': 'gstreamer',
         'version': '1.28.6-1+toddy1',
@@ -81,7 +92,8 @@ def retire(profile):
         assert stage.stat().st_dev == target.stat().st_dev and not (stage / 'usr').is_symlink()
         mounts = subprocess.check_output(['findmnt', '-rn', '-o', 'TARGET'], text=True).splitlines()
         assert not any(Path(path).is_relative_to(stage) for path in mounts)
-        verify_package_stage(stage, record['payload'])
+        verify_package_stage(stage, record['payload'],
+                             spec.get('stage_roots', frozenset({'usr','etc','DEBIAN'})))
         for relative, row in record['payload'].items():
             installed = target / relative.lstrip('/')
             if 'sha256' in row:

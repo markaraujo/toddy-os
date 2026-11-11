@@ -13,11 +13,11 @@ from stage_package import payload
 from verify_stage import inspect_stage
 
 
-def verify_package_stage(stage, expected):
+def verify_package_stage(stage, expected, allowed_roots=frozenset({'usr','etc','DEBIAN'})):
     assert stage.is_dir() and not stage.is_symlink()
     actual={p:r for p,r in payload(stage).items() if p!='/DEBIAN' and not p.startswith('/DEBIAN/')}
     assert actual==expected,'Changed/unknown stage payload; preserve for review'
-    assert {p.name for p in stage.iterdir()}<={'usr','etc','DEBIAN'}
+    assert {p.name for p in stage.iterdir()}<=allowed_roots
 
 
 def digest(path):
