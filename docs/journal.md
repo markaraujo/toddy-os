@@ -3622,3 +3622,16 @@ no extra tools/fonts/prompt framework. Native package uses the existing versione
 recipe backend, MIT code/full CC BY README notice and owned conffiles. Actual
 UID101/NNP checks and native rendering remain next. Host cold Firefox custody
 continues with a live verified producer; no repeated log polling or native boot.
+
+### B02 — Native terminal defaults installed; corrected verify-only gate passed
+
+Original package recipe2025 installed15owned payload entries/17root changes with
+recipe0/post1: opt-out test double-quoted expected prompt consumed a backslash.
+Independent actual UID101/NNP before/after prompt values were identical. Corrected
+comparison captures original value and uses raw single-quoted plain fallback.
+Verify-only2536 recipe/post0/0 changedzero root paths; seven startup/custom/opt-out/
+plain/readonly/login/noninteractive scenarios plus hook/flag/idempotence passed.
+Original archive/payload unchanged, no reinstall. No user homes/fonts/framework
+changed. Native graphical Terminal remains pending until cold custody releases
+its boot lock. Firefox source/configure inspection supports Wayland-only toolkit
+matching owned GTK3; full browser build/security/ABI/native acceptance pending.

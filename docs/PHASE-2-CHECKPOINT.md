@@ -35,7 +35,7 @@ All original bytes retained by verified gzip chunks plus untouched source ranges
 Controller1450932/session80972, actual process identity in
 .local/phase2/cold-firefox-chunk-custody-1/result.json. Log
 .local/phase2/cold-firefox-chunk-custody-1-controller.log. At checkpoint observation
-state=compressing, 81durable32MiB chunks; inspect real process/start ticks
+state=compressing, 627durable32MiB chunks; inspect real process/start ticks
 and result before action. Healthy compression is monitored, never restarted to
 meet a diagnosis budget. No model polling of unchanged logs.
 Original34,298,068,992bytes/SHA256
@@ -44,23 +44,29 @@ allocated25,530,310,656B. Strict identity/producer/reserve/source reconstruction
 and chunk-before-punch guards remain. Source placeholder source.custody has holes
 as ranges retire; NEVER boot it. Completed math custody remains untouched.
 
-### Independent terminal defaults slice
+### Independent terminal defaults slice — installed and CLI qualified
 
-Actual target has no /etc/bashrc, /etc/bash.bashrc or skeleton Bash RC/profile;
-existing /etc/profile does not source profile.d. New reviewed Bash-only defaults
-are prepared: new-user .bashrc/.bash_profile and opt-in runtime hook. Existing
-home files/fonts/hooks/custom or readonly prompts remain untouched; opt-out0 and
-plain terminal fallback, truecolor accent only where supported. Original MIT
-code and CC BY README/full notices; native all-architecture package, two conffiles.
+[Terminal defaults](evidence/B02-terminal-defaults-install.json) are installed as
+toddy-terminal0.2.0-1+toddy1/all, archiveSHA
+2cdbca318a0b1f623eeb3ce5da84d0b95cda5ec900e425caf14a6ad94247841f.
+Original recipe2025 recipe0/post1 changed17paths: prompt-test expected literal
+quoting was wrong. Actual opt-out before/after prompt identical. Original failure
+retained. Verify-only recipe2536 recipe/post0/0 changedZEROroot paths, exact
+archive/payload unchanged; seven actual UID101/NNP cases passed: new user/custom/
+opt-out/plain/readonly/login-template/silent noninteractive, plus idempotence and
+hook/shell-setting preservation. No reinstall/source/native-compiler replay.
+New-user skeleton RC/profile and Bash-only runtime hook; MIT/CC BY notices retained,
+existing user homes/fonts/hooks untouched. Graphical Terminal rendering PENDING.
+Failure ledger terminal-defaults-prompt-test-quoting resolved after one correction.
 
-EXACT NEXT ACTION: commit reviewed terminal-defaults install/check/runtime scripts,
-sync metadata only; preflight absence/ownership/version/space and no writer, then
-run b02-terminal-defaults-install once with terminal-defaults-install.sh and
-terminal-defaults-check.sh through run_step. Actual UID101/NNP behavior checks
-cover new-user/login/custom/opt-out/readonly/plain/noninteractive/idempotence and
-hook/shell-setting preservation. No service enabled or user files modified.
-Graphical Terminal review remains pending until cold custody releases native lock.
-The healthy host custody job continues independently; do not restart it.
+Firefox dependency inspection: owned GTK3.24.52 is Wayland-only; Clang22.1.8,
+Rust1.97.1/cbindgen0.29.4/Node24.19.0, ICU78.3/NSS3.126/NSPR4.40 available.
+Several optional system codec pkg-config modules and startup-notification absent.
+Actual frozen toolkit/moz.configure supports cairo-gtk3-wayland-only; inspect
+conditional dependency requirements before adding unnecessary X11 dependencies.
+Selected original configure-source text cached in
+.local/phase2/firefox-153-configure-source-review-1.json (3files, no source edits).
+No browser build/configuration/ABI/security acceptance yet.
 
 ### Exact next action
 
@@ -72,7 +78,8 @@ free space. Choose browser scratch from measured capacity, preserving100GiB host
 16GiB target/128MiB scratch reserves. Do not allocate an oversized image or alter
 physical disks/backing/master images. Native boot lock remains held by custody;
 do not start another native test while it runs. Independent B02 host recipe or
-guest terminal/defaults work is eligible with one guest writer.
+guest desktop/network/audio configuration work is eligible with one guest writer.
+Terminal defaults CLI qualified; actual GUI waits for this native lock.
 
 Frozen Firefox153.2.0esr archive already cached807,705,672B. Read pinned book
 xsoft/firefox.html/current code before recipe. Need owned dependency/security/ABI

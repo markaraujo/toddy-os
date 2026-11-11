@@ -1,0 +1,91 @@
+{
+  "scope": "Owned lightweight terminal defaults and actual UID101/NNP behavior only. No existing home/font/hook change; original install recipe0/post1 test-quoting error retained. Verify-only correction0/0 with zero root changes. Native graphical Terminal rendering pending.",
+  "original_native": {
+    "step": "b02-terminal-defaults-install",
+    "started": "2026-11-11T05:54:40.523228+00:00",
+    "finished": "2026-11-11T05:54:56.572434+00:00",
+    "recipe_pid": 2025,
+    "recipe_exit": 0,
+    "postcheck_exit": 1,
+    "changed_paths": 17,
+    "recipe_sha256": "a8cd40dbdb359e0dd5f8ece6d943eb7b14c490f4caaf43f216ee285fd32feecf",
+    "postcheck_sha256": "bb93498796a58e11a670e0a0b671aed319721c919a83573df62176216e1f4845",
+    "log_sha256": "c793710d19f2356239aef5a30a4f90b8dc3b3c914be88e27f04de9ed0afb82b1"
+  },
+  "verify_native": {
+    "step": "b02-terminal-defaults-verify-2",
+    "started": "2026-11-11T05:57:51.348305+00:00",
+    "finished": "2026-11-11T05:58:06.898228+00:00",
+    "recipe_pid": 2536,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 0,
+    "recipe_sha256": "758508deede650c3d13814af6e608beab2a632592eb3d9f423f71647068fc116",
+    "postcheck_sha256": "a8bb7ac987e5033556700ed5ba4993218ba844cf1beb34ed9667a20f82c42d6d",
+    "log_sha256": "79a16aa05c67744c66ef8c1a4e9b117a0fc33a0d59ff0ffd8082020d056d6260"
+  },
+  "archive_sha256": "2cdbca318a0b1f623eeb3ce5da84d0b95cda5ec900e425caf14a6ad94247841f",
+  "payload_entries": 15,
+  "installed": {
+    "scope": "Owned lightweight Bash defaults: actual UID101/NNP new-user/custom/opt-out/plain/readonly/idempotent/hook-preservation and silent noninteractive cases. Existing homes untouched. Actual graphical Terminal rendering remains pending.",
+    "runs": [
+      {
+        "name": "new-user",
+        "exit": 0,
+        "stdout": "",
+        "stderr": "bash: cannot set terminal process group (2520): Inappropriate ioctl for device\nbash: no job control in this shell\n"
+      },
+      {
+        "name": "custom-prompt",
+        "exit": 0,
+        "stdout": "",
+        "stderr": "bash: cannot set terminal process group (2520): Inappropriate ioctl for device\nbash: no job control in this shell\n"
+      },
+      {
+        "name": "opt-out",
+        "exit": 0,
+        "stdout": "",
+        "stderr": "bash: cannot set terminal process group (2520): Inappropriate ioctl for device\nbash: no job control in this shell\n"
+      },
+      {
+        "name": "plain-terminal",
+        "exit": 0,
+        "stdout": "",
+        "stderr": "bash: cannot set terminal process group (2520): Inappropriate ioctl for device\nbash: no job control in this shell\n"
+      },
+      {
+        "name": "readonly-stock",
+        "exit": 0,
+        "stdout": "",
+        "stderr": "bash: cannot set terminal process group (2520): Inappropriate ioctl for device\nbash: no job control in this shell\n"
+      },
+      {
+        "name": "new-user-login-template",
+        "exit": 0,
+        "stderr": "bash: cannot set terminal process group (2520): Inappropriate ioctl for device\nbash: no job control in this shell\n"
+      },
+      {
+        "name": "noninteractive-silent",
+        "exit": 0
+      }
+    ],
+    "hook_sha256": "61020ae1d90fce76de744d88948598f339e9a53dd0bba7d9cd07e99f92c79051",
+    "no_extra_runtime_tools": true
+  },
+  "payload_verify": {
+    "scope": "Verify-only recovery of prompt expectation quoting; original installed module/archive/payload unchanged, no reinstall. Corrected behavioral postchecks remain required.",
+    "archive_sha256": "2cdbca318a0b1f623eeb3ce5da84d0b95cda5ec900e425caf14a6ad94247841f",
+    "payload_entries": 15,
+    "payload_unchanged": true
+  },
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-terminal-defaults-evidence.tar.gz",
+    "bytes": 278028,
+    "sha256": "a78c8934baf03cc310491b25642855fa65e8d2e8f53b3db4f53adc17e79a74bb"
+  },
+  "original_postcheck_source_retained": {
+    "path": ".local/phase2/terminal-defaults-original-postcheck.sh",
+    "sha256": "bb93498796a58e11a670e0a0b671aed319721c919a83573df62176216e1f4845",
+    "matches_actual_failed_postcheck": true
+  }
+}
