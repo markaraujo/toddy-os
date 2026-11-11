@@ -14,7 +14,7 @@ import time
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--loopback', action='store_true',
                     help='Private inference namespace loopback; no external route')
-parser.add_argument('--profile', choices=['standard','cups-local-resolver'],default='standard')
+parser.add_argument('--profile', choices=['standard','cups-local-resolver','samba-build-alias'],default='standard')
 parser.add_argument('name')
 parser.add_argument('input')
 parser.add_argument('work')
@@ -33,6 +33,10 @@ with prefix.with_suffix('.dispatch.lock').open('a') as lock:
     if args.profile=='cups-local-resolver':
         assert args.input=='/mnt/lfs/sources/phase2/inputs/cups-2.4.19' and not args.loopback
         command[1]='/opt/toddy-build/scripts/build/phase2/cups-isolated.sh'
+    if args.profile=='samba-build-alias':
+        from samba_isolation import SOURCE, WORK
+        assert (args.input, args.work) == (SOURCE, WORK) and not args.loopback
+        command[1]='/opt/toddy-build/scripts/build/phase2/samba-isolated.sh'
     if args.loopback:
         command.append('--loopback')
     command += [args.input, args.work, *args.command]
@@ -43,6 +47,11 @@ with prefix.with_suffix('.dispatch.lock').open('a') as lock:
     if args.profile=='cups-local-resolver':
         record['profile_implementation_sha256']=hashlib.sha256(Path('/opt/toddy-build/scripts/build/phase2/cups_isolation.py').read_bytes()).hexdigest()
         record['base_harness_sha256']=hashlib.sha256(Path('/opt/toddy-build/scripts/build/phase2/isolated.sh').read_bytes()).hexdigest()
+    if args.profile=='samba-build-alias':
+        from samba_isolation import BASE_SHA, PROFILE_SHA
+        record['profile_implementation_sha256']=hashlib.sha256(Path('/opt/toddy-build/scripts/build/phase2/samba_isolation.py').read_bytes()).hexdigest()
+        record['base_harness_sha256']=BASE_SHA
+        record['effective_harness_sha256']=PROFILE_SHA
     with prefix.with_suffix('.job.json').open('x') as output:
         json.dump(record, output, indent=2)
     with prefix.with_suffix('.log').open('xb') as log:

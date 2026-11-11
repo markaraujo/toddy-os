@@ -305,12 +305,60 @@ Exact build 3 log SHA256
 Configure and build receipts/logs are under /var/log/toddy/phase2 and in
 .local/phase2/samba-configure-and-build-logs-3.tar.gz. No writer remains.
 
-EXACT NEXT: verify an exact build-root normalization for generated public
-header includes, preserving existing lookup and refusal for all other
-absolute includes. Qualify the change on the actual generated SAMR header
-before dispatch. Reuse the same Waf configuration and incremental objects.
-Check the persistent ledger and retain all three terminal failures.
-No package, SMB runtime or Settings acceptance yet.
+The exact build-root normalization patch was exercised against the actual
+generated SAMR header (SHA256
+61e23e57ce8a3b24726a16082870f41155bc19e95919392ceb239fe7b5a4c289)
+using a host Waf task fixture. Generated absolute and upstream relative
+paths resolved, and four unmapped/outside/path-traversal variants failed.
+The fixture is not native Waf build acceptance. The guest preparation
+receipt samba-client-header-root-1.json confirms the new read-only alias
+/mnt/lfs/sources/phase2/inputs/samba-4.24.6-header-root and exactly one change.
+Patch SHA256 f63fa41d48cd70ecde11fd8d480eef16148f98186a6407eb3ace5b7c24d33058.
+Reuse the same configured work and incremental objects.
+
+Build 4 PID 205634 exited 1 after passing public header generation and
+reaching task 897 of 1499. The frozen WSP generator emits
+bin/default/librpc/gen_ndr/ndr_wsp.h, although the generated file belongs to
+the separate Waf output. Build log SHA256
+e33ff5669aeba00010b1e4d41655ad06b7505b99bacc17b269ae64552f67ccfc.
+Exact receipt and log bundle .local/phase2/samba-build-header-root-4-logs.tar.gz.
+No writer remains. Last target free 17,199,239,168 B, scratch 1,528,803,328 B.
+
+Read-only /src/bin alias qualified in the same private sandbox: UID101,
+NNP, no effective caps, EROFS on both source and alias, exact WSP header
+inode match and worker write/read/remove. Source preparation receipt
+samba-client-build-alias-1.json records only one added empty directory.
+The committed samba-build-alias job profile reproduced the exact effective
+harness bytes and passed the same UID101 probe with a separate receipt.
+Build 5 PID 207562 exited 0 at 1499/1499. Both ELF artifacts and
+libsmbclient.so.0 SONAME verified. Never replay configuration or compilation.
+[Build evidence](evidence/B02-samba-client-build.json).
+
+Stage 1 Waf target install returned 0 but failed postconditions (111 entries,
+neither required ELF); preserve the partial /build/stage. Full Waf install
+to private /build/stage-full reused the existing worker. Stage 2 PID 211065
+exited 0 and produced 462 entries including CLI, versioned library, header
+and pkg-config. The larger private stage includes server binaries for testing.
+Nothing installed into the target and no service was activated.
+[Private stage](evidence/B02-samba-client-private-stage.json) records the
+direct linker closure of 78 ELF files, 20 links, 11 external owned packages,
+and 26,680,744 regular bytes. No dynamic module or network acceptance.
+Separate copy strip probe passed with exact dynamic, symbol and version
+records across 78 ELFs and ran the staged CLI --version under UID101.
+It saved only 139,016 B, leaving 26,541,728 B. Preserve the original
+private stage and do not repeat the sizing probe. Last verified target
+free 17,199,235,072 B, scratch free 1,297,055,744 B.
+No guest writer remains. Do not replay either Waf stage.
+
+EXACT NEXT: review client runtime module/configuration requirements and
+prepare the client-only manifest using the exact DT_NEEDED inventory
+.local/phase2/samba-client-closure-inspect-1.json. Qualify recoverable closed
+promotion replicas to recover target headroom without lowering the reserve.
+Measured same-target candidates: GStreamer usr copy 15,011,840 B,
+UDisks usr copy 9,707,520 B and LVM2 usr copy 7,548,928 B. These are
+candidates only; verify archive/record/retained workstage and installed
+payload before any custody operation. Keep new staging on the worker.
+Then validate real SMB exchange, refusal/recovery and Settings integration.
 Cold native tests require measured headroom and an isolated VM. UDisks policy,
 Settings/Samba and GNOME session remain pending. Stop after accepted B02.
 

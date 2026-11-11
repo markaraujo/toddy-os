@@ -1,0 +1,138 @@
+{
+  "build": {
+    "name": "samba-build-client-5",
+    "pid": 207562,
+    "exit": 0,
+    "harness_sha256": "2adb8fa54b101a77b8a399af35825ecff2678be837bb4c7924c2d6b648f388b5",
+    "invocation_recipe_sha256": "b5770608be0b45d2b0ad821bb2764c5d4e84dae699329ed23c24283c78437c36",
+    "log_sha256": "b2209d7ad3cae9cdbbf51aabf1cd78946199f8e1b02bff58edc88b380955129a"
+  },
+  "alias_test": {
+    "name": "samba-build-alias-probe-1",
+    "pid": 207398,
+    "exit": 0,
+    "harness_sha256": "2adb8fa54b101a77b8a399af35825ecff2678be837bb4c7924c2d6b648f388b5",
+    "invocation_recipe_sha256": "c3de7bad89289d31f5a61807bb723da51371962475f2cabea6af751559640e99",
+    "log_sha256": "12b685f9727d9be17815e90034912f4cdca5d19893726fd92db39f28db361ce5"
+  },
+  "isolation": {
+    "uid": 101,
+    "no_new_privs": true,
+    "effective_capabilities": 0,
+    "read_only_source_and_alias_refusal": "EROFS",
+    "worker_write_read_remove": true,
+    "wsp_header_same_inode": true,
+    "wsp_header_sha256": "e740af4531a804f4f20012ba1b39a8c109c25bb7ee92fe67a2cfcb70f498fd61"
+  },
+  "build_artifact_sha256": {
+    "default/source3/client/smbclient": "94823eac0f1fe19179cf6b8fc66025bbfc15e68f75e2f25c071e48b9f8258e10",
+    "default/source3/libsmb/libsmbclient.so": "951bee0a910ee4c2e11ade950eddad2cd9014bc094aced8a728d3abc6a607607"
+  },
+  "libsmbclient_soname": "libsmbclient.so.0",
+  "prior_failures": [
+    {
+      "name": "samba-build-client-1",
+      "pid": 200097,
+      "exit": 1,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "invocation_recipe_sha256": "12f63b7afe8914b3a9c051d70a487effb5539bdc294892711dc5b3895acbbe61",
+      "log_sha256": "7aac1ef294802d5450d8cb8b7c62f0d16c37c35d612cc118f17684dacb0d4f48"
+    },
+    {
+      "name": "samba-build-client-2",
+      "pid": 203119,
+      "exit": 1,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "invocation_recipe_sha256": "12f63b7afe8914b3a9c051d70a487effb5539bdc294892711dc5b3895acbbe61",
+      "log_sha256": "d3af9ebe0082f72e3622383cecbab4c941ba23ad6c3dd71ffed3fef58b596c10"
+    },
+    {
+      "name": "samba-build-client-3",
+      "pid": 203848,
+      "exit": 1,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "invocation_recipe_sha256": "b5770608be0b45d2b0ad821bb2764c5d4e84dae699329ed23c24283c78437c36",
+      "log_sha256": "03fb31487ca7dff4aac1707fa503c1ccfd5e32bf8751c3487a4cfa07d14447fb"
+    },
+    {
+      "name": "samba-build-client-4",
+      "pid": 205634,
+      "exit": 1,
+      "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+      "invocation_recipe_sha256": "b5770608be0b45d2b0ad821bb2764c5d4e84dae699329ed23c24283c78437c36",
+      "log_sha256": "e33ff5669aeba00010b1e4d41655ad06b7505b99bacc17b269ae64552f67ccfc"
+    }
+  ],
+  "preparation": [
+    {
+      "state": "prepared",
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "mount_id": "580",
+      "source_archive_sha256": "810cc955acb367e9bde556dccfb50db177a02b7c553aa1629a0b905fa7616267",
+      "patch_sha256": "436ed956a3953cfc4e434e172a58cc8a38df4fcaa80420d68253ec0ce963f3cf",
+      "original_file_sha256": "04c38eae9531f307b520b1137e0e5eb91abca6772ef05785db50154968938b61",
+      "patched_file_sha256": "91ae8332b56e1144d8f553210bc3d5b5d8d434369f88ad873c06cdda66a36eb0",
+      "changed_source_path": "source3/librpc/idl/wscript_build",
+      "alias": "/mnt/lfs/sources/phase2/inputs/samba-4.24.6-pidl-cwd",
+      "original_tree_sha256": "dfc8f1cfbe7583ba2e63649e17a47fa6811e9340d1ef9cb06e27799bdbc2b1fe",
+      "original_entries": 12530,
+      "changed_count": 1,
+      "source_inode": 61484,
+      "scratch_free_bytes": 1554280448,
+      "target_free_bytes": 17199243264
+    },
+    {
+      "state": "prepared",
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "mount_id": "580",
+      "source_archive_sha256": "810cc955acb367e9bde556dccfb50db177a02b7c553aa1629a0b905fa7616267",
+      "patch_sha256": "f63fa41d48cd70ecde11fd8d480eef16148f98186a6407eb3ace5b7c24d33058",
+      "original_file_sha256": "29c4d0d14a0d89610282c523ccf10f30ec624fd5d0dfa759a8008b46b0dcfb0a",
+      "patched_file_sha256": "ed0b01e440dadd9c3e24ea2bcb248277f0c90159750f19ed5830b334277da1ea",
+      "changed_source_path": "buildtools/wafsamba/samba_headers.py",
+      "alias": "/mnt/lfs/sources/phase2/inputs/samba-4.24.6-header-root",
+      "original_tree_sha256": "7b7c31b9527bb78dc8cb8289fe66499f6a8c989ad29dc7b8af9ad6f9308b324b",
+      "original_entries": 12530,
+      "changed_count": 1,
+      "source_inode": 62417,
+      "scratch_free_bytes": 1553633280,
+      "target_free_bytes": 17199239168
+    },
+    {
+      "state": "prepared",
+      "boot_id": "0933ee87-f0bc-4074-9491-8b4e6892121f",
+      "mount_id": "580",
+      "source_archive_sha256": "810cc955acb367e9bde556dccfb50db177a02b7c553aa1629a0b905fa7616267",
+      "prior_source_inode": 62417,
+      "mountpoint_added": "bin",
+      "generated_wsp_header_sha256": "e740af4531a804f4f20012ba1b39a8c109c25bb7ee92fe67a2cfcb70f498fd61",
+      "alias": "/mnt/lfs/sources/phase2/inputs/samba-4.24.6-build-alias",
+      "original_tree_sha256": "7fa22a116ad1567b7e621caf456b96bed3c817792e96ada70e082c99ebb2ff1a",
+      "original_entries": 12530,
+      "changed_count": 1,
+      "source_inode": 63955,
+      "scratch_free_bytes": 1528803328,
+      "target_free_bytes": 17199235072
+    }
+  ],
+  "scope": "Targeted Waf client library and CLI compilation only. No native package, authentication, SMB runtime, desktop or physical test.",
+  "packaged_isolation_profile_check": {
+    "name": "samba-build-alias-profile-1",
+    "pid": 218992,
+    "exit": 0,
+    "harness_sha256": "7777d0e865d2c93ed1e2bbc77fc08882dfaf6d2fa2a3ac88b834c4f08aab2c7f",
+    "log_sha256": "12b685f9727d9be17815e90034912f4cdca5d19893726fd92db39f28db361ce5",
+    "result": {
+      "uid": 101,
+      "no_new_privs": true,
+      "effective_capabilities": 0,
+      "read_only_source_and_alias_refusal": "EROFS",
+      "worker_write_read_remove": true,
+      "wsp_header_same_inode": true,
+      "wsp_header_sha256": "e740af4531a804f4f20012ba1b39a8c109c25bb7ee92fe67a2cfcb70f498fd61"
+    },
+    "effective_harness_sha256": "2adb8fa54b101a77b8a399af35825ecff2678be837bb4c7924c2d6b648f388b5",
+    "base_harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+    "profile_implementation_sha256": "8971faa8b9ca12ddf830c078f57d60d863260b7435a90a673fc2b8ce9110e597"
+  }
+}

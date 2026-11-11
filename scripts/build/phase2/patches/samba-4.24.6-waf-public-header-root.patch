@@ -1,0 +1,14 @@
+--- a/buildtools/wafsamba/samba_headers.py
++++ b/buildtools/wafsamba/samba_headers.py
+@@ -71,6 +71,11 @@
+         hpath = m.group(1)
+         if hpath.startswith("bin/default/"):
+             hpath = hpath[12:]
++        elif os.path.isabs(hpath):
++            build_prefix = task.generator.bld.bldnode.abspath() + os.sep
++            normalized = os.path.normpath(hpath)
++            if normalized.startswith(build_prefix):
++                hpath = normalized[len(build_prefix):]
+ 
+         # some are always allowed
+         if task.env.public_headers_skip and hpath in task.env.public_headers_skip:

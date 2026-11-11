@@ -1,0 +1,11 @@
+--- a/source3/librpc/idl/wscript_build
++++ b/source3/librpc/idl/wscript_build
+@@ -23,7 +23,7 @@
+                     output_dir='../gen_ndr',
+                     generate_tables=False)
+ 
+-absinclude=os.path.join(bld.srcnode.abspath(), 'bin/default/include')
++absinclude=bld.bldnode.make_node('include').abspath()
+ 
+ bld.SAMBA_PIDL_LIST('PIDL',
+                     '''

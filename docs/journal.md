@@ -3434,3 +3434,5 @@ remains parked; next eligible CUPS source/build review.
 | 2026-11-11 | B02 owned Samba build tools | Qualify frozen rpcsvc-proto and Parse::Yapp under build isolation, then promote and verify each native package | Both installs 0/0. Generated XDR and Perl parser positive, refusal and recovery cases passed. Samba client build closure and capacity next. |
 
 | 2026-11-11 | B02 isolated Samba client configuration | Preserve target reserve using a bounded guest tmpfs. Move Waf executable configure tests to their private build directory | Configure 6 exit 0 with actual mmap, locking and safety summary. Client build 3 stopped at a generated public SAMR header path. Existing configuration and objects retained. |
+
+| 2026-11-11 | B02 compiled and privately staged Samba client | Prove generated WSP output alias is read-only and resume Waf incrementally. Stage the full native install graph to the private worker after the partial stage omitted required ELF files | Build 5 and stage 2 exit 0. CLI and ABI verified. Client-only ELF closure audited; native package and SMB runtime pending. |
