@@ -12,6 +12,12 @@ STATES = {"not_started", "in_progress", "blocked", "completed"}
 PHASE2_ORDER = ("B01", "B03", "B04", "B05", "B02", "B06", "B11", "B12", "B07", "B08", "B09", "B10", "B13")
 
 
+def phase2_execution_allowed(data):
+    """Original phase approval does not override a later explicit owner hold."""
+    return (data.get('owner_review', {}).get('phase_2_approved') is True
+            and not data.get('execution_hold'))
+
+
 def next_eligible(data):
     """Prefer an active checkpoint, then the documented risk-first delivery order."""
     by_id = {row["id"]: row for row in data["milestones"]}
@@ -300,7 +306,7 @@ def main():
         print("Planning checks passed: 26 stories, dependencies, weights, evidence, book lock, links and generated status.")
     else:
         print(json.dumps({"phase_progress": percentages(data), "next_story": data["next_story"], "gates": data["gates"],
-                          "phase_2_execution_allowed": data.get("owner_review", {}).get("phase_2_approved") is True}, indent=2))
+                          "phase_2_execution_allowed": phase2_execution_allowed(data)}, indent=2))
 
 
 if __name__ == "__main__":

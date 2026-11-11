@@ -1,0 +1,39 @@
+{
+  "scope": "Owner-requested execution stop after complete B02, not full Phase2 completion.",
+  "stopped_at": "2026-11-11T15:51:16.353086+00:00",
+  "owner_instruction": "Complete all B02, then stop before another story.",
+  "story": "B02",
+  "acceptance_evidence": "docs/evidence/B02-acceptance.json",
+  "acceptance_sha256": "4d714fb277cd16227ec8d26d182ee25a417e5b9e88ea88e5fe429e340478dbcf",
+  "guest_writer": "none",
+  "builder_running": false,
+  "native_final_phase": "native-desktop-final-verified",
+  "native_container_exit": 0,
+  "original_target_backing_unchanged": true,
+  "cold_disks": {
+    "builder.qcow2": {
+      "bytes": 15677325312,
+      "mtime_ns": 1794410946714150737,
+      "device": 66306,
+      "inode": 11929204
+    },
+    "lfs-target.qcow2": {
+      "bytes": 54090596352,
+      "mtime_ns": 1794410946527152991,
+      "device": 66306,
+      "inode": 11929205
+    }
+  },
+  "git_cache": {
+    "archive": "guest /var/cache/toddy/build/git-2.55.0-qualified-1.tar.gz",
+    "sha256": "e1cca99c2c21213f9a5d90834abe1ba6085b794dba4f41b61ef156c7b723b7c2",
+    "bytes": 237578723,
+    "actual_restore_entries": 6824,
+    "qualified": true
+  },
+  "full_phase2_complete": false,
+  "G2": "pending",
+  "phase2_iso_available": false,
+  "physical_foundation_testing": "unperformed",
+  "next_action": "Wait for owner resumption. Then inspect actual Git/status/checkpoint/cold VM identities and B04 retained blocker/prerequisite state; read only B04/contracts required. Never replay completed B02 installs/tests or rebuild foundation."
+}

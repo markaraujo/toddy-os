@@ -4189,3 +4189,18 @@ Optional OpenCode/VS Code origin/terms/path/update/remove definitions remain
 unavailable, linked from shared catalog; no artifact or legal acceptance invented.
 Final acceptance audit found Tecla GUI still only CLI-qualified: selected native
 viewer/Git Terminal pass prepared; B02 remains in progress until completed.
+
+### B02 accepted; owner-requested execution stop — 2026-11-11
+
+Final normal GDM/PAM session proved Tecla US lower/upper level navigation/focus/close
+and Git2.55 version/repo creation in ordinary navy Terminal. Fixed800x400 Tecla
+window is explicit; no640px claim. All four B02 criteria audited against actual
+component proofs, manifest/legal/optional-unavailable status and measured budgets.
+Login observed within28.6s, idle max408.273MiB. Historical failures/skips preserved.
+B01/B02/B03 total23% weighted Phase2, G2 pending and physical foundation unperformed.
+Builder/native stopped, backing unchanged, Git RAM outputs qualified/restored and
+archived for cold recovery. Full execution pauses at the owner's complete-B02-then-
+stop boundary; no later story resumed. Planning progress reports now honor this
+later owner hold without erasing original Phase2 approval; focused regression added.
+See [delivery](B02-DESKTOP-DELIVERY.md), [criterion audit](evidence/B02-acceptance.json)
+and [stop/cold checkpoint](evidence/B02-completion-stop.json).

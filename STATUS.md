@@ -1,47 +1,16 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-11T15:26:49.443671+00:00
+Updated: 2026-11-11T15:51:16.353086+00:00
 
 Bootstrap: ready_for_development
 
-B01/B03 accepted13%; B02 native desktop/offline recovery/persistence/resource gates and Git install passed;360package inventory/308runtime projection and optional unavailable packaging status captured. Final selected Tecla GUI/Git Terminal and criteria/publication audit pending. Finish B02 then stop; no Phase2 ISO/G2/physical acceptance.
+B01/B02/B03 completed:23% weighted Phase2. B02 native reference desktop/Git/offline recovery/persistence/resources and evidence delivered. Execution paused on owner instruction after B02; no later story resumed. B04 retains unfinished proofs and is the next eligibility review after owner resumes. No Phase2 installable ISO/G2 or physical acceptance.
 
-Foundation: **100%** · Agentic desktop: **13%**
+Foundation: **100%** · Agentic desktop: **23%**
 
-G1: passed · G2: pending · Next: **B02**
+G1: passed · G2: pending · Next: **B04**
 
 No milestone earns credit without completed acceptance evidence.
-
-## Active story: B02 — Deliver the minimal branded GNOME desktop
-
-The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
-
-Last verified: 2026-11-11T15:26:49.443671+00:00
-
-Verified:
-
-- Normal native GDM/PAM Wayland owner login, Files local navigation/Trash restore, Editor open/type/save/relaunch and Settings navigation have real retained scanouts.
-- Native NetworkManager Settings wired on/off/reconnect, DHCP/DNS/HTTPS and active-client polkit checks passed; manager recovery passed in disposable guest. Restored-manager reboot persistence remains pending.
-- Installed Firefox153.7.0esr native open/input/navigation/process exit-reopen/profile persistence/Stop/TLS/offline/640px readability and five content-process NNP/seccomp/caps checks passed; original collector failure retained and reconciled read-only.
-- Owned navy desktop/launchers/Terminal defaults preserve user overrides across new D-Bus/reset. Actual native navy overview/Terminal commands/Portuguese text/tiled view and PipeWire/Pulse/WirePlumber HDA playback/mute/unmute passed with non-silent QEMU WAV capture.
-- Actual candidate BIOS+UEFI no-disk boots passed FUSE module/UID101 device open/direct mount denial/unload plus Landlock9/seccomp/namespaces. First no-udev fixture permission failure preserved; correction uses exact owned Systemd FUSE0666 rule only in volatile diagnostic.
-- Native linux-kernel7.1.8-1+toddy2 installed and full payload/Kmod lookup/APT checked. Coupled boot-config0.1-2+toddy2 retains exact menu/recovery bytes; original kernel0/post1 reverse-pin failure retained and resolved without kernel reinstall. Actual installed boot pending.
-- Fuse3.18.2-1+toddy1 native install2 recipe/post0/0,40owned paths, exact reviewed root SUID helper/default owner-only policy and UID101/NNP CLI/library API pass. First unreviewed-privilege rejection0rootchanges retained; only declared helper added to central policy. Real mount/signals/denial/unmount recovery pending.
-- Unmodified upstream hello/signals consumers compiled against installed libfuse3.so.4, no RPATH/SUID. Portal base1.22.1 and GNOME50.0/GTK1.15.3 backends now compiled/staged and owned-installed with recipe/post0/0. Base image/sound Bubblewrap validation enabled; GTK Settings/AppChooser/Lockdown enabled. Native desktop integration pending.
-- GTK4.22.4-1+toddy14 owned schema/legal-only update recipe/post0/0; all runtime bytes preserved,132schemas/1113keys preserved and2portal schemas/1key added. Actual installed Gio default-source134schemas/1114keys checked; no user values changed.
-- Combined native context3 passed: actual installed kernel config, normal GDM/PAM owner, real FUSE owner/helper mounts/other-UID denial/default allow_other refusal/unmount/SIGTERM8 cleanup/upstream signals0; portal dark-light-dark1/0/1 and real chooser allow0/cancel1/Close0+object removal. Context1/2 fixture failures preserved, passed helper results reused. Real scanouts retained.
-- Native offline Editor refused protected save after polkit cancellation; original unchanged. Actual29B autosaved draft before sole-process SIGKILL, Document Restored/SaveAs exact29B SHA verified; idle15second sample without agent/inference. Later distinct coldboot preserves file/user teal+dark and restored NM DHCP+DNS. Owned GRUB recovery selected by actual keyboard; running original foundation config/data/network verified. Earlier fixture/collector failures retained and corrected without OS rebuild/replay.
-- Pinned Git2.55.0 compile/test/stage0 and native install/post0/0. Full original shell aggregate31993success/0failed/388knownbroken/454skipped in1046groups; upstream count cleanup collector failure retained and corrected without rerun. Actual installed UID101/NNP repo/merge/clone/fsck, dirty-checkout preservation and missing-credential refusal passed. Qualified full6824entry RAM archive restore retained.
-- Observed360native packages and308package desktop/foundation projection with exact versions/native source hashes/owned legal documents;52additional integration packages explicitly require B12 composition review, no removal approval. Required icons/fonts/GVFS/portals explicit. Optional OpenCode/VS Code package paths/origin/terms/update/remove preparation linked to shared catalog; both unavailable, no unqualified install promise.
-
-Running: Builder running boot0110a6f4-8bfe-4b31-9375-1a3026021711; all compiler/install/cache jobs terminal. Final native Tecla/Git Terminal controller prepared, not dispatched yet. Git RAM cache archive/full restore qualified before next cold stop.
-
-Remaining:
-
-- Final selected native Tecla keyboard viewer open/focus/narrow-window/close and Git in ordinary Terminal; existing Tecla evidence covers CLI only.
-- Consolidate B02 criteria/evidence/usage/limits and publish verified final status. No Phase2 ISO/G2 or physical acceptance. Stop after B02.
-
-[Acceptance evidence](docs/evidence/B02-git-native.json)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |
@@ -59,7 +28,7 @@ Remaining:
 | [H12 — Verify foundation boot matrix and recovery](stories/H12.md) | foundation | 6 | completed |
 | [H13 — Deliver and accept foundation gate G1](stories/H13.md) | foundation | 4 | completed |
 | [B01 — Freeze the minimal Toddy architecture and delivery slices](stories/B01.md) | agentic | 5 | completed |
-| [B02 — Deliver the minimal branded GNOME desktop](stories/B02.md) | agentic | 10 | in_progress |
+| [B02 — Deliver the minimal branded GNOME desktop](stories/B02.md) | agentic | 10 | completed |
 | [B03 — Connect provider adapters and one optional local AI profile](stories/B03.md) | agentic | 8 | completed |
 | [B04 — Deliver native tools and the revocable privileged executor](stories/B04.md) | agentic | 8 | blocked |
 | [B05 — Persist tasks and recover interrupted system changes](stories/B05.md) | agentic | 10 | not_started |

@@ -1,0 +1,113 @@
+{
+  "scope": "Actual normal GDM/PAM owner, Tecla50 keyboard viewer lower/upper level navigation/focus/close and Git2.55 in ordinary navy Terminal on current GTK14/kernel2. No physical/all-screen/ISO/G2 acceptance.",
+  "report_sha256": "ddb61b44b3787a54711f700c672ed0bdf1585a2f307b4e32781642a775e21d81",
+  "dedicated_evidence_sha256": "3d1f3ac9c9e857429b43a7f98037b4a07b583329a1b2bbf00c70ebb5967dec9c",
+  "backing_unchanged": true,
+  "actual_qemu_exit": 0,
+  "native": {
+    "actual_tecla_process": {
+      "CapEff": "0000000000000000",
+      "NoNewPrivs": "0",
+      "pid": 1238,
+      "uid": 12402
+    },
+    "actual_terminal_process": {
+      "CapEff": "0000000000000000",
+      "NoNewPrivs": "0",
+      "pid": 1349,
+      "uid": 12402
+    },
+    "all_selected_exits_zero": true,
+    "gdm_stop": {
+      "args": [
+        "systemctl",
+        "stop",
+        "gdm.service"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    "input_sources": {
+      "args": [
+        "gsettings",
+        "get",
+        "org.gnome.desktop.input-sources",
+        "sources"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "[('xkb', 'us')]\n"
+    },
+    "owner_session": {
+      "properties": {
+        "Class": "user",
+        "Name": "toddy-preview",
+        "Seat": "seat0",
+        "State": "active",
+        "Type": "wayland"
+      },
+      "session_id": "2"
+    },
+    "package_versions": {
+      "git": "2.55.0-1+toddy1",
+      "gnome-terminal": "3.60.0-1+toddy2",
+      "gtk": "4.22.4-1+toddy14",
+      "tecla": "50.0-1+toddy1"
+    },
+    "schema_sha256": "5bc2947ffc5874cc735c33c2611bd6aa960061d7e6c992519efe984ea52d89e1",
+    "scope": "Final selected native Tecla keyboard viewer/focus/narrow window/close and Git in ordinary navy Terminal. Prior approved browser/files/editor/network/audio/portal proofs reused; no whole Phase2/physical/ISO acceptance.",
+    "tecla_closed": true,
+    "terminal_created_git_repository": {
+      "args": [
+        "git",
+        "-C",
+        "/home/toddy-preview/git-terminal-proof",
+        "rev-parse",
+        "--is-inside-work-tree"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "true\n"
+    },
+    "ui_phase_annotations": [
+      "keyboard-verified",
+      "keyboard-closed",
+      "git-terminal-verified"
+    ]
+  },
+  "observations": {
+    "keyboard_open_level1_level2_close": true,
+    "tecla_effective_window_pixels": [
+      800,
+      400
+    ],
+    "tecla_tiling_request": "Super+Left did not resize upstream fixed-size dialog. All keys/title/level controls visible at1280x800. No640px responsiveness claim for this viewer.",
+    "git_terminal": "Actual typed git --version output2.55.0 and git init created UID12402 repository; native observer independently verified worktree and Terminal process UID/caps.",
+    "scanout_method": "Actual QMP framebuffer, lossless PPM-to-PNG only; no mockup/artwork compositing."
+  },
+  "cold_boot_to_observed_login_upper_bound_seconds": 28.6,
+  "boot_measurement_method": "Host Docker StartedAt to original QMP first greeter frame mtime, conservative upper bound including container/QEMU/firmware/menu startup; not instrumented earliest appearance. First actual greeter image retained.",
+  "scanouts": {
+    "keyboard-lower": {
+      "image": "B02-final-keyboard-lower.png",
+      "original_native_scanout_sha256": "bcd05f1a051eb8d9a14a65df0d1436cf1f432e1a5f552a6c6f5a1d34c9e4e9fe",
+      "png_sha256": "0d061eef75c90c1176a59e01db6b0a52ab2f8f9590a7419cf7765342c0cfd54e"
+    },
+    "keyboard-upper": {
+      "image": "B02-final-keyboard-upper.png",
+      "original_native_scanout_sha256": "a97a2e2ef67e31a3c93e30598986b2816d885e1449799cf823af3cdfde41808d",
+      "png_sha256": "297c991de18bb68288ba419b40bf6dcf9a5e1b60e633ae3c954bae048f8a198c"
+    },
+    "git-terminal": {
+      "image": "B02-final-git-terminal.png",
+      "original_native_scanout_sha256": "9c6a6b27da0a481c484bcf994e796f29137ed25fa2210e1b9d40ecba7b798019",
+      "png_sha256": "382f81a7009a8b6ce298f653d20f9775930b6a83deeda04471974400e50acdac"
+    },
+    "login": {
+      "image": "B02-final-login.png",
+      "original_native_scanout_sha256": "247aefc79024953dec0fa88335e80ca5a93c33031eb943a6edf175ad2883350d",
+      "png_sha256": "d859550ea794218daa33a016e47d97298aa08045974786993a3d15da55da3666"
+    }
+  }
+}

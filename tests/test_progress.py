@@ -14,6 +14,17 @@ spec.loader.exec_module(project)
 
 
 class ProgressGates(unittest.TestCase):
+    def test_later_owner_hold_prevents_execution_without_erasing_phase_approval(self):
+        data = {'owner_review': {'phase_2_approved': True}}
+        self.assertTrue(project.phase2_execution_allowed(data))
+        data['execution_hold'] = {'status': 'paused_by_owner_after_B02'}
+        self.assertFalse(project.phase2_execution_allowed(data))
+        self.assertTrue(data['owner_review']['phase_2_approved'])
+        data.pop('execution_hold')
+        self.assertTrue(project.phase2_execution_allowed(data))
+        data['owner_review']['phase_2_approved'] = False
+        self.assertFalse(project.phase2_execution_allowed(data))
+
     def setUp(self):
         self.data = json.loads((ROOT / "status.json").read_text())
         # Tests use an unstarted fixture even as the real project progresses.

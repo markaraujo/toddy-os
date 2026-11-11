@@ -21,10 +21,12 @@ Planning, contract/catalog inputs and brand/UI concepts are prepared in the repo
 page includes selectable desktop/assistant/task/installer concepts. See
 [brand evidence](evidence/navy-brand-preview.md) and
 [Pages evidence](evidence/navy-pages-preview.md). Final review is complete; guest continuation is now explicitly authorized and recorded
-in [ADR-0113](adr/0113-owner-authorizes-phase2-implementation.md). B01 and B03 are completed. B02 has verified native GNOME owner login and scoped
-Files/Editor flows; network configuration is installed. Corrected browser, actual
-network/audio and integrated offline/recovery/resource gates remain pending. B04 is
-blocked on the actual logind/NM/polkit runtime, with headless executor proofs retained.
+in [ADR-0113](adr/0113-owner-authorizes-phase2-implementation.md). B01, B02 and B03 are completed (23% weighted Phase2). The native reference desktop,
+Git base, offline Editor/crash recovery, portal/FUSE/security, cold-boot state and
+recovery-entry checks are recorded in [B02 delivery](B02-DESKTOP-DELIVERY.md).
+Execution is paused at the owner's explicit complete-B02-then-stop boundary.
+B04 retains unfinished/headless proofs; B02 now supplies its native prerequisites.
+Do not start or resume a later story until the owner resumes execution.
 Follow the current checkpoint; do not reopen general planning on resume. repository design preparation does not satisfy
 B11 runtime acceptance. G1 is passed, G2 pending, physical hardware unverified.
 Do not interpret a screenshot mockup or an optional package candidate as a working

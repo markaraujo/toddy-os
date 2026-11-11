@@ -1,7 +1,7 @@
 # ADR-0228: Exact native FUSE helper privilege policy
 
 - Date: 2026-11-11
-- Status: Accepted implementation decision; native mount/privilege acceptance pending
+- Status: Accepted implementation and reference-guest native mount/privilege qualification
 
 The selected desktop portal closure needs source-built Fuse3.18.2 and the matching
 Linux7.1.8 module. Frozen BLFS13.1 postlfs/fuse.html explicitly installs
@@ -30,3 +30,13 @@ then resume only verified promotion/package creation; do not compile again.
 References: frozen BLFS13.1-systemd postlfs/fuse.html; exact Fuse3.18.2 LICENSE,
 util/fusermount.c and pinned source lock; ADR0039 package ownership normalization;
 ADR0110 isolated compiler/staging and controlled native transactions.
+
+## Native qualification closure — 2026-11-11
+
+Actual installed-kernel/helper owner mount/read/unmount, different-UID access and
+unmount denial, default allow_other refusal, SIGTERM cleanup and original upstream
+signals driver passed. The highlevel hello exit8 on SIGTERM is source-defined;
+actual no-mount cleanup plus original lowlevel driver0/session error15 verified
+the semantic result. Original fixture failures remain preserved. See
+[native evidence](../evidence/B02-fuse-portal-native.json). No global/host permission
+was relaxed and no physical or every-FUSE-consumer support is claimed.

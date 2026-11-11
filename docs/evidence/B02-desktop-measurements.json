@@ -1,0 +1,32 @@
+{
+  "scope": "B02 desktop stage only on QEMU/KVM4vCPU/4096MiB/virtual virtio GPU+HDA, no GPU passthrough or physical proof. B01 model profile uses8GiB separately; no inference loaded for these desktop measurements.",
+  "reference_cpu_count": 4,
+  "reference_ram_mib": 4096,
+  "desktop_idle": {
+    "sample_seconds": 15,
+    "sample_count": 3,
+    "method": "MemTotal minus MemAvailable from actual /proc/meminfo, accounting for reclaimable caches; aggregate /proc/stat delta over4CPUs. Editor closed, networking offline, no active agent/inference. Not the future B06 60second service budget.",
+    "used_mib_samples": [
+      407.859,
+      408.273,
+      408.273
+    ],
+    "maximum_used_mib": 408.273,
+    "cpu_nonidle_percent_all_cpus": 0.033344448149386086,
+    "budget_max_mib": 2048,
+    "memory_budget_passed": true,
+    "raw_evidence": "docs/evidence/B02-editor-persistence-native.json"
+  },
+  "cold_boot_to_login": {
+    "observed_upper_bound_seconds": 28.6,
+    "budget_max_seconds": 45,
+    "budget_passed": true,
+    "method": "Host Docker StartedAt to original QMP first greeter frame mtime, conservative upper bound including container/QEMU/firmware/menu startup; not instrumented earliest appearance. First actual greeter image retained.",
+    "evidence": "docs/evidence/B02-final-native-desktop.json"
+  },
+  "systemd_timing": {
+    "output": "Startup finished in 1.068s (kernel) + 3.389s (userspace) = 4.457s \ngraphical.target reached after 3.385s in userspace.\n",
+    "interpretation": "Kernel/userspace/systemd target accounting only; not boot-to-interactive-desktop latency."
+  },
+  "image_size": "Not measured or advertised: integration/build root still contains source caches/prototypes; B12 composes and measures actual install/live/installed roots."
+}

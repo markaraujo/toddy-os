@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "story": "B02",
+  "status": "accepted-reference-guest",
+  "accepted_at": "2026-11-11T15:48:10.684723+00:00",
+  "scope": "All four B02 acceptance criteria on the identified native virtual reference; not full Phase2/G2/installer/ISO/physical acceptance. Historical partial/failing artifacts retain their original scope.",
+  "criteria": [
+    {
+      "criterion": "Login and basic browser/files/terminal/editor/network/audio work in the reference guest using pinned owned packages.",
+      "result": "passed-reference-guest",
+      "observed": "Normal GDM/PAM owner, real keyboard/tablet, browser input/navigation/Stop/TLS/offline/restart, Files/Trash, Terminal/UTF8/Git, Editor save/recovery, network controls/DHCP/DNS/HTTPS and non-silent virtual HDA/mute. Final Tecla viewer level navigation/close.",
+      "evidence": [
+        {
+          "path": "docs/evidence/B02-native-owner-session.json",
+          "content_sha256": "37d6a9c6243449fcba496548756daf224d265b01999c7d3ab2603a9c8bda0de0"
+        },
+        {
+          "path": "docs/evidence/B02-trash-native-prefix.json",
+          "content_sha256": "e9b7b6da72af929561b1c024aa882e187a08819e18af11f1e87f72537ca6a07a"
+        },
+        {
+          "path": "docs/evidence/B02-browser-native.json",
+          "content_sha256": "9368bafe9c46a40538b557d4f9775c9023bbe09645ba0d7df8c5f91f200a4e4f"
+        },
+        {
+          "path": "docs/evidence/B02-network-native-prefix.json",
+          "content_sha256": "f066e2f304546b06c9d6d38cc73ac36a09556e47f56f551dc0e496e494bc2735"
+        },
+        {
+          "path": "docs/evidence/B02-network-native-recovery.json",
+          "content_sha256": "707911d9f0a51e6befa79f1c3a1589b56abd9d8c2c5b2f4444816330e89be9ec"
+        },
+        {
+          "path": "docs/evidence/B02-desktop-native-integration.json",
+          "content_sha256": "bb4c9fe0ad63524017284b372bc45711dc0650b56c50c2fb2a6eeadbf3e4d6b7"
+        },
+        {
+          "path": "docs/evidence/B02-final-native-desktop.json",
+          "content_sha256": "262bd64e0bf14e1f51cee46f2e4f9d40e7cd4c9a56cceea202d24dad3b9e2d0d"
+        },
+        {
+          "path": "docs/evidence/B02-editor-persistence-native.json",
+          "content_sha256": "63ad7060fae63a83074748f852ba28ab6392f7ff456bf55d283f48dd9b538060"
+        }
+      ]
+    },
+    {
+      "criterion": "The desktop stays usable without keys, models, network or active agent/inference; optional network applications fail clearly.",
+      "result": "passed-reference-guest",
+      "observed": "Normal native desktop and offline Editor operations with no installed Toddy agent, no desktop model acquisition/configuration prerequisite and no active agent/inference. Missing network failed clearly; native browser Stop/offline proof retained. Fresh fixture owner and desktop projection have no agent/model installation dependency; incidental build-source/prototype material is not a claim of a composed image.",
+      "evidence": [
+        {
+          "path": "docs/evidence/B02-browser-native.json",
+          "content_sha256": "9368bafe9c46a40538b557d4f9775c9023bbe09645ba0d7df8c5f91f200a4e4f"
+        },
+        {
+          "path": "docs/evidence/B02-desktop-native-integration.json",
+          "content_sha256": "bb4c9fe0ad63524017284b372bc45711dc0650b56c50c2fb2a6eeadbf3e4d6b7"
+        },
+        {
+          "path": "docs/evidence/B02-editor-persistence-native.json",
+          "content_sha256": "63ad7060fae63a83074748f852ba28ab6392f7ff456bf55d283f48dd9b538060"
+        },
+        {
+          "path": "docs/evidence/B02-desktop-runtime-manifest.json",
+          "content_sha256": "5b8b14ecc63944d1268cc83edaa40378b610ca57c9e5b5b04419ab1f2ab8ee84"
+        }
+      ]
+    },
+    {
+      "criterion": "Publish the minimal package manifest, resource measurements and optional-app packaging status; no unsupported package is advertised as working.",
+      "result": "passed-reference-guest",
+      "observed": "360observed native packages,308package retained-foundation/desktop projection with exact versions/source/legal records;52unselected integration packages explicitly await image-composition review. Measured login upper bound28.6s and idle408.273MiB within declared desktop budgets. OpenCode/VS Code definitions and shared catalog retain unavailable/unqualified optional status.",
+      "evidence": [
+        {
+          "path": "docs/evidence/B02-desktop-runtime-manifest.json",
+          "content_sha256": "5b8b14ecc63944d1268cc83edaa40378b610ca57c9e5b5b04419ab1f2ab8ee84"
+        },
+        {
+          "path": "docs/evidence/B02-desktop-measurements.json",
+          "content_sha256": "d32be132314eb51dc7ce9a934246b07a69076cfc9ec063b4c5d1e135f83dea7e"
+        },
+        {
+          "path": "config/phase2/desktop-runtime-roots.json",
+          "content_sha256": "fabf03ebe1b074e4ae2656e9baf55b2c6f59e72333e61731775486df06740342"
+        },
+        {
+          "path": "config/phase2/software-catalog.json",
+          "content_sha256": "bf112cbd339ad78b907d7ff0034c62a6b8b35c8ad2dc84ba38c0b8ba8d0151b0"
+        },
+        {
+          "path": "config/phase2/optional-app-packaging.json",
+          "content_sha256": "74ead5f07e97807d26c9a7b40bc4970182bcb6c2d095382c5e2c859072956bce"
+        }
+      ]
+    },
+    {
+      "criterion": "New browser/XML/network/privileged consumers have recorded security/ABI review and owned pinned dependencies; no silent frozen-foundation upgrade bypasses a failure.",
+      "result": "passed-reference-guest",
+      "observed": "Owned pinned native closure. Explicit same-ESR browser security overlay instead of silent foundation upgrade; actual browser process sandbox/TLS/runtime checks. XML external-resource and native consumer checks; NM/polkit recovery; exact single FUSE helper privilege policy with actual different-UID/allow_other denial and cancellation/unmount recovery. Git source/full suite/native ownership and credential/state refusal.",
+      "evidence": [
+        {
+          "path": "docs/adr/0225-firefox153-security-overlay.md",
+          "content_sha256": "215b67d806f5b6acf6348f5efe63bd3c74c817ee1dc7c139306f33d681cd7dab"
+        },
+        {
+          "path": "docs/evidence/B02-firefox-security-review.json",
+          "content_sha256": "7a1cac1848853677876426306d24843ccb3e2395f94d2b5ef600f6e140304198"
+        },
+        {
+          "path": "docs/evidence/B02-firefox-install.json",
+          "content_sha256": "47fabdb4cd6c9958a6cf3dc8a1aeca9d5a1bafa920cc90b2bb6963ac801765cd"
+        },
+        {
+          "path": "docs/evidence/B02-browser-native.json",
+          "content_sha256": "9368bafe9c46a40538b557d4f9775c9023bbe09645ba0d7df8c5f91f200a4e4f"
+        },
+        {
+          "path": "docs/evidence/B02-libxml2-install.json",
+          "content_sha256": "63a5956d653c012bf64a319df43975860cc78f6df4f89852a1be362bf10ba5cc"
+        },
+        {
+          "path": "docs/evidence/B02-polkit-standard-native.json",
+          "content_sha256": "06d8572c4b38b4e6aa8d507cfd76cff8f576fb4edea74e8803a524f4b8049f04"
+        },
+        {
+          "path": "docs/evidence/B02-network-native-prefix.json",
+          "content_sha256": "f066e2f304546b06c9d6d38cc73ac36a09556e47f56f551dc0e496e494bc2735"
+        },
+        {
+          "path": "docs/evidence/B02-network-native-recovery.json",
+          "content_sha256": "707911d9f0a51e6befa79f1c3a1589b56abd9d8c2c5b2f4444816330e89be9ec"
+        },
+        {
+          "path": "docs/adr/0228-fuse-native-helper-policy.md",
+          "content_sha256": "3f2eabc179d4f82086c29375db512c0d61d42999124da3613f845219fd766192"
+        },
+        {
+          "path": "docs/evidence/B02-fuse-portal-native.json",
+          "content_sha256": "b468f79f4f7f4a2c8c31436fc768cfed69ff58ccd40b981f44ee56bb1df4559d"
+        },
+        {
+          "path": "docs/evidence/B02-git-native.json",
+          "content_sha256": "6057c59efa9378afc356f2214ba38a03fd365d8f93a20778b38889f5270dbfc1"
+        }
+      ]
+    }
+  ],
+  "smoke_rows": {
+    "S01-B": "Desktop budgets measured with methods/caches/reference profile and no unexplained miss; service/entry/search measurements remain their owning stories.",
+    "S02": "Normal login and actual keyboard/mouse/apps/network/virtual sound passed, using linked component evidence.",
+    "S03": "Desktop works without installing/configuring a Toddy agent or model for the fresh owner. No active inference/agent; offline use verified. Development integration root retains nonrequired build/prototype material; final B12 composition remains separate."
+  },
+  "change_based_reuse": "Retain unchanged qualified browser/files/network/audio/native package proofs. Later FUSE/kernel/portal changes got directly affected native boot/helper/appearance/request tests. Git got original/native CLI plus final ordinary Terminal proof. No unchanged foundation/compiler/libc/physical/provider/soak matrix repeated.",
+  "limits": [
+    "Physical foundation/desktop/device testing remains unperformed.",
+    "No Phase2 installable ISO/checksum or G2 acceptance yet; B12/B13 composition/install/release gates remain required.",
+    "Tecla fixed800x400 fully visible at1280x800; requested tiling did not resize it, no640px claim.",
+    "Only selected portal/virtual HDA/wired NIC/US keyboard behavior was tested; no blanket camera/microphone/screen-sharing/Flatpak/physical-device qualification.",
+    "Optional software remains unavailable until exact artifact/terms/runtime/update/remove qualification.",
+    "Original fixture/collector failures, upstream known breakages and optional test skips are preserved; successful postconditions are not inferred from timeouts."
+  ],
+  "delivery_document": "docs/B02-DESKTOP-DELIVERY.md",
+  "owner_stop_boundary": "Complete all B02, then stop before later story; full Phase2 goal remains incomplete."
+}

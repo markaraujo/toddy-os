@@ -1,6 +1,6 @@
 # ADR-0225: Qualify the Firefox153 ESR security overlay before browser delivery
 
-Status: accepted selection; source integrity verified, qualification pending
+Status: accepted; selected153.7.0esr source/compiler/native runtime qualification complete for B02 reference guest
 Date: 2026-11-11
 Scope: B02 browser only; foundation and accepted desktop dependencies retained
 
@@ -59,3 +59,15 @@ Sources: [Mozilla ESR advisory index](https://www.mozilla.org/en-US/security/kno
 [official source](https://archive.mozilla.org/pub/firefox/releases/153.7.0esr/source/)
 and [publisher checksums](https://archive.mozilla.org/pub/firefox/releases/153.7.0esr/SHA512SUMS),
 observed2026-11-11. Historical SpiderMonkey overlay practice is ADR0147.
+
+## Qualification closure — 2026-11-11
+
+The original review remains a dated source-selection record. Separate security
+compile/stage/owned install records and the actual native browser evidence now
+qualify153.7.0esr for B02: input/navigation/Stop/TLS/offline/reopen/profile and
+content-process NNP/seccomp/capability checks. Earlier collector failure was
+reconciled against unchanged captured per-PID evidence, without runtime replay.
+See [native browser](../evidence/B02-browser-native.json),
+[owned install](../evidence/B02-firefox-install.json) and
+[B02 acceptance](../evidence/B02-acceptance.json). This is not physical/all-browser-
+feature/Phase2 ISO or G2 acceptance. Foundation versions were not silently replaced.
