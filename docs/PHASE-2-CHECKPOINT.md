@@ -133,3 +133,15 @@ Correction1 records actual retained draft bytes before login, permits only exact
 typed body+one/twoLF, reuses refusal proof; next phase2_native_editor_persist_resume.py
 NEW native-desktop-persist-runtime-2 over quiescent context1, all ancestors readonly.
 No package/compiler/previous operations replay.
+
+Persistence context2 VERIFIED0, terminal/stopped/backing unchanged. Retained draft
+actually29B (typed text+2LF; source implicit newline), SIGKILL of sole UID12402
+Editor observed, native Document Restored and SaveAs editor-recovered.txt29B exact
+SHA f556fab26c57c36049693aa37559b1eeede5a83b2fd84b3f675ce8156e187666.
+Offline before/during Editor; denied polkit/save/protected original reused from1.
+Native15second idle sample and359installed package records captured; no agent.
+Networking restored before clean shutdown; b02-persistence.json contains boot ID,
+file/protected hashes and user accent teal. Next commit/run
+phase2_native_desktop_reboot.py NEW native-desktop-reboot-runtime-1 over quiescent
+context2 plus exact readonly ancestors, no GUI/write replay; verify distinct boot
+IDs/actual saved bytes/user dconf teal+prefer-dark/NM DHCP+DNS after reboot.
