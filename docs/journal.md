@@ -3590,3 +3590,11 @@ GID drop for only remaining checks on a new normal owner seat, reusing prior GUI
 proof. Failure ledger records zero corrective attempts for this new wrapper cause.
 Checkpoint condensed to current authoritative state and exact next action; older
 identities/evidence remain in this journal, story and immutable Git history.
+
+### B02 — Native remaining owner checks correction prepared
+
+Replace absent external runuser with Python UID/GID/groups drop and explicit
+owner environment. Strict new-context followup checks prior raw failure/report
+SHA/GUI prefix/cold base/container identity and reuses accepted file transitions.
+Only native URI, active-client policy challenge and owner record remain; no
+package recovery or GUI write replay. One bounded correction prepared.

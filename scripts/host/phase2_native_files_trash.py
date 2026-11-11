@@ -10,12 +10,15 @@ import phase2_vm
 import vm
 import phase2_gdm_owner_control
 ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
+FOLLOWUP=sys.argv[1:]==['--remaining-owner-checks']
 CONTEXT=ROOT/'.local/phase2/native-files-trash-runtime-1'
 CAPTURE_STOP=threading.Event()
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 
 def main():
-    assert len(sys.argv)==1
+    global CONTEXT
+    assert len(sys.argv)==1 or FOLLOWUP
+    if FOLLOWUP:CONTEXT=ROOT/'.local/phase2/native-files-trash-runtime-2'
     custody=ROOT/'.local/phase2/settings-scratch-custody-4'
     retained=json.loads((custody/'result.json').read_text());assert retained['state']=='complete'
     assert (custody/'restore-validation.exit').read_text().strip()=='0'
@@ -25,11 +28,28 @@ def main():
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip(),'Commit reviewed inputs before native boot'
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
     lock=open(vm.VM/'native-boot-test.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB);boot.refuse_running_tests()
-    probe=(ROOT/'scripts/host/phase2-native-files-trash-probe.py').read_bytes()
+    probe=(ROOT/'scripts/host'/('phase2-native-files-owner-check-probe.py' if FOLLOWUP else 'phase2-native-files-trash-probe.py')).read_bytes()
     code="from pathlib import Path\nimport fcntl,hashlib,json,subprocess\nsubprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)\nlock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)\nassert not list(Path('/var/log/toddy/build').glob('*.running.json'))\nversions={'gnome-shell':'50.4-1+toddy1','gtk':'4.22.4-1+toddy13','gdm':'50.2-1+toddy1','mutter':'50.4-1+toddy1','gstreamer':'1.28.6-1+toddy1','gst-plugins-base':'1.28.6-1+toddy1','nautilus':'50.2.2-1+toddy1','localsearch':'3.11.1-1+toddy1','gvfs':'1.60.2-1+toddy1'}\nfiles=0\nfor name,version in versions.items():\n assert subprocess.check_output(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Version}',name],text=True)==version\n r=json.loads(Path('/var/log/toddy/packages',name+'_'+version+'_amd64.json').read_text());assert r['installed']\n for n,row in r['payload'].items():\n  if 'sha256' in row:\n   p=Path('/mnt/lfs')/n.lstrip('/');assert hashlib.sha256(p.read_bytes()).hexdigest()==row['sha256'];files+=1\nfor step in ['b02-gnome-shell-install','b02-nautilus-install','b02-gvfs-install','b02-gvfs-schema-union-install','b02-gstreamer-install','b02-gst-plugins-base-install']:\n r=json.loads(Path('/var/log/toddy/build',step+'.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0\nprint(json.dumps({'versions':versions,'verified_native_files':files,'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'target_serial':'TODDY-LFS-TARGET','native_kernel_expected':'7.1.8-toddy'}))\n"
     code += "sys_path='/opt/toddy-build/scripts/build/phase2'\nimport sys\nsys.path.insert(0,sys_path)\nfrom verify_settings_scratch_restore import verify\nr=json.loads(Path('/var/log/toddy/phase2/settings-scratch-custody-4.json').read_text())\nassert r['state']=='archive-stream-complete-source-unchanged' and r['boot_id']==Path('/proc/sys/kernel/random/boot_id').read_text().strip()\nverify(Path('/run/toddy-samba-client-1'),r)\n"
-    accepted=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
-    accepted_record=json.loads(accepted.stdout)
+    if FOLLOWUP:
+        previous=ROOT/'.local/phase2/native-files-trash-runtime-1'
+        prior=json.loads((previous/'result.json').read_text());raw=json.loads((previous/'native-report.json').read_text())
+        prefix=json.loads((ROOT/'.local/phase2/trash-native-prefix-qualified-1.json').read_text())
+        assert prior['phase']=='native-report-recorded' and prior['backing_unchanged'] and not prior['native_selected_passed']
+        assert hashlib.sha256(json.dumps(raw,sort_keys=True).encode()).hexdigest()==prior['summary']['report_sha256']==prefix['native_report_sha256']
+        assert prefix['state']=='qualified-gui-prefix-only' and all(raw['file_postconditions'].values())
+        assert raw['error']=={'type':'FileNotFoundError','message':"[Errno 2] No such file or directory: 'runuser'"}
+        assert 'installed_trash_info' not in raw and 'unprivileged_client_authorization' not in raw
+        original=json.loads(subprocess.check_output(['docker','inspect',prior['container_id']],text=True))[0]
+        assert not original['State']['Running'] and original['State']['ExitCode']==0
+        assert original['Config']['Labels']['toddy.boot-test']==prior['run_id']
+        assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==prior['source_identity']==prefix['source_identity']
+        assert not subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()
+        probe=probe.replace(b'REUSED_TRASH_PREFIX = None',('REUSED_TRASH_PREFIX = '+repr({'report_sha256':prefix['native_report_sha256'],'file_postconditions':raw['file_postconditions'],'scope':'Prior actual GUI observations only; no writes replayed'})).encode())
+        accepted_record=prior['accepted']
+    else:
+        accepted=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
+        accepted_record=json.loads(accepted.stdout)
     CONTEXT.mkdir()
     state={'scope':'Installed Files affected Trash browse/restore/recovery and unprivileged noninteractive policy challenge; no complete B02/admin-write/hardware acceptance',
            'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
@@ -42,9 +62,10 @@ def main():
         part.write_text(json.dumps(state,indent=2)+'\n');part.replace(CONTEXT/'result.json')
         print(json.dumps({'phase':state['phase'],'context':str(CONTEXT)}),flush=True)
     save()
-    with (CONTEXT/'builder-stop.log').open('x') as log:
-        state['phase']='stopping-builder';save()
-        run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
+    if not FOLLOWUP:
+        with (CONTEXT/'builder-stop.log').open('x') as log:
+            state['phase']='stopping-builder';save()
+            run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
     assert subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()==''
     state['phase']='builder-stopped';save()
     source=WORK/'lfs-target.qcow2';assert source.is_file() and not source.is_symlink()

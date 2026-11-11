@@ -31,23 +31,22 @@ Do not reset any older cause/input budgets after compaction.
 
 ## Exact next action
 
-Inspect actual Git/container/base identity and prefix proof. Implement a STRICT
-remaining-checks followup of phase2_native_files_trash.py using the existing
-followup pattern in phase2_native_nautilus.py: require prior terminal container0,
-base unchanged, reportSHA/error and qualified GUI prefix; use a NEW context.
-Parent is still cold and unchanged, so do not restart/recover it merely to run
-remaining native checks. Reuse accepted5110payload hashes and current versions.
-Verify gio/pkcheck executable paths before dispatch; owned Polkit stage lists
-usr/bin/pkcheck in evidence/B02-polkit-install.json. Replace external runuser with
-Python subprocess.run(user=12402,group=12402,extra_groups=[],cwd=home,env=explicit).
+One bounded correction is PREPARED, not executed. New native owner-check probe
+uses direct Python subprocess UID12402/GID12402/empty extra groups and explicit
+owner environment; asserts owned gio/pkcheck executable paths. No runuser package
+added. Followup --remaining-owner-checks strictly verifies prior report/error/
+GUI prefix, terminal container0/label and unchanged cold base, then reuses5110
+accepted payload hashes and four prior GUI postconditions; no trash/restore writes.
 
-New normal GDM/PAM user seat; only login/open Files setup, installed gio info
-trash:/// and noninteractive pkcheck for the actual active Files PID remain.
-Require expected authorization challenge2 (no -u/credentials/privileged write),
-real owner-session properties and clean GDM stop/report/base. Reuse prior four
-GUI transition/content postconditions explicitly, do NOT repeat trash/restore
-writes or unchanged compile/local suites. Preserve any new failure and its cause.
-The full native gate remains unqualified until these remaining checks pass.
+EXACT NEXT ACTION: commit reviewed controller/new probe, then dispatch ONCE
+python3 -u scripts/host/phase2_native_files_trash.py --remaining-owner-checks
+into a NEW controller log/context native-files-trash-runtime-2. No builder
+recovery needed; parent remains cold/unchanged. Normal GDM/PAM login, open Files
+and keep window open, then DONE. Only gio info trash:/// and noninteractive
+pkcheck for active Files PID (expected2/no credentials) plus actual owner-session
+properties remain. Preserve terminal report/base, qualify combined gate only on
+verified expected outcomes. Do not rerun accepted GUI writes or compiler suites.
+New wrapper cause has one prepared correction, zero failed corrections.
 
 ## Current packages, cache and recovery
 
