@@ -125,15 +125,28 @@ Exact native4 full report imported root0600 as
 /var/log/toddy/phase2/native-localsearch-functional-report-4.json; qualifier requires
 its canonical SHA plus original source/compile/stage maps. No tests repeated.
 
-EXACT NEXT: commit/publish the prepared packaging slice after focused repository
-checks, run phase2_sync.py --metadata-only, then read-only qualify_localsearch
-and dependency/stage/source/archive/preexisting-job/resource preflight. If clear,
-dispatch ONE native full-root run_step b02-localsearch-install using
-localsearch-install.sh/localsearch-check.sh. Inspect actual terminal recipe/post
-codes and installed payload before any repeat. Keep current schema cache unchanged;
-installed CLI checks do not prove the new miner schemas are globally registered.
-After actual package0/0, integrate its4new stock schema files via same-version
-owned GTK union, preserving current122schema/1060key contracts; then Nautilus.
+Native LocalSearch package is now INSTALLED/qualified for CLI/ABI use.
+Step b02-localsearch-install actual recipe2694 recipe/post0/0,153changed paths,
+300payload entries; archiveSHA
+b0031798c7603d4eda0c78c37e513298ab872261e3fc1be47f9aa7e8009ec238.
+[Install evidence](evidence/B02-localsearch-install.json) records all133original
+stage regular files/links identical,21installed ELFs resolved without private
+build paths, no SUID/SGID, user-only activation definitions, exact source legal
+notices, autostart conffile, APT and installed UID101/NNP CLI version/unknown-command
+refusal/help/recovery. Native9program/20case evidence reused, no replay.
+No indexer service started/enabled by this transaction. No guest writer remains.
+Target free17,345,110,016B. Never replay compiler/stage/native tests/installation.
+
+EXACT NEXT: integrate the4installed stock LocalSearch schema source files into
+the existing GTK-owned shared cache before installed service/Nautilus validation.
+Current GTK4.22.4-1+toddy10/cache122schemas/1060keys remains unchanged. Prepare
+fresh localsearch-schema-union-1 input/work and strict baseline-preserving build
+using existing schema_union_build.py. Require current GTK archive/payload/cache
+and all installed source owners/versions/hashes; retain old contracts exactly.
+After actual union0, promote only cache/legal metadata as GTK4.22.4-1+toddy11
+using tmpfs staging and a full controlled native transaction. Preserve runtime
+GTK bytes and all user preferences. No guessed schema/key counts or success.
+Then proceed to pinned Nautilus prerequisites/build and real installed search/UI.
 
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated

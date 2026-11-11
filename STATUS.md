@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-11T02:53:29.712195+00:00
+Updated: 2026-11-11T03:06:14.778155+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,10 +16,11 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T02:53:29.712195+00:00
+Last verified: 2026-11-11T03:06:14.778155+00:00
 
 Verified:
 
+- Owned native LocalSearch3.11.1 installed recipe/post0/0,153changed paths/300payload entries. All133original stage files and links,21ELF ABI/APT, no SUID/SGID, user-only activation/legal/autostart conffile and UID101/NNP CLI refusal/help/recovery passed. Native9program/20case proof reused. No service activation or global schema-cache integration yet.
 - Actual native LocalSearch4 passed all9selected original programs/20expected search/inhibit/reset and malicious-extractor denial cases, positive controls UID101/NNP/caps0, source/compile/stage unchanged, container0/base unchanged. ADR0220 bounded extension succeeded;13accepted portable programs not replayed. Native package/Nautilus/GUI still pending.
 - Independent private target device profile1 passed UID101/NNP/caps0, device I/O and root/network refusal with global placeholders unchanged. Exact readonly-BUILDROOT original LocalSearch helper/private-bus SDK5 passed2real GIO cycles;770source/403compile/133stage files unchanged. Native4 preflight-only passed; no functional LocalSearch acceptance. ADR0220 preserves all parked budgets.
 - Native normal GDM/PAM owner login/session2 seat0 Wayland verified, actual keyboard/pointer GNOME search and Editor open/type/save/quit/relaunch/maximize observed. Native Terminal whoami/cat/sha256sum matched saved toddy-native-editor+LF bytes. Settings Network/Appearance navigation and Dark tile selection observed; NetworkManager inactive and global theme propagation unqualified. Container0/base unchanged; no full B02 acceptance.
@@ -193,7 +194,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: Native GNOME owner/selected GUI and LocalSearch9program/20case gates verified. Builder/cache recovered on boot71632310. Native LocalSearch packaging profile/qualifier/CLI-ABI checks prepared; transaction and shared-schema integration pending before Nautilus. Network/audio/browser/global theme/terminal defaults/full B02 pending. Complete all B02, then stop.
+Running: LocalSearch native package installed and CLI/ABI verified. Next same-version GTK shared-schema union before installed search and Nautilus. Native GNOME owner/selected GUI proof retained; network/audio/browser/global theme/terminal defaults/full B02 pending. Complete all B02, then stop.
 
 Remaining:
 

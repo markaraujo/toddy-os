@@ -1,0 +1,88 @@
+{
+  "native": {
+    "step": "b02-localsearch-install",
+    "started": "2026-11-11T03:03:59.171638+00:00",
+    "finished": "2026-11-11T03:04:16.623147+00:00",
+    "recipe_pid": 2694,
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 153,
+    "recipe_sha256": "715902da09b06f000ee0e23ae0500de148d68b7a797af59faa2b30d0fea02ce3",
+    "postcheck_sha256": "f3b440034097d85bacd489ebe7063e6d244088d6a26f83a0a2b25044c0a3a1ef",
+    "log_sha256": "e2c74684ec20d859a892bb026a0b601a10d7c999e603aa2bb89b8d9faea7c364"
+  },
+  "archive_sha256": "b0031798c7603d4eda0c78c37e513298ab872261e3fc1be47f9aa7e8009ec238",
+  "payload_entries": 300,
+  "source_inventory": [
+    {
+      "name": "localsearch",
+      "version": "3.11.1",
+      "filename": "localsearch-3.11.1.tar.xz",
+      "url": "https://download.gnome.org/sources/localsearch/3.11/localsearch-3.11.1.tar.xz",
+      "sha256": "7b39a6c28a8acf2b172f15b2fb5ee7c7a3764c447c2f4a14caa239b7ebe61942",
+      "reference": "BLFS13.1-systemd gnome/localsearch.html",
+      "book_page_sha256": "6183b9afef8f1efeb554e79f93958ac7affe921ab8d748d9ab874abe0f9e0b4e",
+      "book_md5": "1406955c072af72776fdcbb9b12dc103",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    }
+  ],
+  "installed": {
+    "scope": "Owned LocalSearch3.11.1 exact installed stage,21ELF ABI/APT, installed UID101/NNP CLI version/invalid-command refusal/help/recovery. Reuses real native9program/20case search/denial proof for identical staged binaries. Shared system schema cache integration, installed user service/search and Nautilus/GUI remain pending. No service enabled or started.",
+    "native_functional_report_sha256": "99a4845d8fe077955db8f39e775a1153f93a661642142b08cf233ba10a9e7e08",
+    "installed_identical_regular_files": 133,
+    "installed_ELF_count": 21,
+    "no_setuid_sgid": true,
+    "user_activation_definitions_only": true,
+    "installed_cli_runs": [
+      {
+        "arguments": [
+          "--version"
+        ],
+        "exit": 0,
+        "stdout": "LocalSearch 3.11.1\n\nThis program is free software and comes without any warranty.\nIt is licensed under version 2 or later of the General Public License which can be viewed at:\n\n  http://www.gnu.org/licenses/gpl.txt\n\n",
+        "stderr": ""
+      },
+      {
+        "arguments": [
+          "toddy-no-such-command"
+        ],
+        "exit": 1,
+        "stdout": "",
+        "stderr": "\u201ctoddy-no-such-command\u201d is not a localsearch command. See \u201clocalsearch --help\u201d\n"
+      },
+      {
+        "arguments": [
+          "--help"
+        ],
+        "exit": 0,
+        "stdout": "usage: localsearch [--version] [--help]\n            <command> [<args>]\n\nAvailable localsearch commands are:\n   help           Show help on subcommands\n   extract        Show metadata extractor output\n   index          List and change indexed folders\n   info           Retrieve information available for files and resources\n   inhibit        Inhibit indexing temporarily\n   reset          Erase the indexed data\n   search         Search for content\n   status         Provide status and statistics on the data indexed\n   tag            Add, remove and list tags\n   test-sandbox   Sandbox for a testing environment\n\nSee \u201clocalsearch help <command>\u201d to read about a specific subcommand.\n",
+        "stderr": ""
+      },
+      {
+        "arguments": [
+          "--version"
+        ],
+        "exit": 0,
+        "stdout": "LocalSearch 3.11.1\n\nThis program is free software and comes without any warranty.\nIt is licensed under version 2 or later of the General Public License which can be viewed at:\n\n  http://www.gnu.org/licenses/gpl.txt\n\n",
+        "stderr": ""
+      }
+    ]
+  },
+  "receipt_sha256": "d3a72878fcbed13ea3e62e2547c21b86785cae360ad884f95e3f82bac009dbb5",
+  "target_available": 17345110016,
+  "raw_archive": {
+    "path": ".local/phase2/exports/B02-localsearch-install-evidence.tar.gz",
+    "sha256": "524b34a0478eef8e621c8e2b210db9cd785389f7fa4a4972c9f3362e7b6259ba",
+    "bytes": 201574,
+    "contents": [
+      "build/b02-localsearch-install.success.json",
+      "build/b02-localsearch-install.log",
+      "build/b02-localsearch-install.manifest.json",
+      "packages/localsearch_3.11.1-1+toddy1_amd64.json",
+      "phase2/localsearch-installed-consumer.json",
+      "phase2/native-localsearch-functional-report-4.json"
+    ]
+  },
+  "scope": "Owned native LocalSearch3.11.1 package and installed CLI/ABI/APT only; native functional proof reused for identical binaries. Global schema cache/new installed service/search/Nautilus GUI pending."
+}
