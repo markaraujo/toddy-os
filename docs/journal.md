@@ -3510,3 +3510,14 @@ type/default/range contracts.906GTK runtime entries unchanged; no user values
 written. Raw transaction/job/package records retained. Installed Files GUI,
 nonroot CLI/icons/MIME pending. Preserve a new changed-cache custody generation
 before another cold native test; generation2 lacks the new promotion replica.
+
+### B02 — Exact new cache custody and installed Files GUI preparation
+
+Generation3 custody preserved all generation2 bytes/metadata/hardlink classes and
+added only the new GTK12 promotion replica.440,356,583B archive retained; actual
+isolated restoration0 verified82,547entries/39,521distinct regular inode classes.
+Recovery supports strict generation3 without replaying older identities. New
+normal GDM/PAM installed-Files controller uses the existing private-memory
+credential transport, read-only base/disposable overlay and actual QMP input.
+Root postconditions distinguish fixture seeds from GUI creation/rename/copy/trash.
+Native execution remains next; no screenshots or GUI acceptance fabricated.

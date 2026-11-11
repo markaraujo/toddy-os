@@ -1,0 +1,25 @@
+{
+  "scope": "Generation3 exact compiler/source/stage and new GTK12 schema promotion custody with real isolated restoration. No native Files GUI/B02/hardware acceptance. Generations1/2 unchanged.",
+  "custody": {
+    "state": "complete",
+    "generation": 3,
+    "prior_generation_files_metadata_and_hardlinks_unchanged": true,
+    "archive_sha256": "9d6938b426ef0ef3f781bda5b6ccf890aeac657504302fe03c4153288066a64c",
+    "archive_bytes": 440356583,
+    "verified_entries": 82547,
+    "verified_hardlinks": 35017,
+    "stale_sockets_omitted": 0,
+    "guest_receipt_sha256": "e4f0cc844e4defa2847cbde31ad572bc42bd1f3cf6d2167d419fc91adc0cc9be",
+    "host_available_after": 110790275072,
+    "recovery": "Verify archive SHA, restore into the same fresh 2 GiB tmpfs with numeric ownership/ACL/xattrs/sparse/hardlinks, compare all file hashes and symlink targets to guest-receipt.json before remounting the recorded exact bind aliases. Do not replay source preparation, compiler jobs, fixtures or package transactions."
+  },
+  "actual_restore": {
+    "state": "complete",
+    "verified_entries": 82547,
+    "verified_distinct_regular_inodes": 39521,
+    "exact_bytes_modes_owners_timestamps_symlinks_hardlinks": true
+  },
+  "guest_boot_id": "cbde87fc-f1a3-4d33-806f-25f8e25d8ede",
+  "recorded_mounts": 17,
+  "generation2_entries_unchanged": true
+}

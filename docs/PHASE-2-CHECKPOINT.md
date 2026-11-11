@@ -25,17 +25,30 @@ default source exposes131schemas/1111keys, six Nautilus IDs added. CacheSHA
 replay. Host controller/session10990 terminal0, no guest writer remains.
 Do not replay union preparation, job or native transaction.
 
-EXACT NEXT ACTION: prepare the installed Files GUI probe from the existing normal
-GDM/PAM owner controller and exact current package versions; first retain/qualify
-the changed scratch cache before any cold stop. Existing generation2 excludes
-new gtk-nautilus-schema-promotion-1. Extend custody/recovery with a strict NEW
-generation3 and current nautilus-native3-scratch-restored-1 boot receipt (existing
-generation2 producer currently requires the old LocalSearch4 boot). Compare all
-prior generation bytes/metadata/hardlink classes and verify actual isolated
-restoration; never overwrite/replay generations1/2 or stop before new custody.
-Builder boot cbde87fc-f1a3-4d33-806f-25f8e25d8ede remains running, current
-GTK12/cache above. Source/compiler/Nautilus fixture unchanged.
-Installed GUI/nonroot CLI/icon/MIME remain pending.
+Generation3 cache custody and ACTUAL isolated restoration are COMPLETE.
+[Proof](evidence/B02-files-gui-input-custody.json):82,547entries/39,521regular inode
+classes/35,017hardlinks,17mount records, no stale sockets. Prior generation2 files,
+metadata and hardlink equivalence unchanged. Archive440,356,583B/SHA256
+9d6938b426ef0ef3f781bda5b6ccf890aeac657504302fe03c4153288066a64c.
+Guest receiptSHAe4f0cc844e4defa2847cbde31ad572bc42bd1f3cf6d2167d419fc91adc0cc9be.
+Strict recovery --generation3 added; never replay completed custody1/2/3.
+Same2GiB tmpfs actual restore verified0 under private Docker tmpfs/no-network,
+read-only archive, exact owner/mode/nanosecond timestamps/link topology/bytes.
+Host free110,790,275,072B after archive. Builder boot
+cbde87fc-f1a3-4d33-806f-25f8e25d8ede still running, no guest writer.
+
+EXACT NEXT ACTION: commit reviewed new controller/probe, then dispatch ONCE
+python3 -u scripts/host/phase2_native_files_gui.py to a new controller log.
+It verifies exact current package payloads and complete unchanged live cache,
+stops builder once and boots disposable native-files-gui-runtime-1 (no NIC).
+Normal GDM/PAM authentication uses existing private-memory fixture channel.
+Use control socket/QMP real input; capture/review each affected native UI state.
+Synthetic source/deletion seed files are explicitly fixture data. GUI must create
+and rename folder to Documents/toddy-renamed, copy/rename seed to toddy-copy,
+trash toddy-delete. Only actual files/postconditions plus observed input/scanout
+qualify these actions. Do not send DONE until observed operations are complete;
+failed postconditions remain failures. No actual GUI test started yet. Other
+B02 browser/network/audio/offline/theme/persistence/recovery gates remain.
 
 ### Verified recovery and packaging provenance
 

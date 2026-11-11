@@ -79,7 +79,7 @@ def main():
     global CONTEXT
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--receipt',default='native-owner-scratch-restored-1')
-    parser.add_argument('--generation',type=int,choices=[1,2],default=1)
+    parser.add_argument('--generation',type=int,choices=[1,2,3],default=1)
     args=parser.parse_args()
     CONTEXT=ROOT/'.local/phase2'/('settings-scratch-custody-'+str(args.generation))
     assert re.fullmatch(r'[a-z][a-z0-9-]{1,63}',args.receipt)

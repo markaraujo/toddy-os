@@ -26,11 +26,18 @@ selected=[r for r in mounts if r['source'].startswith('toddy-samba-client-1')]
 assert any(r['target']==str(root) and r['fstype']=='tmpfs' for r in selected)
 assert os.statvfs(root).f_blocks*os.statvfs(root).f_frsize==2*1024**3
 if generation==1:assert expected_boot=='0933ee87-f0bc-4074-9491-8b4e6892121f' and any(r['target']==str(root) and r['id']==580 for r in selected)
-else:
+elif generation==2:
  recovery=json.loads(Path('/var/log/toddy/phase2/localsearch4-scratch-restored-1.json').read_text());assert recovery['state']=='complete' and recovery['boot_id']==expected_boot
  assert Path('/var/log/toddy/phase2/nautilus-1.exit').read_text().strip()=='0'
  for name in ['b02-localsearch-install','b02-localsearch-schema-union-install']:
   r=json.loads(Path('/var/log/toddy/build',name+'.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0
+else:
+ assert generation==3
+ recovery=json.loads(Path('/var/log/toddy/phase2/nautilus-native3-scratch-restored-1.json').read_text());assert recovery['state']=='complete' and recovery['boot_id']==expected_boot
+ assert recovery['archive_sha256']=='89add46aea68181669f8aa88ad5bb3ef32985cdb87661ec37b92bfc76e48cfaa'
+ for name in ['b02-nautilus-install','b02-nautilus-schema-union-install']:
+  r=json.loads(Path('/var/log/toddy/build',name+'.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0
+ assert subprocess.check_output(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Version}','gtk'],text=True)=='4.22.4-1+toddy12'
 # No live fixture process is allowed. Old sockets have no restorable contents.
 processes=subprocess.check_output(['ps','-eo','pid,args'],text=True)
 assert not any('smbd --foreground' in s or 'smbd -F' in s for s in processes.splitlines())
@@ -50,8 +57,8 @@ def inventory():
 before=inventory()
 receipt=Path('/var/log/toddy/phase2')/('settings-scratch-custody-'+str(generation)+'.json')
 assert not receipt.exists(),'Inspect archive and receipt; never replay custody'
-if generation==2:
- old=json.loads(Path('/var/log/toddy/phase2/settings-scratch-custody-1.json').read_text());assert old['state']=='archive-stream-complete-source-unchanged'
+if generation>1:
+ old=json.loads((Path('/var/log/toddy/phase2')/('settings-scratch-custody-'+str(generation-1)+'.json')).read_text());assert old['state']=='archive-stream-complete-source-unchanged'
  current={r['path']:r for r in before};forward={};reverse={}
  for row in old['inventory']:
   if row['type']=='stale-socket':continue
@@ -60,7 +67,7 @@ if generation==2:
   if row['type']=='file':
    origin=tuple(row['hardlink_identity']);restored=tuple(actual['hardlink_identity'])
    assert forward.setdefault(origin,restored)==restored and reverse.setdefault(restored,origin)==origin
-state={'state':'archiving','boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'mounts':selected,'generation':generation,'prior_generation_files_metadata_and_hardlinks_unchanged':generation==2,'inventory':before,'scope':'Preserve all regular source/compiler/stage/fixture-result bytes and symlinks/hardlinks; stale sockets have no restorable payload. No guest files removed or builder stopped.'}
+state={'state':'archiving','boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'mounts':selected,'generation':generation,'prior_generation_files_metadata_and_hardlinks_unchanged':generation>1,'inventory':before,'scope':'Preserve all regular source/compiler/stage/fixture-result bytes and symlinks/hardlinks; stale sockets have no restorable payload. No guest files removed or builder stopped.'}
 receipt.write_text(json.dumps(state,indent=2)+'\n')
 sockets=[r['path'] for r in before if r['type']=='stale-socket']
 cmd=['tar','--create','--gzip','--file=-','--numeric-owner','--acls','--xattrs','--sparse','--one-file-system']
@@ -77,7 +84,7 @@ receipt.write_text(json.dumps(state,indent=2)+'\n')
 def main():
     global CONTEXT
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--generation',type=int,choices=[1,2],default=1)
+    parser.add_argument('--generation',type=int,choices=[1,2,3],default=1)
     args=parser.parse_args()
     CONTEXT=ROOT/'.local/phase2'/('settings-scratch-custody-'+str(args.generation))
     assert not CONTEXT.exists(), 'Inspect existing archive/guest receipt before any replay'

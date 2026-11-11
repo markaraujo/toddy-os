@@ -90,7 +90,7 @@ def run(context, stop):
                     reply = {'text_sent':True}
                 elif action == 'key':
                     codes = request['codes']
-                    assert 1<=len(codes)<=3 and all(c in ['ret','esc','tab','spc','backspace','up','down','left','right','home','end','ctrl','alt','shift','meta_l','f4','a','s','o','q','n','v','t','minus','equal'] for c in codes)
+                    assert 1<=len(codes)<=3 and all(c in ['ret','esc','tab','spc','backspace','up','down','left','right','home','end','ctrl','alt','shift','meta_l','f4','a','s','o','q','n','v','t','c','x','l','r','f2','delete','f10','f9','minus','equal'] for c in codes)
                     call('send-key', {'keys':[{'type':'qcode','data':c} for c in codes], 'hold-time':80})
                     reply = {'key_sent':True}
                 elif action == 'pointer':
