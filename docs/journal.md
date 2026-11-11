@@ -3908,3 +3908,13 @@ namespace unmount/restore; hashes/inodes/flags identical, completed replay refus
 global mounted state afterward intact. Browser free5,092,446,208bytes. Next fresh
 isolated candidate configure, then generated flags verification before compiler.
 No old objects, source security/ABI/runtime/install acceptance still pending.
+
+
+### B02 security candidate configured natively — 2026-11-11
+
+Fresh isolated Firefox153.7 configure passed0. AST-read generated configuration
+proves AppVersion153.7.0, Wayland/main sandbox/all6WASM sandbox flags, native
+NSS/NSPR/ICU, noX11 and WASMClang19.1.5. Original source/object evidence preserved;
+no candidate compile/runtime/install claim. Next fresh isolated -j6 compiler is
+expected long;128MiBreserve plus64MiBstopping margin, one writer, native receipt/
+log/PID/start/boot before monitoring. ConfigSHAa06186586b3a93e850c0264c7ff0eda2b51836c133b2559d043f6e74fcf217c0.

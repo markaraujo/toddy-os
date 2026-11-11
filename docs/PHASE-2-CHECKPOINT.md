@@ -65,21 +65,29 @@ Future cold restore: existing base browser restore first, then
 restore_firefox_security_source.py NEW-name (no archive transfer/extraction).
 Do not use receipt1/2 as success or replay any preparation/restore controller.
 
-Exact next action: run prepared .local/phase2/firefox-security-configure-controller-1.py
-ONCE after reviewed commit. New guest receipt/log /var/log/toddy/phase2/
-firefox-security-configure-1.json/.log; new work alias
-/mnt/lfs/sources/phase2/work/firefox-security-1537-1 (BASE/build/browser-security-1537-1).
-It requires empty fresh work and qualified restore; copies exact committed configure
-script and runs qualified isolated.sh with paired inputs/firefox-153.7.0 identity.
-No old objects. Private SDK/NASM only for exact original/candidate pairs; CUPS4/
-Samba3 and two Bash pair-routing fixtures passed, full379checks passed. Configure
-retains Wayland/main/all6WASM/bundledPNG/systemNSS/NSPR/ICU, no downloads/global
-install/owner credentials. On terminal read actual log/generated configuration;
-failed configure is not replayed without actual postcondition diagnosis. If0,
-verify generated sandbox/toolkit/dependency flags, then fresh security build once.
-Build will be long (~original41min measurement, not deadline); retain real process/
-log/checkpoint and deterministic monitoring. No configuration/compiler dispatched
-yet. Runtime ABI/security/native UI and installed-target capacity remain pending.
+Candidate configure COMPLETE0 (controller79486 terminal0), guest receipt
+firefox-security-configure-1.json/.log/.exit, input34a6dbb. [Generated proof](evidence/B02-firefox-security-configuration.json)
+AppVersion153.7.0, Wayland/main sandbox/all6WASM, system NSS/NSPR/ICU, noX11 and
+WASMClang19.1.5 actual flags. ConfigSHAa06186586b3a93e850c0264c7ff0eda2b51836c133b2559d043f6e74fcf217c0;
+mozconfigSHA697afa833966cf37ffdb017d92f851fa7f6a3e6b98347520d2be6cfc627b5553.
+No compiler/native browser acceptance yet. Never repeat successful configure.
+
+Exact next action: after reviewed commit run once
+`python3 .local/phase2/firefox-security-build-controller-1.py`.
+New controller log same stem.log; guest receipt /var/log/toddy/phase2/
+firefox-security-build-controller-1.json, wrapper firefox-security-build-1.log/.exit;
+work /mnt/lfs/sources/phase2/work/firefox-security-1537-1 (BASE/build/browser-security-1537-1).
+One guest writer: isolated.sh exact source/work pair, UID101/caps0/no-egress/toolsRO,
+no installation or source mutation. Existing compiler outputs were retired with
+qualified recovery; this new obj is fresh. Native build uses -j6/12GiB VM; reserve
+128MiB+64MiB stopping margin supervised inside compiler, preserves logs/results.
+Original comparable compiler41m25s is a measurement, not success/deadline. Healthy
+build progresses without restart; observe actual receipt PID/start/boot, log byte
+changes/process CPU deterministically, no repeated model polls of unchanged logs.
+Expected completion requires compiler exit0, ELF hashes/exact153.7.0 AppVersion,
+no reserve stop; then directly affected ABI/security/sandbox/native UI gates.
+If failure inspect real receipts/processes/disk/partial outputs before any action.
+Installed-target capacity separately pending; no package promotion until resolved.
 
 ## Browser compiler, security and persistent build volume
 

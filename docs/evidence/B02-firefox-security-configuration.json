@@ -1,0 +1,23 @@
+{
+  "state": "configured",
+  "selected": {
+    "MOZ_SANDBOX": "1",
+    "MOZ_SYSTEM_ICU": "1",
+    "MOZ_USING_WASM_SANDBOXING": "1",
+    "MOZ_WASM_SANDBOXING_EXPAT": "1",
+    "MOZ_WASM_SANDBOXING_GRAPHITE": "1",
+    "MOZ_WASM_SANDBOXING_HUNSPELL": "1",
+    "MOZ_WASM_SANDBOXING_OGG": "1",
+    "MOZ_WASM_SANDBOXING_SOUNDTOUCH": "1",
+    "MOZ_WASM_SANDBOXING_WOFF2": "1",
+    "MOZ_WAYLAND": "1",
+    "MOZ_SYSTEM_NSPR": "1",
+    "MOZ_SYSTEM_NSS": "1",
+    "MOZ_X11_LIBS": [],
+    "WASM_CC_VERSION": "19.1.5",
+    "MOZ_APP_VERSION": "153.7.0"
+  },
+  "config_status_sha256": "a06186586b3a93e850c0264c7ff0eda2b51836c133b2559d043f6e74fcf217c0",
+  "mozconfig_sha256": "697afa833966cf37ffdb017d92f851fa7f6a3e6b98347520d2be6cfc627b5553",
+  "scope": "Actual generated configuration only; fresh compiler, ABI/sandbox runtime/native UI remain pending"
+}
