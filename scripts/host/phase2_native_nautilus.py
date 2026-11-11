@@ -37,8 +37,11 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--preflight-only',action='store_true')
     parser.add_argument('--collector-followup',action='store_true')
+    parser.add_argument('--files-view-followup',action='store_true')
     args=parser.parse_args();preflight_only=args.preflight_only
-    CONTEXT=ROOT/'.local/phase2'/('native-nautilus-runtime-2' if args.collector_followup else 'native-nautilus-runtime-1')
+    assert not (args.collector_followup and args.files_view_followup)
+    followup=args.collector_followup or args.files_view_followup
+    CONTEXT=ROOT/'.local/phase2'/('native-nautilus-runtime-3' if args.files_view_followup else 'native-nautilus-runtime-2' if args.collector_followup else 'native-nautilus-runtime-1')
     assert not CONTEXT.exists(),'Inspect existing native operation; never replay'
     if not preflight_only:assert not subprocess.check_output(['git','status','--porcelain'],text=True).strip(),'Commit reviewed inputs before native boot'
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
@@ -54,8 +57,9 @@ def main():
     assert probe.count(b'NAUTILUS_FIXTURE = None')==1
     probe=probe.replace(b'NAUTILUS_FIXTURE = None',('NAUTILUS_FIXTURE = '+repr({'fixture_sha256':inputs['fixture_sha256']})).encode())
     prefix=None
-    if args.collector_followup:
-        prefix=json.loads((ROOT/'.local/phase2/nautilus-native-prefix-qualified-1.json').read_text());assert prefix['state']=='qualified' and prefix['reused_programs']==9 and prefix['reused_GLib_cases']==59
+    if followup:
+        prefix=json.loads((ROOT/'.local/phase2'/('nautilus-native-prefix-qualified-2.json' if args.files_view_followup else 'nautilus-native-prefix-qualified-1.json')).read_text())
+        assert prefix['state']=='qualified' and prefix['reused_programs']==(11 if args.files_view_followup else 9) and prefix['reused_GLib_cases']==(64 if args.files_view_followup else 59)
     assert probe.count(b'REUSED_NAUTILUS = None')==1
     probe=probe.replace(b'REUSED_NAUTILUS = None',('REUSED_NAUTILUS = '+repr(prefix)).encode())
     bootstrap=compressed_payload(probe)
@@ -75,8 +79,8 @@ for base,key in [(Path('/mnt/lfs')/record['source_path'].lstrip('/'),'source_fil
 native=json.loads((l/'settings-scratch-custody-2.json').read_text());assert native['state']=='archive-stream-complete-source-unchanged' and native['boot_id']==Path('/proc/sys/kernel/random/boot_id').read_text().strip()
 print(json.dumps({'fixture_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'versions':versions,'source_compiler_stage_unchanged':True,'builder_boot_id':native['boot_id'],'selected_programs':len(record['selected_tests'])}))
 '''
-    if args.collector_followup:
-        previous=ROOT/'.local/phase2/native-nautilus-runtime-1'
+    if followup:
+        previous=ROOT/'.local/phase2'/('native-nautilus-runtime-2' if args.files_view_followup else 'native-nautilus-runtime-1')
         prior=json.loads((previous/'result.json').read_text());raw=json.loads((previous/'native-report.json').read_text())
         assert prior['phase']=='native-report-recorded' and prior['backing_unchanged'] and not prior['native_selected_passed']
         assert hashlib.sha256(json.dumps(raw,sort_keys=True).encode()).hexdigest()==prior['summary']['report_sha256']==prefix['source_report_sha256']
@@ -85,7 +89,11 @@ print(json.dumps({'fixture_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'v
         assert original['Config']['Labels']['toddy.boot-test']==prior['run_id']
         assert phase2_vm.backing_identity(phase2_vm.WORK/'lfs-target.qcow2')==prior['source_identity']
         assert raw['original_tests']['readonly_inputs_unchanged']
-        assert len(raw['original_tests']['runs'])==9 and all(r['exit']==0 and not r['timed_out'] for r in raw['original_tests']['runs'])
+        if args.files_view_followup:
+            previous_runs=raw['original_tests']['runs'];assert len(previous_runs)==3 and all(r['passed'] and r['exit']==0 for r in previous_runs[:2])
+            failed=previous_runs[-1];assert failed['name']=='test-files-view' and failed['exit']==1 and not failed['timed_out']
+            assert 'Read-only file system' in failed['stderr'] and 'dir=os.getcwd()' in failed['stderr']
+        else:assert len(raw['original_tests']['runs'])==9 and all(r['exit']==0 and not r['timed_out'] for r in raw['original_tests']['runs'])
         assert not subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()
         accepted=prior['accepted']
     else:
@@ -99,11 +107,11 @@ print(json.dumps({'fixture_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'v
            'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
            'started_utc':datetime.now(timezone.utc).isoformat(),'controller_pid':os.getpid(),
            'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'controller_start_ticks':Path('/proc/self/stat').read_text().split()[21],
-           'accepted':accepted,'collector_followup':args.collector_followup,'qualified_prefix_source_report_sha256':prefix['source_report_sha256'] if prefix else None,'probe_sha256':hashlib.sha256(probe).hexdigest(),'native_input_transport':inputs['transport']}
+           'accepted':accepted,'collector_followup':args.collector_followup,'files_view_followup':args.files_view_followup,'qualified_prefix_source_report_sha256':prefix['source_report_sha256'] if prefix else None,'probe_sha256':hashlib.sha256(probe).hexdigest(),'native_input_transport':inputs['transport']}
     def save():
         part=CONTEXT/'result.json.part';assert not part.exists();part.write_text(json.dumps(state,indent=2)+'\n');part.replace(CONTEXT/'result.json');print(json.dumps({'phase':state['phase'],'context':str(CONTEXT)}),flush=True)
     save()
-    if not args.collector_followup:
+    if not followup:
         with (CONTEXT/'builder-stop.log').open('x') as log:
             state['phase']='stopping-builder';save();run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
     assert not subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()

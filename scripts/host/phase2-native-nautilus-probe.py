@@ -115,14 +115,20 @@ print(json.dumps({'UID':os.geteuid(),'NoNewPrivs':True,'effective_permitted_caps
             remaining=fixture['focused_budget']['whole_selected_seconds']-(time.monotonic()-started)
             if remaining<=0:break
             timeout=min(fixture['focused_budget']['per_program_seconds'],remaining)
-            begun=time.monotonic();p=subprocess.Popen(test['cmd'],user=uid,group=uid,extra_groups=[],preexec_fn=nnp,env=env,cwd='/build/compile',stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,start_new_session=True)
+            cwd=Path('/build/compile')
+            if test['name']=='test-files-view':
+                (home/'test').symlink_to('/build/compile/test',target_is_directory=True)
+                candidate=home/test['cmd'][-1];original=Path('/build/compile')/test['cmd'][-1]
+                assert candidate.stat().st_ino==original.stat().st_ino and digest(candidate)==fixture['compile_files'][test['cmd'][-1]]
+                cwd=home
+            begun=time.monotonic();p=subprocess.Popen(test['cmd'],user=uid,group=uid,extra_groups=[],preexec_fn=nnp,env=env,cwd=str(cwd),stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,start_new_session=True)
             timed_out=False
             try:stdout,stderr=p.communicate(timeout=timeout)
             except subprocess.TimeoutExpired:
                 timed_out=True;os.killpg(p.pid,signal.SIGTERM)
                 try:stdout,stderr=p.communicate(timeout=5)
                 except subprocess.TimeoutExpired:os.killpg(p.pid,signal.SIGKILL);stdout,stderr=p.communicate(timeout=5)
-            row={'name':test['name'],'command':test['cmd'],'exit':p.returncode,'timed_out':timed_out,'elapsed_seconds':round(time.monotonic()-begun,3),'stdout':stdout,'stderr':stderr}
+            row={'name':test['name'],'command':test['cmd'],'working_directory':str(cwd),'readonly_compiled_test_alias':test['name']=='test-files-view','exit':p.returncode,'timed_out':timed_out,'elapsed_seconds':round(time.monotonic()-begun,3),'stdout':stdout,'stderr':stderr}
             if test['name']=='test-nautilus-search-engine-simple':
                 hits=re.findall(r'^Hit [0-9]+: (file://[^\n]+)$',stdout,re.M)
                 expected={'engine_simple','engine_simple_directory','engine_simple_second_directory'}

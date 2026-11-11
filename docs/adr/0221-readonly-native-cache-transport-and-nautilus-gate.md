@@ -102,3 +102,24 @@ private store/run directory and does not rewrite WAYLAND_DISPLAY. An absolute
 name preserves the same real compositor endpoint across that original fixture
 environment change. This does not add a display backend, disable sandboxing or
 change any original test or production user preference.
+
+## Observed Files-view fixture cwd requirement
+
+Native followup2 reused the first9qualified programs, then passed the original
+asynchronous-directory callback driver and all5creation cases. The final
+LocalSearch `test-sandbox --index-recursive-tmpdir` wrapper exited1 before launching
+the Files-view executable: its exact3.11.1 `__main__.py` calls `tempfile.mkdtemp`
+with `dir=os.getcwd()`. Our immutable `/build/compile` cwd correctly refused that
+write. This is a test-runtime layout requirement, not permission to make the
+compiler/source cache writable or to disable the test.
+
+Retain all11successful program results/64GLib cases and run only the remaining
+Files-view wrapper in a fresh private writable per-case directory. Provide a
+read-only `test` alias to the same compiled test subtree, preserving the exact
+original relative argv and checking executable inode/hash. Keep original source,
+compiled files, test flags, schemas and global permissions unchanged. This gives
+the upstream wrapper a legitimate place for its indexed data while its original
+resources and executable remain read-only. It is the first corrective attempt
+for this concrete Files-view fixture cause; preserve the earlier collector
+failure and both native reports. A failure here must not cause all prior tests
+to be rerun or their budgets to be reset.

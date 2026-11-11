@@ -204,20 +204,32 @@ verifies its actual SHA, exact frozen source's total_hits==3 assertion and actua
 3URI/finished/exit0/no-timeout evidence. Nine programs qualified WITHOUT replay;
 no invented TAP counts. Correction budget1, no failed correction yet.
 
-EXACT NEXT: after publishing corrected collector inputs, run
-`python3 -u scripts/host/phase2_native_nautilus.py --collector-followup`
-with .local/phase2/native-nautilus-runtime-2-controller.log.
-Preflight2 passed actual terminal native1/container/base/image/prefix hashes;
-builder remains STOPPED, never repeat its stop or restart for this followup.
-Fresh context native-nautilus-runtime-2 reuses9qualified program results/59GLib
-cases and executes ONLY3remaining originals: async-directory/create/files-view.
-Use control socket and genuine GDM/PAM login as before, then done starts tests.
-Absolute real Wayland socket is preserved across installed LocalSearch's original
-private XDG_RUNTIME_DIR change; no mock/backend/sandbox/test changes.
-Keep60s/program/300s run budget, exact readonly input/base checks and full reports.
-If further failure, preserve actual outcomes and bounded cause budget rather than
-replay accepted programs. After testing, recover generation2/16aliases using new
-receipt names. Full B02 remains incomplete; stop only after all B02 accepted.
+Native Nautilus2 is TERMINAL, controller1340482/session17464 returned1;
+container stopped0/base unchanged and original inputs unchanged. It reused9prior
+results/59GLib cases, then passed async-directory callback and5creation cases.
+Only final Files-view wrapper failed1 before test launch: original LocalSearch
+CLI makes its indexed tempfile in cwd=/build/compile, correctly readonly (EROFS).
+Raw reportSHA
+a2b24e0ddaca8976a299041f7b61c2c163b27ef9b6406d8a539d8441b9e8d566.
+[Qualified prefix2](evidence/B02-nautilus-native-prefix-2.json) retains all11
+successful programs/64GLib cases, no original program replay or invented counts.
+Collector correction resolved; this separate concrete fixture-cwd cause has
+first correction prepared, failed_corrections0. No source/compiler/global chmod.
+
+EXACT NEXT: after publishing reviewed inputs, run
+`python3 -u scripts/host/phase2_native_nautilus.py --files-view-followup`
+with .local/phase2/native-nautilus-runtime-3-controller.log.
+Preflight3 passed actual native2 terminal/base/prefix/image state, builder still
+STOPPED. Fresh context native-nautilus-runtime-3 reuses11qualified results and
+runs ONLY original test-files-view. Give that wrapper its own writable per-case
+cwd with readonly test subtree alias; original relative argv/inode/hash preserved.
+Normal GDM/PAM user seat and actual absolute Wayland endpoint as before. Use
+control socket capture/key/password/done; inspect password field before sending.
+Done starts the remaining test.60s/program, no unchanged test/build replay.
+On failure inspect real report/cause under the persistent bounded budget and
+choose independent work as required; never mark this last test completed.
+Recover CURRENT generation2 cache/16aliases with fresh receipts after testing.
+Full B02 incomplete; stop only after ALL B02 accepted.
 
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated

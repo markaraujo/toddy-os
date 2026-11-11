@@ -1,0 +1,221 @@
+{
+  "state": "qualified",
+  "scope": "Existing successful native prefix only; final Files-view wrapper failed before test execution. No successful original program replay, no complete Nautilus gate claim.",
+  "source_report_sha256": "a2b24e0ddaca8976a299041f7b61c2c163b27ef9b6406d8a539d8441b9e8d566",
+  "earlier_source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+  "reused_runs": [
+    {
+      "command": [
+        "/usr/bin/appstreamcli",
+        "validate",
+        "--no-net",
+        "/build/compile/data/org.gnome.Nautilus.metainfo.xml"
+      ],
+      "elapsed_seconds": 0.006,
+      "exit": 0,
+      "metadata_validation_only": true,
+      "name": "validate-appdata",
+      "passed": true,
+      "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7099b095bdeec92dfe1965d682e954454d442990f548d790149f268eb8abe95d",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/build/compile/test/automated/displayless/test-bookmarks"
+      ],
+      "elapsed_seconds": 0.02,
+      "exit": 0,
+      "name": "test-bookmarks",
+      "observed_cases": 2,
+      "passed": true,
+      "passed_cases": 2,
+      "planned_cases": 2,
+      "skipped_cases": 0,
+      "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "8a3c82bf8da0fc1be7b3c19fca2f0b065cd6cfa68863a5901fff18046a2015c9",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/build/compile/test/automated/displayless/test-file"
+      ],
+      "elapsed_seconds": 0.028,
+      "exit": 0,
+      "name": "test-file",
+      "observed_cases": 14,
+      "passed": true,
+      "passed_cases": 14,
+      "planned_cases": 14,
+      "skipped_cases": 0,
+      "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3c850a2b6a140391d632ef42f3c214f17dfdb0659c7ade3c5bfeec621372190",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/build/compile/test/automated/displayless/test-file-metadata"
+      ],
+      "elapsed_seconds": 0.009,
+      "exit": 0,
+      "name": "test-file-metadata",
+      "observed_cases": 3,
+      "passed": true,
+      "passed_cases": 3,
+      "planned_cases": 3,
+      "skipped_cases": 0,
+      "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "4a4ddf027c7da6eab6cdaf43333aeb5b4c658441ee9bdf2459f5a40899d04a33",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/build/compile/test/automated/displayless/test-file-operations-copy-files"
+      ],
+      "elapsed_seconds": 1.355,
+      "exit": 0,
+      "name": "test-file-operations-copy-files",
+      "observed_cases": 15,
+      "passed": true,
+      "passed_cases": 15,
+      "planned_cases": 15,
+      "skipped_cases": 0,
+      "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "2ab99060808a7a3d101a052f9982846e98e775a35bc1655975bc76b97982068a",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/build/compile/test/automated/displayless/test-file-operations-rename"
+      ],
+      "elapsed_seconds": 0.011,
+      "exit": 0,
+      "name": "test-file-operations-rename",
+      "observed_cases": 3,
+      "passed": true,
+      "passed_cases": 3,
+      "planned_cases": 3,
+      "skipped_cases": 0,
+      "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "25f22eb9992192d95a7bdf74c24d031ea30704ad956ed1b92d77c61123deb627",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/build/compile/test/automated/displayless/test-file-operations-trash-or-delete"
+      ],
+      "elapsed_seconds": 0.024,
+      "exit": 0,
+      "name": "test-file-operations-trash-or-delete",
+      "observed_cases": 14,
+      "passed": true,
+      "passed_cases": 14,
+      "planned_cases": 14,
+      "skipped_cases": 0,
+      "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7c4d35c1f4c43b342b6b35c473f7f72e5485f9a7a0ed3d0f47fe38e186b64dea",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/build/compile/test/automated/displayless/test-filename-utilities"
+      ],
+      "elapsed_seconds": 0.002,
+      "exit": 0,
+      "name": "test-filename-utilities",
+      "observed_cases": 8,
+      "passed": true,
+      "passed_cases": 8,
+      "planned_cases": 8,
+      "skipped_cases": 0,
+      "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "bdbcc1f94866cf5c79b5de5daddcc094c40416b8862371f4c68d5ec7d72b2d42",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "/build/compile/test/automated/displayless/test-nautilus-search-engine-simple"
+      ],
+      "elapsed_seconds": 0.511,
+      "exit": 0,
+      "name": "test-nautilus-search-engine-simple",
+      "passed": true,
+      "search_finished_callback_observed": true,
+      "search_hits": [
+        "file:///tmp/nautilus.0YOSY3/engine_simple",
+        "file:///tmp/nautilus.0YOSY3/engine_simple_directory",
+        "file:///tmp/nautilus.0YOSY3/engine_simple_second_directory"
+      ],
+      "source_asserted_total_hits": 3,
+      "source_backed_non_TAP_driver": true,
+      "source_report_sha256": "c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6b61dfb589556cb46b59e84e78ee354a38bd65fb256f43adb84ac850b9339a20",
+      "timed_out": false
+    },
+    {
+      "async_completion_observed": true,
+      "command": [
+        "/build/compile/test/automated/display/test-nautilus-directory-async"
+      ],
+      "elapsed_seconds": 0.017,
+      "exit": 0,
+      "name": "test-nautilus-directory-async",
+      "passed": true,
+      "source_backed_non_TAP_driver": true,
+      "timed_out": false,
+      "stdout_sha256": "c7c840b6c465bcaa21b904e00f3510747c47c4b9f9c34d960205eb47a1643425",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_report_sha256": "a2b24e0ddaca8976a299041f7b61c2c163b27ef9b6406d8a539d8441b9e8d566"
+    },
+    {
+      "command": [
+        "/build/compile/test/automated/display/test-file-operations-create"
+      ],
+      "elapsed_seconds": 0.03,
+      "exit": 0,
+      "name": "test-file-operations-create",
+      "observed_cases": 5,
+      "passed": true,
+      "passed_cases": 5,
+      "planned_cases": 5,
+      "skipped_cases": 0,
+      "timed_out": false,
+      "stdout_sha256": "45be9c38f37286228c43464293d4305bd590bbdfecb1a3eb201ef16a6a40f91d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_report_sha256": "a2b24e0ddaca8976a299041f7b61c2c163b27ef9b6406d8a539d8441b9e8d566"
+    }
+  ],
+  "reused_programs": 11,
+  "reused_GLib_cases": 64,
+  "all_original_inputs_unchanged": true,
+  "input_fixture_sha256": "ac5c890e5cceaee2b196400e343ce4490e2a2b6fb32ad7b5f8324aa78506e492",
+  "remaining_failure": {
+    "command": [
+      "/usr/bin/localsearch",
+      "test-sandbox",
+      "--store-tmpdir",
+      "--index-recursive-tmpdir",
+      "test/automated/display/test-files-view"
+    ],
+    "elapsed_seconds": 0.108,
+    "exit": 1,
+    "name": "test-files-view",
+    "observed_cases": 0,
+    "passed": false,
+    "passed_cases": 0,
+    "planned_cases": 0,
+    "skipped_cases": 0,
+    "stderr": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 203, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/usr/lib/localsearch-3.0/trackertestutils/__main__.py\", line 449, in <module>\n    main()\n    ~~~~^^\n  File \"/usr/lib/localsearch-3.0/trackertestutils/__main__.py\", line 381, in main\n    index_recursive_tmpdir = tempfile.mkdtemp(prefix='tracker-indexed-tmpdir', dir=os.getcwd())\n  File \"/usr/lib/python3.14/tempfile.py\", line 435, in mkdtemp\n    _os.mkdir(file, 0o700)\n    ~~~~~~~~~^^^^^^^^^^^^^\nOSError: [Errno 30] Read-only file system: '/build/compile/tracker-indexed-tmpdir98p3ixrk'\n",
+    "stdout": "",
+    "timed_out": false
+  }
+}
