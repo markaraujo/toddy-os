@@ -155,16 +155,40 @@ The old scratch.tar.gz does NOT yet include this new promotion; before another
 cold stop preserve the changed tmpfs in a NEW custody generation, with actual
 restoration proof and all old original archives retained.
 
-EXACT NEXT: implement pinned Nautilus50.2.2 with existing owned prerequisites,
-now including real installed LocalSearch and global schemas. Frozen BLFS13.1
-nautilus.html hash a68a45f372ce35ddc351ea1769e2c84ce2709719502ea4aa1121b0e1563da5f8
-read: release Meson/selinux=disabled; cloudproviders=false is supported for absent
-optional SDK; do not disable tests or bypass LocalSearch. Book estimates96MB
-including tests; native graphical tests require the proven normal GDM/user seat.
-Use measured scratch capacity rather than violating target reserve. Pin actual
-source/archive/recipe/dependency identities and retain compiler/stage/original
-test inventory; no graphical claim from a compiler-only stage. Runtime Gvfs/device
-mounting remains due alongside UDisks/permissions. Then real Nautilus native UI.
+Nautilus50.2.2 source preparation and compiler/stage1 are COMPLETE.
+[Proof](evidence/B02-nautilus-build-stage.json). Actual job4244/session92338
+terminal0,17.009s compiler/0.251s stage,277ELFs/154regular stage files,
+24original programs registered with tests=all (NONE executed yet).
+Installed executable .text/.rodata match compiler output; normal Meson RPATH
+adjustments do not trigger false byte-identity assertions. Native GTK/file
+operations/package/GUI remain pending, no stage-only acceptance.
+Source33,693,838expanded bytes/frozen archiveSHA
+e1e285efddf42ed30dda5b29f7f8d242dab4bc1409a9054863b367bad4b34d5a.
+No source patches or dependency fallbacks. Actual source accepts existing owned
+Glycin2SDK; supported cloudproviders/SELinux UI disabled, full extensions/GIR/tests
+retained. Scratch reserve minimum624,615,424B>128MiB; target unchanged.
+Tmpfs mount485 on boot71632310-0bdd-4d1e-9deb-921d95eddc97 now contains
+nautilus-input-1/nautilus-work-1 and their readonly source/rw worker aliases;
+archive also bound readonly at /mnt/lfs/sources/nautilus-50.2.2.tar.xz.
+No compiler/test/stage/preparation replay. Current writer absent.
+
+EXACT NEXT: prepare fresh durable custody generation2 of the CURRENT tmpfs,
+including Nautilus compiler/source/stage and GTK11 promotion, without replacing
+qualified generation1 or its evidence. Parameterize the existing custody helper
+with strict generation identity/current actual boot and generic exact prefix
+mount topology; verify old caches unchanged and exact archive reconstruction.
+Qualify actual isolated restoration before any cold stop. Current generation1
+archive alone lacks Nautilus and GTK11 promotion and cannot recover this boot.
+For native Nautilus tests, stage a separate compact read-only cache attachment
+containing only its exact source/compiler/stage, with full source/stage manifests
+and original24test inventory. Do not rely on lost boot-scoped aliases being
+present in a native cold overlay. Attach a padded, hashed read-only data image
+or other qualified native-input transport and verify actual device identity/
+archive bytes before private restoration. Use the already proven normal GDM/PAM
+user seat; no headless fallback or automatic login. Choose focused original
+file-operation/search/GUI tests under explicit budgets and retain raw outcomes;
+no native package/GUI acceptance until actual checks. Runtime Gvfs/device mounting
+remains due alongside network/audio/browser/UDisks/global theme/terminal defaults.
 
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated

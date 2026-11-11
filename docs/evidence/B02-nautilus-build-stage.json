@@ -1,0 +1,1200 @@
+{
+  "stage": {
+    "scope": "Pinned Nautilus50.2.2 isolated release compiler/stage and full original test inventory only. No original tests executed: graphical native user-seat gate remains required. No native install/CLI/GUI/file operation acceptance. Optional cloudproviders/SELinux UI disabled using supported frozen-book options; extensions/introspection/all original test programs retained.",
+    "compile_exit": 0,
+    "stage_exit": 0,
+    "installed_code_sections_unchanged": {
+      ".text": "c03a67405e8e01ea1e049e1452793157692b34e823d299f0051320ca37492c8a",
+      ".rodata": "cfd8cf713f9efb37a6b9719c70296f255fa0b6879f1f3a46e0ef5e53f17e04ca"
+    },
+    "resources": [
+      {
+        "phase": "compile",
+        "command": [
+          "ninja",
+          "-C",
+          "/build/compile",
+          "-j6"
+        ],
+        "exit": 0,
+        "elapsed_seconds": 17.009,
+        "initial_free": 712605696,
+        "minimum_free": 639991808,
+        "final_free": 639991808,
+        "reserve": 134217728,
+        "stop_margin": 33554432,
+        "interrupted_for_reserve": false
+      },
+      {
+        "phase": "stage",
+        "command": [
+          "meson",
+          "install",
+          "-C",
+          "/build/compile",
+          "--no-rebuild",
+          "--destdir=/stage"
+        ],
+        "exit": 0,
+        "elapsed_seconds": 0.251,
+        "initial_free": 639987712,
+        "minimum_free": 624615424,
+        "final_free": 624615424,
+        "reserve": 134217728,
+        "stop_margin": 33554432,
+        "interrupted_for_reserve": false
+      }
+    ],
+    "artifacts": {
+      "src/nautilus-autorun-software": "13230b3ea516ccbd8d2ad5b0fc382023ce58bfbcdff0aeec48e16d7febb6bd36",
+      "src/nautilus": "74df7874e94afd871d7bdbb788133ec266b6cbcc5e68e2bde5f86f36f92750a0",
+      "libnautilus-extension/libnautilus-extension.so.4.1": "661dbaf97c322a6605cde1907aa670017d6d4cd99d241423bae0dd5a80a6b7b4",
+      "meson-private/sanity_check_for_c.exe": "191646a6501d425990f9a36894024258da104e5375904550c64ce420e318f3ba",
+      "meson-private/__CMake_compiler_info__/CMakeFiles/4.4.2/CMakeDetermineCompilerABI_C.bin": "c1a8200f7395b46f817bf917a20546f4930e99ba65f4ba0bb5d14be5d7b4539c",
+      "meson-private/__CMake_compiler_info__/CMakeFiles/4.4.2/CompilerIdC/a.out": "f4006dac5653d1e2fd506ddb58a7f8e8c0e2e0d7b13e980847ea142a2c2df739",
+      "xdp-gnome/libxdp-gnome.a.p/externalwindow-wayland.c.o": "c54e8ea948ebbf5f2286cc091ab74f282b6b69da58d7ae9fc3a5821a383e6b69",
+      "xdp-gnome/libxdp-gnome.a.p/externalwindow.c.o": "cb75cdf95bfd52c45e6859c9c99a8db3c811f1e790d9cb1aa13e76c2c0f1c3e7",
+      "xdp-gnome/libxdp-gnome.a.p/meson-generated_.._xdg-desktop-portal-dbus.c.o": "4f9eae151a44195be572e8e06e1e5e72b9e2dc0e8c326c54c18a5aaa0e3953cb",
+      "xdp-gnome/libxdp-gnome.a.p/meson-generated_.._shell-dbus.c.o": "0947061e97ca66958fbca824cd317fed03c843145172efd8fe56e9504a4e5736",
+      "xdp-gnome/libxdp-gnome.a.p/request.c.o": "86a79d4b2a289458d444da77b02605f8dec9f4fb90b4069c5276212bf4475fde",
+      "xdp-gnome/libxdp-gnome.a.p/meson-generated_.._mutter-x11-interop-protocol.c.o": "8d613b3a7bc98827d2e4137db8396d26dd3738c8d4a439cb063f2de31b475922",
+      "libnautilus-extension/libnautilus-extension.so.4.1.p/nautilus-properties-model.c.o": "842793386bb7394379bec10cc1fff25bb3505b2daee4a045910da1457f92d616",
+      "libnautilus-extension/libnautilus-extension.so.4.1.p/nautilus-menu.c.o": "ccaa8936975e5296d6dfcb0f7da586f02fcda724f0237cb21680ccbb10f87745",
+      "libnautilus-extension/libnautilus-extension.so.4.1.p/nautilus-properties-item.c.o": "35cd2ffb582118e7bae7bcb61dd0ae05b52f98a80d4cba419cd58b6af546c54d",
+      "libnautilus-extension/libnautilus-extension.so.4.1.p/nautilus-properties-model-provider.c.o": "60eb679e521b738fd12d06e497701a538483e7241064b63270b5f6d445ea5c72",
+      "libnautilus-extension/libnautilus-extension.so.4.1.p/nautilus-menu-provider.c.o": "e1b7314ef21214d5130a89e4a0487245962f794a70b202fcc1068f7318aafadf",
+      "libnautilus-extension/libnautilus-extension.so.4.1.p/nautilus-info-provider.c.o": "3e9bf63caec5fee4d3eb4d418b2af85663d95fa4a933490b9148274135ce958c",
+      "libnautilus-extension/libnautilus-extension.so.4.1.p/nautilus-file-info.c.o": "0487520324f6b5af4a8142c0170b88cd5cd144aa9635f42c3d2fc1950c585b03",
+      "libnautilus-extension/libnautilus-extension.so.4.1.p/nautilus-menu-item.c.o": "3f1bc148028fb3bd9829ba7826b9745f8a9255b10de4ebe2300e580c2e31595d",
+      "libnautilus-extension/libnautilus-extension.so.4.1.p/nautilus-column.c.o": "61756837ba069661689f1e8497e8a4a0bbb408f7ea76881db2f2291641330e25",
+      "libnautilus-extension/libnautilus-extension.so.4.1.p/nautilus-column-provider.c.o": "09f97cb0047d9d26a73bfd5c95b7d9b437b05e59df651d3d50b1ee55a00e74cd",
+      "libnautilus-extension/libnautilus-extension.so.4.1.p/meson-generated_.._nautilus-extension-enum-types.c.o": "68cf0f14b4ccae4ec2cd5e14468373bd48a011a178f7cd83dfd3eec38ef504f8",
+      "src/nautilus-autorun-software.p/nautilus-autorun-software.c.o": "40ea20460b27d6cc5fabf6f1bfb85f27dbee21573f5f3aac70fa7cf8a1161f38",
+      "src/nautilus.p/nautilus-main.c.o": "10767c23b8092879fee272d4bbef665fcca83d424699cf338b4434429b2b086c",
+      "src/nautilus.p/meson-generated_.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "src/nautilus.p/meson-generated_.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "src/nautilus.p/meson-generated_.._resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "src/libnautilus.a.p/nautilus-window-slot.c.o": "a6fb4fa07d31f557d55a5c3a4195b5806eab84d08193cd9e3772ec19299dfa8d",
+      "src/libnautilus.a.p/nautilus-window.c.o": "99ce7a3c59da0ef8e93463da20e3a54aaf91dcdb87d9cee63c13ff53ed1b2cd6",
+      "src/libnautilus.a.p/nautilus-x-content-bar.c.o": "737364092ae6bb41ff1bf0c4dfb9a217adb5072d537b1736b1cd1b19154f33c1",
+      "src/libnautilus.a.p/nautilus-view-model.c.o": "c1770984efb719717bc67d7a3c7ce36c2a5c72565bebadeb75656c970e350b36",
+      "src/libnautilus.a.p/nautilus-view-item-filter.c.o": "370decd101126787adcce0128974bc157af43f5b87f01751e427ea4bb9b0409c",
+      "src/libnautilus.a.p/nautilus-view-controls.c.o": "c641099690f7a4622a32c34dbe01eb3610044a9d2ad2833120818498f3725d7b",
+      "src/libnautilus.a.p/nautilus-view-item.c.o": "ab6e3b78efa373dcb0d25c5789fcb6fd90f29aef22c201536eb9021941967c50",
+      "src/libnautilus.a.p/nautilus-view-cell.c.o": "44a572be698dff5e1a80f3b91d535c600df7659de338a2a859d277d5583ca2a7",
+      "src/libnautilus.a.p/nautilus-ui-utilities.c.o": "03da8c7f8121df684a8b3b3f42dad49dad4946eb3afa20e8e6855a83de7fdf01",
+      "src/libnautilus.a.p/nautilus-vfs-file.c.o": "95b28f733595d42dcf7f98d5f42b116855bcf79e8e581f6c333d3c64231974b7",
+      "src/libnautilus.a.p/nautilus-vfs-directory.c.o": "b39b0c25954a17583b0d1048b073db6367ea484b42d92a0acb67ed8058ccff33",
+      "src/libnautilus.a.p/nautilus-toolbar.c.o": "3ee2b26e3e3f2cbbc290619be605f8bce34547a99ae49792068d36e990f2e66d",
+      "src/libnautilus.a.p/nautilus-sidebar.c.o": "c1d119091e2774ca1f840add4deea0c64195db45764e64882e23944acef7fedf",
+      "src/libnautilus.a.p/nautilus-thumbnails.c.o": "a3c2782310b8a6fc2afe782c8973b69df1c6807f5762276216b928cb7c6628c1",
+      "src/libnautilus.a.p/nautilus-trash-monitor.c.o": "6cd36fb30c36199079c970203de1bd425427f3d76b652e881c98589171ea319d",
+      "src/libnautilus.a.p/nautilus-tag-manager.c.o": "45a9f2b0ed3ff330a779efe9e4e7eb0dfac061eecabde33c4d361f0eafe9ac2e",
+      "src/libnautilus.a.p/nautilus-starred-directory.c.o": "2cbe997212c773e6c3f66e4a9b462176315a66c9e428fa293472ef0ef08bb0f7",
+      "src/libnautilus.a.p/nautilus-star-cell.c.o": "9c777f71fc75f46c8745d251987f1b1caa9cfdfd4ac40bf726aca5acfb2af1b7",
+      "src/libnautilus.a.p/nautilus-sidebar-row.c.o": "4716042c012ab415b0afcad8ab957436a88d11e9acef2d27f84cf3685d787773",
+      "src/libnautilus.a.p/nautilus-shell-search-provider.c.o": "eed2ac0bf140cabeed9061eab9952df53ed9f742339d0d8e0dc561e596a92131",
+      "src/libnautilus.a.p/nautilus-shortcut-manager.c.o": "584f089247e8ab2f3ab1514e43d29c5b272c256efc6186adacc5ad7abcffee24",
+      "src/libnautilus.a.p/nautilus-search-popover.c.o": "6496110c1d6013890895fa9e2b5bcb7aef7818b4098bf9ca3fead7d51e82b2b4",
+      "src/libnautilus.a.p/nautilus-signaller.c.o": "60db723ccb1528863e28d764089c6423450d9c874d37c6b821faa5aa797dae24",
+      "src/libnautilus.a.p/nautilus-search-engine-simple.c.o": "14149cad747a84d386e2b0be971d9bcdeb22828c6547480a3021151e0f925807",
+      "src/libnautilus.a.p/nautilus-search-engine-recent.c.o": "2a9514646ee2cd9db984a89a689e2f13ec5de741ee5bcdd0f73dd91742285083",
+      "src/libnautilus.a.p/nautilus-search-provider.c.o": "83ccd43151c8f327f309b5604aeba8555279a7885801367ff70f1a87eaf03ec9",
+      "src/libnautilus.a.p/nautilus-search-engine-model.c.o": "44cdc57a3209cae4fc3a33cb2a15ab29b909ef552928adb2d7104aa3027867d9",
+      "src/libnautilus.a.p/nautilus-search-engine-localsearch.c.o": "bd2a88bd1dbc7df61edba3042b7014d85f7bdeb8c8785303969bcff0d1881dd8",
+      "src/libnautilus.a.p/nautilus-search-hit.c.o": "bd44b2edbcbafdf21cb327783b13290f42effe8b09b31de7efa0d4387c1132d7",
+      "src/libnautilus.a.p/nautilus-properties.c.o": "87752b68b56b0acd1ae9d50c9ea06231de6a5aff2c9ba36f9655f376f685563f",
+      "src/libnautilus.a.p/nautilus-search-engine.c.o": "6023e019986c1eb8c9cbd1b16dc268e482b118e419a8f3cc94cc225353457315",
+      "src/libnautilus.a.p/nautilus-search-directory.c.o": "942420ee77187c176db7a2c458c3f2d5a5adf29f54839e0897f14a3ca7193d54",
+      "src/libnautilus.a.p/nautilus-search-directory-file.c.o": "bd433afa939387e5d7a3a97ce57019cc9a102fab6a05c536f85329e9c78da867",
+      "src/libnautilus.a.p/nautilus-rename-file-popover.c.o": "8b3d75a10c4373e25065e55046cb6dc0960a4c9c9fcbe134eddf70b52e143a16",
+      "src/libnautilus.a.p/nautilus-query-editor.c.o": "a156f917eb4ec6a8d624ab8ae8b0f86988d412ee23a18516eb677f5fcdad01d0",
+      "src/libnautilus.a.p/nautilus-query.c.o": "5e6a3f09cec8481e408d967f4de2d5e0fc492c69ae32ab2aad0d0c2682aa72ce",
+      "src/libnautilus.a.p/nautilus-recent-servers.c.o": "7c9b8072e9f1281f92326bf80b56e6decaab30dc32639ca32272405517ea442e",
+      "src/libnautilus.a.p/nautilus-scheme.c.o": "dd70978fadc48dfcc1b825acedab7eed5f323ebdf576ca58a752934258e1b80c",
+      "src/libnautilus.a.p/nautilus-progress-paintable.c.o": "5f2137378feb4b12b15f49db1f835b05f5182126ee2e596b8fbe241b65039b8d",
+      "src/libnautilus.a.p/nautilus-progress-persistence-handler.c.o": "dbbdc0f0cbc35c3648e0d5c8edbedc01860349419bacf44a348df492122567f3",
+      "src/libnautilus.a.p/nautilus-progress-info.c.o": "a280312738af81b27cc0194c3365986df4d4336797c02ef250e7a12a92f6ec57",
+      "src/libnautilus.a.p/nautilus-progress-info-widget.c.o": "71630cc792380b7a6d6a47faa160ff295ec840bb0ce04880844278b92ae1f282",
+      "src/libnautilus.a.p/nautilus-progress-indicator.c.o": "0afce1dd17229c3f0d7216ee8402fbdac89c8cffb98b9946153c1a9d3142f535",
+      "src/libnautilus.a.p/nautilus-program-choosing.c.o": "dd78c6b39fc9ef8c31e89b0c3b5eda1d9ae48931438e53d806630eccb2cf9cc0",
+      "src/libnautilus.a.p/nautilus-previewer.c.o": "99422a7b9dee633638405dc73f15eef355117fa8a47f53ef6994d35d2a787616",
+      "src/libnautilus.a.p/nautilus-progress-info-manager.c.o": "c022fceab146e4f21a6e570a7aa9d062fe06a0507af5990da162ed3cd039acfa",
+      "src/libnautilus.a.p/nautilus-preferences-dialog.c.o": "a9c1e2805922223ac3cc6b22831b5b46845561456e6e3b61eef3502dd9632790",
+      "src/libnautilus.a.p/nautilus-pathbar.c.o": "57e942eecd6e7038db3d23c4591c0d65ae2ad858dc471d51c0c814b70f66cf24",
+      "src/libnautilus.a.p/nautilus-portal.c.o": "7f382acfbdfa7097282977949aeb3ef0d16e6a66d56105542cce1e033c726cb1",
+      "src/libnautilus.a.p/nautilus-operations-ui-manager.c.o": "57d1fa343d7049a4ebcd781248701bd3bad21a83790b07b818bbb683989aad14",
+      "src/libnautilus.a.p/nautilus-new-folder-dialog.c.o": "8ea0b57e9f27c74382fc7b515cb6c5529eb4d0a5cb3d9a44c163d37f66566197",
+      "src/libnautilus.a.p/nautilus-network-directory.c.o": "8524e6a8c21c25b8e8c873735a8f488e2577a624e7e0a6409d2a712197057a6b",
+      "src/libnautilus.a.p/nautilus-network-view.c.o": "d81c90a3fdd7b267be89423c564ef976f246a2267dbf4af1e05720b1f6ac3935",
+      "src/libnautilus.a.p/nautilus-network-address-bar.c.o": "66f7ae91f197c507d8e127f0de835b03fcaae4885c195e8ff765c2f95a5a0327",
+      "src/libnautilus.a.p/nautilus-mime-actions.c.o": "a3631a5b8b75941f1fd01bbb4977e98b9498deb45000223ffed5134ca3777036",
+      "src/libnautilus.a.p/nautilus-name-cell.c.o": "68aa46d619f71d9d63e2a61bfdbd6511620b0b5e9801ea2e69ae64dabfb90a4a",
+      "src/libnautilus.a.p/nautilus-network-cell.c.o": "52b424c3d56f4e5890953af7350328bdd037ee0abe06b758f43d3a0054138604",
+      "src/libnautilus.a.p/nautilus-minimal-cell.c.o": "700cb788bcc6cf190818e805813caef5d3a4bc537906f49c3f1acddc06421c8c",
+      "src/libnautilus.a.p/nautilus-monitor.c.o": "f4611f035e27c6ec327546ad987ca6b1deb1c1371b9cf66a4e1e601ede26dd1e",
+      "src/libnautilus.a.p/nautilus-module.c.o": "97c1140061fbeb60205177abb177945241733c1b58ef220f8ff61a55bb7e6de4",
+      "src/libnautilus.a.p/nautilus-location-entry.c.o": "c1f0342a0b0f2e2cb5a0878ebb0cc076f57415f81f33f1e9e8348e2a9ff251cb",
+      "src/libnautilus.a.p/nautilus-list-view.c.o": "1ae5abe8868ea242b7b2bf3fe20557ce1d41031dde9243d42654b1700a6aa474",
+      "src/libnautilus.a.p/nautilus-location-banner.c.o": "cd64624ab332052c1c7fc914c068ae46edec7f1134eeae6200f36adc463f8c45",
+      "src/libnautilus.a.p/nautilus-metadata.c.o": "572a481193130b24bc37212f4690237a2743ad97532496d019c50a39b150cf23",
+      "src/libnautilus.a.p/nautilus-files-view.c.o": "59b7d4b0d546e61fd52a94ab6e25b77be48093794ff16645a10f063afb911273",
+      "src/libnautilus.a.p/nautilus-list-base.c.o": "2ca502cd48e4f829af48fa2202b81d4876a521e549ccca1207f016576acc3ad4",
+      "src/libnautilus.a.p/nautilus-localsearch-utilities.c.o": "c297c9b5f3c198a2d0bf173b9587be3de4ece7a3d10314a8c96247553a87f90a",
+      "src/libnautilus.a.p/nautilus-image.c.o": "bbafb52da1af8af1c227279af9abd9f06caf861b5bbc121cbfa3efcd64e9412e",
+      "src/libnautilus.a.p/nautilus-label-cell.c.o": "c35101bf72d057b94c0ba89eed695564467bb513f4da9515773adbe3ea1ce487",
+      "src/libnautilus.a.p/nautilus-internal-place-file.c.o": "6a311ece6d05cf5ea262c1201e5f40b51e7c4ce8d48960d8e9ac9365b564c599",
+      "src/libnautilus.a.p/nautilus-keyfile-metadata.c.o": "b907d4c9178d1b9665b993fa5aa935ac03acd0c78c2aaebcfc3953253fcdc0cd",
+      "src/libnautilus.a.p/nautilus-icon-info.c.o": "02accf3999a3981cc57927aad6421eb9da4708a2f871ece1bd0bc59a89e1b746",
+      "src/libnautilus.a.p/nautilus-history-controls.c.o": "85f06adebf8cb46fd1b7985156cf081a070f9d7dd4990a9f5ba5ef4be482dacd",
+      "src/libnautilus.a.p/nautilus-grid-view-captions-dialog.c.o": "75014676ecdd53734aabd6f9e7db1a6a17aefb2817455193ccf5d43519b57dfc",
+      "src/libnautilus.a.p/nautilus-grid-cell.c.o": "a8283dde6a3eff52b9bd5525acb9c0bdd56d160f28a2e04cfb8f540df324a573",
+      "src/libnautilus.a.p/nautilus-grid-view.c.o": "3f99c5da364fb19b98181d31baa090acacbcff9e0e4174d37ded0ce8173418cf",
+      "src/libnautilus.a.p/nautilus-file-operations.c.o": "7bdd1e76ee396745317c4c61a139fd10139feb3a5792080b98989202a45852f8",
+      "src/libnautilus.a.p/nautilus-hash-queue.c.o": "d4ac57a25a22d10525189c50c9bae4c96820442935406d22d9852d4400d78bc6",
+      "src/libnautilus.a.p/nautilus-global-preferences.c.o": "605d072f6a734e6673547ac604ed2d794b840e86e33fc5d527020fef7bf6df07",
+      "src/libnautilus.a.p/nautilus-file.c.o": "544dfc14a559e1b36c4225565c7e92c00866058d1a1b850546ddf4855fef3917",
+      "src/libnautilus.a.p/nautilus-floating-bar.c.o": "fc08507540a198d7424bdc16a60623e6f4534990d5a4be0c705e21acb8d23d77",
+      "src/libnautilus.a.p/nautilus-freedesktop-dbus.c.o": "d35e1d8fe3b15a98b9efcf66e9ec7a558732af7ec9a743f489ba6337429afa2b",
+      "src/libnautilus.a.p/nautilus-file-undo-operations.c.o": "7605c98e875eb8d823f64374ffc3a02fbbe512d74e1d4f0150108152d7c97458",
+      "src/libnautilus.a.p/nautilus-files-view-dnd.c.o": "c80fd0f3c666e4710c5429c787fe2f7ab5646361077c79a9f676fede426381ba",
+      "src/libnautilus.a.p/nautilus-filename-validator.c.o": "3261f3a15843f634f5e786807e2d79ed3c0d38cc08aecbfc8b6fb7a413617326",
+      "src/libnautilus.a.p/nautilus-file-utilities.c.o": "c5f4584c4c5a27f1511a553bb3bc43b1afe2bc26371aae3b91456ce7a95a74ca",
+      "src/libnautilus.a.p/nautilus-file-undo-manager.c.o": "ad9a724088ab4f564599d27ff1b099415e2575507de09bbb545b0fad5db947d8",
+      "src/libnautilus.a.p/nautilus-filename-utilities.c.o": "c61c27405c58b45337db5105a785173027cd15a8815c302be9bea8cd7b1ab647",
+      "src/libnautilus.a.p/nautilus-file-chooser.c.o": "2499b9e5b21a951aefc92522a23e796a11ccc3286d26721119309b4df249e757",
+      "src/libnautilus.a.p/nautilus-directory-async.c.o": "8f945ff86225b95225ec9b82b96513992dea3d9aa3a6020c018687041fd66795",
+      "src/libnautilus.a.p/nautilus-file-conflict-dialog.c.o": "387006030c5d5f31093fb68bf4f47a071491e3499367cd437782bd6abab971a3",
+      "src/libnautilus.a.p/nautilus-file-changes-queue.c.o": "4332c74d7908cf88ec479ba766d58de959f5065745465e764eab3ff9a7b2f02b",
+      "src/libnautilus.a.p/nautilus-file-operations-dbus-data.c.o": "527e8cb61d60ddc8c93ccbcc3752325d6879bf4651f1ed82d922daadd1f0c0f3",
+      "src/libnautilus.a.p/nautilus-error-reporting.c.o": "ce31768856518c99c3bd46caaeaddde6eb126a9b50ed0d68cb9a24d08a6bc1c5",
+      "src/libnautilus.a.p/nautilus-directory.c.o": "f63d8fa09b169870bb559b4ba1952abcd4bbd65ed31ee8de0df712d1d31dbadb",
+      "src/libnautilus.a.p/nautilus-dnd.c.o": "6345c80278a11625f127e0d7a09cb40ea410e8878134a32b8acf7f51e88c3a38",
+      "src/libnautilus.a.p/nautilus-fd-holder.c.o": "94ed84dbfdc86e134b3f599dcfbb4d544d2214d787ccbd3f771de859cc7c55f7",
+      "src/libnautilus.a.p/nautilus-dialog-utilities.c.o": "326497defc901db3d3c579ef6fdf853ab118dc90587e184fdbe007c1d417ccf1",
+      "src/libnautilus.a.p/nautilus-dbus-manager.c.o": "436ce0fd852b762af37179d9d67ef94ef93d481579fb5e890ff113524dd0d309",
+      "src/libnautilus.a.p/nautilus-dbus-launcher.c.o": "707ad02bdc39b641a3f78baa0275cf94825bedd0d69221eacfcb719e4ea4dfb5",
+      "src/libnautilus.a.p/nautilus-date-range-dialog.c.o": "c0f7874ae8f2f35e4766575852de34c9c22fae63ce4e83c7ee4701b63669a6fc",
+      "src/libnautilus.a.p/nautilus-date-entry-row.c.o": "06b134b809958a3807fa1cbee7f9f569cc8be29daf6f79cb87a8f4d99e5f2403",
+      "src/libnautilus.a.p/nautilus-date-utilities.c.o": "3353318b20524408d8724056e8729d4184c3ccc49ea9187ca2dca199758aa467",
+      "src/libnautilus.a.p/nautilus-compress-dialog.c.o": "1940d40582379de6c1b11e581a173f539a2d80822ac7fe135a98419cdb0157fa",
+      "src/libnautilus.a.p/nautilus-column-chooser.c.o": "dcb3ff29bfe3be461be3169e4742203421effbb5a18818c174a82a04b66db7b3",
+      "src/libnautilus.a.p/nautilus-column-utilities.c.o": "0609af8f1fbe1b28bb5361f13c4c9fcb7335b4ffe0bce0759305a3b2b2671eb6",
+      "src/libnautilus.a.p/nautilus-clipboard.c.o": "a1d48542bc25a492b9a46b60d99c9f0378ca5e990bef33bd73082f4703606cbc",
+      "src/libnautilus.a.p/nautilus-bookmark-list.c.o": "505bcbde9beadb5e2dcbf552ba46f8cdeaa44fd3a754d2d93c21e152d856e9b9",
+      "src/libnautilus.a.p/nautilus-bookmark.c.o": "37fd553d6d9a6fbf66e2830e9dfce58466be0117be0c605d18facba3fa6ca0b8",
+      "src/libnautilus.a.p/nautilus-batch-rename-dialog.c.o": "0167e0958f67fcf79ecad76c2728b26f0e5568be6716f3bc4a640b8fe2b90eb6",
+      "src/libnautilus.a.p/nautilus-batch-rename-utilities.c.o": "58d9bb0e9e52196895c831df1ad8ff7fe258b5b0eafd6deed2d3e18a32885ae7",
+      "src/libnautilus.a.p/nautilus-application.c.o": "d69b4e144a0c1ec61ae40bba8ad7601cb61ef29f9c54d53340f11ae7aa092f4b",
+      "src/libnautilus.a.p/nautilus-batch-rename-item.c.o": "703e6f87563429db233b5c6d7238297a8e7d6fe3ece09985f3307ad102ff5781",
+      "src/libnautilus.a.p/nautilus-app-chooser-widget.c.o": "170ffbc68c3fa9829a5b2ed443ceac382aa5005a409feef944cd928c6b156d87",
+      "src/libnautilus.a.p/nautilus-app-chooser.c.o": "11878dd876c15cac4f66c15fcb852dd0432253f5648939e5ef5579648395790f",
+      "src/libnautilus.a.p/meson-generated_.._.._xdp-gnome_shell-dbus.c.o": "0947061e97ca66958fbca824cd317fed03c843145172efd8fe56e9504a4e5736",
+      "src/libnautilus.a.p/meson-generated_.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "4f9eae151a44195be572e8e06e1e5e72b9e2dc0e8c326c54c18a5aaa0e3953cb",
+      "src/libnautilus.a.p/meson-generated_.._nautilus-generated2.c.o": "feecff02f9d20e72976532e7505002691fcc8b0337599e1fe258c886d48d212a",
+      "src/libnautilus.a.p/meson-generated_.._nautilus-shell-search-provider-generated.c.o": "1d794d4ef8b165a92087b245bc459f858166a2c3744839067965dc21eade91fb",
+      "src/libnautilus.a.p/meson-generated_.._nautilus-freedesktop-generated.c.o": "f444e00ec415fb3ad41ee958b38df9990b46dd1da2cfe479575e2b1caec409aa",
+      "src/libnautilus.a.p/meson-generated_.._nautilus-enum-types.c.o": "aee42b0dd1f944d956d6620a57b967bda5d9416daae0da52ea65687bf458ec82",
+      "src/libnautilus.a.p/meson-generated_.._resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/libtestutils.a.p/test-utilities.c.o": "43fe7fd0d3f8dc2e7d0dee8473cff773716aa5468c5722fa988946f2d385d2ac",
+      "test/automated/libtestutils.a.p/meson-generated_.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "4f9eae151a44195be572e8e06e1e5e72b9e2dc0e8c326c54c18a5aaa0e3953cb",
+      "test/automated/libtestutils.a.p/meson-generated_.._.._.._xdp-gnome_shell-dbus.c.o": "0947061e97ca66958fbca824cd317fed03c843145172efd8fe56e9504a4e5736",
+      "test/automated/libtestutils.a.p/meson-generated_.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/display/test-portal-file-chooser": "7b919ca018cfeaacd49daf6a152367f0277fbab5d6ed9e026ece7caf8ba84e8d",
+      "test/automated/display/test-sidebar": "cdbc91cd0625e436fdacba95c43556a3229639427f49a7d7f81d7303f0df2c61",
+      "test/automated/display/test-files-view": "84b1d4d0baa93abd95be05f442f88301018d1abf74142e26b24cc03d3b4e5dc9",
+      "test/automated/display/test-file-operations-create": "2f3f5a0b7bfc4425d0f1d7d4b300f611c13f59dd09feae6a0d2a3c04857dd06d",
+      "test/automated/display/test-nautilus-directory-async": "08e6ccacea319a96faf2f804f7ad4e236eb76ba91cf55a9c041587f268880307",
+      "test/automated/displayless/test-thumbnails": "f878252a98bcfa6586862fe0c0ff3e408655a2b81363d0988b87a586f04e090b",
+      "test/automated/displayless/test-ui-utilities": "91620793546cac7fa2440e4ed69b51c3b9d43152a8fb38af21bfc64ca3551fe9",
+      "test/automated/displayless/test-nautilus-search-engine-simple": "14c6f37a41ce71d0e90379c8e2121166ce267d6df15f4b261c1ef1f632460354",
+      "test/automated/displayless/test-nautilus-search-engine-model": "6fc034a1aa55fee70f784984bbbf912b6cfc321a9763746e65fd89443ec4efd2",
+      "test/automated/displayless/test-nautilus-search-engine": "f345fef6b20fdfc93b676a002815a4177a47cc94b3daa7e1c8b02ee0abf77724",
+      "test/automated/displayless/test-filename-utilities": "a90640e43db87de1a4446664e9bde7a4263f56d58126d2ce9fda6992c3dbfaf9",
+      "test/automated/displayless/test-filename-common-prefix": "631c3106f69560e51a126401ab6fff736060f16527a539f0bba95ccaa47e3853",
+      "test/automated/displayless/test-file-utilities": "1fd9fcf8319e860e4088e0c358f65202fa1eb1a682ce6e24f97d04277ade581f",
+      "test/automated/displayless/test-file-operations-trash-or-delete": "3451d6f45442fd88b11c70e30abb31649b885e2d58f4e1ef7d771057d002b6f5",
+      "test/automated/displayless/test-file-operations-rename": "ac13acdfc0e01d709d10a9787b5b357a91c1cf15718d367504b623f17ae21371",
+      "test/automated/displayless/test-file-operations-move-files": "194afed77bd026d44068d89865a2ed011cdfccca6832e4d575173a914b43fe96",
+      "test/automated/displayless/test-file-operations-link": "5a04f7cd79f0a54a45ccc1ada94d72b363c079b3adef84cecd58eb45c74701b1",
+      "test/automated/displayless/test-file-operations-copy-files": "095a03e139477c647fcc0f06207454378fa4c2db0c380887eebfed2305de724a",
+      "test/automated/displayless/test-file-operations-archive": "d7ac2396684ff5972f6166b621c6265f5edbf2590af323a82312fe0bcd5776cf",
+      "test/automated/displayless/test-file-metadata": "5a771a6c73a17865917cfe9e255e79e4a5ae333a646a3cd95ec9fcb6aff341ce",
+      "test/automated/displayless/test-file": "904808ce6608bead561899c104f53be835d3212f4d95f3b90a10987080c1ce2a",
+      "test/automated/displayless/test-directory": "43aebad262afe5d2a4d128af3430cc822e6f0d67f769525bc0819af1f47750a3",
+      "test/automated/displayless/test-bookmarks": "d09f5080c66d6d24afa752947f9ae30f6b2f9651b28c5745060a775d76f88108",
+      "test/automated/displayless/test-thumbnails.p/test-thumbnails.c.o": "dff5f1d236ea925f2e4ea3dbbfa66a7c3fc11700c42bb29ff10655dfb8eac464",
+      "test/automated/displayless/test-thumbnails.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-thumbnails.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-thumbnails.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-ui-utilities.p/test-ui-utilities.c.o": "4c04bf4ee69a7de964a07115cffb623e44ca634ffb2690d6c241f0bdc575bd94",
+      "test/automated/displayless/test-ui-utilities.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-ui-utilities.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-ui-utilities.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-nautilus-search-engine-simple.p/test-nautilus-search-engine-simple.c.o": "658b0abc392845a224c1672996a89e6895ba799f5f13779efbba4a589c154524",
+      "test/automated/displayless/test-nautilus-search-engine-simple.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-nautilus-search-engine-simple.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-nautilus-search-engine-simple.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-nautilus-search-engine-model.p/test-nautilus-search-engine-model.c.o": "6ad00ab80ad1b88e9f21ce65ec146253556396eba5b07c1cb6030033f653ecdf",
+      "test/automated/displayless/test-nautilus-search-engine-model.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-nautilus-search-engine-model.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-nautilus-search-engine-model.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-nautilus-search-engine.p/test-nautilus-search-engine.c.o": "dbf7e4b7d2b19bf5709da349a221cf4159711debaa92a3344880fcd3bc92fd15",
+      "test/automated/displayless/test-nautilus-search-engine.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-nautilus-search-engine.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-nautilus-search-engine.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-filename-utilities.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-filename-utilities.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-filename-utilities.p/test-filename-utilities.c.o": "621f7c51ca8538d14da61dc300b416b52ec3988925927b7b12a173b1acf671fe",
+      "test/automated/displayless/test-filename-utilities.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-filename-common-prefix.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-filename-common-prefix.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-filename-common-prefix.p/test-filename-common-prefix.c.o": "ea01037ab6fcf6e94cd130b469229c8a712194005ad1ebdd65a1862ff6a05853",
+      "test/automated/displayless/test-filename-common-prefix.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-file-utilities.p/test-file-utilities.c.o": "4ebc40d9c5d0412174a0d41c990e5fee3cb9e3e2c8e09c22ddd0f0dfbdd21b77",
+      "test/automated/displayless/test-file-utilities.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-file-utilities.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-file-utilities.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-file-operations-trash-or-delete.p/test-file-operations-trash-or-delete.c.o": "5d40504b7b5424a44f58f58659fd26f93e30aa5ee25df67d313080e9e7ff67ea",
+      "test/automated/displayless/test-file-operations-trash-or-delete.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-file-operations-trash-or-delete.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-file-operations-trash-or-delete.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-file-operations-rename.p/test-file-operations-rename.c.o": "f88c88f055685371703dae2dfc6c6f2cb3dcb9a9b5b4a75df51c73f7844bd668",
+      "test/automated/displayless/test-file-operations-rename.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-file-operations-rename.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-file-operations-rename.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-file-operations-move-files.p/test-file-operations-move-files.c.o": "da40d564e6038f16ac122418744315de9270251ce59d219bb03826a825ace94b",
+      "test/automated/displayless/test-file-operations-move-files.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-file-operations-move-files.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-file-operations-move-files.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-file-operations-link.p/test-file-operations-link.c.o": "1741c3f4987f2ce7bf67073eaacffa6ddd880b5be6df3bf91ab78e943687363c",
+      "test/automated/displayless/test-file-operations-link.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-file-operations-link.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-file-operations-link.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-file-operations-copy-files.p/test-file-operations-copy-files.c.o": "2999ff2e1448da314ac9ddadfd24bd8189f30e18d094340ecb5221d9fa4c701f",
+      "test/automated/displayless/test-file-operations-copy-files.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-file-operations-copy-files.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-file-operations-copy-files.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-file-operations-archive.p/test-file-operations-archive.c.o": "9df28e9752d68c76ea0accdddfbdd7375243a1e1819c4ebfd2f4c538591b62c3",
+      "test/automated/displayless/test-file-operations-archive.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-file-operations-archive.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-file-operations-archive.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-file-metadata.p/test-file-metadata.c.o": "5c480ecf8dc956938f98a0e858c6eb0c1ee3cef21b61bef998da1efb511d03b3",
+      "test/automated/displayless/test-file-metadata.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-file-metadata.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-file-metadata.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-file.p/test-file.c.o": "18366944660363dd9b3e74812a02893d37d77816edd032ccecebcc2a890f0ee2",
+      "test/automated/displayless/test-file.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-file.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-file.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-directory.p/test-directory.c.o": "bfa479180e8893e21584ae83b2eae73a882249b140b359021b51d65c8f11ae3b",
+      "test/automated/displayless/test-directory.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-directory.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-directory.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/displayless/test-bookmarks.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/displayless/test-bookmarks.p/test-bookmarks.c.o": "562b6ebff8392aefe4047c70b6d6cc5db309ac1b0ef62d4fe0a242a479c7579b",
+      "test/automated/displayless/test-bookmarks.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/displayless/test-bookmarks.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/display/test-portal-file-chooser.p/test-portal-file-chooser.c.o": "e843b5379de73b0ccc149830b84a563c7c25c492d90c2607f5af97cfa0922dc1",
+      "test/automated/display/test-portal-file-chooser.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/display/test-portal-file-chooser.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/display/test-portal-file-chooser.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/display/test-sidebar.p/test-sidebar.c.o": "648b0589003ed1ef86cb5341896c7a76f08d998c1ea797ac163bf9e5a90d81fc",
+      "test/automated/display/test-sidebar.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/display/test-sidebar.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/display/test-sidebar.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/display/test-files-view.p/test-files-view.c.o": "697e6ffe9f1f196e44c4125974e4d4f255f1d2cb143fc5bd5a6ac947fa3100e0",
+      "test/automated/display/test-files-view.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/display/test-files-view.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/display/test-files-view.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/display/test-file-operations-create.p/test-file-operations-create.c.o": "d2233f056cbf4605ee04ffd449802d864119fa10637485e5b44df7a706d8658a",
+      "test/automated/display/test-file-operations-create.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/display/test-file-operations-create.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/display/test-file-operations-create.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "test/automated/display/test-nautilus-directory-async.p/test-nautilus-directory-async.c.o": "4a241ce2759c33163f8e212786509cc6f2e611da632ee2de03e1ea83f042a28d",
+      "test/automated/display/test-nautilus-directory-async.p/meson-generated_.._.._.._.._xdp-gnome_xdg-desktop-portal-dbus.c.o": "e2c838bb1994cb4480085eb4cc949321ac9fc769684741703bc38e8ac62f6809",
+      "test/automated/display/test-nautilus-directory-async.p/meson-generated_.._.._.._.._xdp-gnome_shell-dbus.c.o": "1195a1ced61f2ba63c8562eaccebdbdc36837fe13d03cd71d6445641f9811d50",
+      "test/automated/display/test-nautilus-directory-async.p/meson-generated_.._.._.._.._src_resources_nautilus-resources.c.o": "0c8c50ed905675a971f6810ad259f0f35fbfc535863c253ab344998439a0b87b",
+      "extensions/audio-video-properties/libtotem-properties-page.so": "bdcde86a45bbe6f872eb4ef2ac11f75c350dd548dd8923208b75edc4c5455a91",
+      "extensions/image-properties/libnautilus-image-properties.so": "0e3ae8f7d7bff52924ea12125ce4938e6ee02be808ad05508e5ea612b0c9fe74",
+      "extensions/image-properties/libnautilus-image-properties.so.p/nautilus-image-properties-model-provider.c.o": "ec18a41b360ef350de29e1b95b1daa1900503410dd01a76a81fe046d843ebcac",
+      "extensions/image-properties/libnautilus-image-properties.so.p/nautilus-image-properties-model.c.o": "a59ec126ccc8dc6dd6380c255b867ceda1a375778f2edda981e573566694dc8d",
+      "extensions/image-properties/libnautilus-image-properties.so.p/nautilus-image-properties-module.c.o": "2a2f73db2797d5cf2c7f64f210c032708ee73b97063372abb7db6210442a23ed",
+      "extensions/audio-video-properties/libtotem-properties-page.so.p/totem-gst-helpers.c.o": "87ba40b4beccd9a750a2bedcb4c525042d6ad7cf50e84c8c3a7f1c33890558f2",
+      "extensions/audio-video-properties/libtotem-properties-page.so.p/totem-properties-view.c.o": "4ef23ead0ddc5cdb7c4a13063264c3bfa52cfa1e8c27355c9bba01ff3b165499",
+      "extensions/audio-video-properties/libtotem-properties-page.so.p/totem-properties-main.c.o": "65e15e9c89ca68cbb5d8df6fba3999606cc79ca3cdb7b4b183c0d988a388b250"
+    },
+    "stage_sha256": {
+      "usr/bin/nautilus-autorun-software": "13230b3ea516ccbd8d2ad5b0fc382023ce58bfbcdff0aeec48e16d7febb6bd36",
+      "usr/bin/nautilus": "55aa4e0c49a04e52bd0ea1da5bb9d45eaf0fc392d7ae65cd00585a6b4940b07b",
+      "usr/lib/libnautilus-extension.so.4.1": "661dbaf97c322a6605cde1907aa670017d6d4cd99d241423bae0dd5a80a6b7b4",
+      "usr/share/gir-1.0/Nautilus-4.1.gir": "87d8671fb90857f2c47bef5be5b8115ad0b6429e6cac64259674c7d9e04bd126",
+      "usr/share/metainfo/org.gnome.Nautilus.metainfo.xml": "fedb6ea177edc8be8620107a3bee03f1d6b7f34edbc8b7169038cedc21ff7d50",
+      "usr/share/applications/nautilus-autorun-software.desktop": "c9d95a53ff603a726bbf46839ccce7690c3cd00a8d2af79e30c8ee8a58039613",
+      "usr/share/applications/org.gnome.Nautilus.desktop": "6b447cf09132ee0a60b8e263ec4140eee8badb09c5fa6b82c3e09d603e21fcda",
+      "usr/share/locale/ab/LC_MESSAGES/nautilus.mo": "c353bdbbfdd6feded66440f3853335c382bad9ced5a002dfe9185a7973fce0b4",
+      "usr/share/locale/af/LC_MESSAGES/nautilus.mo": "83296fac971473fa3a03ab1476775f0f23863033a00e533dd412bae073b84851",
+      "usr/share/locale/am/LC_MESSAGES/nautilus.mo": "e82f6c5ec6629beb890d7d5f73ec4d54fc1964e0f7ff9136bcc98c1c9e0600f2",
+      "usr/share/locale/an/LC_MESSAGES/nautilus.mo": "60c5a3e980263ba3d62d4d1f79e7499f2726d523174f2552df8b8e1d3ff90948",
+      "usr/share/locale/ar/LC_MESSAGES/nautilus.mo": "2ae10bc3a5cb65b8b97fda626040452cbffc4dba35b9ed7bd38d8b1206df8a1e",
+      "usr/share/locale/as/LC_MESSAGES/nautilus.mo": "f5bd0f649a915b758dc678027876c61abe9b76d867231b5dc2daba92e86b8182",
+      "usr/share/locale/ast/LC_MESSAGES/nautilus.mo": "01e9c290ce1c8088dd70cb9be576df9f5d80da11b5962d5000cfc86ffb60e3ec",
+      "usr/share/locale/az/LC_MESSAGES/nautilus.mo": "83af1461a0477682f4385f7078445fb48db003e71f36069008c204cf55def894",
+      "usr/share/locale/be/LC_MESSAGES/nautilus.mo": "6b4b255424d0413af9dba30fd04538d31c69362fc9600cfbab8337a6a3968c89",
+      "usr/share/locale/be@latin/LC_MESSAGES/nautilus.mo": "ae6a39244026af74435f80c66b85261a49af836b03350470e03fe1b9817c66d4",
+      "usr/share/locale/bg/LC_MESSAGES/nautilus.mo": "18df5edca28cd46cdac853fc5f7fa544547de2654694a22436239eeab8c6a0cd",
+      "usr/share/locale/bn/LC_MESSAGES/nautilus.mo": "e5fb9cc6a6171211cb11b12a3fbd2faeb3f18268a7399108f901cd842f83ef93",
+      "usr/share/locale/bn_IN/LC_MESSAGES/nautilus.mo": "7eeb42572c2abd0edba128caba9c7abd7081caf4cb791be4d17a59f50658c1ca",
+      "usr/share/locale/bo/LC_MESSAGES/nautilus.mo": "73fccb7b933aa71e6b38a0cf18da2b3bfdc7775484c3d7343694fb82b895e41f",
+      "usr/share/locale/br/LC_MESSAGES/nautilus.mo": "69a1c2a815bf9a458d75acd2b5daaed759ab6692e3706b8e81cc74342de3fb45",
+      "usr/share/locale/bs/LC_MESSAGES/nautilus.mo": "1fb4ac530c9ae5db969e7a90071245302054c4ef76ebf74181de4177ed32f64c",
+      "usr/share/locale/ca/LC_MESSAGES/nautilus.mo": "ceb478eaea03f84965b018f8b1210ec12a6eb98dd7c6d79902ed935b1269a7ee",
+      "usr/share/locale/ca@valencia/LC_MESSAGES/nautilus.mo": "fdd582c0ec085b78c444b438f3240d0f6a9dbb09fd6bdd74d39d1afc7ee2d425",
+      "usr/share/locale/ckb/LC_MESSAGES/nautilus.mo": "8163f5b13ef6e2bc38d473efd87f860522fd20c3e973a5d070724cfb4d3630e4",
+      "usr/share/locale/crh/LC_MESSAGES/nautilus.mo": "8f68d6c646911bbf04f00354f6fe68d287646e1f9fbc02ea2a94203713019e5f",
+      "usr/share/locale/cs/LC_MESSAGES/nautilus.mo": "b558fc4ad85441915da6f6bb2f08c1d78d3adb9c01220c874772a37adbd68360",
+      "usr/share/locale/cy/LC_MESSAGES/nautilus.mo": "02117e3baa5ec6a8e855ae42200ea2d79c0775151a8e35db96739a8167f11fa8",
+      "usr/share/locale/da/LC_MESSAGES/nautilus.mo": "4d827337b2ab47c280460b0ffc5cfa53d97792557add493c44075a9cc26936bd",
+      "usr/share/locale/de/LC_MESSAGES/nautilus.mo": "da2ba4f0f3da7e57037ab46058dde3c64bee34150579d09fbd8c6fba3a75bf5b",
+      "usr/share/locale/dz/LC_MESSAGES/nautilus.mo": "25a592fd3e4a8fb216ac3d3a910c01a08a2af41060973eb3f47811b656d83fc2",
+      "usr/share/locale/el/LC_MESSAGES/nautilus.mo": "5c57e76bfd51597940663c9d0523d5a28fa3ac72812a319c3a37693938bb89ce",
+      "usr/share/locale/en_CA/LC_MESSAGES/nautilus.mo": "fc2b75cc9de139efe4b788cc843b91284d45ff75b5af8e15d5e9bc916929607d",
+      "usr/share/locale/en_GB/LC_MESSAGES/nautilus.mo": "0e9ddfb52a37c3f1b937820285e7727338888a168efe6abc158251c8fec6f50b",
+      "usr/share/locale/en@shaw/LC_MESSAGES/nautilus.mo": "244c634a19ebcfeff3edce07c787abba3fdfe8a57f50bb689d3035cd76464555",
+      "usr/share/locale/eo/LC_MESSAGES/nautilus.mo": "9b2554668c9101f0b506cffe563c88aa248be8cb05aff45761599e98879f64de",
+      "usr/share/locale/es/LC_MESSAGES/nautilus.mo": "79f4835ac9cbf0b7a609e6d5deaf09945155088277256b7bd31a1d89b35b9568",
+      "usr/share/locale/et/LC_MESSAGES/nautilus.mo": "e1f0004e1f06cc67e400d2df79e56e86016ed01eca1a327c1455de29d4fe9036",
+      "usr/share/locale/eu/LC_MESSAGES/nautilus.mo": "2e5f3826c9600ae8971b81aef27633b5c26bb3292c81e14b6b3b3e06baf1a25a",
+      "usr/share/locale/fa/LC_MESSAGES/nautilus.mo": "79baea872995fd9b9a7ecebc62a1409e9866f621c73a93e21298684daeb3ca2c",
+      "usr/share/locale/fi/LC_MESSAGES/nautilus.mo": "380261719cf5f0e1b84bdb47837a63bb879eb8daf5f0b5d090ea2474f4ca15d8",
+      "usr/share/locale/fo/LC_MESSAGES/nautilus.mo": "611836722e28f2dc4ecde22590e9152dfc24250721c504e102fbab047c6b80d5",
+      "usr/share/locale/fr/LC_MESSAGES/nautilus.mo": "99f7251fbcc5af33cce60198b75f1e7693aba9a2db166f2de6c2445ccd0848bf",
+      "usr/share/locale/fur/LC_MESSAGES/nautilus.mo": "b37f0cdfccc01b7b7a804679f4d7216f0c3af755cebb7afee5d3f4d744d5e3d5",
+      "usr/share/locale/fy/LC_MESSAGES/nautilus.mo": "bcd7c1449a2f79091fe4858b7d741ab9999c05f8a551bbc4e527b1f1067554d0",
+      "usr/share/locale/ga/LC_MESSAGES/nautilus.mo": "d1eeef962b2c978d3b2eff05ea2984a15d478a96138b0fcb693e65985a619665",
+      "usr/share/locale/gd/LC_MESSAGES/nautilus.mo": "337caed84e1ce69a756b27185ad62942bdef07676071d7270951dfdeb44ef968",
+      "usr/share/locale/gl/LC_MESSAGES/nautilus.mo": "3a27abe6e8bbbbfbd4e640253465a376880a40a5a1ee9ef6567588e3d4334391",
+      "usr/share/locale/gu/LC_MESSAGES/nautilus.mo": "eeca7f258f9d49ae6e1a2e4219c7570961f00ee350d8d42ab46a05575fdbb4f9",
+      "usr/share/locale/gv/LC_MESSAGES/nautilus.mo": "99410488c8521ea62a3de68044c46e5103d6eee8ecda364b3bbe26d28131820d",
+      "usr/share/locale/ha/LC_MESSAGES/nautilus.mo": "38ab11813808d6dafaf7595d6e2dbac74b4b55b6140e73bc0e76485984eea16c",
+      "usr/share/locale/he/LC_MESSAGES/nautilus.mo": "9c323d5737c9b3e086c9f87098a1832c920366b44dd40107f204096bf2cf7eb1",
+      "usr/share/locale/hi/LC_MESSAGES/nautilus.mo": "d32fe91a416535e9557099f4a7a1f47824d87691f7b30934f41c75a688111ef0",
+      "usr/share/locale/hr/LC_MESSAGES/nautilus.mo": "0fa098f67e8901dc833b61b943a9ce54fbe8f7e85097212c0ad341ac3a6afc0b",
+      "usr/share/locale/hu/LC_MESSAGES/nautilus.mo": "fde72f1e80fb53d12b84a52cc73bd127aec32b42701f128306cc72fce21edaeb",
+      "usr/share/locale/hy/LC_MESSAGES/nautilus.mo": "18ae2ad013c3d11cd157382d098e8225ba1847434040e4407d44181557cb67bc",
+      "usr/share/locale/ia/LC_MESSAGES/nautilus.mo": "97f60c9475ec80063d2c90fa0d60491466f6358e193b5719968f53e5200fd335",
+      "usr/share/locale/id/LC_MESSAGES/nautilus.mo": "46cdb30027118daae10f0ca4535e6ffe19b62cc011941bda356edf46ba695917",
+      "usr/share/locale/ie/LC_MESSAGES/nautilus.mo": "6ab849c33f905f338489feada891518199027902baf23cbc4c77966ccc7bda41",
+      "usr/share/locale/ig/LC_MESSAGES/nautilus.mo": "c5c0aa8901d5fb35ffd5493055f1588c3d609035d949e67a6be546874742fba7",
+      "usr/share/locale/io/LC_MESSAGES/nautilus.mo": "8fbd5216e496f62a59b45c6521eb3c9f33e9e456b470cfedc3a3a0e01e5e578f",
+      "usr/share/locale/is/LC_MESSAGES/nautilus.mo": "60759ab8d734a0a3f4a627be7635390b63b487461dbba6d04b355fd88eacf053",
+      "usr/share/locale/it/LC_MESSAGES/nautilus.mo": "d21634fca84d003fd69a1666b88a1a40a1e7e5904885bbc7257085dc383026fa",
+      "usr/share/locale/ja/LC_MESSAGES/nautilus.mo": "414cf85c42c3993f3cd991fd0d26adc194376ec602107c5ee0d873a36783a493",
+      "usr/share/locale/ka/LC_MESSAGES/nautilus.mo": "52a62f1ca1349e963984c9537607405201810363ad8c587a7828f6d246bbceca",
+      "usr/share/locale/kab/LC_MESSAGES/nautilus.mo": "eda753640f7554bdf59f8058195922d65d56ce8979a9b38ec96f2c0b16b0a40a",
+      "usr/share/locale/kk/LC_MESSAGES/nautilus.mo": "42c492b90215d696e5fc20f0277625196b79ef3eb8415c41af6d19e84b5355ff",
+      "usr/share/locale/km/LC_MESSAGES/nautilus.mo": "c6d93a5063a666a3c80c5e62d611eb3ce6bf786db0a35ba85f8eda2ee1d7f50f",
+      "usr/share/locale/kn/LC_MESSAGES/nautilus.mo": "c61148944a7a6c8e850585555ceee91a1a287513a811634b8332460f91b9a0ff",
+      "usr/share/locale/ko/LC_MESSAGES/nautilus.mo": "8deca9cd236b68a8e8fc579758275379fa21553fe04c3fb95f2f5d30f2184c9b",
+      "usr/share/locale/ku/LC_MESSAGES/nautilus.mo": "3ebcc71d9029545e7124f32175e5400de03ae5af482d3fa7324e9e17a9ddf222",
+      "usr/share/locale/ky/LC_MESSAGES/nautilus.mo": "f7629b1a9b75994255eefa1a39cf3d76d7cfeb23c723c06f18cf68dd4dffef23",
+      "usr/share/locale/li/LC_MESSAGES/nautilus.mo": "0f00d00e2377b22c2f4ba2f842cb2ab7839e1d5e41d24a09087844518f8ff156",
+      "usr/share/locale/ln/LC_MESSAGES/nautilus.mo": "277f66e03e50547d588167e4c839ad0cb5d7e18f488e8846f6543b2c52a9e455",
+      "usr/share/locale/lo/LC_MESSAGES/nautilus.mo": "f54159e4e81521b0347b74baa2281523935ff93dc37766bcdaa07f6b588954f5",
+      "usr/share/locale/lt/LC_MESSAGES/nautilus.mo": "58b743b3cd2a8d51cee3dfd8295cb9f5b1e9b2a2e23990c42ec1b8674b6df1c4",
+      "usr/share/locale/lv/LC_MESSAGES/nautilus.mo": "90dc9f11ba9063e114b44cfdf0d4d6869d5e5b11e9faf8eef15b0cb590a12497",
+      "usr/share/locale/mai/LC_MESSAGES/nautilus.mo": "c604a24ba8a4620867acb16443ecc62955024ed041b8a63af2b649d8a93d72e1",
+      "usr/share/locale/mg/LC_MESSAGES/nautilus.mo": "d91590ff282bac6c79bfef50b3ae54926bc1e00e45e7652f185967ea8d30c755",
+      "usr/share/locale/mi/LC_MESSAGES/nautilus.mo": "632647e5d3da144735bc07cb8c4553370568f41c5da6e8de89ef966ddc5832ea",
+      "usr/share/locale/mjw/LC_MESSAGES/nautilus.mo": "b91accc67ff80002c5df829f798cc6b9d0c84c6d7fa2a58f04d4cc55c2280e75",
+      "usr/share/locale/mk/LC_MESSAGES/nautilus.mo": "80970bdd0973334e788a7fcc2a2ef1d10a45f42636895b4841a2b88be30115ad",
+      "usr/share/locale/ml/LC_MESSAGES/nautilus.mo": "56a8cd59e45119e047f65fdc8645a6dd3e389b9c767440be25fc903120de46b7",
+      "usr/share/locale/mn/LC_MESSAGES/nautilus.mo": "9f5b008e9641a3b54e29f646e9fe63e5d7a175f85dab158d0dcf7c2a9505801c",
+      "usr/share/locale/mr/LC_MESSAGES/nautilus.mo": "83b7aeb002d33bf7a77c132086962b21376ca9fae50376bfef78b7fe5a23a971",
+      "usr/share/locale/ms/LC_MESSAGES/nautilus.mo": "e6b73dcc1e5b4fe7a8c79246f3e113817d5518c96bf1ae403efb1c562aeea8f5",
+      "usr/share/locale/my/LC_MESSAGES/nautilus.mo": "295cc7967c5ac5ea5b4c1d90495a11c5667a67622946727d18166dfe1e3620d4",
+      "usr/share/locale/nb/LC_MESSAGES/nautilus.mo": "345e765f2ac347605ad8a7c553720cf374424e00af1f1cc6ed31b7d9f1d6d03f",
+      "usr/share/locale/nds/LC_MESSAGES/nautilus.mo": "21316ad7d4956b5602a0583fbec63a1161912773a711b5340b502f4eba3d5932",
+      "usr/share/locale/ne/LC_MESSAGES/nautilus.mo": "a66896652c4e217eb8a251611f7b30203054a7e9266faef1a445fdc1a2ff024d",
+      "usr/share/locale/nl/LC_MESSAGES/nautilus.mo": "6286d5fa619fb20fbfe055158cd5d7317f5c5f897ed5a196746faf21c306a4c4",
+      "usr/share/locale/nn/LC_MESSAGES/nautilus.mo": "1dc84f6595782ee6827bd6946e4c166230084d98eb6f3140bfe7e3e1bd573f97",
+      "usr/share/locale/nso/LC_MESSAGES/nautilus.mo": "050a54469c7503eff8862c26c32fa77c706909fbc828bb640a6416a2c7d0494b",
+      "usr/share/locale/oc/LC_MESSAGES/nautilus.mo": "16a92c468178005362efefd63905d4e157a5a5d4b2ac11398d795bc0add33d22",
+      "usr/share/locale/or/LC_MESSAGES/nautilus.mo": "f4f1b64a8fa1633afa71d7d23dc14b008a410e6d43f363b37bc6f4c062e65e78",
+      "usr/share/locale/pa/LC_MESSAGES/nautilus.mo": "bd5d198299a3d828c4c6da5e3c956e1c4c7670c801b54986dc4451a2c311970a",
+      "usr/share/locale/pl/LC_MESSAGES/nautilus.mo": "af16a945f741ba0c6594af380a8d5ed5a36fec272ece6f3cee21f64e4ea52660",
+      "usr/share/locale/ps/LC_MESSAGES/nautilus.mo": "1b036e32c249bed2c8abba529167f3da6e21decf9fa69cfa6d1f7c2a1d886a06",
+      "usr/share/locale/pt/LC_MESSAGES/nautilus.mo": "c7b89cb039cf9d62528aa0d2057a5d7d7d23d19a8c5d3be5c4c2587e447c3b77",
+      "usr/share/locale/pt_BR/LC_MESSAGES/nautilus.mo": "bf296c58358ccf0d18dc12f202deb1214ec009a5f4f4ea4b43df57e90d4d0dd9",
+      "usr/share/locale/ro/LC_MESSAGES/nautilus.mo": "23fe68725f42fe249b62d9ed9e6ccc45b309c81b94b04c152e9fb20cc8517cb6",
+      "usr/share/locale/ru/LC_MESSAGES/nautilus.mo": "266549c77afb0e413e71fcd02a9dec7ff79cd17934ae642d7cbf459dbbc903fb",
+      "usr/share/locale/rw/LC_MESSAGES/nautilus.mo": "346459b62d24696658a39c78b05c36d2fb975d8dfda1c1ca03ec1b2dd0a067b6",
+      "usr/share/locale/si/LC_MESSAGES/nautilus.mo": "42f6290f4bf9dac0723c044aff2268d5413ac08d446036e6d533dfe352a82d3f",
+      "usr/share/locale/sk/LC_MESSAGES/nautilus.mo": "03c59510f04a1d52ec873654f19861c5e238cc8735aa935056e39c15e1e68138",
+      "usr/share/locale/sl/LC_MESSAGES/nautilus.mo": "bd894be7efb7c43e46859854aea2cfdc2a6f42d10dbec9eb63ea9d2fa488b58a",
+      "usr/share/locale/sq/LC_MESSAGES/nautilus.mo": "d9e0002c93fa2a15e15df6b669bf8c66722d7ffdc930a1080f2e657b139a3ff4",
+      "usr/share/locale/sr/LC_MESSAGES/nautilus.mo": "0e0fa84a4969fd743ea19ac31ace80e6b02e7d18008485a08a51a089ca220f88",
+      "usr/share/locale/sr@ije/LC_MESSAGES/nautilus.mo": "66f758d15ea069279c05627fc5177618ed5b7721bb284a527fada6880c2aa4a3",
+      "usr/share/locale/sr@latin/LC_MESSAGES/nautilus.mo": "a9b1a53cec79729f4bd6d34597ec845a71ee4c86a1813f958031157321dc7223",
+      "usr/share/locale/sv/LC_MESSAGES/nautilus.mo": "109b5b0aa6e0bdced0529f7135964c00bae55fd62d724075be80197a82ea6d4f",
+      "usr/share/locale/ta/LC_MESSAGES/nautilus.mo": "2c059f69a7e7624b6a195b12470c21de1e3f12741c86504757495bb2de100f63",
+      "usr/share/locale/te/LC_MESSAGES/nautilus.mo": "0c9ef9f6db8d2e7e0763d2a1777af48992662d68656846e64bfb2e7f84c55ecb",
+      "usr/share/locale/tg/LC_MESSAGES/nautilus.mo": "e03920ed58469c7e1467d1252c937f783f5a667a9c04a229352830fefce5556a",
+      "usr/share/locale/th/LC_MESSAGES/nautilus.mo": "8cb3fb7478febd268036e40f4f229371b16f15b73a045348c6a1809f1978a06c",
+      "usr/share/locale/tk/LC_MESSAGES/nautilus.mo": "47bca379c539ab6ea7261b2a98417b950ddcc29f0072cddceaf0b4c334e8d068",
+      "usr/share/locale/tr/LC_MESSAGES/nautilus.mo": "b1a925c737d2c89dcef951b3e1a1bcf8290ffc9891d8ec31a23f7ecb0bb31064",
+      "usr/share/locale/ug/LC_MESSAGES/nautilus.mo": "9704efb2aee1d954877e7faab6cfc19a92609cb61bba5ae521d723b232437785",
+      "usr/share/locale/uk/LC_MESSAGES/nautilus.mo": "b38f04c2716eb64c5a2f79c2aa15e8e9b6a0ea02284816e495eaea4c732132d9",
+      "usr/share/locale/uz/LC_MESSAGES/nautilus.mo": "38386ae15726005b015ef8018ded0045ce23048ae899012d7dce5e3f35eb7de9",
+      "usr/share/locale/uz@cyrillic/LC_MESSAGES/nautilus.mo": "c9971a4c31f28a984e551c11c4a31ed43fce5784c14d4882bef3ca052c8b2ef4",
+      "usr/share/locale/vi/LC_MESSAGES/nautilus.mo": "d2db87d73a56399fe299f09badf1f379367f54d51fdc8e5e25d34e75a17650f4",
+      "usr/share/locale/wa/LC_MESSAGES/nautilus.mo": "56ed1423a3de8d5407cccbbc04ba13bba5c1a9c45a41eb10244aa43fbe2fbe00",
+      "usr/share/locale/xh/LC_MESSAGES/nautilus.mo": "27ebcb424fe7eb02ef160fa10756fb6ea58dfd20e03510bb611415dec3cde5cf",
+      "usr/share/locale/yi/LC_MESSAGES/nautilus.mo": "6f1bb10ce06d1d6a760ad33e649b6f3b9fdcbb3e1ce4301b813df2f3f4b3c169",
+      "usr/share/locale/yo/LC_MESSAGES/nautilus.mo": "02ce7a47cb998ed6641901b0b72b0c6e82e1d446a6a145f6de6143e64bd0de3b",
+      "usr/share/locale/zh_CN/LC_MESSAGES/nautilus.mo": "60ce43b39c37d97984cd0d0da95c86f59138aab341743cd7301053f2a9d926b6",
+      "usr/share/locale/zh_HK/LC_MESSAGES/nautilus.mo": "5cb4eb500fce1e1b4a2dde87a33c4e7aadb9f487fea8af77680abe1f7a85bab2",
+      "usr/share/locale/zh_TW/LC_MESSAGES/nautilus.mo": "e9794022ca4837cd2f6cbc62d5f9fd56402249bd6669fe38b0d00095645b6e8c",
+      "usr/share/locale/zu/LC_MESSAGES/nautilus.mo": "0f25998be244533caf00dc089ca5768052e21d01967ff771fdddfaf7f06bcad6",
+      "usr/share/icons/hicolor/scalable/apps/org.gnome.Nautilus.svg": "f38bab4647df800d79f3de043975c8b8d05ce6f7e67c966b49e820efb58d44f9",
+      "usr/share/icons/hicolor/symbolic/apps/org.gnome.Nautilus-symbolic.svg": "6bc398d269bc598f7b3df9da8ba98412e3e48c8adf9e7086c8b18fc561ebf9bb",
+      "usr/share/dbus-1/services/org.freedesktop.FileManager1.service": "e83ecf9832482c7788c874b645310445f042f0f3a62846890b3da5719640b043",
+      "usr/share/dbus-1/services/org.gnome.Nautilus.service": "92a30be3827fa4bbca82f353fbaf550e96c63a738fa1206ff507eba238df4f06",
+      "usr/share/gnome-shell/search-providers/org.gnome.Nautilus.search-provider.ini": "fdff649300f4b5af29a8976f20d722ad3c03ed523b963e0981e4a1ee27337179",
+      "usr/share/glib-2.0/schemas/org.gnome.nautilus.gschema.xml": "fe4e7fe8413a4d89262809e01524a9350ed83c707d0ea0d4a29ec7423d69d963",
+      "usr/share/nautilus/ontology/nautilus.ontology": "fb92d2e2947ecf9469d4a5cb782ce44fbdf0bca9d2ecfbc2f6e5cf107b9f2e25",
+      "usr/share/nautilus/ontology/nautilus.description": "f1991858c48d80705ccdad0569f7e544907b44eb9b6fb6c8924177a2a783b2e7",
+      "usr/include/nautilus/nautilus-extension.h": "1de841bfeea05f53a1431cfca915d3f51a4c41ced8aa04da2c7693ca718cffc6",
+      "usr/include/nautilus/libnautilus-extension/nautilus-menu.h": "a2f42eff8d5fce7e99c1f83c16cf72ffc3f74c95eaa5c1d0338711321a62dbda",
+      "usr/include/nautilus/libnautilus-extension/nautilus-properties-item.h": "cbc9f4908d6f6c2f0de78e75b97fc286ba28da90e16eacbc181017493d21afa2",
+      "usr/include/nautilus/libnautilus-extension/nautilus-properties-model.h": "01c5ae5ffee5ca69a7004e4ca37352f362193b01fbefbcf5384386cac0410c79",
+      "usr/include/nautilus/libnautilus-extension/nautilus-properties-model-provider.h": "b091a97666d125dcf9982c18203dc8c60fc1aeed0293a48a7f74615bc7542a6c",
+      "usr/include/nautilus/libnautilus-extension/nautilus-menu-provider.h": "3e932a47e385bb159b14d8fb180d76c3729ac2f3ad380afb74ad9de0073d32fe",
+      "usr/include/nautilus/libnautilus-extension/nautilus-info-provider.h": "099500bdfc2f63749dae190c6271e663ba7ffe3952b750af79bc5327dcb8d0e5",
+      "usr/include/nautilus/libnautilus-extension/nautilus-file-info.h": "6158a1463679f8be0c2b99e745225270103e52d912bacd6f34fc2a5ca2beed69",
+      "usr/include/nautilus/libnautilus-extension/nautilus-column.h": "4d56906c2f6903a806aa012e9cc338020ee316ecc0d5ea768d5a3d2984cdba8c",
+      "usr/include/nautilus/libnautilus-extension/nautilus-column-provider.h": "371fc1229cf417c83e0f10a4773be0d94dd888fb215033809f9a1e8435bb4e7f",
+      "usr/include/nautilus/libnautilus-extension/nautilus-extension-enum-types.h": "f45c2f2d28a37d21ba2a64ae6fd53bf816342c55fd7a24b7555b5776dbd537bf",
+      "usr/lib/pkgconfig/libnautilus-extension-4.pc": "f4b72ee84165bc0400506fa7e88dc2271767188e5e7142fd81dde452cff796ca",
+      "usr/lib/girepository-1.0/Nautilus-4.1.typelib": "b33b49cc01ed31e8b8e3b3d1b8ace4a0f30a0ccc9bf12cdbc72dbde8ee93f4c6",
+      "usr/lib/nautilus/extensions-4/libtotem-properties-page.so": "33c1a70b05913d10e1d4a2aa529addad34ab16f8871f2df179cf3451e37269a6",
+      "usr/lib/nautilus/extensions-4/libnautilus-image-properties.so": "96ad5978ff590c1efc37ca12da97f607ad385de02fc3e0be445903f3c50304f0"
+    },
+    "registered_test_count": 24,
+    "original_tests_executed": false
+  },
+  "prepared": {
+    "source_sha256": "e1e285efddf42ed30dda5b29f7f8d242dab4bc1409a9054863b367bad4b34d5a",
+    "recipe_sha256": "350eca26d451f25c8ba65fc1992603ff94e83ba6f8536dbeb90fd1e033f61cfd",
+    "source_patches": [],
+    "book": "BLFS13.1-systemd gnome/nautilus.html",
+    "book_page_sha256": "a68a45f372ce35ddc351ea1769e2c84ce2709719502ea4aa1121b0e1563da5f8",
+    "scope": "No source patches/fallback downloads; actual source glycin>=2 uses the already qualified owned2.1SDK, all original tests compiled for native graphical qualification."
+  },
+  "job": {
+    "pid": 4244,
+    "boot_id": "71632310-0bdd-4d1e-9deb-921d95eddc97",
+    "proc_start_ticks": "148547",
+    "started_unix": 1794367131.0860472,
+    "command": [
+      "/bin/bash",
+      "/opt/toddy-build/scripts/build/phase2/isolated.sh",
+      "/mnt/lfs/sources/phase2/inputs/nautilus-50.2.2",
+      "/mnt/lfs/sources/phase2/work/nautilus-1",
+      "bash",
+      "/src/toddy-build.sh"
+    ],
+    "harness_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c"
+  },
+  "source_preparation": {
+    "state": "prepared",
+    "source": {
+      "name": "nautilus",
+      "version": "50.2.2",
+      "filename": "nautilus-50.2.2.tar.xz",
+      "url": "https://download.gnome.org/sources/nautilus/50/nautilus-50.2.2.tar.xz",
+      "sha256": "e1e285efddf42ed30dda5b29f7f8d242dab4bc1409a9054863b367bad4b34d5a",
+      "upstream_sha256_url": "https://download.gnome.org/sources/nautilus/50/nautilus-50.2.2.sha256sum",
+      "upstream_sha256_file_sha256": "9ac95195ec06c471a47398fbb21897f8eb899e45a716fb53f76b91727f9ffa23",
+      "reference": "BLFS 13.1-systemd selected desktop roots; GNOME Text Editor50.1 approved minimal-editor candidate",
+      "status": "source_verified"
+    },
+    "boot_id": "71632310-0bdd-4d1e-9deb-921d95eddc97",
+    "mount_id": "485",
+    "target_free_before": 17343307776,
+    "source_alias": "/mnt/lfs/sources/phase2/inputs/nautilus-50.2.2",
+    "work_alias": "/mnt/lfs/sources/phase2/work/nautilus-1",
+    "bindings": [
+      {
+        "source": "/run/toddy-samba-client-1/nautilus-input-1/nautilus-50.2.2",
+        "target": "/mnt/lfs/sources/phase2/inputs/nautilus-50.2.2",
+        "readonly": true
+      },
+      {
+        "source": "/run/toddy-samba-client-1/nautilus-work-1",
+        "target": "/mnt/lfs/sources/phase2/work/nautilus-1",
+        "readonly": false
+      }
+    ],
+    "source_inode": 46007,
+    "work_inode": 46610,
+    "expanded_source_bytes": 33693838,
+    "prepared_sha256": "3d8f1f3ec79bae3eb60337f6cac7310ceb3f0d4e1c6b0513afa9892ed7ba479d",
+    "scratch_free": 717119488,
+    "target_free": 17343299584,
+    "root_source_write_denied": true
+  },
+  "test_inventory": [
+    {
+      "cmd": [
+        "/usr/bin/appstreamcli",
+        "validate",
+        "--no-net",
+        "/build/compile/data/org.gnome.Nautilus.metainfo.xml"
+      ],
+      "env": {},
+      "name": "validate-appdata",
+      "workdir": null,
+      "timeout": 30,
+      "suite": [
+        "nautilus"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "3a6eb07@@org.gnome.Nautilus.metainfo.xml@cus"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-bookmarks"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-bookmarks",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-bookmarks@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-directory"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-directory",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-directory@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-file"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-file",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-file@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-file-metadata"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-file-metadata",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-file-metadata@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-file-operations-archive"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-file-operations-archive",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-file-operations-archive@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-file-operations-copy-files"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-file-operations-copy-files",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-file-operations-copy-files@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-file-operations-link"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-file-operations-link",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-file-operations-link@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-file-operations-move-files"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-file-operations-move-files",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-file-operations-move-files@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-file-operations-rename"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-file-operations-rename",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-file-operations-rename@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-file-operations-trash-or-delete"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-file-operations-trash-or-delete",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-file-operations-trash-or-delete@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-file-utilities"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-file-utilities",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-file-utilities@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-filename-common-prefix"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-filename-common-prefix",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-filename-common-prefix@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-filename-utilities"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-filename-utilities",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-filename-utilities@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-nautilus-search-engine"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-nautilus-search-engine",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-nautilus-search-engine@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-nautilus-search-engine-model"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-nautilus-search-engine-model",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-nautilus-search-engine-model@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-nautilus-search-engine-simple"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-nautilus-search-engine-simple",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-nautilus-search-engine-simple@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-ui-utilities"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-ui-utilities",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-ui-utilities@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/displayless/test-thumbnails"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/displayless",
+        "G_TEST_SRCDIR": "/src/test/automated/displayless",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-thumbnails",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:displayless"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "15463b7@@test-thumbnails@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/display/test-nautilus-directory-async"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/display",
+        "G_TEST_SRCDIR": "/src/test/automated/display",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-nautilus-directory-async",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:display"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "053ff88@@test-nautilus-directory-async@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/display/test-file-operations-create"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/display",
+        "G_TEST_SRCDIR": "/src/test/automated/display",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-file-operations-create",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:display"
+      ],
+      "is_parallel": true,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "053ff88@@test-file-operations-create@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/usr/bin/localsearch",
+        "test-sandbox",
+        "--store-tmpdir",
+        "--index-recursive-tmpdir",
+        "test/automated/display/test-files-view"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/display",
+        "G_TEST_SRCDIR": "/src/test/automated/display",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-files-view",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:display",
+        "nautilus:tracker"
+      ],
+      "is_parallel": false,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "053ff88@@test-files-view@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/display/test-sidebar"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/display",
+        "G_TEST_SRCDIR": "/src/test/automated/display",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-sidebar",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:display"
+      ],
+      "is_parallel": false,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "053ff88@@test-sidebar@exe"
+      ],
+      "extra_paths": []
+    },
+    {
+      "cmd": [
+        "/build/compile/test/automated/display/test-portal-file-chooser"
+      ],
+      "env": {
+        "GTK_A11Y": "none",
+        "GSK_DEBUG": "fallback",
+        "GSETTINGS_BACKEND": "memory",
+        "GSETTINGS_SCHEMA_DIR": "/build/compile/data",
+        "G_TEST_BUILDDIR": "/build/compile/test/automated/display",
+        "G_TEST_SRCDIR": "/src/test/automated/display",
+        "LD_LIBRARY_PATH": "/build/compile/libnautilus-extension"
+      },
+      "name": "test-portal-file-chooser",
+      "workdir": null,
+      "timeout": 480,
+      "suite": [
+        "nautilus:display"
+      ],
+      "is_parallel": false,
+      "priority": 0,
+      "protocol": "exitcode",
+      "depends": [
+        "053ff88@@test-portal-file-chooser@exe"
+      ],
+      "extra_paths": []
+    }
+  ],
+  "target_available": 17343299584,
+  "scratch_available": 624537600,
+  "recipe_sha256": "350eca26d451f25c8ba65fc1992603ff94e83ba6f8536dbeb90fd1e033f61cfd"
+}

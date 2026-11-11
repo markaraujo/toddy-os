@@ -20,6 +20,7 @@ Last verified: 2026-11-11T03:13:48.245693+00:00
 
 Verified:
 
+- Pinned Nautilus50.2.2 source/compiler/stage1 passed,277ELFs/154stage regular files,24original programs registered (none executed), source readonly/dependency fallbacks disabled/all tests+extensions/GIR retained.17.009s compile/0.251s stage, min624615424B scratch; executable code/constant sections preserved across normal Meson staging. No native tests/package/GUI acceptance yet.
 - LocalSearch stock schemas globally integrated: GTK4.22.4-1+toddy11 recipe/post0/0,12changes,125schemas/1081keys;122baseline/1060keys and all contracts preserved,906runtime entries unchanged, no preferences/overrides.81inputs/20owners retained. Native installed search/Nautilus GUI pending.
 - Owned native LocalSearch3.11.1 installed recipe/post0/0,153changed paths/300payload entries. All133original stage files and links,21ELF ABI/APT, no SUID/SGID, user-only activation/legal/autostart conffile and UID101/NNP CLI refusal/help/recovery passed. Native9program/20case proof reused. No service activation or global schema-cache integration yet.
 - Actual native LocalSearch4 passed all9selected original programs/20expected search/inhibit/reset and malicious-extractor denial cases, positive controls UID101/NNP/caps0, source/compile/stage unchanged, container0/base unchanged. ADR0220 bounded extension succeeded;13accepted portable programs not replayed. Native package/Nautilus/GUI still pending.
@@ -195,7 +196,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: LocalSearch native package, functional20case gate and shared-schema integration verified. Next pinned Nautilus50.2.2 compile/stage/native GUI, preserving normal-seat proof and target/scratch reserves. Network/audio/browser/Gvfs/storage/global theme/terminal defaults/full B02 pending. Complete all B02, then stop.
+Running: Nautilus50.2.2 compiled and staged successfully; native graphical original tests and package/GUI pending. Next new exact cache-custody generation including Nautilus and GTK11, then qualified native cache transport/normal GDM user-seat testing. LocalSearch/native GNOME proofs retained. Full B02 incomplete; complete all B02, then stop.
 
 Remaining:
 
