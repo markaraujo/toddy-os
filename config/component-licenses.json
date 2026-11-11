@@ -11316,6 +11316,27 @@
       "license": "LicenseRef-firefox-per-file",
       "evidence": "Full source LICENSE/toolkit/content/license.html and exact vendored source notices must be retained; source/codec inventory and native package/license closure pending.",
       "runtime_inclusion": "Security candidate only, not built/installed/advertised as working. Supersedes baseline153.2 for browser release eligibility after actual qualification."
+    },
+    {
+      "name": "fuse",
+      "version": "3.18.2",
+      "license": "LicenseRef-fuse-per-file",
+      "evidence": "Exact LICENSE separates include/lib/meson.build LGPL2.1 from other files GPL2; retain LICENSE, LGPL2.txt, GPL2.txt and per-file notices.",
+      "runtime_inclusion": "Selected native desktop portal closure; source-pinned only, not built/installed or advertised as qualified."
+    },
+    {
+      "name": "xdg-desktop-portal",
+      "version": "1.22.1",
+      "license": "LicenseRef-xdg-desktop-portal-per-file",
+      "evidence": "Source meson.build declares LGPL-2.0-or-later while COPYING carries LGPL2.1; retain both metadata and exact per-file notices, not a blanket relicensing claim.",
+      "runtime_inclusion": "Selected native desktop portal closure; source-pinned only, not built/installed or advertised as qualified."
+    },
+    {
+      "name": "xdg-desktop-portal-gtk",
+      "version": "1.15.3",
+      "license": "LicenseRef-xdg-desktop-portal-gtk-per-file",
+      "evidence": "Source meson.build declares LGPL-2.1-or-later; retain COPYING and exact per-file notices.",
+      "runtime_inclusion": "Selected native desktop portal closure; source-pinned only, not built/installed or advertised as qualified."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

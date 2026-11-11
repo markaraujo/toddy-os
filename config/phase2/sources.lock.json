@@ -3010,6 +3010,42 @@
       "reference": "ADR-0225; Mozilla MFSA2026-93/100/127 same Firefox153 ESR security overlay",
       "integrity": "Official HTTPS source matches exact publisher SHA512SUMS; observed SHA256 frozen before extraction. No OpenPGP signature claim. Original153.2 baseline retained.",
       "status": "source_verified"
+    },
+    {
+      "name": "fuse",
+      "version": "3.18.2",
+      "filename": "fuse-3.18.2.tar.gz",
+      "url": "https://github.com/libfuse/libfuse/releases/download/fuse-3.18.2/fuse-3.18.2.tar.gz",
+      "sha256": "f01de85717e20adf5f98aff324acd85dd73d61a5ca3834d573dcf0bd6e54a298",
+      "book_page_sha256": "a809a1f5db3dcf7ee24e93c5c7b3a45057763e22f2aeb604d1acafd8a4eff904",
+      "book_md5": "43c6f6cd2c1368d916f6fb080eb39cbb",
+      "reference": "BLFS13.1-systemd postlfs/fuse.html",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "xdg-desktop-portal",
+      "version": "1.22.1",
+      "filename": "xdg-desktop-portal-1.22.1.tar.xz",
+      "url": "https://github.com/flatpak/xdg-desktop-portal/releases/download/1.22.1/xdg-desktop-portal-1.22.1.tar.xz",
+      "sha256": "d4879ddb3d65ff1a8f19187497e6f13dc5d267bcac404a5d501218be355753d3",
+      "book_page_sha256": "587ae54648774267ff456fb6731c5d66d8444f8d97742406ec2fdb2bdfc6127f",
+      "book_md5": "edfbfffe55a35920a303404b6c5d49a0",
+      "reference": "BLFS13.1-systemd x/xdg-desktop-portal.html",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
+    },
+    {
+      "name": "xdg-desktop-portal-gtk",
+      "version": "1.15.3",
+      "filename": "xdg-desktop-portal-gtk-1.15.3.tar.xz",
+      "url": "https://github.com/flatpak/xdg-desktop-portal-gtk/releases/download/1.15.3/xdg-desktop-portal-gtk-1.15.3.tar.xz",
+      "sha256": "47a3743d2419a8601e691db37e85bb5fac5ae4b26842177065cd5f22ada23b37",
+      "book_page_sha256": "2d6702c2eaf4424a89c7d022e231d077c523723acb0fa9184f91991c48a65123",
+      "book_md5": "2d6e2ad2953c386a1db11618fa3803b0",
+      "reference": "BLFS13.1-systemd x/xdg-desktop-portal-gtk.html",
+      "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
+      "status": "source_verified"
     }
   ]
 }

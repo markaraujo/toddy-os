@@ -50,16 +50,21 @@ actual power-on GNOME is still unproven. Do not replay successful migration.
 Next slice: qualify missing selected portal integration against frozen BLFS13.1:
 xdg-desktop-portal1.22.1, Fuse3.18.2, GNOME backend50.0 and its runtime GTK backend
 1.15.3. Existing GNOME backend50.0 archive is already authenticated in source lock;
-reuse it. Other three source archives absent; derive exact URLs/MD5 from frozen
+reuse it. Other three official source archives now acquired/pinned with frozen MD5+SHA256; see
+[evidence/B02-portal-source-inputs.json](evidence/B02-portal-source-inputs.json). Their frozen references are
 `.local/books/x/xdg-desktop-portal.html`, `postlfs/fuse.html` and
-`x/xdg-desktop-portal-gtk.html`, acquire official bytes, pin SHA256 before extraction.
+`x/xdg-desktop-portal-gtk.html`. No extraction/native source preparation yet.
+Parser corrected: backend choice now preserves mandatory base dependencies;
+focused actual parser regression passes. Source/license lock additions retain
+exact versions, no base upgrade. Next guarded isolated FUSE preparation/build and
+cached desktop-kernel FUSE capability update, then portal builds/native checks.
 Actual both /boot/config-7.1.8-toddy{,-foundation} show CONFIG_FUSE_FS unset. A
 narrow versioned desktop kernel capability update is therefore required before
 actual document-portal/FUSE acceptance; preserve accepted foundation/old boot
 recovery, reuse restored kernel COW/source/compiler cache, do not rebuild foundation.
 Do not disable Bubblewrap/document confinement or force GTK_THEME to hide missing
 portal behavior. Keep FUSE owner/allow_other/privilege checks; CUSE is optional test
-coverage, not an automatic kernel expansion. No new archive/build/kernel write
+coverage, not an automatic kernel expansion. No new guest source/build/kernel write
 dispatched yet. Source inspection and exact native denial/boot checks next.
 Native browser and desktop integration tests are terminal/accepted at their
 scoped evidence; do not replay them wholesale. B02 still in_progress.

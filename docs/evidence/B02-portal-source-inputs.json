@@ -1,0 +1,45 @@
+{
+  "scope": "Official same-version archives matched frozen BLFS13.1 book MD5 with observed SHA256. No signature claim, extraction or guest install.",
+  "state": "complete",
+  "inputs": [
+    {
+      "name": "fuse",
+      "version": "3.18.2",
+      "filename": "fuse-3.18.2.tar.gz",
+      "url": "https://github.com/libfuse/libfuse/releases/download/fuse-3.18.2/fuse-3.18.2.tar.gz",
+      "md5": "43c6f6cd2c1368d916f6fb080eb39cbb",
+      "sha256": "f01de85717e20adf5f98aff324acd85dd73d61a5ca3834d573dcf0bd6e54a298",
+      "bytes": 4933779,
+      "book_page": "postlfs/fuse.html",
+      "book_page_sha256": "a809a1f5db3dcf7ee24e93c5c7b3a45057763e22f2aeb604d1acafd8a4eff904"
+    },
+    {
+      "name": "xdg-desktop-portal",
+      "version": "1.22.1",
+      "filename": "xdg-desktop-portal-1.22.1.tar.xz",
+      "url": "https://github.com/flatpak/xdg-desktop-portal/releases/download/1.22.1/xdg-desktop-portal-1.22.1.tar.xz",
+      "md5": "edfbfffe55a35920a303404b6c5d49a0",
+      "sha256": "d4879ddb3d65ff1a8f19187497e6f13dc5d267bcac404a5d501218be355753d3",
+      "bytes": 1264992,
+      "book_page": "x/xdg-desktop-portal.html",
+      "book_page_sha256": "587ae54648774267ff456fb6731c5d66d8444f8d97742406ec2fdb2bdfc6127f"
+    },
+    {
+      "name": "xdg-desktop-portal-gtk",
+      "version": "1.15.3",
+      "filename": "xdg-desktop-portal-gtk-1.15.3.tar.xz",
+      "url": "https://github.com/flatpak/xdg-desktop-portal-gtk/releases/download/1.15.3/xdg-desktop-portal-gtk-1.15.3.tar.xz",
+      "md5": "2d6e2ad2953c386a1db11618fa3803b0",
+      "sha256": "47a3743d2419a8601e691db37e85bb5fac5ae4b26842177065cd5f22ada23b37",
+      "bytes": 94556,
+      "book_page": "x/xdg-desktop-portal-gtk.html",
+      "book_page_sha256": "2d6702c2eaf4424a89c7d022e231d077c523723acb0fa9184f91991c48a65123"
+    }
+  ],
+  "kernel_inspection": {
+    "config-7.1.8-toddy-foundation": "CONFIG_FUSE_FS unset",
+    "config-7.1.8-toddy": "CONFIG_FUSE_FS unset",
+    "scope": "Actual readonly installed /boot configuration inspection, not a new kernel build or live FUSE test"
+  },
+  "dependency_correction": "Backend selection incorrectly deselected FUSE/GdkPixbuf/JSON-GLib/PipeWire/DBus in the base portal required paragraph. Limit alternative selection to backend references, retaining required core edges. One focused actual parser regression passed."
+}

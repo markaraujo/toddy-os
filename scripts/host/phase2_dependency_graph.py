@@ -75,7 +75,7 @@ def node(reference):
             if reference == 'x/libnotify.html' and label == 'Required (runtime)':
                 chosen = False
                 rationale = 'GNOME Shell supplies the notification service; alternate desktop daemons unselected'
-            if reference == 'x/xdg-desktop-portal.html' and kind == 'required':
+            if reference == 'x/xdg-desktop-portal.html' and kind == 'required' and '/xdg-desktop-portal-' in target:
                 chosen = target == 'gnome/xdg-desktop-portal-gnome.html'
                 rationale = 'Select the GNOME backend from the book alternatives; other backends need a consumer reason'
             edges.append({'reference': target, 'title': link.get('title', ''.join(link.itertext())),

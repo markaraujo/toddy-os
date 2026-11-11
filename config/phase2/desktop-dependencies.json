@@ -6576,36 +6576,36 @@
           "reference": "postlfs/fuse.html",
           "title": "Fuse-3.18.2",
           "kind": "required",
-          "selected": false,
-          "reason": "Select the GNOME backend from the book alternatives; other backends need a consumer reason"
+          "selected": true,
+          "reason": "Required"
         },
         {
           "reference": "x/gdk-pixbuf.html",
           "title": "gdk-pixbuf-2.44.7",
           "kind": "required",
-          "selected": false,
-          "reason": "Select the GNOME backend from the book alternatives; other backends need a consumer reason"
+          "selected": true,
+          "reason": "Required"
         },
         {
           "reference": "general/json-glib.html",
           "title": "json-glib-1.10.8",
           "kind": "required",
-          "selected": false,
-          "reason": "Select the GNOME backend from the book alternatives; other backends need a consumer reason"
+          "selected": true,
+          "reason": "Required"
         },
         {
           "reference": "multimedia/pipewire.html",
           "title": "Pipewire-1.6.8",
           "kind": "required",
-          "selected": false,
-          "reason": "Select the GNOME backend from the book alternatives; other backends need a consumer reason"
+          "selected": true,
+          "reason": "Required"
         },
         {
           "reference": "general/dbus.html",
           "title": "dbus-1.16.2",
           "kind": "required",
-          "selected": false,
-          "reason": "Select the GNOME backend from the book alternatives; other backends need a consumer reason"
+          "selected": true,
+          "reason": "Required"
         },
         {
           "reference": "x/xdg-desktop-portal-gtk.html",
@@ -8853,6 +8853,33 @@
           "kind": "required",
           "selected": true,
           "reason": "Required"
+        }
+      ]
+    },
+    "postlfs/fuse.html": {
+      "title": "Fuse-3.18.2",
+      "book_page_sha256": "a809a1f5db3dcf7ee24e93c5c7b3a45057763e22f2aeb604d1acafd8a4eff904",
+      "edges": [
+        {
+          "reference": "general/doxygen.html",
+          "title": "Doxygen-1.18.0",
+          "kind": "optional",
+          "selected": false,
+          "reason": "Optional"
+        },
+        {
+          "reference": "general/python-modules.html#pytest",
+          "title": "Pytest-9.1.1",
+          "kind": "optional",
+          "selected": false,
+          "reason": "Optional"
+        },
+        {
+          "reference": "general/which.html",
+          "title": "Which-2.25 and Alternatives",
+          "kind": "optional",
+          "selected": false,
+          "reason": "Optional"
         }
       ]
     },

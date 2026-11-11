@@ -4058,3 +4058,16 @@ installed dpkg inspection confirms selected xdg-desktop-portal and GNOME backend
 absent; qualify that missing integration before accepting dark/light behavior.
 B02 remains incomplete; persistence/refusal/recovery/minimal manifest/idle and
 remaining selected desktop closure still required before the owner stop boundary.
+
+### Missing native portal closure pinned — 2026-11-11
+
+[Source inputs](evidence/B02-portal-source-inputs.json) acquired official
+same-version Fuse3.18.2, xdg-desktop-portal1.22.1 and GTK backend1.15.3 archives,
+matched frozen BLFS13.1 MD5 and froze SHA256 before extraction. Existing GNOME50.0
+source reused; no new guest source/build/kernel transaction yet. Corrected actual
+dependency parser so choosing the GNOME backend retains base required FUSE/JSON/
+image/PipeWire/DBus edges, with a focused parser regression. No foundation upgrade.
+Both installed kernel configurations have FUSE disabled; preserve accepted master
+and qualify a narrow cached desktop kernel capability update before actual portal
+mount/permission/denial/dark-light checks. Existing browser/Terminal/audio proofs
+remain scoped accepted; this source preparation does not finish B02.
