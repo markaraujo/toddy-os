@@ -63,7 +63,10 @@ are tests, not normal-login acceptance. Use normal GDM/PAM owner to verify actua
 portal services/Settings dark-light and affected consent/cancel/denial; retain real
 scanouts. Existing host phase2_native_desktop_integration.py and owner-control
 protocol are references, do not replay old hardcoded GTK13/hash controller.
-No combined native controller implemented/dispatched yet. Fresh disposable
+Combined native controller/probes now implemented: scripts/host/phase2_native_fuse_portal.py
+uses NEW native-fuse-portal-runtime-1 context. Not dispatched yet. Actual default
+dark/light portal Read and file chooser allow/cancel/Request.Close are selected;
+no broad portal capability claim. Next commit reviewed harness then run controller. Fresh disposable
 readonly-base overlay, never physical disks or host target. Preserve one writer.
 
 Test selection: actual complete native payload/library/APT checks for all3portal
