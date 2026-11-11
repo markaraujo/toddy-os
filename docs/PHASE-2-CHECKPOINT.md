@@ -39,7 +39,12 @@ No replay of update/restore receipts. Original first failure zero root changes
 retained; corrected fresh stage2 is installed. No live guest writer.
 
 Next browser slice: guarded custody of obsolete private153.2 objects, script
-scripts/build/phase2/archive_firefox_baseline_objects.py PREPARED, not dispatched.
+scripts/build/phase2/archive_firefox_baseline_objects.py DISPATCHED once, input
+56df8bd/tool session47174. Actual guest pid2857/start62902, boot
+e146fad4-b1e4-4199-9935-3223e693a00b, producerSHA
+16c240c90d771ad9bded632343c4c4c775cd280d1044ab7bb1b7137334bcbc40.
+Last observed snapshotting. Never dispatch again: inspect actual receipt/process,
+archive/restoration/marker postconditions first; no second guest writer.
 Goal: recover private browser space for changed153.7 source without losing old
 compiler evidence. Inputs: exact previous compile artifacts and browser baseline;
 source obj3,870,035,968allocated bytes, builder17.32GBfree, MemAvailable9.84GB;
@@ -54,7 +59,7 @@ explicit retired-artifact inspect contract. Never use old objects for changedsou
 No format/resize, root install, package or source change. Healthy archive/restore
 may take >10min; monitor real receipt/process, never replay or kill for timer.
 
-Exact dispatch after commit/check/metadata sync: guest
+Dispatched command (DO NOT REPEAT): guest
 `python3 /opt/toddy-build/scripts/build/phase2/archive_firefox_baseline_objects.py`
 log .local/phase2/firefox-object-custody-controller-1.log; guest receipt
 /var/log/toddy/phase2/firefox-baseline-objects-custody-1.json and artifacts
