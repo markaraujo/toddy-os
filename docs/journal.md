@@ -3612,3 +3612,13 @@ qualified chunk custody to one explicitly unreferenced old GCC checkpoint, with
 fixed identity, QEMU check and original whole digest. Capacity job started under
 controller1450932; monitor real state, never replay uncertain ranges or lower
 reserves. Browser build/native acceptance remains pending.
+
+### B02 — Lightweight terminal defaults prepared during browser storage custody
+
+Target inspection confirms no global Bash RC or skeleton RC/profile; the existing
+foundation profile remains unchanged. Prepared original Bash-only source defaults
+for new accounts with custom/readonly/opt-out/plain/noninteractive preservation,
+no extra tools/fonts/prompt framework. Native package uses the existing versioned
+recipe backend, MIT code/full CC BY README notice and owned conffiles. Actual
+UID101/NNP checks and native rendering remain next. Host cold Firefox custody
+continues with a live verified producer; no repeated log polling or native boot.

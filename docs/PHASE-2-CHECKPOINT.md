@@ -44,6 +44,24 @@ allocated25,530,310,656B. Strict identity/producer/reserve/source reconstruction
 and chunk-before-punch guards remain. Source placeholder source.custody has holes
 as ranges retire; NEVER boot it. Completed math custody remains untouched.
 
+### Independent terminal defaults slice
+
+Actual target has no /etc/bashrc, /etc/bash.bashrc or skeleton Bash RC/profile;
+existing /etc/profile does not source profile.d. New reviewed Bash-only defaults
+are prepared: new-user .bashrc/.bash_profile and opt-in runtime hook. Existing
+home files/fonts/hooks/custom or readonly prompts remain untouched; opt-out0 and
+plain terminal fallback, truecolor accent only where supported. Original MIT
+code and CC BY README/full notices; native all-architecture package, two conffiles.
+
+EXACT NEXT ACTION: commit reviewed terminal-defaults install/check/runtime scripts,
+sync metadata only; preflight absence/ownership/version/space and no writer, then
+run b02-terminal-defaults-install once with terminal-defaults-install.sh and
+terminal-defaults-check.sh through run_step. Actual UID101/NNP behavior checks
+cover new-user/login/custom/opt-out/readonly/plain/noninteractive/idempotence and
+hook/shell-setting preservation. No service enabled or user files modified.
+Graphical Terminal review remains pending until cold custody releases native lock.
+The healthy host custody job continues independently; do not restart it.
+
 ### Exact next action
 
 Monitor actual host custody process deterministically to terminal result, preserving
