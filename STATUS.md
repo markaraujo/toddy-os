@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-11T02:39:10.170451+00:00
+Updated: 2026-11-11T02:45:14.078777+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T02:39:10.170451+00:00
+Last verified: 2026-11-11T02:45:14.078777+00:00
 
 Verified:
 
@@ -191,7 +191,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: Native authenticated GNOME/selected Editor-Terminal-Settings GUI slice verified. Builder stopped; next restore existing volumes and exact qualified scratch cache, then network/audio and LocalSearch/Nautilus/browser integration. Editor refusal/recovery, global theme and lightweight terminal defaults pending. Complete all B02, then stop.
+Running: Native authenticated GNOME/selected Editor-Terminal-Settings GUI verified; builder and exact compiler/source cache now fully recovered. Next independent private-device qualification for parked LocalSearch bus probe; retain budgets before any native retry. Network/audio/browser/files/global theme/terminal defaults and full B02 pending. Complete all B02, then stop.
 
 Remaining:
 

@@ -1,0 +1,176 @@
+{
+  "scope": "Existing builder volumes/source/compiler/cache/alias recovery after actual native owner GUI test; no formatting, source/compiler/fixture/package replay. Not installed-user recovery or reboot persistence acceptance.",
+  "builder_boot_id": "a329253d-d443-49d9-9445-9ecd99b90e92",
+  "controller_exit": 0,
+  "recovery": [
+    {
+      "receipt": "/var/log/toddy/phase2/native-owner-builder-volumes-restored-1.json",
+      "result": {
+        "state": "complete",
+        "boot_id": "a329253d-d443-49d9-9445-9ecd99b90e92",
+        "restored_volumes": [
+          {
+            "work": "/mnt/lfs/sources/phase2/work/gtk-1",
+            "uuid": "1593a243-4338-45fb-86f6-7b699b4b3235",
+            "image_inode": 786439,
+            "restored_existing_filesystem": true
+          },
+          {
+            "work": "/mnt/lfs/sources/phase2/work/desktop-resources-1",
+            "uuid": "a1385a38-a9ed-481b-96d8-b0120b4f1e7c",
+            "image_inode": 786440,
+            "restored_existing_filesystem": true
+          },
+          {
+            "work": "/mnt/lfs/sources/phase2/work/doxygen-1",
+            "uuid": "ae4347fb-31fd-4193-a333-0a549e144231",
+            "image_inode": 786441,
+            "restored_existing_filesystem": true
+          },
+          {
+            "work": "/mnt/lfs/sources/phase2/work/glycin-1",
+            "uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+            "image_inode": 786463,
+            "restored_existing_filesystem": true
+          },
+          {
+            "work": "/mnt/lfs/sources/phase2/work/pam-1",
+            "uuid": "cb42a655-39b6-4988-ad44-1c643059db63",
+            "image_inode": 786443,
+            "restored_existing_filesystem": true
+          },
+          {
+            "work": "/mnt/lfs/sources/phase2/work/systemd-pam-1",
+            "uuid": "8163c489-7aab-4b0b-be6d-f36de1645e74",
+            "image_inode": 786446,
+            "restored_existing_filesystem": true
+          }
+        ]
+      }
+    },
+    {
+      "receipt": "/var/log/toddy/phase2/glycin-work-restored-native-owner-1.json",
+      "result": {
+        "state": "complete",
+        "scope": "Only existing companion directory bind restored; no filesystem creation/format/trim or accepted compile replay",
+        "boot_id": "a329253d-d443-49d9-9445-9ecd99b90e92",
+        "parent_uuid": "1ae14c30-65f3-4e02-be0a-b257719455f2",
+        "backing_inode": 5538,
+        "work": "/mnt/lfs/sources/phase2/work/glycin-gtk4-1"
+      }
+    },
+    {
+      "receipt": "/var/log/toddy/phase2/kernel-work-restored-native-owner-1.json",
+      "result": {
+        "state": "complete",
+        "device": "/dev/vdc",
+        "uuid": "c6c4176d-faed-4ee3-9ae0-94914a0af666",
+        "work": "/mnt/lfs/sources/phase2/work/kernel-landlock-1",
+        "scope": "Existing qualified raw scratch and private COW only; no format/resize/extraction/chown or stage/compile replay",
+        "lower_inode": 7523763,
+        "private_upper_inode": 14,
+        "private_work_inode": 15,
+        "boot_id": "a329253d-d443-49d9-9445-9ecd99b90e92",
+        "native_stage_alias": "Closed completed package stage bind intentionally not restored; payload/archive already qualified and data retained at work/stage"
+      }
+    },
+    {
+      "receipt": "/var/log/toddy/phase2/native-owner-scratch-restored-1.json",
+      "result": {
+        "state": "complete",
+        "boot_id": "a329253d-d443-49d9-9445-9ecd99b90e92",
+        "archive_sha256": "c5900481389a29732d3477b1de44f4bf2e86670499643c3d94aaffd416a194fe",
+        "aliases": [
+          {
+            "target": "/mnt/lfs/sources/phase2/inputs/samba-4.24.6",
+            "source": "/run/toddy-samba-client-1/samba-4.24.6",
+            "readonly": true,
+            "same_restored_inode": true
+          },
+          {
+            "target": "/mnt/lfs/sources/phase2/work/samba-1",
+            "source": "/run/toddy-samba-client-1/work",
+            "readonly": false,
+            "same_restored_inode": true
+          },
+          {
+            "target": "/mnt/lfs/sources/phase2/inputs/samba-4.24.6-probe-cwd",
+            "source": "/run/toddy-samba-client-1/samba-4.24.6-probe-cwd",
+            "readonly": true,
+            "same_restored_inode": true
+          },
+          {
+            "target": "/mnt/lfs/sources/phase2/inputs/samba-4.24.6-pidl-cwd",
+            "source": "/run/toddy-samba-client-1/samba-4.24.6-pidl-cwd",
+            "readonly": true,
+            "same_restored_inode": true
+          },
+          {
+            "target": "/mnt/lfs/sources/phase2/inputs/samba-4.24.6-header-root",
+            "source": "/run/toddy-samba-client-1/samba-4.24.6-header-root",
+            "readonly": true,
+            "same_restored_inode": true
+          },
+          {
+            "target": "/mnt/lfs/sources/phase2/inputs/samba-4.24.6-build-alias",
+            "source": "/run/toddy-samba-client-1/samba-4.24.6-build-alias",
+            "readonly": true,
+            "same_restored_inode": true
+          },
+          {
+            "target": "/mnt/lfs/sources/samba-4.24.6.tar.gz",
+            "source": "/run/toddy-samba-client-1/samba-4.24.6.tar.gz",
+            "readonly": true,
+            "same_restored_inode": true
+          },
+          {
+            "target": "/mnt/lfs/sources/stage/phase2-samba-client",
+            "source": "/run/toddy-samba-client-1/work/promotion-samba-client-1",
+            "readonly": false,
+            "same_restored_inode": true
+          },
+          {
+            "target": "/mnt/lfs/sources/phase2/inputs/gnome-control-center-50.4",
+            "source": "/run/toddy-samba-client-1/gnome-control-center-input-1/gnome-control-center-50.4",
+            "readonly": true,
+            "same_restored_inode": true
+          },
+          {
+            "target": "/mnt/lfs/sources/phase2/work/gnome-control-center-1",
+            "source": "/run/toddy-samba-client-1/gnome-control-center-work-1",
+            "readonly": false,
+            "same_restored_inode": true
+          },
+          {
+            "target": "/mnt/lfs/sources/stage/phase2-gnome-control-center",
+            "source": "/run/toddy-samba-client-1/gnome-control-center-work-1/promotion-1",
+            "readonly": false,
+            "same_restored_inode": true
+          },
+          {
+            "target": "/mnt/lfs/sources/stage/phase2-gtk-settings-schema-union",
+            "source": "/run/toddy-samba-client-1/gtk-settings-schema-promotion-1",
+            "readonly": false,
+            "same_restored_inode": true
+          }
+        ],
+        "archive_bytes": 330974738,
+        "verification": {
+          "state": "complete",
+          "verified_entries": 76673,
+          "verified_distinct_regular_inodes": 34850,
+          "exact_bytes_modes_owners_timestamps_symlinks_hardlinks": true
+        },
+        "scope": "Exact retained compiler/source/stage bytes, metadata and recorded aliases restored; no preparation, compiler, fixture or package transaction replay",
+        "scratch_available": 852983808,
+        "target_available": 17352880128
+      }
+    }
+  ],
+  "systemd_source_restore": {
+    "source_inode": 8930333,
+    "source_files": 7193,
+    "same_authenticated_readonly_bind": true
+  },
+  "all_native_test_containers_stopped": true
+}

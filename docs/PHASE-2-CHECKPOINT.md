@@ -67,16 +67,32 @@ followed by typing caused truncated filename/trailing text. Explicit350ms delays
 and ordinary edit/save correction passed; do not call that first operation exact.
 Never replay either native owner/greeter context.
 
-EXACT NEXT: restore the stopped builder and its existing volumes/source aliases
-plus the verified retained Samba/Settings tmpfs cache. Inspect actual disk/UUID/
-mount/postconditions before each recovery; do not rerun preparation/build/install.
-Use scripts/build/phase2/virtual_discard_checkpoint.py restore_volumes(), existing
-Systemd source --restore and Glycin/kernel helpers described below; restore exact
-scratch.tar.gz to the same2GiB tmpfs and run verify_settings_scratch_restore.py
-with --restore-times against guest-receipt.json before exposing recorded aliases.
-Use fresh recovery receipt names. Then integrate actual native network/audio/user
-services and close LocalSearch/Nautilus/browser requirements using the now proven
-normal virtual-seat path, with targeted tests. Preserve parked failure budgets.
+Builder recovery is now COMPLETE. Actual boot
+a329253d-d443-49d9-9445-9ecd99b90e92; no guest writer/native test remains.
+[Recovery evidence](evidence/B02-native-owner-builder-recovery.json) records
+six existing volume UUIDs/inodes, same Systemd source8930333/7193files,
+Glycin companion5538 and kernel scratch/COW UUID/inodes restored once.
+Native-owner-scratch-restored-1 completed with76,673entries/34,850regular inode
+classes, exact bytes/modes/owners/nanosecond times/symlinks/hardlinks and12
+recorded source/worker/stage binds. Same2GiB tmpfs,852,983,808B free; target
+17,352,880,128B free. Durable host archive retained; verified transfer tmpfs
+retired only after successful restoration. Never replay these recovery receipts.
+New host helper scripts/host/phase2_restore_settings_scratch.py preserves this
+actual operation; original alias inode numbers changed across tmpfs restoration,
+so compare restored topology/content proof, not obsolete boot-scoped inodes.
+
+EXACT NEXT: independently qualify a private target-userspace device view before
+reopening the exact-path LocalSearch D-Bus probe. Its SDK4 failed only because
+unbooted target /dev/null is a root0644 regular placeholder, not a bound private
+character device. Use a private mount/PID/network namespace with the actual
+/dev/null/zero/random/urandom bindings, UID101/NNP/zero effective+permitted caps,
+read-only source/compiled views and no global device changes. Qualify the device
+profile alone first, then record one bounded source-backed reopening of SDK5;
+retain all old correction budgets. Do not dispatch native LocalSearch4 until
+exact original helper/config/readonly BUILDROOT/GIO private-address proof passes.
+Other incomplete B02 branches remain network/audio/LocalSearch/Nautilus/browser,
+editor refusal/recovery/global theme/terminal defaults. Native real-seat GUI
+path is now available; no headless retry needed.
 
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated
