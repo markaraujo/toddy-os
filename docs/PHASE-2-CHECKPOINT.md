@@ -93,17 +93,30 @@ all original native1-3/SDK2-4 failure budgets remain, never reset.
 Native4 preflight-only passed: original fixture maps plus both proof receipts,
 current scratch recovery and credential payload accepted, no VM started.
 
-EXACT NEXT: after publishing reviewed inputs, run
-`python3 -u scripts/host/phase2_native_localsearch.py --attempt 4`
-with .local/phase2/localsearch-native-runtime-4-controller.log.
-This new context uses the exact qualified private per-test bus wrapper/runtime
-address, keeps compiled/source readonly and unchanged TEST_ROOT-only config
-adjustment, and writes the original report protocol to dedicated ttyS1.
-Run only9selected original programs/20expected cases, not13accepted portable
-programs. One bounded native extension only; if it fails preserve actual terminal
-report and choose eligible independent work rather than resetting old budgets.
-Original source/compiler/stage and cache custody remain retained. A cold run
-stops the builder; inspect actual state/backing/receipt before any recovery.
+Native LocalSearch4 is now COMPLETE/terminal0, not running.
+Controller1264286/session68169, native-localsearch-runtime-4 container stopped0,
+base unchanged, dedicated reportSHA
+99a4845d8fe077955db8f39e775a1153f93a661642142b08cf233ba10a9e7e08.
+All9selected original programs/20expected cases passed: search6,inhibit4,reset4,
+plus dbus-access/exec/fs-read/fs-read-trunc/fs-write/net-access1each.
+Positive controls passed UID101/NNP/caps0 and actual allowed operations;
+source/compile/stage manifests unchanged. No timeout, mock or security bypass.
+[Native proof](evidence/B02-localsearch-native-functional.json). Never replay
+successful native4 or13earlier accepted portable programs. All historical
+failed attempts and budgets retained, resolved by ADR0220 qualified profile.
+No installed LocalSearch package, Nautilus/GUI, general parser or B02 acceptance.
+
+EXACT NEXT: restore the stopped builder after native4 using fresh receipt names
+and actual state inspection. Existing six volume filesystems/Systemd source/
+Glycin/kernel COW and exact Samba/Settings scratch archive remain intact.
+Do not replay native-owner recovery1: add an explicit new strict receipt-name
+option to phase2_restore_settings_scratch.py, preserving the completed default
+receipt; restore the same qualified archive and aliases under the new identity.
+Then prepare controlled native LocalSearch packaging from the unchanged retained
+stage (133regular files/186ELFs). Reuse the new native20case proof and accepted
+portable evidence; audit actual legal/source closure/owned deps/shared resources
+and installed CLI/GI/ABI/refusal/recovery under the normal package transaction.
+Nautilus may proceed only after the real LocalSearch prerequisite is installed.
 
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated
