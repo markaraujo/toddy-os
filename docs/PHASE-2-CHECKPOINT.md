@@ -32,12 +32,10 @@ QEMU check0). Firefox153.2.0esr frozen book estimates8.9GB build space; host res
 100GiB must remain. Active/backing/foundation-master images untouched. Original
 source moved into private custody; original path is NOT usable during operation.
 All original bytes retained by verified gzip chunks plus untouched source ranges.
-Controller1450932/session80972, actual process identity in
-.local/phase2/cold-firefox-chunk-custody-1/result.json. Log
-.local/phase2/cold-firefox-chunk-custody-1-controller.log. At checkpoint observation
-state=compressing, 627durable32MiB chunks; inspect real process/start ticks
-and result before action. Healthy compression is monitored, never restarted to
-meet a diagnosis budget. No model polling of unchanged logs.
+Controller1450932/session80972 TERMINAL0; process absent, state=complete.
+All1023chunks retired; producer whole reconstructed34,298,068,992byte SHA verified.
+[Storage evidence](evidence/B02-firefox-build-capacity.json) binds original receipt
+and producer. Host127,991,275,520B free at completion. Never replay custody.
 Original34,298,068,992bytes/SHA256
 6b8f1ad2736c8f7a4f02f361272c1e27ca151ff76b59bcee70fed8f7a7c3c8e1;
 allocated25,530,310,656B. Strict identity/producer/reserve/source reconstruction
@@ -70,16 +68,19 @@ No browser build/configuration/ABI/security acceptance yet.
 
 ### Exact next action
 
-Monitor actual host custody process deterministically to terminal result, preserving
-partial state if interrupted. Inspect producer/start ticks, recorded chunks and
-unrecorded current archive before any --resume; never replay completed operation.
-After terminal success verify reconstructed whole original SHA/length and actual
-free space. Choose browser scratch from measured capacity, preserving100GiB host/
-16GiB target/128MiB scratch reserves. Do not allocate an oversized image or alter
-physical disks/backing/master images. Native boot lock remains held by custody;
-do not start another native test while it runs. Independent B02 host recipe or
-guest desktop/network/audio configuration work is eligible with one guest writer.
-Terminal defaults CLI qualified; actual GUI waits for this native lock.
+Cold custody is COMPLETE; native boot lock released. Dedicated browser scratch
+file prepared once:16GiB/full allocation, serialTODDY-B02-FIREFOX,
+receipt.local/vm/phase2/firefox-scratch.json; inode11956378/device66306,
+host110,809,731,072B free after allocation,100GiB reserve retained.
+No guest attachment/format/mount yet. Do NOT rerun preparation. Inspect actual
+QMP/guest device/receipts before any attach or format. Next: attach only this
+recorded virtual file (guarded live QMP or controlled builder restart with existing
+cache recovery), verify unique serial/size/blank signatures under the single guest
+writer lock, and record pending intent before a one-time filesystem creation.
+Keep kernel scratch/target/backing/master unchanged. Preserve100GiB host/16GiB
+target/128MiB scratch reserves. Eight focused attachment-guard tests passed.
+Browser recipe/source/security review is independently eligible. Terminal defaults
+CLI qualified; actual GUI rendering remains pending.
 
 Frozen Firefox153.2.0esr archive already cached807,705,672B. Read pinned book
 xsoft/firefox.html/current code before recipe. Need owned dependency/security/ABI

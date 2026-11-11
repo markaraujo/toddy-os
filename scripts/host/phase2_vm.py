@@ -17,6 +17,35 @@ WORK = vm.VM / 'phase2'
 NAME = 'toddy-phase2'
 KERNEL_SCRATCH_BYTES = 768 * 1024**2
 KERNEL_SCRATCH_GROWN_BYTES = 1024**3
+FIREFOX_SCRATCH_BYTES = 16 * 1024**3
+
+
+def firefox_scratch_arguments():
+    """Attach only the fully allocated, recorded browser build volume."""
+    receipt = WORK / 'firefox-scratch.json'
+    pending = WORK / 'firefox-scratch.pending.json'
+    disk = WORK / 'firefox-scratch.raw'
+    if any(p.is_symlink() for p in (receipt, pending, disk)):
+        raise ValueError('Browser scratch symlink forbidden')
+    if not any(p.exists() for p in (receipt, pending, disk)):
+        return []
+    if pending.exists() or not receipt.is_file() or not disk.is_file():
+        raise ValueError('Reconcile partial browser scratch preparation')
+    rs, ds = receipt.stat(), disk.stat()
+    if (rs.st_uid != os.getuid() or rs.st_nlink != 1 or rs.st_size > 65536
+            or rs.st_mode & 0o077):
+        raise ValueError('Unsafe browser scratch receipt')
+    row = json.loads(receipt.read_text())
+    if (row.get('state') != 'prepared' or row.get('filename') != disk.name
+            or row.get('format') != 'raw' or row.get('bytes') != FIREFOX_SCRATCH_BYTES
+            or row.get('serial') != 'TODDY-B02-FIREFOX'
+            or not stat.S_ISREG(ds.st_mode) or ds.st_uid != os.getuid()
+            or ds.st_nlink != 1 or ds.st_mode & 0o077
+            or ds.st_size != FIREFOX_SCRATCH_BYTES or ds.st_blocks * 512 < ds.st_size
+            or ds.st_dev != row.get('device') or ds.st_ino != row.get('inode')):
+        raise ValueError('Browser scratch identity/allocation mismatch')
+    return ['-drive', 'file=/vm/phase2/firefox-scratch.raw,if=none,id=b02firefox,format=raw,discard=ignore',
+            '-device', 'virtio-blk-pci,drive=b02firefox,serial=TODDY-B02-FIREFOX']
 
 
 def kernel_scratch_arguments():
@@ -176,7 +205,7 @@ def main():
             '-device', 'virtio-blk-pci,drive=lfs,serial=TODDY-LFS-TARGET',
             '-drive', 'file=/vm/seed.img,if=virtio,format=raw,readonly=on',
             '-netdev', 'user,id=net0,hostfwd=tcp:0.0.0.0:2223-:22',
-            '-device', 'virtio-net-pci,netdev=net0', *kernel_scratch_arguments())
+            '-device', 'virtio-net-pci,netdev=net0', *kernel_scratch_arguments(), *firefox_scratch_arguments())
     elif args.action == 'ssh':
         run(*ssh_args(), *args.command)
     elif args.action == 'stop':

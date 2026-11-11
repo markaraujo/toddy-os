@@ -3635,3 +3635,15 @@ Original archive/payload unchanged, no reinstall. No user homes/fonts/framework
 changed. Native graphical Terminal remains pending until cold custody releases
 its boot lock. Firefox source/configure inspection supports Wayland-only toolkit
 matching owned GTK3; full browser build/security/ABI/native acceptance pending.
+
+## B02 browser build capacity — 2026-11-11
+
+Cold Firefox-capacity custody completed with1023verified chunks and original
+34,298,068,992byte SHA reconstruction. The old backup placeholder is not bootable;
+archives retain recovery bytes. Prepared a separate16GiB fully allocated virtual
+browser file, preserving100GiB host reserve. No guest attachment/format or browser
+compile/install yet. Added fail-closed QEMU guards and eight focused tests.
+Change-based selection: storage attachment guards and required make check; no
+unchanged compiler/native GUI suite repeated. Next: exact virtual-device
+attachment/blank identity checks and controlled one-time filesystem preparation.
+See [capacity evidence](evidence/B02-firefox-build-capacity.json).

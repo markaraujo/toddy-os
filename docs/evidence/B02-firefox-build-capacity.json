@@ -1,0 +1,30 @@
+{
+  "scope": "B02 browser build storage prerequisite only; browser build/install/GUI unqualified",
+  "cold_custody": {
+    "state": "complete",
+    "bytes": 34298068992,
+    "sha256": "6b8f1ad2736c8f7a4f02f361272c1e27ca151ff76b59bcee70fed8f7a7c3c8e1",
+    "verified_chunks": 1023,
+    "whole_reconstruction_check": "Producer verifies length/chunk archives and original SHA before state=complete",
+    "receipt_sha256": "4f559d4b0847bbf08c982b11534b36e4f00111c19391110bc6dfcb8b6a7cbfcd",
+    "producer_sha256": "e3414186b43883142166b2fd48b833d06f955dfcc33bf76dc4ed8778f41ec3c9",
+    "original_path_usable": false,
+    "recovery": "Restore chunks in offset order through gzip into the absent original path only with sufficient capacity; verify source_sha256 and bytes before qemu-img check/using the restored backup. Retain chunks until verified. source.custody contains only holes, not a usable image."
+  },
+  "browser_scratch": {
+    "state": "prepared",
+    "scope": "New dedicated browser compiler/source/stage file only; not a host disk, installer target or foundation replacement. No guest attachment/format here.",
+    "filename": "firefox-scratch.raw",
+    "format": "raw",
+    "bytes": 17179869184,
+    "serial": "TODDY-B02-FIREFOX",
+    "host_free_before": 127989608448,
+    "host_minimum_reserve_bytes": 107374182400,
+    "discard": "ignore; retain full host allocation",
+    "allocated_bytes": 17179873280,
+    "host_free_after": 110809731072
+  },
+  "scratch_receipt_sha256": "cddf5b35f4f4968d45d1a80cc977fc8a5704053523e8e7fe4c31c465d261b3c1",
+  "guest_attachment": "Pending; file only, not formatted/mounted",
+  "tests": "Eight storage identity/partial/symlink/sparse/owner/permissions guard tests passed; no native browser claim"
+}
