@@ -1,0 +1,51 @@
+{
+  "scope": "Private obsolete-baseline compiler feasibility only; security overlay153.7 required before browser promotion. No stage/install/browser UI/credential/remote-content acceptance.",
+  "controller": {
+    "state": "terminal",
+    "boot_id": "474caba2-3085-4d07-bba0-e2548b5728d4",
+    "pid": 11310,
+    "start_ticks": "210425",
+    "recipe_sha256": "db10d8e64d8a2b3bfbc8cd1a25ce28e0d855bf3713aaa92c4590ae3a858f7e9b",
+    "work": "/mnt/lfs/sources/phase2/work/firefox-build-1",
+    "exit": 0
+  },
+  "compiler": {
+    "state": "compiled",
+    "command": [
+      "/src/mach",
+      "build",
+      "-j6"
+    ],
+    "inputs": {
+      "config_status": "473c3553e5db79572726d1f068cfb6c75ee050355222a864eb23f008d44ac493",
+      "mozconfig": "899baac32c274db3e66781f19f7ff6d9e29866d92527a1198acd19ae4c2a31de"
+    },
+    "initial_free": 11054034944,
+    "reserve": 134217728,
+    "stop_margin": 67108864,
+    "pid": 51,
+    "start_ticks": "210519",
+    "exit": 0,
+    "elapsed_seconds": 2485.345,
+    "minimum_free": 7256317952,
+    "final_free": 7260672000,
+    "interrupted_for_reserve": false,
+    "artifacts": {
+      "firefox": "7ade82cb70f1ac513a36e5cfd9b4f6aaa386a0e6bd2808558daf07e10b8ff769",
+      "libxul.so": "882296756112c1323ea5d91d6f2f9c21f6b154a6a20456259241a277ccdece20"
+    },
+    "scope": "Source compiler outputs only; no stage/install/native browser/runtime sandbox acceptance"
+  },
+  "independent_artifact_verification": {
+    "firefox": {
+      "sha256": "7ade82cb70f1ac513a36e5cfd9b4f6aaa386a0e6bd2808558daf07e10b8ff769",
+      "elf64_x86_64": true
+    },
+    "libxul.so": {
+      "sha256": "882296756112c1323ea5d91d6f2f9c21f6b154a6a20456259241a277ccdece20",
+      "elf64_x86_64": true
+    }
+  },
+  "exact_application_version": "153.2.0",
+  "build_id": "20261111074332"
+}

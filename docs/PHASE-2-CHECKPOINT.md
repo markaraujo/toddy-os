@@ -1,265 +1,136 @@
 # Phase 2 continuation card
 
 Owner boundary: **complete ALL B02, then stop before another story**. Full Phase2
-Goal active/incomplete; B01/B03 accepted13%, B02 in_progress, B04 integration
+Goal active/incomplete. B01/B03 accepted13%; B02 in_progress; B04 integration
 blocked, B05-B13/G2 pending. Physical foundation tests unperformed. No Phase2 ISO.
 
-## Current slice: compiler feasibility and browser security overlay
+## Current slice: prepare native network validation / preserve browser mounts
 
-### Actual live host storage custody — preserve producer
+Builder RUNNING boot474caba2-3085-4d07-bba0-e2548b5728d4. No guest writer or live
+cold-custody operation remains. Inspect actual state/locks before mutation.
 
-ADR0227 / [operation evidence](evidence/B02-native-capacity-custody.json).
-Only unused h07-gcc-tested-builder.qcow2 selected:42image graph/no backing
-consumer, originalinode11832378/5,949,423,616bytes/mtime1793940344780548431,
-5,913,346,048B allocated; QEMU structuralcheck0, uid1000/nlink1/xattrs[].
-Originalwhole SHA7f4af9ce2e3002dff261b64035f1ab9b6f4ce1d28112fae00a270704fd686dab.
-Controller1595927/start29884400 actual hostboot53b945dc, tool session24371,
-statecompressing; real identity/chunks confirmed live at checkpoint. Log
-.local/phase2/cold-native-chunk-custody-1-controller.log; receipt
-.local/phase2/cold-native-chunk-custody-1/result.json. ProducerSHA
+[Network policy install](evidence/B02-desktop-network-install.json) COMPLETE0:
+b02-desktop-network-install recipe/post0/0,20full-root changes/64.83s. Owned
+package toddy-desktop-network0.2.0-1+toddy1/all; exact payload/conffiles/UID101/NNP
+policy write refusal and target condition evaluation NM0/networkd1 passed. Original
+DHCP/resolver retained. No daemon started in chroot. Actual native PID1/GNOME/
+normal-user polkit/DHCP/routes/DNS/offline/reboot/recovery remain unqualified.
+Guest logs/receipts /var/log/toddy/build/b02-desktop-network-install.*;
+local.desktop-network-install-controller-1.log/.exit under.local/phase2.
+NEVER replay completed install. NetworkManager D-Bus VERSION is1.58.1;
+NM_DIST_VERSION=ToddyOS is only its CLI banner. Source inspection verified this.
+
+### Exact next action
+
+Before any builder shutdown/native boot implement and qualify an inspect/restore
+helper for the NEW persistent browser raw volume and its aliases below. It must
+restore existing mounts only, validate unique serial/UUID/size/receipts and refuse
+partial replay; no format/resize/compiler/source extraction. Then prepare one
+actual native GDM/Settings Network flow using the existing owner-control/boot
+harness. Preserve the qualified generation4 RAM cache before cold transition;
+reuse its archive only for unchanged bytes/metadata/link classes. Do not stop the
+builder until recovery covers all new browser aliases. Native boot lock is now
+released. Do not start another B story.
+
+Network policy uses marker /etc/toddy/network/use-networkmanager with inverse
+service conditions, NM daemon-only wants link, keyfile/resolved defaults. Recovery
+stops current manager BEFORE moving/restoring marker and starting the other.
+Do not enable wait-online, alter owner profiles or weaken stock service policy.
+Host condition fixtures passed3cases; full make check377passed. Native gate still
+requires actual service/user/UI/address/route/DNS/offline/persistence/recovery.
+
+## Browser compiler, security and persistent build volume
+
+[Original compiler](evidence/B02-firefox-baseline-compile.json) TERMINAL0/compiled,
+2485.345s; independent ELF SHA/x86_64 and exact AppVersion153.2.0 verified.
+No reserve cancellation, final7,260,672,000B available. Private feasibility ONLY;
+ADR0225 blocks its browser delivery due later high-impact upstream corrections.
+No old browser package/install/runtime acceptance. Original work/logs retained.
+Guest controller receipt /var/log/toddy/phase2/firefox-build-controller-1.json;
+wrapper /var/log/toddy/phase2/firefox-build-1.log/.exit; work
+/mnt/lfs/sources/phase2/work/firefox-build-1 with compile result/log. Never replay.
+
+Corrected153.7.0esr800,080,060B archive cached.local/sources, publisherSHA512
+matched, SHA2567f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0.
+Separate firefox-security-1537 lock, original source retained; no signature claim.
+[Security review](evidence/B02-firefox-security-review.json) and
+[source metadata](evidence/B02-firefox-security-source.json): host scan complete,
+510,287members/3,515,456,965regular bytes/21critical files. Root/toolkit configure
+unchanged; Rust configure vendor-target changes. Header versions alone do not
+clear NSS/NSPR security/ABI or actual minimum Rust constant. Overlay source/work/
+configure/compiler/stage/install/native security/UI all pending. Old objects are
+not a qualified cache for changed source. Measure capacity and choose qualified
+custody/retirement before fresh overlay work; do not lower reserves.
+
+Browser raw file.local/vm/phase2/firefox-scratch.raw,16GiB/full allocation,
+receipt firefox-scratch.json; inode11956378/device66306. SerialTODDY-B02-FIREFOX,
+UUID082a2d97-fa79-4ee5-86e5-a179f768daec. Existing filesystem mountednosuid,nodev
+at /mnt/lfs/sources/phase2/work/firefox-1 (BASE below), actual/dev/vdd currently;
+never assume device name or format/reprepare. Current persistent aliases:
+
+- BASE/source/firefox-153.2.0 self-bindRO and inputs/firefox-153.2.0 RO.
+- BASE/tools/wasi-sdk-25.0-x86_64-linux self-bindRO.
+- BASE/build/browser-1 -> work/firefox-build-1 RW (compiler/cache/logs/stage).
+- BASE/source/nasm-3.02 -> inputs/nasm-3.02 RO.
+- BASE/build/nasm-1 -> work/nasm-1 RW (private qualified NASM stage).
+
+Alias roots inputs/work mean /mnt/lfs/sources/phase2/inputs and work.
+Receipts /var/log/toddy/phase2/firefox-work-volume-1.json, firefox-source-1.json,
+browser-tools-input-1.json and nasm-input-1.json. These are existing mounts/data;
+restore only with new unique receipts after checking actual mount state.
+
+[Private SDK/tools](evidence/B02-browser-wasm-tools.json) qualified UID101/caps0/
+NNP/no-egress/no-secret paths/source-system-tool mutation denial and C/C++ WASM
+compile/link; NASM3.02 exact assembly/link/exit42/disassembly passed. No OS tool
+install. [Configuration](evidence/B02-firefox-configuration.json) passed after
+one bundled PNG1.6.58/APNG choice preserving system PNG, all6WASM/main sandbox
+flags and Wayland enabled. Original failures retained/resolved; no replay.
+
+## Closed host storage operations — no live producer / never replay
+
+[Native capacity custody](evidence/B02-native-capacity-custody.json) COMPLETE0:
+178verified chunks/5,949,423,616bytes, whole original SHA
+7f4af9ce2e3002dff261b64035f1ab9b6f4ce1d28112fae00a270704fd686dab.
+Controller1595927/start29884400 TERMINAL/process absent; unchanged producerSHA
 bd0108e9268d0d139276b319fa27c5133e9e3c5fc1e09142412b1c4a8f6ed428.
-DO NOT MODIFY producer or replay/resume while live. Existing math/firefox
-custodies COMPLETE/untouched. Original backup path absent; source.custody hole
-skeleton NOT BOOTABLE. Original bytes retained by durable verified chunks plus
-untouched ranges, whole SHA reconstruction required before terminal success.
-Observer session77021/.local/phase2/observe-cold-native-1.py,
-log.local/phase2/cold-native-progress-observer-1.log reports64chunks/terminal only.
-No repeated model calls for unchanged logs. Holds native-boot-test and cold
-compression locks; native boots wait, guest compiler continues independently.
-Before any --resume inspect real process/boot/start/producer, actual chunks and
-unrecorded current archive; never replay completed custody. After terminal verify
-whole length/SHA and measure host free; never infer success from missing PID/log.
+Private context.local/phase2/cold-native-chunk-custody-1/result.json, log
+same context stem-controller.log. Host113,188,540,416B free at terminal success.
+Original old GCC builder path absent; source.custody hole skeleton NOT BOOTABLE.
+Archives retain exact bytes; reconstruct ordered chunks with sufficient capacity,
+whole SHA/length and QEMU check before use. Native/cold locks released.
+Existing math/firefox-target custodies COMPLETE/untouched. Never replay them.
+Active/backing/foundation-master images unchanged.100GiB host/16GiB target/128MiB
+scratch reserves remain required at every operation.
 
-### Independent host network recipe prepared — no guest write
+## Retained native proofs, packages and other cache recovery
 
-ADR0226 / [prepared evidence](evidence/B02-desktop-network-prepared.json).
-Actual readonly target: NM1.58.1 installed/disabled; networkd/resolved enabled,
-owned foundation DHCP file and resolver stub retained. Prepared original package
-scripts/build/phase2/desktop-network-install.sh and desktop-network-check.sh,
-generator desktop_network.py: marker/inverse service conditions choose one manager,
-only NMdaemon wanted, no wait-online enablement, keyfile/resolved integration.
-All4/etc files conffiles; recovery stops current manager before switch. Stock
-service security/user profiles/credentials untouched. Nothing installed/synced/
-activated while compiler runs. Three host tests with real systemd259 condition
-evaluator passed; full make check377passed. NOT target261/native networking proof.
-After original compiler TERMINAL and exact result verification, this prepared
-small package is eligible B02 work while browser overlay capacity is resolved.
-Use standard single-writer/full-root recipe transaction and affected target
-postcheck/native network GUI/polkit/DHCP+DNS/offline/reboot/recovery gates. Do not
-run install before inspecting actual package/stage/operation receipts.
+[Files gate](evidence/B02-files-native-combined.json): actual GDM/PAM owner/Wayland,
+local operations/Trash restore/watched content, gio Trash0, activeFilesPID polkit
+challenge2/no credentials passed. Old failures retained; no admin-write/share/
+reboot/hardware claim. [Terminal defaults](evidence/B02-terminal-defaults-install.json)
+installed/CLI-qualified7actual cases; native prompt rendering pending. Existing
+owner Editor open/type/save/relaunch/maximize/Terminal checksum and Settings
+navigation proof retained, global theme/network/audio integration still pending.
+GDM50.2/Shell+Mutter50.4, Nautilus50.2.2, Gvfs1.60.2, LocalSearch3.11.1,
+GTK4.22.4-1+toddy13. Keep approved foundation/kernel7.1.8-toddy/source versions.
 
-### Security acceptance boundary — ADR0225
+Generation4 archive.local/phase2/settings-scratch-custody-4/scratch.tar.gz,
+485,113,684B/SHA194480fde5b0e4fefd3cb947b9894150820824428a8e3245aae7ee12a5150ba9.
+Qualified restore85,958entries/42,228regular inode classes/20aliases; current
+firefox1-scratch-restored-1 COMPLETE. After future cold restart restore SAME6volume
+UUIDs/inodes via virtual_discard_checkpoint.restore_volumes() FUNCTION ONLY,
+never trim/main; same Systemd source (--restore), Glycin companion and kernel COW
+with NEW receipts. Kernel scratch remains1GiB/UUIDc6c4176d-faed-4ee3-9ae0-94914a0af666;
+never format/resize/rebuild. Then phase2_restore_settings_scratch.py --generation4
+--receipt <NEW-name>. Also restore browser volume/aliases above with qualified
+helper BEFORE another compiler/native transition. Reconcile actual mounts/receipts
+on interruption, never replay completed recovery.
 
-Current upstream review found high-impact same-ESR corrections after153.2,
-including MFSA2026-127 released2026-11-10. Baseline153.2 is NOT browser-release
-eligible. Finish the healthy current compiler once as private feasibility only;
-never install/promote its output as the delivered browser or use owner credentials.
-No mutation/restart/second guest writer. [Review](evidence/B02-firefox-security-review.json).
+## Still due before B02 stop
 
-Separate firefox-security-1537 source appended to phase2 lock, original retained.
-Official153.7.0esr archive800,080,060B matches publisherSHA512; SHA256
-7f8715ee7de2cf36a156216a9b1c7f26d1653010e65793bb2fce66e12edb6ea0,
-already cached.local/sources/firefox-153.7.0esr.source.tar.xz. No signature claim.
-Host source scan session35200 TERMINAL0:510,287members/3,515,456,965regular
-expanded bytes;21critical metadata files retained/hashed. [Source review](evidence/B02-firefox-security-source.json).
-Root moz.configure/toolkit/moz.configure unchanged; Rust configure changes vendor
-alias selection. Candidate headers NSS3.125.1/NSPR4.39; installed3.126/4.40.
-These observations are NOT compatibility/security acceptance. Exact minimum Rust
-constant and NSS security/ABI coverage still need fresh source review/configure.
-Private complete scan.local/phase2/firefox-security-source-review-1/result.json,
-selected source texts retained there. Never rerun completed unchanged scan/fetch.
-Host free108,326,338,560B versus107,374,182,400B reserve, only952MB headroom:
-no new large host allocations. Guest raw compiler scratch remains preallocated.
-No guest mutations/new extraction/install while original compiler holds writer.
-Next host action: prepare affected overlay storage/recipe and notice plan without
-changing active producer/inputs or allocating unchecked space.
-Next guest action only after baseline compiler TERMINAL: measure capacity and
-choose qualified custody/retirement/fresh overlay source/work/build. Old objects
-not a qualified cache for different source. No guest153.7 extraction/install yet.
-
-[NASM proof](evidence/B02-nasm-build-tools.json): frozen3.02 source SHA
-87336eba53b4acfe917424ab5d500d2b0054d9f5148d35c2273ccf2cfb712f0d.
-Guest nasm-build-1.exit2 (original600 Makefile.in unreadable toUID101);
-nasm-build-2.exit0 after one metadata-only0644 correction of exactly3files,
-original contents/failed logs retained, fresh configure directory.
-Actual assembly/link/executable42/exact machine bytes/ndisasm positive control
-passed. Private stage /mnt/lfs/sources/phase2/work/nasm-1/stage, sourcealias
-/mnt/lfs/sources/phase2/inputs/nasm-3.02. No native OS install. Ledger resolved
-one correction; NEVER replay NASM compiler/extraction/correction.
-Firefox compiler now owns the single guest writer as recorded below.
-
-Actual source inspection: Firefox requires Clang>=19 for WASM; installed22.1.8
-has X86/AMDGPU only, no WASM/wasm-ld/ld.lld. ADR0224 chooses private official
-WASI SDK25 bootstrap to retain upstream WASM decoding isolation. Native compiler/
-foundation unchanged. Asset114,450,290B already cached.local/sources/
-wasi-sdk-25.0-x86_64-linux.tar.gz, SHA
-52640dde13599bf127a95499e61d6d640256119456d1af8897ab6725bcf3d89c.
-Official tag/source/LLVM/libc/config revisions and15exact license/notice URLs/hashes
-in config/phase2/browser-build-tools.lock.json. Local notices retained under
-.local/phase2/wasi-sdk-25-notices. SDK extraction/execution qualification now passed as recorded below.
-
-SDK preparation2 TERMINAL0, receipt browser-tools-input-1.json stateprepared;
-original prepare1 failed BEFORE ANY receipt/archive/tools/alias writes from missing
-metadata allowlist entry. That transfer cause resolved after one correction;
-no extraction replay. Actual SDK root tools/wasi-sdk-25.0-x86_64-linux readonly,
-all original files/modes/links inventoried. Browser tools probe1 TERMINAL0,
-[actual proof](evidence/B02-browser-wasm-tools.json): UID101/caps0/NNP, no external
-route, no credential/system paths, source/system/tool mutation denied; C/C++ WASM
-compile/link0/expectedv1magic, NASM3.02 version positive. Existing compiler root
-unchanged. Exact Firefox-only profile added to isolated.sh; tools readonly.
-Affected CUPS/Samba exact base/result pins updated after sole-delta byte proof;
-actual Bash tests confirm branch inactive for each. Full make check374passed.
-No unchanged native CUPS/Samba/compiler/GUI suite replay.
-
-[Configuration proof](evidence/B02-firefox-configuration.json): configure1 FAILED1
-from absent system PNG/APNG symbol png_get_acTL; original log/recipe/mozconfig
-retained. One correction selects source-bundled PNG1.6.58, preserves nativePNG;
-configure2 TERMINAL0. Generated Wayland/systemNSS+NSPR+ICU/main sandbox and all6
-WASM decoding library flags verified. No official branding/updater/crashreporter.
-No source patches, foundation upgrade, sandbox disabling or package installation.
-
-### Actual running compiler / exact next action
-
-Tool session10663, localcontroller.local/phase2/firefox-build-controller-1.py,
-log same stem.log. Guest controller11310/startticks in
-/var/log/toddy/phase2/firefox-build-controller-1.json; boot474caba2. Last actual
-/proc start match LIVE, compiler receipt state=running, C++/Rust/wasm2c output
-progress observed. Guest wrapper log/exit /var/log/toddy/phase2/firefox-build-1.log/
-.exit; build output /mnt/lfs/sources/phase2/work/firefox-build-1/firefox-compile-1.log,
-compiler receipt firefox-compile-result.json in same work directory.
-Command /src/mach build -j6; initial11,054,034,944B,128MiB floor+64MiB stop margin.
-Configstatus SHA473c3553e5db79572726d1f068cfb6c75ee050355222a864eb23f008d44ac493;
-mozconfig SHA899baac32c274db3e66781f19f7ff6d9e29866d92527a1198acd19ae4c2a31de.
-One guest writer held by isolated.sh; DO NOT sync metadata, mutate guest, reboot,
-start another writer or replay a compiler from a chat PID. Healthy long build
-excluded from diagnosis budget. Source/private SDK/tools read-only, no egress.
-
-Deterministic observer tool session51171,
-.local/phase2/observe-firefox-build-1.py/.local/phase2/firefox-build-observer-1.log;
-latest actual observation.local/phase2/firefox-build-latest-observation-1.json.
-Observer checks controller boot/PID/start, log bytes and real terminal exit every
-30s, reports only1MiB growth/5min/terminal. No repeated model calls for unchanged
-logs. If observer deadline/error inspect SAME controller/job, never restart build.
-Next: inspect actual live/terminal state and compiler receipt; on0 require both
-ELF artifacts and exact application version for private feasibility evidence,
-then follow ADR0225 security overlay/capacity gate. Do not stage/install baseline
-for release. Never treat timeout/log
-absence as success. Browser itself not accepted until actual runtime/UI evidence.
-Host-only source/security/inventory review eligible while compiler owns guest.
-Preserve100GiB host/16GiB target/128MiB scratch and final B02 stopping boundary.
-
-Builder RUNNING boot474caba2-3085-4d07-bba0-e2548b5728d4. Controlled restart
-controller firefox-builder-attach-restart-1 TERMINAL0. Existing recovery
-firefox-builder-existing-recovery-1 COMPLETE0 (same6volumes/Systemd/Glycin/kernel).
-firefox1-scratch-restored-1 generation4 COMPLETE0:85,958entries/42,228regular inode
-classes/20aliases. [Recovery evidence](evidence/B02-firefox-work-recovery.json).
-No compiler/package/native GUI replay. Prior boot8688d2de stopped cleanly.
-
-Dedicated16GiB file prepared/attached once, host receipt
-.local/vm/phase2/firefox-scratch.json, inode11956378/device66306,
-serialTODDY-B02-FIREFOX. Blank-signature/partition/holder/mount checks passed;
-mkfs0 without force/discard, UUID082a2d97-fa79-4ee5-86e5-a179f768daec,
-actual/dev/vdd (DO NOT assume name later), mountednosuid,nodev at
-/mnt/lfs/sources/phase2/work/firefox-1; initial16,713,080,832B available.
-Guest receipt /var/log/toddy/phase2/firefox-work-volume-1.json state=mounted.
-Host full allocation guard passes;100GiB host/16GiB target/128MiB scratch reserves
-unchanged. NEVER repeat preparation/format/recovery. Required make check370passed.
-
-### Retained source preparation
-
-Source extraction session92782 TERMINAL0; guest receipt firefox-source-1.json
-stateprepared/read-only source.509,835members/3,514,842,428expanded bytes,
-11,704,008,704B available. Original archive SHA verified before extraction.
-No configure/compiler yet. No running guest writer. NEVER replay extraction.
-Local log.local/phase2/firefox-source-prepare-1.log/exit retained.
-
-Source configured toolkit choices support cairo-gtk3-wayland-only; installed GTK3
-is Wayland-only. No startup-notification reference found in actual configure files;
-do not add unnecessary X11 dependencies or rebuild foundation.
-Need source/compiler/security/ABI review, native install/UI/sandbox acceptance.
-No official branding, example Google API key or sandbox relaxation. Book estimate
-8.9GB/15SBU is not actual runtime acceptance. Source lock153.2.0esr SHA
-c443c99704aadaf60fb267d709c42bc283e49e82292084f976369c8327ad833c;
-bookBLFS13.1-systemd xsoft/firefox.html SHA
- e3fcd198bbfa3b8ecae24abce029c2a04809bc300c9dc295de92a9446889d0a8.
-Clang22.1.8/Rust1.97.1/cbindgen0.29.4/Node24.19/ICU78.3/NSS3.126/NSPR4.40
-available. Optional system codecs/startup-notification absent; inspect conditions.
-
-## Other retained verified slices
-
-[Files native gate](evidence/B02-files-native-combined.json) passed actual normal
-GDM/PAM owner/Wayland/session2, local Files actions/Trash restore/watched content,
-installed gio trash URI0, activeFilesPID authorization challenge2/no credentials.
-Original URI/runuser failures retained/resolved, no fullB02/network/admin write/
-reboot/hardware claim. Native2controller/container0/base unchanged.
-
-[Terminal defaults](evidence/B02-terminal-defaults-install.json) installed
-0.2.0-1+toddy1, archiveSHA2cdbca318a0b1f623eeb3ce5da84d0b95cda5ec900e425caf14a6ad94247841f.
-Original test-quoting failure retained; verify-only0/0 ZEROroot changes, samepayload,
-seven realUID101/NNP startup/custom/opt-out/plain/readonly/login/noninteractive cases
-plus idempotence/hook/flags preservation. Existing homes untouched. Actual GUI
-rendering pending. Do not reinstall/replay unchanged tests.
-
-## Completed cold backup custody — never replay
-
-[Capacity evidence](evidence/B02-firefox-build-capacity.json): controller1450932
-TERMINAL0/process absent, statecomplete,1023durable chunks/originalwhole SHA
-6b8f1ad2736c8f7a4f02f361272c1e27ca151ff76b59bcee70fed8f7a7c3c8e1
-for34,298,068,992bytes. Oldh07-gcc-tested-target.qcow2 path absent; retained
-source.custody is hole skeleton, NOT BOOTABLE. Restore from verified chunk archives
-in order only with sufficient space, then whole SHA/length/QEMUcheck. Active/
-backing/foundation-master untouched. Native boot lock released. Existing math
-custody also complete/untouched. Host110,809,731,072B after16GiB allocation.
-
-## Current packages, cache and recovery
-
-Current builder boot474caba2-3085-4d07-bba0-e2548b5728d4; target /mnt/lfs on designated
-virtual TODDY-LFS-TARGET (/dev/vdb4), one writer build.lock. Native7.1.8-toddy.
-GNOME Shell/Mutter50.4, GDM50.2, Nautilus50.2.2-1+toddy1,
-LocalSearch3.11.1-1+toddy1, Gvfs1.60.2-1+toddy1, GTK4.22.4-1+toddy13.
-Parent lfs-target.qcow2 identity historically before native1:52,446,887,936B,
-mtime_ns1794373717214861615/device66306/inode11929205; compare actual, never trust
-chat PID/state alone. Reserves target16GiB/host100GiB/scratch128MiB.
-
-[Owned Gvfs](evidence/B02-gvfs-install.json) recipe4022 recipe/post0/0,
-146changes/324entries;131original regular files/21ELFs, CLI refusal/recovery,
-unauthenticated admin-helper refusal, unchanged policy/shared GIO cache.
-SFTP two-file runtime omission until owned SSH client; full original stage retained.
-[Owned schema union](evidence/B02-gvfs-schema-union.json) recipe4906 recipe/post0/0,
-GTKtoddy13,132schemas/1113keys preserves131baseline/1111keys/contracts and906runtime
-entries. CacheSHAa352c74e50964dca946948f2e80e9345a175615c938c65295f1bb44623133e1b.
-Native archives retained; never replay either completed transaction.
-Nautilus promotion custody1 reclaimed ONLY duplicate usr copy16,662,528B with
-zero installed-root changes; original workstage/source/compiler/archive/control
-retained. Never replay custody or promote retired copy.
-
-[Generation4 custody/actual isolated restore](evidence/B02-files-trash-input-custody.json)
-COMPLETE:85,958entries/42,228regular inode classes/35,017hardlinks. All prior
-schema/compiler/source/stage metadata/bytes/hardlink classes unchanged. Archive
-.local/phase2/settings-scratch-custody-4/scratch.tar.gz485,113,684B/SHA256
-194480fde5b0e4fefd3cb947b9894150820824428a8e3245aae7ee12a5150ba9;
-guest receiptSHA98d30271729661273b2824ab3d7585c944b53a59830b1cd4a5e06537c7426b4b.
-Generations1-3 retained; do not replay any custody. Host110,156,697,600B free
-immediately after archive, before latest native overlay. Measure current free.
-
-For a future cold restart inspect actual stopped state,
-start builder once, restore SAME6existing volume UUIDs/inodes with restore_volumes()
-from virtual_discard_checkpoint.py (FUNCTION ONLY, never trim/main), same Systemd
-source via prepare_systemd_pam_input.py --restore, same Glycin companion and kernel
-COW using NEW receipt names. Kernel scratch remains1GiB UUID
-c6c4176d-faed-4ee3-9ae0-94914a0af666; never format/resize/reprepare/rebuild.
-Then phase2_restore_settings_scratch.py --generation 4 --receipt <NEW-unique-name>.
-Actual archive restoration already qualified; reconcile receipt/mounts before
-retry. No source/compiler/fixture/install replay. Older exact recovery identities
-remain in journal, native evidence and retained receipts.
-
-## B02 work still due
-
-Firefox frozen browser build/install/UI; NetworkManager activation/real network;
-audio session/playback/controls; affected privileged storage/device/refusal and
-recovery checks; supported global navy/theme/terminal defaults respecting users;
-Editor refusal/recovery/reboot persistence; offline/absent-agent operation,
-minimal manifest/security-ABI review, resource/boot-idle measurements and recovery
-entry boot. Preserve actual native owner Editor/Terminal/Settings and Files local
-proofs; broaden only for changed inputs or final essential gates. No physical
-hardware/support claim. Complete ALL B02, then STOP before another story.
+Corrected browser/security/ABI/native UI; native networking/polkit; audio playback/
+controls; affected devices/refusal/recovery; navy/global theme and Terminal GUI;
+Editor refusal/recovery/reboot persistence; offline/absent-agent use; minimal
+manifest/optional catalog status, boot/idle resources and recovery-entry boot.
+Preserve scoped successes, widen only for changed inputs/essential final gates.
+Complete ALL B02, then STOP before another story. No physical support claim.

@@ -3,7 +3,7 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-11T03:13:48.245693+00:00",
   "bootstrap": "ready_for_development",
-  "current_scope": "B01 and B03 accepted (13% weighted Phase2). B02 native GNOME dependency implementation in progress; native graphical desktop/login/basic applications and B02 acceptance remain pending. B04 final runtime integration blocked; B05\u2013B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
+  "current_scope": "B01/B03 accepted (13% weighted Phase2). B02 native GNOME owner login and scoped Files/Editor flows verified; desktop network configuration installed. Corrected browser, native network/audio, integrated recovery/offline/resource gates remain pending. B04 runtime integration blocked; B05-B13/G2 and physical validation pending. Owner requests stopping after fully validated B02.",
   "next_story": "B02",
   "gates": {
     "G1": "passed",
@@ -705,6 +705,9 @@
   "active_work": {
     "story": "B02",
     "verified": [
+      "Host cold GCC builder custody COMPLETE0:178verified chunks/5949423616bytes and original whole SHA reconstruction, source skeleton inspected, native/cold locks released. Host113188540416B free at terminal; active target/master unchanged. Never replay completed custody.",
+      "Owned toddy-desktop-network0.2.0 installed recipe/post0/0,20full-root changes/64.83s; exact payload/conffiles, target NM0/networkd1 conditions and UID101/NNP policy write denial passed. Original DHCP/resolver retained. Native PID1/GNOME/polkit/DHCP/DNS/offline/reboot/recovery pending.",
+      "Original Firefox153.2 private compiler finished0 in2485.345s, independent ELF64/x86_64/SHA and exact application153.2.0 verified, reserve intact. No install/runtime acceptance; ADR0225 security153.7 required for delivery.",
       "Host storage margin work: actual42image graph excludes old h07 GCC builder backup from all backing references; identity/exclusive check/structural QEMU0. Qualified exact-byte chunk custody running with deterministic observer, original ranges retire only after durable verified archives. Active target/master and guest compiler unchanged; terminal whole reconstruction/free-space result pending.",
       "Desktop network ownership recipe prepared on host: actual installed NM disabled versus foundation networkd enabled; staged inverse marker conditions, daemon-only enablement, keyfile/resolved defaults and retained recovery configuration. Three real host condition/stage tests and377repository tests passed. No guest install/sync/service/network write; target/native GUI/DHCP/DNS/polkit/offline/recovery remain pending.",
       "Browser security gate: official MFSA2026-93/100/127 include high-impact later ESR corrections; baseline153.2 not release-eligible. Separate153.7.0esr candidate archive verified against publisher SHA512 and pinned SHA256, original lock retained. Host source metadata scan0 (510287members/21critical files), toolkit/root configure unchanged; full compatibility/license/security gates pending while original healthy compiler continues privately; no corrected browser installed/accepted.",
@@ -897,7 +900,7 @@
       "UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.",
       "B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219."
     ],
-    "running": "B02 original Firefox compiler remains sole guest writer/private feasibility; corrected153.7 required for delivery. Independent host cold-backup custody running to restore native-test storage margin; native boots wait for its lock. Network policy recipes prepared/host-tested only. Inspect exact job receipts before continuation; complete all B02 then stop.",
+    "running": "B02 network config installed/chroot-qualified and obsolete baseline compiler complete; guest idle, host custody complete. Exact next: qualify existing browser raw-volume/alias recovery before any builder shutdown, then actual native NetworkManager/Settings/network/offline/recovery validation. Corrected153.7 browser still required. Complete all B02 then stop.",
     "remaining": [
       "Editor refusal/recovery and post-reboot persistence; exact native owner-session GUI evidence now covers ordinary open/type/save/relaunch/maximize and Terminal file checksum.",
       "LocalSearch/Nautilus/browser/settings and first fully working interactive native GNOME session.",
@@ -905,7 +908,7 @@
       "Minimal desktop branding/offline usability/security-ABI review and reference guest measurements.",
       "UDisks/Samba prerequisites and full Settings UI remain; CUPS local native SDK accepted, printing/driver/service integration unqualified. MIT local SDK installed; enterprise authentication is unqualified."
     ],
-    "verified_at": "2026-11-11T07:48:03.215057+00:00",
+    "verified_at": "2026-11-11T08:06:17.607403+00:00",
     "evidence": "docs/evidence/B02.md"
   }
 }

@@ -1,0 +1,63 @@
+{
+  "scope": "Owned target configuration install and chroot postcheck only; no native PID1/daemon/DHCP/DNS/GUI/reboot/recovery acceptance",
+  "package": {
+    "name": "toddy-desktop-network",
+    "version": "0.2.0-1+toddy1",
+    "archive_sha256": "4af9211df6e6141fd29d3112f06a482102ba0425ef7724bd75d537ccf1bfe553",
+    "recipe_sha256": "e39f24f0862db8d829766377e928f9fc41afc45b98856a53b2c7cc9f2fe93005",
+    "installed": true,
+    "payload_entries": 24
+  },
+  "recipe_exit": 0,
+  "postcheck_exit": 0,
+  "full_root_changed_paths": [
+    "/etc/NetworkManager/conf.d/10-toddy-desktop.conf",
+    "/etc/systemd/system/NetworkManager.service.d",
+    "/etc/systemd/system/NetworkManager.service.d/10-toddy-network-owner.conf",
+    "/etc/systemd/system/multi-user.target.wants/NetworkManager.service",
+    "/etc/systemd/system/systemd-networkd.service.d",
+    "/etc/systemd/system/systemd-networkd.service.d/10-toddy-network-owner.conf",
+    "/etc/toddy/network",
+    "/etc/toddy/network/use-networkmanager",
+    "/usr/share/doc/toddy-desktop-network",
+    "/usr/share/doc/toddy-desktop-network/CC-BY-4.0.txt",
+    "/usr/share/doc/toddy-desktop-network/README",
+    "/usr/share/doc/toddy-desktop-network/copyright",
+    "/usr/share/doc/toddy-desktop-network/source-notices",
+    "/usr/share/doc/toddy-desktop-network/source-notices/index.json",
+    "/var/cache/apt/pkgcache.bin",
+    "/var/lib/dpkg/info/toddy-desktop-network.conffiles",
+    "/var/lib/dpkg/info/toddy-desktop-network.list",
+    "/var/lib/dpkg/info/toddy-desktop-network.md5sums",
+    "/var/lib/dpkg/status",
+    "/var/lib/dpkg/status-old"
+  ],
+  "consumer": {
+    "scope": "Installed configuration/ownership, inverse native condition evaluation and UID101/NNP write refusal only; no running PID1/daemon/DHCP/DNS/GUI/offline/reboot/recovery acceptance",
+    "checked_payload": [
+      "etc/NetworkManager/conf.d/10-toddy-desktop.conf",
+      "etc/toddy/network/use-networkmanager",
+      "etc/systemd/system/multi-user.target.wants/NetworkManager.service",
+      "etc/systemd/system/NetworkManager.service.d/10-toddy-network-owner.conf",
+      "etc/systemd/system/systemd-networkd.service.d/10-toddy-network-owner.conf",
+      "usr/share/doc/toddy-desktop-network/copyright",
+      "usr/share/doc/toddy-desktop-network/CC-BY-4.0.txt",
+      "usr/share/doc/toddy-desktop-network/README",
+      "usr/share/doc/toddy-desktop-network/source-notices/index.json"
+    ],
+    "conditions": [
+      {
+        "unit_dropin": "/etc/systemd/system/NetworkManager.service.d/10-toddy-network-owner.conf",
+        "condition_exit": 0
+      },
+      {
+        "unit_dropin": "/etc/systemd/system/systemd-networkd.service.d/10-toddy-network-owner.conf",
+        "condition_exit": 1
+      }
+    ],
+    "unprivileged_policy_write_denied": true
+  },
+  "elapsed_seconds": 64.83,
+  "raw_receipts_sha256": "e7c1df84b7e39851bec8797cd49361a9f7d4244deeca129af9d233c745145ae1",
+  "native_remaining": "Actual GNOME Settings navigation/connection/offline state, normal-user polkit, DHCP/routes/DNS, persistence and stop-before-switch recovery; physical networking unverified."
+}

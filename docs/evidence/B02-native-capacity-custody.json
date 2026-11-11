@@ -1,7 +1,7 @@
 {
   "scope": "Project development storage only; exact unreferenced cold intermediate backup, not active/installed/foundation master",
-  "state_at_observation": "compressing",
-  "controller_identity_verified_live": true,
+  "state_at_observation": "complete",
+  "controller_identity_verified_live": false,
   "source": ".local/vm/checkpoints/h07-gcc-tested-builder.qcow2",
   "bytes": 5949423616,
   "source_sha256": "7f4af9ce2e3002dff261b64035f1ab9b6f4ce1d28112fae00a270704fd686dab",
@@ -9,8 +9,12 @@
   "allocated_before": 5913346048,
   "host_available_before": 108320804864,
   "structural_qemu_check_exit": 0,
-  "durable_chunks_at_observation": 72,
-  "terminal_whole_reconstruction_verified": false,
+  "durable_chunks_at_observation": 178,
+  "terminal_whole_reconstruction_verified": true,
   "recovery": "Original path absent after custody rename; source.custody hole skeleton is not bootable. Retain verified archives and untouched ranges. Reconstruct ordered chunks with adequate capacity and verify exact whole original length/SHA/QEMU check before use.",
-  "tests": "Three focused custody protocol tests and full377repository tests passed; existing completed custody operations not repeated."
+  "tests": "Three focused custody protocol tests and full377repository tests passed; existing completed custody operations not repeated.",
+  "controller_terminal_exit": 0,
+  "host_available_after": 113188540416,
+  "host_available_after_observed": 113182707712,
+  "receipt_sha256": "f327d5828d23ff5be1978eb7a9776dbaeb9d3850fa7b3fc5ce40a1febdb585e8"
 }

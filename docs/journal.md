@@ -3755,3 +3755,26 @@ verification pending; hole placeholder not bootable. Guest compiler remains
 independent sole writer, native boots blocked by custody lock. Three focused
 protocol tests and make check377passed; no unchanged native/compiler replay.
 [Operation evidence](evidence/B02-native-capacity-custody.json).
+
+## B02 baseline compiler closed and desktop network package installed — 2026-11-11
+
+Original Firefox compiler terminal0/2485.345s; independent root verification
+matched both ELF SHA/x86_64 and exact application153.2.0. Private feasibility
+only, ADR0225 security overlay required; no old browser promotion or native use.
+[Compiler proof](evidence/B02-firefox-baseline-compile.json).
+
+After actual compiler lock release, metadata synced once and standard full-root
+network policy transaction recipe/post0/0 completed64.83s/20changed paths. Owned
+package/payload/conffiles and native target condition evaluation NM0/networkd1,
+UID101/NNP write denial passed. Actual NM D-Bus Version uses VERSION1.58.1,
+while NM_DIST_VERSION provides only the CLI ToddyOS banner. No daemon started
+in chroot; no native PID1/GUI/DHCP/DNS/polkit/offline/reboot/recovery proof yet.
+Host backup custody still healthy/holds native-boot lock.
+[Install evidence](evidence/B02-desktop-network-install.json).
+
+Cold native-capacity custody then completed0:178chunks/5,949,423,616bytes,
+whole original SHA reconstruction verified by unchanged producer; controller
+absent, hole skeleton inspected, native/cold locks released. Terminal host
+113,188,540,416B free, reserves retained. Before any next native cold boot,
+qualify recovery of the new persistent browser raw volume/source/SDK/NASM/work
+aliases; existing generation4 RAM cache remains retained. No guest writer.
