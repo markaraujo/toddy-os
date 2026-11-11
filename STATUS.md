@@ -196,7 +196,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: Nautilus compiled/staged; exact cache custody2/actual restoration and compact readonly native input transport verified. Native12program user-seat gate prepared and preflight passed; next fresh normal GDM/PAM test VM. No native Nautilus tests/package/GUI pass yet. Full B02 incomplete; complete all B02, then stop.
+Running: Native Nautilus1 verified readonly transport/normal user seat and9processes0 including59GLib cases/3real search hits. Collector protocol correction qualified existing results without replay;3remaining originals pending in fresh native2. Builder stopped/base unchanged. No installed Nautilus/full B02 pass; complete all B02, then stop.
 
 Remaining:
 

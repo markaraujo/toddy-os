@@ -191,23 +191,33 @@ Root descriptor /sources/phase2/native-fixtures/nautilus-1.json SHA
 ac5c890e5cceaee2b196400e343ce4490e2a2b6fb32ad7b5f8324aa78506e492.
 No source/build/stage/test replay or target-disk copy. Not a boot ISO.
 
-EXACT NEXT: after committing/publishing reviewed inputs and focused checks,
-run `python3 -u scripts/host/phase2_native_nautilus.py` with
-.local/phase2/native-nautilus-runtime-1-controller.log.
-Preflight-only passed current source/compile/stage, GTK11/GDM/Shell/LocalSearch,
-cache2/actual restoration/raw image and payload; no native VM started yet.
-Fresh context native-nautilus-runtime-1/readonly data device serial
-TODDY-NAUTILUS-INPUT, real normal GDM/PAM user12402/Wayland seat0.
-Use private control Unix socket with capture/key/password/done actions as before;
-inspect actual masked password field before password action. After visible real
-owner desktop, done requests the12original tests (not immediate teardown).
-Control remains for snapshots while tests run. Root input proof must pass before
-GDM starts. Per-program60s/whole-selected300s, first failure stops the set.
-Assert TAP plan/cases/no skips, except source-backed async done-loading callback
-and actual AppStream exit0. No all24/full-suite or installed Nautilus claim.
-Inspect actual terminal container/report/base identity before recovery/retry.
-After cold testing restore CURRENT generation2 archive/16aliases with a fresh
-receipt, not generation1; no source/compiler/install/test replay.
+Native Nautilus1 is TERMINAL, no live test/writer. Controller1329350/session58058
+returned1 for its collector gate; native container stopped0/base unchanged.
+Actual readonly input transport/restoration1904entries, normal GDM/PAM user2
+seat0/Wayland and UID12402/NNP/caps0/write-denial controls passed. First8programs
+passed, including59GLib cases. Ninth simple-search process0 produced3expected
+unique hits and finished callback, but own collector wrongly required TAP.
+No later programs executed. Raw reportSHA
+c4f6cce2edfe01bc7080b37e437169619a393b14e24f1dec633d535b5807710e
+retained, not rewritten/passed. [Prefix qualification](evidence/B02-nautilus-native-prefix.json)
+verifies its actual SHA, exact frozen source's total_hits==3 assertion and actual
+3URI/finished/exit0/no-timeout evidence. Nine programs qualified WITHOUT replay;
+no invented TAP counts. Correction budget1, no failed correction yet.
+
+EXACT NEXT: after publishing corrected collector inputs, run
+`python3 -u scripts/host/phase2_native_nautilus.py --collector-followup`
+with .local/phase2/native-nautilus-runtime-2-controller.log.
+Preflight2 passed actual terminal native1/container/base/image/prefix hashes;
+builder remains STOPPED, never repeat its stop or restart for this followup.
+Fresh context native-nautilus-runtime-2 reuses9qualified program results/59GLib
+cases and executes ONLY3remaining originals: async-directory/create/files-view.
+Use control socket and genuine GDM/PAM login as before, then done starts tests.
+Absolute real Wayland socket is preserved across installed LocalSearch's original
+private XDG_RUNTIME_DIR change; no mock/backend/sandbox/test changes.
+Keep60s/program/300s run budget, exact readonly input/base checks and full reports.
+If further failure, preserve actual outcomes and bounded cause budget rather than
+replay accepted programs. After testing, recover generation2/16aliases using new
+receipt names. Full B02 remains incomplete; stop only after all B02 accepted.
 
 Do not bypass PAM/autologin or repeat parked headless automation.
 Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated

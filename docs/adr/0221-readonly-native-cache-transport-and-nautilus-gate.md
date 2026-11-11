@@ -76,3 +76,29 @@ Reuse exact input hashes and the proven dedicated-UART report protocol. Assert
 source/compiler/stage maps unchanged after execution. Passing this gate does not
 prove installed Nautilus, final UI interactions, Gvfs/mounting, full B02 or
 physical hardware. Package promotion and real installed Files UI remain separate.
+
+## Observed first native run and collector-only correction
+
+Native attempt1 verified the read-only data device/restoration, normal GDM/PAM
+user session and unprivileged controls. Eight selected programs passed, including
+59GLib cases. The ninth process also exited0 and emitted three expected unique
+search-hit URIs followed by its finished callback. The collector incorrectly
+required a TAP plan and stopped before the last three programs. Preserve the raw
+failed aggregate; this is a collector failure, not a passing complete gate.
+
+The exact50.2.2 `test-nautilus-search-engine-simple.c` is a non-TAP callback
+driver. It asserts total_hits==3 after its main loop. A separate qualification
+checks the actual report SHA, original source hash/assertion, three expected
+unique basenames, completion marker, exit0 and absence of timeout. It preserves
+all59existing GLib cases and validates the successful search process without
+rerunning any of these nine programs. A fresh native followup may execute only
+the remaining asynchronous-directory/create/files-view programs with the same
+exact source/compiler/stage and unchanged base image. Combine both evidence sets
+explicitly; do not rewrite the first raw report or invent TAP case counts.
+
+Use the absolute path of the actual authenticated user's Wayland socket. The
+installed LocalSearch3.11.1 test-sandbox wrapper changes XDG_RUNTIME_DIR to its
+private store/run directory and does not rewrite WAYLAND_DISPLAY. An absolute
+name preserves the same real compositor endpoint across that original fixture
+environment change. This does not add a display backend, disable sandboxing or
+change any original test or production user preference.

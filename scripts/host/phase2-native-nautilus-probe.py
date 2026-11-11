@@ -17,6 +17,7 @@ import time
 import zlib
 
 NAUTILUS_FIXTURE = None
+REUSED_NAUTILUS = None
 
 
 def digest(path):
@@ -83,13 +84,16 @@ def run_original_tests(fixture,uid):
     assert len(waylands)==1 and (runtime/'bus').is_socket()
     desktop={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C.UTF-8','PYTHONDONTWRITEBYTECODE':'1',
              'XDG_RUNTIME_DIR':str(runtime),'DBUS_SESSION_BUS_ADDRESS':'unix:path='+str(runtime/'bus'),
-             'WAYLAND_DISPLAY':waylands[0].name,'XDG_SESSION_TYPE':'wayland','XDG_CURRENT_DESKTOP':'GNOME'}
+             'WAYLAND_DISPLAY':str(waylands[0]),'XDG_SESSION_TYPE':'wayland','XDG_CURRENT_DESKTOP':'GNOME'}
     def nnp():
         assert os.geteuid()==uid and ctypes.CDLL(None,use_errno=True).prctl(38,1,0,0,0)==0
+    reused=REUSED_NAUTILUS['reused_runs'] if REUSED_NAUTILUS else []
+    assert [r['name'] for r in reused]==[r['name'] for r in fixture['selected_tests'][:len(reused)]]
+    assert all(r['passed'] and r['exit']==0 and not r['timed_out'] for r in reused)
     rows=[];started=time.monotonic();positive=None
     with tempfile.TemporaryDirectory(prefix='toddy-nautilus-native-',dir='/var/tmp') as directory:
         base=Path(directory);os.chown(base,uid,uid)
-        for index,test in enumerate(fixture['selected_tests']):
+        for index,test in enumerate(fixture['selected_tests'][len(reused):],start=len(reused)):
             home=base/('case-'+str(index));home.mkdir(mode=0o700);os.chown(home,uid,uid)
             env=dict(desktop);env.update(test['env'])
             env.update(HOME=str(home),XDG_CONFIG_HOME=str(home/'config'),XDG_CACHE_HOME=str(home/'cache'),XDG_DATA_HOME=str(home/'data'),TMPDIR='/tmp',PYTHONDONTWRITEBYTECODE='1')
@@ -119,7 +123,11 @@ print(json.dumps({'UID':os.geteuid(),'NoNewPrivs':True,'effective_permitted_caps
                 try:stdout,stderr=p.communicate(timeout=5)
                 except subprocess.TimeoutExpired:os.killpg(p.pid,signal.SIGKILL);stdout,stderr=p.communicate(timeout=5)
             row={'name':test['name'],'command':test['cmd'],'exit':p.returncode,'timed_out':timed_out,'elapsed_seconds':round(time.monotonic()-begun,3),'stdout':stdout,'stderr':stderr}
-            if test['name']=='test-nautilus-directory-async':
+            if test['name']=='test-nautilus-search-engine-simple':
+                hits=re.findall(r'^Hit [0-9]+: (file://[^\n]+)$',stdout,re.M)
+                expected={'engine_simple','engine_simple_directory','engine_simple_second_directory'}
+                row.update(passed=p.returncode==0 and not timed_out and len(hits)==len(set(hits))==3 and {h.rsplit('/',1)[-1] for h in hits}==expected and '\nNautilus search engine simple finished!\n' in stdout,search_hits=hits,source_asserted_total_hits=3,source_backed_non_TAP_driver=True)
+            elif test['name']=='test-nautilus-directory-async':
                 row.update(passed=p.returncode==0 and not timed_out and 'loading file:///tmp' in stdout and 'done loading\n' in stdout,async_completion_observed='done loading\n' in stdout,source_backed_non_TAP_driver=True)
             elif test['name']=='validate-appdata':
                 row.update(passed=p.returncode==0 and not timed_out,metadata_validation_only=True)
@@ -134,7 +142,7 @@ print(json.dumps({'UID':os.geteuid(),'NoNewPrivs':True,'effective_permitted_caps
             if not row['passed']:break
     for base,key in [(Path(fixture['source_path']),'source_files'),(Path(fixture['work_path'])/'compile','compile_files'),(Path(fixture['work_path'])/'stage','stage_files')]:
         actual={str(p.relative_to(base)):digest(p) for p in base.rglob('*') if p.is_file() and not p.is_symlink()};assert actual==fixture[key]
-    return {'all_selected_passed':len(rows)==len(fixture['selected_tests']) and all(r['passed'] for r in rows),'positive_control':positive,'programs':len(rows),'expected_programs':len(fixture['selected_tests']),'passed_cases':sum(r.get('passed_cases',0) for r in rows),'skipped_cases':sum(r.get('skipped_cases',0) for r in rows),'runs':rows,'readonly_inputs_unchanged':True,'not_selected':fixture['not_selected']}
+    return {'all_selected_passed':len(rows)+len(reused)==len(fixture['selected_tests']) and all(r['passed'] for r in rows),'positive_control':positive,'programs_executed':len(rows),'programs_reused':len(reused),'programs_total':len(rows)+len(reused),'expected_programs':len(fixture['selected_tests']),'new_passed_GLib_cases':sum(r.get('passed_cases',0) for r in rows),'reused_passed_GLib_cases':sum(r.get('passed_cases',0) for r in reused),'qualified_prefix':REUSED_NAUTILUS,'skipped_cases':sum(r.get('skipped_cases',0) for r in rows),'runs':rows,'readonly_inputs_unchanged':True,'not_selected':fixture['not_selected']}
 
 
 def main():
