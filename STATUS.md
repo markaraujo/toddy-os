@@ -1,6 +1,6 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-11T02:22:44.000288+00:00
+Updated: 2026-11-11T02:27:44.338205+00:00
 
 Bootstrap: ready_for_development
 
@@ -16,10 +16,11 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T02:22:44.000288+00:00
+Last verified: 2026-11-11T02:27:44.338205+00:00
 
 Verified:
 
+- Actual native GDM virtual DRM/input seat: service start/status/stop0, active seat0 Wayland greeter, unchanged stock schema/base image and terminal container0. Actual1280x800login screenshot reviewed: readable controls and focused username field. No authenticated session, actual input/application/audio/B02/physical acceptance. Greeter warnings retained.
 - B01 accepted graph and native GLib/GIO/introspection/PyGObject/Qt/Node packages reused; B03 accepted.
 - B04 core/user tools/signed native package and Stop/revoke/recovery verified; final runtime integration blocked by absent native NM/polkit/running system bus.
 - Native libxml2-2.15.3 compile7 programs/3904 regression cases/stage0; native package install/post0/0 and XML external-loader deny/positive control passed. Full-root scans19.328s of22.343s; optimization not enabled.
@@ -189,7 +190,7 @@ Verified:
 - UDisks2.11.2/libblockdev3.5.0 exact frozen official archives now cached and source-verified: bookMD5/SHA256 and relative tar header paths passed. Source-only, no guest extraction/build/tests/native/service/disk/GUI/hardware acceptance; required selected closure pending.
 - B02 resource custody complete: seven stopped native overlays recovered86,839,296B;178verified cold-backup chunks preserve5,940,445,184original bytes and reconstructed SHA256. Durable331MB Samba/Settings scratch archive passed actual isolated restoration of76,673entries with exact bytes/ownership/timestamps/symlinks/hardlinks. No native graphical acceptance. ADR0219.
 
-Running: Resource custody and actual scratch restoration verified. Next: fresh normal GDM virtual DRM/input seat diagnostic with QMP scanout; no headless retry or authentication bypass. Native graphical GNOME/basic-app acceptance remains pending. Complete all B02, then stop.
+Running: Normal native GDM login screen is now verified on a real virtual DRM/input seat. Next: authenticated session and actual input/application actions in a fresh overlay. Browser/files/audio and full B02 acceptance pending; builder stopped, exact scratch archive/restoration proof durable. Complete all B02, then stop.
 
 Remaining:
 

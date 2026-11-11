@@ -30,22 +30,33 @@ inodes, exact bytes/modes/owners/nanosecond timestamps/symlinks/hardlink classes
 13closed fixture sockets omitted; they contain no restorable payload.
 Receipt includes exact bind aliases. No source/compiler/fixture/install replay.
 
-EXACT NEXT: after publishing the corrected probe selector, run
-`python3 -u scripts/host/phase2_native_gdm_seat.py --probe-path-followup`,
-with .local/phase2/native-gdm-seat-runtime-2-controller.log.
-Context1/controller1231416 terminal1: native container a8023086e6726cf2513bc7d4b6b63af269f8ae1b89b60da06592fbbe5e19d837
-is stopped/exit0, base identity unchanged. Controller accidentally selected the
-old Shell probe; it failed its obsolete GTK assertion before compositor/GDM.
-No dedicated report, no graphical acceptance. Serial and one scanout retained.
-Builder is STOPPED; current tmpfs is gone but its exact archive and actual
-isolated restoration proof above are durable. Do not stop builder again.
-Followup2 selects the actual new GDM probe and requires previous exact stopped
-container, unchanged base identity and observed first failure before dispatch.
-Use a fresh disposable overlay/Virtio VGA/USB keyboard/tablet/QMP; no password,
-autologin/PAM bypass or headless Shell retry. Inspect actual native result/report/
-scanout before continuing. Recover existing guest volumes/source/scratch and
-recorded aliases after the diagnostic, without source/compiler/fixture/install
-replay. Owner boundary remains: complete ALL B02, then stop.
+Native normal-seat followup2/controller1234243/session87612 terminal0.
+Context native-gdm-seat-runtime-2: actual installed GDM start/status/stop0,
+active Wayland greeter c1/namegdm-greeter/seat0, schema unchanged, base unchanged,
+container stopped/exit0, full dedicated report SHA validated. Actual1280x800
+QEMU scanout reviewed: readable normal login screen/focused username field.
+[Native evidence](evidence/B02-gdm-native-seat.json) and
+[actual screenshot](evidence/B02-gdm-native-seat.png). No authenticated login,
+keyboard/pointer actions, basic apps, audio or full B02 acceptance. Initial
+black startup frame retained. Journals retain optional-service warnings,
+audio refused and a D-Bus supplementary-group drop warning for diagnosis.
+
+Attempt1/controller1231416 terminal1 selected the old Shell probe and failed
+its obsolete GTK assertion before any compositor/GDM. Preserve raw serial and
+first scanout; no dedicated report. Context1 container stopped0/base unchanged.
+Followup2 verified these actual postconditions; no builder-stop replay.
+
+EXACT NEXT: use this proven actual-seat path for a fresh disposable-overlay
+normal authenticated user session and real input/application actions, keeping
+all test passwords only in memory/private transient transport, never logs/Git.
+Do not bypass PAM/autologin or repeat parked headless automation.
+Builder is STOPPED; former tmpfs gone. Its exact archive and actual isolated
+restoration proof above remain durable. If builder work is needed first,
+inspect actual states, restore existing volumes/source/scratch and recorded
+aliases without source/compiler/fixture/install replay. Owner boundary remains:
+complete ALL B02, then stop. Latest published85dccfe: all3workflows success,
+exact public HTTP200/indexSHA
+75e006aa7246d6884bcfd803deee5617787b385388351b29cbf2d058dd6e4fd1.
 
 Earlier slice records below are historical; this latest card takes precedence.
 
