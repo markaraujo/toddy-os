@@ -135,7 +135,14 @@ phase2/firefox-check.sh --user root). Verify retained archive and all stage/owne
 payload first; run actual unexecuted UID101/NNP version/native desktop consumer.
 New verification receipt /var/log/toddy/phase2/firefox-package-verify-2.json;
 original failed receipt stays unchanged, no package/source/compiler replay.
-No live guest writer. GUI/TLS/content sandbox/offline/restart still pending.
+Read-only verify2 recipe0 reused archive/stage successfully; post1 --version255
+because target chroot lacked /proc. Actual private-mount procfs diagnostic returns0
+Mozilla Firefox153.7.0esr asUID101/NNP. No package change; normal LFS boot mounts
+procfs. Builder userns cloneEPERM warning is NOT native content-sandbox acceptance.
+Next new run_step b02-firefox-runtime-verify-3 uses firefox-reuse-verification.sh
+and corrected firefox-check.sh (private mount/procfs; global mounts unchanged).
+Reuse successful checks, preserve both failed wrappers. No live guest writer.
+GUI/TLS/content sandbox/offline/restart still pending.
 
 Prepared but NOT dispatched: desktop-graphical-boot.sh/check.sh to enable owned
 GDM and replace exact unowned foundation multi-user default only; preserves user

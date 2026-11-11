@@ -2,6 +2,14 @@
 set -euo pipefail
 source /opt/toddy-build/scripts/build/target.sh
 guard_target
+if [[ $# == 0 ]]; then
+    exec unshare --mount --fork bash "$0" --private-proc
+fi
+[[ $# == 1 && $1 == --private-proc ]]
+[[ $(stat -Lc %i /proc/self/ns/mnt) != $(stat -Lc %i /proc/1/ns/mnt) ]]
+mount --make-rprivate /
+[[ -d /mnt/lfs/proc && ! -L /mnt/lfs/proc ]]
+mount -t proc -o nosuid,nodev,noexec proc /mnt/lfs/proc
 python3 - <<'PY'
 from pathlib import Path
 import hashlib,json,os,subprocess
@@ -28,5 +36,5 @@ print(json.dumps({'name':app.get_name(),'executable':app.get_executable(),'suppo
 """
 app=json.loads(subprocess.check_output(prefix+['python3','-c',code],env=env,text=True,timeout=30))
 assert (T/'usr/bin/firefox').readlink()==Path('../lib/firefox/firefox')
-(L/'firefox-installed-check-1.json').write_text(json.dumps({'scope':'Owned installed payload/dependency integrity, actual UID101/NNP version and native desktop-entry consumer only; normal-owner GUI/content sandbox/TLS/offline/restart still pending','payload_entries':len(r['payload']),'archive_sha256':r['archive_sha256'],'unprivileged_version':{'exit':result.returncode,'stdout':result.stdout,'stderr':result.stderr},'desktop':app},indent=2)+'\n')
+(L/'firefox-installed-check-1.json').write_text(json.dumps({'scope':'Owned installed payload/dependency integrity, actual UID101/NNP version and native desktop-entry consumer only; normal-owner GUI/content sandbox/TLS/offline/restart still pending','private_procfs_for_chroot':True,'payload_entries':len(r['payload']),'archive_sha256':r['archive_sha256'],'unprivileged_version':{'exit':result.returncode,'stdout':result.stdout,'stderr':result.stderr},'desktop':app},indent=2)+'\n')
 PY
