@@ -1,0 +1,185 @@
+{
+  "scope": "Actual native navy desktop, normal Wayland owner, Terminal commands/UTF8/narrow window and PipeWire/Pulse/WirePlumber virtual HDA playback/mute controls. No physical hardware, whole B02 or ISO acceptance.",
+  "commit": "37e03815e4cc04182ea009bf4e71c3f5795401ff",
+  "probe_sha256": "8d07e3fc523ad52058bfeb50817c2d1fe018d0ab0b20b37a200428d4fbda3eb5",
+  "report_sha256": "23951f8cddf89f7831d9ff9a751a8c66f633754227096a9a156aa0c05ca93116",
+  "backing_unchanged": true,
+  "actual_qemu_exit": 0,
+  "native": {
+    "agent_package_absent": {
+      "args": [
+        "dpkg-query",
+        "-W",
+        "toddy-agent"
+      ],
+      "exit": 1,
+      "stderr": "dpkg-query: no packages found matching toddy-agent\n",
+      "stdout": ""
+    },
+    "all_selected_exits_zero": true,
+    "alsa_cards": " 0 [Intel          ]: HDA-Intel - HDA Intel\n                      HDA Intel at 0xfeb94000 irq 43\n",
+    "boot_timing": {
+      "args": [
+        "systemd-analyze",
+        "time"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "Startup finished in 1.121s (kernel) + 3.448s (userspace) = 4.570s \ngraphical.target reached after 3.444s in userspace.\n"
+    },
+    "default_graphical_boot": {
+      "gdm": {
+        "args": [
+          "systemctl",
+          "is-active",
+          "gdm.service"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": "active\n"
+      },
+      "graphical": {
+        "args": [
+          "systemctl",
+          "is-active",
+          "graphical.target"
+        ],
+        "exit": 0,
+        "stderr": "",
+        "stdout": "active\n"
+      }
+    },
+    "gdm_stop": {
+      "args": [
+        "systemctl",
+        "stop",
+        "gdm.service"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    "host_requested_finish": true,
+    "kernel": "7.1.8-toddy",
+    "memory_snapshot": "MemTotal:        4016388 kB\nMemFree:         2803188 kB\nMemAvailable:    3460020 kB\nBuffers:           31852 kB\nCached:           690136 kB\nSwapCached:            0 kB\nActive:           170060 kB\nInactive:         931180 kB\nActive(anon):        760 kB\nInactive(anon):   402492 kB\nActive(file):     169300 kB\nInactive(file):   528688 kB\nUnevictable:       16792 kB\nMlocked:             272 kB\nSwapTotal:       8388604 kB\nSwapFree:        8388604 kB\nDirty:               100 kB\nWriteback:             0 kB\nAnonPages:        395920 kB\nMapped:           258464 kB\nShmem:             24136 kB\nKReclaimable:      20084 kB\nSlab:              52200 kB\nSReclaimable:      20084 kB\nSUnreclaim:        32116 kB\nKernelStack:        6464 kB\nPageTables:        11356 kB\nSecPageTables:         0 kB\nNFS_Unstable:          0 kB\nBounce:                0 kB\nWritebackTmp:          0 kB\nCommitLimit:    10396796 kB\nCommitted_AS:    2794468 kB\nVmallocTotal:   34359738367 kB\nVmallocUsed:       14348 kB\nVmallocChunk:          0 kB\nPercpu:             1904 kB\nBalloon:               0 kB\nGPUActive:             0 kB\nGPUReclaim:            0 kB\nHugePages_Total:       0\nHugePages_Free:        0\nHugePages_Rsvd:        0\nHugePages_Surp:        0\nHugepagesize:       2048 kB\nHugetlb:               0 kB\nDirectMap4k:       71524 kB\nDirectMap2M:     4122624 kB\nDirectMap1G:     2097152 kB\n",
+    "observed_volumes": [
+      "Volume: 0.40",
+      "Volume: 0.40 [MUTED]"
+    ],
+    "owner_session": {
+      "properties": {
+        "Class": "user",
+        "Name": "toddy-preview",
+        "Seat": "seat0",
+        "State": "active",
+        "Type": "wayland"
+      },
+      "session_id": "2"
+    },
+    "pulse_info": {
+      "args": [
+        "pactl",
+        "info"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "Server String: /run/user/12402/pulse/native\nLibrary Protocol Version: 35\nServer Protocol Version: 35\nIs Local: yes\nClient Index: 60\nTile Size: 65472\nUser Name: toddy-preview\nHost Name: toddy\nServer Name: PulseAudio (on PipeWire 1.6.8)\nServer Version: 15.0.0\nDefault Sample Specification: float32le 2ch 48000Hz\nDefault Channel Map: front-left,front-right\nDefault Sink: alsa_output.pci-0000_00_06.0.analog-stereo\nDefault Source: alsa_input.pci-0000_00_06.0.analog-stereo\nCookie: e824:7e68\n"
+    },
+    "schema_sha256": "a352c74e50964dca946948f2e80e9345a175615c938c65295f1bb44623133e1b",
+    "schema_unchanged": true,
+    "scope": "Actual native navy/Terminal/session audio/controls and absent-agent desktop in disposable VM. Virtual audio capture separately required; no physical/whole B02 acceptance.",
+    "session_audio_units": {
+      "args": [
+        "systemctl",
+        "--user",
+        "is-active",
+        "pipewire.service",
+        "pipewire-pulse.service",
+        "wireplumber.service"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "active\nactive\nactive\n"
+    },
+    "settings": {
+      "background": "#081b33",
+      "scheme": "prefer-dark",
+      "system_font": true,
+      "terminal_background": "#081b33",
+      "terminal_foreground": "#f4f7fb"
+    },
+    "sinks": {
+      "args": [
+        "pactl",
+        "list",
+        "short",
+        "sinks"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": "52\talsa_output.pci-0000_00_06.0.analog-stereo\tPipeWire\ts16le 2ch 48000Hz\tSUSPENDED\n"
+    },
+    "terminal_file": {
+      "bytes": 9,
+      "sha256": "050a660c81ff24a432173e5e9ddbb89c3e6dec4c22ebac454d8b650b570fa919"
+    },
+    "tone_playback": {
+      "args": [
+        "paplay",
+        "/home/toddy-preview/audio-proof.wav"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "stdout": ""
+    },
+    "ui_phase_annotations": [
+      "navy-verified",
+      "terminal-verified",
+      "audio-verified"
+    ]
+  },
+  "virtual_audio_capture": {
+    "frames": 7632005,
+    "rate": 44100,
+    "peak": 6258,
+    "nonzero_samples": 176424,
+    "sha256": "994e8248ff2c2e534c35bc028a2d6b1aa028caa55dc52377a3904fffbaace557",
+    "scope": "QEMU WAV backend from actual virtual HDA output; no physical speaker/microphone proof"
+  },
+  "measurement_limits": "4CPU/4GiB software-rendered disposable native boot. Timing includes acceptance probe; memory is a post-interaction snapshot with Terminal/Settings, not a clean idle budget result.",
+  "remaining_visual_issue": "Settings remained light despite prefer-dark GSettings default. Actual GNOME Settings portal backend not yet installed/qualified; investigate that selected dependency before accepting integrated dark/light behavior.",
+  "scanouts": [
+    {
+      "path": "B02-desktop-native-navy-overview.png",
+      "sha256": "7ae6c214dd6765b6f179a9ab528d1d579086f7d19edf809c2a237f11605d1dbc"
+    },
+    {
+      "path": "B02-desktop-native-terminal-opened.png",
+      "sha256": "cbfc621693d78360f3939016317bba701a554db7d74f5d563b50fd4b02b90506"
+    },
+    {
+      "path": "B02-desktop-native-terminal-utf8.png",
+      "sha256": "23fef24b4f88b6064c36f81b8314ccb705b7475f98d6cca2372413128ffb641b"
+    },
+    {
+      "path": "B02-desktop-native-terminal-narrow.png",
+      "sha256": "afdc0c1e8d28d7abd09ac2e0dc18e5c2f7fc0904f7dd26eca589c0f5eedfa2f2"
+    },
+    {
+      "path": "B02-desktop-native-audio-devices.png",
+      "sha256": "617f26560d9207352b51cfbe4706fd754a9acd242dd25d4bd6fe8da07768dd7e"
+    },
+    {
+      "path": "B02-desktop-native-audio-muted.png",
+      "sha256": "62c4b2db81adca9e2547e97b066ae32e71029d90817a709bf221dbf796cf37e8"
+    },
+    {
+      "path": "B02-desktop-native-audio-unmuted.png",
+      "sha256": "fd7f2c8f89d34b0dcd57874303a8e7e8078fc415dd8520be30af43bf7bad863c"
+    },
+    {
+      "path": "B02-desktop-native-audio-test-dialog.png",
+      "sha256": "4b429ad88ef1de676ab3be952b7e4eb44b66120b0c0adf6e33e9e5380b1f6f7d"
+    }
+  ]
+}

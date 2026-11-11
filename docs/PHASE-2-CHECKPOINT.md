@@ -6,14 +6,17 @@ Physical foundation tests unperformed. No Phase2 ISO. Preserve G1 master/evidenc
 
 ## Current slice: native default-boot/browser interaction validation
 
-Builder RUNNING boot58b0ca2e-3010-4b74-a7a9-87b1acaa5802. Native browser
-runtime1 TERMINAL QEMU0, backing unchanged. Controller82463 exit1 retained because
-collector classified rewritten child argv incorrectly. [Readonly reconciliation](evidence/B02-browser-native.json)
-passes actual default graphical boot/normal GDM owner, all8UI phases, restart,
-HTTP Stop/offline and5Web Content UID12402/NNP1/seccomp2/caps0. No native replay.
-Builder/caches actually restored with browser1-* receipts, all exit0; six volumes,
-Glycin/kernel, generation4RAMcache, original browser6aliases/archive and security
-source4aliases. No guest writer remains. Source/cache data retained unchanged.
+Native desktop integration runtime1 TERMINAL, QEMU0/report true/WAV capture
+verified, source backing unchanged. Normal GDM owner/navy/Terminal UTF8+echo/tiled
+view/automatic PipeWire+Pulse+WirePlumber/HDA/paplay/mute pass. Evidence
+[evidence/B02-desktop-native-integration.json](evidence/B02-desktop-native-integration.json).
+No physical audio claim. Settings light despite prefer-dark; actual dpkg confirms
+xdg-desktop-portal and GNOME backend absent. Missing selected dependency is next.
+Builder RUNNING boot0c29ac3a-aa02-49fb-af6c-0df420c43012. All desktop1 cache
+restores COMPLETE0: six volumes/Glycin/kernel, generation4RAMcache, original browser
+6aliases/archive and security4aliases. Last host restore session4747 exit0;
+`.local/phase2/desktop1-browser-cache-restore.log`. No guest writer remains.
+Never replay any desktop1-* receipt or reinstall accepted packages.
 
 **Browser installed:** Firefox153.7.0esr-1+toddy1/amd64,815owned payload entries,
 archiveSHAba566c57d612640cc0342f374f64f7853bacdab6d0af6c1e38b37bdd085233b0.
@@ -44,18 +47,22 @@ actual power-on GNOME is still unproven. Do not replay successful migration.
 
 ## Exact next action
 
-Defaults verify2 recipe/post0/0 passed; original install0/post1 retained, no
-reinstall. Only generated APT cache changed in verification; owned bytes unchanged.
-Actual UID101/NNP navy/defaults, writable custom override persisted new bus/reset0.
-Audio policy install/post0/0,6owned standard user enablement links, exact upstream
-unit/hardening bytes unchanged. Native visual/virtual sound still pending.
-Next commit reviewed native desktop integration controller/probe and run ONCE
-`python3 scripts/host/phase2_native_desktop_integration.py` with log
-`.local/phase2/native-desktop-integration-controller-1.log`; context
-`.local/phase2/native-desktop-integration-runtime-1` MUST be absent before first
-dispatch. Fresh disposable overlay, ordinary GDM/PAM owner; virtual HDA/WAV output,
-actual user services/sink/playback/mute/unmute and native Terminal command/text/
-colors/narrow window. No browser replay. Keep one guest writer.
+Next slice: qualify missing selected portal integration against frozen BLFS13.1:
+xdg-desktop-portal1.22.1, Fuse3.18.2, GNOME backend50.0 and its runtime GTK backend
+1.15.3. Existing GNOME backend50.0 archive is already authenticated in source lock;
+reuse it. Other three source archives absent; derive exact URLs/MD5 from frozen
+`.local/books/x/xdg-desktop-portal.html`, `postlfs/fuse.html` and
+`x/xdg-desktop-portal-gtk.html`, acquire official bytes, pin SHA256 before extraction.
+Actual both /boot/config-7.1.8-toddy{,-foundation} show CONFIG_FUSE_FS unset. A
+narrow versioned desktop kernel capability update is therefore required before
+actual document-portal/FUSE acceptance; preserve accepted foundation/old boot
+recovery, reuse restored kernel COW/source/compiler cache, do not rebuild foundation.
+Do not disable Bubblewrap/document confinement or force GTK_THEME to hide missing
+portal behavior. Keep FUSE owner/allow_other/privilege checks; CUSE is optional test
+coverage, not an automatic kernel expansion. No new archive/build/kernel write
+dispatched yet. Source inspection and exact native denial/boot checks next.
+Native browser and desktop integration tests are terminal/accepted at their
+scoped evidence; do not replay them wholesale. B02 still in_progress.
 
 Test selection: changed input/syntax plus make check381, readonly native report
 reconciliation and real QMP scanouts. No foundation suite repeated.
@@ -92,7 +99,7 @@ host/16GiBtarget/128MiB scratch and inode reserves. Full failure ledger remains
 ## Still due before B02 stop
 
 RestoredNM reboot
-persistence; audio playback/controls; navy/default style and Terminal rendering;
+persistence; portal dark/light integration;
 Editor refusal/recovery/reboot; affected device/refusal checks; absent-agent use,
 minimal manifest/optional-catalog status, boot/idle measurements and recovery boot.
 B02 is NOT complete. No further B story before requested stop after all B02.

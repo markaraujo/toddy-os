@@ -4042,3 +4042,19 @@ six standard enablement links for existing PipeWire/Pulse/WirePlumber units;
 exact unit/hardening bytes unchanged. Actual live sound/rendering remain pending.
 The next disposable native pass targets these changed behaviors, not the already
 accepted browser flow. Production branding lifecycle is still B11 work.
+
+### Actual native navy/Terminal/virtual audio integration — 2026-11-11
+
+[Native integration](evidence/B02-desktop-native-integration.json) passed
+normal GDM/PAM Wayland owner, native launcher/navy background and Terminal prompt,
+actual echo-to-file/UTF8 Portuguese output and640px tiled view. Automatic session
+PipeWire/Pulse/WirePlumber units active; virtual HDA detected, actual paplay0,
+Settings device/mute/unmute states observed independently with wpctl. QEMU WAV
+has176424nonzero samples/peak6258, SHA retained; no physical audio claim. Source
+backing unchanged, actual QEMU0 and selected native report true, no replay.
+Observed boot4.570s/graphical3.444s userspace on4CPU/4GiB; memory snapshot is after
+interaction, not clean idle. Settings remains light despite prefer-dark. Readonly
+installed dpkg inspection confirms selected xdg-desktop-portal and GNOME backend
+absent; qualify that missing integration before accepting dark/light behavior.
+B02 remains incomplete; persistence/refusal/recovery/minimal manifest/idle and
+remaining selected desktop closure still required before the owner stop boundary.
