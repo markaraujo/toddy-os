@@ -1,0 +1,18 @@
+[Unit]
+Description=Toddy disposable default graphical boot acceptance probe
+ConditionPathExists=!/etc/initrd-release
+After=local-fs.target
+OnSuccess=poweroff.target
+OnFailure=poweroff.target
+
+[Service]
+# Let multi-user/graphical targets finish while the probe observes real GDM boot.
+# A oneshot wanted by multi-user would keep that target waiting for the GUI test.
+Type=exec
+Environment=PATH=/usr/bin:/usr/sbin LC_ALL=C.UTF-8 PYTHONDONTWRITEBYTECODE=1
+LoadCredential=toddy.boot-probe
+ExecStart=/usr/bin/python3 %d/toddy.boot-probe
+TimeoutStartSec=60
+RuntimeMaxSec=900
+StandardOutput=journal+console
+StandardError=journal+console

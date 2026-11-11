@@ -136,8 +136,21 @@ and actual153.7 mach_commands.py/installer packager.mk confirm DESTDIR support.
 Do not execute either script while compiler owns guest lock. On terminal finish
 compiler evidence, then source archive storage/native restore checks, isolated
 staging and directly affected package/ABI checks. Consolidate evidence/publication.
-Read-only lookahead also found default.target still multi-user, no display-manager
-alias; default native graphical boot remains an explicit B02 integration task.
+Read-only lookahead found default.target still multi-user, no display-manager
+alias. Prepared desktop-graphical-boot.sh/check.sh uses owned native Systemd
+--root enable GDM/set-default graphical only for exact unowned foundation link
+and absent manager; full run_step transaction/native boot still due. Existing
+ownership audit explicitly accepts native generated links to owned units. No
+PAM/unit/security/user-profile change, no autologin or host installation. Native
+default graphical power-on remains unproven until actual guest boot. Dedicated
+desktop-boot-probe.service uses Type=exec/RuntimeMaxSec900: Systemd261.2
+systemd.target.xml documents automatic After for target Wants/Requires; existing
+oneshot probe wanted by multi-user delays that target and would block normal
+GDM startup during observation. Keep original foundation probe unchanged.
+Local browser consumer pages at tests/fixtures/browser-smoke (loopback HTTP,
+normal owner, focus/input/navigation/stored-value test). They are test data, not
+native UI proof. Close/reopen process identity is separately required for restart
+persistence. No external assets/accounts or sandbox disabling.
 Actual kernel CONFIG_SND_HDA_INTEL=m exists; audio runtime unproven.
 
 Exact next action: inspect observer's actual identity/latest/terminal and root

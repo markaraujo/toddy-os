@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Toddy Browser: second page</title>
+<style>
+:root { color-scheme: light dark; font: 18px/1.5 system-ui, sans-serif; }
+body { max-width: 38rem; margin: 2rem auto; padding: 0 1rem; overflow-wrap: anywhere; }
+:focus-visible { outline: 3px solid #3c8ddd; outline-offset: 3px; }
+</style>
+<main>
+<h1>Segunda página local</h1>
+<p id="stored">Nenhuma confirmação salva neste perfil.</p>
+<p><a href="index.html">Voltar à página inicial</a></p>
+<p>Para comprovar persistência após fechar o navegador, o teste também precisa
+registrar o encerramento do processo e uma nova abertura com o mesmo perfil.</p>
+</main>
+<script>
+'use strict';
+try {
+  if (localStorage.getItem('toddy-browser-smoke') === 'Toddy OK') {
+    document.querySelector('#stored').textContent = 'Confirmação salva: Toddy OK';
+    document.title = 'Toddy Browser: stored value verified';
+  }
+} catch (error) {
+  document.querySelector('#stored').textContent = `Armazenamento indisponível: ${error.name}`;
+  document.title = 'Toddy Browser: storage failed';
+}
+</script>
+</html>

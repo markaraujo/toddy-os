@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Toddy Browser: local page</title>
+<style>
+:root { color-scheme: light dark; font: 18px/1.5 system-ui, sans-serif; }
+body { max-width: 38rem; margin: 2rem auto; padding: 0 1rem; }
+h1 { line-height: 1.2; }
+input, button { font: inherit; padding: .5rem; box-sizing: border-box; max-width: 100%; }
+input { width: 100%; } button { margin-top: .8rem; }
+:focus-visible { outline: 3px solid #3c8ddd; outline-offset: 3px; }
+output { display: block; margin-top: 1rem; overflow-wrap: anywhere; }
+</style>
+<main>
+<h1>Navegador do Toddy OS</h1>
+<p>Esta página local verifica navegação, foco, entrada de texto e persistência.
+Não usa recursos externos. Ação, café e português devem aparecer legíveis.</p>
+<form id="test-form">
+<label for="phrase">Digite <strong>Toddy OK</strong> e confirme:</label>
+<input id="phrase" name="phrase" autocomplete="off" required>
+<button type="submit">Confirmar</button>
+</form>
+<output id="result" aria-live="polite">Aguardando entrada.</output>
+<p><a href="second.html">Abrir a segunda página</a></p>
+</main>
+<script>
+'use strict';
+const phrase = document.querySelector('#phrase');
+const result = document.querySelector('#result');
+document.querySelector('#test-form').addEventListener('submit', event => {
+  event.preventDefault();
+  if (phrase.value !== 'Toddy OK') {
+    result.textContent = 'Confira o texto digitado.';
+    return;
+  }
+  try {
+    localStorage.setItem('toddy-browser-smoke', phrase.value);
+    result.textContent = 'Entrada confirmada e salva neste perfil.';
+    document.title = 'Toddy Browser: input verified';
+  } catch (error) {
+    result.textContent = `Não foi possível salvar: ${error.name}`;
+    document.title = 'Toddy Browser: storage failed';
+  }
+});
+</script>
+</html>
