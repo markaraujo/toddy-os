@@ -1,10 +1,10 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-11T14:23:15.969370+00:00
+Updated: 2026-11-11T14:47:01.279729+00:00
 
 Bootstrap: ready_for_development
 
-B01/B03 accepted (13% weighted Phase2). B02 native applications/network/audio/navy evidence retained; actual installed FUSE kernel/helper/security/recovery and portal dark-light/filechooser/cancel/Close now verified. Remaining reboot/editor/network persistence, recovery-entry, idle/resource and manifest/catalog gates pending. Complete all B02 then stop; no Phase2 ISO/G2 or physical acceptance.
+B01/B03 accepted13%; B02 actual native desktop/FUSE/portal/offline Editor refusal/crash recovery/idle/coldboot persistence/NM/recovery-entry evidence passed. Required Git2.55.0 missing from actual inventory; implement before final runtime manifest/catalog/B02 acceptance. Finish B02 then stop; no Phase2 ISO/G2 or physical acceptance.
 
 Foundation: **100%** · Agentic desktop: **13%**
 
@@ -16,7 +16,7 @@ No milestone earns credit without completed acceptance evidence.
 
 The 13% phase total counts completed stories only. B02 is still in progress; its 10 points are not yet counted. Passing this story would raise the phase total to 23%.
 
-Last verified: 2026-11-11T14:23:15.969370+00:00
+Last verified: 2026-11-11T14:47:01.279729+00:00
 
 Verified:
 
@@ -30,16 +30,17 @@ Verified:
 - Unmodified upstream hello/signals consumers compiled against installed libfuse3.so.4, no RPATH/SUID. Portal base1.22.1 and GNOME50.0/GTK1.15.3 backends now compiled/staged and owned-installed with recipe/post0/0. Base image/sound Bubblewrap validation enabled; GTK Settings/AppChooser/Lockdown enabled. Native desktop integration pending.
 - GTK4.22.4-1+toddy14 owned schema/legal-only update recipe/post0/0; all runtime bytes preserved,132schemas/1113keys preserved and2portal schemas/1key added. Actual installed Gio default-source134schemas/1114keys checked; no user values changed.
 - Combined native context3 passed: actual installed kernel config, normal GDM/PAM owner, real FUSE owner/helper mounts/other-UID denial/default allow_other refusal/unmount/SIGTERM8 cleanup/upstream signals0; portal dark-light-dark1/0/1 and real chooser allow0/cancel1/Close0+object removal. Context1/2 fixture failures preserved, passed helper results reused. Real scanouts retained.
+- Native offline Editor refused protected save after polkit cancellation; original unchanged. Actual29B autosaved draft before sole-process SIGKILL, Document Restored/SaveAs exact29B SHA verified; idle15second sample without agent/inference. Later distinct coldboot preserves file/user teal+dark and restored NM DHCP+DNS. Owned GRUB recovery selected by actual keyboard; running original foundation config/data/network verified. Earlier fixture/collector failures retained and corrected without OS rebuild/replay.
 
-Running: Builder and native test3 stopped cleanly; no guest writer. Next remaining persistence/recovery/idle pass in a new readonly-base overlay over retained native3 state, then runtime manifest/catalog and B02 criteria audit. Complete all B02 then stop.
+Running: All native jobs stopped; builder remains stopped. Next install required pinned Git2.55.0 (missing in actual359package inventory), then minimal runtime manifest/optional app status and final B02 audit. No new Git job dispatched yet. Finish all B02 then stop.
 
 Remaining:
 
-- Finish restored NetworkManager and file/editor persistence across reboot, affected refusal/recovery and recovery-entry boot.
-- Publish exact minimal runtime manifest/optional catalog availability and reference desktop idle/resource measurements; separate build target from deliverable roots.
-- Complete applicable S01-B/S02/S03 desktop scope, including absent-agent/offline operation. Physical hardware, Phase2 ISO and G2 remain unaccepted.
+- Build/own/qualify pinned Git2.55.0 in the offline base; actual native inventory currently lacks Git despite selected plan root.
+- Publish exact minimal runtime manifest and optional catalog availability, bind real idle/resource measurements to reference guest.
+- Audit all B02 desktop S01-B/S02/S03 criteria and evidence. Physical hardware, Phase2 ISO and G2 remain unaccepted.
 
-[Acceptance evidence](docs/evidence/B02-fuse-portal-native.json)
+[Acceptance evidence](docs/evidence/B02-editor-persistence-native.json)
 
 | Story | Phase | Weight | Status |
 | --- | --- | ---: | --- |

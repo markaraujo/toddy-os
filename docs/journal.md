@@ -4159,3 +4159,16 @@ retained. [Evidence](evidence/B02-fuse-portal-native.json). No broad portal/phys
 whole B02 acceptance; remaining persistence/recovery/resources/manifest gates due.
 Builder/native stopped; next use a fresh readonly-base overlay over native3 persisted
 fixture state, never replay native3 or restart compilers.
+
+### Offline Editor, persistence and recovery entry — 2026-11-11
+
+Actual polkit cancellation/Permission denied preserved protected file. Actual draft
+29B (implicit trailing newline) verified before sole-user Editor SIGKILL; native
+Document Restored and SaveAs exact bytes passed. Offline15second idle sample with
+no agent/inference recorded. Later distinct coldboot preserved file/custom teal+dark
+and restored NetworkManager DHCP/DNS. Actual owned GRUB foundation recovery selected
+through keyboard; running original config, persisted data and network passed. Wrong
+collector literal Booting line reconciled read-only; no boot replay. Real scanouts
+and [evidence](evidence/B02-editor-persistence-native.json) retained. Actual359package
+inventory revealed required Git2.55.0 still absent; implement before B02 acceptance.
+No physical/Phase2 ISO/G2 acceptance; stop boundary after all B02 remains.

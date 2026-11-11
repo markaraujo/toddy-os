@@ -1,0 +1,402 @@
+{
+  "scope": "Actual native offline Editor permission/auth cancellation, original draft byte contract, sole-process crash/recovery/save, idle reference sample, subsequent cold-boot data/preference/NM persistence and owned GRUB foundation recovery. No physical, all-provider, ISO or whole B02/G2 acceptance.",
+  "reports": {
+    "offline_editor": {
+      "native_report_sha256": "bb9094c5449fce271400fd78cfc65cefe93d0a7ea365bfaee854701a48e43af9",
+      "dedicated_evidence_sha256": "85d2a090616084dfef4d4254588b16290f0bb3c47ab26d4d0c636d6a5b5daeec",
+      "backing_unchanged": true,
+      "result": {
+        "active_agent_or_inference": [],
+        "agent_package_absent": {
+          "args": [
+            "dpkg-query",
+            "-W",
+            "toddy-agent"
+          ],
+          "exit": 1,
+          "stderr": "dpkg-query: no packages found matching toddy-agent\n",
+          "stdout": ""
+        },
+        "all_selected_exits_zero": true,
+        "boot_id": "1df8c1dc-8613-46dc-ac71-a8cc419674f6",
+        "draft_before_crash": {
+          "bytes": 29,
+          "fixture_content_hex": "546f64647920656469746f72207265636f766572792070726f6f660a0a",
+          "implicit_newline": "Source50.1 GtkSourceBuffer implicit trailing newline enabled; exact observed content retained.",
+          "path": ".local/share/org.gnome.TextEditor/drafts/ba977b83-ce28-4856-9a9d-e4f5023a2084",
+          "sha256": "f556fab26c57c36049693aa37559b1eeede5a83b2fd84b3f675ce8156e187666"
+        },
+        "fixture_user_preference": "accent-color teal (differs from base blue); verify next boot",
+        "gdm_stop": {
+          "args": [
+            "systemctl",
+            "stop",
+            "gdm.service"
+          ],
+          "exit": 0,
+          "stderr": "",
+          "stdout": ""
+        },
+        "idle": {
+          "boot_time": {
+            "args": [
+              "systemd-analyze",
+              "time"
+            ],
+            "exit": 0,
+            "stderr": "",
+            "stdout": "Startup finished in 1.068s (kernel) + 3.389s (userspace) = 4.457s \ngraphical.target reached after 3.385s in userspace.\n"
+          },
+          "cpu_nonidle_percent": 0.033344448149386086,
+          "samples": [
+            {
+              "loadavg": "0.05 0.08 0.03 1/431 1436",
+              "memory_kib": {
+                "MemAvailable": 3598740,
+                "MemTotal": 4016388,
+                "SwapFree": 8388604,
+                "SwapTotal": 8388604
+              },
+              "monotonic": 151.024383758
+            },
+            {
+              "loadavg": "0.05 0.07 0.03 1/431 1437",
+              "memory_kib": {
+                "MemAvailable": 3598316,
+                "MemTotal": 4016388,
+                "SwapFree": 8388604,
+                "SwapTotal": 8388604
+              },
+              "monotonic": 156.024687073
+            },
+            {
+              "loadavg": "0.05 0.07 0.03 1/430 1437",
+              "memory_kib": {
+                "MemAvailable": 3598316,
+                "MemTotal": 4016388,
+                "SwapFree": 8388604,
+                "SwapTotal": 8388604
+              },
+              "monotonic": 161.025111108
+            }
+          ],
+          "scope": "15-second idle sample in virtual4CPU/4GiB normal owner session with Editor closed, networking offline and no agent/inference. Build target still contains sources; not final ISO size or physical benchmark."
+        },
+        "initial_draft_inventory": [
+          {
+            "bytes": 29,
+            "fixture_content_hex": "546f64647920656469746f72207265636f766572792070726f6f660a0a",
+            "path": ".local/share/org.gnome.TextEditor/drafts/ba977b83-ce28-4856-9a9d-e4f5023a2084",
+            "sha256": "f556fab26c57c36049693aa37559b1eeede5a83b2fd84b3f675ce8156e187666"
+          }
+        ],
+        "intentional_fixture_crash": {
+          "pid": 1246,
+          "process_exit_observed": true,
+          "signal": 9
+        },
+        "kernel": "7.1.8-toddy",
+        "nm_before_offline": {
+          "args": [
+            "nmcli",
+            "general",
+            "status"
+          ],
+          "exit": 0,
+          "stderr": "",
+          "stdout": "STATE         CONNECTIVITY  WIFI-HW  WIFI     WWAN-HW  WWAN     METERED \ndisconnected  unknown       missing  enabled  missing  enabled  unknown \n"
+        },
+        "offline_https": {
+          "args": [
+            "curl",
+            "--fail",
+            "--silent",
+            "--show-error",
+            "--connect-timeout",
+            "3",
+            "--max-time",
+            "5",
+            "--output",
+            "/dev/null",
+            "https://example.com/"
+          ],
+          "exit": 6,
+          "stderr": "curl: (6) Could not resolve host: example.com\n",
+          "stdout": ""
+        },
+        "offline_started": true,
+        "owner_session": {
+          "properties": {
+            "Class": "user",
+            "Name": "toddy-preview",
+            "Seat": "seat0",
+            "State": "active",
+            "Type": "wayland"
+          },
+          "session_id": "2"
+        },
+        "persistence_marker_sha256": "15ad535a770249eb1ffc2a411d9fb717131fe12e62698c542d42bc63a285af31",
+        "previous_native_session_persisted": {
+          "args": [
+            "gsettings",
+            "get",
+            "org.gnome.desktop.interface",
+            "color-scheme"
+          ],
+          "exit": 0,
+          "stderr": "",
+          "stdout": "'prefer-dark'\n"
+        },
+        "protected_file_unchanged": true,
+        "recovered_saved_file_sha256": "f556fab26c57c36049693aa37559b1eeede5a83b2fd84b3f675ce8156e187666",
+        "restored_routes": [
+          {
+            "dev": "enp0s4",
+            "dst": "default",
+            "flags": [],
+            "gateway": "10.0.2.2",
+            "metric": 100,
+            "prefsrc": "10.0.2.15",
+            "protocol": "dhcp"
+          }
+        ],
+        "reused_refusal_evidence": "native-desktop-persist-runtime-1 actual native polkit cancellation/Permission denied and unchanged protected file",
+        "saved_fixture_content_hex": "546f64647920656469746f72207265636f766572792070726f6f660a0a",
+        "schema_sha256": "5bc2947ffc5874cc735c33c2611bd6aa960061d7e6c992519efe984ea52d89e1",
+        "schema_unchanged": true,
+        "scope": "Native existing-owner reboot persistence, offline Editor refusal/crash draft recovery/save and idle reference measurements. Fixture account only, no hardware/whole B02 acceptance.",
+        "ui_phase_annotations": [
+          "editor-refusal",
+          "editor-crash",
+          "editor-recovered",
+          "editor-idle"
+        ]
+      }
+    },
+    "cold_boot": {
+      "native_report_sha256": "589dd8b73335830d3052db53f762f87c37533020311bb8b0c3c906a383bd7f88",
+      "dedicated_evidence_sha256": "aa2350716496492f4480cd48cf8db72d1358bccdd0932c04b1ffa29ec863e76d",
+      "backing_unchanged": true,
+      "result": {
+        "agent_package_absent": {
+          "args": [
+            "dpkg-query",
+            "-W",
+            "toddy-agent"
+          ],
+          "exit": 1,
+          "stderr": "dpkg-query: no packages found matching toddy-agent\n",
+          "stdout": ""
+        },
+        "all_selected_exits_zero": true,
+        "current_boot_id": "53fe0b92-59ff-46c2-82af-bd26c63a0791",
+        "distinct_actual_boots": true,
+        "fresh_network_dhcp": {
+          "args": [
+            "nmcli",
+            "-g",
+            "IP4.ADDRESS,IP4.GATEWAY,IP4.DNS",
+            "device",
+            "show"
+          ],
+          "exit": 0,
+          "stderr": "",
+          "stdout": "10.0.2.15/24\n10.0.2.2\n10.0.2.3\n\n127.0.0.1/8\n\n\n"
+        },
+        "fresh_network_dns": {
+          "args": [
+            "getent",
+            "ahostsv4",
+            "example.com"
+          ],
+          "exit": 0,
+          "stderr": "",
+          "stdout": "104.20.23.154   STREAM example.com\n104.20.23.154   DGRAM  \n104.20.23.154   RAW    \n172.66.147.243  STREAM \n172.66.147.243  DGRAM  \n172.66.147.243  RAW    \n"
+        },
+        "gdm_stop": {
+          "args": [
+            "systemctl",
+            "stop",
+            "gdm.service"
+          ],
+          "exit": 0,
+          "stderr": "",
+          "stdout": ""
+        },
+        "persisted_user_preferences": {
+          "accent-color": "'teal'",
+          "color-scheme": "'prefer-dark'"
+        },
+        "previous_boot_id": "1df8c1dc-8613-46dc-ac71-a8cc419674f6",
+        "restored_manager_after_reboot": {
+          "active": {
+            "args": [
+              "systemctl",
+              "is-active",
+              "NetworkManager.service"
+            ],
+            "exit": 0,
+            "stderr": "",
+            "stdout": "active\n"
+          },
+          "networkd": {
+            "args": [
+              "systemctl",
+              "is-active",
+              "systemd-networkd.service"
+            ],
+            "exit": 3,
+            "stderr": "",
+            "stdout": "inactive\n"
+          },
+          "routes": [
+            {
+              "dev": "enp0s4",
+              "dst": "default",
+              "flags": [],
+              "gateway": "10.0.2.2",
+              "metric": 100,
+              "prefsrc": "10.0.2.15",
+              "protocol": "dhcp"
+            }
+          ]
+        },
+        "running_config_sha256": "952e7d9d6e5c8e523ebf128c220481bc29280424e0686e4b0903b518234bf77b",
+        "saved_file": {
+          "bytes": 29,
+          "fixture_content_hex": "546f64647920656469746f72207265636f766572792070726f6f660a0a",
+          "protected_original_unchanged": true,
+          "sha256": "f556fab26c57c36049693aa37559b1eeede5a83b2fd84b3f675ce8156e187666"
+        },
+        "scope": "Actual later native cold boot of preserved Editor save/user preference/restored NetworkManager data. Existing normal GDM/offline Editor refusal/crash/recovery GUI proof reused; private real D-Bus for persisted dconf reads is not a new graphical login test. No physical/whole B02 acceptance."
+      }
+    },
+    "recovery_entry": {
+      "native_report_sha256": "97a73ea0a83c350554b1ae5c306949d8e422bbc601e63951ab148efe5733c717",
+      "dedicated_evidence_sha256": "139f7a57cd6795ce46ab6918c26326b3b6d7d616d1a08fdfd65e63ad8d25e638",
+      "backing_unchanged": true,
+      "result": {
+        "agent_package_absent": {
+          "args": [
+            "dpkg-query",
+            "-W",
+            "toddy-agent"
+          ],
+          "exit": 1,
+          "stderr": "dpkg-query: no packages found matching toddy-agent\n",
+          "stdout": ""
+        },
+        "all_selected_exits_zero": true,
+        "current_boot_id": "82c28a83-8737-40b5-909a-091da2ba8acf",
+        "distinct_actual_boots": true,
+        "foundation_recovery_kernel": true,
+        "fresh_network_dhcp": {
+          "args": [
+            "nmcli",
+            "-g",
+            "IP4.ADDRESS,IP4.GATEWAY,IP4.DNS",
+            "device",
+            "show"
+          ],
+          "exit": 0,
+          "stderr": "",
+          "stdout": "10.0.2.15/24\n10.0.2.2\n10.0.2.3\n\n127.0.0.1/8\n\n\n"
+        },
+        "fresh_network_dns": {
+          "args": [
+            "getent",
+            "ahostsv4",
+            "example.com"
+          ],
+          "exit": 0,
+          "stderr": "",
+          "stdout": "104.20.23.154   STREAM example.com\n104.20.23.154   DGRAM  \n104.20.23.154   RAW    \n172.66.147.243  STREAM \n172.66.147.243  DGRAM  \n172.66.147.243  RAW    \n"
+        },
+        "gdm_stop": {
+          "args": [
+            "systemctl",
+            "stop",
+            "gdm.service"
+          ],
+          "exit": 0,
+          "stderr": "",
+          "stdout": ""
+        },
+        "persisted_user_preferences": {
+          "accent-color": "'teal'",
+          "color-scheme": "'prefer-dark'"
+        },
+        "previous_boot_id": "1df8c1dc-8613-46dc-ac71-a8cc419674f6",
+        "restored_manager_after_reboot": {
+          "active": {
+            "args": [
+              "systemctl",
+              "is-active",
+              "NetworkManager.service"
+            ],
+            "exit": 0,
+            "stderr": "",
+            "stdout": "active\n"
+          },
+          "networkd": {
+            "args": [
+              "systemctl",
+              "is-active",
+              "systemd-networkd.service"
+            ],
+            "exit": 3,
+            "stderr": "",
+            "stdout": "inactive\n"
+          },
+          "routes": [
+            {
+              "dev": "enp0s4",
+              "dst": "default",
+              "flags": [],
+              "gateway": "10.0.2.2",
+              "metric": 100,
+              "prefsrc": "10.0.2.15",
+              "protocol": "dhcp"
+            }
+          ]
+        },
+        "running_config_sha256": "3ad1bf1ce1e1a844ac35a5c0c9769536bff6e30d9ae75dd20ee2341a9f544e0e",
+        "saved_file": {
+          "bytes": 29,
+          "fixture_content_hex": "546f64647920656469746f72207265636f766572792070726f6f660a0a",
+          "protected_original_unchanged": true,
+          "sha256": "f556fab26c57c36049693aa37559b1eeede5a83b2fd84b3f675ce8156e187666"
+        },
+        "scope": "Actual owned GRUB foundation recovery entry boot, preserved Editor/user data and restored network. Existing normal GDM/offline Editor refusal/crash/recovery GUI proof reused; private real D-Bus for persisted dconf reads is not a new graphical login test. No physical/whole B02 acceptance."
+      }
+    }
+  },
+  "scanouts": {
+    "permission-denied": {
+      "image": "B02-editor-permission-denied.png",
+      "original_native_scanout_sha256": "c29a3575c6c1a3c2a6343b01b90dd19ee17d385e029a1c20af78cb20244b68dd",
+      "png_sha256": "b87c882281f06d0f8bbfc7b0147eefa2ddc0cb4ca123370c2c3eddebb9ae40b6",
+      "conversion": "Lossless format conversion of actual native QMP framebuffer only."
+    },
+    "restored-draft": {
+      "image": "B02-editor-restored-draft.png",
+      "original_native_scanout_sha256": "aeca5bc58db8b62d87e6325c5b2497f7dcdf028cd185e5aa3c29fc17dbd79681",
+      "png_sha256": "b192cd8b79261f860fb067135b6a6449fe3dc8761f86047f6a5832affc35ddf9",
+      "conversion": "Lossless format conversion of actual native QMP framebuffer only."
+    },
+    "recovered-save": {
+      "image": "B02-editor-recovered-save.png",
+      "original_native_scanout_sha256": "2fba8593842608b0a8aa96397b9d7dfaa9aed06ffb5548ed446ee5f265eafd18",
+      "png_sha256": "cdce46676f924516e7fb77492e0f1d7cb586f046ec69810186d27e96c581c8cf",
+      "conversion": "Lossless format conversion of actual native QMP framebuffer only."
+    },
+    "offline-idle": {
+      "image": "B02-editor-offline-idle.png",
+      "original_native_scanout_sha256": "323e322c7f8a8907bddbba532e5ea1ba5c7348188a97521dc8aeee5a4c19e1cd",
+      "png_sha256": "256478906da09a7f8b25bf2752eed9e6c92422287199263fc9eba1a67ee4472e",
+      "conversion": "Lossless format conversion of actual native QMP framebuffer only."
+    }
+  },
+  "inventory": "359 installed native package/version/dependency rows captured in .local/phase2/desktop-installed-inventory-1.json for runtime manifest projection. Integration root includes build tools/optional prototypes; not the minimal release composition. Git missing and remains required before B02 acceptance.",
+  "retained_failures": "Original one-LF fixture assertion retained; actual draft29B proves body+twoLF from implicit trailing newline. Recovery collector literal Booting line failure reconciled read-only against actual highlighted GRUB entry and different running foundation config. No repeat of successful runtime operations."
+}

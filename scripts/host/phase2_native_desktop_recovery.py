@@ -98,7 +98,9 @@ def main():
         state['phase']='native-stopped';save()
     assert phase2_vm.backing_identity(source)==identity,'Backing changed; preserve overlay and stop'
     menu=json.loads((CONTEXT/'recovery-menu-selection.json').read_text());assert menu['selected']
-    assert "Booting `Toddy OS, Linux 7.1.8-toddy (foundation recovery)'" in (CONTEXT/'serial.log').read_text(errors='replace')
+    import re
+    selected_text=re.sub(r'\x1b\[[0-?]*[ -/]*[@-~]','',(CONTEXT/'serial.log').read_text(errors='replace'))
+    assert '*Toddy OS, Linux 7.1.8-toddy (foundation recovery)' in selected_text
     state['actual_grub_recovery_selection']=menu
     evidence=(CONTEXT/'native-evidence.log').read_text(errors='strict')
     report,summary,recovered=decode(evidence)

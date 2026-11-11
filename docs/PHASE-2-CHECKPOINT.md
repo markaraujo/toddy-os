@@ -68,27 +68,40 @@ GNOME/Nautilus chooser selected exact file URI response0; Escape response1/no UR
 Request.Close0 removed object and dialog/no response. Five real native PNGs.
 [Evidence](evidence/B02-fuse-portal-native.json). No whole B02/physical/G2 acceptance.
 
+## Remaining native acceptance now verified
+
+native-desktop-persist-runtime-2 terminal0: protected-file/polkit cancellation and
+actual Permission denied reused from1; original file unchanged. Actual29B draft
+(body+2LF from implicit newline) existed before sole UID12402 Editor SIGKILL;
+process gone, native Document Restored and exact29B SaveAs proved. Root source
+before-crash bytehex/SHA retained, original one-LF fixture failure preserved.
+Offline session and15second idle sample/no agent/inference; saved-file and custom
+teal preference/NM restored marker persisted. 359actual package rows captured at
+.local/phase2/desktop-installed-inventory-1.json (integration/build root).
+native-desktop-reboot-runtime-1 terminal0: distinct boots1df8c1dc...->53fe0b92...,
+saved file/protected original/custom teal+dark and restored NM DHCP/DNS persist.
+native-desktop-recovery-runtime-1 terminal0: actual GRUB down+Enter highlighted
+owned foundation recovery, running config3ad1bf... matches original preserved
+kernel; saved data/dconf/network pass. Collector literal Booting line assertion
+was wrong; read-only reconcile verified actual serial highlight/config/report,
+no boot replay. All original backing chains unchanged; all native jobs stopped.
+[Evidence](evidence/B02-editor-persistence-native.json), real scanouts included.
+
 ## Exact next action
 
-Prepare remaining persistence/recovery/idle pass on NEW disposable overlay over
-retained native-fuse-portal-runtime-3/target.qcow2 with entire backing chain readonly.
-Do not mutate/replay completed context3. It preserves synthetic owner home/dconf,
-portal-allowed.txt (28B) and normal login state. New probe may reset only that
-synthetic disposable account password through existing private transport, then use
-normal GDM/PAM; never expose its credential. Real Editor write refusal/save/recovery,
-restored NetworkManager persistence after actual reboot, absent-agent/offline use,
-actual idle/resource measurements and recovery-menu entry remain due. Use explicit
-before/after boot IDs and durable postconditions; no timeout-as-pass. Do not restart
-builder/cache restore merely for another native runtime pass. Native3 source must
-be quiescent and hash/identity-bound before child overlay. New controller/probe prepared: phase2_native_editor_persist.py, NEW context
-native-desktop-persist-runtime-1. Offline Editor refusal/crash/recovery/save and
-15second idle sample, then durable saved-file/preference/NM marker for later boot.
-Not dispatched yet; next commit harness and run controller. Then exact minimal runtime
-manifest/catalog status and B02 criteria audit. Finish B02 then stop, no later story.
-
-Test selection: native FUSE and portal affected scope passed; old GUI/foundation
-proofs reused. Repository387checks passed before harness updates; run make check
-for delivery. Broader hardware/provider/soak/portal capability matrices not claimed.
+Actual359package inventory lacks Git despite pinned plan root/base requirement.
+Implement Git2.55.0 with cached source SHA457fdb04... and exact frozen BLFS13.1
+page .local/books/general/git.html SHA76af90f0...; no version change. Start builder
+only after observing no native job active. New isolated unprivileged read-only-input
+Git build may use installed toolchain without restoring unrelated compile caches;
+verify actual dependencies and target guards first. Private loopback-only namespace
+for original local-server tests, no external compiler network. Standard supported
+C-only NO_RUST and no optional Tcl/Tk GUI, preserve user Git configuration. Full
+original tests for this unqualified recipe, verified stage and controlled native
+package + actual installed offline repo/credential/refusal checks required. No Git
+recipe/preparation/build dispatched yet. Then publish minimal runtime dependency
+projection/optional software status and B02 criteria audit; complete B02 then stop.
+Current goal remains incomplete. No later B story, ISO/G2 or physical claim.
 
 ## Recovery and unchanged evidence
 
@@ -125,23 +138,3 @@ Installed FUSE/kernel/portal runtime and dark/light integration; restoredNM rebo
 persistence; Editor refusal/recovery/reboot; affected device/refusal and absent-agent
 checks; exact minimal runtime manifest/catalog status, actual idle/resource and
 recovery-entry boot. B02 is not complete. No later B story before requested stop.
-
-Persistence context1 stopped/backing unchanged with real offline session/protected
-file/polkit refusal verified. No intentional crash dispatched: fixture one-LF draft
-expectation found no match. Source50.1 implicit trailing newline enabled.
-Correction1 records actual retained draft bytes before login, permits only exact
-typed body+one/twoLF, reuses refusal proof; next phase2_native_editor_persist_resume.py
-NEW native-desktop-persist-runtime-2 over quiescent context1, all ancestors readonly.
-No package/compiler/previous operations replay.
-
-Persistence context2 VERIFIED0, terminal/stopped/backing unchanged. Retained draft
-actually29B (typed text+2LF; source implicit newline), SIGKILL of sole UID12402
-Editor observed, native Document Restored and SaveAs editor-recovered.txt29B exact
-SHA f556fab26c57c36049693aa37559b1eeede5a83b2fd84b3f675ce8156e187666.
-Offline before/during Editor; denied polkit/save/protected original reused from1.
-Native15second idle sample and359installed package records captured; no agent.
-Networking restored before clean shutdown; b02-persistence.json contains boot ID,
-file/protected hashes and user accent teal. Next commit/run
-phase2_native_desktop_reboot.py NEW native-desktop-reboot-runtime-1 over quiescent
-context2 plus exact readonly ancestors, no GUI/write replay; verify distinct boot
-IDs/actual saved bytes/user dconf teal+prefer-dark/NM DHCP+DNS after reboot.
