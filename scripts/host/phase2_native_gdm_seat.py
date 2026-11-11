@@ -9,7 +9,8 @@ from phase2_native_glycin import compressed_payload
 import phase2_vm
 import vm
 ROOT=phase2_vm.ROOT;WORK=phase2_vm.WORK
-CONTEXT=ROOT/'.local/phase2/native-gdm-seat-runtime-1'
+FOLLOWUP=sys.argv[1:]==['--probe-path-followup']
+CONTEXT=ROOT/'.local/phase2'/('native-gdm-seat-runtime-2' if FOLLOWUP else 'native-gdm-seat-runtime-1')
 CAPTURE_STOP=threading.Event()
 def run(args,**kwargs):return subprocess.run(args,check=True,text=True,**kwargs)
 def capture_scanout():
@@ -48,7 +49,7 @@ def capture_scanout():
         (CONTEXT/'scanout-observation.json').write_text(json.dumps(records,indent=2)+'\n')
 
 def main():
-    assert len(sys.argv)==1
+    assert len(sys.argv)==1 or FOLLOWUP
     custody=ROOT/'.local/phase2/settings-scratch-custody-1'
     retained=json.loads((custody/'result.json').read_text());assert retained['state']=='complete'
     assert (custody/'restore-validation.exit').read_text().strip()=='0'
@@ -58,10 +59,22 @@ def main():
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip(),'Commit reviewed inputs before native boot'
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2
     lock=open(vm.VM/'native-boot-test.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB);boot.refuse_running_tests()
-    probe=(ROOT/'scripts/host/phase2-native-shell-probe.py').read_bytes()
+    probe=(ROOT/'scripts/host/phase2-native-gdm-seat-probe.py').read_bytes()
     code="from pathlib import Path\nimport fcntl,hashlib,json,subprocess\nsubprocess.run(['bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)\nlock=open('/var/log/toddy/build/build.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)\nassert not list(Path('/var/log/toddy/build').glob('*.running.json'))\nversions={'gnome-shell':'50.4-1+toddy1','gtk':'4.22.4-1+toddy10','gdm':'50.2-1+toddy1','mutter':'50.4-1+toddy1','gstreamer':'1.28.6-1+toddy1','gst-plugins-base':'1.28.6-1+toddy1'}\nfiles=0\nfor name,version in versions.items():\n assert subprocess.check_output(['chroot','/mnt/lfs','dpkg-query','-W','-f=${Version}',name],text=True)==version\n r=json.loads(Path('/var/log/toddy/packages',name+'_'+version+'_amd64.json').read_text());assert r['installed']\n for n,row in r['payload'].items():\n  if 'sha256' in row:\n   p=Path('/mnt/lfs')/n.lstrip('/');assert hashlib.sha256(p.read_bytes()).hexdigest()==row['sha256'];files+=1\nfor step in ['b02-gnome-shell-install','b02-settings-schema-union-install','b02-gstreamer-install','b02-gst-plugins-base-install']:\n r=json.loads(Path('/var/log/toddy/build',step+'.success.json').read_text());assert r['recipe_exit']==r['postcheck_exit']==0\nprint(json.dumps({'versions':versions,'verified_native_files':files,'builder_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'target_serial':'TODDY-LFS-TARGET','native_kernel_expected':'7.1.8-toddy'}))\n"
-    accepted=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
-    accepted_record=json.loads(accepted.stdout)
+    if FOLLOWUP:
+        previous=json.loads((ROOT/'.local/phase2/native-gdm-seat-runtime-1/result.json').read_text())
+        assert previous['phase']=='native-stopped'
+        container=json.loads(subprocess.check_output(['docker','inspect',previous['container_id']],text=True))[0]
+        assert not container['State']['Running'] and container['State']['ExitCode']==0
+        assert container['Config']['Labels']['toddy.boot-test']==previous['run_id']
+        assert phase2_vm.backing_identity(WORK/'lfs-target.qcow2')==previous['source_identity']
+        assert previous['probe_sha256']==hashlib.sha256((ROOT/'scripts/host/phase2-native-shell-probe.py').read_bytes()).hexdigest()
+        serial=(ROOT/'.local/phase2/native-gdm-seat-runtime-1/serial.log').read_text()
+        assert 'line 20, in main' in serial and 'TODDY_B02_RUNTIME_FAIL AssertionError' in serial
+        accepted_record=previous['accepted']
+    else:
+        accepted=subprocess.run(phase2_vm.ssh_args()+['python3 -'],input=code.encode(),capture_output=True,check=True)
+        accepted_record=json.loads(accepted.stdout)
     CONTEXT.mkdir()
     state={'scope':'Normal installed GDM on actual virtual DRM/input seat with QEMU scanout; greeter observation only, no authenticated login/basic-app/B02/G2/physical acceptance',
            'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
@@ -74,9 +87,10 @@ def main():
         part.write_text(json.dumps(state,indent=2)+'\n');part.replace(CONTEXT/'result.json')
         print(json.dumps({'phase':state['phase'],'context':str(CONTEXT)}),flush=True)
     save()
-    with (CONTEXT/'builder-stop.log').open('x') as log:
-        state['phase']='stopping-builder';save()
-        run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
+    if not FOLLOWUP:
+        with (CONTEXT/'builder-stop.log').open('x') as log:
+            state['phase']='stopping-builder';save()
+            run([sys.executable,str(ROOT/'scripts/host/phase2_vm.py'),'stop'],stdout=log,stderr=subprocess.STDOUT)
     assert subprocess.check_output(['docker','ps','-q','--filter','name=^/'+phase2_vm.NAME+'$'],text=True).strip()==''
     state['phase']='builder-stopped';save()
     source=WORK/'lfs-target.qcow2';assert source.is_file() and not source.is_symlink()

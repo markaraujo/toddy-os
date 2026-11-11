@@ -30,17 +30,22 @@ inodes, exact bytes/modes/owners/nanosecond timestamps/symlinks/hardlink classes
 13closed fixture sockets omitted; they contain no restorable payload.
 Receipt includes exact bind aliases. No source/compiler/fixture/install replay.
 
-EXACT NEXT: after publishing reviewed inputs, run
-`python3 -u scripts/host/phase2_native_gdm_seat.py`, with a new controller log
-.local/phase2/native-gdm-seat-runtime-1-controller.log.
-It must verify custody/current package bytes/guest lock and actual resources
-before stopping the builder. Uses a fresh disposable target overlay, Virtio VGA,
-USB keyboard/tablet and QMP scanout. Observes actual installed GDM/greeter on
-seat0, no password/autologin/PAM bypass, no headless Shell retry.
-Inspect actual native container/result/report/scanout before any continuation.
-The script leaves builder stopped after cold testing: inspect real states first,
-then recover existing volumes, sources and this exact scratch archive/aliases
-without replaying preparation or transactions. Stop only after ALL B02 accepted.
+EXACT NEXT: after publishing the corrected probe selector, run
+`python3 -u scripts/host/phase2_native_gdm_seat.py --probe-path-followup`,
+with .local/phase2/native-gdm-seat-runtime-2-controller.log.
+Context1/controller1231416 terminal1: native container a8023086e6726cf2513bc7d4b6b63af269f8ae1b89b60da06592fbbe5e19d837
+is stopped/exit0, base identity unchanged. Controller accidentally selected the
+old Shell probe; it failed its obsolete GTK assertion before compositor/GDM.
+No dedicated report, no graphical acceptance. Serial and one scanout retained.
+Builder is STOPPED; current tmpfs is gone but its exact archive and actual
+isolated restoration proof above are durable. Do not stop builder again.
+Followup2 selects the actual new GDM probe and requires previous exact stopped
+container, unchanged base identity and observed first failure before dispatch.
+Use a fresh disposable overlay/Virtio VGA/USB keyboard/tablet/QMP; no password,
+autologin/PAM bypass or headless Shell retry. Inspect actual native result/report/
+scanout before continuing. Recover existing guest volumes/source/scratch and
+recorded aliases after the diagnostic, without source/compiler/fixture/install
+replay. Owner boundary remains: complete ALL B02, then stop.
 
 Earlier slice records below are historical; this latest card takes precedence.
 
