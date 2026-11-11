@@ -20,7 +20,7 @@
     "sha256": "52640dde13599bf127a95499e61d6d640256119456d1af8897ab6725bcf3d89c",
     "integrity": "Official HTTPS release asset, size checked and SHA256 frozen locally before extraction/execution. Upstream release API provides no asset digest; not a claim of independently signed binary reproducibility.",
     "purpose": "Dedicated WASM compiler/sysroot for upstream RLBox libraries. Native pinned Clang22.1.8 and foundation unchanged.",
-    "status": "downloaded_only; extraction/native ABI/C/C++ WASM/isolation qualification pending",
+    "status": "Qualified private isolated native execution/C and C++ WASM compile/link/read-only mutation and egress denial; not installed into OS or browser acceptance",
     "source_notices": [
       {
         "filename": "SDK-LICENSE",
@@ -112,6 +112,7 @@
         "sha256": "c5b52c424c9101ba9b2d1338997e1758c9fdf369ab0450d9b72e9544fe482166",
         "bytes": 58653
       }
-    ]
+    ],
+    "qualification_evidence": "docs/evidence/B02-browser-wasm-tools.json"
   }
 }

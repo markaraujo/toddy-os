@@ -66,6 +66,15 @@ if [[ -d /mnt/lfs/etc/fonts && ! -L /mnt/lfs/etc/fonts ]]; then
     readonly_bind /mnt/lfs/etc/fonts "$root/etc/fonts"
 fi
 readonly_bind "$TODDY_INPUT" "$root/src"
+# Browser-only private compiler tools: exact receipts, read-only payloads, no
+# installed compiler replacement or broader filesystem exposure.
+if [[ $TODDY_INPUT == /mnt/lfs/sources/phase2/inputs/firefox-153.2.0 &&
+      $TODDY_WORK == /mnt/lfs/sources/phase2/work/firefox-build-1 ]]; then
+    python3 /opt/toddy-build/scripts/build/phase2/browser_build_tools.py
+    mkdir -p "$root/tools/wasi-sdk" "$root/tools/nasm"
+    readonly_bind /mnt/lfs/sources/phase2/work/firefox-1/tools/wasi-sdk-25.0-x86_64-linux "$root/tools/wasi-sdk"
+    readonly_bind /mnt/lfs/sources/phase2/work/nasm-1/stage "$root/tools/nasm"
+fi
 # This selected TLS consumer requires the qualified public factory CA policy.
 # Expose only public anchors/certificates read-only, never SSL private/config
 # directories or the guest's general /etc. CA generation uses its separate

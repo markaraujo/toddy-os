@@ -11302,6 +11302,13 @@
       "license": "BSD-2-Clause",
       "evidence": "Exact LICENSE and per-file notices retained from the pinned official source; source LICENSE SPDX identifier reviewed.",
       "runtime_inclusion": "Private isolated browser compiler tool; not installed into the desktop or advertised as base software."
+    },
+    {
+      "name": "wasi-sdk-build-tools",
+      "version": "25.0",
+      "license": "LicenseRef-WASI-SDK-source-per-file",
+      "evidence": "Exact SDK/LLVM/Clang/libc++/libc++abi/compiler-rt/wasi-libc and transitive allocator/cloudlibc/musl/fts notices pinned by URL and SHA in config/phase2/browser-build-tools.lock.json; retained privately because upstream binary archive has no notices.",
+      "runtime_inclusion": "Private compiler bootstrap only; generated WASM/native decoding code needs the associated notices in the eventual browser package. SDK is not included automatically in the base."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

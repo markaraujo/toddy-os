@@ -9,6 +9,13 @@ spec=importlib.util.spec_from_file_location('cups_isolation',ROOT/'scripts/build
 module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
 
 class CupsIsolationTests(unittest.TestCase):
+ def test_browser_tool_mounts_are_inactive_for_cups(self):
+  source=(ROOT/'scripts/build/phase2/isolated.sh').read_text()
+  start=source.index('# Browser-only private compiler tools:')
+  end=source.index('# This selected TLS consumer',start)
+  # An accidental compiler-tool bind must fail even without any VM paths.
+  command='readonly_bind() { exit 97; };\n'+source[start:end]
+  subprocess.run(['bash','-euc',command],env={'TODDY_INPUT':'/mnt/lfs/sources/phase2/inputs/cups-2.4.19','TODDY_WORK':'/mnt/lfs/sources/phase2/work/cups-1','PATH':'/usr/bin:/bin'},check=True)
  def test_changed_base_is_refused(self):
   with self.assertRaises(AssertionError):module.profile(b'changed generic sandbox')
  def test_only_private_public_hosts_extension_is_added(self):

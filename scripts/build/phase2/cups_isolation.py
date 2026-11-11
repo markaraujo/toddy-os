@@ -2,7 +2,8 @@
 from pathlib import Path
 import hashlib,subprocess,sys
 
-BASE_SHA='aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c'
+# Previous aa78a5f3 baseline differs only by the inactive-for-CUPS Firefox tools branch.
+BASE_SHA='5c0e75e5774d54ae734c3a9587dc511431c0357a1ce47e62b01a18a223039410'
 
 def profile(source):
  assert hashlib.sha256(source).hexdigest()==BASE_SHA

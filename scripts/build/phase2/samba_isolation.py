@@ -4,8 +4,8 @@ from pathlib import Path
 import subprocess
 import sys
 
-BASE_SHA = "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c"
-PROFILE_SHA = "2adb8fa54b101a77b8a399af35825ecff2678be837bb4c7924c2d6b648f388b5"
+BASE_SHA = "5c0e75e5774d54ae734c3a9587dc511431c0357a1ce47e62b01a18a223039410"
+PROFILE_SHA = "ff674ce4db4e3f47e55aefec9e7160c6536f9111d137ecabebc7c5a9923e61d0"
 SOURCE = "/mnt/lfs/sources/phase2/inputs/samba-4.24.6-build-alias"
 WORK = "/mnt/lfs/sources/phase2/work/samba-1"
 

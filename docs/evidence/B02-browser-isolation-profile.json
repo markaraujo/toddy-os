@@ -1,0 +1,11 @@
+{
+  "scope": "Exact shared compiler profile change and affected CUPS/Samba adapter checks; no native package/compiler/GUI replay",
+  "previous_base_sha256": "aa78a5f34f89198a7a99ee532cc65b49f8435bce83f61fdf008e59e29a86989c",
+  "current_base_sha256": "5c0e75e5774d54ae734c3a9587dc511431c0357a1ce47e62b01a18a223039410",
+  "delta": "Only an exact Firefox source+work conditional exposing two authenticated private build tool roots read-only. Removing this block reproduces previous base bytes exactly (checked before adapter pin update).",
+  "cups_adapter_sha256": "8ade647863452daaa30a9944c20fc05542fa3d1bd2c1eb69e801d99578c8a08f",
+  "samba_adapter_sha256": "2f9932636e203066fbaf11251a7c89f72bedb5d5b35dfcfd671c10c03676f7b7",
+  "focused_checks": "CUPS4/Samba3 unit checks passed, including actual Bash execution proving browser-only branch inactive for each selected nonbrowser input; unknown base refused.",
+  "native_browser_profile": "Actual UID101/caps0/NNP/denial and C/C++ WASM qualification in B02-browser-wasm-tools.json.",
+  "limitations": "Updated adapter generation/hash checks do not claim new printer/server/Samba runtime tests. Prior installed binaries/source/compiler outputs untouched."
+}
