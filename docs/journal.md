@@ -3882,3 +3882,16 @@ critical hashes, new readonly source/archive aliases and fresh UID101work. No ol
 object reuse. Separate existing-mount restore helper preserves all four new aliases
 without extraction/rebuild. Target-root reserve retained by readonly archive alias.
 Actual source transfer and restore qualification pending; no new guest writer yet.
+
+
+### B02 candidate archive root correction and exact isolated profile — 2026-11-11
+
+Original source attempt received/verified complete800080060B archive, then failed
+before any source write on initial directory dot. Confirmed source/work/aliases
+absent; preserve receipt1/log. Corrected extraction-only receipt2 omits only exact
+dot directory and counts all entries; no transfer replay. Actual native extraction
+progress262144entries/1.4GB, PID identity verified. Prepared exact candidate
+source/work pair in existing tool profile, CUPS4/Samba3 unaffected checks passed,
+two actual Bash routing fixtures reject cross-pairs. New candidate configure and
+compiler scripts retain qualified options/tools and assert153.7version.379checks
+passed; no configuration/compiler dispatch while extraction writer active.
