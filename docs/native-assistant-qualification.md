@@ -61,7 +61,7 @@ the separate 147951465-byte full multilingual base artifact.
 
 Collection only reads native dpkg versions and `/var/log/toddy/packages` records,
 verifies exact new archives from `/var/cache/toddy/packages`, and copies those
-archives into a new `/mnt/lfs/sources/phase2/assistant-native-inputs/GENERATION/`.
+archives into a new `/mnt/lfs/var/cache/toddy/assistant-native-inputs/GENERATION/`.
 It uses the existing target guard/global lease and preserves 16 GiB + 512 MiB plus
 the exact additional copy size. Baseline archives are reused only when their
 version/archive/record SHA exactly matches accepted B02 metadata. Raw native
@@ -335,3 +335,5 @@ The dropdown role is derived from frozen GTK4.22.4 `gtk/gtkdropdown.c`
 (`GTK_ACCESSIBLE_ROLE_COMBO_BOX`); widget existence/focus/QMP handling still
 requires the actual native run. Missing or ambiguous accessibility state fails
 rather than selecting a fabricated tree or silently skipping the interaction.
+
+Archive qualification custody uses the protected target `/var/cache/toddy/assistant-native-inputs/GENERATION` namespace. The legacy LFS `/sources` ancestry is never relaxed or accepted by `owned_regular`; old source-cache archive paths fail manifest validation. Collection checks existing destination ancestors before creating the new generation. This changes qualification input custody only; model/license custody remains independently SHA-verified and protected.

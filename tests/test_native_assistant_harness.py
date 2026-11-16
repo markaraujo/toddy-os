@@ -14,7 +14,7 @@ def manifest():
     packages={}
     for name in ('toddy-assistant','toddy-agent','toddy-executor'):
         record={'packaging_backend':{'kind':'source-built-native-dpkg'},'name':name,'version':'0.2.0-1+toddy1','installed':True,'archive_sha256':'1'*64,'payload':{'/usr/lib/toddy/fixture':{'mode':33188,'sha256':'2'*64}},'scope':'Unqualified source fixture only'}
-        packages[name]={'version':record['version'],'archive_sha256':record['archive_sha256'],'record_sha256':hashlib.sha256((json.dumps(record,indent=2)+'\n').encode()).hexdigest(),'record':record,'record_text':json.dumps(record,indent=2)+'\n','archive_path':'/sources/phase2/assistant-native-inputs/fixture/'+name+'.deb','archive_bytes':100}
+        packages[name]={'version':record['version'],'archive_sha256':record['archive_sha256'],'record_sha256':hashlib.sha256((json.dumps(record,indent=2)+'\n').encode()).hexdigest(),'record':record,'record_text':json.dumps(record,indent=2)+'\n','archive_path':'/var/cache/toddy/assistant-native-inputs/fixture/'+name+'.deb','archive_bytes':100}
     return {'assistant_qualification_version':1,'source_image':'/fixture/cold.qcow2','source_identity':{'scope':'Unqualified fixture'},'kernel':'7.1.8-toddy','kernel_config_sha256':'3'*64,'B02_manifest_sha256':'4'*64,'phases':['ui-prepare','ui-en'],'packages':packages,'files':{},'local_model':None,'human_samples':None}
 
 
@@ -42,7 +42,7 @@ class ManifestTests(unittest.TestCase):
             else:row['qualified']=True
             with self.assertRaisesRegex(ValueError,'native_package_record|native_record_hash'):h.validate_manifest(value)
     def test_new_package_archive_paths_cannot_escape_fixed_fixture_cache(self):
-        for path in ('/etc/shadow','/sources/phase2/assistant-native-inputs/../escape'):
+        for path in ('/etc/shadow','/sources/phase2/assistant-native-inputs/legacy/fixture.deb','/var/cache/toddy/assistant-native-inputs/../escape'):
             value=manifest();value['packages']['toddy-agent']['archive_path']=path
             with self.assertRaisesRegex(ValueError,'archive_path'):h.validate_manifest(value)
     def test_actual_native_guard_refuses_host_before_commands(self):

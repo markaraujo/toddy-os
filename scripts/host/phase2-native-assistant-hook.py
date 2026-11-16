@@ -38,7 +38,7 @@ def validate_manifest(value):
     if 'branding' in phases and value['packages']['toddy-desktop-defaults']['version']!='0.2.0-1+toddy2':raise ValueError('assistant_background_upgrade_required')
     for name,row in value['packages'].items():
         if not re.fullmatch('[a-z0-9][a-z0-9+.-]{1,79}',name) or set(row)!={'version','archive_sha256','record_sha256','record','record_text','archive_path','archive_bytes'} or not HEX.fullmatch(row['archive_sha256']) or not HEX.fullmatch(row['record_sha256']):raise ValueError('assistant_native_package_record')
-        if row['archive_path'] is not None and (not isinstance(row['archive_path'],str) or not row['archive_path'].startswith('/sources/phase2/assistant-native-inputs/') or '..' in Path(row['archive_path']).parts or type(row['archive_bytes']) is not int or row['archive_bytes']<=0):raise ValueError('assistant_native_archive_path')
+        if row['archive_path'] is not None and (not isinstance(row['archive_path'],str) or not row['archive_path'].startswith('/var/cache/toddy/assistant-native-inputs/') or '..' in Path(row['archive_path']).parts or type(row['archive_bytes']) is not int or row['archive_bytes']<=0):raise ValueError('assistant_native_archive_path')
         if name in {'toddy-branding','toddy-assistant','toddy-agent','toddy-executor','toddy-voice','toddy-integrations','toddy-voice-native-catalog'} and row['version']!='0.2.0-1+toddy1':raise ValueError('assistant_production_package_version')
         record=row['record']
         if not isinstance(row['record_text'],str) or len(row['record_text'].encode())>8*1024**2 or hashlib.sha256(row['record_text'].encode()).hexdigest()!=row['record_sha256'] or json.loads(row['record_text'])!=record:raise ValueError('assistant_native_record_hash')
@@ -966,8 +966,13 @@ def collect(generation,phases,model_path=None,license_path=None):
     accepted_path=root/'docs/evidence/B02-desktop-runtime-manifest.json'
     accepted={row['name']:row for row in json.loads(accepted_path.read_text())['components']}
     output=Path('/var/log/toddy/phase2')/('assistant-native-inputs-'+generation+'.json')
-    cache=target/'sources/phase2/assistant-native-inputs'/generation
+    cache=target/'var/cache/toddy/assistant-native-inputs'/generation
     if output.exists() or cache.exists():raise ValueError('assistant_collect_generation_exists_no_replay')
+    # Control/output ancestry is protected independently of the legacy LFS cache.
+    for parent in (cache.parent,*cache.parents):
+        if not parent.exists():continue
+        metadata=parent.lstat()
+        if parent.resolve()!=parent or not stat.S_ISDIR(metadata.st_mode) or metadata.st_uid or metadata.st_mode&0o022:raise ValueError('assistant_collect_protected_archive_cache_required')
     packages={};copies=[]
     for name in sorted(required):
         version=subprocess.check_output(['chroot',str(target),'dpkg-query','-W','-f=${Version}',name],text=True)
