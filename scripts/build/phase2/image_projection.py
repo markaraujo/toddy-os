@@ -57,6 +57,46 @@ def select(profile, rows):
     return base, live
 
 
+def original_source_provenance(component, record, *, repository=ROOT, target=TARGET):
+    """Admit reviewed original code without inventing an upstream archive."""
+    if record.get('source_kind') != 'book-derived-versioned-recipe':
+        raise ValueError('Foreign package lacks upstream source custody')
+    for relative in ('docs/evidence/B02-desktop-runtime-manifest.json', 'docs/evidence/H11-components.json'):
+        evidence = payload.strict((repository/relative).read_bytes())
+        for row in evidence['components']:
+            if (row['name'] == component['name'] and not row.get('sources') and
+                    row.get('component_record_sha256') == component['component_record_sha256']):
+                return 'committed-original-record'
+    if component['name'] not in {'toddy-assistant', 'toddy-branding', 'toddy-installer', 'calamares-branding-toddy'}:
+        raise ValueError('Unreviewed original package identity')
+    supporting = record.get('supporting_build_scripts', {})
+    files = supporting.get('files')
+    if not isinstance(files, dict) or not files or any(not isinstance(k, str) or
+            not payload.HASH.fullmatch(v) for k,v in files.items()):
+        raise ValueError('Original recipe closure missing')
+    canonical = json.dumps(files, sort_keys=True, separators=(',', ':')).encode()
+    if hashlib.sha256(canonical).hexdigest() != supporting.get('sha256') or component['recipe_sha256'] not in files.values() or record.get('packager_sha256') not in files.values():
+        raise ValueError('Original recipe closure integrity')
+    virtual = '/usr/share/doc/' + component['name'] + '/source-manifest.json'
+    expected = record['payload'].get(virtual, {}).get('sha256')
+    manifest_path = payload.regular(target/virtual.lstrip('/'))
+    if not expected or payload.digest(manifest_path) != expected:
+        raise ValueError('Original source manifest ownership differs')
+    manifest = payload.strict(manifest_path.read_bytes())
+    inputs = manifest.get('source_inputs', manifest.get('inputs'))
+    if manifest.get('package') != component['name'] or not isinstance(inputs, dict) or not inputs:
+        raise ValueError('Original source manifest identity')
+    for relative, value in inputs.items():
+        payload.canonical(relative, absolute=False)
+        if isinstance(value, dict):
+            if set(value) != {'sha256', 'bytes'} or type(value['bytes']) is not int or value['bytes'] < 0:
+                raise ValueError('Original source manifest size')
+            value = value['sha256']
+        if not isinstance(value, str) or not payload.HASH.fullmatch(value):
+            raise ValueError('Original source manifest integrity')
+    return 'owned-original-source-manifest'
+
+
 def collect(names, rows, records=RECORDS, archives=ARCHIVES):
     components = {}
     for name in sorted(names):
@@ -67,8 +107,10 @@ def collect(names, rows, records=RECORDS, archives=ARCHIVES):
             raise ValueError('Observed dependencies differ or Pre-Depends is unqualified: ' + name)
         # component_from_record validates archive/control/owned bytes/legal data;
         # also pin source/recipe integrity now, before asking for a signing input.
-        if not payload.HASH.fullmatch(component['recipe_sha256']) or not component['sources']:
+        if not payload.HASH.fullmatch(component['recipe_sha256']):
             raise ValueError('Missing source/recipe custody: ' + name)
+        if not component['sources']:
+            original_source_provenance(component, payload.strict(payload.regular(record).read_bytes()))
         for source in component['sources']:
             if not payload.HASH.fullmatch(source.get('sha256', '')):
                 raise ValueError('Missing source integrity: ' + name)

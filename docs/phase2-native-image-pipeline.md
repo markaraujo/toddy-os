@@ -17,7 +17,12 @@ python3 /opt/toddy-build/scripts/build/phase2/image_projection.py
 This fixed command checks the existing target serial/root/mount guards, takes the
 native build lock, refuses active dispatchers, reads fully configured native
 Dpkg versions and validates every selected archive against its installed record,
-control, owned bytes and legal/source hashes. Versioned dependency alternatives
+control, owned bytes and legal/source hashes. Original foundation/configuration packages with no upstream archive must match
+the exact committed H11/B02 record hash. New original assistant/branding/installer
+payloads require the declared original source kind, internally hash-bound recipe
+and packager closure, and an owned source manifest with nonempty source hashes.
+A foreign package with missing upstream sources is rejected.
+Versioned dependency alternatives
 use the existing offline-payload comparator. It rechecks the native inventory
 before publishing a new private generation at
 `/mnt/lfs/sources/stage/toddy-image-projection-1`. Existing output is retained;

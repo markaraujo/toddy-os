@@ -64,6 +64,40 @@ class ProjectionTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'dependencies differ'):
                 p.collect({'base'},rows)
 
+    def test_empty_sources_require_exact_historical_original_record(self):
+        with tempfile.TemporaryDirectory() as directory:
+            repository=Path(directory); evidence=repository/'docs/evidence';evidence.mkdir(parents=True)
+            component={'name':'toddy-base-config','component_record_sha256':'a'*64}
+            approved={'name':'toddy-base-config','component_record_sha256':'a'*64,'sources':[]}
+            for name in ('B02-desktop-runtime-manifest.json','H11-components.json'):
+                (evidence/name).write_text(json.dumps({'components':[approved]}))
+            record={'source_kind':'book-derived-versioned-recipe'}
+            self.assertEqual(p.original_source_provenance(component,record,repository=repository),'committed-original-record')
+            with self.assertRaisesRegex(ValueError,'Foreign package'):
+                p.original_source_provenance(component,{'source_kind':'upstream-archives-and-versioned-recipe'},repository=repository)
+            component['component_record_sha256']='b'*64
+            with self.assertRaisesRegex(ValueError,'Unreviewed original'):
+                p.original_source_provenance(component,record,repository=repository)
+
+    def test_new_original_needs_owned_manifest_and_complete_recipe_binding(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);repository=root/'repo';target=root/'target'
+            evidence=repository/'docs/evidence';evidence.mkdir(parents=True)
+            for name in ('B02-desktop-runtime-manifest.json','H11-components.json'):
+                (evidence/name).write_text('{"components":[]}')
+            virtual='/usr/share/doc/toddy-assistant/source-manifest.json'
+            manifest=target/virtual.lstrip('/');manifest.parent.mkdir(parents=True)
+            manifest.write_text(json.dumps({'package':'toddy-assistant','source_inputs':{'runtime/ui/app.py':'c'*64}}))
+            files={'recipe.py':'a'*64,'stage_package.py':'b'*64}
+            component={'name':'toddy-assistant','component_record_sha256':'d'*64,'recipe_sha256':'a'*64}
+            record={'source_kind':'book-derived-versioned-recipe','packager_sha256':'b'*64,
+                'supporting_build_scripts':{'files':files,'sha256':p.hashlib.sha256(json.dumps(files,sort_keys=True,separators=(',',':')).encode()).hexdigest()},
+                'payload':{virtual:{'sha256':p.payload.digest(manifest)}}}
+            self.assertEqual(p.original_source_provenance(component,record,repository=repository,target=target),'owned-original-source-manifest')
+            record['supporting_build_scripts']['sha256']='f'*64
+            with self.assertRaisesRegex(ValueError,'closure integrity'):
+                p.original_source_provenance(component,record,repository=repository,target=target)
+
     def test_generation_is_private_durable_hash_bound_and_never_overwritten(self):
         with tempfile.TemporaryDirectory() as directory:
             output=Path(directory)/'new'
