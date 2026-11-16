@@ -20,6 +20,7 @@ ROWS = (
 
 def verify(path, inode):
     assert path.resolve() == path and not path.is_symlink()
+    assert subprocess.check_output(['findmnt', '-rn', '-o', 'TARGET', '--target', str(path)], text=True).strip() == str(TARGET)
     info = path.stat()
     assert stat.S_ISREG(info.st_mode) and info.st_nlink == 1
     assert info.st_ino == inode and info.st_size == SIZE
@@ -27,6 +28,28 @@ def verify(path, inode):
     with path.open('rb') as stream:
         assert hashlib.file_digest(stream, 'sha256').hexdigest() == SHA
     return {'path': str(path), 'inode': inode, 'bytes': SIZE, 'sha256': SHA}
+
+
+def no_consumers(path):
+    wanted = path.stat()
+    for item in Path('/sys/block').glob('loop*/loop/backing_file'):
+        text = item.read_text().strip()
+        if text:
+            candidate = Path('/'+text.lstrip('/'))
+            assert candidate.resolve() != path
+    for process in Path('/proc').iterdir():
+        if not process.name.isdigit():
+            continue
+        try:
+            descriptors = list((process/'fd').iterdir())
+        except FileNotFoundError:
+            continue
+        for descriptor in descriptors:
+            try:
+                info = descriptor.stat()
+            except (FileNotFoundError, ProcessLookupError):
+                continue
+            assert (info.st_dev, info.st_ino) != (wanted.st_dev, wanted.st_ino), 'Readback cache has an open consumer'
 
 
 def save(value):
@@ -60,6 +83,7 @@ def main():
         assert not Path('/var/log/toddy/build/input-sync.running').exists()
         assert not os.path.lexists(RECEIPT) and not os.path.lexists(RECEIPT.with_suffix('.part'))
         evidence = [verify(TARGET/name, inode) for name, inode in ROWS]
+        no_consumers(TARGET/ROWS[0][0])
         before = free()
         record = {'state': 'retire-intended', 'before_free_bytes': before,
                   'retired': evidence[0], 'retained': evidence[1:],
@@ -68,6 +92,7 @@ def main():
         save(record)
         path = TARGET/ROWS[0][0]
         verify(path, ROWS[0][1])
+        no_consumers(path)
         path.unlink()
         fd = os.open(path.parent, os.O_DIRECTORY)
         try:
