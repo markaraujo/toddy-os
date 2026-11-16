@@ -19,7 +19,7 @@ import offline_payload as payload
 
 ROOT = Path('/opt/toddy-build')
 TARGET = Path('/mnt/lfs')
-OUTPUT = TARGET / 'sources/stage/toddy-image-projection-1'
+OUTPUT = TARGET / 'sources/stage/toddy-image-projection-2'
 RECORDS = Path('/var/log/toddy/packages')
 ARCHIVES = Path('/var/cache/toddy/packages')
 BUILD = Path('/var/log/toddy/build')

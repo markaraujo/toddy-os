@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "scope": "Actual exact native base recovery only; old failed upgrade retained and audio tools still require separate package/qualification",
+  "step": {
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 16,
+    "started": "2026-11-16T20:24:00.637528+00:00",
+    "finished": "2026-11-16T20:24:20.579256+00:00",
+    "recipe_sha256": "bd3c13cf9f3f0285ea99f6336a8b253bda810e1b42255beffddf62405f790450",
+    "postcheck_sha256": "3a503a379734cce3bf2c98e5e94015bb5c98dbce31bc13baad6189a6b51e7cbd",
+    "log_sha256": "7ae90f60bb6c7677527918a9223ae9c1560b0394f3341d1616bf97654c66678e"
+  },
+  "raw_receipt_sha256": "284e38b0401f0577ee4c461a66b217e44c490a31878661f380b639a9e568fe4e",
+  "recovery": {
+    "added_paths_absent": [
+      "/usr/bin/pw-cat",
+      "/usr/bin/pw-dsdplay",
+      "/usr/bin/pw-encplay",
+      "/usr/bin/pw-midi2play",
+      "/usr/bin/pw-midi2record",
+      "/usr/bin/pw-midiplay",
+      "/usr/bin/pw-midirecord",
+      "/usr/bin/pw-play",
+      "/usr/bin/pw-record",
+      "/usr/bin/pw-sysex",
+      "/usr/share/doc/pipewire/pw-cat-upgrade-source.json"
+    ],
+    "added_paths_to_remove": [
+      "/usr/bin/pw-cat",
+      "/usr/bin/pw-dsdplay",
+      "/usr/bin/pw-encplay",
+      "/usr/bin/pw-midi2play",
+      "/usr/bin/pw-midi2record",
+      "/usr/bin/pw-midiplay",
+      "/usr/bin/pw-midirecord",
+      "/usr/bin/pw-play",
+      "/usr/bin/pw-record",
+      "/usr/bin/pw-sysex",
+      "/usr/share/doc/pipewire/pw-cat-upgrade-source.json"
+    ],
+    "apt_before": {
+      "exit": 100,
+      "known_reverse_pins": [
+        "gnome-shell",
+        "mutter",
+        "toddy-desktop-audio",
+        "wireplumber",
+        "xdg-desktop-portal"
+      ],
+      "stderr_sha256": "23285fc66d3ae2040e5c6a7e41b568120450ae4917f195546e48ca9ab9f69bbc",
+      "stdout_sha256": "70c4dfc0c43cfd39013cfb79db7dd8e00a8e33b5fa3cac1caf4a4980a8c118ea"
+    },
+    "apt_check_exit": 0,
+    "failed_upgrade": {
+      "archive_sha256": "bf08b0426e4596eed1363fb2a64889ab31b4ecafdb58bc3f92ebb5d91a915a55",
+      "failed_receipt_sha256": "994c633373d1c15ded40075c6ff1320da5bef78eb4aa44a4d9d1fe533b842cc6",
+      "manifest_sha256": "4166be95d52f06a4b623d0d89b0765c6d127c40f765e44417c8a833097c14f58",
+      "record_sha256": "8302491a6fae68d1a443b33e8d9bd884be19719520fb89de9e693da56b4d9c3c",
+      "step": "b09-pipewire-tools-1"
+    },
+    "old_archive_sha256": "6fcccccb584101ebf0899dcabbc64ff8551f8cc4e58356bc8878febc6a17c56a",
+    "old_payload_entries_verified": 649,
+    "old_payload_unchanged": true,
+    "old_record_sha256": "ebdad900696ab299bcc7be52dcbde490c0a2a6d5afb3b659acb89cb6c2a77303",
+    "rejected_payload_entries_verified": 660,
+    "reverse_pins": {
+      "gnome-shell": {
+        "architecture": "amd64",
+        "depends_sha256": "c80dc01c10a29870b13b12cc5129c5b73187b389196acabaac6bdcbe4409f4a7",
+        "record_sha256": "0c8a720c53ee08c506e86e0cf092ff194c36a6cf695ce64d05e168d1bba39a00",
+        "version": "50.4-1+toddy1"
+      },
+      "mutter": {
+        "architecture": "amd64",
+        "depends_sha256": "583dbe94d7c30de759b88733d64de77d4c271bf20cea4ed7775ac3db697c54ef",
+        "record_sha256": "da91b7dc37ad2c5d8eeafafb54b224126af63dc9bcbd798fda2685efc76de05a",
+        "version": "50.4-1+toddy1"
+      },
+      "toddy-desktop-audio": {
+        "architecture": "all",
+        "depends_sha256": "299bd0e62048276c2a19d3ce3915bedc63f3a1628c38e03ea48a62c258649987",
+        "record_sha256": "d1fb57f23de9ccb9496e33709766caa8e5aa977691588ec26b8f689969a9d86f",
+        "version": "0.2.0-1+toddy1"
+      },
+      "wireplumber": {
+        "architecture": "amd64",
+        "depends_sha256": "53304b16ab4bc088f6769cb9691a3ea9c2721d4bd78d508dd71f1ca9325c75a0",
+        "record_sha256": "818c7751a09fd80340f9f2474cdbd3948084f1a10d0171cfba69e17746f0c0ce",
+        "version": "0.5.15-1+toddy1"
+      },
+      "xdg-desktop-portal": {
+        "architecture": "amd64",
+        "depends_sha256": "5991cfaff152c61e3fec92307a505c2f18e94ee0278e0a03b9e1f06df2ae4b7e",
+        "record_sha256": "d2c42f0015da36a20951a63554b3dd1354e76e0c168432745c78c6923b518a13",
+        "version": "1.22.1-1+toddy1"
+      }
+    },
+    "scope": "Exact old native base restored; failed revision2 archive/record/ledger and successful compile2 retained; no new audio tools installed",
+    "source_inputs": {
+      "scripts/build/phase2/pipewire_base_restore.py": "619846637da03d8d7555daf6c84226c5407cd725e1a1a13dcca4396bc873e933",
+      "scripts/build/phase2/pipewire_base_restore_check.sh": "3a503a379734cce3bf2c98e5e94015bb5c98dbce31bc13baad6189a6b51e7cbd",
+      "scripts/build/phase2/pipewire_base_restore_install.sh": "bd3c13cf9f3f0285ea99f6336a8b253bda810e1b42255beffddf62405f790450"
+    },
+    "state": "native-pipewire-base-restored",
+    "version": 1
+  }
+}

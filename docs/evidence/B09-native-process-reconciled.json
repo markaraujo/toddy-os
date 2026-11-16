@@ -1,0 +1,121 @@
+{
+  "evidence": {
+    "catalog-package-checked.json": {
+      "sha256": "6f32c2e9c311876a4193737f03aa6ca7b2fa256ab83b71e85d97f00a89d6b700",
+      "value": {
+        "catalog_sha256": "af12533776d879a3d9706476e4650724ee9af0b7a8704e37add6793ac86262a0",
+        "install_audit_sha256": "c9f8cbfcd0dc76d94143cf22a88b5042d6f09eaa86050ed4d0ecf15a04f6afe4",
+        "record_sha256": "c471d1f7c389e1b3fc30352d675144f48cd80adade157039b02a0fc617b3512b",
+        "scope": "Owned optional catalog/process component proof only; GUI/PTT/device/physical evidence still separate"
+      }
+    },
+    "catalog-package-installed.json": {
+      "sha256": "cf8fbf5083b66fe2e18ccb21e65ecfa6fa68d7d68c71a1bd830a93e88e54b31b",
+      "value": {
+        "archive_sha256": "356ce9ddc4265aa9fd1e3600466d858b952b35f12393e4a83f3f58e61b55ca15",
+        "audit_inputs": {
+          "catalog_receipt_sha256": "c03340936b24d4b446318a94333fd8be88dad575c386a343591296e4f7786a48",
+          "catalog_sha256": "af12533776d879a3d9706476e4650724ee9af0b7a8704e37add6793ac86262a0",
+          "producer_pins": {
+            "frozen_driver": "5a1dc85c634e2c54edad42f94c7222ef5fba56331aadc5efbb849178474c6dee",
+            "harness": "84aa98d4500de7309aa4737c560aebcfe598dc962fcf79057c9e94a1aae99c0b",
+            "install_recipe": "0ab6bbe4a9b890a28e6a69d2c56729349950b6b3685d419e0c056194998cf4d2",
+            "job": "a52297086042499d343d811e248681ccc18a8a278b12f8b9a16424d7d54ac712",
+            "producer": "418b933c884acb32f754f86ab008dec3924afeeb3f9924b296fe344786d20322"
+          }
+        },
+        "native_write_audit_sha256": "c9f8cbfcd0dc76d94143cf22a88b5042d6f09eaa86050ed4d0ecf15a04f6afe4",
+        "producer_pins": {
+          "frozen_driver": "5a1dc85c634e2c54edad42f94c7222ef5fba56331aadc5efbb849178474c6dee",
+          "harness": "84aa98d4500de7309aa4737c560aebcfe598dc962fcf79057c9e94a1aae99c0b",
+          "install_recipe": "0ab6bbe4a9b890a28e6a69d2c56729349950b6b3685d419e0c056194998cf4d2",
+          "job": "a52297086042499d343d811e248681ccc18a8a278b12f8b9a16424d7d54ac712",
+          "producer": "418b933c884acb32f754f86ab008dec3924afeeb3f9924b296fe344786d20322"
+        },
+        "record_sha256": "c471d1f7c389e1b3fc30352d675144f48cd80adade157039b02a0fc617b3512b"
+      }
+    },
+    "catalog.json": {
+      "sha256": "c03340936b24d4b446318a94333fd8be88dad575c386a343591296e4f7786a48",
+      "value": {
+        "audit_inputs": {
+          "catalog_sha256": "daab4f202a47c447f927f333300b78d7a328e66c64c915de7cdeb575d65fdf80",
+          "process_sha256": "7e0bf801bb5a60d0b28fd1f45708444467e61e8bb9d25d6cb1b44713f0e78bce",
+          "process_validation_sha256": "e03fab834fb120ee1ad0693504aa2072c7f036d305e2965e31b283b370e9c14f",
+          "producer_pins": {
+            "frozen_driver": "5a1dc85c634e2c54edad42f94c7222ef5fba56331aadc5efbb849178474c6dee",
+            "harness": "84aa98d4500de7309aa4737c560aebcfe598dc962fcf79057c9e94a1aae99c0b",
+            "install_recipe": "0ab6bbe4a9b890a28e6a69d2c56729349950b6b3685d419e0c056194998cf4d2",
+            "job": "a52297086042499d343d811e248681ccc18a8a278b12f8b9a16424d7d54ac712",
+            "producer": "418b933c884acb32f754f86ab008dec3924afeeb3f9924b296fe344786d20322"
+          }
+        },
+        "audit_prefix": "/var/log/toddy/phase2/voice-process-native2-r1",
+        "catalog_sha256": "af12533776d879a3d9706476e4650724ee9af0b7a8704e37add6793ac86262a0",
+        "kind": "reconciled-native-voice-catalog-v1",
+        "native_write_audit_sha256": "8a34a73b0434badab677528275032f725d4d3b7eb532709e98293641faa51c8d",
+        "old_failed_process": {
+          "exit_sha256": "9d9be811e7e4855f550a711be37e14c4a17bf7d15a0763e37be2fbbdc0d5f7d5",
+          "log_sha256": "a16c399e45c0b357edc105e833883073260b7ca10e8a6d08497c60d86350ff0d",
+          "marker_sha256": "9e4d1e0f0898169c771d9256d34d0ffdb754829cf5d38404e49d910c62349e06"
+        },
+        "process_evidence_sha256": "7e0bf801bb5a60d0b28fd1f45708444467e61e8bb9d25d6cb1b44713f0e78bce",
+        "process_validation_sha256": "e03fab834fb120ee1ad0693504aa2072c7f036d305e2965e31b283b370e9c14f",
+        "producer_pins": {
+          "frozen_driver": "5a1dc85c634e2c54edad42f94c7222ef5fba56331aadc5efbb849178474c6dee",
+          "harness": "84aa98d4500de7309aa4737c560aebcfe598dc962fcf79057c9e94a1aae99c0b",
+          "install_recipe": "0ab6bbe4a9b890a28e6a69d2c56729349950b6b3685d419e0c056194998cf4d2",
+          "job": "a52297086042499d343d811e248681ccc18a8a278b12f8b9a16424d7d54ac712",
+          "producer": "418b933c884acb32f754f86ab008dec3924afeeb3f9924b296fe344786d20322"
+        },
+        "records": {
+          "espeak-ng": "36de37f16d1f92ec6b5bddc80df953a847567cd577ec7ef687df4c2f2763619c",
+          "pipewire": "ebdad900696ab299bcc7be52dcbde490c0a2a6d5afb3b659acb89cb6c2a77303",
+          "pipewire-audio-tools": "405e4c49fb070fbe3b1afaf837e779943d57d9d1b39e9c2da40fdfe8fac21a3a",
+          "toddy-voice": "523547e8bee6700db593d2345cfb0133864637c40a81aef3455f83a128df4539",
+          "toddy-voice-model-base": "cccd6f18ba054e124b648fbb67bd1c69fddaab9a5b0d7556c6d4fb12c15215d5",
+          "whisper-cpp": "fdf58834d1ffa310e18985d5675e03e71a2a4c49b07ef691ef528d150a149906",
+          "wireplumber": "818c7751a09fd80340f9f2474cdbd3948084f1a10d0171cfba69e17746f0c0ce"
+        },
+        "scope": "Component/process/transport-help qualification only; no device/PTT/physical acceptance",
+        "version": 1
+      }
+    },
+    "process-validated.json": {
+      "sha256": "e03fab834fb120ee1ad0693504aa2072c7f036d305e2965e31b283b370e9c14f",
+      "value": {
+        "job_exit_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "job_sha256": "47a80a1701d1316fc2c29b15a4ee1bd943ebe7661adb9789230bdbfe3357d05e",
+        "kind": "actual-native2-process-retry-v1",
+        "old_failed_process": {
+          "exit_sha256": "9d9be811e7e4855f550a711be37e14c4a17bf7d15a0763e37be2fbbdc0d5f7d5",
+          "log_sha256": "a16c399e45c0b357edc105e833883073260b7ca10e8a6d08497c60d86350ff0d",
+          "marker_sha256": "9e4d1e0f0898169c771d9256d34d0ffdb754829cf5d38404e49d910c62349e06"
+        },
+        "prepared_sha256": "54f667fe43c61ba5955b09d00f2803507eec953e32c86febd83c0ebb2ba8f4a7",
+        "process_sha256": "7e0bf801bb5a60d0b28fd1f45708444467e61e8bb9d25d6cb1b44713f0e78bce",
+        "producer_pins": {
+          "frozen_driver": "5a1dc85c634e2c54edad42f94c7222ef5fba56331aadc5efbb849178474c6dee",
+          "harness": "84aa98d4500de7309aa4737c560aebcfe598dc962fcf79057c9e94a1aae99c0b",
+          "install_recipe": "0ab6bbe4a9b890a28e6a69d2c56729349950b6b3685d419e0c056194998cf4d2",
+          "job": "a52297086042499d343d811e248681ccc18a8a278b12f8b9a16424d7d54ac712",
+          "producer": "418b933c884acb32f754f86ab008dec3924afeeb3f9924b296fe344786d20322"
+        },
+        "records": {
+          "espeak-ng": "36de37f16d1f92ec6b5bddc80df953a847567cd577ec7ef687df4c2f2763619c",
+          "pipewire": "ebdad900696ab299bcc7be52dcbde490c0a2a6d5afb3b659acb89cb6c2a77303",
+          "pipewire-audio-tools": "405e4c49fb070fbe3b1afaf837e779943d57d9d1b39e9c2da40fdfe8fac21a3a",
+          "toddy-voice": "523547e8bee6700db593d2345cfb0133864637c40a81aef3455f83a128df4539",
+          "toddy-voice-model-base": "cccd6f18ba054e124b648fbb67bd1c69fddaab9a5b0d7556c6d4fb12c15215d5",
+          "whisper-cpp": "fdf58834d1ffa310e18985d5675e03e71a2a4c49b07ef691ef528d150a149906",
+          "wireplumber": "818c7751a09fd80340f9f2474cdbd3948084f1a10d0171cfba69e17746f0c0ce"
+        },
+        "scope": "Actual new file-only/process/transport-help proof; physical/device/PTT/GNOME remains separate",
+        "version": 1
+      }
+    }
+  },
+  "generation": "native2-r1",
+  "schema_version": 1,
+  "scope": "Actual reconciled process, transport and optional catalog only; GUI, PTT, device, physical and B09 acceptance pending"
+}

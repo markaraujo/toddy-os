@@ -1,0 +1,24 @@
+{
+  "native_gpgv": "gpgv (GnuPG) 2.5.24",
+  "detached_exit": 0,
+  "inrelease_exit": 0,
+  "tamper_exit": 1,
+  "statuses": [
+    [
+      "[GNUPG:] NEWSIG",
+      "[GNUPG:] KEY_CONSIDERED 453CD646B5F61C586812690F1AF1606035781DB1 0",
+      "[GNUPG:] SIG_ID /zrHxoFyAtpc7OegqsH8SLNmGGU 2026-11-16 1794857001",
+      "[GNUPG:] GOODSIG 1AF1606035781DB1 Toddy OS Experimental Archive 2026 <noreply@example.invalid>",
+      "[GNUPG:] VALIDSIG 453CD646B5F61C586812690F1AF1606035781DB1 2026-11-16 1794857001 0 4 0 22 8 00 453CD646B5F61C586812690F1AF1606035781DB1"
+    ],
+    [
+      "[GNUPG:] NEWSIG",
+      "[GNUPG:] KEY_CONSIDERED 453CD646B5F61C586812690F1AF1606035781DB1 0",
+      "[GNUPG:] SIG_ID vFBTQmbBcRprTtwzRRbDA5zxT8o 2026-11-16 1794857001",
+      "[GNUPG:] GOODSIG 1AF1606035781DB1 Toddy OS Experimental Archive 2026 <noreply@example.invalid>",
+      "[GNUPG:] VALIDSIG 453CD646B5F61C586812690F1AF1606035781DB1 2026-11-16 1794857001 0 4 0 22 8 01 453CD646B5F61C586812690F1AF1606035781DB1"
+    ]
+  ],
+  "temporary_files_removed_on_return": true,
+  "scope": "Actual native crypto only; no APT/upgrade/remove/full-flow/publication acceptance"
+}

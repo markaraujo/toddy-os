@@ -15,7 +15,10 @@ against independent pins, and removes that temporary public-only context.
 
 After actual native archives/installed records and image projection exist, in
 the guarded builder use the current projection at
-`/mnt/lfs/sources/stage/toddy-image-projection-1`. Its base/live/additional
+`/mnt/lfs/sources/stage/toddy-image-projection-2`. Generation1 remains retained with its earlier inventory. Generation2 must be
+produced after the actual base recovery and separate audio-tool transaction,
+retaining the frozen desktop PipeWire revision; never overwrite or relabel
+generation1. Its base/live/additional
 component files must match actual `/var/log/toddy/packages` records and
 `/var/cache/toddy/packages` archives. The optional records below show the current
 source recipe versions; require their actual successful native records, not
@@ -25,9 +28,9 @@ Preserve old/partial export directories; do not rerun into them.
 ```sh
 cd /opt/toddy-build
 python3 -I scripts/build/phase2/archive_metadata.py \
-  --projection /mnt/lfs/sources/stage/toddy-image-projection-1/projection.json \
-  --projection /mnt/lfs/sources/stage/toddy-image-projection-1/live-projection.json \
-  --additional-components /mnt/lfs/sources/stage/toddy-image-projection-1/additional-components.json \
+  --projection /mnt/lfs/sources/stage/toddy-image-projection-2/projection.json \
+  --projection /mnt/lfs/sources/stage/toddy-image-projection-2/live-projection.json \
+  --additional-components /mnt/lfs/sources/stage/toddy-image-projection-2/additional-components.json \
   --acquisition-record /var/log/toddy/packages/toddy-agent_0.2.0-1+toddy1_all.json \
   --acquisition-record /var/log/toddy/packages/toddy-executor_0.2.0-1+toddy1_all.json \
   --acquisition-record /var/log/toddy/packages/nodejs_24.19.0-1+toddy1_amd64.json \

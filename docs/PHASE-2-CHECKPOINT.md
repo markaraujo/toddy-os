@@ -59,15 +59,22 @@ Immediate native queue (one guest/package writer):
    eSpeak1 RUNPATH and Whisper1 nonexistent-license failures remain retained.
    Corrected coherent native2 engines/model installed/audited/checked0; real
    attributed EN/PT inference WER0, about3s/sample. [Proof](evidence/B09-native-engine-files.json).
-   Process2 four tests0 but combined transport failed: original PipeWire profile
-   lacks pw-cat. No replay/reinstall; same-frozen PipeWire2 tools upgrade and new
-   honest process/catalog reconciliation are pending source/native work.
+   Process2 four tests0 but original transport failed without pw-cat. Failed
+   PipeWire2 upgrade remains retained; exact frozen PipeWire1 restore0/0 and
+   separate pipewire-audio-tools attempt2 install/check0/0 preserve reverse pins.
+   New process native2-r1 passed actual Stop/transport; reconciled catalog native
+   installation and independent check0. [Proof](evidence/B09-native-process-reconciled.json).
+   No GUI/PTT/device/physical acceptance. Assistant core1 collection failed before
+   generation creation at strict legacy source-cache ownership; protected explicit
+   frozen-model custody is next, then collect/cold-stop/bind/real graphical boot.
    Projection1 offline/live root bounds6,129,459,200/6,264,504,320B measured.
    Candidate-only180→204GiB growth completed0, independentguard0, full-root
    changed_paths0/acceptedbackings unchanged; targetfree48,323,973,120B.
    [Receipt](evidence/B12-candidate-target-growth.json). NEVER replay growth.
    Agent revision2 actual native archive built0 without installation; primary
-   agent1 remains installed. Signed metadata/lifecycle execution still pending.
+   agent1 remains installed. Revision2 metadata signed on the private host; native
+   GPGv verified both signatures and rejected tampering.
+   [Proof](evidence/B13-revision2-native-crypto.json). Public lifecycle remains pending.
    Keep16GiB target/100GiB host reserves and measure actual per-stage demand.
 
 Owner requested process/parallelism improvements2026-11-16. Keep three source

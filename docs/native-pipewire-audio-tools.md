@@ -14,7 +14,7 @@ changed old bytes/pins or any preexisting tool/package/stage outcome.
 From `/opt/toddy-build`, the sole guest writer runs:
 
 ```sh
-python3 scripts/build/run_step.py b09-pipewire-audio-tools-1 \
+python3 scripts/build/run_step.py b09-pipewire-audio-tools-2 \
   scripts/build/phase2/pipewire_audio_tools_install.sh \
   scripts/build/phase2/pipewire_audio_tools_check.sh --user root
 ```
@@ -63,3 +63,11 @@ ledger and test actual capture/playback/control; no failed process is replayed,
 no success is copied from fixtures and no runtime catalog is fabricated. The
 source unit tests execute only synthetic archive/stage checks, never native
 Dpkg, audio or a VM.
+
+
+Attempt1 stopped before native package writes (changed paths0): the child
+packager inherited private umask077 and created a DEBIAN directory0700. Its
+stage/receipt/failed ledger remain. Attempt2 uses fresh stage/receipt/step2 and
+sets umask022 only in the native packager child; the coordinator evidence stays
+private. The actual attempt2 recipe and independent postcheck passed0/0 without
+recompiling the frozen tool. Base PipeWire1 and APT consistency remained intact.
