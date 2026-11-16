@@ -67,19 +67,28 @@ else:raise ValueError('fixed action')
 '''
 
 
-def remote(action):
-    return candidate.ssh() + ['python3 -I -c ' + shlex.quote(REMOTE) + ' ' + action]
+def fixed_paths(generation=2):
+    if type(generation) is not int or generation not in (2,3):raise ValueError('Only fixed export2/export3 generations')
+    return (SOURCE,DESTINATION) if generation==2 else ('/mnt/lfs/sources/stage/toddy-package-export-3',ROOT/'.local/phase2/mvp-package-export-3')
 
 
-def transfer():
+def remote(action,generation=2):
+    if action not in ('inventory','stream'):raise ValueError('Only fixed readonly export actions')
+    source,_=fixed_paths(generation)
+    program=REMOTE.replace(SOURCE,source)
+    return candidate.ssh() + ['python3 -I -c ' + shlex.quote(program) + ' ' + action]
+
+
+def transfer(generation=2):
+    source_path,destination=fixed_paths(generation)
     container_id = candidate.owned()
     candidate.bases()
-    inventory_raw = subprocess.check_output(remote('inventory'), timeout=600)
+    inventory_raw = subprocess.check_output(remote('inventory',generation), timeout=600)
     if len(inventory_raw) > 24 * 1024**2:
         raise ValueError('Bounded export inventory required')
     inventory = json.loads(inventory_raw)
     # Fetch original bytes separately: JSON serialization is not a receipt digest.
-    raw = subprocess.check_output(candidate.ssh() + ['cat ' + SOURCE + '/archive-export.json'], timeout=60)
+    raw = subprocess.check_output(candidate.ssh() + ['cat ' + source_path + '/archive-export.json'], timeout=60)
     expected = selected(raw)
     rows = inventory['files']
     if inventory['manifest'] != json.loads(raw) or inventory['manifest_sha256'] != hashlib.sha256(raw).hexdigest() or set(rows) != set(expected):
@@ -90,16 +99,16 @@ def transfer():
     for package in inventory['manifest']['packages']:
         if rows[package['asset']]['bytes'] != package['archive_bytes']:
             raise ValueError('Declared archive byte size changed')
-    parent = DESTINATION.parent
-    if parent.resolve() != parent or not parent.is_dir() or parent.stat().st_uid != os.getuid() or os.path.lexists(DESTINATION):
+    parent = destination.parent
+    if parent.resolve() != parent or not parent.is_dir() or parent.stat().st_uid != os.getuid() or os.path.lexists(destination):
         raise ValueError('New canonical private host destination required')
     if shutil.disk_usage(parent).free < RESERVE + sum(row['bytes'] for row in rows.values()) + 1024**2:
         raise ValueError('Preserve host100GiB+512MiB reserve plus transfer bytes')
     os.umask(0o077)
-    DESTINATION.mkdir(mode=0o700)
-    assets = DESTINATION / 'assets'
+    destination.mkdir(mode=0o700)
+    assets = destination / 'assets'
     assets.mkdir(mode=0o700)
-    process = subprocess.Popen(remote('stream'), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+    process = subprocess.Popen(remote('stream',generation), stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     try:
         process.stdin.write(json.dumps(rows).encode()); process.stdin.close()
         seen = set()
@@ -124,13 +133,13 @@ def transfer():
         process.stdout.close()
     if (assets / 'archive-export.json').read_bytes() != raw or candidate.owned() != container_id:
         raise ValueError('Export or owned VM changed')
-    receipt = {'version': 1, 'state': 'verified-unsigned-export-transfer', 'source': SOURCE,
+    receipt = {'version': 1, 'state': 'verified-unsigned-export-transfer', 'source': source_path,
         'archive_export_sha256': hashlib.sha256(raw).hexdigest(), 'files': rows,
         'signed': False, 'published': False, 'native_runtime_qualified': False}
-    with (DESTINATION / 'verified.json').open('x') as stream:
+    with (destination / 'verified.json').open('x') as stream:
         json.dump(receipt, stream, sort_keys=True, indent=2); stream.write('\n')
         stream.flush(); os.fsync(stream.fileno())
-    for path in (assets, DESTINATION):
+    for path in (assets, destination):
         fd = os.open(path, os.O_RDONLY | os.O_DIRECTORY)
         try: os.fsync(fd)
         finally: os.close(fd)
