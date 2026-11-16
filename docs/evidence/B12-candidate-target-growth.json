@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "scope": "Dedicated candidate virtual target only; accepted backing identities unchanged, no physical host disk operation",
+  "state": "complete",
+  "old_bytes": 193273528320,
+  "new_bytes": 219043332096,
+  "guest_exit": 0,
+  "host_cold_reserve": 107911053312,
+  "growth_allowance": 25769803776,
+  "host_free_before": 135968190464,
+  "host_free_after": 135890796544,
+  "actual_allocation_delta": 4325376,
+  "accepted_backing_unchanged": true,
+  "producer_pins": {
+    "grow_candidate_target.py": "21f025b4e0a3d3de687742b3066a997bde2da10ab309dd37251d3d498d266f9c",
+    "candidate_target_geometry.py": "1e52e8768b325f49920c7120f25f7bf6b663143360db7f410184c2d1f71c050f"
+  },
+  "guest_receipt": {
+    "state": "filesystem-grown-and-full-root-unchanged",
+    "old_bytes": 193273528320,
+    "new_bytes": 219043332096,
+    "identity": {
+      "boot_id": "9ac84ac8-fe0e-41c0-a128-a8e4ad4bebf2",
+      "serial": "TODDY-LFS-TARGET",
+      "filesystem_uuid": "e7726c1a-8f91-445f-96ac-88721b58caf8",
+      "partuuid": "5e491ca4-ea89-4e55-94b3-cb0b3fcc4694",
+      "disk_bytes": 219043332096,
+      "kernel_partition_bytes": 209912332288,
+      "mount": {
+        "target": "/mnt/lfs",
+        "source": "/dev/vdb4",
+        "fstype": "ext4",
+        "options": "rw,relatime"
+      },
+      "device_rdev": 64784
+    },
+    "filesystem": {
+      "uuid": "e7726c1a-8f91-445f-96ac-88721b58caf8",
+      "block_size": 4096,
+      "block_count": 51248128
+    },
+    "gpt": {
+      "primary_sha256": "e9e124446d4594d54b3faa8fc190a31c012565ea959470bf0f4bdbd93b1593e0",
+      "backup_sha256": "b966a30c0534b77e276eb0a90fff4753693546b6074761acf4646994074d958f",
+      "entries_sha256": "cbdbb1472c7fc0c7698863299ba52572ca5e0a2e659b941b754d7582d3b9dd12"
+    },
+    "producer_pins": {
+      "grow_candidate_target.py": "21f025b4e0a3d3de687742b3066a997bde2da10ab309dd37251d3d498d266f9c",
+      "candidate_target_geometry.py": "1e52e8768b325f49920c7120f25f7bf6b663143360db7f410184c2d1f71c050f"
+    },
+    "intent_sha256": "150f5471afd2dd1fd7dfcc4f35f4e5db27c847cd415083a8000897ed5bafd654",
+    "full_root_changed_paths": 0,
+    "free_bytes": 48323973120
+  }
+}

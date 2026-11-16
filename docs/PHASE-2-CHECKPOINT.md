@@ -62,9 +62,13 @@ Immediate native queue (one guest/package writer):
    Process2 four tests0 but combined transport failed: original PipeWire profile
    lacks pw-cat. No replay/reinstall; same-frozen PipeWire2 tools upgrade and new
    honest process/catalog reconciliation are pending source/native work.
-   Projection1 offline/live root bounds6,129,459,200/6,264,504,320B exceed current
-   stage admission; candidate-only180→204GiB growth source under review, no
-   actual disk growth yet. Keep16GiB target/100GiB host reserves.
+   Projection1 offline/live root bounds6,129,459,200/6,264,504,320B measured.
+   Candidate-only180→204GiB growth completed0, independentguard0, full-root
+   changed_paths0/acceptedbackings unchanged; targetfree48,323,973,120B.
+   [Receipt](evidence/B12-candidate-target-growth.json). NEVER replay growth.
+   Agent revision2 actual native archive built0 without installation; primary
+   agent1 remains installed. Signed metadata/lifecycle execution still pending.
+   Keep16GiB target/100GiB host reserves and measure actual per-stage demand.
 
 Owner requested process/parallelism improvements2026-11-16. Keep three source
 workers continuously assigned to independent commits. New Qt/voice build recipes

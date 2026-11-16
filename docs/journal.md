@@ -4391,3 +4391,21 @@ pw-cat. Its failure remains recorded; no combined voice/device acceptance follow
 Source work prepares a payload-preserving same-upstream PipeWire tools upgrade and
 an explicit new read-only reconciliation, preserving completed engine installs.
 Current repository delivery check978tests/21.497s passed.
+
+
+## 2026-11-16 — Exact candidate capacity growth and real revision artifact
+
+The fixed candidate-only180→204GiB live QMP/GPT/kernel/ext4 operation completed0.
+Both GPT CRCs, all partition identities/starts, filesystem UUID, full-root file
+comparison and accepted read-only backing identities passed. Full-root changed
+paths0; the independent ordinary204GiB target guard passed. Target free space
+is48,323,973,120B. Actual target-overlay allocation delta4,325,376B is recorded
+separately from virtual capacity; host free135,890,796,544B remains above the
+100GiB+512MiB reserve. [Receipt](evidence/B12-candidate-target-growth.json).
+No physical host disk or accepted foundation image was resized. Never replay it.
+
+The real source-built agent revision2 archive was prepared successfully without
+installing it. Revision1 remains configured. This creates the artifact prerequisite
+for later signed owner upgrade/remove/reinstall checks; it is not lifecycle or
+full-flow acceptance. Source/controller/boot/installer and publication work stays
+parallel in isolated worktrees, with the coordinator as sole guest writer.
