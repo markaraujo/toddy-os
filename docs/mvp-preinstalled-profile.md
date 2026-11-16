@@ -36,3 +36,35 @@ other MVP path; the supplied multilingual voice model is a separate speech asset
 Basic source tests exercise the explicit class and real signed tiny fixture
 archives, not native boot acceptance. Actual MVP installation/boot/UI/Stop/auth
 results must be recorded separately before delivery, with their measured scope.
+
+## First-run opt-in through the installed UI
+
+Open Toddy from the application launcher. The initial backend preference saves
+intent only. In the guided backend setup section, select API or local, then use
+its explicit activation button to start the installed user agent. Refresh the
+service if capabilities have not appeared yet; binding buttons require an actual
+selected profile and revision. Activation alone enables neither a provider nor a
+root grant.
+
+For API mode, choose the supported adapter, enter its HTTPS base URL and model
+identifier, enter the key in the protected password field, and explicitly accept
+the remote-use consent before applying the API binding. The flow stores the key
+through the user Secret Service and applies the selected profile with revision
+checks. A locked/unavailable keyring is an error; there is no plaintext fallback.
+Binding does not itself send a model request. Start a conversation only after
+reviewing the selected configuration and spending consent.
+
+For local mode, review the frozen supported model and license first. To reuse an
+already acquired, license-approved model, copy it as the logged-in owner into a
+private directory, e.g. `install -d -m 700 "$HOME/.local/share/toddy/models"` and
+`install -m 600 /absolute/approved/model.gguf "$HOME/.local/share/toddy/models/model.gguf"`.
+Enter that absolute destination in the existing-model field, accept the license
+and local-binding consent, then apply the local binding. Exact hash/size, owner,
+regular-file/single-link and `0600` checks still apply. A model import never grants
+root privileges or permits remote fallback. The optional download action is a
+separate explicit license/network consent flow, not an MVP boot requirement.
+
+Conversation Send/Stop operates on the configured selected profile. Privileged
+actions retain their independent owner/Polkit policy. The deferred setup choice
+leaves existing bindings unchanged. These are source-verified instructions;
+record actual GUI/task/Stop checks independently and report failures as limitations.
