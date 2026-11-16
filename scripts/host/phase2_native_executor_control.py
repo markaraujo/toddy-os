@@ -48,7 +48,7 @@ def main():
             ('io.github.markaraujo.Toddy.Executor.conf','/etc/dbus-1/system.d/io.github.markaraujo.Toddy.Executor.conf'),
             ('io.github.markaraujo.Toddy.Owner.policy','/usr/share/polkit-1/actions/io.github.markaraujo.Toddy.Owner.policy')]:
         manifest['packaging'][source]={'path':destination,'text':(ROOT/'runtime/executor/packaging'/source).read_text()}
-    broker_parts=[]
+    auxiliary=None
     if args.slice=='broker':
         bundle={}
         for name in ['broker/service.py','broker/core.py','broker/protocol.py','broker/profiles.py','broker/tasks.py',
@@ -59,14 +59,13 @@ def main():
         for source,destination in [('toddy-agent.service','/usr/lib/systemd/user/toddy-agent.service'),
                ('io.github.markaraujo.Toddy.Service.service','/usr/share/dbus-1/services/io.github.markaraujo.Toddy.Service.service')]:
             bundle[destination]=(ROOT/'runtime/broker/packaging'/source).read_text()
-        packet=zlib.compress(json.dumps(bundle,sort_keys=True).encode(),9)
-        broker_parts=[packet[i:i+8192] for i in range(0,len(packet),8192)]
-        manifest['broker']={'sha256':hashlib.sha256(packet).hexdigest(),'chunks':len(broker_parts)}
+        packet=zlib.compress(json.dumps({'bundle':bundle,'hook':(ROOT/'scripts/host/phase2-native-broker-hook.py').read_text()},sort_keys=True).encode(),9)
+        assert len(packet)<=1024**2
+        manifest['broker']={'sha256':hashlib.sha256(packet).hexdigest(),'bytes':len(packet),'serial':'TODDY-BROKER-INPUTS'}
+        auxiliary=b'TODDY_NATIVE_INPUTS_V1\0'+len(packet).to_bytes(8,'big')+hashlib.sha256(packet).digest()+packet
+        auxiliary+=b'\0'*((-len(auxiliary))%512)
     extra={'toddy.executor.manifest':json.dumps(manifest,sort_keys=True).encode()}
     extra.update({'toddy.executor.input'+str(i):data for i,data in enumerate(parts)})
-    if broker_parts:
-        extra.update({'toddy.broker.input'+str(i):data for i,data in enumerate(broker_parts)})
-        extra['toddy.broker.hook']=compressed_payload((ROOT/'scripts/host/phase2-native-broker-hook.py').read_bytes())
     unit=(ROOT/'scripts/host/boot-probe.service').read_bytes().replace(b'TimeoutStartSec=180',b'TimeoutStartSec=300')
     unit+=b''.join(('LoadCredential='+name+'\n').encode() for name in sorted(extra))
     probe=(ROOT/('scripts/host/phase2-native-executor-'+('owner' if args.slice=='broker' else args.slice)+'-probe.py')).read_bytes()
@@ -74,19 +73,28 @@ def main():
               'systemd.unit-dropin.multi-user.target':(ROOT/'scripts/host/boot-probe.target.conf').read_bytes(),
               'toddy.boot-probe':compressed_payload(probe)}
     qemu=boot.qemu_arguments('bios',payloads)
+    firmware_bytes=sum(len(base64.b64encode(data)) for data in payloads.values())
     for name,data in sorted(extra.items()):
         encoded=base64.b64encode(data).decode();assert len(encoded)<=16384
+        firmware_bytes+=len(encoded)
         qemu+=['-smbios','type=11,value=io.systemd.credential.binary:'+name+'='+encoded]
+    assert firmware_bytes<=48*1024,'Firmware input budget exceeded: use read-only auxiliary transport'
+    if auxiliary is not None:
+        qemu+=['-drive','file=/work/broker-input.raw,if=none,id=brokerinput,format=raw,readonly=on',
+               '-device','virtio-blk-pci,drive=brokerinput,serial=TODDY-BROKER-INPUTS']
     qemu[qemu.index('-cpu')+1]='host';qemu[qemu.index('-smp')+1]='4';qemu[qemu.index('-m')+1]='4096'
     image=subprocess.check_output(['docker','image','inspect','--format','{{.Id}}',vm.IMAGE],text=True).strip()
     context.mkdir(mode=0o700)
+    if auxiliary is not None:
+        datafile=context/'broker-input.raw';datafile.write_bytes(auxiliary);datafile.chmod(0o400)
     state={'story':'B04','scope':'Disposable source-stage native owner/executor control qualification; no package/image acceptance',
            'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
            'started_utc':datetime.now(timezone.utc).isoformat(),'controller_pid':os.getpid(),
            'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
            'controller_start_ticks':Path('/proc/self/stat').read_text().split()[21],
            'phase':'prepared','probe_sha256':hashlib.sha256(probe).hexdigest(),
-           'inputs_sha256':manifest['sha256'],'cold_disks':baseline['cold_disks']}
+           'inputs_sha256':manifest['sha256'],'cold_disks':baseline['cold_disks'],
+           'firmware_encoded_bytes':firmware_bytes,'auxiliary_sha256':hashlib.sha256(auxiliary).hexdigest() if auxiliary else None}
     def save():
         part=context/'result.json.part';assert not part.exists()
         part.write_text(json.dumps(state,indent=2)+'\n');part.replace(context/'result.json')

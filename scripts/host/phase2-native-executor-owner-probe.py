@@ -175,7 +175,21 @@ for method in ['PlanOperation','DispatchOperation']:
         assert Path(a['path']).read_text()==a['text'] and store.inspect(uid,'session-write')['state']=='completed'
         passed('default-active-policy-real-pam-session-grant-and-ipc-effect')
         if 'broker' in manifest:
-            exec(compile((credentials/'toddy.broker.hook').read_bytes(),'native-broker-hook','exec'),{**globals(),**locals()})
+            import stat
+            datafile=Path('/dev/disk/by-id/virtio-TODDY-BROKER-INPUTS')
+            assert stat.S_ISBLK(datafile.stat().st_mode)
+            assert run(['lsblk','-dnro','SERIAL',str(datafile.resolve())]).stdout.strip()=='TODDY-BROKER-INPUTS'
+            meta=manifest['broker'];magic=b'TODDY_NATIVE_INPUTS_V1\0'
+            with datafile.open('rb') as source:
+                assert source.read(len(magic))==magic
+                length=int.from_bytes(source.read(8),'big');digest=source.read(32)
+                assert 0<length<=1024**2 and length==meta['bytes']
+                packet=source.read(length);assert len(packet)==length
+            assert hashlib.sha256(packet).digest()==digest and hashlib.sha256(packet).hexdigest()==meta['sha256']
+            decoder=zlib.decompressobj();raw=decoder.decompress(packet,2*1024**2+1)
+            assert len(raw)<=2*1024**2 and decoder.eof and not decoder.unused_data
+            native_inputs=json.loads(raw);_native_broker_bundle=native_inputs['bundle']
+            exec(compile(native_inputs['hook'],'native-broker-hook','exec'),{**globals(),**locals()})
         outside=Path('/tmp/toddy-user-service-ipc.py')
         outside.write_text(client.read_text().replace('session-write','background-session-write').replace('/etc/toddy-session-proof.conf','/etc/toddy-background-session-proof.conf'));outside.chmod(0o644)
         background=subprocess.run(['/usr/bin/python3',str(outside)],user=uid,group=uid,extra_groups=[],capture_output=True,text=True,timeout=20)

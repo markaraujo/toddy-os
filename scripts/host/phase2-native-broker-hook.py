@@ -8,10 +8,7 @@ import time
 import zlib
 
 assert os.geteuid()==0 and os.uname().release=='7.1.8-toddy' and uid==12405
-meta=manifest['broker']
-packet=b''.join((credentials/('toddy.broker.input'+str(i))).read_bytes() for i in range(meta['chunks']))
-assert hashlib.sha256(packet).hexdigest()==meta['sha256']
-bundle=json.loads(zlib.decompress(packet));assert len(bundle)<40
+bundle=_native_broker_bundle;assert isinstance(bundle,dict) and len(bundle)<40
 for name,text in bundle.items():
     target=Path(name)
     assert target.is_absolute() and '..' not in target.parts

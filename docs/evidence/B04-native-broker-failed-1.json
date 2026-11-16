@@ -1,0 +1,13 @@
+{
+  "job": "native-executor-broker-1",
+  "result": "failed-infrastructure-not-run",
+  "actual_qemu_exit": 0,
+  "stopped_only_owned_container": true,
+  "backing_unchanged": true,
+  "firmware_strings": 10,
+  "firmware_argument_bytes": 65791,
+  "observed_regular_credentials": 1,
+  "observed_test_stages": 0,
+  "diagnosis": "Combined source payload exceeded usable SMBIOS transport; exact firmware-table limit not claimed. Preserve no-result failure.",
+  "correction": "Cap firmware data; use magic/length/hash-bound readonly auxiliary virtio raw input, no filesystem or destructive operation."
+}
