@@ -12,6 +12,13 @@ CONTEXT=ROOT/'.local/phase2/native-installer-1'
 HELPERS=('scripts/build/phase2/installer_qualification.py','scripts/build/phase2/installer_collect.py',
          'scripts/build/h10/root_inventory.py','scripts/host/installer-live-probe.py')
 FLOOR=100*1024**3+512*1024**2
+MVP_CLASS='phase2-mvp-preinstalled-v1'
+
+def configure(mvp=False):
+    global CONTEXT
+    if type(mvp) is not bool:raise ValueError('Fixed installer delivery selection required')
+    CONTEXT=ROOT/'.local/phase2'/('native-mvp-installer-1' if mvp else 'native-installer-1')
+
 
 
 def regular(path):
@@ -20,11 +27,12 @@ def regular(path):
     return path
 
 
-def selected_files(native,repository):
+def selected_files(native,repository,*,mvp=False):
     native=Path(native);repository=Path(repository)
     manifest_path=regular(native/'payload/manifest.json')
     prepared=p.PreparedPayload(native/'payload',manifest_sha256=p.digest(manifest_path),runner=None,finalizer=None)
     manifest=prepared._load();bundle_namespace(native/'payload',manifest)
+    if (mvp and (native.name!='toddy-mvp-installer-native-inputs' or manifest.get('delivery_class')!=MVP_CLASS or manifest.get('g2_eligible') is not False)) or (not mvp and 'delivery_class' in manifest):raise ValueError('Explicit matching fixed installer delivery profile required')
     files={}
     for base,dirs,leaves in os.walk(native/'payload',followlinks=False):
         for name in dirs:
@@ -42,7 +50,7 @@ def selected_files(native,repository):
         current=source_path(name);relative=current.relative_to(ROOT).as_posix();path=regular(repository/relative)
         files['source/'+relative]=path;source_hashes[name]=p.digest(path)
     validate_installed_handoff(manifest,source_hashes)
-    for relative in HELPERS:files['source/'+relative]=regular(repository/relative)
+    for relative in (*HELPERS,*(['scripts/build/phase2/mvp_installer_qualification.py'] if mvp else [])):files['source/'+relative]=regular(repository/relative)
     descriptor={'payload_manifest_sha256':p.digest(manifest_path),'policy_sha256':p.digest(files['inputs/policy.json']),
         'image_manifest_sha256':hashlib.sha256(p.encoded(p.strict(files['inputs/expected-image-manifest.json'].read_bytes()))).hexdigest()}
     return files,descriptor
@@ -66,14 +74,15 @@ def installed_sources(record_paths,archives,files):
     return mapping,manifests
 
 
-def create(native,repository,commit,record_paths,archives,xorriso):
+def create(native,repository,commit,record_paths,archives,xorriso,*,mvp=False):
+    configure(mvp)
     if os.getuid()==0 or os.geteuid()==0:raise ValueError('Use the nonroot owner source-custody controller')
     repository=Path(repository)
     if repository.resolve()!=repository or repository!=ROOT:raise ValueError('Exact reviewed checkout required')
     if not re.fullmatch('[a-f0-9]{40}',commit):raise ValueError('Explicit full reviewed source commit required')
     if subprocess.check_output(['git','rev-parse',commit+'^{commit}'],cwd=ROOT,text=True).strip()!=commit:raise ValueError('Actual full source commit required')
     if subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip():raise ValueError('Commit qualification source inputs first')
-    files,descriptor=selected_files(native,repository);runtime,manifests=installed_sources(record_paths,archives,files)
+    files,descriptor=selected_files(native,repository,mvp=mvp);runtime,manifests=installed_sources(record_paths,archives,files)
     for path in (path for name,path in files.items() if name.startswith('source/')):
         relative=path.relative_to(ROOT).as_posix()
         if subprocess.check_output(['git','show',commit+':'+relative],cwd=ROOT)!=path.read_bytes():raise ValueError('Snapshot source differs from exact reviewed commit')
@@ -87,6 +96,7 @@ def create(native,repository,commit,record_paths,archives,xorriso):
         'runtime_source_sha256':{name:p.digest(files['source/'+source_path(name).relative_to(ROOT).as_posix()]) for name in SOURCES},
         'expected_kernel_sha256':p.strict(files['inputs/boot-profile.json'].read_bytes())['kernel_sha256'],'runtime_acceptance':False,
         'producer_sha256':p.digest(__file__),'xorriso_sha256':p.digest(xorriso),'xorriso_version':version}
+    if mvp:value.update(delivery_class=MVP_CLASS,g2_eligible=False)
     extra=sum(path.stat().st_size+4096 for path in files.values())+128*1024**2
     if shutil.disk_usage(ROOT).free<FLOOR+extra:raise ValueError('Snapshot100GiB reserve plus output headroom required')
     if CONTEXT.exists():
@@ -109,10 +119,11 @@ def create(native,repository,commit,record_paths,archives,xorriso):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__,allow_abbrev=False)
+    parser.add_argument('--mvp',action='store_true')
     parser.add_argument('--native-inputs',required=True,type=Path);parser.add_argument('--source-commit',required=True)
     parser.add_argument('--record',required=True,type=Path,action='append');parser.add_argument('--archives',required=True,type=Path)
     parser.add_argument('--xorriso',type=Path,default=Path('/usr/bin/xorriso'))
-    args=parser.parse_args();print(p.encoded(create(args.native_inputs,ROOT,args.source_commit,args.record,args.archives,args.xorriso)).decode(),end='')
+    args=parser.parse_args();print(p.encoded(create(args.native_inputs,ROOT,args.source_commit,args.record,args.archives,args.xorriso,mvp=args.mvp)).decode(),end='')
 
 
 if __name__=='__main__':main()

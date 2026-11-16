@@ -5,7 +5,11 @@ from pathlib import Path
 
 BASE=Path('/run/toddy-installer-qualification')
 SOURCE=BASE/'media/source'
-INPUTS=Path('/sources/stage/toddy-installer-native-inputs')
+PROFILE=globals().get('QUALIFICATION_PROFILE','standard')
+assert PROFILE in ('standard','phase2-mvp-preinstalled-v1')
+MVP=PROFILE=='phase2-mvp-preinstalled-v1'
+INPUTS=Path('/sources/stage/toddy-mvp-installer-native-inputs' if MVP else '/sources/stage/toddy-installer-native-inputs')
+ENTRY='/opt/toddy-build/scripts/build/phase2/'+('mvp_installer_qualification.py' if MVP else 'installer_qualification.py')
 SERIAL='TODDY-INSTALL-P2-1'
 PORT=Path('/dev/virtio-ports/io.toddy.installer.control')
 CHILD=None;CANCEL=None;REVIEW=None;EXECUTED=False
@@ -32,6 +36,7 @@ def prepare(expected):
     subprocess.run(['/usr/bin/mount','-t','iso9660','-o','ro,nosuid,nodev,noexec',str(node),str(BASE/'media')],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     descriptor=BASE/'media/snapshot.json';assert sha(descriptor)==expected
     value=json.loads(descriptor.read_bytes());assert value['kind']=='native-installer-qualification-snapshot-v1'
+    assert (value.get('delivery_class')==PROFILE and value.get('g2_eligible') is False) if MVP else 'delivery_class' not in value
     expected=set(value['files'])|{'snapshot.json'};observed=set();directories=set()
     for base,children,leaves in os.walk(BASE/'media',followlinks=False):
         for leaf in children:
@@ -68,7 +73,11 @@ def prepare(expected):
         except (ValueError,AssertionError,FileNotFoundError):
             if time.monotonic()>deadline:raise
             time.sleep(1)
-    inputs=harness.NativeInputs();assert inputs.descriptor==value['descriptor']
+    if MVP:
+        from mvp_installer_qualification import MVPInputs
+        inputs=MVPInputs()
+    else:inputs=harness.NativeInputs()
+    assert inputs.descriptor==value['descriptor']
     return value
 
 
@@ -124,7 +133,7 @@ def main(expected):
                 assert not request.keys()-{'options'} and CHILD is None and REVIEW is None and not EXECUTED
                 request={'device':str(Path('/dev/disk/by-id/virtio-'+SERIAL).resolve(strict=True)),'options':request['options']}
                 fd=sealed(json.dumps(request).encode())
-                try:raw=subprocess.check_output(['/usr/bin/python3','-I','/opt/toddy-build/scripts/build/phase2/installer_qualification.py','review','--options-fd',str(fd),'--serial',SERIAL],pass_fds=(fd,),stderr=subprocess.DEVNULL,timeout=60)
+                try:raw=subprocess.check_output(['/usr/bin/python3','-I',ENTRY,'review','--options-fd',str(fd),'--serial',SERIAL],pass_fds=(fd,),stderr=subprocess.DEVNULL,timeout=60)
                 finally:os.close(fd)
                 assert len(raw)<=65536;REVIEW=json.loads(raw);write(BASE/'review.json',raw);result=REVIEW
             elif action=='execute':
@@ -133,7 +142,7 @@ def main(expected):
                 secret=request.pop('password').encode();line=b'';assert 12<=len(secret)<=1024 and not any(byte in secret for byte in (b'\n',b'\r',b'\x00'))
                 plan=sealed(json.dumps(REVIEW['plan']).encode());credential,writer=os.pipe();cancel,CANCEL=os.pipe()
                 os.write(writer,secret);os.close(writer);secret=None;request.clear();EXECUTED=True
-                try:CHILD=subprocess.Popen(['/usr/bin/python3','-I','/opt/toddy-build/scripts/build/phase2/installer_qualification.py','execute','--plan-fd',str(plan),'--credential-fd',str(credential),'--cancel-fd',str(cancel),'--confirm',REVIEW['plan']['plan_sha256'],'--serial',SERIAL],pass_fds=(plan,credential,cancel),stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+                try:CHILD=subprocess.Popen(['/usr/bin/python3','-I',ENTRY,'execute','--plan-fd',str(plan),'--credential-fd',str(credential),'--cancel-fd',str(cancel),'--confirm',REVIEW['plan']['plan_sha256'],'--serial',SERIAL],pass_fds=(plan,credential,cancel),stdout=subprocess.PIPE,stderr=subprocess.PIPE)
                 finally:
                     for fd in (plan,credential,cancel):os.close(fd)
                 result={'state':'execute-dispatched','canonical_result_pending':True}
@@ -145,11 +154,11 @@ def main(expected):
                 assert not request;result={'running':CHILD is not None,'execute_started':EXECUTED,'last':last}
             elif action=='gui':
                 assert not request and CHILD is None and gui is None
-                gui=subprocess.Popen(['/usr/bin/python3','-I','/opt/toddy-build/scripts/build/phase2/installer_qualification.py','gui','--uid','1000','--display','wayland-0'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+                gui=subprocess.Popen(['/usr/bin/python3','-I',ENTRY,'gui','--uid','1000','--display','wayland-0'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
                 result={'state':'qualification-gui-requested','disk_write_enabled':False,'native_GUI_acceptance':False}
             elif action=='collect':
                 assert not request and CHILD is None and last is not None and last['exit']==0 and last['result'].get('state')=='completed'
-                raw=subprocess.check_output(['/usr/bin/python3','-I','/opt/toddy-build/scripts/build/phase2/installer_collect.py','--review',str(BASE/'review.json'),'--stream'],stderr=subprocess.DEVNULL,timeout=60)
+                raw=subprocess.check_output(['/usr/bin/python3','-I',*([ENTRY,'collect'] if MVP else ['/opt/toddy-build/scripts/build/phase2/installer_collect.py']),'--review',str(BASE/'review.json'),'--stream'],stderr=subprocess.DEVNULL,timeout=60)
                 assert len(raw)<=12*1024**2;collected=json.loads(raw)
                 assert collected['state']=='actual-evidence-read-only-stream' and len(collected['files'])==10
                 result={'state':'actual-evidence-collected','files':collected['files']}

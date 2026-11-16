@@ -16,6 +16,12 @@ import offline_payload as payload
 
 ROOT=vm.ROOT;CONTEXT=ROOT/'.local/phase2/native-installer-1';WORK=CONTEXT/'run';SERIAL='TODDY-INSTALL-P2-1'
 HOST_FLOOR=100*1024**3+512*1024**2;HEADROOM=1024**3;WRITE_BPS=16*1024**2
+MVP=False
+def configure(mvp=False):
+    global MVP,CONTEXT,WORK
+    snapshot.configure(mvp);MVP=mvp;CONTEXT=snapshot.CONTEXT;WORK=CONTEXT/'run'
+    if mvp:installed.configure_mvp()
+
 ACTIONS={'review','execute','cancel','status','gui','collect','finish','capture'}
 SERVICE=b'''[Unit]
 Description=Disposable live installer root qualification controller
@@ -57,7 +63,7 @@ def admission(free,storage):
 
 
 def qemu(firmware,snapshot_sha):
-    source=('EXPECTED_SNAPSHOT_SHA256='+repr(snapshot_sha)+'\n').encode()+(HERE/'installer-live-probe.py').read_bytes()
+    source=('EXPECTED_SNAPSHOT_SHA256='+repr(snapshot_sha)+'\nQUALIFICATION_PROFILE='+repr(snapshot.MVP_CLASS if MVP else 'standard')+'\n').encode()+(HERE/'installer-live-probe.py').read_bytes()
     args=boot.qemu_arguments(firmware,{'systemd.extra-unit.toddy-boot-probe.service':SERVICE,
         'systemd.unit-dropin.multi-user.target':b'[Unit]\nWants=toddy-boot-probe.service\n','toddy.boot-probe':compressed_payload(source)})
     args[args.index('-cpu')+1]='host';args[args.index('-m')+1]='8192';args[args.index('-smp')+1]='4'
@@ -143,6 +149,7 @@ def run(iso,iso_sha,options_path):
     if {path.name for path in CONTEXT.iterdir()}!={'qualification-inputs'}:raise ValueError('existing_or_uncertain_context_no_restart')
     folder=CONTEXT/'qualification-inputs';private(folder,True);complete=read(folder/'complete.json');description=read(folder/'snapshot.json')
     if complete.get('state')!='qualification-snapshot-created-not-booted' or complete['snapshot_sha256']!=boot.digest(folder/'snapshot.json') or complete['iso_sha256']!=boot.digest(private(folder/'inputs.iso')):raise ValueError('actual_reviewed_auxiliary_iso_required')
+    if (MVP and (description.get('delivery_class')!=snapshot.MVP_CLASS or description.get('g2_eligible') is not False)) or (not MVP and 'delivery_class' in description):raise ValueError('matching_explicit_installer_delivery_profile_required')
     iso=snapshot.regular(iso)
     if not re.fullmatch('[a-f0-9]{64}',iso_sha) or boot.digest(iso)!=iso_sha:raise ValueError('actual_live_iso_hash_required')
     with iso.open('rb') as stream:
@@ -150,6 +157,7 @@ def run(iso,iso_sha,options_path):
         if stream.read(5)!=b'CD001':raise ValueError('actual_live_iso9660_required')
     options=json.loads(snapshot.regular(options_path).read_bytes())
     if not isinstance(options,dict) or set(options)!=OPTION_FIELDS or options['boot_mode'] not in ('bios','uefi'):raise ValueError('nonsecret_exact_installer_options_required')
+    if MVP and options['boot_mode']!='uefi':raise ValueError('fixed_MVP_UEFI_first_install_required')
     if not isinstance(options['extras'],list) or any(not isinstance(value,str) or value not in ('docker','opencode','vscode') for value in options['extras']):raise ValueError('typed_nonsecret_optional_intent_required')
     options['extras']=sorted(options['extras'])
     if not admission(shutil.disk_usage(ROOT).free,description.get('payload_storage',{})):raise ValueError('host_reserve_plus_actual_install_storage_required')
@@ -160,6 +168,7 @@ def run(iso,iso_sha,options_path):
         'auxiliary_iso_sha256':complete['iso_sha256'],'descriptor':description['descriptor'],'runtime_source_sha256':description['runtime_source_sha256'],
         'expected_kernel_sha256':description['expected_kernel_sha256'],'payload_storage':description['payload_storage'],'accepted':baseline,'container_image':image,
         'producer_sha256':boot.digest(Path(__file__)),'vault_sha256':boot.digest(Path(vault_module.__file__)),'probe_sha256':boot.digest(HERE/'installer-live-probe.py')}
+    if MVP:inputs.update(delivery_class=snapshot.MVP_CLASS,qualification_profile=snapshot.MVP_CLASS,g2_eligible=False)
     save(CONTEXT/'inputs.json',inputs);run_id=uuid.uuid4().hex
     common=['--user',str(os.getuid())+':'+str(os.getgid()),'--cap-drop=ALL','--security-opt=no-new-privileges','--network=none','--read-only',
         '-v',str(WORK)+':/work']
@@ -263,7 +272,7 @@ def run(iso,iso_sha,options_path):
     info=json.loads(tool(common,image,'qemu-img','info','--output=json','--backing-chain','/installed/installed.qcow2'))
     if len(info)!=1 or info[0]['format']!='qcow2' or info[0]['virtual-size']!=64*1024**3:raise ValueError('cold_self_contained_64g_required')
     handoff=read(CONTEXT/'handoff.json') if (CONTEXT/'handoff.json').exists() else None
-    save(CONTEXT/'cold.json',{'version':1,'kind':'native-live-install-cold-handoff-v1','controller_sha256':inputs['producer_sha256'],'vault_sha256':inputs['vault_sha256'],'state':'cold-completed-install' if handoff else 'cold-without-install-acceptance','container_final_state':final,
+    save(CONTEXT/'cold.json',{**({'qualification_profile':snapshot.MVP_CLASS,'g2_eligible':False} if MVP else {}),'version':1,'kind':'native-live-install-cold-handoff-v1','controller_sha256':inputs['producer_sha256'],'vault_sha256':inputs['vault_sha256'],'state':'cold-completed-install' if handoff else 'cold-without-install-acceptance','container_final_state':final,
         'disk_sha256':boot.digest(private(CONTEXT/'installed.qcow2')),'disk_identity':phase2_vm.backing_identity(CONTEXT/'installed.qcow2'),'disk_ctime_ns':(CONTEXT/'installed.qcow2').stat().st_ctime_ns,
         'media_detached':True,'generated_credential_available_in_controller_RAM':owner_password is not None,'handoff_sha256':boot.digest(CONTEXT/'handoff.json') if handoff else None,'production_ready':False})
     fcntl.flock(lock,fcntl.LOCK_UN);lock.close()
@@ -302,12 +311,12 @@ def send(action,identity,confirm=None,generated=False):
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__,allow_abbrev=False);sub=parser.add_subparsers(dest='action',required=True)
+    parser=argparse.ArgumentParser(description=__doc__,allow_abbrev=False);parser.add_argument('--mvp',action='store_true');sub=parser.add_subparsers(dest='action',required=True)
     start=sub.add_parser('run');start.add_argument('--iso',required=True,type=Path);start.add_argument('--iso-sha256',required=True);start.add_argument('--options',required=True,type=Path)
     control=sub.add_parser('send');control.add_argument('command',choices=sorted(ACTIONS));control.add_argument('--request-id',required=True);control.add_argument('--confirm');control.add_argument('--generated-password',action='store_true')
     sub.add_parser('close-generated-credential')
     vault=sub.add_parser('type-generated-password');vault.add_argument('--installed-context',required=True,type=Path);vault.add_argument('--frame-sha256',required=True)
-    args=parser.parse_args()
+    args=parser.parse_args();configure(args.mvp)
     if args.action in ('type-generated-password','close-generated-credential'):
         private(CONTEXT,True)
         with socket.socket(socket.AF_UNIX,socket.SOCK_STREAM) as stream:

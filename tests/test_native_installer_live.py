@@ -20,6 +20,34 @@ def fixture():
 
 
 class InstallerControllerTests(unittest.TestCase):
+    def test_mvp_selects_fixed_independent_context_and_credential_pinned_entry(self):
+        with patch.object(c.installed,'configure_mvp',create=True) as boot_profile:
+            try:
+                c.configure(True)
+                self.assertEqual(c.CONTEXT,ROOT/'.local/phase2/native-mvp-installer-1')
+                self.assertEqual(c.WORK,c.CONTEXT/'run');boot_profile.assert_called_once_with()
+                with patch.object(c,'compressed_payload',wraps=c.compressed_payload) as packed:
+                    actual=c.qemu('uefi','a'*64)
+                    source=packed.call_args.args[0]
+                    self.assertIn(b"QUALIFICATION_PROFILE='phase2-mvp-preinstalled-v1'",source)
+                    self.assertIn('TODDY-INSTALL-P2-1',' '.join(actual))
+            finally:c.configure(False)
+        self.assertEqual(c.CONTEXT,ROOT/'.local/phase2/native-installer-1')
+        tree=ast.parse((ROOT/'scripts/host/installer-live-probe.py').read_text())
+        environment={'__name__':'fixture','QUALIFICATION_PROFILE':snapshot.MVP_CLASS}
+        # Only imports and fixed constants, never prepare/mount/device operations.
+        selected=[]
+        for node in tree.body:
+            if isinstance(node,(ast.FunctionDef,ast.If)):break
+            selected.append(node)
+        exec(compile(ast.Module(body=selected,type_ignores=[]),'fixed-probe-profile','exec'),environment)
+        self.assertEqual(environment['INPUTS'],Path('/sources/stage/toddy-mvp-installer-native-inputs'))
+        self.assertEqual(environment['ENTRY'],'/opt/toddy-build/scripts/build/phase2/mvp_installer_qualification.py')
+        source=(ROOT/'scripts/host/installer_input_snapshot.py').read_text()
+        self.assertIn("native.name!='toddy-mvp-installer-native-inputs'",source)
+        self.assertIn("not mvp and 'delivery_class' in manifest",source)
+        self.assertIn('mvp_installer_qualification.py',source)
+
     def test_real_iso_boot_owned_devices_and_network_none_command_shape(self):
         for firmware in ('bios','uefi'):
             args=c.qemu(firmware,'a'*64)
