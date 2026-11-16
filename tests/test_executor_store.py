@@ -77,6 +77,24 @@ class ExecutorStoreTests(unittest.TestCase):
         audit=json.dumps(self.store.audit(101))
         self.assertNotIn('dummy-secret',audit);self.assertNotIn('private dummy',audit)
         self.assertEqual(self.store.audit(102),[])
+    def test_owned_managed_uncertainty_reconciles_readback_only_and_holds_drift(self):
+        self.grant()
+        self.store.plan(101,None,'managed','managed_config_apply',{})
+        def failed(*_):raise OSError('lost completion')
+        with self.assertRaises(PolicyError):
+            self.store.dispatch(101,None,'managed','managed_config_apply',{},failed)
+        calls=[]
+        with self.assertRaises(PolicyError):
+            self.store.reconcile_configuration(102,'managed',lambda op:calls.append(op))
+        self.assertEqual(calls,[])
+        held=self.store.reconcile_configuration(101,'managed',lambda op:{'state':'review_required','verified':False})
+        self.assertEqual(held['state'],'uncertain')
+        receipt={'version':1,'state':'completed','verified':True,'revision_id':'managed'}
+        done=self.store.reconcile_configuration(101,'managed',lambda op:calls.append(op) or receipt)
+        self.assertEqual(done['state'],'completed');self.assertEqual(done['result'],receipt)
+        self.assertEqual(calls,['managed'])
+        self.store.reconcile_configuration(101,'managed',lambda op:self.fail('repeated readback'))
+        self.assertEqual(self.store.dispatch(101,None,'managed','managed_config_apply',{},lambda *_:self.fail('replay'))['state'],'completed')
     def test_allowlisted_package_error_code_without_arbitrary_payload(self):
         self.grant();self.plan()
         def fail(*_):raise PolicyError('package_status_unverified')

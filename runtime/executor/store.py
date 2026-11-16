@@ -176,6 +176,31 @@ class Store:
                 self._audit(db,'cancel_request',uid,row['generation'],op,row['kind'],state)
         return self.inspect(uid,op)
 
+    def reconcile_configuration(self,uid,op,readback):
+        """Verify an owned uncertain managed effect; never repeat its write.
+
+        readback is fixed trusted service code, not an IPC callback. Operation
+        ownership is checked before touching any private configuration journal.
+        The existing dispatch lock excludes reconciliation during another write.
+        """
+        current=self.inspect(uid,op)
+        if current['state']!='uncertain':return current
+        with open(self.path/'dispatch.lock','r+b') as lock:
+            try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+            except BlockingIOError:return current
+            with self._db() as db:
+                row=db.execute('SELECT * FROM operations WHERE id=? AND uid=?',(op,uid)).fetchone()
+            if row['state']!='uncertain' or row['kind'] not in ('managed_config_apply','managed_config_restore'):
+                return self.inspect(uid,op)
+            result=readback(op)
+            if result.get('state')=='completed' and result.get('verified') is True:
+                encoded=json.dumps(result,allow_nan=False,separators=(',',':'))
+                if len(encoded.encode())>4096:raise PolicyError('invalid_postcondition')
+                with self._transaction() as db:
+                    db.execute("UPDATE operations SET state='completed',result=? WHERE id=? AND uid=? AND state='uncertain'",(encoded,op,uid))
+                    self._audit(db,'reconcile',uid,row['generation'],op,row['kind'],'completed')
+            return self.inspect(uid,op)
+
     def dispatch(self,uid,session,op,kind,arguments,apply):
         """Serialize mutations, recheck current grant, durably mark before effect.
 

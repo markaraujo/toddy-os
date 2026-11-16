@@ -46,6 +46,10 @@ def validate(kind,args):
     elif kind=='network_operation':
         from native_backends import validate_network
         validate_network(args)
+    elif kind in ('managed_config_apply','managed_config_restore'):
+        from configuration import validate_request,ConfigurationError
+        try:validate_request(kind,args)
+        except ConfigurationError as error:raise PolicyError(str(error)) from None
     else:raise PolicyError('operation_unavailable')
     return args
 
@@ -151,10 +155,14 @@ def root_command(args,canceled=lambda:False):
     return run_command(args,canceled)
 
 
-def apply(kind,args,canceled=lambda:False):
+def apply(kind,args,canceled=lambda:False,*,operation_id=None,configuration_directory=None):
     if os.geteuid()!=0:raise PolicyError('root_executor_required')
     validate(kind,args)
     if canceled():raise PolicyError('operation_canceled_before_dispatch')
+    if kind in ('managed_config_apply','managed_config_restore'):
+        from configuration import dispatch,ConfigurationError
+        try:return dispatch(operation_id,kind,args,canceled,directory=configuration_directory)
+        except ConfigurationError as error:raise PolicyError(str(error)) from None
     if kind=='config_replace':return config_replace(args,canceled)
     if kind=='package_transaction':
         from native_backends import package_transaction

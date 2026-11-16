@@ -25,7 +25,7 @@ ROOT=phase2_vm.ROOT
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--generation',required=True,type=int)
-    p.add_argument('--slice',choices=['control','owner','broker'],default='control')
+    p.add_argument('--slice',choices=['control','owner','broker','recovery'],default='control')
     args=p.parse_args()
     assert 1<=args.generation<=100
     context=ROOT/('.local/phase2/native-executor-'+args.slice+'-'+str(args.generation))
@@ -39,7 +39,7 @@ def main():
         path=phase2_vm.WORK/name
         assert path.is_file() and not path.is_symlink() and phase2_vm.backing_identity(path)==row, 'Cold disk changed; reconcile instead of boot'
     files={}
-    for name in ['service.py','store.py','operations.py','command_child.py','linux_identity.py','native_backends.py','policy.py','owner_policy.py','session_identity.py','io.github.markaraujo.Toddy.Executor1.xml']:
+    for name in ['service.py','store.py','operations.py','configuration.py','command_child.py','linux_identity.py','native_backends.py','policy.py','owner_policy.py','session_identity.py','io.github.markaraujo.Toddy.Executor1.xml']:
         files[name]=(ROOT/'runtime/executor'/name).read_text()
     packed=zlib.compress(json.dumps(files,sort_keys=True).encode(),9)
     parts=[packed[i:i+8192] for i in range(0,len(packed),8192)]
@@ -49,7 +49,7 @@ def main():
             ('io.github.markaraujo.Toddy.Owner.policy','/usr/share/polkit-1/actions/io.github.markaraujo.Toddy.Owner.policy')]:
         manifest['packaging'][source]={'path':destination,'text':(ROOT/'runtime/executor/packaging'/source).read_text()}
     auxiliary=None
-    if args.slice=='broker':
+    if args.slice in ('broker','recovery'):
         bundle={}
         for name in ['broker/service.py','broker/core.py','broker/protocol.py','broker/profiles.py','broker/tasks.py',
                      'broker/io.github.markaraujo.Toddy.Service1.xml','broker/engine.py','broker/configured_engine.py','broker/text.py',
@@ -60,7 +60,9 @@ def main():
         for source,destination in [('toddy-agent.service','/usr/lib/systemd/user/toddy-agent.service'),
                ('io.github.markaraujo.Toddy.Service.service','/usr/share/dbus-1/services/io.github.markaraujo.Toddy.Service.service')]:
             bundle[destination]=(ROOT/'runtime/broker/packaging'/source).read_text()
-        packet=zlib.compress(json.dumps({'bundle':bundle,'hook':(ROOT/'scripts/host/phase2-native-broker-hook.py').read_text()},sort_keys=True).encode(),9)
+        if args.slice=='recovery':bundle={}
+        hook=ROOT/('scripts/host/phase2-native-'+('recovery' if args.slice=='recovery' else 'broker')+'-hook.py')
+        packet=zlib.compress(json.dumps({'bundle':bundle,'hook':hook.read_text()},sort_keys=True).encode(),9)
         assert len(packet)<=1024**2
         manifest['broker']={'sha256':hashlib.sha256(packet).hexdigest(),'bytes':len(packet),'serial':'TODDY-BROKER-INPUTS'}
         auxiliary=b'TODDY_NATIVE_INPUTS_V1\0'+len(packet).to_bytes(8,'big')+hashlib.sha256(packet).digest()+packet
@@ -69,7 +71,7 @@ def main():
     extra.update({'toddy.executor.input'+str(i):data for i,data in enumerate(parts)})
     unit=(ROOT/'scripts/host/boot-probe.service').read_bytes().replace(b'TimeoutStartSec=180',b'TimeoutStartSec=300')
     unit+=b''.join(('LoadCredential='+name+'\n').encode() for name in sorted(extra))
-    probe=(ROOT/('scripts/host/phase2-native-executor-'+('owner' if args.slice=='broker' else args.slice)+'-probe.py')).read_bytes()
+    probe=(ROOT/('scripts/host/phase2-native-executor-'+('owner' if args.slice in ('broker','recovery') else args.slice)+'-probe.py')).read_bytes()
     payloads={'systemd.extra-unit.toddy-boot-probe.service':unit,
               'systemd.unit-dropin.multi-user.target':(ROOT/'scripts/host/boot-probe.target.conf').read_bytes(),
               'toddy.boot-probe':compressed_payload(probe)}
@@ -88,7 +90,7 @@ def main():
     context.mkdir(mode=0o700)
     if auxiliary is not None:
         datafile=context/'broker-input.raw';datafile.write_bytes(auxiliary);datafile.chmod(0o400)
-    state={'story':'B04','scope':'Disposable source-stage native owner/executor control qualification; no package/image acceptance',
+    state={'story':'B05' if args.slice=='recovery' else 'B04','scope':'Disposable source-stage native owner/executor qualification; no final package/image acceptance',
            'commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
            'started_utc':datetime.now(timezone.utc).isoformat(),'controller_pid':os.getpid(),
            'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),

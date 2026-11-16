@@ -448,13 +448,13 @@ def validate_request(kind, arguments):
     return arguments
 
 
-def dispatch(operation_id, kind, arguments, canceled=lambda: False):
+def dispatch(operation_id, kind, arguments, canceled=lambda: False, *, directory=None):
     """Root service entry; operation_id must be its authenticated durable ID."""
     if os.geteuid() != 0 or os.getuid() != 0:
         raise ConfigurationError('root_executor_required')
     identifier(operation_id)
     validate_request(kind, arguments)
-    manager = ConfigurationManager()
+    manager = ConfigurationManager(directory) if directory is not None else ConfigurationManager()
     if kind == 'managed_config_apply':
         return manager.apply(operation_id, arguments['config_id'], arguments['configuration'],
                              arguments['expected_sha256'], canceled=canceled)

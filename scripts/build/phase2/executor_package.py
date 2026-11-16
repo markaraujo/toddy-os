@@ -10,7 +10,7 @@ DEPENDENCIES=('python (>= 3.14.10-1+toddy2), python (<< 3.15), '
               'pygobject (= 3.56.3-1+toddy1), glib (>= 2.88.3-1+toddy2), '
               'dbus (>= 1.16.2-1+toddy1), polkit (= 127-1+toddy1), '
               'systemd (>= 261.2-1+toddy3), apt, dpkg, networkmanager (= 1.58.1-1+toddy1)')
-MODULES=('service.py','store.py','policy.py','owner_policy.py','operations.py',
+MODULES=('service.py','store.py','policy.py','owner_policy.py','operations.py','configuration.py',
          'native_backends.py','command_child.py','linux_identity.py','session_identity.py',
          'io.github.markaraujo.Toddy.Executor1.xml')
 
