@@ -9,7 +9,13 @@ guard_guest() {
     [[ $(hostname) == toddy-builder ]] || { echo 'Wrong guest hostname' >&2; return 1; }
     [[ $(systemd-detect-virt) == kvm || $(systemd-detect-virt) == qemu ]] || return 1
     [[ $(lsblk -dn -o SERIAL "$TARGET_DISK") == TODDY-LFS-TARGET ]] || return 1
-    [[ $(blockdev --getsize64 "$TARGET_DISK") == 193273528320 ]] || return 1
+    case $(blockdev --getsize64 "$TARGET_DISK") in
+        193273528320) ;; # Historical foundation/accepted B02 stays exact180GiB.
+        219043332096)
+            python3 -I -B /opt/toddy-build/scripts/build/phase2/grow_candidate_target.py guard || return 1
+            ;;
+        *) return 1 ;;
+    esac
     [[ $(lsblk -dn -o SERIAL /dev/vda) == TODDY-BUILDER ]] || return 1
     [[ $(findmnt -n -o SOURCE /) == /dev/vda1 ]] || return 1
     [[ $LFS == /mnt/lfs && ! -L $LFS ]] || return 1
