@@ -53,7 +53,11 @@ def native_guard(system):
     node = Path('/dev/vdb4').stat()
     if not stat.S_ISBLK(node.st_mode) or Path('/').stat().st_dev != node.st_rdev:
         raise ValueError('Assembly requires designated native target root, not builder/host root')
-    if system.run(['/usr/bin/lsblk', '-dn', '-o', 'SERIAL', '/dev/vdb']) != 'TODDY-LFS-TARGET':
+    # Native chroots may have no udev database in their fresh /run. The kernel
+    # serial remains mandatory; a populated udev value must independently agree.
+    kernel_serial=Path('/sys/block/vdb/serial').read_text().strip()
+    udev_serial=system.run(['/usr/bin/lsblk', '-dn', '-o', 'SERIAL', '/dev/vdb']).strip()
+    if kernel_serial!='TODDY-LFS-TARGET' or udev_serial not in ('','TODDY-LFS-TARGET'):
         raise ValueError('Assembly target serial')
     if system.run(['/usr/sbin/blkid', '-s', 'LABEL', '-o', 'value', '/dev/vdb4']) != 'TODDY_LFS':
         raise ValueError('Assembly target label')

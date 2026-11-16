@@ -28,6 +28,18 @@ class AssemblyTests(unittest.TestCase):
             a.native_guard(system)
         system.run.assert_not_called()
 
+    def test_native_kernel_serial_is_mandatory_when_chroot_udev_is_empty(self):
+        from types import SimpleNamespace
+        def facts(path,*args,**kwargs):
+            return SimpleNamespace(st_mode=__import__('stat').S_IFBLK,st_rdev=123) if str(path)=='/dev/vdb4' else SimpleNamespace(st_dev=123)
+        for kernel,udev,valid in (('TODDY-LFS-TARGET','',True),('TODDY-LFS-TARGET','TODDY-LFS-TARGET',True),('TODDY-LFS-TARGET','OTHER',False),('OTHER','TODDY-LFS-TARGET',False),('','TODDY-LFS-TARGET',False)):
+            with self.subTest(kernel=kernel,udev=udev),patch.object(Path,'stat',facts),patch.object(Path,'read_text',return_value=kernel+'\n') as read:
+                system=Mock();system.run.side_effect=lambda args:udev if args[0]=='/usr/bin/lsblk' else 'TODDY_LFS'
+                if valid:a.native_guard(system)
+                else:
+                    with self.assertRaisesRegex(ValueError,'target serial'):a.native_guard(system)
+                read.assert_called_once_with()
+
     def test_new_root_keeps_required_traversal_under_private_umask(self):
         with tempfile.TemporaryDirectory() as temporary:
             stage=Path(temporary);stage.chmod(0o755)
