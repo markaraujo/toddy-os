@@ -13,6 +13,11 @@ from runtime.installer.composition import secured,validate_policy
 TARGET=Path('/mnt/lfs');STAGE=TARGET/'sources/stage'
 PROJECTION=STAGE/'toddy-image-projection-2'
 EXPORT=STAGE/'toddy-package-export-2'
+MVP_EXPORT=STAGE/'toddy-package-export-3'
+
+def signed_export(kind):
+    if kind not in ('base','live','mvp-base','mvp-live'):raise ValueError('Fixed image delivery profile required')
+    return MVP_EXPORT if kind.startswith('mvp-') else EXPORT
 RECORDS=Path('/var/log/toddy/packages');ARCHIVES=Path('/var/cache/toddy/packages')
 OUTPUT={'base':STAGE/'toddy-installer-native-inputs','live':STAGE/'toddy-live-native-inputs',
         'mvp-base':STAGE/'toddy-mvp-installer-native-inputs','mvp-live':STAGE/'toddy-mvp-live-native-inputs'}
@@ -119,8 +124,9 @@ def prepare(kind):
     policy=account_policy(secured(TARGET/'etc/passwd').read_text(),secured(TARGET/'etc/group').read_text(),entries)
     boot=boot_profile(entries);InstalledBoot(Path('/'),{'ownership':{'entries':entries}},boot,None)
     trustpins=p.strict(secured(ROOT/'config/phase2/archive-public-trust.json').read_bytes())
+    export=signed_export(kind)
     trust=p.ReleaseTrust(keyring=secured(ROOT/'config/phase2/archive-public-key.gpg'),expected_key_sha256=trustpins['public_keyring_sha256'],
-        release=secured(EXPORT/'Release'),signature=secured(EXPORT/'Release.gpg'),packages=secured(EXPORT/'Packages'),index_path='Packages')
+        release=secured(export/'Release'),signature=secured(export/'Release.gpg'),packages=secured(export/'Packages'),index_path='Packages')
     # Verify actual signature/package identity before creating an input namespace.
     trust.verify([dict(row,archive=row['name']+'_'+row['version']+'_'+row['architecture']+'.deb',archive_bytes=secured(ARCHIVES/(row['name']+'_'+row['version']+'_'+row['architecture']+'.deb'),limit=8*1024**3).stat().st_size) for row in components])
     output=OUTPUT[kind]

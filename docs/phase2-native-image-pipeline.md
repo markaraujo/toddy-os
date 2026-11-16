@@ -556,3 +556,12 @@ media generations are `toddy-mvp-live-installer-compression-1`,
 installer readiness truthfully. Existing/partial seals or embedding intents are
 preserved and refuse replay; source changes after the first snapshot require a
 new measured source generation rather than overriding the receipt.
+
+MVP installer revision2 must use a fresh measured signed export generation:
+`/mnt/lfs/sources/stage/toddy-package-export-3`. The fixed MVP input commands read
+`Release`, `Release.gpg` and `Packages` only from that new flat directory after
+actual installer4 installation, MVP projection and public-signature return.
+They do not fall back to export2. Export2 remains immutable and is still the
+fixed standard-profile source; its older installer archive must never be replaced
+inside an existing export or signed index. No signature or successful export3
+receipt is created by this source-path change.
