@@ -117,6 +117,9 @@ def main():
         return
     record=json.loads((WORK/'backing.json').read_text())
     assert record['phase']=='prepared' and record['base_identity']==original
+    memory={line.split(':',1)[0]:line.split(':',1)[1].strip().split()[0]
+            for line in Path('/proc/meminfo').read_text().splitlines()}
+    assert int(memory['MemAvailable'])*1024>=14*1024**3,'Candidate VM RAM plus overhead unavailable'
     for name in ('builder.qcow2','lfs-target.qcow2','qt-raster-work.raw'):
         assert (WORK/name).is_file() and not (WORK/name).is_symlink()
     # Scratch mtime changes after use; its path/size/UID and fixed serial are
