@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "scope": "source-only independent signed native agent package bootstrap",
+  "focused_command": "python3 -m unittest tests.test_native_acquisition -v",
+  "focused_checks": 15,
+  "focused_result": "passed",
+  "focused_elapsed_seconds": 0.111,
+  "actual_crash_effect": "one owned-temp file write followed by child os._exit9; durable write intent prevents redispatch",
+  "signing_verifier": "source-injected fixture; no real keys/signatures generated",
+  "native_apt_pkexec": "not-run; native runners are source stubs",
+  "guest_writes": false,
+  "host_package_or_key_changes": false,
+  "default_catalog": "unavailable until fixed root-owned real signed metadata and native qualification report exist",
+  "legacy_pending_manifest_unchanged": true,
+  "ui_or_generator_changed": false,
+  "service_model_key_grant_autoactivation": false,
+  "native_acceptance": false,
+  "pending": [
+    "base assistant helper/modules/Polkit packaging",
+    "actual signed native artifacts/catalog/retained qualification",
+    "actual installed-owner Polkit and root helper transport",
+    "actual APT signature/ownership/closure/install/lifecycle and safe Stop/reconnect",
+    "separate local-runtime bootstrap extension",
+    "UI explicit review/terms/single-child phase integration"
+  ],
+  "repository_check": {
+    "command": "make check",
+    "result": "passed",
+    "checks": 699,
+    "elapsed_seconds": 12.528
+  }
+}

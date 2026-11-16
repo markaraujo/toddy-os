@@ -1,0 +1,144 @@
+# Native agent acquisition without an installed agent
+
+The new setup modules implement an actual signed APT/Dpkg package path independent
+of broker/Pi/Node/executor availability. Their default is **unavailable** until the
+publisher supplies a genuinely qualified signed native release. No signed release
+or native bootstrap acceptance is fabricated by this source slice. Docker,
+OpenCode, VS Code/Flatpak and other descriptive candidates remain unavailable.
+PendingStore and the legacy Catalog retain their existing deferred-wish behavior.
+
+## Base package integration
+
+The coordinator-owned assistant generator must install these original modules
+under `/usr/lib/toddy/setup/`: `acquisition.py`, `releases.py`,
+`acquisition_journal.py`, `native_backend.py`, `native_acquire.py`, alongside
+unchanged `pending.py`. Only `native_acquire.py` needs executable mode 0755;
+all code must be root-owned without group/world write. Its isolated Python
+shebang imports only the fixed `/usr/lib/toddy` namespace. Install the policy at
+`/usr/share/polkit-1/actions/io.github.markaraujo.Toddy.AcquireNative.policy`.
+The exact pkexec executable annotation is
+`/usr/lib/toddy/setup/native_acquire.py`, active `auth_admin`, inactive/other no,
+with no retained authorization or root GUI environment. Base requires its already
+qualified Python, gpgv, APT/Dpkg, Polkit, logind and `_apt` sandbox account.
+The helper and catalog must be present before optional agent/executor acquisition.
+This worker does not modify the generator/UI/shared installer handoff module.
+
+The executor package must not contain a .wants enable link. Root service/unit and
+D-Bus definitions are permissible for later explicit use, but installing must not
+activate services. A native qualification must also confirm that package removal/
+upgrade safely handles existing service lifetimes and preserves private user data.
+No maintainer scripts, preset/cron/autostart/enable payloads or setuid capabilities
+are accepted by this bootstrap route.
+
+## Fixed publisher contract
+
+Public metadata lives at `/usr/share/toddy/software/native/`, owned by root with
+no writable/symlinked ancestor or hardlinked files. The source list is the fixed
+`/etc/apt/sources.list.d/toddy-native.list`, not a manifest-supplied URL. It must
+contain exactly one `deb [signed-by=.../archive-keyring.gpg] URI SUITE [main]` line.
+URI is credential-free HTTPS or the explicit verified offline repository at
+`file:/usr/share/toddy/software/native/repository`. No trusted=yes option, foreign
+repository, owner proxy/credential environment or downloaded shell is accepted.
+The entire source-list hash and signed InRelease bytes/size are pinned below.
+
+Required root-owned files:
+
+- `trust.json`: exact fields `version:1`, uppercase primary key `fingerprint`
+  (40/64 hex), `keyring_sha256`; `archive-keyring.gpg` is its exact public keyring.
+- `releases.json` and detached `releases.json.asc`: gpgv must return exactly the
+  pinned valid primary fingerprint. Re-read catalog bytes after verification.
+  Catalog fields are `version:1`, monotonic integer `generation`, Unix
+  `not_before`/`expires` (at most 31 days), `repository`, `releases` (zero or one).
+- `repository`: `id:'toddy-native'`, `sources_sha256`, `inrelease_sha256`,
+  `inrelease_bytes`. These must describe the actual root source and APT release.
+- Release: `id:'agent-backend'`, stable `artifact_id`, exact `packages`,
+  `postconditions`, `terms_sha256`, public aggregate `license`,
+  `permissions:['user-agent-service','privileged-executor-without-grant']`,
+  `qualification_sha256`, `requires_owner_authorization:true`, `auto_activate:false`.
+  Packages are exactly toddy-agent/toddy-executor/nodejs. Each has `name`, `version`,
+  `architecture` (amd64/all), exact archive `bytes`/`sha256`, `installed_bytes`.
+  Derive these from accepted native artifacts/records, not estimates or wishes.
+- `postconditions`: hashes for the fixed vital code/unit paths in releases.py's
+  POSTCONDITIONS. Root verifies file hash, nonwritable root custody, Dpkg ownership,
+  exact installed versions and a clean native audit before recording installed.
+- `terms/<terms_sha256>.txt`: exact UTF-8 public legal/source/permission review;
+  show it with package versions/sizes/source and a separate unchecked acceptance.
+- `qualifications/<qualification_sha256>.json`: exact `version:1`,
+  `scope:'installed-native-agent-acquisition'`, `native_result:'passed'`,
+  `package_set_sha256`, `checks`, `retained_evidence_sha256`. The package-set hash
+  uses pending._encode(packages), including list order. Checks must exactly cover
+  REQUIRED_CHECKS in releases.py, all true, backed by actual native evidence.
+- `qualifications/<retained_evidence_sha256>.evidence.json`: retained sanitized
+  actual native result bytes with the above scope, `environment:'native-installed-user'`,
+  `fixture_only:false`, runner/postconditions integer exits 0, and identical
+  `package_set_sha256`. Hashes alone or callable/fixture presence are not acceptance.
+
+The publisher must retain the actual native logs/qualification inputs and bind
+these report bytes to that accepted release. Test fixtures inject fake verification
+in a temporary source API only; the fixed production CLI has no such switch.
+Nothing in this repository installs fabricated metadata or a signing key.
+
+## UI/client API
+
+Use `AcquisitionClient(existing_pending_store, progress=callback)` from
+`toddy.setup.acquisition` in one bounded UI worker. `review()` is unprivileged,
+local and harmless offline; it never invokes Polkit/network/secret storage. It
+returns unavailable, reconciliation_required, packages_present or review_required,
+with `can_install`. An available row includes the exact packages/derived closure,
+source/revision, download/installed bytes, public license/terms text/hash,
+permissions and review hash. Package presence is not working backend readiness.
+
+`install(review, accepted_terms=True)` requires fresh explicit review and invokes
+only nonsecret fixed argv:
+
+```text
+pkexec /usr/lib/toddy/setup/native_acquire.py install OPERATION_ID agent-backend REVIEW_SHA256 TERMS_SHA256
+```
+
+Polkit authenticates the installed owner separately from terms and from later
+API/local model/key/grant consent. Root derives caller UID only from pkexec and
+checks actual active/unlocked/local logind state; live media/reserved build accounts
+are refused. No inherited descriptor >=3 is required. One child reports bounded
+NDJSON progress phases and a result. The progress callback runs on the worker;
+schedule native UI updates on its normal main loop. It creates no new thread or
+repeated PAM prompt by itself.
+
+`action('status'|'cancel'|'reconcile')` refers only to the private saved operation;
+it never calls install again. These explicit owner actions use normal Polkit
+rather than a background authentication poll. A lost or invalid reply leaves
+`outcome_unknown`; new submissions are held until known-state reconciliation.
+The private 0600 acquisition.json is an operation cursor, not a second installer
+handoff or reusable authorization. It shares PendingStore's private directory,
+lock/CAS/atomic/fsync discipline; pending.json itself remains unchanged.
+
+## Root transaction and recovery
+
+The private 0700 root state at `/var/lib/toddy/setup-acquisition` uses a schema 1
+SQLite journal with synchronous durable transitions. Duplicate UID/operation/review
+identity returns the original row before current catalog/busy/lock checks. A new
+operation cannot bypass a prior uncertain write or roll back catalog generation.
+Unknown status opens read-only and creates no state directory, operation or work.
+
+APT uses isolated lists/archive caches and only the fixed signed source. It
+updates/downloads separately, requires exact pinned InRelease/signer, snapshots
+root-owned indexes, and rejects a solver removal/change outside the reviewed
+missing set. Archive size/hash/control identity and forbidden activation payloads
+are checked before copying into root-only verified inodes. Catalog, inventory,
+owner session and Stop are checked again before durable native write intent.
+Actual install uses no download/removal, preserves owner conffiles and never
+kills healthy Dpkg for a timer, UI disconnect or Stop. Output is drained with a
+bounded retained buffer and never printed as raw package diagnostics.
+
+An interrupted pre-write phase may reconcile as deferred. An interrupted writer
+stays uncertain: observe actual package locks/status/code hashes/ownership and
+clean audit before installed; otherwise retain needs_reconciliation and use the
+native rescue/package recovery route. Never replay the transaction or claim
+whole-system rollback. Cancellation can stop before write or wait for a safe
+completed transaction; committed effects remain. No model/provider/service/grant
+activation follows package completion. Probe actual backend capabilities only
+after the user's separate explicit activation/setup choice.
+
+Native qualification remains mandatory: actual installed-owner pkexec/Polkit,
+signature/repository tamper refusal, absent-agent install path, exact closure and
+file ownership, offline failure, safe Stop, crash/reconnect reconciliation, real
+upgrade/remove/recovery and no automatic service/model/key/grant activation.
