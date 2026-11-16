@@ -4,7 +4,7 @@ Updated: 2026-11-11T15:51:16.353086+00:00
 
 Bootstrap: ready_for_development
 
-B01/B02/B03 completed:23% weighted Phase2. B02 native reference desktop/Git/offline recovery/persistence/resources and evidence delivered. Execution paused on owner instruction after B02; no later story resumed. B04 retains unfinished proofs and is the next eligibility review after owner resumes. No Phase2 installable ISO/G2 or physical acceptance.
+Owner resumed Phase2 on 2026-11-16 with parallel isolated source preparation. B01/B02/B03 accepted (23%); B04 native owner/executor integration is current. G2 and Phase2 ISO remain pending; physical validation unperformed.
 
 Foundation: **100%** · Agentic desktop: **23%**
 
@@ -30,7 +30,7 @@ No milestone earns credit without completed acceptance evidence.
 | [B01 — Freeze the minimal Toddy architecture and delivery slices](stories/B01.md) | agentic | 5 | completed |
 | [B02 — Deliver the minimal branded GNOME desktop](stories/B02.md) | agentic | 10 | completed |
 | [B03 — Connect provider adapters and one optional local AI profile](stories/B03.md) | agentic | 8 | completed |
-| [B04 — Deliver native tools and the revocable privileged executor](stories/B04.md) | agentic | 8 | blocked |
+| [B04 — Deliver native tools and the revocable privileged executor](stories/B04.md) | agentic | 8 | in_progress |
 | [B05 — Persist tasks and recover interrupted system changes](stories/B05.md) | agentic | 10 | not_started |
 | [B06 — Deliver Toddy quick entry, native UI and first-run setup](stories/B06.md) | agentic | 10 | not_started |
 | [B07 — Deliver inspectable local memory and portable backup](stories/B07.md) | agentic | 8 | not_started |

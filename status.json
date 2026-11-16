@@ -3,7 +3,7 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-11T15:51:16.353086+00:00",
   "bootstrap": "ready_for_development",
-  "current_scope": "B01/B02/B03 completed:23% weighted Phase2. B02 native reference desktop/Git/offline recovery/persistence/resources and evidence delivered. Execution paused on owner instruction after B02; no later story resumed. B04 retains unfinished proofs and is the next eligibility review after owner resumes. No Phase2 installable ISO/G2 or physical acceptance.",
+  "current_scope": "Owner resumed Phase2 on 2026-11-16 with parallel isolated source preparation. B01/B02/B03 accepted (23%); B04 native owner/executor integration is current. G2 and Phase2 ISO remain pending; physical validation unperformed.",
   "next_story": "B04",
   "gates": {
     "G1": "passed",
@@ -524,7 +524,7 @@
       "phase": "agentic",
       "title": "Deliver native tools and the revocable privileged executor",
       "weight": 8,
-      "status": "blocked",
+      "status": "in_progress",
       "depends_on": [
         "B01"
       ],
@@ -737,11 +737,5 @@
     "phase_2_approved": true,
     "decision": "docs/adr/0063-owner-review-after-h13.md",
     "approval_evidence": "docs/adr/0113-owner-authorizes-phase2-implementation.md"
-  },
-  "execution_hold": {
-    "status": "paused_by_owner_after_B02",
-    "after_story": "B02",
-    "requires_owner_resumption": true,
-    "evidence": "docs/evidence/B02-completion-stop.json"
   }
 }

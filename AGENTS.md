@@ -15,8 +15,10 @@ Physical foundation testing remains pending. Use `docs/PHASE-2-PLAN.md`,
 `docs/PHASE-2-VALIDATION.md`, revised B01-B13 and ADR-0105 instead of obsolete
 drafts; do not restart planning or rebuild the accepted foundation. Preserve
 exact logo/mascot assets and historical G1 evidence.
-Do not mark B11 complete for repository artwork alone. For this authorized run,
-do not use subagents or switch models automatically.
+Do not mark B11 complete for repository artwork alone. The owner resumed execution on 2026-11-16 and explicitly requested maximum
+simultaneous subagents; see docs/adr/0229-owner-resumes-parallel-phase2.md. Use
+isolated source worktrees and one coordinator/guest writer. Do not switch models
+automatically.
 
 Deliver small independently committable slices with checkpoints and exact next
 actions. Tests take time: run focused basic checks and directly affected

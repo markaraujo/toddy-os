@@ -1,16 +1,24 @@
 # Phase 2 continuation card
 
-## Owner stop reached: B02 complete, execution paused
+## Owner resumed: B04 native executor integration
 
-**Do not start/resume a later story until owner resumption.** B01/B02/B03 accepted:
-23% weighted Phase2. Full goal remains incomplete; G2 pending, no Phase2 ISO,
-physical foundation testing unperformed. Original phase approval remains recorded;
-later execution_hold blocks continuation. Next eligibility review is unfinished B04,
-with retained headless proofs; B02 now supplies native prerequisites. B05 still
-requires B03+B04. Preserve all current acceptance and approved brand masters.
+Owner resumed on 2026-11-16 and requested maximum simultaneous subagents;
+[ADR-0229](adr/0229-owner-resumes-parallel-phase2.md) supersedes the old stop and
+single-agent restriction. B01/B02/B03 remain accepted: 23% weighted Phase2.
+B04 is the current acceptance slice. Three isolated workers prepare profiles,
+memory and deferred setup choices without guest access or story acceptance.
+No Phase2 ISO/G2 or physical acceptance exists.
 
-[Delivery](B02-DESKTOP-DELIVERY.md), [criterion audit](evidence/B02-acceptance.json),
-[actual stop/cold disks](evidence/B02-completion-stop.json).
+Slice: qualify owner grant/revoke through a fixed Polkit helper and structured
+service/network operations on a new disposable native overlay. Inputs: accepted
+B02 cold disks and current executor source. First inspect disk identities, actual
+processes and host reserve. Never replay prior runtime controllers. Undo: stop
+only the newly owned VM; retain its overlay/evidence and unchanged backing.
+Checks: affected executor/schema/policy tests, then actual system bus/systemd/
+owner-authentication/Stop/revocation postconditions. Reuse unchanged foundation,
+provider and desktop evidence. Exact native controller/log recorded before launch.
+Next: implement and validate the missing owner/structured-operation surface,
+commit reviewed inputs, then dispatch one new native qualification context.
 
 ## Last verified runtime and jobs
 
@@ -69,12 +77,9 @@ ledger .local/phase2/failures.json; budgets do not reset across compaction.
 
 ## Final repository/public handoff
 
-After the completion commit: make check/dashboard, staged secret scan, commit/push
-and deterministic .local/phase2/verify-current-public.py on that exact HEAD.
-Observer receipt is .local/phase2/<HEAD7>-public-verified.json: require three actual
-successful workflows plus HTTP200/exact committed index SHA, never timeout-as-pass.
-Once verified, pause the full goal per owner instruction; no B04 work. G2/full
-Phase2 remains incomplete, not blocked by a newly invented approval requirement.
+After each validated slice: make check/dashboard, secret scan, commit/push and
+verify the public dashboard against that exact HEAD. Continue eligible Phase2
+work; the historical B02 stop is superseded by ADR-0229.
 
 ## Recovery and unchanged evidence
 
