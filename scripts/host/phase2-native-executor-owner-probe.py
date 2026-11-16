@@ -1,4 +1,4 @@
-"""Default-policy active PAM login/session grants and native executor package lifecycle."""
+"""Default-policy active PAM session grants and native executor package lifecycle."""
 import base64
 import hashlib
 import json
@@ -75,13 +75,41 @@ def main():
     secret=secrets.token_urlsafe(32)
     r=subprocess.run(['chpasswd','-c','YESCRYPT'],input=username+':'+secret+'\n',text=True,capture_output=True,timeout=15)
     assert r.returncode==0,'Ephemeral credential creation failed'
-    report={'scope':'Real native PAM local console login/default Polkit owner policy/session grants and dpkg install/upgrade/revoke. No test authorization rule, graphical UI/physical/signed release acceptance implied.',
+    report={'scope':'Trusted root-created native PAM/logind local session, default Polkit owner policy with real administrator password, session grants and dpkg install/upgrade/revoke. No authorization-rule override or real console/GDM login claim; graphical UI/physical/signed release acceptance separate.',
             'source_sha256':hashes,'all_selected_exits_zero':False,'checks':[]}
     def passed(name,**data):report['checks'].append({'name':name,**data});print('TODDY_B04_STAGE',name,flush=True)
+    policy=Path('/run/toddy-executor-owner-pam');policy.mkdir(mode=0o755)
+    (policy/'toddy-session').write_text('account required pam_unix.so\nsession required pam_systemd.so\n')
     pid,fd=pty.fork()
     if pid==0:
-        os.environ.clear();os.environ.update(PATH='/usr/bin:/usr/sbin',LANG='C.UTF-8',TERM='dumb')
-        os.execv('/usr/bin/login',['login',username])
+        # Trusted root fixture opens a real PAM/logind session; owner grant still
+        # requires independent pkexec/PAM password authentication below.
+        import ctypes
+        lib=ctypes.CDLL('libpam.so.0')
+        class Conversation(ctypes.Structure):pass
+        Callback=ctypes.CFUNCTYPE(ctypes.c_int,ctypes.c_int,ctypes.c_void_p,ctypes.c_void_p,ctypes.c_void_p)
+        cb=Callback(lambda *_:19)
+        Conversation._fields_=[('conv',Callback),('data',ctypes.c_void_p)]
+        conv=Conversation(cb,None);handle=ctypes.c_void_p()
+        lib.pam_start_confdir.argtypes=[ctypes.c_char_p,ctypes.c_char_p,ctypes.POINTER(Conversation),ctypes.c_char_p,ctypes.POINTER(ctypes.c_void_p)]
+        assert lib.pam_start_confdir(b'toddy-session',username.encode(),ctypes.byref(conv),str(policy).encode(),ctypes.byref(handle))==0
+        lib.pam_set_item.argtypes=[ctypes.c_void_p,ctypes.c_int,ctypes.c_void_p]
+        lib.pam_putenv.argtypes=[ctypes.c_void_p,ctypes.c_char_p]
+        assert lib.pam_set_item(handle,3,ctypes.c_char_p(b'tty1'))==0
+        assert lib.pam_putenv(handle,b'XDG_SESSION_TYPE=tty')==0
+        assert lib.pam_putenv(handle,b'XDG_SESSION_CLASS=user')==0
+        assert lib.pam_acct_mgmt(handle,0)==0
+        assert lib.pam_open_session(handle,0)==0
+        shellpid=os.fork()
+        if shellpid==0:
+            os.setgroups([__import__('grp').getgrnam('wheel').gr_gid]);os.setgid(uid);os.setuid(uid)
+            os.environ.clear();os.environ.update(PATH='/usr/bin:/usr/sbin',LANG='C.UTF-8',TERM='dumb',HOME='/home/'+username,USER=username,LOGNAME=username)
+            os.chdir('/home/'+username)
+            os.execv('/usr/bin/bash',['bash','--noprofile','--norc'])
+        _,raw=os.waitpid(shellpid,0)
+        assert lib.pam_close_session(handle,0)==0
+        assert lib.pam_end(handle,0)==0
+        os._exit(os.waitstatus_to_exitcode(raw))
     tail=b'';prompts=0;session=None;deadline=time.monotonic()+30
     try:
         while time.monotonic()<deadline:
@@ -94,10 +122,10 @@ def main():
                     os.write(fd,secret.encode()+b'\n');tail=b''
             r=run(['loginctl','show-user',str(uid),'-p','Display','--value'],check=False)
             if r.returncode==0 and re.fullmatch(r'[a-zA-Z0-9_-]{1,128}',r.stdout.strip()):session=r.stdout.strip();break
-        assert prompts==1 and session is not None,'Authenticated local PAM/logind session missing'
+        assert prompts==0 and session is not None,'Root-created local PAM/logind session missing'
         props=dict(l.split('=',1) for l in run(['loginctl','show-session',session,'-p','User','-p','Active','-p','Remote','-p','Type']).stdout.splitlines())
         assert props['User']==str(uid) and props['Active']=='yes' and props['Remote']=='no'
-        passed('real-login-password-active-local-logind-session',properties=props,raw_tty_retained=False)
+        passed('trusted-root-pam-active-local-logind-session',properties=props,raw_tty_retained=False)
         def shell(command, *, authenticate=False, success=True):
             os.write(fd,(command+"; printf '\\nTODDY_COMMAND_DONE:%s\\n' $?\n").encode())
             tail=b'';count=0;deadline=time.monotonic()+40
