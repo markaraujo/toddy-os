@@ -1,0 +1,32 @@
+{
+  "scope": "source-only unsigned native APT/acquisition artifact producers",
+  "private_signing_material_accessed": false,
+  "global_keyring_changes": false,
+  "signatures_created": false,
+  "native_repository_or_installation_qualified": false,
+  "publishing_or_guest_mutation": false,
+  "checks": [
+    {
+      "command": "python3 -m unittest tests.test_archive_metadata tests.test_image_projection tests.test_offline_payload -q",
+      "tests": 29,
+      "exit": 0,
+      "seconds": 0.732
+    },
+    {
+      "command": "make check",
+      "tests": 845,
+      "exit": 0,
+      "seconds": 16.755
+    },
+    {
+      "command": "isolated public_trust inspection of parent public certificate/pins",
+      "exit": 0,
+      "actual_public_crypto_material_only": true,
+      "fingerprint": "453CD646B5F61C586812690F1AF1606035781DB1",
+      "public_keyring_sha256": "41c8ca50efdcb996d902dd5d5adaf4215354fc184b1636bef3e9a859ea961c77"
+    }
+  ],
+  "source_fixture_failure": "Missing-signature fixture initially expected FileNotFoundError; existing offline_payload.regular correctly raises its ValueError subtype before any verification/output. Test expectation corrected, guards unchanged.",
+  "boundary": "Actual synthetic dpkg-deb archive read/control/payload/copyright verification tested without installation. Declaration formatter fixtures use no real signatures/native qualification. Public certificate inspection uses only packet-checked public bytes in a new temporary GPG home. Parent separately signs actual native export, runs native APT/component/full flow and existing final publication guard.",
+  "memory": "Exporter retains only fixed vital-path metadata after full archive verification, not the full aggregate file maps for every package."
+}
