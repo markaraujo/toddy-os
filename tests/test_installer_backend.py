@@ -16,7 +16,7 @@ import unittest
 from runtime.installer.backend import Installer, Journal
 from runtime.installer.disk_plan import (InstallError, ProductionPolicy,
     QualificationPolicy, make_plan, partition_script, validate_plan)
-from runtime.installer.installed_identity import audit_hygiene, write_identity
+from runtime.installer.installed_identity import audit_hygiene, write_identity, create_owner
 from runtime.installer.linux_disk import LinuxDisk
 
 
@@ -67,6 +67,8 @@ class FakeNative:
             gid = arguments[arguments.index('--gid') + 1]
             with (root / 'etc/passwd').open('a') as stream:
                 stream.write(f'{username}:x:{uid}:{gid}::/home/{username}:/bin/bash\n')
+            if '--groups' in arguments and arguments[arguments.index('--groups')+1]=='wheel':
+                group=root/'etc/group';group.write_text(group.read_text().replace('wheel:x:97:\n','wheel:x:97:'+username+'\n'))
             (root / 'home' / username).mkdir(parents=True)
             if os.geteuid() == 0:
                 os.chown(root / 'home' / username, int(uid), int(gid))
@@ -145,6 +147,7 @@ class InstallerBackendTests(unittest.TestCase):
         for folder in ('etc', 'usr/share/zoneinfo', 'boot', 'home'):
             (target / folder).mkdir(parents=True, exist_ok=True)
         (target / 'etc/passwd').write_text('root:x:0:0:root:/root:/bin/bash\n')
+        (target / 'etc/group').write_text('root:x:0:\nwheel:x:97:\n')
         (target / 'usr/share/zoneinfo/UTC').write_bytes(b'fixture timezone bytes')
         (target / 'etc/machine-id').write_bytes(b'')
         (target / 'etc/localtime').symlink_to('../usr/share/zoneinfo/UTC')
@@ -310,6 +313,19 @@ class InstallerBackendTests(unittest.TestCase):
         (target / 'root/.ssh').mkdir(parents=True)
         with self.assertRaisesRegex(InstallError, 'private_or_live'):
             audit_hygiene(target, self.plan)
+
+    def test_missing_native_admin_group_refuses_owner_creation_before_account_commands(self):
+        target=self.root/'missing-admin-group';target.mkdir();self.payload(target,self.plan)
+        (target/'etc/group').unlink()
+        with self.assertRaisesRegex(InstallError,'admin_group_missing'):
+            create_owner(target,self.plan,self.read_fd,self.system)
+        self.assertEqual(self.system.calls,[])
+
+    def test_actual_executor_state_path_is_rejected_from_fresh_image(self):
+        target=self.root/'inherited-executor';target.mkdir();self.payload(target,self.plan)
+        (target/'var/lib/toddy/executor').mkdir(parents=True)
+        with self.assertRaisesRegex(InstallError,'private_or_live'):
+            audit_hygiene(target,self.plan)
 
 
 if __name__ == '__main__':

@@ -104,10 +104,16 @@ def create_owner(root, plan, credential_fd, system):
     if not 12 <= len(password) <= 1024 or any(c in password for c in (b'\n', b'\r', b'\x00')):
         raise InstallError('installer_login_password_bounds')
     owner = plan['options']
+    group_path=Path(root)/'etc/group'
+    if group_path.is_symlink() or not group_path.is_file():
+        raise InstallError('installer_admin_group_missing')
+    wheels=[line.split(':') for line in group_path.read_text().splitlines() if line.startswith('wheel:')]
+    if len(wheels)!=1 or len(wheels[0])!=4 or wheels[0][2]!='97' or wheels[0][3]!='':
+        raise InstallError('installer_admin_group_baseline')
     prefix = ['/usr/bin/chroot', str(root)]
     system.run([*prefix, '/usr/sbin/groupadd', '--gid', str(owner['gid']), owner['username']])
     system.run([*prefix, '/usr/sbin/useradd', '--uid', str(owner['uid']), '--gid', str(owner['gid']),
-        '--create-home', '--shell', '/bin/bash', owner['username']])
+        '--groups','wheel','--create-home', '--shell', '/bin/bash', owner['username']])
     try:
         system.run([*prefix, '/usr/sbin/chpasswd'], data=owner['username'].encode() + b':' + password + b'\n')
     finally:
@@ -120,7 +126,8 @@ def audit_hygiene(root, plan):
     forbidden = ['root/.ssh', 'root/.gnupg', 'root/.local/share/keyrings',
         'root/.bash_history', 'var/lib/systemd/random-seed', 'var/lib/systemd/credential.secret',
         'var/lib/NetworkManager/secret_key',
-        'var/lib/toddy-executor', 'etc/systemd/system/getty@tty1.service.d/autologin.conf',
+        'var/lib/toddy-executor','var/lib/toddy/executor','var/lib/toddy/installer',
+        'root/.config/toddy','etc/systemd/system/getty@tty1.service.d/autologin.conf',
         'etc/systemd/system/serial-getty@ttyS0.service.d/autologin.conf']
     for relative in forbidden:
         if (root / relative).exists() or (root / relative).is_symlink():
@@ -156,6 +163,11 @@ def audit_hygiene(root, plan):
             raise InstallError('installer_unexpected_personal_account')
     if not found:
         raise InstallError('installer_owner_missing')
+    group=root/'etc/group'
+    if group.is_symlink() or not group.is_file():raise InstallError('installer_admin_group_missing')
+    wheels=[line.split(':') for line in group.read_text().splitlines() if line.startswith('wheel:')]
+    if len(wheels)!=1 or len(wheels[0])!=4 or wheels[0][2]!='97' or wheels[0][3]!=owner['username']:
+        raise InstallError('installer_owner_admin_membership')
     homes = root / 'home'
     if homes.is_symlink() or not homes.is_dir() or sorted(p.name for p in homes.iterdir()) != [owner['username']]:
         raise InstallError('installer_inherited_home')

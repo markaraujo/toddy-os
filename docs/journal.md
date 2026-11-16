@@ -4269,3 +4269,19 @@ Prepared separate candidate VM overlays (ADR0239) over accepted read-only B02
 backings with new scratch, preserving original cold identities/evidence. No
 candidate creation/format/build has run. Actual space/guest cache and operation
 state must be inspected after custody before native work.
+
+## 2026-11-16 — Source package closure and installer log custody
+
+Native optional agent staging now includes canonical memory/automation controller
+modules. A complete B01 npm/source/legal stage and production-form Python service
+help/import are reverified independently of native archive acceptance. The first
+import fixture incorrectly used Python isolated mode for the direct service entry
+(which intentionally uses script-directory imports); corrected to its actual
+fixed-path entry, with no product input/version change. No missing-module result
+is represented as a package pass.
+
+Offline Dpkg now explicitly logs under private operation custody outside the
+installed image/live system log; --root alone does not redirect the default log.
+Focused real archive/signature fixtures passed. Terminal owner profile/memory/
+automation controls use bounded explicit CAS writes and no write replay. Actual
+installed native UI/device/installer acceptance remains pending.

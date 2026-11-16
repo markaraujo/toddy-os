@@ -41,8 +41,6 @@ def stage(destination,repository):
     activation.write_text('[D-BUS Service]\nName=io.github.markaraujo.Toddy.Executor\nExec=/usr/bin/false\nUser=root\nSystemdService=toddy-executor.service\n')
     # Without systemd activation the root executor deliberately stays unavailable;
     # a direct D-Bus launch must not bypass its qualified cgroup lifetime.
-    enabled=destination/'etc/systemd/system/multi-user.target.wants/toddy-executor.service'
-    enabled.parent.mkdir(parents=True,exist_ok=True);enabled.symlink_to('/usr/lib/systemd/system/toddy-executor.service')
     (doc/'README').write_text('''Toddy privileged executor
 
 Original Python sources are MIT; documentation is CC BY4.0. No model, GTK,
