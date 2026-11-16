@@ -176,8 +176,9 @@ directory, rejects unknown devices/xattrs/unattributed state, verifies all owned
 bytes/metadata and recovery files, and rechecks bundle/signature custody afterward.
 Unpack success alone cannot return the installed-payload receipt.
 
-No actual finalizer, composed root, signed Phase2 repository, blank-disk install
-or boot is claimed by this source slice. Native reports, extended system-user
+The fixed production finalizer/composition/installed-boot callbacks are now source
+implemented; see [COMPOSITION.md](COMPOSITION.md). No actual native finalizer run,
+composed root, signed Phase2 repository, blank-disk install or boot is claimed. Native reports, extended system-user
 policy and controlled cache/image audits remain concrete required inputs.
 
 ## Canonical foundation configuration handoff
@@ -200,3 +201,6 @@ link, with byte/type/mode readback. Its zoneinfo source remains unchanged. Other
 links are refused without following them. Canonical symlink transformations and
 the new recovery reference must appear in final installed-image attribution;
 source fixture checks do not replace native installation or detached-media boot.
+
+The production factory and exact native input/sealing/package contracts are in
+[COMPOSITION.md](COMPOSITION.md). Missing qualification remains a pre-write error.

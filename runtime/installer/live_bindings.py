@@ -1,12 +1,12 @@
-"""Fixed installed factory for accepted live-media closure/finalizer bindings.
-
-The finalizer and root composition have not yet qualified the real native image.
-There is deliberately no JSON/env/path hook, current-root copy, callable-only
-approval, marker-as-success or generic fallback. The coordinator replaces this
-factory only with retained native qualification bound to the actual bundle/code.
-"""
+"""Fixed production factory; unavailable evidence fails before journal/disk work."""
 from .disk_plan import InstallError
 
 
 def create():
-    raise InstallError('installer_composed_closure_unavailable')
+    from .composition import Composition,LiveBindings
+    from .linux_disk import LinuxDisk
+    try:
+        return LiveBindings(Composition(),LinuxDisk())
+    except (OSError,ValueError,KeyError,TypeError,ImportError) as error:
+        # Never expose input contents, credentials or a generic fallback binding.
+        raise InstallError('installer_composed_closure_unavailable') from error

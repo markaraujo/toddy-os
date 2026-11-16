@@ -27,12 +27,12 @@ it does not inherit the owner's session bus, keyring, tokens, proxies or loaders
 The Python adapter calls the existing `Installer` and the trusted binding object's
 actual `PreparedPayload.verify_payload/install_payload`, boot and pending callbacks.
 There is no whole-root copy, JSON callback/path/hook selection or dummy completion.
-The fixed `toddy.installer.live_bindings.create()` currently fails with
-`installer_composed_closure_unavailable`, before creating an operation journal or
-performing a native disk operation. A callable finalizer or a JSON `verified` marker
-cannot replace qualification. The future fixed factory must check the retained
-native report, source and actual payload/catalog bytes and provide policy, firmware
-scope and the real callbacks. Its readiness report fields are `verified`,
+The fixed `toddy.installer.live_bindings.create()` now implements production
+composition/source/signature/native-receipt checks and real callbacks described in
+[COMPOSITION.md](../COMPOSITION.md). The currently missing qualified composition
+still returns `installer_composed_closure_unavailable` before creating an operation
+journal or performing a disk operation. Callable presence or a JSON verified
+marker cannot replace qualification. No environment/path/hook override exists. Its readiness report fields are `verified`,
 `payload_manifest_sha256`, `catalog_sha256`, `finalizer_source_sha256`,
 `native_qualification_report_sha256`, and `supported_firmware`.
 
