@@ -18,7 +18,13 @@ First build the actual native package archives and
 export directory limited to its original exact flat assets plus Release.gpg and
 InRelease. Put the corresponding-source archives, license bundle, package testing
 guide and SHA256SUMS outside it. No credentials, private signer context, provider
-keys, models, user state, guest images or build-root copy belong in public assets.
+keys, private/user-acquired or unreviewed model files, user state, guest images
+or build-root copy belong in public assets. Explicitly frozen redistributable
+optional model packages, such as the reviewed MIT Whisper base package, may be
+attached only with actual native artifact qualification and exact license/source/
+model hash review. They remain outside the offline ISO and do not imply automatic
+download, activation or user consent; see
+[ADR0244](adr/0244-qualified-optional-native-voice-packages.md).
 
 The guide must clearly limit use to disposable Toddy qualification systems, record
 exact archive/runtime/native build scope and limitations, describe signed-APT
