@@ -1087,11 +1087,11 @@ def installer_gui(environment,channel):
 def main():
     resource.setrlimit(resource.RLIMIT_CORE,(0,0));os.umask(0o077)
     value=manifest_from_disk();native=verify_native(value)
-    ram=Path('/run/toddy-assistant');ram.mkdir(mode=0o755)
+    ram=Path('/run/toddy-assistant');ram.mkdir(mode=0o755);ram.chmod(0o755)
     (ram/'manifest.json').write_text(json.dumps(value));(ram/'manifest.json').chmod(0o644)
     (ram/'client.py').write_text(USER_CLIENT);(ram/'client.py').chmod(0o644)
     if value['human_samples'] is not None:
-        human=ram/'human';human.mkdir(mode=0o755)
+        human=ram/'human';human.mkdir(mode=0o755);human.chmod(0o755)
         (human/'manifest.json').write_text(json.dumps(value['human_samples']['manifest']));(human/'manifest.json').chmod(0o644)
         for locale in ('en','pt-BR'):
             file=human/(locale+'.wav');file.write_bytes(base64.b64decode(value['human_samples'][locale],validate=True));file.chmod(0o644)

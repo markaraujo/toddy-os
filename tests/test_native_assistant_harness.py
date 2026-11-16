@@ -1,5 +1,5 @@
 """Pure source/transport fixtures. No VM, native GUI, model or audio execution."""
-import ast,base64,copy,hashlib,importlib.util,io,json,socket,sys,tempfile,threading,time,unittest,zlib
+import ast,os,base64,copy,hashlib,importlib.util,io,json,socket,sys,tempfile,threading,time,unittest,zlib
 from pathlib import Path
 from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1]
@@ -19,6 +19,25 @@ def manifest():
 
 
 class ManifestTests(unittest.TestCase):
+    def test_shared_reviewed_client_directories_are_traversable_under_private_umask(self):
+        # Execute the actual main directory statements, without invoking a guest.
+        tree=ast.parse(Path(h.__file__).read_text())
+        main=next(node for node in tree.body if isinstance(node,ast.FunctionDef) and node.name=='main')
+        with tempfile.TemporaryDirectory() as directory:
+            environment={'Path':lambda _fixed:Path(directory)/'shared'}
+            selected=[]
+            start=next(i for i,node in enumerate(main.body) if isinstance(node,ast.Assign) and isinstance(node.targets[0],ast.Name) and node.targets[0].id=='ram')
+            selected.extend(main.body[start:start+3])
+            sample=next(node for node in main.body if isinstance(node,ast.If) and any(isinstance(x,ast.Assign) and isinstance(x.targets[0],ast.Name) and x.targets[0].id=='human' for x in node.body))
+            selected.extend(sample.body[:3])
+            before=os.umask(0o077)
+            try:exec(compile(ast.Module(body=selected,type_ignores=[]),'actual-directory-statements','exec'),environment)
+            finally:os.umask(before)
+            for name in ('ram','human'):
+                self.assertEqual(environment[name].stat().st_mode&0o777,0o755)
+                self.assertEqual(environment[name].stat().st_mode&0o005,0o005)
+            self.assertIn('os.chmod(path,0o600)',Path(h.__file__).read_text())
+
     def test_source_import_and_embedded_native_client_are_pure_and_compile(self):
         compile(h.USER_CLIENT,'native-client-fixture','exec')
         compile(c.starter('a'*64),'native-loader-fixture','exec')
