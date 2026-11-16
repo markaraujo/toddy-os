@@ -5,8 +5,8 @@ import tempfile
 import threading
 import wave
 
-from runtime.voice.artifacts import VoiceError
-from runtime.voice.process import ProcessRunner
+from .artifacts import VoiceError
+from .process import ProcessRunner
 
 LANGUAGES={'en':('en','en-us'),'pt-BR':('pt','pt-br')}
 

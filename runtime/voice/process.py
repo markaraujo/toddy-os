@@ -6,7 +6,7 @@ import signal
 import subprocess
 import time
 
-from runtime.voice.artifacts import VoiceError
+from .artifacts import VoiceError
 
 
 @dataclass(frozen=True)
