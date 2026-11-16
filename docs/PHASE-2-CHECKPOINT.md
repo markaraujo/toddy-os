@@ -31,9 +31,15 @@ recovery/backing identities unchanged. Never replay; placeholder is NOT bootable
 
 Immediate native queue (one guest/package writer):
 1. Native recovery3 completed0; never replay it.
-2. NEW candidate overlays via phase2_candidate_vm.py prepare/start (ADR0239).
-3. Inspect actual target reserve/cache/jobs, mount only exact new scratch, qualify
-   necessary reversible cache custody; then QtBase raster prepare/build/upgrade.
+2. Candidate overlays prepared/started successfully (ADR0239); never replay prepare/start.
+3. QtBase raster job `qtbase-wayland-1` RUNNING in `toddy-phase2-candidate`;
+   boot `9ac84ac8-fe0e-41c0-a128-a8e4ad4bebf2`. Source prepare0, exact blank
+   serial `TODDY-QT-RASTER-1` initialized once; ext4 UUID
+   `58e1a631-07a2-40a1-87c2-49de37a69345`, rw/nosuid/nodev. Inspect actual
+   job receipt/exit/log under `/var/log/toddy/phase2`, not stale PID alone.
+   Never replay formatting/preparation/dispatch. Target free17,315,074,048B;
+   native install still needs qualified cache custody above16GiB reserve.
+   Old Qt promotion custody already complete; never replay it.
 4. Calamares module/native root GUI, source-package archive and offline composition.
 5. Voice engine/inference and combined installed UI/task/memory/automation/plugins
    checks at eligible story boundaries; preserve one current acceptance slice.
