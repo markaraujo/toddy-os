@@ -7,6 +7,26 @@ from runtime.ui import cli
 
 
 class TerminalTests(unittest.TestCase):
+    def test_profile_apply_requires_bound_stage_and_never_retries_uncertain_write(self):
+        calls=[]
+        class Service:
+            def call(self,method,signature,values):
+                calls.append((method,values))
+                if method=='ValidateProfile':return json.dumps({'version':1,'valid':True,'profile_revision':'a'*64,'validated_revision':'stage'})
+                if method=='ApplyProfile':raise OSError('lost reply')
+                raise AssertionError(method)
+        with self.assertRaises(OSError):cli.configure_profile(Service(),'owner','a'*64,'{}')
+        self.assertEqual([call[0] for call in calls],['ValidateProfile','ApplyProfile'])
+        self.assertEqual(calls[1][1],('owner','a'*64,'stage'))
+
+    def test_mismatched_validated_revision_never_applies(self):
+        class Service:
+            def call(self,method,*_):
+                if method!='ValidateProfile':raise AssertionError('unexpected mutation')
+                return json.dumps({'version':1,'valid':True,'profile_revision':'b'*64,'validated_revision':'stage'})
+        with self.assertRaisesRegex(ValueError,'configuration_not_validated'):
+            cli.configure_profile(Service(),'owner','a'*64,'{}')
+
     def test_lost_acceptance_uses_lookup_without_resubmission(self):
         calls=[]
         class Service:

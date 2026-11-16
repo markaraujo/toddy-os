@@ -17,7 +17,9 @@ import stat
 import tarfile
 
 AGENT={
- 'broker':('core.py','engine.py','configured_engine.py','text.py','profile_registry.py','profile_runtime.py','memory.py','profiles.py','protocol.py','scheduler.py','service.py','tasks.py',
+ 'broker':('core.py','engine.py','configured_engine.py','text.py','profile_registry.py','profile_runtime.py',
+           'memory.py','memory_api.py','memory_control.py','automation.py','automation_control.py',
+           'profiles.py','protocol.py','scheduler.py','service.py','tasks.py',
            'io.github.markaraujo.Toddy.Service1.xml'),
  'tools':('native.py','child.py','scoped.py','scoped_child.py'),
  'local':('server.py','managed.py'),

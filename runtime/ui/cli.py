@@ -108,6 +108,17 @@ def submit(session, text, *, consent=False, request_id=None, output=sys.stdout):
     return follow(session, task_id, revision=cap['profile_revision'], output=output)
 
 
+def configure_profile(session, profile_id, expected_revision, encoded):
+    """Validate and apply in one authenticated connection, never retry a write."""
+    if len(encoded.encode('utf-8'))>65536:raise ValueError('configuration_bound')
+    staged=body(session.call('ValidateProfile','(sss)',(profile_id,expected_revision,encoded)),32768)
+    token=staged.get('validated_revision')
+    if staged.get('valid') is not True or staged.get('profile_revision')!=expected_revision or \
+            not isinstance(token,str) or not 0<len(token)<=128:
+        raise ValueError('configuration_not_validated')
+    return body(session.call('ApplyProfile','(sss)',(profile_id,expected_revision,token)),32768)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description='Toddy terminal assistant (same-user session service)')
     commands = parser.add_subparsers(dest='command', required=True)
@@ -120,6 +131,16 @@ def main(argv=None):
     create = commands.add_parser('create-profile'); create.add_argument('id')
     select = commands.add_parser('select-profile'); select.add_argument('id'); select.add_argument('generation', type=int)
     history = commands.add_parser('history'); history.add_argument('profile'); history.add_argument('--before', type=int, default=0)
+    clone=commands.add_parser('clone-profile');clone.add_argument('source');clone.add_argument('revision');clone.add_argument('target')
+    for command in ('profile','memory','automation'):
+        inspect=commands.add_parser(command);inspect.add_argument('profile')
+        if command=='memory':
+            inspect.add_argument('--after',default='');inspect.add_argument('--limit',type=int,choices=range(1,17),default=16)
+    for command in ('configure-profile','memory-update','automation-update'):
+        edit=commands.add_parser(command,help='explicit CAS update from bounded JSON on standard input')
+        edit.add_argument('profile');edit.add_argument('expected_revision')
+    restore=commands.add_parser('restore-profile');restore.add_argument('profile')
+    restore.add_argument('expected_revision');restore.add_argument('revision')
     args = parser.parse_args(argv)
     try:
         session = Session()
@@ -128,6 +149,17 @@ def main(argv=None):
             return submit(session, text, consent=args.allow_remote)
         if args.command == 'task':
             return follow(session, args.id)
+        if args.command in ('configure-profile','memory-update','automation-update'):
+            maximum=4096 if args.command=='automation-update' else 65536
+            encoded=sys.stdin.buffer.read(maximum+1).decode('utf-8')
+            if len(encoded.encode('utf-8'))>maximum:raise ValueError('input_bound')
+            if args.command=='configure-profile':
+                value=configure_profile(session,args.profile,args.expected_revision,encoded)
+            else:
+                method='MutateMemory' if args.command=='memory-update' else 'ConfigureAutomation'
+                value=body(session.call(method,'(sss)',(args.profile,args.expected_revision,encoded)),65536)
+            display(json.dumps(value,ensure_ascii=False,indent=2)+'\n',sys.stdout)
+            return 0
         calls = {
             'stop': ('RequestCancel', '(ss)', (getattr(args,'id',None), uuid.uuid4().hex)),
             'lookup': ('LookupRequest', '(ss)', (getattr(args,'profile',None), getattr(args,'request',None))),
@@ -135,6 +167,11 @@ def main(argv=None):
             'create-profile': ('CreateProfile', '(s)', (getattr(args,'id',None),)),
             'select-profile': ('SelectProfile', '(st)', (getattr(args,'id',None), getattr(args,'generation',0))),
             'history': ('ListTasks', '(st)', (getattr(args,'profile',None), getattr(args,'before',0))),
+            'clone-profile':('CloneProfile','(sss)',(getattr(args,'source',None),getattr(args,'revision',None),getattr(args,'target',None))),
+            'profile':('GetProfileConfig','(s)',(getattr(args,'profile',None),)),
+            'memory':('ListMemory','(ssu)',(getattr(args,'profile',None),getattr(args,'after',''),getattr(args,'limit',16))),
+            'automation':('GetAutomation','(s)',(getattr(args,'profile',None),)),
+            'restore-profile':('RestoreProfile','(sss)',(getattr(args,'profile',None),getattr(args,'expected_revision',None),getattr(args,'revision',None))),
         }
         value = body(session.call(*calls[args.command]), 131072)
         display(json.dumps(value, ensure_ascii=False, indent=2)+'\n', sys.stdout)

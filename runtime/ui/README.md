@@ -177,3 +177,15 @@ The actual-host memory_review_ui.py fixture checks plain private notes, no write
 on read/invalid JSON and exactly one explicit hash-bound conversion in EN/PT.
 Oversized, unsealed, changed or invalid documents are refused, never silently
 truncated into a reviewed conversion. Native guest qualification remains pending.
+
+Terminal owner controls also use this same service: `profile PROFILE`,
+`memory PROFILE --after ID --limit 16`, `automation PROFILE` and
+`clone-profile SOURCE EXPECTED_REVISION TARGET`. Explicit writes
+`configure-profile PROFILE EXPECTED_REVISION`,
+`memory-update PROFILE EXPECTED_REVISION` and
+`automation-update PROFILE EXPECTED_REVISION` read bounded JSON from stdin.
+Memory operations include the currently inspected memory_generation. Profile
+configuration is validated and applied on the same authenticated connection;
+a changed revision or lost reply requires inspection, never a write retry.
+`restore-profile PROFILE EXPECTED_REVISION PRIOR_REVISION` preserves the same
+canonical memory/profile recovery rules as GTK. None of these create grants.

@@ -54,6 +54,8 @@ def main():
         for name in ['broker/service.py','broker/core.py','broker/protocol.py','broker/profiles.py','broker/tasks.py',
                      'broker/io.github.markaraujo.Toddy.Service1.xml','broker/profile_registry.py','broker/profile_runtime.py',
                      'broker/engine.py','broker/configured_engine.py','broker/text.py','ui/cli.py','ui/task_state.py',
+                     'broker/memory.py','broker/memory_api.py','broker/memory_control.py',
+                     'broker/scheduler.py','broker/automation.py','broker/automation_control.py',
                      'connections/secret_store.py','local/server.py','local/managed.py','shared/json.py','tools/native.py','tools/child.py','tools/scoped.py','tools/scoped_child.py']:
             bundle['/usr/lib/toddy/'+name]=(ROOT/'runtime'/name).read_text()
         for name in ['profile.schema.json','local-model.lock.json',*[str(p.relative_to(ROOT/'config/phase2')) for p in (ROOT/'config/phase2/profile').iterdir() if p.is_file() and p.suffix in ('.md','.json')]]:
