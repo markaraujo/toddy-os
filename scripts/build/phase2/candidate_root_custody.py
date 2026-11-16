@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""One fixed obsolete offline candidate1 root: source export/qualified retirement.
+"""Two literal candidate1 root custody profiles; no arbitrary cleanup paths.
 
-Only after real matching generation2 finalization. No generic path/cleanup flag.
+Offline after real matching finalizer2; live before fresh finalizer2 only from
+completed resource candidate and exact independently reviewed protected inputs.
+No generic path/cleanup flag.
 """
 import fcntl,hashlib,json,os,shutil,stat,subprocess,sys
 from pathlib import Path
@@ -9,13 +11,23 @@ sys.dont_write_bytecode=True
 ROOT=Path('/opt/toddy-build');TARGET=Path('/mnt/lfs')
 sys.path[:0]=[str(Path(__file__).resolve().parent),str(Path(__file__).resolve().parents[3])]
 import candidate_root_archive as archive
-from runtime.installer.composition import SOURCES,source_path,secured,validate_finalizer_report,bundle_namespace
+from runtime.installer.composition import secured,validate_finalizer_report
 from runtime.installer.native_finalizer import payload_module
-from image_assemble import unclosed_compiler_jobs
-WORK=TARGET/'sources/stage/toddy-offline-image-1';ARTIFACT=WORK/'root'
-REVIEWED=TARGET/'sources/stage/toddy-offline-image-2';FINAL_ROOT=REVIEWED/'offline-root-2'
-INPUTS=TARGET/'sources/stage/toddy-installer-native-inputs';CUSTODY=WORK/'root-custody-1';STATE=CUSTODY/'custody.json'
-VIRTUAL='/sources/stage/toddy-offline-image-1/root'
+from image_assemble import unclosed_compiler_jobs,ReviewedInputs
+PROFILES={'offline':('toddy-offline-image-1','toddy-offline-image-2','offline-root-2','toddy-installer-native-inputs'),
+          'live':('toddy-live-image-1','toddy-live-image-2','live-root-2','toddy-live-native-inputs')}
+
+
+def configure(profile):
+    global PROFILE,WORK,ARTIFACT,REVIEWED,FINAL_ROOT,INPUTS,CUSTODY,STATE,VIRTUAL
+    if profile not in PROFILES:raise ValueError('candidate_root_custody_unknown_fixed_profile')
+    PROFILE=profile;candidate,reviewed,final,inputs=PROFILES[profile]
+    WORK=TARGET/'sources/stage'/candidate;ARTIFACT=WORK/'root';REVIEWED=TARGET/'sources/stage'/reviewed
+    FINAL_ROOT=REVIEWED/final;INPUTS=TARGET/'sources/stage'/inputs;CUSTODY=WORK/'root-custody-1';STATE=CUSTODY/'custody.json'
+    VIRTUAL='/sources/stage/'+candidate+'/root'
+
+
+configure('offline')
 LOG=Path('/var/log/toddy/phase2');LOCK=Path('/var/log/toddy/build/build.lock')
 
 
@@ -75,45 +87,59 @@ def no_consumers(snapshot):
 
 
 def eligible():
-    """Read-only provenance boundary, not the full metadata archive proof."""
-    p=payload_module();work=private(WORK,0o700);root=private(ARTIFACT,0o755);reviewed=private(REVIEWED,0o700);final=private(FINAL_ROOT,0o755)
-    pin=[root.st_dev,work.st_ino,root.st_ino];final_pin=[final.st_dev,reviewed.st_ino,final.st_ino]
-    unpack=read(WORK/'unpacked.json');intent=read(WORK/'unpack-intent.json');candidate=read(WORK/'candidate-resource-receipt.json');finished=read(REVIEWED/'finalized.json')
-    manifest_sha=archive.sha(secured(INPUTS/'payload/manifest.json'))
+    """Fixed workflow boundary; full archive metadata proof remains separate."""
+    p=payload_module();work=private(WORK,0o700);root=private(ARTIFACT,0o755)
+    pin=[root.st_dev,work.st_ino,root.st_ino]
+    unpack=read(WORK/'unpacked.json');intent=read(WORK/'unpack-intent.json');candidate=read(WORK/'candidate-resource-receipt.json')
+    # Same recheck as finalize_native, using the fixed builder view of its input
+    # directory; no source path/callback is accepted from a request or document.
+    inputs=object.__new__(ReviewedInputs);inputs.base=INPUTS;inputs.bundle=INPUTS/'payload';inputs.recheck()
+    manifest=inputs.manifest;manifest_sha=inputs.pins['payload/manifest.json'];descriptor=inputs.descriptor
     if (unpack.get('state')!='native-archives-unpacked-needs-resource-qualification' or intent.get('state')!='unpack-intended' or
             unpack.get('assembly_pin')!=pin or intent.get('assembly_pin')!=pin or unpack.get('root')!=VIRTUAL or intent.get('root')!=VIRTUAL or
             unpack.get('manifest_sha256')!=manifest_sha or intent.get('manifest_sha256')!=manifest_sha or
             unpack.get('dpkg_log_sha256')!=archive.sha(secured(WORK/'dpkg.log')) or
             candidate.get('state')!='native-candidate-awaiting-independent-review' or candidate.get('blockers')!=[] or
-            candidate.get('manifest_sha256')!=manifest_sha or candidate.get('root_inode')!=root.st_ino or candidate.get('root_device')!=root.st_dev or
-            finished.get('state')!='native-finalizer-verified' or finished.get('root')!='/sources/stage/toddy-offline-image-2/offline-root-2' or
-            finished.get('assembly_pin')!=final_pin or finished.get('payload_manifest_sha256')!=manifest_sha or
-            finished.get('production_ready') is not False or finished.get('native_boot_verified') is not False):raise ValueError('candidate_root_custody_completed_generations_required')
-    checks={};sources={name:archive.sha(secured(source_path(name))) for name in SOURCES}
-    if finished.get('source_sha256')!=sources or set(finished.get('checks',{}))!=set(p.CHECKS):raise ValueError('candidate_root_custody_current_finalizer_source')
+            candidate.get('manifest_sha256')!=manifest_sha or candidate.get('root_inode')!=root.st_ino or candidate.get('root_device')!=root.st_dev):
+        raise ValueError('candidate_root_custody_completed_resource_generation_required')
     maps={'candidate-generated-entries.json':'generated-entries.json','candidate-clean-image-manifest.json':'expected-image-manifest.json'}
     for old,new in maps.items():
         if archive.sha(secured(WORK/old))!=archive.sha(secured(INPUTS/new)):raise ValueError('candidate_root_custody_independent_review_binding')
-    if candidate.get('generated_entries_sha256')!=archive.sha(WORK/'candidate-generated-entries.json') or candidate.get('candidate_image_manifest_sha256')!=archive.sha(WORK/'candidate-clean-image-manifest.json'):raise ValueError('candidate_root_custody_resource_outputs_changed')
-    descriptor={'payload_manifest_sha256':manifest_sha,'policy_sha256':archive.sha(secured(INPUTS/'policy.json')),
-        'image_manifest_sha256':hashlib.sha256(p.encoded(read(INPUTS/'expected-image-manifest.json'))).hexdigest()}
-    if (finished.get('policy_sha256')!=descriptor['policy_sha256'] or candidate.get('policy_sha256')!=descriptor['policy_sha256'] or
-            finished.get('generated_entries_sha256')!=archive.sha(INPUTS/'generated-entries.json') or finished.get('image_manifest_sha256')!=descriptor['image_manifest_sha256']):raise ValueError('candidate_root_custody_finalizer_input_binding')
-    for name,row in finished['checks'].items():
-        virtual='/run/toddy-installer/finalization-offline-root-2/'+name+'.json';report=TARGET/virtual.lstrip('/')
-        if set(row)!={'passed','exit_status','report','report_sha256'} or row['passed'] is not True or type(row['exit_status']) is not int or row['exit_status']!=0 or row['report']!=virtual or archive.sha(secured(report))!=row['report_sha256']:raise ValueError('candidate_root_custody_actual_finalizer_report')
-        validate_finalizer_report(read(report),name,descriptor);checks[name]=row['report_sha256']
-    native=p.PreparedPayload(INPUTS/'payload',manifest_sha256=manifest_sha,runner=None,finalizer=None);manifest=native._load();bundle_namespace(INPUTS/'payload',manifest)
-    generated=read(INPUTS/'generated-entries.json')
-    for tree in (ARTIFACT,FINAL_ROOT):
-        current=p.PreparedPayload.audit_tree(tree,manifest,generated)
-        if hashlib.sha256(p.encoded(current)).hexdigest()!=descriptor['image_manifest_sha256']:raise ValueError('candidate_root_custody_clean_current_roots_required')
+    if (candidate.get('generated_entries_sha256')!=archive.sha(WORK/'candidate-generated-entries.json') or
+            candidate.get('candidate_image_manifest_sha256')!=archive.sha(WORK/'candidate-clean-image-manifest.json') or
+            candidate.get('policy_sha256')!=descriptor['policy_sha256']):raise ValueError('candidate_root_custody_reviewed_resource_outputs_changed')
+    checks={};final_pin=None;trees=[ARTIFACT]
     paths=[WORK/name for name in ('unpacked.json','unpack-intent.json','resource-intent.json','candidate-resource-receipt.json','candidate-generated-entries.json','candidate-clean-image-manifest.json','dpkg.log')]
-    paths+=[REVIEWED/'finalized.json',REVIEWED/'finalize-intent.json']+[INPUTS/name for name in ('policy.json','generated-entries.json','expected-image-manifest.json','boot-profile.json','payload/manifest.json')]
+    if PROFILE=='offline':
+        reviewed=private(REVIEWED,0o700);final=private(FINAL_ROOT,0o755);final_pin=[final.st_dev,reviewed.st_ino,final.st_ino]
+        finished=read(REVIEWED/'finalized.json')
+        if (finished.get('state')!='native-finalizer-verified' or finished.get('root')!='/sources/stage/toddy-offline-image-2/offline-root-2' or
+                finished.get('assembly_pin')!=final_pin or finished.get('payload_manifest_sha256')!=manifest_sha or
+                finished.get('production_ready') is not False or finished.get('native_boot_verified') is not False or
+                finished.get('source_sha256')!=inputs.source_hashes or set(finished.get('checks',{}))!=set(p.CHECKS) or
+                finished.get('policy_sha256')!=descriptor['policy_sha256'] or finished.get('generated_entries_sha256')!=inputs.pins['generated-entries.json'] or
+                finished.get('image_manifest_sha256')!=descriptor['image_manifest_sha256']):raise ValueError('candidate_root_custody_actual_finalizer2_required')
+        for name,row in finished['checks'].items():
+            virtual='/run/toddy-installer/finalization-offline-root-2/'+name+'.json';report=TARGET/virtual.lstrip('/')
+            if set(row)!={'passed','exit_status','report','report_sha256'} or row['passed'] is not True or type(row['exit_status']) is not int or row['exit_status']!=0 or row['report']!=virtual or archive.sha(secured(report))!=row['report_sha256']:raise ValueError('candidate_root_custody_actual_finalizer_report')
+            validate_finalizer_report(read(report),name,descriptor);checks[name]=row['report_sha256']
+        paths.extend((REVIEWED/'finalized.json',REVIEWED/'finalize-intent.json'));trees.append(FINAL_ROOT)
+    else:
+        # This explicit capacity boundary precedes fresh generation2. No partial
+        # reviewed root, synthetic finalizer receipt or old-tree adoption allowed.
+        if os.path.lexists(REVIEWED):raise ValueError('candidate_root_custody_live2_exists_reconcile_first')
+    for tree in trees:
+        current=p.PreparedPayload.audit_tree(tree,manifest,inputs.generated)
+        if hashlib.sha256(p.encoded(current)).hexdigest()!=descriptor['image_manifest_sha256']:raise ValueError('candidate_root_custody_current_reviewed_image_required')
+    paths.extend(INPUTS/name for name in ('policy.json','generated-entries.json','expected-image-manifest.json','boot-profile.json'))
+    paths.extend(path for path in inputs.bundle.rglob('*') if path.is_file())
+    paths.extend(ROOT/'scripts/build/phase2'/name for name in ('image_assemble.py','resource_recipe.py'))
     preserved={str(path):archive.sha(secured(path)) for path in paths}
-    no_mounts()
-    return {'assembly_pin':pin,'final_assembly_pin':final_pin,'descriptor':descriptor,'preserved':preserved,'finalizer_reports_sha256':checks,
-        'source_sha256':sources,'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip()}
+    inputs.recheck();no_mounts()
+    return {'profile':PROFILE,'assembly_pin':pin,'final_assembly_pin':final_pin,'descriptor':descriptor,'preserved':preserved,
+        'reviewed_input_pins':inputs.pins,'finalizer_reports_sha256':checks,'source_sha256':inputs.source_hashes,
+        'finalizer2_performed':PROFILE=='offline','workflow_boundary':'actual-offline-finalizer2' if PROFILE=='offline' else 'reviewed-live-inputs-before-fresh-finalizer2',
+        'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip()}
 
 
 def tar_custody():
@@ -129,7 +155,7 @@ def tar_custody():
 
 def inspect():
     provenance=eligible();image=archive.snapshot(ARTIFACT);no_consumers(image)
-    return {'state':'eligible-obsolete-offline-candidate1','provenance':provenance,'entries':len(image['entries']),
+    return {'state':'eligible-'+PROFILE+'-candidate1-custody','provenance':provenance,'entries':len(image['entries']),
         'allocated_regular_bytes':image['allocated_regular_bytes'],'unique_regular_bytes':image['unique_regular_bytes'],'tar_upper_bound_bytes':image['tar_upper_bound_bytes']}
 
 
@@ -141,7 +167,7 @@ def export():
     save(CUSTODY/'source-metadata.json',image)
     listing=b'\0'.join(os.fsencode(name) for name in image['entries'])+b'\0'
     with (CUSTODY/'paths.nul').open('xb') as stream:os.fchmod(stream.fileno(),0o600);stream.write(listing);stream.flush();os.fsync(stream.fileno())
-    state={'version':1,'state':'export-intended-no-replay','scope':'One obsolete offline candidate1 expanded root only',
+    state={'version':1,'state':'export-intended-no-replay','profile':PROFILE,'scope':'One fixed '+PROFILE+' candidate1 expanded root only',
         'provenance':provenance,'metadata_sha256':archive.sha(CUSTODY/'source-metadata.json'),'native_tar':tool,
         'producer_sha256':archive.sha(Path(__file__)),'archive_verifier_sha256':archive.sha(Path(archive.__file__)),
         'root':str(ARTIFACT),'entries':len(image['entries']),'allocated_regular_bytes':image['allocated_regular_bytes'],
@@ -150,7 +176,7 @@ def export():
     command=['/usr/sbin/chroot',str(TARGET),'/usr/bin/tar','--create','--file=-','--format=pax',
         '--pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime','--acls','--xattrs','--xattrs-include=*',
         '--numeric-owner','--sparse','--no-recursion','--null','--verbatim-files-from','--directory='+VIRTUAL,
-        '--files-from=/sources/stage/toddy-offline-image-1/root-custody-1/paths.nul']
+        '--files-from='+VIRTUAL.removesuffix('/root')+'/root-custody-1/paths.nul']
     count=0;digest=hashlib.sha256()
     with (CUSTODY/'create.log').open('xb') as log:
         os.fchmod(log.fileno(),0o600);process=subprocess.Popen(command,stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,stderr=log)
@@ -173,7 +199,9 @@ def retire(proof):
     state=read(STATE)
     required={'version','state','metadata_sha256','tar_sha256','tar_bytes','compressed_sha256','compressed_bytes','host_receipt_sha256','member_proof'}
     if (not isinstance(proof,dict) or set(proof)!=required or proof['version']!=1 or proof['state']!='complete-member-and-decompression-verified' or
-            state.get('state')!='exported-awaiting-host-proof' or proof['metadata_sha256']!=state['metadata_sha256'] or
+            state.get('state')!='exported-awaiting-host-proof' or state.get('profile')!=PROFILE or state.get('root')!=str(ARTIFACT) or
+            state.get('producer_sha256')!=archive.sha(Path(__file__)) or state.get('archive_verifier_sha256')!=archive.sha(Path(archive.__file__)) or
+            proof['metadata_sha256']!=state['metadata_sha256'] or
             proof['tar_sha256']!=state['tar_sha256'] or proof['tar_bytes']!=state['tar_bytes'] or
             any(not isinstance(proof[key],str) or not __import__('re').fullmatch('[a-f0-9]{64}',proof[key]) for key in ('compressed_sha256','host_receipt_sha256')) or
             type(proof['compressed_bytes']) is not int or proof['compressed_bytes']<=0):raise ValueError('candidate_root_custody_durable_host_proof_required')
@@ -197,12 +225,14 @@ def retire(proof):
 
 
 def main():
-    if os.getuid()!=0 or os.geteuid()!=0 or sys.argv[1:] not in (['inspect'],['export'],['receipt'],['metadata'],['retire']):raise ValueError('candidate_root_custody_fixed_root_coordinator_action')
+    arguments=sys.argv[1:]
+    if arguments[:1]==['live']:configure('live');arguments=arguments[1:]
+    if os.getuid()!=0 or os.geteuid()!=0 or arguments not in (['inspect'],['export'],['receipt'],['metadata'],['retire']):raise ValueError('candidate_root_custody_fixed_root_coordinator_action')
     os.umask(0o077);subprocess.run(['/bin/bash','-c','source "$1"; guard_target','guard',str(ROOT/'scripts/build/target.sh')],check=True)
     with LOCK.open('a') as lease:
         fcntl.flock(lease,fcntl.LOCK_EX|fcntl.LOCK_NB)
         if list(LOCK.parent.glob('*.running.json')) or (LOCK.parent/'input-sync.running').exists() or unclosed_compiler_jobs(LOG):raise ValueError('candidate_root_custody_other_native_operation')
-        action=sys.argv[1]
+        action=arguments[0]
         if action=='export':export();return
         if action=='inspect':result=inspect()
         elif action=='receipt':result=read(STATE)

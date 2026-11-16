@@ -21,8 +21,10 @@ candidate1's expanded `root`. The generation1 JSON/maps/journals remain outside
 that root. Once this first profile's actual generation2 gates hold, the expanded
 candidate1 root is optional reconstructible development custody, not an installer
 input. Missing generation2 reports/roots block this profile rather than granting
-an exception. A separate fixed live1-before-live2 profile is not implemented by
-this initial helper; do not substitute paths to work around a capacity cycle.
+an exception. The separate fixed live1-before-live2 profile is documented in
+[Live candidate1 custody](live-candidate-root-custody.md). It has its own reviewed
+input boundary and never substitutes a fake finalizer2 receipt. Do not substitute
+paths or profiles to work around a failed gate.
 
 The coordinator first syncs these committed source helpers into the designated
 builder. After inspecting the actual candidate/job/mount state, it can run this

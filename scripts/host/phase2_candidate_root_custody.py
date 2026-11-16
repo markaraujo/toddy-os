@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Private opaque offline candidate1 archive custody; never extract on host.
+"""Private opaque custody for two fixed candidate1 roots; never host extraction.
 
 Root guest retirement is requested only after independent full member/PAX/ACL/
 hardlink/byte and complete gzip decompression proof, with durable host custody.
@@ -8,7 +8,14 @@ import fcntl,gzip,hashlib,json,os,stat,subprocess,sys
 from pathlib import Path
 import phase2_candidate_vm as candidate
 import vm
-ROOT=vm.ROOT;CONTEXT=ROOT/'.local/phase2/offline-candidate-root-custody-1'
+ROOT=vm.ROOT
+
+def configure(profile):
+    global PROFILE,CONTEXT,ARCHIVE_NAME
+    if profile not in ('offline','live'):raise ValueError('candidate_root_host_unknown_fixed_profile')
+    PROFILE=profile;CONTEXT=ROOT/'.local/phase2'/(profile+'-candidate-root-custody-1');ARCHIVE_NAME=profile+'-candidate1-root.tar.gz'
+
+configure('offline')
 sys.path.insert(0,str(ROOT/'scripts/build/phase2'))
 import candidate_root_archive as archive
 GUEST='/opt/toddy-build/scripts/build/phase2/candidate_root_custody.py'
@@ -28,7 +35,7 @@ def save(path,value):
 def command(action):
     if action not in ('inspect','export','receipt','metadata','retire'):raise ValueError('candidate_root_host_fixed_action')
     ssh=candidate.ssh()
-    return [*ssh[:-1],'-o','ServerAliveInterval=15','-o','ServerAliveCountMax=2',ssh[-1],'/usr/bin/python3 '+GUEST+' '+action]
+    return [*ssh[:-1],'-o','ServerAliveInterval=15','-o','ServerAliveCountMax=2',ssh[-1],'/usr/bin/python3 '+GUEST+' '+('live ' if PROFILE=='live' else '')+action]
 
 def read_guest(action,limit=128*1024**2):
     result=subprocess.run(command(action),stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True,timeout=1800)
@@ -76,7 +83,8 @@ def verify_compressed(path,metadata,expected):
         **expected,'compressed_sha256':archive.sha(path),'compressed_bytes':info.st_size,'member_proof':proof}
 
 
-def main():
+def main(profile='offline'):
+    configure(profile)
     if sys.argv[1:] or os.geteuid()==0 or ROOT.resolve()!=ROOT:raise ValueError('candidate_root_host_fixed_unprivileged_command')
     os.umask(0o077);parent=CONTEXT.parent
     if parent.resolve()!=parent or not parent.is_dir() or parent.stat().st_uid!=os.getuid():raise ValueError('candidate_root_host_private_parent')
@@ -84,7 +92,7 @@ def main():
         fcntl.flock(lease,fcntl.LOCK_EX|fcntl.LOCK_NB)
         if os.path.lexists(CONTEXT):raise ValueError('candidate_root_host_existing_or_uncertain_no_replay')
         identity=candidate.owned();candidate.bases();selected=read_guest('inspect')
-        if selected.get('state')!='eligible-obsolete-offline-candidate1' or type(selected.get('tar_upper_bound_bytes')) is not int or selected['tar_upper_bound_bytes']<=0:raise ValueError('candidate_root_host_actual_eligibility_required')
+        if selected.get('state')!='eligible-'+PROFILE+'-candidate1-custody' or type(selected.get('tar_upper_bound_bytes')) is not int or selected['tar_upper_bound_bytes']<=0:raise ValueError('candidate_root_host_actual_eligibility_required')
         reserve=json.loads((ROOT/'config/build-host.lock.json').read_bytes())['host_free_reserve_gib']*1024**3
         upper=selected['tar_upper_bound_bytes'];space=os.statvfs(parent)
         if space.f_bavail*space.f_frsize<reserve+upper+512*1024**2:raise ValueError('candidate_root_host_reserve_plus_whole_stream_bound')
@@ -92,8 +100,8 @@ def main():
         state={'version':1,'state':'export-intended-no-replay','candidate_container_id':identity,'actual_selection':selected,
             'guest_helper_sha256':archive.sha(ROOT/'scripts/build/phase2/candidate_root_custody.py'),
             'archive_verifier_sha256':archive.sha(Path(archive.__file__)),'host_producer_sha256':archive.sha(Path(__file__)),
-            'scope':'Only obsolete offline candidate1 root; all journals/final roots/signed bundles/accepted backings retained'}
-        save(CONTEXT/'result.json',state);partial=CONTEXT/'offline-candidate1-root.tar.gz.part';packed=CONTEXT/'offline-candidate1-root.tar.gz'
+            'profile':PROFILE,'host_entry_sha256':archive.sha(Path(sys.argv[0]).resolve()),'scope':'Only fixed '+PROFILE+' candidate1 root; all journals/final roots/signed bundles/accepted backings retained'}
+        save(CONTEXT/'result.json',state);partial=CONTEXT/(ARCHIVE_NAME+'.part');packed=CONTEXT/ARCHIVE_NAME
         with (CONTEXT/'export.log').open('xb') as log:
             os.fchmod(log.fileno(),0o600);process=subprocess.Popen(command('export'),stdout=subprocess.PIPE,stderr=log)
             try:
@@ -105,7 +113,7 @@ def main():
                 log.flush();os.fsync(log.fileno())
         os.rename(partial,packed);fsync(CONTEXT);same_guest(identity)
         guest=read_guest('receipt');metadata=read_guest('metadata')
-        if (guest.get('state')!='exported-awaiting-host-proof' or guest.get('producer_sha256')!=state['guest_helper_sha256'] or
+        if (guest.get('state')!='exported-awaiting-host-proof' or guest.get('profile')!=PROFILE or guest.get('producer_sha256')!=state['guest_helper_sha256'] or
                 guest.get('archive_verifier_sha256')!=state['archive_verifier_sha256'] or guest.get('provenance')!=selected['provenance'] or
                 any(guest.get(key)!=value for key,value in expected.items()) or guest.get('metadata_sha256')!=hashlib.sha256(archive.encoded(metadata)).hexdigest()):raise ValueError('candidate_root_host_export_binding_differs')
         save(CONTEXT/'guest-export.json',guest);save(CONTEXT/'source-metadata.json',metadata)

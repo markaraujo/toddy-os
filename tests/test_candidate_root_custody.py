@@ -90,7 +90,7 @@ class CandidateRetirementBoundaryTests(unittest.TestCase):
         source=(ROOT/'scripts/build/phase2/candidate_root_custody.py').read_text()
         self.assertIn("finished.get('state')!='native-finalizer-verified'",source)
         self.assertIn('validate_finalizer_report(read(report),name,descriptor)',source)
-        self.assertIn('p.PreparedPayload.audit_tree(tree,manifest,generated)',source)
+        self.assertIn('p.PreparedPayload.audit_tree(tree,manifest,inputs.generated)',source)
         self.assertIn('unclosed_compiler_jobs(LOG)',source)
         self.assertNotIn('rmtree(WORK)',source);self.assertNotIn('rmtree(FINAL_ROOT)',source)
 
@@ -110,7 +110,8 @@ class CandidateRetirementBoundaryTests(unittest.TestCase):
             final=Path(temporary)/'reviewed';final.mkdir();(final/'file').write_bytes(b'preserved generation2 fixture')
             image=a.snapshot(root);metadata=custody/'source-metadata.json';metadata.write_bytes(a.encoded(image))
             provenance={'preserved':{str(journal):a.sha(journal)}}
-            state={'version':1,'state':'exported-awaiting-host-proof','metadata_sha256':a.sha(metadata),'tar_sha256':'a'*64,'tar_bytes':10240,'provenance':provenance}
+            state={'version':1,'state':'exported-awaiting-host-proof','profile':'offline','root':str(root),
+                'producer_sha256':a.sha(Path(guest.__file__)),'archive_verifier_sha256':a.sha(Path(a.__file__)),'metadata_sha256':a.sha(metadata),'tar_sha256':'a'*64,'tar_bytes':10240,'provenance':provenance}
             statefile.write_bytes(a.encoded(state))
             proof={'version':1,'state':'complete-member-and-decompression-verified','metadata_sha256':state['metadata_sha256'],
                 'tar_sha256':'a'*64,'tar_bytes':10240,'compressed_sha256':'b'*64,'compressed_bytes':100,'host_receipt_sha256':'c'*64,
@@ -122,7 +123,7 @@ class CandidateRetirementBoundaryTests(unittest.TestCase):
                 original(path)
             with patch.object(guest,'ARTIFACT',root),patch.object(guest,'WORK',work),patch.object(guest,'CUSTODY',custody),patch.object(guest,'STATE',statefile),\
                     patch.object(guest,'TARGET',Path(temporary)),patch.object(guest,'eligible',return_value=provenance),patch.object(guest,'read',side_effect=lambda path,**kw:json.loads(Path(path).read_bytes())),\
-                    patch.object(guest,'secured',side_effect=lambda path,**kw:Path(path)),patch.object(guest,'no_consumers') as consumers,\
+                    patch.object(guest,'secured',side_effect=lambda path,*args,**kw:Path(path)),patch.object(guest,'no_consumers') as consumers,\
                     patch.object(guest.shutil,'disk_usage',side_effect=[SimpleNamespace(free=40*1024**3),SimpleNamespace(free=40*1024**3+4096)]),\
                     patch.object(guest.shutil,'rmtree',side_effect=guarded_fixture_remove) as remove:
                 remove.avoids_symlink_attacks=True
@@ -130,5 +131,71 @@ class CandidateRetirementBoundaryTests(unittest.TestCase):
                 remove.assert_called_once_with(root);consumers.assert_called_once_with(image)
             self.assertFalse(root.exists());self.assertEqual(journal.read_bytes(),b'preserved fixture journal')
             self.assertEqual((final/'file').read_bytes(),b'preserved generation2 fixture');self.assertTrue(metadata.exists())
+
+
+
+class LiveCandidateBoundaryTests(unittest.TestCase):
+    def tearDown(self):guest.configure('offline');host.configure('offline')
+
+    def test_live_has_distinct_fixed_context_and_no_arbitrary_profile(self):
+        guest.configure('live');host.configure('live')
+        self.assertEqual(guest.ARTIFACT,Path('/mnt/lfs/sources/stage/toddy-live-image-1/root'))
+        self.assertEqual(guest.INPUTS,Path('/mnt/lfs/sources/stage/toddy-live-native-inputs'))
+        self.assertEqual(host.ARCHIVE_NAME,'live-candidate1-root.tar.gz')
+        self.assertIn('live-candidate-root-custody-1',str(host.CONTEXT))
+        self.assertTrue(host.command('inspect')[-1].endswith(' live inspect'))
+        with self.assertRaises(ValueError):guest.configure('/arbitrary/root')
+        with self.assertRaises(ValueError):host.configure('live-reviewed')
+
+    def test_actual_finalize_path_reads_reviewed_inputs_not_candidate1_root(self):
+        import ast
+        source=ROOT/'scripts/build/phase2/image_assemble.py';tree=ast.parse(source.read_text())
+        node=next(row for row in tree.body if isinstance(row,ast.FunctionDef) and row.name=='finalize_native')
+        body=ast.unparse(node)
+        self.assertIn('ReviewedInputs(kind)',body);self.assertIn("AssemblyRoot(kind + '-reviewed', inputs.manifest)",body)
+        self.assertNotIn('adopt_unpacked',body);self.assertNotIn('qualify(',body)
+        self.assertNotIn('toddy-live-image-1',body);self.assertNotIn('candidate-clean-image-manifest',body)
+        self.assertIn('native.install_payload(assembly.root, plan)',body)
+
+    def test_live_requires_reviewed_inputs_and_resource_completion_before_fresh2(self):
+        from types import SimpleNamespace
+        with tempfile.TemporaryDirectory() as temporary:
+            target=Path(temporary)/'target';repo=Path(temporary)/'checkout';target.mkdir();repo.mkdir()
+            with patch.object(guest,'TARGET',target),patch.object(guest,'ROOT',repo):
+                guest.configure('live');work=guest.WORK;work.mkdir(parents=True);root=guest.ARTIFACT;root.mkdir();(root/'file').write_bytes(b'fixture')
+                inputs=guest.INPUTS;bundle=inputs/'payload';bundle.mkdir(parents=True)
+                files={'payload/manifest.json':{'fixture':'UNQUALIFIED'},'policy.json':{},'generated-entries.json':{},
+                    'expected-image-manifest.json':{'/file':{'fixture':'UNQUALIFIED'}},'boot-profile.json':{}}
+                for name,value in files.items():(inputs/name).write_bytes(a.encoded(value))
+                pins={name:a.sha(inputs/name) for name in files};descriptor={'payload_manifest_sha256':pins['payload/manifest.json'],
+                    'policy_sha256':pins['policy.json'],'image_manifest_sha256':hashlib.sha256(a.encoded(files['expected-image-manifest.json'])).hexdigest()}
+                for old,new in [('candidate-generated-entries.json','generated-entries.json'),('candidate-clean-image-manifest.json','expected-image-manifest.json')]:
+                    (work/old).write_bytes((inputs/new).read_bytes())
+                (work/'dpkg.log').write_text('fixture only');pin=[root.stat().st_dev,work.stat().st_ino,root.stat().st_ino]
+                receipt={'manifest_sha256':pins['payload/manifest.json'],'assembly_pin':pin,'root':guest.VIRTUAL,'dpkg_log_sha256':a.sha(work/'dpkg.log')}
+                (work/'unpack-intent.json').write_bytes(a.encoded({**receipt,'state':'unpack-intended'}))
+                (work/'unpacked.json').write_bytes(a.encoded({**receipt,'state':'native-archives-unpacked-needs-resource-qualification'}))
+                candidate={'state':'native-candidate-awaiting-independent-review','blockers':[],'manifest_sha256':descriptor['payload_manifest_sha256'],
+                    'root_inode':root.stat().st_ino,'root_device':root.stat().st_dev,'policy_sha256':descriptor['policy_sha256'],
+                    'generated_entries_sha256':pins['generated-entries.json'],'candidate_image_manifest_sha256':pins['expected-image-manifest.json']}
+                (work/'candidate-resource-receipt.json').write_bytes(a.encoded(candidate));(work/'resource-intent.json').write_text('{}')
+                for name in ('image_assemble.py','resource_recipe.py'):
+                    path=repo/'scripts/build/phase2'/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text('# fixture only')
+                def recheck(obj):
+                    obj.pins=pins;obj.manifest={'fixture':'UNQUALIFIED'};obj.generated={};obj.descriptor=descriptor;obj.source_hashes={'fixture':'a'*64}
+                audit=Mock(return_value=files['expected-image-manifest.json']);payload=SimpleNamespace(strict=json.loads,encoded=a.encoded,PreparedPayload=SimpleNamespace(audit_tree=audit))
+                with patch.object(guest,'private',side_effect=lambda path,mode:Path(path).stat()),patch.object(guest,'secured',side_effect=lambda path,*args,**kw:Path(path)),\
+                        patch.object(guest,'payload_module',return_value=payload),patch.object(guest.ReviewedInputs,'recheck',autospec=True,side_effect=recheck) as checked,patch.object(guest,'no_mounts'):
+                    result=guest.eligible()
+                    self.assertFalse(result['finalizer2_performed']);self.assertEqual(result['finalizer_reports_sha256'],{})
+                    self.assertEqual(result['workflow_boundary'],'reviewed-live-inputs-before-fresh-finalizer2')
+                    self.assertEqual(result['reviewed_input_pins'],pins);self.assertEqual(checked.call_count,2)
+                    audit.assert_called_once_with(root,{'fixture':'UNQUALIFIED'},{})
+                    self.assertFalse(guest.REVIEWED.exists());self.assertTrue(all('toddy-live-image-2' not in name for name in result['preserved']))
+                    guest.REVIEWED.mkdir()
+                    with self.assertRaisesRegex(ValueError,'live2_exists'):guest.eligible()
+                    guest.REVIEWED.rmdir();(inputs/'expected-image-manifest.json').write_text('{"changed":true}')
+                    with self.assertRaisesRegex(ValueError,'independent_review_binding'):guest.eligible()
+            guest.configure('offline')
 
 if __name__=='__main__':unittest.main()

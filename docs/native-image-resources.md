@@ -55,7 +55,12 @@ source generation, not editing the candidate receipt to say passed.
 
 Only after that review may the coordinator place exact reviewed bytes at the
 fixed inputs' generated-entries.json and expected-image-manifest.json. Preserve
-candidate1 unchanged. Assemble NEW generation2 from the same immutable archives,
+candidate1 unchanged. A constrained development filesystem may preserve its
+expanded root through the separately reviewed fixed
+[live candidate1 full archive custody](live-candidate-root-custody.md) after the
+actual resource outputs and reviewed input pins are complete. This retains every
+byte/metadata field and journal and makes no candidate/finalizer acceptance claim.
+Assemble NEW generation2 from the same immutable archives,
 then run the real NativeFinalizer with those exact expected maps/hashes; it must
 regenerate all resources and independently match the whole image. Never call the
 finalizer with a placeholder image hash and reinterpret its eventual failure as
