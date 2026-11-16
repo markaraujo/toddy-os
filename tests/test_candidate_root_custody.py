@@ -102,6 +102,10 @@ class CandidateRetirementBoundaryTests(unittest.TestCase):
 
 
     def test_only_synthetic_root_removed_after_durable_intent_and_evidence_retained(self):
+        for profile in ('offline','h11-expanded'):
+            with self.subTest(profile=profile):self._retirement_fixture(profile)
+
+    def _retirement_fixture(self,profile):
         from types import SimpleNamespace
         with tempfile.TemporaryDirectory() as temporary:
             work=Path(temporary)/'candidate';work.mkdir();root=work/'root';root.mkdir();(root/'file').write_bytes(b'fixture only')
@@ -110,7 +114,7 @@ class CandidateRetirementBoundaryTests(unittest.TestCase):
             final=Path(temporary)/'reviewed';final.mkdir();(final/'file').write_bytes(b'preserved generation2 fixture')
             image=a.snapshot(root);metadata=custody/'source-metadata.json';metadata.write_bytes(a.encoded(image))
             provenance={'preserved':{str(journal):a.sha(journal)}}
-            state={'version':1,'state':'exported-awaiting-host-proof','profile':'offline','root':str(root),
+            state={'version':1,'state':'exported-awaiting-host-proof','profile':profile,'root':str(root),
                 'producer_sha256':a.sha(Path(guest.__file__)),'archive_verifier_sha256':a.sha(Path(a.__file__)),'metadata_sha256':a.sha(metadata),'tar_sha256':'a'*64,'tar_bytes':10240,'provenance':provenance}
             statefile.write_bytes(a.encoded(state))
             proof={'version':1,'state':'complete-member-and-decompression-verified','metadata_sha256':state['metadata_sha256'],
@@ -121,9 +125,13 @@ class CandidateRetirementBoundaryTests(unittest.TestCase):
             def guarded_fixture_remove(path):
                 self.assertEqual(path,root);self.assertEqual(json.loads(statefile.read_bytes())['state'],'root-retirement-intended-no-replay')
                 original(path)
-            with patch.object(guest,'ARTIFACT',root),patch.object(guest,'WORK',work),patch.object(guest,'CUSTODY',custody),patch.object(guest,'STATE',statefile),\
+            def checked_preserved_bound(path,*args,**kwargs):
+                if Path(path)==journal and not root.exists():
+                    self.assertEqual(args[0] if args else 256*1024**2,8*1024**3 if profile=='h11-expanded' else 256*1024**2)
+                return Path(path)
+            with patch.object(guest,'PROFILE',profile),patch.object(guest,'ARTIFACT',root),patch.object(guest,'WORK',work),patch.object(guest,'CUSTODY',custody),patch.object(guest,'STATE',statefile),\
                     patch.object(guest,'TARGET',Path(temporary)),patch.object(guest,'eligible',return_value=provenance),patch.object(guest,'read',side_effect=lambda path,**kw:json.loads(Path(path).read_bytes())),\
-                    patch.object(guest,'secured',side_effect=lambda path,*args,**kw:Path(path)),patch.object(guest,'no_consumers') as consumers,\
+                    patch.object(guest,'secured',side_effect=checked_preserved_bound),patch.object(guest,'no_consumers') as consumers,\
                     patch.object(guest.shutil,'disk_usage',side_effect=[SimpleNamespace(free=40*1024**3),SimpleNamespace(free=40*1024**3+4096)]),\
                     patch.object(guest.shutil,'rmtree',side_effect=guarded_fixture_remove) as remove:
                 remove.avoids_symlink_attacks=True

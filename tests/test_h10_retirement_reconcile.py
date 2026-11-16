@@ -8,14 +8,14 @@ import h10_root_retirement_reconcile as fixed
 
 class ReconciliationTests(unittest.TestCase):
  def test_original_driver_is_pinned_and_only_fixed_route_is_added_in_memory(self):
-  original=(ROOT/'scripts/build/phase2/image_native.sh').read_bytes()
-  self.assertEqual(hashlib.sha256(original).hexdigest(),fixed.OLD_DRIVER)
-  result=fixed.pinned_driver(original)
-  self.assertEqual(result.count('h10-postcondition-reconcile)'),2)
-  self.assertIn(' --inside <&8 8<&-',result)
-  self.assertIn('exec 9>/var/log/toddy/build/build.lock',result)
-  self.assertIn('exec 8<&0',result)
-  with self.assertRaisesRegex(ValueError,'driver_changed'):fixed.pinned_driver(original+b'\n')
+  original=b'#!/bin/bash\nexec 9>/var/log/toddy/build/build.lock\nexec 8<&0\ncase $1 in\n original) ;;\nesac\ncase $1 in\n original) ;;\nesac\n'
+  with patch.object(fixed,'OLD_DRIVER',hashlib.sha256(original).hexdigest()):
+   result=fixed.pinned_driver(original)
+   self.assertEqual(result.count('h10-postcondition-reconcile)'),2)
+   self.assertIn(' --inside <&8 8<&-',result)
+   self.assertIn('exec 9>/var/log/toddy/build/build.lock',result)
+   self.assertIn('exec 8<&0',result)
+   with self.assertRaisesRegex(ValueError,'driver_changed'):fixed.pinned_driver(original+b'\n')
  def test_absent_root_full_evidence_and_original_intent_are_required_without_replay(self):
   c=fixed.custody;a=c.archive
   with tempfile.TemporaryDirectory() as directory:

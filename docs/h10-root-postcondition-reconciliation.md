@@ -30,7 +30,7 @@ producer/driver hashes, old completed host receipt, original raw metadata, absen
 root, every preserved regular hash (8GiB bound), every preserved link identity and
 raw target/xattrs, and actual positive free-space gain from the original
 43430825984-byte measurement. The coordinator's independent observed after-value
-was47213391872 bytes; the companion records its own current measurement honestly.
+was 47213391872 bytes; the companion records its own current measurement honestly.
 It never calls removal, replay or save on the old state. The new guest receipt is
 `/var/log/toddy/phase2/h10-expanded-retirement-reconciled-1.json`; the new host
 companion is `postcondition-reconciliation-1.json` within the existing custody

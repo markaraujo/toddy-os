@@ -301,7 +301,7 @@ def retire(proof):
     # this deletion. Root-owned parent+inode pins were rechecked above.
     shutil.rmtree(ARTIFACT);fsync(WORK)
     for path,sha in state['provenance']['preserved'].items():
-        if archive.sha(secured(path))!=sha:raise ValueError('candidate_root_custody_preserved_evidence_changed')
+        if archive.sha(secured(path,8*1024**3 if PROFILE in HISTORICAL else 256*1024**2))!=sha:raise ValueError('candidate_root_custody_preserved_evidence_changed')
     for path,expected in state['provenance'].get('preserved_links',{}).items():
         if preserved_link(Path(path),Path(expected['tree']))!=expected:raise ValueError('candidate_root_custody_preserved_link_changed')
     if os.path.lexists(ARTIFACT):raise ValueError('candidate_root_custody_root_remains')
