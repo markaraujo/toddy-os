@@ -192,6 +192,8 @@ def main(metadata_only=False, extra_metadata=(), include_references=True, extra_
         metadata.append('config/phase2/desktop-resources.lock.json')
     if (ROOT/'config/phase2/desktop-runtime-roots.json').exists():
         metadata.append('config/phase2/desktop-runtime-roots.json')
+    if (ROOT/'config/phase2/mvp-desktop-runtime-roots.json').exists():
+        metadata.append('config/phase2/mvp-desktop-runtime-roots.json')
     if (ROOT/'config/phase2/browser-build-tools.lock.json').exists():
         metadata.append('config/phase2/browser-build-tools.lock.json')
     if (ROOT/'config/h08-bootstrap-config.json').exists():
