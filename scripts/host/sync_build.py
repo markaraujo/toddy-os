@@ -130,7 +130,7 @@ def stream_inputs(stream, root, metadata, sources, references):
         archive.addfile(marker,io.BytesIO(data))
 
 
-def main(metadata_only=False, extra_metadata=(), include_references=True):
+def main(metadata_only=False, extra_metadata=(), include_references=True, extra_sources=()):
     lock = json.loads((ROOT/'config/sources.lock.json').read_text())
     if lock['status'] != 'verified':
         raise SystemExit('Source lock not verified')
@@ -200,7 +200,7 @@ def main(metadata_only=False, extra_metadata=(), include_references=True):
             rows += data['components']
             metadata.append('config/'+filename)
     sources = {}
-    for row in ([] if metadata_only else rows):
+    for row in (list(extra_sources) if metadata_only else rows + list(extra_sources)):
         path = safe_source(ROOT,row['filename'])
         if digest(path) != row['sha256']:
             raise SystemExit('Source mismatch before transfer: '+row['filename'])
@@ -239,7 +239,10 @@ if compgen -G '/var/log/toddy/build/*.running.json' > /dev/null; then
 fi
 if [[ __SYNC_WORK_PARENT__ == /run ]]; then
  [[ $(findmnt -n -o FSTYPE --target /run) == tmpfs ]] || { echo 'Metadata staging requires existing guest tmpfs' >&2; exit 1; }
- python3 -c 'import os; s=os.statvfs("/run"); assert s.f_bavail*s.f_frsize >= 64*1024**2, "Insufficient metadata tmpfs capacity"'
+ python3 -c 'import os; s=os.statvfs("/run"); assert s.f_bavail*s.f_frsize >= __SYNC_STAGING_BYTES__, "Insufficient metadata/source tmpfs capacity"'
+fi
+if [[ __SYNC_TARGET_BYTES__ != 0 ]]; then
+ python3 -c 'import os; s=os.statvfs("/mnt/lfs"); assert s.f_bavail*s.f_frsize >= __SYNC_TARGET_BYTES__, "Insufficient Phase2 source headroom"'
 fi
 work=$(mktemp -d __SYNC_WORK_PARENT__/toddy-input-sync.XXXXXX)
 trap 'rm -rf -- "$work"' EXIT
@@ -263,6 +266,10 @@ rm /var/log/toddy/build/input-sync.running
 '''
     receive = receive.replace('__VERIFY_BUNDLE_SOURCE__',inspect.getsource(verify_bundle))
     receive = receive.replace('__COMMIT_VERIFIED_SOURCE__',inspect.getsource(commit_verified_files))
+    source_bytes = sum(safe_source(ROOT, name).stat().st_size for name in sources)
+    receive = receive.replace('__SYNC_STAGING_BYTES__', str(64*1024**2 + source_bytes))
+    reserve = 16*1024**3 + 128*1024**2 + source_bytes if extra_sources else 0
+    receive = receive.replace('__SYNC_TARGET_BYTES__', str(reserve))
     receive = receive.replace('__SYNC_WORK_PARENT__','/run' if metadata_only else '/opt')
     command = ('source /opt/toddy-build/scripts/build/target.sh; guard_target; '
                'mkdir -p /var/log/toddy/build; '

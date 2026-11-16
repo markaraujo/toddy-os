@@ -47,6 +47,29 @@ class SourceNativeTests(unittest.TestCase):
                                 native.install('branding')
             self.assertFalse((root/'stage').exists())
 
+    def test_branding_manifest_pins_real_project_and_approved_art_inputs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            stage = root/'stage'
+            def execute(command, **options):
+                return types.SimpleNamespace(returncode=1 if 'dpkg-query' in command else 0)
+            with patch.object(native, 'paths', return_value=('toddy-branding', '', stage, root/'receipt')), patch.object(native, 'ROOT', PATH.parents[3]):
+                with patch.object(native.subprocess, 'run', side_effect=execute):
+                    with patch.dict(sys.modules, {'dependency_preflight': types.SimpleNamespace(native=lambda _: None)}):
+                        with patch.object(native.os, 'statvfs', return_value=types.SimpleNamespace(f_bavail=20*1024**3, f_frsize=1)):
+                            original = list(sys.path)
+                            sys.path.insert(0, str(PATH.parent))
+                            try:
+                                native.install('branding')
+                            finally:
+                                sys.path[:] = original
+            import json
+            manifest = json.loads((stage/'usr/share/doc/toddy-branding/source-manifest.json').read_text())
+            self.assertIn('scripts/build/phase2/branding_stage.py', manifest['source_inputs'])
+            self.assertIn('assets/brand/assets.json', manifest['source_inputs'])
+            self.assertTrue(all(len(row['sha256']) == 64 for row in manifest['source_inputs'].values()))
+            self.assertTrue((stage/'usr/share/doc/toddy-branding/copyright').is_file())
+
 
 if __name__ == '__main__':
     unittest.main()

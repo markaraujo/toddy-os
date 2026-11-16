@@ -36,7 +36,7 @@ def save(path,value):
 
 
 def native(*arguments):
-    return subprocess.check_output(['/usr/bin/chroot',str(TARGET),'/usr/bin/env','-i','PATH=/usr/bin:/usr/sbin','HOME=/root','LC_ALL=C',*arguments],text=True).strip()
+    return subprocess.check_output(['/usr/sbin/chroot',str(TARGET),'/usr/bin/env','-i','PATH=/usr/bin:/usr/sbin','HOME=/root','LC_ALL=C',*arguments],text=True).strip()
 
 
 def package_state():

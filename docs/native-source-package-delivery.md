@@ -2,7 +2,7 @@
 
 `source_packages_native.py` wraps existing reviewed generators in the existing
 native archive/ownership/package machinery. It does not grant story acceptance.
-The fixed components are branding, assistant, agent, voice and integrations.
+The fixed components are branding, installer-branding, assistant, agent, voice and integrations.
 The separate existing executor install/check recipe remains unchanged.
 
 After the active compiler releases the global guest lock, use the candidate

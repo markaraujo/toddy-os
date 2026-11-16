@@ -11,7 +11,7 @@ if __name__ == '__main__':
     candidate.bases()
     # Only frozen B01 npm archives/notices enter the candidate; never transfer
     # a cache directory, credential directory or other unselected local state.
-    extra = ['assets/third-party']
+    extra = ['assets/third-party', 'scripts/qualification', 'tests/test_voice_process.py']
     lock = json.loads((sync_build.ROOT/'runtime/engine/package-lock.json').read_text())
     for row in lock['packages'].values():
         if 'integrity' not in row:

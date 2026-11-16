@@ -16,6 +16,7 @@ VERSION = '0.2.0-1+toddy1'
 PYTHON = 'python (>= 3.14.10-1+toddy2), python (<< 3.15), pygobject (= 3.56.3-1+toddy1)'
 PACKAGES = {
     'branding': ('toddy-branding', ''),
+    'installer-branding': ('calamares-branding-toddy', ''),
     'assistant': ('toddy-assistant', PYTHON + ', gtk (= 4.22.4-1+toddy14), libadwaita (= 1.9.3-1+toddy1), libsecret (= 0.21.7-1+toddy1), polkit (= 127-1+toddy1), toddy-branding (= ' + VERSION + ')'),
     'agent': ('toddy-agent', PYTHON + ', sqlite (= 3.53.4-1+toddy1), nodejs (= 24.19.0-1+toddy1), toddy-assistant (= ' + VERSION + ')'),
     'voice': ('toddy-voice', PYTHON + ', toddy-assistant (= ' + VERSION + ')'),
@@ -46,9 +47,35 @@ def install(component):
         verify_dependencies(depends)
     fs = os.statvfs(TARGET)
     assert fs.f_bavail*fs.f_frsize >= 16*1024**3 + 512*1024**2, 'Preserve target reserve before source payload staging'
-    if component == 'branding':
-        from branding_stage import stage_desktop
-        manifest = stage_desktop(stage, ROOT)
+    if component in ('branding', 'installer-branding'):
+        from branding_stage import stage_desktop, stage_installer
+        manifest = (stage_desktop if component == 'branding' else stage_installer)(stage, ROOT)
+        # Original approved artwork has source custody, not an invented upstream archive.
+        mapping = json.loads((ROOT/'assets/brand/gnome/package-map.json').read_text())
+        assets = json.loads((ROOT/'assets/brand/assets.json').read_text())
+        names = {'LICENSE', 'LICENSES/CC-BY-4.0.txt', 'assets/brand/assets.json',
+                 'assets/brand/gnome/package-map.json', 'scripts/build/phase2/branding_stage.py',
+                 'scripts/build/phase2/source_packages_native.py'}
+        names.update(row['source'] for row in mapping['payload'])
+        names.update('assets/brand/'+row['file'] for row in assets if row['role'] == 'protected-original')
+        names.update(row['source'] for row in mapping.get('icon_exports', []))
+        names.update(row['source'] for row in mapping['pending_exports'])
+        if component == 'installer-branding':
+            for selected in ('assets/brand', 'assets/third-party/gnome'):
+                names.update(str(path.relative_to(ROOT)) for path in (ROOT/selected).rglob('*') if path.is_file())
+        inputs = {}
+        for relative in sorted(names):
+            path = ROOT/relative
+            assert path.resolve() == path and path.is_file() and not path.is_symlink()
+            inputs[relative] = {'sha256': digest(path), 'bytes': path.stat().st_size}
+        manifest.update(version=VERSION, source_inputs=inputs,
+            scope='Original approved artwork/project source; no upstream code or runtime acceptance')
+        destination = stage/'usr/share/doc'/name/'source-manifest.json'
+        assert not destination.exists()
+        destination.write_text(json.dumps(manifest, sort_keys=True, indent=2)+'\n')
+        destination.chmod(0o644)
+        for path in [*stage.rglob('*'), stage]:
+            os.utime(path, (0, 0), follow_symlinks=False)
     elif component == 'assistant':
         from assistant_package import stage as create
         manifest = create(ROOT, stage, version=VERSION)
