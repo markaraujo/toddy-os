@@ -1,0 +1,61 @@
+{
+  "builder_backing_identities": [
+    {
+      "ctime_ns": 1794863616900120706,
+      "mtime_ns": 1794863616900120706,
+      "path": "vm/phase2-candidate/builder.qcow2",
+      "size": 870121472,
+      "unchanged": true
+    },
+    {
+      "ctime_ns": 1794410946714150737,
+      "mtime_ns": 1794410946714150737,
+      "path": "vm/phase2/builder.qcow2",
+      "size": 15677325312,
+      "unchanged": true
+    },
+    {
+      "ctime_ns": 1794059920316531235,
+      "mtime_ns": 1794059920316531235,
+      "path": "vm/builder.qcow2",
+      "size": 9028042752,
+      "unchanged": true
+    },
+    {
+      "ctime_ns": 1793928018411753274,
+      "mtime_ns": 1793928018408753303,
+      "path": "vm/builder-base.img",
+      "size": 621284352,
+      "unchanged": true
+    }
+  ],
+  "disk_writes": false,
+  "method": {
+    "block_export": "qemu-nbd --read-only, root partition offset1074790400",
+    "cleanup": "FUSE unmounted and read-only helper stopped",
+    "reader": "debugfs without -w",
+    "source_mount": "Docker all /vm backing files read-only",
+    "user_file_view": "nbdfuse -r -o ro"
+  },
+  "native_read_only": true,
+  "remaining_missing_recipe_variants": 89,
+  "runtime_qualification": false,
+  "scope": "exact-recorded-public-build-script-recovery",
+  "source": "stopped-designated-native-candidate-builder",
+  "source_bundle_complete": false,
+  "source_inputs": [
+    {
+      "bytes": 2394,
+      "native_source_path": "/opt/toddy-build/scripts/build/phase2/install_kernel_landlock.py",
+      "path": "scripts/build/phase2/install_kernel_landlock.py",
+      "sha256": "2a780ced3b35b1444d8febc3830f9383c3794dcad4c19754cb7bcddc349c8cd2"
+    },
+    {
+      "bytes": 113,
+      "native_source_path": "/opt/toddy-build/scripts/build/phase2/libseccomp-install.sh",
+      "path": "scripts/build/phase2/libseccomp-install.sh",
+      "sha256": "59b74d9eb37596dd83cf37f929335569c9aebbdd3aabb9b5fb3da534d3eb1162"
+    }
+  ],
+  "version": 1
+}
