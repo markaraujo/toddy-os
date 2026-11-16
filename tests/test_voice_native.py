@@ -57,6 +57,14 @@ class NativeSourceTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'architecture'):v.elf_dependencies(Path('/fixture'))
         with patch.object(v.subprocess,'check_output',side_effect=[headers[1],'(RUNPATH) [/build/compile]']):
             with self.assertRaisesRegex(ValueError,'search_path'):v.elf_dependencies(Path('/fixture'))
+    def test_espeak_install_rpath_is_disabled_without_weakening_native_elf_guard(self):
+        recipe=(ROOT/'scripts/build/phase2/voice-espeak-build.sh').read_text()
+        self.assertIn('-DCMAKE_SKIP_INSTALL_RPATH=ON',recipe)
+        self.assertIn('-DCMAKE_INSTALL_PREFIX=/usr',recipe)
+        for path in ('/usr/lib','/build/compile'):
+            with self.subTest(path=path),patch.object(v.subprocess,'check_output',side_effect=['Machine: Advanced Micro Devices X86-64\nType: DYN','(RUNPATH) ['+path+']']):
+                with self.assertRaisesRegex(ValueError,'embedded_search_path'):v.elf_dependencies(Path('/source-fixture'))
+
     def test_job_existing_marker_prevents_uncertain_replay(self):
         with tempfile.TemporaryDirectory() as t:
             base=Path(t);prefix=base/'receipt';(base/'receipt.prepared.json').write_text('{}');(base/'receipt.build.json').write_text('{"state":"running-no-replay"}')

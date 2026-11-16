@@ -17,7 +17,7 @@ BUILD_BUDGET
 # Run only in the qualified unprivileged read-only /src, private /build,/stage
 # no-network build harness. Preparation removed the unconditional Sonic fetch.
 cmake -S /src -B /build/compile -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=ON \
     -DFETCHCONTENT_FULLY_DISCONNECTED=ON -DBUILD_SHARED_LIBS=OFF \
     -DUSE_LIBSONIC=OFF -DUSE_LIBPCAUDIO=OFF -DUSE_MBROLA=OFF \
     -DESPEAK_COMPAT=OFF -DUSE_ASYNC=OFF \

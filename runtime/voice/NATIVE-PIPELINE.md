@@ -46,31 +46,31 @@ package. Existing native PipeWire 1.6.8/WirePlumber 0.5.15, GNU time, Python, CM
 compiler and ELF inspection tools are prerequisites; a missing one blocks the job.
 No second compiler or root writer may overlap these commands.
 
-For a fresh named generation, for example `native1`, execute each command as its
+For a fresh named generation, for example `native2`, execute each command as its
 own tracked coordinator operation and inspect its postconditions before the next:
 
 ```sh
-bash /opt/toddy-build/scripts/build/phase2/voice-prepare.sh espeak-ng native1
-python3 /opt/toddy-build/scripts/build/phase2/voice_native.py build espeak-ng native1
-bash /opt/toddy-build/scripts/build/phase2/voice-qualify.sh espeak-ng native1
-bash /opt/toddy-build/scripts/build/phase2/voice-install.sh espeak-ng native1
-bash /opt/toddy-build/scripts/build/phase2/voice-check.sh espeak-ng native1
+bash /opt/toddy-build/scripts/build/phase2/voice-prepare.sh espeak-ng native2
+python3 /opt/toddy-build/scripts/build/phase2/voice_native.py build espeak-ng native2
+bash /opt/toddy-build/scripts/build/phase2/voice-qualify.sh espeak-ng native2
+bash /opt/toddy-build/scripts/build/phase2/voice-install.sh espeak-ng native2
+bash /opt/toddy-build/scripts/build/phase2/voice-check.sh espeak-ng native2
 
-bash /opt/toddy-build/scripts/build/phase2/voice-prepare.sh whisper-cpp native1
-python3 /opt/toddy-build/scripts/build/phase2/voice_native.py build whisper-cpp native1
-bash /opt/toddy-build/scripts/build/phase2/voice-qualify.sh whisper-cpp native1
-bash /opt/toddy-build/scripts/build/phase2/voice-install.sh whisper-cpp native1
-bash /opt/toddy-build/scripts/build/phase2/voice-check.sh whisper-cpp native1
+bash /opt/toddy-build/scripts/build/phase2/voice-prepare.sh whisper-cpp native2
+python3 /opt/toddy-build/scripts/build/phase2/voice_native.py build whisper-cpp native2
+bash /opt/toddy-build/scripts/build/phase2/voice-qualify.sh whisper-cpp native2
+bash /opt/toddy-build/scripts/build/phase2/voice-install.sh whisper-cpp native2
+bash /opt/toddy-build/scripts/build/phase2/voice-check.sh whisper-cpp native2
 
-bash /opt/toddy-build/scripts/build/phase2/voice-prepare.sh toddy-voice-model-base native1
-bash /opt/toddy-build/scripts/build/phase2/voice-qualify.sh toddy-voice-model-base native1
-bash /opt/toddy-build/scripts/build/phase2/voice-install.sh toddy-voice-model-base native1
-bash /opt/toddy-build/scripts/build/phase2/voice-check.sh toddy-voice-model-base native1
+bash /opt/toddy-build/scripts/build/phase2/voice-prepare.sh toddy-voice-model-base native2
+bash /opt/toddy-build/scripts/build/phase2/voice-qualify.sh toddy-voice-model-base native2
+bash /opt/toddy-build/scripts/build/phase2/voice-install.sh toddy-voice-model-base native2
+bash /opt/toddy-build/scripts/build/phase2/voice-check.sh toddy-voice-model-base native2
 
-python3 /opt/toddy-build/scripts/build/phase2/voice_native.py process whisper-cpp native1
-python3 /opt/toddy-build/scripts/build/phase2/voice_native.py catalog whisper-cpp native1
-python3 /opt/toddy-build/scripts/build/phase2/voice_native.py catalog-package whisper-cpp native1
-python3 /opt/toddy-build/scripts/build/phase2/voice_native.py extras whisper-cpp native1
+python3 /opt/toddy-build/scripts/build/phase2/voice_native.py process whisper-cpp native2
+python3 /opt/toddy-build/scripts/build/phase2/voice_native.py catalog whisper-cpp native2
+python3 /opt/toddy-build/scripts/build/phase2/voice_native.py catalog-package whisper-cpp native2
+python3 /opt/toddy-build/scripts/build/phase2/voice_native.py extras whisper-cpp native2
 ```
 
 The engine builds and consumers run through existing `isolated.sh`: UID/GID 101,
@@ -211,3 +211,28 @@ native archive set alone does not authorize a UI network/terms prompt or automat
 acquisition at boot. Existing setup/acquisition and executor policy remain the
 owner-facing authority; integration must supply their actual signed release record
 before availability is advertised. Opening the voice panel never downloads.
+
+
+## eSpeak native1 retained; installed RPATH correction uses native2
+
+The coordinator measured native1 eSpeak build/upstream CTest exit0, then the
+strict qualifier rejected `/stage/usr/bin/espeak-ng` DT_RUNPATH `/usr/lib` before
+native package promotion. Keep that source/work/log/failure unchanged. Frozen
+upstream1.52 source `src/CMakeLists.txt` and `src/libespeak-ng/CMakeLists.txt` set
+`INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib"`; the new recipe adds only
+`-DCMAKE_SKIP_INSTALL_RPATH=ON`. No ELF guard, driver, source/model/version/license
+pin, test or generation artifact is changed to accept that old binary.
+
+Use a NEW eSpeak generation native2 with the current recipe. Never reconfigure or
+strip native1 in place. Inspect actual new build/test/stage outputs and require
+zero installed RPATH/RUNPATH through the existing qualifier before promotion.
+The source check here is not a successful rebuilt-native receipt.
+
+Current `process`/`catalog` stages require all three checked components under the
+same exact generation argument. The fresh-cohort example above therefore uses
+native2 throughout. If Whisper or the model has already been prepared/built under
+another generation, keep that actual job/result and coordinate a separately
+reviewed exact adoption or a truly fresh cohort before process/catalog; do not
+rewrite receipts, replay an uncertain operation or silently copy/rename accepted
+artifacts to make their generation match. This correction does not add such an
+adoption mechanism or rebuild an unchanged completed component automatically.
