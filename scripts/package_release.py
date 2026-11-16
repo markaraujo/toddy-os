@@ -14,6 +14,7 @@ import phase2_release as common
 import acquisition_declarations as declarations
 import archive_metadata
 import package_sources
+import package_sources_reviewed
 
 PUBLIC=Path('config/phase2/public-package-release.json')
 NAME=re.compile(r'[A-Za-z0-9][A-Za-z0-9._+-]{0,159}\Z')
@@ -89,9 +90,20 @@ def repository(directory,rows):
 def source_review(root,reference,rows,pins,commit):
     if not isinstance(reference,dict) or set(reference)!={'path','sha256'}:raise ValueError('Retained source/license review required')
     review=common.evidence(root,reference['path'],reference['sha256'])
+    if isinstance(review,dict) and review.get('kind')==package_sources_reviewed.KIND:
+        package_sources_reviewed.validate_acceptance(root,review,rows,pins,commit)
+        return review
     if not isinstance(review,dict) or set(review)!={'version','scope','source_commit','packages','source_assets','project_source_assets','inventory_assets','license_assets','reviewed'} or type(review['version']) is not int or review['version']!=1 or review['scope']!='native-package-source-license-review' or review['source_commit']!=commit or review['packages']!=pins['packages'] or review['reviewed'] is not True:raise ValueError('Exact source/legal review of the actual native package set required')
     for role,field in (('source','source_assets'),('project-source','project_source_assets'),('inventory','inventory_assets'),('licenses','license_assets')):
         if review[field]!=[{key:row[key] for key in ('name','sha256','bytes')} for row in rows if row['role']==role]:raise ValueError('Reviewed corresponding-source/license assets differ')
+
+
+def verify_source_assets(root,reference,rows,pins,commit,repository_directory):
+    reviewed=source_review(root,reference,rows,pins,commit)
+    inventory=next(row['path'] for row in rows if row['role']=='inventory')
+    if reviewed is not None:
+        return package_sources_reviewed.verify_assets(root,inventory,rows,pins,commit,reviewed,repository_directory)
+    return package_sources.verify_assets(inventory,rows,pins,commit)
 
 
 def prepare(root,request):
@@ -107,8 +119,7 @@ def prepare(root,request):
         rows.append(dict(row,name=path.name,sha256=digest,bytes=size))
     assets(rows,request['tag'],local=True);checksums(rows)
     pins=repository(Path(request['repository_directory']),rows)
-    source_review(root,request['source_review'],rows,pins,request['source_commit'])
-    package_sources.verify_assets(next(row['path'] for row in rows if row['role']=='inventory'),rows,pins,request['source_commit'])
+    verify_source_assets(root,request['source_review'],rows,pins,request['source_commit'],Path(request['repository_directory']))
     return {'version':1,'state':'package-publication-unverified',**{key:request[key] for key in ('tag','source_commit','release_url','repository_directory','source_review')},'artifacts':rows,'repository_pins':pins,'scope':'experimental-native-package-artifacts','limitations':PENDING}
 
 
@@ -133,8 +144,7 @@ def promote(root,prepared,response,downloads):
         if checked_hash(Path(row['path']))!=(row['sha256'],row['bytes']):raise ValueError('Original package asset changed')
     checksums(prepared['artifacts'])
     if repository(Path(prepared['repository_directory']),prepared['artifacts'])!=prepared['repository_pins']:raise ValueError('Signed repository changed')
-    source_review(root,prepared['source_review'],prepared['artifacts'],prepared['repository_pins'],prepared['source_commit'])
-    package_sources.verify_assets(next(row['path'] for row in prepared['artifacts'] if row['role']=='inventory'),prepared['artifacts'],prepared['repository_pins'],prepared['source_commit'])
+    verify_source_assets(root,prepared['source_review'],prepared['artifacts'],prepared['repository_pins'],prepared['source_commit'],Path(prepared['repository_directory']))
     if common.git(root,'rev-parse','refs/tags/'+prepared['tag']+'^{commit}')!=prepared['source_commit']:raise ValueError('Package tag changed')
     relative=Path(response).relative_to(root).as_posix();raw=common.read(response)
     release=common.evidence(root,relative,hashlib.sha256(raw).hexdigest())
