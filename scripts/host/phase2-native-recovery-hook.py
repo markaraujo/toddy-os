@@ -114,6 +114,37 @@ assert manager.inspect('managed-preview')['drift'] is True
 time.sleep(.1);assert target.read_bytes()==manual_bytes
 passed('native-manual-drift-observed-without-fighting-owner')
 run(['systemctl','stop',unit])
+# Boot configuration uses the same atomic same-directory commit boundary. Stop
+# before rename preserves old bytes; Stop after rename retains verified committed
+# bytes. This does not qualify partition/firmware/installer transactions.
+from operations import config_replace
+from store import PolicyError
+bootconfig=Path('/etc/toddy/grub.cfg')
+assert bootconfig.is_file() and not bootconfig.is_symlink()
+bootbytes=bootconfig.read_bytes();boot_hash=digest(bootbytes)
+bootargs={'path':str(bootconfig),'text':'# Toddy disposable cancellation qualification\n'+bootbytes.decode(),'expected_sha256':boot_hash}
+store.plan(uid,session,'bootcancelbefore','config_replace',bootargs)
+def stop_before_commit(kind,arguments):
+    def canceled():
+        store.cancel(uid,'bootcancelbefore');return True
+    return config_replace(arguments,canceled)
+try:store.dispatch(uid,session,'bootcancelbefore','config_replace',bootargs,stop_before_commit)
+except PolicyError as error:assert str(error)=='operation_uncertain'
+else:raise AssertionError('Pre-commit Stop was ignored')
+assert bootconfig.read_bytes()==bootbytes
+store.plan(uid,session,'bootcancelafter','config_replace',bootargs)
+def stop_after_commit(kind,arguments):
+    verified=config_replace(arguments)
+    store.cancel(uid,'bootcancelafter')
+    return verified
+committed=store.dispatch(uid,session,'bootcancelafter','config_replace',bootargs,stop_after_commit)
+assert committed['state']=='completed' and committed['cancel_requested']
+assert digest(bootconfig.read_bytes())==committed['result']['sha256']
+restore_boot={'path':str(bootconfig),'text':bootbytes.decode(),'expected_sha256':digest(bootconfig.read_bytes())}
+assert transaction('restorebootconfig','config_replace',restore_boot)['state']=='completed'
+assert bootconfig.read_bytes()==bootbytes
+passed('native-boot-config-stop-before-atomic-commit-and-after-commit-retention',restored_sha256=boot_hash,
+       partition_firmware_installer_claim=False)
 # Read-only inventory answers the next Qt native-closure question without
 # rebuilding or changing any accepted package in this disposable guest.
 qt={}

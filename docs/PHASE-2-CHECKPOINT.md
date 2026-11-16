@@ -17,16 +17,27 @@ restart with unchanged mtime/no replay, and manual drift without automatic undo.
 [Receipt](evidence/B05-native-recovery.json). QEMU/container0 and accepted B02
 backing files unchanged; no guest writer. Failure recovery1 retained. Never replay2.
 
-Next: integrate current named-profile/UI/memory source and run focused native
-broker/CLI task revision/restore/cancellation qualification in a NEW context.
-Calamares adapter remains source-only; native Qt inventory proves missing Wayland
-QPA and prepared same-version QtBase raster recipe is conditional next build.
-Whisper/eSpeak immutable source/model cache acquired175MB, no inference/audio yet.
-Three isolated workers own UI, memory/automation service integration and cold
-capacity custody preparation; coordinator remains sole guest writer.
-Host reserve100GiB+512MiB and target reserve16GiB remain required. Check actual
-space/VM/job state before writes. Sourcepreparation is not later acceptance.
-No Phase2 ISO/G2 or physical acceptance.
+Native profiles1 also passed canonical user-service/CLI task pin/rollback,
+sealed FD lifecycle, old-profile exact lookup and restart/no replay. Source
+memory/automation and native UI controls integrated with focused regressions.
+B05 remains current pending explicit atomic boot-config Stop boundary in NEW
+recovery3; no partition/firmware/installer claim.
+
+RUNNING host prerequisite: `phase2_chunk_cold_checkpoint.py --profile installer-capacity`,
+context `.local/phase2/cold-installer-chunk-custody-1`, log
+`.local/phase2/cold-installer-custody-1.log`. Read actual receipt/controller
+identity before action. It holds native boot/custody locks and preserves every
+original byte in verified chunks; source.custody becomes nonbootable. Monitor
+healthy progress, never restart to satisfy a diagnosis budget. No native guest
+writer. Old h07final/H09/current H13/B02 recovery inputs remain directly intact.
+
+After custody, inspect exact completion/hash/capacity, record representation
+change in recovery guide, then new native recovery3 and current source/CLI/memory
+checks. NEW candidate overlays will use phase2_candidate_vm.py (ADR0239), preserving
+accepted B02 bases read-only. Do not run prepare until committed inputs/capacity.
+Same-version QtBase raster source wrapper, installer production factory and B10
+integration remain parallel source work; only coordinator writes guest.
+Host reserve100GiB+512MiB/target16GiB remain. No Phase2 ISO/G2/physical acceptance.
 
 ## Last verified runtime and jobs
 

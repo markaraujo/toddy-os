@@ -4246,3 +4246,26 @@ voice exact sources/model preparation and conditional QtBase raster Wayland
 recipe. Native Qt inventory confirmed missing Wayland features; no blind rebuild
 or voice inference claim. Full merged repository check655tests11.569s passed.
 Source/compile/native install and final release gates remain distinct.
+
+## 2026-11-16 — Captured profiles/CLI and next isolated candidate
+
+Native profiles1 passed actual canonical user-service/CLI effects pinned across
+selection and rollback, exact lookup after restart, sealed-FD lifecycle and no
+replay. B05 remains current until explicit atomic boot-config Stop boundary in
+a NEW recovery3; partition/firmware/install claims remain separate. Current
+host prerequisite is healthy exact-byte chunk custody of the superseded H07
+services checkpoint (ADR0237), monitored rather than restarted. All original
+bytes and primary/current recovery images remain retained.
+
+Memory/automation service and native GTK source controls were integrated with
+explicit hash-bound USER review and complete assistant module ownership. Tests
+use private buses/files and child memory-settings backends, never host dconf.
+Source merged check679tests11.900s passed. CI cancellation-during-hello failure
+was fixed with a real delayed process test; exact public documentation hash
+scanner findings were independently verified and classified, full history clean.
+Remote CI still needs the corrected next push; no old failed run relabeled.
+
+Prepared separate candidate VM overlays (ADR0239) over accepted read-only B02
+backings with new scratch, preserving original cold identities/evidence. No
+candidate creation/format/build has run. Actual space/guest cache and operation
+state must be inspected after custody before native work.
