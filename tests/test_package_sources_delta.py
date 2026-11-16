@@ -13,6 +13,10 @@ class SourceDeltaTests(unittest.TestCase):
         new=[dict(old[0],version=delta.NEW_VERSION,archive_sha256='1'*64,component_record_sha256='2'*64),old[1]]
         return old,new
 
+    def test_source_commit_refuses_options_before_any_git_or_artifact_action(self):
+        with self.assertRaisesRegex(ValueError,'Explicit full source Git commit'):
+            delta.export(SimpleNamespace(source_commit='--output=not-a-commit'))
+
     def test_only_exact_installer_transition_reuses_other_decisions(self):
         old,new=self.packages()
         self.assertEqual(delta.changes(old,new),['unchanged'])

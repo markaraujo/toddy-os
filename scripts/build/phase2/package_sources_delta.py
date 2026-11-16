@@ -143,6 +143,8 @@ class DeltaProject(mvp.ReviewProject):
 
 def export(args):
     root = s.ROOT
+    if not isinstance(args.source_commit, str) or not accepted.release.COMMIT.fullmatch(args.source_commit):
+        raise ValueError('Explicit full source Git commit required')
     if not args.plan:
         own = Path(__file__).resolve().relative_to(root).as_posix()
         if hashlib.sha256(s.git(root, 'show', args.source_commit + ':' + own)).hexdigest() != p.digest(__file__):
