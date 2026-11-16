@@ -3094,6 +3094,19 @@
         "whisper-original-license.txt",
         "whisper-model-card.txt"
       ]
+    },
+    {
+      "name": "dosfstools",
+      "version": "4.2",
+      "filename": "dosfstools-4.2.tar.gz",
+      "url": "https://github.com/dosfstools/dosfstools/releases/download/v4.2/dosfstools-4.2.tar.gz",
+      "sha256": "64926eebf90092dca21b14259a5301b7b98e7b1943e8a201c7d726084809b527",
+      "reference": "BLFS 13.1-systemd postlfs/dosfstools.html",
+      "status": "source_verified",
+      "upstream_signature_url": "https://github.com/dosfstools/dosfstools/releases/download/v4.2/dosfstools-4.2.tar.gz.sig",
+      "upstream_signature_sha256": "90f58a303fd7c55e02370357054f7207f05c3736f23d9a82cfb4a10acd7d55f9",
+      "signer_fingerprint": "FDF277140B6DF9E8CDC8A9823164705B1DA31D4C",
+      "verification_evidence": "docs/evidence/B12-dosfstools-source.json"
     }
   ]
 }

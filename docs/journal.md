@@ -4322,3 +4322,26 @@ local state directory is transferred wholesale. Separate supplemental-notice pat
 avoid colliding with the native packager's legal inventory. Focused preparation
 refusal tests pass; make check770 passed. Native archive/install and B06+ runtime
 acceptance remain pending. B01-B05 remain41% of Phase2, weighted total70.5%.
+
+
+## 2026-11-16 — Native packages delivered and measured critical-path savings
+
+QtBase raster compile2 and separate installed reconciliation4 passed; Calamares
+and seven original source packages now have actual native archive/install/check
+receipts. The custom Calamares module compiled and instantiated its actual plugin
+widget; its native transaction stopped before writes for missing dosfstools. The
+frozen BLFS13.1 dosfstools4.2 archive matches the book MD5 and a valid upstream
+detached signature using the Debian keyring signer certificate. Native build/test
+qualification is separate and pending. No source-only installer acceptance.
+
+Two opaque historical tar caches were compressed and fully decompressed/hashed
+on the host before exact candidate-only retirement, recovering7,462,944,768B guest
+space. All accepted backings, original ISOs, other evidence and source receipts
+remain. Storage admission now measures archive allocation and checks reserve
+before copying; target16GiB and host100GiB reserves stay unchanged. Three isolated
+source agents prepare independent slices while one coordinator owns guest writes;
+existing compiled Qt/Calamares and cached1.8GBQwen/voice inputs are reused.
+
+Merged source quality check940tests/21.348s passed. B01-B05 remain41% of Phase2
+(weighted whole plan70.5%); later native UI/full acquisition/voice/boot/install/
+release/portal proof still gates B06-B13/G2. No Phase2 ISO or physical acceptance.

@@ -1,0 +1,198 @@
+{
+  "scope": "Actual native package/stage/headless checks; desktop GUI, installer disks, story acceptance and G2 pending",
+  "steps": {
+    "b12-qtbase-wayland-reconcile-4": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 1,
+      "started": "2026-11-16T16:38:59.631815+00:00",
+      "finished": "2026-11-16T16:39:20.724650+00:00",
+      "recipe_sha256": "1ea473897e3b092c9dbf775437bd4b7435189fb58967c4186134a52fa1711bf3",
+      "postcheck_sha256": "00145791601fe02612d6ecd9addd993056d1ddfef6f522ac1a01139042cbe67b",
+      "runner_sha256": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+      "log_sha256": "3fc8dfb5bbc008a99195604ec9e68bc2d2b5f9b5166505646d23f2a14b6e2252",
+      "raw_receipt_sha256": "1cca64008b3e8f2adfb3ebcf0e060f555f504d34d55ce5cd36c2df9fb1c9b200"
+    },
+    "b12-calamares-native-1": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 260,
+      "started": "2026-11-16T17:00:25.489796+00:00",
+      "finished": "2026-11-16T17:00:46.175224+00:00",
+      "recipe_sha256": "7f48708ff24a86a4bc70e15bc20e6478f7fbb7efd079f533dce2bd43b16d90c4",
+      "postcheck_sha256": "e8ca4b155e3542daec3cc066c6bbc7c2cbf349011f1e47cc2deb739f12b3bafd",
+      "runner_sha256": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+      "log_sha256": "4eb9355a154f8ba03327c1a84a556c515a296a1ce409cd15dc15e56c43fd171c",
+      "raw_receipt_sha256": "3ac1316713e391664db6713bb51563ed1857a9122b876120bc7c9e23875f41de"
+    },
+    "b06-source-branding-install-1": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 23,
+      "started": "2026-11-16T16:50:03.100522+00:00",
+      "finished": "2026-11-16T16:50:24.298623+00:00",
+      "recipe_sha256": "c5fc06cbb1e94228b8e27eb902f3c8c5aebcb310f8b12cf04dd5cabf1131b4e8",
+      "postcheck_sha256": "e91ed912da41bcda7495879ff623bd3ff67e5ef4c9dff8d3f643e6714a5d11ea",
+      "runner_sha256": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+      "log_sha256": "d4aa3534ffd2ee20c4f482417a29ae33935e476c0dbc8ab3e5579c49db107d6d",
+      "raw_receipt_sha256": "4a9d7b6eb59b03bbc593d01f42ca78ed6a1c55152142b6da41f2fb0aaaa48308"
+    },
+    "b06-source-assistant-install-1": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 61,
+      "started": "2026-11-16T16:53:30.503562+00:00",
+      "finished": "2026-11-16T16:53:50.593691+00:00",
+      "recipe_sha256": "1c43b17fd914894feaa1c2ca142ef47b956e04c024ae9152b746d6c6fe176c17",
+      "postcheck_sha256": "ab4a9d41363cb3c8559fb5a87565290a36e859c935d5873ba8c9b0ec76ff51ee",
+      "runner_sha256": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+      "log_sha256": "f1963839a75fefc0e253e43e51fb3bc8dd91377863628090d14e2a4af67cd6be",
+      "raw_receipt_sha256": "e724a8cec2ab4c9e1d033df95c321152217c0210ef9dc04bbb376c55856b13b4"
+    },
+    "b06-source-agent-install-1": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 12078,
+      "started": "2026-11-16T17:03:04.679380+00:00",
+      "finished": "2026-11-16T17:12:13.439757+00:00",
+      "recipe_sha256": "76de79618666e7d849607498acdc6e00189e082d3457af081c0e8edf46bacb2d",
+      "postcheck_sha256": "bd77d9a553eb7829a624baef5d0603403879c6da605f3fd683dcf45078a58422",
+      "runner_sha256": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+      "log_sha256": "a55d3e8f6dc9129bdf8d520cc7f4e00370af74eb4fa7ebf4d600c526615efbb9",
+      "raw_receipt_sha256": "a2615f94992456c719bb2621572e5e2c6d8ee67e567ad761e34d4ce1ac11773b"
+    },
+    "b06-source-executor-install-1": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 28,
+      "started": "2026-11-16T17:15:49.700680+00:00",
+      "finished": "2026-11-16T17:16:10.093834+00:00",
+      "recipe_sha256": "16543a85d126df07c996adbdcc584b402e16dcc0e8f5b54aa69204590a0a8642",
+      "postcheck_sha256": "2672ac48200ba359bdb341b49ff7573ef466c89d672ce68a51ffe9fce339dec6",
+      "runner_sha256": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+      "log_sha256": "b99a819e4b0cef0d5b4c9002d4c51978c5799ffda837e5956ec211ac070c984a",
+      "raw_receipt_sha256": "a5e85059e7c23fd46333f037be1098f47f1041dae08761dd479245f6a2f4b380"
+    },
+    "b06-source-installer-branding-install-1": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 32,
+      "started": "2026-11-16T18:05:16.946948+00:00",
+      "finished": "2026-11-16T18:05:38.633647+00:00",
+      "recipe_sha256": "ccf2d75473fc5008472aaadf1adef946e6746c0c5de34df464ab10aab459f61a",
+      "postcheck_sha256": "536cd4a4c84778e8a210bceb576aab3e09c8b23d111436e12f0ae448c225a022",
+      "runner_sha256": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+      "log_sha256": "917e9071f58d4724c5113d10bcc43a39a5b8b2772798d8c4415a6befbaff3e6f",
+      "raw_receipt_sha256": "6cf5daf257634f38e2f9ad42ca5906354c299b509a7bb9d461645546d61dc5c2"
+    },
+    "b06-source-voice-install-1": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 26,
+      "started": "2026-11-16T18:17:41.900798+00:00",
+      "finished": "2026-11-16T18:18:02.219179+00:00",
+      "recipe_sha256": "28772ec5967be0dc91c80540eea1a9fda0a0c2d39ffa58949187259059535914",
+      "postcheck_sha256": "d4852b149f50cb0ba3939139060c73c6c86460e3077c8e70bb2370ba2c797396",
+      "runner_sha256": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+      "log_sha256": "020f2384c2425d6a03d1e0bb175229463bf05e096a4b4a5efe4bd312d0ae13b2",
+      "raw_receipt_sha256": "39e5d6054a36a492680f8a6cd60906d08d41c500b8d1fba178e957fac66eedd1"
+    },
+    "b06-source-integrations-install-1": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 32,
+      "started": "2026-11-16T18:31:28.364579+00:00",
+      "finished": "2026-11-16T18:31:48.980176+00:00",
+      "recipe_sha256": "d6fd12094f316d9df58d376e467317b2a72764e135cead677a6d947dd1d17dc4",
+      "postcheck_sha256": "1095b32b220236979d9d7f7718f3e881f0f1ed83d8abb975f35d784788bffcd1",
+      "runner_sha256": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+      "log_sha256": "1bff8d54129b693213e72cfd81646a3da17fb432acbc964af7a18bbd18fd790e",
+      "raw_receipt_sha256": "bdfc05f052841c82e305d5005dc0c9a44c2dbdb3883af76e9abf9a92df2e1b34"
+    }
+  },
+  "packages": {
+    "qtbase": {
+      "version": "6.11.2-1+toddy2",
+      "architecture": "amd64",
+      "archive_sha256": "ac7198f74b71b818a1d1c0960a7fc61d1acfcbddf127b72e94cd1ed80e53b631",
+      "archive_bytes": 16681668,
+      "record_sha256": "98928632d43d6ed78db660dd8e28b86bf3c97d21e26540499c10656c4746580b",
+      "payload_entries": 4469
+    },
+    "calamares": {
+      "version": "3.4.3-1+toddy1",
+      "architecture": "amd64",
+      "archive_sha256": "d0c759054c8eae176b03d3a2f674104455331d13a86b99ebf6662629688cc7dd",
+      "archive_bytes": 2764032,
+      "record_sha256": "48d2455c90e584addc7721964bbbbb9f11e7b437dd8f0a2d1e9b936b7d376cac",
+      "payload_entries": 390
+    },
+    "toddy-branding": {
+      "version": "0.2.0-1+toddy1",
+      "architecture": "all",
+      "archive_sha256": "9619d10e04f9d57115ce90e404b80ad83daea1ce4c5b4f62f548c9d2415aad59",
+      "archive_bytes": 7427428,
+      "record_sha256": "62b2a09bf676b7372d0856b294550c76573ec1321bf2d135a75f6fb4c7b2d5cd",
+      "payload_entries": 22
+    },
+    "toddy-assistant": {
+      "version": "0.2.0-1+toddy1",
+      "architecture": "all",
+      "archive_sha256": "07dca1a7c300b823ef8637a76442ae8b1564e5b1cbf17a7a69c4dbb9c5e00c99",
+      "archive_bytes": 81288,
+      "record_sha256": "6ad18edb87585588962e8c9977c51285373088714c806e365fc943b4d08e4205",
+      "payload_entries": 65
+    },
+    "toddy-agent": {
+      "version": "0.2.0-1+toddy1",
+      "architecture": "all",
+      "archive_sha256": "8f8b08350a3346173624659fd23621eb56ca734ef57dd57f6a5d41ffb8ed6025",
+      "archive_bytes": 5539676,
+      "record_sha256": "3e077ff6d226d5a33466aac62d4a345c4c649b0be0d1472270bd111748dee1b8",
+      "payload_entries": 12083
+    },
+    "toddy-executor": {
+      "version": "0.2.0-1+toddy1",
+      "architecture": "all",
+      "archive_sha256": "79dad2b62261ce5eb7ebf30695c2417f8178b780f4535bbb8c2ba94b0c78e1f0",
+      "archive_bytes": 26080,
+      "record_sha256": "4a09dd89b1eeb3a4c4cc64602bd182d24e5e761eaadae7da6e9209425cc91a9f",
+      "payload_entries": 35
+    },
+    "calamares-branding-toddy": {
+      "version": "0.2.0-1+toddy1",
+      "architecture": "all",
+      "archive_sha256": "8b27486688fbb935af38d1ab2d18fdec5dfc61a2a4279d77fdaf3f5beb8a50d2",
+      "archive_bytes": 3425068,
+      "record_sha256": "387a2f91cbac4b23d6e90516d74080159bac9e54cc9ab3516e7c7ad12791aee7",
+      "payload_entries": 32
+    },
+    "toddy-voice": {
+      "version": "0.2.0-1+toddy1",
+      "architecture": "all",
+      "archive_sha256": "09c190c87a2938b943a96e8740c4decc2b9b5cb51926a7e69fbb94e23f1917b4",
+      "archive_bytes": 23560,
+      "record_sha256": "523547e8bee6700db593d2345cfb0133864637c40a81aef3455f83a128df4539",
+      "payload_entries": 26
+    },
+    "toddy-integrations": {
+      "version": "0.2.0-1+toddy1",
+      "architecture": "all",
+      "archive_sha256": "efade99b98c0a92ad9b24437e911547b2af685106ce0671f748a203b868936e6",
+      "archive_bytes": 93320,
+      "record_sha256": "4928da86b53f9fa6942a98f97a7e126ddf155612c23a2530322c4b0500fc47c7",
+      "payload_entries": 33
+    }
+  },
+  "qt_reconciliation": {
+    "state": "installed-package-postconditions-verified",
+    "reinstalled": false,
+    "original_failure": "Recipe0/native-install completed; checker could not read unpersisted recipe_exit",
+    "original_step": "b12-qtbase-wayland-install-3",
+    "version": "6.11.2-1+toddy2",
+    "archive_sha256": "ac7198f74b71b818a1d1c0960a7fc61d1acfcbddf127b72e94cd1ed80e53b631",
+    "scope": "Actual native package and headless consumers; Wayland/root GUI remains pending"
+  },
+  "schema_version": 1,
+  "boot_id": "9ac84ac8-fe0e-41c0-a128-a8e4ad4bebf2"
+}

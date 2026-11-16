@@ -32,20 +32,28 @@ recovery/backing identities unchanged. Never replay; placeholder is NOT bootable
 Immediate native queue (one guest/package writer):
 1. Native recovery3 completed0; never replay it.
 2. Candidate overlays prepared/started successfully (ADR0239); never replay prepare/start.
-3. QtBase raster attempt2 compile/stage/static/actual consumer qualification0.
-   Native upgrade2 stopped BEFORE native write: direct ELF owner `gcc-runtime`
-   was missing from Depends; full-root changed_paths0. Audit confirms only that
-   missing declared provider (16.2.0-1+toddy1). New install3 metadata/stage/receipt
-   correction pending; REUSE successful compile2, preserve failed promotion2.
-   Boot `9ac84ac8-fe0e-41c0-a128-a8e4ad4bebf2`, scratch UUID
-   `58e1a631-07a2-40a1-87c2-49de37a69345`. Never replay source/jobs/format/install.
-   Attempt1 configuration failure retained. Narrow H11 readback duplicate custody
-   completed: two frozen-hash squashfs copies + original ISO/receipts retained,
-   target free17,315,065,856→18,376,712,192B. [Receipt](evidence/B12-h11-readback-copy-custody.json).
-   Never replay custody; it makes no host QCOW reclamation or foundation change.
-4. Calamares module/native root GUI, source-package archive and offline composition.
-5. Voice engine/inference and combined installed UI/task/memory/automation/plugins
-   checks at eligible story boundaries; preserve one current acceptance slice.
+3. QtBase attempt2 compilation/stage/consumer passed. Upgrade3 installed actual
+   qtbase6.11.2-1+toddy2; shared dispatcher receipt timing bug was fixed and a
+   separate read-only reconcile4 passed all4469installed payload paths/native
+   consumers (0/0). Do NOT reinstall Qt. Failed2/3 receipts remain retained.
+4. Actual Calamares3.4.3 native package and original branding/assistant/agent/
+   executor/installer-branding/voice/integrations packages installed and checked0/0.
+   [Native package proof](evidence/B06-native-source-packages.json). Desktop UI,
+   voice engines/model/catalog, actual installer disks and B06+ acceptance remain.
+5. Custom installer build2/actual Calamares QPlugin factory/widget probe passed;
+   native install2 refused BEFORE writes (changed_paths0): dosfstools absent.
+   Frozen BLFS13.1 dosfstools4.2 archive/signature verified; native isolated build1
+   now dispatched. Inspect actual controller/job exits before qualification.
+   Fresh installer attempt3 is required after packaged offline capacity changes;
+   preserve failed2 and compile2. Do not replay old install2.
+6. H10/H11 opaque tar custody completed: full decompression/hash verification,
+   actual7,462,944,768B guest space recovered, all other evidence/ISOs/backings
+   retained. [Receipt](evidence/B12-opaque-cache-custody.json). Never replay.
+7. Current boot9ac84ac8-fe0e-41c0-a128-a8e4ad4bebf2, one root guest writer;
+   scratch UUID58e1a631-07a2-40a1-87c2-49de37a69345. Private runtime pointer
+   `.local/phase2/runtime.json` and actual guest markers govern continuation.
+   Next: DOS qualification/install, cached voice inputs/native builds, guarded
+   background upgrade and combined actual native assistant desktop qualification.
 
 Owner requested process/parallelism improvements2026-11-16. Keep three source
 workers continuously assigned to independent commits. New Qt/voice build recipes

@@ -11401,6 +11401,23 @@
       "license": "MIT AND CC-BY-4.0",
       "evidence": "Original Toddy package generation code MIT; generated qualification documentation CC-BY-4.0. Upstream engine/model legal notices remain at verified owned paths, without duplicated payload or relicensing. Source only until actual native qualification.",
       "runtime_inclusion": "Optional root-native artifact catalog and qualification receipt only; no model/engine payload, no start hooks or acquisition consent."
+    },
+    {
+      "name": "dosfstools",
+      "version": "4.2",
+      "license": "GPL-3.0-or-later",
+      "evidence": "Authenticated 4.2 archive README explicitly selects GPL version 3 or later; COPYING and leading per-file source notices retained. Native sparse-file test/installer disk acceptance remain separate.",
+      "extra_license_headers": {
+        "dosfstools-4.2.tar.gz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h"
+          ]
+        }
+      }
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"
