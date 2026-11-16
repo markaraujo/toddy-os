@@ -72,3 +72,50 @@ def package_transaction(args,canceled):
     return {'verified':True,'backend':'native-apt-dpkg','action':args['action'],'packages':after,
             'configuration_policy':'preserve-owner-modified-conffiles','cancellation_requested':bool(canceled()),
             'cancellation_boundary':'completed native transaction; committed effects retained'}
+
+
+def validate_service(args):
+    if not isinstance(args, dict) or set(args) != {'action', 'unit'} or \
+       args['action'] not in ('start', 'stop', 'restart', 'reload') or \
+       not isinstance(args['unit'], str) or not re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9_.@:-]{0,126}\.service', args['unit']):
+        raise PolicyError('invalid_service_operation')
+
+
+def service_operation(args, canceled):
+    validate_service(args)
+    if canceled():
+        raise PolicyError('operation_canceled_before_dispatch')
+    result = run_command({'argv': ['/usr/bin/systemctl', args['action'], args['unit']],
+                          'timeout_seconds': 60}, canceled)
+    if result['exit']:
+        raise PolicyError('service_operation_failed')
+    post = run_command({'argv': ['/usr/bin/systemctl', 'show', args['unit'],
+                                '--property=ActiveState', '--value'], 'timeout_seconds': 10}, capture=True)
+    state = post.pop('_private_output').decode('ascii', errors='strict').strip()
+    expected = {'inactive', 'failed'} if args['action'] == 'stop' else {'active'}
+    if post['exit'] or state not in expected:
+        raise PolicyError('service_postcondition_failed')
+    return {'verified': True, 'backend': 'native-systemd', 'unit': args['unit'],
+            'action': args['action'], 'active_state': state}
+
+
+def validate_network(args):
+    if not isinstance(args, dict) or set(args) != {'enabled'} or type(args['enabled']) is not bool:
+        raise PolicyError('invalid_network_operation')
+
+
+def network_operation(args, canceled):
+    validate_network(args)
+    if canceled():
+        raise PolicyError('operation_canceled_before_dispatch')
+    desired = 'enabled' if args['enabled'] else 'disabled'
+    result = run_command({'argv': ['/usr/bin/nmcli', '--wait', '20', 'networking',
+                                  'on' if args['enabled'] else 'off'], 'timeout_seconds': 25}, canceled)
+    if result['exit']:
+        raise PolicyError('network_operation_failed')
+    post = run_command({'argv': ['/usr/bin/nmcli', '--terse', 'networking'],
+                        'timeout_seconds': 10}, capture=True)
+    state = post.pop('_private_output').decode('ascii', errors='strict').strip()
+    if post['exit'] or state != desired:
+        raise PolicyError('network_postcondition_failed')
+    return {'verified': True, 'backend': 'native-networkmanager', 'networking': state}

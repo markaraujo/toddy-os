@@ -40,6 +40,12 @@ def validate(kind,args):
     elif kind=='package_transaction':
         from native_backends import validate_package
         validate_package(args)
+    elif kind=='service_operation':
+        from native_backends import validate_service
+        validate_service(args)
+    elif kind=='network_operation':
+        from native_backends import validate_network
+        validate_network(args)
     else:raise PolicyError('operation_unavailable')
     return args
 
@@ -153,4 +159,10 @@ def apply(kind,args,canceled=lambda:False):
     if kind=='package_transaction':
         from native_backends import package_transaction
         return package_transaction(args,canceled)
+    if kind=='service_operation':
+        from native_backends import service_operation
+        return service_operation(args,canceled)
+    if kind=='network_operation':
+        from native_backends import network_operation
+        return network_operation(args,canceled)
     return root_command(args,canceled)
