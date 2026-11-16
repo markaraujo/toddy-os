@@ -79,3 +79,103 @@ Focused host checks:
 These prove source guards and command plans only. Calamares job wiring, composed
 offline closure, actual virtual-disk install, detached ISO boot twice, installed
 credentials/identity, native update rollback and physical testing remain pending.
+
+## Verified offline input bundle
+
+[`scripts/build/phase2/offline_payload.py`](../../scripts/build/phase2/offline_payload.py)
+prepares an exact native own-package input bundle. It reads the committed B02
+runtime projection and its bound profile, exact versioned component JSON records
+and `.deb` cache. It independently inspects archive control/payload metadata and
+hashes, versioned dependency alternatives, unique ownership and copyright/source
+provenance. It reuses H10 `root_inventory.package_inventory` unchanged; it does
+not copy any current builder-root files, account database, home, cache or logs.
+
+Keep the retained foundation and full declared desktop/Git closure. The required
+offline additions are the separately qualified `toddy-branding` and lightweight
+`toddy-assistant` packages. Agent/executor/voice/integration/Node/model closures
+are separate acquired products. The accepted kernel, pre-FUSE recovery kernel and
+owned foundation GRUB configuration are mandatory source artifacts; G1 evidence
+and recovery recipes are unchanged. A complete desktop projection is still an
+input selection, not a composed image or blank-disk installation.
+
+The preparer verifies an offline detached Release signature using an explicitly
+pinned binary public keyring, Origin, SHA256-bound Packages index and exact
+package identity/hash/size. It retains only those public verification materials;
+secret OpenPGP packets are rejected before copying. No release signing key,
+credential, new network repository, hosted service or trust bypass is created.
+The focused tests generate an isolated ephemeral fixture signing key in a private
+temporary directory, then remove it; that is not the project release key.
+
+Owned generated caches require exact output/tool digests, complete selected
+producer input namespaces (including link/directory identities), regular input
+hashes and an actual retained native qualification-report digest. Known schema,
+icon, MIME, hwdb, dconf, loader and module-index families have explicit scopes.
+Unknown/incomplete families fail closed. Unowned generated paths, fresh service
+accounts, PAM/service policy and image state still require native finalization.
+`bytes` is the observed uncompressed package file size, conservatively including
+hardlink aliases, rather than compressed archive length; installer headroom remains
+separate. Failed/incomplete preparation is retained and cannot become install-ready.
+
+The coordinator can collect the exact missing inputs with this read-only command
+in the designated builder, after checking the current operation/package locks:
+
+```sh
+python3 /opt/toddy-build/scripts/build/phase2/offline_payload.py requirements \
+  --projection /opt/toddy-build/docs/evidence/B02-desktop-runtime-manifest.json \
+  --records /var/log/toddy/packages \
+  > /var/log/toddy/phase2/offline-required-inputs-NEW.json
+```
+
+This reports exact archive/record names and hashes, missing assistant/branding
+inputs, generated-cache binding templates and the required recovery artifacts.
+Null tool/evidence fields are missing proof, never approval. Supply the actual
+new qualified assistant/branding record paths and actual frozen public release
+metadata when preparing a new output generation:
+
+```sh
+python3 /opt/toddy-build/scripts/build/phase2/offline_payload.py prepare \
+  --profile /opt/toddy-build/config/phase2/desktop-runtime-roots.json \
+  --projection /opt/toddy-build/docs/evidence/B02-desktop-runtime-manifest.json \
+  --records /var/log/toddy/packages --cache /var/cache/toddy/packages \
+  --catalog /opt/toddy-build/config/phase2/software-catalog.json \
+  --additional-record /var/log/toddy/packages/toddy-assistant_ACTUAL-VERSION_all.json \
+  --additional-record /var/log/toddy/packages/toddy-branding_ACTUAL-VERSION_all.json \
+  --keyring /ACTUAL-PUBLIC-REPOSITORY/toddy-archive-keyring.gpg \
+  --key-sha256 ACTUAL-REVIEWED-PUBLIC-KEY-SHA256 \
+  --release /ACTUAL-PUBLIC-REPOSITORY/Release \
+  --signature /ACTUAL-PUBLIC-REPOSITORY/Release.gpg \
+  --packages /ACTUAL-PUBLIC-REPOSITORY/Packages \
+  --index-path ACTUAL-SIGNED-RELATIVE-PACKAGES-PATH \
+  --generated-bindings /var/log/toddy/phase2/ACTUAL-qualified-cache-bindings.json \
+  --output /mnt/lfs/sources/stage/phase2-offline-inputs-NEW
+```
+
+The `ACTUAL`/`NEW` names above are required substitutions, not observed artifacts
+or commands to replay. Preparation writes only a fresh private output bundle,
+with immutable copied archives/records/catalog/policy and public signature data.
+It never installs. The output reports `configured_installed_root: false`.
+
+`PreparedPayload` supplies the installer's `verify_payload`/`install_payload`
+callbacks. Bind its expected manifest SHA256 and set plan payload/catalog/bytes to
+the returned observed values. The default target guard requires the designated
+mounted root partition2, exact reviewed parent device identity and root metadata;
+an unmounted host tree or arbitrary root is refused before Dpkg. Native root
+unpack/configure is available only through the explicit trusted runner, after
+rejecting all maintainer scripts/triggers and unqualified Pre-Depends ordering.
+Each target must be fresh; uncertain partial unpack is not replayed.
+
+The mandatory native finalizer must run and retain these independent checks:
+native Dpkg database; fresh system service accounts; PAM/service policy; generated
+caches; ownership/xattrs; private state/keys; runtime linkage; whole-image
+attribution; foundation recovery. Each result has passed=true, integer exit0,
+an actual report path outside the image and its verified SHA256. The report binds
+check name/input manifest and includes measured postconditions. Bare markers are
+rejected. The finalizer also declares every fresh/generated entry and a complete
+image-manifest SHA256. The adapter independently reads every actual file/link/
+directory, rejects unknown devices/xattrs/unattributed state, verifies all owned
+bytes/metadata and recovery files, and rechecks bundle/signature custody afterward.
+Unpack success alone cannot return the installed-payload receipt.
+
+No actual finalizer, composed root, signed Phase2 repository, blank-disk install
+or boot is claimed by this source slice. Native reports, extended system-user
+policy and controlled cache/image audits remain concrete required inputs.
