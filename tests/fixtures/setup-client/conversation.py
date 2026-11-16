@@ -26,6 +26,7 @@ connection=Gio.bus_get_sync(Gio.BusType.SESSION,None)
 xml=(ROOT/'runtime/broker/io.github.markaraujo.Toddy.Service1.xml').read_text()
 extension='''
 <method name="GetTaskText"><arg type="s" direction="in"/><arg type="t" direction="in"/><arg type="s" direction="out"/></method>
+<method name="AcknowledgeTaskText"><arg type="s" direction="in"/><arg type="t" direction="in"/><arg type="s" direction="out"/></method>
 <method name="GetProfileConfig"><arg type="s" direction="in"/><arg type="s" direction="out"/></method>
 <method name="RestoreProfile"><arg type="s" direction="in"/><arg type="s" direction="in"/><arg type="s" direction="in"/><arg type="s" direction="out"/></method>
 <signal name="TaskTextChanged"><arg type="s"/><arg type="t"/></signal>
@@ -61,7 +62,7 @@ def handle(_conn,_sender,_path,_interface,method,parameters,invocation):
     values=parameters.unpack()
     if method=='GetCapabilities':
         reply(invocation,{'version':1,'profile_id':'toddy-default','profile_revision':revision,
-            'features':['native-tools','durable-tasks','cancel','profiles','agent-text-v1','profile-settings-v1'],
+            'features':['native-tools','durable-tasks','cancel','profiles','agent-text-v1','agent-text-ack-v1','profile-settings-v1'],
             'tools':['system-info'],'agent_backend':True,'provider_mode':'local'})
     elif method=='SubmitTask':
         request_id,profile,expected,encoded=values
@@ -77,6 +78,9 @@ def handle(_conn,_sender,_path,_interface,method,parameters,invocation):
         next_sequence=page[-1]['sequence'] if page else after
         reply(invocation,{'version':1,'task_id':task_id,'chunks':page,'next_sequence':next_sequence,
                           'latest_sequence':2,'complete':True,'history_enabled':False})
+    elif method=='AcknowledgeTaskText':
+        assert values==(snapshot['task_id'],2)
+        reply(invocation,{'version':1,'task_id':snapshot['task_id'],'erased':True})
     elif method=='RequestCancel':
         snapshot.update(sequence=2,state='canceled',cancel_requested=True,summary='canceled')
         reply(invocation,snapshot)
@@ -184,7 +188,7 @@ def poll():
             stage=7
             Gio.bus_unown_name(name_id)
             GLib.timeout_add(100,reown)
-        elif stage==7 and client.phase=='ready' and counts.get('GetTask',0)>=2 and counts.get('GetTaskText',0)>=3:
+        elif stage==7 and client.phase=='ready' and counts.get('GetTask',0)>=2 and counts.get('GetTaskText',0)>=2 and counts.get('AcknowledgeTaskText',0)==1:
             assert counts['SubmitTask']==1 and counts['RequestCancel']==1
             assert client.state.task_id=='conversation-fixture'
             assert client.text.sequence==2

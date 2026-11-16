@@ -94,6 +94,8 @@ class TaskText:
         self.text=''
         self.complete=False
         self.history_enabled=False
+        self.cleanup_requested=False
+        self.cleanup_acknowledged=False
 
     def observe(self,data):
         value=body(data,32768)

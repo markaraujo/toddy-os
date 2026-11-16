@@ -221,7 +221,8 @@ class ConversationTextTests(unittest.TestCase):
         self.assertEqual(receipt['counts']['ValidateProfile'],2)
         self.assertEqual(receipt['counts']['ApplyProfile'],1)
         self.assertEqual(receipt['counts']['RestoreProfile'],1)
-        self.assertGreaterEqual(receipt['counts']['GetTaskText'],3)
+        self.assertEqual(receipt['counts']['GetTaskText'],2)
+        self.assertEqual(receipt['counts']['AcknowledgeTaskText'],1)
 
 
 

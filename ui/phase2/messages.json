@@ -714,8 +714,8 @@
       "severity": "info",
       "humor_allowed": false,
       "text": {
-        "en": "This window keeps recent conversation in memory. Saved history is off.",
-        "pt-BR": "Esta janela mantém a conversa recente na memória. O histórico salvo está desativado."
+        "en": "Only the current response is shown temporarily. Saved history is off.",
+        "pt-BR": "Apenas a resposta atual é exibida temporariamente. O histórico salvo está desativado."
       }
     },
     {

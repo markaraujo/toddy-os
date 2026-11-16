@@ -161,10 +161,12 @@ class TaskClient:
         previous_prompt=self.current_prompt
         previous_snapshot=self.state.snapshot
         self.state.begin_submit()
-        if previous is not None and previous_snapshot is not None:
+        if previous is not None and previous.history_enabled and previous_snapshot is not None:
             self.history.append({'task_id':previous.task_id,'prompt':previous_prompt,
                                  'text':previous.text,'state':previous_snapshot['state']})
             self.history=self.history[-8:]
+        else:
+            self.history=[]
         self.text=None
         self.text_generation+=1
         self.text_fetching=False
@@ -211,6 +213,8 @@ class TaskClient:
             return
         if self.text is None or self.text.task_id!=self.state.task_id:
             self.text=TaskText(self.state.task_id)
+        if self.text.cleanup_requested:
+            return
         self.text_fetching=True
         self.text_status='loading'
         task_id=self.state.task_id
@@ -226,6 +230,8 @@ class TaskClient:
             dirty=self.text_dirty
             self.text_dirty=False
             self._notify_text()
+            if not more and self.text.complete and not self.text.history_enabled:
+                self._acknowledge_text(task_id)
             if more or dirty:
                 self.refresh_text()
         def failed(_code):
@@ -233,6 +239,22 @@ class TaskClient:
                 self.text_fetching=False
                 self.text_status='failed'
         self._call('GetTaskText',GLib.Variant('(st)',(task_id,self.text.sequence)),received,failed)
+
+    def _acknowledge_text(self,task_id):
+        if self.text is None or self.text.cleanup_requested or self.capabilities is None or \
+                'agent-text-ack-v1' not in self.capabilities['features']:
+            return
+        current=self.text
+        current.cleanup_requested=True
+        def received(data):
+            value=body(data,32768)
+            if value.get('task_id')!=task_id or type(value.get('erased')) is not bool:
+                raise ValueError('invalid_text_acknowledgement')
+            current.cleanup_acknowledged=True
+        # A lost acknowledgement never resubmits the task or automatically
+        # repeats deletion. The broker's bounded transient retention still applies.
+        self._call('AcknowledgeTaskText',GLib.Variant('(st)',(task_id,current.sequence)),
+                   received,lambda _code:None)
 
     def _text_signal(self,_conn,sender,_path,_interface,_name,parameters,*_):
         if sender!=self.owner or self.state.task_id is None:

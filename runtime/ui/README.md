@@ -41,8 +41,12 @@ pages. Each chunk is at most1024 UTF-8 bytes and a task's text at most256KiB.
 `latest_sequence` drains backlogged pages; `complete` means text finalized, never
 task success or page exhaustion. Text renders as plain GtkTextBuffer content,
 not markup or executable instructions. Display updates coalesce to at most10Hz.
-The window keeps at most eight recent task exchanges in RAM and labels whether
-server history is enabled. It does not claim a persistent full-history browser.
+With history enabled, the window keeps at most eight recent task exchanges in
+RAM and labels that choice. History off retains only the current response
+temporarily, clears previous exchanges on the next task and negotiates
+AcknowledgeTaskText after draining finalized text, allowing prompt broker erasure.
+A lost acknowledgement is not blindly retried; bounded broker transient retention
+remains the fallback. It does not claim a persistent full-history browser.
 
 Reconnect fetches the existing task ID and text cursor without resubmitting work.
 Loss of a submission reply holds unknown acceptance and blocks automatic replay.
