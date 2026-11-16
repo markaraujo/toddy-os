@@ -28,6 +28,18 @@ class AssemblyTests(unittest.TestCase):
             a.native_guard(system)
         system.run.assert_not_called()
 
+    def test_new_root_keeps_required_traversal_under_private_umask(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            stage=Path(temporary);stage.chmod(0o755)
+            with patch.object(a,'STAGE',stage),patch.object(Path,'lstat',root_fixture_lstat),patch.object(a,'private_directory',side_effect=lambda path,mode:Path(path).stat()),patch.object(a.os,'statvfs',return_value=Mock(f_bavail=2**40,f_frsize=4096)),patch.object(a,'root_storage_budget',return_value={'root_bound_bytes':1000,'fixed_filesystem_and_generated_headroom_bytes':512*1024**2}):
+                previous=os.umask(0o077)
+                try:assembly=a.AssemblyRoot('base',{'components':[{'installed_bytes':1000}]})
+                finally:os.umask(previous)
+                self.assertEqual(assembly.work.stat().st_mode&0o777,0o700)
+                self.assertEqual(assembly.root.stat().st_mode&0o777,0o755)
+                self.assertEqual((assembly.root/'lost+found').stat().st_mode&0o777,0o700)
+                assembly.recheck()
+
     def test_no_existing_or_uncertain_root_can_be_reused(self):
         with tempfile.TemporaryDirectory() as temporary:
             stage=Path(temporary);stage.chmod(0o755)

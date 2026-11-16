@@ -466,6 +466,8 @@ After the typed MVP projection has actually been produced, the corresponding
 commands are:
 
 ```sh
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh inputs-mvp-base-requirements
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh inputs-mvp-live-requirements
 bash /opt/toddy-build/scripts/build/phase2/image_native.sh inputs-mvp-base-prepare
 bash /opt/toddy-build/scripts/build/phase2/image_native.sh inputs-mvp-live-prepare
 bash /opt/toddy-build/scripts/build/phase2/image_native.sh mvp-base

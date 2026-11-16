@@ -130,7 +130,7 @@ class AssemblyRoot:
         space = os.statvfs(STAGE)
         if space.f_bavail*space.f_frsize < self.required:
             raise ValueError('Native assembly capacity requires16GiB plus3xpayload plus512MiB')
-        self.work.mkdir(mode=0o700); self.root.mkdir(mode=0o755)
+        self.work.mkdir(mode=0o700); self.root.mkdir(mode=0o755); self.root.chmod(0o755)
         # Match the explicit empty ext4 directory expected in installed roots.
         # This stages declared bytes/metadata; it is not a filesystem proof.
         (self.root/'lost+found').mkdir(mode=0o700)
