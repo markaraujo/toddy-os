@@ -21,7 +21,7 @@ class EngineAdapterTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.directory = Path(self.temp.name)
         self.bootstrap = {'version': 1, 'profile_revision': 'a' * 64,
-            'profile': {'schema_version': 1, 'budgets': {'task_deadline_seconds': 3, 'max_tool_calls': 1}},
+            'profile': {'schema_version': 1, 'budgets': {'task_deadline_seconds': 15, 'max_tool_calls': 1}},
             'connection': {'credential': 'dummy-secret-private-only'}, 'catalog': {},
             'system_prompt': 'Synthetic process only.', 'remote_consent': False,
             'tools': [{'name': 'read-file'}]}
@@ -108,6 +108,15 @@ for await(const run of readFrames(process.stdin)) {
         finally:timer.cancel()
         self.assertEqual(result,{'state':'canceled','code':'canceled','tool_calls':0,'text_bytes':0})
         self.assertLess(time.monotonic()-started,2)
+
+    def test_silent_startup_still_honors_the_shorter_task_deadline(self):
+        adapter = self.worker("throw Error('run must never be admitted');", startup_delay=30000)
+        self.bootstrap['profile']['budgets']['task_deadline_seconds'] = 1
+        started = time.monotonic()
+        with self.assertRaisesRegex(EngineError, '^engine_deadline$'):
+            adapter.run(self.bootstrap, 'run-one', 'request-one', 'Synthetic request',
+                        on_tool=lambda *_: self.fail())
+        self.assertLess(time.monotonic() - started, 4)
 
     def test_wrong_sequence_and_tool_rejected_without_dispatch_or_raw_stderr(self):
         for behavior, code in [
