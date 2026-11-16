@@ -4285,3 +4285,19 @@ installed image/live system log; --root alone does not redirect the default log.
 Focused real archive/signature fixtures passed. Terminal owner profile/memory/
 automation controls use bounded explicit CAS writes and no write replay. Actual
 installed native UI/device/installer acceptance remains pending.
+
+## 2026-11-16 — B05 accepted; native critical path unblocked
+
+Recovery3 passed12 native stages including actual atomic boot-config Stop before
+rename/after commit retention and exact authenticated restoration. Combined with
+profiles1/broker4/package safe-boundary and focused tests, all B05 criteria pass.
+Phase2 accepted41%; B06 current. Source preparation never counted as later gates.
+
+Cold services custody completed1840 verified chunks/full reconstructed SHA,
+exit0,36,847,177,728B host space reclaimed; protected primary/current images exact.
+New candidate VM adapter protects full backing chain and verifies container/port/
+read-only mount identity before root SSH. Pending Qt/voice compiles now use up to
+8jobs subject to actual CPU/RAM/2GiB reserve, leaving package/root writes serialized.
+No parallel harness/safety bypass or unchanged foundation rebuild was introduced.
+Current source delivery check745tests13.461s and full-history scanner passed before
+this acceptance documentation update. Actual next build timing remains to measure.

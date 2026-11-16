@@ -1,9 +1,9 @@
 # Phase 2 continuation card
 
-## B05 configuration/task recovery current
+## B06 native assistant integration current
 
 Owner resumed2026-11-16 with maximum simultaneous isolated source subagents
-([ADR-0229](adr/0229-owner-resumes-parallel-phase2.md)). B01-B04 accepted:31%
+([ADR-0229](adr/0229-owner-resumes-parallel-phase2.md)). B01-B05 accepted:41%
 weighted Phase2. Native broker4 passed exact request recovery, authenticated root
 routing, ordinary managed shell detached-descendant Stop, service-main-loss
 cleanup/restart uncertain/no replay. Root control2 and owner7 remain reusable.
@@ -20,8 +20,9 @@ backing files unchanged; no guest writer. Failure recovery1 retained. Never repl
 Native profiles1 also passed canonical user-service/CLI task pin/rollback,
 sealed FD lifecycle, old-profile exact lookup and restart/no replay. Source
 memory/automation and native UI controls integrated with focused regressions.
-B05 remains current pending explicit atomic boot-config Stop boundary in NEW
-recovery3; no partition/firmware/installer claim.
+B05 completed: native recovery3 passed actual atomic boot-config Stop before/after
+commit with exact original bytes restored. [Receipt](evidence/B05-native-recovery-final.json).
+No partition/firmware/installer claim. B06 is current.
 
 Host custody COMPLETE: `.local/phase2/cold-installer-chunk-custody-1`,1840chunks,
 originalSHA536109a5...57785fd reconstructed/verified, exit0,34.3GiB reclaimed.
@@ -29,7 +30,7 @@ originalSHA536109a5...57785fd reconstructed/verified, exit0,34.3GiB reclaimed.
 recovery/backing identities unchanged. Never replay; placeholder is NOT bootable.
 
 Immediate native queue (one guest/package writer):
-1. Commit reviewed current inputs; NEW recovery3 checks atomic boot-config Stop.
+1. Native recovery3 completed0; never replay it.
 2. NEW candidate overlays via phase2_candidate_vm.py prepare/start (ADR0239).
 3. Inspect actual target reserve/cache/jobs, mount only exact new scratch, qualify
    necessary reversible cache custody; then QtBase raster prepare/build/upgrade.

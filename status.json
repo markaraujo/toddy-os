@@ -3,8 +3,8 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-11T15:51:16.353086+00:00",
   "bootstrap": "ready_for_development",
-  "current_scope": "B01-B04 accepted (31% weighted Phase2). B05 durable task/configuration recovery is current after native broker4 passed. Parallel isolated source work continues; G2/Phase2 ISO and physical testing remain pending.",
-  "next_story": "B05",
+  "current_scope": "B01-B05 accepted (41% weighted Phase2). B06 native assistant/default-harness and credential/shortcut integration is current. Verified cold custody freed34.3GiB; new candidate preserves acceptedB02. G2/Phase2ISO and physical tests pending.",
+  "next_story": "B06",
   "gates": {
     "G1": "passed",
     "G2": "pending"
@@ -550,7 +550,7 @@
       "phase": "agentic",
       "title": "Persist tasks and recover interrupted system changes",
       "weight": 10,
-      "status": "in_progress",
+      "status": "completed",
       "depends_on": [
         "B03",
         "B04"
@@ -564,7 +564,9 @@
         "A crash after an effect but before result recording is reconciled or held for review; package/boot Stop respects a documented safe commit boundary."
       ],
       "evidence": [
-        "docs/evidence/B05.md"
+        "docs/evidence/B05.md",
+        "docs/evidence/B05-native-recovery-final.json",
+        "docs/evidence/B05-native-profiles.json"
       ]
     },
     {
@@ -572,7 +574,7 @@
       "phase": "agentic",
       "title": "Deliver Toddy quick entry, native UI and first-run setup",
       "weight": 10,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": [
         "B02",
         "B05"
@@ -586,7 +588,9 @@
         "UI/IPC reconnect retrieves the existing task instead of replaying it; locked/missing secret service never causes plaintext credential fallback.",
         "Optional software selection/review remains usable with the agent absent, recovers pending choices and does not install without current authorization."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/B06.md"
+      ]
     },
     {
       "id": "B07",
