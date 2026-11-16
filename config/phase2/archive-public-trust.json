@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "scope": "Experimental Phase2 native archive public verification only; no repository/full-flow acceptance",
+  "fingerprint": "453CD646B5F61C586812690F1AF1606035781DB1",
+  "public_keyring": "config/phase2/archive-public-key.gpg",
+  "public_keyring_sha256": "41c8ca50efdcb996d902dd5d5adaf4215354fc184b1636bef3e9a859ea961c77",
+  "created_unix": 1794848959,
+  "expires_unix": 1826384959,
+  "algorithm": "Ed25519",
+  "host_signing_tool": "gpg (GnuPG) 2.4.8",
+  "public_packets_only_verified": true,
+  "actual_detached_signature_verified": true,
+  "actual_tamper_refused": true,
+  "guest_private_material": false,
+  "global_keyring_changes": false,
+  "native_signed_repository_qualified": false
+}
