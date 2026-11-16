@@ -1,0 +1,25 @@
+{
+  "scope": "source-only native bootstrap qualification boundaries",
+  "native_execution": false,
+  "production_catalog_published": false,
+  "story_acceptance": false,
+  "checks": [
+    {
+      "command": "python3 -m unittest tests.test_native_acquisition tests.test_native_acquisition_qualification -q",
+      "tests": 27,
+      "exit": 0,
+      "seconds": 0.153
+    },
+    {
+      "command": "make check",
+      "tests": 711,
+      "exit": 0,
+      "seconds": 12.361
+    }
+  ],
+  "source_fixture_failures_preserved": [
+    "Initial publisher fixture recursively called patched NativeCatalog.load; fixed by loading catalog before patch.",
+    "Initial missing-results fixture reached expected custody rejection before FileNotFound; narrowed mocked read boundary."
+  ],
+  "native_next": "Coordinator builds exact package closure, exercises actual disposable-VM driver and owner Polkit calls, seals components preview, then performs separate clean-overlay production helper/UI full flow."
+}

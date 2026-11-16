@@ -161,7 +161,7 @@ def main(argv=None):
         else:
             row=journal.get(uid,args.operation_id)
             if row is None:raise SetupError('acquisition_unknown')
-        output={'version':1,'kind':'result','ok':True,**row};code=0
+        output={'version':1,'kind':'result','ok':True,'authenticated_uid':uid,**row};code=0
     except Exception as error:
         message=str(error) if isinstance(error,SetupError) and re.fullmatch('[a-z_]{1,64}',str(error)) else 'acquisition_unavailable'
         output={'version':1,'kind':'result','ok':False,'code':message};code=2

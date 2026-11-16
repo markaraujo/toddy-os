@@ -16,7 +16,7 @@ import unittest
 from unittest.mock import patch
 
 from runtime.setup.pending import Catalog,PendingStore,SetupError,_encode
-from runtime.setup.releases import NativeCatalog,POSTCONDITIONS,REQUIRED_CHECKS,LOCAL_CHECKS,RELEASE_PACKAGES,RELEASE_PERMISSIONS,sha,signature
+from runtime.setup.releases import NativeCatalog,POSTCONDITIONS,REQUIRED_CHECKS,LOCAL_CHECKS,RELEASE_PACKAGES,RELEASE_PERMISSIONS,COMPONENT_CHECKS,MIN_CODE_PATHS,ASSISTANT_MANIFEST,sha,signature
 from runtime.setup.acquisition_journal import Journal
 from runtime.setup.native_acquire import install,reconcile
 from runtime.setup.native_backend import simulation,NativeBackend,command
@@ -25,8 +25,14 @@ from runtime.setup.acquisition import AcquisitionClient
 ROOT=Path(__file__).resolve().parents[1]
 
 
-def fixture(release_id='agent-backend',hardware=None):
+def fixture(release_id='agent-backend',hardware=None,level='native-full-flow'):
     directory=Path('/source-test-only-no-native-authority')
+    keyring=b'\xc6\x01\x04' # Public-shaped parser fixture, not crypto.
+    source_data=('deb [signed-by='+str(directory/'archive-keyring.gpg')+'] https://example.invalid/toddy native main\n').encode()
+    code_files={Path(name):('Synthetic source parser fixture '+name).encode() for name in MIN_CODE_PATHS}
+    manifest=_encode({'schema_version':1,'package':'toddy-assistant','payload':{str(path):{'sha256':sha(data)} for path,data in code_files.items()}})
+    code_pins={'assistant_code_manifest_sha256':sha(_encode({str(path):sha(data) for path,data in code_files.items()})),'files':{str(path):sha(data) for path,data in code_files.items()}}
+    trust_pins={'fingerprint':'A'*40,'keyring_sha256':sha(keyring),'sources_sha256':sha(source_data),'inrelease_sha256':'c'*64}
     packages=[{'name':name,'version':'1.0-1','architecture':'amd64','bytes':100,'installed_bytes':4096,'sha256':'a'*64}
               for name in ('toddy-agent','toddy-executor','nodejs','llama-cpp') if name in RELEASE_PACKAGES[release_id]]
     from runtime.setup.runtime_compat import RUNTIME_PROFILE,RUNTIME_VERSION,RUNTIME_ARCHIVE_SHA256,CPU_FLAGS
@@ -34,9 +40,11 @@ def fixture(release_id='agent-backend',hardware=None):
     for package in packages:
         if package['name']=='llama-cpp':package.update(version=RUNTIME_VERSION,sha256=RUNTIME_ARCHIVE_SHA256)
     evidence=_encode({'scope':'installed-native-agent-acquisition','runner_exit':0,'postconditions_exit':0,
-                      'package_set_sha256':sha(_encode(packages)),'environment':'native-installed-user','fixture_only':False})
+                      'package_set_sha256':sha(_encode(packages)),'environment':'native-installed-user','fixture_only':False,
+                      'qualification_level':level,'code_pins':code_pins,'trust_pins':trust_pins})
     report=_encode({'version':1,'scope':'installed-native-agent-acquisition','native_result':'passed',
-        'package_set_sha256':sha(_encode(packages)),'checks':{key:True for key in REQUIRED_CHECKS|(LOCAL_CHECKS if local else set())},
+        'package_set_sha256':sha(_encode(packages)),'qualification_level':level,'code_pins':code_pins,'trust_pins':trust_pins,
+        'checks':{key:True for key in (COMPONENT_CHECKS if level=='native-components' else REQUIRED_CHECKS)|(LOCAL_CHECKS if local else set())},
         'retained_evidence_sha256':sha(evidence)})
     terms=b'Public synthetic review terms. No actual release is qualified.'
     row={'id':release_id,'artifact_id':'source-fixture','packages':packages,
@@ -54,7 +62,7 @@ def fixture(release_id='agent-backend',hardware=None):
         directory/'releases.json':_encode(value),directory/'terms'/(sha(terms)+'.txt'):terms,
         directory/'qualifications'/(sha(report)+'.json'):report,
         directory/'qualifications'/(sha(evidence)+'.evidence.json'):evidence,
-        Path('/source-test-source.list'):source_data}
+        Path('/source-test-source.list'):source_data,ASSISTANT_MANIFEST:manifest,**code_files}
     def read(path,**_):
         if path not in files:raise FileNotFoundError(path)
         return files[path]
@@ -98,6 +106,20 @@ class NativeAcquisitionTests(unittest.TestCase):
         report=next(path for path in self.files if path.suffix=='.json' and path.parent.name=='qualifications')
         del self.files[report]
         with self.assertRaises(FileNotFoundError):self.load()
+
+    def test_component_preview_is_available_but_cannot_pass_publication(self):
+        _,_,_,load=fixture('agent-local',level='native-components')
+        catalog=load();review=catalog.review('agent-local')
+        self.assertTrue(review['preview_only'])
+        self.assertEqual(review['qualification_level'],'native-components')
+        with self.assertRaisesRegex(SetupError,'release_full_flow_required'):catalog.require_full_flow()
+        _,_,_,full=fixture('agent-local',level='native-full-flow')
+        self.assertEqual(full().require_full_flow()['native_acquisition'],'native-full-flow')
+
+    def test_changed_assistant_code_never_inherits_old_native_qualification(self):
+        code=Path('/usr/lib/toddy/setup/native_acquire.py')
+        self.files[code]+=b' changed'
+        with self.assertRaisesRegex(SetupError,'release_code_pins'):self.load()
 
     def test_secret_or_truncated_openpgp_packets_are_never_accepted(self):
         from runtime.shared.openpgp import public_key_only

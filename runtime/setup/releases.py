@@ -67,6 +67,9 @@ def signature(keyring, signature_path, catalog_path):
         timeout=10, env={'PATH':'/usr/bin:/usr/sbin', 'HOME':'/nonexistent', 'LC_ALL':'C'})
     if result.returncode or len(result.stdout) > 16384:
         raise SetupError('release_signature')
+    statuses=result.stdout.decode('ascii',errors='strict').splitlines()
+    if any(line.startswith('[GNUPG:] '+tag+' ') for line in statuses for tag in ('BADSIG','ERRSIG','EXPSIG','EXPKEYSIG','REVKEYSIG','KEYREVOKED','KEYEXPIRED','SIGEXPIRED','NO_PUBKEY')):
+        raise SetupError('release_signature')
     valid = []
     for line in result.stdout.decode('ascii', errors='strict').splitlines():
         if line.startswith('[GNUPG:] VALIDSIG '):
@@ -85,6 +88,97 @@ def exact(value, fields):
 def digest_field(value):
     if not isinstance(value, str) or not HEX.fullmatch(value):
         raise SetupError('release_schema')
+
+
+def validate_declaration(row,*,directory,read=private_metadata):
+    """Pure curated metadata validation; no readiness/authority or effect."""
+    release_id=row.get('id') if isinstance(row,dict) else None
+    if not isinstance(release_id,str) or release_id not in RELEASE_PACKAGES:raise SetupError('release_schema')
+    fields={'id','artifact_id','packages','postconditions','terms_sha256','license','permissions',
+                'requires_owner_authorization','auto_activate'}
+    local='llama-cpp' in RELEASE_PACKAGES[release_id]
+    exact(row,fields|({'runtime_profile'} if local else set()))
+    if local and _encode(row['runtime_profile'])!=_encode(RUNTIME_PROFILE):raise SetupError('native_runtime_profile_changed')
+    if not isinstance(row['artifact_id'], str) or not ID.fullmatch(row['artifact_id']) or \
+            row['requires_owner_authorization'] is not True or row['auto_activate'] is not False or \
+            row['permissions'] != RELEASE_PERMISSIONS[release_id] or \
+            not isinstance(row['license'], str) or not 0 < len(row['license']) <= 256:
+        raise SetupError('release_schema')
+    for field in ('terms_sha256',):
+        digest_field(row[field])
+    terms = read(directory/'terms'/(row['terms_sha256']+'.txt'), maximum=65536)
+    if sha(terms) != row['terms_sha256']:
+        raise SetupError('release_terms')
+    terms.decode('utf-8', errors='strict')
+    packages = row['packages']
+    if not isinstance(packages,list) or len(packages) != len(RELEASE_PACKAGES[release_id]):
+        raise SetupError('release_schema')
+    seen = set()
+    for package in packages:
+        exact(package, ('name','version','architecture','bytes','installed_bytes','sha256'))
+        if not isinstance(package['name'],str) or package['name'] not in PACKAGES or package['name'] in seen or \
+                not isinstance(package['version'],str) or not VERSION.fullmatch(package['version']) or \
+                package['architecture'] not in ('amd64','all') or \
+                any(type(package[key]) is not int or not 0 < package[key] <= 2*1024**3 for key in ('bytes','installed_bytes')):
+            raise SetupError('release_schema')
+        digest_field(package['sha256']); seen.add(package['name'])
+        if package['name']=='llama-cpp' and (package['version']!=RUNTIME_VERSION or package['sha256']!=RUNTIME_ARCHIVE_SHA256 or package['architecture']!='amd64'):
+            raise SetupError('native_runtime_profile_changed')
+    if seen != RELEASE_PACKAGES[release_id]:
+        raise SetupError('release_schema')
+    expected = {path:owner for path,owner in POSTCONDITIONS.items() if owner in seen}
+    if not isinstance(row['postconditions'],dict) or set(row['postconditions']) != set(expected):
+        raise SetupError('release_schema')
+    for digest in row['postconditions'].values():
+        digest_field(digest)
+    return local
+
+
+ASSISTANT_MANIFEST=Path('/usr/share/doc/toddy-assistant/source-manifest.json')
+POLICY_PATH='/usr/share/polkit-1/actions/io.github.markaraujo.Toddy.AcquireNative.policy'
+MIN_CODE_PATHS={'/usr/bin/toddy',POLICY_PATH,*('/usr/lib/toddy/setup/'+name for name in
+    ('pending.py','acquisition.py','acquisition_journal.py','native_backend.py','native_acquire.py','releases.py','platform.py','runtime_compat.py')),
+    '/usr/lib/toddy/shared/openpgp.py','/usr/lib/toddy/ui/app.py','/usr/lib/toddy/ui/model.py'}
+COMPONENT_CHECKS={'absent_agent_native_backend','polkit_helper_owner_authentication','other_uid_refused',
+    'signed_metadata_tamper_rejected','safe_stop_before_write','offline_deferred',
+    'native_write_reconciliation_no_replay','native_package_postconditions',
+    'no_automatic_activation','no_grant_or_model_or_keys'}
+LEVELS={'native-components','native-full-flow'}
+
+
+def code_pinset(read=private_metadata):
+    data=read(ASSISTANT_MANIFEST);manifest=_strict(data)
+    if not isinstance(manifest,dict) or manifest.get('schema_version')!=1 or manifest.get('package')!='toddy-assistant' or not isinstance(manifest.get('payload'),dict):
+        raise SetupError('release_code_pins')
+    files={}
+    for virtual,row in manifest['payload'].items():
+        path=Path(virtual)
+        if not path.is_absolute() or '..' in path.parts or virtual.startswith('//') or any(ord(c)<32 for c in virtual) or path.as_posix()!=virtual:raise SetupError('release_code_pins')
+        if not (virtual.startswith('/usr/lib/toddy/') or virtual in ('/usr/bin/toddy',POLICY_PATH)):continue
+        if not isinstance(row,dict):raise SetupError('release_code_pins')
+        digest_field(row.get('sha256'))
+        actual=sha(read(path,maximum=1048576))
+        if actual!=row['sha256']:raise SetupError('release_code_pins')
+        files[virtual]=actual
+    if not MIN_CODE_PATHS<=set(files):raise SetupError('release_code_pins')
+    return {'assistant_code_manifest_sha256':sha(_encode(files)),'files':files}
+
+
+def describe(row,*,revision,generation,origin,level,hardware=cpu_features):
+    """Advisory descriptor only; component fixtures cannot mint catalog readiness."""
+    local='llama-cpp' in RELEASE_PACKAGES[row['id']]
+    compatibility=compatible(hardware=hardware) if local else {}
+    review={'version':1,'release_id':row['id'],'artifact_id':row['artifact_id'],
+        'catalog_revision':revision,'repository_id':'toddy-native','repository_origin':origin,'catalog_generation':generation,
+        'qualification_level':level,'preview_only':level!='native-full-flow',
+        'packages':row['packages'],'postconditions':row['postconditions'],
+        'download_bytes':sum(p['bytes'] for p in row['packages']),
+        'installed_bytes':sum(p['installed_bytes'] for p in row['packages']),
+        'terms_sha256':row['terms_sha256'],'license':row['license'],'permissions':row['permissions'],
+        'requires_owner_authorization':True,'auto_activate':False}
+    if local:review.update(runtime_profile=row['runtime_profile'],**compatibility)
+    review['review_sha256']=sha(_encode(review))
+    return review
 
 
 class NativeCatalog:
@@ -135,69 +229,47 @@ class NativeCatalog:
         if not isinstance(value['releases'], list) or len(value['releases']) > 3:
             raise SetupError('release_schema')
         instance = cls(); instance.revision = sha(data); instance.value = value
-        instance.repository_origin=match[1]; instance.directory = directory; instance.releases = {}; instance.fingerprint = trust['fingerprint']; instance.verify = verify; instance.read = read; instance.sources = sources; instance.clock = clock; instance.hardware = hardware
+        instance.repository_origin=match[1]; instance.directory = directory; instance.releases = {}; instance.levels = {}; instance.fingerprint = trust['fingerprint']; instance.keyring_sha256 = trust['keyring_sha256']; instance.verify = verify; instance.read = read; instance.sources = sources; instance.clock = clock; instance.hardware = hardware
         for release in value['releases']:
-            if isinstance(release,dict) and release.get('id') in instance.releases:raise SetupError('release_schema')
+            if isinstance(release,dict) and isinstance(release.get('id'),str) and release['id'] in instance.releases:raise SetupError('release_schema')
             instance._release(release, read)
             instance.releases[release['id']] = release
         return instance
 
     def _release(self, row, read):
-        release_id=row.get('id') if isinstance(row,dict) else None
-        if not isinstance(release_id,str) or release_id not in RELEASE_PACKAGES:raise SetupError('release_schema')
-        fields={'id','artifact_id','packages','postconditions','terms_sha256','license','permissions',
-                    'qualification_sha256','requires_owner_authorization','auto_activate'}
-        local='llama-cpp' in RELEASE_PACKAGES[release_id]
-        exact(row,fields|({'runtime_profile'} if local else set()))
-        if local and _encode(row['runtime_profile'])!=_encode(RUNTIME_PROFILE):raise SetupError('native_runtime_profile_changed')
-        if not isinstance(row['artifact_id'], str) or not ID.fullmatch(row['artifact_id']) or \
-                row['requires_owner_authorization'] is not True or row['auto_activate'] is not False or \
-                row['permissions'] != RELEASE_PERMISSIONS[release_id] or \
-                not isinstance(row['license'], str) or not 0 < len(row['license']) <= 256:
-            raise SetupError('release_schema')
-        for field in ('terms_sha256','qualification_sha256'):
-            digest_field(row[field])
-        terms = read(self.directory/'terms'/(row['terms_sha256']+'.txt'), maximum=65536)
-        if sha(terms) != row['terms_sha256']:
-            raise SetupError('release_terms')
-        terms.decode('utf-8', errors='strict')
-        packages = row['packages']
-        if not isinstance(packages,list) or len(packages) != len(RELEASE_PACKAGES[release_id]):
-            raise SetupError('release_schema')
-        seen = set()
-        for package in packages:
-            exact(package, ('name','version','architecture','bytes','installed_bytes','sha256'))
-            if not isinstance(package['name'],str) or package['name'] not in PACKAGES or package['name'] in seen or \
-                    not isinstance(package['version'],str) or not VERSION.fullmatch(package['version']) or \
-                    package['architecture'] not in ('amd64','all') or \
-                    any(type(package[key]) is not int or not 0 < package[key] <= 2*1024**3 for key in ('bytes','installed_bytes')):
-                raise SetupError('release_schema')
-            digest_field(package['sha256']); seen.add(package['name'])
-            if package['name']=='llama-cpp' and (package['version']!=RUNTIME_VERSION or package['sha256']!=RUNTIME_ARCHIVE_SHA256 or package['architecture']!='amd64'):
-                raise SetupError('native_runtime_profile_changed')
-        if seen != RELEASE_PACKAGES[release_id]:
-            raise SetupError('release_schema')
-        expected = {path:owner for path,owner in POSTCONDITIONS.items() if owner in seen}
-        if not isinstance(row['postconditions'],dict) or set(row['postconditions']) != set(expected):
-            raise SetupError('release_schema')
-        for digest in row['postconditions'].values():
-            digest_field(digest)
+        if not isinstance(row,dict) or 'qualification_sha256' not in row:raise SetupError('release_qualification')
+        digest_field(row['qualification_sha256'])
+        declaration={key:value for key,value in row.items() if key!='qualification_sha256'}
+        local=validate_declaration(declaration,directory=self.directory,read=read)
+        release_id=row['id'];packages=row['packages']
         report_data = read(self.directory/'qualifications'/(row['qualification_sha256']+'.json'))
         if sha(report_data) != row['qualification_sha256']:
             raise SetupError('release_qualification')
         report = _strict(report_data)
-        exact(report, ('version','scope','native_result','package_set_sha256','checks','retained_evidence_sha256'))
+        exact(report, ('version','scope','native_result','qualification_level','package_set_sha256','code_pins','trust_pins','checks','retained_evidence_sha256'))
+        level=report['qualification_level']
+        if not isinstance(level,str) or level not in LEVELS:raise SetupError('release_qualification')
+        expected_checks=(COMPONENT_CHECKS if level=='native-components' else REQUIRED_CHECKS)|(LOCAL_CHECKS if local else set())
+        trust_pins={'fingerprint':self.fingerprint,'keyring_sha256':self.keyring_sha256,
+            'sources_sha256':self.value['repository']['sources_sha256'],'inrelease_sha256':self.value['repository']['inrelease_sha256']}
+        if report['trust_pins']!=trust_pins or report['code_pins']!=code_pinset(read):raise SetupError('release_code_or_trust_changed')
         if type(report['version']) is not int or report['version'] != 1 or report['scope'] != 'installed-native-agent-acquisition' or report['native_result'] != 'passed' or \
                 report['package_set_sha256'] != sha(_encode(packages)) or not isinstance(report['checks'],dict) or \
-                set(report['checks']) != REQUIRED_CHECKS|(LOCAL_CHECKS if local else set()) or any(value is not True for value in report['checks'].values()):
+                set(report['checks']) != expected_checks or any(value is not True for value in report['checks'].values()):
             raise SetupError('release_qualification')
         digest_field(report['retained_evidence_sha256'])
         evidence=read(self.directory/'qualifications'/(report['retained_evidence_sha256']+'.evidence.json'))
         if sha(evidence)!=report['retained_evidence_sha256']:
             raise SetupError('release_qualification')
         native=_strict(evidence)
-        if not isinstance(native,dict) or native.get('scope')!='installed-native-agent-acquisition' or native.get('environment')!='native-installed-user' or native.get('fixture_only') is not False or type(native.get('runner_exit')) is not int or native['runner_exit']!=0 or type(native.get('postconditions_exit')) is not int or native['postconditions_exit']!=0 or native.get('package_set_sha256')!=report['package_set_sha256']:
+        if not isinstance(native,dict) or native.get('scope')!='installed-native-agent-acquisition' or native.get('environment')!='native-installed-user' or native.get('fixture_only') is not False or type(native.get('runner_exit')) is not int or native['runner_exit']!=0 or type(native.get('postconditions_exit')) is not int or native['postconditions_exit']!=0 or native.get('package_set_sha256')!=report['package_set_sha256'] or native.get('qualification_level')!=level or native.get('code_pins')!=report['code_pins'] or native.get('trust_pins')!=trust_pins:
             raise SetupError('release_qualification')
+        self.levels[release_id]=level
+
+    def require_full_flow(self):
+        if not self.releases or any(level!='native-full-flow' for level in self.levels.values()):raise SetupError('release_full_flow_required')
+        if not ({'agent-backend','local-runtime'}<=set(self.releases) or 'agent-local' in self.releases):raise SetupError('release_full_scope_required')
+        return {'version':1,'native_acquisition':'native-full-flow','catalog_revision':self.revision,'release_ids':sorted(self.releases)}
 
     def ensure_current(self):
         current=type(self).load(directory=self.directory,sources=self.sources,read=self.read,verify=self.verify,clock=self.clock,hardware=self.hardware)
@@ -215,15 +287,5 @@ class NativeCatalog:
     def review(self, release_id='agent-backend'):
         if not isinstance(release_id,str) or release_id not in self.releases:
             raise SetupError('release_unavailable')
-        row = self.releases[release_id]
-        local='llama-cpp' in RELEASE_PACKAGES[release_id]
-        compatibility=compatible(hardware=self.hardware) if local else {}
-        review = {'version':1,'release_id':release_id,'artifact_id':row['artifact_id'],
-            'catalog_revision':self.revision,'repository_id':'toddy-native','repository_origin':self.repository_origin,'catalog_generation':self.value['generation'],
-            'packages':row['packages'],'postconditions':row['postconditions'],'download_bytes':sum(p['bytes'] for p in row['packages']),
-            'installed_bytes':sum(p['installed_bytes'] for p in row['packages']),
-            'terms_sha256':row['terms_sha256'],'license':row['license'],'permissions':row['permissions'],
-            'requires_owner_authorization':True,'auto_activate':False}
-        if local:review.update(runtime_profile=row['runtime_profile'],**compatibility)
-        review['review_sha256'] = sha(_encode(review))
-        return review
+        return describe(self.releases[release_id],revision=self.revision,generation=self.value['generation'],
+            origin=self.repository_origin,level=self.levels[release_id],hardware=self.hardware)

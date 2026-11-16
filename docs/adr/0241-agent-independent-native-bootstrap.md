@@ -51,3 +51,21 @@ No native bootstrap acceptance is claimed. Actual installed-user Polkit, signed
 catalog/APT, ownership/lifecycle/offline/Stop/restart and root helper transport must
 pass before a qualified release is published. This source slice changes no guest,
 host package, key, model, current story status, UI or package generator.
+
+
+## Independent native qualification and publication levels
+
+The owner approved separate native-components and native-full-flow levels.
+A root-only disposable installed-VM component driver uses signed declarations
+without a production qualification field to exercise the same backend/journal,
+real signed APT, owner pkexec authentication and observation after a completed
+native write whose controller exits before terminal persistence. Its signed
+component result authorizes only an explicitly labelled preview catalog for a
+second clean-overlay production helper/UI test. The marker is a VM safety guard,
+never runtime authority. Missing actual results produce no report.
+
+Production metadata binds exact package, installed assistant code and public
+trust pins. Final publication rejects component-only entries and requires actual
+native-full-flow retained evidence for the same pins. Source tests use explicit
+synthetic signing/OS fixtures and cannot establish either native acceptance level.
+The qualification driver is not installed as an end-user bypass or package hook.

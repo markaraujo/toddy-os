@@ -197,6 +197,7 @@ class NativeBackend:
                     if path.is_absolute() or '..' in path.parts or member.isdev() or member.isfifo() or member.mode&0o6000 or any('xattr' in key for key in member.pax_headers):
                         raise SetupError('native_payload_policy')
                     value=path.as_posix()
+                    if value.startswith(('home/','root/','var/lib/toddy/')):raise SetupError('native_private_state_payload_refused')
                     if value.lower().endswith('.gguf'):raise SetupError('native_model_payload_refused')
                     if any(part.endswith(('.wants','.requires')) for part in path.parts) or value.startswith((
                         'etc/xdg/autostart/','usr/share/autostart/','etc/cron','etc/init.d/',

@@ -70,13 +70,16 @@ Required root-owned files:
   show it with package versions/sizes/source and a separate unchecked acceptance.
 - `qualifications/<qualification_sha256>.json`: exact `version:1`,
   `scope:'installed-native-agent-acquisition'`, `native_result:'passed'`,
-  `package_set_sha256`, `checks`, `retained_evidence_sha256`. The package-set hash
+  `qualification_level`, `package_set_sha256`, `code_pins`, `trust_pins`,
+  `checks`, `retained_evidence_sha256`. The package-set hash
   uses pending._encode(packages), including list order. Checks must exactly cover
-  REQUIRED_CHECKS in releases.py, all true, backed by actual native evidence.
+  COMPONENT_CHECKS for native-components or REQUIRED_CHECKS for native-full-flow
+  in releases.py, plus LOCAL_CHECKS for a local runtime; all must have actual native evidence.
 - `qualifications/<retained_evidence_sha256>.evidence.json`: retained sanitized
   actual native result bytes with the above scope, `environment:'native-installed-user'`,
   `fixture_only:false`, runner/postconditions integer exits 0, and identical
-  `package_set_sha256`. Hashes alone or callable/fixture presence are not acceptance.
+  `package_set_sha256`, qualification level, code and trust pins. Hashes alone or
+  callable/fixture presence are not acceptance.
 
 The publisher must retain the actual native logs/qualification inputs and bind
 these report bytes to that accepted release. Test fixtures inject fake verification
@@ -190,3 +193,28 @@ resource assessment, license/download consent and activation remain separate use
 steps. No GGUF payload may enter this bootstrap; no model is added to the ISO.
 The earlier B03 native engine tests remain accepted, while actual installed-owner
 APT/Polkit/Stop/recovery for these new release IDs remains pending qualification.
+
+## Component preview and final publication
+
+A signed `native-components` entry is explicitly preview-only. It permits testing
+this exact reviewed closure through the production helper/UI on a fresh disposable
+installed overlay after the independent native component driver has exercised
+APT, durable reconciliation and actual owner Polkit calls. It does not establish
+full helper/UI, upgrade/remove/recovery or final G2 acceptance. A release with no
+qualified signed catalog remains unavailable; no marker, environment variable or
+CLI flag bypasses production readiness.
+
+Both levels pin the complete assistant code subset from its installed source
+manifest (`/usr/lib/toddy/**`, launcher and acquisition policy), rehashing actual
+root-owned files. `assistant_code_manifest_sha256` hashes the canonical path/hash
+map, rather than the whole package manifest, avoiding self-reference when retained
+qualification metadata is packaged. Trust pins cover actual public fingerprint,
+keyring, source-list and InRelease hashes. Any code/package/trust change requires
+fresh matching evidence. A component report cannot be promoted by changing a label.
+
+The final publisher must run the read-only
+[publication guard](../scripts/qualification/native_acquisition_release_guard.py)
+against the actual release root with independently pinned public trust values.
+It requires every advertised entry to be native-full-flow and coverage of agent
+and local runtime acquisition. This checks native bootstrap only; all remaining
+G2/ISO gates still apply. See the [operator procedure](native-acquisition-qualification.md).
