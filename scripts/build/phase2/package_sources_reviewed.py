@@ -20,6 +20,7 @@ import phase2_release as release
 p = strict.p
 KIND = 'current-functional-source-review-acceptance'
 DECISION = 'accepted-for-experimental-source-publication'
+DELTA_KIND = 'native-package-source-review-delta-draft'
 CONDITIONS = ['retain-exact-public-sources-and-notices', 'retain-historical-fingerprint-ledger', 'no-historical-binary-or-g2-claim']
 IDENTITY = ('name', 'version', 'architecture', 'archive_sha256', 'component_record_sha256', 'recipe_sha256')
 
@@ -144,13 +145,48 @@ def verify_project(root, commit, inventory, artifacts):
     if seen != set(project.paths): raise ValueError('Incomplete current project snapshot')
 
 
+def verify_delta_backbone(root, inventory, material, receipt, report):
+    """Reuse only byte-identical reviewed members for unchanged native identities."""
+    from package_sources_delta import changes
+    reference = inventory['base_acceptance']
+    if set(reference) != {'path', 'sha256'}: raise ValueError('Exact committed base source decision required')
+    decision = release.evidence(root, reference['path'], reference['sha256'])
+    data = material.read(inventory['base_inventory_member'])
+    if hashlib.sha256(data).hexdigest() != inventory['base_inventory_sha256'] or inventory['base_inventory_sha256'] != decision['source_inventory_sha256']:
+        raise ValueError('Immutable reviewed base inventory differs')
+    base = p.strict(data)
+    if base.get('kind') != mvp.KIND: raise ValueError('Only directly reviewed export2 backbone supported')
+    artifacts = []
+    for role, assets in (('source', base['source_assets']), ('licenses', base['license_assets']), ('project-source', [base['project_source']])):
+        artifacts += [dict(row, role=role) for row in assets]
+    artifacts.append({'role': 'inventory', 'name': 'source-review-inventory.json', 'sha256': inventory['base_inventory_sha256'], 'bytes': len(data)})
+    pins = {'archive_export_sha256': base['archive_export_sha256'], 'packages': [identity(row) for row in base['packages']]}
+    previous_report = validate_acceptance(root, decision, artifacts, pins, base['source_commit'])
+    unchanged = changes(base['packages'], receipt['packages'])
+    if inventory['unchanged_packages'] != unchanged or inventory['changed_packages'] != ['toddy-installer']:
+        raise ValueError('Changed source scope must be explicitly installer1 to installer4 only')
+    if strict.git(root, 'merge-base', '--is-ancestor', base['source_commit'], inventory['source_commit']) != b'':
+        raise ValueError('Current source must preserve actual reviewed backbone ancestry')
+    old_coverage = {row['name']: row for row in base['packages']}; coverage = {row['name']: row for row in inventory['packages']}
+    old_members = {row['path']: row for row in base['members']}; old_rows = {row['name']: row for row in previous_report['packages']}; rows = {row['name']: row for row in report['packages']}
+    old_controls = {row['name']: row for row in base['functional_closure']}; controls = {row['name']: row for row in inventory['functional_closure']}
+    for name in unchanged:
+        if coverage[name] != old_coverage[name] or controls[name] != old_controls[name] or digest_value(rows[name]) != digest_value(old_rows[name]):
+            raise ValueError('Unchanged package evidence requires exact prior coverage/control/technical row')
+        for member in coverage[name]['source_members']:
+            if material.wanted.get(member) != old_members.get(member):
+                raise ValueError('Reused package material member changed')
+    return set(unchanged)
+
+
 def verify_assets(root, inventory_path, artifacts, pins, commit, review, repository):
     report = validate_acceptance(root, review, artifacts, pins, commit)
     inventory_path = strict.regular(inventory_path)
     inventory = p.strict(inventory_path.read_bytes())
-    if p.digest(inventory_path) != review['source_inventory_sha256'] or inventory.get('kind') != mvp.KIND or inventory.get('source_commit') != commit or inventory.get('archive_export_sha256') != pins['archive_export_sha256'] or inventory.get('publication_eligible') is not False or inventory.get('signed') is not False or inventory.get('published') is not False or inventory.get('historical_byte_reproduction_claim') is not False:
+    if p.digest(inventory_path) != review['source_inventory_sha256'] or inventory.get('kind') not in (mvp.KIND, DELTA_KIND) or inventory.get('source_commit') != commit or inventory.get('archive_export_sha256') != pins['archive_export_sha256'] or inventory.get('publication_eligible') is not False or inventory.get('signed') is not False or inventory.get('published') is not False or inventory.get('historical_byte_reproduction_claim') is not False:
         raise ValueError('Original immutable reviewed draft inventory required')
-    for field, relative in (('producer_sha256', 'scripts/build/phase2/package_sources_mvp.py'), ('strict_producer_sha256', 'scripts/build/phase2/package_sources.py')):
+    producer_fields = (('producer_sha256', 'scripts/build/phase2/package_sources_delta.py'),) if inventory['kind'] == DELTA_KIND else (('producer_sha256', 'scripts/build/phase2/package_sources_mvp.py'), ('strict_producer_sha256', 'scripts/build/phase2/package_sources.py'))
+    for field, relative in producer_fields:
         if inventory.get(field) != hashlib.sha256(strict.git(root, 'show', commit + ':' + relative)).hexdigest():
             raise ValueError('Actual source producer identity differs from source snapshot')
     if [identity(row) for row in inventory['packages']] != pins['packages']:
@@ -178,6 +214,7 @@ def verify_assets(root, inventory_path, artifacts, pins, commit, review, reposit
         if p.strict(material.read('review/historical-fingerprints.json')) != ledger or p.strict(material.read('review/functional-closure.json')) != inventory['functional_closure']:
             raise ValueError('Actual review mapping/ledger bytes differ')
         current_rows = {row['name']: row for row in inventory['functional_closure']}
+        reused = verify_delta_backbone(root, inventory, material, receipt, report) if inventory['kind'] == DELTA_KIND else set()
         actual_missing = set(); covered = set()
         for package, coverage in zip(receipt['packages'], inventory['packages']):
             name = package['name']; prefix = 'package-documents/' + name + '/'
@@ -186,55 +223,56 @@ def verify_assets(root, inventory_path, artifacts, pins, commit, review, reposit
             if hashlib.sha256(record_data).hexdigest() != package['component_record_sha256']:
                 raise ValueError('Actual native source provenance record differs')
             record = p.strict(record_data)
-            control, body, _size = p.archive_contents(strict.regular(Path(repository) / package['asset']))
-            if record['payload'] != body or record['archive_sha256'] != package['archive_sha256'] or (control.get('Package'), control.get('Version'), control.get('Architecture')) != (name, package['version'], package['architecture']):
-                raise ValueError('Native archive/control/provenance chain differs')
-            documents = {}
-            for path, row in material.wanted.items():
-                if not path.startswith(prefix): continue
-                local = path[len(prefix):]
-                virtual = strict.generated_voice.CATALOG if name == strict.generated_voice.bridge.PACKAGE and local == 'catalog.json' else '/usr/share/doc/' + name + '/' + local
-                if body.get(virtual, {}).get('sha256') != row['sha256']:
-                    raise ValueError('Original source/license document differs from native archive')
-                documents[local] = material.read(path)
-            if hashlib.sha256(documents['copyright']).hexdigest() != package['copyright']['sha256']:
-                raise ValueError('Required actual copyright differs')
-            if package['source_notices_index']:
-                value = p.strict(documents['source-notices/index.json'])
-                for source in value['sources']:
-                    for notice in source['notices']:
-                        data = documents['source-notices/' + notice['sha256']]
-                        if len(data) != notice['size'] or hashlib.sha256(data).hexdigest() != notice['sha256']:
-                            raise ValueError('Actual retained notice chain differs')
-            for source in package['sources']:
-                member = 'upstream/' + source['sha256'] + '/' + source['filename']
-                if material.wanted.get(member, {}).get('sha256') != source['sha256']:
-                    raise ValueError('Selected preferred upstream source missing')
-            preferred = p.strict(documents['source-manifest.json']) if 'source-manifest.json' in documents else None
-            if preferred and not package['sources']:
-                for path, value in preferred.get('source_inputs', preferred.get('inputs', {})).items():
-                    expected = value['sha256'] if isinstance(value, dict) else value
-                    if path.startswith('native-inputs/'):
-                        allowed = {'native-inputs/' + mvp.OLD_NAME + '.deb': mvp.OLD_ARCHIVE_SHA, 'native-inputs/' + mvp.OLD_NAME + '.json': mvp.OLD_RECORD_SHA}
-                        if allowed.get(path) != expected: raise ValueError('Unreviewed external native build input')
-                        member = 'native-build-inputs/' + path[len('native-inputs/'):]
-                    else:
-                        strict.relative(path); member = 'project-inputs/' + expected + '/' + path
-                    if material.wanted.get(member, {}).get('sha256') != expected:
-                        raise ValueError('Original preferred source/native build input missing: ' + name + ' ' + path)
-            if name == 'toddy-agent':
-                custody = p.strict(documents['npm-custody.json']); distinct = set()
-                if len(custody['components']) != 88: raise ValueError('Complete audited NPM locations required')
-                for component in custody['components']:
-                    data = material.read('npm/' + component['archive_sha256'] + '.tgz')
-                    if len(data) != component['archive_bytes'] or hashlib.sha512(data).digest() != base64.b64decode(component['integrity'].split('-', 1)[1], validate=True):
-                        raise ValueError('Audited NPM preferred distribution bytes differ')
-                    distinct.add(component['archive_sha256'])
-                if len(distinct) != 87: raise ValueError('Complete distinct NPM archive closure required')
-            if name == strict.generated_voice.bridge.PACKAGE:
-                strict.generated_voice.verify(package, record, documents,
-                    p.strict(material.read('builder-export/voice-native2-attestation.json')),
-                    p.strict(material.read('builder-export/voice-native2-projection.json')))
+            if name not in reused:
+                control, body, _size = p.archive_contents(strict.regular(Path(repository) / package['asset']))
+                if record['payload'] != body or record['archive_sha256'] != package['archive_sha256'] or (control.get('Package'), control.get('Version'), control.get('Architecture')) != (name, package['version'], package['architecture']):
+                    raise ValueError('Native archive/control/provenance chain differs')
+                documents = {}
+                for path, row in material.wanted.items():
+                    if not path.startswith(prefix): continue
+                    local = path[len(prefix):]
+                    virtual = strict.generated_voice.CATALOG if name == strict.generated_voice.bridge.PACKAGE and local == 'catalog.json' else '/usr/share/doc/' + name + '/' + local
+                    if body.get(virtual, {}).get('sha256') != row['sha256']:
+                        raise ValueError('Original source/license document differs from native archive')
+                    documents[local] = material.read(path)
+                if hashlib.sha256(documents['copyright']).hexdigest() != package['copyright']['sha256']:
+                    raise ValueError('Required actual copyright differs')
+                if package['source_notices_index']:
+                    value = p.strict(documents['source-notices/index.json'])
+                    for source in value['sources']:
+                        for notice in source['notices']:
+                            data = documents['source-notices/' + notice['sha256']]
+                            if len(data) != notice['size'] or hashlib.sha256(data).hexdigest() != notice['sha256']:
+                                raise ValueError('Actual retained notice chain differs')
+                for source in package['sources']:
+                    member = 'upstream/' + source['sha256'] + '/' + source['filename']
+                    if material.wanted.get(member, {}).get('sha256') != source['sha256']:
+                        raise ValueError('Selected preferred upstream source missing')
+                preferred = p.strict(documents['source-manifest.json']) if 'source-manifest.json' in documents else None
+                if preferred and (not package['sources'] or (inventory['kind'] == DELTA_KIND and name == 'toddy-installer')):
+                    for path, value in preferred.get('source_inputs', preferred.get('inputs', {})).items():
+                        expected = value['sha256'] if isinstance(value, dict) else value
+                        if path.startswith('native-inputs/'):
+                            allowed = {'native-inputs/' + mvp.OLD_NAME + '.deb': mvp.OLD_ARCHIVE_SHA, 'native-inputs/' + mvp.OLD_NAME + '.json': mvp.OLD_RECORD_SHA}
+                            if allowed.get(path) != expected: raise ValueError('Unreviewed external native build input')
+                            member = 'native-build-inputs/' + path[len('native-inputs/'):]
+                        else:
+                            strict.relative(path); member = 'project-inputs/' + expected + '/' + path
+                        if material.wanted.get(member, {}).get('sha256') != expected:
+                            raise ValueError('Original preferred source/native build input missing: ' + name + ' ' + path)
+                if name == 'toddy-agent':
+                    custody = p.strict(documents['npm-custody.json']); distinct = set()
+                    if len(custody['components']) != 88: raise ValueError('Complete audited NPM locations required')
+                    for component in custody['components']:
+                        data = material.read('npm/' + component['archive_sha256'] + '.tgz')
+                        if len(data) != component['archive_bytes'] or hashlib.sha512(data).digest() != base64.b64decode(component['integrity'].split('-', 1)[1], validate=True):
+                            raise ValueError('Audited NPM preferred distribution bytes differ')
+                        distinct.add(component['archive_sha256'])
+                    if len(distinct) != 87: raise ValueError('Complete distinct NPM archive closure required')
+                if name == strict.generated_voice.bridge.PACKAGE:
+                    strict.generated_voice.verify(package, record, documents,
+                        p.strict(material.read('builder-export/voice-native2-attestation.json')),
+                        p.strict(material.read('builder-export/voice-native2-projection.json')))
             for relative, expected in record['supporting_build_scripts']['files'].items():
                 path = 'scripts/build/' + relative; exact = 'project-inputs/' + expected + '/' + path
                 if material.wanted.get(exact, {}).get('sha256') == expected: continue
@@ -249,7 +287,8 @@ def verify_assets(root, inventory_path, artifacts, pins, commit, review, reposit
             if not coverage['source_members'] or not set(coverage['source_members']) <= set(material.wanted): raise ValueError('Missing actual package source member')
             covered.update(coverage['source_members'])
         if actual_missing != set(ledger_rows): raise ValueError('Historical ledger omitted or invented a fingerprint')
-        if set(material.wanted) - covered != {'review/historical-fingerprints.json', 'review/functional-closure.json'}:
+        expected_extra = {'review/historical-fingerprints.json', 'review/functional-closure.json'} | ({inventory['base_inventory_member']} if inventory['kind'] == DELTA_KIND else set())
+        if set(material.wanted) - covered != expected_extra:
             raise ValueError('Unexpected unaccounted source material')
         with tempfile.TemporaryDirectory(prefix='toddy-reviewed-native-inputs-') as directory:
             destination = Path(directory)
@@ -268,6 +307,7 @@ def main():
     parser.add_argument('--repository', type=Path, required=True)
     parser.add_argument('--inventory', type=Path, required=True)
     parser.add_argument('--acceptance', type=Path, required=True)
+    parser.add_argument('--artifacts', type=Path, help='Private typed role/path manifest for exact reused source assets')
     args = parser.parse_args(); root = strict.ROOT
     relative = args.acceptance.relative_to(root).as_posix()
     raw = strict.git(root, 'show', 'HEAD:' + relative)
@@ -279,6 +319,11 @@ def main():
     for role, assets in (('source', inventory['source_assets']), ('licenses', inventory['license_assets']), ('project-source', [inventory['project_source']])):
         artifacts += [dict(row, role=role, path=str(args.inventory.parent / row['name'])) for row in assets]
     artifacts.append({'role': 'inventory', 'name': args.inventory.name, 'sha256': p.digest(args.inventory), 'bytes': args.inventory.stat().st_size, 'path': str(args.inventory)})
+    if args.artifacts:
+        supplied = p.strict(strict.regular(args.artifacts).read_bytes())
+        if not isinstance(supplied, list) or len({row.get('name') for row in supplied}) != len(supplied) or any(set(row) != {'role', 'name', 'path', 'sha256', 'bytes'} or row['role'] not in ('source', 'licenses', 'project-source', 'inventory') for row in supplied):
+            raise ValueError('Exact private source artifact role/path list required')
+        artifacts = supplied
     print(p.encoded(verify_assets(root, args.inventory, artifacts, pins, inventory['source_commit'], review, args.repository)).decode(), end='')
 
 
