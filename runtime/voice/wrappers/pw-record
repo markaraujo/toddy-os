@@ -1,0 +1,5 @@
+#!/usr/bin/python3 -I
+"""Fixed reviewed capture mode; no symlink or caller-selected executable."""
+import os
+import sys
+os.execv('/usr/bin/pw-cat',['/usr/bin/pw-cat','--record','--properties','{"node.dont-fallback":true,"node.dont-reconnect":true,"node.dont-move":true}',*sys.argv[1:]])

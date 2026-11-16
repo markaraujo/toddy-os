@@ -1547,6 +1547,406 @@
         "en": "Enter a JSON object of up to 32 lowercase preference IDs and nonempty text values. Conversion was not sent.",
         "pt-BR": "Digite um objeto JSON com até 32 IDs de preferência em minúsculas e valores de texto não vazios. A conversão não foi enviada."
       }
+    },
+    {
+      "id": "voice.title",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Optional local voice",
+        "pt-BR": "Voz local opcional"
+      }
+    },
+    {
+      "id": "voice.unavailable",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Local voice is unavailable. Use typed text.",
+        "pt-BR": "A voz local está indisponível. Use o texto."
+      }
+    },
+    {
+      "id": "voice.notice",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "No automatic download or always-listening. Hold to record; release and review before ordinary Send. Speech uses the identified eSpeak synthetic voice.",
+        "pt-BR": "Sem download automático nem escuta contínua. Segure para gravar; solte e revise antes de Enviar. A fala usa a voz sintética eSpeak identificada."
+      }
+    },
+    {
+      "id": "voice.refresh",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Check local voice availability",
+        "pt-BR": "Verificar disponibilidade da voz local"
+      }
+    },
+    {
+      "id": "voice.licenses",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Review engine and model notices",
+        "pt-BR": "Revisar avisos dos motores e do modelo"
+      }
+    },
+    {
+      "id": "voice.consent",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "I reviewed these exact local engine/model licenses for voice use.",
+        "pt-BR": "Revisei estas licenças exatas dos motores/modelo para uso local de voz."
+      }
+    },
+    {
+      "id": "voice.devices",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Refresh audio devices",
+        "pt-BR": "Atualizar dispositivos de áudio"
+      }
+    },
+    {
+      "id": "voice.choose_input",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Choose a microphone explicitly",
+        "pt-BR": "Escolha um microfone explicitamente"
+      }
+    },
+    {
+      "id": "voice.choose_output",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Choose a speaker explicitly",
+        "pt-BR": "Escolha uma saída de áudio explicitamente"
+      }
+    },
+    {
+      "id": "voice.hold",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Hold to speak",
+        "pt-BR": "Segure para falar"
+      }
+    },
+    {
+      "id": "voice.hold_notice",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Hold the mouse button or Space; release to transcribe. Stop cancels voice only.",
+        "pt-BR": "Segure o botão do mouse ou Espaço; solte para transcrever. Parar cancela somente a voz."
+      }
+    },
+    {
+      "id": "voice.stop",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Stop voice",
+        "pt-BR": "Parar voz"
+      }
+    },
+    {
+      "id": "voice.review",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Review this untrusted transcript. Inserting it never submits a task.",
+        "pt-BR": "Revise esta transcrição não confiável. Inserir nunca envia uma tarefa."
+      }
+    },
+    {
+      "id": "voice.insert",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Insert reviewed text into the message draft",
+        "pt-BR": "Inserir texto revisado no rascunho da mensagem"
+      }
+    },
+    {
+      "id": "voice.speech_text",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Text to speak locally",
+        "pt-BR": "Texto para falar localmente"
+      }
+    },
+    {
+      "id": "voice.use_reply",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Copy the visible reply for speech review",
+        "pt-BR": "Copiar resposta visível para revisão da fala"
+      }
+    },
+    {
+      "id": "voice.speak",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Speak this reviewed text locally",
+        "pt-BR": "Falar este texto revisado localmente"
+      }
+    },
+    {
+      "id": "voice.ready",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Local voice components are available for review. Read their notices and choose the microphone and speaker.",
+        "pt-BR": "Os componentes locais de voz estão disponíveis para revisão. Leia os avisos e escolha o microfone e a saída de áudio."
+      }
+    },
+    {
+      "id": "voice.devices_ready",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Choose the actual microphone and speaker. No device is selected automatically.",
+        "pt-BR": "Escolha o microfone e a saída reais. Nenhum dispositivo é selecionado automaticamente."
+      }
+    },
+    {
+      "id": "voice.complete",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Local speech finished. Text remains available.",
+        "pt-BR": "Fala local concluída. O texto continua disponível."
+      }
+    },
+    {
+      "id": "voice.failed",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Voice is unavailable or changed. Refresh and review it again; use typed text.",
+        "pt-BR": "A voz está indisponível ou mudou. Atualize e revise novamente; use o texto."
+      }
+    },
+    {
+      "id": "voice.canceled",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Voice stopped. No transcript was submitted.",
+        "pt-BR": "Voz interrompida. Nenhuma transcrição foi enviada."
+      }
+    },
+    {
+      "id": "voice.too_long",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "This text exceeds the message/speech limit. Edit it before insertion or playback.",
+        "pt-BR": "Este texto excede o limite da mensagem/fala. Edite antes de inserir ou reproduzir."
+      }
+    },
+    {
+      "id": "voice.state.loading",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Verifying local voice inputs…",
+        "pt-BR": "Verificando entradas de voz locais…"
+      }
+    },
+    {
+      "id": "voice.state.recording",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Recording requested. Release to transcribe, or Stop to cancel.",
+        "pt-BR": "Gravação solicitada. Solte para transcrever ou use Parar para cancelar."
+      }
+    },
+    {
+      "id": "voice.state.transcribing",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Transcribing locally…",
+        "pt-BR": "Transcrevendo localmente…"
+      }
+    },
+    {
+      "id": "voice.state.synthesizing",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Generating the local eSpeak response…",
+        "pt-BR": "Gerando a resposta local com eSpeak…"
+      }
+    },
+    {
+      "id": "voice.state.playing",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Playing through the selected speaker…",
+        "pt-BR": "Reproduzindo na saída selecionada…"
+      }
+    },
+    {
+      "id": "voice.state.stopping",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Stopping voice…",
+        "pt-BR": "Interrompendo a voz…"
+      }
+    },
+    {
+      "id": "voice.state.idle",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Voice is idle.",
+        "pt-BR": "A voz está inativa."
+      }
+    },
+    {
+      "id": "voice.state.transcript-ready",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Transcript ready for review.",
+        "pt-BR": "Transcrição pronta para revisão."
+      }
+    },
+    {
+      "id": "voice.state.complete",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Local speech finished.",
+        "pt-BR": "Fala local concluída."
+      }
+    },
+    {
+      "id": "voice.state.failed",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Voice failed; typed text remains available.",
+        "pt-BR": "A voz falhou; o texto continua disponível."
+      }
+    },
+    {
+      "id": "voice.state.canceled",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Voice stopped.",
+        "pt-BR": "Voz interrompida."
+      }
+    },
+    {
+      "id": "voice.role.capture",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Microphone transport",
+        "pt-BR": "Transporte do microfone"
+      }
+    },
+    {
+      "id": "voice.role.playback",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Speaker transport",
+        "pt-BR": "Transporte da saída de áudio"
+      }
+    },
+    {
+      "id": "voice.role.device-list",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Audio device discovery",
+        "pt-BR": "Identificação de dispositivos de áudio"
+      }
+    },
+    {
+      "id": "voice.role.stt-engine",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Whisper speech recognition",
+        "pt-BR": "Reconhecimento de fala Whisper"
+      }
+    },
+    {
+      "id": "voice.role.stt-model",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Multilingual base model",
+        "pt-BR": "Modelo base multilíngue"
+      }
+    },
+    {
+      "id": "voice.role.tts-engine",
+      "context": "voice",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "eSpeak synthetic voice",
+        "pt-BR": "Voz sintética eSpeak"
+      }
     }
   ]
 }

@@ -141,6 +141,7 @@ class VoiceSession:
             with tempfile.TemporaryDirectory(prefix='toddy-voice-') as directory:
                 audio=Path(directory)/'capture.wav'
                 output=Path(directory)/'transcript'
+                if self.cancel.is_set():raise VoiceError('canceled')
                 self._state('recording')
                 result=self._run([capture,'--target',device,'--rate','16000','--channels','1',
                     '--format','s16',str(audio)],release=self.release,timeout=30)
@@ -183,6 +184,7 @@ class VoiceSession:
                 with os.fdopen(fd,'w',encoding='utf-8') as stream:
                     stream.write(text)
                 audio=Path(directory)/'response.wav'
+                if self.cancel.is_set():raise VoiceError('canceled')
                 self._state('synthesizing')
                 if self.tts_engine=='piper':
                     model=self._path('tts-model',language)
@@ -195,6 +197,7 @@ class VoiceSession:
                 self._wav(audio)
                 if play:
                     player=self._path('playback',language)
+                    if self.cancel.is_set():raise VoiceError('canceled')
                     self._state('playing')
                     self._run([player,'--target',device,str(audio)],timeout=120)
                 self._state('complete')

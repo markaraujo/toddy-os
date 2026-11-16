@@ -55,6 +55,14 @@ class SetupWindow(Adw.ApplicationWindow):
         from .memory import MemoryPanel
         self.memory=MemoryPanel(self)
         self._page('memory',self.model.text('memory.title')).append(self.memory)
+        from .voice import VoicePanel
+        self.voice=VoicePanel(self)
+        voice_expander=Gtk.Expander(label=self.model.text('voice.title'))
+        voice_expander.set_child(self.voice);self.conversation_page.append(voice_expander)
+        voice_expander.connect('notify::expanded',lambda *_:self.voice.stop() if not voice_expander.get_expanded() else None)
+        self.stack.connect('notify::visible-child-name',lambda *_:self.voice.stop() if self.stack.get_visible_child_name()!='conversation' else None)
+        self.connect('notify::is-active',lambda *_:self.voice.stop() if not self.is_active() else None)
+        self.voice.sync()
         self.connect('close-request', self._close)
 
     def _page(self, name, title):
@@ -157,6 +165,7 @@ class SetupWindow(Adw.ApplicationWindow):
     def _conversation(self):
         text=self.model.text
         page=self._page('conversation',text('conversation.title'))
+        self.conversation_page=page
         self.conversation_status=self._label(text('setup.tasks_unavailable'))
         self.conversation_status.set_accessible_role(Gtk.AccessibleRole.STATUS)
         page.append(self.conversation_status)
@@ -487,6 +496,7 @@ class SetupWindow(Adw.ApplicationWindow):
         page.append(group)
 
     def _close(self, *_):
+        if hasattr(self,'voice'):self.voice.close()
         self.password.set_text('')
         self.credentials.close()
         self.client.close()
@@ -527,6 +537,7 @@ class SetupWindow(Adw.ApplicationWindow):
         self._render_conversation(active,message)
         self._render_registry()
         self._render_profile()
+        if hasattr(self,'voice'):self.voice.sync()
 
     def _render_conversation(self,active,status):
         client=self.client

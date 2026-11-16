@@ -36,7 +36,7 @@ class Artifact:
     review: str
     languages: tuple
 
-    def verify(self, consent):
+    def validate_metadata(self):
         if self.kind not in {'engine','stt-model','tts-model','tts-config'} or \
                 not isinstance(self.artifact_id,str) or not re.fullmatch(r'[a-z][a-z0-9-]{0,63}',self.artifact_id) or \
                 type(self.size) is not int or not 0 < self.size <= 4*1024**3 or \
@@ -51,6 +51,10 @@ class Artifact:
         source=urlsplit(self.source_url)
         if source.scheme!='https' or not source.hostname or source.username or source.password or source.fragment:
             raise VoiceError('artifact_source')
+        return self
+
+    def verify(self, consent):
+        self.validate_metadata()
         if consent != Consent(self.sha256,self.license_sha256):
             raise VoiceError('artifact_consent_required')
         self._hash(self.license_path,self.license_sha256,maximum=65536)

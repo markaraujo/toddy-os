@@ -20,13 +20,16 @@ class ProcessResult:
     returncode: int
     elapsed_seconds: float
     released: bool
+    stdout: bytes = b''
 
 
 class ProcessRunner:
-    def run(self, argv, *, cancel, timeout=30, release=None):
+    def run(self, argv, *, cancel, timeout=30, release=None, capture_stdout=False, output_limit=65536):
         if cancel.is_set():raise VoiceError('canceled')
         if not argv or not os.path.isabs(argv[0]) or isinstance(timeout,bool) or not 0<timeout<=300:
             raise VoiceError('process_arguments')
+        if type(capture_stdout) is not bool or type(output_limit) is not int or not 1024<=output_limit<=1024*1024:
+            raise VoiceError('process_output_limit')
         if not hasattr(os,'WNOWAIT'):raise VoiceError('native_process_control_unavailable')
         environment={'PATH':'/usr/bin:/bin','LANG':'C.UTF-8'}
         runtime=os.environ.get('XDG_RUNTIME_DIR')
@@ -52,7 +55,7 @@ class ProcessRunner:
         selector=selectors.DefaultSelector()
         for stream in (proc.stdout,proc.stderr):
             os.set_blocking(stream.fileno(),False);selector.register(stream,selectors.EVENT_READ)
-        total=0;released=False;release_time=None
+        total=0;released=False;release_time=None;output=bytearray()
         try:
             while True:
                 exited=status()  # WNOWAIT reserves the leader PID through cleanup.
@@ -68,11 +71,12 @@ class ProcessRunner:
                     chunk=os.read(key.fileobj.fileno(),8192)
                     if not chunk:selector.unregister(key.fileobj);continue
                     total+=len(chunk)
-                    if total>65536:raise VoiceError('engine_output_limit')
+                    if capture_stdout and key.fileobj is proc.stdout:output.extend(chunk)
+                    if total>output_limit:raise VoiceError('engine_output_limit')
             code=exited.si_status if exited.si_code==os.CLD_EXITED else -exited.si_status
             allowed=(0,-signal.SIGINT,128+signal.SIGINT) if released else (0,)
             if code not in allowed:raise VoiceError('engine_failed')
-            return ProcessResult(code,time.monotonic()-started,released)
+            return ProcessResult(code,time.monotonic()-started,released,bytes(output))
         finally:
             # All group signals precede the one reap, even if the leader already
             # exited and a trusted descendant still holds a diagnostic pipe.
