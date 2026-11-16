@@ -1,0 +1,25 @@
+# Fixed Calamares3.4.3 project sequence. No generic shell/process hooks.
+---
+modules-search: [ "/usr/lib/calamares/modules" ]
+instances:
+- id: review
+  module: toddy
+  config: toddy-review.conf
+- id: finished
+  module: toddy
+  config: toddy-finished.conf
+sequence:
+- show:
+  - toddy@review
+- exec:
+  - toddy@review
+- show:
+  - toddy@finished
+branding: toddy
+prompt-install: true
+dont-chroot: false
+oem-setup: false
+disable-cancel: false
+disable-cancel-during-exec: true
+hide-back-and-next-during-exec: true
+quit-at-end: false

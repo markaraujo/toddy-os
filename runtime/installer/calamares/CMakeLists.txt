@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.20)
+project(ToddyCalamaresModule VERSION 0.1.0 LANGUAGES CXX)
+include(GNUInstallDirs)
+find_package(Calamares 3.4.3 EXACT CONFIG REQUIRED)
+find_package(Qt6 6.11.2 EXACT CONFIG REQUIRED COMPONENTS Core Widgets)
+set(CMAKE_AUTOMOC ON)
+add_library(calamares_viewmodule_toddy MODULE ToddyViewStep.cpp ToddyViewStep.h)
+target_compile_features(calamares_viewmodule_toddy PRIVATE cxx_std_17)
+target_compile_definitions(calamares_viewmodule_toddy PRIVATE _GNU_SOURCE)
+target_link_libraries(calamares_viewmodule_toddy PRIVATE Calamares::calamares Calamares::calamaresui Qt6::Core Qt6::Widgets)
+install(TARGETS calamares_viewmodule_toddy LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/calamares/modules/toddy)
+install(FILES module.desc DESTINATION ${CMAKE_INSTALL_LIBDIR}/calamares/modules/toddy)
+install(FILES strings.json DESTINATION ${CMAKE_INSTALL_DATADIR}/calamares/modules/toddy)
+# Explicit live-only package composition installs reviewed config templates and
+# the fixed Python adapter/backend. No current-root copy or auto publication.

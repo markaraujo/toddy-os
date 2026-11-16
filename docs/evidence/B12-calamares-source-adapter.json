@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "scope": "source-only Calamares 3.4.3 adapter; no GUI/device acceptance",
+  "source": {
+    "version": "3.4.3",
+    "sha256": "144cbbf6bdcebfb21685950db4f0777218519df095f62f4aa392f28348110d18"
+  },
+  "focused_command": "python3 -m unittest tests.test_calamares_adapter -v",
+  "focused_checks": 10,
+  "focused_result": "passed",
+  "focused_elapsed_seconds": 0.04,
+  "actual_paths": [
+    "Installer review-only BIOS/UEFI plan",
+    "Installer control-byte cancellation before first native command",
+    "sealed memfd/parent boot/start-time/expiry checks",
+    "root CLI fixed unavailable factory refuses before journal creation",
+    "nonroot CLI refuses without echoing invalid argv",
+    "control EOF and write-only credential pipe guards",
+    "static source guard for fixed job/exec Stop configuration (not compilation)"
+  ],
+  "no_native_disk_calls": true,
+  "native_cpp_build": "not-run",
+  "native_gui_launch": "not-run",
+  "native_installed_boot": "not-run",
+  "live_binding_default": "installer_composed_closure_unavailable",
+  "pending": [
+    "qualified signed composed payload and actual native finalizer",
+    "matching QtWayland 6.11.2 QPA and root authenticated GNOME launch",
+    "actual C++ plugin build/load and EN/PT visuals",
+    "safe native Stop and BIOS/UEFI blank disk installation",
+    "installed-user PendingStore handoff",
+    "two detached-media boots/persistence/rescue",
+    "approved installer slideshow integration"
+  ],
+  "story_acceptance": false,
+  "repository_check": {
+    "command": "make check",
+    "result": "passed",
+    "checks": 571,
+    "elapsed_seconds": 10.358
+  }
+}

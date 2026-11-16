@@ -1,0 +1,6 @@
+---
+type: "viewmodule"
+name: "toddy"
+interface: "qtplugin"
+load: "libcalamares_viewmodule_toddy.so"
+weight: 100
