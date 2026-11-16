@@ -1,5 +1,6 @@
 """Archive assembly guards and exact native command fixtures, never guest proof."""
 import importlib.util
+import json
 import os
 from pathlib import Path
 import tempfile
@@ -50,7 +51,7 @@ class AssemblyTests(unittest.TestCase):
                 'ownership':{'entries':{'/usr/bin/dpkg':{'sha256':'a'*64},'/usr/bin/dpkg-query':{'sha256':'a'*64}}}}
             prepared=Mock();prepared._load.return_value=manifest
             p=Mock();p.PreparedPayload.return_value=prepared;p.digest.return_value='a'*64
-            assembly=Mock(root=root,work=work,required=1000)
+            assembly=Mock(root=root,work=work,required=1000,pin=(1,2,3))
             system=Mock()
             def run(command,**kwargs):
                 if command[0]=='/usr/bin/dpkg-query':return 'fixture\t1\tall\tinstall ok installed'
@@ -65,12 +66,33 @@ class AssemblyTests(unittest.TestCase):
             self.assertEqual(prepared._load.call_count,2)
             self.assertFalse(result['production_ready']);self.assertEqual(write.call_count,2)
 
+    def test_adopt_completed_unpacked_root_queries_only_and_rejects_changed_pin(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            stage=Path(temporary);work=stage/'toddy-offline-image-1';(work/'root').mkdir(parents=True)
+            (work/'dpkg.log').write_text('fixture native log')
+            receipt={'manifest_sha256':'a'*64,'root':str(work/'root'),'assembly_pin':[1,2,3],
+                'required_bytes':a.RESERVE+1,'state':'unpack-intended'}
+            (work/'unpack-intent.json').write_text(json.dumps(receipt))
+            completed={**receipt,'state':'native-archives-unpacked-needs-resource-qualification',
+                'dpkg_log_sha256':a.payload_module().digest(work/'dpkg.log')}
+            (work/'unpacked.json').write_text(json.dumps(completed))
+            manifest={'components':[{'name':'fixture','version':'1','architecture':'all'}]}
+            system=Mock();system.run.return_value='fixture\t1\tall\tinstall ok installed'
+            with patch.object(a,'STAGE',stage),patch.object(a,'secured',side_effect=lambda x:x),patch.object(a.AssemblyRoot,'identity',return_value=(1,2,3)):
+                adopted=a.adopt_unpacked('base',manifest,'a'*64,system)
+                self.assertEqual(adopted.pin,(1,2,3));self.assertEqual(system.run.call_count,1)
+                self.assertEqual(system.run.call_args.args[0][0],'/usr/bin/dpkg-query')
+                completed['assembly_pin']=[9,2,3];(work/'unpacked.json').write_text(json.dumps(completed))
+                with self.assertRaisesRegex(ValueError,'custody'):
+                    a.adopt_unpacked('base',manifest,'a'*64,system)
+                self.assertEqual(system.run.call_count,1)
+
     def test_partial_unpack_stops_without_configure_or_success_receipt(self):
         with tempfile.TemporaryDirectory() as temporary:
             work=Path(temporary);root=work/'root';root.mkdir()
             manifest={'components':[{'archive':'fixture.deb'}],'ownership':{'entries':{'/usr/bin/dpkg':{'sha256':'a'*64},'/usr/bin/dpkg-query':{'sha256':'a'*64}}}}
             p=Mock();p.PreparedPayload.return_value._load.return_value=manifest;p.digest.return_value='a'*64
-            assembly=Mock(root=root,work=work,required=1000);system=Mock();system.run.side_effect=RuntimeError('fixture interrupted native unpack')
+            assembly=Mock(root=root,work=work,required=1000,pin=(1,2,3));system=Mock();system.run.side_effect=RuntimeError('fixture interrupted native unpack')
             with patch.object(a,'payload_module',return_value=p),patch.object(a,'bundle_namespace'),patch.object(a,'secured',side_effect=lambda x:x),patch.object(a,'write') as write:
                 with self.assertRaises(RuntimeError):a.unpack_native(work/'bundle','b'*64,assembly,system)
             self.assertEqual(system.run.call_count,1);self.assertEqual(write.call_count,1)

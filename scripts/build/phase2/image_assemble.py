@@ -13,7 +13,7 @@ import sys
 
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[3]
-sys.path.insert(0, str(ROOT))
+sys.path[:0] = [str(ROOT), str(Path(__file__).resolve().parent)]
 from runtime.installer.composition import bundle_namespace, secured
 from runtime.installer.linux_disk import LinuxDisk
 from runtime.installer.native_finalizer import payload_module
@@ -107,7 +107,7 @@ def unpack_native(bundle, manifest_sha256, assembly, system):
     archives = [str(bundle/'archives'/row['archive']) for row in manifest['components']]
     intent = {'version':1, 'state':'unpack-intended', 'kind':'candidate-unqualified-root',
         'manifest_sha256':manifest_sha256, 'root':str(assembly.root),
-        'required_bytes':assembly.required, 'production_ready':False,
+        'required_bytes':assembly.required, 'assembly_pin':list(assembly.pin), 'production_ready':False,
         'native_boot_verified':False}
     write(assembly.work/'unpack-intent.json', intent)
     log = '--log='+str(assembly.work/'dpkg.log')
@@ -130,8 +130,32 @@ def unpack_native(bundle, manifest_sha256, assembly, system):
     return result
 
 
+def adopt_unpacked(kind, manifest, manifest_sha256, system):
+    """Continue read-only custody of a completed unpack, never replay its writes."""
+    if kind not in GENERATIONS:
+        raise ValueError('Unknown fixed image profile')
+    p=payload_module();assembly=object.__new__(AssemblyRoot)
+    assembly.work=STAGE/GENERATIONS[kind][0];assembly.root=assembly.work/'root'
+    intent=p.strict(secured(assembly.work/'unpack-intent.json').read_bytes())
+    result=p.strict(secured(assembly.work/'unpacked.json').read_bytes())
+    if (intent.get('manifest_sha256')!=manifest_sha256 or result.get('manifest_sha256')!=manifest_sha256 or
+            intent.get('root')!=str(assembly.root) or result.get('root')!=str(assembly.root) or
+            intent.get('state')!='unpack-intended' or result.get('state')!='native-archives-unpacked-needs-resource-qualification' or
+            intent.get('assembly_pin')!=result.get('assembly_pin') or intent.get('required_bytes')!=result.get('required_bytes') or
+            type(intent.get('required_bytes')) is not int or intent['required_bytes']<=RESERVE):
+        raise ValueError('Native unpack custody is incomplete or mismatched')
+    assembly.pin=tuple(intent['assembly_pin']);assembly.required=intent['required_bytes'];assembly.recheck()
+    system.require_root()
+    query=system.run(['/usr/bin/dpkg-query','--admindir='+str(assembly.root/'var/lib/dpkg'),
+        '-W','-f=${Package}\t${Version}\t${Architecture}\t${Status}\n'])
+    expected=sorted([row['name'],row['version'],row['architecture'],'install ok installed'] for row in manifest['components'])
+    if sorted(line.split('\t') for line in query.splitlines())!=expected or p.digest(secured(assembly.work/'dpkg.log'))!=result.get('dpkg_log_sha256'):
+        raise ValueError('Native unpack database/log changed before qualification')
+    return assembly
+
+
 def main():
-    if (sys.argv[1:] not in (['base'], ['live']) or
+    if (sys.argv[1:] not in (['base'], ['live'], ['qualify-base'], ['qualify-live']) or
             Path(__file__).resolve() != Path('/opt/toddy-build/scripts/build/phase2/image_assemble.py')):
         raise ValueError('Fixed native source coordinator command required')
     os.umask(0o077); system=LinuxDisk();native_guard(system)
@@ -141,12 +165,20 @@ def main():
         if not stat.S_ISREG(info.st_mode) or info.st_uid or info.st_gid or info.st_nlink!=1 or stat.S_IMODE(info.st_mode)!=0o600:
             raise ValueError('Native assembly lock custody')
         fcntl.flock(descriptor, fcntl.LOCK_EX|fcntl.LOCK_NB)
-        kind=sys.argv[1];bundle=STAGE/GENERATIONS[kind][1]/'payload';p=payload_module()
+        action=sys.argv[1];kind=action.removeprefix('qualify-');bundle=STAGE/GENERATIONS[kind][1]/'payload';p=payload_module()
         sha=p.digest(secured(bundle/'manifest.json'))
         manifest=p.PreparedPayload(bundle,manifest_sha256=sha,runner=None,finalizer=None)._load()
         bundle_namespace(bundle,manifest)
-        assembly=AssemblyRoot(kind,manifest)
-        print(json.dumps(unpack_native(bundle,sha,assembly,system),sort_keys=True))
+        if action.startswith('qualify-'):
+            from resource_recipe import qualify
+            from runtime.installer.composition import validate_policy
+            policy=p.strict(secured(bundle.parent/'policy.json').read_bytes());validate_policy(policy,manifest)
+            assembly=adopt_unpacked(kind,manifest,sha,system)
+            result=qualify(assembly,manifest,policy,system)
+        else:
+            assembly=AssemblyRoot(kind,manifest)
+            result=unpack_native(bundle,sha,assembly,system)
+        print(json.dumps(result,sort_keys=True))
     finally:
         os.close(descriptor)
 

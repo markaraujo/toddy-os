@@ -161,3 +161,13 @@ image attribution must still be qualified and reviewed. It never invokes the
 production installer factory or substitutes candidate output for a finalizer or
 boot receipt. The low-level `unpack_native` function exposes this precise phase
 to the separate fixed generated-resource qualification recipe.
+
+After complete unpack, the fixed `qualify-base`/`qualify-live` actions adopt only
+the pinned successful generation and call the separate `resource_recipe.qualify`
+source component. Adoption compares both receipts, manifest hash, work/root inode
+pin, exact configured database and unchanged native unpack log. It never calls
+unpack again. Missing/partial receipts or changed custody stop before resource
+commands. These actions require that reviewed recipe source to be present; their
+output remains a candidate for owner/coordinator source review. Do not run the
+production finalizer over a candidate already modified by resource qualification;
+reviewed expected outputs must drive a separate fresh generation.
