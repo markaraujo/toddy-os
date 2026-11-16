@@ -117,3 +117,47 @@ current builder's free-space figure alone cannot qualify the larger assembly:
 account for fresh root, compressed archive, full extraction readback and ISO
 input/readback copies above the 16 GiB reserve. Reuse accepted evidence through
 verified custody; this tool neither retires caches nor authorizes deletion.
+
+## Native candidate archive assembly command
+
+`image_assemble.py base` (or `live`) runs **inside** the guarded native target,
+using its source-built Dpkg rather than the builder distribution's Dpkg. The
+coordinator first runs the existing outer `guard_target`, verifies/reconciles
+native jobs and holds `/var/log/toddy/build/build.lock` across the chroot call.
+Expose the committed `/opt/toddy-build` source read-only at that same path inside
+the native chroot; do not copy a source checkout into the candidate image. The
+ordinary target `/dev`, `/proc`, `/sys` and `/run` prerequisites must be present.
+With those preconditions, the fixed base command is:
+
+```sh
+flock -n /var/log/toddy/build/build.lock \
+  chroot /mnt/lfs /usr/bin/env -i PATH=/usr/bin:/usr/sbin LC_ALL=C \
+  /usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/image_assemble.py base
+```
+
+The inner guard independently requires root device `/dev/vdb4`, disk serial
+`TODDY-LFS-TARGET` and label `TODDY_LFS`; running this directly on the builder or
+workstation root fails. It additionally takes a private native assembly lock.
+Prepared signed bundles are fixed at
+`/sources/stage/toddy-installer-native-inputs/payload` for base and
+`/sources/stage/toddy-live-native-inputs/payload` for live. Live preparation uses
+its complete live projection and `required_additions=()` through the existing
+Python prepare API; both mandatory assistant/branding roots remain included.
+
+The command creates only the corresponding new
+`/sources/stage/toddy-offline-image-1/root` or `toddy-live-image-1/root`.
+It checks capacity before creating that generation: 16 GiB + three times the
+selected payload's installed bytes + 512 MiB. It pins stage/root inodes and
+filesystem, refuses existing generations and verifies actual native tool bytes
+against the selected source-owned closure. Dpkg's explicit private log is outside
+the candidate image. Every archive is unpacked/configured once, and the exact
+native configured database and signed input custody are rechecked. A failure
+retains the intent/log/root; there is no retry/resume/install mode.
+
+`unpacked.json` means only “native archives unpacked, needs resource
+qualification”. It is deliberately not an assembly-success journal consumed by
+H10 compression. Accounts, generated resources, fresh live session and complete
+image attribution must still be qualified and reviewed. It never invokes the
+production installer factory or substitutes candidate output for a finalizer or
+boot receipt. The low-level `unpack_native` function exposes this precise phase
+to the separate fixed generated-resource qualification recipe.
