@@ -41,9 +41,9 @@ class ReleaseCustodyTests(unittest.TestCase):
             save(path,value)
             native[check]={'state':'passed','path':path.relative_to(self.root).as_posix(),'sha256':sha(path)}
         self.g2_path=self.root/'docs/evidence/G2-fixture.json'
-        self.g2={'version':1,'gate':'G2','state':'passed','source_commit':self.source,'iso':self.pins,'native_checks':native,'physical_validation':'pending','experimental_preview':True,'native_package_manifest':{'path':'docs/evidence/fixture-components.json','sha256':sha(inventory_evidence)}}
+        self.g2={'version':1,'gate':'G2','state':'technical-passed-delivery-pending','source_commit':self.source,'iso':self.pins,'native_checks':native,'physical_validation':'pending','experimental_preview':True,'native_package_manifest':{'path':'docs/evidence/fixture-components.json','sha256':sha(inventory_evidence)}}
         save(self.g2_path,self.g2)
-        self.status={'gates':{'G2':'passed'},'owner_review':{'phase_2_approved':True},'milestones':[{'id':'B%02d'%i,'status':'completed','evidence':['docs/evidence/G2-fixture.json'] if i==13 else []} for i in range(1,14)]}
+        self.status={'gates':{'G2':'pending'},'owner_review':{'phase_2_approved':True},'milestones':[{'id':'B%02d'%i,'status':'in_progress' if i==13 else 'completed','evidence':['docs/evidence/G2-fixture.json'] if i==13 else []} for i in range(1,14)]}
         save(self.root/'status.json',self.status)
         files={'iso':self.iso,'inventory':self.inventory}
         for role in ('source','guide','build-guide','recovery','licenses'):
@@ -82,7 +82,7 @@ class ReleaseCustodyTests(unittest.TestCase):
 
     def test_pending_status_or_old_iso_native_evidence_cannot_be_promoted(self):
         self.status['milestones'][5]['status']='in_progress';save(self.root/'status.json',self.status);self.commit()
-        with self.assertRaisesRegex(ValueError,'completed B01-B13'):self.prepared()
+        with self.assertRaisesRegex(ValueError,'completed B01-B12'):self.prepared()
         self.status['milestones'][5]['status']='completed';save(self.root/'status.json',self.status)
         key='bios-installed-detached-boot';row=self.g2['native_checks'][key];path=self.root/row['path'];value=json.loads(path.read_text());value['final_iso']={'sha256':'d'*64,'bytes':1};save(path,value);row['sha256']=sha(path)
         save(self.g2_path,self.g2);self.request['g2_evidence']['sha256']=sha(self.g2_path);self.commit()
@@ -119,11 +119,31 @@ class ReleaseCustodyTests(unittest.TestCase):
         public['artifacts'][0]['sha256']='e'*64;save(self.root/r.PUBLIC,public)
         with self.assertRaisesRegex(ValueError,'Candidate-bound'):r.portal(self.root,page)
 
+    def test_delivery_does_not_require_false_B13_completion_and_finished_metadata_is_immutable(self):
+        self.assertEqual(r.acceptance_state(self.root,self.request['g2_evidence']),'delivery-in-progress')
+        prepared=self.prepared();path,response=self.publication_fixture(prepared)
+        public=r.promote(self.root,prepared,path,self.downloads);save(self.root/r.PUBLIC,public);self.commit()
+        before=(self.root/r.PUBLIC).read_bytes()
+        self.status['milestones'][-1]['status']='completed';self.status['gates']['G2']='passed'
+        save(self.root/'status.json',self.status);self.commit()
+        self.assertEqual(r.acceptance_state(self.root,self.request['g2_evidence']),'finished-release')
+        self.assertEqual(r.public_metadata(self.root),public)
+        with self.assertRaisesRegex(ValueError,'finished release is immutable'):self.prepared()
+        with self.assertRaisesRegex(ValueError,'finished release is immutable'):r.promote(self.root,prepared,path,self.downloads)
+        self.assertEqual((self.root/r.PUBLIC).read_bytes(),before)
+
+    def test_canonical_G2_cannot_pass_early_or_replace_missing_native_proofs(self):
+        self.status['gates']['G2']='passed';save(self.root/'status.json',self.status);self.commit()
+        with self.assertRaisesRegex(ValueError,'state must remain consistent'):self.prepared()
+        self.status['gates']['G2']='pending';save(self.root/'status.json',self.status)
+        self.g2['state']='passed';save(self.g2_path,self.g2);self.request['g2_evidence']['sha256']=sha(self.g2_path);self.commit()
+        with self.assertRaisesRegex(ValueError,'Candidate-bound'):self.prepared()
+
     def test_dormant_release_copy_has_all_five_translation_columns(self):
         source=(ROOT/'ui/translations.js').read_text().split('/* Dormant Phase 2 release copy;',1)[1]
         block=source.split('Object.assign(window.TODDY_TRANSLATIONS, ',1)[1].rsplit(');',1)[0]
         catalog=json.loads(block)
-        for key in ('Phase 2 preview ISO ↗','Corresponding source ↗','Component inventory ↗','Owner guide ↗','Build guide ↗','Recovery guide ↗','Licenses ↗','G2 evidence ↗','Release notes ↗','G2 native guest checks passed. Physical hardware validation pending.'):
+        for key in ('Phase 2 preview ISO ↗','Corresponding source ↗','Component inventory ↗','Owner guide ↗','Build guide ↗','Recovery guide ↗','Licenses ↗','Native validation evidence ↗','Release notes ↗','Final native guest checks passed. Physical hardware validation pending.'):
             self.assertEqual(len(catalog[key]),5)
             self.assertTrue(all(isinstance(text,str) and text.strip() for text in catalog[key]))
 

@@ -100,3 +100,9 @@ It creates no available Phase 2 row by installation or source preparation. It
 reuses the existing generators/layout/six languages and preserves the foundation
 fallback. Actual publication and deployed Pages checks remain explicit required
 postconditions; the utility performs no network or publishing operation.
+
+Initial handoff requires accepted B01-B12, B13 explicitly in progress and canonical
+G2 pending, with every actual final-ISO technical proof retained. Publication and
+deployed Pages verification must pass before the parent completes B13/G2. The
+immutable technical envelope and artifact receipt remain readable afterward;
+new prepare/promote operations cannot overwrite that finished release.

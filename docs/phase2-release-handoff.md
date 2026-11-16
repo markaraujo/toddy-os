@@ -8,8 +8,13 @@ portal languages remain supported. Read [RELEASES.md](RELEASES.md) first.
 
 ## Actual final inputs, not earlier component acceptance
 
-Use `scripts/phase2_release.py` only after the real B01-B13/G2 acceptance is
-recorded and committed. The tool never changes status or awards acceptance.
+Use `scripts/phase2_release.py` only after real B01-B12 acceptance and every
+required same-final-ISO technical/native/source/legal proof is recorded and
+committed. B13 must explicitly be `in_progress` and canonical G2 must remain
+`pending`: publication and deployed portal verification are B13 work, so requiring
+their completion before preparing the release would be circular. Recorded owner
+Phase2 authorization is mandatory; an owner execution hold prevents a new
+handoff. The tool never changes status or awards acceptance.
 Require a clean checkout and an existing local experimental `v0.*` tag containing
 `phase2` or `preview`, pointing to the actual accepted source commit. Stable1.0
 promotion is deliberately outside this preview utility.
@@ -38,12 +43,16 @@ status evidence list. Its exact fields are:
 
 | Field | Required value |
 | --- | --- |
-| `version`, `gate`, `state` | `1`, `G2`, `passed` |
+| `version`, `gate`, `state` | `1`, `G2`, `technical-passed-delivery-pending` |
 | `source_commit` | Actual accepted source commit, matching the local tag |
 | `iso` | Exact `{sha256,bytes}` of the final attached ISO |
 | `experimental_preview`, `physical_validation` | `true`, `pending` |
 | `native_package_manifest` | `{path,sha256}` of retained actual package inventory, byte-identical to the attached inventory artifact |
 | `native_checks` | The complete named receipt map below |
+
+This immutable technical envelope describes the proofs available before delivery;
+it does not claim canonical G2 completion. It remains unchanged when delivery
+later completes. A plain `state:passed` envelope is refused at this boundary.
 
 The native inventory has a nonempty `components` list. Every unique component
 retains its actual `name`, `version`, `archive_sha256`,
@@ -139,7 +148,12 @@ It is an immutable artifact-publication receipt, not proof that Pages deployed.
 Run `make check`, review the generated page in English and at least one translated
 view, then commit/push through the authorized workflow. Verify the actual Pages
 run/commit, deployed tag, real ISO/checksum links and translated limits. Record a
-separate publication/Pages receipt and journal entry. Do not close delivery from
+separate publication/Pages receipt and journal entry. Only AFTER those actual
+postconditions pass may the parent mark B13 completed and canonical G2 passed.
+Existing published metadata continues to render with that consistent finished
+state; new prepare/promote operations are refused so the completed release stays
+immutable. An inconsistent early G2 pass is rejected, and neither the technical
+envelope nor a source/API fixture replaces delivery acceptance. Do not close delivery from
 an upload, local HTML render, transport acknowledgement or workflow trigger alone.
 
 On partial failure preserve the prepared/public manifest, generated files and

@@ -56,17 +56,26 @@ def evidence(root,relative,expected):
     return strict(raw)
 
 
-def accepted_status(root,reference):
+def acceptance_state(root,reference):
     status=strict(read(root/'status.json'))
     rows={row['id']:row for row in status['milestones']}
-    if status['gates']['G2']!='passed' or status.get('owner_review',{}).get('phase_2_approved') is not True or any(rows.get('B%02d'%i,{}).get('status')!='completed' for i in range(1,14)):raise ValueError('Actual completed B01-B13 and G2 required')
+    if status.get('owner_review',{}).get('phase_2_approved') is not True or any(rows.get('B%02d'%i,{}).get('status')!='completed' for i in range(1,13)):raise ValueError('Owner authorization and actual completed B01-B12 required')
     if set(reference)!={'path','sha256'} or reference['path'] not in rows['B13'].get('evidence',[]):raise ValueError('G2 evidence must be retained by B13')
+    pair=(rows.get('B13',{}).get('status'),status['gates']['G2'])
+    if pair==('in_progress','pending'):return 'delivery-in-progress'
+    if pair==('completed','passed'):return 'finished-release'
+    raise ValueError('B13/G2 delivery state must remain consistent')
+
+
+def require_delivery_in_progress(root,reference):
+    if strict(read(root/'status.json')).get('execution_hold'):raise ValueError('Owner execution hold prevents a new release handoff')
+    if acceptance_state(root,reference)!='delivery-in-progress':raise ValueError('New handoff requires B13 in_progress and G2 pending; finished release is immutable')
 
 
 def gate(root,reference,iso,source_commit,inventory):
-    accepted_status(root,reference)
+    acceptance_state(root,reference)
     receipt=evidence(root,reference['path'],reference['sha256'])
-    if (set(receipt)!={'version','gate','state','source_commit','iso','native_checks','physical_validation','experimental_preview','native_package_manifest'} or type(receipt['version']) is not int or receipt['version']!=1 or receipt['gate']!='G2' or receipt['state']!='passed' or receipt['source_commit']!=source_commit or receipt['iso']!={'sha256':iso['sha256'],'bytes':iso['bytes']} or receipt['physical_validation']!='pending' or receipt['experimental_preview'] is not True or set(receipt['native_checks'])!=CHECKS):raise ValueError('Candidate-bound native G2 receipt required')
+    if (set(receipt)!={'version','gate','state','source_commit','iso','native_checks','physical_validation','experimental_preview','native_package_manifest'} or type(receipt['version']) is not int or receipt['version']!=1 or receipt['gate']!='G2' or receipt['state']!='technical-passed-delivery-pending' or receipt['source_commit']!=source_commit or receipt['iso']!={'sha256':iso['sha256'],'bytes':iso['bytes']} or receipt['physical_validation']!='pending' or receipt['experimental_preview'] is not True or set(receipt['native_checks'])!=CHECKS):raise ValueError('Candidate-bound native G2 receipt required')
     for check,row in receipt['native_checks'].items():
         if not isinstance(row,dict) or set(row)!={'state','path','sha256'} or row['state']!='passed':raise ValueError('Unpassed required native G2 check')
         actual=evidence(root,row['path'],row['sha256'])
@@ -119,7 +128,7 @@ def checksum_and_iso(assets):
 
 def prepare(root,request):
     if set(request)!={'version','tag','source_commit','release_url','g2_evidence','artifacts'} or type(request['version']) is not int or request['version']!=1:raise ValueError('Release request schema')
-    identity(request);accepted_status(root,request['g2_evidence'])
+    identity(request);require_delivery_in_progress(root,request['g2_evidence'])
     if git(root,'status','--porcelain'):raise ValueError('Commit reviewed release inputs first')
     if git(root,'rev-parse','refs/tags/'+request['tag']+'^{commit}')!=request['source_commit']:raise ValueError('Actual immutable local tag differs from accepted source')
     assets=[]
@@ -145,7 +154,7 @@ def github_assets(release,assets):
 
 def promote(root,prepared,response_path,downloads):
     if set(prepared)!={'version','state','tag','source_commit','release_url','g2_evidence','artifacts','experimental_preview','physical_validation'} or type(prepared['version']) is not int or prepared['version']!=1 or prepared['state']!='prepared-publication-unverified' or prepared['experimental_preview'] is not True or prepared['physical_validation']!='pending':raise ValueError('Prepared release manifest required')
-    identity(prepared);asset_rows(prepared['artifacts'],prepared['tag'],local=True);accepted_status(root,prepared['g2_evidence'])
+    identity(prepared);asset_rows(prepared['artifacts'],prepared['tag'],local=True);require_delivery_in_progress(root,prepared['g2_evidence'])
     # Recheck original local bytes and the actual tag after the publication wait.
     for row in prepared['artifacts']:
         if hash_file(Path(row['path']))!=(row['sha256'],row['bytes']):raise ValueError('Original release artifact changed')
@@ -190,7 +199,7 @@ def portal(root,page):
                     <h2>Try the current version.<br />Start in a virtual machine.</h2>
                     <p>Phase 2 experimental preview tested in the native guest. Review the owner guide and evidence before installation.</p>
                     <div class="release-tags"><span data-no-translate>'''+esc(value['tag'])+'''</span><span>Experimental preview</span><span>VM-tested</span></div>
-                </div><div class="download-actions">'''+links+'<a class="text-link" href="'+esc(value['release_url'])+'">Release notes ↗</a><a class="text-link" href="'+BASE+'">All releases & release notes ↗</a><a class="text-link" href="'+old+'">Foundation release & checksums ↗</a><a class="text-link" href="../'+esc(value['g2_evidence']['path'])+'">G2 evidence ↗</a><small>G2 native guest checks passed. Physical hardware validation pending.</small></div>\n            </section>'
+                </div><div class="download-actions">'''+links+'<a class="text-link" href="'+esc(value['release_url'])+'">Release notes ↗</a><a class="text-link" href="'+BASE+'">All releases & release notes ↗</a><a class="text-link" href="'+old+'">Foundation release & checksums ↗</a><a class="text-link" href="../'+esc(value['g2_evidence']['path'])+'">Native validation evidence ↗</a><small>Final native guest checks passed. Physical hardware validation pending.</small></div>\n            </section>'
     return page[:start]+fragment+page[end:]
 
 

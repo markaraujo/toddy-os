@@ -1581,6 +1581,6 @@ Object.assign(window.TODDY_TRANSLATIONS, {
     "Owner guide ↗": ["Guia do proprietário ↗", "Guía del propietario ↗", "使用者指南 ↗", "利用者ガイド ↗", "Руководство владельца ↗"],
     "Recovery guide ↗": ["Guia de recuperação ↗", "Guía de recuperación ↗", "恢复指南 ↗", "復旧ガイド ↗", "Руководство по восстановлению ↗"],
     "Licenses ↗": ["Licenças ↗", "Licencias ↗", "许可证 ↗", "ライセンス ↗", "Лицензии ↗"],
-    "G2 evidence ↗": ["Evidências G2 ↗", "Evidencias G2 ↗", "G2 验证记录 ↗", "G2 検証記録 ↗", "Результаты проверок G2 ↗"],
-    "G2 native guest checks passed. Physical hardware validation pending.": ["Verificações G2 na VM nativa aprovadas. Validação em hardware físico pendente.", "Verificaciones G2 en la máquina virtual nativa aprobadas. Validación en hardware físico pendiente.", "G2 原生虚拟机验证已通过。物理硬件验证尚未完成。", "ネイティブゲストでの G2 検証に合格しました。実機での検証は未実施です。", "Проверки G2 в нативной гостевой системе пройдены. Проверка на физическом оборудовании ещё не выполнена."]
+    "Native validation evidence ↗": ["Evidências da validação nativa ↗", "Evidencias de validación nativa ↗", "原生验证记录 ↗", "ネイティブ検証記録 ↗", "Результаты нативных проверок ↗"],
+    "Final native guest checks passed. Physical hardware validation pending.": ["Verificações finais na VM nativa aprovadas. Validação em hardware físico pendente.", "Verificaciones finales en la máquina virtual nativa aprobadas. Validación en hardware físico pendiente.", "最终原生虚拟机验证已通过。物理硬件验证尚未完成。", "ネイティブゲストでの最終検証に合格しました。実機での検証は未実施です。", "Финальные проверки в нативной гостевой системе пройдены. Проверка на физическом оборудовании ещё не выполнена."]
 });
