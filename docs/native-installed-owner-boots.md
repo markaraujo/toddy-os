@@ -77,7 +77,7 @@ UID/GID, no supplementary groups, a clean actual HOME/XDG/session-bus environmen
 and the real dconf GSettings backend. Round1 measures initial clock-show-seconds
 false, sets it true in org.gnome.desktop.interface, calls Gio.Settings.sync(),
 and reads both the boolean and explicit user Variant value back. It verifies the
-actual owner-owned0600 dconf database/hash and creates the owner-only0600
+actual owner-owned, regular, single-link dconf database/hash with no group/other write and creates the owner-only0600
 `.toddy-install-proof-<operation>` marker binding the plan and exact setting.
 Only that file and one explicit fixture preference are written; root/host/private
 preferences are never used. Actual
@@ -96,7 +96,7 @@ different real boot ID and equal measured marker/root/initramfs identity before
 writing `boot-bios.json` or `boot-uefi.json` in the strict existing composition
 schema, only after the complete owner-settings-bios.json or owner-settings-uefi.json
 companion validates. The mandatory companion binds actual setting values and
-protected database metadata in both distinct boots to the exact boot receipt SHA,
+observed owner-only-writable database metadata in both distinct boots to the exact boot receipt SHA,
 ISO, source, owner, cold handoff and helper hashes. The source sealer requires it;
 G2 additionally binds its actual final ISO. Frozen runtime seven-field boot rows
 are unchanged. Both reports are observed measurements, never fixtures or prefilled
@@ -143,3 +143,13 @@ actual boot-FIRMWARE.json and matching owner-settings-FIRMWARE.json to the
 protected qualification input directory. The sealer validates the companion and
 records its actual SHA in its external source receipt; it does not copy per-user
 QA state into the installed factory payload.
+
+The [frozen-source review](evidence/B12-owner-setting-frozen-source-review.json)
+verifies dconf0.49.0/GLib2.88.3 create the database through a0666/umask writer,
+not a guaranteed0600 secret file; normal0644 is legitimate. QA records the actual
+mode/GID/nlink and requires a regular file owned by the owner, one link, owner
+readability, no group/other write and protected owner directories. It never
+chmods that database to pass. The nonsensitive clock preference is separate from
+provider credentials, which still require protected SecretService storage.
+The frozen gsettings-desktop-schemas50.1 source explicitly defaults this key to
+false, so round1's measured false-to-true change is representative.

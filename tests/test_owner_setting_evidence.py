@@ -10,7 +10,7 @@ def setting(owner=None,number=1):
     return {'schema':e.SCHEMA,'key':e.KEY,'value':True,'user_value':True,'variant_type':'b','backend':'dconf',
         'initial_value':False if number==1 else True,'initial_user_value':None if number==1 else True,'uid':owner['uid'],'gid':owner['gid'],'home':'/home/'+owner['username'],
         'operation':'set-sync-read' if number==1 else 'read-only','session_bus':'native-owner-session',
-        'database':{'path':'/home/'+owner['username']+'/.config/dconf/user','sha256':'d'*64,'bytes':100,'mode':0o600,'uid':owner['uid'],'gid':owner['gid']}}
+        'database':{'path':'/home/'+owner['username']+'/.config/dconf/user','sha256':'d'*64,'bytes':100,'mode':0o644,'uid':owner['uid'],'gid':owner['gid'],'nlink':1}}
 
 
 def child_fixture(home,plan,number,state):
@@ -49,6 +49,13 @@ class OwnerSettingEvidenceTests(unittest.TestCase):
             self.assertEqual(first['marker_sha256'],second['marker_sha256']);self.assertEqual(db.read_bytes(),before)
             marker=home/('.toddy-install-proof-'+'a'*32);self.assertEqual(marker.read_bytes(),e.owner_marker('b'*64))
             with self.assertRaises(AssertionError):child_fixture(home,plan,1,state)
+    def test_legitimate_owner_writable0644_database_is_recorded_without_chmod(self):
+        with tempfile.TemporaryDirectory() as directory:
+            home=Path(directory);db=home/'.config/dconf/user';(home/'.config').mkdir(mode=0o700);db.parent.mkdir(mode=0o700);db.write_bytes(b'unqualified-public-clock-pref-fixture');db.chmod(0o644)
+            result=child_fixture(home,{'operation_id':'a'*32,'plan_sha256':'b'*64},1,{'user_value':None})
+            self.assertEqual(result['setting']['database']['mode'],0o644);self.assertEqual(result['setting']['database']['nlink'],1)
+            self.assertEqual(db.stat().st_mode&0o777,0o644)
+
     def test_global_default_or_memory_fallback_is_not_a_persisted_owner_setting(self):
         with tempfile.TemporaryDirectory() as directory:
             home=Path(directory);db=home/'.config/dconf/user';(home/'.config').mkdir(mode=0o700);db.parent.mkdir(mode=0o700);db.write_bytes(b'fixture');db.chmod(0o600)
@@ -59,7 +66,7 @@ class OwnerSettingEvidenceTests(unittest.TestCase):
         for field,value in [('value',False),('user_value',None),('backend','memory'),('uid',0),('operation','read-only')]:
             changed=setting();changed[field]=value
             with self.assertRaises(ValueError):e.validate_setting(changed,owner,1)
-        changed=setting();changed['database']['mode']=0o644
+        changed=setting();changed['database']['mode']=0o664
         with self.assertRaisesRegex(ValueError,'protected'):e.validate_setting(changed,owner,1)
     def test_owner_child_uses_native_privilege_drop_clean_home_xdg_sessionbus_and_no_preexec(self):
         account=types.SimpleNamespace(pw_uid=1000,pw_gid=1000,pw_dir='/home/owner')

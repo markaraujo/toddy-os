@@ -37,7 +37,7 @@ if value['round']==1:
 actual=settings.get_boolean(key);variant=settings.get_user_value(key)
 assert actual is True and variant is not None and variant.get_type_string()=='b' and variant.unpack() is True
 path=home/'.config/dconf/user';assert path.resolve()==path
-info=path.lstat();assert (info.st_mode,info.st_uid,info.st_gid,info.st_nlink)==(stat.S_IFREG|0o600,value['uid'],value['gid'],1)
+info=path.lstat();assert stat.S_ISREG(info.st_mode) and info.st_uid==value['uid'] and info.st_nlink==1 and not info.st_mode&0o022 and stat.S_IMODE(info.st_mode)&0o400
 fd=os.open(path,os.O_RDONLY|os.O_NOFOLLOW)
 try:
     if value['round']==1:os.fsync(fd)
@@ -47,7 +47,7 @@ setting={'schema':'org.gnome.desktop.interface','key':key,'value':actual,'user_v
     'initial_value':initial_value,'initial_user_value':initial_user_value,'backend':'dconf','uid':os.getuid(),'gid':os.getgid(),'home':str(home),
     'operation':'set-sync-read' if value['round']==1 else 'read-only',
     'session_bus':'native-owner-session' if os.environ['DBUS_SESSION_BUS_ADDRESS'].startswith('unix:path=/run/user/') else 'offline-read',
-    'database':{'path':str(path),'sha256':digest,'bytes':info.st_size,'mode':stat.S_IMODE(info.st_mode),'uid':info.st_uid,'gid':info.st_gid}}
+    'database':{'path':str(path),'sha256':digest,'bytes':info.st_size,'mode':stat.S_IMODE(info.st_mode),'uid':info.st_uid,'gid':info.st_gid,'nlink':info.st_nlink}}
 content=(json.dumps({'version':1,'plan_sha256':value['plan_sha256'],'owner_setting':{'schema':'org.gnome.desktop.interface','key':key,'value':actual}},sort_keys=True,separators=(',',':'))+'\n').encode()
 marker=home/('.toddy-install-proof-'+value['operation_id'])
 if value['round']==1:
@@ -89,7 +89,7 @@ def validate_setting(value,owner,number):
     if number==1 and (value['initial_value'] is not False or (value['initial_user_value'] is not None and value['initial_user_value'] is not False)) or number!=1 and (value['initial_value'] is not True or value['initial_user_value'] is not True):raise ValueError('actual_representative_setting_change_and_retained_value_required')
     if any(type(value[key]) is not int for key in ('uid','gid')):raise ValueError('actual_numeric_owner_identity_required')
     database=value['database']
-    if not isinstance(database,dict) or set(database)!={'path','sha256','bytes','mode','uid','gid'} or any(type(database[key]) is not int for key in ('bytes','mode','uid','gid')) or database['path']!=value['home']+'/.config/dconf/user' or database['mode']!=0o600 or database['uid']!=owner['uid'] or database['gid']!=owner['gid'] or not isinstance(database['sha256'],str) or not re.fullmatch('[a-f0-9]{64}',database['sha256']) or type(database['bytes']) is not int or database['bytes']<=0:raise ValueError('actual_protected_owner_dconf_database_required')
+    if not isinstance(database,dict) or set(database)!={'path','sha256','bytes','mode','uid','gid','nlink'} or any(type(database[key]) is not int for key in ('bytes','mode','uid','gid','nlink')) or database['path']!=value['home']+'/.config/dconf/user' or database['mode']&~0o777 or database['mode']&0o022 or not database['mode']&0o400 or database['uid']!=owner['uid'] or database['nlink']!=1 or not 0<=database['gid']<2**31 or not isinstance(database['sha256'],str) or not re.fullmatch('[a-f0-9]{64}',database['sha256']) or type(database['bytes']) is not int or database['bytes']<=0:raise ValueError('actual_protected_owner_dconf_database_required')
     return value
 
 
