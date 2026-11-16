@@ -12,7 +12,7 @@ fi
 mountpoint -q "$LFS/dev/pts" || mount -t devpts devpts -o gid=5,mode=0620 "$LFS/dev/pts"
 mountpoint -q "$LFS/proc" || mount -t proc proc "$LFS/proc"
 mountpoint -q "$LFS/sys" || mount -t sysfs sysfs "$LFS/sys"
-mountpoint -q "$LFS/run" || mount -t tmpfs tmpfs "$LFS/run"
+mountpoint -q "$LFS/run" || mount -t tmpfs -o mode=0755,nosuid,nodev tmpfs "$LFS/run"
 if [[ -h $LFS/dev/shm ]]; then
     install -d -m 1777 "$LFS$(realpath /dev/shm)"
 else
