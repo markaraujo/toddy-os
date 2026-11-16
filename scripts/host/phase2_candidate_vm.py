@@ -9,6 +9,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import time
+import uuid
 
 import vm
 import phase2_vm
@@ -45,7 +46,7 @@ def bases():
 def tool(*args):
     return run('docker','run','--rm','--user',f'{os.getuid()}:{os.getgid()}',
         '--cap-drop=ALL','--security-opt=no-new-privileges','--network=none','--read-only',
-        '-v',f'{vm.VM}:/vm:ro','-v',f'{WORK}:/vm/candidate',vm.IMAGE,*args,
+        '-v',f'{vm.VM}:/vm:ro','-v',f'{WORK}:/vm/phase2-candidate',vm.IMAGE,*args,
         capture_output=True,text=True)
 
 
@@ -65,12 +66,12 @@ def owned():
     assert row['Config']['Labels'].get('toddy.candidate')=='phase2-candidate'
     mounts={m['Source']:m for m in row['Mounts'] if m['Type']=='bind'}
     assert mounts[str(vm.VM)]['Destination']=='/vm' and mounts[str(vm.VM)]['RW'] is False
-    assert mounts[str(WORK)]['Destination']=='/vm/candidate' and mounts[str(WORK)]['RW'] is True
+    assert mounts[str(WORK)]['Destination']=='/vm/phase2-candidate' and mounts[str(WORK)]['RW'] is True
     ports=row['NetworkSettings']['Ports']['2223/tcp']
     assert ports==[{'HostIp':'127.0.0.1','HostPort':'2223'}]
     command=row['Config']['Cmd']
     for name in ('builder.qcow2','lfs-target.qcow2'):
-        assert any(value.startswith('file=/vm/candidate/'+name+',') for value in command)
+        assert any(value.startswith('file=/vm/phase2-candidate/'+name+',') for value in command)
     return row['Id']
 
 
@@ -122,6 +123,10 @@ def main():
         assert not WORK.exists(),'Inspect existing candidate; never repeat preparation'
         WORK.mkdir(mode=0o700)
         record={'scope':'New writable candidate over accepted read-only B02; no acceptance',
+            'operation_id':uuid.uuid4().hex,'controller_pid':os.getpid(),
+            'controller_boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
+            'controller_start_ticks':Path('/proc/self/stat').read_text().split()[21],
+            'producer_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
             'commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
             'base_identity':original,'base_sha256':{},'checks':{},'phase':'preparing'}
         save(WORK/'prepare.json',record)
@@ -131,7 +136,7 @@ def main():
                 record['base_sha256'][name]=hashlib.file_digest(stream,'sha256').hexdigest()
             assert bases()==original
             record['checks'][name]=checked.stdout
-            tool('qemu-img','create','-f','qcow2','-F','qcow2','-b','/vm/phase2/'+name,'/vm/candidate/'+name)
+            tool('qemu-img','create','-f','qcow2','-F','qcow2','-b','/vm/phase2/'+name,'/vm/phase2-candidate/'+name)
             save(WORK/'prepare.json',record)
         scratch=WORK/'qt-raster-work.raw'
         fd=os.open(scratch,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
@@ -158,15 +163,15 @@ def main():
         '--user',f'{os.getuid()}:{os.getgid()}','--device','/dev/kvm',
         '--group-add',str(Path('/dev/kvm').stat().st_gid),'--cap-drop=ALL',
         '--security-opt=no-new-privileges','--memory','14g','--cpus','12',
-        '-p','127.0.0.1:2223:2223','-v',f'{vm.VM}:/vm:ro','-v',f'{WORK}:/vm/candidate',vm.IMAGE,
+        '-p','127.0.0.1:2223:2223','-v',f'{vm.VM}:/vm:ro','-v',f'{WORK}:/vm/phase2-candidate',vm.IMAGE,
         'qemu-system-x86_64','-enable-kvm','-machine','q35','-cpu','host','-smp','12','-m','12288',
-        '-display','none','-serial','file:/vm/candidate/serial.log',
-        '-qmp','unix:/vm/candidate/qmp.sock,server=on,wait=off',
-        '-drive','file=/vm/candidate/builder.qcow2,if=none,id=builder,format=qcow2',
+        '-display','none','-serial','file:/vm/phase2-candidate/serial.log',
+        '-qmp','unix:/vm/phase2-candidate/qmp.sock,server=on,wait=off',
+        '-drive','file=/vm/phase2-candidate/builder.qcow2,if=none,id=builder,format=qcow2',
         '-device','virtio-blk-pci,drive=builder,serial=TODDY-BUILDER',
-        '-drive','file=/vm/candidate/lfs-target.qcow2,if=none,id=lfs,format=qcow2,discard=unmap',
+        '-drive','file=/vm/phase2-candidate/lfs-target.qcow2,if=none,id=lfs,format=qcow2,discard=unmap',
         '-device','virtio-blk-pci,drive=lfs,serial=TODDY-LFS-TARGET',
-        '-drive','file=/vm/candidate/qt-raster-work.raw,if=none,id=qtwork,format=raw,discard=unmap',
+        '-drive','file=/vm/phase2-candidate/qt-raster-work.raw,if=none,id=qtwork,format=raw,discard=unmap',
         '-device','virtio-blk-pci,drive=qtwork,serial=TODDY-QT-RASTER-1',
         '-drive','file=/vm/seed.img,if=virtio,format=raw,readonly=on',
         '-netdev','user,id=net0,hostfwd=tcp:0.0.0.0:2223-:22',

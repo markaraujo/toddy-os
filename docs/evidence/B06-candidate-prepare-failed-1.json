@@ -1,0 +1,11 @@
+{
+  "scope": "Candidate preparation failed before first image check/create; no VM or image write",
+  "attempt": 1,
+  "source_commit": "30e61634636c196b2c8e7c6e1321b1e0a2514767",
+  "cause": "Docker cannot create unmatched /vm/candidate nested mountpoint under read-only /vm",
+  "correction": "Use existing canonical /vm/phase2-candidate subdirectory for bind and all drive paths",
+  "verification": "Corrected read-only Docker qemu-img check returned0/no errors; full new preparation pending",
+  "archived_context": ".local/phase2/candidate-prepare-failed-1",
+  "prepare_receipt_sha256": "3d183de6f85e54657a2b20d93babdbf41ac579e2a832781b04f9946bf8a94aa1",
+  "no_disk_image_created": true
+}
