@@ -5,7 +5,7 @@ acquisition or release acceptance. It never adds voice/model/integrations to the
 offline base or ISO. The frozen voice native2 driver, recipes, runtime and existing
 prepared/install/audit receipts remain unchanged.
 
-After actual PipeWire2, native2 reconciliation/catalog package install/check and
+After actual PipeWire base restoration/separate audio tools, native2 reconciliation/catalog package install/check and
 ordinary optional voice/integrations native package delivery pass, the sole
 coordinator syncs these source files through the existing verified input route:
 
@@ -20,7 +20,7 @@ python3 /opt/toddy-build/scripts/build/phase2/optional_projection.py
 ```
 
 The designated-builder guard and global build lock apply. The command reads
-actual configured dpkg inventory and validates exactly `toddy-voice`,
+actual configured dpkg inventory and validates exactly `pipewire-audio-tools`, `toddy-voice`,
 `whisper-cpp`, `espeak-ng`, `toddy-voice-model-base`,
 `toddy-voice-native-catalog`, and `toddy-integrations` through the existing native
 archive/control/payload/legal verifier. Repeated inventory must match. It writes

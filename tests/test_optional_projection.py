@@ -20,11 +20,11 @@ class OptionalTests(unittest.TestCase):
     def test_exact_set_no_offline_or_available_claim(self):
         rows = {name: {'name': name} for name in p.NAMES}
         value = p.document(rows, 'SOURCE FIXTURE')
-        self.assertEqual(len(value['components']), 6)
+        self.assertEqual(len(value['components']), 7)
         self.assertFalse(value['offline_base']); self.assertFalse(value['iso_inclusion'])
         self.assertFalse(value['available']); self.assertTrue(value['explicit_owner_acquisition_required'])
         for changed in (dict(rows, arbitrary={'name':'arbitrary'}), {name:row for name,row in rows.items() if name!='toddy-voice'}):
-            with self.assertRaisesRegex(ValueError,'Exact six'): p.document(changed, '')
+            with self.assertRaisesRegex(ValueError,'Exact seven'): p.document(changed, '')
 
     def test_generated_catalog_cannot_qualify_from_portable_or_self_declared_data(self):
         with self.assertRaisesRegex(ValueError, 'designated-builder evidence'):

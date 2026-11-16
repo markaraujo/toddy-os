@@ -23,7 +23,8 @@ def fixture():
         'file_sessions':{locale:{'transcript':'UNQUALIFIED SOURCE FIXTURE','word_error_rate':0} for locale in ('en','pt-BR')},
         'native_engine_stop':{'code':'canceled'},'transport':{role:{'sha256':digest} for role,digest in transport.items()}}
     docs={name:b'UNQUALIFIED SOURCE FIXTURE' for name in v.DOCUMENTS}
-    records={name:'a'*64 for name in ('pipewire','wireplumber','toddy-voice','whisper-cpp','espeak-ng','toddy-voice-model-base')}
+    records={name:'a'*64 for name in ('pipewire','wireplumber','toddy-voice','whisper-cpp','espeak-ng','toddy-voice-model-base','pipewire-audio-tools')}
+    records['pipewire']=v.bridge.OLD_PIPEWIRE_RECORD
     old={name:'b'*64 for name in ('exit_sha256','marker_sha256','log_sha256')}
     docs['process-qualified.json']=encoded(process)
     docs['process-retry-validation.json']=encoded({'kind':'actual-native2-process-retry-v1','producer_pins':pins,'records':records,'old_failed_process':old,'process_sha256':sha(docs['process-qualified.json'])})
@@ -37,11 +38,15 @@ def fixture():
     component=dict(name=v.bridge.PACKAGE,version=v.bridge.VERSION,architecture='all',depends='',archive_sha256='e'*64,component_record_sha256='f'*64,recipe_sha256=v.RECIPE,sources=[],copyright={},source_notices_index={})
     record={'source_kind':'book-derived-versioned-recipe','sources':[],'recipe_sha256':v.RECIPE,'payload':payload,'supporting_build_scripts':{'files':{name:pins[role] for role,name in v.SCRIPT_ROLES.items()}}}
     attestation={'version':1,'kind':'native-voice-catalog-source-export-v1','component':component,'producer_pins':pins,'owned_files':{path:row['sha256'] for path,row in payload.items()},'catalog_write_audit_sha256':'d'*64,'catalog_package_write_audit_sha256':'a'*64,'native_package_check_sha256':'b'*64}
+    attestation['native_transport']={'failed_revision2_sha256':'a'*64,'failed_revision2_archive_sha256':v.bridge.FAILED_PIPEWIRE_ARCHIVE,'restore':{'success_sha256':'b'*64,'manifest_sha256':'c'*64},'tools':{'success_sha256':'d'*64,'manifest_sha256':'e'*64},'restore_receipt_sha256':'a'*64,'tools_receipt_sha256':'b'*64,'record_sha256':records['pipewire-audio-tools'],'base_record_sha256':records['pipewire']}
     projection={'schema_version':1,'offline_base':False,'iso_inclusion':False,'available':False,'components':[component],'native_catalog_package_check_sha256':'b'*64}
     return component,record,docs,attestation,projection
 
 
 class GeneratedSourcesTests(unittest.TestCase):
+    def test_exact_reviewed_unexecuted_reconciliation_source_pin(self):
+        self.assertEqual(sha((ROOT/'scripts/build/phase2/voice_process_reconcile.py').read_bytes()),v.PRODUCER)
+
     def test_public_data_check_has_no_private_builder_path_bypass(self):
         values=fixture();inputs=v.verify(*values)
         self.assertEqual(set(inputs),{'LICENSE','LICENSES/CC-BY-4.0.txt','tests/fixtures/voice/human/manifest.json','tests/fixtures/voice/human/README.md'})

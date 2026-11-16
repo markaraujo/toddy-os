@@ -1,4 +1,4 @@
-"""Read-only exact six-package optional archive projection; no offline inclusion."""
+"""Read-only exact seven-package optional archive projection; no offline inclusion."""
 import fcntl
 import hashlib
 import json
@@ -14,14 +14,14 @@ import image_projection as projection
 import voice_process_reconcile as bridge
 import voice_catalog_provenance as catalog_provenance
 
-NAMES = frozenset(('toddy-voice', 'whisper-cpp', 'espeak-ng',
+NAMES = frozenset(('toddy-voice', 'whisper-cpp', 'espeak-ng', 'pipewire-audio-tools',
     'toddy-voice-model-base', 'toddy-voice-native-catalog', 'toddy-integrations'))
 OUTPUT = bridge.T / 'sources/stage/toddy-optional-projection-1'
 
 
 def document(components, inventory):
     if set(components) != NAMES or any(row['name'] != name for name, row in components.items()):
-        raise ValueError('Exact six optional native packages required')
+        raise ValueError('Exact seven optional native packages required')
     return {'schema_version': 1,
         'scope': 'Actual optional native archives only; unsigned acquisition input, not runtime/GUI/release acceptance',
         'observed_inventory_sha256': hashlib.sha256(inventory.encode()).hexdigest(),

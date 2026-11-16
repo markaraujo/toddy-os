@@ -25,18 +25,34 @@ Any shared pinned helper/lock/license drift blocks the bridge; it is not silentl
 accepted as compatible. The old failed process command/prepared hash/log/marker
 must still match the retained actual original attempt.
 
-Actual `pipewire_1.6.8-1+toddy2_amd64.{deb,json}` must exist and its entire payload
-must verify. Require full-root `b09-pipewire-tools-1.success.json` recipe/postcheck
-exit0, current exact source recipe/check hashes and retained mutation manifest.
-Require `pipewire-tools-install-1.json` state `native-tool-package-verified`,
-`old_payload_unchanged:true`, the original archive/record pins and exact native2
-version. Independently verify the complete old PipeWire payload remains unchanged
-and the new owned regular `/usr/bin/pw-cat` matches its actual package record.
-No model/source download, version switch, rebuild or voice reinstall occurs here.
+The attempted `pipewire_1.6.8-1+toddy2` replaced library metadata but broke
+reverse dependencies that require the exact original revision. Its actual
+`b09-pipewire-tools-1.failed.json` recipe0/postcheck1 and rejected archive/record
+must remain immutable. Never rename that failure to a successful installation.
+
+Require TWO new actual controlled transactions: `b09-pipewire-base-restore-1`
+and `b09-pipewire-audio-tools-1`, both full-root recipe/check exit0. The former
+restores the exact original `pipewire_1.6.8-1+toddy1_amd64.{deb,json}` and all
+original payload bytes, removes exactly the eleven additions derived from the
+retained rejected archive, and passes APT consistency. Require its actual
+`pipewire-base-restore-1.json` state `native-pipewire-base-restored`, original
+archive/record pins, retained failed-upgrade pins, absence list and APT exit0.
+
+The latter installs separate `pipewire-audio-tools_1.6.8-1+toddy1_amd64.{deb,json}`
+from the already qualified native compile, with actual
+`pipewire-audio-tools-install-1.json` state `native-audio-tools-package-verified`
+and `old_library_payload_unchanged:true`. Independently verify the complete
+original library payload remains unchanged and owned regular `/usr/bin/pw-cat`
+matches the separate tools package plus actual mutation manifest. No model/
+source download, engine rebuild, version switch or voice reinstall occurs here.
+The tools record becomes an explicit seventh catalog qualification record and
+an exact native catalog package dependency. The frozen runtime catalog schema
+retains its four original native dependency fields; PipeWire points to actual
+restored revision1, while existing process-control hashes pin the new tool bytes.
 
 ## One fresh actual read-only job
 
-After actual PipeWire2 install/check and any healthy writer finish, sync the two
+After actual base restoration and separate audio-tools install/check and any healthy writer finish, sync the two
 new source files through the existing verified route. The same source producer
 must remain unchanged through all phases; its SHA is part of every new receipt
 and root write audit. In the guarded builder, run once per phase:

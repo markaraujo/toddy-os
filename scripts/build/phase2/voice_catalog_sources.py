@@ -15,7 +15,7 @@ import offline_payload as p
 from voice_catalog_provenance import CATALOG, DOC, DOCUMENTS
 import voice_process_reconcile as bridge
 
-PRODUCER = '5788d91e3469a87e994d685244c534d558fd25394aa1f747b108766255b302ca'
+PRODUCER = 'ff5a98de88b3b88a445fbc5baaaa999fd8a8952affb96d76ba75df0943dda848'
 RECIPE = '0ab6bbe4a9b890a28e6a69d2c56729349950b6b3685d419e0c056194998cf4d2'
 COMPONENT_KEYS = ('name','version','architecture','depends','archive_sha256',
     'component_record_sha256','recipe_sha256','sources','copyright','source_notices_index')
@@ -78,8 +78,16 @@ def verify(component, record, documents, attestation, projection):
     if qualification.get('kind') != 'reconciled-native-voice-catalog-v1' or qualification.get('producer_pins') != pins or retry.get('producer_pins') != pins or retry.get('kind') != 'actual-native2-process-retry-v1' or retry.get('records') != qualification.get('records'):
         raise ValueError('Generated actual native2 proof identities differ')
     records=qualification.get('records',{})
-    if set(records) != {'pipewire','wireplumber','toddy-voice','whisper-cpp','espeak-ng','toddy-voice-model-base'} or any(not isinstance(sha,str) or not p.HASH.fullmatch(sha) for sha in records.values()):
+    if set(records) != {'pipewire','wireplumber','toddy-voice','whisper-cpp','espeak-ng','toddy-voice-model-base','pipewire-audio-tools'} or any(not isinstance(sha,str) or not p.HASH.fullmatch(sha) for sha in records.values()):
         raise ValueError('Exact actual native component record pins required')
+    transport=attestation.get('native_transport',{})
+    if (set(transport)!={'failed_revision2_sha256','failed_revision2_archive_sha256','restore','tools','restore_receipt_sha256','tools_receipt_sha256','record_sha256','base_record_sha256'} or
+            transport['failed_revision2_archive_sha256']!=bridge.FAILED_PIPEWIRE_ARCHIVE or transport['base_record_sha256']!=bridge.OLD_PIPEWIRE_RECORD or records['pipewire']!=transport['base_record_sha256'] or records['pipewire-audio-tools']!=transport['record_sha256']):
+        raise ValueError('Exact failed upgrade/restored base/separate tools source bindings required')
+    for key in ('restore','tools'):
+        row=transport[key]
+        if not isinstance(row,dict) or set(row)!={'success_sha256','manifest_sha256'} or any(not isinstance(sha,str) or not p.HASH.fullmatch(sha) for sha in row.values()):raise ValueError('Actual separate transport write audit source bindings required')
+    if any(not isinstance(transport[key],str) or not p.HASH.fullmatch(transport[key]) for key in ('failed_revision2_sha256','restore_receipt_sha256','tools_receipt_sha256','record_sha256')):raise ValueError('Actual separate transport receipt source hashes required')
     old=qualification.get('old_failed_process',{})
     if old != retry.get('old_failed_process') or set(old) != {'exit_sha256','marker_sha256','log_sha256'} or any(not isinstance(sha,str) or not p.HASH.fullmatch(sha) for sha in old.values()):
         raise ValueError('Retained original actual failed process pins required')

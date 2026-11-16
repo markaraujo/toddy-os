@@ -44,6 +44,7 @@ def export_attestation(component, record):
     installed = bridge.read(bridge.file('catalog-package-installed.json'))
     return {'version': 1, 'kind': 'native-voice-catalog-source-export-v1',
         'component': component, 'producer_pins': bridge.producer_pins(),
+        'native_transport': bridge.context()[0]['bindings']['pipewire-transport'],
         'owned_files': {name: row['sha256'] for name, row in record['payload'].items() if 'sha256' in row},
         'catalog_write_audit_sha256': catalog['native_write_audit_sha256'],
         'catalog_package_write_audit_sha256': installed['native_write_audit_sha256'],

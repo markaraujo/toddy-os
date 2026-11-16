@@ -14,6 +14,8 @@ sys.dont_write_bytecode=True
 HERE=Path(__file__).resolve().parent
 sys.path[:0]=[str(HERE),str(HERE.parent)]
 import voice_native as frozen
+import offline_payload as archive_payload
+import pipewire_tools_native as transport_native
 
 R=Path('/opt/toddy-build');T=Path('/mnt/lfs');L=Path('/var/log/toddy/phase2')
 FROZEN_DRIVER='5a1dc85c634e2c54edad42f94c7222ef5fba56331aadc5efbb849178474c6dee'
@@ -23,6 +25,10 @@ PACKAGE='toddy-voice-native-catalog';VERSION='0.2.0-1+toddy1'
 INSTALL_RECIPE='scripts/build/phase2/voice_reconcile_install.sh'
 OLD_PIPEWIRE_ARCHIVE='6fcccccb584101ebf0899dcabbc64ff8551f8cc4e58356bc8878febc6a17c56a'
 OLD_PIPEWIRE_RECORD='ebdad900696ab299bcc7be52dcbde490c0a2a6d5afb3b659acb89cb6c2a77303'
+FAILED_PIPEWIRE_ARCHIVE='bf08b0426e4596eed1363fb2a64889ab31b4ecafdb58bc3f92ebb5d91a915a55'
+FAILED_PIPEWIRE_RECORD='8302491a6fae68d1a443b33e8d9bd884be19719520fb89de9e693da56b4d9c3c'
+FAILED_PIPEWIRE_RECEIPT='994c633373d1c15ded40075c6ff1320da5bef78eb4aa44a4d9d1fe533b842cc6'
+FAILED_PIPEWIRE_MANIFEST='4166be95d52f06a4b623d0d89b0765c6d127c40f765e44417c8a833097c14f58'
 
 
 def file(suffix):return Path(str(PREFIX)+'.'+suffix)
@@ -42,21 +48,74 @@ def installed_components():
         if checked['record_sha256']!=digest(path) or checked['native_write_audit_sha256']!=audit:raise ValueError('Actual native2 installed/check/audit proof changed')
         records[name]=(path,record)
         bindings[name]={'prepared_sha256':digest(Path(str(prefix)+'.prepared.json')),'qualified_sha256':digest(Path(str(prefix)+'.qualified.json')),'checked_sha256':digest(Path(str(prefix)+'.checked.json')),'install_audit_sha256':audit,'record_sha256':digest(path)}
-    for name in ('pipewire','wireplumber','toddy-voice'):records[name]=frozen.native_record(name)
-    if records['pipewire'][1]['version']!='1.6.8-1+toddy2' or records['wireplumber'][1]['version']!='0.5.15-1+toddy1' or records['toddy-voice'][1]['version']!='0.2.0-1+toddy1':raise ValueError('Exact native PipeWire tool upgrade and unchanged voice controller required')
-    step=Path('/var/log/toddy/build/b09-pipewire-tools-1.success.json');success=read(step)
-    if success.get('step')!='b09-pipewire-tools-1' or type(success.get('recipe_exit')) is not int or success['recipe_exit']!=0 or type(success.get('postcheck_exit')) is not int or success['postcheck_exit']!=0 or success.get('recipe_sha256')!=digest(HERE/'pipewire_tools_install.sh') or success.get('postcheck_sha256')!=digest(HERE/'pipewire_tools_check.sh'):raise ValueError('Actual native PipeWire2 full-root install/check required')
-    manifest=step.with_name('b09-pipewire-tools-1.manifest.json');frozen.regular(manifest);changes=read(manifest)
-    if not isinstance(changes,dict) or len(changes)!=success.get('changed_paths') or changes.get('/usr/bin/pw-cat',{}).get('after',{}).get('sha256')!=records['pipewire'][1]['payload'].get('/usr/bin/pw-cat',{}).get('sha256'):raise ValueError('Actual full-root new pw-cat mutation evidence required')
-    receipt=read(L/'pipewire-tools-install-1.json')
-    if receipt.get('state')!='native-tool-package-verified' or receipt.get('old_payload_unchanged') is not True or receipt.get('manifest',{}).get('version')!='1.6.8-1+toddy2' or receipt['manifest'].get('old_archive_sha256')!=OLD_PIPEWIRE_ARCHIVE or receipt['manifest'].get('old_record_sha256')!=OLD_PIPEWIRE_RECORD:raise ValueError('Exact native PipeWire original-payload preservation proof required')
-    old=Path('/var/log/toddy/packages/pipewire_1.6.8-1+toddy1_amd64.json')
-    if digest(old)!=OLD_PIPEWIRE_RECORD:raise ValueError('Retained original PipeWire record changed')
-    frozen.verify_package_record(read(old),T)
-    transport=T/'usr/bin/pw-cat';frozen.regular(transport)
-    if records['pipewire'][1]['payload'].get('/usr/bin/pw-cat',{}).get('sha256')!=digest(transport):raise ValueError('Actual installed owned pw-cat required')
-    bindings['pipewire-tools']={'success_sha256':digest(step),'manifest_sha256':digest(manifest),'receipt_sha256':digest(L/'pipewire-tools-install-1.json'),'record_sha256':digest(records['pipewire'][0])}
+    for name in ('pipewire','wireplumber','toddy-voice','pipewire-audio-tools'):records[name]=frozen.native_record(name)
+    if records['pipewire'][1]['version']!='1.6.8-1+toddy1' or records['pipewire-audio-tools'][1]['version']!='1.6.8-1+toddy1' or records['wireplumber'][1]['version']!='0.5.15-1+toddy1' or records['toddy-voice'][1]['version']!='0.2.0-1+toddy1':raise ValueError('Exact restored PipeWire1 plus separate audio tools and unchanged controller required')
+    bindings['pipewire-transport']=transport_proof(records)
     return records,bindings
+
+
+def full_root_success(step,recipe,check):
+    base=Path('/var/log/toddy/build')/step
+    path=base.with_suffix('.success.json');value=read(path)
+    if (value.get('step')!=step or any(type(value.get(key)) is not int or value[key]!=0 for key in ('recipe_exit','postcheck_exit')) or
+            value.get('recipe_sha256')!=digest(HERE/recipe) or value.get('postcheck_sha256')!=digest(HERE/check) or
+            value.get('runner_sha256')!=digest(HERE.parent/'run_step.py') or base.with_suffix('.failed.json').exists() or base.with_suffix('.running.json').exists()):raise ValueError('Actual separate transport full-root transaction success required')
+    log=base.with_suffix('.log');frozen.regular(log)
+    if value.get('log_sha256')!=digest(log):raise ValueError('Actual native transport log custody required')
+    manifest=base.with_suffix('.manifest.json');frozen.regular(manifest);changes=read(manifest)
+    if not isinstance(changes,dict) or type(value.get('changed_paths')) is not int or len(changes)!=value['changed_paths']:raise ValueError('Actual full-root transport mutation evidence required')
+    return {'success_sha256':digest(path),'manifest_sha256':digest(manifest)},changes
+
+
+def transport_proof(records):
+    # The failed revision2 installation is historical failure, never renamed or
+    # reinterpreted as success. Two NEW controlled transactions follow it.
+    failed=Path('/var/log/toddy/build/b09-pipewire-tools-1.failed.json');frozen.regular(failed);failure=read(failed)
+    if digest(failed)!=FAILED_PIPEWIRE_RECEIPT or digest(failed.with_name('b09-pipewire-tools-1.manifest.json'))!=FAILED_PIPEWIRE_MANIFEST:raise ValueError('Exact retained failed PipeWire2 audit pins required')
+    if failure.get('step')!='b09-pipewire-tools-1' or failure.get('recipe_sha256')!=digest(HERE/'pipewire_tools_install.sh') or failure.get('postcheck_sha256')!=digest(HERE/'pipewire_tools_check.sh') or type(failure.get('recipe_exit')) is not int or failure['recipe_exit']!=0 or type(failure.get('postcheck_exit')) is not int or failure['postcheck_exit']!=1 or failed.with_name('b09-pipewire-tools-1.success.json').exists():raise ValueError('Retained actual PipeWire2 failed postcheck required')
+    old=Path('/var/log/toddy/packages/pipewire_1.6.8-1+toddy1_amd64.json')
+    if digest(old)!=OLD_PIPEWIRE_RECORD or digest(records['pipewire'][0])!=OLD_PIPEWIRE_RECORD:raise ValueError('Exact original PipeWire record must actually be restored')
+    frozen.verify_package_record(read(old),T)
+    restore,removed=full_root_success('b09-pipewire-base-restore-1','pipewire_base_restore_install.sh','pipewire_base_restore_check.sh')
+    tools,added=full_root_success('b09-pipewire-audio-tools-1','pipewire_audio_tools_install.sh','pipewire_audio_tools_check.sh')
+    revision2=Path('/var/log/toddy/packages/pipewire_1.6.8-1+toddy2_amd64.json');revision2_archive=Path('/var/cache/toddy/packages/pipewire_1.6.8-1+toddy2_amd64.deb')
+    frozen.regular(revision2);frozen.regular(revision2_archive);rejected=read(revision2)
+    control,body,_=archive_payload.archive_contents(revision2_archive)
+    if digest(revision2)!=FAILED_PIPEWIRE_RECORD or digest(revision2_archive)!=FAILED_PIPEWIRE_ARCHIVE or rejected.get('archive_sha256')!=FAILED_PIPEWIRE_ARCHIVE or control.get('Package')!='pipewire' or control.get('Version')!='1.6.8-1+toddy2' or rejected.get('payload')!=body:raise ValueError('Retained exact rejected PipeWire2 archive/record required')
+    additions=set(body)-set(read(old)['payload'])
+    if len(additions)!=11 or any(body.get(name)!=row for name,row in read(old)['payload'].items()):raise ValueError('Exact rejected eleven additions and unchanged old payload required')
+    restored=read(L/'pipewire-base-restore-1.json');installed=read(L/'pipewire-audio-tools-install-1.json')
+    if restored.get('state')!='native-pipewire-base-restored' or installed.get('state')!='native-audio-tools-package-verified' or installed.get('old_library_payload_unchanged') is not True:raise ValueError('Actual controlled base restoration and separate tools receipts required')
+    upgrade=restored.get('failed_upgrade',{})
+    if (restored.get('old_archive_sha256')!=OLD_PIPEWIRE_ARCHIVE or restored.get('old_record_sha256')!=OLD_PIPEWIRE_RECORD or restored.get('old_payload_unchanged') is not True or type(restored.get('apt_check_exit')) is not int or restored['apt_check_exit']!=0 or
+            restored.get('added_paths_absent')!=sorted(additions) or
+            upgrade!={'step':'b09-pipewire-tools-1','failed_receipt_sha256':digest(failed),'manifest_sha256':digest(failed.with_name('b09-pipewire-tools-1.manifest.json')),'archive_sha256':FAILED_PIPEWIRE_ARCHIVE,'record_sha256':digest(revision2)} or
+            any(removed.get(name,{}).get('after','MISSING') is not None for name in additions)):
+        raise ValueError('Actual exact restored archive/failed upgrade/eleven removals/APT proof required')
+    expected_sources={'scripts/build/phase2/'+name for name in ('pipewire_base_restore.py','pipewire_base_restore_install.sh','pipewire_base_restore_check.sh')}
+    if restored.get('source_inputs')!={name:digest(R/name) for name in expected_sources}:raise ValueError('Actual controlled restoration source pins required')
+    transport=T/'usr/bin/pw-cat';frozen.regular(transport)
+    expected=records['pipewire-audio-tools'][1]['payload'].get('/usr/bin/pw-cat',{}).get('sha256')
+    tooling=installed.get('manifest',{});prepared,compiled,closure=transport_native.qualify()
+    restoration={'step':'b09-pipewire-base-restore-1',**restore,'receipt_sha256':digest(L/'pipewire-base-restore-1.json'),
+        'failed_upgrade':upgrade,'old_archive_sha256':OLD_PIPEWIRE_ARCHIVE,'old_record_sha256':OLD_PIPEWIRE_RECORD}
+    if (type(installed.get('apt_check_exit')) is not int or installed['apt_check_exit']!=0 or installed.get('actual_audio_process_qualification')!='pending' or
+            installed.get('restoration_receipt_sha256')!=restoration['receipt_sha256'] or installed.get('new_record_sha256')!=digest(records['pipewire-audio-tools'][0]) or installed.get('new_archive_sha256')!=records['pipewire-audio-tools'][1]['archive_sha256'] or installed.get('native_pwcat_sha256')!=expected or
+            tooling.get('restoration')!=restoration or tooling.get('baseline_archive_sha256')!=OLD_PIPEWIRE_ARCHIVE or tooling.get('baseline_record_sha256')!=OLD_PIPEWIRE_RECORD or tooling.get('frozen_source_sha256')!=transport_native.SOURCE_SHA or
+            tooling.get('prepared_sha256')!=digest(transport_native.PREPARED) or tooling.get('build_job_sha256')!=digest(transport_native.LOG/(transport_native.JOB+'.job.json')) or tooling.get('build_exit_sha256')!=digest(transport_native.LOG/(transport_native.JOB+'.exit')) or tooling.get('compiled_stage')!=compiled or tooling.get('direct_elf_closure')!=closure):
+        raise ValueError('Actual unchanged compile2/restoration/separate owned tools source proof required')
+    source_inputs=tooling.get('source_inputs',{})
+    minimum={'scripts/build/phase2/pipewire_audio_tools_install.sh','scripts/build/phase2/pipewire_audio_tools_check.sh','scripts/build/phase2/pipewire_base_restore.py'}
+    if not isinstance(source_inputs,dict) or not minimum<=set(source_inputs):raise ValueError('Actual tools producer source closure required')
+    for name,sha in source_inputs.items():
+        archive_payload.canonical(name,absolute=False)
+        if not name.startswith('scripts/build/') or Path(name).suffix not in ('.py','.sh') or not isinstance(sha,str) or not archive_payload.HASH.fullmatch(sha) or digest(R/name)!=sha:raise ValueError('Actual tools source bytes changed')
+
+    if not expected or expected!=digest(transport) or added.get('/usr/bin/pw-cat',{}).get('after',{}).get('sha256')!=expected or removed.get('/usr/bin/pw-cat',{}).get('after') is not None:raise ValueError('Actual restored absence then new owned native pw-cat required')
+    return {'failed_revision2_sha256':digest(failed),'failed_revision2_archive_sha256':FAILED_PIPEWIRE_ARCHIVE,'restore':restore,'tools':tools,
+        'restore_receipt_sha256':digest(L/'pipewire-base-restore-1.json'),
+        'tools_receipt_sha256':digest(L/'pipewire-audio-tools-install-1.json'),
+        'record_sha256':digest(records['pipewire-audio-tools'][0]),'base_record_sha256':digest(old)}
 
 
 def old_failure(source,prefix):
