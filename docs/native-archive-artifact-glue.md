@@ -11,6 +11,10 @@ Public certificate inspection copies only packet-checked public bytes into a new
 isolated temporary GPG home, checks actual Ed25519 primary fingerprint/lifetime
 against independent pins, and removes that temporary public-only context.
 
+The [current MVP operator handoff](package-preview-mvp-handoff.md) provides the
+projection2/optional7 command, intentionally pending request/review/portal
+templates, and the remaining actual image-input prerequisites.
+
 ## Unsigned flat repository
 
 After actual native archives/installed records and image projection exist, in
@@ -30,6 +34,7 @@ cd /opt/toddy-build
 python3 -I scripts/build/phase2/archive_metadata.py \
   --projection /mnt/lfs/sources/stage/toddy-image-projection-2/projection.json \
   --projection /mnt/lfs/sources/stage/toddy-image-projection-2/live-projection.json \
+  --projection /mnt/lfs/sources/stage/toddy-optional-projection-1/optional-projection.json \
   --additional-components /mnt/lfs/sources/stage/toddy-image-projection-2/additional-components.json \
   --acquisition-record /var/log/toddy/packages/toddy-agent_0.2.0-1+toddy1_all.json \
   --acquisition-record /var/log/toddy/packages/toddy-executor_0.2.0-1+toddy1_all.json \
@@ -37,7 +42,7 @@ python3 -I scripts/build/phase2/archive_metadata.py \
   --acquisition-record /var/log/toddy/packages/llama-cpp_0.9.0-1+toddy1_amd64.json \
   --issued-unix "$ISSUED_UNIX" --expires-unix "$EXPIRES_UNIX" \
   --capacity-scope native-target \
-  --output /mnt/lfs/sources/stage/toddy-native-archive-export-1
+  --output /mnt/lfs/sources/stage/toddy-package-export-2
 ```
 
 The coordinator supplies actual UTC Unix seconds: current issue time, expiry

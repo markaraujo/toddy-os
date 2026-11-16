@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "scope": "native-package-source-license-review",
+  "source_commit": null,
+  "packages": [],
+  "source_assets": [],
+  "project_source_assets": [],
+  "inventory_assets": [],
+  "license_assets": [],
+  "reviewed": false
+}

@@ -1,0 +1,16 @@
+{
+  "scope": "planning-only-not-public-metadata",
+  "intended_tag": "v0.2.0-preview.1",
+  "published_release_url": null,
+  "prepared_receipt_sha256": null,
+  "actual_github_response_path": null,
+  "actual_github_response_sha256": null,
+  "independent_public_download_directory": null,
+  "public_asset_urls_hashes_sizes": [],
+  "portal_deployment_url": null,
+  "portal_deployment_verified": false,
+  "iso": "not-included",
+  "g2": "pending",
+  "native_acquisition": "not-advertised",
+  "physical_validation": "pending"
+}
