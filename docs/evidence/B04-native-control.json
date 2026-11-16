@@ -1,0 +1,99 @@
+{
+  "all_selected_exits_zero": true,
+  "checks": [
+    {
+      "name": "direct-unprivileged-helper-and-ungranted-ipc-refused"
+    },
+    {
+      "name": "inactive-default-policy-refused"
+    },
+    {
+      "exit": 127,
+      "name": "owner-auth-grant-wrong-password",
+      "prompts": 1,
+      "raw_tty_retained": false
+    },
+    {
+      "exit": -2,
+      "name": "owner-auth-grant-cancel",
+      "prompts": 1,
+      "raw_tty_retained": false
+    },
+    {
+      "exit": 0,
+      "name": "owner-auth-grant-success",
+      "prompts": 1,
+      "raw_tty_retained": false
+    },
+    {
+      "name": "authenticated-service-start-stop-native-postconditions"
+    },
+    {
+      "name": "authenticated-network-off-on-native-postconditions"
+    },
+    {
+      "name": "root-config-postcondition-duplicate-no-replay-wrong-user-denial"
+    },
+    {
+      "exit": 0,
+      "name": "owner-auth-revoke-success",
+      "prompts": 1,
+      "raw_tty_retained": false
+    },
+    {
+      "name": "authenticated-revoke-blocks-previous-plan"
+    },
+    {
+      "exit": 0,
+      "name": "owner-auth-grant-success",
+      "prompts": 1,
+      "raw_tty_retained": false
+    },
+    {
+      "name": "actual-systemd-cgroup-detached-child-stop-and-uncertain-no-replay"
+    },
+    {
+      "exit": 0,
+      "name": "owner-auth-revoke-success",
+      "prompts": 1,
+      "raw_tty_retained": false
+    },
+    {
+      "name": "audit-excludes-credential-arguments-and-config-content"
+    }
+  ],
+  "scope": "Disposable B04 native systemd/system-bus/cgroup/structured-service/network/fixed-owner-helper integration; inactive test subject gets an explicit fixture challenge rule. Active GNOME default-policy/session-grant and installed package lifecycle still pending. No G2/physical acceptance.",
+  "source_sha256": {
+    "command_child.py": "2b0e56cca8b84fb1e824761961916960935025fe46d593cbc9d6ef28406a5d4b",
+    "io.github.markaraujo.Toddy.Executor.conf": "fbbe8b719b6f438fe58cf07bd1e13d95cd63f709a7cd6907ebad7abfa5e6c93c",
+    "io.github.markaraujo.Toddy.Executor1.xml": "893f284ca0c94675b443accc5de1da4f4f84411e7b6b4ccae238a813aab6b12e",
+    "io.github.markaraujo.Toddy.Owner.policy": "31d81de2d26aae73fb46b2680af866359e52927f79077893c0016801ad28e9d0",
+    "linux_identity.py": "3aafb9131f81aae4bf72bbac7ac799a5ba51f519fc98e1b73679970f683db755",
+    "native_backends.py": "2d7e0c5f27c6f4b2ac942638b691a9037c0d59d971520a69c630888f80f07bc4",
+    "operations.py": "e6d2c3aa308babb07bdba21c2c2ec37f103ebb0a3b34a4c9d983ad379a3e34f0",
+    "owner_policy.py": "16d9c0eb58c8101808001519713b2d6fea0ba7ccfb214eaeb78af7f20cbb0ee3",
+    "policy.py": "65559463c74781ca8db83d6e97b8847deb891ea1882177f2ce7f157a58befeb2",
+    "service.py": "a1ba134b003153e844982db6dea80d60e5dc70faf5fca20027737ae2540fe6c2",
+    "store.py": "ccc356f6a1e238fb083f7691548a581d90e0b43ba5c973c58c617cfcb10f0a45",
+    "toddy-executor.service": "e91e0ee9eebd92de111867a2901205f991afe6a9dda043ed605e28e9994d14b2"
+  },
+  "job": "native-executor-control-1",
+  "source_commit": "755139513d132b1e96726f9e912c627e2d01e46b",
+  "probe_sha256": "93065eac5509b3894ceab9f78d5ee7f18ccac4e9691cdf54a6e608651f92ced5",
+  "inputs_sha256": "c5182a92a2f170c5567a65c2d48b5b7163d8ef9dd86912fc85af15ba392fe428",
+  "report_sha256": "4a0abab09711a5de2b77cdd0518fbe112db2f79d7837629ed502b8f76b985ca7",
+  "actual_container_exit": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-11-16T11:38:35.990328011Z",
+    "FinishedAt": "2026-11-16T11:38:51.971736518Z"
+  },
+  "backing_unchanged": true
+}

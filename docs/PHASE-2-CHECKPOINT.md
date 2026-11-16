@@ -18,12 +18,15 @@ Checks: affected executor/schema/policy tests, then actual system bus/systemd/
 owner-authentication/Stop/revocation postconditions. Reuse unchanged foundation,
 provider and desktop evidence. Exact native controller/log recorded before launch.
 Host owner/control20 and combined repository412 tests passed. Profile revisions
-and setup intent source slices integrated without acceptance claims. Exact next:
-`python3 scripts/host/phase2_native_executor_control.py --generation 1`.
-Context `.local/phase2/native-executor-control-1`; inspect result.json and actual
-container/process/log before any continuation. Never replay generation1.
-Active GNOME default policy/session grants and installed-package lifecycle remain
-pending even if the headless explicit-challenge fixture passes.
+and setup intent source slices integrated without acceptance claims. Actual
+native-executor-control-1 passed all14 selected checks, QEMU exit0, backing
+unchanged; [evidence](evidence/B04-native-control.json). No guest writer remains.
+Never replay generation1. The source-stage root service actually handled owner
+PAM grant/revoke, wrong password/auth cancellation, structured systemd/network,
+config/duplicate/wrong-UID and detached-child cgroup loss/restart/no replay.
+Next: qualify the fixed helper with default active local policy/session grants
+and native package install/upgrade lifecycle in a NEW context. Unprivileged
+broker routing remains due. B04 is incomplete; no G2/ISO claim.
 
 ## Last verified runtime and jobs
 
