@@ -15,8 +15,8 @@ import stat
 APP_ID='io.github.markaraujo.Toddy'
 PACKAGE='toddy-assistant'
 MODULES={
-    'ui':('app.py','acquisition.py','bridge.py','cli.py','credentials.py','memory.py','memory_state.py','voice.py','model.py','shortcut.py','task_state.py'),
-    'setup':('pending.py','installer_handoff.py','acquisition.py','releases.py','platform.py','runtime_compat.py',
+    'ui':('app.py','onboarding.py','acquisition.py','bridge.py','cli.py','credentials.py','memory.py','memory_state.py','voice.py','model.py','shortcut.py','task_state.py'),
+    'setup':('onboarding.py','pending.py','installer_handoff.py','acquisition.py','releases.py','platform.py','runtime_compat.py',
              'acquisition_journal.py','native_backend.py','native_acquire.py'),
     'shared':('json.py','openpgp.py'),
     'connections':('secret_store.py',),

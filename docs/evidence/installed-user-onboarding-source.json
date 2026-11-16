@@ -1,0 +1,40 @@
+{
+  "scope": "explicit installed-user onboarding source",
+  "native_acceptance": false,
+  "host_packages_or_guest_mutation": false,
+  "real_provider_or_keyring_contact": false,
+  "real_model_network_or_inference": false,
+  "checks": [
+    {
+      "command": "python3 -m unittest tests.test_onboarding tests.test_ui_onboarding tests.test_ui_acquisition -q",
+      "tests": 18,
+      "exit": 0,
+      "seconds": 0.016
+    },
+    {
+      "command": "/usr/bin/python3 tests/fixtures/native-acquisition/panel.py --locale en",
+      "exit": 0,
+      "scope": "actual GTK acquisition+onboarding panel construction; unavailable source fixture, no backend action"
+    },
+    {
+      "command": "/usr/bin/python3 tests/fixtures/native-acquisition/panel.py --locale pt-BR",
+      "exit": 0,
+      "scope": "actual GTK acquisition+onboarding panel construction; unavailable source fixture, no backend action"
+    },
+    {
+      "command": "make check",
+      "tests": 795,
+      "exit": 0,
+      "seconds": 13.43
+    },
+    {
+      "command": "python3 -m unittest tests.test_assistant_package -q",
+      "tests": 6,
+      "exit": 0,
+      "seconds": 0.331,
+      "scope": "final profile-label/sync and installed namespace module packaging checks after full suite"
+    }
+  ],
+  "proofs": "Synthetic service/keyring/model bytes prove ordering, definite preapply cleanup, unknown committed apply reconciliation without replay, no overwrite on selection CAS change, lock serialization, drift refusal, explicit model license/network consent and reuse without network. Actual native transport/provider/local task proof remains coordinator scope.",
+  "next_native": "Stage exact new assistant/agent source; actual installed owner activation+protected-store+Service1 CAS, preverified pinned B03 model reuse and local task Stop; no paid provider credentials inferred."
+}

@@ -133,6 +133,8 @@ class SetupWindow(Adw.ApplicationWindow):
         page.append(self.status)
         from .acquisition import panel
         self.acquisition = panel(self,page)
+        from .onboarding import panel as onboarding_panel
+        self.onboarding = onboarding_panel(self,page)
         self._credential_form(page)
         self._shortcut_form(page)
 
@@ -498,9 +500,12 @@ class SetupWindow(Adw.ApplicationWindow):
         page.append(group)
 
     def _close(self, *_):
-        if not self.acquisition.close():
+        if self.acquisition.busy or self.acquisition.stopping or self.onboarding.busy:
             self.toast.add_toast(Adw.Toast.new(self.model.text('acquire.close_wait')))
             return True
+        self.acquisition.close()
+        self.onboarding.clear_password()
+        self.onboarding.close()
         if hasattr(self,'voice'):self.voice.close()
         self.password.set_text('')
         self.credentials.close()
@@ -508,6 +513,7 @@ class SetupWindow(Adw.ApplicationWindow):
         return False
 
     def _task_changed(self):
+        if hasattr(self,'onboarding'):self.onboarding.sync()
         if hasattr(self,'memory'):self.memory.sync()
         client = self.client
         state = client.state

@@ -2,7 +2,10 @@
 from pathlib import Path
 import shutil
 
-from download import AcquisitionError
+try:
+    from .download import AcquisitionError
+except ImportError:
+    from download import AcquisitionError
 
 
 def choose(mode, *, model=None, cpu_flags=(), memory_bytes=0, available_memory_bytes=None, cache=None,

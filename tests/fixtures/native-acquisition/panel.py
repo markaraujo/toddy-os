@@ -11,6 +11,7 @@ gi.require_version('Gtk','4.0');gi.require_version('Adw','1')
 from gi.repository import Gtk,Adw,GLib
 from runtime.ui.model import SetupModel
 from runtime.ui.acquisition import panel
+from runtime.ui.onboarding import panel as onboarding_panel
 
 parser=argparse.ArgumentParser();parser.add_argument('--locale',choices=['en','pt-BR'],default='en');args=parser.parse_args()
 Gtk.init();Adw.init()
@@ -20,6 +21,8 @@ with tempfile.TemporaryDirectory() as temporary:
     owner=Window();owner.model=model
     page=Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
     controller=panel(owner,page)
+    onboarding=onboarding_panel(owner,page)
+    assert onboarding.status=='idle'
     window=Adw.Window(title='Toddy source acquisition panel test',default_width=440,default_height=600)
     window.set_content(page);window.present()
     # Deterministic unavailable source fixture; never inspect user's keyring or
@@ -31,5 +34,6 @@ with tempfile.TemporaryDirectory() as temporary:
         GLib.MainContext.default().iteration(True)
     assert controller.status=='unavailable' and controller.close()
     assert window.get_width()>=360
+    assert onboarding.close();onboarding.clear_password()
     window.close();model.close()
 print('actual GTK panel/offline unavailable source fixture passed; no native acquisition acceptance')

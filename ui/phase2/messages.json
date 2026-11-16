@@ -2184,8 +2184,8 @@
       "severity": "info",
       "humor_allowed": false,
       "text": {
-        "en": "Wait for the package operation to reach a safe boundary, or explicitly request Stop.",
-        "pt-BR": "Aguarde a operação de pacotes chegar a um limite seguro ou solicite a interrupção explicitamente."
+        "en": "Wait for the current setup operation to reach a safe boundary, or explicitly request Stop where available.",
+        "pt-BR": "Aguarde a operação de configuração atual chegar a um limite seguro ou solicite a interrupção explicitamente quando disponível."
       }
     },
     {
@@ -2266,6 +2266,356 @@
       "text": {
         "en": "Installing native packages. Stop waits for this transaction to finish safely.",
         "pt-BR": "Instalando pacotes nativos. A interrupção aguarda esta transação terminar com segurança."
+      }
+    },
+    {
+      "id": "onboard.title",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Set up an API or local backend",
+        "pt-BR": "Configurar uma API ou backend local"
+      }
+    },
+    {
+      "id": "onboard.notice",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Packages, service activation and provider/model setup are separate choices. Start the user service only when you choose Activate. This grants no administrator policy and makes no provider request.",
+        "pt-BR": "Pacotes, ativação do serviço e configuração de provedor/modelo são escolhas separadas. Inicie o serviço do usuário somente ao escolher Ativar. Isso não concede política administrativa nem faz requisição ao provedor."
+      }
+    },
+    {
+      "id": "onboard.activate",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Activate installed user agent service",
+        "pt-BR": "Ativar serviço do agente instalado para o usuário"
+      }
+    },
+    {
+      "id": "onboard.model_id",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Provider model identifier",
+        "pt-BR": "Identificador do modelo no provedor"
+      }
+    },
+    {
+      "id": "onboard.remote_consent",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "I choose this API and protected credential. Later remote tasks require separate consent and may incur provider charges.",
+        "pt-BR": "Escolho esta API e credencial protegida. Tarefas remotas posteriores exigem consentimento separado e podem gerar cobranças do provedor."
+      }
+    },
+    {
+      "id": "onboard.bind_api",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Save protected API connection and apply to selected profile",
+        "pt-BR": "Salvar conexão de API protegida e aplicar ao perfil selecionado"
+      }
+    },
+    {
+      "id": "onboard.local_notice",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Install the optional local runtime first. Review the pinned model size/license and actual CPU/memory before downloading or reusing exact verified weights. No cloud fallback.",
+        "pt-BR": "Instale primeiro o motor local opcional. Revise o tamanho e licença do modelo fixado e a CPU/memória reais antes de baixar ou reutilizar pesos exatos verificados. Sem fallback para a nuvem."
+      }
+    },
+    {
+      "id": "onboard.review_model",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Review local model and resources",
+        "pt-BR": "Revisar modelo local e recursos"
+      }
+    },
+    {
+      "id": "onboard.existing_path",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Absolute path of existing private verified model",
+        "pt-BR": "Caminho absoluto do modelo privado verificado existente"
+      }
+    },
+    {
+      "id": "onboard.license_consent",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "I reviewed and accept the displayed model license.",
+        "pt-BR": "Revisei e aceito a licença do modelo exibida."
+      }
+    },
+    {
+      "id": "onboard.network_consent",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "I approve this exact model download and its displayed size.",
+        "pt-BR": "Aprovo o download deste modelo exato e seu tamanho exibido."
+      }
+    },
+    {
+      "id": "onboard.download",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Download and verify pinned model",
+        "pt-BR": "Baixar e verificar modelo fixado"
+      }
+    },
+    {
+      "id": "onboard.local_consent",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "I choose this verified local model for the selected profile.",
+        "pt-BR": "Escolho este modelo local verificado para o perfil selecionado."
+      }
+    },
+    {
+      "id": "onboard.bind_local",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Verify weights and apply local backend",
+        "pt-BR": "Verificar pesos e aplicar backend local"
+      }
+    },
+    {
+      "id": "onboard.idle",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "No backend action requested. You can continue using the desktop offline.",
+        "pt-BR": "Nenhuma ação de backend solicitada. Você pode continuar usando o desktop offline."
+      }
+    },
+    {
+      "id": "onboard.working",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Backend setup in progress. No automatic retry or cloud fallback.",
+        "pt-BR": "Configuração do backend em andamento. Sem repetição automática nem fallback para a nuvem."
+      }
+    },
+    {
+      "id": "onboard.activation_requested",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "User service activation requested. Recheck service readiness before configuring the profile.",
+        "pt-BR": "Ativação do serviço do usuário solicitada. Verifique a disponibilidade do serviço antes de configurar o perfil."
+      }
+    },
+    {
+      "id": "onboard.configured",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Selected profile configured. No provider request, model inference or root grant was performed.",
+        "pt-BR": "Perfil selecionado configurado. Nenhuma requisição ao provedor, inferência de modelo ou concessão root foi realizada."
+      }
+    },
+    {
+      "id": "onboard.unknown",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Profile application reply is uncertain. Keep this binding and reconcile; never automatically apply it again.",
+        "pt-BR": "A resposta da aplicação do perfil é incerta. Preserve esta ligação e reconcilie; nunca a aplique novamente automaticamente."
+      }
+    },
+    {
+      "id": "onboard.cleanup_required",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "This unfinished binding needs explicit reconciliation or cleanup. Existing profile settings remain authoritative.",
+        "pt-BR": "Esta ligação incompleta exige reconciliação ou limpeza explícita. As configurações existentes do perfil permanecem como referência."
+      }
+    },
+    {
+      "id": "onboard.cleaned",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Unused connection binding cleaned. Existing profile was preserved.",
+        "pt-BR": "Ligação de conexão não utilizada removida. O perfil existente foi preservado."
+      }
+    },
+    {
+      "id": "onboard.unavailable",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Backend setup is unavailable or failed safely. Check required packages, service, protected store and resources; reconcile an unfinished binding before retrying.",
+        "pt-BR": "A configuração do backend está indisponível ou falhou com segurança. Verifique pacotes necessários, serviço, armazenamento protegido e recursos; reconcilie uma ligação incompleta antes de tentar novamente."
+      }
+    },
+    {
+      "id": "onboard.acquisition_consent_required",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Pinned model reviewed. Download requires separate license and network consent.",
+        "pt-BR": "Modelo fixado revisado. O download exige consentimento separado de licença e rede."
+      }
+    },
+    {
+      "id": "onboard.verified_existing",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Existing exact model verified. No download or inference started.",
+        "pt-BR": "Modelo exato existente verificado. Nenhum download ou inferência foi iniciado."
+      }
+    },
+    {
+      "id": "onboard.verified",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Model download verified. Applying the local backend remains a separate choice.",
+        "pt-BR": "Download do modelo verificado. Aplicar o backend local continua sendo uma escolha separada."
+      }
+    },
+    {
+      "id": "onboard.canceled",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Model download stopped; the private partial remains available for an explicit resume.",
+        "pt-BR": "Download do modelo interrompido; a parte privada permanece disponível para retomada explícita."
+      }
+    },
+    {
+      "id": "onboard.deferred",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Invitation deferred. Desktop remains usable; existing configured profiles were preserved.",
+        "pt-BR": "Convite adiado. O desktop permanece utilizável; perfis configurados existentes foram preservados."
+      }
+    },
+    {
+      "id": "onboard.progress",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "{done} of {total} model bytes received.",
+        "pt-BR": "{done} de {total} bytes do modelo recebidos."
+      }
+    },
+    {
+      "id": "onboard.local_detail",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Pinned model: {size} bytes. License: {license}\nReview: {url}\nSHA-256: {sha}",
+        "pt-BR": "Modelo fixado: {size} bytes. Licença: {license}\nRevise: {url}\nSHA-256: {sha}"
+      }
+    },
+    {
+      "id": "onboard.button_stop",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Stop model download",
+        "pt-BR": "Interromper download do modelo"
+      }
+    },
+    {
+      "id": "onboard.button_reconcile",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Reconcile profile binding",
+        "pt-BR": "Reconciliar ligação do perfil"
+      }
+    },
+    {
+      "id": "onboard.button_cleanup",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Clean unused binding",
+        "pt-BR": "Limpar ligação não utilizada"
+      }
+    },
+    {
+      "id": "onboard.button_later",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Do this later",
+        "pt-BR": "Fazer depois"
+      }
+    },
+    {
+      "id": "onboard.profile_selected",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Apply target: selected profile {profile}.",
+        "pt-BR": "Destino da aplicação: perfil selecionado {profile}."
+      }
+    },
+    {
+      "id": "onboard.profile_unavailable",
+      "context": "backend-onboarding",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "No selected profile is currently available. Explicitly activate the installed service and wait for readiness.",
+        "pt-BR": "Nenhum perfil selecionado está disponível no momento. Ative explicitamente o serviço instalado e aguarde sua disponibilidade."
       }
     }
   ]
