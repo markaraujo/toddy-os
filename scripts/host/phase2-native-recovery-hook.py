@@ -65,12 +65,18 @@ bad={**initial,'enabled':False}
 arguments={'config_id':'managed-preview','configuration':bad,'expected_sha256':digest(original)}
 assert transaction('breakconfig','managed_config_apply',arguments)['state']=='completed'
 failed=run(['systemctl','restart',unit],check=False)
-assert failed.returncode!=0 and not reachable()
+for _ in range(40):
+    if run(['systemctl','is-failed',unit],check=False).stdout.strip()=='failed':break
+    time.sleep(.05)
+assert run(['systemctl','is-failed',unit],check=False).stdout.strip()=='failed' and not reachable(),'Broken consumer did not reach failed state'
 rescue=manager.rescue_manifest('breakconfig')
 assert Path(rescue['backup_file']).read_bytes()==original and rescue['backup_sha256']==digest(original)
 restored=transaction('restoreconfig','managed_config_restore',{'config_id':'managed-preview','revision_id':'breakconfig','expected_sha256':digest(target.read_bytes())})
 assert restored['state']=='completed' and target.read_bytes()==original
 assert transaction('restartconsumer','service_operation',{'action':'restart','unit':unit})['state']=='completed'
+for _ in range(40):
+    if reachable():break
+    time.sleep(.05)
 assert reachable()
 passed('native-broken-consumer-config-rollback-restores-service-and-manual-backup',consumer='loopback-only disposable qualification',backup_sha256=rescue['backup_sha256'])
 # A trusted fixture child uses the actual durable store and manager, then dies

@@ -12,6 +12,7 @@ import signal
 import subprocess
 import time
 import zlib
+ACTIVE_REPORT={}
 
 
 def run(argv, timeout=30, check=True):
@@ -30,6 +31,7 @@ def emit(report):
 
 
 def main():
+    global ACTIVE_REPORT
     assert os.geteuid()==0 and os.uname().release=='7.1.8-toddy' and Path('/proc/1/comm').read_text().strip()=='systemd'
     assert run(['systemd-detect-virt','--vm']).stdout.strip() in ('kvm','qemu')
     device=run(['findmnt','-n','-o','SOURCE','/']).stdout.strip();assert re.fullmatch('/dev/[a-z0-9]+',device)
@@ -77,6 +79,7 @@ def main():
     assert r.returncode==0,'Ephemeral credential creation failed'
     report={'scope':'Trusted root-created native PAM/logind local session, default Polkit owner policy with real administrator password, session grants and dpkg install/upgrade/revoke. No authorization-rule override or real console/GDM login claim; graphical UI/physical/signed release acceptance separate.',
             'source_sha256':hashes,'all_selected_exits_zero':False,'checks':[]}
+    ACTIVE_REPORT=report
     def passed(name,**data):report['checks'].append({'name':name,**data});print('TODDY_B04_STAGE',name,flush=True)
     policy=Path('/run/toddy-executor-owner-pam');policy.mkdir(mode=0o755)
     (policy/'toddy-session').write_text('account required pam_unix.so\nsession required pam_systemd.so\n')
@@ -255,5 +258,5 @@ for method in ['PlanOperation','DispatchOperation']:
 if __name__=='__main__':
     try:main()
     except Exception as error:
-        emit({'all_selected_exits_zero':False,'error_type':type(error).__name__,'error':str(error)})
+        emit({**ACTIVE_REPORT,'all_selected_exits_zero':False,'error_type':type(error).__name__,'error':str(error)})
         raise

@@ -1,0 +1,10 @@
+{
+  "all_selected_exits_zero": false,
+  "error": "",
+  "error_type": "AssertionError",
+  "job": "native-executor-recovery-1",
+  "backing_unchanged": true,
+  "scope": "Fixture incorrectly required systemctl restart nonzero for a Type=simple consumer that fails asynchronously. Config IPC reached completed; no rollback/crash/drift acceptance.",
+  "cause": "Fixture observes launch return instead of final systemd failed state",
+  "correction": "Poll actual failed state and absent listener; wait restored listener readiness separately"
+}
