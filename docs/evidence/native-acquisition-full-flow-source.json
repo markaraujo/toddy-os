@@ -1,0 +1,31 @@
+{
+  "scope": "source-only full-flow prerequisite audit/procedure/read-only assembler",
+  "runtime_or_package_changes": false,
+  "native_cases_executed": false,
+  "second_version_archive_or_signatures_created": false,
+  "qualification_or_publication_claimed": false,
+  "checks": [
+    {
+      "command": "python3 -m unittest tests.test_native_full_flow_qualification tests.test_native_acquisition_qualification tests.test_native_cpu_denial_qualification tests.test_native_acquisition -q",
+      "tests": 41,
+      "exit": 0,
+      "seconds": 0.145
+    },
+    {
+      "command": "make check",
+      "tests": 916,
+      "exit": 0,
+      "seconds": 20.383,
+      "note": "Full source suite before final case-session/known-cursor/semantic guards; final focused source suite above validates those final edits."
+    }
+  ],
+  "source_failure_correction": "Empty reconnect/refusal fixture exposed a missing helper-code binding KeyError; changed to explicit fixed binding rejection before helper/result validation. No native execution occurred.",
+  "concrete_prerequisites": [
+    "Bootstrap helper has no upgrade/remove action and rejects installed mismatched version.",
+    "Actual signed allowed native revision2 archive/record and separate authenticated lifecycle operation are mandatory.",
+    "Original revision1 set restored only via NEW explicit production-helper operation after removal; no replay/downgrade shortcut.",
+    "Actual absent-agent signed-preview GTK4/GDM/Polkit/default-helper cases and protected execution/postcondition/native PNG artifacts remain missing until parent executes them."
+  ],
+  "evidence_reuse": "B03 exact runtime and strict real masked-CPU component proof can support only local compatibility checks. Old B04/B05 custom package/TTY/component proof cannot be renamed into current full-flow UI/package acceptance.",
+  "native_next": "Parent executes fixed6case procedure in disposable installed overlays with same code/trust/pkg pins, real signed artifact2 upgrade/remove/reinstall recovery and actual before/after/authorization/UI proof. Assembler refuses missing cases/artifacts and never runs a mutation."
+}
