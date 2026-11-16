@@ -1,11 +1,12 @@
 """Owner-memory UI boundaries, no database, model, dconf or secret service."""
 import fcntl
+import hashlib
 import json
 import os
 from pathlib import Path
 import tempfile
 import unittest
-from runtime.ui.memory import page,sealed_local_backup
+from runtime.ui.memory import page,sealed_local_backup,reviewed_document,reviewed_preferences
 
 class MemoryUI(unittest.TestCase):
  def test_memory_page_is_bounded_and_profile_bound(self):
@@ -32,5 +33,22 @@ class MemoryUI(unittest.TestCase):
    finally:os.close(descriptor)
    link=Path(temporary)/'link';link.symlink_to(source)
    with self.assertRaises(OSError):sealed_local_backup(link)
+
+ def test_readonly_document_requires_full_seals_exact_hash_size_and_bounded_valid_text(self):
+  fd=os.memfd_create('test-reviewed-notes',os.MFD_CLOEXEC|os.MFD_ALLOW_SEALING)
+  self.addCleanup(os.close,fd);os.fchmod(fd,0o600)
+  raw=b'Private plain <b>notes</b>\n';os.write(fd,raw)
+  snapshot={'user_document_bytes':len(raw),'user_document_sha256':hashlib.sha256(raw).hexdigest()}
+  with self.assertRaises(ValueError):reviewed_document(fd,snapshot)
+  fcntl.fcntl(fd,fcntl.F_ADD_SEALS,fcntl.F_SEAL_SEAL|fcntl.F_SEAL_WRITE|fcntl.F_SEAL_GROW|fcntl.F_SEAL_SHRINK)
+  self.assertEqual(reviewed_document(fd,snapshot),raw.decode())
+  with self.assertRaises(ValueError):reviewed_document(fd,{**snapshot,'user_document_sha256':'0'*64})
+  with self.assertRaises(ValueError):reviewed_document(fd,{**snapshot,'user_document_bytes':len(raw)+1})
+
+ def test_reviewed_preferences_rejects_invalid_ambiguous_or_excessive_maps(self):
+  self.assertEqual(reviewed_preferences('{"language":"Portuguese"}'),{'language':'Portuguese'})
+  for value in ('[]','{"language":1}','{"language":""}','{"A":"text"}','{"x":"first","x":"second"}',
+                json.dumps({'p-'+str(i):'text' for i in range(33)}),json.dumps({'language':'a'*4097})):
+   with self.subTest(value=value[:40]),self.assertRaises(ValueError):reviewed_preferences(value)
 
 if __name__=='__main__':unittest.main()

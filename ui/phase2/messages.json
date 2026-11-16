@@ -1487,6 +1487,66 @@
         "en": "Source: {kind} — {source}",
         "pt-BR": "Origem: {kind} — {source}"
       }
+    },
+    {
+      "id": "memory.read_document",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Read current USER.md for explicit review",
+        "pt-BR": "Ler USER.md atual para revisão explícita"
+      }
+    },
+    {
+      "id": "memory.review_notice",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The read-only document is private untrusted text. Reading does not convert it. Enter only the preferences you choose as a JSON object, for example {{\"language\":\"Portuguese\"}}. This replaces the preference map; omitted preferences are deleted. Up to 32 entries, 4096 UTF-8 bytes each. Prior notes remain in profile revisions.",
+        "pt-BR": "O documento somente leitura é texto privado não confiável. Ler não o converte. Digite apenas as preferências escolhidas como um objeto JSON, por exemplo {{\"language\":\"Português\"}}. Isso substitui o mapa de preferências; preferências omitidas são excluídas. Até 32 entradas, com 4096 bytes UTF-8 cada. As notas anteriores permanecem nas revisões do perfil."
+      }
+    },
+    {
+      "id": "memory.review_consent",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "I reviewed this exact document and choose to replace saved preferences with the JSON above.",
+        "pt-BR": "Revisei este documento exato e escolho substituir as preferências salvas pelo JSON acima."
+      }
+    },
+    {
+      "id": "memory.review_apply",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Apply reviewed preferences",
+        "pt-BR": "Aplicar preferências revisadas"
+      }
+    },
+    {
+      "id": "memory.document_loaded",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Current document verified and shown. No preferences changed. Review and explicitly confirm conversion.",
+        "pt-BR": "Documento atual verificado e exibido. Nenhuma preferência alterada. Revise e confirme explicitamente a conversão."
+      }
+    },
+    {
+      "id": "memory.review_invalid",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Enter a JSON object of up to 32 lowercase preference IDs and nonempty text values. Conversion was not sent.",
+        "pt-BR": "Digite um objeto JSON com até 32 IDs de preferência em minúsculas e valores de texto não vazios. A conversão não foi enviada."
+      }
     }
   ]
 }

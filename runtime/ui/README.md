@@ -163,3 +163,17 @@ The actual-host `tests/fixtures/broker-service/memory_ui.py --locale en|pt-BR`
 fixture checks inspect/save/delete, private export, explicit restore with deletion
 protection and profile isolation through real GTK and the actual broker on a
 private bus. These source/host checks are not guest or provider acceptance.
+
+Manual USER review is an explicit separate workflow: read a <=64KiB UTF-8
+document through ExportMemoryDocument, require all FD seals and exact page hash
+and size, show literal text read-only, then let the owner enter a bounded JSON
+preference map (<=32 entries). Reading never converts notes. The unchecked
+confirmation states that omitted preferences are deleted. Apply binds the exact
+reviewed document hash, profile revision and memory generation; stale state
+fails closed. Invalid/duplicate JSON sends no mutation. Old notes remain in
+immutable profile revisions, and deletion tombstones still prevent revival.
+The review UI clears document text/consent after success and profile changes.
+The actual-host memory_review_ui.py fixture checks plain private notes, no write
+on read/invalid JSON and exactly one explicit hash-bound conversion in EN/PT.
+Oversized, unsealed, changed or invalid documents are refused, never silently
+truncated into a reviewed conversion. Native guest qualification remains pending.

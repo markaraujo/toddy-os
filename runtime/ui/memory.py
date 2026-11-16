@@ -1,5 +1,7 @@
 """Bounded explicit-owner memory controls over authenticated Service1 only."""
 import fcntl
+import hashlib
+import stat
 import json
 import os
 from pathlib import Path
@@ -11,6 +13,7 @@ from gi.repository import Gio,GLib,Gtk
 from .bridge import OBJECT,INTERFACE
 from .model import open_profile_import,save_profile_export
 from .task_state import body,REVISION
+from ..shared.json import strict_json
 
 
 def sealed_local_backup(path):
@@ -43,9 +46,34 @@ def page(encoded,profile):
         if not isinstance(row,dict) or not isinstance(row.get('id'),str) or not re.fullmatch(r'[a-z][a-z0-9-]{0,63}',row['id']) or \
                 row['id'] in seen or not isinstance(row.get('text'),str) or len(row['text'].encode('utf-8'))>4096 or \
                 row.get('kind') not in ('document','preference') or \
-                any(not isinstance(row.get(key),str) or len(row[key])>512 for key in ('source_kind','source_ref','source_revision')):
+                any(not isinstance(row.get(key),str) or len(row[key].encode('utf-8'))>1024 for key in ('source_kind','source_ref','source_revision')):
             raise ValueError('invalid_memory_record')
         seen.add(row['id'])
+    return value
+
+
+def reviewed_document(descriptor,snapshot):
+    info=os.fstat(descriptor)
+    seals=fcntl.F_SEAL_SEAL|fcntl.F_SEAL_WRITE|fcntl.F_SEAL_GROW|fcntl.F_SEAL_SHRINK
+    if not stat.S_ISREG(info.st_mode) or info.st_uid!=os.getuid() or info.st_mode&0o077 or not 0<=info.st_size<=65536 or \
+            fcntl.fcntl(descriptor,fcntl.F_GET_SEALS)&seals!=seals:
+        raise ValueError('invalid_review_document')
+    data=os.pread(descriptor,65537,0)
+    if len(data)!=info.st_size or info.st_size!=snapshot.get('user_document_bytes') or \
+            hashlib.sha256(data).hexdigest()!=snapshot.get('user_document_sha256'):
+        raise ValueError('review_document_changed')
+    text=data.decode('utf-8')
+    if any(ord(char)<32 and char not in '\t\r\n' for char in text):raise ValueError('review_document_controls')
+    return text
+
+
+def reviewed_preferences(encoded):
+    if len(encoded.encode('utf-8'))>60000:raise ValueError('review_preferences_limit')
+    value=strict_json(encoded.encode('utf-8'))
+    if not isinstance(value,dict) or len(value)>32:raise ValueError('review_preferences_limit')
+    for key,text in value.items():
+        if not re.fullmatch(r'[a-z][a-z0-9-]{0,63}',key) or not isinstance(text,str) or not text or len(text.encode('utf-8'))>4096:
+            raise ValueError('review_preferences_schema')
     return value
 
 
@@ -72,7 +100,25 @@ class MemoryPanel(Gtk.Box):
             self.controls[name]=button;self.append(button)
         self.restore_consent=Gtk.CheckButton(label=self.text('memory.restore_consent'));self.append(self.restore_consent)
         self.restore_consent.connect('toggled',lambda *_:self.sensitivity())
+        self.reviewed=None
+        self.document_read=Gtk.Button(label=self.text('memory.read_document'))
+        self.document_read.connect('clicked',lambda *_:self.read_document());self.append(self.document_read)
+        self.document=Gtk.TextView(editable=False,cursor_visible=False,wrap_mode=Gtk.WrapMode.WORD_CHAR)
+        self.document_buffer=self.document.get_buffer()
+        document_scroll=Gtk.ScrolledWindow(min_content_height=100,max_content_height=240);document_scroll.set_child(self.document);self.append(document_scroll)
+        self.append(window._label(self.text('memory.review_notice').format()))
+        self.preferences=Gtk.TextView(monospace=True,wrap_mode=Gtk.WrapMode.WORD_CHAR)
+        self.preferences_buffer=self.preferences.get_buffer();self.preferences_buffer.set_text('{}')
+        prefs_scroll=Gtk.ScrolledWindow(min_content_height=100,max_content_height=200);prefs_scroll.set_child(self.preferences);self.append(prefs_scroll)
+        self.review_consent=Gtk.CheckButton(label=self.text('memory.review_consent'))
+        self.review_consent.connect('toggled',lambda *_:self.sensitivity());self.append(self.review_consent)
+        self.review_apply=Gtk.Button(label=self.text('memory.review_apply'))
+        self.review_apply.connect('clicked',lambda *_:self.apply_review());self.append(self.review_apply)
         self.sensitivity()
+
+    def clear_review(self):
+        self.reviewed=None
+        self.document_buffer.set_text('');self.preferences_buffer.set_text('{}');self.review_consent.set_active(False)
 
     def sync(self):
         client=self.window.client
@@ -80,6 +126,7 @@ class MemoryPanel(Gtk.Box):
         if identity!=self.identity:
             self.identity=identity;self.serial+=1;self.snapshot=None;self.rows=[];self.busy=False;self.reload_pending=False
             self.picker.set_model(Gtk.StringList.new([]));self.buffer.set_text('');self.record_id.set_text('');self.provenance.set_text('')
+            self.clear_review()
             self.restore_consent.set_active(False);self.status.set_text(self.text('memory.unavailable'))
         self.sensitivity()
         if self.reload_pending and self.available() and not self.busy:
@@ -99,6 +146,11 @@ class MemoryPanel(Gtk.Box):
         for name,button in self.controls.items():button.set_sensitive(loaded)
         self.controls['next'].set_sensitive(loaded and not self.snapshot['complete'])
         self.controls['restore'].set_sensitive(loaded and self.restore_consent.get_active())
+        if hasattr(self,'document_read'):
+            self.document_read.set_sensitive(loaded)
+            self.review_apply.set_sensitive(loaded and self.reviewed is not None and self.review_consent.get_active())
+            self.review_consent.set_sensitive(loaded and self.reviewed is not None)
+            self.preferences.set_editable(loaded and self.reviewed is not None)
 
     def choose(self,*_):
         index=self.picker.get_selected()
@@ -121,6 +173,7 @@ class MemoryPanel(Gtk.Box):
             value=page(data,profile)
             if cursor and previous and (value['profile_revision'],value['memory_generation'])!=(previous['profile_revision'],previous['memory_generation']):
                 raise ValueError('memory_page_changed')
+            self.clear_review()
             self.snapshot=value;self.rows=value['records'];self.busy=False
             self.rendering=True;self.picker.set_model(Gtk.StringList.new([row['id'] for row in self.rows]));self.rendering=False
             self.buffer.set_text('');self.record_id.set_text('');self.provenance.set_text('')
@@ -143,6 +196,51 @@ class MemoryPanel(Gtk.Box):
             result=body(data,49152)
             if result.get('profile_id')!=snapshot['profile_id']:raise ValueError('memory_profile_mismatch')
             self.busy=False;self.snapshot=None;self.reload_pending=True;self.window.client.recheck()
+        self.window.client._call('MutateMemory',GLib.Variant('(sss)',(snapshot['profile_id'],snapshot['profile_revision'],json.dumps(value))),
+                                received,lambda code:self.failed(code) if serial==self.serial else None)
+
+    def read_document(self):
+        if not self.available() or self.busy or self.snapshot is None:return
+        self.clear_review()
+        snapshot=dict(self.snapshot);client=self.window.client;serial=self.serial;generation=client.generation
+        self.busy=True;self.sensitivity()
+        cancel=Gio.Cancellable();client.pending.add(cancel)
+        def finished(conn,result,*_):
+            client.pending.discard(cancel)
+            try:
+                value,descriptors=conn.call_with_unix_fd_list_finish(result)
+                if serial!=self.serial or generation!=client.generation:return
+                if descriptors is None or descriptors.get_length()!=1:raise ValueError('review_document_fd')
+                descriptor=descriptors.get(value.unpack()[0])
+                try:text=reviewed_document(descriptor,snapshot)
+                finally:os.close(descriptor)
+                self.document_buffer.set_text(text);self.reviewed=snapshot
+                self.busy=False;self.status.set_text(self.text('memory.document_loaded'));self.sensitivity()
+            except (GLib.Error,ValueError,TypeError,OSError,UnicodeError):
+                if serial==self.serial:self.failed()
+        try:
+            client.connection.call_with_unix_fd_list(client.owner,OBJECT,INTERFACE,'ExportMemoryDocument',
+                GLib.Variant('(sst)',(snapshot['profile_id'],snapshot['profile_revision'],snapshot['memory_generation'])),
+                GLib.VariantType('(h)'),Gio.DBusCallFlags.NO_AUTO_START,5000,None,cancel,finished,None)
+        except (GLib.Error,ValueError,TypeError,OSError):
+            client.pending.discard(cancel);self.failed()
+
+    def apply_review(self):
+        if not self.available() or self.busy or self.reviewed is None or self.snapshot is None or not self.review_consent.get_active():return
+        snapshot=self.reviewed;serial=self.serial
+        if snapshot!=self.snapshot:self.failed();return
+        try:
+            preferences=reviewed_preferences(self.preferences_buffer.get_text(self.preferences_buffer.get_start_iter(),self.preferences_buffer.get_end_iter(),True))
+        except (ValueError,UnicodeError):
+            self.status.set_text(self.text('memory.review_invalid'));return
+        value={'version':1,'memory_generation':snapshot['memory_generation'],'operation':'review-user-document',
+               'preferences':preferences,'reviewed_user_sha256':snapshot['user_document_sha256']}
+        self.busy=True;self.status.set_text(self.text('memory.loading'));self.sensitivity()
+        def received(data):
+            if serial!=self.serial:return
+            result=body(data,49152)
+            if result.get('profile_id')!=snapshot['profile_id']:raise ValueError('memory_profile_mismatch')
+            self.clear_review();self.busy=False;self.snapshot=None;self.reload_pending=True;self.window.client.recheck()
         self.window.client._call('MutateMemory',GLib.Variant('(sss)',(snapshot['profile_id'],snapshot['profile_revision'],json.dumps(value))),
                                 received,lambda code:self.failed(code) if serial==self.serial else None)
 
