@@ -224,3 +224,76 @@ API semantics used here are documented by upstream:
 (GTK4 size/window-scale lookup returning a native paintable). The current official
 pages describe newer library releases; actual frozen GTK4.22.4/GLib2.88.1 behavior
 must still pass in the native session.
+
+## Optional installed root installer inspection
+
+The optional `installer-gui` phase reuses this same authenticated native owner
+session and transport. Include it after `ui-en` in a **new** collection generation
+and bind/run that exact cold manifest through the existing commands above. Its
+package selection additionally requires actual native archives and full installed
+records for `toddy-installer` and `calamares-branding-toddy` 0.2.0-1+toddy1,
+unchanged `toddy-branding` 0.2.0-1+toddy1, Calamares 3.4.3-1+toddy1, QtBase
+6.11.2-1+toddy2, QtSvg 6.11.2-1+toddy1, KF6 CoreAddons 6.29.0-1+toddy1 and
+yaml-cpp 0.9.0-1+toddy1. An installed version string alone is insufficient: the
+normal packet and guest verification bind archive/record hashes and all owned
+payload bytes. No source staging or package installation occurs during this phase.
+
+Send the phase through the existing private controller, for example:
+
+```text
+phase2-native-assistant-control.py send --context ACTUAL_OWNED_CONTEXT \
+  --request-id installer-gui-first --action phase --phase installer-gui
+```
+
+Use the actual executable Python command prefix from the existing guide. The
+request remains pending until its native result returns; do not resend it, issue
+another phase or finish while it runs. Screenshots use the same native INPUT/QMP
+handshake; control-state records both the existing frame field and `native_frame`.
+The ordinary explicit capture/key controls remain available to the coordinator.
+Review the resulting real frames, not merely a QMP acknowledgement.
+
+This is a narrow no-write **preacceptance probe**, authorized before full B12
+acceptance. Its gate requires recorded Phase 2 approval and completed B01/B02/B03;
+its native phase ordering still requires this session's successful `ui-en`.
+B12's B06/B11 dependencies remain unchanged and uncompleted prerequisites do not
+become installer or artwork acceptance. Other assistant/branding phases retain
+their existing story gates. No install/partition/format operation is added to the
+controller, and production launch/composition gates are unchanged.
+
+The root hook imports the actual installed developer
+`qualification_command(uid, display, locale)` shared with
+`installer_qualification.py gui`, using the observed owner's sole Wayland socket.
+The launcher independently checks authoritative active local unlocked logind
+identity, socket metadata and kernel peer credentials. The returned command must
+be exactly native `/usr/bin/calamares -c` with the fixed
+`calamares-qualification` configuration; the root environment must exclude the
+owner session-bus address. There is no upstream test/debug/nonroot bypass flag.
+The hook launches English/Portuguese cases with requested owner light/dark
+preferences, captures each actual root process and keyboard Tab state, and
+restores the exact original owner color-scheme setting afterward. Each root GUI
+child is closed and reaped within a bounded timeout. Intentional SIGTERM/SIGKILL
+cleanup is limited to the owned show-only child, whose sequence has no exec job;
+it is never used to interrupt an installer transaction.
+
+The show-only configuration is bound to its exact source-produced SHA and has no
+exec sequence. The hook additionally requires the entire production composition
+path absent. The real native view automatically requests `targets` on activation;
+its installed CLI first constructs and validates production composition. With
+that path absent it fails closed **before** target enumeration, disk probing,
+persistent journal construction or installation. This is the actual unavailable
+state for visual inspection, not an emulated backend. Once production composition
+exists this probe refuses to launch; do not remove a real seal or replace a
+runtime binding to force it. Use a fresh disposable source qualification context.
+No Review/Install button is activated, no real installer password is entered,
+and no root GUI authentication field is automated by this phase.
+
+The result deliberately retains `visual_review_required`, pending 100/200-percent
+scale acceptance, `B12_acceptance: false` and
+`launch_qualification_receipt_written: false`. Requested owner light/dark scheme
+is not proof that an isolated root Qt process adopted it. The coordinator must
+inspect real navy/artwork, EN/PT copy, readable native rendering, focus,
+unavailable/error presentation and cancellation behavior in the captured frames;
+additional real scale/focus/Cancel checks are still needed before filling the
+strict production launch receipt's observations. This phase never fabricates that
+receipt, signed inputs, blank-disk install, detached BIOS/UEFI owner boots,
+recovery or release acceptance.

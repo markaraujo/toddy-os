@@ -8,9 +8,11 @@ from pathlib import Path
 
 SERIAL='TODDY-ASST-DATA'
 OWNER='td-asst-owner';UID=12406
-PHASES=('ui-prepare','ui-en','branding','keyring','agent','agent-ui','memory','grant','automation','automation-alert','automation-interrupt','revoke','integrations-bootstrap','integrations','voice-files','voice-device','ui-pt','ui-return-en')
-REQUIRES={'ui-en':('ui-prepare',),'branding':('ui-en',),'keyring':('ui-en',),'agent':('keyring',),'agent-ui':('agent',),'memory':('agent',),'grant':('memory',),'automation':('grant',),'automation-alert':('automation',),'automation-interrupt':('automation-alert',),'revoke':('automation-interrupt',),'integrations-bootstrap':('ui-en',),'integrations':('ui-en',),'voice-files':('ui-en',),'voice-device':('voice-files',),'ui-pt':('ui-en',),'ui-return-en':('ui-pt',)}
-PACKAGE_PHASES={'branding':('toddy-branding','toddy-desktop-defaults'), 'ui-prepare':('toddy-assistant','toddy-agent','toddy-executor'), 'agent':('toddy-agent','llama-cpp'), 'keyring':('gnome-keyring','libsecret'), 'voice-files':('toddy-voice','whisper-cpp','espeak-ng','toddy-voice-model-base','toddy-voice-native-catalog'), 'integrations':('toddy-integrations','firefox','bubblewrap'),'integrations-bootstrap':('toddy-integrations','firefox','bubblewrap')}
+PHASES=('ui-prepare','ui-en','branding','installer-gui','keyring','agent','agent-ui','memory','grant','automation','automation-alert','automation-interrupt','revoke','integrations-bootstrap','integrations','voice-files','voice-device','ui-pt','ui-return-en')
+REQUIRES={'ui-en':('ui-prepare',),'branding':('ui-en',),'installer-gui':('ui-en',),'keyring':('ui-en',),'agent':('keyring',),'agent-ui':('agent',),'memory':('agent',),'grant':('memory',),'automation':('grant',),'automation-alert':('automation',),'automation-interrupt':('automation-alert',),'revoke':('automation-interrupt',),'integrations-bootstrap':('ui-en',),'integrations':('ui-en',),'voice-files':('ui-en',),'voice-device':('voice-files',),'ui-pt':('ui-en',),'ui-return-en':('ui-pt',)}
+INSTALLER_PACKAGES={'toddy-installer':'0.2.0-1+toddy1','calamares-branding-toddy':'0.2.0-1+toddy1','toddy-branding':'0.2.0-1+toddy1','calamares':'3.4.3-1+toddy1','qtbase':'6.11.2-1+toddy2','qtsvg':'6.11.2-1+toddy1','kcoreaddons':'6.29.0-1+toddy1','yaml-cpp':'0.9.0-1+toddy1'}
+SHOW_ONLY_SHA256='fb7b65c50c5f51d706bd2d76cf7b8a3f6a9625c0f2762c9ff5f3a05ba40dc80a'
+PACKAGE_PHASES={'installer-gui':tuple(INSTALLER_PACKAGES),'branding':('toddy-branding','toddy-desktop-defaults'), 'ui-prepare':('toddy-assistant','toddy-agent','toddy-executor'), 'agent':('toddy-agent','llama-cpp'), 'keyring':('gnome-keyring','libsecret'), 'voice-files':('toddy-voice','whisper-cpp','espeak-ng','toddy-voice-model-base','toddy-voice-native-catalog'), 'integrations':('toddy-integrations','firefox','bubblewrap'),'integrations-bootstrap':('toddy-integrations','firefox','bubblewrap')}
 HEX=re.compile('[a-f0-9]{64}\\Z')
 
 
@@ -31,6 +33,7 @@ def validate_manifest(value):
     if not isinstance(value['packages'],dict) or not 3<=len(value['packages'])<=64:raise ValueError('assistant_native_package_set')
     for phase in phases:
         if any(name not in value['packages'] for name in PACKAGE_PHASES.get(phase,())):raise ValueError('assistant_missing_native_package')
+    if 'installer-gui' in phases and any(value['packages'][name]['version']!=version for name,version in INSTALLER_PACKAGES.items()):raise ValueError('assistant_installer_frozen_packages_required')
     if 'branding' in phases and value['packages']['toddy-desktop-defaults']['version']!='0.2.0-1+toddy2':raise ValueError('assistant_background_upgrade_required')
     for name,row in value['packages'].items():
         if not re.fullmatch('[a-z0-9][a-z0-9+.-]{1,79}',name) or set(row)!={'version','archive_sha256','record_sha256','record','record_text','archive_path','archive_bytes'} or not HEX.fullmatch(row['archive_sha256']) or not HEX.fullmatch(row['record_sha256']):raise ValueError('assistant_native_package_record')
@@ -901,6 +904,61 @@ def collect(generation,phases,model_path=None,license_path=None):
     return output
 
 
+
+def installer_gui_guard():
+    """No production seal exists: onActivate/targets must fail before discovery."""
+    config=Path('/usr/share/toddy/installer/calamares-qualification/settings.conf')
+    if os.path.lexists('/usr/share/toddy/installer/composition'):raise ValueError('assistant_installer_composition_must_be_absent')
+    if sha(config)!=SHOW_ONLY_SHA256:raise ValueError('assistant_installer_show_only_config_changed')
+    owned_regular(config)
+    return config
+
+
+def installer_gui(environment,channel):
+    """Real root Wayland show-only cases. Captures are pending human review."""
+    sys.path.insert(0,'/usr/lib')
+    from toddy.installer.launch import qualification_command
+    installer_gui_guard()
+    sockets=[path.name for path in (Path('/run/user')/str(UID)).iterdir() if re.fullmatch('wayland-[0-9]{1,4}',path.name) and path.is_socket()]
+    if len(sockets)!=1:raise ValueError('assistant_installer_actual_owner_display')
+    def setting(*args):
+        return subprocess.check_output(['/usr/bin/gsettings',*args],user=UID,group=UID,extra_groups=[],env=environment,text=True,timeout=10).strip()
+    before=setting('get','org.gnome.desktop.interface','color-scheme');cases=[]
+    def input_event(event,code):
+        channel.write(('INPUT '+json.dumps({'event':event,'code':code})+'\n').encode())
+        if not select.select([channel],[],[],10)[0] or channel.readline(256)!=b'INPUT-ACK\n':raise ValueError('assistant_installer_QMP_ack_required')
+    try:
+        for locale in ('en_US.UTF-8','pt_BR.UTF-8'):
+            for scheme in ('prefer-light','prefer-dark'):
+                installer_gui_guard();setting('set','org.gnome.desktop.interface','color-scheme',scheme)
+                command,clean=qualification_command(UID,sockets[0],locale)
+                if command!=['/usr/bin/calamares','-c','/usr/share/toddy/installer/calamares-qualification'] or 'DBUS_SESSION_BUS_ADDRESS' in clean:raise ValueError('assistant_installer_closed_root_command')
+                child=subprocess.Popen(command,env=clean,stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,close_fds=True)
+                try:
+                    time.sleep(5)
+                    if child.poll() is not None:raise ValueError('assistant_installer_root_GUI_exited')
+                    status=(Path('/proc')/str(child.pid)/'status').read_text()
+                    if not re.search(r'^Uid:\s+0\s+0\s+0\s+0$',status,re.M):raise ValueError('assistant_installer_actual_root_process')
+                    input_event('capture','spc');input_event('key','tab');time.sleep(.3);input_event('capture','spc')
+                    if child.poll() is not None:raise ValueError('assistant_installer_root_GUI_not_retained')
+                    cases.append({'locale':locale,'requested_owner_color_scheme':scheme,'root_pid':child.pid,'actual_display':sockets[0],
+                        'QMP_captures':2,'keyboard_Tab_sent':True,'visual_art_theme_focus_error_review_pending':True,
+                        'root_session_bus_inherited':False,'show_only_config_sha256':SHOW_ONLY_SHA256})
+                finally:
+                    if child.poll() is None:child.terminate()
+                    try:child.wait(timeout=10)
+                    except subprocess.TimeoutExpired:child.kill();child.wait(timeout=5)
+                cases[-1]['actual_root_GUI_reaped']=True
+                cases[-1]['show_only_close_method']='bounded-owned-child-SIGTERM-then-SIGKILL-if-needed'
+                cases[-1]['actual_GUI_exit_status']=child.returncode
+    finally:setting('set','org.gnome.desktop.interface','color-scheme',before)
+    installer_gui_guard()
+    return {'phase':'installer-gui','native_uid':0,'actual_owner_uid':UID,'cases':cases,'source_owned_noexec_config':True,
+        'production_composition_absent':True,'backend_target_discovery_unavailable_before_disk_queries':True,
+        'disk_operations_requested':False,'visual_review_required':True,'B12_acceptance':False,'launch_qualification_receipt_written':False,
+        'scale_100_200_acceptance_pending':True}
+
+
 def main():
     resource.setrlimit(resource.RLIMIT_CORE,(0,0));os.umask(0o077)
     value=manifest_from_disk();native=verify_native(value)
@@ -951,13 +1009,15 @@ def main():
                 fault_worker=threading.Thread(target=interrupt_health_child,args=(environment,fault_stop,fault_proof),daemon=True);fault_worker.start()
             if phase in ('voice-device','agent-ui','branding'):
                 input_worker=threading.Thread(target=input_bridge,args=(channel,ram/'input.sock',input_stop),daemon=True);input_worker.start()
-            child=subprocess.run(['/usr/bin/python3','-B',str(ram/'client.py'),phase],user=UID,group=UID,extra_groups=[],env=environment,cwd='/home/'+OWNER,capture_output=True,text=True,timeout=400)
-            if child.returncode:
-                try:detail=json.loads(child.stdout)
-                except ValueError:detail={}
-                if detail.get('phase')==phase and detail.get('native_uid')==UID:report['failed_user_check']={key:detail.get(key) for key in ('phase','failure_type','failure_line')}
-                raise ValueError('actual_native_phase_failed')
-            result=json.loads(child.stdout);assert result['phase']==phase and result['native_uid']==UID
+            if phase=='installer-gui':result=installer_gui(environment,channel)
+            else:
+                child=subprocess.run(['/usr/bin/python3','-B',str(ram/'client.py'),phase],user=UID,group=UID,extra_groups=[],env=environment,cwd='/home/'+OWNER,capture_output=True,text=True,timeout=400)
+                if child.returncode:
+                    try:detail=json.loads(child.stdout)
+                    except ValueError:detail={}
+                    if detail.get('phase')==phase and detail.get('native_uid')==UID:report['failed_user_check']={key:detail.get(key) for key in ('phase','failure_type','failure_line')}
+                    raise ValueError('actual_native_phase_failed')
+                result=json.loads(child.stdout);assert result['phase']==phase and result['native_uid']==UID
             if phase=='keyring':
                 subprocess.run(['useradd','-M','-U','-u','12407','-s','/usr/bin/false','td-asst-other'],check=True,capture_output=True)
                 cross_uid="from gi.repository import Gio;import sys\ntry:Gio.bus_get_sync(Gio.BusType.SESSION,None)\nexcept Exception:sys.exit(0)\nraise SystemExit(1)"

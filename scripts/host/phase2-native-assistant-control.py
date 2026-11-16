@@ -56,6 +56,11 @@ def key_codes(char):
 
 
 def phase_eligible(phase,status):
+    if phase=='installer-gui':
+        # Narrow no-write source probe; does not waive B12 story dependencies.
+        rows={row['id']:row for row in status.get('milestones',[])}
+        return (status.get('owner_review',{}).get('phase_2_approved') is True and 'B12' in rows and
+            all(rows.get(name,{}).get('status')=='completed' for name in ('B01','B02','B03')))
     story=('B11' if phase=='branding' else 'B07' if phase=='memory' else 'B08' if phase in ('grant','automation','automation-alert','automation-interrupt','revoke') else 'B10' if phase in ('integrations','integrations-bootstrap') else 'B09' if phase.startswith('voice-') else 'B06')
     rows={row['id']:row for row in status.get('milestones',[])}
     selected=rows.get(story)
@@ -107,9 +112,9 @@ def control(context,stop,ready):
                     line,buffer=buffer.split(b'\n',1)
                     if line.startswith(b'INPUT '):
                         request=json.loads(line[6:]);event=request.get('event');code=request.get('code')
-                        if set(request)!={'event','code'} or event not in ('key','down','up','capture') or code not in ('spc','ret','home','down','up'):raise ValueError('assistant_native_requested_input')
+                        if set(request)!={'event','code'} or event not in ('key','down','up','capture') or code not in ('spc','ret','home','down','up','tab'):raise ValueError('assistant_native_requested_input')
                         if event=='capture':
-                            name='assistant-voice-'+str(len(events))+'.ppm';call('screendump',{'filename':'/work/'+name});events.append({'native_voice_frame':name})
+                            name='assistant-voice-'+str(len(events))+'.ppm';call('screendump',{'filename':'/work/'+name});events.append({'native_voice_frame':name,'native_frame':name})
                         elif event=='key':call('send-key',{'keys':[{'type':'qcode','data':code}],'hold-time':80})
                         else:call('input-send-event',{'events':[{'type':'key','data':{'down':event=='down','key':{'type':'qcode','data':code}}}]})
                         private.write(b'INPUT-ACK\n');events.append({'actual_native_QMP_event':event,'code':code})
