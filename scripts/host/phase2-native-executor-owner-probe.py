@@ -159,7 +159,8 @@ a={"path":"/etc/toddy-session-proof.conf","text":"session-authorized\\n","expect
 v=GLib.Variant('(sss)',('session-write','config_replace',json.dumps(a)))
 for method in ['PlanOperation','DispatchOperation']:
  r=c.call_sync('io.github.markaraujo.Toddy.Executor','/io/github/markaraujo/Toddy/Executor','io.github.markaraujo.Toddy.Executor1',method,v,GLib.VariantType('(s)'),Gio.DBusCallFlags.NONE,10000,None)
- assert json.loads(r.unpack()[0])['state']==('planned' if method=='PlanOperation' else 'completed')
+ state=json.loads(r.unpack()[0])['state']
+ assert state in ('planned','completed') if method=='PlanOperation' else state=='completed'
 ''');client.chmod(0o644)
         shell('/usr/bin/python3 /tmp/toddy-owner-ipc.py')
         assert Path(a['path']).read_text()==a['text'] and store.inspect(uid,'session-write')['state']=='completed'

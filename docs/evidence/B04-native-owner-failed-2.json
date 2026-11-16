@@ -1,0 +1,8 @@
+{
+  "all_selected_exits_zero": false,
+  "error": "('shell_status', 1)",
+  "error_type": "AssertionError",
+  "job": "native-executor-owner-2",
+  "scope": "Active default policy/session grant and first IPC effect reached; duplicate client incorrectly expected planned instead of completed after preserved upgrade. No full owner lifecycle acceptance.",
+  "backing_unchanged": true
+}
