@@ -51,6 +51,17 @@ class ResourceRecipeTests(unittest.TestCase):
         self.assertEqual(generated['/etc/shadow']['origin'],'fresh-system-accounts')
         self.assertEqual(generated['/var/lib/dpkg/info/fixture.list']['origin'],'native-dpkg-database')
         self.assertEqual(generated['/lost+found']['origin'],'fresh-filesystem')
+    def test_native_dpkg_info_format_requires_exact_frozen_bytes_and_metadata(self):
+        path='/var/lib/dpkg/info/format';row={'mode':stat.S_IFREG|0o644,'uid':0,'gid':0,'sha256':hashlib.sha256(b'1\n').hexdigest()}
+        self.assertEqual(row['sha256'],recipe.DB_INFO_FORMAT_SHA)
+        generated,blocked=recipe.candidate_entries({path:row},self.manifest(),self.policy())
+        self.assertEqual(generated[path]['origin'],'native-dpkg-database')
+        self.assertFalse(any(item['path']==path for item in blocked))
+        for changed in ({**row,'sha256':hashlib.sha256(b'2\n').hexdigest()},{**row,'mode':stat.S_IFREG|0o600},{**row,'uid':9},{'mode':stat.S_IFLNK|0o777,'uid':0,'gid':0,'symlink':'other'}):
+            with self.subTest(row=changed):
+                generated,blocked=recipe.candidate_entries({path:changed},self.manifest(),self.policy())
+                self.assertNotIn(path,generated);self.assertTrue(any(item['path']==path for item in blocked))
+
     def test_other_package_database_script_cannot_gain_provenance(self):
         manifest=self.manifest();actual={**manifest['ownership']['entries'],
             '/var/lib/dpkg/info/fixture.postinst':{'mode':stat.S_IFREG|0o644,'uid':0,'gid':0,'sha256':'b'*64}}

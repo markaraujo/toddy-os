@@ -22,6 +22,9 @@ LINKS={'/etc/systemd/system/default.target':'/usr/lib/systemd/system/graphical.t
        '/etc/systemd/system/display-manager.service':'/usr/lib/systemd/system/gdm.service'}
 DB_DIRS={'','info','updates','parts','alternatives','triggers','methods','methods/file','methods/ftp','methods/mnt','methods/media'}
 DB_FILES={'status','status-old','lock','lock-frontend','triggers/Lock','triggers/Unincorp'}
+# Frozen Dpkg1.22.22 db-ctrl-upgrade.c writes format1 as '%d\\n'.
+# Same exact-byte contract as frozen H10 package_database.validate_info().
+DB_INFO_FORMAT_SHA='4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865'
 
 
 def snapshot(root):
@@ -68,6 +71,7 @@ def candidate_entries(actual,manifest,policy):
             if not legal and relative.startswith('info/') and relative.count('/')==1:
                 match=re.fullmatch(r'([a-z0-9][a-z0-9+.-]*)(?::(?:amd64|all))?\.(list|md5sums|conffiles|shlibs|symbols)',relative[5:])
                 legal=bool(match and match[1] in packages)
+            if relative=='info/format':legal=row=={'mode':stat.S_IFREG|0o644,'uid':0,'gid':0,'sha256':DB_INFO_FORMAT_SHA}
             if legal and row.get('uid')==row.get('gid')==0 and (row.get('mode')==stat.S_IFDIR|0o755 if row.get('directory') else row.get('mode') in {stat.S_IFREG|0o644,stat.S_IFREG|0o640,stat.S_IFREG|0o600}):origin='native-dpkg-database'
         if origin:generated[path]={**row,'origin':origin}
         else:blockers.append({'path':path,'reason':'unattributed-or-unexpected-generated-output'})
