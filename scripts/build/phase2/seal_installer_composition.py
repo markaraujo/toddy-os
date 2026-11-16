@@ -17,6 +17,7 @@ from runtime.installer.composition import SOURCES,source_path,secured,validate_b
 from runtime.installer.native_finalizer import payload_module,account_files
 from runtime.installer.installed_boot import InstalledBoot
 from runtime.installer.disk_plan import InstallError
+from scripts.build.phase2.owner_setting_evidence import validate_companion
 
 
 def seal(image,inputs,output):
@@ -45,12 +46,15 @@ def seal(image,inputs,output):
     for check in sorted(p.CHECKS):
         report=read('qualification/'+check+'.json');validate_finalizer_report(report,check,descriptor)
         checks[check]=p.digest(secured(inputs/'qualification'/(check+'.json')))
-    firmware={}
+    firmware={};owner_settings={}
     for name in ('bios','uefi'):
         path=inputs/'qualification'/('boot-'+name+'.json')
         if path.exists() or path.is_symlink():
             report=read('qualification/boot-'+name+'.json');validate_boot_evidence(report,name,descriptor,boot)
             firmware[name]=p.digest(secured(path))
+            companion=inputs/'qualification'/('owner-settings-'+name+'.json')
+            validate_companion(read('qualification/'+companion.name),report,firmware[name])
+            owner_settings[name]=p.digest(secured(companion))
     if not firmware:raise InstallError('installer_composition_no_native_detached_boot_receipt')
     qualification={'kind':'native-installer-composition-v1','input_manifest_sha256':manifest_sha,
                    'source_sha256':descriptor['source_sha256'],'image_manifest_sha256':image_sha,
@@ -88,7 +92,7 @@ def seal(image,inputs,output):
     try:os.fsync(fd)
     finally:os.close(fd)
     return {'state':'sealed-native-composition-inputs','composition_sha256':p.digest(output/'composition.json'),
-            'payload_manifest_sha256':manifest_sha,'image_manifest_sha256':image_sha,'supported_firmware':sorted(firmware),
+            'payload_manifest_sha256':manifest_sha,'image_manifest_sha256':image_sha,'supported_firmware':sorted(firmware),'owner_settings_sha256':owner_settings,
             'installed_factory_path':'/usr/share/toddy/installer/composition','disk_writes':False}
 
 

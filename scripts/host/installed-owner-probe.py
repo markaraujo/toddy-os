@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-"""Read-only qualification observer except explicit owner-only persistence marker.
+"""Qualification observer with explicit owner file and one clock preference probe.
 
 Supplied as a public read-only firmware credential, never installed in the OS.
 No login injection, passwords, autologin change, task engine or network activity.
 """
 import hashlib,json,os,pwd,re,stat,subprocess,termios,time
 from pathlib import Path
+try:run_owner_state
+except NameError:
+    import sys
+    sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
+    from scripts.build.phase2.owner_setting_evidence import run_owner_state,owner_marker
 
 
 def command(argv):
@@ -50,30 +55,13 @@ def observe(expected,round_number,recovery=False):
         assert command(['/usr/bin/systemctl','is-active','gdm.service'])=='active'
         # An actual GNOME shell must belong to the authenticated owner session.
         assert subprocess.run(['/usr/bin/pgrep','-u',str(owner['uid']),'-x','gnome-shell'],stdout=subprocess.DEVNULL,timeout=15).returncode==0
-    marker=Path(account.pw_dir)/('.toddy-install-proof-'+expected['operation_id'])
-    # Only this explicit test artifact is created. Drop all root/group authority.
-    child=os.fork()
-    if child==0:
-        try:
-            os.setgroups([]);os.setgid(owner['gid']);os.setuid(owner['uid']);os.umask(0o077)
-            content=(expected['plan_sha256']+'\n').encode()
-            if round_number==1:
-                fd=os.open(marker,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
-                with os.fdopen(fd,'wb') as stream:stream.write(content);stream.flush();os.fsync(stream.fileno())
-                directory=os.open(marker.parent,os.O_DIRECTORY)
-                try:os.fsync(directory)
-                finally:os.close(directory)
-            info=marker.lstat()
-            assert stat.S_ISREG(info.st_mode) and info.st_uid==owner['uid'] and info.st_gid==owner['gid'] and stat.S_IMODE(info.st_mode)==0o600 and info.st_nlink==1
-            assert marker.read_bytes()==content
-            os._exit(0)
-        except BaseException:os._exit(1)
-    assert os.waitpid(child,0)[1]==0,'owner persistence marker failed'
+    measured=run_owner_state(account,{'operation_id':expected['operation_id'],'plan_sha256':expected['plan_sha256']},round_number,recovery)
+    assert measured['marker_sha256']==hashlib.sha256(owner_marker(expected['plan_sha256'])).hexdigest(),'owner file and setting persistence failed'
     bootid=Path('/proc/sys/kernel/random/boot_id').read_text().strip();assert re.fullmatch('[0-9a-f-]{36}',bootid)
-    return {'boot_id':bootid,'root_uuid':root[0]['uuid'],'persistent_marker_sha256':sha(marker),
+    return {'boot_id':bootid,'root_uuid':root[0]['uuid'],'persistent_marker_sha256':measured['marker_sha256'],'owner_setting':measured['setting'],
         'kernel_release':os.uname().release,'installer_media_attached':False,'fresh_owner_login':True,
         'initramfs_sha256':expected['initramfs_sha256'],'session_type':mode,'round':round_number,
-        'recovery':recovery,'observer_only_extra_write':'explicit-owner-persistence-marker'}
+        'recovery':recovery,'observer_only_extra_write':'explicit-owner-file-marker-and-clock-preference'}
 
 
 def main():

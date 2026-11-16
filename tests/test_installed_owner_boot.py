@@ -41,9 +41,9 @@ class InstalledControlTests(unittest.TestCase):
 
     def test_real_observation_required_and_recovery_cannot_count_as_normal_boot(self):
         value=handoff();row={'boot_id':'11111111-1111-1111-1111-111111111111','root_uuid':value['root_uuid'],
-            'persistent_marker_sha256':hashlib.sha256((value['plan_sha256']+'\n').encode()).hexdigest(),
+            'persistent_marker_sha256':hashlib.sha256(control.owner_evidence.owner_marker(value['plan_sha256'])).hexdigest(),
             'kernel_release':'7.1.8-toddy','installer_media_attached':False,'fresh_owner_login':True,'initramfs_sha256':'b'*64,
-            'session_type':'wayland','round':1,'recovery':False,'observer_only_extra_write':'explicit-owner-persistence-marker'}
+            'session_type':'wayland','round':1,'recovery':False,'observer_only_extra_write':'explicit-owner-file-marker-and-clock-preference','owner_setting':__import__('tests.test_owner_setting_evidence',fromlist=['setting']).setting()}
         encode=lambda data:'TODDY_INSTALLED_OWNER '+json.dumps({'state':'observed','observation':data})+'\n'
         self.assertEqual(control.parse_observation(encode(row),value,1,False),row)
         for changed in ({'fresh_owner_login':False},{'installer_media_attached':True},{'session_type':'tty'},{'root_uuid':'beef-1234'},
@@ -114,7 +114,7 @@ class InstalledControlTests(unittest.TestCase):
 class OwnerProbeTests(unittest.TestCase):
     def test_fixture_real_marker_creation_and_second_read_only_persistence(self):
         with tempfile.TemporaryDirectory() as temporary:
-            root=Path(temporary);home=root/'home/owner';home.mkdir(parents=True)
+            root=Path(temporary);home=root/'home/owner';home.mkdir(parents=True);home.chmod(0o700)
             expected=handoff();expected['expected_owner'].update(uid=os.getuid(),gid=os.getgid())
             fixtures={'/boot/vmlinuz-7.1.8-toddy':b'kernel','/boot/initramfs-7.1.8-toddy-installed.img':b'initramfs','/etc/toddy/grub.cfg':b'grub',
                 '/proc/cmdline':b'root=UUID=abcd-1234','/proc/sys/kernel/random/boot_id':b'11111111-1111-1111-1111-111111111111'}
@@ -130,19 +130,23 @@ class OwnerProbeTests(unittest.TestCase):
                 if 'is-active' in argv:return 'active'
                 raise AssertionError(argv)
             account=SimpleNamespace(pw_uid=os.getuid(),pw_gid=os.getgid(),pw_dir='/home/owner')
+            from tests.test_owner_setting_evidence import child_fixture
+            db=home/'.config/dconf/user';(home/'.config').mkdir(mode=0o700);db.parent.mkdir(mode=0o700);db.write_bytes(b'unqualified-dconf-shim-fixture');db.chmod(0o600)
+            state={'user_value':None}
+            def owner_state(account,plan,number,recovery):return child_fixture(home,plan,number,state)
             with patch.object(probe,'Path',side_effect=lambda path:Path(path) if Path(path).is_relative_to(root) else root/str(path).lstrip('/')),patch.object(probe,'command',side_effect=command),\
-                    patch.object(probe.pwd,'getpwnam',return_value=account),patch.object(probe.os,'geteuid',return_value=0),\
+                    patch.object(probe,'run_owner_state',side_effect=owner_state),patch.object(probe.pwd,'getpwnam',return_value=account),patch.object(probe.os,'geteuid',return_value=0),\
                     patch.object(probe.os,'uname',return_value=SimpleNamespace(release='7.1.8-toddy')),patch.object(probe.os,'setgroups'),\
                     patch.object(probe.os,'setgid'),patch.object(probe.os,'setuid'),patch.object(probe.subprocess,'run',return_value=SimpleNamespace(returncode=0)):
                 first=probe.observe(expected,1);second=probe.observe(expected,2)
                 self.assertEqual(first['persistent_marker_sha256'],second['persistent_marker_sha256'])
                 marker=home/('.toddy-install-proof-'+'a'*32)
-                self.assertEqual(marker.read_bytes(),('b'*64+'\n').encode());self.assertEqual(marker.stat().st_mode&0o777,0o600)
+                self.assertEqual(marker.read_bytes(),control.owner_evidence.owner_marker('b'*64));self.assertEqual(marker.stat().st_mode&0o777,0o600)
                 # Existing marker cannot be overwritten by replaying round 1.
-                with self.assertRaisesRegex(AssertionError,'persistence marker'):probe.observe(expected,1)
+                with self.assertRaises(AssertionError):probe.observe(expected,1)
                 # An active autologin session is not fresh authenticated owner proof.
                 with patch.object(probe,'command',side_effect=lambda argv:command(argv).replace('gdm-password','gdm-autologin')),patch.object(probe.time,'monotonic',side_effect=[0,0,1000]),patch.object(probe.time,'sleep'):
                     with self.assertRaisesRegex(AssertionError,'fresh owner login'):probe.observe(expected,2)
-                self.assertEqual(marker.read_bytes(),('b'*64+'\n').encode())
+                self.assertEqual(marker.read_bytes(),control.owner_evidence.owner_marker('b'*64))
 
 if __name__=='__main__':unittest.main()

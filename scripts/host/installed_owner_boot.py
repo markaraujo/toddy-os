@@ -6,12 +6,13 @@ Only a self-contained private disposable installed disk is accepted as backing.
 """
 import argparse,fcntl,getpass,hashlib,json,os,re,resource,socket,stat,subprocess,sys,time,uuid
 from pathlib import Path
-sys.path.insert(0,str(Path(__file__).resolve().parent))
+sys.path[:0]=[str(Path(__file__).resolve().parent),str(Path(__file__).resolve().parents[2])]
 import boot_test as boot
 import phase2_candidate_vm as candidate
 import phase2_vm
 from phase2_native_glycin import compressed_payload
 import vm
+from scripts.build.phase2 import owner_setting_evidence as owner_evidence
 
 ROOT=vm.ROOT
 SOURCE=ROOT/'.local/phase2/native-installer-1/installed.qcow2'
@@ -75,7 +76,8 @@ def cold_handoff(handoff_path):
 def payloads(handoff,number,recovery):
     probe=(Path(__file__).with_name('installed-owner-probe.py')).read_bytes()
     observer=Path(__file__).with_name('installed-auth-wait.py').read_bytes()
-    source=('EXPECTED='+repr(handoff)+'\nROUND='+str(number)+'\nRECOVERY='+repr(recovery)+'\n').encode()+observer+b'\nstart_auth_wait(EXPECTED,ROUND,RECOVERY)\n'+probe
+    setting_source=Path(owner_evidence.__file__).read_bytes()
+    source=('EXPECTED='+repr(handoff)+'\nROUND='+str(number)+'\nRECOVERY='+repr(recovery)+'\n').encode()+setting_source+b'\n'+observer+b'\nstart_auth_wait(EXPECTED,ROUND,RECOVERY)\n'+probe
     return {'systemd.extra-unit.toddy-boot-probe.service':Path(__file__).with_name('desktop-boot-probe.service').read_bytes(),
         'systemd.unit-dropin.multi-user.target':Path(__file__).with_name('boot-probe.target.conf').read_bytes(),
         'toddy.boot-probe':compressed_payload(source)}
@@ -97,12 +99,13 @@ def parse_observation(raw,handoff,number,recovery):
     rows=[json.loads(line.removeprefix('TODDY_INSTALLED_OWNER ')) for line in raw.splitlines() if line.startswith('TODDY_INSTALLED_OWNER ')]
     if len(rows)!=1 or set(rows[0])!={'state','observation'} or rows[0]['state']!='observed':raise ValueError('installed_actual_observation_missing')
     row=rows[0]['observation']
-    if (set(row)!=BOOT_KEYS|{'session_type','round','recovery','observer_only_extra_write'} or row['round']!=number or row['recovery'] is not recovery or
+    if (set(row)!=BOOT_KEYS|{'session_type','round','recovery','observer_only_extra_write','owner_setting'} or row['round']!=number or row['recovery'] is not recovery or
             row['session_type']!=('tty' if recovery else 'wayland') or row['root_uuid']!=handoff['root_uuid'] or
             row['kernel_release']!='7.1.8-toddy' or row['initramfs_sha256']!=handoff['initramfs_sha256'] or
             row['installer_media_attached'] is not False or row['fresh_owner_login'] is not True or
-            row['observer_only_extra_write']!='explicit-owner-persistence-marker' or
-            not re.fullmatch('[a-f0-9-]{36}',row['boot_id']) or row['persistent_marker_sha256']!=hashlib.sha256((handoff['plan_sha256']+'\n').encode()).hexdigest()):raise ValueError('installed_observation_mismatch')
+            row['observer_only_extra_write']!='explicit-owner-file-marker-and-clock-preference' or
+            not re.fullmatch('[a-f0-9-]{36}',row['boot_id']) or row['persistent_marker_sha256']!=hashlib.sha256(owner_evidence.owner_marker(handoff['plan_sha256'])).hexdigest()):raise ValueError('installed_observation_mismatch')
+    owner_evidence.validate_setting(row['owner_setting'],handoff['expected_owner'],number)
     return row
 
 
@@ -123,6 +126,7 @@ def run(context,number,handoff_path=None):
         'write_bytes_per_second':WRITE_BPS,'stop_headroom_bytes':STOP_HEADROOM}
     if not capacity_admitted(shutil.disk_usage(ROOT).free,storage['source_allocated_bytes']):raise ValueError('installed_host_reserve')
     public_sources={name:boot.digest(Path(__file__).with_name(name)) for name in ('installed-owner-probe.py','installed-auth-wait.py','desktop-boot-probe.service','boot-probe.target.conf','boot_test.py','phase2_native_glycin.py')}
+    public_sources['owner_setting_evidence.py']=boot.digest(Path(owner_evidence.__file__))
     image=subprocess.check_output(['docker','image','inspect','--format','{{.Id}}',vm.IMAGE],text=True).strip()
     if number==1:
         if context.exists() or context.is_symlink():raise ValueError('installed_existing_context_no_replay')
@@ -181,7 +185,21 @@ def run(context,number,handoff_path=None):
         first=json.loads((context/'round-1.json').read_bytes())['observation']
         receipt={key:handoff[key] for key in ('firmware','input_manifest_sha256','image_manifest_sha256','kernel_sha256','initramfs_source_sha256')}
         receipt.update(kind='native-detached-installed-boot-v1',boots=[{key:item[key] for key in BOOT_KEYS} for item in (first,row)])
+        receipt_sha256=hashlib.sha256((json.dumps(receipt,indent=2)+'\n').encode()).hexdigest()
+        live_inputs=json.loads(private(SOURCE.parent/'inputs.json').read_bytes());cold=json.loads(private(SOURCE.parent/'cold.json').read_bytes())
+        companion={'version':1,'kind':'native-owner-setting-persistence-v1','firmware':handoff['firmware'],
+            'boot_receipt_sha256':receipt_sha256,
+            'source':{'iso_sha256':live_inputs['iso_sha256'],'live_inputs_sha256':boot.digest(SOURCE.parent/'inputs.json'),
+                'live_controller_sha256':live_inputs['producer_sha256'],'cold_sha256':boot.digest(SOURCE.parent/'cold.json'),
+                'disk_sha256':cold['disk_sha256'],'handoff_sha256':boot.digest(context/'handoff.json'),
+                'owner_boot_inputs_sha256':boot.digest(context/'inputs.json'),'observer_sha256':public_sources['installed-owner-probe.py'],
+                'setting_helper_sha256':public_sources['owner_setting_evidence.py']},
+            'expected_owner':handoff['expected_owner'],'plan_sha256':handoff['plan_sha256'],
+            'rounds':[{key:item[key] for key in ('round','boot_id','root_uuid','persistent_marker_sha256')}|{'setting':item['owner_setting']} for item in (first,row)]}
+        owner_evidence.validate_companion(companion,receipt,companion['boot_receipt_sha256'],iso_sha256=live_inputs['iso_sha256'])
+        save(context/('owner-settings-'+handoff['firmware']+'.json'),companion)
         save(context/('boot-'+handoff['firmware']+'.json'),receipt)
+        if boot.digest(context/('boot-'+handoff['firmware']+'.json'))!=receipt_sha256:raise ValueError('actual_boot_companion_serialization_changed')
     print(json.dumps({'state':'actual-observation-preserved','context':str(context),'round':number,'production_ready':False}))
 
 
