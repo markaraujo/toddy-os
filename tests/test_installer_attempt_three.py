@@ -1,5 +1,6 @@
 """Frozen exported-interface configure regression; no native plugin build/VM use."""
 from pathlib import Path
+from unittest.mock import patch
 import shutil
 import subprocess
 import sys
@@ -12,19 +13,30 @@ import installer_native as native
 import installer_package as package
 
 
-class InstallerAttemptTwoTests(unittest.TestCase):
-    def test_attempt_two_preserves_first_compile_namespace_and_frozen_dependencies(self):
-        self.assertEqual(native.SOURCE.name,'toddy-installer-0.2.0-2')
-        self.assertEqual(native.WORK.name,'toddy-installer-2')
-        self.assertEqual(native.STAGE.name,'phase2-toddy-installer-2')
-        self.assertEqual(native.PREPARED.name,'toddy-installer-prepared-2.json')
-        self.assertEqual(native.JOB,'toddy-installer-build-2')
-        self.assertEqual(native.STEP,'b12-toddy-installer-2')
+class InstallerAttemptThreeTests(unittest.TestCase):
+    def test_attempt_three_preserves_prior_namespaces_and_frozen_dependencies(self):
+        self.assertEqual(native.SOURCE.name,'toddy-installer-0.2.0-3')
+        self.assertEqual(native.WORK.name,'toddy-installer-3')
+        self.assertEqual(native.STAGE.name,'phase2-toddy-installer-3')
+        self.assertEqual(native.PREPARED.name,'toddy-installer-prepared-3.json')
+        self.assertEqual(native.JOB,'toddy-installer-build-3')
+        self.assertEqual(native.STEP,'b12-toddy-installer-3')
+        self.assertEqual(native.RECEIPT.name,'toddy-installer-install-3.json')
+        self.assertEqual(native.POSTCHECK_HOME.name,'toddy-installer-offscreen-postcheck-3')
         self.assertEqual(native.VERSION,'0.2.0-1+toddy1')
+        inputs,files,_=package.plan(ROOT)
+        self.assertEqual(inputs['scripts/build/phase2/offline_payload.py'],native.digest(ROOT/'scripts/build/phase2/offline_payload.py'))
+        self.assertEqual(files['/usr/lib/toddy/installer/offline_payload.py'][0],(ROOT/'scripts/build/phase2/offline_payload.py').read_bytes())
         for dependency in ('kcoreaddons (= 6.29.0-1+toddy1)','yaml-cpp (= 0.9.0-1+toddy1)','qtsvg (= 6.11.2-1+toddy1)'):
             self.assertIn(dependency,package.DEPENDENCIES)
         self.assertIn('live_session.py',package.INSTALLER_MODULES)
         self.assertIn('generated_resources.py',package.INSTALLER_MODULES)
+
+    def test_any_existing_attempt_three_artifact_refuses_prepare_without_writes(self):
+        for path in (native.SOURCE,native.WORK,native.STAGE,native.PREPARED,native.RECEIPT,native.POSTCHECK_HOME,native.LOG/(native.JOB+'.job.json'),native.LOG/(native.JOB+'.exit')):
+            with self.subTest(path=path),patch.object(native.os.path,'lexists',side_effect=lambda actual:actual==path),patch.object(native,'package_state') as state,patch.object(native,'save') as save:
+                with self.assertRaisesRegex(ValueError,'preserve_existing'):native.prepare()
+                state.assert_not_called();save.assert_not_called()
 
     @unittest.skipUnless(shutil.which('cmake') and shutil.which('c++'),'Host CMake/C++ configuration fixture unavailable')
     def test_actual_cmake_generation_resolves_exported_kf_target_and_catches_its_omission(self):

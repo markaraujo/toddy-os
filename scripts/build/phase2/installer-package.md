@@ -60,13 +60,13 @@ inputs; it does not copy a builder root or run a disk command.
 ```sh
 bash /opt/toddy-build/scripts/build/phase2/installer_prepare.sh
 python3 /opt/toddy-build/scripts/build/phase2/job.py \
-  toddy-installer-build-2 \
-  /mnt/lfs/sources/phase2/inputs/toddy-installer-0.2.0-2 \
-  /mnt/lfs/sources/phase2/work/toddy-installer-2 \
+  toddy-installer-build-3 \
+  /mnt/lfs/sources/phase2/inputs/toddy-installer-0.2.0-3 \
+  /mnt/lfs/sources/phase2/work/toddy-installer-3 \
   bash /src/installer_build.sh
 python3 /opt/toddy-build/scripts/build/phase2/installer_native.py qualify
 python3 /opt/toddy-build/scripts/build/run_step.py \
-  b12-toddy-installer-2 \
+  b12-toddy-installer-3 \
   /opt/toddy-build/scripts/build/phase2/installer_install.sh \
   /opt/toddy-build/scripts/build/phase2/installer_check.sh --user root
 ```
@@ -204,7 +204,37 @@ Preserve all failed attempt-1 source/work/job/cache/log/receipt paths. Attempt 2
 uses source `toddy-installer-0.2.0-2`, work `toddy-installer-2`, stage
 `phase2-toddy-installer-2`, prepared receipt `toddy-installer-prepared-2.json`, job
 `toddy-installer-build-2`, dispatcher `b12-toddy-installer-2`, native install receipt
-`toddy-installer-install-2.json` and offscreen postcheck directory 2. Run the
-prepare/build/qualify sequence above with those new names. This is a new own-module
-attempt, not a retry of an uncertain native install or an upstream rebuild.
+`toddy-installer-install-2.json` and offscreen postcheck directory 2. Those names are historical attempt-2 identities, not the current commands above.
+Preserve them without replay. This was an own-module attempt, not an upstream
+Calamares/Qt rebuild.
 The complete current live-session/generated-resource source closure is retained.
+
+
+## Current native module attempt 3: fresh current payload closure
+
+The coordinator reports that attempt2 compiled the own C++ module and passed its
+actual QPlugin probe/stage qualification. Its native install2 stopped before
+package writes on the missing declared `dosfstools` dependency (changed paths0).
+Those actual source/work/job/qualification/failure artifacts remain intact;
+this source update neither reruns nor reclassifies them as installed acceptance.
+
+The capacity correction in packaged `offline_payload.py` changes the current
+Python payload source closure. Attempt2's immutable prepared source cannot absorb
+that change. Current commands above therefore use NEW source
+`toddy-installer-0.2.0-3`, work `toddy-installer-3`, stage
+`phase2-toddy-installer-3`, prepared receipt `toddy-installer-prepared-3.json`, job
+`toddy-installer-build-3`, dispatcher `b12-toddy-installer-3`, native receipt
+`toddy-installer-install-3.json` and offscreen postcheck directory3. Preparation
+refuses any existing attempt3 source/work/stage/receipt/job output/postcheck path,
+including partial write markers. It never removes a prior attempt's state.
+
+Sync the current committed source closure through the existing verified metadata
+route first. After actual native dosfstools4.2 package/check passes and no writer
+is active, run the exact prepare/job/qualify/run_step sequence above once. The
+small own module/no-write probe is rebuilt; existing Qt6.11.2 and Calamares3.4.3
+packages and upstream sources are reused. No arbitrary compiled-artifact reuse or
+source-pin substitution is introduced. The package version remains the first
+uninstalled `0.2.0-1+toddy1`; there is no version bump or replacement archive.
+Full-root installation journaling, exact dependency/provider/source checks and
+independent installed postconditions remain required. Native root GUI and blank
+installed boot remain separate actual acceptance gates, not source-test claims.
