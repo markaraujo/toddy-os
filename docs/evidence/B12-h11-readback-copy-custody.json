@@ -1,0 +1,31 @@
+{
+  "scope": "One byte-identical H11 extracted ISO readback cache file in candidate overlay only; two full squashfs copies, original ISO, logs and accepted backing remain",
+  "state": "complete",
+  "retired_bytes": 1061642240,
+  "before_free_bytes": 17315065856,
+  "after_free_bytes": 18376712192,
+  "retired": {
+    "path": "/mnt/lfs/sources/stage/h11-release-media/iso/readback/5",
+    "inode": 2142682,
+    "bytes": 1061642240,
+    "sha256": "7a5b454cc9080cc8fe3d28c677688f50acea818da0868e78faf0569323d78b71"
+  },
+  "retained": [
+    {
+      "path": "/mnt/lfs/sources/stage/h11-release-compression/rootfs.squashfs",
+      "inode": 2014089,
+      "bytes": 1061642240,
+      "sha256": "7a5b454cc9080cc8fe3d28c677688f50acea818da0868e78faf0569323d78b71"
+    },
+    {
+      "path": "/mnt/lfs/sources/stage/h11-release-media/iso/input/live/rootfs.squashfs",
+      "inode": 2115640,
+      "bytes": 1061642240,
+      "sha256": "7a5b454cc9080cc8fe3d28c677688f50acea818da0868e78faf0569323d78b71"
+    }
+  ],
+  "receipt_sha256": "5348d9b0cde51b1f918cd51f3a9fc2ff57357234fc3bdfc8c29abf334010e2be",
+  "recovery": "Verify retained compression rootfs SHA256, then copy to a NEW reviewed readback stage. Never replay this custody.",
+  "native_installed_root_changed": false,
+  "host_qcow_reclamation_claimed": false
+}

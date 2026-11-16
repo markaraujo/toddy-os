@@ -32,17 +32,17 @@ recovery/backing identities unchanged. Never replay; placeholder is NOT bootable
 Immediate native queue (one guest/package writer):
 1. Native recovery3 completed0; never replay it.
 2. Candidate overlays prepared/started successfully (ADR0239); never replay prepare/start.
-3. QtBase raster job `qtbase-wayland-2` RUNNING in `toddy-phase2-candidate`;
-   boot `9ac84ac8-fe0e-41c0-a128-a8e4ad4bebf2`. Source prepare0, exact blank
-   serial `TODDY-QT-RASTER-1` initialized once; ext4 UUID
-   `58e1a631-07a2-40a1-87c2-49de37a69345`, rw/nosuid/nodev. Inspect actual
-   job receipt/exit/log under `/var/log/toddy/phase2`, not stale PID alone.
-   Never replay formatting/preparation/dispatch. Attempt1 failed before compilation:
-   Fontconfig requires system FreeType; attempt2 selects the already frozen native
-   FreeType and preserves failed1 source/work/log/receipt. Actual C++ compilation
-   is progressing with8jobs; configuration passed. Target free17,315,074,048B;
-   native install still needs qualified cache custody above16GiB reserve.
-   Old Qt promotion custody already complete; never replay it.
+3. QtBase raster attempt2 compile/stage/static/actual consumer qualification0.
+   Native upgrade2 stopped BEFORE native write: direct ELF owner `gcc-runtime`
+   was missing from Depends; full-root changed_paths0. Audit confirms only that
+   missing declared provider (16.2.0-1+toddy1). New install3 metadata/stage/receipt
+   correction pending; REUSE successful compile2, preserve failed promotion2.
+   Boot `9ac84ac8-fe0e-41c0-a128-a8e4ad4bebf2`, scratch UUID
+   `58e1a631-07a2-40a1-87c2-49de37a69345`. Never replay source/jobs/format/install.
+   Attempt1 configuration failure retained. Narrow H11 readback duplicate custody
+   completed: two frozen-hash squashfs copies + original ISO/receipts retained,
+   target free17,315,065,856→18,376,712,192B. [Receipt](evidence/B12-h11-readback-copy-custody.json).
+   Never replay custody; it makes no host QCOW reclamation or foundation change.
 4. Calamares module/native root GUI, source-package archive and offline composition.
 5. Voice engine/inference and combined installed UI/task/memory/automation/plugins
    checks at eligible story boundaries; preserve one current acceptance slice.
