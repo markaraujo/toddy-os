@@ -61,6 +61,8 @@ def install(component):
         names.update(row['source'] for row in mapping.get('icon_exports', []))
         names.update(row['source'] for row in mapping['pending_exports'])
         if component == 'installer-branding':
+            scenes = json.loads((ROOT/'assets/brand/installer/scenes.json').read_text())['scenes']
+            names.update(scene[field] for scene in scenes for field in ('source', 'evidence'))
             for selected in ('assets/brand', 'assets/third-party/gnome'):
                 names.update(str(path.relative_to(ROOT)) for path in (ROOT/selected).rglob('*') if path.is_file())
         inputs = {}

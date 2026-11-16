@@ -12,6 +12,15 @@ if __name__ == '__main__':
     # Only frozen B01 npm archives/notices enter the candidate; never transfer
     # a cache directory, credential directory or other unselected local state.
     extra = ['assets/third-party', 'scripts/qualification', 'tests/test_voice_process.py']
+    scenes = json.loads((sync_build.ROOT/'assets/brand/installer/scenes.json').read_text())['scenes']
+    for scene in scenes:
+        for field in ('source', 'evidence'):
+            name = scene[field]
+            assert name.startswith(('assets/brand/', 'docs/evidence/B02-'))
+            path = sync_build.ROOT/name
+            assert path.resolve() == path and path.is_file() and not path.is_symlink()
+            extra.append(name)
+        assert sync_build.digest(sync_build.ROOT/scene['source']) == scene['sha256']
     lock = json.loads((sync_build.ROOT/'runtime/engine/package-lock.json').read_text())
     for row in lock['packages'].values():
         if 'integrity' not in row:

@@ -70,6 +70,28 @@ class SourceNativeTests(unittest.TestCase):
             self.assertTrue(all(len(row['sha256']) == 64 for row in manifest['source_inputs'].values()))
             self.assertTrue((stage/'usr/share/doc/toddy-branding/copyright').is_file())
 
+    def test_installer_branding_retains_actual_capture_source_and_evidence_pins(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            stage = root/'stage'
+            def execute(command, **options):
+                return types.SimpleNamespace(returncode=1 if 'dpkg-query' in command else 0)
+            with patch.object(native, 'paths', return_value=('calamares-branding-toddy', '', stage, root/'receipt')), patch.object(native, 'ROOT', PATH.parents[3]):
+                with patch.object(native.subprocess, 'run', side_effect=execute):
+                    with patch.dict(sys.modules, {'dependency_preflight': types.SimpleNamespace(native=lambda _: None)}):
+                        with patch.object(native.os, 'statvfs', return_value=types.SimpleNamespace(f_bavail=20*1024**3, f_frsize=1)):
+                            original = list(sys.path)
+                            sys.path.insert(0, str(PATH.parent))
+                            try:
+                                native.install('installer-branding')
+                            finally:
+                                sys.path[:] = original
+            import json
+            manifest = json.loads((stage/'usr/share/doc/calamares-branding-toddy/source-manifest.json').read_text())
+            self.assertIn('docs/evidence/B02-native-owner-desktop.png', manifest['source_inputs'])
+            self.assertIn('docs/evidence/B02-native-owner-session.json', manifest['source_inputs'])
+            self.assertTrue((stage/'usr/share/calamares/branding/toddy/branding.desc').is_file())
+
 
 if __name__ == '__main__':
     unittest.main()
