@@ -495,3 +495,64 @@ manifests; an MVP manifest cannot cross into a standard image slot or journal.
 This path preserves the same signed-archive, resource, protected source,
 capacity, finalizer, ownership and first-boot prerequisites. Its distinct media
 and journal labels record a limited MVP scope, not passed installation or G2.
+
+## First real MVP install, then installable MVP media
+
+The first staged MVP live image deliberately has `installer_ready:false`:
+production `Composition()` cannot run without real installed-boot evidence.
+Do not publish that first desktop/qualification ISO as an installable release.
+The trusted coordinator uses the existing sealed plan/password/cancel FD
+protocol through this separate source-only entry for the first blank VM:
+
+```text
+/opt/toddy-build/scripts/build/phase2/mvp_installer_qualification.py review ...
+/opt/toddy-build/scripts/build/phase2/mvp_installer_qualification.py execute ...
+/opt/toddy-build/scripts/build/phase2/mvp_installer_qualification.py collect --review ACTUAL_REVIEW_FILE
+```
+
+Run with native root Python in the guarded trusted qualification environment,
+with source and fixed MVP inputs available. The wrapper accepts only
+`/sources/stage/toddy-mvp-installer-native-inputs` and checks the typed non-G2
+manifest on every recheck. All actual disk identity, fresh owner/password FD,
+plan confirmation, cancellation, native finalizer and boot callbacks remain the
+original source implementation. There is no production factory path override,
+`--test` flag or live Polkit exemption. `collect` preserves real reports and the
+actual disk/identity handoff in the MVP input directory. Never put password bytes
+in a command, environment, log or review file.
+
+After an actual blank-VM install and detached UEFI installed-owner boot, retain
+the real `qualification/boot-uefi.json` and its source-bound
+`qualification/owner-settings-uefi.json` alongside the actual nine finalizer
+reports. The existing sealer already supports one qualified firmware; BIOS is
+not silently asserted. Then run:
+
+```sh
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh seal-mvp-installer
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh embed-mvp-installer
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-mvp-installer-compress
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-mvp-installer-initramfs
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-mvp-installer-iso
+```
+
+The sealer consumes the fixed MVP offline-root-2, its actual input/report set and
+current source closure, publishing only a fresh
+`/sources/stage/toddy-mvp-installer-composition-1`. It validates real signed
+packages and firmware evidence; no missing receipt is synthesized. Embedding
+requires the existing complete first live snapshot and independently calls the
+production `Composition.readiness()` over both source and copied staging trees.
+It adds only the exact sealed composition tree under
+`/usr/share/toddy/installer/composition`; complete before/after bytes, metadata,
+xattrs and hardlinks reject any other change except the immediate parent's
+mtime. Existing ACLs and their sidecar remain unchanged; new source files must
+have no xattrs/ACLs. Copy bounds preserve the16GiB reserve, and every copied file
+and output directory is fsynced before the final journal.
+
+`evidence-installer/assembly.json` is published separately with
+`installer_ready:true`, the exact composition/copy receipt hashes and actual
+supported firmware list. First desktop evidence and ISO are retained. New final
+media generations are `toddy-mvp-live-installer-compression-1`,
+`toddy-mvp-live-installer-initramfs-1` and
+`toddy-mvp-installer-release-media-1`. Their result remains non-G2 and exposes
+installer readiness truthfully. Existing/partial seals or embedding intents are
+preserved and refuse replay; source changes after the first snapshot require a
+new measured source generation rather than overriding the receipt.

@@ -306,7 +306,7 @@ def stage_live(system,kind='live'):
     evidence=assembly.work/'evidence';evidence.mkdir(mode=0o700)
     write(evidence/'image-manifest.json',image)
     external=lambda path:Path('/mnt/lfs')/path.relative_to('/')
-    journal={'assembled':True,'release_profile':True,'release_accepted':False,
+    journal={'assembled':True,'release_profile':True,'release_accepted':False,'installer_ready':False,
         'native_kernel_boot_verified':False,'image':str(external(assembly.root)),
         'evidence':str(external(evidence)),'native_image':str(assembly.root),
         'assembler_sha256':p.digest(Path(__file__)),'payload_manifest_sha256':inputs.descriptor['payload_manifest_sha256'],

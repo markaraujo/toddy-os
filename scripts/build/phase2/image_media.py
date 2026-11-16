@@ -43,7 +43,7 @@ EPOCH=1794787200  # 2026-11-16 00:00:00 UTC, explicit source recipe timestamp.
 RESERVE=16*1024**3
 
 
-def configure_mvp():
+def configure_mvp(installer=False):
     global IMAGE,JOURNAL,COMPRESSION,INITRAMFS,MEDIA,PROJECTION,MVP
     MVP=True
     IMAGE=STAGE/'toddy-mvp-live-image-2/mvp-live-root-2'
@@ -52,6 +52,11 @@ def configure_mvp():
     INITRAMFS=STAGE/'toddy-mvp-live-initramfs-1'
     MEDIA=STAGE/'toddy-mvp-release-media-1'
     PROJECTION=STAGE/'toddy-mvp-image-projection-1/live-projection.json'
+    if installer:
+        JOURNAL=STAGE/'toddy-mvp-live-image-2/evidence-installer/assembly.json'
+        COMPRESSION=STAGE/'toddy-mvp-live-installer-compression-1'
+        INITRAMFS=STAGE/'toddy-mvp-live-installer-initramfs-1'
+        MEDIA=STAGE/'toddy-mvp-installer-release-media-1'
 
 MVP=False
 
@@ -82,6 +87,10 @@ def assembly_input():
         raise ValueError('Real current B12 final assembly journal required')
     if MVP and (journal.get('delivery_class')!='phase2-mvp-preinstalled-v1' or journal.get('g2_eligible') is not False):raise ValueError('MVP media requires typed non-G2 journal')
     if not MVP and journal.get('delivery_class')=='phase2-mvp-preinstalled-v1':raise ValueError('MVP journal cannot enter standard media')
+    if JOURNAL.parent.name=='evidence-installer':
+        embed=initramfs_input.physical(TARGET,JOURNAL.parent/'installer-embedded.json')
+        composition=initramfs_input.physical(TARGET,IMAGE/'usr/share/toddy/installer/composition/composition.json')
+        if journal.get('installer_ready') is not True or journal.get('installer_embed_receipt_sha256')!=p.digest(embed) or journal.get('installer_composition_sha256')!=p.digest(composition):raise ValueError('Actual embedded installer custody required')
     actions=[row for row in journal['actions'] if row['step']=='image-manifest']
     if len(actions)!=1 or actions[0].get('finished') is not True or Path(actions[0]['report']).name!=actions[0]['report']:
         raise ValueError('Final assembly manifest action missing')
@@ -290,6 +299,7 @@ def iso_phase(backend):
     with (MEDIA/'SHA256SUMS').open('x') as stream:
         stream.write(media['sha256']+'  toddy.iso\n');stream.flush();os.fsync(stream.fileno())
     if MVP:result.update(delivery_class='phase2-mvp-preinstalled-v1',g2_eligible=False)
+    result['installer_ready']=JOURNAL.parent.name=='evidence-installer'
     result.update(complete=True,media=media,pending=['actual BIOS/UEFI live and blank-disk installer qualification','final source/license/privacy audit','physical owner testing'])
     atomic_json(MEDIA/'result.json',result)
     return result
@@ -315,11 +325,12 @@ def inherited_media_lease():
 
 
 def main():
-    if (sys.argv[1:] not in (['compress'],['initramfs'],['iso'],['mvp-compress'],['mvp-initramfs'],['mvp-iso']) or os.getuid()!=0 or os.geteuid()!=0 or
+    if (sys.argv[1:] not in (['compress'],['initramfs'],['iso'],['mvp-compress'],['mvp-initramfs'],['mvp-iso'],['mvp-installer-compress'],['mvp-installer-initramfs'],['mvp-installer-iso']) or os.getuid()!=0 or os.geteuid()!=0 or
             Path(__file__).resolve()!=Path('/opt/toddy-build/scripts/build/phase2/image_media.py')):
         raise ValueError('Fixed root coordinator media command required')
     action=sys.argv[1]
-    if action.startswith('mvp-'):configure_mvp();action=action.removeprefix('mvp-')
+    if action.startswith('mvp-installer-'):configure_mvp(installer=True);action=action.removeprefix('mvp-installer-')
+    elif action.startswith('mvp-'):configure_mvp();action=action.removeprefix('mvp-')
     os.umask(0o077)
     subprocess.run(['/usr/bin/bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
     inherited_media_lease()

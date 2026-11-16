@@ -132,17 +132,18 @@ def _collect(plan,inputs,system,*,stream_only):
             files['installed-handoff-'+plan['options']['operation_id']+'.json']=data
             if sum(map(len,files.values()))>8*1024**2:raise InstallError('installer_collect_stream_limit')
             return {'state':'actual-evidence-read-only-stream','files':{name:base64.b64encode(body).decode() for name,body in files.items()}}
-        destination=INPUTS/'qualification'
+        directory=getattr(inputs,'directory',INPUTS)
+        destination=directory/'qualification'
         if destination.exists():private_directory(destination)
         elif destination.is_symlink():raise InstallError('installer_collect_redirected_qualification')
         for name,body in reports.items():
             path=destination/(name+'.json')
             if os.path.lexists(path) and secured(path).read_bytes()!=body:
                 raise InstallError('installer_collect_existing_finalizer_differs')
-        output=INPUTS/('installed-handoff-'+plan['options']['operation_id']+'.json')
+        output=directory/('installed-handoff-'+plan['options']['operation_id']+'.json')
         if os.path.lexists(output) and secured(output).read_bytes()!=data:raise InstallError('installer_collect_existing_handoff_differs')
         # All nine real source reports/receipts are checked before any output.
-        p.require_capacity(INPUTS,p.file_tree_storage_bound({**{'qualification/'+name+'.json':len(body) for name,body in reports.items()},output.name:len(data)},os.statvfs(INPUTS).f_frsize))
+        p.require_capacity(directory,p.file_tree_storage_bound({**{'qualification/'+name+'.json':len(body) for name,body in reports.items()},output.name:len(data)},os.statvfs(directory).f_frsize))
         inputs.recheck()
         if not destination.exists():destination.mkdir(mode=0o700)
         for name,body in reports.items():write_new(destination/(name+'.json'),body)
@@ -159,7 +160,7 @@ def collect(plan,inputs,system):return _collect(plan,inputs,system,stream_only=F
 def collect_stream(plan,inputs,system):return _collect(plan,inputs,system,stream_only=True)
 
 
-def main():
+def main(*,inputs_type=NativeInputs):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--review',required=True,type=Path,help='Actual saved review envelope; contains no credential')
     parser.add_argument('--stream',action='store_true',help='Read-only actual bytes to private operator transport; creates no files')
@@ -167,7 +168,7 @@ def main():
     if os.getuid()!=0 or os.geteuid()!=0:raise InstallError('installer_collect_root_coordinator_required')
     os.umask(0o077)
     operation=collect_stream if args.stream else collect
-    print(payload_module().encoded(operation(read_review(args.review),NativeInputs(),LinuxDisk())).decode(),end='')
+    print(payload_module().encoded(operation(read_review(args.review),inputs_type(),LinuxDisk())).decode(),end='')
 
 
 if __name__=='__main__':main()

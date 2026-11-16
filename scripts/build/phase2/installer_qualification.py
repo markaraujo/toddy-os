@@ -33,18 +33,20 @@ class NativeInputs:
     required. Only retained BIOS/UEFI boot evidence is collected by this harness,
     rather than asserted before the first boot. No marker becomes production-ready.
     """
+    directory=INPUTS
+
     def __init__(self):
-        self.bundle=INPUTS/'payload';self.recheck()
+        self.bundle=self.directory/'payload';self.recheck()
 
     def recheck(self):
         p=payload_module()
         paths=('payload/manifest.json','policy.json','generated-entries.json','boot-profile.json','expected-image-manifest.json')
-        pins={name:p.digest(secured(INPUTS/name)) for name in paths}
+        pins={name:p.digest(secured(self.directory/name)) for name in paths}
         source_hashes={name:p.digest(secured(source_path(name))) for name in SOURCES}
         pins.update({'source:'+name:digest for name,digest in source_hashes.items()})
         if hasattr(self,'pins') and self.pins!=pins:raise InstallError('installer_qualification_inputs_changed')
         self.pins=pins
-        read=lambda name:p.strict(secured(INPUTS/name).read_bytes())
+        read=lambda name:p.strict(secured(self.directory/name).read_bytes())
         self.manifest=p.PreparedPayload(self.bundle,manifest_sha256=pins['payload/manifest.json'],runner=None,finalizer=None)._load()
         bundle_namespace(self.bundle,self.manifest);validate_installed_handoff(self.manifest,source_hashes)
         self.policy=read('policy.json');validate_policy(self.policy,self.manifest)
@@ -74,7 +76,7 @@ def callbacks(inputs,system):
     return verify,install,InstalledBoot(inputs.bundle,inputs.manifest,inputs.boot,system),pending
 
 
-def main():
+def main(*,inputs_type=NativeInputs):
     if os.getuid()!=0 or os.geteuid()!=0:raise SystemExit('installer_qualification_root_coordinator_required')
     resource.setrlimit(resource.RLIMIT_CORE,(0,0));os.umask(0o077)
     parser=argparse.ArgumentParser(description=__doc__)
@@ -90,7 +92,7 @@ def main():
         from runtime.installer.launch import qualification_command
         command,environment=qualification_command(args.uid,args.display,args.locale)
         os.execve(command[0],command,environment)
-    inputs=NativeInputs();system=LinuxDisk();policy=QualificationPolicy(args.serial)
+    inputs=inputs_type();system=LinuxDisk();policy=QualificationPolicy(args.serial)
     if args.action=='review':
         request=sealed_json(args.options_fd)
         if not isinstance(request,dict) or set(request)!={'device','options'}:raise InstallError('installer_qualification_options')
