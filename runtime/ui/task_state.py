@@ -40,6 +40,7 @@ class TaskState:
         self.submitting = False
         self.acceptance_uncertain = False
         self.profile_revision = None
+        self.profile_id = None
 
     def begin_submit(self):
         if self.submitting or self.acceptance_uncertain or \
@@ -69,6 +70,7 @@ class TaskState:
                 value.get('task_id') != self.task_id or not isinstance(value.get('profile_revision'), str) or \
                 not REVISION.fullmatch(value['profile_revision']) or \
                 (self.profile_revision is not None and value['profile_revision'] != self.profile_revision) or \
+                (self.profile_id is not None and 'profile_id' in value and value['profile_id']!=self.profile_id) or \
                 not isinstance(value.get('state'), str) or value['state'] not in STATES or \
                 type(value.get('sequence')) is not int or not 0 <= value['sequence'] <= 2**53-1 or \
                 type(value.get('cancel_requested')) is not bool or type(value.get('result_uncertain')) is not bool or \

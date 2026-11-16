@@ -64,7 +64,19 @@ explicit reload rather than overwriting someone else's configuration. Restore
 selects an actual prior revision through the broker's expected-revision guard.
 Invalid configuration preserves the current profile. Existing running tasks retain
 their pinned revision. This UI does not write the canonical database or grant root.
-Full persona/bundle import/export and multi-profile controls remain separate work.
+Named profile controls negotiate `named-profiles-v1`: inspect the bounded registry,
+Create, Clone, explicitly Use, Export and Import. Merely inspecting a profile does
+not select it. Clone/import reset provider references, privileged tool enablement,
+automation, history and memory through the broker's reviewed portable-bundle
+contract. Export uses the actual sealed broker descriptor and a private atomic
+local-file save that refuses existing destinations; import accepts bounded owned
+regular local files without following symlinks. Neither copies the canonical DB.
+Running work retains its original profile and is labeled after selection changes.
+
+After an accepted submission reply is lost, `task-history-v1` enables a pure
+`LookupRequest(profile_id,request_id)` recovery query. A recovered snapshot must
+match the captured profile revision. The UI never sends SubmitTask again as part
+of this lookup; absent/unavailable metadata keeps acceptance uncertain.
 
 Checks:
 
@@ -104,3 +116,14 @@ Terminal control characters are filtered from provider/status output. Prompts
 are not saved by this client; prefer standard input over command-line text if
 process arguments should not expose them. No plaintext credential fallback is
 provided. Native installed terminal lifecycle remains B06 qualification.
+
+The actual-source profile fixture drives Create/Clone/Use, sealed-descriptor
+Export/Import and a deliberately dropped accepted submission reply through real
+GTK controls and a private session bus (EN/PT). It requires a host GTK display
+and an active host logind session; it does not qualify guest focus, a provider,
+a keyring, root execution or physical hardware:
+
+```sh
+dbus-run-session --config-file tests/fixtures/setup-client/bus.conf -- python3 tests/fixtures/broker-service/profile_ui.py --locale en
+dbus-run-session --config-file tests/fixtures/setup-client/bus.conf -- python3 tests/fixtures/broker-service/profile_ui.py --locale pt-BR
+```

@@ -12,7 +12,7 @@ gi.require_version('Adw', '1')
 from gi.repository import Adw, Gio, Gtk
 
 from ..setup.pending import SetupError
-from .model import SetupModel, state_directory
+from .model import SetupModel, state_directory, open_profile_import, save_profile_export
 from .bridge import TaskClient
 from .credentials import CredentialsClient
 from ..connections.secret_store import CredentialError
@@ -43,6 +43,9 @@ class SetupWindow(Adw.ApplicationWindow):
         self._profile_dirty=False
         self._setting_profile=False
         self._profile_force_reload=True
+        self.registry_rows=[]
+        self._registry_setting=False
+        self._registry_observed_profile=None
         self._setup()
         self._conversation()
         self._software()
@@ -166,6 +169,7 @@ class SetupWindow(Adw.ApplicationWindow):
     def _profiles(self):
         text=self.model.text
         page=self._page('profile',text('profile.settings_title'))
+        self._registry_form(page)
         page.append(self._label(text('profile.settings_notice')))
         self.profile_status=self._label(text('profile.settings_unavailable'))
         page.append(self.profile_status)
@@ -194,6 +198,138 @@ class SetupWindow(Adw.ApplicationWindow):
         self.profile_restore.set_sensitive(False)
         self.profile_restore.connect('clicked',self._restore_profile)
         page.append(self.profile_restore)
+
+    def _registry_form(self,page):
+        text=self.model.text
+        group=Adw.PreferencesGroup(title=text('profile.named_title'),description=text('profile.named_notice'))
+        self.profile_picker=Gtk.DropDown.new_from_strings([])
+        self.profile_picker.connect('notify::selected',lambda *_:self._registry_sensitivity())
+        group.add(self.profile_picker)
+        self.profile_use=Gtk.Button(label=text('profile.use'))
+        self.profile_use.connect('clicked',self._select_named)
+        group.add(self.profile_use)
+        self.new_profile_id=Gtk.Entry(placeholder_text=text('profile.new_id'),max_length=64)
+        self.new_profile_id.set_text('profile-'+uuid.uuid4().hex[:8])
+        group.add(self.new_profile_id)
+        creation=Gtk.Box(spacing=12,margin_top=8,margin_bottom=8)
+        self.profile_create=Gtk.Button(label=text('profile.create'))
+        self.profile_create.connect('clicked',self._create_named)
+        self.profile_clone=Gtk.Button(label=text('profile.clone'))
+        self.profile_clone.connect('clicked',self._clone_named)
+        creation.append(self.profile_create);creation.append(self.profile_clone);group.add(creation)
+        files=Gtk.Box(spacing=12,margin_top=8,margin_bottom=8)
+        self.profile_export=Gtk.Button(label=text('profile.export'))
+        self.profile_export.connect('clicked',self._export_named)
+        self.profile_import=Gtk.Button(label=text('profile.import'))
+        self.profile_import.connect('clicked',self._import_named)
+        files.append(self.profile_export);files.append(self.profile_import);group.add(files)
+        self.registry_status=self._label(text('profile.registry_unavailable'))
+        group.add(self.registry_status)
+        page.append(group)
+
+    def _chosen_profile(self):
+        index=self.profile_picker.get_selected()
+        return self.registry_rows[index] if index<len(self.registry_rows) else None
+
+    def _registry_sensitivity(self):
+        if self._registry_setting or not hasattr(self,'client'):return
+        available=self.client.phase=='ready' and self.client.profile_list is not None
+        chosen=self._chosen_profile()
+        ready=available and chosen is not None and chosen['health']=='ready'
+        idle=not self.client.profile_mutating
+        self.profile_use.set_sensitive(bool(ready and idle))
+        self.profile_clone.set_sensitive(bool(ready and idle))
+        self.profile_export.set_sensitive(bool(ready and idle))
+        self.profile_create.set_sensitive(available and idle)
+        self.profile_import.set_sensitive(available and idle)
+
+    def _render_registry(self):
+        client=self.client
+        listing=client.profile_list
+        if listing is not None:
+            selected=self._chosen_profile()
+            keep=selected['id'] if selected else listing['active_profile_id']
+            rows=listing['profiles']
+            if rows!=self.registry_rows:
+                self._registry_setting=True
+                self.registry_rows=list(rows)
+                labels=[row['display_name']+' ('+row['id']+')'+
+                        (' — '+self.model.text('profile.needs_recovery') if row['health']!='ready' else '') for row in rows]
+                self.profile_picker.set_model(Gtk.StringList.new(labels))
+                ids=[row['id'] for row in rows]
+                if keep in ids:self.profile_picker.set_selected(ids.index(keep))
+                elif listing['active_profile_id'] in ids:self.profile_picker.set_selected(ids.index(listing['active_profile_id']))
+                self._registry_setting=False
+            active=listing['active_profile_id']
+            if self._registry_observed_profile is not None and active!=self._registry_observed_profile:
+                self._profile_force_reload=True;self._profile_dirty=False
+                self.remote_consent.set_active(False)
+            self._registry_observed_profile=active
+        key={
+            'loaded':'profile.registry_loaded','created':'profile.created','cloned':'profile.cloned',
+            'selected':'profile.selected','imported':'profile.imported','exported':'profile.exported',
+            'working':'profile.registry_working','failed':'profile.registry_error','unknown':'profile.registry_unknown',
+        }.get(client.profile_action_status,'profile.registry_unavailable')
+        self.registry_status.set_text(self.model.text(key))
+        self._registry_sensitivity()
+
+    def _create_named(self,*_):
+        try:self.client.create_profile(self.new_profile_id.get_text())
+        except ValueError:self.registry_status.set_text(self.model.text('profile.registry_error'))
+
+    def _clone_named(self,*_):
+        try:
+            chosen=self._chosen_profile()
+            if chosen is None:raise ValueError('no_profile')
+            self.client.clone_profile(chosen['id'],chosen['revision'],self.new_profile_id.get_text())
+        except ValueError:self.registry_status.set_text(self.model.text('profile.registry_error'))
+
+    def _select_named(self,*_):
+        try:
+            chosen=self._chosen_profile()
+            if chosen is None:raise ValueError('no_profile')
+            self._profile_force_reload=True;self._profile_dirty=False
+            self.remote_consent.set_active(False)
+            self.client.select_profile(chosen['id'])
+        except ValueError:self.registry_status.set_text(self.model.text('profile.registry_error'))
+
+    def _export_to(self,path,profile_id,revision):
+        self.client.export_profile(profile_id,revision,lambda descriptor:save_profile_export(descriptor,path))
+
+    def _import_from(self,path,target_id):
+        descriptor=open_profile_import(path)
+        try:self.client.import_profile(target_id,descriptor)
+        finally:os.close(descriptor)
+
+    def _export_named(self,*_):
+        chosen=self._chosen_profile()
+        if chosen is None:return
+        chooser=Gtk.FileChooserNative.new(self.model.text('profile.export'),self,Gtk.FileChooserAction.SAVE,
+                                          self.model.text('profile.export'),self.model.text('profile.file_cancel'))
+        chooser.set_current_name(chosen['id']+'.toddy-profile.json')
+        def selected(dialog,response):
+            try:
+                if response==Gtk.ResponseType.ACCEPT:
+                    path=dialog.get_file().get_path()
+                    if path is None:raise ValueError('local_file_required')
+                    self._export_to(Path(path),chosen['id'],chosen['revision'])
+            except (ValueError,OSError):self.registry_status.set_text(self.model.text('profile.file_error'))
+            finally:dialog.destroy()
+        chooser.connect('response',selected);chooser.show()
+
+    def _import_named(self,*_):
+        target_id=self.new_profile_id.get_text()
+        chooser=Gtk.FileChooserNative.new(self.model.text('profile.import'),self,Gtk.FileChooserAction.OPEN,
+                                          self.model.text('profile.import'),self.model.text('profile.file_cancel'))
+        def selected(dialog,response):
+            try:
+                if response==Gtk.ResponseType.ACCEPT:
+                    path=dialog.get_file().get_path()
+                    if path is None:raise ValueError('local_file_required')
+                    self._import_from(Path(path),target_id)
+            except (ValueError,OSError):self.registry_status.set_text(self.model.text('profile.file_error'))
+            finally:dialog.destroy()
+        chooser.connect('response',selected);chooser.show()
 
     def _profile_edited(self,*_):
         if not self._setting_profile and hasattr(self,'client'):
@@ -356,6 +492,7 @@ class SetupWindow(Adw.ApplicationWindow):
             message = text('task.native_ready')
         self.task_status.set_text(message)
         self._render_conversation(active,message)
+        self._render_registry()
         self._render_profile()
 
     def _render_conversation(self,active,status):
@@ -372,6 +509,8 @@ class SetupWindow(Adw.ApplicationWindow):
         self.remote_consent.set_visible(ready and remote)
         self.send_button.set_sensitive(can_send and (not remote or self.remote_consent.get_active()))
         self.conversation_stop.set_sensitive(self.stop_button.get_sensitive())
+        if client.task_profile_id and client.task_profile_id!=caps.get('profile_id'):
+            status=text('profile.running_original').format(profile=client.task_profile_id)+'\n'+status
         self.conversation_status.set_text(status if client.state.task_id or client.state.submitting
                                           else text('conversation.ready' if ready else 'conversation.unavailable'))
         self.history_status.set_text(text('conversation.saved_history') if client.text and client.text.history_enabled

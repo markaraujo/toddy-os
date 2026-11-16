@@ -947,6 +947,226 @@
         "en": "The credential could not be saved or removed. Check the reference and unlock the system credential store; no plain-text fallback was used.",
         "pt-BR": "Não foi possível salvar ou remover a credencial. Confira a referência e desbloqueie o cofre do sistema; não foi usado armazenamento alternativo em texto simples."
       }
+    },
+    {
+      "id": "profile.named_title",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Named profiles",
+        "pt-BR": "Perfis nomeados"
+      }
+    },
+    {
+      "id": "profile.named_notice",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Create or clone a profile, review it, then choose Use profile. Imports omit credentials, history, memory, automation and privileged tool enablement. Running work keeps its original profile.",
+        "pt-BR": "Crie ou clone um perfil, confira e escolha Usar perfil. Importações não incluem credenciais, histórico, memória, automações nem ferramentas administrativas ativadas. Tarefas em andamento mantêm o perfil original."
+      }
+    },
+    {
+      "id": "profile.use",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Use profile",
+        "pt-BR": "Usar perfil"
+      }
+    },
+    {
+      "id": "profile.new_id",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "New profile ID: lowercase letters, digits and hyphens",
+        "pt-BR": "ID do novo perfil: letras minúsculas, números e hífens"
+      }
+    },
+    {
+      "id": "profile.create",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Create profile",
+        "pt-BR": "Criar perfil"
+      }
+    },
+    {
+      "id": "profile.clone",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Clone selected profile",
+        "pt-BR": "Clonar perfil selecionado"
+      }
+    },
+    {
+      "id": "profile.export",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Export profile",
+        "pt-BR": "Exportar perfil"
+      }
+    },
+    {
+      "id": "profile.import",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Import as new profile",
+        "pt-BR": "Importar como novo perfil"
+      }
+    },
+    {
+      "id": "profile.file_cancel",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Cancel",
+        "pt-BR": "Cancelar"
+      }
+    },
+    {
+      "id": "profile.file_error",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Choose a readable local profile file or a new export filename. Existing files are never overwritten.",
+        "pt-BR": "Escolha um arquivo local de perfil legível ou um novo nome para exportar. Arquivos existentes nunca são sobrescritos."
+      }
+    },
+    {
+      "id": "profile.registry_unavailable",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Named profiles require a compatible connected service.",
+        "pt-BR": "Os perfis nomeados precisam de um serviço compatível conectado."
+      }
+    },
+    {
+      "id": "profile.registry_loaded",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Profiles loaded. Selection is separate from creation or import.",
+        "pt-BR": "Perfis carregados. A seleção é feita separadamente da criação ou importação."
+      }
+    },
+    {
+      "id": "profile.registry_working",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Saving or reading profile state.",
+        "pt-BR": "Salvando ou lendo o estado do perfil."
+      }
+    },
+    {
+      "id": "profile.registry_error",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The profile operation was rejected. Check the ID and current revision; working profiles were preserved.",
+        "pt-BR": "A operação do perfil foi rejeitada. Confira o ID e a revisão atual; os perfis existentes foram preservados."
+      }
+    },
+    {
+      "id": "profile.registry_unknown",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The profile change was not confirmed. Reload the profile list before retrying.",
+        "pt-BR": "A mudança do perfil não foi confirmada. Recarregue a lista antes de tentar novamente."
+      }
+    },
+    {
+      "id": "profile.created",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Profile created with deferred setup. Review it before choosing Use profile.",
+        "pt-BR": "Perfil criado com configuração adiada. Confira antes de escolher Usar perfil."
+      }
+    },
+    {
+      "id": "profile.cloned",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Profile cloned with safe defaults and no copied private state. Review it before activation.",
+        "pt-BR": "Perfil clonado com padrões seguros, sem copiar dados privados. Confira antes de ativar."
+      }
+    },
+    {
+      "id": "profile.selected",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Profile selected. Existing work keeps its captured profile and revision.",
+        "pt-BR": "Perfil selecionado. Tarefas existentes mantêm o perfil e a revisão originais."
+      }
+    },
+    {
+      "id": "profile.imported",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Profile imported with safe defaults. It was not activated.",
+        "pt-BR": "Perfil importado com padrões seguros. Ele não foi ativado."
+      }
+    },
+    {
+      "id": "profile.exported",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Private profile export saved without credentials or canonical memory. Review user-authored text before sharing.",
+        "pt-BR": "Exportação privada salva sem credenciais nem memória canônica. Confira os textos do usuário antes de compartilhar."
+      }
+    },
+    {
+      "id": "profile.needs_recovery",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Needs recovery",
+        "pt-BR": "Precisa de recuperação"
+      }
+    },
+    {
+      "id": "profile.running_original",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Existing task uses profile {profile}.",
+        "pt-BR": "A tarefa existente usa o perfil {profile}."
+      }
     }
   ]
 }

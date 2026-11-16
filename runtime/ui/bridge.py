@@ -1,6 +1,7 @@
 """Async same-user session-bus client with no automatic task resubmission."""
 import json
 import os
+import re
 import uuid
 
 import gi
@@ -37,6 +38,15 @@ class TaskClient:
         self.profile_stage = None
         self.profile_status = 'unavailable'
         self.profile_edit_generation = 0
+        self.profile_list = None
+        self.profile_action_status = 'unavailable'
+        self.profile_mutating = False
+        self.task_profile_id = None
+        self.pending_request = None
+        self.acceptance_lookup = None
+        self.profile_subscription = None
+        self.observed_profile_id = None
+        self.observed_profile_revision = None
         self.pending = set()
         self.watch = Gio.bus_watch_name(Gio.BusType.SESSION, BUS, Gio.BusNameWatcherFlags.NONE,
                                         self._appeared, self._vanished)
@@ -50,6 +60,9 @@ class TaskClient:
         if self.subscription is not None:
             self.connection.signal_unsubscribe(self.subscription)
             self.subscription = None
+        if self.profile_subscription is not None:
+            self.connection.signal_unsubscribe(self.profile_subscription)
+            self.profile_subscription = None
         if self.text_subscription is not None:
             self.connection.signal_unsubscribe(self.text_subscription)
             self.text_subscription = None
@@ -60,6 +73,9 @@ class TaskClient:
         self.text_fetching = False
         self.text_dirty = False
         self.profile_stage = None
+        if self.profile_mutating:
+            self.profile_action_status='unknown'
+        self.profile_mutating=False
         for cancellable in tuple(self.pending):
             cancellable.cancel()
         self.pending.clear()
@@ -86,6 +102,8 @@ class TaskClient:
                     None, Gio.DBusSignalFlags.NONE, self._signal, None)
                 self.text_subscription = conn.signal_subscribe(owner, INTERFACE, 'TaskTextChanged', OBJECT,
                     None, Gio.DBusSignalFlags.NONE, self._text_signal, None)
+                self.profile_subscription = conn.signal_subscribe(owner, INTERFACE, 'ProfilesChanged', OBJECT,
+                    None, Gio.DBusSignalFlags.NONE, self._profiles_signal, None)
                 self._call('GetCapabilities', None, self._capabilities)
             except (GLib.Error, ValueError):
                 self.phase = 'unsupported'
@@ -128,13 +146,34 @@ class TaskClient:
             GLib.VariantType('(s)'), Gio.DBusCallFlags.NO_AUTO_START, 5000, cancel, finished, None)
 
     def _capabilities(self, data):
+        previous=self.observed_profile_id
+        previous_revision=self.observed_profile_revision
         self.capabilities = capabilities(data)
+        selected=self.capabilities['profile_id']
+        self.observed_profile_id=selected
+        self.observed_profile_revision=self.capabilities['profile_revision']
+        if previous is not None and previous!=selected:
+            self.profile=None
+            self.profile_stage=None
+            self.profile_edit_generation+=1
+            self.history=[]
+            if self.state.snapshot is not None and self.state.snapshot['state'] in {'completed','failed','canceled'} and not self.state.snapshot['result_uncertain']:
+                self.state=TaskState()
+                self.text=None
+                self.text_generation+=1
+                self.current_prompt=''
+                self.task_profile_id=None
         self.phase = 'ready'
         if self.state.task_id is not None:
             self.refresh()
             self.refresh_text()
-        if 'profile-settings-v1' in self.capabilities['features']:
+        if 'profile-settings-v1' in self.capabilities['features'] and (self.profile is None or
+                previous!=selected or previous_revision!=self.capabilities['profile_revision']):
             self.refresh_profile()
+        if 'named-profiles-v1' in self.capabilities['features']:
+            self.refresh_profiles()
+        if self.state.acceptance_uncertain and self.pending_request is not None:
+            self.lookup_acceptance()
 
     def recheck(self):
         """Explicit read-only recovery; an unknown submission is never replayed."""
@@ -173,13 +212,19 @@ class TaskClient:
         self.text_dirty=False
         self.current_prompt=prompt
         self.state.profile_revision=self.capabilities['profile_revision']
+        self.task_profile_id=self.capabilities['profile_id']
+        self.state.profile_id=self.task_profile_id
+        request_id=uuid.uuid4().hex
+        self.pending_request={'request_id':request_id,'profile_id':self.task_profile_id,
+                              'profile_revision':self.state.profile_revision}
         payload=json.dumps(request,ensure_ascii=False,separators=(',',':'),allow_nan=False)
         def accepted(task_id):
             self.state.submitted(task_id)
+            self.pending_request=None
             self.text=TaskText(task_id)
             self.refresh()
             self.refresh_text()
-        self._call('SubmitTask',GLib.Variant('(ssss)',(uuid.uuid4().hex,
+        self._call('SubmitTask',GLib.Variant('(ssss)',(request_id,
             self.capabilities['profile_id'],self.capabilities['profile_revision'],payload)),accepted)
         self.changed()
 
@@ -263,6 +308,154 @@ class TaskClient:
         if task_id==self.state.task_id and (self.text is None or
                 (not self.text.cleanup_requested and sequence>=self.text.sequence)):
             self.refresh_text()
+
+    @staticmethod
+    def _profile_id(value):
+        if not isinstance(value,str) or not re.fullmatch(r'[a-z][a-z0-9-]{0,63}',value):
+            raise ValueError('invalid_profile_id')
+        return value
+
+    def refresh_profiles(self):
+        if self.phase!='ready' or 'named-profiles-v1' not in (self.capabilities or {}).get('features',[]):
+            return
+        def received(data):
+            value=body(data,32768)
+            if type(value.get('generation')) is not int or not 0<=value['generation']<=2**53-1 or \
+                    not isinstance(value.get('profiles'),list) or len(value['profiles'])>32:
+                raise ValueError('invalid_profile_list')
+            active=value.get('active_profile_id')
+            if active is not None:self._profile_id(active)
+            seen=set()
+            for profile in value['profiles']:
+                if not isinstance(profile,dict):raise ValueError('invalid_profile_list')
+                profile_id=self._profile_id(profile.get('id'))
+                if profile_id in seen or not isinstance(profile.get('display_name'),str) or \
+                        not 0<len(profile['display_name'])<=80 or profile.get('health') not in ('ready','recovery_required') or \
+                        type(profile.get('selected')) is not bool or \
+                        (profile.get('health')=='ready' and profile.get('revision') is None) or \
+                        (profile.get('revision') is not None and
+                         (not isinstance(profile['revision'],str) or not REVISION.fullmatch(profile['revision']))):
+                    raise ValueError('invalid_profile_list')
+                seen.add(profile_id)
+            if active is not None and active not in seen:raise ValueError('invalid_selected_profile')
+            if any(row['selected']!=(row['id']==active) for row in value['profiles']):raise ValueError('invalid_selected_profile')
+            self.profile_list=value
+            if self.profile_action_status=='unavailable':self.profile_action_status='loaded'
+        self._call('ListProfiles',None,received,lambda _code:setattr(self,'profile_action_status','failed'))
+
+    def _profiles_signal(self,_connection,sender,*_):
+        if sender==self.owner:
+            self.recheck()
+
+    def _profile_action(self,method,parameters,success):
+        if self.phase!='ready' or self.profile_mutating or \
+                'named-profiles-v1' not in (self.capabilities or {}).get('features',[]):
+            raise ValueError('profile_registry_unavailable')
+        self.profile_mutating=True
+        self.profile_action_status='working'
+        def received(data):
+            value=body(data,32768)
+            self._profile_id(value.get('profile_id'))
+            self.profile_mutating=False
+            self.profile_action_status=success
+            self.refresh_profiles()
+            if method=='SelectProfile':self.recheck()
+        def failed(_code):
+            self.profile_mutating=False
+            self.profile_action_status='unknown'
+            self.refresh_profiles()
+        self._call(method,parameters,received,failed)
+        self.changed()
+
+    def create_profile(self,profile_id):
+        self._profile_action('CreateProfile',GLib.Variant('(s)',(self._profile_id(profile_id),)),'created')
+
+    def clone_profile(self,source_id,revision,target_id):
+        if not isinstance(revision,str) or not REVISION.fullmatch(revision):raise ValueError('invalid_profile_revision')
+        self._profile_action('CloneProfile',GLib.Variant('(sss)',
+            (self._profile_id(source_id),revision,self._profile_id(target_id))),'cloned')
+
+    def select_profile(self,profile_id):
+        if self.profile_list is None:raise ValueError('profile_registry_unavailable')
+        selected=next((row for row in self.profile_list['profiles'] if row['id']==profile_id),None)
+        if selected is None or selected['health']!='ready':raise ValueError('profile_unavailable')
+        self._profile_action('SelectProfile',GLib.Variant('(st)',
+            (self._profile_id(profile_id),self.profile_list['generation'])),'selected')
+
+    def _fd_call(self,method,parameters,reply_type,fd_list,completed):
+        if self.phase!='ready' or self.owner is None:raise ValueError('profile_service_unavailable')
+        generation=self.generation
+        cancel=Gio.Cancellable();self.pending.add(cancel)
+        def finished(conn,result,*_):
+            self.pending.discard(cancel)
+            try:
+                value,descriptors=conn.call_with_unix_fd_list_finish(result)
+                if generation!=self.generation:return
+                completed(value,descriptors)
+            except (GLib.Error,ValueError,TypeError,OSError):
+                if generation==self.generation:
+                    self.profile_mutating=False;self.profile_action_status='unknown'
+                    self.refresh_profiles()
+            if generation==self.generation:self.changed()
+        try:
+            self.connection.call_with_unix_fd_list(self.owner,OBJECT,INTERFACE,method,parameters,
+                GLib.VariantType(reply_type),Gio.DBusCallFlags.NO_AUTO_START,5000,fd_list,cancel,finished,None)
+        except (GLib.Error,ValueError,TypeError,OSError):
+            self.pending.discard(cancel)
+            self.profile_mutating=False;self.profile_action_status='unknown'
+            self.changed()
+            raise
+
+    def export_profile(self,profile_id,revision,exported):
+        if not isinstance(revision,str) or not REVISION.fullmatch(revision):raise ValueError('invalid_profile_revision')
+        def received(value,descriptors):
+            if descriptors is None or descriptors.get_length()!=1:raise ValueError('invalid_export_descriptor')
+            descriptor=descriptors.get(value.unpack()[0])
+            try:exported(descriptor)
+            finally:os.close(descriptor)
+            self.profile_action_status='exported'
+        self._fd_call('ExportProfile',GLib.Variant('(ss)',(self._profile_id(profile_id),revision)),
+                      '(h)',None,received)
+
+    def import_profile(self,profile_id,descriptor):
+        profile_id=self._profile_id(profile_id)
+        if self.phase!='ready' or 'named-profiles-v1' not in (self.capabilities or {}).get('features',[]):
+            raise ValueError('profile_registry_unavailable')
+        if self.profile_mutating:raise ValueError('profile_registry_busy')
+        incoming=Gio.UnixFDList.new();index=incoming.append(descriptor)
+        self.profile_mutating=True;self.profile_action_status='working'
+        def received(value,_descriptors):
+            result=body(value.unpack()[0],32768)
+            self._profile_id(result.get('profile_id'))
+            self.profile_mutating=False;self.profile_action_status='imported'
+            self.refresh_profiles()
+        self._fd_call('ImportProfile',GLib.Variant('(sh)',(self._profile_id(profile_id),index)),
+                      '(s)',incoming,received)
+        self.changed()
+
+    def lookup_acceptance(self):
+        request=self.pending_request
+        if self.phase!='ready' or request is None or 'task-history-v1' not in self.capabilities['features']:
+            return
+        self.acceptance_lookup='checking'
+        def received(data):
+            value=body(data,32768)
+            if value.get('profile_id')!=request['profile_id'] or value.get('request_id')!=request['request_id'] or type(value.get('found')) is not bool:
+                raise ValueError('invalid_acceptance_lookup')
+            if not value['found']:
+                self.acceptance_lookup='not-found'
+                return
+            snapshot=value.get('task')
+            if not isinstance(snapshot,dict) or snapshot.get('profile_revision')!=request['profile_revision']:
+                raise ValueError('invalid_acceptance_lookup')
+            state=TaskState();state.profile_revision=request['profile_revision'];state.submitting=True;state.profile_id=request['profile_id']
+            state.submitted(snapshot.get('task_id'));state.observe(json.dumps(snapshot))
+            self.state=state;self.task_profile_id=request['profile_id']
+            self.pending_request=None;self.acceptance_lookup='found'
+            self.text=TaskText(state.task_id)
+            self.refresh();self.refresh_text()
+        self._call('LookupRequest',GLib.Variant('(ss)',(request['profile_id'],request['request_id'])),
+                   received,lambda _code:setattr(self,'acceptance_lookup','unknown'))
 
     def refresh_profile(self):
         if self.phase!='ready' or 'profile-settings-v1' not in self.capabilities['features']:
