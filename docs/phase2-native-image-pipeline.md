@@ -484,7 +484,7 @@ bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-mvp-initramfs
 bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-mvp-iso
 ```
 
-The projection is `toddy-mvp-image-projection-1`; input directories are
+The current projection is `toddy-mvp-image-projection-2`; input directories are
 `toddy-mvp-installer-native-inputs` and `toddy-mvp-live-native-inputs`. Candidate
 and fresh reviewed directories are `toddy-mvp-offline-image-{1,2}` and
 `toddy-mvp-live-image-{1,2}`. Reviewed root names `mvp-offline-root-2` and
@@ -567,3 +567,16 @@ They do not fall back to export2. Export2 remains immutable and is still the
 fixed standard-profile source; its older installer archive must never be replaced
 inside an existing export or signed index. No signature or successful export3
 receipt is created by this source-path change.
+
+## Current installer5 MVP inputs: projection2 and signed export4
+
+After the actual aggregate-cache installer5 revision3 package passes, the fixed
+`image_projection.py --mvp` command creates only the fresh
+`toddy-mvp-image-projection-2`. The MVP input coordinator and media dependency
+reader now require that generation and signed `toddy-package-export-4`.
+Standard projection2/export2 paths are unchanged. Preserve the prior actual
+MVP projection1/export3 and their signature/verification receipts as historical
+revision2 evidence; do not overwrite or reinterpret them after a package upgrade.
+Export/sign/verify the actual new closure before invoking MVP prepare actions.
+The earlier export3 staging commands in this guide describe the preserved prior
+checkpoint, not authorization to place export4 signatures in export3.

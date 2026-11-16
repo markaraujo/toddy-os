@@ -26,6 +26,7 @@ class MVPSlotsTests(unittest.TestCase):
    for name in names[:-1]:self.assertIn('toddy-mvp-',str(getattr(m,name)))
    self.assertTrue(m.MVP)
    self.assertEqual(m.IMAGE.name,'mvp-live-root-2')
+   self.assertEqual(m.PROJECTION.parent.name,'toddy-mvp-image-projection-2')
   self.assertEqual({name:getattr(m,name) for name in names},before)
  def test_exact_wrapper_input_split_keeps_mvp_kind_intact(self):
   result=subprocess.run(['/bin/bash','-c','set -eu; action=${1#inputs-}; kind=${action%-*}; operation=${action##*-}; printf "%s %s" "$operation" "$kind"','fixture','inputs-mvp-live-prepare'],check=True,capture_output=True,text=True)

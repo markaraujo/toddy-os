@@ -13,7 +13,7 @@ from runtime.installer.composition import secured,validate_policy
 TARGET=Path('/mnt/lfs');STAGE=TARGET/'sources/stage'
 PROJECTION=STAGE/'toddy-image-projection-2'
 EXPORT=STAGE/'toddy-package-export-2'
-MVP_EXPORT=STAGE/'toddy-package-export-3'
+MVP_EXPORT=STAGE/'toddy-package-export-4'
 
 def signed_export(kind):
     if kind not in ('base','live','mvp-base','mvp-live'):raise ValueError('Fixed image delivery profile required')
@@ -28,7 +28,7 @@ DENIED={'lfs','tester','builder','toddy','toddy-live','toddy-build','toddybuild'
 def selection(kind):
     if kind not in OUTPUT:raise ValueError('Fixed base/live input profile required')
     mvp=kind.startswith('mvp-');base_kind=kind.removeprefix('mvp-')
-    directory=STAGE/'toddy-mvp-image-projection-1' if mvp else PROJECTION
+    directory=STAGE/'toddy-mvp-image-projection-2' if mvp else PROJECTION
     profile=directory/('profile.json' if base_kind=='base' else 'live-profile.json')
     policy=p.strict(secured(profile).read_bytes())
     if mvp:

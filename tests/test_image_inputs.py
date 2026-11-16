@@ -5,9 +5,9 @@ from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts/build/phase2'))
 import image_inputs as image
 class ImageInputsTests(unittest.TestCase):
- def test_standard_signed_export2_is_preserved_while_mvp_requires_fresh3(self):
+ def test_standard_signed_export2_is_preserved_while_mvp_requires_fresh4(self):
   for kind in ('base','live'):self.assertEqual(image.signed_export(kind).name,'toddy-package-export-2')
-  for kind in ('mvp-base','mvp-live'):self.assertEqual(image.signed_export(kind).name,'toddy-package-export-3')
+  for kind in ('mvp-base','mvp-live'):self.assertEqual(image.signed_export(kind).name,'toddy-package-export-4')
   with self.assertRaises(ValueError):image.signed_export('arbitrary')
  def test_cache_binding_covers_additional_namespace_and_carries_no_replay_claim(self):
   sha=lambda value:hashlib.sha256(value.encode()).hexdigest()
