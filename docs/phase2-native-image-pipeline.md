@@ -386,3 +386,71 @@ relocks the lease. Direct invocation without that inherited lease fails closed.
 The root-owned temporary `/sources` view preserves underlying stage identity and
 outputs while hiding legacy writable source-cache ancestry only inside the job.
 Neither original cache permissions nor generated source evidence are changed.
+
+## Fixed current signed-input coordinator
+
+After returning the actual detached signature to the flat
+`/mnt/lfs/sources/stage/toddy-package-export-2`, use these builder-side commands
+through the protected-stage/global-lease wrapper:
+
+```sh
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh inputs-base-requirements
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh inputs-live-requirements
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh inputs-base-prepare
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh inputs-live-prepare
+```
+
+`image_inputs.py` consumes the actual projection2 generation, current native
+records/archives and the independently pinned public archive certificate. It
+verifies real `Release.gpg`, `Release` and `Packages` before creating input output.
+It uses the existing signed offline-payload preparation and measured capacity
+checks; it changes no packaged installer source. Base merges the two exact
+additional-component rows. Live already includes them and passes
+`required_additions=()` to the existing Python API, avoiding duplicate roots or
+the base-only CLI's additional-root check. Standard profiles continue to exclude
+all acquired backend/model/voice/integration packages.
+
+Outputs are fixed at `toddy-installer-native-inputs` and
+`toddy-live-native-inputs` beneath the protected stage. Each contains `payload/`,
+canonical `policy.json`, `boot-profile.json`, `generated-bindings.json`, actual
+archived-cache provenance and a durable intent/completion record. Existing or
+interrupted output is preserved and never reused automatically. The policy
+projects only locked system service accounts from the guarded target, omits
+human/build/live users, clears all supplementary memberships and synthesizes
+locked shadow/machine identity through the existing source policy. It never
+copies passwords, keys, owner membership or user preferences. Review its actual
+service account IDs before generation1 resource qualification. The boot profile
+binds the selected archived kernel/module namespace and the fixed virtual-disk
+storage set; it is no hardware or installed-boot qualification claim.
+
+Cache binding evidence is explicitly **archived native output provenance**. It
+hashes actual installed native component records, owned output/tool bytes and
+the complete selected input namespace including assistant/branding additions.
+It does not claim a successful selected-union regeneration. The unchanged
+`resource_recipe` must execute native tools after fresh unpack and report all
+changed owned outputs as blockers. Never replace those blockers with a fabricated
+native-evidence hash or promote a candidate tree. Review the actual candidate
+map/expected image, place their exact bytes in the matching fixed input directory,
+and only then run fresh `finalize-base`/`finalize-live`.
+
+The remaining executable order is:
+
+```sh
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh base
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh qualify-base
+# Independently review actual candidate maps, then install their exact input bytes.
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh finalize-base
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh live
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh qualify-live
+# Independently review actual live candidate maps, then install their exact bytes.
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh finalize-live
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh stage-live
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-compress
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-initramfs
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-iso
+```
+
+Apply measured capacity/custody admission between these phases. Missing signed
+inputs, native cache drift, source attribution, reviewed maps or finalizer reports
+remain concrete blockers. First QEMU BIOS/UEFI boots and blank-disk installer
+qualification follow actual ISO creation; none is inferred by this preparation.
