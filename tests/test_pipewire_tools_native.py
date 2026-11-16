@@ -116,4 +116,55 @@ class PipewireToolTests(unittest.TestCase):
             with patch.object(p.subprocess,'check_output',return_value=' (RUNPATH) Library runpath: [/build/compile]'):
                 with self.assertRaisesRegex(ValueError,'RPATH'):p.elf_dependencies(file)
 
+
+class PipewireLegacySourceCustodyTests(unittest.TestCase):
+    def setUp(self):
+        from types import SimpleNamespace
+        self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.root=Path(self.temp.name)
+        self.target=self.root/'target';self.legacy=self.target/'sources'/p.ARCHIVE;self.legacy.parent.mkdir(parents=True)
+        self.data=b'explicit frozen source fixture bytes';self.legacy.write_bytes(self.data);self.legacy.chmod(0o664)
+        self.log=self.root/'logs';self.log.mkdir();self.custody=self.log/'pipewire-tools-source-custody-1'
+        real=p.source_fingerprint;self.real_fingerprint=real
+        def fixture_fingerprint(info):
+            # Only root owner identity is synthetic; real opened-FD metadata,
+            # chmod/size/type checks and all stable inode/time comparisons remain.
+            names=('dev','ino','mode','uid','gid','nlink','size','atime_ns','mtime_ns','ctime_ns')
+            values={'st_'+key:getattr(info,'st_'+key) for key in names};values.update(st_uid=0,st_gid=0)
+            return real(SimpleNamespace(**values))
+        self.fingerprint=fixture_fingerprint
+        for context in (patch.object(p,'TARGET',self.target),patch.object(p,'LOG',self.log),patch.object(p,'SOURCE_CUSTODY',self.custody),
+                patch.object(p,'PRIVATE_ARCHIVE',self.custody/p.ARCHIVE),patch.object(p,'SOURCE_BYTES',len(self.data)),
+                patch.object(p,'SOURCE_SHA',hashlib.sha256(self.data).hexdigest()),patch.object(p,'protected_source_parent'),
+                patch.object(p,'source_fingerprint',side_effect=fixture_fingerprint),patch.object(p,'regular',side_effect=lambda path:Path(path))):
+            context.start();self.addCleanup(context.stop)
+
+    def test_group_writable_legacy_copy_becomes_private_without_metadata_changes(self):
+        before=self.legacy.stat();copy,state=p.copy_frozen_source();after=self.legacy.stat()
+        for key in ('st_dev','st_ino','st_mode','st_uid','st_gid','st_size','st_mtime_ns','st_ctime_ns','st_atime_ns'):
+            self.assertEqual(getattr(before,key),getattr(after,key),key)
+        self.assertEqual(copy.read_bytes(),self.data);self.assertEqual(copy.stat().st_mode&0o777,0o600)
+        self.assertEqual(self.custody.stat().st_mode&0o777,0o700);self.assertEqual(state['state'],'frozen-private-source-verified')
+        self.assertEqual((self.custody/'source-custody.json').stat().st_mode&0o777,0o600)
+        with self.assertRaisesRegex(ValueError,'custody_exists_no_replay'):p.copy_frozen_source()
+
+    def test_bad_sha_retains_only_uncertain_custody_and_cannot_replay(self):
+        with patch.object(p,'SOURCE_SHA','f'*64):
+            with self.assertRaisesRegex(ValueError,'bytes_or_identity_changed'):p.copy_frozen_source()
+        self.assertEqual(json.loads((self.custody/'source-custody.json').read_bytes())['state'],'copy-intended-no-replay')
+        with self.assertRaisesRegex(ValueError,'custody_exists_no_replay'):p.copy_frozen_source()
+
+    def test_changed_open_fd_identity_and_symlink_are_not_accepted(self):
+        before=self.fingerprint(self.legacy.stat());changed={**before,'mtime_ns':before['mtime_ns']+1}
+        with patch.object(p,'source_fingerprint',side_effect=[before,before,changed]):
+            with self.assertRaisesRegex(ValueError,'bytes_or_identity_changed'):p.copy_frozen_source()
+        self.assertNotEqual(json.loads((self.custody/'source-custody.json').read_bytes())['state'],'frozen-private-source-verified')
+        import shutil
+        shutil.rmtree(self.custody);self.legacy.unlink();self.legacy.symlink_to(self.root/'missing')
+        with self.assertRaises(OSError):p.copy_frozen_source()
+        self.assertFalse(self.custody.exists())
+
+    def test_private_copy_tampering_is_detected_without_reopening_legacy(self):
+        copy,_=p.copy_frozen_source();self.legacy.unlink();copy.write_bytes(b'changed')
+        with self.assertRaisesRegex(ValueError,'private_source_changed'):p.verified_source()
+
 if __name__=='__main__':unittest.main()

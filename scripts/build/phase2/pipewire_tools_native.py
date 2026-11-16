@@ -11,6 +11,9 @@ RECORDS=Path('/var/log/toddy/packages');CACHE=Path('/var/cache/toddy/packages')
 SOURCE=TARGET/'sources/phase2/inputs/pipewire-tools-1';WORK=TARGET/'sources/phase2/work/pipewire-tools-1'
 STAGE=TARGET/'sources/stage/phase2-pipewire-tools-1';PREPARED=LOG/'pipewire-tools-prepared-1.json';RECEIPT=LOG/'pipewire-tools-install-1.json'
 OLD='1.6.8-1+toddy1';VERSION='1.6.8-1+toddy2';ARCHIVE='pipewire-1.6.8.tar.bz2'
+SOURCE_BYTES=2062635
+SOURCE_CUSTODY=LOG/'pipewire-tools-source-custody-1'
+PRIVATE_ARCHIVE=SOURCE_CUSTODY/ARCHIVE
 SOURCE_SHA='efbaedf80450e5b08bb3196a4ca7ea17850d4a71ec1a8ae321e8937a7c95779e'
 OLD_RECORD_SHA='ebdad900696ab299bcc7be52dcbde490c0a2a6d5afb3b659acb89cb6c2a77303'
 OLD_ARCHIVE_SHA='6fcccccb584101ebf0899dcabbc64ff8551f8cc4e58356bc8878febc6a17c56a'
@@ -27,8 +30,11 @@ def digest(path):
 
 def save(path,value):
     part=path.with_suffix('.part')
-    with part.open('x') as stream:json.dump(value,stream,sort_keys=True,indent=2);stream.write('\n');stream.flush();os.fsync(stream.fileno())
+    with part.open('x') as stream:os.fchmod(stream.fileno(),0o600);json.dump(value,stream,sort_keys=True,indent=2);stream.write('\n');stream.flush();os.fsync(stream.fileno())
     part.replace(path)
+    directory=os.open(path.parent,os.O_DIRECTORY)
+    try:os.fsync(directory)
+    finally:os.close(directory)
 
 def regular(path):
     path=Path(path)
@@ -39,6 +45,72 @@ def regular(path):
     info=path.stat()
     if not stat.S_ISREG(info.st_mode) or info.st_nlink!=1:raise ValueError('pipewire_tools_regular_input')
     return path
+
+
+def source_fingerprint(info):
+    # This fixed historical LFS cache is group-writable. Integrity comes from
+    # the frozen SHA plus stable opened FD, never trust in its directory owner.
+    if (not stat.S_ISREG(info.st_mode) or info.st_uid or info.st_gid or info.st_nlink!=1 or
+            stat.S_IMODE(info.st_mode) not in (0o644,0o664) or info.st_size!=SOURCE_BYTES):
+        raise ValueError('pipewire_tools_legacy_source_metadata')
+    return {key:getattr(info,'st_'+key) for key in ('dev','ino','mode','uid','gid','nlink','size','atime_ns','mtime_ns','ctime_ns')}
+
+
+def verified_source():
+    archive=regular(PRIVATE_ARCHIVE);receipt=regular(SOURCE_CUSTODY/'source-custody.json')
+    if stat.S_IMODE(SOURCE_CUSTODY.stat().st_mode)!=0o700 or stat.S_IMODE(receipt.stat().st_mode)!=0o600:raise ValueError('pipewire_tools_private_source_mode')
+    state=json.loads(receipt.read_bytes())
+    if state.get('state')!='frozen-private-source-verified' or state.get('sha256')!=SOURCE_SHA or state.get('bytes')!=SOURCE_BYTES or archive.stat().st_size!=SOURCE_BYTES or digest(archive)!=SOURCE_SHA:
+        raise ValueError('pipewire_tools_private_source_changed')
+    if stat.S_IMODE(archive.stat().st_mode)!=0o600:raise ValueError('pipewire_tools_private_source_mode')
+    return archive,state
+
+
+
+def protected_source_parent():
+    # Check protected OUTPUT ancestry only. Do not relax regular() for inputs.
+    if LOG.resolve()!=LOG:raise ValueError('pipewire_tools_source_custody_parent')
+    for path in (LOG,*LOG.parents):
+        info=path.lstat()
+        if not stat.S_ISDIR(info.st_mode) or info.st_uid or info.st_mode&0o022:raise ValueError('pipewire_tools_source_custody_parent')
+
+
+def copy_frozen_source():
+    """One fixed cache file through a pinned FD, into fresh protected custody."""
+    if os.path.lexists(SOURCE_CUSTODY):raise ValueError('pipewire_tools_source_custody_exists_no_replay')
+    protected_source_parent()
+    original=TARGET/'sources'/ARCHIVE
+    if original.parent.resolve()!=original.parent:raise ValueError('pipewire_tools_redirected_legacy_cache')
+    fd=os.open(original,os.O_RDONLY|os.O_NOFOLLOW|os.O_CLOEXEC|os.O_NOATIME)
+    try:
+        before=source_fingerprint(os.fstat(fd))
+        if source_fingerprint(original.lstat())!=before:raise ValueError('pipewire_tools_legacy_source_path_changed')
+        SOURCE_CUSTODY.mkdir(mode=0o700)
+        directory=os.open(LOG,os.O_DIRECTORY)
+        try:os.fsync(directory)
+        finally:os.close(directory)
+        intent={'version':1,'state':'copy-intended-no-replay','source':str(original),'source_metadata':before,
+            'sha256':SOURCE_SHA,'bytes':SOURCE_BYTES,'producer_sha256':digest(Path(__file__))}
+        save(SOURCE_CUSTODY/'source-custody.json',intent)
+        actual=hashlib.sha256();count=0
+        out=os.open(PRIVATE_ARCHIVE,os.O_WRONLY|os.O_CREAT|os.O_EXCL|os.O_NOFOLLOW,0o600)
+        with os.fdopen(out,'wb') as stream:
+            while chunk:=os.read(fd,1024**2):
+                count+=len(chunk)
+                if count>SOURCE_BYTES:raise ValueError('pipewire_tools_legacy_source_size_changed')
+                actual.update(chunk);stream.write(chunk)
+            stream.flush();os.fsync(stream.fileno())
+        if count!=SOURCE_BYTES or actual.hexdigest()!=SOURCE_SHA or source_fingerprint(os.fstat(fd))!=before or source_fingerprint(original.lstat())!=before:
+            raise ValueError('pipewire_tools_legacy_source_bytes_or_identity_changed')
+        if digest(PRIVATE_ARCHIVE)!=SOURCE_SHA:raise ValueError('pipewire_tools_private_source_copy_differs')
+        intent['state']='frozen-private-source-verified';save(SOURCE_CUSTODY/'source-custody.json',intent)
+        for path in (SOURCE_CUSTODY,LOG):
+            directory=os.open(path,os.O_DIRECTORY)
+            try:os.fsync(directory)
+            finally:os.close(directory)
+        return verified_source()
+    finally:os.close(fd)
+
 
 def native(*args,binary=False):
     result=subprocess.check_output(['/usr/sbin/chroot',str(TARGET),'/usr/bin/env','-i','PATH=/usr/bin:/usr/sbin','HOME=/root','LC_ALL=C',*args],timeout=90)
@@ -137,20 +209,21 @@ def source_pins():
 
 
 def prepare():
-    fresh=(SOURCE,SOURCE.with_name(SOURCE.name+'-extracting'),WORK,STAGE,PREPARED,RECEIPT,PREPARED.with_suffix('.part'),RECEIPT.with_suffix('.part'),STAGE.with_name(STAGE.name+'-baseline.deb'))
+    fresh=(SOURCE,SOURCE.with_name(SOURCE.name+'-extracting'),WORK,STAGE,PREPARED,RECEIPT,PREPARED.with_suffix('.part'),RECEIPT.with_suffix('.part'),STAGE.with_name(STAGE.name+'-baseline.deb'),SOURCE_CUSTODY)
     fresh+=tuple(LOG.glob(JOB+'.*'))
     if any(os.path.lexists(path) for path in fresh):raise ValueError('pipewire_tools_preserve_existing_generation')
     for name in ('pw-cat',*ALIASES):
         if os.path.lexists(TARGET/'usr/bin'/name):raise ValueError('pipewire_tools_existing_unreviewed_tool')
     row,archive=baseline();archive_info=archive_summary(archive);dependencies=dependency_state();verify_old(TARGET,row['payload'])
     if native('/usr/bin/dpkg-query','-W','-f=${Conffiles}','pipewire'):raise ValueError('pipewire_tools_conffiles_require_explicit_review')
-    upstream=regular(TARGET/'sources'/ARCHIVE)
-    if digest(upstream)!=SOURCE_SHA:raise ValueError('pipewire_tools_frozen_source_changed')
+    # Protected custody is the first source write, retained on every failure.
+    if shutil.disk_usage(LOG).free<SOURCE_BYTES+128*1024**2:raise ValueError('pipewire_tools_source_custody_capacity')
+    upstream,custody=copy_frozen_source()
     with tarfile.open(upstream) as bundle:
         expanded=source_members(bundle.getmembers())
         if shutil.disk_usage(TARGET).free<16*1024**3+512*1024**2+8*expanded+3*archive_info['regular_bytes']:raise ValueError('pipewire_tools_16gib_reserve')
         state={'state':'preparing-no-replay','dependencies':dependencies,'inputs':source_pins(),'source_sha256':SOURCE_SHA,'expanded_source_bytes':expanded,
-            'old_record_sha256':OLD_RECORD_SHA,'old_archive_sha256':OLD_ARCHIVE_SHA,'old_archive_storage':archive_info}
+            'old_record_sha256':OLD_RECORD_SHA,'old_archive_sha256':OLD_ARCHIVE_SHA,'old_archive_storage':archive_info,'source_custody':custody}
         save(PREPARED,state);temporary=SOURCE.with_name(SOURCE.name+'-extracting');temporary.mkdir(mode=0o755)
         bundle.extractall(temporary,filter='data')
     (temporary/'pipewire-1.6.8').rename(SOURCE);temporary.rmdir();state['install_tag_patch']=patch_tag(SOURCE)
@@ -193,7 +266,8 @@ def elf_dependencies(binary):
 
 def qualify():
     prepared=json.loads(PREPARED.read_bytes())
-    if digest(regular(TARGET/'sources'/ARCHIVE))!=SOURCE_SHA:raise ValueError('pipewire_tools_frozen_source_changed')
+    _,custody=verified_source()
+    if prepared.get('source_custody')!=custody:raise ValueError('pipewire_tools_source_custody_changed')
     if (prepared['state']!='prepared' or prepared['inputs']!=source_pins() or prepared['dependencies']!=dependency_state() or
             SOURCE.stat().st_ino!=prepared['source_inode'] or WORK.stat().st_ino!=prepared['work_inode'] or
             inspect_stage(SOURCE)['manifest_sha256']!=prepared['source_manifest_sha256']):raise ValueError('pipewire_tools_prepared_inputs_changed')
@@ -247,7 +321,7 @@ def install():
     verify_old(STAGE,old['payload'])
     manifest={'package':'pipewire','version':VERSION,'upstream':'1.6.8','old_payload_entries_preserved':len(old['payload']),
         'old_archive_sha256':OLD_ARCHIVE_SHA,'old_record_sha256':OLD_RECORD_SHA,'source_sha256':SOURCE_SHA,
-        'source_inputs':source_pins(),'patch':prepared['install_tag_patch'],'tools':tools,'closure':closure,
+        'source_inputs':source_pins(),'source_custody':prepared['source_custody'],'patch':prepared['install_tag_patch'],'tools':tools,'closure':closure,
         'scope':'Unchanged old libraries/configs; native help only, real audio process qualification pending'}
     doc=STAGE/'usr/share/doc/pipewire/pw-cat-upgrade-source.json';save(doc,manifest);doc.chmod(0o644)
     verify_additions(STAGE,old['payload'])
@@ -258,8 +332,8 @@ def install():
 
 
 def postcheck():
-    transaction('postcheck');receipt=json.loads(RECEIPT.read_bytes())
-    if receipt['state']!='native-installed-postcheck-pending' or receipt['manifest']['source_inputs']!=source_pins():raise ValueError('pipewire_tools_install_requires_reconciliation')
+    transaction('postcheck');_,custody=verified_source();receipt=json.loads(RECEIPT.read_bytes())
+    if receipt['state']!='native-installed-postcheck-pending' or receipt['manifest']['source_inputs']!=source_pins() or receipt['manifest'].get('source_custody')!=custody:raise ValueError('pipewire_tools_install_requires_reconciliation')
     if native('/usr/bin/dpkg-query','-W','-f=${Status} ${Version}','pipewire')!='install ok installed '+VERSION:raise ValueError('pipewire_tools_upgraded_native_version')
     old,archive=baseline();verify_old(TARGET,old['payload']);verify_additions(STAGE,old['payload']);tool_stage(WORK/'stage');elf_dependencies(TARGET/'usr/bin/pw-cat')
     for name in ('pw-cat',*ALIASES):

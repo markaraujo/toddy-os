@@ -91,3 +91,31 @@ must use a new explicit namespace and consume this successful native ledger and
 actual upgraded archive/payload, without editing frozen voice2 source or copying
 an old success/catalog receipt. Source fixture tests do not count as a native
 compile, package install or voice result.
+
+## Protected copy of the historical source cache
+
+The legacy LFS cache directory can be owned by the development account with
+mode 1777, and its frozen root-owned archive can have mode 0664. This is not a
+protected input ancestry. Preparation does **not** chmod/chown that cache or
+relax the general `regular()` validator. Before extraction, under its existing
+owned build lock, it opens only the fixed archive using O_NOFOLLOW/O_NOATIME,
+requires a root-owned single-link regular file of the exact frozen 2,062,635
+bytes and legacy 0644/0664 mode, and records its opened-FD identity/metadata.
+It copies through that FD into a fresh root-private
+`/var/log/toddy/phase2/pipewire-tools-source-custody-1` directory, with a durable
+copy-intent and 0600 archive/receipt. The original cache metadata is unchanged.
+
+The complete copied bytes must match the frozen SHA; opened-FD and path
+identity/size/timestamps/ownership are rechecked after the copy and the private
+archive is independently hashed/fsynced. The verified private copy supplies all
+subsequent source tar/extraction/provenance checks. The prepared state and new
+package source manifest retain that custody receipt. The existing shared
+packager/source-notice legacy SHA checks remain unchanged; existing exact legal
+notices are still retained from the old package. Neither the shared helper nor
+its source/license locks are edited to admit a writable source directory.
+
+Any existing custody directory/intent/private archive blocks preparation after
+interruption, even when PREPARED/source/work were not yet created. A failed
+copy is retained for inspection and cannot become a verified source. The earlier
+ancestry rejection occurred before any source/work/PREPARED write; it does not
+justify retrying a later partial custody or compiler transaction.
