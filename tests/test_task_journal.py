@@ -56,6 +56,15 @@ class TaskJournalTests(unittest.TestCase):
             dump = '\n'.join(db.iterdump())
         self.assertNotIn('private dummy prompt', dump)
 
+    def test_pure_accepted_lookup_is_exact_and_never_inserts(self):
+        self.assertIsNone(self.journal.accepted_request('missing', self.revision, 'new text'))
+        self.assertEqual(self.journal.accepted_request('request-1', self.revision, 'private dummy prompt')['task_id'], self.task)
+        for metadata in ({'tool': 'changed'}, True):
+            with self.assertRaisesRegex(TaskError, 'request_identity_conflict'):
+                self.journal.accepted_request('request-1', self.revision, 'private dummy prompt', request_metadata=metadata)
+        with self.profiles._db() as db:
+            self.assertEqual(db.execute('SELECT count(*) FROM tasks').fetchone()[0], 1)
+
     def test_verified_effect_repeat_never_replays_and_sequences_increase(self):
         before = self.journal.inspect(self.task)['sequence']
         self.journal.start(self.task)

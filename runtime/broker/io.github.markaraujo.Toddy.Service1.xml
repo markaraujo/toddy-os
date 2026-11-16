@@ -42,6 +42,30 @@
       <arg name="expected_revision" type="s" direction="in"/>
       <arg name="export_fd" type="h" direction="out"/>
     </method>
+    <method name="GetTaskText">
+      <arg name="task_id" type="s" direction="in"/>
+      <arg name="after_sequence" type="t" direction="in"/>
+      <arg name="text_page_json" type="s" direction="out"/>
+    </method>
+    <method name="AcknowledgeTaskText">
+      <arg name="task_id" type="s" direction="in"/>
+      <arg name="through_sequence" type="t" direction="in"/>
+      <arg name="acknowledgement_json" type="s" direction="out"/>
+    </method>
+    <method name="GetProfileConfig">
+      <arg name="profile_id" type="s" direction="in"/>
+      <arg name="profile_settings_json" type="s" direction="out"/>
+    </method>
+    <method name="RestoreProfile">
+      <arg name="profile_id" type="s" direction="in"/>
+      <arg name="expected_revision" type="s" direction="in"/>
+      <arg name="revision" type="s" direction="in"/>
+      <arg name="restoration_json" type="s" direction="out"/>
+    </method>
+    <signal name="TaskTextChanged">
+      <arg name="task_id" type="s"/>
+      <arg name="sequence" type="t"/>
+    </signal>
     <signal name="TaskChanged">
       <arg name="task_id" type="s"/>
       <arg name="sequence" type="t"/>

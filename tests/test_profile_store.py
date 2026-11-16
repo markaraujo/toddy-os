@@ -119,6 +119,18 @@ class ProfileStoreTests(unittest.TestCase):
         with self.assertRaises(ProfileError):
             store.validate({'config.json': json.dumps(config).encode()})
 
+    def test_pinned_provider_semantic_limits_refuse_activation_without_losing_current(self):
+        config = copy.deepcopy(self.config)
+        config['provider'] = {'mode': 'local', 'adapter_id': 'local-llama-cpp', 'model_id': 'toddy-qwen3-1.7b-q8_0',
+                              'connection_ref': 'owner-local', 'allow_remote_fallback': False}
+        store = ProfileStore(self.path, 'toddy-default', self.schema,
+                             capabilities={'adapters': {'local-llama-cpp'}, 'tools': {'system-info'}, 'skills': {'explain-system'}})
+        for field, invalid in [('max_retries', 1), ('max_tool_calls', 33), ('max_context_tokens', 8192), ('max_output_tokens', 2048)]:
+            changed = copy.deepcopy(config); changed['budgets'][field] = invalid
+            with self.assertRaises(ProfileError):
+                store.apply({'config.json': json.dumps(changed).encode()}, expected_revision=self.first)
+            self.assertEqual(store.current(), self.first)
+
     def test_real_process_loss_before_commit_preserves_active_profile(self):
         ready = multiprocessing.Event()
         child = multiprocessing.Process(target=interrupted_apply,

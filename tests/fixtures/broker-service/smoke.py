@@ -68,7 +68,11 @@ def main():
             process = start()
             cap = call('GetCapabilities')
             assert cap['agent_backend'] is False and cap['tools'] == ['system-info']
+            assert 'agent-text-v1' in cap['features'] and 'profile-settings-v1' in cap['features']
             revision = cap['profile_revision']
+            original_revision = revision
+            settings = call('GetProfileConfig', ('toddy-default',), '(s)')
+            assert settings['profile_revision'] == revision and settings['config']['provider']['mode'] == 'deferred'
             system_task = call('SubmitTask', ('system-one', 'toddy-default', revision, body('system-info', {})), '(ssss)')
             until(lambda: snapshot(system_task)['state'] == 'completed')
             assert snapshot(system_task)['result_uncertain'] is False
@@ -92,10 +96,27 @@ def main():
             until(lambda: snapshot(denied_task)['state'] == 'waiting')
             assert not (workspace / 'must-not-run').exists()
             assert snapshot(denied_task)['result_uncertain'] is True
+            # Actual setup failure traverses the asynchronous exception handler;
+            # it must become held, not silently strand a queued task.
+            local = dict(config)
+            local['provider'] = {'mode': 'local', 'adapter_id': 'local-llama-cpp',
+                'model_id': 'toddy-qwen3-1.7b-q8_0', 'connection_ref': 'missing-local', 'allow_remote_fallback': False}
+            stage = call('ValidateProfile', ('toddy-default', revision, json.dumps(local)), '(sss)')
+            revision = call('ApplyProfile', ('toddy-default', revision, stage['validated_revision']), '(sss)')['profile_revision']
+            unavailable = call('SubmitTask', ('missing-setup', 'toddy-default', revision,
+                json.dumps({'version': 1, 'agent': True, 'text': 'No configured connection exists.', 'remote_consent': False})), '(ssss)')
+            until(lambda: snapshot(unavailable)['state'] == 'waiting')
+            assert snapshot(unavailable)['summary'] == 'dispatch_review_required'
+            page = call('GetTaskText', (unavailable, 0), '(st)')
+            assert page['complete'] and page['chunks'] == [] and page['latest_sequence'] == 0
+            assert call('AcknowledgeTaskText', (unavailable, 0), '(st)')['erased']
+            assert call('RestoreProfile', ('toddy-default', revision, original_revision), '(sss)')['restored']
+            assert call('GetCapabilities')['provider_mode'] == 'deferred'
             print(json.dumps({'scope': 'actual unprivileged broker source, private session bus, native logind, temporary workspace; no root/provider/guest acceptance',
                 'uid': os.getuid(), 'agent_backend': False, 'system_info_completed': True,
                 'profile_stage_apply': True, 'actual_file_write_duplicate_no_replay': True,
                 'shell_unavailable_without_managed_parent_no_effect': True,
+                'profile_get_restore': True, 'failed_engine_setup_held_not_queued': True, 'empty_transient_output_ack_erased': True,
                 'duration_seconds': round(time.monotonic() - started, 3)}))
         finally:
             if process is not None:

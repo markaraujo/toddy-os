@@ -21,6 +21,10 @@ import time
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / 'runtime/broker'))
 from engine import EngineAdapter, EngineError
+from profiles import ProfileStore
+from tasks import TaskJournal
+from text import TaskText
+from core import BrokerCore, NATIVE_TOOLS
 
 
 class Server(socketserver.ThreadingMixIn, socketserver.UnixStreamServer):
@@ -95,25 +99,49 @@ def main():
                         'expected_sha256': {'type': ['string', 'null']}},
                         'required': ['path', 'text', 'expected_sha256'], 'additionalProperties': False}}]}
             adapter = EngineAdapter(args.node, args.worker)
-            effects, texts = [], []
-            def tool(call_id, name, arguments):
-                assert call_id == 'tool-1' and name == 'file-write'
-                assert arguments == {'path': 'actual.txt', 'text': 'ACTUAL-ONCE', 'expected_sha256': None}
-                target = base / 'actual.txt'
-                descriptor = os.open(target, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
-                with os.fdopen(descriptor, 'w') as output:
-                    output.write(arguments['text']); output.flush(); os.fsync(output.fileno())
-                assert target.read_text() == 'ACTUAL-ONCE'
-                effects.append(call_id)
-                return {'outcome': 'verified', 'content': 'Verified actual file content ACTUAL-ONCE.'}
-            result = adapter.run(bootstrap, 'run-one', 'request-one', 'Use the actual broker file tool.', on_tool=tool, on_text=texts.append)
-            assert result['state'] == 'completed' and result['tool_calls'] == 1
-            assert effects == ['tool-1'] and 'Verified actual broker file write.' in ''.join(texts)
+            workspace = base / 'workspace'; workspace.mkdir(mode=0o700)
+            schema = json.loads((ROOT / 'config/phase2/profile.schema.json').read_text())
+            profiles = ProfileStore(base / 'profile', 'toddy-default', schema,
+                capabilities={'adapters': {'local-llama-cpp'}, 'tools': NATIVE_TOOLS, 'skills': {'explain-system'}})
+            revision = profiles.apply({'config.json': json.dumps(profile).encode()}, expected_revision=None)
+            journal = TaskJournal(profiles)
+            text_store = TaskText(journal)
+            observed = {}
+            class Facade:
+                @staticmethod
+                def available(_profile):
+                    return True
+                def __call__(self, files, actual_revision, task, prompt, consent, on_tool, on_text, canceled):
+                    actual = dict(bootstrap)
+                    actual['profile_revision'] = actual_revision
+                    actual['profile'] = json.loads(files['config.json'])
+                    observed['engine'] = adapter.run(actual, task, 'request-' + task.removeprefix('task-'), prompt,
+                        on_tool=on_tool, on_text=on_text, canceled=canceled)
+                    return observed['engine']
+            core = BrokerCore(profiles, journal, workspace, dispatch_allowed=lambda: True,
+                              engine_runner=Facade(), text_store=text_store)
+            encoded = json.dumps({'version': 1, 'text': 'Use the actual broker file tool.', 'agent': True, 'remote_consent': False})
+            accepted, request = core.submit('source-engine', revision, encoded)
+            result = core.execute(accepted['task_id'], request)
+            assert result['state'] == 'completed' and not result['result_uncertain']
+            assert observed['engine']['tool_calls'] == 1
+            assert (workspace / 'actual.txt').read_text() == 'ACTUAL-ONCE'
+            page = text_store.page(accepted['task_id'], 0)
+            texts = [chunk['text'] for chunk in page['chunks']]
+            assert page['complete'] and 'Verified actual broker file write.' in ''.join(texts)
             assert server.credential not in json.dumps(result) + ''.join(texts)
+            assert text_store.acknowledge(accepted['task_id'], page['next_sequence'])['erased']
+            duplicate, same = core.submit('source-engine', revision, encoded)
+            assert core.execute(duplicate['task_id'], same) == result
+            assert server.generations == 2
+            with profiles._db() as db:
+                effects = db.execute("SELECT count(*) FROM task_operations WHERE state='completed' AND verified=1").fetchone()[0]
+            assert effects == 1
             print(json.dumps({'scope': 'actual production worker/private FD/Pi/Unix HTTP synthetic protocol; no real model/provider/native guest qualification',
-                'uid': os.getuid(), 'actual_file_effects': len(effects), 'actual_file_sha256': hashlib.sha256((base / 'actual.txt').read_bytes()).hexdigest(),
+                'uid': os.getuid(), 'actual_file_effects': effects, 'actual_file_sha256': hashlib.sha256((workspace / 'actual.txt').read_bytes()).hexdigest(),
                 'streamed_text': bool(texts), 'generation_requests': server.generations,
-                'private_connection_absent_from_model_and_output': True, 'worker_state': result['state'],
+                'private_connection_absent_from_model_and_output': True, 'worker_state': observed['engine']['state'],
+                'canonical_task_completed': True, 'transient_output_ack_erased': True, 'task_duplicate_no_replay': True,
                 'duration_seconds': round(time.monotonic() - started, 3)}))
         finally:
             server.shutdown(); server.server_close(); thread.join(timeout=3)

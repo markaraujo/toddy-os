@@ -22,6 +22,10 @@ from protocol import strict_json
 from tasks import TaskError, TaskJournal
 from core import BrokerCore, BrokerError, NATIVE_TOOLS
 from tools.scoped import ScopedShell
+from tools.native import ToolError
+from engine import EngineError
+from text import TaskText, TextError
+from configured_engine import ConfiguredEngine, ADAPTERS
 
 BUS = 'io.github.markaraujo.Toddy.Service'
 OBJECT = '/io/github/markaraujo/Toddy/Service'
@@ -132,7 +136,7 @@ def main():
         directory.mkdir(mode=0o700, parents=True, exist_ok=True)
     schema = strict_json((args.defaults / 'profile.schema.json').read_bytes())
     profiles = ProfileStore(args.data_dir, 'toddy-default', schema,
-        capabilities={'adapters': set(), 'tools': NATIVE_TOOLS, 'skills': {'explain-system'},
+        capabilities={'adapters': ADAPTERS, 'tools': NATIVE_TOOLS, 'skills': {'explain-system'},
                       'extensions': set(), 'workflows': set()})
     if profiles.current() is None:
         template = args.defaults / 'profile'
@@ -154,10 +158,15 @@ def main():
     except BlockingIOError:
         raise SystemExit('broker_already_running') from None
     journal.recover()
+    text_store = TaskText(journal)
+    text_store.recover()
+    text_store.purge_transient()
+    text_store.purge_expired()
     session_connection = Gio.bus_get_sync(Gio.BusType.SESSION, None)
     system_connection = Gio.bus_get_sync(Gio.BusType.SYSTEM, None)
     core = BrokerCore(profiles, journal, args.workspace, root_client=RootClient(system_connection),
-                      dispatch_allowed=ActiveSession(system_connection, os.getuid()), shell_runner=ScopedShell())
+                      dispatch_allowed=ActiveSession(system_connection, os.getuid()), shell_runner=ScopedShell(),
+                      engine_runner=ConfiguredEngine(args.defaults), text_store=text_store)
     info = Gio.DBusNodeInfo.new_for_xml(Path(__file__).with_name(INTERFACE + '.xml').read_text())
     loop = GLib.MainLoop()
     pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix='toddy-broker')
@@ -165,6 +174,7 @@ def main():
     stopping = False
     stages = {}
     emitted = {}
+    emitted_text = {}
 
     def emit(task_id):
         snapshot = journal.inspect(task_id)
@@ -172,12 +182,25 @@ def main():
             session_connection.emit_signal(None, OBJECT, INTERFACE, 'TaskChanged',
                 GLib.Variant('(sts)', (task_id, snapshot['sequence'], json.dumps(snapshot, separators=(',', ':')))))
             emitted[task_id] = snapshot['sequence']
+        text_marker = text_store.marker(task_id)
+        text_sequence = text_marker[0]
+        if emitted_text.get(task_id) != text_marker:
+            session_connection.emit_signal(None, OBJECT, INTERFACE, 'TaskTextChanged',
+                GLib.Variant('(st)', (task_id, text_sequence)))
+            emitted_text[task_id] = text_marker
         # One in-flight task and bounded terminal bookkeeping.
         if len(emitted) > 256:
-            emitted.pop(next(iter(emitted)))
+            expired_task = next(iter(emitted))
+            emitted.pop(expired_task)
+            emitted_text.pop(expired_task, None)
         return False
 
+    last_text_purge = time.monotonic()
     def poll():
+        nonlocal last_text_purge
+        if time.monotonic() - last_text_purge >= 10:
+            text_store.purge_expired()
+            last_text_purge = time.monotonic()
         if pending:
             current = journal.inspect(pending)
             if not current['cancel_requested'] and (journal.remaining_seconds(pending) <= 0 or not core.dispatch_allowed()):
@@ -196,7 +219,7 @@ def main():
     def execute(task_id, request):
         try:
             core.execute(task_id, request)
-        except (TaskError, ProfileError, BrokerError, ToolError, OSError, GLib.Error):
+        except (TaskError, ProfileError, BrokerError, ToolError, EngineError, TextError, OSError, GLib.Error):
             # The journal holds uncertain effects; no exception text/raw output
             # is exported or retried. Pre-dispatch stop remains visible.
             journal.hold(task_id)
@@ -207,7 +230,7 @@ def main():
             GLib.idle_add(finished, task_id)
 
     def reply(invocation, result):
-        invocation.return_value(GLib.Variant('(s)', (json.dumps(result, separators=(',', ':')),)))
+        invocation.return_value(GLib.Variant('(s)', (json.dumps(result, ensure_ascii=False, separators=(',', ':')),)))
 
     def handle(conn, sender, _path, _interface, method, parameters, invocation):
         nonlocal pending
@@ -220,6 +243,21 @@ def main():
                 reply(invocation, core.capabilities())
             elif method == 'GetTask':
                 reply(invocation, core.reconcile(values[0]))
+            elif method == 'GetTaskText':
+                text_store.purge_expired()
+                reply(invocation, text_store.page(values[0], values[1]))
+            elif method == 'AcknowledgeTaskText':
+                reply(invocation, text_store.acknowledge(values[0], values[1]))
+            elif method == 'GetProfileConfig':
+                if values[0] != profiles.profile_id:
+                    raise BrokerError('unknown_profile')
+                reply(invocation, profiles.settings())
+            elif method == 'RestoreProfile':
+                profile_id, expected, revision = values
+                if profile_id != profiles.profile_id:
+                    raise BrokerError('unknown_profile')
+                restored = profiles.restore(revision, expected_revision=expected)
+                reply(invocation, {'version': 1, 'profile_revision': restored, 'restored': True})
             elif method == 'RequestCancel':
                 task_id, request_id = values
                 if not request_id or len(request_id) > 128:
@@ -229,6 +267,10 @@ def main():
                 request_id, profile_id, revision, encoded = values
                 if profile_id != profiles.profile_id:
                     raise BrokerError('unknown_profile')
+                existing, _ = core.accepted_request(request_id, revision, encoded)
+                if existing is not None:
+                    invocation.return_value(GLib.Variant('(s)', (existing['task_id'],)))
+                    return
                 if stopping or pending:
                     raise BrokerError('broker_busy')
                 snapshot, request = core.submit(request_id, revision, encoded)
@@ -266,7 +308,7 @@ def main():
                     reply(invocation, {'version': 1, 'profile_revision': revision, 'applied': True})
             else:
                 raise BrokerError('method_unavailable')
-        except (ProfileError, TaskError, BrokerError) as error:
+        except (ProfileError, TaskError, BrokerError, TextError) as error:
             invocation.return_dbus_error(INTERFACE + '.Rejected', str(error))
         except (ValueError, UnicodeError, RecursionError, OverflowError, GLib.Error, OSError):
             invocation.return_dbus_error(INTERFACE + '.Rejected', 'invalid_or_unavailable_request')
@@ -292,6 +334,7 @@ def main():
         loop.run()
     finally:
         pool.shutdown(wait=True, cancel_futures=True)
+        text_store.purge_transient()
         os.close(owner_fd)
 
 

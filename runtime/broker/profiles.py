@@ -213,6 +213,16 @@ class ProfileStore:
         if provider['mode'] != 'deferred':
             if provider['adapter_id'] not in self.capabilities.get('adapters', ()):
                 raise ProfileError('unavailable_adapter')
+            # Current pinned Pi/provider path has stricter measured runtime
+            # bounds than the generic v1 schema. Invalid activation preserves
+            # the working revision rather than failing only on next dispatch.
+            if config['budgets']['max_tool_calls'] > 32 or config['budgets']['max_retries'] != 0:
+                raise ProfileError('unsupported_provider_budget')
+            if provider['adapter_id'] == 'local-llama-cpp':
+                if provider['mode'] != 'local' or config['budgets']['max_context_tokens'] > 4096 or config['budgets']['max_output_tokens'] > 1024:
+                    raise ProfileError('unsupported_local_profile')
+            elif provider['mode'] == 'local' and provider['adapter_id'] in {'openai', 'openrouter', 'anthropic', 'openai-compatible'}:
+                raise ProfileError('incompatible_provider_mode')
             if not re.fullmatch(r'[a-zA-Z0-9_-]{1,80}', provider['connection_ref']):
                 raise ProfileError('invalid_connection_reference')
         manifest = {name: hashlib.sha256(files[name]).hexdigest() for name in sorted(files)}
@@ -288,6 +298,15 @@ class ProfileStore:
             if row is None:
                 raise ProfileError('unknown_task_profile')
         return row['revision'], self.snapshot(row['revision'])
+
+    def settings(self):
+        revision = self.current()
+        files = self.snapshot(revision)
+        with self._db() as db:
+            previous = [row['revision'] for row in db.execute(
+                'SELECT revision FROM profile_revisions WHERE revision!=? ORDER BY created DESC,rowid DESC LIMIT 32', (revision,))]
+        return {'version': 1, 'profile_revision': revision,
+                'config': strict_json(files['config.json']), 'previous_revisions': previous}
 
     def recovery_snapshot(self):
         """Explicit read-only fallback; no activation, task replay or provider use.

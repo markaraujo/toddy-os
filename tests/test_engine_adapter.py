@@ -29,6 +29,16 @@ class EngineAdapterTests(unittest.TestCase):
     def tearDown(self):
         self.temp.cleanup()
 
+    def test_source_and_installed_worker_layouts_resolve_without_code_duplication(self):
+        self.assertEqual(EngineAdapter().worker, ROOT / 'runtime/engine/worker.mjs')
+        installed = self.directory / 'toddy'
+        (installed / 'broker').mkdir(parents=True)
+        (installed / 'worker').mkdir()
+        (installed / 'worker/worker.mjs').write_text('// Installed path fixture only.')
+        from unittest.mock import patch
+        with patch('engine.__file__', str(installed / 'broker/engine.py')):
+            self.assertEqual(EngineAdapter().worker, installed / 'worker/worker.mjs')
+
     def test_actual_private_bootstrap_memfd_owned_bounded_and_sealed(self):
         descriptor = EngineAdapter._bootstrap_fd(self.bootstrap)
         try:
@@ -98,6 +108,21 @@ for await(const run of readFrames(process.stdin)) {
                 with self.assertRaisesRegex(EngineError, code) as raised:
                     adapter.run(self.bootstrap, 'run-one', 'request-one', 'Synthetic request', on_tool=lambda *_: self.fail())
                 self.assertNotIn('dummy-secret', str(raised.exception))
+
+    def test_known_credential_split_across_text_frames_is_blocked_before_callback(self):
+        adapter = self.worker("""if(run.kind==='run') {
+ await writeFrame(process.stdout,{...base,kind:'text',seq:1,text:b.connection.credential.slice(0,10)});
+ await writeFrame(process.stdout,{...base,kind:'text',seq:2,text:b.connection.credential.slice(10)});
+ await writeFrame(process.stdout,{...base,kind:'done',seq:3,state:'completed',code:'completed'});
+}""")
+        texts = []
+        with self.assertRaisesRegex(EngineError, 'credential_in_model_output'):
+            adapter.run(self.bootstrap, 'run-one', 'request-one', 'Synthetic request',
+                        on_tool=lambda *_: self.fail(), on_text=texts.append)
+        self.assertEqual(texts, [])
+        with self.assertRaisesRegex(EngineError, 'credential_in_model_input'):
+            adapter.run(self.bootstrap, 'run-one', 'request-one', self.bootstrap['connection']['credential'],
+                        on_tool=lambda *_: self.fail(), on_text=texts.append)
 
     def test_unavailable_engine_does_not_call_tool(self):
         adapter = EngineAdapter('/definitely-unavailable-node', self.directory / 'missing.mjs')

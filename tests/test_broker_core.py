@@ -114,6 +114,21 @@ class BrokerCoreTests(unittest.TestCase):
         self.assertFalse(reconciled['result_uncertain'])
         self.assertEqual(inspections, [snapshot['operation_id'] or reconciled['operation_id']])
 
+    def test_duplicate_lookup_survives_locked_session_and_does_not_requeue(self):
+        snapshot, request = self.core.submit('dedupe-locked', self.revision, self.body())
+        self.journal.start(snapshot['task_id'])
+        self.allowed = False
+        again, accepted = self.core.submit('dedupe-locked', self.revision, self.body())
+        self.assertEqual(again['task_id'], snapshot['task_id'])
+        self.assertEqual(again['state'], 'planning')
+        self.assertEqual(accepted, request)
+        with self.assertRaisesRegex(TaskError, 'request_identity_conflict'):
+            self.core.submit('dedupe-locked', self.revision, self.body('system-info', {'different': True}))
+        with self.assertRaisesRegex(BrokerError, 'interactive_session_unavailable'):
+            self.core.submit('new-locked', self.revision, self.body())
+        # Pure lookup never activates/dispatched accepted queued work.
+        self.assertEqual(self.journal.inspect(snapshot['task_id'])['state'], 'planning')
+
     def test_request_tool_arguments_are_part_of_dedup_and_invalid_input_refused(self):
         self.enable(['file-write'])
         first = self.body('file-write', {'path': 'file', 'text': 'first', 'expected_sha256': None})

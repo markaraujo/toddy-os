@@ -123,13 +123,8 @@ class TaskJournal:
         with self.profiles._db() as db:
             return max(0.0, self._row(db, task_id)['deadline'] - self.clock())
 
-    def submit(self, request_id, expected_revision, input_text, *, request_metadata=None):
-        """Persist request/revision binding before any worker/provider dispatch.
-
-        An already accepted same request returns the same task even after profile
-        selection changes. An unknown/stale client request is never auto-retried
-        by this API. Prompt bytes are hashed, not persisted as safety metadata.
-        """
+    @staticmethod
+    def _request_digest(request_id, expected_revision, input_text, request_metadata):
         _id(request_id)
         if not isinstance(input_text, str):
             raise TaskError('invalid_task_text')
@@ -138,7 +133,30 @@ class TaskJournal:
                 raise TaskError('task_text_limit')
         except UnicodeError:
             raise TaskError('invalid_task_text') from None
-        digest = _hash({'revision': expected_revision, 'input': input_text, 'metadata': request_metadata})
+        return _hash({'revision': expected_revision, 'input': input_text, 'metadata': request_metadata})
+
+    def accepted_request(self, request_id, expected_revision, input_text, *, request_metadata=None):
+        """Pure exact-hash lookup. No insertion, activation, dispatch or session grant."""
+        digest = self._request_digest(request_id, expected_revision, input_text, request_metadata)
+        with self.profiles._db() as db:
+            row = db.execute('SELECT * FROM tasks WHERE request_id=?', (request_id,)).fetchone()
+            if row is None:
+                return None
+            if row['input_hash'] != digest:
+                raise TaskError('request_identity_conflict')
+            return self._view(row)
+
+    def submit(self, request_id, expected_revision, input_text, *, request_metadata=None):
+        """Persist request/revision binding before any worker/provider dispatch.
+
+        An already accepted same request returns the same task even after profile
+        selection changes. An unknown/stale client request is never auto-retried
+        by this API. Prompt bytes are hashed, not persisted as safety metadata.
+        """
+        digest = self._request_digest(request_id, expected_revision, input_text, request_metadata)
+        old = self.accepted_request(request_id, expected_revision, input_text, request_metadata=request_metadata)
+        if old:
+            return old
         files = self.profiles.snapshot(expected_revision)
         config = strict_json(files['config.json'])
         with self.profiles._transaction() as db:
@@ -283,6 +301,19 @@ class TaskJournal:
                 return self._view(row)
             db.execute("UPDATE tasks SET state='waiting',code='dispatch_review_required',sequence=sequence+1,updated=? WHERE id=?",
                        (self.clock(), task_id))
+        return self.inspect(task_id)
+
+    def finish_model(self, task_id, state):
+        if state == 'completed':
+            return self.complete(task_id)
+        if state not in {'failed', 'canceled'}:
+            raise TaskError('invalid_model_state')
+        with self.profiles._transaction() as db:
+            row = self._row(db, task_id)
+            if row['state'] in self.TERMINAL or row['result_uncertain'] or row['state'] == 'running':
+                return self._view(row)
+            db.execute('UPDATE tasks SET state=?,code=?,sequence=sequence+1,updated=? WHERE id=?',
+                       (state, 'engine_failed' if state == 'failed' else 'canceled', self.clock(), task_id))
         return self.inspect(task_id)
 
     def complete(self, task_id):

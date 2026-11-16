@@ -33,7 +33,9 @@ def _id(value):
 class EngineAdapter:
     def __init__(self, node='/usr/bin/node', worker=None):
         self.node = str(node)
-        self.worker = Path(worker) if worker else Path(__file__).resolve().parents[1] / 'engine/worker.mjs'
+        runtime_root = Path(__file__).resolve().parents[1]
+        source_worker = runtime_root / 'engine/worker.mjs'
+        self.worker = Path(worker) if worker else source_worker if source_worker.is_file() else runtime_root / 'worker/worker.mjs'
         if (os.getuid() == 0 or not Path(self.node).is_absolute() or not self.worker.is_absolute()
                 or self.worker.resolve() != self.worker):
             raise EngineError('unsafe_engine_invocation')
@@ -73,6 +75,20 @@ class EngineAdapter:
             raise EngineError('invalid_engine_deadline')
         if canceled():
             return {'state': 'canceled', 'code': 'canceled', 'tool_calls': 0, 'text_bytes': 0}
+        credential = bootstrap.get('connection', {}).get('credential')
+        if not isinstance(credential, str) or not credential:
+            raise EngineError('credential_unavailable')
+        def contains_secret(value):
+            if isinstance(value, str):
+                return credential in value
+            if isinstance(value, dict):
+                return any(contains_secret(key) or contains_secret(item) for key, item in value.items())
+            if isinstance(value, list):
+                return any(contains_secret(item) for item in value)
+            return False
+        if contains_secret(input_text) or contains_secret({key: value for key, value in bootstrap.items() if key != 'connection'}):
+            raise EngineError('credential_in_model_input')
+        pending_text = ''
         descriptor = self._bootstrap_fd(bootstrap)
         launcher = Path(__file__).resolve().parents[1] / 'tools/child.py'
         try:
@@ -184,7 +200,15 @@ class EngineAdapter:
                     if text_bytes > 262144:
                         raise EngineError('engine_text_limit')
                     if not cancel_sent:
-                        on_text(event['text'])
+                        pending_text += event['text']
+                        if credential in pending_text:
+                            raise EngineError('credential_in_model_output')
+                        keep = len(credential) - 1
+                        if len(pending_text) > keep:
+                            ready = pending_text[:-keep] if keep else pending_text
+                            pending_text = pending_text[-keep:] if keep else ''
+                            if ready:
+                                on_text(ready)
                 elif event['kind'] == 'tool_request':
                     calls += 1
                     if (event['tool'] not in known_tools or not _id(event['tool_call_id'])
@@ -203,6 +227,13 @@ class EngineAdapter:
                             or result['outcome'] not in {'verified', 'rejected', 'uncertain'}
                             or not isinstance(result['content'], str) or len(result['content'].encode()) > 262144):
                         raise EngineError('engine_tool_result_invalid')
+                    secret_result = contains_secret(result['content'])
+                    try:
+                        secret_result = secret_result or contains_secret(strict_json(result['content'].encode()))
+                    except (ValueError, UnicodeError, RecursionError, OverflowError):
+                        pass
+                    if secret_result:
+                        result = {'outcome': 'rejected', 'content': 'Protected credential content was excluded from tool output.'}
                     send('tool_result', {'tool_call_id': event['tool_call_id'], **result})
                 else:
                     if event['state'] not in {'completed', 'failed', 'canceled'} or not isinstance(event['code'], str):
@@ -212,6 +243,9 @@ class EngineAdapter:
                     import re
                     if not re.fullmatch(r'[a-z][a-z0-9_]{0,63}', event['code']):
                         raise EngineError('engine_terminal_invalid')
+                    if pending_text and not cancel_sent:
+                        on_text(pending_text)
+                        pending_text = ''
                     process.stdin.close()
                     try:
                         exit_code = process.wait(timeout=2)
