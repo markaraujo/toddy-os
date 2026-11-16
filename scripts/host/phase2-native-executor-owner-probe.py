@@ -103,7 +103,7 @@ def main():
         shellpid=os.fork()
         if shellpid==0:
             os.setgroups([__import__('grp').getgrnam('wheel').gr_gid]);os.setgid(uid);os.setuid(uid)
-            os.environ.clear();os.environ.update(PATH='/usr/bin:/usr/sbin',LANG='C.UTF-8',TERM='dumb',HOME='/home/'+username,USER=username,LOGNAME=username)
+            os.environ.clear();os.environ.update(PATH='/usr/bin:/usr/sbin',LANG='C.UTF-8',TERM='dumb',HOME='/home/'+username,USER=username,LOGNAME=username,PS1='TODDY_OWNER_SHELL_READY> ')
             os.chdir('/home/'+username)
             os.execv('/usr/bin/bash',['bash','--noprofile','--norc'])
         _,raw=os.waitpid(shellpid,0)
@@ -123,6 +123,15 @@ def main():
             r=run(['loginctl','show-user',str(uid),'-p','Display','--value'],check=False)
             if r.returncode==0 and re.fullmatch(r'[a-zA-Z0-9_-]{1,128}',r.stdout.strip()):session=r.stdout.strip();break
         assert prompts==0 and session is not None,'Root-created local PAM/logind session missing'
+        # logind can be ready before Bash finishes tty setup; wait for its real
+        # prompt so readline cannot flush a command submitted during startup.
+        until=time.monotonic()+10
+        while b'TODDY_OWNER_SHELL_READY> ' not in tail and time.monotonic()<until:
+            if select.select([fd],[],[],.1)[0]:
+                try:tail=(tail+os.read(fd,8192))[-8192:]
+                except OSError:break
+        assert b'TODDY_OWNER_SHELL_READY> ' in tail,'Owner interactive shell readiness missing'
+
         props=dict(l.split('=',1) for l in run(['loginctl','show-session',session,'-p','User','-p','Active','-p','Remote','-p','Type']).stdout.splitlines())
         assert props['User']==str(uid) and props['Active']=='yes' and props['Remote']=='no'
         passed('trusted-root-pam-active-local-logind-session',properties=props,raw_tty_retained=False)
@@ -142,7 +151,7 @@ def main():
                         code=int(match[1]);assert (code==0)==success,('shell_status',code)
                         assert not authenticate or count==1,'Expected fresh administrator authentication'
                         return tail
-            raise AssertionError('Owner shell command deadline')
+            raise AssertionError(('Owner shell command deadline',{'password_prompts':count,'known_markers':{word:word.encode() in tail for word in ['Authentication failure','not authorized','No authentication agent found','TODDY_COMMAND_DONE','TODDY_OWNER_SHELL_READY','Password:']}}))
         helper='/usr/bin/pkexec /usr/lib/toddy/executor/owner_policy.py'
         shell(helper+' grant --mode session --expires-in 300',authenticate=True)
         # Root inspects authority, never writes grants on this path.

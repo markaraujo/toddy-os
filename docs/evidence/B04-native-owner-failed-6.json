@@ -1,0 +1,8 @@
+{
+  "all_selected_exits_zero": false,
+  "error": "Owner shell command deadline",
+  "error_type": "AssertionError",
+  "job": "native-executor-owner-6",
+  "scope": "Active session created; first owner shell command timed out before new lock check. No pass.",
+  "backing_unchanged": true
+}
