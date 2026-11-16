@@ -21,12 +21,12 @@ Planning, contract/catalog inputs and brand/UI concepts are prepared in the repo
 page includes selectable desktop/assistant/task/installer concepts. See
 [brand evidence](evidence/navy-brand-preview.md) and
 [Pages evidence](evidence/navy-pages-preview.md). Final review is complete; guest continuation is now explicitly authorized and recorded
-in [ADR-0113](adr/0113-owner-authorizes-phase2-implementation.md). B01, B02 and B03 are completed (23% weighted Phase2). The native reference desktop,
+in [ADR-0113](adr/0113-owner-authorizes-phase2-implementation.md). B01-B05 are completed (41% weighted Phase2). The native reference desktop,
 Git base, offline Editor/crash recovery, portal/FUSE/security, cold-boot state and
 recovery-entry checks are recorded in [B02 delivery](B02-DESKTOP-DELIVERY.md).
 The owner resumed execution on 2026-11-16 with maximum concurrent source
 preparation; see [ADR-0229](adr/0229-owner-resumes-parallel-phase2.md).
-B04 native owner/executor integration is current; B02 supplies its prerequisites.
+B06 native assistant integration is current; B04/B05 native owner/recovery evidence is retained.
 One coordinator owns target mutations; isolated source preparation grants no
 runtime acceptance or prerequisite bypass.
 Follow the current checkpoint; do not reopen general planning on resume. repository design preparation does not satisfy

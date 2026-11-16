@@ -4301,3 +4301,24 @@ read-only mount identity before root SSH. Pending Qt/voice compiles now use up t
 No parallel harness/safety bypass or unchanged foundation rebuild was introduced.
 Current source delivery check745tests13.461s and full-history scanner passed before
 this acceptance documentation update. Actual next build timing remains to measure.
+
+
+## 2026-11-16 — Native critical-path preparation and bounded parallelism
+
+Three isolated source agents remain assigned; the coordinator alone mutates the
+guest. Candidate boot and scratch initialization completed with accepted B02
+backings read-only and exact new serial/UUID verified. Metadata sync reused2114
+files and replaced248. Qt attempt1 failed at configuration because the recipe
+selected bundled FreeType while forcing Fontconfig; source confirms Fontconfig's
+system_freetype condition. Attempt2 preserves attempt1 and changes only that
+selection plus fresh attempt-specific paths. Configuration passed and actual C++
+compilation is progressing under the existing qualified isolated harness, up to8
+jobs with2GiB RAM reserve. No Qt package upgrade or graphical claim yet.
+
+Native source-package wrappers reuse existing generators/run_step/packager with
+fixed dependencies, first-install/replay/space guards and installed byte/mode/owner
+checks. Selected B01 npm archives and legal notices are verified individually; no
+local state directory is transferred wholesale. Separate supplemental-notice paths
+avoid colliding with the native packager's legal inventory. Focused preparation
+refusal tests pass; make check770 passed. Native archive/install and B06+ runtime
+acceptance remain pending. B01-B05 remain41% of Phase2, weighted total70.5%.

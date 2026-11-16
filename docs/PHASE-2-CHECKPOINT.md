@@ -32,12 +32,15 @@ recovery/backing identities unchanged. Never replay; placeholder is NOT bootable
 Immediate native queue (one guest/package writer):
 1. Native recovery3 completed0; never replay it.
 2. Candidate overlays prepared/started successfully (ADR0239); never replay prepare/start.
-3. QtBase raster job `qtbase-wayland-1` RUNNING in `toddy-phase2-candidate`;
+3. QtBase raster job `qtbase-wayland-2` RUNNING in `toddy-phase2-candidate`;
    boot `9ac84ac8-fe0e-41c0-a128-a8e4ad4bebf2`. Source prepare0, exact blank
    serial `TODDY-QT-RASTER-1` initialized once; ext4 UUID
    `58e1a631-07a2-40a1-87c2-49de37a69345`, rw/nosuid/nodev. Inspect actual
    job receipt/exit/log under `/var/log/toddy/phase2`, not stale PID alone.
-   Never replay formatting/preparation/dispatch. Target free17,315,074,048B;
+   Never replay formatting/preparation/dispatch. Attempt1 failed before compilation:
+   Fontconfig requires system FreeType; attempt2 selects the already frozen native
+   FreeType and preserves failed1 source/work/log/receipt. Actual C++ compilation
+   is progressing with8jobs; configuration passed. Target free17,315,074,048B;
    native install still needs qualified cache custody above16GiB reserve.
    Old Qt promotion custody already complete; never replay it.
 4. Calamares module/native root GUI, source-package archive and offline composition.
@@ -49,6 +52,11 @@ workers continuously assigned to independent commits. New Qt/voice build recipes
 use up to8compiler jobs, bounded by actual CPU/RAM with2GiB reserve and recorded
 /build/build-budget.json. Existing global build/package lock stays exclusive;
 no second guest mutator or unqualified parallel-build infrastructure is enabled.
+Reviewed native source-package wrappers now preserve complete B01 vendor/legal
+custody, dependency/target-space preflight and actual installed-byte ownership
+postchecks; [operator guide](native-source-package-delivery.md). Their source checks
+passed770tests; archive/install/runtime gates remain pending. Metadata sync reused
+2114inputs and updated248; it omits unchanged foundation reference retransfers.
 Stage preparation/source review can overlap healthy native jobs; no unchanged
 long foundation suites or pointless repeated downloads. Measure actual time/peak
 usage before changing budgets again. Host100GiB+512MiB/target16GiB reserves remain.
