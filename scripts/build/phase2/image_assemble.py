@@ -22,7 +22,20 @@ STAGE = Path('/sources/stage')
 GENERATIONS = {'base': ('toddy-offline-image-1', 'toddy-installer-native-inputs'),
                'live': ('toddy-live-image-1', 'toddy-live-native-inputs'),
                'base-reviewed': ('toddy-offline-image-2', 'toddy-installer-native-inputs'),
-               'live-reviewed': ('toddy-live-image-2', 'toddy-live-native-inputs')}
+               'live-reviewed': ('toddy-live-image-2', 'toddy-live-native-inputs'),
+               'mvp-base': ('toddy-mvp-offline-image-1','toddy-mvp-installer-native-inputs'),
+               'mvp-live': ('toddy-mvp-live-image-1','toddy-mvp-live-native-inputs'),
+               'mvp-base-reviewed': ('toddy-mvp-offline-image-2','toddy-mvp-installer-native-inputs'),
+               'mvp-live-reviewed': ('toddy-mvp-live-image-2','toddy-mvp-live-native-inputs')}
+MVP_CLASS='phase2-mvp-preinstalled-v1'
+
+def check_delivery_kind(kind,manifest):
+    mvp=kind.startswith('mvp-')
+    if mvp!=(manifest.get('delivery_class')==MVP_CLASS) or (mvp and manifest.get('g2_eligible') is not False):
+        raise ValueError('Image slot and typed delivery class differ')
+
+def reviewed_root_name(kind):
+    return ('mvp-' if kind.startswith('mvp-') else '')+('offline-root-2' if kind.removeprefix('mvp-').startswith('base') else 'live-root-2')
 RESERVE = 16 * 1024**3
 
 
@@ -74,10 +87,11 @@ def root_storage_budget(kind,manifest,block):
     from runtime.installer.native_finalizer import account_files
     accounts=p.file_tree_storage_bound({name:len(data) for name,(data,_) in account_files(policy['accounts']).items()},block)
     embedded=0
-    if kind.startswith('live'):
+    if kind.removeprefix('mvp-').startswith('live'):
         # Reserve the actual offline base inputs required by a production live
         # image, even while the first source-only image awaits real boot seals.
-        bundle=STAGE/GENERATIONS['base'][1]/'payload'
+        base_kind='mvp-base' if kind.startswith('mvp-') else 'base'
+        bundle=STAGE/GENERATIONS[base_kind][1]/'payload'
         sha=p.digest(secured(bundle/'manifest.json'))
         prepared=p.PreparedPayload(bundle,manifest_sha256=sha,runner=None,finalizer=None)._load()
         bundle_namespace(bundle,prepared)
@@ -100,8 +114,9 @@ class AssemblyRoot:
     def __init__(self, kind, manifest):
         if kind not in GENERATIONS:
             raise ValueError('Unknown fixed image profile')
+        check_delivery_kind(kind,manifest)
         self.work = STAGE/GENERATIONS[kind][0]
-        self.root = self.work/({'base-reviewed':'offline-root-2','live-reviewed':'live-root-2'}.get(kind,'root'))
+        self.root = self.work/(reviewed_root_name(kind) if kind.endswith('-reviewed') else 'root')
         parent = STAGE.lstat()
         if (STAGE.resolve() != STAGE or not stat.S_ISDIR(parent.st_mode) or parent.st_uid or
                 parent.st_gid or parent.st_mode & 0o022 or parent.st_dev != Path('/').stat().st_dev):
@@ -206,8 +221,8 @@ def adopt_unpacked(kind, manifest, manifest_sha256, system):
 class ReviewedInputs:
     """Fixed signed bundle plus reviewed generation-2 policy/map/expected image."""
     def __init__(self, kind):
-        if kind not in ('base','live'):raise ValueError('Unknown reviewed image profile')
-        self.base=STAGE/GENERATIONS[kind][1];self.bundle=self.base/'payload';self.recheck()
+        if kind not in ('base','live','mvp-base','mvp-live'):raise ValueError('Unknown reviewed image profile')
+        self.kind=kind;self.base=STAGE/GENERATIONS[kind][1];self.bundle=self.base/'payload';self.recheck()
 
     def recheck(self):
         from runtime.installer.composition import SOURCES,source_path,validate_policy,validate_installed_handoff
@@ -220,7 +235,9 @@ class ReviewedInputs:
         if hasattr(self,'pins') and self.pins!=pins:raise ValueError('Reviewed assembly input/source changed')
         self.pins=pins
         self.manifest=p.PreparedPayload(self.bundle,manifest_sha256=pins['payload/manifest.json'],runner=None,finalizer=None)._load()
-        bundle_namespace(self.bundle,self.manifest);validate_installed_handoff(self.manifest,self.source_hashes)
+        bundle_namespace(self.bundle,self.manifest)
+        if hasattr(self,'kind'):check_delivery_kind(self.kind,self.manifest)
+        validate_installed_handoff(self.manifest,self.source_hashes)
         self.policy=policy_input(self.base,self.manifest)
         self.generated=p.strict(secured(self.base/'generated-entries.json').read_bytes())
         self.boot=p.strict(secured(self.base/'boot-profile.json').read_bytes())
@@ -257,12 +274,12 @@ def finalize_native(kind, system):
     return result
 
 
-def stage_live(system):
+def stage_live(system,kind='live'):
     """Source-attributed live transform after real finalizer; actual journal last."""
     import live_profile
-    p=payload_module();inputs=ReviewedInputs('live')
-    assembly=object.__new__(AssemblyRoot);assembly.work=STAGE/GENERATIONS['live-reviewed'][0]
-    assembly.root=assembly.work/'live-root-2'
+    p=payload_module();inputs=ReviewedInputs(kind)
+    assembly=object.__new__(AssemblyRoot);assembly.work=STAGE/GENERATIONS[kind+'-reviewed'][0]
+    assembly.root=assembly.work/reviewed_root_name(kind)
     receipt=p.strict(secured(assembly.work/'finalized.json').read_bytes())
     assembly.pin=tuple(receipt['assembly_pin']);assembly.required=RESERVE+1;assembly.recheck()
     if receipt.get('state')!='native-finalizer-verified' or receipt.get('root')!=str(assembly.root):
@@ -298,6 +315,7 @@ def stage_live(system):
         'acl_report_sha256':p.digest(secured(assembly.work/'acl-report.json')),
         'media_id':media_id,'actions':[{'step':'image-manifest','finished':True,
             'report':'image-manifest.json','sha256':p.digest(evidence/'image-manifest.json')}]}
+    if kind.startswith('mvp-'):journal.update(delivery_class=MVP_CLASS,g2_eligible=False)
     write(evidence/'assembly.json',journal)
     return {'state':'source-attributed-live-image-media-inputs','journal':str(external(evidence/'assembly.json')),
         'native_kernel_boot_verified':False,'release_accepted':False,'live_profile':result}
@@ -328,7 +346,8 @@ def unclosed_compiler_jobs(directory):
 
 
 def main():
-    if (sys.argv[1:] not in (['base'], ['live'], ['qualify-base'], ['qualify-live'], ['finalize-base'], ['finalize-live'], ['stage-live']) or
+    if (sys.argv[1:] not in ([action] for action in ('base','live','qualify-base','qualify-live','finalize-base','finalize-live','stage-live',
+            'mvp-base','mvp-live','qualify-mvp-base','qualify-mvp-live','finalize-mvp-base','finalize-mvp-live','stage-mvp-live')) or
             Path(__file__).resolve() != Path('/opt/toddy-build/scripts/build/phase2/image_assemble.py')):
         raise ValueError('Fixed native source coordinator command required')
     os.umask(0o077); system=LinuxDisk();native_guard(system)
@@ -342,8 +361,8 @@ def main():
         sha=p.digest(secured(bundle/'manifest.json'))
         manifest=p.PreparedPayload(bundle,manifest_sha256=sha,runner=None,finalizer=None)._load()
         bundle_namespace(bundle,manifest)
-        if action=='stage-live':
-            result=stage_live(system)
+        if action in ('stage-live','stage-mvp-live'):
+            result=stage_live(system,kind)
         elif action.startswith('finalize-'):
             result=finalize_native(kind,system)
         elif action.startswith('qualify-'):

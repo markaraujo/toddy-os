@@ -43,6 +43,18 @@ EPOCH=1794787200  # 2026-11-16 00:00:00 UTC, explicit source recipe timestamp.
 RESERVE=16*1024**3
 
 
+def configure_mvp():
+    global IMAGE,JOURNAL,COMPRESSION,INITRAMFS,MEDIA,PROJECTION,MVP
+    MVP=True
+    IMAGE=STAGE/'toddy-mvp-live-image-2/mvp-live-root-2'
+    JOURNAL=STAGE/'toddy-mvp-live-image-2/evidence/assembly.json'
+    COMPRESSION=STAGE/'toddy-mvp-live-compression-1'
+    INITRAMFS=STAGE/'toddy-mvp-live-initramfs-1'
+    MEDIA=STAGE/'toddy-mvp-release-media-1'
+    PROJECTION=STAGE/'toddy-mvp-image-projection-1/live-projection.json'
+
+MVP=False
+
 def capacity(parent,extra):
     free=os.statvfs(parent)
     if free.f_bavail*free.f_frsize < RESERVE+extra:
@@ -68,6 +80,8 @@ def assembly_input():
             journal.get('image')!=str(IMAGE) or journal.get('evidence')!=str(JOURNAL.parent) or
             journal.get('assembler_sha256')!=p.digest(ASSEMBLER)):
         raise ValueError('Real current B12 final assembly journal required')
+    if MVP and (journal.get('delivery_class')!='phase2-mvp-preinstalled-v1' or journal.get('g2_eligible') is not False):raise ValueError('MVP media requires typed non-G2 journal')
+    if not MVP and journal.get('delivery_class')=='phase2-mvp-preinstalled-v1':raise ValueError('MVP journal cannot enter standard media')
     actions=[row for row in journal['actions'] if row['step']=='image-manifest']
     if len(actions)!=1 or actions[0].get('finished') is not True or Path(actions[0]['report']).name!=actions[0]['report']:
         raise ValueError('Final assembly manifest action missing')
@@ -136,7 +150,7 @@ def live_identity():
     if (value['producer_sha256']!=p.digest(source) or value['unit_sha256']!=p.digest(unit) or
             value['profile_source_sha256']!=p.digest(HERE/'live_profile.py')):
         raise ValueError('Live image class source/unit custody differs')
-    inputs=STAGE/'toddy-live-native-inputs'
+    inputs=STAGE/('toddy-mvp-live-native-inputs' if MVP else 'toddy-live-native-inputs')
     manifest=initramfs_input.physical(TARGET,inputs/'payload/manifest.json')
     policy=initramfs_input.physical(TARGET,inputs/'policy.json')
     expected=live_profile.media_identity(p.digest(manifest),p.digest(policy))
@@ -275,6 +289,7 @@ def iso_phase(backend):
         raise ValueError('Media native input changed')
     with (MEDIA/'SHA256SUMS').open('x') as stream:
         stream.write(media['sha256']+'  toddy.iso\n');stream.flush();os.fsync(stream.fileno())
+    if MVP:result.update(delivery_class='phase2-mvp-preinstalled-v1',g2_eligible=False)
     result.update(complete=True,media=media,pending=['actual BIOS/UEFI live and blank-disk installer qualification','final source/license/privacy audit','physical owner testing'])
     atomic_json(MEDIA/'result.json',result)
     return result
@@ -300,9 +315,11 @@ def inherited_media_lease():
 
 
 def main():
-    if (sys.argv[1:] not in (['compress'],['initramfs'],['iso']) or os.getuid()!=0 or os.geteuid()!=0 or
+    if (sys.argv[1:] not in (['compress'],['initramfs'],['iso'],['mvp-compress'],['mvp-initramfs'],['mvp-iso']) or os.getuid()!=0 or os.geteuid()!=0 or
             Path(__file__).resolve()!=Path('/opt/toddy-build/scripts/build/phase2/image_media.py')):
         raise ValueError('Fixed root coordinator media command required')
+    action=sys.argv[1]
+    if action.startswith('mvp-'):configure_mvp();action=action.removeprefix('mvp-')
     os.umask(0o077)
     subprocess.run(['/usr/bin/bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
     inherited_media_lease()
@@ -310,7 +327,7 @@ def main():
     backend=PackageBackend()
     if not backend.native:raise ValueError('Accepted native backend required')
     initramfs_input.physical(TARGET,STAGE,directory=True)
-    result={'compress':compression_phase,'initramfs':initramfs_phase,'iso':iso_phase}[sys.argv[1]](backend)
+    result={'compress':compression_phase,'initramfs':initramfs_phase,'iso':iso_phase}[action](backend)
     print(json.dumps(result,sort_keys=True))
 
 

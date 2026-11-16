@@ -14,16 +14,24 @@ TARGET=Path('/mnt/lfs');STAGE=TARGET/'sources/stage'
 PROJECTION=STAGE/'toddy-image-projection-2'
 EXPORT=STAGE/'toddy-package-export-2'
 RECORDS=Path('/var/log/toddy/packages');ARCHIVES=Path('/var/cache/toddy/packages')
-OUTPUT={'base':STAGE/'toddy-installer-native-inputs','live':STAGE/'toddy-live-native-inputs'}
+OUTPUT={'base':STAGE/'toddy-installer-native-inputs','live':STAGE/'toddy-live-native-inputs',
+        'mvp-base':STAGE/'toddy-mvp-installer-native-inputs','mvp-live':STAGE/'toddy-mvp-live-native-inputs'}
+MVP_CLASS='phase2-mvp-preinstalled-v1'
 EPOCH=1794787200
 DENIED={'lfs','tester','builder','toddy','toddy-live','toddy-build','toddybuild'}
 
 def selection(kind):
     if kind not in OUTPUT:raise ValueError('Fixed base/live input profile required')
-    profile=PROJECTION/('profile.json' if kind=='base' else 'live-profile.json')
-    projection=PROJECTION/('projection.json' if kind=='base' else 'live-projection.json')
+    mvp=kind.startswith('mvp-');base_kind=kind.removeprefix('mvp-')
+    directory=STAGE/'toddy-mvp-image-projection-1' if mvp else PROJECTION
+    profile=directory/('profile.json' if base_kind=='base' else 'live-profile.json')
+    policy=p.strict(secured(profile).read_bytes())
+    if mvp:
+        if p.delivery_policy(policy)[0]!=MVP_CLASS:raise ValueError('MVP profile delivery class required')
+    elif policy.get('delivery_class')==MVP_CLASS:raise ValueError('MVP cannot enter standard image inputs')
+    projection=directory/('projection.json' if base_kind=='base' else 'live-projection.json')
     doc=p.strict(secured(projection).read_bytes())
-    additions=p.strict(secured(PROJECTION/'additional-components.json').read_bytes()) if kind=='base' else []
+    additions=p.strict(secured(directory/'additional-components.json').read_bytes()) if base_kind=='base' else []
     components=[*doc['components'],*additions]
     if len({row['name'] for row in components})!=len(components):raise ValueError('Image input duplicate component')
     return profile,projection,additions,components
@@ -123,7 +131,7 @@ def prepare(kind):
     write(output/'policy.json',policy);write(output/'boot-profile.json',boot)
     manifest=p.prepare(profile_path=profile,projection_path=projection,records_directory=RECORDS,archive_directory=ARCHIVES,
         catalog_path=ROOT/'config/phase2/software-catalog.json',destination=output/'payload',trust=trust,generated_bindings=bindings,
-        additional_components=additions,required_additions=p.MANDATORY_ADDITIONS if kind=='base' else ())
+        additional_components=additions,required_additions=p.MANDATORY_ADDITIONS if kind.removeprefix('mvp-')=='base' else ())
     write(output/'input-prepared.json',{'version':1,'state':'signed-native-image-inputs-prepared-needs-resource-regeneration',
         'payload_manifest_sha256':p.digest(output/'payload/manifest.json'),'kind':kind,'native_record_sha256':pins,
         'regeneration_passed':False,'finalizer_passed':False,'boot_verified':False})

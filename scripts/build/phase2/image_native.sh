@@ -3,8 +3,8 @@
 set -euo pipefail
 [[ $(id -u) == 0 && $# == 1 ]]
 case $1 in
-    base|live|qualify-base|qualify-live|finalize-base|finalize-live|stage-live|media-compress|media-initramfs|media-iso) ;;
-    inputs-base-requirements|inputs-live-requirements|inputs-base-prepare|inputs-live-prepare) ;;
+    base|live|qualify-base|qualify-live|finalize-base|finalize-live|stage-live|media-compress|media-initramfs|media-iso|mvp-base|mvp-live|qualify-mvp-base|qualify-mvp-live|finalize-mvp-base|finalize-mvp-live|stage-mvp-live|media-mvp-compress|media-mvp-initramfs|media-mvp-iso) ;;
+    inputs-base-requirements|inputs-live-requirements|inputs-base-prepare|inputs-live-prepare|inputs-mvp-base-requirements|inputs-mvp-live-requirements|inputs-mvp-base-prepare|inputs-mvp-live-prepare) ;;
     custody-offline-inspect|custody-offline-export|custody-offline-receipt|custody-offline-metadata|custody-offline-retire|custody-live-inspect|custody-live-export|custody-live-receipt|custody-live-metadata|custody-live-retire) ;;
     *) exit 2 ;;
 esac
@@ -106,10 +106,10 @@ case $1 in
     custody-live-*)
         action=${1#custody-live-}
         /usr/bin/env -i PATH=/usr/bin:/usr/sbin HOME=/root LC_ALL=C /usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/candidate_root_custody.py live "$action" <&8 8<&- ;;
-    inputs-base-requirements|inputs-live-requirements|inputs-base-prepare|inputs-live-prepare)
-        action=${1#inputs-}; kind=${action%%-*}; operation=${action#*-}
+    inputs-base-requirements|inputs-live-requirements|inputs-base-prepare|inputs-live-prepare|inputs-mvp-base-requirements|inputs-mvp-live-requirements|inputs-mvp-base-prepare|inputs-mvp-live-prepare)
+        action=${1#inputs-}; kind=${action%-*}; operation=${action##*-}
         /usr/bin/env -i PATH=/usr/bin:/usr/sbin HOME=/root LC_ALL=C /usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/image_inputs.py "$operation" "$kind" 8<&- ;;
-    media-compress|media-initramfs|media-iso)
+    media-compress|media-initramfs|media-iso|media-mvp-compress|media-mvp-initramfs|media-mvp-iso)
         # Media coordinator owns TARGET=/mnt/lfs and invokes native tools itself.
         # Keep it builder-side in this protected view with the SAME lease FD9.
         action=${1#media-}

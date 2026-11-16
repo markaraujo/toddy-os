@@ -7,7 +7,7 @@ class MediaLeaseTests(unittest.TestCase):
   source=(ROOT/'scripts/build/phase2/image_native.sh').read_text()
   subprocess.run(['/bin/bash','-n',str(ROOT/'scripts/build/phase2/image_native.sh')],check=True)
   for action in ('compress','initramfs','iso'):self.assertIn('media-'+action,source)
-  route=source.split('media-compress|media-initramfs|media-iso)',2)[-1].split('    *)',1)[0]
+  route=source.rsplit('    media-compress|',1)[-1].split('    *)',1)[0]
   self.assertIn('image_media.py "$action" 8<&-',route);self.assertNotIn('chroot',route);self.assertNotIn('9>&-',route)
  def test_actual_inherited_exclusive_shared_wrong_inode(self):
   program=r'''

@@ -167,7 +167,11 @@ def stage(assembly,manifest,policy,media_id,system):
     """Post-finalizer live-only transform; no production gate or boot claim."""
     from scripts.build.phase2.resource_recipe import snapshot,save
     system.require_root();assembly.recheck();p=payload_module();root=Path(assembly.root);work=Path(assembly.work)
-    if work!=WORK or root.parent!=work or root.resolve()!=root:raise ValueError('Live profile requires fixed reviewed generation2')
+    mvp=manifest.get('delivery_class')=='phase2-mvp-preinstalled-v1'
+    expected_work=Path('/sources/stage/toddy-mvp-live-image-2') if mvp else WORK
+    generated_input=Path('/sources/stage/toddy-mvp-live-native-inputs/generated-entries.json') if mvp else GENERATED_INPUT
+    if mvp and manifest.get('g2_eligible') is not False:raise ValueError('MVP live profile cannot be G2 eligible')
+    if work!=expected_work or root.parent!=work or root.resolve()!=root:raise ValueError('Live profile requires fixed reviewed generation2')
     intent=work/'live-profile-intent.json'
     if intent.exists() or intent.is_symlink() or (work/'live-profile-receipt.json').exists():raise ValueError('Preserve uncertain live profile generation')
     receipt=p.strict(secured(work/'finalized.json').read_bytes())
@@ -179,8 +183,8 @@ def stage(assembly,manifest,policy,media_id,system):
         path=secured(binding['report']);report=p.strict(path.read_bytes())
         if binding.get('passed') is not True or binding.get('exit_status')!=0 or p.digest(path)!=binding.get('report_sha256'):raise ValueError('Live profile actual report custody')
         validate_finalizer_report(report,name,receipt)
-    if p.digest(secured(GENERATED_INPUT))!=receipt['generated_entries_sha256']:raise ValueError('Live profile reviewed generated map changed')
-    generated=p.strict(GENERATED_INPUT.read_bytes());before=p.PreparedPayload.audit_tree(root,manifest,generated)
+    if p.digest(secured(generated_input))!=receipt['generated_entries_sha256']:raise ValueError('Live profile reviewed generated map changed')
+    generated=p.strict(generated_input.read_bytes());before=p.PreparedPayload.audit_tree(root,manifest,generated)
     if hashlib.sha256(p.encoded(before)).hexdigest()!=receipt['image_manifest_sha256']:raise ValueError('Live profile base image changed')
     for relative in ('etc/systemd/system/getty@tty1.service.d/50-toddy-live.conf','etc/systemd/system/serial-getty@ttyS0.service.d/50-toddy-live.conf','run/toddy/live-session','run/toddy-live-owner/session.json'):
         if os.path.lexists(root/relative):raise ValueError('Live profile inherited root console/runtime authority')

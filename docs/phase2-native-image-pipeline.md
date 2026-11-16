@@ -454,3 +454,44 @@ Apply measured capacity/custody admission between these phases. Missing signed
 inputs, native cache drift, source attribution, reviewed maps or finalizer reports
 remain concrete blockers. First QEMU BIOS/UEFI boots and blank-disk installer
 qualification follow actual ISO creation; none is inferred by this preparation.
+
+## Separate MVP preinstalled delivery slots
+
+The explicitly selected `phase2-mvp-preinstalled-v1` profile uses a separate
+projection and fixed inputs/roots/media. It is always `g2_eligible:false` and
+must not be relabeled as the standard optional-acquisition release. It carries
+only the selected already-built signed backend/tool packages; no Qwen weights,
+owner credentials or automatic service/model activation are added by this driver.
+After the typed MVP projection has actually been produced, the corresponding
+commands are:
+
+```sh
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh inputs-mvp-base-prepare
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh inputs-mvp-live-prepare
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh mvp-base
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh qualify-mvp-base
+# Review actual base resource outputs and place exact maps in MVP base inputs.
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh finalize-mvp-base
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh mvp-live
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh qualify-mvp-live
+# Review actual live resource outputs and place exact maps in MVP live inputs.
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh finalize-mvp-live
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh stage-mvp-live
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-mvp-compress
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-mvp-initramfs
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-mvp-iso
+```
+
+The projection is `toddy-mvp-image-projection-1`; input directories are
+`toddy-mvp-installer-native-inputs` and `toddy-mvp-live-native-inputs`. Candidate
+and fresh reviewed directories are `toddy-mvp-offline-image-{1,2}` and
+`toddy-mvp-live-image-{1,2}`. Reviewed root names `mvp-offline-root-2` and
+`mvp-live-root-2` also isolate finalizer report directories from standard runs.
+Compression/initramfs/ISO generations are `toddy-mvp-live-compression-1`,
+`toddy-mvp-live-initramfs-1` and `toddy-mvp-release-media-1`. Existing generations
+are never overwritten. Standard actions/paths continue to require standard
+manifests; an MVP manifest cannot cross into a standard image slot or journal.
+
+This path preserves the same signed-archive, resource, protected source,
+capacity, finalizer, ownership and first-boot prerequisites. Its distinct media
+and journal labels record a limited MVP scope, not passed installation or G2.
