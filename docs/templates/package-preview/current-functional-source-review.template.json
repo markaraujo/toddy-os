@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "kind": "current-functional-source-review-acceptance",
+  "decision": "pending-coordinator-review",
+  "archive_export_sha256": null,
+  "source_inventory_sha256": null,
+  "source_commit": null,
+  "technical_review": {"path": null, "sha256": null},
+  "assets": [],
+  "packages": [],
+  "historical_fingerprint_complete": false,
+  "historical_fingerprint_ledger_sha256": null,
+  "historical_binary_reproduction_claim": false,
+  "native_runtime_or_g2_acceptance": false,
+  "reviewer": null,
+  "reviewed_at_utc": null
+}
