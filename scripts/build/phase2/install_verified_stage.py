@@ -19,25 +19,6 @@ from rust_std_tests import qualify_preserved_log
 
 ROOT = Path('/opt/toddy-build')
 PROFILES = {
-    'gvfs': ('1.60.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libarchive (= 3.8.11-1+toddy1), gcr (= 4.4.0.1-1+toddy1), libgcrypt (= 1.12.4-1+toddy1), libgudev (= 238-1+toddy1), polkit (= 127-1+toddy1), libsecret (= 0.21.7-1+toddy1), samba-client (= 4.24.6-1+toddy1), libsoup (= 3.6.6-1+toddy1), systemd (>= 261.2-1+toddy3), udisks2 (= 2.11.2-1+toddy1), libxml2 (= 2.15.3-1+toddy1)', 'gvfs-1.60.2.tar.xz', 'usr/libexec/gvfsd'),
-    'nautilus': ('50.2.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gtk (>= 4.22.4-1+toddy11), libadwaita (= 1.9.3-1+toddy1), cairo (= 1.18.4-1+toddy1), gdk-pixbuf (= 2.44.7-1+toddy2), gexiv2 (= 0.16.2-1+toddy1), glycin (= 2.1.5-1+toddy1), glycin-gtk4 (= 2.1.0-1+toddy1), gnome-autoar (= 0.4.5-1+toddy1), gnome-desktop (= 44.5-1+toddy1), graphene (= 1.10.8-1+toddy1), gst-plugins-base (= 1.28.6-1+toddy1), gstreamer (= 1.28.6-1+toddy1), icu (= 78.3-1+toddy1), pango (= 1.58.2-1+toddy1), libportal (= 0.9.1-1+toddy1), tinysparql (= 3.11.1-1+toddy1), wayland (= 1.26.0-1+toddy1), localsearch (= 3.11.1-1+toddy1)', 'nautilus-50.2.2.tar.xz', 'usr/bin/nautilus'),
-    'localsearch': ('3.11.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), gexiv2 (= 0.16.2-1+toddy1), gstreamer (= 1.28.6-1+toddy1), gst-plugins-base (= 1.28.6-1+toddy1), icu (= 78.3-1+toddy1), libjpeg-turbo (= 3.2.0-1+toddy1), libpng (= 1.6.58-1+toddy1), libseccomp (= 2.6.1-1+toddy1), libxml2 (= 2.15.3-1+toddy1), tiff (= 4.7.2-1+toddy1), tinysparql (= 3.11.1-1+toddy1), upower (= 1.91.3-1+toddy1), python (>= 3.14), python (<< 3.15), pygobject (= 3.56.3-1+toddy1), dbus (= 1.16.2-1+toddy1)', 'localsearch-3.11.1.tar.xz', 'usr/bin/localsearch'),
-    'rpcsvc-proto': ('1.4.4', 'glibc (>= 2.44-1+toddy1), gcc (>= 16.2.0-1+toddy2), libtirpc (= 1.3.7-1+toddy1)', 'rpcsvc-proto-1.4.4.tar.xz', 'usr/bin/rpcgen'),
-    'perl-parse-yapp': ('1.21', 'perl (>= 5.44), perl (<< 5.45)', 'Parse-Yapp-1.21.tar.gz', 'usr/bin/yapp'),
-    'libtirpc': ('1.3.7', 'glibc (>= 2.44-1+toddy1), mitkrb (= 1.22.2-1+toddy1)', 'libtirpc-1.3.7.tar.bz2', 'usr/lib/pkgconfig/libtirpc.pc'),
-    'udisks2': ('2.11.2', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), systemd (>= 261.2-1+toddy3), kmod (= 34.2-1+toddy1), util-linux (>= 2.42.4-1+toddy1), acl (>= 2.3.2-1), libblockdev (= 3.5.0-1+toddy1), libgudev (= 238-1+toddy1), polkit (= 127-1+toddy1)', 'udisks-2.11.2.tar.bz2', 'usr/lib/pkgconfig/udisks2.pc'),
-    'libblockdev': ('3.5.0', 'glibc (>= 2.44-1+toddy1), glib (>= 2.88.3-1+toddy2), systemd (>= 261.2-1+toddy3), kmod (= 34.2-1+toddy1), util-linux (>= 2.42.4-1+toddy1), e2fsprogs (= 1.47.4-1+toddy1), cryptsetup (= 2.8.7-1+toddy1), lvm2 (= 2.03.42-1+toddy1), openssl (= 4.0.3-1+toddy1), json-c (= 0.19-1+toddy1), keyutils (= 1.6.3-1+toddy1), libbytesize (= 2.12-1+toddy1), gmp (= 6.3.0-1+toddy1), mpfr (= 4.2.2-1+toddy1), pcre2 (= 10.49-1+toddy1), libnvme (= 1.16.2-1+toddy1), libatasmart (= 0.19-1+toddy1), python (>= 3.14), python (<< 3.15), pygobject (= 3.56.3-1+toddy1)', 'libblockdev-3.5.0.tar.gz', 'usr/lib/pkgconfig/blockdev.pc'),
-    'cryptsetup': ('2.8.7', 'glibc (>= 2.44-1+toddy1), util-linux (>= 2.42.4-1+toddy1), lvm2 (= 2.03.42-1+toddy1), openssl (= 4.0.3-1+toddy1), json-c (= 0.19-1+toddy1), popt (= 1.19-1+toddy1)', 'cryptsetup-2.8.7.tar.xz', 'usr/lib/pkgconfig/libcryptsetup.pc'),
-    'popt': ('1.19', 'glibc (>= 2.44-1+toddy1)', 'popt-1.19.tar.gz', 'usr/lib/pkgconfig/popt.pc'),
-    'lvm2': ('2.03.42', 'glibc (>= 2.44-1+toddy1), readline (= 8.3-1+toddy1), systemd (>= 261.2-1+toddy3), util-linux (>= 2.42.4-1+toddy1), libnvme (= 1.16.2-1+toddy1), libaio (= 0.3.113-1+toddy1)', 'LVM2.2.03.42.tgz', 'usr/lib/pkgconfig/devmapper.pc'),
-    'libaio': ('0.3.113', 'glibc (>= 2.44-1+toddy1)', 'libaio-0.3.113.tar.gz', 'usr/lib/libaio.so.1.0.2'),
-    'libnvme': ('1.16.2', 'glibc (>= 2.44-1+toddy1), json-c (= 0.19-1+toddy1), openssl (= 4.0.3-1+toddy1), keyutils (= 1.6.3-1+toddy1), dbus (= 1.16.2-1+toddy1)', 'libnvme-1.16.2.tar.gz', 'usr/lib/pkgconfig/libnvme.pc'),
-    'keyutils': ('1.6.3', 'glibc (>= 2.44-1+toddy1)', 'keyutils-1.6.3.tar.gz', 'usr/lib/pkgconfig/libkeyutils.pc'),
-    'libatasmart': ('0.19', 'glibc (>= 2.44-1+toddy1), systemd (>= 261.2-1+toddy3)', 'libatasmart-0.19.tar.xz', 'usr/lib/pkgconfig/libatasmart.pc'),
-    'libbytesize': ('2.12', 'glibc (>= 2.44-1+toddy1), gmp (= 6.3.0-1+toddy1), mpfr (= 4.2.2-1+toddy1), pcre2 (= 10.49-1+toddy1), python (>= 3.14), python (<< 3.15), pygments (= 2.20.0-1+toddy1)', 'libbytesize-2.12.tar.gz', 'usr/lib/pkgconfig/bytesize.pc'),
-    'cups': ('2.4.19', 'glibc (>= 2.44-1+toddy1), gcc (= 16.2.0-1+toddy2), acl (= 2.4.0-1+toddy1), gnutls (= 3.8.13-1+toddy1), linux-pam (= 1.7.2-1+toddy2), libusb (= 1.0.30-1+toddy1), libxcrypt (= 4.5.2-1+toddy1), zlib (>= 1.3.2-1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3), shadow (>= 4.20.2-1)', 'cups-2.4.19-source.tar.gz', 'usr/lib/pkgconfig/cups.pc'),
-    'mitkrb': ('1.22.2', 'glibc (>= 2.44-1+toddy1), e2fsprogs (= 1.47.4-1+toddy1), openssl (= 4.0.3-1+toddy1)', 'krb5-1.22.2.tar.gz', 'usr/lib/pkgconfig/krb5.pc'),
-    'libgtop': ('2.41.3', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libxau (= 1.0.12-1+toddy1)', 'libgtop-2.41.3.tar.xz', 'usr/lib/pkgconfig/libgtop-2.0.pc'),
     'colord-gtk': ('0.3.1', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), colord (= 1.4.8-1+toddy1), gtk (>= 4.22.4-1+toddy9), gtk3 (= 3.24.52-1+toddy2)', 'colord-gtk-0.3.1.tar.xz', 'usr/lib/pkgconfig/colord-gtk4.pc'),
     'modemmanager': ('1.24.2', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libmbim (= 1.34.0-1+toddy1), libqmi (= 1.38.0-1+toddy1), libgudev (= 238-1+toddy1), polkit (= 127-1+toddy1), dbus (>= 1.16.2-1), systemd (>= 261.2-1+toddy3)', 'ModemManager-1.24.2.tar.gz', 'usr/lib/pkgconfig/mm-glib.pc'),
     'libqmi': ('1.38.0', 'glibc (>= 2.44-1+toddy1), glib (= 2.88.3-1+toddy2), libmbim (= 1.34.0-1+toddy1), libgudev (= 238-1+toddy1)', 'libqmi-1.38.0.tar.gz', 'usr/lib/pkgconfig/qmi-glib.pc'),
@@ -260,8 +241,6 @@ if __name__ == '__main__':
     name, = sys.argv[1:]
     version, depends, archive, required = PROFILES[name]
     subprocess.run(['bash', '-c', 'source /opt/toddy-build/scripts/build/target.sh; guard_target'], check=True)
-    from dependency_preflight import native as verify_native_dependencies
-    verify_native_dependencies(depends)
     log = Path('/var/log/toddy/phase2')
     llvm_resume=name=='llvm' and (log/'llvm-qualify-resume-3.job.json').exists()
     llvm_recovery=name=='llvm' and (log/'llvm-qualify-recovery-4.job.json').exists()
@@ -280,14 +259,6 @@ if __name__ == '__main__':
     if name=='appstream' and (log/'appstream-probe-4.job.json').exists():qualifier='appstream-probe-4'
     if name=='libfyaml' and (log/'libfyaml-finish-2.job.json').exists():qualifier='libfyaml-finish-2'
     if name=='colord-gtk' and (log/'colord-gtk-collect-3.job.json').exists():qualifier='colord-gtk-collect-3'
-    if name=='libgtop' and (log/'libgtop-mode-3.job.json').exists():qualifier='libgtop-mode-3'
-    if name=='mitkrb':qualifier='mitkrb-metadata-4'
-    if name=='cups':qualifier='cups-layout-finish-2'
-    if name=='udisks2':qualifier='udisks2-gi-3'
-    if name=='libblockdev':qualifier='libblockdev-collect-3'
-    if name=='libnvme':qualifier='libnvme-probe-2'
-    if name=='libatasmart':qualifier='libatasmart-probe-2'
-    if name=='libbytesize':qualifier='libbytesize-finish-2'
     if name=='itstool' and (log/'itstool-recovery-2.job.json').exists():qualifier='itstool-recovery-2'
     if name=='itstool' and (log/'itstool-dtd-finish-3.job.json').exists():qualifier='itstool-dtd-finish-3'
     if name=='at-spi2-core' and (log/'atspi-finish-4.job.json').exists():qualifier='atspi-finish-4'
@@ -328,8 +299,6 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':qualifier='gnome-text-editor-metadata-2'
     if name=='libspelling':qualifier='libspelling-options-2'
     if name=='gnome-online-accounts':qualifier='gnome-online-accounts-collect-2'
-    if name=='gvfs':qualifier='gvfs-local-qualify-2'
-    if name=='localsearch':qualifier='localsearch-collect-2'
     if name=='tecla':qualifier='tecla-collect-2'
     if name=='enchant':qualifier='enchant-provider-explicit-5'
     if name=='tinysparql':qualifier='tinysparql-numeric-5'
@@ -1295,51 +1264,6 @@ if __name__ == '__main__':
     if name=='gnome-text-editor':
         from qualify_gnome_text_editor import qualify as qualify_gnome_text_editor
         qualify_gnome_text_editor(ROOT)
-    if name in ('rpcsvc-proto','perl-parse-yapp'):
-        from qualify_samba_build_tools import qualify as qualify_samba_build_tool
-        qualify_samba_build_tool(ROOT,name)
-    if name=='libtirpc':
-        from qualify_libtirpc import qualify as qualify_libtirpc
-        qualify_libtirpc(ROOT)
-    if name=='udisks2':
-        from qualify_udisks2 import qualify as qualify_udisks2
-        qualify_udisks2(ROOT)
-    if name=='libblockdev':
-        from qualify_libblockdev import qualify as qualify_libblockdev
-        qualify_libblockdev(ROOT)
-    if name=='cryptsetup':
-        from qualify_cryptsetup import qualify as qualify_cryptsetup
-        qualify_cryptsetup(ROOT)
-    if name=='popt':
-        from qualify_popt import qualify as qualify_popt
-        qualify_popt(ROOT)
-    if name=='lvm2':
-        from qualify_lvm2 import qualify as qualify_lvm2
-        qualify_lvm2(ROOT)
-    if name=='libaio':
-        from qualify_libaio import qualify as qualify_libaio
-        qualify_libaio(ROOT)
-    if name=='libnvme':
-        from qualify_libnvme import qualify as qualify_libnvme
-        qualify_libnvme(ROOT)
-    if name=='keyutils':
-        from qualify_keyutils import qualify as qualify_keyutils
-        qualify_keyutils(ROOT)
-    if name=='libatasmart':
-        from qualify_libatasmart import qualify as qualify_libatasmart
-        qualify_libatasmart(ROOT)
-    if name=='libbytesize':
-        from qualify_libbytesize import qualify as qualify_libbytesize
-        qualify_libbytesize(ROOT)
-    if name=='cups':
-        from qualify_cups import qualify as qualify_cups
-        qualify_cups(ROOT)
-    if name=='mitkrb':
-        from qualify_mitkrb import qualify as qualify_mitkrb
-        qualify_mitkrb(ROOT)
-    if name=='libgtop':
-        from qualify_libgtop import qualify as qualify_libgtop
-        qualify_libgtop(ROOT)
     if name=='colord-gtk':
         from qualify_colord_gtk import qualify as qualify_colord_gtk
         qualify_colord_gtk(ROOT)
@@ -1370,15 +1294,6 @@ if __name__ == '__main__':
     if name=='librest':
         from qualify_librest import qualify as qualify_librest
         qualify_librest(ROOT)
-    if name=='gvfs':
-        from qualify_gvfs import qualify as qualify_gvfs
-        qualify_gvfs(ROOT)
-    if name=='nautilus':
-        from qualify_nautilus import qualify as qualify_nautilus
-        qualify_nautilus(ROOT)
-    if name=='localsearch':
-        from qualify_localsearch import qualify as qualify_localsearch
-        qualify_localsearch(ROOT)
     if name=='tecla':
         from qualify_tecla import qualify as qualify_tecla
         qualify_tecla(ROOT)
@@ -1543,10 +1458,6 @@ if __name__ == '__main__':
         qualify(ROOT,log)
     assert name==sys.argv[1], 'Package identity changed during qualification'
     source = Path('/mnt/lfs/sources/phase2/work') / (name+'-1') / 'stage'
-    if name=='keyutils':
-        from qualify_keyutils import prepare_relative_stage
-        source=prepare_relative_stage()
-    if name=='cups':source=Path('/mnt/lfs/sources/phase2/work/cups-layout-1/stage')
     if name=='gcr3':source=Path('/mnt/lfs/sources/phase2/work/gcr3-patched-1/stage')
     if name=='polkit':source=Path('/mnt/lfs/sources/phase2/work/polkit-full-1/stage')
     if name=='dconf':source=Path('/mnt/lfs/sources/phase2/work/dconf-vendored-1/stage')
@@ -1558,7 +1469,7 @@ if __name__ == '__main__':
     before = inspect_stage(source)
     assert required in before['entries'], 'Missing declared payload'
     destination = Path('/mnt/lfs/sources/stage') / ('phase2-'+name)
-    if name in ('mitkrb','libqmi','modemmanager'):
+    if name in ('libqmi','modemmanager'):
         from native_scratch_staging import destination as scratch_destination
         destination=scratch_destination(name)
     if name=='libxslt' and destination.exists():
@@ -1589,19 +1500,13 @@ if __name__ == '__main__':
         notice=json.loads((destination/('usr/share/doc/'+name+'/source-notices/index.json')).read_text())
         assert all(not r['notices'] for r in notice['sources'])
     else:
-        if name in ('mitkrb','libqmi','modemmanager'):
+        if name in ('libqmi','modemmanager'):
             assert destination.is_dir() and not list(destination.iterdir())
         else:
             assert not destination.exists(), 'Reconcile existing stage; no replay'
-        shutil.copytree(source, destination, symlinks=True,dirs_exist_ok=name in ('mitkrb','libqmi','modemmanager'))
+        shutil.copytree(source, destination, symlinks=True,dirs_exist_ok=name in ('libqmi','modemmanager'))
         assert inspect_stage(destination) == before
     (log / (name+'-stage.json')).write_text(json.dumps(before, indent=2)+'\n')
-    if name=='keyutils':
-        from qualify_keyutils import promote_config
-        promote_config(destination)
-    if name=='cups':
-        from cups_native import promote
-        promote(destination)
     if name=='gnome-terminal':
         addon=destination/'usr/share/metainfo/org.gnome.Terminal.Nautilus.metainfo.xml'
         assert addon.is_file();addon.unlink()
@@ -1630,17 +1535,6 @@ if __name__ == '__main__':
         for rel in ['usr/share/applications/geoclue-where-am-i.desktop','usr/libexec/geoclue-2.0/demos/where-am-i']:
             path=destination/rel;excluded[rel]=hashlib.sha256(path.read_bytes()).hexdigest();path.unlink()
         (log/'geoclue-production-selection.json').write_text(json.dumps({'scope':'Keep full service/library; omit upstream demonstration application, fixed locked service ID30 and remove bundled public provider-key examples from comments only. No actual owner config or provider endpoint edited.','excluded_demo':excluded,'config_before_sha256':hashlib.sha256(before_config).hexdigest(),'config_after_sha256':hashlib.sha256(after_config).hexdigest()},indent=2)+'\n')
-    if name=='gvfs':
-        from qualify_gvfs import EXCLUDED
-        # SFTP needs the full SSH client, absent from this minimal root. Retain
-        # every original compiled/staged byte, but publish neither its backend
-        # nor its mount advertisement until that separate dependency qualifies.
-        assert not Path('/mnt/lfs/usr/bin/ssh').exists()
-        excluded={}
-        for relative in EXCLUDED:
-            p=destination/relative;excluded[relative]=hashlib.sha256(p.read_bytes()).hexdigest();p.unlink()
-        cache=Path('/mnt/lfs/usr/lib/gio/modules/giomodule.cache')
-        (log/'gvfs-runtime-selection.json').write_text(json.dumps({'excluded_sftp':excluded,'GIO_cache_sha256':hashlib.sha256(cache.read_bytes()).hexdigest(),'reason':'Owned SSH client absent. All original build/stage outputs retained; SFTP candidate unavailable. GLib2.88.3 scans uncached modules directly, no shared-cache mutation required.'},indent=2)+'\n')
     if name=='glib-networking':
         # Compiler-local discovery contains only network modules, while the
         # installed resource also serves DConf. Never package/overwrite it.
@@ -1749,8 +1643,6 @@ if __name__ == '__main__':
         (doc/'original-test-review.json').write_text(json.dumps(review(source.parent/'original-tests.log',Path('/mnt/lfs/sources/phase2/inputs/libxslt-1.1.45')),indent=2)+'\n')
         (doc/'README.Toddy').write_text('Build-only xsltproc SDK for authenticated source UI transformations; not a GNOME Terminal runtime dependency. Core driver reports748cases/noerrors; four original DocBook golden whitespace differences remain unaccepted. No complete original-suite/general CLI parser sandbox or DocBook rendering qualification. Use bounded explicit nonet/nowrite/nomkdir/maxdepth/maxvars for selected fixtures. See original-test-review.json.\n')
     archives=[archive]
-    if name=='mitkrb':
-        archives += [row['filename'] for row in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if row['name'] in ('mitkrb-upstream-fix','mitkrb-security-fix','mitkrb-openssl4-fixes')]
     if name=='cracklib':archives.append('cracklib-words-2.10.3.xz')
     if name=='editorconfig':archives.append('editorconfig-core-test-d91029bdf1e3e0307714afe0d2cde7ba6fd208ab.tar.gz')
     if name=='aspell':archives.append('aspell6-en-2020.12.07-0.tar.bz2')
@@ -1778,13 +1670,6 @@ if __name__ == '__main__':
     if name=='lua':
         archives += [r['filename'] for r in json.loads((ROOT/'config/phase2/sources.lock.json').read_text())['components'] if r['name'] in ('lua-shared-library-patch','lua-test-suite')]
     write_copyright(destination, name, archives)
-    if name=='libatasmart':
-        doc=destination/'usr/share/doc/libatasmart'
-        common=ROOT/'LICENSES/third-party/LGPL-2.1.txt'
-        assert hashlib.sha256(common.read_bytes()).hexdigest()=='9e9e8608c4cdda51a78cc3a385f4ec9a2e4c96d5ecad74ac8bca5fca3e563b7d'
-        shutil.copyfile(common,doc/'LGPL-2.1.txt')
-        with (doc/'copyright').open('ab') as notice:
-            notice.write(b'\nFull GNU LGPL 2.1 license text from the repository:\n'+common.read_bytes())
     if name=='gnome-terminal':
         doc=destination/'usr/share/doc/gnome-terminal';common=ROOT/'LICENSES/third-party/LGPL-2.1.txt'
         shutil.copyfile(common,doc/'LGPL-2.1.txt')
@@ -1820,17 +1705,6 @@ if __name__ == '__main__':
                         '--depends','glibc (>= 2.44-1), gcc (>= 16.2.0-1), libffi (>= 3.8.0-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1)',
                         '--install'],cwd=ROOT,check=True)
     conffiles=[]
-    if name=='cups':conffiles=[arg for file in sorted((destination/'etc/cups').iterdir()) if file.is_file() for arg in ['--conffile','/'+str(file.relative_to(destination))]]
-    if name=='libtirpc':conffiles=['--conffile','/etc/bindresvport.blacklist','--conffile','/etc/netconfig']
-    if name=='udisks2':conffiles=['--conffile','/etc/udisks2/udisks2.conf']
-    if name=='libblockdev':conffiles=['--conffile','/etc/libblockdev/3/conf.d/00-default.cfg']
-    if name=='lvm2':
-        conffiles=[value for path,row in sorted(before['entries'].items())
-                   if path.startswith('etc/lvm/') and 'sha256' in row
-                   for value in ('--conffile','/'+path)]
-        assert len(conffiles)==20
-    if name=='localsearch':conffiles=['--conffile','/etc/xdg/autostart/localsearch-3.desktop']
-    if name=='keyutils':conffiles=['--conffile','/etc/request-key.conf']
     if name=='libpwquality':conffiles=['--conffile','/etc/security/pwquality.conf']
     if name=='vte':conffiles=['--conffile','/etc/profile.d/vte.sh','--conffile','/etc/profile.d/vte.csh']
     if name=='gdm':conffiles=[v for n in ['custom.conf'] for v in ['--conffile','/etc/gdm/'+n]]+[v for n in ['gdm-autologin','gdm-launch-environment','gdm-fingerprint','gdm-smartcard','gdm-password'] for v in ['--conffile','/etc/pam.d/'+n]]
@@ -1845,7 +1719,7 @@ if __name__ == '__main__':
                     version+('-1+toddy2' if name in ('linux-pam','gnome-settings-daemon','gnome-terminal','gsound','colord-gtk') else '-1+toddy1'), str(destination), *source_args,
                     '--recipe', 'scripts/build/phase2/'+name+'-install.sh',
                     '--depends', depends, '--install', *conffiles,
-                    *(['--architecture','all'] if name in ('unicode-ucd','fast-float','blueprint-compiler','perl-parse-yapp') else [])], cwd=ROOT, check=True)
+                    *(['--architecture','all'] if name in ('unicode-ucd','fast-float','blueprint-compiler') else [])], cwd=ROOT, check=True)
     if name=='glib-networking':
         from gio_network_resources import finish as finish_gio_network
         finish_gio_network()

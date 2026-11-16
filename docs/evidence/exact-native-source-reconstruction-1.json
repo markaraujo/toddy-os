@@ -1,0 +1,18 @@
+{
+  "bytes": 161520,
+  "changed_hunks": 5,
+  "method": "Deterministic selection of existing adjacent committed diff hunks; only exact pre-existing native record SHA accepted",
+  "native_execution": false,
+  "new_commit": "3e096f46a8b4a8535d2b5dae82ba221f3c54b7b3",
+  "new_sha256": "d112111dadb08338c11b99300ea4055160971fd8e5e6e49c524e1d79562d883a",
+  "old_commit": "20b348c64411be4f20f8f904b0d0f6879e1572fc",
+  "old_sha256": "1db24ef19910fefea9114ccc7e24cd6dbf22d3df21184d7b022ab9c2fb263351",
+  "path": "scripts/build/phase2/install_verified_stage.py",
+  "restored_tip_sha256": "2cbab661abe823e8e895766b164bc5dd844b6060ecb462def3ebfb11cdcfeae3",
+  "scope": "exact-recorded-intermediate-source-reconstruction",
+  "selected_diff_hunks_mask": 29,
+  "sha256": "87d481399a9adecf9d5004cfe7940d8f0a085b59c7b067fa08bb975066558011",
+  "snapshot_recovery_claim": false,
+  "source_bundle_complete": false,
+  "version": 1
+}
