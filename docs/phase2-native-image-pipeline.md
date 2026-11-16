@@ -319,3 +319,61 @@ finalizer reports and exact source/image inputs. Public release handoff still
 requires the actual ISO/checksums, installer/boot/recovery evidence, license and
 privacy review, and explicit pending physical-machine validation; collected
 source evidence alone is never an accepted ISO or production seal.
+
+## Private protected stage ancestry
+
+The actual historical LFS `/sources` cache belongs to UID1000 and is mode1777.
+A protected stage child alone cannot satisfy `composition.secured()`'s complete
+ancestor checks. The fixed `image_native.sh` now provides a private protected
+view while retaining the original image paths and underlying data. It never
+changes the legacy cache's owner/mode or weakens that generic validator.
+
+Under the existing global build lease and designated target/source/active-job
+checks, the wrapper enters a private mount namespace with a closed environment.
+It first anchors the actual root-protected, same-target-filesystem stage into a
+fresh protected `/run/toddy-image-stage-anchor.*` bind outside the target root.
+Only then does it overmount the target's `/sources` directory with a tiny
+root-owned0755 tmpfs. It binds the anchored actual stage back as `/sources/stage`
+with `rw,exec,nosuid,nodev`, verifying the original device/inode/owner/mode and
+actual mount options. Real NativeFinalizer ELF/cache commands may execute there;
+setuid/device effects remain disabled. The original raw source cache is hidden
+only in this job's view. Prepared archives, maps and public trust inputs already
+live under stage; the project source remains its separate read-only/noexec bind.
+
+All old native image actions still enter the actual native chroot with the same
+fixed argv. Stage files/directories are created on the original filesystem and
+persist at the original `/mnt/lfs/sources/stage` after cleanup. Only underlying
+stage/work/root pins enter operation receipts; temporary parent tmpfs/anchor
+inodes are local namespace cleanup guards, not persistent image identity.
+Cleanup unmounts project source, stage child, parent tmpfs and anchor in that
+order. The placeholder inside the tiny parent is removed only while that parent
+is still mounted and its temporary device/inode matches. The real persisted
+stage is never removed. No lazy/forced unmount or recursive stage deletion is
+used; a cleanup failure is retained as a failed operation for reconciliation.
+
+The only added actions are these exact cache-custody selectors:
+
+```text
+custody-offline-inspect  custody-offline-export  custody-offline-receipt
+custody-offline-metadata custody-offline-retire
+custody-live-inspect     custody-live-export     custody-live-receipt
+custody-live-metadata    custody-live-retire
+```
+
+They call the fixed builder-side candidate-root helper inside this same private
+view, preserving its explicit offline/live boundaries. They cannot choose a
+command/path or select another root. Host custody entries use this wrapper
+rather than traversing the raw legacy ancestry. The helper validates the
+canonical global lock, exact FD9 device/inode and kernel-reported exclusive FLOCK
+write lease, then reuses that inherited open description without opening or
+reacquiring another lock. It never closes/unlocks its caller's lease.
+
+The shell preserves original protocol stdin as FD8 **before** its namespace
+heredoc replaces stdin. Only the fixed custody helper receives that original
+channel, closing the extra FD8 copy; normal image actions close it. Thus bounded
+host retirement-proof JSON stays data and export stdout stays raw tar/protocol,
+never shell source or an arbitrary argv hook. The source namespace driver itself
+is captured/rechecked in custody provenance alongside the helper/verifier.
+Source tests exercise real inherited FLOCK ownership/refusal and binary stdin
+preservation, shell/action/cleanup contracts and unprivileged entry denial; they
+do not mount a namespace, execute a VM, qualify a native image or reclaim space.

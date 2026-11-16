@@ -143,7 +143,7 @@ class LiveCandidateBoundaryTests(unittest.TestCase):
         self.assertEqual(guest.INPUTS,Path('/mnt/lfs/sources/stage/toddy-live-native-inputs'))
         self.assertEqual(host.ARCHIVE_NAME,'live-candidate1-root.tar.gz')
         self.assertIn('live-candidate-root-custody-1',str(host.CONTEXT))
-        self.assertTrue(host.command('inspect')[-1].endswith(' live inspect'))
+        self.assertTrue(host.command('inspect')[-1].endswith(' custody-live-inspect'))
         with self.assertRaises(ValueError):guest.configure('/arbitrary/root')
         with self.assertRaises(ValueError):host.configure('live-reviewed')
 
@@ -179,7 +179,7 @@ class LiveCandidateBoundaryTests(unittest.TestCase):
                     'root_inode':root.stat().st_ino,'root_device':root.stat().st_dev,'policy_sha256':descriptor['policy_sha256'],
                     'generated_entries_sha256':pins['generated-entries.json'],'candidate_image_manifest_sha256':pins['expected-image-manifest.json']}
                 (work/'candidate-resource-receipt.json').write_bytes(a.encoded(candidate));(work/'resource-intent.json').write_text('{}')
-                for name in ('image_assemble.py','resource_recipe.py'):
+                for name in ('image_assemble.py','resource_recipe.py','image_native.sh'):
                     path=repo/'scripts/build/phase2'/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text('# fixture only')
                 def recheck(obj):
                     obj.pins=pins;obj.manifest={'fixture':'UNQUALIFIED'};obj.generated={};obj.descriptor=descriptor;obj.source_hashes={'fixture':'a'*64}

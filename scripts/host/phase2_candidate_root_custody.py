@@ -18,7 +18,7 @@ def configure(profile):
 configure('offline')
 sys.path.insert(0,str(ROOT/'scripts/build/phase2'))
 import candidate_root_archive as archive
-GUEST='/opt/toddy-build/scripts/build/phase2/candidate_root_custody.py'
+GUEST='/opt/toddy-build/scripts/build/phase2/image_native.sh'
 CHUNK=4*1024**2
 
 
@@ -35,7 +35,7 @@ def save(path,value):
 def command(action):
     if action not in ('inspect','export','receipt','metadata','retire'):raise ValueError('candidate_root_host_fixed_action')
     ssh=candidate.ssh()
-    return [*ssh[:-1],'-o','ServerAliveInterval=15','-o','ServerAliveCountMax=2',ssh[-1],'/usr/bin/python3 '+GUEST+' '+('live ' if PROFILE=='live' else '')+action]
+    return [*ssh[:-1],'-o','ServerAliveInterval=15','-o','ServerAliveCountMax=2',ssh[-1],'/usr/bin/bash '+GUEST+' custody-'+PROFILE+'-'+action]
 
 def read_guest(action,limit=128*1024**2):
     result=subprocess.run(command(action),stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True,timeout=1800)
@@ -99,6 +99,7 @@ def main(profile='offline'):
         CONTEXT.mkdir(mode=0o700);fsync(parent)
         state={'version':1,'state':'export-intended-no-replay','candidate_container_id':identity,'actual_selection':selected,
             'guest_helper_sha256':archive.sha(ROOT/'scripts/build/phase2/candidate_root_custody.py'),
+            'protected_view_driver_sha256':archive.sha(ROOT/'scripts/build/phase2/image_native.sh'),
             'archive_verifier_sha256':archive.sha(Path(archive.__file__)),'host_producer_sha256':archive.sha(Path(__file__)),
             'profile':PROFILE,'host_entry_sha256':archive.sha(Path(sys.argv[0]).resolve()),'scope':'Only fixed '+PROFILE+' candidate1 root; all journals/final roots/signed bundles/accepted backings retained'}
         save(CONTEXT/'result.json',state);partial=CONTEXT/(ARCHIVE_NAME+'.part');packed=CONTEXT/ARCHIVE_NAME
@@ -114,7 +115,7 @@ def main(profile='offline'):
         os.rename(partial,packed);fsync(CONTEXT);same_guest(identity)
         guest=read_guest('receipt');metadata=read_guest('metadata')
         if (guest.get('state')!='exported-awaiting-host-proof' or guest.get('profile')!=PROFILE or guest.get('producer_sha256')!=state['guest_helper_sha256'] or
-                guest.get('archive_verifier_sha256')!=state['archive_verifier_sha256'] or guest.get('provenance')!=selected['provenance'] or
+                guest.get('archive_verifier_sha256')!=state['archive_verifier_sha256'] or guest.get('provenance',{}).get('preserved',{}).get(GUEST)!=state['protected_view_driver_sha256'] or guest.get('provenance')!=selected['provenance'] or
                 any(guest.get(key)!=value for key,value in expected.items()) or guest.get('metadata_sha256')!=hashlib.sha256(archive.encoded(metadata)).hexdigest()):raise ValueError('candidate_root_host_export_binding_differs')
         save(CONTEXT/'guest-export.json',guest);save(CONTEXT/'source-metadata.json',metadata)
         proof=verify_compressed(packed,metadata,expected)

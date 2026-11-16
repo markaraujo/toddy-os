@@ -5,7 +5,8 @@ Offline after real matching finalizer2; live before fresh finalizer2 only from
 completed resource candidate and exact independently reviewed protected inputs.
 No generic path/cleanup flag.
 """
-import fcntl,hashlib,json,os,shutil,stat,subprocess,sys
+import errno,fcntl,hashlib,json,os,re,shutil,stat,subprocess,sys
+from contextlib import contextmanager
 from pathlib import Path
 sys.dont_write_bytecode=True
 ROOT=Path('/opt/toddy-build');TARGET=Path('/mnt/lfs')
@@ -133,7 +134,7 @@ def eligible():
         if hashlib.sha256(p.encoded(current)).hexdigest()!=descriptor['image_manifest_sha256']:raise ValueError('candidate_root_custody_current_reviewed_image_required')
     paths.extend(INPUTS/name for name in ('policy.json','generated-entries.json','expected-image-manifest.json','boot-profile.json'))
     paths.extend(path for path in inputs.bundle.rglob('*') if path.is_file())
-    paths.extend(ROOT/'scripts/build/phase2'/name for name in ('image_assemble.py','resource_recipe.py'))
+    paths.extend(ROOT/'scripts/build/phase2'/name for name in ('image_assemble.py','resource_recipe.py','image_native.sh'))
     preserved={str(path):archive.sha(secured(path)) for path in paths}
     inputs.recheck();no_mounts()
     return {'profile':PROFILE,'assembly_pin':pin,'final_assembly_pin':final_pin,'descriptor':descriptor,'preserved':preserved,
@@ -224,13 +225,36 @@ def retire(proof):
     state['actual_guest_free_gain_bytes']=state['after_free_bytes']-before;save(STATE,state);return state
 
 
+
+def validate_lease(fd):
+    path=secured(LOCK);actual=os.fstat(fd);expected=path.stat()
+    if LOCK.resolve()!=LOCK or Path('/proc/self/fd/'+str(fd)).readlink()!=LOCK or (actual.st_dev,actual.st_ino)!=(expected.st_dev,expected.st_ino):
+        raise ValueError('candidate_root_custody_global_lease_identity')
+    info=Path('/proc/self/fdinfo/'+str(fd)).read_text()
+    if not re.search(r'^lock:.*\bFLOCK\b.*\bWRITE\b',info,re.M):raise ValueError('candidate_root_custody_exclusive_global_lease_required')
+
+
+@contextmanager
+def operation_lease():
+    try:os.fstat(9)
+    except OSError as error:
+        if error.errno!=errno.EBADF:raise
+        fd=os.open(LOCK,os.O_RDWR|os.O_CREAT|os.O_NOFOLLOW,0o600)
+        try:
+            fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB);validate_lease(fd);yield fd
+        finally:os.close(fd)
+    else:
+        # image_native owns this same open description. Never open/reacquire or
+        # unlock/close its FD9; it remains held across helper and namespace cleanup.
+        validate_lease(9);yield 9
+
+
 def main():
     arguments=sys.argv[1:]
     if arguments[:1]==['live']:configure('live');arguments=arguments[1:]
     if os.getuid()!=0 or os.geteuid()!=0 or arguments not in (['inspect'],['export'],['receipt'],['metadata'],['retire']):raise ValueError('candidate_root_custody_fixed_root_coordinator_action')
     os.umask(0o077);subprocess.run(['/bin/bash','-c','source "$1"; guard_target','guard',str(ROOT/'scripts/build/target.sh')],check=True)
-    with LOCK.open('a') as lease:
-        fcntl.flock(lease,fcntl.LOCK_EX|fcntl.LOCK_NB)
+    with operation_lease():
         if list(LOCK.parent.glob('*.running.json')) or (LOCK.parent/'input-sync.running').exists() or unclosed_compiler_jobs(LOG):raise ValueError('candidate_root_custody_other_native_operation')
         action=arguments[0]
         if action=='export':export();return

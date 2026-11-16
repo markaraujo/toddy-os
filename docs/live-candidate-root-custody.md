@@ -46,10 +46,12 @@ It requires byte equality of both reviewed maps with the actual candidate
 outputs, audits the current candidate against that complete reviewed image and
 captures/rechecks the complete input/source pinset. Every prepared bundle file
 and resource/assembly consumer source is retained and hash-bound in provenance.
-Protected ancestry remains required: ordinary legacy LFS `/sources` ownership
-cannot satisfy that validator. Until the source pipeline supplies its private
-protected stage view, the command intentionally refuses. Do not chmod the legacy
-cache or weaken `secured()` to admit it.
+Protected ancestry remains required. The host entry routes each action through
+`image_native.sh custody-live-{inspect|export|receipt|metadata|retire}`. That
+source wrapper supplies the temporary protected `/sources` view described in
+[the image pipeline](phase2-native-image-pipeline.md). It pins and binds the
+actual stage while hiding the legacy writable parent only in that job's private
+namespace; it never chmods the legacy cache or weakens `secured()`.
 
 The implementation trace is concrete: `finalize_native(kind)` reads
 `ReviewedInputs(kind)` and creates a new `AssemblyRoot(kind + '-reviewed', ...)`

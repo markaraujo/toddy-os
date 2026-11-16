@@ -31,7 +31,7 @@ builder. After inspecting the actual candidate/job/mount state, it can run this
 read-only native eligibility/measurement command:
 
 ```text
-/usr/bin/python3 /opt/toddy-build/scripts/build/phase2/candidate_root_custody.py inspect
+/usr/bin/bash /opt/toddy-build/scripts/build/phase2/image_native.sh custody-offline-inspect
 ```
 
 The result contains actual unique logical file bytes, allocated regular-file
@@ -50,8 +50,8 @@ python3 scripts/host/phase2_candidate_root_custody.py
 ```
 
 It takes the existing native boot lock and verifies the exact owned candidate
-container and accepted backing identities. The guest helper independently takes
-the global native build lock and refuses input-sync markers, root transactions
+container and accepted backing identities. The fixed image wrapper owns the global native build lock; the guest helper
+validates and reuses its exact inherited FD9 without reacquiring it and refuses input-sync markers, root transactions
 and recognized unclosed compiler jobs. It validates no nested/bind mounts in any
 visible process namespace, loop consumers, open files/directories, process
 cwd/root references or mappings into the selected inode set. Source files with
