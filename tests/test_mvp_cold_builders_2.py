@@ -14,12 +14,14 @@ class SecondColdBuilderTests(unittest.TestCase):
   for name,row in second.PROFILES.items():
    self.assertLess(row['bytes'],12*1024**3);self.assertNotIn('target',name)
    self.assertEqual(len(row['manifest_sha256']),64);self.assertEqual(len(row['sha256']),64)
+  self.assertTrue(all('backing' not in row for row in second.PROFILES.values()))
+  self.assertIn(".get('backing','/vm/builder-base.img')",second.SOURCE.read_text())
   self.assertIsNot(second._guard,original)
   self.assertEqual(hashlib.sha256(second.SOURCE.read_bytes()).hexdigest(),second.SOURCE_SHA256)
  def test_shared_protocol_has_distinct_context_and_same_protected_guards(self):
   source=(ROOT/'scripts/host/phase2_compress_cold_checkpoints.py').read_text()
   self.assertIn('cold-checkpoint-compression-mvp-builders-2',source)
-  self.assertIn("mvp=args.profile in ('mvp-builders','mvp-builders-2')",source)
+  self.assertIn("mvp=args.profile in ('mvp-builders','mvp-builders-2','mvp-h04-current')",source)
   for text in ('F_OFD_SETLK','verify_gzip(part','strict.image_identity(p)','strict.manifest(name)','floor=RESERVE+512*1024**2','os.fsync(directory)'):
    self.assertIn(text,source)
 

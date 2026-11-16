@@ -5,7 +5,7 @@ from pathlib import Path
 HERE=Path(__file__).resolve().parent;sys.path.insert(0,str(HERE))
 import phase2_compress_cold_checkpoints as cold
 SOURCE=HERE/'phase2_mvp_cold_builders.py'
-SOURCE_SHA256='715af337c5415a33b6c2f3bf923272fbe4fed7edfa1bf45cd0e1bbf68060c1d6'
+SOURCE_SHA256='138cb0ca27352c0db3f8c652fb5e7948fd3f6c318872558a1b1d48ddf8161ee8'
 if SOURCE.resolve()!=SOURCE or hashlib.sha256(SOURCE.read_bytes()).hexdigest()!=SOURCE_SHA256:raise ValueError('Reviewed shared cold-builder guard changed')
 spec=importlib.util.spec_from_file_location('_toddy_cold_builder_guard_2',SOURCE)
 _guard=importlib.util.module_from_spec(spec);spec.loader.exec_module(_guard)
