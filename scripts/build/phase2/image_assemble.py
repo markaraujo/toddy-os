@@ -20,7 +20,9 @@ from runtime.installer.native_finalizer import payload_module
 
 STAGE = Path('/sources/stage')
 GENERATIONS = {'base': ('toddy-offline-image-1', 'toddy-installer-native-inputs'),
-               'live': ('toddy-live-image-1', 'toddy-live-native-inputs')}
+               'live': ('toddy-live-image-1', 'toddy-live-native-inputs'),
+               'base-reviewed': ('toddy-offline-image-2', 'toddy-installer-native-inputs'),
+               'live-reviewed': ('toddy-live-image-2', 'toddy-live-native-inputs')}
 RESERVE = 16 * 1024**3
 
 
@@ -57,7 +59,7 @@ class AssemblyRoot:
         if kind not in GENERATIONS:
             raise ValueError('Unknown fixed image profile')
         self.work = STAGE/GENERATIONS[kind][0]
-        self.root = self.work/'root'
+        self.root = self.work/({'base-reviewed':'offline-root-2','live-reviewed':'live-root-2'}.get(kind,'root'))
         parent = STAGE.lstat()
         if (STAGE.resolve() != STAGE or not stat.S_ISDIR(parent.st_mode) or parent.st_uid or
                 parent.st_gid or parent.st_mode & 0o022 or parent.st_dev != Path('/').stat().st_dev):
@@ -73,6 +75,9 @@ class AssemblyRoot:
         if space.f_bavail*space.f_frsize < self.required:
             raise ValueError('Native assembly capacity requires16GiB plus3xpayload plus512MiB')
         self.work.mkdir(mode=0o700); self.root.mkdir(mode=0o755)
+        # Match the explicit empty ext4 directory expected in installed roots.
+        # This stages declared bytes/metadata; it is not a filesystem proof.
+        (self.root/'lost+found').mkdir(mode=0o700)
         self.pin = self.identity()
 
     def identity(self):
@@ -98,8 +103,11 @@ def unpack_native(bundle, manifest_sha256, assembly, system):
         runner=None, finalizer=None)
     manifest = prepared._load(); bundle_namespace(bundle, manifest)
     system.require_root(); assembly.recheck()
-    if list(assembly.root.iterdir()):
-        raise ValueError('Native assembly root must be empty; never replay unpack')
+    for entry in assembly.root.iterdir():
+        info=entry.lstat()
+        if (entry.name!='lost+found' or not stat.S_ISDIR(info.st_mode) or info.st_uid or info.st_gid or
+                stat.S_IMODE(info.st_mode)!=0o700 or list(entry.iterdir())):
+            raise ValueError('Native assembly root must be fresh; never replay unpack')
     for name in ('dpkg', 'dpkg-query'):
         virtual = '/usr/bin/'+name
         if p.digest(secured(virtual)) != manifest['ownership']['entries'][virtual]['sha256']:
@@ -154,8 +162,107 @@ def adopt_unpacked(kind, manifest, manifest_sha256, system):
     return assembly
 
 
+class ReviewedInputs:
+    """Fixed signed bundle plus reviewed generation-2 policy/map/expected image."""
+    def __init__(self, kind):
+        if kind not in ('base','live'):raise ValueError('Unknown reviewed image profile')
+        self.base=STAGE/GENERATIONS[kind][1];self.bundle=self.base/'payload';self.recheck()
+
+    def recheck(self):
+        from runtime.installer.composition import SOURCES,source_path,validate_policy,validate_installed_handoff
+        from runtime.installer.installed_boot import InstalledBoot
+        p=payload_module()
+        files=('payload/manifest.json','policy.json','generated-entries.json','expected-image-manifest.json','boot-profile.json')
+        pins={name:p.digest(secured(self.base/name)) for name in files}
+        self.source_hashes={name:p.digest(secured(source_path(name))) for name in SOURCES}
+        pins.update({'source:'+name:sha for name,sha in self.source_hashes.items()})
+        if hasattr(self,'pins') and self.pins!=pins:raise ValueError('Reviewed assembly input/source changed')
+        self.pins=pins
+        self.manifest=p.PreparedPayload(self.bundle,manifest_sha256=pins['payload/manifest.json'],runner=None,finalizer=None)._load()
+        bundle_namespace(self.bundle,self.manifest);validate_installed_handoff(self.manifest,self.source_hashes)
+        self.policy=p.strict(secured(self.base/'policy.json').read_bytes());validate_policy(self.policy,self.manifest)
+        self.generated=p.strict(secured(self.base/'generated-entries.json').read_bytes())
+        self.boot=p.strict(secured(self.base/'boot-profile.json').read_bytes())
+        expected=p.strict(secured(self.base/'expected-image-manifest.json').read_bytes())
+        self.descriptor={'payload_manifest_sha256':pins['payload/manifest.json'],'policy_sha256':pins['policy.json'],
+            'image_manifest_sha256':__import__('hashlib').sha256(p.encoded(expected)).hexdigest()}
+        InstalledBoot(self.bundle,self.manifest,self.boot,None)
+
+
+def finalize_native(kind, system):
+    """Fresh generation 2 using real finalizer; no candidate file is promoted."""
+    from runtime.installer.native_finalizer import NativeFinalizer
+    p=payload_module();inputs=ReviewedInputs(kind);assembly=AssemblyRoot(kind+'-reviewed',inputs.manifest)
+    write(assembly.work/'finalize-intent.json',{'version':1,'state':'native-finalizer-intended',
+        'payload_manifest_sha256':inputs.descriptor['payload_manifest_sha256'],'assembly_pin':list(assembly.pin)})
+    observed={};finalizer=NativeFinalizer(inputs,system)
+    def actual_finalizer(root,manifest):
+        result=finalizer(root,manifest);observed.update(result);return result
+    def stage_guard(root,plan):
+        assembly.recheck()
+        return Path(root)==assembly.root
+    native=p.PreparedPayload(inputs.bundle,manifest_sha256=inputs.descriptor['payload_manifest_sha256'],
+        runner=system,finalizer=actual_finalizer,target_guard=stage_guard)
+    plan={'payload':{'sha256':inputs.descriptor['payload_manifest_sha256'],
+        'catalog_sha256':inputs.manifest['catalog_sha256'],'bytes':inputs.manifest['bytes']}}
+    native.install_payload(assembly.root,plan);inputs.recheck();assembly.recheck()
+    result={'version':1,'state':'native-finalizer-verified','root':str(assembly.root),
+        'assembly_pin':list(assembly.pin),'payload_manifest_sha256':inputs.descriptor['payload_manifest_sha256'],
+        'policy_sha256':inputs.descriptor['policy_sha256'],'generated_entries_sha256':inputs.pins['generated-entries.json'],
+        'image_manifest_sha256':observed['image_manifest_sha256'],'checks':observed['checks'],
+        'source_sha256':inputs.source_hashes,'production_ready':False,'native_boot_verified':False}
+    write(assembly.work/'finalized.json',result)
+    return result
+
+
+def stage_live(system):
+    """Source-attributed live transform after real finalizer; actual journal last."""
+    import live_profile
+    p=payload_module();inputs=ReviewedInputs('live')
+    assembly=object.__new__(AssemblyRoot);assembly.work=STAGE/GENERATIONS['live-reviewed'][0]
+    assembly.root=assembly.work/'live-root-2'
+    receipt=p.strict(secured(assembly.work/'finalized.json').read_bytes())
+    assembly.pin=tuple(receipt['assembly_pin']);assembly.required=RESERVE+1;assembly.recheck()
+    if receipt.get('state')!='native-finalizer-verified' or receipt.get('root')!=str(assembly.root):
+        raise ValueError('Actual finalized live generation required')
+    media_id=live_profile.media_identity(inputs.descriptor['payload_manifest_sha256'],inputs.descriptor['policy_sha256'])
+    result=live_profile.stage(assembly,inputs.manifest,inputs.policy,media_id,system)
+    inputs.recheck();assembly.recheck()
+    # Full metadata/hardlink snapshot is additional compression input, never a
+    # substitute for NativeFinalizer + the live transform's exact delta audit.
+    sys.path[:0]=[str(ROOT/'scripts/build/h10'),str(ROOT/'scripts/build')]
+    from copy_selected_root import snapshot,tree_names
+    from acl_sidecar import stage_acl
+    import subprocess
+    class NativeRootBackend:
+        native=True
+        target=Path('/')
+        def run(self,program,*arguments,**kwargs):
+            if program not in ('dpkg-query','bash'):raise ValueError('Unknown fixed ACL native program')
+            return subprocess.run(['/usr/bin/env','-i','HOME=/root','PATH=/usr/bin:/usr/sbin','LC_ALL=C',
+                '/usr/bin/'+program,*arguments],check=True,**kwargs)
+    acl=stage_acl(NativeRootBackend(),assembly.root,inputs.bundle/'records')
+    write(assembly.work/'acl-report.json',acl)
+    image=snapshot(assembly.root,tree_names(assembly.root))
+    evidence=assembly.work/'evidence';evidence.mkdir(mode=0o700)
+    write(evidence/'image-manifest.json',image)
+    external=lambda path:Path('/mnt/lfs')/path.relative_to('/')
+    journal={'assembled':True,'release_profile':True,'release_accepted':False,
+        'native_kernel_boot_verified':False,'image':str(external(assembly.root)),
+        'evidence':str(external(evidence)),'native_image':str(assembly.root),
+        'assembler_sha256':p.digest(Path(__file__)),'payload_manifest_sha256':inputs.descriptor['payload_manifest_sha256'],
+        'native_finalizer_receipt_sha256':p.digest(secured(assembly.work/'finalized.json')),
+        'live_profile_receipt_sha256':p.digest(secured(assembly.work/'live-profile-receipt.json')),
+        'acl_report_sha256':p.digest(secured(assembly.work/'acl-report.json')),
+        'media_id':media_id,'actions':[{'step':'image-manifest','finished':True,
+            'report':'image-manifest.json','sha256':p.digest(evidence/'image-manifest.json')}]}
+    write(evidence/'assembly.json',journal)
+    return {'state':'source-attributed-live-image-media-inputs','journal':str(external(evidence/'assembly.json')),
+        'native_kernel_boot_verified':False,'release_accepted':False,'live_profile':result}
+
+
 def main():
-    if (sys.argv[1:] not in (['base'], ['live'], ['qualify-base'], ['qualify-live']) or
+    if (sys.argv[1:] not in (['base'], ['live'], ['qualify-base'], ['qualify-live'], ['finalize-base'], ['finalize-live'], ['stage-live']) or
             Path(__file__).resolve() != Path('/opt/toddy-build/scripts/build/phase2/image_assemble.py')):
         raise ValueError('Fixed native source coordinator command required')
     os.umask(0o077); system=LinuxDisk();native_guard(system)
@@ -165,11 +272,15 @@ def main():
         if not stat.S_ISREG(info.st_mode) or info.st_uid or info.st_gid or info.st_nlink!=1 or stat.S_IMODE(info.st_mode)!=0o600:
             raise ValueError('Native assembly lock custody')
         fcntl.flock(descriptor, fcntl.LOCK_EX|fcntl.LOCK_NB)
-        action=sys.argv[1];kind=action.removeprefix('qualify-');bundle=STAGE/GENERATIONS[kind][1]/'payload';p=payload_module()
+        action=sys.argv[1];kind=action.removeprefix('qualify-').removeprefix('finalize-').removeprefix('stage-');bundle=STAGE/GENERATIONS[kind][1]/'payload';p=payload_module()
         sha=p.digest(secured(bundle/'manifest.json'))
         manifest=p.PreparedPayload(bundle,manifest_sha256=sha,runner=None,finalizer=None)._load()
         bundle_namespace(bundle,manifest)
-        if action.startswith('qualify-'):
+        if action=='stage-live':
+            result=stage_live(system)
+        elif action.startswith('finalize-'):
+            result=finalize_native(kind,system)
+        elif action.startswith('qualify-'):
             from resource_recipe import qualify
             from runtime.installer.composition import validate_policy
             policy=p.strict(secured(bundle.parent/'policy.json').read_bytes());validate_policy(policy,manifest)

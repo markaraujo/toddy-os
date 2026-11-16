@@ -205,3 +205,43 @@ phase reserves 16 GiB plus three copies of its input bytes plus 2 GiB. These
 commands do not partition disks, invoke QEMU or qualify kernel execution. Their
 result explicitly retains pending actual BIOS/UEFI live and blank-disk installer
 qualification, final source/license/privacy audit and physical owner testing.
+
+## Reviewed generation 2 and actual media journal
+
+After independent review of the generation-1 resource candidate, place the real
+reviewed `generated-entries.json`, `expected-image-manifest.json`, policy and boot
+profile in the fixed native input directory. The new `finalize-base` and
+`finalize-live` actions create separate fresh generation-2 roots. They invoke
+real `PreparedPayload.install_payload` and `NativeFinalizer`, then write
+`finalized.json` only after all nine measured reports, signed input recheck and
+independent complete image attribution succeed. Candidate directories are never
+promoted or rerun. Root names are `offline-root-2` and `live-root-2`, avoiding
+collisions in the native finalizer's private report directory. Each source root
+contains an explicitly empty root-owned 0700 `lost+found` matching the production
+ext4 namespace; this is staged metadata, not filesystem-format proof.
+
+Use the same guarded/locked native chroot command shown above, replacing the
+last argument sequentially with `finalize-base`, `finalize-live`, then
+`stage-live`. These require the matching committed generated-resource/live-profile
+source modules; absent qualification inputs or modules fail closed.
+
+`stage-live` first requires the actual generation-2 finalization receipt. The
+separate `live_profile.stage` verifies its report/source/input pins and complete
+pre-transform image attribution, then applies only its source-attributed fresh
+live account/session policy. The caller captures the unchanged H10 numeric ACL
+sidecar with native owned tools and verifies its exact sole-file delta. Only
+then does it record the complete metadata/hardlink snapshot and publish a real
+H10-compatible `evidence/assembly.json` last. The journal explicitly maps the
+native chroot image path to the coordinator's `/mnt/lfs` view of the same guarded
+filesystem; it retains actual finalizer/live-profile/ACL receipt hashes. It does
+not assert boot, root GUI or release acceptance. A partially completed phase is
+retained for reconciliation, never silently replayed.
+
+The live media ID is computed **before** compression by
+`live_profile.media_identity`: a canonical hash of the selected payload manifest,
+reviewed policy and live-profile producer source. The source-attributed
+`/usr/share/toddy/live-image.json` binds that ID to the fixed live user, producer
+and root-owned producer unit. `image_media` independently verifies that class,
+source/unit bytes and policy identity and reuses its ID in initramfs/ISO. SquashFS
+hash remains a separate actual measured field. The media ID does not depend on
+final image bytes, avoiding a recursive identity requirement.

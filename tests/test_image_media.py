@@ -53,6 +53,29 @@ class MediaTests(unittest.TestCase):
         with patch.object(m.os,'statvfs',return_value=Mock(f_bavail=16*1024**3+100,f_frsize=1)):
             m.capacity(Path('/fixture'),100)
 
+    def test_live_identity_comes_from_precompression_payload_policy_and_owned_class(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);image=root/'image';stage=root/'stage';here=root/'code';here.mkdir()
+            files={image/'usr/lib/toddy/installer/live_session.py':b'producer',
+                image/'etc/systemd/system/toddy-live-owner.service':b'unit',here/'live_profile.py':b'profile',
+                stage/'toddy-live-native-inputs/payload/manifest.json':b'payload',
+                stage/'toddy-live-native-inputs/policy.json':b'policy'}
+            for path,data in files.items():path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(data)
+            media='a'*64
+            value={'version':1,'image_class':'phase2-live-installer','live_uid':1000,'live_user':'toddy-live',
+                'media_id':media,'producer_sha256':m.p.digest(image/'usr/lib/toddy/installer/live_session.py'),
+                'unit_sha256':m.p.digest(image/'etc/systemd/system/toddy-live-owner.service'),
+                'profile_source_sha256':m.p.digest(here/'live_profile.py')}
+            path=image/'usr/share/toddy/live-image.json';path.parent.mkdir(parents=True);path.write_text(json.dumps(value))
+            helper=Mock();helper.media_identity.return_value=media
+            with patch.dict('sys.modules',{'live_profile':helper}),patch.object(m,'IMAGE',image),patch.object(m,'STAGE',stage),patch.object(m,'HERE',here),patch.object(m.initramfs_input,'physical',side_effect=lambda root,path,**kwargs:path):
+                self.assertEqual(m.live_identity(),media)
+                helper.media_identity.assert_called_with(m.p.digest(stage/'toddy-live-native-inputs/payload/manifest.json'),m.p.digest(stage/'toddy-live-native-inputs/policy.json'))
+                value['media_id']='b'*64;path.write_text(json.dumps(value))
+                with self.assertRaisesRegex(ValueError,'media identity differs'):m.live_identity()
+                value['media_id']=media;value['producer_sha256']='c'*64;path.write_text(json.dumps(value))
+                with self.assertRaisesRegex(ValueError,'source/unit custody'):m.live_identity()
+
     def test_initramfs_cannot_reuse_other_compression_generation(self):
         with tempfile.TemporaryDirectory() as temporary:
             work=Path(temporary);(work/'manifest.json').write_text(json.dumps({'compression_binding':{'fixture':'old'}}))

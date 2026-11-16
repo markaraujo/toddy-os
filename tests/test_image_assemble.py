@@ -87,6 +87,29 @@ class AssemblyTests(unittest.TestCase):
                     a.adopt_unpacked('base',manifest,'a'*64,system)
                 self.assertEqual(system.run.call_count,1)
 
+    def test_real_finalizer_result_is_required_before_finalized_receipt(self):
+        inputs=Mock();inputs.bundle=Path('/fixture/bundle');inputs.manifest={'catalog_sha256':'b'*64,'bytes':1}
+        inputs.descriptor={'payload_manifest_sha256':'a'*64,'policy_sha256':'c'*64};inputs.pins={'generated-entries.json':'d'*64}
+        inputs.source_hashes={'fixture.py':'e'*64}
+        assembly=Mock(root=Path('/sources/stage/toddy-live-image-2/live-root-2'),
+            work=Path('/sources/stage/toddy-live-image-2'),pin=(1,2,3))
+        p=Mock();instance=p.PreparedPayload.return_value
+        final={'image_manifest_sha256':'f'*64,'checks':{'fixture':'actual measured report fixture'}}
+        def install(root,plan):
+            callback=p.PreparedPayload.call_args.kwargs['finalizer']
+            self.assertTrue(p.PreparedPayload.call_args.kwargs['target_guard'](root,plan))
+            callback(root,inputs.manifest)
+        instance.install_payload.side_effect=install
+        with patch.object(a,'ReviewedInputs',return_value=inputs),patch.object(a,'AssemblyRoot',return_value=assembly),patch.object(a,'payload_module',return_value=p),patch('runtime.installer.native_finalizer.NativeFinalizer',return_value=Mock(return_value=final)),patch.object(a,'write') as write:
+            result=a.finalize_native('live',Mock())
+            self.assertEqual(result['state'],'native-finalizer-verified')
+            self.assertFalse(result['production_ready']);self.assertEqual(write.call_count,2)
+            instance.install_payload.side_effect=ValueError('fixture finalizer failed')
+            write.reset_mock()
+            with self.assertRaisesRegex(ValueError,'finalizer failed'):a.finalize_native('live',Mock())
+            self.assertEqual(write.call_count,1)
+            self.assertEqual(write.call_args.args[0].name,'finalize-intent.json')
+
     def test_partial_unpack_stops_without_configure_or_success_receipt(self):
         with tempfile.TemporaryDirectory() as temporary:
             work=Path(temporary);root=work/'root';root.mkdir()

@@ -29,7 +29,7 @@ from package_backend import PackageBackend
 
 TARGET=Path('/mnt/lfs')
 STAGE=TARGET/'sources/stage'
-IMAGE=STAGE/'toddy-live-image-2/root'
+IMAGE=STAGE/'toddy-live-image-2/live-root-2'
 JOURNAL=STAGE/'toddy-live-image-2/evidence/assembly.json'
 COMPRESSION=STAGE/'toddy-live-compression-1'
 INITRAMFS=STAGE/'toddy-live-initramfs-1'
@@ -96,11 +96,36 @@ def compression_phase(backend):
     return report
 
 
+def live_identity():
+    # The live account/session policy embeds media identity before compression.
+    # Never derive it from SquashFS/final-image bytes (that would be recursive).
+    import live_profile
+    path=initramfs_input.physical(TARGET,IMAGE/'usr/share/toddy/live-image.json')
+    value=p.strict(path.read_bytes())
+    required={'version','image_class','live_uid','live_user','media_id','producer_sha256','unit_sha256','profile_source_sha256'}
+    if (set(value)!=required or value['version']!=1 or type(value['version']) is not int or
+            value['image_class']!='phase2-live-installer' or value['live_uid']!=1000 or
+            type(value['live_uid']) is not int or value['live_user']!='toddy-live'):
+        raise ValueError('Exact source-attributed live image class required')
+    source=initramfs_input.physical(TARGET,IMAGE/'usr/lib/toddy/installer/live_session.py')
+    unit=initramfs_input.physical(TARGET,IMAGE/'etc/systemd/system/toddy-live-owner.service')
+    if (value['producer_sha256']!=p.digest(source) or value['unit_sha256']!=p.digest(unit) or
+            value['profile_source_sha256']!=p.digest(HERE/'live_profile.py')):
+        raise ValueError('Live image class source/unit custody differs')
+    inputs=STAGE/'toddy-live-native-inputs'
+    manifest=initramfs_input.physical(TARGET,inputs/'payload/manifest.json')
+    policy=initramfs_input.physical(TARGET,inputs/'policy.json')
+    expected=live_profile.media_identity(p.digest(manifest),p.digest(policy))
+    if not re.fullmatch('[0-9a-f]{64}',value['media_id']) or value['media_id']!=expected:
+        raise ValueError('Live image media identity differs from selected payload/policy')
+    return expected
+
+
 def initramfs_phase(backend):
     native_tools(backend)
     binding=initramfs_input.verify(TARGET,COMPRESSION/'compression.json',True,assembler=ASSEMBLER)
     capacity(STAGE,1024**3)
-    media_id=hashlib.sha256(p.encoded({'binding':binding,'producer_sha256':p.digest(Path(__file__))})).hexdigest()
+    media_id=live_identity()
     scripts=HERE.parent/'h10'
     report=initramfs_archive.assemble(TARGET,INITRAMFS,RECORDS,scripts/'live_init.sh',
         scripts/'live_media.sh',media_id,binding['rootfs_sha256'],binding['epoch'])
@@ -117,7 +142,7 @@ def archive_input():
     if recorded!=binding or report.get('rootfs_sha256')!=binding['rootfs_sha256'] or report.get('epoch')!=binding['epoch']:
         raise ValueError('Initramfs does not bind current native root generation')
     media_id=report.get('media_id','')
-    if not re.fullmatch('[0-9a-f]{64}',media_id):raise ValueError('Media identity')
+    if not re.fullmatch('[0-9a-f]{64}',media_id) or media_id!=live_identity():raise ValueError('Media identity')
     archive=initramfs_input.physical(TARGET,INITRAMFS/'initramfs.cpio.gz')
     if archive.stat().st_size!=report['gzip_bytes'] or p.digest(archive)!=report['gzip_sha256']:
         raise ValueError('Initramfs gzip custody')
