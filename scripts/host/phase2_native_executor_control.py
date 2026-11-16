@@ -39,7 +39,7 @@ def main():
         path=phase2_vm.WORK/name
         assert path.is_file() and not path.is_symlink() and phase2_vm.backing_identity(path)==row, 'Cold disk changed; reconcile instead of boot'
     files={}
-    for name in ['service.py','store.py','operations.py','command_child.py','linux_identity.py','native_backends.py','policy.py','owner_policy.py','io.github.markaraujo.Toddy.Executor1.xml']:
+    for name in ['service.py','store.py','operations.py','command_child.py','linux_identity.py','native_backends.py','policy.py','owner_policy.py','session_identity.py','io.github.markaraujo.Toddy.Executor1.xml']:
         files[name]=(ROOT/'runtime/executor'/name).read_text()
     packed=zlib.compress(json.dumps(files,sort_keys=True).encode(),9)
     parts=[packed[i:i+8192] for i in range(0,len(packed),8192)]

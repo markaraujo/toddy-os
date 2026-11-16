@@ -165,6 +165,13 @@ for method in ['PlanOperation','DispatchOperation']:
         shell('/usr/bin/python3 /tmp/toddy-owner-ipc.py')
         assert Path(a['path']).read_text()==a['text'] and store.inspect(uid,'session-write')['state']=='completed'
         passed('default-active-policy-real-pam-session-grant-and-ipc-effect')
+        outside=Path('/tmp/toddy-user-service-ipc.py')
+        outside.write_text(client.read_text().replace('session-write','background-session-write').replace('/etc/toddy-session-proof.conf','/etc/toddy-background-session-proof.conf'));outside.chmod(0o644)
+        background=subprocess.run(['/usr/bin/python3',str(outside)],user=uid,group=uid,extra_groups=[],capture_output=True,text=True,timeout=20)
+        assert background.returncode==0,('background-owner-session-dispatch',background.returncode,background.stderr[:300])
+        assert Path('/etc/toddy-background-session-proof.conf').read_text()==a['text']
+        passed('background-same-uid-service-binds-active-owner-logind-display')
+
         install(2)
         assert store.inspect(uid,'session-write')['state']=='completed'
         shell('/usr/bin/python3 /tmp/toddy-owner-ipc.py')
@@ -182,6 +189,10 @@ for method in ['PlanOperation','DispatchOperation']:
         try:store.plan(uid,None,'after-logout','config_replace',a)
         except Exception as e:assert str(e)=='grant_required',('unexpected_logout_error',str(e))
         else:raise AssertionError('Logged-out session grant authorized a caller without session')
+        after=Path('/tmp/toddy-after-logout-ipc.py')
+        after.write_text(client.read_text().replace('session-write','after-logout-write').replace('/etc/toddy-session-proof.conf','/etc/toddy-after-logout-proof.conf'));after.chmod(0o644)
+        denied=subprocess.run(['/usr/bin/python3',str(after)],user=uid,group=uid,extra_groups=[],capture_output=True,text=True,timeout=20)
+        assert denied.returncode!=0 and not Path('/etc/toddy-after-logout-proof.conf').exists(),'Background IPC retained a session grant after logout'
         passed('session-only-grant-refuses-no-session-after-logout')
         run(['/usr/bin/python3','/usr/lib/toddy/executor/policy.py','revoke','--uid',str(uid)])
         run(['systemctl','stop','toddy-executor.service'])

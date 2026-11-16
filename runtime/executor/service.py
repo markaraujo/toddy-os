@@ -13,6 +13,7 @@ gi.require_version('Gio','2.0')
 from gi.repository import Gio,GLib
 from store import Store,PolicyError
 from operations import validate,apply
+from session_identity import session_id
 def strict_json(data):
     # Executor arguments have a small independent schema: no floating values,
     # duplicate keys or nonfinite constants. No optional agent-package import.
@@ -42,12 +43,28 @@ def identity(connection,sender):
             method,GLib.Variant('(s)',(sender,)),GLib.VariantType('(u)'),Gio.DBusCallFlags.NONE,3000,None).unpack()[0]
     uid=credential('GetConnectionUnixUser');pid=credential('GetConnectionUnixProcessID')
     session=None
+    def call(path, interface, method, parameters, signature):
+        return connection.call_sync('org.freedesktop.login1',path,interface,method,parameters,
+            GLib.VariantType(signature),Gio.DBusCallFlags.NONE,1000,None).unpack()[0]
     try:
-        # Actual logind identity; absence cannot authorize a session grant.
-        path=connection.call_sync('org.freedesktop.login1','/org/freedesktop/login1','org.freedesktop.login1.Manager',
-            'GetSessionByPID',GLib.Variant('(u)',(pid,)),GLib.VariantType('(o)'),Gio.DBusCallFlags.NONE,1000,None).unpack()[0]
-        session=connection.call_sync('org.freedesktop.login1',path,'org.freedesktop.DBus.Properties',
-            'Get',GLib.Variant('(ss)',('org.freedesktop.login1.Session','Id')),GLib.VariantType('(v)'),Gio.DBusCallFlags.NONE,1000,None).unpack()[0]
+        try:
+            path=call('/org/freedesktop/login1','org.freedesktop.login1.Manager','GetSessionByPID',
+                      GLib.Variant('(u)',(pid,)),'(o)')
+        except GLib.Error as error:
+            # Only a real "no session" permits Display fallback. Bus outages,
+            # permission/protocol failures must not turn into another identity.
+            name=Gio.DBusError.get_remote_error(error)
+            if name != 'org.freedesktop.login1.NoSessionForPID':raise
+            user=call('/org/freedesktop/login1','org.freedesktop.login1.Manager','GetUser',
+                      GLib.Variant('(u)',(uid,)),'(o)')
+            display=call(user,'org.freedesktop.DBus.Properties','Get',
+                         GLib.Variant('(ss)',('org.freedesktop.login1.User','Display')),'(v)')
+            if not isinstance(display,(tuple,list)) or len(display)!=2 or not display[0]:
+                return uid,None
+            path=display[1]
+        properties=call(path,'org.freedesktop.DBus.Properties','GetAll',
+                        GLib.Variant('(s)',('org.freedesktop.login1.Session',)),'(a{sv})')
+        session=session_id(uid,properties)
     except GLib.Error:pass
     return uid,session
 
