@@ -97,12 +97,14 @@ def original_source_provenance(component, record, *, repository=ROOT, target=TAR
     return 'owned-original-source-manifest'
 
 
-def collect(names, rows, records=RECORDS, archives=ARCHIVES):
+def collect(names, rows, records=RECORDS, archives=ARCHIVES, *, storage=None):
     components = {}
     for name in sorted(names):
         row = rows[name]
         record = records / (name + '_' + row['version'] + '_' + row['architecture'] + '.json')
-        component = payload.component_from_record(record, archives)
+        measured={}
+        component = payload.component_from_record(record, archives, storage=measured)
+        if storage is not None:storage[name]=measured
         if (component['depends'] != row['depends'] or row['pre_depends']):
             raise ValueError('Observed dependencies differ or Pre-Depends is unqualified: ' + name)
         # component_from_record validates archive/control/owned bytes/legal data;
@@ -191,10 +193,19 @@ def main():
         profile_bytes = (ROOT/'config/phase2/desktop-runtime-roots.json').read_bytes()
         rows = installed_rows(inventory)
         _, names = select(payload.strict(profile_bytes), rows)
-        components = collect(names, rows)
+        measurements={}
+        components = collect(names, rows, storage=measurements)
         if subprocess.check_output(command, text=True, timeout=60) != inventory:
             raise ValueError('Native inventory changed during projection')
-        save_generation(OUTPUT, documents(profile_bytes, inventory, components))
+        files=documents(profile_bytes, inventory, components)
+        base,live=select(payload.strict(profile_bytes),rows)
+        reports={}
+        for kind,selected in (('offline',base),('live',live)):
+            records=[payload.strict(payload.regular(RECORDS/(name+'_'+rows[name]['version']+'_'+rows[name]['architecture']+'.json')).read_bytes()) for name in sorted(selected)]
+            reports[kind]=payload.storage_measurements({name:measurements[name] for name in selected},payload.inventory(records),os.statvfs(OUTPUT.parent).f_frsize)
+        files['storage-report.json']=payload.encoded({'version':1,'scope':'actual-archive-measurements-not-signed-preparation-or-native-acceptance',
+            'profiles':reports,'required_reserve_bytes':payload.RESERVE_BYTES,'generated_policy_and_embedded_inputs_still_required':True})
+        save_generation(OUTPUT,files)
     print(json.dumps({'state': 'archive-backed-projection', 'output': str(OUTPUT),
         'production_ready': False, 'boot_verified': False}, sort_keys=True))
 

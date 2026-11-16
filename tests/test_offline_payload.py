@@ -14,6 +14,7 @@ import stat
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location('offline_payload', ROOT / 'scripts/build/phase2/offline_payload.py')
@@ -158,7 +159,35 @@ class OfflinePayloadTests(unittest.TestCase):
             destination=destination or self.root / 'bundle', trust=self.trust(),
             generated_bindings={}, additional_components=self.components[1:], required_recovery_paths=())
         arguments.update(kwargs)
-        return payload.prepare(**arguments)
+        # Tiny ephemeral host fixtures do not claim actual guest free space.
+        with patch.object(payload,'available_bytes',return_value=payload.RESERVE_BYTES+1024**3):
+            return payload.prepare(**arguments)
+
+    def test_storage_counts_real_hardlinks_once_but_retains_legacy_path_bytes(self):
+        stage=self.root/'hardlink-stage';(stage/'usr/share/fixture').mkdir(parents=True)
+        source=stage/'usr/share/fixture/a';source.write_bytes(b'x')
+        os.link(source,source.with_name('b'));source.with_name('c').write_bytes(b'x')
+        (stage/'DEBIAN').mkdir();(stage/'DEBIAN/control').write_text('Package: fixture-links\nVersion: 1\nArchitecture: all\nMaintainer: Fixture <f@example.invalid>\nDescription: source fixture\n')
+        archive=self.cache/'links.deb';command(['dpkg-deb','--root-owner-group','--build',str(stage),str(archive)])
+        measured={};_,_,legacy=payload.archive_contents(archive,storage=measured)
+        report=payload.storage_measurements({'fixture-links':measured},{'fresh_directories':{}},4096)
+        self.assertEqual(legacy,3);self.assertEqual(report['logical_regular_path_bytes'],3)
+        self.assertEqual(report['unique_regular_bytes'],2);self.assertEqual(report['regular_inodes'],2)
+        self.assertEqual(report['hardlink_aliases'],1)
+        self.assertGreaterEqual(report['rounded_file_data_bytes'],8192)
+        self.assertGreater(report['native_database_staging_bound_bytes'],0)
+
+    def test_complete_bundle_copy_is_bounded_before_destination_creation(self):
+        manifest=self.prepare();storage=manifest['storage']
+        self.assertEqual(manifest['bytes'],storage['logical_regular_path_bytes'])
+        self.assertGreater(storage['root_storage_bound_bytes'],manifest['bytes'])
+        self.assertGreater(storage['bundle_copy_bound_bytes'],sum(row['archive_bytes'] for row in manifest['components']))
+        destination=self.root/'insufficient-space'
+        with patch.object(payload,'require_capacity',side_effect=payload.PayloadError('fixture capacity refusal')):
+            with self.assertRaisesRegex(payload.PayloadError,'capacity refusal'):self.prepare(destination)
+        self.assertFalse(destination.exists())
+        with patch.object(payload,'available_bytes',return_value=payload.RESERVE_BYTES+99):
+            with self.assertRaisesRegex(payload.PayloadError,'16gib'):payload.require_capacity(self.root,100)
 
     def test_real_ephemeral_signature_and_exact_owned_archive_bundle(self):
         first = self.prepare()

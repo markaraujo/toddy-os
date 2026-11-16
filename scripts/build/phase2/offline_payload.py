@@ -18,6 +18,7 @@ import tarfile
 import tempfile
 
 HERE = Path(__file__).resolve().parent
+RESERVE_BYTES = 16 * 1024**3
 NAME = re.compile(r'[a-z0-9][a-z0-9+.-]+\Z')
 HASH = re.compile('[0-9a-f]{64}\\Z')
 VERSION = re.compile(r'[0-9][0-9A-Za-z.+:~_-]*\Z')
@@ -212,7 +213,7 @@ def tar_stream(archive, mode, *, dpkg_deb='/usr/bin/dpkg-deb'):
         process.stdout.close()
 
 
-def archive_contents(archive):
+def archive_contents(archive, *, storage=None):
     control_files = {}
     with tar_stream(archive, '--ctrl-tarfile') as stream:
         for member in stream:
@@ -227,7 +228,7 @@ def archive_contents(archive):
     if 'control' not in control_files:
         raise PayloadError('payload_missing_control')
     control = deb822(control_files['control'].decode('utf-8', errors='strict'))
-    payload, hardlinks, sizes = {}, {}, {}
+    payload, hardlinks, sizes, classes = {}, {}, {}, {}
     with tar_stream(archive, '--fsys-tarfile') as stream:
         for count, member in enumerate(stream):
             if count > 1000000:
@@ -249,6 +250,7 @@ def archive_contents(archive):
                 row.update(mode=stat.S_IFREG | member.mode,
                     sha256=hashlib.file_digest(stream.extractfile(member), 'sha256').hexdigest())
                 sizes[path] = member.size
+                classes[path] = path
             elif member.islnk():
                 row['mode'] |= stat.S_IFREG
                 hardlinks[path] = (canonical('/' + member.linkname.removeprefix('./')), row)
@@ -262,12 +264,19 @@ def archive_contents(archive):
             if target in payload and 'sha256' in payload[target]:
                 payload[path] = dict(row, sha256=payload[target]['sha256'])
                 sizes[path] = sizes[target]
+                classes[path] = classes[target]
                 del hardlinks[path]
                 changed = True
         if not hardlinks or not changed:
             break
     if hardlinks:
         raise PayloadError('payload_hardlink_target')
+    if storage is not None:
+        storage.update(members={path:({'kind':'regular','bytes':sizes[path],'hardlink_class':classes[path]} if path in sizes else
+            {'kind':'directory'} if row.get('directory') else {'kind':'symlink','bytes':len(os.fsencode(row['symlink']))})
+            for path,row in payload.items()},control_bytes=sum(map(len,control_files.values())),
+            control_files=len(control_files),list_bytes=3+sum(len(os.fsencode(path))+1 for path in payload),
+            conffile_lines=len(control_files.get('conffiles',b'').splitlines()))
     return control, payload, sum(sizes.values())
 
 
@@ -385,6 +394,72 @@ def validate_generated(records, entries, bindings):
             'native_regeneration_required': sorted({path for record in records for path in record.get('generated_paths', [])})}
 
 
+def rounded(size,block):
+    if type(size) is not int or size<0 or type(block) is not int or block<=0:raise PayloadError('payload_storage_measurement')
+    return ((size+block-1)//block)*block
+
+
+def available_bytes(path):
+    info=os.statvfs(path);return info.f_bavail*info.f_frsize
+
+
+def require_capacity(parent,additional):
+    if type(additional) is not int or additional<0 or available_bytes(parent)<RESERVE_BYTES+additional:
+        raise PayloadError('payload_storage_reserve_requires_16gib_plus_measured_copy')
+
+
+def file_tree_storage_bound(files,block):
+    """Copied regular files, merged actual names and rounded data/index space."""
+    directories={'.'}
+    for name,size in files.items():
+        canonical(name,absolute=False);rounded(size,block)
+        directories.update(parent.as_posix() for parent in PurePosixPath(name).parents)
+    if directories & files.keys():raise PayloadError('payload_storage_parent_conflict')
+    entries={name:24 for name in directories}
+    for name in (set(files)|directories)-{'.'}:
+        entries[PurePosixPath(name).parent.as_posix()]+=rounded(8+len(os.fsencode(PurePosixPath(name).name)),4)
+    return (sum(rounded(size,block)+block for size in files.values())+
+        sum(rounded(size,block)+block for size in entries.values()))
+
+
+def storage_measurements(measurements,owned,block):
+    """Merge actual member names/classes; identical SHA never implies a hardlink."""
+    members={};classes={};control=listing=conffiles=control_count=0
+    for package,row in sorted(measurements.items()):
+        control+=row['control_bytes'];listing+=row['list_bytes'];conffiles+=row['conffile_lines'];control_count+=row['control_files']
+        for path,member in row['members'].items():
+            if path in members and member['kind']!='directory':raise PayloadError('payload_storage_duplicate_path')
+            members[path]=member
+            if member['kind']=='regular':
+                key=(package,member['hardlink_class'])
+                if key in classes and classes[key]!=member['bytes']:raise PayloadError('payload_storage_hardlink_size')
+                classes[key]=member['bytes']
+    # Fresh directories are explicit source inputs, not inherited runtime state.
+    for relative in owned['fresh_directories']:members.setdefault('/'+relative,{'kind':'directory'})
+    directories={path:24 for path,member in members.items() if member['kind']=='directory'}
+    directories.setdefault('/',24)
+    for path in members:
+        parent=str(PurePosixPath(path).parent)
+        if parent not in directories:raise PayloadError('payload_storage_unowned_parent')
+        directories[parent]+=rounded(8+len(os.fsencode(PurePosixPath(path).name)),4)
+    data=sum(rounded(size,block) for size in classes.values())
+    links=sum(max(block,rounded(row['bytes'],block)) for row in members.values() if row['kind']=='symlink')
+    # Directory data plus one index/inode block per measured namespace node.
+    namespace=sum(rounded(size,block)+block for size in directories.values())+block*(len(classes)+sum(row['kind']=='symlink' for row in members.values()))
+    # Native status/status-old and temporary update copies; selected control and
+    # per-package path-list bytes are measured, including conffile hash fields.
+    database=rounded(3*(control+listing+64*conffiles),block)+block*(2*(control_count+len(measurements))+20)
+    cache=max((member.get('bytes',0) for row in measurements.values() for path,member in row['members'].items()
+               if generated_artifact(path)),default=0)
+    return {'version':1,'block_bytes':block,'logical_regular_path_bytes':sum(row.get('bytes',0) for row in members.values() if row['kind']=='regular'),
+        'unique_regular_bytes':sum(classes.values()),'regular_inodes':len(classes),
+        'hardlink_aliases':sum(row['kind']=='regular' for row in members.values())-len(classes),
+        'namespace_entries':len(members),'rounded_file_data_bytes':data,'symlink_storage_bound_bytes':links,
+        'namespace_storage_bound_bytes':namespace,'native_database_staging_bound_bytes':database,
+        'owned_cache_temporary_bound_bytes':rounded(cache,block),
+        'root_storage_bound_bytes':data+links+namespace+database+rounded(cache,block)}
+
+
 def prepare(*, profile_path, projection_path, records_directory, archive_directory,
             catalog_path, destination, trust, generated_bindings, additional_components=(),
             required_additions=MANDATORY_ADDITIONS, required_recovery_paths=RECOVERY_PATHS):
@@ -394,7 +469,7 @@ def prepare(*, profile_path, projection_path, records_directory, archive_directo
     if projection.get('schema_version') != 1 or type(projection.get('schema_version')) is not int or projection.get('profile_sha256') != digest(profile_path):
         raise PayloadError('payload_projection_profile_binding')
     rows = [*projection['components'], *additional_components]
-    components, records, filenames = {}, [], set()
+    components, records, filenames, measurements = {}, [], set(), {}
     for component in rows:
         name, version, architecture = (component.get(key) for key in ('name', 'version', 'architecture'))
         if not isinstance(name, str) or not NAME.fullmatch(name) or name in components or not isinstance(version, str) or not VERSION.fullmatch(version) or architecture not in ('all', 'amd64'):
@@ -413,7 +488,9 @@ def prepare(*, profile_path, projection_path, records_directory, archive_directo
         for source in normalized_sources:
             if not isinstance(source, dict) or not HASH.fullmatch(source.get('sha256', '')):
                 raise PayloadError('payload_source_integrity')
-        control, actual, installed_bytes = archive_contents(archive_path)
+        measured={}
+        control, actual, installed_bytes = archive_contents(archive_path,storage=measured)
+        measurements[name]=measured
         if control.get('Pre-Depends'):
             raise PayloadError('payload_predepends_install_order_unqualified')
         if (control.get('Package'), control.get('Version'), control.get('Architecture')) != (name, version, architecture) or control.get('Depends', '') != component.get('depends', '') or actual != record.get('payload'):
@@ -448,16 +525,28 @@ def prepare(*, profile_path, projection_path, records_directory, archive_directo
     expected_archives = {row['archive']: row['archive_sha256'] for row in components.values()}
     if repository.get('verified') is not True or repository.get('archives') != expected_archives:
         raise PayloadError('payload_signed_repository_not_verified')
+    destination=Path(destination)
+    block=os.statvfs(destination.parent).f_frsize
+    storage=storage_measurements(measurements,owned,block)
     manifest = {'schema_version': 1, 'scope': 'verified-offline-input-bundle-not-installed-root',
         'profile_sha256': digest(profile_path), 'projection_sha256': digest(projection_path),
         'catalog_sha256': digest(regular(catalog_path)),
         'components': [components[name] for name in sorted(components)], 'repository': repository,
         'ownership': owned, 'generated': generated, 'required_finalizer_checks': sorted(CHECKS),
         'required_recovery_paths': list(required_recovery_paths), 'installed_ready': False,
-        'bytes': sum(archive['installed_bytes'] for archive in components.values())}
+        'bytes': sum(archive['installed_bytes'] for archive in components.values()),'storage':storage}
     destination = Path(destination)
     if destination.resolve() != destination or destination.exists() or destination.is_symlink():
         raise PayloadError('payload_fresh_output_required')
+    planned={'archives/'+row['archive']:row['archive_bytes'] for row in manifest['components']}
+    planned.update({'records/'+row['record']:regular(Path(records_directory)/row['record']).stat().st_size for row in manifest['components']})
+    planned.update({'repository/'+name:len(data) for name,data in trust.materials().items()})
+    planned.update({'profile.json':profile_path.stat().st_size,'projection.json':projection_path.stat().st_size,
+        'catalog.json':regular(catalog_path).stat().st_size,'preparation-state.json':256,
+        'manifest.json':len(encoded(manifest))+block})
+    # One extra manifest block bounds its own additive capacity-summary field.
+    storage['bundle_copy_bound_bytes']=file_tree_storage_bound(planned,block)
+    require_capacity(destination.parent,storage['bundle_copy_bound_bytes'])
     destination.mkdir(mode=0o700)
     # Preserve incomplete output for diagnosis. Never reuse it as a success marker.
     (destination / 'preparation-state.json').write_bytes(encoded({'state': 'copying-inputs'}))
@@ -666,7 +755,7 @@ class PreparedPayload:
         return actual
 
 
-def component_from_record(record_path, archive_directory):
+def component_from_record(record_path, archive_directory, *, storage=None):
     """Collect one explicitly qualified additional package, without installing."""
     record_path = regular(record_path)
     record = strict(record_path.read_bytes())
@@ -677,7 +766,7 @@ def component_from_record(record_path, archive_directory):
     archive = regular(Path(archive_directory) / (stem + '.deb'))
     if digest(archive) != record['archive_sha256']:
         raise PayloadError('payload_additional_archive_custody')
-    control, actual, _ = archive_contents(archive)
+    control, actual, _ = archive_contents(archive,storage=storage)
     if (control.get('Package'), control.get('Version'), control.get('Architecture')) != (record['name'], record['version'], architecture) or actual != record['payload']:
         raise PayloadError('payload_additional_control_or_bytes')
     legal = '/usr/share/doc/' + record['name'] + '/copyright'
