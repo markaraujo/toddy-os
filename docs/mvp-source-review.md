@@ -33,6 +33,7 @@ recovery ancestry. For the actual export2 inputs:
 python3 -I scripts/build/phase2/package_sources_mvp.py \
   --repository "$PWD/.local/phase2/mvp-package-export-2/assets" \
   --records "$PWD/.local/phase2/mvp-package-export-2/source-inputs/records" \
+  --source-root "$PWD/.local/phase2/mvp-source-singlelink-1" \
   --source-root "$PWD/.local/sources" \
   --source-root "$PWD/.local/phase2/voice-native-inputs-1" \
   --npm-cache "$PWD/.local/sources" \
@@ -43,6 +44,12 @@ python3 -I scripts/build/phase2/package_sources_mvp.py \
   --capacity-scope host-export \
   --output "$PWD/.local/phase2/mvp-package-source-review-1"
 ```
+
+The actual export2 host preflight found four public cache files with link count2.
+Their exact SHA-verified single-link copies are in mvp-source-singlelink-1; that
+root must appear first because the source reader refuses hard-linked inputs.
+The original cache remains unchanged. Retain the copy receipt and use verified
+single-link files rather than weakening the regular-file/link guard.
 
 The output must be new. Capacity retains100GiB+512MiB plus all output/headroom.
 Interrupted generations remain preserved; do not replay into an uncertain output.

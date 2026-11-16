@@ -191,7 +191,7 @@ def collect(repository,receipt,records,resolver,project,npm_cache,generated_cata
                 target=Path(directory)
                 if 'source-manifest.json' in documents:
                     owned=target/'usr/share/doc'/name/'source-manifest.json';owned.parent.mkdir(parents=True);owned.write_bytes(documents['source-manifest.json'])
-                provenance=metadata.original_source_provenance(component,raw,target=target)
+                provenance=metadata.original_source_provenance(component,raw,target=target,repository=project.repository)
             if 'source-manifest.json' in documents:
                 manifest=p.strict(documents['source-manifest.json']);inputs=manifest.get('source_inputs',manifest.get('inputs'))
                 if manifest.get('package')!=name or not isinstance(inputs,dict) or not inputs:raise ValueError('Original project source manifest missing')
