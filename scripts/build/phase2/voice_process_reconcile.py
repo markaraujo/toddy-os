@@ -77,14 +77,14 @@ def transport_proof(records):
     if digest(old)!=OLD_PIPEWIRE_RECORD or digest(records['pipewire'][0])!=OLD_PIPEWIRE_RECORD:raise ValueError('Exact original PipeWire record must actually be restored')
     frozen.verify_package_record(read(old),T)
     restore,removed=full_root_success('b09-pipewire-base-restore-1','pipewire_base_restore_install.sh','pipewire_base_restore_check.sh')
-    tools,added=full_root_success('b09-pipewire-audio-tools-1','pipewire_audio_tools_install.sh','pipewire_audio_tools_check.sh')
+    tools,added=full_root_success('b09-pipewire-audio-tools-2','pipewire_audio_tools_install.sh','pipewire_audio_tools_check.sh')
     revision2=Path('/var/log/toddy/packages/pipewire_1.6.8-1+toddy2_amd64.json');revision2_archive=Path('/var/cache/toddy/packages/pipewire_1.6.8-1+toddy2_amd64.deb')
     frozen.regular(revision2);frozen.regular(revision2_archive);rejected=read(revision2)
     control,body,_=archive_payload.archive_contents(revision2_archive)
     if digest(revision2)!=FAILED_PIPEWIRE_RECORD or digest(revision2_archive)!=FAILED_PIPEWIRE_ARCHIVE or rejected.get('archive_sha256')!=FAILED_PIPEWIRE_ARCHIVE or control.get('Package')!='pipewire' or control.get('Version')!='1.6.8-1+toddy2' or rejected.get('payload')!=body:raise ValueError('Retained exact rejected PipeWire2 archive/record required')
     additions=set(body)-set(read(old)['payload'])
     if len(additions)!=11 or any(body.get(name)!=row for name,row in read(old)['payload'].items()):raise ValueError('Exact rejected eleven additions and unchanged old payload required')
-    restored=read(L/'pipewire-base-restore-1.json');installed=read(L/'pipewire-audio-tools-install-1.json')
+    restored=read(L/'pipewire-base-restore-1.json');installed=read(L/'pipewire-audio-tools-install-2.json')
     if restored.get('state')!='native-pipewire-base-restored' or installed.get('state')!='native-audio-tools-package-verified' or installed.get('old_library_payload_unchanged') is not True:raise ValueError('Actual controlled base restoration and separate tools receipts required')
     upgrade=restored.get('failed_upgrade',{})
     if (restored.get('old_archive_sha256')!=OLD_PIPEWIRE_ARCHIVE or restored.get('old_record_sha256')!=OLD_PIPEWIRE_RECORD or restored.get('old_payload_unchanged') is not True or type(restored.get('apt_check_exit')) is not int or restored['apt_check_exit']!=0 or
@@ -114,7 +114,7 @@ def transport_proof(records):
     if not expected or expected!=digest(transport) or added.get('/usr/bin/pw-cat',{}).get('after',{}).get('sha256')!=expected or removed.get('/usr/bin/pw-cat',{}).get('after') is not None:raise ValueError('Actual restored absence then new owned native pw-cat required')
     return {'failed_revision2_sha256':digest(failed),'failed_revision2_archive_sha256':FAILED_PIPEWIRE_ARCHIVE,'restore':restore,'tools':tools,
         'restore_receipt_sha256':digest(L/'pipewire-base-restore-1.json'),
-        'tools_receipt_sha256':digest(L/'pipewire-audio-tools-install-1.json'),
+        'tools_receipt_sha256':digest(L/'pipewire-audio-tools-install-2.json'),
         'record_sha256':digest(records['pipewire-audio-tools'][0]),'base_record_sha256':digest(old)}
 
 
@@ -234,7 +234,7 @@ def install_catalog(lease):
             _,_,prefix,_=frozen.prepared(name,GENERATION);shutil.copyfile(Path(str(prefix)+'.qualified.json'),doc/(name+'-qualified.json'))
         for source,name in ((R/'tests/fixtures/voice/human/manifest.json','human-sample-attribution.json'),(R/'tests/fixtures/voice/human/README.md','human-samples.md'),(R/'LICENSE','MIT'),(R/'LICENSES/CC-BY-4.0.txt','CC-BY-4.0')):shutil.copyfile(source,doc/name)
         (doc/'copyright').write_bytes((R/'LICENSE').read_bytes()+b'\nQualification documentation:\n'+(R/'LICENSES/CC-BY-4.0.txt').read_bytes())
-        result=subprocess.run(command,cwd=R,check=True);audit['command_exit']=result.returncode
+        result=subprocess.run(command,cwd=R,check=True,umask=0o022);audit['command_exit']=result.returncode
         path,record=frozen.native_record(PACKAGE);audit['postcheck_exit']=0;audit['package_record_sha256']=digest(path)
     write(file('catalog-package-installed.json'),{'record_sha256':digest(path),'archive_sha256':record['archive_sha256'],'native_write_audit_sha256':frozen.require_write_audit(PREFIX,'catalog-package',inputs=inputs,command=command,record_sha256=digest(path)),'audit_inputs':inputs,'producer_pins':producer_pins()})
 

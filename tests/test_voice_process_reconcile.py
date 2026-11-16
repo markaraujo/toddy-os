@@ -67,10 +67,11 @@ class RetryTests(unittest.TestCase):
         source=(ROOT/'scripts/build/phase2/voice_process_reconcile.py').read_text()
         self.assertIn("b09-pipewire-tools-1.failed.json",source)
         self.assertIn("b09-pipewire-base-restore-1",source)
-        self.assertIn("b09-pipewire-audio-tools-1",source)
+        self.assertIn("b09-pipewire-audio-tools-2",source)
         self.assertIn('frozen.require_write_audit',source);self.assertIn('frozen.native_write_audit',source)
         self.assertNotIn('frozen.read=',source);self.assertNotIn('frozen.prepared=',source)
         self.assertNotIn("write(Path(str(prefix)+'.process.exit.json')",source)
+        self.assertIn('subprocess.run(command,cwd=R,check=True,umask=0o022)',source)
         self.assertNotIn('curl',source);self.assertNotIn('urlopen',source)
 
 

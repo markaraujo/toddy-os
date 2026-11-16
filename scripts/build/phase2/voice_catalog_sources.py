@@ -15,7 +15,7 @@ import offline_payload as p
 from voice_catalog_provenance import CATALOG, DOC, DOCUMENTS
 import voice_process_reconcile as bridge
 
-PRODUCER = 'ff5a98de88b3b88a445fbc5baaaa999fd8a8952affb96d76ba75df0943dda848'
+PRODUCER = '418b933c884acb32f754f86ab008dec3924afeeb3f9924b296fe344786d20322'
 RECIPE = '0ab6bbe4a9b890a28e6a69d2c56729349950b6b3685d419e0c056194998cf4d2'
 COMPONENT_KEYS = ('name','version','architecture','depends','archive_sha256',
     'component_record_sha256','recipe_sha256','sources','copyright','source_notices_index')

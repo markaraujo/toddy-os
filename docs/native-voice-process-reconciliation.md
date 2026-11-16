@@ -31,16 +31,21 @@ reverse dependencies that require the exact original revision. Its actual
 must remain immutable. Never rename that failure to a successful installation.
 
 Require TWO new actual controlled transactions: `b09-pipewire-base-restore-1`
-and `b09-pipewire-audio-tools-1`, both full-root recipe/check exit0. The former
+and `b09-pipewire-audio-tools-2`, both full-root recipe/check exit0. The former
 restores the exact original `pipewire_1.6.8-1+toddy1_amd64.{deb,json}` and all
 original payload bytes, removes exactly the eleven additions derived from the
 retained rejected archive, and passes APT consistency. Require its actual
 `pipewire-base-restore-1.json` state `native-pipewire-base-restored`, original
 archive/record pins, retained failed-upgrade pins, absence list and APT exit0.
 
+The first standalone attempt stopped before package writes because an inherited
+umask made DEBIAN private. Its failed step/stage/log remains unchanged. The NEW
+second tools transaction uses a fresh stage/receipt and child umask022. The
+catalog producer likewise gives its packager child explicit umask022.
+
 The latter installs separate `pipewire-audio-tools_1.6.8-1+toddy1_amd64.{deb,json}`
 from the already qualified native compile, with actual
-`pipewire-audio-tools-install-1.json` state `native-audio-tools-package-verified`
+`pipewire-audio-tools-install-2.json` state `native-audio-tools-package-verified`
 and `old_library_payload_unchanged:true`. Independently verify the complete
 original library payload remains unchanged and owned regular `/usr/bin/pw-cat`
 matches the separate tools package plus actual mutation manifest. No model/
