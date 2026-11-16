@@ -16,8 +16,9 @@ APP_ID='io.github.markaraujo.Toddy'
 PACKAGE='toddy-assistant'
 MODULES={
     'ui':('app.py','bridge.py','cli.py','credentials.py','memory.py','model.py','shortcut.py','task_state.py'),
-    'setup':('pending.py','installer_handoff.py'),
-    'shared':('json.py',),
+    'setup':('pending.py','installer_handoff.py','acquisition.py','releases.py','platform.py',
+             'acquisition_journal.py','native_backend.py','native_acquire.py'),
+    'shared':('json.py','openpgp.py'),
     'connections':('secret_store.py',),
 }
 DATA=(
@@ -155,6 +156,8 @@ def stage(repository,destination,*,version='0.2.0-1+toddy1'):
     source(recipe)
     code={f'runtime/{name}/{filename}':source(f'runtime/{name}/{filename}')
           for name,files in MODULES.items() for filename in files}
+    policy='runtime/setup/io.github.markaraujo.Toddy.AcquireNative.policy'
+    policy_bytes=source(policy)
     data={relative:source(relative) for relative in DATA}
     docs={name:source(relative) for relative,name in DOCS}
     notices={'copyright':source('LICENSE'),'CC-BY-4.0.txt':source('LICENSES/CC-BY-4.0.txt')}
@@ -163,7 +166,9 @@ def stage(repository,destination,*,version='0.2.0-1+toddy1'):
     for name in MODULES:
         put('/usr/lib/toddy/'+name+'/__init__.py',b'"""Original Toddy OS component."""\n')
     for relative,contents in code.items():
-        put('/usr/lib/toddy/'+relative.removeprefix('runtime/'),contents,origin=relative)
+        mode=0o755 if relative=='runtime/setup/native_acquire.py' else 0o644
+        put('/usr/lib/toddy/'+relative.removeprefix('runtime/'),contents,mode,origin=relative)
+    put('/usr/share/polkit-1/actions/io.github.markaraujo.Toddy.AcquireNative.policy',policy_bytes,origin=policy)
     for relative,contents in data.items():
         put('/usr/share/toddy/'+relative,contents,origin=relative)
     put('/usr/bin/toddy',LAUNCHER.encode(),0o755)
