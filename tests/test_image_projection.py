@@ -44,6 +44,26 @@ class ProjectionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'leaked'):
             p.select(profile,rows)
 
+    def test_mvp_is_explicit_archive_closure_and_live_policy_remains_consistent(self):
+        profile, rows, _ = fixture()
+        roots = p.payload.MVP_ROOTS
+        profile.update(delivery_class=p.payload.MVP_CLASS, g2_eligible=False,
+            automatic_activation=False, desktop_roots=['desktop', *sorted(roots)],
+            excluded_product_roots=['toddy-assistant', 'qtbase'])
+        for name in roots:
+            rows[name] = dict(name=name, version='1', architecture='amd64', depends='', pre_depends='')
+        base, live = p.select(profile, rows)
+        self.assertTrue(roots <= base)
+        raw = ''.join('\t'.join([n, '1', 'amd64', 'install ok installed', r['depends'], ''])+'\n'
+            for n, r in sorted(rows.items()))
+        docs = p.documents(json.dumps(profile).encode(), raw, {n: rows[n] for n in live})
+        live_profile = json.loads(docs['live-profile.json'])
+        self.assertEqual(p.payload.delivery_policy(live_profile)[0], p.payload.MVP_CLASS)
+        self.assertFalse(json.loads(docs['projection.json'])['g2_eligible'])
+        self.assertFalse(roots & set(live_profile['excluded_product_roots']))
+        profile['g2_eligible'] = True
+        with self.assertRaises(p.payload.PayloadError): p.select(profile, rows)
+
     def test_version_mismatch_and_missing_live_root_fail(self):
         profile,rows,_=fixture()
         rows['desktop']['depends']='support (>> 2)'

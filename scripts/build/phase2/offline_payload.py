@@ -27,6 +27,23 @@ CHECKS = {'native-dpkg-database', 'fresh-system-accounts', 'pam-service-policy',
           'runtime-linkage', 'whole-image-attribution', 'foundation-recovery'}
 MANDATORY_ADDITIONS = {'toddy-assistant', 'toddy-branding'}
 ACQUIRED = {'toddy-agent', 'toddy-executor', 'toddy-voice', 'toddy-integrations', 'nodejs', 'llama-cpp'}
+MVP_CLASS = 'phase2-mvp-preinstalled-v1'
+MVP_ROOTS = frozenset(ACQUIRED) | {'whisper-cpp','espeak-ng','toddy-voice-model-base',
+    'toddy-voice-native-catalog','pipewire-audio-tools'}
+
+
+def delivery_policy(profile):
+    """One explicit experimental preinstalled class; ordinary offline bans stay."""
+    if 'delivery_class' not in profile:
+        return None, frozenset()
+    if (profile.get('delivery_class') != MVP_CLASS or profile.get('g2_eligible') is not False or
+            profile.get('automatic_activation') is not False or
+            not MVP_ROOTS <= set(profile.get('desktop_roots', [])) or
+            MVP_ROOTS & set(profile.get('excluded_product_roots', []))):
+        raise PayloadError('payload_explicit_mvp_profile_required')
+    return MVP_CLASS, frozenset(ACQUIRED)
+
+
 RECOVERY_PATHS = ('/boot/vmlinuz-7.1.8-toddy', '/boot/vmlinuz-7.1.8-toddy-pre-fuse', '/etc/toddy/grub.cfg')
 MODULE_INPUTS = {'modules.order', 'modules.builtin', 'modules.builtin.modinfo', 'modules.builtin.ranges'}
 
@@ -509,9 +526,10 @@ def prepare(*, profile_path, projection_path, records_directory, archive_directo
         components[name] = row
         records.append(record)
         filenames.add(row['archive'])
+    delivery_class, allowed_acquired = delivery_policy(profile)
     roots = set(profile['retained_foundation_packages']) | set(profile['desktop_roots']) | set(required_additions)
     selected = dependency_closure(components, roots)
-    if selected != set(components) or selected & ACQUIRED:
+    if selected != set(components) or selected & (ACQUIRED - allowed_acquired):
         raise PayloadError('payload_offline_package_set_not_exact')
     projection_names = {row['name'] for row in projection['components']}
     if projection_names & set(profile['excluded_product_roots']) or set(components) - projection_names != set(required_additions):
@@ -535,6 +553,8 @@ def prepare(*, profile_path, projection_path, records_directory, archive_directo
         'ownership': owned, 'generated': generated, 'required_finalizer_checks': sorted(CHECKS),
         'required_recovery_paths': list(required_recovery_paths), 'installed_ready': False,
         'bytes': sum(archive['installed_bytes'] for archive in components.values()),'storage':storage}
+    if delivery_class is not None:
+        manifest.update(delivery_class=delivery_class, g2_eligible=False, automatic_activation=False)
     destination = Path(destination)
     if destination.resolve() != destination or destination.exists() or destination.is_symlink():
         raise PayloadError('payload_fresh_output_required')
@@ -617,13 +637,19 @@ class PreparedPayload:
             raise PayloadError('payload_preparation_incomplete')
         if set(manifest['required_finalizer_checks']) != CHECKS:
             raise PayloadError('payload_finalizer_contract')
-        if not self.expected_additions <= {row['name'] for row in manifest['components']} or {row['name'] for row in manifest['components']} & ACQUIRED:
-            raise PayloadError('payload_offline_component_contract')
         if digest(regular(self.directory / 'catalog.json')) != manifest['catalog_sha256']:
             raise PayloadError('payload_catalog_changed')
         for leaf, key in [('profile.json', 'profile_sha256'), ('projection.json', 'projection_sha256')]:
             if digest(regular(self.directory / leaf)) != manifest[key]:
                 raise PayloadError('payload_bundle_policy_changed')
+        profile = strict(regular(self.directory / 'profile.json').read_bytes())
+        delivery_class, allowed_acquired = delivery_policy(profile)
+        names = {row['name'] for row in manifest['components']}
+        if (not self.expected_additions <= names or names & (ACQUIRED - allowed_acquired) or
+                (delivery_class is not None and (not MVP_ROOTS <= names or
+                    manifest.get('delivery_class') != delivery_class or manifest.get('g2_eligible') is not False or manifest.get('automatic_activation') is not False)) or
+                (delivery_class is None and any(key in manifest for key in ('delivery_class','g2_eligible','automatic_activation')))):
+            raise PayloadError('payload_offline_component_contract')
         for component in manifest['components']:
             for kind, key, hash_key in [('archives', 'archive', 'archive_sha256'), ('records', 'record', 'component_record_sha256')]:
                 canonical(component[key], absolute=False)

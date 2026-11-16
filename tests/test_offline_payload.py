@@ -206,6 +206,30 @@ class OfflinePayloadTests(unittest.TestCase):
         self.assertFalse(checklist['ready_for_install'])
         self.assertEqual(checklist['additional_required_packages'], ['toddy-assistant', 'toddy-branding'])
 
+    def test_mvp_requires_explicit_profile_and_rechecks_signed_bundle_policy(self):
+        for name in sorted(payload.MVP_ROOTS):
+            self.components.append(self.package(name))
+        self.profile.write_bytes(payload.encoded({'retained_foundation_packages': ['fixture-base'],
+            'desktop_roots': sorted(payload.MVP_ROOTS), 'excluded_product_roots': ['toddy-assistant'],
+            'delivery_class': payload.MVP_CLASS, 'g2_eligible': False, 'automatic_activation': False}))
+        self.projection.write_bytes(payload.encoded({'schema_version': 1,
+            'profile_sha256': payload.digest(self.profile),
+            'components': [self.components[0], *self.components[3:]]}))
+        self.sign_repository()
+        manifest = self.prepare(additional_components=self.components[1:3])
+        self.assertEqual(manifest['delivery_class'], payload.MVP_CLASS)
+        self.assertIs(manifest['g2_eligible'], False)
+        prepared = payload.PreparedPayload(self.root/'bundle',
+            manifest_sha256=payload.digest(self.root/'bundle/manifest.json'), runner=None, finalizer=None)
+        self.assertEqual(prepared._load(), manifest)
+        profile = payload.strict(self.profile.read_bytes())
+        del profile['delivery_class']
+        self.profile.write_bytes(payload.encoded(profile))
+        self.projection.write_bytes(payload.encoded({'schema_version': 1,
+            'profile_sha256': payload.digest(self.profile), 'components': [self.components[0], *self.components[3:]]}))
+        with self.assertRaisesRegex(payload.PayloadError, 'offline_package_set'):
+            self.prepare(destination=self.root/'rejected', additional_components=self.components[1:3])
+
     def test_signature_tamper_and_wrong_reviewed_key_are_denied(self):
         self.release.write_text(self.release.read_text() + 'Suite: tampered\n')
         with self.assertRaisesRegex(payload.PayloadError, 'signature'):

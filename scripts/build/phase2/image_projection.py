@@ -50,7 +50,9 @@ def select(profile, rows):
     roots = set(profile['retained_foundation_packages']) | set(profile['desktop_roots'])
     base = payload.dependency_closure(rows, roots | ADDITIONS)
     live = payload.dependency_closure(rows, roots | ADDITIONS | LIVE)
-    if base & (FORBIDDEN | LIVE | {'qtbase'}) or live & FORBIDDEN:
+    _delivery_class, allowed_acquired = payload.delivery_policy(profile)
+    forbidden = FORBIDDEN - allowed_acquired
+    if base & (forbidden | LIVE | {'qtbase'}) or live & forbidden:
         raise ValueError('Acquired/build-only root leaked into image closure')
     if (base - ADDITIONS) & set(profile['excluded_product_roots']):
         raise ValueError('Offline projection contradicts frozen exclusions')
@@ -134,12 +136,16 @@ def documents(profile_bytes, inventory, components):
         'profile_sha256': hashlib.sha256(profile_bytes).hexdigest(),
         'observed_inventory_sha256': hashlib.sha256(inventory.encode()).hexdigest(),
         'components': [components[n] for n in sorted(base - ADDITIONS)]}
+    delivery_class, allowed_acquired = payload.delivery_policy(profile)
     live_profile = dict(profile, scope='B12 live-only current native archive closure',
         desktop_roots=sorted(set(profile['desktop_roots']) | ADDITIONS | LIVE),
-        excluded_product_roots=sorted(FORBIDDEN))
+        excluded_product_roots=sorted(FORBIDDEN - allowed_acquired))
+    if delivery_class is not None:
+        projection.update(delivery_class=delivery_class, g2_eligible=False, automatic_activation=False, scope='MVP preinstalled backend archive closure; no G2 acceptance')
+        live_profile.update(scope='MVP preinstalled live archive closure; no G2 acceptance')
     live_bytes = payload.encoded(live_profile)
     live_projection = dict(projection,
-        scope='B12 live image archive closure; excludes acquired agent/model packages',
+        scope=('MVP live archive closure; included backend stays owner opt-in; no G2 acceptance' if delivery_class is not None else 'B12 live image archive closure; excludes acquired agent/model packages'),
         profile_sha256=hashlib.sha256(live_bytes).hexdigest(),
         components=[components[n] for n in sorted(live)])
     return {'profile.json': profile_bytes, 'projection.json': payload.encoded(projection),
@@ -175,8 +181,11 @@ def save_generation(output, files):
 
 
 def main():
-    if sys.argv[1:] or os.getuid() != 0 or os.geteuid() != 0 or Path(__file__).resolve() != ROOT/'scripts/build/phase2/image_projection.py':
+    if sys.argv[1:] not in ([], ['--mvp']) or os.getuid() != 0 or os.geteuid() != 0 or Path(__file__).resolve() != ROOT/'scripts/build/phase2/image_projection.py':
         raise ValueError('Fixed coordinator-only designated-builder command')
+    mvp = sys.argv[1:] == ['--mvp']
+    output = TARGET / 'sources/stage/toddy-mvp-image-projection-1' if mvp else OUTPUT
+    profile_name = 'config/phase2/mvp-desktop-runtime-roots.json' if mvp else 'config/phase2/desktop-runtime-roots.json'
     os.umask(0o077)
     subprocess.run(['/usr/bin/bash', '-c',
         'source /opt/toddy-build/scripts/build/target.sh; guard_target'], check=True)
@@ -184,16 +193,16 @@ def main():
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         if list(BUILD.glob('*.running.json')) or (BUILD/'input-sync.running').exists():
             raise ValueError('Preserve running native operation')
-        parent = OUTPUT.parent
+        parent = output.parent
         info = parent.lstat()
         if parent.resolve() != parent or info.st_uid or info.st_gid or info.st_mode & 0o022 or info.st_dev != TARGET.stat().st_dev:
             raise ValueError('Projection output requires protected same-filesystem stage')
-        if os.path.lexists(OUTPUT):
+        if os.path.lexists(output):
             raise ValueError('Preserve previous projection generation')
         command = ['/usr/sbin/chroot', str(TARGET), '/usr/bin/dpkg-query', '-W',
             '-f=${binary:Package}\t${Version}\t${Architecture}\t${Status}\t${Depends}\t${Pre-Depends}\n']
         inventory = subprocess.check_output(command, text=True, timeout=60)
-        profile_bytes = (ROOT/'config/phase2/desktop-runtime-roots.json').read_bytes()
+        profile_bytes = (ROOT/profile_name).read_bytes()
         rows = installed_rows(inventory)
         _, names = select(payload.strict(profile_bytes), rows)
         measurements={}
@@ -205,11 +214,11 @@ def main():
         reports={}
         for kind,selected in (('offline',base),('live',live)):
             records=[payload.strict(payload.regular(RECORDS/(name+'_'+rows[name]['version']+'_'+rows[name]['architecture']+'.json')).read_bytes()) for name in sorted(selected)]
-            reports[kind]=payload.storage_measurements({name:measurements[name] for name in selected},payload.inventory(records),os.statvfs(OUTPUT.parent).f_frsize)
+            reports[kind]=payload.storage_measurements({name:measurements[name] for name in selected},payload.inventory(records),os.statvfs(output.parent).f_frsize)
         files['storage-report.json']=payload.encoded({'version':1,'scope':'actual-archive-measurements-not-signed-preparation-or-native-acceptance',
             'profiles':reports,'required_reserve_bytes':payload.RESERVE_BYTES,'generated_policy_and_embedded_inputs_still_required':True})
-        save_generation(OUTPUT,files)
-    print(json.dumps({'state': 'archive-backed-projection', 'output': str(OUTPUT),
+        save_generation(output,files)
+    print(json.dumps({'state': 'archive-backed-projection', 'output': str(output),
         'production_ready': False, 'boot_verified': False}, sort_keys=True))
 
 
