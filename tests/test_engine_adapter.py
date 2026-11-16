@@ -54,7 +54,7 @@ class EngineAdapterTests(unittest.TestCase):
         with self.assertRaisesRegex(EngineError, 'engine_bootstrap_limit'):
             EngineAdapter._bootstrap_fd({'payload': 'x' * 65536})
 
-    def worker(self, behavior):
+    def worker(self, behavior, startup_delay=0):
         if not shutil.which('node'):
             self.skipTest('optional Node process fixture unavailable')
         script = self.directory / 'synthetic.mjs'
@@ -66,7 +66,7 @@ if(process.argv.some(a=>a.includes(b.connection.credential)) ||
    Object.values(process.env).some(a=>a.includes(b.connection.credential))) throw Error('bad private fixture');
 const hello={version:1,kind:'hello',worker_id:'worker-runtime',
  capabilities:['agent-runtime-v1','runtime-tool-result-v1','single-run','cancel'],max_frame:1048576};
-await writeFrame(process.stdout,hello);
+''' + ('await new Promise(resolve=>setTimeout(resolve,'+str(startup_delay)+'));\n' if startup_delay else '') + '''await writeFrame(process.stdout,hello);
 for await(const run of readFrames(process.stdin)) {
  const base={version:1,worker_id:'worker-runtime',run_id:run.run_id,request_id:run.request_id};
 ''' + behavior + '\n}\n')
@@ -97,6 +97,17 @@ for await(const run of readFrames(process.stdin)) {
             timer.cancel()
         self.assertEqual(result['state'], 'canceled')
         self.assertLess(time.monotonic() - start, 2)
+
+    def test_stop_before_hello_never_sends_run_or_waits_for_startup_deadline(self):
+        adapter=self.worker("throw Error('run must never be admitted');",startup_delay=30000)
+        canceled=threading.Event();timer=threading.Timer(.1,canceled.set);timer.start()
+        started=time.monotonic()
+        try:
+            result=adapter.run(self.bootstrap,'run-one','request-one','Synthetic request',
+                               on_tool=lambda *_:self.fail(),canceled=canceled.is_set)
+        finally:timer.cancel()
+        self.assertEqual(result,{'state':'canceled','code':'canceled','tool_calls':0,'text_bytes':0})
+        self.assertLess(time.monotonic()-started,2)
 
     def test_wrong_sequence_and_tool_rejected_without_dispatch_or_raw_stderr(self):
         for behavior, code in [

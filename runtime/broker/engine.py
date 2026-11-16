@@ -109,6 +109,7 @@ class EngineAdapter:
         text_bytes = 0
         cancel_sent = False
         cancel_deadline = None
+        startup_canceled = False
         known_tools = {tool['name'] for tool in bootstrap.get('tools', ())}
         selector = selectors.DefaultSelector()
         selector.register(process.stdout, selectors.EVENT_READ, 'stdout')
@@ -133,9 +134,11 @@ class EngineAdapter:
                 except BrokenPipeError:
                     raise EngineError('engine_disconnected') from None
 
-        def next_frame(bound, *, monitor_cancel=False):
+        def next_frame(bound, *, monitor_cancel=False, startup=False):
             nonlocal stderr_bytes, cancel_sent, cancel_deadline
             while True:
+                if startup and canceled():
+                    raise EngineError('engine_canceled_before_run')
                 if len(incoming) >= 4:
                     size = int.from_bytes(incoming[:4], 'big')
                     if not 0 < size <= MAX_FRAME:
@@ -173,12 +176,13 @@ class EngineAdapter:
                     raise EngineError('engine_disconnected')
 
         try:
-            hello = next_frame(min(started + 5, deadline))
+            hello = next_frame(min(started + 5, deadline),startup=True)
             if (not isinstance(hello, dict) or set(hello) != {'version', 'kind', 'worker_id', 'capabilities', 'max_frame'}
                     or hello['version'] != 1 or hello['kind'] != 'hello' or hello['worker_id'] != 'worker-runtime'
                     or hello['max_frame'] != MAX_FRAME or hello['capabilities'] !=
                     ['agent-runtime-v1', 'runtime-tool-result-v1', 'single-run', 'cancel']):
                 raise EngineError('engine_capability_mismatch')
+            if canceled():raise EngineError('engine_canceled_before_run')
             send('run', {'input': input_text, 'profile_revision': bootstrap['profile_revision']})
             while True:
                 event = next_frame(deadline + 2, monitor_cancel=True)
@@ -256,9 +260,18 @@ class EngineAdapter:
                     return {'state': 'canceled' if cancel_sent and event['state'] == 'completed' else event['state'],
                             'code': 'canceled' if cancel_sent and event['state'] == 'completed' else event['code'],
                             'tool_calls': calls, 'text_bytes': text_bytes}
+        except EngineError as error:
+            if str(error)!='engine_canceled_before_run':raise
+            startup_canceled=True
+            return {'state':'canceled','code':'canceled','tool_calls':0,'text_bytes':0}
         finally:
             selector.close()
             process.stdin.close()
+            if startup_canceled and process.poll() is None:
+                # No run frame/tool effect was admitted. Stop startup directly;
+                # a stalled hello must not postpone owner cancellation.
+                try:os.killpg(process.pid,signal.SIGKILL)
+                except ProcessLookupError:pass
             # The engine executes no native effects; native writes remain in the
             # independent journal/executor and are not killed to meet this bound.
             try:

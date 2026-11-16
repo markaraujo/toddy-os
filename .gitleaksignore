@@ -193,3 +193,12 @@ docs/evidence/B02-modemmanager-stage.json:generic-api-key:982
 # Reviewed UUID4 diagnostic invocation nonce, no authentication/service capability.
 # Exact historical finding only; public report now retains its SHA256.
 24ba4a19a410cc9813054759bb823c594b0cd86e:docs/evidence/B02-kernel-fuse-native.json:generic-api-key:6
+
+# Reviewed public upstream API documentation SHA256 digests, not credentials.
+# Exact original and cherry-picked historical entries only; current fields renamed.
+ce50a0c24210581a5d40c2c421035482f5a063b9:runtime/voice/candidates.json:generic-api-key:13
+ce50a0c24210581a5d40c2c421035482f5a063b9:runtime/voice/candidates.json:generic-api-key:28
+ce50a0c24210581a5d40c2c421035482f5a063b9:runtime/voice/candidates.json:generic-api-key:44
+f71d12cd6f8d81c9f7289664e78e89e31f74fb17:runtime/voice/candidates.json:generic-api-key:13
+f71d12cd6f8d81c9f7289664e78e89e31f74fb17:runtime/voice/candidates.json:generic-api-key:28
+f71d12cd6f8d81c9f7289664e78e89e31f74fb17:runtime/voice/candidates.json:generic-api-key:44
