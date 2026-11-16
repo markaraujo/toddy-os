@@ -1,0 +1,96 @@
+{
+  "scope": "Host immutable optional input acquisition/source patch checks only; no guest/audio/model inference or B09 acceptance",
+  "cache_relative_to_main_checkout": ".local/phase2/voice-native-inputs-1",
+  "input_files": [
+    {
+      "id": "whisper-source",
+      "size": 9631456,
+      "sha256": "645445da884df6dbd52b30f82d7be7c01d1767c938714e477e786b88d529e9f4",
+      "allocated_bytes": 9633792
+    },
+    {
+      "id": "espeak-source",
+      "size": 17747711,
+      "sha256": "cd83f84c4e495f281ac14e919aecf2834306ec1ea1b498de8ef6000f3a0f90de",
+      "allocated_bytes": 17747968
+    },
+    {
+      "id": "whisper-model-card",
+      "size": 3196,
+      "sha256": "21fd967098804f33fc84e803fb0e5ab7666d71801f4027cf28a65e7af09c1758",
+      "allocated_bytes": 4096
+    },
+    {
+      "id": "whisper-original-license",
+      "size": 1063,
+      "sha256": "b5d65a59060e68c4ff940e1eddfa6f94b2d68fdf58ed7f4dd57721c997e35e9d",
+      "allocated_bytes": 4096
+    },
+    {
+      "id": "whisper-base-model",
+      "size": 147951465,
+      "sha256": "60ed5bc3dd14eea856493d334349b405782ddcaf0028d4b5df4088345fba2efe",
+      "allocated_bytes": 147951616
+    },
+    {
+      "id": "whisper-model-pointer",
+      "size": 134,
+      "sha256": "978959187967e0d939e35ce27abf8ec7220318ec43d65949bf777acd1826f3c9",
+      "allocated_bytes": 4096
+    }
+  ],
+  "locked_logical_bytes": 175335025,
+  "locked_allocated_bytes": 175345664,
+  "all_private_cache_logical_bytes": 175348883,
+  "all_private_cache_allocated_bytes": 175370240,
+  "free_bytes_observed": 109398757376,
+  "minimum_free_bytes": 107911053312,
+  "source_archive_validation_and_exact_patch_checks": [
+    {
+      "kind": "espeak-source",
+      "expanded_bytes": 60432940,
+      "patch": {
+        "path": "cmake/deps.cmake",
+        "before_sha256": "4423d516710eacc4f9d8d1fe8090d6ddc6874452362af4374e2ff3f51a35dea5",
+        "after_sha256": "c6072677ce1d91eae93ebc4f2bd22ca94f15368cc14e1145f229429240fa0de0"
+      }
+    },
+    {
+      "kind": "whisper-source",
+      "expanded_bytes": 39974616,
+      "patch": {
+        "path": "CMakeLists.txt",
+        "before_sha256": "f4494d2da1353158b8a33b935abe6bbe76b8cee95d503fb16088224dd4755dcc",
+        "after_sha256": "2624b7ebba00ace955bbac49f9c732ef6b622808028350d730da222b4489b5c5"
+      }
+    }
+  ],
+  "source_preparation_scope": "Read original archive metadata and extracted only the two patched text files into temporary host tmpfs; no full source extraction/build",
+  "checks": {
+    "focused_unit_tests": 8,
+    "shell_syntax_exit": 0,
+    "immutable_input_verification_exit": 0,
+    "inference_run": false,
+    "audio_device_opened": false,
+    "repository_make_check_exit": 0,
+    "repository_host_tests": 584,
+    "repository_host_test_seconds": 9.962
+  },
+  "native_health_unit_review": {
+    "units": [
+      "NetworkManager.service",
+      "gdm.service"
+    ],
+    "change_required": false,
+    "evidence_reused": true
+  },
+  "bindings": {
+    "scripts/build/phase2/voice_inputs.py": "10ebafd0694ff2501c601414d8474ed37240437d20bd8447301b77a1dc75b3ce",
+    "scripts/build/phase2/voice-espeak-build.sh": "387a52379c0d1e0552459d90ddc215a2ae8b34be8e208204b5f0f0668a31e7f5",
+    "scripts/build/phase2/voice-whisper-build.sh": "1ea4b6e17df929b05eec653cd6fee3a66656cb134aa994e0e699a360331f2b7b",
+    "runtime/voice/native-inputs.lock.json": "f23cbd727cceecfc9d961f572928aea5d03870bd8bd234c51d99a8858413308c",
+    "docs/evidence/B02-desktop-runtime-manifest.json": "5b8b14ecc63944d1268cc83edaa40378b610ca57c9e5b5b04419ab1f2ab8ee84",
+    "docs/evidence/B02-gdm-native-seat.json": "cfd3ad628b255f62895208765d8d3d6b8ab6521804fd36f7192930243e64175f",
+    "docs/evidence/B02-desktop-network-install.json": "c60465b786f3792ecbf7a3dd16c6b189d69a666efcfa6fb42c5f23db1c3705bc"
+  }
+}
