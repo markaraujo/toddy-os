@@ -108,6 +108,18 @@
       "runner_sha256": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
       "log_sha256": "1bff8d54129b693213e72cfd81646a3da17fb432acbc964af7a18bbd18fd790e",
       "raw_receipt_sha256": "bdfc05f052841c82e305d5005dc0c9a44c2dbdb3883af76e9abf9a92df2e1b34"
+    },
+    "b12-toddy-installer-3": {
+      "recipe_exit": 0,
+      "postcheck_exit": 0,
+      "changed_paths": 77,
+      "started": "2026-11-16T18:45:31.275140+00:00",
+      "finished": "2026-11-16T18:45:51.287415+00:00",
+      "recipe_sha256": "ba4277e72cb18c8bd84f1c9ea2b7098f89dc40210815f6240c4b4446f9d36f66",
+      "postcheck_sha256": "174027a39c00e92794bc38bc8f0e56c6cfec6a2de81fea3bc254412d9a51465a",
+      "runner_sha256": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+      "log_sha256": "72fcef9e055a22296b7016de6ee2e204f92ebb13627db49be0de3ee952154bc2",
+      "raw_receipt_sha256": "829829cf227eb70ed06b7ebacbe7cb7bb7267094d4f82940ed725977b300f041"
     }
   },
   "packages": {
@@ -126,6 +138,14 @@
       "archive_bytes": 2764032,
       "record_sha256": "48d2455c90e584addc7721964bbbbb9f11e7b437dd8f0a2d1e9b936b7d376cac",
       "payload_entries": 390
+    },
+    "toddy-installer": {
+      "version": "0.2.0-1+toddy1",
+      "architecture": "amd64",
+      "archive_sha256": "8960a246e5f8e145cd2f5cba2d751faaca5aa1cec884e86b01f7886697a70604",
+      "archive_bytes": 144016,
+      "record_sha256": "46f5a9cdb1e9164fea8a8692448f0bed4fafe1798ad0ca41cadf4ec28ef52050",
+      "payload_entries": 86
     },
     "toddy-branding": {
       "version": "0.2.0-1+toddy1",

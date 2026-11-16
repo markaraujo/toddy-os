@@ -4345,3 +4345,22 @@ existing compiled Qt/Calamares and cached1.8GBQwen/voice inputs are reused.
 Merged source quality check940tests/21.348s passed. B01-B05 remain41% of Phase2
 (weighted whole plan70.5%); later native UI/full acquisition/voice/boot/install/
 release/portal proof still gates B06-B13/G2. No Phase2 ISO or physical acceptance.
+
+
+## 2026-11-16 — Installer native package and supported background defaults
+
+Frozen dosfstools4.2 passed39upstream tests plus one declared XFAIL, native staging,
+UID101 regular-file FAT32 consumer and full-root package/install check0/0. The
+fresh own-installer attempt3 rebuilt its small C++ module and passed actual
+Calamares plugin loading, current Python payload qualification and native package
+install/check0/0 (77changed paths). Existing Qt/Calamares were reused.
+
+The guarded desktop-defaults2 upgrade passed0/0 (9changed paths), including actual
+dconf defaults and isolated owner override/reset behavior. GUI visuals remain due.
+Voice engines1 are unaccepted: eSpeak built/tested0 but embedded /usr/lib RUNPATH
+was refused; Whisper compiled but referenced a nonexistent nested GGML license.
+Source fixes preserve original failures and require a coherent fresh2 cohort.
+
+Public repository workflows for075cbe4all passed; deployed index matches generated
+SHA2565b5fbcbaafd179ecab9c602a1858804cef8f7e6eec85de84a1e504b4ff25dafa.
+This is checkpoint delivery, not a Phase2 ISO, G2 pass or later-story acceptance.

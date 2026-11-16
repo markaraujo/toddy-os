@@ -1,0 +1,561 @@
+{
+  "schema_version": 1,
+  "scope": "Actual native dosfstools package, complete upstream test outcomes and sparse regular-file consumer only; no raw disk/installer boot acceptance",
+  "step": {
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 67,
+    "started": "2026-11-16T18:39:19.279470+00:00",
+    "finished": "2026-11-16T18:39:42.489117+00:00",
+    "recipe_sha256": "9a4d4eac9a907299462c0e66cdfcc0d80035c6045ab19257b73db43965ca2362",
+    "postcheck_sha256": "51cf0895d5b652220115c7a75eae8c6544719d978520edfeb7c297f261442aca",
+    "log_sha256": "959222575b16c92041b41142c68e8da7c0ae62879f94acac8070f2be4393caa0"
+  },
+  "raw_receipt_sha256": "dc732ed33d5aa83b81703e913df52d1676e8e8db043c84d8a13901014928e980",
+  "package": {
+    "version": "4.2-1+toddy1",
+    "archive_sha256": "ad7fdd6048254c0cdeaebf34dfa613837c897fce382eb4e1bba63a524347cd25",
+    "record_sha256": "92f3f740803de5b0f509e5a2b3aae99820a9775d03fa60e822863d864e2fa424",
+    "archive_bytes": 237380,
+    "payload_entries": 68
+  },
+  "qualification": {
+    "dependencies": {
+      "glibc": {
+        "archive_sha256": "6690da33691aca89c49bfb94d06495e211330015f3f269322c7b8b5d3dd91449",
+        "record_sha256": "690ed99372a7c0c5be4d8968fe6492cc4ec5018618e3afd28d34959c31c57bb2",
+        "version": "2.44-1+toddy1"
+      },
+      "vim": {
+        "archive_sha256": "6db0839f9dca0a74c8b644338f4bbc845f4784703e6c1d3fa8231268873fd4bd",
+        "record_sha256": "e3eebfcad30396e924db8666ba90b277c553b9c9c9f726b7529dd66c675bd5ab",
+        "version": "9.2.1201-1+toddy1"
+      }
+    },
+    "elfs": [
+      {
+        "interpreter": "/lib64/ld-linux-x86-64.so.2",
+        "loader_sha256": "3e7c5a6d36928914ba6e19b298fbe8aa2e0c0c4dbe122c1dc06021bb4edaee68",
+        "path": "/usr/sbin/fsck.fat",
+        "providers": [
+          {
+            "owner": "glibc",
+            "path": "/usr/lib/libc.so.6",
+            "sha256": "b17c378fe6f0b34354be1a5c850b8397f3582047875576c1e2b27a71a0a5bd25",
+            "soname": "libc.so.6"
+          }
+        ],
+        "sha256": "6140b47aa74835b0a822b10e57612a47a16f4576326dc208b0c56805686b2a94"
+      },
+      {
+        "interpreter": "/lib64/ld-linux-x86-64.so.2",
+        "loader_sha256": "3e7c5a6d36928914ba6e19b298fbe8aa2e0c0c4dbe122c1dc06021bb4edaee68",
+        "path": "/usr/sbin/mkfs.fat",
+        "providers": [
+          {
+            "owner": "glibc",
+            "path": "/usr/lib/libc.so.6",
+            "sha256": "b17c378fe6f0b34354be1a5c850b8397f3582047875576c1e2b27a71a0a5bd25",
+            "soname": "libc.so.6"
+          }
+        ],
+        "sha256": "b04f5cfafcadf9f4bd56729f719f6c7d2a92090b630710943e1a282a00aaa91c"
+      },
+      {
+        "interpreter": "/lib64/ld-linux-x86-64.so.2",
+        "loader_sha256": "3e7c5a6d36928914ba6e19b298fbe8aa2e0c0c4dbe122c1dc06021bb4edaee68",
+        "path": "/usr/sbin/fatlabel",
+        "providers": [
+          {
+            "owner": "glibc",
+            "path": "/usr/lib/libc.so.6",
+            "sha256": "b17c378fe6f0b34354be1a5c850b8397f3582047875576c1e2b27a71a0a5bd25",
+            "soname": "libc.so.6"
+          }
+        ],
+        "sha256": "0c21945fae85a567fde62c450cc61deee33ab6994ea9599564ab0dd20ccfcdf0"
+      }
+    ],
+    "file_probe": {
+      "allocated_bytes": 2084864,
+      "fatlabel_exit": 0,
+      "fsck_exit": 0,
+      "geometry": {
+        "bytes_per_sector": 512,
+        "clusters": 258078,
+        "label": "TODDYTEST",
+        "sectors": 262144,
+        "sectors_per_cluster": 1
+      },
+      "image_sha256": "27da4e7d0bb6fccb61733a194b82c7fc95f72f9dcce11c7903c0e1ccdf676eac",
+      "logical_bytes": 134217728,
+      "mkfs_exit": 0,
+      "raw_or_loop_device_used": false,
+      "readonly_check_preserved_bytes": true,
+      "regular_file_only": true,
+      "uid": 101
+    },
+    "layout": {
+      "aliases": {
+        "dosfsck": "fsck.fat",
+        "dosfslabel": "fatlabel",
+        "fsck.msdos": "fsck.fat",
+        "fsck.vfat": "fsck.fat",
+        "mkdosfs": "mkfs.fat",
+        "mkfs.msdos": "mkfs.fat",
+        "mkfs.vfat": "mkfs.fat"
+      },
+      "programs": [
+        "/usr/sbin/mkfs.fat",
+        "/usr/sbin/fsck.fat",
+        "/usr/sbin/fatlabel"
+      ]
+    },
+    "scripts": {
+      "dosfstools-build.sh": "7ea0f330c49b4fa354199592e1687dc7bf6c2c98987d9acbc73b9f99550db974",
+      "dosfstools_file_probe.py": "ae09cf2992165ea888933f24e56f0b0147b33f62c77b4b5b4cc357a87915275c",
+      "dosfstools_inspect.py": "0c04ee3131f759ed0902c31daf11e94a3b19e40906256df9807722b2f5bc8900",
+      "dosfstools_native.py": "54746826320092d1a21264ca214ea70741f4d942d5303a20d8d72d782df356c5",
+      "isolated.sh": "84aa98d4500de7309aa4737c560aebcfe598dc962fcf79057c9e94a1aae99c0b",
+      "job.py": "a52297086042499d343d811e248681ccc18a8a278b12f8b9a16424d7d54ac712",
+      "verify_stage.py": "18dbc63f6479f6d0a486b8d3ea549d41c3ce5170ad49a7cd61d037f056ee38d2"
+    },
+    "source_sha256": "64926eebf90092dca21b14259a5301b7b98e7b1943e8a201c7d726084809b527",
+    "stage": {
+      "entries": {
+        "usr": {
+          "directory": true,
+          "mode": 493
+        },
+        "usr/sbin": {
+          "directory": true,
+          "mode": 493
+        },
+        "usr/sbin/dosfsck": {
+          "mode": 511,
+          "symlink": "fsck.fat"
+        },
+        "usr/sbin/dosfslabel": {
+          "mode": 511,
+          "symlink": "fatlabel"
+        },
+        "usr/sbin/fatlabel": {
+          "bytes": 151040,
+          "mode": 493,
+          "sha256": "0c21945fae85a567fde62c450cc61deee33ab6994ea9599564ab0dd20ccfcdf0"
+        },
+        "usr/sbin/fsck.fat": {
+          "bytes": 250752,
+          "mode": 493,
+          "sha256": "6140b47aa74835b0a822b10e57612a47a16f4576326dc208b0c56805686b2a94"
+        },
+        "usr/sbin/fsck.msdos": {
+          "mode": 511,
+          "symlink": "fsck.fat"
+        },
+        "usr/sbin/fsck.vfat": {
+          "mode": 511,
+          "symlink": "fsck.fat"
+        },
+        "usr/sbin/mkdosfs": {
+          "mode": 511,
+          "symlink": "mkfs.fat"
+        },
+        "usr/sbin/mkfs.fat": {
+          "bytes": 174432,
+          "mode": 493,
+          "sha256": "b04f5cfafcadf9f4bd56729f719f6c7d2a92090b630710943e1a282a00aaa91c"
+        },
+        "usr/sbin/mkfs.msdos": {
+          "mode": 511,
+          "symlink": "mkfs.fat"
+        },
+        "usr/sbin/mkfs.vfat": {
+          "mode": 511,
+          "symlink": "mkfs.fat"
+        },
+        "usr/share": {
+          "directory": true,
+          "mode": 493
+        },
+        "usr/share/doc": {
+          "directory": true,
+          "mode": 493
+        },
+        "usr/share/doc/dosfstools-4.2": {
+          "directory": true,
+          "mode": 493
+        },
+        "usr/share/doc/dosfstools-4.2/ANNOUNCE.mkdosfs": {
+          "bytes": 1265,
+          "mode": 420,
+          "sha256": "52e73aa9da763977cac498407390eb1205dc6ab87a4c6de3be129497256592b0"
+        },
+        "usr/share/doc/dosfstools-4.2/COPYING": {
+          "bytes": 35147,
+          "mode": 420,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        "usr/share/doc/dosfstools-4.2/ChangeLog": {
+          "bytes": 169507,
+          "mode": 420,
+          "sha256": "52647b34c17e9e1e3ef328fb1e23bda6d19faf9218e050c7ec7a4c11b9d30e98"
+        },
+        "usr/share/doc/dosfstools-4.2/ChangeLog.dosfsck": {
+          "bytes": 413,
+          "mode": 420,
+          "sha256": "2e4d0fdb18c4c59b1480e0bb963fee6615d196328391f200511d18ea10ea2853"
+        },
+        "usr/share/doc/dosfstools-4.2/ChangeLog.dosfstools-2.x": {
+          "bytes": 6655,
+          "mode": 420,
+          "sha256": "666035759d6af0d50fc53db25e184d97ee6327f134cb88c8b2e4f73bf34315de"
+        },
+        "usr/share/doc/dosfstools-4.2/ChangeLog.mkdosfs": {
+          "bytes": 751,
+          "mode": 420,
+          "sha256": "b5373b2c7df31759ea4bae1c0f0713a6c3dee4d373a7842d6ae38097bc0c5d34"
+        },
+        "usr/share/doc/dosfstools-4.2/NEWS": {
+          "bytes": 12837,
+          "mode": 420,
+          "sha256": "70417961e191fbcd0fef6a419f146d49af2529c22a3a135ed327cc9170dc08d7"
+        },
+        "usr/share/doc/dosfstools-4.2/README": {
+          "bytes": 1750,
+          "mode": 420,
+          "sha256": "93921b2cd360c3761a320ccef09bac20b3ddc90f563c59335ae9ab2cf2c337ab"
+        },
+        "usr/share/doc/dosfstools-4.2/README.dosfsck": {
+          "bytes": 2377,
+          "mode": 420,
+          "sha256": "2912131e0a9fa82189fa26d12d70dce3cb73fc3c935ed4a82d76c26db062e66f"
+        },
+        "usr/share/doc/dosfstools-4.2/README.dosfstools-2.x": {
+          "bytes": 2912,
+          "mode": 420,
+          "sha256": "ec1c01b08399cd322171237acd1f1ee998f6c60bd28601d4a76b030bcb63513a"
+        },
+        "usr/share/doc/dosfstools-4.2/README.mkdosfs": {
+          "bytes": 2164,
+          "mode": 420,
+          "sha256": "2a201d391ff81a2f353fa48206e1b3cc71fbcbfc15b60b33cabfa756df81c56d"
+        },
+        "usr/share/doc/dosfstools-4.2/TODO.dosfstools-2.x": {
+          "bytes": 551,
+          "mode": 420,
+          "sha256": "f26dcda03ba035f6b5ecc9297abcd04397ea1dea5d8f7ae9a9dc8385735016b5"
+        },
+        "usr/share/man": {
+          "directory": true,
+          "mode": 493
+        },
+        "usr/share/man/man8": {
+          "directory": true,
+          "mode": 493
+        },
+        "usr/share/man/man8/dosfsck.8": {
+          "mode": 511,
+          "symlink": "fsck.fat.8"
+        },
+        "usr/share/man/man8/dosfslabel.8": {
+          "mode": 511,
+          "symlink": "fatlabel.8"
+        },
+        "usr/share/man/man8/fatlabel.8": {
+          "bytes": 7147,
+          "mode": 420,
+          "sha256": "a3c8e2b36e5600f5a63f9abc45c7c8abb92ccffc7be1add1778a64a7c76a4b66"
+        },
+        "usr/share/man/man8/fsck.fat.8": {
+          "bytes": 10629,
+          "mode": 420,
+          "sha256": "f0be53124dbc1c6e71b47b847c34ebeec3dede828f6b62a77c74f559d2e25b79"
+        },
+        "usr/share/man/man8/fsck.msdos.8": {
+          "mode": 511,
+          "symlink": "fsck.fat.8"
+        },
+        "usr/share/man/man8/fsck.vfat.8": {
+          "mode": 511,
+          "symlink": "fsck.fat.8"
+        },
+        "usr/share/man/man8/mkdosfs.8": {
+          "mode": 511,
+          "symlink": "mkfs.fat.8"
+        },
+        "usr/share/man/man8/mkfs.fat.8": {
+          "bytes": 12618,
+          "mode": 420,
+          "sha256": "00ec06820217fe4a33843972297edb08b6653f85d8cb7c0fca5ab64f52f8b200"
+        },
+        "usr/share/man/man8/mkfs.msdos.8": {
+          "mode": 511,
+          "symlink": "mkfs.fat.8"
+        },
+        "usr/share/man/man8/mkfs.vfat.8": {
+          "mode": 511,
+          "symlink": "mkfs.fat.8"
+        }
+      },
+      "manifest_sha256": "25358cbc41f313ae253e2195a2c58be7c312cecd39489550b70aa19689aa11b4"
+    },
+    "upstream_tests": {
+      "error": 0,
+      "fail": 0,
+      "pass": 39,
+      "results": [
+        {
+          "result": "PASS",
+          "test": "check-bad_names.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-chain_to_free_cluster.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-chain_to_other_file.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-chain_too_long.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-circular_chain.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-dot_entries.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-duplicate_names.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-fat12_first_cluster.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-fat16_dos_cln_shut.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-fat16_first_cluster.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-fat32_dos_cln_shut.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-fat32_first_cluster.fsck"
+        },
+        {
+          "result": "XFAIL",
+          "test": "check-huge.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-label-different.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-label-only-boot.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "check-label-only-root.fsck"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_label1.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_label1_dosfslabel_NO_NAME.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_label1_dosfslabel_empty.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_label1_dosfslabel_label2.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_label1_mlabel_NO_NAME.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_label1_mlabel_erase.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_label1_xp_erase.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_label1_xp_label2.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_none.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_none_dosfslabel_NO_NAME.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_none_dosfslabel_label1.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_none_dosfslabel_label1_xp_label2.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_none_xp_label1.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_mkdosfs_none_xp_label1_dosfslabel_label2.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_xp_label1.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_xp_none.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_xp_none_dosfslabel_label1.label"
+        },
+        {
+          "result": "PASS",
+          "test": "label-fat32_xp_none_mlabel_label1.label"
+        },
+        {
+          "result": "PASS",
+          "test": "mkfs-fat32_2_res_sects.mkfs"
+        },
+        {
+          "result": "PASS",
+          "test": "mkfs-fat32_4K.mkfs"
+        },
+        {
+          "result": "PASS",
+          "test": "referenceFAT12.mkfs"
+        },
+        {
+          "result": "PASS",
+          "test": "referenceFAT16.mkfs"
+        },
+        {
+          "result": "PASS",
+          "test": "referenceFAT32.mkfs"
+        },
+        {
+          "result": "PASS",
+          "test": "referenceFAT32mbr.mkfs"
+        }
+      ],
+      "skip": 0,
+      "total": 40,
+      "upstream_expected_fail": 1,
+      "xpass": 0
+    },
+    "version": "4.2-1+toddy1"
+  },
+  "installed_check": {
+    "checked": [
+      "/usr/share/man/man8/dosfsck.8",
+      "/usr/share/man/man8/fatlabel.8",
+      "/usr/share/man/man8/mkdosfs.8",
+      "/usr/share/man/man8/mkfs.fat.8",
+      "/usr/share/man/man8/fsck.fat.8",
+      "/usr/share/man/man8/dosfslabel.8",
+      "/usr/share/man/man8/fsck.msdos.8",
+      "/usr/share/man/man8/fsck.vfat.8",
+      "/usr/share/man/man8/mkfs.msdos.8",
+      "/usr/share/man/man8/mkfs.vfat.8",
+      "/usr/share/doc/dosfstools-4.2/README.dosfstools-2.x",
+      "/usr/share/doc/dosfstools-4.2/COPYING",
+      "/usr/share/doc/dosfstools-4.2/ANNOUNCE.mkdosfs",
+      "/usr/share/doc/dosfstools-4.2/README.mkdosfs",
+      "/usr/share/doc/dosfstools-4.2/README.dosfsck",
+      "/usr/share/doc/dosfstools-4.2/ChangeLog.dosfstools-2.x",
+      "/usr/share/doc/dosfstools-4.2/TODO.dosfstools-2.x",
+      "/usr/share/doc/dosfstools-4.2/ChangeLog",
+      "/usr/share/doc/dosfstools-4.2/README",
+      "/usr/share/doc/dosfstools-4.2/ChangeLog.mkdosfs",
+      "/usr/share/doc/dosfstools-4.2/NEWS",
+      "/usr/share/doc/dosfstools-4.2/ChangeLog.dosfsck",
+      "/usr/share/doc/dosfstools/copyright",
+      "/usr/share/doc/dosfstools/source-notices/6e14baee359bb0243b59947f2a58054db6a076645839cb42675a28bce508cd54",
+      "/usr/share/doc/dosfstools/source-notices/48af6c3f9d2ceb58cb56f7b4e1d294d3aaf09fb20bebd364fa05c827afc06265",
+      "/usr/share/doc/dosfstools/source-notices/540e7447a4017dcfda3ccd1144a0964f790f1b43200fa9a8349d67c1a609e2d0",
+      "/usr/share/doc/dosfstools/source-notices/index.json",
+      "/usr/share/doc/dosfstools/source-notices/fa76fb16776d06753cd5a2685d3f925b8cc8962c485230e6d735d61cb59be7fb",
+      "/usr/share/doc/dosfstools/source-notices/cbff898712207bf36d5480a654dfb4a5635637863bd648aec328fd161ddbe990",
+      "/usr/share/doc/dosfstools/source-notices/fe4ce2d156e7ec137ddfb0c0f4c95aebd1a33a98d35ec7aaeb7b1d2f66fecb43",
+      "/usr/share/doc/dosfstools/source-notices/e234559321b248203f40b7f56c1fbf5d64d9de5280e193b4e5bd45b6c0408b2f",
+      "/usr/share/doc/dosfstools/source-notices/65dc25e2e3244265afa85c99989f67cfc3e27645b34d222de779c4ec73db7131",
+      "/usr/share/doc/dosfstools/source-notices/09884fe3daaaebc0451a46462f2faa5465e4e2b1e835e05e065f551ad701da66",
+      "/usr/share/doc/dosfstools/source-notices/6d95d03bf8468083d3887616545bc637d676867a0c856d210d6310f532f431a9",
+      "/usr/share/doc/dosfstools/source-notices/ff94174baab91f389bc00a569f53770b546839cdc38e32005641a1a9532525c4",
+      "/usr/share/doc/dosfstools/source-notices/9047af58b584222f47e26ce7f293d1ed98f30c00d93053c3d2eb9f72a1eced27",
+      "/usr/share/doc/dosfstools/source-notices/8856071d1a56ea4ecf85015df943a52beb4059df2e48991986b8a2a4933ebdb0",
+      "/usr/share/doc/dosfstools/source-notices/91972b93d7a84b82bfa984362c55e33cc21e53ce95a5f3736a9f1e8812756d10",
+      "/usr/share/doc/dosfstools/source-notices/c2ad73974292c4ecd5039fb7277caf956e7937485a08c4bec81fe7b6771b794b",
+      "/usr/share/doc/dosfstools/source-notices/8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "/usr/share/doc/dosfstools/source-notices/8540ab68adcdce1ebc975408e561d4522d2bc41ca723d3ce2b46dc2ba467d1ff",
+      "/usr/share/doc/dosfstools/source-notices/dc6342c21dc367049613af9ae54741448614c65297e8a9a5ce123dc1d90f4c6e",
+      "/usr/share/doc/dosfstools/source-notices/c8ab93e1588101ed9736f52a03c9a65dc9b69be550c4961660654e0702b8893a",
+      "/usr/share/doc/dosfstools/source-notices/e2aacd49b14d37f4c23f9f970f764e6c8ea3c0bac209d4568eb56767584cb87b",
+      "/usr/share/doc/dosfstools/source-notices/479748aca71a7ff116351242ab4de1ed8529629479421c826d055e0429de3d8e",
+      "/usr/share/doc/dosfstools/source-notices/5741ec6da6c0a2cd4829914bf0110ffd7c2b94004789373e3e39ff5f89f59f9b",
+      "/usr/share/doc/dosfstools/source-notices/64bd8a1d664620b2347b72cfa32e0ff3fbb166b39e487e647d2b2fce6f36409d",
+      "/usr/share/doc/dosfstools/source-notices/9b01fded0864cb2f85c4c9bc3e08ffb6e83263d3221cc5eeb09c0b8ae7beacde",
+      "/usr/share/doc/dosfstools/source-notices/4026e7209aa88e2e3bf4e962abaaa610a52bfc154c3f56ca4418694bade93e56",
+      "/usr/sbin/fsck.fat",
+      "/usr/sbin/fsck.vfat",
+      "/usr/sbin/dosfsck",
+      "/usr/sbin/mkfs.fat",
+      "/usr/sbin/mkdosfs",
+      "/usr/sbin/fsck.msdos",
+      "/usr/sbin/mkfs.msdos",
+      "/usr/sbin/mkfs.vfat",
+      "/usr/sbin/fatlabel",
+      "/usr/sbin/dosfslabel"
+    ],
+    "installed_file_probe": {
+      "allocated_bytes": 2084864,
+      "fatlabel_exit": 0,
+      "fsck_exit": 0,
+      "geometry": {
+        "bytes_per_sector": 512,
+        "clusters": 258078,
+        "label": "TODDYTEST",
+        "sectors": 262144,
+        "sectors_per_cluster": 1
+      },
+      "image_sha256": "27da4e7d0bb6fccb61733a194b82c7fc95f72f9dcce11c7903c0e1ccdf676eac",
+      "logical_bytes": 134217728,
+      "mkfs_exit": 0,
+      "raw_or_loop_device_used": false,
+      "readonly_check_preserved_bytes": true,
+      "regular_file_only": true,
+      "uid": 101
+    },
+    "record_sha256": "92f3f740803de5b0f509e5a2b3aae99820a9775d03fa60e822863d864e2fa424",
+    "scope": "Actual native package/regular sparse FAT32 file only; raw disk/installer boot remains separate",
+    "version": "4.2-1+toddy1"
+  }
+}

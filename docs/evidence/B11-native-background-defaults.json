@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "scope": "Native background package/defaults/owner override reset only; graphical/login/icon inspection still pending",
+  "step": {
+    "recipe_exit": 0,
+    "postcheck_exit": 0,
+    "changed_paths": 9,
+    "started": "2026-11-16T18:46:26.838186+00:00",
+    "finished": "2026-11-16T18:46:47.157290+00:00",
+    "recipe_sha256": "e510eea4ad276741f9f8983b0f3a7bc4d7463fad19ac116eb96fe6e8ba26a3d5",
+    "postcheck_sha256": "f53c51e9b216cb0714ca196352698bca69837f38026aa6c29423700dea285b4f",
+    "log_sha256": "6039092e08e5871bf3891a03ee0ef2e3463b219b82f6c2eea9161e8938768bac"
+  },
+  "raw_receipt_sha256": "5848b41e10019a083bcbc0285bb81b742388af17edbc4c50686d52c11e1485a1",
+  "package": {
+    "version": "0.2.0-1+toddy2",
+    "archive_sha256": "5d0175bb8c8d450268aa0cbb253f0bb5ee55d71b393819903425c7e2e08b8149",
+    "record_sha256": "8a3af7a4061d772efe22e63a6a1ed76a656f9407cb2d60c035ab3b9108158f35",
+    "payload_entries": 18
+  },
+  "upgrade": {
+    "package": "toddy-desktop-defaults",
+    "version": "0.2.0-1+toddy2",
+    "manifest": {
+      "package": "toddy-desktop-defaults",
+      "version": "0.2.0-1+toddy2",
+      "source_inputs": {
+        "LICENSE": {
+          "sha256": "f2160298f6fb81b18cfa5dbbf7460ab4774a268b5b519088b5b6fc8eb08ae3a4",
+          "bytes": 1178
+        },
+        "LICENSES/CC-BY-4.0.txt": {
+          "sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+          "bytes": 18657
+        },
+        "scripts/build/phase2/desktop_defaults.py": {
+          "sha256": "e1b2929b0ca2bbf4eaf7b2382a9657fcaaf2408daee53cfc154044ce64f1065d",
+          "bytes": 3106
+        },
+        "scripts/build/phase2/branding_stage.py": {
+          "sha256": "e09599e5b2bd43e238842ec6b52db731cb363abe4920f78e73b44dc86e57a956",
+          "bytes": 13786
+        },
+        "scripts/build/phase2/desktop_background_upgrade.py": {
+          "sha256": "9a2be4a5effbe3abef8d6b6d9e2ab9c243b6b168469b5cc92964d3c320df489b",
+          "bytes": 12829
+        },
+        "scripts/build/phase2/desktop-background-install.sh": {
+          "sha256": "e510eea4ad276741f9f8983b0f3a7bc4d7463fad19ac116eb96fe6e8ba26a3d5",
+          "bytes": 114
+        },
+        "scripts/build/phase2/desktop-background-check.sh": {
+          "sha256": "f53c51e9b216cb0714ca196352698bca69837f38026aa6c29423700dea285b4f",
+          "bytes": 571
+        },
+        "docs/evidence/B02-desktop-runtime-manifest.json": {
+          "sha256": "5b8b14ecc63944d1268cc83edaa40378b610ca57c9e5b5b04419ab1f2ab8ee84",
+          "bytes": 611507
+        },
+        "assets/brand/gnome/package-map.json": {
+          "sha256": "fd0cf658ad4cc4e895837a22fca96cc5a8f68b80d5d032a88831e272ab2785a5",
+          "bytes": 2708
+        },
+        "assets/brand/assets.json": {
+          "sha256": "92d0f3f59925ef4e94607eca23a4f5f0e7f8283d13b406b8e40f2ed202631e4b",
+          "bytes": 3611
+        },
+        "native-inputs/toddy-desktop-defaults_0.2.0-1+toddy1_all.deb": "24b35fcc03fe9ad338109181552e55b07fb250a99942157f8945facecf125907",
+        "native-inputs/toddy-desktop-defaults_0.2.0-1+toddy1_all.json": "7d40d6c20f7d8e76d8c9c344a3473c61f81ff7282ee2d53aa67dee220fff0d43"
+      },
+      "baseline_version": "0.2.0-1+toddy1",
+      "baseline_archive_sha256": "24b35fcc03fe9ad338109181552e55b07fb250a99942157f8945facecf125907",
+      "baseline_record_sha256": "7d40d6c20f7d8e76d8c9c344a3473c61f81ff7282ee2d53aa67dee220fff0d43",
+      "settings_changed": [
+        "picture-uri",
+        "picture-uri-dark",
+        "picture-options"
+      ],
+      "artwork_owner": "toddy-branding",
+      "scope": "Original data-only defaults upgrade; native rendering acceptance pending"
+    },
+    "driver_sha256": "9a2be4a5effbe3abef8d6b6d9e2ab9c243b6b168469b5cc92964d3c320df489b",
+    "old_archive_retained": "/var/cache/toddy/packages/toddy-desktop-defaults_0.2.0-1+toddy1_all.deb",
+    "old_record_retained": "/var/log/toddy/packages/toddy-desktop-defaults_0.2.0-1+toddy1_all.json"
+  },
+  "installed_check": {
+    "package": "toddy-desktop-defaults",
+    "version": "0.2.0-1+toddy2",
+    "checked": [
+      "/etc/dconf/profile/user",
+      "/etc/dconf/db/toddy-desktop",
+      "/etc/dconf/db/toddy-desktop.d/00-toddy-desktop",
+      "/usr/share/doc/toddy-desktop-defaults/source-manifest.json",
+      "/usr/share/doc/toddy-desktop-defaults/copyright",
+      "/usr/share/doc/toddy-desktop-defaults/CC-BY-4.0.txt",
+      "/usr/share/doc/toddy-desktop-defaults/README",
+      "/usr/share/doc/toddy-desktop-defaults/source-notices/index.json"
+    ],
+    "cycles": [
+      {
+        "cycle": "write",
+        "defaults_and_unlocked_user_override_verified": true
+      },
+      {
+        "cycle": "read",
+        "defaults_and_unlocked_user_override_verified": true
+      }
+    ],
+    "scope": "Installed native dconf/ownership/defaults only; actual GNOME screenshots pending"
+  }
+}

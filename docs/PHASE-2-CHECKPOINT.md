@@ -40,20 +40,25 @@ Immediate native queue (one guest/package writer):
    executor/installer-branding/voice/integrations packages installed and checked0/0.
    [Native package proof](evidence/B06-native-source-packages.json). Desktop UI,
    voice engines/model/catalog, actual installer disks and B06+ acceptance remain.
-5. Custom installer build2/actual Calamares QPlugin factory/widget probe passed;
-   native install2 refused BEFORE writes (changed_paths0): dosfstools absent.
-   Frozen BLFS13.1 dosfstools4.2 archive/signature verified; native isolated build1
-   now dispatched. Inspect actual controller/job exits before qualification.
-   Fresh installer attempt3 is required after packaged offline capacity changes;
-   preserve failed2 and compile2. Do not replay old install2.
+5. Custom installer attempt3 compiled/qualified/installed/postchecked0/0 against
+   current offline-capacity Python payload; original Qt/Calamares reused.
+   dosfstools4.2 built39PASS/one upstreamXFAIL, qualified and installed0/0.
+   [Native FAT proof](evidence/B12-dosfstools-native.json). Installer2 failed
+   prewrite dependency check/changed0 and remains retained. Never replay it.
+   Native background-defaults2 upgrade and installed user-override/reset check0/0;
+   graphical B11 review still pending. Image projection1 now measures actual
+   current native archives before offline/live composition/signing.
 6. H10/H11 opaque tar custody completed: full decompression/hash verification,
    actual7,462,944,768B guest space recovered, all other evidence/ISOs/backings
    retained. [Receipt](evidence/B12-opaque-cache-custody.json). Never replay.
 7. Current boot9ac84ac8-fe0e-41c0-a128-a8e4ad4bebf2, one root guest writer;
    scratch UUID58e1a631-07a2-40a1-87c2-49de37a69345. Private runtime pointer
    `.local/phase2/runtime.json` and actual guest markers govern continuation.
-   Next: DOS qualification/install, cached voice inputs/native builds, guarded
-   background upgrade and combined actual native assistant desktop qualification.
+   Next: inspect projection1 and actual storage bounds; finish coherent voice
+   native2 cohort, then combined actual native assistant desktop qualification.
+   eSpeak1 compiled/tests0 but failed strict /usr/lib RUNPATH check; Whisper1
+   compiled then failed nonexistent ggml/LICENSE staging. Preserve both; source
+   corrections/fresh2 required. No native voice engines were installed.
 
 Owner requested process/parallelism improvements2026-11-16. Keep three source
 workers continuously assigned to independent commits. New Qt/voice build recipes
