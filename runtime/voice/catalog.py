@@ -83,6 +83,8 @@ class NativeVoiceCatalog:
                     raise VoiceError('voice_native_catalog_invalid')
                 row['path']=Path(row['path']);row['license_path']=Path(row['license_path']);row['languages']=tuple(row['languages'])
                 artifact=Artifact(**row).validate_metadata()
+                if set(artifact.languages)!={'en','pt-BR'}:
+                    raise VoiceError('voice_native_catalog_invalid')
                 if role=='stt-model' and (artifact.size!=147951465 or artifact.sha256!='60ed5bc3dd14eea856493d334349b405782ddcaf0028d4b5df4088345fba2efe'):
                     raise VoiceError('voice_native_catalog_invalid')
                 if artifact.kind!=('stt-model' if role=='stt-model' else 'engine'):

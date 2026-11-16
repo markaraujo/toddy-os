@@ -52,7 +52,8 @@ These source process controls do not claim arbitrary escaped-setsid containment.
 
 artifacts maps exactly these six roles to the complete existing Artifact fields:
 artifact_id, kind, path, size, sha256, source_url, version, license_id, license_path,
-license_sha256, review (reviewed-local-use) and languages. IDs are unique. The
+license_sha256, review (reviewed-local-use) and languages. IDs are unique; every
+role must explicitly support both en and pt-BR before this bilingual UI is offered. The
 only accepted executable/model paths are:
 
 | Role | Fixed regular path |
