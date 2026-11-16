@@ -218,3 +218,27 @@ against the actual release root with independently pinned public trust values.
 It requires every advertised entry to be native-full-flow and coverage of agent
 and local runtime acquisition. This checks native bootstrap only; all remaining
 G2/ISO gates still apply. See the [operator procedure](native-acquisition-qualification.md).
+
+## Native setup review panel
+
+`runtime/ui/acquisition.py` is included by the assistant base package and attached
+to the Setup page. It works when agent/executor are absent: choose one fixed
+closure, explicitly review exact versions/architecture, derived dependencies,
+source, byte counts and public terms, then check the separate initially unchecked
+package consent. No review, download, provider, keyring operation or activation
+runs automatically. Component-qualified metadata is visibly labelled preview.
+Package completion offers no implied service/model/grant readiness.
+
+A single worker owns the primary blocking client operation; one additional worker
+is reserved for one explicitly requested Stop authorization. Status/reconcile are
+manual owner actions, not repeated PAM polls. Progress is coalesced to one queued
+main-loop update. Stop uses request_cancel(), a fixed identity-checked helper
+cancel call which does not write the primary install cursor, so a prepared cancel
+ack cannot overwrite a later installed receipt. It does not kill an active Dpkg
+writer. Closing waits for the current operation/Stop call to reach a safe boundary
+and keeps the private PendingStore open. A lost reply clears the review, reports
+unknown state and requires explicit observation; no install is resubmitted.
+
+The panel's actual GTK EN/PT source fixture validates construction/offline refusal;
+it is not actual installed-owner Polkit/APT qualification. Guided API credentials,
+local model consent/binding and explicit activation are subsequent separate steps.

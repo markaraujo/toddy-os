@@ -1,0 +1,38 @@
+{
+  "scope": "native acquisition setup UI source",
+  "native_package_or_polkit_execution": false,
+  "provider_or_keyring_contact": false,
+  "story_acceptance": false,
+  "checks": [
+    {
+      "command": "python3 -m unittest tests.test_ui_acquisition tests.test_native_acquisition tests.test_native_acquisition_qualification -q",
+      "tests": 32,
+      "exit": 0,
+      "note": "Focused suite composition: 4 UI +24 acquisition +4 qualification; final make check includes all."
+    },
+    {
+      "command": "/usr/bin/python3 tests/fixtures/native-acquisition/panel.py --locale en",
+      "exit": 0,
+      "actual_GTK": true,
+      "fixture": "offline unavailable only"
+    },
+    {
+      "command": "/usr/bin/python3 tests/fixtures/native-acquisition/panel.py --locale pt-BR",
+      "exit": 0,
+      "actual_GTK": true,
+      "fixture": "offline unavailable only"
+    },
+    {
+      "command": "make check",
+      "tests": 781,
+      "exit": 0,
+      "seconds": 13.46
+    }
+  ],
+  "failure_correction": {
+    "first_full_check": "781 tests, one installed-stage ModuleNotFoundError toddy.ui.acquisition",
+    "cause": "New UI module absent from assistant generator MODULES",
+    "correction": "Added exactly acquisition.py to ui MODULES; final installed-stage and full checks pass."
+  },
+  "native_next": "Actual installed owner reviews signed preview, separately authenticates one native package install, observes progress/Stop/reconnect without replay; no activation or model/key/grant is implied."
+}

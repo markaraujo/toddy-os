@@ -131,6 +131,8 @@ class SetupWindow(Adw.ApplicationWindow):
                                   self.model.manifest['invitation_dismissed'] else text('setup.intent_only'))
         self.status.set_accessible_role(Gtk.AccessibleRole.STATUS)
         page.append(self.status)
+        from .acquisition import panel
+        self.acquisition = panel(self,page)
         self._credential_form(page)
         self._shortcut_form(page)
 
@@ -496,6 +498,9 @@ class SetupWindow(Adw.ApplicationWindow):
         page.append(group)
 
     def _close(self, *_):
+        if not self.acquisition.close():
+            self.toast.add_toast(Adw.Toast.new(self.model.text('acquire.close_wait')))
+            return True
         if hasattr(self,'voice'):self.voice.close()
         self.password.set_text('')
         self.credentials.close()

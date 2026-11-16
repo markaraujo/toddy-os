@@ -81,6 +81,26 @@ class NativeAcquisitionTests(unittest.TestCase):
         self.journal=Journal(self.directory/'root-journal',owner_uid=os.getuid());self.addCleanup(self.journal.close)
         self.identity='1'*32;self.uid=12345
 
+    def test_concurrent_stop_never_overwrites_primary_install_cursor(self):
+        legacy=Catalog((ROOT/'config/phase2/software-catalog.json').read_bytes())
+        with PendingStore(self.directory/'stop-client',legacy) as store:
+            seen=[]
+            def cancel(argv,**kwargs):
+                seen.append(argv)
+                return 0,_encode({'version':1,'ok':True,'operation_id':self.identity,
+                    'review_sha256':'a'*64,'state':'prepared','cancellation_requested':True})
+            client=AcquisitionClient(store,run=cancel)
+            value={'version':1,'operation_id':self.identity,'release_id':'agent-backend',
+                   'review_sha256':'a'*64,'terms_sha256':'b'*64,'state':'authorizing'}
+            client.cursor.save(value,None)
+            before,revision=client.cursor.load()
+            self.assertTrue(client.request_cancel()['cancellation_requested'])
+            self.assertEqual(client.cursor.load(),(before,revision))
+            self.assertEqual(seen[0][2:],['cancel',self.identity])
+            client.run=lambda *_args,**_kwargs:(0,_encode({'ok':True,'operation_id':'f'*32}))
+            with self.assertRaisesRegex(SetupError,'reply_unknown'):client.request_cancel()
+            self.assertEqual(client.cursor.load(),(before,revision))
+
     def test_qualified_shape_binds_exact_packages_terms_and_retained_evidence(self):
         self.assertEqual(len(self.review['packages']),3)
         self.assertFalse(self.review['auto_activate'])

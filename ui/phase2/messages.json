@@ -1947,6 +1947,326 @@
         "en": "eSpeak synthetic voice",
         "pt-BR": "Voz sintética eSpeak"
       }
+    },
+    {
+      "id": "acquire.title",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Install optional native components",
+        "pt-BR": "Instalar componentes nativos opcionais"
+      }
+    },
+    {
+      "id": "acquire.notice",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Review packages separately from model downloads, API keys and assistant activation. Administrator authentication applies only to this package operation.",
+        "pt-BR": "Revise os pacotes separadamente do download de modelos, chaves de API e ativação do assistente. A autenticação administrativa vale apenas para esta operação de pacotes."
+      }
+    },
+    {
+      "id": "acquire.agent",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Agent backend and executor",
+        "pt-BR": "Backend do agente e executor"
+      }
+    },
+    {
+      "id": "acquire.local",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Local inference runtime only",
+        "pt-BR": "Somente motor de inferência local"
+      }
+    },
+    {
+      "id": "acquire.combined",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Agent backend and local runtime",
+        "pt-BR": "Backend do agente e motor local"
+      }
+    },
+    {
+      "id": "acquire.consent",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "I accept these exact package terms and request installation.",
+        "pt-BR": "Aceito os termos destes pacotes exatos e solicito a instalação."
+      }
+    },
+    {
+      "id": "acquire.empty",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "No verified native package review selected. You can keep using the desktop offline.",
+        "pt-BR": "Nenhuma revisão de pacotes nativos verificados selecionada. Você pode continuar usando o desktop offline."
+      }
+    },
+    {
+      "id": "acquire.preview",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Component-qualified preview: the complete installed-user flow is still under qualification.",
+        "pt-BR": "Prévia com componentes qualificados: o fluxo completo do usuário instalado ainda está em qualificação."
+      }
+    },
+    {
+      "id": "acquire.sizes",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Download: {download} bytes. Installed closure: {installed} bytes.",
+        "pt-BR": "Download: {download} bytes. Conjunto instalado: {installed} bytes."
+      }
+    },
+    {
+      "id": "acquire.idle",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Choose the optional closure and review it. Nothing is downloaded automatically.",
+        "pt-BR": "Escolha o conjunto opcional e revise-o. Nada é baixado automaticamente."
+      }
+    },
+    {
+      "id": "acquire.working",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Owner operation in progress. Native package writes finish at a safe boundary.",
+        "pt-BR": "Operação do proprietário em andamento. A gravação de pacotes termina em um limite seguro."
+      }
+    },
+    {
+      "id": "acquire.review_required",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Review the exact packages, source and legal terms before accepting.",
+        "pt-BR": "Revise os pacotes exatos, a origem e os termos legais antes de aceitar."
+      }
+    },
+    {
+      "id": "acquire.packages_present",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "These exact packages are present. No service, model or provider was activated.",
+        "pt-BR": "Estes pacotes exatos estão presentes. Nenhum serviço, modelo ou provedor foi ativado."
+      }
+    },
+    {
+      "id": "acquire.reconciliation_required",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "An earlier operation needs an explicit status check or reconciliation. Do not submit it again.",
+        "pt-BR": "Uma operação anterior precisa de consulta de estado ou reconciliação explícita. Não a envie novamente."
+      }
+    },
+    {
+      "id": "acquire.unavailable",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "No applicable qualified native release is available. Continue offline or try an explicit review later.",
+        "pt-BR": "Nenhuma versão nativa qualificada aplicável está disponível. Continue offline ou revise explicitamente mais tarde."
+      }
+    },
+    {
+      "id": "acquire.installed",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Packages verified as installed. API/local model setup and activation remain separate choices.",
+        "pt-BR": "Pacotes verificados como instalados. A configuração de API ou modelo local e a ativação continuam sendo escolhas separadas."
+      }
+    },
+    {
+      "id": "acquire.deferred",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Operation deferred before package writes. Review again when ready.",
+        "pt-BR": "Operação adiada antes da gravação de pacotes. Revise novamente quando estiver pronto."
+      }
+    },
+    {
+      "id": "acquire.canceled",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Stop reached a safe boundary. Completed package effects are retained.",
+        "pt-BR": "A interrupção chegou a um limite seguro. Efeitos de pacotes concluídos foram preservados."
+      }
+    },
+    {
+      "id": "acquire.failed",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The operation failed. Existing evidence and state were preserved.",
+        "pt-BR": "A operação falhou. As evidências e o estado existentes foram preservados."
+      }
+    },
+    {
+      "id": "acquire.needs_reconciliation",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Native package outcome requires observation and possible manual package recovery. No automatic replay.",
+        "pt-BR": "O resultado dos pacotes nativos exige observação e possível recuperação manual. Não há repetição automática."
+      }
+    },
+    {
+      "id": "acquire.outcome_unknown",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The reply is uncertain. Use explicit status/reconciliation for the existing operation; never resubmit it.",
+        "pt-BR": "A resposta é incerta. Consulte ou reconcilie explicitamente a operação existente; nunca a envie novamente."
+      }
+    },
+    {
+      "id": "acquire.authorization_canceled",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Administrator authorization was canceled or refused. No automatic retry.",
+        "pt-BR": "A autorização administrativa foi cancelada ou recusada. Não há nova tentativa automática."
+      }
+    },
+    {
+      "id": "acquire.stop_requested",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Stop requested. A native write already in progress finishes safely; completed effects remain.",
+        "pt-BR": "Interrupção solicitada. Uma gravação nativa em andamento termina com segurança; efeitos concluídos permanecem."
+      }
+    },
+    {
+      "id": "acquire.close_wait",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Wait for the package operation to reach a safe boundary, or explicitly request Stop.",
+        "pt-BR": "Aguarde a operação de pacotes chegar a um limite seguro ou solicite a interrupção explicitamente."
+      }
+    },
+    {
+      "id": "acquire.button_review",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Review",
+        "pt-BR": "Revisar"
+      }
+    },
+    {
+      "id": "acquire.button_install",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Install packages",
+        "pt-BR": "Instalar pacotes"
+      }
+    },
+    {
+      "id": "acquire.button_stop",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Request Stop",
+        "pt-BR": "Solicitar interrupção"
+      }
+    },
+    {
+      "id": "acquire.button_status",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Check status",
+        "pt-BR": "Consultar estado"
+      }
+    },
+    {
+      "id": "acquire.button_reconcile",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Reconcile",
+        "pt-BR": "Reconciliar"
+      }
+    },
+    {
+      "id": "acquire.phase_prepared",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Review accepted; checking the exact package transaction.",
+        "pt-BR": "Revisão aceita; verificando a transação exata de pacotes."
+      }
+    },
+    {
+      "id": "acquire.phase_downloading",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Downloading and verifying the reviewed archives.",
+        "pt-BR": "Baixando e verificando os arquivos revisados."
+      }
+    },
+    {
+      "id": "acquire.phase_installing",
+      "context": "native-acquisition",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Installing native packages. Stop waits for this transaction to finish safely.",
+        "pt-BR": "Instalando pacotes nativos. A interrupção aguarda esta transação terminar com segurança."
+      }
     }
   ]
 }

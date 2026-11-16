@@ -138,6 +138,24 @@ class AcquisitionClient:
         if current is None:raise SetupError('acquisition_unknown')
         return self._invoke(action,current,revision)
 
+    def request_cancel(self):
+        """Explicit concurrent Stop, without racing the install cursor writer.
+
+        This authenticates a separate fixed cancel action once. It never installs,
+        polls or overwrites the primary child's canonical-result cursor.
+        """
+        current,_=self.cursor.load()
+        if current is None:raise SetupError('acquisition_unknown')
+        code,data=self.run(['/usr/bin/pkexec',HELPER,'cancel',current['operation_id']],timeout=None)
+        if code in (126,127) and not data.strip():
+            return {'version':1,'ok':False,'code':'owner_authorization_canceled'}
+        value=_strict(data)
+        if code!=0 or not isinstance(value,dict) or value.get('ok') is not True or \
+                value.get('operation_id')!=current['operation_id'] or value.get('review_sha256')!=current['review_sha256'] or \
+                value.get('state') not in STATES or value.get('cancellation_requested') is not True:
+            raise SetupError('acquisition_reply_unknown')
+        return value
+
     def _invoke(self,action,current,revision):
         argv=['/usr/bin/pkexec',HELPER,action,current['operation_id']]
         if action=='install':argv+=[current['release_id'],current['review_sha256'],current['terms_sha256']]
