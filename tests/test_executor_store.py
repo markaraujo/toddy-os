@@ -44,6 +44,18 @@ class ExecutorStoreTests(unittest.TestCase):
         self.now=2000
         with self.assertRaisesRegex(PolicyError,'grant_required'):
             self.store.dispatch(101,'sessionA','a','configuration',self.arguments,lambda *_:self.fail())
+    def test_standing_inspection_is_current_readonly_uid_bound_and_registered(self):
+        self.assertFalse(self.store.standing_authorization(101,'disk-health')['allowed'])
+        self.store.set_grant(101,'session',expires=2000,session='active')
+        self.assertFalse(self.store.standing_authorization(101,'disk-health')['allowed'])
+        self.grant()
+        self.assertTrue(self.store.standing_authorization(101,'service-health')['allowed'])
+        self.assertFalse(self.store.standing_authorization(102,'disk-health')['allowed'])
+        with self.assertRaises(PolicyError):self.store.standing_authorization(101,'root-command')
+        self.now=2000
+        self.assertFalse(self.store.standing_authorization(101,'disk-health')['allowed'])
+        self.now=1000;self.store.revoke(101)
+        self.assertFalse(self.store.standing_authorization(101,'disk-health')['allowed'])
     def test_revocation_generation_and_no_replay(self):
         first=self.grant();self.plan();self.store.revoke(101)
         with self.assertRaisesRegex(PolicyError,'grant_required'):self.dispatch_operation(apply=lambda *_:self.fail())

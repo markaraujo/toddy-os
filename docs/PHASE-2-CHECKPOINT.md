@@ -11,14 +11,22 @@ cleanup/restart uncertain/no replay. Root control2 and owner7 remain reusable.
 Current final context `.local/phase2/native-executor-broker-4`: QEMU/container0,
 no guest writer, both accepted B02 backing files unchanged. Never replay it.
 
-Next: merge prepared managed configuration manager, connect out-of-band operation
-IDs to root dispatch/reconciliation and qualify actual broken-service rollback,
-drift and manual rescue in a NEW native context. Current source workers prepare
-named profiles/UI, automation/memory and Calamares adapter in separate worktrees;
-only coordinator writes guest. Source preparation is not later-story acceptance.
-Terminal shared-service client is staged and focused tested; native B06 pending.
+Native recovery2 passed broken consumer rollback/service restart, private manual
+rescue backup, crash after effect before outer completion, owned readback after
+restart with unchanged mtime/no replay, and manual drift without automatic undo.
+[Receipt](evidence/B05-native-recovery.json). QEMU/container0 and accepted B02
+backing files unchanged; no guest writer. Failure recovery1 retained. Never replay2.
+
+Next: integrate current named-profile/UI/memory source and run focused native
+broker/CLI task revision/restore/cancellation qualification in a NEW context.
+Calamares adapter remains source-only; native Qt inventory proves missing Wayland
+QPA and prepared same-version QtBase raster recipe is conditional next build.
+Whisper/eSpeak immutable source/model cache acquired175MB, no inference/audio yet.
+Three isolated workers own UI, memory/automation service integration and cold
+capacity custody preparation; coordinator remains sole guest writer.
 Host reserve100GiB+512MiB and target reserve16GiB remain required. Check actual
-space/VM/job state before any new write. No Phase2 ISO/G2 or physical acceptance.
+space/VM/job state before writes. Sourcepreparation is not later acceptance.
+No Phase2 ISO/G2 or physical acceptance.
 
 ## Last verified runtime and jobs
 

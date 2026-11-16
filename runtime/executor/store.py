@@ -137,6 +137,19 @@ class Store:
             raise PolicyError('grant_required')
         return row
 
+    def standing_authorization(self,uid,action_id):
+        """Read-only current policy for fixed non-mutating background monitors.
+
+        No credential/token/generation is delegated to the caller. Session-only
+        grants never authorize unattended polling; every poll must ask again.
+        """
+        owner(uid)
+        if action_id not in ('disk-health','service-health'):raise PolicyError('action_unavailable')
+        with self._db() as db:
+            row=db.execute('SELECT * FROM grants WHERE uid=?',(uid,)).fetchone()
+            allowed=bool(row and row['enabled'] and row['mode']=='standing' and row['expires']>self.clock())
+        return {'version':1,'action_id':action_id,'allowed':allowed}
+
     def plan(self,uid,session,op,kind,arguments):
         owner(uid);identifier(op);digest=request_hash(kind,arguments)
         with self._transaction() as db:

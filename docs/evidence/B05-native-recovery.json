@@ -1,0 +1,93 @@
+{
+  "all_selected_exits_zero": true,
+  "checks": [
+    {
+      "name": "trusted-root-pam-active-local-logind-session",
+      "properties": {
+        "Active": "yes",
+        "Remote": "no",
+        "Type": "tty",
+        "User": "12405"
+      },
+      "raw_tty_retained": false
+    },
+    {
+      "name": "default-active-policy-real-pam-session-grant-and-ipc-effect"
+    },
+    {
+      "backup_sha256": "e1e5825e30e4898b3583689b56844bd1137c85346769de9673b1f78b5a6945d1",
+      "consumer": "loopback-only disposable qualification",
+      "name": "native-broken-consumer-config-rollback-restores-service-and-manual-backup"
+    },
+    {
+      "name": "native-after-effect-process-crash-restart-owned-readback-no-replay"
+    },
+    {
+      "name": "native-manual-drift-observed-without-fighting-owner"
+    },
+    {
+      "name": "background-same-uid-service-binds-active-owner-logind-display"
+    },
+    {
+      "name": "native-logind-locked-hint-refuses-new-background-ipc-and-unlocks"
+    },
+    {
+      "name": "native-package-owned-upgrade-restart-retains-grant-operation-and-no-replay"
+    },
+    {
+      "name": "default-active-policy-fresh-authenticated-revoke"
+    },
+    {
+      "name": "session-only-grant-refuses-no-session-after-logout"
+    },
+    {
+      "name": "native-package-remove-preserves-private-state-for-recovery"
+    }
+  ],
+  "qt_readonly_inventory": {
+    "/usr/include/QtGui/qtgui-config.h": {
+      "bytes": 2292,
+      "sha256": "515af16e49f4760f5cecd7acb0407fe007241cea97dd0f9c60f12ae1a7a8e8ae",
+      "wayland_features": [
+        "#define QT_FEATURE_wayland -1",
+        "#define QT_FEATURE_waylandscanner -1"
+      ]
+    }
+  },
+  "scope": "Trusted root-created native PAM/logind local session, default Polkit owner policy with real administrator password, session grants and dpkg install/upgrade/revoke. No authorization-rule override or real console/GDM login claim; graphical UI/physical/signed release acceptance separate.",
+  "source_sha256": {
+    "command_child.py": "2b0e56cca8b84fb1e824761961916960935025fe46d593cbc9d6ef28406a5d4b",
+    "configuration.py": "7d73ed2fb6679bc7aa86c8e246dead7811a6232f79e19243589dc59aeca1d49e",
+    "io.github.markaraujo.Toddy.Executor.conf": "fbbe8b719b6f438fe58cf07bd1e13d95cd63f709a7cd6907ebad7abfa5e6c93c",
+    "io.github.markaraujo.Toddy.Executor1.xml": "893f284ca0c94675b443accc5de1da4f4f84411e7b6b4ccae238a813aab6b12e",
+    "io.github.markaraujo.Toddy.Owner.policy": "31d81de2d26aae73fb46b2680af866359e52927f79077893c0016801ad28e9d0",
+    "linux_identity.py": "3aafb9131f81aae4bf72bbac7ac799a5ba51f519fc98e1b73679970f683db755",
+    "native_backends.py": "2d7e0c5f27c6f4b2ac942638b691a9037c0d59d971520a69c630888f80f07bc4",
+    "operations.py": "a957596ce8e156fd119042bfcc1d125ceda0643d746ce8c91de850fa128a4041",
+    "owner_policy.py": "16d9c0eb58c8101808001519713b2d6fea0ba7ccfb214eaeb78af7f20cbb0ee3",
+    "policy.py": "65559463c74781ca8db83d6e97b8847deb891ea1882177f2ce7f157a58befeb2",
+    "service.py": "7d2eea73a67a92fcc3031935bd753897ef8b7141ade0a6a491db938db4760c10",
+    "session_identity.py": "c2746ecca37879d36df0b8ef6447942797541220465208d5d58ccd6604d49606",
+    "store.py": "493f26c8dbe9eb81eb1fd52ebf6d075056aed1d13bf89e1242f9d4a06cf06dbf",
+    "toddy-executor.service": "e91e0ee9eebd92de111867a2901205f991afe6a9dda043ed605e28e9994d14b2"
+  },
+  "job": "native-executor-recovery-2",
+  "source_commit": "758cdedac440f79431f0b78389ed322d61c86d82",
+  "probe_sha256": "3beec8f0dcfc8c564937c2ff5881afbad054bf9481cb38ac8633af10111d7754",
+  "inputs_sha256": "efd9f12c47024431e399d342971612b24a5427c9d62cda412d8c576c672a4e34",
+  "report_sha256": "fb427844f7e05780ad2aecd48efbf55b3e4ba930a4c6294a23ccaf392cdf900a",
+  "actual_container_exit": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-11-16T13:58:28.214011903Z",
+    "FinishedAt": "2026-11-16T13:58:45.68364362Z"
+  },
+  "backing_unchanged": true
+}

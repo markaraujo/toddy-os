@@ -20,6 +20,10 @@
       <arg name="operation_id" type="s" direction="in"/>
       <arg name="operation_json" type="s" direction="out"/>
     </method>
+    <method name="GetStandingAuthorization">
+      <arg name="action_id" type="s" direction="in"/>
+      <arg name="authorization_json" type="s" direction="out"/>
+    </method>
     <method name="GetAudit">
       <arg name="after_sequence" type="t" direction="in"/>
       <arg name="audit_json" type="s" direction="out"/>

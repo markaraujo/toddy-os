@@ -4230,3 +4230,19 @@ Terminal source client adds bounded shared-service text paging, safe Stop and
 read-only lost-acceptance recovery; four focused client checks and six staged
 assistant checks passed, full make check580 tests11.035s. Native CLI acceptance
 remains B06. No final ISO/G2 or physical test claim.
+
+## 2026-11-16 — B05 native configuration recovery and integrated source checkpoints
+
+Native recovery2 passed authenticated broken-service rollback/manual rescue,
+after-effect process death before result recording, restart/owned readback with
+no replay, and deliberate drift preservation. Original cold backing unchanged.
+Recovery1 fixture failed on asynchronous Type=simple launch observation; retained
+and corrected to actual systemd/listener postconditions. B05 acceptance remains
+pending combined profile/task boundary.
+
+Integrated named-profile captured runtime routing, canonical memory wrapper/API,
+deterministic automation source, Calamares sealed-FD/safe-Stop source adapter,
+voice exact sources/model preparation and conditional QtBase raster Wayland
+recipe. Native Qt inventory confirmed missing Wayland features; no blind rebuild
+or voice inference claim. Full merged repository check655tests11.569s passed.
+Source/compile/native install and final release gates remain distinct.

@@ -124,6 +124,7 @@ def main():
                     except (ConfigurationError,OSError):return {'state':'review_required','verified':False}
                 result=store.reconcile_configuration(uid,values[0],readback)
             elif method=='GetAudit':result=store.audit(uid,values[0])
+            elif method=='GetStandingAuthorization':result=store.standing_authorization(uid,values[0])
             else:raise PolicyError('method_unavailable')
             invocation.return_value(GLib.Variant('(s)',(json.dumps(result,separators=(',',':')),)))
         except PolicyError as error:invocation.return_dbus_error(INTERFACE+'.Rejected',str(error))
