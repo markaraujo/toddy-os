@@ -4,6 +4,7 @@ import re
 import uuid
 
 from .pending import SetupError,_encode,_strict,_digest
+from .platform import installed_toddy
 from .releases import NativeCatalog
 from .native_backend import command,NativeBackend
 from .acquisition_journal import STATES,TERMINAL
@@ -92,12 +93,13 @@ class AcquisitionClient:
     No automatic query (which would prompt Polkit), retry or backend activation.
     Losing an install reply retains the same operation for explicit reconciliation.
     """
-    def __init__(self,store,*,catalog=NativeCatalog.load,run=owner_command,inventory=None,progress=None):
-        self.cursor=Cursor(store);self.catalog=catalog;self.run=run;self.progress=progress
+    def __init__(self,store,*,catalog=NativeCatalog.load,run=owner_command,inventory=None,progress=None,platform_check=installed_toddy):
+        self.cursor=Cursor(store);self.catalog=catalog;self.run=run;self.progress=progress;self.platform_check=platform_check
         self.inventory=inventory or (lambda names:NativeBackend(None).query(names))
 
     def review(self):
         try:
+            self.platform_check()
             current,_=self.cursor.load()
             if current and current['state'] not in TERMINAL|{'authorization_canceled'}:
                 return {'version':1,'state':'reconciliation_required','can_install':False,'operation_id':current['operation_id']}

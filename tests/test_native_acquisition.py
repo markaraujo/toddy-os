@@ -43,7 +43,7 @@ def fixture():
     value={'version':1,'generation':1,'not_before':500,'expires':2000,
         'repository':{'id':'toddy-native','sources_sha256':sha(source_data),
                       'inrelease_sha256':'c'*64,'inrelease_bytes':100},'releases':[row]}
-    keyring=b'public fixture placeholder; no actual key material'
+    keyring=b'\xc6\x01\x04' # Public-shaped packet only; not a real cryptographic key.
     files={directory/'trust.json':_encode({'version':1,'fingerprint':'A'*40,'keyring_sha256':sha(keyring)}),
         directory/'archive-keyring.gpg':keyring,directory/'releases.json.asc':b'not a real signature',
         directory/'releases.json':_encode(value),directory/'terms'/(sha(terms)+'.txt'):terms,
@@ -93,6 +93,28 @@ class NativeAcquisitionTests(unittest.TestCase):
         report=next(path for path in self.files if path.suffix=='.json' and path.parent.name=='qualifications')
         del self.files[report]
         with self.assertRaises(FileNotFoundError):self.load()
+
+    def test_secret_or_truncated_openpgp_packets_are_never_accepted(self):
+        from runtime.shared.openpgp import public_key_only
+        public_key_only(b'\xc6\x01\x04') # Synthetic tag6, no crypto claim.
+        for data in (b'\xc5\x01\x04',b'\xc7\x01\x04',b'\xc6\x05\x04',b'not-a-key'):
+            with self.assertRaises(ValueError):public_key_only(data)
+        key=self.catalog_directory/'archive-keyring.gpg'
+        self.files[key]=b'\xc5\x01\x04'
+        trust=json.loads(self.files[self.catalog_directory/'trust.json'])
+        trust['keyring_sha256']=sha(self.files[key]);self.files[self.catalog_directory/'trust.json']=_encode(trust)
+        with self.assertRaisesRegex(SetupError,'release_public_keyring_required'):self.load()
+
+    def test_foreign_os_duplicate_identity_and_unsupported_os_alias_are_refused(self):
+        from runtime.setup.platform import installed_toddy
+        def no_link(_):raise OSError('regular file')
+        with self.assertRaisesRegex(SetupError,'native_os_unsupported'):
+            installed_toddy(read=lambda _:b'ID=ubuntu\n',link=no_link)
+        with self.assertRaisesRegex(SetupError,'native_os_unsupported'):
+            installed_toddy(read=lambda _:b'ID=toddy\nID=ubuntu\n',link=no_link)
+        with self.assertRaisesRegex(SetupError,'native_os_unsupported'):
+            installed_toddy(read=lambda _:b'ID=toddy\n',link=lambda _:'/tmp/not-an-os-file')
+        installed_toddy(read=lambda _:b'ID=toddy\n',link=no_link,exists=lambda _:False)
 
     def test_existing_candidate_catalog_still_refuses_untrusted_release_records(self):
         value=json.loads((ROOT/'config/phase2/software-catalog.json').read_text())
@@ -188,7 +210,7 @@ os._exit(9)
                 if len(calls)==1:return 0,b'' # Lost reply, accepted outcome unknown.
                 return 0,_encode({'version':1,'ok':True,'operation_id':argv[3],
                     'review_sha256':self.review['review_sha256'],'state':'installed'})
-            client=AcquisitionClient(store,catalog=self.load,run=runner,inventory=lambda names:{name:None for name in names})
+            client=AcquisitionClient(store,catalog=self.load,run=runner,platform_check=lambda:None,inventory=lambda names:{name:None for name in names})
             review=client.review();self.assertTrue(review['can_install'])
             with self.assertRaisesRegex(SetupError,'review_required'):client.install(review)
             result=client.install(review,accepted_terms=True);self.assertEqual(result['code'],'acquisition_reply_unknown')
@@ -204,7 +226,7 @@ os._exit(9)
         with PendingStore(self.directory/'offline-setup',legacy) as store:
             store.create('offline-fixture')
             def unavailable():raise FileNotFoundError('No signed native release')
-            client=AcquisitionClient(store,catalog=unavailable,run=lambda *_:self.fail('No root/network command'))
+            client=AcquisitionClient(store,catalog=unavailable,platform_check=lambda:None,run=lambda *_:self.fail('No root/network command'))
             self.assertEqual(client.review()['state'],'unavailable')
             self.assertEqual(store.load()[0]['ai_choice'],'later')
 

@@ -28,5 +28,14 @@
     "result": "passed",
     "checks": 699,
     "elapsed_seconds": 12.528
+  },
+  "host_safety_public_key_followup": {
+    "focused_checks": 17,
+    "focused_elapsed_seconds": 0.111,
+    "make_check_checks": 701,
+    "make_check_elapsed_seconds": 12.089,
+    "result": "passed",
+    "os_guard": "root-owned ID=toddy or exact canonical alias; foreign/live denied before APT",
+    "public_key_packet_guard": "bounded shared parser rejects secret/unsupported/truncated packets before gpgv; synthetic public-shaped fixture only"
   }
 }

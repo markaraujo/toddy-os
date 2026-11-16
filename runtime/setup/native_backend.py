@@ -207,6 +207,8 @@ class NativeBackend:
 
 
     def acquire(self, journal, uid, identity, release, review):
+        from .platform import installed_toddy
+        installed_toddy()
         self.audit()
         code,architecture=self.run(['/usr/bin/dpkg','--print-architecture'])
         if code or architecture.strip()!=b'amd64':raise SetupError('native_architecture')

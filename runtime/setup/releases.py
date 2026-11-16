@@ -9,6 +9,7 @@ import subprocess
 import time
 
 from .pending import SetupError, _strict, _encode
+from ..shared.openpgp import public_key_only
 
 DIRECTORY = Path('/usr/share/toddy/software/native')
 SOURCES = Path('/etc/apt/sources.list.d/toddy-native.list')
@@ -88,7 +89,10 @@ class NativeCatalog:
                 not re.fullmatch('[A-F0-9]{40}|[A-F0-9]{64}', trust['fingerprint']):
             raise SetupError('release_trust')
         digest_field(trust['keyring_sha256'])
-        if sha(read(directory/'archive-keyring.gpg', maximum=1048576)) != trust['keyring_sha256']:
+        keyring_data=read(directory/'archive-keyring.gpg',maximum=1048576)
+        try:public_key_only(keyring_data)
+        except ValueError:raise SetupError('release_public_keyring_required') from None
+        if sha(keyring_data) != trust['keyring_sha256']:
             raise SetupError('release_trust')
         data = read(directory/'releases.json'); read(directory/'releases.json.asc', maximum=16384)
         if verify(directory/'archive-keyring.gpg', directory/'releases.json.asc', directory/'releases.json') != trust['fingerprint']:

@@ -11,8 +11,8 @@ PendingStore and the legacy Catalog retain their existing deferred-wish behavior
 
 The coordinator-owned assistant generator must install these original modules
 under `/usr/lib/toddy/setup/`: `acquisition.py`, `releases.py`,
-`acquisition_journal.py`, `native_backend.py`, `native_acquire.py`, alongside
-unchanged `pending.py`. Only `native_acquire.py` needs executable mode 0755;
+`acquisition_journal.py`, `native_backend.py`, `native_acquire.py`, `platform.py`, alongside
+unchanged `pending.py`. The base shared namespace also includes `openpgp.py`. Only `native_acquire.py` needs executable mode 0755;
 all code must be root-owned without group/world write. Its isolated Python
 shebang imports only the fixed `/usr/lib/toddy` namespace. Install the policy at
 `/usr/share/polkit-1/actions/io.github.markaraujo.Toddy.AcquireNative.policy`.
@@ -20,6 +20,9 @@ The exact pkexec executable annotation is
 `/usr/lib/toddy/setup/native_acquire.py`, active `auth_admin`, inactive/other no,
 with no retained authorization or root GUI environment. Base requires its already
 qualified Python, gpgv, APT/Dpkg, Polkit, logind and `_apt` sandbox account.
+The strict installed-OS guard reads root-owned nonwritable ID=toddy os-release
+(or its exact canonical /usr/lib/os-release alias) and refuses foreign/live OS
+before APT; the user review performs the same local check without Polkit.
 The helper and catalog must be present before optional agent/executor acquisition.
 This worker does not modify the generator/UI/shared installer handoff module.
 
@@ -44,7 +47,9 @@ The entire source-list hash and signed InRelease bytes/size are pinned below.
 Required root-owned files:
 
 - `trust.json`: exact fields `version:1`, uppercase primary key `fingerprint`
-  (40/64 hex), `keyring_sha256`; `archive-keyring.gpg` is its exact public keyring.
+  (40/64 hex), `keyring_sha256`; `archive-keyring.gpg` is its exact binary public keyring. The shared bounded packet parser rejects
+  secret/private, unsupported and truncated packets before gpgv; no signing key
+  may be shipped in this directory.
 - `releases.json` and detached `releases.json.asc`: gpgv must return exactly the
   pinned valid primary fingerprint. Re-read catalog bytes after verification.
   Catalog fields are `version:1`, monotonic integer `generation`, Unix

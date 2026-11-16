@@ -15,11 +15,13 @@ import sys
 # Fixed owned installed namespace; no cwd, environment or module argument hook.
 sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 if Path(__file__).resolve().parents[1].name=='toddy':
+    from toddy.setup.platform import installed_toddy
     from toddy.setup.pending import SetupError,_encode
     from toddy.setup.releases import NativeCatalog
     from toddy.setup.acquisition_journal import Journal,operation_id,TERMINAL
     from toddy.setup.native_backend import NativeBackend,command
 else:
+    from runtime.setup.platform import installed_toddy
     from runtime.setup.pending import SetupError,_encode
     from runtime.setup.releases import NativeCatalog
     from runtime.setup.acquisition_journal import Journal,operation_id,TERMINAL
@@ -44,6 +46,7 @@ def caller():
 
 
 def active(uid):
+    installed_toddy()
     if 'toddy.live' in Path('/proc/cmdline').read_text().split() or Path('/run/toddy/live-session').exists():
         raise SetupError('acquisition_installed_owner_required')
     code,data=command(['/usr/bin/loginctl','show-user',str(uid),'-p','Display','--value'])
