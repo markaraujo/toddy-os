@@ -11337,6 +11337,70 @@
       "license": "LicenseRef-xdg-desktop-portal-gtk-per-file",
       "evidence": "Source meson.build declares LGPL-2.1-or-later; retain COPYING and exact per-file notices.",
       "runtime_inclusion": "Selected native desktop portal closure; source-pinned only, not built/installed or advertised as qualified."
+    },
+    {
+      "name": "whisper-cpp",
+      "version": "1.9.5",
+      "license": "MIT",
+      "evidence": "Exact immutable whisper.cpp and GGML LICENSE documents retained from d1be6fde11ac6e0407606b4e42fe72d34add8037; per-file notices retained independently. Source only, native qualification pending.",
+      "runtime_inclusion": "Optional CPU whisper-cli and statically linked internal GGML; no weights.",
+      "extra_license_headers": {
+        "whisper-source.tar.gz": {
+          "prefixes": [
+            "src/",
+            "include/",
+            "ggml/src/",
+            "ggml/include/",
+            "examples/cli/",
+            "examples/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".cpp",
+            ".hpp"
+          ]
+        }
+      }
+    },
+    {
+      "name": "espeak-ng",
+      "version": "1.52.0",
+      "license": "LicenseRef-eSpeak-NG-per-file",
+      "evidence": "Exact COPYING, COPYING.APACHE, COPYING.BSD2, COPYING.UCD, named nested notices, README license information and source headers from 4870adfa25b1a32b4361592f1be8a40337c58d6c. Engine GPL-3.0-or-later does not replace the distinct bundled Unicode, Apache/BSD and data notices. Source only; native archive review pending.",
+      "runtime_inclusion": "Optional file-only engine, compiled built-in language/voice data, headers/static library as actually staged. No MBROLA or external voices.",
+      "extra_license_files": {
+        "espeak-source.tar.gz": [
+          "README.md"
+        ]
+      },
+      "extra_license_headers": {
+        "espeak-source.tar.gz": {
+          "prefixes": [
+            "src/"
+          ],
+          "suffixes": [
+            ".c",
+            ".h",
+            ".cpp",
+            ".hpp"
+          ]
+        }
+      }
+    },
+    {
+      "name": "toddy-voice-model-base",
+      "version": "5359861c739e955e79d9a303bcbc70fb988958b1",
+      "license": "MIT",
+      "evidence": "Exact 147951465-byte SHA 60ed5bc3dd14eea856493d334349b405782ddcaf0028d4b5df4088345fba2efe ggml multilingual base; immutable converted model card and original OpenAI MIT LICENSE separately retained with locked digests. Revision is provenance, not an invented model version. Source only, optional signed native acquisition pending.",
+      "runtime_inclusion": "Separate optional model-only package; never offline desktop/base/ISO. No implied recording, network or license consent."
+    },
+    {
+      "name": "toddy-voice-native-catalog",
+      "version": "0.2.0",
+      "license": "MIT AND CC-BY-4.0",
+      "evidence": "Original Toddy package generation code MIT; generated qualification documentation CC-BY-4.0. Upstream engine/model legal notices remain at verified owned paths, without duplicated payload or relicensing. Source only until actual native qualification.",
+      "runtime_inclusion": "Optional root-native artifact catalog and qualification receipt only; no model/engine payload, no start hooks or acquisition consent."
     }
   ],
   "review_scope": "Reviewed entries only; absent components remain pending; source review is separate from native installation acceptance"

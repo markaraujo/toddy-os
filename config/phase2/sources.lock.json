@@ -3046,6 +3046,54 @@
       "reference": "BLFS13.1-systemd x/xdg-desktop-portal-gtk.html",
       "integrity": "Official HTTPS source matched frozen book legacy MD5; SHA256 frozen before guest extraction/use",
       "status": "source_verified"
+    },
+    {
+      "name": "whisper-cpp",
+      "version": "1.9.5",
+      "filename": "whisper-source.tar.gz",
+      "url": "https://codeload.github.com/ggml-org/whisper.cpp/tar.gz/d1be6fde11ac6e0407606b4e42fe72d34add8037",
+      "sha256": "645445da884df6dbd52b30f82d7be7c01d1767c938714e477e786b88d529e9f4",
+      "size": 9631456,
+      "license": "MIT",
+      "reference": "runtime/voice/native-inputs.lock.json; optional B09 native source/model input, not offline base or ISO",
+      "status": "source_verified",
+      "license_notices": [
+        "LICENSE",
+        "ggml/LICENSE"
+      ]
+    },
+    {
+      "name": "espeak-ng",
+      "version": "1.52.0",
+      "filename": "espeak-source.tar.gz",
+      "url": "https://codeload.github.com/espeak-ng/espeak-ng/tar.gz/4870adfa25b1a32b4361592f1be8a40337c58d6c",
+      "sha256": "cd83f84c4e495f281ac14e919aecf2834306ec1ea1b498de8ef6000f3a0f90de",
+      "size": 17747711,
+      "license": "LicenseRef-eSpeak-NG-per-file",
+      "reference": "runtime/voice/native-inputs.lock.json; optional B09 native source/model input, not offline base or ISO",
+      "status": "source_verified",
+      "license_notices": [
+        "COPYING",
+        "COPYING.APACHE",
+        "COPYING.BSD2",
+        "COPYING.UCD",
+        "README.md"
+      ]
+    },
+    {
+      "name": "toddy-voice-model-base",
+      "version": "5359861c739e955e79d9a303bcbc70fb988958b1",
+      "filename": "ggml-base.bin",
+      "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-base.bin",
+      "sha256": "60ed5bc3dd14eea856493d334349b405782ddcaf0028d4b5df4088345fba2efe",
+      "size": 147951465,
+      "license": "MIT",
+      "reference": "runtime/voice/native-inputs.lock.json; optional B09 native source/model input, not offline base or ISO",
+      "status": "source_verified",
+      "license_notices": [
+        "whisper-original-license.txt",
+        "whisper-model-card.txt"
+      ]
     }
   ]
 }

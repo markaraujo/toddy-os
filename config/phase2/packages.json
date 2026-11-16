@@ -147,6 +147,88 @@
       ],
       "source_inputs": [],
       "offline_base": false
+    },
+    {
+      "name": "whisper-cpp",
+      "first_owner_story": "B09",
+      "image_scope": "optional-installed-only",
+      "owns": [
+        "/usr/bin/whisper-cli",
+        "/usr/share/doc/whisper-cpp/"
+      ],
+      "requires_capabilities": [
+        "native-package-backend"
+      ],
+      "source_inputs": [
+        "runtime/voice/native-inputs.lock.json",
+        "scripts/build/phase2/voice_native.py"
+      ],
+      "offline_base": false,
+      "status": "source-only-pending-native-qualified-archive",
+      "prerequisites": "Actual isolated UID101 native stage, legal/source/ELF closure, controlled transaction and installed check; explicit owner signed project APT acquisition only"
+    },
+    {
+      "name": "espeak-ng",
+      "first_owner_story": "B09",
+      "image_scope": "optional-installed-only",
+      "owns": [
+        "/usr/bin/espeak-ng",
+        "/usr/bin/speak-ng",
+        "/usr/share/espeak-ng-data/",
+        "/usr/share/doc/espeak-ng/",
+        "/usr/include/espeak-ng/",
+        "/usr/lib/libespeak-ng.a",
+        "/usr/lib/pkgconfig/espeak-ng.pc"
+      ],
+      "requires_capabilities": [
+        "native-package-backend"
+      ],
+      "source_inputs": [
+        "runtime/voice/native-inputs.lock.json",
+        "scripts/build/phase2/voice_native.py"
+      ],
+      "offline_base": false,
+      "status": "source-only-pending-native-qualified-archive",
+      "prerequisites": "Actual isolated UID101 native stage, legal/source/ELF closure, controlled transaction and installed check; explicit owner signed project APT acquisition only"
+    },
+    {
+      "name": "toddy-voice-model-base",
+      "first_owner_story": "B09",
+      "image_scope": "optional-installed-only",
+      "owns": [
+        "/usr/share/toddy/voice/models/ggml-base.bin",
+        "/usr/share/doc/toddy-voice-model-base/"
+      ],
+      "requires_capabilities": [
+        "native-package-backend"
+      ],
+      "source_inputs": [
+        "runtime/voice/native-inputs.lock.json",
+        "scripts/build/phase2/voice_native.py"
+      ],
+      "offline_base": false,
+      "status": "source-only-pending-native-qualified-archive",
+      "prerequisites": "Actual isolated UID101 native stage, legal/source/ELF closure, controlled transaction and installed check; explicit owner signed project APT acquisition only"
+    },
+    {
+      "name": "toddy-voice-native-catalog",
+      "first_owner_story": "B09",
+      "image_scope": "optional-installed-only",
+      "owns": [
+        "/usr/share/toddy/voice/catalog.json",
+        "/usr/share/doc/toddy-voice-native-catalog/"
+      ],
+      "requires_capabilities": [
+        "native-package-backend",
+        "qualified-native-voice-engines-model-process-transport"
+      ],
+      "source_inputs": [
+        "scripts/build/phase2/voice_native.py",
+        "scripts/build/phase2/voice_process_qualify.py"
+      ],
+      "offline_base": false,
+      "status": "source-only-pending-native-qualified-archive",
+      "prerequisites": "Actual engine/file inference, installed records, process-loss/Stop/reap and transport help receipts; exact native package dependencies; device/PTT/GNOME acceptance remains separate. No autostart."
     }
   ],
   "runtime_state": [
