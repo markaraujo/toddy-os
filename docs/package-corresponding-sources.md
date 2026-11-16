@@ -108,3 +108,47 @@ failures. Source tests use tiny unqualified Git/tar fixtures only. Existing
 foundation source URLs or package source URLs alone never satisfy attachment of
 corresponding source. No real native qualification, source asset or publication
 is claimed by this document.
+
+## Current export2 host custody
+
+For the MVP package export, the fixed host collector is
+`python3 -I scripts/host/collect_package_source_inputs2.py`. Run it only when the
+coordinator's actual designated candidate is running, after the completed export
+asset transfer. It reads the exact329 native records and two catalog-proof files
+referenced by actual export2 into
+`.local/phase2/mvp-package-export-2/source-inputs`, verifies every size/hash and
+catalog attestation chain, and publishes its own verified.json last. It performs
+no guest writes, install, signing or whole-directory cache transfer. Preserve
+partial output and reconcile it; there is no overwrite/retry mode.
+
+A read-only host audit on2026-11-16 matched all342 selected upstream source
+filename/SHA rows and all87 distinct audited NPM archives (88 component locations)
+against the actual exported agent custody, with no missing files. The producer
+independently verifies them again. Native record/catalog-proof transfer is still
+required; source-cache presence alone does not supply those records or prove
+source review. For this exact selection, no foundation source tar is needed.
+
+After that metadata transfer and actual signing, in the clean main checkout set
+TAGGED_SOURCE_COMMIT to the reviewed actual full existing commit and run:
+
+```sh
+python3 -I scripts/build/phase2/package_sources.py \
+  --repository "$PWD/.local/phase2/mvp-package-export-2/assets" \
+  --records "$PWD/.local/phase2/mvp-package-export-2/source-inputs/records" \
+  --source-root "$PWD/.local/sources" \
+  --source-root "$PWD/.local/phase2/voice-native-inputs-1" \
+  --npm-cache "$PWD/.local/sources" \
+  --generated-catalog-projection "$PWD/.local/phase2/mvp-package-export-2/source-inputs/optional-projection.json" \
+  --generated-catalog-attestation "$PWD/.local/phase2/mvp-package-export-2/source-inputs/generated-catalog-attestation.json" \
+  --source-commit "$TAGGED_SOURCE_COMMIT" \
+  --capacity-scope host-export \
+  --output "$PWD/.local/phase2/mvp-package-sources-2"
+```
+
+The two generated-catalog inputs are mandatory for this actual selection. The
+export's optional projection hash must bind the supplied projection, which binds
+the attestation SHA; arbitrary proof JSON or a renamed catalog receipt is refused.
+The destination must be new and the host reserve remains enforced. Missing
+historical Git recipe/original input custody remains a concrete blocker even
+when every upstream/NPM archive is already cached. The result is corresponding
+source assets for actual review/publication, not runtime or installer acceptance.
