@@ -13,3 +13,8 @@ install(FILES module.desc DESTINATION ${CMAKE_INSTALL_LIBDIR}/calamares/modules/
 install(FILES strings.json DESTINATION ${CMAKE_INSTALL_DATADIR}/calamares/modules/toddy)
 # Explicit live-only package composition installs reviewed config templates and
 # the fixed Python adapter/backend. No current-root copy or auto publication.
+
+# Separate fixed no-write consumer. It does not bypass Calamares root checks.
+add_executable(toddy-installer-plugin-probe ToddyPluginProbe.cpp)
+target_compile_features(toddy-installer-plugin-probe PRIVATE cxx_std_17)
+target_link_libraries(toddy-installer-plugin-probe PRIVATE Calamares::calamares Calamares::calamaresui Qt6::Core Qt6::Widgets)

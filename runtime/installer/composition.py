@@ -11,7 +11,7 @@ from .installed_boot import InstalledBoot,RELEASE
 BASE=Path('/usr/share/toddy/installer/composition')
 SOURCES={'live_bindings.py','composition.py','native_finalizer.py','installed_boot.py','setup/installer_handoff.py',
          'offline_payload.py','h10/initramfs_runtime.py','h10/initramfs_archive.py','audit_native_elf.py',
-         'backend.py','disk_plan.py','installed_identity.py','linux_disk.py','calamares/adapter.py','calamares/cli.py',
+         'backend.py','disk_plan.py','installed_identity.py','linux_disk.py','launch.py','calamares/adapter.py','calamares/cli.py',
          'setup/pending.py','shared/json.py'}
 HASH=re.compile('[0-9a-f]{64}\\Z')
 
@@ -35,6 +35,14 @@ def source_path(relative):
     if relative.startswith('h10/') and not (here/relative).is_file():return here.parents[1]/'scripts/build'/relative
     if relative=='audit_native_elf.py' and not (here/relative).is_file():return here.parents[1]/'scripts/build/audit_native_elf.py'
     return here/relative
+
+
+def validate_installed_handoff(manifest,source_hashes):
+    for target,name in (('/usr/lib/toddy/setup/installer_handoff.py','setup/installer_handoff.py'),
+                        ('/usr/lib/toddy/setup/pending.py','setup/pending.py'),
+                        ('/usr/lib/toddy/shared/json.py','shared/json.py')):
+        if manifest['ownership']['entries'].get(target,{}).get('sha256')!=source_hashes[name]:
+            raise InstallError('installer_composition_installed_handoff_source')
 
 
 def validate_policy(policy,manifest):
@@ -117,11 +125,7 @@ class Composition:
         bundle_namespace(self.bundle,manifest)
         validate_policy(self.policy,manifest)
         if manifest['catalog_sha256']!=descriptor['catalog_sha256']:raise InstallError('installer_composition_catalog')
-        for target,name in (('/usr/lib/toddy/setup/installer_handoff.py','setup/installer_handoff.py'),
-                            ('/usr/lib/toddy/setup/pending.py','setup/pending.py'),
-                            ('/usr/lib/toddy/shared/json.py','shared/json.py')):
-            if manifest['ownership']['entries'].get(target,{}).get('sha256')!=descriptor['source_sha256'][name]:
-                raise InstallError('installer_composition_installed_handoff_source')
+        validate_installed_handoff(manifest,descriptor['source_sha256'])
         self.manifest=manifest
 
     def readiness(self):

@@ -71,10 +71,12 @@ welcome `GeneralRequirements.cpp`. The existing B01 offscreen probe is not a
 native graphical or disk-install test. CMake requires the exact Calamares 3.4.3
 and Qt 6.11.2 inputs. The module has not yet been built or loaded natively.
 
-Upstream launches `pkexec calamares`; the shipped policy authenticates an active
-administrator for the fixed `/usr/bin/calamares`, and its root requirement checks
-effective UID zero. This integration consequently expects a root GUI and does not
-silently replace it with an unprivileged GUI/root helper. The existing QtBase probe
+Upstream launches `pkexec calamares`; its root requirement is implemented by
+welcome/GeneralRequirements. Our custom module sequence does not assume that an
+omitted welcome module enforces root. The fixed authenticated Toddy launcher and
+Python CLI independently require real/effective UID zero. This integration expects
+a root GUI and does not replace it with an unprivileged GUI/root helper or use an
+upstream test/debug bypass. The existing QtBase probe
 recipe disables XCB, and the frozen closure has no qualified QtWayland module.
 The coordinator must qualify the matching Qt 6.11.2 raster Wayland QPA closure and
 measure authenticated Calamares launch in the actual GNOME session before enabling
@@ -90,3 +92,9 @@ version. Exact plugin packaging, display launch, actual EN/PT visuals/scale, app
 slideshow assets, signed composed closure/finalizer qualification, BIOS/UEFI blank
 virtual disks, safe Stop and two detached-media boots remain pending. No host or
 guest disk was modified by the source tests.
+
+The live-only native package/compile/launch wrappers and explicit first-VM
+qualification path are documented in
+[scripts/build/phase2/installer-package.md](../../../scripts/build/phase2/installer-package.md).
+The module ABI probe is a standalone no-write Qt consumer, not an upstream
+nonroot startup/test bypass or a root Wayland result.

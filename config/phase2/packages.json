@@ -105,15 +105,31 @@
       "first_owner_story": "B12",
       "image_scope": "live-only",
       "owns": [
+        "/usr/bin/toddy-installer",
+        "/usr/libexec/toddy-installer-auth",
         "/usr/lib/toddy/installer/",
         "/usr/share/toddy/installer/",
-        "@CALAMARES_MODULE_DIR@/toddy/"
+        "/usr/lib/calamares/modules/toddy/",
+        "/usr/share/calamares/modules/toddy/",
+        "/usr/share/applications/io.github.markaraujo.Toddy.Installer.desktop",
+        "/usr/share/polkit-1/actions/io.github.markaraujo.Toddy.Install.policy",
+        "/usr/share/doc/toddy-installer/"
       ],
       "requires_capabilities": [
+        "toddy-assistant",
         "calamares-native-stack",
-        "native-package-backend"
+        "calamares-branding-toddy",
+        "native-package-backend",
+        "native-policy-authentication"
       ],
       "source_inputs": [
+        "scripts/build/phase2/installer_package.py",
+        "scripts/build/phase2/installer_native.py",
+        "scripts/build/phase2/installer_recipe.json",
+        "runtime/installer/calamares/CMakeLists.txt",
+        "runtime/installer/calamares/ToddyViewStep.cpp",
+        "runtime/installer/calamares/strings.json",
+        "runtime/installer/COMPOSITION.md",
         "assets/brand/installer/motion.json",
         "config/phase2/install-options.json"
       ],
