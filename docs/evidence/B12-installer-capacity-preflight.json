@@ -1,0 +1,573 @@
+{
+  "version": 1,
+  "scope": "read-only development-host candidate audit; no custody execution",
+  "captured_utc": "2026-11-16T14:05:35.561655+00:00",
+  "host_available_bytes": 109322694656,
+  "reserve_bytes": 107911053312,
+  "capacity_goal_bytes": 32212254720,
+  "candidate": {
+    "path": ".local/vm/checkpoints/h07-native-services-target.qcow2",
+    "identity": {
+      "device": 66306,
+      "inode": 11832773,
+      "bytes": 61737336832,
+      "mtime_ns": 1793953144185127409,
+      "ctime_ns": 1793953144185127409,
+      "mode": 33188,
+      "uid": 1000,
+      "gid": 1000,
+      "nlink": 1
+    },
+    "atime_ns": 1794837557833369598,
+    "allocated_bytes": 59699474432,
+    "xattrs": [],
+    "backing": null,
+    "direct_backing_consumer": false,
+    "classification": "superseded historical86-package recovery checkpoint; h07final/h09/currentH13/B02 remain directly available",
+    "historical_checkpoint_sha256": "536109a5db3f6f2c44620c33f954fc2ce96570636c9a6b33bbc1b708e57785fd",
+    "current_whole_sha256": "not-recomputed; mandatory exact historical hash match during actual custody initialization",
+    "qemu_check_command": [
+      "docker",
+      "run",
+      "--rm",
+      "--user",
+      "1000:1000",
+      "--cap-drop=ALL",
+      "--security-opt=no-new-privileges",
+      "--network=none",
+      "--read-only",
+      "-v",
+      "/home/marcos-araujo/Repositories/toddy-os/.local/vm:/vm:ro",
+      "toddy-qemu:h01",
+      "qemu-img",
+      "check",
+      "--output=json",
+      "/vm/checkpoints/h07-native-services-target.qcow2"
+    ],
+    "qemu_check_exit": 0,
+    "qemu_check_result": {
+      "image-end-offset": 61737336832,
+      "total-clusters": 2949120,
+      "check-errors": 0,
+      "allocated-clusters": 941796,
+      "filename": "/vm/checkpoints/h07-native-services-target.qcow2",
+      "format": "qcow2",
+      "fragmented-clusters": 60578
+    }
+  },
+  "alternative": {
+    "path": ".local/vm/checkpoints/h06-ready-before-restore-20261106T021340082469/lfs-target.qcow2",
+    "allocated_bytes": 15202332672,
+    "reason_not_selected": "less than30GiB alone; original name lfs-target.qcow2 is conservatively protected by backing basename graph"
+  },
+  "graph_count": 69,
+  "referenced_basenames": [
+    "builder-base.img",
+    "builder.qcow2",
+    "lfs-target.qcow2",
+    "target.qcow2"
+  ],
+  "graph": [
+    {
+      "path": ".local/vm/builder.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "path": ".local/vm/boot-tests/h09-uefi-l72lz1g0/target.qcow2",
+      "format": "qcow2",
+      "backing": "/checkpoint/target.qcow2"
+    },
+    {
+      "path": ".local/vm/boot-tests/h09-bios-npg59xbb/target.qcow2",
+      "format": "qcow2",
+      "backing": "/checkpoint/target.qcow2"
+    },
+    {
+      "path": ".local/vm/lfs-target.qcow2",
+      "format": "qcow2",
+      "backing": null
+    },
+    {
+      "path": ".local/vm/boot-tests/h09-bios-6ch6utes/target.qcow2",
+      "format": "qcow2",
+      "backing": "/checkpoint/target.qcow2"
+    },
+    {
+      "path": ".local/vm/boot-tests/h09-bios-m2gayrqx/target.qcow2",
+      "format": "qcow2",
+      "backing": "/checkpoint/target.qcow2"
+    },
+    {
+      "path": ".local/vm/checkpoints/h07-native-services-builder.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "path": ".local/vm/checkpoints/h07-native-services-target.qcow2",
+      "format": "qcow2",
+      "backing": null
+    },
+    {
+      "path": ".local/vm/checkpoints/h07-early-base-target.qcow2",
+      "format": "qcow2",
+      "backing": null
+    },
+    {
+      "path": ".local/vm/checkpoints/h04-target.qcow2",
+      "format": "qcow2",
+      "backing": null
+    },
+    {
+      "path": ".local/vm/checkpoints/h06-ready-target.qcow2",
+      "format": "qcow2",
+      "backing": null
+    },
+    {
+      "path": ".local/vm/checkpoints/h07-final-base-builder.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "path": ".local/vm/checkpoints/h09-boot-ready-builder.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "path": ".local/vm/checkpoints/h07-native-crypto-builder.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "path": ".local/vm/checkpoints/h07-native-crypto-target.qcow2",
+      "format": "qcow2",
+      "backing": null
+    },
+    {
+      "path": ".local/vm/checkpoints/h09-boot-ready-target.qcow2",
+      "format": "qcow2",
+      "backing": null
+    },
+    {
+      "path": ".local/vm/checkpoints/h07-final-base-target.qcow2",
+      "format": "qcow2",
+      "backing": null
+    },
+    {
+      "path": ".local/vm/checkpoints/h07-native-math-target.qcow2",
+      "format": "qcow2",
+      "backing": null
+    },
+    {
+      "path": ".local/vm/checkpoints/h05-target.qcow2",
+      "format": "qcow2",
+      "backing": null
+    },
+    {
+      "path": ".local/vm/builder-base.img",
+      "format": "qcow2",
+      "backing": null
+    },
+    {
+      "path": ".local/vm/boot-tests/h09-bios-hj8p9hoa/target.qcow2",
+      "format": "qcow2",
+      "backing": "/checkpoint/target.qcow2"
+    },
+    {
+      "path": ".local/vm/boot-tests/h09-bios-91laxfs7/target.qcow2",
+      "format": "qcow2",
+      "backing": "/checkpoint/target.qcow2"
+    },
+    {
+      "path": ".local/vm/checkpoints/h06-ready-before-restore-20261106T021340082469/lfs-target.qcow2",
+      "format": "qcow2",
+      "backing": null
+    },
+    {
+      "path": ".local/vm/checkpoints/h06-ready-before-restore-20261106T021340082469/builder.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/builder-base.img"
+    },
+    {
+      "path": ".local/vm/boot-tests/h12-recovered-evidence-ni1rgq3u/target.qcow2",
+      "format": "qcow2",
+      "backing": "/checkpoint/target.qcow2"
+    },
+    {
+      "path": ".local/vm/phase2/lfs-target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/vm/phase2/builder.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/builder.qcow2"
+    },
+    {
+      "path": ".local/vm/seed.img",
+      "format": "raw",
+      "backing": null
+    },
+    {
+      "path": ".local/phase2/native-executor-owner-2/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-network-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-desktop-recovery-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/evidence/native-desktop-reboot-runtime-1/target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-control-2/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-desktop-final-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-network-recovery-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/previous/target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-owner-3/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-fuse-portal-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-files-trash-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-owner-6/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-desktop-persist-runtime-2/target.qcow2",
+      "format": "qcow2",
+      "backing": "/evidence/native-desktop-persist-runtime-1/target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-nautilus-runtime-3/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-localsearch-runtime-4/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-desktop-reboot-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/evidence/native-desktop-persist-runtime-2/target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-gdm-seat-runtime-2/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-nautilus-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-recovery-2/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-gdm-seat-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-owner-7/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-desktop-persist-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/evidence/native-fuse-portal-runtime-3/target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-nautilus-runtime-2/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-browser-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-files-gui-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-glycin-runtime-2/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-polkit-suid-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-files-trash-runtime-2/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-broker-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-broker-2/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-owner-5/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-owner-4/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-fuse-portal-runtime-2/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-recovery-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-network-recovery-runtime-2/target.qcow2",
+      "format": "qcow2",
+      "backing": "/previous/target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-control-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-desktop-integration-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-broker-3/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-broker-4/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-fuse-portal-runtime-3/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-editor-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-executor-owner-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    },
+    {
+      "path": ".local/phase2/native-gdm-owner-runtime-1/target.qcow2",
+      "format": "qcow2",
+      "backing": "/vm/phase2/lfs-target.qcow2"
+    }
+  ],
+  "protected_paths": [
+    ".local/vm/builder-base.img",
+    ".local/vm/builder.qcow2",
+    ".local/vm/lfs-target.qcow2",
+    ".local/vm/phase2/builder.qcow2",
+    ".local/vm/phase2/lfs-target.qcow2",
+    ".local/vm/checkpoints/h07-final-base-builder.qcow2",
+    ".local/vm/checkpoints/h07-final-base-target.qcow2",
+    ".local/vm/checkpoints/h09-boot-ready-builder.qcow2",
+    ".local/vm/checkpoints/h09-boot-ready-target.qcow2"
+  ],
+  "existing_receipts_unchanged": [
+    {
+      "path": ".local/phase2/cold-math-chunk-custody-1/result.json",
+      "state": "complete",
+      "sha256": "749e2f11183be5284e03333b7ed60e45013bbedbe6cae79c3f88f1ed7452c1ef",
+      "source_sha256": "d459b8b371927cfc7dfbe47d101014f8880466f41d8498978f30fe1a88cd1b0f"
+    },
+    {
+      "path": ".local/phase2/cold-firefox-chunk-custody-1/result.json",
+      "state": "complete",
+      "sha256": "4f559d4b0847bbf08c982b11534b36e4f00111c19391110bc6dfcb8b6a7cbfcd",
+      "source_sha256": "6b8f1ad2736c8f7a4f02f361272c1e27ca151ff76b59bcee70fed8f7a7c3c8e1"
+    },
+    {
+      "path": ".local/phase2/cold-native-chunk-custody-1/result.json",
+      "state": "complete",
+      "sha256": "f327d5828d23ff5be1978eb7a9776dbaeb9d3850fa7b3fc5ce40a1febdb585e8",
+      "source_sha256": "7f4af9ce2e3002dff261b64035f1ab9b6f4ce1d28112fae00a270704fd686dab"
+    }
+  ],
+  "custody_executed": false,
+  "actual_reclaimed_bytes": 0,
+  "required_before_execution": [
+    "coordinator confirms no guest writer using native-boot-test/cold-compression locks",
+    "fresh graph and fixed file identity/xattr check",
+    "qemu-img check under read-only backing namespace",
+    "exclusive source lock and current whole SHA256",
+    "profile producer fixed for interruption/resume",
+    "actual reserve and per-chunk manifest/fsync/reconstruction guarantees"
+  ],
+  "protected_checkpoint_identities": {
+    ".local/vm/builder-base.img": {
+      "device": 66306,
+      "inode": 11804690,
+      "bytes": 621284352,
+      "mtime_ns": 1793928018408753303,
+      "ctime_ns": 1793928018411753274,
+      "mode": 33204,
+      "uid": 1000,
+      "gid": 1000,
+      "nlink": 1
+    },
+    ".local/vm/builder.qcow2": {
+      "device": 66306,
+      "inode": 11830577,
+      "bytes": 9028042752,
+      "mtime_ns": 1794059920316531235,
+      "ctime_ns": 1794059920316531235,
+      "mode": 33188,
+      "uid": 1000,
+      "gid": 1000,
+      "nlink": 1
+    },
+    ".local/vm/lfs-target.qcow2": {
+      "device": 66306,
+      "inode": 11804698,
+      "bytes": 139424366592,
+      "mtime_ns": 1794059920113533485,
+      "ctime_ns": 1794059920113533485,
+      "mode": 33188,
+      "uid": 1000,
+      "gid": 1000,
+      "nlink": 1
+    },
+    ".local/vm/phase2/builder.qcow2": {
+      "device": 66306,
+      "inode": 11929204,
+      "bytes": 15677325312,
+      "mtime_ns": 1794410946714150737,
+      "ctime_ns": 1794410946714150737,
+      "mode": 33188,
+      "uid": 1000,
+      "gid": 1000,
+      "nlink": 1
+    },
+    ".local/vm/phase2/lfs-target.qcow2": {
+      "device": 66306,
+      "inode": 11929205,
+      "bytes": 54090596352,
+      "mtime_ns": 1794410946527152991,
+      "ctime_ns": 1794410946527152991,
+      "mode": 33188,
+      "uid": 1000,
+      "gid": 1000,
+      "nlink": 1
+    },
+    ".local/vm/checkpoints/h07-final-base-builder.qcow2": {
+      "device": 66306,
+      "inode": 11833468,
+      "bytes": 6496976896,
+      "mtime_ns": 1794051806355006514,
+      "ctime_ns": 1794051806355006514,
+      "mode": 33188,
+      "uid": 1000,
+      "gid": 1000,
+      "nlink": 1
+    },
+    ".local/vm/checkpoints/h07-final-base-target.qcow2": {
+      "device": 66306,
+      "inode": 11835786,
+      "bytes": 100395450368,
+      "mtime_ns": 1794051884219168023,
+      "ctime_ns": 1794051884219168023,
+      "mode": 33188,
+      "uid": 1000,
+      "gid": 1000,
+      "nlink": 1
+    },
+    ".local/vm/checkpoints/h09-boot-ready-builder.qcow2": {
+      "device": 66306,
+      "inode": 11835845,
+      "bytes": 6497894400,
+      "mtime_ns": 1794052904679800038,
+      "ctime_ns": 1794052904679800038,
+      "mode": 33188,
+      "uid": 1000,
+      "gid": 1000,
+      "nlink": 1
+    },
+    ".local/vm/checkpoints/h09-boot-ready-target.qcow2": {
+      "device": 66306,
+      "inode": 11835846,
+      "bytes": 100689117184,
+      "mtime_ns": 1794052992883663073,
+      "ctime_ns": 1794052992883663073,
+      "mode": 33188,
+      "uid": 1000,
+      "gid": 1000,
+      "nlink": 1
+    }
+  },
+  "focused_check": {
+    "command": "python3 -m unittest tests.test_phase2_chunk_custody -v",
+    "result": "passed",
+    "checks": 5,
+    "elapsed_seconds": 0.006
+  },
+  "repository_check": {
+    "command": "make check",
+    "result": "passed",
+    "checks": 577,
+    "elapsed_seconds": 10.396
+  },
+  "old_receipts_hashes_rechecked_after_preparation": true,
+  "protected_checkpoint_identities_rechecked_after_preparation": true
+}

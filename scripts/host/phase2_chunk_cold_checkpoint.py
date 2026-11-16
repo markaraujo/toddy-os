@@ -24,7 +24,13 @@ PROFILES = {
                          (11832380, 34298068992, 1793940369084300644)),
     'native-capacity': ('h07-gcc-tested-builder.qcow2', 'cold-native-chunk-custody-1',
                         (11832378, 5949423616, 1793940344780548431)),
+    'installer-capacity': ('h07-native-services-target.qcow2', 'cold-installer-chunk-custody-1',
+                           (11832773, 61737336832, 1793953144185127409)),
 }
+
+
+# Preserve graphical margin for the new selection; prior profiles unchanged.
+PROFILE_RESERVES = {'installer-capacity': RESERVE + 512 * 1024**2}
 
 
 def save(directory, state):
@@ -191,6 +197,11 @@ def main():
                  'host_available_before': shutil.disk_usage(root).free,
                  'qemu_check_exit': checked.returncode, 'qemu_check_stdout': checked.stdout,
                  'scope': 'Explicit unreferenced cold backup only; exact bytes retained, no active target/backing/master change'}
+        if args.profile == 'installer-capacity':
+            # Superseded recovery checkpoint: retain exact historical bytes.
+            assert state['source_sha256'] == '536109a5db3f6f2c44620c33f954fc2ce96570636c9a6b33bbc1b708e57785fd'
+            state['atime_ns'] = original.st_atime_ns
+            state['xattrs'] = {}  # Fixed preflight already refuses any xattr.
         (directory / 'graph-before.json').write_text(json.dumps(graph, indent=2) + '\n')
         save(directory, state)
         assert cold.identity(source.stat()) == state['identity']
@@ -207,7 +218,7 @@ def main():
         assert NAME not in cold.referenced_backings()[0]
         state['state'] = 'compressing'
         save(directory, state)
-        process(directory, state, fd)
+        process(directory, state, fd, reserve=PROFILE_RESERVES.get(args.profile, RESERVE))
     finally:
         os.close(fd)
     print(json.dumps({k: state[k] for k in ['state', 'bytes', 'source_sha256', 'host_available_before', 'host_available_after']}))
