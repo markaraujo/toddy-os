@@ -5,6 +5,7 @@ completion onto the main loop. This module imports no GTK, model or root policy.
 """
 import os
 import re
+import threading
 
 IDS = re.compile(r'[a-zA-Z0-9_-]{1,80}\Z')
 ADAPTERS = {'openai','anthropic','openrouter','openai-compatible'}
@@ -41,6 +42,10 @@ class LibsecretBackend:
         self.cancellable=Gio.Cancellable()
         self.schema=Secret.Schema.new(SCHEMA_NAME,Secret.SchemaFlags.NONE,
             {key:Secret.SchemaAttributeType.STRING for key in ('profile_id','connection_ref','adapter_id')})
+
+    def begin_request(self):
+        self.cancellable=self.Gio.Cancellable()
+        return self.cancellable
 
     def cancel(self):
         self.cancellable.cancel()
@@ -130,7 +135,21 @@ class ProtectedStore:
                 if hasattr(self.backend,'cancel'):
                     self.backend.cancel()
                 raise CredentialError('credential_canceled')
-            return getattr(self.backend,method)(*args)
+            request=self.backend.begin_request() if hasattr(self.backend,'begin_request') else None
+            timer=threading.Timer(2.0,request.cancel) if request is not None else None
+            if self.canceled:
+                if request is not None: request.cancel()
+                raise CredentialError('credential_canceled')
+            if timer is not None:
+                timer.daemon=True
+                timer.start()
+            try:
+                result=getattr(self.backend,method)(*args)
+                if request is not None and request.is_cancelled():
+                    raise CredentialError('credential_store_unavailable')
+                return result
+            finally:
+                if timer is not None: timer.cancel()
         except CredentialError:
             raise
         except Exception:

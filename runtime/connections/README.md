@@ -7,6 +7,11 @@ Missing libsecret/keyring support therefore does not break deferred/offline setu
 No environment/file/plain-text fallback, credential export or provider activation
 is implemented.
 
+Each operation has its own two-second Gio.Cancellable deadline. This remains a
+worker-thread API: capability discovery must use cached state rather than blocking
+the session/UI main loop or repeatedly reading a key. A deadline after a committed
+store is an unknown outcome; inspect through the protected store before retry.
+
 Worker-thread interface:
 
 ```python

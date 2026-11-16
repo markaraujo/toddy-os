@@ -93,6 +93,23 @@ class CredentialTests(unittest.TestCase):
         with self.assertRaisesRegex(CredentialError,'credential_store_busy'):
             client.save(*self.args,'dummy')
 
+    def test_libsecret_request_deadline_is_bound_to_its_own_cancellable(self):
+        backend=FakeStore()
+        request=mock.Mock()
+        request.is_cancelled.return_value=False
+        backend.begin_request=lambda:request
+        store=ProtectedStore(backend)
+        with mock.patch('runtime.connections.secret_store.threading.Timer') as timer:
+            self.assertTrue(store.save(*self.args,'dummy'))
+        self.assertEqual(timer.call_args.args[0],2.0)
+        self.assertEqual(timer.call_args.args[1],request.cancel)
+        timer.return_value.start.assert_called_once()
+        timer.return_value.cancel.assert_called_once()
+        request.is_cancelled.return_value=True
+        with mock.patch('runtime.connections.secret_store.threading.Timer'):
+            with self.assertRaisesRegex(CredentialError,'credential_store_unavailable'):
+                store.lookup(*self.args)
+
     def test_libsecret_lookup_never_requests_unlock_and_rejects_ambiguous_items(self):
         # Exercise actual adapter selection logic with a synthetic libsecret API.
         backend=LibsecretBackend.__new__(LibsecretBackend)
