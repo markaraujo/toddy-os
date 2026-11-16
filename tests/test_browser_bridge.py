@@ -114,6 +114,31 @@ print(json.dumps({'untrusted':True,'browser_pid':int(sys.argv[1]),'url':sys.argv
     def launch(self):
         return self.session.launch(self.page, expected_sha256=self.sha, authorize=lambda _: True)
 
+    def test_fast_stop_cannot_be_cleared_by_a_queued_launch(self):
+        self.session.request_stop()
+        with self.assertRaisesRegex(BrowserError,'stopped'):
+            self.launch()
+        self.assertIsNone(self.session._browser)
+        self.assertIsNone(self.session._temporary)
+
+    def test_only_explicit_document_not_ready_retries_under_one_deadline(self):
+        self.reader.write_text('''import json,os,pathlib,sys
+marker=pathlib.Path(os.environ['HOME'])/'readiness-attempt'
+if not marker.exists():
+ marker.write_text('not-ready-once')
+ print(json.dumps({'error':'browser_document_not_ready'}))
+ sys.exit(2)
+print(json.dumps({'untrusted':True,'browser_pid':int(sys.argv[1]),'url':sys.argv[2],'text':'Process fixture after native-ready signal.'}))
+''')
+        self.launch()
+        self.assertEqual(self.session.read(authorize=lambda _:True,timeout=1)['text'],
+            'Process fixture after native-ready signal.')
+        self.reader.write_text('''import json,sys
+print(json.dumps({'error':'browser_document_not_ready'}));sys.exit(2)
+''')
+        with self.assertRaisesRegex(BrowserError,'timeout'):
+            self.session.read(authorize=lambda _:True,timeout=.15)
+
     def test_explicit_opt_in_and_fresh_profile_do_not_copy_owner_credentials(self):
         with self.assertRaisesRegex(BrowserError, 'opt_in'):
             self.session.launch(self.page, expected_sha256=self.sha, authorize=lambda _: False)

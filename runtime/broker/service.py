@@ -35,7 +35,7 @@ from memory_control import MemoryControl
 from automation import Automation, AutomationError, DesktopNotifier, ACTIONS
 from automation_control import AutomationControl, StandingPolicy
 from scheduler import ScheduleError
-from integrations import Integrations, IntegrationCatalog, IntegrationError, MCP_ID, MCP_TOOL
+from integrations import Integrations, IntegrationCatalog, IntegrationError, MCP_ID, MCP_TOOL, BROWSER_ID, BROWSER_TOOL
 
 BUS = 'io.github.markaraujo.Toddy.Service'
 OBJECT = '/io/github/markaraujo/Toddy/Service'
@@ -169,8 +169,9 @@ def main():
         if path.is_file() and not path.is_symlink():files[path.relative_to(template).as_posix()]=path.read_bytes()
     integration_catalog=IntegrationCatalog()
     installed_release=integration_catalog.available()
-    capabilities={'adapters':ADAPTERS,'tools':NATIVE_TOOLS | ({MCP_TOOL} if installed_release else set()),
-        'skills':{'explain-system'},'extensions':{MCP_ID} if installed_release else set(),'workflows':ACTIONS}
+    installed_browser=integration_catalog.browser_available()
+    capabilities={'adapters':ADAPTERS,'tools':NATIVE_TOOLS | ({MCP_TOOL} if installed_release else set()) | ({BROWSER_TOOL} if installed_browser else set()),
+        'skills':{'explain-system'},'extensions':({MCP_ID} if installed_release else set()) | ({BROWSER_ID} if installed_browser else set()),'workflows':ACTIONS}
     legacy=ProfileStore(args.data_dir,'toddy-default',schema,capabilities=capabilities)
     if legacy.current() is None:legacy.apply(files,expected_revision=None)
     registry=ProfileRegistry(registry_directory,schema,files,capabilities=capabilities,

@@ -38,6 +38,8 @@ class BrowserSession:
 
     def launch(self, local_page, *, expected_sha256, authorize):
         with self._lock:
+            if self._stopped.is_set():
+                raise BrowserError('browser_stopped')
             if not authorize('browser.local.read'):
                 raise BrowserError('browser_opt_in_required')
             if self._temporary is not None:
@@ -83,7 +85,6 @@ class BrowserSession:
                 'XDG_CACHE_HOME': str(root / 'cache'), 'XDG_DATA_HOME': str(root / 'data'),
                 'PATH': '/usr/bin:/bin', 'MOZ_NO_REMOTE': '1', 'MOZ_ENABLE_WAYLAND': '1'})
             self._environment = env
-            self._stopped.clear()
             try:
                 self._browser = subprocess.Popen([self.firefox, '--no-remote', '--new-instance',
                     '--profile', str(profile), self._url], env=env, stdin=subprocess.DEVNULL,
@@ -95,73 +96,74 @@ class BrowserSession:
             return {'browser_pid': self._browser.pid, 'url': self._url,
                     'fresh_profile': True, 'accessibility_read': 'pending'}
 
+    def _attempt(self,pid,url,deadline):
+        process=None
+        try:
+            with self._lock:
+                if self._stopped.is_set():raise BrowserError('browser_stopped')
+                try:
+                    process=subprocess.Popen([*self.reader,str(pid),url],env=self._environment,
+                        stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,
+                        close_fds=True,start_new_session=True,bufsize=0)
+                except OSError as exc:raise BrowserError('browser_accessibility_worker_unavailable') from exc
+                self._reader=process
+            output=bytearray()
+            while True:
+                if self._stopped.is_set():raise BrowserError('browser_stopped')
+                if time.monotonic()>=deadline:raise BrowserError('browser_accessibility_timeout')
+                if not select.select([process.stdout],[],[],.02)[0]:continue
+                chunk=os.read(process.stdout.fileno(),4096)
+                if not chunk:break
+                output.extend(chunk)
+                if len(output)>256*1024:raise BrowserError('browser_accessibility_output_limit')
+            process.wait(timeout=max(.01,deadline-time.monotonic()))
+            if process.returncode:
+                try:error=json.loads(output.decode('utf-8',errors='strict'))
+                except (ValueError,UnicodeError):error=None
+                if process.returncode==2 and error=={'error':'browser_document_not_ready'}:
+                    raise BrowserError('browser_document_not_ready')
+                raise BrowserError('browser_scoped_accessibility_unavailable')
+            try:return json.loads(output.decode('utf-8',errors='strict'))
+            except (ValueError,UnicodeError) as exc:raise BrowserError('browser_accessibility_invalid_result') from exc
+        finally:
+            if process is not None:
+                self._terminate(process);process.stdout.close()
+            with self._lock:self._reader=None
+
     def read(self, *, authorize, timeout=3):
-        if isinstance(timeout, bool) or not isinstance(timeout, (int, float)) or not .05 <= timeout <= 10:
+        if isinstance(timeout,bool) or not isinstance(timeout,(int,float)) or not .05<=timeout<=10:
             raise BrowserError('browser_deadline')
-        if not self._read_lock.acquire(blocking=False):
-            raise BrowserError('browser_read_busy')
-        process = None
+        if not self._read_lock.acquire(blocking=False):raise BrowserError('browser_read_busy')
         try:
             with self._lock:
                 if not authorize('browser.local.read'):
-                    self.stop()
-                    raise BrowserError('browser_current_authorization_required')
+                    self.stop();raise BrowserError('browser_current_authorization_required')
                 if self._stopped.is_set() or self._browser is None or self._browser.poll() is not None:
                     raise BrowserError('browser_not_running')
-                pid, url = self._browser.pid, self._url
-                try:
-                    process = subprocess.Popen([*self.reader, str(pid), url], env=self._environment,
-                        stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
-                        close_fds=True, start_new_session=True, bufsize=0)
-                except OSError as exc:
-                    raise BrowserError('browser_accessibility_worker_unavailable') from exc
-                self._reader = process
-            deadline = time.monotonic() + timeout
-            output = bytearray()
+                pid,url=self._browser.pid,self._url
+            deadline=time.monotonic()+timeout
             while True:
-                if self._stopped.is_set():
-                    raise BrowserError('browser_stopped')
-                if time.monotonic() >= deadline:
-                    raise BrowserError('browser_accessibility_timeout')
-                if not select.select([process.stdout], [], [], .02)[0]:
+                if not authorize('browser.local.read'):
+                    self.stop();raise BrowserError('browser_current_authorization_required')
+                try:result=self._attempt(pid,url,deadline)
+                except BrowserError as exc:
+                    if str(exc)!='browser_document_not_ready':raise
+                    if self._stopped.wait(.05):raise BrowserError('browser_stopped')
+                    if time.monotonic()>=deadline:raise BrowserError('browser_accessibility_timeout')
                     continue
-                chunk = os.read(process.stdout.fileno(), 4096)
-                if not chunk:
-                    break
-                output.extend(chunk)
-                # 32 KiB of text may use six-byte JSON escapes per character.
-                if len(output) > 256 * 1024:
-                    raise BrowserError('browser_accessibility_output_limit')
-            process.wait(timeout=max(.01, deadline - time.monotonic()))
-            if process.returncode:
-                raise BrowserError('browser_scoped_accessibility_unavailable')
-            try:
-                result = json.loads(output.decode('utf-8', errors='strict'))
-            except (ValueError, UnicodeError) as exc:
-                raise BrowserError('browser_accessibility_invalid_result') from exc
-            if not isinstance(result, dict) or set(result) != {'untrusted', 'browser_pid', 'url', 'text'} or result['untrusted'] is not True or type(result['browser_pid']) is not int or result['browser_pid'] != pid or result['url'] != url or not isinstance(result['text'], str):
+                break
+            if not isinstance(result,dict) or set(result)!={'untrusted','browser_pid','url','text'} or result['untrusted'] is not True or type(result['browser_pid']) is not int or result['browser_pid']!=pid or result['url']!=url or not isinstance(result['text'],str):
                 raise BrowserError('browser_accessibility_scope')
             try:
-                if len(result['text'].encode('utf-8', errors='strict')) > 32768:
+                if len(result['text'].encode('utf-8',errors='strict'))>32768:
                     raise BrowserError('browser_accessibility_text_limit')
-            except UnicodeError as exc:
-                raise BrowserError('browser_accessibility_invalid_result') from exc
+            except UnicodeError as exc:raise BrowserError('browser_accessibility_invalid_result') from exc
             with self._lock:
-                if self._stopped.is_set() or self._browser.poll() is not None:
-                    raise BrowserError('browser_stopped')
+                if self._stopped.is_set() or self._browser.poll() is not None:raise BrowserError('browser_stopped')
                 if not authorize('browser.local.read'):
-                    self.stop()
-                    raise BrowserError('browser_current_authorization_required')
+                    self.stop();raise BrowserError('browser_current_authorization_required')
             return result
-        finally:
-            try:
-                if process is not None:
-                    self._terminate(process)
-                    process.stdout.close()
-            finally:
-                with self._lock:
-                    self._reader = None
-                self._read_lock.release()
+        finally:self._read_lock.release()
 
     def _terminate(self, process):
         if process.poll() is None:
@@ -180,6 +182,19 @@ class BrowserSession:
                     process.wait(timeout=1)
                 except subprocess.TimeoutExpired as exc:
                     raise BrowserError('browser_stop_uncertain') from exc
+
+    def request_stop(self):
+        """Fast cancellation barrier; worker finally owns bounded reap/cleanup.
+
+        A stopped instance cannot clear this barrier by a queued launch. New
+        explicit browser work creates a fresh BrowserSession instead.
+        """
+        self._stopped.set()
+        with self._lock:
+            for process in (self._reader,self._browser):
+                if process is not None and process.poll() is None:
+                    try:os.killpg(process.pid,signal.SIGTERM)
+                    except ProcessLookupError:pass
 
     def stop(self):
         with self._lock:

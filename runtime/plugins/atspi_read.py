@@ -85,8 +85,9 @@ def main():
         # deadline and discards stderr so private desktop data cannot leak there.
         Atspi.set_timeout(1000, 1000)
         result = read_document(Atspi.get_desktop(0), int(sys.argv[1]), sys.argv[2])
-    except Exception:
-        print(json.dumps({'error': 'browser_scoped_accessibility_unavailable'}))
+    except Exception as exc:
+        code='browser_document_not_ready' if isinstance(exc,ValueError) and str(exc)=='browser_scoped_document_not_ready' else 'browser_scoped_accessibility_unavailable'
+        print(json.dumps({'error': code}))
         return 2
     print(json.dumps(result, ensure_ascii=False, allow_nan=False))
     return 0

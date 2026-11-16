@@ -115,3 +115,53 @@ service/XML. Optional backend modules are plugins/mcp.py, limits.py and skills.p
 missing optional backend cannot prevent the ordinary broker from starting.
 Browser native launch/accessibility is a separate optional integration slice.
 No guest, provider account or native acceptance is claimed by this commit.
+
+## Optional native browser binding
+
+`browser-local-read({page_id:"desktop-guide"})` is now a fixed ConfiguredEngine
+and broker tool. It is unavailable by default and needs both current profile
+`extensions.enabled`/`tools.enabled` opt-in and independent owner activation.
+It shares the bounded owner ConfigureIntegration method, with id
+browser-local-read. The shown `manifest_sha256` for this adapter is the SHA256 of
+its complete reviewed native-input receipt, binding the browser, reader, page and
+qualification together. Updating any of them requires a new explicit activation;
+an old pin does not authorize a replacement. Revoke is scoped to the selected
+integration, while normal task/service Stop reaches every owned active process.
+
+The production receipt is the fixed root-owned private-to-writes file
+`/usr/share/toddy/plugins/browser-local-read.receipt.json`. Its exact fields are
+receipt_version (integer 1), id (browser-local-read), qualified (literal true),
+package_version, firefox_version (the frozen 153.7.0esr), and six SHA256 values:
+package_archive_sha256, firefox_component_record_sha256,
+browser_evidence_sha256, firefox_sha256, reader_sha256 and page_sha256.
+The trusted native package transaction generates it only after actual Firefox/
+AT-SPI qualification and complete Firefox package record verification. The three
+actual fixed files are independently hash/custody checked before availability:
+
+- `/usr/lib/firefox/firefox` (the accepted canonical executable, not a profile command).
+- `/usr/lib/toddy/plugins/atspi_read.py` (trusted native accessibility worker).
+- `/usr/lib/toddy/plugins/bundled/browser-local-read/page.html` (harmless local guide).
+
+No JSON/CLI chooses an executable, URL, owner profile, cookie store or page path.
+The existing BrowserSession launches the native browser with a fresh private
+HOME/profile and scoped AT-SPI reader. HTTP fetch/static-file fallback, debug
+ports, login, click/type and owner browser credential import remain unsupported.
+This is a trusted native-browser profile boundary, not the Bubblewrap boundary
+for unknown plugin code. It does not claim general network denial for Firefox.
+
+One fresh session exists per tool call and is stopped/reaped before return; its
+private profile is removed. Browser/page text is untrusted even when it requests
+privileges. The fast request_stop barrier cannot be cleared by queued launch;
+new explicit work needs a new BrowserSession. The reader retries only its exact
+trusted document-not-ready condition under the same total deadline, so cold
+browser startup can become ready without retrying arbitrary errors or navigating
+again. Missing/ambiguous/wrong PID or DocURL never falls back to unrelated desktop
+text. Scope/read errors and exhausted readiness deadline fail clearly.
+
+Added host checks use actual child **process fixtures** and a scoped reader
+fixture, plus the existing synthetic AT-SPI tree checks. They prove opt-in,
+source-pin/owner/revoke denial, fixed-page routing, readiness bounds, fresh
+profile handling, Stop and cleanup. They are not real Firefox recognition,
+AT-SPI display, native package or S25/B10 acceptance. Parent native proof still
+needs the actual frozen Firefox, harmless guide, selected task/profile, visible
+Stop/error and output scope, then root-generated qualification receipt.
