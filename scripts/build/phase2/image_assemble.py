@@ -111,10 +111,12 @@ def root_storage_budget(kind,manifest,block):
 
 class AssemblyRoot:
     """One fixed, new same-filesystem generation; inode-pinned across commands."""
-    def __init__(self, kind, manifest):
+    def __init__(self, kind, manifest, *, planned_adoption=False):
         if kind not in GENERATIONS:
             raise ValueError('Unknown fixed image profile')
         check_delivery_kind(kind,manifest)
+        if type(planned_adoption) is not bool or planned_adoption and kind not in ('mvp-base','mvp-live'):raise ValueError('Planned adoption requires fixed MVP first candidate')
+        self.planned_adoption=planned_adoption;self.allocation_factor=1 if planned_adoption else 3
         self.work = STAGE/GENERATIONS[kind][0]
         self.root = self.work/(reviewed_root_name(kind) if kind.endswith('-reviewed') else 'root')
         parent = STAGE.lstat()
@@ -124,12 +126,12 @@ class AssemblyRoot:
         if os.path.lexists(self.work):
             raise ValueError('Preserve existing/uncertain native assembly generation')
         self.storage_budget=root_storage_budget(kind,manifest,os.statvfs(STAGE).f_frsize)
-        # Keep the existing three-copy envelope and fixed margin. Replace only
-        # its underestimated logical byte input with measured allocation bounds.
-        self.required = RESERVE + 3*self.storage_budget['root_bound_bytes'] + self.storage_budget['fixed_filesystem_and_generated_headroom_bytes']
+        # Standard/fresh-finalize retains three copies. Explicit planned MVP
+        # adoption needs one measured root; both preserve the reserve and margin.
+        self.required = RESERVE + self.allocation_factor*self.storage_budget['root_bound_bytes'] + self.storage_budget['fixed_filesystem_and_generated_headroom_bytes']
         space = os.statvfs(STAGE)
         if space.f_bavail*space.f_frsize < self.required:
-            raise ValueError('Native assembly capacity requires16GiB plus3xpayload plus512MiB')
+            raise ValueError(f'Native assembly capacity requires16GiB plus{self.allocation_factor}xpayload plus512MiB')
         self.work.mkdir(mode=0o700); self.root.mkdir(mode=0o755); self.root.chmod(0o755)
         # Match the explicit empty ext4 directory expected in installed roots.
         # This stages declared bytes/metadata; it is not a filesystem proof.
@@ -171,7 +173,8 @@ def unpack_native(bundle, manifest_sha256, assembly, system):
     archives = [str(bundle/'archives'/row['archive']) for row in manifest['components']]
     intent = {'version':1, 'state':'unpack-intended', 'kind':'candidate-unqualified-root',
         'manifest_sha256':manifest_sha256, 'root':str(assembly.root),
-        'required_bytes':assembly.required, 'storage_budget':assembly.storage_budget, 'assembly_pin':list(assembly.pin), 'production_ready':False,
+        'required_bytes':assembly.required, 'storage_budget':assembly.storage_budget, 'planned_adoption':getattr(assembly,'planned_adoption',False) is True,
+        'allocation_factor':1 if getattr(assembly,'planned_adoption',False) is True else 3, 'assembly_pin':list(assembly.pin), 'production_ready':False,
         'native_boot_verified':False}
     write(assembly.work/'unpack-intent.json', intent)
     log = '--log='+str(assembly.work/'dpkg.log')
@@ -274,6 +277,107 @@ def finalize_native(kind, system):
     return result
 
 
+def synthetic_accounts(root,inputs):
+    from runtime.installer.native_finalizer import account_files
+    p=payload_module();files=account_files(inputs.policy['accounts'])
+    if set(files)!={'etc/passwd','etc/group','etc/shadow','etc/gshadow','etc/subuid','etc/subgid','etc/machine-id'}:raise ValueError('Only seven synthetic account files may be reset')
+    for relative,(data,mode) in files.items():
+        virtual='/'+relative;path=Path(root)/relative;info=path.lstat()
+        expected={'mode':stat.S_IFREG|mode,'uid':0,'gid':0,'sha256':__import__('hashlib').sha256(data).hexdigest(),'origin':'fresh-system-accounts'}
+        if (virtual in inputs.manifest['ownership']['entries'] or inputs.generated.get(virtual)!=expected or
+                path.parent.resolve()!=path.parent or not stat.S_ISREG(info.st_mode) or info.st_mode!=expected['mode'] or
+                info.st_uid or info.st_gid or info.st_nlink!=1 or info.st_dev!=Path(root).stat().st_dev or path.read_bytes()!=data):
+            raise ValueError('Synthetic account reset lacks exact policy bytes/metadata/origin')
+    return [Path(root)/relative for relative in files]
+
+
+def synthetic_loader(root,inputs,candidate):
+    p=payload_module();virtual='/etc/ld.so.cache';path=Path(root)/virtual.lstrip('/');info=path.lstat();loader=candidate.get('loader') or {}
+    expected={'mode':stat.S_IFREG|0o644,'uid':0,'gid':0,'sha256':loader.get('sha256'),'origin':'generated-caches'}
+    if (virtual in inputs.manifest['ownership']['entries'] or inputs.generated.get(virtual)!=expected or
+            loader.get('output')!=virtual or loader.get('generator')!='/usr/sbin/ldconfig' or loader.get('flags')!=['-X','-i'] or
+            not inputs.manifest['ownership']['entries'].get('/usr/sbin/ldconfig',{}).get('sha256') or
+            loader.get('generator_sha256')!=inputs.manifest['ownership']['entries'].get('/usr/sbin/ldconfig',{}).get('sha256') or
+            loader.get('source_cache_copied') is not False or loader.get('package_inputs_unchanged') is not True or
+            path.parent.resolve()!=path.parent or info.st_mode!=stat.S_IFREG|0o644 or info.st_uid or info.st_gid or info.st_nlink!=1 or
+            info.st_dev!=Path(root).stat().st_dev or p.digest(path)!=expected['sha256']):raise ValueError('Synthetic loader reset lacks exact native receipt/ownership proof')
+    return path
+
+
+def adopt_finalize_mvp(kind,system):
+    """MVP only: move one qualified inode, then run the unchanged real finalizer."""
+    from runtime.installer.native_finalizer import NativeFinalizer
+    from runtime.installer.composition import validate_finalizer_report
+    if kind not in ('mvp-base','mvp-live'):raise ValueError('Only explicit MVP adoption profiles')
+    work=STAGE/GENERATIONS[kind+'-reviewed'][0];source_work=STAGE/GENERATIONS[kind][0]
+    if os.path.lexists(work) or os.path.lexists(source_work/'adoption-intent.json'):raise ValueError('Preserve uncertain adoption; no replay')
+    p=payload_module();inputs=ReviewedInputs(kind);check_delivery_kind(kind,inputs.manifest);system.require_root()
+    sha=inputs.descriptor['payload_manifest_sha256'];source=adopt_unpacked(kind,inputs.manifest,sha,system)
+    def read(path):return p.strict(secured(path).read_bytes())
+    def sync(directory):
+        fd=os.open(directory,os.O_DIRECTORY)
+        try:os.fsync(fd)
+        finally:os.close(fd)
+    def durable(path,value):write(path,value);sync(Path(path).parent)
+    unpack=read(source.work/'unpack-intent.json');candidate=read(source.work/'candidate-resource-receipt.json')
+    if unpack.get('planned_adoption') is not True or unpack.get('allocation_factor')!=1:raise ValueError('Candidate must have explicit planned-adoption allocation')
+    if (candidate.get('state')!='native-candidate-awaiting-independent-review' or candidate.get('blockers')!=[] or
+            candidate.get('manifest_sha256')!=sha or candidate.get('policy_sha256')!=inputs.descriptor['policy_sha256'] or
+            candidate.get('root_inode')!=source.root.stat().st_ino or candidate.get('root_device')!=source.root.stat().st_dev or
+            candidate.get('source_sha256')!=p.digest(ROOT/'scripts/build/phase2/resource_recipe.py')):raise ValueError('Actual current zero-blocker candidate required')
+    for old,new,field in (('candidate-generated-entries.json','generated-entries.json','generated_entries_sha256'),('candidate-clean-image-manifest.json','expected-image-manifest.json','candidate_image_manifest_sha256')):
+        if p.digest(secured(source.work/old))!=inputs.pins[new] or candidate.get(field)!=inputs.pins[new]:raise ValueError('Independent reviewed candidate maps differ')
+    image=p.PreparedPayload.audit_tree(source.root,inputs.manifest,inputs.generated)
+    image_sha=__import__('hashlib').sha256(p.encoded(image)).hexdigest()
+    if image_sha!=inputs.descriptor['image_manifest_sha256']:raise ValueError('Candidate whole image differs before adoption')
+    synthetic_accounts(source.root,inputs);synthetic_loader(source.root,inputs,candidate)
+    work=STAGE/GENERATIONS[kind+'-reviewed'][0];destination=work/reviewed_root_name(kind)
+    intent_path=source.work/'adoption-intent.json';run=Path('/run/toddy-installer')/('finalization-'+destination.name)
+    if os.path.lexists(work) or os.path.lexists(intent_path) or os.path.lexists(run):raise ValueError('Preserve existing/uncertain adoption/finalizer; no replay')
+    if os.statvfs(STAGE).f_bavail*os.statvfs(STAGE).f_frsize<RESERVE+512*1024**2:raise ValueError('Adoption requires16GiB reserve plus512MiB generated margin')
+    run.parent.mkdir(mode=0o700,exist_ok=True);private_directory(run.parent,0o700)
+    finalizer=NativeFinalizer(inputs,system)
+    native=p.PreparedPayload(inputs.bundle,manifest_sha256=sha,runner=system,finalizer=finalizer)
+    plan={'payload':{'sha256':sha,'catalog_sha256':inputs.manifest['catalog_sha256'],'bytes':inputs.manifest['bytes']}}
+    native.verify_payload(plan);inputs.recheck();source.recheck()
+    journals={name:p.digest(secured(source.work/name)) for name in ('unpack-intent.json','unpacked.json','dpkg.log','resource-intent.json','candidate-resource-receipt.json','candidate-generated-entries.json','candidate-clean-image-manifest.json')}
+    intent={'version':1,'state':'same-inode-MVP-adoption-intended-no-replay','delivery_class':MVP_CLASS,'g2_eligible':False,
+        'source_root':str(source.root),'destination_root':str(destination),'source_pin':list(source.pin),'source_journals':journals,
+        'input_pins':inputs.pins,'source_sha256':inputs.source_hashes,'image_manifest_sha256':image_sha,'producer_sha256':p.digest(Path(__file__)),
+        'fresh_second_root_reproduced':False,'required_bytes':RESERVE+512*1024**2}
+    durable(intent_path,intent);work.mkdir(mode=0o700);sync(STAGE);durable(work/'adoption-intent.json',intent)
+    try:
+        if work.stat().st_dev!=source.root.stat().st_dev:raise ValueError('Adoption must be same filesystem')
+        os.rename(source.root,destination);sync(source.work);sync(work)
+        assembly=object.__new__(AssemblyRoot);assembly.work=work;assembly.root=destination;assembly.pin=assembly.identity();assembly.required=RESERVE+512*1024**2
+        if os.path.lexists(source.root) or (assembly.pin[0],assembly.pin[2])!=(source.pin[0],source.pin[2]):raise ValueError('Adoption inode changed')
+        after=p.PreparedPayload.audit_tree(destination,inputs.manifest,inputs.generated)
+        if __import__('hashlib').sha256(p.encoded(after)).hexdigest()!=image_sha:raise ValueError('Adoption changed complete image namespace')
+        durable(work/'adopted.json',dict(intent,state='same-inode-MVP-root-adopted',destination_pin=list(assembly.pin)))
+        accounts=synthetic_accounts(destination,inputs)+[synthetic_loader(destination,inputs,candidate)]
+        durable(work/'synthetic-reset-intent.json',{'state':'exact-eight-synthetic-output-reset-intended-no-replay','files':[str(path.relative_to(destination)) for path in accounts],'policy_sha256':inputs.descriptor['policy_sha256']})
+        for path in accounts:path.unlink()
+        sync(destination/'etc')
+        durable(work/'finalize-intent.json',{'state':'adopted-MVP-real-finalizer-intended-no-replay','assembly_pin':list(assembly.pin),'payload_manifest_sha256':sha})
+        result=finalizer(destination,inputs.manifest)
+        if set(result.get('checks',{}))!=set(p.CHECKS) or result.get('generated_entries')!=inputs.generated:raise ValueError('All nine real finalizer checks required')
+        for name,row in result['checks'].items():
+            expected=run/(name+'.json')
+            if set(row)!={'passed','exit_status','report','report_sha256'} or row['passed'] is not True or type(row['exit_status']) is not int or row['exit_status']!=0 or row['report']!=str(expected) or p.digest(secured(expected))!=row['report_sha256']:raise ValueError('Actual finalizer report custody required')
+            validate_finalizer_report(read(expected),name,inputs.descriptor)
+        observed=p.PreparedPayload.audit_tree(destination,inputs.manifest,inputs.generated)
+        if __import__('hashlib').sha256(p.encoded(observed)).hexdigest()!=image_sha or result['image_manifest_sha256']!=image_sha:raise ValueError('Independent post-finalizer image differs')
+        native.verify_payload(plan);inputs.recheck();assembly.recheck()
+        if any(p.digest(secured(source.work/name))!=value for name,value in journals.items()):raise ValueError('Old candidate journals changed')
+        receipt={'version':1,'state':'native-finalizer-verified','root':str(destination),'assembly_pin':list(assembly.pin),
+            'payload_manifest_sha256':sha,'policy_sha256':inputs.descriptor['policy_sha256'],'generated_entries_sha256':inputs.pins['generated-entries.json'],
+            'image_manifest_sha256':image_sha,'checks':result['checks'],'source_sha256':inputs.source_hashes,'production_ready':False,'native_boot_verified':False}
+        durable(work/'finalized.json',receipt);return receipt
+    except BaseException as error:
+        durable(work/'adoption-blocked.json',{'state':'uncertain-adoption-or-finalizer-no-replay','error_type':type(error).__name__,'source_root_present':os.path.lexists(source.root),'destination_root_present':os.path.lexists(destination)})
+        raise
+
+
 def stage_live(system,kind='live'):
     """Source-attributed live transform after real finalizer; actual journal last."""
     import live_profile
@@ -347,7 +451,7 @@ def unclosed_compiler_jobs(directory):
 
 def main():
     if (sys.argv[1:] not in ([action] for action in ('base','live','qualify-base','qualify-live','finalize-base','finalize-live','stage-live',
-            'mvp-base','mvp-live','qualify-mvp-base','qualify-mvp-live','finalize-mvp-base','finalize-mvp-live','stage-mvp-live')) or
+            'mvp-base','mvp-live','qualify-mvp-base','qualify-mvp-live','finalize-mvp-base','finalize-mvp-live','stage-mvp-live','adopt-finalize-mvp-base','adopt-finalize-mvp-live')) or
             Path(__file__).resolve() != Path('/opt/toddy-build/scripts/build/phase2/image_assemble.py')):
         raise ValueError('Fixed native source coordinator command required')
     os.umask(0o077); system=LinuxDisk();native_guard(system)
@@ -357,11 +461,13 @@ def main():
         if not stat.S_ISREG(info.st_mode) or info.st_uid or info.st_gid or info.st_nlink!=1 or stat.S_IMODE(info.st_mode)!=0o600:
             raise ValueError('Native assembly lock custody')
         fcntl.flock(descriptor, fcntl.LOCK_EX|fcntl.LOCK_NB)
-        action=sys.argv[1];kind=action.removeprefix('qualify-').removeprefix('finalize-').removeprefix('stage-');bundle=STAGE/GENERATIONS[kind][1]/'payload';p=payload_module()
+        action=sys.argv[1];kind=action.removeprefix('adopt-finalize-').removeprefix('qualify-').removeprefix('finalize-').removeprefix('stage-');bundle=STAGE/GENERATIONS[kind][1]/'payload';p=payload_module()
         sha=p.digest(secured(bundle/'manifest.json'))
         manifest=p.PreparedPayload(bundle,manifest_sha256=sha,runner=None,finalizer=None)._load()
         bundle_namespace(bundle,manifest)
-        if action in ('stage-live','stage-mvp-live'):
+        if action.startswith('adopt-finalize-'):
+            result=adopt_finalize_mvp(kind,system)
+        elif action in ('stage-live','stage-mvp-live'):
             result=stage_live(system,kind)
         elif action.startswith('finalize-'):
             result=finalize_native(kind,system)
@@ -371,7 +477,7 @@ def main():
             assembly=adopt_unpacked(kind,manifest,sha,system)
             result=qualify(assembly,manifest,policy,system)
         else:
-            assembly=AssemblyRoot(kind,manifest)
+            assembly=AssemblyRoot(kind,manifest,planned_adoption=kind in ('mvp-base','mvp-live'))
             result=unpack_native(bundle,sha,assembly,system)
         print(json.dumps(result,sort_keys=True))
     finally:
