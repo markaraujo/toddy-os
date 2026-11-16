@@ -245,16 +245,26 @@ class Memory:
                 applied.append(key)
         return applied
 
-    def export(self):
+    def export(self, *, cleanup=True):
         """Explicit memory-only portable JSON, excluding tasks/grants/credentials.
 
         Text itself is user-selected private memory; this does not claim to find
         every secret a user may have deliberately pasted into a preference.
         """
+        if type(cleanup) is not bool:
+            raise MemoryError('memory_export_option')
         with _atomic(self.db):
-            self.expire()
+            if cleanup:
+                self.expire()
             records = self.inspect()
             deleted = self._rows("SELECT id,deleted FROM memory_deleted WHERE profile_id=? ORDER BY id", (self.profile,))
+            if not cleanup:
+                # Read-only owner export still represents expired keys as
+                # deleted, without secretly mutating a profile/USER revision.
+                expired = self._rows('SELECT id,expires AS deleted FROM memory_records WHERE profile_id=? AND expires<=?', (self.profile, _number(self.clock())))
+                by_id = {row['id']: row for row in deleted}
+                by_id.update({row['id']: row for row in expired})
+                deleted = [by_id[key] for key in sorted(by_id)]
             document = {"memory_version": 1, "records": records, "deleted": deleted}
             data = json.dumps(document, ensure_ascii=False, allow_nan=False, separators=(",", ":")).encode()
             if len(data) > MAX_EXPORT:

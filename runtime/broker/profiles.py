@@ -240,35 +240,55 @@ class ProfileStore:
             return self._current(db)
 
     def apply(self, files, *, expected_revision):
+        with self._transaction() as db:
+            return self.apply_in_transaction(db, files, expected_revision=expected_revision)
+
+    def apply_in_transaction(self, db, files, *, expected_revision):
+        """Apply with canonical memory/projection changes in the same transaction.
+
+        Trusted broker callers supply this store's existing SQLite transaction;
+        this helper never commits it or weakens semantic/revision storage checks.
+        """
+        if not db.in_transaction:
+            raise ProfileError('profile_transaction_required')
+        databases = db.execute('PRAGMA database_list').fetchall()
+        if not any(row[1] == 'main' and row[2] == str(self.path) for row in databases):
+            raise ProfileError('profile_transaction_database_mismatch')
         revision, bundle, _ = self.validate(files)
         size = len(bundle.encode())
-        with self._transaction() as db:
-            if self._current(db) != expected_revision:
-                raise ProfileError('stale_profile_revision')
-            if db.execute('SELECT 1 FROM profile_revisions WHERE revision=?', (revision,)).fetchone() is None:
-                # Never silently discard a prior revision or task-pinned snapshot.
-                row = db.execute('SELECT count(*) AS n,coalesce(sum(size),0) AS bytes FROM profile_revisions').fetchone()
-                if row['n'] >= self.revision_limit or row['bytes'] + size > self.byte_limit:
-                    raise ProfileError('profile_revision_storage_full')
-                db.execute('INSERT INTO profile_revisions VALUES(?,?,?,?)',
-                           (revision, bundle, size, self.clock()))
-            db.execute('INSERT OR REPLACE INTO profile_current VALUES(1,?,?)', (self.profile_id, revision))
+        if self._current(db) != expected_revision:
+            raise ProfileError('stale_profile_revision')
+        if db.execute('SELECT 1 FROM profile_revisions WHERE revision=?', (revision,)).fetchone() is None:
+            # Never silently discard a prior revision or task-pinned snapshot.
+            row = db.execute('SELECT count(*) AS n,coalesce(sum(size),0) AS bytes FROM profile_revisions').fetchone()
+            if row['n'] >= self.revision_limit or row['bytes'] + size > self.byte_limit:
+                raise ProfileError('profile_revision_storage_full')
+            db.execute('INSERT INTO profile_revisions VALUES(?,?,?,?)',
+                       (revision, bundle, size, self.clock()))
+        db.execute('INSERT OR REPLACE INTO profile_current VALUES(1,?,?)', (self.profile_id, revision))
         return revision
 
     def snapshot(self, revision=None):
         with self._db() as db:
-            revision = revision or self._current(db)
-            row = db.execute('SELECT bundle FROM profile_revisions WHERE revision=?', (revision,)).fetchone()
-            if row is None:
-                raise ProfileError('unknown_profile_revision')
-            try:
-                files = {name: value.encode('utf-8') for name, value in strict_json(row['bundle'].encode()).items()}
-                actual, _, _ = self.validate(files)
-            except (ValueError, AttributeError, TypeError):
-                raise ProfileError('profile_revision_corrupt') from None
-            if actual != revision:
-                raise ProfileError('profile_revision_corrupt')
-            return files
+            return self.snapshot_in_transaction(db, revision)
+
+    def snapshot_in_transaction(self, db, revision=None):
+        """Read/revalidate immutable bytes on the caller's canonical connection."""
+        databases = db.execute('PRAGMA database_list').fetchall()
+        if not any(row[1] == 'main' and row[2] == str(self.path) for row in databases):
+            raise ProfileError('profile_transaction_database_mismatch')
+        revision = revision or self._current(db)
+        row = db.execute('SELECT bundle FROM profile_revisions WHERE revision=?', (revision,)).fetchone()
+        if row is None:
+            raise ProfileError('unknown_profile_revision')
+        try:
+            files = {name: value.encode('utf-8') for name, value in strict_json(row['bundle'].encode()).items()}
+            actual, _, _ = self.validate(files)
+        except (ValueError, AttributeError, TypeError):
+            raise ProfileError('profile_revision_corrupt') from None
+        if actual != revision:
+            raise ProfileError('profile_revision_corrupt')
+        return files
 
     def restore(self, revision, *, expected_revision):
         # Revalidate original bytes against current availability before activation.
