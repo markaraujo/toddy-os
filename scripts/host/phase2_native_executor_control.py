@@ -25,9 +25,10 @@ ROOT=phase2_vm.ROOT
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--generation',required=True,type=int)
+    p.add_argument('--slice',choices=['control','owner'],default='control')
     args=p.parse_args()
     assert 1<=args.generation<=100
-    context=ROOT/('.local/phase2/native-executor-control-'+str(args.generation))
+    context=ROOT/('.local/phase2/native-executor-'+args.slice+'-'+str(args.generation))
     assert not context.exists(), 'Inspect this actual operation; never redispatch a context'
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip(), 'Commit reviewed inputs first'
     assert shutil.disk_usage(ROOT).free>=100*1024**3+512*1024**2, 'Native overlay reserve required'
@@ -51,7 +52,7 @@ def main():
     extra.update({'toddy.executor.input'+str(i):data for i,data in enumerate(parts)})
     unit=(ROOT/'scripts/host/boot-probe.service').read_bytes().replace(b'TimeoutStartSec=180',b'TimeoutStartSec=300')
     unit+=b''.join(('LoadCredential='+name+'\n').encode() for name in sorted(extra))
-    probe=(ROOT/'scripts/host/phase2-native-executor-control-probe.py').read_bytes()
+    probe=(ROOT/('scripts/host/phase2-native-executor-'+args.slice+'-probe.py')).read_bytes()
     payloads={'systemd.extra-unit.toddy-boot-probe.service':unit,
               'systemd.unit-dropin.multi-user.target':(ROOT/'scripts/host/boot-probe.target.conf').read_bytes(),
               'toddy.boot-probe':compressed_payload(probe)}

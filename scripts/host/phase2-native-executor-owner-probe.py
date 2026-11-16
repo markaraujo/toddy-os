@@ -1,0 +1,175 @@
+"""Default-policy active PAM login/session grants and native executor package lifecycle."""
+import base64
+import hashlib
+import json
+import os
+from pathlib import Path
+import pty
+import re
+import secrets
+import select
+import signal
+import subprocess
+import time
+import zlib
+
+
+def run(argv, timeout=30, check=True):
+    r=subprocess.run(argv,capture_output=True,text=True,timeout=timeout,
+                     env={'PATH':'/usr/bin:/usr/sbin','LANG':'C.UTF-8','HOME':'/root'})
+    assert not check or r.returncode==0, ('command_failed',argv[:3],r.returncode,r.stderr[:300])
+    return r
+
+
+def emit(report):
+    raw=json.dumps(report,sort_keys=True).encode();packed=base64.b64encode(zlib.compress(raw,9)).decode()
+    chunks=[packed[i:i+1024] for i in range(0,len(packed),1024)]
+    for i,c in enumerate(chunks):print('TODDY_B02_RUNTIME_DATA',i,c,flush=True)
+    print('TODDY_B02_RUNTIME_RESULT',json.dumps({'kernel':os.uname().release,
+          'all_selected_exits_zero':report['all_selected_exits_zero'],'report_sha256':hashlib.sha256(raw).hexdigest(),'chunks':len(chunks)}),flush=True)
+
+
+def main():
+    assert os.geteuid()==0 and os.uname().release=='7.1.8-toddy' and Path('/proc/1/comm').read_text().strip()=='systemd'
+    assert run(['systemd-detect-virt','--vm']).stdout.strip() in ('kvm','qemu')
+    device=run(['findmnt','-n','-o','SOURCE','/']).stdout.strip();assert re.fullmatch('/dev/[a-z0-9]+',device)
+    parent=run(['lsblk','-ndo','PKNAME',device]).stdout.strip();assert re.fullmatch('[a-z0-9]+',parent)
+    assert run(['lsblk','-dnro','SERIAL','/dev/'+parent]).stdout.strip()=='TODDY-BOOT-TEST'
+    credentials=Path(os.environ['CREDENTIALS_DIRECTORY']);manifest=json.loads((credentials/'toddy.executor.manifest').read_text())
+    packed=b''.join((credentials/('toddy.executor.input'+str(i))).read_bytes() for i in range(manifest['chunks']))
+    assert hashlib.sha256(packed).hexdigest()==manifest['sha256'];files=json.loads(zlib.decompress(packed))
+    assert not Path('/usr/lib/toddy/executor').exists()
+    stage=Path('/tmp/toddy-executor-package');stage.mkdir(mode=0o755)
+    root=stage/'usr/lib/toddy/executor';root.mkdir(parents=True)
+    hashes={}
+    for name,text in files.items():
+        assert name==Path(name).name and name.endswith(('.py','.xml'))
+        target=root/name;target.write_text(text);target.chmod(0o755 if name=='owner_policy.py' else 0o644)
+        hashes[name]=hashlib.sha256(target.read_bytes()).hexdigest()
+    for name,destination in manifest['packaging'].items():
+        path=Path(destination['path']);assert str(path).startswith(('/etc/dbus-1/','/etc/systemd/','/usr/share/polkit-1/')) and not path.exists()
+        target=stage/str(path).lstrip('/');target.parent.mkdir(parents=True,exist_ok=True);target.write_text(destination['text']);target.chmod(0o644)
+        hashes[name]=hashlib.sha256(target.read_bytes()).hexdigest()
+    control=stage/'DEBIAN';control.mkdir(mode=0o755)
+    # Fixture package versions prove native lifecycle, not a signed release catalog.
+    def install(version):
+        (control/'control').write_text('Package: toddy-executor\nVersion: 0.1-'+str(version)+'+toddy1\nArchitecture: amd64\nMaintainer: Toddy OS\nDescription: Disposable native executor lifecycle qualification\n')
+        (control/'postinst').write_text('#!/bin/sh\nset -eu\nsystemctl daemon-reload\nsystemctl try-restart toddy-executor.service\n')
+        (control/'postinst').chmod(0o755)
+        archive=Path('/tmp/toddy-executor-'+str(version)+'.deb')
+        run(['dpkg-deb','--root-owner-group','--build',str(stage),str(archive)])
+        run(['dpkg','--install',str(archive)])
+        assert run(['dpkg-query','-W','-f=${Version}','toddy-executor']).stdout=='0.1-'+str(version)+'+toddy1'
+        assert not run(['dpkg','--audit']).stdout.strip()
+        for name,digest in hashes.items():
+            path=(Path('/usr/lib/toddy/executor')/name if name in files else Path(manifest['packaging'][name]['path']))
+            assert hashlib.sha256(path.read_bytes()).hexdigest()==digest
+            assert path.stat().st_uid==0 and not path.stat().st_mode&0o022
+            assert run(['dpkg-query','-S',str(path)]).stdout.startswith('toddy-executor: ')
+    install(1)
+    run(['dbus-send','--system','--type=method_call','--print-reply','--dest=org.freedesktop.DBus','/','org.freedesktop.DBus.ReloadConfig'])
+    Path('/var/lib/toddy').mkdir(mode=0o755,exist_ok=True)
+    run(['systemctl','start','polkit.service','systemd-logind.service','toddy-executor.service'])
+    username='toddy-policy-owner';uid=12405
+    run(['useradd','-m','-U','-u',str(uid),'-G','wheel','-s','/bin/bash',username])
+    secret=secrets.token_urlsafe(32)
+    r=subprocess.run(['chpasswd','-c','YESCRYPT'],input=username+':'+secret+'\n',text=True,capture_output=True,timeout=15)
+    assert r.returncode==0,'Ephemeral credential creation failed'
+    report={'scope':'Real native PAM local console login/default Polkit owner policy/session grants and dpkg install/upgrade/revoke. No test authorization rule, graphical UI/physical/signed release acceptance implied.',
+            'source_sha256':hashes,'all_selected_exits_zero':False,'checks':[]}
+    def passed(name,**data):report['checks'].append({'name':name,**data});print('TODDY_B04_STAGE',name,flush=True)
+    pid,fd=pty.fork()
+    if pid==0:
+        os.environ.clear();os.environ.update(PATH='/usr/bin:/usr/sbin',LANG='C.UTF-8',TERM='dumb')
+        os.execv('/usr/bin/login',['login',username])
+    tail=b'';prompts=0;session=None;deadline=time.monotonic()+30
+    try:
+        while time.monotonic()<deadline:
+            if select.select([fd],[],[],.2)[0]:
+                try:data=os.read(fd,8192)
+                except OSError:data=b''
+                tail=(tail+data)[-8192:]
+                if re.search(rb'[Pp]assword: *$',tail):
+                    prompts+=1;assert prompts==1,'Repeated login authentication prompt'
+                    os.write(fd,secret.encode()+b'\n');tail=b''
+            r=run(['loginctl','show-user',str(uid),'-p','Display','--value'],check=False)
+            if r.returncode==0 and re.fullmatch(r'[a-zA-Z0-9_-]{1,128}',r.stdout.strip()):session=r.stdout.strip();break
+        assert prompts==1 and session is not None,'Authenticated local PAM/logind session missing'
+        props=dict(l.split('=',1) for l in run(['loginctl','show-session',session,'-p','User','-p','Active','-p','Remote','-p','Type']).stdout.splitlines())
+        assert props['User']==str(uid) and props['Active']=='yes' and props['Remote']=='no'
+        passed('real-login-password-active-local-logind-session',properties=props,raw_tty_retained=False)
+        def shell(command, *, authenticate=False, success=True):
+            os.write(fd,(command+"; printf '\\nTODDY_COMMAND_DONE:%s\\n' $?\n").encode())
+            tail=b'';count=0;deadline=time.monotonic()+40
+            while time.monotonic()<deadline:
+                if select.select([fd],[],[],.2)[0]:
+                    try:data=os.read(fd,8192)
+                    except OSError:data=b''
+                    tail=(tail+data)[-32768:]
+                    if re.search(rb'[Pp]assword: *$',tail):
+                        count+=1;assert authenticate and count<=1,'Unexpected PAM prompt'
+                        os.write(fd,secret.encode()+b'\n');tail=b''
+                    match=re.search(rb'(?:\r?\n)TODDY_COMMAND_DONE:([0-9]+)\r?\n',tail)
+                    if match:
+                        code=int(match[1]);assert (code==0)==success,('shell_status',code)
+                        assert not authenticate or count==1,'Expected fresh administrator authentication'
+                        return tail
+            raise AssertionError('Owner shell command deadline')
+        helper='/usr/bin/pkexec /usr/lib/toddy/executor/owner_policy.py'
+        shell(helper+' grant --mode session --expires-in 300',authenticate=True)
+        # Root inspects authority, never writes grants on this path.
+        import sys
+        sys.path.insert(0,'/usr/lib/toddy/executor');from store import Store
+        store=Store(Path('/var/lib/toddy/executor'))
+        a={'path':'/etc/toddy-session-proof.conf','text':'session-authorized\n','expected_sha256':None}
+        # Execute on the actual login shell through the canonical system-bus API.
+        client=Path('/tmp/toddy-owner-ipc.py')
+        client.write_text('''import gi,json,sys
+from gi.repository import Gio,GLib
+c=Gio.bus_get_sync(Gio.BusType.SYSTEM,None)
+a={"path":"/etc/toddy-session-proof.conf","text":"session-authorized\\n","expected_sha256":None}
+v=GLib.Variant('(sss)',('session-write','config_replace',json.dumps(a)))
+for method in ['PlanOperation','DispatchOperation']:
+ r=c.call_sync('io.github.markaraujo.Toddy.Executor','/io/github/markaraujo/Toddy/Executor','io.github.markaraujo.Toddy.Executor1',method,v,GLib.VariantType('(s)'),Gio.DBusCallFlags.NONE,10000,None)
+ assert json.loads(r.unpack()[0])['state']==('planned' if method=='PlanOperation' else 'completed')
+''');client.chmod(0o644)
+        shell('/usr/bin/python3 /tmp/toddy-owner-ipc.py')
+        assert Path(a['path']).read_text()==a['text'] and store.inspect(uid,'session-write')['state']=='completed'
+        passed('default-active-policy-real-pam-session-grant-and-ipc-effect')
+        install(2)
+        assert store.inspect(uid,'session-write')['state']=='completed'
+        shell('/usr/bin/python3 /tmp/toddy-owner-ipc.py')
+        assert Path(a['path']).read_text()==a['text']
+        passed('native-package-owned-upgrade-restart-retains-grant-operation-and-no-replay')
+        shell(helper+' revoke',authenticate=True)
+        try:store.plan(uid,session,'after-revoke','config_replace',a)
+        except Exception as e:assert str(e)=='grant_required',('unexpected_revoke_error',str(e))
+        else:raise AssertionError('Revoke did not deny new plan')
+        passed('default-active-policy-fresh-authenticated-revoke')
+        shell(helper+' grant --mode session --expires-in 300',authenticate=True)
+        os.write(fd,b'exit\n')
+        waited,raw=os.waitpid(pid,0);assert waited==pid
+        # A different/no session cannot use the session-only grant.
+        try:store.plan(uid,None,'after-logout','config_replace',a)
+        except Exception as e:assert str(e)=='grant_required',('unexpected_logout_error',str(e))
+        else:raise AssertionError('Logged-out session grant authorized a caller without session')
+        passed('session-only-grant-refuses-no-session-after-logout')
+        run(['/usr/bin/python3','/usr/lib/toddy/executor/policy.py','revoke','--uid',str(uid)])
+        run(['systemctl','stop','toddy-executor.service'])
+        run(['dpkg','--remove','toddy-executor'])
+        assert not Path('/usr/lib/toddy/executor/owner_policy.py').exists()
+        assert not run(['dpkg','--audit']).stdout.strip()
+        passed('native-package-remove-preserves-private-state-for-recovery')
+        secret=None;run(['userdel','-r',username])
+        report['all_selected_exits_zero']=True;emit(report)
+    finally:
+        os.close(fd)
+        try:os.kill(pid,signal.SIGKILL)
+        except ProcessLookupError:pass
+
+
+if __name__=='__main__':
+    try:main()
+    except Exception as error:
+        emit({'all_selected_exits_zero':False,'error_type':type(error).__name__,'error':str(error)})
+        raise
