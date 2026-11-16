@@ -32,7 +32,7 @@ ROOT_KINDS = {'admin-config': 'config_replace', 'admin-command': 'root_command',
 
 
 class BrokerCore:
-    def __init__(self, profiles, journal, workspace, *, root_client=None, dispatch_allowed=lambda: False, shell_runner=None, engine_runner=None, text_store=None, memory_api=None):
+    def __init__(self, profiles, journal, workspace, *, root_client=None, dispatch_allowed=lambda: False, shell_runner=None, engine_runner=None, text_store=None, memory_api=None, automation=None):
         if os.getuid() == 0 or os.geteuid() == 0:
             raise BrokerError('unprivileged_broker_required')
         self.profiles, self.journal = profiles, journal
@@ -42,6 +42,7 @@ class BrokerCore:
         self.engine_runner = engine_runner
         self.text_store = text_store
         self.memory_api = memory_api
+        self.automation = automation
         self.dispatch_allowed = dispatch_allowed
         # Validate workspace immediately, no implicit host directory choice.
         with Tools(self.workspace):
@@ -54,7 +55,8 @@ class BrokerCore:
                 'profile_id': self.profiles.profile_id, 'profile_revision': revision,
                 'features': ['native-tools', 'durable-tasks', 'cancel', 'profiles', 'profile-settings-v1'] +
                     (['agent-text-v1', 'agent-text-ack-v1'] if self.text_store is not None else []) +
-                    (['owner-memory-v1'] if self.memory_api is not None else []),
+                    (['owner-memory-v1'] if self.memory_api is not None else []) +
+                    (['owner-automation-v1'] if self.automation is not None else []),
                 'agent_backend': bool(self.engine_runner and self.engine_runner.available(config)),
                 'provider_mode': config['provider']['mode'],
                 'credential_state': 'checked-at-dispatch' if config['provider']['mode'] == 'remote' else 'not-required',

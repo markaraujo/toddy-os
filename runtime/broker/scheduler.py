@@ -129,10 +129,15 @@ class Scheduler:
 
     def enable(self, job_id, *, authorize):
         identifier(job_id)
+        row = self.db.execute('SELECT action,remaining FROM scheduler_jobs WHERE profile_id=? AND id=?', (self.profile, job_id)).fetchone()
+        if not row or row[1] <= 0 or not authorize(row[0]):
+            raise ScheduleError('schedule_authorization_required')
+        # Root standing-policy IPC must not run inside the SQLite write lock.
+        # Dispatch independently checks current authorization again afterwards.
         with self._transaction():
-            row = self.db.execute('SELECT action,remaining FROM scheduler_jobs WHERE profile_id=? AND id=?', (self.profile, job_id)).fetchone()
-            if not row or row[1] <= 0 or not authorize(row[0]):
-                raise ScheduleError('schedule_authorization_required')
+            current = self.db.execute('SELECT action,remaining FROM scheduler_jobs WHERE profile_id=? AND id=?', (self.profile, job_id)).fetchone()
+            if not current or tuple(current) != tuple(row):
+                raise ScheduleError('schedule_changed_during_authorization')
             if self.db.execute("SELECT 1 FROM scheduler_runs WHERE profile_id=? AND state='uncertain'", (self.profile,)).fetchone():
                 raise ScheduleError('schedule_uncertain')
             self.db.execute('UPDATE scheduler_jobs SET enabled=1 WHERE profile_id=? AND id=?', (self.profile, job_id))

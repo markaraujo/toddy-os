@@ -59,3 +59,49 @@ class ProfileRuntime:
                     {'id':row['profile_id'],'display_name':row['display_name'],
                      'revision':row['profile_revision'],'health':row['status'],'selected':row['selected']}
                     for row in value['profiles']]}
+
+
+class AutomationRuntime:
+    """One managed background worker over captured per-profile contexts.
+
+    The service's GLib timer calls tick; neither construction nor profile selection
+    enables a schedule. No GUI callback waits for probes, root IPC or notification.
+    """
+    def __init__(self, on_change=lambda context, result: None):
+        from concurrent.futures import ThreadPoolExecutor
+        import threading
+        self.pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix='toddy-automation')
+        self.on_change = on_change
+        self.stopping = threading.Event()
+        self.future = None
+        self.status = {}
+
+    def tick(self, contexts):
+        if self.stopping.is_set() or self.future is not None and not self.future.done():
+            return False
+        captured = tuple(contexts)
+        self.future = self.pool.submit(self._run, captured)
+        return True
+
+    def _run(self, contexts):
+        for context in contexts:
+            if self.stopping.is_set():
+                break
+            try:
+                result = context.automation.poll()
+            except Exception:
+                # Static metadata only; never put a callback's diagnostics,
+                # command output, owner text or credentials on a session signal.
+                result = {'state': 'tick-unavailable', 'runs': [], 'notifications_sent': 0}
+            self.status[context.profiles.profile_id] = result['state']
+            if result['runs'] or result['notifications_sent'] or result['state'] == 'tick-unavailable':
+                self.on_change(context, result)
+
+    def stop_accepting(self, contexts):
+        self.stopping.set()
+        for context in tuple(contexts):
+            context.automation.request_shutdown()
+
+    def shutdown(self, contexts):
+        self.stop_accepting(contexts)
+        self.pool.shutdown(wait=True, cancel_futures=True)

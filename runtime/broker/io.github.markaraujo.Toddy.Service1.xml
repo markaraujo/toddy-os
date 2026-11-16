@@ -3,6 +3,19 @@
     <method name="GetCapabilities">
       <arg name="capabilities_json" type="s" direction="out" />
     </method>
+    <method name="GetAutomation">
+      <arg name="profile_id" type="s" direction="in" />
+      <arg name="automation_json" type="s" direction="out" />
+    </method>
+    <method name="ConfigureAutomation">
+      <arg name="profile_id" type="s" direction="in" />
+      <arg name="expected_revision" type="s" direction="in" />
+      <arg name="operation_json" type="s" direction="in" />
+      <arg name="result_json" type="s" direction="out" />
+    </method>
+    <signal name="AutomationChanged">
+      <arg name="profile_id" type="s" />
+    </signal>
     <method name="GetMemory">
       <arg name="profile_id" type="s" direction="in" />
       <arg name="memory_page_json" type="s" direction="out" />

@@ -57,10 +57,71 @@ are never erased to restore capacity. Underlying Scheduler deduplication, skip o
 bounded run-once missed policy and run/output budgets remain authoritative.
 Configure/import cannot reuse an existing accepted slot to discover its outcome.
 
-Parent integration remains: advertise only registered workflows in trusted profile
-capabilities; bind authenticated owner/standing policy and managed session timer;
-use actual `DesktopNotifier` only when qualified; expose inspect/disable/Stop and
-review/storage codes through bounded native APIs. Native persistent automation,
-real service observations, notification display and restart proof remain required
-before B08 acceptance. Current tests use actual local statvfs plus explicitly
-labeled service/notification fixtures and canonical SQLite/lease concurrency.
+Native qualification remains: current root standing policy and managed session
+timer, actual health observations, notification display and restart proof before
+B08 acceptance. Source tests use actual local statvfs, explicitly labeled
+service/notification fixtures and canonical SQLite/lease concurrency.
+
+## Captured broker service binding
+
+The service now constructs one Automation and AutomationControl per captured
+ProfileRuntime context and reconciles it once under canonical service lifetime
+ownership. `owner-automation-v1` advertises the bounded owner API. Registered
+workflow IDs are disk-health/service-health; the existing profile validator now
+recognizes exactly those workflows. This does not grant standing permission.
+
+`StandingPolicy` calls the actual privileged executor's
+`GetStandingAuthorization(action_id)` through RootClient. RootClient checks the
+system-bus owner UID is root. Every predicate call requires the exact versioned
+response `{version:1, action_id:<same action>, allowed:<boolean>}`. Unknown action,
+malformed/mismatched/extra response fields, unavailable executor or any failed
+inspection returns false. There is no cached authorization, supplied UID/session,
+credential, grant creation or delegation. Owner profile text/config cannot
+substitute for current root-owned standing policy. This independent policy may
+permit unattended checks while the interactive owner session is locked; editing,
+enabling, inspection and review still require the service's current unlocked
+local owner session.
+
+`GetAutomation(profile_id)` returns jobs, bounded last 32 runs/notifications,
+latest observations, total run count, stopped state, registered workflows and last
+worker tick state. The encoded inspection is at most 60000 bytes.
+`ConfigureAutomation(profile_id, expected_revision, operation_json)` requires
+version 1 and an exact operation schema:
+
+- `configure`: job_id, action, interval, next_due, missed, catchup, seconds, max_runs.
+- `enable` / `cancel`: job_id.
+- `stop` / `prune-terminal-history`: no additional fields.
+- `review-read-only`: operation_id.
+
+Configure is always disabled and creates no grant. Enable requires current root
+standing authorization and current profile workflow. Owner Stop denies
+pending notices, disables schedules and requests active safe cancellation. A
+later explicit owner Enable can reset the local Stop barrier, while unknown
+outcomes still require review. Configure/enable/review never replay an old slot.
+Root inspection occurs before the scheduler write transaction; dispatch checks
+current policy independently again. Schema errors/storage/busy outcomes are
+reported, never interpreted as success or automatic permission to retry.
+
+The real service registers a 30 second GLib timer. Its callback only submits a
+captured tuple of contexts to one dedicated AutomationRuntime worker and returns.
+Probes, root IPC and desktop notification roundtrips happen in that worker, with
+no model/provider calls and no overlapping tick. Context selection cannot move a
+scheduled job into another profile. Owner configuration also requests one worker
+tick without waiting for it. AutomationChanged signals contain only profile ID;
+no callback diagnostics or document text is emitted.
+
+A service lifecycle shutdown first closes new worker admission and sets each
+context's cancellation barrier, then waits for the current safe boundary before
+releasing canonical lifetime locks. An idle enabled schedule survives a normal
+service restart. An interrupted admitted read retains uncertain state and cannot
+be replayed; explicit owner Stop separately disables future schedules. No user
+lingering or system-wide timer is enabled by this source change.
+
+The optional real DesktopNotifier is wired to the service's user-session bus;
+configured transport is not a claim that a notification was displayed. Pending,
+sending and uncertain receipts retain the earlier no-replay rules. Required
+native tests remain: current root grant/revoke and expiry, real selected service
+observations, managed session timer/restart/Stop, quiet changed-state notification
+display and profile isolation. Host service tests prove absent-executor denial,
+configuration/worker lifecycle and durable disabled schedules; they do not grant
+standing policy or fabricate a notification/native B08 acceptance.

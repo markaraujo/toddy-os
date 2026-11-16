@@ -151,7 +151,7 @@ class Automation:
             raise AutomationError('automation_authenticated_owner_required')
 
     def _allowed(self, action):
-        if action not in ACTIONS or self._stopping.is_set():
+        if not isinstance(action, str) or action not in ACTIONS or self._stopping.is_set():
             return False
         config = strict_json(self.profiles.snapshot()['config.json'])
         return (config['automation']['enabled'] is True and action in config['automation']['workflow_ids']
@@ -159,7 +159,7 @@ class Automation:
 
     def configure(self, job_id, action, **settings):
         self._owner()
-        if action not in ACTIONS:
+        if not isinstance(action, str) or action not in ACTIONS:
             raise AutomationError('automation_unregistered_workflow')
         if type(settings.get('seconds', 10)) is not int or not 1 <= settings.get('seconds', 10) <= 10:
             raise AutomationError('automation_workflow_time_budget')
@@ -175,8 +175,15 @@ class Automation:
 
     def enable(self, job_id):
         self._owner()
-        with self._scheduler() as scheduler:
-            scheduler.enable(job_id, authorize=self._allowed)
+        with self._lease(), self._scheduler() as scheduler:
+            stopped = self._stopping.is_set()
+            self._stopping.clear()  # New explicit owner action only.
+            try:
+                scheduler.enable(job_id, authorize=self._allowed)
+            except BaseException:
+                if stopped:
+                    self._stopping.set()
+                raise
         return {'enabled': True, 'standing_grant_created': False}
 
     def cancel(self, job_id):
@@ -294,7 +301,8 @@ class Automation:
         with self._scheduler() as scheduler:
             observations = [dict(row) for row in scheduler.db.execute('SELECT probe_id,operation_id,condition,details,observed FROM automation_observations WHERE profile_id=? ORDER BY probe_id', (self.profiles.profile_id,))]
             notifications = [dict(row) for row in scheduler.db.execute('SELECT id,action,state,created FROM automation_notifications WHERE profile_id=? ORDER BY created DESC,id DESC LIMIT ?', (self.profiles.profile_id, limit))]
-            return {'runs': [dict(row) for row in reversed(scheduler.db.execute('SELECT operation_id,job_id,due,state,cancel_requested,result FROM scheduler_runs WHERE profile_id=? ORDER BY due DESC,operation_id DESC LIMIT ?', (self.profiles.profile_id, limit)).fetchall())], 'observations': observations, 'notifications': notifications,
+            jobs = [dict(row) for row in scheduler.db.execute('SELECT id,action,interval,next_due,missed,catchup,seconds,remaining,enabled FROM scheduler_jobs WHERE profile_id=? ORDER BY id', (self.profiles.profile_id,))]
+            return {'jobs': jobs, 'stopped': self._stopping.is_set(), 'runs': [dict(row) for row in reversed(scheduler.db.execute('SELECT operation_id,job_id,due,state,cancel_requested,result FROM scheduler_runs WHERE profile_id=? ORDER BY due DESC,operation_id DESC LIMIT ?', (self.profiles.profile_id, limit)).fetchall())], 'observations': observations, 'notifications': notifications,
                     'run_count': scheduler.db.execute('SELECT count(*) FROM scheduler_runs WHERE profile_id=?', (self.profiles.profile_id,)).fetchone()[0],
                     'desktop_transport_configured': self.notifier is not None}
 
@@ -333,7 +341,7 @@ class Automation:
         return {'reviewed': True, 'replayed': False, 'enabled': False}
 
     def stop(self):
-        """Trusted service shutdown: stop new ticks and request active safe Stop."""
+        """Explicit owner Stop disables schedules and asks active work to cancel."""
         self._stopping.set()
         with self._scheduler() as scheduler:
             ids = scheduler.db.execute('SELECT id FROM scheduler_jobs WHERE profile_id=?', (self.profiles.profile_id,)).fetchall()
@@ -342,6 +350,14 @@ class Automation:
                     scheduler.cancel_in_transaction(row['id'])
                     scheduler.db.execute("UPDATE automation_notifications SET state='denied' WHERE profile_id=? AND job_id=? AND state='pending'", (self.profiles.profile_id, row['id']))
         return {'new_dispatch_stopped': True, 'active_read_may_finish': True}
+
+    def request_shutdown(self):
+        """Fast lifecycle barrier; idle saved schedules survive normal restart.
+
+        A currently admitted check exits at its next safe boundary and its
+        uncertain outcome still requires explicit owner review, never replay.
+        """
+        self._stopping.set()
 
     def serve(self, *, tick_seconds=30):
         """Optional managed service loop; constructor never calls this method."""

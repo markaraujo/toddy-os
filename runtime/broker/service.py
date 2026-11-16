@@ -27,11 +27,14 @@ from engine import EngineError
 from text import TaskText, TextError
 from configured_engine import ConfiguredEngine, ADAPTERS
 from profile_registry import ProfileRegistry, RegistryError
-from profile_runtime import ProfileRuntime
+from profile_runtime import ProfileRuntime, AutomationRuntime
 from types import SimpleNamespace
 from memory_api import MemoryAPI, MemoryEngine, MemoryAPIError
 from memory import MemoryError
 from memory_control import MemoryControl
+from automation import Automation, AutomationError, DesktopNotifier, ACTIONS
+from automation_control import AutomationControl, StandingPolicy
+from scheduler import ScheduleError
 
 BUS = 'io.github.markaraujo.Toddy.Service'
 OBJECT = '/io/github/markaraujo/Toddy/Service'
@@ -159,7 +162,7 @@ def main():
     files={path.name:path.read_bytes() for path in template.iterdir()
            if path.name in {'config.json','SOUL.md','IDENTITY.md','USER.md','AGENTS.md'}
            and path.is_file() and not path.is_symlink()}
-    capabilities={'adapters':ADAPTERS,'tools':NATIVE_TOOLS,'skills':{'explain-system'},'extensions':set(),'workflows':set()}
+    capabilities={'adapters':ADAPTERS,'tools':NATIVE_TOOLS,'skills':{'explain-system'},'extensions':set(),'workflows':ACTIONS}
     legacy=ProfileStore(args.data_dir,'toddy-default',schema,capabilities=capabilities)
     if legacy.current() is None:legacy.apply(files,expected_revision=None)
     registry=ProfileRegistry(registry_directory,schema,files,capabilities=capabilities,
@@ -172,6 +175,7 @@ def main():
     system_connection=Gio.bus_get_sync(Gio.BusType.SYSTEM,None)
     root_client=RootClient(system_connection)
     allowed=ActiveSession(system_connection,os.getuid())
+    standing=StandingPolicy(root_client)
 
     def factory(profiles):
         journal=TaskJournal(profiles)
@@ -180,18 +184,22 @@ def main():
         text.recover();text.purge_transient();text.purge_expired()
         memory=MemoryAPI(profiles,owner_allowed=allowed)
         memory_control=MemoryControl(memory)
+        automation=Automation(profiles,owner_allowed=allowed,standing_allowed=standing,notifier=DesktopNotifier())
+        automation.recover()  # Canonical lifetime locks already exclude old writers.
+        automation_control=AutomationControl(automation)
         core=BrokerCore(profiles,journal,args.workspace,root_client=root_client,
             dispatch_allowed=allowed,shell_runner=ScopedShell(),
-            engine_runner=MemoryEngine(ConfiguredEngine(args.defaults),memory),text_store=text, memory_api=memory)
+            engine_runner=MemoryEngine(ConfiguredEngine(args.defaults),memory),text_store=text, memory_api=memory, automation=automation)
         return SimpleNamespace(profiles=profiles,journal=journal,text_store=text,core=core,
-                               memory=memory,memory_control=memory_control)
+                               memory=memory,memory_control=memory_control,
+                               automation=automation,automation_control=automation_control)
 
     runtime=ProfileRuntime(registry,factory)
     # Recover every registered profile exactly once under lifetime ownership.
     # This never replays a task, even if the last selected profile changed.
     for row in registry.list_profiles()['profiles']:
         try:runtime.context(row['profile_id'])
-        except (ProfileError,TaskError,TextError,OSError):pass
+        except (ProfileError,TaskError,TextError,MemoryAPIError,MemoryError,AutomationError,ScheduleError,OSError):pass
     info=Gio.DBusNodeInfo.new_for_xml(Path(__file__).with_name(INTERFACE+'.xml').read_text())
     loop=GLib.MainLoop()
     pool=ThreadPoolExecutor(max_workers=1,thread_name_prefix='toddy-broker')
@@ -217,6 +225,20 @@ def main():
         selected=registry.active()
         session_connection.emit_signal(None,OBJECT,INTERFACE,'ProfilesChanged',
             GLib.Variant('(st)',(selected['profile_id'] or '',selected['generation'])))
+
+    def automation_changed(context,_result=None):
+        if not stopping:
+            session_connection.emit_signal(None,OBJECT,INTERFACE,'AutomationChanged',
+                GLib.Variant('(s)',(context.profiles.profile_id,)))
+        return False
+
+    automation_runtime=AutomationRuntime(on_change=lambda context,result:
+        GLib.idle_add(automation_changed,context,result))
+
+    def automation_tick():
+        if stopping:return False
+        automation_runtime.tick(tuple(runtime.contexts.values()))
+        return True
 
     last_purge=time.monotonic()
     def poll():
@@ -333,6 +355,16 @@ def main():
                 profiles=registry.store(profile_id,allow_recovery=True)
                 restored=runtime.context(profile_id).memory.restore_profile(revision,expected_revision=expected)
                 profiles_changed();reply(invocation,{'version':1,**restored})
+            elif method in ('GetAutomation','ConfigureAutomation'):
+                context=runtime.context(values[0])
+                if method=='GetAutomation':
+                    result=context.automation_control.inspect()
+                    result['last_tick_state']=automation_runtime.status.get(values[0],'not-ticked')
+                    reply(invocation,result)
+                else:
+                    result=context.automation_control.mutate(values[1],values[2])
+                    automation_changed(context);reply(invocation,result)
+                    automation_runtime.tick(tuple(runtime.contexts.values()))
             elif method in ('GetMemory','ListMemory','MutateMemory','ExportMemory','ExportMemoryDocument','RestoreMemory'):
                 profile_id=values[0];context=runtime.context(profile_id)
                 if method=='GetMemory':reply(invocation,context.memory_control.page())
@@ -391,7 +423,7 @@ def main():
                     applied=runtime.context(profile_id).memory.apply_profile(stage['files'],expected_revision=expected,validated_revision=stage['revision']);del stages[candidate]
                     profiles_changed();reply(invocation,{'version':1,'profile_revision':applied['profile_revision'],'applied':True})
             else:raise BrokerError('method_unavailable')
-        except (ProfileError,TaskError,BrokerError,TextError,MemoryAPIError,MemoryError) as error:
+        except (ProfileError,TaskError,BrokerError,TextError,MemoryAPIError,MemoryError,AutomationError,ScheduleError) as error:
             invocation.return_dbus_error(INTERFACE+'.Rejected',str(error))
         except (ValueError,UnicodeError,RecursionError,OverflowError,GLib.Error,OSError):
             invocation.return_dbus_error(INTERFACE+'.Rejected','invalid_or_unavailable_request')
@@ -400,6 +432,7 @@ def main():
     def stop():
         nonlocal stopping
         stopping=True
+        automation_runtime.stop_accepting(tuple(runtime.contexts.values()))
         if pending:pending[0].core.cancel(pending[1])
         else:loop.quit()
         return False
@@ -408,10 +441,12 @@ def main():
     Gio.bus_own_name_on_connection(session_connection,BUS,Gio.BusNameOwnerFlags.NONE,
         lambda *_:print('READY',flush=True),lambda *_:stop())
     GLib.timeout_add(100,poll)
+    GLib.timeout_add_seconds(30,automation_tick)
     GLib.unix_signal_add(GLib.PRIORITY_DEFAULT,signal.SIGTERM,stop)
     GLib.unix_signal_add(GLib.PRIORITY_DEFAULT,signal.SIGINT,stop)
     try:loop.run()
     finally:
+        automation_runtime.shutdown(tuple(runtime.contexts.values()))
         pool.shutdown(wait=True,cancel_futures=True)
         for context in runtime.contexts.values():context.text_store.purge_transient()
         os.close(registry_owner_fd);os.close(owner_fd)
