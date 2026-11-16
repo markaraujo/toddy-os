@@ -49,13 +49,35 @@ artifact, device, microphone, playback or always-listening configuration is ship
 Installed package-relative imports support text fallback with every optional
 speech artifact absent.
 
-`integrations` maps actual reviewed plugin/skill/browser source into
-`/usr/lib/toddy/integrations`, includes the plain explanatory SKILL.md under
-`/usr/share/toddy/skills`, and ships an explicit disabled registration policy.
-It bundles no plugin server/executable, browser profile, external connector,
-credential, executable hook or enabled permission. Bubblewrap/Firefox/AT-SPI
-runtime qualification and broker integration remain required; merely importing
-these adapters does not prove confinement or browser access.
+`integrations` stages the actual reviewed adapters under `/usr/lib/toddy/plugins`,
+matching the canonical broker import/catalog namespace. It requires toddy-agent
+as well as the assistant; canonical skill parsing and independent owner policy
+belong to the agent. The agent alone owns its default pinned skill under
+`/usr/share/toddy/profiles/profile/skills`. No orphan `/usr/share/toddy/skills`
+copy or root namespace alias is emitted.
+
+The package now includes the useful release-reference MCP server source, exact
+public B02 metadata projection/manifest/attribution and the harmless local browser
+guide. Source metadata lookup never claims current installed package status.
+The generator independently checks the entire release projection against the
+committed accepted B02 manifest and verifies every declared bundled source hash.
+It never executes those sources. A corrupt/incomplete binding blocks staging.
+
+Disabled defaults live under `/usr/share/toddy/plugins`. No qualified receipt,
+activation, provider/account credential, browser profile or hook is generated.
+`/usr/share/doc/toddy-integrations/activation-inputs.json` records exact manifest,
+reader/page hashes and required native proof, with qualification explicitly false.
+The native single-writer package transaction must verify signed package/source/
+legal/ownership closure and actual target containment/browser behavior before it
+creates a root-owned catalog receipt and requests separate owner activation.
+A receipt's own-package archive hash must be a separately managed generated path;
+it cannot be a circular self-hash embedded in that archive.
+
+The exact production receipt schemas and paths are documented in
+[the broker integration contract](../../../runtime/plugins/BROKER.md). The source
+stage does not substitute a `qualified:true` marker for native proof. Changes to
+Firefox/reader/page or MCP source pins require review; import or installation
+alone does not activate an integration. There is no unknown-code unconfined path.
 
 ## Commands and validation boundary
 
@@ -77,8 +99,10 @@ archive validation, dependency checks and serialized install/recovery remain
 mandatory; nothing here authorizes a host-system installation.
 
 Source tests cover optional ownership/defaults, installed voice imports, missing
-or tampered npm custody, native-binary rejection and existing-stage refusal. The
-integration unit fixture is explicitly synthetic. Separately, actual committed
+or tampered npm custody, native-binary rejection and existing-stage refusal. One
+integration ownership fixture uses synthetic module bodies and explicitly real
+bundled reference data. The actual-source stage also verifies deterministic
+namespace/payload/source hashes and the absence of qualified receipts. Separately, actual committed
 agent/integration source plus retained B01 archives were staged and combined with
 the assistant/voice payloads for installed-namespace and direct service-help checks.
 Those observations establish payload/import custody, not a running native broker,

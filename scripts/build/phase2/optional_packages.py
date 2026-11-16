@@ -241,14 +241,55 @@ def stage_voice(root,destination,*,version='0.2.0-1+toddy1'):
 
 def stage_integrations(root,destination,*,version='0.2.0-1+toddy1'):
  b=Payload(root,destination,'toddy-integrations',version)
- b.python('runtime/plugins','/usr/lib/toddy/integrations',PLUGINS)
+ b.dependencies+=['toddy-agent']
+ # Match the fixed broker import/catalog namespace. Do not create a root alias
+ # or collide with broker/integrations.py, which is owned by toddy-agent.
+ b.python('runtime/plugins','/usr/lib/toddy/plugins',PLUGINS)
+ bundles={'release-reference':('server.py','release.json','NOTICE','manifest.json'),
+          'browser-local-read':('page.html',)}
+ for name,files in bundles.items():
+  for filename in files:
+   b.copy('runtime/plugins/bundled/'+name+'/'+filename,
+          '/usr/lib/toddy/plugins/bundled/'+name+'/'+filename)
+ manifest=json.loads(b.content['/usr/lib/toddy/plugins/bundled/release-reference/manifest.json'])
+ if set(manifest)!={'plugin_version','id','entry','files','capabilities','tools'} or \
+   type(manifest['plugin_version']) is not int or manifest['plugin_version']!=1 or \
+   manifest['id']!='release-reference' or manifest['entry']!='server.py' or \
+   manifest['capabilities']!=['mcp.tools.read'] or manifest['tools']!={'lookup-package':['package']} or \
+   set(manifest['files'])!={'server.py','release.json','NOTICE'}:
+  raise PackageBlocked('reviewed_release_reference_manifest_required')
+ for filename,expected in manifest['files'].items():
+  if digest(b.content['/usr/lib/toddy/plugins/bundled/release-reference/'+filename])!=expected:
+   raise PackageBlocked('release_reference_payload_integrity')
+ release=json.loads(b.content['/usr/lib/toddy/plugins/bundled/release-reference/release.json'])
+ observed=b.source('docs/evidence/B02-desktop-runtime-manifest.json')
+ components=json.loads(observed)['components']
+ fields=('name','version','architecture','sources','copyright','source_notices_index')
+ projection={r['name']:{k:r[k] for k in fields if k in r} for r in components}
+ if release['source_manifest_sha256']!=digest(observed) or release['components']!=projection or \
+   release['scope']!='Pinned accepted B02 desktop release reference; not current installed package inventory':
+  raise PackageBlocked('complete_release_reference_projection_required')
  b.copy('runtime/plugins/README.md','/usr/share/doc/toddy-integrations/integrations.md')
- b.copy('config/phase2/profile/skills/explain-system/SKILL.md','/usr/share/toddy/skills/explain-system/SKILL.md')
- b.put('/usr/share/toddy/integrations/defaults.json',encoded({'schema_version':1,'enabled':False,
+ b.copy('runtime/plugins/BROKER.md','/usr/share/doc/toddy-integrations/broker.md')
+ b.put('/usr/share/toddy/plugins/defaults.json',encoded({'schema_version':1,'enabled':False,
    'registered_plugins':[],'browser_enabled':False,'automatic_skill_execution':False,'hooks_enabled':False}))
- b.legal('Optional native plugin/skill/browser adapters. No plugin executable, server,\nconnector credential, enabled registration, browser profile or executable hook\nis shipped. Imported/discovered code remains disabled until independent policy\nand actual target confinement qualification. The shipped explanatory skill is\nplain data loaded only on relevance selection and grants no capability.')
+ b.put('/usr/share/doc/toddy-integrations/activation-inputs.json',encoded({
+   'schema_version':1,'scope':'Exact staged inputs only; no native qualification or owner activation',
+   'qualification_receipts_generated':False,
+   'release-reference':{'manifest_sha256':digest(b.content['/usr/lib/toddy/plugins/bundled/release-reference/manifest.json']),
+     'receipt_path':'/usr/share/toddy/plugins/release-reference.receipt.json',
+     'native_evidence_required':'Actual qualified Bubblewrap/kernel/filesystem/IPC/network/credential denial and native signed package transaction'},
+   'browser-local-read':{'page_sha256':digest(b.content['/usr/lib/toddy/plugins/bundled/browser-local-read/page.html']),
+     'reader_sha256':digest(b.content['/usr/lib/toddy/plugins/atspi_read.py']),
+     'firefox_version':'153.7.0esr',
+     'receipt_path':'/usr/share/toddy/plugins/browser-local-read.receipt.json',
+     'native_evidence_required':'Actual frozen Firefox/scoped AT-SPI/local page/Stop and complete installed Firefox component record'},
+   'receipt_rule':'Trusted native transaction generates independently managed receipts after qualification; never embed a circular own-archive hash in source package'}))
+ b.legal('Optional native plugin/skill/browser adapters and reviewed release-reference MCP source.\nThe source server and exact public B02 metadata projection are bundled but never\nexecuted by staging. No enabled registration, qualified receipt, account key,\nbrowser profile, executable hook or implicit owner permission is shipped.\nThe data-only default skill belongs to toddy-agent; this package requires it\nfor canonical skill parsing and independent broker policy. Native confinement\nand browser proof must precede trusted receipt generation and explicit owner activation.')
  return b.finish({'registered_plugins':[],'unknown_code_enabled':False,
-  'native_prerequisites':['qualified-bubblewrap-confinement','Firefox/AT-SPI only when browser explicitly enabled']})
+  'bundled_source_integrations':['release-reference','browser-local-read'],
+  'qualification_receipts_generated':False,'native_qualification':False,
+  'native_prerequisites':['qualified-bubblewrap-confinement','Firefox153.7.0esr/AT-SPI only when explicitly enabled']})
 
 
 def main():

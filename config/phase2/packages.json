@@ -139,8 +139,8 @@
       "first_owner_story": "B10",
       "image_scope": "installed-and-live",
       "owns": [
-        "/usr/lib/toddy/integrations/",
-        "/usr/share/toddy/skills/"
+        "/usr/lib/toddy/plugins/",
+        "/usr/share/toddy/plugins/"
       ],
       "requires_capabilities": [
         "bubblewrap-reviewed-policy"
