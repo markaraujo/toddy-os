@@ -1,5 +1,15 @@
 # Phase 2 continuation card
 
+## Immediate owner UI delivery
+
+The owner now requests a real graphical VM/image to validate while development
+continues. Follow [today delivery execution](PHASE-2-TODAY-DELIVERY.md). Complete
+plan delivery remains the target; basic-tested intermediate media is not G2.
+Actual base unpack passed321configured packages. Resource qualification failed
+before its intent at packaged empty runtime directories; focused developer-only
+correction89d2888 preserves exact ownership and rejects runtime files. Controlled
+source sync and affected qualification are next. No ISO exists yet.
+
 ## Basic-tested MVP delivery current
 
 Owner explicitly reduced the delivery gate to basic MVP checks on 2026-11-16;
