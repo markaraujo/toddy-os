@@ -53,6 +53,16 @@ def write(path, value):
         stream.write(p.encoded(value)); stream.flush(); os.fsync(stream.fileno())
 
 
+def policy_input(base,manifest):
+    """Raw-file and canonical policy identities must agree before native writes."""
+    from runtime.installer.composition import validate_policy
+    p=payload_module();path=secured(Path(base)/'policy.json');data=path.read_bytes();policy=p.strict(data)
+    validate_policy(policy,manifest)
+    if data!=p.encoded(policy):
+        raise ValueError('Reviewed policy.json must use canonical payload JSON encoding')
+    return policy
+
+
 class AssemblyRoot:
     """One fixed, new same-filesystem generation; inode-pinned across commands."""
     def __init__(self, kind, manifest):
@@ -180,7 +190,7 @@ class ReviewedInputs:
         self.pins=pins
         self.manifest=p.PreparedPayload(self.bundle,manifest_sha256=pins['payload/manifest.json'],runner=None,finalizer=None)._load()
         bundle_namespace(self.bundle,self.manifest);validate_installed_handoff(self.manifest,self.source_hashes)
-        self.policy=p.strict(secured(self.base/'policy.json').read_bytes());validate_policy(self.policy,self.manifest)
+        self.policy=policy_input(self.base,self.manifest)
         self.generated=p.strict(secured(self.base/'generated-entries.json').read_bytes())
         self.boot=p.strict(secured(self.base/'boot-profile.json').read_bytes())
         expected=p.strict(secured(self.base/'expected-image-manifest.json').read_bytes())
@@ -282,8 +292,7 @@ def main():
             result=finalize_native(kind,system)
         elif action.startswith('qualify-'):
             from resource_recipe import qualify
-            from runtime.installer.composition import validate_policy
-            policy=p.strict(secured(bundle.parent/'policy.json').read_bytes());validate_policy(policy,manifest)
+            policy=policy_input(bundle.parent,manifest)
             assembly=adopt_unpacked(kind,manifest,sha,system)
             result=qualify(assembly,manifest,policy,system)
         else:

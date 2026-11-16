@@ -110,6 +110,19 @@ class AssemblyTests(unittest.TestCase):
             self.assertEqual(write.call_count,1)
             self.assertEqual(write.call_args.args[0].name,'finalize-intent.json')
 
+    def test_reviewed_policy_rejects_noncanonical_bytes_before_native_work(self):
+        policy={'accounts':{'passwd':'root:x:0:0:root:/root:/bin/bash\n','group':'root:x:0:\nwheel:x:97:\n'},
+            'required_policy_paths':['/etc/pam.d/login']}
+        manifest={'ownership':{'entries':{'/etc/pam.d/login':{'sha256':'a'*64}}}}
+        with tempfile.TemporaryDirectory() as temporary:
+            base=Path(temporary);path=base/'policy.json'
+            with patch.object(a,'secured',side_effect=lambda x:x):
+                path.write_text(json.dumps(policy,indent=2))
+                with self.assertRaisesRegex(ValueError,'canonical payload JSON'):a.policy_input(base,manifest)
+                path.write_bytes(a.payload_module().encoded(policy))
+                self.assertEqual(a.policy_input(base,manifest),policy)
+                self.assertEqual(a.payload_module().digest(path),__import__('hashlib').sha256(a.payload_module().encoded(policy)).hexdigest())
+
     def test_partial_unpack_stops_without_configure_or_success_receipt(self):
         with tempfile.TemporaryDirectory() as temporary:
             work=Path(temporary);root=work/'root';root.mkdir()

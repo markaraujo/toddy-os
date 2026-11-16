@@ -120,20 +120,25 @@ verified custody; this tool neither retires caches nor authorizes deletion.
 
 ## Native candidate archive assembly command
 
-`image_assemble.py base` (or `live`) runs **inside** the guarded native target,
-using its source-built Dpkg rather than the builder distribution's Dpkg. The
-coordinator first runs the existing outer `guard_target`, verifies/reconciles
-native jobs and holds `/var/log/toddy/build/build.lock` across the chroot call.
-Expose the committed `/opt/toddy-build` source read-only at that same path inside
-the native chroot; do not copy a source checkout into the candidate image. The
-ordinary target `/dev`, `/proc`, `/sys` and `/run` prerequisites must be present.
-With those preconditions, the fixed base command is:
+The fixed outer entry `image_native.sh base` (or `live`) runs the assembler
+inside the guarded target, using source-built Dpkg rather than the Ubuntu
+builder's Dpkg. It takes the actual native build lock, refuses active native
+recipes/input sync, verifies existing target API visibility and enters a private
+mount namespace. It binds the committed builder `/opt/toddy-build` read-only at
+the same path inside the chroot with `nosuid,nodev,noexec`, verifies source inode
+identity and mount flags, and invokes target Python with `-I` and a closed
+environment. It never copies source/caches/credentials into an image.
 
 ```sh
-flock -n /var/log/toddy/build/build.lock \
-  chroot /mnt/lfs /usr/bin/env -i PATH=/usr/bin:/usr/sbin LC_ALL=C \
-  /usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/image_assemble.py base
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh base
 ```
+
+The wrapper uses `/usr/sbin/chroot` on the Ubuntu builder; subsequent binaries
+are target-native. Existing `/mnt/lfs/opt/toddy-build` trees or binds are refused.
+Only the wrapper's newly created empty bind directory is removed on exit, after
+unmount and inode verification. Mount changes remain in the private namespace.
+After interruption, reconcile a retained empty directory instead of automatically
+reusing it. No target API mounts are created or replaced by this entry.
 
 The inner guard independently requires root device `/dev/vdb4`, disk serial
 `TODDY-LFS-TARGET` and label `TODDY_LFS`; running this directly on the builder or
@@ -220,7 +225,7 @@ collisions in the native finalizer's private report directory. Each source root
 contains an explicitly empty root-owned 0700 `lost+found` matching the production
 ext4 namespace; this is staged metadata, not filesystem-format proof.
 
-Use the same guarded/locked native chroot command shown above, replacing the
+Use the same fixed `image_native.sh` outer entry shown above, replacing its
 last argument sequentially with `finalize-base`, `finalize-live`, then
 `stage-live`. These require the matching committed generated-resource/live-profile
 source modules; absent qualification inputs or modules fail closed.
@@ -245,3 +250,14 @@ and root-owned producer unit. `image_media` independently verifies that class,
 source/unit bytes and policy identity and reuses its ID in initramfs/ISO. SquashFS
 hash remains a separate actual measured field. The media ID does not depend on
 final image bytes, avoiding a recursive identity requirement.
+
+
+## Policy byte identity at the source boundary
+
+The reviewed source `policy.json` must use `offline_payload.encoded(policy)`
+(canonical sorted UTF-8 JSON plus newline). Native finalizer custody binds the
+raw file SHA, while resource/live contracts bind canonical policy JSON. The
+source assembler now requires these bytes to agree before qualification or
+generation-2 creation; a pretty-printed equivalent file is rejected early, not
+after native finalization. This check does not rewrite a reviewed file, invent
+policy or relax the production composition's custody requirements.
