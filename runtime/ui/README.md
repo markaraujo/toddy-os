@@ -127,3 +127,17 @@ a keyring, root execution or physical hardware:
 dbus-run-session --config-file tests/fixtures/setup-client/bus.conf -- python3 tests/fixtures/broker-service/profile_ui.py --locale en
 dbus-run-session --config-file tests/fixtures/setup-client/bus.conf -- python3 tests/fixtures/broker-service/profile_ui.py --locale pt-BR
 ```
+
+## Optional GNOME shortcut
+
+Setup exposes an explicit conflict check, enable and owned-binding removal. No
+startup/import path changes settings. `shortcut.py` inspects installed GNOME
+keybinding schemas, media keys and all listed custom paths, compares canonical
+GTK accelerators and refuses conflicts, foreign Toddy paths and locked settings.
+The only command is `/usr/bin/toddy`. Other custom paths and built-ins remain
+unchanged. Changes are per-user; standard app activation remains the fallback.
+GNOME does not offer a cross-schema atomic compare-and-set, so competing settings
+writers can still race after inspection; an observed mismatch reports changed
+state instead of claiming registration. Real desktop activation/focus needs
+native qualification. `test_shortcut.py` uses real Gio.Settings with a child-only
+`GSETTINGS_BACKEND=memory`; it never writes the workstation dconf database.

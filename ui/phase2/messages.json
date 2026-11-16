@@ -1167,6 +1167,156 @@
         "en": "Existing task uses profile {profile}.",
         "pt-BR": "A tarefa existente usa o perfil {profile}."
       }
+    },
+    {
+      "id": "shortcut.title",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Desktop shortcut",
+        "pt-BR": "Atalho da área de trabalho"
+      }
+    },
+    {
+      "id": "shortcut.notice",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Optional GNOME shortcut to /usr/bin/toddy. Check conflicts, then explicitly enable. Existing shortcuts are preserved. Application launcher remains available.",
+        "pt-BR": "Atalho opcional do GNOME para /usr/bin/toddy. Verifique conflitos e ative explicitamente. Os atalhos existentes são preservados. O lançador do aplicativo continua disponível."
+      }
+    },
+    {
+      "id": "shortcut.check",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Check conflicts",
+        "pt-BR": "Verificar conflitos"
+      }
+    },
+    {
+      "id": "shortcut.enable",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Enable shortcut",
+        "pt-BR": "Ativar atalho"
+      }
+    },
+    {
+      "id": "shortcut.remove",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Remove Toddy shortcut",
+        "pt-BR": "Remover atalho do Toddy"
+      }
+    },
+    {
+      "id": "shortcut.inactive",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "No shortcut has been changed by this window.",
+        "pt-BR": "Esta janela ainda não alterou atalhos."
+      }
+    },
+    {
+      "id": "shortcut.available",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "No conflict found in installed GNOME bindings. Enable to save.",
+        "pt-BR": "Nenhum conflito encontrado nos atalhos instalados do GNOME. Ative para salvar."
+      }
+    },
+    {
+      "id": "shortcut.enabled",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Toddy shortcut saved.",
+        "pt-BR": "Atalho do Toddy salvo."
+      }
+    },
+    {
+      "id": "shortcut.removed",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Owned Toddy shortcut removed.",
+        "pt-BR": "Atalho do Toddy removido."
+      }
+    },
+    {
+      "id": "shortcut.conflict",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "This shortcut is already assigned. Choose another.",
+        "pt-BR": "Este atalho já está em uso. Escolha outro."
+      }
+    },
+    {
+      "id": "shortcut.invalid",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Use a valid key combination with a modifier.",
+        "pt-BR": "Use uma combinação válida com uma tecla modificadora."
+      }
+    },
+    {
+      "id": "shortcut.occupied",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The Toddy settings path belongs to another binding; no changes made.",
+        "pt-BR": "O caminho de configurações do Toddy pertence a outro atalho; nenhuma alteração feita."
+      }
+    },
+    {
+      "id": "shortcut.locked",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Shortcut settings are locked or could not be saved.",
+        "pt-BR": "As configurações de atalhos estão bloqueadas ou não puderam ser salvas."
+      }
+    },
+    {
+      "id": "shortcut.changed",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Settings changed concurrently. Check conflicts again.",
+        "pt-BR": "As configurações mudaram durante a operação. Verifique os conflitos novamente."
+      }
+    },
+    {
+      "id": "shortcut.unavailable",
+      "context": "shortcut",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "GNOME shortcut settings are unavailable. Use the application launcher.",
+        "pt-BR": "As configurações de atalhos do GNOME estão indisponíveis. Use o lançador do aplicativo."
+      }
     }
   ]
 }

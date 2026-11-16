@@ -121,6 +121,35 @@ class SetupWindow(Adw.ApplicationWindow):
         self.status.set_accessible_role(Gtk.AccessibleRole.STATUS)
         page.append(self.status)
         self._credential_form(page)
+        self._shortcut_form(page)
+
+    def _shortcut_form(self,page):
+        text=self.model.text
+        group=Adw.PreferencesGroup(title=text('shortcut.title'),description=text('shortcut.notice'))
+        self.shortcut_entry=Gtk.Entry(text='<Super><Shift>t',max_length=128)
+        group.add(self.shortcut_entry)
+        controls=Gtk.Box(spacing=12)
+        for key,action in (('shortcut.check','check'),('shortcut.enable','enable'),('shortcut.remove','remove')):
+            button=Gtk.Button(label=text(key))
+            button.connect('clicked',lambda _button,action=action:self._shortcut_action(action))
+            controls.append(button)
+        group.add(controls)
+        self.shortcut_status=self._label(text('shortcut.inactive'))
+        group.add(self.shortcut_status);page.append(group)
+
+    def _shortcut_action(self,action):
+        from .shortcut import Shortcut,ShortcutError
+        try:
+            shortcut=Shortcut()
+            if action=='check':
+                state='conflict' if shortcut.conflicts(self.shortcut_entry.get_text()) else 'available'
+            elif action=='enable':
+                shortcut.register(self.shortcut_entry.get_text());state='enabled'
+            else:
+                shortcut.remove();state='removed'
+        except ShortcutError as error:
+            state=str(error) if str(error) in ('conflict','invalid','occupied','locked','changed','unavailable') else 'unavailable'
+        self.shortcut_status.set_text(self.model.text('shortcut.'+state))
 
     def _conversation(self):
         text=self.model.text
