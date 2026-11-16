@@ -26,7 +26,7 @@ AGENT={
  'acquisition':('choices.py','cli.py','download.py'),
 }
 WORKER=('worker.mjs','framing.mjs','provider.mjs','local-transport.mjs','package.json','package-lock.json')
-VOICE=('artifacts.py','process.py','session.py','candidates.json')
+VOICE=('artifacts.py','process.py','session.py','child.py','catalog.py','controller.py','candidates.json')
 PLUGINS=('atspi_read.py','browser.py','limits.py','mcp.py','skills.py')
 
 
@@ -234,9 +234,25 @@ def stage_voice(root,destination,*,version='0.2.0-1+toddy1'):
  for path,data in b.content.items():
   if path.endswith('.py') and b'from runtime.voice' in data:raise PackageBlocked('installed_voice_namespace_required')
  b.copy('runtime/voice/README.md','/usr/share/doc/toddy-voice/adapters.md')
- b.legal('Optional speech adapter code only. Engines, voices, models and their native\nsource/license/integrity receipts are separate. No microphone or playback starts\non import or installation; text remains usable and speech requires explicit selection.')
+ b.copy('runtime/voice/UI.md','/usr/share/doc/toddy-voice/ui.md')
+ wrappers={}
+ for name in ('pw-record','pw-play'):
+  source='runtime/voice/wrappers/'+name
+  data=b.source(source)
+  b.put('/usr/lib/toddy/voice/'+name,data,0o755,source)
+  wrappers[name]=digest(data)
+ b.put('/usr/share/doc/toddy-voice/activation-inputs.json',encoded({
+  'schema_version':1,'scope':'Source controls only; no audio, model or native qualification',
+  'catalog_generated':False,'catalog_path':'/usr/share/toddy/voice/catalog.json',
+  'launcher_sha256':digest(b.content['/usr/lib/toddy/voice/child.py']),
+  'runner_sha256':digest(b.content['/usr/lib/toddy/voice/process.py']),
+  'wrapper_sha256':wrappers,
+  'required_native_versions':{'pipewire':'1.6.8','wireplumber':'0.5.15','whisper-cpp':'1.9.5','espeak-ng':'1.52.0'},
+  'native_evidence_required':'Actual engine/model/license and selected-device/no-fallback/PTT/Stop/focus/close/parent-loss qualification before trusted catalog generation'}))
+ b.legal('Optional speech adapters, root-catalog reader, per-profile UI worker and fixed\nsource pw-cat mode wrappers only. Native engines, voices, models and their exact\nsource/license/integrity receipts are separate. No catalog, microphone, device query\nor playback starts on import or installation. Text remains usable; local speech\nrequires qualified native inputs, notice review and explicit device/action selection.')
  return b.finish({'engines_bundled':False,'models_or_voices_bundled':False,'always_listening':False,
-  'runtime_configuration':'no artifact or device selected'})
+  'runtime_configuration':'no catalog, artifact or device selected','catalog_generated':False,
+  'fixed_transport_wrappers':sorted(wrappers)})
 
 
 def stage_integrations(root,destination,*,version='0.2.0-1+toddy1'):

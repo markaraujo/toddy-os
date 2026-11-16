@@ -47,7 +47,14 @@ source/build inventory. A generic outer recipe label is not a substitute for it.
 acquisition remains separate with explicit integrity/license consent. No selected
 artifact, device, microphone, playback or always-listening configuration is shipped.
 Installed package-relative imports support text fallback with every optional
-speech artifact absent.
+speech artifact absent. Voice includes its fixed parent-death launcher, catalog/
+worker modules and two regular executable pw-cat mode wrappers. This preserves
+strict artifact symlink rejection; no host pw-record/pw-play symlink is imported.
+Exact first-party launcher/runner/wrapper hashes and required frozen native
+versions are recorded in activation-inputs.json. No usable catalog, native engine,
+model or qualification receipt is minted by staging. The parent native transaction
+must establish actual device/no-fallback/PTT/Stop/focus/close/parent-loss and licensed
+EN/PT model behavior before root catalog generation and explicit owner use.
 
 `integrations` stages the actual reviewed adapters under `/usr/lib/toddy/plugins`,
 matching the canonical broker import/catalog namespace. It requires toddy-agent

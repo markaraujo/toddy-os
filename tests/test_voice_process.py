@@ -74,6 +74,13 @@ class VoiceProcessTests(unittest.TestCase):
                 except (ProcessLookupError,ChildProcessError):pass
             libc.prctl(36,prior.value,0,0,0)
 
+    def test_bounded_device_metadata_stdout_never_returns_diagnostics(self):
+        result=ProcessRunner().run([sys.executable,'-c',
+            'import sys;print("[]");print("private diagnostic fixture",file=sys.stderr)'],
+            cancel=threading.Event(),timeout=2,capture_stdout=True,output_limit=1024)
+        self.assertEqual(result.stdout,b'[]\n')
+        self.assertNotIn(b'private',result.stdout)
+
     def test_launcher_refuses_wrong_parent_before_exec(self):
         marker=self.base/'should-not-exist'
         result=subprocess.run([sys.executable,'-I',str(ROOT/'runtime/voice/child.py'),'0',

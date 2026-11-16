@@ -27,6 +27,12 @@ class OptionalPackageTests(unittest.TestCase):
   self.assertEqual(record,optional.stage_voice(ROOT,second))
   self.assertFalse(record['engines_bundled']);self.assertFalse(record['models_or_voices_bundled'])
   self.assertFalse(record['always_listening']);self.assertFalse(record['offline_base'])
+  self.assertFalse(record['catalog_generated'])
+  self.assertFalse((stage/'usr/share/toddy/voice/catalog.json').exists())
+  for name in ('pw-record','pw-play'):
+   wrapper=stage/'usr/lib/toddy/voice'/name
+   self.assertEqual(wrapper.stat().st_mode&0o777,0o755)
+   self.assertEqual(wrapper.read_bytes(),(ROOT/'runtime/voice/wrappers'/name).read_bytes())
   self.assertEqual(record['depends_on_packages'],['toddy-assistant'])
   self.assertFalse((stage/'usr/lib/toddy/__init__.py').exists())
   self.assertFalse((stage/'DEBIAN').exists())
@@ -38,6 +44,13 @@ import sys
 sys.dont_write_bytecode=True
 sys.path.insert(0,sys.argv[1]+'/usr/lib')
 from toddy.voice.session import VoiceSession
+from toddy.voice.controller import VoiceController
+from toddy.voice.catalog import NativeVoiceCatalog
+from toddy.voice.artifacts import VoiceError
+try:NativeVoiceCatalog()
+except VoiceError:pass
+else:raise AssertionError("unqualified catalog unexpectedly available")
+controller=VoiceController(lambda *a:None,lambda fn:fn());controller.close()
 assert VoiceSession({},{}).capabilities('pt-BR') == {
  'language':'pt-BR','text_available':True,'always_listening':False,
  'push_to_talk':False,'speech_output':False,'playback':False,
