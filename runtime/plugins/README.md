@@ -49,3 +49,29 @@ loader does not copy executable hooks or automatically adopt untrusted files.
 Host checks are `python3 -m unittest discover -s tests -p test_plugins.py -v`.
 Native filesystem/secret-service/egress denial and the B10 integrated broker and
 browser flows remain separate acceptance work; a host pass is not that evidence.
+
+## Opt-in browser bridge
+
+`BrowserSession` opens one hash-reviewed local HTML fixture in a new native
+Firefox process with `--no-remote`, `--new-instance` and an explicit private
+profile. HOME/XDG paths are fresh; provider environment variables and owner
+browser cookies/logins/profile paths are never imported. The broker must supply
+current opt-in `browser.local.read` authorization at launch and read. This is a
+trusted native-browser profile boundary, separate from unknown-code confinement.
+
+The read worker uses the selected GNOME
+[AT-SPI Accessible API](https://gnome.pages.gitlab.gnome.org/at-spi2-core/libatspi/class.Accessible.html)
+and [document URL attribute](https://gnome.pages.gitlab.gnome.org/gtk/atspi2/method.Document.get_document_attribute_value.html).
+It selects the launched Firefox PID before traversing content, then selects the
+exact fixture document URL. Browser chrome, other application text, other
+documents and unmatched frames are excluded. URL is checked again after the
+bounded read. The broker bounds worker time/output, marks text untrusted and
+provides Stop for its owned browser/reader processes. There is no static-file or
+HTTP-fetch fallback when native accessibility is unavailable.
+
+Source tests use explicitly labeled process/accessibility fixtures:
+`python3 -m unittest discover -s tests -p test_browser_bridge.py -v`.
+They establish lifecycle/scope behavior, not a real Firefox accessibility pass.
+Actual guest Firefox153.7.0esr/AT-SPI local-page read and Stop/error remain required
+before claiming S25 or B10 acceptance. General website navigation, login,
+form filling, driver/debug ports and owner browser profiles are unavailable.
