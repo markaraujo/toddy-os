@@ -1,0 +1,29 @@
+{
+  "scope": "source-only fresh live GNOME attribution and exact installer authority",
+  "native_live_boot_or_login": false,
+  "native_polkit_or_pam_execution": false,
+  "host_or_guest_service_account_mutation": false,
+  "story_acceptance": false,
+  "upstream_source_inspected": {
+    "gdm": "50.2 data/pam-lfs/gdm-autologin.pam and daemon/gdm-manager.c",
+    "polkit": "127 src/programs/pkexec.c authoritative program detail",
+    "linux_pam": "1.7.2 pam_succeed_if equality and pam_exec PAM_TYPE/service/user environment",
+    "gsettings_desktop_schemas": "50.1 exact lockdown/screensaver/session key types"
+  },
+  "checks": [
+    {
+      "command": "python3 -m unittest tests.test_live_session tests.test_installer_live_bindings tests.test_installer_package tests.test_resource_recipe -q",
+      "tests": 34,
+      "exit": 0,
+      "seconds": 0.084
+    },
+    {
+      "command": "make check",
+      "tests": 798,
+      "exit": 0,
+      "seconds": 16.557
+    }
+  ],
+  "proof_boundary": "Synthetic session facts and pure file plan validate boot/session/unit mismatch denial, locked/remote/wrong GDM/UID denial, exact action/program rule scope, fresh locked nonwheel UID1000, no baked runtime authority, immutable selected input plan and preeffect fixed-stage refusal. No native authorization claimed.",
+  "native_next": "Actual generation2 finalizer source input closure, fresh live profile/dconf delta+ACL+fullsnapshot, actual GDM autologin/rootproducer/currentboot/session guard/refusals and rootCalamares GUI, then verify live user/rule/class/helper exclusion from installed base."
+}

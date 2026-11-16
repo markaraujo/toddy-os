@@ -125,6 +125,8 @@ def main():
         request=strict_json(data)
         if not isinstance(request,dict) or set(request)!={'version','display','locale'} or type(request['version']) is not int or request['version']!=1:
             raise InstallError('installer_launch_request')
+        from .live_session import authorize_live_owner
+        authorize_live_owner(uid)
         launch_receipt()
         from .live_bindings import create
         create().readiness()
