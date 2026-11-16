@@ -1,7 +1,7 @@
 """Conservative UI projection; reconnect retrieves known work, never submits it."""
 import re
 
-from runtime.broker.protocol import strict_json
+from ..shared.json import strict_json
 
 IDENTIFIER = re.compile(r'[A-Za-z0-9][A-Za-z0-9._:-]{0,127}\Z')
 REVISION = re.compile(r'[0-9a-f]{64}\Z')
@@ -25,9 +25,10 @@ def capabilities(data):
             not isinstance(value.get('profile_revision'), str) or not REVISION.fullmatch(value['profile_revision']) or \
             not isinstance(value.get('features'), list) or \
             not all(isinstance(item, str) for item in value['features']) or \
-            not {'native-tools','durable-tasks','cancel'}.issubset(value['features']) or \
+            not {'durable-tasks','cancel'}.issubset(value['features']) or \
             not isinstance(value.get('tools'), list) or \
-            not all(isinstance(item, str) for item in value['tools']) or 'system-info' not in value['tools']:
+            not all(isinstance(item, str) for item in value['tools']) or \
+            ('agent_backend' in value and type(value['agent_backend']) is not bool):
         raise ValueError('unsupported_capabilities')
     return value
 
@@ -82,3 +83,44 @@ class TaskState:
                 return 'gap'
         self.snapshot = value
         return 'updated'
+
+
+class TaskText:
+    """Bounded private text pages; these are separate from status signals."""
+    def __init__(self, task_id):
+        self.task_id=task_id
+        self.sequence=0
+        self.latest_sequence=0
+        self.text=''
+        self.complete=False
+        self.history_enabled=False
+
+    def observe(self,data):
+        value=body(data,32768)
+        if set(value)!={'version','task_id','chunks','next_sequence','latest_sequence','complete','history_enabled'} or \
+                value['task_id']!=self.task_id or not isinstance(value['chunks'],list) or \
+                type(value['next_sequence']) is not int or type(value['latest_sequence']) is not int or \
+                not self.sequence<=value['next_sequence']<=value['latest_sequence']<=2**53-1 or \
+                type(value['complete']) is not bool or type(value['history_enabled']) is not bool:
+            raise ValueError('invalid_text_page')
+        sequence=self.sequence
+        chunks=[]
+        for chunk in value['chunks']:
+            if not isinstance(chunk,dict) or set(chunk)!={'sequence','text'} or \
+                    type(chunk['sequence']) is not int or chunk['sequence']!=sequence+1 or \
+                    not isinstance(chunk['text'],str) or not 0<len(chunk['text'].encode('utf-8'))<=1024:
+                raise ValueError('invalid_text_chunk')
+            sequence=chunk['sequence']
+            chunks.append(chunk['text'])
+        if sequence!=value['next_sequence'] or \
+                (sequence<value['latest_sequence'] and not chunks):
+            raise ValueError('text_cursor_stalled')
+        candidate=self.text+''.join(chunks)
+        if len(candidate.encode('utf-8'))>256*1024:
+            raise ValueError('text_total_bound')
+        self.sequence=sequence
+        self.latest_sequence=value['latest_sequence']
+        self.text=candidate
+        self.complete=value['complete']
+        self.history_enabled=value['history_enabled']
+        return self.sequence<self.latest_sequence

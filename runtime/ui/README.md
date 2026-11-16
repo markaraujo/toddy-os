@@ -1,62 +1,83 @@
-# Native setup and task entry
+# Native setup, conversation and profile entry
 
-Run from the checkout with the user's GTK4/Libadwaita session:
+From the checkout:
 
 ```sh
 python3 -m runtime.ui.app --locale en
 python3 -m runtime.ui.app --locale pt-BR
 ```
 
-`--data-root` selects a directory preserving the repository-relative
-`ui/phase2/messages.json` and `config/phase2/software-catalog.json` layout.
-`--state-directory` can select a new absolute private directory for development;
-otherwise state goes to `$XDG_STATE_HOME/toddy/setup`. Package installation,
-launcher substitution, shortcut conflict checks and exact guest qualification
-remain separate integration work. No executable is invented in the prepared
-`.desktop` template.
+Package-relative imports also support the installed `toddy.ui.app` namespace.
+The lightweight UI needs only its setup/shared/connections helpers, GTK4 and
+Libadwaita; it does not import the optional broker, Pi/Node, model or executor.
+`--data-root` selects a tree containing the shared relative `ui/phase2/messages.json`
+and `config/phase2/software-catalog.json` inputs. `--state-directory` can select a
+new absolute private development directory; otherwise use
+`$XDG_STATE_HOME/toddy/setup`. Actual packaging/launcher substitution, shortcut
+conflict checks and native target qualification remain integration work.
 
-The GTK4/Libadwaita window provides native setup preferences, later/dismissal,
-saved-state reload and optional software review without loading Pi/Node/models or
-an executor. API/local selections save non-secret intent only; they neither
-activate a backend nor acquire credentials/models. The AI conversation entry is
-visibly unavailable because the conversational service is not yet integrated.
-Current catalog candidates are informational, never installable/selectable.
-Corrupt/private-state failures preserve the original state rather than resetting
-it. Concurrent edits require explicit reload. EN/PT copy uses the shared catalog;
-untrusted values use plain widget text, not markup.
+Setup saves later/API/local non-secret intent and dismissal, preserves pending
+choices, supports explicit reload after concurrent edits and leaves the desktop
+usable without a backend. Current unqualified software candidates are informational
+and have no install control. Provider credentials use a separate masked libsecret
+form, never profile JSON or pending state; Save does not activate a provider or
+authorize spending. Missing/locked secret services fail visibly without plaintext
+fallback. [Protected-store details](../connections/README.md) describe exact scope.
 
-A separate **Native system task** section can perform an explicit read-only
-`system-info` task through the actual session broker. It explains that this is a
-native tool rather than an AI conversation. It remains disabled until the service
-provides compatible native-task capabilities. The broker runs unprivileged and
-owns tool dispatch/outcome verification; the UI does not launch a shell or root
-operation. This demonstration does not establish general conversational tasks,
-provider setup, profile editing, credential storage or complete B06 acceptance.
+The conversation entry enables only when the actual same-user service negotiates
+`agent-text-v1`, advertises an available agent backend and identifies its selected
+local/remote provider mode. Remote tasks require a fresh unchecked per-task consent;
+local tasks always submit remote_consent=false. Without those capabilities, entry
+stays unavailable while setup and the desktop remain usable. A separate explicitly
+labeled read-only `system-info` native task does not pretend to be AI conversation.
+Both use the same durable task snapshot, progress, visible Stop and uncertainty
+handling; the UI never executes a shell/root tool directly.
 
-`bridge.py` watches the canonical Service1 session-bus name without autostart,
-authenticates its actual unique-name Unix UID and checks bounded capabilities.
-Calls are asynchronous with a five-second timeout. TaskChanged is subscribed
-before fetching snapshots; stale sequences are discarded and signal gaps trigger
-a snapshot fetch. Reconnecting retrieves the existing task ID using GetTask;
-it does not resubmit. Loss of the acceptance reply holds the submission as unknown
-and disables new dispatch. Refresh only reads capabilities/current task. Stop
-requests cancellation and displays the actual returned state; it promises neither
-immediate termination nor reversal. Service loss invalidates pending callbacks.
-The adapter uses the B05 service's actual input/schema and advertises no LLM backend.
+`bridge.py` asynchronously authenticates the unique session-bus owner's Unix UID,
+validates bounded capabilities and subscribes before snapshots. Status signals
+carry no transcript. The negotiated `TaskTextChanged(task_id,sequence)` signal only
+announces a private update; `GetTaskText(task_id,after_sequence)` returns bounded
+pages. Each chunk is at most1024 UTF-8 bytes and a task's text at most256KiB.
+`latest_sequence` drains backlogged pages; `complete` means text finalized, never
+task success or page exhaustion. Text renders as plain GtkTextBuffer content,
+not markup or executable instructions. Display updates coalesce to at most10Hz.
+The window keeps at most eight recent task exchanges in RAM and labels whether
+server history is enabled. It does not claim a persistent full-history browser.
 
-Host checks:
+Reconnect fetches the existing task ID and text cursor without resubmitting work.
+Loss of a submission reply holds unknown acceptance and blocks automatic replay.
+Stop requests cancellation and reports actual state; no immediate reversal is
+promised. Stale replies are ignored by service/task generation. Text-page failure
+does not remove the independent Stop path. Explicit Refresh reads capabilities
+and current work. Closing clears the credential field and cancels UI callbacks;
+the broker retains authoritative task lifecycle policy.
+
+Profile editing negotiates `profile-settings-v1`. GetProfileConfig reads actual
+current JSON/revision plus at most32 prior revision IDs. Validation stages a
+candidate against that exact revision; Apply uses the owner-bound staged token.
+Editing invalidates a staged validation, and concurrent revision changes require
+explicit reload rather than overwriting someone else's configuration. Restore
+selects an actual prior revision through the broker's expected-revision guard.
+Invalid configuration preserves the current profile. Existing running tasks retain
+their pinned revision. This UI does not write the canonical database or grant root.
+Full persona/bundle import/export and multi-profile controls remain separate work.
+
+Checks:
 
 ```sh
 python3 -m unittest discover -s tests -p 'test_setup_ui.py'
+python3 -m unittest discover -s tests -p 'test_credentials.py'
+python3 -m unittest discover -s tests -p 'test_ui_offline_imports.py'
 python3 -m unittest discover -s tests -p 'test_phase2_copy.py'
-dbus-run-session -- python3 tests/fixtures/setup-client/smoke.py
+dbus-run-session -- python3 tests/fixtures/setup-client/conversation.py
+# Requires an actual GTK display; synthetic service, no provider or keyring access:
+dbus-run-session --config-file tests/fixtures/setup-client/bus.conf -- python3 tests/fixtures/setup-client/conversation.py --gtk --locale pt-BR
 ```
 
-The session-bus smoke uses the real asynchronous client and a synthetic same-user
-service: one submission, cancellation and two snapshot fetches across name loss
-and reacquisition. It is not a real broker, model or guest outcome. The model
-checks cover deferred persistence, concurrent edits, unavailable software,
-bounded snapshots, uncertain acceptance and reconnect projection. Actual host
-GTK/Adw widget construction was checked for EN/PT and deferred save. Native guest
-interaction, keyboard/focus/scale/capture, real broker tasks/Stop/reconnect and
-protected credential/profile integration remain required before B06 acceptance.
+The private-bus fixture drives real async client/native controls with synthetic
+responses: Send, paged literal text, Stop, invalid config refusal, Validate/Apply,
+Restore and owner loss/reconnect with exactly one submission. Protected-store
+checks use a fake keyring; the credential adapter was not exercised on real keys. These do not prove native
+guest/provider/model success. Actual installed S11/S12/S24, keyboard/focus/scale,
+credential isolation, default-harness task and recovery evidence remain necessary
+before B06 acceptance.

@@ -697,6 +697,256 @@
         "en": "Refresh connection",
         "pt-BR": "Atualizar conexão"
       }
+    },
+    {
+      "id": "conversation.title",
+      "context": "conversation",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Conversation",
+        "pt-BR": "Conversa"
+      }
+    },
+    {
+      "id": "conversation.window_history",
+      "context": "conversation",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "This window keeps recent conversation in memory. Saved history is off.",
+        "pt-BR": "Esta janela mantém a conversa recente na memória. O histórico salvo está desativado."
+      }
+    },
+    {
+      "id": "conversation.saved_history",
+      "context": "conversation",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Saved conversation history is enabled for this profile. This window shows its recent tasks.",
+        "pt-BR": "O histórico salvo está ativado para este perfil. Esta janela mostra suas tarefas recentes."
+      }
+    },
+    {
+      "id": "conversation.remote_consent",
+      "context": "conversation",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Allow this task to contact the configured provider; charges may apply.",
+        "pt-BR": "Permitir que esta tarefa acesse o provedor configurado; pode haver cobrança."
+      }
+    },
+    {
+      "id": "conversation.send",
+      "context": "conversation",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Send",
+        "pt-BR": "Enviar"
+      }
+    },
+    {
+      "id": "conversation.ready",
+      "context": "conversation",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Toddy is ready. Describe a task and follow its progress here.",
+        "pt-BR": "O Toddy está pronto. Descreva uma tarefa e acompanhe o progresso aqui."
+      }
+    },
+    {
+      "id": "conversation.unavailable",
+      "context": "conversation",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Conversation is unavailable until a compatible task service and backend are configured. You can still use the desktop and setup.",
+        "pt-BR": "A conversa ficará indisponível até que um serviço de tarefas e uma IA compatíveis sejam configurados. Você pode continuar usando o desktop e a configuração."
+      }
+    },
+    {
+      "id": "conversation.you",
+      "context": "conversation",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "You",
+        "pt-BR": "Você"
+      }
+    },
+    {
+      "id": "profile.settings_title",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Profile",
+        "pt-BR": "Perfil"
+      }
+    },
+    {
+      "id": "profile.settings_notice",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Edit the current profile configuration, validate it, then apply. Do not paste credentials here; use the protected credential form. Running tasks keep their pinned revision.",
+        "pt-BR": "Edite a configuração atual do perfil, valide e aplique. Não cole credenciais aqui; use o formulário protegido. Tarefas em execução mantêm sua revisão original."
+      }
+    },
+    {
+      "id": "profile.settings_unavailable",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Profile settings require a compatible connected service.",
+        "pt-BR": "As configurações do perfil precisam de um serviço compatível conectado."
+      }
+    },
+    {
+      "id": "profile.validate",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Validate changes",
+        "pt-BR": "Validar alterações"
+      }
+    },
+    {
+      "id": "profile.apply",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Apply validated changes",
+        "pt-BR": "Aplicar alterações validadas"
+      }
+    },
+    {
+      "id": "profile.validated",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Changes are valid and ready to apply. The current profile is unchanged.",
+        "pt-BR": "As alterações são válidas e podem ser aplicadas. O perfil atual ainda não mudou."
+      }
+    },
+    {
+      "id": "profile.edited",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Review and validate your changes before applying.",
+        "pt-BR": "Confira e valide suas alterações antes de aplicar."
+      }
+    },
+    {
+      "id": "profile.loaded",
+      "context": "profile",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Current profile loaded.",
+        "pt-BR": "Perfil atual carregado."
+      }
+    },
+    {
+      "id": "credentials.title",
+      "context": "credentials",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Protected provider credentials",
+        "pt-BR": "Credenciais protegidas do provedor"
+      }
+    },
+    {
+      "id": "credentials.notice",
+      "context": "credentials",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Save keys only in your unlocked system credential store. This does not activate a provider or authorize spending. The connection reference is not a key.",
+        "pt-BR": "Salve chaves apenas no cofre desbloqueado de credenciais do sistema. Isso não ativa um provedor nem autoriza gastos. A referência de conexão não é uma chave."
+      }
+    },
+    {
+      "id": "credentials.reference",
+      "context": "credentials",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Connection reference",
+        "pt-BR": "Referência de conexão"
+      }
+    },
+    {
+      "id": "credentials.save",
+      "context": "credentials",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Save in credential store",
+        "pt-BR": "Salvar no cofre de credenciais"
+      }
+    },
+    {
+      "id": "credentials.remove",
+      "context": "credentials",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Remove saved credential",
+        "pt-BR": "Remover credencial salva"
+      }
+    },
+    {
+      "id": "credentials.working",
+      "context": "credentials",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Waiting for the protected credential store.",
+        "pt-BR": "Aguardando o cofre protegido de credenciais."
+      }
+    },
+    {
+      "id": "credentials.saved",
+      "context": "credentials",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Credential saved under {reference}. Review the profile connection before using a provider.",
+        "pt-BR": "Credencial salva em {reference}. Confira a conexão do perfil antes de usar um provedor."
+      }
+    },
+    {
+      "id": "credentials.removed",
+      "context": "credentials",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The matching saved credential was removed, or was already absent.",
+        "pt-BR": "A credencial correspondente foi removida ou já não existia."
+      }
+    },
+    {
+      "id": "credentials.failed",
+      "context": "credentials",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The credential could not be saved or removed. Check the reference and unlock the system credential store; no plain-text fallback was used.",
+        "pt-BR": "Não foi possível salvar ou remover a credencial. Confira a referência e desbloqueie o cofre do sistema; não foi usado armazenamento alternativo em texto simples."
+      }
     }
   ]
 }

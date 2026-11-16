@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 import uuid
 
-from runtime.setup.pending import Catalog, PendingStore, SetupError
+from ..setup.pending import Catalog, PendingStore, SetupError
 
 
 class SetupModel:
