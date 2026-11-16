@@ -39,3 +39,14 @@ uncertain-write retry mode; preserve every partial export and journal.
 
 Source fixture tests prove the bounded contracts, not actual custody success.
 Record actual recovered guest bytes separately; no host trim gain is claimed.
+
+Retained evidence/media may contain legitimate relative merged-/usr symlinks
+(for example initramfs runtime `lib64 -> usr/lib` and `usr/bin/sh -> bash`).
+They are recorded separately as typed `preserved_links`, including raw target
+bytes/base64/SHA, own inode/device/mode/UID/GID/ns times/link count and raw xattrs.
+Resolution walks each relative component and nested link within the same retained
+evidence or media tree; absolute targets, escapes (including outside-and-return
+chains), missing targets and cycles are refused. No link is silently ignored or
+hashed as a regular file. Regular-file hashes and complete obsolete-root archive
+proof remain unchanged. All recorded link metadata/raw targets are independently
+rechecked after the obsolete root is removed, alongside existing regular hashes.

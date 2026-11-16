@@ -147,6 +147,28 @@ class LiveCandidateBoundaryTests(unittest.TestCase):
         with self.assertRaises(ValueError):guest.configure('/arbitrary/root')
         with self.assertRaises(ValueError):host.configure('live-reviewed')
 
+    def test_preserved_media_relative_merged_usr_links_are_typed_raw_and_rechecked(self):
+        temporary=tempfile.TemporaryDirectory();self.addCleanup(temporary.cleanup);parent=Path(temporary.name)
+        media=parent/'media';runtime=media/'initramfs/runtime';(runtime/'usr/bin').mkdir(parents=True);(runtime/'usr/lib').mkdir();(runtime/'usr/sbin').mkdir()
+        (runtime/'usr/bin/bash').write_bytes(b'retained native fixture')
+        for name,target in [('lib64','usr/lib'),('bin','usr/bin'),('sbin','usr/sbin'),('lib','usr/lib'),('usr/bin/sh','bash')]:
+            link=runtime/name;link.symlink_to(target);value=guest.preserved_link(link,media)
+            self.assertEqual(value['type'],'symlink');self.assertEqual(base64.b64decode(value['target_base64']),os.fsencode(target))
+            self.assertEqual(value['target_sha256'],hashlib.sha256(os.fsencode(target)).hexdigest())
+            self.assertEqual(value,guest.preserved_link(link,media))
+        link=runtime/'bin';before=guest.preserved_link(link,media);link.unlink();link.symlink_to('usr/sbin')
+        self.assertNotEqual(before,guest.preserved_link(link,media))
+
+    def test_preserved_links_reject_absolute_escape_and_outside_return_chain(self):
+        temporary=tempfile.TemporaryDirectory();self.addCleanup(temporary.cleanup);parent=Path(temporary.name)
+        media=parent/'retained-media';media.mkdir();outside=parent/'outside';outside.mkdir();(media/'file').write_bytes(b'preserved')
+        for target in ('/etc/passwd','../outside'):
+            link=media/'link';link.symlink_to(target)
+            with self.assertRaisesRegex(ValueError,'absolute|escape'):guest.preserved_link(link,media)
+            link.unlink()
+        (outside/'return').symlink_to('../retained-media/file');(media/'redirect').symlink_to('../outside');(media/'link').symlink_to('redirect/return')
+        with self.assertRaisesRegex(ValueError,'escape'):guest.preserved_link(media/'link',media)
+
     def test_historical_profiles_require_original_tree_and_preserve_media(self):
         import opaque_tar_profiles
         from types import SimpleNamespace

@@ -98,13 +98,48 @@ def no_consumers(snapshot):
     no_mounts()
 
 
+
+def preserved_link(path,tree):
+    """Inspect raw relative targets without traversing outside the retained tree."""
+    path=Path(path);tree=Path(tree)
+    if tree.resolve()!=tree or path.parent.resolve()!=path.parent or not path.is_relative_to(tree):raise ValueError('historical_expanded_redirected_preserved_link')
+    info=path.lstat()
+    if not stat.S_ISLNK(info.st_mode):raise ValueError('historical_expanded_preserved_link_type')
+    raw=os.readlink(os.fsencode(path))
+    if raw.startswith(b'/'):raise ValueError('historical_expanded_absolute_preserved_link')
+    pending=os.fsdecode(raw).split('/');current=path.parent;links=0
+    while pending:
+        part=pending.pop(0)
+        if part in ('','.'):continue
+        if part=='..':
+            if current==tree:raise ValueError('historical_expanded_preserved_link_escape')
+            current=current.parent;continue
+        candidate=current/part
+        try:entry=candidate.lstat()
+        except OSError as error:raise ValueError('historical_expanded_preserved_link_missing') from error
+        if stat.S_ISLNK(entry.st_mode):
+            links+=1
+            if links>64:raise ValueError('historical_expanded_preserved_link_cycle')
+            target=os.readlink(os.fsencode(candidate))
+            if target.startswith(b'/'):raise ValueError('historical_expanded_absolute_preserved_link')
+            pending=os.fsdecode(target).split('/')+pending
+        else:
+            current=candidate
+            if pending and not stat.S_ISDIR(entry.st_mode):raise ValueError('historical_expanded_preserved_link_parent')
+    if not current.is_relative_to(tree):raise ValueError('historical_expanded_preserved_link_escape')
+    return {'type':'symlink','tree':str(tree),'target_base64':base64.b64encode(raw).decode('ascii'),
+        'target_sha256':hashlib.sha256(raw).hexdigest(),'mode':info.st_mode,'uid':info.st_uid,'gid':info.st_gid,
+        'device':info.st_dev,'inode':info.st_ino,'nlink':info.st_nlink,'mtime_ns':info.st_mtime_ns,'ctime_ns':info.st_ctime_ns,
+        'xattrs':{name:base64.b64encode(os.getxattr(path,name,follow_symlinks=False)).decode('ascii') for name in sorted(os.listxattr(path,follow_symlinks=False))}}
+
+
 def historical_eligible():
     """Only two original expanded caches; frozen evidence, not new acceptance."""
     import opaque_tar_profiles
     name,inode,mtime,proof=HISTORICAL[PROFILE];config=opaque_tar_profiles.profile(proof)
     private(WORK,0o755);info=private(ARTIFACT,0o755)
     if (info.st_dev,info.st_ino,info.st_mtime_ns)!=(64788,inode,mtime):raise ValueError('historical_expanded_frozen_root_identity')
-    evidence=WORK/config['evidence'];preserved={}
+    evidence=WORK/config['evidence'];preserved={};preserved_links={}
     for leaf,expected in (('assembly.json',config['assembly_sha256']),(config['manifest'],config['manifest_sha256'])):
         path=secured(evidence/leaf)
         if archive.sha(path)!=expected:raise ValueError('historical_expanded_frozen_evidence_changed')
@@ -122,13 +157,13 @@ def historical_eligible():
     for directory in (evidence,media):
         if directory.resolve()!=directory or not directory.is_dir():raise ValueError('historical_expanded_retained_evidence_media_required')
         for path in sorted(directory.rglob('*')):
-            if path.is_symlink():raise ValueError('historical_expanded_redirected_preserved_evidence')
-            if path.is_file():preserved[str(path)]=archive.sha(secured(path,8*1024**3))
+            if path.is_symlink():preserved_links[str(path)]=preserved_link(path,directory)
+            elif path.is_file():preserved[str(path)]=archive.sha(secured(path,8*1024**3))
     for path in (Path(__file__),Path(archive.__file__),Path(opaque_tar_profiles.__file__),ROOT/'scripts/build/phase2/image_native.sh'):
         preserved[str(path)]=archive.sha(secured(path))
     no_mounts()
     return {'profile':PROFILE,'root_identity':[info.st_dev,info.st_ino,info.st_mtime_ns],
-        'preserved':preserved,'original_image_manifest_sha256':config['manifest_sha256'],
+        'preserved':preserved,'preserved_links':preserved_links,'original_image_manifest_sha256':config['manifest_sha256'],
         'scope':'Frozen historical expanded duplicate only; foundation CLI consumers retired; original evidence/media/backings/ISOs retained',
         'foundation_rebuild_authorized':False,'new_acceptance_claimed':False,
         'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip()}
@@ -267,6 +302,8 @@ def retire(proof):
     shutil.rmtree(ARTIFACT);fsync(WORK)
     for path,sha in state['provenance']['preserved'].items():
         if archive.sha(secured(path))!=sha:raise ValueError('candidate_root_custody_preserved_evidence_changed')
+    for path,expected in state['provenance'].get('preserved_links',{}).items():
+        if preserved_link(Path(path),Path(expected['tree']))!=expected:raise ValueError('candidate_root_custody_preserved_link_changed')
     if os.path.lexists(ARTIFACT):raise ValueError('candidate_root_custody_root_remains')
     state.update(state='complete',after_free_bytes=shutil.disk_usage(TARGET).free,root_removed=True,
         recovery='Restore retained private tar into NEW guarded native candidate directory; compare full metadata and hardlink classes. Never replay old unpack/resource generation.')
