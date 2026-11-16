@@ -16,6 +16,19 @@ from scripts.build.phase2 import owner_setting_evidence as owner_evidence
 
 ROOT=vm.ROOT
 SOURCE=ROOT/'.local/phase2/native-installer-1/installed.qcow2'
+MVP=False
+MVP_CLASS='phase2-mvp-preinstalled-v1'
+MVP_CONTEXT=ROOT/'.local/phase2/installed-owner-mvp-uefi-1'
+
+def configure_mvp():
+    global SOURCE,MVP
+    SOURCE=ROOT/'.local/phase2/native-mvp-installer-1/installed.qcow2'
+    MVP=True
+
+def route(context,number=None):
+    if MVP:
+        if context!=MVP_CONTEXT or number is not None and number not in (1,2):raise ValueError('MVP requires fixed UEFI context and two normal boots')
+    elif context==MVP_CONTEXT:raise ValueError('Explicit MVP route required; never infer profile from context')
 HOST_FLOOR=100*1024**3+512*1024**2
 STOP_HEADROOM=1024**3
 WRITE_BPS=16*1024**2
@@ -47,6 +60,7 @@ def validate_handoff(value):
     if (set(owner)!={'username','uid','gid'} or not isinstance(owner['username'],str) or not re.fullmatch('[a-z][a-z0-9_-]{0,31}',owner['username']) or
             owner['username'] in ('root','lfs','tester','builder','toddy','toddy-live') or
             type(owner['uid']) is not int or type(owner['gid']) is not int or not 1000<=owner['uid']<=60000 or not 1000<=owner['gid']<=60000):raise ValueError('installed_fresh_owner')
+    if MVP and value['firmware']!='uefi':raise ValueError('MVP detached qualification is UEFI-only; BIOS remains unverified')
     return value
 
 
@@ -64,6 +78,7 @@ def cold_handoff(handoff_path):
     from runtime.installer.composition import validate_finalizer_report
     from runtime.installer.native_finalizer import payload_module
     p=payload_module();inputs=json.loads(private(SOURCE.parent/'inputs.json').read_bytes())
+    if MVP and (inputs.get('qualification_profile')!=MVP_CLASS or inputs.get('g2_eligible') is not False or inputs.get('firmware')!='uefi' or cold.get('qualification_profile')!=MVP_CLASS or cold.get('g2_eligible') is not False):raise ValueError('Actual typed MVP cold input context required')
     if handoff.get('source_sha256')!=inputs['runtime_source_sha256'] or cold['controller_sha256']!=inputs['producer_sha256'] or cold['vault_sha256']!=inputs['vault_sha256']:raise ValueError('installed_cold_source_binding')
     if set(handoff.get('finalizer_reports_sha256',{}))!=p.CHECKS:raise ValueError('installed_nine_preserved_reports_required')
     for name in p.CHECKS:
@@ -84,6 +99,7 @@ def payloads(handoff,number,recovery):
 
 
 def qemu(handoff,number,recovery):
+    if MVP and (handoff.get('firmware')!='uefi' or number not in (1,2) or recovery):raise ValueError('MVP UEFI normal boot route only')
     args=boot.qemu_arguments(handoff['firmware'],payloads(handoff,number,recovery))
     args[args.index('-cpu')+1]='host';args[args.index('-m')+1]='4096'
     root='file=/work/target.qcow2,if=none,id=root,format=qcow2'
@@ -113,6 +129,7 @@ def tool(common,image,*args):return subprocess.check_output(['docker','run','--r
 
 
 def run(context,number,handoff_path=None):
+    route(context,number)
     resource.setrlimit(resource.RLIMIT_CORE,(0,0));os.umask(0o077)
     if os.getuid()==0 or not context.is_absolute() or context.parent!=ROOT/'.local/phase2' or not re.fullmatch('installed-owner-[a-z0-9-]{1,32}',context.name):raise ValueError('installed_context')
     lock=open(vm.VM/'native-boot-test.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -134,7 +151,7 @@ def run(context,number,handoff_path=None):
         handoff,cold=cold_handoff(handoff_path)
         source={'identity':phase2_vm.backing_identity(SOURCE),'sha256':cold['disk_sha256']}
         context.mkdir(mode=0o700);save(context/'handoff.json',handoff)
-        save(context/'inputs.json',{'source':source,'handoff_sha256':boot.digest(context/'handoff.json'),'accepted':baseline,'producer_sha256':boot.digest(Path(__file__)),'public_sources':public_sources,'container_image':image})
+        save(context/'inputs.json',{'source':source,'handoff_sha256':boot.digest(context/'handoff.json'),'accepted':baseline,'producer_sha256':boot.digest(Path(__file__)),'public_sources':public_sources,'container_image':image,**({'qualification_profile':MVP_CLASS,'g2_eligible':False} if MVP else {})})
     else:
         private(context,True)
         if handoff_path is not None:raise ValueError('installed_fixed_inputs_only')
@@ -145,6 +162,7 @@ def run(context,number,handoff_path=None):
     if number>1:handoff,cold=cold_handoff(context/'handoff.json')
     if (inputs['accepted']!=baseline or inputs['handoff_sha256']!=boot.digest(context/'handoff.json') or
             inputs['producer_sha256']!=boot.digest(Path(__file__)) or phase2_vm.backing_identity(SOURCE)!=inputs['source']['identity'] or cold['disk_sha256']!=inputs['source']['sha256']):raise ValueError('installed_cold_inputs_changed')
+    if MVP and (inputs.get('qualification_profile')!=MVP_CLASS or inputs.get('g2_eligible') is not False):raise ValueError('MVP boot context classification changed')
     if inputs['public_sources']!=public_sources or inputs['container_image']!=image:raise ValueError('installed_observer_or_runtime_changed')
     common=['--user',f'{os.getuid()}:{os.getgid()}','--cap-drop=ALL','--security-opt=no-new-privileges','--network=none','--read-only',
         '-v',f'{SOURCE}:/installed/source.qcow2:ro','-v',f'{context}:/work']
@@ -200,6 +218,11 @@ def run(context,number,handoff_path=None):
         save(context/('owner-settings-'+handoff['firmware']+'.json'),companion)
         save(context/('boot-'+handoff['firmware']+'.json'),receipt)
         if boot.digest(context/('boot-'+handoff['firmware']+'.json'))!=receipt_sha256:raise ValueError('actual_boot_companion_serialization_changed')
+        if MVP:
+            save(context/'mvp-scope.json',{'version':1,'delivery_class':MVP_CLASS,'g2_eligible':False,
+                'uefi_normal_boots':2,'bios_tested':False,'recovery_tested':False,
+                'boot_receipt_sha256':receipt_sha256,'owner_settings_sha256':boot.digest(context/'owner-settings-uefi.json'),
+                'source_context':str(SOURCE.parent),'source_disk_sha256':cold['disk_sha256']})
     print(json.dumps({'state':'actual-observation-preserved','context':str(context),'round':number,'production_ready':False}))
 
 
@@ -263,6 +286,7 @@ def key_codes(char):
 
 
 def qmp(context,action):
+    route(context)
     import shutil
     private(context,True);active=json.loads((context/'active.json').read_bytes())
     inspect=json.loads(subprocess.check_output(['docker','inspect',active['container_id']],text=True))[0]
@@ -315,8 +339,10 @@ def qmp(context,action):
 def main():
     resource.setrlimit(resource.RLIMIT_CORE,(0,0));os.umask(0o077)
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('action',choices=['run','stop','capture','username','password','enter','down','up','escape','tab','tty'])
+    parser.add_argument('--mvp',action='store_true',help='Fixed MVP context, two real UEFI normal boots; no G2 claim')
     parser.add_argument('--context',required=True,type=Path);parser.add_argument('--round',type=int,choices=(1,2,3));parser.add_argument('--handoff',type=Path)
     args=parser.parse_args()
+    if args.mvp:configure_mvp()
     if args.action=='run':
         if args.round is None or (args.round==1 and args.handoff is None):parser.error('run requires round and first round requires handoff')
         run(args.context,args.round,args.handoff)

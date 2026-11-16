@@ -26,6 +26,22 @@ def handoff():
 
 
 class InstalledControlTests(unittest.TestCase):
+    def test_explicit_mvp_route_uses_fixed_independent_source_and_two_uefi_boots(self):
+        with patch.multiple(control,SOURCE=control.SOURCE,MVP=control.MVP):
+            control.configure_mvp()
+            self.assertEqual(control.SOURCE,control.ROOT/'.local/phase2/native-mvp-installer-1/installed.qcow2')
+            for number in (1,2):control.route(control.MVP_CONTEXT,number)
+            for context,number in [(control.MVP_CONTEXT,3),(control.ROOT/'.local/phase2/installed-owner-other',1)]:
+                with self.assertRaises(ValueError):control.route(context,number)
+            value={**handoff(),'firmware':'uefi'}
+            control.validate_handoff(value)
+            args=control.qemu(value,1,False)
+            self.assertNotIn('-cdrom',args);self.assertEqual(args[args.index('-nic')+1],'none')
+            with self.assertRaises(ValueError):control.validate_handoff(handoff())
+            with self.assertRaises(ValueError):control.qemu(value,3,True)
+        with self.assertRaises(ValueError):control.route(control.MVP_CONTEXT,1)
+
+
     def test_only_installed_overlay_and_firmware_drives_no_live_or_build_disks(self):
         for firmware in ('bios','uefi'):
             for number in (1,2,3):
