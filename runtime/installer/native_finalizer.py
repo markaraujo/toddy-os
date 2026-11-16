@@ -6,6 +6,7 @@ import re
 import stat
 from .disk_plan import InstallError
 from .installed_identity import regular
+from .generated_resources import generate_loader_cache
 
 
 def payload_module():
@@ -125,8 +126,10 @@ class NativeFinalizer:
                 self.system.run(['/usr/bin/chroot',str(root),*command],timeout=120);commands.add(tuple(command))
             path=root/virtual.lstrip('/')
             if path.is_symlink() or p.digest(path)!=binding['output_sha256']:raise InstallError('installer_finalizer_cache_differs')
-        self.system.run(['/usr/bin/chroot',str(root),'/usr/sbin/ldconfig'],timeout=120)
-        record('generated-caches',{'native_commands':len(commands)+1,'qualified_cache_outputs':len(manifest['generated']['owned_cache_bindings'])})
+        loader=generate_loader_cache(root,manifest['ownership']['entries'],self.system)
+        loader_receipt=run/'loader-cache.json'
+        loader_receipt.write_bytes(p.encoded(loader));loader_receipt.chmod(0o600)
+        record('generated-caches',{'native_commands':len(commands)+loader['native_commands'],'qualified_cache_outputs':len(manifest['generated']['owned_cache_bindings'])})
         forbidden=('root/.ssh','root/.gnupg','root/.bash_history','var/lib/systemd/random-seed','var/lib/systemd/credential.secret','var/lib/toddy-executor','var/lib/toddy/executor','var/lib/toddy/installer','etc/apt/auth.conf')
         if any((root/path).exists() or (root/path).is_symlink() for path in forbidden) or any((root/'root').iterdir()) or any((root/'home').iterdir()):raise InstallError('installer_finalizer_private_state')
         for relative in ('etc/NetworkManager/system-connections','etc/apt/auth.conf.d','etc/ssl/private'):

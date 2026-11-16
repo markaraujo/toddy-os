@@ -175,3 +175,18 @@ probe; BIOS/UEFI blank-disk installation, safe Stop/reconciliation, fresh accoun
 login, two detached-media persistent boots, installed hygiene/update recovery and
 live-media/package/source/legal composition. No physical hardware result is
 claimed. The current absent artifacts keep production create() fail-closed.
+
+## Deterministic loader resource generation
+
+The installer uses `generated_resources.generate_loader_cache`, a narrow reuse of
+frozen H10's Glibc2.44 recipe. Native ldconfig runs with `-X -i`; it must preserve
+the complete selected owned library/SONAME namespace and emit the expected native
+2.44 cache format. Every readback library resolves to actual selected owned bytes.
+Only the freshly generated0600 auxiliary inode cache is removed after exact
+metadata/namespace checks; its hash is retained in the operation result. Existing
+cache/auxiliary output is an uncertain prior generation and is preserved/refused.
+No builder cache, new search directory/tunables or unrelated output is accepted.
+The new shared helper is part of the installed composition source hash closure
+and live-only installer package manifest. This source correction is not native
+regeneration qualification; reviewed independent image hashes still require actual
+first-candidate generation and a second fresh finalizer run.

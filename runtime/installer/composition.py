@@ -9,7 +9,7 @@ from .native_finalizer import payload_module,NativeFinalizer,account_files
 from .installed_boot import InstalledBoot,RELEASE
 
 BASE=Path('/usr/share/toddy/installer/composition')
-SOURCES={'live_bindings.py','composition.py','native_finalizer.py','installed_boot.py','setup/installer_handoff.py',
+SOURCES={'generated_resources.py','live_bindings.py','composition.py','native_finalizer.py','installed_boot.py','setup/installer_handoff.py',
          'offline_payload.py','h10/initramfs_runtime.py','h10/initramfs_archive.py','audit_native_elf.py',
          'backend.py','disk_plan.py','installed_identity.py','linux_disk.py','launch.py','calamares/adapter.py','calamares/cli.py',
          'setup/pending.py','shared/json.py'}

@@ -17,7 +17,7 @@ VERSION='0.2.0-1+toddy1'
 PACKAGE='toddy-installer'
 MODULE='/usr/lib/calamares/modules/toddy/libcalamares_viewmodule_toddy.so'
 COMPILE_INPUTS=('CMakeLists.txt','ToddyViewStep.cpp','ToddyViewStep.h','ToddyPluginProbe.cpp')
-INSTALLER_MODULES=('backend.py','disk_plan.py','linux_disk.py','installed_identity.py','live_bindings.py',
+INSTALLER_MODULES=('generated_resources.py','backend.py','disk_plan.py','linux_disk.py','installed_identity.py','live_bindings.py',
                    'composition.py','native_finalizer.py','installed_boot.py','launch.py')
 DEPENDENCIES=('toddy-assistant, calamares (= 3.4.3-1+toddy1), calamares-branding-toddy, '
  'qtbase (= 6.11.2-1+toddy2), pygobject (= 3.56.3-1+toddy1), polkit (= 127-1+toddy1), '

@@ -1,0 +1,20 @@
+{
+  "scope": "source-only frozen loader resource correction",
+  "native_regeneration_performed": false,
+  "fixture_tool_and_root_metadata_injected": true,
+  "checks": [
+    {
+      "command": "python3 -m unittest tests.test_installer_generated_resources tests.test_installer_live_bindings tests.test_installer_package -q",
+      "tests": 26,
+      "exit": 0
+    },
+    {
+      "command": "make check",
+      "tests": 786,
+      "exit": 0,
+      "seconds": 16.443
+    }
+  ],
+  "source_fixture_failure": "Initial synthetic directory fixture inherited group-writable host umask; protected-parent check correctly refused before simulated tool. Fixture corrected to exact0755 directories; final guards unchanged.",
+  "native_next": "Candidate image1 native generation, independent output/map review, fresh image2 actual NativeFinalizer comparison; no cache copied from builder."
+}
