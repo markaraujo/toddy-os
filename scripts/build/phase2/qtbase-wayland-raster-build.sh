@@ -18,7 +18,10 @@ cmake -S /src -B /build/compile -G Ninja \
     -DFEATURE_eglfs=OFF -DFEATURE_linuxfb=OFF \
     -DFEATURE_wayland=ON -DFEATURE_waylandscanner=ON \
     -DFEATURE_wayland_client=ON -DFEATURE_wayland_client_xdg_shell=ON \
-    -DFEATURE_xkbcommon=ON \
+    -DFEATURE_xkbcommon=ON -DFEATURE_fontconfig=ON \
+    -DFEATURE_gtk3=OFF -DFEATURE_xlib=OFF -DFEATURE_icu=OFF -DFEATURE_sessionmanager=OFF \
+    -DFEATURE_libproxy=OFF -DFEATURE_gssapi=OFF -DFEATURE_brotli=OFF \
+    -DFEATURE_libinput=OFF -DFEATURE_mtdev=OFF -DFEATURE_tslib=OFF \
     -DINPUT_freetype=qt -DINPUT_harfbuzz=qt \
     -DINPUT_openssl=linked -DINPUT_dbus=linked
 cmake --build /build/compile --parallel 6
@@ -31,3 +34,29 @@ find /stage/usr -name '*.prl' -exec sed -i '/^QMAKE_PRL_BUILD_DIR/d' {} +
 # Coordinator must run qt_wayland_inspect.py --stage --require, retain a verified
 # manifest/notices, package ALL rebuilt qtbase files and qualify native upgrade.
 # This script never promotes, installs or edits a running root.
+
+# Private staged consumer uses staged headers first; the feature static_assert
+# would fail against the installed old offscreen-only Gui headers.
+python3 /src/toddy-qt-inspect.py /stage --stage --require > /build/qt-static-stage.json
+c++ -std=c++17 -DTODDY_STAGED_QT /src/toddy-qt-probe.cpp \
+    -I/stage/usr/include -I/stage/usr/include/QtCore -I/stage/usr/include/QtGui \
+    -I/stage/usr/include/QtWidgets -I/stage/usr/include/QtNetwork \
+    -I/stage/usr/include/QtDBus -I/stage/usr/include/QtConcurrent -L/stage/usr/lib \
+    $(pkg-config --cflags --libs Qt6Widgets Qt6Network Qt6DBus Qt6Concurrent Qt6Svg) \
+    -o /build/qt-staged-consumer
+LD_LIBRARY_PATH=/stage/usr/lib QT_QPA_PLATFORM=offscreen QT_PLUGIN_PATH=/stage/usr/plugins \
+    dbus-run-session -- /build/qt-staged-consumer > /build/qt-staged-consumer.log
+LD_LIBRARY_PATH=/stage/usr/lib /usr/bin/lrelease -version > /build/qt-existing-lrelease.log 2>&1
+python3 - <<'RESULT'
+from pathlib import Path
+import hashlib,json,os
+assert os.getuid()==101
+static=json.loads(Path('/build/qt-static-stage.json').read_text())
+assert not static['qtbase_rebuild_required']
+assert Path('/build/qt-staged-consumer.log').read_text().strip()=='QT6112_WIDGET_TLS_DBUS_CONCURRENT_EXISTING_SVG_WAYLAND_METADATA_PASSED'
+assert '6.11.2' in Path('/build/qt-existing-lrelease.log').read_text()
+Path('/build/qt-qualified.json').write_text(json.dumps({'version':1,'uid':os.getuid(),
+    'stage_manifest_sha256':static['stage_manifest_sha256'],'staged_consumer_exit':0,
+    'existing_lrelease_exit':0,'probe_sha256':hashlib.sha256(Path('/src/toddy-qt-probe.cpp').read_bytes()).hexdigest(),
+    'scope':'Native staged offscreen/ELF metadata and existing Svg/Linguist compatibility; actual Wayland/root Calamares launch pending'},indent=2)+'\n')
+RESULT

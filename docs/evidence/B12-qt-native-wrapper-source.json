@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "scope": "source preparation of native QtBase6.11.2 same-package raster upgrade",
+  "candidate_package": "qtbase6.11.2-1+toddy2",
+  "previous_package": "qtbase6.11.2-1+toddy1",
+  "frozen_upstream_changed": false,
+  "new_candidate_only": true,
+  "accepted_B02_backing_writes": false,
+  "guest_writes": false,
+  "native_build": "not-run",
+  "native_transaction": "not-run",
+  "native_wayland_or_root_gui": "not-run",
+  "existing_native_inventory": {
+    "coordinator_context": ".local/phase2/native-executor-recovery-2/native-report.json",
+    "gui_feature_header_sha256": "515af16e49f4760f5cecd7acb0407fe007241cea97dd0f9c60f12ae1a7a8e8ae",
+    "wayland": -1,
+    "waylandscanner": -1,
+    "wayland_client_plugin_found": false
+  },
+  "focused_command": "python3 -m unittest tests.test_qtbase_native_upgrade tests.test_qt_wayland_preparation -v",
+  "focused_checks": 9,
+  "focused_result": "passed",
+  "focused_elapsed_seconds": 0.014,
+  "pending": [
+    "coordinator custody completion and measured budgets",
+    "verified target closed-cache retirement before build/install",
+    "new scratch device/mount and exact source preparation",
+    "actual unprivileged RO-input native QtBase compile/stage/consumer checks",
+    "same-name native package upgrade and rollback proof",
+    "actual Wayland input/rendering and authenticated root Calamares plugin launch"
+  ],
+  "story_acceptance": false,
+  "repository_check": {
+    "command": "make check",
+    "result": "passed",
+    "checks": 582,
+    "elapsed_seconds": 10.391
+  },
+  "dispatcher_guard": "matching live fixed root run_step receipt/hash/PID required before native install"
+}
