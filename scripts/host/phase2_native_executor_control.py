@@ -25,7 +25,7 @@ ROOT=phase2_vm.ROOT
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--generation',required=True,type=int)
-    p.add_argument('--slice',choices=['control','owner'],default='control')
+    p.add_argument('--slice',choices=['control','owner','broker'],default='control')
     args=p.parse_args()
     assert 1<=args.generation<=100
     context=ROOT/('.local/phase2/native-executor-'+args.slice+'-'+str(args.generation))
@@ -48,11 +48,28 @@ def main():
             ('io.github.markaraujo.Toddy.Executor.conf','/etc/dbus-1/system.d/io.github.markaraujo.Toddy.Executor.conf'),
             ('io.github.markaraujo.Toddy.Owner.policy','/usr/share/polkit-1/actions/io.github.markaraujo.Toddy.Owner.policy')]:
         manifest['packaging'][source]={'path':destination,'text':(ROOT/'runtime/executor/packaging'/source).read_text()}
+    broker_parts=[]
+    if args.slice=='broker':
+        bundle={}
+        for name in ['broker/service.py','broker/core.py','broker/protocol.py','broker/profiles.py','broker/tasks.py',
+                     'broker/io.github.markaraujo.Toddy.Service1.xml','tools/native.py','tools/child.py','tools/scoped.py','tools/scoped_child.py']:
+            bundle['/usr/lib/toddy/'+name]=(ROOT/'runtime'/name).read_text()
+        for name in ['profile.schema.json',*[str(p.relative_to(ROOT/'config/phase2')) for p in (ROOT/'config/phase2/profile').iterdir() if p.is_file() and p.suffix in ('.md','.json')]]:
+            bundle['/usr/share/toddy/'+name]=(ROOT/'config/phase2'/name).read_text()
+        for source,destination in [('toddy-agent.service','/usr/lib/systemd/user/toddy-agent.service'),
+               ('io.github.markaraujo.Toddy.Service.service','/usr/share/dbus-1/services/io.github.markaraujo.Toddy.Service.service')]:
+            bundle[destination]=(ROOT/'runtime/broker/packaging'/source).read_text()
+        packet=zlib.compress(json.dumps(bundle,sort_keys=True).encode(),9)
+        broker_parts=[packet[i:i+8192] for i in range(0,len(packet),8192)]
+        manifest['broker']={'sha256':hashlib.sha256(packet).hexdigest(),'chunks':len(broker_parts)}
     extra={'toddy.executor.manifest':json.dumps(manifest,sort_keys=True).encode()}
     extra.update({'toddy.executor.input'+str(i):data for i,data in enumerate(parts)})
+    if broker_parts:
+        extra.update({'toddy.broker.input'+str(i):data for i,data in enumerate(broker_parts)})
+        extra['toddy.broker.hook']=compressed_payload((ROOT/'scripts/host/phase2-native-broker-hook.py').read_bytes())
     unit=(ROOT/'scripts/host/boot-probe.service').read_bytes().replace(b'TimeoutStartSec=180',b'TimeoutStartSec=300')
     unit+=b''.join(('LoadCredential='+name+'\n').encode() for name in sorted(extra))
-    probe=(ROOT/('scripts/host/phase2-native-executor-'+args.slice+'-probe.py')).read_bytes()
+    probe=(ROOT/('scripts/host/phase2-native-executor-'+('owner' if args.slice=='broker' else args.slice)+'-probe.py')).read_bytes()
     payloads={'systemd.extra-unit.toddy-boot-probe.service':unit,
               'systemd.unit-dropin.multi-user.target':(ROOT/'scripts/host/boot-probe.target.conf').read_bytes(),
               'toddy.boot-probe':compressed_payload(probe)}

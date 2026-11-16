@@ -174,6 +174,8 @@ for method in ['PlanOperation','DispatchOperation']:
         shell('/usr/bin/python3 /tmp/toddy-owner-ipc.py')
         assert Path(a['path']).read_text()==a['text'] and store.inspect(uid,'session-write')['state']=='completed'
         passed('default-active-policy-real-pam-session-grant-and-ipc-effect')
+        if 'broker' in manifest:
+            exec(compile((credentials/'toddy.broker.hook').read_bytes(),'native-broker-hook','exec'),{**globals(),**locals()})
         outside=Path('/tmp/toddy-user-service-ipc.py')
         outside.write_text(client.read_text().replace('session-write','background-session-write').replace('/etc/toddy-session-proof.conf','/etc/toddy-background-session-proof.conf'));outside.chmod(0o644)
         background=subprocess.run(['/usr/bin/python3',str(outside)],user=uid,group=uid,extra_groups=[],capture_output=True,text=True,timeout=20)
