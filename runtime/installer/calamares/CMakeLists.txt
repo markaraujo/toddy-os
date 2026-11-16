@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(ToddyCalamaresModule VERSION 0.1.0 LANGUAGES CXX)
 include(GNUInstallDirs)
+# Calamares 3.4.3 exports KF6::CoreAddons but does not discover it.
+find_package(KF6CoreAddons 6.29.0 EXACT CONFIG REQUIRED)
 find_package(Calamares 3.4.3 EXACT CONFIG REQUIRED)
 find_package(Qt6 6.11.2 EXACT CONFIG REQUIRED COMPONENTS Core Widgets)
 set(CMAKE_AUTOMOC ON)

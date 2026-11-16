@@ -60,13 +60,13 @@ inputs; it does not copy a builder root or run a disk command.
 ```sh
 bash /opt/toddy-build/scripts/build/phase2/installer_prepare.sh
 python3 /opt/toddy-build/scripts/build/phase2/job.py \
-  toddy-installer-build-1 \
-  /mnt/lfs/sources/phase2/inputs/toddy-installer-0.2.0 \
-  /mnt/lfs/sources/phase2/work/toddy-installer-1 \
+  toddy-installer-build-2 \
+  /mnt/lfs/sources/phase2/inputs/toddy-installer-0.2.0-2 \
+  /mnt/lfs/sources/phase2/work/toddy-installer-2 \
   bash /src/installer_build.sh
 python3 /opt/toddy-build/scripts/build/phase2/installer_native.py qualify
 python3 /opt/toddy-build/scripts/build/run_step.py \
-  b12-toddy-installer-1 \
+  b12-toddy-installer-2 \
   /opt/toddy-build/scripts/build/phase2/installer_install.sh \
   /opt/toddy-build/scripts/build/phase2/installer_check.sh --user root
 ```
@@ -184,3 +184,27 @@ They exercise source-layout imports, missing-artifact refusal, session/socket/pe
 and environment guards, recipe identity, direct-provider ownership and stage
 manifest custody. They never compile a substitute module, write guest disks,
 change host dconf or count a fixture as native GUI/installer acceptance.
+
+
+## Native module attempt 2: explicit exported dependency
+
+Attempt 1 reached CMake generation and stopped before C++ compilation because
+Calamares 3.4.3 exports `KF6::CoreAddons` but its installed config does not discover
+that target. Its actual public interfaces are `yamlcpp::yamlcpp`, Qt Core/Network
+and KF CoreAddons for libcalamares, and libcalamares plus Qt Core/Gui/Widgets/Svg
+for libcalamaresui. The upstream config already discovers Qt/YAMLCPP.
+
+The module now explicitly finds frozen `KF6CoreAddons 6.29.0 EXACT CONFIG` before
+Calamares. Native package dependencies and preparation custody include exactly
+kcoreaddons 6.29.0-1+toddy1, yaml-cpp 0.9.0-1+toddy1 and qtsvg
+6.11.2-1+toddy1 for these public interfaces; no new provider or version is selected.
+Calamares and Qt remain the existing installed packages.
+
+Preserve all failed attempt-1 source/work/job/cache/log/receipt paths. Attempt 2
+uses source `toddy-installer-0.2.0-2`, work `toddy-installer-2`, stage
+`phase2-toddy-installer-2`, prepared receipt `toddy-installer-prepared-2.json`, job
+`toddy-installer-build-2`, dispatcher `b12-toddy-installer-2`, native install receipt
+`toddy-installer-install-2.json` and offscreen postcheck directory 2. Run the
+prepare/build/qualify sequence above with those new names. This is a new own-module
+attempt, not a retry of an uncertain native install or an upstream rebuild.
+The complete current live-session/generated-resource source closure is retained.

@@ -12,11 +12,11 @@ import subprocess
 import sys
 
 ROOT=Path('/opt/toddy-build');TARGET=Path('/mnt/lfs')
-SOURCE=TARGET/'sources/phase2/inputs/toddy-installer-0.2.0'
-WORK=TARGET/'sources/phase2/work/toddy-installer-1'
-STAGE=TARGET/'sources/stage/phase2-toddy-installer-1'
-LOG=Path('/var/log/toddy/phase2');PREPARED=LOG/'toddy-installer-prepared-1.json'
-VERSION='0.2.0-1+toddy1';STEP='b12-toddy-installer-1';JOB='toddy-installer-build-1'
+SOURCE=TARGET/'sources/phase2/inputs/toddy-installer-0.2.0-2'
+WORK=TARGET/'sources/phase2/work/toddy-installer-2'
+STAGE=TARGET/'sources/stage/phase2-toddy-installer-2'
+LOG=Path('/var/log/toddy/phase2');PREPARED=LOG/'toddy-installer-prepared-2.json'
+VERSION='0.2.0-1+toddy1';STEP='b12-toddy-installer-2';JOB='toddy-installer-build-2'
 
 
 def package_module():
@@ -41,7 +41,8 @@ def native(*arguments):
 
 def package_state():
     result={}
-    expected={'calamares':'3.4.3-1+toddy1','qtbase':'6.11.2-1+toddy2'}
+    expected={'calamares':'3.4.3-1+toddy1','qtbase':'6.11.2-1+toddy2',
+              'kcoreaddons':'6.29.0-1+toddy1','yaml-cpp':'0.9.0-1+toddy1','qtsvg':'6.11.2-1+toddy1'}
     for name,version in expected.items():
         actual=native('/usr/bin/dpkg-query','-W','-f=${Version}\t${Status}',name)
         if actual!=version+'\tinstall ok installed':raise ValueError('installer_frozen_native_dependency_missing')
@@ -202,7 +203,7 @@ def install():
     if available(TARGET)<16*1024**3+3*size+64*1024**2:raise ValueError('installer_preserve_16gib_floor')
     shutil.copytree(WORK/'stage',STAGE,symlinks=True)
     if inventory(STAGE)!=static:raise ValueError('installer_promotion_changed')
-    receipt=LOG/'toddy-installer-install-1.json'
+    receipt=LOG/'toddy-installer-install-2.json'
     if receipt.exists():raise ValueError('installer_native_install_requires_reconciliation')
     save(receipt,{'state':'native-install-intended','stage_manifest_sha256':static['manifest_sha256'],'native_root_gui_qualified':False})
     subprocess.run([sys.executable,str(ROOT/'scripts/build/stage_package.py'),'toddy-installer',VERSION,str(STAGE),
@@ -221,10 +222,10 @@ def postcheck():
     if digest(TARGET/package.MODULE.lstrip('/'))!=digest(WORK/'compile/libcalamares_viewmodule_toddy.so'):raise ValueError('installer_installed_module_changed')
     # An actual no-write plugin/ABI probe is distinct from the still-unverified
     # root Calamares Wayland GUI. Never use Calamares --test to bypass root.
-    home=TARGET/'tmp/toddy-installer-offscreen-postcheck-1'
+    home=TARGET/'tmp/toddy-installer-offscreen-postcheck-2'
     if home.exists() or home.is_symlink():raise ValueError('installer_postcheck_preserve_existing')
     home.mkdir(mode=0o700)
-    output=native('/usr/bin/env','QT_QPA_PLATFORM=offscreen','HOME=/tmp/toddy-installer-offscreen-postcheck-1',
+    output=native('/usr/bin/env','QT_QPA_PLATFORM=offscreen','HOME=/tmp/toddy-installer-offscreen-postcheck-2',
                   '/'+(WORK.relative_to(TARGET)/'compile/toddy-installer-plugin-probe').as_posix(),package.MODULE)
     probe=json.loads(output)
     if probe.get('factory_created') is not True or probe.get('disk_writes') is not False:raise ValueError('installer_native_plugin_postcheck')

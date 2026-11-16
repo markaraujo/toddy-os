@@ -20,7 +20,8 @@ COMPILE_INPUTS=('CMakeLists.txt','ToddyViewStep.cpp','ToddyViewStep.h','ToddyPlu
 INSTALLER_MODULES=('live_session.py','generated_resources.py','backend.py','disk_plan.py','linux_disk.py','installed_identity.py','live_bindings.py',
                    'composition.py','native_finalizer.py','installed_boot.py','launch.py')
 DEPENDENCIES=('toddy-assistant, calamares (= 3.4.3-1+toddy1), calamares-branding-toddy, '
- 'qtbase (= 6.11.2-1+toddy2), pygobject (= 3.56.3-1+toddy1), polkit (= 127-1+toddy1), '
+ 'qtbase (= 6.11.2-1+toddy2), kcoreaddons (= 6.29.0-1+toddy1), '
+ 'yaml-cpp (= 0.9.0-1+toddy1), qtsvg (= 6.11.2-1+toddy1), pygobject (= 3.56.3-1+toddy1), polkit (= 127-1+toddy1), '
  'glibc (>= 2.44-1), gcc-runtime, gcc, util-linux, e2fsprogs, dosfstools, grub, shadow, '
  'systemd (>= 261.2-1+toddy3), dpkg, gnupg, kmod, libarchive, gzip, coreutils, bash')
 EPOCH=1794009600
