@@ -67,7 +67,7 @@ def original_source_provenance(component, record, *, repository=ROOT, target=TAR
             if (row['name'] == component['name'] and not row.get('sources') and
                     row.get('component_record_sha256') == component['component_record_sha256']):
                 return 'committed-original-record'
-    if component['name'] not in {'toddy-assistant', 'toddy-branding', 'toddy-installer', 'calamares-branding-toddy', 'toddy-agent', 'toddy-executor'}:
+    if component['name'] not in {'toddy-assistant', 'toddy-branding', 'toddy-installer', 'calamares-branding-toddy', 'toddy-agent', 'toddy-executor', 'toddy-desktop-defaults'}:
         raise ValueError('Unreviewed original package identity')
     supporting = record.get('supporting_build_scripts', {})
     files = supporting.get('files')

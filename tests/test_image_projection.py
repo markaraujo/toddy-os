@@ -94,6 +94,13 @@ class ProjectionTests(unittest.TestCase):
                 'supporting_build_scripts':{'files':files,'sha256':p.hashlib.sha256(json.dumps(files,sort_keys=True,separators=(',',':')).encode()).hexdigest()},
                 'payload':{virtual:{'sha256':p.payload.digest(manifest)}}}
             self.assertEqual(p.original_source_provenance(component,record,repository=repository,target=target),'owned-original-source-manifest')
+            # Exact new defaults identity follows the same strict original-source
+            # manifest path/hash/recipe checks; foreign package policy is unchanged.
+            defaults_virtual='/usr/share/doc/toddy-desktop-defaults/source-manifest.json'
+            defaults_manifest=target/defaults_virtual.lstrip('/');defaults_manifest.parent.mkdir(parents=True)
+            defaults_manifest.write_text(json.dumps({'package':'toddy-desktop-defaults','source_inputs':{'scripts/build/phase2/desktop_background_upgrade.py':'c'*64}}))
+            component['name']='toddy-desktop-defaults';record['payload']={defaults_virtual:{'sha256':p.payload.digest(defaults_manifest)}}
+            self.assertEqual(p.original_source_provenance(component,record,repository=repository,target=target),'owned-original-source-manifest')
             record['supporting_build_scripts']['sha256']='f'*64
             with self.assertRaisesRegex(ValueError,'closure integrity'):
                 p.original_source_provenance(component,record,repository=repository,target=target)
