@@ -18,6 +18,23 @@ class ResourceRecipeTests(unittest.TestCase):
                 'components':[{'name':'fixture'}]}
     def policy(self):
         return {'accounts':{'passwd':'root:x:0:0:root:/root:/bin/bash\n','group':'root:x:0:\nwheel:x:97:\n'}}
+    def test_runtime_allows_only_exact_declared_empty_directory_closure(self):
+        directory=lambda mode=0o755,uid=0,gid=0:{'mode':stat.S_IFDIR|mode,'uid':uid,'gid':gid,'directory':True}
+        actual={'/run':directory(),'/run/cups':directory(),'/run/cups/certs':directory(0o511,9,19),'/run/dbus':directory(),'/run/krb5kdc':directory()}
+        manifest=self.manifest();manifest['ownership']['entries'].update(actual)
+        recipe.empty_declared_runtime(actual,manifest)
+        manifest['ownership']['fresh_directories']['run']=manifest['ownership']['entries'].pop('/run')
+        recipe.empty_declared_runtime(actual,manifest)
+        for path,row in (('/run/cups/certs/key',{'mode':stat.S_IFREG|0o600,'uid':9,'gid':19,'sha256':'a'*64}),('/run/socket',{'mode':stat.S_IFLNK|0o777,'uid':0,'gid':0,'symlink':'/tmp/socket'}),('/run/unknown',directory())):
+            with self.subTest(path=path):
+                with self.assertRaises(ValueError):recipe.empty_declared_runtime(dict(actual,**{path:row}),manifest)
+        changed={**actual,'/run/cups/certs':directory(0o755,9,19)}
+        with self.assertRaises(ValueError):recipe.empty_declared_runtime(changed,manifest)
+        changed={**actual,'/run/cups/certs':directory(0o511,0,0)}
+        with self.assertRaises(ValueError):recipe.empty_declared_runtime(changed,manifest)
+        missing=dict(actual);del missing['/run/cups']
+        with self.assertRaises(ValueError):recipe.empty_declared_runtime(missing,manifest)
+
     def test_unknown_or_changed_owned_file_is_never_generated_override(self):
         manifest=self.manifest();actual={**manifest['ownership']['entries'],'/root/key':{'mode':stat.S_IFREG|0o600,'uid':0,'gid':0,'sha256':'b'*64}}
         actual['/usr/share/owned']={**actual['/usr/share/owned'],'sha256':'c'*64}

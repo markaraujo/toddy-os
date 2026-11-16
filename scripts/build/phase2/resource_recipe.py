@@ -95,6 +95,22 @@ def save(path,value):
         os.fchmod(stream.fileno(),0o600);stream.write(p.encoded(value));stream.flush();os.fsync(stream.fileno())
 
 
+def empty_declared_runtime(actual,manifest):
+    """Only exact declared directory closure may preexist under /run."""
+    declared={'/'+name:row for name,row in manifest['ownership']['fresh_directories'].items()}
+    declared.update(manifest['ownership']['entries'])
+    for path,row in actual.items():
+        if path!='/run' and not path.startswith('/run/'):continue
+        if (set(row)!={'mode','uid','gid','directory'} or row.get('directory') is not True or
+                not stat.S_ISDIR(row.get('mode',0)) or declared.get(path)!=row):
+            raise ValueError('Candidate runtime state or undeclared directory metadata')
+        parent=Path(path).parent
+        while parent!=Path('/'):
+            name=parent.as_posix()
+            if name not in actual or actual[name].get('directory') is not True or declared.get(name)!=actual[name]:raise ValueError('Candidate runtime ancestor closure missing')
+            parent=parent.parent
+
+
 def qualify(assembly,manifest,policy,system):
     """Run only fixed native producers in generation1; preserve every failure."""
     system.require_root();assembly.recheck();p=payload_module()
@@ -109,9 +125,10 @@ def qualify(assembly,manifest,policy,system):
     # No inherited account/home/private state may become the candidate baseline.
     files=account_files(policy['accounts'])
     if any('/'+path in before for path in files):raise ValueError('Fresh candidate account files already exist')
-    for relative in ('home','root','run'):
+    for relative in ('home','root'):
         directory=root/relative
         if directory.is_symlink() or directory.exists() and any(directory.iterdir()):raise ValueError('Candidate inherited private/runtime state')
+    empty_declared_runtime(before,manifest)
     _,initial_blockers=candidate_entries(before,manifest,policy)
     if initial_blockers:raise ValueError('Unpacked candidate does not match selected ownership/database policy')
     intent={'version':1,'kind':'unqualified-native-resource-candidate','manifest_sha256':hashlib.sha256(p.encoded(manifest)).hexdigest(),
