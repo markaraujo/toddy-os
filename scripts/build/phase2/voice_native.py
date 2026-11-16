@@ -258,6 +258,17 @@ def elf_dependencies(binary):
     return {'needed':needed,'providers':providers}
 
 
+def whisper_notices(source):
+    # Frozen1.9.5 has one real root LICENSE, no ggml/LICENSE. Preserve actual
+    # CPU GGML per-file attribution; the generic source-notices policy retains
+    # the remaining source/backend headers independently at native packaging.
+    from source_notices import leading_c_notice
+    relative='ggml/src/ggml-cpu/llamafile/sgemm.cpp'
+    notice=leading_c_notice((source/relative).read_bytes())
+    if notice is None or b'Mozilla Foundation' not in notice or b'Permission is hereby granted' not in notice or len(notice)>65536:raise ValueError('voice_actual_ggml_cpu_notice_required')
+    return {'LICENSE':(source/'LICENSE').read_bytes(),relative+' [leading license comments]':notice}
+
+
 def qualify(component,generation):
     source,work,prefix,value=prepared(component,generation)
     proof=Path(str(prefix)+'.qualified.json')
@@ -289,11 +300,13 @@ def qualify(component,generation):
             document=work/'stage/usr/share/doc/toddy-voice-model-base'/rows[ident]['filename']
             verify_file(document,rows[ident]);legal[ident]=digest(document)
     else:
-        documents=[('COPYING','COPYING')] if component=='espeak-ng' else [('LICENSE','LICENSE'),('ggml/LICENSE','GGML-LICENSE')]
+        documents=[('COPYING','COPYING')] if component=='espeak-ng' else [('LICENSE','LICENSE')]
         for original,name in documents:
             document=work/'stage/usr/share/doc'/component/name
             if document.is_symlink() or digest(document)!=digest(source/original):raise ValueError('voice_stage_notice_changed')
             legal[name]=digest(document)
+        if component=='whisper-cpp':
+            for name,data in whisper_notices(source).items():legal[name]=hashlib.sha256(data).hexdigest()
     inspection=inspect_stage(work/'stage')
     result={'component':component,'version':value['version'],'prepared_sha256':digest(Path(str(prefix)+'.prepared.json')),'stage_manifest_sha256':inspection['manifest_sha256'],'dependencies':dependencies,'legal_documents':legal,'consumer':consumer,'scope':'Native engine/file-only or model data qualification; no microphone/playback/GNOME acceptance'}
     write_new(proof,result);return result
@@ -329,10 +342,10 @@ def install(component,generation,*,lease=None):
         if component!='toddy-voice-model-base':
             from package_copyright import write_copyright
             write_copyright(dest,component,[value['input']['filename']])
-            names=['COPYING','COPYING.APACHE','COPYING.BSD2','COPYING.UCD','README.md'] if component=='espeak-ng' else ['LICENSE','ggml/LICENSE']
+            documents={name:(source/name).read_bytes() for name in ['COPYING','COPYING.APACHE','COPYING.BSD2','COPYING.UCD','README.md']} if component=='espeak-ng' else whisper_notices(source)
             notice=b'Exact upstream license overview for local speech review. Per-file attribution and conditions remain in source-notices/index.json and the source archive.\n'
-            for name in names:
-                notice+=('\nSource document: '+name+'\n').encode()+(source/name).read_bytes()+b'\n'
+            for name,data in documents.items():
+                notice+=('\nSource document: '+name+'\n').encode()+data+b'\n'
             if len(notice)>65536:raise ValueError('voice_legal_overview_too_large')
             (dest/'usr/share/doc'/component/'VOICE-LICENSES.txt').write_bytes(notice)
         result=subprocess.run(command,cwd=R,check=True)

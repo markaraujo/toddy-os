@@ -31,7 +31,6 @@ cmake --build /build/compile --target whisper-cli -j"$jobs" > /build/compile.log
 # Full cmake install would incorrectly require other, intentionally unbuilt tools.
 install -Dm755 /build/compile/bin/whisper-cli /stage/usr/bin/whisper-cli
 install -Dm644 /src/LICENSE /stage/usr/share/doc/whisper-cpp/LICENSE
-install -Dm644 /src/ggml/LICENSE /stage/usr/share/doc/whisper-cpp/GGML-LICENSE
 /stage/usr/bin/whisper-cli --help > /build/cli-help.log 2>&1
 python3 - <<'CHECK'
 from pathlib import Path

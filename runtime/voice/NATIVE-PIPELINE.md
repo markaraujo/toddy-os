@@ -236,3 +236,27 @@ reviewed exact adoption or a truly fresh cohort before process/catalog; do not
 rewrite receipts, replay an uncertain operation or silently copy/rename accepted
 artifacts to make their generation match. This correction does not add such an
 adoption mechanism or rebuild an unchanged completed component automatically.
+
+
+## Whisper native1 retained; actual frozen legal paths for native2
+
+The coordinator measured native1 Whisper compilation100%, followed by staging
+failure while the old recipe tried to copy nonexistent `ggml/LICENSE`. The frozen
+archive has the real1078-byte root `LICENSE` (SHA256
+`94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d`, MIT,
+The ggml authors), plus independent per-file notices. It has no nested GGML license
+file to retain. The recipe now stages the real root LICENSE, and qualification
+checks its exact bytes plus the actual GGML CPU MIT leading notice from
+`ggml/src/ggml-cpu/llamafile/sgemm.cpp` (Mozilla Foundation). The native speech
+license overview includes those exact source notice bytes, and the existing
+configured source-notices header policy independently retains the remaining
+per-file/backend notices. Optional GPU/backend terms are not relabeled as one
+CPU license. No invented GGML-LICENSE file or copied success receipt is produced.
+
+The driver changed to correct this real legal contract. Its prepared source pins
+therefore require a complete NEW native2 cohort for both engines and the model;
+preserve all native1 failed/partial/build outputs. The coordinator chose the
+small real Whisper rebuild after its measured roughly one-minute native compile,
+rather than a new adoption mechanism. Do not change old driver/source pins in
+place or import old success exits into the fresh cohort. Actual native2 build,
+legal/stage/ELF/EN-PT inference/process and installed postconditions remain due.

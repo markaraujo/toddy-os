@@ -65,6 +65,24 @@ class NativeSourceTests(unittest.TestCase):
             with self.subTest(path=path),patch.object(v.subprocess,'check_output',side_effect=['Machine: Advanced Micro Devices X86-64\nType: DYN','(RUNPATH) ['+path+']']):
                 with self.assertRaisesRegex(ValueError,'embedded_search_path'):v.elf_dependencies(Path('/source-fixture'))
 
+    def test_whisper_uses_real_root_license_and_actual_ggml_leading_notice(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            source=Path(temporary);(source/'LICENSE').write_bytes(b'Unqualified source fixture MIT root license')
+            header=source/'ggml/src/ggml-cpu/llamafile/sgemm.cpp';header.parent.mkdir(parents=True)
+            header.write_bytes(b'// Copyright 2024 Mozilla Foundation\n// Permission is hereby granted source fixture only.\n\nint source_fixture_not_a_notice;\n')
+            notices=v.whisper_notices(source)
+            self.assertEqual(notices['LICENSE'],(source/'LICENSE').read_bytes())
+            leading=notices['ggml/src/ggml-cpu/llamafile/sgemm.cpp [leading license comments]']
+            self.assertIn(b'Mozilla Foundation',leading);self.assertNotIn(b'int source_fixture',leading)
+            self.assertFalse((source/'ggml/LICENSE').exists())
+            header.write_text('int no_legal_notice;\n')
+            with self.assertRaisesRegex(ValueError,'actual_ggml_cpu_notice'):v.whisper_notices(source)
+        recipe=(ROOT/'scripts/build/phase2/voice-whisper-build.sh').read_text()
+        self.assertNotIn('install -Dm644 /src/ggml/LICENSE',recipe)
+        row=next(row for row in json.loads((ROOT/'config/component-licenses.json').read_text())['components'] if row['name']=='whisper-cpp')
+        self.assertIn('no ggml/LICENSE exists',row['evidence'])
+        self.assertIn('ggml/src/',row['extra_license_headers']['whisper-source.tar.gz']['prefixes'])
+
     def test_job_existing_marker_prevents_uncertain_replay(self):
         with tempfile.TemporaryDirectory() as t:
             base=Path(t);prefix=base/'receipt';(base/'receipt.prepared.json').write_text('{}');(base/'receipt.build.json').write_text('{"state":"running-no-replay"}')

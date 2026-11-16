@@ -11342,7 +11342,7 @@
       "name": "whisper-cpp",
       "version": "1.9.5",
       "license": "MIT",
-      "evidence": "Exact immutable whisper.cpp and GGML LICENSE documents retained from d1be6fde11ac6e0407606b4e42fe72d34add8037; per-file notices retained independently. Source only, native qualification pending.",
+      "evidence": "Frozen d1be6fde11ac6e0407606b4e42fe72d34add8037 has the real 1078-byte root LICENSE (MIT, The ggml authors); no ggml/LICENSE exists. Actual GGML CPU per-file MIT leading notices include Mozilla Foundation attribution in ggml/src/ggml-cpu/llamafile/sgemm.cpp. Root LICENSE and actual per-file headers are retained independently through the configured source-notices policy; optional backend source terms are not flattened into this CPU runtime claim. Source only, native qualification pending.",
       "runtime_inclusion": "Optional CPU whisper-cli and statically linked internal GGML; no weights.",
       "extra_license_headers": {
         "whisper-source.tar.gz": {
