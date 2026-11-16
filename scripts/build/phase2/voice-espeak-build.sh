@@ -1,6 +1,19 @@
 #!/bin/bash
 set -euo pipefail
 [[ $(id -u) == 101 && ! -e /build/compile ]]
+# Bounded compiler parallelism; no overlapping package/root transactions.
+jobs=$(python3 - <<'BUILD_BUDGET'
+import json,os
+from pathlib import Path
+values={line.split(':',1)[0]:line.split(':',1)[1].strip().split()[0] for line in Path('/proc/meminfo').read_text().splitlines()}
+available=int(values['MemAvailable'])//1024
+per_job=256
+jobs=min(8,len(os.sched_getaffinity(0)),max(0,(available-2048)//per_job))
+if jobs<1:raise SystemExit('Insufficient build RAM reserve')
+Path('/build/build-budget.json').write_text(json.dumps({'jobs':jobs,'available_mib':available,'reserve_mib':2048,'per_job_mib':per_job},sort_keys=True)+'\n')
+print(jobs)
+BUILD_BUDGET
+)
 # Run only in the qualified unprivileged read-only /src, private /build,/stage
 # no-network build harness. Preparation removed the unconditional Sonic fetch.
 cmake -S /src -B /build/compile -DCMAKE_INSTALL_PREFIX=/usr \
@@ -9,8 +22,8 @@ cmake -S /src -B /build/compile -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_LIBSONIC=OFF -DUSE_LIBPCAUDIO=OFF -DUSE_MBROLA=OFF \
     -DESPEAK_COMPAT=OFF -DUSE_ASYNC=OFF \
     > /build/configure.log 2>&1
-cmake --build /build/compile -j4 > /build/compile.log 2>&1
-cmake --build /build/compile --target tests -j4 > /build/tests-build.log 2>&1
+cmake --build /build/compile -j"$jobs" > /build/compile.log 2>&1
+cmake --build /build/compile --target tests -j"$jobs" > /build/tests-build.log 2>&1
 ctest --test-dir /build/compile --output-on-failure --timeout 60 \
     > /build/upstream-tests.log 2>&1
 DESTDIR=/stage cmake --install /build/compile > /build/stage.log 2>&1

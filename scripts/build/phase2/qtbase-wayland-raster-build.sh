@@ -4,6 +4,19 @@
 set -euo pipefail
 [[ $(id -u) == 101 && -f /src/.cmake.conf && -d /stage && ! -e /build/compile ]]
 [[ -z $(find /stage -mindepth 1 -print -quit) ]]
+# Bounded compiler parallelism; no overlapping package/root transactions.
+jobs=$(python3 - <<'BUILD_BUDGET'
+import json,os
+from pathlib import Path
+values={line.split(':',1)[0]:line.split(':',1)[1].strip().split()[0] for line in Path('/proc/meminfo').read_text().splitlines()}
+available=int(values['MemAvailable'])//1024
+per_job=1024
+jobs=min(8,len(os.sched_getaffinity(0)),max(0,(available-2048)//per_job))
+if jobs<1:raise SystemExit('Insufficient build RAM reserve')
+Path('/build/build-budget.json').write_text(json.dumps({'jobs':jobs,'available_mib':available,'reserve_mib':2048,'per_job_mib':per_job},sort_keys=True)+'\n')
+print(jobs)
+BUILD_BUDGET
+)
 [[ $(sed -n 's/^set(QT_REPO_MODULE_VERSION "\([^"]*\)").*/\1/p' /src/.cmake.conf) == 6.11.2 ]]
 [[ $(pkg-config --modversion wayland-client wayland-cursor wayland-scanner | sort -u) == 1.26.0 ]]
 [[ $(pkg-config --modversion xkbcommon) == 1.13.2 ]]
@@ -24,7 +37,7 @@ cmake -S /src -B /build/compile -G Ninja \
     -DFEATURE_libinput=OFF -DFEATURE_mtdev=OFF -DFEATURE_tslib=OFF \
     -DINPUT_freetype=qt -DINPUT_harfbuzz=qt \
     -DINPUT_openssl=linked -DINPUT_dbus=linked
-cmake --build /build/compile --parallel 6
+cmake --build /build/compile --parallel "$jobs"
 DESTDIR=/stage cmake --install /build/compile
 for file in usr/lib/libQt6Widgets.so.6.11.2 usr/lib/libQt6WaylandClient.so.6.11.2 \
     usr/plugins/platforms/libqwayland.so usr/plugins/wayland-shell-integration/libxdg-shell.so; do
