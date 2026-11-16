@@ -20,6 +20,8 @@ BUILD_BUDGET
 [[ $(sed -n 's/^set(QT_REPO_MODULE_VERSION "\([^"]*\)").*/\1/p' /src/.cmake.conf) == 6.11.2 ]]
 [[ $(pkg-config --modversion wayland-client wayland-cursor wayland-scanner | sort -u) == 1.26.0 ]]
 [[ $(pkg-config --modversion xkbcommon) == 1.13.2 ]]
+# Qt6.11.2 fontconfig requires system_freetype; the frozen native FreeType
+# package is already selected. Keep bundled HarfBuzz and all other flags fixed.
 # Client QPA, shared-memory backing store and xdg-shell are IN qtbase6.11.2.
 # No OpenGL, EGL/XCB, compositor, QtQuick or QtWayland archive is needed here.
 cmake -S /src -B /build/compile -G Ninja \
@@ -35,7 +37,7 @@ cmake -S /src -B /build/compile -G Ninja \
     -DFEATURE_gtk3=OFF -DFEATURE_xlib=OFF -DFEATURE_icu=OFF -DFEATURE_sessionmanager=OFF \
     -DFEATURE_libproxy=OFF -DFEATURE_gssapi=OFF -DFEATURE_brotli=OFF \
     -DFEATURE_libinput=OFF -DFEATURE_mtdev=OFF -DFEATURE_tslib=OFF \
-    -DINPUT_freetype=qt -DINPUT_harfbuzz=qt \
+    -DINPUT_freetype=system -DINPUT_harfbuzz=qt \
     -DINPUT_openssl=linked -DINPUT_dbus=linked
 cmake --build /build/compile --parallel "$jobs"
 DESTDIR=/stage cmake --install /build/compile

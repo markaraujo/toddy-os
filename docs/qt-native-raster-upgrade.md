@@ -34,17 +34,17 @@ With one coordinator/guest writer, in the guarded builder guest:
 
 ```sh
 bash /opt/toddy-build/scripts/build/phase2/qtbase-wayland-prepare.sh
-python3 /opt/toddy-build/scripts/build/phase2/job.py qtbase-wayland-1 \
-  /mnt/lfs/sources/phase2/inputs/qtbase-wayland-6.11.2 \
-  /mnt/lfs/sources/phase2/work/qtbase-wayland-1 bash /src/toddy-build.sh
+python3 /opt/toddy-build/scripts/build/phase2/job.py qtbase-wayland-2 \
+  /mnt/lfs/sources/phase2/inputs/qtbase-wayland-6.11.2-2 \
+  /mnt/lfs/sources/phase2/work/qtbase-wayland-2 bash /src/toddy-build.sh
 python3 /opt/toddy-build/scripts/build/phase2/qtbase_wayland_native.py qualify
 cd /opt/toddy-build/scripts/build
-python3 run_step.py b12-qtbase-wayland-install \
+python3 run_step.py b12-qtbase-wayland-install-2 \
   phase2/qtbase-wayland-install.sh phase2/qtbase-wayland-check.sh --user root
 ```
 
 The native prepare receipt is
-`/var/log/toddy/phase2/qtbase-wayland-prepared-1.json`. It pins archive/member
+`/var/log/toddy/phase2/qtbase-wayland-prepared-2.json`. It pins archive/member
 custody, old package archives/records, exact helper/recipe/harness hashes and
 scratch/alias identity; a root write to source must receive EROFS. Preparation
 refuses all existing input/work/promotion/receipt paths, preserving uncertainty.
@@ -52,7 +52,7 @@ The qualified harness supplies native dependencies read-only, unprivileged UID 1
 new private namespaces and an empty network. It exposes no owner session bus,
 credentials, package database or writable installed payload to source/compiler.
 
-The build receipt/log/exit are `qtbase-wayland-1.{job.json,log,exit}` in that
+The build receipt/log/exit are `qtbase-wayland-2.{job.json,log,exit}` in that
 log directory; work contains `qt-static-stage.json`, `qt-staged-consumer.log`,
 `qt-existing-lrelease.log` and `qt-qualified.json`. Stage headers come first and
 assert Wayland/scanner/keyboard features; staged libraries/plugin metadata and
@@ -69,12 +69,12 @@ foreign package conflicts before Dpkg. There is no `--force-overwrite`, duplicat
 Qt package, arbitrary command, framework switch or source version bump.
 
 The normal full-root native run_step record remains authoritative. The separate
-`qtbase-wayland-install-1.json` records intent before the native transaction;
+`qtbase-wayland-install-2.json` records intent before the native transaction;
 postcheck verifies package status/Depends, installed raster features, existing
 Svg/Linguist behavior and unchanged old package/record custody. If an installed
 Calamares binary exists its offscreen `--version` is checked, but that is not
 plugin/graphical qualification. Tests retain outputs in target
-`/tmp/toddy-qtbase-wayland-postcheck-1`; do not copy owner runtime secrets there.
+`/tmp/toddy-qtbase-wayland-postcheck-2`; do not copy owner runtime secrets there.
 
 ## Failure, rollback and remaining gates
 
@@ -98,3 +98,23 @@ minimum measured display transport. Do not weaken global X11/Wayland permissions
 or inherit owner keyrings/provider/session credentials. Installer disk writes still
 require its independent signed composed closure/finalizer, exact review and owner
 confirmation; this Qt upgrade is not B12/G2/ISO acceptance.
+
+## Configure correction and preserved attempt1
+
+The coordinator observed qtbase-wayland-1 exit1 during configure, before
+compilation. Frozen Qt6.11.2 src/gui/configure.cmake enables system_freetype for
+INPUT_freetype=system and disables it for qt; fontconfig requires that feature
+and Fontconfig_FOUND. The original combination fontconfig=ON/freetype=qt was
+therefore inconsistent. Use the already installed frozen FreeType2.14.3 provider
+with INPUT_freetype=system. Keep Fontconfig2.18.3, bundled HarfBuzz, the source
+archive/version, raster Wayland profile and all other flags unchanged. The
+coordinator's actual pkg-config inspection reports freetype2=26.6.20 (the
+FreeType2.14.3 package's metadata version), not a requested dependency upgrade.
+
+The corrected controller uses only attempt2 aliases, source-2/work-2/promotion-2
+on the SAME /mnt/toddy-qt-raster-1 volume, prepared/job/install/postcheck2 names
+and b12-qtbase-wayland-install-2 dispatcher identity. Original source/work aliases,
+scratch source/work directories, job1 configure output and all first-attempt
+receipts remain untouched and cannot satisfy attempt2 qualification. Existing
+attempt2 paths still cause refusal; no cleanup/replay is performed. This source
+correction has not compiled or installed Qt and grants no GUI/installer acceptance.

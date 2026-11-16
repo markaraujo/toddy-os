@@ -23,11 +23,29 @@ class QtBaseNativeUpgradeTests(unittest.TestCase):
         self.assertEqual(qt.BASE, Path('/mnt/toddy-qt-raster-1'))
         self.assertLessEqual(len('TODDY-QT-RASTER-1'), 20)
 
+    def test_attempt_two_uses_system_freetype_and_preserves_failed_one_namespace(self):
+        recipe=(BUILD/'phase2/qtbase-wayland-raster-build.sh').read_text()
+        self.assertIn('-DINPUT_freetype=system',recipe)
+        self.assertNotIn('-DINPUT_freetype=qt',recipe)
+        self.assertIn('-DFEATURE_fontconfig=ON',recipe)
+        self.assertIn('freetype (= 2.14.3-1+toddy1)',qt.DEPENDS)
+        self.assertEqual(qt.SOURCE.name,'qtbase-wayland-6.11.2-2')
+        self.assertEqual(qt.WORK.name,'qtbase-wayland-2')
+        self.assertEqual(qt.STAGE.name,'phase2-qtbase-wayland-2')
+        self.assertEqual(qt.PREPARED.name,'qtbase-wayland-prepared-2.json')
+        self.assertEqual(qt.HOLDER,qt.BASE/'source-2')
+        self.assertEqual(qt.SCRATCH_WORK,qt.BASE/'work-2')
+        self.assertEqual(qt.PROMOTION,qt.BASE/'promotion-2')
+        wrapper=(BUILD/'phase2/qtbase_wayland_native.py').read_text()
+        self.assertNotIn('qtbase-wayland-1.exit',wrapper)
+        self.assertNotIn('qtbase-wayland-install-1.json',wrapper)
+        self.assertNotIn("BASE/'source'",wrapper)
+
     def test_native_install_requires_matching_owned_dispatcher_receipt(self):
         with tempfile.TemporaryDirectory() as temporary:
             log = Path(temporary)/'phase2'; (log.parent/'build').mkdir()
-            marker = log.parent/'build/b12-qtbase-wayland-install.running.json'
-            record = {'step':'b12-qtbase-wayland-install','user':'root',
+            marker = log.parent/'build/b12-qtbase-wayland-install-2.running.json'
+            record = {'step':'b12-qtbase-wayland-install-2','user':'root',
                 'recipe_sha256':'a'*64,'postcheck_sha256':'a'*64,'recipe_pid':os.getppid()}
             marker.write_text(json.dumps(record))
             with patch.object(qt, 'LOG', log), patch.object(qt, 'digest', return_value='a'*64):

@@ -32,9 +32,28 @@
     "upstream_version_unchanged": true,
     "scratch_mount": "/mnt/toddy-qt-raster-1",
     "scratch_serial": "TODDY-QT-RASTER-1",
-    "source_alias": "/mnt/lfs/sources/phase2/inputs/qtbase-wayland-6.11.2",
-    "work_alias": "/mnt/lfs/sources/phase2/work/qtbase-wayland-1",
+    "source_alias": "/mnt/lfs/sources/phase2/inputs/qtbase-wayland-6.11.2-2",
+    "work_alias": "/mnt/lfs/sources/phase2/work/qtbase-wayland-2",
     "native_wrapper": "scripts/build/phase2/qtbase_wayland_native.py",
-    "native_execution": "pending; candidate overlays only; accepted B02 backing immutable"
+    "native_execution": "pending; candidate overlays only; accepted B02 backing immutable",
+    "attempt": 2,
+    "stage_alias": "/mnt/lfs/sources/stage/phase2-qtbase-wayland-2",
+    "scratch_directories": [
+      "source-2",
+      "work-2",
+      "promotion-2"
+    ],
+    "fontconfig_freetype": "Existing frozen system FreeType2.14.3; Qt6.11.2 fontconfig requires system_freetype. No dependency upgrade.",
+    "preserved_failed_attempt": {
+      "attempt": 1,
+      "job": "qtbase-wayland-1",
+      "source_alias": "/mnt/lfs/sources/phase2/inputs/qtbase-wayland-6.11.2",
+      "work_alias": "/mnt/lfs/sources/phase2/work/qtbase-wayland-1",
+      "scratch_directories": [
+        "source",
+        "work"
+      ],
+      "failure": "Configure exit1 before compilation: fontconfig requires system_freetype but INPUT_freetype=qt disabled it. Preserve all raw inputs/work/logs/receipts."
+    }
   }
 }
