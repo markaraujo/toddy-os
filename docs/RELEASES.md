@@ -90,3 +90,13 @@ permission for every installed Toddy personal assistant to publish the project.
 Keep major previews and old release notes accessible through GitHub history. A
 new release does not require redesigning the site, changing repository visibility,
 installing a new framework or adding mandatory external API calls to the portal.
+
+## Prepared Phase 2 artifact/portal utility
+
+[The offline Phase 2 handoff utility](phase2-release-handoff.md) validates actual
+ISO/checksum/size, immutable tag/source, same-final-ISO native G2/component receipts
+and actual prerelease asset/download custody before rendering the current portal.
+It creates no available Phase 2 row by installation or source preparation. It
+reuses the existing generators/layout/six languages and preserves the foundation
+fallback. Actual publication and deployed Pages checks remain explicit required
+postconditions; the utility performs no network or publishing operation.

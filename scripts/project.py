@@ -2,12 +2,16 @@
 """Dependency-free planning checks and offline progress rendering."""
 import argparse
 import html
+import importlib.util
 import json
 import re
 import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+_release_spec = importlib.util.spec_from_file_location('phase2_release', Path(__file__).with_name('phase2_release.py'))
+phase2_release = importlib.util.module_from_spec(_release_spec)
+_release_spec.loader.exec_module(phase2_release)
 STATES = {"not_started", "in_progress", "blocked", "completed"}
 PHASE2_ORDER = ("B01", "B03", "B04", "B05", "B02", "B06", "B11", "B12", "B07", "B08", "B09", "B10", "B13")
 
@@ -237,7 +241,7 @@ def outputs(data):
             note = "Planned · development not started"
         metrics.append(f'<article class="metric">{title}<strong>{pct[phase]}%</strong><small>{note}</small><progress aria-label="{title}" value="{pct[phase]}" max="100"></progress></article>')
     metrics.append(f'<article class="metric">Next step<strong>{esc(data["next_story"])}</strong><small>G1 {esc(data["gates"]["G1"])} · G2 {esc(data["gates"]["G2"])}</small></article>')
-    page = (ROOT / "dashboard/template.html").read_text()
+    page = phase2_release.portal(ROOT, (ROOT / "dashboard/template.html").read_text())
     replacements = {"METRICS": "".join(metrics), "SCOPE": esc(data["current_scope"]),
                     "UPDATED": esc(data["updated_at"]), "ACTIVE_WORK": active_page,
                     "STORIES": "".join(cards), "SUPPORTERS": community_html(), "PATREON": patreon_html()}

@@ -1568,3 +1568,19 @@ Object.assign(window.TODDY_TRANSLATIONS, {
     "Thanks,": ["Valeu,","Gracias,","谢谢，","ありがとう、","Спасибо,"],
     "You have my attention.": ["Agora você tem minha atenção.","Ahora tienes mi atención.","现在我的注意力都在你身上。","ちゃんと見ているよ。","Теперь всё моё внимание — вам."]
 });
+
+/* Dormant Phase 2 release copy; no available artifact is announced by these strings. */
+Object.assign(window.TODDY_TRANSLATIONS, {
+    "Phase 2 experimental preview tested in the native guest. Review the owner guide and evidence before installation.": ["Prévia experimental da Fase 2 testada na VM nativa. Consulte o guia do proprietário e as evidências antes de instalar.", "Vista previa experimental de la Fase 2 probada en la máquina virtual nativa. Consulta la guía del propietario y las evidencias antes de instalar.", "第二阶段实验性预览版已在原生虚拟机环境中测试。安装前请阅读使用者指南和验证记录。", "フェーズ2の実験的プレビューはネイティブゲスト環境でテスト済みです。インストール前に利用者ガイドと検証記録を確認してください。", "Экспериментальная версия второго этапа проверена в нативной гостевой системе. Перед установкой прочитайте руководство владельца и результаты проверок."],
+    "Phase 2 preview ISO ↗": ["ISO da prévia da Fase 2 ↗", "ISO de la vista previa de la Fase 2 ↗", "第二阶段预览版 ISO ↗", "フェーズ2プレビュー ISO ↗", "ISO предварительной версии этапа 2 ↗"],
+    "Checksums ↗": ["Checksums ↗", "Sumas de verificación ↗", "校验和 ↗", "チェックサム ↗", "Контрольные суммы ↗"],
+    "Corresponding source ↗": ["Código-fonte correspondente ↗", "Código fuente correspondiente ↗", "对应源代码 ↗", "対応するソースコード ↗", "Соответствующий исходный код ↗"],
+    "Component inventory ↗": ["Inventário de componentes ↗", "Inventario de componentes ↗", "组件清单 ↗", "コンポーネント一覧 ↗", "Перечень компонентов ↗"],
+    "Build guide ↗": ["Guia de compilação ↗", "Guía de compilación ↗", "构建指南 ↗", "ビルドガイド ↗", "Руководство по сборке ↗"],
+    "Release notes ↗": ["Notas da versão ↗", "Notas de la versión ↗", "发布说明 ↗", "リリースノート ↗", "Примечания к выпуску ↗"],
+    "Owner guide ↗": ["Guia do proprietário ↗", "Guía del propietario ↗", "使用者指南 ↗", "利用者ガイド ↗", "Руководство владельца ↗"],
+    "Recovery guide ↗": ["Guia de recuperação ↗", "Guía de recuperación ↗", "恢复指南 ↗", "復旧ガイド ↗", "Руководство по восстановлению ↗"],
+    "Licenses ↗": ["Licenças ↗", "Licencias ↗", "许可证 ↗", "ライセンス ↗", "Лицензии ↗"],
+    "G2 evidence ↗": ["Evidências G2 ↗", "Evidencias G2 ↗", "G2 验证记录 ↗", "G2 検証記録 ↗", "Результаты проверок G2 ↗"],
+    "G2 native guest checks passed. Physical hardware validation pending.": ["Verificações G2 na VM nativa aprovadas. Validação em hardware físico pendente.", "Verificaciones G2 en la máquina virtual nativa aprobadas. Validación en hardware físico pendiente.", "G2 原生虚拟机验证已通过。物理硬件验证尚未完成。", "ネイティブゲストでの G2 検証に合格しました。実機での検証は未実施です。", "Проверки G2 в нативной гостевой системе пройдены. Проверка на физическом оборудовании ещё не выполнена."]
+});
