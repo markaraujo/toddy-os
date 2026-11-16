@@ -447,6 +447,256 @@
         "en": "You can choose software without configuring the assistant.",
         "pt-BR": "Você pode escolher programas sem configurar o assistente."
       }
+    },
+    {
+      "id": "setup.backend_heading",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Assistant setup",
+        "pt-BR": "Configuração do assistente"
+      }
+    },
+    {
+      "id": "setup.intent_only",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Save a preference for later setup. No provider, download or task will start.",
+        "pt-BR": "Salve uma preferência para configurar depois. Nenhum provedor, download ou tarefa será iniciado."
+      }
+    },
+    {
+      "id": "setup.save_intent",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Save preference",
+        "pt-BR": "Salvar preferência"
+      }
+    },
+    {
+      "id": "setup.intent_saved",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Your setup preference is saved. No backend was activated.",
+        "pt-BR": "Sua preferência foi salva. Nenhum serviço de IA foi ativado."
+      }
+    },
+    {
+      "id": "setup.assistant_unavailable",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Assistant tasks unavailable",
+        "pt-BR": "Tarefas do assistente indisponíveis"
+      }
+    },
+    {
+      "id": "setup.tasks_unavailable",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "This setup surface is not connected to a task service. Use the desktop normally while assistant setup is pending.",
+        "pt-BR": "Esta configuração não está conectada a um serviço de tarefas. Use o desktop normalmente enquanto a configuração do assistente está pendente."
+      }
+    },
+    {
+      "id": "setup.state_error",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Setup state changed or could not be saved. Reload it before trying again.",
+        "pt-BR": "A configuração mudou ou não pôde ser salva. Recarregue antes de tentar novamente."
+      }
+    },
+    {
+      "id": "setup.reload",
+      "context": "setup",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Reload saved preferences",
+        "pt-BR": "Recarregar preferências salvas"
+      }
+    },
+    {
+      "id": "software.title",
+      "context": "software",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Optional software",
+        "pt-BR": "Programas opcionais"
+      }
+    },
+    {
+      "id": "software.catalog_unavailable",
+      "context": "software",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "These apps are candidates only. No verified release catalog is available, so installation is unavailable.",
+        "pt-BR": "Estes aplicativos são apenas candidatos. Ainda não há catálogo de versões verificadas, por isso a instalação está indisponível."
+      }
+    },
+    {
+      "id": "software.retained_pending",
+      "context": "software",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "A previous deferred choice is retained and still requires review.",
+        "pt-BR": "Uma escolha anterior foi mantida para depois e ainda precisa ser revisada."
+      }
+    },
+    {
+      "id": "task.native_heading",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Native system task",
+        "pt-BR": "Tarefa nativa do sistema"
+      }
+    },
+    {
+      "id": "task.native_description",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Inspect system information through the authenticated task service. This uses a native read-only tool, not an AI conversation.",
+        "pt-BR": "Consulte informações do sistema pelo serviço autenticado de tarefas. Esta ação usa uma ferramenta nativa de leitura, sem conversa com IA."
+      }
+    },
+    {
+      "id": "task.note",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Optional task note",
+        "pt-BR": "Observação opcional da tarefa"
+      }
+    },
+    {
+      "id": "task.inspect_system",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Inspect system information",
+        "pt-BR": "Consultar informações do sistema"
+      }
+    },
+    {
+      "id": "task.service_absent",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The task service is unavailable. No task can start.",
+        "pt-BR": "O serviço de tarefas está indisponível. Nenhuma tarefa pode ser iniciada."
+      }
+    },
+    {
+      "id": "task.service_connecting",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Checking the local task service.",
+        "pt-BR": "Verificando o serviço local de tarefas."
+      }
+    },
+    {
+      "id": "task.service_unsupported",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The task service does not provide the required capabilities.",
+        "pt-BR": "O serviço de tarefas não oferece os recursos necessários."
+      }
+    },
+    {
+      "id": "task.service_error",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The task service could not be reached safely. Existing work was not resubmitted.",
+        "pt-BR": "Não foi possível acessar o serviço de tarefas com segurança. Nenhuma tarefa existente foi reenviada."
+      }
+    },
+    {
+      "id": "task.native_ready",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The native system-information task is available.",
+        "pt-BR": "A tarefa nativa de informações do sistema está disponível."
+      }
+    },
+    {
+      "id": "task.acceptance_uncertain",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Task acceptance is unknown. No automatic retry will run; review the existing work before starting again.",
+        "pt-BR": "Não se sabe se a tarefa foi aceita. Não haverá nova tentativa automática; confira o trabalho existente antes de iniciar outra tarefa."
+      }
+    },
+    {
+      "id": "task.accepting",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Waiting for task acceptance.",
+        "pt-BR": "Aguardando a confirmação da tarefa."
+      }
+    },
+    {
+      "id": "task.native_waiting",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "The task is waiting for review or input.",
+        "pt-BR": "A tarefa aguarda revisão ou informações."
+      }
+    },
+    {
+      "id": "task.identifier",
+      "context": "task",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Task: {task}",
+        "pt-BR": "Tarefa: {task}"
+      }
+    },
+    {
+      "id": "task.refresh_service",
+      "context": "control",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Refresh connection",
+        "pt-BR": "Atualizar conexão"
+      }
     }
   ]
 }
