@@ -19,7 +19,7 @@ import tarfile
 AGENT={
  'broker':('core.py','engine.py','configured_engine.py','text.py','profile_registry.py','profile_runtime.py',
            'memory.py','memory_api.py','memory_control.py','automation.py','automation_control.py',
-           'profiles.py','protocol.py','scheduler.py','service.py','tasks.py',
+           'integrations.py','skill_documents.py','profiles.py','protocol.py','scheduler.py','service.py','tasks.py',
            'io.github.markaraujo.Toddy.Service1.xml'),
  'tools':('native.py','child.py','scoped.py','scoped_child.py'),
  'local':('server.py','managed.py'),
@@ -207,6 +207,8 @@ def stage_agent(root,destination,*,version='0.2.0-1+toddy1',cache=None,notices=N
   b.copy('config/phase2/'+name,'/usr/share/toddy/profiles/'+name)
  for name in ('config.json','SOUL.md','IDENTITY.md','USER.md','AGENTS.md'):
   b.copy('config/phase2/profile/'+name,'/usr/share/toddy/profiles/profile/'+name)
+ b.copy('config/phase2/profile/skills/explain-system/SKILL.md',
+        '/usr/share/toddy/profiles/profile/skills/explain-system/SKILL.md')
  preset=json.loads(b.content['/usr/share/toddy/profiles/profile/config.json'])
  if preset['provider']['mode']!='deferred' or preset['provider']['allow_remote_fallback'] or \
    preset['budgets']['remote_spending_enabled'] or preset['memory']['history_enabled'] or \
