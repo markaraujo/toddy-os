@@ -178,7 +178,7 @@ def vendor(builder,cache,notices):
    contents=path.read_bytes()
   except OSError:raise PackageBlocked('supplemental_notice_missing') from None
   if digest(contents)!=row['sha256']:raise PackageBlocked('supplemental_notice_integrity')
-  builder.put('/usr/share/doc/toddy-agent/source-notices/'+row['sha256'],contents,source=row['url'])
+  builder.put('/usr/share/doc/toddy-agent/npm-supplemental-notices/'+row['sha256'],contents,source=row['url'])
   supplemental.append(row)
  if len(archives)!=87:raise PackageBlocked('vendor_distinct_archive_inventory')
  builder.put('/usr/share/doc/toddy-agent/npm-custody.json',encoded(evidence))

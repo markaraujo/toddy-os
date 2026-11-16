@@ -111,7 +111,7 @@ def render_desktop_defaults(keyfile):
 
 def _notices(root, repository, package):
     prefix = '/usr/share/doc/' + package + '/'
-    for src, leaf in [('LICENSE', 'copyright-code'), ('LICENSES/CC-BY-4.0.txt', 'CC-BY-4.0.txt'),
+    for src, leaf in [('LICENSE', 'copyright'), ('LICENSE', 'copyright-code'), ('LICENSES/CC-BY-4.0.txt', 'CC-BY-4.0.txt'),
                       ('assets/brand/assets.json', 'asset-provenance.json')]:
         _write(root, prefix + leaf, source(repository, src))
 
