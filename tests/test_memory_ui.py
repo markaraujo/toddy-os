@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 import tempfile
 import unittest
-from runtime.ui.memory import page,sealed_local_backup,reviewed_document,reviewed_preferences
+from runtime.ui.memory_state import page,sealed_local_backup,reviewed_document,reviewed_preferences
 
 class MemoryUI(unittest.TestCase):
  def test_memory_page_is_bounded_and_profile_bound(self):

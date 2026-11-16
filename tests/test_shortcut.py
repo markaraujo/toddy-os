@@ -10,7 +10,15 @@ ROOT=Path(__file__).resolve().parents[1]
 class ShortcutTests(unittest.TestCase):
  def test_real_gsettings_isolated_conflicts_and_preservation(self):
   code='''
+try:
+ import gi
+ gi.require_version('Gtk','4.0')
+ from gi.repository import Gio,Gtk
+except (ImportError,ValueError):raise SystemExit(77)
 from runtime.ui.shortcut import *
+source=Gio.SettingsSchemaSource.get_default()
+if source is None or any(source.lookup(schema,True) is None for schema in (MEDIA,CUSTOM,'org.gnome.desktop.wm.keybindings')):
+ raise SystemExit(77)
 s=Shortcut()
 assert not s.current()
 other='/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/existing/'
@@ -39,6 +47,7 @@ print('isolated-real-GioSettings-passed')
 '''
   env={**os.environ,'GSETTINGS_BACKEND':'memory','PYTHONPATH':str(ROOT)}
   p=subprocess.run([sys.executable,'-c',code],cwd=ROOT,env=env,text=True,capture_output=True,timeout=15)
+  if p.returncode==77:self.skipTest('optional host GTK/GNOME schemas absent; native shortcut qualification remains required')
   self.assertEqual(p.returncode,0,p.stdout+p.stderr)
   self.assertIn('isolated-real-GioSettings-passed',p.stdout)
 
