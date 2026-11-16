@@ -261,3 +261,61 @@ source assembler now requires these bytes to agree before qualification or
 generation-2 creation; a pretty-printed equivalent file is rejected early, not
 after native finalization. This check does not rewrite a reviewed file, invent
 policy or relax the production composition's custody requirements.
+
+## Preserve first-install evidence before shutdown
+
+The developer install harness writes its operation journal under
+`/var/lib/toddy/installer-qualification`, while `NativeFinalizer` writes the nine
+measured reports under `/run/toddy-installer/finalization-target-<operation-id>`.
+The latter is volatile. A completed installer reply alone neither preserves
+these reports nor proves a successful boot. Save the actual review envelope as
+a root-owned, non-writable-by-others JSON file outside the signed payload. It
+contains the plan and no password; retain the original sealed descriptors for
+execution as described in the installer package protocol.
+
+After `execute` returns `completed`, while the same trusted VM is still running,
+use this source-only collector there:
+
+```sh
+/usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/installer_collect.py \
+  --review /sources/stage/actual-installer-review-bios.json
+```
+
+The review filename identifies operator evidence, not a new install attempt.
+The collector reads the exact completed operation through a read-only database
+connection under the existing writer lock. It independently checks the now
+nonblank disk's serial, size, device identity and unmounted state; rechecks the
+signed inputs/source closure; validates all nine report schemas and input
+bindings; and admits the measured copy only above the unchanged 16 GiB reserve.
+It copies their **original bytes** into the sealer's fixed
+`/sources/stage/toddy-installer-native-inputs/qualification` directory, then
+writes `installed-handoff-<operation-id>.json` beside it. Existing identical
+files may be read again; differing evidence, partial files, redirected paths,
+active installer locks or incomplete operations fail closed. It never invokes
+installation, mounts the disk, changes a journal or retries an unknown outcome.
+Preserve these outputs and the completed journal in durable coordinator custody
+before shutdown. Repeat the review/install/collection procedure on a separate
+fresh disposable disk for the other firmware; never reuse a failed operation
+or overwrite an earlier qualification report to force agreement.
+
+The handoff records actual UUIDs, expected owner identity, kernel/initramfs/GRUB
+hashes, source/input/report bindings and measured payload storage. Its boot,
+fresh-owner-login, recovery and production-ready fields remain explicitly
+unverified. For each advertised BIOS/UEFI path, detach the installer media and
+all build disks, boot only the installed disposable disk, authenticate as its
+fresh owner, and measure its root UUID/kernel/initramfs and persistent marker.
+A second cold boot must have a distinct actual boot ID and retain that same
+marker and root identity. Test the source-owned recovery entry separately;
+`foundation-recovery.json` verifies attributed recovery files, not execution of
+the rescue system. The old foundation milestone/root-autologin test CLIs do not
+validate the new GNOME owner-login path unchanged.
+
+Only observed results may populate `qualification/boot-bios.json` and
+`qualification/boot-uefi.json` using the strict
+`native-detached-installed-boot-v1` schema. The collector deliberately provides
+no command that fills those assertions automatically. The existing composition
+sealer continues to require both actual detached boot pairs, all measured
+finalizer reports and exact source/image inputs. Public release handoff still
+requires the actual ISO/checksums, installer/boot/recovery evidence, license and
+privacy review, and explicit pending physical-machine validation; collected
+source evidence alone is never an accepted ISO or production seal.
