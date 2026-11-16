@@ -118,7 +118,7 @@ class ReviewProject:
                     row.update(status='current-script-included', current_sha256=sha, included_member=member)
                     result = strict.Input(member, sha, data=data,
                         origin={'kind': 'current-functional-script-review-required', 'commit': self.commit,
-                            'path': name, 'recorded_historical_sha256': expected})
+                            'path': name})
                 self.ledger[key] = row
         self.cache[key] = result
         return result
