@@ -52,8 +52,16 @@ def snapshot():
 
 def write(path, data):
     temp = path.with_suffix('.tmp')
-    temp.write_text(json.dumps(data, indent=2) + '\n')
-    temp.replace(path)
+    with temp.open('x') as stream:
+        stream.write(json.dumps(data, indent=2) + '\n')
+        stream.flush()
+        os.fsync(stream.fileno())
+    os.replace(temp, path)
+    descriptor = os.open(path.parent, os.O_DIRECTORY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
 
 
 def main():
@@ -126,6 +134,9 @@ def main():
             write(prefix.with_suffix('.running.json'), record)
             record['recipe_exit'] = process.wait()
             record['postcheck_exit'] = None
+            # The independent checker consumes this exact live transaction.
+            # Persist the completed recipe before admitting any postcondition.
+            write(prefix.with_suffix('.running.json'), record)
             if record['recipe_exit'] == 0:
                 check = subprocess.run(command + [str(args.postcheck.resolve())],
                     env=environment, stdout=log, stderr=subprocess.STDOUT, cwd='/mnt/lfs/sources')

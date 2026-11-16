@@ -135,3 +135,22 @@ above with the new install-3 identity. Only installation paths change:
 failed promotion/stage 2 and all earlier receipts. No package write was observed
 in attempt 2; attempt 3 still independently verifies the package state, complete
 direct ELF providers and capacity before starting the native transaction.
+
+## Installed attempt3 postcondition reconciliation
+
+Actual attempt3 installed the archive
+`ac7198f74b71b818a1d1c0960a7fc61d1acfcbddf127b72e94cd1ed80e53b631`.
+The recipe exited0; the checker exited1 before its checks because the build runner
+had not persisted `recipe_exit` in running.json. Preserve the failed3 record and
+log. Do not reinstall or rebuild to repair this receipt boundary.
+
+The corrected runner atomically fsyncs recipe completion before independent
+postconditions. The fixed read-only recovery is `b12-qtbase-wayland-reconcile-4`,
+using `phase2/qtbase-wayland-reconcile.sh` and
+`phase2/qtbase-wayland-reconcile-check.sh` under run_step with `--user root`.
+It requires the exact retained failed3 producer/log/recipe identity and a fresh
+owned recovery transaction. It checks every installed native payload entry,
+source/ownership/mode/link hashes, native package audit and actual existing
+Widget/TLS/private D-Bus/Svg/Linguist consumers. Its separate record explicitly
+states reinstalled:false. No Wayland/root GUI or installer acceptance follows.
+A partial existing probe/recovery receipt requires inspection, never replay.

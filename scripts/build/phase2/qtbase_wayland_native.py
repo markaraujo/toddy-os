@@ -250,8 +250,11 @@ def install():
     # journaled and must be reconciled; this function never retries an install.
 
 
-def postcheck():
-    transaction('postcheck')
+def postcheck(*, reconcile=False):
+    if reconcile:
+        reconcile_transaction('recipe')
+    else:
+        transaction('postcheck')
     from qt_wayland_inspect import inspect
     receipt = LOG/'qtbase-wayland-install-3.json'
     state = json.loads(receipt.read_text()); assert state['state'] == 'native-installed-checks-pending'
@@ -263,6 +266,17 @@ def postcheck():
         old = name + '_' + before['version'] + '_amd64'
         assert digest(Path('/var/log/toddy/packages')/(old+'.json')) == before['record_sha256']
         assert digest(Path('/var/cache/toddy/packages')/(old+'.deb')) == before['archive_sha256']
+    payload = json.loads((Path('/var/log/toddy/packages')/('qtbase_'+VERSION+'_amd64.json')).read_text())['payload']
+    for virtual, expected in payload.items():
+        actual = TARGET/virtual.lstrip('/')
+        info = actual.lstat()
+        assert (info.st_mode, info.st_uid, info.st_gid) == (expected['mode'], expected['uid'], expected['gid'])
+        if 'symlink' in expected:
+            assert actual.is_symlink() and os.readlink(actual) == expected['symlink']
+        elif 'sha256' in expected:
+            assert actual.is_file() and not actual.is_symlink() and digest(actual) == expected['sha256']
+        else:
+            assert expected.get('directory') and actual.is_dir() and not actual.is_symlink()
     assert native('/usr/bin/dpkg', '--audit') == ''
     native('/usr/bin/apt-get', 'check')
     probe = TARGET/'tmp/toddy-qtbase-wayland-postcheck-3'
@@ -282,14 +296,53 @@ fi
     assert (probe/'consumer.log').read_text().strip() == 'QT6112_WIDGET_TLS_DBUS_CONCURRENT_EXISTING_SVG_WAYLAND_METADATA_PASSED'
     assert '6.11.2' in (probe/'linguist.log').read_text()
     state.update(state='native-package-and-headless-consumers-verified', installed_version=VERSION,
-        old_archives_and_records_unchanged=True, existing_svg_and_linguist_unchanged=True,
+        installed_payload_entries_verified=len(payload), old_archives_and_records_unchanged=True, existing_svg_and_linguist_unchanged=True,
         calamares_version_checked=(probe/'calamares-version.log').exists(),
         pending='Actual Wayland QWidget input/rendering, authenticated root Calamares/module launch and installer qualification')
     save(receipt, state)
 
 
+def reconcile_transaction(phase):
+    """One fixed read-only recovery of installed3 after the runner receipt bug."""
+    old_prefix = LOG.parent/'build/b12-qtbase-wayland-install-3'
+    old = json.loads(old_prefix.with_suffix('.failed.json').read_text())
+    assert old['step'] == 'b12-qtbase-wayland-install-3' and old['user'] == 'root'
+    assert old['recipe_exit'] == 0 and old['postcheck_exit'] == 1
+    assert old['supporting_build_scripts']['files']['phase2/qtbase_wayland_native.py'] == 'c8803ae40ce596dbb9bf75dec94e2c4caa4b3db0613d71aff3a3892919fe320b'
+    assert old['log_sha256'] == digest(old_prefix.with_suffix('.log')) == '165d7eadc5d9b6883e297561fb74f9cfe0908cfafbfd965080739b0d16ada0c6'
+    assert old['recipe_sha256'] == digest(ROOT/'scripts/build/phase2/qtbase-wayland-install.sh')
+    assert old['postcheck_sha256'] == digest(ROOT/'scripts/build/phase2/qtbase-wayland-check.sh')
+    record = json.loads((LOG.parent/'build/b12-qtbase-wayland-reconcile-4.running.json').read_text())
+    assert record['step'] == 'b12-qtbase-wayland-reconcile-4' and record['user'] == 'root'
+    assert record['recipe_sha256'] == digest(ROOT/'scripts/build/phase2/qtbase-wayland-reconcile.sh')
+    assert record['postcheck_sha256'] == digest(ROOT/'scripts/build/phase2/qtbase-wayland-reconcile-check.sh')
+    assert record['runner_sha256'] == digest(ROOT/'scripts/build/run_step.py')
+    if phase == 'recipe':
+        assert record['recipe_pid'] in (os.getpid(), os.getppid())
+    else:
+        assert phase == 'check' and record['recipe_exit'] == 0
+
+
+def reconcile_check():
+    reconcile_transaction('check')
+    state = json.loads((LOG/'qtbase-wayland-install-3.json').read_text())
+    assert state['state'] == 'native-package-and-headless-consumers-verified'
+    current = package_state()['qtbase']
+    assert current['version'] == VERSION
+    assert current['archive_sha256'] == 'ac7198f74b71b818a1d1c0960a7fc61d1acfcbddf127b72e94cd1ed80e53b631'
+    assert native('/usr/bin/dpkg', '--audit') == ''
+    assert (TARGET/'tmp/toddy-qtbase-wayland-postcheck-3/consumer.log').read_text().strip() == 'QT6112_WIDGET_TLS_DBUS_CONCURRENT_EXISTING_SVG_WAYLAND_METADATA_PASSED'
+    assert not (LOG/'qtbase-wayland-reconcile-4.json').exists()
+    save(LOG/'qtbase-wayland-reconcile-4.json', {
+        'state': 'installed-package-postconditions-verified', 'reinstalled': False,
+        'original_failure': 'Recipe0/native-install completed; checker could not read unpersisted recipe_exit',
+        'original_step': 'b12-qtbase-wayland-install-3',
+        'version': VERSION, 'archive_sha256': 'ac7198f74b71b818a1d1c0960a7fc61d1acfcbddf127b72e94cd1ed80e53b631',
+        'scope': 'Actual native package and headless consumers; Wayland/root GUI remains pending'})
+
+
 def main():
-    assert os.getuid() == os.geteuid() == 0 and sys.argv[1:] in (['prepare'], ['qualify'], ['install'], ['postcheck'])
+    assert os.getuid() == os.geteuid() == 0 and sys.argv[1:] in (['prepare'], ['qualify'], ['install'], ['postcheck'], ['reconcile-postcheck'], ['reconcile-check'])
     subprocess.run(['bash', '-c', 'source /opt/toddy-build/scripts/build/target.sh; guard_target'], check=True)
     if sys.argv[1] == 'prepare':
         with Path('/var/log/toddy/build/build.lock').open('a') as lock:
@@ -298,6 +351,10 @@ def main():
             prepare()
     elif sys.argv[1] == 'qualify':
         print(json.dumps(qualify()[1], indent=2))
+    elif sys.argv[1] == 'reconcile-postcheck':
+        postcheck(reconcile=True)
+    elif sys.argv[1] == 'reconcile-check':
+        reconcile_check()
     elif sys.argv[1] == 'postcheck':
         postcheck()
     else:
