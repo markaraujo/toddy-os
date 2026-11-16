@@ -6,7 +6,7 @@ case $1 in
     base|live|qualify-base|qualify-live|finalize-base|finalize-live|stage-live|media-compress|media-initramfs|media-iso|mvp-base|mvp-live|qualify-mvp-base|qualify-mvp-live|finalize-mvp-base|finalize-mvp-live|stage-mvp-live|media-mvp-compress|media-mvp-initramfs|media-mvp-iso|media-mvp-installer-compress|media-mvp-installer-initramfs|media-mvp-installer-iso) ;;
     seal-mvp-installer|embed-mvp-installer) ;;
     inputs-base-requirements|inputs-live-requirements|inputs-base-prepare|inputs-live-prepare|inputs-mvp-base-requirements|inputs-mvp-live-requirements|inputs-mvp-base-prepare|inputs-mvp-live-prepare) ;;
-    custody-offline-inspect|custody-offline-export|custody-offline-receipt|custody-offline-metadata|custody-offline-retire|custody-live-inspect|custody-live-export|custody-live-receipt|custody-live-metadata|custody-live-retire) ;;
+    custody-mvp-offline-inspect|custody-mvp-offline-export|custody-mvp-offline-receipt|custody-mvp-offline-metadata|custody-mvp-offline-retire|custody-mvp-live-inspect|custody-mvp-live-export|custody-mvp-live-receipt|custody-mvp-live-metadata|custody-mvp-live-retire|custody-offline-inspect|custody-offline-export|custody-offline-receipt|custody-offline-metadata|custody-offline-retire|custody-live-inspect|custody-live-export|custody-live-receipt|custody-live-metadata|custody-live-retire) ;;
     *) exit 2 ;;
 esac
 source /opt/toddy-build/scripts/build/target.sh
@@ -101,6 +101,9 @@ options=$(/usr/bin/findmnt -rn -o OPTIONS --mountpoint "$binding")
 for flag in ro nosuid nodev noexec; do [[ ,$options, == *,$flag,* ]]; done
 [[ $(stat -c '%d:%i' "$source") == $(stat -c '%d:%i' "$binding") ]]
 case $1 in
+    custody-mvp-offline-*|custody-mvp-live-*)
+        action=${1##*-}; profile=${1#custody-}; profile=${profile%-*}
+        /usr/bin/env -i PATH=/usr/bin:/usr/sbin HOME=/root LC_ALL=C /usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/candidate_root_custody.py "$profile" "$action" <&8 8<&- ;;
     custody-offline-*)
         action=${1#custody-offline-}
         /usr/bin/env -i PATH=/usr/bin:/usr/sbin HOME=/root LC_ALL=C /usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/candidate_root_custody.py "$action" <&8 8<&- ;;

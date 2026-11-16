@@ -147,6 +147,23 @@ class LiveCandidateBoundaryTests(unittest.TestCase):
         with self.assertRaises(ValueError):guest.configure('/arbitrary/root')
         with self.assertRaises(ValueError):host.configure('live-reviewed')
 
+    def test_mvp_profiles_have_only_fixed_distinct_slots_and_lease_route(self):
+        for name,kind in (('mvp-offline','offline'),('mvp-live','live')):
+            with self.subTest(profile=name):
+                guest.configure(name);host.configure(name)
+                self.assertEqual(guest.ARTIFACT,Path('/mnt/lfs/sources/stage/toddy-'+name+'-image-1/root'))
+                self.assertEqual(guest.FINAL_ROOT.name,name+'-root-2')
+                self.assertEqual(guest.INPUTS.name,'toddy-mvp-'+('installer' if kind=='offline' else 'live')+'-native-inputs')
+                self.assertIn(' custody-'+name+'-inspect',host.command('inspect')[-1])
+                self.assertEqual(host.ARCHIVE_NAME,name+'-candidate1-root.tar.gz')
+        with self.assertRaises(ValueError):guest.configure('mvp-arbitrary')
+        source=(ROOT/'scripts/build/phase2/image_native.sh').read_text()
+        self.assertIn('custody-mvp-offline-inspect|custody-mvp-offline-export',source)
+        self.assertIn('custody-mvp-live-inspect|custody-mvp-live-export',source)
+        self.assertIn('"$profile" "$action" <&8 8<&-',source)
+        self.assertIn('validate_lease(9)',Path(guest.__file__).read_text())
+        self.assertIn("inputs.kind={'offline':'base'",Path(guest.__file__).read_text())
+
     def test_actual_finalize_path_reads_reviewed_inputs_not_candidate1_root(self):
         import ast
         source=ROOT/'scripts/build/phase2/image_assemble.py';tree=ast.parse(source.read_text())
@@ -158,11 +175,15 @@ class LiveCandidateBoundaryTests(unittest.TestCase):
         self.assertIn('native.install_payload(assembly.root, plan)',body)
 
     def test_live_requires_reviewed_inputs_and_resource_completion_before_fresh2(self):
+        for profile in ('live','mvp-live'):
+            with self.subTest(profile=profile):self._check_live_boundary(profile)
+
+    def _check_live_boundary(self,profile):
         from types import SimpleNamespace
         with tempfile.TemporaryDirectory() as temporary:
             target=Path(temporary)/'target';repo=Path(temporary)/'checkout';target.mkdir();repo.mkdir()
             with patch.object(guest,'TARGET',target),patch.object(guest,'ROOT',repo):
-                guest.configure('live');work=guest.WORK;work.mkdir(parents=True);root=guest.ARTIFACT;root.mkdir();(root/'file').write_bytes(b'fixture')
+                guest.configure(profile);work=guest.WORK;work.mkdir(parents=True);root=guest.ARTIFACT;root.mkdir();(root/'file').write_bytes(b'fixture')
                 inputs=guest.INPUTS;bundle=inputs/'payload';bundle.mkdir(parents=True)
                 files={'payload/manifest.json':{'fixture':'UNQUALIFIED'},'policy.json':{},'generated-entries.json':{},
                     'expected-image-manifest.json':{'/file':{'fixture':'UNQUALIFIED'}},'boot-profile.json':{}}

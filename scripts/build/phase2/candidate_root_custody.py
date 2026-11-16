@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Two literal candidate1 root custody profiles; no arbitrary cleanup paths.
+"""Four literal candidate1 root custody profiles; no arbitrary cleanup paths.
 
 Offline after real matching finalizer2; live before fresh finalizer2 only from
 completed resource candidate and exact independently reviewed protected inputs.
@@ -16,7 +16,9 @@ from runtime.installer.composition import secured,validate_finalizer_report
 from runtime.installer.native_finalizer import payload_module
 from image_assemble import unclosed_compiler_jobs,ReviewedInputs
 PROFILES={'offline':('toddy-offline-image-1','toddy-offline-image-2','offline-root-2','toddy-installer-native-inputs'),
-          'live':('toddy-live-image-1','toddy-live-image-2','live-root-2','toddy-live-native-inputs')}
+          'live':('toddy-live-image-1','toddy-live-image-2','live-root-2','toddy-live-native-inputs'),
+          'mvp-offline':('toddy-mvp-offline-image-1','toddy-mvp-offline-image-2','mvp-offline-root-2','toddy-mvp-installer-native-inputs'),
+          'mvp-live':('toddy-mvp-live-image-1','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs')}
 
 
 def configure(profile):
@@ -51,7 +53,7 @@ def private(path,mode):
 
 
 def no_mounts():
-    prefixes=(str(ARTIFACT),'/sources/stage/toddy-offline-image-1/root')
+    prefixes=(str(ARTIFACT),VIRTUAL)
     device=ARTIFACT.stat().st_dev;wanted=(os.major(device),os.minor(device))
     for process in Path('/proc').iterdir():
         if not process.name.isdigit():continue
@@ -94,7 +96,7 @@ def eligible():
     unpack=read(WORK/'unpacked.json');intent=read(WORK/'unpack-intent.json');candidate=read(WORK/'candidate-resource-receipt.json')
     # Same recheck as finalize_native, using the fixed builder view of its input
     # directory; no source path/callback is accepted from a request or document.
-    inputs=object.__new__(ReviewedInputs);inputs.base=INPUTS;inputs.bundle=INPUTS/'payload';inputs.recheck()
+    inputs=object.__new__(ReviewedInputs);inputs.kind={'offline':'base','live':'live','mvp-offline':'mvp-base','mvp-live':'mvp-live'}[PROFILE];inputs.base=INPUTS;inputs.bundle=INPUTS/'payload';inputs.recheck()
     manifest=inputs.manifest;manifest_sha=inputs.pins['payload/manifest.json'];descriptor=inputs.descriptor
     if (unpack.get('state')!='native-archives-unpacked-needs-resource-qualification' or intent.get('state')!='unpack-intended' or
             unpack.get('assembly_pin')!=pin or intent.get('assembly_pin')!=pin or unpack.get('root')!=VIRTUAL or intent.get('root')!=VIRTUAL or
@@ -111,17 +113,17 @@ def eligible():
             candidate.get('policy_sha256')!=descriptor['policy_sha256']):raise ValueError('candidate_root_custody_reviewed_resource_outputs_changed')
     checks={};final_pin=None;trees=[ARTIFACT]
     paths=[WORK/name for name in ('unpacked.json','unpack-intent.json','resource-intent.json','candidate-resource-receipt.json','candidate-generated-entries.json','candidate-clean-image-manifest.json','dpkg.log')]
-    if PROFILE=='offline':
+    if PROFILE in ('offline','mvp-offline'):
         reviewed=private(REVIEWED,0o700);final=private(FINAL_ROOT,0o755);final_pin=[final.st_dev,reviewed.st_ino,final.st_ino]
         finished=read(REVIEWED/'finalized.json')
-        if (finished.get('state')!='native-finalizer-verified' or finished.get('root')!='/sources/stage/toddy-offline-image-2/offline-root-2' or
+        if (finished.get('state')!='native-finalizer-verified' or finished.get('root')!='/'+str(FINAL_ROOT.relative_to(TARGET)) or
                 finished.get('assembly_pin')!=final_pin or finished.get('payload_manifest_sha256')!=manifest_sha or
                 finished.get('production_ready') is not False or finished.get('native_boot_verified') is not False or
                 finished.get('source_sha256')!=inputs.source_hashes or set(finished.get('checks',{}))!=set(p.CHECKS) or
                 finished.get('policy_sha256')!=descriptor['policy_sha256'] or finished.get('generated_entries_sha256')!=inputs.pins['generated-entries.json'] or
                 finished.get('image_manifest_sha256')!=descriptor['image_manifest_sha256']):raise ValueError('candidate_root_custody_actual_finalizer2_required')
         for name,row in finished['checks'].items():
-            virtual='/run/toddy-installer/finalization-offline-root-2/'+name+'.json';report=TARGET/virtual.lstrip('/')
+            virtual='/run/toddy-installer/finalization-'+FINAL_ROOT.name+'/'+name+'.json';report=TARGET/virtual.lstrip('/')
             if set(row)!={'passed','exit_status','report','report_sha256'} or row['passed'] is not True or type(row['exit_status']) is not int or row['exit_status']!=0 or row['report']!=virtual or archive.sha(secured(report))!=row['report_sha256']:raise ValueError('candidate_root_custody_actual_finalizer_report')
             validate_finalizer_report(read(report),name,descriptor);checks[name]=row['report_sha256']
         paths.extend((REVIEWED/'finalized.json',REVIEWED/'finalize-intent.json'));trees.append(FINAL_ROOT)
@@ -139,7 +141,7 @@ def eligible():
     inputs.recheck();no_mounts()
     return {'profile':PROFILE,'assembly_pin':pin,'final_assembly_pin':final_pin,'descriptor':descriptor,'preserved':preserved,
         'reviewed_input_pins':inputs.pins,'finalizer_reports_sha256':checks,'source_sha256':inputs.source_hashes,
-        'finalizer2_performed':PROFILE=='offline','workflow_boundary':'actual-offline-finalizer2' if PROFILE=='offline' else 'reviewed-live-inputs-before-fresh-finalizer2',
+        'finalizer2_performed':PROFILE in ('offline','mvp-offline'),'workflow_boundary':'actual-offline-finalizer2' if PROFILE in ('offline','mvp-offline') else 'reviewed-live-inputs-before-fresh-finalizer2',
         'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip()}
 
 
@@ -251,7 +253,7 @@ def operation_lease():
 
 def main():
     arguments=sys.argv[1:]
-    if arguments[:1]==['live']:configure('live');arguments=arguments[1:]
+    if arguments and arguments[0] in ('live','mvp-offline','mvp-live'):configure(arguments[0]);arguments=arguments[1:]
     if os.getuid()!=0 or os.geteuid()!=0 or arguments not in (['inspect'],['export'],['receipt'],['metadata'],['retire']):raise ValueError('candidate_root_custody_fixed_root_coordinator_action')
     os.umask(0o077);subprocess.run(['/bin/bash','-c','source "$1"; guard_target','guard',str(ROOT/'scripts/build/target.sh')],check=True)
     with operation_lease():
