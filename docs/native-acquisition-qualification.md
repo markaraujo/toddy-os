@@ -128,3 +128,98 @@ inspected root. The guard re-verifies signatures, expiry/custody, code/trust pin
 all advertised full-flow entries and agent+local coverage. It refuses component
 preview reports. Its successful scope is native-bootstrap only; it cannot replace
 remaining boot/install/G2 release gates or physical-owner testing.
+
+## Actual CPU-masked local-runtime denial
+
+The concrete producer is the same trusted source driver action `cpu-denial`.
+It is not a production option and changes no runtime/package manifest. Use a NEW
+installed disposable overlay, current frozen assistant code and the exact same
+signed local-runtime or agent-local candidate/public trust/source list/terms as
+its supported-CPU component run. Preserve accepted/current backing images and
+all old operations. Never mask a running guest or reuse an uncertain overlay.
+The parent owns the actual launch/CPU configuration and records the complete
+real launch argv plus fresh overlay/backing identities.
+
+In that existing guarded QEMU launch template, replace only the CPU argument pair
+with the exact pair:
+
+```text
+-cpu host,-avx2
+```
+
+Retain the selected installed disk/firmware/network/display arguments and one
+guest writer. This is a CPU argument specification, not an instruction to launch
+a second bare VM against a current disk. Boot the installed system, log in the
+actual installed owner locally through GDM, and verify actual `/proc/cpuinfo`
+flags in that guest. No environment variable, file fixture, `-cpu` field in JSON,
+profile hardware argument or patched compatibility function can supply this proof.
+The existing target guard still requires root, ID=toddy/nonlive, QEMU/KVM,
+root-owned disposable marker, exact actual root UUID and active unlocked local
+installed owner. Candidate signature/declaration/code/trust pins remain checked.
+
+Inside that CPU-masked disposable guest, as the native root coordinator:
+
+```sh
+/usr/bin/python3 -I /opt/toddy-build/scripts/qualification/native_acquisition_component.py cpu-denial
+/usr/bin/sha256sum /var/lib/toddy/native-acquisition-qualification-1/cpu-denial-intent.json
+/usr/bin/sha256sum /var/lib/toddy/native-acquisition-qualification-1/native-cpu-denial.json
+```
+
+The driver explicitly refuses a supported CPU, wrong release, existing intent/
+receipt, preexisting profiler or fabricated supported review before this test.
+It suppresses only advisory supported-review construction (which correctly cannot
+succeed on this actual CPU), never signature/code/trust validation or production
+eligibility. It creates no accepted operation or supported review. Existing
+Journal is read-only if present; absent Journal remains absent. The unchanged
+default `NativeBackend.acquire` must raise exactly
+native_runtime_cpu_unsupported before journal/review/native command access.
+
+A temporary Python call observer records entry to the unchanged production
+native command function only around acquire. It never replaces the runner,
+results, errors or hardware and restores the prior empty profiling state. Require
+zero native calls in that eligibility scope. Separate actual readonly inventory/
+Dpkg/hash/logind/signature observations happen outside that scope and are not
+misrepresented as zero processes for the whole procedure. No APT or package
+writer is invoked. Actual before/after Dpkg status digest, exact curated inventory,
+operation counts/write-intents/test-operation absence and complete existing
+acquisition Journal/cache metadata+content hashes must be identical. Hardware
+intersection is read again and must also remain unchanged.
+
+Read back the actual retained result without printing package bodies or secrets:
+
+```sh
+/usr/bin/python3 -I - <<'PY'
+import json
+from pathlib import Path
+p=Path('/var/lib/toddy/native-acquisition-qualification-1/native-cpu-denial.json')
+r=json.loads(p.read_bytes())
+assert r['kind']=='actual-installed-native-cpu-denial'
+assert r['native_result']=='denied_before_apt' and r['fixture_only'] is False
+assert r['error_code']=='native_runtime_cpu_unsupported'
+assert r['native_command_calls']==0 and 'avx2' in r['missing_cpu_flags']
+assert r['before']==r['after'] and r['before']['operation']['test_operation'] is None
+assert r['runtime_activated'] is False and r['model_loaded'] is False
+print({'native_result':r['native_result'],'missing_cpu_flags':r['missing_cpu_flags'],
+       'native_command_calls':r['native_command_calls'],'final_publication_permitted':False})
+PY
+```
+
+Any wrong error, command entry, changed state/CPU/pin or failed postcondition leaves
+intent/context preserved and emits no successful denial receipt. Do not delete
+intent or retry with another operation ID to hide uncertainty.
+
+Return the exact receipt bytes/SHA through the parent's verified custody path to
+the matching supported-CPU run's fixed native-cpu-denial.json, root0600 with no
+writable ancestors; refuse existing destination rather than overwrite it. The
+normal `report` action now validates this concrete schema, exact candidate/
+package/runtime-profile/code/trust/driver pins, actual missing required flags,
+zero calls and unchanged state, then embeds the complete denial in retained
+component evidence. A bare old four-field CPU marker cannot satisfy it. A receipt
+for local-runtime cannot qualify agent-local, another generation/origin/key/code
+or another edited driver. The masked receipt retains its own actual boot ID/root
+UUID; it does not claim the supported overlay had missing CPU features.
+
+This is only actual component CPU eligibility refusal. It is not model execution,
+owner package authorization, full helper/UI flow or final publication acceptance.
+Those independent reports and the existing full-flow publication guard remain
+mandatory. No actual masked boot or denial has been run by the source tests.

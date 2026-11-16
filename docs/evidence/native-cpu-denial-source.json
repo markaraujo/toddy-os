@@ -1,0 +1,17 @@
+{
+  "scope": "source-only actual masked-CPU denial producer/refusal tests",
+  "actual_cpu_mask_or_vm_boot": false,
+  "native_backend_acquire_run_by_tests": false,
+  "runtime_or_package_manifest_changed": false,
+  "keys_signing_or_packages_changed": false,
+  "checks": [
+    {
+      "command": "python3 -m unittest tests.test_native_cpu_denial_qualification tests.test_native_acquisition_qualification tests.test_native_acquisition -q",
+      "tests": 34,
+      "exit": 0,
+      "seconds": 0.138
+    }
+  ],
+  "proof_boundary": "Refusal-only fixtures reject supported CPU, wrong candidate, prior intent, fabricated supported review, existing profiler and bare CPU marker. No source test emits an actual native denial receipt or replaces a native runner/hardware to claim success.",
+  "native_next": "Parent boots NEW installed disposable overlay with exact existing launch template CPU pair -cpu host,-avx2, same signed candidate/code/trust pins and actual owner session. Run trusted cpu-denial action, retain exact before/after/CPU/error/zero-command receipt, verified-copy it to matching supported run for report. Runtime source/package manifests remain frozen."
+}

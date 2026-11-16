@@ -14,6 +14,7 @@ from pathlib import Path
 import pwd
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import time
@@ -67,7 +68,8 @@ def target():
 
 
 class Components:
-    def __init__(self):
+    def __init__(self,*,describe_review=True):
+        self.describe_review=describe_review
         self.directory=DIRECTORY
         trust=read(DIRECTORY/'trust.json');exact(trust,('version','fingerprint','keyring_sha256'))
         key=private_metadata(DIRECTORY/'archive-keyring.gpg',maximum=1048576);public_key_only(key)
@@ -105,10 +107,10 @@ class Components:
             if source.is_file() and sha(source.read_bytes())!=digest:raise SetupError('qualification_source_installed_mismatch')
         self.trust={'fingerprint':self.fingerprint,'keyring_sha256':trust['keyring_sha256'],
             'sources_sha256':repo['sources_sha256'],'inrelease_sha256':repo['inrelease_sha256']}
-        self.review=describe(self.release,revision=self.revision,generation=candidate['generation'],origin=match[1],level='unqualified-native-component-input')
+        self.review=describe(self.release,revision=self.revision,generation=candidate['generation'],origin=match[1],level='unqualified-native-component-input') if describe_review else None
 
     def ensure_current(self):
-        current=Components()
+        current=Components(describe_review=self.describe_review)
         if (current.revision,current.code,current.trust)!=(self.revision,self.code,self.trust):
             raise SetupError('qualification_inputs_changed')
 
@@ -257,6 +259,107 @@ def observe(adapter,marker):
         'code_pins':adapter.code,'trust_pins':adapter.trust,'dpkg_unchanged_after_completed_write':True})
 
 
+
+def acquisition_snapshot(backend):
+    """Hash actual operation/cache state without exporting bodies or changing it."""
+    roots=(Path('/var/lib/toddy/setup-acquisition'),backend.cache)
+    result={}
+    for root in roots:
+        if not os.path.lexists(root):result[str(root)]={'exists':False};continue
+        if root.resolve()!=root or not root.is_dir():raise SetupError('qualification_acquisition_state_custody')
+        rows=[];device=root.stat().st_dev
+        for path in (root,*sorted(root.rglob('*'))):
+            info=path.lstat()
+            if info.st_dev!=device or path.is_symlink() or not (stat.S_ISREG(info.st_mode) or stat.S_ISDIR(info.st_mode)):
+                raise SetupError('qualification_acquisition_state_custody')
+            row=[path.relative_to(root).as_posix(),info.st_mode,info.st_uid,info.st_gid,info.st_ino,info.st_size,info.st_mtime_ns,info.st_ctime_ns]
+            if stat.S_ISREG(info.st_mode):
+                with path.open('rb') as stream:row.append(__import__('hashlib').file_digest(stream,'sha256').hexdigest())
+            rows.append(row)
+        result[str(root)]={'exists':True,'entries':len(rows),'state_sha256':sha(_encode(rows))}
+    return result
+
+
+def operation_snapshot(journal,uid,identity):
+    if journal is None:return {'database_exists':False,'test_operation':None,'operations':0,'native_write_intents':0}
+    return {'database_exists':True,'test_operation':journal.get(uid,identity),
+        'operations':journal.db.execute('SELECT COUNT(*) FROM operations').fetchone()[0],
+        'native_write_intents':journal.db.execute('SELECT COUNT(*) FROM operations WHERE mutation!=0').fetchone()[0]}
+
+
+def cpu_denial(adapter,marker):
+    """Real unsupported installed CPU through unchanged default NativeBackend."""
+    from runtime.setup.runtime_compat import cpu_features,CPU_FLAGS
+    output=CONTEXT/'native-cpu-denial.json';intent=CONTEXT/'cpu-denial-intent.json'
+    if os.path.lexists(output) or os.path.lexists(intent):raise SetupError('qualification_existing_cpu_case')
+    if adapter.release['id'] not in ('local-runtime','agent-local') or not any(row['name']=='llama-cpp' for row in adapter.release['packages']):
+        raise SetupError('qualification_local_candidate_required')
+    architecture,flags=cpu_features();missing=sorted(set(CPU_FLAGS)-flags)
+    if architecture!='x86_64' or not missing:raise SetupError('qualification_actual_unsupported_cpu_required')
+    if adapter.review is not None:raise SetupError('qualification_unsupported_review_forbidden')
+    adapter.ensure_current();active(marker['owner_uid'])
+    backend=NativeBackend(adapter)
+    if backend.run is not command or sys.getprofile() is not None:raise SetupError('qualification_unmodified_native_observer_required')
+    identity=uuid.uuid4().hex;journal=None
+    try:
+        if Path('/var/lib/toddy/setup-acquisition/operations.sqlite').exists():journal=Journal(create=False,read_only=True)
+        before={'dpkg_sha256':dpkg_digest(),'inventory':backend.query([row['name'] for row in adapter.release['packages']]),
+            'acquisition_state':acquisition_snapshot(backend),'operation':operation_snapshot(journal,marker['owner_uid'],identity)}
+        if before['operation']['test_operation'] is not None:raise SetupError('qualification_cpu_operation_collision')
+        observed={'native_command_calls':0};error_code=None
+        save(intent,{'version':1,'kind':'actual-native-cpu-denial-intent','operation_id':identity,'owner_uid':marker['owner_uid'],
+            'root_uuid':marker['root_uuid'],'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
+            'candidate_sha256':adapter.revision,'code_pins':adapter.code,'trust_pins':adapter.trust,
+            'driver_sha256':sha(Path(__file__).read_bytes()),'missing_cpu_flags':missing,'before':before})
+        def observe(frame,event,_argument):
+            # Observation only: never raises, replaces runner/results or changes
+            # hardware. Scope excludes the read-only before/after observations.
+            if event=='call' and frame.f_code is command.__code__:observed['native_command_calls']+=1
+        sys.setprofile(observe)
+        try:
+            # No supported review/accepted operation is fabricated. This actual
+            # guard must reject before accessing either journal or review.
+            backend.acquire(journal,marker['owner_uid'],identity,adapter.release,None)
+        except SetupError as error:error_code=str(error)
+        finally:sys.setprofile(None)
+        after={'dpkg_sha256':dpkg_digest(),'inventory':backend.query([row['name'] for row in adapter.release['packages']]),
+            'acquisition_state':acquisition_snapshot(backend),'operation':operation_snapshot(journal,marker['owner_uid'],identity)}
+        final_architecture,final_flags=cpu_features()
+        if error_code!='native_runtime_cpu_unsupported' or observed['native_command_calls']!=0 or before!=after or (final_architecture,final_flags)!=(architecture,flags):
+            raise SetupError('qualification_actual_cpu_denial_not_proven')
+        adapter.ensure_current();active(marker['owner_uid'])
+        receipt={'version':1,'kind':'actual-installed-native-cpu-denial','native_result':'denied_before_apt',
+            'scope':'native-component-eligibility-only','fixture_only':False,'operation_id':identity,
+            'root_uuid':marker['root_uuid'],'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
+            'candidate_sha256':adapter.revision,'code_pins':adapter.code,'trust_pins':adapter.trust,
+            'package_set_sha256':sha(_encode(adapter.release['packages'])),'runtime_profile_sha256':sha(_encode(adapter.release['runtime_profile'])),'driver_sha256':sha(Path(__file__).read_bytes()),
+            'architecture':architecture,'required_cpu_flags':CPU_FLAGS,'present_required_cpu_flags':sorted(set(CPU_FLAGS)&flags),
+            'missing_cpu_flags':missing,'actual_cpu_flags_sha256':sha(_encode(sorted(flags))),
+            'error_code':error_code,'observer_scope':'unchanged NativeBackend.acquire only; baseline/readback queries excluded',**observed,'before':before,'after':after,
+            'runtime_activated':False,'model_loaded':False,'final_publication_permitted':False}
+        save(output,receipt)
+        print(json.dumps({'native_result':receipt['native_result'],'receipt_sha256':sha(output.read_bytes()),
+            'native_command_calls':0,'final_publication_permitted':False},sort_keys=True))
+        return receipt
+    finally:
+        if journal is not None:journal.close()
+
+
+
+def validate_cpu_receipt(cpu,adapter):
+    """Reject bare markers; retain the exact actual denial/state observation."""
+    from runtime.setup.runtime_compat import CPU_FLAGS
+    if not isinstance(cpu,dict) or cpu.get('kind')!='actual-installed-native-cpu-denial' or cpu.get('native_result')!='denied_before_apt' or cpu.get('scope')!='native-component-eligibility-only' or cpu.get('fixture_only') is not False or cpu.get('error_code')!='native_runtime_cpu_unsupported' or type(cpu.get('native_command_calls')) is not int or cpu['native_command_calls']!=0 or cpu.get('code_pins')!=adapter.code or cpu.get('trust_pins')!=adapter.trust or cpu.get('candidate_sha256')!=adapter.revision or cpu.get('package_set_sha256')!=sha(_encode(adapter.release['packages'])) or cpu.get('runtime_profile_sha256')!=sha(_encode(adapter.release['runtime_profile'])) or cpu.get('driver_sha256')!=sha(Path(__file__).read_bytes()):
+        raise SetupError('qualification_actual_masked_cpu_receipt_required')
+    missing=cpu.get('missing_cpu_flags');present=cpu.get('present_required_cpu_flags')
+    if cpu.get('architecture')!='x86_64' or cpu.get('required_cpu_flags')!=CPU_FLAGS or not isinstance(missing,list) or not missing or not isinstance(present,list) or missing!=sorted(set(missing)) or present!=sorted(set(present)) or set(missing)&set(present) or set(missing)|set(present)!=set(CPU_FLAGS):
+        raise SetupError('qualification_actual_masked_cpu_receipt_required')
+    before=cpu.get('before');after=cpu.get('after')
+    if not isinstance(before,dict) or set(before)!={'dpkg_sha256','inventory','acquisition_state','operation'} or before!=after or not isinstance(before['operation'],dict) or before['operation'].get('test_operation') is not None or any(type(before['operation'].get(key)) is not int or before['operation'][key]<0 for key in ('operations','native_write_intents')):
+        raise SetupError('qualification_actual_masked_cpu_receipt_required')
+    return True
+
+
 def report(adapter,marker):
     # No generic pass switch. Every component is derived from retained actual
     # case outputs/owner transport inputs; local masked-CPU proof is additional.
@@ -280,15 +383,15 @@ def report(adapter,marker):
         if str(error)!='release_signature':raise
     else:raise SetupError('qualification_signature_tamper_accepted')
     checks={key:True for key in COMPONENT_CHECKS} # Only after the explicit cases above.
+    cpu=None
     if 'llama-cpp' in {row['name'] for row in adapter.release['packages']}:
         cpu=read(CONTEXT/'native-cpu-denial.json')
-        if cpu.get('native_result')!='denied_before_apt' or cpu.get('code_pins')!=adapter.code or cpu.get('trust_pins')!=adapter.trust or cpu.get('package_set_sha256')!=sha(_encode(adapter.release['packages'])):
-            raise SetupError('qualification_actual_masked_cpu_receipt_required')
+        validate_cpu_receipt(cpu,adapter)
         checks.update({key:True for key in LOCAL_CHECKS})
     evidence={'version':1,'scope':'installed-native-agent-acquisition','environment':'native-installed-user',
         'fixture_only':False,'qualification_level':'native-components','runner_exit':0,'postconditions_exit':0,
         'package_set_sha256':sha(_encode(adapter.release['packages'])),'code_pins':adapter.code,'trust_pins':adapter.trust,
-        'component_results':results,'driver_sha256':sha(Path(__file__).read_bytes()),
+        'component_results':results,'native_cpu_denial':cpu,'driver_sha256':sha(Path(__file__).read_bytes()),
         'full_helper_ui_flow':'not-tested; must run from another clean overlay with signed preview catalog'}
     save(CONTEXT/'component-evidence.json',evidence)
     value={'version':1,'scope':'installed-native-agent-acquisition','native_result':'passed',
@@ -302,9 +405,10 @@ def report(adapter,marker):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__,allow_abbrev=False)
-    parser.add_argument('action',choices=['inspect','prepare-stop','run-stop','prepare-offline','run-offline','prepare-write','run-write-crash','observe-reconcile','report','_offline'])
+    parser.add_argument('action',choices=['inspect','prepare-stop','run-stop','prepare-offline','run-offline','prepare-write','run-write-crash','observe-reconcile','cpu-denial','report','_offline'])
     args=parser.parse_args();os.umask(0o077)
-    marker=target();adapter=Components()
+    marker=target();adapter=Components(describe_review=args.action!='cpu-denial')
+    if args.action=='cpu-denial':cpu_denial(adapter,marker);return
     if args.action=='inspect':
         print(json.dumps({'scope':'unqualified signed component inputs','review':adapter.review,
             'code_pins':adapter.code,'trust_pins':adapter.trust,'ready_for_production_catalog':False},sort_keys=True));return
