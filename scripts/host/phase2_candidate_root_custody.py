@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Private opaque custody for four fixed candidate1 roots; never host extraction.
+"""Private opaque custody for fixed expanded roots; never host extraction.
 
 Root guest retirement is requested only after independent full member/PAX/ACL/
 hardlink/byte and complete gzip decompression proof, with durable host custody.
@@ -12,8 +12,10 @@ ROOT=vm.ROOT
 
 def configure(profile):
     global PROFILE,CONTEXT,ARCHIVE_NAME
-    if profile not in ('offline','live','mvp-offline','mvp-live'):raise ValueError('candidate_root_host_unknown_fixed_profile')
+    if profile not in ('offline','live','mvp-offline','mvp-live','h10-expanded','h11-expanded'):raise ValueError('candidate_root_host_unknown_fixed_profile')
     PROFILE=profile;CONTEXT=ROOT/'.local/phase2'/(profile+'-candidate-root-custody-1');ARCHIVE_NAME=profile+'-candidate1-root.tar.gz'
+    if profile in ('h10-expanded','h11-expanded'):
+        CONTEXT=ROOT/'.local/phase2'/(profile+'-root-custody-1');ARCHIVE_NAME=profile+'-root.tar.gz'
 
 configure('offline')
 sys.path.insert(0,str(ROOT/'scripts/build/phase2'))

@@ -147,6 +147,31 @@ class LiveCandidateBoundaryTests(unittest.TestCase):
         with self.assertRaises(ValueError):guest.configure('/arbitrary/root')
         with self.assertRaises(ValueError):host.configure('live-reviewed')
 
+    def test_historical_profiles_require_original_tree_and_preserve_media(self):
+        import opaque_tar_profiles
+        from types import SimpleNamespace
+        for profile,basename,proof in (('h10-expanded','h10-live-root','h10'),('h11-expanded','h11-release-root','h11')):
+            with self.subTest(profile=profile),tempfile.TemporaryDirectory() as temporary:
+                target=Path(temporary)/'target';repo=Path(temporary)/'repo';(target/'sources/stage').mkdir(parents=True);repo.mkdir()
+                with patch.object(guest,'TARGET',target),patch.object(guest,'ROOT',repo):
+                    guest.configure(profile);host.configure(profile);root=guest.ARTIFACT;root.mkdir();(root/'file').write_bytes(b'fixture')
+                    evidence=guest.WORK/('h10-live-root-evidence' if proof=='h10' else 'h11-release-root-evidence');evidence.mkdir()
+                    media=guest.WORK/('h10-live-media' if proof=='h10' else 'h11-release-media');media.mkdir();(media/'retained.iso').write_bytes(b'fixture media')
+                    driver=repo/'scripts/build/phase2/image_native.sh';driver.parent.mkdir(parents=True);driver.write_text('# fixture')
+                    image=a.snapshot(root);original={'entries':copy.deepcopy(image['entries']),'hardlink_groups':image['hardlink_groups']}
+                    for row in original['entries'].values():row['xattrs']={key:hashlib.sha256(base64.b64decode(value)).hexdigest() for key,value in row['xattrs'].items()}
+                    manifest=evidence/'original.json';manifest.write_bytes(a.encoded(original));assembly=evidence/'assembly.json';assembly.write_bytes(b'fixture assembly')
+                    config={'evidence':evidence.name,'manifest':manifest.name,'manifest_sha256':a.sha(manifest),'assembly_sha256':a.sha(assembly)}
+                    identity=SimpleNamespace(st_dev=64788,st_ino=guest.HISTORICAL[profile][1],st_mtime_ns=guest.HISTORICAL[profile][2])
+                    with patch.object(guest,'private',return_value=identity),patch.object(guest,'secured',side_effect=lambda path,*args:Path(path)),patch.object(guest,'read',side_effect=lambda path:json.loads(Path(path).read_bytes())),patch.object(opaque_tar_profiles,'profile',return_value=config),patch.object(guest,'no_mounts'):
+                        result=guest.eligible();self.assertFalse(result['new_acceptance_claimed']);self.assertFalse(result['foundation_rebuild_authorized'])
+                        self.assertIn(str(media/'retained.iso'),result['preserved'])
+                        (root/'file').write_bytes(b'changed')
+                        with self.assertRaisesRegex(ValueError,'original_full_image_differs'):guest.eligible()
+                    self.assertEqual(root.name,basename);self.assertFalse(guest.CUSTODY.is_relative_to(root))
+                    self.assertTrue(host.command('inspect')[-1].endswith(' custody-'+profile+'-inspect'))
+        guest.configure('offline');host.configure('offline')
+
     def test_mvp_profiles_have_only_fixed_distinct_slots_and_lease_route(self):
         for name,kind in (('mvp-offline','offline'),('mvp-live','live')):
             with self.subTest(profile=name):

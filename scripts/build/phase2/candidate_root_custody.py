@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Four literal candidate1 root custody profiles; no arbitrary cleanup paths.
+"""Fixed candidate and historical root custody profiles; no arbitrary paths.
 
 Offline after real matching finalizer2; live before fresh finalizer2 only from
 completed resource candidate and exact independently reviewed protected inputs.
 No generic path/cleanup flag.
 """
-import errno,fcntl,hashlib,json,os,re,shutil,stat,subprocess,sys
+import base64,errno,fcntl,hashlib,json,os,re,shutil,stat,subprocess,sys
 from contextlib import contextmanager
 from pathlib import Path
 sys.dont_write_bytecode=True
@@ -21,8 +21,17 @@ PROFILES={'offline':('toddy-offline-image-1','toddy-offline-image-2','offline-ro
           'mvp-live':('toddy-mvp-live-image-1','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs')}
 
 
+HISTORICAL={'h10-expanded':('h10-live-root',8707435,1794055093154113811,'h10'),
+            'h11-expanded':('h11-release-root',1239394,1794056902695122701,'h11')}
+
+
 def configure(profile):
     global PROFILE,WORK,ARTIFACT,REVIEWED,FINAL_ROOT,INPUTS,CUSTODY,STATE,VIRTUAL
+    if profile in HISTORICAL:
+        PROFILE=profile;name,_inode,_mtime,_proof=HISTORICAL[profile]
+        WORK=TARGET/'sources/stage';ARTIFACT=WORK/name;REVIEWED=FINAL_ROOT=INPUTS=None
+        CUSTODY=WORK/(profile+'-root-custody-1');STATE=CUSTODY/'custody.json';VIRTUAL='/sources/stage/'+name
+        return
     if profile not in PROFILES:raise ValueError('candidate_root_custody_unknown_fixed_profile')
     PROFILE=profile;candidate,reviewed,final,inputs=PROFILES[profile]
     WORK=TARGET/'sources/stage'/candidate;ARTIFACT=WORK/'root';REVIEWED=TARGET/'sources/stage'/reviewed
@@ -89,8 +98,45 @@ def no_consumers(snapshot):
     no_mounts()
 
 
+def historical_eligible():
+    """Only two original expanded caches; frozen evidence, not new acceptance."""
+    import opaque_tar_profiles
+    name,inode,mtime,proof=HISTORICAL[PROFILE];config=opaque_tar_profiles.profile(proof)
+    private(WORK,0o755);info=private(ARTIFACT,0o755)
+    if (info.st_dev,info.st_ino,info.st_mtime_ns)!=(64788,inode,mtime):raise ValueError('historical_expanded_frozen_root_identity')
+    evidence=WORK/config['evidence'];preserved={}
+    for leaf,expected in (('assembly.json',config['assembly_sha256']),(config['manifest'],config['manifest_sha256'])):
+        path=secured(evidence/leaf)
+        if archive.sha(path)!=expected:raise ValueError('historical_expanded_frozen_evidence_changed')
+    # Recheck every original byte, mode, UID/GID, mtime, xattr and link class.
+    # Raw xattrs/ACLs are separately retained and verified by the custody archive.
+    image=archive.snapshot(ARTIFACT)
+    entries={name:{**row,'xattrs':{key:hashlib.sha256(base64.b64decode(value,validate=True)).hexdigest()
+        for key,value in row['xattrs'].items()}} for name,row in image['entries'].items()}
+    for row in entries.values():
+        if 'symlink' in row:row['symlink']=Path(row['symlink']).as_posix()
+    original=read(evidence/config['manifest'])
+    if {'entries':entries,'hardlink_groups':image['hardlink_groups']}!=original:raise ValueError('historical_expanded_original_full_image_differs')
+    # Preserve evidence and all media bytes; only ARTIFACT can be removed.
+    media=WORK/('h10-live-media' if proof=='h10' else 'h11-release-media')
+    for directory in (evidence,media):
+        if directory.resolve()!=directory or not directory.is_dir():raise ValueError('historical_expanded_retained_evidence_media_required')
+        for path in sorted(directory.rglob('*')):
+            if path.is_symlink():raise ValueError('historical_expanded_redirected_preserved_evidence')
+            if path.is_file():preserved[str(path)]=archive.sha(secured(path,8*1024**3))
+    for path in (Path(__file__),Path(archive.__file__),Path(opaque_tar_profiles.__file__),ROOT/'scripts/build/phase2/image_native.sh'):
+        preserved[str(path)]=archive.sha(secured(path))
+    no_mounts()
+    return {'profile':PROFILE,'root_identity':[info.st_dev,info.st_ino,info.st_mtime_ns],
+        'preserved':preserved,'original_image_manifest_sha256':config['manifest_sha256'],
+        'scope':'Frozen historical expanded duplicate only; foundation CLI consumers retired; original evidence/media/backings/ISOs retained',
+        'foundation_rebuild_authorized':False,'new_acceptance_claimed':False,
+        'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip()}
+
+
 def eligible():
     """Fixed workflow boundary; full archive metadata proof remains separate."""
+    if PROFILE in HISTORICAL:return historical_eligible()
     p=payload_module();work=private(WORK,0o700);root=private(ARTIFACT,0o755)
     pin=[root.st_dev,work.st_ino,root.st_ino]
     unpack=read(WORK/'unpacked.json');intent=read(WORK/'unpack-intent.json');candidate=read(WORK/'candidate-resource-receipt.json')
@@ -179,7 +225,7 @@ def export():
     command=['/usr/sbin/chroot',str(TARGET),'/usr/bin/tar','--create','--file=-','--format=pax',
         '--pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime','--acls','--xattrs','--xattrs-include=*',
         '--numeric-owner','--sparse','--no-recursion','--null','--verbatim-files-from','--directory='+VIRTUAL,
-        '--files-from='+VIRTUAL.removesuffix('/root')+'/root-custody-1/paths.nul']
+        '--files-from=/'+str((CUSTODY/'paths.nul').relative_to(TARGET))]
     count=0;digest=hashlib.sha256()
     with (CUSTODY/'create.log').open('xb') as log:
         os.fchmod(log.fileno(),0o600);process=subprocess.Popen(command,stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,stderr=log)
@@ -253,7 +299,7 @@ def operation_lease():
 
 def main():
     arguments=sys.argv[1:]
-    if arguments and arguments[0] in ('live','mvp-offline','mvp-live'):configure(arguments[0]);arguments=arguments[1:]
+    if arguments and arguments[0] in ('live','mvp-offline','mvp-live','h10-expanded','h11-expanded'):configure(arguments[0]);arguments=arguments[1:]
     if os.getuid()!=0 or os.geteuid()!=0 or arguments not in (['inspect'],['export'],['receipt'],['metadata'],['retire']):raise ValueError('candidate_root_custody_fixed_root_coordinator_action')
     os.umask(0o077);subprocess.run(['/bin/bash','-c','source "$1"; guard_target','guard',str(ROOT/'scripts/build/target.sh')],check=True)
     with operation_lease():
