@@ -22,7 +22,7 @@ def configure(mvp=False):
     snapshot.configure(mvp);MVP=mvp;CONTEXT=snapshot.CONTEXT;WORK=CONTEXT/'run'
     if mvp:installed.configure_mvp()
 
-ACTIONS={'review','execute','cancel','status','gui','collect','finish','capture'}
+ACTIONS={'review','execute','cancel','status','assistant-launch','gui','collect','finish','capture'}
 SERVICE=b'''[Unit]
 Description=Disposable live installer root qualification controller
 ConditionPathExists=!/etc/initrd-release

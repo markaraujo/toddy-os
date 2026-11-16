@@ -48,6 +48,23 @@ class InstallerControllerTests(unittest.TestCase):
         self.assertIn("not mvp and 'delivery_class' in manifest",source)
         self.assertIn('mvp_installer_qualification.py',source)
 
+    def test_assistant_launch_is_fixed_authorized_live_owner_and_never_a_GUI_claim(self):
+        from types import SimpleNamespace
+        import runtime.installer.live_session as live
+        owner=SimpleNamespace(pw_uid=1000,pw_gid=1000,pw_dir='/home/toddy-live')
+        with patch.object(live,'authorize_live_owner') as authorize,patch.object(probe.pwd,'getpwnam',return_value=owner),patch.object(probe.subprocess,'Popen',return_value=SimpleNamespace(pid=4321)) as launch:
+            result=probe.launch_assistant();authorize.assert_called_once_with(1000)
+            self.assertFalse(result['window_verified']);self.assertFalse(result['model_or_provider_activated'])
+            self.assertEqual(launch.call_args.args[0],['/usr/bin/toddy'])
+            options=launch.call_args.kwargs
+            self.assertEqual((options['user'],options['group'],options['extra_groups']),(1000,1000,[]))
+            self.assertTrue(options['close_fds']);self.assertEqual(options['env']['DBUS_SESSION_BUS_ADDRESS'],'unix:path=/run/user/1000/bus')
+            self.assertNotIn('PYTHONPATH',options['env'])
+        with patch.object(live,'authorize_live_owner',side_effect=ValueError('no actual live owner')),patch.object(probe.subprocess,'Popen') as launch:
+            with self.assertRaises(ValueError):probe.launch_assistant()
+            launch.assert_not_called()
+        self.assertIn('assistant-launch',c.ACTIONS)
+
     def test_real_iso_boot_owned_devices_and_network_none_command_shape(self):
         for firmware in ('bios','uefi'):
             args=c.qemu(firmware,'a'*64)

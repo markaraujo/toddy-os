@@ -81,6 +81,20 @@ def prepare(expected):
     return value
 
 
+def launch_assistant():
+    from runtime.installer.live_session import authorize_live_owner
+    authorize_live_owner(1000)
+    owner=pwd.getpwnam('toddy-live')
+    assert (owner.pw_uid,owner.pw_gid,owner.pw_dir)==(1000,1000,'/home/toddy-live')
+    environment={'PATH':'/usr/bin:/usr/sbin','HOME':owner.pw_dir,'USER':'toddy-live','LOGNAME':'toddy-live',
+        'XDG_RUNTIME_DIR':'/run/user/1000','DBUS_SESSION_BUS_ADDRESS':'unix:path=/run/user/1000/bus',
+        'WAYLAND_DISPLAY':'wayland-0','XDG_SESSION_TYPE':'wayland','LANG':'en_US.UTF-8'}
+    child=subprocess.Popen(['/usr/bin/toddy'],user=1000,group=1000,extra_groups=[],cwd=owner.pw_dir,
+        env=environment,close_fds=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    return {'state':'assistant-launch-requested','live_uid':1000,'launcher':'/usr/bin/toddy','pid':child.pid,
+        'window_verified':False,'native_GUI_acceptance':False,'model_or_provider_activated':False}
+
+
 def journal_snapshot():
     path=Path('/var/lib/toddy/installer-qualification/operations.sqlite')
     if not path.exists():return None
@@ -152,6 +166,9 @@ def main(expected):
                 result={'state':'cancel-requested','safe_boundary_result_pending':CHILD is not None}
             elif action=='status':
                 assert not request;result={'running':CHILD is not None,'execute_started':EXECUTED,'last':last}
+            elif action=='assistant-launch':
+                assert not request and CHILD is None
+                result=launch_assistant()
             elif action=='gui':
                 assert not request and CHILD is None and gui is None
                 gui=subprocess.Popen(['/usr/bin/python3','-I',ENTRY,'gui','--uid','1000','--display','wayland-0'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
