@@ -1,5 +1,5 @@
 """Unprivileged archive/stage fixtures only, no native package/audio qualification."""
-import hashlib,importlib.util,io,json,os,subprocess,tarfile,tempfile,unittest
+import hashlib,importlib.util,io,json,os,subprocess,sys,tarfile,tempfile,unittest
 from pathlib import Path
 from unittest.mock import Mock,patch
 ROOT=Path(__file__).resolve().parents[1]
@@ -7,6 +7,15 @@ SPEC=importlib.util.spec_from_file_location('pipewire_audio_tools',ROOT/'scripts
 p=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(p)
 
 class AudioToolsTests(unittest.TestCase):
+ def test_packager_child_creates_public_control_without_relaxing_private_parent(self):
+  with tempfile.TemporaryDirectory() as temporary:
+   root=Path(temporary);previous=os.umask(0o077)
+   try:
+    p.run_packager([sys.executable,'-c',"from pathlib import Path;Path('DEBIAN').mkdir();Path('DEBIAN/control').write_text('public fixture')"],cwd=root)
+    self.assertEqual((root/'DEBIAN').stat().st_mode&0o777,0o755)
+    self.assertEqual((root/'DEBIAN/control').stat().st_mode&0o777,0o644)
+    (root/'private-evidence').mkdir();self.assertEqual((root/'private-evidence').stat().st_mode&0o777,0o700)
+   finally:os.umask(previous)
  def stage(self,root):
   bin=root/'usr/bin';bin.mkdir(parents=True);(bin/'pw-cat').write_bytes(b'explicit synthetic binary');(bin/'pw-cat').chmod(0o755)
   for alias in p.frozen.ALIASES:(bin/alias).symlink_to('pw-cat')

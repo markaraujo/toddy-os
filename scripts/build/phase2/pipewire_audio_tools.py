@@ -8,11 +8,17 @@ import pipewire_tools_native as frozen
 import pipewire_base_restore as restore
 from verify_stage import inspect_stage
 ROOT=restore.ROOT;TARGET=restore.TARGET;BUILD=restore.BUILD;LOG=restore.LOG
-PACKAGE='pipewire-audio-tools';VERSION='1.6.8-1+toddy1';STEP='b09-pipewire-audio-tools-1'
+PACKAGE='pipewire-audio-tools';VERSION='1.6.8-1+toddy1';STEP='b09-pipewire-audio-tools-2'
 INSTALL='scripts/build/phase2/pipewire_audio_tools_install.sh';CHECK='scripts/build/phase2/pipewire_audio_tools_check.sh'
-STAGE=TARGET/'sources/stage/phase2-pipewire-audio-tools-1';RECEIPT=LOG/'pipewire-audio-tools-install-1.json'
+STAGE=TARGET/'sources/stage/phase2-pipewire-audio-tools-2';RECEIPT=LOG/'pipewire-audio-tools-install-2.json'
 DEPENDS='pipewire (= 1.6.8-1+toddy1), libsndfile (= 1.2.2-1+toddy1), glibc (= 2.44-1+toddy1), gcc-runtime (= 16.2.0-1+toddy1)'
 HEADER_SOURCES=('pw-cat.c','midifile.c','midiclip.c','midievent.c','dfffile.c','dsffile.c','midifile.h','midiclip.h','midievent.h','dfffile.h','dsffile.h')
+
+
+def run_packager(command,*,cwd=ROOT):
+    # Keep this producer's private evidence umask; Dpkg's public DEBIAN control
+    # directory is created by the child and must be at least0755.
+    return subprocess.run(command,cwd=cwd,check=True,close_fds=True,umask=0o022)
 
 
 def source_inputs():
@@ -128,8 +134,8 @@ def install():
         'scope':'Standalone native pw-cat only; old base/dependency pins unchanged, no model/key/service activation or audio success claim'}
     doc=STAGE/'usr/share/doc'/PACKAGE/'source-manifest.json';frozen.save(doc,manifest);doc.chmod(0o644);public_directories(STAGE);observed=validate_stage(STAGE)
     frozen.save(RECEIPT,{'version':1,'state':'native-audio-tools-install-intended-no-replay','manifest':manifest,'stage':observed})
-    subprocess.run([sys.executable,str(ROOT/'scripts/build/stage_package.py'),PACKAGE,VERSION,str(STAGE),'--source',frozen.ARCHIVE,'--recipe',INSTALL,
-        '--depends',DEPENDS,'--compression-threads','2','--install'],cwd=ROOT,check=True,close_fds=True)
+    run_packager([sys.executable,str(ROOT/'scripts/build/stage_package.py'),PACKAGE,VERSION,str(STAGE),'--source',frozen.ARCHIVE,'--recipe',INSTALL,
+        '--depends',DEPENDS,'--compression-threads','2','--install'])
     frozen.save(RECEIPT,{'version':1,'state':'native-audio-tools-installed-postcheck-pending','manifest':manifest,'stage':observed})
 
 
