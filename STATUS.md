@@ -1,10 +1,10 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-16T20:59:12.028291+00:00
+Updated: 2026-11-16T23:03:32.027923+00:00
 
 Bootstrap: ready_for_development
 
-Owner prioritizes a basic-tested MVP delivery today (ADR-0249), accepting known bugs and deferred extended validation. B01-B05 accepted (41% weighted Phase2); B06 graphical assistant smoke and actual media delivery are current. Native voice engines/process/catalog passed. G2, final ISO and physical tests remain pending.
+Basic-tested MVP delivery authorized (ADR-0249). Installer6 native checks and complete source sync passed; base/live requirements passed; fresh export5 and image composition are current. B01-B05 remain accepted (41% weighted Phase2). MVP ISO, G2 and physical tests are pending.
 
 Foundation: **100%** · Agentic desktop: **41%**
 

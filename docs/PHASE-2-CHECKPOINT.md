@@ -8,17 +8,35 @@ graphical task/Stop and bootable/installable media. Defer expanded qualification
 matrices and polish, publish known limitations, and retain honest B-story/G2
 status. No extra harness development may delay the working delivery.
 
-Actual MVP preparation: export2 contains329native packages/917declared files;
-918flat assets transferred and both host signatures publicly verified, unpublished.
-Protected Qwen custody and core1 input collection passed. Core2/3 real GDM login
-passed, but QA preflight/phase setup failed; no assistant task acceptance. The
-Polkit record-group check was corrected; a root umask made the shared QA directory
-0700 and its explicit0755 fix is next. Preserve failed contexts; use fresh core4.
-MVP typed preinstalled profile and separate image/input/media/seal/embed source
-are merged. Installer revision2/fresh generation4 is needed for changed payload.
-All342upstream/87NPM source archives exist; exact historical recipe custody is
-still unresolved and source bundle output remains absent. Current private runtime
-pointer names actual jobs; only the coordinator writes a guest.
+Actual MVP preparation: installer6/version0.2.0-1+toddy4 installed and native
+postchecked0/0. Its34declared source files match the host/builder coherence map
+4c23380a69cb4bdad73e4246385ce6ddb6043d417aca8a5e60fb3bc0f50571c5.
+Base/live native requirements passed321/329packages and19cache bindings each.
+MVPprojection3 passed; fresh export5 is current. Earlier projections/exports and
+installer4/5 receipts remain retained, never overwritten or relabeled.
+
+Historical expanded-cache custody: H10 full host archive verified; deletion's
+postcheck limit failed after effect. A NEW independent postcondition companion
+passed with3,782,561,792B actual guest gain; the old intent remains unchanged.
+H11 custody completed normally with3,601,137,664B gain. All original media and
+accepted backings remain retained. Two inactive historical builder backups were
+fully gzip/roundtrip verified and retired, gaining7,493,423,104B host space.
+A second fixed inactive pair is prepared for further admission, not yet executed.
+
+Five actual source TARs (4.13GB) and a57MB inventory cover329export2 packages.
+The exact per-package coordinator material/license review is recorded in
+[evidence](evidence/mvp-source-coordinator-review-1.json), with independent
+[current-functional admission](current-functional-source-admission.md).
+Historical fingerprints remain incomplete and binary reproduction/G2 are not
+claimed. Final export5/newinstaller4 still needs actual changed-package accounting;
+no export2 source decision silently authorizes it.
+
+Core4 actual GDM login, native package bytes, broker capabilities and shortcut
+registration passed. Activation/focus failed an AT-SPI deadline; read-only journal
+triage found no Python crash. No assistant GUI/task acceptance is inferred. Use
+the fixed direct live-owner launcher and manual capture on the first actual MVP
+ISO; do not repeat blind candidate boots. No MVP ISO/G2/physical acceptance yet.
+The private runtime pointer names actual jobs; only the coordinator writes a guest.
 
 ## B06 native assistant integration current
 
