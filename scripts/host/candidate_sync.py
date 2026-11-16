@@ -35,5 +35,5 @@ if __name__ == '__main__':
     sync_build.main(metadata_only=True, include_references=False, extra_metadata=(
         'config/phase2', 'runtime', 'ui/phase2', 'assets/brand',
         'docs/evidence/B01-engine-components.json', 'docs/evidence/B01-calamares-native-probe.json',
-        'docs/evidence/B02-desktop-runtime-manifest.json',
+        'docs/evidence/B02-desktop-runtime-manifest.json', 'docs/evidence/H11-components.json',
         'tests/fixtures/voice/human', *extra))

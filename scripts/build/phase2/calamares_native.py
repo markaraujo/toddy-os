@@ -235,4 +235,6 @@ def main():
     {'qualify':qualify,'install':install,'postcheck':postcheck}[sys.argv[1]]()
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    main()
