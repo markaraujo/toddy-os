@@ -86,3 +86,20 @@ package files/notices, then run S15 with real short EN/PT recordings, intelligib
 spoken replies, visible device/microphone/Stop states and measured latency/RAM.
 The GTK microphone controls and shared text-task handoff remain integration work.
 Only those observations can establish B09 acceptance; fixture output is insufficient.
+
+## Trusted process lifecycle prerequisite
+
+The fixed child launcher now arms Linux parent-death SIGKILL before engine exec,
+then checks its actual parent to close setup loss. Losing the UI/controller cannot
+leave the direct capture engine recording. ProcessRunner uses waitid(WNOWAIT)
+instead of poll/wait while cleanup still owns a process group. Every group signal
+precedes the one leader reap; no killpg occurs after that PID becomes reusable.
+Unexpected outside reaping fails closed without signaling a reused group. Source
+process tests prove actual parent loss, refused wrong-parent exec, cancellation
+and cleanup while an exited unreaped leader's descendant holds an output pipe.
+
+These controls apply to the selected trusted fixed native engines. They do not
+claim cgroup containment of arbitrary/escaped setsid descendants or native audio
+qualification. Root artifact/catalog qualification and native crash/device/Stop
+proof remain prerequisites before UI activation. The optional voice package must
+include child.py beside process.py; no caller-supplied launcher is accepted.
