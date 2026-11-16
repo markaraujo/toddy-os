@@ -8,6 +8,18 @@ graphical task/Stop and bootable/installable media. Defer expanded qualification
 matrices and polish, publish known limitations, and retain honest B-story/G2
 status. No extra harness development may delay the working delivery.
 
+Actual MVP preparation: export2 contains329native packages/917declared files;
+918flat assets transferred and both host signatures publicly verified, unpublished.
+Protected Qwen custody and core1 input collection passed. Core2/3 real GDM login
+passed, but QA preflight/phase setup failed; no assistant task acceptance. The
+Polkit record-group check was corrected; a root umask made the shared QA directory
+0700 and its explicit0755 fix is next. Preserve failed contexts; use fresh core4.
+MVP typed preinstalled profile and separate image/input/media/seal/embed source
+are merged. Installer revision2/fresh generation4 is needed for changed payload.
+All342upstream/87NPM source archives exist; exact historical recipe custody is
+still unresolved and source bundle output remains absent. Current private runtime
+pointer names actual jobs; only the coordinator writes a guest.
+
 ## B06 native assistant integration current
 
 Owner resumed2026-11-16 with maximum simultaneous isolated source subagents
