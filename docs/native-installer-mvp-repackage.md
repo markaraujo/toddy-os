@@ -86,3 +86,53 @@ signed export4. Earlier projection1/export3/signatures remain immutable. Existin
 prepared4 cannot be reinterpreted as current Python source; do not run old
 qualify/install actions to refresh it. Native GUI, installer/boot and source
 publication still require their actual distinct evidence.
+
+## Fixed installer6 after full runtime source coherence
+
+Build-script sync alone did not transfer `runtime/installer`; actual installer5
+therefore legitimately matched its older builder source snapshot, not all latest
+host runtime bytes. Preserve its actual version3 archive/record/source5 and0/0
+receipts. Do not overwrite them or relabel that payload as current source.
+
+After the controlled sync-gate implementation is committed, run on the host:
+
+```sh
+python3 scripts/host/candidate_assistant_inputs_sync.py
+```
+
+The gate transfers the entire non-pyc runtime installer tree and every
+`composition.SOURCES` cross-directory file, validates incoming and final builder
+bytes under the global source lease, and writes an immutable root-owned
+`/var/log/toddy/build/input-source-coherence-MAP_SHA256.json`. Its exact schema is
+`version:1`, `state:required-source-bytes-verified`, `source_map_sha256` and
+`files` (project-relative paths to SHA256). The map identity is SHA256 of compact
+sorted-key JSON without a newline. Run the actual read-only cache requirements
+before packaging; do not change the cache recipe again during this slice.
+
+The fresh fixed commands are:
+
+```sh
+bash /opt/toddy-build/scripts/build/phase2/installer_mvp_prepare6.sh
+python3 /opt/toddy-build/scripts/build/phase2/installer_mvp_native.py qualify6
+python3 /opt/toddy-build/scripts/build/run_step.py b12-toddy-installer-6 \
+  /opt/toddy-build/scripts/build/phase2/installer_mvp_install6.sh \
+  /opt/toddy-build/scripts/build/phase2/installer_mvp_check6.sh --user root
+```
+
+Only explicit generations4/5/6 are accepted. Installer6 is
+`0.2.0-1+toddy4`; source/work/stage/prepared/native receipt/offscreen HOME all
+have distinct6 names. It requires actual successful installer5/version3,
+retained record/archive and readonly source5, plus unchanged installed version3
+before preparation. It retains actual compile3 C++/ABI proof and performs no
+Qt/Calamares rebuild.
+
+Before any preparation output and again in qualification/install/postcheck,
+installer6 independently computes its entire current runtime plus SOURCES map,
+requires the exact protected root proof filename/schema/map and verifies every
+actual file hash. Missing/stale/partial proof refuses before packaging. Prepared
+and packaged reuse provenance bind the proof SHA and full map. Installed5 is
+compared only as the legitimate old package baseline; it is not expected to
+match newer host source. After native6 succeeds, use new MVP projection3 and
+signed export5; preserve earlier actual projection2/export4 unchanged. Existing
+MVP image-input directories must remain fresh; never reuse an uncertain input
+bundle across a package/source revision.

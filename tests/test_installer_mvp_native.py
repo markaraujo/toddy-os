@@ -1,11 +1,31 @@
 """Minimal revision4 source/refusal checks; no guest/native package writes."""
-import importlib.util,json,tempfile,unittest
+import hashlib,importlib.util,json,os,tempfile,unittest
 from pathlib import Path
 from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1]
 SPEC=importlib.util.spec_from_file_location('installer4',ROOT/'scripts/build/phase2/installer_mvp_native.py')
 p=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(p)
 class Installer4Tests(unittest.TestCase):
+ def test_runtime_source_map_includes_cross_directory_handoff_and_finalizer(self):
+  with patch.object(p,'ROOT',ROOT):files=p.runtime_source_map()
+  for name in ('runtime/installer/native_finalizer.py','scripts/build/phase2/offline_payload.py','runtime/setup/installer_handoff.py','runtime/shared/json.py'):
+   self.assertEqual(files[name],p.digest(ROOT/name))
+ def test_coherence_proof_requires_exact_current_map_and_verified_state(self):
+  with tempfile.TemporaryDirectory() as temporary:
+   root=Path(temporary);files={'runtime/installer/native_finalizer.py':'a'*64}
+   sha=hashlib.sha256(json.dumps(files,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+   path=root/('input-source-coherence-'+sha+'.json')
+   value={'version':1,'state':'required-source-bytes-verified','source_map_sha256':sha,'files':files}
+   path.write_text(json.dumps(value));path.chmod(0o600)
+   original=Path.lstat
+   def root_metadata(self,*args,**kwargs):
+    info=original(self,*args,**kwargs);row=list(info);row[4]=row[5]=0;row[0]&=~0o022;return os.stat_result(row)
+   with patch.object(p,'BUILD',root),patch.object(p,'runtime_source_map',return_value=files),patch.object(Path,'lstat',root_metadata):
+    self.assertEqual(p.runtime_coherence()['source_map_sha256'],sha)
+    value['files']={'runtime/installer/native_finalizer.py':'b'*64};path.write_text(json.dumps(value))
+    with self.assertRaisesRegex(ValueError,'coherence required'):p.runtime_coherence()
+
+
  def test_generation5_is_fixed_fresh_revision_and_preserves_compile3_defaults(self):
   original=(p.frozen.SOURCE,p.frozen.WORK,p.frozen.STEP,p.frozen.VERSION)
   try:
@@ -14,10 +34,19 @@ class Installer4Tests(unittest.TestCase):
    self.assertEqual(p.SOURCE.name,'toddy-installer-0.2.0-5');self.assertTrue(p.INSTALL.endswith('install5.sh'))
    with patch.object(p,'ROOT',ROOT):self.assertEqual(p.package().VERSION,'0.2.0-1+toddy3')
    self.assertEqual((p.frozen.SOURCE,p.frozen.WORK,p.frozen.STEP,p.frozen.VERSION),original)
-   for invalid in (3,6,'5'):
+   for invalid in (3,7,'5'):
     with self.assertRaises(ValueError):p.configure(invalid)
   finally:p.configure(4)
 
+
+ def test_generation6_has_fresh_names_and_requires_actual_version3_baseline(self):
+  try:
+   p.configure(6)
+   self.assertEqual(p.VERSION,'0.2.0-1+toddy4');self.assertEqual(p.BASELINE_VERSION,'0.2.0-1+toddy3')
+   self.assertEqual(p.STEP,'b12-toddy-installer-6');self.assertTrue(p.CHECK.endswith('check6.sh'))
+   self.assertEqual(p.PREPARED.name,'toddy-installer-prepared-6.json')
+   with patch.object(p,'ROOT',ROOT):self.assertEqual(p.package().VERSION,'0.2.0-1+toddy4')
+  finally:p.configure(4)
 
  def test_private_revision_generator_keeps_original_frozen_version(self):
   with patch.object(p,'ROOT',ROOT):pkg=p.package()
