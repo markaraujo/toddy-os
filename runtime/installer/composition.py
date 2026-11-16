@@ -197,17 +197,26 @@ def validate_boot_evidence(value,firmware,descriptor,boot):
         persistent=row['persistent_marker_sha256'];root_uuid=row['root_uuid'];initramfs=row['initramfs_sha256']
 
 
+def validate_owner_options(policy,options):
+    if not isinstance(options,dict) or not isinstance(options.get('username'),str) or \
+            not re.fullmatch('[a-z][a-z0-9_-]{0,31}',options['username']) or options['username'] in ('root','lfs','tester','builder','toddy','toddy-live') or \
+            type(options.get('uid')) is not int or type(options.get('gid')) is not int or \
+            not 1000<=options['uid']<=60000 or not 1000<=options['gid']<=60000:
+        raise InstallError('installer_owner_identity')
+    accounts=policy['accounts']
+    users=[row.split(':') for row in accounts['passwd'].splitlines()]
+    groups=[row.split(':') for row in accounts['group'].splitlines()]
+    if any(row[0]==options['username'] or int(row[2])==options['uid'] for row in users) or \
+            any(row[0]==options['username'] or int(row[2])==options['gid'] for row in groups):
+        raise InstallError('installer_owner_collides_with_system_account')
+
+
 class ComposedPayload:
     def __init__(self,composition,native):self.composition=composition;self.native=native
 
     def verify_payload(self,plan):
         self.composition.readiness()
-        options=plan['options'];accounts=self.composition.policy['accounts']
-        users=[row.split(':') for row in accounts['passwd'].splitlines()]
-        groups=[row.split(':') for row in accounts['group'].splitlines()]
-        if any(row[0]==options['username'] or int(row[2])==options['uid'] for row in users) or \
-                any(row[0]==options['username'] or int(row[2])==options['gid'] for row in groups):
-            raise InstallError('installer_owner_collides_with_system_account')
+        validate_owner_options(self.composition.policy,plan['options'])
         return self.native.verify_payload(plan)
 
     def install_payload(self,root,plan):
@@ -227,6 +236,10 @@ class LiveBindings:
         self.build_boot=InstalledBoot(composition.bundle,composition.manifest,composition.boot,system)
 
     def readiness(self):return self.composition.readiness()
+
+    def validate_options(self,options):
+        self.composition.readiness()
+        validate_owner_options(self.composition.policy,options)
 
     def payload_identity(self):
         self.readiness();manifest=self.payload._load()

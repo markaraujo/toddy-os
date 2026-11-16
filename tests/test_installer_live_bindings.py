@@ -13,7 +13,7 @@ from runtime.installer.live_bindings import create
 from runtime.installer.disk_plan import InstallError
 from runtime.installer.installed_boot import init_script,module_namespace,InstalledBoot
 from runtime.installer.native_finalizer import account_files,cache_command
-from runtime.installer.composition import validate_boot_evidence,validate_finalizer_report,ComposedPayload,bundle_namespace,secured
+from runtime.installer.composition import validate_boot_evidence,validate_finalizer_report,ComposedPayload,bundle_namespace,secured,validate_owner_options
 from runtime.setup.installer_handoff import save
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -92,7 +92,7 @@ class LiveBindingsTests(unittest.TestCase):
   native=SimpleNamespace(verify_payload=lambda _:self.fail('payload-dispatched'))
   composition=SimpleNamespace(readiness=lambda:None,policy={'accounts':{'passwd':'_apt:x:100:100:APT:/:/usr/bin/false\n','group':'_apt:x:100:\n'}})
   payload=ComposedPayload(composition,native)
-  with self.assertRaisesRegex(InstallError,'collides'):
+  with self.assertRaisesRegex(InstallError,'installer_owner'):
    payload.verify_payload({'options':{'username':'owner','uid':1000,'gid':100}})
 
  def test_pending_handoff_rejects_extra_secret_field_and_redirected_parent_before_write(self):
@@ -119,5 +119,14 @@ class LiveBindingsTests(unittest.TestCase):
    with self.assertRaisesRegex(InstallError,'unselected_payload_state'):bundle_namespace(root,manifest)
    (root/'repository/private-key.asc').unlink();(root/'archives/cache').mkdir()
    with self.assertRaisesRegex(InstallError,'unselected_payload_state'):bundle_namespace(root,manifest)
+
+ def test_review_owner_namespace_uses_authoritative_policy_and_dispatches_nothing(self):
+  policy={'accounts':{'passwd':'root:x:0:0:root:/root:/bin/bash\nbin:x:1:1:bin:/:/usr/bin/false\ngdm:x:1001:1001:GDM:/:/usr/bin/false\n',
+                      'group':'root:x:0:\nwheel:x:97:\ngdm:x:1001:\n'}}
+  validate_owner_options(policy,{'username':'fresh-owner','uid':1000,'gid':1000})
+  for options in ({'username':'wheel','uid':1000,'gid':1000},{'username':'gdm','uid':1000,'gid':1000},
+                  {'username':'bin','uid':1000,'gid':1000},{'username':'owner','uid':1001,'gid':1000},
+                  {'username':'owner','uid':1000,'gid':1001},{'username':'tester','uid':1000,'gid':1000}):
+   with self.subTest(options=options),self.assertRaises(InstallError):validate_owner_options(policy,options)
 
 if __name__=='__main__':unittest.main()

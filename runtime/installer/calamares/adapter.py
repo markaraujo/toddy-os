@@ -204,6 +204,12 @@ class CalamaresAdapter:
 
     def review(self, device, options):
         ready = self.readiness()
+        # The fixed production binding has the actual fresh account policy.
+        # Check it even for no-write review; namespace collisions must not wait
+        # until native groupadd/useradd after disk mutation.
+        validate_options = getattr(self.bindings, 'validate_options', None)
+        if validate_options is not None:
+            validate_options(options)
         payload = self.bindings.payload_identity()
         if (payload.get('sha256') != ready['payload_manifest_sha256'] or
                 payload.get('catalog_sha256') != ready['catalog_sha256']):
