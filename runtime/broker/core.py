@@ -32,12 +32,13 @@ ROOT_KINDS = {'admin-config': 'config_replace', 'admin-command': 'root_command',
 
 
 class BrokerCore:
-    def __init__(self, profiles, journal, workspace, *, root_client=None, dispatch_allowed=lambda: False):
+    def __init__(self, profiles, journal, workspace, *, root_client=None, dispatch_allowed=lambda: False, shell_runner=None):
         if os.getuid() == 0 or os.geteuid() == 0:
             raise BrokerError('unprivileged_broker_required')
         self.profiles, self.journal = profiles, journal
         self.workspace = Path(workspace)
         self.root_client = root_client
+        self.shell_runner = shell_runner
         self.dispatch_allowed = dispatch_allowed
         # Validate workspace immediately, no implicit host directory choice.
         with Tools(self.workspace):
@@ -118,7 +119,9 @@ class BrokerCore:
                     return {'verified': True, **tools.read(args['path'])}
                 if kind == 'file-write':
                     return tools.write(args['path'], args['text'], args['expected_sha256'])
-                return tools.shell(args['argv'], timeout_seconds=args['timeout_seconds'], canceled=canceled)
+                if self.shell_runner is None:
+                    raise BrokerError('managed_shell_unavailable')
+                return self.shell_runner(self.workspace, args['argv'], timeout_seconds=args['timeout_seconds'], canceled=canceled)
 
         # Shell exit alone never proves arbitrary side effects. Such results stay
         # uncertain pending a separate trusted postcondition/review.

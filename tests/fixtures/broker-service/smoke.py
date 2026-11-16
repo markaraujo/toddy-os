@@ -83,38 +83,19 @@ def main():
             assert (workspace / 'hello.txt').read_text() == 'Actual native broker write.'
             duplicate = call('SubmitTask', ('write-one', 'toddy-default', revision, write_body), '(ssss)')
             assert duplicate == written
-            # Actual managed command, explicit Stop, verify the command PID exits.
+            # A standalone source process is deliberately outside the canonical
+            # user-systemd parent. Shell must fail closed, never run uncontained.
             stop_argv = ['/usr/bin/python3', '-c',
-                "import os,time; from pathlib import Path; Path('stop.pid').write_text(str(os.getpid())); time.sleep(60)"]
-            stop_task = call('SubmitTask', ('stop-one', 'toddy-default', revision,
-                body('shell', {'argv': stop_argv, 'timeout_seconds': 90})), '(ssss)')
-            until(lambda: (workspace / 'stop.pid').exists())
-            stopped_pid = int((workspace / 'stop.pid').read_text())
-            stop = call('RequestCancel', (stop_task, 'stop-request'), '(ss)')
-            assert stop['cancel_requested'] is True
-            until(lambda: snapshot(stop_task)['state'] == 'waiting')
-            until(lambda: not Path('/proc', str(stopped_pid)).exists())
-            assert snapshot(stop_task)['result_uncertain'] is True  # Shell effects are not proved by exit.
-            # Crash after a real fsynced effect, before any result recording.
-            crash_argv = ['/usr/bin/python3', '-c',
-                "import os,time; f=open('effect-once','a'); f.write('x'); f.flush(); os.fsync(f.fileno()); time.sleep(60)"]
-            crash_body = body('shell', {'argv': crash_argv, 'timeout_seconds': 90})
-            crash_task = call('SubmitTask', ('crash-one', 'toddy-default', revision, crash_body), '(ssss)')
-            until(lambda: (workspace / 'effect-once').exists())
-            assert (workspace / 'effect-once').read_text() == 'x'
-            process.kill(); process.wait(timeout=5)
-            process.stdout.close(); process.stderr.close()
-            process = start()
-            recovered = snapshot(crash_task)
-            assert recovered['state'] == 'waiting' and recovered['result_uncertain'] is True
-            assert call('SubmitTask', ('crash-one', 'toddy-default', revision, crash_body), '(ssss)') == crash_task
-            assert (workspace / 'effect-once').read_text() == 'x'
-            assert snapshot(crash_task)['operation_id'] is not None
+                "from pathlib import Path; Path('must-not-run').write_text('bad')"]
+            denied_task = call('SubmitTask', ('unmanaged-shell', 'toddy-default', revision,
+                body('shell', {'argv': stop_argv, 'timeout_seconds': 10})), '(ssss)')
+            until(lambda: snapshot(denied_task)['state'] == 'waiting')
+            assert not (workspace / 'must-not-run').exists()
+            assert snapshot(denied_task)['result_uncertain'] is True
             print(json.dumps({'scope': 'actual unprivileged broker source, private session bus, native logind, temporary workspace; no root/provider/guest acceptance',
                 'uid': os.getuid(), 'agent_backend': False, 'system_info_completed': True,
                 'profile_stage_apply': True, 'actual_file_write_duplicate_no_replay': True,
-                'shell_stop_process_exit_uncertainty_retained': True,
-                'crash_after_fsynced_effect_restart_no_replay': True,
+                'shell_unavailable_without_managed_parent_no_effect': True,
                 'duration_seconds': round(time.monotonic() - started, 3)}))
         finally:
             if process is not None:

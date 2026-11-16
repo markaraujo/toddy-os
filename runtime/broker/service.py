@@ -21,6 +21,7 @@ from profiles import ProfileError, ProfileStore
 from protocol import strict_json
 from tasks import TaskError, TaskJournal
 from core import BrokerCore, BrokerError, NATIVE_TOOLS
+from tools.scoped import ScopedShell
 
 BUS = 'io.github.markaraujo.Toddy.Service'
 OBJECT = '/io/github/markaraujo/Toddy/Service'
@@ -156,7 +157,7 @@ def main():
     session_connection = Gio.bus_get_sync(Gio.BusType.SESSION, None)
     system_connection = Gio.bus_get_sync(Gio.BusType.SYSTEM, None)
     core = BrokerCore(profiles, journal, args.workspace, root_client=RootClient(system_connection),
-                      dispatch_allowed=ActiveSession(system_connection, os.getuid()))
+                      dispatch_allowed=ActiveSession(system_connection, os.getuid()), shell_runner=ScopedShell())
     info = Gio.DBusNodeInfo.new_for_xml(Path(__file__).with_name(INTERFACE + '.xml').read_text())
     loop = GLib.MainLoop()
     pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix='toddy-broker')

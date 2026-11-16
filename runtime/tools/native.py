@@ -19,6 +19,12 @@ class ToolError(Exception):
     pass
 
 
+def validate_shell(argv,timeout_seconds):
+    if not isinstance(argv,list) or not 1<=len(argv)<=64 or any(not isinstance(arg,str) or '\x00' in arg or len(arg.encode())>4096 for arg in argv) or \
+       not argv[0].startswith('/') or sum(len(arg.encode()) for arg in argv)>16384 or \
+       type(timeout_seconds) is not int or not 1<=timeout_seconds<=120:raise ToolError('invalid_shell_arguments')
+
+
 class Tools:
     def __init__(self,workspace):
         if os.getuid()==0 or os.geteuid()==0:raise ToolError('unprivileged_tools_required')
@@ -101,9 +107,7 @@ class Tools:
             os.close(parent)
 
     def shell(self,argv,*,timeout_seconds=30,canceled=lambda:False):
-        if not isinstance(argv,list) or not 1<=len(argv)<=64 or any(not isinstance(arg,str) or '\x00' in arg or len(arg.encode())>4096 for arg in argv) or \
-           not argv[0].startswith('/') or sum(len(arg.encode()) for arg in argv)>16384 or \
-           type(timeout_seconds) is not int or not 1<=timeout_seconds<=120:raise ToolError('invalid_shell_arguments')
+        validate_shell(argv,timeout_seconds)
         if canceled():raise ToolError('canceled_before_dispatch')
         child=Path(__file__).with_name('child.py')
         process=subprocess.Popen([sys.executable,str(child),str(os.getpid()),*argv],stdin=subprocess.DEVNULL,
