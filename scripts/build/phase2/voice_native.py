@@ -6,11 +6,21 @@ catalog requires a separate actual installed process-control qualification.
 """
 import argparse,fcntl,hashlib,json,os,re,shutil,stat,subprocess,sys,tarfile
 from pathlib import Path
+from contextlib import contextmanager
+from datetime import datetime, timezone
+
+# Direct absolute script execution must resolve only these reviewed sibling
+# helpers, including source_notices/locked_inputs used by package_copyright.
+sys.dont_write_bytecode=True
+HERE=Path(__file__).resolve().parent
+sys.path[:0]=[str(HERE),str(HERE.parent)]
+import run_step as root_audit
 
 from voice_inputs import digest,load_lock,verify_file,validate_members,patch_source
 from verify_stage import inspect_stage
 
 R=Path('/opt/toddy-build');T=Path('/mnt/lfs');L=Path('/var/log/toddy/phase2')
+BUILD_LOCK=Path('/var/log/toddy/build/build.lock')
 RESERVE=16*1024**3+128*1024**2
 COMPONENTS={'whisper-cpp':('whisper-source','1.9.5-1+toddy1','voice-whisper-build.sh','usr/bin/whisper-cli'),
  'espeak-ng':('espeak-source','1.52.0-1+toddy1','voice-espeak-build.sh','usr/bin/espeak-ng'),
@@ -51,6 +61,101 @@ def prepared(component,generation):
     if value['driver_sha256']!=digest(Path(__file__)) or value['harness_sha256']!=digest(R/'scripts/build/phase2/isolated.sh'):raise ValueError('voice_prepared_driver_changed')
     if COMPONENTS[component][2] and value['recipe_sha256']!=digest(R/'scripts/build/phase2'/COMPONENTS[component][2]):raise ValueError('voice_prepared_recipe_changed')
     return source,work,prefix,value
+
+
+def audit_path(prefix,phase,suffix):
+    if phase not in ('install','catalog','catalog-package'):raise ValueError('voice_write_audit_phase')
+    return Path(str(prefix)+'.'+phase+'-audit.'+suffix)
+
+
+def audit_pins():
+    files={'driver':Path(__file__), 'snapshot_runner':Path(root_audit.__file__),'interpreter':Path(sys.executable).resolve()}
+    for relative in ('scripts/build/stage_package.py','scripts/build/package_backend.py',
+            'scripts/build/source_notices.py','scripts/build/locked_inputs.py',
+            'scripts/build/package_ownership.py','scripts/build/provenance.py',
+            'scripts/build/phase2/package_copyright.py','scripts/build/phase2/voice-install.sh',
+            'config/sources.lock.json','config/books.lock.json','config/phase2/sources.lock.json',
+            'config/component-licenses.json','config/package-ownership-policy.json',
+            'runtime/voice/native-inputs.lock.json'):
+        files[relative]=R/relative
+    for relative in ('config/security-overlay.lock.json','config/supplemental-sources.lock.json'):
+        if (R/relative).exists():files[relative]=R/relative
+    return {name:digest(path) for name,path in files.items()}
+
+
+@contextmanager
+def native_write_audit(prefix,phase,command,inputs,lease):
+    """Existing full-root dispatcher evidence under its already owned lock FD.
+
+    This observes mutations; it is not install confinement or optimized-path
+    qualification. Source/build scratch follows run_step's existing exclusions.
+    No failed/partial generation can be retried or accepted as complete.
+    """
+    if lease is None or root_audit.TARGET!=T or BUILD_LOCK.is_symlink():raise ValueError('voice_write_audit_owned_lock_required')
+    actual=os.fstat(lease.fileno());expected=BUILD_LOCK.stat()
+    if (actual.st_dev,actual.st_ino)!=(expected.st_dev,expected.st_ino):raise ValueError('voice_write_audit_owned_lock_required')
+    # Re-lock the SAME open description; no second fd or recursive dispatcher.
+    fcntl.flock(lease,fcntl.LOCK_EX|fcntl.LOCK_NB)
+    if list(prefix.parent.glob(prefix.name+'.'+phase+'-audit.*')):raise ValueError('voice_write_audit_exists_inspect_no_replay')
+    running=BUILD_LOCK.parent/(prefix.name+'.'+phase+'-audit.running.json')
+    if list(BUILD_LOCK.parent.glob('*.running.json')):raise ValueError('voice_other_native_recipe_running')
+    intent={'version':1,'phase':phase,'command':command,'inputs':inputs,'pins':audit_pins(),
+        'pid':os.getpid(),'started_utc':datetime.now(timezone.utc).isoformat(),
+        'snapshot_scope':['usr','etc','var','tools','lib64','boot'],
+        'scope':'Existing run_step full-root build manifest; no native acceptance from source fixtures or optimized isolation qualification'}
+    root_audit.write(audit_path(prefix,phase,'intent.json'),intent)
+    root_audit.write(running,{**intent,'intent_path':str(audit_path(prefix,phase,'intent.json'))})
+    before=root_audit.snapshot();root_audit.write(audit_path(prefix,phase,'before.json'),before)
+    state={**intent,'command_exit':None,'postcheck_exit':None}
+    failed=False
+    try:
+        yield state
+    except BaseException as error:
+        failed=True;state['error_type']=type(error).__name__
+        if isinstance(error,subprocess.CalledProcessError):
+            state['command_exit' if state['command_exit'] is None else 'postcheck_exit']=error.returncode
+        raise
+    finally:
+        after=root_audit.snapshot();root_audit.write(audit_path(prefix,phase,'after.json'),after)
+        changes={name:{'before':before.get(name),'after':after.get(name)} for name in sorted(before.keys()|after.keys()) if before.get(name)!=after.get(name)}
+        root_audit.write(audit_path(prefix,phase,'manifest.json'),changes)
+        state.update(finished_utc=datetime.now(timezone.utc).isoformat(),changed_paths=len(changes),
+            evidence_sha256={suffix:digest(audit_path(prefix,phase,suffix)) for suffix in ('intent.json','before.json','after.json','manifest.json')})
+        success=not failed and type(state['command_exit']) is int and state['command_exit']==0 and type(state['postcheck_exit']) is int and state['postcheck_exit']==0
+        state['state']='complete' if success else 'failed'
+        root_audit.write(audit_path(prefix,phase,'complete.json' if success else 'failed.json'),state)
+        running.unlink()
+        descriptor=os.open(running.parent,os.O_DIRECTORY)
+        try:os.fsync(descriptor)
+        finally:os.close(descriptor)
+    if not success:raise ValueError('voice_native_write_postconditions_incomplete')
+
+
+def require_write_audit(prefix,phase,*,inputs=None,command=None,record_sha256=None):
+    terminal=audit_path(prefix,phase,'complete.json');value=read(terminal)
+    if (value.get('version')!=1 or value.get('state')!='complete' or value.get('phase')!=phase
+            or type(value.get('command_exit')) is not int or value['command_exit']!=0
+            or type(value.get('postcheck_exit')) is not int or value['postcheck_exit']!=0
+            or value.get('pins')!=audit_pins() or audit_path(prefix,phase,'failed.json').exists()
+            or (BUILD_LOCK.parent/(prefix.name+'.'+phase+'-audit.running.json')).exists()):raise ValueError('voice_native_write_audit_not_successful')
+    if record_sha256 is not None and value.get('package_record_sha256')!=record_sha256:raise ValueError('voice_native_write_package_record_changed')
+    if inputs is not None and value['inputs']!=inputs:raise ValueError('voice_native_write_inputs_changed')
+    if command is not None and value['command']!=command:raise ValueError('voice_native_write_command_changed')
+    for suffix,expected in value['evidence_sha256'].items():
+        if suffix not in ('intent.json','before.json','after.json','manifest.json') or digest(audit_path(prefix,phase,suffix))!=expected:raise ValueError('voice_native_write_evidence_changed')
+    if set(value['evidence_sha256'])!={'intent.json','before.json','after.json','manifest.json'}:raise ValueError('voice_native_write_evidence_missing')
+    intent=read(audit_path(prefix,phase,'intent.json'))
+    if any(value[key]!=intent[key] for key in ('phase','command','inputs','pins')):raise ValueError('voice_native_write_intent_changed')
+    before=read(audit_path(prefix,phase,'before.json'));after=read(audit_path(prefix,phase,'after.json'))
+    changes={name:{'before':before.get(name),'after':after.get(name)} for name in sorted(before.keys()|after.keys()) if before.get(name)!=after.get(name)}
+    if read(audit_path(prefix,phase,'manifest.json'))!=changes or value['changed_paths']!=len(changes):raise ValueError('voice_native_write_manifest_changed')
+    return digest(terminal)
+
+
+def install_inputs(prefix,value):
+    return {'prepared_sha256':digest(Path(str(prefix)+'.prepared.json')),
+        'qualification_sha256':digest(Path(str(prefix)+'.qualified.json')),
+        'source_archive_sha256':value['input']['sha256']}
 
 
 def prepare(component,generation,cache):
@@ -207,7 +312,7 @@ def verify_package_record(record,target):
         if 'symlink' in row and os.readlink(path)!=row['symlink']:raise ValueError('voice_installed_payload_link')
 
 
-def install(component,generation):
+def install(component,generation,*,lease=None):
     source,work,prefix,value=prepared(component,generation);q=read(Path(str(prefix)+'.qualified.json'))
     if q['prepared_sha256']!=digest(Path(str(prefix)+'.prepared.json')) or q['stage_manifest_sha256']!=inspect_stage(work/'stage')['manifest_sha256']:raise ValueError('voice_qualified_stage_changed')
     version=COMPONENTS[component][1];architecture='all' if component=='toddy-voice-model-base' else 'amd64'
@@ -216,28 +321,34 @@ def install(component,generation):
     existing=subprocess.run(['chroot',str(T),'dpkg-query','-W',component],capture_output=True)
     if existing.returncode!=1:raise ValueError('voice_existing_package_requires_reviewed_update')
     reserve(384*1024**2)
-    write_new(ledger,{'state':'install-intended-no-replay','qualification_sha256':digest(Path(str(prefix)+'.qualified.json'))})
-    shutil.copytree(work/'stage',dest,symlinks=True)
-    if component!='toddy-voice-model-base':
-        from package_copyright import write_copyright
-        write_copyright(dest,component,[value['input']['filename']])
-        names=['COPYING','COPYING.APACHE','COPYING.BSD2','COPYING.UCD','README.md'] if component=='espeak-ng' else ['LICENSE','ggml/LICENSE']
-        notice=b'Exact upstream license overview for local speech review. Per-file attribution and conditions remain in source-notices/index.json and the source archive.\n'
-        for name in names:
-            notice+=('\nSource document: '+name+'\n').encode()+(source/name).read_bytes()+b'\n'
-        if len(notice)>65536:raise ValueError('voice_legal_overview_too_large')
-        (dest/'usr/share/doc'/component/'VOICE-LICENSES.txt').write_bytes(notice)
     dependencies=', '.join(name+' (= '+version+')' for name,version in sorted(q['dependencies']['providers'].items()))
-    subprocess.run(['python3',str(R/'scripts/build/stage_package.py'),component,version,str(dest),'--architecture',architecture,'--source',value['input']['filename'],'--recipe','scripts/build/phase2/voice-install.sh',*(['--depends',dependencies] if dependencies else []),'--install'],cwd=R,check=True)
-    record=Path('/var/log/toddy/packages')/f'{component}_{version}_{architecture}.json'
-    verify_package_record(read(record),T)
-    write_new(Path(str(prefix)+'.installed.json'),{'record_sha256':digest(record),'archive_sha256':read(record)['archive_sha256'],'scope':'Native transaction and installed payload verified; final independent check still required'})
+    command=[sys.executable,str(R/'scripts/build/stage_package.py'),component,version,str(dest),'--architecture',architecture,'--source',value['input']['filename'],'--recipe','scripts/build/phase2/voice-install.sh',*(['--depends',dependencies] if dependencies else []),'--install']
+    with native_write_audit(prefix,'install',command,install_inputs(prefix,value),lease) as audit:
+        write_new(ledger,{'state':'install-intended-no-replay','qualification_sha256':digest(Path(str(prefix)+'.qualified.json'))})
+        shutil.copytree(work/'stage',dest,symlinks=True)
+        if component!='toddy-voice-model-base':
+            from package_copyright import write_copyright
+            write_copyright(dest,component,[value['input']['filename']])
+            names=['COPYING','COPYING.APACHE','COPYING.BSD2','COPYING.UCD','README.md'] if component=='espeak-ng' else ['LICENSE','ggml/LICENSE']
+            notice=b'Exact upstream license overview for local speech review. Per-file attribution and conditions remain in source-notices/index.json and the source archive.\n'
+            for name in names:
+                notice+=('\nSource document: '+name+'\n').encode()+(source/name).read_bytes()+b'\n'
+            if len(notice)>65536:raise ValueError('voice_legal_overview_too_large')
+            (dest/'usr/share/doc'/component/'VOICE-LICENSES.txt').write_bytes(notice)
+        result=subprocess.run(command,cwd=R,check=True)
+        audit['command_exit']=result.returncode
+        record=Path('/var/log/toddy/packages')/f'{component}_{version}_{architecture}.json'
+        verify_package_record(read(record),T)
+        audit['postcheck_exit']=0
+        audit['package_record_sha256']=digest(record)
+    write_new(Path(str(prefix)+'.installed.json'),{'record_sha256':digest(record),'archive_sha256':read(record)['archive_sha256'],'native_write_audit_sha256':require_write_audit(prefix,'install',inputs=install_inputs(prefix,value)),'scope':'Native transaction and installed payload verified; final independent check still required'})
 
 
 def check(component,generation):
     _,_,prefix,value=prepared(component,generation);architecture='all' if component=='toddy-voice-model-base' else 'amd64'
     record=Path('/var/log/toddy/packages')/f'{component}_{value["version"]}_{architecture}.json'
     installed=read(Path(str(prefix)+'.installed.json'))
+    if installed.get('native_write_audit_sha256')!=require_write_audit(prefix,'install',inputs=install_inputs(prefix,value),record_sha256=installed['record_sha256']):raise ValueError('voice_install_write_audit_required')
     if digest(record)!=installed['record_sha256']:raise ValueError('voice_package_record_changed')
     verify_package_record(read(record),T)
     actual_path,_=native_record(component)
@@ -247,15 +358,16 @@ def check(component,generation):
     if component!='toddy-voice-model-base':
         isolated_job(component,generation,'installed-consumer')
         verify_package_record(read(record),T)
-    write_new(Path(str(prefix)+'.checked.json'),{'record_sha256':digest(record),'archive_sha256':read(record)['archive_sha256'],'qualification_sha256':digest(Path(str(prefix)+'.qualified.json')),'scope':'Independent exact installed payload plus native dpkg/APT consistency; no device claim'})
+    write_new(Path(str(prefix)+'.checked.json'),{'record_sha256':digest(record),'archive_sha256':read(record)['archive_sha256'],'qualification_sha256':digest(Path(str(prefix)+'.qualified.json')),'native_write_audit_sha256':installed['native_write_audit_sha256'],'scope':'Independent exact installed payload plus native dpkg/APT consistency; no device claim'})
 
 
 def process(component,generation):
     if component!='whisper-cpp':raise ValueError('process_qualification_uses_whisper_generation')
     for name in COMPONENTS:
-        _,_,other,_=prepared(name,generation)
+        _,_,other,prepared_value=prepared(name,generation)
+        require_write_audit(other,'install',inputs=install_inputs(other,prepared_value))
         checked=read(Path(str(other)+'.checked.json'));path,_=native_record(name)
-        if digest(path)!=checked['record_sha256']:raise ValueError('voice_process_needs_installed_checked_engines_model')
+        if digest(path)!=checked['record_sha256'] or checked.get('native_write_audit_sha256')!=require_write_audit(other,'install',inputs=install_inputs(other,prepared_value),record_sha256=digest(path)):raise ValueError('voice_process_needs_installed_checked_engines_model')
     isolated_job(component,generation,'process')
 
 
@@ -278,7 +390,7 @@ def artifact(role,path,version,url,license_id,notice):
     return {'artifact_id':'native-'+role,'kind':'stt-model' if role=='stt-model' else 'engine','path':path,'size':info.st_size,'sha256':digest(target),'source_url':url,'version':version,'license_id':license_id,'license_path':notice,'license_sha256':digest(legal),'review':'reviewed-local-use','languages':['en','pt-BR']}
 
 
-def catalog(component,generation):
+def catalog(component,generation,*,lease=None):
     if component!='whisper-cpp':raise ValueError('catalog_uses_whisper_generation')
     _,work,prefix,_=prepared(component,generation)
     exit=read(Path(str(prefix)+'.process.exit.json'));process_receipt=read(work/'process-qualified.json')
@@ -288,9 +400,9 @@ def catalog(component,generation):
         if digest(path)!=sha:raise ValueError('voice_installed_process_not_qualified')
     records={}
     for name in COMPONENTS:
-        _,_,other,_=prepared(name,generation);check=read(Path(str(other)+'.checked.json'))
+        _,_,other,prepared_value=prepared(name,generation);require_write_audit(other,'install',inputs=install_inputs(other,prepared_value));check=read(Path(str(other)+'.checked.json'))
         path,value=native_record(name)
-        if digest(path)!=check['record_sha256']:raise ValueError('voice_final_check_record_changed')
+        if digest(path)!=check['record_sha256'] or check.get('native_write_audit_sha256')!=require_write_audit(other,'install',inputs=install_inputs(other,prepared_value),record_sha256=digest(path)):raise ValueError('voice_final_check_record_changed')
         records[name]=(path,value)
     versions={'pipewire':'1.6.8','wireplumber':'0.5.15','whisper-cpp':'1.9.5','espeak-ng':'1.52.0'}
     for name in ('pipewire','wireplumber','toddy-voice'):records[name]=native_record(name)
@@ -316,18 +428,24 @@ def catalog(component,generation):
     value={'voice_catalog_version':1,'status':'native-qualified','tts_engine':'espeak-ng','native_dependencies':{name:{'version':version,'component_record_sha256':digest(records[name][0])} for name,version in versions.items()},'process_control':{'launcher_sha256':process_receipt['files']['child.py'],'runner_sha256':process_receipt['files']['process.py'],'pw_cat_sha256':digest(transport),'pw_cat_bytes':info.st_size,'evidence_sha256':digest(work/'process-qualified.json')},'artifacts':artifacts}
     receipt=Path(str(prefix)+'.catalog.json');destination=T/'usr/share/toddy/voice/catalog.json'
     if destination.exists() or receipt.exists():raise ValueError('voice_catalog_exists_explicit_update_required')
-    destination.parent.mkdir(parents=True,exist_ok=True)
-    write_new(destination,value);destination.chmod(0o644)
     code="import sys;sys.path.insert(0,'/usr/lib');from toddy.voice.catalog import NativeVoiceCatalog;value=NativeVoiceCatalog().preview();assert value['languages']==['en','pt-BR'];assert value['always_listening'] is False;assert value['automatic_download'] is False"
-    subprocess.run(['chroot','--userspec=101:101','--groups=101',str(T),'/usr/bin/env','-i','HOME=/tmp','PATH=/usr/bin:/usr/sbin','LC_ALL=C','/usr/bin/python3','-I','-c',code],check=True,timeout=30)
-    write_new(receipt,{'catalog_sha256':digest(destination),'generated_path':'/usr/share/toddy/voice/catalog.json','records':{name:digest(path) for name,(path,_) in records.items()},'process_evidence_sha256':digest(work/'process-qualified.json'),'scope':'Explicit native artifact/license/process gate only; owner still reviews notices/devices. Actual PTT/playback/GNOME evidence remains separate.'})
+    command=['chroot','--userspec=101:101','--groups=101',str(T),'/usr/bin/env','-i','HOME=/tmp','PATH=/usr/bin:/usr/sbin','LC_ALL=C','/usr/bin/python3','-I','-c',code]
+    inputs={'process_evidence_sha256':digest(work/'process-qualified.json'),'catalog_value_sha256':hashlib.sha256(json.dumps(value,sort_keys=True).encode()).hexdigest()}
+    with native_write_audit(prefix,'catalog',command,inputs,lease) as audit:
+        destination.parent.mkdir(parents=True,exist_ok=True)
+        write_new(destination,value);destination.chmod(0o644)
+        result=subprocess.run(command,check=True,timeout=30)
+        audit['command_exit']=result.returncode
+        audit['postcheck_exit']=0
+    write_new(receipt,{'catalog_sha256':digest(destination),'native_write_audit_sha256':require_write_audit(prefix,'catalog',inputs=inputs,command=command),'generated_path':'/usr/share/toddy/voice/catalog.json','records':{name:digest(path) for name,(path,_) in records.items()},'process_evidence_sha256':digest(work/'process-qualified.json'),'scope':'Explicit native artifact/license/process gate only; owner still reviews notices/devices. Actual PTT/playback/GNOME evidence remains separate.'})
     return value
 
 
-def catalog_package(component,generation):
+def catalog_package(component,generation,*,lease=None):
     if component!='whisper-cpp':raise ValueError('catalog_package_uses_whisper_generation')
     _,_,prefix,_=prepared(component,generation)
     receipt=Path(str(prefix)+'.catalog.json');value=read(receipt)
+    if value.get('native_write_audit_sha256')!=require_write_audit(prefix,'catalog'):raise ValueError('voice_catalog_write_audit_required')
     source=T/'usr/share/toddy/voice/catalog.json';regular(source)
     if digest(source)!=value['catalog_sha256']:raise ValueError('voice_qualified_catalog_changed')
     name='toddy-voice-native-catalog';version='0.2.0-1+toddy1'
@@ -340,24 +458,30 @@ def catalog_package(component,generation):
         if digest(path)!=sha:raise ValueError('voice_catalog_record_changed')
         depends.append(package+' (= '+record['version']+')')
     reserve(16*1024**2)
-    write_new(marker,{'state':'install-intended-no-replay','catalog_receipt_sha256':digest(receipt)})
-    target=dest/'usr/share/toddy/voice/catalog.json';target.parent.mkdir(parents=True)
-    shutil.copyfile(source,target)
-    doc=dest/'usr/share/doc'/name;doc.mkdir(parents=True)
-    shutil.copyfile(receipt,doc/'qualification.json')
-    _,work,_,_=prepared(component,generation)
-    shutil.copyfile(work/'process-qualified.json',doc/'process-qualified.json')
-    for engine in COMPONENTS:
-        _,_,other,_=prepared(engine,generation)
-        shutil.copyfile(Path(str(other)+'.qualified.json'),doc/(engine+'-qualified.json'))
-    shutil.copyfile(R/'tests/fixtures/voice/human/manifest.json',doc/'human-sample-attribution.json')
-    shutil.copyfile(R/'tests/fixtures/voice/human/README.md',doc/'human-samples.md')
-    shutil.copyfile(R/'LICENSE',doc/'MIT')
-    shutil.copyfile(R/'LICENSES/CC-BY-4.0.txt',doc/'CC-BY-4.0')
-    (doc/'copyright').write_bytes((R/'LICENSE').read_bytes()+b'\nQualification documentation:\n'+(R/'LICENSES/CC-BY-4.0.txt').read_bytes())
-    subprocess.run(['python3',str(R/'scripts/build/stage_package.py'),name,version,str(dest),'--architecture','all','--recipe','scripts/build/phase2/voice-install.sh','--depends',', '.join(sorted(depends)),'--install'],cwd=R,check=True)
-    path,record=native_record(name)
-    write_new(Path(str(prefix)+'.catalog-package-installed.json'),{'record_sha256':digest(path),'archive_sha256':record['archive_sha256'],'scope':'Owned optional native artifact/catalog package only; no automatic model consent or audio activation'})
+    command=[sys.executable,str(R/'scripts/build/stage_package.py'),name,version,str(dest),'--architecture','all','--recipe','scripts/build/phase2/voice-install.sh','--depends',', '.join(sorted(depends)),'--install']
+    inputs={'catalog_receipt_sha256':digest(receipt),'catalog_sha256':value['catalog_sha256']}
+    with native_write_audit(prefix,'catalog-package',command,inputs,lease) as audit:
+        write_new(marker,{'state':'install-intended-no-replay','catalog_receipt_sha256':digest(receipt)})
+        target=dest/'usr/share/toddy/voice/catalog.json';target.parent.mkdir(parents=True)
+        shutil.copyfile(source,target)
+        doc=dest/'usr/share/doc'/name;doc.mkdir(parents=True)
+        shutil.copyfile(receipt,doc/'qualification.json')
+        _,work,_,_=prepared(component,generation)
+        shutil.copyfile(work/'process-qualified.json',doc/'process-qualified.json')
+        for engine in COMPONENTS:
+            _,_,other,_=prepared(engine,generation)
+            shutil.copyfile(Path(str(other)+'.qualified.json'),doc/(engine+'-qualified.json'))
+        shutil.copyfile(R/'tests/fixtures/voice/human/manifest.json',doc/'human-sample-attribution.json')
+        shutil.copyfile(R/'tests/fixtures/voice/human/README.md',doc/'human-samples.md')
+        shutil.copyfile(R/'LICENSE',doc/'MIT')
+        shutil.copyfile(R/'LICENSES/CC-BY-4.0.txt',doc/'CC-BY-4.0')
+        (doc/'copyright').write_bytes((R/'LICENSE').read_bytes()+b'\nQualification documentation:\n'+(R/'LICENSES/CC-BY-4.0.txt').read_bytes())
+        result=subprocess.run(command,cwd=R,check=True)
+        audit['command_exit']=result.returncode
+        path,record=native_record(name)
+        audit['postcheck_exit']=0
+        audit['package_record_sha256']=digest(path)
+    write_new(Path(str(prefix)+'.catalog-package-installed.json'),{'record_sha256':digest(path),'archive_sha256':record['archive_sha256'],'native_write_audit_sha256':require_write_audit(prefix,'catalog-package',inputs=inputs,command=command),'scope':'Owned optional native artifact/catalog package only; no automatic model consent or audio activation'})
 
 
 def extras(component,generation):
@@ -365,6 +489,7 @@ def extras(component,generation):
     _,_,prefix,_=prepared(component,generation)
     installed=read(Path(str(prefix)+'.catalog-package-installed.json'));catalog_path,_=native_record('toddy-voice-native-catalog')
     if digest(catalog_path)!=installed['record_sha256']:raise ValueError('voice_catalog_package_changed')
+    if installed.get('native_write_audit_sha256')!=require_write_audit(prefix,'catalog-package',record_sha256=installed['record_sha256']):raise ValueError('voice_catalog_package_write_audit_required')
     packages=[]
     for name in (*COMPONENTS,'toddy-voice','toddy-voice-native-catalog'):
         path,record=native_record(name)
@@ -387,10 +512,10 @@ def main():
     if a.phase in ('build','qualify','check','process'):
         result=globals()[a.phase.replace('-','_')](a.component,a.generation)
     else:
-        with Path('/var/log/toddy/build/build.lock').open('a') as lease:
+        with BUILD_LOCK.open('a') as lease:
             fcntl.flock(lease,fcntl.LOCK_EX|fcntl.LOCK_NB)
             if list(Path('/var/log/toddy/build').glob('*.running.json')):raise ValueError('voice_unreconciled_native_job')
-            result=prepare(a.component,a.generation,T/'sources') if a.phase=='prepare' else globals()[a.phase.replace('-','_')](a.component,a.generation)
+            result=prepare(a.component,a.generation,T/'sources') if a.phase=='prepare' else globals()[a.phase.replace('-','_')](a.component,a.generation,**({'lease':lease} if a.phase in ('install','catalog','catalog-package') else {}))
     if result:print(json.dumps(result,indent=2))
 
 if __name__=='__main__':main()

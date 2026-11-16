@@ -99,6 +99,45 @@ Installed checks hash/mode/owner/link-match the record/archive and run native dp
 and APT consistency checks. Target re-execution uses the actual installed binary.
 A successful unpack alone is insufficient.
 
+## Native write audit and lock boundary
+
+The first engine/model `install`, initial `catalog` file creation and
+`catalog-package` transaction retain the existing `run_step.snapshot` full-root
+build manifest convention (usr/etc/var/tools/lib64/boot; source/build scratch
+remains excluded). These new write recipes have not earned optimized-install
+qualification. Under the **same already-owned global build-lock FD**, the driver
+records immutable intent, full before/after snapshots, sorted add/change/removal
+diff, exact command/interpreter/helper/source-lock pins, actual command exit and
+independent package/catalog postcondition exit. A terminal complete receipt is
+written only after both exits are zero and all snapshot/diff evidence is durable.
+This captures changes after they occur; it does not confine privileged writes.
+Inspect the diff against the package record and declared generated resources;
+final independent image audit and native acceptance remain separate requirements.
+
+The phase prefix receives `.{install,catalog,catalog-package}-audit.` files ending
+in `intent.json`, `before.json`, `after.json`, `manifest.json` and either
+`complete.json` or `failed.json`. A matching global
+`/var/log/toddy/build/voice-COMPONENT-GENERATION.PHASE-audit.running.json` remains
+until a terminal audit is durable. An interrupted snapshot/write leaves its
+intent/running/partial state for inspection and blocks the ordinary dispatcher and
+isolated harness; no guessed-success receipt, automatic removal or replay exists.
+All failed/partial/completed generations are one-shot. Successful package checks,
+process qualification, catalog creation/adoption and extras publication input
+must match the prior successful audit, its command/source pins, package-record
+hash and complete evidence checksums. Missing or changed audit evidence fails
+closed even when dpkg reports installed.
+
+Invoke the documented voice CLI directly. **Do not wrap all voice phases in
+`run_step`**: build, qualify, check and process consumers enter `isolated.sh`, which
+must acquire the same global lock itself. The write audit reuses snapshot/atomic
+write primitives inside the existing write-phase lease; it never recursively
+launches the dispatcher or takes another lock FD. Read-only installed consumers
+keep their own isolation/lock lifecycle. Long healthy full scans are monitored,
+not restarted. No voice preparation has run at this source boundary: synchronize
+the updated driver and common scripts/build helpers before the first prepare so
+its frozen driver/recipe pins are current. Direct and Python isolated-mode script
+execution resolve both reviewed helper directories from `__file__`, not cwd.
+
 ## Actual qualification and catalog boundary
 
 `voice_consumer.py` uses the licensed, attributed human EN/PT WAVs, not synthetic
