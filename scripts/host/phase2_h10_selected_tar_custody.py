@@ -1,4 +1,4 @@
-"""Durable private host gzip custody of one opaque H10 copy tar, then retire it.
+"""Shared private gzip custody for the two fixed historical opaque copy archives.
 
 No tar members are extracted. Complete decompression is streamed into SHA-256,
 so root-owned/setuid payload never appears on an executable host filesystem.
@@ -18,9 +18,19 @@ import phase2_candidate_vm as candidate
 import vm
 
 ROOT=vm.ROOT
-CONTEXT=ROOT/'.local/phase2/h10-selected-tar-custody-1'
+sys.path.insert(0,str(ROOT/'scripts/build/phase2'))
+import opaque_tar_profiles as profiles
 GUEST='/opt/toddy-build/scripts/build/phase2/h10_selected_tar_custody.py'
-SIZE=3731302400
+PROFILE='h10'
+
+
+def configure(name):
+    global PROFILE,CONTEXT,SIZE
+    data=profiles.profile(name);PROFILE=name
+    CONTEXT=ROOT/'.local/phase2'/(name+'-selected-tar-custody-1');SIZE=data['bytes']
+
+
+configure('h10')
 CHUNK=4*1024**2
 
 
@@ -45,23 +55,24 @@ def save(value):
 
 
 def command(action):
-    if action not in ('export','receipt','retire'):raise ValueError('Unknown fixed H10 custody action')
+    if action not in ('export','receipt','retire'):raise ValueError('Unknown fixed opaque custody action')
     ssh=candidate.ssh()
     return [*ssh[:-1],'-o','ServerAliveInterval=15','-o','ServerAliveCountMax=2',ssh[-1],
-        '/usr/bin/python3 '+GUEST+' '+action]
+        '/usr/bin/python3 '+GUEST+' '+(('h11 ' if PROFILE=='h11' else '')+action)]
 
 
-def stream_compress(source,destination,expected_bytes=SIZE):
+def stream_compress(source,destination,expected_bytes=None):
+    if expected_bytes is None:expected_bytes=SIZE
     raw=hashlib.sha256();count=0
     with destination.open('xb') as output:
         os.fchmod(output.fileno(),0o600)
         with gzip.GzipFile(filename='',mode='wb',fileobj=output,compresslevel=1,mtime=0) as compressed:
             while chunk:=source.read(CHUNK):
                 count+=len(chunk)
-                if count>expected_bytes:raise ValueError('Opaque H10 tar exceeds frozen byte count')
+                if count>expected_bytes:raise ValueError('Opaque historical tar exceeds frozen byte count')
                 raw.update(chunk);compressed.write(chunk)
         output.flush();os.fsync(output.fileno())
-    if count!=expected_bytes:raise ValueError('Opaque H10 tar stream incomplete')
+    if count!=expected_bytes:raise ValueError('Opaque historical tar stream incomplete')
     return {'bytes':count,'sha256':raw.hexdigest()}
 
 
@@ -73,10 +84,10 @@ def verify_decompression(archive,expected):
     with gzip.open(archive,'rb') as stream:
         while chunk:=stream.read(CHUNK):
             count+=len(chunk)
-            if count>expected['bytes']:raise ValueError('Opaque H10 decompression exceeds original size')
+            if count>expected['bytes']:raise ValueError('Opaque opaque decompression exceeds original size')
             actual.update(chunk)
     if count!=expected['bytes'] or actual.hexdigest()!=expected['sha256']:
-        raise ValueError('Complete H10 decompression differs from original tar stream')
+        raise ValueError('Complete opaque decompression differs from original tar stream')
     return {'version':1,'state':'complete-decompression-verified','bytes':count,
         'sha256':actual.hexdigest(),'compressed_sha256':digest(archive),'compressed_bytes':info.st_size}
 
@@ -89,11 +100,12 @@ def owned_guest(expected):
 
 def guest_receipt():
     result=subprocess.run(command('receipt'),stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True,timeout=60)
-    if len(result.stdout)>256*1024:raise ValueError('Guest H10 custody receipt size')
+    if len(result.stdout)>256*1024:raise ValueError('Guest opaque custody receipt size')
     return json.loads(result.stdout)
 
 
-def main():
+def main(profile='h10'):
+    configure(profile)
     if sys.argv[1:] or os.geteuid()==0 or ROOT.resolve()!=ROOT:
         raise ValueError('Fixed unprivileged host custody coordinator command required')
     os.umask(0o077)
@@ -103,7 +115,7 @@ def main():
     # Share the existing boot-test lock: no second guest owner during custody.
     with (vm.VM/'native-boot-test.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        if os.path.lexists(CONTEXT):raise ValueError('Preserve existing/uncertain host H10 custody; never replay')
+        if os.path.lexists(CONTEXT):raise ValueError('Preserve existing/uncertain host opaque custody; never replay')
         identity=candidate.owned();candidate.bases()
         reserve=json.loads((ROOT/'config/build-host.lock.json').read_bytes())['host_free_reserve_gib']*1024**3
         space=os.statvfs(parent)
@@ -112,8 +124,10 @@ def main():
         CONTEXT.mkdir(mode=0o700);fsync_directory(parent)
         state={'version':1,'state':'export-intended','candidate_container_id':identity,
             'guest_helper_sha256':digest(ROOT/'scripts/build/phase2/h10_selected_tar_custody.py'),
+            'profile':PROFILE,'profile_source_sha256':digest(Path(profiles.__file__)),
             'host_producer_sha256':digest(Path(__file__)),
-            'scope':'One opaque historical H10 selected-root.tar only; all evidence/logs/ISOs/backings and Phase2 caches retained'}
+            'host_entry_sha256':digest(Path(sys.argv[0]).resolve()),
+            'scope':'One opaque historical '+PROFILE.upper()+' selected-root.tar only; all evidence/logs/ISOs/backings and Phase2 caches retained'}
         save(state)
         partial=CONTEXT/'selected-root.tar.gz.part';archive=CONTEXT/'selected-root.tar.gz'
         with (CONTEXT/'export.log').open('xb') as log:
@@ -121,7 +135,7 @@ def main():
             try:
                 expected=stream_compress(process.stdout,partial)
                 code=process.wait(timeout=60)
-                if code:raise ValueError('Guest H10 export failed; retain partial host custody')
+                if code:raise ValueError('Guest opaque export failed; retain partial host custody')
             finally:
                 process.stdout.close()
                 if process.poll() is None:process.terminate();process.wait(timeout=30)
@@ -129,11 +143,12 @@ def main():
         partial.replace(archive);fsync_directory(CONTEXT)
         owned_guest(identity);guest=guest_receipt()
         if (guest.get('state')!='exported' or guest.get('bytes')!=SIZE or guest.get('sha256')!=expected['sha256'] or
-                guest.get('producer_sha256')!=state['guest_helper_sha256']):
-            raise ValueError('Guest/host original H10 stream custody differs')
+                guest.get('producer_sha256')!=state['guest_helper_sha256'] or guest.get('profile')!=PROFILE or
+                guest.get('profile_source_sha256')!=state['profile_source_sha256']):
+            raise ValueError('Guest/host original opaque stream custody differs')
         with (CONTEXT/'guest-export.json').open('x') as stream:
             stream.write(encoded(guest).decode()+'\n');stream.flush();os.fsync(stream.fileno())
-        proof=verify_decompression(archive,expected)
+        proof=verify_decompression(archive,expected);proof['profile']=PROFILE
         state.update(state='complete-decompression-verified',host_archive=str(archive),
             host_proof=proof,guest_export_sha256=digest(CONTEXT/'guest-export.json'),
             recovery_metadata=guest['source_metadata'],archive_extraction_performed=False,
@@ -155,7 +170,7 @@ def main():
         if len(result.stdout)>256*1024:raise ValueError('Guest retirement receipt size')
         retired=json.loads(result.stdout)
         if retired.get('state')!='complete' or retired.get('sha256')!=expected['sha256'] or retired.get('retired_bytes')!=SIZE:
-            raise ValueError('Guest H10 retirement outcome requires reconciliation')
+            raise ValueError('Guest opaque retirement outcome requires reconciliation')
         owned_guest(identity)
         with (CONTEXT/'guest-retired.json').open('x') as stream:
             stream.write(encoded(retired).decode()+'\n');stream.flush();os.fsync(stream.fileno())

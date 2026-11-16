@@ -55,9 +55,9 @@ class OpaqueCustodyTests(unittest.TestCase):
             root=Path(temporary);artifact=root/'selected-root.tar';artifact.write_bytes(b'fixture')
             retained=root/'report.json';retained.write_text('retained evidence')
             before={'.':{'fixture':'directory'},'copy/selected-root.tar':{'fixture':'tar'},'copy/report.json':{'fixture':'evidence'}}
-            state={'state':'exported','boot_id':'fixture-boot','producer_sha256':'d'*64,'sha256':'a'*64,'evidence_before':before}
+            state={'state':'exported','boot_id':'fixture-boot','producer_sha256':'d'*64,'sha256':'a'*64,'evidence_before':before,'profile':'h10','profile_source_sha256':'d'*64}
             proof={'version':1,'state':'complete-decompression-verified','bytes':guest.SIZE,'sha256':'a'*64,
-                'compressed_sha256':'b'*64,'compressed_bytes':100,'host_receipt_sha256':'c'*64}
+                'compressed_sha256':'b'*64,'compressed_bytes':100,'host_receipt_sha256':'c'*64,'profile':'h10'}
             saved=[]
             def save(value):
                 saved.append(copy.deepcopy(value))
@@ -70,9 +70,9 @@ class OpaqueCustodyTests(unittest.TestCase):
             self.assertEqual(result['measured_reclaimed_bytes'],100)
 
     def test_source_change_or_consumer_stops_before_retirement_intent(self):
-        state={'state':'exported','boot_id':'fixture-boot','producer_sha256':'d'*64,'sha256':'a'*64,'evidence_before':{'fixture':'expected'}}
+        state={'state':'exported','boot_id':'fixture-boot','producer_sha256':'d'*64,'sha256':'a'*64,'evidence_before':{'fixture':'expected'},'profile':'h10','profile_source_sha256':'d'*64}
         proof={'version':1,'state':'complete-decompression-verified','bytes':guest.SIZE,'sha256':'a'*64,
-            'compressed_sha256':'b'*64,'compressed_bytes':100,'host_receipt_sha256':'c'*64}
+            'compressed_sha256':'b'*64,'compressed_bytes':100,'host_receipt_sha256':'c'*64,'profile':'h10'}
         with patch.object(guest,'read_receipt',return_value=state),patch.object(guest,'boot_id',return_value='fixture-boot'),patch.object(guest,'digest',return_value='d'*64),patch.object(guest,'verify',return_value='a'*64),patch.object(guest,'snapshot',return_value={'fixture':'changed'}),patch.object(guest,'save') as save:
             with self.assertRaisesRegex(ValueError,'custody changed'):guest.retire(proof)
             save.assert_not_called()
