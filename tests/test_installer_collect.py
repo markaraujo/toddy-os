@@ -74,6 +74,20 @@ class InstallerCollectTests(unittest.TestCase):
         self.system.probe.assert_called_with('/dev/fixture-disk',require_blank=False)
         self.assertEqual(list(self.inputs.glob('qualification/boot-*')),[])
 
+    def test_live_stream_checks_actual_bytes_without_allocating_native_stage(self):
+        import base64
+        before=(self.journal/'operations.sqlite').read_bytes()
+        with patch.object(c.payload_module(),'available_bytes',return_value=1024) as capacity:
+            result=c.collect_stream(self.plan,self.native,self.system)
+            capacity.assert_not_called()
+        self.assertEqual(result['state'],'actual-evidence-read-only-stream')
+        self.assertEqual(len(result['files']),10);self.assertEqual(list(self.inputs.iterdir()),[])
+        handoff=json.loads(base64.b64decode(result['files']['installed-handoff-'+self.plan['options']['operation_id']+'.json']))
+        self.assertFalse(handoff['production_ready'])
+        for name in c.payload_module().CHECKS:
+            self.assertEqual(base64.b64decode(result['files'][name+'.json']),(self.reportdir/(name+'.json')).read_bytes())
+        self.assertEqual((self.journal/'operations.sqlite').read_bytes(),before)
+
     def test_incomplete_journal_and_missing_report_fail_before_outputs(self):
         db=sqlite3.connect(self.journal/'operations.sqlite');db.execute("UPDATE operations SET state='needs-reconciliation'");db.commit();db.close()
         with self.assertRaisesRegex(InstallError,'completed_exact'):c.collect(self.plan,self.native,self.system)

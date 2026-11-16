@@ -1,0 +1,51 @@
+{
+  "actual_iso_or_input_snapshot_created": false,
+  "actual_virtual_disk_created": false,
+  "boundaries": [
+    "Production composition factory/Polkit/PAM/autologin unchanged",
+    "Actual native input/finalizer/ISO qualification and host xorriso availability remain coordinator prerequisites",
+    "Root must inspect actual serial/planSHA before the first write",
+    "No native proof, boot/authentication pass or B12/G2 completion is inferred from source fixtures"
+  ],
+  "credential_persisted": false,
+  "failure_ledger": [
+    {
+      "cause": "Root-refusal test entered run() umask077 before authorization guard, changing later tests process file modes",
+      "correction": "Move identity refusal before process settings; assert and restore unchanged test umask",
+      "symptom": "Initial broad source suite:12 offline archive fixture errors and1 ownership-mode assertion",
+      "verification": "Final1012-test suite passed"
+    }
+  ],
+  "native_executed": false,
+  "owner_or_archive_private_signing_material_accessed": false,
+  "packaged_runtime_changed": false,
+  "peer_review_corrections": [
+    "Explicit0600 memfd tested by real sealed_json FD validator",
+    "Detached owner boot requires successful actual cold receipt and all original finalizer reports",
+    "Emergency QEMU stop explicitly uncertain; normal cancel waits actual terminal journal result"
+  ],
+  "schema_version": 1,
+  "scope": "Source-only first live-ISO blank-disk controller and private fixture credential bridge; no native install/boot/G2 acceptance",
+  "source_sha256": {
+    "scripts/build/phase2/installer_collect.py": "2bb0c3f1e0cde5919d3207123a3eb02bea29b275ac625c5b15cb007d235cd810",
+    "scripts/host/installed-auth-wait.py": "1d6419c1a6f545beb91a074a619e6d58cfe577ccf671fe9114167d3d46f852b8",
+    "scripts/host/installed_owner_boot.py": "cec88c232f90c4dc548796f6de64ffd2ed8c2883fe2f98138b923c4d287cc74a",
+    "scripts/host/installer-live-probe.py": "aea31d6a648c3bde37768b88cb557bf1db8db65b310ce814563c7b1160e5bd9c",
+    "scripts/host/installer_credential_vault.py": "74c6700f4e0d784d44d79220649d75f77832c6c8ef4488e5caf1a5c684cd2578",
+    "scripts/host/installer_input_snapshot.py": "558c629856ca34f31563c634b55fd95b69d2f55f05968452b80c77851432fbac",
+    "scripts/host/native_installer_live.py": "ec34dbb329d5e03fd494113047ab0e13b771700465789dea826012f226fad4bc"
+  },
+  "validation": {
+    "affected_checks": {
+      "exit": 0,
+      "tests": 34
+    },
+    "diff_check_exit": 0,
+    "full_make_check": {
+      "exit": 0,
+      "seconds": 22.174,
+      "tests": 1012
+    },
+    "planning_checks_exit": 0
+  }
+}

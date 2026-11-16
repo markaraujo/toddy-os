@@ -49,9 +49,33 @@ def validate_handoff(value):
     return value
 
 
+def cold_handoff(handoff_path):
+    """A saved review/handoff alone never authorizes a detached installed boot."""
+    private(SOURCE.parent,True);private(SOURCE);private(handoff_path)
+    cold_path=private(SOURCE.parent/'cold.json');cold=json.loads(cold_path.read_bytes())
+    handoff=validate_handoff(json.loads(handoff_path.read_bytes()))
+    if (cold.get('version')!=1 or cold.get('kind')!='native-live-install-cold-handoff-v1' or cold.get('state')!='cold-completed-install' or
+            cold.get('media_detached') is not True or cold.get('container_final_state',{}).get('Running') is not False or cold.get('container_final_state',{}).get('ExitCode')!=0 or
+            cold.get('handoff_sha256')!=boot.digest(handoff_path) or cold.get('controller_sha256')!=boot.digest(Path(__file__).with_name('native_installer_live.py')) or cold.get('vault_sha256')!=boot.digest(Path(__file__).with_name('installer_credential_vault.py')) or
+            cold.get('disk_identity')!=phase2_vm.backing_identity(SOURCE) or cold.get('disk_ctime_ns')!=SOURCE.stat().st_ctime_ns or cold.get('disk_sha256')!=boot.digest(SOURCE)):
+        raise ValueError('installed_actual_cold_completed_handoff_required')
+    sys.path.insert(0,str(ROOT))
+    from runtime.installer.composition import validate_finalizer_report
+    from runtime.installer.native_finalizer import payload_module
+    p=payload_module();inputs=json.loads(private(SOURCE.parent/'inputs.json').read_bytes())
+    if handoff.get('source_sha256')!=inputs['runtime_source_sha256'] or cold['controller_sha256']!=inputs['producer_sha256'] or cold['vault_sha256']!=inputs['vault_sha256']:raise ValueError('installed_cold_source_binding')
+    if set(handoff.get('finalizer_reports_sha256',{}))!=p.CHECKS:raise ValueError('installed_nine_preserved_reports_required')
+    for name in p.CHECKS:
+        path=private(SOURCE.parent/'evidence'/(name+'.json'))
+        if boot.digest(path)!=handoff['finalizer_reports_sha256'][name]:raise ValueError('installed_finalizer_report_changed')
+        validate_finalizer_report(json.loads(path.read_bytes()),name,inputs['descriptor'])
+    return handoff,cold
+
+
 def payloads(handoff,number,recovery):
     probe=(Path(__file__).with_name('installed-owner-probe.py')).read_bytes()
-    source=('EXPECTED='+repr(handoff)+'\nROUND='+str(number)+'\nRECOVERY='+repr(recovery)+'\n').encode()+probe
+    observer=Path(__file__).with_name('installed-auth-wait.py').read_bytes()
+    source=('EXPECTED='+repr(handoff)+'\nROUND='+str(number)+'\nRECOVERY='+repr(recovery)+'\n').encode()+observer+b'\nstart_auth_wait(EXPECTED,ROUND,RECOVERY)\n'+probe
     return {'systemd.extra-unit.toddy-boot-probe.service':Path(__file__).with_name('desktop-boot-probe.service').read_bytes(),
         'systemd.unit-dropin.multi-user.target':Path(__file__).with_name('boot-probe.target.conf').read_bytes(),
         'toddy.boot-probe':compressed_payload(source)}
@@ -98,13 +122,13 @@ def run(context,number,handoff_path=None):
     storage={'source_allocated_bytes':SOURCE.stat().st_blocks*512,'host_floor_bytes':HOST_FLOOR,'boot_extra_bytes':2*1024**3,
         'write_bytes_per_second':WRITE_BPS,'stop_headroom_bytes':STOP_HEADROOM}
     if not capacity_admitted(shutil.disk_usage(ROOT).free,storage['source_allocated_bytes']):raise ValueError('installed_host_reserve')
-    public_sources={name:boot.digest(Path(__file__).with_name(name)) for name in ('installed-owner-probe.py','desktop-boot-probe.service','boot-probe.target.conf','boot_test.py','phase2_native_glycin.py')}
+    public_sources={name:boot.digest(Path(__file__).with_name(name)) for name in ('installed-owner-probe.py','installed-auth-wait.py','desktop-boot-probe.service','boot-probe.target.conf','boot_test.py','phase2_native_glycin.py')}
     image=subprocess.check_output(['docker','image','inspect','--format','{{.Id}}',vm.IMAGE],text=True).strip()
     if number==1:
         if context.exists() or context.is_symlink():raise ValueError('installed_existing_context_no_replay')
         private(SOURCE.parent,True);private(SOURCE)
-        private(handoff_path);handoff=validate_handoff(json.loads(handoff_path.read_bytes()))
-        source={'identity':phase2_vm.backing_identity(SOURCE),'sha256':boot.digest(SOURCE)}
+        handoff,cold=cold_handoff(handoff_path)
+        source={'identity':phase2_vm.backing_identity(SOURCE),'sha256':cold['disk_sha256']}
         context.mkdir(mode=0o700);save(context/'handoff.json',handoff)
         save(context/'inputs.json',{'source':source,'handoff_sha256':boot.digest(context/'handoff.json'),'accepted':baseline,'producer_sha256':boot.digest(Path(__file__)),'public_sources':public_sources,'container_image':image})
     else:
@@ -114,8 +138,9 @@ def run(context,number,handoff_path=None):
         if (context/('intent-'+str(number)+'.json')).exists():raise ValueError('installed_round_uncertain_no_replay')
     private(SOURCE.parent,True);private(SOURCE)
     inputs=json.loads((context/'inputs.json').read_bytes());handoff=validate_handoff(json.loads((context/'handoff.json').read_bytes()))
+    if number>1:handoff,cold=cold_handoff(context/'handoff.json')
     if (inputs['accepted']!=baseline or inputs['handoff_sha256']!=boot.digest(context/'handoff.json') or
-            inputs['producer_sha256']!=boot.digest(Path(__file__)) or phase2_vm.backing_identity(SOURCE)!=inputs['source']['identity'] or boot.digest(SOURCE)!=inputs['source']['sha256']):raise ValueError('installed_cold_inputs_changed')
+            inputs['producer_sha256']!=boot.digest(Path(__file__)) or phase2_vm.backing_identity(SOURCE)!=inputs['source']['identity'] or cold['disk_sha256']!=inputs['source']['sha256']):raise ValueError('installed_cold_inputs_changed')
     if inputs['public_sources']!=public_sources or inputs['container_image']!=image:raise ValueError('installed_observer_or_runtime_changed')
     common=['--user',f'{os.getuid()}:{os.getgid()}','--cap-drop=ALL','--security-opt=no-new-privileges','--network=none','--read-only',
         '-v',f'{SOURCE}:/installed/source.qcow2:ro','-v',f'{context}:/work']
@@ -135,7 +160,7 @@ def run(context,number,handoff_path=None):
     args=qemu(handoff,number,number==3);run_id=uuid.uuid4().hex
     command=['docker','create','--name','toddy-installed-'+run_id[:12],'--label','toddy.boot-test='+run_id,*common,
         '--device','/dev/kvm','--group-add',str(Path('/dev/kvm').stat().st_gid),'--memory','5g','--cpus','2',image,*args]
-    save(context/('intent-'+str(number)+'.json'),{'round':number,'run_id':run_id,'command':command,'source':inputs['source'],'recovery':number==3,'storage':storage,'intent_time_ns':time.time_ns()})
+    save(context/('intent-'+str(number)+'.json'),{'round':number,'run_id':run_id,'command':command,'source':inputs['source'],'recovery':number==3,'storage':storage,'overlay_pin':{key:value for key,value in phase2_vm.backing_identity(context/'target.qcow2').items() if key in ('device','inode')},'intent_time_ns':time.time_ns()})
     cid=subprocess.check_output(command,text=True).strip();save(context/'active.json',{'container_id':cid,'run_id':run_id,'round':number})
     try:
         subprocess.run(['docker','start',cid],check=True,stdout=subprocess.DEVNULL)

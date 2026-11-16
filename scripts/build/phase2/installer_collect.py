@@ -4,6 +4,7 @@ Source-only root operator tool. It never installs, mounts, boots, retries an
 operation, or fabricates detached boot/login/recovery qualification.
 """
 import argparse
+import base64
 import fcntl
 import hashlib
 import os
@@ -75,7 +76,7 @@ def write_new(path,data):
     finally:os.close(directory)
 
 
-def collect(plan,inputs,system):
+def _collect(plan,inputs,system,*,stream_only):
     p=payload_module();plan=validate_plan(plan);system.require_root();inputs.recheck()
     manifest=inputs.manifest;descriptor=inputs.descriptor
     expected_payload={'sha256':descriptor['payload_manifest_sha256'],'catalog_sha256':manifest['catalog_sha256'],'bytes':manifest['bytes']}
@@ -121,7 +122,17 @@ def collect(plan,inputs,system):
             'source_sha256':sources,'finalizer_reports_sha256':hashes,'payload_storage':manifest.get('storage'),
             'producer_sha256':p.digest(Path(__file__)),'detached_boots_collected':0,
             'fresh_owner_login_verified':False,'recovery_verified':False,'production_ready':False}
-        data=p.encoded(handoff);destination=INPUTS/'qualification'
+        data=p.encoded(handoff)
+        if stream_only:
+            # Read-only live export: no source-stage storage allocation/reserve is
+            # asserted for a RAM overlay. The host independently admits/custodies
+            # the exact original bytes under its unchanged100GiB reserve.
+            inputs.recheck()
+            files={name+'.json':body for name,body in reports.items()}
+            files['installed-handoff-'+plan['options']['operation_id']+'.json']=data
+            if sum(map(len,files.values()))>8*1024**2:raise InstallError('installer_collect_stream_limit')
+            return {'state':'actual-evidence-read-only-stream','files':{name:base64.b64encode(body).decode() for name,body in files.items()}}
+        destination=INPUTS/'qualification'
         if destination.exists():private_directory(destination)
         elif destination.is_symlink():raise InstallError('installer_collect_redirected_qualification')
         for name,body in reports.items():
@@ -143,13 +154,20 @@ def collect(plan,inputs,system):
     finally:os.close(lock)
 
 
+def collect(plan,inputs,system):return _collect(plan,inputs,system,stream_only=False)
+
+def collect_stream(plan,inputs,system):return _collect(plan,inputs,system,stream_only=True)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--review',required=True,type=Path,help='Actual saved review envelope; contains no credential')
+    parser.add_argument('--stream',action='store_true',help='Read-only actual bytes to private operator transport; creates no files')
     args=parser.parse_args()
     if os.getuid()!=0 or os.geteuid()!=0:raise InstallError('installer_collect_root_coordinator_required')
     os.umask(0o077)
-    print(payload_module().encoded(collect(read_review(args.review),NativeInputs(),LinuxDisk())).decode(),end='')
+    operation=collect_stream if args.stream else collect
+    print(payload_module().encoded(operation(read_review(args.review),NativeInputs(),LinuxDisk())).decode(),end='')
 
 
 if __name__=='__main__':main()
