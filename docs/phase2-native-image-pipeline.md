@@ -171,3 +171,37 @@ commands. These actions require that reviewed recipe source to be present; their
 output remains a candidate for owner/coordinator source review. Do not run the
 production finalizer over a candidate already modified by resource qualification;
 reviewed expected outputs must drive a separate fresh generation.
+
+## Fixed native media phases
+
+The new `image_media.py` coordinator consumes a real completed B12 final assembly
+journal at `/mnt/lfs/sources/stage/toddy-live-image-2/evidence/assembly.json`.
+That journal must bind the current `image_assemble.py` producer, actual complete
+snapshot and its exact image root. The current candidate-unpack command does not
+produce it: generation-2 finalizer/live-session integration is still required.
+Missing evidence fails before a media generation is created.
+
+After that prerequisite, run these fixed commands sequentially in the builder:
+
+```sh
+python3 /opt/toddy-build/scripts/build/phase2/image_media.py compress
+python3 /opt/toddy-build/scripts/build/phase2/image_media.py initramfs
+python3 /opt/toddy-build/scripts/build/phase2/image_media.py iso
+```
+
+Each acquires the existing build lock and target guards. Compression binds the
+new actual assembly journal to H10 native compression/extraction/ACL evidence.
+The initramfs phase uses unchanged reviewed early-live scripts and H10 native
+newc/gzip verification. ISO construction uses the same verified root generation,
+minimal initramfs and source-owned kernel; native tool versions and archive/record
+hashes come from the current live projection, including the actual kernel package
+revision rather than H11's historical version constant. BIOS/UEFI GRUB/FAT/ISO
+readback reuse the unchanged H11 component, and `SHA256SUMS` is written only after
+all native inputs are rechecked.
+
+Fixed new generations are `toddy-live-compression-1`, `toddy-live-initramfs-1`
+and `toddy-release-media-1`; existing/failed generations are preserved. The ISO
+phase reserves 16 GiB plus three copies of its input bytes plus 2 GiB. These
+commands do not partition disks, invoke QEMU or qualify kernel execution. Their
+result explicitly retains pending actual BIOS/UEFI live and blank-disk installer
+qualification, final source/license/privacy audit and physical owner testing.
