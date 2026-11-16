@@ -272,6 +272,24 @@ class AsyncClientPolicyTests(unittest.TestCase):
         self.assertIsNone(client.profile_stage)
         self.assertEqual(client.profile_status,'editing')
 
+    def test_equal_text_cursor_signal_fetches_finalization_until_cleanup_requested(self):
+        from unittest import mock
+        from runtime.ui.task_state import TaskText
+        client=self.client()
+        client.owner=':1.10'
+        client.state.task_id='task-example'
+        client.text=TaskText('task-example')
+        client.text.sequence=3
+        client.refresh_text=mock.Mock()
+        parameters=mock.Mock()
+        parameters.unpack.return_value=('task-example',3)
+        client._text_signal(None,':1.10',None,None,None,parameters)
+        client.refresh_text.assert_called_once()
+        client.text.cleanup_requested=True
+        client.refresh_text.reset_mock()
+        client._text_signal(None,':1.10',None,None,None,parameters)
+        client.refresh_text.assert_not_called()
+
     def test_old_task_text_reply_cannot_clear_a_new_task_fetch_or_append_text(self):
         import json
         from runtime.ui.task_state import TaskText

@@ -260,7 +260,8 @@ class TaskClient:
         if sender!=self.owner or self.state.task_id is None:
             return
         task_id,sequence=parameters.unpack()
-        if task_id==self.state.task_id and (self.text is None or sequence>self.text.sequence):
+        if task_id==self.state.task_id and (self.text is None or
+                (not self.text.cleanup_requested and sequence>=self.text.sequence)):
             self.refresh_text()
 
     def refresh_profile(self):
