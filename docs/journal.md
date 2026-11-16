@@ -4204,3 +4204,18 @@ stop boundary; no later story resumed. Planning progress reports now honor this
 later owner hold without erasing original Phase2 approval; focused regression added.
 See [delivery](B02-DESKTOP-DELIVERY.md), [criterion audit](evidence/B02-acceptance.json)
 and [stop/cold checkpoint](evidence/B02-completion-stop.json).
+
+### Owner resumes parallel Phase2; native executor control — 2026-11-16
+
+ADR-0229 records explicit owner resumption/max parallel source preparation, one
+coordinator/guest writer. B04 resumed; accepted B01/B02/B03 remain23%, G2 pending.
+Native-control1 passed14 system-bus/PAM/grant/revoke/service/network/cgroup-loss
+checks. Owner-lifecycle4 passed6 active-default-policy/session/native fixture
+package upgrade/restart/duplicate/revoke/logout/removal stages. Failed owner1/2/3
+fixtures remain explicit; original backing disks unchanged and all native jobs
+stopped. Final broker routing/package integration still pending, no B04 closure.
+Independent source commits add atomic profile revisions/task pins, private deferred
+setup intent, canonical SQLite/FTS memory and durable quiet deterministic schedules
+with host crash/no-replay tests. These do not bypass prerequisites or claim native
+B05/B07/B08 acceptance. Continue the current slice and reconcile real jobs before
+any next guest write; never replay old contexts. No Phase2 ISO/physical/G2 claim.

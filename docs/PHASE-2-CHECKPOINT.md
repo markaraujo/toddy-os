@@ -24,9 +24,13 @@ unchanged; [evidence](evidence/B04-native-control.json). No guest writer remains
 Never replay generation1. The source-stage root service actually handled owner
 PAM grant/revoke, wrong password/auth cancellation, structured systemd/network,
 config/duplicate/wrong-UID and detached-child cgroup loss/restart/no replay.
-Next: qualify the fixed helper with default active local policy/session grants
-and native package install/upgrade lifecycle in a NEW context. Unprivileged
-broker routing remains due. B04 is incomplete; no G2/ISO claim.
+Owner-lifecycle4 also passed all6 stages: trusted root-created PAM/logind local
+session, default active Polkit real password grant/revoke, session-bound IPC,
+native fixture package upgrade/restart/duplicate retention, logout mismatch and
+remove/ephemeral-user cleanup. Failed1/2/3 retained, original backing unchanged.
+Next: finish authenticated unprivileged broker routing and controlled final
+package recipe/metadata. Profile/memory/scheduler/setup source preparation is
+integrated; real service and native component proofs remain due. B04 is incomplete; no G2/ISO claim.
 
 ## Last verified runtime and jobs
 

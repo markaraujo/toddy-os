@@ -540,7 +540,8 @@
         "docs/evidence/B04-policy-core.json",
         "docs/evidence/B04-native-executor.json",
         "docs/evidence/B04-user-tools.json",
-        "docs/evidence/B04-native-control.json"
+        "docs/evidence/B04-native-control.json",
+        "docs/evidence/B04-native-owner-lifecycle.json"
       ]
     },
     {
