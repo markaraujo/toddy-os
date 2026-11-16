@@ -39,7 +39,7 @@ python3 /opt/toddy-build/scripts/build/phase2/job.py qtbase-wayland-2 \
   /mnt/lfs/sources/phase2/work/qtbase-wayland-2 bash /src/toddy-build.sh
 python3 /opt/toddy-build/scripts/build/phase2/qtbase_wayland_native.py qualify
 cd /opt/toddy-build/scripts/build
-python3 run_step.py b12-qtbase-wayland-install-2 \
+python3 run_step.py b12-qtbase-wayland-install-3 \
   phase2/qtbase-wayland-install.sh phase2/qtbase-wayland-check.sh --user root
 ```
 
@@ -69,12 +69,12 @@ foreign package conflicts before Dpkg. There is no `--force-overwrite`, duplicat
 Qt package, arbitrary command, framework switch or source version bump.
 
 The normal full-root native run_step record remains authoritative. The separate
-`qtbase-wayland-install-2.json` records intent before the native transaction;
+`qtbase-wayland-install-3.json` records intent before the native transaction;
 postcheck verifies package status/Depends, installed raster features, existing
 Svg/Linguist behavior and unchanged old package/record custody. If an installed
 Calamares binary exists its offscreen `--version` is checked, but that is not
 plugin/graphical qualification. Tests retain outputs in target
-`/tmp/toddy-qtbase-wayland-postcheck-2`; do not copy owner runtime secrets there.
+`/tmp/toddy-qtbase-wayland-postcheck-3`; do not copy owner runtime secrets there.
 
 ## Failure, rollback and remaining gates
 
@@ -113,8 +113,25 @@ FreeType2.14.3 package's metadata version), not a requested dependency upgrade.
 
 The corrected controller uses only attempt2 aliases, source-2/work-2/promotion-2
 on the SAME /mnt/toddy-qt-raster-1 volume, prepared/job/install/postcheck2 names
-and b12-qtbase-wayland-install-2 dispatcher identity. Original source/work aliases,
+and b12-qtbase-wayland-install-3 dispatcher identity. Original source/work aliases,
 scratch source/work directories, job1 configure output and all first-attempt
 receipts remain untouched and cannot satisfy attempt2 qualification. Existing
 attempt2 paths still cause refusal; no cleanup/replay is performed. This source
 correction has not compiled or installed Qt and grants no GUI/installer acceptance.
+
+
+## Install-only attempt 3
+
+Native install attempt 2 stopped before the package transaction: the ELF ownership
+check found `libstdc++.so.6` and `libgcc_s.so.1` owned by
+`gcc-runtime (= 16.2.0-1+toddy1)`. Declaring the compiler package did not declare
+that separate runtime provider. The dependency now includes the exact provider.
+
+Reuse the successful attempt 2 source, work, prepared receipt and job result.
+Do not run `prepare` or compile again. Run `qualify`, then the dispatcher command
+above with the new install-3 identity. Only installation paths change:
+`phase2-qtbase-wayland-install-3`, scratch `promotion-install-3`, install receipt
+`qtbase-wayland-install-3.json`, and postcheck temporary directory 3. Preserve
+failed promotion/stage 2 and all earlier receipts. No package write was observed
+in attempt 2; attempt 3 still independently verifies the package state, complete
+direct ELF providers and capacity before starting the native transaction.

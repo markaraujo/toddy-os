@@ -17,11 +17,11 @@ BASE = Path('/mnt/toddy-qt-raster-1')
 LOG = Path('/var/log/toddy/phase2')
 SOURCE = TARGET / 'sources/phase2/inputs/qtbase-wayland-6.11.2-2'
 WORK = TARGET / 'sources/phase2/work/qtbase-wayland-2'
-STAGE = TARGET / 'sources/stage/phase2-qtbase-wayland-2'
+STAGE = TARGET / 'sources/stage/phase2-qtbase-wayland-install-3'
 PREPARED = LOG / 'qtbase-wayland-prepared-2.json'
 HOLDER = BASE / 'source-2'
 SCRATCH_WORK = BASE / 'work-2'
-PROMOTION = BASE / 'promotion-2'
+PROMOTION = BASE / 'promotion-install-3'
 VERSION = '6.11.2-1+toddy2'
 OLD_VERSION = '6.11.2-1+toddy1'
 SHA = '5b2e00eccaf5a4d8c14134ffa0ea8dfd0a35ae1ffc7f8d87fa4305a1ed23cf22'
@@ -29,7 +29,7 @@ ARCHIVE = 'qtbase-everywhere-src-6.11.2.tar.xz'
 SCRIPTS = {'toddy-build.sh': 'qtbase-wayland-raster-build.sh',
            'toddy-qt-probe.cpp': 'qtbase-wayland-probe.cpp',
            'toddy-qt-inspect.py': 'qt_wayland_inspect.py', 'verify_stage.py': 'verify_stage.py'}
-DEPENDS = ('glibc (>= 2.44-1), gcc (>= 16.2.0-1), dbus (>= 1.16.2-1), '
+DEPENDS = ('glibc (>= 2.44-1), gcc (>= 16.2.0-1), gcc-runtime (= 16.2.0-1+toddy1), dbus (>= 1.16.2-1), '
     'openssl (>= 4.0.3-1), zlib (>= 1.3.2-1), zstd (>= 1.5.7-1), '
     'glib (>= 2.88.3-1+toddy2), systemd (>= 261.2-1), '
     'wayland (= 1.26.0-1+toddy1), libxkbcommon (= 1.13.2-1+toddy1), '
@@ -209,8 +209,8 @@ def payload_bound(stage):
 
 
 def transaction(phase):
-    record = json.loads((LOG.parent/'build/b12-qtbase-wayland-install-2.running.json').read_text())
-    assert record['step'] == 'b12-qtbase-wayland-install-2' and record['user'] == 'root'
+    record = json.loads((LOG.parent/'build/b12-qtbase-wayland-install-3.running.json').read_text())
+    assert record['step'] == 'b12-qtbase-wayland-install-3' and record['user'] == 'root'
     assert record['recipe_sha256'] == digest(ROOT/'scripts/build/phase2/qtbase-wayland-install.sh')
     assert record['postcheck_sha256'] == digest(ROOT/'scripts/build/phase2/qtbase-wayland-check.sh')
     if phase == 'install':
@@ -240,7 +240,7 @@ def install():
     state = {'state':'install-intended', 'version':VERSION, 'source_sha256':SHA, 'before':prepared['before'],
              'stage_manifest_sha256':static['stage_manifest_sha256'], 'closure':closure,
              'target_required_bytes':required_target_bytes}
-    receipt = LOG/'qtbase-wayland-install-2.json'
+    receipt = LOG/'qtbase-wayland-install-3.json'
     assert not receipt.exists(); save(receipt, state)
     subprocess.run([sys.executable, str(ROOT/'scripts/build/stage_package.py'), 'qtbase', VERSION, str(STAGE),
         '--source', ARCHIVE, '--recipe', 'scripts/build/phase2/qtbase-wayland-install.sh', '--depends', DEPENDS,
@@ -253,7 +253,7 @@ def install():
 def postcheck():
     transaction('postcheck')
     from qt_wayland_inspect import inspect
-    receipt = LOG/'qtbase-wayland-install-2.json'
+    receipt = LOG/'qtbase-wayland-install-3.json'
     state = json.loads(receipt.read_text()); assert state['state'] == 'native-installed-checks-pending'
     assert not inspect(TARGET)['qtbase_rebuild_required']
     current = package_state(); assert current['qtbase']['version'] == VERSION
@@ -265,12 +265,12 @@ def postcheck():
         assert digest(Path('/var/cache/toddy/packages')/(old+'.deb')) == before['archive_sha256']
     assert native('/usr/bin/dpkg', '--audit') == ''
     native('/usr/bin/apt-get', 'check')
-    probe = TARGET/'tmp/toddy-qtbase-wayland-postcheck-2'
+    probe = TARGET/'tmp/toddy-qtbase-wayland-postcheck-3'
     assert not probe.exists(); probe.mkdir(mode=0o700)
     shutil.copyfile(ROOT/'scripts/build/phase2/qtbase-wayland-probe.cpp', probe/'probe.cpp')
     # Fixed source-controlled private offscreen test; no inherited owner bus.
     commands = r"""set -euo pipefail
-cd /tmp/toddy-qtbase-wayland-postcheck-2
+cd /tmp/toddy-qtbase-wayland-postcheck-3
 c++ -std=c++17 probe.cpp $(pkg-config --cflags --libs Qt6Widgets Qt6Network Qt6DBus Qt6Concurrent Qt6Svg) -o probe
 QT_QPA_PLATFORM=offscreen dbus-run-session -- ./probe > consumer.log
 lrelease -version > linguist.log 2>&1
