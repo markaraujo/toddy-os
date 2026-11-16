@@ -67,7 +67,7 @@ def original_source_provenance(component, record, *, repository=ROOT, target=TAR
             if (row['name'] == component['name'] and not row.get('sources') and
                     row.get('component_record_sha256') == component['component_record_sha256']):
                 return 'committed-original-record'
-    if component['name'] not in {'toddy-assistant', 'toddy-branding', 'toddy-installer', 'calamares-branding-toddy', 'toddy-agent', 'toddy-executor', 'toddy-desktop-defaults'}:
+    if component['name'] not in {'toddy-assistant', 'toddy-branding', 'toddy-installer', 'calamares-branding-toddy', 'toddy-agent', 'toddy-executor', 'toddy-desktop-defaults', 'toddy-voice', 'toddy-integrations', 'toddy-voice-native-catalog'}:
         raise ValueError('Unreviewed original package identity')
     supporting = record.get('supporting_build_scripts', {})
     files = supporting.get('files')
@@ -77,6 +77,9 @@ def original_source_provenance(component, record, *, repository=ROOT, target=TAR
     canonical = json.dumps(files, sort_keys=True, separators=(',', ':')).encode()
     if hashlib.sha256(canonical).hexdigest() != supporting.get('sha256') or component['recipe_sha256'] not in files.values() or record.get('packager_sha256') not in files.values():
         raise ValueError('Original recipe closure integrity')
+    if component['name'] == 'toddy-voice-native-catalog':
+        from voice_catalog_provenance import verify_catalog_provenance
+        return verify_catalog_provenance(component, record, repository=repository, target=target)
     virtual = '/usr/share/doc/' + component['name'] + '/source-manifest.json'
     expected = record['payload'].get(virtual, {}).get('sha256')
     manifest_path = payload.regular(target/virtual.lstrip('/'))
