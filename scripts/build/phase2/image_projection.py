@@ -184,7 +184,7 @@ def main():
     if sys.argv[1:] not in ([], ['--mvp']) or os.getuid() != 0 or os.geteuid() != 0 or Path(__file__).resolve() != ROOT/'scripts/build/phase2/image_projection.py':
         raise ValueError('Fixed coordinator-only designated-builder command')
     mvp = sys.argv[1:] == ['--mvp']
-    output = TARGET / 'sources/stage/toddy-mvp-image-projection-2' if mvp else OUTPUT
+    output = TARGET / 'sources/stage/toddy-mvp-image-projection-3' if mvp else OUTPUT
     profile_name = 'config/phase2/mvp-desktop-runtime-roots.json' if mvp else 'config/phase2/desktop-runtime-roots.json'
     os.umask(0o077)
     subprocess.run(['/usr/bin/bash', '-c',

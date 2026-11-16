@@ -484,7 +484,7 @@ bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-mvp-initramfs
 bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-mvp-iso
 ```
 
-The current projection is `toddy-mvp-image-projection-2`; input directories are
+The current projection is `toddy-mvp-image-projection-3`; input directories are
 `toddy-mvp-installer-native-inputs` and `toddy-mvp-live-native-inputs`. Candidate
 and fresh reviewed directories are `toddy-mvp-offline-image-{1,2}` and
 `toddy-mvp-live-image-{1,2}`. Reviewed root names `mvp-offline-root-2` and
@@ -580,3 +580,17 @@ revision2 evidence; do not overwrite or reinterpret them after a package upgrade
 Export/sign/verify the actual new closure before invoking MVP prepare actions.
 The earlier export3 staging commands in this guide describe the preserved prior
 checkpoint, not authorization to place export4 signatures in export3.
+
+## Current coherent runtime revision: installer6 / projection3 / export5
+
+The full host-to-builder runtime coherence correction supersedes the previous
+installer5 input checkpoint. After controlled source sync and root34-file proof,
+actual native installer6/version4 is required. The fixed MVP projection command
+now writes only `toddy-mvp-image-projection-3`; MVP input preparation and media
+consume that projection and fresh signed `toddy-package-export-5`. Standard
+projection2/export2 are unchanged. Prior actual MVP projection2/export4 and all
+package/signature/source receipts remain immutable historical evidence. Do not
+retarget earlier fixed asset/signature helpers or overwrite an old signed index.
+MVP input directories are still required to be wholly fresh; no image bundle is
+reinterpreted across the runtime byte correction. No cache policy is changed by
+these path constants.

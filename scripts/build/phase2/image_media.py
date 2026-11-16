@@ -51,7 +51,7 @@ def configure_mvp(installer=False):
     COMPRESSION=STAGE/'toddy-mvp-live-compression-1'
     INITRAMFS=STAGE/'toddy-mvp-live-initramfs-1'
     MEDIA=STAGE/'toddy-mvp-release-media-1'
-    PROJECTION=STAGE/'toddy-mvp-image-projection-2/live-projection.json'
+    PROJECTION=STAGE/'toddy-mvp-image-projection-3/live-projection.json'
     if installer:
         JOURNAL=STAGE/'toddy-mvp-live-image-2/evidence-installer/assembly.json'
         COMPRESSION=STAGE/'toddy-mvp-live-installer-compression-1'
