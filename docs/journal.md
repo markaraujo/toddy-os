@@ -4364,3 +4364,30 @@ Source fixes preserve original failures and require a coherent fresh2 cohort.
 Public repository workflows for075cbe4all passed; deployed index matches generated
 SHA2565b5fbcbaafd179ecab9c602a1858804cef8f7e6eec85de84a1e504b4ff25dafa.
 This is checkpoint delivery, not a Phase2 ISO, G2 pass or later-story acceptance.
+
+
+## 2026-11-16 — Real bilingual voice inference and builder receipt protection
+
+The coherent native2 voice source correction passed eSpeak compile/original CTest,
+EN/PT file synthesis, strict ELF qualification and native install/audit/check0.
+Whisper native2 compiled and transcribed the attributed human EN/PT samples with
+zero measured word error; wall times3.220s/3.020s and peakRSS290424/290160KiB.
+Native Whisper installation/audit and independent installed inference/check
+passed0. These are short fixed file regressions, not device/intelligibility
+or B09 acceptance. Failed native1 paths remain retained.
+
+Strict receipt ancestry checking found the dedicated Ubuntu builder's /var/log
+was root:syslog0775. A guarded exclusive one-shot operation retained before/intent/
+complete metadata and changed only that builder directory to0755. The target
+product image was unchanged; the subsequent eSpeak independent check passed
+without reinstall. [Receipt](evidence/B09-builder-log-parent-hardening.json).
+This does not relax the voice regular-file/ownership guard.
+
+
+All three native2 voice components are now installed/audited/independently checked0.
+The combined process qualifier passed four actual process tests but failed at
+transport because the original auto_features-disabled PipeWire profile omitted
+pw-cat. Its failure remains recorded; no combined voice/device acceptance follows.
+Source work prepares a payload-preserving same-upstream PipeWire tools upgrade and
+an explicit new read-only reconciliation, preserving completed engine installs.
+Current repository delivery check978tests/21.497s passed.

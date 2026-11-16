@@ -56,9 +56,15 @@ Immediate native queue (one guest/package writer):
    `.local/phase2/runtime.json` and actual guest markers govern continuation.
    Next: inspect projection1 and actual storage bounds; finish coherent voice
    native2 cohort, then combined actual native assistant desktop qualification.
-   eSpeak1 compiled/tests0 but failed strict /usr/lib RUNPATH check; Whisper1
-   compiled then failed nonexistent ggml/LICENSE staging. Preserve both; source
-   corrections/fresh2 required. No native voice engines were installed.
+   eSpeak1 RUNPATH and Whisper1 nonexistent-license failures remain retained.
+   Corrected coherent native2 engines/model installed/audited/checked0; real
+   attributed EN/PT inference WER0, about3s/sample. [Proof](evidence/B09-native-engine-files.json).
+   Process2 four tests0 but combined transport failed: original PipeWire profile
+   lacks pw-cat. No replay/reinstall; same-frozen PipeWire2 tools upgrade and new
+   honest process/catalog reconciliation are pending source/native work.
+   Projection1 offline/live root bounds6,129,459,200/6,264,504,320B exceed current
+   stage admission; candidate-only180→204GiB growth source under review, no
+   actual disk growth yet. Keep16GiB target/100GiB host reserves.
 
 Owner requested process/parallelism improvements2026-11-16. Keep three source
 workers continuously assigned to independent commits. New Qt/voice build recipes

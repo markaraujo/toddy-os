@@ -1,0 +1,490 @@
+{
+  "schema_version": 1,
+  "scope": "Actual native voice engines/model and fixed bilingual file consumers only; failed process transport, PTT/device/GNOME/quality and B09 acceptance remain pending",
+  "generation": "native2",
+  "components": {
+    "espeak-ng": {
+      "prepared.json": {
+        "sha256": "239233a207dfc16167d4de1d36c15848e31b5a0c409c676a65556e9c4efb49f4",
+        "value": {
+          "component": "espeak-ng",
+          "generation": "native2",
+          "version": "1.52.0-1+toddy1",
+          "input": {
+            "id": "espeak-source",
+            "url": "https://codeload.github.com/espeak-ng/espeak-ng/tar.gz/4870adfa25b1a32b4361592f1be8a40337c58d6c",
+            "filename": "espeak-source.tar.gz",
+            "size": 17747711,
+            "sha256": "cd83f84c4e495f281ac14e919aecf2834306ec1ea1b498de8ef6000f3a0f90de"
+          },
+          "correction": {
+            "path": "cmake/deps.cmake",
+            "before_sha256": "4423d516710eacc4f9d8d1fe8090d6ddc6874452362af4374e2ff3f51a35dea5",
+            "after_sha256": "c6072677ce1d91eae93ebc4f2bd22ca94f15368cc14e1145f229429240fa0de0"
+          },
+          "recipe_sha256": "c05ff794ec1c51bf9664471e6ede367f442670f71d44993e17c0ab3c5f6f5620",
+          "driver_sha256": "5a1dc85c634e2c54edad42f94c7222ef5fba56331aadc5efbb849178474c6dee",
+          "harness_sha256": "84aa98d4500de7309aa4737c560aebcfe598dc962fcf79057c9e94a1aae99c0b",
+          "source_manifest_sha256": "4b189cfd2bcd75c3c87ece89d87415b7d02f5413eb43045aef4f4c4a2393e0b6",
+          "scope": "Prepared only; no native or audio acceptance"
+        }
+      },
+      "qualified.json": {
+        "sha256": "84758b4f8391974a2b079cfc4e0da4f3fc3a3e5bdaa06280a844454302bfee83",
+        "value": {
+          "component": "espeak-ng",
+          "version": "1.52.0-1+toddy1",
+          "prepared_sha256": "239233a207dfc16167d4de1d36c15848e31b5a0c409c676a65556e9c4efb49f4",
+          "stage_manifest_sha256": "19ef0e812f56ba78ff0827a4db60caea805e35b87363fa34e6f178c26eb3daf7",
+          "dependencies": {
+            "needed": [
+              "libstdc++.so.6",
+              "libm.so.6",
+              "libgcc_s.so.1",
+              "libc.so.6"
+            ],
+            "providers": {
+              "glibc": "2.44-1+toddy1",
+              "gcc-runtime": "16.2.0-1+toddy1"
+            }
+          },
+          "legal_documents": {
+            "COPYING": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+          },
+          "consumer": {
+            "scope": "Actual isolated UID101 file-only engine execution; no device/playback/GNOME quality claim",
+            "component": "espeak-ng",
+            "samples": {
+              "en": {
+                "wall_seconds": 0.007547532999524265,
+                "engine_seconds": 0.0,
+                "peak_rss_kib": 5760,
+                "wav_sha256": "53802ef9b3091b0b25843b337d0a2d0ec8d9a304b1790fc1359dd03d17dbe01f",
+                "text": "The quick brown fox jumps over the lazy dog.",
+                "voice": "en-us"
+              },
+              "pt-BR": {
+                "wall_seconds": 0.007539115000327001,
+                "engine_seconds": 0.0,
+                "peak_rss_kib": 5632,
+                "wav_sha256": "cc6edbce40f787c6ee5a4c60c603c11c096a8d62d4d6915f1d7c0869052798e0",
+                "text": "Onde fica o banheiro?",
+                "voice": "pt-br"
+              }
+            }
+          },
+          "scope": "Native engine/file-only or model data qualification; no microphone/playback/GNOME acceptance"
+        }
+      },
+      "installed.json": {
+        "sha256": "33653da5b6eb06d7da91d43cb50923557982a7e20bbd9ad8aea06b9ae9fd09fa",
+        "value": {
+          "record_sha256": "36de37f16d1f92ec6b5bddc80df953a847567cd577ec7ef687df4c2f2763619c",
+          "archive_sha256": "2d5d0d3951a0c0911e925f4b7f6d4e825fc1b6746bd9d1241649a578993ab4bd",
+          "native_write_audit_sha256": "1e5df8f8e59af4144db92dfeaa991810dcc4034b47a6350fada9a84ad5f5ce75",
+          "scope": "Native transaction and installed payload verified; final independent check still required"
+        }
+      },
+      "checked.json": {
+        "sha256": "b7fdba72a0a6d35d212019afcfd5b47a5d981b0232c983ad7bb1f794f087f4a4",
+        "value": {
+          "record_sha256": "36de37f16d1f92ec6b5bddc80df953a847567cd577ec7ef687df4c2f2763619c",
+          "archive_sha256": "2d5d0d3951a0c0911e925f4b7f6d4e825fc1b6746bd9d1241649a578993ab4bd",
+          "qualification_sha256": "84758b4f8391974a2b079cfc4e0da4f3fc3a3e5bdaa06280a844454302bfee83",
+          "native_write_audit_sha256": "1e5df8f8e59af4144db92dfeaa991810dcc4034b47a6350fada9a84ad5f5ce75",
+          "scope": "Independent exact installed payload plus native dpkg/APT consistency; no device claim"
+        }
+      },
+      "install-audit.complete.json": {
+        "sha256": "1e5df8f8e59af4144db92dfeaa991810dcc4034b47a6350fada9a84ad5f5ce75",
+        "value": {
+          "version": 1,
+          "phase": "install",
+          "command": [
+            "/usr/bin/python3",
+            "/opt/toddy-build/scripts/build/stage_package.py",
+            "espeak-ng",
+            "1.52.0-1+toddy1",
+            "/mnt/lfs/sources/stage/voice-espeak-ng-native2",
+            "--architecture",
+            "amd64",
+            "--source",
+            "espeak-source.tar.gz",
+            "--recipe",
+            "scripts/build/phase2/voice-install.sh",
+            "--depends",
+            "gcc-runtime (= 16.2.0-1+toddy1), glibc (= 2.44-1+toddy1)",
+            "--install"
+          ],
+          "inputs": {
+            "prepared_sha256": "239233a207dfc16167d4de1d36c15848e31b5a0c409c676a65556e9c4efb49f4",
+            "qualification_sha256": "84758b4f8391974a2b079cfc4e0da4f3fc3a3e5bdaa06280a844454302bfee83",
+            "source_archive_sha256": "cd83f84c4e495f281ac14e919aecf2834306ec1ea1b498de8ef6000f3a0f90de"
+          },
+          "pins": {
+            "driver": "5a1dc85c634e2c54edad42f94c7222ef5fba56331aadc5efbb849178474c6dee",
+            "snapshot_runner": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+            "interpreter": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+            "scripts/build/stage_package.py": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+            "scripts/build/package_backend.py": "2640ed0b1d166551a6245fca2fe1030d8cf36129c79a1dfa3d7be8740567aed2",
+            "scripts/build/source_notices.py": "856ed84e06d3b1fbe586c064f614dae7d288614686b87750cd9cc13371641d30",
+            "scripts/build/locked_inputs.py": "230a230bb7331e913fd2ca60a581f2f16a3af054439e7fe14fef9f604d3fa9dc",
+            "scripts/build/package_ownership.py": "519dbd396707cd200e48eb938b62e621ff388b079cc416773295acd5480071a2",
+            "scripts/build/provenance.py": "c15fbe26d173d9fa62c6db4b4328e5748aa60d1b72880a6903e05cc8e2097ccc",
+            "scripts/build/phase2/package_copyright.py": "c4ec9d00657b96a5fd4d1f242288cf4c386292438048ca295bd8f7201ae0e98a",
+            "scripts/build/phase2/voice-install.sh": "d63599a0d3a1c3acd876181f86d1cdaa3ac307b098746d86945a578a67932bbf",
+            "config/sources.lock.json": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+            "config/books.lock.json": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+            "config/phase2/sources.lock.json": "4251597a63350172c1da3f131c2bcb6a7e6eb81d3fd19740045b7d51dc640d6e",
+            "config/component-licenses.json": "ec4bb1f53e02cfe27d4e2f0c8364d5628347fcf4c0399afa121b9333a6664363",
+            "config/package-ownership-policy.json": "b3af76d23fb61a46a99af28c902cd7283fb03246419fe49b4879129d8974fc0f",
+            "runtime/voice/native-inputs.lock.json": "f23cbd727cceecfc9d961f572928aea5d03870bd8bd234c51d99a8858413308c",
+            "config/security-overlay.lock.json": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+            "config/supplemental-sources.lock.json": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6"
+          },
+          "pid": 55645,
+          "started_utc": "2026-11-16T18:52:43.493543+00:00",
+          "snapshot_scope": [
+            "usr",
+            "etc",
+            "var",
+            "tools",
+            "lib64",
+            "boot"
+          ],
+          "scope": "Existing run_step full-root build manifest; no native acceptance from source fixtures or optimized isolation qualification",
+          "command_exit": 0,
+          "postcheck_exit": 0,
+          "package_record_sha256": "36de37f16d1f92ec6b5bddc80df953a847567cd577ec7ef687df4c2f2763619c",
+          "finished_utc": "2026-11-16T18:53:31.419837+00:00",
+          "changed_paths": 497,
+          "evidence_sha256": {
+            "intent.json": "ef058de857a3557ab57a72ec8c6dca85b7d35d1bc803605e47a79f0fdab89ad6",
+            "before.json": "c38838c0570d44404a325e120de5dd400b6d4dd38216cd0410f256bddf3e66d7",
+            "after.json": "bba90b637232cd6b41fbf56561ea80814d6ee12ab07f1054a9aa53a84f850577",
+            "manifest.json": "6e1e7946f63dbe340f193ec0965c762c34e6b5cbb640b1bb7cf052a0900bd4af"
+          },
+          "state": "complete"
+        }
+      },
+      "build_exit": {
+        "sha256": "63e9c8a098d9880fff6f79961b3a1300edf44dfb425c5184be62094f39e62f41",
+        "exit": 0
+      }
+    },
+    "whisper-cpp": {
+      "prepared.json": {
+        "sha256": "9a4ae344717ed96b2ac016403f73935e2a4d2e600989cc1d1eb5d08ba2e6cd4b",
+        "value": {
+          "component": "whisper-cpp",
+          "generation": "native2",
+          "version": "1.9.5-1+toddy1",
+          "input": {
+            "id": "whisper-source",
+            "url": "https://codeload.github.com/ggml-org/whisper.cpp/tar.gz/d1be6fde11ac6e0407606b4e42fe72d34add8037",
+            "filename": "whisper-source.tar.gz",
+            "size": 9631456,
+            "sha256": "645445da884df6dbd52b30f82d7be7c01d1767c938714e477e786b88d529e9f4"
+          },
+          "correction": {
+            "path": "CMakeLists.txt",
+            "before_sha256": "f4494d2da1353158b8a33b935abe6bbe76b8cee95d503fb16088224dd4755dcc",
+            "after_sha256": "2624b7ebba00ace955bbac49f9c732ef6b622808028350d730da222b4489b5c5"
+          },
+          "recipe_sha256": "ec2870ccd64d17ca061e197175d52582dbe71c4f78ce615968cf42c9b4ddd343",
+          "driver_sha256": "5a1dc85c634e2c54edad42f94c7222ef5fba56331aadc5efbb849178474c6dee",
+          "harness_sha256": "84aa98d4500de7309aa4737c560aebcfe598dc962fcf79057c9e94a1aae99c0b",
+          "source_manifest_sha256": "89b04b752df96368dffb87856cf9fc3d93b68cd29b06ab890764d948cec130b3",
+          "scope": "Prepared only; no native or audio acceptance"
+        }
+      },
+      "qualified.json": {
+        "sha256": "f73b905b73e04204a55f06cc207606da72a62050620b6d938c06ca6cd0914bfb",
+        "value": {
+          "component": "whisper-cpp",
+          "version": "1.9.5-1+toddy1",
+          "prepared_sha256": "9a4ae344717ed96b2ac016403f73935e2a4d2e600989cc1d1eb5d08ba2e6cd4b",
+          "stage_manifest_sha256": "ee018cb349512f8a6f3c519bbc7947dc30d0b7f7df9bba56ba7b02aadf8190ec",
+          "dependencies": {
+            "needed": [
+              "libstdc++.so.6",
+              "libm.so.6",
+              "libgcc_s.so.1",
+              "libc.so.6"
+            ],
+            "providers": {
+              "glibc": "2.44-1+toddy1",
+              "gcc-runtime": "16.2.0-1+toddy1"
+            }
+          },
+          "legal_documents": {
+            "LICENSE": "94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d",
+            "ggml/src/ggml-cpu/llamafile/sgemm.cpp [leading license comments]": "542f55afdce6c46a3a10025896e7daa6c7676d66d809dd174afd7670a170711f"
+          },
+          "consumer": {
+            "scope": "Actual isolated UID101 file-only engine execution; no device/playback/GNOME quality claim",
+            "component": "whisper-cpp",
+            "samples": {
+              "en": {
+                "wall_seconds": 3.220377355000892,
+                "engine_seconds": 3.17,
+                "peak_rss_kib": 290424,
+                "transcript": "The quick brown fox jumps over the lazy dog.",
+                "reference": "The quick brown fox jumps over the lazy dog.",
+                "word_error_rate": 0.0,
+                "wav_sha256": "c3ebc262201e96f4318f985e71136b2caa5f8384a6de855650591a4256034c88",
+                "author": "Russell Sacobie (RussmanJr)",
+                "license": "CC-BY-SA-4.0"
+              },
+              "pt-BR": {
+                "wall_seconds": 3.019712011999218,
+                "engine_seconds": 3.0,
+                "peak_rss_kib": 290160,
+                "transcript": "Onde fica o banheiro?",
+                "reference": "Onde fica o banheiro?",
+                "word_error_rate": 0.0,
+                "wav_sha256": "5da27ad7ffcd488afd8ca8def141af813af55551e6fbf6b2e5ed22d24cc7c26d",
+                "author": "Ikescs (English Wiktionary), transferred to Commons by Kylu",
+                "license": "CC-BY-SA-3.0"
+              }
+            }
+          },
+          "scope": "Native engine/file-only or model data qualification; no microphone/playback/GNOME acceptance"
+        }
+      },
+      "installed.json": {
+        "sha256": "5ce68d9224e0dcf54b18df68ed0fc55482b27518ffb658a48a4fd220f30e615e",
+        "value": {
+          "record_sha256": "fdf58834d1ffa310e18985d5675e03e71a2a4c49b07ef691ef528d150a149906",
+          "archive_sha256": "83d41a95b9b344a8ab00cfd99b3c9ed25feac9e7366050ec763af6ff2576265c",
+          "native_write_audit_sha256": "718aefc1ecd7ca5da082002942e290e1a36757e01aeeff0a9617968c9cee1154",
+          "scope": "Native transaction and installed payload verified; final independent check still required"
+        }
+      },
+      "checked.json": {
+        "sha256": "adf191ebe34e28c6e5721549e07850af6f378e907ccbb1ba9729797e8338cc24",
+        "value": {
+          "record_sha256": "fdf58834d1ffa310e18985d5675e03e71a2a4c49b07ef691ef528d150a149906",
+          "archive_sha256": "83d41a95b9b344a8ab00cfd99b3c9ed25feac9e7366050ec763af6ff2576265c",
+          "qualification_sha256": "f73b905b73e04204a55f06cc207606da72a62050620b6d938c06ca6cd0914bfb",
+          "native_write_audit_sha256": "718aefc1ecd7ca5da082002942e290e1a36757e01aeeff0a9617968c9cee1154",
+          "scope": "Independent exact installed payload plus native dpkg/APT consistency; no device claim"
+        }
+      },
+      "install-audit.complete.json": {
+        "sha256": "718aefc1ecd7ca5da082002942e290e1a36757e01aeeff0a9617968c9cee1154",
+        "value": {
+          "version": 1,
+          "phase": "install",
+          "command": [
+            "/usr/bin/python3",
+            "/opt/toddy-build/scripts/build/stage_package.py",
+            "whisper-cpp",
+            "1.9.5-1+toddy1",
+            "/mnt/lfs/sources/stage/voice-whisper-cpp-native2",
+            "--architecture",
+            "amd64",
+            "--source",
+            "whisper-source.tar.gz",
+            "--recipe",
+            "scripts/build/phase2/voice-install.sh",
+            "--depends",
+            "gcc-runtime (= 16.2.0-1+toddy1), glibc (= 2.44-1+toddy1)",
+            "--install"
+          ],
+          "inputs": {
+            "prepared_sha256": "9a4ae344717ed96b2ac016403f73935e2a4d2e600989cc1d1eb5d08ba2e6cd4b",
+            "qualification_sha256": "f73b905b73e04204a55f06cc207606da72a62050620b6d938c06ca6cd0914bfb",
+            "source_archive_sha256": "645445da884df6dbd52b30f82d7be7c01d1767c938714e477e786b88d529e9f4"
+          },
+          "pins": {
+            "driver": "5a1dc85c634e2c54edad42f94c7222ef5fba56331aadc5efbb849178474c6dee",
+            "snapshot_runner": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+            "interpreter": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+            "scripts/build/stage_package.py": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+            "scripts/build/package_backend.py": "2640ed0b1d166551a6245fca2fe1030d8cf36129c79a1dfa3d7be8740567aed2",
+            "scripts/build/source_notices.py": "856ed84e06d3b1fbe586c064f614dae7d288614686b87750cd9cc13371641d30",
+            "scripts/build/locked_inputs.py": "230a230bb7331e913fd2ca60a581f2f16a3af054439e7fe14fef9f604d3fa9dc",
+            "scripts/build/package_ownership.py": "519dbd396707cd200e48eb938b62e621ff388b079cc416773295acd5480071a2",
+            "scripts/build/provenance.py": "c15fbe26d173d9fa62c6db4b4328e5748aa60d1b72880a6903e05cc8e2097ccc",
+            "scripts/build/phase2/package_copyright.py": "c4ec9d00657b96a5fd4d1f242288cf4c386292438048ca295bd8f7201ae0e98a",
+            "scripts/build/phase2/voice-install.sh": "d63599a0d3a1c3acd876181f86d1cdaa3ac307b098746d86945a578a67932bbf",
+            "config/sources.lock.json": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+            "config/books.lock.json": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+            "config/phase2/sources.lock.json": "4251597a63350172c1da3f131c2bcb6a7e6eb81d3fd19740045b7d51dc640d6e",
+            "config/component-licenses.json": "ec4bb1f53e02cfe27d4e2f0c8364d5628347fcf4c0399afa121b9333a6664363",
+            "config/package-ownership-policy.json": "b3af76d23fb61a46a99af28c902cd7283fb03246419fe49b4879129d8974fc0f",
+            "runtime/voice/native-inputs.lock.json": "f23cbd727cceecfc9d961f572928aea5d03870bd8bd234c51d99a8858413308c",
+            "config/security-overlay.lock.json": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+            "config/supplemental-sources.lock.json": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6"
+          },
+          "pid": 57432,
+          "started_utc": "2026-11-16T18:58:13.607612+00:00",
+          "snapshot_scope": [
+            "usr",
+            "etc",
+            "var",
+            "tools",
+            "lib64",
+            "boot"
+          ],
+          "scope": "Existing run_step full-root build manifest; no native acceptance from source fixtures or optimized isolation qualification",
+          "command_exit": 0,
+          "postcheck_exit": 0,
+          "package_record_sha256": "fdf58834d1ffa310e18985d5675e03e71a2a4c49b07ef691ef528d150a149906",
+          "finished_utc": "2026-11-16T18:58:55.485256+00:00",
+          "changed_paths": 39,
+          "evidence_sha256": {
+            "intent.json": "42a7b3ce54e28d7fb083358e3e3cfbbcd0a248518f2d3dd4f7b8e2c3e05917cc",
+            "before.json": "23694bdc0486f3248adb0db3ac6b8aa66b5d607d6ffe0e5eb45d520fe873b71b",
+            "after.json": "5ffb02a1f2ab9a6808794cc12d4bbf029ef96f639e2ca0dfe032904472dd75a6",
+            "manifest.json": "511819564b671820e23b91ad5fe7d510967866252cfae94b630b798e34d8de77"
+          },
+          "state": "complete"
+        }
+      },
+      "build_exit": {
+        "sha256": "861e45b370af3cd69fb56d52c7c6b4486f932f75f31e32b4baa191b52611b22d",
+        "exit": 0
+      }
+    },
+    "toddy-voice-model-base": {
+      "prepared.json": {
+        "sha256": "2df2f423eaa851d4416605bf8b10eb70ddd39ef02649bf1e133a3382ad838a0a",
+        "value": {
+          "component": "toddy-voice-model-base",
+          "generation": "native2",
+          "version": "5359861c739e955e79d9a303bcbc70fb988958b1-1+toddy1",
+          "input": {
+            "id": "whisper-base-model",
+            "url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-base.bin",
+            "filename": "ggml-base.bin",
+            "size": 147951465,
+            "sha256": "60ed5bc3dd14eea856493d334349b405782ddcaf0028d4b5df4088345fba2efe"
+          },
+          "correction": null,
+          "recipe_sha256": null,
+          "driver_sha256": "5a1dc85c634e2c54edad42f94c7222ef5fba56331aadc5efbb849178474c6dee",
+          "harness_sha256": "84aa98d4500de7309aa4737c560aebcfe598dc962fcf79057c9e94a1aae99c0b",
+          "source_manifest_sha256": "494014a8d6ace2414dd8141eeb014bb03b47ee2a8b681421dd69100547c59891",
+          "scope": "Prepared only; no native or audio acceptance"
+        }
+      },
+      "qualified.json": {
+        "sha256": "4d1e94165ae08e5b218e61c1a6aa0043cb22b2aa868ee675b9bf8708c5eb5b37",
+        "value": {
+          "component": "toddy-voice-model-base",
+          "version": "5359861c739e955e79d9a303bcbc70fb988958b1-1+toddy1",
+          "prepared_sha256": "2df2f423eaa851d4416605bf8b10eb70ddd39ef02649bf1e133a3382ad838a0a",
+          "stage_manifest_sha256": "a636800153d2a44add54a9665d58617e739e50555bcfe1cbeae81e5cf3542d0d",
+          "dependencies": {
+            "providers": {},
+            "needed": []
+          },
+          "legal_documents": {
+            "whisper-original-license": "b5d65a59060e68c4ff940e1eddfa6f94b2d68fdf58ed7f4dd57721c997e35e9d",
+            "whisper-model-card": "21fd967098804f33fc84e803fb0e5ab7666d71801f4027cf28a65e7af09c1758"
+          },
+          "consumer": {
+            "scope": "Verified immutable model bytes and exact original MIT license/card; no independent inference in data package"
+          },
+          "scope": "Native engine/file-only or model data qualification; no microphone/playback/GNOME acceptance"
+        }
+      },
+      "installed.json": {
+        "sha256": "4f82223f8e4c5e253ed3b3d10eb43cbfaefd5a44396f7ac647ba01ab5eaba2d3",
+        "value": {
+          "record_sha256": "cccd6f18ba054e124b648fbb67bd1c69fddaab9a5b0d7556c6d4fb12c15215d5",
+          "archive_sha256": "b4fc270a1bd9f3fe7fd945aa4d75ec78ac0d16c4d633a501d05d2595a6958704",
+          "native_write_audit_sha256": "f447c93e20d1aea3b2d1d3aab1194f6a63c062e882d79aca254b201319769dbb",
+          "scope": "Native transaction and installed payload verified; final independent check still required"
+        }
+      },
+      "checked.json": {
+        "sha256": "6c37653b0b4045898dc582f3069b2ac71ab8bd68734a84bfd3edb8f8ae943c1c",
+        "value": {
+          "record_sha256": "cccd6f18ba054e124b648fbb67bd1c69fddaab9a5b0d7556c6d4fb12c15215d5",
+          "archive_sha256": "b4fc270a1bd9f3fe7fd945aa4d75ec78ac0d16c4d633a501d05d2595a6958704",
+          "qualification_sha256": "4d1e94165ae08e5b218e61c1a6aa0043cb22b2aa868ee675b9bf8708c5eb5b37",
+          "native_write_audit_sha256": "f447c93e20d1aea3b2d1d3aab1194f6a63c062e882d79aca254b201319769dbb",
+          "scope": "Independent exact installed payload plus native dpkg/APT consistency; no device claim"
+        }
+      },
+      "install-audit.complete.json": {
+        "sha256": "f447c93e20d1aea3b2d1d3aab1194f6a63c062e882d79aca254b201319769dbb",
+        "value": {
+          "version": 1,
+          "phase": "install",
+          "command": [
+            "/usr/bin/python3",
+            "/opt/toddy-build/scripts/build/stage_package.py",
+            "toddy-voice-model-base",
+            "5359861c739e955e79d9a303bcbc70fb988958b1-1+toddy1",
+            "/mnt/lfs/sources/stage/voice-toddy-voice-model-base-native2",
+            "--architecture",
+            "all",
+            "--source",
+            "ggml-base.bin",
+            "--recipe",
+            "scripts/build/phase2/voice-install.sh",
+            "--install"
+          ],
+          "inputs": {
+            "prepared_sha256": "2df2f423eaa851d4416605bf8b10eb70ddd39ef02649bf1e133a3382ad838a0a",
+            "qualification_sha256": "4d1e94165ae08e5b218e61c1a6aa0043cb22b2aa868ee675b9bf8708c5eb5b37",
+            "source_archive_sha256": "60ed5bc3dd14eea856493d334349b405782ddcaf0028d4b5df4088345fba2efe"
+          },
+          "pins": {
+            "driver": "5a1dc85c634e2c54edad42f94c7222ef5fba56331aadc5efbb849178474c6dee",
+            "snapshot_runner": "2780e2e65fc2a495ede31dc1525ec5eb08955ee72a50cd7306da1a8ae35bd2d9",
+            "interpreter": "e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f",
+            "scripts/build/stage_package.py": "24f56a47c3126a7b727a289eaacc43b43f0f2e4eaf9abc205d1003a36ce443b4",
+            "scripts/build/package_backend.py": "2640ed0b1d166551a6245fca2fe1030d8cf36129c79a1dfa3d7be8740567aed2",
+            "scripts/build/source_notices.py": "856ed84e06d3b1fbe586c064f614dae7d288614686b87750cd9cc13371641d30",
+            "scripts/build/locked_inputs.py": "230a230bb7331e913fd2ca60a581f2f16a3af054439e7fe14fef9f604d3fa9dc",
+            "scripts/build/package_ownership.py": "519dbd396707cd200e48eb938b62e621ff388b079cc416773295acd5480071a2",
+            "scripts/build/provenance.py": "c15fbe26d173d9fa62c6db4b4328e5748aa60d1b72880a6903e05cc8e2097ccc",
+            "scripts/build/phase2/package_copyright.py": "c4ec9d00657b96a5fd4d1f242288cf4c386292438048ca295bd8f7201ae0e98a",
+            "scripts/build/phase2/voice-install.sh": "d63599a0d3a1c3acd876181f86d1cdaa3ac307b098746d86945a578a67932bbf",
+            "config/sources.lock.json": "55ed5b152c6030d5170b86da2826238b7d402c33d234c27bd7c4bfb5df361ec2",
+            "config/books.lock.json": "45e995f21953965277239d2794d47e05e17e315ac412c07186115c954378ffcd",
+            "config/phase2/sources.lock.json": "4251597a63350172c1da3f131c2bcb6a7e6eb81d3fd19740045b7d51dc640d6e",
+            "config/component-licenses.json": "ec4bb1f53e02cfe27d4e2f0c8364d5628347fcf4c0399afa121b9333a6664363",
+            "config/package-ownership-policy.json": "b3af76d23fb61a46a99af28c902cd7283fb03246419fe49b4879129d8974fc0f",
+            "runtime/voice/native-inputs.lock.json": "f23cbd727cceecfc9d961f572928aea5d03870bd8bd234c51d99a8858413308c",
+            "config/security-overlay.lock.json": "ab6594ab45383c564f45cdd6d84ed047c2fd03536310b2d3870b3d835cf1f931",
+            "config/supplemental-sources.lock.json": "6fbdd15d386233bd914f0e1c9224ec8ef5aebe49fbdb909c2e7335affd401ee6"
+          },
+          "pid": 58293,
+          "started_utc": "2026-11-16T19:00:43.872454+00:00",
+          "snapshot_scope": [
+            "usr",
+            "etc",
+            "var",
+            "tools",
+            "lib64",
+            "boot"
+          ],
+          "scope": "Existing run_step full-root build manifest; no native acceptance from source fixtures or optimized isolation qualification",
+          "command_exit": 0,
+          "postcheck_exit": 0,
+          "package_record_sha256": "cccd6f18ba054e124b648fbb67bd1c69fddaab9a5b0d7556c6d4fb12c15215d5",
+          "finished_utc": "2026-11-16T19:01:34.883479+00:00",
+          "changed_paths": 14,
+          "evidence_sha256": {
+            "intent.json": "83f03eb63ff669006899a1d21ffd59de44578a315349a0721b6808b07711fd37",
+            "before.json": "f10badd48ce127e1d0030814e6e749905a1a9688a3a458d878297a70c191c15e",
+            "after.json": "f4a54e6909246aca3e12cffc992925edfe9846cbd017af84c293642462f4e85f",
+            "manifest.json": "52995d12d0c1fc84c9ce5dc5666a340bfe34bf1cbaa972abd7b4920002fd2bb6"
+          },
+          "state": "complete"
+        }
+      }
+    }
+  },
+  "process_failure": {
+    "exit": 1,
+    "sha256": "9d9be811e7e4855f550a711be37e14c4a17bf7d15a0763e37be2fbbdc0d5f7d5",
+    "cause": "Native PipeWire1.6.8 profile has no pw-cat; fixed wrappers cannot exec capture/playback transport. Four process tests passed but combined process qualification failed."
+  }
+}

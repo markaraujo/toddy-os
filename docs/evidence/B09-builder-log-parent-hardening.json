@@ -1,0 +1,13 @@
+{
+  "scope": "Dedicated Ubuntu builder only; target product image unchanged",
+  "boot_id": "9ac84ac8-fe0e-41c0-a128-a8e4ad4bebf2",
+  "path": "/var/log",
+  "uid": 0,
+  "gid": 102,
+  "before_mode": 509,
+  "after_mode": 493,
+  "reason": "Protect root project receipts from mutable ancestor; preserve strict voice provenance guard",
+  "state": "complete",
+  "independent_espeak_native_check_after_correction_exit": 0,
+  "reinstallation_performed": false
+}
