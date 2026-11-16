@@ -78,10 +78,34 @@ def assembly_input():
     return journal,manifest,expected
 
 
+def expanded_snapshot_bound(image,expected,block):
+    """Actual complete namespace/classes, not compressed artifact size."""
+    image=Path(image)
+    classes={name:name for name,row in expected['entries'].items() if 'size' in row}
+    for group in expected['hardlink_groups']:
+        for name in group:
+            if name in classes:classes[name]=group[0]
+    members={}
+    for name,row in expected['entries'].items():
+        if name=='.':continue
+        if 'size' in row:member={'kind':'regular','bytes':row['size'],'hardlink_class':classes[name]}
+        elif 'symlink' in row:member={'kind':'symlink','bytes':len(os.fsencode(row['symlink']))}
+        else:member={'kind':'directory'}
+        members['/'+name]=member
+    report=p.storage_measurements({'native-final-image':{'members':members,'control_bytes':0,'control_files':0,'list_bytes':0,'conffile_lines':0}},
+        {'fresh_directories':{}},block)
+    # Extended attribute values are present in the real root; hashes alone do
+    # not specify their allocation. Count their actual encoded bytes too.
+    xattrs=sum(p.rounded(len(os.getxattr(image/name,key,follow_symlinks=False))+len(os.fsencode(key))+32,block)
+        for name,row in expected['entries'].items() for key in row['xattrs'])
+    report['actual_xattr_storage_bound_bytes']=xattrs
+    return report['root_storage_bound_bytes']+xattrs
+
+
 def compression_phase(backend):
     journal,manifest,expected=assembly_input()
     _,evidence,files=native_tools(backend)
-    size=sum(row.get('size',0) for row in expected['entries'].values())
+    size=expanded_snapshot_bound(IMAGE,expected,os.statvfs(STAGE).f_frsize)
     capacity(STAGE,2*size+2*1024**3)
     tools={'accepted_package':True,'archive_sha256':evidence['squashfs-tools']['archive_sha256'],
         'binaries':{name:{'path':str(TARGET/'usr/bin'/name),'sha256':files['/usr/bin/'+name]}
@@ -121,16 +145,61 @@ def live_identity():
     return expected
 
 
+def early_runtime_storage_bound(binding=None):
+    """Measure the fixed source-owned early plan before runtime/newc/gzip writes."""
+    runtime=initramfs_archive.runtime;owners=runtime.installed_records(TARGET,RECORDS)
+    paths=set(runtime.PROGRAMS)
+    for program in runtime.PROGRAMS:paths.update(runtime.runtime_dependencies(TARGET,program))
+    files={};details={}
+    for virtual in sorted(paths):
+        source,canonical=runtime.target_resolve(TARGET,virtual)
+        if canonical not in owners or source.is_symlink() or p.digest(source)!=owners[canonical][3].get('sha256'):
+            raise ValueError('Early capacity input differs from native source ownership')
+        relative=runtime.destination_path(virtual)
+        if relative in files:continue
+        files[relative]=source.stat().st_size
+        package,version,archive,entry=owners[canonical]
+        details[relative]={'requested':virtual,'source_path':canonical,'package':package,'version':version,
+            'archive_sha256':archive,'sha256':entry['sha256'],'mode':511}
+    scripts=HERE.parent/'h10'
+    files.update({'init':(scripts/'live_init.sh').stat().st_size,
+        'usr/lib/toddy/live_media.sh':(scripts/'live_media.sh').stat().st_size,
+        'usr/lib/toddy/restore_live_acls.sh':(scripts/'restore_live_acls.sh').stat().st_size,
+        'etc/toddy-live/media-id':65,'etc/toddy-live/rootfs.sha256':65})
+    directories={'.','dev','proc','sys','run','newroot','etc','usr','usr/bin','usr/sbin','usr/lib'}
+    for name in files:directories.update(parent.as_posix() for parent in Path(name).parents)
+    links={**runtime.ALIASES,'usr/bin/sh':'bash'}
+    bodies={**files,**{name:len(os.fsencode(target)) for name,target in links.items()},
+        **{name:0 for name in directories},'dev/console':0,'dev/null':0,'TRAILER!!!':0}
+    raw=sum(p.rounded(110+len(os.fsencode(name))+1,4)+p.rounded(size,4) for name,size in bodies.items())+65536
+    if raw>256*1024**2:raise ValueError('Measured minimal early runtime exceeds bounded newc protocol')
+    gzip_bound=raw+((raw+16383)//16384)*8+65536
+    block=os.statvfs(STAGE).f_frsize
+    copied_parents={'.'}
+    for name in files:copied_parents.update(parent.as_posix() for parent in Path(name).parents)
+    staged=p.file_tree_storage_bound(files,block)+2*len(directories-copied_parents)*block+2*(len(links)+2)*block
+    # Length-only schema model. Placeholder hashes are never returned or
+    # persisted as inventory/qualification evidence.
+    prototype={'runtime_files':details,'entries':{name:{'mode':65535,'size':size,'body_sha256':'0'*64,'rdev':[5,3]} for name,size in bodies.items()},
+        'compression_binding':binding or {},'gzip_bytes':gzip_bound}
+    metadata=p.rounded(3*len(json.dumps(prototype,indent=2).encode())+block,block)
+    return {'source_file_bytes':sum(files.values()),'runtime_stage_bound_bytes':staged,
+        'newc_bound_bytes':raw,'gzip_bound_bytes':gzip_bound,'report_metadata_bound_bytes':metadata,
+        'phase_bound_bytes':staged+p.rounded(raw,block)+p.rounded(gzip_bound,block)+metadata}
+
+
 def initramfs_phase(backend):
     native_tools(backend)
     binding=initramfs_input.verify(TARGET,COMPRESSION/'compression.json',True,assembler=ASSEMBLER)
-    capacity(STAGE,1024**3)
+    early=early_runtime_storage_bound(binding)
+    capacity(STAGE,max(1024**3,early['phase_bound_bytes']))
     media_id=live_identity()
     scripts=HERE.parent/'h10'
     report=initramfs_archive.assemble(TARGET,INITRAMFS,RECORDS,scripts/'live_init.sh',
         scripts/'live_media.sh',media_id,binding['rootfs_sha256'],binding['epoch'])
     initramfs_input.unchanged(TARGET,binding)
     report['compression_binding']=binding
+    report['capacity_measurement']=early
     atomic_json(INITRAMFS/'manifest.json',report)
     return report
 
@@ -173,7 +242,8 @@ def iso_phase(backend):
         'live/rootfs.squashfs':Path(binding['artifact'])}
     hashes={name:p.digest(path) for name,path in inputs.items()}
     if os.path.lexists(MEDIA):raise ValueError('Preserve existing/uncertain media generation')
-    capacity(STAGE,3*sum(path.stat().st_size for path in inputs.values())+2*1024**3)
+    input_bound=p.file_tree_storage_bound({name:path.stat().st_size for name,path in inputs.items()},os.statvfs(STAGE).f_frsize)
+    capacity(STAGE,3*input_bound+2*1024**3)
     MEDIA.mkdir(mode=0o700)
     result={'complete':False,'native_kernel_boot_verified':False,'release_accepted':False,
         'physical_hardware_tested':False,'producer_sha256':p.digest(Path(__file__)),

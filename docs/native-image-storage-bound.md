@@ -45,3 +45,42 @@ an exact reconstructible duplicate. Any future duplicate decision must compare
 full actual metadata/link snapshots before a live transform mutates finalized2,
 and retain all journals/maps/archives. Expected fresh generated-file timestamp
 differences are not permission to relax that equality or delete a candidate.
+
+## Phase admission with measured additional allocations
+
+The source assembler now requires additive measurements from the verified bundle;
+it refuses an old/missing storage block or a different filesystem block size.
+Its existing envelope remains **16 GiB + 3 times the measured root bound +
+512 MiB**. The new root bound includes archive allocation/database/cache staging,
+actual reviewed account-file bytes and, for live profiles, the actual signed
+base bundle plus existing declared composition metadata, counted at the intended
+embedded path. This reserves those real bytes without pretending to install them.
+Future native qualification artifacts are explicitly unmeasured and must pass a
+separate complete copy preflight when they exist; absent artifacts are never
+invented or assigned a successful receipt.
+
+For compression, the actual final full snapshot supplies per-file sizes,
+hardlink classes, symlink target lengths and names; actual xattr lengths are
+read from the same unchanged image. The two-copy compression/extracted-readback
+allowance uses that allocation bound plus the existing 2 GiB margin, above the
+16 GiB floor. The unchanged H10 component still independently verifies source,
+SquashFS extraction, ACLs, sparse policy and hardlink classes.
+
+Early runtime admission measures the fixed source-owned program/loader closure,
+actual script bytes, parent/alias/device namespace and bounded newc headers,
+body/padding and gzip overhead. Actual names/schema sizes bound its report
+metadata too. The existing 1 GiB allowance is retained as a minimum. A runtime
+that cannot fit the existing 256 MiB raw-newc protocol is rejected before staging,
+not allowed to fail after copying a large runtime. No old H10 source is changed.
+
+ISO admission still accounts for three new copies: staged input, ISO and full
+payload readback. It now rounds actual file/name allocations before multiplying,
+and keeps the 2 GiB margin plus 16 GiB reserve. Existing compressed artifacts and
+all earlier roots/bundles already consume free space at each admission check;
+those retained bytes are not treated as reclaimed.
+
+`isolated.sh` already holds the global native build lock throughout compilation.
+The outer image entry additionally recognizes only actual `job.py` harness
+records for the dispatch/uncertain interval and refuses one without its terminal
+`.exit`. Unrelated custom/historical JSON receipts are not treated as compiler
+jobs. This does not restart or reconcile an uncertain compiler automatically.

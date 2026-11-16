@@ -11,6 +11,9 @@ flock -n 9
 shopt -s nullglob
 running=(/var/log/toddy/build/*.running.json)
 [[ ${#running[@]} == 0 ]]
+# isolated.sh holds this global lock during compilation; also refuse the
+# recognized dispatch/uncertain interval before a terminal job.py receipt.
+/usr/bin/python3 -I -c 'import sys;sys.path.insert(0,"/opt/toddy-build/scripts/build/phase2");from image_assemble import unclosed_compiler_jobs;jobs=unclosed_compiler_jobs("/var/log/toddy/phase2");assert not jobs,"Reconcile unclosed compiler jobs: "+repr(jobs)' 
 # Require existing native API visibility; never mount another device namespace.
 [[ -b /mnt/lfs/dev/vdb4 && -d /mnt/lfs/proc/self && -d /mnt/lfs/sys/dev/block && -d /mnt/lfs/run ]]
 exec /usr/bin/unshare --mount --propagation private /usr/bin/bash --noprofile --norc -s -- "$1" <<'NAMESPACE'

@@ -39,7 +39,7 @@ class AssemblyTests(unittest.TestCase):
     def test_capacity_has_floor_and_never_creates_root_when_insufficient(self):
         with tempfile.TemporaryDirectory() as temporary:
             stage=Path(temporary);stage.chmod(0o755)
-            with patch.object(a,'STAGE',stage),patch.object(Path,'lstat',root_fixture_lstat),patch.object(a.os,'statvfs',return_value=Mock(f_bavail=1,f_frsize=4096)):
+            with patch.object(a,'STAGE',stage),patch.object(Path,'lstat',root_fixture_lstat),patch.object(a.os,'statvfs',return_value=Mock(f_bavail=1,f_frsize=4096)),patch.object(a,'root_storage_budget',return_value={'root_bound_bytes':1000,'fixed_filesystem_and_generated_headroom_bytes':512*1024**2}):
                 with self.assertRaisesRegex(ValueError,'capacity requires'):
                     a.AssemblyRoot('base',{'components':[{'installed_bytes':1000}]})
             self.assertEqual(list(stage.iterdir()),[])

@@ -63,6 +63,38 @@ def policy_input(base,manifest):
     return policy
 
 
+def root_storage_budget(kind,manifest,block):
+    p=payload_module();storage=manifest.get('storage',{})
+    if (type(storage.get('version')) is not int or storage.get('version')!=1 or storage.get('block_bytes')!=block or
+            type(storage.get('root_storage_bound_bytes')) is not int or storage['root_storage_bound_bytes']<=0 or
+            storage.get('logical_regular_path_bytes')!=manifest.get('bytes')):
+        raise ValueError('Verified archive storage measurements required before image allocation')
+    base=STAGE/GENERATIONS[kind][1]
+    policy=policy_input(base,manifest)
+    from runtime.installer.native_finalizer import account_files
+    accounts=p.file_tree_storage_bound({name:len(data) for name,(data,_) in account_files(policy['accounts']).items()},block)
+    embedded=0
+    if kind.startswith('live'):
+        # Reserve the actual offline base inputs required by a production live
+        # image, even while the first source-only image awaits real boot seals.
+        bundle=STAGE/GENERATIONS['base'][1]/'payload'
+        sha=p.digest(secured(bundle/'manifest.json'))
+        prepared=p.PreparedPayload(bundle,manifest_sha256=sha,runner=None,finalizer=None)._load()
+        bundle_namespace(bundle,prepared)
+        files={'usr/share/toddy/installer/composition/payload/'+path.relative_to(bundle).as_posix():secured(path,limit=8*1024**3).stat().st_size
+               for path in bundle.rglob('*') if path.is_file()}
+        for name in ('policy.json','generated-entries.json','expected-image-manifest.json','boot-profile.json'):
+            path=bundle.parent/name
+            if path.exists():files['usr/share/toddy/installer/composition/'+name]=secured(path).stat().st_size
+        embedded=p.file_tree_storage_bound(files,block)
+    return {'version':1,'block_bytes':block,'archive_root_bound_bytes':storage['root_storage_bound_bytes'],
+        'fresh_account_bound_bytes':accounts,'embedded_offline_input_bound_bytes':embedded,
+        'root_bound_bytes':storage['root_storage_bound_bytes']+accounts+embedded,
+        'fixed_filesystem_and_generated_headroom_bytes':512*1024**2,
+        'embedded_inputs_reserved_not_installed':bool(embedded),
+        'future_qualification_artifacts_require_separate_pre_copy_measurement':bool(embedded)}
+
+
 class AssemblyRoot:
     """One fixed, new same-filesystem generation; inode-pinned across commands."""
     def __init__(self, kind, manifest):
@@ -76,11 +108,10 @@ class AssemblyRoot:
             raise ValueError('Native assembly stage custody')
         if os.path.lexists(self.work):
             raise ValueError('Preserve existing/uncertain native assembly generation')
-        installed = sum(row['installed_bytes'] for row in manifest['components'])
-        if installed <= 0:
-            raise ValueError('Native assembly size is unknown')
-        # Root + later full extraction + compression bound, preserving the floor.
-        self.required = RESERVE + 3*installed + 512*1024**2
+        self.storage_budget=root_storage_budget(kind,manifest,os.statvfs(STAGE).f_frsize)
+        # Keep the existing three-copy envelope and fixed margin. Replace only
+        # its underestimated logical byte input with measured allocation bounds.
+        self.required = RESERVE + 3*self.storage_budget['root_bound_bytes'] + self.storage_budget['fixed_filesystem_and_generated_headroom_bytes']
         space = os.statvfs(STAGE)
         if space.f_bavail*space.f_frsize < self.required:
             raise ValueError('Native assembly capacity requires16GiB plus3xpayload plus512MiB')
@@ -125,7 +156,7 @@ def unpack_native(bundle, manifest_sha256, assembly, system):
     archives = [str(bundle/'archives'/row['archive']) for row in manifest['components']]
     intent = {'version':1, 'state':'unpack-intended', 'kind':'candidate-unqualified-root',
         'manifest_sha256':manifest_sha256, 'root':str(assembly.root),
-        'required_bytes':assembly.required, 'assembly_pin':list(assembly.pin), 'production_ready':False,
+        'required_bytes':assembly.required, 'storage_budget':assembly.storage_budget, 'assembly_pin':list(assembly.pin), 'production_ready':False,
         'native_boot_verified':False}
     write(assembly.work/'unpack-intent.json', intent)
     log = '--log='+str(assembly.work/'dpkg.log')
@@ -204,7 +235,8 @@ def finalize_native(kind, system):
     from runtime.installer.native_finalizer import NativeFinalizer
     p=payload_module();inputs=ReviewedInputs(kind);assembly=AssemblyRoot(kind+'-reviewed',inputs.manifest)
     write(assembly.work/'finalize-intent.json',{'version':1,'state':'native-finalizer-intended',
-        'payload_manifest_sha256':inputs.descriptor['payload_manifest_sha256'],'assembly_pin':list(assembly.pin)})
+        'payload_manifest_sha256':inputs.descriptor['payload_manifest_sha256'],'assembly_pin':list(assembly.pin),
+        'storage_budget':assembly.storage_budget,'required_bytes':assembly.required})
     observed={};finalizer=NativeFinalizer(inputs,system)
     def actual_finalizer(root,manifest):
         result=finalizer(root,manifest);observed.update(result);return result
@@ -269,6 +301,30 @@ def stage_live(system):
     write(evidence/'assembly.json',journal)
     return {'state':'source-attributed-live-image-media-inputs','journal':str(external(evidence/'assembly.json')),
         'native_kernel_boot_verified':False,'release_accepted':False,'live_profile':result}
+
+
+def unclosed_compiler_jobs(directory):
+    """Recognize job.py harness records only, not unrelated custom JSON receipts."""
+    import re
+    result=[]
+    harnesses={'/opt/toddy-build/scripts/build/phase2/'+name for name in
+        ('isolated.sh','cups-isolated.sh','samba-isolated.sh')}
+    required={'pid','boot_id','proc_start_ticks','started_unix','command','harness_sha256'}
+    for path in sorted(Path(directory).glob('*.job.json')):
+        if path.is_symlink() or path.stat().st_size>256*1024:continue
+        try:record=json.loads(path.read_bytes())
+        except (ValueError,UnicodeError):continue
+        if not isinstance(record,dict) or not required<=record.keys():continue
+        if type(record['pid']) is not int or record['pid']<=0 or not isinstance(record['harness_sha256'],str) or not re.fullmatch('[a-f0-9]{64}',record['harness_sha256']):continue
+        command=record['command']
+        if not isinstance(command,list) or len(command)<6 or not all(isinstance(value,str) for value in command) or command[0]!='/bin/bash' or command[1] not in harnesses:continue
+        offset=3 if command[2]=='--loopback' else 2
+        if len(command)<=offset+2 or not all(isinstance(command[x],str) for x in (offset,offset+1)):continue
+        if not command[offset].startswith('/mnt/lfs/sources/phase2/inputs/') or not command[offset+1].startswith('/mnt/lfs/sources/phase2/work/'):continue
+        name=path.name.removesuffix('.job.json')
+        if not re.fullmatch('[a-z][a-z0-9-]{1,63}',name):continue
+        if not (path.parent/(name+'.exit')).is_file():result.append(name)
+    return result
 
 
 def main():
