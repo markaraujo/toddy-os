@@ -23,21 +23,29 @@ memory/automation and native UI controls integrated with focused regressions.
 B05 remains current pending explicit atomic boot-config Stop boundary in NEW
 recovery3; no partition/firmware/installer claim.
 
-RUNNING host prerequisite: `phase2_chunk_cold_checkpoint.py --profile installer-capacity`,
-context `.local/phase2/cold-installer-chunk-custody-1`, log
-`.local/phase2/cold-installer-custody-1.log`. Read actual receipt/controller
-identity before action. It holds native boot/custody locks and preserves every
-original byte in verified chunks; source.custody becomes nonbootable. Monitor
-healthy progress, never restart to satisfy a diagnosis budget. No native guest
-writer. Old h07final/H09/current H13/B02 recovery inputs remain directly intact.
+Host custody COMPLETE: `.local/phase2/cold-installer-chunk-custody-1`,1840chunks,
+originalSHA536109a5...57785fd reconstructed/verified, exit0,34.3GiB reclaimed.
+[Receipt](evidence/B12-installer-capacity-custody.json). All primary/current
+recovery/backing identities unchanged. Never replay; placeholder is NOT bootable.
 
-After custody, inspect exact completion/hash/capacity, record representation
-change in recovery guide, then new native recovery3 and current source/CLI/memory
-checks. NEW candidate overlays will use phase2_candidate_vm.py (ADR0239), preserving
-accepted B02 bases read-only. Do not run prepare until committed inputs/capacity.
-Same-version QtBase raster source wrapper, installer production factory and B10
-integration remain parallel source work; only coordinator writes guest.
-Host reserve100GiB+512MiB/target16GiB remain. No Phase2 ISO/G2/physical acceptance.
+Immediate native queue (one guest/package writer):
+1. Commit reviewed current inputs; NEW recovery3 checks atomic boot-config Stop.
+2. NEW candidate overlays via phase2_candidate_vm.py prepare/start (ADR0239).
+3. Inspect actual target reserve/cache/jobs, mount only exact new scratch, qualify
+   necessary reversible cache custody; then QtBase raster prepare/build/upgrade.
+4. Calamares module/native root GUI, source-package archive and offline composition.
+5. Voice engine/inference and combined installed UI/task/memory/automation/plugins
+   checks at eligible story boundaries; preserve one current acceptance slice.
+
+Owner requested process/parallelism improvements2026-11-16. Keep three source
+workers continuously assigned to independent commits. New Qt/voice build recipes
+use up to8compiler jobs, bounded by actual CPU/RAM with2GiB reserve and recorded
+/build/build-budget.json. Existing global build/package lock stays exclusive;
+no second guest mutator or unqualified parallel-build infrastructure is enabled.
+Stage preparation/source review can overlap healthy native jobs; no unchanged
+long foundation suites or pointless repeated downloads. Measure actual time/peak
+usage before changing budgets again. Host100GiB+512MiB/target16GiB reserves remain.
+No Phase2 ISO/G2/physical acceptance.
 
 ## Last verified runtime and jobs
 

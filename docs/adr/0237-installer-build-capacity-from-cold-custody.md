@@ -1,6 +1,6 @@
 # ADR-0237: Prepare installer build capacity from cold checkpoint custody
 
-Status: source preparation only; coordinator execution and measured capacity pending
+Status: executed and verified; original bytes retained in chunk custody
 Date: 2026-11-16
 Scope: reversible development-host checkpoint representation; no guest/release change
 
@@ -69,3 +69,13 @@ and restoration into a new absent file with exact data/mode/mtime and all
 archives retained. These test host custody, not OS acceptance. Preparation
 recovered zero bytes. No guest, physical disk, target package, model, display
 security policy or story acceptance changes.
+
+## Actual execution
+
+The coordinator completed1840 chunks and whole reconstructed SHA256 verification,
+with actual exit0. Source length61,737,336,832bytes, archive allocation
+22,825,889,792bytes, host capacity recovered36,847,177,728bytes. Source placeholder
+is hole-only/not bootable. All preflight protected image identities remain exact.
+[Completion evidence](../evidence/B12-installer-capacity-custody.json). Retain every
+chunk/receipt and use the reconstruction guide for historical services recovery.
+No accepted OS/package test or final release is implied.

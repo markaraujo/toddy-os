@@ -1,10 +1,12 @@
 # Restore the prepared cold installer-capacity checkpoint
 
-This guide applies only if the coordinator later executes the explicit
-`installer-capacity` profile. Source preparation has not moved or punched its
-candidate and has recovered zero bytes. The original image is still available.
-The superseded historical H07 services recovery pair remains byte-preserved; do not confuse
-it with current H13/B02 backings or give the custody placeholder to QEMU.
+The coordinator completed the explicit installer-capacity custody operation on
+2026-11-16. All61,737,336,832 original bytes were reconstructed and SHA256 verified
+from1840 retained archives before completion. The original target path is absent;
+source.custody is hole-only and NOT bootable. Actual host capacity recovered
+36,847,177,728bytes (34.3GiB). [Completion receipt](evidence/B12-installer-capacity-custody.json).
+The superseded historical H07 services recovery pair remains byte-preserved;
+current H13/B02/h07-final/H09 direct recovery/backing images are unchanged.
 
 Candidate: `.local/vm/checkpoints/h07-native-services-target.qcow2`.
 Future private context: `.local/phase2/cold-installer-chunk-custody-1`.

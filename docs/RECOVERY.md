@@ -37,6 +37,15 @@ disks first. The H01 checkpoint predates target preparation.
 
 ## Current verified checkpoint and next action
 
+2026-11-16 representation note: this historical services pair is superseded by
+the later h07-final-base/H09/H13/B02 boundaries below. Its target bytes are now
+retained in verified chunks, not a directly bootable original path. See
+[exact custody receipt](evidence/B12-installer-capacity-custody.json) and
+[required reconstruction procedure](cold-installer-checkpoint-restore.md).
+Never pass source.custody to QEMU. The paired builder and all newer primary
+recovery images remain unchanged. The historical validation/hashes below remain.
+
+
 Latest verified cold pair: .local/vm/checkpoints/h07-native-services.json with
 86 accepted native packages through Curl. Both copy hashes and qemu image
 checks passed; .local/logs/h07-native-services-checkpoint.exit is 0. Builder
