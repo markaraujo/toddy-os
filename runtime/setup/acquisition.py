@@ -5,7 +5,7 @@ import uuid
 
 from .pending import SetupError,_encode,_strict,_digest
 from .platform import installed_toddy
-from .releases import NativeCatalog
+from .releases import NativeCatalog,RELEASE_PACKAGES
 from .native_backend import command,NativeBackend
 from .acquisition_journal import STATES,TERMINAL
 
@@ -61,10 +61,12 @@ class Cursor:
             self.store._private_regular(descriptor)
             data=os.read(descriptor,65537)
             value=_strict(data)
-            if not isinstance(value,dict) or set(value)!={'version','operation_id','review_sha256','terms_sha256','state'} or type(value['version']) is not int or value['version']!=1 or \
+            if not isinstance(value,dict) or set(value) not in ({'version','operation_id','review_sha256','terms_sha256','state'},{'version','operation_id','review_sha256','terms_sha256','state','release_id'}) or type(value['version']) is not int or value['version']!=1 or \
                     not isinstance(value['operation_id'],str) or not re.fullmatch('[a-f0-9]{32}',value['operation_id']) or any(not isinstance(value[key],str) or not re.fullmatch('[a-f0-9]{64}',value[key]) for key in ('review_sha256','terms_sha256')) or \
                     value['state'] not in STATES|{'authorizing','outcome_unknown','authorization_canceled'}:
                 raise SetupError('acquisition_cursor')
+            value.setdefault('release_id','agent-backend')
+            if not isinstance(value['release_id'],str) or value['release_id'] not in RELEASE_PACKAGES:raise SetupError('acquisition_cursor')
             return value,_digest(data)
         finally:os.close(descriptor)
 
@@ -97,32 +99,35 @@ class AcquisitionClient:
         self.cursor=Cursor(store);self.catalog=catalog;self.run=run;self.progress=progress;self.platform_check=platform_check
         self.inventory=inventory or (lambda names:NativeBackend(None).query(names))
 
-    def review(self):
+    def review(self,release_id='agent-backend'):
         try:
             self.platform_check()
             current,_=self.cursor.load()
             if current and current['state'] not in TERMINAL|{'authorization_canceled'}:
                 return {'version':1,'state':'reconciliation_required','can_install':False,'operation_id':current['operation_id']}
-            catalog=self.catalog();review=catalog.review()
+            catalog=self.catalog();review=catalog.review(release_id)
             observed=self.inventory([package['name'] for package in review['packages']])
             wanted={package['name']:package['version'] for package in review['packages']}
             if any(value is not None and value!=wanted[name] for name,value in observed.items()):
                 return {'version':1,'state':'unavailable','can_install':False,'reason':'native_existing_version_conflict'}
             present=observed==wanted
             return {**review,'state':'packages_present' if present else 'review_required','can_install':not present,
-                'observed_packages':observed,'terms_text':catalog.terms(),
+                'observed_packages':observed,'terms_text':catalog.terms(release_id),
                 'backend_ready':False,'remote_consent':False,'model_installed':False}
-        except (SetupError,OSError,ValueError):
+        except SetupError as error:
+            code=str(error) if re.fullmatch('[a-z_]{1,64}',str(error)) else 'no_verified_native_release'
+            return {'version':1,'state':'unavailable','can_install':False,'reason':code}
+        except (OSError,ValueError):
             return {'version':1,'state':'unavailable','can_install':False,'reason':'no_verified_native_release'}
 
     def install(self,review,*,accepted_terms=False):
         if accepted_terms is not True or review.get('state')!='review_required' or review.get('can_install') is not True or \
-                review.get('release_id')!='agent-backend' or any(not isinstance(review.get(key),str) or not re.fullmatch('[a-f0-9]{64}',review[key]) for key in ('review_sha256','terms_sha256')):
+                review.get('release_id') not in RELEASE_PACKAGES or any(not isinstance(review.get(key),str) or not re.fullmatch('[a-f0-9]{64}',review[key]) for key in ('review_sha256','terms_sha256')):
             raise SetupError('acquisition_review_required')
         previous,revision=self.cursor.load()
         if previous and previous['state'] not in TERMINAL|{'authorization_canceled'}:
             raise SetupError('acquisition_reconciliation_required')
-        current={'version':1,'operation_id':uuid.uuid4().hex,'review_sha256':review['review_sha256'],
+        current={'version':1,'operation_id':uuid.uuid4().hex,'release_id':review['release_id'],'review_sha256':review['review_sha256'],
             'terms_sha256':review['terms_sha256'],'state':'authorizing'}
         revision=self.cursor.save(current,revision)
         return self._invoke('install',current,revision)
@@ -135,7 +140,7 @@ class AcquisitionClient:
 
     def _invoke(self,action,current,revision):
         argv=['/usr/bin/pkexec',HELPER,action,current['operation_id']]
-        if action=='install':argv+=['agent-backend',current['review_sha256'],current['terms_sha256']]
+        if action=='install':argv+=[current['release_id'],current['review_sha256'],current['terms_sha256']]
         current={**current,'state':'outcome_unknown'}
         response=None
         try:

@@ -17,13 +17,13 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 if Path(__file__).resolve().parents[1].name=='toddy':
     from toddy.setup.platform import installed_toddy
     from toddy.setup.pending import SetupError,_encode
-    from toddy.setup.releases import NativeCatalog
+    from toddy.setup.releases import NativeCatalog,RELEASE_PACKAGES
     from toddy.setup.acquisition_journal import Journal,operation_id,TERMINAL
     from toddy.setup.native_backend import NativeBackend,command
 else:
     from runtime.setup.platform import installed_toddy
     from runtime.setup.pending import SetupError,_encode
-    from runtime.setup.releases import NativeCatalog
+    from runtime.setup.releases import NativeCatalog,RELEASE_PACKAGES
     from runtime.setup.acquisition_journal import Journal,operation_id,TERMINAL
     from runtime.setup.native_backend import NativeBackend,command
 
@@ -147,7 +147,7 @@ def main(argv=None):
         parser.add_argument('terms_sha256',nargs='?')
         args=parser.parse_args(argv);operation_id(args.operation_id)
         if args.action=='install':
-            if args.release_id!='agent-backend' or any(not isinstance(value,str) or not re.fullmatch('[a-f0-9]{64}',value) for value in (args.review_sha256,args.terms_sha256)):
+            if args.release_id not in RELEASE_PACKAGES or any(not isinstance(value,str) or not re.fullmatch('[a-f0-9]{64}',value) for value in (args.review_sha256,args.terms_sha256)):
                 raise SetupError('acquisition_arguments')
         elif any(value is not None for value in (args.release_id,args.review_sha256,args.terms_sha256)):
             raise SetupError('acquisition_arguments')

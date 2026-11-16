@@ -11,7 +11,7 @@ import stat
 import subprocess
 import tarfile
 
-from .pending import SetupError
+from .pending import SetupError,_encode
 from .releases import PACKAGES, POSTCONDITIONS, SOURCES, DIRECTORY, signature, sha
 
 ENV = {'PATH':'/usr/bin:/usr/sbin','HOME':'/root','LC_ALL':'C','DEBIAN_FRONTEND':'noninteractive'}
@@ -90,6 +90,11 @@ class NativeBackend:
             raise SetupError('native_recovery_required')
 
     def postconditions(self, release):
+        if any(package['name']=='llama-cpp' for package in release['packages']):
+            from .runtime_compat import compatible,validate_installed
+            from .releases import private_metadata
+            from .pending import _strict
+            compatible();validate_installed(_strict(private_metadata(Path('/usr/share/doc/llama-cpp/cpu-profile.json'))))
         for virtual,digest in release['postconditions'].items():
             if virtual not in POSTCONDITIONS:
                 raise SetupError('native_postcondition')
@@ -192,6 +197,7 @@ class NativeBackend:
                     if path.is_absolute() or '..' in path.parts or member.isdev() or member.isfifo() or member.mode&0o6000 or any('xattr' in key for key in member.pax_headers):
                         raise SetupError('native_payload_policy')
                     value=path.as_posix()
+                    if value.lower().endswith('.gguf'):raise SetupError('native_model_payload_refused')
                     if any(part.endswith(('.wants','.requires')) for part in path.parts) or value.startswith((
                         'etc/xdg/autostart/','usr/share/autostart/','etc/cron','etc/init.d/',
                         'usr/lib/systemd/system-preset/','usr/lib/systemd/user-preset/')):
@@ -209,6 +215,11 @@ class NativeBackend:
     def acquire(self, journal, uid, identity, release, review):
         from .platform import installed_toddy
         installed_toddy()
+        local=any(package['name']=='llama-cpp' for package in release['packages'])
+        if local:
+            from .runtime_compat import compatible,RUNTIME_PROFILE
+            if _encode(release.get('runtime_profile'))!=_encode(RUNTIME_PROFILE):raise SetupError('native_runtime_profile_changed')
+            compatible()
         self.audit()
         code,architecture=self.run(['/usr/bin/dpkg','--print-architecture'])
         if code or architecture.strip()!=b'amd64':raise SetupError('native_architecture')
@@ -263,6 +274,7 @@ class NativeBackend:
         self.catalog.ensure_current()
         if self.before_write is None:raise SetupError('acquisition_owner_recheck_required')
         self.before_write()
+        if local:compatible()
         if journal.get(uid,identity)['cancellation_requested']:
             return journal.state(uid,identity,'canceled')
         # Persist uncertainty BEFORE launching the native package writer. Healthy

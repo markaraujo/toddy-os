@@ -10,10 +10,17 @@ import time
 
 from .pending import SetupError, _strict, _encode
 from ..shared.openpgp import public_key_only
+from .runtime_compat import RUNTIME_PROFILE,RUNTIME_VERSION,RUNTIME_ARCHIVE_SHA256,compatible,cpu_features
 
 DIRECTORY = Path('/usr/share/toddy/software/native')
 SOURCES = Path('/etc/apt/sources.list.d/toddy-native.list')
-PACKAGES = {'toddy-agent', 'toddy-executor', 'nodejs'}
+RELEASE_PACKAGES = {'agent-backend':{'toddy-agent','toddy-executor','nodejs'},
+    'local-runtime':{'llama-cpp'},'agent-local':{'toddy-agent','toddy-executor','nodejs','llama-cpp'}}
+PACKAGES = set.union(*RELEASE_PACKAGES.values())
+RELEASE_PERMISSIONS = {'agent-backend':['user-agent-service','privileged-executor-without-grant'],
+    'local-runtime':['optional-local-cpu-runtime-without-model'],
+    'agent-local':['user-agent-service','privileged-executor-without-grant','optional-local-cpu-runtime-without-model']}
+LOCAL_CHECKS = {'local_runtime_cpu_denial','runtime_profile_compatibility'}
 REQUIRED_CHECKS = {'absent_agent_setup', 'polkit_owner_authorization', 'signed_metadata_tamper_rejected',
     'exact_closure_install', 'package_remove_upgrade_recovery', 'no_automatic_activation',
     'no_grant_or_model_or_keys', 'reconnect_no_replay', 'offline_deferred'}
@@ -23,7 +30,9 @@ POSTCONDITIONS = {
     '/usr/lib/systemd/user/toddy-agent.service': 'toddy-agent',
     '/usr/lib/toddy/executor/service.py': 'toddy-executor',
     '/usr/lib/systemd/system/toddy-executor.service': 'toddy-executor',
-    '/usr/bin/node': 'nodejs'}
+    '/usr/bin/node': 'nodejs',
+    '/usr/bin/llama-server':'llama-cpp','/usr/bin/llama-completion':'llama-cpp',
+    '/usr/share/doc/llama-cpp/cpu-profile.json':'llama-cpp'}
 HEX = re.compile('[a-f0-9]{64}\\Z')
 VERSION = re.compile('[0-9][A-Za-z0-9.+:~_-]{0,95}\\Z')
 ID = re.compile('[a-z][a-z0-9-]{0,63}\\Z')
@@ -82,7 +91,7 @@ class NativeCatalog:
     """Production callers use load() fixed defaults; injection is source-test only."""
     @classmethod
     def load(cls, *, directory=DIRECTORY, sources=SOURCES, read=private_metadata,
-             verify=signature, clock=time.time):
+             verify=signature, clock=time.time, hardware=cpu_features):
         trust = _strict(read(directory/'trust.json'))
         exact(trust, ('version', 'fingerprint', 'keyring_sha256'))
         if type(trust['version']) is not int or trust['version'] != 1 or not isinstance(trust['fingerprint'], str) or \
@@ -123,21 +132,27 @@ class NativeCatalog:
         if origin.username or origin.password or origin.query or origin.fragment or not (
             origin.scheme=='https' and origin.hostname or origin.scheme=='file' and not origin.netloc and origin.path==str(directory/'repository')):
             raise SetupError('release_origin')
-        if not isinstance(value['releases'], list) or len(value['releases']) > 1:
+        if not isinstance(value['releases'], list) or len(value['releases']) > 3:
             raise SetupError('release_schema')
         instance = cls(); instance.revision = sha(data); instance.value = value
-        instance.repository_origin=match[1]; instance.directory = directory; instance.releases = {}; instance.fingerprint = trust['fingerprint']; instance.verify = verify; instance.read = read; instance.sources = sources; instance.clock = clock
+        instance.repository_origin=match[1]; instance.directory = directory; instance.releases = {}; instance.fingerprint = trust['fingerprint']; instance.verify = verify; instance.read = read; instance.sources = sources; instance.clock = clock; instance.hardware = hardware
         for release in value['releases']:
+            if isinstance(release,dict) and release.get('id') in instance.releases:raise SetupError('release_schema')
             instance._release(release, read)
             instance.releases[release['id']] = release
         return instance
 
     def _release(self, row, read):
-        exact(row, ('id','artifact_id','packages','postconditions','terms_sha256','license','permissions',
-                    'qualification_sha256','requires_owner_authorization','auto_activate'))
-        if row['id'] != 'agent-backend' or not isinstance(row['artifact_id'], str) or not ID.fullmatch(row['artifact_id']) or \
+        release_id=row.get('id') if isinstance(row,dict) else None
+        if not isinstance(release_id,str) or release_id not in RELEASE_PACKAGES:raise SetupError('release_schema')
+        fields={'id','artifact_id','packages','postconditions','terms_sha256','license','permissions',
+                    'qualification_sha256','requires_owner_authorization','auto_activate'}
+        local='llama-cpp' in RELEASE_PACKAGES[release_id]
+        exact(row,fields|({'runtime_profile'} if local else set()))
+        if local and _encode(row['runtime_profile'])!=_encode(RUNTIME_PROFILE):raise SetupError('native_runtime_profile_changed')
+        if not isinstance(row['artifact_id'], str) or not ID.fullmatch(row['artifact_id']) or \
                 row['requires_owner_authorization'] is not True or row['auto_activate'] is not False or \
-                row['permissions'] != ['user-agent-service','privileged-executor-without-grant'] or \
+                row['permissions'] != RELEASE_PERMISSIONS[release_id] or \
                 not isinstance(row['license'], str) or not 0 < len(row['license']) <= 256:
             raise SetupError('release_schema')
         for field in ('terms_sha256','qualification_sha256'):
@@ -147,18 +162,20 @@ class NativeCatalog:
             raise SetupError('release_terms')
         terms.decode('utf-8', errors='strict')
         packages = row['packages']
-        if not isinstance(packages,list) or len(packages) != 3:
+        if not isinstance(packages,list) or len(packages) != len(RELEASE_PACKAGES[release_id]):
             raise SetupError('release_schema')
         seen = set()
         for package in packages:
             exact(package, ('name','version','architecture','bytes','installed_bytes','sha256'))
-            if package['name'] not in PACKAGES or package['name'] in seen or \
+            if not isinstance(package['name'],str) or package['name'] not in PACKAGES or package['name'] in seen or \
                     not isinstance(package['version'],str) or not VERSION.fullmatch(package['version']) or \
                     package['architecture'] not in ('amd64','all') or \
                     any(type(package[key]) is not int or not 0 < package[key] <= 2*1024**3 for key in ('bytes','installed_bytes')):
                 raise SetupError('release_schema')
             digest_field(package['sha256']); seen.add(package['name'])
-        if seen != PACKAGES:
+            if package['name']=='llama-cpp' and (package['version']!=RUNTIME_VERSION or package['sha256']!=RUNTIME_ARCHIVE_SHA256 or package['architecture']!='amd64'):
+                raise SetupError('native_runtime_profile_changed')
+        if seen != RELEASE_PACKAGES[release_id]:
             raise SetupError('release_schema')
         expected = {path:owner for path,owner in POSTCONDITIONS.items() if owner in seen}
         if not isinstance(row['postconditions'],dict) or set(row['postconditions']) != set(expected):
@@ -172,7 +189,7 @@ class NativeCatalog:
         exact(report, ('version','scope','native_result','package_set_sha256','checks','retained_evidence_sha256'))
         if type(report['version']) is not int or report['version'] != 1 or report['scope'] != 'installed-native-agent-acquisition' or report['native_result'] != 'passed' or \
                 report['package_set_sha256'] != sha(_encode(packages)) or not isinstance(report['checks'],dict) or \
-                set(report['checks']) != REQUIRED_CHECKS or any(value is not True for value in report['checks'].values()):
+                set(report['checks']) != REQUIRED_CHECKS|(LOCAL_CHECKS if local else set()) or any(value is not True for value in report['checks'].values()):
             raise SetupError('release_qualification')
         digest_field(report['retained_evidence_sha256'])
         evidence=read(self.directory/'qualifications'/(report['retained_evidence_sha256']+'.evidence.json'))
@@ -183,12 +200,12 @@ class NativeCatalog:
             raise SetupError('release_qualification')
 
     def ensure_current(self):
-        current=type(self).load(directory=self.directory,sources=self.sources,read=self.read,verify=self.verify,clock=self.clock)
+        current=type(self).load(directory=self.directory,sources=self.sources,read=self.read,verify=self.verify,clock=self.clock,hardware=self.hardware)
         if current.revision!=self.revision:raise SetupError('release_changed')
 
 
     def terms(self,release_id='agent-backend'):
-        if release_id not in self.releases:raise SetupError('release_unavailable')
+        if not isinstance(release_id,str) or release_id not in self.releases:raise SetupError('release_unavailable')
         digest=self.releases[release_id]['terms_sha256']
         data=self.read(self.directory/'terms'/(digest+'.txt'))
         if sha(data)!=digest:raise SetupError('release_terms')
@@ -196,14 +213,17 @@ class NativeCatalog:
 
 
     def review(self, release_id='agent-backend'):
-        if release_id not in self.releases:
+        if not isinstance(release_id,str) or release_id not in self.releases:
             raise SetupError('release_unavailable')
         row = self.releases[release_id]
+        local='llama-cpp' in RELEASE_PACKAGES[release_id]
+        compatibility=compatible(hardware=self.hardware) if local else {}
         review = {'version':1,'release_id':release_id,'artifact_id':row['artifact_id'],
             'catalog_revision':self.revision,'repository_id':'toddy-native','repository_origin':self.repository_origin,'catalog_generation':self.value['generation'],
             'packages':row['packages'],'postconditions':row['postconditions'],'download_bytes':sum(p['bytes'] for p in row['packages']),
             'installed_bytes':sum(p['installed_bytes'] for p in row['packages']),
             'terms_sha256':row['terms_sha256'],'license':row['license'],'permissions':row['permissions'],
             'requires_owner_authorization':True,'auto_activate':False}
+        if local:review.update(runtime_profile=row['runtime_profile'],**compatibility)
         review['review_sha256'] = sha(_encode(review))
         return review

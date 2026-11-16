@@ -11,7 +11,7 @@ PendingStore and the legacy Catalog retain their existing deferred-wish behavior
 
 The coordinator-owned assistant generator must install these original modules
 under `/usr/lib/toddy/setup/`: `acquisition.py`, `releases.py`,
-`acquisition_journal.py`, `native_backend.py`, `native_acquire.py`, `platform.py`, alongside
+`acquisition_journal.py`, `native_backend.py`, `native_acquire.py`, `platform.py`, `runtime_compat.py`, alongside
 unchanged `pending.py`. The base shared namespace also includes `openpgp.py`. Only `native_acquire.py` needs executable mode 0755;
 all code must be root-owned without group/world write. Its isolated Python
 shebang imports only the fixed `/usr/lib/toddy` namespace. Install the policy at
@@ -53,14 +53,14 @@ Required root-owned files:
 - `releases.json` and detached `releases.json.asc`: gpgv must return exactly the
   pinned valid primary fingerprint. Re-read catalog bytes after verification.
   Catalog fields are `version:1`, monotonic integer `generation`, Unix
-  `not_before`/`expires` (at most 31 days), `repository`, `releases` (zero or one).
+  `not_before`/`expires` (at most 31 days), `repository`, `releases` (zero to three, unique curated IDs).
 - `repository`: `id:'toddy-native'`, `sources_sha256`, `inrelease_sha256`,
   `inrelease_bytes`. These must describe the actual root source and APT release.
-- Release: `id:'agent-backend'`, stable `artifact_id`, exact `packages`,
+- Release: `id` from the curated table below, stable `artifact_id`, exact `packages`,
   `postconditions`, `terms_sha256`, public aggregate `license`,
   `permissions:['user-agent-service','privileged-executor-without-grant']`,
   `qualification_sha256`, `requires_owner_authorization:true`, `auto_activate:false`.
-  Packages are exactly toddy-agent/toddy-executor/nodejs. Each has `name`, `version`,
+  Package sets match the exact curated table below. Each has `name`, `version`,
   `architecture` (amd64/all), exact archive `bytes`/`sha256`, `installed_bytes`.
   Derive these from accepted native artifacts/records, not estimates or wishes.
 - `postconditions`: hashes for the fixed vital code/unit paths in releases.py's
@@ -147,3 +147,46 @@ Native qualification remains mandatory: actual installed-owner pkexec/Polkit,
 signature/repository tamper refusal, absent-agent install path, exact closure and
 file ownership, offline failure, safe Stop, crash/reconnect reconciliation, real
 upgrade/remove/recovery and no automatic service/model/key/grant activation.
+
+## Curated local runtime extension
+
+The same agent-independent installed-owner flow also supports these separate
+unchecked reviews. It does not require a broker, model or existing engine:
+
+| Release ID | Exact package set | Extra capability |
+| --- | --- | --- |
+| agent-backend | toddy-agent, toddy-executor, nodejs | No local engine/model implied |
+| local-runtime | llama-cpp | Install only the optional engine |
+| agent-local | toddy-agent, toddy-executor, nodejs, llama-cpp | Explicit combined closure; every dependency shown |
+
+Use `client.review('local-runtime')` or `client.review('agent-local')`; the rest of
+the API/operation deduplication is unchanged. Existing private cursors without a
+release_id retain their original agent-backend meaning. No arbitrary package or
+release ID is accepted. Root argv carries the chosen curated ID, never a model URL.
+
+Local releases require exact `runtime_profile` equal to RUNTIME_PROFILE in
+setup/runtime_compat.py and add native checks `local_runtime_cpu_denial` and
+`runtime_profile_compatibility` to the retained qualification. The package is
+**llama-cpp 0.9.0-1+toddy1**, exact accepted B03 archive SHA-256
+`c528b72c8a9c8a6182fabf82317e71129fed3d63516b25a02c451a5ed15c9287`.
+The frozen source commit is cd959bae99ff4bed22bef2604f45241c09bbb8c8, source SHA
+fbe74146a3cdc00f706773eb233bc4aedb7d8c3c7e2122440e492a99c1ec5a76.
+See [B03 evidence](evidence/B03.md) and the
+[frozen model/runtime contract](../config/phase2/local-model.lock.json). Reuse
+that runtime/archive proof; do not infer the new acquisition transport passed.
+
+Actual x86_64 CPU flags must contain SSE4.2/AVX/AVX2/FMA/F16C/BMI2 on every
+reported processor. User review and the root path check before package work and
+again before native write; unsupported systems stay unavailable with no cloud
+fallback. Installed cpu-profile.json must retain the exact frozen CPU/no-GPU/
+no-native-optimization/no-HTTPS/no-subprocess/no-weights profile. Root verifies
+llama-server/completion/profile hashes and native ownership without starting an
+engine or loading a model.
+
+The review reports runtime_compatible, runtime_activated:false, model_required,
+model_installed:false and automatic_cloud_fallback:false. This is a package/CPU
+compatibility assessment, not an inference-memory/readiness claim. Model weights,
+resource assessment, license/download consent and activation remain separate user
+steps. No GGUF payload may enter this bootstrap; no model is added to the ISO.
+The earlier B03 native engine tests remain accepted, while actual installed-owner
+APT/Polkit/Stop/recovery for these new release IDs remains pending qualification.

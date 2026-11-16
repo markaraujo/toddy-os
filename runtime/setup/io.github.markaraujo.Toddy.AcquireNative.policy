@@ -3,10 +3,10 @@
 <policyconfig>
   <vendor>Toddy OS</vendor>
   <action id="io.github.markaraujo.Toddy.acquire-native">
-    <description>Install reviewed Toddy agent packages</description>
-    <description xml:lang="pt_BR">Instalar pacotes revisados do agente Toddy</description>
-    <message>Authenticate to manage the reviewed Toddy agent package transaction.</message>
-    <message xml:lang="pt_BR">Autentique-se para gerenciar a transação revisada dos pacotes do agente Toddy.</message>
+    <description>Install reviewed Toddy optional packages</description>
+    <description xml:lang="pt_BR">Instalar pacotes opcionais revisados do Toddy</description>
+    <message>Authenticate to manage the reviewed Toddy optional package transaction.</message>
+    <message xml:lang="pt_BR">Autentique-se para gerenciar a transação revisada dos pacotes opcionais do Toddy.</message>
     <defaults><allow_any>no</allow_any><allow_inactive>no</allow_inactive><allow_active>auth_admin</allow_active></defaults>
     <annotate key="org.freedesktop.policykit.exec.path">/usr/lib/toddy/setup/native_acquire.py</annotate>
   </action>

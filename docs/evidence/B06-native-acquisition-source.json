@@ -37,5 +37,22 @@
     "result": "passed",
     "os_guard": "root-owned ID=toddy or exact canonical alias; foreign/live denied before APT",
     "public_key_packet_guard": "bounded shared parser rejects secret/unsupported/truncated packets before gpgv; synthetic public-shaped fixture only"
+  },
+  "local_runtime_followup": {
+    "scope": "source-only local-runtime and agent-local curated native closure",
+    "focused_checks": 21,
+    "focused_elapsed_seconds": 0.118,
+    "result": "passed",
+    "runtime_package": "llama-cpp0.9.0-1+toddy1",
+    "archive_sha256": "c528b72c8a9c8a6182fabf82317e71129fed3d63516b25a02c451a5ed15c9287",
+    "cpu_profile": "exact frozen x86_64 SSE4.2 AVX AVX2 FMA F16C BMI2 intersection",
+    "model_or_runtime_activated": false,
+    "new_native_bootstrap_qualification": "not-run; B03 runtime/archive proof reused only",
+    "repository_check": {
+      "command": "make check",
+      "result": "passed",
+      "checks": 705,
+      "elapsed_seconds": 12.497
+    }
   }
 }

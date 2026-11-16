@@ -16,7 +16,7 @@ import unittest
 from unittest.mock import patch
 
 from runtime.setup.pending import Catalog,PendingStore,SetupError,_encode
-from runtime.setup.releases import NativeCatalog,POSTCONDITIONS,REQUIRED_CHECKS,sha,signature
+from runtime.setup.releases import NativeCatalog,POSTCONDITIONS,REQUIRED_CHECKS,LOCAL_CHECKS,RELEASE_PACKAGES,RELEASE_PERMISSIONS,sha,signature
 from runtime.setup.acquisition_journal import Journal
 from runtime.setup.native_acquire import install,reconcile
 from runtime.setup.native_backend import simulation,NativeBackend,command
@@ -25,20 +25,25 @@ from runtime.setup.acquisition import AcquisitionClient
 ROOT=Path(__file__).resolve().parents[1]
 
 
-def fixture():
+def fixture(release_id='agent-backend',hardware=None):
     directory=Path('/source-test-only-no-native-authority')
     packages=[{'name':name,'version':'1.0-1','architecture':'amd64','bytes':100,'installed_bytes':4096,'sha256':'a'*64}
-              for name in ('toddy-agent','toddy-executor','nodejs')]
+              for name in ('toddy-agent','toddy-executor','nodejs','llama-cpp') if name in RELEASE_PACKAGES[release_id]]
+    from runtime.setup.runtime_compat import RUNTIME_PROFILE,RUNTIME_VERSION,RUNTIME_ARCHIVE_SHA256,CPU_FLAGS
+    local='llama-cpp' in RELEASE_PACKAGES[release_id]
+    for package in packages:
+        if package['name']=='llama-cpp':package.update(version=RUNTIME_VERSION,sha256=RUNTIME_ARCHIVE_SHA256)
     evidence=_encode({'scope':'installed-native-agent-acquisition','runner_exit':0,'postconditions_exit':0,
                       'package_set_sha256':sha(_encode(packages)),'environment':'native-installed-user','fixture_only':False})
     report=_encode({'version':1,'scope':'installed-native-agent-acquisition','native_result':'passed',
-        'package_set_sha256':sha(_encode(packages)),'checks':{key:True for key in REQUIRED_CHECKS},
+        'package_set_sha256':sha(_encode(packages)),'checks':{key:True for key in REQUIRED_CHECKS|(LOCAL_CHECKS if local else set())},
         'retained_evidence_sha256':sha(evidence)})
     terms=b'Public synthetic review terms. No actual release is qualified.'
-    row={'id':'agent-backend','artifact_id':'source-fixture','packages':packages,
-        'postconditions':{path:'b'*64 for path in POSTCONDITIONS},'terms_sha256':sha(terms),
-        'license':'MIT; source test only','permissions':['user-agent-service','privileged-executor-without-grant'],
+    row={'id':release_id,'artifact_id':'source-fixture','packages':packages,
+        'postconditions':{path:'b'*64 for path,owner in POSTCONDITIONS.items() if owner in RELEASE_PACKAGES[release_id]},'terms_sha256':sha(terms),
+        'license':'MIT; source test only','permissions':RELEASE_PERMISSIONS[release_id],
         'qualification_sha256':sha(report),'requires_owner_authorization':True,'auto_activate':False}
+    if local:row['runtime_profile']=copy.deepcopy(RUNTIME_PROFILE)
     source_data=('deb [signed-by='+str(directory/'archive-keyring.gpg')+'] https://example.invalid/toddy native main\n').encode()
     value={'version':1,'generation':1,'not_before':500,'expires':2000,
         'repository':{'id':'toddy-native','sources_sha256':sha(source_data),
@@ -55,7 +60,7 @@ def fixture():
         return files[path]
     def load():
         return NativeCatalog.load(directory=directory,sources=Path('/source-test-source.list'),read=read,
-                                  verify=lambda *_:'A'*40,clock=lambda:1000)
+                                  verify=lambda *_:'A'*40,clock=lambda:1000,hardware=hardware or (lambda:('x86_64',set(CPU_FLAGS))))
     return value,files,directory,load
 
 
@@ -194,7 +199,7 @@ os._exit(9)
             def __init__(self,data):self.stdout=io.BytesIO(data)
             def wait(self,**_):return 0
             def kill(self):pass
-        for name,mode in [('etc/systemd/system/multi-user.target.wants/toddy-executor.service',0o644),('usr/bin/unsafe',0o4755)]:
+        for name,mode in [('etc/systemd/system/multi-user.target.wants/toddy-executor.service',0o644),('usr/bin/unsafe',0o4755),('usr/share/models/no-weights.gguf',0o644)]:
             with patch('runtime.setup.native_backend.subprocess.Popen',return_value=Child(payload(name,mode))):
                 with self.assertRaises(SetupError):NativeBackend.payload_policy(Path('/fixture.deb'),{'installed_bytes':4096})
         with patch('runtime.setup.native_backend.subprocess.Popen',return_value=Child(payload('usr/lib/toddy/worker/worker.mjs'))):
@@ -228,6 +233,54 @@ os._exit(9)
             def unavailable():raise FileNotFoundError('No signed native release')
             client=AcquisitionClient(store,catalog=unavailable,platform_check=lambda:None,run=lambda *_:self.fail('No root/network command'))
             self.assertEqual(client.review()['state'],'unavailable')
+            self.assertEqual(store.load()[0]['ai_choice'],'later')
+
+    def test_local_runtime_and_combined_closure_require_exact_frozen_profile(self):
+        from runtime.setup.runtime_compat import RUNTIME_VERSION,RUNTIME_ARCHIVE_SHA256
+        for release_id,count in [('local-runtime',1),('agent-local',4)]:
+            value,files,directory,load=fixture(release_id)
+            catalog=load();review=catalog.review(release_id)
+            self.assertEqual(len(review['packages']),count)
+            self.assertTrue(review['model_required']);self.assertFalse(review['runtime_activated'])
+            row=next(package for package in review['packages'] if package['name']=='llama-cpp')
+            self.assertEqual((row['version'],row['sha256']),(RUNTIME_VERSION,RUNTIME_ARCHIVE_SHA256))
+            value['releases'][0]['runtime_profile']['weights_in_package']=True
+            files[directory/'releases.json']=_encode(value)
+            with self.assertRaisesRegex(SetupError,'native_runtime_profile_changed'):load()
+
+    def test_unsupported_actual_cpu_never_offers_local_install_or_fallback(self):
+        _,_,_,load=fixture('local-runtime',hardware=lambda:('x86_64',{'sse4_2'}))
+        with self.assertRaisesRegex(SetupError,'native_runtime_cpu_unsupported'):load().review('local-runtime')
+        from runtime.setup.runtime_compat import compatible,CPU_FLAGS,validate_installed,INSTALLED_PROFILE
+        with self.assertRaisesRegex(SetupError,'native_runtime_cpu_unsupported'):
+            compatible(hardware=lambda:('aarch64',set(CPU_FLAGS)))
+        validate_installed(copy.deepcopy(INSTALLED_PROFILE))
+        changed=copy.deepcopy(INSTALLED_PROFILE);changed['https_client']=True
+        with self.assertRaisesRegex(SetupError,'native_runtime_profile_changed'):validate_installed(changed)
+
+    def test_runtime_profile_matches_frozen_accepted_b03_source(self):
+        from runtime.setup.runtime_compat import RUNTIME_PROFILE,RUNTIME_ARCHIVE_SHA256,CPU_FLAGS,cpu_features
+        baseline=json.loads((ROOT/'config/phase2/local-model.lock.json').read_text())['runtime']
+        self.assertEqual(RUNTIME_PROFILE['source_commit'],baseline['commit'])
+        self.assertEqual(RUNTIME_PROFILE['source_sha256'],baseline['sha256'])
+        self.assertEqual(CPU_FLAGS,baseline['required_cpu_flags'])
+        self.assertIn(RUNTIME_ARCHIVE_SHA256,(ROOT/'docs/evidence/B03.md').read_text())
+        with patch('runtime.setup.runtime_compat.Path.read_text',return_value='flags : avx avx2 fma\nflags : avx fma\n'):
+            self.assertNotIn('avx2',cpu_features()[1])
+
+    def test_local_client_uses_only_curated_release_id_and_no_model_arguments(self):
+        _,_,_,load=fixture('local-runtime')
+        legacy=Catalog((ROOT/'config/phase2/software-catalog.json').read_bytes())
+        with PendingStore(self.directory/'local-setup',legacy) as store:
+            store.create('local-fixture');calls=[]
+            def runner(argv,**_):
+                calls.append(argv);return 0,_encode({'version':1,'ok':True,'operation_id':argv[3],
+                    'review_sha256':load().review('local-runtime')['review_sha256'],'state':'installed'})
+            client=AcquisitionClient(store,catalog=load,run=runner,platform_check=lambda:None,inventory=lambda names:{name:None for name in names})
+            review=client.review('local-runtime');self.assertTrue(review['can_install'])
+            client.install(review,accepted_terms=True)
+            self.assertEqual(calls[0][4],'local-runtime')
+            self.assertEqual(len(calls[0]),7)
             self.assertEqual(store.load()[0]['ai_choice'],'later')
 
     def test_root_cli_nonroot_never_echoes_accidental_secret_argument(self):
