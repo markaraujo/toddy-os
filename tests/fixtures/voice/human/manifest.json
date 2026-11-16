@@ -1,0 +1,51 @@
+{
+  "fixture_version": 1,
+  "model_inference_performed": false,
+  "device_audio_performed": false,
+  "samples": {
+    "en": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Audio_Sample_-_The_Quick_Brown_Fox_Jumps_Over_The_Lazy_Dog.ogg",
+      "bytes": 65743,
+      "sha1": "9391f6f7b0ca2cb0e4dc2a9392a00aa682ac3b28",
+      "author": "Russell Sacobie (RussmanJr)",
+      "license": "CC-BY-SA-4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source_page": "https://commons.wikimedia.org/w/index.php?title=File:Audio_Sample_-_The_Quick_Brown_Fox_Jumps_Over_The_Lazy_Dog.ogg&oldid=807167525",
+      "expected_text": "The quick brown fox jumps over the lazy dog.",
+      "sha256": "aabe7ed8a4396cec1f666b6e4768b0db370ea858c3b403831a967a0c94c4828a",
+      "wav": {
+        "bytes": 122088,
+        "sha256": "c3ebc262201e96f4318f985e71136b2caa5f8384a6de855650591a4256034c88",
+        "frames": 61022,
+        "seconds": 3.813875,
+        "format": "PCM16 LE mono16000Hz",
+        "conversion": "Decode original Ogg; average channels to mono; libsamplerate SINC_BEST_QUALITY to16kHz; clamp/round to PCM16",
+        "libsndfile": "libsndfile-1.2.2",
+        "libsamplerate": "libsamplerate-0.2.2 (c) 2002-2008 Erik de Castro Lopo"
+      },
+      "scope": "Real human speech source, file-only derived16kPCM WAV; expected_text is reference wording, NOT model output"
+    },
+    "pt-BR": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Onde_fica_o_banheiro.ogg",
+      "bytes": 44436,
+      "sha1": "129e3a40030df55b2857f11cfdfb1a1623c8f3d1",
+      "author": "Ikescs (English Wiktionary), transferred to Commons by Kylu",
+      "license": "CC-BY-SA-3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "source_page": "https://commons.wikimedia.org/w/index.php?title=File:Onde_fica_o_banheiro.ogg&oldid=1125194889",
+      "expected_text": "Onde fica o banheiro?",
+      "sha256": "91984fd37081805df44a69edf1ba72c4f7ba039a7b59bd9309c9221b61b4a50e",
+      "wav": {
+        "bytes": 101190,
+        "sha256": "5da27ad7ffcd488afd8ca8def141af813af55551e6fbf6b2e5ed22d24cc7c26d",
+        "frames": 50573,
+        "seconds": 3.1608125,
+        "format": "PCM16 LE mono16000Hz",
+        "conversion": "Decode original Ogg; average channels to mono; libsamplerate SINC_BEST_QUALITY to16kHz; clamp/round to PCM16",
+        "libsndfile": "libsndfile-1.2.2",
+        "libsamplerate": "libsamplerate-0.2.2 (c) 2002-2008 Erik de Castro Lopo"
+      },
+      "scope": "Real human speech source, file-only derived16kPCM WAV; expected_text is reference wording, NOT model output"
+    }
+  }
+}
