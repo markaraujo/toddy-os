@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=io.github.markaraujo.Toddy.Service
+Exec=/usr/bin/python3 /usr/lib/toddy/broker/service.py
+SystemdService=toddy-agent.service

@@ -210,7 +210,7 @@ class ProfileStoreTests(unittest.TestCase):
 
     def test_future_schema_rules_fail_closed(self):
         schema = copy.deepcopy(self.schema)
-        schema['unevaluatedProperties'] = False
+        schema['allOf'].append({'if': {'unevaluatedProperties': False}, 'then': {}})
         store = ProfileStore(self.path, 'toddy-default', schema)
         with self.assertRaisesRegex(ProfileError, 'unsupported_profile_schema'):
             store.validate(self.files)

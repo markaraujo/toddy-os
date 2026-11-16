@@ -119,6 +119,10 @@ class TaskJournal:
         with self.profiles._db() as db:
             return self._view(self._row(db, task_id))
 
+    def remaining_seconds(self, task_id):
+        with self.profiles._db() as db:
+            return max(0.0, self._row(db, task_id)['deadline'] - self.clock())
+
     def submit(self, request_id, expected_revision, input_text, *, request_metadata=None):
         """Persist request/revision binding before any worker/provider dispatch.
 
@@ -270,6 +274,16 @@ class TaskJournal:
             code = 'reconciliation_required' if uncertain else 'stopped_after_verified_effect' if row['cancel_requested'] else 'operation_verified'
             db.execute('UPDATE tasks SET state=?,code=?,result_uncertain=?,sequence=sequence+1,updated=? WHERE id=?',
                        (task_state, code, int(uncertain), now, task_id))
+
+    def hold(self, task_id):
+        """Visible pre-dispatch failure; never hides a running/uncertain effect."""
+        with self.profiles._transaction() as db:
+            row = self._row(db, task_id)
+            if row['state'] in self.TERMINAL or row['state'] == 'running' or row['result_uncertain']:
+                return self._view(row)
+            db.execute("UPDATE tasks SET state='waiting',code='dispatch_review_required',sequence=sequence+1,updated=? WHERE id=?",
+                       (self.clock(), task_id))
+        return self.inspect(task_id)
 
     def complete(self, task_id):
         with self.profiles._transaction() as db:

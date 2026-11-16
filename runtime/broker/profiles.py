@@ -24,6 +24,10 @@ class ProfileError(ValueError):
     pass
 
 
+class UnsupportedSchema(ProfileError):
+    pass
+
+
 def _identifier(value):
     if not isinstance(value, str) or not re.fullmatch(r'[a-z][a-z0-9-]{0,63}', value):
         raise ProfileError('invalid_profile_id')
@@ -41,7 +45,7 @@ def _schema(value, rule, field='config'):
                  'minimum', 'maximum', 'maxItems', 'uniqueItems', 'items',
                  'not', 'if', 'then', 'allOf', '$schema', 'title'}
     if set(rule) - supported:
-        raise ProfileError('unsupported_profile_schema')
+        raise UnsupportedSchema('unsupported_profile_schema')
     types = {'object': lambda x: isinstance(x, dict),
              'array': lambda x: isinstance(x, list),
              'string': lambda x: isinstance(x, str), 'null': lambda x: x is None,
@@ -81,6 +85,8 @@ def _schema(value, rule, field='config'):
     if 'not' in rule:
         try:
             _schema(value, rule['not'], field)
+        except UnsupportedSchema:
+            raise
         except ProfileError:
             pass
         else:
@@ -90,6 +96,8 @@ def _schema(value, rule, field='config'):
     if 'if' in rule:
         try:
             _schema(value, rule['if'], field)
+        except UnsupportedSchema:
+            raise
         except ProfileError:
             pass
         else:
