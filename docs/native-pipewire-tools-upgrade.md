@@ -20,9 +20,9 @@ builder after reconciling its current writer, target identity, mounts and space:
 
 ```sh
 python3 /opt/toddy-build/scripts/build/phase2/pipewire_tools_native.py prepare
-python3 /opt/toddy-build/scripts/build/phase2/job.py pipewire-tools-build-1 \
-  /mnt/lfs/sources/phase2/inputs/pipewire-tools-1 \
-  /mnt/lfs/sources/phase2/work/pipewire-tools-1 \
+python3 /opt/toddy-build/scripts/build/phase2/job.py pipewire-tools-build-2 \
+  /mnt/lfs/sources/phase2/inputs/pipewire-tools-2 \
+  /mnt/lfs/sources/phase2/work/pipewire-tools-2 \
   bash /src/toddy-pw-cat-build.sh
 python3 /opt/toddy-build/scripts/build/phase2/pipewire_tools_native.py qualify
 python3 /opt/toddy-build/scripts/build/run_step.py b09-pipewire-tools-1 \
@@ -60,14 +60,17 @@ files as receiving-root-owned and non-group/world-writable, preserving legacy
 `/mnt/lfs/sources` ownership/modes. Source bytes and existing native voice audit
 hashes remain unchanged.
 
-For this exact retained completed-copy case only, after verifying absent
-prepared/source/work/stage/job artifacts and synchronizing the corrected controls,
-use `pipewire_tools_native.py resume-prepare-verified-source`. It requires the
-specific previous custody producer hash, unchanged original source identity,
-complete private-copy bytes/proof and a NEW one-shot resume intent. It does not
-copy the source again or clear either failed log. Standard `prepare` still refuses
-existing custody; partial/changed custody or an existing resume intent is not
-retryable. Root controls are checked before any custody write on fresh runs.
+The exact retained completed-copy case was resumed once under the recorded
+control-protection source revision. No source copy or failed log was overwritten.
+Build attempt1 then failed at Meson configuration: an injected keyword preceded
+the upstream positional source list. No C++/C compilation or native upgrade ran.
+
+Current commands use fresh source/work/custody/prepared/job attempt2. The patch
+now places `install_tag` after `pwcat_sources`, as required by real Meson syntax.
+All attempt1 source/work/private-copy/job/exit/log records remain intact. The
+first native promotion is still `b09-pipewire-tools-1` with stage/receipt1 because
+no promotion was previously dispatched; package version remains1.6.8-1+toddy2.
+Do not use historical resume commands against current attempt2 or replay build1.
 
 Before installation, the root helper checks native installed provider versions,
 archives/records and every direct ELF owner/hash. The new tool must be x86-64 ELF

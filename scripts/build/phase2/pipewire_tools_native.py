@@ -8,11 +8,11 @@ from verify_stage import inspect_stage
 
 ROOT=Path('/opt/toddy-build');TARGET=Path('/mnt/lfs');LOG=Path('/var/log/toddy/phase2')
 RECORDS=Path('/var/log/toddy/packages');CACHE=Path('/var/cache/toddy/packages')
-SOURCE=TARGET/'sources/phase2/inputs/pipewire-tools-1';WORK=TARGET/'sources/phase2/work/pipewire-tools-1'
-STAGE=TARGET/'sources/stage/phase2-pipewire-tools-1';PREPARED=LOG/'pipewire-tools-prepared-1.json';RECEIPT=LOG/'pipewire-tools-install-1.json'
+SOURCE=TARGET/'sources/phase2/inputs/pipewire-tools-2';WORK=TARGET/'sources/phase2/work/pipewire-tools-2'
+STAGE=TARGET/'sources/stage/phase2-pipewire-tools-1';PREPARED=LOG/'pipewire-tools-prepared-2.json';RECEIPT=LOG/'pipewire-tools-install-1.json'
 OLD='1.6.8-1+toddy1';VERSION='1.6.8-1+toddy2';ARCHIVE='pipewire-1.6.8.tar.bz2'
 SOURCE_BYTES=2062635
-SOURCE_CUSTODY=LOG/'pipewire-tools-source-custody-1'
+SOURCE_CUSTODY=LOG/'pipewire-tools-source-custody-2'
 PRIVATE_ARCHIVE=SOURCE_CUSTODY/ARCHIVE
 SOURCE_SHA='efbaedf80450e5b08bb3196a4ca7ea17850d4a71ec1a8ae321e8937a7c95779e'
 COMPLETED_CUSTODY_PRODUCER='22d476323104f952097bb089a54dba15a0724bcb593379f8e4355c0c80139d37'
@@ -22,7 +22,7 @@ OLD_DEPENDS='glibc (>= 2.44-1), systemd (>= 261.2-1), dbus (>= 1.16.2-1), glib (
 DEPENDS=OLD_DEPENDS+', libsndfile (= 1.2.2-1+toddy1), gcc-runtime (= 16.2.0-1+toddy1)'
 PROVIDERS={'pipewire':OLD,'libsndfile':'1.2.2-1+toddy1','glibc':'2.44-1+toddy1','gcc-runtime':'16.2.0-1+toddy1'}
 ALIASES=('pw-play','pw-record','pw-midiplay','pw-midirecord','pw-midi2play','pw-midi2record','pw-dsdplay','pw-encplay','pw-sysex')
-STEP='b09-pipewire-tools-1';JOB='pipewire-tools-build-1';INSTALL='scripts/build/phase2/pipewire_tools_install.sh';CHECK='scripts/build/phase2/pipewire_tools_check.sh'
+STEP='b09-pipewire-tools-1';JOB='pipewire-tools-build-2';INSTALL='scripts/build/phase2/pipewire_tools_install.sh';CHECK='scripts/build/phase2/pipewire_tools_check.sh'
 BUILD='scripts/build/phase2/pipewire_tools_build.sh'
 
 
@@ -120,7 +120,7 @@ def native(*args,binary=False):
 
 def patch_tag(source):
     file=source/'src/tools/meson.build';before=file.read_bytes()
-    needle=b"  pw_cat = executable('pw-cat',\n"
+    needle=b"  pw_cat = executable('pw-cat',\n    pwcat_sources,\n"
     if before.count(needle)!=1 or b'toddy-pw-cat' in before:raise ValueError('pipewire_tools_source_target_differs')
     alias_block=before.split(b'  pwcat_aliases = [\n',1)[1].split(b'  ]',1)[0]
     if tuple(re.findall(rb"'([^']+)'",alias_block))!=tuple(name.encode() for name in ALIASES):raise ValueError('pipewire_tools_upstream_aliases_changed')

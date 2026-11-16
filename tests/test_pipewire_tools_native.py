@@ -35,6 +35,7 @@ class PipewireToolTests(unittest.TestCase):
             before=b"  pwcat_aliases = [\n"+b''.join(b"    '"+alias.encode()+b"',\n" for alias in p.ALIASES)+b"  ]\n  pw_cat = executable('pw-cat',\n    pwcat_sources,\n    install: true,\n    dependencies : [pwcat_deps, pipewire_dep, mathlib],\n  )\n"
             file.write_bytes(before);proof=p.patch_tag(root)
             after=file.read_bytes();self.assertEqual(after.replace(b"    install_tag: 'toddy-pw-cat',\n",b''),before)
+            self.assertLess(after.index(b'pwcat_sources,'),after.index(b'install_tag:'))
             self.assertEqual(proof['before_sha256'],hashlib.sha256(before).hexdigest())
             with self.assertRaises(ValueError):p.patch_tag(root)
             file.write_bytes(before.replace(b'pw-midi2play',b'unknown-tool'))
