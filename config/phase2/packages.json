@@ -28,7 +28,11 @@
         "/usr/lib/toddy/worker/",
         "/usr/share/dbus-1/services/io.github.markaraujo.Toddy.Service.service",
         "/usr/lib/systemd/user/toddy-agent.service",
-        "/usr/share/toddy/profiles/"
+        "/usr/share/toddy/profiles/",
+        "/usr/lib/toddy/tools/",
+        "/usr/lib/toddy/local/",
+        "/usr/lib/toddy/acquisition/",
+        "/usr/share/doc/toddy-agent/"
       ],
       "requires_capabilities": [
         "python-gio",
@@ -36,7 +40,11 @@
         "sqlite-fts5",
         "secret-service-client"
       ],
-      "source_inputs": [],
+      "source_inputs": [
+        "scripts/build/phase2/optional_packages.py",
+        "runtime/engine/package-lock.json",
+        "config/phase2/engine-notices.lock.json"
+      ],
       "offline_base": false
     },
     {
@@ -45,10 +53,15 @@
       "image_scope": "installed-and-live",
       "owns": [
         "/usr/bin/toddy",
+        "/usr/lib/toddy/__init__.py",
         "/usr/lib/toddy/ui/",
+        "/usr/lib/toddy/setup/",
+        "/usr/lib/toddy/shared/",
+        "/usr/lib/toddy/connections/",
         "/usr/share/applications/io.github.markaraujo.Toddy.desktop",
-        "/usr/lib/toddy/software/",
-        "/usr/share/toddy/software/"
+        "/usr/share/toddy/config/phase2/software-catalog.json",
+        "/usr/share/toddy/ui/phase2/",
+        "/usr/share/doc/toddy-assistant/"
       ],
       "requires_capabilities": [
         "toddy-branding",
@@ -56,7 +69,8 @@
       ],
       "source_inputs": [
         "ui/phase2/identity.json",
-        "config/phase2/software-catalog.json"
+        "config/phase2/software-catalog.json",
+        "scripts/build/phase2/assistant_package.py"
       ],
       "offline_base": true,
       "optional_backend": "toddy-agent; unavailable backend leaves setup/install-later surface usable",
@@ -67,18 +81,23 @@
       "first_owner_story": "B04",
       "image_scope": "installed-and-live",
       "owns": [
-        "/usr/libexec/toddy-executor",
         "/usr/lib/toddy/executor/",
         "/usr/share/dbus-1/system-services/io.github.markaraujo.Toddy.Executor.service",
         "/usr/share/dbus-1/system.d/io.github.markaraujo.Toddy.Executor.conf",
+        "/usr/share/polkit-1/actions/io.github.markaraujo.Toddy.Owner.policy",
         "/usr/lib/systemd/system/toddy-executor.service",
-        "/etc/toddy/executor-policy.json"
+        "/etc/systemd/system/multi-user.target.wants/toddy-executor.service",
+        "/usr/share/doc/toddy-executor/"
       ],
       "requires_capabilities": [
         "python-gio",
         "native-policy-authentication"
       ],
-      "source_inputs": [],
+      "source_inputs": [
+        "scripts/build/phase2/executor_package.py",
+        "runtime/executor/packaging/toddy-executor.service",
+        "runtime/executor/packaging/io.github.markaraujo.Toddy.Owner.policy"
+      ],
       "offline_base": false
     },
     {
@@ -148,7 +167,7 @@
     },
     {
       "owner": "root",
-      "path": "/var/lib/toddy-executor/",
+      "path": "/var/lib/toddy/executor/",
       "remove_policy": "revoke-stop-and-reviewed-state-handling-not-automatic-recursive-delete"
     }
   ],
