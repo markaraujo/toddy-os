@@ -51,7 +51,7 @@ def declared_original_inputs(repository, receipt, records):
         with p.tar_stream(Path(repository) / row['asset'], '--fsys-tarfile') as stream:
             for member in stream:
                 if member.isfile() and member.name.removeprefix('./') == wanted:
-                    if member.size > 2 * 1024**2:
+                    if member.size > 32 * 1024**2:
                         raise ValueError('Bounded original source manifest required')
                     data = stream.extractfile(member).read()
                     if hashlib.sha256(data).hexdigest() != record['payload'].get('/' + wanted, {}).get('sha256'):
