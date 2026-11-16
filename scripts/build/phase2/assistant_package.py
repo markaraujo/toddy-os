@@ -15,7 +15,7 @@ import stat
 APP_ID='io.github.markaraujo.Toddy'
 PACKAGE='toddy-assistant'
 MODULES={
-    'ui':('app.py','bridge.py','credentials.py','model.py','task_state.py'),
+    'ui':('app.py','bridge.py','cli.py','credentials.py','model.py','task_state.py'),
     'setup':('pending.py',),
     'shared':('json.py',),
     'connections':('secret_store.py',),
@@ -37,7 +37,11 @@ import sys
 
 sys.dont_write_bytecode = True
 sys.path.insert(0, '/usr/lib')
-runpy.run_module('toddy.ui.app', run_name='__main__', alter_sys=True)
+if len(sys.argv) > 1 and sys.argv[1] == '--cli':
+    del sys.argv[1]
+    runpy.run_module('toddy.ui.cli', run_name='__main__', alter_sys=True)
+else:
+    runpy.run_module('toddy.ui.app', run_name='__main__', alter_sys=True)
 '''
 INIT='"""Original Toddy OS package namespace; optional components own child modules."""\n'
 README='''Toddy lightweight assistant stage

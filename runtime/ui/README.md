@@ -85,3 +85,22 @@ checks use a fake keyring; the credential adapter was not exercised on real keys
 guest/provider/model success. Actual installed S11/S12/S24, keyboard/focus/scale,
 credential isolation, default-harness task and recovery evidence remain necessary
 before B06 acceptance.
+
+## Terminal client
+
+`toddy --cli ask` reads one bounded prompt from standard input;
+`--allow-remote` explicitly consents to this request's configured remote provider.
+`task ID` drains private paged text and observes the durable task, `stop ID`
+requests a safe-boundary Stop, and Ctrl+C requests Stop before a second interrupt
+detaches. `profiles`, `create-profile ID`, `select-profile ID GENERATION`,
+`history PROFILE` and `lookup PROFILE REQUEST` use the same canonical service.
+Generation is an explicit compare-and-swap value from `profiles`. No graphical
+libraries are imported by help or the terminal module.
+
+The client pins the authenticated same-UID unique bus owner. A lost acceptance
+reply causes only a read-only request lookup, never automatic resubmission.
+An unresolved acceptance prints its profile/request IDs for later lookup.
+Terminal control characters are filtered from provider/status output. Prompts
+are not saved by this client; prefer standard input over command-line text if
+process arguments should not expose them. No plaintext credential fallback is
+provided. Native installed terminal lifecycle remains B06 qualification.
