@@ -275,7 +275,7 @@ class OfflinePayloadTests(unittest.TestCase):
                 return ''
         runner = FakeRunner()
         adapter = payload.PreparedPayload(bundle, manifest_sha256=manifest_sha, runner=runner,
-            finalizer=lambda *_: {}, target_guard=lambda *_: True)
+            finalizer=lambda *_: {}, target_guard=lambda *_: True,mount_base=self.root/'operation-logs')
         self.assertTrue(adapter.verify_payload(plan)['verified'])
         target = self.root / 'empty-fake-target'
         target.mkdir()
@@ -284,6 +284,12 @@ class OfflinePayloadTests(unittest.TestCase):
         self.assertTrue(any('--unpack' in argv for argv in runner.calls))
         self.assertTrue(all('--root=' + str(target) in argv or argv[0].endswith('dpkg-query') for argv in runner.calls))
         self.assertEqual(list(target.iterdir()), [])  # fake runner wrote nothing
+        for argv in runner.calls:
+            if argv[0].endswith('/dpkg'):
+                log=Path(next(arg.removeprefix('--log=') for arg in argv if arg.startswith('--log=')))
+                self.assertTrue(log.is_relative_to(self.root/'operation-logs'))
+                self.assertFalse(log.is_relative_to(target))
+                self.assertEqual(log.parent.stat().st_mode&0o777,0o700)
         adapter.finalizer = lambda *_: {'checks': {check: {'passed': True, 'report_sha256': 'a' * 64}
             for check in payload.CHECKS}, 'generated_entries': {}, 'image_manifest_sha256': 'b' * 64}
         with self.assertRaisesRegex(payload.PayloadError, 'finalizer_failed'):

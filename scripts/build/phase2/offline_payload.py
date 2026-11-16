@@ -15,6 +15,7 @@ import shutil
 import stat
 import subprocess
 import tarfile
+import tempfile
 
 HERE = Path(__file__).resolve().parent
 NAME = re.compile(r'[a-z0-9][a-z0-9+.-]+\Z')
@@ -580,8 +581,18 @@ class PreparedPayload:
             raise PayloadError('payload_target_not_fresh')
         # Never replay an uncertain partial unpack into an existing target.
         archives = [str(self.directory / 'archives' / row['archive']) for row in manifest['components']]
-        self.runner.run(['/usr/bin/dpkg', '--root=' + str(root), '--unpack', *archives], timeout=1800)
-        self.runner.run(['/usr/bin/dpkg', '--root=' + str(root), '--configure', '--pending'], timeout=900)
+        # dpkg's default log is independent of --root. Keep native diagnostics
+        # in private operation custody outside both the live OS log and image.
+        if self.mount_base.resolve()!=self.mount_base or self.mount_base.is_relative_to(root):
+            raise PayloadError('payload_log_custody')
+        self.mount_base.mkdir(mode=0o700,parents=True,exist_ok=True)
+        info=self.mount_base.stat()
+        if info.st_uid!=os.geteuid() or stat.S_IMODE(info.st_mode)!=0o700:
+            raise PayloadError('payload_log_custody')
+        log_directory=Path(tempfile.mkdtemp(prefix='payload-',dir=self.mount_base))
+        log='--log='+str(log_directory/'dpkg.log')
+        self.runner.run(['/usr/bin/dpkg', '--root=' + str(root), log, '--unpack', *archives], timeout=1800)
+        self.runner.run(['/usr/bin/dpkg', '--root=' + str(root), log, '--configure', '--pending'], timeout=900)
         observed = self.runner.run(['/usr/bin/dpkg-query', '--admindir=' + str(root / 'var/lib/dpkg'), '-W',
             '-f=${Package}\t${Version}\t${Architecture}\t${Status}\n'])
         actual = {}
