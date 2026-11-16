@@ -147,6 +147,11 @@ class InstallerBackendTests(unittest.TestCase):
         (target / 'etc/passwd').write_text('root:x:0:0:root:/root:/bin/bash\n')
         (target / 'usr/share/zoneinfo/UTC').write_bytes(b'fixture timezone bytes')
         (target / 'etc/machine-id').write_bytes(b'')
+        (target / 'etc/localtime').symlink_to('../usr/share/zoneinfo/UTC')
+        (target / 'etc/toddy').mkdir()
+        (target / 'etc/toddy/grub.cfg').write_text('# Accepted foundation fixture reference; not a new boot proof.\n')
+        (target / 'boot/grub').mkdir()
+        (target / 'boot/grub/grub.cfg').symlink_to('../../etc/toddy/grub.cfg')
         return self.receipt(plan)
 
     def boot(self, target, plan, root_uuid):
@@ -219,6 +224,11 @@ class InstallerBackendTests(unittest.TestCase):
         self.assertIn('UUID=ABCD-1234 /boot/efi vfat', fstab)
         self.assertNotIn('/dev/fixture', fstab)
         grub = (self.target() / 'boot/grub/grub.cfg').read_text()
+        self.assertTrue((self.target() / 'boot/grub/grub.cfg').is_symlink())
+        self.assertEqual(os.readlink(self.target() / 'boot/grub/grub.cfg'), '../../etc/toddy/grub.cfg')
+        self.assertIn('Accepted foundation fixture', (self.target() / 'usr/share/toddy/recovery/foundation-grub.cfg').read_text())
+        self.assertFalse((self.target() / 'etc/localtime').is_symlink())
+        self.assertEqual((self.target() / 'usr/share/zoneinfo/UTC').read_bytes(), b'fixture timezone bytes')
         self.assertIn('Toddy text recovery', grub)
         self.assertIn('systemd.unit=multi-user.target', grub)
         self.assertNotIn('live', grub)
@@ -230,6 +240,35 @@ class InstallerBackendTests(unittest.TestCase):
         replay = self.execute()
         self.assertFalse(replay['replayed'])
         self.assertEqual(before, len(self.system.calls))
+
+    def test_bios_handoff_preserves_canonical_config_without_creating_esp(self):
+        disk, options, content = inputs()
+        options['boot_mode'] = 'bios'
+        self.plan = make_plan(disk, options, content)
+        result = self.execute()
+        self.assertEqual(result['boot_mode'], 'bios')
+        self.assertTrue(any('--target=i386-pc' in arguments for arguments, _ in self.system.calls))
+        self.assertFalse(any(arguments[0].endswith('/mkfs.fat') for arguments, _ in self.system.calls))
+        self.assertNotIn('/boot/efi', (self.target() / 'etc/fstab').read_text())
+        self.assertTrue((self.target() / 'boot/grub/grub.cfg').is_symlink())
+
+    def test_unknown_timezone_and_grub_links_are_refused_without_following(self):
+        target = self.root / 'unknown-links'
+        target.mkdir()
+        self.payload(target, self.plan)
+        localtime = target / 'etc/localtime'
+        localtime.unlink()
+        localtime.symlink_to('/etc/passwd')
+        with self.assertRaisesRegex(InstallError, 'identity_symlink'):
+            write_identity(target, self.plan, root_uuid='1111-1111', esp_uuid='ABCD-1234')
+        self.assertEqual(os.readlink(localtime), '/etc/passwd')
+        grub = target / 'boot/grub/grub.cfg'
+        grub.unlink()
+        grub.symlink_to('/etc/shadow')
+        boot = self.boot(target, self.plan, '1111-1111')
+        with self.assertRaisesRegex(InstallError, 'link_not_canonical'):
+            self.installer._grub(target, self.plan, boot, '1111-1111')
+        self.assertEqual(self.system.calls, [])
 
     def test_failure_after_partition_is_uncertain_and_not_replayed(self):
         self.system.fail = 'mkfs.ext4'

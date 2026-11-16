@@ -174,7 +174,8 @@ class Installer:
             boot = self._step(operation_id, 'installed-initramfs', lambda: self.build_boot(target, copy.deepcopy(plan), root_uuid))
             self._boot_receipt(target, boot)
             self._receipt(operation_id, 'boot', boot)
-            self._step(operation_id, 'grub', lambda: self._grub(target, plan, boot, root_uuid))
+            grub_receipt = self._step(operation_id, 'grub', lambda: self._grub(target, plan, boot, root_uuid))
+            self._receipt(operation_id, 'grub', grub_receipt)
             self._boundary(operation_id, cancel)
             self._step(operation_id, 'installed-hygiene', lambda: audit_hygiene(target, plan))
             self._step(operation_id, 'deferred-setup-handoff', lambda: self._pending_receipt(target, self.save_pending(target, copy.deepcopy(plan)), plan))
@@ -262,18 +263,57 @@ class Installer:
         self._step(operation_id, 'private-runtime-mounts', prepare)
 
     def _grub(self, root, plan, boot, root_uuid):
+        import hashlib
+        if not isinstance(root_uuid, str) or not re.fullmatch('[A-Fa-f0-9-]{4,40}', root_uuid):
+            raise InstallError('installer_filesystem_uuid')
+        link = root / 'boot/grub/grub.cfg'
+        expected_link = '../../etc/toddy/grub.cfg'
+        for relative in ('boot', 'boot/grub', 'etc', 'etc/toddy'):
+            path = root / relative
+            if path.is_symlink():
+                raise InstallError('installer_grub_parent_symlink')
+            path.mkdir(mode=0o755, exist_ok=True)
+        if link.is_symlink():
+            if os.readlink(link) != expected_link:
+                raise InstallError('installer_grub_link_not_canonical')
+        elif link.exists():
+            raise InstallError('installer_grub_layout_not_canonical')
+        canonical_config = root / 'etc/toddy/grub.cfg'
+        reference_sha = None
+        if canonical_config.is_symlink() or (canonical_config.exists() and not canonical_config.is_file()):
+            raise InstallError('installer_grub_conffile_not_regular')
+        if canonical_config.exists():
+            original = canonical_config.read_bytes()
+            reference = root / 'usr/share/toddy/recovery/foundation-grub.cfg'
+            if reference.exists() or reference.is_symlink():
+                raise InstallError('installer_grub_recovery_reference_exists')
+            regular(root, 'usr/share/toddy/recovery/foundation-grub.cfg', original, mode=0o444)
+            reference_sha = hashlib.sha256(original).hexdigest()
+        text = 'set timeout=5\nset default=0\n'
+        for title, extra in [('Toddy OS', ''), ('Toddy text recovery', ' systemd.unit=multi-user.target')]:
+            text += "menuentry '" + title + "' {\n search --no-floppy --fs-uuid --set=root " + root_uuid + '\n'
+            text += ' linux /boot/' + boot['kernel'] + ' root=UUID=' + root_uuid + ' ro' + extra + '\n'
+            text += ' initrd /boot/' + boot['initramfs'] + '\n}\n'
+        # Preserve native package ownership/conffile identity: H09/H10 own the
+        # real config in /etc and expose only this exact relative /boot link.
+        regular(root, 'etc/toddy/grub.cfg', text.encode())
+        if not link.is_symlink():
+            os.symlink(expected_link, link)
+        self.system.run(['/usr/bin/chroot', str(root), '/usr/bin/grub-script-check', '/etc/toddy/grub.cfg'])
         prefix = ['/usr/bin/chroot', str(root), '/usr/sbin/grub-install']
         if plan['options']['boot_mode'] == 'uefi':
             command = [*prefix, '--target=x86_64-efi', '--efi-directory=/boot/efi', '--bootloader-id=Toddy', '--no-nvram', '--removable']
         else:
             command = [*prefix, '--target=i386-pc', '--recheck', plan['target']['path']]
         self.system.run(command, timeout=120)
-        text = 'set timeout=5\nset default=0\n'
-        for title, extra in [('Toddy OS', ''), ('Toddy text recovery', ' systemd.unit=multi-user.target')]:
-            text += "menuentry '" + title + "' {\n search --no-floppy --fs-uuid --set=root " + root_uuid + '\n'
-            text += ' linux /boot/' + boot['kernel'] + ' root=UUID=' + root_uuid + ' ro' + extra + '\n'
-            text += ' initrd /boot/' + boot['initramfs'] + '\n}\n'
-        regular(root, 'boot/grub/grub.cfg', text.encode())
+        if not link.is_symlink() or os.readlink(link) != expected_link or canonical_config.read_bytes() != text.encode():
+            raise InstallError('installer_grub_postcondition')
+        if reference_sha is not None and hashlib.sha256(reference.read_bytes()).hexdigest() != reference_sha:
+            raise InstallError('installer_grub_recovery_reference_changed')
+        return {'verified': True, 'config_path': '/etc/toddy/grub.cfg',
+            'config_sha256': hashlib.sha256(text.encode()).hexdigest(),
+            'boot_link': expected_link, 'foundation_reference_sha256': reference_sha,
+            'recovery_scope': 'text-login-current-installed-kernel; original foundation config retained as reference, not active builder-disk boot entry'}
 
     def _state(self, operation_id, state, step):
         self.journal.db.execute('UPDATE operations SET state=?,step=? WHERE id=?', (state, step, operation_id))

@@ -179,3 +179,24 @@ Unpack success alone cannot return the installed-payload receipt.
 No actual finalizer, composed root, signed Phase2 repository, blank-disk install
 or boot is claimed by this source slice. Native reports, extended system-user
 policy and controlled cache/image audits remain concrete required inputs.
+
+## Canonical foundation configuration handoff
+
+The accepted foundation package owns `/etc/toddy/grub.cfg` as a conffile and
+`/boot/grub/grub.cfg` as the exact relative link `../../etc/toddy/grub.cfg`.
+The backend preserves that native layout. It retains the original configuration
+bytes as the read-only, attributed reference
+`/usr/share/toddy/recovery/foundation-grub.cfg`, writes selected installed UUID/
+kernel/initramfs entries to the canonical conffile, runs native grub-script-check
+before grub-install, and records verified configuration/reference hashes in the
+operation journal. Unknown links or an unexpected regular `/boot` configuration
+are refused. The retained reference is historical input, not an active entry
+booting the builder disk or a fictitious prior installed-system rollback. Current
+text recovery and the accepted external rescue-medium route remain distinct.
+
+The known H10 `/etc/localtime -> ../usr/share/zoneinfo/UTC` leaf is also handled
+explicitly: the selected timezone bytes atomically replace that exact generated
+link, with byte/type/mode readback. Its zoneinfo source remains unchanged. Other
+links are refused without following them. Canonical symlink transformations and
+the new recovery reference must appear in final installed-image attribution;
+source fixture checks do not replace native installation or detached-media boot.

@@ -9,7 +9,7 @@ import time
 from .disk_plan import InstallError
 
 
-def regular(root, relative, data, mode=0o644):
+def regular(root, relative, data, mode=0o644, *, replace_known_symlink=None):
     """Write only below an owned real target tree; refuse symlink destinations."""
     target = Path(root)
     if target.is_symlink():
@@ -18,12 +18,14 @@ def regular(root, relative, data, mode=0o644):
         target /= part
         if target.is_symlink():
             raise InstallError('installer_identity_symlink')
-        target.mkdir(exist_ok=True)
+        target.mkdir(mode=0o755, exist_ok=True)
     target /= Path(relative).name
-    if target.exists() and (target.is_symlink() or not target.is_file()):
+    was_link = target.is_symlink()
+    if was_link:
+        if replace_known_symlink is None or os.readlink(target) != replace_known_symlink:
+            raise InstallError('installer_identity_symlink')
+    elif target.exists() and not target.is_file():
         raise InstallError('installer_identity_not_regular')
-    if target.is_symlink():
-        raise InstallError('installer_identity_symlink')
     temporary = target.with_name(target.name + '.toddy-new')
     fd = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, mode)
     try:
@@ -32,12 +34,17 @@ def regular(root, relative, data, mode=0o644):
             stream.flush()
             os.fsync(fd)
         os.fchmod(fd, mode)
+        if was_link and (not target.is_symlink() or os.readlink(target) != replace_known_symlink):
+            raise InstallError('installer_identity_changed_before_replace')
         os.replace(temporary, target)
         directory = os.open(target.parent, os.O_RDONLY | os.O_DIRECTORY)
         try:
             os.fsync(directory)
         finally:
             os.close(directory)
+        metadata = target.lstat()
+        if not stat.S_ISREG(metadata.st_mode) or stat.S_IMODE(metadata.st_mode) != mode or target.read_bytes() != data:
+            raise InstallError('installer_identity_write_postcondition')
     finally:
         os.close(fd)
         if temporary.exists():
@@ -59,7 +66,11 @@ def write_identity(root, plan, *, root_uuid, esp_uuid=None):
     timezone = root / 'usr/share/zoneinfo' / options['timezone']
     if not timezone.is_file() or timezone.is_symlink():
         raise InstallError('installer_target_timezone_unavailable')
-    regular(root, 'etc/localtime', timezone.read_bytes())
+    # H10's reviewed UTC link is generated configuration, not an arbitrary
+    # filesystem redirect. Replace that exact leaf atomically, preserving the
+    # zoneinfo source; refuse every unrecognized link without following it.
+    regular(root, 'etc/localtime', timezone.read_bytes(),
+        replace_known_symlink='../usr/share/zoneinfo/UTC')
     text = 'UUID=' + root_uuid + ' / ext4 defaults 0 1\n'
     if options['boot_mode'] == 'uefi':
         if esp_uuid is None:
