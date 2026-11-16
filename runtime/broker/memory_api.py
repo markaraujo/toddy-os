@@ -153,10 +153,12 @@ class MemoryAPI:
         except MemoryAPIError:
             return False
 
-    def _begin(self, db, expected_revision, *, review=False):
+    def _begin(self, db, expected_revision, *, review=False, expected_generation=None):
         self._owner()
         if self.profiles._current(db) != expected_revision:
             raise ProfileError('stale_profile_revision')
+        if expected_generation is not None and self._generation(db) != expected_generation:
+            raise MemoryAPIError('stale_memory_generation')
         files = self.profiles.snapshot_in_transaction(db, expected_revision)
         if not review and not self._consistent(db, files):
             raise MemoryAPIError('memory_user_document_review_required')
@@ -189,27 +191,31 @@ class MemoryAPI:
                 'user_document_review_required': not self._consistent(db, files),
                 'user_document_sha256': hashlib.sha256(files.get('USER.md', b'')).hexdigest()}
 
-    def put(self, memory_id, text, *, expected_revision, expires=None):
+    def put(self, memory_id, text, *, expected_revision, expires=None, expected_generation=None):
         with self._transaction() as db:
-            memory, files, _expired = self._begin(db, expected_revision)
+            memory, files, _expired = self._begin(db, expected_revision, expected_generation=expected_generation)
             memory.put(memory_id, text, source_kind='owner-edit', source_ref='owner-memory-editor', expires=expires)
             return self._finish(db, files, expected_revision)
 
-    def delete(self, memory_id, *, expected_revision):
+    def delete(self, memory_id, *, expected_revision, expected_generation=None):
         with self._transaction() as db:
-            memory, files, _expired = self._begin(db, expected_revision)
+            memory, files, _expired = self._begin(db, expected_revision, expected_generation=expected_generation)
             memory.delete(memory_id)
             return self._finish(db, files, expected_revision)
 
-    def export(self):
+    def export(self, *, expected_revision=None, expected_generation=None):
         self._owner()
         with self.profiles._db() as db:
             db.execute('BEGIN')
+            if expected_revision is not None and self.profiles._current(db) != expected_revision:
+                raise ProfileError('stale_profile_revision')
+            if expected_generation is not None and self._generation(db) != expected_generation:
+                raise MemoryAPIError('stale_memory_generation')
             return self._memory(db).export(cleanup=False)
 
-    def restore(self, data, *, expected_revision):
+    def restore(self, data, *, expected_revision, expected_generation=None):
         with self._transaction() as db:
-            memory, files, _expired = self._begin(db, expected_revision)
+            memory, files, _expired = self._begin(db, expected_revision, expected_generation=expected_generation)
             memory.restore(data)
             return self._finish(db, files, expected_revision)
 
@@ -230,7 +236,7 @@ class MemoryAPI:
                 expires=old['expires'] if old else None)
         return sorted(ignored)
 
-    def review_user_document(self, preferences, *, expected_revision, reviewed_user_sha256):
+    def review_user_document(self, preferences, *, expected_revision, reviewed_user_sha256, expected_generation=None):
         """Explicit owner conversion of preserved manual text, never a heuristic.
 
         Caller shows the current document and selected structured preferences.
@@ -238,7 +244,7 @@ class MemoryAPI:
         Prior snapshots remain immutable; future model context is canonical only.
         """
         with self._transaction() as db:
-            memory, files, _expired = self._begin(db, expected_revision, review=True)
+            memory, files, _expired = self._begin(db, expected_revision, review=True, expected_generation=expected_generation)
             raw = files.get('USER.md', b'')
             if hashlib.sha256(raw).hexdigest() != reviewed_user_sha256:
                 raise MemoryAPIError('memory_reviewed_document_changed')
@@ -246,16 +252,34 @@ class MemoryAPI:
             result = self._finish(db, files, expected_revision)
             return dict(result, ignored_deleted_ids=ignored, previous_user_document_preserved=True)
 
-    def apply_profile(self, files, *, expected_revision, reviewed_user_sha256=None):
+    def apply_profile(self, files, *, expected_revision, reviewed_user_sha256=None, validated_revision=None):
         """Same validated profile API, with explicit review for USER value changes.
 
         Config/persona-only edits preserve canonical memory. Profile restore/import
         cannot silently hydrate deleted values from an immutable older USER file.
         """
         self.profiles.validate(files)  # keep current semantic/capability guards
+        def checked(result):
+            if validated_revision is not None and result['profile_revision'] != validated_revision:
+                raise MemoryAPIError('profile_stage_memory_changed_revalidate')
+            return result
         with self._transaction() as db:
-            memory, current, expired = self._begin(db, expected_revision, review=reviewed_user_sha256 is not None)
+            memory, current, expired = self._begin(db, expected_revision, review=True)
             candidate = files.get('USER.md', b'')
+            try:
+                parse_projection(current.get('USER.md', b''))
+                structured = True
+            except MemoryAPIError:
+                structured = False
+            if not self._consistent(db, current) and reviewed_user_sha256 is None and not (expired and structured):
+                if candidate != current.get('USER.md', b'') or self._preferences(db):
+                    raise MemoryAPIError('memory_user_document_review_required')
+                revision = self.profiles.apply_in_transaction(db, files, expected_revision=expected_revision)
+                if expired:
+                    db.execute('UPDATE memory_api_state SET generation=generation+1 WHERE profile_id=?', (self.profiles.profile_id,))
+                self._owner()
+                return checked({'profile_revision': revision, 'memory_generation': self._generation(db),
+                        'manual_user_document_preserved': True})
             if candidate != current.get('USER.md', b''):
                 if reviewed_user_sha256 != hashlib.sha256(candidate).hexdigest():
                     raise MemoryAPIError('memory_user_document_review_required')
@@ -263,8 +287,82 @@ class MemoryAPI:
                 self._adopt(db, memory, preferences, reviewed_user_sha256)
             elif reviewed_user_sha256 is not None and not self._consistent(db, current):
                 raise MemoryAPIError('memory_user_document_requires_structured_review')
-            return self._finish(db, files, expected_revision,
-                invalidate=bool(expired) or candidate != current.get('USER.md', b''))
+            if candidate == current.get('USER.md', b'') and not expired:
+                revision = self.profiles.apply_in_transaction(db, files, expected_revision=expected_revision)
+                self._owner()
+                return checked({'profile_revision': revision, 'memory_generation': self._generation(db)})
+            return checked(self._finish(db, files, expected_revision,
+                invalidate=bool(expired) or candidate != current.get('USER.md', b'')))
+
+    def page(self, after_id='', *, limit=16):
+        """Bounded explicit owner surface; raw notes are never a model input."""
+        self._owner()
+        if not isinstance(after_id, str) or after_id and not re.fullmatch('[a-z][a-z0-9-]{0,63}', after_id) or type(limit) is not int or not 1 <= limit <= 32:
+            raise MemoryAPIError('memory_page_cursor')
+        with self.profiles._db() as db:
+            db.execute('BEGIN')
+            revision = self.profiles._current(db)
+            files = self.profiles.snapshot_in_transaction(db, revision)
+            rows = db.execute('SELECT id,kind,text,source_kind,source_ref,source_revision,updated,expires FROM memory_records WHERE profile_id=? AND id>? AND (expires IS NULL OR expires>?) ORDER BY id LIMIT ?',
+                (self.profiles.profile_id, after_id, self.clock(), limit + 1)).fetchall()
+            selected = []
+            for row in rows[:limit]:
+                candidate = [*selected, dict(row)]
+                if len(json.dumps(candidate, ensure_ascii=False).encode()) > 24576:
+                    break
+                selected = candidate
+            return {'version': 1, 'profile_id': self.profiles.profile_id,
+                'profile_revision': revision, 'memory_generation': self._generation(db),
+                'records': selected, 'next_cursor': selected[-1]['id'] if selected else after_id,
+                'complete': len(selected) == len(rows),
+                'user_document_review_required': not self._consistent(db, files),
+                'user_document_sha256': hashlib.sha256(files.get('USER.md', b'')).hexdigest(),
+                'user_document_bytes': len(files.get('USER.md', b''))}
+
+    def user_document(self, *, expected_revision, expected_generation):
+        self._owner()
+        with self.profiles._db() as db:
+            db.execute('BEGIN')
+            if self.profiles._current(db) != expected_revision:
+                raise ProfileError('stale_profile_revision')
+            if self._generation(db) != expected_generation:
+                raise MemoryAPIError('stale_memory_generation')
+            return self.profiles.snapshot_in_transaction(db, expected_revision).get('USER.md', b'')
+
+    def restore_profile(self, revision, *, expected_revision):
+        """Restore settings/persona while keeping current canonical memory."""
+        with self._transaction() as db:
+            self._owner()
+            if self.profiles._current(db) != expected_revision:
+                raise ProfileError('stale_profile_revision')
+            files = self.profiles.snapshot_in_transaction(db, revision)
+            memory = self._memory(db)
+            try:
+                current = self.profiles.snapshot_in_transaction(db, expected_revision)
+            except ProfileError:
+                # A corrupt profile is recoverable, but cannot resurrect old
+                # preferences from a previously pinned USER projection.
+                current = dict(files)
+                if self._preferences(db):
+                    current['USER.md'] = render_projection(self._preferences(db))
+            if self._preferences(db) and not self._consistent(db, current):
+                raise MemoryAPIError('memory_user_document_review_required')
+            files['USER.md'] = current.get('USER.md', b'')
+            expired = memory.expire()
+            try:
+                parse_projection(current.get('USER.md', b''))
+                structured = True
+            except MemoryAPIError:
+                structured = False
+            manual = not structured and not self._consistent(db, current) and not self._preferences(db)
+            if not manual:
+                files['USER.md'] = render_projection(self._preferences(db))
+            restored = self.profiles.apply_in_transaction(db, files, expected_revision=expected_revision)
+            if expired:
+                db.execute('UPDATE memory_api_state SET generation=generation+1 WHERE profile_id=?', (self.profiles.profile_id,))
+            self._owner()
+            return {'profile_revision': restored, 'memory_generation': self._generation(db), 'restored': True,
+                    'canonical_memory_preserved': True}
 
     def context_snapshot(self, query='', *, max_bytes=8192):
         """Canonical bounded model context; no raw/pinned USER file is consulted."""

@@ -3,6 +3,41 @@
     <method name="GetCapabilities">
       <arg name="capabilities_json" type="s" direction="out" />
     </method>
+    <method name="GetMemory">
+      <arg name="profile_id" type="s" direction="in" />
+      <arg name="memory_page_json" type="s" direction="out" />
+    </method>
+    <method name="ListMemory">
+      <arg name="profile_id" type="s" direction="in" />
+      <arg name="after_id" type="s" direction="in" />
+      <arg name="limit" type="u" direction="in" />
+      <arg name="memory_page_json" type="s" direction="out" />
+    </method>
+    <method name="MutateMemory">
+      <arg name="profile_id" type="s" direction="in" />
+      <arg name="expected_revision" type="s" direction="in" />
+      <arg name="operation_json" type="s" direction="in" />
+      <arg name="result_json" type="s" direction="out" />
+    </method>
+    <method name="ExportMemory">
+      <arg name="profile_id" type="s" direction="in" />
+      <arg name="expected_revision" type="s" direction="in" />
+      <arg name="expected_generation" type="t" direction="in" />
+      <arg name="export_fd" type="h" direction="out" />
+    </method>
+    <method name="ExportMemoryDocument">
+      <arg name="profile_id" type="s" direction="in" />
+      <arg name="expected_revision" type="s" direction="in" />
+      <arg name="expected_generation" type="t" direction="in" />
+      <arg name="document_fd" type="h" direction="out" />
+    </method>
+    <method name="RestoreMemory">
+      <arg name="profile_id" type="s" direction="in" />
+      <arg name="expected_revision" type="s" direction="in" />
+      <arg name="expected_generation" type="t" direction="in" />
+      <arg name="backup_fd" type="h" direction="in" />
+      <arg name="result_json" type="s" direction="out" />
+    </method>
     <method name="SubmitTask">
       <arg name="request_id" type="s" direction="in" />
       <arg name="profile_id" type="s" direction="in" />

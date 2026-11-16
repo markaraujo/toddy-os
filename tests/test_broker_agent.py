@@ -87,6 +87,30 @@ class BrokerAgentTests(unittest.TestCase):
         self.assertTrue(self.text.page(snapshot['task_id'], 0)['complete'])
         self.assertFalse((self.workspace / 'missing-dir').exists())
 
+    def test_canonical_memory_replaces_pinned_user_and_active_delete_blocks_tools_and_output(self):
+        from memory_api import MemoryAPI, MemoryEngine
+        memory = MemoryAPI(self.profiles, owner_allowed=lambda: True)
+        saved = memory.put('language', 'Portuguese', expected_revision=self.revision)
+        self.revision = saved['profile_revision']
+        snapshot, request = self.core.submit('memory-pin', self.revision, self.body())
+        memory.delete('language', expected_revision=self.revision)
+        parent = self
+        class Engine:
+            def __call__(self, files, revision, task, prompt, consent, on_tool, on_text, canceled):
+                parent.assertNotIn(b'Portuguese', files['USER.md'])
+                # An edit while the provider is waiting invalidates this work.
+                memory.put('new-key', 'Changed while model waits', expected_revision=memory.profiles.current())
+                parent.assertTrue(canceled())
+                result = on_tool('stale-tool', 'file-write', {'path': 'stale.txt', 'text': 'must not write', 'expected_sha256': None})
+                parent.assertEqual(result['outcome'], 'rejected')
+                on_text('Stale response must not be appended')
+                return {'state': 'completed'}
+        self.core.engine_runner = MemoryEngine(Engine(), memory)
+        done = self.core.execute(snapshot['task_id'], request)
+        self.assertEqual(done['state'], 'canceled')
+        self.assertFalse((self.workspace / 'stale.txt').exists())
+        self.assertEqual(self.text.page(snapshot['task_id'], 0)['chunks'], [])
+
     def test_remote_consent_is_per_request_and_profile_tool_checks_remain_independent(self):
         with self.assertRaisesRegex(BrokerError, 'local_remote_consent_mismatch'):
             self.core.submit('bad-remote', self.revision, self.body(remote_consent=True))

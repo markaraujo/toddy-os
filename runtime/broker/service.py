@@ -29,6 +29,9 @@ from configured_engine import ConfiguredEngine, ADAPTERS
 from profile_registry import ProfileRegistry, RegistryError
 from profile_runtime import ProfileRuntime
 from types import SimpleNamespace
+from memory_api import MemoryAPI, MemoryEngine, MemoryAPIError
+from memory import MemoryError
+from memory_control import MemoryControl
 
 BUS = 'io.github.markaraujo.Toddy.Service'
 OBJECT = '/io/github/markaraujo/Toddy/Service'
@@ -175,10 +178,13 @@ def main():
         journal.recover()
         text=TaskText(journal)
         text.recover();text.purge_transient();text.purge_expired()
+        memory=MemoryAPI(profiles,owner_allowed=allowed)
+        memory_control=MemoryControl(memory)
         core=BrokerCore(profiles,journal,args.workspace,root_client=root_client,
             dispatch_allowed=allowed,shell_runner=ScopedShell(),
-            engine_runner=ConfiguredEngine(args.defaults),text_store=text)
-        return SimpleNamespace(profiles=profiles,journal=journal,text_store=text,core=core)
+            engine_runner=MemoryEngine(ConfiguredEngine(args.defaults),memory),text_store=text, memory_api=memory)
+        return SimpleNamespace(profiles=profiles,journal=journal,text_store=text,core=core,
+                               memory=memory,memory_control=memory_control)
 
     runtime=ProfileRuntime(registry,factory)
     # Recover every registered profile exactly once under lifetime ownership.
@@ -266,7 +272,7 @@ def main():
         if len(stages)>=8:raise BrokerError('profile_stage_limit')
         revision,_,_=profiles.validate(files)
         token='stage-'+uuid.uuid4().hex
-        stages[token]={'sender':sender,'profile_id':profile_id,'expected':expected,'files':files,'expires':now+600}
+        stages[token]={'sender':sender,'profile_id':profile_id,'expected':expected,'files':files,'revision':revision,'expires':now+600}
         return {'version':1,'validated_revision':token,'profile_revision':revision,'valid':True}
 
     def handle(conn,sender,_path,_interface,method,parameters,invocation):
@@ -325,8 +331,25 @@ def main():
             elif method=='RestoreProfile':
                 profile_id,expected,revision=values
                 profiles=registry.store(profile_id,allow_recovery=True)
-                restored=profiles.restore(revision,expected_revision=expected)
-                profiles_changed();reply(invocation,{'version':1,'profile_revision':restored,'restored':True})
+                restored=runtime.context(profile_id).memory.restore_profile(revision,expected_revision=expected)
+                profiles_changed();reply(invocation,{'version':1,**restored})
+            elif method in ('GetMemory','ListMemory','MutateMemory','ExportMemory','ExportMemoryDocument','RestoreMemory'):
+                profile_id=values[0];context=runtime.context(profile_id)
+                if method=='GetMemory':reply(invocation,context.memory_control.page())
+                elif method=='ListMemory':reply(invocation,context.memory_control.page(values[1],values[2]))
+                elif method=='MutateMemory':
+                    result=context.memory_control.mutate(values[1],values[2])
+                    if pending and pending[0] is context:context.core.cancel(pending[1])
+                    profiles_changed();reply(invocation,result)
+                elif method in ('ExportMemory','ExportMemoryDocument'):
+                    method_fn=context.memory_control.export if method=='ExportMemory' else context.memory_control.export_document
+                    export_fd(invocation,method_fn(values[1],values[2]))
+                else:
+                    descriptor=input_fd(invocation,values[3])
+                    try:result=context.memory_control.restore(values[1],values[2],descriptor)
+                    finally:os.close(descriptor)
+                    if pending and pending[0] is context:context.core.cancel(pending[1])
+                    profiles_changed();reply(invocation,result)
             elif method=='SubmitTask':
                 request_id,profile_id,revision,encoded=values
                 context=runtime.context(profile_id)
@@ -357,15 +380,18 @@ def main():
                     descriptor=input_fd(invocation,candidate)
                     try:files=registry.decode_bundle(profile_id,registry.read_fd(descriptor))
                     finally:os.close(descriptor)
+                    # Portable bundles deliberately contain no memory. Applying
+                    # config/persona cannot clear or restore canonical USER.
+                    files['USER.md']=existing_files(profiles,expected).get('USER.md',b'')
                     reply(invocation,stage_files(sender,profile_id,expected,files))
                 else:
                     stage=stages.get(candidate)
                     if not stage or stage['sender']!=sender or stage['profile_id']!=profile_id or \
                             stage['expected']!=expected or stage['expires']<=time.monotonic():raise BrokerError('profile_stage_unavailable')
-                    revision=profiles.apply(stage['files'],expected_revision=expected);del stages[candidate]
-                    profiles_changed();reply(invocation,{'version':1,'profile_revision':revision,'applied':True})
+                    applied=runtime.context(profile_id).memory.apply_profile(stage['files'],expected_revision=expected,validated_revision=stage['revision']);del stages[candidate]
+                    profiles_changed();reply(invocation,{'version':1,'profile_revision':applied['profile_revision'],'applied':True})
             else:raise BrokerError('method_unavailable')
-        except (ProfileError,TaskError,BrokerError,TextError) as error:
+        except (ProfileError,TaskError,BrokerError,TextError,MemoryAPIError,MemoryError) as error:
             invocation.return_dbus_error(INTERFACE+'.Rejected',str(error))
         except (ValueError,UnicodeError,RecursionError,OverflowError,GLib.Error,OSError):
             invocation.return_dbus_error(INTERFACE+'.Rejected','invalid_or_unavailable_request')

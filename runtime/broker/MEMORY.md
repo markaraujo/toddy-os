@@ -70,3 +70,50 @@ through this API, wrap the actual runner, return changed profile revisions to th
 UI, handle review/busy/capacity codes, and qualify native authenticated endpoints,
 two-user isolation, the fixed lookup fixture and actual cancellation flow. This
 source slice does not change service/XML/core or claim B07 acceptance.
+
+## Authenticated broker binding
+
+The actual service factory now creates one `MemoryAPI`, `MemoryControl` and
+`MemoryEngine(ConfiguredEngine(...), memory)` per captured `ProfileRuntime`
+context. It uses the existing same-UID bus-peer check and current native unlocked
+local-session predicate. Selecting a different profile never retargets a pending
+model/task, its memory generation or its output. Capability `owner-memory-v1`
+indicates this owner API exists; it does not claim native B07 acceptance.
+
+`GetMemory(profile_id)` returns the first versioned page; `ListMemory(profile_id,
+after_id, limit)` returns at most 32 records and 49152 encoded bytes. Pages include
+profile revision, memory generation, provenance, expiry, cursor and current USER
+hash/size/review status. They contain no raw USER document or task prompts.
+`MutateMemory(profile_id, expected_revision, operation_json)` requires version 1,
+current `memory_generation` and an exact operation schema: `put` with `id`, `text`,
+nullable `expires`; `delete` with `id`; or `review-user-document` with a selected
+`preferences` map and `reviewed_user_sha256`. Generation and profile revision are
+compared inside the same SQLite transaction. This also rejects stale edits when
+identical USER bytes kept the same content-addressed profile revision. Results
+contain bounded revision/generation metadata, never all canonical records.
+
+`ExportMemory`, `ExportMemoryDocument` and `RestoreMemory` require a profile ID,
+expected profile revision and expected memory generation. Export returns a
+private sealed read-only memfd. Restore accepts only an owned private immutable
+sealed regular FD, at most 8 MiB, and the canonical schema; no path or task/grant
+is imported. Document export is only the explicit owner's manual-review surface.
+Existing tombstones prevail over a memory backup; explicit memory restore replaces
+the record set and never restores an active operation. No memory bytes enter
+`ProfilesChanged`, task metadata or broker diagnostics.
+
+`ValidateProfile` and `ApplyProfile` preserve sender-bound expiring stage tokens
+and exact CAS. Apply uses `MemoryAPI`; unchanged manual USER notes stay byte-exact
+until review. A time-expired projection that would change the validated digest
+fails atomically with `profile_stage_memory_changed_revalidate`. Applying a
+portable profile bundle keeps the current USER because the bundle explicitly
+excludes memory. `RestoreProfile` restores selected settings/persona while keeping
+current canonical memory and current valid manual notes. Recovery from corrupt
+current configuration cannot hydrate an older USER preference projection.
+
+A successful memory mutation/restore also requests normal cancellation of this
+context's pending task. The wrapper independently blocks later tool/output
+admission; deletion cannot erase already-sent provider input or a committed tool.
+Host tests use the actual private session bus, SQLite and sealed FD transport,
+with a synthetic model callback only for cancellation. Native B07 UI/provider/
+restart/deletion/resource validation remains pending; no guest changes are made
+by these source checks.
