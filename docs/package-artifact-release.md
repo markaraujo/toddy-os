@@ -8,6 +8,11 @@ The existing `phase2_release.py` remains the final-ISO/G2 path.
 
 ## Inputs and review
 
+Use the [selected corresponding-source producer](package-corresponding-sources.md)
+to create the actual source/license tars, tagged project snapshot and complete
+source-inventory.json. Prepare/promote independently verify its complete tar/Git
+readback; a hand-written URL list or missing archive cannot replace those assets.
+
 First build the actual native package archives and
 [flat signed repository](native-archive-artifact-glue.md). Keep the repository
 export directory limited to its original exact flat assets plus Release.gpg and

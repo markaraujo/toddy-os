@@ -13,6 +13,7 @@ sys.path[:0]=[str(ROOT/'scripts'),str(ROOT/'scripts/build/phase2')]
 import phase2_release as common
 import acquisition_declarations as declarations
 import archive_metadata
+import package_sources
 
 PUBLIC=Path('config/phase2/public-package-release.json')
 NAME=re.compile(r'[A-Za-z0-9][A-Za-z0-9._+-]{0,159}\Z')
@@ -89,6 +90,7 @@ def prepare(root,request):
     assets(rows,request['tag'],local=True);checksums(rows)
     pins=repository(Path(request['repository_directory']),rows)
     source_review(root,request['source_review'],rows,pins,request['source_commit'])
+    package_sources.verify_assets(next(row['path'] for row in rows if row['role']=='inventory'),rows,pins,request['source_commit'])
     return {'version':1,'state':'package-publication-unverified',**{key:request[key] for key in ('tag','source_commit','release_url','repository_directory','source_review')},'artifacts':rows,'repository_pins':pins,'scope':'experimental-native-package-artifacts','limitations':PENDING}
 
 
@@ -114,6 +116,7 @@ def promote(root,prepared,response,downloads):
     checksums(prepared['artifacts'])
     if repository(Path(prepared['repository_directory']),prepared['artifacts'])!=prepared['repository_pins']:raise ValueError('Signed repository changed')
     source_review(root,prepared['source_review'],prepared['artifacts'],prepared['repository_pins'],prepared['source_commit'])
+    package_sources.verify_assets(next(row['path'] for row in prepared['artifacts'] if row['role']=='inventory'),prepared['artifacts'],prepared['repository_pins'],prepared['source_commit'])
     if common.git(root,'rev-parse','refs/tags/'+prepared['tag']+'^{commit}')!=prepared['source_commit']:raise ValueError('Package tag changed')
     relative=Path(response).relative_to(root).as_posix();raw=common.read(response)
     release=common.evidence(root,relative,hashlib.sha256(raw).hexdigest())
