@@ -12,15 +12,23 @@ class ImageInputsTests(unittest.TestCase):
  def test_cache_binding_covers_additional_namespace_and_carries_no_replay_claim(self):
   sha=lambda value:hashlib.sha256(value.encode()).hexdigest()
   path='/usr/share/glib-2.0/schemas/gschemas.compiled';tool='/usr/bin/glib-compile-schemas'
-  entries={path:{'sha256':sha('native cache')},tool:{'sha256':sha('tool')},
+  reference='/usr/lib/gnome-terminal/gschemas.compiled'
+  entries={reference:{'sha256':image.p.IMMUTABLE_SCHEMA_REFERENCES[reference]},path:{'sha256':sha('native cache')},tool:{'sha256':sha('tool')},
     '/usr/share/glib-2.0/schemas/base.gschema.xml':{'sha256':sha('base')},
     '/usr/share/glib-2.0/schemas/branding.gschema.override':{'sha256':sha('addition')}}
   record={'payload':{path:entries[path]}}
   with patch.object(image.p,'inventory',return_value={'entries':entries}):
    _,bindings,evidence=image.cache_bindings([record],{'native.json':sha('real record')})
-  self.assertEqual(set(bindings[path]['inputs']),set(entries)-{path,tool})
+  self.assertEqual(set(bindings[path]['inputs']),set(entries)-{path,tool,reference})
+  self.assertNotIn(reference,bindings)
   self.assertFalse(evidence[path]['regeneration_passed'])
   self.assertEqual(bindings[path]['native_evidence_sha256'],hashlib.sha256(image.p.encoded(evidence[path])).hexdigest())
+ def test_native_kmod_binding_uses_only_owned_regular_env_and_kmod(self):
+  path='/usr/lib/modules/7.1.8-toddy/modules.dep'
+  entries={'/usr/sbin/depmod':{'symlink':'../bin/kmod'},'/usr/bin/kmod':{'sha256':'a'*64},'/usr/bin/env':{'sha256':'b'*64}}
+  self.assertEqual(image.cache_tool(path,entries),{'path':'/usr/bin/kmod','sha256':'a'*64})
+  del entries['/usr/bin/env']
+  with self.assertRaisesRegex(ValueError,'unavailable'):image.cache_tool(path,entries)
  def test_missing_selected_tool_refused(self):
   with self.assertRaisesRegex(ValueError,'unavailable'):image.cache_tool('/usr/share/glib-2.0/schemas/gschemas.compiled',{})
  def test_account_projection_strips_human_build_memberships_and_locks_all(self):

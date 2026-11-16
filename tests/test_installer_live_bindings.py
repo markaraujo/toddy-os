@@ -12,7 +12,7 @@ from unittest.mock import patch
 from runtime.installer.live_bindings import create
 from runtime.installer.disk_plan import InstallError
 from runtime.installer.installed_boot import init_script,module_namespace,InstalledBoot
-from runtime.installer.native_finalizer import account_files,cache_command
+from runtime.installer.native_finalizer import account_files,cache_command,cache_executables,verify_cache_executables
 from runtime.installer.composition import validate_boot_evidence,validate_finalizer_report,ComposedPayload,bundle_namespace,secured,validate_owner_options
 from runtime.setup.installer_handoff import save
 
@@ -49,6 +49,23 @@ class LiveBindingsTests(unittest.TestCase):
   self.assertTrue(all(row.split(b':')[1]==b'!' for row in files['etc/shadow'][0].splitlines()))
   for addition in ('builder:x:1000:999:Builder:/home/builder:/bin/bash\n','other:x:0:0:root:/root:/bin/bash\n','bad:$hash:101:100:bad:/:/usr/bin/false\n'):
    with self.assertRaises(InstallError):account_files({**baseline,'passwd':baseline['passwd']+addition})
+
+ def test_frozen_kmod_argv0_and_both_regular_executable_custody(self):
+  import tempfile,hashlib
+  path='/usr/lib/modules/7.1.8-toddy/modules.dep';tool='/usr/bin/kmod'
+  self.assertEqual(cache_command(path,tool),['/usr/bin/env','--argv0=depmod',tool,'-a','7.1.8-toddy'])
+  self.assertEqual(cache_executables(path,tool),['/usr/bin/env',tool])
+  with tempfile.TemporaryDirectory() as temporary:
+   root=Path(temporary);(root/'usr/bin').mkdir(parents=True)
+   entries={}
+   for name in ('env','kmod'):
+    file=root/'usr/bin'/name;file.write_bytes(name.encode());entries['/usr/bin/'+name]={'sha256':hashlib.sha256(file.read_bytes()).hexdigest()}
+   binding={'tool':{'path':tool,'sha256':entries[tool]['sha256']}}
+   verify_cache_executables(root,path,binding,entries)
+   file=root/'usr/bin/env';file.unlink();file.symlink_to('kmod')
+   with self.assertRaisesRegex(ValueError,'cache_tool_changed'):verify_cache_executables(root,path,binding,entries)
+   file.unlink();file.write_bytes(b'changed')
+   with self.assertRaisesRegex(ValueError,'cache_tool_changed'):verify_cache_executables(root,path,binding,entries)
 
  def test_cache_argv_is_fixed_and_unknown_recipe_refuses(self):
   self.assertEqual(cache_command('/usr/share/glib-2.0/schemas/gschemas.compiled','/usr/bin/glib-compile-schemas'),['/usr/bin/glib-compile-schemas','--strict','/usr/share/glib-2.0/schemas'])

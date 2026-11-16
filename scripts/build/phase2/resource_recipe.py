@@ -13,7 +13,7 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[3]
 sys.path.insert(0,str(ROOT))
-from runtime.installer.native_finalizer import account_files,cache_command,payload_module
+from runtime.installer.native_finalizer import account_files,cache_command,verify_cache_executables,payload_module
 from runtime.installer.generated_resources import generate_loader_cache
 from runtime.installer.installed_identity import regular
 from runtime.installer.composition import validate_policy
@@ -141,8 +141,7 @@ def qualify(assembly,manifest,policy,system):
         seen=set();cache_results={}
         for recipe in plan:
             virtual=recipe['output'];binding=manifest['generated']['owned_cache_bindings'][virtual]
-            tool=recipe['tool'];source=root/tool['path'].lstrip('/')
-            if source.is_symlink() or source.parent.resolve()!=source.parent or p.digest(source)!=tool['sha256']:raise ValueError('Candidate resource tool changed')
+            tool=recipe['tool'];verify_cache_executables(root,virtual,binding,manifest['ownership']['entries'])
             command=recipe['argv']
             if tuple(command) not in seen:
                 system.run(['/usr/bin/chroot',str(root),*command],timeout=120);commands.append(command);seen.add(tuple(command));assembly.recheck()

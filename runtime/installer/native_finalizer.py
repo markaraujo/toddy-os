@@ -48,12 +48,28 @@ def cache_command(path,tool):
     if path=='/usr/lib/udev/hwdb.bin' and tool=='/usr/bin/systemd-hwdb':return [tool,'update','--usr']
     if path.startswith('/etc/dconf/db/') and tool=='/usr/bin/dconf':return [tool,'update']
     if path.startswith('/usr/lib/modules/7.1.8-toddy/modules.') and tool=='/usr/sbin/depmod':return [tool,'-a','7.1.8-toddy']
+    # kmod34.2 dispatches compatibility commands from argv[0], not a subcommand.
+    # Frozen Coreutils env supports --argv0; both regular executables are checked.
+    if path.startswith('/usr/lib/modules/7.1.8-toddy/modules.') and tool=='/usr/bin/kmod':return ['/usr/bin/env','--argv0=depmod',tool,'-a','7.1.8-toddy']
     if re.fullmatch(r'/usr/lib/gdk-pixbuf-2\.0/[0-9.]+/loaders\.cache',path) and tool in ('/usr/bin/gdk-pixbuf-query-loaders','/usr/lib/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders'):
         return [tool,'--update-cache']
     if re.fullmatch(r'/usr/lib/gtk-[234]\.0/[0-9.]+/immodules\.cache',path) and tool in ('/usr/bin/gtk-query-immodules-3.0','/usr/bin/gtk-query-immodules-2.0'):
         return [tool,'--update-cache']
     # Unknown families remain unqualified; never invent output or copy a cache.
     raise InstallError('installer_cache_native_recipe_unqualified')
+
+
+def cache_executables(path,tool):
+    command=cache_command(path,tool)
+    return ['/usr/bin/env',tool] if command[0]=='/usr/bin/env' else [tool]
+
+
+def verify_cache_executables(root,path,binding,entries):
+    p=payload_module();tool=binding['tool']
+    if entries.get(tool['path'],{}).get('sha256')!=tool['sha256']:raise InstallError('installer_finalizer_cache_tool_changed')
+    for executable in cache_executables(path,tool['path']):
+        source=Path(root)/executable.lstrip('/');expected=entries.get(executable,{}).get('sha256')
+        if not expected or source.parent.resolve()!=source.parent or source.is_symlink() or p.digest(source)!=expected:raise InstallError('installer_finalizer_cache_tool_changed')
 
 
 class NativeFinalizer:
@@ -119,8 +135,7 @@ class NativeFinalizer:
                                      'default_target':'graphical.target','display_manager':'gdm.service'})
         commands=set()
         for virtual,binding in sorted(manifest['generated']['owned_cache_bindings'].items()):
-            source=root/binding['tool']['path'].lstrip('/')
-            if source.parent.resolve()!=source.parent or source.is_symlink() or p.digest(source)!=binding['tool']['sha256']:raise InstallError('installer_finalizer_cache_tool_changed')
+            verify_cache_executables(root,virtual,binding,manifest['ownership']['entries'])
             command=cache_command(virtual,binding['tool']['path'])
             if tuple(command) not in commands:
                 self.system.run(['/usr/bin/chroot',str(root),*command],timeout=120);commands.add(tuple(command))

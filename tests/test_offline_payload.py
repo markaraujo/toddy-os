@@ -267,6 +267,19 @@ class OfflinePayloadTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Runtime/home/cache/log'):
             payload.inventory([record])
 
+    def test_terminal_private_reference_is_immutable_and_unknown_caches_stay_guarded(self):
+        path='/usr/lib/gnome-terminal/gschemas.compiled'
+        expected=payload.IMMUTABLE_SCHEMA_REFERENCES[path]
+        self.assertFalse(payload.generated_artifact(path))
+        entries={path:{'sha256':expected}}
+        self.assertEqual(payload.validate_generated([],entries,{})['owned_cache_bindings'],{})
+        entries[path]['sha256']='0'*64
+        with self.assertRaisesRegex(payload.PayloadError,'immutable_schema_reference_changed'):
+            payload.validate_generated([],entries,{})
+        for other in ('/usr/share/glib-2.0/schemas/gschemas.compiled','/usr/lib/unknown/gschemas.compiled'):
+            self.assertTrue(payload.generated_artifact(other))
+            with self.assertRaisesRegex(payload.PayloadError,'inputs_empty'):payload.cache_namespace(other,{})
+
     def test_cache_requires_exact_selected_inputs_and_tool_provenance(self):
         entries = {'/usr/share/glib-2.0/schemas/gschemas.compiled': {'sha256': 'a' * 64},
             '/usr/share/glib-2.0/schemas/one.gschema.xml': {'sha256': 'b' * 64},

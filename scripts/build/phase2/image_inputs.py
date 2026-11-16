@@ -7,7 +7,7 @@ HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[2]
 sys.path[:0]=[str(HERE),str(ROOT)]
 import offline_payload as p
 from image_media import inherited_media_lease
-from runtime.installer.native_finalizer import account_files,cache_command
+from runtime.installer.native_finalizer import account_files,cache_command,cache_executables
 from runtime.installer.installed_boot import module_namespace,InstalledBoot,RELEASE
 from runtime.installer.composition import secured,validate_policy
 TARGET=Path('/mnt/lfs');STAGE=TARGET/'sources/stage'
@@ -56,12 +56,13 @@ def cache_tool(path,entries):
     # select the existing fixed native cache argv vocabulary.
     candidates=('/usr/bin/glib-compile-schemas','/usr/bin/gtk4-update-icon-cache','/usr/bin/gtk-update-icon-cache',
       '/usr/bin/update-mime-database','/usr/bin/gio-querymodules','/usr/bin/systemd-hwdb','/usr/bin/dconf',
-      '/usr/sbin/depmod','/usr/bin/gdk-pixbuf-query-loaders','/usr/lib/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders',
+      '/usr/sbin/depmod','/usr/bin/kmod','/usr/bin/gdk-pixbuf-query-loaders','/usr/lib/gdk-pixbuf-2.0/gdk-pixbuf-query-loaders',
       '/usr/bin/gtk-query-immodules-3.0','/usr/bin/gtk-query-immodules-2.0')
     for tool in candidates:
         if not entries.get(tool,{}).get('sha256'):continue
-        try:cache_command(path,tool)
+        try:executables=cache_executables(path,tool)
         except ValueError:continue
+        if any(not entries.get(name,{}).get('sha256') for name in executables):continue
         return {'path':tool,'sha256':entries[tool]['sha256']}
     raise ValueError('Selected owned native cache tool unavailable: '+path)
 

@@ -350,7 +350,18 @@ def inventory(records):
     return module.package_inventory(records)
 
 
+# GNOME Terminal 3.60.0 src/meson.build reference_schemas custom_target
+# compiles Terminal + external.gschema.xml into this private reference database.
+# terminal-settings-utils.cc loads it with no parent. It is shipped immutable
+# reference data, not the selected-union /usr/share schema cache.
+IMMUTABLE_SCHEMA_REFERENCES = {
+    '/usr/lib/gnome-terminal/gschemas.compiled':
+        '4dcfd88b0cb247d76075060923020b286fe22075992377c9fad51f55fe4debb5',
+}
+
+
 def generated_artifact(path):
+    if path in IMMUTABLE_SCHEMA_REFERENCES:return False
     return (path.endswith(('gschemas.compiled', 'icon-theme.cache', 'mime.cache', 'loaders.cache',
              'immodules.cache', 'giomodule.cache', 'hwdb.bin')) or
             path.startswith('/etc/dconf/db/') and '.d/' not in path and not path.endswith('.d') or
@@ -389,6 +400,9 @@ def cache_namespace(path, entries):
 def validate_generated(records, entries, bindings):
     if not isinstance(bindings, dict):
         raise PayloadError('payload_generated_bindings_required')
+    for path, expected in IMMUTABLE_SCHEMA_REFERENCES.items():
+        if path in entries and entries[path].get('sha256') != expected:
+            raise PayloadError('payload_immutable_schema_reference_changed')
     required = {path for path, row in entries.items() if 'sha256' in row and generated_artifact(path)}
     if set(bindings) != required:
         raise PayloadError('payload_generated_cache_binding_incomplete')
