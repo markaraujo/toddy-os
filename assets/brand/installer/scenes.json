@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "scope": "Installer presentation inputs; B11/B12 native acceptance remains separate",
+  "scenes": [
+    {
+      "id": "desktop",
+      "source": "docs/evidence/B02-native-owner-desktop.png",
+      "sha256": "9fabe0fede487bdea1e47e9adbee144927722fda4cc48bc3033214cb9a20d57d",
+      "kind": "native-guest-capture",
+      "evidence": "docs/evidence/B02-native-owner-session.json",
+      "title": {"en": "A familiar desktop. A dog with big plans.", "pt_BR": "Uma área de trabalho familiar. Um cão com grandes planos."},
+      "body": {"en": "The B02 guest already runs GNOME, files, a browser and a terminal. I fetch files. You fetch treats.", "pt_BR": "O guest B02 já executa GNOME, arquivos, navegador e terminal. Eu busco arquivos. Você busca petiscos."},
+      "notice": {"en": "Actual B02 guest capture; installed-candidate validation is separate.", "pt_BR": "Captura real do guest B02; a validação do candidato instalado é separada."}
+    },
+    {
+      "id": "terminal",
+      "source": "docs/evidence/B02-final-git-terminal.png",
+      "sha256": "382f81a7009a8b6ce298f653d20f9775930b6a83deeda04471974400e50acdac",
+      "kind": "native-guest-capture",
+      "evidence": "docs/evidence/B02-final-native-desktop.json",
+      "title": {"en": "Git keeps the receipts. I keep the keyboard warm.", "pt_BR": "O Git guarda o histórico. Eu mantenho o teclado quentinho."},
+      "body": {"en": "Native Git and Terminal are part of the base desktop. Your files stay yours, even when assistant setup waits.", "pt_BR": "Git e Terminal nativos fazem parte da base. Seus arquivos continuam seus, mesmo com a configuração do assistente para depois."},
+      "notice": {"en": "Actual B02 guest capture; no physical-machine claim.", "pt_BR": "Captura real do guest B02; sem alegação de teste em máquina física."}
+    },
+    {
+      "id": "assistant-preview",
+      "source": "assets/brand/toddy-os-assistant-preview.png",
+      "sha256": "35e29842007a3f41cf3d6abb10faba945db143e5b12d2f1184e00f91ca031f73",
+      "kind": "design-preview",
+      "evidence": "assets/brand/generation-record.json",
+      "title": {"en": "Your assistant, when you invite him.", "pt_BR": "Seu assistente, quando você convidar."},
+      "body": {"en": "This concept shows Toddy's quick entry. Backend and provider setup can wait until after installation.", "pt_BR": "Este conceito mostra a entrada rápida do Toddy. Backend e provedor podem ser configurados depois da instalação."},
+      "notice": {"en": "Design preview — not a running build.", "pt_BR": "Prévia de design — não é uma versão em execução."}
+    },
+    {
+      "id": "task-preview",
+      "source": "assets/brand/toddy-os-task-preview.png",
+      "sha256": "ff19e7171c301a5455815c9d7ebb6bc84524d511ceb85b154cda9a036e850f2d",
+      "kind": "design-preview",
+      "evidence": "assets/brand/generation-record.json",
+      "title": {"en": "A paw beside the Stop button.", "pt_BR": "Uma patinha ao lado do botão Parar."},
+      "body": {"en": "A concept for visible progress and Stop. Runtime qualification remains separate; treats are optional.", "pt_BR": "Um conceito de progresso visível e botão Parar. A qualificação em execução é separada; petiscos são opcionais."},
+      "notice": {"en": "Design preview — not a running build.", "pt_BR": "Prévia de design — não é uma versão em execução."}
+    }
+  ]
+}

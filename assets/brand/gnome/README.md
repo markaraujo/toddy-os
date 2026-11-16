@@ -55,3 +55,31 @@ Sources reviewed 2026-11-07:
 - [GSettings](https://docs.gtk.org/gio/class.Settings.html) (API 2.0; current docs are not the frozen guest version)
 - [GNOME styling](https://developer.gnome.org/hig/guidelines/ui-styling.html)
 - [Extension anatomy](https://gjs.guide/extensions/overview/anatomy.html)
+
+## Native package staging source
+
+`scripts/build/phase2/branding_stage.py` now stages the exact approved sources as
+owned inputs for `toddy-branding`. Run `python3 scripts/build/phase2/branding_stage.py
+desktop <repository> <new-stage>`; it refuses existing output and verifies pinned
+artwork hashes/dimensions. No original PNG is edited or resized. The current map
+has pending icon sizes, with no approved exports to reuse, so the exact mascot is
+staged at `/usr/share/pixmaps/io.github.markaraujo.Toddy.png`. The generator prefers
+an explicit verified `icon_exports` map when those approved files exist. Native
+32/48/64px readability remains required; a fallback does not earn that acceptance.
+
+The default stage contains no active schema override, preference lock, launcher,
+login process or GDM patch. Optional override staging requires an exact guest
+schema-validation callback and returns a required controlled schema-cache rebuild;
+it does not run that cache mutation on the development host. Native ownership,
+generated-resource custody and install/update/removal remain the existing package
+transaction's responsibility, including user preference preservation.
+
+B02's `toddy-desktop-defaults` dconf database outranks GSettings schema defaults.
+Its existing owning recipe can use `render_desktop_defaults(canonical_keyfile)`
+to replace only the three provisional empty-background defaults with approved
+wallpaper URIs and zoom. The renderer refuses an edited/unknown background
+baseline, keeps every other section and does not own a second conffile or alter
+an installed/user file. Rebuild that package's existing native dconf database
+through its controlled transaction; do not force a setting at login. Actual
+guest defaults, upgrade/removal, preference preservation and screenshots remain
+unverified by this source preparation.

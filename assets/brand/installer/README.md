@@ -64,3 +64,29 @@ variants. B12 wires real progress, errors, review and verified completion to the
 same presentation. The website files stay outside the native branding payload;
 package only selected sources/native adapters through declared ownership.
 S17-A/B and B12/B13 retain runtime acceptance. Browser review never completes them.
+
+## Separate live installer package inputs
+
+`scripts/build/phase2/branding_stage.py installer <repository> <new-stage>` stages
+`calamares-branding-toddy` separately from the installed desktop artwork package.
+Its native location is `/usr/share/calamares/branding/toddy`. Approved source
+masters are copied unchanged. `scenes.json` binds two real B02 captures to their
+committed evidence hashes and keeps assistant/task concepts explicitly labeled
+in English and Portuguese. These captures describe the accepted B02 guest, not a
+new installed candidate or completed B11/B12.
+
+The branding descriptor and slideshow API were checked directly in the frozen
+[Calamares3.4.3 release archive](https://codeberg.org/Calamares/calamares/releases/tag/v3.4.3),
+SHA-256 `144cbbf6bdcebfb21685950db4f0777218519df095f62f4aa392f28348110d18`,
+at `src/branding/default/branding.desc`, `show.qml` and `src/branding/README.md`.
+The default staged descriptor uses one static actual desktop capture. It needs
+no new QML dependency, timer, web engine, log upload or concept-success claim.
+
+When the final native QtQuick closure is present, trusted packaging may request
+`stage_installer(..., qml_enabled=True)`. This stages the original Toddy API2 QML
+view, with visible provenance notice, manual keyboard/mouse scene controls and
+static/paused reduced-motion defaults. It performs no HTTP/XHR fetch, reboot or
+installation dispatch and derives no progress/success from its optional decorative
+timer. Enabling source staging does not prove QML compilation or visual behavior.
+Native Qt/display/scale/focus/high-contrast, language change and actual installer
+event/error/completion checks remain required before activating or accepting it.

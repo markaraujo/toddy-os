@@ -1,0 +1,85 @@
+// Original Toddy presentation source, MIT. Approved raster artwork is unchanged.
+// Calamares3.4.3 branding slideshow API2; native QtQuick qualification required.
+import QtQuick 2.0
+
+Rectangle {
+    id: root
+    color: "#081426"
+    property bool activatedInCalamares: false
+    property bool reducedMotion: true
+    property bool paused: true
+    property int sceneIndex: 0
+    property string language: Qt.locale().name.indexOf("pt") === 0 ? "pt_BR" : "en"
+    property var scenes: @SCENES@
+    property var scene: scenes[sceneIndex]
+    function onActivate() { activatedInCalamares = true; }
+    function onLeave() { activatedInCalamares = false; paused = true; }
+    function advance(delta) { sceneIndex = (sceneIndex + delta + scenes.length) % scenes.length; }
+
+    Column {
+        anchors.fill: parent
+        anchors.margins: 16
+        spacing: 8
+        Text {
+            width: parent.width
+            text: root.scene.title[root.language]
+            color: "#F1F6FF"
+            font.pixelSize: 20
+            wrapMode: Text.WordWrap
+            textFormat: Text.PlainText
+        }
+        Text {
+            width: parent.width
+            text: root.scene.notice[root.language]
+            color: "#87BDFF"
+            font.pixelSize: 14
+            font.bold: true
+            wrapMode: Text.WordWrap
+            textFormat: Text.PlainText
+        }
+        Image {
+            width: parent.width
+            height: Math.max(80, root.height - 225)
+            source: root.scene.image
+            fillMode: Image.PreserveAspectFit
+            asynchronous: true
+        }
+        Text {
+            width: parent.width
+            text: root.scene.body[root.language]
+            color: "#F1F6FF"
+            font.pixelSize: 14
+            wrapMode: Text.WordWrap
+            textFormat: Text.PlainText
+        }
+        Row {
+            spacing: 12
+            Repeater {
+                model: [-1, 1]
+                Rectangle {
+                    width: 110
+                    height: 34
+                    color: activeFocus ? "#294D75" : "#10233F"
+                    border.width: activeFocus ? 2 : 1
+                    border.color: "#87BDFF"
+                    activeFocusOnTab: true
+                    Accessible.role: Accessible.Button
+                    Accessible.name: modelData < 0 ? (root.language === "pt_BR" ? "Anterior" : "Previous") : (root.language === "pt_BR" ? "Próxima" : "Next")
+                    Text { anchors.centerIn: parent; text: parent.Accessible.name; color: "#F1F6FF" }
+                    MouseArea { anchors.fill: parent; onClicked: root.advance(modelData) }
+                    Keys.onReturnPressed: root.advance(modelData)
+                    Keys.onSpacePressed: root.advance(modelData)
+                }
+            }
+            Text { text: (root.sceneIndex + 1) + " / " + root.scenes.length; color: "#F1F6FF"; anchors.verticalCenter: parent.verticalCenter }
+        }
+    }
+    // No progress percentage, success state or installation/reboot dispatch is
+    // derived from this decorative timer. Static/manual presentation is default.
+    Timer {
+        interval: 18000
+        repeat: true
+        running: root.activatedInCalamares && !root.reducedMotion && !root.paused
+        onTriggered: root.advance(1)
+    }
+}
