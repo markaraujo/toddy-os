@@ -30,9 +30,13 @@ Source profiles/tasks/memory/scheduler/setup/native UI/MCP/browser/voice adapter
 are integrated with host tests, not later-story acceptance. B04 remains current;
 B05 prerequisites and later native acceptance remain pending. No Phase2 ISO/G2.
 
-Next: prepare and commit one combined disposable broker/root/user-systemd scope
-qualification using the accepted cold backing, NEW context and current source.
-Preserve one writer; inspect actual operations before any retry.
+Combined broker1 transport failed/not-run; broker2 verified readonly transport
+and reached real user service/sysinfo/profile/file write, then duplicate admission
+failed. Both original disks unchanged and owned VMs stopped. New pure request
+lookup and stale-idle admission corrections are being integrated.
+Next: commit current corrected inputs and run NEW broker3 through
+`phase2_native_executor_control.py --slice broker --generation 3`. Never replay1/2.
+No guest writer remains. Exact local ledger/runtime pointer reflects this state.
 
 ## Last verified runtime and jobs
 

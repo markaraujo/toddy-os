@@ -52,9 +52,10 @@ def main():
     if args.slice=='broker':
         bundle={}
         for name in ['broker/service.py','broker/core.py','broker/protocol.py','broker/profiles.py','broker/tasks.py',
-                     'broker/io.github.markaraujo.Toddy.Service1.xml','tools/native.py','tools/child.py','tools/scoped.py','tools/scoped_child.py']:
+                     'broker/io.github.markaraujo.Toddy.Service1.xml','broker/engine.py','broker/configured_engine.py','broker/text.py',
+                     'connections/secret_store.py','local/server.py','local/managed.py','shared/json.py','tools/native.py','tools/child.py','tools/scoped.py','tools/scoped_child.py']:
             bundle['/usr/lib/toddy/'+name]=(ROOT/'runtime'/name).read_text()
-        for name in ['profile.schema.json',*[str(p.relative_to(ROOT/'config/phase2')) for p in (ROOT/'config/phase2/profile').iterdir() if p.is_file() and p.suffix in ('.md','.json')]]:
+        for name in ['profile.schema.json','local-model.lock.json',*[str(p.relative_to(ROOT/'config/phase2')) for p in (ROOT/'config/phase2/profile').iterdir() if p.is_file() and p.suffix in ('.md','.json')]]:
             bundle['/usr/share/toddy/'+name]=(ROOT/'config/phase2'/name).read_text()
         for source,destination in [('toddy-agent.service','/usr/lib/systemd/user/toddy-agent.service'),
                ('io.github.markaraujo.Toddy.Service.service','/usr/share/dbus-1/services/io.github.markaraujo.Toddy.Service.service')]:
@@ -121,6 +122,8 @@ def main():
         state['container_final_state']=boot.stop_owned_container(cid,run_id)
         state['phase']='native-stopped';save()
     for name,row in baseline['cold_disks'].items():assert phase2_vm.backing_identity(phase2_vm.WORK/name)==row
+    if auxiliary is not None:
+        with (context/'broker-input.raw').open('rb') as f:assert hashlib.file_digest(f,'sha256').hexdigest()==state['auxiliary_sha256']
     state['backing_unchanged']=True
     serial=(context/'serial.log').read_text(errors='replace')
     report,summary,recovered=decode(serial)

@@ -12,7 +12,7 @@ bundle=_native_broker_bundle;assert isinstance(bundle,dict) and len(bundle)<40
 for name,text in bundle.items():
     target=Path(name)
     assert target.is_absolute() and '..' not in target.parts
-    assert name.startswith(('/usr/lib/toddy/broker/','/usr/lib/toddy/tools/','/usr/share/toddy/')) or name in [
+    assert name.startswith(('/usr/lib/toddy/broker/','/usr/lib/toddy/tools/','/usr/lib/toddy/connections/','/usr/lib/toddy/local/','/usr/lib/toddy/shared/','/usr/share/toddy/')) or name in [
         '/usr/lib/systemd/user/toddy-agent.service','/usr/share/dbus-1/services/io.github.markaraujo.Toddy.Service.service']
     assert not target.exists() and not target.is_symlink(),'Preserve existing native package files'
     target.parent.mkdir(parents=True,exist_ok=True);target.write_text(text);target.chmod(0o644)
@@ -20,7 +20,7 @@ env={'PATH':'/usr/bin:/usr/sbin','LANG':'C.UTF-8','HOME':'/home/'+username,'USER
      'XDG_RUNTIME_DIR':'/run/user/'+str(uid),'DBUS_SESSION_BUS_ADDRESS':'unix:path=/run/user/'+str(uid)+'/bus'}
 def user_command(argv,timeout=35,check=True):
     r=subprocess.run(argv,user=uid,group=uid,extra_groups=[],capture_output=True,text=True,env=env,timeout=timeout)
-    assert not check or r.returncode==0,('native_broker_command_failed',argv[:3],r.returncode,r.stderr[:400])
+    assert not check or r.returncode==0,('native_broker_command_failed',argv[:3],r.returncode,r.stderr[-500:])
     return r
 user_command(['/usr/bin/systemctl','--user','daemon-reload'])
 user_command(['/usr/bin/systemctl','--user','start','toddy-agent.service'])

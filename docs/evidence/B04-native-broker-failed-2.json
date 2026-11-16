@@ -1,0 +1,10 @@
+{
+  "all_selected_exits_zero": false,
+  "error": "('native_broker_command_failed', ['/usr/bin/python3', '/tmp/toddy-native-broker-client.py'], 1, 'Traceback (most recent call last):\\n  File \"/tmp/toddy-native-broker-client.py\", line 35, in <module>\\n    assert submit(\\'native-file-write\\',revision,\\'file-write\\',a)==written\\n           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"/tmp/toddy-native-broker-client.py\", line 19, in submit\\n    def submit(request,revision,kind,args):return call(\\'SubmitTask\\',(request,\\'toddy-default\\',revisio')",
+  "error_type": "AssertionError",
+  "job": "native-executor-broker-2",
+  "scope": "Corrected readonly source transport reached actual user service/sysinfo/profile/file write, then duplicate submission failed after completed snapshot. No complete broker acceptance.",
+  "backing_unchanged": true,
+  "auxiliary_sha256": "82705f0b9bfb7f465df6389a9a4f9f658592f8d0404846f75f6ccbe73a6c5199",
+  "firmware_encoded_bytes": 32084
+}

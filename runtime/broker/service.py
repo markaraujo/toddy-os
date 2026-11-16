@@ -211,8 +211,9 @@ def main():
     def finished(task_id):
         nonlocal pending
         emit(task_id)
-        pending = None
-        if stopping:
+        if pending == task_id:
+            pending = None
+        if stopping and pending is None:
             loop.quit()
         return False
 
@@ -271,6 +272,11 @@ def main():
                 if existing is not None:
                     invocation.return_value(GLib.Variant('(s)', (existing['task_id'],)))
                     return
+                # A terminal/waiting record is written only after its adapter
+                # returned/cleaned up. Do not expose a stale idle-callback busy
+                # flag after that result; the one worker still serializes jobs.
+                if pending and journal.inspect(pending)['state'] in {'completed','failed','canceled','waiting'}:
+                    pending = None
                 if stopping or pending:
                     raise BrokerError('broker_busy')
                 snapshot, request = core.submit(request_id, revision, encoded)
