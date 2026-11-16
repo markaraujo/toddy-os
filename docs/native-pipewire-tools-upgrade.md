@@ -51,6 +51,24 @@ this new stage. The frozen relative aliases point to `pw-cat`. Actual native
 `--help` and compiled/linked 1.6.8 version consumers are separate from capture,
 playback, routing or physical audio acceptance.
 
+The coordinator's first preparation stopped before any source/work/prepared
+namespace because historical LFS source permissions did not satisfy protected
+input checks. A private opened-FD source copy then completed, but the second
+preparation stopped before source extraction on historical build-control modes.
+Verified metadata transfer now protects only `/opt/toddy-build` directories and
+files as receiving-root-owned and non-group/world-writable, preserving legacy
+`/mnt/lfs/sources` ownership/modes. Source bytes and existing native voice audit
+hashes remain unchanged.
+
+For this exact retained completed-copy case only, after verifying absent
+prepared/source/work/stage/job artifacts and synchronizing the corrected controls,
+use `pipewire_tools_native.py resume-prepare-verified-source`. It requires the
+specific previous custody producer hash, unchanged original source identity,
+complete private-copy bytes/proof and a NEW one-shot resume intent. It does not
+copy the source again or clear either failed log. Standard `prepare` still refuses
+existing custody; partial/changed custody or an existing resume intent is not
+retryable. Root controls are checked before any custody write on fresh runs.
+
 Before installation, the root helper checks native installed provider versions,
 archives/records and every direct ELF owner/hash. The new tool must be x86-64 ELF
 without RPATH/RUNPATH, linked to declared native PipeWire/libsndfile/libc providers;

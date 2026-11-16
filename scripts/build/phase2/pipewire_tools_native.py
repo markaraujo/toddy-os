@@ -15,6 +15,7 @@ SOURCE_BYTES=2062635
 SOURCE_CUSTODY=LOG/'pipewire-tools-source-custody-1'
 PRIVATE_ARCHIVE=SOURCE_CUSTODY/ARCHIVE
 SOURCE_SHA='efbaedf80450e5b08bb3196a4ca7ea17850d4a71ec1a8ae321e8937a7c95779e'
+COMPLETED_CUSTODY_PRODUCER='22d476323104f952097bb089a54dba15a0724bcb593379f8e4355c0c80139d37'
 OLD_RECORD_SHA='ebdad900696ab299bcc7be52dcbde490c0a2a6d5afb3b659acb89cb6c2a77303'
 OLD_ARCHIVE_SHA='6fcccccb584101ebf0899dcabbc64ff8551f8cc4e58356bc8878febc6a17c56a'
 OLD_DEPENDS='glibc (>= 2.44-1), systemd (>= 261.2-1), dbus (>= 1.16.2-1), glib (>= 2.88.3-1+toddy1), alsa-lib (= 1.2.16.1-1+toddy1)'
@@ -208,8 +209,21 @@ def source_pins():
     return {name:digest(regular(ROOT/name)) for name in names}
 
 
-def prepare():
-    fresh=(SOURCE,SOURCE.with_name(SOURCE.name+'-extracting'),WORK,STAGE,PREPARED,RECEIPT,PREPARED.with_suffix('.part'),RECEIPT.with_suffix('.part'),STAGE.with_name(STAGE.name+'-baseline.deb'),SOURCE_CUSTODY)
+def resume_completed_source(inputs):
+    upstream,custody=verified_source()
+    if (custody.get('producer_sha256')!=COMPLETED_CUSTODY_PRODUCER or
+            custody.get('source_metadata')!=source_fingerprint((TARGET/'sources'/ARCHIVE).lstat())):
+        raise ValueError('pipewire_tools_reviewed_completed_source_required')
+    resume=SOURCE_CUSTODY/'resume-prepare-control-protection.json'
+    if resume.exists() or resume.with_suffix('.part').exists():raise ValueError('pipewire_tools_resume_exists_no_replay')
+    save(resume,{'state':'resume-prepare-intended-no-replay','producer_sha256':digest(Path(__file__)),
+        'completed_custody_sha256':digest(SOURCE_CUSTODY/'source-custody.json'),'inputs':inputs})
+    return upstream,custody
+
+
+def prepare(*,resume_verified_source=False):
+    fresh=(SOURCE,SOURCE.with_name(SOURCE.name+'-extracting'),WORK,STAGE,PREPARED,RECEIPT,PREPARED.with_suffix('.part'),RECEIPT.with_suffix('.part'),STAGE.with_name(STAGE.name+'-baseline.deb'))
+    if not resume_verified_source:fresh+=(SOURCE_CUSTODY,)
     fresh+=tuple(LOG.glob(JOB+'.*'))
     if any(os.path.lexists(path) for path in fresh):raise ValueError('pipewire_tools_preserve_existing_generation')
     for name in ('pw-cat',*ALIASES):
@@ -218,11 +232,16 @@ def prepare():
     if native('/usr/bin/dpkg-query','-W','-f=${Conffiles}','pipewire'):raise ValueError('pipewire_tools_conffiles_require_explicit_review')
     # Protected custody is the first source write, retained on every failure.
     if shutil.disk_usage(LOG).free<SOURCE_BYTES+128*1024**2:raise ValueError('pipewire_tools_source_custody_capacity')
-    upstream,custody=copy_frozen_source()
+    inputs=source_pins()  # Reject unprotected controls before any custody write.
+    if resume_verified_source:
+        upstream,custody=resume_completed_source(inputs)
+    else:
+        upstream,custody=copy_frozen_source()
     with tarfile.open(upstream) as bundle:
         expanded=source_members(bundle.getmembers())
         if shutil.disk_usage(TARGET).free<16*1024**3+512*1024**2+8*expanded+3*archive_info['regular_bytes']:raise ValueError('pipewire_tools_16gib_reserve')
-        state={'state':'preparing-no-replay','dependencies':dependencies,'inputs':source_pins(),'source_sha256':SOURCE_SHA,'expanded_source_bytes':expanded,
+        state={'state':'preparing-no-replay','dependencies':dependencies,'inputs':inputs,'source_sha256':SOURCE_SHA,'expanded_source_bytes':expanded,
+            'resumed_verified_source_custody':resume_verified_source,
             'old_record_sha256':OLD_RECORD_SHA,'old_archive_sha256':OLD_ARCHIVE_SHA,'old_archive_storage':archive_info,'source_custody':custody}
         save(PREPARED,state);temporary=SOURCE.with_name(SOURCE.name+'-extracting');temporary.mkdir(mode=0o755)
         bundle.extractall(temporary,filter='data')
@@ -360,15 +379,15 @@ def postcheck():
 
 
 def main():
-    if os.getuid()!=0 or os.geteuid()!=0 or len(sys.argv)!=2 or sys.argv[1] not in ('prepare','qualify','install','postcheck'):raise SystemExit('pipewire_tools_guest_root_coordinator_required')
+    if os.getuid()!=0 or os.geteuid()!=0 or len(sys.argv)!=2 or sys.argv[1] not in ('prepare','resume-prepare-verified-source','qualify','install','postcheck'):raise SystemExit('pipewire_tools_guest_root_coordinator_required')
     subprocess.run(['/bin/bash','-c','source "$1"; guard_target','guard',str(ROOT/'scripts/build/target.sh')],check=True)
     LOG.mkdir(parents=True,exist_ok=True)
-    if sys.argv[1]=='prepare':
+    if sys.argv[1] in ('prepare','resume-prepare-verified-source'):
         fd=os.open('/var/log/toddy/build/build.lock',os.O_RDWR|os.O_CREAT|os.O_NOFOLLOW,0o600)
         try:
             fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)
             if list(Path('/var/log/toddy/build').glob('*.running.json')):raise ValueError('pipewire_tools_other_native_transaction')
-            prepare()
+            prepare(resume_verified_source=sys.argv[1]=='resume-prepare-verified-source')
         finally:os.close(fd)
     elif sys.argv[1]=='qualify':print(json.dumps(qualify()[2],sort_keys=True))
     elif sys.argv[1]=='install':install()

@@ -167,4 +167,33 @@ class PipewireLegacySourceCustodyTests(unittest.TestCase):
         copy,_=p.copy_frozen_source();self.legacy.unlink();copy.write_bytes(b'changed')
         with self.assertRaisesRegex(ValueError,'private_source_changed'):p.verified_source()
 
+    def test_explicit_completed_copy_resume_retains_copy_and_refuses_second_resume(self):
+        copy,state=p.copy_frozen_source();inode=copy.stat().st_ino
+        with patch.object(p,'COMPLETED_CUSTODY_PRODUCER',state['producer_sha256']):
+            observed,_=p.resume_completed_source({'fixture':'a'*64})
+            self.assertEqual(observed.stat().st_ino,inode)
+            self.assertEqual(json.loads((self.custody/'source-custody.json').read_text()),state)
+            with self.assertRaisesRegex(ValueError,'resume_exists_no_replay'):
+                p.resume_completed_source({'fixture':'a'*64})
+
+    def test_completed_copy_resume_requires_exact_prior_producer_and_legacy_identity(self):
+        _,state=p.copy_frozen_source()
+        with patch.object(p,'COMPLETED_CUSTODY_PRODUCER','f'*64):
+            with self.assertRaisesRegex(ValueError,'reviewed_completed_source'):
+                p.resume_completed_source({})
+        self.assertFalse((self.custody/'resume-prepare-control-protection.json').exists())
+        before=self.legacy.stat();os.utime(self.legacy,ns=(before.st_atime_ns,before.st_mtime_ns+1))
+        with patch.object(p,'COMPLETED_CUSTODY_PRODUCER',state['producer_sha256']):
+            with self.assertRaisesRegex(ValueError,'reviewed_completed_source'):
+                p.resume_completed_source({})
+
+    def test_only_explicit_resume_admits_completed_custody_to_prepare_preflight(self):
+        self.custody.mkdir()
+        patches=[patch.object(p,name,self.root/name) for name in ('SOURCE','WORK','STAGE','PREPARED','RECEIPT')]
+        for context in patches:context.start();self.addCleanup(context.stop)
+        with patch.object(p,'baseline',side_effect=RuntimeError('reached independent baseline guard')):
+            with self.assertRaisesRegex(ValueError,'preserve_existing_generation'):p.prepare()
+            with self.assertRaisesRegex(RuntimeError,'independent baseline guard'):
+                p.prepare(resume_verified_source=True)
+
 if __name__=='__main__':unittest.main()

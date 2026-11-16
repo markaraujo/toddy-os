@@ -37,6 +37,8 @@ def metadata_filter(info):
         raise ValueError('Only regular build metadata files/directories may be transferred')
     info.uid = info.gid = 0
     info.uname = info.gname = 'root'
+    if info.name.startswith('opt/toddy-build/'):
+        info.mode &= ~0o022
     return info
 
 
@@ -79,13 +81,30 @@ def commit_verified_files(stage,files,root=Path('/')):
         if allowed.resolve() != allowed:
             raise ValueError('Input namespace root is redirected')
         destination.parent.mkdir(parents=True,exist_ok=True)
+        protected=text.startswith('opt/toddy-build/')
+        if protected:
+            # Existing foundation control directories may predate root-only
+            # metadata transfer. Preserve the separate legacy LFS source cache.
+            directories=[];directory=destination.parent
+            while directory!=allowed:
+                directories.append(directory);directory=directory.parent
+            directories.append(allowed)
+            for directory in reversed(directories):
+                if directory.is_symlink() or directory.resolve()!=directory or not directory.is_dir():
+                    raise ValueError('Redirected build control directory')
+                info=directory.stat()
+                if (info.st_uid,info.st_gid)!=(os.geteuid(),os.getegid()):
+                    os.chown(directory,os.geteuid(),os.getegid());info=directory.stat()
+                directory_mode=stat.S_IMODE(info.st_mode)&~0o022
+                if directory_mode!=stat.S_IMODE(info.st_mode):directory.chmod(directory_mode)
         temporary=destination.with_name(destination.name+'.input-sync-part')
         if temporary.exists() or temporary.is_symlink():
             raise ValueError('Previous partial input exists; inspect before resuming')
         src=source.stat()
+        mode=stat.S_IMODE(src.st_mode)&(~0o022 if protected else 0o7777)
         if destination.is_file() and not destination.is_symlink():
             dst=destination.stat()
-            same=(dst.st_uid,dst.st_gid,stat.S_IMODE(dst.st_mode),dst.st_size)==(src.st_uid,src.st_gid,stat.S_IMODE(src.st_mode),src.st_size)
+            same=(dst.st_uid,dst.st_gid,stat.S_IMODE(dst.st_mode),dst.st_size)==(src.st_uid,src.st_gid,mode,src.st_size)
             same=same and sorted(os.listxattr(source))==sorted(os.listxattr(destination))
             if same:
                 same=all(os.getxattr(source,n)==os.getxattr(destination,n) for n in os.listxattr(source))
@@ -96,6 +115,7 @@ def commit_verified_files(stage,files,root=Path('/')):
                     reused+=1
                     continue
         shutil.copy2(source,temporary,follow_symlinks=False)
+        if protected:temporary.chmod(mode)
         os.replace(temporary,destination);replaced+=1
     return {'reused':reused,'replaced':replaced}
 

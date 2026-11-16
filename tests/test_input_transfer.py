@@ -108,3 +108,27 @@ class VerifiedReuse(unittest.TestCase):
         os.setxattr(self.dest,'user.toddy-test',b'old metadata')
         self.assertEqual(sync.commit_verified_files(self.stage,[self.source],self.root)['replaced'],1)
         self.assertEqual(os.listxattr(self.dest),os.listxattr(self.source))
+
+    def test_legacy_control_modes_are_protected_and_then_reused(self):
+        self.source.chmod(0o775);self.dest.chmod(0o775)
+        self.dest.parent.chmod(0o775)
+        self.assertEqual(sync.commit_verified_files(self.stage,[self.source],self.root)['replaced'],1)
+        self.assertEqual(self.dest.stat().st_mode&0o777,0o755)
+        self.assertEqual(self.dest.parent.stat().st_mode&0o777,0o755)
+        self.assertEqual(sync.commit_verified_files(self.stage,[self.source],self.root)['reused'],1)
+
+    def test_legacy_lfs_cache_directory_and_mode_are_preserved(self):
+        relative=Path('mnt/lfs/sources/frozen.tar')
+        source=self.stage/relative;source.parent.mkdir(parents=True)
+        source.write_bytes(b'frozen source');source.chmod(0o664)
+        destination=self.root/relative;destination.parent.mkdir(parents=True)
+        destination.parent.chmod(0o1777);before=destination.parent.stat()
+        sync.commit_verified_files(self.stage,[source],self.root)
+        after=destination.parent.stat()
+        self.assertEqual((after.st_uid,after.st_gid,after.st_mode),(before.st_uid,before.st_gid,before.st_mode))
+        self.assertEqual(destination.stat().st_mode&0o777,0o664)
+
+    def test_stream_protects_control_modes_without_changing_source_cache_modes(self):
+        for name,wanted in [('opt/toddy-build/recipe.sh',0o755),('mnt/lfs/sources/frozen.tar',0o775)]:
+            info=tarfile.TarInfo(name);info.mode=0o775
+            self.assertEqual(sync.metadata_filter(info).mode,wanted)
