@@ -171,6 +171,19 @@ for method in ['PlanOperation','DispatchOperation']:
         assert background.returncode==0,('background-owner-session-dispatch',background.returncode,background.stderr[:300])
         assert Path('/etc/toddy-background-session-proof.conf').read_text()==a['text']
         passed('background-same-uid-service-binds-active-owner-logind-display')
+        import shlex
+        obj=shlex.split(run(['busctl','--system','call','org.freedesktop.login1','/org/freedesktop/login1','org.freedesktop.login1.Manager','GetSession','s',session]).stdout)
+        assert len(obj)==2 and obj[0]=='o' and obj[1].startswith('/org/freedesktop/login1/session/')
+        run(['busctl','--system','call','org.freedesktop.login1',obj[1],'org.freedesktop.login1.Session','SetLockedHint','b','true'])
+        assert run(['loginctl','show-session',session,'-p','LockedHint','--value']).stdout.strip()=='yes'
+        locked=Path('/tmp/toddy-locked-session-ipc.py')
+        locked.write_text(client.read_text().replace('session-write','locked-session-write').replace('/etc/toddy-session-proof.conf','/etc/toddy-locked-session-proof.conf'));locked.chmod(0o644)
+        denied=subprocess.run(['/usr/bin/python3',str(locked)],user=uid,group=uid,extra_groups=[],capture_output=True,text=True,timeout=20)
+        assert denied.returncode!=0 and not Path('/etc/toddy-locked-session-proof.conf').exists(),'Locked owner session authorized new background dispatch'
+        run(['busctl','--system','call','org.freedesktop.login1',obj[1],'org.freedesktop.login1.Session','SetLockedHint','b','false'])
+        assert run(['loginctl','show-session',session,'-p','LockedHint','--value']).stdout.strip()=='no'
+        passed('native-logind-locked-hint-refuses-new-background-ipc-and-unlocks')
+
 
         install(2)
         assert store.inspect(uid,'session-write')['state']=='completed'
