@@ -65,6 +65,20 @@ def valid_window(issued,expires,trust,*,now=None):
         raise ValueError('Finite current release validity and certificate lifetime required')
 
 
+
+def legal_name(kind,digest):
+    if kind not in ('copyright','source_notices_index') or not isinstance(digest,str) or not p.HASH.fullmatch(digest):raise ValueError('Exact legal asset kind/content hash required')
+    return ('copyright_' if kind=='copyright' else 'source-notices_')+digest+('.txt' if kind=='copyright' else '.json')
+
+
+def merge_legal_assets(destination,incoming):
+    for name,data in incoming.items():
+        match=re.fullmatch(r'(copyright|source-notices)_([a-f0-9]{64})\.(txt|json)',name)
+        if match is None or (match[1],match[3]) not in (('copyright','txt'),('source-notices','json')) or not isinstance(data,bytes) or hashlib.sha256(data).hexdigest()!=match[2]:raise ValueError('Legal asset content differs from canonical kind/SHA filename')
+        if name in destination and destination[name]!=data:raise ValueError('Conflicting legal asset content identity')
+        destination[name]=data
+
+
 def legal_assets(archive,component):
     selected={row['path']:kind for kind in ('copyright','source_notices_index') if (row:=component.get(kind))}
     result={};names={}
@@ -76,7 +90,7 @@ def legal_assets(archive,component):
             if not member.isfile() or member.size>64*1024**2:raise ValueError('Bounded original public legal file required')
             data=stream.extractfile(member).read();expected=component[kind]['sha256']
             if hashlib.sha256(data).hexdigest()!=expected:raise ValueError('Actual public legal file differs')
-            name=('copyright-' if kind=='copyright' else 'source-notices-')+component['name']+'_'+expected+('.txt' if kind=='copyright' else '.json')
+            name=legal_name(kind,expected)
             result[name]=data;names[kind]=name
     if set(names)!=set(selected.values()):raise ValueError('Actual public legal assets incomplete')
     return result,names
@@ -144,7 +158,7 @@ def documents(verified,trust,issued,expires,*,now=None):
         fields.update({key:control[key] for key in sorted(set(control)-set(first))})
         fields.update(Filename=item['asset'],Size=str(item['archive'].stat().st_size),SHA256=p.digest(item['archive']))
         paragraphs.append(render_control(fields))
-        row=item['component'];legal_files.update(item['legal_data'])
+        row=item['component'];merge_legal_assets(legal_files,item['legal_data'])
         inventory.append({**row,'asset':item['asset'],'archive_bytes':item['archive'].stat().st_size,
             'installed_bytes':item['installed_bytes'],'legal_assets':item['legal_assets'],
             'postconditions':{virtual:item['payload'][virtual]['sha256'] for virtual,owner in POSTCONDITIONS.items() if owner==name}})

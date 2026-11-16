@@ -22,21 +22,23 @@ class ArchiveMetadataTests(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup);self.root=Path(self.tmp.name)
         self.records=self.root/'records';self.archives=self.root/'archives';self.records.mkdir();self.archives.mkdir()
-    def fixture(self,*,extra_control='',copyright=True):
-        stage=self.root/'stage';(stage/'DEBIAN').mkdir(parents=True)
-        (stage/'DEBIAN/control').write_text('Package: fixture\nVersion: 1.0-1\nArchitecture: all\nMaintainer: Source Fixture <fixture@example.invalid>\nDescription: Explicit synthetic archive, not native package acceptance\n'+extra_control)
-        directory=stage/'usr/share/doc/fixture';directory.mkdir(parents=True)
+    def fixture(self,*,extra_control='',copyright=True,name='fixture',notices=None):
+        stage=self.root/('stage-'+name);(stage/'DEBIAN').mkdir(parents=True)
+        (stage/'DEBIAN/control').write_text('Package: '+name+'\nVersion: 1.0-1\nArchitecture: all\nMaintainer: Source Fixture <fixture@example.invalid>\nDescription: Explicit synthetic archive, not native package acceptance\n'+extra_control)
+        directory=stage/'usr/share/doc'/name;directory.mkdir(parents=True)
         if copyright:(directory/'copyright').write_text('Synthetic source fixture; no native qualification.\n')
-        archive=self.archives/'fixture_1.0-1_all.deb'
+        if notices is not None:
+            (directory/'source-notices').mkdir();(directory/'source-notices/index.json').write_bytes(notices)
+        archive=self.archives/(name+'_1.0-1_all.deb')
         subprocess.run(['/usr/bin/dpkg-deb','--root-owner-group','--build',str(stage),str(archive)],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
         control,payload,_=p.archive_contents(archive)
-        record={'name':'fixture','version':'1.0-1','installed':True,'archive_sha256':p.digest(archive),
+        record={'name':name,'version':'1.0-1','installed':True,'archive_sha256':p.digest(archive),
             'recipe_sha256':'a'*64,'sources':[{'name':'synthetic-fixture','url':'https://example.invalid/source','sha256':'b'*64}],
             'payload':payload}
-        path=self.records/'fixture_1.0-1_all.json';path.write_bytes(p.encoded(record))
+        path=self.records/(name+'_1.0-1_all.json');path.write_bytes(p.encoded(record))
         if not copyright:return archive,None
         component=p.component_from_record(path,self.archives)
-        projection=self.root/'projection.json';projection.write_bytes(p.encoded({'schema_version':1,'components':[component]}))
+        projection=self.root/(name+'-projection.json');projection.write_bytes(p.encoded({'schema_version':1,'components':[component]}))
         return archive,projection
     def trust(self):return {'fingerprint':'A'*40,'keyring_sha256':hashlib.sha256(b'public parser fixture').hexdigest(),'bytes':b'public parser fixture','created_unix':900,'expires_unix':5000}
     def test_actual_deb_control_payload_legal_flat_index_and_finite_release(self):
@@ -51,6 +53,35 @@ class ArchiveMetadataTests(unittest.TestCase):
             receipt=metadata.export(self.root/'export',verified,inputs,self.trust(),1000,2000,now=1100)
         self.assertFalse(receipt['signed']);self.assertFalse(receipt['qualification_created'])
         with self.assertRaisesRegex(ValueError,'New canonical'):metadata.export(self.root/'export',verified,inputs,self.trust(),1000,2000,now=1100)
+    def test_same_actual_legal_bytes_share_asset_but_distinct_notices_remain(self):
+        first,first_projection=self.fixture(name='fixture-a',notices=b'[]\n')
+        second,second_projection=self.fixture(name='fixture-b',notices=b'{"scope":"unqualified distinct notice fixture"}\n')
+        third,third_projection=self.fixture(name='fixture-c',notices=b'[]\n')
+        verified,_=metadata.collect([first_projection,second_projection,third_projection],None,[],self.records,self.archives)
+        documents,inventory=metadata.documents(verified,self.trust(),1000,2000,now=1100)
+        a,b,c=inventory
+        self.assertEqual(a['copyright']['sha256'],b['copyright']['sha256'])
+        self.assertNotEqual(a['copyright']['path'],b['copyright']['path'])
+        self.assertEqual(a['legal_assets']['copyright'],b['legal_assets']['copyright'])
+        self.assertNotEqual(a['legal_assets']['source_notices_index'],b['legal_assets']['source_notices_index'])
+        self.assertEqual(a['legal_assets']['source_notices_index'],c['legal_assets']['source_notices_index'])
+        self.assertEqual(a['legal_assets']['copyright'],c['legal_assets']['copyright'])
+        self.assertEqual(len([name for name in documents if name.startswith('copyright_')]),1)
+        self.assertEqual(len([name for name in documents if name.startswith('source-notices_')]),2)
+        for row in inventory:
+            for kind,name in row['legal_assets'].items():
+                self.assertEqual(hashlib.sha256(documents[name]).hexdigest(),row[kind]['sha256'])
+        # Identical notice indexes, including empty ones, deduplicate too.
+        result={};metadata.merge_legal_assets(result,{'source-notices_'+hashlib.sha256(b'[]\n').hexdigest()+'.json':b'[]\n'})
+        metadata.merge_legal_assets(result,dict(result));self.assertEqual(len(result),1)
+    def test_conflicting_same_legal_identity_fails_even_if_hash_function_collides(self):
+        name='copyright_'+('a'*64)+'.txt';result={name:b'first unqualified fixture'}
+        fake=type('Digest',(),{'hexdigest':lambda self:'a'*64})()
+        with patch.object(metadata.hashlib,'sha256',return_value=fake):
+            with self.assertRaisesRegex(ValueError,'Conflicting'):metadata.merge_legal_assets(result,{name:b'different unqualified fixture'})
+        self.assertEqual(result[name],b'first unqualified fixture')
+        with self.assertRaises(ValueError):metadata.merge_legal_assets({}, {'Packages':b'not legal metadata'})
+
     def test_changed_archive_or_repository_authority_in_control_refused(self):
         archive,projection=self.fixture(extra_control='filename: attacker.deb\n')
         with self.assertRaisesRegex(ValueError,'repository authority'):metadata.collect([projection],None,[],self.records,self.archives)

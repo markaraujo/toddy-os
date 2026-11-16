@@ -18,6 +18,8 @@ import package_sources
 PUBLIC=Path('config/phase2/public-package-release.json')
 NAME=re.compile(r'[A-Za-z0-9][A-Za-z0-9._+-]{0,159}\Z')
 ROLES={'repository','source','project-source','inventory','licenses','guide','checksums'}
+MAX_ASSETS=1000
+MAX_ASSET_BYTES=2*1024**3
 PENDING={'iso':'not-included','g2':'pending','native_acquisition':'not-advertised','physical_validation':'pending'}
 
 
@@ -31,11 +33,22 @@ def authorization(root):
     if status.get('owner_review',{}).get('phase_2_approved') is not True or status.get('execution_hold'):raise ValueError('Active owner-authorized Phase2 required')
 
 
+def asset_count(rows):
+    if not isinstance(rows,list) or not 10<=len(rows)<=MAX_ASSETS:raise ValueError('Complete package assets required within GitHub1000-asset release limit')
+
+
+def checked_hash(path):
+    path=Path(path)
+    if not path.is_absolute() or path.resolve()!=path or not path.is_file() or path.is_symlink():raise ValueError('Canonical local package asset required')
+    if not 0<path.stat().st_size<MAX_ASSET_BYTES:raise ValueError('GitHub release asset must be strictly below2GiB')
+    return common.hash_file(path)
+
+
 def assets(rows,tag,*,local=False):
-    if not isinstance(rows,list) or not 10<=len(rows)<=4096:raise ValueError('Complete package repository/source/legal asset set required')
+    asset_count(rows)
     seen=set();counts={key:0 for key in ROLES}
     for row in rows:
-        if not isinstance(row,dict) or set(row)!=({'role','name','url','sha256','bytes'}|({'path'} if local else set())) or row['role'] not in ROLES or not NAME.fullmatch(row.get('name','')) or row['name'] in seen or row['url']!=common.BASE+'download/'+tag+'/'+row['name'] or not common.HASH.fullmatch(row.get('sha256','')) or type(row['bytes']) is not int or row['bytes']<=0:raise ValueError('Exact flat public package asset identity required')
+        if not isinstance(row,dict) or set(row)!=({'role','name','url','sha256','bytes'}|({'path'} if local else set())) or row['role'] not in ROLES or not NAME.fullmatch(row.get('name','')) or row['name'] in seen or row['url']!=common.BASE+'download/'+tag+'/'+row['name'] or not common.HASH.fullmatch(row.get('sha256','')) or type(row['bytes']) is not int or not 0<row['bytes']<MAX_ASSET_BYTES:raise ValueError('Exact flat package asset identity and GitHub below2GiB limit required')
         if row['name'].lower().endswith(('.iso','.img','.qcow2')):raise ValueError('Package-only release cannot include installation media')
         seen.add(row['name']);counts[row['role']]+=1
     if not all(counts.values()) or counts['checksums']!=1 or counts['guide']!=1 or counts['project-source']!=1 or counts['inventory']!=1:raise ValueError('Package/source/legal/guide/checksum roles required')
@@ -52,6 +65,10 @@ def checksums(rows):
 
 
 def repository(directory,rows):
+    selected=list(Path(directory).iterdir())
+    if len(selected)>MAX_ASSETS:raise ValueError('Actual repository exceeds GitHub1000-asset release limit')
+    for path in selected:
+        if path.is_file() and path.stat().st_size>=MAX_ASSET_BYTES:raise ValueError('Actual repository asset must be strictly below2GiB')
     receipt,_index=declarations.verified_repository(directory,archive_metadata.public_trust())
     for package in receipt['packages']:
         archive=Path(directory)/package['asset'];control,body,_size=declarations.p.archive_contents(archive)
@@ -61,7 +78,7 @@ def repository(directory,rows):
             if legal and body.get(legal['path'],{}).get('sha256')!=legal['sha256']:raise ValueError('Actual native package legal ownership differs')
         legal_files,names=archive_metadata.legal_assets(archive,package)
         if names!=package['legal_assets'] or any(common.read(Path(directory)/name,maximum=64*1024**2)!=data for name,data in legal_files.items()):raise ValueError('Exact exported legal bytes differ from native archive')
-    actual={path.name:common.hash_file(path) for path in Path(directory).iterdir()}
+    actual={path.name:checked_hash(path) for path in Path(directory).iterdir()}
     expected={row['name']:(row['sha256'],row['bytes']) for row in rows if row['role']=='repository'}
     if actual!=expected:raise ValueError('All exact signed flat repository assets must be attached')
     return {'archive_export_sha256':actual['archive-export.json'][0],
@@ -79,13 +96,14 @@ def source_review(root,reference,rows,pins,commit):
 
 def prepare(root,request):
     if not isinstance(request,dict) or set(request)!={'version','tag','source_commit','release_url','repository_directory','source_review','artifacts'} or type(request['version']) is not int or request['version']!=1:raise ValueError('Package-only release request schema')
+    asset_count(request['artifacts'])
     identity(request);authorization(root)
     if common.git(root,'status','--porcelain'):raise ValueError('Commit reviewed release inputs first')
     if common.git(root,'rev-parse','refs/tags/'+request['tag']+'^{commit}')!=request['source_commit']:raise ValueError('Actual package prerelease tag/source differs')
     rows=[]
     for row in request['artifacts']:
         if not isinstance(row,dict) or set(row)!={'role','path','url'}:raise ValueError('Explicit local public asset required')
-        path=Path(row['path']);digest,size=common.hash_file(path)
+        path=Path(row['path']);digest,size=checked_hash(path)
         rows.append(dict(row,name=path.name,sha256=digest,bytes=size))
     assets(rows,request['tag'],local=True);checksums(rows)
     pins=repository(Path(request['repository_directory']),rows)
@@ -112,7 +130,7 @@ def validate(value,*,prepared=False):
 def promote(root,prepared,response,downloads):
     validate(prepared,prepared=True);authorization(root)
     for row in prepared['artifacts']:
-        if common.hash_file(Path(row['path']))!=(row['sha256'],row['bytes']):raise ValueError('Original package asset changed')
+        if checked_hash(Path(row['path']))!=(row['sha256'],row['bytes']):raise ValueError('Original package asset changed')
     checksums(prepared['artifacts'])
     if repository(Path(prepared['repository_directory']),prepared['artifacts'])!=prepared['repository_pins']:raise ValueError('Signed repository changed')
     source_review(root,prepared['source_review'],prepared['artifacts'],prepared['repository_pins'],prepared['source_commit'])
@@ -123,7 +141,7 @@ def promote(root,prepared,response,downloads):
     actual_release(release,prepared)
     for row in prepared['artifacts']:
         path=Path(downloads)/row['name']
-        if path.samefile(row['path']) or common.hash_file(path)!=(row['sha256'],row['bytes']):raise ValueError('Independent public-route package download required')
+        if path.samefile(row['path']) or checked_hash(path)!=(row['sha256'],row['bytes']):raise ValueError('Independent public-route package download required')
     result={key:value for key,value in prepared.items() if key not in ('repository_directory','state','artifacts')}
     result.update(state='public-package-assets-verified',artifacts=[{key:value for key,value in row.items() if key!='path'} for row in prepared['artifacts']],github_evidence={'path':relative,'sha256':hashlib.sha256(raw).hexdigest()},pages_handoff='pending-deployment-verification')
     return result
@@ -163,7 +181,9 @@ def main():
     draft=commands.add_parser('prepare');draft.add_argument('--request',type=Path,required=True);draft.add_argument('--output',type=Path,required=True)
     final=commands.add_parser('promote');final.add_argument('--prepared',type=Path,required=True);final.add_argument('--github-response',type=Path,required=True);final.add_argument('--downloads',type=Path,required=True)
     args=parser.parse_args()
-    if args.action=='prepare':common.write_new(args.output,prepare(ROOT,common.strict(common.read(args.request))))
+    if args.action=='prepare':
+        prepared=prepare(ROOT,common.strict(common.read(args.request)));common.write_new(args.output,prepared)
+        print('Package-only local preflight: '+str(len(prepared['artifacts']))+' assets; largest '+str(max(row['bytes'] for row in prepared['artifacts']))+' bytes; publication unverified.')
     else:
         common.write_new(ROOT/PUBLIC,promote(ROOT,common.strict(common.read(args.prepared)),args.github_response,args.downloads))
         subprocess.run(['make','dashboard'],cwd=ROOT,check=True);subprocess.run(['make','site'],cwd=ROOT,check=True)

@@ -37,6 +37,34 @@ class PackageReleaseTests(unittest.TestCase):
             elif change=='url':rows[0]['url']='https://example.invalid/unpublished'
             else:rows.append(dict(rows[0]))
             with self.assertRaises(ValueError):r.assets(rows,'v0.2.0-preview.1')
+    def expanded(self,count):
+        rows=self.rows()
+        while len(rows)<count:
+            name='additional-fixture-'+str(len(rows))+'.txt'
+            rows.append({'role':'repository','name':name,'sha256':'a'*64,'bytes':1,'url':r.common.BASE+'download/v0.2.0-preview.1/'+name})
+        return rows
+    def test_actual_metadata_count_and_strict_size_limits_include_all_roles(self):
+        r.assets(self.expanded(1000),'v0.2.0-preview.1')
+        with self.assertRaisesRegex(ValueError,'1000'):r.assets(self.expanded(1001),'v0.2.0-preview.1')
+        rows=self.rows();rows[0]['bytes']=r.MAX_ASSET_BYTES-1;r.assets(rows,'v0.2.0-preview.1')
+        for size in (r.MAX_ASSET_BYTES,r.MAX_ASSET_BYTES+1):
+            rows[0]['bytes']=size
+            with self.assertRaisesRegex(ValueError,'2GiB'):r.assets(rows,'v0.2.0-preview.1')
+    def test_prepare_and_promote_refuse_count_before_tag_network_or_hashing(self):
+        rows=self.expanded(1001)
+        request={'version':1,'tag':'v0.2.0-preview.1','source_commit':'b'*40,'release_url':r.common.BASE+'tag/v0.2.0-preview.1',
+            'repository_directory':'/unqualified','source_review':{},'artifacts':[{'role':row['role'],'path':'/unqualified/'+row['name'],'url':row['url']} for row in rows]}
+        prepared=self.value();prepared.pop('github_evidence');prepared.pop('pages_handoff');prepared.update(state='package-publication-unverified',repository_directory='/unqualified',artifacts=[dict(row,path='/unqualified/'+row['name']) for row in rows])
+        with patch.object(r.common,'git',side_effect=AssertionError('No tag/network action')),patch.object(r.common,'hash_file',side_effect=AssertionError('No artifact hashing')):
+            with self.assertRaisesRegex(ValueError,'1000'):r.prepare(Path('/unqualified'),request)
+            with self.assertRaisesRegex(ValueError,'1000'):r.promote(Path('/unqualified'),prepared,Path('/unqualified'),Path('/unqualified'))
+    def test_actual_oversized_sparse_file_fails_before_any_content_hash(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'unqualified-sparse-boundary.bin'
+            with path.open('xb') as stream:stream.truncate(r.MAX_ASSET_BYTES)
+            with patch.object(r.common,'hash_file',side_effect=AssertionError('No huge content hash')):
+                with self.assertRaisesRegex(ValueError,'2GiB'):r.checked_hash(path)
+
     def test_checksum_lists_exact_assets(self):
         with tempfile.TemporaryDirectory() as directory:
             rows=self.rows();path=Path(directory)/'SHA256SUMS'
@@ -62,8 +90,8 @@ class PackageReleaseTests(unittest.TestCase):
         self.assertIn('G2 and installed-user acquisition qualification are pending.',result)
         self.assertNotIn('VM-tested</span>',result[:result.index('id="download"')])
     def test_signature_and_source_review_are_real_required_boundaries(self):
-        with patch.object(r.declarations,'verified_repository',side_effect=ValueError('Actual signature absent')),patch.object(r.archive_metadata,'public_trust',return_value={}):
-            with self.assertRaisesRegex(ValueError,'signature'):r.repository(Path('/unavailable'),self.rows())
+        with tempfile.TemporaryDirectory() as directory,patch.object(r.declarations,'verified_repository',side_effect=ValueError('Actual signature absent')),patch.object(r.archive_metadata,'public_trust',return_value={}):
+            with self.assertRaisesRegex(ValueError,'signature'):r.repository(Path(directory),self.rows())
         with patch.object(r.common,'evidence',return_value={'reviewed':True}):
             with self.assertRaisesRegex(ValueError,'source/legal'):r.source_review(ROOT,{'path':'docs/evidence/f.json','sha256':'a'*64},self.rows(),{'packages':[]},'b'*40)
     def test_independent_public_pin_change_refuses_existing_metadata(self):

@@ -67,9 +67,22 @@ archive-keyring.gpg
 native-trust.json
 archive-export.json
 NAME_ARCHIVE-SHA256.deb
-copyright-NAME_COPYRIGHT-SHA256.txt
-source-notices-NAME_INDEX-SHA256.json
+copyright_COPYRIGHT-SHA256.txt
+source-notices_INDEX-SHA256.json
 ```
+
+Legal assets use kind plus content SHA256, independently of package name. Exact
+identical copyright or notice-index bytes share one flat asset, while every
+component keeps its original installed legal path/hash and asset reference.
+Distinct notices remain distinct. A same-name/different-byte collision is refused,
+even if a hash collision were presented; nothing is silently overwritten.
+This avoids duplicating identical legal text hundreds of times without dropping
+component notices, source obligations or packages.
+
+These are fresh export generations: preserve old signed metadata and its exact
+assets/receipts unchanged. If the producer/naming changes, create a new export,
+verify/sign that exact generation separately and re-run its affected native trust
+proofs. Never rename or replace an old signed generation in place.
 
 Native logical name/version/architecture stay in Packages; SHA-named archive
 assets avoid nested paths, epoch punctuation and unsupported GitHub asset names.

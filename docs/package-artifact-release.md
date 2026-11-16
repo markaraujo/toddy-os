@@ -53,6 +53,19 @@ SHA-named native archive and exported legal file. Additional roles are source
 project source snapshot), inventory (one public corresponding-source/component
 inventory), licenses (one or more exact legal
 bundles), guide (one package qualification guide), checksums (exactly SHA256SUMS).
+The actual release request must contain at most1,000 assets in total, including
+all repository, source, project snapshot, inventory, license, guide and checksum
+files. Every individual file must be strictly smaller than2GiB (2,147,483,648
+bytes). These limits follow GitHub's official
+[About releases / Storage and bandwidth quotas](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases#storage-and-bandwidth-quotas),
+verified2026-11-16. The offline prepare and promote paths both reject excess count
+or size; actual local sizes are checked before content hashing. Prepare reports
+the measured count/largest file, never a guessed future union. Legal content
+sharing by kind/SHA reduces duplicates while retaining every package's legal
+path/hash/reference; it never drops required source or notices. If the actual
+complete set still exceeds a limit, stop and prepare another explicitly reviewed
+release layout; do not silently omit files or substitute upstream URLs.
+
 All assets use flat unique names and the actual same-tag GitHub download route.
 No ISO/img/qcow2 is accepted. All source, project snapshot and inventory assets must actually be attached;
 upstream URLs alone are not an alternative. Split large source bundles into
