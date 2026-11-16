@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "scope": "source-only same-version Qt6.11.2 raster Wayland preparation",
+  "source_archive_sha256": "8eb7615e39332a10f506e8dd70f02d5954bb5949ff54f6dcbf8bd6168222f9df",
+  "source_archive_bytes": 905288,
+  "official_hash_match": true,
+  "client_provider": "qtbase6.11.2",
+  "requires_gl_for_widget_raster": false,
+  "installed_qtbase_features": "not-inspected; coordinator read-only gate pending",
+  "rebuild_policy": "conditional on missing retained client files/features",
+  "focused_command": "python3 -m unittest tests.test_qt_wayland_preparation -v",
+  "focused_checks": 4,
+  "focused_result": "passed",
+  "focused_elapsed_seconds": 0.011,
+  "initial_test_failure": "synthetic file fixture inherited host group-write umask; corrected fixture mode to0644 without weakening inspector",
+  "native_build": "not-run",
+  "native_gui_launch": "not-run",
+  "guest_mutations": false,
+  "active_metadata_changed": false,
+  "host_reserve_floor_bytes": 107911053312,
+  "free_before_bytes": 109586087936,
+  "free_after_bytes": 109585174528,
+  "other_worker_reserved_bytes": 148000000,
+  "story_acceptance": false,
+  "repository_check": {
+    "command": "make check",
+    "result": "passed",
+    "checks": 575,
+    "elapsed_seconds": 10.903
+  },
+  "existing_qtbase_actual_sha256": "5b2e00eccaf5a4d8c14134ffa0ea8dfd0a35ae1ffc7f8d87fa4305a1ed23cf22"
+}

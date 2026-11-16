@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "scope": "B12 Qt6.11.2 raster Wayland preparation; native build/GUI pending",
+  "qt_version": "6.11.2",
+  "client_provider": "qtbase",
+  "existing_qtbase_sha256": "5b2e00eccaf5a4d8c14134ffa0ea8dfd0a35ae1ffc7f8d87fa4305a1ed23cf22",
+  "extra_archive": {
+    "name": "qtwayland",
+    "version": "6.11.2",
+    "filename": "qtwayland-everywhere-src-6.11.2.tar.xz",
+    "url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qtwayland-everywhere-src-6.11.2.tar.xz",
+    "sha256": "8eb7615e39332a10f506e8dd70f02d5954bb5949ff54f6dcbf8bd6168222f9df",
+    "bytes": 905288,
+    "upstream_sha256_url": "https://download.qt.io/official_releases/qt/6.11/6.11.2/submodules/qtwayland-everywhere-src-6.11.2.tar.xz.sha256",
+    "upstream_sha256_file_sha256": "753ff25f8b253c2288bbcc60dc2ebd9c61c68a54751360b6f8c503daf46bc613",
+    "status": "official_hash_verified_source_only",
+    "selected_for_minimal_client": false
+  },
+  "native_dependencies": {
+    "wayland": "1.26.0-1+toddy1",
+    "wayland-protocols": "1.49-1+toddy1",
+    "libxkbcommon": "1.13.2-1+toddy1",
+    "xkeyboard-config": "2.48-1+toddy1"
+  },
+  "raster_requires_opengl": false,
+  "rebuild_decision": "inspect retained qtbase files/features first; rebuild same-version QtBase only if required client features/files missing",
+  "native_acceptance": false
+}
