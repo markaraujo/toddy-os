@@ -27,7 +27,7 @@ class ExportTransferTests(unittest.TestCase):
         self.assertEqual(argv[:3],['python3','-I','-c'])
         self.assertIn(source,argv[3]);self.assertNotIn(transfer.SOURCE,argv[3])
         self.assertEqual(argv[-1],'inventory')
-        for invalid in (1,5,'3',None):
+        for invalid in (1,6,'3',None):
             with self.assertRaises(ValueError):transfer.fixed_paths(invalid)
         with self.assertRaises(ValueError):transfer.remote('arbitrary',3)
 

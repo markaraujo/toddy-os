@@ -17,8 +17,8 @@ def safe(path):
     return path.read_bytes()
 
 def fixed_context(generation=3):
-    if type(generation) is not int or generation not in (3,4):raise ValueError('Only fixed signature export3/export4 generation')
-    return CONTEXT if generation==3 else ROOT/'.local/phase2/mvp-package-export-4'
+    if type(generation) is not int or generation not in (3,4,5):raise ValueError('Only fixed signature export3/export4/export5 generation')
+    return CONTEXT if generation==3 else ROOT/('.local/phase2/mvp-package-export-'+str(generation))
 
 def verify_public(key,release,bodies,fingerprint,generation=3):
     with tempfile.TemporaryDirectory(prefix='public-signature-check-',dir=fixed_context(generation)) as directory:

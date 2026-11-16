@@ -68,7 +68,7 @@ else:raise ValueError('fixed action')
 
 
 def fixed_paths(generation=2):
-    if type(generation) is not int or generation not in (2,3,4):raise ValueError('Only fixed export2/export3/export4 generations')
+    if type(generation) is not int or generation not in (2,3,4,5):raise ValueError('Only fixed export2/export3/export4/export5 generations')
     return (SOURCE,DESTINATION) if generation==2 else ('/mnt/lfs/sources/stage/toddy-package-export-'+str(generation),ROOT/('.local/phase2/mvp-package-export-'+str(generation)))
 
 
