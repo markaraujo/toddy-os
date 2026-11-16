@@ -189,7 +189,13 @@ for method in ['PlanOperation','DispatchOperation']:
         assert not Path('/usr/lib/toddy/executor/owner_policy.py').exists()
         assert not run(['dpkg','--audit']).stdout.strip()
         passed('native-package-remove-preserves-private-state-for-recovery')
-        secret=None;run(['userdel','-r',username])
+        secret=None
+        run(['loginctl','terminate-user',str(uid)])
+        run(['systemctl','stop','user@'+str(uid)+'.service'])
+        until=time.monotonic()+10
+        while time.monotonic()<until and run(['ps','-u',str(uid),'-o','pid='],check=False).stdout.strip():time.sleep(.1)
+        assert not run(['ps','-u',str(uid),'-o','pid='],check=False).stdout.strip(),'Ephemeral user processes remain after session/user-manager termination'
+        run(['userdel','-r',username])
         report['all_selected_exits_zero']=True;emit(report)
     finally:
         os.close(fd)

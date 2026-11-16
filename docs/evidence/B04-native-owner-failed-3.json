@@ -1,0 +1,8 @@
+{
+  "all_selected_exits_zero": false,
+  "error": "('command_failed', ['userdel', '-r', 'toddy-policy-owner'], 8, 'userdel: user toddy-policy-owner is currently used by process 600\\n')",
+  "error_type": "AssertionError",
+  "job": "native-executor-owner-3",
+  "scope": "All six selected lifecycle functional stages reached; final fixture account cleanup failed because native user manager remained active. Terminal failure retained; no full acceptance.",
+  "backing_unchanged": true
+}
