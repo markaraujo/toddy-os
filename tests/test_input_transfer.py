@@ -132,3 +132,41 @@ class VerifiedReuse(unittest.TestCase):
         for name,wanted in [('opt/toddy-build/recipe.sh',0o755),('mnt/lfs/sources/frozen.tar',0o775)]:
             info=tarfile.TarInfo(name);info.mode=0o775
             self.assertEqual(sync.metadata_filter(info).mode,wanted)
+
+
+class RequiredInstallerSourceTests(unittest.TestCase):
+    def test_required_file_missing_stale_and_redirected_all_refuse(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);path=root/'opt/toddy-build/runtime/installer/native_finalizer.py';path.parent.mkdir(parents=True)
+            pins={'runtime/installer/native_finalizer.py':'a'*64}
+            with self.assertRaisesRegex(ValueError,'absent'):sync.verify_required_metadata(root,pins)
+            path.write_bytes(b'current source');pins[next(iter(pins))]=sync.digest(path)
+            self.assertEqual(sync.verify_required_metadata(root,pins)['required_files'],1)
+            (root/'var/log/toddy/build').mkdir(parents=True)
+            receipt=Path(sync.commit_required_metadata_receipt(pins,root));original=receipt.read_bytes()
+            self.assertEqual(sync.commit_required_metadata_receipt(pins,root),str(receipt));self.assertEqual(receipt.read_bytes(),original)
+            value=__import__('json').loads(original);self.assertEqual(value['files'],pins);self.assertEqual(value['source_map_sha256'],sync.metadata_pin_identity(pins))
+            path.write_bytes(b'stale source')
+            with self.assertRaisesRegex(ValueError,'differs'):sync.verify_required_metadata(root,pins)
+            with self.assertRaisesRegex(ValueError,'differs'):sync.commit_required_metadata_receipt(pins,root)
+            target=path.with_name('other.py');target.write_bytes(b'current source');path.unlink();path.symlink_to(target.name)
+            with self.assertRaisesRegex(ValueError,'redirected'):sync.verify_required_metadata(root,pins)
+    def test_stale_installer_local_fallback_cannot_override_declared_script_source(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);base=root/'opt/toddy-build';folder=base/'runtime/installer';folder.mkdir(parents=True)
+            source=folder/'composition.py';source.write_text('# reviewed composition')
+            pins={'runtime/installer/composition.py':sync.digest(source)}
+            self.assertEqual(sync.verify_required_metadata(root,pins)['required_files'],1)
+            (folder/'offline_payload.py').write_text('# stale local fallback')
+            with self.assertRaisesRegex(ValueError,'Unexpected stale installer source'):sync.verify_required_metadata(root,pins)
+    def test_candidate_sync_declared_sources_and_full_installer_are_pinned(self):
+        import candidate_assistant_inputs_sync as candidate_sync
+        from runtime.installer.composition import SOURCES,source_path
+        pins=candidate_sync.installer_source_pins()
+        for name in SOURCES:
+            path=source_path(name);self.assertEqual(pins[path.relative_to(ROOT).as_posix()],sync.digest(path))
+        self.assertIn('runtime/installer/calamares/ToddyViewStep.cpp',pins)
+        self.assertIn('runtime/setup/pending.py',pins);self.assertIn('runtime/shared/json.py',pins)
+        source=(ROOT/'scripts/host/sync_build.py').read_text()
+        self.assertLess(source.index('verify_required_metadata(stage,required)'),source.index("Path('/var/log/toddy/build/input-sync.running').write_text"))
+        self.assertLess(source.index("coherence=verify_required_metadata(Path('/'),required)"),source.index('receipt=commit_required_metadata_receipt(required)'))

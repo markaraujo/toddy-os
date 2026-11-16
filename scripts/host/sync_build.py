@@ -150,7 +150,57 @@ def stream_inputs(stream, root, metadata, sources, references):
         archive.addfile(marker,io.BytesIO(data))
 
 
-def main(metadata_only=False, extra_metadata=(), include_references=True, extra_sources=()):
+def verify_required_metadata(root,required):
+    """Compare the caller's complete reviewed source closure before/after commit."""
+    if not isinstance(required,dict):raise ValueError('Required metadata hash map expected')
+    for name,expected in sorted(required.items()):
+        if not isinstance(name,str):raise ValueError('Invalid required metadata path')
+        relative=Path(name)
+        if (any(ord(c)<32 for c in name) or relative.is_absolute() or '..' in relative.parts or relative.as_posix()!=name or
+                not isinstance(expected,str) or len(expected)!=64 or any(c not in '0123456789abcdef' for c in expected)):
+            raise ValueError('Invalid required metadata pin')
+        path=Path(root)/'opt/toddy-build'/relative
+        if path.resolve()!=path or not path.is_file() or path.is_symlink():raise ValueError('Required metadata absent or redirected: '+name)
+        with path.open('rb') as stream:actual=hashlib.file_digest(stream,'sha256').hexdigest()
+        if actual!=expected:raise ValueError('Required metadata hash differs: '+name)
+    if 'runtime/installer/composition.py' in required:
+        base=Path(root)/'opt/toddy-build'
+        for path in (base/'runtime/installer').rglob('*'):
+            if '__pycache__' in path.parts or path.suffix=='.pyc':continue
+            if path.is_symlink() or path.resolve()!=path:raise ValueError('Redirected installer source namespace')
+            if path.is_file() and path.relative_to(base).as_posix() not in required:
+                raise ValueError('Unexpected stale installer source: '+path.relative_to(base).as_posix())
+    return {'required_files':len(required),'all_required_hashes_match':True}
+
+
+def metadata_pin_identity(required):
+    return hashlib.sha256(json.dumps(required,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+
+
+def commit_required_metadata_receipt(required,root=Path('/')):
+    if not required:return None
+    verify_required_metadata(root,required)
+    identity=metadata_pin_identity(required)
+    path=Path(root)/'var/log/toddy/build'/('input-source-coherence-'+identity+'.json')
+    proof={'version':1,'state':'required-source-bytes-verified','source_map_sha256':identity,'files':required}
+    raw=(json.dumps(proof,sort_keys=True,separators=(',',':'))+'\n').encode()
+    if os.path.lexists(path):
+        if path.is_symlink() or not path.is_file() or path.read_bytes()!=raw:raise ValueError('Preserve conflicting source coherence receipt')
+    else:
+        part=path.with_suffix('.part')
+        with part.open('xb') as stream:os.fchmod(stream.fileno(),0o600);stream.write(raw);stream.flush();os.fsync(stream.fileno())
+        os.replace(part,path)
+        fd=os.open(path.parent,os.O_DIRECTORY)
+        try:os.fsync(fd)
+        finally:os.close(fd)
+    return str(path)
+
+
+def main(metadata_only=False, extra_metadata=(), include_references=True, extra_sources=(), required_metadata=None):
+    required_metadata={} if required_metadata is None else dict(required_metadata)
+    for name,sha in required_metadata.items():
+        path=ROOT/name
+        if path.resolve()!=path or not path.is_file() or path.is_symlink() or digest(path)!=sha:raise ValueError('Required host metadata changed: '+name)
     lock = json.loads((ROOT/'config/sources.lock.json').read_text())
     if lock['status'] != 'verified':
         raise SystemExit('Source lock not verified')
@@ -276,18 +326,29 @@ from pathlib import Path
 import hashlib,json,os,shutil,stat,sys
 __VERIFY_BUNDLE_SOURCE__
 __COMMIT_VERIFIED_SOURCE__
+__REQUIRED_METADATA_SOURCE__
+__METADATA_IDENTITY_SOURCE__
+__METADATA_RECEIPT_SOURCE__
+required=__REQUIRED_METADATA_PINS__
 stage=Path(sys.argv[1])
 files=verify_bundle(stage)
+verify_required_metadata(stage,required)
 Path('/var/log/toddy/build/input-sync.running').write_text('Verified input commit unfinished; rerun sync before dispatch.\n')
 dispatcher='opt/toddy-build/scripts/build/run_step.py'
 files.sort(key=lambda p:(str(p.relative_to(stage))!=dispatcher,str(p)))
 result=commit_verified_files(stage,files)
-print(json.dumps({'verified_input_commit':result,'staging_parent':str(stage.parent)}))
+coherence=verify_required_metadata(Path('/'),required)
+receipt=commit_required_metadata_receipt(required)
+print(json.dumps({'verified_input_commit':result,'staging_parent':str(stage.parent),'required_metadata':coherence,'source_coherence_receipt':receipt}))
 APPLY
 rm /var/log/toddy/build/input-sync.running
 '''
     receive = receive.replace('__VERIFY_BUNDLE_SOURCE__',inspect.getsource(verify_bundle))
     receive = receive.replace('__COMMIT_VERIFIED_SOURCE__',inspect.getsource(commit_verified_files))
+    receive = receive.replace('__REQUIRED_METADATA_SOURCE__',inspect.getsource(verify_required_metadata))
+    receive = receive.replace('__REQUIRED_METADATA_PINS__',repr(required_metadata))
+    receive = receive.replace('__METADATA_IDENTITY_SOURCE__',inspect.getsource(metadata_pin_identity))
+    receive = receive.replace('__METADATA_RECEIPT_SOURCE__',inspect.getsource(commit_required_metadata_receipt))
     source_bytes = sum(safe_source(ROOT, name).stat().st_size for name in sources)
     receive = receive.replace('__SYNC_STAGING_BYTES__', str(64*1024**2 + source_bytes))
     reserve = 16*1024**3 + 128*1024**2 + source_bytes if extra_sources else 0
