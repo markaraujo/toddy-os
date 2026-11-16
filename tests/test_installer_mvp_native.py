@@ -6,6 +6,19 @@ ROOT=Path(__file__).resolve().parents[1]
 SPEC=importlib.util.spec_from_file_location('installer4',ROOT/'scripts/build/phase2/installer_mvp_native.py')
 p=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(p)
 class Installer4Tests(unittest.TestCase):
+ def test_generation5_is_fixed_fresh_revision_and_preserves_compile3_defaults(self):
+  original=(p.frozen.SOURCE,p.frozen.WORK,p.frozen.STEP,p.frozen.VERSION)
+  try:
+   p.configure(5)
+   self.assertEqual(p.VERSION,'0.2.0-1+toddy3');self.assertEqual(p.STEP,'b12-toddy-installer-5')
+   self.assertEqual(p.SOURCE.name,'toddy-installer-0.2.0-5');self.assertTrue(p.INSTALL.endswith('install5.sh'))
+   with patch.object(p,'ROOT',ROOT):self.assertEqual(p.package().VERSION,'0.2.0-1+toddy3')
+   self.assertEqual((p.frozen.SOURCE,p.frozen.WORK,p.frozen.STEP,p.frozen.VERSION),original)
+   for invalid in (3,6,'5'):
+    with self.assertRaises(ValueError):p.configure(invalid)
+  finally:p.configure(4)
+
+
  def test_private_revision_generator_keeps_original_frozen_version(self):
   with patch.object(p,'ROOT',ROOT):pkg=p.package()
   self.assertEqual(pkg.VERSION,'0.2.0-1+toddy2')

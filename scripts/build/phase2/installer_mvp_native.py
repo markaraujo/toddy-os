@@ -7,7 +7,9 @@ HERE=Path(__file__).resolve().parent;sys.path[:0]=[str(HERE),str(HERE.parent)]
 import installer_native as frozen
 import offline_payload as payload
 ROOT=frozen.ROOT;TARGET=frozen.TARGET;LOG=frozen.LOG;BUILD=Path('/var/log/toddy/build')
+GENERATION=4
 VERSION='0.2.0-1+toddy2';STEP='b12-toddy-installer-4'
+BASELINE_VERSION='0.2.0-1+toddy1'
 SOURCE=TARGET/'sources/phase2/inputs/toddy-installer-0.2.0-4'
 WORK=TARGET/'sources/phase2/work/toddy-installer-4';STAGE=TARGET/'sources/stage/phase2-toddy-installer-4'
 PREPARED=LOG/'toddy-installer-prepared-4.json';RECEIPT=LOG/'toddy-installer-install-4.json'
@@ -17,11 +19,28 @@ OWN=('scripts/build/phase2/installer_mvp_native.py','scripts/build/phase2/instal
 REUSE_DOC='/usr/share/doc/toddy-installer/native-module-reuse-4.json'
 MANIFEST='usr/share/doc/toddy-installer/source-manifest.json'
 
-def package(version=VERSION):
+def configure(generation):
+    global GENERATION,VERSION,STEP,BASELINE_VERSION,SOURCE,WORK,STAGE,PREPARED,RECEIPT,POSTCHECK_HOME,INSTALL,CHECK,OWN,REUSE_DOC
+    if type(generation) is not int or generation not in (4,5):raise ValueError('Only fixed installer4 or installer5 generation')
+    GENERATION=generation
+    suffix='' if generation==4 else '5'
+    VERSION='0.2.0-1+toddy2' if generation==4 else '0.2.0-1+toddy3'
+    BASELINE_VERSION='0.2.0-1+toddy1' if generation==4 else '0.2.0-1+toddy2'
+    STEP='b12-toddy-installer-'+str(generation)
+    SOURCE=TARGET/('sources/phase2/inputs/toddy-installer-0.2.0-'+str(generation))
+    WORK=TARGET/('sources/phase2/work/toddy-installer-'+str(generation));STAGE=TARGET/('sources/stage/phase2-toddy-installer-'+str(generation))
+    PREPARED=LOG/('toddy-installer-prepared-'+str(generation)+'.json');RECEIPT=LOG/('toddy-installer-install-'+str(generation)+'.json')
+    POSTCHECK_HOME=TARGET/('tmp/toddy-installer-offscreen-postcheck-'+str(generation))
+    INSTALL='scripts/build/phase2/installer_mvp_install'+suffix+'.sh';CHECK='scripts/build/phase2/installer_mvp_check'+suffix+'.sh'
+    OWN=('scripts/build/phase2/installer_mvp_native.py','scripts/build/phase2/installer_mvp_prepare'+suffix+'.sh',INSTALL,CHECK)
+    REUSE_DOC='/usr/share/doc/toddy-installer/native-module-reuse-'+str(generation)+'.json'
+
+
+def package(version=None):
     # Private generator instance: old source/version and prepared compile3 stay
     # immutable. The external producer's hash explicitly records this version.
     spec=importlib.util.spec_from_file_location('installer_revision4_package',ROOT/'scripts/build/phase2/installer_package.py')
-    value=importlib.util.module_from_spec(spec);spec.loader.exec_module(value);value.VERSION=version;return value
+    value=importlib.util.module_from_spec(spec);spec.loader.exec_module(value);value.VERSION=VERSION if version is None else version;return value
 
 def digest(path):return frozen.digest(path)
 def read(path):return json.loads(Path(path).read_bytes())
@@ -76,6 +95,32 @@ def original_compile():
         'module_sha256':hashlib.sha256(binary).hexdigest(),'compile_receipt_sha256':digest(receipt),'native_dependencies':frozen.package_state(),
         'compile_inputs':proof['source_sha256'],'recompiled':False,'qt_calamares_rebuilt':False,'root_gui_qualified_by_repackage':False}
 
+
+def upgrade4_baseline(check_installed=False):
+    if GENERATION!=5:return None
+    success_path=BUILD/'b12-toddy-installer-4.success.json';success=read(success_path)
+    previous_prepared=LOG/'toddy-installer-prepared-4.json';prepared=read(previous_prepared)
+    previous_receipt=LOG/'toddy-installer-install-4.json';receipt=read(previous_receipt)
+    recordpath=Path('/var/log/toddy/packages/toddy-installer_0.2.0-1+toddy2_amd64.json');record=read(recordpath)
+    archive=Path('/var/cache/toddy/packages/toddy-installer_0.2.0-1+toddy2_amd64.deb')
+    if (success.get('step')!='b12-toddy-installer-4' or any(type(success.get(key)) is not int or success[key]!=0 for key in ('recipe_exit','postcheck_exit')) or
+        success.get('recipe_sha256')!=digest(ROOT/'scripts/build/phase2/installer_mvp_install.sh') or success.get('postcheck_sha256')!=digest(ROOT/'scripts/build/phase2/installer_mvp_check.sh') or
+        receipt.get('state')!='native-revision4-package-and-reused-plugin-verified' or receipt.get('prepared_sha256')!=digest(previous_prepared) or receipt.get('record_sha256')!=digest(recordpath) or
+        receipt.get('archive_sha256')!=digest(archive) or prepared.get('state')!='prepared-reused-qualified-module'):
+        raise ValueError('Installer5 requires actual preserved successful installer4')
+    for name,sha in prepared['inputs'].items():
+        path=TARGET/'sources/phase2/inputs/toddy-installer-0.2.0-4/repository'/name
+        if path.resolve()!=path or digest(path)!=sha:raise ValueError('Preserved installer4 source changed')
+    control,actual,_=payload.archive_contents(archive)
+    if control.get('Version')!='0.2.0-1+toddy2' or actual!=record.get('payload') or digest(archive)!=record.get('archive_sha256'):raise ValueError('Installer4 retained archive/record changed')
+    if check_installed:
+        for name,row in actual.items():
+            path=TARGET/name.lstrip('/');info=path.lstat()
+            if info.st_mode!=row['mode'] or info.st_uid!=row['uid'] or info.st_gid!=row['gid'] or ('sha256' in row and digest(path)!=row['sha256']) or ('symlink' in row and os.readlink(path)!=row['symlink']):raise ValueError('Installer4 installed baseline differs')
+    return {'step':'b12-toddy-installer-4','success_sha256':digest(success_path),'manifest_sha256':digest(BUILD/'b12-toddy-installer-4.manifest.json'),
+        'prepared_sha256':digest(previous_prepared),'receipt_sha256':digest(previous_receipt),'record_sha256':digest(recordpath),'archive_sha256':digest(archive)}
+
+
 def source_plan():
     pkg=package();inputs,files,links=pkg.plan(ROOT)
     for name in pkg.COMPILE_INPUTS:inputs['runtime/installer/calamares/'+name]=digest(ROOT/'runtime/installer/calamares'/name)
@@ -86,10 +131,10 @@ def prepare():
     fresh=(SOURCE,WORK,STAGE,PREPARED,RECEIPT,POSTCHECK_HOME,PREPARED.with_suffix('.part'),RECEIPT.with_suffix('.part'),
         Path('/var/cache/toddy/packages')/('toddy-installer_'+VERSION+'_amd64.deb'),Path('/var/log/toddy/packages')/('toddy-installer_'+VERSION+'_amd64.json'))
     if any(os.path.lexists(path) for path in fresh):raise ValueError('Installer4 existing/uncertain preparation; no replay')
-    if frozen.native('/usr/bin/dpkg-query','-W','-f=${Version}\t${Status}','toddy-installer')!='0.2.0-1+toddy1\tinstall ok installed':raise ValueError('Installer4 requires exact installed revision1 before upgrade')
-    binary,proof,reuse=original_compile();inputs=source_plan()
+    if frozen.native('/usr/bin/dpkg-query','-W','-f=${Version}\t${Status}','toddy-installer')!=BASELINE_VERSION+'\tinstall ok installed':raise ValueError('Installer generation requires exact installed previous revision')
+    binary,proof,reuse=original_compile();baseline=upgrade4_baseline(check_installed=True);inputs=source_plan()
     payload.require_capacity(TARGET,128*1024**2+3*sum((ROOT/name).stat().st_size for name in inputs))
-    save(PREPARED,{'state':'preparing-no-replay','inputs':inputs,'reuse':reuse})
+    save(PREPARED,{'state':'preparing-no-replay','inputs':inputs,'reuse':reuse,'baseline_upgrade':baseline})
     SOURCE.mkdir(mode=0o755);(SOURCE/'repository').mkdir(mode=0o755);WORK.mkdir(mode=0o700)
     for name,sha in inputs.items():
         source=ROOT/name
@@ -98,17 +143,18 @@ def prepare():
     for path in [*SOURCE.rglob('*'),SOURCE]:
         if path.is_dir():path.chmod(0o555)
     pkg=package();manifest=pkg.stage(ROOT,WORK/'stage',frozen.WORK/'compile/libcalamares_viewmodule_toddy.so',frozen.WORK/'native-module-compile.json')
-    document=WORK/'stage'/REUSE_DOC.lstrip('/');document.write_bytes(pkg.encoded(reuse));document.chmod(0o644)
+    document=WORK/'stage'/REUSE_DOC.lstrip('/');document.write_bytes(pkg.encoded(dict(reuse,previous_package_upgrade=baseline) if baseline else reuse));document.chmod(0o644)
     manifest['inputs']=inputs;manifest['files'][REUSE_DOC]={'sha256':digest(document),'bytes':document.stat().st_size,'mode':'0644'}
     (WORK/'stage'/MANIFEST).write_bytes(pkg.encoded(manifest));(WORK/'stage'/MANIFEST).chmod(0o644)
     for path in [* (WORK/'stage').rglob('*'),WORK/'stage']:os.utime(path,(pkg.EPOCH,pkg.EPOCH),follow_symlinks=False)
     static=frozen.inventory(WORK/'stage');frozen.elf_dependencies(WORK/'stage')
     save(PREPARED,{'state':'prepared-reused-qualified-module','inputs':inputs,'reuse':reuse,'stage':static,
-        'source_inode':SOURCE.stat().st_ino,'work_inode':WORK.stat().st_ino,'producer_sha256':digest(Path(__file__))})
+        'baseline_upgrade':baseline,'source_inode':SOURCE.stat().st_ino,'work_inode':WORK.stat().st_ino,'producer_sha256':digest(Path(__file__))})
     return {'state':'prepared-no-recompile-required','version':VERSION,'step':STEP,'stage':str(WORK/'stage')}
 
 def qualify():
     row=read(PREPARED);_,_,reuse=original_compile()
+    if GENERATION==5 and row.get('baseline_upgrade')!=upgrade4_baseline():raise ValueError('Installer5 preserved baseline changed')
     if row.get('state')!='prepared-reused-qualified-module' or row.get('reuse')!=reuse or row.get('inputs')!=source_plan() or row.get('source_inode')!=SOURCE.stat().st_ino or row.get('work_inode')!=WORK.stat().st_ino:raise ValueError('Installer4 prepared source/reuse changed')
     for name,sha in row['inputs'].items():
         if digest(SOURCE/'repository'/name)!=sha or digest(ROOT/name)!=sha:raise ValueError('Installer4 frozen current source changed')
@@ -153,13 +199,14 @@ def postcheck():
     if probe.get('factory_created') is not True or probe.get('disk_writes') is not False:raise ValueError('Installer4 real no-write plugin probe failed')
     if frozen.native('/usr/bin/dpkg','--audit'):raise ValueError('Installer4 native database audit not empty')
     frozen.native('/usr/bin/apt-get','check')
-    save(RECEIPT,{'state':'native-revision4-package-and-reused-plugin-verified','prepared_sha256':digest(PREPARED),'reuse':row['reuse'],
+    save(RECEIPT,{'state':'native-revision'+str(GENERATION)+'-package-and-reused-plugin-verified','prepared_sha256':digest(PREPARED),'reuse':row['reuse'],
         'record_sha256':digest(recordpath),'archive_sha256':digest(archive),'module_sha256':digest(TARGET/pkg.MODULE.lstrip('/')),
         'offline_payload_sha256':digest(TARGET/'usr/lib/toddy/installer/offline_payload.py'),'native_offscreen_probe':probe,
         'root_wayland_gui':'pending distinct actual GUI proof','disk_writes':False,'version':VERSION})
 
 def main():
-    if os.geteuid()!=0 or sys.argv[1:] not in (['prepare'],['qualify'],['install'],['postcheck']):raise ValueError('Installer4 fixed root coordinator action')
+    if os.geteuid()!=0 or sys.argv[1:] not in (['prepare'],['qualify'],['install'],['postcheck'],['prepare5'],['qualify5'],['install5'],['postcheck5']):raise ValueError('Installer4 fixed root coordinator action')
+    if sys.argv[1].endswith('5'):configure(5);sys.argv[1]=sys.argv[1][:-1]
     os.umask(0o077);subprocess.run(['/bin/bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
     if sys.argv[1] in ('prepare','qualify'):
         fd=os.open(BUILD/'build.lock',os.O_RDWR|os.O_NOFOLLOW)

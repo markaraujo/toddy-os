@@ -55,3 +55,34 @@ then publishes its own verified receipt. Offscreen ABI proof is no root Wayland
 GUI, blank-disk installation or boot proof. Missing/existing preparation,
 promotion, package archive, record or receipt preserves the state and refuses
 replay; reconcile outcome before another namespace is authorized.
+
+## Fixed installer5 cache-recipe revision
+
+The aggregate cache correction changes packaged `offline_payload.py` and
+`native_finalizer.py`. Preserve actual installer4/version2, its source/work,
+archive/record and0/0 receipts. Use only the new fixed generation5 actions:
+
+```sh
+bash /opt/toddy-build/scripts/build/phase2/installer_mvp_prepare5.sh
+python3 /opt/toddy-build/scripts/build/phase2/installer_mvp_native.py qualify5
+python3 /opt/toddy-build/scripts/build/run_step.py b12-toddy-installer-5 \
+  /opt/toddy-build/scripts/build/phase2/installer_mvp_install5.sh \
+  /opt/toddy-build/scripts/build/phase2/installer_mvp_check5.sh --user root
+```
+
+The internal selector accepts only4 or5; no arbitrary version, path, job or
+namespace is accepted. Generation5 is `0.2.0-1+toddy3`, with source/work/stage,
+prepared/native receipt and offscreen HOME names ending5. It reuses the same
+actual compile3 only after unchanged C++/native ABI proof, without Qt/Calamares
+rebuild. It additionally requires actual installer4 success0/0, its exact
+native receipt/prepared source snapshot, retained version2 archive/record and
+unchanged installed version2 payload before preparation. Those immutable
+historical hashes are included in the generation5 provenance and rechecked
+through postcheck without pretending version2 remains installed after upgrade.
+No native receipt or success is synthesized from the source selector.
+
+After actual install/check5 succeeds, use a fresh measured MVP projection2 and
+signed export4. Earlier projection1/export3/signatures remain immutable. Existing
+prepared4 cannot be reinterpreted as current Python source; do not run old
+qualify/install actions to refresh it. Native GUI, installer/boot and source
+publication still require their actual distinct evidence.
