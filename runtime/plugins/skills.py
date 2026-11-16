@@ -10,27 +10,17 @@ import stat
 from .mcp import PluginError, _read_regular, name, relative
 
 
+try:
+    from ..broker.skill_documents import skill_metadata
+except ImportError:
+    from broker.skill_documents import skill_metadata
+
+
 def _metadata(data, expected_name):
     try:
-        text = data.decode('utf-8', errors='strict')
-    except UnicodeError as exc:
-        raise PluginError('skill_utf8') from exc
-    if not text.startswith('---\n') or '\n---\n' not in text:
-        raise PluginError('skill_metadata')
-    front, _, body = text[4:].partition('\n---\n')
-    if len(front.encode()) > 4096:
-        raise PluginError('skill_metadata_limit')
-    values = {}
-    for line in front.splitlines():
-        key, sep, value = line.partition(': ')
-        if not sep or key not in ('name', 'description') or key in values or not value:
-            raise PluginError('skill_metadata_fields')
-        if value.startswith(('!', '&', '*', '{', '[', '|', '>', '"', "'")) or '\x00' in value:
-            raise PluginError('skill_metadata_plain')
-        values[key] = value
-    if set(values) != {'name', 'description'} or name(values['name']) != expected_name or len(values['description'].encode()) > 1024:
-        raise PluginError('skill_metadata_fields')
-    return values, body
+        return skill_metadata(data, expected_name)
+    except (ValueError, UnicodeError) as exc:
+        raise PluginError(str(exc)) from None
 
 
 class Skill:

@@ -35,6 +35,7 @@ from memory_control import MemoryControl
 from automation import Automation, AutomationError, DesktopNotifier, ACTIONS
 from automation_control import AutomationControl, StandingPolicy
 from scheduler import ScheduleError
+from integrations import Integrations, IntegrationCatalog, IntegrationError, MCP_ID, MCP_TOOL
 
 BUS = 'io.github.markaraujo.Toddy.Service'
 OBJECT = '/io/github/markaraujo/Toddy/Service'
@@ -162,7 +163,14 @@ def main():
     files={path.name:path.read_bytes() for path in template.iterdir()
            if path.name in {'config.json','SOUL.md','IDENTITY.md','USER.md','AGENTS.md'}
            and path.is_file() and not path.is_symlink()}
-    capabilities={'adapters':ADAPTERS,'tools':NATIVE_TOOLS,'skills':{'explain-system'},'extensions':set(),'workflows':ACTIONS}
+    # Pin data-only shipped skills in every new profile revision. Legacy
+    # profiles retain their path and may use only a hash-bound installed fallback.
+    for path in sorted((template/'skills').rglob('*')) if (template/'skills').is_dir() else ():
+        if path.is_file() and not path.is_symlink():files[path.relative_to(template).as_posix()]=path.read_bytes()
+    integration_catalog=IntegrationCatalog()
+    installed_release=integration_catalog.available()
+    capabilities={'adapters':ADAPTERS,'tools':NATIVE_TOOLS | ({MCP_TOOL} if installed_release else set()),
+        'skills':{'explain-system'},'extensions':{MCP_ID} if installed_release else set(),'workflows':ACTIONS}
     legacy=ProfileStore(args.data_dir,'toddy-default',schema,capabilities=capabilities)
     if legacy.current() is None:legacy.apply(files,expected_revision=None)
     registry=ProfileRegistry(registry_directory,schema,files,capabilities=capabilities,
@@ -182,6 +190,8 @@ def main():
         journal.recover()
         text=TaskText(journal)
         text.recover();text.purge_transient();text.purge_expired()
+        integrations=Integrations(profiles,args.defaults,catalog=integration_catalog,owner_allowed=allowed)
+        integrations.reconcile()
         memory=MemoryAPI(profiles,owner_allowed=allowed)
         memory_control=MemoryControl(memory)
         automation=Automation(profiles,owner_allowed=allowed,standing_allowed=standing,notifier=DesktopNotifier())
@@ -189,17 +199,17 @@ def main():
         automation_control=AutomationControl(automation)
         core=BrokerCore(profiles,journal,args.workspace,root_client=root_client,
             dispatch_allowed=allowed,shell_runner=ScopedShell(),
-            engine_runner=MemoryEngine(ConfiguredEngine(args.defaults),memory),text_store=text, memory_api=memory, automation=automation)
+            engine_runner=MemoryEngine(ConfiguredEngine(args.defaults,integrations=integrations),memory),text_store=text, memory_api=memory, automation=automation, integrations=integrations)
         return SimpleNamespace(profiles=profiles,journal=journal,text_store=text,core=core,
                                memory=memory,memory_control=memory_control,
-                               automation=automation,automation_control=automation_control)
+                               automation=automation,automation_control=automation_control,integrations=integrations)
 
     runtime=ProfileRuntime(registry,factory)
     # Recover every registered profile exactly once under lifetime ownership.
     # This never replays a task, even if the last selected profile changed.
     for row in registry.list_profiles()['profiles']:
         try:runtime.context(row['profile_id'])
-        except (ProfileError,TaskError,TextError,MemoryAPIError,MemoryError,AutomationError,ScheduleError,OSError):pass
+        except (ProfileError,TaskError,TextError,MemoryAPIError,MemoryError,AutomationError,ScheduleError,IntegrationError,OSError):pass
     info=Gio.DBusNodeInfo.new_for_xml(Path(__file__).with_name(INTERFACE+'.xml').read_text())
     loop=GLib.MainLoop()
     pool=ThreadPoolExecutor(max_workers=1,thread_name_prefix='toddy-broker')
@@ -354,7 +364,14 @@ def main():
                 profile_id,expected,revision=values
                 profiles=registry.store(profile_id,allow_recovery=True)
                 restored=runtime.context(profile_id).memory.restore_profile(revision,expected_revision=expected)
+                runtime.context(profile_id).integrations.reconcile()
                 profiles_changed();reply(invocation,{'version':1,**restored})
+            elif method in ('GetIntegrations','ConfigureIntegration'):
+                context=runtime.context(values[0])
+                if method=='GetIntegrations':reply(invocation,context.integrations.inspect())
+                else:
+                    result=context.integrations.configure(values[1],values[2])
+                    profiles_changed();reply(invocation,result)
             elif method in ('GetAutomation','ConfigureAutomation'):
                 context=runtime.context(values[0])
                 if method=='GetAutomation':
@@ -421,9 +438,10 @@ def main():
                     if not stage or stage['sender']!=sender or stage['profile_id']!=profile_id or \
                             stage['expected']!=expected or stage['expires']<=time.monotonic():raise BrokerError('profile_stage_unavailable')
                     applied=runtime.context(profile_id).memory.apply_profile(stage['files'],expected_revision=expected,validated_revision=stage['revision']);del stages[candidate]
+                    runtime.context(profile_id).integrations.reconcile()
                     profiles_changed();reply(invocation,{'version':1,'profile_revision':applied['profile_revision'],'applied':True})
             else:raise BrokerError('method_unavailable')
-        except (ProfileError,TaskError,BrokerError,TextError,MemoryAPIError,MemoryError,AutomationError,ScheduleError) as error:
+        except (ProfileError,TaskError,BrokerError,TextError,MemoryAPIError,MemoryError,AutomationError,ScheduleError,IntegrationError) as error:
             invocation.return_dbus_error(INTERFACE+'.Rejected',str(error))
         except (ValueError,UnicodeError,RecursionError,OverflowError,GLib.Error,OSError):
             invocation.return_dbus_error(INTERFACE+'.Rejected','invalid_or_unavailable_request')
@@ -433,6 +451,7 @@ def main():
         nonlocal stopping
         stopping=True
         automation_runtime.stop_accepting(tuple(runtime.contexts.values()))
+        for context in runtime.contexts.values():context.integrations.stop_all()
         if pending:pending[0].core.cancel(pending[1])
         else:loop.quit()
         return False

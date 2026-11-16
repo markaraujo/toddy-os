@@ -1,0 +1,10 @@
+Toddy OS release reference data
+
+The release.json projection derives from Toddy OS committed B02 desktop runtime
+metadata, source manifest SHA256 recorded inside release.json. Original Toddy OS
+documentation/data attribution: Marcos Araujo and Toddy OS contributors;
+https://github.com/markaraujo/toddy-os . Original project documentation/art is
+licensed CC BY 4.0 (see repository LICENSES/CC-BY-4.0.txt). Original glue code
+follows the repository MIT license. This factual reference does not relicense or
+redistribute the third-party packages. Their separate source/notices/license
+receipt hashes are retained per component. Installed package state is not queried.

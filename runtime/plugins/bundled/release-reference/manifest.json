@@ -1,0 +1,18 @@
+{
+  "capabilities": [
+    "mcp.tools.read"
+  ],
+  "entry": "server.py",
+  "files": {
+    "NOTICE": "270cfd29b8a3ba9ddc1d23b2965d5459738d1220d50f7316701f294950b2f3f5",
+    "release.json": "ec4f9b8093e14431ba51abf80470d6c229598d28c5466efcfd053a627f17c220",
+    "server.py": "75482ff88de72695cbca8ec4262aced77f49638825e5465eea30bdc703e35518"
+  },
+  "id": "release-reference",
+  "plugin_version": 1,
+  "tools": {
+    "lookup-package": [
+      "package"
+    ]
+  }
+}

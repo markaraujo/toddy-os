@@ -17,9 +17,11 @@ import stat
 try:
     from .profiles import ProfileStore,ProfileError,_schema,_identifier
     from .protocol import strict_json
+    from .skill_documents import profile_path
 except ImportError:
     from profiles import ProfileStore,ProfileError,_schema,_identifier
     from protocol import strict_json
+    from skill_documents import profile_path
 
 MAX_BUNDLE=8*1024*1024
 FILES={'config.json','SOUL.md','IDENTITY.md','USER.md','AGENTS.md'}
@@ -134,10 +136,12 @@ class ProfileRegistry:
 
     def _portable(self,profile_id,files):
         _identifier(profile_id)
-        if not isinstance(files,dict) or 'config.json' not in files or set(files)-FILES:
+        if not isinstance(files,dict) or 'config.json' not in files or not 1<=len(files)<=128:
             raise RegistryError('unsupported_bundle_path')
         for name,data in files.items():
-            if type(data) is not bytes or len(data)>(65536 if name=='config.json' else 32768):
+            try:limit,_=profile_path(name)
+            except (ValueError,TypeError):raise RegistryError('unsupported_bundle_path') from None
+            if type(data) is not bytes or len(data)>limit:
                 raise RegistryError('profile_file_limit')
         try:config=strict_json(files['config.json'])
         except (ValueError,UnicodeError,RecursionError,OverflowError):
@@ -151,8 +155,9 @@ class ProfileRegistry:
         config['automation']={'enabled':False,'workflow_ids':[]}
         config['extensions']={'enabled':[]}
         config['tools']={'enabled':['system-info'] if 'system-info' in self.capabilities.get('tools',()) else []}
-        config['skills']={'enabled':['explain-system'] if 'explain-system' in self.capabilities.get('skills',()) else []}
-        clean={name:data for name,data in files.items() if name in PERSONA}
+        # Data-only selected skill documents survive an explicit owner import;
+        # tools/extensions/provider/automation authority is reset independently.
+        clean={name:data for name,data in files.items() if name in PERSONA or name.startswith('skills/')}
         clean['config.json']=_encode(config)
         clean['USER.md']=EMPTY_USER
         self._validate(profile_id,clean)
@@ -315,7 +320,7 @@ class ProfileRegistry:
                 type(value['bundle_version']) is not int or value['bundle_version']!=1 or \
                 value['scope']!='profile-without-memory-or-authority' or value['routing']!='deferred-rebind-required' or \
                 not isinstance(value['files'],dict) or not isinstance(value['sha256'],dict) or \
-                not 0<len(value['files'])<=128 or set(value['files'])!=set(value['sha256']) or set(value['files'])-FILES:
+                not 0<len(value['files'])<=128 or set(value['files'])!=set(value['sha256']):
             raise RegistryError('bundle_schema')
         files={}
         for name,text in value['files'].items():

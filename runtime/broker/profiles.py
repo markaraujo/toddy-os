@@ -16,8 +16,10 @@ import time
 
 try:
     from .protocol import strict_json
+    from .skill_documents import profile_path, parse_skill
 except ImportError:
     from protocol import strict_json
+    from skill_documents import profile_path, parse_skill
 
 
 class ProfileError(ValueError):
@@ -181,21 +183,31 @@ class ProfileStore:
     def validate(self, files):
         """Validate explicit bytes only; filesystem/archive traversal is not accepted.
 
-        First slice supports config and four persona documents. Skill/workflow
-        bodies remain installed separately, cannot be imported through this API.
+        Skills are bounded UTF-8 documents/references, pinned by the same immutable
+        manifest. No code hooks, archive/filesystem paths or workflows are loaded.
         """
-        allowed = {'config.json', 'SOUL.md', 'IDENTITY.md', 'USER.md', 'AGENTS.md'}
-        if not isinstance(files, dict) or 'config.json' not in files or set(files) - allowed:
+        if not isinstance(files, dict) or 'config.json' not in files or not 1 <= len(files) <= 128:
             raise ProfileError('unsupported_profile_path')
         bundle = {}
+        skill_ids = set()
+        if any(type(data) is not bytes for data in files.values()) or sum(len(data) for data in files.values()) > 8*1024*1024:
+            raise ProfileError('profile_bundle_limit')
         for name, data in files.items():
-            limit = 65536 if name == 'config.json' else 32768
+            try:limit, skill_id = profile_path(name)
+            except (ValueError, TypeError):raise ProfileError('unsupported_profile_path') from None
+            if skill_id is not None:
+                if 'skills/'+skill_id+'/SKILL.md' not in files:
+                    raise ProfileError('skill_document_required')
+                skill_ids.add(skill_id)
             if type(data) is not bytes or len(data) > limit:
                 raise ProfileError('profile_file_limit')
             try:
                 bundle[name] = data.decode('utf-8', errors='strict')
             except UnicodeError:
                 raise ProfileError('invalid_profile_utf8') from None
+        for skill_id in skill_ids:
+            try:parse_skill(files['skills/'+skill_id+'/SKILL.md'], skill_id)
+            except (ValueError, UnicodeError):raise ProfileError('invalid_skill_document') from None
         try:
             config = strict_json(files['config.json'])
         except (ValueError, UnicodeError, RecursionError, OverflowError):
@@ -207,7 +219,8 @@ class ProfileStore:
                            ('skills', config['skills']['enabled']),
                            ('extensions', config['extensions']['enabled']),
                            ('workflows', config['automation']['workflow_ids'])]:
-            if set(ids) - set(self.capabilities.get(group, ())):
+            available = set(self.capabilities.get(group, ())) | (skill_ids if group == 'skills' else set())
+            if set(ids) - available:
                 raise ProfileError('unavailable_' + group)
         provider = config['provider']
         if provider['mode'] != 'deferred':

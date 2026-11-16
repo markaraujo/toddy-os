@@ -12,9 +12,11 @@ import sys
 try:
     from .protocol import strict_json
     from .tasks import TaskError
+    from .integrations import IntegrationError, FIXED_TOOLS
 except ImportError:
     from protocol import strict_json
     from tasks import TaskError
+    from integrations import IntegrationError, FIXED_TOOLS
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from tools.native import Tools, ToolError
@@ -32,7 +34,7 @@ ROOT_KINDS = {'admin-config': 'config_replace', 'admin-command': 'root_command',
 
 
 class BrokerCore:
-    def __init__(self, profiles, journal, workspace, *, root_client=None, dispatch_allowed=lambda: False, shell_runner=None, engine_runner=None, text_store=None, memory_api=None, automation=None):
+    def __init__(self, profiles, journal, workspace, *, root_client=None, dispatch_allowed=lambda: False, shell_runner=None, engine_runner=None, text_store=None, memory_api=None, automation=None, integrations=None):
         if os.getuid() == 0 or os.geteuid() == 0:
             raise BrokerError('unprivileged_broker_required')
         self.profiles, self.journal = profiles, journal
@@ -43,6 +45,7 @@ class BrokerCore:
         self.text_store = text_store
         self.memory_api = memory_api
         self.automation = automation
+        self.integrations = integrations
         self.dispatch_allowed = dispatch_allowed
         # Validate workspace immediately, no implicit host directory choice.
         with Tools(self.workspace):
@@ -50,17 +53,21 @@ class BrokerCore:
 
     def capabilities(self):
         revision = self.profiles.current()
-        config = strict_json(self.profiles.snapshot(revision)['config.json'])
+        files = self.profiles.snapshot(revision)
+        config = strict_json(files['config.json'])
+        extra = self.integrations.descriptors(files) if self.integrations is not None else []
         return {'version': 1, 'profile_schema': 1, 'store_version': 1,
                 'profile_id': self.profiles.profile_id, 'profile_revision': revision,
                 'features': ['native-tools', 'durable-tasks', 'cancel', 'profiles', 'profile-settings-v1'] +
                     (['agent-text-v1', 'agent-text-ack-v1'] if self.text_store is not None else []) +
                     (['owner-memory-v1'] if self.memory_api is not None else []) +
-                    (['owner-automation-v1'] if self.automation is not None else []),
+                    (['owner-automation-v1'] if self.automation is not None else []) +
+                    (['owner-integrations-v1'] if self.integrations is not None else []),
                 'agent_backend': bool(self.engine_runner and self.engine_runner.available(config)),
                 'provider_mode': config['provider']['mode'],
                 'credential_state': 'checked-at-dispatch' if config['provider']['mode'] == 'remote' else 'not-required',
-                'tools': sorted(set(config['tools']['enabled']) & NATIVE_TOOLS)}
+                'tools': sorted((set(config['tools']['enabled']) & NATIVE_TOOLS) | {item['name'] for item in extra if item['name'] not in {'load-skill','read-skill-resource'}}),
+                'integration_tools': [item['name'] for item in extra]}
 
     @staticmethod
     def decode_input(encoded):
@@ -107,9 +114,14 @@ class BrokerCore:
                 or set(request['tool']) != {'kind', 'arguments'}):
             raise BrokerError('invalid_task_input')
         kind, arguments = request['tool']['kind'], request['tool']['arguments']
-        if not isinstance(kind, str) or kind not in NATIVE_TOOLS or not isinstance(arguments, dict):
+        if not isinstance(kind, str) or kind not in NATIVE_TOOLS | FIXED_TOOLS or not isinstance(arguments, dict):
             raise BrokerError('tool_unavailable')
-        config = strict_json(self.profiles.snapshot(revision)['config.json'])
+        files = self.profiles.snapshot(revision)
+        config = strict_json(files['config.json'])
+        if kind in FIXED_TOOLS:
+            if self.integrations is None:raise BrokerError('integration_unavailable')
+            self.integrations.validate(files,kind,arguments)
+            return request
         if kind not in config['tools']['enabled']:
             raise BrokerError('profile_tool_disabled')
         expected = {'system-info': set(), 'file-read': {'path'},
@@ -162,6 +174,11 @@ class BrokerCore:
             raise BrokerError('interactive_dispatch_stopped')
         canceled = lambda: (self.journal.inspect(task_id)['cancel_requested'] or not self.dispatch_allowed()
                             or self.journal.remaining_seconds(task_id) <= 0)
+        if kind in FIXED_TOOLS:
+            if self.integrations is None:raise BrokerError('integration_unavailable')
+            _revision,files=self.profiles.task_snapshot(task_id)
+            return self.integrations.call(task_id,operation_id,files,kind,arguments,canceled=canceled,
+                remaining_seconds=lambda:self.journal.remaining_seconds(task_id))
         if kind == 'system-info':
             kernel = os.uname()
             return {'verified': True, 'uid': os.getuid(), 'kernel': kernel.release, 'machine': kernel.machine}
@@ -202,7 +219,7 @@ class BrokerCore:
                     return {'outcome': 'uncertain', 'content': 'Operation outcome requires review. Do not repeat it.'}
                 content = json.dumps(observed[0], ensure_ascii=False, separators=(',', ':')) if observed else 'Previously verified operation; no effect replayed.'
                 return {'outcome': 'verified', 'content': content}
-            except (TaskError, BrokerError, ToolError):
+            except (TaskError, BrokerError, ToolError, IntegrationError):
                 unknown = self.journal.inspect(task_id)['result_uncertain']
                 return {'outcome': 'uncertain' if unknown else 'rejected',
                         'content': 'Operation outcome requires review. Do not repeat it.' if unknown else 'Tool request rejected before dispatch.'}
@@ -238,6 +255,7 @@ class BrokerCore:
 
     def cancel(self, task_id):
         snapshot = self.journal.cancel(task_id)
+        if self.integrations is not None:self.integrations.stop(task_id)
         if snapshot['operation_id'] and self.root_client is not None:
             # Executor cancellation independently authenticates current UID.
             # Root request may not yet exist or be local: retain durable Stop,
