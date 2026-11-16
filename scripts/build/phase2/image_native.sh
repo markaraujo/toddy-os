@@ -3,7 +3,7 @@
 set -euo pipefail
 [[ $(id -u) == 0 && $# == 1 ]]
 case $1 in
-    base|live|qualify-base|qualify-live|finalize-base|finalize-live|stage-live) ;;
+    base|live|qualify-base|qualify-live|finalize-base|finalize-live|stage-live|media-compress|media-initramfs|media-iso) ;;
     custody-offline-inspect|custody-offline-export|custody-offline-receipt|custody-offline-metadata|custody-offline-retire|custody-live-inspect|custody-live-export|custody-live-receipt|custody-live-metadata|custody-live-retire) ;;
     *) exit 2 ;;
 esac
@@ -105,6 +105,11 @@ case $1 in
     custody-live-*)
         action=${1#custody-live-}
         /usr/bin/env -i PATH=/usr/bin:/usr/sbin HOME=/root LC_ALL=C /usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/candidate_root_custody.py live "$action" <&8 8<&- ;;
+    media-compress|media-initramfs|media-iso)
+        # Media coordinator owns TARGET=/mnt/lfs and invokes native tools itself.
+        # Keep it builder-side in this protected view with the SAME lease FD9.
+        action=${1#media-}
+        /usr/bin/env -i PATH=/usr/bin:/usr/sbin HOME=/root LC_ALL=C /usr/bin/python3 -I /opt/toddy-build/scripts/build/phase2/image_media.py "$action" 8<&- ;;
     *)
         # Ubuntu's chroot is /usr/sbin; all following programs are native.
         /usr/sbin/chroot /mnt/lfs /usr/bin/env -i PATH=/usr/bin:/usr/sbin HOME=/root LC_ALL=C \

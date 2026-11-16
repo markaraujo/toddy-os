@@ -3,7 +3,7 @@
 No historical milestone CLI is rerun and no boot/release acceptance is inferred.
 Missing real assembly attribution fails before creating a media generation.
 """
-import fcntl
+import stat
 import gzip
 import hashlib
 import json
@@ -280,20 +280,38 @@ def iso_phase(backend):
     return result
 
 
+
+def inherited_media_lease():
+    """Only the fixed protected-view wrapper may supply the existing FD9 lease."""
+    path=BUILD/'build.lock'
+    if path.resolve()!=path:raise ValueError('Media global lease redirected')
+    for parent in path.parents:
+        info=parent.lstat()
+        if not stat.S_ISDIR(info.st_mode) or info.st_uid or info.st_mode&0o022:raise ValueError('Media global lease unprotected')
+    expected=path.lstat();actual=os.fstat(9)
+    if (not stat.S_ISREG(expected.st_mode) or expected.st_uid or expected.st_mode&0o022 or expected.st_nlink!=1 or
+            Path('/proc/self/fd/9').readlink()!=path or (actual.st_dev,actual.st_ino)!=(expected.st_dev,expected.st_ino)):
+        raise ValueError('Media inherited lease identity')
+    if not re.search(r'^lock:.*\bFLOCK\b.*\bWRITE\b',Path('/proc/self/fdinfo/9').read_text(),re.M):
+        raise ValueError('Media exclusive global lease required')
+    # Never open/reacquire/close/unlock the inherited description. Wrapper owns
+    # it through native subprocess execution and ordered namespace cleanup.
+    return 9
+
+
 def main():
     if (sys.argv[1:] not in (['compress'],['initramfs'],['iso']) or os.getuid()!=0 or os.geteuid()!=0 or
             Path(__file__).resolve()!=Path('/opt/toddy-build/scripts/build/phase2/image_media.py')):
         raise ValueError('Fixed root coordinator media command required')
     os.umask(0o077)
     subprocess.run(['/usr/bin/bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
-    with (BUILD/'build.lock').open('a') as lock:
-        fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        if list(BUILD.glob('*.running.json')) or (BUILD/'input-sync.running').exists():raise ValueError('Preserve active native operation')
-        backend=PackageBackend()
-        if not backend.native:raise ValueError('Accepted native backend required')
-        initramfs_input.physical(TARGET,STAGE,directory=True)
-        result={'compress':compression_phase,'initramfs':initramfs_phase,'iso':iso_phase}[sys.argv[1]](backend)
-        print(json.dumps(result,sort_keys=True))
+    inherited_media_lease()
+    if list(BUILD.glob('*.running.json')) or (BUILD/'input-sync.running').exists():raise ValueError('Preserve active native operation')
+    backend=PackageBackend()
+    if not backend.native:raise ValueError('Accepted native backend required')
+    initramfs_input.physical(TARGET,STAGE,directory=True)
+    result={'compress':compression_phase,'initramfs':initramfs_phase,'iso':iso_phase}[sys.argv[1]](backend)
+    print(json.dumps(result,sort_keys=True))
 
 
 if __name__=='__main__':main()

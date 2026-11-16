@@ -189,9 +189,9 @@ Missing evidence fails before a media generation is created.
 After that prerequisite, run these fixed commands sequentially in the builder:
 
 ```sh
-python3 /opt/toddy-build/scripts/build/phase2/image_media.py compress
-python3 /opt/toddy-build/scripts/build/phase2/image_media.py initramfs
-python3 /opt/toddy-build/scripts/build/phase2/image_media.py iso
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-compress
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-initramfs
+bash /opt/toddy-build/scripts/build/phase2/image_native.sh media-iso
 ```
 
 Each acquires the existing build lock and target guards. Compression binds the
@@ -377,3 +377,12 @@ is captured/rechecked in custody provenance alongside the helper/verifier.
 Source tests exercise real inherited FLOCK ownership/refusal and binary stdin
 preservation, shell/action/cleanup contracts and unprivileged entry denial; they
 do not mount a namespace, execute a VM, qualify a native image or reclaim space.
+
+Media phases run builder-side through the same fixed private protected-stage
+view as assembly. The wrapper retains the canonical exclusive global lease on
+FD9 through native calls and namespace cleanup. `image_media.py` independently
+verifies its actual lock inode and kernel exclusive FLOCK; it never reopens or
+relocks the lease. Direct invocation without that inherited lease fails closed.
+The root-owned temporary `/sources` view preserves underlying stage identity and
+outputs while hiding legacy writable source-cache ancestry only inside the job.
+Neither original cache permissions nor generated source evidence are changed.
