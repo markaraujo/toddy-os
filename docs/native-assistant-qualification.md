@@ -297,3 +297,41 @@ additional real scale/focus/Cancel checks are still needed before filling the
 strict production launch receipt's observations. This phase never fabricates that
 receipt, signed inputs, blank-disk install, detached BIOS/UEFI owner boots,
 recovery or release acceptance.
+
+## Broker-independent native setup phase
+
+Include `setup-offline` FIRST in a new selected phase list, before
+`ui-prepare,ui-en,keyring,agent,...`. Collect/bind a new input generation through
+the existing commands above; preserve older component-only packets and reports.
+The phase uses the current installed `/usr/bin/toddy` and real GApplication/
+AT-SPI widgets. It does not qualify source fixtures as native GUI results.
+
+The root coordinator records the actual user unit's enabled/activity state,
+refuses an existing mask or transitional/failed service, and temporarily stops/
+runtime-masks only `toddy-agent.service` on that authenticated owner's user bus.
+The user client skips ALL common broker capability/profile calls for this phase.
+It verifies `NameHasOwner:false` and native MainPID0 throughout. The existing
+fixed QMP input bridge supplies keyboard events to the actual focused GTK backend
+preference dropdown; real Save preference actions must persist API/local/later
+intent through native application exit/relaunch and protected PendingStore
+readback. This tests preferences, not a paid provider call or model launch.
+
+An existing deferred wish is preserved. When the disposable candidate has no
+installer wish, the qualification explicitly seeds one through the actual shared
+owner storage API and reports that fact; it does not claim installer-handoff
+acceptance. Actual Software-page unavailable/retained-pending labels must render,
+with no acquisition request and byte-identical native dpkg inventory. The final
+Later action must persist invitation dismissal. Finally the exact prior user
+mask/activity state is restored, including on a failed client phase. A restore
+failure is a native qualification failure, never successful setup evidence.
+
+The required later `keyring` phase separately proves real protected dummy-key
+storage/isolation and locked failure without plaintext fallback. This phase
+supplies no credential input and does not waive that check. Earlier selected
+component reports without `setup-offline` remain component-only; neither
+`all_selected_exits_zero` nor this source preparation alone accepts B06/G2.
+
+The dropdown role is derived from frozen GTK4.22.4 `gtk/gtkdropdown.c`
+(`GTK_ACCESSIBLE_ROLE_COMBO_BOX`); widget existence/focus/QMP handling still
+requires the actual native run. Missing or ambiguous accessibility state fails
+rather than selecting a fabricated tree or silently skipping the interaction.

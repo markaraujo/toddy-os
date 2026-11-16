@@ -8,11 +8,11 @@ from pathlib import Path
 
 SERIAL='TODDY-ASST-DATA'
 OWNER='td-asst-owner';UID=12406
-PHASES=('ui-prepare','ui-en','branding','installer-gui','keyring','agent','agent-ui','memory','grant','automation','automation-alert','automation-interrupt','revoke','integrations-bootstrap','integrations','voice-files','voice-device','ui-pt','ui-return-en')
+PHASES=('setup-offline','ui-prepare','ui-en','branding','installer-gui','keyring','agent','agent-ui','memory','grant','automation','automation-alert','automation-interrupt','revoke','integrations-bootstrap','integrations','voice-files','voice-device','ui-pt','ui-return-en')
 REQUIRES={'ui-en':('ui-prepare',),'branding':('ui-en',),'installer-gui':('ui-en',),'keyring':('ui-en',),'agent':('keyring',),'agent-ui':('agent',),'memory':('agent',),'grant':('memory',),'automation':('grant',),'automation-alert':('automation',),'automation-interrupt':('automation-alert',),'revoke':('automation-interrupt',),'integrations-bootstrap':('ui-en',),'integrations':('ui-en',),'voice-files':('ui-en',),'voice-device':('voice-files',),'ui-pt':('ui-en',),'ui-return-en':('ui-pt',)}
 INSTALLER_PACKAGES={'toddy-installer':'0.2.0-1+toddy1','calamares-branding-toddy':'0.2.0-1+toddy1','toddy-branding':'0.2.0-1+toddy1','calamares':'3.4.3-1+toddy1','qtbase':'6.11.2-1+toddy2','qtsvg':'6.11.2-1+toddy1','kcoreaddons':'6.29.0-1+toddy1','yaml-cpp':'0.9.0-1+toddy1'}
 SHOW_ONLY_SHA256='fb7b65c50c5f51d706bd2d76cf7b8a3f6a9625c0f2762c9ff5f3a05ba40dc80a'
-PACKAGE_PHASES={'installer-gui':tuple(INSTALLER_PACKAGES),'branding':('toddy-branding','toddy-desktop-defaults'), 'ui-prepare':('toddy-assistant','toddy-agent','toddy-executor'), 'agent':('toddy-agent','llama-cpp'), 'keyring':('gnome-keyring','libsecret'), 'voice-files':('toddy-voice','whisper-cpp','espeak-ng','toddy-voice-model-base','toddy-voice-native-catalog'), 'integrations':('toddy-integrations','firefox','bubblewrap'),'integrations-bootstrap':('toddy-integrations','firefox','bubblewrap')}
+PACKAGE_PHASES={'installer-gui':tuple(INSTALLER_PACKAGES),'setup-offline':('toddy-assistant','toddy-agent'), 'branding':('toddy-branding','toddy-desktop-defaults'), 'ui-prepare':('toddy-assistant','toddy-agent','toddy-executor'), 'agent':('toddy-agent','llama-cpp'), 'keyring':('gnome-keyring','libsecret'), 'voice-files':('toddy-voice','whisper-cpp','espeak-ng','toddy-voice-model-base','toddy-voice-native-catalog'), 'integrations':('toddy-integrations','firefox','bubblewrap'),'integrations-bootstrap':('toddy-integrations','firefox','bubblewrap')}
 HEX=re.compile('[a-f0-9]{64}\\Z')
 
 
@@ -27,6 +27,7 @@ def validate_manifest(value):
     if not isinstance(phases,list) or not phases or len(set(phases))!=len(phases) or any(p not in PHASES for p in phases):raise ValueError('assistant_phase_selection')
     if 'integrations-bootstrap' in phases and 'integrations' in phases and phases.index('integrations-bootstrap')>phases.index('integrations'):raise ValueError('assistant_phase_prerequisite')
     if 'ui-pt' in phases and 'voice-device' in phases and phases.index('ui-pt')<phases.index('voice-device') and ('ui-return-en' not in phases or not phases.index('ui-pt')<phases.index('ui-return-en')<phases.index('voice-device')):raise ValueError('assistant_native_UI_locale_order')
+    if 'setup-offline' in phases and phases[0]!='setup-offline':raise ValueError('assistant_setup_offline_must_precede_broker_calls')
     for index,phase in enumerate(phases):
         if any(dependency not in phases[:index] for dependency in REQUIRES.get(phase,())):raise ValueError('assistant_phase_prerequisite')
     if value['kernel']!='7.1.8-toddy' or any(not isinstance(value[k],str) or not HEX.fullmatch(value[k]) for k in ('kernel_config_sha256','B02_manifest_sha256')):raise ValueError('assistant_kernel_input')
@@ -205,15 +206,104 @@ def atspi_window(locale):
     assert all(any(word in name for name in names) for word in required),('native_locale_labels_missing',locale)
     return {'application':'Toddy','focused_roles':focused,'locale':locale,'visible_label_count':len(names),'required_labels':required}
 
-if phase!='agent':profile=call('GetCapabilities')['profile_id']
-caps=call('GetCapabilities')
-broker_owner=connection.call_sync('org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','GetNameOwner',GLib.Variant('(s)',(BUS,)),GLib.VariantType('(s)'),Gio.DBusCallFlags.NONE,3000,None).unpack()[0]
-broker_pid=connection.call_sync('org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','GetConnectionUnixProcessID',GLib.Variant('(s)',(broker_owner,)),GLib.VariantType('(u)'),Gio.DBusCallFlags.NONE,3000,None).unpack()[0]
-assert int(subprocess.check_output(['/usr/bin/systemctl','--user','show','toddy-agent.service','--property=MainPID','--value'],text=True))==broker_pid
-assert b'/usr/lib/toddy/broker/service.py' in (Path('/proc')/str(broker_pid)/'cmdline').read_bytes().split(b'\0')
-result={'phase':phase,'native_uid':os.getuid(),'native_session_bus':True,'canonical_user_service_pid':broker_pid}
+result={'phase':phase,'native_uid':os.getuid(),'native_session_bus':True}
 assert os.getuid()==12406 and os.geteuid()==12406
-if phase=='ui-prepare':
+if phase!='setup-offline':
+    if phase!='agent':profile=call('GetCapabilities')['profile_id']
+    caps=call('GetCapabilities')
+    broker_owner=connection.call_sync('org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','GetNameOwner',GLib.Variant('(s)',(BUS,)),GLib.VariantType('(s)'),Gio.DBusCallFlags.NONE,3000,None).unpack()[0]
+    broker_pid=connection.call_sync('org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','GetConnectionUnixProcessID',GLib.Variant('(s)',(broker_owner,)),GLib.VariantType('(u)'),Gio.DBusCallFlags.NONE,3000,None).unpack()[0]
+    assert int(subprocess.check_output(['/usr/bin/systemctl','--user','show','toddy-agent.service','--property=MainPID','--value'],text=True))==broker_pid
+    assert b'/usr/lib/toddy/broker/service.py' in (Path('/proc')/str(broker_pid)/'cmdline').read_bytes().split(b'\0')
+if phase=='setup-offline':
+    import socket,stat
+    gi.require_version('Atspi','2.0');from gi.repository import Atspi
+    from toddy.ui.model import SetupModel,state_directory
+    from toddy.setup.pending import PendingStore,Catalog
+    Atspi.init();Atspi.set_timeout(1000,1000)
+    labels={row['id']:row['text']['en'] for row in json.loads(Path('/usr/share/toddy/ui/phase2/messages.json').read_text())['messages']}
+    def broker_absent():
+        owned=connection.call_sync('org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','NameHasOwner',GLib.Variant('(s)',(BUS,)),GLib.VariantType('(b)'),Gio.DBusCallFlags.NONE,3000,None).unpack()[0]
+        assert not owned
+        assert subprocess.check_output(['/usr/bin/systemctl','--user','show','toddy-agent.service','--property=MainPID','--value'],text=True).strip()=='0'
+    def application_owned():
+        return connection.call_sync('org.freedesktop.DBus','/org/freedesktop/DBus','org.freedesktop.DBus','NameHasOwner',GLib.Variant('(s)',('io.github.markaraujo.Toddy',)),GLib.VariantType('(b)'),Gio.DBusCallFlags.NONE,3000,None).unpack()[0]
+    def close_app():
+        if application_owned():
+            subprocess.run(['/usr/bin/gapplication','action','io.github.markaraujo.Toddy','quit'],check=True,capture_output=True)
+            until(lambda:not application_owned(),10)
+    def launch():
+        subprocess.Popen(['/usr/bin/toddy','--locale','en'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+        until(application_owned,15);until(lambda:actual_app(),15)
+    def visible_nodes():
+        stack=[actual_app()];found=[]
+        while stack:
+            node=stack.pop();assert len(found)<2048
+            if node.get_state_set().contains(Atspi.StateType.SHOWING):found.append(node)
+            for index in range(node.get_child_count()):stack.append(node.get_child_at_index(index))
+        return found
+    def activate(label):
+        matches=[node for node in visible_nodes() if node.get_name()==label and node.get_action_iface() and node.get_action_iface().get_n_actions()]
+        assert len(matches)==1,('actual_native_setup_action_missing_or_ambiguous',label,len(matches))
+        node=matches[0];assert node.get_state_set().contains(Atspi.StateType.SENSITIVE)
+        assert node.get_action_iface().do_action(0)
+        time.sleep(.15)
+    def key(code):
+        with socket.socket(socket.AF_UNIX,socket.SOCK_STREAM) as input:
+            input.settimeout(10);input.connect('/run/toddy-assistant/input.sock')
+            input.sendall(json.dumps({'event':'key','code':code}).encode())
+            assert json.loads(input.recv(4096))=={'actual_QMP_acknowledged':True}
+    def pending():
+        directory=state_directory();file=directory/'pending.json';info=file.lstat()
+        assert stat.S_ISREG(info.st_mode) and info.st_uid==os.getuid() and stat.S_IMODE(info.st_mode)==0o600 and info.st_nlink==1
+        catalog=Catalog(Path('/usr/share/toddy/config/phase2/software-catalog.json').read_bytes())
+        with PendingStore(directory,catalog) as store:value,revision=store.load()
+        assert value is not None and value['consent_receipts']==[]
+        return value,revision
+    def backend(index):
+        candidates=[]
+        for node in visible_nodes():
+            if node.get_role()!=Atspi.Role.COMBO_BOX:continue
+            parent=node.get_parent()
+            for depth in range(3):
+                if parent is None:break
+                if parent.get_name()==labels['setup.backend_heading']:
+                    candidates.append(node);break
+                parent=parent.get_parent()
+        assert len(candidates)==1,'actual_setup_backend_dropdown_missing_or_ambiguous'
+        assert candidates[0].get_component_iface().grab_focus()
+        for code in ['spc','home']+['down']*index+['ret']:key(code);time.sleep(.15)
+        activate(labels['setup.save_intent'])
+    inventory=lambda:subprocess.check_output(['/usr/bin/dpkg-query','-W','-f=${binary:Package}\t${Version}\t${Status}\n'])
+    before=inventory();broker_absent();close_app()
+    # An explicit owned qualification wish exercises real existing shared storage.
+    # It is not evidence of an installer handoff or a synthetic widget tree.
+    seed=SetupModel('/usr/share/toddy',state_directory(),'en')
+    try:
+        seeded=not seed.manifest['choices']
+        if seeded:
+            optional=sorted(row['id'] for row in seed.catalog.candidates.values() if row['default']=='off')[0]
+            seed.manifest['choices']=[{'id':optional,'artifact_id':None,'state':'deferred','error_code':'offline'}]
+            seed.revision=seed.store.save(seed.manifest,expected_revision=seed.revision)
+        wishes=seed.manifest['choices'];wish=wishes[0]
+        candidate_name=seed.catalog.candidates[wish['id']]['name']
+    finally:seed.close()
+    launch();choices=[]
+    for index,mode in ((1,'api'),(2,'local'),(0,'later')):
+        backend(index);value,revision=until(lambda:(lambda pair:pair if pair[0]['ai_choice']==mode else None)(pending()),10)
+        assert value['choices']==wishes
+        close_app();launch();value,reloaded=pending();assert reloaded==revision and value['ai_choice']==mode and value['choices']==wishes
+        broker_absent();choices.append({'mode':mode,'pending_revision':revision,'reopened_native_application':True})
+    activate(labels['setup.later_choice']);value,revision=until(lambda:(lambda pair:pair if pair[0]['invitation_dismissed'] else None)(pending()),10)
+    assert value['ai_choice']=='later' and value['choices']==wishes
+    activate(labels['software.title'])
+    names=until(lambda:(lambda names:names if candidate_name in names and labels['software.catalog_unavailable'] in names and any(labels['software.retained_pending'] in name for name in names) else None)([node.get_name() for node in visible_nodes()]),10)
+    assert inventory()==before;broker_absent()
+    result.update(actual_GTK_setup_choices=choices,actual_deferred_wish=wish,actual_optional_review_name=candidate_name,
+        pending_recovered_after_actual_relaunch=True,qualification_wish_seeded=seeded,preserved_deferred_choices=len(wishes),broker_absent_throughout=True,inventory_sha256_before=hashlib.sha256(before).hexdigest(),inventory_sha256_after=hashlib.sha256(inventory()).hexdigest(),
+        installation_requested=False,network_or_model_requested=False,credential_input_requested=False,
+        credential_locked_no_plaintext_fallback_scope='separate mandatory actual keyring phase')
+elif phase=='ui-prepare':
     from toddy.ui.shortcut import Shortcut
     binding=Shortcut().register('<Super><Shift>t')
     result.update(shortcut=binding,registered_command='/usr/bin/toddy',requires_actual_QMP_activation=True)
@@ -818,6 +908,25 @@ def interrupt_health_child(environment,stop,proof):
         if mainfd is not None:os.close(mainfd)
 
 
+def offline_user_service(environment,action,prior=None):
+    def run(*arguments,check=True):return subprocess.run(['/usr/bin/systemctl','--user',*arguments],user=UID,group=UID,extra_groups=[],env=environment,capture_output=True,text=True,check=check)
+    if action=='mask':
+        enabled=run('is-enabled','toddy-agent.service',check=False).stdout.strip()
+        if enabled.startswith('masked'):raise ValueError('inspect_existing_broker_mask_before_qualification')
+        observed=run('is-active','toddy-agent.service',check=False).stdout.strip()
+        if observed not in ('active','inactive'):raise ValueError('inspect_transitional_or_failed_broker_before_qualification')
+        active=observed=='active'
+        run('mask','--runtime','--now','toddy-agent.service')
+        if run('is-enabled','toddy-agent.service',check=False).stdout.strip()!='masked-runtime' or run('show','toddy-agent.service','--property=MainPID','--value').stdout.strip()!='0':raise ValueError('actual_runtime_broker_suppression_required')
+        return {'enabled':enabled,'active':active}
+    if action!='restore' or not isinstance(prior,dict) or set(prior)!={'enabled','active'}:raise ValueError('fixed_broker_mask_restore_required')
+    run('unmask','--runtime','toddy-agent.service')
+    run('start' if prior['active'] else 'stop','toddy-agent.service')
+    if (run('is-active','toddy-agent.service',check=False).stdout.strip()=='active') is not prior['active']:raise ValueError('actual_prior_broker_activity_not_restored')
+    if run('is-enabled','toddy-agent.service',check=False).stdout.strip()!=prior['enabled']:raise ValueError('actual_prior_broker_mask_state_not_restored')
+    return {'restored':True,'prior':prior}
+
+
 def integration_receipts(manifest,result):
     directory=Path('/usr/share/toddy/plugins')
     paths=[directory/name for name in ('release-reference.receipt.json','browser-local-read.receipt.json','native-qualification.json')]
@@ -996,8 +1105,9 @@ def main():
         if request!='PHASE '+phase or phase not in value['phases'] or phase in completed or any(dep not in completed for dep in REQUIRES.get(phase,())) or (phase=='integrations' and 'integrations-bootstrap' in value['phases'] and 'integrations-bootstrap' not in completed):raise ValueError('assistant_phase_not_eligible_or_replay')
         channel.write(('STARTED '+phase+'\n').encode())
         started=time.monotonic()
-        network_was_active=False;input_stop=threading.Event();input_worker=None;fault_stop=threading.Event();fault_worker=None;fault_proof={}
+        offline_prior=None;network_was_active=False;input_stop=threading.Event();input_worker=None;fault_stop=threading.Event();fault_worker=None;fault_proof={}
         try:
+            if phase=='setup-offline':offline_prior=offline_user_service(environment,'mask')
             if phase=='automation-alert':
                 network_was_active=command(['systemctl','is-active','NetworkManager.service'])=='active'
                 if not network_was_active:raise ValueError('native_reference_network_service_not_active')
@@ -1007,7 +1117,7 @@ def main():
                 subprocess.Popen(['/usr/bin/toddy','--locale','pt-BR' if phase=='ui-pt' else 'en'],user=UID,group=UID,extra_groups=[],env=environment,cwd='/home/'+OWNER,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL);time.sleep(1)
             if phase=='automation-interrupt':
                 fault_worker=threading.Thread(target=interrupt_health_child,args=(environment,fault_stop,fault_proof),daemon=True);fault_worker.start()
-            if phase in ('voice-device','agent-ui','branding'):
+            if phase in ('setup-offline','voice-device','agent-ui','branding'):
                 input_worker=threading.Thread(target=input_bridge,args=(channel,ram/'input.sock',input_stop),daemon=True);input_worker.start()
             if phase=='installer-gui':result=installer_gui(environment,channel)
             else:
@@ -1033,6 +1143,9 @@ def main():
             # Never dump user stderr: it may contain credential service details.
             row={'phase':phase,'state':'failed','error':type(error).__name__,'seconds':time.monotonic()-started}
         finally:
+            if offline_prior is not None:
+                restore=offline_user_service(environment,'restore',offline_prior)
+                if row.get('state')=='passed':row['result']['actual_broker_mask_restoration']=restore
             fault_stop.set()
             if fault_worker:fault_worker.join(timeout=3)
             input_stop.set()
