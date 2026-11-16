@@ -1,0 +1,8 @@
+{
+  "all_selected_exits_zero": false,
+  "error": "('native_broker_command_failed', ['/usr/bin/python3', '/tmp/toddy-native-broker-client.py'], 1, 'pathlib/__init__.py\", line 787, in read_text\\n    with self.open(mode=\\'r\\', encoding=encoding, errors=errors, newline=newline) as f:\\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  File \"/usr/lib/python3.14/pathlib/__init__.py\", line 771, in open\\n    return io.open(self, mode, buffering, encoding, errors, newline)\\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\nPermissionError: [Errno 13] Permission denied: \\'/etc/toddy-broker-root-proof.conf\\'\\n')",
+  "error_type": "AssertionError",
+  "job": "native-executor-broker-3",
+  "scope": "Duplicate admission corrected; root broker action completed. Unprivileged fixture wrongly tried reading correctly root-private0600 configuration. No full hook acceptance.",
+  "backing_unchanged": true
+}
