@@ -141,3 +141,25 @@ writers can still race after inspection; an observed mismatch reports changed
 state instead of claiming registration. Real desktop activation/focus needs
 native qualification. `test_shortcut.py` uses real Gio.Settings with a child-only
 `GSETTINGS_BACKEND=memory`; it never writes the workstation dconf database.
+
+## Explicit owner memory
+
+The Memory page negotiates `owner-memory-v1` and uses the same authenticated
+Service1 owner, selected profile and cancellation/generation guards. Inspect
+loads at most16 records per bounded page with source provenance; select/edit/save
+or delete is an explicit owner action guarded by both profile revision and
+memory generation. Revision changes can precede write replies; a successful
+write queues only a read-only reload after capability refresh. Failed or unknown
+results disable edits until explicit inspection; writes are never retried.
+Profile switches clear the previous view and reject late callbacks.
+
+Memory Export is an explicit private disclosure through a sealed FD to a private
+atomic local file, never an automatic diagnostic. Restore requires an unchecked
+per-operation confirmation and copies the selected bounded regular local file
+into an owned immutable sealed FD before IPC. The canonical service validates
+its contents and preserves deletion tombstones; the UI never touches SQLite,
+USER.md or model context. Manual USER notes remain protected pending review.
+The actual-host `tests/fixtures/broker-service/memory_ui.py --locale en|pt-BR`
+fixture checks inspect/save/delete, private export, explicit restore with deletion
+protection and profile isolation through real GTK and the actual broker on a
+private bus. These source/host checks are not guest or provider acceptance.

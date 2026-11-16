@@ -1317,6 +1317,176 @@
         "en": "GNOME shortcut settings are unavailable. Use the application launcher.",
         "pt-BR": "As configurações de atalhos do GNOME estão indisponíveis. Use o lançador do aplicativo."
       }
+    },
+    {
+      "id": "memory.title",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Memory",
+        "pt-BR": "Memória"
+      }
+    },
+    {
+      "id": "memory.notice",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Inspect explicit preferences for the selected profile. Save and Delete change canonical memory through the service. Export contains private preferences; choose a private location. Deleted preferences stay deleted when restoring older backups.",
+        "pt-BR": "Inspecione as preferências explícitas do perfil selecionado. Salvar e Excluir alteram a memória canônica pelo serviço. A exportação contém preferências privadas; escolha um local privado. Preferências excluídas permanecem excluídas ao restaurar backups antigos."
+      }
+    },
+    {
+      "id": "memory.unavailable",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Inspect memory when the owner memory service is available.",
+        "pt-BR": "Inspecione a memória quando o serviço de memória estiver disponível."
+      }
+    },
+    {
+      "id": "memory.inspect",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Inspect / reload memory",
+        "pt-BR": "Inspecionar / recarregar memória"
+      }
+    },
+    {
+      "id": "memory.record_id",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Preference ID (for example: language)",
+        "pt-BR": "ID da preferência (por exemplo: idioma)"
+      }
+    },
+    {
+      "id": "memory.put",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Save preference",
+        "pt-BR": "Salvar preferência"
+      }
+    },
+    {
+      "id": "memory.delete",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Delete preference",
+        "pt-BR": "Excluir preferência"
+      }
+    },
+    {
+      "id": "memory.next",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Next page",
+        "pt-BR": "Próxima página"
+      }
+    },
+    {
+      "id": "memory.export",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Export memory backup",
+        "pt-BR": "Exportar backup da memória"
+      }
+    },
+    {
+      "id": "memory.restore",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Restore memory backup",
+        "pt-BR": "Restaurar backup da memória"
+      }
+    },
+    {
+      "id": "memory.restore_consent",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "I choose to restore this profile from a selected backup. Existing deletion protections remain.",
+        "pt-BR": "Escolho restaurar este perfil a partir de um backup selecionado. As proteções de exclusão existentes permanecem."
+      }
+    },
+    {
+      "id": "memory.loading",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Reading or applying memory operation…",
+        "pt-BR": "Lendo ou aplicando operação de memória…"
+      }
+    },
+    {
+      "id": "memory.loaded",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Current page loaded. Select a preference to inspect or edit its text.",
+        "pt-BR": "Página atual carregada. Selecione uma preferência para inspecionar ou editar o texto."
+      }
+    },
+    {
+      "id": "memory.failed",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Memory operation did not return a verified result. Reload to inspect current state before another change; no automatic retry was sent.",
+        "pt-BR": "A operação de memória não retornou um resultado verificado. Recarregue para inspecionar o estado atual antes de outra alteração; nenhuma repetição automática foi enviada."
+      }
+    },
+    {
+      "id": "memory.review_required",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Manual USER.md notes require explicit review before memory changes. They were preserved. Use the reviewed document conversion workflow; no automatic conversion was performed.",
+        "pt-BR": "Notas manuais do USER.md exigem revisão explícita antes de alterações na memória. Elas foram preservadas. Use o fluxo de conversão do documento revisado; nenhuma conversão automática foi feita."
+      }
+    },
+    {
+      "id": "memory.exported",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Private memory backup saved without replacing an existing file.",
+        "pt-BR": "Backup privado da memória salvo sem substituir um arquivo existente."
+      }
+    },
+    {
+      "id": "memory.provenance",
+      "context": "memory",
+      "severity": "info",
+      "humor_allowed": false,
+      "text": {
+        "en": "Source: {kind} — {source}",
+        "pt-BR": "Origem: {kind} — {source}"
+      }
     }
   ]
 }

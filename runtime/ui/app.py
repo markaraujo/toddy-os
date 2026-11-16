@@ -52,6 +52,9 @@ class SetupWindow(Adw.ApplicationWindow):
         self._profiles()
         self.credentials=CredentialsClient(self._credential_changed)
         self.client = TaskClient(self._task_changed)
+        from .memory import MemoryPanel
+        self.memory=MemoryPanel(self)
+        self._page('memory',self.model.text('memory.title')).append(self.memory)
         self.connect('close-request', self._close)
 
     def _page(self, name, title):
@@ -490,6 +493,7 @@ class SetupWindow(Adw.ApplicationWindow):
         return False
 
     def _task_changed(self):
+        if hasattr(self,'memory'):self.memory.sync()
         client = self.client
         state = client.state
         snapshot = state.snapshot
