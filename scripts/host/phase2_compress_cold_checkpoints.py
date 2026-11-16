@@ -65,17 +65,18 @@ def main():
     global CONTEXT
     assert os.geteuid()!=0 and ROOT.resolve()==ROOT
     cold=ROOT/'.local/vm/checkpoints';assert cold.resolve()==cold and not cold.is_symlink()
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--resume-check-context',action='store_true');parser.add_argument('--profile',choices=['foundation-six','mozilla-margin','mvp-builders'],default='foundation-six');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--resume-check-context',action='store_true');parser.add_argument('--profile',choices=['foundation-six','mozilla-margin','mvp-builders','mvp-builders-2'],default='foundation-six');args=parser.parse_args()
     assert not args.resume_check_context or args.profile=='foundation-six'
-    mvp=args.profile=='mvp-builders'
+    mvp=args.profile in ('mvp-builders','mvp-builders-2')
     strict=None
     if mvp:
-        import phase2_mvp_cold_builders as strict
-        selected=list(strict.PROFILES);floor=RESERVE+512*1024**2;goal=floor+20*1024**3
+        if args.profile=='mvp-builders-2':import phase2_mvp_cold_builders_2 as strict
+        else:import phase2_mvp_cold_builders as strict
+        selected=list(strict.PROFILES);floor=RESERVE+512*1024**2;goal=floor+(32 if args.profile=='mvp-builders-2' else 20)*1024**3
     else:
         selected=SELECTED if args.profile=='foundation-six' else ['h07-early-base-builder.qcow2']
         floor=RESERVE;goal=(112 if args.profile=='foundation-six' else 108)*1024**3
-    CONTEXT=ROOT/'.local/phase2'/('cold-checkpoint-compression-mvp-builders-1' if mvp else ('cold-checkpoint-compression-1' if args.profile=='foundation-six' else 'cold-checkpoint-compression-2'))
+    CONTEXT=ROOT/'.local/phase2'/(('cold-checkpoint-compression-mvp-builders-2' if args.profile=='mvp-builders-2' else 'cold-checkpoint-compression-mvp-builders-1') if mvp else ('cold-checkpoint-compression-1' if args.profile=='foundation-six' else 'cold-checkpoint-compression-2'))
     assert shutil.disk_usage(ROOT).free>=floor+256*1024**2
     lock=open(ROOT/'.local/phase2/cold-checkpoint-compression.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     native_lock=None
