@@ -202,3 +202,10 @@ ce50a0c24210581a5d40c2c421035482f5a063b9:runtime/voice/candidates.json:generic-a
 f71d12cd6f8d81c9f7289664e78e89e31f74fb17:runtime/voice/candidates.json:generic-api-key:13
 f71d12cd6f8d81c9f7289664e78e89e31f74fb17:runtime/voice/candidates.json:generic-api-key:28
 f71d12cd6f8d81c9f7289664e78e89e31f74fb17:runtime/voice/candidates.json:generic-api-key:44
+
+# Reviewed exact SHA256 of public installer observer/vault source blobs.
+# Verified against corresponding committed source; no credential material.
+fec1c56b51d4933248dee815c5ce8b1036b8cc60:docs/evidence/B12-live-controller-source-checks.json:generic-api-key:31
+fec1c56b51d4933248dee815c5ce8b1036b8cc60:docs/evidence/B12-live-controller-source-checks.json:generic-api-key:34
+6c4134b072e83bad03e4af23d4136f4a4fb27e01:docs/evidence/B12-live-controller-source-checks.json:generic-api-key:31
+6c4134b072e83bad03e4af23d4136f4a4fb27e01:docs/evidence/B12-live-controller-source-checks.json:generic-api-key:34
