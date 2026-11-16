@@ -99,7 +99,7 @@ class DiskPlanTests(unittest.TestCase):
         for change in ({'mounted': True}, {'blank': False}, {'readonly': True}, {'serial': ''}):
             with self.assertRaises(InstallError):
                 make_plan(dict(disk, **change), options, payload)
-        for change in ({'password': 'must-not-enter-plan'}, {'username': '../owner'},
+        for change in ({'password': 'must-not-enter-plan'}, {'username': '../owner'}, {'username':'tester'}, {'gid':100},
                        {'uid': True}, {'timezone': '../etc/passwd'}, {'extras': ['mise']}, {'extras': ['docker', 'docker']}):
             with self.assertRaises(InstallError):
                 make_plan(disk, dict(options, **change), payload)

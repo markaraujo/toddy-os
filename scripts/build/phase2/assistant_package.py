@@ -16,7 +16,7 @@ APP_ID='io.github.markaraujo.Toddy'
 PACKAGE='toddy-assistant'
 MODULES={
     'ui':('app.py','bridge.py','cli.py','credentials.py','memory.py','model.py','shortcut.py','task_state.py'),
-    'setup':('pending.py',),
+    'setup':('pending.py','installer_handoff.py'),
     'shared':('json.py',),
     'connections':('secret_store.py',),
 }

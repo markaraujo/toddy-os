@@ -62,9 +62,9 @@ def make_plan(disk, options, payload):
         raise InstallError('installer_operation_id')
     if options['boot_mode'] not in ('uefi', 'bios'):
         raise InstallError('installer_firmware')
-    if not isinstance(options['username'], str) or not re.fullmatch('[a-z][a-z0-9_-]{0,31}', options['username']) or options['username'] in ('root', 'lfs', 'toddy', 'toddy-live', 'builder'):
+    if not isinstance(options['username'], str) or not re.fullmatch('[a-z][a-z0-9_-]{0,31}', options['username']) or options['username'] in ('root', 'lfs', 'tester', 'toddy', 'toddy-live', 'builder'):
         raise InstallError('installer_owner')
-    if type(options['uid']) is not int or type(options['gid']) is not int or not 1000 <= options['uid'] <= 60000 or not 100 <= options['gid'] <= 60000:
+    if type(options['uid']) is not int or type(options['gid']) is not int or not 1000 <= options['uid'] <= 60000 or not 1000 <= options['gid'] <= 60000:
         raise InstallError('installer_owner_id')
     if options['locale'] not in ('en_US.UTF-8', 'pt_BR.UTF-8'):
         raise InstallError('installer_locale')

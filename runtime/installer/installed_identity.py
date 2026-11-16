@@ -153,7 +153,7 @@ def audit_hygiene(root, plan):
         if len(fields) != 7:
             raise InstallError('installer_passwd_invalid')
         user, _, uid, gid, _, home, shell = fields
-        if user in ('lfs', 'toddy', 'toddy-live', 'builder'):
+        if user in ('lfs', 'tester', 'toddy', 'toddy-live', 'builder'):
             raise InstallError('installer_live_account_retained')
         if user == owner['username']:
             if (int(uid), int(gid), home, shell) != (owner['uid'], owner['gid'], '/home/' + user, '/bin/bash'):
