@@ -1569,6 +1569,16 @@ Object.assign(window.TODDY_TRANSLATIONS, {
     "You have my attention.": ["Agora você tem minha atenção.","Ahora tienes mi atención.","现在我的注意力都在你身上。","ちゃんと見ているよ。","Теперь всё моё внимание — вам."]
 });
 
+/* Dormant package-artifact publication copy; no ISO or acquisition acceptance. */
+Object.assign(window.TODDY_TRANSLATIONS, {
+    "Experimental package artifacts": ["Pacotes experimentais", "Paquetes experimentales", "实验性软件包文件", "実験用パッケージ", "Экспериментальные пакеты"],
+    "Native packages for qualification.": ["Pacotes nativos para validação.", "Paquetes nativos para validación.", "用于验证的原生软件包。", "検証用のネイティブパッケージ。", "Нативные пакеты для проверки."],
+    "Package repository artifacts only. Desktop ISO, G2 and installed-user acquisition qualification are pending.": ["Somente arquivos do repositório de pacotes. A ISO desktop, o G2 e a validação da instalação de pacotes pelo usuário seguem pendentes.", "Solo archivos del repositorio de paquetes. La ISO de escritorio, G2 y la validación de adquisición para el usuario instalado siguen pendientes.", "仅提供软件包仓库文件。桌面 ISO、G2 和已安装系统用户的软件获取验证尚未完成。", "パッケージリポジトリのファイルのみです。デスクトップ ISO、G2、インストール後のユーザーによるパッケージ取得の検証は未完了です。", "Только файлы репозитория пакетов. ISO рабочего стола, G2 и проверка получения пакетов пользователем установленной системы ещё не готовы."],
+    "Package testing guide ↗": ["Guia de teste dos pacotes ↗", "Guía de prueba de paquetes ↗", "软件包测试指南 ↗", "パッケージのテストガイド ↗", "Руководство по тестированию пакетов ↗"],
+    "Package release notes ↗": ["Notas da versão dos pacotes ↗", "Notas de la versión de paquetes ↗", "软件包发行说明 ↗", "パッケージのリリースノート ↗", "Примечания к выпуску пакетов ↗"],
+    "For disposable Toddy test systems. Downloading packages does not activate AI or grant administration.": ["Para sistemas Toddy descartáveis de teste. Baixar pacotes não ativa IA nem concede administração.", "Para sistemas Toddy de prueba desechables. Descargar paquetes no activa IA ni concede administración.", "仅用于可丢弃的 Toddy 测试系统。下载软件包不会启用 AI 或授予管理权限。", "破棄できる Toddy テスト環境向けです。ダウンロードしても AI は有効にならず、管理権限も付与されません。", "Для одноразовых тестовых систем Toddy. Загрузка пакетов не включает ИИ и не предоставляет права администратора."]
+});
+
 /* Dormant Phase 2 release copy; no available artifact is announced by these strings. */
 Object.assign(window.TODDY_TRANSLATIONS, {
     "Phase 2 experimental preview tested in the native guest. Review the owner guide and evidence before installation.": ["Prévia experimental da Fase 2 testada na VM nativa. Consulte o guia do proprietário e as evidências antes de instalar.", "Vista previa experimental de la Fase 2 probada en la máquina virtual nativa. Consulta la guía del propietario y las evidencias antes de instalar.", "第二阶段实验性预览版已在原生虚拟机环境中测试。安装前请阅读使用者指南和验证记录。", "フェーズ2の実験的プレビューはネイティブゲスト環境でテスト済みです。インストール前に利用者ガイドと検証記録を確認してください。", "Экспериментальная версия второго этапа проверена в нативной гостевой системе. Перед установкой прочитайте руководство владельца и результаты проверок."],
