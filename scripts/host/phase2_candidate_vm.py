@@ -29,6 +29,11 @@ def identity(path):
 
 
 def bases():
+    foundation=json.loads((vm.VM/'phase2/backing.json').read_text())['disks']
+    assert set(foundation)=={'builder-base.img','builder.qcow2','lfs-target.qcow2','seed.img'}
+    for name,row in foundation.items():
+        path=vm.VM/name
+        assert path.is_file() and not path.is_symlink() and identity(path)==row['identity'],'Foundation backing changed'
     recorded=json.loads((ROOT/'docs/evidence/B02-completion-stop.json').read_text())['cold_disks']
     for name,expected in recorded.items():
         path=vm.VM/'phase2'/name
@@ -50,6 +55,25 @@ def ssh():
         '-o',f'UserKnownHostsFile={WORK}/known_hosts','root@127.0.0.1']
 
 
+def owned():
+    """Never send root SSH commands to another VM sharing the historical port."""
+    result=run('docker','inspect',NAME,capture_output=True,text=True)
+    rows=json.loads(result.stdout)
+    assert len(rows)==1
+    row=rows[0]
+    assert row['Name']=='/'+NAME and row['State']['Running'] is True
+    assert row['Config']['Labels'].get('toddy.candidate')=='phase2-candidate'
+    mounts={m['Source']:m for m in row['Mounts'] if m['Type']=='bind'}
+    assert mounts[str(vm.VM)]['Destination']=='/vm' and mounts[str(vm.VM)]['RW'] is False
+    assert mounts[str(WORK)]['Destination']=='/vm/candidate' and mounts[str(WORK)]['RW'] is True
+    ports=row['NetworkSettings']['Ports']['2223/tcp']
+    assert ports==[{'HostIp':'127.0.0.1','HostPort':'2223'}]
+    command=row['Config']['Cmd']
+    for name in ('builder.qcow2','lfs-target.qcow2'):
+        assert any(value.startswith('file=/vm/candidate/'+name+',') for value in command)
+    return row['Id']
+
+
 def save(path,value):
     part=path.with_suffix('.part')
     assert not part.exists()
@@ -69,22 +93,24 @@ def main():
     assert os.geteuid()!=0 and vm.VM.resolve()==vm.VM and not vm.VM.is_symlink()
     approval=json.loads((ROOT/'status.json').read_text())['owner_review']
     assert approval['phase_2_approved'] and (ROOT/approval['approval_evidence']).is_file()
-    original=bases()
     if args.action=='ssh':
-        run(*ssh(),*args.command);return
+        owned();bases();run(*ssh(),*args.command);return
     if args.action=='inspect':
         run('docker','ps','-a','--filter','name=^/'+NAME+'$','--format','{{.Names}} {{.Status}}')
         if (WORK/'backing.json').is_file():print((WORK/'backing.json').read_text())
         return
     if args.action=='stop':
+        owned()
         run(*ssh(),'poweroff')
         stopped=run('docker','wait',NAME,capture_output=True,text=True)
         assert stopped.stdout.strip()=='0','Retain nonzero candidate exit for diagnosis'
         run('docker','rm',NAME)
+        original=json.loads((WORK/'backing.json').read_text())['base_identity']
         assert bases()==original
         save(WORK/('stop-'+str(time.time_ns())+'.json'),{'phase':'cold','accepted_B02_unchanged':True,
             'candidate_disks':{n:identity(WORK/n) for n in ('builder.qcow2','lfs-target.qcow2')}})
         return
+    original=bases()
     # Shared native boot lock also excludes verified cold checkpoint custody.
     lock=open(vm.VM/'native-boot-test.lock','a')
     fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+import subprocess
 import unittest
 from unittest.mock import patch
 
@@ -14,9 +15,29 @@ c=importlib.util.module_from_spec(spec);spec.loader.exec_module(c)
 
 
 class CandidateGuardTests(unittest.TestCase):
+    def test_root_ssh_requires_the_candidate_mount_and_port_owner(self):
+        row={'Id':'fixture-owned-container','Name':'/'+c.NAME,'State':{'Running':True},
+             'Config':{'Labels':{'toddy.candidate':'phase2-candidate'},'Cmd':[
+                 'file=/vm/candidate/builder.qcow2,if=none','file=/vm/candidate/lfs-target.qcow2,if=none']},
+             'Mounts':[{'Type':'bind','Source':str(c.vm.VM),'Destination':'/vm','RW':False},
+                       {'Type':'bind','Source':str(c.WORK),'Destination':'/vm/candidate','RW':True}],
+             'NetworkSettings':{'Ports':{'2223/tcp':[{'HostIp':'127.0.0.1','HostPort':'2223'}]}}}
+        def inspected(*args,**kwargs):return subprocess.CompletedProcess(args,0,json.dumps([row]),'')
+        with patch.object(c,'run',side_effect=inspected):
+            self.assertEqual(c.owned(),'fixture-owned-container')
+            row['Mounts'][0]['RW']=True
+            with self.assertRaises(AssertionError):c.owned()
+            row['Mounts'][0]['RW']=False
+            row['Mounts'][1]['Source']=str(c.phase2_vm.WORK)
+            with self.assertRaises(KeyError):c.owned()
+
     def test_changed_or_redirected_accepted_base_is_refused(self):
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp);vmroot=root/'vm';base=vmroot/'phase2';base.mkdir(parents=True)
+            foundation={}
+            for name in ('builder-base.img','builder.qcow2','lfs-target.qcow2','seed.img'):
+                p=vmroot/name;p.write_bytes(b'fixture frozen foundation');foundation[name]={'identity':c.identity(p)}
+            (base/'backing.json').write_text(json.dumps({'disks':foundation}))
             rows={}
             for name in ('builder.qcow2','lfs-target.qcow2'):
                 p=base/name;p.write_bytes(b'fixture image identity only');rows[name]=c.identity(p)
