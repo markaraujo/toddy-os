@@ -130,7 +130,7 @@ def stream_inputs(stream, root, metadata, sources, references):
         archive.addfile(marker,io.BytesIO(data))
 
 
-def main(metadata_only=False):
+def main(metadata_only=False, extra_metadata=(), include_references=True):
     lock = json.loads((ROOT/'config/sources.lock.json').read_text())
     if lock['status'] != 'verified':
         raise SystemExit('Source lock not verified')
@@ -208,7 +208,7 @@ def main(metadata_only=False):
             raise SystemExit('Conflicting source pins')
         sources[row['filename']] = row['sha256']
     references = []
-    for kind,filename in [('gcc','compiler-test-reference.json'),('bash','bash-test-reference.json')]:
+    for kind,filename in ([('gcc','compiler-test-reference.json'),('bash','bash-test-reference.json')] if include_references else []):
         config_path = ROOT/'config'/filename
         if config_path.exists():
             config = json.loads(config_path.read_text())
@@ -219,6 +219,17 @@ def main(metadata_only=False):
                 raise SystemExit('Fetch the pinned '+kind+' reference before syncing')
             metadata.append('config/'+filename)
             references.append((kind,path))
+    metadata += list(extra_metadata)
+    # A complete directory supersedes selected children without duplicate archive entries.
+    metadata = sorted(set(metadata), key=lambda name: (len(Path(name).parts), name))
+    selected = []
+    for name in metadata:
+        path = Path(name)
+        if path.is_absolute() or '..' in path.parts or not (ROOT/path).exists():
+            raise ValueError('Invalid metadata selection')
+        if not any(path.is_relative_to(Path(parent)) for parent in selected):
+            selected.append(name)
+    metadata = selected
     # Lock the entire receive operation, including the pre-snapshot interval
     # before a runner creates running.json. A failed partial transfer leaves a
     # marker which blocks recipe dispatch until a complete resync succeeds.
