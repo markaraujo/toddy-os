@@ -138,10 +138,16 @@ class Scheduler:
             self.db.execute('UPDATE scheduler_jobs SET enabled=1 WHERE profile_id=? AND id=?', (self.profile, job_id))
 
     def cancel(self, job_id):
-        identifier(job_id)
         with self._transaction():
-            self.db.execute('UPDATE scheduler_jobs SET enabled=0 WHERE profile_id=? AND id=?', (self.profile, job_id))
-            self.db.execute("UPDATE scheduler_runs SET cancel_requested=1 WHERE profile_id=? AND job_id=? AND state='running'", (self.profile, job_id))
+            return self.cancel_in_transaction(job_id)
+
+    def cancel_in_transaction(self, job_id):
+        """Atomically disable a workflow together with its pending outbox."""
+        if not self.db.in_transaction:
+            raise ScheduleError('schedule_transaction_required')
+        identifier(job_id)
+        self.db.execute('UPDATE scheduler_jobs SET enabled=0 WHERE profile_id=? AND id=?', (self.profile, job_id))
+        self.db.execute("UPDATE scheduler_runs SET cancel_requested=1 WHERE profile_id=? AND job_id=? AND state='running'", (self.profile, job_id))
         return {'dispatch_disabled': True, 'active_write_may_finish': True}
 
     def run_due(self, job_id, *, authorize, actions):
@@ -216,15 +222,21 @@ class Scheduler:
         free-byte samples or secret-bearing service output. Recovery is inspectable
         and quiet; no notification/model call on unchanged/healthy observations.
         """
+        with self._transaction():
+            return self.observe_in_transaction(probe_id, state=state, actionable=actionable)
+
+    def observe_in_transaction(self, probe_id, *, state, actionable):
+        """Share one canonical commit with observation/outbox records."""
+        if not self.db.in_transaction:
+            raise ScheduleError('schedule_transaction_required')
         identifier(probe_id)
         identifier(state)
         if type(actionable) is not bool:
             raise ScheduleError('schedule_health_state')
         fingerprint = hashlib.sha256(state.encode()).hexdigest()
-        with self._transaction():
-            old = self.db.execute('SELECT fingerprint,actionable FROM scheduler_health WHERE profile_id=? AND id=?', (self.profile, probe_id)).fetchone()
-            changed = old is None or tuple(old) != (fingerprint, int(actionable))
-            self.db.execute('INSERT OR REPLACE INTO scheduler_health VALUES(?,?,?,?)', (self.profile, probe_id, fingerprint, int(actionable)))
+        old = self.db.execute('SELECT fingerprint,actionable FROM scheduler_health WHERE profile_id=? AND id=?', (self.profile, probe_id)).fetchone()
+        changed = old is None or tuple(old) != (fingerprint, int(actionable))
+        self.db.execute('INSERT OR REPLACE INTO scheduler_health VALUES(?,?,?,?)', (self.profile, probe_id, fingerprint, int(actionable)))
         return {'notify': actionable and changed, 'actionable': actionable, 'changed': changed}
 
     def export(self):
