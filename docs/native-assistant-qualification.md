@@ -31,6 +31,11 @@ automatic download, cloud fallback, real provider key or license consent occurs.
 
 ## Prepare the actual inputs once
 
+The model path below is the existing 1,834,426,016-byte frozen local Qwen input.
+The coordinator transfers the already cached 11,544-byte raw Apache license to
+exactly `/sources/qwen-LICENSE`; its frozen SHA-256 remains mandatory. No model or
+license download or automatic consent is part of collection.
+
 After native package install/check postconditions pass and the global compiler
 lock is free, deliver the two reviewed scripts and attributed human WAV fixtures
 to `/opt/toddy-build` through the coordinator's existing verified metadata route.
@@ -40,8 +45,8 @@ In that guarded builder, explicitly collect a fresh generation, for example:
 python3 /opt/toddy-build/scripts/host/phase2-native-assistant-hook.py \
   --collect assistant1 \
   --phases ui-prepare,ui-en,keyring,agent,agent-ui,ui-pt,ui-return-en,memory,grant,automation,automation-alert,automation-interrupt,revoke,integrations-bootstrap,integrations,voice-files,voice-device \
-  --local-model-path /sources/qualified-models/Qwen3-1.7B-Q8_0.gguf \
-  --local-license-path /usr/share/doc/toddy-local-model/Apache-2.0
+  --local-model-path /sources/phase2/inputs/local-model-proof/model.gguf \
+  --local-license-path /sources/qwen-LICENSE
 ```
 
 Those model/license paths are **explicit example inputs**, not an acquisition
@@ -105,6 +110,10 @@ never blindly type the private password into another application. Wait for
 `OWNER-READY` in private `control-state.json`: root verifies the actual active,
 local, unlocked Wayland owner/seat0. Send one phase at a time with a unique request
 ID, inspect its actual `RESULT`, then advance. Duplicate IDs refuse replay.
+The controller rejects another phase or `done` while a phase is pending, rejects
+previously requested phases even under a new request ID, and enforces the selected
+manifest order. A failed native result blocks further phases; inspect the retained
+report rather than retrying that disposable session.
 
 ```sh
 python3 scripts/host/phase2-native-assistant-control.py send --context CONTEXT --request-id prep-ui --action phase --phase ui-prepare
@@ -175,3 +184,16 @@ serial report SHA, actual phase failures/line metadata, input/frame events, cold
 identity and ownership receipts, stops only its own container and rechecks every
 backing identity. No unchanged automatic retry, uncertainty replay, native GUI
 claim from host fixtures, broad soak or G2/physical acceptance follows.
+
+## Source contract regression checks
+
+`python3 -m unittest discover -s tests -p test_native_assistant_harness.py -v`
+checks the embedded client's literal Service1 names/signatures against the current
+production XML, runs its extracted local connection/profile data through the real
+ConfiguredEngine settings reader, and runs its revoke operation through the real
+integration parser against disposable SQLite. The private socket fixture checks
+that transport acknowledgement cannot queue a second phase or end an active one.
+These are source contract checks, not native GTK, Qwen, keyring, browser or voice
+acceptance. Current GTK copy keys, installed data paths and widget lifetimes were
+reviewed directly; actual accessibility names and input/focus still require the
+real GNOME boot.

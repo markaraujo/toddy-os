@@ -63,6 +63,18 @@ def phase_eligible(phase,status):
         and all(rows.get(dependency,{}).get('status')=='completed' for dependency in selected.get('depends_on',[])))
 
 
+def phase_request_error(phases,events,phase):
+    """A transport ACK is pending until the guest returns its actual phase result."""
+    requested=[row['result']['phase_requested'] for row in events if 'phase_requested' in row.get('result',{})]
+    results=[row['native_result'] for row in events if 'native_result' in row]
+    if any(row['state']!='passed' for row in results):return 'native_phase_failed_inspect_report'
+    if len(requested)>len(results):return 'native_phase_in_progress'
+    if phase not in phases:return 'phase_not_selected'
+    if phase in requested:return 'inspect_prior_phase_no_replay'
+    if phase!=phases[len(requested)]:return 'selected_phase_order_required'
+    return None
+
+
 def control(context,stop,ready):
     resource.setrlimit(resource.RLIMIT_CORE,(0,0));credential=None;events=[];seen=set();connections=[]
     def connect(path):
@@ -132,11 +144,17 @@ def control(context,stop,ready):
                     phase=request.get('phase')
                     if phase not in hook.PHASES:raise ValueError('assistant_phase')
                     status_path=HERE.parents[1]/'status.json';status=json.loads(status_path.read_text())
-                    if not phase_eligible(phase,status):reply={'error':'story_prerequisite_not_completed','phase':phase}
+                    phase_error=phase_request_error(json.loads((context/'selected-phases.json').read_text()),events,phase)
+                    if phase_error:reply={'error':phase_error,'phase':phase}
+                    elif not phase_eligible(phase,status):reply={'error':'story_prerequisite_not_completed','phase':phase}
                     elif subprocess.check_output(['git','status','--porcelain','--','status.json'],cwd=HERE.parents[1],text=True).strip():reply={'error':'commit_reviewed_story_status_first','phase':phase}
                     else:
                         private.write(('PHASE '+phase+'\n').encode());reply={'phase_requested':phase,'native_postcondition_pending':True,'status_sha256':hook.sha(status_path)}
-                elif action=='done':private.write(b'DONE\n');reply={'finish_requested':True}
+                elif action=='done':
+                    requested=sum('phase_requested' in row.get('result',{}) for row in events)
+                    returned=sum('native_result' in row for row in events)
+                    if requested>returned:reply={'error':'native_phase_in_progress'}
+                    else:private.write(b'DONE\n');reply={'finish_requested':True}
                 else:raise ValueError('assistant_control_action')
                 events.append({'request_id':identity,'action':action,'result':reply});save();client.sendall(json.dumps(reply).encode())
     except Exception as error:
@@ -184,7 +202,7 @@ def run_native(manifest_path,generation):
     stopped=json.loads(cold[-1].read_text()) if cold else {}
     if stopped.get('phase')!='cold' or stopped.get('accepted_B02_unchanged') is not True or stopped.get('candidate_disks',{}).get('lfs-target.qcow2')!=value['source_identity']:raise ValueError('assistant_candidate_cold_receipt')
     data=packet(value,(HERE/'phase2-native-assistant-hook.py').read_text());offset=19+8;packed_sha=data[offset:offset+32].hex()
-    context.mkdir(mode=0o700);(context/'inputs.raw').write_bytes(data);(context/'inputs.raw').chmod(0o400)
+    context.mkdir(mode=0o700);atomic(context/'selected-phases.json',value['phases']);(context/'inputs.raw').write_bytes(data);(context/'inputs.raw').chmod(0o400)
     unit=(HERE/'desktop-boot-probe.service').read_bytes().replace(b'RuntimeMaxSec=900',b'RuntimeMaxSec=1800')
     payloads={'systemd.extra-unit.toddy-boot-probe.service':unit,'systemd.unit-dropin.multi-user.target':(HERE/'boot-probe.target.conf').read_bytes(),'toddy.boot-probe':compressed_payload(starter(packed_sha))}
     qemu=boot.qemu_arguments('bios',payloads)

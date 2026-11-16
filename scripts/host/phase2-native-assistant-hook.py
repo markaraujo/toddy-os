@@ -43,7 +43,7 @@ def validate_manifest(value):
         if not name.startswith(('/usr/share/toddy/','/usr/lib/toddy/','/usr/share/doc/')) or '..' in Path(name).parts or set(row)!={'sha256','bytes'} or not HEX.fullmatch(row['sha256']) or type(row['bytes']) is not int or not 0<row['bytes']<=4*1024**3:raise ValueError('assistant_native_file_record')
     model=value['local_model']
     if 'agent' in phases or model is not None:
-        if not isinstance(model,dict) or set(model)!={'path','sha256','bytes','license_path','license_sha256'} or model['sha256']!='061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a' or model['bytes']!=1834426016 or not model['path'].startswith(('/sources/','/usr/share/toddy/models/')) or '..' in Path(model['path']).parts or not model['license_path'].startswith('/usr/share/doc/') or '..' in Path(model['license_path']).parts or model['license_sha256']!='5de36594c10839788a8c589443a8ef9d8b8d17c65a1b5807206ae037fc36c6bd':raise ValueError('assistant_frozen_local_model_missing')
+        if not isinstance(model,dict) or set(model)!={'path','sha256','bytes','license_path','license_sha256'} or model['sha256']!='061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a' or model['bytes']!=1834426016 or not model['path'].startswith(('/sources/','/usr/share/toddy/models/')) or '..' in Path(model['path']).parts or not (model['license_path']=='/sources/qwen-LICENSE' or model['license_path'].startswith('/usr/share/doc/')) or '..' in Path(model['license_path']).parts or model['license_sha256']!='5de36594c10839788a8c589443a8ef9d8b8d17c65a1b5807206ae037fc36c6bd':raise ValueError('assistant_frozen_local_model_missing')
     samples=value['human_samples']
     if 'voice-device' in phases or samples is not None:
         if not isinstance(samples,dict) or set(samples)!={'manifest','en','pt-BR'}:raise ValueError('assistant_human_inputs_missing')
@@ -505,6 +505,7 @@ elif phase=='integrations-bootstrap':
 elif phase=='integrations':
     def edit(value):
         value['extensions']['enabled']=['release-reference','browser-local-read']
+        value['skills']['enabled']=['explain-system']
         value['tools']['enabled']+=['release-package-info','browser-local-read']
     apply(edit)
     page=call('GetIntegrations',(profile,),'(s)')
@@ -514,7 +515,7 @@ elif phase=='integrations':
     for request,kind,args in [('qual-mcp','release-package-info',{'package':'gtk'}),('qual-browser','browser-local-read',{'page_id':'desktop-guide'}),('qual-skill','load-skill',{'skill_id':'explain-system'})]:
         identity,_,_=task(request,'Explicit owner native integration qualification',{'kind':kind,'arguments':args});snapshot=done(identity,90);assert snapshot['operation_id']
     # Revoke actual canonical approval; pinned old task does not authorize a new effect.
-    call('ConfigureIntegration',(profile,config()['profile_revision'],json.dumps({'version':1,'operation':'disable','id':'release-reference'})),'(sss)')
+    call('ConfigureIntegration',(profile,config()['profile_revision'],json.dumps({'version':1,'operation':'revoke','id':'release-reference'})),'(sss)')
     denied(lambda:task('qual-mcp-revoked','Revoked MCP must fail closed',{'kind':'release-package-info','arguments':{'package':'gtk'}}))
     result.update(actual_confined_MCP=True,actual_isolated_Firefox_ATSPI=True,on_demand_skill=True,current_revoke=True,installed_status_claim=False)
 elif phase in ('voice-files','voice-device'):

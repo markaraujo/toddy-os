@@ -1,5 +1,5 @@
 """Pure source/transport fixtures. No VM, native GUI, model or audio execution."""
-import base64,copy,hashlib,importlib.util,io,json,socket,sys,tempfile,threading,time,unittest,zlib
+import ast,base64,copy,hashlib,importlib.util,io,json,socket,sys,tempfile,threading,time,unittest,zlib
 from pathlib import Path
 from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1]
@@ -52,6 +52,91 @@ class ManifestTests(unittest.TestCase):
     def test_model_change_and_unrequested_arbitrary_path_fail_closed(self):
         value=manifest();value['local_model']={'path':'/etc/shadow'}
         with self.assertRaisesRegex(ValueError,'frozen_local_model'):h.validate_manifest(value)
+    def test_exact_parent_cached_qwen_and_license_path_match_frozen_contract(self):
+        value=manifest();value['local_model']={
+            'path':'/sources/phase2/inputs/local-model-proof/model.gguf',
+            'sha256':'061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a',
+            'bytes':1834426016,'license_path':'/sources/qwen-LICENSE',
+            'license_sha256':'5de36594c10839788a8c589443a8ef9d8b8d17c65a1b5807206ae037fc36c6bd'}
+        h.validate_manifest(value)
+        for changed in ('/sources/other-LICENSE','/sources/../qwen-LICENSE','/etc/shadow'):
+            value['local_model']['license_path']=changed
+            with self.assertRaisesRegex(ValueError,'frozen_local_model'):h.validate_manifest(value)
+
+    def test_literal_service_calls_match_current_production_xml(self):
+        import xml.etree.ElementTree as ET
+        api={}
+        for method in ET.parse(ROOT/'runtime/broker/io.github.markaraujo.Toddy.Service1.xml').findall('.//method'):
+            signature=lambda direction:'('+''.join(arg.attrib['type'] for arg in method.findall('arg') if arg.attrib.get('direction')==direction)+')'
+            api[method.attrib['name']]=(signature('in'),signature('out'))
+        seen=set()
+        for node in ast.walk(ast.parse(h.USER_CLIENT)):
+            if isinstance(node,ast.Call) and isinstance(node.func,ast.Name) and node.func.id=='call' and node.args and isinstance(node.args[0],ast.Constant):
+                name=node.args[0].value;seen.add(name)
+                signature=ast.literal_eval(node.args[2]) if len(node.args)>2 else '()'
+                self.assertEqual(api[name],(signature,'(s)'),name)
+        self.assertTrue({'SubmitTask','MutateMemory','ConfigureIntegration','ConfigureAutomation'}<=seen)
+
+    def test_real_configured_engine_consumes_extracted_local_connection_settings(self):
+        from runtime.broker.configured_engine import ConfiguredEngine
+        tree=ast.parse(h.USER_CLIENT)
+        # Extract the actual guest writer's JSON argument without executing its
+        # service, GI, model, GTK or audio code.
+        writes=[node for node in ast.walk(tree) if isinstance(node,ast.Call) and isinstance(node.func,ast.Attribute) and isinstance(node.func.value,ast.Name) and node.func.value.id=='json' and node.func.attr=='dump']
+        payload=next(node.args[0] for node in writes if isinstance(node.args[0],ast.Dict) and any(isinstance(key,ast.Constant) and key.value=='model_path' for key in node.args[0].keys))
+        model='/sources/phase2/inputs/local-model-proof/model.gguf'
+        settings=eval(compile(ast.Expression(payload),'<extracted-settings>','eval'),{'manifest':{'local_model':{'path':model}}})
+        profile=json.loads((ROOT/'config/phase2/profile/config.json').read_text())
+        edit=next(node for node in ast.walk(tree) if isinstance(node,ast.FunctionDef) and node.name=='edit' and any(isinstance(child,ast.Constant) and child.value=='qual-local' for child in ast.walk(node)))
+        scope={};exec(compile(ast.Module(body=[edit],type_ignores=[]),'<extracted-profile-edit>','exec'),scope);scope['edit'](profile)
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'qual-local.json';path.write_text(json.dumps(settings));path.chmod(0o600)
+            engine=ConfiguredEngine(ROOT/'config/phase2',config_directory=directory,adapter=object())
+            self.assertEqual(engine.connection_settings(profile),settings)
+            self.assertEqual(settings['model_path'],model)
+
+    def test_integration_revoke_uses_production_operation_and_selected_skill(self):
+        # The production parser rejects unsupported operations before accessing
+        # the profile transaction; no service, plugin or browser is started.
+        from contextlib import contextmanager
+        from types import SimpleNamespace
+        import sqlite3
+        from runtime.broker.integrations import Integrations,IntegrationError
+        tree=ast.parse(h.USER_CLIENT);operations=[]
+        for node in ast.walk(tree):
+            if isinstance(node,ast.Dict):
+                values={key.value:value.value for key,value in zip(node.keys,node.values) if isinstance(key,ast.Constant) and isinstance(value,ast.Constant)}
+                if values.get('id')=='release-reference' and 'operation' in values:operations.append(values['operation'])
+        self.assertIn('revoke',operations);self.assertNotIn('disable',operations)
+        db=sqlite3.connect(':memory:');self.addCleanup(db.close)
+        db.execute('CREATE TABLE integration_approvals(profile_id TEXT,id TEXT)')
+        db.execute('INSERT INTO integration_approvals VALUES(?,?)',('fixture','release-reference'))
+        @contextmanager
+        def transaction():
+            with db:yield db
+        service=Integrations.__new__(Integrations);service._owner=lambda:None;revoked=[];service.stop_all=revoked.append
+        service.profiles=SimpleNamespace(_transaction=transaction,_current=lambda db:'revision',profile_id='fixture')
+        for operation in operations:
+            result=service.configure('revision',json.dumps({'version':1,'id':'release-reference','operation':operation}))
+            self.assertFalse(result['enabled'])
+        self.assertEqual(db.execute('SELECT count(*) FROM integration_approvals').fetchone()[0],0)
+        self.assertEqual(revoked,['release-reference'])
+        with self.assertRaisesRegex(IntegrationError,'configuration_schema'):
+            service.configure('revision',json.dumps({'version':1,'id':'release-reference','operation':'disable'}))
+        self.assertIn("value['skills']['enabled']=['explain-system']",h.USER_CLIENT)
+
+    def test_phase_transport_ack_is_not_completion_or_replay_permission(self):
+        phases=['ui-prepare','ui-en'];events=[]
+        self.assertEqual(c.phase_request_error(phases,events,'ui-en'),'selected_phase_order_required')
+        self.assertIsNone(c.phase_request_error(phases,events,'ui-prepare'))
+        events.append({'result':{'phase_requested':'ui-prepare','native_postcondition_pending':True}})
+        self.assertEqual(c.phase_request_error(phases,events,'ui-en'),'native_phase_in_progress')
+        events.append({'native_result':{'phase':'ui-prepare','state':'passed'}})
+        self.assertEqual(c.phase_request_error(phases,events,'ui-prepare'),'inspect_prior_phase_no_replay')
+        self.assertIsNone(c.phase_request_error(phases,events,'ui-en'))
+        events.extend([{'result':{'phase_requested':'ui-en'}},{'native_result':{'phase':'ui-en','state':'failed'}}])
+        self.assertEqual(c.phase_request_error(phases,events,'ui-en'),'native_phase_failed_inspect_report')
+
     def test_exact_human_fixture_bytes_are_required_when_provided(self):
         value=manifest();folder=ROOT/'tests/fixtures/voice/human'
         value['human_samples']={'manifest':json.loads((folder/'manifest.json').read_text()),**{locale:base64.b64encode((folder/(locale+'.wav')).read_bytes()).decode() for locale in ('en','pt-BR')}}
@@ -86,6 +171,7 @@ class PrivateTransportTests(unittest.TestCase):
     def test_dummy_private_password_never_enters_receipt_and_request_is_not_replayed(self):
         with tempfile.TemporaryDirectory() as temporary:
             context=Path(temporary);stop=threading.Event();ready=threading.Event();secret=[];calls=[];errors=[]
+            (context/'selected-phases.json').write_text(json.dumps(['ui-prepare','ui-en']))
             auth_server=socket.socket(socket.AF_UNIX,socket.SOCK_STREAM);auth_server.bind(str(context/'auth'));auth_server.listen(1)
             qmp_server=socket.socket(socket.AF_UNIX,socket.SOCK_STREAM);qmp_server.bind(str(context/'q'));qmp_server.listen(1)
             def auth_fixture():
@@ -112,6 +198,12 @@ class PrivateTransportTests(unittest.TestCase):
             for worker in workers:worker.start()
             try:
                 self.assertTrue(ready.wait(3));self.assertEqual(len(secret[0]),24)
+                with patch.object(c,'phase_eligible',return_value=True),patch.object(c.subprocess,'check_output',return_value=''):
+                    reply=c.send(context,{'request_id':'phase-first','action':'phase','phase':'ui-prepare'})
+                    self.assertTrue(reply['native_postcondition_pending'])
+                    reply=c.send(context,{'request_id':'phase-queued','action':'phase','phase':'ui-en'})
+                    self.assertEqual(reply['error'],'native_phase_in_progress')
+                self.assertEqual(c.send(context,{'request_id':'done-while-running','action':'done'}),{'error':'native_phase_in_progress'})
                 reply=c.send(context,{'request_id':'private-auth-once','action':'password'});self.assertEqual(reply,{'private_input_sent':'password'})
                 before=len(calls);reply=c.send(context,{'request_id':'private-auth-once','action':'password'})
                 self.assertEqual(reply,{'error':'inspect_prior_request_no_replay'});self.assertEqual(len(calls),before)
