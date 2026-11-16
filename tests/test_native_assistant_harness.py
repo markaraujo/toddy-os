@@ -136,6 +136,18 @@ class ManifestTests(unittest.TestCase):
         self.assertIsNone(c.phase_request_error(phases,events,'ui-en'))
         events.extend([{'result':{'phase_requested':'ui-en'}},{'native_result':{'phase':'ui-en','state':'failed'}}])
         self.assertEqual(c.phase_request_error(phases,events,'ui-en'),'native_phase_failed_inspect_report')
+    def test_branding_requires_native_upgraded_defaults_and_B11_dependencies(self):
+        value=manifest();value['phases'].append('branding')
+        for name,version in (('toddy-branding','0.2.0-1+toddy1'),('toddy-desktop-defaults','0.2.0-1+toddy2')):
+            row=copy.deepcopy(value['packages']['toddy-assistant']);row['version']=version;row['record'].update(name=name,version=version)
+            row['record_text']=json.dumps(row['record']);row['record_sha256']=hashlib.sha256(row['record_text'].encode()).hexdigest()
+            value['packages'][name]=row
+        h.validate_manifest(value)
+        value['packages']['toddy-desktop-defaults']['version']='0.2.0-1+toddy1'
+        with self.assertRaisesRegex(ValueError,'background_upgrade_required'):h.validate_manifest(value)
+        status={'owner_review':{'phase_2_approved':True},'milestones':[{'id':'B11','depends_on':['B02','B06']},{'id':'B02','status':'completed'},{'id':'B06','status':'in_progress'}]}
+        self.assertFalse(c.phase_eligible('branding',status))
+        status['milestones'][2]['status']='completed';self.assertTrue(c.phase_eligible('branding',status))
 
     def test_exact_human_fixture_bytes_are_required_when_provided(self):
         value=manifest();folder=ROOT/'tests/fixtures/voice/human'

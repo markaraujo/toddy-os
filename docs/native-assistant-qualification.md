@@ -141,6 +141,7 @@ one-shot completion. Failed phases terminate with retained failure metadata.
 | --- | --- |
 | `ui-prepare`, `ui-en` | Register the reviewed per-user shortcut, actual QMP activation/focus, installed GApplication PID-scoped AT-SPI EN widgets; canonical broker systemd MainPID matches D-Bus owner. |
 | `keyring` | Native Secret Service dummy roundtrip, profile isolation, actual collection Lock and fail-closed lookup, no plaintext fallback; another UID cannot connect to the owner's private bus. No secret bytes in receipts. |
+| `branding` | Requires native defaults upgrade `0.2.0-1+toddy2` and B11 prerequisites. Fresh GNOME owner has no background override; effective/admin-default light/dark URI/zoom and actual artwork hashes must match. Actual GTK icon-theme 32/48/64 lookups at theme scales1/2 are displayed in a native inspection window, with QMP frames before/during and actual surface scale recorded. Visual review remains required. |
 | `agent` | Actual installed Pi Core/Pi AI 1.5.0 + Node 24.19.0/frozen Qwen turn, observed tool file effect and text, duplicate request without effect replay; Stop during actual generation and native worker/model child cleanup. |
 | `agent-ui` | Real GTK entry/Send→canonical service→Pi/Qwen effect, actual assistant text rendered; real GTK Stop, native user-service restart/reconnect and unchanged completed effect. |
 | `ui-pt` | Explicit native quit/relaunch in PT, PID-scoped native PT labels/focus. `ui-return-en` explicitly closes/relaunches the real app in EN before later EN widget automation; no widget fixture is substituted. |
@@ -197,3 +198,29 @@ These are source contract checks, not native GTK, Qwen, keyring, browser or voic
 acceptance. Current GTK copy keys, installed data paths and widget lifetimes were
 reviewed directly; actual accessibility names and input/focus still require the
 real GNOME boot.
+## Optional B11 branding phase
+
+Run the [native defaults upgrade](native-desktop-background-upgrade.md) first.
+Add `branding` explicitly to the selected phases after `ui-en` and only after
+actual B06 acceptance is committed. The controller applies the actual B11
+prerequisites (B02 and B06); the harness does not accept either story. The input
+collector includes the new native `toddy-desktop-defaults` archive/record plus
+`toddy-branding`; the old plain-background package cannot satisfy this phase.
+
+The phase creates only a disposable native GTK inspection window. It never sets
+user background/scaling preferences or edits/resizes protected artwork. It checks
+fresh-owner background values, hashes installed wallpaper/icon files against the
+native package record, shows native icon-theme lookups for 32/48/64 pixels and
+requests QMP captures. Theme lookup scale2 is explicitly **not** proof of a real
+scale2 GNOME display. Its result records the actual surface scale. Coordinator
+review of the real screenshots, light/dark/focus states, login/installer imagery,
+actual alternate display scale and removal fallback is still required for B11.
+An assertion or screenshot request alone is not visual success.
+
+API semantics used here are documented by upstream:
+[Gio.Settings.get_default_value](https://docs.gtk.org/gio/method.Settings.get_default_value.html)
+(available since GLib2.40; includes administrator defaults) and
+[Gtk.IconTheme.lookup_icon](https://docs.gtk.org/gtk4/method.IconTheme.lookup_icon.html)
+(GTK4 size/window-scale lookup returning a native paintable). The current official
+pages describe newer library releases; actual frozen GTK4.22.4/GLib2.88.1 behavior
+must still pass in the native session.

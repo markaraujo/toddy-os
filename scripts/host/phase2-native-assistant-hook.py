@@ -8,9 +8,9 @@ from pathlib import Path
 
 SERIAL='TODDY-ASST-DATA'
 OWNER='td-asst-owner';UID=12406
-PHASES=('ui-prepare','ui-en','keyring','agent','agent-ui','memory','grant','automation','automation-alert','automation-interrupt','revoke','integrations-bootstrap','integrations','voice-files','voice-device','ui-pt','ui-return-en')
-REQUIRES={'ui-en':('ui-prepare',),'keyring':('ui-en',),'agent':('keyring',),'agent-ui':('agent',),'memory':('agent',),'grant':('memory',),'automation':('grant',),'automation-alert':('automation',),'automation-interrupt':('automation-alert',),'revoke':('automation-interrupt',),'integrations-bootstrap':('ui-en',),'integrations':('ui-en',),'voice-files':('ui-en',),'voice-device':('voice-files',),'ui-pt':('ui-en',),'ui-return-en':('ui-pt',)}
-PACKAGE_PHASES={'ui-prepare':('toddy-assistant','toddy-agent','toddy-executor'), 'agent':('toddy-agent','llama-cpp'), 'keyring':('gnome-keyring','libsecret'), 'voice-files':('toddy-voice','whisper-cpp','espeak-ng','toddy-voice-model-base','toddy-voice-native-catalog'), 'integrations':('toddy-integrations','firefox','bubblewrap'),'integrations-bootstrap':('toddy-integrations','firefox','bubblewrap')}
+PHASES=('ui-prepare','ui-en','branding','keyring','agent','agent-ui','memory','grant','automation','automation-alert','automation-interrupt','revoke','integrations-bootstrap','integrations','voice-files','voice-device','ui-pt','ui-return-en')
+REQUIRES={'ui-en':('ui-prepare',),'branding':('ui-en',),'keyring':('ui-en',),'agent':('keyring',),'agent-ui':('agent',),'memory':('agent',),'grant':('memory',),'automation':('grant',),'automation-alert':('automation',),'automation-interrupt':('automation-alert',),'revoke':('automation-interrupt',),'integrations-bootstrap':('ui-en',),'integrations':('ui-en',),'voice-files':('ui-en',),'voice-device':('voice-files',),'ui-pt':('ui-en',),'ui-return-en':('ui-pt',)}
+PACKAGE_PHASES={'branding':('toddy-branding','toddy-desktop-defaults'), 'ui-prepare':('toddy-assistant','toddy-agent','toddy-executor'), 'agent':('toddy-agent','llama-cpp'), 'keyring':('gnome-keyring','libsecret'), 'voice-files':('toddy-voice','whisper-cpp','espeak-ng','toddy-voice-model-base','toddy-voice-native-catalog'), 'integrations':('toddy-integrations','firefox','bubblewrap'),'integrations-bootstrap':('toddy-integrations','firefox','bubblewrap')}
 HEX=re.compile('[a-f0-9]{64}\\Z')
 
 
@@ -31,6 +31,7 @@ def validate_manifest(value):
     if not isinstance(value['packages'],dict) or not 3<=len(value['packages'])<=64:raise ValueError('assistant_native_package_set')
     for phase in phases:
         if any(name not in value['packages'] for name in PACKAGE_PHASES.get(phase,())):raise ValueError('assistant_missing_native_package')
+    if 'branding' in phases and value['packages']['toddy-desktop-defaults']['version']!='0.2.0-1+toddy2':raise ValueError('assistant_background_upgrade_required')
     for name,row in value['packages'].items():
         if not re.fullmatch('[a-z0-9][a-z0-9+.-]{1,79}',name) or set(row)!={'version','archive_sha256','record_sha256','record','record_text','archive_path','archive_bytes'} or not HEX.fullmatch(row['archive_sha256']) or not HEX.fullmatch(row['record_sha256']):raise ValueError('assistant_native_package_record')
         if row['archive_path'] is not None and (not isinstance(row['archive_path'],str) or not row['archive_path'].startswith('/sources/phase2/assistant-native-inputs/') or '..' in Path(row['archive_path']).parts or type(row['archive_bytes']) is not int or row['archive_bytes']<=0):raise ValueError('assistant_native_archive_path')
@@ -218,6 +219,48 @@ elif phase in ('ui-en','ui-pt','ui-return-en'):
         try:return atspi_window('pt-BR' if phase=='ui-pt' else 'en')
         except (AssertionError,GLib.Error):return None
     result.update(until(visible,20))
+elif phase=='branding':
+    import socket
+    gi.require_version('Gtk','4.0');gi.require_version('Gdk','4.0')
+    from gi.repository import Gtk,Gdk
+    Gtk.init();background=Gio.Settings.new('org.gnome.desktop.background')
+    expected={'picture-uri':'file:///usr/share/backgrounds/toddy-os/toddy-os-wallpaper-light-logo.png','picture-uri-dark':'file:///usr/share/backgrounds/toddy-os/toddy-os-wallpaper-dark-logo.png','picture-options':'zoom'}
+    observed={};asset_rows=manifest['packages']['toddy-branding']['record']['payload']
+    for key,value in expected.items():
+        assert background.get_user_value(key) is None,'fresh owner unexpectedly has an explicit background preference'
+        assert background.is_writable(key) and background.get_default_value(key).unpack()==value and background.get_string(key)==value
+        observed[key]=value
+        if key!='picture-options':
+            virtual=value.removeprefix('file://');asset=Path(virtual)
+            assert asset.stat().st_uid==asset.stat().st_gid==0 and not asset.is_symlink()
+            assert hashlib.sha256(asset.read_bytes()).hexdigest()==asset_rows[virtual]['sha256']
+    def branding_frame():
+        with socket.socket(socket.AF_UNIX,socket.SOCK_STREAM) as request:
+            request.settimeout(12);request.connect('/run/toddy-assistant/input.sock');request.sendall(b'{"event":"capture","code":"spc"}');assert json.loads(request.recv(256))['actual_QMP_acknowledged']
+    branding_frame()
+    display=Gdk.Display.get_default();assert display is not None
+    theme=Gtk.IconTheme.get_for_display(display);assert theme.has_icon('io.github.markaraujo.Toddy')
+    window=Gtk.Window(title='Toddy native icon inspection');window.set_default_size(760,460)
+    box=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=20);box.set_margin_top(24);box.set_margin_bottom(24);box.set_margin_start(24);box.set_margin_end(24);window.set_child(box)
+    box.append(Gtk.Label(label='Actual installed Toddy icon: inspect readability; no artwork conversion'))
+    paintables=[];rendered=[]
+    for scale in (1,2):
+        row=Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,spacing=32);box.append(row)
+        row.append(Gtk.Label(label='Icon theme lookup scale '+str(scale)))
+        for size in (32,48,64):
+            icon=theme.lookup_icon('io.github.markaraujo.Toddy',None,size,scale,Gtk.TextDirection.NONE,Gtk.IconLookupFlags(0))
+            file=icon.get_file();assert file is not None;virtual=file.get_path()
+            assert virtual in asset_rows and virtual.startswith('/usr/share/icons/hicolor/') and hashlib.sha256(Path(virtual).read_bytes()).hexdigest()==asset_rows[virtual]['sha256']
+            column=Gtk.Box(orientation=Gtk.Orientation.VERTICAL,spacing=8);column.append(Gtk.Label(label=str(size)+'px, theme scale '+str(scale)))
+            picture=Gtk.Picture.new_for_paintable(icon);picture.set_size_request(size*scale,size*scale);picture.set_can_shrink(False);column.append(picture);row.append(column);paintables.append(picture)
+            rendered.append({'logical_icon_size':size,'requested_theme_scale':scale,'selected_asset':virtual,'asset_sha256':asset_rows[virtual]['sha256']})
+    try:
+        window.present();until(lambda:window.get_mapped() and all(item.get_width()>0 and item.get_height()>0 for item in paintables),15)
+        time.sleep(.5)
+        while GLib.MainContext.default().pending():GLib.MainContext.default().iteration(False)
+        branding_frame()
+        result.update(native_defaults=observed,fresh_owner_without_background_override=True,icons=rendered,actual_surface_scale=window.get_scale_factor(),theme_lookup_scale_2_is_not_display_scale_acceptance=True,visual_review_required=True,approved_assets_unchanged=True)
+    finally:window.destroy()
 elif phase=='keyring':
     from toddy.connections.secret_store import ProtectedStore,CredentialError
     store=ProtectedStore();secret=secrets.token_hex(32)
@@ -906,7 +949,7 @@ def main():
                 subprocess.Popen(['/usr/bin/toddy','--locale','pt-BR' if phase=='ui-pt' else 'en'],user=UID,group=UID,extra_groups=[],env=environment,cwd='/home/'+OWNER,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL);time.sleep(1)
             if phase=='automation-interrupt':
                 fault_worker=threading.Thread(target=interrupt_health_child,args=(environment,fault_stop,fault_proof),daemon=True);fault_worker.start()
-            if phase in ('voice-device','agent-ui'):
+            if phase in ('voice-device','agent-ui','branding'):
                 input_worker=threading.Thread(target=input_bridge,args=(channel,ram/'input.sock',input_stop),daemon=True);input_worker.start()
             child=subprocess.run(['/usr/bin/python3','-B',str(ram/'client.py'),phase],user=UID,group=UID,extra_groups=[],env=environment,cwd='/home/'+OWNER,capture_output=True,text=True,timeout=400)
             if child.returncode:

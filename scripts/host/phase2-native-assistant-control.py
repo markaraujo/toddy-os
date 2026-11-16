@@ -56,7 +56,7 @@ def key_codes(char):
 
 
 def phase_eligible(phase,status):
-    story=('B07' if phase=='memory' else 'B08' if phase in ('grant','automation','automation-alert','automation-interrupt','revoke') else 'B10' if phase in ('integrations','integrations-bootstrap') else 'B09' if phase.startswith('voice-') else 'B06')
+    story=('B11' if phase=='branding' else 'B07' if phase=='memory' else 'B08' if phase in ('grant','automation','automation-alert','automation-interrupt','revoke') else 'B10' if phase in ('integrations','integrations-bootstrap') else 'B09' if phase.startswith('voice-') else 'B06')
     rows={row['id']:row for row in status.get('milestones',[])}
     selected=rows.get(story)
     return (status.get('owner_review',{}).get('phase_2_approved') is True and selected is not None
