@@ -20,6 +20,7 @@ sys.path[:0]=[str(ROOT),str(HERE)]
 import offline_payload as p
 import archive_metadata as metadata
 import acquisition_declarations as declarations
+import voice_catalog_sources as generated_voice
 
 MAX_ASSET=1_900_000_000
 PROJECT_ALLOW=('AGENTS.md','PRD.md','README.md','LICENSE','LICENSES','Makefile','config','runtime','scripts','stories','docs','tests','dashboard','ui','assets','.github')
@@ -131,9 +132,13 @@ def package_documents(archive,name,body):
     with p.tar_stream(archive,'--fsys-tarfile') as stream:
         for member in stream:
             path='/'+member.name.removeprefix('./').rstrip('/')
-            if not path.startswith(prefix) or not member.isfile():continue
-            local=path[len(prefix):]
-            if local not in ('source-manifest.json','npm-custody.json','supplemental-notices.json','copyright') and not local.startswith(('source-notices/','npm-supplemental-notices/')):continue
+            if not member.isfile():continue
+            if name == generated_voice.bridge.PACKAGE and path == generated_voice.CATALOG:
+                local='catalog.json'
+            elif path.startswith(prefix):local=path[len(prefix):]
+            else:continue
+            generated = name == generated_voice.bridge.PACKAGE and local in generated_voice.DOCUMENTS | {'catalog.json'}
+            if not generated and local not in ('source-manifest.json','npm-custody.json','supplemental-notices.json','copyright') and not local.startswith(('source-notices/','npm-supplemental-notices/')):continue
             if member.size>32*1024**2:raise ValueError('Bounded original source/notice document required')
             data=stream.extractfile(member).read()
             if hashlib.sha256(data).hexdigest()!=body.get(path,{}).get('sha256'):raise ValueError('Original source document ownership differs')
@@ -141,8 +146,21 @@ def package_documents(archive,name,body):
     return result
 
 
-def collect(repository,receipt,records,resolver,project,npm_cache):
+def collect(repository,receipt,records,resolver,project,npm_cache,generated_catalog_attestation=None,generated_catalog_projection=None):
     entries={};coverage=[]
+    generated_present = any(row.get('name') == generated_voice.bridge.PACKAGE for row in receipt['packages'])
+    if generated_present != (generated_catalog_attestation is not None and generated_catalog_projection is not None) or (not generated_present and (generated_catalog_attestation is not None or generated_catalog_projection is not None)):
+        raise ValueError('Exact generated catalog requires explicit builder attestation and projection')
+    export_documents={}
+    if generated_present:
+        for key,path in (('attestation',generated_catalog_attestation),('projection',generated_catalog_projection)):
+            path=regular(path)
+            if path.stat().st_size > 4*1024**2:raise ValueError('Bounded actual generated export proof required')
+            export_documents[key]=path.read_bytes()
+        attestation=p.strict(export_documents['attestation']);projection=p.strict(export_documents['projection'])
+        if (receipt.get('inputs',{}).get('optional-projection.json') != hashlib.sha256(export_documents['projection']).hexdigest() or
+                projection.get('generated_catalog_attestation_sha256') != hashlib.sha256(export_documents['attestation']).hexdigest()):
+            raise ValueError('Actual archive export/projection/attestation digest chain differs')
     def add(item):
         if item.name in entries and entries[item.name].description()!=item.description():raise ValueError('Conflicting corresponding-source identity')
         entries[item.name]=item;return item.name
@@ -159,7 +177,16 @@ def collect(repository,receipt,records,resolver,project,npm_cache):
         for relative_path,digest in sorted(files.items()):selected.append(add(project.source('scripts/build/'+relative_path,digest)))
         documents=package_documents(archive,name,body)
         for local,data in documents.items():selected.append(add(Input('package-documents/'+name+'/'+local,hashlib.sha256(data).hexdigest(),data=data,origin={'kind':'archive-owned-original-document','archive_sha256':component['archive_sha256']})))
-        if not component['sources']:
+        if name == generated_voice.bridge.PACKAGE:
+            inputs=generated_voice.verify(component,raw,documents,attestation,projection)
+            for relative_path,digest in sorted(inputs.items()):selected.append(add(project.source(relative_path,digest)))
+            attribution=p.strict(documents['human-sample-attribution.json'])
+            if set(attribution.get('samples',{})) != {'en','pt-BR'}:raise ValueError('Exact attributed human source samples required')
+            for locale,row in attribution['samples'].items():
+                selected.append(add(project.source('tests/fixtures/voice/human/'+locale+'.wav',row['wav']['sha256'])))
+            for role,data in export_documents.items():
+                selected.append(add(Input('builder-export/voice-native2-'+role+'.json',hashlib.sha256(data).hexdigest(),data=data,origin={'kind':'actual-builder-export-proof-retained-for-owner-signed-source-review'})))
+        elif not component['sources']:
             with tempfile.TemporaryDirectory(prefix='toddy-public-original-source-') as directory:
                 target=Path(directory)
                 if 'source-manifest.json' in documents:
@@ -219,10 +246,10 @@ def bundles(entries,output,prefix='selected-sources'):
         if current is not None:current.close()
 
 
-def export(repository,records,source_roots,commit,output,scope,npm_cache=None,foundation=None):
+def export(repository,records,source_roots,commit,output,scope,npm_cache=None,foundation=None,generated_catalog_attestation=None,generated_catalog_projection=None):
     receipt,_index=declarations.verified_repository(repository,metadata.public_trust())
     project=Project(ROOT,commit);resolver=Resolver(source_roots,foundation)
-    entries,coverage=collect(repository,receipt,records,resolver,project,npm_cache)
+    entries,coverage=collect(repository,receipt,records,resolver,project,npm_cache,generated_catalog_attestation,generated_catalog_projection)
     output=Path(output)
     if not output.is_absolute() or output.resolve()!=output or os.path.lexists(output) or not output.parent.is_dir():raise ValueError('Fresh canonical corresponding-source output required')
     licenses={name:item for name,item in entries.items() if name.startswith('package-documents/') and (name.endswith('/copyright') or '/source-notices/' in name or '/npm-supplemental-notices/' in name)}
@@ -294,8 +321,9 @@ def main():
     parser.add_argument('--repository',type=Path,required=True);parser.add_argument('--records',type=Path,required=True)
     parser.add_argument('--source-root',type=Path,action='append',default=[]);parser.add_argument('--source-commit',required=True)
     parser.add_argument('--npm-cache',type=Path);parser.add_argument('--foundation-source-tar',type=Path)
+    parser.add_argument('--generated-catalog-attestation',type=Path);parser.add_argument('--generated-catalog-projection',type=Path)
     parser.add_argument('--output',type=Path,required=True);parser.add_argument('--capacity-scope',choices=('host-export','native-target'),required=True)
-    args=parser.parse_args();value=export(args.repository,args.records,args.source_root,args.source_commit,args.output,args.capacity_scope,args.npm_cache,args.foundation_source_tar)
+    args=parser.parse_args();value=export(args.repository,args.records,args.source_root,args.source_commit,args.output,args.capacity_scope,args.npm_cache,args.foundation_source_tar,args.generated_catalog_attestation,args.generated_catalog_projection)
     print(p.encoded({'state':'unsigned-selected-corresponding-source-assets','source_assets':len(value['source_assets']),'packages':len(value['packages']),'signed':False,'published':False}).decode(),end='')
 
 

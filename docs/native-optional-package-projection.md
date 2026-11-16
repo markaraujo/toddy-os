@@ -54,22 +54,48 @@ native acquisition full-flow and explicit notice/owner authorization gates apply
 
 ## Source handoff
 
-`package_sources.py` currently reconstructs only an owned `source-manifest.json`
-for empty-source original packages. It cannot yet export the generated catalog's
-corresponding-source/proof bundle, which intentionally has no such manifest.
-Its present strict failure is preserved until the corresponding-source extension
-is supplied. The new export attestation is emitted only after all actual builder
-validators pass and binds the exact native record/archive, owned proof files,
-producer and successful native write/check audit digests. The source exporter
-must consume this exact retained attestation and extend that exact producer's source
-export to retain and verify its actual audit/proof closure and reviewed project
-inputs; do not introduce a generic empty-source fallback. Component/process/
-transport-help proof still does not replace actual GNOME/PTT/device/playback,
-optional signed acquisition or physical validation.
+`package_sources.py` accepts the exact generated catalog through a separate
+public data/source verifier. Append these two arguments to the existing signed
+repository corresponding-source export command:
+
+```sh
+--generated-catalog-attestation /mnt/lfs/sources/stage/toddy-optional-projection-1/generated-catalog-attestation.json \
+--generated-catalog-projection /mnt/lfs/sources/stage/toddy-optional-projection-1/optional-projection.json
+```
+
+On a host export, use the exact copied generation paths instead. The projection
+SHA must match `archive-export.json.inputs["optional-projection.json"]`; its
+attestation SHA must match the supplied attestation bytes. Both documents enter
+the complete source inventory and source tar assets. Missing arguments, changed
+pins or an unrelated projection fail before any source output is created. Do not
+supply these arguments when that exact package is absent.
+
+The public source verifier requires exactly catalog version/package/architecture
+and the known fixed generator/wrapper hashes, supported by exact historical Git
+source. It accepts only the fixed non-executable JSON/legal/attribution payload;
+no engine, model, link, arbitrary source-empty package or native permission flag.
+Every owned generated catalog/proof/document byte becomes source material in the
+bundle. Catalog/process/runtime hashes, bilingual process/Stop data, original
+component/legal proof identities and the actual builder's audit/check digest
+bindings must agree. The exact original MIT and CC-BY documentation licenses,
+reviewed human attribution/README and both attributed human WAV source inputs
+must resolve to committed project bytes. The complete recorded native supporting
+recipe/helper closure is already retained through the normal exporter.
+
+Public source verification does not rerun private builder audits and never
+accepts a temporary extraction as native evidence. Actual builder qualification
+is required before the export attestation can be emitted; public source
+metadata and signatures plus independent owner review bind that retained actual
+attestation and all owned data. Keep the full private native receipts separately.
+The signer must review this distinction. Component/process/transport-help proof
+still does not replace actual GNOME/PTT/device/playback, optional signed
+acquisition, final same-ISO installer/recovery or physical validation.
 
 Focused source checks:
 
 ```sh
 python3 -m unittest discover -s tests -p test_optional_projection.py -v
 python3 -m unittest discover -s tests -p test_image_projection.py -v
+python3 -m unittest discover -s tests -p test_voice_catalog_sources.py -v
+python3 -m unittest discover -s tests -p test_package_sources.py -v
 ```
