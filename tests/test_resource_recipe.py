@@ -1,0 +1,51 @@
+"""Candidate attribution/closed recipe fixtures; never run a native generator."""
+import hashlib
+import importlib.util
+from pathlib import Path
+import stat
+import unittest
+
+ROOT=Path(__file__).resolve().parents[1]
+spec=importlib.util.spec_from_file_location('resource_recipe',ROOT/'scripts/build/phase2/resource_recipe.py')
+recipe=importlib.util.module_from_spec(spec);spec.loader.exec_module(recipe)
+from runtime.installer.native_finalizer import payload_module
+
+
+class ResourceRecipeTests(unittest.TestCase):
+    def manifest(self):
+        return {'ownership':{'entries':{'/usr/share/owned':{'mode':stat.S_IFREG|0o644,'uid':0,'gid':0,'sha256':'a'*64}},
+                    'fresh_directories':{'home':{'mode':stat.S_IFDIR|0o755,'uid':0,'gid':0,'directory':True}}},
+                'components':[{'name':'fixture'}]}
+    def policy(self):
+        return {'accounts':{'passwd':'root:x:0:0:root:/root:/bin/bash\n','group':'root:x:0:\nwheel:x:97:\n'}}
+    def test_unknown_or_changed_owned_file_is_never_generated_override(self):
+        manifest=self.manifest();actual={**manifest['ownership']['entries'],'/root/key':{'mode':stat.S_IFREG|0o600,'uid':0,'gid':0,'sha256':'b'*64}}
+        actual['/usr/share/owned']={**actual['/usr/share/owned'],'sha256':'c'*64}
+        generated,blocked=recipe.candidate_entries(actual,manifest,self.policy())
+        self.assertEqual(generated,{})
+        self.assertEqual({row['path'] for row in blocked},{'/root/key','/usr/share/owned'})
+    def test_literal_fresh_accounts_and_known_database_have_exact_origins(self):
+        manifest=self.manifest();actual={**manifest['ownership']['entries'],**recipe.account_entries(self.policy()),
+            '/home':manifest['ownership']['fresh_directories']['home'],
+            '/var/lib/dpkg/info/fixture.list':{'mode':stat.S_IFREG|0o644,'uid':0,'gid':0,'sha256':'b'*64},
+            '/lost+found':{'mode':stat.S_IFDIR|0o700,'uid':0,'gid':0,'directory':True}}
+        generated,blocked=recipe.candidate_entries(actual,manifest,self.policy())
+        self.assertEqual(blocked,[])
+        self.assertEqual(generated['/etc/shadow']['origin'],'fresh-system-accounts')
+        self.assertEqual(generated['/var/lib/dpkg/info/fixture.list']['origin'],'native-dpkg-database')
+        self.assertEqual(generated['/lost+found']['origin'],'fresh-filesystem')
+    def test_other_package_database_script_cannot_gain_provenance(self):
+        manifest=self.manifest();actual={**manifest['ownership']['entries'],
+            '/var/lib/dpkg/info/fixture.postinst':{'mode':stat.S_IFREG|0o644,'uid':0,'gid':0,'sha256':'b'*64}}
+        generated,blocked=recipe.candidate_entries(actual,manifest,self.policy())
+        self.assertFalse(generated);self.assertEqual(len(blocked),1)
+    def test_closed_plan_pins_complete_namespace_and_fixed_native_argv(self):
+        p=payload_module();entries={'/usr/share/glib-2.0/schemas/fixture.xml':{'sha256':'a'*64},
+            '/usr/share/glib-2.0/schemas/gschemas.compiled':{'sha256':'b'*64},'/usr/bin/glib-compile-schemas':{'sha256':'c'*64}}
+        output='/usr/share/glib-2.0/schemas/gschemas.compiled';namespace=p.cache_namespace(output,entries)
+        binding={'output_sha256':'b'*64,'tool':{'path':'/usr/bin/glib-compile-schemas','sha256':'c'*64},
+            'input_namespace_sha256':hashlib.sha256(p.encoded(namespace)).hexdigest(),'inputs':{'/usr/share/glib-2.0/schemas/fixture.xml':'a'*64}}
+        manifest={'ownership':{'entries':entries},'generated':{'owned_cache_bindings':{output:binding}}}
+        self.assertEqual(recipe.resource_plan(manifest)[0]['argv'],['/usr/bin/glib-compile-schemas','--strict','/usr/share/glib-2.0/schemas'])
+        entries['/usr/share/glib-2.0/schemas/new.xml']={'sha256':'d'*64}
+        with self.assertRaisesRegex(ValueError,'union'):recipe.resource_plan(manifest)

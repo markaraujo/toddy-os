@@ -1,0 +1,13 @@
+{
+  "scope": "source-only first native resource candidate recipe",
+  "native_producer_executed": false,
+  "qualification_or_story_acceptance": false,
+  "checks": [
+    {
+      "command": "python3 -m unittest tests.test_resource_recipe tests.test_installer_generated_resources tests.test_installer_live_bindings -q",
+      "tests": 20,
+      "exit": 0
+    }
+  ],
+  "native_next": "Actual signed generation1 unpack/configure and fixed producer commands under designated guest guard, independently review exact candidate map/image manifest, then NEW generation2 real NativeFinalizer. Preserve owned cache mismatches as blockers; never override native package bytes."
+}
