@@ -3,8 +3,8 @@
   "project": "Toddy OS",
   "updated_at": "2026-11-11T15:51:16.353086+00:00",
   "bootstrap": "ready_for_development",
-  "current_scope": "Owner resumed Phase2 on 2026-11-16 with parallel isolated source preparation. B01/B02/B03 accepted (23%); B04 native owner/executor integration is current. G2 and Phase2 ISO remain pending; physical validation unperformed.",
-  "next_story": "B04",
+  "current_scope": "B01-B04 accepted (31% weighted Phase2). B05 durable task/configuration recovery is current after native broker4 passed. Parallel isolated source work continues; G2/Phase2 ISO and physical testing remain pending.",
+  "next_story": "B05",
   "gates": {
     "G1": "passed",
     "G2": "pending"
@@ -524,7 +524,7 @@
       "phase": "agentic",
       "title": "Deliver native tools and the revocable privileged executor",
       "weight": 8,
-      "status": "in_progress",
+      "status": "completed",
       "depends_on": [
         "B01"
       ],
@@ -541,7 +541,8 @@
         "docs/evidence/B04-native-executor.json",
         "docs/evidence/B04-user-tools.json",
         "docs/evidence/B04-native-control.json",
-        "docs/evidence/B04-native-owner-lifecycle.json"
+        "docs/evidence/B04-native-owner-lifecycle.json",
+        "docs/evidence/B04-native-broker.json"
       ]
     },
     {
@@ -549,7 +550,7 @@
       "phase": "agentic",
       "title": "Persist tasks and recover interrupted system changes",
       "weight": 10,
-      "status": "not_started",
+      "status": "in_progress",
       "depends_on": [
         "B03",
         "B04"
@@ -562,7 +563,9 @@
         "Invalid profile configuration preserves the working revision; one rollback and task-revision pinning check pass without unexpected replay.",
         "A crash after an effect but before result recording is reconciled or held for review; package/boot Stop respects a documented safe commit boundary."
       ],
-      "evidence": []
+      "evidence": [
+        "docs/evidence/B05.md"
+      ]
     },
     {
       "id": "B06",

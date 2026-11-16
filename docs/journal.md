@@ -4219,3 +4219,14 @@ setup intent, canonical SQLite/FTS memory and durable quiet deterministic schedu
 with host crash/no-replay tests. These do not bypass prerequisites or claim native
 B05/B07/B08 acceptance. Continue the current slice and reconcile real jobs before
 any next guest write; never replay old contexts. No Phase2 ISO/physical/G2 claim.
+
+## 2026-11-16 — B04 native integration accepted; B05 current
+
+Native broker4 passed actual canonical user-service file/root routing, scoped
+Stop and service-main-loss recovery without replay. Combined with control2,
+owner7 and retained native IPC/package evidence, B04 criteria are complete.
+Accepted Phase2 progress is31%; B05 configuration/task recovery is current.
+Terminal source client adds bounded shared-service text paging, safe Stop and
+read-only lost-acceptance recovery; four focused client checks and six staged
+assistant checks passed, full make check580 tests11.035s. Native CLI acceptance
+remains B06. No final ISO/G2 or physical test claim.

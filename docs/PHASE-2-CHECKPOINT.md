@@ -1,42 +1,24 @@
 # Phase 2 continuation card
 
-## Owner resumed: B04 native executor integration
+## B05 configuration/task recovery current
 
-Owner resumed on 2026-11-16 and requested maximum simultaneous subagents;
-[ADR-0229](adr/0229-owner-resumes-parallel-phase2.md) supersedes the old stop and
-single-agent restriction. B01/B02/B03 remain accepted: 23% weighted Phase2.
-B04 is the current acceptance slice. Three isolated workers prepare profiles,
-memory and deferred setup choices without guest access or story acceptance.
-No Phase2 ISO/G2 or physical acceptance exists.
+Owner resumed2026-11-16 with maximum simultaneous isolated source subagents
+([ADR-0229](adr/0229-owner-resumes-parallel-phase2.md)). B01-B04 accepted:31%
+weighted Phase2. Native broker4 passed exact request recovery, authenticated root
+routing, ordinary managed shell detached-descendant Stop, service-main-loss
+cleanup/restart uncertain/no replay. Root control2 and owner7 remain reusable.
+[Combined receipt](evidence/B04-native-broker.json); failed broker1/2/3 retained.
+Current final context `.local/phase2/native-executor-broker-4`: QEMU/container0,
+no guest writer, both accepted B02 backing files unchanged. Never replay it.
 
-Slice: qualify owner grant/revoke through a fixed Polkit helper and structured
-service/network operations on a new disposable native overlay. Inputs: accepted
-B02 cold disks and current executor source. First inspect disk identities, actual
-processes and host reserve. Never replay prior runtime controllers. Undo: stop
-only the newly owned VM; retain its overlay/evidence and unchanged backing.
-Checks: affected executor/schema/policy tests, then actual system bus/systemd/
-owner-authentication/Stop/revocation postconditions. Reuse unchanged foundation,
-provider and desktop evidence. Exact native controller/log recorded before launch.
-Root native-control2 passed14 selected checks with the current transport-owned
-session resolver. Owner-lifecycle7 passed8 stages including real logind LockedHint
-refusal, same-UID background Display binding, logout denial and package lifecycle;
-[evidence](evidence/B04-native-owner-lifecycle.json). Prior failed owner1/2/3/6
-remain failed. Both cold backing disks unchanged, no current guest writer.
-Host actual managed-user-scope proof passed ordinary output and Stop of a detached
-setsid descendant. Production shell refuses missing canonical parent/manager;
-no process-group fallback. Standalone source broker verifies actual file/sysinfo
-and denied unmanaged shell. Native broker/user-service/scope proof is next.
-Source profiles/tasks/memory/scheduler/setup/native UI/MCP/browser/voice adapters
-are integrated with host tests, not later-story acceptance. B04 remains current;
-B05 prerequisites and later native acceptance remain pending. No Phase2 ISO/G2.
-
-Combined broker1 transport failed/not-run; broker2 verified readonly transport
-and reached real user service/sysinfo/profile/file write, then duplicate admission
-failed. Both original disks unchanged and owned VMs stopped. New pure request
-lookup and stale-idle admission corrections are being integrated.
-Next: commit current corrected inputs and run NEW broker3 through
-`phase2_native_executor_control.py --slice broker --generation 3`. Never replay1/2.
-No guest writer remains. Exact local ledger/runtime pointer reflects this state.
+Next: merge prepared managed configuration manager, connect out-of-band operation
+IDs to root dispatch/reconciliation and qualify actual broken-service rollback,
+drift and manual rescue in a NEW native context. Current source workers prepare
+named profiles/UI, automation/memory and Calamares adapter in separate worktrees;
+only coordinator writes guest. Source preparation is not later-story acceptance.
+Terminal shared-service client is staged and focused tested; native B06 pending.
+Host reserve100GiB+512MiB and target reserve16GiB remain required. Check actual
+space/VM/job state before any new write. No Phase2 ISO/G2 or physical acceptance.
 
 ## Last verified runtime and jobs
 
