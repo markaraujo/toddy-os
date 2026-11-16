@@ -17,20 +17,22 @@ only the newly owned VM; retain its overlay/evidence and unchanged backing.
 Checks: affected executor/schema/policy tests, then actual system bus/systemd/
 owner-authentication/Stop/revocation postconditions. Reuse unchanged foundation,
 provider and desktop evidence. Exact native controller/log recorded before launch.
-Host owner/control20 and combined repository412 tests passed. Profile revisions
-and setup intent source slices integrated without acceptance claims. Actual
-native-executor-control-1 passed all14 selected checks, QEMU exit0, backing
-unchanged; [evidence](evidence/B04-native-control.json). No guest writer remains.
-Never replay generation1. The source-stage root service actually handled owner
-PAM grant/revoke, wrong password/auth cancellation, structured systemd/network,
-config/duplicate/wrong-UID and detached-child cgroup loss/restart/no replay.
-Owner-lifecycle4 also passed all6 stages: trusted root-created PAM/logind local
-session, default active Polkit real password grant/revoke, session-bound IPC,
-native fixture package upgrade/restart/duplicate retention, logout mismatch and
-remove/ephemeral-user cleanup. Failed1/2/3 retained, original backing unchanged.
-Next: finish authenticated unprivileged broker routing and controlled final
-package recipe/metadata. Profile/memory/scheduler/setup source preparation is
-integrated; real service and native component proofs remain due. B04 is incomplete; no G2/ISO claim.
+Root native-control2 passed14 selected checks with the current transport-owned
+session resolver. Owner-lifecycle7 passed8 stages including real logind LockedHint
+refusal, same-UID background Display binding, logout denial and package lifecycle;
+[evidence](evidence/B04-native-owner-lifecycle.json). Prior failed owner1/2/3/6
+remain failed. Both cold backing disks unchanged, no current guest writer.
+Host actual managed-user-scope proof passed ordinary output and Stop of a detached
+setsid descendant. Production shell refuses missing canonical parent/manager;
+no process-group fallback. Standalone source broker verifies actual file/sysinfo
+and denied unmanaged shell. Native broker/user-service/scope proof is next.
+Source profiles/tasks/memory/scheduler/setup/native UI/MCP/browser/voice adapters
+are integrated with host tests, not later-story acceptance. B04 remains current;
+B05 prerequisites and later native acceptance remain pending. No Phase2 ISO/G2.
+
+Next: prepare and commit one combined disposable broker/root/user-systemd scope
+qualification using the accepted cold backing, NEW context and current source.
+Preserve one writer; inspect actual operations before any retry.
 
 ## Last verified runtime and jobs
 

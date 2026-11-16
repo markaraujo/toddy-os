@@ -15,6 +15,12 @@
       "name": "default-active-policy-real-pam-session-grant-and-ipc-effect"
     },
     {
+      "name": "background-same-uid-service-binds-active-owner-logind-display"
+    },
+    {
+      "name": "native-logind-locked-hint-refuses-new-background-ipc-and-unlocks"
+    },
+    {
       "name": "native-package-owned-upgrade-restart-retains-grant-operation-and-no-replay"
     },
     {
@@ -38,15 +44,16 @@
     "operations.py": "e6d2c3aa308babb07bdba21c2c2ec37f103ebb0a3b34a4c9d983ad379a3e34f0",
     "owner_policy.py": "16d9c0eb58c8101808001519713b2d6fea0ba7ccfb214eaeb78af7f20cbb0ee3",
     "policy.py": "65559463c74781ca8db83d6e97b8847deb891ea1882177f2ce7f157a58befeb2",
-    "service.py": "a1ba134b003153e844982db6dea80d60e5dc70faf5fca20027737ae2540fe6c2",
+    "service.py": "424ee8199ff0eef9b7e10718a432aaa7d9964fee710dbcf2683439f4a94b43de",
+    "session_identity.py": "c2746ecca37879d36df0b8ef6447942797541220465208d5d58ccd6604d49606",
     "store.py": "ccc356f6a1e238fb083f7691548a581d90e0b43ba5c973c58c617cfcb10f0a45",
     "toddy-executor.service": "e91e0ee9eebd92de111867a2901205f991afe6a9dda043ed605e28e9994d14b2"
   },
-  "job": "native-executor-owner-4",
-  "source_commit": "c1f5d56c588f9f45adf0d27be7d3e60e2732b763",
-  "probe_sha256": "a713a3c6e6a944d9a10cb146de8f5f55426d24dff11fca59818a36ae3cea96e4",
-  "inputs_sha256": "c5182a92a2f170c5567a65c2d48b5b7163d8ef9dd86912fc85af15ba392fe428",
-  "report_sha256": "c648fc9d7b0ffdabd5d6b9be30809fbc64ebc94d7bb016d037661f692eac72a2",
+  "job": "native-executor-owner-7",
+  "source_commit": "602af713951b00a42adb44912538b2f964c4415d",
+  "probe_sha256": "267cf34b32c97f57f1c7bfeba864b6cd19914ffbceec760c88392337f7628804",
+  "inputs_sha256": "324e1a6ab7162d914a9adfdadbfe149b35a784fddc03749994f74cae7dd70d37",
+  "report_sha256": "8cf3ce4ba18322e3e782400e8ec093799f4a88fda715fa2f17e2826f3f6e12c4",
   "actual_container_exit": {
     "Status": "exited",
     "Running": false,
@@ -57,13 +64,8 @@
     "Pid": 0,
     "ExitCode": 0,
     "Error": "",
-    "StartedAt": "2026-11-16T11:48:46.64097174Z",
-    "FinishedAt": "2026-11-16T11:49:00.311241825Z"
+    "StartedAt": "2026-11-16T11:58:28.249689373Z",
+    "FinishedAt": "2026-11-16T11:58:42.271536368Z"
   },
-  "backing_unchanged": true,
-  "failed_generations_retained": [
-    1,
-    2,
-    3
-  ]
+  "backing_unchanged": true
 }

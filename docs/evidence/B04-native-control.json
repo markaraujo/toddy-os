@@ -73,15 +73,16 @@
     "operations.py": "e6d2c3aa308babb07bdba21c2c2ec37f103ebb0a3b34a4c9d983ad379a3e34f0",
     "owner_policy.py": "16d9c0eb58c8101808001519713b2d6fea0ba7ccfb214eaeb78af7f20cbb0ee3",
     "policy.py": "65559463c74781ca8db83d6e97b8847deb891ea1882177f2ce7f157a58befeb2",
-    "service.py": "a1ba134b003153e844982db6dea80d60e5dc70faf5fca20027737ae2540fe6c2",
+    "service.py": "424ee8199ff0eef9b7e10718a432aaa7d9964fee710dbcf2683439f4a94b43de",
+    "session_identity.py": "c2746ecca37879d36df0b8ef6447942797541220465208d5d58ccd6604d49606",
     "store.py": "ccc356f6a1e238fb083f7691548a581d90e0b43ba5c973c58c617cfcb10f0a45",
     "toddy-executor.service": "e91e0ee9eebd92de111867a2901205f991afe6a9dda043ed605e28e9994d14b2"
   },
-  "job": "native-executor-control-1",
-  "source_commit": "755139513d132b1e96726f9e912c627e2d01e46b",
+  "job": "native-executor-control-2",
+  "source_commit": "7b49861162d8bcc473eb4d70ce9945e5515ca9f1",
   "probe_sha256": "93065eac5509b3894ceab9f78d5ee7f18ccac4e9691cdf54a6e608651f92ced5",
-  "inputs_sha256": "c5182a92a2f170c5567a65c2d48b5b7163d8ef9dd86912fc85af15ba392fe428",
-  "report_sha256": "4a0abab09711a5de2b77cdd0518fbe112db2f79d7837629ed502b8f76b985ca7",
+  "inputs_sha256": "324e1a6ab7162d914a9adfdadbfe149b35a784fddc03749994f74cae7dd70d37",
+  "report_sha256": "0fd4a20781a536b29f7dfdc74f202caba6dc6d194416be8ae4620e3319ccff1f",
   "actual_container_exit": {
     "Status": "exited",
     "Running": false,
@@ -92,8 +93,8 @@
     "Pid": 0,
     "ExitCode": 0,
     "Error": "",
-    "StartedAt": "2026-11-16T11:38:35.990328011Z",
-    "FinishedAt": "2026-11-16T11:38:51.971736518Z"
+    "StartedAt": "2026-11-16T12:03:14.155688658Z",
+    "FinishedAt": "2026-11-16T12:03:30.547741658Z"
   },
   "backing_unchanged": true
 }
