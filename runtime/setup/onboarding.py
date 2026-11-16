@@ -209,6 +209,7 @@ class Onboarding:
         if not isinstance(settings,dict) or settings.get('version')!=1 or not isinstance(settings.get('model_id'),str) or not 0<len(settings['model_id'])<=128:raise SetupError('onboarding_settings')
         if mode=='local':
             if set(settings)!={'version','adapter_id','model_id','model_path'} or settings['adapter_id']!='local-llama-cpp' or settings['model_id']!='toddy-qwen3-1.7b-q8_0':raise SetupError('onboarding_settings')
+            LocalModel.eligibility()
             # The local acquisition API verifies exact private model bytes before
             # supplying this settings object; bind independently verifies again.
             verify_model(Path(settings['model_path']))
@@ -251,7 +252,8 @@ class LocalModel:
             if not path.exists():path.mkdir(mode=0o700)
         info=self.cache.stat()
         if self.cache.resolve()!=self.cache or info.st_uid!=os.getuid() or stat.S_IMODE(info.st_mode)!=0o700:raise SetupError('onboarding_model_cache')
-    def review(self):
+    @staticmethod
+    def eligibility():
         from .runtime_compat import compatible,validate_installed,RUNTIME_VERSION,cpu_features
         from .native_backend import NativeBackend
         from .releases import private_metadata
@@ -262,6 +264,10 @@ class LocalModel:
         contract=model_contract();resources=hardware();resources['cpu_flags']=cpu_features()[1]
         needed=(contract['budgets']['proposed_model_peak_rss_mib']+512)*1024**2
         if resources['available_memory_bytes']<needed:raise SetupError('onboarding_memory_insufficient')
+        return resources
+    def review(self):
+        from ..acquisition.choices import choose
+        resources=self.eligibility();contract=model_contract()
         self.prepare_cache()
         target=self.cache/(contract['model']['sha256']+'.gguf')
         if target.exists():

@@ -84,6 +84,14 @@ class OnboardingTests(unittest.TestCase):
         self.broker.config['provider']['connection_ref']=None
         (self.root/'connections'/(result['reference']+'.json')).write_text('owner changed')
         with self.assertRaisesRegex(SetupError,'drift'):self.api.cleanup()
+    def test_direct_local_binding_checks_shared_eligibility_before_any_state(self):
+        settings={'version':1,'adapter_id':'local-llama-cpp','model_id':'toddy-qwen3-1.7b-q8_0','model_path':'/synthetic-weights-only.gguf'}
+        with patch.object(LocalModel,'eligibility',side_effect=SetupError('onboarding_runtime_missing')) as eligibility,patch('runtime.setup.onboarding.verify_model',side_effect=AssertionError('No weight read before eligibility')):
+            with self.assertRaisesRegex(SetupError,'runtime_missing'):self.api.bind('local',settings,accepted=True)
+            eligibility.assert_called_once_with()
+        self.assertEqual(self.events,[])
+        self.assertFalse((self.root/'connections').exists());self.assertIsNone(self.api.state.read())
+
     def test_file_lock_serializes_other_onboarding_instances(self):
         with self.api.state.exclusive():
             with self.assertRaisesRegex(SetupError,'busy'):self.api.bind('remote',self.settings,credential='synthetic',accepted=True)
