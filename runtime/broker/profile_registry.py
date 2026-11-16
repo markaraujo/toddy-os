@@ -47,7 +47,8 @@ def _private(path,mode,*,directory=False):
 
 
 class ProfileRegistry:
-    def __init__(self,root,schema,defaults,*,capabilities=None,profile_limit=32,locator_limit=10000):
+    def __init__(self,root,schema,defaults,*,capabilities=None,profile_limit=32,locator_limit=10000,
+                 legacy_default_directory=None):
         self.root=Path(root)
         if not self.root.is_absolute() or self.root.resolve()!=self.root or \
                 type(profile_limit) is not int or not 1<=profile_limit<=128 or \
@@ -55,6 +56,9 @@ class ProfileRegistry:
             raise RegistryError('unsafe_registry_configuration')
         self.root.mkdir(mode=0o700,exist_ok=True)
         _private(self.root,0o700,directory=True)
+        self.legacy_default_directory=Path(legacy_default_directory) if legacy_default_directory is not None else None
+        if self.legacy_default_directory is not None:
+            _private(self.legacy_default_directory,0o700,directory=True)
         self.schema=schema
         self.defaults=dict(defaults)
         self.capabilities=capabilities or {'adapters':set(),'tools':{'system-info'},
@@ -155,12 +159,15 @@ class ProfileRegistry:
         return clean
 
     def _directory(self,profile_id):
-        return self.root/_identifier(profile_id)
+        _identifier(profile_id)
+        if profile_id=='toddy-default' and self.legacy_default_directory is not None:
+            return self.legacy_default_directory
+        return self.root/profile_id
 
     def _new_store(self,profile_id):
         return ProfileStore(self._directory(profile_id),profile_id,self.schema,capabilities=self.capabilities)
 
-    def _verified_existing(self,profile_id,expected=None):
+    def _verified_existing(self,profile_id,expected=None,*,allow_recovery=False):
         directory=self._directory(profile_id)
         path=directory/'state.sqlite'
         try:
@@ -171,12 +178,14 @@ class ProfileRegistry:
             db=sqlite3.connect(path.as_uri()+'?mode=ro',uri=True,timeout=2)
             try:row=db.execute('SELECT profile_id,revision FROM profile_current WHERE id=1').fetchone()
             finally:db.close()
-            if row is None or row[0]!=profile_id or (expected is not None and row[1]!=expected):
+            if row is None or row[0]!=profile_id or not isinstance(row[1],str) or not REVISION.fullmatch(row[1]) or \
+                    (expected is not None and row[1]!=expected):
                 raise RegistryError('profile_postcondition_unverified')
         except (OSError,sqlite3.Error):
             raise RegistryError('profile_postcondition_unverified') from None
         store=self._new_store(profile_id)
-        store.snapshot(row[1])
+        if not allow_recovery:
+            store.snapshot(row[1])
         return store
 
     def _publish(self,profile_id,expected):
@@ -205,7 +214,7 @@ class ProfileRegistry:
             self._publish(profile_id,revision)
         return {'profile_id':profile_id,'profile_revision':revision,'selected':False}
 
-    def adopt_existing(self,profile_id):
+    def adopt_existing(self,profile_id,*,allow_recovery=False):
         """Explicit legacy-store registration after actual custody/postcondition checks.
 
         This preserves existing revisions/tasks/preferences/routing. It is not
@@ -213,7 +222,7 @@ class ProfileRegistry:
         """
         _identifier(profile_id)
         with self._lock():
-            store=self._verified_existing(profile_id)
+            store=self._verified_existing(profile_id,allow_recovery=allow_recovery)
             revision=store.current()
             with self._transaction() as db:
                 row=db.execute('SELECT status FROM profiles WHERE profile_id=?',(profile_id,)).fetchone()
@@ -238,12 +247,12 @@ class ProfileRegistry:
                 return {'profile_id':profile_id,'status':'held','reason':'profile_postcondition_unverified'}
         return {'profile_id':profile_id,'status':'ready'}
 
-    def store(self,profile_id):
+    def store(self,profile_id,*,allow_recovery=False):
         _identifier(profile_id)
         with self._db() as db:
             row=db.execute("SELECT 1 FROM profiles WHERE profile_id=? AND status='ready'",(profile_id,)).fetchone()
         if row is None:raise RegistryError('unknown_or_unready_profile')
-        return self._verified_existing(profile_id)
+        return self._verified_existing(profile_id,allow_recovery=allow_recovery)
 
     def active(self):
         with self._db() as db:
@@ -298,7 +307,7 @@ class ProfileRegistry:
         if len(data)>MAX_BUNDLE:raise RegistryError('bundle_size')
         return data
 
-    def import_bundle(self,profile_id,data):
+    def decode_bundle(self,profile_id,data):
         if type(data) is not bytes or not 0<len(data)<=MAX_BUNDLE:raise RegistryError('bundle_size')
         try:value=strict_json(data)
         except (ValueError,UnicodeError,RecursionError,OverflowError):raise RegistryError('bundle_json') from None
@@ -314,9 +323,13 @@ class ProfileRegistry:
             actual=text.encode('utf-8')
             if hashlib.sha256(actual).hexdigest()!=value['sha256'][name]:raise RegistryError('bundle_integrity')
             files[name]=actual
-        return self.create(profile_id,files)
+        return self._portable(profile_id,files)
 
-    def import_fd(self,profile_id,descriptor):
+    def import_bundle(self,profile_id,data):
+        return self.create(profile_id,self.decode_bundle(profile_id,data))
+
+    @staticmethod
+    def read_fd(descriptor):
         if type(descriptor) is not int or not 0<=descriptor<=2**31-1:raise RegistryError('bundle_fd')
         try:
             before=os.fstat(descriptor)
@@ -327,7 +340,10 @@ class ProfileRegistry:
             identity=lambda info:(info.st_dev,info.st_ino,info.st_size,info.st_mtime_ns,info.st_ctime_ns)
             if identity(before)!=identity(after) or len(data)!=before.st_size:raise RegistryError('bundle_fd_changed')
         except OSError:raise RegistryError('bundle_fd') from None
-        return self.import_bundle(profile_id,data)
+        return data
+
+    def import_fd(self,profile_id,descriptor):
+        return self.import_bundle(profile_id,self.read_fd(descriptor))
 
     def export_fd(self,profile_id,*,revision=None):
         data=self.export_bundle(profile_id,revision=revision)
@@ -343,7 +359,7 @@ class ProfileRegistry:
 
     def bind_task(self,task_id,profile_id):
         if not isinstance(task_id,str) or not TASK.fullmatch(task_id):raise RegistryError('invalid_task_id')
-        store=self.store(profile_id)
+        store=self.store(profile_id,allow_recovery=True)
         revision,_=store.task_snapshot(task_id)
         with self._lock(),self._transaction() as db:
             old=db.execute('SELECT profile_id,revision FROM task_locators WHERE task_id=?',(task_id,)).fetchone()
@@ -360,6 +376,6 @@ class ProfileRegistry:
         with self._db() as db:
             row=db.execute('SELECT profile_id,revision FROM task_locators WHERE task_id=?',(task_id,)).fetchone()
         if row is None:raise RegistryError('unknown_task_locator')
-        actual,_=self.store(row['profile_id']).task_snapshot(task_id)
+        actual,_=self.store(row['profile_id'],allow_recovery=True).task_snapshot(task_id)
         if actual!=row['revision']:raise RegistryError('task_locator_corrupt')
         return {'task_id':task_id,'profile_id':row['profile_id'],'profile_revision':actual}

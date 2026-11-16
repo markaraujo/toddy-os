@@ -94,3 +94,42 @@ S24 acceptance remain integration work; a module test is insufficient.
 ```sh
 python3 -m unittest discover -s tests -p 'test_profile_registry.py' -v
 ```
+
+
+## Additive source Service1 wiring
+
+The service now negotiates named-profiles-v1 and task-history-v1. It preserves the
+legacy --data-dir leaf through an explicit trusted invocation-only default-store
+mapping; named stores stay under the owned --registry-dir. Standard default paths
+use the profile parent. A custom source-test data directory gets its own nested
+registry, never a shared /tmp catalog. Both old leaf and registry-wide lifetime
+locks are held before journal recovery. Imported content cannot set this mapping.
+
+ListProfiles returns active_profile_id/generation and bounded
+profiles{id,display_name,revision,health,selected}. CreateProfile(s),
+CloneProfile(sss), SelectProfile(st), ImportProfile(sh), the existing sealed-FD
+ExportProfile(ss), and StageProfileBundle(ssh) implement actual authenticated
+source operations. ProfilesChanged(st) contains only selected ID/generation.
+Validate/Apply tokens are bound to actual sender, profile, expected revision and
+ten-minute expiry. A recovery JSON/previous revision remains accessible when the
+current config is broken, while new dispatch stays disabled.
+
+ListTasks(st) pages at most32 fixed metadata snapshots/request IDs;
+LookupRequest(ss) is a pure read-only acceptance lookup with no input/output/hash
+bytes or dispatch. GetTask/Stop/text/Ack route by verified captured task locator,
+not selection. A worker/poll/completion callback captures its context explicitly.
+Exact accepted-request recovery still precedes busy/selection admission. A prior
+completion clears only its matching pending tuple; one process worker serializes
+operations. New profile selection cannot retarget an old accepted operation.
+
+Actual host/private-session-bus source probes passed native sysinfo/file writes,
+exact duplicate lookup, named create/clone/select, disabled imported admin tools,
+real sealed-FD export/import, old task lookup after selection/service restart and
+metadata exclusion. The old broker source smoke still passes. No guest, root
+operation or model/provider is asserted by these probes. Native UI/profile-picker,
+CLI behavior, installed packaging and final S24 remain separate validation.
+
+```sh
+dbus-run-session -- python3 tests/fixtures/broker-service/profiles.py
+python3 -m unittest discover -s tests -p 'test_profile_runtime.py' -v
+```

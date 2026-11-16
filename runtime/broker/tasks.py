@@ -119,6 +119,28 @@ class TaskJournal:
         with self.profiles._db() as db:
             return self._view(self._row(db, task_id))
 
+    def lookup_request(self,request_id):
+        """Read-only acceptance metadata; never resubmit or return prompt/hash bytes."""
+        _id(request_id)
+        with self.profiles._db() as db:
+            row=db.execute('SELECT * FROM tasks WHERE request_id=?',(request_id,)).fetchone()
+            return self._view(row) if row is not None else None
+
+    def list_metadata(self,before_row=0):
+        """Bounded metadata-only paging; task history does not imply text retention."""
+        if type(before_row) is not int or not 0<=before_row<=2**53-1:
+            raise TaskError('invalid_task_cursor')
+        with self.profiles._db() as db:
+            if before_row:
+                rows=db.execute('SELECT rowid AS cursor,* FROM tasks WHERE rowid<? ORDER BY rowid DESC LIMIT 33',
+                                (before_row,)).fetchall()
+            else:
+                rows=db.execute('SELECT rowid AS cursor,* FROM tasks ORDER BY rowid DESC LIMIT 33').fetchall()
+        selected=rows[:32]
+        return {'version':1,'profile_id':self.profiles.profile_id,
+                'tasks':[{**self._view(row),'request_id':row['request_id']} for row in selected],
+                'next_cursor':selected[-1]['cursor'] if len(rows)>32 else 0,'complete':len(rows)<=32}
+
     def remaining_seconds(self, task_id):
         with self.profiles._db() as db:
             return max(0.0, self._row(db, task_id)['deadline'] - self.clock())

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Authenticated unprivileged native-tool broker; no model backend advertised."""
+"""Authenticated per-user broker with captured named-profile task routing."""
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 import fcntl
@@ -26,6 +26,9 @@ from tools.native import ToolError
 from engine import EngineError
 from text import TaskText, TextError
 from configured_engine import ConfiguredEngine, ADAPTERS
+from profile_registry import ProfileRegistry, RegistryError
+from profile_runtime import ProfileRuntime
+from types import SimpleNamespace
 
 BUS = 'io.github.markaraujo.Toddy.Service'
 OBJECT = '/io/github/markaraujo/Toddy/Service'
@@ -115,234 +118,277 @@ def peer_uid(connection, sender):
     return uid
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    source_default = Path(__file__).resolve().parents[2] / 'config/phase2'
-    installed_default = Path('/usr/share/toddy')
-    parser.add_argument('--data-dir', type=Path, default=Path(os.environ.get('XDG_DATA_HOME',
-                        str(Path.home() / '.local/share'))) / 'toddy/profiles/toddy-default')
-    parser.add_argument('--workspace', type=Path, default=Path.home() / 'Toddy')
-    parser.add_argument('--defaults', type=Path, default=source_default if source_default.is_dir() else installed_default)
-    args = parser.parse_args()
-    if os.getuid() == 0 or os.geteuid() == 0:
-        raise SystemExit('unprivileged_broker_required')
-    os.umask(0o077)
-    resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
-    # Source/installed configuration path is an invocation option, never client
-    # input. Refuse symlinked/noncanonical private workspace/store paths.
-    for directory in (args.data_dir, args.workspace):
-        if not directory.is_absolute() or directory.resolve() != directory:
-            raise SystemExit('unsafe_broker_directory')
-        directory.mkdir(mode=0o700, parents=True, exist_ok=True)
-    schema = strict_json((args.defaults / 'profile.schema.json').read_bytes())
-    profiles = ProfileStore(args.data_dir, 'toddy-default', schema,
-        capabilities={'adapters': ADAPTERS, 'tools': NATIVE_TOOLS, 'skills': {'explain-system'},
-                      'extensions': set(), 'workflows': set()})
-    if profiles.current() is None:
-        template = args.defaults / 'profile'
-        files = {path.name: path.read_bytes() for path in template.iterdir()
-                 if path.name in {'config.json', 'SOUL.md', 'IDENTITY.md', 'USER.md', 'AGENTS.md'}
-                 and path.is_file() and not path.is_symlink()}
-        profiles.apply(files, expected_revision=None)
-    journal = TaskJournal(profiles)
-    # A separate lifetime service lock prevents a second broker from recovering
-    # another instance's accepted-but-not-yet-dispatched task.
-    owner_fd = os.open(args.data_dir / 'broker.lock', os.O_RDWR | os.O_CREAT | os.O_CLOEXEC | os.O_NOFOLLOW, 0o600)
-    owner_info = os.fstat(owner_fd)
-    if (not stat.S_ISREG(owner_info.st_mode) or owner_info.st_nlink != 1
-            or owner_info.st_uid != os.getuid() or stat.S_IMODE(owner_info.st_mode) != 0o600):
-        os.close(owner_fd)
+def lifetime_lock(path):
+    fd=os.open(path,os.O_RDWR|os.O_CREAT|os.O_CLOEXEC|os.O_NOFOLLOW,0o600)
+    info=os.fstat(fd)
+    if not stat.S_ISREG(info.st_mode) or info.st_nlink!=1 or info.st_uid!=os.getuid() or stat.S_IMODE(info.st_mode)!=0o600:
+        os.close(fd)
         raise SystemExit('unsafe_broker_lock')
-    try:
-        fcntl.flock(owner_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    try:fcntl.flock(fd,fcntl.LOCK_EX|fcntl.LOCK_NB)
     except BlockingIOError:
+        os.close(fd)
         raise SystemExit('broker_already_running') from None
-    journal.recover()
-    text_store = TaskText(journal)
-    text_store.recover()
-    text_store.purge_transient()
-    text_store.purge_expired()
-    session_connection = Gio.bus_get_sync(Gio.BusType.SESSION, None)
-    system_connection = Gio.bus_get_sync(Gio.BusType.SYSTEM, None)
-    core = BrokerCore(profiles, journal, args.workspace, root_client=RootClient(system_connection),
-                      dispatch_allowed=ActiveSession(system_connection, os.getuid()), shell_runner=ScopedShell(),
-                      engine_runner=ConfiguredEngine(args.defaults), text_store=text_store)
-    info = Gio.DBusNodeInfo.new_for_xml(Path(__file__).with_name(INTERFACE + '.xml').read_text())
-    loop = GLib.MainLoop()
-    pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix='toddy-broker')
-    pending = None
-    stopping = False
-    stages = {}
-    emitted = {}
-    emitted_text = {}
+    return fd
 
-    def emit(task_id):
-        snapshot = journal.inspect(task_id)
-        if emitted.get(task_id) != snapshot['sequence']:
-            session_connection.emit_signal(None, OBJECT, INTERFACE, 'TaskChanged',
-                GLib.Variant('(sts)', (task_id, snapshot['sequence'], json.dumps(snapshot, separators=(',', ':')))))
-            emitted[task_id] = snapshot['sequence']
-        text_marker = text_store.marker(task_id)
-        text_sequence = text_marker[0]
-        if emitted_text.get(task_id) != text_marker:
-            session_connection.emit_signal(None, OBJECT, INTERFACE, 'TaskTextChanged',
-                GLib.Variant('(st)', (task_id, text_sequence)))
-            emitted_text[task_id] = text_marker
-        # One in-flight task and bounded terminal bookkeeping.
-        if len(emitted) > 256:
-            expired_task = next(iter(emitted))
-            emitted.pop(expired_task)
-            emitted_text.pop(expired_task, None)
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    source_default=Path(__file__).resolve().parents[2]/'config/phase2'
+    parser.add_argument('--data-dir',type=Path,default=Path(os.environ.get('XDG_DATA_HOME',
+        str(Path.home()/'.local/share')))/'toddy/profiles/toddy-default')
+    parser.add_argument('--registry-dir',type=Path)
+    parser.add_argument('--workspace',type=Path,default=Path.home()/'Toddy')
+    parser.add_argument('--defaults',type=Path,default=source_default if source_default.is_dir() else Path('/usr/share/toddy/profiles'))
+    args=parser.parse_args()
+    if os.getuid()==0 or os.geteuid()==0:raise SystemExit('unprivileged_broker_required')
+    os.umask(0o077)
+    resource.setrlimit(resource.RLIMIT_CORE,(0,0))
+    registry_directory=args.registry_dir or (args.data_dir.parent if args.data_dir.name=='toddy-default' else args.data_dir/'profiles')
+    for directory in (args.data_dir,args.workspace,registry_directory):
+        if not directory.is_absolute() or directory.resolve()!=directory:raise SystemExit('unsafe_broker_directory')
+        directory.mkdir(mode=0o700,parents=True,exist_ok=True)
+    # Preserve the old leaf lock as well as one registry-wide owner lock. A new
+    # registry service cannot recover jobs while a pre-registry broker owns them.
+    owner_fd=lifetime_lock(args.data_dir/'broker.lock')
+    registry_owner_fd=lifetime_lock(registry_directory/'.broker-instance.lock')
+    schema=strict_json((args.defaults/'profile.schema.json').read_bytes())
+    template=args.defaults/'profile'
+    files={path.name:path.read_bytes() for path in template.iterdir()
+           if path.name in {'config.json','SOUL.md','IDENTITY.md','USER.md','AGENTS.md'}
+           and path.is_file() and not path.is_symlink()}
+    capabilities={'adapters':ADAPTERS,'tools':NATIVE_TOOLS,'skills':{'explain-system'},'extensions':set(),'workflows':set()}
+    legacy=ProfileStore(args.data_dir,'toddy-default',schema,capabilities=capabilities)
+    if legacy.current() is None:legacy.apply(files,expected_revision=None)
+    registry=ProfileRegistry(registry_directory,schema,files,capabilities=capabilities,
+                             legacy_default_directory=args.data_dir)
+    registry.adopt_existing('toddy-default',allow_recovery=True)
+    if registry.active()['profile_id'] is None:
+        try:registry.select('toddy-default',expected_generation=0)
+        except ProfileError:pass  # Recovery metadata/UI remains usable; no dispatch selection.
+    session_connection=Gio.bus_get_sync(Gio.BusType.SESSION,None)
+    system_connection=Gio.bus_get_sync(Gio.BusType.SYSTEM,None)
+    root_client=RootClient(system_connection)
+    allowed=ActiveSession(system_connection,os.getuid())
+
+    def factory(profiles):
+        journal=TaskJournal(profiles)
+        journal.recover()
+        text=TaskText(journal)
+        text.recover();text.purge_transient();text.purge_expired()
+        core=BrokerCore(profiles,journal,args.workspace,root_client=root_client,
+            dispatch_allowed=allowed,shell_runner=ScopedShell(),
+            engine_runner=ConfiguredEngine(args.defaults),text_store=text)
+        return SimpleNamespace(profiles=profiles,journal=journal,text_store=text,core=core)
+
+    runtime=ProfileRuntime(registry,factory)
+    # Recover every registered profile exactly once under lifetime ownership.
+    # This never replays a task, even if the last selected profile changed.
+    for row in registry.list_profiles()['profiles']:
+        try:runtime.context(row['profile_id'])
+        except (ProfileError,TaskError,TextError,OSError):pass
+    info=Gio.DBusNodeInfo.new_for_xml(Path(__file__).with_name(INTERFACE+'.xml').read_text())
+    loop=GLib.MainLoop()
+    pool=ThreadPoolExecutor(max_workers=1,thread_name_prefix='toddy-broker')
+    pending=None  # Immutable (captured context,task_id), independent of selection.
+    stopping=False
+    stages={};emitted={};emitted_text={}
+
+    def emit(context,task_id):
+        snapshot=runtime.snapshot(context,task_id)
+        if emitted.get(task_id)!=snapshot['sequence']:
+            session_connection.emit_signal(None,OBJECT,INTERFACE,'TaskChanged',
+                GLib.Variant('(sts)',(task_id,snapshot['sequence'],json.dumps(snapshot,separators=(',',':')))))
+            emitted[task_id]=snapshot['sequence']
+        marker=context.text_store.marker(task_id)
+        if emitted_text.get(task_id)!=marker:
+            session_connection.emit_signal(None,OBJECT,INTERFACE,'TaskTextChanged',GLib.Variant('(st)',(task_id,marker[0])))
+            emitted_text[task_id]=marker
+        if len(emitted)>256:
+            old=next(iter(emitted));emitted.pop(old);emitted_text.pop(old,None)
         return False
 
-    last_text_purge = time.monotonic()
+    def profiles_changed():
+        selected=registry.active()
+        session_connection.emit_signal(None,OBJECT,INTERFACE,'ProfilesChanged',
+            GLib.Variant('(st)',(selected['profile_id'] or '',selected['generation'])))
+
+    last_purge=time.monotonic()
     def poll():
-        nonlocal last_text_purge
-        if time.monotonic() - last_text_purge >= 10:
-            text_store.purge_expired()
-            last_text_purge = time.monotonic()
+        nonlocal last_purge
+        if time.monotonic()-last_purge>=10:
+            for context in runtime.contexts.values():context.text_store.purge_expired()
+            last_purge=time.monotonic()
         if pending:
-            current = journal.inspect(pending)
-            if not current['cancel_requested'] and (journal.remaining_seconds(pending) <= 0 or not core.dispatch_allowed()):
-                core.cancel(pending)
-            emit(pending)
+            context,task_id=pending
+            current=context.journal.inspect(task_id)
+            if not current['cancel_requested'] and (context.journal.remaining_seconds(task_id)<=0 or not context.core.dispatch_allowed()):
+                context.core.cancel(task_id)
+            emit(context,task_id)
         return True
 
-    def finished(task_id):
+    def finished(context,task_id):
         nonlocal pending
-        emit(task_id)
-        if pending == task_id:
-            pending = None
-        if stopping and pending is None:
-            loop.quit()
+        emit(context,task_id)
+        if pending==(context,task_id):pending=None
+        if stopping and pending is None:loop.quit()
         return False
 
-    def execute(task_id, request):
+    def execute(context,task_id,request):
+        try:context.core.execute(task_id,request)
+        except Exception:context.journal.hold(task_id)
+        finally:GLib.idle_add(finished,context,task_id)
+
+    def reply(invocation,result):
+        invocation.return_value(GLib.Variant('(s)',(json.dumps(result,ensure_ascii=False,separators=(',',':')),)))
+
+    def export_fd(invocation,descriptor):
         try:
-            core.execute(task_id, request)
-        except (TaskError, ProfileError, BrokerError, ToolError, EngineError, TextError, OSError, GLib.Error):
-            # The journal holds uncertain effects; no exception text/raw output
-            # is exported or retried. Pre-dispatch stop remains visible.
-            journal.hold(task_id)
-        except Exception:
-            # Never turn an unexpected worker failure into success.
-            journal.hold(task_id)
-        finally:
-            GLib.idle_add(finished, task_id)
+            descriptors=Gio.UnixFDList.new();index=descriptors.append(descriptor)
+            invocation.return_value_with_unix_fd_list(GLib.Variant('(h)',(index,)),descriptors)
+        finally:os.close(descriptor)
 
-    def reply(invocation, result):
-        invocation.return_value(GLib.Variant('(s)', (json.dumps(result, ensure_ascii=False, separators=(',', ':')),)))
+    def input_fd(invocation,index):
+        descriptors=invocation.get_message().get_unix_fd_list()
+        if descriptors is None or descriptors.get_length()>4:raise BrokerError('missing_or_excess_input_fd')
+        return descriptors.get(index)
 
-    def handle(conn, sender, _path, _interface, method, parameters, invocation):
+    def existing_files(profiles,expected):
+        if profiles.current()!=expected:raise BrokerError('stale_profile_revision')
+        try:return profiles.snapshot(expected)
+        except ProfileError:return profiles.recovery_snapshot()['files']
+
+    def stage_files(sender,profile_id,expected,files):
+        profiles=registry.store(profile_id,allow_recovery=True)
+        if profiles.current()!=expected:raise BrokerError('stale_profile_revision')
+        now=time.monotonic()
+        for token in list(stages):
+            if stages[token]['expires']<=now:del stages[token]
+        if len(stages)>=8:raise BrokerError('profile_stage_limit')
+        revision,_,_=profiles.validate(files)
+        token='stage-'+uuid.uuid4().hex
+        stages[token]={'sender':sender,'profile_id':profile_id,'expected':expected,'files':files,'expires':now+600}
+        return {'version':1,'validated_revision':token,'profile_revision':revision,'valid':True}
+
+    def handle(conn,sender,_path,_interface,method,parameters,invocation):
         nonlocal pending
         try:
-            peer_uid(conn, sender)
-            values = parameters.unpack()
-            if any(isinstance(value, str) and len(value.encode()) > 65536 for value in values):
-                raise BrokerError('request_limit')
-            if method == 'GetCapabilities':
-                reply(invocation, core.capabilities())
-            elif method == 'GetTask':
-                reply(invocation, core.reconcile(values[0]))
-            elif method == 'GetTaskText':
-                text_store.purge_expired()
-                reply(invocation, text_store.page(values[0], values[1]))
-            elif method == 'AcknowledgeTaskText':
-                reply(invocation, text_store.acknowledge(values[0], values[1]))
-            elif method == 'GetProfileConfig':
-                if values[0] != profiles.profile_id:
-                    raise BrokerError('unknown_profile')
-                reply(invocation, profiles.settings())
-            elif method == 'RestoreProfile':
-                profile_id, expected, revision = values
-                if profile_id != profiles.profile_id:
-                    raise BrokerError('unknown_profile')
-                restored = profiles.restore(revision, expected_revision=expected)
-                reply(invocation, {'version': 1, 'profile_revision': restored, 'restored': True})
-            elif method == 'RequestCancel':
-                task_id, request_id = values
-                if not request_id or len(request_id) > 128:
-                    raise BrokerError('invalid_cancel_request')
-                reply(invocation, core.cancel(task_id)); emit(task_id)
-            elif method == 'SubmitTask':
-                request_id, profile_id, revision, encoded = values
-                if profile_id != profiles.profile_id:
-                    raise BrokerError('unknown_profile')
-                existing, _ = core.accepted_request(request_id, revision, encoded)
-                if existing is not None:
-                    invocation.return_value(GLib.Variant('(s)', (existing['task_id'],)))
-                    return
-                # A terminal/waiting record is written only after its adapter
-                # returned/cleaned up. Do not expose a stale idle-callback busy
-                # flag after that result; the one worker still serializes jobs.
-                if pending and journal.inspect(pending)['state'] in {'completed','failed','canceled','waiting'}:
-                    pending = None
-                if stopping or pending:
-                    raise BrokerError('broker_busy')
-                snapshot, request = core.submit(request_id, revision, encoded)
-                task_id = snapshot['task_id']
-                invocation.return_value(GLib.Variant('(s)', (task_id,)))
-                emit(task_id)
-                if snapshot['state'] == 'queued':
-                    pending = task_id
-                    pool.submit(execute, task_id, request)
-            elif method in ('ValidateProfile', 'ApplyProfile'):
-                profile_id, expected, candidate = values
-                if profile_id != profiles.profile_id or expected != profiles.current():
-                    raise BrokerError('stale_profile_revision')
-                now = time.monotonic()
-                for token in list(stages):
-                    if stages[token]['expires'] <= now:
-                        del stages[token]
-                if method == 'ValidateProfile':
-                    if len(stages) >= 8:
-                        raise BrokerError('profile_stage_limit')
-                    files = profiles.snapshot(expected)
-                    files['config.json'] = candidate.encode()
-                    revision, _, _ = profiles.validate(files)
-                    token = 'stage-' + uuid.uuid4().hex
-                    stages[token] = {'sender': sender, 'expected': expected, 'files': files,
-                                     'revision': revision, 'expires': now + 600}
-                    reply(invocation, {'version': 1, 'validated_revision': token,
-                                       'profile_revision': revision, 'valid': True})
+            peer_uid(conn,sender)
+            values=parameters.unpack()
+            if any(isinstance(value,str) and len(value.encode())>65536 for value in values):raise BrokerError('request_limit')
+            if method=='GetCapabilities':reply(invocation,runtime.capabilities())
+            elif method=='ListProfiles':reply(invocation,runtime.list_profiles())
+            elif method=='CreateProfile':
+                result=registry.create(values[0]);profiles_changed();reply(invocation,{'version':1,**result})
+            elif method=='CloneProfile':
+                source,expected,target=values
+                result=registry.clone(source,target,expected_revision=expected);profiles_changed();reply(invocation,{'version':1,**result})
+            elif method=='SelectProfile':
+                result=registry.select(values[0],expected_generation=values[1])
+                runtime.context(values[0]);profiles_changed();reply(invocation,{'version':1,**result})
+            elif method=='ImportProfile':
+                descriptor=input_fd(invocation,values[1])
+                try:result=registry.import_fd(values[0],descriptor)
+                finally:os.close(descriptor)
+                profiles_changed();reply(invocation,{'version':1,**result})
+            elif method=='ExportProfile':
+                profile_id,expected=values
+                if registry.store(profile_id).current()!=expected:raise BrokerError('stale_profile_revision')
+                export_fd(invocation,registry.export_fd(profile_id,revision=expected))
+            elif method=='ListTasks':
+                reply(invocation,runtime.context(values[0]).journal.list_metadata(values[1]))
+            elif method=='LookupRequest':
+                profile_id,request_id=values
+                task=runtime.context(profile_id).journal.lookup_request(request_id)
+                if task is not None:
+                    task={**task,'profile_id':profile_id}
+                reply(invocation,{'version':1,'profile_id':profile_id,'request_id':request_id,'found':task is not None,'task':task})
+            elif method in ('GetTask','GetTaskText','AcknowledgeTaskText','RequestCancel'):
+                task_id=values[0];context=runtime.task(task_id)
+                if method=='GetTask':reply(invocation,runtime.snapshot(context,task_id,reconcile=True))
+                elif method=='GetTaskText':
+                    context.text_store.purge_expired();reply(invocation,context.text_store.page(task_id,values[1]))
+                elif method=='AcknowledgeTaskText':reply(invocation,context.text_store.acknowledge(task_id,values[1]))
                 else:
-                    stage = stages.get(candidate)
-                    if not stage or stage['sender'] != sender or stage['expected'] != expected:
-                        raise BrokerError('profile_stage_unavailable')
-                    revision = profiles.apply(stage['files'], expected_revision=expected)
-                    del stages[candidate]
-                    reply(invocation, {'version': 1, 'profile_revision': revision, 'applied': True})
-            else:
-                raise BrokerError('method_unavailable')
-        except (ProfileError, TaskError, BrokerError, TextError) as error:
-            invocation.return_dbus_error(INTERFACE + '.Rejected', str(error))
-        except (ValueError, UnicodeError, RecursionError, OverflowError, GLib.Error, OSError):
-            invocation.return_dbus_error(INTERFACE + '.Rejected', 'invalid_or_unavailable_request')
-        except Exception:
-            invocation.return_dbus_error(INTERFACE + '.Rejected', 'broker_internal_error')
+                    request_id=values[1]
+                    if not request_id or len(request_id)>128:raise BrokerError('invalid_cancel_request')
+                    context.core.cancel(task_id);reply(invocation,runtime.snapshot(context,task_id));emit(context,task_id)
+            elif method=='GetProfileConfig':
+                profiles=registry.store(values[0],allow_recovery=True)
+                try:settings=profiles.settings()
+                except ProfileError:
+                    recovery=profiles.recovery_snapshot()
+                    with profiles._db() as db:
+                        previous=[row[0] for row in db.execute('SELECT revision FROM profile_revisions WHERE revision!=? ORDER BY created DESC,rowid DESC LIMIT 32',(profiles.current(),))]
+                    settings={'version':1,'profile_revision':profiles.current(),'config':strict_json(recovery['files']['config.json']),
+                              'previous_revisions':previous,'recovery_required':True}
+                reply(invocation,settings)
+            elif method=='RestoreProfile':
+                profile_id,expected,revision=values
+                profiles=registry.store(profile_id,allow_recovery=True)
+                restored=profiles.restore(revision,expected_revision=expected)
+                profiles_changed();reply(invocation,{'version':1,'profile_revision':restored,'restored':True})
+            elif method=='SubmitTask':
+                request_id,profile_id,revision,encoded=values
+                context=runtime.context(profile_id)
+                existing,_=context.core.accepted_request(request_id,revision,encoded)
+                if existing is not None:
+                    invocation.return_value(GLib.Variant('(s)',(existing['task_id'],)));return
+                # Preserve44f210c: exact acceptance lookup precedes busy/session
+                # admission, and terminal/held old work cannot strand the flag.
+                if registry.active()['profile_id']!=profile_id:raise BrokerError('profile_not_selected')
+                if pending and pending[0].journal.inspect(pending[1])['state'] in {'completed','failed','canceled','waiting'}:pending=None
+                if stopping or pending:raise BrokerError('broker_busy')
+                snapshot,request=context.core.submit(request_id,revision,encoded)
+                task_id=snapshot['task_id']
+                try:registry.bind_task(task_id,profile_id)
+                except Exception:
+                    context.journal.hold(task_id)
+                    raise
+                invocation.return_value(GLib.Variant('(s)',(task_id,)));emit(context,task_id)
+                if snapshot['state']=='queued':
+                    pending=(context,task_id);pool.submit(execute,context,task_id,request)
+            elif method in ('ValidateProfile','StageProfileBundle','ApplyProfile'):
+                profile_id,expected,candidate=values
+                profiles=registry.store(profile_id,allow_recovery=True)
+                if method=='ValidateProfile':
+                    files=existing_files(profiles,expected);files['config.json']=candidate.encode()
+                    reply(invocation,stage_files(sender,profile_id,expected,files))
+                elif method=='StageProfileBundle':
+                    descriptor=input_fd(invocation,candidate)
+                    try:files=registry.decode_bundle(profile_id,registry.read_fd(descriptor))
+                    finally:os.close(descriptor)
+                    reply(invocation,stage_files(sender,profile_id,expected,files))
+                else:
+                    stage=stages.get(candidate)
+                    if not stage or stage['sender']!=sender or stage['profile_id']!=profile_id or \
+                            stage['expected']!=expected or stage['expires']<=time.monotonic():raise BrokerError('profile_stage_unavailable')
+                    revision=profiles.apply(stage['files'],expected_revision=expected);del stages[candidate]
+                    profiles_changed();reply(invocation,{'version':1,'profile_revision':revision,'applied':True})
+            else:raise BrokerError('method_unavailable')
+        except (ProfileError,TaskError,BrokerError,TextError) as error:
+            invocation.return_dbus_error(INTERFACE+'.Rejected',str(error))
+        except (ValueError,UnicodeError,RecursionError,OverflowError,GLib.Error,OSError):
+            invocation.return_dbus_error(INTERFACE+'.Rejected','invalid_or_unavailable_request')
+        except Exception:invocation.return_dbus_error(INTERFACE+'.Rejected','broker_internal_error')
 
     def stop():
         nonlocal stopping
-        stopping = True
-        if pending:
-            core.cancel(pending)
-        else:
-            loop.quit()
+        stopping=True
+        if pending:pending[0].core.cancel(pending[1])
+        else:loop.quit()
         return False
 
-    session_connection.register_object(OBJECT, info.interfaces[0], handle, None, None)
-    Gio.bus_own_name_on_connection(session_connection, BUS, Gio.BusNameOwnerFlags.NONE,
-        lambda *_: print('READY', flush=True), lambda *_: stop())
-    GLib.timeout_add(100, poll)
-    GLib.unix_signal_add(GLib.PRIORITY_DEFAULT, signal.SIGTERM, stop)
-    GLib.unix_signal_add(GLib.PRIORITY_DEFAULT, signal.SIGINT, stop)
-    try:
-        loop.run()
+    session_connection.register_object(OBJECT,info.interfaces[0],handle,None,None)
+    Gio.bus_own_name_on_connection(session_connection,BUS,Gio.BusNameOwnerFlags.NONE,
+        lambda *_:print('READY',flush=True),lambda *_:stop())
+    GLib.timeout_add(100,poll)
+    GLib.unix_signal_add(GLib.PRIORITY_DEFAULT,signal.SIGTERM,stop)
+    GLib.unix_signal_add(GLib.PRIORITY_DEFAULT,signal.SIGINT,stop)
+    try:loop.run()
     finally:
-        pool.shutdown(wait=True, cancel_futures=True)
-        text_store.purge_transient()
-        os.close(owner_fd)
+        pool.shutdown(wait=True,cancel_futures=True)
+        for context in runtime.contexts.values():context.text_store.purge_transient()
+        os.close(registry_owner_fd);os.close(owner_fd)
 
 
-if __name__ == '__main__':
-    main()
+if __name__=='__main__':main()
