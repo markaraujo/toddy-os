@@ -1,10 +1,10 @@
 # Toddy OS — Current status
 
-Updated: 2026-11-11T15:51:16.353086+00:00
+Updated: 2026-11-16T20:59:12.028291+00:00
 
 Bootstrap: ready_for_development
 
-B01-B05 accepted (41% weighted Phase2). B06 native assistant/default-harness and credential/shortcut integration is current. Verified cold custody freed34.3GiB; new candidate preserves acceptedB02. G2/Phase2ISO and physical tests pending.
+Owner prioritizes a basic-tested MVP delivery today (ADR-0249), accepting known bugs and deferred extended validation. B01-B05 accepted (41% weighted Phase2); B06 graphical assistant smoke and actual media delivery are current. Native voice engines/process/catalog passed. G2, final ISO and physical tests remain pending.
 
 Foundation: **100%** · Agentic desktop: **41%**
 

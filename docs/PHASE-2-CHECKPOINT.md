@@ -1,5 +1,13 @@
 # Phase 2 continuation card
 
+## Basic-tested MVP delivery current
+
+Owner explicitly reduced the delivery gate to basic MVP checks on 2026-11-16;
+see [ADR-0249](adr/0249-owner-prioritizes-basic-tested-mvp.md). Prioritize actual
+graphical task/Stop and bootable/installable media. Defer expanded qualification,
+matrices and polish, publish known limitations, and retain honest B-story/G2
+status. No extra harness development may delay the working delivery.
+
 ## B06 native assistant integration current
 
 Owner resumed2026-11-16 with maximum simultaneous isolated source subagents
