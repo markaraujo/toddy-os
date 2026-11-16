@@ -45,6 +45,17 @@ class ManifestTests(unittest.TestCase):
         for path in ('/etc/shadow','/sources/phase2/assistant-native-inputs/legacy/fixture.deb','/var/cache/toddy/assistant-native-inputs/../escape'):
             value=manifest();value['packages']['toddy-agent']['archive_path']=path
             with self.assertRaisesRegex(ValueError,'archive_path'):h.validate_manifest(value)
+    def test_readonly_payload_check_uses_record_ids_and_safe_exact_diagnostic(self):
+        import os,stat
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);path=root/'owned';path.write_bytes(b'UNQUALIFIED SOURCE FIXTURE')
+            info=path.stat();expected={'mode':info.st_mode,'uid':info.st_uid,'gid':info.st_gid,'sha256':h.sha(path)}
+            h.verify_owned_payload('fixture',{'payload':{'/owned':expected}},root)
+            changed=dict(expected,mode=stat.S_IFREG|0o400)
+            with self.assertRaisesRegex(ValueError,'package=fixture path=/owned expected=.* actual=') as error:
+                h.verify_owned_payload('fixture',{'payload':{'/owned':changed}},root)
+            self.assertNotIn('UNQUALIFIED',str(error.exception))
+
     def test_actual_native_guard_refuses_host_before_commands(self):
         with patch.object(h.os,'geteuid',return_value=1000),patch.object(h,'command') as command:
             with self.assertRaisesRegex(ValueError,'native_kernel'):h.verify_native(manifest())

@@ -74,6 +74,22 @@ def command(argv,*,timeout=30):
     return result.stdout.strip()
 
 
+def verify_owned_payload(package,record,root=Path('/')):
+    """Read-only same record checks; bounded identity diagnostics, no contents."""
+    root=Path(root)
+    if not root.is_absolute() or root.resolve()!=root:raise ValueError('assistant_native_payload_root')
+    for path,expected in record['payload'].items():
+        if not path.startswith('/') or '..' in Path(path).parts or any(ord(char)<32 for char in path):raise ValueError('assistant_native_payload_path')
+        file=root/path.lstrip('/');info=file.lstat()
+        wanted=(expected['mode'],expected.get('uid',0),expected.get('gid',0));actual=(info.st_mode,info.st_uid,info.st_gid)
+        if actual!=wanted:
+            # Native package/path names are public metadata; no data, stderr,
+            # environment, credential, prompt or file content enters this error.
+            raise ValueError('assistant_native_payload_ownership package='+package+' path='+path+' expected='+','.join(map(str,wanted))+' actual='+','.join(map(str,actual)))
+        if 'sha256' in expected and (file.is_symlink() or sha(file)!=expected['sha256']):raise ValueError('assistant_native_payload_hash package='+package+' path='+path)
+        if 'symlink' in expected and os.readlink(file)!=expected['symlink']:raise ValueError('assistant_native_payload_symlink package='+package+' path='+path)
+
+
 def verify_native(value):
     validate_manifest(value)
     if os.geteuid()!=0 or os.uname().release!=value['kernel'] or Path('/proc/1/comm').read_text().strip()!='systemd':raise ValueError('assistant_native_kernel')
@@ -86,12 +102,7 @@ def verify_native(value):
     checked={}
     for name,row in value['packages'].items():
         if command(['dpkg-query','-W','-f=${Status} ${Version}',name])!='install ok installed '+row['version']:raise ValueError('assistant_native_package_version')
-        for path,expected in row['record']['payload'].items():
-            if not path.startswith('/') or '..' in Path(path).parts or any(ord(c)<32 for c in path):raise ValueError('assistant_native_payload_path')
-            file=Path(path);info=file.lstat()
-            if (info.st_mode,info.st_uid,info.st_gid)!=(expected['mode'],0,0):raise ValueError('assistant_native_payload_ownership')
-            if 'sha256' in expected and (file.is_symlink() or sha(file)!=expected['sha256']):raise ValueError('assistant_native_payload_hash')
-            if 'symlink' in expected and os.readlink(file)!=expected['symlink']:raise ValueError('assistant_native_payload_symlink')
+        verify_owned_payload(name,row['record'])
         if row['archive_path'] is not None:
             if owned_regular(row['archive_path']).st_size!=row['archive_bytes'] or sha(row['archive_path'])!=row['archive_sha256']:raise ValueError('assistant_actual_native_archive_missing_or_changed')
             if command(['dpkg-deb','-f',row['archive_path'],'Package'])!=name or command(['dpkg-deb','-f',row['archive_path'],'Version'])!=row['version']:raise ValueError('assistant_actual_archive_control_mismatch')
