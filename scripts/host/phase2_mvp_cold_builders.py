@@ -93,7 +93,10 @@ def graph():
  for name in names:
   image=canonical(Path(name));metadata=json.loads(subprocess.check_output(['qemu-img','info','-U','--output=json',str(image)],text=True))
   backing=resolve_backing(image,metadata['backing-filename']) if metadata.get('backing-filename') else None
-  if str(image) in selected and (metadata['format']!='qcow2' or backing!=ROOT/'.local/vm/builder-base.img'):raise ValueError('Historical builder exact original base chain required')
+  if str(image) in selected:
+   expected_virtual=PROFILES[image.name].get('backing','/vm/builder-base.img')
+   expected_backing=resolve_backing(image,expected_virtual) if expected_virtual is not None else None
+   if metadata['format']!='qcow2' or backing!=expected_backing:raise ValueError('Selected checkpoint exact original base chain required')
   if backing is not None:
    if not backing.is_file():raise ValueError('Backing reference must resolve to an existing canonical file')
    references.add(str(backing))

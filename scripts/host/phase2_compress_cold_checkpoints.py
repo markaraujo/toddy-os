@@ -65,18 +65,21 @@ def main():
     global CONTEXT
     assert os.geteuid()!=0 and ROOT.resolve()==ROOT
     cold=ROOT/'.local/vm/checkpoints';assert cold.resolve()==cold and not cold.is_symlink()
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--resume-check-context',action='store_true');parser.add_argument('--profile',choices=['foundation-six','mozilla-margin','mvp-builders','mvp-builders-2'],default='foundation-six');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--resume-check-context',action='store_true');parser.add_argument('--profile',choices=['foundation-six','mozilla-margin','mvp-builders','mvp-builders-2','mvp-h04-current'],default='foundation-six');args=parser.parse_args()
     assert not args.resume_check_context or args.profile=='foundation-six'
-    mvp=args.profile in ('mvp-builders','mvp-builders-2')
+    mvp=args.profile in ('mvp-builders','mvp-builders-2','mvp-h04-current')
+    current_backup=args.profile=='mvp-h04-current'
     strict=None
     if mvp:
-        if args.profile=='mvp-builders-2':import phase2_mvp_cold_builders_2 as strict
+        if current_backup:import phase2_h04_current_cold_backup as strict
+        elif args.profile=='mvp-builders-2':import phase2_mvp_cold_builders_2 as strict
         else:import phase2_mvp_cold_builders as strict
-        selected=list(strict.PROFILES);floor=RESERVE+512*1024**2;goal=floor+(32 if args.profile=='mvp-builders-2' else 20)*1024**3
+        selected=list(strict.PROFILES);floor=RESERVE+512*1024**2;goal=floor+(32 if args.profile in ('mvp-builders-2','mvp-h04-current') else 20)*1024**3
     else:
         selected=SELECTED if args.profile=='foundation-six' else ['h07-early-base-builder.qcow2']
         floor=RESERVE;goal=(112 if args.profile=='foundation-six' else 108)*1024**3
     CONTEXT=ROOT/'.local/phase2'/(('cold-checkpoint-compression-mvp-builders-2' if args.profile=='mvp-builders-2' else 'cold-checkpoint-compression-mvp-builders-1') if mvp else ('cold-checkpoint-compression-1' if args.profile=='foundation-six' else 'cold-checkpoint-compression-2'))
+    if current_backup:CONTEXT=ROOT/'.local/phase2/cold-checkpoint-h04-current-1'
     assert shutil.disk_usage(ROOT).free>=floor+256*1024**2
     lock=open(ROOT/'.local/phase2/cold-checkpoint-compression.lock','a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     native_lock=None
@@ -103,6 +106,7 @@ def main():
         assert not CONTEXT.exists(),'Inspect actual sources/archives/receipt before continuation; never replay custody'
         CONTEXT.mkdir(mode=0o700 if mvp else 0o777);(CONTEXT/'image-graph-before.json').write_text(json.dumps(metadata,indent=2)+'\n')
         state={'scope':'Reversible gzip representation of explicit cold backup images only; no active/backing/master/live artifact or guest file deletion, no trim','profile':args.profile,'target_free_bytes':goal,'producer_sha256':sha(Path(__file__)),'pid':os.getpid(),'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),'proc_start_ticks':Path('/proc/self/stat').read_text().split()[21],'host_available_before':shutil.disk_usage(ROOT).free,'state':'running','images':[]};
+        if current_backup:state.update(historical_integrity_claimed=False,integrity_scope='current-observed-backup-bytes-only')
         if mvp:state.update(profile_guard_sha256=sha(Path(strict.__file__)),minimum_available_bytes=floor,goal_is_admission_target_not_promised_gain=True)
         save(state)
     try:
@@ -120,7 +124,10 @@ def main():
             fd=os.open(p,os.O_RDWR|os.O_NOFOLLOW);exclusive(fd)
             try:
                 assert identity(os.fstat(fd))==identity(st)
-                row={'source':str(p.relative_to(ROOT)),'archive':str(archive.relative_to(ROOT)),'identity':identity(st),'atime_ns':st.st_atime_ns,'xattrs':{n:base64.b64encode(os.getxattr(p,n)).decode() for n in os.listxattr(p)},'qemu_check_exit':0,'allocated_bytes':st.st_blocks*512,'state':'compressing','source_bytes_read':0};state['images'].append(row);save(state)
+                row={'source':str(p.relative_to(ROOT)),'archive':str(archive.relative_to(ROOT)),'identity':identity(st),'atime_ns':st.st_atime_ns,'xattrs':{n:base64.b64encode(os.getxattr(p,n)).decode() for n in os.listxattr(p)},'qemu_check_exit':0,'allocated_bytes':st.st_blocks*512,'state':'compressing','source_bytes_read':0}
+                if current_backup:
+                    row['current_readonly_baseline']=strict.current_sha(fd,st);row['historical_integrity_claimed']=False
+                state['images'].append(row);save(state)
                 digest=hashlib.sha256();budget=shutil.disk_usage(ROOT).free-floor-128*1024**2
                 with os.fdopen(os.open(part,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600),'wb') as raw:
                     class Bounded:
@@ -139,8 +146,12 @@ def main():
                 assert row['source_bytes_read']==st.st_size and identity(os.fstat(fd))==identity(st)
                 row['source_sha256']=digest.hexdigest()
                 if mvp:
-                    assert row['source_sha256']==strict.PROFILES[name]['sha256'],'Original checkpoint image SHA differs; preserve source'
-                    row['checkpoint_manifest']=str(strict.manifest(name).relative_to(ROOT));row['checkpoint_manifest_sha256']=strict.PROFILES[name]['manifest_sha256'];row['directly_bootable']=False
+                    if current_backup:
+                        assert row['source_sha256']==row['current_readonly_baseline']['sha256'],'Observed current backup bytes changed; preserve source'
+                    else:
+                        assert row['source_sha256']==strict.PROFILES[name]['sha256'],'Original checkpoint image SHA differs; preserve source'
+                        row['checkpoint_manifest']=str(strict.manifest(name).relative_to(ROOT));row['checkpoint_manifest_sha256']=strict.PROFILES[name]['manifest_sha256']
+                    row['directly_bootable']=False
                 row['roundtrip']=verify_gzip(part,row['source_sha256'],st.st_size)
                 row['archive_sha256']=sha(part);row['archive_bytes']=part.stat().st_size
                 assert row['archive_bytes']<row['allocated_bytes'],'No useful reclaimed capacity; preserve original'
@@ -155,18 +166,21 @@ def main():
                 references,_=references_fn();assert name not in references,'A new backing consumer appeared; source preserved'
                 assert identity(p.stat())==identity(st)
                 assert {n:base64.b64encode(os.getxattr(p,n)).decode() for n in os.listxattr(p)}==row['xattrs']
-                if mvp:strict.image_identity(p);strict.manifest(name)
+                if mvp:strict.image_identity(p)
+                if mvp and not current_backup:strict.manifest(name)
                 p.unlink()
                 directory=os.open(cold,os.O_RDONLY|os.O_DIRECTORY)
                 try:os.fsync(directory)
                 finally:os.close(directory)
-                if mvp:strict.manifest(name)
+                if mvp and not current_backup:strict.manifest(name)
                 row.update(state='retired',host_available_after=shutil.disk_usage(ROOT).free);save(state)
                 print(json.dumps({'source':name,'state':'retired','source_bytes':st.st_size,'archive_bytes':row['archive_bytes'],'host_available':row['host_available_after']}),flush=True)
             finally:os.close(fd)
         if mvp:
-            for name in selected:strict.manifest(name)
-            state['original_checkpoint_manifests_unchanged']=True;state['compressed_representation_directly_bootable']=False
+            if not current_backup:
+                for name in selected:strict.manifest(name)
+                state['original_checkpoint_manifests_unchanged']=True
+            state['compressed_representation_directly_bootable']=False
         state.update(state='complete',host_available_after=shutil.disk_usage(ROOT).free);state['reclaimed_bytes']=state['host_available_after']-state['host_available_before'];state['recovery']='Verify archive SHA; restore gzip stream to a NEW .part at exact source path, verify raw SHA/size, restore recorded mode/uid/gid/xattrs/atime/mtime and fsync; rename only when original absent, then qemu-img check. Preserve archives. Never give compressed file to QEMU or overwrite an existing image.';save(state)
     except BaseException as error:
         state.update(state='failed-preserved',error={'type':type(error).__name__,'message':str(error)});save(state);raise
