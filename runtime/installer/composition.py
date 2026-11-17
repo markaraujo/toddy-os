@@ -253,7 +253,7 @@ class LiveBindings:
         self.readiness();options=plan['options']
         request={key:options[key] for key in ('operation_id','uid','gid','username','ai_choice','extras')}
         request['catalog_sha256']=plan['payload']['catalog_sha256']
-        command=['/usr/bin/chroot','--userspec='+str(options['uid'])+':'+str(options['gid']),'--groups='+str(options['gid']),str(root),
+        command=['/usr/sbin/chroot','--userspec='+str(options['uid'])+':'+str(options['gid']),'--groups='+str(options['gid']),str(root),
                  '/usr/bin/env','-i','PATH=/usr/bin:/usr/sbin','HOME=/home/'+options['username'],'LANG=C.UTF-8',
                  '/usr/bin/python3','-I','/usr/lib/toddy/setup/installer_handoff.py']
         result=self.system.run(command,data=payload_module().encoded(request))

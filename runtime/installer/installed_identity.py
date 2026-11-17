@@ -110,7 +110,7 @@ def create_owner(root, plan, credential_fd, system):
     wheels=[line.split(':') for line in group_path.read_text().splitlines() if line.startswith('wheel:')]
     if len(wheels)!=1 or len(wheels[0])!=4 or wheels[0][2]!='97' or wheels[0][3]!='':
         raise InstallError('installer_admin_group_baseline')
-    prefix = ['/usr/bin/chroot', str(root)]
+    prefix = ['/usr/sbin/chroot', str(root)]
     system.run([*prefix, '/usr/sbin/groupadd', '--gid', str(owner['gid']), owner['username']])
     system.run([*prefix, '/usr/sbin/useradd', '--uid', str(owner['uid']), '--gid', str(owner['gid']),
         '--groups','wheel','--create-home', '--shell', '/bin/bash', owner['username']])

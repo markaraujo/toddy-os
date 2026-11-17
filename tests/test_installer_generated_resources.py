@@ -52,7 +52,7 @@ class ResourceTests(unittest.TestCase):
         self.system=NativeFixture()
     def test_exact_flags_readback_and_only_fresh_auxiliary_omitted(self):
         result=generate_loader_cache(self.root,self.entries,self.system)
-        self.assertEqual(self.calls,[['/usr/bin/chroot',str(self.root),'/usr/sbin/ldconfig','-X','-i'],['/usr/bin/chroot',str(self.root),'/usr/sbin/ldconfig','-p']])
+        self.assertEqual(self.calls,[['/usr/sbin/chroot',str(self.root),'/usr/sbin/ldconfig','-X','-i'],['/usr/sbin/chroot',str(self.root),'/usr/sbin/ldconfig','-p']])
         self.assertFalse((self.root/'var/cache/ldconfig/aux-cache').exists())
         self.assertEqual(result['entries'][0]['owned_path'],'/usr/lib/libfixture.so.1')
         self.assertFalse(result['source_cache_copied'])
@@ -71,3 +71,16 @@ class ResourceTests(unittest.TestCase):
         (self.root/'usr/lib/unknown.so').unlink();self.version='99.0'
         with self.assertRaisesRegex(InstallError,'native_format'):generate_loader_cache(self.root,self.entries,self.system)
         self.assertTrue((self.root/'var/cache/ldconfig/aux-cache').exists())
+
+
+class NativeChrootPathTests(unittest.TestCase):
+    def test_all_native_installer_consumers_use_frozen_coreutils_sbin_path(self):
+        root=Path(__file__).resolve().parents[1]
+        files=list((root/'runtime/installer').glob('*.py'))+[root/'scripts/build/phase2'/name for name in ('resource_recipe.py','live_profile.py','installer_qualification.py')]
+        consumers=[]
+        for path in files:
+            source=path.read_text()
+            self.assertNotIn('/usr/bin/chroot',source,str(path))
+            if '/usr/sbin/chroot' in source:consumers.append(path.name)
+        self.assertIn('linux_disk.py',consumers)
+        self.assertIn('resource_recipe.py',consumers)

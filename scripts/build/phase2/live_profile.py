@@ -203,7 +203,7 @@ def stage(assembly,manifest,policy,media_id,system):
         if path.parent.resolve()!=path.parent:raise ValueError('Live service parent redirects')
         os.symlink(target,path)
     tool=_selected(root,manifest,'/usr/bin/dconf')
-    system.run(['/usr/bin/chroot',str(root),'/usr/bin/dconf','update'],timeout=120);assembly.recheck()
+    system.run(['/usr/sbin/chroot',str(root),'/usr/bin/dconf','update'],timeout=120);assembly.recheck()
     after=snapshot(root);allowed=set(files)|set(links)|{'/home/'+LIVE_USER,'/etc/dconf/db/toddy-live'}
     for path in list(allowed):
         parent=Path(path).parent

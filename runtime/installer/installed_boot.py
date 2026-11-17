@@ -127,7 +127,7 @@ class InstalledBoot:
             for name in self.profile['modules']:
                 # Real native depmod indices must resolve each selected name, whether
                 # builtin or an exact packaged module, before archive construction.
-                output=self.system.run(['/usr/bin/chroot',str(root),'/usr/sbin/modprobe','--show-depends','-S',RELEASE,name])
+                output=self.system.run(['/usr/sbin/chroot',str(root),'/usr/sbin/modprobe','--show-depends','-S',RELEASE,name])
                 for line in output.splitlines():
                     if line.startswith('builtin '):continue
                     if not re.fullmatch(r'insmod /(?:usr/)?lib/modules/7\.1\.8-toddy/[A-Za-z0-9_./+-]+\.ko(?:\.(?:xz|zst|gz))?',line):
@@ -141,7 +141,7 @@ class InstalledBoot:
                 source,canonical=runtime.target_resolve(root,tool)
                 if canonical not in owners or runtime.digest(source)!=owners[canonical][3]['sha256']:raise InstallError('installer_boot_archive_tool_changed')
             rawpath=base/'initramfs.cpio'
-            prefix=['/usr/bin/chroot',str(root),'/usr/bin/env','-i','PATH=/usr/bin:/usr/sbin','LC_ALL=C']
+            prefix=['/usr/sbin/chroot',str(root),'/usr/bin/env','-i','PATH=/usr/bin:/usr/sbin','LC_ALL=C']
             with rawpath.open('xb') as stream:
                 subprocess.run(prefix+['/bin/bash','-c','cd "$1" && exec bsdcpio -o --null --format=newc --owner 0:0 --quiet','archive','/'+stage.relative_to(root).as_posix()],input=names,stdout=stream,stderr=subprocess.DEVNULL,check=True,timeout=120,close_fds=True,env={'PATH':'/usr/bin:/usr/sbin','LC_ALL':'C'})
             raw=rawpath.read_bytes();archive.validate_newc(raw,expected,self.profile['epoch'])

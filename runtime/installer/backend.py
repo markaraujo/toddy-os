@@ -299,8 +299,8 @@ class Installer:
         regular(root, 'etc/toddy/grub.cfg', text.encode())
         if not link.is_symlink():
             os.symlink(expected_link, link)
-        self.system.run(['/usr/bin/chroot', str(root), '/usr/bin/grub-script-check', '/etc/toddy/grub.cfg'])
-        prefix = ['/usr/bin/chroot', str(root), '/usr/sbin/grub-install']
+        self.system.run(['/usr/sbin/chroot', str(root), '/usr/bin/grub-script-check', '/etc/toddy/grub.cfg'])
+        prefix = ['/usr/sbin/chroot', str(root), '/usr/sbin/grub-install']
         if plan['options']['boot_mode'] == 'uefi':
             command = [*prefix, '--target=x86_64-efi', '--efi-directory=/boot/efi', '--bootloader-id=Toddy', '--no-nvram', '--removable']
         else:

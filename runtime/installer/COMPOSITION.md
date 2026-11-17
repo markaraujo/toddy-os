@@ -107,7 +107,7 @@ selected module must resolve through the same native kernel release's actual
 indices; missing/unknown dependencies, unavailable binaries or unqualified
 compression/dlopen requirements remain blockers until native qualification.
 
-`save_pending` runs `/usr/bin/chroot --userspec=UID:GID --groups=GID` with a fixed
+`save_pending` runs `/usr/sbin/chroot --userspec=UID:GID --groups=GID` with a fixed
 clean environment and `/usr/bin/python3 -I
 /usr/lib/toddy/setup/installer_handoff.py`. Only bounded non-secret intent goes to
 stdin. `close_fds` prevents inheriting the dedicated password/Stop descriptors;

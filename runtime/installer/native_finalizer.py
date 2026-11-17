@@ -148,7 +148,7 @@ class NativeFinalizer:
             verify_cache_executables(root,virtual,binding,manifest['ownership']['entries'])
             command=cache_command(virtual,binding['tool']['path'])
             if tuple(command) not in commands:
-                self.system.run(['/usr/bin/chroot',str(root),*command],timeout=120);commands.add(tuple(command))
+                self.system.run(['/usr/sbin/chroot',str(root),*command],timeout=120);commands.add(tuple(command))
             path=root/virtual.lstrip('/')
             if path.is_symlink() or p.digest(path)!=binding['output_sha256']:raise InstallError('installer_finalizer_cache_differs')
         loader=generate_loader_cache(root,manifest['ownership']['entries'],self.system)

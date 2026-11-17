@@ -211,7 +211,7 @@ def _qualify(assembly,manifest,policy,system,*,recover_live):
             tool=recipe['tool'];verify_cache_executables(root,virtual,binding,manifest['ownership']['entries'])
             command=recipe['argv']
             if tuple(command) not in seen:
-                system.run(['/usr/bin/chroot',str(root),*command],timeout=120);commands.append(command);seen.add(tuple(command));assembly.recheck()
+                system.run(['/usr/sbin/chroot',str(root),*command],timeout=120);commands.append(command);seen.add(tuple(command));assembly.recheck()
             path=root/virtual.lstrip('/')
             if path.is_symlink() or not path.is_file():raise ValueError('Candidate resource output missing')
             cache_results[virtual]={'recorded_sha256':binding['output_sha256'],'actual_sha256':p.digest(path),

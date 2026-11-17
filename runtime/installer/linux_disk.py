@@ -29,7 +29,7 @@ class LinuxDisk:
 
     def preflight(self, firmware):
         programs = ['/usr/sbin/sfdisk', '/usr/sbin/mkfs.ext4', '/usr/sbin/blkid',
-            '/usr/bin/mount', '/usr/bin/umount', '/usr/bin/findmnt', '/usr/bin/chroot',
+            '/usr/bin/mount', '/usr/bin/umount', '/usr/bin/findmnt', '/usr/sbin/chroot',
             '/usr/bin/lsblk', '/usr/sbin/wipefs', '/usr/bin/sync']
         if firmware == 'uefi':
             programs.append('/usr/sbin/mkfs.fat')
