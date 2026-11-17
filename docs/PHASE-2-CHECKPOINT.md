@@ -2,6 +2,11 @@
 
 ## Immediate owner UI delivery
 
+Owner explicitly approved a temporary60GiB+512MiB host reserve for this delivery
+([ADR-0251](adr/0251-owner-allows-temporary-mvp-host-reserve.md)). The16GiB guest
+reserve and preservation of personal data/recovery images remain unchanged.
+Older100GiB references below remain historical/default policy.
+
 The owner now requests a real graphical VM/image to validate while development
 continues. Follow [today delivery execution](PHASE-2-TODAY-DELIVERY.md). Complete
 plan delivery remains the target; basic-tested intermediate media is not G2.
