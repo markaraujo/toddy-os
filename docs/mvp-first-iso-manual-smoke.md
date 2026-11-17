@@ -86,3 +86,72 @@ API/local onboarding remains explicit and manually observable via the existing
 license-approved cached qualification data is optional and does not activate a
 model. Capture actual installer/boot/settings results separately. This minimal
 manual smoke creates no B-story/G2 completion or physical-machine claim.
+
+## Ordinary interactive opening, without an accessibility focus deadline
+
+For the first actual ISO, use the normal live GNOME desktop. Press Super, search
+for Toddy and open its launcher, then click its visible window. This tests ordinary
+opening independently of shortcut registration or accessibility focus reporting.
+Do not infer a window crash from the old core4 observer deadline: its stricter
+probe required an accessibility `FOCUSED` widget, an independently matched
+GApplication process and visible translated labels. A failure there does not
+identify which of those postconditions failed.
+
+If a window is not visible, open the live user's Terminal and run these commands
+as `toddy-live`, without sudo, pkexec, `dbus-run-session`, a substituted HOME or
+injected session variables:
+
+```sh
+id -u
+printf 'Session: %s\n' "$XDG_SESSION_TYPE"
+/usr/bin/toddy --cli --help
+/usr/bin/toddy --locale en
+```
+
+The expected live UID is 1000 and normal graphical session is Wayland. The last
+command opens the same installed frontend and retains its actual startup error
+on that terminal if startup fails. If another Toddy process already owns the
+GApplication name, invocation activates that instance; exit 0 alone is not visible
+opening proof. Select the actual Toddy window from GNOME's overview. Record the
+visible screen and the specific startup failure if one occurs. Do not delete setup
+state, kill user services or change desktop security to make the check pass.
+
+The fixed `/usr/bin/toddy` launcher uses Python isolated mode and the installed
+`/usr/lib/toddy` namespace. Setup can open while broker, model, executor and Secret
+Service are absent. API credential access starts only when explicitly requested
+on a worker thread; a missing or locked keyring is not an expected prerequisite
+for opening the setup window. The protected-store path deliberately never creates
+a plaintext fallback or unlocks a collection implicitly. The passwordless live
+account does not imply a usable unlocked default collection; if API binding reports
+that condition, keep it unavailable and use Later or an explicitly configured local
+model. Do not ask for or invent a live login password.
+
+If the window opens but native task controls are unavailable, explicitly activate
+the user agent through the guided setup button or the user-unit command above,
+then press Refresh service. For basic non-secret diagnostics only:
+
+```sh
+systemctl --user show toddy-agent.service \
+  --property=LoadState --property=ActiveState --property=SubState --property=Result
+/usr/bin/toddy --cli profiles
+```
+
+These distinguish frontend opening from service availability. They neither start
+a provider nor grant privileged authority. Use the deterministic system-info
+submission above before attempting model onboarding. Its default profile exposes
+only system-info; do not silently enable shell or privileged tools just to prolong
+a task for cancellation evidence.
+
+For an explicitly configured local or API conversation, submit a normal request
+in Conversation and press Stop while the task is actually running. Observe its
+actual terminal state. The same known task can be inspected with `--cli task ID`
+and stopped with `--cli stop ID`; the first Ctrl+C during `--cli ask` requests Stop
+and waits, while a second Ctrl+C detaches without claiming cleanup. A completed
+short request is an ordinary success, not a Stop test. Missing backend, locked
+keyring, unknown acceptance and a task that ends too fast remain distinct outcomes;
+record them honestly and never replay an uncertain submission.
+
+For the first UI-only ISO whose packaged installer is the preserved older version,
+keep `installer_ready:false` and disclose its known finalizer ownership bug. Correct
+build-time image finalization does not repair that packaged installer or prove an
+installation. Do not exercise Install from that ISO or advertise it as installable.
