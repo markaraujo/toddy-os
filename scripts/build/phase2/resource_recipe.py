@@ -5,6 +5,7 @@ native output is captured for independent review. Only another fresh root may
 subsequently use reviewed exact entries with the production NativeFinalizer.
 """
 import hashlib
+import json
 import os
 from pathlib import Path
 import re
@@ -115,13 +116,60 @@ def empty_declared_runtime(actual,manifest):
             parent=parent.parent
 
 
+LIVE_RECOVERY_PINS={
+    'resource-intent.json':'34ce68c7003329331804dcfdf18340384c3306e8100420ccff35a737a8a65cc0',
+    'unpack-intent.json':'13d9cfa2c856507ac48e506e643cf8c40d75f902d75f3280eb505a9a3bf9edfc',
+    'unpacked.json':'aaefa315184f1bd7ed0fc64c09d6fba78a60ed29c6f9c8045d4abb11f9fd55df'}
+
+
+def live_directory_recovery(assembly,manifest,policy,system):
+    """One exact observed directory-only failure; never replay native effects."""
+    return _qualify(assembly,manifest,policy,system,recover_live=True)
+
+
 def qualify(assembly,manifest,policy,system):
+    return _qualify(assembly,manifest,policy,system,recover_live=False)
+
+
+def recovery_intent(assembly,manifest,policy,before):
+    p=payload_module();work=Path(assembly.work);root=Path(assembly.root)
+    if root!=Path('/sources/stage/toddy-mvp-live-image-1/root'):
+        raise ValueError('Fixed observed LIVE directory recovery only')
+    for name,sha in LIVE_RECOVERY_PINS.items():
+        path=work/name;info=path.lstat()
+        if (not stat.S_ISREG(info.st_mode) or info.st_uid or info.st_gid or info.st_nlink!=1 or
+                info.st_size>1048576 or path.resolve()!=path or p.digest(path)!=sha):
+            raise ValueError('Preserve exact original resource/unpack journals')
+    old=json.loads((work/'resource-intent.json').read_bytes())
+    expected={'version':1,'kind':'unqualified-native-resource-candidate',
+        'manifest_sha256':hashlib.sha256(p.encoded(manifest)).hexdigest(),
+        'policy_sha256':hashlib.sha256(p.encoded(policy)).hexdigest(),
+        'source_sha256':'5b6a42cf8df10eb31d3965e7e150b8862de4938c6044d1261e4269880930f2fa',
+        'root_inode':root.stat().st_ino,'root_device':root.stat().st_dev,'production_ready':False}
+    if old!=expected:raise ValueError('Observed resource intent identity changed')
+    recovery_directory_baseline(before,manifest,policy)
+    return {'original_journals':LIVE_RECOVERY_PINS,
+        'before_snapshot_sha256':hashlib.sha256(p.encoded(before)).hexdigest(),
+        'scope':'observed-directory-stage-only-no-accounts-or-native-tools'}
+
+
+def recovery_directory_baseline(before,manifest,policy):
+    for relative,row in manifest['ownership']['fresh_directories'].items():
+        if before.get('/'+relative)!=row:raise ValueError('Observed declared directory identity changed')
+    generated,blocked=candidate_entries(before,manifest,policy)
+    if blocked or any(row['origin'] not in ('native-dpkg-database','fresh-system-accounts','fresh-filesystem') or
+            row['origin']!='native-dpkg-database' and row.get('directory') is not True for row in generated.values()):
+        raise ValueError('Recovery contains effects beyond exact unpack/database/directories')
+
+
+def _qualify(assembly,manifest,policy,system,*,recover_live):
     """Run only fixed native producers in generation1; preserve every failure."""
     system.require_root();assembly.recheck();p=payload_module()
     root=Path(assembly.root);work=Path(assembly.work)
     if root!=work/'root' or root.resolve()!=root or work.resolve()!=work or not root.is_relative_to('/sources/stage'):
         raise ValueError('Resource qualification requires fixed native source assembly')
-    outputs=('resource-intent.json','candidate-generated-entries.json','candidate-clean-image-manifest.json','candidate-resource-receipt.json')
+    intent_name='resource-directory-recovery-intent.json' if recover_live else 'resource-intent.json'
+    outputs=(intent_name,'candidate-generated-entries.json','candidate-clean-image-manifest.json','candidate-resource-receipt.json')
     if any(os.path.lexists(work/name) for name in outputs):raise ValueError('Preserve prior/uncertain resource generation')
     validate_policy(policy,manifest)
     plan=resource_plan(manifest)
@@ -138,7 +186,10 @@ def qualify(assembly,manifest,policy,system):
     intent={'version':1,'kind':'unqualified-native-resource-candidate','manifest_sha256':hashlib.sha256(p.encoded(manifest)).hexdigest(),
             'policy_sha256':hashlib.sha256(p.encoded(policy)).hexdigest(),'source_sha256':p.digest(__file__),
             'root_inode':root.stat().st_ino,'root_device':root.stat().st_dev,'production_ready':False}
-    save(work/'resource-intent.json',intent)
+    if recover_live:
+        intent['directory_recovery']=recovery_intent(assembly,manifest,policy,before)
+        intent['resource_intent_name']=intent_name
+    save(work/intent_name,intent)
     commands=[];loader=None
     try:
         for relative,row in sorted(manifest['ownership']['fresh_directories'].items(),key=lambda item:(item[0].count('/'),item[0])):

@@ -35,6 +35,16 @@ class ResourceRecipeTests(unittest.TestCase):
         missing=dict(actual);del missing['/run/cups']
         with self.assertRaises(ValueError):recipe.empty_declared_runtime(missing,manifest)
 
+    def test_directory_recovery_rejects_any_prior_account_cache_or_tool_effect(self):
+        manifest=self.manifest();before={**manifest['ownership']['entries'],
+            '/home':manifest['ownership']['fresh_directories']['home']}
+        recipe.recovery_directory_baseline(before,manifest,self.policy())
+        for extra in ({'/etc/ld.so.cache':{'mode':stat.S_IFREG|0o644,'uid':0,'gid':0,'sha256':'b'*64}},
+                recipe.account_entries(self.policy()),
+                {'/root/private':{'mode':stat.S_IFREG|0o600,'uid':0,'gid':0,'sha256':'b'*64}}):
+            with self.assertRaises(ValueError):recipe.recovery_directory_baseline({**before,**extra},manifest,self.policy())
+        with self.assertRaises(ValueError):recipe.recovery_directory_baseline(manifest['ownership']['entries'],manifest,self.policy())
+
     def test_unknown_or_changed_owned_file_is_never_generated_override(self):
         manifest=self.manifest();actual={**manifest['ownership']['entries'],'/root/key':{'mode':stat.S_IFREG|0o600,'uid':0,'gid':0,'sha256':'b'*64}}
         actual['/usr/share/owned']={**actual['/usr/share/owned'],'sha256':'c'*64}

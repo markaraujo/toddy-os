@@ -345,6 +345,8 @@ def adopt_finalize_mvp(kind,system):
     plan={'payload':{'sha256':sha,'catalog_sha256':inputs.manifest['catalog_sha256'],'bytes':inputs.manifest['bytes']}}
     native.verify_payload(plan);inputs.recheck();source.recheck()
     journals={name:p.digest(secured(source.work/name)) for name in ('unpack-intent.json','unpacked.json','dpkg.log','resource-intent.json','candidate-resource-receipt.json','candidate-generated-entries.json','candidate-clean-image-manifest.json')}
+    if candidate.get('resource_intent_name')=='resource-directory-recovery-intent.json':
+        journals['resource-directory-recovery-intent.json']=p.digest(secured(source.work/'resource-directory-recovery-intent.json'))
     intent={'version':1,'state':'same-inode-MVP-adoption-intended-no-replay','delivery_class':MVP_CLASS,'g2_eligible':False,
         'source_root':str(source.root),'destination_root':str(destination),'source_pin':list(source.pin),'source_journals':journals,
         'input_pins':inputs.pins,'source_sha256':inputs.source_hashes,'image_manifest_sha256':image_sha,'producer_sha256':p.digest(Path(__file__)),
@@ -455,7 +457,7 @@ def unclosed_compiler_jobs(directory):
 
 def main():
     if (sys.argv[1:] not in ([action] for action in ('base','live','qualify-base','qualify-live','finalize-base','finalize-live','stage-live',
-            'mvp-base','mvp-live','qualify-mvp-base','qualify-mvp-live','finalize-mvp-base','finalize-mvp-live','stage-mvp-live','adopt-finalize-mvp-base','adopt-finalize-mvp-live')) or
+            'mvp-base','mvp-live','qualify-mvp-base','qualify-mvp-live','finalize-mvp-base','finalize-mvp-live','stage-mvp-live','adopt-finalize-mvp-base','adopt-finalize-mvp-live','recover-qualify-mvp-live-directories')) or
             Path(__file__).resolve() != Path('/opt/toddy-build/scripts/build/phase2/image_assemble.py')):
         raise ValueError('Fixed native source coordinator command required')
     os.umask(0o077); system=LinuxDisk();native_guard(system)
@@ -465,7 +467,7 @@ def main():
         if not stat.S_ISREG(info.st_mode) or info.st_uid or info.st_gid or info.st_nlink!=1 or stat.S_IMODE(info.st_mode)!=0o600:
             raise ValueError('Native assembly lock custody')
         fcntl.flock(descriptor, fcntl.LOCK_EX|fcntl.LOCK_NB)
-        action=sys.argv[1];kind=action.removeprefix('adopt-finalize-').removeprefix('qualify-').removeprefix('finalize-').removeprefix('stage-');bundle=STAGE/GENERATIONS[kind][1]/'payload';p=payload_module()
+        action=sys.argv[1];kind=('mvp-live' if action=='recover-qualify-mvp-live-directories' else action.removeprefix('adopt-finalize-').removeprefix('qualify-').removeprefix('finalize-').removeprefix('stage-'));bundle=STAGE/GENERATIONS[kind][1]/'payload';p=payload_module()
         sha=p.digest(secured(bundle/'manifest.json'))
         manifest=p.PreparedPayload(bundle,manifest_sha256=sha,runner=None,finalizer=None)._load()
         bundle_namespace(bundle,manifest)
@@ -475,11 +477,11 @@ def main():
             result=stage_live(system,kind)
         elif action.startswith('finalize-'):
             result=finalize_native(kind,system)
-        elif action.startswith('qualify-'):
-            from resource_recipe import qualify
+        elif action.startswith('qualify-') or action=='recover-qualify-mvp-live-directories':
+            from resource_recipe import qualify,live_directory_recovery
             policy=policy_input(bundle.parent,manifest)
             assembly=adopt_unpacked(kind,manifest,sha,system)
-            result=qualify(assembly,manifest,policy,system)
+            result=(live_directory_recovery if action=='recover-qualify-mvp-live-directories' else qualify)(assembly,manifest,policy,system)
         else:
             assembly=AssemblyRoot(kind,manifest,planned_adoption=kind in ('mvp-base','mvp-live'))
             result=unpack_native(bundle,sha,assembly,system)
