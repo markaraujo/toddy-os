@@ -4,6 +4,7 @@ import argparse,base64,fcntl,getpass,hashlib,json,os,re,resource,secrets,select,
 from pathlib import Path
 HERE=Path(__file__).resolve().parent
 sys.path[:0]=[str(HERE),str(HERE.parents[1]),str(HERE.parents[1]/'scripts/build/phase2')]
+from mvp_delivery_storage import host_floor
 import vm,boot_test as boot,phase2_vm,phase2_candidate_vm as candidate
 import installed_owner_boot as installed
 from phase2_native_glycin import compressed_payload
@@ -59,7 +60,7 @@ def review_valid(value,options,descriptor):
 def admission(free,storage):
     bound=storage.get('root_storage_bound_bytes')
     if type(bound) is not int or bound<=0:raise ValueError('actual_payload_storage_bound_required')
-    return free>=HOST_FLOOR+2*bound+4*1024**3
+    return free>=host_floor(MVP)+2*bound+4*1024**3
 
 
 def qemu(firmware,snapshot_sha):
@@ -107,7 +108,7 @@ def evidence(result,inputs,options):
     for name in payload.CHECKS:
         raw=decoded[name+'.json'];validate_finalizer_report(json.loads(raw),name,inputs['descriptor'])
         if hashlib.sha256(raw).hexdigest()!=handoff['finalizer_reports_sha256'][name]:raise ValueError('actual_finalizer_report_custody')
-    if shutil.disk_usage(CONTEXT).free<HOST_FLOOR+sum(map(len,decoded.values()))+16*1024**2:raise ValueError('actual_host_evidence_capacity_required')
+    if shutil.disk_usage(CONTEXT).free<host_floor(MVP)+sum(map(len,decoded.values()))+16*1024**2:raise ValueError('actual_host_evidence_capacity_required')
     target=CONTEXT/'evidence'
     if target.exists():raise ValueError('preserve_prior_collect_no_replay')
     target.mkdir(mode=0o700)
@@ -195,7 +196,7 @@ def run(iso,iso_sha,options_path):
         guest=socket.socket(socket.AF_UNIX,socket.SOCK_STREAM);guest.settimeout(300);guest.connect(str(WORK/'auth'))
         server=socket.socket(socket.AF_UNIX,socket.SOCK_STREAM);server.bind(str(WORK/'operator'));os.chmod(WORK/'operator',0o600);server.listen(2)
         while time.monotonic()<deadline+7200:
-            if shutil.disk_usage(ROOT).free<HOST_FLOOR+HEADROOM and not capacity_stop:
+            if shutil.disk_usage(ROOT).free<host_floor(MVP)+HEADROOM and not capacity_stop:
                 capacity_stop=True;stop_deadline=time.monotonic()+45;events.append({'state':'capacity-stop-requested','installation_accepted':False});persist()
                 guest.sendall(json.dumps({'request_id':'capacity-'+uuid.uuid4().hex,'action':'cancel'}).encode()+b'\n')
             if stop_deadline is not None and time.monotonic()>stop_deadline:raise ValueError('capacity_stop_uncertain_no_replay')

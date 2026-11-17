@@ -13,6 +13,7 @@ import tarfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import phase2_candidate_vm as candidate
+from mvp_delivery_storage import host_floor
 
 ROOT = Path(__file__).resolve().parents[2]
 DESTINATION = ROOT / '.local/phase2/mvp-package-export-2'
@@ -102,8 +103,8 @@ def transfer(generation=2):
     parent = destination.parent
     if parent.resolve() != parent or not parent.is_dir() or parent.stat().st_uid != os.getuid() or os.path.lexists(destination):
         raise ValueError('New canonical private host destination required')
-    if shutil.disk_usage(parent).free < RESERVE + sum(row['bytes'] for row in rows.values()) + 1024**2:
-        raise ValueError('Preserve host100GiB+512MiB reserve plus transfer bytes')
+    if shutil.disk_usage(parent).free < host_floor(generation in (3,4,5,6)) + sum(row['bytes'] for row in rows.values()) + 1024**2:
+        raise ValueError('Preserve selected fixed host reserve plus transfer bytes')
     os.umask(0o077)
     destination.mkdir(mode=0o700)
     assets = destination / 'assets'

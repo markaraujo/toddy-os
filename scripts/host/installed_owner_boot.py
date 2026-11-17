@@ -12,6 +12,7 @@ import phase2_candidate_vm as candidate
 import phase2_vm
 from phase2_native_glycin import compressed_payload
 import vm
+from mvp_delivery_storage import host_floor
 from scripts.build.phase2 import owner_setting_evidence as owner_evidence
 
 ROOT=vm.ROOT
@@ -139,7 +140,7 @@ def run(context,number,handoff_path=None):
     if json.loads((ROOT/'status.json').read_bytes()).get('owner_review',{}).get('phase_2_approved') is not True:raise ValueError('installed_owner_authorization')
     import shutil
     private(SOURCE.parent,True);private(SOURCE)
-    storage={'source_allocated_bytes':SOURCE.stat().st_blocks*512,'host_floor_bytes':HOST_FLOOR,'boot_extra_bytes':2*1024**3,
+    storage={'source_allocated_bytes':SOURCE.stat().st_blocks*512,'host_floor_bytes':host_floor(MVP),'boot_extra_bytes':2*1024**3,
         'write_bytes_per_second':WRITE_BPS,'stop_headroom_bytes':STOP_HEADROOM}
     if not capacity_admitted(shutil.disk_usage(ROOT).free,storage['source_allocated_bytes']):raise ValueError('installed_host_reserve')
     public_sources={name:boot.digest(Path(__file__).with_name(name)) for name in ('installed-owner-probe.py','installed-auth-wait.py','desktop-boot-probe.service','boot-probe.target.conf','boot_test.py','phase2_native_glycin.py')}
@@ -227,11 +228,11 @@ def run(context,number,handoff_path=None):
 
 
 def capacity_admitted(free,allocated):
-    return type(free) is int and type(allocated) is int and allocated>=0 and free>=HOST_FLOOR+allocated+2*1024**3
+    return type(free) is int and type(allocated) is int and allocated>=0 and free>=host_floor(MVP)+allocated+2*1024**3
 
 
 def capacity_stop_required(free):
-    return free<HOST_FLOOR+STOP_HEADROOM
+    return free<host_floor(MVP)+STOP_HEADROOM
 
 
 def powerdown_owned(cid,run_id,path):
@@ -258,7 +259,7 @@ def wait_owned(cid,run_id,context,number):
             free=shutil.disk_usage(ROOT).free
             if capacity_stop_required(free):
                 save(context/('capacity-stop-'+str(number)+'.json'),{'state':'capacity-stop-intended','free_bytes':free,
-                    'floor_bytes':HOST_FLOOR,'stop_headroom_bytes':STOP_HEADROOM,'write_bytes_per_second':WRITE_BPS,
+                    'floor_bytes':host_floor(MVP),'stop_headroom_bytes':STOP_HEADROOM,'write_bytes_per_second':WRITE_BPS,
                     'round':number,'boot_accepted':False})
                 try:powerdown_owned(cid,run_id,context/('q-'+str(number)))
                 except (OSError,ValueError):pass
