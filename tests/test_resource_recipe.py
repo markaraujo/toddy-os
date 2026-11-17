@@ -45,6 +45,20 @@ class ResourceRecipeTests(unittest.TestCase):
             with self.assertRaises(ValueError):recipe.recovery_directory_baseline({**before,**extra},manifest,self.policy())
         with self.assertRaises(ValueError):recipe.recovery_directory_baseline(manifest['ownership']['entries'],manifest,self.policy())
 
+    def test_account_recovery_requires_all_exact_accounts_links_and_no_cache(self):
+        manifest=self.manifest();policy=self.policy()
+        before={**manifest['ownership']['entries'],**recipe.account_entries(policy),
+            '/home':manifest['ownership']['fresh_directories']['home'],
+            **{path:{'mode':stat.S_IFLNK|0o777,'uid':0,'gid':0,'symlink':target} for path,target in recipe.LINKS.items()}}
+        recipe.recovery_directory_baseline(before,manifest,policy,accounts=True)
+        for path in recipe.account_entries(policy):
+            changed=dict(before);changed[path]={**changed[path],'sha256':'f'*64}
+            with self.assertRaises(ValueError):recipe.recovery_directory_baseline(changed,manifest,policy,accounts=True)
+        changed={**before,'/etc/ld.so.cache':{'mode':stat.S_IFREG|0o644,'uid':0,'gid':0,'sha256':'a'*64}}
+        with self.assertRaises(ValueError):recipe.recovery_directory_baseline(changed,manifest,policy,accounts=True)
+        changed=dict(before);del changed['/etc/systemd/system/default.target']
+        with self.assertRaises(ValueError):recipe.recovery_directory_baseline(changed,manifest,policy,accounts=True)
+
     def test_unknown_or_changed_owned_file_is_never_generated_override(self):
         manifest=self.manifest();actual={**manifest['ownership']['entries'],'/root/key':{'mode':stat.S_IFREG|0o600,'uid':0,'gid':0,'sha256':'b'*64}}
         actual['/usr/share/owned']={**actual['/usr/share/owned'],'sha256':'c'*64}
