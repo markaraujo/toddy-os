@@ -72,6 +72,22 @@ def verify_cache_executables(root,path,binding,entries):
         if not expected or source.parent.resolve()!=source.parent or source.is_symlink() or p.digest(source)!=expected:raise InstallError('installer_finalizer_cache_tool_changed')
 
 
+def fresh_directory(root,relative,row):
+    """Create declared numeric ownership; never normalize an existing mismatch."""
+    p=payload_module();p.canonical('/'+relative);root=Path(root);path=root/relative
+    if (set(row)!={'mode','uid','gid','directory'} or row.get('directory') is not True or
+            type(row.get('mode')) is not int or not stat.S_ISDIR(row['mode']) or row['mode']!=(stat.S_IFDIR|stat.S_IMODE(row['mode'])) or
+            any(type(row.get(key)) is not int or not 0<=row[key]<2**32-1 for key in ('uid','gid')) or
+            root.resolve()!=root or path.parent.resolve()!=path.parent):raise InstallError('installer_finalizer_fresh_directory')
+    try:path.mkdir(mode=stat.S_IMODE(row['mode']))
+    except FileExistsError:pass
+    else:
+        os.chown(path,row['uid'],row['gid'],follow_symlinks=False)
+        path.chmod(stat.S_IMODE(row['mode']))
+    info=path.lstat()
+    if (info.st_mode,info.st_uid,info.st_gid,info.st_dev)!=(row['mode'],row['uid'],row['gid'],root.stat().st_dev):raise InstallError('installer_finalizer_fresh_directory')
+
+
 class NativeFinalizer:
     def __init__(self,composition,system):self.composition=composition;self.system=system
 
@@ -100,13 +116,7 @@ class NativeFinalizer:
         record('native-dpkg-database',{'configured_packages':len(rows),'database_audit_empty':True})
         fresh=manifest['ownership']['fresh_directories']
         for relative,row in sorted(fresh.items(),key=lambda item:(item[0].count('/'),item[0])):
-            p.canonical('/'+relative)
-            path=root/relative
-            if path.parent.resolve()!=path.parent:raise InstallError('installer_finalizer_fresh_directory')
-            path.mkdir(mode=stat.S_IMODE(row['mode']),exist_ok=True)
-            info=path.lstat()
-            if not stat.S_ISDIR(info.st_mode) or info.st_uid!=0 or info.st_gid!=0:raise InstallError('installer_finalizer_fresh_directory')
-            path.chmod(stat.S_IMODE(row['mode']))
+            fresh_directory(root,relative,row)
         files=account_files(composition.policy['accounts'])
         for relative,(data,mode) in files.items():
             path=root/relative

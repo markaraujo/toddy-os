@@ -12,7 +12,7 @@ from unittest.mock import patch
 from runtime.installer.live_bindings import create
 from runtime.installer.disk_plan import InstallError
 from runtime.installer.installed_boot import init_script,module_namespace,InstalledBoot
-from runtime.installer.native_finalizer import account_files,cache_command,cache_executables,verify_cache_executables
+from runtime.installer.native_finalizer import account_files,cache_command,cache_executables,verify_cache_executables,fresh_directory
 from runtime.installer.composition import validate_boot_evidence,validate_finalizer_report,ComposedPayload,bundle_namespace,secured,validate_owner_options
 from runtime.setup.installer_handoff import save
 
@@ -49,6 +49,31 @@ class LiveBindingsTests(unittest.TestCase):
   self.assertTrue(all(row.split(b':')[1]==b'!' for row in files['etc/shadow'][0].splitlines()))
   for addition in ('builder:x:1000:999:Builder:/home/builder:/bin/bash\n','other:x:0:0:root:/root:/bin/bash\n','bad:$hash:101:100:bad:/:/usr/bin/false\n'):
    with self.assertRaises(InstallError):account_files({**baseline,'passwd':baseline['passwd']+addition})
+
+ def test_declared_service_directory_identity_is_preserved_and_creation_is_numeric(self):
+  import tempfile,stat,os
+  from unittest.mock import patch
+  original=Path.lstat
+  with tempfile.TemporaryDirectory() as temporary:
+   root=Path(temporary);row={'mode':stat.S_IFDIR|0o511,'uid':9,'gid':19,'directory':True}
+   def facts(path,*args,**kwargs):
+    value=list(original(path,*args,**kwargs))
+    if Path(path)==root/'certs':value[4]=9;value[5]=19
+    return os.stat_result(value)
+   with patch.object(Path,'lstat',facts),patch('runtime.installer.native_finalizer.os.chown') as chown:
+    previous=os.umask(0o077)
+    try:fresh_directory(root,'certs',row)
+    finally:os.umask(previous)
+    chown.assert_called_once_with(root/'certs',9,19,follow_symlinks=False)
+    self.assertEqual((root/'certs').stat().st_mode&0o777,0o511);chown.reset_mock()
+    fresh_directory(root,'certs',row);chown.assert_not_called()
+    (root/'certs').chmod(0o755)
+    with self.assertRaises(ValueError):fresh_directory(root,'certs',row)
+    chown.assert_not_called()
+   (root/'certs').chmod(0o755);(root/'certs').rmdir();(root/'certs').symlink_to('other')
+   with patch('runtime.installer.native_finalizer.os.chown') as chown:
+    with self.assertRaises(ValueError):fresh_directory(root,'certs',row)
+    chown.assert_not_called()
 
  def test_frozen_kmod_argv0_and_both_regular_executable_custody(self):
   import tempfile,hashlib

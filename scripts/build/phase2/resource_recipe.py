@@ -13,7 +13,7 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[3]
 sys.path.insert(0,str(ROOT))
-from runtime.installer.native_finalizer import account_files,cache_command,verify_cache_executables,payload_module
+from runtime.installer.native_finalizer import account_files,cache_command,verify_cache_executables,fresh_directory,payload_module
 from runtime.installer.generated_resources import generate_loader_cache
 from runtime.installer.installed_identity import regular
 from runtime.installer.composition import validate_policy
@@ -142,12 +142,7 @@ def qualify(assembly,manifest,policy,system):
     commands=[];loader=None
     try:
         for relative,row in sorted(manifest['ownership']['fresh_directories'].items(),key=lambda item:(item[0].count('/'),item[0])):
-            p.canonical('/'+relative);path=root/relative
-            if path.parent.resolve()!=path.parent:raise ValueError('Fresh candidate parent redirects')
-            path.mkdir(mode=stat.S_IMODE(row['mode']),exist_ok=True)
-            info=path.lstat()
-            if not stat.S_ISDIR(info.st_mode) or info.st_uid or info.st_gid:raise ValueError('Fresh candidate directory identity')
-            path.chmod(stat.S_IMODE(row['mode']))
+            fresh_directory(root,relative,row)
         for relative,(data,mode) in files.items():regular(root,relative,data,mode)
         lost=root/'lost+found'
         if not lost.exists():lost.mkdir(mode=0o700)
