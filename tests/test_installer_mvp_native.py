@@ -34,7 +34,7 @@ class Installer4Tests(unittest.TestCase):
    self.assertEqual(p.SOURCE.name,'toddy-installer-0.2.0-5');self.assertTrue(p.INSTALL.endswith('install5.sh'))
    with patch.object(p,'ROOT',ROOT):self.assertEqual(p.package().VERSION,'0.2.0-1+toddy3')
    self.assertEqual((p.frozen.SOURCE,p.frozen.WORK,p.frozen.STEP,p.frozen.VERSION),original)
-   for invalid in (3,7,'5'):
+   for invalid in (3,8,'5'):
     with self.assertRaises(ValueError):p.configure(invalid)
   finally:p.configure(4)
 
@@ -46,6 +46,33 @@ class Installer4Tests(unittest.TestCase):
    self.assertEqual(p.STEP,'b12-toddy-installer-6');self.assertTrue(p.CHECK.endswith('check6.sh'))
    self.assertEqual(p.PREPARED.name,'toddy-installer-prepared-6.json')
    with patch.object(p,'ROOT',ROOT):self.assertEqual(p.package().VERSION,'0.2.0-1+toddy4')
+  finally:p.configure(4)
+
+ def test_generation7_preserves_previous6_and_requires_coherence_before_native_action(self):
+  try:
+   p.configure(7)
+   self.assertEqual(p.VERSION,'0.2.0-1+toddy5')
+   self.assertEqual(p.BASELINE_VERSION,'0.2.0-1+toddy4')
+   self.assertEqual(p.PREPARED.name,'toddy-installer-prepared-7.json')
+   self.assertTrue(p.INSTALL.endswith('install7.sh'))
+   self.assertTrue(p.CHECK.endswith('check7.sh'))
+   with tempfile.TemporaryDirectory() as temporary,patch.object(p,'SOURCE',Path(temporary)/'absent'),patch.object(p,'WORK',Path(temporary)/'work'),patch.object(p,'STAGE',Path(temporary)/'stage'),patch.object(p,'PREPARED',Path(temporary)/'prepared'),patch.object(p,'RECEIPT',Path(temporary)/'receipt'),patch.object(p,'POSTCHECK_HOME',Path(temporary)/'postcheck'),patch.object(p,'runtime_coherence',side_effect=ValueError('coherence refusal')),patch.object(p.frozen,'native') as native,patch.object(p,'original_compile') as reuse:
+    with self.assertRaisesRegex(ValueError,'coherence refusal'):p.prepare()
+    native.assert_not_called();reuse.assert_not_called()
+   with patch.object(p,'read',return_value={}),patch.object(p,'runtime_coherence',side_effect=ValueError('coherence refusal')),patch.object(p,'original_compile') as reuse:
+    with self.assertRaisesRegex(ValueError,'coherence refusal'):p.qualify()
+    reuse.assert_not_called()
+  finally:p.configure(4)
+
+ def test_generation7_previous_success_checks_actual_generation6_recipe(self):
+  try:
+   p.configure(7)
+   success={'step':'b12-toddy-installer-6','recipe_exit':0,'postcheck_exit':0,'recipe_sha256':'unused'}
+   def checked_digest(path):
+    self.assertEqual(Path(path).name,'installer_mvp_install6.sh')
+    raise ValueError('actual previous6 selected')
+   with patch.object(p,'read',side_effect=[success,{},{},{}]),patch.object(p,'digest',side_effect=checked_digest):
+    with self.assertRaisesRegex(ValueError,'actual previous6 selected'):p.previous_upgrade()
   finally:p.configure(4)
 
  def test_private_revision_generator_keeps_original_frozen_version(self):

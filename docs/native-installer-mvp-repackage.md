@@ -136,3 +136,39 @@ match newer host source. After native6 succeeds, use new MVP projection3 and
 signed export5; preserve earlier actual projection2/export4 unchanged. Existing
 MVP image-input directories must remain fresh; never reuse an uncertain input
 bundle across a package/source revision.
+
+## Fixed installer7 after declared generated-directory ownership correction
+
+Installer7 packages the narrow runtime finalizer correction for exact declared
+non-root generated-directory owners (including `/run/cups/certs` UID9/GID19).
+It preserves installer6/version4 receipts, source snapshot, archive and signatures;
+new package version is `0.2.0-1+toddy5`. This source route does not claim actual
+native installation or final-image acceptance before its real commands succeed.
+
+Commit and sync the corrected runtime and these wrappers through the existing
+controlled source gate first. Require the actual complete current source-map
+receipt; do not reuse the old map with a new finalizer hash. Then, as the sole
+native coordinator after the normal target identity/capacity checks:
+
+```sh
+bash /opt/toddy-build/scripts/build/phase2/installer_mvp_prepare7.sh
+python3 /opt/toddy-build/scripts/build/phase2/installer_mvp_native.py qualify7
+python3 /opt/toddy-build/scripts/build/run_step.py b12-toddy-installer-7 \
+  /opt/toddy-build/scripts/build/phase2/installer_mvp_install7.sh \
+  /opt/toddy-build/scripts/build/phase2/installer_mvp_check7.sh --user root
+```
+
+Generation7 has fixed fresh source/work/stage/receipt/postcheck paths ending7.
+Its exact installed baseline is successful installer6/version4, with preserved
+actual recipe/check6 hashes and archive/record/source6 custody. It reuses the
+same qualified compile3 C++ module and retained receipt already used by6; any
+C++ source change still refuses and requires a distinct native compiler attempt.
+The previous-generation selector explicitly chooses6, never check/install5.
+The full runtime coherence check applies before prepare and during all later
+qualification, install and postcheck phases. There is no arbitrary generation,
+version, source path or runtime-hash override.
+
+After actual native7 succeeds, use new projection4/export6/native-inputs2 and
+fresh image candidate3/reviewed4 routes. Preserve actual source5/export5 evidence
+as its older scope; the new installer5 archive needs new source-delta accounting
+and actual coordinator review before public source admission.

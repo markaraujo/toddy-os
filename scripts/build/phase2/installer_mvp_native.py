@@ -21,11 +21,11 @@ MANIFEST='usr/share/doc/toddy-installer/source-manifest.json'
 
 def configure(generation):
     global GENERATION,VERSION,STEP,BASELINE_VERSION,SOURCE,WORK,STAGE,PREPARED,RECEIPT,POSTCHECK_HOME,INSTALL,CHECK,OWN,REUSE_DOC
-    if type(generation) is not int or generation not in (4,5,6):raise ValueError('Only fixed installer4/5/6 generation')
+    if type(generation) is not int or generation not in (4,5,6,7):raise ValueError('Only fixed installer4/5/6/7 generation')
     GENERATION=generation
     suffix='' if generation==4 else str(generation)
-    VERSION={4:'0.2.0-1+toddy2',5:'0.2.0-1+toddy3',6:'0.2.0-1+toddy4'}[generation]
-    BASELINE_VERSION={4:'0.2.0-1+toddy1',5:'0.2.0-1+toddy2',6:'0.2.0-1+toddy3'}[generation]
+    VERSION={4:'0.2.0-1+toddy2',5:'0.2.0-1+toddy3',6:'0.2.0-1+toddy4',7:'0.2.0-1+toddy5'}[generation]
+    BASELINE_VERSION={4:'0.2.0-1+toddy1',5:'0.2.0-1+toddy2',6:'0.2.0-1+toddy3',7:'0.2.0-1+toddy4'}[generation]
     STEP='b12-toddy-installer-'+str(generation)
     SOURCE=TARGET/('sources/phase2/inputs/toddy-installer-0.2.0-'+str(generation))
     WORK=TARGET/('sources/phase2/work/toddy-installer-'+str(generation));STAGE=TARGET/('sources/stage/phase2-toddy-installer-'+str(generation))
@@ -98,7 +98,7 @@ def original_compile():
 
 def previous_upgrade(check_installed=False):
     if GENERATION==4:return None
-    previous=GENERATION-1;suffix='' if previous==4 else '5';step='b12-toddy-installer-'+str(previous)
+    previous=GENERATION-1;suffix='' if previous==4 else str(previous);step='b12-toddy-installer-'+str(previous)
     success_path=BUILD/(step+'.success.json');success=read(success_path)
     previous_prepared=LOG/('toddy-installer-prepared-'+str(previous)+'.json');prepared=read(previous_prepared)
     previous_receipt=LOG/('toddy-installer-install-'+str(previous)+'.json');receipt=read(previous_receipt)
@@ -163,7 +163,7 @@ def prepare():
     fresh=(SOURCE,WORK,STAGE,PREPARED,RECEIPT,POSTCHECK_HOME,PREPARED.with_suffix('.part'),RECEIPT.with_suffix('.part'),
         Path('/var/cache/toddy/packages')/('toddy-installer_'+VERSION+'_amd64.deb'),Path('/var/log/toddy/packages')/('toddy-installer_'+VERSION+'_amd64.json'))
     if any(os.path.lexists(path) for path in fresh):raise ValueError('Installer4 existing/uncertain preparation; no replay')
-    coherence=runtime_coherence() if GENERATION==6 else None
+    coherence=runtime_coherence() if GENERATION>=6 else None
     if frozen.native('/usr/bin/dpkg-query','-W','-f=${Version}\t${Status}','toddy-installer')!=BASELINE_VERSION+'\tinstall ok installed':raise ValueError('Installer generation requires exact installed previous revision')
     binary,proof,reuse=original_compile();baseline=previous_upgrade(check_installed=True);inputs=source_plan()
     payload.require_capacity(TARGET,128*1024**2+3*sum((ROOT/name).stat().st_size for name in inputs))
@@ -187,9 +187,9 @@ def prepare():
 
 def qualify():
     row=read(PREPARED)
-    if GENERATION==6 and row.get('runtime_coherence')!=runtime_coherence():raise ValueError('Installer6 runtime source gate changed')
+    if GENERATION>=6 and row.get('runtime_coherence')!=runtime_coherence():raise ValueError('Installer6 runtime source gate changed')
     _,_,reuse=original_compile()
-    if GENERATION in (5,6) and row.get('baseline_upgrade')!=previous_upgrade():raise ValueError('Installer5 preserved baseline changed')
+    if GENERATION in (5,6,7) and row.get('baseline_upgrade')!=previous_upgrade():raise ValueError('Installer5 preserved baseline changed')
     if row.get('state')!='prepared-reused-qualified-module' or row.get('reuse')!=reuse or row.get('inputs')!=source_plan() or row.get('source_inode')!=SOURCE.stat().st_ino or row.get('work_inode')!=WORK.stat().st_ino:raise ValueError('Installer4 prepared source/reuse changed')
     for name,sha in row['inputs'].items():
         if digest(SOURCE/'repository'/name)!=sha or digest(ROOT/name)!=sha:raise ValueError('Installer4 frozen current source changed')
@@ -240,8 +240,8 @@ def postcheck():
         'root_wayland_gui':'pending distinct actual GUI proof','disk_writes':False,'version':VERSION})
 
 def main():
-    if os.geteuid()!=0 or sys.argv[1:] not in (['prepare'],['qualify'],['install'],['postcheck'],['prepare5'],['qualify5'],['install5'],['postcheck5'],['prepare6'],['qualify6'],['install6'],['postcheck6']):raise ValueError('Installer4 fixed root coordinator action')
-    if sys.argv[1].endswith(('5','6')):configure(int(sys.argv[1][-1]));sys.argv[1]=sys.argv[1][:-1]
+    if os.geteuid()!=0 or sys.argv[1:] not in (['prepare'],['qualify'],['install'],['postcheck'],['prepare5'],['qualify5'],['install5'],['postcheck5'],['prepare6'],['qualify6'],['install6'],['postcheck6'],['prepare7'],['qualify7'],['install7'],['postcheck7']):raise ValueError('Installer4 fixed root coordinator action')
+    if sys.argv[1].endswith(('5','6','7')):configure(int(sys.argv[1][-1]));sys.argv[1]=sys.argv[1][:-1]
     os.umask(0o077);subprocess.run(['/bin/bash','-c','source /opt/toddy-build/scripts/build/target.sh; guard_target'],check=True)
     if sys.argv[1] in ('prepare','qualify'):
         fd=os.open(BUILD/'build.lock',os.O_RDWR|os.O_NOFOLLOW)
