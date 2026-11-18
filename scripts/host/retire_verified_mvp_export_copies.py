@@ -5,7 +5,8 @@ from pathlib import Path
 import phase2_candidate_vm as candidate
 
 ROOT=candidate.ROOT
-GENERATIONS=(2,3,4,7)
+# Export2 completed in the first write-once invocation; never replay it.
+GENERATIONS=(3,4,7)
 
 
 def guest(source):
@@ -66,7 +67,14 @@ def main():
                     verified.get('source')!=f'/mnt/lfs/sources/stage/toddy-package-export-{generation}'):
                 raise ValueError('Exact verified host transfer required')
             rows=json.loads(guest(inventory_code(generation)))
-            if (set(rows)!=set(verified['files']) or
+            signed_names=set(rows)-set(verified['files'])
+            if signed_names:
+                signed=json.loads((context/'signed.json').read_bytes())
+                if (signed_names!={'Release.gpg','InRelease'} or
+                        signed.get('state')!=f'signed-publicly-verified-export{generation}' or
+                        signed.get('signatures')!={name:rows[name] for name in signed_names}):
+                    raise ValueError('Guest public signature extension differs')
+            if (set(rows)!=set(verified['files'])|signed_names or
                     any(rows[name]!=row['sha256'] for name,row in verified['files'].items()) or
                     rows.get('archive-export.json')!=verified['archive_export_sha256']):
                 raise ValueError('Guest export receipt differs from host transfer')
