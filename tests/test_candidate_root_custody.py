@@ -39,6 +39,16 @@ class CandidateArchiveTests(unittest.TestCase):
             self.assertIn('custody-mvp-live-failed4-inspect',(ROOT/'scripts/build/phase2/image_native.sh').read_text())
         finally:
             guest.configure('offline');host.configure('offline')
+
+    def test_blocked_live5_has_a_fixed_archival_profile(self):
+        guest.configure('mvp-live-failed5');host.configure('mvp-live-failed5')
+        try:
+            self.assertEqual(guest.WORK.name,'toddy-mvp-live-image-5')
+            self.assertEqual(guest.INPUTS.name,'toddy-mvp-live-native-inputs-3')
+            self.assertEqual(host.CONTEXT.name,'mvp-live-failed5-candidate-root-custody-5')
+            self.assertIn('custody-mvp-live-failed5-inspect',(ROOT/'scripts/build/phase2/image_native.sh').read_text())
+        finally:
+            guest.configure('offline');host.configure('offline')
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.parent=Path(self.temp.name);self.root=self.parent/'root';self.root.mkdir()
         file=self.root/'a';file.write_bytes(b'public source fixture');file.chmod(0o6755);os.utime(file,ns=(1700000000123456789,1700000000123456789))
