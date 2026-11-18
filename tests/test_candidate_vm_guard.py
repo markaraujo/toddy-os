@@ -57,5 +57,15 @@ class CandidateGuardTests(unittest.TestCase):
         self.assertLessEqual(len('TODDY-QT-RASTER-1'.encode()),20)
         self.assertGreaterEqual(c.RESERVE,100*1024**3+512*1024**2)
 
+    def test_temporary_delivery_reserve_requires_the_recorded_approval_and_start(self):
+        self.assertEqual(c.required_host_bytes('start'),c.RESERVE)
+        self.assertEqual(c.required_host_bytes('prepare'),c.RESERVE+c.SCRATCH_BYTES)
+        self.assertEqual(c.required_host_bytes('start',True),c.MVP_DELIVERY_RESERVE)
+        for action in ('prepare','inspect','ssh','stop'):
+            with self.subTest(action=action),self.assertRaises(AssertionError):
+                c.required_host_bytes(action,True)
+        with patch.object(c,'MVP_DELIVERY_APPROVAL',Path('/nonexistent/approval')):
+            with self.assertRaises(AssertionError):c.required_host_bytes('start',True)
+
 
 if __name__=='__main__':unittest.main()

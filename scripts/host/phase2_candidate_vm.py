@@ -18,7 +18,17 @@ ROOT=vm.ROOT
 WORK=vm.VM/'phase2-candidate'
 NAME='toddy-phase2-candidate'
 RESERVE=100*1024**3+512*1024**2
+MVP_DELIVERY_RESERVE=60*1024**3+512*1024**2
+MVP_DELIVERY_APPROVAL=ROOT/'docs/adr/0251-owner-allows-temporary-mvp-host-reserve.md'
 SCRATCH_BYTES=16*1024**3
+
+
+def required_host_bytes(action, mvp_delivery=False):
+    if mvp_delivery:
+        assert action=='start','Temporary MVP reserve is only for starting the prepared candidate'
+        assert MVP_DELIVERY_APPROVAL.is_file(),'Temporary MVP reserve requires ADR-0251'
+        return MVP_DELIVERY_RESERVE
+    return RESERVE+(SCRATCH_BYTES if action=='prepare' else 0)
 
 
 def run(*args,**kwargs):
@@ -88,9 +98,12 @@ def save(path,value):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--mvp-delivery',action='store_true',
+        help='Use the owner-approved temporary host reserve for this MVP candidate start only')
     parser.add_argument('action',choices=['prepare','start','ssh','stop','inspect'])
     parser.add_argument('command',nargs=argparse.REMAINDER)
     args=parser.parse_args()
+    required=required_host_bytes(args.action,args.mvp_delivery)
     assert os.geteuid()!=0 and vm.VM.resolve()==vm.VM and not vm.VM.is_symlink()
     approval=json.loads((ROOT/'status.json').read_text())['owner_review']
     assert approval['phase_2_approved'] and (ROOT/approval['approval_evidence']).is_file()
@@ -117,7 +130,6 @@ def main():
     fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     phase2_vm.require_quiescent()
     assert not subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip(),'Commit reviewed candidate inputs first'
-    required=RESERVE+(SCRATCH_BYTES if args.action=='prepare' else 0)
     assert shutil.disk_usage(ROOT).free>=required,'Candidate reserve/capacity required'
     if args.action=='prepare':
         assert not WORK.exists(),'Inspect existing candidate; never repeat preparation'
