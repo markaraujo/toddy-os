@@ -123,4 +123,4 @@ the installed personal assistant automatic project publishing credentials.
 
 ## Project context
 
-Use the committed PRD, story files, journal, errors and ADRs as the project's durable development context. The owner explicitly declined workstation RAG for this project. Do not register or synchronize this checkout with workstation-rag and do not add a development RAG dependency. This does not remove the future operating system's product memory requirements.
+Use the committed PRD, story files, journal, errors and ADRs as the project's durable development context. Do not add a development RAG dependency. This does not remove the future operating system's product memory requirements.
