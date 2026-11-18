@@ -7,12 +7,12 @@ HERE=Path(__file__).resolve().parent;sys.path.insert(0,str(HERE))
 import stage_package_export3_signatures as first
 
 def main(generation=4):
-    if type(generation) is not int or generation not in (4,5):raise ValueError('Only fixed export4/export5 entry')
+    if type(generation) is not int or generation not in (4,5,6):raise ValueError('Only fixed export4/export5/export6 entry')
     if sys.argv[1:]:raise SystemExit('No arbitrary path/action/signing-context arguments')
     context=first.fixed_context(generation);output=context/'native-signatures-verified.json'
     if os.path.lexists(output):raise ValueError('Preserve existing export4 result; no replay')
     raw=first.packet(generation);owned=first.candidate.owned();first.candidate.bases()
-    result=subprocess.run(first.candidate.ssh()+[{4:'bash /opt/toddy-build/scripts/build/phase2/image_native.sh signatures-export4',5:'bash /opt/toddy-build/scripts/build/phase2/image_native.sh signatures-export5'}[generation]],input=raw,
+    result=subprocess.run(first.candidate.ssh()+['bash /opt/toddy-build/scripts/build/phase2/image_native.sh signatures-export'+str(generation)],input=raw,
         stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=180,check=True)
     if len(result.stdout)>65536 or first.candidate.owned()!=owned:raise ValueError('Same actual candidate bounded export4 receipt required')
     value=json.loads(result.stdout)

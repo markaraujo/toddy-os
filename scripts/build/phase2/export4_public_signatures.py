@@ -11,9 +11,9 @@ RECEIPT=Path('/var/log/toddy/phase2/package-export4-public-signatures-1.json')
 RUN=base.TARGET/'run/toddy-export4-public-verification-1'
 
 def fixed_paths(generation=4):
-    if type(generation) is not int or generation not in (4,5):raise ValueError('Only fixed fresh export4/export5 signature staging')
+    if type(generation) is not int or generation not in (4,5,6):raise ValueError('Only fixed fresh export4/export5/export6 signature staging')
     if generation==4:return EXPORT,RECEIPT,RUN
-    return (base.TARGET/'sources/stage/toddy-package-export-5',Path('/var/log/toddy/phase2/package-export5-public-signatures-1.json'),base.TARGET/'run/toddy-export5-public-verification-1')
+    return (base.TARGET/('sources/stage/toddy-package-export-'+str(generation)),Path('/var/log/toddy/phase2/package-export'+str(generation)+'-public-signatures-1.json'),base.TARGET/('run/toddy-export'+str(generation)+'-public-verification-1'))
 
 def stage(raw,generation=4):
     export,receipt,run=fixed_paths(generation)

@@ -24,9 +24,9 @@ GENERATIONS = {'base': ('toddy-offline-image-1', 'toddy-installer-native-inputs'
                'base-reviewed': ('toddy-offline-image-2', 'toddy-installer-native-inputs'),
                'live-reviewed': ('toddy-live-image-2', 'toddy-live-native-inputs'),
                'mvp-base': ('toddy-mvp-offline-image-1','toddy-mvp-installer-native-inputs'),
-               'mvp-live': ('toddy-mvp-live-image-3','toddy-mvp-live-native-inputs'),
+               'mvp-live': ('toddy-mvp-live-image-4','toddy-mvp-live-native-inputs-2'),
                'mvp-base-reviewed': ('toddy-mvp-offline-image-2','toddy-mvp-installer-native-inputs'),
-               'mvp-live-reviewed': ('toddy-mvp-live-image-2','toddy-mvp-live-native-inputs')}
+               'mvp-live-reviewed': ('toddy-mvp-live-image-2','toddy-mvp-live-native-inputs-2')}
 MVP_CLASS='phase2-mvp-preinstalled-v1'
 
 def check_delivery_kind(kind,manifest):
