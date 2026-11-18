@@ -18,6 +18,16 @@ def native_fixture_tar(root):
 
 
 class CandidateArchiveTests(unittest.TestCase):
+    def test_failed_live3_is_a_distinct_fixed_archival_profile(self):
+        guest.configure('mvp-live-failed3');host.configure('mvp-live-failed3')
+        try:
+            self.assertEqual(guest.ARTIFACT.name,'root')
+            self.assertEqual(guest.WORK.name,'toddy-mvp-live-image-3')
+            self.assertEqual(host.CONTEXT.name,'mvp-live-failed3-candidate-root-custody-3')
+            self.assertNotEqual(guest.PROFILES['mvp-live'][0],guest.PROFILES['mvp-live-failed3'][0])
+            self.assertIn('custody-mvp-live-failed3-inspect',(ROOT/'scripts/build/phase2/image_native.sh').read_text())
+        finally:
+            guest.configure('offline');host.configure('offline')
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup);self.parent=Path(self.temp.name);self.root=self.parent/'root';self.root.mkdir()
         file=self.root/'a';file.write_bytes(b'public source fixture');file.chmod(0o6755);os.utime(file,ns=(1700000000123456789,1700000000123456789))

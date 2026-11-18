@@ -5,20 +5,21 @@ Offline after real matching finalizer2; live before fresh finalizer2 only from
 completed resource candidate and exact independently reviewed protected inputs.
 No generic path/cleanup flag.
 """
-import base64,errno,fcntl,hashlib,json,os,re,shutil,stat,subprocess,sys
+import base64,errno,fcntl,grp,hashlib,json,os,re,shutil,stat,subprocess,sys
 from contextlib import contextmanager
 from pathlib import Path
 sys.dont_write_bytecode=True
 ROOT=Path('/opt/toddy-build');TARGET=Path('/mnt/lfs')
 sys.path[:0]=[str(Path(__file__).resolve().parent),str(Path(__file__).resolve().parents[3])]
 import candidate_root_archive as archive
-from runtime.installer.composition import secured,validate_finalizer_report
+from runtime.installer.composition import secured as composition_secured,validate_finalizer_report
 from runtime.installer.native_finalizer import payload_module
 from image_assemble import unclosed_compiler_jobs,ReviewedInputs
 PROFILES={'offline':('toddy-offline-image-1','toddy-offline-image-2','offline-root-2','toddy-installer-native-inputs'),
           'live':('toddy-live-image-1','toddy-live-image-2','live-root-2','toddy-live-native-inputs'),
           'mvp-offline':('toddy-mvp-offline-image-1','toddy-mvp-offline-image-2','mvp-offline-root-2','toddy-mvp-installer-native-inputs'),
-          'mvp-live':('toddy-mvp-live-image-4','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs-2')}
+          'mvp-live':('toddy-mvp-live-image-4','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs-2'),
+          'mvp-live-failed3':('toddy-mvp-live-image-3','toddy-mvp-live-image-2','mvp-live-root-2','toddy-mvp-live-native-inputs')}
 
 
 HISTORICAL={'h10-expanded':('h10-live-root',8707435,1794055093154113811,'h10'),
@@ -41,6 +42,23 @@ def configure(profile):
 
 configure('offline')
 LOG=Path('/var/log/toddy/phase2');LOCK=Path('/var/log/toddy/build/build.lock')
+
+
+def secured(path,limit=256*1024*1024):
+    path=Path(path)
+    if not path.is_relative_to('/var/log/toddy'):
+        return composition_secured(path,limit)
+    if not path.is_absolute() or path.resolve()!=path:raise ValueError('candidate_root_custody_log_redirect')
+    for parent in path.parents:
+        info=parent.lstat()
+        exception=(parent==Path('/var/log') and info.st_uid==0 and
+            info.st_gid==grp.getgrnam('syslog').gr_gid and stat.S_IMODE(info.st_mode)==0o775)
+        if not stat.S_ISDIR(info.st_mode) or info.st_uid or (info.st_mode&0o022 and not exception):
+            raise ValueError('candidate_root_custody_log_parent')
+    info=path.lstat()
+    if not stat.S_ISREG(info.st_mode) or info.st_uid or info.st_gid or info.st_nlink!=1 or info.st_mode&0o022 or info.st_size>limit:
+        raise ValueError('candidate_root_custody_log_file')
+    return path
 
 
 def read(path,limit=128*1024**2):return payload_module().strict(secured(path,limit).read_bytes())
@@ -172,6 +190,7 @@ def historical_eligible():
 def eligible():
     """Fixed workflow boundary; full archive metadata proof remains separate."""
     if PROFILE in HISTORICAL:return historical_eligible()
+    if PROFILE=='mvp-live-failed3':return failed_live3_eligible()
     p=payload_module();work=private(WORK,0o700);root=private(ARTIFACT,0o755)
     pin=[root.st_dev,work.st_ino,root.st_ino]
     unpack=read(WORK/'unpacked.json');intent=read(WORK/'unpack-intent.json');candidate=read(WORK/'candidate-resource-receipt.json')
@@ -223,6 +242,33 @@ def eligible():
     return {'profile':PROFILE,'assembly_pin':pin,'final_assembly_pin':final_pin,'descriptor':descriptor,'preserved':preserved,
         'reviewed_input_pins':inputs.pins,'finalizer_reports_sha256':checks,'source_sha256':inputs.source_hashes,
         'finalizer2_performed':PROFILE in ('offline','mvp-offline'),'workflow_boundary':'actual-offline-finalizer2' if PROFILE in ('offline','mvp-offline') else 'reviewed-live-inputs-before-fresh-finalizer2',
+        'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip()}
+
+
+def failed_live3_eligible():
+    """Archive the uncertain generation3 bytes without accepting or replaying it."""
+    work=private(WORK,0o700);root=private(ARTIFACT,0o755)
+    pin=[root.st_dev,work.st_ino,root.st_ino]
+    unpack=read(WORK/'unpacked.json');intent=read(WORK/'unpack-intent.json');resource=read(WORK/'resource-intent.json')
+    if (unpack.get('state')!='native-archives-unpacked-needs-resource-qualification' or
+            intent.get('state')!='unpack-intended' or
+            unpack.get('assembly_pin')!=pin or intent.get('assembly_pin')!=pin or
+            unpack.get('root')!=VIRTUAL or intent.get('root')!=VIRTUAL or
+            unpack.get('manifest_sha256')!=intent.get('manifest_sha256') or
+            resource.get('kind')!='unqualified-native-resource-candidate' or
+            resource.get('root_device')!=root.st_dev or resource.get('root_inode')!=root.st_ino or
+            resource.get('manifest_sha256')!=unpack['manifest_sha256'] or
+            resource.get('production_ready') is not False or
+            any(os.path.lexists(WORK/name) for name in ('candidate-resource-receipt.json','candidate-generated-entries.json','candidate-clean-image-manifest.json'))):
+        raise ValueError('candidate_root_custody_exact_uncertain_live3_required')
+    paths=[WORK/name for name in ('unpacked.json','unpack-intent.json','resource-intent.json','dpkg.log')]
+    paths.extend(INPUTS/name for name in ('input-prepared.json','policy.json','payload/manifest.json'))
+    paths.extend((ROOT/'scripts/build/phase2/image_native.sh',ROOT/'scripts/build/phase2/candidate_root_custody.py'))
+    preserved={str(path):archive.sha(secured(path)) for path in paths}
+    no_mounts()
+    return {'profile':PROFILE,'assembly_pin':pin,'preserved':preserved,
+        'workflow_boundary':'uncertain-live3-root-archival-only-no-resource-acceptance',
+        'root_retirement_only_after_complete_private_host_proof':True,
         'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip()}
 
 
@@ -336,7 +382,7 @@ def operation_lease():
 
 def main():
     arguments=sys.argv[1:]
-    if arguments and arguments[0] in ('live','mvp-offline','mvp-live','h10-expanded','h11-expanded'):configure(arguments[0]);arguments=arguments[1:]
+    if arguments and arguments[0] in ('live','mvp-offline','mvp-live','mvp-live-failed3','h10-expanded','h11-expanded'):configure(arguments[0]);arguments=arguments[1:]
     if os.getuid()!=0 or os.geteuid()!=0 or arguments not in (['inspect'],['export'],['receipt'],['metadata'],['retire']):raise ValueError('candidate_root_custody_fixed_root_coordinator_action')
     os.umask(0o077);subprocess.run(['/bin/bash','-c','source "$1"; guard_target','guard',str(ROOT/'scripts/build/target.sh')],check=True)
     with operation_lease():

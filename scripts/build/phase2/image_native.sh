@@ -7,6 +7,7 @@ case $1 in
     seal-mvp-installer|embed-mvp-installer|signatures-export3|signatures-export3-reconcile2|signatures-export4|signatures-export5|signatures-export6) ;;
     inputs-base-requirements|inputs-live-requirements|inputs-base-prepare|inputs-live-prepare|inputs-mvp-base-requirements|inputs-mvp-live-requirements|inputs-mvp-base-prepare|inputs-mvp-live-prepare) ;;
     custody-h10-expanded-inspect|custody-h10-expanded-export|custody-h10-expanded-receipt|custody-h10-expanded-metadata|custody-h10-expanded-retire|custody-h11-expanded-inspect|custody-h11-expanded-export|custody-h11-expanded-receipt|custody-h11-expanded-metadata|custody-h11-expanded-retire|custody-mvp-offline-inspect|custody-mvp-offline-export|custody-mvp-offline-receipt|custody-mvp-offline-metadata|custody-mvp-offline-retire|custody-mvp-live-inspect|custody-mvp-live-export|custody-mvp-live-receipt|custody-mvp-live-metadata|custody-mvp-live-retire|custody-offline-inspect|custody-offline-export|custody-offline-receipt|custody-offline-metadata|custody-offline-retire|custody-live-inspect|custody-live-export|custody-live-receipt|custody-live-metadata|custody-live-retire) ;;
+    custody-mvp-live-failed3-inspect|custody-mvp-live-failed3-export|custody-mvp-live-failed3-receipt|custody-mvp-live-failed3-metadata|custody-mvp-live-failed3-retire) ;;
     *) exit 2 ;;
 esac
 source /opt/toddy-build/scripts/build/target.sh
