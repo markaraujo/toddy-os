@@ -11,8 +11,9 @@ before exact retirement. Generation7 then unpacked and qualified 329 packages
 with zero resource blockers, reproduced the same 150,280-entry reviewed image,
 and passed finalization. Its live stage used targeted `dconf compile` and did
 not create the IBus database, but stopped because the generated Toddy live
-database had mode 0600 instead of the required 0644. Its root, stage intent,
-and journals remain untouched. See [generation7 evidence](evidence/B06-generation7.md).
+database had mode 0600 instead of the required 0644. At that stop, its root,
+stage intent and journals were preserved without replay. The root's later
+verified archival is recorded below. See [generation7 evidence](evidence/B06-generation7.md).
 
 The source now normalizes that exact root-owned, single-link dconf output mode
 and records bounded failure details. A disposable overlay verified the targeted
