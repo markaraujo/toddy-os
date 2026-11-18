@@ -66,7 +66,9 @@ def main():
                     verified.get('source')!=f'/mnt/lfs/sources/stage/toddy-package-export-{generation}'):
                 raise ValueError('Exact verified host transfer required')
             rows=json.loads(guest(inventory_code(generation)))
-            if len(rows)!=920 or rows.get('archive-export.json')!=verified['archive_export_sha256']:
+            if (set(rows)!=set(verified['files']) or
+                    any(rows[name]!=row['sha256'] for name,row in verified['files'].items()) or
+                    rows.get('archive-export.json')!=verified['archive_export_sha256']):
                 raise ValueError('Guest export receipt differs from host transfer')
             for name,digest in rows.items():
                 if name=='archive-export.json':continue
