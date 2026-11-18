@@ -7,7 +7,7 @@ HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[2]
 sys.path[:0]=[str(HERE),str(ROOT)]
 import offline_payload as p
 from image_media import inherited_media_lease
-from runtime.installer.native_finalizer import account_files,cache_command,cache_executables
+from runtime.installer.native_finalizer import account_files,cache_command,cache_executables,packaged_cache_profile
 from runtime.installer.installed_boot import module_namespace,InstalledBoot,RELEASE
 from runtime.installer.composition import secured,validate_policy
 TARGET=Path('/mnt/lfs');STAGE=TARGET/'sources/stage'
@@ -73,7 +73,9 @@ def cache_bindings(records,pins):
         owners=[record for record in records if record.get('payload',{}).get(path.lstrip('/'),{}).get('sha256')==row['sha256'] or record.get('payload',{}).get(path,{}).get('sha256')==row['sha256']]
         if not owners:raise ValueError('Archived native generated output has no record: '+path)
         namespace=p.cache_namespace(path,entries);tool=cache_tool(path,entries)
-        proof={'version':1,'scope':'archived-native-output-provenance-needs-selected-union-regeneration',
+        scope=('archived-native-output-provenance-exact-selected-package-cache' if packaged_cache_profile(path,tool['path'])
+               else 'archived-native-output-provenance-needs-selected-union-regeneration')
+        proof={'version':1,'scope':scope,
             'output':path,'output_sha256':row['sha256'],'tool':tool,'native_record_sha256':pins,
             'selected_namespace_sha256':hashlib.sha256(p.encoded(namespace)).hexdigest(),
             'regeneration_passed':False,'finalizer_passed':False}

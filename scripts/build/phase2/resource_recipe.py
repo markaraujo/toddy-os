@@ -14,7 +14,7 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[3]
 sys.path.insert(0,str(ROOT))
-from runtime.installer.native_finalizer import account_files,cache_command,verify_cache_executables,fresh_directory,payload_module
+from runtime.installer.native_finalizer import account_files,cache_command,verify_cache_executables,preserve_packaged_cache,fresh_directory,payload_module
 from runtime.installer.generated_resources import generate_loader_cache
 from runtime.installer.installed_identity import regular
 from runtime.installer.composition import validate_policy
@@ -208,6 +208,10 @@ def _qualify(assembly,manifest,policy,system,*,recover_live):
     empty_declared_runtime(before,manifest)
     _,initial_blockers=candidate_entries(before,manifest,policy)
     if initial_blockers:raise ValueError('Unpacked candidate does not match selected ownership/database policy')
+    for recipe in plan:
+        virtual=recipe['output'];binding=manifest['generated']['owned_cache_bindings'][virtual]
+        if preserve_packaged_cache(root,virtual,binding,manifest['ownership']['entries']):
+            verify_cache_executables(root,virtual,binding,manifest['ownership']['entries'])
     intent={'version':1,'kind':'unqualified-native-resource-candidate','manifest_sha256':hashlib.sha256(p.encoded(manifest)).hexdigest(),
             'policy_sha256':hashlib.sha256(p.encoded(policy)).hexdigest(),'source_sha256':p.digest(__file__),
             'root_inode':root.stat().st_ino,'root_device':root.stat().st_dev,'production_ready':False}
@@ -235,6 +239,10 @@ def _qualify(assembly,manifest,policy,system,*,recover_live):
         for recipe in plan:
             virtual=recipe['output'];binding=manifest['generated']['owned_cache_bindings'][virtual]
             tool=recipe['tool'];verify_cache_executables(root,virtual,binding,manifest['ownership']['entries'])
+            if preserve_packaged_cache(root,virtual,binding,manifest['ownership']['entries']):
+                cache_results[virtual]={'recorded_sha256':binding['output_sha256'],'actual_sha256':p.digest(root/virtual.lstrip('/')),
+                    'tool':tool,'input_namespace_sha256':binding['input_namespace_sha256']}
+                continue
             command=recipe['argv']
             if tuple(command) not in seen:
                 try:system.run(['/usr/sbin/chroot',str(root),*command],timeout=120)

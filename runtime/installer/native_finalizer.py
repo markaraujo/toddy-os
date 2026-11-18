@@ -73,6 +73,28 @@ def verify_cache_executables(root,path,binding,entries):
         if not expected or source.parent.resolve()!=source.parent or source.is_symlink() or p.digest(source)!=expected:raise InstallError('installer_finalizer_cache_tool_changed')
 
 
+def packaged_cache_profile(path,tool):
+    """Fixed package-owned outputs whose native rewrite changes selected bytes."""
+    return (path=='/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache' and tool=='/usr/bin/gdk-pixbuf-query-loaders' or
+            path=='/usr/lib/gtk-3.0/3.0.0/immodules.cache' and tool=='/usr/bin/gtk-query-immodules-3.0' or
+            path.startswith('/usr/lib/modules/7.1.8-toddy/modules.') and tool=='/usr/bin/kmod')
+
+
+def preserve_packaged_cache(root,path,binding,entries):
+    if not packaged_cache_profile(path,binding['tool']['path']):return False
+    expected=entries.get(path)
+    if expected!={'mode':stat.S_IFREG|0o644,'uid':0,'gid':0,'sha256':binding['output_sha256']}:
+        raise InstallError('installer_packaged_cache_contract_changed')
+    source=Path(root)/path.lstrip('/')
+    try:info=source.lstat()
+    except FileNotFoundError as error:raise InstallError('installer_packaged_cache_missing') from error
+    if (source.parent.resolve()!=source.parent or source.is_symlink() or info.st_mode!=expected['mode'] or
+            info.st_uid!=0 or info.st_gid!=0 or info.st_nlink!=1 or info.st_dev!=Path(root).stat().st_dev or
+            payload_module().digest(source)!=expected['sha256']):
+        raise InstallError('installer_packaged_cache_changed')
+    return True
+
+
 def fresh_directory(root,relative,row):
     """Create declared numeric ownership; never normalize an existing mismatch."""
     p=payload_module();p.canonical('/'+relative);root=Path(root);path=root/relative
@@ -97,6 +119,10 @@ class NativeFinalizer:
         composition=self.composition;composition.recheck()
         if p.digest(composition.bundle/'manifest.json')!=composition.descriptor['payload_manifest_sha256']:
             raise InstallError('installer_finalizer_payload_changed')
+        for virtual,binding in manifest['generated']['owned_cache_bindings'].items():
+            if packaged_cache_profile(virtual,binding['tool']['path']):
+                verify_cache_executables(root,virtual,binding,manifest['ownership']['entries'])
+                preserve_packaged_cache(root,virtual,binding,manifest['ownership']['entries'])
         run=Path('/run/toddy-installer')/('finalization-'+root.name)
         parent=run.parent.lstat()
         if run.parent.resolve()!=run.parent or not stat.S_ISDIR(parent.st_mode) or parent.st_uid!=0 or parent.st_gid!=0 or stat.S_IMODE(parent.st_mode)!=0o700:
@@ -147,6 +173,7 @@ class NativeFinalizer:
         commands=set()
         for virtual,binding in sorted(manifest['generated']['owned_cache_bindings'].items()):
             verify_cache_executables(root,virtual,binding,manifest['ownership']['entries'])
+            if preserve_packaged_cache(root,virtual,binding,manifest['ownership']['entries']):continue
             command=cache_command(virtual,binding['tool']['path'])
             if tuple(command) not in commands:
                 self.system.run(['/usr/sbin/chroot',str(root),*command],timeout=120);commands.add(tuple(command))
